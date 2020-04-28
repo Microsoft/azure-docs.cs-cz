@@ -1,24 +1,24 @@
 ---
 title: Artefakt CreateUiDefinition
-description: Ukazuje, jak vytvořit artefakt createUiDefinition pro spravovanou aplikaci Azure. Soubor se nazývá createUiDefinition.json.
+description: Ukazuje, jak vytvořit artefakt createUiDefinition pro spravovanou aplikaci Azure. Soubor má název createUiDefinition. JSON.
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
 ms.openlocfilehash: 9be1cb02c419314a33b9487bf183ef3659b2b549
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75651485"
 ---
-# <a name="reference-user-interface-elements-artifact"></a>Odkaz: Artefakt prvků uživatelského rozhraní
+# <a name="reference-user-interface-elements-artifact"></a>Referenční dokumentace: artefakt prvků uživatelského rozhraní
 
-Tento článek je odkazna *artefakt createUiDefinition.json* ve spravovaných aplikacích Azure. Další informace o vytváření prvků uživatelského rozhraní naleznete v [tématu Vytvoření prvků uživatelského rozhraní](create-uidefinition-elements.md).
+Tento článek je odkazem na artefakt *createUiDefinition. JSON* v Azure Managed Applications. Další informace o vytváření prvků uživatelského rozhraní najdete v tématu [vytvoření prvků uživatelského rozhraní](create-uidefinition-elements.md).
 
 ## <a name="user-interface-elements"></a>Prvky uživatelského rozhraní
 
-Následující JSON ukazuje příklad souboru *createUiDefinition.json* pro spravované aplikace Azure:
+Následující JSON ukazuje příklad souboru *createUiDefinition. JSON* pro Azure Managed Applications:
 
 ```json
 {
@@ -81,6 +81,6 @@ Následující JSON ukazuje příklad souboru *createUiDefinition.json* pro spra
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Kurz: Vytvoření spravované aplikace s vlastními akcemi a prostředky](tutorial-create-managed-app-with-custom-provider.md)
-- [Odkaz: Artefakt šablony nasazení](reference-main-template-artifact.md)
-- [Odkaz: Zobrazit artefakt definice](reference-view-definition-artifact.md)
+- [Kurz: vytvoření spravované aplikace s vlastními akcemi a prostředky](tutorial-create-managed-app-with-custom-provider.md)
+- [Referenční dokumentace: artefakt šablony nasazení](reference-main-template-artifact.md)
+- [Reference: artefakt definice zobrazení](reference-view-definition-artifact.md)

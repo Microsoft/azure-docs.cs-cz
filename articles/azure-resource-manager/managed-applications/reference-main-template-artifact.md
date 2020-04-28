@@ -1,24 +1,24 @@
 ---
 title: Odkaz na artefakt šablony
-description: Obsahuje příklad artefaktu šablony nasazení pro spravované aplikace Azure.
+description: Poskytuje příklad artefaktu šablony nasazení pro Azure Managed Applications.
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
 ms.openlocfilehash: 2bc0017d71e159ac490041494bcf37db035ef421
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75651459"
 ---
-# <a name="reference-deployment-template-artifact"></a>Odkaz: Artefakt šablony nasazení
+# <a name="reference-deployment-template-artifact"></a>Referenční dokumentace: artefakt šablony nasazení
 
-Tento článek je odkazna *mainTemplate.json* artefakt ve spravovaných aplikacích Azure. Další informace o vytváření šablony nasazení najdete v [tématu Šablony Správce prostředků Azure](../templates/template-syntax.md).
+Tento článek je odkazem na artefakt *mainTemplate. JSON* v Azure Managed Applications. Další informace o vytváření šablon nasazení najdete v tématu [šablony Azure Resource Manager](../templates/template-syntax.md).
 
 ## <a name="deployment-template"></a>Šablona nasazení
 
-Následující JSON ukazuje příklad *mainTemplate.json* souboru pro spravované aplikace Azure:
+Následující JSON ukazuje příklad souboru *mainTemplate. JSON* pro Azure Managed Applications:
 
 ```json
 {
@@ -189,6 +189,6 @@ Následující JSON ukazuje příklad *mainTemplate.json* souboru pro spravovan�
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Kurz: Vytvoření spravované aplikace s vlastními akcemi a prostředky](tutorial-create-managed-app-with-custom-provider.md)
-- [Odkaz: Artefakt prvků uživatelského rozhraní](reference-createuidefinition-artifact.md)
-- [Odkaz: Zobrazit artefakt definice](reference-view-definition-artifact.md)
+- [Kurz: vytvoření spravované aplikace s vlastními akcemi a prostředky](tutorial-create-managed-app-with-custom-provider.md)
+- [Referenční dokumentace: artefakt prvků uživatelského rozhraní](reference-createuidefinition-artifact.md)
+- [Reference: artefakt definice zobrazení](reference-view-definition-artifact.md)

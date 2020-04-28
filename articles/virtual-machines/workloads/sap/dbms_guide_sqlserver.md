@@ -1,5 +1,5 @@
 ---
-title: Nasazení DBMS virtuálních počítačů SQL Server Azure pro úlohy SAP | Dokumenty společnosti Microsoft
+title: SQL Server nasazení Azure Virtual Machines DBMS pro úlohy SAP | Microsoft Docs
 description: Nasazení DBMS v počítačích Azure Virtual Machines s SQL Serverem pro úlohy SAP
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
@@ -16,13 +16,13 @@ ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a0fbed1f4dd62b2d75d39f475d2fe124c55a2b97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75645799"
 ---
-# <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Nasazení DBMS virtuálních počítačů SQL Server Azure pro SAP NetWeaver
+# <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SQL Server nasazení Azure Virtual Machines DBMS pro SAP NetWeaver
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
@@ -309,257 +309,257 @@ ms.locfileid: "75645799"
 
 
 
-Tento dokument pokrývá několik různých oblastí, které je třeba zvážit při nasazování úloh SQL Server pro SAP v Azure IaaS. Jako podmínku pro tento dokument byste si měli přečíst dokument [Aspekty nasazení DBMS virtuálních počítačů Azure pro úlohy SAP](dbms_guide_general.md) a další příručky v [pracovním vytížení SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)v dokumentaci Azure . 
+Tento dokument popisuje několik různých oblastí, které je potřeba vzít v úvahu při nasazování SQL Server pro úlohy SAP v Azure IaaS. Jako předběžnou podmínkou tohoto dokumentu byste měli mít přehled o dokumentech [pro nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) a také další Příručky k úloze [SAP v dokumentaci k Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). 
 
 
 
 > [!IMPORTANT]
-> Rozsah tohoto dokumentu je verze systému Windows na serveru SQL Server. SAP nepodporuje linuxovou verzi SQL Serveru s žádným softwarem SAP. Dokument nepopisuje Microsoft Azure SQL Database, což je nabídka platformy jako služby platformy Microsoft Azure. Diskuse v tomto článku se o spuštění produktu SQL Server, protože je známý pro místní nasazení ve virtuálních počítačích Azure, využití infrastruktury jako služby schopnosti Azure. Databázové schopnosti a funkce mezi těmito dvěma nabídkami se liší a neměly by být vzájemně směšovány. Viz také:<https://azure.microsoft.com/services/sql-database/>
+> Rozsah tohoto dokumentu je verze Windows na SQL Server. SAP nepodporuje SQL Server verzi pro Linux pomocí žádného softwaru SAP. Dokument se nezabývá Microsoft Azure SQL Database, což je platforma jako nabídka služby Microsoft Azure platformy. Diskuze v tomto dokumentu se týká spuštění SQL Serverho produktu, který je známý pro místní nasazení v Azure Virtual Machines a využití infrastruktury jako služby pro Azure. Možnosti databáze a funkce mezi těmito dvěma nabídkami se liší a neměly by se vzájemně kombinovat. Viz také:<https://azure.microsoft.com/services/sql-database/>
 > 
 >
 
-Obecně byste měli zvážit použití nejnovějších verzí SERVERU SQL Server ke spuštění úlohy SAP v Azure IaaS. Nejnovější verze SQL Serveru nabízejí lepší integraci do některých služeb a funkcí Azure. Nebo mají změny, které optimalizují operace v infrastruktuře Azure IaaS.
+Obecně platí, že byste měli zvážit použití nejnovějších verzí SQL Server ke spuštění úlohy SAP v Azure IaaS. Nejnovější verze SQL Server nabízejí lepší integraci do některých služeb a funkcí Azure. Nebo máte změny, které optimalizují operace v infrastruktuře Azure IaaS.
 
 Před pokračováním doporučujeme [tuto][virtual-machines-sql-server-infrastructure-services] dokumentaci zkontrolovat.
 
-V následujících oddílech jsou agregovány a uvedeny části dokumentace pod výše uvedeným odkazem. Specifika kolem SAP jsou také zmíněny a některé koncepty jsou popsány podrobněji. Důrazně se však doporučuje pracovat prostřednictvím dokumentace výše před první před čtením sql server specifické dokumentace.
+V následujících částech jsou části dokumentace pod výše uvedeným odkazem shrnuty a zmíněny. Jsou zde uvedeny konkrétní informace o SAP a některé koncepce jsou podrobněji popsány. Důrazně doporučujeme před načtením dokumentace týkající se SQL Server použít výše uvedenou dokumentaci.
 
-V aplikaci IaaS jsou některé informace specifické pro SQL Server, které byste měli vědět, než budete pokračovat:
+V IaaS konkrétní informace, které byste měli znát, byste měli před pokračováním vymezit nějaké SQL Server:
 
-* **Podpora verzí SQL:** Pro zákazníky SAP je sql server 2008 R2 a vyšší podporován ve virtuálním počítači Microsoft Azure. Dřívější edice nejsou podporovány. Další podrobnosti naleznete v tomto [obecném prohlášení](https://support.microsoft.com/kb/956893) o podpoře. Obecně platí, že SQL Server 2008 je podporován také společností Microsoft. Nicméně vzhledem k významné funkce pro SAP, který byl představen s SQL Server 2008 R2, SQL Server 2008 R2 je minimální verze pro SAP. Obecně byste měli zvážit použití nejnovějších verzí SERVERU SQL Server ke spuštění úlohy SAP v Azure IaaS. Nejnovější verze SQL Serveru nabízejí lepší integraci do některých služeb a funkcí Azure. Nebo mají změny, které optimalizují operace v infrastruktuře Azure IaaS. Papír je proto omezen na SQL Server 2016 a SQL Server 2017.
-* **Sql Performance**: Virtuální počítače hostované v Microsoft Azure fungují dobře ve srovnání s jinými nabídkami virtualizace veřejného cloudu, ale jednotlivé výsledky se mohou lišit. Podívejte se na článek [Doporučené postupy výkonu pro SQL Server ve virtuálních počítačích Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance).
-* **Použití ibi z Azure Marketplace**: Nejrychlejší způsob, jak nasadit nový virtuální počítač Microsoft Azure, je použít image z Azure Marketplace. Existují image na Azure Marketplace, které obsahují nejnovější verze SQL Serveru. Bitové kopie, na kterých je sql server již nainstalován, nelze okamžitě použít pro aplikace SAP NetWeaver. Důvodem je výchozí sql server řazení je nainstalován v rámci těchto bitových kopií a nikoli řazení vyžaduje systémy SAP NetWeaver. Chcete-li tyto bitové kopie používat, zkontrolujte kroky zdokumentované v kapitole [Použití bitové kopie serveru SQL Server z webu Microsoft Azure Marketplace][dbms-guide-5.6]. 
-
-
-## <a name="recommendations-on-vmvhd-structure-for-sap-related-sql-server-deployments"></a>Doporučení pro strukturu virtuálního počítače a virtuálního pevného disku pro nasazení SQL Serveru související se systémem SAP
-V souladu s obecným popisem by měly být spustitelné soubory serveru SQL Server umístěny nebo\)nainstalovány do systémové jednotky disku s os virtuálním počítačem (jednotka C: .  Většina systémových databází serveru SQL Server obvykle není využívána na vysoké úrovni zatížením SAP NetWeaver. V důsledku toho systémové databáze SQL Server (master, msdb a model) může zůstat na C:\ také disk. Výjimkou by měl být tempdb, který v případě úloh SAP může vyžadovat buď vyšší objem dat nebo vstupně-v.I operace svazku. Vstupně-založené na prodeji, které by neměly být použity pro virtuální pevný disk operačního systému. U těchto systémů by měly být provedeny následující kroky:
+* **Podpora verzí SQL**: pro zákazníky SAP se v Microsoft Azure virtuálním počítači podporuje SQL Server 2008 R2 a vyšší verze. Starší edice se nepodporují. Další podrobnosti najdete v tomto [příkazu obecné podpory](https://support.microsoft.com/kb/956893) . Obecně platí, že společnost Microsoft také podporuje SQL Server 2008. Vzhledem k významným funkcím pro SAP, které byly představeny s SQL Server 2008 R2, SQL Server 2008 R2 je minimální verze pro SAP. Obecně platí, že byste měli zvážit použití nejnovějších verzí SQL Server ke spuštění úlohy SAP v Azure IaaS. Nejnovější verze SQL Server nabízejí lepší integraci do některých služeb a funkcí Azure. Nebo máte změny, které optimalizují operace v infrastruktuře Azure IaaS. Proto je dokument omezen na SQL Server 2016 a SQL Server 2017.
+* **Výkon SQL**: Microsoft Azure hostované Virtual Machines dobře spolupracuje s jinými nabídkami virtualizace veřejného cloudu, ale jednotlivé výsledky se můžou lišit. Projděte si článek [osvědčené postupy pro výkon SQL Server v Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance).
+* **Použití imagí z Azure Marketplace**: nejrychlejší způsob, jak nasadit nový virtuální počítač s Microsoft Azure, je použití image z Azure Marketplace. V Azure Marketplace jsou bitové kopie, které obsahují nejnovější verze SQL Server. Image, kde už SQL Server nainstalované, nejde hned použít pro aplikace SAP NetWeaver. Důvodem je výchozí kolace SQL Server je v těchto obrázcích nainstalovaná, a ne kolace, kterou vyžaduje systém SAP NetWeaver. Chcete-li tyto obrázky použít, Projděte si postup popsaný v části [použití SQL Server obrázku z Microsoft Azure Marketplace][dbms-guide-5.6]. 
 
 
-* Se všemi typy virtuálních počítačů certifikovaných SAP (viz SAP Note [1928533]), s výjimkou virtuálních počítačů řady A, dat tempdb a souborů protokolu lze umístit na netrvalé D:\ Jednotky. 
-* Nicméně, je doporučeno používat více datových souborů tempdb. Uvědomte si D:\ objemy jednotek se liší v závislosti na typu virtuálního počítače. Pro přesné velikosti D:\ jednotky různých virtuálních počítačů, podívejte se na článek [Velikosti pro virtuální počítače s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).
+## <a name="recommendations-on-vmvhd-structure-for-sap-related-sql-server-deployments"></a>Doporučení ke struktuře virtuálních počítačů/VHD pro nasazení SQL Server souvisejících s SAP
+V souladu s obecným popisem SQL Server spustitelné soubory, které by se měly nacházet nebo instalovat do systémové jednotky disku s operačním systémem virtuálního počítače (\)jednotka C:.  Většinou se většina SQL Server systémových databází nevyužívá na vysoké úrovni úloh SAP NetWeaver. V důsledku toho mohou systémové databáze SQL Server (Master, msdb a model) zůstat na C:\ i jednotka. Výjimka by měla být tempdb, která v případě úloh SAP může vyžadovat buď vyšší objem dat, nebo vstupně-výstupní operace. Vstupně-výstupní úlohy, které by neměly být aplikovány na virtuální pevný disk operačního systému. U takových systémů je třeba provést následující kroky:
 
-Tyto konfigurace umožňují tempdb spotřebovávat více místa, než je schopen poskytnout systémová jednotka. Netrvalé D:\ jednotka také nabízí lepší latenci vstupně-výstupních služeb a propustnost (s výjimkou virtuálních zařízení řady A). Chcete-li určit správnou velikost tempdb, můžete zkontrolovat velikosti tempdb ve stávajících systémech. 
+
+* U všech typů virtuálních počítačů certifikovaných pomocí SAP (viz poznámku SAP – Poznámka [1928533]), s výjimkou virtuálních počítačů řady a-Series, dat tempdb a souborů protokolů, se dají umístit do netrvalého D:\u. disky. 
+* Doporučuje se však použít více datových souborů databáze tempdb. Buďte D:\ svazky jednotek se liší v závislosti na typu virtuálního počítače. Pro přesné velikosti D:\ na jednotce různých virtuálních počítačů se podívejte na [velikost článků pro virtuální počítače s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).
+
+Tyto konfigurace umožňují, aby databáze tempdb využila více místa, než je systémová jednotka schopna poskytnout. Netrvalý D:\ jednotka také nabízí lepší latenci I/O a propustnost (s výjimkou virtuálních počítačů řady A-Series). Chcete-li určit správnou velikost databáze tempdb, můžete zjistit velikosti databáze tempdb ve stávajících systémech. 
 
 >[!NOTE]
-> v případě, že umístíte datové soubory tempdb a soubor protokolu do složky na D:\ jednotka, kterou jste vytvořili, musíte se ujistit, že složka existuje po restartování virtuálního počítače. Vzhledem k tomu, D:\ jednotka je čerstvě inicializována po restartování virtuálního počítače všechny struktury souborů a adresářů jsou vymazány. Možnost znovu vytvořit případné adresářové struktury na D:\ před zahájením služby SQL Server je dokumentováno v [tomto článku](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/).
+> v případě, že datové soubory a soubor protokolu tempdb umístíte do složky na D:\ disk, který jste vytvořili, musíte zajistit, aby složka existovala po restartování virtuálního počítače. Od D:\ jednotka je nově inicializovaná po restartování virtuálního počítače. všechny struktury souborů a adresářů se vymažou. Možnost znovu vytvořit konečné adresářové struktury na D:\ v [tomto článku](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)je popsána jednotka před začátkem SQL Server služby.
 
-Konfigurace virtuálního počítače, který spouští SQL Server s databází SAP a kde jsou umístěny data tempdb a soubor protokolu tempdb na D:\ disk bude vypadat takto:
+Konfigurace virtuálního počítače, která běží SQL Server s databází SAP a kde jsou umístěné data tempdb a protokol tempdb na D:\ jednotka by vypadala takto:
 
-![Diagram jednoduché konfigurace disku virtuálního počítače pro SQL Server](./media/dbms_sqlserver_deployment_guide/Simple_disk_structure.PNG)
+![Diagram konfigurace jednoduchého disku virtuálního počítače pro SQL Server](./media/dbms_sqlserver_deployment_guide/Simple_disk_structure.PNG)
 
-Výše uvedený diagram zobrazuje jednoduchý případ. Jak se vyhnul v článku [Důležité informace pro nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md), počet a velikost disků úložiště Premium závisí z různých faktorů. Obecně však doporučujeme:
+V diagramu výše se zobrazí jednoduchý případ. Eluded se v článku [aspekty nasazení služby Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md), počet a velikost Premium Storage disků závisí na různých faktorech. Obecně doporučujeme:
 
-- Použití prostorů úložiště k vytvoření jednoho nebo malého počtu svazků, které obsahují datové soubory serveru SQL Server. Důvodem této konfigurace je, že v reálném životě existuje mnoho databází SAP s různými velikostmi databázových souborů s různými vstupně-v. úlohy.
-- Použití prostorů úložiště k zadání dostatečného množství viops a pro soubor protokolu transakcí serveru SQL Server. Potenciální úloha VOPS je často hlavní linií pro velikost svazku transakčního protokolu a nikoli potenciálního objemu svazku transakcí serveru SQL Server.
-- Použijte D:\drive pro tempdb tak dlouho, dokud výkon je dost dobrý. Pokud je celkový pracovní vytížení omezen výkon tmepdb se nachází na D:\ jednotka, kterou budete muset zvážit přesunout tempdb na samostatné disky úložiště Premium, jak je doporučeno v [tomto článku](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance).
+- Pomocí prostorů úložiště můžete vytvořit jeden nebo malý počet svazků, které obsahují SQL Server datových souborů. Důvodem pro tuto konfiguraci je to, že v reálném čase existuje mnoho databází SAP s různými velikostmi databázových souborů s různou vstupně-výstupní úlohou.
+- Pomocí prostorů úložiště poskytněte dostatek IOPS a soubor protokolu transakcí SQL Server. Možné úlohy IOPS často je řádkem pro určení velikosti svazku transakčního protokolu a nikoli potenciálního objemu SQL Server objemu transakcí.
+- Pokud je výkon dostatečně dobrý, použijte D:\drive pro databázi tempdb. Pokud je celkové zatížení omezené na výkon, tmepdb se nachází na D:\ jednotka možná budete muset zvážit přesunutí databáze tempdb a oddělit Premium Storage disky podle doporučení v [tomto článku](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance).
 
 
-### <a name="special-for-m-series-vms"></a>Speciální pro virtuální měna řady M
-Pro virtuální počítač Azure řady M může být latence zápisu do transakčního protokolu snížena o faktory ve srovnání s výkonem úložiště Azure Premium při použití akcelerátoru zápisu Azure. Proto byste měli nasadit Azure Write Accelerator pro virtuální pevné disky, které tvoří svazek pro transakční protokol serveru SQL Server. Podrobnosti si můžete přečíst v dokumentu [Akcelerátor zápisu](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator).
+### <a name="special-for-m-series-vms"></a>Speciální pro virtuální počítače řady M-Series
+Pro virtuální počítače Azure řady M-Series se při použití Azure Akcelerátor zápisu můžou latence zápisu do transakčního protokolu snížit podle faktorů v porovnání s výkonem Azure Premium Storage. Proto byste měli nasadit Azure Akcelerátor zápisu pro virtuální pevné disky, které tvoří svazek pro SQL Server protokol transakcí. Podrobnosti lze přečíst v dokumentu [akcelerátor zápisu](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator).
   
 
 ### <a name="formatting-the-disks"></a>Formátování disků
-Pro SQL Server by velikost bloku NTFS pro disky obsahující data serveru SQL Server a soubory protokolu měla být 64 KB. Není třeba formátovat d:\ Jednotky. Tato jednotka je dodávána předformátovaná.
+Pro SQL Server je velikost bloku NTFS pro disky obsahující SQL Server data a soubory protokolu 64 KB. Není nutné naformátovat D:\ disky. Tato jednotka je předem naformátovaná.
 
-Chcete-li se ujistit, že obnovení nebo vytváření databází není inicializace datových souborů vynulováním obsahu souborů, měli byste se ujistit, že kontext uživatele sql server služba je spuštěna v má určité oprávnění. Obvykle uživatelé ve skupině Správce systému Windows mají tato oprávnění. Pokud je služba SQL Server spuštěna v uživatelském kontextu uživatele, který není správcem systému Windows, je třeba tomuto uživateli přiřadit uživatelské právo **Provádět úlohy hromadné údržby**.  Podrobnosti naleznete v tomto článku znalostní báze Microsoft Knowledge Base:<https://support.microsoft.com/kb/2574695>
+Aby se zajistilo, že obnovení nebo vytváření databází neinicializuje datové soubory tak, že se obsah souborů neinicializuje, měli byste se ujistit, že kontext uživatele, ke kterému je služba SQL Server spuštěná, má určité oprávnění. Tato oprávnění mají obvykle uživatelé ve skupině správce systému Windows. Pokud je služba SQL Server spuštěna v uživatelském kontextu uživatele, který není správcem systému Windows, je třeba přiřadit tohoto uživatele k **provádění úloh údržby svazku**.  Podívejte se na podrobnosti v tomto článku znalostní báze Microsoft Knowledge Base:<https://support.microsoft.com/kb/2574695>
 
-### <a name="impact-of-database-compression"></a>Dopad komprese databáze
-V konfiguracích, kde vstupně-v., šířka pásma se může stát omezujícím faktorem, může každé opatření, které snižuje vstupně-maily, pomoci roztáhnout úlohu, kterou lze spustit ve scénáři IaaS, jako je Azure. Proto pokud ještě není hotovo, použití komprese SQL Server PAGE doporučuje SAP i Microsoft před nahráním existující databáze SAP do Azure.
+### <a name="impact-of-database-compression"></a>Dopad komprimace databáze
+V konfiguracích, kde se může I/O šířka pásma stát omezením, by každá míra, která omezuje IOPS, mohla přispět k roztažení úlohy, která může běžet ve scénáři IaaS, jako je Azure. Pokud se to ještě neudělalo, doporučujeme, abyste před nahráním existující databáze SAP do Azure doporučili použití SQL Server komprese stránky od společnosti SAP i Microsoftu.
 
-Doporučení provést kompresi databáze před odesláním do Azure je dáno ze dvou důvodů:
+Doporučení k provedení komprese databáze před odesláním do Azure je podané dvěma důvody:
 
-* Množství dat, která mají být odeslána, je nižší.
-* Doba trvání spuštění komprese je kratší za předpokladu, že lze použít silnější hardware s více procesory nebo vyšší vstupně-výstupní šířku pásma nebo menší latence vstupně-výstupních prostor v místním prostředí.
-* Menší velikosti databáze mohou vést k nižším nákladům na přidělení disku.
+* Množství dat, která se mají nahrát, je nižší.
+* Doba trvání spuštění komprese je kratší za předpokladu, že jeden může používat silnější hardware s více procesory nebo vyšší šířkou pásma I/O nebo menší latence vstupu/výstupu v místním prostředí.
+* Menší velikosti databází můžou vést k menšímu množství nákladů na přidělení disku.
 
-Komprese databáze funguje stejně dobře ve virtuálních počítačích Azure stejně jako v místním prostředí. Další podrobnosti o komprimování existujících databází SAP NetWeaver SQL Server naleznete v článku [Vylepšený kompresní nástroj SAP MSSCOMPRESS](https://blogs.msdn.microsoft.com/saponsqlserver/2016/11/25/improved-sap-compression-tool-msscompress/). 
+Komprese databáze funguje i v Virtual Machines Azure jako v místním prostředí. Další podrobnosti o tom, jak komprimovat existující databáze SAP NetWeaver SQL Server, najdete v článku [Vylepšený nástroj SAP Compression Tool MSSCOMPRESS](https://blogs.msdn.microsoft.com/saponsqlserver/2016/11/25/improved-sap-compression-tool-msscompress/). 
 
-## <a name="sql-server-2014-and-more-recent---storing-database-files-directly-on-azure-blob-storage"></a>SQL Server 2014 a novější – ukládání databázových souborů přímo do úložiště objektů blob Azure
-SQL Server 2014 a novější verze otevřít možnost ukládání databázových souborů přímo na Azure Blob Store bez 'obálky' virtuálního pevného disku kolem nich. Zejména s použitím standardního úložiště Azure nebo menších typů virtuálních počítačů tento typ nasazení umožňuje scénáře, kde můžete překonat limity viops, které by byly vynuceny omezeným počtem disků, které lze připojit k některým menším typům virtuálních počítačů. Tento způsob nasazení funguje pro uživatelské databáze však není pro systémové databáze SQL Server. Funguje také pro datové a log soubory SQL Server. Pokud chcete nasadit databázi SAP SQL Server tímto způsobem namísto "zabalení" do virtuálních discích, mějte na paměti:
+## <a name="sql-server-2014-and-more-recent---storing-database-files-directly-on-azure-blob-storage"></a>SQL Server 2014 a novější – ukládání souborů databáze přímo do Azure Blob Storage
+SQL Server 2014 a novější verze si otevřou možnost ukládat soubory databáze přímo do úložiště objektů BLOB v Azure, aniž by to mělo obálku VHD. Zvláště při použití standardních Azure Storage nebo menších typů virtuálních počítačů tento typ nasazení umožňuje scénáře, ve kterých můžete překonat omezení IOPS, které by se vynutily omezeným počtem disků, které se dají připojit k některým menším typům virtuálních počítačů. Tento způsob nasazení funguje pro uživatelské databáze, ale ne pro systémové databáze SQL Server. Funguje taky pro data a soubory protokolů SQL Server. Pokud chcete databázi SQL Server SAP nasadit tímto způsobem namísto "zabalení" na VHD, pamatujte na to, že:
 
-* Použitý účet úložiště musí být ve stejné oblasti Azure jako ten, který se používá k nasazení VM SQL Server běží v.
-* Důležité informace uvedené dříve týkající se distribuce virtuálních disků přes různé účty úložiště Azure platí i pro tuto metodu nasazení. Znamená, že vstupně-v., které jsou vstupně-nosné, se započítávají do limitů účtu úložiště Azure.
-* Místo účtování proti kvótě vstupně-vstupně-vstupně-videa virtuálního zařízení se bude přenos proti objektům BLOB úložiště představujícím data serveru SQL Server a soubory protokolu započítávat do šířky pásma sítě virtuálního zařízení konkrétního typu virtuálního zařízení. Šířka pásma sítě a úložiště určitého typu virtuálního počítače nahlédněte do článku [Velikosti virtuálních počítačů s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).
-* V důsledku odesílání vstupně-out souboru prostřednictvím kvóty sítě, jste podložení kvóty úložiště většinou a s tím používat celkovou šířku pásma virtuálního zařízení pouze částečně.
-* Cíle výkonu vstupně-up a vstupně-výkon, které má Azure Premium Storage pro různé velikosti disků, už se nepoužívají. I v případě, že objekty BLOB, které jste vytvořili, jsou umístěny ve službě Azure Premium Storage. Cíle jsou zdokumentovány v článku [Vysoce výkonné úložiště Premium storage a spravované disky pro virtuální počítače](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage). V důsledku umístění datových souborů sql serveru a souborů protokolu přímo na objekty BLOB, které jsou uložené ve službě Azure Premium Storage, se výkonové charakteristiky mohou lišit ve srovnání s virtuálními servery v Azure Storage.
-* Ukládání do mezipaměti založené na hostiteli, jak je k dispozici pro disky úložiště Azure Premium, není dostupné při umísťování datových souborů SQL Serveru přímo na objekty BLOB Azure.
-* Na virtuálních počítačích řady M nelze akcelerátor zápisu Azure použít k podpoře zápisů podmilisekund proti souboru protokolu transakcí serveru SQL Server. 
+* Použitý účet úložiště musí být ve stejné oblasti Azure jako ta, která se používá k nasazení virtuálního počítače, SQL Server běží v.
+* V této metodě nasazení se vztahují i na výše uvedené požadavky týkající se distribuce VHD na různé Azure Storage účty. Znamená počet vstupně-výstupních operací na základě limitů Azure Storageho účtu.
+* Místo monitorování propustnosti vstupně-výstupních operací úložiště virtuálního počítače bude přenos dat objektů BLOB úložiště, které představují SQL Server data a soubory protokolů, zaúčtován do šířky pásma sítě určitého typu virtuálního počítače. Šířku pásma sítě a úložiště pro určitý typ virtuálního počítače najdete v článku [velikosti virtuálních počítačů s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).
+* V důsledku nahrávání vstupně-výstupních operací se soubory přes kvótu sítě vytváříte hlavně kvótu úložiště, která využívá celkovou šířku pásma virtuálního počítače jenom částečně.
+* Cíle vstupně-výstupních operací za sekundu a vstupně-výstupní propustnosti, které Azure Premium Storage pro různé velikosti disků, už neplatí. I v případě, že se objekty blob, které jste vytvořili, nacházejí v Premium Storage Azure. Cíle jsou popsány v článku o [vysoce výkonném Premium Storage a spravovaných discích pro virtuální počítače](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage). V důsledku umístění SQL Server datových souborů a souborů protokolu přímo do objektů BLOB uložených v Azure Premium Storage se výkonnostní charakteristiky můžou v porovnání s virtuálními pevnými disky v Azure Premium Storage lišit.
+* Ukládání do mezipaměti, které je k dispozici pro Azure Premium Storage disky, není k dispozici při umísťování SQL Server datových souborů přímo do objektů blob Azure.
+* V případě virtuálních počítačů řady M-Series nejde Azure Akcelerátor zápisu použít pro podporu zápisů za běhu do SQL Server souboru protokolu transakcí. 
 
-Podrobnosti o této funkci naleznete v článku [datové soubory serveru SQL Server v Microsoft Azure](https://docs.microsoft.com/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-2017)
+Podrobnosti o této funkci najdete v článku [SQL Server datových souborech v Microsoft Azure](https://docs.microsoft.com/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-2017)
 
-Doporučení pro produkční systémy je vyhnout se této konfiguraci a spíše zvolit umístění dat sql serveru a souborů protokolu v Virtuálních řadičích zabezpečení úložiště Azure Namísto přímo na objektech BLOB Azure.
+Doporučením pro produkční systémy se vyhnete této konfiguraci a místo toho, abyste zvolili umístění SQL Server dat a souborů protokolů v Azure Premium Storage VHD místo přímo na objektech blob Azure.
 
 
-## <a name="sql-server-2014-buffer-pool-extension"></a>Rozšíření fondu vyrovnávací paměti serveru SQL Server 2014
-SQL Server 2014 představil novou funkci, která se nazývá [rozšíření fondu vyrovnávací paměti](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension?view=sql-server-2017). Tato funkce rozšiřuje fond vyrovnávacích pamětí serveru SQL Server, který je uložen v paměti s mezipamětí druhé úrovně, která je zálohována místními ssd disky serveru nebo virtuálního soudu. Rozšíření fondu vyrovnávací paměti umožňuje zachovat větší pracovní sadu dat "v paměti". Ve srovnání s přístupem k Azure Standard Storage je přístup do rozšíření fondu vyrovnávacích pamětí, který se ukládá na místních ssd znamená virtuální počítač Azure, je mnoho faktorů rychlejší. Porovnání rozšíření fondu vyrovnávací paměti na mezipaměť pro čtení úložiště Azure Premium, jak je doporučeno pro datové soubory serveru SQL Server, se pro rozšíření fondu vyrovnávací paměti neočekávají žádné významné výhody. Důvodem je, že obě mezipaměti (rozšíření fondu vyrovnávací paměti SQL Server a cache pro čtení úložiště Premium) používají místní disky výpočetního uzlu Azure.
+## <a name="sql-server-2014-buffer-pool-extension"></a>Rozšíření fondu vyrovnávací paměti SQL Server 2014
+SQL Server 2014 zavedlo novou funkci, která se nazývá [rozšíření fondu vyrovnávací paměti](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension?view=sql-server-2017). Tato funkce rozšiřuje fond vyrovnávací paměti SQL Server, který je uložený v paměti s mezipamětí druhé úrovně, která je založená na místní SSD serveru nebo virtuálního počítače. Rozšíření fondu vyrovnávací paměti umožňuje udržet větší pracovní sadu dat v paměti. V porovnání s přístupem ke službě Azure Storage úrovně Standard je přístup k rozšíření fondu vyrovnávací paměti, který je uložený v místní SSD virtuálního počítače Azure, mnohem rychlejší. Porovnání rozšíření fondu vyrovnávací paměti do Azure Premium Storage mezipaměti pro čtení, jak se doporučuje pro datové soubory SQL Server, ale u rozšíření fondu vyrovnávací paměti se neočekávají žádné významné výhody. Důvodem je, že ukládání do mezipaměti (SQL Server rozšíření fondu vyrovnávací paměti a Premium Storage mezipaměti pro čtení) používá místní disky výpočetního uzlu Azure.
 
-Zkušenosti získané v mezidobí s SQL Server rozšíření fondu vyrovnávací paměti s úlohou SAP je smíšené a stále neumožňuje jasná doporučení, zda jej použít ve všech případech. Ideální případ je, že pracovní sada, kterou aplikace SAP vyžaduje, se vejde do hlavní paměti. Díky Tomu, že Azure mezitím nabízí virtuální počítače, které jsou dodávány s až 4 TB paměti, by mělo být dosažitelné, aby pracovní sada byla v paměti. Proto použití rozšíření fondu vyrovnávací paměti je omezena na některé vzácné případy a by neměl být hlavního proudu případu.  
+Prostředí získaná v mezidobí s SQL Server rozšíření fondu vyrovnávací paměti s úlohou SAP je smíšená a stále neumožňují jasná doporučení týkající se toho, zda je lze použít ve všech případech. Ideálním případem je, že pracovní sada, kterou aplikace SAP vyžaduje, se zahodí do hlavní paměti. Azure mezitím nabízí virtuálním počítačům, které jsou s až 4 TB paměti, takže by měla být dosažitelná, aby fungovala v paměti. Proto je použití rozšíření fondu vyrovnávací paměti omezené na některé vzácné případy a nemělo by se jednat o běžný případ.  
 
-## <a name="backuprecovery-considerations-for-sql-server"></a>Důležité informace o zálohování a obnovení pro sql server
-Při nasazování SQL Serveru do Azure je nutné zkontrolovat metodiku zálohování. I v případě, že systém není produkční systém, databáze SAP hostované SQL Server musí být zálohovány pravidelně. Vzhledem k tomu, že Azure Storage udržuje tři bitové kopie, zálohování je teď méně důležité z hlediska kompenzace selhání úložiště. Prioritou pro udržování správné zálohy a plánu obnovení je více, že můžete kompenzovat logické/ruční chyby poskytnutím možnosti obnovení bodu v čase. Takže cílem je buď použít zálohy k obnovení databáze zpět do určitého bodu v čase nebo použít zálohy v Azure k osivu jiného systému zkopírováním existující databáze. 
+## <a name="backuprecovery-considerations-for-sql-server"></a>Předpoklady zálohování a obnovení pro SQL Server
+Při nasazování SQL Server do Azure je nutné zkontrolovat metodologii zálohování. I v případě, že systém není produkční systém, databáze SAP hostovaná v SQL Server musí být pravidelně zálohována. Vzhledem k tomu, že Azure Storage udržuje tři image, zálohování je teď méně důležité v souvislosti s kompenzačním selháním úložiště. Důvod priority pro zachování správného plánu zálohování a obnovení je větší, než můžete kompenzovat logické a ruční chyby tím, že zajistíte možnosti obnovení k určitému bodu v čase. Cílem je, aby se databáze obnovila k určitému časovému bodu v čase nebo aby používala zálohy v Azure k osazení jiného systému zkopírováním stávající databáze. 
 
-Chcete-li se podívat na různé možnosti zálohování serveru SQL Server v Azure, přečtěte si článek [Zálohování a obnovení pro SQL Server ve virtuálních počítačích Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-backup-recovery). Článek pokrývá několik různých možností.
+Pokud se chcete podívat na různé možnosti zálohování SQL Server v Azure, přečtěte si článek [zálohování a obnovení pro SQL Server v azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-backup-recovery). Článek obsahuje několik různých možností.
 
 ### <a name="manual-backups"></a>Ruční zálohování
-Máte několik možností, jak provádět "ruční" zálohování:
+Máte několik možností, jak provést ruční zálohování pomocí:
 
-1. Provádění konvenčních záloh SQL Serveru na přímo připojených diskech Azure. Tato metoda má tu výhodu, že máte zálohy k dispozici rychle pro obnovení systému a vybudovat nové systémy jako kopie stávajících systémů SAP
-2.  SQL Server 2012 CU4 a vyšší můžete zálohovat databáze na adresu URL úložiště Azure.
-3.  Zálohy snímků souborů pro databázové soubory v úložišti objektů blob Azure. Tato metoda funguje jenom v případě, že data a soubory protokolu serveru SQL Server jsou umístěny v úložišti objektů blob Azure
+1. Provádění konvenčních záloh SQL Server na přímo připojených discích Azure. Tato metoda má výhodu, že máte k dispozici rychlé zálohování pro systém obnovení a sestavování nových systémů jako kopií stávajících systémů SAP.
+2.  SQL Server 2012 CU4 a novější může zálohovat databáze na adresu URL služby Azure Storage.
+3.  Zálohy snímků souborů pro databázové soubory v Azure Blob Storage. Tato metoda funguje jenom v případě, že vaše SQL Server data a soubory protokolu jsou umístěné v úložišti objektů BLOB v Azure.
 
-První metoda je dobře známá a používá se v mnoha případech i v místním světě. Nicméně, to vás nechá s úkolem vyřešit dlouhodobější umístění zálohování. Vzhledem k tomu, že nechcete uchovávat zálohy po dobu 30 nebo více dní v místně připojeném úložišti Azure Storage, musíte buď použít služby Zálohování Azure nebo jiný nástroj pro zálohování a obnovení od jiného výrobce, který zahrnuje správu přístupu a uchovávání informací pro vaše zálohy. Nebo vytvoříte velký souborový server v Azure pomocí úložných prostorů Windows.
+První metoda je dobře známá a používá se v mnoha případech i v místním světě. Ale ponechá vám úlohu pro řešení delšího umístění zálohy. Vzhledem k tomu, že nechcete uchovávat zálohy na 30 nebo více dní v místně připojené Azure Storage, je nutné buď použít služby Azure Backup nebo jiný nástroj pro zálohování a obnovení třetí strany, který zahrnuje správu přístupu a uchovávání informací pro vaše zálohy. Nebo můžete vytvořit rozsáhlý souborový server v Azure pomocí prostorů úložiště Windows.
 
-Druhá metoda je popsána blíže v článku [ZÁLOHOVÁNÍ serveru SQL Server na adresu URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017). Různé verze SQL Server mají některé varianty v této funkci. Proto byste měli rezervovat dokumentaci pro konkrétní kontrolu verze serveru SQL Server. Je důležité si uvědomit, že tento článek uvádí mnoho omezení. Máte buď možnost provést zálohování proti:
+Druhá metoda je popsána blíž v článku [SQL Server zálohování na adresu URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017). Různé verze SQL Server mají v této funkci nějaké odchylky. Proto byste měli rezervovat dokumentaci pro konkrétní SQL Server vydání. Je důležité si uvědomit, že v tomto článku jsou uvedena spousta omezení. Máte možnost provést zálohování proti:
 
-- Jeden objekt blob stránky Azure, který pak omezí velikost zálohy na 1000 GB. To také omezuje propustnost, kterou můžete dosáhnout.
-- Více (až 64) objektů BLOB bloku Azure, které umožňují teoretickou velikost zálohování 12 TB. Testy s databázemi zákazníků však odhalily, že maximální velikost zálohy může být menší než jeho teoretický limit. V takovém případě jste zodpovědní za správu uchovávání záloh a přístup o zálohy také.
+- Jeden objekt blob stránky Azure, který pak omezuje velikost zálohy na 1000 GB. Tím se také omezí propustnost, kterou můžete dosáhnout.
+- Vícenásobné (až 64) objekty blob bloku Azure, které umožňují teoretickou velikost zálohování na 12 TB. Testy se zákaznickými databázemi ale ukázaly, že maximální velikost zálohy může být menší než teoretická mez. V takovém případě zodpovídáte za správu uchovávání záloh a také přístupu k zálohám.
 
 
 ### <a name="automated-backup-for-sql-server"></a>Automatizovaná záloha pro SQL Server
-Automatické zálohování poskytuje službu automatického zálohování pro edice SQL Server Standard a Enterprise spuštěnou ve virtuálním počítači se systémem Windows v Azure. Tuto službu poskytuje [rozšíření agenta SQL Server IaaS](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension), které se automaticky instaluje na ibi virtuálních strojů SQL Server Windows na webu Azure Portal. Pokud nasadíte vlastní image operačního systému s nainstalovaným SQL Serverem, musíte nainstalovat rozšíření virtuálních zařízení samostatně. Nezbytné kroky jsou popsány v tomto [článku](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension).
+Automatizované zálohování poskytuje službu Automatické zálohování pro edice SQL Server Standard a Enterprise běžící na virtuálním počítači s Windows v Azure. Tuto službu poskytuje [rozšíření agenta SQL Server IaaS](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension), které se automaticky instaluje do SQL Server imagí virtuálních počítačů s Windows v Azure Portal. Pokud nasadíte vlastní image operačních systémů pomocí SQL Server nainstalovány, je nutné nainstalovat rozšíření virtuálního počítače samostatně. Postup je popsaný v tomto [článku](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension).
 
-Další podrobnosti o možnostech této metody naleznete v těchto článcích:
+Další podrobnosti o možnostech této metody najdete v těchto článcích:
 
-- SQL Server 2014: [Automatické zálohování pro virtuální počítače SQL Serveru 2014 (Správce prostředků)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup)
-- SQL Server 2016/2017: [Automatické zálohování v2 pro virtuální počítače Azure (Správce prostředků)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup-v2)
+- SQL Server 2014: [automatizované zálohování pro SQL Server 2014 Virtual Machines (Správce prostředků)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup)
+- SQL Server 2016/2017: [automatizované zálohování v2 pro Azure Virtual Machines (Správce prostředků)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup-v2)
 
-Při pohledu do dokumentace, uvidíte, že funkce s novější verze SQL Server lepší. Některé další podrobnosti o automatickém zálohování serveru SQL Server jsou vydány v článku [SQL Server Managed Backup to Microsoft Azure](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure?view=sql-server-2017). Teoretický limit velikosti zálohy je 12 TB.  Automatické zálohování může být dobrou metodou pro velikosti zálohování až 12 TB. Vzhledem k tomu, že více objektů BLOB jsou zapsány paralelně, můžete očekávat propustnost větší než 100 MB/s. 
+Podívejte se do dokumentace a podívejte se, že funkce s novějšími verzemi SQL Server vylepšila. Další podrobnosti o SQL Server automatizované zálohy jsou vydávány v článku [SQL Server spravované zálohování na Microsoft Azure](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure?view=sql-server-2017). Teoretické omezení velikosti zálohování je 12 TB.  Automatizované zálohování může být dobrou metodou pro velikosti zálohování až na 12 TB. Vzhledem k tomu, že je do paralelního zápisu více objektů blob, můžete očekávat propustnost větší než 100 MB/s. 
  
 
-### <a name="azure-backup-for-sql-server-vms"></a>Zálohování Azure pro virtuální počítače SQL Serveru
-Tato nová metoda zálohování SQL Serveru je nabízena od června 2018 jako veřejná předběžná verze služeb Azure Backup. Metoda zálohování SQL Serveru je stejná jako ostatní nástroje třetích stran, konkrétně rozhraní SQL Server VSS/VDI pro streamování záloh do cílového umístění. V tomto případě je cílovým umístěním trezor služby Azure Recovery Service.
+### <a name="azure-backup-for-sql-server-vms"></a>Azure Backup pro virtuální počítače s SQL Server
+Tato nová metoda SQL Server zálohování se nabízí jako verze Public Preview od června 2018 po Azure Backup Services. Metoda pro zálohování SQL Server je stejná jako u jiných nástrojů třetích stran, a to pomocí SQL Server rozhraní VSS/VDI streamování záloh do cílového umístění. V tomto případě je cílovým umístěním trezor služby Azure Recovery Services.
 
-Více než podrobný popis této metody zálohování, který přidává řadu výhod konfigurace centrální ho zálohování, monitorování a správy je k dispozici [zde](https://docs.microsoft.com/azure/backup/backup-azure-sql-database). 
-
-
-### <a name="third-party-backup-solutions"></a>Řešení zálohování jiných výrobců
-Pro celou řadu zákazníků SAP nebylo možné začít znovu a zavést kompletní nová řešení zálohování pro část jejich prostředí SAP, která běžela v Azure. V důsledku toho bylo potřeba použít a rozšířit existující řešení zálohování do Azure. Rozšíření stávajících řešení zálohování do Azure obvykle fungovalo dobře s většinou hlavních dodavatelů v tomto prostoru. 
+K dispozici je více než podrobný popis této metody zálohování, který přináší spoustu výhod centrálních záložních konfigurací, monitorování a správy, které jsou k dispozici [zde](https://docs.microsoft.com/azure/backup/backup-azure-sql-database). 
 
 
-## <a name="using-a-sql-server-image-out-of-the-microsoft-azure-marketplace"></a><a name="1b353e38-21b3-4310-aeb6-a77e7c8e81c8"></a>Použití bitové kopie serveru SQL Server mimo tržiště Microsoft Azure Marketplace
-Microsoft nabízí virtuální počítače na Azure Marketplace, které už obsahují verze SQL Serveru. Pro zákazníky SAP, kteří vyžadují licence pro SQL Server a Windows, použití těchto bitových kopií může být příležitost í tísním potřebou licencí tak, že se virtuální ms s sql serverem už nainstaluje. Aby bylo možné použít tyto obrázky pro SAP, je třeba provést následující úvahy:
+### <a name="third-party-backup-solutions"></a>Řešení zálohování třetích stran
+Pro naprosto celou řadu zákazníků SAP neexistovala možnost začít znovu a zavádět kompletní nová řešení zálohování pro součást SAP na platformě, která byla spuštěna v Azure. V důsledku toho se existující řešení zálohování potřebují použít a rozšířit do Azure. Rozšíření stávajících řešení pro zálohování do Azure se obvykle dobře osvědčilo s většinou hlavních dodavatelů v tomto prostoru. 
 
-* Verze SQL Server bez vyhodnocení získat vyšší náklady než "Windows pouze" virtuální počítač nasazený z Azure Marketplace. Viz tyto články porovnat <https://azure.microsoft.com/pricing/details/virtual-machines/windows/> <https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/>ceny: a . 
-* Můžete použít pouze SQL Server verze, které jsou podporovány SAP.
-* Řazení instance SQL Serveru, která je nainstalovaná ve virtuálních počítačích nabízených na webu Azure Marketplace, není řazení SAP NetWeaver vyžaduje spuštění instance SERVERU SQL Server. Můžete změnit řazení i když s pokyny v následující části.
 
-### <a name="changing-the-sql-server-collation-of-a-microsoft-windowssql-server-vm"></a>Změna řazení sql serveru virtuálního ms systému Microsoft Windows/SQL Server
-Vzhledem k tomu, že image SQL Serveru na Azure Marketplace nejsou nastaveny na řazení, což je vyžadováno aplikacemi SAP NetWeaver, je třeba je změnit ihned po nasazení. Pro SQL Server tuto změnu řazení lze provést pomocí následujících kroků, jakmile je virtuální modul nasazen a správce se může přihlásit k nasazenému virtuálnímu virtuálnímu mnásledujícím virtuálnímu jemu:
+## <a name="using-a-sql-server-image-out-of-the-microsoft-azure-marketplace"></a><a name="1b353e38-21b3-4310-aeb6-a77e7c8e81c8"></a>Použití bitové kopie SQL Server mimo Microsoft Azure Marketplace
+Microsoft nabízí virtuální počítače ve Azure Marketplace, které už obsahují verze SQL Server. Pro zákazníky SAP, kteří vyžadují licence pro SQL Server a Windows, může být použití těchto imagí příležitostí k povýšení potřeby licencí, a to vyvoláním virtuálních počítačů s SQL Server již nainstalovanými. Aby bylo možné používat takové obrázky pro SAP, je třeba provést následující:
 
-* Otevřete příkazové okno systému Windows jako správce.
-* Změňte adresář na C:\Program Files\Microsoft SQL Server\110\Setup Boottrap\SQLServer2012.
-* Spusťte příkaz Setup.exe /QUIET /ACTION=REBUILDDATABASE /INSTANCENAME=MSSQLSERVER /SQLSYSADMINACCOUNTS=`<local_admin_account_name`> /SQLCOLLATION=SQL_Latin1_General_Cp850_BIN2   
-  * `<local_admin_account_name`> je účet, který byl definován jako účet správce při prvním nasazení virtuálního počítačů prostřednictvím galerie.
+* Verze SQL Server bez vyhodnocení získají vyšší náklady než virtuální počítač, který je jenom Windows nasazený z Azure Marketplace. V těchto článcích můžete porovnat ceny: <https://azure.microsoft.com/pricing/details/virtual-machines/windows/> a <https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/>. 
+* Můžete použít jenom SQL Server verze, které SAP podporuje.
+* Kolace instance SQL Server, která je nainstalovaná ve virtuálních počítačích nabízených v Azure Marketplace, není kolace SAP NetWeaver vyžaduje spuštění instance SQL Server. Kolaci můžete změnit, i když s pokyny v následující části.
 
-Proces by měl trvat jen několik minut. Chcete-li se ujistit, zda krok skončil se správným výsledkem, proveďte následující kroky:
+### <a name="changing-the-sql-server-collation-of-a-microsoft-windowssql-server-vm"></a>Změna kolace SQL Server pro virtuální počítač se systémem Windows/SQL Server
+Vzhledem k tomu, že SQL Server imagí v Azure Marketplace nejsou nastavené tak, aby používaly kolaci, kterou vyžadují aplikace SAP NetWeaver, je nutné ji hned po nasazení změnit. V případě SQL Server můžete tuto změnu kolace provést pomocí následujících kroků, jakmile se virtuální počítač nasadí, a správce se může přihlásit k nasazenému virtuálnímu počítači:
+
+* Otevřete okno příkazového řádku systému Windows jako správce.
+* Změňte adresář na C:\Program Files\Microsoft SQL Server\110\Setup Bootstrap\SQLServer2012.
+* Spusťte příkaz: Setup. exe/QUIET za akci = REBUILDDATABASE/INSTANCENAME = MSSQLSERVER/SQLSYSADMINACCOUNTS =`<local_admin_account_name`>/SQLCOLLATION = SQL_Latin1_General_Cp850_BIN2   
+  * `<local_admin_account_name`> je účet, který byl definován jako účet správce při prvním nasazení virtuálního počítače pomocí galerie.
+
+Proces by měl trvat jen několik minut. Chcete-li se ujistit, zda byl krok dokončen se správným výsledkem, proveďte následující kroky:
 
 * Otevřete SQL Server Management Studio.
 * Otevřete okno dotazu.
-* Spusťte příkaz sp_helpsort v hlavní databázi serveru SQL Server.
+* Spusťte sp_helpsort příkazu v hlavní databázi SQL Server.
 
 Požadovaný výsledek by měl vypadat takto:
 
     Latin1-General, binary code point comparison sort for Unicode Data, SQL Server Sort Order 40 on Code Page 850 for non-Unicode Data
 
-Pokud je výsledek jiný, STOP nasazení SAP a zjistěte, proč příkaz nastavení nefunguje podle očekávání. Nasazení aplikací SAP NetWeaver na instanci SERVERU SQL Server s různými kódovými stránkami serveru SQL Server, než je uvedeno **výše, není** podporováno.
+Pokud je výsledek jiný, ukončete nasazení SAP a zjistěte, proč příkaz setup nefungoval podle očekávání. Nasazení aplikací SAP NetWeaver do instance SQL Server s jinou znakovou stránkou SQL Server, než je uvedená výše, **není** podporováno.
 
-## <a name="sql-server-high-availability-for-sap-in-azure"></a>Vysoká dostupnost SQL Serveru pro SAP v Azure
-Pomocí SQL Serveru v nasazení Azure IaaS pro SAP máte několik různých možností, jak přidat k nasazení vrstvy DBMS vysoce dostupné. Jak je popsáno v [úvahách o nasazení DBMS virtuálních počítačů Azure pro úlohy SAP](dbms_guide_general.md) již, Azure poskytuje různé služby SLA pro dostupnost jednoho virtuálního počítače a dvojice virtuálních počítačů nasazených v sadě dostupnosti Azure. Předpokladem je, že jedete směrem k up-time SLA pro vaše produkční nasazení, která vyžaduje nasazení v Azure Dostupnost Sady. V takovém případě je potřeba nasadit minimálně dva virtuální chody v takové sadě dostupnosti. Jeden virtuální virtuální modul spustí aktivní instanci serveru SQL Server. Druhý virtuální virtuální virtuální ms spustí pasivní instanci
+## <a name="sql-server-high-availability-for-sap-in-azure"></a>SQL Server vysoké dostupnosti pro SAP v Azure
+Pomocí SQL Server v nasazeních Azure IaaS pro SAP máte několik různých možností, jak přidat k nasazení vrstvy DBMS vysoce dostupné. Jak už bylo popsáno v tématu [požadavky na nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) , poskytuje Azure různé SLA pro jeden virtuální počítač a pár virtuálních počítačů nasazených v rámci skupiny dostupnosti Azure. Předpokladem je, že budete mít k dispozici aktuální smlouvu SLA pro nasazení v produkčním prostředí, která vyžadují nasazení v Azure Availability Sets. V takovém případě musíte nasadit minimálně dva virtuální počítače v takové skupině dostupnosti. V jednom virtuálním počítači se spustí instance Active SQL Server. Druhý virtuální počítač spustí pasivní instanci.
 
-### <a name="sql-server-clustering-using-windows-scale-out-file-server"></a>Clustering serveru SQL Server pomocí souborového serveru se škálovatcími velikostmi systému Windows
-Se systémem Windows Server 2016 společnost Microsoft zavedla [službu Storage Spaces Direct](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview). Na základě přímého nasazení prostorů úložiště je podporováno clustering FCI serveru SQL Server. Podrobnosti najdete v článku [Konfigurace instance clusteru s podporou převzetí služeb při selhání serveru SQL Server na virtuálních počítačích Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-create-failover-cluster). Řešení vyžaduje nástroj pro vyrovnávání zatížení Azure také pro řešení virtuální IP adresy prostředků clusteru. Databázové soubory serveru SQL Server jsou uloženy v prostorech úložiště. Proto je dané, že budete muset vybudovat prostory úložiště Windows založené na Azure Premium Storage. Vzhledem k tomu, že toto řešení bylo podporováno již příliš dlouho, neexistují žádné známé zákazníky SAP, kteří používají toto řešení ve scénářích výroby SAP.  
+### <a name="sql-server-clustering-using-windows-scale-out-file-server"></a>SQL Server clusteringu pomocí souborového serveru se škálováním na více systémů
+V systému Windows Server 2016 společnost Microsoft představila [prostory úložiště s přímým přístupem](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview). V závislosti na nasazení Prostory úložiště s přímým přístupem se podporuje clustering s podporou FCI SQL Server. Podrobnosti najdete v článku [konfigurace SQL Server instance clusteru s podporou převzetí služeb při selhání v Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-create-failover-cluster). Řešení vyžaduje nástroj pro vyrovnávání zatížení Azure a zabývat se virtuální IP adresou prostředků clusteru. Soubory databáze SQL Server jsou uloženy v prostorech úložiště. Je proto nutné, abyste mohli sestavit prostory úložiště Windows založené na Azure Premium Storage. Vzhledem k tomu, že toto řešení ještě není příliš dlouho podporované, nejsou známí zákazníci SAP, kteří používají toto řešení v produkčních scénářích SAP.  
 
-### <a name="sql-server-log-shipping"></a>Přesouvání protokolu serveru SQL Server
-Jednou z metod vysoké dostupnosti (HA) je sql server přesouvání protokolu. Pokud virtuální počítače účastnící se konfigurace HA mají pracovní překlad názvů, není žádný problém a nastavení v Azure se neliší od žádné nastavení, které se provádí místně. S ohledem na nastavení Log Shipping a zásady kolem log shipping. Podrobnosti o přesouvání protokolu serveru SQL Server lze nalézt v článku [o přesouvání protokolu (SQL Server)](https://docs.microsoft.com/sql/database-engine/log-shipping/about-log-shipping-sql-server?view=sql-server-2017).
+### <a name="sql-server-log-shipping"></a>Přenos protokolu SQL Server
+Jednou z metod vysoké dostupnosti (HA) je SQL Server přesouvání protokolu. Pokud virtuální počítače, které se podílejí na konfiguraci HA, mají překlad IP adres, nedochází k žádnému problému a nastavení v Azure se neliší od nastavení, které se provádí v místním prostředí. S ohledem na nastavení přesouvání protokolu a principů přesouvání protokolu. Podrobnosti o přenosu protokolu SQL Server najdete v článku [o přesouvání protokolu (SQL Server)](https://docs.microsoft.com/sql/database-engine/log-shipping/about-log-shipping-sql-server?view=sql-server-2017).
 
-Funkce přesouvání protokolu SQL Serveru se v Azure téměř nepoužívala k dosažení vysoké dostupnosti v rámci jedné oblasti Azure. V následujících scénářích však zákazníci SAP používali přesouvání protokolu úspěšné ve spojení s Azure:
+Funkce přenosu protokolu SQL Server se v Azure použila k dosažení vysoké dostupnosti v rámci jedné oblasti Azure. V následujících scénářích se ale zákazníci se systémem SAP používali při přesouvání protokolu ve spojení s Azure:
 
 - Scénáře zotavení po havárii z jedné oblasti Azure do jiné oblasti Azure
 - Konfigurace zotavení po havárii z místního prostředí do oblasti Azure
-- Přeškrtnout scénáře z místního do Azure. V těchto případech přesouvání protokolu se používá k synchronizaci nové nasazení DBMS v Azure s probíhající produkční systém v místním prostředí. V době přetečení je výroba ukončena a je zajištěno, že poslední a nejnovější zálohy transakčních protokolů byly přeneseny do nasazení Azure DBMS. Pak se otevře nasazení Azure DBMS pro produkční prostředí.  
+- Scénáře vyjmutí z místního prostředí do Azure. V těchto případech se přenos do protokolu používá k synchronizaci nového nasazení DBMS v Azure s probíhajícím provozním systémem v místním prostředí. V době rozmístění je výroba vypnutá a je zajištěná, že se poslední a poslední zálohy protokolu transakcí přenesly do nasazení Azure DBMS. Pak se nasazení Azure DBMS otevře v produkčním prostředí.  
 
 
 
 ### <a name="database-mirroring"></a>Zrcadlení databáze
-Zrcadlení databáze podporované SAP (viz SAP Poznámka [965908]) spoléhá na definování partnera s podporou převzetí služeb při selhání v připojovacím řetězci SAP. Pro případy mezi místními, předpokládáme, že dva virtuální počítače jsou ve stejné doméně a že kontext uživatele dvě instance SQL Server jsou spuštěny pod uživatelem domény také a mají dostatečná oprávnění ve dvou instancích SQL Server účastní. Proto nastavení zrcadlení databáze v Azure se neliší mezi typické místní nastavení nebo konfigurace.
+Zrcadlení databáze podle podpor SAP (viz SAP Note [965908]) spoléhá na definování partnerského serveru pro převzetí služeb při selhání v připojovacím řetězci SAP. U různých případů předpokládáme, že tyto dva virtuální počítače jsou ve stejné doméně a že SQL Server kontext uživatele jsou spuštěné v rámci uživatele domény a mají dostatečná oprávnění pro tyto dvě instance SQL Server. Proto se nastavení zrcadlení databáze v Azure neliší mezi typickou konfigurací místního nastavení nebo konfigurace.
 
-Od nasazení pouze v cloudu je nejjednodušší mít v Azure jiné nastavení domény, aby tyto virtuální počítače DBMS (a ideálně vyhrazené virtuální počítače SAP) byly v rámci jedné domény.
+Od nasazení jenom pro Cloud je nejjednodušší způsob, jak mít v Azure další nastavení domény, aby tyto virtuální počítače s DBMS (a ideálním vyhrazeným virtuálním počítačům SAP) v jedné doméně.
 
-Pokud doména není možná, můžete také použít certifikáty pro koncové body zrcadlení databáze, jak je popsáno zde:<https://docs.microsoft.com/sql/database-engine/database-mirroring/use-certificates-for-a-database-mirroring-endpoint-transact-sql>
+Pokud není doména možná, může použít taky certifikáty pro koncové body zrcadlení databáze, jak je popsáno zde:<https://docs.microsoft.com/sql/database-engine/database-mirroring/use-certificates-for-a-database-mirroring-endpoint-transact-sql>
 
-Kurz nastavení zrcadlení databáze v Azure najdete zde:<https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server> 
+Kurz nastavení zrcadlení databáze v Azure najdete tady:<https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server> 
 
 ### <a name="sql-server-always-on"></a>AlwaysOn SQL Serveru
-Jako vždy on je podporovánpro SAP místně (viz SAP Poznámka [1772688]), je podporována v kombinaci s SAP v Azure. Existují některé zvláštní aspekty týkající se nasazení naslouchací proces skupiny dostupnosti serveru SQL Server (nelze zaměňovat se sadou dostupnosti Azure) protože Azure v tomto okamžiku neumožňuje vytvoření objektu AD/DNS, jak je to možné místně. Proto některé různé kroky instalace jsou nezbytné k překonání konkrétní chování Azure.
+Stejně jako je podpora pro SAP místně podporovaná (viz článek SAP Note [1772688]), podporuje se v kombinaci s SAP v Azure. K nasazení naslouchacího procesu skupiny dostupnosti SQL Server (nemusíte se zaměňovat se skupinou dostupnosti Azure) dochází k nějakým zvláštním hlediskům, protože Azure v tuto chvíli neumožňuje vytvoření objektu AD/DNS, protože je možné ho použít místně. Proto je nutné provést některé jiné kroky instalace pro překonání konkrétního chování Azure.
 
-Některé aspekty pomocí naslouchací proces skupiny dostupnosti jsou:
+Některé okolnosti použití naslouchacího procesu skupiny dostupnosti:
 
-* Použití naslouchací proces skupiny dostupnosti je možné pouze s Windows Server 2012 nebo vyšší jako hostovaný operační systém virtuálního soudu. V systému Windows Server 2012 se musíte ujistit, že je tato oprava použita:<https://support.microsoft.com/kb/2854082> 
-* Pro systém Windows Server 2008 R2 tato oprava neexistuje a vždy zapnuto by bylo nutné použít stejným způsobem jako zrcadlení databáze zadáním partnera s podporou převzetí služeb při selhání v řetězci připojení (provedeno prostřednictvím parametru SAP default.pfl dbs/mss/server - viz SAP Note [965908]).
-* Při použití naslouchací proces skupiny dostupnosti musí být virtuální virtuální moduly připojeny k vyhrazenému vyvykladaču zatížení. Aby se zabránilo tomu, že Azure přiřazuje nové IP adresy v případech, kdy jsou oba virtuální počítače mimochodem vypnuty, měli byste přiřadit statické IP adresy síťovým rozhraním těchto virtuálních počítačů v konfiguraci Always On (definování statické IP adresy je popsáno v [tomto][virtual-networks-reserved-private-ip] článku)
-* Při vytváření konfigurace clusteru WSFC, kde cluster potřebuje přiřazenou speciální IP adresu, jsou vyžadovány speciální kroky, protože Azure s jeho aktuální funkcí by přiřadil názvu clusteru stejnou adresu IP jako uzel, na kterém je cluster vytvořen. To znamená, že je nutné provést ruční krok, aby bylo možné clusteru přiřadit jinou adresu IP.
-* Naslouchací proces skupiny dostupnosti se vytvoří v Azure s koncovými body TCP/IP, které jsou přiřazeny k virtuálním počítačům, na kterých běží primární a sekundární repliky skupiny Dostupnost.
-* Je možné, že je potřeba zabezpečit tyto koncové body pomocí aklů.
+* Pomocí naslouchacího procesu skupiny dostupnosti je možné používat jenom Windows Server 2012 nebo novější jako hostovaný operační systém virtuálního počítače. V případě systému Windows Server 2012 je nutné se ujistit, že je tato oprava použita:<https://support.microsoft.com/kb/2854082> 
+* V systému Windows Server 2008 R2 Tato oprava neexistuje a je možné ji vždy použít stejným způsobem jako zrcadlení databáze tím, že v řetězci připojení zadáte partnerský server pro převzetí služeb při selhání (provede se pomocí výchozího parametru SAP. pfl databáze/MSS/Server – viz SAP Note [965908]).
+* Při použití naslouchacího procesu skupiny dostupnosti musí být virtuální počítače databáze připojené k vyhrazené Load Balancer. Aby se zabránilo tomu, že Azure přiřadí nové IP adresy v případech, kdy se oba virtuální počítače vypínají, má jedna z nich přiřadit statické IP adresy k síťovým rozhraním těchto virtuálních počítačů v konfiguraci služby Always On (definování statické IP adresy je popsané v [tomto][virtual-networks-reserved-private-ip] článku).
+* Při sestavování konfigurace clusteru služby WSFC, kde cluster potřebuje speciální přiřazenou IP adresu, se vyžadují speciální kroky, protože Azure s jeho aktuální funkcí přiřadí stejný název clusteru jako uzel, ve kterém je cluster vytvořený. To znamená, že je potřeba provést ruční krok, který clusteru přiřadí jinou IP adresu.
+* Naslouchací proces skupiny dostupnosti se vytvoří v Azure s koncovými body TCP/IP, které jsou přiřazené k virtuálním počítačům s primární a sekundární replikou skupiny dostupnosti.
+* Je možné, že tyto koncové body budete muset zabezpečit pomocí seznamů ACL.
 
-Podrobná dokumentace k nasazení always on s SQL Server v seznamech virtuálních počítačích Azure, jako jsou:
+Podrobná dokumentace k nasazení Always On s SQL Server v seznamech virtuálních počítačů Azure:
 
-- [Představujeme skupiny dostupnosti SQL Server always on na virtuálních počítačích Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview).
-- [Nakonfigurujte skupinu dostupnosti vždy na virtuálních počítačích Azure v různých oblastech](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-dr).
-- [Konfigurace provyrovnávání zatížení pro skupinu dostupnosti always on v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener).
+- [Představujeme SQL Server skupiny dostupnosti Always On na virtuálních počítačích Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview).
+- [Nakonfigurujte skupinu dostupnosti Always On na virtuálních počítačích Azure v různých oblastech](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-dr).
+- [Nakonfigurujte nástroj pro vyrovnávání zatížení pro skupinu dostupnosti Always On v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener).
 
 >[!NOTE]
-> Pokud konfigurujete nástroj pro vyrovnávání zatížení Azure pro virtuální IP adresu naslouchací proces skupiny dostupnosti, ujistěte se, že je nakonfigurovaný DirectServerReturn. konfigurace této možnosti sníží latenci síťové odezvy mezi aplikační vrstvou SAP a vrstvou DBMS. 
+> Pokud konfigurujete Nástroj pro vyrovnávání zatížení Azure pro virtuální IP adresu naslouchacího procesu skupiny dostupnosti, ujistěte se, že je DirectServerReturn nakonfigurovaný. konfigurace této možnosti omezí latenci odezvy sítě mezi aplikační vrstvou SAP a vrstvou DBMS. 
 
-SQL Server Always On je nejběžnější používaná funkce vysoké dostupnosti a zotavení po havárii používaná v nasazení úloh Azure pro SAP. Většina zákazníků používá always on pro vysokou dostupnost v rámci jedné oblasti Azure. Pokud je nasazení omezeno pouze na dva uzly, máte dvě možnosti připojení:
+V případě nasazení úloh SAP v Azure je funkce Always On SQL Server k dispozici nejčastěji používané funkci vysoké dostupnosti a zotavení po havárii. Většina zákazníků používá pro vysokou dostupnost v rámci jedné oblasti Azure vždycky zapnuté. Pokud je nasazení omezené jenom na dva uzly, máte k dispozici dvě možnosti připojení:
 
-- Pomocí naslouchací proces skupiny dostupnosti. S naslouchací proces skupiny dostupnosti, musíte nasadit azure vyrovnávání zatížení. Obvykle se jedná o výchozí metodu nasazení. Aplikace SAP by byly nakonfigurovány tak, aby se připojovaly k naslouchací proces skupiny dostupnosti a nikoli k jednomu uzlu.
-- Použití parametrů připojení sql server zrcadlení databáze. V takovém případě je třeba nakonfigurovat připojení aplikací SAP způsobem, kde jsou pojmenovány oba názvy uzlů. Přesné podrobnosti o takové konfiguraci na straně SAP jsou popsány v SAP Note [#965908](https://launchpad.support.sap.com/#/notes/965908). Pomocí této možnosti byste nemuseli konfigurovat naslouchací proces skupiny dostupnosti. A s tím žádný Azure nástroje pro vyrovnávání zatížení pro SQL Server vysokou dostupnost. V důsledku toho je latence sítě mezi aplikační vrstvou SAP a vrstvou DBMS nižší, protože příchozí provoz na instanci serveru SQL Server není směrován prostřednictvím nástroje pro vyrovnávání zatížení Azure. Ale odvolání, tato možnost funguje pouze v případě, že omezíte skupinu dostupnosti na dvě instance. 
+- Pomocí naslouchacího procesu skupiny dostupnosti. Pomocí naslouchacího procesu skupiny dostupnosti je nutné nasadit nástroj Azure Load Balancer. To je obvykle výchozí metoda nasazení. Aplikace SAP by se nakonfigurovaly tak, aby se připojovaly k naslouchacímu procesu skupiny dostupnosti, a ne k jednomu uzlu.
+- Použití parametrů připojení SQL Server zrcadlení databáze. V takovém případě je třeba nakonfigurovat připojení aplikací SAP tak, aby názvy obou uzlů byly pojmenovány. Přesné podrobnosti o takové konfiguraci na straně SAP jsou popsány v části SAP Note [#965908](https://launchpad.support.sap.com/#/notes/965908). Pomocí této možnosti nemusíte konfigurovat naslouchací proces skupiny dostupnosti. A s tím, že žádný nástroj pro vyrovnávání zatížení Azure pro SQL Server vysokou dostupnost. V důsledku toho je latence sítě mezi aplikační vrstvou SAP a vrstvou DBMS nižší, protože příchozí provoz do instance SQL Server není směrován prostřednictvím nástroje pro vyrovnávání zatížení Azure. Ale odvolání této možnosti funguje jenom v případě, že omezíte skupinu dostupnosti tak, aby zahrnovala dvě instance. 
 
-Poměrně málo zákazníků využívá funkci SQL Server Always On pro další funkce zotavení po havárii mezi oblastmi Azure. Několik zákazníků také využívá možnost provádět zálohy ze sekundární repliky. 
+Mnoho zákazníků využívá funkci SQL Server Always On pro další funkce zotavení po havárii mezi oblastmi Azure. Několik zákazníků používá také možnost provádět zálohy ze sekundární repliky. 
 
-## <a name="sql-server-transparent-data-encryption"></a>Transparentní šifrování dat serveru SQL Server
-Existuje řada zákazníků, kteří používají SQL Server [transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) při nasazování jejich DATABÁZE SAP SQL Server v Azure. Funkce SQL Server TDE je plně podporována SAP (viz SAP Note [#1380493](https://launchpad.support.sap.com/#/notes/1380493)). 
+## <a name="sql-server-transparent-data-encryption"></a>SQL Server transparentní šifrování dat
+Při nasazování svých databází SAP SQL Server v Azure je k dispozici řada zákazníků, kteří používají SQL Server [transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) . Funkce SQL Server TDE je plně podporovaná pomocí SAP (viz poznámka k SAP [#1380493](https://launchpad.support.sap.com/#/notes/1380493)). 
 
-### <a name="applying-sql-server-tde"></a>Použití tde serveru SQL Server
-V případech, kdy provedete heterogenní migraci z jiného systému DBMS, který běží místně, do systému Windows/SQL Server spuštěný v Azure, měli byste předem vytvořit prázdnou cílovou databázi na serveru SQL Server. Jako další krok byste použít SQL Server TDE funkce. I když stále běží váš produkční systém v místním prostředí. Důvod, který chcete provést v tomto pořadí je, že proces šifrování prázdné databáze může trvat poměrně dlouho. Procesy importu SAP by pak importovat data do šifrované databáze během fáze prostojů. Režie importu do šifrované databáze má mnohem nižší časový dopad než šifrování databáze po fázi exportu v časové fázi mezičasy. Negativní prostředí, kde se při pokusu o použití TDE s úlohou SAP spuštěné v horní části databáze. Proto doporučení je považován za nasazení TDE jako aktivitu, která je třeba provést bez úlohy SAP v konkrétní databázi.
+### <a name="applying-sql-server-tde"></a>Použití SQL Server TDE
+V případech, kdy provedete heterogenní migraci z jiného systému DBMS, spuštěného v místním prostředí, na Windows/SQL Server běžící v Azure, byste měli svou prázdnou cílovou databázi vytvořit v SQL Server před časem. Jako další krok byste použili SQL Server funkce TDE. I když stále pracujete v místním produkčním systému. Důvod, který chcete v této sekvenci provést, je, že proces šifrování prázdné databáze může trvat poměrně. Procesy importu SAP pak naimportují data do šifrované databáze během fáze výpadku. Režie importování do šifrované databáze má za následek kratší dobu než šifrování databáze po fázi exportu v časové fázi. V případě, že došlo k pokusu o použití TDE s úlohou SAP běžícími nad databází, se zobrazí negativní zkušenosti. Proto doporučení zpracovává nasazení TDE jako aktivity, kterou je třeba provést bez úlohy SAP v konkrétní databázi.
 
-V případech, kdy přesunete databáze SAP SQL Server z místního do Azure, doporučujeme testování, na které infrastruktuře můžete získat šifrování použít nejrychleji. Za tímto skutečností mějte na paměti tyto skutečnosti:
+V případech, kdy přesunete databáze SAP SQL Server z místního prostředí do Azure, doporučujeme, abyste provedli testování infrastruktury, kterou můžete použít k nejrychlejšímu šifrování. V takovém případě mějte na paměti tyto skutečnosti:
 
-- Nelze definovat, kolik podprocesů se používá k použití šifrování dat v databázi. Počet podprocesů je převážně závislý na počtu diskových svazků, přes které jsou distribuována data serveru SQL Server a soubory protokolu. Znamená, že čím zřetelnější svazky (písmena jednotek), tím více vláken bude paralelně zapojeno k provedení šifrování. Taková konfigurace je trochu v rozporu s dřívějšínávrh konfigurace disku na vytváření jednoho nebo menší počet prostorů úložiště pro soubory databáze SQL Server ve virtuálních počítačích Azure. Konfigurace s malým počtem svazků by vedla k malému počtu vláken provádějících šifrování. Jedno vlákno šifrování je čtení 64KB rozsahy, šifruje a pak zapsat záznam do souboru protokolu transakcí, říká, že rozsah dostal zašifrována. V důsledku toho je zatížení transakční protokol je mírné.
-- Ve starších verzích serveru SQL Server se komprese záloh již nezefektivňovala při šifrování databáze serveru SQL Server. Toto chování může vyvinout do problému, když váš plán byl šifrovat databázi SQL Server místně a pak zkopírovat zálohu do Azure k obnovení databáze v Azure. Komprese zálohování sql serveru obvykle dosahuje kompresního poměru faktoru 4.
-- S SQL Server 2016, SQL Server představil nové funkce, které umožňuje kompresi šifrované databáze i efektivním způsobem. Viz [tento blogy](https://blogs.msdn.microsoft.com/sqlcat/2016/06/20/sqlsweet16-episode-1-backup-compression-for-tde-enabled-databases/) pro některé podrobnosti.
+- Nelze definovat, kolik vláken se používá k aplikování šifrování dat do databáze. Počet vláken je v nejvyšší části závislý na počtu diskových svazků, při kterých se SQL Server data a soubory protokolu rozdělují. Znamená více různých svazků (písmena jednotek), další vlákna budou zacházet paralelně, aby provedla šifrování. Taková konfigurace je v konfliktu s dřívějším návrhem konfigurace disku při vytváření jednoho nebo menšího počtu prostorů úložiště pro SQL Server databázových souborů na virtuálních počítačích Azure. Konfigurace s malým počtem svazků by vedla k malému počtu vláken, která spouští šifrování. Šifrování jednoho vlákna čte rozsahy 64 KB, zašifruje ho a pak zapíše záznam do souboru protokolu transakcí a oznámí, že rozsah je zašifrovaný. V důsledku toho je zatížení protokolu transakcí střední.
+- Ve starších verzích SQL Server se komprese záloh nedostala už při šifrování databáze SQL Server. Toto chování může vyvíjet problém, když se vašemu plánu zašifroval vaše databáze SQL Server místně, a pak zkopírujete zálohu do Azure a obnovíte databázi v Azure. Komprese SQL Server Backup obvykle dosahuje kompresního poměru v faktoru 4.
+- S SQL Server 2016 SQL Server zavedeny nové funkce, které umožňují efektivně komprimovat šifrované databáze. Některé podrobnosti najdete v [tomto blogu](https://blogs.msdn.microsoft.com/sqlcat/2016/06/20/sqlsweet16-episode-1-backup-compression-for-tde-enabled-databases/) .
  
-Při práci s aplikací šifrování TDE pouze s ne až malou úlohou SAP byste měli v konkrétní konfiguraci otestovat, jestli je lepší použít TDE v místní databázi SAP nebo v Azure. V Azure máte určitě větší flexibilitu, pokud jde o infrastrukturu nadměrného zřizování a zmenšit infrastrukturu po použití TDE.
+Zpracovává se aplikace šifrování TDE bez jenom malých úloh SAP. měli byste testovat v konkrétní konfiguraci na to, jestli je lepší použít TDE pro místní databázi SAP nebo to udělat v Azure. V Azure máte jistě větší flexibilitu při zřizování infrastruktury a po TDE použití zmenšíte infrastrukturu.
 
-### <a name="using-azure-key-vault"></a>Použití trezoru klíčů Azure
-Azure nabízí službu [trezoru klíčů](https://azure.microsoft.com/services/key-vault/) pro ukládání šifrovacích klíčů. SQL Server na druhé straně nabízejí konektor pro využití Azure Key Vault jako úložiště pro certifikáty TDE.
+### <a name="using-azure-key-vault"></a>Použití Azure Key Vault
+Azure nabízí službu [Key Vault](https://azure.microsoft.com/services/key-vault/) pro ukládání šifrovacích klíčů. SQL Server na druhé straně nabízí konektor pro využití Azure Key Vault jako úložiště pro certifikáty TDE.
 
-Další podrobnosti pro použití Azure Key Vault pro SQL Server TDE seznamy, jako jsou:
+Další podrobnosti o použití Azure Key Vault pro SQL Server TDE seznamy jako:
 
-- [Rozšiřitelná správa klíčů pomocí trezoru klíčů Azure (SQL Server)](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server?view=sql-server-2017).
-- [Sql Server TDE Rozšiřitelná správa klíčů pomocí trezoru klíčů Azure - kroky nastavení](https://docs.microsoft.com/sql/relational-databases/security/encryption/setup-steps-for-extensible-key-management-using-the-azure-key-vault?view=sql-server-2017).
-- [Řešení potíží s implementačním & údržby konektoru SQL Server](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-connector-maintenance-troubleshooting?view=sql-server-2017).
-- [Další otázky od zákazníků o sql server transparentní šifrování dat – TDE + Trezor klíčů Azure](https://blogs.msdn.microsoft.com/saponsqlserver/2017/04/04/more-questions-from-customers-about-sql-server-transparent-data-encryption-tde-azure-key-vault/).
+- [Rozšiřitelná Správa klíčů pomocí Azure Key Vault (SQL Server)](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server?view=sql-server-2017).
+- [SQL Server TDE rozšiřitelná Správa klíčů s použitím kroků Azure Key Vault-Setup](https://docs.microsoft.com/sql/relational-databases/security/encryption/setup-steps-for-extensible-key-management-using-the-azure-key-vault?view=sql-server-2017).
+- [Řešení potíží s Konektor SQL Serveru &](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-connector-maintenance-troubleshooting?view=sql-server-2017).
+- [Další otázky od zákazníků o SQL Server transparentní šifrování dat – TDE + Azure Key Vault](https://blogs.msdn.microsoft.com/saponsqlserver/2017/04/04/more-questions-from-customers-about-sql-server-transparent-data-encryption-tde-azure-key-vault/).
 
 
 >[!IMPORTANT]
->Pomocí SQL Server TDE, zejména s Azure key Vault, se doporučuje používat nejnovější opravy SQL Server 2014, SQL Server 2016 a SQL Server 2017. Důvodem je, že na základě zpětné vazby od zákazníků, optimalizace a opravy dostal použít na kód. Jako příklad můžete například zkontrolovat [#4058175 KBA](https://support.microsoft.com/help/4058175/tde-enabled-backup-and-restore-slow-if-encryption-key-is-stored-in-ekm).
+>Pomocí SQL Server TDE, zejména s trezorem klíčů Azure, se doporučuje použít nejnovější opravy SQL Server 2014, SQL Server 2016 a SQL Server 2017. Důvodem je, že na základě zpětné vazby od zákazníků byly pro kód aplikovány optimalizace a opravy. Podívejte se například na [KBA #4058175](https://support.microsoft.com/help/4058175/tde-enabled-backup-and-restore-slow-if-encryption-key-is-stored-in-ekm).
 >  
 
-## <a name="general-sql-server-for-sap-on-azure-summary"></a><a name="9053f720-6f3b-4483-904d-15dc54141e30"></a>Obecný SQL Server pro SAP v souhrnu Azure
-V této příručce je mnoho doporučení a doporučujeme, abyste si ji před plánováním nasazení Azure přečetli více než jednou. Obecně však nezapomeňte dodržovat nejvyšší obecné DBMS na doporučení specifická pro Azure:
+## <a name="general-sql-server-for-sap-on-azure-summary"></a><a name="9053f720-6f3b-4483-904d-15dc54141e30"></a>Obecné SQL Server pro SAP v Azure – souhrn
+V této příručce máte spoustu doporučení a před plánováním nasazení Azure doporučujeme si ho přečíst víckrát než jednou. Obecně platí, že byste ale měli postupovat podle nejdůležitějšího obecného systému DBMS na doporučení specifických pro Azure:
 
-1. Použijte nejnovější verzi DBMS, jako je SQL Server 2017, která má v Azure nejvíce výhod. 
-2. Pečlivě naplánujte prostředí systému SAP v Azure, abyste vyvážili rozložení datových souborů a omezení Azure:
-   * Nemáte příliš mnoho disků, ale mají dost, aby zajistily, že můžete dosáhnout požadované viops.
-   * Pokud spravované disky nepoužíváte, nezapomeňte, že viopy jsou také omezené na účet úložiště Azure a že účty úložiště jsou omezené v rámci každého předplatného Azure ([další podrobnosti).][azure-resource-manager/management/azure-subscription-service-limits] 
-   * Prokládejte se na příčce disků pouze v případě, že potřebujete dosáhnout vyšší propustnosti.
-3. Nikdy neinstalujte software ani nevkládejte žádné soubory, které vyžadují trvalost na d:\ disk, jak to je non-trvalé a nic na této jednotce je ztracena při restartu systému Windows.
-4. Nepoužívejte ukládání disku do mezipaměti pro Azure Standard Storage.
-5. Nepoužívejte azure geograficky replikované účty Azure Standard Storage.  Použití místně redundantní pro úlohy DBMS.
-6. K replikaci databázových dat použijte řešení HA/DR dodavatele DBMS.
-7. Vždy používejte překlad názvů, nespoléhejte se na IP adresy.
-8. Pomocí SQL Server TDE, použít nejnovější opravy SQL Server.
+1. Použijte nejnovější verzi systému DBMS, například SQL Server 2017, která má nejvíc výhod v Azure. 
+2. Pečlivě Naplánujte systém SAP na šířku v Azure, abyste si vyrovnali rozložení datových souborů a omezení Azure:
+   * Nemáte příliš mnoho disků, ale stačí, abyste se ujistili, že budete mít přístup k požadovaným IOPS.
+   * Pokud nepoužíváte Managed Disks, pamatujte na to, že IOPS jsou taky omezené na účet Azure Storage a že účty úložiště jsou omezené v rámci každého předplatného Azure ([Další podrobnosti][azure-resource-manager/management/azure-subscription-service-limits]). 
+   * Rozkládat na disky jenom v případě, že potřebujete dosáhnout vyšší propustnosti.
+3. Nikdy neinstalujte software ani neumísťujte žádné soubory, které vyžadují trvalost na D:\. jednotka, protože je netrvalá a cokoli na této jednotce se při restartování Windows ztratí.
+4. Nepoužívejte ukládání disku do mezipaměti pro službu Azure Storage úrovně Standard.
+5. Nepoužívejte Azure geograficky replikované účty úložiště Azure úrovně Standard.  Pro úlohy DBMS použijte místně redundantní.
+6. K replikaci dat databáze použijte řešení HA/DR od dodavatele DBMS.
+7. Vždy používejte překlad adres IP, nespoléhejte na IP adresy.
+8. Pomocí SQL Server TDE použijte nejnovější SQL Server opravy.
 9. Použijte nejvyšší možnou kompresi databáze. Což je komprese stránky pro SQL Server.
-10. Buďte opatrní při používání ibi sql serveru z Azure Marketplace. Pokud používáte SQL Server jeden, musíte změnit shromažďování instancí před instalací jakéhokoli systému SAP NetWeaver na něj.
+10. Pomocí SQL Serverch imagí z Azure Marketplace buďte opatrní. Použijete-li SQL Server jeden, je nutné před instalací jakéhokoli systému SAP NetWeaver změnit kolaci instance.
 11. Nainstalujte a nakonfigurujte monitorování hostitele SAP pro Azure, jak je popsáno v [Průvodci nasazením][deployment-guide].

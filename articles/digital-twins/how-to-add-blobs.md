@@ -1,6 +1,6 @@
 ---
-title: Jak přidat objekty BLOB k objektům – Azure Digital Twins | Dokumenty společnosti Microsoft
-description: Zjistěte, jak přidat objekty BLOB uživatelům, zařízením a prostorům v Azure Digital Twins.
+title: Jak přidat objekty blob do objektů – digitální vlákna Azure | Microsoft Docs
+description: Naučte se přidávat objekty blob do uživatelů, zařízení a mezer do digitálních vláken Azure.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -10,35 +10,35 @@ ms.topic: conceptual
 ms.date: 01/10/2020
 ms.custom: seodec18
 ms.openlocfilehash: c85db05e6feeea43023c2391998f837348caed4e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75929656"
 ---
-# <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Přidání objektů BLOB k objektům v Azure Digital Twins
+# <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Přidávání objektů blob do objektů v digitálních proobjektech Azure
 
-Objekty BLOB jsou nestrukturované reprezentace běžných typů souborů, jako jsou obrázky a protokoly. Objekty BLOB sledují, jaký druh dat představují pomocí typu MIME (například "image/jpeg") a metadat (název, popis, typ a tak dále).
+Objekty blob jsou nestrukturované reprezentace běžných typů souborů, jako jsou obrázky a protokoly. Objekty blob sledují druh dat, která představují, pomocí typu MIME (například image/jpeg) a metadata (název, popis, typ a tak dále).
 
-Azure Digital Twins podporuje připojení objektů BLOB k zařízením, prostorům a uživatelům. Objekty BLOB mohou představovat profilový obrázek pro uživatele, fotografii zařízení, video, mapu, zip firmwaru, data JSON, protokol atd.
+Digitální vlákna Azure podporuje připojení objektů BLOB k zařízením, prostorům a uživatelům. Objekty blob mohou představovat profilový obrázek pro uživatele, fotografii zařízení, video, mapu, zip firmwaru, data JSON, protokol atd.
 
 [!INCLUDE [Digital Twins Management API familiarity](../../includes/digital-twins-familiarity.md)]
 
 ## <a name="uploading-blobs-overview"></a>Přehled nahrávání objektů BLOB
 
-Vícedílné požadavky můžete použít k nahrání objektů BLOB do konkrétních koncových bodů a jejich příslušných funkcí.
+Pro nahrání objektů blob do konkrétních koncových bodů a jejich příslušných funkcí můžete použít požadavky na více částí.
 
 [!INCLUDE [Digital Twins multipart requests](../../includes/digital-twins-multipart.md)]
 
-### <a name="blob-metadata"></a>Metadata objektu blob
+### <a name="blob-metadata"></a>Metadata objektu BLOB
 
-Kromě **typu obsahu** a **content-dispozice**, Azure Digital Twins blob vícedílné požadavky musí určit správné tělo JSON. Které tělo JSON odeslat závisí na druhu operace požadavku HTTP, která se provádí.
+Kromě **obsahu Content-Type** a **Content-Disposition**musí požadavky na objekt BLOB s objekty BLOB v rámci služby Azure Digital requests zadat správný text JSON. Který text JSON pro odeslání závisí na typu operace požadavku HTTP, kterou provádíte.
 
-Čtyři hlavní schémata JSON jsou:
+Existují čtyři hlavní schémata JSON:
 
 [![Schémata JSON](media/how-to-add-blobs/blob-models-swagger-img.png)](media/how-to-add-blobs/blob-models-swagger-img.png#lightbox)
 
-Metadata objektů blob JSON odpovídají následujícímu modelu:
+Metadata objektu BLOB JSON odpovídají následujícímu modelu:
 
 ```JSON
 {
@@ -53,26 +53,26 @@ Metadata objektů blob JSON odpovídají následujícímu modelu:
 
 | Atribut | Typ | Popis |
 | --- | --- | --- |
-| **Parentid** | Řetězec | Nadřazená entita, ke které chcete přidružit objekt blob (mezery, zařízení nebo uživatele) |
-| **Jméno** |Řetězec | Jméno pro blob vhodné pro člověka |
-| **Typ** | Řetězec | Typ objektu blob - nelze použít *typ* a *typeId*  |
-| **Typeid** | Integer | ID typu objektu blob - nelze použít *typ* a *id typu* |
-| **Podtypu** | Řetězec | Podtyp objektu blob - nelze použít *podtyp* a *podtypId* |
-| **podtypId** | Integer | ID podtypu pro objekt blob – nelze použít *podtyp* a *podtypId* |
-| **Popis** | Řetězec | Přizpůsobený popis objektu blob |
-| **Sdílení** | Řetězec | Zda lze objekt blob sdílet`None`– `Tree` `Global`výčt [ , ], ] |
+| **parentId** | Řetězec | Nadřazená entita k přidružení objektu BLOB k (prostorům, zařízením nebo uživatelům) |
+| **Jméno** |Řetězec | Uživatelsky přívětivý název objektu BLOB |
+| **textový** | Řetězec | Typ objektu BLOB – nejde použít *typ* a *typeId* .  |
+| **typeId** | Integer | ID typu objektu BLOB – nelze použít *typ* a *typeId* |
+| **podtyp** | Řetězec | Podtyp objektu BLOB – nelze použít *podtyp* a *subtypeId* |
+| **subtypeId** | Integer | ID podtypu objektu BLOB – nejde použít *podtype* a *subtypeId* . |
+| **název** | Řetězec | Přizpůsobený popis objektu BLOB |
+| **sdílení** | Řetězec | Zda je možné objekt BLOB sdílet-enum [`None`, `Tree`, `Global`] |
 
-Metadata objektů blob se vždy zadávají jako první `.json` blok s **typem obsahu** `application/json` nebo jako soubor. Data souboru jsou dodávána v druhém bloku dat a mohou být libovolného podporovaného typu MIME.
+Metadata objektů BLOB jsou vždycky dodávána jako první blok s **typem** `application/json` obsahu nebo jako `.json` soubor. Data souborů se dodávají ve druhém bloku a můžou být z libovolného podporovaného typu MIME.
 
-Swagger dokumentace popisuje tyto schémata modelu v plném rozsahu.
+Dokumentace Swagger popisuje tato schémata modelů podrobněji.
 
 [!INCLUDE [Digital Twins Swagger](../../includes/digital-twins-swagger.md)]
 
-Informace o používání referenční dokumentace načtete [Jak používat Swagger](./how-to-use-swagger.md).
+Přečtěte si, jak používat referenční dokumentaci, jak si můžete přečíst v tématu [použití Swagger](./how-to-use-swagger.md).
 
-### <a name="blobs-response-data"></a>Data odpovědi objektů Blob
+### <a name="blobs-response-data"></a>Data odpovědí objektů BLOB
 
-Jednotlivě vrácené objekty BLOB odpovídají následujícímu schématu JSON:
+Objekty blob vrácené jednotlivě v souladu s následujícím schématem JSON:
 
 ```JSON
 {
@@ -108,32 +108,32 @@ Jednotlivě vrácené objekty BLOB odpovídají následujícímu schématu JSON:
 
 | Atribut | Typ | Popis |
 | --- | --- | --- |
-| **Id** | Řetězec | Jedinečný identifikátor objektu blob |
-| **Jméno** |Řetězec | Jméno pro blob vhodné pro člověka |
-| **Parentid** | Řetězec | Nadřazená entita, ke které chcete přidružit objekt blob (mezery, zařízení nebo uživatele) |
-| **Typ** | Řetězec | Typ objektu blob - nelze použít *typ* a *typeId*  |
-| **Typeid** | Integer | ID typu objektu blob - nelze použít *typ* a *id typu* |
-| **Podtypu** | Řetězec | Podtyp objektu blob - nelze použít *podtyp* a *podtypId* |
-| **podtypId** | Integer | ID podtypu pro objekt blob – nelze použít *podtyp* a *podtypId* |
-| **Sdílení** | Řetězec | Zda lze objekt blob sdílet`None`– `Tree` `Global`výčt [ , ], ] |
-| **Popis** | Řetězec | Přizpůsobený popis objektu blob |
-| **contentInfos** | Pole | Určuje nestrukturované informace o metadatech včetně verze. |
-| **Celéjméno** | Řetězec | Úplný název objektu blob |
+| **účet** | Řetězec | Jedinečný identifikátor objektu BLOB |
+| **Jméno** |Řetězec | Uživatelsky přívětivý název objektu BLOB |
+| **parentId** | Řetězec | Nadřazená entita k přidružení objektu BLOB k (prostorům, zařízením nebo uživatelům) |
+| **textový** | Řetězec | Typ objektu BLOB – nejde použít *typ* a *typeId* .  |
+| **typeId** | Integer | ID typu objektu BLOB – nelze použít *typ* a *typeId* |
+| **podtyp** | Řetězec | Podtyp objektu BLOB – nelze použít *podtyp* a *subtypeId* |
+| **subtypeId** | Integer | ID podtypu objektu BLOB – nejde použít *podtype* a *subtypeId* . |
+| **sdílení** | Řetězec | Zda je možné objekt BLOB sdílet-enum [`None`, `Tree`, `Global`] |
+| **název** | Řetězec | Přizpůsobený popis objektu BLOB |
+| **contentInfos** | Pole | Určuje informace o nestrukturovaných metadatech včetně verze |
+| **fullName** | Řetězec | Úplný název objektu BLOB |
 | **spacePaths** | Řetězec | Cesta k prostoru |
 
-Metadata objektů blob se vždy zadávají jako první `.json` blok s **typem obsahu** `application/json` nebo jako soubor. Data souboru jsou dodávána v druhém bloku dat a mohou být libovolného podporovaného typu MIME.
+Metadata objektů BLOB jsou vždycky dodávána jako první blok s **typem** `application/json` obsahu nebo jako `.json` soubor. Data souborů se dodávají ve druhém bloku a můžou být z libovolného podporovaného typu MIME.
 
-### <a name="blob-multipart-request-examples"></a>Příklady vícedílných požadavků objektů Blob
+### <a name="blob-multipart-request-examples"></a>Příklady požadavků objektu BLOB multipart
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-Chcete-li nahrát textový soubor jako objekt blob a přidružit jej k prostoru, vytvořte ověřený požadavek HTTP POST na:
+Pokud chcete nahrát textový soubor jako objekt BLOB a přidružit ho k prostoru, proveďte ověřený požadavek HTTP POST na:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/spaces/blobs
 ```
 
-S následujícím tělem:
+S následujícím textem:
 
 ```plaintext
 --USER_DEFINED_BOUNDARY
@@ -159,9 +159,9 @@ This is my blob content. In this case, some text, but I could also be uploading 
 
 | Hodnota | Nahradit hodnotou |
 | --- | --- |
-| USER_DEFINED_BOUNDARY | Název hranice vícedílného obsahu |
+| USER_DEFINED_BOUNDARY | Název hranice obsahu s více částmi |
 
-Následující kód je implementace .NET stejného nahrávání objektů blob pomocí třídy [MultipartFormDataContent](https://docs.microsoft.com/dotnet/api/system.net.http.multipartformdatacontent):
+Následující kód je implementace rozhraní .NET stejného nahrávání objektů BLOB pomocí třídy [MultipartFormDataContent](https://docs.microsoft.com/dotnet/api/system.net.http.multipartformdatacontent):
 
 ```csharp
 //Supply your metadata in a suitable format
@@ -179,7 +179,7 @@ multipartContent.Add(fileContents, "contents");
 var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 ```
 
-Nakonec mohou uživatelé [cURL](https://curl.haxx.se/) vytvářet vícedílné žádosti o formuláře stejným způsobem:
+Od [sebe mohou vzdálení uživatelé provádět](https://curl.haxx.se/) stejným způsobem jako požadavky na formulář v několika částech:
 
 ```bash
 curl -X POST "YOUR_MANAGEMENT_API_URL/spaces/blobs" \
@@ -192,25 +192,25 @@ curl -X POST "YOUR_MANAGEMENT_API_URL/spaces/blobs" \
 
 | Hodnota | Nahradit hodnotou |
 | --- | --- |
-| YOUR_TOKEN | Váš platný token OAuth 2.0 |
-| YOUR_SPACE_ID | ID prostoru pro přidružení objektu blob k objektu blob |
+| YOUR_TOKEN | Váš platný token OAuth 2,0 |
+| YOUR_SPACE_ID | ID prostoru, ke kterému se má objekt BLOB přidružit |
 | PATH_TO_FILE | Cesta k textovému souboru |
 
-[![příklad cURL](media/how-to-add-blobs/http-blob-post-through-curl-img.png)](media/how-to-add-blobs/http-blob-post-through-curl-img.png#lightbox)
+[![kudrlinkou – příklad](media/how-to-add-blobs/http-blob-post-through-curl-img.png)](media/how-to-add-blobs/http-blob-post-through-curl-img.png#lightbox)
 
-Úspěšné POST vrátí ID nového objektu blob.
+Úspěšný příspěvek vrátí ID nového objektu BLOB.
 
 ## <a name="api-endpoints"></a>Koncové body rozhraní API
 
-Následující části popisují koncové body rozhraní API související s objektem blob a jejich funkce.
+Následující části popisují základní koncové body rozhraní API související s objekty BLOB a jejich funkce.
 
 ### <a name="devices"></a>Zařízení
 
-K zařízením můžete připojit objekty BLOB. Následující obrázek znázorňuje referenční dokumentaci Swagger pro vaše nastavení API pro správu. Určuje koncové body rozhraní API související se zařízením pro spotřebu objektů blob a všechny parametry požadované cesty, které mají být do nich předávány.
+Objekty blob můžete připojit k zařízením. Následující obrázek ukazuje referenční dokumentaci Swagger pro vaše rozhraní API pro správu. Určuje koncové body rozhraní API týkající se zařízení pro využití objektů BLOB a všechny požadované parametry cesty, které se jim budou předávat.
 
-[![Objekty BLOB zařízení](media/how-to-add-blobs/blobs-device-api-swagger-img.png)](media/how-to-add-blobs/blobs-device-api-swagger-img.png#lightbox)
+[![Objekty blob zařízení](media/how-to-add-blobs/blobs-device-api-swagger-img.png)](media/how-to-add-blobs/blobs-device-api-swagger-img.png#lightbox)
 
-Chcete-li například aktualizovat nebo vytvořit objekt blob a připojit objekt blob k zařízení, vytvořte ověřený požadavek HTTP PATCH na:
+Pokud třeba chcete aktualizovat nebo vytvořit objekt BLOB a připojit objekt BLOB k zařízení, proveďte ověřený požadavek na opravu HTTP:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/devices/blobs/YOUR_BLOB_ID
@@ -218,17 +218,17 @@ YOUR_MANAGEMENT_API_URL/devices/blobs/YOUR_BLOB_ID
 
 | Parametr | Nahradit hodnotou |
 | --- | --- |
-| *YOUR_BLOB_ID* | Požadované ID objektu blob |
+| *YOUR_BLOB_ID* | Požadované ID objektu BLOB |
 
-Úspěšné požadavky vrátí objekt JSON, jak [je popsáno výše](#blobs-response-data).
+Úspěšné požadavky vrátí objekt JSON, jak je [popsáno výše](#blobs-response-data).
 
-### <a name="spaces"></a>Mezery
+### <a name="spaces"></a>Live
 
-K mezerám můžete také připojit objekty BLOB. Na následujícím obrázku jsou uvedeny všechny koncové body rozhraní API místa odpovědné za zpracování objektů BLOB. Také uvádí všechny parametry cesty předat do těchto koncových bodů.
+Objekty blob můžete také připojit k prostorům. Následující obrázek uvádí všechny koncové body rozhraní API prostoru zodpovědné za zpracování objektů BLOB. Obsahuje také seznam parametrů cesty, které se mají předat do těchto koncových bodů.
 
-[![Prostor ové objekty BLOB](media/how-to-add-blobs/blobs-space-api-swagger-img.png)](media/how-to-add-blobs/blobs-space-api-swagger-img.png#lightbox)
+[![Objekty blob prostoru](media/how-to-add-blobs/blobs-space-api-swagger-img.png)](media/how-to-add-blobs/blobs-space-api-swagger-img.png#lightbox)
 
-Chcete-li například vrátit objekt blob připojený k prostoru, vytvořte ověřený požadavek HTTP GET na adresu:
+Pokud například chcete vrátit objekt BLOB připojený k prostoru, proveďte ověřený požadavek HTTP GET na:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
@@ -236,19 +236,19 @@ YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
 
 | Parametr | Nahradit hodnotou |
 | --- | --- |
-| *YOUR_BLOB_ID* | Požadované ID objektu blob |
+| *YOUR_BLOB_ID* | Požadované ID objektu BLOB |
 
-Úspěšné požadavky vrátí objekt JSON, jak [je popsáno výše](#blobs-response-data).
+Úspěšné požadavky vrátí objekt JSON, jak je [popsáno výše](#blobs-response-data).
 
-Požadavek PATCH na stejný koncový bod aktualizuje popisy metadat a vytvoří verze objektu blob. Požadavek HTTP se provádí prostřednictvím metody PATCH, spolu s všechny potřebné meta a vícedílné formuláře data.
+Požadavek PATCH na stejný koncový bod aktualizuje popisy metadat a vytvoří verze objektu BLOB. Požadavek HTTP se provede prostřednictvím metody PATCH, spolu s potřebnými daty meta a formuláře.
 
 ### <a name="users"></a>Uživatelé
 
-Objekty BLOB můžete připojit k uživatelským modelům (například pro přidružení profilového obrázku). Následující obrázek znázorňuje příslušné koncové body rozhraní `id`API uživatele a všechny požadované parametry cesty, například :
+Objekty blob můžete připojit k uživatelským modelům (například k přidružení obrázku profilu). Následující obrázek ukazuje relevantní koncové body rozhraní API pro uživatele a všechny požadované parametry cesty `id`, například:
 
-[![Objekty BLOB uživatele](media/how-to-add-blobs/blobs-users-api-swagger-img.png)](media/how-to-add-blobs/blobs-users-api-swagger-img.png#lightbox)
+[![Objekty blob uživatele](media/how-to-add-blobs/blobs-users-api-swagger-img.png)](media/how-to-add-blobs/blobs-users-api-swagger-img.png#lightbox)
 
-Chcete-li například načíst objekt blob připojený k uživateli, vytvořte ověřený požadavek HTTP GET s libovolnými požadovanými daty formuláře na adresu:
+Pokud například chcete načíst objekt BLOB připojený k uživateli, vytvořte ověřený požadavek HTTP GET s libovolnými požadovanými daty formuláře:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID
@@ -256,13 +256,13 @@ YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID
 
 | Parametr | Nahradit hodnotou |
 | --- | --- |
-| *YOUR_BLOB_ID* | Požadované ID objektu blob |
+| *YOUR_BLOB_ID* | Požadované ID objektu BLOB |
 
-Úspěšné požadavky vrátí objekt JSON, jak [je popsáno výše](#blobs-response-data).
+Úspěšné požadavky vrátí objekt JSON, jak je [popsáno výše](#blobs-response-data).
 
 ## <a name="common-errors"></a>Běžné chyby
 
-* Běžná chyba zahrnuje neposkytnutí správných informací záhlaví:
+* Běžná chyba se týká neposkytnutí správné informace hlavičky:
 
   ```JSON
   {
@@ -273,14 +273,14 @@ YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID
   }
   ```
 
-  Chcete-li tuto chybu vyřešit, ověřte, zda má celkový požadavek příslušnou hlavičku **typu obsahu:**
+  Chcete-li tuto chybu vyřešit, ověřte, zda má celková žádost odpovídající hlavičku **Content-Type** :
 
      * `multipart/mixed`
      * `multipart/form-data`
 
-  Také ověřte, zda každý *vícedílný blok dat* má odpovídající **typ obsahu**.
+  Ověřte také, že každý *blok s více částmi* má odpovídající odpovídající **typ obsahu**.
 
-* Druhá běžná chyba nastává, když je ke stejnému prostředku v [grafu prostorové inteligence](concepts-objectmodel-spatialgraph.md)přiřazeno více objektů BLOB :
+* Druhá běžná chyba nastane, když se ke stejnému prostředku v [grafu prostorové logiky](concepts-objectmodel-spatialgraph.md)přiřazují víc objektů BLOB:
 
   ```JSON
   {
@@ -292,14 +292,14 @@ YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID
   ```
 
   > [!NOTE]
-  > Atribut **zprávy** se bude lišit v závislosti na prostředku. 
+  > Atributy **zprávy** se budou lišit v závislosti na prostředku. 
 
-  Ke každému prostředku v rámci prostorového grafu může být připojen pouze jeden objekt blob (každého druhu). 
+  Ke každému prostředku v prostorovém grafu může být připojen pouze jeden objekt BLOB (každého druhu). 
 
-  Chcete-li tuto chybu vyřešit, aktualizujte existující objekt blob pomocí příslušné operace ROZHRANÍ HTTP PATCH. Tím nahradíte existující data objektu blob požadovanými daty.
+  Tuto chybu můžete vyřešit tak, že aktualizujete existující objekt BLOB pomocí vhodné operace opravy HTTP rozhraní API. Tím se nahradí existující data objektů BLOB požadovanými daty.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o referenční dokumentaci Swagger pro Azure Digital Twins najdete v [článek Použití Azure Digital Twins Swagger](how-to-use-swagger.md).
+- Další informace o referenční dokumentaci k Swagger pro digitální vlákna Azure najdete v tématu [použití služby Swagger pro digitální vlákna Azure](how-to-use-swagger.md).
 
-- Chcete-li nahrát objekty BLOB prostřednictvím Pošťáka, přečtěte [si článek Jak nakonfigurovat Pošťáka](./how-to-configure-postman.md).
+- Pokud chcete nahrát objekty blob prostřednictvím post, přečtěte si téma [Konfigurace post](./how-to-configure-postman.md).

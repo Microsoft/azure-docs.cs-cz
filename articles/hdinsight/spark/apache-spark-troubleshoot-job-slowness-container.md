@@ -1,6 +1,6 @@
 ---
-title: Apache Spark je pomalý, když má úložiště Azure HDInsight mnoho souborů
-description: Úloha Apache Spark běží pomalu, když kontejner úložiště Azure obsahuje mnoho souborů v Azure HDInsightu
+title: Apache Spark pomalu, když má Azure HDInsight Storage mnoho souborů
+description: Apache Spark úloha běží pomalu, pokud kontejner úložiště Azure obsahuje mnoho souborů v Azure HDInsight.
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,42 +8,42 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/21/2019
 ms.openlocfilehash: e389c05a6de85287bc86eff510e137f470837e56
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75894322"
 ---
 # <a name="apache-spark-job-run-slowly-when-the-azure-storage-container-contains-many-files-in-azure-hdinsight"></a>Úlohy Apache Sparku jsou pomalé, když kontejner úložiště Azure obsahuje velké množství souborů ve službě Azure HDInsight
 
-Tento článek popisuje kroky řešení potíží a možná řešení problémů při používání komponent Apache Spark v clusterech Azure HDInsight.
+Tento článek popisuje postup řešení potíží a možná řešení potíží při používání komponent Apache Spark v clusterech Azure HDInsight.
 
 ## <a name="issue"></a>Problém
 
-Při spuštění clusteru HDInsight se úloha Apache Spark, která zapisuje do kontejneru úložiště Azure, stane pomalou, když existuje mnoho souborů/podsložek. Například trvá 20 sekund při zápisu do nového kontejneru, ale asi 2 minuty při zápisu do kontejneru, který má soubory 200 kS.
+Při spuštění clusteru HDInsight se úloha Apache Spark, která se zapisuje do kontejneru úložiště Azure, zpomaluje, když existuje mnoho souborů nebo podsložek. Například při zápisu do nového kontejneru trvá 20 sekund, ale přibližně 2 minuty při zápisu do kontejneru, který obsahuje soubory 200 tisíc.
 
 ## <a name="cause"></a>Příčina
 
-Jedná se o známý problém Spark. Pomalost pochází `ListBlob` `GetBlobProperties` z a operace během provádění úlohy Spark.
+Toto je známý problém Sparku. Zpomalení přicházejí z operací `ListBlob` a `GetBlobProperties` během provádění úlohy Sparku.
 
-Chcete-li sledovat oddíly, `FileStatusCache` Spark musí udržovat, který obsahuje informace o adresářové struktuře. Pomocí této mezipaměti spark můžete analyzovat cesty a být vědomi dostupných oddílů. Výhodou sledování oddílů je, že Spark se při čtení dat dotýká pouze potřebných souborů. Aby byly tyto informace aktuální, musí Spark při psaní nových dat vypsat všechny soubory pod adresářem a aktualizovat tuto mezipaměť.
+Aby bylo možné sledovat oddíly, Spark musí udržovat `FileStatusCache` , který obsahuje informace o struktuře adresářů. Pomocí této mezipaměti může Spark analyzovat cesty a znát dostupné oddíly. Výhodou sledování oddílů je, že Spark při čtení dat mění jenom nezbytné soubory. Aby bylo možné tyto informace aktualizovat v aktuálním stavu, musí Spark při psaní nových dat zobrazit seznam všech souborů v adresáři a aktualizovat tuto mezipaměť.
 
-V Spark 2.1, i když nepotřebujeme aktualizovat mezipaměť po každém zápisu, Spark zkontroluje, zda existující sloupec oddílu odpovídá navrhovanému v aktuálním požadavku na zápis, takže také povede k výpisu operací na začátku každého zápisu.
+V Spark 2,1 ale nemusíme aktualizovat mezipaměť po každém zápisu, Spark zkontroluje, jestli se stávající sloupec oddílu shoduje s navrhovanou operací zápisu v aktuální žádosti o zápis, takže bude také vést k vypsání operací na začátku každého zápisu.
 
-V Spark 2.2 při zápisu dat s režimem připojení by měl být tento problém s výkonem opraven.
+Tento problém s výkonem by měl být vyřešen v Spark 2,2 při zápisu dat v režimu připojení.
 
 ## <a name="resolution"></a>Řešení
 
-Při vytváření sady dělených dat je důležité použít schéma dělení, které omezí počet souborů, které `FileStatusCache`má Spark vypsat, aby aktualizoval .
+Když vytvoříte dělenou datovou sadu, je důležité použít schéma dělení na oddíly, které omezí počet souborů, které Spark musí v `FileStatusCache`seznamu aktualizovat.
 
-Pro každou n-té mikro dávku, kde N % 100 == 0 (100 je jen příklad), přesuňte existující data do jiného adresáře, který může být načten Spark.
+V každé n-tého mikrodávce, kde N %100 = = 0 (100 je pouze příklad), přesuňte existující data do jiného adresáře, který lze načíst pomocí Sparku.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste problém nezjistili nebo se vám nedaří problém vyřešit, navštivte jeden z následujících kanálů, kde najdete další podporu:
+Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 
-* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory Azure Community Support](https://azure.microsoft.com/support/community/).
+* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Spojte [@AzureSupport](https://twitter.com/azuresupport) se s oficiálním účtem Microsoft Azure, který zlepšuje zákaznickou zkušenost tím, že propojuje komunitu Azure se správnými prostředky: odpověďmi, podporou a odborníky.
+* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [webu Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na řádku nabídek vyberte **Podpora** nebo otevřete centrum **Nápověda + podpora.** Podrobnější informace najdete v části [Jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatného a fakturační podpoře je součástí vašeho předplatného Microsoft Azure a technická podpora se poskytuje prostřednictvím jednoho z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

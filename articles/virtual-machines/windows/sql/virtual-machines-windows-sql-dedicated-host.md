@@ -1,6 +1,6 @@
 ---
-title: Virtuální počítač SQL Server na vyhrazeném hostiteli Azure
-description: Přečtěte si podrobnosti o spuštění virtuálního počítače SQL Server na vyhrazeném hostiteli Azure.
+title: SQL Server virtuálního počítače na vyhrazeném hostiteli Azure
+description: Přečtěte si informace o tom, jak spustit SQL Server virtuální počítač na vyhrazeném hostiteli Azure.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -15,69 +15,69 @@ ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: edb2d3fa670475d9b08fe05494035949181a9240
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75834351"
 ---
-# <a name="sql-server-vm-on-an-azure-dedicated-host"></a>Virtuální počítač SQL Server na vyhrazeném hostiteli Azure 
+# <a name="sql-server-vm-on-an-azure-dedicated-host"></a>SQL Server virtuálního počítače na vyhrazeném hostiteli Azure 
 
-Tento článek podrobně popisuje specifika použití virtuálního počítače SQL Server s [vyhrazeným hostitelem Azure](/azure/virtual-machines/windows/dedicated-hosts). Další informace o vyhrazeném hostiteli Azure najdete v příspěvku blogu [Představujeme azure dedicated host](https://azure.microsoft.com/blog/introducing-azure-dedicated-host/). 
+Tento článek podrobně popisuje konkrétní informace o použití SQL Serverho virtuálního počítače s [vyhrazeným hostitelem Azure](/azure/virtual-machines/windows/dedicated-hosts). Další informace o vyhrazeném hostiteli Azure najdete v blogovém příspěvku, který [zavádí vyhrazeného hostitele Azure](https://azure.microsoft.com/blog/introducing-azure-dedicated-host/). 
 
 ## <a name="overview"></a>Přehled
-[Azure Dedicated Host](/azure/virtual-machines/windows/dedicated-hosts) je služba, která poskytuje fyzické servery – schopné hostovat jeden nebo více virtuálních počítačů – vyhrazené pro jedno předplatné Azure. Vyhrazení hostitelé jsou stejné fyzické servery používané v datových centrech společnosti Microsoft, které jsou poskytovány jako prostředek. V rámci oblasti, zóny dostupnosti a domény selhání můžete zřídit vyhrazená hostitelé. Potom můžete virtuální počítače umístit přímo do zřízených hostitelů v jakékoli konfiguraci, která nejlépe vyhovuje vašim potřebám.
+[Vyhrazený hostitel Azure](/azure/virtual-machines/windows/dedicated-hosts) je služba, která poskytuje fyzické servery – schopné hostovat jeden nebo víc virtuálních počítačů, které jsou vyhrazené pro jedno předplatné Azure. Vyhrazení hostitelé jsou stejné fyzické servery, které se používají v datových centrech Microsoftu, které se poskytují jako prostředek. Můžete zřídit vyhrazené hostitele v rámci oblasti, zóny dostupnosti a domény selhání. Pak můžete virtuální počítače umístit přímo do zřízených hostitelů, v libovolné konfiguraci nejlépe vyhovuje vašim potřebám.
 
 ## <a name="limitations"></a>Omezení
 
-- Škálovací sady virtuálních strojů nejsou aktuálně podporovány na vyhrazených hostitelích.
-- Podporovány jsou následující řady virtuálních modulů: DSv3 a ESv3. 
+- Sady škálování virtuálních počítačů se na vyhrazených hostitelích aktuálně nepodporují.
+- Podporují se tyto řady virtuálních počítačů: DSv3 a ESv3. 
 
 ## <a name="licensing"></a>Licencování
 
-Můžete si vybrat mezi dvěma různými možnostmi licencování při přidávání virtuálního počítače SQL Server do vyhrazeného hostitele Azure. 
+Při přidávání SQL Server virtuálního počítače do vyhrazeného hostitele Azure si můžete vybrat mezi dvěma různými možnostmi licencování. 
 
-  - **Licencování virtuálních zařízení SQL:** Toto je existující možnost licencování, kde platíte za každou licenci virtuálního zařízení SQL Server jednotlivě. 
-  - **Licence vyhrazených hostitelů**: Nový licenční model dostupný pro vyhrazený hostitel Azure, kde jsou licence SQL Serveru sdružené a placené na úrovni hostitele. 
+  - **Licencování virtuálních počítačů SQL**: Jedná se o existující možnost licencování, kde platíte za každou SQL Server licenci virtuálních počítačů jednotlivě. 
+  - **Licencování vyhrazených hostitelů**: nový licenční model dostupný pro vyhrazeného hostitele Azure, kde SQL Server licence jsou zabalené a placené pro na úrovni hostitele. 
 
 
-Možnosti na úrovni hostitele pro použití existujících licencí serveru SQL Server: 
-  - Hybridní výhoda SQL Server Enterprise Edition Azure
-    - K dispozici zákazníkům s SA nebo předplatným.
-    - Licencujte všechna dostupná fyzická jádra a užijte si neomezenou virtualizaci (až po maximální virtuální procesory podporované hostitelem).
-        - Další informace o použití hybridní výhody Azure na azure dedicated hostitele, najdete v tématu [Azure Hybrid Benefit FAQ](https://azure.microsoft.com/pricing/hybrid-benefit/faq/). 
-  - Licence SQL Serveru získané před 1.
-      - SQL Server Enterprise edition má možnosti licence na úrovni hostitele i podle virtuálního zařízení. 
-      - Sql Server Standard edition má k dispozici pouze možnost licence podle virtuálního připojení. 
-          - Podrobnosti naleznete v [produktových podmínkách společnosti Microsoft](https://www.microsoft.com/licensing/product-licensing/products). 
-  - Pokud není vybrána žádná možnost vyhrazené na úrovni hostitele serveru SQL Server, pak SQL Server AHB může být vybrána na úrovni jednotlivých virtuálních počítačů, stejně jako u víceklientských virtuálních počítačích.
+Možnosti na úrovni hostitele pro používání stávajících licencí SQL Server: 
+  - Edice SQL Server Enterprise Zvýhodněné hybridní využití Azure
+    - K dispozici pro zákazníky s přidružením zabezpečení nebo předplatného.
+    - Licencujte všechny dostupné fyzické jádra a užívejte neomezenou virtualizaci (až do maximálního počtu vCPU podporovaných hostitelem).
+        - Další informace o použití Zvýhodněné hybridní využití Azure u vyhrazeného hostitele Azure najdete v části [Nejčastější dotazy k zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/faq/). 
+  - SQL Server licence získané do 1. října
+      - Edice SQL Server Enterprise má možnosti licence na úrovni hostitele i podle virtuálních počítačů. 
+      - Pro SQL Server Standard Edition je dostupná jenom možnost licence podle virtuálních počítačů. 
+          - Podrobnosti najdete v tématu věnovaném [produktovým podmínkám Microsoftu](https://www.microsoft.com/licensing/product-licensing/products). 
+  - Pokud není vybraná žádná SQL Server vyhrazená možnost na úrovni hostitele, můžete SQL Server AHB vybrat na úrovni jednotlivých virtuálních počítačů, stejně jako u více tenantů virtuálních počítačů.
 
 
 
 ## <a name="provisioning"></a>Zřizování  
-Zřizování virtuálního počítače SQL Server vyhrazenému hostiteli se nijak neliší od jakéhokoli jiného virtuálního počítače Azure. Můžete tak učinit pomocí [Azure PowerShell](../dedicated-hosts-powershell.md), [portál Azure](../dedicated-hosts-portal.md)a [Azure CLI](../../linux/dedicated-hosts-cli.md).
+Zřizování virtuálního počítače s SQL Server pro vyhrazeného hostitele se neliší od žádných jiných virtuálních počítačů Azure. Můžete tak učinit pomocí [Azure PowerShell](../dedicated-hosts-powershell.md), [Azure Portal](../dedicated-hosts-portal.md)a [Azure CLI](../../linux/dedicated-hosts-cli.md).
 
-Proces přidání existujícího virtuálního virtuálního soudu SQL Server do vyhrazeného hostitele vyžaduje výpadky, ale nebude mít vliv na data a nebude mít ztrátu dat. Nicméně všechny databáze, včetně systémových databází, by měly být zálohovány před přesunutím.
+Proces přidání stávajícího SQL Server virtuálního počítače do vyhrazeného hostitele vyžaduje výpadky, ale nebude mít vliv na data a nebude mít za následek ztrátu dat. Nicméně všechny databáze, včetně systémových databází, by se měly zálohovat před přesunem.
 
 ## <a name="virtualization"></a>Virtualizace 
 
-Jednou z výhod vyhrazeného hostitele je neomezená virtualizace. Můžete mít například licence pro 64 virtuálních jader, ale můžete nakonfigurovat hostitele tak, aby měl 128 virtuálních jader, takže získáte dvojnásobek virtuálních jader, ale platíte pouze za polovinu licencí SQL Serveru. 
+Jednou z výhod vyhrazeného hostitele je neomezená virtualizace. Můžete mít například licence na 64 virtuální jádra, ale hostitele můžete nakonfigurovat tak, aby měl 128 virtuální jádra, takže získáte dvojnásobek virtuální jádra, ale platíte za polovinu SQL Server licencí. 
 
-Vzhledem k tomu, že je to váš hostitel, máte nárok na nastavení virtualizace s poměrem 1:2. 
+Vzhledem k tomu, že se jedná o vašeho hostitele, máte nárok na nastavení virtualizace s poměrem 1:2. 
 
 ## <a name="faq"></a>Nejčastější dotazy
 
-**Otázka: Jak funguje hybridní výhoda Azure pro licence Windows Server/SQL Server na vyhrazeném hostiteli Azure?**
+**Otázka: jak Zvýhodněné hybridní využití Azure fungují pro licence Windows Server/SQL Server na vyhrazeném hostiteli Azure?**
 
-A: Zákazníci mohou použít hodnotu svých stávajících licencí Windows Server a SQL Server s Software Assurance nebo kvalifikační předplatné licence, platit sníženou sazbu na Azure Dedicated Host pomocí Azure Hybrid Benefit. Zákazníci datových center a sql serveru SQL Server Enterprise Edition získají neomezenou virtualizaci (na hostiteli, který podléhá fyzické kapacitě základního serveru, nasadí co nejvíce virtuálních počítačů se systémem Windows Server) a používat hybridní výhody Azure.  Všechny úlohy Windows Serveru a SQL Serveru v vyhrazeném hostiteli Azure jsou také způsobilé pro rozšířené aktualizace zabezpečení pro Windows Server a SQL Server 2008/R2 bez dalších poplatků. 
+Odpověď: zákazníci můžou použít hodnotu svých stávajících licencí Windows Server a SQL Server se Software Assurance nebo opravňujícími licencemi předplatného, aby platili sníženou sazbu na vyhrazeném hostiteli Azure pomocí Zvýhodněné hybridní využití Azure. Zákazníci s Windows serverem datacentra a SQL Server Enterprise Edition získají neomezenou virtualizaci (na hostiteli můžou nasadit tolik virtuálních počítačů s Windows serverem, aby mohli na hostiteli splňovat fyzickou kapacitu základního serveru), když si zadají licenci na celého hostitele a používají Zvýhodněné hybridní využití Azure.  Všechny úlohy Windows serveru a SQL Server ve vyhrazeném hostiteli Azure mají taky nárok na rozšířené aktualizace zabezpečení pro Windows Server a SQL Server 2008/R2 bez dalších poplatků. 
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace najdete v těchto článcích: 
 
-* [Přehled sql serveru na virtuálním počítači se systémem Windows](virtual-machines-windows-sql-server-iaas-overview.md)
-* [Nejčastější dotazy pro SQL Server na virtuálním počítači se systémem Windows](virtual-machines-windows-sql-server-iaas-faq.md)
-* [Pokyny k cenovým hodnotě pro SQL Server na virtuálním počítači se systémem Windows](virtual-machines-windows-sql-server-pricing-guidance.md)
-* [Poznámky k verzi pro SQL Server na virtuálním počítači se systémem Windows](virtual-machines-windows-sql-server-iaas-release-notes.md)
+* [Přehled SQL Server na virtuálním počítači s Windows](virtual-machines-windows-sql-server-iaas-overview.md)
+* [Nejčastější dotazy k SQL Server na virtuálním počítači s Windows](virtual-machines-windows-sql-server-iaas-faq.md)
+* [Doprovodné materiály k cenách pro SQL Server na virtuálním počítači s Windows](virtual-machines-windows-sql-server-pricing-guidance.md)
+* [Poznámky k verzi pro SQL Server na virtuálním počítači s Windows](virtual-machines-windows-sql-server-iaas-release-notes.md)
 
 

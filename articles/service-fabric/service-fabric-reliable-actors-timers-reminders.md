@@ -1,24 +1,24 @@
 ---
-title: Spolehlivé actors časovače a připomenutí
-description: Úvod k časovačům a připomenutí pro spolehlivé objekty actor service fabric, včetně pokynů, kdy použít.
+title: Reliable Actors časovače a připomenutí
+description: Úvod do časovačů a připomenutí Service Fabric Reliable Actors, včetně pokynů k použití jednotlivých.
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 02d6220b31ee9c991e8450759bf46759af6177a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75639611"
 ---
-# <a name="actor-timers-and-reminders"></a>Časovače a připomenutí herce
-Objekty actor mohou naplánovat pravidelnou práci na sobě registrací časovačů nebo připomenutí. Tento článek ukazuje, jak používat časovače a připomenutí a vysvětluje rozdíly mezi nimi.
+# <a name="actor-timers-and-reminders"></a>Časovače a připomenutí objektu actor
+Objekty actor mohou naplánovat pravidelnou práci sami registrací časovačů nebo připomenutí. Tento článek ukazuje, jak používat časovače a připomenutí a vysvětluje rozdíly mezi nimi.
 
-## <a name="actor-timers"></a>Časovače herce
-Časovače objektu actor poskytují jednoduchý obálku kolem časovače .NET nebo Java, aby bylo zajištěno, že metody zpětného volání respektují záruky souběžnosti založené na časové obměny, které poskytuje objekt actor.
+## <a name="actor-timers"></a>Časovače objektu actor
+Časovače objektu actor poskytují jednoduchou obálku kolem časovače .NET nebo Java, aby se zajistilo, že metody zpětného volání respektují záruky souběžnosti, které poskytuje modul runtime Actors.
 
-Objekty `RegisterTimer`actor můžete použít `registerTimer`(C#) `UnregisterTimer`nebo (Java) a (C#) nebo `unregisterTimer`(Java) metody na jejich základní třídy zaregistrovat a zrušit registraci jejich časovače. Následující příklad ukazuje použití časových api. Rozhraní API jsou velmi podobná časovači .NET nebo časovači Java. V tomto příkladu, když je časovač splatný, `MoveObject`bude čas `moveObject`Actors volat metodu (C#) nebo (Java). Metoda je zaručena respektovat tahovou souběžnost. To znamená, že žádné jiné metody objektu actor nebo časovač/připomenutí zpětná volání bude probíhá, dokud toto zpětné volání dokončí spuštění.
+Objekty actor mohou pomocí `RegisterTimer`metod (c#) `registerTimer`nebo (Java) `UnregisterTimer`a (c#) `unregisterTimer`nebo (Java) na své základní třídě registrovat a odregistrovat své časovače. Následující příklad ukazuje použití rozhraní API časovače. Rozhraní API jsou velmi podobná časovači .NET nebo časovači jazyka Java. V tomto příkladu, při splnění časovače, modul runtime Actors zavolá metodu `MoveObject`(C#) nebo `moveObject`(Java). Metoda je zaručena respektovat souběžnost založenou na zapínání. To znamená, že žádné jiné metody objektu actor ani zpětná volání časovače nebo připomenutí nebudou probíhat, dokud toto zpětné volání nedokončí provedení.
 
 ```csharp
 class VisualObjectActor : Actor, IVisualObject
@@ -118,16 +118,16 @@ public class VisualObjectActorImpl extends FabricActor implements VisualObjectAc
 }
 ```
 
-Další období časovače spustí po dokončení spuštění zpětného volání. To znamená, že časovač je zastaven, zatímco zpětné volání je spuštěna a je spuštěna po dokončení zpětného volání.
+Další období časovače se spustí poté, co zpětné volání dokončí provádění. To znamená, že časovač je zastaveno v průběhu provádění zpětného volání a je spuštěn po dokončení zpětného volání.
 
-Actors runtime uloží změny provedené ve správci stavu objektu actor po dokončení zpětného volání. Pokud dojde k chybě při ukládání stavu, bude tento objekt objektu objektu actor deaktivován a bude aktivována nová instance.
+Modul runtime Actors ukládá změny provedené ve Správci stavu objektu actor po dokončení zpětného volání. Pokud při ukládání stavu dojde k chybě, bude objekt actor deaktivován a bude aktivována nová instance.
 
-Všechny časovače jsou zastaveny při actor je deaktivován jako součást uvolňování paměti. Po tom nejsou vyvolána žádná zpětná volání časovače. Také actors runtime neuchovává žádné informace o časovače, které byly spuštěny před deaktivací. Je na objektu actor zaregistrovat všechny časovače, které potřebuje, když je znovu aktivován v budoucnu. Další informace naleznete v části o [uvolnění paměti objektu actor](service-fabric-reliable-actors-lifecycle.md).
+Všechny časovače jsou zastaveny, když je objekt actor deaktivován v rámci uvolňování paměti. Žádná zpětná volání časovače nejsou vyvolána za tímto. Modul runtime Actors také neuchovává žádné informace o časovačích, které byly spuštěny před deaktivací. Je až do objektu actor k registraci všech časovačů, které potřebuje, když se znovu aktivuje v budoucnu. Další informace najdete v části o [uvolňování paměti objektu actor](service-fabric-reliable-actors-lifecycle.md).
 
-## <a name="actor-reminders"></a>Připomenutí herce
-Připomenutí jsou mechanismus pro aktivaci trvalých zpětných volání u objektu actor v určených časech. Jejich funkčnost je podobná časovačům. Ale na rozdíl od časovače připomenutí se aktivují za všech okolností, dokud objekt actor explicitně zruší registraci nebo objekt actor je explicitně odstraněn. Konkrétně připomenutí se aktivují napříč deaktivace objektu actor a převzetí služeb při selhání, protože objekt actor runtime uchovává informace o objektu actor připomenutí pomocí zprostředkovatele stavu objektu actor. Vezměte prosím na vědomí, že spolehlivost upomínek je vázána na státní záruky spolehlivosti poskytované poskytovatelem stavu objektu actor. To znamená, že pro objekty actor, jejichž trvalost stavu je nastavena na none, připomenutí nebude požární po převzetí služeb při selhání. 
+## <a name="actor-reminders"></a>Připomenutí objektu actor
+Připomenutí jsou mechanismem, jak aktivovat trvalá zpětná volání v objektu actor v zadaných časech. Jejich funkce se podobá časovačům. Ale na rozdíl od časovačů se připomenutí spouštějí za všech okolností, dokud objekt actor explicitně zruší jejich registraci, nebo je objekt actor explicitně odstraněn. Konkrétně se v rámci deaktivace a převzetí služeb při selhání spouštějí připomenutí, protože modul runtime Actors uchovává informace o připomenutích objektů actor pomocí zprostředkovatele stavu objektu actor. Počítejte s tím, že spolehlivost upomínek je svázána se zárukami spolehlivosti stavu poskytovanými poskytovatelem stavu objektu actor. To znamená, že u aktérů, jejichž trvalost stavu je nastavená na None, se připomenutí po převzetí služeb při selhání neaktivují. 
 
-Chcete-li zaregistrovat připomenutí, `RegisterReminderAsync` objekt actor volá metodu poskytnutou v základní třídě, jak je znázorněno v následujícím příkladu:
+Pro registraci připomenutí volá objekt actor `RegisterReminderAsync` metodu poskytnutou pro základní třídu, jak je znázorněno v následujícím příkladu:
 
 ```csharp
 protected override async Task OnActivateAsync()
@@ -158,9 +158,9 @@ protected CompletableFuture onActivateAsync()
 }
 ```
 
-V tomto `"Pay cell phone bill"` příkladu je název připomenutí. Toto je řetězec, který objekt actor používá k jednoznačné identifikaci připomenutí. `BitConverter.GetBytes(amountInDollars)`(C#) je kontext, který je přidružen k připomenutí. Bude předána zpět objektu actor jako argument zpětného volání `IRemindable.ReceiveReminderAsync`připomenutí, tj.(C#) nebo `Remindable.receiveReminderAsync`(Java).
+V tomto příkladu `"Pay cell phone bill"` je název připomenutí. Toto je řetězec, který objekt actor používá k jednoznačné identifikaci připomenutí. `BitConverter.GetBytes(amountInDollars)`(C#) je kontext, který je spojen s připomenutím. Bude předána zpátky objektu actor jako argument zpětného volání připomenutí, tj. `IRemindable.ReceiveReminderAsync`(C#) nebo `Remindable.receiveReminderAsync`(Java).
 
-Objekty actor, které `IRemindable` používají připomenutí musí implementovat rozhraní, jak je znázorněno v příkladu níže.
+Objekty actor, které používají připomenutí, `IRemindable` musí implementovat rozhraní, jak je znázorněno v následujícím příkladu.
 
 ```csharp
 public class ToDoListActor : Actor, IToDoListActor, IRemindable
@@ -201,11 +201,11 @@ public class ToDoListActorImpl extends FabricActor implements ToDoListActor, Rem
 
 ```
 
-Při aktivaci připomenutí, bude reliable actors `ReceiveReminderAsync`runtime vyvolat `receiveReminderAsync`(C#) nebo (Java) metoda actor. Objekt actor může zaregistrovat více `ReceiveReminderAsync`připomenutí a `receiveReminderAsync`metoda (C#) nebo (Java) je vyvolána při aktivaci některého z těchto připomenutí. Objekt actor můžete použít název připomenutí, `ReceiveReminderAsync`který je předán `receiveReminderAsync`do (C#) nebo (Java) metoda zjistit, které připomenutí bylo spuštěno.
+Když se aktivuje připomenutí, modul runtime Reliable Actors vyvolá metodu `ReceiveReminderAsync`(C#) nebo `receiveReminderAsync`(Java) objektu actor. Objekt actor může registrovat více připomenutí a metoda `ReceiveReminderAsync`(C#) nebo `receiveReminderAsync`(Java) je vyvolána při aktivaci kterékoli z těchto připomenutí. Objekt actor může použít název připomenutí, který je předán metodě `ReceiveReminderAsync`(C#) nebo `receiveReminderAsync`(Java), a zjistit, jaké připomenutí bylo aktivováno.
 
-Actors runtime uloží stav objektu actor `ReceiveReminderAsync`po dokončení `receiveReminderAsync`volání (C#) nebo (Java). Pokud dojde k chybě při ukládání stavu, bude tento objekt objektu objektu actor deaktivován a bude aktivována nová instance.
+Modul runtime Actors uloží stav objektu actor po dokončení `ReceiveReminderAsync`volání (C#) `receiveReminderAsync`nebo (Java). Pokud při ukládání stavu dojde k chybě, bude objekt actor deaktivován a bude aktivována nová instance.
 
-Chcete-li zrušit registraci připomenutí, objekt actor volá metodu `UnregisterReminderAsync`(C#) nebo `unregisterReminderAsync`(Java), jak je znázorněno v následujících příkladech.
+Chcete-li zrušit registraci připomenutí, volá objekt actor `UnregisterReminderAsync`metodu (C#) `unregisterReminderAsync`nebo (Java), jak je znázorněno v níže uvedených příkladech.
 
 ```csharp
 IActorReminder reminder = GetReminder("Pay cell phone bill");
@@ -216,9 +216,9 @@ ActorReminder reminder = getReminder("Pay cell phone bill");
 CompletableFuture reminderUnregistration = unregisterReminderAsync(reminder);
 ```
 
-Jak je uvedeno `UnregisterReminderAsync`výše, metoda `unregisterReminderAsync`(C#) nebo `IActorReminder`(Java) `ActorReminder`přijímá rozhraní (C#) nebo (Java). Základní třída objektu `GetReminder`actor podporuje `getReminder`metodu (C#) nebo (Java), kterou lze použít k načtení rozhraní `IActorReminder`(C#) nebo `ActorReminder`(Java) předáním názvu připomenutí. To je výhodné, protože objekt actor `IActorReminder`nemusí zachovat `ActorReminder`rozhraní (C#) nebo `RegisterReminder`(Java), které `registerReminder`bylo vráceno z volání metody (C#) nebo (Java).
+Jak vidíte výše, metoda `UnregisterReminderAsync`(c#) nebo `unregisterReminderAsync`(Java) přijímá rozhraní `IActorReminder`(c#) nebo `ActorReminder`(Java). Základní třída objektu actor podporuje metodu `GetReminder`(c#) nebo `getReminder`(Java), která se dá použít k načtení rozhraní `IActorReminder`(c#) nebo `ActorReminder`(Java) předáním názvu připomenutí. To je užitečné, protože objekt actor nemusí uchovávat `IActorReminder`rozhraní (c#) nebo `ActorReminder`(Java), které bylo vráceno voláním metody `RegisterReminder`(c#) nebo `registerReminder`(Java).
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o událostech spolehlivého herce a reentrancy:
-* [Akce herce](service-fabric-reliable-actors-events.md)
-* [Herec reentrancy](service-fabric-reliable-actors-reentrancy.md)
+Seznamte se s událostmi Reliable actor a Vícenásobný přístup:
+* [Události objektu actor](service-fabric-reliable-actors-events.md)
+* [Vícenásobný přístup objektu actor](service-fabric-reliable-actors-reentrancy.md)

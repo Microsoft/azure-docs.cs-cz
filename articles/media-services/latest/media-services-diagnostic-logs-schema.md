@@ -1,6 +1,6 @@
 ---
-title: Schémata diagnostických protokolů Azure Media Services – Azure
-description: Tento článek ukazuje schémata diagnostických protokolů Azure Media Services.
+title: Azure Media Services schémat diagnostických protokolů – Azure
+description: Tento článek ukazuje schémata Azure Media Servicesch diagnostických protokolů.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,41 +14,41 @@ ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
 ms.openlocfilehash: 37baed076ca074c1d558af36649e90959a0034c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75750869"
 ---
 # <a name="diagnostic-logs-schemas"></a>Schémata diagnostických protokolů
 
-[Azure Monitor](../../azure-monitor/overview.md) umožňuje monitorovat metriky a diagnostické protokoly, které vám pomohou pochopit, jak si vaše aplikace vedou. Můžete sledovat diagnostické protokoly mediálních služeb a vytvářet výstrahy a oznámení pro shromážděné metriky a protokoly. Protokoly můžete odesílat do [Azure Storage](https://azure.microsoft.com/services/storage/), streamovat je do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)a exportovat je do [Log Analytics](https://azure.microsoft.com/services/log-analytics/)nebo používat služby třetích stran.
+[Azure monitor](../../azure-monitor/overview.md) vám umožní monitorovat metriky a diagnostické protokoly, které vám pomůžou pochopit, jak vaše aplikace provádí. Můžete monitorovat protokoly diagnostiky Media Services a vytvářet výstrahy a oznámení pro shromážděné metriky a protokoly. Můžete odeslat protokoly do [Azure Storage](https://azure.microsoft.com/services/storage/), streamovat je do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)a exportovat je do [Log Analytics](https://azure.microsoft.com/services/log-analytics/)nebo použít služby třetích stran.
 
-Podrobné informace najdete v tématu [Metriky azure monitoru](../../azure-monitor/platform/data-platform.md) a [protokoly diagnostiky azure monitoru](../../azure-monitor/platform/platform-logs-overview.md).
+Podrobné informace najdete v tématu [Azure monitor metriky](../../azure-monitor/platform/data-platform.md) a [Azure monitor diagnostických protokolů](../../azure-monitor/platform/platform-logs-overview.md).
 
-Tento článek popisuje schémata diagnostických protokolů služby Media Services.
+Tento článek popisuje Media Services schémat diagnostických protokolů.
 
 ## <a name="top-level-diagnostic-logs-schema"></a>Schéma diagnostických protokolů nejvyšší úrovně
 
-Podrobný popis schématu diagnostických protokolů nejvyšší úrovně naleznete v tématu [Podporované služby, schémata a kategorie pro diagnostické protokoly Azure](../../azure-monitor/platform/tutorial-dashboards.md).
+Podrobný popis schématu diagnostických protokolů nejvyšší úrovně najdete v tématu [podporované služby, schémata a kategorie pro diagnostické protokoly Azure](../../azure-monitor/platform/tutorial-dashboards.md).
 
-## <a name="key-delivery-log-schema"></a>Schéma protokolu doručování klíčů
+## <a name="key-delivery-log-schema"></a>Schéma protokolu doručení klíčů
 
 ### <a name="properties"></a>Vlastnosti
 
-Tyto vlastnosti jsou specifické pro schéma protokolu doručování klíčů.
+Tyto vlastnosti jsou specifické pro schéma protokolu doručení klíčů.
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
-|keyId|ID požadovaného klíče.|
-|Keytype|Může to být jedna z následujících hodnot: "Clear" (bez šifrování), "FairPlay", "PlayReady" nebo "Widevine".|
-|policyName|Název zásady správce prostředků Azure.|
-|tokenType|Typ tokenu.|
-|stavZpráva|Stavová zpráva.|
+|keyId|ID požadovaného klíče|
+|keyType|Může to být jedna z následujících hodnot: "Clear" (bez šifrování), "FairPlay", "PlayReady" nebo "Widevine".|
+|policyName|Azure Resource Manager název zásady.|
+|Typ TokenType|Typ tokenu.|
+|statusMessage|Stavová zpráva|
 
 ### <a name="examples"></a>Příklady
 
-Vlastnosti schématu požadavků na doručení klíče.
+Vlastnosti schématu žádostí o doručení klíčů
 
 ```json
 {
@@ -110,8 +110,8 @@ Vlastnosti schématu požadavků na doručení klíče.
 
 ## <a name="additional-notes"></a>Další poznámky
 
-* Widevine je služba poskytovaná společností Google Inc. a podléhá podmínkám služeb a zásadám ochrany osobních údajů společnosti Google, Inc.
+* Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Monitorovat metriky mediálních služeb a diagnostické protokoly](media-services-metrics-diagnostic-logs.md)
+[Monitorovat Media Services metriky a diagnostické protokoly](media-services-metrics-diagnostic-logs.md)

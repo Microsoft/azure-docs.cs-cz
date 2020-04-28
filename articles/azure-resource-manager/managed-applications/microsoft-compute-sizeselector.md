@@ -1,30 +1,30 @@
 ---
-title: Prvek ui voliče voliče voliče
-description: Popisuje prvek ui Microsoft.Compute.SizeSelector pro portál Azure. Slouží k výběru velikosti virtuálního počítače.
+title: SizeSelector – element uživatelského rozhraní
+description: Popisuje prvek uživatelského rozhraní Microsoft. Compute. SizeSelector pro Azure Portal. Používá se pro výběr velikosti virtuálního počítače.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: d98ddbb09ac4f1f933237b3288db7a0cb78380b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75652044"
 ---
-# <a name="microsoftcomputesizeselector-ui-element"></a>Element ui microsoft.compute.sizeselector
+# <a name="microsoftcomputesizeselector-ui-element"></a>Microsoft. Compute. SizeSelector – element uživatelského rozhraní
 
-Ovládací prvek pro výběr velikosti pro jednu nebo více instancí virtuálních strojů.
+Ovládací prvek pro výběr velikosti pro jednu nebo více instancí virtuálního počítače.
 
-## <a name="ui-sample"></a>Ukázka ui
+## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
 
-Uživatel vidí volič s výchozími hodnotami z definice prvku.
+Uživatel uvidí selektor s výchozími hodnotami z definice elementu.
 
 ![Microsoft.Compute.SizeSelector](./media/managed-application-elements/microsoft.compute.sizeselector.png)
 
 Po výběru ovládacího prvku se uživateli zobrazí rozšířené zobrazení dostupných velikostí.
 
-![Microsoft.Compute.SizeSelector rozbalen](./media/managed-application-elements/microsoft.compute.sizeselector-expanded.png)
+![Rozbalený Microsoft. Compute. SizeSelector](./media/managed-application-elements/microsoft.compute.sizeselector-expanded.png)
 
 ## <a name="schema"></a>Schéma
 
@@ -67,16 +67,16 @@ Po výběru ovládacího prvku se uživateli zobrazí rozšířené zobrazení d
 
 ## <a name="remarks"></a>Poznámky
 
-- `recommendedSizes`by měl mít alespoň jednu velikost. První doporučená velikost se používá jako výchozí. Seznam dostupných velikostí není seřazen podle doporučeného stavu. Uživatel může vybrat tento sloupec pro řazení podle doporučeného stavu.
-- Pokud doporučená velikost není ve vybraném umístění k dispozici, velikost se automaticky přeskočí. Místo toho se použije další doporučená velikost.
-- `constraints.allowedSizes`a `constraints.excludedSizes` jsou volitelné, ale nelze je použít současně. Seznam dostupných velikostí lze určit voláním [Seznam dostupných velikostí virtuálních strojů pro předplatné](/rest/api/compute/virtualmachines/virtualmachines-list-sizes-region). Je zobrazena jakákoli `constraints.allowedSizes` velikost, která není zadána v písmenu a), a je zobrazena jakákoli velikost, která není zadána v `constraints.excludedSizes` písmenu a).
-- `osPlatform`musí být zadána a může být buď **Windows** nebo **Linux**. Používá se k určení nákladů na hardware virtuálních počítačů.
-- `imageReference`je vynechán pro obrázky první strany, ale je k dispozici pro obrázky třetích stran. Používá se k určení nákladů na software virtuálních počítačů.
-- `count`se používá k nastavení příslušného násobiče prvku. Podporuje statickou hodnotu, například **2**nebo dynamickou `[steps('step1').vmCount]`hodnotu z jiného prvku, například . Výchozí hodnota je **1**.
-- Může `numAvailabilityZonesRequired` být 1, 2 nebo 3.
-- Ve výchozím `hideDiskTypeFilter` nastavení je **false**. Filtr typu disku umožňuje uživateli zobrazit všechny typy disků nebo pouze Disk SSD.
+- `recommendedSizes`musí mít aspoň jednu velikost. První doporučená velikost se používá jako výchozí. Seznam dostupných velikostí není seřazen podle doporučeného stavu. Uživatel může vybrat tento sloupec pro řazení podle doporučeného stavu.
+- Pokud není doporučená velikost ve vybraném umístění dostupná, velikost se automaticky přeskočí. Místo toho se použije další doporučená velikost.
+- `constraints.allowedSizes`a `constraints.excludedSizes` jsou zároveň volitelné, ale nelze je použít současně. Seznam dostupných velikostí lze určit voláním [seznamu dostupné velikosti virtuálních počítačů pro předplatné](/rest/api/compute/virtualmachines/virtualmachines-list-sizes-region). Libovolná velikost, která `constraints.allowedSizes` není určená v, je skrytá a zobrazí se libovolná velikost, která není určená v. `constraints.excludedSizes`
+- `osPlatform`musí být zadáno a může být buď **Windows** , nebo **Linux**. Slouží k určení nákladů na hardware pro virtuální počítače.
+- `imageReference`je vynechán pro bitové kopie první strany, ale je k dispozici pro Image třetích stran. Slouží k určení nákladů na software virtuálních počítačů.
+- `count`slouží k nastavení vhodného násobitele pro element. Podporuje statickou hodnotu, například **2**, nebo dynamickou hodnotu z jiného elementu, například `[steps('step1').vmCount]`. Výchozí hodnota je **1**.
+- `numAvailabilityZonesRequired` Může být 1, 2 nebo 3.
+- Ve výchozím nastavení `hideDiskTypeFilter` má **hodnotu false**. Filtr typ disku umožňuje uživateli zobrazit všechny typy disků nebo pouze SSD.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úvod k vytváření definic ui naleznete [v tématu Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
-* Popis běžných vlastností v prvcích uživatelského rozhraní naleznete v [tématu CreateUiDefinition elements](create-uidefinition-elements.md).
+* Úvod k vytváření definic uživatelského rozhraní najdete v tématu [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
+* Popis běžných vlastností v prvcích uživatelského rozhraní naleznete v tématu [CreateUiDefinition Elements](create-uidefinition-elements.md).

@@ -1,31 +1,31 @@
 ---
-title: '.NET SDK: Operace souborového systému v Azure Data Lake Storage Gen1'
-description: Azure Data Lake Storage Gen1 .NET SDK pro operace souborového systému na Data Lake Storage Gen1, jako je vytváření složek, atd.
+title: '.NET SDK: operace systému souborů na Azure Data Lake Storage Gen1'
+description: Použijte sadu Azure Data Lake Storage Gen1 .NET SDK pro operace systému souborů na Data Lake Storage Gen1, jako je například vytváření složek atd.
 author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 01/03/2020
 ms.author: twooley
 ms.openlocfilehash: 7e33ecbbb49fc2b0683d0757da36deec72796806
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75638897"
 ---
-# <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>Operace souborového systému v síti Data Lake Storage Gen1 pomocí sady .NET SDK
+# <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>Operace systému souborů při Data Lake Storage Gen1 pomocí sady .NET SDK
 
 > [!div class="op_single_selector"]
-> * [Sada SDK rozhraní .NET](data-lake-store-data-operations-net-sdk.md)
+> * [.NET SDK](data-lake-store-data-operations-net-sdk.md)
 > * [Java SDK](data-lake-store-get-started-java-sdk.md)
-> * [ROZHRANÍ API PRO ODPOČINEK](data-lake-store-data-operations-rest-api.md)
+> * [REST API](data-lake-store-data-operations-rest-api.md)
 > * [Python](data-lake-store-data-operations-python.md)
 >
 >
 
-V tomto článku se dozvíte, jak provádět operace systému souborů na Data Lake Storage Gen1 pomocí .NET SDK. Operace souborového systému zahrnují vytváření složek v účtu Data Lake Storage Gen1, nahrávání souborů, stahování souborů atd.
+V tomto článku se dozvíte, jak provádět operace systému souborů na Data Lake Storage Gen1 pomocí sady .NET SDK. Mezi operace systému souborů patří vytváření složek v účtu Data Lake Storage Gen1, nahrávání souborů, stahování souborů atd.
 
-Pokyny k operacím správy účtů v souboru Data Lake Storage Gen1 pomocí sady .NET SDK naleznete v [tématu Operace správy účtů v souboru Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-get-started-net-sdk.md).
+Pokyny k provádění operací správy účtů v Data Lake Storage Gen1 pomocí sady .NET SDK najdete v tématu [operace správy účtů pro data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-get-started-net-sdk.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -39,17 +39,17 @@ Pokyny k operacím správy účtů v souboru Data Lake Storage Gen1 pomocí sady
 
 Ukázka kódu, která je k dispozici [na GitHubu](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted), vás provede procesem vytvoření souborů v úložišti, zřetězení souborů, stažení souboru a nakonec odstranění některých souborů v úložišti. Tato část článku vás provede hlavními částmi kódu.
 
-1. V sadě Visual Studio vyberte nabídku **Soubor,** **Nový**a potom **aplikaci Project**.
+1. V aplikaci Visual Studio vyberte nabídku **soubor** , **Nový**a poté **projekt**.
 1. Zvolte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
-1. V **názvu**projektu `CreateADLApplication`zadejte a vyberte **Vytvořit**.
+1. Do **název projektu**zadejte `CreateADLApplication`a pak vyberte **vytvořit**.
 1. Přidejte do projektu balíčky NuGet.
 
    1. V Průzkumníku řešení klikněte pravým tlačítkem na název projektu a klikněte na možnost **Správa balíčků NuGet**.
-   1. Na kartě **NuGet Package Manager** zkontrolujte, zda je **zdroj balíčku** nastaven na **nuget.org**. Zkontrolujte také, zda je zaškrtnuté políčko **Zahrnout předběžnou verzi.**
+   1. Na kartě **Správce balíčků NuGet** se ujistěte, že je **zdroj balíčku** nastavený na **NuGet.org**. Ujistěte se také, že je zaškrtnuto políčko **zahrnout předběžné verze** .
    1. Vyhledejte a nainstalujte následující balíčky NuGet:
 
-      * `Microsoft.Azure.DataLake.Store`- Tento článek používá v1.0.0.
-      * `Microsoft.Rest.ClientRuntime.Azure.Authentication`- Tento článek používá v2.3.1.
+      * `Microsoft.Azure.DataLake.Store`– Tento článek používá verzi v 1.0.0.
+      * `Microsoft.Rest.ClientRuntime.Azure.Authentication`– Tento článek používá v 2.3.1.
 
       Zavřete **Správce balíčků NuGet**.
 
@@ -81,16 +81,16 @@ Ukázka kódu, která je k dispozici [na GitHubu](https://github.com/Azure-Sampl
     }
     ```
 
-Ve zbývajících částech článku můžete vidět, jak používat dostupné metody .NET k operacím, jako je ověřování, nahrávání souborů atd.
+Ve zbývajících částech článku vidíte, jak používat dostupné metody .NET k provádění operací, jako je ověřování, nahrávání souborů atd.
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
-* Informace o ověřování koncových uživatelů pro vaši aplikaci najdete [v tématu Ověřování koncových uživatelů pomocí data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md).
-* Informace o ověřování mezi službami pro vaši aplikaci najdete v [tématu Ověřování mezi službami pomocí služby Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-service-to-service-authenticate-net-sdk.md).
+* Pro ověřování koncového uživatele pro vaši aplikaci, přečtěte si téma [ověřování koncových uživatelů s Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md).
+* Pro ověřování služby pro vaši aplikaci, přečtěte si téma [ověřování služba-služba s Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-service-to-service-authenticate-net-sdk.md).
 
 ## <a name="create-client-object"></a>Vytvoření objektu klienta
 
-Následující úryvek vytvoří objekt klienta souborového systému Data Lake Storage Gen1, který se používá k vydávání požadavků na službu.
+Následující fragment kódu vytvoří objekt klienta systému souborů Data Lake Storage Gen1, který slouží k vystavování požadavků službě.
 
 ```
 // Create client objects
@@ -99,7 +99,7 @@ AdlsClient client = AdlsClient.CreateClient(_adlsg1AccountName, adlCreds);
 
 ## <a name="create-a-file-and-directory"></a>Vytvoření souboru a adresáře
 
-Přidejte do své aplikace následující fragment kódu. Tento úryvek přidá soubor a všechny nadřazené adresáře, který neexistuje.
+Přidejte do své aplikace následující fragment kódu. Tento fragment kódu přidá soubor a jakýkoli nadřazený adresář, který neexistuje.
 
 ```
 // Create a file - automatically creates any parent directories that don't exist
@@ -117,7 +117,7 @@ using (var stream = client.CreateFile(fileName, IfExists.Overwrite))
 
 ## <a name="append-to-a-file"></a>Připojení k souboru
 
-Následující úryvek připojí data k existujícímu souboru v účtu Data Lake Storage Gen1.
+Následující fragment kódu připojí data do existujícího souboru v Data Lake Storage Gen1 účet.
 
 ```
 // Append to existing file
@@ -131,7 +131,7 @@ using (var stream = client.GetAppendStream(fileName))
 
 ## <a name="read-a-file"></a>Čtení souboru
 
-Následující úryvek přečte obsah souboru v datovém úložišti jezera Gen1.
+Následující fragment kódu přečte obsah souboru v Data Lake Storage Gen1.
 
 ```
 //Read file contents
@@ -160,7 +160,7 @@ Definice `PrintDirectoryEntry` metody je k dispozici jako součást ukázky [na 
 
 ## <a name="rename-a-file"></a>Přejmenování souboru
 
-Následující úryvek přejmenuje existující soubor v účtu Data Lake Storage Gen1.
+Následující fragment kódu přejmenuje existující soubor do účtu Data Lake Storage Gen1.
 
 ```
 // Rename a file
@@ -170,7 +170,7 @@ client.Rename(fileName, destFilePath, true);
 
 ## <a name="enumerate-a-directory"></a>Výpis obsahu adresáře
 
-Následující úryvek vyjmenovává adresáře v účtu Data Lake Storage Gen1.
+Následující fragment kódu vytvoří výčet adresářů v účtu Data Lake Storage Gen1.
 
 ```
 // Enumerate directory
@@ -184,7 +184,7 @@ Definice `PrintDirectoryEntry` metody je k dispozici jako součást ukázky [na 
 
 ## <a name="delete-directories-recursively"></a>Rekurzivní odstranění adresářů
 
-Následující úryvek rekurzivně odstraní adresář a všechny jeho podadresáře.
+Následující fragment kódu odstraní adresář a všechny jeho podadresáře rekurzivně.
 
 ```
 // Delete a directory and all its subdirectories and files
@@ -193,15 +193,15 @@ client.DeleteRecursive("/Test");
 
 ## <a name="samples"></a>ukázky
 
-Zde je několik ukázek, které ukazují, jak používat Data Lake Storage Gen1 File SDK.
+Tady je několik ukázek, které ukazují, jak používat sadu SDK Data Lake Storage Gen1 systému souborů.
 
 * [Základní ukázka na GitHubu](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)
 * [Pokročilá ukázka na GitHubu](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-samples)
 
 ## <a name="see-also"></a>Viz také
 
-* [Operace správy účtů v úložišti Datového jezera Gen1 pomocí sady .NET SDK](data-lake-store-get-started-net-sdk.md)
-* [Odkaz na úložiště datových jezer Gen1 .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
+* [Operace správy účtů při Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-get-started-net-sdk.md)
+* [Referenční informace k sadě Data Lake Storage Gen1 .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 
 ## <a name="next-steps"></a>Další kroky
 

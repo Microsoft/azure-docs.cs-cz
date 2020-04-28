@@ -1,5 +1,5 @@
 ---
-title: Omezení a omezení služeb – Azure Active Directory | Dokumenty společnosti Microsoft
+title: Limity a omezení služby – Azure Active Directory | Microsoft Docs
 description: Omezení využití a další omezení služeb pro službu Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.custom: aaddev;it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3b83f10cd021f54dc16e196cb7a9ccd7c46fd2ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75659640"
 ---
 # <a name="azure-ad-service-limits-and-restrictions"></a>Omezení služby Azure AD
-Tento článek obsahuje omezení využití a další omezení služeb pro službu Azure Active Directory (Azure AD). Pokud hledáte úplnou sadu limitů služeb Microsoft Azure, přečtěte si část [Omezení předplatného a služeb Azure, kvóty a omezení](../../azure-resource-manager/management/azure-subscription-service-limits.md).
+Tento článek obsahuje omezení využití a další omezení služeb pro službu Azure Active Directory (Azure AD). Pokud hledáte úplnou sadu Microsoft Azure omezení služby, přečtěte si téma [limity, kvóty a omezení předplatného a služeb Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 [!INCLUDE [AAD-service-limits](../../../includes/active-directory-service-limits-include.md)]
 

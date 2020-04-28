@@ -1,21 +1,21 @@
 ---
-title: Přizpůsobení koncového bodu HTTP ve funkcích Azure
-description: Zjistěte, jak přizpůsobit koncový bod aktivační události HTTP v Azure Functions
+title: Přizpůsobení koncového bodu HTTP v Azure Functions
+description: Přečtěte si, jak přizpůsobit koncový bod triggeru HTTP v Azure Functions
 author: mattchenderson
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
 ms.openlocfilehash: 61b930eec1385b8c4054f9c202547a82e61e55e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75769264"
 ---
-# <a name="customize-an-http-endpoint-in-azure-functions"></a>Přizpůsobení koncového bodu HTTP ve funkcích Azure
+# <a name="customize-an-http-endpoint-in-azure-functions"></a>Přizpůsobení koncového bodu HTTP v Azure Functions
 
-V tomto článku se dozvíte, jak funkce Azure umožňuje vytvářet vysoce škálovatelná api. Funkce Azure je dodáván s kolekcí integrovaných aktivačních událostí protokolu HTTP a vazeb, které usnadňují vytváření koncového bodu v různých jazycích, včetně Node.js, C# a dalších. V tomto článku upravíte aktivační událost HTTP pro zpracování konkrétních akcí v návrhu rozhraní API. Zároveň se připravíte na rozšíření tohoto rozhraní API integrací Proxy služby Azure Functions a nastavením napodobenin rozhraní API. To vše se provádí v bezserverovém výpočetním prostředí služby Functions, takže se nemusíte starat o škálování prostředků, ale zaměříte se jen na logiku svého rozhraní API.
+V tomto článku se dozvíte, jak Azure Functions umožňuje vytvářet vysoce škálovatelná rozhraní API. Azure Functions se dodává s kolekcí integrovaných triggerů HTTP a vazeb, které usnadňují vytváření koncových bodů v nejrůznějších jazycích, včetně Node. js, C# a dalších. V tomto článku budete přizpůsobovat Trigger HTTP, který bude zpracovávat konkrétní akce v návrhu rozhraní API. Zároveň se připravíte na rozšíření tohoto rozhraní API integrací Proxy služby Azure Functions a nastavením napodobenin rozhraní API. To vše se provádí v bezserverovém výpočetním prostředí služby Functions, takže se nemusíte starat o škálování prostředků, ale zaměříte se jen na logiku svého rozhraní API.
 
 ## <a name="prerequisites"></a>Požadavky 
 
@@ -25,7 +25,7 @@ Výsledná funkce bude použita pro zbytek tohoto článku.
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Otevřete web Azure Portal. Chcete-li to provést, přihlaste se ke [https://portal.azure.com](https://portal.azure.com) svému účtu Azure.
+Otevřete web Azure Portal. Uděláte to tak, že se přihlásíte ke [https://portal.azure.com](https://portal.azure.com) svému účtu Azure.
 
 ## <a name="customize-your-http-function"></a>Přizpůsobení funkce HTTP
 
@@ -99,7 +99,7 @@ Zopakováním postupu v článku o [vytvoření aplikace funkcí](https://docs.m
 
     | Pole | Ukázková hodnota | Popis |
     |---|---|---|
-    | Name (Název) | HelloProxy | Popisný název sloužící jen ke správě |
+    | Název | HelloProxy | Popisný název sloužící jen ke správě |
     | Šablona trasy | /api/remotehello | Určuje, jaká trasa se používá k vyvolání tohoto proxy. |
     | Adresa URL back-endu | https://%HELLO_HOST%/api/hello | Určuje koncový bod, na který má být žádost přes proxy směrována. |
     
@@ -172,13 +172,13 @@ V dalším kroku přidáte napodobeninu rozhraní API. Nahraďte soubor proxies.
 }
 ```
 
-Tím přidáte nový proxy GetUserByName bez vlastnosti backendUri. Místo volání jiného prostředku upravuje výchozí odpověď od proxy pomocí přepisu odpovědi. Přepisy žádostí a odpovědí lze použít také ve spojení s adresou URL back-endu. To je užitečné zejména při proxy ing na starší systém, kde budete muset upravit záhlaví, parametry dotazu, atd. Další informace o přepsání žádostí a odpovědích najdete [v tématu Úpravy požadavků a odpovědí v proxy serverech](https://docs.microsoft.com/azure/azure-functions/functions-proxies).
+Tím přidáte nový proxy GetUserByName bez vlastnosti backendUri. Místo volání jiného prostředku upravuje výchozí odpověď od proxy pomocí přepisu odpovědi. Přepisy žádostí a odpovědí lze použít také ve spojení s adresou URL back-endu. To je užitečné hlavně při proxy serveru do starší verze systému, kde možná budete muset změnit hlavičky, parametry dotazů atd. Další informace o přepsání požadavků a odpovědí najdete v tématu [Úprava požadavků a odpovědí v proxy serverech](https://docs.microsoft.com/azure/azure-functions/functions-proxies).
 
 Otestujte napodobeninu rozhraní API voláním koncového bodu `<YourProxyApp>.azurewebsites.net/api/users/{username}` pomocí prohlížeče nebo oblíbeného klienta REST. Nezapomeňte nahradit _{username}_ řetězcovou hodnotou představující uživatelské jméno.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli, jak vytvořit a přizpůsobit rozhraní API na Azure Functions. Také jste zjistili, jak spojit více rozhraní API (včetně napodobenin) do jednoho sjednoceného rozsahu rozhraní API. Pomocí těchto technik můžete vytvořit jakkoli složité rozhraní API, a zároveň používat bezserverový výpočetní model, který poskytuje služba Azure Functions.
+V tomto článku jste zjistili, jak vytvořit a přizpůsobit rozhraní API na Azure Functions. Také jste zjistili, jak spojit více rozhraní API (včetně napodobenin) do jednoho sjednoceného rozsahu rozhraní API. Pomocí těchto technik můžete vytvořit jakkoli složité rozhraní API, a zároveň používat bezserverový výpočetní model, který poskytuje služba Azure Functions.
 
 Při dalším vývoji rozhraní API vám mohou přijít vhod následující odkazy:
 

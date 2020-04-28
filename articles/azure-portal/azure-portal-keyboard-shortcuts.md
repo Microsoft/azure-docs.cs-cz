@@ -1,6 +1,6 @@
 ---
-title: Klávesové zkratky portálu Azure | Dokumenty společnosti Microsoft
-description: Portál Azure podporuje globální klávesové zkratky, které vám pomůžou provádět akce, procházet a přecházet na místa na webu Azure Portal.
+title: Klávesové zkratky Azure Portal | Microsoft Docs
+description: Azure Portal podporuje globální klávesové zkratky, které vám pomůžou při provádění akcí, procházení a přechodu na umístění v Azure Portal.
 services: azure-portal
 documentationcenter: ''
 author: adamabmsft
@@ -16,42 +16,42 @@ ms.date: 12/20/2019
 ms.author: mblythe
 ms.custom: accessibility
 ms.openlocfilehash: e42dfc82fa0db028894dd77225621e867d79dac6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75641329"
 ---
-# <a name="keyboard-shortcuts-in-the-azure-portal"></a>Klávesové zkratky na webu Azure Portal
+# <a name="keyboard-shortcuts-in-the-azure-portal"></a>Klávesové zkratky v Azure Portal
 
-V tomto článku jsou uvedeny klávesové zkratky, které fungují všude na webu Azure Portal. Jednotlivé služby mohou mít své vlastní klávesové zkratky.
+Tento článek obsahuje seznam klávesových zkratek, které fungují všude v Azure Portal. Jednotlivé služby mohou mít své vlastní klávesové zkratky.
 
 ## <a name="actions"></a>Akce
 
 |Akce |Klávesová zkratka |
 | --- | --- |
-|Vytvoření prostředku|G+N|
-|Otevřít **všechny služby**|G+B|
-|Hledat prostředky, služby a dokumenty|G+/|
-|Hledat položky nabídky zdroje|CTRL+/ |
-|Přesunutí vybrané položky levého postranního panelu nahoru |ALT+Shift+šipka nahoru|
-|Přesunutí vybrané položky levého postranního panelu dolů |ALT+Shift+šipka dolů|
+|Vytvoření prostředku|G + N|
+|Otevřít **všechny služby**|G + B|
+|Hledat prostředky, služby a dokumenty|G +/|
+|Hledat položky nabídky prostředků|CTRL +/ |
+|Přesunout vybranou položku levého bočního panelu |ALT + SHIFT + šipka nahoru|
+|Přesunout vybranou položku levého bočního panelu dolů |ALT + SHIFT + šipka dolů|
 
 ## <a name="navigation"></a>Navigace
 
-|Chcete-li tuto navigaci |Klávesová zkratka |
+|K provedení této navigace |Klávesová zkratka |
 | --- | --- |
-|Přesunutí fokusu na panel příkazů |G+, |
-|Přepnutí fokusu mezi záhlavím a levým postranním panelem | G+. |
+|Přesunout fokus na panel příkazů |G +, |
+|Přepnout fokus mezi záhlavím a levým bočním panelem | G + |
 
 ## <a name="go-to"></a>Přejít na
 
-|Chcete-li přejít na toto místo |Klávesová zkratka |
+|Přejít na toto umístění |Klávesová zkratka |
 | --- | --- |
-|Přejít na **řídicí panel** |G+D |
-|Přejít na **Všechny zdroje**|G+A |
-|Přejít na **skupiny prostředků**|G+R |
-|Otevření položky levého postranního panelu v této poloze |G+číslo|
+|Přejít na **řídicí panel** |G + D |
+|Přejít na **všechny prostředky**|G + A |
+|Přejít na **skupiny prostředků**|G + R |
+|Otevřít levou položku bočního panelu na této pozici |Číslo G +|
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: Pracovní postupy konfigurace okruhů'
-description: Na této stránce jsou zobrazeny pracovní postupy pro konfiguraci okruhu ExpressRoute a partnerských stran.
+title: 'Azure ExpressRoute: pracovní postupy konfigurace okruhů'
+description: Tato stránka zobrazuje pracovní postupy pro konfiguraci okruhu ExpressRoute a partnerských vztahů.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,96 +8,96 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: cherylmc
 ms.openlocfilehash: e833e20085d7cfd8f727acb394851e96e7e19368
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75864362"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>Pracovní postupy ExpressRoute pro zřizování a stavy okruhů
-Tato stránka vás provede pracovní postupy konfigurace zřizování služeb a směrování na vysoké úrovni.
+Tato stránka vás provede pracovními postupy pro zřizování a konfiguraci směrování na vysoké úrovni.
 
 ![pracovní postup okruhu](./media/expressroute-workflows/expressroute-circuit-workflow.png)
 
-Následující obrázek a odpovídající kroky popisují úkoly pro zřízení okruhu ExpressRoute od konce do konce. 
+Následující obrázek a odpovídající kroky popisují úlohy pro zajištění komplexního okruhu ExpressRoute. 
 
-1. Ke konfiguraci okruhu ExpressRoute použijte prostředí PowerShell. Další podrobnosti naleznete v pokynech v článku [Vytvořit okruhy ExpressRoute.](expressroute-howto-circuit-classic.md)
-2. Objednejte připojení od poskytovatele služeb. Tento proces se liší. Další informace o způsobu objednání připojení získáte od svého poskytovatele připojení.
-3. Ujistěte se, že okruh byl úspěšně zřízen ověřením stavu zřizování okruhu ExpressRoute prostřednictvím prostředí PowerShell. 
-4. Konfigurace směrovacích domén. Pokud váš poskytovatel připojení spravuje konfiguraci vrstvy 3, nakonfiguruje směrování pro váš okruh. Pokud váš poskytovatel připojení nabízí pouze služby vrstvy 2, je nutné nakonfigurovat směrování podle pokynů popsaných v [požadavcích na směrování](expressroute-routing.md) a [na konfiguračních](expressroute-howto-routing-classic.md) stránkách směrování.
+1. Ke konfiguraci okruhu ExpressRoute použijte PowerShell. Další podrobnosti najdete v článku o [Vytvoření okruhů ExpressRoute](expressroute-howto-circuit-classic.md) .
+2. Objednat připojení od poskytovatele služeb. Tento proces se liší. Podrobnější informace o tom, jak objednat připojení, získáte od svého poskytovatele připojení.
+3. Ujistěte se, že okruh byl úspěšně zřízen tím, že ověřuje stav zřizování okruhu ExpressRoute prostřednictvím PowerShellu. 
+4. Nakonfigurujte domény směrování. Pokud poskytovatel připojení spravuje konfiguraci vrstvy 3, nakonfiguruje směrování pro váš okruh. Pokud poskytovatel připojení nabízí pouze služby úrovně 2, je nutné nakonfigurovat směrování podle pokynů popsaných v tématu [požadavky směrování](expressroute-routing.md) a [Konfigurace směrování](expressroute-howto-routing-classic.md) .
    
-   * Povolit privátní partnerský vztah Azure – povolit tento partnerský vztah pro připojení k virtuálním počítačům / cloudovým službám nasazeným v rámci virtuálních sítí.
+   * Povolit privátní partnerské vztahy Azure – povolte tomuto partnerskému vztahu připojení k virtuálním počítačům/cloudovým službám nasazeným v rámci virtuálních sítí.
 
-   * Povolení partnerského vztahu Microsoftu – Povolte přístup k online službám Microsoftu, jako je Office 365. Všechny služby Azure PaaS jsou přístupné prostřednictvím partnerského vztahu Microsoftu.
+   * Povolit partnerský vztah Microsoftu – Povolte toto oprávnění pro přístup k Microsoft online služby, jako je třeba Office 365. Všechny služby Azure PaaS jsou přístupné prostřednictvím partnerského vztahu Microsoftu.
      
      > [!IMPORTANT]
-     > Musíte zajistit, že používáte samostatný proxy / okraj pro připojení k Microsoftu, než ten, který používáte pro Internet. Použití stejné hrany pro ExpressRoute i Internet způsobí asymetrické směrování a způsobí výpadky připojení pro vaši síť.
+     > Abyste se mohli připojit k Microsoftu, než je ten, který používáte pro Internet, musíte zajistit, abyste použili samostatný proxy server nebo Edge. Použití stejné hrany pro ExpressRoute i Internet způsobí asymetrické směrování a způsobí výpadky připojení pro vaši síť.
      > 
      > 
      
      ![pracovní postupy směrování](./media/expressroute-workflows/routing-workflow.png)
-5. Propojení virtuálních sítí s okruhy ExpressRoute – virtuální sítě můžete propojit s okruhem ExpressRoute. Postupujte podle pokynů [k propojení virtuálních sítí](expressroute-howto-linkvnet-arm.md) s okruhem. Tyto virtuální sítě může být buď ve stejném předplatném Azure jako okruh ExpressRoute, nebo může být v jiném předplatném.
+5. Propojení virtuálních sítí s okruhy ExpressRoute – virtuální sítě můžete propojit se svým okruhem ExpressRoute. Podle pokynů [Připojte virtuální sítě](expressroute-howto-linkvnet-arm.md) k vašemu okruhu. Tyto virtuální sítě můžou být buď ve stejném předplatném Azure jako okruh ExpressRoute, nebo můžou být v jiném předplatném.
 
-## <a name="expressroute-circuit-provisioning-states"></a>Stavy zřizování okruhů ExpressRoute
+## <a name="expressroute-circuit-provisioning-states"></a>Stavy zřizování okruhu ExpressRoute
 Každý okruh ExpressRoute má dva stavy:
 
 * Stav zřizování poskytovatele služeb
 * Status
 
-Stav představuje stav zřizování společnosti Microsoft. Tato vlastnost je nastavena na povoleno při vytváření okruhu Expressroute
+Stav představuje stav zřizování společnosti Microsoft. Tato vlastnost je nastavená na povoleno při vytváření okruhu ExpressRoute.
 
-Stav zřizování zprostředkovatele připojení představuje stav na straně poskytovatele připojení. Může být buď *NotProvisioned*, *Provisioning*nebo *Provisioned*. Okruh ExpressRoute musí být ve stavu Zřízeno, aby bylo možné konfigurovat partnerský vztah.
+Stav zřizování poskytovatele připojení představuje stav na straně poskytovatele připojení. Může to být buď *NotProvisioned*, *zřizování*, nebo *zřízené*. Okruh ExpressRoute musí být v zřízeném stavu, aby bylo možné konfigurovat partnerské vztahy.
 
 ### <a name="possible-states-of-an-expressroute-circuit"></a>Možné stavy okruhu ExpressRoute
-V této části jsou uvedeny možné stavy okruhu ExpressRoute.
+V této části najdete seznam možných stavů okruhu ExpressRoute.
 
-**V době vytvoření**
+**V okamžiku vytvoření**
 
-Okruh ExpressRoute bude při vytváření prostředků vykazovat následující stavy.
+Okruh ExpressRoute bude při vytváření prostředku hlásit následující stavy.
 
     ServiceProviderProvisioningState : NotProvisioned
     Status                           : Enabled
 
 
-**Když je poskytovatel připojení v procesu zřizování okruhu**
+**Když poskytovatel připojení zaznamená proces zřizování okruhu**
 
-Okruh ExpressRoute bude hlásit následující stavy, zatímco poskytovatel připojení pracuje na zřízení okruhu.
+Okruh ExpressRoute oznámí následující stavy, zatímco poskytovatel připojení pracuje na zřízení okruhu.
 
     ServiceProviderProvisioningState : Provisioning
     Status                           : Enabled
 
 
-**Po dokončení procesu zřizování zprostředkovatele připojení**
+**Když poskytovatel připojení dokončí proces zajišťování**
 
-Okruh ExpressRoute ohlásí následující stavy, jakmile poskytovatel připojení úspěšně zřídí okruh.
+Po úspěšném zřízení okruhu poskytovatel připojení oznámí následující stavy ExpressRoute.
 
     ServiceProviderProvisioningState : Provisioned
     Status                           : Enabled
 
 
-**Když poskytovatel připojení deprovisioning okruhu**
+**Když poskytovatel připojení ruší zřízení okruhu**
 
-Pokud je třeba okruh ExpressRoute odložit, okruh ohlásí následující stavy, jakmile poskytovatel služeb dokončí proces zrušení zřízení.
+Pokud je potřeba zrušit zřízení okruhu ExpressRoute, okruh oznámí následující stavy, jakmile poskytovatel služby dokončí proces zrušení zřízení.
 
     ServiceProviderProvisioningState : NotProvisioned
     Status                           : Enabled
 
 
-V případě potřeby jej můžete znovu povolit nebo spustit rutiny prostředí PowerShell, které obvod odstraníte.  
+V případě potřeby ho můžete v případě potřeby znovu povolit, nebo můžete k odstranění okruhu použít rutiny PowerShellu.  
 
 > [!IMPORTANT]
-> Okruh nelze odstranit, pokud ServiceProviderProvisioningState je zřizování nebo zřizování. Poskytovatel připojení musí před odstraněním odstranit okruh. Microsoft bude pokračovat v účtování okruhu, dokud není v Azure odstraněn prostředek okruhu ExpressRoute.
+> Okruh nelze odstranit při zřizování nebo zřizování ServiceProviderProvisioningState. Poskytovatel připojení musí zrušit zřízení okruhu, aby ho bylo možné odstranit. Společnost Microsoft bude nadále účtovat okruh, dokud nebude prostředek okruhu ExpressRoute odstraněn v Azure.
 > 
 
 ## <a name="routing-session-configuration-state"></a>Stav konfigurace relace směrování
-Stav zřizování protokolu BGP hlásí, pokud byla na okraji Microsoftu povolena relace protokolu BGP. Stav musí být povolen pro použití soukromého partnerského vztahu nebo partnerského vztahu Microsoft.
+Stav zřizování protokolu BGP je v případě, že je relace protokolu BGP povolená na Microsoft Edge. Stav musí být povolen pro použití privátního partnerského vztahu nebo partnerského vztahu Microsoftu.
 
-Je důležité zkontrolovat stav relace Protokolu BGP, zejména pro partnerský vztah společnosti Microsoft. Kromě stavu zřizování Protokolu BGP existuje jiný stav nazývaný *stav inzerovaných veřejných předpon*. Stav inzerovaných veřejných předpon musí být ve *stavu nakonfigurované,* aby byla relace Protokolu BGP dokončena a směrování fungovalo od konce do konce. 
+Je důležité, abyste zkontrolovali stav relace protokolu BGP zvlášť pro partnerský vztah Microsoftu. Kromě stavu zřizování protokolu BGP je k dispozici jiný stav nazvaný *advertised Public prefixs State*. Stav inzerovaných veřejných předpon musí být v *nakonfigurovaném* stavu, obě pro relaci protokolu BGP budou funkční a vaše směrování bude fungovat až po celý. 
 
-Pokud je inzerovaný stav veřejné předpony nastaven na *stav potřebný pro ověření,* relace Protokolu BGP není povolena, protože inzerované předpony neodpovídaly číslu AS v žádné z registrů směrování. 
+Pokud je stav inzerované veřejné předpony nastavený na stav *vyžadováno ověření* , relace protokolu BGP není povolená, protože inzerované předpony neodpovídaly číslu as v žádné z registrů směrování. 
 
 > [!IMPORTANT]
-> Pokud je stav inzerovaných veřejných předpon ve stavu *ručního ověřování,* je třeba otevřít lístek podpory s [podporou společnosti Microsoft](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a poskytnout důkaz, že vlastníte inzerované IP adresy spolu s přidruženým číslem autonomního systému.
+> Pokud stav inzerovaných veřejných předpon je ve stavu *ručního ověření* , budete muset otevřít lístek podpory s [podporou Microsoftu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a poskytnout důkaz, že vlastníte IP adresy, které jste si přizpůsobili, spolu s přidruženým číslem autonomního systému.
 > 
 > 
 

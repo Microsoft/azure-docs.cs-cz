@@ -1,47 +1,47 @@
 ---
-title: Spolehlivé služby oznámení
-description: Koncepční dokumentace pro service fabric spolehlivé služby oznámení pro spolehlivé správce stavu a spolehlivý slovník
+title: Oznámení Reliable Services
+description: Koncepční dokumentace pro Service Fabric Reliable Services oznámení pro správce Reliable State Manager a Reliable Dictionary
 author: mcoskun
 ms.topic: conceptual
 ms.date: 6/29/2017
 ms.author: mcoskun
 ms.openlocfilehash: 1f3239ea1da252ccd84c6572b562756c8fd1677d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75639560"
 ---
-# <a name="reliable-services-notifications"></a>Spolehlivé služby oznámení
-Oznámení umožňují klientům sledovat změny, které jsou prováděny na objekt, který je zajímá. Oznámení podporují dva typy objektů: *Spolehlivý správce stavu* a Spolehlivý *slovník*.
+# <a name="reliable-services-notifications"></a>Oznámení Reliable Services
+Oznámení umožňují klientům sledovat změny provedené v objektu, který zajímá. Oznámení podporují dva typy objektů: *Reliable State Manager* a *Reliable Dictionary*.
 
-Běžné důvody pro použití oznámení jsou:
+Mezi běžné důvody použití oznámení patří:
 
-* Vytváření materializovaných zobrazení, jako jsou sekundární indexy nebo agregovaná filtrovaná zobrazení stavu repliky. Příkladem je seřazený index všech klíčů ve spolehlivém slovníku.
-* Odesílání dat monitorování, například počtu uživatelů přidaných za poslední hodinu.
+* Sestavování materializovaná zobrazení, jako jsou sekundární indexy nebo agregovaná filtrovaná zobrazení stavu repliky. Příkladem je seřazený index všech klíčů ve spolehlivém slovníku.
+* Odesílání dat monitorování, jako je počet přidaných uživatelů za poslední hodinu.
 
-Oznámení jsou aktivována jako součást použití operací. Z tohoto důvodu by oznámení měla být zpracována co nejrychleji a synchronní události by neměly zahrnovat žádné nákladné operace.
+Oznámení se aktivují jako součást provádění operací. Z toho důvodu by měla být oznámení zpracovávána co nejrychleji a synchronní události by neměly zahrnovat žádné nákladné operace.
 
-## <a name="reliable-state-manager-notifications"></a>Spolehlivá oznámení správce stavu
-Správce spolehlivého stavu poskytuje oznámení pro následující události:
+## <a name="reliable-state-manager-notifications"></a>Oznámení správce spolehlivého stavu
+Správce Reliable State poskytuje oznámení o následujících událostech:
 
 * Transakce
   * Potvrzení
-* Správce státu
+* Správce stavu
   * Opětovné sestavení (Rebuild)
   * Přidání spolehlivého stavu
-  * Odstranění spolehlivého stavu
+  * Odebrání spolehlivého stavu
 
-Spolehlivý správce stavu sleduje aktuální transakce během letu. Jediná změna ve stavu transakce, která způsobí, že oznámení, které má být aktivována je transakce potvrzena.
+Správce Reliable State sleduje aktuální transakce v transakci. Jediná změna ve stavu transakce, která způsobuje, že je oznámení aktivováno, je transakce potvrzena.
 
-Správce spolehlivého stavu udržuje kolekci spolehlivých stavů, jako je spolehlivý slovník a spolehlivá fronta. Spolehlivé Správce stavu vyvolá oznámení při této změně kolekce: je přidán nebo odebrán spolehlivý stav nebo je znovu sestavena celá kolekce.
-Kolekce Reliable State Manager je znovu sestavena ve třech případech:
+Reliable State Manager udržuje kolekci spolehlivých stavů, jako je spolehlivý slovník a spolehlivá fronta. Správce spolehlivého stavu aktivuje oznámení, když se tato kolekce změní: je přidán nebo odebrán spolehlivý stav nebo je znovu sestavena celá kolekce.
+Kolekce Reliable State Manageru se znovu sestaví ve třech případech:
 
-* Obnovení: Při spuštění repliky obnoví předchozí stav z disku. Na konci obnovení používá **NotifyStateManagerChangedEventArgs** k požáru události, která obsahuje sadu obnovených spolehlivých stavů.
-* Úplná kopie: Před replika může připojit konfigurační sadu, musí být sestaven. Někdy to vyžaduje úplnou kopii stavu správce spolehlivého stavu z primární repliky, která má být použita na nečinné sekundární repliky. Správce spolehlivého stavu na sekundární replice používá **NotifyStateManagerChangedEventArgs** k požáru události, která obsahuje sadu spolehlivých stavů, které získala z primární repliky.
-* Obnovení: Ve scénářích zotavení po havárii lze stav repliky obnovit ze zálohy prostřednictvím **nástroje RestoreAsync**. V takových případech správce spolehlivého stavu na primární replice používá **NotifyStateManagerChangedEventArgs** k požáru události, která obsahuje sadu spolehlivých stavů, které obnovil ze zálohy.
+* Obnovení: když se spustí replika, obnoví předchozí stav z disku. Na konci obnovení používá **NotifyStateManagerChangedEventArgs** k vyvolání události, která obsahuje sadu obnovených spolehlivých stavů.
+* Úplná kopie: předtím, než se replika může připojit ke konfigurační sadě, je nutné ji sestavit. V některých případech vyžaduje, aby se pro sekundární repliku nečinných dat nastavila úplná kopie stavu spolehlivého správce stavu z primární repliky. Reliable State Manager v sekundární replice používá **NotifyStateManagerChangedEventArgs** k vyvolání události, která obsahuje sadu spolehlivých stavů, které získala z primární repliky.
+* Obnovení: ve scénářích zotavení po havárii je možné obnovit stav repliky ze zálohy prostřednictvím **RestoreAsync**. V takových případech používá správce Reliable State na primární replice **NotifyStateManagerChangedEventArgs** k vyvolání události, která obsahuje sadu spolehlivých stavů, které obnovila ze zálohy.
 
-Chcete-li se zaregistrovat pro oznámení o transakcích nebo oznámení správce stavu, musíte se zaregistrovat u událostí **TransactionChanged** nebo **StateManagerChanged** ve Správci spolehlivého stavu. Běžné místo pro registraci s těmito obslužnými rutinami událostí je konstruktor stavové služby. Když se zaregistrujete na konstruktoru, nezmeškáte žádné oznámení, které je způsobeno změnou během životnosti **IReliableStateManager**.
+Pokud chcete zaregistrovat oznámení o transakcích a oznámeních správce stavu, musíte se zaregistrovat s **TransactionChanged** nebo **StateManagerChanged** událostmi ve Správci Reliable State Manager. Běžným místem pro registraci těchto obslužných rutin událostí je konstruktor stavové služby. Při registraci do konstruktoru nepřijdete o žádné oznámení, které se v průběhu životnosti **IReliableStateManager**způsobilo změnou.
 
 ```csharp
 public MyService(StatefulServiceContext context)
@@ -52,14 +52,14 @@ public MyService(StatefulServiceContext context)
 }
 ```
 
-Obslužná rutina události **TransactionChanged** používá **NotifyTransactionChangedEventArgs** k poskytnutí podrobností o události. Obsahuje vlastnost akce (například **NotifyTransactionChangedAction.Commit),** která určuje typ změny. Obsahuje také vlastnost transakce, která poskytuje odkaz na transakci, která se změnila.
+Obslužná rutina události **TransactionChanged** používá **NotifyTransactionChangedEventArgs** k poskytnutí podrobností o události. Obsahuje vlastnost Action (například **NotifyTransactionChangedAction. Commit**), která určuje typ změny. Obsahuje také transakční vlastnost, která poskytuje odkaz na transakci, která se změnila.
 
 > [!NOTE]
-> Dnes **TransactionChanged** události jsou aktivovány pouze v případě, že transakce je potvrzena. Akce se pak rovná **NotifyTransactionChangedAction.Commit**. Ale v budoucnu události mohou být vyvolány pro jiné typy změn stavu transakce. Akci doporučujeme zkontrolovat a událost zpracovat pouze v případě, že se jedná o událost, kterou očekáváte.
+> Dnes jsou události **TransactionChanged** vyvolány pouze v případě, že je transakce potvrzena. Akce se pak rovná **NotifyTransactionChangedAction. Commit**. V budoucnu ale mohou být události vyvolány pro jiné typy změny stavu transakce. Doporučujeme, abyste provedli kontrolu akce a zpracovali událost pouze v případě, že se jedná o tu, kterou očekáváte.
 > 
 > 
 
-Následuje ukázka obslužné rutiny události **TransactionChanged.**
+Následuje příklad obslužné rutiny události **TransactionChanged** .
 
 ```csharp
 private void OnTransactionChangedHandler(object sender, NotifyTransactionChangedEventArgs e)
@@ -74,14 +74,14 @@ private void OnTransactionChangedHandler(object sender, NotifyTransactionChanged
 }
 ```
 
-Obslužná rutina události StateManagerChanged používá k poskytnutí podrobností o **události.StateManagerChanged** event handler uses **NotifyStateManagerChangedEventArgs** to provide details about the event.
+Obslužná rutina události **StateManagerChanged** používá **NotifyStateManagerChangedEventArgs** k poskytnutí podrobností o události.
 **NotifyStateManagerChangedEventArgs** má dvě podtřídy: **NotifyStateManagerRebuildEventArgs** a **NotifyStateManagerSingleEntityChangedEventArgs**.
-Vlastnost akce v **funkci NotifyStateManagerChangedEventArgs použijete** k přetypování **objektu NotifyStateManagerChangedEventArgs** do správné podtřídy:
+Vlastnost Action v **NotifyStateManagerChangedEventArgs** můžete použít k přetypování **NotifyStateManagerChangedEventArgs** na správnou podtřídu:
 
-* **NotifyStateManagerChangedAction.Rebuild**: **NotifyStateManagerRebuildEventArgs**
-* **NotifyStateManagerChangedAction.Add** a **NotifyStateManagerChangedAction.Remove**: **NotifyStateManagerSingleEntityChangedEventArgs**
+* **NotifyStateManagerChangedAction. Rebuild**: **NotifyStateManagerRebuildEventArgs**
+* **NotifyStateManagerChangedAction. Add** a **NotifyStateManagerChangedAction. Remove**: **NotifyStateManagerSingleEntityChangedEventArgs**
 
-Následuje příklad obslužné rutiny oznámení **StateManagerChanged.**
+Následuje příklad obslužné rutiny oznámení **StateManagerChanged** .
 
 ```csharp
 public void OnStateManagerChangedHandler(object sender, NotifyStateManagerChangedEventArgs e)
@@ -97,17 +97,17 @@ public void OnStateManagerChangedHandler(object sender, NotifyStateManagerChange
 }
 ```
 
-## <a name="reliable-dictionary-notifications"></a>Spolehlivé slovníkové oznámení
+## <a name="reliable-dictionary-notifications"></a>Spolehlivé slovníková oznámení
 Spolehlivý slovník poskytuje oznámení pro následující události:
 
-* Znovu sestavit: Volána při **ReliableDictionary** obnovila svůj stav z obnovené nebo zkopírované místní ho stavu nebo zálohy.
-* Clear: Voláno při stavu **ReliableDictionary** byla vymazána prostřednictvím **ClearAsync** metody.
-* Přidat: Volána, když byla přidána položka **do ReliableDictionary**.
-* Aktualizace: Volána při aktualizaci položky v **iReliableDictionary.**
-* Odebrat: Voláno, když byla odstraněna položka v **iReliableDictionary.**
+* Rebuild: volá se, když **ReliableDictionary** obnovil svůj stav z obnoveného nebo zkopírovaného místního stavu nebo zálohy.
+* Clear: volá se, když se stav **ReliableDictionary** vymazal pomocí metody **ClearAsync** .
+* Add: volá se, když se do **ReliableDictionary**přidá položka.
+* Update: volá se, když se aktualizovala položka v **IReliableDictionary** .
+* Remove: volá se, když se odstraní položka v **IReliableDictionary** .
 
-Chcete-li získat spolehlivé slovníku oznámení, musíte se zaregistrovat s **DictionaryChanged** obslužnou rutinou události na **IReliableDictionary**. Běžné místo pro registraci s těmito obslužnými rutinami událostí je v oznámení o přidání **Služby ReliableStateManager.StateManagerChanged.**
-Registrace při **přidání IReliableDictionary** do **IReliableStateManager** zajišťuje, že nebudete chybět žádné oznámení.
+Chcete-li získat spolehlivé upozornění slovníku, je nutné se zaregistrovat v obslužné rutině události **DictionaryChanged** v **IReliableDictionary**. Běžné místo pro registraci s těmito obslužnými rutinami událostí je v **ReliableStateManager. StateManagerChanged** přidat oznámení.
+Registrace při přidání **IReliableDictionary** do **IReliableStateManager** zajistí, že nepřijdete o žádná oznámení.
 
 ```csharp
 private void ProcessStateManagerSingleEntityNotification(NotifyStateManagerChangedEventArgs e)
@@ -127,11 +127,11 @@ private void ProcessStateManagerSingleEntityNotification(NotifyStateManagerChang
 ```
 
 > [!NOTE]
-> **ProcessStateManagerSingleEntityNotification** je ukázková metoda, kterou volá předchozí příklad **OnStateManagerChangedHandler.**
+> **ProcessStateManagerSingleEntityNotification** je ukázková metoda, kterou předchozí **OnStateManagerChangedHandler** příklad volá.
 > 
 > 
 
-Předchozí kód nastaví rozhraní **IReliableNotificationAsyncCallback** spolu s **DictionaryChanged**. Protože **NotifyDictionaryRebuildEventArgs** obsahuje rozhraní **IAsyncEnumerable** -- které musí být výčtu asynchronně -- znovu sestavit oznámení jsou aktivována prostřednictvím **RebuildNotificationAsyncCallback** namísto **OnDictionaryChangedHandler**.
+Předchozí kód nastaví rozhraní **IReliableNotificationAsyncCallback** spolu s **DictionaryChanged**. Vzhledem k tomu, že **NotifyDictionaryRebuildEventArgs** obsahuje rozhraní **IAsyncEnumerable** , které musí být vyhodnoceny jako asynchronní – oznámení o opětovném sestavení jsou spouštěna prostřednictvím **RebuildNotificationAsyncCallback** namísto **OnDictionaryChangedHandler**.
 
 ```csharp
 public async Task OnDictionaryRebuildNotificationHandlerAsync(
@@ -149,18 +149,18 @@ public async Task OnDictionaryRebuildNotificationHandlerAsync(
 ```
 
 > [!NOTE]
-> V předchozím kódu jako součást zpracování oznámení o obnovení nejprve udržovaný agregovaný stav je vymazána. Vzhledem k tomu, že spolehlivé kolekce je znovu sestavit s novým stavem, všechna předchozí oznámení jsou irelevantní.
+> V předchozím kódu, jako součást zpracování oznámení o opětovném sestavení, je nejprve vymazán agregovaný stav. Vzhledem k tomu, že je spolehlivá kolekce znovu sestavena s novým stavem, všechna předchozí oznámení jsou nerelevantní.
 > 
 > 
 
-Obslužná rutina události DictionaryChanged používá k poskytnutí podrobností o **události.The DictionaryChanged** event handler uses **NotifyDictionaryChangedEventArgs** to provide details about the event.
-**NotifyDictionaryChangedEventArgs** má pět podtříd. Pomocí vlastnosti akce v **editoru NotifyDictionaryChangedEventArgs** přetypte do správné podtřídy: **NotifyDictionaryChangedEventArgs**
+Obslužná rutina události **DictionaryChanged** používá **NotifyDictionaryChangedEventArgs** k poskytnutí podrobností o události.
+**NotifyDictionaryChangedEventArgs** má pět podtříd. Použijte vlastnost Action v **NotifyDictionaryChangedEventArgs** k přetypování **NotifyDictionaryChangedEventArgs** na správnou podtřídu:
 
-* **NotifyDictionaryChangedAction.Rebuild**: **NotifyDictionaryRebuildEventArgs**
-* **NotifyDictionaryChangedAction.Clear**: **NotifyDictionaryClearEventArgs**
-* **NotifyDictionaryChangedAction.Add**: **NotifyDictionaryItemAddedEventArgs**
-* **NotifyDictionaryChangedAction.Update**: **NotifyDictionaryItemUpdatedEventArgs**
-* **NotifyDictionaryChangedAction.Remove:** **NotifyDictionaryItemRemovedEventArgs**
+* **NotifyDictionaryChangedAction. Rebuild**: **NotifyDictionaryRebuildEventArgs**
+* **NotifyDictionaryChangedAction. Clear**: **NotifyDictionaryClearEventArgs**
+* **NotifyDictionaryChangedAction. Add**: **NotifyDictionaryItemAddedEventArgs**
+* **NotifyDictionaryChangedAction. Update**: **NotifyDictionaryItemUpdatedEventArgs**
+* **NotifyDictionaryChangedAction. Remove**: **NotifyDictionaryItemRemovedEventArgs**
 
 ```csharp
 public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEventArgs<TKey, TValue> e)
@@ -194,21 +194,21 @@ public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEve
 ```
 
 ## <a name="recommendations"></a>Doporučení
-* *Proveďte* co nejrychleji úplné události oznámení.
-* *Do not* Neprováděte žádné nákladné operace (například vstupně-tovité operace) jako součást synchronních událostí.
-* *Před* zpracováním události zkontrolujte typ akce. V budoucnu mohou být přidány nové typy akcí.
+* Co nejrychleji *dokončete události* s oznámením.
+* V rámci synchronních událostí *neprovádějte žádné* nákladné operace (například operace v/v).
+* Před zpracováním události *Projděte typ* akce. V budoucnu mohou být přidány nové typy akcí.
 
-Zde je několik věcí, které je třeba mít na paměti:
+Tady je několik věcí, které je potřeba vzít v úvahu:
 
-* Oznámení jsou aktivována jako součást provádění operace. Například oznámení o obnovení je aktivována jako poslední krok operace obnovení. Obnovení nebude dokončeno, dokud nebude zpracována událost oznámení.
-* Vzhledem k tomu, že oznámení jsou aktivována jako součást operace použití, klienti zobrazit pouze oznámení pro místně potvrzené operace. A protože operace jsou zaručeny pouze místně potvrzena (jinými slovy, protokolované), mohou nebo nemusí být vrátit zpět v budoucnu.
-* Na cestě opakování je aktivována jedno oznámení pro každou použitou operaci. To znamená, že pokud transakce T1 zahrnuje Create(X), Delete(X) a Create(X), dostanete jedno oznámení pro vytvoření X, jeden pro odstranění a jeden pro vytvoření znovu, v tomto pořadí.
-* U transakcí, které obsahují více operací, jsou operace použity v pořadí, ve kterém byly přijaty na primární replice od uživatele.
-* Jako součást zpracování false průběhu některé operace může být vrátit zpět. Oznámení jsou vyvolány pro takové operace zpět, válcování stav repliky zpět do stabilního bodu. Jeden důležitý rozdíl oznámení vrátit vrátit do je, že události, které mají duplicitní klíče jsou agregovány. Například pokud transakce T1 se provádí zpět, zobrazí se jediné oznámení Delete(X).
+* Oznámení se aktivují jako součást provádění operace. Například oznámení obnovení je aktivováno jako poslední krok operace obnovení. Obnovení se nedokončí až po zpracování události oznámení.
+* Vzhledem k tomu, že jsou oznámení aktivována v rámci provádění operací, klienti uvidí pouze oznámení pro místně potvrzené operace. A vzhledem k tomu, že operace mají záruku jenom místně potvrzené (jinými slovy, protokolují se), můžou nebo nemusí být v budoucnu navrácené.
+* Na cestě k opakovanému použití se pro každou použitou operaci aktivuje jedno oznámení. To znamená, že pokud transakce T1 zahrnuje Create (X), Delete (X) a Create (X), dostanete jedno oznámení o vytvoření X, jednu pro odstranění a jedno pro vytvoření znovu v tomto pořadí.
+* Pro transakce, které obsahují více operací, jsou operace aplikovány v pořadí, ve kterém byly přijaty na primární replice od uživatele.
+* V rámci zpracování nepravdivého pokroku se některé operace můžou vrátit zpátky. Pro takovéto operace vrácení zpět jsou vyvolána oznámení, když se stav repliky vrátí do stabilního bodu. Jedním z důležitých rozdílů v oznámeních o vrácení zpět je to, že jsou agregované události, které mají duplicitní klíče. Například pokud je transakce T1 nevratná, zobrazí se jedno oznámení, které se má odstranit (X).
 
 ## <a name="next-steps"></a>Další kroky
 * [Reliable Collections](service-fabric-work-with-reliable-collections.md)
-* [Spolehlivý rychlý start služeb](service-fabric-reliable-services-quick-start.md)
-* [Spolehlivé služby zálohování a obnovení (zotavení po havárii)](service-fabric-reliable-services-backup-restore.md)
-* [Odkaz pro vývojáře pro spolehlivé kolekce](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+* [Rychlý Start Reliable Services](service-fabric-reliable-services-quick-start.md)
+* [Reliable Services zálohování a obnovení (zotavení po havárii)](service-fabric-reliable-services-backup-restore.md)
+* [Referenční informace pro vývojáře pro spolehlivé kolekce](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
 

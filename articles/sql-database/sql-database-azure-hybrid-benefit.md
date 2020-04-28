@@ -1,6 +1,6 @@
 ---
 title: Zvýhodněné hybridní využití Azure
-description: Použijte existující licence serveru SQL Server pro slevy databáze SQL.
+description: Pro SQL Database slevy použijte existující licence SQL Server.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -10,57 +10,57 @@ ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/13/2019
 ms.openlocfilehash: d1a59e7ad86191bcc30b7d898d00f327c20fbc5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75945624"
 ---
 # <a name="azure-hybrid-benefit"></a>Zvýhodněné hybridní využití Azure
 
-V zřízené výpočetní vrstvě nákupního modelu založeného na virtuálních jádrech můžete vyměnit stávající licence za zvýhodněné sazby v databázi SQL pomocí [hybridní výhody Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/). Tato výhoda Azure umožňuje ušetřit až 30 procent nebo dokonce vyšší v Azure SQL Database pomocí místních licencí SQL Serveru s Programem Software Assurance. Použijte kalkulačku hybridních výhod Azure pomocí odkazu uvedeného dříve pro správné hodnoty. 
+V zřízené výpočetní úrovni v rámci nákupního modelu založeném na vCore můžete vyměňovat stávající licence pro zvýhodněné sazby SQL Database pomocí [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/). Tato výhoda Azure vám umožňuje ušetřit až 30 procent nebo dokonce vyšší na Azure SQL Database pomocí místních licencí SQL Server se Software Assurance. Použijte prosím Zvýhodněné hybridní využití Azure kalkulačku pomocí odkazu zmíněného níže pro správné hodnoty. 
 
 > [!NOTE]
-> Přechod na hybridní výhody Azure nevyžaduje žádné prostoje.
+> Změna na Zvýhodněné hybridní využití Azure nevyžaduje žádné výpadky.
 
-![Ceny](./media/sql-database-service-tiers/pricing.png)
+![stanov](./media/sql-database-service-tiers/pricing.png)
 
-## <a name="choose-a-license-model"></a>Výběr licenčního modelu
+## <a name="choose-a-license-model"></a>Zvolit model licence
 
-S hybridní výhodou Azure můžete platit jenom za základní infrastrukturu Azure pomocí stávající licence SQL Serveru pro samotný databázový stroj SQL (základní výpočetní ceny) nebo můžete platit za základní infrastrukturu i SQL Server. licence (ceny zahrnuté v licenci).
+Pomocí Zvýhodněné hybridní využití Azure se můžete rozhodnout platit jenom za základní infrastrukturu Azure pomocí vaší stávající licence SQL Server pro samotný stroj SQL Database (základní výpočetní ceny), nebo můžete platit jak pro základní infrastrukturu, tak pro SQL Server licenci (včetně ceny za licenci).
 
-Licenční model můžete zvolit nebo změnit pomocí portálu Azure nebo pomocí jednoho z následujících api:
+Licenční model můžete vybrat nebo změnit pomocí Azure Portal nebo pomocí některého z následujících rozhraní API:
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
 
-Nastavení nebo aktualizace typu licence pomocí Prostředí PowerShell:
+Chcete-li nastavit nebo aktualizovat typ licence pomocí prostředí PowerShell:
 
-- [Nová databáze AzSql](/powershell/module/az.sql/new-azsqldatabase)
-- [Set-AzSqlDatabáze](/powershell/module/az.sql/set-azsqldatabase)
-- [Nová instance AzSql](/powershell/module/az.sql/new-azsqlinstance)
-- [Instance Set-AzSqlInstance](/powershell/module/az.sql/set-azsqlinstance)
+- [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)
+- [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase)
+- [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance)
+- [Set-AzSqlInstance](/powershell/module/az.sql/set-azsqlinstance)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Nastavení nebo aktualizace typu licence pomocí příkazového příkazového příkazu Azure:
+Nastavení nebo aktualizace typu licence pomocí Azure CLI:
 
 - [az sql db create](/cli/azure/sql/db#az-sql-db-create)
 - [az sql db update](/cli/azure/sql/db#az-sql-db-update)
-- [az sql mi vytvořit](/cli/azure/sql/mi#az-sql-mi-create)
-- [az sql mi aktualizace](/cli/azure/sql/mi#az-sql-mi-update)
+- [AZ SQL mi Create](/cli/azure/sql/mi#az-sql-mi-create)
+- [AZ SQL mi Update](/cli/azure/sql/mi#az-sql-mi-update)
 
-# <a name="rest-api"></a>[ROZHRANÍ API PRO ODPOČINEK](#tab/rest)
+# <a name="rest-api"></a>[REST API](#tab/rest)
 
-Nastavení nebo aktualizace typu licence pomocí rozhraní REST API:
+Chcete-li nastavit nebo aktualizovat typ licence pomocí REST API:
 
 - [Databáze – vytvořit nebo aktualizovat](/rest/api/sql/databases/createorupdate)
-- [Databáze - Aktualizace](/rest/api/sql/databases/update)
-- [Spravované instance – vytvoření nebo aktualizace](/rest/api/sql/managedinstances/createorupdate)
+- [Databáze – aktualizace](/rest/api/sql/databases/update)
+- [Spravované instance – vytvořit nebo aktualizovat](/rest/api/sql/managedinstances/createorupdate)
 - [Spravované instance – aktualizace](/rest/api/sql/managedinstances/update)
 
 * * *
 
 ## <a name="next-steps"></a>Další kroky
 
-- Výběr mezi možnostmi nasazení databáze SQL najdete [v tématu Výběr správné možnosti nasazení v Azure SQL](sql-database-paas-vs-sql-server-iaas.md).
-- Porovnání funkcí databáze SQL najdete v tématu [Funkce databáze Azure SQL](sql-database-features.md).
+- Pokud chcete vybrat mezi možnostmi nasazení SQL Database, přečtěte si téma [Výběr správné možnosti nasazení v Azure SQL](sql-database-paas-vs-sql-server-iaas.md).
+- Porovnání funkcí SQL Database najdete v tématu [Azure SQL Database funkce](sql-database-features.md).

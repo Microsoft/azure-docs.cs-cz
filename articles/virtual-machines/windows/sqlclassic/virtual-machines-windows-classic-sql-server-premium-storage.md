@@ -1,6 +1,6 @@
 ---
-title: Použití úložiště Azure Premium se serverem SQL Server | Dokumenty společnosti Microsoft
-description: Tento článek používá prostředky vytvořené pomocí klasického modelu nasazení a poskytuje pokyny k používání azure úložiště s SQL Server běží na virtuálních počítačích Azure.
+title: Použití Azure Premium Storage s SQL Server | Microsoft Docs
+description: Tento článek používá prostředky vytvořené pomocí modelu nasazení Classic a poskytuje pokyny k používání služby Azure Premium Storage s SQL Server běžícími na Azure Virtual Machines.
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
@@ -16,59 +16,59 @@ ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 479f9abc667e20a136da5f6231e78a1e4052f087
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75965671"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Použití Azure Premium Storage s SQL Serverem na virtuálních počítačích
 
 ## <a name="overview"></a>Přehled
 
-[Azure premium SSD je](../disks-types.md) další generace úložiště, které poskytuje nízkou latenci a vysokou propustnost vi. Funguje nejlépe pro klíčové úlohy náročné na vi, jako je například SQL Server na [virtuálních počítačích](https://azure.microsoft.com/services/virtual-machines/)IaaS .
+[Azure Premium SSD](../disks-types.md) je novou generací úložiště, která poskytuje nízkou latenci a vysokou propustnost v/v. Funguje nejlépe pro úlohy náročné na vstupně-výstupní operace, například SQL Server v [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/)IaaS.
 
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a Classic](../../../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití modelu klasické nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a Classic](../../../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
 
-Tento článek obsahuje plánování a pokyny pro migraci virtuálního počítače se systémem SQL Server pro použití úložiště Premium. To zahrnuje infrastrukturu Azure (sítě, úložiště) a kroky hostovaného virtuálního počítače s Windows. Příklad v [dodatku](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage) ukazuje úplné komplexní ukončení migrace, jak přesunout větší virtuální chodů využít výhod vylepšené místní úložiště SSD s PowerShell.
+Tento článek popisuje plánování a pokyny k migraci virtuálního počítače se spuštěným SQL Server pro použití Premium Storage. To zahrnuje postupy infrastruktury Azure (sítě, úložiště) a hostovaného virtuálního počítače s Windows. V příkladu v [příloze](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage) se zobrazuje kompletní ucelená migrace, jak přesunout větší virtuální počítače, aby bylo možné využít vylepšené místní úložiště SSD pomocí PowerShellu.
 
-Je důležité pochopit proces komplexnívyužití azure premium storage s SQL Server na virtuálních počítačích IAAS. To zahrnuje:
+Je důležité pochopit, jak se v rámci procesu Azure Premium Storage využíváme SQL Server na virtuálních počítačích s IAAS. To zahrnuje:
 
-* Identifikace předpokladů pro použití úložiště Premium.
-* Příklady nasazení SQL Serveru na IaaS do úložiště Premium pro nová nasazení.
-* Příklady migrace existujících nasazení, samostatných serverů i nasazení pomocí skupin y dostupnosti SQL Always On.
-* Možné migrační přístupy.
-* Úplný příklad dokončení azure, windows a sql server kroky pro migraci existující vždy na implementaci.
+* Identifikace požadavků, které se mají použít Premium Storage.
+* Příklady nasazení SQL Server v IaaS pro Premium Storage pro nová nasazení.
+* Příklady migrace stávajících nasazení, samostatné servery a nasazení s využitím skupin dostupnosti Always On SQL serveru.
+* Možné přístupy k migraci.
+* Úplný kompletní příklad ukazující kroky pro Azure, Windows a SQL Server pro migraci existující integrované implementace Always On.
 
-Další základní informace o SQL Serveru ve virtuálních počítačích Azure najdete v tématu [SQL Server ve virtuálních počítačích Azure](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Další informace o SQL Server ve službě Azure Virtual Machines najdete v tématu [SQL Server v azure Virtual Machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
 
-**Autor:** Daniel Sol **Technické recenzenti:** Luis Carlos Vargas Herring, Sanjay Mishra, Pravin Mital, Juergen Thomas, Gonzalo Ruiz.
+**Autor:** **Techničtí kontroloři** Daniel Sol: Luis Carlos Vargas sleď, Sanjay Mishra, Pravin Mital, Juergen Tomáš, Gonzalo Ruiz.
 
-## <a name="prerequisites-for-premium-storage"></a>Předpoklady pro prémiové úložiště
+## <a name="prerequisites-for-premium-storage"></a>Předpoklady pro Premium Storage
 
-Existuje několik předpokladů pro používání úložiště Premium.
+Existuje několik požadavků na použití Premium Storage.
 
-### <a name="machine-size"></a>Velikost stroje
+### <a name="machine-size"></a>Velikost počítače
 
-Pro použití úložiště Premium je třeba použít virtuální počítače řady DS (VM). Pokud jste dříve ve své cloudové službě nepoužívali počítače řady DS, musíte odstranit existující virtuální počítač, zachovat připojené disky a pak vytvořit novou cloudovou službu před opětovným vytvořením virtuálního počítače jako velikosti role DS*. Další informace o velikostech virtuálních strojů najdete v [tématu Velikosti virtuálních strojů a cloudových služeb pro Azure](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Pro použití Premium Storage musíte použít Virtual Machines DS (VM Series). Pokud jste v cloudové službě předtím nepoužívali počítače řady DS, musíte odstranit existující virtuální počítač, zachovat připojené disky a pak vytvořit novou cloudovou službu před tím, než znovu vytvoříte virtuální počítač jako velikost role DS *. Další informace o velikostech virtuálních počítačů najdete v tématu [velikosti virtuálních počítačů a cloudových služeb pro Azure](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ### <a name="cloud-services"></a>Cloud Services
 
-Virtuální aplikace DS* s úložištěm Premium můžete používat jenom v případě, že jsou vytvořeny v nové cloudové službě. Pokud používáte SQL Server always on v Azure, vždy na schytá odkazuje na azure interní nebo externí vyrovnávání zatížení IP adresu, která je přidružena ke cloudové službě. Tento článek se zaměřuje na způsob migrace při zachování dostupnosti v tomto scénáři.
+Při vytváření v nové cloudové službě můžete použít jenom virtuální počítače DS * s Premium Storage. Pokud používáte službu SQL Server Always On v Azure, služba Always On Listener odkazuje na interní nebo Load Balancer externí IP adresu Azure, která je přidružená ke cloudové službě. Tento článek se zaměřuje na migraci a zachování dostupnosti v tomto scénáři.
 
 > [!NOTE]
-> Řada DS* musí být první virtuální virtuální ms nasazený do nové cloudové služby.
+> Řada DS * musí být prvním virtuálním počítačem, který je nasazený do nové cloudové služby.
 >
 >
 
-### <a name="regional-vnets"></a>Místní virtuální sítě
+### <a name="regional-vnets"></a>Oblastní virtuální sítě
 
-Pro virtuální počítače DS* je nutné nakonfigurovat virtuální síť (VNET) hostující vaše virtuální počítače tak, aby byly místní. To "rozšiřuje" virtuální sítě je umožnit větší virtuální chod, které mají být zřízeny v jiných clusterech a povolit komunikaci mezi nimi. Na následujícím snímku obrazovky zvýrazněné umístění zobrazuje regionální VNET, zatímco první výsledek ukazuje "úzký" Virtuální síť.
+Pro virtuální počítače DS * musíte nakonfigurovat Virtual Network (VNET) hostující vaše virtuální počítače, aby byly regionální. Tato "rozšiřující" virtuální síť umožňuje zřídit větší virtuální počítače v jiných clusterech a umožňovat komunikaci mezi nimi. Na následujícím snímku obrazovky se zvýrazněné umístění zobrazuje jako oblastní virtuální sítě, zatímco první výsledek zobrazuje "úzký" virtuální síť.
 
-![RegionálníVirtuální síť pro místní rozvoj][1]
+![RegionalVNET][1]
 
-Můžete zvýšit lístek podpory Microsoftu pro migraci do místní virtuální sítě. Microsoft pak provede změnu. Chcete-li dokončit migraci na regionální virtuální sítě, změňte vlastnost AffinityGroup v konfiguraci sítě. Nejprve exportujte konfiguraci sítě v prostředí PowerShell a potom nahraďte vlastnost **AffinityGroup** v elementu **VirtualNetworkSite** vlastností **Location.** Určete, `Location = XXXX` kde `XXXX` je oblast Azure. Pak importujte novou konfiguraci.
+Můžete vyvolat lístek podpory Microsoftu pro migraci na oblastní virtuální síť. Microsoft pak provede změnu. Pokud chcete dokončit migraci do regionálního virtuální sítě, změňte vlastnost AffinityGroup v konfiguraci sítě. Napřed exportujte konfiguraci sítě v PowerShellu a pak v elementu **VirtualNetworkSite** nahraďte vlastnost **AffinityGroup** vlastností **Location** . Určete `Location = XXXX` , `XXXX` kde je oblast Azure. Pak importujte novou konfiguraci.
 
 Například s ohledem na následující konfiguraci virtuální sítě:
 
@@ -83,7 +83,7 @@ Například s ohledem na následující konfiguraci virtuální sítě:
 </VirtualNetworkSite>
 ```
 
-Chcete-li tuto síť přesunout do regionální virtuální sítě v západní Evropě, změňte konfiguraci na následující:
+Pokud ho chcete přesunout do oblastní virtuální sítě v Západní Evropa, změňte konfiguraci na následující:
 ```xml
 <VirtualNetworkSite name="danAzureSQLnet" Location="West Europe">
 <AddressSpace>
@@ -97,59 +97,59 @@ Chcete-li tuto síť přesunout do regionální virtuální sítě v západní E
 
 ### <a name="storage-accounts"></a>Účty úložiště
 
-Musíte vytvořit nový účet úložiště, který je nakonfigurovaný pro úložiště Premium. Všimněte si, že použití úložiště Premium je nastaveno na účtu úložiště, nikoli na jednotlivých virtuálních počítačích, ale při použití virtuálního počítače řady DS* můžete připojit virtuální disky z účtů Premium a Standard Storage. Můžete to zvážit, pokud nechcete umístit virtuální pevný disk operačního systému na účet úložiště Premium.
+Musíte vytvořit nový účet úložiště, který je nakonfigurovaný pro Premium Storage. Všimněte si, že použití Premium Storage je nastavené na účet úložiště, ne na jednotlivé virtuální pevné disky, ale při použití virtuálního počítače DS * Series můžete z účtů úložiště úrovně Premium a Standard připojit virtuální pevný disk. Můžete to vzít v úvahu, pokud nechcete umístit virtuální pevný disk operačního systému na účet Premium Storage.
 
-Následující příkaz **New-AzureStorageAccountPowerShell** s **typem** "Premium_LRS" vytvoří účet úložiště Premium:
+Následující příkaz **New-AzureStorageAccountPowerShell** s **typem** "Premium_LRS" vytvoří účet Premium Storage:
 
 ```powershell
 $newstorageaccountname = "danpremstor"
 New-AzureStorageAccount -StorageAccountName $newstorageaccountname -Location "West Europe" -Type "Premium_LRS"   
 ```
 
-### <a name="vhds-cache-settings"></a>Nastavení mezipaměti virtuálních disponálů
+### <a name="vhds-cache-settings"></a>Nastavení mezipaměti VHD
 
-Hlavní rozdíl mezi vytvářením disků, které jsou součástí účtu úložiště Premium, je nastavení mezipaměti disku. Pro disky svazku dat serveru SQL Server doporučujeme použít '**Ukládání do mezipaměti**'. U svazků transakčního protokolu by mělo být nastavení mezipaměti disku nastaveno na**hodnotu**Žádný. To se liší od doporučení pro účty standard storage.
+Hlavním rozdílem mezi vytvářením disků, které jsou součástí Premium Storage účtu, je nastavení diskové mezipaměti. U SQL Serverch disků s datovým svazkem se doporučuje používat**ukládání do mezipaměti pro čtení**. U svazků protokolu transakcí by mělo být nastavení mezipaměti disku nastaveno na**hodnotu žádné**. To se liší od doporučení pro účty úložiště úrovně Standard.
 
-Po připojení virtuálních discích nelze změnit nastavení mezipaměti. Budete muset odpojit a znovu připojit virtuální pevný disk s aktualizovaným nastavením mezipaměti.
+Po připojení virtuálních pevných disků se nastavení mezipaměti nedá změnit. Je nutné odpojit a znovu připojit virtuální pevný disk s aktualizovaným nastavením mezipaměti.
 
-### <a name="windows-storage-spaces"></a>Prostory pro úložiště systému Windows
+### <a name="windows-storage-spaces"></a>Prostory úložiště Windows
 
-[Prostory úložiště Windows](https://technet.microsoft.com/library/hh831739.aspx) můžete používat stejně jako u předchozího standardního úložiště, což vám umožní migrovat virtuální hok, který už využívá prostory úložiště. Příklad v [dodatku](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage) (krok 9 a vpřed) ukazuje kód Powershell extrahovat a importovat virtuální počítač s více připojených Virtuální počítač.
+Můžete použít [prostory úložiště Windows](https://technet.microsoft.com/library/hh831739.aspx) stejně jako u předchozích standardních úložišť. to vám umožní migrovat virtuální počítač, který už využívá prostory úložiště. Příklad v [příloze](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage) (krok 9 a přeposlání) ukazuje kód PowerShellu k extrakci a importu virtuálního počítače s několika připojenými virtuálními pevnými disky.
 
-Fondy úložiště se používaly se standardním účtem úložiště Azure ke zvýšení propustnosti a snížení latence. Můžete najít hodnotu v testování fondů úložiště s úložištěm Premium pro nová nasazení, ale přidávají další složitost s nastavením úložiště.
+Fondy úložiště se používaly se standardním účtem služby Azure Storage ke zvýšení propustnosti a snížení latence. Můžete najít hodnotu v testování fondů úložiště pomocí Premium Storage pro nová nasazení, ale přidávají další složitost s nastavením úložiště.
 
-#### <a name="how-to-find-which-azure-virtual-disks-map-to-storage-pools"></a>Jak zjistit, které virtuální disky Azure jsou mapovány do fondů úložišť
+#### <a name="how-to-find-which-azure-virtual-disks-map-to-storage-pools"></a>Jak zjistit, které virtuální disky Azure se mapují na fondy úložiště
 
-Vzhledem k tomu, že existují různá doporučení pro nastavení mezipaměti pro připojené virtuální řadiče, můžete se rozhodnout zkopírovat virtuální řadiče do účtu úložiště Premium. Když je však znovu připojíte k novému virtuálnímu počítače řady DS, bude pravděpodobně nutné změnit nastavení mezipaměti. Je jednodušší použít nastavení mezipaměti doporučené úložiště Premium Storage, pokud máte samostatné virtuální pevné disky pro datové soubory SQL a soubory protokolu (spíše než jeden virtuální pevný disk, který obsahuje obojí).
+V případě, že jsou k připojeným virtuálním pevným diskům k dispozici různá nastavení mezipaměti, můžete se rozhodnout zkopírovat virtuální pevné disky na účet Premium Storage. Když je však znovu připojíte k novému virtuálnímu počítači DS Series, může být nutné změnit nastavení mezipaměti. Je jednodušší použít Premium Storage doporučená nastavení mezipaměti, když máte samostatné virtuální pevné disky pro datové soubory SQL a soubory protokolu (nikoli jeden VHD, který obsahuje obojí).
 
 > [!NOTE]
-> Pokud máte sql server data a soubory protokolu na stejném svazku, možnost ukládání do mezipaměti, kterou zvolíte, závisí na vzorcích přístupu videa pro úlohy databáze. Pouze testování může prokázat, která možnost ukládání do mezipaměti je nejvhodnější pro tento scénář.
+> Pokud máte SQL Server dat a souborů protokolů na stejném svazku, možnost ukládání do mezipaměti závisí na vzorech přístupu v/v pro vaše databázové úlohy. Pouze testování může ukázat, která možnost ukládání do mezipaměti je pro tento scénář nejvhodnější.
 >
 >
 
-Pokud však používáte prostory úložiště systému Windows, které se skládají z více virtuálních pevných disků, musíte se podívat na původní skripty, abyste zjistili, které připojené virtuální pevné disky jsou v jakém konkrétním fondu, takže můžete nastavit nastavení mezipaměti odpovídajícím způsobem pro každý disk.
+Pokud ale používáte prostory úložiště Windows, které jsou tvořené několika virtuálními pevnými disky, potřebujete se podívat na původní skripty a zjistit, které připojené virtuální pevné disky jsou v konkrétním fondu, takže můžete nastavení mezipaměti nastavit pro každý disk odpovídajícím způsobem.
 
-Pokud nemáte k dispozici původní skript, který vám ukáže, které virtuální pevné disky jsou mapovány do fondu úložiště, můžete k určení mapování fondu disků nebo úložišť použít následující kroky.
+Pokud nemáte k dispozici původní skript, který vám ukáže, které virtuální pevné disky se mapují na fond úložiště, můžete pomocí následujících kroků určit mapování disku nebo fondu úložiště.
 
-Pro každý disk použijte následující kroky:
+Pro každý disk použijte následující postup:
 
-1. Získejte seznam disků připojených k virtuálnímu počítači pomocí příkazu **Get-AzureVM:**
+1. Získat seznam disků připojených k virtuálnímu počítači pomocí příkazu **Get-AzureVM** :
 
 ```powershell
 Get-AzureVM -ServiceName <servicename> -Name <vmname> | Get-AzureDataDisk
 ```
 
-1. Všimněte si názvu DiskName a logické jednotky.
+1. Poznamenejte si jednotky pevného disku a LUN.
 
-    ![Název_diskuAndlun][2]
-1. Vzdálená plocha do virtuálního počítače. Potom přejděte na**diskové jednotky****správce zařízení pro** |  **správu** | počítače . Podívejte se na vlastnosti každého z 'Microsoft Virtuální disky'
+    ![DisknameAndLUN][2]
+1. Vzdálená plocha do virtuálního počítače. Pak přejdete do **správy** | počítače**Device Manager** | **diskové jednotky**. Podívejte se na vlastnosti každého z virtuálních disků Microsoft.
 
-    ![Vlastnosti virtualdisků][3]
-1. Číslo logické jednotky je odkazem na číslo logické jednotky, které zadáte při připojování virtuálního pevného disku k virtuálnímu virtuálnímu účtu.
-1. Pro 'Microsoft Virtuální disk' přejděte na **kartu Podrobnosti,** pak v seznamu **vlastností,** přejděte na **klíč řidiče**. V **hodnotě**, **poznamenejte**si posun , který je 0002 v následujícím snímku obrazovky. 0002 označuje PhysicalDisk2, který odkazuje fond úložiště.
+    ![VirtualDiskProperties][3]
+1. Číslo logické jednotky (LUN): tady je odkaz na číslo logické jednotky, kterou zadáte při připojování virtuálního pevného disku k virtuálnímu počítači.
+1. Pro virtuální disk Microsoft přejdete na kartu **Podrobnosti** a pak v seznamu **vlastností** přejdete na **klíč ovladače**. V **hodnotě**si všimněte **posunu**, který je 0,002 na následujícím snímku obrazovky. 0,002 označuje PhysicalDisk2, na které fond úložiště odkazuje.
 
     ![VirtualDiskPropertyDetails][4]
-1. Pro každý fond úložiště vypíšete přidružené disky:
+1. Pro každý fond úložiště vypsat přidružené disky:
 
 ```powershell
 Get-StoragePool -FriendlyName AMS1pooldata | Get-PhysicalDisk
@@ -157,30 +157,30 @@ Get-StoragePool -FriendlyName AMS1pooldata | Get-PhysicalDisk
 
 ![GetStoragePool][5]
 
-Nyní můžete tyto informace použít k přidružení připojených virtuálních disků k fyzickým diskům ve fondech úložiště.
+Teď můžete tyto informace použít k přidružení připojených virtuálních pevných disků k fyzickým diskům ve fondech úložiště.
 
-Po namapování virtuálních pevných disků na fyzické disky ve fondech úložiště je potom můžete odpojit a zkopírovat do účtu úložiště Premium a připojit je se správným nastavením mezipaměti. Viz příklad v [dodatku](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage), kroky 8 až 12. Tyto kroky ukazují, jak extrahovat konfiguraci virtuálního pevného disku připojeného k virtuálnímu počítači do souboru CSV, zkopírovat virtuální pevné disky, změnit nastavení mezipaměti konfigurace disku a nakonec znovu nasadit virtuální počítač jako virtuální počítač řady DS se všemi připojenými disky.
+Jakmile namapujete virtuální pevné disky na fyzické disky ve fondech úložiště, můžete je pak odpojit a zkopírovat na účet Premium Storage a pak je připojit ke správnému nastavení mezipaměti. Podívejte se na příklad v [dodatku](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage), kroky 8 až 12. Tyto kroky ukazují, jak extrahovat konfiguraci disku VHD připojeného k virtuálnímu počítači do souboru CSV, zkopírovat virtuální pevné disky, změnit nastavení mezipaměti konfigurace disku a nakonec znovu nasadit virtuální počítač jako virtuální počítač řady DS se všemi připojenými disky.
 
-### <a name="vm-storage-bandwidth-and-vhd-storage-throughput"></a>Šířka pásma úložiště virtuálního zařízení a propustnost úložiště virtuálního pevného disku
+### <a name="vm-storage-bandwidth-and-vhd-storage-throughput"></a>Propustnost úložiště virtuálních počítačů a propustnost úložiště VHD
 
-Velikost výkonu úložiště závisí na zadané velikosti virtuálního počítače DS* a velikosti virtuálního pevného disku. Virtuální chody mají různé povolenky pro počet virtuálních disponiál, které mohou být připojeny a maximální šířku pásma, které podporují (MB/s). Konkrétní čísla šířky pásma najdete v [tématu Velikosti virtuálních strojů a cloudových služeb pro Azure](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Velikost výkonu úložiště závisí na zadané velikosti virtuálního počítače DS * a velikosti VHD. Virtuální počítače mají různé odměny za počet virtuálních pevných disků, které se dají připojit, a maximální šířku pásma, kterou podporují (MB/s). Konkrétní čísla šířky pásma najdete v tématu [velikosti virtuálních počítačů a cloudových služeb pro Azure](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Zvýšené viposlužby jsou dosaženy s větší velikosti disků. Měli byste to zvážit, když přemýšlíte o cestě migrace. Podrobnosti [naleznete v tabulce pro viops a typy disků](../disks-types.md#premium-ssd).
+Zvýšení IOPS se dosáhne větší velikosti disků. Měli byste to vzít v úvahu, až si myslíte o cestě migrace. Podrobnosti najdete v [tabulce pro vstupně-výstupní operace a typy disků](../disks-types.md#premium-ssd).
 
-Nakonec zvažte, že virtuální počítače mají různé maximální šířky pásma disku, které podporují pro všechny připojené disky. Při vysokém zatížení můžete nasytit maximální šířku pásma disku, která je k dispozici pro tuto velikost role virtuálního počítače. Například Standard_DS14 podporuje až 512 MB/s; proto se třemi disky P30 můžete nasytit šířku pásma disku virtuálního počítače. Ale v tomto příkladu může být překročen limit propustnost v závislosti na kombinaci čtení a zápisu iOs.
+Nakonec Vezměte v úvahu, že virtuální počítače mají různou maximální šířku pásma, kterou podporují pro všechny připojené disky. Při vysokém zatížení byste mohli zvýšit maximální šířku pásma dostupnou pro danou velikost role virtuálního počítače. Například Standard_DS14 podporuje až 512 MB/s. Proto se třemi disky P30 byste mohli navýšit šířku pásma virtuálního počítače na disku. V tomto příkladu by se ale překročil limit propustnosti v závislosti na kombinaci se systémem IOs pro čtení a zápis.
 
 ## <a name="new-deployments"></a>Nová nasazení
 
-Další dvě části ukazují, jak můžete nasadit virtuální chod SQL Server do úložiště Premium. Jak již bylo zmíněno dříve, nemusíte nutně umístit disk operačního systému do úložiště Premium. Můžete to provést, pokud máte v úmyslu umístit všechny intenzivní úlohy vi na virtuální mhd operačního systému.
+Následující dvě části ukazují, jak můžete nasadit SQL Server virtuálních počítačů do Premium Storage. Jak už bylo zmíněno dříve, nemusíte nutně umístit disk s operačním systémem do služby Premium Storage. To se může stát, pokud hodláte na virtuální pevný disk s operačním systémem umístit jakékoli náročné vstupně-výstupní úlohy.
 
-První příklad ukazuje využití existujících ibiobrázků Galerie Azure. Druhý příklad ukazuje, jak používat vlastní image virtuálního aplikace, které máte v existujícím účtu úložiště Standard.
+První příklad ukazuje použití existujících imagí Galerie Azure. Druhý příklad ukazuje, jak použít vlastní image virtuálního počítače, kterou máte v existujícím účtu úložiště Standard.
 
 > [!NOTE]
-> Tyto příklady předpokládají, že jste již vytvořili místní virtuální síť.
+> V těchto příkladech se předpokládá, že jste už vytvořili regionální virtuální síť.
 
-### <a name="create-a-new-vm-with-premium-storage-with-gallery-image"></a>Vytvoření nového virtuálního virtuálního zařízení s úložištěm Premium s obrázkem galerie
+### <a name="create-a-new-vm-with-premium-storage-with-gallery-image"></a>Vytvoření nového virtuálního počítače s využitím Premium Storage s imagí galerie
 
-Následující příklad ukazuje, jak umístit virtuální disk OS na úložiště premium a připojit virtuální disky úložiště Premium. Disk operačního systému však můžete také umístit do účtu standard storage a pak připojit virtuální disky, které jsou umístěny v účtu úložiště Premium. Oba scénáře jsou demonstrovány.
+Následující příklad ukazuje, jak umístit virtuální pevný disk s operačním systémem do úložiště Premium a připojit Premium Storage VHD. Disk s operačním systémem ale taky můžete umístit do účtu úložiště úrovně Standard a pak připojit virtuální pevné disky, které se nacházejí v účtu Premium Storage. Oba scénáře jsou znázorněny.
 
 ```powershell
 $mysubscription = "DansSubscription"
@@ -191,7 +191,7 @@ Set-AzureSubscription -SubscriptionName $mysubscription
 Select-AzureSubscription -SubscriptionName $mysubscription -Current  
 ```
 
-#### <a name="step-1-create-a-premium-storage-account"></a>Krok 1: Vytvoření účtu úložiště premium
+#### <a name="step-1-create-a-premium-storage-account"></a>Krok 1: vytvoření účtu Premium Storage
 
 ```powershell
 #Create Premium Storage account, note Type
@@ -199,14 +199,14 @@ $newxiostorageaccountname = "danspremsams"
 New-AzureStorageAccount -StorageAccountName $newxiostorageaccountname -Location $location -Type "Premium_LRS"  
 ```
 
-#### <a name="step-2-create-a-new-cloud-service"></a>Krok 2: Vytvoření nové cloudové služby
+#### <a name="step-2-create-a-new-cloud-service"></a>Krok 2: vytvoření nové cloudové služby
 
 ```powershell
 $destcloudsvc = "danNewSvcAms"
 New-AzureService $destcloudsvc -Location $location
 ```
 
-#### <a name="step-3-reserve-a-cloud-service-vip-optional"></a>Krok 3: Rezervace služby Cloud Service VIP (volitelné)
+#### <a name="step-3-reserve-a-cloud-service-vip-optional"></a>Krok 3: rezervování virtuální IP adresy cloudové služby (volitelné)
 
 ```powershell
 #check exisitng reserved VIP
@@ -216,7 +216,7 @@ $reservedVIPName = "sqlcloudVIP"
 New-AzureReservedIP –ReservedIPName $reservedVIPName –Label $reservedVIPName –Location $location
 ```
 
-#### <a name="step-4-create-a-vm-container"></a>Krok 4: Vytvoření kontejneru virtuálního řezu
+#### <a name="step-4-create-a-vm-container"></a>Krok 4: vytvoření kontejneru virtuálních počítačů
 
 ```powershell
 #Generate storage keys for later
@@ -230,7 +230,7 @@ $containerName = 'vhds'
 New-AzureStorageContainer -Name $containerName -Context $xioContext
 ```
 
-#### <a name="step-5-placing-os-vhd-on-standard-or-premium-storage"></a>Krok 5: Umístění virtuálního pevného disku operačního systému na standardní nebo prémiové úložiště
+#### <a name="step-5-placing-os-vhd-on-standard-or-premium-storage"></a>Krok 5: umístění virtuálního pevného disku s operačním systémem na Standard nebo Premium Storage
 
 ```powershell
 #NOTE: Set up subscription and default storage account which is used to place the OS VHD in
@@ -244,7 +244,7 @@ $standardstorageaccountname = "danstdams"
 Set-AzureSubscription -SubscriptionName $mysubscription -CurrentStorageAccount  $standardstorageaccountname
 ```
 
-#### <a name="step-6-create-vm"></a>Krok 6: Vytvoření virtuálního mísy
+#### <a name="step-6-create-vm"></a>Krok 6: Vytvoření virtuálního počítače
 
 ```powershell
 #Get list of available SQL Server Images from the Azure Image Gallery.
@@ -289,11 +289,11 @@ Get-AzureVM -ServiceName $destcloudsvc -Name $vmName | Get-AzureDataDisk
 Get-AzureVM -ServiceName $destcloudsvc -Name $vmName |Get-AzureOSDisk
 ```
 
-### <a name="create-a-new-vm-to-use-premium-storage-with-a-custom-image"></a>Vytvoření nového virtuálního virtuálního zařízení pro použití úložiště Premium s vlastní bitovou kopií
+### <a name="create-a-new-vm-to-use-premium-storage-with-a-custom-image"></a>Vytvoření nového virtuálního počítače pro použití Premium Storage s vlastní imagí
 
-Tento scénář ukazuje, kde máte existující vlastní image, které jsou umístěny v účtu standard úložiště. Jak již bylo zmíněno, pokud chcete umístit virtuální disk OS na úložiště Premium, musíte zkopírovat obrázek, který existuje v účtu standard storage, a přenést je do úložiště Premium, než ho můžete použít. Pokud máte image v místním prostředí, můžete také tuto metodu zkopírovat přímo do účtu úložiště Premium.
+Tento scénář ukazuje, kde máte existující vlastní image, které se nacházejí v účtu úložiště úrovně Standard. Jak bylo zmíněno, pokud chcete umístit virtuální pevný disk s operačním systémem na Premium Storage musíte zkopírovat image, která existuje v účtu úložiště Standard, a přenést je do Premium Storage, aby ji bylo možné použít. Pokud máte místní image, můžete tuto metodu použít také ke zkopírování přímo na účet Premium Storage.
 
-#### <a name="step-1-create-storage-account"></a>Krok 1: Vytvoření účtu úložiště
+#### <a name="step-1-create-storage-account"></a>Krok 1: vytvoření účtu úložiště
 
 ```powershell
 $mysubscription = "DansSubscription"
@@ -314,9 +314,9 @@ $destcloudsvc = "danNewSvcAms"
 New-AzureService $destcloudsvc -Location $location
 ```
 
-#### <a name="step-3-use-existing-image"></a>Krok 3: Použití existujícího obrázku
+#### <a name="step-3-use-existing-image"></a>Krok 3: použití existující image
 
-Můžete použít existující obrázek. Nebo můžete [pokonat snímek existujícího počítače](../classic/capture-image-classic.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Všimněte si, že zařízení, které si obrázek nemusí být DS * stroj. Jakmile budete mít image, následující kroky ukazují, jak ji zkopírovat do účtu úložiště Premium pomocí **příkazu Start-AzureStorageBlobCopy** PowerShell.
+Můžete použít existující bitovou kopii. Případně můžete [získat obrázek existujícího počítače](../classic/capture-image-classic.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Všimněte si, že počítač, na který jste image, nemusí být DS * Machine. Až budete mít image, následující kroky ukazují, jak je zkopírovat do účtu Premium Storage pomocí rutiny **Start-AzureStorageBlobCopy** prostředí PowerShell rutiny.
 
 ```powershell
 #Get storage account keys:
@@ -330,7 +330,7 @@ $origContext = New-AzureStorageContext  –StorageAccountName $origstorageaccoun
 $destContext = New-AzureStorageContext  –StorageAccountName $newxiostorageaccountname -StorageAccountKey $xiostorage.Primary  
 ```
 
-#### <a name="step-4-copy-blob-between-storage-accounts"></a>Krok 4: Kopírování objektů Blob mezi účty úložiště
+#### <a name="step-4-copy-blob-between-storage-accounts"></a>Krok 4: kopírování objektu BLOB mezi účty úložiště
 
 ```powershell
 #Get Image VHD
@@ -343,13 +343,13 @@ $blob = Start-AzureStorageBlobCopy -SrcBlob $myImageVHD -SrcContainer $container
 -Context $origContext -DestContext $destContext  
 ```
 
-#### <a name="step-5-regularly-check-copy-status"></a>Krok 5: Pravidelně kontrolujte stav kopírování:
+#### <a name="step-5-regularly-check-copy-status"></a>Krok 5: pravidelné kontroly stavu kopírování:
 
 ```powershell
 $blob | Get-AzureStorageBlobCopyState
 ```
 
-#### <a name="step-6-add-image-disk-to-azure-disk-repository-in-subscription"></a>Krok 6: Přidání bitového disku do úložiště disků Azure v předplatném
+#### <a name="step-6-add-image-disk-to-azure-disk-repository-in-subscription"></a>Krok 6: Přidání disku s obrázkem do úložiště disků Azure v předplatném
 
 ```powershell
 $imageMediaLocation = $destContext.BlobEndPoint+"/"+$myImageVHD
@@ -359,11 +359,11 @@ Add-AzureVMImage -ImageName $newimageName -MediaLocation $imageMediaLocation
 ```
 
 > [!NOTE]
-> Můžete zjistit, že i když zprávy o stavu jako úspěch, stále můžete získat chybu zapůjčení disku. V tomto případě počkejte asi 10 minut.
+> Může se stát, že i když zpráva o stavu bude úspěšná, může se i přesto zobrazit chyba zapůjčení disku. V takovém případě počkejte asi 10 minut.
 
-#### <a name="step-7--build-the-vm"></a>Krok 7: Sestavení virtuálního virtuálního mísa
+#### <a name="step-7--build-the-vm"></a>Krok 7: Sestavte virtuální počítač
 
-Tady vytváříte virtuální počítač z obrázku a připojujete dva virtuální počítače s úložištěm Premium:
+Tady vytváříte virtuální počítač z image a připojujete dva Premium Storage VHD:
 
 ```powershell
 $newimageName = "prem"+"dansoldonorsql2k14"
@@ -398,244 +398,244 @@ $vmConfigsl2 | Add-AzureDataDisk -CreateNew -DiskSizeInGB 1023 -LUN 1 -HostCachi
 $vmConfigsl2 | New-AzureVM –ServiceName $destcloudsvc -VNetName $vnet
 ```
 
-## <a name="existing-deployments-that-do-not-use-always-on-availability-groups"></a>Existující nasazení, která nepoužívají skupiny dostupnosti always on
+## <a name="existing-deployments-that-do-not-use-always-on-availability-groups"></a>Existující nasazení, která nepoužívají skupiny dostupnosti Always On
 
 > [!NOTE]
-> Existující nasazení, nejprve naleznete [požadavky](#prerequisites-for-premium-storage) části tohoto článku.
+> U stávajících nasazení si nejdřív přečtěte část [požadavky](#prerequisites-for-premium-storage) tohoto článku.
 
-Existují různé aspekty pro nasazení serveru SQL Server, které nepoužívají vždy na dostupnost skupiny a ty, které dělají. Pokud nepoužíváte vždy zapnutý a máte existující samostatný SQL Server, můžete upgradovat na úložiště Premium pomocí nové cloudové služby a účtu úložiště. Zvažte následující možnosti:
+K dispozici jsou různé požadavky na nasazení SQL Server, které nepoužívají skupiny dostupnosti Always On a ty, které dělají. Pokud nepoužíváte Always On a máte stávající samostatné SQL Server, můžete upgradovat na Premium Storage pomocí nové cloudové služby a účtu úložiště. Vezměte v úvahu následující možnosti:
 
-* **Vytvořte nový virtuální modul SQL Server**. Můžete vytvořit nový virtuální modul SQL Server, který používá účet úložiště Premium, jak je popsáno v nové nasazení. Potom zálohujte a obnovte konfiguraci serveru SQL Server a uživatelské databáze. Aplikace musí být aktualizována tak, aby odkazovala na nový SQL Server, pokud je přístupný interně nebo externě. Budete muset zkopírovat všechny 'mimo db' objekty, jako byste dělali side by side (SxS) SQL Server migrace. To zahrnuje objekty, jako jsou přihlášení, certifikáty a propojené servery.
-* **Migrujte existující virtuální modul SQL Server**. To vyžaduje převedení virtuálního virtuálního soudu SQL Server offline a jeho přenos do nové cloudové služby, která zahrnuje kopírování všech připojených virtuálních discích do účtu úložiště Premium. Když virtuální ho dispozice konzumuje, aplikace odkazuje na název hostitele serveru jako dříve. Uvědomte si, že velikost existujícího disku ovlivňuje charakteristiky výkonu. Například disk o velikosti 400 GB se zaokrouhlí na p20. Pokud víte, že nepotřebujete, že výkon disku, pak můžete znovu vytvořit virtuální počítače jako virtuální počítače řady DS a připojit virtuální pevné disky úložiště Premium storage specifikace velikosti a výkonu, které požadujete. Pak můžete odpojit a znovu připojit soubory SQL DB.
-
-> [!NOTE]
-> Při kopírování disků VHD byste měli vědět o velikosti, v závislosti na velikosti znamená, jaký typ disku úložiště Premium spadají do, to určuje specifikaci výkonu disku. Azure zaokrouhlí na nejbližší velikost disku, takže pokud máte disk 400 GB, zaokrouhlí se nahoru na P20. V závislosti na vašich stávajících požadavcích na vo vsystému VHD nemusí být nutné migrovat do účtu úložiště Premium.
-
-Pokud je váš SQL Server přístupný externě, změní se virtuální ip služba cloudové služby. Musíte také aktualizovat koncové body, alokace a nastavení DNS.
-
-## <a name="existing-deployments-that-use-always-on-availability-groups"></a>Existující nasazení, která používají skupiny dostupnosti always on
+* **Vytvořte nový virtuální počítač SQL Server**. Můžete vytvořit nový virtuální počítač SQL Server, který používá Premium Storage účet, jak je popsáno v nových nasazeních. Pak zálohujte a obnovte konfiguraci SQL Server a uživatelských databází. Aplikaci je třeba aktualizovat, aby odkazovala na nové SQL Server, pokud se k ní přistupuje interně nebo externě. Museli byste zkopírovat všechny objekty ' out z databáze ', jako kdyby jste prováděli souběžnou migraci SQL Server migrace. To zahrnuje objekty, jako jsou přihlašovací údaje, certifikáty a propojené servery.
+* **Migrujte existující virtuální počítač SQL Server**. To vyžaduje přepnutí SQL Server virtuálního počítače do režimu offline a jeho převádění do nové cloudové služby, která zahrnuje kopírování všech připojených virtuálních pevných disků do Premium Storage účtu. Když je virtuální počítač online, aplikace odkazuje na název hostitele serveru jako předtím. Počítejte s tím, že velikost stávajícího disku má vliv na výkonnostní charakteristiky. Například disk 400 GB se zaokrouhluje na P20. Pokud víte, že nepotřebujete výkon disku, pak můžete virtuální počítač znovu vytvořit jako virtuální počítač řady DS a připojit Premium Storage VHD požadované specifikace velikosti a výkonu. Pak můžete soubory databáze SQL odpojit a znovu připojit.
 
 > [!NOTE]
-> Existující nasazení, nejprve naleznete [požadavky](#prerequisites-for-premium-storage) části tohoto článku.
+> Při kopírování disků VHD byste měli znát velikost, a to v závislosti na velikosti znamená to, jaký Premium Storage typ disku patří do. tím se určuje specifikace výkonu disku. Azure zaokrouhlí na nejbližší velikost disku, takže pokud máte disk s 400 GB, zaokrouhlí se na P20. V závislosti na vašich stávajících vstupně-výstupních požadavcích na virtuální pevný disk operačního systému je možné, že ho nebudete muset migrovat na účet Premium Storage.
 
-Zpočátku v této části se podíváme na to, jak vždy zapnuto spolupracuje s Azure Networking. Migraci pak rozložíme do dvou scénářů: migrace, kde lze tolerovat určité prostoje, a migrace, kde je nutné dosáhnout minimálních prostojů.
+Pokud je k SQL Server přistup externě, pak se virtuální IP adresa cloudové služby změní. Také je potřeba aktualizovat koncové body, seznamy ACL a nastavení DNS.
 
-Místní skupiny SQL Server Always On Availability používají místní listener, který registruje virtuální název DNS spolu s IP adresou sdílenou mezi jedním nebo více servery SQL. Když se klienti připojují, jsou směrovány přes IP naslouchací proces na primární SQL Server. Toto je server, který v té době vlastní prostředek ALWAYS On IP.
-
-![NasazeníUseAlways On][6]
-
-V Microsoft Azure můžete mít jenom jednu IP adresu přiřazenou k nic na virtuálním počítači, takže k dosažení stejné vrstvy abstrakce jako místní Azure využívá IP adresu, která je přiřazená interním/externím vykladačům zatížení (ILB/ELB). Prostředek IP, který je sdílen mezi servery, je nastaven na stejnou adresu IP jako ILB/ELB. To je publikováno v DNS a provoz klienta je předán prostřednictvím ILB/ELB do primární repliky serveru SQL Server. ILB/ELB ví, který SQL Server je primární, protože používá sondy k proprávě prostředku IP always on. V předchozím příkladu sonduje každý uzel, který má koncový bod odkazuje ELB/ILB, podle toho, co odpoví, je primární SQL Server.
+## <a name="existing-deployments-that-use-always-on-availability-groups"></a>Existující nasazení, která používají skupiny dostupnosti Always On
 
 > [!NOTE]
-> ILB a ELB jsou přiřazeny k určité cloudové službě Azure, proto jakákoli migrace cloudu v Azure s největší pravděpodobností znamená, že se změní IP nástroj pro vyrovnávání zatížení.
+> U stávajících nasazení si nejdřív přečtěte část [požadavky](#prerequisites-for-premium-storage) tohoto článku.
+
+Zpočátku v této části se podíváme na to, jak vždycky interaktivně komunikuje s Azure Networking. Migrace se pak dělí do dvou scénářů: migrace, u kterých je možné nějaké výpadky tolerovat, a migrace, u kterých je potřeba dosáhnout minimálního výpadku.
+
+Místní SQL Server skupiny dostupnosti Always On používají místní naslouchací proces, který zaregistruje virtuální název DNS spolu s IP adresou, která je sdílená mezi jedním nebo více servery SQL. Pokud se klienti připojují, jsou směrováni přes IP adresu naslouchacího procesu na primární SQL Server. Jedná se o server, který je v daném okamžiku vlastníkem prostředku trvalého protokolu IP.
+
+![DeploymentsUseAlways na][6]
+
+V Microsoft Azure může být na virtuálním počítači přiřazená jenom jedna IP adresa, takže pokud chcete dosáhnout stejné vrstvy abstrakce jako v místním prostředí, Azure použije IP adresu, která je přiřazená interním/externím nástrojům pro vyrovnávání zatížení (interního nástroje/ELB). Prostředek IP, který je sdílen mezi servery, je nastaven na stejnou IP adresu jako interního nástroje/ELB. Tato databáze je publikována v DNS a přenos klientů se předává prostřednictvím interního nástroje/ELB do primární repliky SQL Server. INTERNÍHO nástroje/ELB ví, který SQL Server je primární, protože používá sondy k testování prostředku trvalé IP adresy. V předchozím příkladu se testuje každý uzel, který má koncový bod, na který odkazuje ELB/interního nástroje, podle toho, která odpověď je primární SQL Server.
+
+> [!NOTE]
+> INTERNÍHO nástroje a ELB se přiřazují ke konkrétní cloudové službě Azure, takže jakákoli migrace do cloudu v Azure pravděpodobně znamená, že se změní Load Balancer IP adresa.
 >
 >
 
-### <a name="migrating-always-on-deployments-that-can-allow-some-downtime"></a>Migrace vždy při nasazeních, která mohou umožnit určité prostoje
+### <a name="migrating-always-on-deployments-that-can-allow-some-downtime"></a>Migrace vždy na nasazení, která můžou způsobit nějaké výpadky
 
-Existují dvě strategie migrace vždy na nasazení, které umožňují některé prostoje:
+Existují dvě strategie migrace vždy v nasazeních, která umožňují určité výpadky:
 
-1. **Přidání dalších sekundárních replik do existujícího clusteru Vždy v clusteru**
-2. **Migrace do nového clusteru vždy zapnuto**
+1. **Přidat další sekundární repliky do existujícího clusteru Always On**
+2. **Migrace na nový cluster Always On**
 
-#### <a name="1-add-more-secondary-replicas-to-an-existing-always-on-cluster"></a>1. Přidání dalších sekundárních replik do existujícího clusteru vždy v clusteru
+#### <a name="1-add-more-secondary-replicas-to-an-existing-always-on-cluster"></a>1. Přidání dalších sekundárních replik do existujícího clusteru Always On
 
-Jednou ze strategií je přidat další sekundární informace do skupiny vždy na dostupnosti. Musíte je přidat do nové cloudové služby a aktualizovat naslouchací proces s novou IP službou vyrovnávání zatížení.
+Jednou z strategií je přidání dalších sekundárních skupin do skupiny dostupnosti Always On. Je nutné je přidat do nové cloudové služby a aktualizovat naslouchací proces pomocí nové IP adresy nástroje pro vyrovnávání zatížení.
 
-##### <a name="points-of-downtime"></a>Body prostoje:
+##### <a name="points-of-downtime"></a>Body prostojů:
 
 * Ověření clusteru.
-* Testování vždy při převzetí služeb při selhání pro nové sekundární.
+* Testování vždy u převzetí služeb při selhání pro nové sekundární počítače.
 
-Pokud používáte fondy úložiště Windows v rámci virtuálního virtuálního zařízení pro vyšší propustnost vi, pak se přepnou do režimu offline během ověření celého clusteru. Ověřovací test je vyžadován při přidání uzlů do clusteru. Čas potřebný ke spuštění testu se může lišit, takže byste měli otestovat v prostředí reprezentativního testu, abyste získali přibližný čas, jak dlouho to trvá.
+Pokud na virtuálním počítači používáte fondy úložiště Windows pro vyšší propustnost vstupně-výstupních operací, tyto funkce jsou během úplného ověření clusteru offline. Ověřovací test je vyžadován při přidávání uzlů do clusteru. Čas potřebný ke spuštění testu se může lišit, takže byste ho měli otestovat v reprezentativním testovacím prostředí a získat tak přibližnou dobu trvání.
 
-Měli byste zřídit čas, kdy můžete provádět ruční převzetí služeb při selhání a chaos testování na nově přidané uzly k zajištění vždy na vysoké dostupnosti funkce podle očekávání.
+Měli byste zřídit čas, ve kterém můžete na nově přidaných uzlech provádět ruční a chaos testování, abyste měli jistotu, že funkce vysoké dostupnosti budou vždycky fungovat podle očekávání.
 
 ![DeploymentUseAlways On2][7]
 
 > [!NOTE]
-> Měli byste zastavit všechny instance serveru SQL Server, kde fondy úložiště se používají před spuštěním ověření.
+> Před spuštěním ověřování byste měli zastavit všechny instance SQL Server, kde se používají fondy úložiště.
 >
 > ##### <a name="high-level-steps"></a>Základní kroky
 >
 
-1. Vytvořte dva nové SQL servery v nové cloudové službě s připojeným úložištěm Premium.
-2. Zkopírujte přes úplné zálohy a obnovení pomocí **funkce NORECOVERY**.
-3. Kopírování přes 'mimo uživatele DB' závislé objekty, jako jsou přihlášení atd.
-4. Vytvořte nový interní vyrovnávání zatížení (ILB) nebo použijte externí vyrovnávání zatížení (ELB) a nastavte koncové body s vyrovnáváním zatížení na obou nových uzlech.
+1. V nové cloudové službě vytvořte dva nové servery SQL s připojenými Premium Storage.
+2. Kopírování přes úplné zálohování a obnovení pomocí **NORECOVERY**.
+3. Kopírovat přes "objekty závislé na uživateli", například přihlašovací údaje atd.
+4. Vytvořte novou interní Load Balancer (interního nástroje) nebo použijte externí Load Balancer (ELB) a pak nastavte koncové body s vyrovnáváním zatížení na obou nových uzlech.
 
    > [!NOTE]
-   > Zkontrolujte, zda všechny uzly mají správnou konfiguraci koncového bodu, než budete pokračovat
+   > Před pokračováním ověřte, že všechny uzly mají správnou konfiguraci koncového bodu.
    >
    >
-5. Zastavte přístup uživatelů nebo aplikací k serveru SQL (pokud používáte fondy úložiště).
-6. Zastavte služby SQL Server Engine Services ve všech uzlech (pokud používáte fondy úložiště).
-7. Přidejte nové uzly do clusteru a spusťte úplné ověření.
-8. Po úspěšném ověření spusťte všechny služby SQL Server Services.
-9. Zálohování protokolů transakcí a obnovení uživatelských databází.
-10. Přidejte nové uzly do skupiny dostupnosti vždy a umístěte replikaci do **synchronní**.
-11. Přidejte prostředek IP adresy nové cloudové služby ILB/ELB prostřednictvím prostředí PowerShell pro vždy zapnuto na základě příkladu více webů v [dodatku](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage). V clusteringu systému Windows nastavte **možné vlastníky** prostředku **adresy IP** na nové staré uzly. Viz část "Přidání prostředku adresy IP ve stejné podsíti" v [dodatku](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage).
-12. Převzetí služeb při selhání do jednoho z nových uzlů.
-13. Vytvořte nové uzly Auto Failover Partners a otestujte převzetí služeb při selhání.
+5. Zastavte přístup uživatele nebo aplikace k SQL Server (Pokud používáte fondy úložišť).
+6. Zastavte služby SQL Server Engine na všech uzlech (Pokud používáte fondy úložišť).
+7. Přidejte nové uzly do clusteru a spusťte úplné ověřování.
+8. Po úspěšném ověření spusťte všechny SQL Server služby.
+9. Zálohování protokolů transakcí a obnovení databází uživatelů.
+10. Přidejte nové uzly do skupiny dostupnosti Always On a replikaci umístěte do **synchronního**umístění.
+11. Přidejte prostředek IP adresy nové cloudové služby interního nástroje/ELB prostřednictvím PowerShellu, aby se Always vycházela z příkladu s více lokalitami v [dodatku](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage). V části clustering systému Windows nastavte **možné vlastníky** prostředku **IP adresy** na nové uzly staré. Viz část Přidání prostředku IP adresy do stejné podsítě v [dodatku](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage).
+12. Převzetí služeb při selhání jednoho z nových uzlů.
+13. Nastavte nové uzly na automatické převzetí služeb při selhání a testovací převzetí služeb při selhání.
 14. Odeberte původní uzly ze skupiny dostupnosti.
 
 ##### <a name="advantages"></a>Výhody
 
-* Nové servery SQL lze testovat (SQL Server a aplikace) před jejich přidáním do always on.
-* Můžete změnit velikost virtuálního počítače a přizpůsobit úložiště podle přesných požadavků. Bylo by však výhodné zachovat všechny cesty souborů SQL stejné.
-* Můžete určit, kdy je spuštěn přenos záloh DB do sekundárních replik. To se liší od použití příkazu Azure **Start-AzureStorageBlobCopy** ke kopírování virtuálních discích, protože se jedná o asynchronní kopii.
+* Nové servery SQL je možné testovat (SQL Server a aplikace) před jejich přidáním na Always On.
+* Velikost virtuálního počítače můžete změnit a přizpůsobit úložiště podle svých požadavků. Je ale vhodné zachovat všechny cesty souborů SQL stejné.
+* Můžete určit, kdy se má spustit přenos záloh databáze do sekundárních replik. To se liší od použití Azure **Start-AzureStorageBlobCopy** rutiny ke kopírování VHD, protože se jedná o asynchronní kopii.
 
 ##### <a name="disadvantages"></a>Nevýhody
 
-* Při použití fondů úložiště systému Windows dochází k prostojům clusteru během ověření celého clusteru pro nové další uzly.
-* V závislosti na verzi serveru SQL A existujícípočet sekundárních replik, nemusí být možné přidat další sekundární repliky bez odebrání existující sekundární.
-* Při nastavování sekundárních dat může být dlouhá doba přenosu dat SQL.
-* Během migrace se při požívají dodatečné náklady, zatímco máte nové počítače spuštěné paralelně.
+* Při použití fondů úložiště Windows dojde během úplného ověřování clusteru pro nové další uzly k výpadkům clusteru.
+* V závislosti na verzi SQL Server a stávajícím počtu sekundárních replik se možná nebudete moct přidat další sekundární repliky, aniž byste museli odebírat stávající sekundární.
+* Při nastavování sekundárních dat může být dlouhý čas přenosu dat SQL.
+* V průběhu migrace se účtují další náklady, zatímco jsou spuštěné nové počítače paralelně.
 
-#### <a name="2-migrate-to-a-new-always-on-cluster"></a>2. Migrace do nového clusteru vždy zapnuto
+#### <a name="2-migrate-to-a-new-always-on-cluster"></a>2. migrace na nový cluster Always On
 
-Další strategií je vytvořit zcela nový vždy zapnutý cluster se zbrusu novými uzly v nové cloudové službě a pak přesměrovat klienty, aby ji používali.
+Další strategií je vytvořit úplně novou značku clusteru s novými uzly v nové cloudové službě a potom klienty přesměrovat na použití.
 
-##### <a name="points-of-downtime"></a>Body prostoje
+##### <a name="points-of-downtime"></a>Body prostojů
 
-Při přenosu aplikací a uživatelů do nového naslouchací hoschu Always On dochází k prostojům. Prostoje závisí na:
+Při přenosu aplikací a uživatelů do nového naslouchacího procesu Always On dojde k výpadkům. Výpadek závisí na:
 
-* Doba, která byla doba obnovení konečné transakce protokolu zálohy do databází na nových serverech.
-* Čas, který trval a aktualizace klientských aplikací použít nový vždy na naslouchací proces.
+* Doba potřebná k obnovení záloh protokolu finální transakce do databází na nových serverech.
+* Čas potřebný k aktualizaci klientských aplikací na použití nového naslouchacího procesu Always On
 
 ##### <a name="advantages"></a>Výhody
 
-* Můžete otestovat skutečné produkční prostředí, SQL Server a změny sestavení operačního systému.
-* Máte možnost přizpůsobit úložiště a potenciálně snížit velikost virtuálního počítače. To by mohlo vést ke snížení nákladů.
-* Během tohoto procesu můžete aktualizovat sestavení nebo verzi serveru SQL Server. Můžete také upgradovat operační systém.
-* Předchozí vždy na clusteru může fungovat jako cíl vrácení zpět.
+* Můžete testovat skutečné provozní prostředí, SQL Server a změny sestavení operačního systému.
+* Máte možnost přizpůsobit úložiště a potenciálně snížit velikost virtuálního počítače. Výsledkem může být snížení nákladů.
+* Během tohoto procesu můžete aktualizovat SQL Server Build nebo verzi. Můžete také upgradovat operační systém.
+* Předchozí cluster Always On může fungovat jako cíl pevného vrácení zpět.
 
 ##### <a name="disadvantages"></a>Nevýhody
 
-* Je třeba změnit název DNS naslouchací proces, pokud chcete, aby oba vždy na clustery běží současně. Tím se přidá režie správy během migrace jako řetězce klientské aplikace musí odrážet nový název listener.
-* Je nutné implementovat mechanismus synchronizace mezi dvěma prostředími, aby byly co nejblíže k minimalizaci konečných požadavků na synchronizaci před migrací.
-* Během migrace jsou přidány další náklady, zatímco máte spuštěné nové prostředí.
+* Je potřeba změnit název DNS naslouchacího procesu, pokud chcete, aby současně běžely současně současně v clusterech. To přináší režijní náklady na správu během migrace jako řetězce klientské aplikace musí odrážet název nového naslouchacího procesu.
+* Před migrací musíte implementovat mechanismus synchronizace mezi těmito dvěma prostředími, aby bylo možné co nejblíže minimalizovat požadavky na konečnou synchronizaci.
+* Během migrace se za běhu přidávají náklady, i když je spuštěno nové prostředí.
 
-### <a name="migrating-always-on-deployments-for-minimal-downtime"></a>Migrace vždy při nasazení pro minimální prostoje
+### <a name="migrating-always-on-deployments-for-minimal-downtime"></a>Migrace vždy na nasazení za účelem minimálního výpadku
 
-Existují dvě strategie pro migraci vždy na nasazení pro minimální prostoje:
+Existují dvě strategie migrace vždy na nasazení za účelem minimálního výpadku:
 
-1. **Využití existující sekundární: Jedno-site**
-2. **Využití existujících sekundárních replik: Více lokalit**
+1. **Použít existující sekundární: jeden server**
+2. **Využít existující sekundární repliky: více lokalit**
 
-#### <a name="1-utilize-an-existing-secondary-single-site"></a>1. Využijte stávající sekundární: Single-Site
+#### <a name="1-utilize-an-existing-secondary-single-site"></a>1. Využijte existující sekundární: jeden web.
 
-Jednou ze strategií pro minimální prostoje je vzít existující sekundární cloud a odebrat ho z aktuální cloudové služby. Pak zkopírujte virtuální diody do nového účtu úložiště Premium a vytvořte virtuální virtuální město v nové cloudové službě. Pak aktualizujte naslouchací proces v clustering u převzetí služeb při selhání.
+Jednou z strategií pro minimální prostoje je převzít existující sekundární Cloud a odebrat ho z aktuální cloudové služby. Pak zkopírujte virtuální pevné disky do nového účtu Premium Storage a vytvořte virtuální počítač v nové cloudové službě. Pak aktualizujte naslouchací proces při clusteringu a převzetí služeb při selhání.
 
-##### <a name="points-of-downtime"></a>Body prostoje
+##### <a name="points-of-downtime"></a>Body prostojů
 
-* Je prostoje při aktualizaci konečného uzlu s vyrovnáváním zatížení koncového bodu.
-* Opětovné připojení klienta může být zpožděno v závislosti na konfiguraci klienta/DNS.
-* Pokud se rozhodnete převést skupinu Always On Cluster do offline a vyměnit IP adresy, dojde k dalším výpadkům. Tomu se můžete vyhnout pomocí závislosti NEBO a možných vlastníků pro přidaný prostředek adresy IP. Viz část "Přidání prostředku adresy IP ve stejné podsíti" v [dodatku](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage).
+* Když aktualizujete poslední uzel s koncovým bodem s vyrovnáváním zatížení, dojde k výpadkům.
+* Opětovné připojení klienta se může zpozdit v závislosti na konfiguraci klienta nebo DNS.
+* Pokud se rozhodnete, že chcete oddělit IP adresy, musíte se rozhodnout, že se má skupina clusteru Always On přepnout do režimu offline. K tomu se můžete vyhnout použitím závislosti nebo a možných vlastníků pro přidaný prostředek IP adresy. Viz část Přidání prostředku IP adresy do stejné podsítě v [dodatku](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage).
 
 > [!NOTE]
-> Pokud chcete, aby se přidaný uzel účastnil jako vždy na převzetí služeb při selhání partnera, musíte přidat koncový bod Azure s odkazem na sadu vyrovnávání zatížení. Při spuštění příkazu **Add-AzureEndpoint** k tomu aktuální připojení zůstat otevřené, ale nová připojení k naslouchací proces nelze navázat, dokud se aktualizuje vyrovnávání zatížení. Při testování to bylo vidět na poslední 90-120sekund, to by mělo být testováno.
+> Pokud chcete, aby byl přidaný uzel partake jako vždy na partnerském serveru pro převzetí služeb při selhání, musíte přidat Koncový bod Azure s odkazem na skupinu s vyrovnáváním zatížení. Když spustíte příkaz **Add-AzureEndpoint** , zůstanou současná připojení otevřená, ale nová připojení k naslouchacímu procesu se nebudou moct navázat, dokud se nástroj pro vyrovnávání zatížení neaktualizuje. V testování se jednalo o posledních 90 – 120seconds. to by mělo být testováno.
 
 ##### <a name="advantages"></a>Výhody
 
-* Žádné další náklady vzniklé během migrace.
+* Během migrace se neúčtují žádné další náklady.
 * Migrace 1:1.
-* Snížená složitost.
-* Umožňuje zvýšení viops z výhod úložiště Premium. Když jsou disky odpojeny od virtuálního počítače a zkopírovány do nové cloudové služby, nástroj třetí strany lze použít ke zvýšení velikosti virtuálního pevného disku, který poskytuje vyšší propustnosti. Informace o zvýšení velikosti virtuálního pevného disku naleznete v [této diskusní mši na fóru](https://social.msdn.microsoft.com/Forums/azure/4a9bcc9e-e5bf-4125-9994-7c154c9b0d52/resizing-azure-data-disk?forum=WAVirtualMachinesforWindows).
+* Snížení složitosti.
+* Umožňuje zvýšit IOPS z Premium Storage SKU. Když se disky odpojí z virtuálního počítače a zkopírují se do nové cloudové služby, můžete použít nástroj třetí strany k zvýšení velikosti virtuálního pevného disku, která poskytuje vyšší propustnost. Pro zvýšení velikosti VHD si přečtěte tuto [diskuzi o fórech](https://social.msdn.microsoft.com/Forums/azure/4a9bcc9e-e5bf-4125-9994-7c154c9b0d52/resizing-azure-data-disk?forum=WAVirtualMachinesforWindows).
 
 ##### <a name="disadvantages"></a>Nevýhody
 
-* Během migrace dochází k dočasné ztrátě HA a ZOTAVENÍ po havárii.
-* Vzhledem k tomu, že se jedná o migraci 1:1, musíte použít minimální velikost virtuálního počítače, která podporuje váš počet virtuálních discích, takže možná nebudete moct zvětšit velikost virtuálních počítačů.
-* Tento scénář by použít příkaz Azure **Start-AzureStorageBlobCopy,** který je asynchronní. Po dokončení kopírování neexistuje žádná sla. Čas kopií se liší, zatímco to závisí na čekání ve frontě závisí také na množství dat k přenosu. Doba kopírování se zvyšuje, pokud se přenos přesouvá do jiného datového centra Azure, které podporuje úložiště Premium v jiné oblasti. Pokud máte pouze 2 uzly, zvažte možné zmírnění v případě, že kopie trvá déle než v testování. To by mohlo zahrnovat následující nápady.
-  * Přidejte dočasný třetí uzel SQL Server pro HA před migrací s dohodnutými prostoji.
-  * Spusťte migraci mimo naplánovanou údržbu Azure.
+* Během migrace dojde k dočasné ztrátě HA a zotavení po havárii.
+* Vzhledem k tomu, že je to 1:1 migrace, musíte použít minimální velikost virtuálního počítače, která podporuje váš počet virtuálních pevných disků, takže možná nebudete moct klidnějších virtuální počítače.
+* Tento scénář by používal Azure **Start-AzureStorageBlobCopy** rutiny, který je asynchronní. Při dokončování kopírování neexistuje žádná smlouva SLA. Doba kopírování se liší, zatímco to závisí na čekání ve frontě závisí také na množství dat, která se mají přenést. Čas kopírování se zvyšuje, pokud přenos probíhá na jiné datové centrum Azure, které podporuje Premium Storage v jiné oblasti. Pokud máte jenom dva uzly, zvažte možné zmírnění pro případ, že kopírování trvá déle než při testování. To může zahrnovat následující nápady.
+  * Před migrací s dohodnutým prostojem přidejte dočasný SQL Server uzel pro HA.
+  * Spusťte migraci mimo plánovanou údržbu Azure.
   * Ujistěte se, že jste správně nakonfigurovali kvorum clusteru.  
 
 ##### <a name="high-level-steps"></a>Základní kroky
 
-Tento dokument neukazuje úplný příklad od konce [Appendix](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage) do konce, vdodatku však obsahuje podrobnosti, které lze využít k provedení tohoto.
+Tento dokument neukazuje kompletní příklad úplného ukončení, ale v [dodatku](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage) najdete podrobnosti, které je možné využít k tomu.
 
-![Minimální doba prostoje][8]
+![MinimalDowntime][8]
 
-* Shromážděte konfiguraci disku a odeberte uzel (neodstraňujte připojené virtuální disky).
-* Vytvoření účtu úložiště Premium a kopírování virtuálních dispozičních zařízení z účtu standardního úložiště
-* Vytvořte novou cloudovou službu a znovu nasaďte virtuální modul SQL2 v této cloudové službě. Vytvořte virtuální virtuální ms pomocí zkopírovaného původního virtuálního pevného disku operačního systému a připojeníkopím zkopírovaných virtuálních pevných disků.
-* Nakonfigurujte ILB / ELB a přidejte koncové body.
-* Aktualizovat posluchače buď:
-  * Přepneme always on group do ústrojí a aktualizujeme always on listener s novou IP adresou ILB / ELB.
-  * Nebo přidání ip adresy prostředku nové cloudové služby ILB/ELB prostřednictvím prostředí PowerShell do clusteringu Windows. Potom nastavte možné vlastníky prostředku IP adresy na migrovaný uzel SQL2 a nastavte tuto závislost jako OR v síťovém názvu. Viz část "Přidání prostředku adresy IP ve stejné podsíti" v [dodatku](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage).
-* Zkontrolujte konfiguraci/šíření DNS klientům.
-* Migrujte virtuální ms SQL1 a projděte si kroky 2 – 4.
-* Pokud používáte kroky 5ii, přidejte SQL1 jako možného vlastníka pro přidaný prostředek adresy IP
-* Otestujte převzetí služeb při selhání.
+* Shromážděte konfiguraci disku a odeberte uzel (neodstraňujte připojené virtuální pevné disky).
+* Vytvoření účtu Premium Storage a zkopírování virtuálních pevných disků ze standardního účtu úložiště
+* Vytvořte novou cloudovou službu a znovu nasaďte virtuální počítač SQL2 do této cloudové služby. Vytvořte virtuální počítač pomocí zkopírovaného původního virtuálního pevného disku s operačním systémem a připojte zkopírované virtuální pevné disky.
+* Nakonfigurujte interního nástroje/ELB a přidejte koncové body.
+* Aktualizujte naslouchací proces podle těchto:
+  * Převzetí skupiny Always On v režimu offline a aktualizace naslouchacího procesu Always On s novou IP adresou interního nástroje/ELB.
+  * Nebo přidejte prostředek IP adresy nové cloudové služby interního nástroje/ELB prostřednictvím PowerShellu do clusteringu Windows. Potom nastavte možné vlastníky prostředku IP adresy na migrovaný uzel, SQL2 a nastavte tuto hodnotu jako závislost v názvu sítě. Viz část Přidání prostředku IP adresy do stejné podsítě v [dodatku](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage).
+* Ověřte konfiguraci nebo šíření DNS do klientů.
+* Migrujte virtuální počítač SQL1 a Projděte kroky 2 – 4.
+* Pokud používáte kroky 5ii, přidejte SQL1 jako možného vlastníka prostředku přidané IP adresy.
+* Testovací převzetí služeb při selhání.
 
-#### <a name="2-utilize-existing-secondary-replicas-multi-site"></a>2. Využijte stávající sekundární repliky: Multi-Site
+#### <a name="2-utilize-existing-secondary-replicas-multi-site"></a>2. Využijte existující sekundární repliky: Multi-Site
 
-Pokud máte uzly ve více než jednom datovém centru Azure (DC) nebo pokud máte hybridní prostředí, můžete použít vždy zapnuté konfigurace v tomto prostředí k minimalizaci prostojů.
+Pokud máte uzly ve více než jednom datacentru Azure (DC) nebo máte hybridní prostředí, můžete k minimalizaci výpadků použít konfiguraci Always On v tomto prostředí.
 
-Přístup je změnit vždy na synchronizaci synchronní pro místní nebo sekundární Azure DC a pak převzetí služeb při selhání na tento SQL Server. Pak zkopírujte virtuální disponály do účtu úložiště Premium a znovu nasadit počítač do nové cloudové služby. Aktualizujte naslouchací proces a potom navrácení služeb po selhání.
+Je potřeba změnit synchronizaci Always On na synchronní pro místní nebo sekundární řadič domény Azure a pak převzít služby při selhání z tohoto SQL Server. Pak zkopírujte virtuální pevné disky do účtu Premium Storage a znovu ho nasaďte do nové cloudové služby. Aktualizujte naslouchací proces a pak navrácení služeb po obnovení.
 
-##### <a name="points-of-downtime"></a>Body prostoje
+##### <a name="points-of-downtime"></a>Body prostojů
 
-Prostoje se skládá z doby převzetí služeb při selhání na alternativní dc a zpět. Závisí také na konfiguraci klienta/DNS a opětovné připojení klienta může být zpožděno.
-Vezměme si následující příklad hybridní konfigurace always on:
+Výpadek se skládá z doby převzetí služeb při selhání alternativního řadiče domény a zpět. Záleží taky na konfiguraci klienta nebo DNS a může dojít ke zpoždění opětovného připojení klienta.
+Vezměte v úvahu následující příklad hybridní konfigurace Always On:
 
-![Vícewebů1][9]
+![MultiSite1][9]
 
 ##### <a name="advantages"></a>Výhody
 
 * Můžete využít stávající infrastrukturu.
-* Máte možnost předinopletovat úložiště Azure na DR Azure DC jako první.
-* Úložiště DR Azure DC lze překonfigurovat.
-* Během migrace existují minimálně dvě převzetí služeb při selhání, s výjimkou převzetí služeb při selhání testu.
-* Není nutné přesunout data serveru SQL Server se zálohováním a obnovením.
+* Nejdřív máte možnost předem upgradovat službu Azure Storage na řadiči pro zotavení po havárii Azure.
+* Je možné překonfigurovat úložiště s ŘADIČEm zotavení po havárii Azure.
+* Během migrace nastane minimálně dvě převzetí služeb při selhání bez testovacího převzetí služeb při selhání.
+* Nemusíte přesouvat SQL Server data pomocí zálohování a obnovení.
 
 ##### <a name="disadvantages"></a>Nevýhody
 
-* V závislosti na přístupu klienta k SQL Server může být zvýšena latence při sql server běží v alternativní řadič domény k aplikaci.
-* Doba kopírování virtuálních discích do úložiště Premium může být dlouhá. To může ovlivnit vaše rozhodnutí o tom, zda zachovat uzel ve skupině dostupnosti. Zvažte to, když je během migrace spuštěno pracovní zatížení náročné na protokol, protože primární uzel musí zachovat nereplikované transakce v transakčním protokolu. Proto by to mohlo výrazně růst.
-* Tento scénář by použít příkaz Azure **Start-AzureStorageBlobCopy,** který je asynchronní. Po dokončení není žádná sla. Čas kopií se liší, zatímco to závisí na čekání ve frontě, závisí také na množství dat k přenosu. Proto máte pouze jeden uzel ve druhém datovém centru, měli byste provést kroky zmírnění v případě, že kopie trvá déle než v testování. Tyto kroky zmírnění zahrnují následující nápady:
-  * Přidejte dočasný druhý uzel SQL pro HA před migrací s dohodnutými prostoji.
-  * Spusťte migraci mimo naplánovanou údržbu Azure.
+* V závislosti na přístupu klienta k SQL Server může dojít ke zvýšené latenci při SQL Server spuštění v alternativním řadiči domény pro aplikaci.
+* Doba kopírování VHD do Premium Storage by mohla být dlouhá. To může mít vliv na vaše rozhodnutí o tom, jestli se má uzel ve skupině dostupnosti zachovat. Vezměte v úvahu, pokud jsou při migraci vyžadovány pracovní zatížení náročné na protokol, protože primární uzel musí uchovávat nereplikované transakce v transakčním protokolu. Proto to může výrazně růst.
+* Tento scénář by používal Azure **Start-AzureStorageBlobCopy** rutiny, který je asynchronní. Neexistuje žádná smlouva SLA k dokončení. Čas kopírování se liší, zatímco tato doba závisí na čekání ve frontě, závisí taky na množství dat, která se mají přenést. Proto máte jenom jeden uzel ve svém druhé datovém centru, měli byste vzít v úvahu kroky zmírnění v případě, že kopie trvá déle než při testování. Tyto kroky pro zmírnění rizik zahrnují následující nápady:
+  * Před migrací s dohodnutým prostojem přidejte dočasný uzel SQL pro HA.
+  * Spusťte migraci mimo plánovanou údržbu Azure.
   * Ujistěte se, že jste správně nakonfigurovali kvorum clusteru.
 
-Tento scénář předpokládá, že jste zdokumentovali instalaci a věděli, jak je úložiště mapováno, abyste mohli provést změny pro optimální nastavení mezipaměti disku.
+V tomto scénáři se předpokládá, že jste si nastavili instalaci a víte, jak je úložiště namapované, aby bylo možné provádět změny nastavení optimální mezipaměti disku.
 
 ##### <a name="high-level-steps"></a>Základní kroky
 
-![Více pracem2][10]
+![Multisite2][10]
 
-* Vytvořte místní / alternativní Řadič domény Azure primární SQL Server a z něj udělejte jiného partnera pro automatické převzetí služeb při selhání (AFP).
-* Shromážděte informace o konfiguraci disku z SQL2 a odeberte uzel (neodstraňujte připojené virtuální disky).
-* Vytvořte si účet úložiště Premium a zkopírujte virtuální řadiče z účtu standardního úložiště.
-* Vytvořte novou cloudovou službu a vytvořte virtuální modul SQL2 s připojenými disky úložiště Premiums.
-* Nakonfigurujte ILB / ELB a přidejte koncové body.
-* Aktualizujte vždy na schylení s novou IP adresu ILB / ELB a test převzetí služeb při selhání.
-* Zkontrolujte konfiguraci DNS.
-* Změňte AFP na SQL2 a pak migrovat SQL1 a projít kroky 2 – 5.
-* Otestujte převzetí služeb při selhání.
-* Přepnutí AFP zpět na SQL1 a SQL2
+* Místní nebo alternativní řadič domény Azure nastavte na primární SQL Server a nastavte ho jako jiného partnera automatického převzetí služeb při selhání (AFP).
+* Shromážděte informace o konfiguraci disku z SQL2 a odeberte uzel (neodstraňujte připojené virtuální pevné disky).
+* Vytvořte účet Premium Storage a zkopírujte virtuální pevné disky ze standardního účtu úložiště.
+* Vytvořte novou cloudovou službu a vytvořte virtuální počítač SQL2 s připojenými disky úložiště Premium.
+* Nakonfigurujte interního nástroje/ELB a přidejte koncové body.
+* Aktualizujte naslouchací proces Always On novou IP adresou interního nástroje/ELB a testovací převzetí služeb při selhání.
+* Ověřte konfiguraci DNS.
+* Změňte protokol AFP na SQL2 a pak migrujte SQL1 a Projděte kroky 2 – 5.
+* Testovací převzetí služeb při selhání.
+* Přepnout protokol AFP zpátky na SQL1 a SQL2
 
-## <a name="appendix-migrating-a-multisite-always-on-cluster-to-premium-storage"></a>Dodatek: Migrace vícepracového webu vždy v clusteru do úložiště Premium
+## <a name="appendix-migrating-a-multisite-always-on-cluster-to-premium-storage"></a>Příloha: migrace clusteru s více lokalitami vždy na Premium Storage
 
-Zbývající část tohoto článku obsahuje podrobný příklad převodu clusteru always on na více lokalit na úložiště Premium. Také převede naslouchací proces z použití externího nástrojpro vyrovnávání zatížení (ELB) na interní nástroj pro vyrovnávání zatížení (ILB).
+Zbývající část tohoto článku poskytuje podrobný příklad převodu clusteru s více lokalitami na Premium Storage. Také převede naslouchací proces z použití externího nástroje pro vyrovnávání zatížení (ELB) do interního nástroje pro vyrovnávání zatížení (interního nástroje).
 
 ### <a name="environment"></a>Prostředí
 
-* Windows 2k12 / SQL 2k12
-* 1 DB soubory na SP
-* 2 x fondy úložiště na uzel
+* Windows 2k12/SQL 2k12
+* 1 soubory databáze v aktualizaci SP
+* 2 × fondy úložiště na jeden uzel
 
-![Dodatek1][11]
+![Appendix1][11]
 
-### <a name="vm"></a>Vm:
+### <a name="vm"></a>SÍŤ
 
-V tomto příkladu budeme demonstrovat přechod z ELB na ILB. ELB byla k dispozici před ILB, takže to ukazuje, jak přepnout na ILB během migrace.
+V tomto příkladu provedeme přechod z ELB na interního nástroje. ELB byl k dispozici před interního nástroje, takže to ukazuje, jak během migrace přejít na interního nástroje.
 
-![Dodatek2][12]
+![Appendix2][12]
 
-### <a name="pre-steps-connect-to-subscription"></a>Předběžné kroky: Připojení k předplatnému
+### <a name="pre-steps-connect-to-subscription"></a>Předchozí kroky: připojení k předplatnému
 
 ```powershell
 Add-AzureAccount
@@ -644,7 +644,7 @@ Add-AzureAccount
 Get-AzureSubscription
 ```
 
-#### <a name="step-1-create-new-storage-account-and-cloud-service"></a>Krok 1: Vytvoření nového účtu úložiště a cloudové služby
+#### <a name="step-1-create-new-storage-account-and-cloud-service"></a>Krok 1: vytvoření nového účtu úložiště a cloudové služby
 
 ```powershell
 $mysubscription = "DansSubscription"
@@ -681,43 +681,43 @@ $destcloudsvc = "danNewSvcAms"
 New-AzureService $destcloudsvc -Location $location
 ```
 
-#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>Krok 2: Zvýšení povolených chyb \<u zdrojů Volitelné>
+#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>Krok 2: zvýšení povolených chyb na prostředky \<v případě potřeby>
 
-U určitých prostředků, které patří do skupiny dostupnosti vždy na, existují omezení počtu selhání, ke kterým může v období dojít, kdy se clusterová služba pokusí restartovat skupinu prostředků. Doporučujese zvýšit to, zatímco procházíte tímto postupem, protože pokud nemáte ručně převzetí služeb při selhání a spoušť převzetí služeb při selhání vypnutím počítače se můžete dostat blízko k tomuto limitu.
+U některých prostředků, které patří do vaší skupiny dostupnosti Always On, se omezuje počet selhání, ke kterým může dojít v určité době, kdy se Clusterová služba pokusí restartovat skupinu prostředků. Doporučuje se to zvýšit, i když procházíte tímto postupem, protože Pokud neprovedete ruční převzetí služeb při selhání a aktivaci převzetí služeb při selhání vypnutím počítačů, můžete toto omezení dosáhnout blízko.
 
-Bylo by rozumné zdvojnásobit příspěvek na selhání, chcete-li to provést ve Správci clusteru s podporou převzetí služeb při selhání, přejděte na vlastnosti skupiny prostředků Always On:
+Mělo by se považovat za nedodržení tohoto limitu, pokud to chcete udělat v Správce clusteru s podporou převzetí služeb při selhání, přejít do vlastností skupiny prostředků Always On:
 
-![Dodatek 3][13]
+![Appendix3][13]
 
 Změňte maximální počet selhání na 6.
 
-#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>Krok 3: Přidání prostředku adresy \<IP pro volitelnou> skupiny clusterů
+#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>Krok 3: Přidání prostředku IP adresy pro skupinu \<clusteru volitelné>
 
-Pokud máte pouze jednu adresu IP pro skupinu clusterů a je zarovnána s podsítí cloudu, dejte si pozor, pokud omylem přepnete offline všechny uzly clusteru v cloudu v této síti, pak prostředek IP clusteru a síťový název clusteru nebudou moci přejít do režimu online. V takovém případě zabrání aktualizace jiných prostředků clusteru.
+Pokud pro skupinu clusteru máte jenom jednu IP adresu a ta je zarovnaná na podsíť cloudu, mějte na pozor, že pokud omylem převezmete všechny uzly clusteru v cloudu v této síti, nebudete moct přejít do režimu online. V takovém případě zabrání aktualizace jiných prostředků clusteru.
 
 #### <a name="step-4-dns-configuration"></a>Krok 4: Konfigurace DNS
 
-Implementace plynulého přechodu závisí na tom, jak je služba DNS využívána a aktualizována.
-Při instalaci vždy zapnuto vytvoří skupinu prostředků clusteru Windows, pokud otevřete Správce clusteru s podporou převzetí služeb při selhání, zjistíte, že má minimálně tři prostředky, dva, na které dokument odkazuje, jsou:
+Implementace hladkého přechodu závisí na tom, jak se služba DNS používá a aktualizuje.
+Pokud je funkce Always On nainstalována, vytvoří skupinu prostředků clusteru se systémem Windows. Pokud otevřete Správce clusteru s podporou převzetí služeb při selhání, uvidíte, že má minimálně tři prostředky, a to dvě, na které dokument odkazuje:
 
-* Název virtuální sítě (VNN) – název DNS, ke kterému se klienti připojují, když se chtějí připojit k serverům SQL prostřednictvím always on.
-* IP adresa - IP adresa, která je přidružena k VNN, můžete mít více než jednu a v konfiguraci více pracovišti máte IP adresu pro každý web/podsíť.
+* Virtual Network název (VNN) – název DNS, ke kterému se klienti připojují, když se chtějí připojit k SQL serverům přes Always On.
+* Prostředek IP adresy – IP adresa, která je přidružená k VNN, může mít víc než jednu a v konfiguraci ve více lokalitách máte IP adresu na lokalitu nebo podsíť.
 
-Při připojování k serveru SQL Server ovladač klienta serveru SQL Server načte záznamy DNS přidružené k naslouchacímu procesu a pokusí se připojit ke každé přidružené adrese IP vždy zapnuté. Dále diskutujeme o některých faktorech, které to mohou ovlivnit.
+Při připojování k SQL Server načte ovladač klienta SQL Server záznamy DNS přidružené k naslouchacímu procesu a pokusí se připojit ke všem přidruženým IP adresám vždycky. V dalším kroku probereme několik faktorů, které mohou mít vliv na to.
 
-Počet souběžných záznamů DNS, které jsou přidruženy k názvu posluchače, závisí nejen na počtu přidružených adres IP, ale také na nastavení RegisterAllIpProviders v clusteringu s podporou převzetí služeb při selhání pro prostředek Always ON VNN.
+Počet souběžných záznamů DNS, které jsou přidruženy k názvu naslouchacího procesu, závisí nejen na počtu přidružených IP adres, ale v clusteru RegisterAllIpProviders'setting v clusteringu s podporou převzetí služeb při selhání pro prostředek Always ON VNN.
 
-Při nasazení always on v Azure existují různé kroky k vytvoření posluchače a IP adresy, budete muset ručně nakonfigurovat "RegisterAllIpProviders" na 1, to se liší od místní ho nasazení vždy na místě, kde je již nastavena na 1.
+Když nasadíte Always On v Azure, jsou k dispozici různé kroky pro vytvoření naslouchacího procesu a IP adresy. musíte ručně nakonfigurovat ' RegisterAllIpProviders ' na hodnotu 1, to se liší od místního nasazení Always On, pokud je již nastaveno na hodnotu 1.
 
-Pokud 'RegisterAllIpProviders' je 0, pak se zobrazí pouze jeden záznam DNS v DNS spojené s naslouchací proces:
+Pokud je hodnota ' RegisterAllIpProviders ' 0, zobrazí se pouze jeden záznam DNS v DNS přidružený k Naslouchacímu procesu:
 
-![Dodatek4][14]
+![Appendix4][14]
 
-Pokud 'RegisterAllIpProviders' je 1:
+Pokud je ' RegisterAllIpProviders ' 1:
 
-![Dodatek 5][15]
+![Appendix5][15]
 
-Níže uvedený kód vypíše nastavení VNN a nastaví jej za vás. Aby se změna projevila, je třeba převést vnn offline a vrátit ji zpět do režimu online. To přepne naslouchací proces offline způsobuje narušení připojení klienta.
+Následující kód vypíše nastavení VNN a nastaví ho za vás. Aby se změna projevila, musíte převést VNN do offline režimu a znovu ho převést do režimu online. To povede k tomu, že naslouchací proces bude v režimu offline způsobovat přerušení připojení klienta.
 
 ```powershell
 ##Always On Listener Name
@@ -728,11 +728,11 @@ Get-ClusterResource $ListenerName| Get-ClusterParameter
 Get-ClusterResource $ListenerName| Set-ClusterParameter RegisterAllProvidersIP  1
 ```
 
-V pozdějšíkrok migrace, je třeba aktualizovat vždy na naslouchací proces s aktualizovanou IP adresu, která odkazuje na nástroj pro vyrovnávání zatížení, to zahrnuje odebrání a přidání prostředku IP adresy. Po aktualizaci protokolu IP je třeba zajistit, aby byla nová adresa IP aktualizována v zóně DNS a aby klienti aktualizovali místní mezipaměť DNS.
+V pozdějším kroku migrace je potřeba aktualizovat naslouchací proces Always On s aktualizovanou IP adresou, která odkazuje na nástroj pro vyrovnávání zatížení, zahrnuje odebrání a přidání prostředku IP adresy. Po aktualizaci IP je potřeba zajistit, aby se nová IP adresa aktualizovala v zóně DNS a aby klienti aktualizovali místní mezipaměť DNS.
 
-Pokud jsou klienti umístěni v jiném segmentu sítě a odkazují na jiný server DNS, je třeba zvážit, co se stane s přenosem zóny DNS během migrace, protože doba opětovného připojení aplikace je omezena alespoň časem přenosu zóny jakékoli nové IP adresy adresy pro posluchače. Pokud jste v časové omezení zde, měli byste diskutovat a otestovat vynucení přírůstkové zóny přenosu s týmy systému Windows a také umístit záznam hostitele DNS na nižší Čas na live (TTL), aby klienti aktualizovat. Další informace naleznete [v tématu Přírůstkové zónové přenosy](https://technet.microsoft.com/library/cc958973.aspx) a [Start-DnsServerZoneTransfer](https://docs.microsoft.com/powershell/module/dnsserver/start-dnsserverzonetransfer).
+Pokud se klienti nacházejí v jiném segmentu sítě a odkazují na jiný server DNS, musíte zvážit, co se stane s přenosem zóny DNS během migrace, protože čas opětovného připojení aplikace se omezuje aspoň na dobu přenosu zóny pro všechny nové IP adresy pro naslouchací proces. Pokud je tady omezení času, měli byste diskutovat a otestovat vynucení přírůstkového přenosu zóny s Windows teams a také umístit záznam hostitele DNS na hodnotu TTL (Time to Live), aby se klienti mohli aktualizovat. Další informace najdete v tématu o [přírůstkových zónových přenosech](https://technet.microsoft.com/library/cc958973.aspx) a [Start-DnsServerZoneTransfer](https://docs.microsoft.com/powershell/module/dnsserver/start-dnsserverzonetransfer).
 
-Ve výchozím nastavení TTL pro záznam DNS, který je přidružen k naslouchací proces v vždy zapnuto v Azure je 1200 sekund. Můžete chtít snížit, pokud jste pod časovým omezením během migrace zajistit, že klienti aktualizovat své DNS s aktualizovanou IP adresu pro naslouchací proces. Konfiguraci můžete zobrazit a upravit tak, že vynesete konfiguraci VNN:
+Ve výchozím nastavení je hodnota TTL pro záznam DNS, která je přidružená k Naslouchacímu programu v rámci služby Always On Azure, 1200 sekund. Tuto dobu můžete chtít snížit, pokud během migrace v rámci časového omezení nechcete zajistit, aby klienti aktualizovali DNS pomocí aktualizované IP adresy pro naslouchací proces. Konfiguraci můžete zobrazit a upravit pomocí výpisu konfigurace VNN:
 
 ```powershell
 $AGName = "myProductionAG"
@@ -745,25 +745,25 @@ Get-ClusterResource $ListenerName| Set-ClusterParameter -Name "HostRecordTTL" 12
 ```
 
 > [!NOTE]
-> Čím nižší je 'HostRecordTTL', vyšší množství provozu DNS dochází.
+> Čím menší je "HostRecordTTL", dojde k vyššímu množství provozu DNS.
 
 ##### <a name="client-application-settings"></a>Nastavení klientské aplikace
 
-Pokud vaše klientská aplikace SQL podporuje sqlclient .NET 4.5, můžete použít klíčové slovo MULTISUBNETFAILOVER=TRUE. Toto klíčové slovo by měla být použita, protože umožňuje rychlejší připojení k SQL Always On Availability Group během převzetí služeb při selhání. Vyjmenovává všechny adresy IP přidružené k naslouchací proces Always On paralelně a provádí agresivnější rychlost opakování připojení TCP během převzetí služeb při selhání.
+Pokud vaše klientská aplikace SQL podporuje .NET 4,5 SQLClient, můžete použít klíčové slovo "MULTISUBNETFAILOVER = TRUE". Toto klíčové slovo by mělo být použito, protože umožňuje rychlejší připojení ke skupině dostupnosti Always On SQL během převzetí služeb při selhání. Vyčísluje všechny IP adresy přidružené k souběžnému naslouchacího procesu paralelně a při převzetí služeb při selhání provede výkonnější připojení TCP.
 
-Další informace o předchozích nastaveních naleznete v [tématu Klíčové slovo MultiSubnetFailover a přidružené funkce](https://msdn.microsoft.com/library/hh213080.aspx#MultiSubnetFailover). Viz také [podpora sqlclient pro vysokou dostupnost, zotavení po havárii](https://msdn.microsoft.com/library/hh205662\(v=vs.110\).aspx).
+Další informace o předchozím nastaveních najdete v tématu [klíčové slovo MultiSubnetFailover a související funkce](https://msdn.microsoft.com/library/hh213080.aspx#MultiSubnetFailover). Viz také [Podpora SqlClient pro vysokou dostupnost a zotavení po havárii](https://msdn.microsoft.com/library/hh205662\(v=vs.110\).aspx).
 
-#### <a name="step-5-cluster-quorum-settings"></a>Krok 5: Nastavení kvora clusteru
+#### <a name="step-5-cluster-quorum-settings"></a>Krok 5: nastavení kvora clusteru
 
-Vzhledem k tomu, že budete mít alespoň jeden SQL Server dolů najednou, měli byste upravit nastavení kvora clusteru, pokud používáte SVIDentní obrázek sdílení souborů (FSW) se dvěma uzly, měli byste nastavit kvorum povolit většinu uzlu a využít dynamické hlasování , což umožňuje, aby jeden uzel zůstal stát.
+Vzhledem k tomu, že se chystáte alespoň jednu SQL Server mimo provoz, měli byste změnit nastavení kvora clusteru, pokud používáte určující sdílenou složku (FSW) se dvěma uzly, měli byste nastavit kvorum tak, aby bylo možné většinu uzlů využít a využívat dynamická hlasování, což umožňuje, aby jeden uzel zůstal zachovný.
 
 ```powershell
 Set-ClusterQuorum -NodeMajority  
 ```
 
-Další informace o správě a konfiguraci kvora clusteru naleznete [v tématu Konfigurace a správa kvora v clusteru s podporou převzetí služeb při selhání systému Windows Server 2012](https://technet.microsoft.com/library/jj612870.aspx).
+Další informace o správě a konfiguraci kvora clusteru najdete v tématu [Konfigurace a Správa kvora v clusteru s podporou převzetí služeb při selhání s Windows serverem 2012](https://technet.microsoft.com/library/jj612870.aspx).
 
-#### <a name="step-6-extract-existing-endpoints-and-acls"></a>Krok 6: Extrahovat existující koncové body a aloky
+#### <a name="step-6-extract-existing-endpoints-and-acls"></a>Krok 6: extrakce existujících koncových bodů a seznamů ACL
 
 ```powershell
 #GET Endpoint info
@@ -772,17 +772,17 @@ Get-AzureVM -ServiceName $destcloudsvc -Name $vmNameToMigrate | Get-AzureEndpoin
 Get-AzureVM -ServiceName $destcloudsvc -Name $vmNameToMigrate | Get-AzureAclConfig -EndpointName "myAOEndPoint-LB"  
 ```
 
-Uložte tento text do souboru.
+Uloží tento text do souboru.
 
-#### <a name="step-7-change-failover-partners-and-replication-modes"></a>Krok 7: Změna partnerů s podporou převzetí služeb při selhání a režimů replikace
+#### <a name="step-7-change-failover-partners-and-replication-modes"></a>Krok 7: Změna partnerů pro převzetí služeb při selhání a replikační režimy
 
-Pokud máte více než dva servery SQL, měli byste změnit převzetí služeb při selhání jiné sekundární v jiném řadiči domény nebo v místním na "Synchronní" a učinit z něj partnera pro automatické převzetí služeb při selhání (AFP), je to tak, že budete udržovat HA při provádění změn. Můžete to udělat prostřednictvím TSQL upravit i když SSMS:
+Pokud máte více než dva servery SQL Server, měli byste změnit převzetí služeb při selhání jiné sekundární operace v jiném řadiči domény nebo v místním počítači na hodnotu synchronní a nastavit pro něj tohoto partnera pro automatické převzetí služeb při selhání (AFP). tím zajistíte, že zachováte HA, zatímco provádíte změny. Můžete to provést prostřednictvím TSQL změny, i když SSMS:
 
-![Dodatek6][16]
+![Appendix6][16]
 
-#### <a name="step-8-remove-secondary-vm-from-cloud-service"></a>Krok 8: Odebrání sekundárního virtuálního virtuálního zařízení z cloudové služby
+#### <a name="step-8-remove-secondary-vm-from-cloud-service"></a>Krok 8: odebrání sekundárního virtuálního počítače z cloudové služby
 
-Měli byste nejprve plánovat migraci sekundárního uzlu v cloudu. Pokud je tento uzel aktuálně primární, měli byste zahájit ruční převzetí služeb při selhání.
+Nejdřív byste měli naplánovat migraci sekundárního uzlu cloudu. Pokud je tento uzel aktuálně primární, měli byste iniciovat ruční převzetí služeb při selhání.
 
 ```powershell
 $vmNameToMigrate="dansqlams2"
@@ -833,15 +833,15 @@ Get-AzureVM -ServiceName $sourceSvc -Name  $vmNameToMigrate
 Remove-AzureVM -ServiceName $sourceSvc -Name $vmNameToMigrate
 ```
 
-#### <a name="step-9-change-disk-caching-settings-in-csv-file-and-save"></a>Krok 9: Změna nastavení mezipaměti disku v souboru CSV a uložení
+#### <a name="step-9-change-disk-caching-settings-in-csv-file-and-save"></a>Krok 9: Změna nastavení ukládání do mezipaměti disku v souboru CSV a uložení
 
-Pro svazky dat by měly být nastaveny na POUZE PRO ČTENÍ.
+U datových svazků by měly být nastavené na jen pro čtení.
 
-Pro svazky TLOG by měly být nastaveny na NONE.
+Pro TLOG svazky by měly být nastavené na žádné.
 
-![Dodatek 7][17]
+![Appendix7][17]
 
-#### <a name="step-10-copy-vhds"></a>Krok 10: Kopírování virtuálních pevných disků
+#### <a name="step-10-copy-vhds"></a>Krok 10: zkopírování virtuálních pevných disků
 
 ```powershell
 #Ensure you have created the container for these:
@@ -871,7 +871,7 @@ ForEach ($disk in $diskobjects)
 ```
 
 
-Stav kopírování virtuálních disponů můžete zkontrolovat na účet úložiště Premium:
+Stav kopírování VHD můžete kontrolovat na účet Premium Storage:
 
 ```powershell
 ForEach ($disk in $diskobjects)
@@ -887,17 +887,17 @@ ForEach ($disk in $diskobjects)
 }
 ```
 
-![Dodatek8][18]
+![Appendix8][18]
 
-Počkejte, až všechny tyto jsou zaznamenány jako úspěch.
+Počkejte, až budou všechny tyto záznamy zaznamenány jako úspěšné.
 
-Informace pro jednotlivé objekty BLOB:
+Informace o jednotlivých objektech blob:
 
 ```powershell
 Get-AzureStorageBlobCopyState -Blob "blobname.vhd" -Container $containerName -Context $xioContext
 ```
 
-#### <a name="step-11-register-os-disk"></a>Krok 11: Registrace disku operačního systému
+#### <a name="step-11-register-os-disk"></a>Krok 11: Registrace disku s operačním systémem
 
 ```powershell
 #Change storage account
@@ -914,9 +914,9 @@ $xioDiskName = $osdiskforbuild + "xio"
 Add-AzureDisk -DiskName $xioDiskName -MediaLocation  "https://$newxiostorageaccountname.blob.core.windows.net/vhds/$osvhd"  -Label "BootDisk" -OS "Windows"
 ```
 
-#### <a name="step-12-import-secondary-into-new-cloud-service"></a>Krok 12: Import sekundární do nové cloudové služby
+#### <a name="step-12-import-secondary-into-new-cloud-service"></a>Krok 12: import sekundární do nové cloudové služby
 
-Níže uvedený kód také používá přidanou možnost zde můžete importovat stroj a použít zachycovatelný VIP.
+Níže uvedený kód používá také možnost Přidat, můžete importovat počítač a použít zachovávajíelné virtuální IP adresy.
 
 ```powershell
 #Build VM Config
@@ -952,7 +952,7 @@ ForEach ( $attachdatadisk in $datadiskimport)
 $vmConfig  | New-AzureVM –ServiceName $destcloudsvc –Location $location -VNetName $vnet ## Optional (-ReservedIPName $reservedVIPName)
 ```
 
-#### <a name="step-13-create-ilb-on-new-cloud-svc-add-load-balanced-endpoints-and-acls"></a>Krok 13: Vytvoření ILB na novém cloudu Svc, přidání koncových bodů s vyrovnáváním zatížení a aklů
+#### <a name="step-13-create-ilb-on-new-cloud-svc-add-load-balanced-endpoints-and-acls"></a>Krok 13: vytvoření interního nástroje na novém cloudu SVC, přidání koncových bodů a seznamů ACL s vyrovnáváním zatížení
 
 ```powershell
 #Check for existing ILB
@@ -977,7 +977,7 @@ Get-AzureVM –ServiceName $destcloudsvc –Name $vmNameToMigrate  | Add-AzureEn
 ####WAIT FOR FULL AlwaysOn RESYNCRONISATION!!!!!!!!!#####
 ```
 
-#### <a name="step-14-update-always-on"></a>Krok 14: Aktualizace je stále zapnutá
+#### <a name="step-14-update-always-on"></a>Krok 14: aktualizace Always On
 
 ```powershell
 #Code to be executed on a Cluster Node
@@ -1000,21 +1000,21 @@ Get-ClusterGroup $AGName | Get-ClusterResource -Name "IP Address $newCloudServic
 #Make sure no static records in DNS
 ```
 
-![Dodatek9][19]
+![Appendix9][19]
 
-Nyní odeberte starou ip adresu cloudové služby.
+Teď odeberte starou IP adresu cloudové služby.
 
-![Dodatek 10][20]
+![Appendix10][20]
 
-#### <a name="step-15-dns-update-check"></a>Krok 15: Kontrola aktualizací DNS
+#### <a name="step-15-dns-update-check"></a>Krok 15: ověření aktualizace DNS
 
-Nyní byste měli zkontrolovat servery DNS v klientských sítích serveru SQL Server a ujistit se, že clustering přidal další záznam hostitele pro přidanou adresu IP. Pokud se tyto servery DNS neaktualizovaly, zvažte vynucení přenosu zóny DNS a ujistěte se, že klienti v této podsíti jsou schopni vyřešit obě adresy ALWAYS On IP, je to proto, že nemusíte čekat na automatickou replikaci DNS.
+Nyní byste měli zkontrolovat servery DNS v klientských sítích SQL Server a zajistěte, aby clustering přidal další záznam hostitele pro přidanou IP adresu. Pokud se tyto servery DNS neaktualizovaly, zvažte vynucení přenosu zóny DNS a zajistěte, aby klienti v podsíti mohli překládat na IP adresy vždy, takže nemusíte čekat na automatickou replikaci DNS.
 
-#### <a name="step-16-reconfigure-always-on"></a>Krok 16: Překonfigurovat vždy zapnutý
+#### <a name="step-16-reconfigure-always-on"></a>Krok 16: překonfigurování Always On
 
-V tomto okamžiku čekáte na sekundární uzel, který byl migrován plně znovu synchronizovat s místním uzlem a přepnout do uzlu synchronní replikace a učinit z něj AFP.  
+V tuto chvíli počkáte na sekundární uzel, který se migruje, aby se úplně znovu synchronizoval s místním uzlem a aby se přepnul na uzel synchronní replikace a vytvořil pro něj protokol AFP.  
 
-#### <a name="step-17-migrate-second-node"></a>Krok 17: Migrace druhého uzlu
+#### <a name="step-17-migrate-second-node"></a>Krok 17: migrace druhého uzlu
 
 ```powershell
 $vmNameToMigrate="dansqlams1"
@@ -1066,15 +1066,15 @@ Get-AzureVM -ServiceName $sourceSvc -Name  $vmNameToMigrate
 Remove-AzureVM -ServiceName $sourceSvc -Name $vmNameToMigrate
 ```
 
-#### <a name="step-18-change-disk-caching-settings-in-csv-file-and-save"></a>Krok 18: Změna nastavení ukládání disku do mezipaměti v souboru CSV a uložení
+#### <a name="step-18-change-disk-caching-settings-in-csv-file-and-save"></a>Krok 18: Změna nastavení ukládání do mezipaměti disku v souboru CSV a uložení
 
-U datových svazků by nastavení mezipaměti měla být nastavena na hodnotu READONLY.
+V případě datových svazků by měla být nastavení mezipaměti nastavena na jen pro čtení.
 
-U svazků TLOG by nastavení mezipaměti mělo být nastaveno na HODNOTU NONE.
+U TLOG svazků by měla být nastavení mezipaměti nastavená na NONE (žádné).
 
-![Dodatek11][21]
+![Appendix11][21]
 
-#### <a name="step-19-create-new-independent-storage-account-for-secondary-node"></a>Krok 19: Vytvoření nového účtu nezávislého úložiště pro sekundární uzel
+#### <a name="step-19-create-new-independent-storage-account-for-secondary-node"></a>Krok 19: vytvoření nového nezávislého účtu úložiště pro sekundární uzel
 
 ```powershell
 $newxiostorageaccountnamenode2 = "danspremsams2"
@@ -1094,7 +1094,7 @@ Set-AzureSubscription -SubscriptionName $mysubscription -CurrentStorageAccount $
 Select-AzureSubscription -SubscriptionName $mysubscription -Current
 ```
 
-#### <a name="step-20-copy-vhds"></a>Krok 20: Kopírování virtuálních pevných disků
+#### <a name="step-20-copy-vhds"></a>Krok 20: zkopírování virtuálních pevných disků
 
 ```powershell
 #Ensure you have created the container for these:
@@ -1128,7 +1128,7 @@ ForEach ($disk in $diskobjects)
 Get-AzureStorageBlobCopyState -Blob "danRegSvcAms-dansqlams1-2014-07-03.vhd" -Container $containerName -Context $xioContext
 ```
 
-Stav kopírování v pevném rozlišení můžete zkontrolovat pro všechny virtuální disky:
+Můžete kontrolovat stav kopírování VHD pro všechny virtuální pevné disky:
 
 ```powershell
 ForEach ($disk in $diskobjects)
@@ -1144,18 +1144,18 @@ ForEach ($disk in $diskobjects)
 }
 ```
 
-![Dodatek 12][22]
+![Appendix12][22]
 
-Počkejte, až všechny tyto jsou zaznamenány jako úspěch.
+Počkejte, až budou všechny tyto záznamy zaznamenány jako úspěšné.
 
-Informace pro jednotlivé objekty BLOB:
+Informace o jednotlivých objektech blob:
 
 ```powershell
 #Check individual blob status
 Get-AzureStorageBlobCopyState -Blob "danRegSvcAms-dansqlams1-2014-07-03.vhd" -Container $containerName -Context $xioContextnode2
 ```
 
-#### <a name="step-21-register-os-disk"></a>Krok 21: Registrace disku operačního systému
+#### <a name="step-21-register-os-disk"></a>Krok 21: Registrace disku s operačním systémem
 
 ```powershell
 #change storage account to the new XIO storage account
@@ -1202,7 +1202,7 @@ ForEach ( $attachdatadisk in $datadiskimport)
 $vmConfig  | New-AzureVM –ServiceName $destcloudsvc –Location $location -VNetName $vnet -Verbose
 ```
 
-#### <a name="step-22-add-load-balanced-endpoints-and-acls"></a>Krok 22: Přidání koncových bodů a aklů s vyrovnáváním zatížení
+#### <a name="step-22-add-load-balanced-endpoints-and-acls"></a>Krok 22: Přidání koncových bodů a seznamů ACL s vyrovnáváním zatížení
 
 ```powershell
 #Endpoints
@@ -1220,37 +1220,37 @@ Get-AzureVM –ServiceName $destcloudsvc –Name $vmNameToMigrate  | Add-AzureEn
 #https://msdn.microsoft.com/library/azure/dn495192.aspx
 ```
 
-#### <a name="step-23-test-failover"></a>Krok 23: Test převzetí služeb při selhání
+#### <a name="step-23-test-failover"></a>Krok 23: testovací převzetí služeb při selhání
 
-Počkejte, až se migrovaný uzel synchronizuje s místním uzly Always On. Umístěte jej do režimu synchronní replikace a počkejte, až bude synchronizován. Pak převzetí služeb při selhání z místního do prvního uzlu migrované, což je AFP. Jakmile to funguje, změňte poslední migrovaný uzel na AFP.
+Počkejte, až se migrovaný uzel synchronizuje s místním uzlem Always On. Umístěte ho do režimu synchronní replikace a počkejte, než se synchronizuje. Pak dojde k převzetí služeb při selhání z místního počítače na první migrovaný uzel, což je protokol AFP. Jakmile to fungovalo, změňte poslední migrovaný uzel na protokol AFP.
 
-Měli byste otestovat převzetí služeb při selhání mezi všemi uzly a spustit testy chaosu, abyste zajistili, že převzetí služeb při selhání funguje podle očekávání a v včasném panství.
+Měli byste otestovat převzetí služeb při selhání mezi všemi uzly a spustit i přes chaos testy, abyste zajistili, že převzetí služeb při selhání funguje podle očekávání a včas Manor.
 
-#### <a name="step-24-put-back-cluster-quorum-settings--dns-ttl--failover-pntrs--sync-settings"></a>Krok 24: Vrácení nastavení kvora clusteru / DNS TTL / Failover Pntrs / Nastavení synchronizace
+#### <a name="step-24-put-back-cluster-quorum-settings--dns-ttl--failover-pntrs--sync-settings"></a>Krok 24: umístění back-Pntrs nastavení kvora clusteru/nastavení DNS TTL/převzetí služeb při selhání/synchronizace
 
-##### <a name="adding-ip-address-resource-on-same-subnet"></a>Přidání prostředku adresy IP do stejné podsítě
+##### <a name="adding-ip-address-resource-on-same-subnet"></a>Přidává se prostředek IP adresy ve stejné podsíti.
 
-Pokud máte pouze dva servery SQL a chcete je migrovat do nové cloudové služby, ale chcete je zachovat ve stejné podsíti, můžete se vyhnout tomu, abyste posluchače přeřadili do offline, abyste odstranili původní adresu ALWAYS On IP a přidali novou adresu IP. Pokud migrujete virtuální chod do jiné podsítě, není nutné to provést, protože existuje další síť clusteru, která odkazuje na tuto podsíť.
+Pokud máte jenom dva servery SQL a chcete je migrovat do nové cloudové služby, ale chcete je zachovat ve stejné podsíti, můžete se vyhnout přepnutí tohoto naslouchacího procesu do režimu offline, aby se odstranila původní trvalá IP adresa a přidala se nová IP adresa. Pokud migrujete virtuální počítače do jiné podsítě, nemusíte to dělat, protože existuje další síť s clustery, která odkazuje na tuto podsíť.
 
-Po vyvolání migrované sekundární a přidal i v nové IP adresu prostředku pro novou cloudovou službu před převzetí služeb při selhání existující primární, měli byste provést tyto kroky v rámci správce převzetí služeb při selhání clusteru:
+Po zaregistrování migrované sekundární a přidané do nového prostředku IP adresy pro novou cloudovou službu před převzetím služeb při selhání stávající primární databáze byste měli provést tyto kroky v rámci clusteru Správce převzetí služeb při selhání:
 
-Chcete-li přidat adresu IP, naleznete v dodatku, krok 14.
+Informace o přidání do IP adresy najdete v dodatku, krok 14.
 
-1. Pro aktuální prostředek IP adresy změňte možného vlastníka na Existující primární SQL Server v příkladu "dansqlams4":
+1. V případě aktuálního prostředku IP adresy změňte možného vlastníka na stávající primární SQL Server, v příkladu ' dansqlams4 ':
 
-    ![Dodatek 13][23]
-2. U nového prostředku adresy IP změňte možného vlastníka na "Migrovaný sekundární SQL Server" v příkladu dansqlams5:
+    ![Appendix13][23]
+2. V případě nového prostředku IP adresy změňte možného vlastníka na migrované sekundární SQL Server, v příkladu ' dansqlams5 ':
 
-    ![Dodatek 14][24]
-3. Jakmile je tato možnost nastavena, můžete převzetí služeb při selhání a při migraci posledního uzlu je třeba upravit možné vlastníky tak, aby uzel byl přidán jako možný vlastník:
+    ![Appendix14][24]
+3. Jakmile nastavíte tuto možnost, můžete převzetí služeb při selhání a při migraci posledního uzlu upravit možné vlastníky, aby byl uzel přidaný jako možný vlastník:
 
-    ![Dodatek 15][25]
+    ![Appendix15][25]
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Úložiště Azure Premium](../disks-types.md)
+* [Premium Storage Azure](../disks-types.md)
 * [Virtuální počítače](https://azure.microsoft.com/services/virtual-machines/)
-* [SQL Server ve virtuálních počítačích Azure](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
+* [SQL Server v Azure Virtual Machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
 
 <!-- IMAGES -->
 [1]: ./media/virtual-machines-windows-classic-sql-server-premium-storage/1_VNET_Portal.png

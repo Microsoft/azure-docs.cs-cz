@@ -1,50 +1,50 @@
 ---
-title: Diagnostika funkcí Azure – přehled
-description: Zjistěte, jak můžete řešit problémy s vaší funkční aplikací pomocí diagnostiky Funkcí Azure.
+title: Přehled diagnostiky Azure Functions
+description: Přečtěte si, jak můžete řešit problémy s aplikací Function App pomocí Azure Functions Diagnostics.
 author: yunjchoi
 ms.topic: article
 ms.date: 11/01/2019
 ms.author: yunjchoi
 ms.custom: na
 ms.openlocfilehash: 41acc5703f6b6e5cdeedf2afd0dc61b23bc579c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75834036"
 ---
-# <a name="azure-functions-diagnostics-overview"></a>Přehled diagnostiky funkcí Azure
+# <a name="azure-functions-diagnostics-overview"></a>Přehled diagnostiky Azure Functions
 
-Když používáte aplikaci funkce, chcete být připraveni na všechny problémy, které mohou vzniknout, od chyb 4xx až po selhání. Diagnostika funkcí Azure je inteligentní a interaktivní prostředí, které vám pomůže vyřešit potíže s vaší funkční aplikací bez konfigurace nebo dodatečných nákladů. Když narazíte na problémy s vaší funkční aplikací, diagnostika Azure Functions poukazuje na to, co je špatné, aby vás navedla k správným informacím snadněji a rychleji řešit a vyřešit problém. Tento článek ukazuje základy, jak používat diagnostiku funkcí Azure k rychlejší diagnostice a řešení běžných problémů s aplikacemi funkcí.
+Když spouštíte aplikaci Function App, chcete se připravit na případné problémy, které mohou nastat, od chyb 4xx, aby se chyby aktivovaly. Diagnostika Azure Functions je inteligentní a interaktivní prostředí, které vám může pomoct při odstraňování potíží s aplikací Function App bez jakýchkoli konfigurací nebo dalších nákladů. Když narazíte na problémy s aplikací Function App, Azure Functions Diagnostika ukazuje, co je špatné, abyste vás mohli snadno a rychle vyřešit a vyřešit problém. V tomto článku se dozvíte základy použití diagnostiky Azure Functions pro rychlejší diagnostiku a řešení běžných potíží s aplikacemi Function App.
 
-## <a name="start-azure-functions-diagnostics"></a>Spuštění diagnostiky funkcí Azure
+## <a name="start-azure-functions-diagnostics"></a>Spustit diagnostiku Azure Functions
 
-Přístup k diagnostice funkcí Azure:
+Přístup k diagnostice Azure Functions:
 
-1. Přejděte do aplikace funkce na [webu Azure Portal](https://portal.azure.com).
-2. Vyberte kartu **Prvky platformy.**
-3. Vyberte **Diagnostikovat a řešit problémy** v části **Správa prostředků**, která otevře diagnostiku funkcí Azure.
-4. Zvolte kategorii, která nejlépe vystichne problém vaší aplikace funkcí pomocí klíčových slov na dlaždici domovské stránky. Můžete také zadat klíčové slovo, které nejlépe vystichne váš problém na vyhledávacím panelu. Můžete například zadat `execution` seznam diagnostických sestav souvisejících s prováděním aplikace funkce a otevřít je přímo z domovské stránky.
+1. V [Azure Portal](https://portal.azure.com)přejděte do aplikace Function App.
+2. Vyberte kartu **funkce platformy** .
+3. Vyberte možnost **diagnostikovat a vyřešit problémy** pod **správou prostředků**, která otevře diagnostiku Azure Functions.
+4. Vyberte kategorii, která nejlépe popisuje problém vaší aplikace Function pomocí klíčových slov na dlaždici domovské stránky. Můžete také zadat klíčové slovo, které nejlépe popisuje váš problém na panelu hledání. Můžete například zadat `execution` , chcete-li zobrazit seznam diagnostických sestav souvisejících s prováděním aplikace Function App a otevřít je přímo z domovské stránky.
 
 ![Domovská stránka](./media/functions-diagnostics/homepage.png)
 
 ## <a name="use-the-interactive-interface"></a>Použití interaktivního rozhraní
 
-Jakmile vyberete kategorii domovské stránky, která nejlépe odpovídá problému vaší aplikace funkce, interaktivní rozhraní diagnostiky Azure Functions, Genie, vás může provést diagnostikou a řešením problému vaší aplikace. Pomocí klávesových zkratek dlaždic, které genie poskytuje, můžete zobrazit úplnou diagnostickou zprávu o kategorii problémů, která vás zajímá. Klávesové zkratky dlaždic poskytují přímý způsob přístupu k diagnostickým metrikám.
+Jakmile vyberete kategorii domovské stránky, která nejlépe odpovídá vašemu problému aplikace Function App, Azure Functions interaktivní rozhraní Genie Diagnostics, které vám pomůže s diagnostikou a řešením problémů s vaší aplikací. Pomocí klávesových zkratek, které poskytuje Genie, můžete zobrazit úplnou diagnostickou sestavu kategorie problému, o které se zajímáte. Zástupci dlaždic poskytují přímý způsob přístupu k diagnostickým metrikám.
 
-![Džin](./media/functions-diagnostics/genie.png)
+![Genie](./media/functions-diagnostics/genie.png)
 
-Po výběru dlaždice se zobrazí seznam témat souvisejících s problémem popsaným v dlaždici. Tato témata obsahují úryvky pozoruhodných informací z celé sestavy. Můžete vybrat libovolné z těchto témat, abyste problémy dále prozkoumali. Můžete také vybrat **zobrazit celou sestavu** a prozkoumat všechna témata na jedné stránce.
+Po výběru dlaždice se zobrazí seznam témat souvisejících s problémem popsaným na dlaždici. Tato témata poskytují fragmenty důležitých informací z celé sestavy. Můžete vybrat kterékoli z těchto témat a prozkoumat tak problémy. Můžete také vybrat **Zobrazit úplnou sestavu** a prozkoumat všechna témata na jedné stránce.
 
 ![Náhled diagnostické sestavy](./media/functions-diagnostics/preview-of-diagnostic-report.png)
 
-## <a name="view-a-diagnostic-report"></a>Zobrazení diagnostické sestavy
+## <a name="view-a-diagnostic-report"></a>Zobrazit diagnostickou sestavu
 
-Po výběru tématu můžete zobrazit diagnostickou sestavu specifickou pro vaši aplikaci funkcí. Diagnostické sestavy používají stavové ikony k označení, jestli máte s vaší aplikací nějaké konkrétní problémy. Zobrazí se podrobný popis problému, doporučených akcí, souvisejících metrik a užitečných dokumentů. Přizpůsobené diagnostické sestavy jsou generovány z řady kontrol spuštěných v aplikaci funkcí. Diagnostické sestavy mohou být užitečným nástrojem pro určení problémů v aplikaci funkcí a nasměrování k vyřešení problému.
+Po výběru tématu si můžete zobrazit diagnostickou zprávu specifickou pro vaši aplikaci Function App. Diagnostické sestavy používají ikony stavu k označení, zda existují konkrétní problémy s vaší aplikací. Zobrazí se podrobný popis problému, doporučené akce, související metriky a užitečné dokumenty. Přizpůsobené diagnostické zprávy se generují z řady kontrol spuštěných ve vaší aplikaci Function App. Diagnostické sestavy můžou být užitečným nástrojem pro zakládání problémů v aplikaci Function App a při řešení tohoto problému.
 
-## <a name="find-the-problem-code"></a>Najít kód problému
+## <a name="find-the-problem-code"></a>Vyhledejte kód problému.
 
-Pro funkce založené na skriptech můžete použít **spuštění funkce a chyby** v části **Funkce App Down nebo Hlášení chyb** zúžit na řádku kódu způsobuje výjimky nebo chyby. Tato funkce může být užitečným nástrojem pro získání hlavní příčiny a opravu problémů z určitého řádku kódu. Tato možnost není k dispozici pro předkompilované funkce Jazyka C# a Jazyka Java.
+V případě funkcí založených na skriptech můžete použít **spouštění funkcí a chyby** v části **Function App dolů nebo hlášení chyb** a zúžit tak rozsah kódu, který způsobuje výjimky nebo chyby. Tato funkce může být užitečným nástrojem pro získání hlavní příčiny a řešení problémů z konkrétního řádku kódu. Tato možnost není k dispozici pro předkompilované funkce C# a Java.
 
 ![Diagnostická zpráva o chybách spuštění funkce](./media/functions-diagnostics/diagnostic-report-on-function-execution-errors.png)
 
@@ -52,7 +52,7 @@ Pro funkce založené na skriptech můžete použít **spuštění funkce a chyb
 
 ## <a name="next-steps"></a>Další kroky
 
-Můžete klást otázky nebo poskytnout zpětnou vazbu k diagnostice Funkcí Azure na [UserVoice](https://feedback.azure.com/forums/355860-azure-functions). Uveďte `[Diag]` prosím do názvu své zpětné vazby.
+Můžete klást otázky nebo poskytovat zpětnou vazbu k Azure Functions diagnostice na webu [UserVoice](https://feedback.azure.com/forums/355860-azure-functions). Uveďte `[Diag]` prosím název své zpětné vazby.
 
 > [!div class="nextstepaction"]
-> [Sledování funkčních aplikací](functions-monitoring.md)
+> [Monitorování aplikací Function App](functions-monitoring.md)

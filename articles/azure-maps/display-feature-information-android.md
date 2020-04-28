@@ -1,6 +1,6 @@
 ---
-title: Zobrazení informací o funkcích v sadě Azure Maps Android SDK | Mapy Microsoft Azure
-description: V tomto článku se dozvíte, jak zobrazit informace o funkcích na mapě pomocí sady Microsoft Azure Maps Android SDK.
+title: Zobrazit informace o funkcích v Android SDK Azure Maps | Mapy Microsoft Azure
+description: V tomto článku se dozvíte, jak zobrazit informace o funkcích na mapě pomocí Android SDK Microsoft Azure Maps.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/08/2019
@@ -9,15 +9,15 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 26f41a7fd88a3c2018592e89ae95e3b962c1a9e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75911697"
 ---
 # <a name="display-feature-information"></a>Zobrazení informací o funkci
 
-Prostorová data jsou často reprezentována pomocí bodů, čar a polygonů. Tato data mají často k tomu spojené informace o metadatech. Bod může například představovat umístění úložiště a metadata o této restauraci může být jeho název, adresa a typ jídla, které slouží. Tato metadata lze přidat jako vlastnosti `JsonObject`těchto funkcí pomocí . Následující kód vytvoří jednoduchý bod `title` funkce s vlastností, která má hodnotu "Hello World!"
+Prostorová data jsou často reprezentovaná pomocí bodů, čar a mnohoúhelníků. Tato data často obsahují informace o metadatech, které jsou k ní přidružené. Například bod může představovat umístění úložiště a metadata o této restauraci může být jeho jméno, adresa a typ potravin, který IT oddělení obsluhuje. Tato metadata lze přidat jako vlastnosti těchto funkcí pomocí `JsonObject`. Následující kód vytvoří jednoduchou funkci Point s `title` vlastností, která má hodnotu "Hello World!".
 
 ```java
 //Create a data source and add it to the map.
@@ -32,7 +32,7 @@ properties.addProperty("title", "Hello World!");
 dataSource.add(Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64), properties));
 ```
 
-Když uživatel interaguje s funkcí na mapě, události lze použít k reakci na tyto akce. Běžným scénářem je zobrazení zprávy z řad vlastností metadat funkce, se kterou uživatel interagoval. Událost `OnFeatureClick` je hlavní událostí používanou k detekci, kdy uživatel poklepal na funkci na mapě. Je tu také `OnLongFeatureClick` událost. Při přidávání `OnFeatureClick` události do mapy může být omezena na jednu vrstvu předáním ID vrstvy, na kterou se omezí. Pokud není předáno žádné ID vrstvy, klepnutím na libovolnou funkci na mapě bez ohledu na to, ve které vrstvě se nachází, by se tato událost stala. Následující kód vytvoří vrstvu symbolů pro vykreslení dat `OnFeatureClick` bodů na mapě, pak přidá událost a omezí ji na tuto vrstvu symbolů.
+Když uživatel komunikuje s funkcí na mapě, můžou se události použít k reakci na tyto akce. Běžným scénářem je zobrazení zprávy z vlastností metadat funkce, se kterou uživatel pracuje. `OnFeatureClick` Událost je hlavní událost, která se používá k detekci, kdy uživatel klepne na funkci na mapě. K dispozici je `OnLongFeatureClick` také událost. Při přidávání `OnFeatureClick` události do mapy může být omezena na jednu vrstvu předáním ID vrstvy, na kterou se omezuje. Pokud není předáno žádné ID vrstvy, klepněte na mapě na libovolné funkci, bez ohledu na to, ve které vrstvě se nachází, by tato událost mohla vyvolat. Následující kód vytvoří vrstvu symbolů pro vykreslení dat bodů na mapě, poté přidá `OnFeatureClick` událost a omezí ji na tuto vrstvu symbolů.
 
 ```java
 //Create a symbol and add it to the map.
@@ -48,9 +48,9 @@ map.events.add((OnFeatureClick) (features) -> {
 }, symbolLayer.getId());    //Limit this event to the symbol layer.
 ```
 
-## <a name="display-a-toast-message"></a>Zobrazení informační zprávy
+## <a name="display-a-toast-message"></a>Zobrazit informační zprávy
 
-Informační zpráva je jedním z nejjednodušších způsobů zobrazení informací uživateli a je k dispozici ve všech verzích systému Android. Nepodporuje žádný typ uživatelského vstupu a zobrazuje se pouze na krátkou dobu. Pokud chcete uživateli rychle dát vědět něco o tom, na co poklepal, může být dobrou volbou informační zpráva. Následující kód ukazuje, jak lze informační `OnFeatureClick` zprávu použít s událostí.
+Zpráva informační zprávy je jedním z nejjednodušších způsobů zobrazení informací uživateli a je k dispozici ve všech verzích Androidu. Nepodporuje žádný typ vstupu uživatele a zobrazuje se jenom po krátkou dobu. Pokud chcete uživateli rychle informovat o tom, co se na něj klepnuli, může být informační zpráva vhodná. Následující kód ukazuje, jak lze v `OnFeatureClick` události použít informační zprávy.
 
 ```java
 //Add a feature click event to the map.
@@ -65,14 +65,14 @@ map.events.add((OnFeatureClick) (features) -> {
 
 <center>
 
-![Animace funkce, která je poklepávána, a zobrazená informační zpráva](./media/display-feature-information-android/symbol-layer-click-toast-message.gif)</center>
+![Animace používané funkce a zobrazená zpráva informační zprávy](./media/display-feature-information-android/symbol-layer-click-toast-message.gif)</center>
 
-Kromě informačních zpráv existuje mnoho dalších způsobů, jak prezentovat vlastnosti metadat funkce, například:
+Kromě informačních zpráv existuje mnoho dalších způsobů, jak prezentovat vlastnosti metadat funkce, jako například:
 
-- [Widget Snakbar](https://developer.android.com/training/snackbar/showing.html) - Snackbars poskytují lehkou zpětnou vazbu o operaci. Zobrazují krátkou zprávu v dolní části obrazovky na mobilních zařízeních a vlevo dole na větších zařízeních. Snackbars se objeví nad všemi ostatními prvky na obrazovce a pouze jeden může být zobrazen najednou.
-- [Dialogy](https://developer.android.com/guide/topics/ui/dialogs) – Dialogové okno je malé okno, které vyzve uživatele k rozhodnutí nebo k zadání dalších informací. Dialogové okno nevyplňuje obrazovku a obvykle se používá pro modální události, které vyžadují, aby uživatelé před pokračováním akce.
-- Přidejte [fragment](https://developer.android.com/guide/components/fragments) k aktuální aktivitě.
-- Přejděte na jinou aktivitu nebo zobrazení.
+- [Widget Snakbar](https://developer.android.com/training/snackbar/showing.html) – Snackbars poskytuje nezjednodušenou zpětnou vazbu k operaci. Zobrazují v dolní části obrazovky na mobilním zařízení stručnou zprávu a na větších zařízeních zbývá dole. Snackbars se zobrazí nad všemi ostatními prvky na obrazovce a v jednu chvíli může být zobrazen pouze jeden.
+- [Dialogová](https://developer.android.com/guide/topics/ui/dialogs) okna – dialogové okno je malé okno s výzvou, aby uživatel zadal rozhodnutí nebo zavedl Další informace. Dialogové okno neplní obrazovku a obvykle se používá pro modální události, které vyžadují, aby uživatelé před pokračováním prohlédli akci.
+- Přidá [fragment](https://developer.android.com/guide/components/fragments) do aktuální aktivity.
+- Přejděte k jiné aktivitě nebo zobrazení.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -82,4 +82,4 @@ Přidání dalších dat do mapy:
 > [Přidání vrstvy symbolů](how-to-add-symbol-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [Přidání obrazců do mapy Androidu](how-to-add-shapes-to-android-map.md)
+> [Přidání obrazců na mapu pro Android](how-to-add-shapes-to-android-map.md)

@@ -1,6 +1,6 @@
 ---
-title: Použití počítače s Windows s Hadoopem na HDInsight – Azure
-description: Práce z počítače s Windows v Hadoopu na HDInsightu. Spravujte clustery a ucházujte se pomocí nástrojů PowerShellu, Visual Studia a Linuxu. Vyvíjejte řešení pro velké objemy dat pomocí rozhraní .NET.
+title: Použití počítače s Windows se systémem Hadoop ve službě HDInsight – Azure
+description: Práce z počítače s Windows v systému Hadoop ve službě HDInsight. Spravujte a Dotazujte clustery pomocí nástrojů PowerShell, Visual Studio a Linux. Vývoj řešení pro velké objemy dat pomocí .NET
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,91 +9,91 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/20/2019
 ms.openlocfilehash: 3ec50acc693452fe73d929effcea98b12fc5ff8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75933938"
 ---
-# <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Práce v ekosystému Apache Hadoop na HDInsight z počítače s Windows
+# <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Práce v Apache Hadoop ekosystému ve službě HDInsight z počítače s Windows
 
-Přečtěte si o možnostech vývoje a správy na počítači s Windows pro práci v ekosystému Apache Hadoop na HDInsightu.
+Přečtěte si o možnostech vývoje a správy na počítači s Windows pro práci v Apache Hadoop ekosystému ve službě HDInsight.
 
-HDInsight je založen na komponentách Apache Hadoop a Hadoop, open-source technologií vyvinutých na Linuxu. HDInsight verze 3.4 a vyšší používá distribuci Ubuntu Linux jako základní operační systém pro cluster. S hdinsightvšak můžete pracovat z klienta Windows nebo vývojového prostředí Systému Windows.
+HDInsight je založený na komponentách Apache Hadoop a Hadoop, open source technologiích vyvinutých na platformě Linux. HDInsight verze 3,4 a vyšší používá distribuci Ubuntu Linux jako základní operační systém pro cluster. Můžete ale pracovat se službou HDInsight z klienta Windows nebo vývojového prostředí Windows.
 
 ## <a name="use-powershell-for-deployment-and-management-tasks"></a>Použití PowerShellu pro úlohy nasazení a správy
 
-Azure PowerShell je skriptovací prostředí, které můžete použít k řízení a automatizaci úloh nasazení a správy v HDInsight u Windows.
+Azure PowerShell je skriptovací prostředí, které můžete použít k řízení a automatizaci úloh nasazení a správy ve službě HDInsight ze systému Windows.
 
-Příklady úkolů, které můžete s PowerShellem dělat:
+Příklady úloh, které můžete provádět s PowerShellem:
 
-* [Vytvořte clustery pomocí prostředí PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md).
-* [Spusťte dotazy Apache Hive pomocí prostředí PowerShell](hadoop/apache-hadoop-use-hive-powershell.md).
-* [Správa clusterů pomocí prostředí PowerShell](hdinsight-administer-use-powershell.md).
+* [Vytvářejte clustery pomocí PowerShellu](hdinsight-hadoop-create-linux-clusters-azure-powershell.md).
+* [Spouštějte Apache Hive dotazy pomocí PowerShellu](hadoop/apache-hadoop-use-hive-powershell.md).
+* [Správa clusterů pomocí PowerShellu](hdinsight-administer-use-powershell.md)
 
-Podle pokynů [nainstalujte a nakonfigurujte Azure Powershell,](https://docs.microsoft.com/powershell/azure/install-az-ps) abyste získali nejnovější verzi.
+Pokud chcete získat nejnovější verzi, postupujte podle kroků pro [instalaci a konfiguraci Azure PowerShellu](https://docs.microsoft.com/powershell/azure/install-az-ps) .
 
-## <a name="utilities-you-can-run-in-a-browser"></a>Nástroje, které lze spustit v prohlížeči
+## <a name="utilities-you-can-run-in-a-browser"></a>Nástroje, které můžete spustit v prohlížeči
 
-Následující nástroje mají webové uživatelské prostředí, které běží v prohlížeči:
-* **[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)** je interaktivní prostředí příkazového řádku, které běží ve vašem prohlížeči a z portálu Azure.
+Následující nástroje mají webové uživatelské rozhraní, které běží v prohlížeči:
+* **[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)** je interaktivní prostředí příkazového řádku, které běží v prohlížeči a v rámci Azure Portal.
 
-* **[Webové uživatelské rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md)** je nástroj pro správu a monitorování dostupný na webu Azure Portal, který lze použít ke správě různých druhů úloh, jako jsou:
-    * [Použití Apache Ambari s rozhraním REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
-    * [Apache Hive View v Apache Ambari](hadoop/apache-hadoop-use-hive-ambari-view.md)
-    * [Apache Tez Pohled v Apache Ambari](hdinsight-debug-ambari-tez-view.md)
+* **[Webové uživatelské rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md)** je nástroj pro správu a monitorování, který je k dispozici ve Azure Portal, který je možné použít ke správě různých druhů úloh, jako je například:
+    * [Použití Apache Ambari s REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
+    * [Zobrazení Apache Hive v Apache Ambari](hadoop/apache-hadoop-use-hive-ambari-view.md)
+    * [Zobrazení Apache Tez v Apache Ambari](hdinsight-debug-ambari-tez-view.md)
 
-## <a name="data-lake-hadoop-tools-for-visual-studio"></a>Nástroje datového jezera (Hadoop) pro visual studio
+## <a name="data-lake-hadoop-tools-for-visual-studio"></a>Data Lake (Hadoop) Tools pro Visual Studio
 
-Pomocí nástrojů Data Lake Tools pro Visual Studio nasazujte a spravujte topologie stormu. Nástroje data lake také nainstaluje SCP.NET SDK, který umožňuje vyvíjet c# Storm topologie s Visual Studio.
+Pomocí Data Lakech nástrojů pro Visual Studio nasaďte a spravujte topologie přeplavování. Nástroje pro Data Lake také instalují sadu SDK SCP.NET, která umožňuje vyvíjet topologie C# s využitím sady Visual Studio.
 
-Než přejdete k následujícím příkladům, [nainstalujte a vyzkoušejte nástroje Data Lake Tools pro visual studio](hadoop/apache-hadoop-visual-studio-tools-get-started.md).
+Než přejdete na následující příklady, [nainstalujte a vyzkoušejte si data Lake nástroje pro Visual Studio](hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
-Příklady úkolů, které můžete dělat s Visual Studio a Nástroje datového jezera pro Visual Studio:
-* [Nasazení a správa topologií stormu z Visual Studia](storm/apache-storm-deploy-monitor-topology-linux.md)
-* [Vývoj C# topologií pro Storm pomocí Visual Studio](storm/apache-storm-develop-csharp-visual-studio-topology.md). Bity obsahují ukázkové šablony pro topologii Storm, které můžete připojit k databázím, jako je Azure Cosmos DB a SQL Database.
+Příklady úloh, které můžete provádět pomocí sady Visual Studio a Data Lakech nástrojů pro Visual Studio:
+* [Nasazení a Správa topologií přeplavování ze sady Visual Studio](storm/apache-storm-deploy-monitor-topology-linux.md)
+* [Vývoj topologií v jazyce C# pro práci s využitím sady Visual Studio](storm/apache-storm-develop-csharp-visual-studio-topology.md). Služba BITS zahrnuje ukázkové šablony pro topologie s více poddatabázemi, které se můžete připojit k databázím, například Azure Cosmos DB a SQL Database.
 
 ## <a name="visual-studio-and-the-net-sdk"></a>Visual Studio a sada .NET SDK
 
-Pomocí sady Visual Studio se sadou .NET SDK můžete spravovat clustery a vyvíjet aplikace pro velké objemy dat. Můžete použít jiné IDE pro následující úkoly, ale příklady jsou zobrazeny v sadě Visual Studio.
+Sadu Visual Studio se sadou .NET SDK můžete použít ke správě clusterů a vývoji aplikací pro velké objemy dat. Můžete použít další prostředí pro následující úkoly, ale příklady jsou uvedeny v aplikaci Visual Studio.
 
-Příklady úkolů, které můžete dělat s sadou .NET SDK v sadě Visual Studio:
-* [Azure HDInsight SDK pro rozhraní .NET](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet).
-* [Spusťte dotazy Apache Hive pomocí sady .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md).
-* [Používejte uživatelem definované funkce Jazyka C# se streamováním Apache Hive a Apache Pig na Apache Hadoop](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md).
+Příklady úloh, které můžete provádět s .NET SDK v sadě Visual Studio:
+* [Azure HDInsight SDK pro .NET](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)
+* [Spouštějte Apache Hive dotazy pomocí sady .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md).
+* [Pomocí uživatelem definovaných funkcí jazyka C# se Apache Hive a Apache vepřovým proudem v Apache Hadoop](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md).
 
-## <a name="intellij-idea-and-eclipse-ide-for-spark-clusters"></a>Intellij IDEA a Eclipse IDE pro clustery Spark
+## <a name="intellij-idea-and-eclipse-ide-for-spark-clusters"></a>IntelliJ nápad a rozzatmění IDE pro clustery Spark
 
-[Jak Intellij IDEA](https://www.jetbrains.com/idea/download) a Eclipse [IDE](https://www.eclipse.org/downloads/) lze použít k:
-* Vyvíjejte a odesílejte aplikaci Scala Spark v clusteru HDInsight Spark.
+[INTELLIJ nápad](https://www.jetbrains.com/idea/download) i [rozhraní IDE pro zatmění](https://www.eclipse.org/downloads/) lze použít k:
+* Vývoj a odesílání aplikace Scala Spark v clusteru HDInsight Spark.
 * Přístup k prostředkům clusteru Spark.
-* Vyvíjejte a spouštějte aplikaci Scala Spark místně.
+* Vývoj a spouštění aplikace Scala Spark lokálně
 
 Tyto články ukazují, jak:
-* Intellij IDEA: [Vytvořte aplikace Apache Spark pomocí modulu plug-in Azure Toolkit for Intellij a Scala SDK.](spark/apache-spark-intellij-tool-plugin.md)
-* Eclipse IDE nebo Scala IDE pro Eclipse: [Vytvoření aplikací Apache Spark a sady nástrojů Azure pro Eclipse](spark/apache-spark-eclipse-tool-plugin.md)
+* IntelliJ nápad: [vytváření Apache Sparkch aplikací pomocí sady Azure Toolkit pro IntelliJ a sady Scala SDK.](spark/apache-spark-intellij-tool-plugin.md)
+* Integrované vývojové prostředí (IDE) nebo Scala IDE pro zatmění: [vytváření aplikací Apache Spark a Azure Toolkit for Eclipse](spark/apache-spark-eclipse-tool-plugin.md)
 
-## <a name="notebooks-on-spark-for-data-scientists"></a>Notebooky na Spark pro datové vědce
+## <a name="notebooks-on-spark-for-data-scientists"></a>Poznámkové bloky ve Sparku pro odborníky přes data
 
-Clustery Apache Spark v HDInsightu zahrnují notebooky apache zeppelin a jádra, které lze použít s notebooky Jupyter.
+Clustery Apache Spark v HDInsight zahrnují notebooky Apache Zeppelin a jádra, které je možné použít s poznámkovým blokem Jupyter.
 
-* [Naučte se používat jádra v clusterech Apache Spark s notebooky Jupyter k testování aplikací Spark](spark/apache-spark-zeppelin-notebook.md)
-* [Naučte se používat notebooky Apache Zeppelin v clusterech Apache Spark ke spouštění úloh Spark](spark/apache-spark-jupyter-notebook-kernels.md)
+* [Naučte se používat jádra v Apache Spark clusterech Jupyter poznámkových blocích k testování aplikací Spark.](spark/apache-spark-zeppelin-notebook.md)
+* [Naučte se používat notebooky Apache Zeppelin v clusterech Apache Spark ke spouštění úloh Sparku.](spark/apache-spark-jupyter-notebook-kernels.md)
 
-## <a name="run-linux-based-tools-and-technologies-on-windows"></a>Spouštění linuxových nástrojů a technologií ve Windows
+## <a name="run-linux-based-tools-and-technologies-on-windows"></a>Spouštění nástrojů a technologií založených na systému Linux ve Windows
 
-Pokud narazíte na situaci, kdy musíte použít nástroj nebo technologii, která je k dispozici pouze na Linuxu, zvažte následující možnosti:
+Pokud jste pocházeli v situaci, kdy je nutné použít nástroj nebo technologii, která je k dispozici pouze pro Linux, vezměte v úvahu následující možnosti:
 
-* **Bash na Ubuntu na Windows 10** poskytuje podsystém Linux na Windows. Bash umožňuje přímo spustit linuxové nástroje, aniž byste museli udržovat vyhrazenou instalaci Linuxu. Postup instalace najdete v [příručce k instalaci podsystému Windows pro Linux pro Windows 10.](https://docs.microsoft.com/windows/wsl/install-win10)  Ostatní [unixové granáty](https://www.gnu.org/software/bash/) budou fungovat také.
-* **Docker pro Windows** poskytuje přístup k mnoha linuxovým nástrojům a lze je spouštět přímo ze systému Windows. Docker můžete například použít ke spuštění klienta Beeline pro Hive přímo z Windows. Docker můžete taky použít ke spuštění místního notebooku Jupyter a vzdáleně se připojit ke Sparku na HDInsightu. [Začínáme s Dockerem pro Windows](https://docs.docker.com/docker-for-windows/)
-* **[MobaXTerm](https://mobaxterm.mobatek.net/)** umožňuje graficky procházet souborový systém clusteru přes připojení SSH.
+* **Bash v Ubuntu ve Windows 10** poskytuje podsystém Linux ve Windows. Bash umožňuje přímo spouštět nástroje pro Linux bez nutnosti udržovat vyhrazenou instalaci systému Linux. Pokyny k instalaci najdete v tématu [Instalační příručka k systému Windows pro Linux pro systém Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) .  Budou fungovat i další [prostředí UNIX](https://www.gnu.org/software/bash/) .
+* **Docker for Windows** poskytuje přístup k mnoha nástrojům pro Linux a dá se spustit přímo z Windows. Můžete například použít Docker ke spuštění klienta Beeline pro podregistr přímo z Windows. Docker můžete použít také ke spuštění místního poznámkového bloku Jupyter a ke vzdálenému připojení ke Sparku ve službě HDInsight. [Začínáme s Docker for Windows](https://docs.docker.com/docker-for-windows/)
+* **[MobaXTerm](https://mobaxterm.mobatek.net/)** umožňuje grafiku procházet systémem souborů clusteru přes připojení SSH.
 
 ## <a name="cross-platform-tools"></a>Nástroje pro různé platformy
 
-Rozhraní příkazového řádku Azure (CLI) je nové víceplatformové prostředí příkazového řádku Microsoftu pro správu prostředků Azure.  Další informace naleznete v [tématu Azure Command-Line Interface (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
+Rozhraní příkazového řádku Azure (CLI) je nové víceplatformové prostředí příkazového řádku Microsoftu pro správu prostředků Azure.  Další informace najdete v tématu [rozhraní příkazového řádku Azure (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud s prací v linuxových clusterech tečujete, přečtěte si následující články:
-* [Nastavení Apache Hadoop, Apache Kafka, Apache Spark nebo jiných clusterů](hdinsight-hadoop-provision-linux-clusters.md)
-* [Tipy pro clustery HDInsight na Linuxu](hdinsight-hadoop-linux-information.md)
+Pokud už nepracujete na clusterech se systémem Linux, přečtěte si článek postup:
+* [Nastavení Apache Hadoop, Apache Kafka, Apache Spark nebo dalších clusterů](hdinsight-hadoop-provision-linux-clusters.md)
+* [Tipy pro clustery HDInsight v systému Linux](hdinsight-hadoop-linux-information.md)

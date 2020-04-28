@@ -1,5 +1,5 @@
 ---
-title: 'Brána Azure VPN: Přehled – konfigurace vysoce dostupných bran'
+title: 'Azure VPN Gateway: Přehled – Konfigurace bran s vysokou dostupností'
 description: Tento článek obsahuje přehled konfigurací s vysokou dostupností se službami Azure VPN Gateway.
 services: vpn-gateway
 author: yushwang
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 09/24/2016
 ms.author: yushwang
 ms.openlocfilehash: 91fb0896238881130bd02916f8fd579eee9bd16b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75779616"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>Připojení s vysokou dostupností mezi jednotlivými místy a VNet-to-VNet
@@ -36,12 +36,12 @@ Můžete ve své místní síti použít k připojení k Azure VPN Gateway něko
 
 V této konfiguraci existuje několik aktivních tunelů ze stejné Azure VPN Gateway do různých zařízení ve stejném umístění. Existuje několik požadavků a omezení:
 
-1. Je třeba vytvořit víc spojení S2S VPN mezi vašimi zařízeními VPN a službou Azure VPN. Když připojíte více zařízení VPN ze stejné místní sítě k Azure, musíte vytvořit jednu místní síťovou bránu pro každé zařízení VPN a jedno připojení z brány Azure VPN ke každé bráně místní sítě.
+1. Je třeba vytvořit víc spojení S2S VPN mezi vašimi zařízeními VPN a službou Azure VPN. Když připojujete několik zařízení VPN ze stejné místní sítě do Azure, musíte pro každé zařízení VPN vytvořit jednu bránu místní sítě a jedno připojení ze služby Azure VPN Gateway ke každé bráně místní sítě.
 2. Brány místní sítě odpovídající zařízení VPN musí mít jedinečné veřejné IP adresy, zadané vlastností GatewayIpAddress.
 3. Pro tuto konfiguraci se vyžaduje BGP. Každá brána místní sítě reprezentující zařízení VPN musí mít jedinečnou IP adresu partnerského uzlu protokolu BGP, zadanou vlastností BgpPeerIpAddress.
 4. Pole vlastnosti AddressPrefix v každé bráně místní sítě se nesmí překrývat. Do pole AddressPrefix zadávejte vlastnost BgpPeerIpAddress ve formátu /32 CIDR, například 10.200.200.254/32.
 5. Protokol BGP byste měli použít k inzerování stejných předpon stejných místních sítí pro Azure VPN Gateway, provoz pak bude přes tyto tunely směrován současně.
-6. Je nutné použít stejné náklady na vícecestné směrování (ECMP).
+6. Je nutné použít směrování s více cestami (ECMP).
 7. Každé spojení se započítává do maximálního počtu tunelů pro vaši službu Azure VPN Gateway – 10 pro SKU úrovně Basic a Standard a 30 pro SKU úrovně HighPerformance. 
 
 V této konfiguraci je Azure VPN Gateway stále v režimu aktivní–pohotovostní, takže platí stejné převzetí služeb při selhání a stejné přerušení služby, jak je popsáno [nahoře](#activestandby). Tato konfigurace ale chrání proti selháním nebo přerušením, jejichž příčina je v místní síti nebo v zařízení VPN.

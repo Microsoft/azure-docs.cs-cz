@@ -9,16 +9,16 @@ ms.date: 01/07/2020
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: feed8b21833d4244d027d64d5e6547b94e4fa66f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75945151"
 ---
-## <a name="what-happens-to-my-app-during-deployment"></a>Co se stane s mou aplikací během nasazení?
+## <a name="what-happens-to-my-app-during-deployment"></a>Co se stane s aplikací během nasazení?
 
-Všechny oficiálně podporované metody nasazení provádět změny `/home/site/wwwroot` souborů ve složce vaší aplikace. Tyto soubory se používají ke spuštění aplikace. Proto může selhání nasazení z důvodu uzamčených souborů. Aplikace může také chovat nepředvídatelně během nasazení, protože ne všechny soubory aktualizovány ve stejnou dobu. To je nežádoucí pro aplikaci orientovnou na zákazníka. Existuje několik různých způsobů, jak se těmto problémům vyhnout:
+Všechny oficiálně podporované metody nasazení provedou změny souborů ve `/home/site/wwwroot` složce aplikace. Tyto soubory se používají ke spuštění vaší aplikace. Proto může nasazení selhat z důvodu zamčených souborů. Aplikace se může v průběhu nasazování chovat nepředvídatelné, protože ne všechny soubory se současně aktualizovaly. To je nežádoucí pro zákaznickou aplikaci. Existuje několik různých způsobů, jak se těmto problémům vyhnout:
 
-- [Spusťte aplikaci z balíčku ZIP přímo](../articles/app-service/deploy-run-package.md) bez rozbalení.
-- Zastavte aplikaci nebo povolte offline režim pro aplikaci během nasazení. Další informace naleznete v tématu [Deal with locked files during deployment](https://github.com/projectkudu/kudu/wiki/Dealing-with-locked-files-during-deployment).
-- Nasazení do [pracovního slotu](../articles/app-service/deploy-staging-slots.md) s [povoleným automatickým prohozením.](../articles/app-service/deploy-staging-slots.md#configure-auto-swap) 
+- [Spusťte aplikaci z balíčku zip přímo](../articles/app-service/deploy-run-package.md) bez jejich dekomprimace.
+- Zastavte aplikaci nebo pro svou aplikaci v průběhu nasazení povolte offline režim. Další informace najdete v tématu práce [s uzamčenými soubory během nasazení](https://github.com/projectkudu/kudu/wiki/Dealing-with-locked-files-during-deployment).
+- Nasaďte do [přípravného slotu](../articles/app-service/deploy-staging-slots.md) s povoleným [automatickým zahozením](../articles/app-service/deploy-staging-slots.md#configure-auto-swap) . 

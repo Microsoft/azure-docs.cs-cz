@@ -1,6 +1,6 @@
 ---
-title: Přístup k rozhraní API Azure Cosmos DB Cassandra ze Spark u YARN s HDInsight
-description: Tento článek popisuje, jak pracovat s rozhraním API Azure Cosmos DB Cassandra ze Spark u YARN s HDInsight
+title: Přístup k Azure Cosmos DB rozhraní API Cassandra ze Sparku na PŘÍZi pomocí HDInsight
+description: Tento článek popisuje, jak pracovat s Azure Cosmos DB rozhraní API Cassandra ze Sparku na PŘÍZi pomocí HDInsight.
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -9,33 +9,33 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: bef4ee14cb4a7d64d80dc5776d8ecea0f831881a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75887628"
 ---
-# <a name="access-azure-cosmos-db-cassandra-api-from-spark-on-yarn-with-hdinsight"></a>Přístup k rozhraní API Azure Cosmos DB Cassandra ze Spark u YARN s HDInsight
+# <a name="access-azure-cosmos-db-cassandra-api-from-spark-on-yarn-with-hdinsight"></a>Přístup k Azure Cosmos DB rozhraní API Cassandra ze Sparku na PŘÍZi pomocí HDInsight
 
-Tento článek popisuje, jak získat přístup k rozhraní API Azure Cosmos DB Cassandra ze Spark na YARN s HDInsight-Spark z jiskry. HDInsight je Hortonworks Hadoop PaaS společnosti Microsoft v Azure, který využívá úložiště objektů pro HDFS a přichází v několika příchutích, včetně [Spark](../hdinsight/spark/apache-spark-overview.md).  Zatímco obsah v tomto dokumentu odkazuje na HDInsight-Spark, je použitelný pro všechny distribuce Hadoop.  
+Tento článek popisuje, jak získat přístup k Azure Cosmos DB rozhraní API Cassandra ze Sparku na PŘÍZi pomocí HDInsight-Spark z Spark-Shell. HDInsight je Hortonworks Hadoop PaaS v Azure, který využívá úložiště objektů pro HDFS a je v několika různých charakterech, jako je [Spark](../hdinsight/spark/apache-spark-overview.md).  Obsah tohoto dokumentu odkazuje na HDInsight-Spark, ale vztahuje se na všechny distribuce Hadoop.  
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Zřízení rozhraní API Azure Cosmos DB Cassandra](create-cassandra-dotnet.md#create-a-database-account)
+* [Zřídit Azure Cosmos DB rozhraní API Cassandra](create-cassandra-dotnet.md#create-a-database-account)
 
-* [Projděte si základy připojení k rozhraní API Azure Cosmos DB Cassandra](cassandra-spark-generic.md)
+* [Projděte si základy připojení k Azure Cosmos DB rozhraní API Cassandra](cassandra-spark-generic.md)
 
 * [Zřízení clusteru HDInsight-Spark](../hdinsight/spark/apache-spark-jupyter-spark-sql.md)
 
-* [Zkontrolujte ukázky kódu pro práci s rozhraním CASSANDRA API](cassandra-spark-generic.md#next-steps)
+* [Přečtěte si ukázky kódu pro práci s rozhraní API Cassandra](cassandra-spark-generic.md#next-steps)
 
-* [Použijte cqlsh pro ověření, pokud dáváte přednost](cassandra-spark-generic.md#connecting-to-azure-cosmos-db-cassandra-api-from-spark)
+* [Pro ověření použijte cqlsh, pokud to dáváte přednost](cassandra-spark-generic.md#connecting-to-azure-cosmos-db-cassandra-api-from-spark)
 
-* **Konfigurace rozhraní API Cassandra v Spark2** – konektor Spark pro Cassandra vyžaduje, aby podrobnosti o připojení Cassandra byly inicializovány jako součást kontextu Spark. Když spustíte poznámkový blok Jupyter, relace jiskry a kontext jsou již inicializovány a není vhodné zastavit a znovu inicializovat kontext Spark, pokud není kompletní s každou konfigurační sadou jako součást výchozího spuštění notebooku Jupyter HDInsight. Jedním z řešení je přidání podrobností instance Cassandra přímo do konfigurace služby Ambari, Spark2. Jedná se o jednorázovou aktivitu na cluster, která vyžaduje restartování služby Spark2.
+* **Konfigurace rozhraní API Cassandra v Spark2** – konektor Spark pro Cassandra vyžaduje, aby byly podrobnosti připojení Cassandra inicializované jako součást kontextu Spark. Když spustíte Poznámkový blok Jupyter, relace a kontext Sparku jsou už inicializované a není vhodné zastavit a znovu inicializovat kontext Spark, pokud se neprovádí se všemi konfiguračními sadou v rámci výchozího spuštění poznámkového bloku HDInsight Jupyter. Jedním z alternativních řešení je přidat podrobnosti instance Cassandra přímo do konfigurace služby Ambari, Spark2. Jedná se o jednorázovou aktivitu na cluster, která vyžaduje restart služby Spark2.
  
-  1. Přejděte na službu Ambari, Spark2 a vyberte konfigurace.
+  1. Přejít na Ambari, služba Spark2 a vyberte konfigurace.
 
-  2. Pak přejděte na vlastní výchozí hodnoty spark2 a přidejte novou vlastnost s následujícími vlastnostmi a restartujte službu Spark2:
+  2. Pak klikněte na Custom spark2-Defaults a přidejte novou vlastnost s následujícími vlastnostmi a restartujte službu Spark2:
 
   ```scala
   spark.cassandra.connection.host=YOUR_COSMOSDB_ACCOUNT_NAME.cassandra.cosmosdb.azure.com<br>
@@ -45,17 +45,17 @@ Tento článek popisuje, jak získat přístup k rozhraní API Azure Cosmos DB C
   spark.cassandra.auth.password=YOUR_COSMOSDB_KEY<br>
   ```
 
-## <a name="access-azure-cosmos-db-cassandra-api-from-spark-shell"></a>Přístup k rozhraní API Azure Cosmos DB Cassandra z prostředí Spark
+## <a name="access-azure-cosmos-db-cassandra-api-from-spark-shell"></a>Přístup k Azure Cosmos DB rozhraní API Cassandra z prostředí Spark
 
-Spark shell se používá pro účely testování / průzkumu.
+Prostředí Spark se používá pro účely testování/průzkumu.
 
-* Spusťte spark-shell s požadovanými maven závislostmi kompatibilními s verzí Spark vašeho clusteru.
+* Spusťte Spark-shell s požadovanými závislostmi Maven, které jsou kompatibilní s verzí Spark vašeho clusteru.
 
   ```scala
   spark-shell --packages "com.datastax.spark:spark-cassandra-connector_2.11:2.3.0,com.microsoft.azure.cosmosdb:azure-cosmos-cassandra-spark-helper:1.0.0"
   ```
 
-* Provést některé operace DDL a DML
+* Provádění některých operací DDL a DML
 
   ```scala
   import org.apache.spark.rdd.RDD
@@ -86,7 +86,7 @@ Spark shell se používá pro účely testování / průzkumu.
   spark.conf.set("spark.cassandra.connection.keep_alive_ms", "60000000") //Increase this number as needed
   ```
 
-* Spuštění operací CRUD
+* Spustit operace CRUD
 
   ```scala
   //1) Create table if it does not exist
@@ -112,28 +112,28 @@ Spark shell se používá pro účely testování / průzkumu.
   spark.read.format("org.apache.spark.sql.cassandra").options(Map( "table" -> "books", "keyspace" -> "books_ks")).load.show
   ```
 
-## <a name="access-azure-cosmos-db-cassandra-api-from-jupyter-notebooks"></a>Přístup k rozhraní API Azure Cosmos DB Cassandra z poznámkových bloků Jupyter
+## <a name="access-azure-cosmos-db-cassandra-api-from-jupyter-notebooks"></a>Přístup k Azure Cosmos DB rozhraní API Cassandra z poznámkových bloků Jupyter
 
-HDInsight-Spark je dodáván se službami Notebook Zeppelin a Jupyter. Obě jsou webová prostředí pro poznámkové bloky, která podporují Scala a Python. Poznámkové bloky jsou skvělé pro interaktivní průzkumné analýzy a spolupráci, ale nejsou určeny pro provozní/produkční procesy.
+HDInsight – Spark přichází se službami Zeppelin a Jupyter notebook. Jsou to webová poznámková bloková prostředí, která podporují Scala a Python. Poznámkové bloky jsou skvělé pro interaktivní průzkumné analýzy a spolupráci, ale nejsou určeny pro provozní a produkční procesy.
 
-Následující poznámkové bloky Jupyter umožni it nahrát do clusteru HDInsight Spark a poskytnout připravené ukázky pro práci s Azure Cosmos DB Cassandra API. Zkontrolujte první poznámkový `1.0-ReadMe.ipynb` blok a zkontrolujte konfiguraci služby Spark pro připojení k rozhraní API Azure Cosmos DB Cassandra.
+Následující poznámkové bloky Jupyter se dají nahrát do clusteru HDInsight Spark a poskytnou připravené ukázky pro práci s Azure Cosmos DB rozhraní API Cassandra. Nezapomeňte si projít první Poznámkový `1.0-ReadMe.ipynb` blok a zkontrolovat konfiguraci služby Spark pro připojení k Azure Cosmos DB rozhraní API Cassandra.
 
-Stáhněte si tyto poznámkové bloky pod [azure-cosmos-db-cassandra-api-spark-notebooks-jupyter](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-jupyter/blob/master/scala/) do svého počítače.
+Stáhněte si tyto poznámkové bloky v části [Azure-Cosmos-DB-Cassandra-API-Spark-poznámkové bloky – Jupyter](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-jupyter/blob/master/scala/) do počítače.
   
 ### <a name="how-to-upload"></a>Jak nahrát:
-Když spustíte Jupyter, přejděte na Scalu. Nejprve vytvořte adresář a potom poznámkové bloky nahrajte do adresáře. Tlačítko nahrávání je na horní, pravé straně.  
+Když spustíte Jupyter, přejděte na Scala. Nejprve vytvořte adresář a pak poznámkové bloky nahrajte do tohoto adresáře. Tlačítko pro nahrání je v horní části, pravé na straně.  
 
 ### <a name="how-to-run"></a>Jak spustit:
-Projděte poznámkové bloky a každou buňku poznámkového bloku postupně.  Kliknutím na tlačítko spustit v horní části každého poznámkového bloku spusťte všechny buňky nebo shift+enter pro každou buňku.
+Spusťte prostřednictvím poznámkových bloků a každou buňku poznámkového bloku postupně.  Kliknutím na tlačítko spustit v horní části každého poznámkového bloku spustíte všechny buňky nebo SHIFT + ENTER pro každou buňku.
 
-## <a name="access-with-azure-cosmos-db-cassandra-api-from-your-spark-scala-program"></a>Přístup k rozhraní AZURE Cosmos DB Cassandra api z vašeho programu Spark Scala
+## <a name="access-with-azure-cosmos-db-cassandra-api-from-your-spark-scala-program"></a>Přístup k Azure Cosmos DB rozhraní API Cassandra z programu Spark Scala
 
-Pro automatizované procesy ve výrobě jsou programy Spark odesílány do clusteru prostřednictvím [spark-submit](https://spark.apache.org/docs/latest/submitting-applications.html).
+Pro automatizované procesy v produkčním prostředí se programy Spark odesílají do clusteru prostřednictvím [Spark-Submit](https://spark.apache.org/docs/latest/submitting-applications.html).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Jak vytvořit program Spark Scala v ide a odeslat jej do clusteru HDInsight Spark prostřednictvím Livy k provedení](../hdinsight/spark/apache-spark-create-standalone-application.md)
+* [Jak vytvořit program Spark Scala v integrovaném vývojovém prostředí a odeslat ho do clusteru HDInsight Spark prostřednictvím Livy ke spuštění](../hdinsight/spark/apache-spark-create-standalone-application.md)
 
-* [Jak se připojit k rozhraní AZURE Cosmos DB Cassandra API z programu Spark Scala](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-connector-sample/blob/master/src/main/scala/com/microsoft/azure/cosmosdb/cassandra/SampleCosmosDBApp.scala)
+* [Jak se připojit k Azure Cosmos DB rozhraní API Cassandra z programu Spark Scala](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-connector-sample/blob/master/src/main/scala/com/microsoft/azure/cosmosdb/cassandra/SampleCosmosDBApp.scala)
 
-* [Kompletní seznam ukázek kódu pro práci s rozhraním CASSANDRA API](cassandra-spark-generic.md)
+* [Úplný seznam ukázek kódu pro práci s rozhraní API Cassandra](cassandra-spark-generic.md)

@@ -9,10 +9,10 @@ ms.date: 10/16/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: bf107da82fb3f772a341e70ce472f08ea674a450
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75692528"
 ---
 ### <a name="create-a-storage-account-for-event-processor-host"></a>Vytvoření účtu úložiště pro agenta Event Processor Host
@@ -22,35 +22,35 @@ Event Processor Host je inteligentní agent, který zjednodušuje přijímání 
 
     ![Vytvoření položky nabídky prostředků, portál Microsoft Azure](./media/event-hubs-create-storage/create-resource.png)
 
-2. Vyberte**účet úložiště**. **Storage** > 
+2. Vyberte **úložiště** > **účet**úložiště.
    
-    ![Vyberte účet úložiště, portál Microsoft Azure.](./media/event-hubs-create-storage/select-storage-account.png)
+    ![Vyberte účet úložiště, portál Microsoft Azure](./media/event-hubs-create-storage/select-storage-account.png)
 
 3. Na stránce **Vytvořit účet úložiště** proveďte následující kroky: 
 
    1. Zadejte **název účtu úložiště**.
-   2. Zvolte **předplatné** Azure, které obsahuje centrum událostí.
-   3. Zvolte nebo vytvořte **skupinu prostředků,** která má centrum událostí.
-   4. Vyberte **umístění,** ve kterém chcete zdroj vytvořit. 
+   2. Vyberte **předplatné** Azure, které obsahuje centrum událostí.
+   3. Vyberte nebo vytvořte **skupinu prostředků** , která má centrum událostí.
+   4. Vyberte **umístění** , ve kterém se má prostředek vytvořit. 
    5. Vyberte **Zkontrolovat a vytvořit**.
    
-        ![Recenze + vytvoření, vytvoření účtu úložiště, portál Microsoft Azure](./media/event-hubs-create-storage/review-create.png)
+        ![Projděte si téma Vytvoření, vytvoření účtu úložiště, portál Microsoft Azure](./media/event-hubs-create-storage/review-create.png)
 
 4. Na stránce **Zkontrolovat a vytvořit** zkontrolujte hodnoty a vyberte **Vytvořit**. 
 
-    ![Kontrola nastavení účtu úložiště a vytvoření portálu Microsoft Azure](./media/event-hubs-create-storage/create-storage-account.png)
-5. Až se v oznámeních zobrazí zpráva **Deployments Succeeded,** vyberte **přejít na prostředek** a otevřete stránku Účet úložiště. Případně můžete rozbalit **podrobnosti o nasazení** a pak vybrat nový prostředek ze seznamu prostředků.  
+    ![Zkontrolujte nastavení účtu úložiště a vytvořte portál Microsoft Azure](./media/event-hubs-create-storage/create-storage-account.png)
+5. Po zobrazení zprávy o **úspěšném nasazení** v oznámeních vyberte **Přejít k prostředku** a otevřete stránku účtu úložiště. Případně můžete rozbalit **Podrobnosti nasazení** a pak vybrat nový prostředek ze seznamu prostředků.  
 
-    ![Přejděte na prostředek, nasazení účtu úložiště, portál Microsoft Azure](./media/event-hubs-create-storage/go-to-resource.png) 
+    ![Přejít na prostředek, nasazení účtu úložiště, portál Microsoft Azure](./media/event-hubs-create-storage/go-to-resource.png) 
 6. Vyberte **kontejnery**.
 
-    ![Vyberte službu kontejnerů objektů Blob, účty úložiště, portál Microsoft Azure](./media/event-hubs-create-storage/select-blob-container-service.png)
-7. Nahoře vyberte **+ Kontejner,** zadejte **název** kontejneru a vyberte **OK**. 
+    ![Vyberte službu kontejnerů objektů blob, účty úložiště, portál Microsoft Azure](./media/event-hubs-create-storage/select-blob-container-service.png)
+7. V horní části vyberte **+ kontejner** , zadejte **název** kontejneru a vyberte **OK**. 
 
-    ![Vytvoření nového kontejneru objektů blob, účtů úložiště, portálmicrosoft Azure](./media/event-hubs-create-storage/create-new-blob-container.png)
-8. Z nabídky stránky **Účtu úložiště** zvolte **Přístupové klávesy** a zkopírujte hodnotu **key1**.
+    ![Vytvořte nový kontejner objektů blob, účty úložiště, portál Microsoft Azure](./media/event-hubs-create-storage/create-new-blob-container.png)
+8. V nabídce Stránka **účtu úložiště** vyberte **přístupové klíče** a zkopírujte hodnotu **klíč1**.
 
-    Uložte následující hodnoty do poznámkového bloku nebo do jiného dočasného umístění.
+    Následující hodnoty uložte do poznámkového bloku nebo jiného dočasného umístění.
     - Název účtu úložiště
     - Přístupový klíč pro účet úložiště
     - Název kontejneru

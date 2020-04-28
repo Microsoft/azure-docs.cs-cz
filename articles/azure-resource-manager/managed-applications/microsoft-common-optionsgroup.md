@@ -1,22 +1,22 @@
 ---
-title: OptionsGroup Prvek ui
-description: Popisuje prvek ui skupiny Microsoft.Common.OptionsGroup pro portál Azure. Umožňuje uživatelům vybrat z dostupných možností při nasazování spravované aplikace.
+title: Options – element uživatelského rozhraní
+description: Popisuje prvek uživatelského rozhraní Microsoft. Common. Options pro Azure Portal. Umožňuje uživatelům při nasazování spravované aplikace vybrat z dostupných možností.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: c1da0b0082bfe046adf9596a10397e9063c888be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75652343"
 ---
-# <a name="microsoftcommonoptionsgroup-ui-element"></a>Element ui skupiny Microsoft.Common.OptionsGroup
+# <a name="microsoftcommonoptionsgroup-ui-element"></a>Microsoft. Common. Options – element uživatelského rozhraní
 
-Ovládací prvek výběru s řadou dostupných možností.
+Ovládací prvek výběru s řádkem dostupných možností.
 
-## <a name="ui-sample"></a>Ukázka ui
+## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
 
 ![Microsoft.Common.OptionsGroup](./media/managed-application-elements/microsoft.common.optionsgroup.png)
 
@@ -54,11 +54,11 @@ Ovládací prvek výběru s řadou dostupných možností.
 
 ## <a name="remarks"></a>Poznámky
 
-- Popisek `constraints.allowedValues` pro je zobrazovaný text pro položku a jeho hodnota je výstupní hodnota prvku při výběru.
-- Pokud je zadán, musí být výchozí `constraints.allowedValues`hodnota popisek v . Pokud není zadán, je `constraints.allowedValues` ve výchozím nastavení vybrána první položka v programu. Výchozí hodnota je **null**.
+- Popisek pro `constraints.allowedValues` je zobrazený text pro položku a její hodnota je výstupní hodnota prvku, když je vybraná.
+- Je-li tento parametr zadán, výchozí hodnota musí být popisek `constraints.allowedValues`přítomný v. Není-li tento parametr zadán, je `constraints.allowedValues` první položka ve výchozím nastavení vybrána. Výchozí hodnota je **null**.
 - `constraints.allowedValues`musí mít alespoň jednu položku.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úvod k vytváření definic ui naleznete [v tématu Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
-* Popis běžných vlastností v prvcích uživatelského rozhraní naleznete v [tématu CreateUiDefinition elements](create-uidefinition-elements.md).
+* Úvod k vytváření definic uživatelského rozhraní najdete v tématu [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
+* Popis běžných vlastností v prvcích uživatelského rozhraní naleznete v tématu [CreateUiDefinition Elements](create-uidefinition-elements.md).

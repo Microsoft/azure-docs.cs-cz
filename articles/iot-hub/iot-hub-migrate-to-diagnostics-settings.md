@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub migrovat do nastavení diagnostiky | Dokumenty společnosti Microsoft
-description: Jak aktualizovat Azure IoT Hub používat nastavení diagnostiky Azure namísto monitorování operací ke sledování stavu operací na vašem centru IoT v reálném čase.
+title: Migrace Azure IoT Hub do nastavení diagnostiky | Microsoft Docs
+description: Postup aktualizace služby Azure IoT Hub pro použití nastavení diagnostiky Azure místo monitorování operací k monitorování stavu operací ve službě IoT Hub v reálném čase.
 author: kgremban
 manager: philmea
 ms.service: iot-hub
@@ -9,54 +9,54 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: kgremban
 ms.openlocfilehash: ab07da38c01b052a4220274fb059683a22950a3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75750689"
 ---
-# <a name="migrate-your-iot-hub-from-operations-monitoring-to-diagnostics-settings"></a>Migrace ioT hubu z monitorování operací do nastavení diagnostiky
+# <a name="migrate-your-iot-hub-from-operations-monitoring-to-diagnostics-settings"></a>Migrace IoT Hub z monitorování provozu na nastavení diagnostiky
 
-Zákazníci, kteří používají [monitorování operací](iot-hub-operations-monitoring.md) ke sledování stavu operací v centru IoT Hub, můžou tento pracovní postup migrovat do [nastavení diagnostiky Azure](../azure-monitor/platform/platform-logs-overview.md), což je funkce Azure Monitoru. Nastavení diagnostiky poskytuje diagnostické informace na úrovni prostředků pro mnoho služeb Azure.
+Zákazníci, kteří používají [monitorování operací](iot-hub-operations-monitoring.md) ke sledování stavu operací v IoT Hub, můžou tento pracovní postup migrovat do [nastavení diagnostiky Azure](../azure-monitor/platform/platform-logs-overview.md), což je funkce Azure monitor. Nastavení diagnostiky poskytují diagnostické informace na úrovni prostředku pro mnoho služeb Azure.
 
-**Funkce monitorování operací ioT hubu je zastaralé**a byla odebrána z portálu. Tento článek obsahuje kroky k přesunutí úloh z monitorování operací do nastavení diagnostiky. Další informace o časové ose vyřazení najdete [v tématu Monitorování řešení Azure IoT pomocí Azure Monitor a Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/).
+**Funkce monitorování operací IoT Hub je zastaralá**a byla odebrána z portálu. Tento článek popisuje kroky pro přesun úloh z monitorování provozu do nastavení diagnostiky. Další informace o časové ose zastaralosti najdete v tématu [monitorování řešení Azure IoT pomocí Azure monitor a Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/).
 
-## <a name="update-iot-hub"></a>Aktualizace služby IoT Hub
+## <a name="update-iot-hub"></a>Aktualizovat IoT Hub
 
-Pokud chcete aktualizovat ioT hub na webu Azure Portal, nejdřív zapněte nastavení diagnostiky a pak vypněte monitorování operací.  
+Chcete-li aktualizovat IoT Hub v Azure Portal, nejprve zapněte nastavení diagnostiky a pak vypněte monitorování provozu.  
 
 [!INCLUDE [iot-hub-diagnostics-settings](../../includes/iot-hub-diagnostics-settings.md)]
 
 ### <a name="turn-off-operations-monitoring"></a>Vypnout monitorování operací
 
 > [!NOTE]
-> března 2019 se funkce monitorování operací odebere z rozhraní portálu Azure pro Azure služby IoT Hub. Níže uvedené kroky již neplatí. Chcete-li migrovat, ujistěte se, že správné kategorie jsou zapnuté v nastavení diagnostiky Azure Monitor výše.
+> Od 11. března 2019 je funkce monitorování operací z Azure Portalho rozhraní IoT Hub odebrána. Níže uvedený postup už neplatí. Pokud chcete provést migraci, ujistěte se, že jsou ve Azure Monitor nastavení diagnostiky nahoře zapnuté správné kategorie.
 
-Po otestování nového nastavení diagnostiky v pracovním postupu můžete funkci monitorování operací vypnout. 
+Jakmile otestujete nové nastavení diagnostiky ve svém pracovním postupu, můžete funkci monitorování provozu vypnout. 
 
-1. V nabídce IoT Hub vyberte **Sledování operací**.
+1. V nabídce IoT Hub vyberte **monitorování operací**.
 
-2. V každé kategorii monitorování vyberte **možnost Žádný**.
+2. V části každá kategorie monitorování vyberte **žádné**.
 
 3. Uložte změny monitorování operací.
 
 ## <a name="update-applications-that-use-operations-monitoring"></a>Aktualizace aplikací, které používají monitorování operací
 
-Schémata pro monitorování operací a nastavení diagnostiky se mírně liší. Je důležité aktualizovat aplikace, které používají monitorování operací dnes mapovat na schéma používané nastavení diagnostiky. 
+Schémata pro nastavení monitorování a diagnostiky operací se mírně liší. Je důležité aktualizovat aplikace, které dnes používají monitorování operací, k mapování schématu používaného nastavením diagnostiky. 
 
-Nastavení diagnostiky také nabízí pět nových kategorií pro sledování. Po aktualizaci aplikací pro existující schéma přidejte také nové kategorie:
+Nastavení diagnostiky taky nabízí pět nových kategorií pro sledování. Po aktualizaci aplikací pro existující schéma přidejte také nové kategorie:
 
-* Operace s dvojčaty cloud-to-device
-* Operace dvojčete zařízení cloudu
-* Dvojité dotazy
+* Zdvojené operace z cloudu na zařízení
+* Zdvojené operace mezi zařízeními a cloudem
+* Zdvojené dotazy
 * Operace úloh
 * Přímé metody
 
-Konkrétní struktury schématu naleznete v [tématu Principy nastavení diagnostiky schématu](iot-hub-monitor-resource-health.md#understand-the-logs).
+Konkrétní struktury schématu najdete v tématu [vysvětlení schématu pro nastavení diagnostiky](iot-hub-monitor-resource-health.md#understand-the-logs).
 
-## <a name="monitoring-device-connect-and-disconnect-events-with-low-latency"></a>Sledování událostí připojení a odpojení zařízení s nízkou latencí
+## <a name="monitoring-device-connect-and-disconnect-events-with-low-latency"></a>Monitorování událostí připojení a odpojení zařízení s nízkou latencí
 
-Chcete-li sledovat události připojení a odpojení zařízení v produkčním prostředí, doporučujeme přihlásit se k odběru události [ **odpojené zařízení** ](iot-hub-event-grid.md#event-types) v programu Event Grid, abyste získali upozornění a monitorovali stav připojení zařízení. V tomto [kurzu](iot-hub-how-to-order-connection-state-events.md) se dozvíte, jak integrovat události připojeného zařízení a odpojeného zařízení z ioT hubu do vašeho řešení IoT.
+Pokud chcete monitorovat události připojení a odpojení zařízení v produkčním prostředí, doporučujeme přihlášení k odběru [události **odpojení zařízení** ](iot-hub-event-grid.md#event-types) v Event Grid, aby se zobrazily výstrahy a sledovaly stav připojení zařízení. V tomto [kurzu](iot-hub-how-to-order-connection-state-events.md) se dozvíte, jak integrovat události připojené k zařízení a odpojené zařízení z IoT Hub ve vašem řešení IoT.
 
 ## <a name="next-steps"></a>Další kroky
 

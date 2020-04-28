@@ -1,6 +1,6 @@
 ---
-title: Použití curlu k exportu dat pomocí Apache Sqoop v Azure HDInsight
-description: Naučte se vzdáleně odesílat úlohy Apache Sqoop do Azure HDInsight pomocí Curl.
+title: Použití oblé k exportu dat s Apache Sqoop ve službě Azure HDInsight
+description: Naučte se vzdáleně odesílat úlohy Apache Sqoop do Azure HDInsight pomocí funkce kudrlinkou.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,44 +8,44 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.openlocfilehash: da29785547d1b6eb4b38d07f020ba885dc5137ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75767582"
 ---
-# <a name="run-apache-sqoop-jobs-in-hdinsight-with-curl"></a>Spouštění úloh Apache Sqoop v HDInsightu s curlem
+# <a name="run-apache-sqoop-jobs-in-hdinsight-with-curl"></a>Spouštění úloh Apache Sqoop v HDInsight pomocí kudrlinkou
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Naučte se používat Curl ke spouštění úloh Apache Sqoop v clusteru Apache Hadoop v HDInsightu. Tento článek ukazuje, jak exportovat data z Azure Storage a importovat do databáze SQL Serveru pomocí Curl. Tento článek je pokračováním [použití Apache Sqoop s Hadoop v HDInsight](./hdinsight-use-sqoop.md).
+Naučte se, jak pomocí technologie kudrlinkou spouštět úlohy Apache Sqoop v clusteru Apache Hadoop v HDInsight. Tento článek ukazuje, jak exportovat data z Azure Storage a importovat je do databáze SQL Server pomocí oblé. Tento článek je pokračováním [v použití Apache Sqoop se systémem Hadoop ve službě HDInsight](./hdinsight-use-sqoop.md).
 
-Curl se používá k předvedení, jak můžete pracovat s HDInsight pomocí nezpracovaných požadavků HTTP ke spuštění, monitorování a načtení výsledků úloh Sqoop. To funguje pomocí rozhraní WebHCat REST API (dříve známé jako Templeton) poskytované clusteru HDInsight.
+Kudrlinkou se používá k předvedení, jak můžete s HDInsight pracovat pomocí nezpracovaných požadavků HTTP ke spouštění, monitorování a načítání výsledků úloh Sqoop. To funguje pomocí REST API WebHCat (dříve označované jako Templeton) poskytované clusterem HDInsight.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Dokončení [Nastavení testovacího prostředí](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) z [use Apache Sqoop s Hadoopem v HDInsightu](./hdinsight-use-sqoop.md).
+* Dokončení [Nastavení testovacího prostředí](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) [pro použití Apache Sqoop se systémem Hadoop ve službě HDInsight](./hdinsight-use-sqoop.md).
 
-* Klient pro dotaz na Azure SQL Database. Zvažte použití [aplikace SQL Server Management Studio](../../sql-database/sql-database-connect-query-ssms.md) nebo Visual Studio [Code](../../sql-database/sql-database-connect-query-vscode.md).
+* Klient pro dotaz na Azure SQL Database. Zvažte použití [SQL Server Management Studio](../../sql-database/sql-database-connect-query-ssms.md) nebo [Visual Studio Code](../../sql-database/sql-database-connect-query-vscode.md).
 
-* [Zvlnění](https://curl.haxx.se/). Curl je nástroj pro přenos dat z clusteru HDInsight nebo do clusteru HDInsight.
+* [Kudrlinkou](https://curl.haxx.se/). Kudrlinkou je nástroj pro přenos dat z clusteru HDInsight nebo do něj.
 
-* [jq](https://stedolan.github.io/jq/). Nástroj jq se používá ke zpracování dat JSON vrácených z požadavků REST.
+* [JQ](https://stedolan.github.io/jq/). Nástroj JQ se používá ke zpracování dat JSON vrácených z požadavků REST.
 
-* Obeznámenost s Sqoop. Další informace naleznete v [uživatelské příručce společnosti Sqoop](https://sqoop.apache.org/docs/1.4.7/SqoopUserGuide.html).
+* Seznamte se se znalostí pro Sqoop. Další informace najdete v tématu [uživatelská příručka pro Sqoop](https://sqoop.apache.org/docs/1.4.7/SqoopUserGuide.html).
 
-## <a name="submit-apache-sqoop-jobs-by-using-curl"></a>Odeslat úlohy Apache Sqoop pomocí funkce Curl
+## <a name="submit-apache-sqoop-jobs-by-using-curl"></a>Odesílání úloh Apache Sqoop pomocí kudrlinkou
 
-Curl slouží k exportu dat pomocí úloh Apache Sqoop z Azure Storage na SQL Server.
+Pomocí kudrlinkou můžete exportovat data pomocí úloh Apache Sqoop z Azure Storage do SQL Server.
 
 > [!NOTE]  
 > Pokud používáte Curl nebo jinou komunikaci REST s WebHCat, je třeba ověřit žádosti zadáním uživatelského jména a hesla pro správce clusteru HDInsight. Název clusteru také musíte použít jako součást identifikátoru URI (Uniform Resource Identifier) sloužícímu k odesílání požadavků na server.
 
-Pro příkazy v této `USERNAME` části nahraďte uživatelem k `PASSWORD` ověření clusteru a nahraďte heslem pro uživatelský účet. Nahraďte `CLUSTERNAME` názvem svého clusteru.
+Pro příkazy v této části nahraďte `USERNAME` uživatele, který se má ověřit v clusteru, a nahraďte `PASSWORD` heslem pro uživatelský účet. Nahraďte `CLUSTERNAME` názvem svého clusteru.
 
 Rozhraní API REST je zabezpečeno pomocí [základního ověřování](https://en.wikipedia.org/wiki/Basic_access_authentication). Vždy doporučujeme provádět požadavky pomocí protokolu HTTPS (Secure HTTP) a pomoci tak zajistit, že přihlašovací údaje budou na server odeslány bezpečně.
 
-1. Pro snadné použití nastavte níže uvedené proměnné. Tento příklad je založen na prostředí systému Windows, revidovat podle potřeby pro vaše prostředí.
+1. Pro snadné použití nastavte následující proměnné. Tento příklad je založený na prostředí Windows, podle potřeby si můžete prohlédnout v prostředí.
 
     ```cmd
     set CLUSTERNAME=
@@ -69,7 +69,7 @@ Rozhraní API REST je zabezpečeno pomocí [základního ověřování](https://
     {"status":"ok","version":"v1"}
     ```
 
-1. K odeslání úlohy sqoop použijte následující:
+1. K odeslání úlohy Sqoop použijte následující postup:
 
     ```cmd
     curl -u %USERNAME%:%PASSWORD% -d user.name=%USERNAME% -d command="export --connect jdbc:sqlserver://%SQLDATABASESERVERNAME%.database.windows.net;user=%SQLUSER%@%SQLDATABASESERVERNAME%;password=%PASSWORD%;database=%SQLDATABASENAME% --table log4jlogs --export-dir /example/data/sample.log --input-fields-terminated-by \0x20 -m 1" -d statusdir="wasb:///example/data/sqoop/curl" https://%CLUSTERNAME%.azurehdinsight.net/templeton/v1/sqoop
@@ -77,21 +77,21 @@ Rozhraní API REST je zabezpečeno pomocí [základního ověřování](https://
 
     Parametry použité v tomto příkazu jsou následující:
 
-   * **-d** - `-G` Vzhledem k tomu, že se nepoužívá, požadavek výchozí post metody. `-d`určuje hodnoty dat, které jsou odeslány s požadavkem.
+   * **-d** – vzhledem `-G` k tomu, že se nepoužívá, je požadavek nastaven na výchozí metodu post. `-d`Určuje hodnoty dat, které se odesílají spolu s požadavkem.
 
-       * **user.name** - Uživatel, který je spuštěn příkaz.
+       * **User.Name** – uživatel, který spouští příkaz.
 
-       * **command** - Příkaz Sqoop k provedení.
+       * **příkaz** – příkaz Sqoop, který se má provést.
 
-       * **statusdir** - Adresář, do kterého bude zapsán stav této úlohy.
+       * **statusdir** – adresář, do kterého se bude zapisovat stav této úlohy.
 
-     Tento příkaz vrátí ID úlohy, které lze použít ke kontrole stavu úlohy.
+     Tento příkaz vrátí ID úlohy, která se dá použít ke kontrole stavu úlohy.
 
        ```json
        {"id":"job_1415651640909_0026"}
        ```
 
-1. Chcete-li zkontrolovat stav úlohy, použijte následující příkaz. Nahradit `JOBID` hodnotou vrácenou v předchozím kroku. Například pokud byla `{"id":"job_1415651640909_0026"}`vrácená `JOBID` hodnota `job_1415651640909_0026`, pak by být . Podle `jq` potřeby zkontrolujte umístění.
+1. Chcete-li zjistit stav úlohy, použijte následující příkaz. Nahraďte `JOBID` hodnotou vrácenou v předchozím kroku. Například Pokud vrácená hodnota byla `{"id":"job_1415651640909_0026"}`, pak `JOBID` by byla. `job_1415651640909_0026` `jq` Podle potřeby upravte umístění.
 
     ```cmd
     set JOBID=job_1415651640909_0026
@@ -99,16 +99,16 @@ Rozhraní API REST je zabezpečeno pomocí [základního ověřování](https://
     curl -G -u %USERNAME%:%PASSWORD% -d user.name=%USERNAME% https://%CLUSTERNAME%.azurehdinsight.net/templeton/v1/jobs/%JOBID% | C:\HDI\jq-win64.exe .status.state
     ```
 
-    Pokud je úloha dokončena, bude stav **succeeded**.
+    Pokud byla úloha dokončena, stav bude **úspěšný**.
 
    > [!NOTE]  
-   > Tento požadavek curl vrátí dokument zápisu objektu JavaScript (JSON) s informacemi o úloze; jq se používá k načtení pouze hodnoty stavu.
+   > Tato žádost o kudrlinkou vrátí dokument JavaScript Object Notation (JSON) s informacemi o úloze. JQ se používá k načtení pouze hodnoty stavu.
 
-1. Po změně stavu úlohy na **SUCCEEDED**můžete načíst výsledky úlohy z úložiště objektů blob Azure. Parametr `statusdir` předaný s dotazem obsahuje umístění výstupního souboru; v tomto `wasb:///example/data/sqoop/curl`případě. Tato adresa ukládá výstup úlohy `example/data/sqoop/curl` v adresáři ve výchozím kontejneru úložiště používaném clusterem HDInsight.
+1. Jakmile se stav úlohy změní na **úspěch**, můžete načíst výsledky úlohy z úložiště objektů BLOB v Azure. `statusdir` Parametr předaný dotazu obsahuje umístění výstupního souboru. v tomto případě `wasb:///example/data/sqoop/curl`. Tato adresa ukládá výstup úlohy do `example/data/sqoop/curl` adresáře ve výchozím kontejneru úložiště, který používá cluster HDInsight.
 
-    K přístupu k objektům BLOB stderr a stdout můžete použít portál Azure.
+    Azure Portal můžete použít pro přístup k objektům blob stderr a STDOUT.
 
-1. Chcete-li ověřit, zda byla data exportována, zobrazte exportovaná data pomocí následujících dotazů z klienta SQL:
+1. Chcete-li ověřit, zda byla data exportována, použijte následující dotazy z klienta SQL k zobrazení exportovaných dat:
 
     ```sql
     SELECT COUNT(*) FROM [dbo].[log4jlogs] WITH (NOLOCK);
@@ -117,21 +117,21 @@ Rozhraní API REST je zabezpečeno pomocí [základního ověřování](https://
 
 ## <a name="limitations"></a>Omezení
 
-* Hromadný export – S Linuxem založené HDInsight konektor Sqoop slouží k exportu dat na Microsoft SQL Server nebo Azure SQL Database aktuálně nepodporuje hromadné vložení.
-* Dávkování - S Linux-založené HDInsight, `-batch` Při použití přepínače při provádění vložení, Sqoop provede více vložek namísto dávkování operace vložení.
+* Hromadný export – pomocí HDInsight se systémem Linux, konektor Sqoop používaný k exportu dat do Microsoft SQL Server nebo Azure SQL Database v současné době nepodporuje hromadné vložení.
+* Dávkování – se systémem Linux HDInsight při použití `-batch` přepínače při provádění operací INSERT Sqoop provede vícenásobné vkládání místo dávkování operací vložení.
 
 ## <a name="summary"></a>Souhrn
 
 Jak je znázorněno v tomto dokumentu, můžete použít nezpracovaný požadavek HTTP ke spuštění, monitorování a zobrazení výsledků úloh Sqoop v clusteru HDInsight.
 
-Další informace o rozhraní REST použité v tomto článku naleznete v <a href="https://sqoop.apache.org/docs/1.99.3/RESTAPI.html" target="_blank">průvodci apache sqoop REST API</a>.
+Další informace o rozhraní REST, které se používá v tomto článku, najdete v tématu <a href="https://sqoop.apache.org/docs/1.99.3/RESTAPI.html" target="_blank">REST API příručka pro Apache Sqoop</a>.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Použijte Apache Sqoop s Apache Hadoop na HDInsight](hdinsight-use-sqoop.md)
+[Použití Apache Sqoop s Apache Hadoop v HDInsight](hdinsight-use-sqoop.md)
 
-Pro další hdinsight články zahrnující curl:
+Další články HDInsight zahrnující oblé:
 
-* [Vytvoření clusterů Apache Hadoop pomocí rozhraní Azure REST API](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)
-* [Spouštění dotazů Apache Hive s Apache Hadoop v HDInsight pomocí REST](apache-hadoop-use-hive-curl.md)
-* [Spusťte mapreduce úlohy s Apache Hadoop na HDInsight pomocí REST](apache-hadoop-use-mapreduce-curl.md)
+* [Vytváření clusterů Apache Hadoop pomocí Azure REST API](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)
+* [Spouštění dotazů Apache Hive pomocí Apache Hadoop ve službě HDInsight pomocí REST](apache-hadoop-use-hive-curl.md)
+* [Spouštění úloh MapReduce s využitím Apache Hadoop ve službě HDInsight pomocí REST](apache-hadoop-use-mapreduce-curl.md)

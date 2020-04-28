@@ -1,6 +1,6 @@
 ---
-title: Analýza na HDInsight Spark s PySpark, Scala - Proces vědecké ho služky
-description: Příklady procesu vědecké analýzy týmových dat, které procházejí používáním PySparku a Scaly na Azure HDInsight Spark.
+title: Analýzy v HDInsight Spark s PySpark, Scala – týmových datových vědeckých procesů
+description: Příklady vědeckého procesu týmového zpracování dat, který prochází používáním PySpark a Scala na Azure HDInsight Spark.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,40 +12,40 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 91aac279a264d64ace5988d147c4caf8c52e9656
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75864141"
 ---
-# <a name="hdinsight-spark-data-science-walkthroughs-using-pyspark-and-scala-on-azure"></a>Návody pro datové vědy HDInsight Spark využívající PyStoři a Scalu v Azure
+# <a name="hdinsight-spark-data-science-walkthroughs-using-pyspark-and-scala-on-azure"></a>Návody pro datové vědy pro HDInsight Spark využívající PySpark a Scala v Azure
 
-Tyto návody používají PySpark a Scala v clusteru Azure Spark k prediktivní analýze. Postupujte podle kroků uvedených v procesu vědecké vědy o týmových datech. Přehled procesu vědecké ho spoje týmových dat naleznete v tématu [Proces datové vědy](overview.md). Přehled Sparka na HDInsightu najdete [v tématu Úvod do Sparku na HDInsightu](../../hdinsight/spark/apache-spark-overview.md).
+Tyto návody používají PySpark a Scala v clusteru Azure Spark k provádění prediktivních analýz. Postupuje podle kroků popsaných v rámci vědeckého procesu týmového zpracování dat. Přehled vědeckého zpracování týmových dat najdete v tématu věnovaném [zpracování datových věd](overview.md). Přehled Sparku ve službě HDInsight najdete v tématu [Úvod do Sparku v HDInsight](../../hdinsight/spark/apache-spark-overview.md).
 
-Další datové vědy návody, které provádějí proces vědecké správy týmových dat jsou seskupeny podle **platformy,** které používají. Viz [návody provádění procesu vědecké ho týmových dat](walkthroughs.md) pro rozepsání těchto příkladů.
+Další návody pro datové vědy, které spouštějí vědecké zpracování týmových dat, jsou seskupeny podle **platformy** , kterou používají. Projděte si [návody, které spouštějí vědecký procesní tým](walkthroughs.md) pro vydaný rozpis těchto příkladů.
 
-## <a name="predict-taxi-tips-using-pyspark-on-azure-spark"></a>Předvídejte tipy pro taxi pomocí PyStoři na Azure Sparku
+## <a name="predict-taxi-tips-using-pyspark-on-azure-spark"></a>Předpověď tipů taxislužby pomocí PySpark ve službě Azure Spark
 
-Pomocí dat taxi v New Yorku, [použití Spark na Azure HDInsight](spark-overview.md) návod předpovídá, zda tip se platí a rozsah očekávaných částek. Tento příklad používá proces vědecké analýzy týmových dat v případě použití [clusteru Azure HDInsight Spark](https://azure.microsoft.com/services/hdinsight/) k ukládání, zkoumání a inženýrfunkce data z veřejně dostupné nyc taxi výlet a tarif datové sady. Toto téma přehledu používá cluster HDInsight Spark a poznámkové bloky Jupyter PySpark. Tyto poznámkové bloky vám ukážou, jak prozkoumat data a potom, jak vytvářet a využívat modely. Poznámkový blok pro zkoumání a modelování pokročilých dat ukazuje, jak zahrnout křížové ověřování, hyperparametrické zametání a vyhodnocení modelu.
+Pomocí nástroje New York taxislužby data předpovídá návod [Použití Sparku v Azure HDInsight](spark-overview.md) , jestli je Tip vyplacený, a rozsah očekávaných částek. V tomto příkladu se používá vědecký proces týmových dat ve scénáři, který používá [cluster Azure HDInsight Spark](https://azure.microsoft.com/services/hdinsight/) k ukládání, prozkoumávání a zpracovávání dat funkcí z veřejně dostupné datové sady služby NYC taxislužby TRIPS a jízdné. Toto přehledové téma používá cluster HDInsight Spark a poznámkové bloky Jupyter PySpark. Tyto poznámkové bloky ukazují, jak prozkoumat data a jak vytvářet a spotřebovávat modely. Poznámkový blok pokročilého zkoumání a modelování dat ukazuje, jak zahrnout křížové ověřování, navzájemování a vyhodnocování modelů.
 
-### <a name="data-exploration-and-modeling-with-spark"></a>Průzkum dat a modelování se Sparkem 
-Prozkoumejte datovou sadu a vytvořte, vyhodnoťte a vyhodnoťte modely strojového učení pomocí [vytváření binárních klasifikačních a regresních modelů pro data pomocí tématu sady nástrojů Spark MLlib.](spark-data-exploration-modeling.md)
+### <a name="data-exploration-and-modeling-with-spark"></a>Zkoumání a modelování dat pomocí Sparku 
+Prozkoumejte datovou sadu a vytvářejte, myslete a vyhodnoťte modely strojového učení pomocí tématu [Vytvoření binární klasifikace a regresní modely pro data pomocí sady nástrojů Spark MLlib Toolkit](spark-data-exploration-modeling.md) .
 
 ### <a name="model-consumption"></a>Spotřeba modelu
-Informace o tom, jak skóre klasifikace a regresní modely vytvořené v tomto tématu, najdete v [tématu skóre a vyhodnotit Spark-postavený modely strojového učení](spark-model-consumption.md).
+Informace o tom, jak určit skóre modelů klasifikace a regrese vytvořených v tomto tématu, najdete v tématu [skóre a vyhodnocení modelů strojového učení](spark-model-consumption.md)s využitím Sparku.
 
-### <a name="cross-validation-and-hyperparameter-sweeping"></a>Křížové ověřování a hyperparametrické zametání
-Podívejte se [na pokročilé zkoumání dat a modelování se Sparkem](spark-advanced-data-exploration-modeling.md) o tom, jak lze modely trénovat pomocí křížového ověřování a hyperparametrické zametání.
+### <a name="cross-validation-and-hyperparameter-sweeping"></a>Křížové ověřování a nakroužení parametrů
+Podívejte [se na téma pokročilé zkoumání a modelování dat pomocí Sparku](spark-advanced-data-exploration-modeling.md) , jak je možné modely vyškolené pomocí křížového ověřování a s využitím Hyper-parametring.
 
 
-## <a name="predict-taxi-tips-using-scala-on-azure-spark"></a>Předvídejte tipy pro taxi pomocí Scaly na Azure Spark
+## <a name="predict-taxi-tips-using-scala-on-azure-spark"></a>Předpověď tipů taxislužby pomocí Scala ve službě Azure Spark
 
-[Návod Použití Scaly se Sparkem v Azure](scala-walkthrough.md) předpovídá, jestli se platí tip a očekává se, že se zaplatí. Ukazuje, jak používat Scala pro úkoly strojového učení pod dohledem s knihovnou strojového učení Spark (MLlib) a Balíčky SparkML v clusteru Azure HDInsight Spark. Provede vás úkoly, které tvoří [proces datové vědy](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/): ingestování a zkoumání dat, vizualizace, inženýrské funkce, modelování a spotřeba modelu. Vytvořené modely zahrnují logistickou a lineární regresi, náhodné doménové struktury a stromy posílené přechodem.
+Návod [použít Scala s Sparkem v Azure](scala-walkthrough.md) předpovídá, jestli je Tip placená, a rozsah částek, které mají být placené. Ukazuje, jak používat Scala pro dohled nad úkoly strojového učení s balíčky Spark Machine Learning Library (MLlib) a SparkML v clusteru Azure HDInsight Spark. Provede vás úkoly, které tvoří [proces vědeckého zpracování dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/): přijímání a zkoumání dat, vizualizace, strojírenství funkcí, modelování a využití modelu. Sestavené modely zahrnují logistické a lineární regrese, náhodné doménové struktury a barevné zesílené stromy.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Přehled procesu vědecké ho svědecké hospo- procesu týmových dat najdete v [tématu Přehled vědeckého procesu týmových dat](overview.md).
+Přehled vědeckého zpracování týmových dat najdete v tématu [Přehled procesu vědeckého zpracování](overview.md)týmových dat.
 
-Pro diskusi o životní cyklus procesu vědecké ho spoje v oblasti týmových dat, najdete [v tématu Team Data Science Process lifecycle](lifecycle.md). Tento životní cyklus popisuje kroky od začátku do konce, které projekty obvykle následují při jejich spuštění. 
+Diskuzi o životním cyklu vědeckého zpracování týmových dat najdete v tématu [životní cyklus procesu vědeckého zpracování dat týmu](lifecycle.md). Tento životní cyklus popisuje kroky od začátku do konce, které projekty obvykle následují při jejich spuštění. 
 

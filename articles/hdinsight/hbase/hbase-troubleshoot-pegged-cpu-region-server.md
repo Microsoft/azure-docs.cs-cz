@@ -1,6 +1,6 @@
 ---
-title: Vázaný procesor v clusteru Apache HBase - Azure HDInsight
-description: Poradce při potížích s vázaným procesorem na serveru oblastí v clusteru Apache HBase v Azure HDInsight
+title: Dodaný procesor v Apache HBA clusteru – Azure HDInsight
+description: Řešení potíží s dodaným PROCESORem na serveru oblastí v clusteru Apache HBA ve službě Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,43 +8,43 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/01/2019
 ms.openlocfilehash: 16c994029e91d743f1c2a7e2eab51eb86fc378e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75887304"
 ---
-# <a name="scenario-pegged-cpu-on-region-server-in-apache-hbase-cluster-in-azure-hdinsight"></a>Scénář: Zavěšený procesor na serveru oblastí v clusteru Apache HBase v Azure HDInsight
+# <a name="scenario-pegged-cpu-on-region-server-in-apache-hbase-cluster-in-azure-hdinsight"></a>Scénář: doložení procesoru na serveru oblasti v clusteru Apache HBA v Azure HDInsight
 
-Tento článek popisuje kroky řešení potíží a možná řešení problémů při interakci s clustery Azure HDInsight.
+Tento článek popisuje postup řešení potíží a možná řešení potíží při komunikaci s clustery Azure HDInsight.
 
 ## <a name="issue"></a>Problém
 
-Proces serveru oblasti Apache HBase začíná zabírat téměř 200% procesoru, což způsobuje, že výstrahy se spouští v procesu HBase Master a clusteru nefungují na plnou kapacitu.
+Proces serveru oblasti Apache HBA začíná pracovat blízko až 200% CPU, což způsobuje, že se výstrahy HBase Master procesu a clusteru nefungují při plné kapacitě.
 
 ## <a name="cause"></a>Příčina
 
-Pokud používáte cluster HBase verze 3.4, pravděpodobně vás zasáhla potenciální chyba způsobená upgradem sady JDK na verzi 1.7.0_151. Příznak vidíme, je oblast proces serveru začíná zabírat téměř 200% `top` CPU (chcete-li ověřit tento spustit příkaz; pokud je proces zabírající téměř `ps -aux | grep` 200% CPU získat jeho pid a potvrdit, že je oblast server proces spuštěním ).
+Pokud spouštíte clustery HBA v 3.4, možná jste dosáhli potenciální chyby způsobené upgradem JDK na verzi 1.7.0 _151. Příznak uvidíme, že proces serveru oblastí se začne používat blízko až 200% CPU (aby se ověřilo, `top` že jste tento příkaz spustili. Pokud se v procesu zabírají blízko 200% CPU získat své PID a ověříte, že je proces serveru `ps -aux | grep` oblastí spuštěný
 
 ## <a name="resolution"></a>Řešení
 
-1. Nainstalujte jdk 1.8 na všechny uzly clusteru, jak je uvedeno níže:
+1. Nainstalujte JDK 1,8 na všechny uzly clusteru následujícím způsobem:
 
-    * Spusťte `https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/upgradetojdk18allnodes.sh`akci skriptu . Nezapomeňte vybrat možnost spuštění na všech uzlech.
+    * Spusťte akci `https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/upgradetojdk18allnodes.sh`skriptu. Nezapomeňte vybrat možnost, která se má spustit na všech uzlech.
 
-    * Případně se můžete přihlásit ke každému jednotlivému `sudo add-apt-repository ppa:openjdk-r/ppa -y && sudo apt-get -y update && sudo apt-get install -y openjdk-8-jdk`uzlu a spustit příkaz .
+    * Alternativně se můžete přihlásit do každého jednotlivého uzlu a spustit příkaz `sudo add-apt-repository ppa:openjdk-r/ppa -y && sudo apt-get -y update && sudo apt-get install -y openjdk-8-jdk`.
 
-1. Přejděte na UI Ambari - `https://<clusterdnsname>.azurehdinsight.net`.
+1. Přejít na uživatelské rozhraní Ambari `https://<clusterdnsname>.azurehdinsight.net`–.
 
-1. Přejděte na **HBase->Configs->Upřesnit >Upřesnit** `hbase-env configs` a změňte proměnnou `JAVA_HOME` na `export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64`. Uložte změnu konfigurace.
+1. Přejděte na **adaptéry HBA->konfigurace – >pokročilé – >Upřesnit** `hbase-env configs` a změňte proměnnou `JAVA_HOME` na `export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64`. Uložte změnu konfigurace.
 
-1. [Volitelné, ale doporučené] [Vyprázdnění všech tabulek v clusteru](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
+1. [Volitelné, ale Doporučené] [Vyprázdnit všechny tabulky v clusteru](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
 
-1. Z ui Ambari znovu restartujte všechny služby HBase, které je třeba restartovat.
+1. V uživatelském rozhraní Ambari restartujte všechny HBA služby, které vyžadují restart.
 
-1. V závislosti na datech v clusteru může trvat několik minut až hodinu, než cluster dosáhne stabilního stavu. Potvrzujete, že cluster dosáhne stabilního stavu, a to buď kontrolou hlavního uhlavního panelu (všechny regionální servery by měly být aktivní) z Ambari (refresh) nebo z prostředí HBase se spuštěním hbédu a následným spuštěním příkazu stavu.
+1. V závislosti na datech v clusteru může trvat několik minut až hodinu, než cluster dosáhne stabilního stavu. Způsob, jakým ověříte, že cluster dosáhne stabilního stavu, je buď zaškrtnutím HMaster uživatelského rozhraní (všechny servery oblastí, které by měly být aktivní) z Ambari (Refresh), nebo z prostředí hlavnímu uzlu Run HBA a potom spusťte příkaz status.
 
-Chcete-li ověřit, zda byl upgrade úspěšný, zkontrolujte, zda jsou příslušné procesy HBase zahájeny pomocí příslušné verze java – například pro kontrolu serveru oblasti jako:
+Chcete-li ověřit, zda byl upgrade úspěšný, zkontrolujte, zda jsou příslušné procesy HBA spouštěny pomocí vhodné verze jazyka Java – například pro kontrolu serveru v oblasti:
 
 ```
 ps -aux | grep regionserver, and verify the version like '''/usr/lib/jvm/java-8-openjdk-amd64/bin/java
@@ -52,10 +52,10 @@ ps -aux | grep regionserver, and verify the version like '''/usr/lib/jvm/java-8-
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste problém nezjistili nebo se vám nedaří problém vyřešit, navštivte jeden z následujících kanálů, kde najdete další podporu:
+Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 
-* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory Azure Community Support](https://azure.microsoft.com/support/community/).
+* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Spojte [@AzureSupport](https://twitter.com/azuresupport) se s oficiálním účtem Microsoft Azure, který zlepšuje zákaznickou zkušenost tím, že propojuje komunitu Azure se správnými prostředky: odpověďmi, podporou a odborníky.
+* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [webu Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na řádku nabídek vyberte **Podpora** nebo otevřete centrum **Nápověda + podpora.** Podrobnější informace najdete v části [Jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatného a fakturační podpoře je součástí vašeho předplatného Microsoft Azure a technická podpora se poskytuje prostřednictvím jednoho z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

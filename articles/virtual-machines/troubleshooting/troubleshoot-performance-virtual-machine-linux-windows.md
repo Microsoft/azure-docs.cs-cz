@@ -1,6 +1,6 @@
 ---
-title: Poradce při potížích s výkonem virtuálních strojů Azure v Linuxu nebo Windows
-description: Tento článek popisuje řešení potíží s obecným výkonem virtuálního počítače (VM) prostřednictvím monitorování a sledování kritických míst a poskytuje možné nápravu problémů, které mohou nastat.
+title: Řešení potíží s výkonem virtuálních počítačů Azure v systému Linux nebo Windows
+description: Tento článek popisuje obecný Poradce při potížích s výkonem virtuálních počítačů prostřednictvím monitorování a dodržování kritických bodů a poskytuje možnou nápravu problémů, ke kterým může dojít.
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: v-miegge
@@ -14,156 +14,156 @@ ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
 ms.openlocfilehash: 176b0634fe2c7ee2f47162e439c4ea16bde77a8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75772614"
 ---
-# <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Poradce při potížích s výkonem virtuálních strojů Azure v Linuxu nebo Windows
+# <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Řešení potíží s výkonem virtuálních počítačů Azure v systému Linux nebo Windows
 
-Tento článek popisuje řešení potíží s obecným výkonem virtuálního počítače (VM) prostřednictvím monitorování a sledování kritických míst a poskytuje možné nápravu problémů, které mohou nastat. Kromě monitorování můžete také použít Perfinsights, který může poskytnout zprávu s doporučeními osvědčených postupů a klíčovými kritickými body kolem IO/CPU/Memory. Perfinsights je k dispozici pro virtuální počítače [s Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) i [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) v Azure.
+Tento článek popisuje obecný Poradce při potížích s výkonem virtuálních počítačů prostřednictvím monitorování a dodržování kritických bodů a poskytuje možnou nápravu problémů, ke kterým může dojít. Kromě monitorování můžete použít také Perfinsights, který může poskytnout zprávu s doporučenými doporučeními a klíčovými body pro vstupně-výstupní operace/procesor/paměť. Perfinsights je k dispozici pro virtuální počítač se [systémem Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) i [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) v Azure.
 
-Tento článek bude procházet pomocí monitorování diagnostikovat problémová místa výkonu.
+Tento článek vás provede monitorováním a diagnostikuje potíže s výkonem.
 
 ## <a name="enabling-monitoring"></a>Povolení monitorování
 
-### <a name="azure-iaas-virtual-machine-monitoring"></a>Monitorování virtuálních strojů Azure IAAS
+### <a name="azure-iaas-virtual-machine-monitoring"></a>Monitorování virtuálních počítačů Azure IAAS
 
-Ke sledování virtuálního počítače hosta použijte monitorování virtuálních počítačích Azure, které vás upozorní na určité podmínky prostředků vysoké úrovně. Pokud chcete zkontrolovat, jestli máte povolenou diagnostiku virtuálních počítače, přečtěte si informace o tom, jestli máte povolené [protokoly prostředků Azure](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs). Pokud se zobrazí následující, pak s největší pravděpodobností nemáte povolenou diagnostiku:
+Pokud chcete monitorovat virtuální počítač hosta, použijte monitorování virtuálních počítačů Azure, které vás upozorní na určité podmínky prostředků na vysoké úrovni. Pokud chcete zjistit, jestli máte zapnutou diagnostiku virtuálních počítačů, přečtěte si téma [Přehled protokolů prostředků Azure](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs). Pokud se zobrazí následující informace, pravděpodobně nemáte povolenou diagnostiku:
 
 ![Monitorování není povoleno.](media/troubleshoot-performance-virtual-machine-linux-windows/1-virtual-machines-monitoring-not-enabled.png)
  
-### <a name="enable-vm-diagnostics-through-microsoft-azure-portal"></a>Povolení diagnostiky virtuálních počítačů prostřednictvím portálu Microsoft Azure
+### <a name="enable-vm-diagnostics-through-microsoft-azure-portal"></a>Povolení diagnostiky virtuálních počítačů prostřednictvím Microsoft Azure Portal
 
-Povolení diagnostiky virtuálních mandorů:
+Postup povolení diagnostiky virtuálních počítačů:
 
-1. Přejít na virtuální ms
-2. Klikněte na **Nastavení diagnostiky.**
-3. Vyberte účet úložiště a klepněte na **tlačítko Povolit monitorování na úrovni hosta**.
+1. Přejít na virtuální počítač
+2. Klikněte na **nastavení diagnostiky** .
+3. Vyberte účet úložiště a klikněte na **Povolit monitorování na úrovni hosta**.
 
-   ![Klikněte na Nastavení a potom na Diagnostika.](media/troubleshoot-performance-virtual-machine-linux-windows/2-virtual-machines-diagnostics.png)
+   ![Klikněte na nastavení a potom na Diagnostika.](media/troubleshoot-performance-virtual-machine-linux-windows/2-virtual-machines-diagnostics.png)
 
-Účet úložiště použitý pro nastavení diagnostiky můžete zkontrolovat na kartě **Agent** v části **Nastavení diagnostiky**.
+Na kartě **Agent** v části **nastavení diagnostiky**můžete zaškrtnout účet úložiště, který se používá pro nastavení diagnostiky.
 
-![Zkontrolovat účet úložiště](media/troubleshoot-performance-virtual-machine-linux-windows/3-check-storage-account.png)
+![Ověřit účet úložiště](media/troubleshoot-performance-virtual-machine-linux-windows/3-check-storage-account.png)
 
-### <a name="enable-storage-account-diagnostics-through-azure-portal"></a>Povolení diagnostiky účtu úložiště prostřednictvím portálu Azure
+### <a name="enable-storage-account-diagnostics-through-azure-portal"></a>Povolit diagnostiku účtu úložiště prostřednictvím Azure Portal
 
-Úložiště je velmi důležitá úroveň, když máme v úmyslu analyzovat výkon vstupně-věcí pro virtuální počítač v Azure. Pro metriky související s úložištěm potřebujeme povolit diagnostiku jako další krok. To by také mohlo být povoleno, pokud chceme analyzovat pouze čítače související s úložištěm.
+Úložiště je velmi důležitou vrstvou, když plánujeme analyzovat vstupně-výstupní výkon virtuálního počítače v Azure. Pro metriky související s úložištěm je potřeba povolit diagnostiku jako další krok. To může být také povoleno, pokud chceme analyzovat pouze čítače související s úložištěm.
 
-1. Zjistěte, který účet úložiště (nebo účty) váš virtuální počítač používá výběrem virtuálního počítače. Klepněte na tlačítko **Nastavení**a potom na **položku Disky**:
+1. Pomocí výběru virtuálního počítače určete, který účet úložiště (nebo účty) váš virtuální počítač používá. Klikněte na **Nastavení**a potom na **disky**:
 
-   ![Klikněte na Nastavení a potom na Disky.](media/troubleshoot-performance-virtual-machine-linux-windows/4-storage-disks-disks-selection.png)
+   ![Klikněte na nastavení a potom na disky.](media/troubleshoot-performance-virtual-machine-linux-windows/4-storage-disks-disks-selection.png)
 
-2. Na portálu přejděte na účet úložiště (nebo účty) pro virtuální hod a postupujte podle následujících kroků:
+2. Na portálu přejdete do účtu úložiště (nebo účtů) pro virtuální počítač a provedete následující kroky:
 
-   1. Klikněte na přehled účtu úložiště, který jste našli s výše uvedeným krokem.
+   1. Klikněte na přehled pro účet úložiště, který jste našli v kroku výše.
    2. Zobrazí se výchozí metriky. 
 
     ![Výchozí metriky](media/troubleshoot-performance-virtual-machine-linux-windows/5-default-metrics.png)
 
-3. Klikněte na některou z metrik, která se zobrazí další okno s dalšími možnostmi konfigurace a přidání metrik.
+3. Klikněte na libovolnou metriku, která zobrazí další okno s dalšími možnostmi konfigurace a přidání metrik.
 
-   ![Přidání metrik](media/troubleshoot-performance-virtual-machine-linux-windows/6-add-metrics.png)
+   ![Přidat metriky](media/troubleshoot-performance-virtual-machine-linux-windows/6-add-metrics.png)
 
-Postup konfigurace těchto možností:
+Konfigurace těchto možností:
 
 1.  Vyberte **Metriky**.
 2.  Vyberte **prostředek** (účet úložiště).
-3.  Výběr **oboru názvů**
-4.  Vyberte **metrika**.
-5.  Vyberte typ **agregace**
+3.  Vyberte **obor názvů** .
+4.  Vyberte **metriku**.
+5.  Vyberte typ **agregace** .
 6.  Toto zobrazení můžete připnout na řídicí panel.
 
-## <a name="observing-bottlenecks"></a>Pozorování úzkých míst
+## <a name="observing-bottlenecks"></a>Pozorování kritických bodů
 
-Jakmile projdeme procesem počátečního nastavení pro potřebné metriky a zveřejníme povolení diagnostiky pro virtuální počítač a související účet úložiště, můžeme přejít na fázi analýzy.
+Až provedete procesem prvotního nastavení pro potřebné metriky a po povolení diagnostiky pro virtuální počítač a související účet úložiště, můžeme se přesunout do fáze analýzy.
 
 ### <a name="accessing-the-monitoring"></a>Přístup k monitorování
 
-Vyberte virtuální počítač Azure, který chcete prozkoumat, a vyberte **Sledování**.
+Vyberte virtuální počítač Azure, který chcete prozkoumat, a vyberte **monitorování**.
 
 ![Vybrat monitorování](media/troubleshoot-performance-virtual-machine-linux-windows/7-select-monitoring.png)
  
-### <a name="timelines-of-observation"></a>Lhůty pro pozorování
+### <a name="timelines-of-observation"></a>Časové osy pozorování
 
-Chcete-li zjistit, zda máte problémová místa prostředků, zkontrolujte data. Pokud zjistíte, že váš počítač běží v pořádku, ale bylo hlášeno, že výkon nedávno snížil, zkontrolujte časový rozsah dat, která zahrnuje data metriky výkonu před nahlášenými změnami, během a po problému.
+Pokud chcete zjistit, jestli máte nějaké kritické body prostředků, Projděte si data. Pokud zjistíte, že váš počítač běží správně, ale ohlásil, že nedávno došlo ke snížení výkonu, zkontrolujte časový rozsah dat, který zahrnuje data metriky výkonu před nahlášeným stavem, během a po problému.
 
-### <a name="check-for-cpu-bottleneck"></a>Kontrola kritického místa procesoru
+### <a name="check-for-cpu-bottleneck"></a>Vyhledat kritická místa procesoru
 
-![Kontrola kritického místa procesoru](media/troubleshoot-performance-virtual-machine-linux-windows/8-cpu-bottleneck-time-range.png)
+![Vyhledat kritická místa procesoru](media/troubleshoot-performance-virtual-machine-linux-windows/8-cpu-bottleneck-time-range.png)
 
 1. Upravte graf.
 2. Nastavte časový rozsah.
-3. Poté je třeba přidat do čítače: CPU Procento Guest OS
+3. Pak je nutné přidat do čítače: procento využití CPU hostovaného operačního systému
 4. Uložte.
 
-### <a name="cpu-observe-trends"></a>Sledování trendů v cpu
+### <a name="cpu-observe-trends"></a>Sledování trendů procesoru
 
-Při pohledu na problémy s výkonem si uvědomte trendy a pochopte, zda se vás týkají. V dalších částech použijeme grafy monitorování z portálu k zobrazení trendů. Mohou být také užitečné pro křížové odkazování na chování prostředků rozdíl ve stejném časovém období. Pokud chcete grafy přizpůsobit, klikněte na [Azure Monitor.](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform)
+Při hledání potíží s výkonem si pamatujte na trendy a zjistěte, jestli vás na ně mají vliv. V dalších částech budeme k zobrazení trendů používat grafy monitorování z portálu. Můžou to být užitečné i při křížovém odkazování na chování prostředků ve stejném časovém období. Pokud chcete grafy přizpůsobit, klikněte na [Azure monitor datovou platformu](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform).
 
-Spiking – Spiking může souviset s naplánovanou úlohou/známou událostí. Pokud můžete identifikovat úlohu, zjistěte, zda je úloha spuštěna na požadované úrovni výkonu. Pokud je výkon přijatelný, nemusí být nutné navýšit prostředky.
+Spiking – spiking může souviset s plánovanou úlohou nebo známou událostí. Pokud můžete úlohu identifikovat, zjistěte, jestli je úloha spuštěná na požadované úrovni výkonu. Pokud je výkon přijatelný, možná nebudete muset zvyšovat prostředky.
 
-Spike up a Constant – často označuje nové zatížení. Pokud to není rozpoznané zatížení, povolte monitorování ve virtuálním počítače zjistit, jaký proces (nebo procesy) způsobuje chování. Jakmile je proces rozpoznán, zjistěte, zda je zvýšená spotřeba způsobena neefektivním kódem nebo normální spotřebou. Pokud je normální spotřeba, rozhodněte se, zda proces pracuje na požadované úrovni výkonu.
+Špička nahoru a konstantní – často označuje novou úlohu. Pokud se nejedná o rozpoznanou úlohu, povolte monitorování na virtuálním počítači, abyste zjistili, jaký proces (nebo procesy) způsobuje chování. Po rozpoznání procesu Zjistěte, zda je zvýšená spotřeba způsobena neefektivním kódem nebo normální spotřebou. Pokud se jedná o normální spotřebu, rozhodněte se, jestli proces funguje na požadované úrovni výkonu.
 
-Konstanta – zjistěte, zda váš virtuální počítač vždy běží na této úrovni, nebo pokud byl spuštěn pouze na této úrovni, protože diagnostika byla povolena. Pokud ano, identifikujte proces (nebo procesy), které způsobují problém, a zvažte přidání dalších prostředků.
+Konstanta – určuje, jestli se váš virtuální počítač vždycky spouštěl na této úrovni, nebo jestli se spustil jenom na této úrovni, protože byla povolená Diagnostika. Pokud ano, identifikujte proces (nebo procesy), které způsobují problém, a zvažte přidání dalších prostředků.
 
-Neustále rostoucí – konstantní nárůst spotřeby je často buď neefektivní kód nebo proces s více zatížení uživatelů.
+Ustálené zvyšování – stálé zvýšení spotřeby je často buď neefektivní kód, nebo proces, který přebírá více uživatelských úloh.
 
-### <a name="high-cpu-utilization-remediation"></a>Náprava s vysokým využitím procesoru
+### <a name="high-cpu-utilization-remediation"></a>Vysoká náprava využití procesoru
 
-Pokud vaše aplikace nebo proces není spuštěn na správné úrovni výkonu a vidíte 95 % + konstanta využití procesoru, můžete provést některou z následujících úloh:
+Pokud vaše aplikace nebo proces neběží na správné úrovni výkonu a vidíte 95% + konstanta využití procesoru, můžete provést jednu z následujících úloh:
 
-* Pro okamžitou úlevu – zvětšení velikosti virtuálního počítače na velikost s více jádry
-* Seznamte se s problémem – vyhledejte aplikaci/proces a odpovídajícím způsobem vyřešte potíže.
+* Okamžité zvýšení velikosti virtuálního počítače na velikost s více jádry
+* Pochopení problému – vyhledání aplikace nebo procesu a odpovídajícím způsobem odstraňování potíží.
 
-Pokud jste zvýšili virtuální ho a procesor je stále spuštěn 95 %, zjistěte, zda toto nastavení nabízí lepší výkon nebo vyšší propustnost aplikace na přijatelnou úroveň. Pokud ne, vyřešte tuto jednotlivou aplikaci\zpracujte.
+Pokud jste virtuální počítač zvýšili a procesor stále běží 95%, určete, zda toto nastavení nabízí vyšší výkon nebo vyšší propustnost aplikace na přijatelnou úroveň. V takovém případě řešení potíží s jednotlivými application\process.
 
-Perfinsights pro [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) nebo [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) můžete použít k analýze, který proces je hnací silou spotřeby procesoru. 
+Perfinsights pro [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) nebo [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) můžete použít k analýze, který proces řídí spotřebu procesoru. 
 
-## <a name="check-for-memory-bottleneck"></a>Kontrola kritického místa paměti
+## <a name="check-for-memory-bottleneck"></a>Vyhledat kritická místa pro paměť
 
 Zobrazení metrik:
 
 1. Přidejte oddíl.
 2. Přidejte dlaždici.
 3. Otevřete galerii.
-4. Vyberte využití paměti a táhněte. Když je dlaždice ukotvena, klepněte pravým tlačítkem myši a vyberte **možnost 6x4**.
+4. Vyberte využití paměti a přetáhněte je. Když je dlaždice ukotvená, klikněte pravým tlačítkem a vyberte **6x4**.
 
-### <a name="memory-observe-trends"></a>Sledování trendů paměti
+### <a name="memory-observe-trends"></a>Trendy ve sledování paměti
 
-Využití paměti ukazuje, kolik paměti se spotřebovává s virtuálním počítačem. Seznamte se s trendem a tím, zda se mapuje na dobu, kdy se problémy zobrazují. Vždy byste měli mít více než 100 MB dostupné paměti.
+Využití paměti ukazuje, kolik paměti je ve virtuálním počítači spotřebováno. Seznámení s trendem a informace o tom, jestli se namapuje na čas, ve kterém se zobrazují problémy Vždy byste měli mít více než 100 MB dostupné paměti.
 
-Špička a konstantní/konstantní stabilní spotřeba – vysoké využití paměti nemusí být příčinou špatný výkon, protože některé aplikace, jako jsou relační databázové stroje přidělit velké množství paměti a toto využití nemusí být významné. Pokud však existuje více aplikací s nárokem na paměť, může se zobrazit nízký výkon z tvrzení paměti způsobuje oříznutí a stránkování/prohození na disk. Tento nízký výkon je často znatelnou příčinou dopadu na výkon aplikace.
+Špička a konstantní/konstantní stabilní spotřeba – vysoké využití paměti nemusí způsobovat špatný výkon, protože některé aplikace, jako například relační databázové moduly, přidělují velké množství paměti a toto využití nemusí být významné. Pokud ale existuje několik aplikací náročné paměti, můžete se setkat s nízkým výkonem od kolizí paměti, které způsobuje ořezávání a stránkování na disk a jejich výměnu. Tento špatný výkon je často znatelné příčinou dopadu aplikace na výkon.
 
-Neustále rostoucí spotřeba - možné aplikace 'zahřívání', tato spotřeba je běžné u databázových strojů spouštění. Ale může jít také o signál nevrácení paměti v aplikaci. Identifikujte aplikaci a zjistěte, zda je očekávané chování.
+Neustálé zvyšování spotřeby – možná aplikace "zahřívání", tato spotřeba je společná mezi databázovými moduly, které se spouštějí. Ale může jít také o signál nevrácení paměti v aplikaci. Identifikujte aplikaci a zjistěte, jestli je očekávané chování.
 
-Využití stránky nebo odkládacího souboru – Zkontrolujte, zda\) používáte soubor Stránkování Systému Windows (umístěný na D: nebo linuxový odkládací soubor (umístěný na) `/dev/sdb`jsou silně používány. Pokud na těchto svazcích nemáte nic kromě těchto souborů, zkontrolujte vysoké čtení a zápisy na těchto discích. Tento problém svědčí o nedostatku paměti podmínky.
+Použití stránky nebo odkládacího souboru – ověřte, jestli se používá stránkovací soubor systému Windows (umístěný na\) D: nebo na zákrytém `/dev/sdb`souboru (umístěný na platformě). Pokud na těchto svazcích nemáte nic s výjimkou těchto souborů, vyhledejte na těchto discích vysokou čitelnost a zápis. Tento problém je informativní v podmínkách nedostatku paměti.
 
-### <a name="high-memory-utilization-remediation"></a>Náprava využití paměti s vysokým využitím paměti
+### <a name="high-memory-utilization-remediation"></a>Náprava využití vysoké paměti
 
 Chcete-li vyřešit vysoké využití paměti, proveďte některou z následujících úloh:
 
-* Pro okamžitou úlevu nebo využití stránkovacího nebo odkládacího souboru – zvyšte velikost virtuálního počítače na jeden s větší pamětí a pak monitorujte.
-* Pochopit problém – vyhledejte aplikace/proces a řešení potíží pro identifikaci aplikací s vysokou spotřebou paměti.
-* Pokud znáte aplikaci, zjistěte, zda přidělení paměti může být omezeno.
+* Pro okamžité použití nebo stránkovací nebo odkládací soubor – zvyšte velikost virtuálního počítače na jednu a pak Sledujte.
+* Pochopení problému – vyhledání aplikací/procesů a řešení potíží při určování vysoce náročných paměťových aplikací.
+* Pokud aplikaci znáte, přečtěte si, jestli je možné omezené přidělení paměti.
 
-Pokud po upgradu na větší virtuální ms zjistíte, že stále máte konstantní stálý nárůst až do 100 %, identifikujte aplikaci/proces a řešení potíží.
+Pokud po upgradu na větší virtuální počítač, zjistíte, že stále máte konstantní stabilní zvýšení až do 100%, určete aplikaci nebo proces a odstraňte potíže.
 
-Perfinsights pro [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) nebo [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) můžete použít k analýze, který proces je hnací silou spotřeby paměti. 
+Pomocí Perfinsights pro [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) nebo [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) můžete analyzovat, který proces řídí spotřebu paměti. 
 
-## <a name="check-for-disk-bottleneck"></a>Kontrola kritického místa disku
+## <a name="check-for-disk-bottleneck"></a>Vyhledat kritický bod disku
 
-Chcete-li zkontrolovat podsystém úložiště pro virtuální počítač, zkontrolujte diagnostiku na úrovni virtuálního počítače Azure pomocí čítačů v diagnostice virtuálních počítače a také diagnostiky účtu úložiště.
+Pokud chcete kontrolovat podsystém úložiště pro virtuální počítač, podívejte se na diagnostiku na úrovni virtuálního počítače Azure pomocí čítačů v části Diagnostika virtuálních počítačů a také diagnostiky účtu úložiště.
 
-Pro řešení potíží specifické pro virtuální počítač, můžete použít Perfinsights pro [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) nebo [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux), které by mohly pomoci analyzovat, který proces je hnací silou IO. 
+V rámci řešení potíží specifických pro virtuální počítače můžete použít Perfinsights pro [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) nebo [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux), což vám může přispět k analýze procesu, který řídí v/v. 
 
-Všimněte si, že nemáme čítače pro zónové redundantní a premium storage účty. V případě problémů souvisejících s těmito přepážky nastořte případ podpory.
+Všimněte si, že pro účty redundantní a Premium Storage pro zónu nejsou k dispozici čítače. V případě problémů souvisejících s těmito čítači můžete vyvolat případ podpory.
 
-### <a name="viewing-storage-account-diagnostics-in-monitoring"></a>Zobrazení diagnostiky účtu úložiště při monitorování
+### <a name="viewing-storage-account-diagnostics-in-monitoring"></a>Zobrazení diagnostiky účtu úložiště v monitorování
 
-Pokud chcete pracovat na níže uvedených položkách, přejděte do účtu úložiště pro virtuální počítač na portálu:
+Pokud chcete pracovat s níže uvedenými položkami, přečtěte si účet úložiště pro virtuální počítač na portálu:
 
 ![Zobrazení diagnostiky účtu úložiště v monitorování](media/troubleshoot-performance-virtual-machine-linux-windows/9-virtual-machine-storage-account.png)
 
@@ -172,84 +172,84 @@ Pokud chcete pracovat na níže uvedených položkách, přejděte do účtu úl
 3. Přidejte čítače popsané v následujících krocích.
 4. Uložte změny.
 
-### <a name="disk-observe-trends-standard-storage-only"></a>Sledování trendů disku (pouze standardní úložiště)
+### <a name="disk-observe-trends-standard-storage-only"></a>Trendy sledovat disk (jenom standardní úložiště)
 
-Pokud chcete identifikovat problémy s úložištěm, podívejte se na metriky výkonu z diagnostiky účtu úložiště a diagnostiky virtuálních zařízení.
+Pokud chcete identifikovat problémy s úložištěm, podívejte se na metriky výkonu z diagnostiky účtu úložiště a diagnostiku virtuálních počítačů.
 
-Pro každou kontrolu níže vyhledejte klíčové trendy, když k problémům dochází v časovém rozsahu problému.
+U každé následující kontroly hledejte klíčové trendy v době, kdy dojde k problémům v časovém rozsahu problému.
 
-#### <a name="check-azure-storage-availability--add-the-storage-account-metric-availability"></a>Kontrola dostupnosti úložiště Azure – přidejte metriku účtu úložiště: dostupnost
+#### <a name="check-azure-storage-availability--add-the-storage-account-metric-availability"></a>Ověření dostupnosti Azure Storage – přidání metriky účtu úložiště: dostupnost
 
-Pokud se zobrazí pokles dostupnosti, může být problém s platformou, zkontrolujte [stav Azure](https://azure.microsoft.com/status/). Pokud se zde nezobrazuje žádný problém, vznesete novou žádost o podporu.
+Pokud se vám zobrazí dostupnost při odkládacím programu, může se jednat o problém s platformou. Zkontrolujte [stav Azure](https://azure.microsoft.com/status/). Pokud zde není zobrazen žádný problém, vyvolejte novou žádost o podporu.
 
-#### <a name="check-for-azure-storage-timeout---add-the-storage-account-metrics"></a>Zkontrolujte časový čas úložiště Azure – přidejte metriky účtu úložiště:
+#### <a name="check-for-azure-storage-timeout---add-the-storage-account-metrics"></a>Zjistit časový limit Azure Storage – přidejte metriky účtu úložiště:
 
-* Chyba clientTimeOut
-* Chyba_časového_outu serveru
+* ClientTimeOutError
+* ServerTimeOutError
 * AverageE2ELatency
 * AverageServerLatency
 * TotalRequests
 
-Hodnoty v metrikách *TimeOutError označují, že operace vi trvalo příliš dlouho a časový čas. Práce na dalších krocích pomůže identifikovat potenciální příčiny.
+Hodnoty v metrikách * TimeOutError označují, že vstupně-výstupní operace trvaly příliš dlouho a vypršel časový limit. Při práci prostřednictvím dalších kroků vám pomůže identifikovat možné příčiny.
 
-AverageServerLatency zvyšuje současně na TimeOutErrors může být problém platformy. V této situaci vyvoláte novou žádost o podporu.
+Hodnotu averageserverlatency se zvyšuje ve stejnou dobu, kdy TimeOutErrors může představovat problém platformy. V této situaci vyvolat novou žádost o podporu.
 
-AverageE2ELatency představuje latenci klienta. Ověřte, jak jsou iOPS prováděny aplikací. Vyhledejte metriku zvýšení nebo neustále vysoké metriky TotalRequests. Tato metrika představuje iOPS. Pokud začínáte narazit na limity účtu úložiště nebo jednoho virtuálního pevného disku, latence může souviset s omezením.
+Hodnotu averagee2elatency představuje latenci klienta. Ověřte, jak aplikace provádí IOPS. Vyhledejte zvýšení nebo nepřetržitou TotalRequests metriku. Tato metrika představuje IOPS. Pokud začínáte s limity účtu úložiště nebo s jedním virtuálním pevným diskem, může latence souviset s omezením.
 
-#### <a name="check-for-azure-storage-throttling---add-the-storage-account-metrics-throttlingerror"></a>Kontrola omezení úložiště Azure – přidejte metriky účtu úložiště: Omezení Error
+#### <a name="check-for-azure-storage-throttling---add-the-storage-account-metrics-throttlingerror"></a>Ověřit omezení Azure Storage – přidejte metriky účtu úložiště: ThrottlingError
 
-Hodnoty pro omezení označuje, že jste omezeni na úrovni účtu úložiště, což znamená, že vaše dosažení limitu VOPS účtu. Můžete určit, zda jste dosažení prahové hodnoty iops kontrolou **metriky TotalRequests**.
+Hodnoty pro omezování signalizují, že budete omezovat na úrovni účtu úložiště, což znamená, že váš účet zasáhne limit IOPS. Zaškrtnutím metriky **TotalRequests**můžete zjistit, jestli jste nedosáhli prahové hodnoty IOPS.
 
-Všimněte si, že každý virtuální pevný disk má limit 500 VOPS nebo 60 MBits, ale je vázán kumulativní limit 20000 VOPS na účet úložiště.
+Všimněte si, že každý virtuální pevný disk má omezení 500 IOPS nebo 60 MBit, ale je vázaný na kumulativní limit 20000 IOPS na účet úložiště.
 
-Pomocí této metriky nelze zjistit, který objekt blob způsobuje omezení a které jsou ovlivněny. Však jsou však buď přístupů vstupně-výstupní chod nebo odchozí omezení účtu úložiště.
+Pomocí této metriky nemůžete zjistit, které objekty blob způsobují omezení a které jsou ovlivněny. Buď ale zasáhnete limity IOPS nebo příchozí/odchozí přenos dat účtu úložiště.
 
-Chcete-li zjistit, zda jste dosáhli limitu VOPS, přejděte do diagnostiky účtu úložiště a zkontrolujte TotalRequests, chcete-li zjistit, zda se blížíte 20 tisíc TotalRequests. Určete buď změnu vzoru, zda se vám limit zobrazuje poprvé, nebo zda k tomuto limitu dojde v určitou dobu.
+Pokud chcete zjistit, jestli jste nedosáhli limitu IOPS, přejděte do části Diagnostika účtu úložiště a podívejte se na TotalRequests, kde se můžete podívat, jestli se k 20000 TotalRequests dostanete. Identifikujte změnu ve vzoru bez ohledu na to, jestli se limit zobrazuje poprvé, nebo jestli tento limit nastane v určitou dobu.
 
-S novými nabídkami disků v rámci standardního úložiště se limity VOPS a propustnost mohou lišit, ale kumulativní limit účtu standardstorage je 20000 IOPS (úložiště Premium má různé limity na úrovni účtu nebo disku). Přečtěte si další informace o různých standardních nabídkách disků úložiště a omezeních na disk:
+S novými nabídkami disků v rámci standardního úložiště se limity IOPS a propustnosti můžou lišit, ale kumulativní limit standardního účtu úložiště je 20000 IOPS (Premium Storage má jiné limity na úrovni účtu nebo disku). Přečtěte si další informace o různých omezeních disků standardního úložiště a omezeních na disk:
 
-* [Škálovatelnost a výkon cíle pro disky virtuálních počítačů v systému Windows](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets).
+* [Škálovatelnost a výkonnostní cíle pro disky virtuálních počítačů ve Windows](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets).
 
 #### <a name="references"></a>Odkazy
 
-* [Škálovatelnost a výkonnostní cíle pro účty úložiště objektů blob stránky premium](../../storage/blobs/scalability-targets-premium-page-blobs.md)
+* [Škálovatelnost a výkonnostní cíle pro účty úložiště objektů blob stránky úrovně Premium](../../storage/blobs/scalability-targets-premium-page-blobs.md)
 
-Šířka pásma účtu úložiště se měří metriky účtu úložiště: TotalIngress a TotalEgress. Máte různé prahové hodnoty pro šířku pásma v závislosti na typu redundance a oblastech.
+Šířka pásma účtu úložiště se měří na základě metrik účtu úložiště: Totalbillablerequests a TotalEgress. V závislosti na typu redundance a oblastí máte jiné prahové hodnoty pro šířku pásma.
 
-* [Škálovatelnost a výkonnostní cíle pro účty standardního úložiště](../../storage/common/scalability-targets-standard-account.md)
+* [Škálovatelnost a výkonnostní cíle pro účty úložiště úrovně Standard](../../storage/common/scalability-targets-standard-account.md)
 
-Zkontrolujte TotalIngress a TotalEgress proti omezení příchozího přenosu dat a odchozího přenosu dat pro typ redundance účtu úložiště a oblast.
+Pro typ a oblast redundance účtu úložiště se podívejte na Totalbillablerequests a TotalEgress proti omezením příchozího a odchozího přenosu účtu úložiště.
 
-Zkontrolujte limity propustnost virtuálních disponiál připojených k virtuálnímu virtuálnímu virtuálnímu připojení. Přidejte disk čtení a zápis metrik virtuálních počítačů.
+Ověřte propustnost všech virtuálních pevných disků připojených k virtuálnímu počítači. Přidejte disk metriky virtuálního počítače čtení a zápis.
 
-Nové nabídky disků v rámci standardního úložiště mají různé vipony a limity propustnost (vi.služby nejsou vystaveny na VHD). Podívejte se na data a zjistěte, jestli se dostanete na limity kombinované propustnostMB virtuálních pevných disků na úrovni virtuálních počítačů pomocí čtení a zápisu na disku, a pak optimalizujte konfiguraci úložiště virtuálních počítačů tak, aby se škálovala za limity jednoho virtuálního pevného disku. Přečtěte si další informace o různých standardních nabídkách disků úložiště a omezeních na disk:
+Nové nabídky disků v rámci standardního úložiště mají jiný počet vstupně-výstupních operací za sekundu a propustnost (IOPS se nezveřejňují na virtuální pevný disk). Podívejte se na data, abyste viděli, jestli jste nedosáhli limitu celkové propustnosti disků VHD na úrovni virtuálních počítačů pomocí čtení a zápisu z disku, a pak Optimalizujte konfiguraci úložiště virtuálních počítačů tak, aby bylo možné škálovat minulé limity pro jedno virtuální pevné disky. Přečtěte si další informace o různých omezeních disků standardního úložiště a omezeních na disk:
 
-* [Škálovatelnost a výkon cíle pro disky virtuálních počítačů v systému Windows](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets).
+* [Škálovatelnost a výkonnostní cíle pro disky virtuálních počítačů ve Windows](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets).
 
-### <a name="high-disk-utilizationlatency-remediation"></a>Vysoká obnova disku/latence
+### <a name="high-disk-utilizationlatency-remediation"></a>Vysoké využití disku/náprava latence
 
-Snížení latence klienta a optimalizace iO virtuálních počítači pro škálování za limity virtuálního pevného disku
+Snížení latence klienta a optimalizace vstupně-výstupních operací virtuálního počítače pro škálování minulých limitů VHD
 
-* [Optimalizace iO pro Windows v Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-performance-best-practices/)
+* [Optimalizace vstupně-výstupních operací pro Windows v Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-performance-best-practices/)
 
-* [Optimalizace IO pro Linux v Azure](https://blogs.msdn.microsoft.com/igorpag/2014/10/23/azure-storage-secrets-and-linux-io-optimizations/)
+* [Optimalizace vstupně-výstupních operací pro Linux v Azure](https://blogs.msdn.microsoft.com/igorpag/2014/10/23/azure-storage-secrets-and-linux-io-optimizations/)
 
-#### <a name="reduce-throttling"></a>Snížení omezení
+#### <a name="reduce-throttling"></a>Omezení omezování
 
-Pokud se dosáhne horní limity účtů úložiště, znovu vyvažte virtuální disky mezi účty úložiště. Podívejte se na [cíle škálovatelnosti úložiště Azure a výkonu](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/).
+Pokud jste dosáhli horních limitů účtů úložiště, znovu vyvážit virtuální pevné disky mezi účty úložiště. Přečtěte si [Azure Storage škálovatelnost a výkonnostní cíle](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/).
 
 ### <a name="increase-throughput-and-reduce-latency"></a>Zvýšení propustnosti a snížení latence
 
-Pokud máte aplikaci citlivou na latenci a vyžadujete vysokou propustnost, migrujte virtuální počítače do úložiště Azure Premium pomocí virtuálního počítače řady DS a GS.
+Pokud máte aplikaci citlivou na latenci a potřebujete vysokou propustnost, migrujte virtuální pevné disky do Azure Premium Storage pomocí virtuálního počítače DS a GS Series.
 
 Tyto články popisují konkrétní scénáře:
 
 * [Migrace na Azure Premium Storage](https://azure.microsoft.com/documentation/articles/storage-migration-to-premium-storage/)
 
-* [Použití úložiště Azure Premium se serverem SQL Server](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-use-premium-storage/)
+* [Použití Azure Premium Storage s SQL Server](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-use-premium-storage/)
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud potřebujete další pomoc v libovolném bodě v tomto článku, obraťte se na odborníky Azure na [Fóra MSDN Azure a přetečení zásobníku](https://azure.microsoft.com/support/forums/).
+Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, obraťte se na odborníky na Azure na [webu MSDN Azure a Stack Overflow fórech](https://azure.microsoft.com/support/forums/).
 
-Případně můžete podat incident podpory Azure. Přejděte na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte Získat **podporu**.
+Případně můžete také zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.

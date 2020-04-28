@@ -1,39 +1,39 @@
 ---
 title: Diagnostika reverzního proxy serveru Azure Service Fabric
-description: Zjistěte, jak monitorovat a diagnostikovat zpracování požadavků na reverzním proxy serveru pro aplikaci Azure Service Fabric.
+description: Naučte se monitorovat a diagnostikovat zpracování požadavků na reverzním proxy serveru pro aplikaci Azure Service Fabric.
 author: kavyako
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: kavyako
 ms.openlocfilehash: bbc1fe5a76ecb5720bc49e0a082d5e9151b403d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75645459"
 ---
 # <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>Monitorování a diagnostika zpracování požadavků na reverzním proxy serveru
 
-Počínaje verzí 5.7 Service Fabric, reverzní proxy události jsou k dispozici pro sběr. Události jsou k dispozici ve dvou kanálech, jeden s pouze chybové události související s požadavek zpracování selhání na reverzní proxy a druhý kanál obsahující podrobné události s položkami pro úspěšné i neúspěšné požadavky.
+Od verze 5,7 Service Fabric jsou pro kolekci k dispozici události reverzního proxy serveru. Události jsou k dispozici ve dvou kanálech, jednu s chybovými událostmi, které souvisí s chybou zpracování žádostí na reverzním proxy serveru a druhým kanálem obsahujícím podrobné události s položkami pro úspěšné i neúspěšné požadavky.
 
-Odkazovat [na shromažďovat reverzní proxy události](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations) povolit shromažďování událostí z těchto kanálů v místních clusterech a Azure Service Fabric.
+Podívejte se na téma [shromáždění událostí reverzního proxy](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations) a umožněte shromažďování událostí z těchto kanálů v místních a Service Fabricch clusterech Azure.
 
-## <a name="troubleshoot-using-diagnostics-logs"></a>Poradce při potížích s použitím protokolů diagnostiky
-Zde je několik příkladů, jak interpretovat běžné protokoly selhání, které lze setkat:
+## <a name="troubleshoot-using-diagnostics-logs"></a>Řešení potíží pomocí diagnostických protokolů
+Tady je několik příkladů, jak interpretovat běžné protokoly selhání, ke kterým může dojít:
 
-1. Reverzní proxy vrátí stavový kód odpovědi 504 (Časový čas).
+1. Reverzní proxy server vrátí stavový kód odpovědi 504 (časový limit).
 
-    Jedním z důvodů může být způsobeno tím, že služba neodpověděla v rámci časového lhůty požadavku.
-   První událost níže zaznamenává podrobnosti o požadavku přijatém na reverzní proxy server. 
-   Druhá událost označuje, že požadavek se nezdařil při předávání služby z důvodu "vnitřní chyba = ERROR_WINHTTP_TIMEOUT" 
+    Důvodem může být to, že se služba nedaří odpovědět v časovém limitu žádosti.
+   První událost níže zaznamená Podrobnosti žádosti přijaté na reverzním proxy serveru. 
+   Druhá událost indikuje, že se požadavek při přeposílání do služby nezdařil, protože došlo k vnitřní chybě = ERROR_WINHTTP_TIMEOUT. 
 
-    Datová část zahrnuje:
+    Datová část obsahuje:
 
-   * **traceId**: Tento identifikátor GUID lze použít ke korelaci všech událostí odpovídajících jednomu požadavku. V níže dvě události traceId = **2f87b722-e254-4ac2-a802-fd315c1a0271**, což znamená, že patří do stejné ho požadavku.
-   * **requestUrl**: Adresa URL (Reverzní adresa URL proxy), na kterou byl požadavek odeslán.
-   * **sloveso**: HTTP sloveso.
-   * **remoteAddress**: Adresa klienta odesílajícího požadavek.
-   * **resolvedServiceUrl**: Adresa URL koncového bodu služby, na kterou byl příchozí požadavek vyřešen. 
+   * **traceId**: Tento identifikátor GUID lze použít ke korelaci všech událostí odpovídajících jednomu požadavku. V níže uvedených dvou událostech traceId = **2f87b722-e254-4ac2-A802-fd315c1a0271**, což předpokládá, že patří ke stejné žádosti.
+   * **requestUrl**: adresa URL (reverzní proxy adresa URL), na kterou se odeslal požadavek.
+   * **příkaz**: příkaz HTTP.
+   * **remoteAddress**: adresa klienta odesílajícího požadavek.
+   * **resolvedServiceUrl**: adresa URL koncového bodu služby, na kterou byl příchozí požadavek vyřešen. 
    * **errorDetails**: Další informace o selhání.
 
      ```
@@ -73,12 +73,12 @@ Zde je několik příkladů, jak interpretovat běžné protokoly selhání, kte
      }
      ```
 
-2. Reverzní proxy vrátí stavový kód odpovědi 404 (nebyl nalezen). 
+2. Reverzní proxy server vrátí stavový kód odpovědi 404 (Nenalezeno). 
     
-    Zde je příklad události, kde reverzní proxy vrátí 404, protože se nepodařilo najít koncový bod odpovídající služby.
-    Užitečné položky zatížení jsou zde:
-   * **processRequestPhase**: Označuje fázi během zpracování požadavku, když došlo k ***chybě, TryGetEndpoint*** tj. při pokusu o načtení koncového bodu služby dopředu. 
-   * **errorDetails**: Uvádí kritéria vyhledávání koncových bodů. Zde můžete vidět, že listenerName zadaný = **FrontEndListener** vzhledem k tomu, že seznam koncovýbod repliky obsahuje pouze naslouchací proces s názvem **OldListener**.
+    Tady je příklad události, kde reverzní proxy vrátí 404, protože se nepovedlo najít odpovídajícího koncového bodu služby.
+    Zde jsou datové položky, které vás zajímají:
+   * **processRequestPhase**: Určuje fázi během zpracování žádosti, když došlo k chybě, ***TryGetEndpoint*** , tj. Při pokusu o načtení koncového bodu služby pro přeposílání. 
+   * **errorDetails**: vypíše kritéria hledání koncových bodů. Tady vidíte **, že seznam** koncových bodů repliky obsahuje jenom naslouchací proces s názvem **OldListener**.
     
      ```
      {
@@ -96,16 +96,16 @@ Zde je několik příkladů, jak interpretovat běžné protokoly selhání, kte
      }
      }
      ```
-     Dalším příkladem, kde reverzní proxy může vrátit 404 Not Found je: ApplicationGateway\Http konfigurační parametr **SecureOnlyMode** je nastavena na true s reverzní proxy naslouchání na **HTTPS**, ale všechny koncové body repliky jsou nezabezpečené (naslouchání na HTTP).
-     Reverzní proxy vrátí 404, protože nemůže najít koncový bod naslouchání na HTTPS předat požadavek. Analýza parametrů v datové části události pomáhá zúžit problém:
+     Další příklad, kdy může reverzní proxy vracet hodnotu 404, je: parametr konfigurace ApplicationGateway\Http **SecureOnlyMode** je nastaven na true s reverzním proxy serverem naslouchání na **https**, ale všechny koncové body repliky nejsou zabezpečené (naslouchá na http).
+     Reverzní proxy vrátí 404, protože nemůže najít koncový bod, který naslouchá na HTTPS, aby předal požadavek. Analýza parametrů v datové části události pomáhá zúžit problém:
     
      ```
       "errorDetails": "SecureOnlyMode = true, gateway protocol = https, listenerName = NewListener, replica endpoint = {\"Endpoints\":{\"OldListener\":\"Http:\/\/localhost:8491\/LocationApp\/\", \"NewListener\":\"Http:\/\/localhost:8492\/LocationApp\/\"}}"
      ```
 
-3. Požadavek na reverzní proxy server se nezdaří s chybou časového výpadku. 
-    Protokoly událostí obsahují událost s podrobnostmi o přijatém požadavku (není zde zobrazeno).
-    Další událost ukazuje, že služba odpověděla stavovým kódem 404 a reverzní proxy iniciuje opětovné vyřešení. 
+3. Požadavek na reverzní proxy se nezdařil s chybou vypršení časového limitu. 
+    Protokoly událostí obsahují událost s podrobnostmi o přijatém požadavku (tady není zobrazený).
+    Další událost ukazuje, že služba odpověděla stavovým kódem 404 a reverzní proxy iniciuje opakované přeložení. 
 
     ```
     {
@@ -126,11 +126,11 @@ Zde je několik příkladů, jak interpretovat běžné protokoly selhání, kte
       }
     }
     ```
-    Při shromažďování všech událostí se zobrazí vlak událostí zobrazujících každý pokus o odhodlání a předání dál.
-    Poslední událost v řadě ukazuje, že zpracování požadavku se nezdařilo s časovým limitem spolu s počtem úspěšných pokusů o vyřešení.
+    Při shromažďování všech událostí se zobrazí vlak událostí se všemi řešeními a dalším pokusem.
+    Poslední událost v řadě ukazuje zpracování žádosti se nezdařila s časovým limitem, a to spolu s počtem úspěšných pokusů o vyřešení.
     
     > [!NOTE]
-    > Doporučujeme zachovat kolekci podrobných událostí kanálu ve výchozím nastavení a povolit ji pro řešení potíží na základě potřeby.
+    > Doporučuje se ve výchozím nastavení zakázat shromažďování událostí podrobného kanálu a povolit ho pro řešení potíží podle potřeby.
 
     ```
     {
@@ -149,13 +149,13 @@ Zde je několik příkladů, jak interpretovat běžné protokoly selhání, kte
     }
     ```
     
-    Pokud je kolekce povolena pouze pro kritické/chybové události, zobrazí se jedna událost s podrobnostmi o časovém odpočtu a počtu pokusů o vyřešení. 
+    Pokud je povolená kolekce jenom pro události kritické/chyby, zobrazí se jedna událost s podrobnostmi o časovém limitu a počtu pokusů o vyřešení. 
     
-    Služby, které mají v úmyslu odeslat stavový kód 404 zpět uživateli, by měl přidat hlavičku "X-ServiceFabric" v odpovědi. Po přidání záhlaví do odpovědi obrátí proxy server zpět stavový kód zpět klientovi.  
+    Služby, které hodlají odeslat stavový kód 404 zpět uživateli, by měly v odpovědi přidat hlavičku "X-ServiceFabric". Po přidání hlavičky do odpovědi přesměruje proxy kód stavu zpět do klienta.  
 
 4. Případy, kdy klient odpojil požadavek.
 
-    Následující událost je zaznamenána při zpětném proxy serveru předává odpověď klientovi, ale klient se odpojí:
+    Pokud reverzní proxy předává odpověď klientovi, ale klient se odpojí, je zaznamenána následující událost:
 
     ```
     {
@@ -175,22 +175,22 @@ Zde je několik příkladů, jak interpretovat běžné protokoly selhání, kte
     ```
 5. Reverzní proxy vrátí 404 FABRIC_E_SERVICE_DOES_NOT_EXIST
 
-    FABRIC_E_SERVICE_DOES_NOT_EXIST chyba je vrácena, pokud schéma URI není zadáno pro koncový bod služby v manifestu služby.
+    Pokud není zadáno schéma identifikátoru URI pro koncový bod služby v manifestu služby, je vrácena FABRIC_E_SERVICE_DOES_NOT_EXIST chyba.
 
     ```
     <Endpoint Name="ServiceEndpointHttp" Port="80" Protocol="http" Type="Input"/>
     ```
 
-    Chcete-li problém vyřešit, zadejte schéma URI v manifestu.
+    Chcete-li tento problém vyřešit, zadejte v manifestu schéma identifikátoru URI.
     ```
     <Endpoint Name="ServiceEndpointHttp" UriScheme="http" Port="80" Protocol="http" Type="Input"/>
     ```
 
 > [!NOTE]
-> Události související se zpracováním požadavků na websocket nejsou aktuálně protokolovány. To bude přidáno v další verzi.
+> Události související s zpracováním požadavků WebSocket se momentálně neprotokolují. Tato akce bude přidána v příští verzi.
 
 ## <a name="next-steps"></a>Další kroky
-* [Agregace a shromažďování událostí pomocí diagnostiky Windows Azure](service-fabric-diagnostics-event-aggregation-wad.md) pro povolení shromažďování protokolů v clusterech Azure.
-* Informace o zobrazení událostí Service Fabric v sadě Visual Studio naleznete v [tématu Monitorování a místní diagnostika](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md).
-* Viz [Konfigurace reverzního proxy serveru pro připojení k zabezpečeným službám](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample#configure-reverse-proxy-to-connect-to-secure-services) pro ukázky šablon Azure Resource Manager u ke konfiguraci zabezpečeného reverzního proxy serveru s různými možnostmi ověření certifikátu služby.
-* Přečtěte si [service fabric reverzní proxy](service-fabric-reverseproxy.md) se dozvíte více.
+* [Agregace a shromažďování událostí pomocí Azure Diagnostics Windows](service-fabric-diagnostics-event-aggregation-wad.md) pro povolení shromažďování protokolů v clusterech Azure.
+* Postup zobrazení Service Fabricch událostí v aplikaci Visual Studio naleznete v tématu [monitorování a diagnostika místně](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md).
+* V tématu [Konfigurace reverzního proxy serveru pro připojení k zabezpečeným službám](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample#configure-reverse-proxy-to-connect-to-secure-services) pro Azure Resource Manager ukázkové šablony pro konfiguraci zabezpečeného reverzního proxy serveru pomocí různých možností ověřování certifikátů služby.
+* Další informace najdete [Service Fabric reverzní proxy serveru](service-fabric-reverseproxy.md) .

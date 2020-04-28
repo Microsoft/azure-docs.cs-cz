@@ -1,6 +1,6 @@
 ---
-title: Analytika pomocí U-SQL na Azure Data Lake – proces vědecké analýzy týmových dat
-description: Příklady, které procházejí pomocí U-SQL na Azure Data Lake k prediktivní analýze.
+title: Analýza s využitím U-SQL v Azure Data Lakem procesu vědeckého zpracování dat v týmu
+description: Příklady, které vás provedou použitím jazyka U-SQL v Azure Data Lake k provádění prediktivní analýzy.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,26 +12,26 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 2e5eb0acd2a94f7726fbacefbe6e1022c8cebae2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75864175"
 ---
-# <a name="azure-data-lake-data-science-walkthroughs-using-u-sql"></a>Datové datové vědecké návody Azure Data Lake pomocí U-SQL
+# <a name="azure-data-lake-data-science-walkthroughs-using-u-sql"></a>Azure Data Lake návody pro datové vědy pomocí U-SQL
 
-Tyto návody používají U-SQL s Azure Data Lake k prediktivní analýze. Postupujte podle kroků uvedených v procesu vědecké vědy o týmových datech. Přehled procesu vědecké ho spoje týmových dat naleznete v tématu [Proces datové vědy](overview.md). Úvod do Azure Data Lake najdete v [tématu Přehled Azure Data Lake Store](../../data-lake-store/data-lake-store-overview.md).
+Tyto návody využívají U-SQL s Azure Data Lake k provádění prediktivní analýzy. Postupuje podle kroků popsaných v rámci vědeckého procesu týmového zpracování dat. Přehled vědeckého zpracování týmových dat najdete v tématu věnovaném [zpracování datových věd](overview.md). Úvod do Azure Data Lake najdete v tématu [přehled Azure Data Lake Store](../../data-lake-store/data-lake-store-overview.md).
 
-Další datové vědy návody, které provádějí proces vědecké správy týmových dat jsou seskupeny podle **platformy,** které používají. Viz [návody provádění procesu vědecké ho týmových dat](walkthroughs.md) pro rozepsání těchto příkladů.
+Další návody pro datové vědy, které spouštějí vědecké zpracování týmových dat, jsou seskupeny podle **platformy** , kterou používají. Projděte si [návody, které spouštějí vědecký procesní tým](walkthroughs.md) pro vydaný rozpis těchto příkladů.
 
 
-## <a name="predict-taxi-tips-using-u-sql-with-azure-data-lake"></a>Předvídejte tipy pro taxi pomocí U-SQL s Azure Data Lake
+## <a name="predict-taxi-tips-using-u-sql-with-azure-data-lake"></a>Předpověď tipů taxislužby pomocí jazyka U-SQL s Azure Data Lake
 
-[Návod použít Azure Data Lake pro datové vědy](data-lake-walkthrough.md) ukazuje, jak používat Azure Data Lake k úkolům průzkumu dat a binární klasifikaci.  Data jsou ukázkou datové sady taxi služby NYC.  Úkolem je předpovídat, zda je tip placen zákazníkem. 
+Návod [použít Azure Data Lake pro datovou vědu](data-lake-walkthrough.md) ukazuje, jak používat Azure Data Lake k provádění úloh zkoumání a binární klasifikace dat.  Data představují ukázku datové sady taxislužby NYC.  Úkol je předpověď bez ohledu na to, jestli je nějakým zákazníkem placený Tip. 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Přehled procesu vědecké ho svědecké hospo- procesu týmových dat najdete v [tématu Přehled vědeckého procesu týmových dat](overview.md).
+Přehled vědeckého zpracování týmových dat najdete v tématu [Přehled procesu vědeckého zpracování](overview.md)týmových dat.
 
-Pro diskusi o životní cyklus procesu vědecké ho spoje v oblasti týmových dat, najdete [v tématu Team Data Science Process lifecycle](lifecycle.md). Tento životní cyklus popisuje kroky, které projekty obvykle postupují při jejich provádění. 
+Diskuzi o životním cyklu vědeckého zpracování týmových dat najdete v tématu [životní cyklus procesu vědeckého zpracování dat týmu](lifecycle.md). Tento životní cyklus popisuje kroky, které projekty obvykle následují při jejich spuštění. 

@@ -1,6 +1,6 @@
 ---
-title: Problémy s restartováním nebo opětovnou sazí virtuálního počítače v Azure | Dokumenty společnosti Microsoft
-description: Poradce při potížích s nasazením Správce prostředků při restartování nebo opětovném nastavení velikosti existujícího virtuálního počítače v Azure
+title: Restartování virtuálního počítače nebo změna velikosti problémů v Azure | Microsoft Docs
+description: Řešení potíží s nasazením Správce prostředků problémy s restartováním nebo změnou velikosti stávajícího virtuálního počítače v Azure
 services: virtual-machines
 documentationcenter: ''
 author: Deland-Han
@@ -14,53 +14,53 @@ ms.date: 06/15/2018
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a6532558107463311c4225b9855bc4cd3f19eed9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75965612"
 ---
 # <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-windows-vm-in-azure"></a>Řešení potíží s nasazením při restartování nebo změně velikosti stávajícího virtuálního počítače s Windows v Azure
-Při pokusu o spuštění zastaveného virtuálního počítače (VM) nebo změnit velikost existujícího virtuálního počítače Azure, běžné chyby, se kterými se setkáte, je selhání přidělení. Tato chyba se stane, když cluster nebo oblast nemá k dispozici prostředky nebo nemůže podporovat požadovanou velikost virtuálního počítače.
+Při pokusu o spuštění zastaveného virtuálního počítače Azure nebo změně velikosti stávajícího virtuálního počítače Azure se běžně narazí na chybu přidělení. K této chybě dojde, když v clusteru nebo oblasti nejsou k dispozici prostředky nebo pokud není podporována požadovaná velikost virtuálního počítače.
 
 [!INCLUDE [support-disclaimer](../../../includes/support-disclaimer.md)]
 
-## <a name="collect-activity-logs"></a>Shromažďovat protokoly aktivit
-Chcete-li spustit řešení potíží, shromažďovat protokoly aktivit k identifikaci chyby spojené s problémem. Následující odkazy obsahují podrobné informace o procesu:
+## <a name="collect-activity-logs"></a>Shromažďování protokolů aktivit
+Pokud chcete začít řešit potíže, Shromážděte protokoly aktivit a Identifikujte chybu spojenou s problémem. Následující odkazy obsahují podrobné informace o procesu:
 
 [Zobrazení operací nasazení](../../azure-resource-manager/templates/deployment-history.md)
 
 [Zobrazení protokolů aktivit pro správu prostředků Azure](../../resource-group-audit.md)
 
 ## <a name="issue-error-when-starting-a-stopped-vm"></a>Problém: Chyba při spuštění zastaveného virtuálního počítače
-Pokusíte se spustit zastavený virtuální ms, ale získat selhání přidělení.
+Pokusíte se spustit zastavený virtuální počítač, ale získáte selhání přidělení.
 
 ### <a name="cause"></a>Příčina
-Požadavek na spuštění zastaveného virtuálního aplikace musí být pokus v původním clusteru, který je hostitelem cloudové služby. Cluster však nemá volné místo k dispozici pro splnění požadavku.
+Žádost o spuštění zastaveného virtuálního počítače se musí provést v původním clusteru, který hostuje cloudovou službu. Cluster ale nemá k dispozici volné místo ke splnění požadavku.
 
 ### <a name="resolution"></a>Řešení
-* Zastavte všechny virtuální počítače v sadě dostupnosti a restartujte každý virtuální počítač.
+* Zastavte všechny virtuální počítače ve skupině dostupnosti a pak restartujte všechny virtuální počítače.
   
-  1. Klikněte na **skupiny** > prostředků*skupiny* > **prostředků Zdroje,** > *vaši dostupnost nastavit* > **virtuální počítače** > *virtuální počítač* > **zastavit**.
-  2. Po zastavení všech virtuálních disek vyberte každý z zastavených virtuálních ms a klikněte na Start.
+  1. Klikněte **na skupiny** > *prostředků vaše skupina* > prostředků**prostředky** > *vaše sada* > dostupnosti**Virtual Machines** > **zastavíte***virtuální počítač* > .
+  2. Po zastavení všech virtuálních počítačů vyberte všechny zastavené virtuální počítače a klikněte na spustit.
 * Opakujte požadavek na restartování později.
 
 ## <a name="issue-error-when-resizing-an-existing-vm"></a>Problém: Chyba při změně velikosti existujícího virtuálního počítače
-Pokusíte se změnit velikost existujícího virtuálního počítače, ale získat selhání přidělení.
+Pokusíte se změnit velikost existujícího virtuálního počítače, ale získáte selhání přidělení.
 
 ### <a name="cause"></a>Příčina
-Požadavek na změny velikosti virtuálního počítače musí být pokus v původním clusteru, který je hostitelem cloudové služby. Cluster však nepodporuje požadovanou velikost virtuálního počítače.
+Žádost o změnu velikosti virtuálního počítače se musí provést v původním clusteru, který hostuje cloudovou službu. Cluster ale nepodporuje požadovanou velikost virtuálního počítače.
 
 ### <a name="resolution"></a>Řešení
-* Opakujte požadavek pomocí menší velikosti virtuálního počítače.
-* Pokud velikost požadovaného virtuálního počítače nelze změnit:
+* Opakujte požadavek s menší velikostí virtuálního počítače.
+* Pokud velikost požadovaného virtuálního počítače nejde změnit:
   
-  1. Zastavte všechny virtuální ho disponibilní služby v sadě dostupnosti.
+  1. Zastavte všechny virtuální počítače ve skupině dostupnosti.
      
-     * Klikněte na **skupiny** > prostředků*skupiny* > **prostředků Zdroje,** > *vaši dostupnost nastavit* > **virtuální počítače** > *virtuální počítač* > **zastavit**.
-  2. Po zastavení všech virtuálních počítače změňte velikost požadovaného virtuálního počítače na větší velikost.
-  3. Vyberte velikost virtuálního virtuálního virtuálního ms a klikněte na **Start**a spusťte každý zastavený virtuální ms.
+     * Klikněte **na skupiny** > *prostředků vaše skupina* > prostředků**prostředky** > *vaše sada* > dostupnosti**Virtual Machines** > **zastavíte***virtuální počítač* > .
+  2. Až se všechny virtuální počítače zastaví, změňte velikost požadovaného virtuálního počítače na větší velikost.
+  3. Vyberte virtuální počítač se změněnou velikostí a klikněte na **Spustit**a potom spusťte všechny zastavené virtuální počítače.
 
 ## <a name="next-steps"></a>Další kroky
-Pokud při vytváření nového virtuálního počítače s Windows v Azure narazíte na problémy, [přečtěte si článek Řešení problémů s nasazením při vytváření nového virtuálního počítače s Windows v Azure](../windows/troubleshoot-deployment-new-vm.md).
+Pokud narazíte na problémy při vytváření nového virtuálního počítače s Windows v Azure, přečtěte si téma řešení potíží s [nasazením při vytváření nového virtuálního počítače s Windows v Azure](../windows/troubleshoot-deployment-new-vm.md).
 

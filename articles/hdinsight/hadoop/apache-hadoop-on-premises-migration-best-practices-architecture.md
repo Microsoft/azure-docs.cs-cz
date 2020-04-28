@@ -1,6 +1,6 @@
 ---
-title: 'Architektura: Místní Apache Hadoop do Azure HDInsight'
-description: Naučte se osvědčené postupy architektury pro migraci místních clusterů Hadoop do Azure HDInsight.
+title: 'Architektura: místní Apache Hadoop do Azure HDInsight'
+description: Naučte se osvědčené postupy pro migraci místních clusterů Hadoop do Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: ashishth
@@ -9,117 +9,117 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 2d0d5bb871612bc5e16a26eb49808c39661ffb50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75934694"
 ---
-# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Migrace místních clusterů Apache Hadoop do Azure HDInsight – osvědčené postupy architektury
+# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Migrace místních Apache Hadoop clusterů do Azure HDInsight – osvědčené postupy pro architekturu
 
-Tento článek obsahuje doporučení pro architekturu systémů Azure HDInsight. Je součástí řady, která poskytuje osvědčené postupy, které vám pomohou s migrací místních systémů Apache Hadoop do Azure HDInsight.
+Tento článek obsahuje doporučení pro architekturu systémů Azure HDInsight. Je součástí série, která poskytuje osvědčené postupy, které vám pomůžou s migrací místních Apache Hadoop systémů do Azure HDInsight.
 
 ## <a name="use-multiple-workload-optimized-clusters"></a>Použití více clusterů optimalizovaných pro úlohy
 
-Mnoho místních nasazení Apache Hadoop se skládá z jednoho velkého clusteru, který podporuje mnoho úloh. Tento jediný cluster může být složitý a může vyžadovat kompromisy pro jednotlivé služby, aby vše fungovalo společně. Migrace místních clusterů Hadoop do Azure HDInsight vyžaduje změnu přístupu.
+Mnoho místních Apache Hadoop nasazení se skládá z jednoho velkého clusteru, který podporuje mnoho úloh. Tento samostatný cluster může být složitý a může vyžadovat ohrožení jednotlivých služeb, aby všechno spolupracovalo. Migrace místních clusterů Hadoop do Azure HDInsight vyžaduje změnu v přístupu.
 
-Clustery Azure HDInsight jsou navržené pro konkrétní typ výpočetního využití. Vzhledem k tomu, že úložiště lze sdílet ve více clusterech, je možné vytvořit více výpočetních clusterů optimalizovaných pro úlohy, aby vyhovovaly potřebám různých úloh. Každý typ clusteru má optimální konfiguraci pro konkrétní úlohu. V následující tabulce jsou uvedeny podporované typy clusterů v HDInsight a odpovídající úlohy.
+Clustery Azure HDInsight jsou navržené pro konkrétní typ výpočetního využití. Vzhledem k tomu, že úložiště je možné sdílet mezi několika clustery, je možné vytvořit několik výpočetních clusterů optimalizovaných pro úlohy, které budou vyhovovat potřebám různých úloh. Každý typ clusteru má optimální konfiguraci pro konkrétní úlohu. Následující tabulka uvádí podporované typy clusterů ve službě HDInsight a příslušné úlohy.
 
 |Úloha|Typ clusteru HDInsight|
 |---|---|
-|Dávkové zpracování (ETL / ELT)|Hadoop, Jiskra|
+|Dávkové zpracování (ETL/ELT)|Hadoop, Spark|
 |Datové sklady|Hadoop, Spark, interaktivní dotaz|
-|IoT / Streamování|Kafka, Bouře, Jiskra|
-|Transakční zpracování NoSQL|HBase|
+|IoT/streamování|Kafka, vyplavení, Spark|
+|Zpracování transakcí NoSQL|HBase|
 |Interaktivní a rychlejší dotazy s ukládáním do mezipaměti v paměti|Interaktivní dotaz|
-|Datová věda|ML Služby, Jiskra|
+|Vědecké zpracování dat|Služby ML, Spark|
 
 V následující tabulce jsou uvedeny různé metody, které lze použít k vytvoření clusteru HDInsight.
 
-|Nástroj|Na základě prohlížeče|Příkazový řádek|REST API|Sada SDK|
+|Nástroj|Založené na prohlížeči|Příkazový řádek|REST API|Sada SDK|
 |---|---|---|---|---|
-|[Portál Azure](../hdinsight-hadoop-create-linux-clusters-portal.md)|×||||
+|[portál Azure](../hdinsight-hadoop-create-linux-clusters-portal.md)|×||||
 |[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|×|×|×|×|
-|[Příkaz cli Azure (ver.1.0)](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||×|||
+|[Rozhraní příkazového řádku Azure (ver 1,0)](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||×|||
 |[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||×|||
-|[Curl](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||×|×||
-|[Sada SDK rozhraní .NET](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)||||×|
+|[cURL](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||×|×||
+|[.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)||||×|
 |[Python SDK](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python)||||×|
 |[Java SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable)||||×|
 |[Šablony Azure Resource Manageru](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)||×|||
 
-Další informace naleznete v článku [Typy clusterů v HDInsight](../hadoop/apache-hadoop-introduction.md).
+Další informace najdete v článku [typy clusterů ve službě HDInsight](../hadoop/apache-hadoop-introduction.md).
 
 ## <a name="use-transient-on-demand-clusters"></a>Použití přechodných clusterů na vyžádání
 
-Clustery HDInsight mohou být delší dobu nepoužívané. Aby se ušetřily náklady na prostředky, podporuje HDInsight přechodné clustery na vyžádání, které lze odstranit po úspěšném dokončení úlohy.
+Clustery HDInsight se po dlouhou dobu nepoužívá. V zájmu úspory nákladů na prostředky podporuje služba HDInsight přechodný clustery na vyžádání, které je možné po úspěšném dokončení úlohy odstranit.
 
-Když odstraníte cluster, přidružený účet úložiště a externí metadata se neodeberou. Cluster lze později znovu vytvořit pomocí stejných účtů úložiště a meta-úložišť.
+Když odstraníte cluster, přidružený účet úložiště a externí metadata se neodeberou. Cluster se dá později znovu vytvořit pomocí stejných účtů úložiště a meta úložišť.
 
-Azure Data Factory se dá naplánovat vytváření clusterů HDInsight na vyžádání. Další informace najdete v článku [Vytvoření clusterů Apache Hadoop na vyžádání v HDInsight pomocí Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md).
+Azure Data Factory můžete použít k plánování vytváření clusterů HDInsight na vyžádání. Další informace najdete v článku [Vytvoření clusterů Apache Hadoop na vyžádání v HDInsight pomocí Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md).
 
-## <a name="decouple-storage-from-compute"></a>Oddělení úložiště od výpočetních prostředků
+## <a name="decouple-storage-from-compute"></a>Oddělit úložiště od výpočetní služby
 
-Typická místní nasazení Hadoopu používají stejnou sadu počítačů pro ukládání a zpracování dat. Vzhledem k tomu, že jsou colocated, výpočetní prostředky a úložiště musí být škálovány společně.
+Typická místní nasazení Hadoop používají stejnou sadu počítačů pro ukládání a zpracování dat. Vzhledem k tomu, že se společně nacházejí, výpočetní prostředky a úložiště musí být škálované dohromady.
 
-V clusterech HDInsight nemusí být úložiště společné a může být buď v úložišti Azure, Azure Data Lake Storage nebo obojím. Oddělení úložiště od výpočetních prostředků má následující výhody:
+V clusterech HDInsight nemusí být úložiště společně umístěno s výpočetními prostředky a může být buď v Azure Storage, Azure Data Lake Storage nebo obojí. Odpojujení úložiště od výpočetní služby má následující výhody:
 
-- Sdílení dat mezi clustery.
+- Sdílení dat napříč clustery.
 - Použití přechodných clusterů, protože data nejsou závislá na clusteru.
-- Nižší náklady na úložiště.
-- Škálování úložiště a výpočetní zvlášť.
-- Replikace dat napříč oblastmi.
+- Snížení nákladů na úložiště.
+- Škálování úložiště a výpočetních prostředků odděleně.
+- Replikace dat mezi oblastmi.
 
-Výpočetní clustery se vytvářejí v blízkosti prostředků účtu úložiště v oblasti Azure, aby se zmírnily náklady na výkon oddělení výpočetních prostředků a úložiště. Vysokorychlostní sítě efektivní pro výpočetní uzly pro přístup k datům v úložišti Azure.
+Výpočetní clustery jsou vytvořeny blízko prostředků účtu úložiště v oblasti Azure, čímž se sníží náklady na výkon oddělení výpočetní kapacity a úložiště. Vysokorychlostní sítě umožňují výpočetním uzlům efektivní přístup k datům ve službě Azure Storage.
 
 ## <a name="use-external-metadata-stores"></a>Použití externích úložišť metadat
 
-Existují dva hlavní metastores, které pracují s HDInsight clustery: [Apache Hive](https://hive.apache.org/) a [Apache Oozie](https://oozie.apache.org/). Metastore Hive je centrální úložiště schématu, které lze použít v motorech pro zpracování dat včetně Hadoop, Spark, LLAP, Presto a Apache Pig. Metastore Oozie ukládá podrobnosti o plánování a stavu probíhajících a dokončených úloh Hadoop.
+Existují dva hlavní metaúložiště, které pracují s clustery HDInsight: [Apache Hive](https://hive.apache.org/) a [Apache Oozie](https://oozie.apache.org/). Metastore Hive je centrální úložiště schémat, které mohou používat moduly pro zpracování dat, včetně Hadoop, Spark, LLAP, presto a Apache prasete. Oozie metastore ukládá údaje o plánování a stavu probíhajících a dokončených úloh Hadoop.
 
-HDInsight používá Azure SQL Database pro metaobchody Hive a Oozie. Metastore lze v clusterech HDInsight nastavit dvěma způsoby:
+HDInsight používá Azure SQL Database pro podregistr a Oozie metaúložiště. Existují dva způsoby, jak nastavit metastore v clusterech HDInsight:
 
 1. Výchozí metastore
 
     - Žádné další náklady.
-    - Metastore je odstraněn při odstranění clusteru.
-    - Metastore nelze sdílet mezi různými clustery.
-    - Používá základní Azure SQL DB, který má pět limit DTU.
+    - Metastore se odstraní, když se cluster odstraní.
+    - Metastore nejde sdílet mezi různými clustery.
+    - Používá základní službu Azure SQL DB, která má pět omezení DTU.
 
 1. Vlastní externí metastore
 
     - Zadejte externí Azure SQL Database jako metastore.
-    - Clustery lze vytvořit a odstranit bez ztráty metadat, včetně hive schema Oozie podrobnosti o úloze.
-    - Jeden metastore db lze sdílet s různými typy clusterů.
-    - Metastore může být zmenšen nahoru podle potřeby.
-    - Další informace najdete [v tématu Použití externích úložišť metadat v Azure HDInsight](../hdinsight-use-external-metadata-stores.md).
+    - Clustery je možné vytvořit a odstranit bez ztráty metadat včetně podrobností o úloze Oozie schématu podregistru.
+    - Jedna metastore DB se dá sdílet s různými typy clusterů.
+    - Metastore se dá škálovat podle potřeby.
+    - Další informace najdete v tématu [použití externích úložišť metadat ve službě Azure HDInsight](../hdinsight-use-external-metadata-stores.md).
 
-## <a name="best-practices-for-hive-metastore"></a>Doporučené postupy pro Hive Metastore
+## <a name="best-practices-for-hive-metastore"></a>Osvědčené postupy pro metastore podregistru
 
-Některé osvědčené postupy metastore HDInsight Hive jsou následující:
+Mezi osvědčené postupy metastore Hive HDInsight patří následující:
 
 - Použijte vlastní externí metastore k oddělení výpočetních prostředků a metadat.
-- Začněte s instancí Azure SQL úrovně S2, která poskytuje 50 DTU a 250 GB úložiště. Pokud se zobrazí kritické místo, můžete databázi škálovat.
-- Nesdílejte metastore vytvořený pro jednu verzi clusteru HDInsight s clustery jiné verze. Různé verze Hive používají různá schémata. Metastore nelze například sdílet s clustery Hive 1.2 a Hive 2.1.
+- Začněte s instancí Azure SQL úrovně S2, která poskytuje 50 jednotek DTU a 250 GB úložiště. Pokud se zobrazí kritický bod, můžete databázi škálovat nahoru.
+- Nesdílejte metastore vytvořenou pro jednu verzi clusteru HDInsight s clustery s jinou verzí. Různé verze podregistru používají různá schémata. Například metastore nelze sdílet s clustery registru 1,2 a podregistr 2,1.
 - Pravidelně zálohujte vlastní metastore.
 - Udržujte cluster metastore a HDInsight ve stejné oblasti.
-- Sledujte metastore pro výkon a dostupnost pomocí nástrojů Azure SQL Database Monitoring, jako je portál Azure nebo protokoly Azure Monitor.
-- Proveďte `ANALYZE TABLE` příkaz podle potřeby pro generování statistik pro tabulky a sloupce. Například, `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
+- Monitorujte metastore o výkonu a dostupnosti pomocí nástrojů pro monitorování Azure SQL Database, jako jsou protokoly Azure Portal nebo Azure Monitor.
+- Spusťte `ANALYZE TABLE` příkaz podle potřeby a vygenerujte statistiku pro tabulky a sloupce. Například, `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
 
-## <a name="best-practices-for-different-workloads"></a>Doporučené postupy pro různé úlohy
+## <a name="best-practices-for-different-workloads"></a>Osvědčené postupy pro různé úlohy
 
-- Zvažte použití clusteru LLAP pro interaktivní dotazy Hive s vylepšenou dobou odezvy [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) je nová funkce v Hive 2.0, která umožňuje ukládání dotazů do mezipaměti v paměti. LLAP umožňuje hive dotazy mnohem rychleji, až [26x rychlejší než Hive 1.x v některých případech](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/).
-- Zvažte použití úloh Spark místo úloh Hive.
-- Zvažte nahrazení dotazů založených na impala dotazy LLAP.
-- Zvažte nahrazení úloh MapReduce úlohami Spark.
-- Zvažte nahrazení dávkových úloh Spark s nízkou latencí pomocí úloh strukturovaného streamování Spark.
-- Zvažte použití Azure Data Factory (ADF) 2.0 pro orchestraci dat.
+- Zvažte použití clusteru LLAP pro interaktivní dotazy podregistru s vyšší dobou odezvy [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) je nová funkce v podregistru 2,0, která umožňuje ukládání dotazů do mezipaměti v paměti. LLAP vydává dotazy na podregistr mnohem rychleji, až do [26x rychleji než v registru 1. x v některých případech](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/).
+- Zvažte použití úloh Spark místo úloh podregistru.
+- Zvažte nahrazení dotazů založených na Impala pomocí dotazů LLAP.
+- Zvažte nahrazení úloh MapReduce pomocí úloh Spark.
+- Zvažte použití úloh strukturovaného streamování Spark s nízkou latencí v dávkovém zpracování.
+- Zvažte použití Azure Data Factory (ADF) 2,0 pro orchestraci dat.
 - Zvažte Ambari pro správu clusteru.
 - Změňte úložiště dat z místního HDFS na WASB nebo ADLS nebo ADFS pro zpracování skriptů.
-- Zvažte použití Ranger RBAC na hive tabulky a auditování.
+- Zvažte použití Ranger RBAC na tabulkách a auditování tabulek podregistru.
 - Zvažte použití CosmosDB místo MongoDB nebo Cassandra.
 
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další článek v této sérii:
 
-- [Osvědčené postupy pro infrastrukturu pro místní migraci Azure HDInsight Hadoop](apache-hadoop-on-premises-migration-best-practices-infrastructure.md)
+- [Osvědčené postupy infrastruktury pro migraci z místního prostředí do Azure HDInsight Hadoop](apache-hadoop-on-premises-migration-best-practices-infrastructure.md)

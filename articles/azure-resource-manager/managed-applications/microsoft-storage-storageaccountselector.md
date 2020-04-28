@@ -1,22 +1,22 @@
 ---
-title: Prvek ui služby StorageAccountSelector
-description: Popisuje prvek ui microsoft.storageaccountaccountselector pro portál Azure.
+title: StorageAccountSelector – element uživatelského rozhraní
+description: Popisuje prvek uživatelského rozhraní Microsoft. Storage. StorageAccountSelector pro Azure Portal.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 4fcaf0e5842ce8a65175d2fc1dfa2483a1203b2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75651888"
 ---
-# <a name="microsoftstoragestorageaccountselector-ui-element"></a>Element ui účtu Microsoft.Storage.StorageAccountSelector
+# <a name="microsoftstoragestorageaccountselector-ui-element"></a>Microsoft. Storage. StorageAccountSelector – element uživatelského rozhraní
 
 Ovládací prvek pro výběr nového nebo existujícího účtu úložiště.
 
-## <a name="ui-sample"></a>Ukázka ui
+## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
 
 Ovládací prvek zobrazuje výchozí hodnotu.
 
@@ -24,7 +24,7 @@ Ovládací prvek zobrazuje výchozí hodnotu.
 
 Ovládací prvek umožňuje uživateli vytvořit nový účet úložiště nebo vybrat existující účet úložiště.
 
-![Microsoft.Storage.StorageAccountSelector nový](./media/managed-application-elements/microsoft.storage.storageaccountselector-new.png)
+![Microsoft. Storage. StorageAccountSelector – nové](./media/managed-application-elements/microsoft.storage.storageaccountselector-new.png)
 
 ## <a name="schema"></a>Schéma
 
@@ -62,11 +62,11 @@ Ovládací prvek umožňuje uživateli vytvořit nový účet úložiště nebo 
 
 ## <a name="remarks"></a>Poznámky
 
-- Pokud je `defaultValue.name` zadán, je automaticky ověřena pro jedinečnost. Pokud název účtu úložiště není jedinečný, musí uživatel zadat jiný název nebo zvolit existující účet úložiště.
-- Výchozí hodnota `defaultValue.type` pro je **Premium_LRS**.
-- Jakýkoli typ, `constraints.allowedTypes` který není zadán v písmenu a), je skrytý a je zobrazen jakýkoli typ, který není zadán v `constraints.excludedTypes` písmenu a). `constraints.allowedTypes`a `constraints.excludedTypes` jsou volitelné, ale nelze je použít současně.
-- Pokud `options.hideExisting` je **true**, uživatel nemůže vybrat existující účet úložiště. Výchozí hodnota je **false** (nepravda).
+- Je-li `defaultValue.name` tento parametr zadán, je automaticky ověřen pro jedinečnost. Pokud název účtu úložiště není jedinečný, musí uživatel zadat jiný název nebo zvolit existující účet úložiště.
+- Výchozí hodnota pro `defaultValue.type` je **Premium_LRS**.
+- Libovolný typ, který není `constraints.allowedTypes` zadán v, je skrytý a je zobrazen libovolný `constraints.excludedTypes` typ, který není zadán v. `constraints.allowedTypes`a `constraints.excludedTypes` jsou zároveň volitelné, ale nelze je použít současně.
+- Pokud `options.hideExisting` má **hodnotu true**, uživatel nemůže zvolit existující účet úložiště. Výchozí hodnota je **false** (nepravda).
 
 ## <a name="next-steps"></a>Další kroky
-* Úvod k vytváření definic ui naleznete [v tématu Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
-* Popis běžných vlastností v prvcích uživatelského rozhraní naleznete v [tématu CreateUiDefinition elements](create-uidefinition-elements.md).
+* Úvod k vytváření definic uživatelského rozhraní najdete v tématu [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
+* Popis běžných vlastností v prvcích uživatelského rozhraní naleznete v tématu [CreateUiDefinition Elements](create-uidefinition-elements.md).

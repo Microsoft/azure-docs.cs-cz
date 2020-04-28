@@ -1,19 +1,19 @@
 ---
-title: Výčet objektů ve službě Azure Service Fabric
-description: Další informace o výčtu spolehlivé objekty actor a jejich metadata v aplikaci Azure Service Fabric pomocí příkladů.
+title: Zobrazení výčtu objektů actor v Azure Service Fabric
+description: Seznamte se s výčtem Reliable Actors a jejich metadaty v aplikaci Azure Service Fabric pomocí příkladů.
 author: vturecek
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: vturecek
 ms.openlocfilehash: 1516c9005a7c4dd0adcb279e9954e5f882c575c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75645595"
 ---
-# <a name="enumerate-service-fabric-reliable-actors"></a>Výčet spolehlivé hospo-
-Služba Reliable Actors umožňuje klientovi výčet metadat o objektech actor, které služba hostuje. Vzhledem k tomu, že služba actor je rozdělená stavová služba, výčet se provádí na oddíl. Vzhledem k tomu, že každý oddíl může obsahovat mnoho objektů actor, výčet je vrácena jako sada stránkovaných výsledků. Stránky jsou smyčkou, dokud nejsou přečteny všechny stránky. Následující příklad ukazuje, jak vytvořit seznam všech aktivních aktérů v jednom oddílu služby objektu actor:
+# <a name="enumerate-service-fabric-reliable-actors"></a>Zobrazení výčtu Service Fabric Reliable Actors
+Služba Reliable Actors umožňuje klientovi vytvořit výčet metadat objektů Actor, které služba hostuje. Vzhledem k tomu, že je služba objektu actor rozdělená stavová služba, je výčet proveden na oddíl. Vzhledem k tomu, že každý oddíl může obsahovat mnoho objektů Actor, je výčet vrácen jako sada stránkovaných výsledků. Na stránky se přeskočí, dokud nebudou načteny všechny stránky. Následující příklad ukazuje, jak vytvořit seznam všech aktivních objektů actor v jednom oddílu služby objektu actor:
 
 ```csharp
 IActorService actorServiceProxy = ActorServiceProxy.Create(
@@ -59,11 +59,11 @@ while (continuationToken != null);
 
 
 ## <a name="next-steps"></a>Další kroky
-* [Správa stavu actoru](service-fabric-reliable-actors-state-management.md)
+* [Správa stavu objektu actor](service-fabric-reliable-actors-state-management.md)
 * [Životní cyklus objektu actor a uvolňování paměti](service-fabric-reliable-actors-lifecycle.md)
-* [Referenční dokumentace rozhraní API actors](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [Ukázkový kód rozhraní .NET](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Ukázkový kód Javy](https://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [Referenční dokumentace k rozhraní actor API](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Vzorový kód .NET](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Vzorový kód Java](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-platform/actor-service.png

@@ -1,6 +1,6 @@
 ---
-title: 'Generování a export certifikátů pro point-to-site: Linux: CLI'
-description: Vytvořte kořenový certifikát podepsaný svým držitelem, exportujte veřejný klíč a vygenerujte klientské certifikáty pomocí cli linuxového (strongSwan).
+title: 'Generování a export certifikátů pro Point-to-site: Linux: CLI'
+description: Vytvořte kořenový certifikát podepsaný svým držitelem, exportujte veřejný klíč a vygenerujte klientské certifikáty pomocí rozhraní příkazového řádku Linux (klient strongswan).
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: anzaman
@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.author: alzam
 ms.openlocfilehash: a0f996ff2805da4dd5af400642eef2506c228d33
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75779752"
 ---
 # <a name="generate-and-export-certificates"></a>Generování a export certifikátů
 
-Připojení typu Point-to-Site používají k ověření certifikáty. Tento článek ukazuje, jak vytvořit kořenový certifikát podepsaný svým držitelem a generovat klientské certifikáty pomocí linuxového CLI a strongSwan. Pokud hledáte různé pokyny k certifikátu, přečtěte si články o [powershellu](vpn-gateway-certificates-point-to-site.md) nebo [makecertu.](vpn-gateway-certificates-point-to-site-makecert.md) Informace o tom, jak nainstalovat strongSwan pomocí grafického uživatelského rozhraní namísto rozhraní se kšak, naleznete v postupech v článku [konfigurace klienta.](point-to-site-vpn-client-configuration-azure-cert.md#install)
+Připojení Point-to-site používají k ověřování certifikáty. V tomto článku se dozvíte, jak vytvořit kořenový certifikát podepsaný svým držitelem a jak vygenerovat klientské certifikáty pomocí rozhraní příkazového řádku Linux a klient strongswan. Pokud hledáte jiné pokyny k certifikátu, přečtěte si článek o [PowerShellu](vpn-gateway-certificates-point-to-site.md) nebo nástroji [Makecert](vpn-gateway-certificates-point-to-site-makecert.md) . Informace o tom, jak nainstalovat klient strongswan pomocí grafického uživatelského rozhraní (GUI) místo CLI, najdete v postupu v článku o [konfiguraci klienta](point-to-site-vpn-client-configuration-azure-cert.md#install) .
 
-## <a name="install-strongswan"></a>Nainstalujte strongSwan
+## <a name="install-strongswan"></a>Nainstalovat klient strongswan
 
 [!INCLUDE [strongSwan Install](../../includes/vpn-gateway-strongswan-install-include.md)]
 
@@ -29,4 +29,4 @@ Připojení typu Point-to-Site používají k ověření certifikáty. Tento čl
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokračujte v konfiguraci bodu na pracoviště a [vytvořte a nainstalujte konfigurační soubory klienta VPN](point-to-site-vpn-client-configuration-azure-cert.md#linuxinstallcli).
+Pokračujte v konfiguraci Point-to-site a [vytvořte a nainstalujte konfigurační soubory klienta VPN](point-to-site-vpn-client-configuration-azure-cert.md#linuxinstallcli).

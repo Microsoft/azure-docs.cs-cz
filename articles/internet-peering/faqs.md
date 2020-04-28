@@ -1,7 +1,7 @@
 ---
-title: Partnerský vztah v internetu – časté otázky
+title: Internet peering – Nejčastější dotazy
 titleSuffix: Azure
-description: Partnerský vztah v internetu – časté otázky
+description: Internet peering – Nejčastější dotazy
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,28 +9,28 @@ ms.topic: reference
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 9b0b2b08e01c99fc918c4bc5649197c9caa4978a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75775495"
 ---
-# <a name="internet-peering---faqs"></a>Partnerský vztah v internetu – časté otázky
+# <a name="internet-peering---faqs"></a>Internet peering – Nejčastější dotazy
 
-Níže si můžete prohlédnout níže uvedené informace o obecných otázkách.
+Pro obecné otázky si můžete přečíst následující informace.
 
-**Jaký je rozdíl mezi partnerským vztahem v Internetu a službou partnerského vztahu?**
+**Jaký je rozdíl mezi internetovým partnerským vztahem a službou partnerského vztahu?**
 
-Peering Service je služba, která má v úmyslu poskytovat podnikové veřejné IP připojení společnosti Microsoft pro své podnikové zákazníky. Internet na podnikové úrovni zahrnuje připojení prostřednictvím poskytovatelů služeb Internetu, kteří mají připojení společnosti Microsoft s vysokou propustností a redundanci pro připojení HA. Kromě toho je uživatelský provoz optimalizován pro latenci k nejbližšímu microsoftedge. Služba partnerského vztahu staví na připojení partnerského vztahu s partnerským operátorem. Připojení partnerského vztahu s partnerem musí být přímý partnerský vztah na rozdíl od partnerského vztahu exchange. Přímý partnerský vztah musí mít místní a geografickou redundanci.
+Peering Service je služba, která v úmyslu poskytovat Microsoftu pro své podnikové zákazníky připojení veřejné IP adresy podnikové úrovně. Podniková síť Internet zahrnuje připojení prostřednictvím poskytovatelů internetových služeb, které mají vysokou propustnost připojení Microsoftu a redundanci pro konektivitu HA. Pro latenci na nejbližší Microsoft Edge se navíc optimalizuje provoz uživatele. Služba partnerského vztahu je založena na připojení partnerského vztahu s partnerským operátorem. Připojení partnerského vztahu k partnerovi musí být přímé partnerské vztahy na rozdíl od Exchange peering. Přímý partnerský vztah musí mít místní a geografickou redundanci.
 
-**Co je starší partnerský vztah?**
+**Co je starší verze partnerského vztahu?**
 
-Připojení partnerského vztahu nastavené pomocí Azure PowerShellu se spravuje jako prostředek Azure. Připojení partnerského vztahu nastavená v minulosti jsou uložena v našem systému jako starší partnerský vztah, který můžete převést ke správě jako prostředek Azure.
+Připojení partnerského vztahu nastavené pomocí Azure PowerShell se spravuje jako prostředek Azure. Připojení partnerského vztahu nastavená v minulosti se ukládají v našem systému jako starší verze partnerského vztahu, kterou můžete zvolit pro správu jako prostředek Azure.
 
-**Při new-azpeeringDirectConnectionObject je volána, jaké IP adresy jsou uvedeny na Microsoft a Peer zařízení?**
+**Když se zavolá New-AzPeeringDirectConnectionObject, jaké IP adresy se mají přidávat zařízením Microsoftu a Peere?**
 
-Při volání rutiny New-AzPeeringDirectConnectionObject je zadána adresa /31 (a.b.c.d/31) nebo adresa /30 (a.b.c.d/30). První IP adresa (a.b.c.d+0) je dána zařízení Peer a druhá IP adresa (a.b.c.d +1) je dána zařízení Společnosti Microsoft.
+Při volání rutiny New-AzPeeringDirectConnectionObject se zadá adresa/31 (a. b. c. d/31) nebo adresa/30 (a. b. c. d/30). První IP adresa (a. b. c. d. d + 0) se předávají zařízení společnosti Microsoft pro zařízení druhé IP adresy (a. b. c. d + 1).
 
-**Co je MaxPrefixesInzerované IPv4 a MaxPrefixesInzerovanéIPv6 parametry v rutině New-AzPeeringDirectConnectionObject?**
+**Jaké jsou parametry MaxPrefixesAdvertisedIPv4 a MaxPrefixesAdvertisedIPv6 v rutině New-AzPeeringDirectConnectionObject?**
 
-MaxPrefixesInzerované IPv4 a MaxPrefixesInzerované IPv6 parametry představují maximální počet IPv4 a IPv6 předpony Peer chce Microsoft přijmout. Tyto parametry lze kdykoli změnit.
+Parametry MaxPrefixesAdvertisedIPv4 a MaxPrefixesAdvertisedIPv6 reprezentují maximální počet předpon adres IPv4 a IPv6, které chce společnost Microsoft přijmout. Tyto parametry lze kdykoli změnit.

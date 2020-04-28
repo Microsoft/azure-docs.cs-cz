@@ -1,71 +1,71 @@
 ---
-title: Aktualizace cílů úložiště mezipaměti Azure HPC
-description: Jak upravit cíle úložiště Azure HPC Cache
+title: Aktualizace cílů úložiště mezipaměti HPC Azure
+description: Úprava cílů úložiště mezipaměti HPC Azure
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 1/08/2020
 ms.author: rohogue
 ms.openlocfilehash: 5635bfc6ea5faea41b125037c76c0b8635e0f528
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75867005"
 ---
 # <a name="edit-storage-targets"></a>Úprava cílů úložiště
 
-Cíl úložiště můžete odebrat nebo upravit ze stránky **cílů úložiště mezipaměti.**
+Cíl úložiště můžete odebrat nebo upravit ze stránky **cíle úložiště** mezipaměti.
 
 ## <a name="remove-a-storage-target"></a>Odebrání cíle úložiště
 
-Chcete-li odebrat cíl úložiště, vyberte ho v seznamu a klepněte na tlačítko **Odstranit.**
+Pokud chcete cíl úložiště odebrat, vyberte ho v seznamu a klikněte na tlačítko **Odstranit** .
 
-Tato akce odebere přidružení cíle úložiště s tímto systémem Azure HPC Cache, ale nezmění systém úložiště back-end. Například pokud jste použili kontejner úložiště objektů blob Azure, kontejner a jeho obsah stále existují po odstranění z mezipaměti. Kontejner můžete přidat do jiné mezipaměti Azure HPC, znovu ho přidat do této mezipaměti nebo ho odstranit pomocí portálu Azure.
+Tato akce odebere přidružení cíle úložiště k tomuto systému mezipaměti prostředí Azure HPC, ale nemění back-end systém úložiště. Pokud jste například použili kontejner úložiště objektů BLOB v Azure, kontejner a jeho obsah stále existují i po jeho odstranění z mezipaměti. Kontejner můžete přidat do jiné mezipaměti prostředí Azure HPC, znovu ho přidat do této mezipaměti nebo ho odstranit pomocí Azure Portal.
 
-Všechny změny souborů uložené v mezipaměti jsou zapsány do systému úložiště back-end před odebráním cíle úložiště. Tento proces může trvat hodinu nebo více, pokud je v mezipaměti mnoho změněných dat.
+Všechny změny souborů uložené v mezipaměti se zapisují do back-endového systému úložiště před odebráním cíle úložiště. Pokud se velké množství změněných dat nachází v mezipaměti, může tento proces trvat hodinu nebo déle.
 
 ## <a name="update-storage-targets"></a>Aktualizace cílů úložiště
 
-Můžete upravit cíle úložiště a upravit některé jejich vlastnosti. Různé vlastnosti lze upravovat pro různé typy úložišť:
+Změnou cílů úložiště můžete upravit některé z jejich vlastností. Různé vlastnosti jsou editovatelné pro různé typy úložiště:
 
-* U cílů úložiště objektů Blob můžete změnit cestu oboru názvů.
+* V případě cílů služby Blob Storage můžete změnit cestu k oboru názvů.
 
-* U cílů úložiště služby NFS můžete změnit tyto vlastnosti:
+* V případě cílů úložiště NFS můžete tyto vlastnosti změnit:
 
   * Cesta oboru názvů
-  * Model použití
+  * Model využití
   * Export
   * Exportovat podadresář
 
-Nelze upravit název úložiště cíl, typ nebo back-end úložný systém (kontejner objektů blob nebo název_hostitele NFS/IP adresa). Pokud potřebujete změnit tyto vlastnosti, odstraňte cíl úložiště a vytvořte náhradu za novou hodnotu.
+Nemůžete upravit název, typ nebo back-end úložiště cíle úložiště (kontejner objektů BLOB nebo název hostitele nebo IP adresa systému souborů NFS). Pokud potřebujete tyto vlastnosti změnit, odstraňte cíl úložiště a vytvořte náhradu s novou hodnotou.
 
-Chcete-li upravit cíl úložiště, kliknutím na cílový název úložiště otevřete jeho stránku podrobností. Některá pole na stránce lze upravovat.
+Chcete-li upravit cíl úložiště, klikněte na název cíle úložiště a otevřete jeho stránku s podrobnostmi. Některá pole na stránce lze upravovat.
 
-![Snímek obrazovky s editační stránkou pro cíl úložiště systému Sdílení neotesaných dat](media/hpc-cache-edit-storage-nfs.png)
+![snímek obrazovky se stránkou pro úpravy cíle úložiště NFS](media/hpc-cache-edit-storage-nfs.png)
 
-## <a name="update-an-nfs-storage-target"></a>Aktualizace cíle úložiště systému nfs
+## <a name="update-an-nfs-storage-target"></a>Aktualizace cíle úložiště NFS
 
-Pro cíl úložiště systému windows můžete aktualizovat několik vlastností. (Příklad stránky pro úpravy naleznete na obrázku výše.)
+V případě cíle úložiště NFS můžete aktualizovat několik vlastností. (Příklad stránky pro úpravy najdete na snímku obrazovky výše.)
 
-* **Model použití** – model použití ovlivňuje způsob, jakým mezipaměť uchovává data. Přečtěte si článek Další informace [najdete v článek Výběr modelu použití.](hpc-cache-add-storage.md#choose-a-usage-model)
-* **Cesta virtuálního oboru názvů** – cesta, kterou klienti používají k připojení tohoto cíle úložiště. Přečtěte [si naplánujte agregovaný obor názvů](hpc-cache-namespace.md) podrobnosti.
-* **Cesta exportu systému souborů NFS** – export systému úložiště pro tuto cestu oboru názvů.
-* **Cesta podadresáře** - Podadresář (pod exportem), který chcete přidružit k této cestě oboru názvů. Pokud nepotřebujete zadat podadresář, ponechejte toto pole prázdné.
+* **Model použití** – model použití ovlivňuje, jak mezipaměť uchovává data. Další informace najdete [v tématu Výběr modelu využití](hpc-cache-add-storage.md#choose-a-usage-model) .
+* **Cesta k virtuálnímu oboru názvů** – cesta, kterou klienti používají k připojení tohoto cíle úložiště. Podrobnosti najdete [v tématu Naplánování agregovaného oboru názvů](hpc-cache-namespace.md) .
+* **Cesta exportu NFS** – export systému úložiště, který se má použít pro tuto cestu oboru názvů.
+* **Cesta k podadresáři** – podadresář (v rámci exportu), který má být přidružen k této cestě k oboru názvů. Pokud nepotřebujete zadat podadresář, ponechte toto pole prázdné.
 
-Každá cesta oboru názvů potřebuje jedinečnou kombinaci exportu a podadresáře. To znamená, že nelze vytvořit dvě různé cesty směřující ke klientovi do přesně stejného adresáře v systému úložiště back-end.
+Každá cesta k oboru názvů vyžaduje jedinečnou kombinaci exportu a podadresáře. To znamená, že nemůžete vytvořit dvě různé cesty směřující na klienta do stejného adresáře v systému back-endu.
 
-Po provedení změn kliknutím na **OK** aktualizujte cíl úložiště nebo klepnutím na tlačítko **Storno** změny zamítnete.
+Po provedení změn aktualizujte cíl úložiště kliknutím na tlačítko **OK** . Kliknutím na tlačítko **Storno** zahodíte změny.
 
-## <a name="update-an-azure-blob-storage-target"></a>Aktualizace cíle úložiště objektů blob Azure
+## <a name="update-an-azure-blob-storage-target"></a>Aktualizace cíle Azure Blob Storage
 
-Stránka podrobností pro cíl úložiště objektů Blob umožňuje upravit cestu virtuálního oboru názvů.
+Stránka s podrobnostmi pro cíl úložiště objektů BLOB umožňuje upravit cestu k virtuálnímu oboru názvů.
 
-![Snímek obrazovky s editační stránkou pro cíl úložiště objektů blob](media/hpc-cache-edit-storage-blob.png)
+![snímek obrazovky se stránkou pro úpravy pro cíl úložiště objektů BLOB](media/hpc-cache-edit-storage-blob.png)
 
-Po dokončení klikněte na **OK,** abyste aktualizovali cíl úložiště, nebo klepnutím na **tlačítko Storno** změny zamítnete.
+Až budete hotovi, kliknutím na **OK** aktualizujte cíl úložiště, nebo klikněte na **Zrušit** , aby se změny zahodit.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o těchto možnostech najdete v [části Přidání cílů úložiště.](hpc-cache-add-storage.md)
-* Přečtěte [si naplánujte agregovaný obor názvů,](hpc-cache-namespace.md) kde najdete další tipy k používání virtuálních cest.
+* Další informace o těchto možnostech najdete v tématu [Přidání cílů úložiště](hpc-cache-add-storage.md) .
+* Další tipy k používání virtuálních cest najdete [v tématu Naplánování agregovaného oboru názvů](hpc-cache-namespace.md) .

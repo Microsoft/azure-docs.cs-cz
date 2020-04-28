@@ -1,27 +1,27 @@
 ---
-title: Parametrize konfiguračních souborů ve službě Azure Fabric
-description: Naučte se parametrizovat konfigurační soubory v Service Fabric, což je užitečná technika při správě více prostředí.
+title: Parametrizovat konfigurační soubory v Azure Service Fabric
+description: Naučte se, jak parametrizovat konfigurační soubory v Service Fabric, což je užitečná technika při správě více prostředí.
 author: mikkelhegn
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: mikhegn
 ms.openlocfilehash: 4e96a732cffd70b0a5c24e7ebafe214297a72720
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75644626"
 ---
-# <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Jak parametrizovat konfigurační soubory v service fabric
+# <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Jak parametrizovat konfigurační soubory v Service Fabric
 
-Tento článek ukazuje, jak parametrizovat konfigurační soubor v Service Fabric.  Pokud ještě nejste obeznámeni se základními koncepty správy aplikací pro více prostředí, přečtěte [si článek Správa aplikací pro více prostředí](service-fabric-manage-multiple-environment-app-configuration.md).
+V tomto článku se dozvíte, jak parametrizovat konfigurační soubor v Service Fabric.  Pokud ještě nejste obeznámeni se základními koncepty správy aplikací pro více prostředí, přečtěte si téma [Správa aplikací pro více prostředí](service-fabric-manage-multiple-environment-app-configuration.md).
 
-## <a name="procedure-for-parameterizing-configuration-files"></a>Postup pro parametrizaci konfiguračních souborů
+## <a name="procedure-for-parameterizing-configuration-files"></a>Postup pro konfigurační soubory Parametrizace
 
-V tomto příkladu přepsat hodnotu konfigurace pomocí parametrů v nasazení aplikace.
+V tomto příkladu přepíšete konfigurační hodnotu pomocí parametrů ve vašem nasazení aplikace.
 
-1. Otevřete soubor * \<MyService>\PackageRoot\Config\Settings.xml* v projektu služby.
-1. Přidáním následujícího xml nastavte název a hodnotu konfiguračního parametru, například velikost mezipaměti rovnou 25:
+1. V projektu služby otevřete soubor * \<mojesluzba> \packageroot\config\settings.XML* .
+1. Přidáním následujícího kódu XML nastavte název a hodnotu konfiguračního parametru, například velikost mezipaměti rovnou 25.
 
    ```xml
     <Section Name="MyConfigSection">
@@ -30,15 +30,15 @@ V tomto příkladu přepsat hodnotu konfigurace pomocí parametrů v nasazení a
    ```
 
 1. Uložte soubor a zavřete ho.
-1. Otevřete soubor * \<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml.*
-1. V souboru ApplicationManifest.xml deklarujte parametr `Parameters` a výchozí hodnotu v elementu.  Doporučuje se, aby název parametru obsahoval název služby (například "MyService").
+1. Otevřete soubor * \<MyApplication> \applicationpackageroot\applicationmanifest.XML* .
+1. V souboru souboru ApplicationManifest. XML deklarujte parametr a výchozí hodnotu v `Parameters` elementu.  Doporučuje se, aby název parametru obsahoval název služby (například "Mojesluzba").
 
    ```xml
     <Parameters>
       <Parameter Name="MyService_CacheSize" DefaultValue="80" />
     </Parameters>
    ```
-1. V `ServiceManifestImport` části souboru ApplicationManifest.xml `ConfigOverrides` přidejte `ConfigOverride` a element odkazující na konfigurační balíček, oddíl a parametr.
+1. V `ServiceManifestImport` části souboru souboru ApplicationManifest. xml přidejte element `ConfigOverrides` and `ConfigOverride` , který odkazuje na konfigurační balíček, část a parametr.
 
    ```xml
     <ConfigOverrides>
@@ -58,4 +58,4 @@ V tomto příkladu přepsat hodnotu konfigurace pomocí parametrů v nasazení a
 >
 
 ## <a name="next-steps"></a>Další kroky
-Informace o dalších možnostech správy aplikací, které jsou dostupné v sadě Visual Studio, naleznete v [tématu Správa aplikací Service Fabric v sadě Visual Studio](service-fabric-manage-application-in-visual-studio.md).
+Informace o dalších možnostech správy aplikací, které jsou k dispozici v sadě Visual Studio, najdete v tématu [Správa aplikací Service Fabric v sadě Visual Studio](service-fabric-manage-application-in-visual-studio.md).

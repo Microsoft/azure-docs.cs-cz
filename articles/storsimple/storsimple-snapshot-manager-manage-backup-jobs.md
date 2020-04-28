@@ -1,6 +1,6 @@
 ---
-title: Úlohy zálohování Správce snímků StorSimple | Dokumenty společnosti Microsoft
-description: Popisuje použití modulu snap-in Správce snímků StorSimple MMC k zobrazení a správě naplánovaných, aktuálně spuštěných a dokončených úloh zálohování.
+title: Úlohy zálohování StorSimple Snapshot Manager | Microsoft Docs
+description: Popisuje, jak použít modul snap-in StorSimple Snapshot Manager konzoly MMC k zobrazení a správě naplánovaných, aktuálně spuštěných a dokončených úloh zálohování.
 services: storsimple
 documentationcenter: NA
 author: twooley
@@ -15,76 +15,76 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: 094b996cd3227903995c7a74ef14ed8c0561f59d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75933338"
 ---
-# <a name="use-storsimple-snapshot-manager-to-view-and-manage-backup-jobs"></a>Použití Správce snímků StorSimple k zobrazení a správě úloh zálohování
+# <a name="use-storsimple-snapshot-manager-to-view-and-manage-backup-jobs"></a>Zobrazení a správa úloh zálohování pomocí Snapshot Manager StorSimple
 
 ## <a name="overview"></a>Přehled
-Uzel **Úlohy** v podokně **Obor** zobrazuje **naplánované**, **posledních 24 hodin**a **spuštění** úloh zálohování, které jste inicializovat lichválně nebo nakonfigurovanou zásadou. 
+Uzel **úlohy** v podokně **oboru** zobrazuje **naplánované**, **posledních 24 hodin**a **spuštěné** úlohy zálohování, které jste spustili interaktivně, nebo nakonfigurovanou zásadou. 
 
-Tento kurz vysvětluje, jak můžete použít uzel **Úlohy** k zobrazení informací o naplánovaných, posledních a aktuálně spuštěných úlohách zálohování. (Seznam úloh a odpovídající informace se zobrazí v podokně **Výsledky.)** Kromě toho můžete klepnout pravým tlačítkem myši na uvedenou úlohu a zobrazit místní nabídku s dostupnými akcemi.
+V tomto kurzu se dozvíte, jak můžete pomocí uzlu **Jobs (úlohy** ) zobrazit informace o plánovaných, nedávných a aktuálně spuštěných úlohách zálohování. (Seznam úloh a odpovídající informace se zobrazí v podokně **výsledků** .) Kromě toho můžete kliknout pravým tlačítkem myši na uvedenou úlohu a zobrazit kontextovou nabídku, která obsahuje seznam dostupných akcí.
 
 ## <a name="view-scheduled-jobs"></a>Zobrazit naplánované úlohy
-K zobrazení naplánovaných úloh zálohování použijte následující postup.
+Pomocí následujícího postupu můžete zobrazit naplánované úlohy zálohování.
 
-#### <a name="to-view-scheduled-jobs"></a>Zobrazení naplánovaných úloh
-1. Kliknutím na ikonu na ploše spusťte Správce snímků StorSimple. 
-2. V podokně **Obor** rozbalte uzel **Úlohy** a klepněte na **položku Naplánované**. V podokně **Výsledky** se zobrazí následující informace:
+#### <a name="to-view-scheduled-jobs"></a>Zobrazení plánovaných úloh
+1. Kliknutím na ikonu na ploše spusťte StorSimple Snapshot Manager. 
+2. V podokně **obor** rozbalte uzel **úlohy** a klikněte na **naplánované**. V podokně **výsledků** se zobrazí následující informace:
    
    * **Název** – název naplánovaného snímku
    * **Další spuštění** – datum a čas dalšího naplánovaného snímku
    * **Poslední spuštění** – datum a čas posledního naplánovaného snímku
      
      > [!NOTE]
-     > Pro jednorázové pouze snímky **bude další spuštění** a poslední **spuštění** stejné.
+     > Pouze pro jednorázové snímky bude **příští spuštění** a **Poslední spuštění** stejné.
      
-     ![Plánované úlohy zálohování](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_scheduled.png) 
-3. Chcete-li provést další akce u určité úlohy, klepněte pravým tlačítkem myši na název **úlohy** v podokně Výsledky a vyberte z možností nabídky.
+     ![Naplánované úlohy zálohování](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_scheduled.png) 
+3. Chcete-li provést další akce na konkrétní úlohu, klikněte pravým tlačítkem myši na název úlohy v podokně **výsledků** a vyberte možnost z možností nabídky.
 
-## <a name="view-recent-jobs"></a>Zobrazit poslední úlohy
+## <a name="view-recent-jobs"></a>Zobrazit nedávné úlohy
 Pomocí následujícího postupu můžete zobrazit úlohy zálohování a obnovení, které byly dokončeny za posledních 24 hodin.
 
 #### <a name="to-view-recent-jobs"></a>Zobrazení posledních úloh
-1. Kliknutím na ikonu na ploše spusťte Správce snímků StorSimple.
-2. V podokně **Obor** rozbalte uzel **Úlohy** a klepněte na **tlačítko Posledních 24 hodin**. Podokno **Výsledky** zobrazuje úlohy zálohování za posledních 24 hodin (maximálně 64 úloh). V podokně Výsledky se v závislosti na zadaných možnostech **zobrazení** zobrazí v podokně **Výsledky** následující informace:
+1. Kliknutím na ikonu na ploše spusťte StorSimple Snapshot Manager.
+2. V podokně **obor** rozbalte uzel **úlohy** a klikněte na **Poslední 24 hodin**. V podokně **výsledků** se zobrazují úlohy zálohování za posledních 24 hodin (maximálně 64 úloh). V podokně **výsledků** se zobrazí následující informace v závislosti na zadaných možnostech **zobrazení** :
    
    * **Název** – název naplánovaného snímku.
-   * **Spuštěno** – datum a čas, kdy snímek začal.
-   * **Zastaveno** – datum a čas, kdy byl snímek dokončen nebo byl ukončen.
-   * **Uplynulá** – doba mezi **časy Spuštěno** a **Zastaveno.**
-   * **Stav** – stav nedávno dokončené úlohy. **Úspěch** označuje, že záloha byla úspěšně vytvořena. **Se nezdařilo,** že úloha nebyla úspěšně spuštěna.
+   * **Začalo** – datum a čas zahájení snímku.
+   * **Stopped** – datum a čas dokončení snímku nebo ukončení.
+   * **Uplynulo** – doba mezi časem **zahájení** a **zastavením** .
+   * **Stav** – stav poslední dokončené úlohy. **Úspěch** indikuje, že se zálohování úspěšně vytvořilo. **Selhání** znamená, že úloha nebyla úspěšně spuštěna.
    * **Informace** – důvod selhání.
-   * **Počet zpracovaných bajtů (MB)** – množství dat ze skupiny svazků, která byla zpracována (v MB). 
+   * **Zpracované bajty (MB)** – množství dat ze zpracované skupiny svazků (v MB). 
      
-     ![Úlohy, které běžely za posledních 24 hodin](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_Last_24_hours.png) 
-3. Chcete-li provést další akce u určité úlohy, klepněte pravým tlačítkem myši na název **úlohy** v podokně Výsledky a vyberte z možností nabídky.
+     ![Úlohy, které byly spuštěny za posledních 24 hodin](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_Last_24_hours.png) 
+3. Chcete-li provést další akce na konkrétní úlohu, klikněte pravým tlačítkem myši na název úlohy v podokně **výsledků** a vyberte možnost z možností nabídky.
    
     ![Odstranění úlohy](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Delete_backup.png)
 
 ## <a name="view-currently-running-jobs"></a>Zobrazit aktuálně spuštěné úlohy
-Následující postup slouží k zobrazení úloh, které jsou aktuálně spuštěny.
+K zobrazení aktuálně spuštěných úloh použijte následující postup.
 
-#### <a name="to-view-currently-running-jobs"></a>Zobrazení aktuálně spuštěné úlohy
-1. Kliknutím na ikonu na ploše spusťte Správce snímků StorSimple.
-2. V podokně **Obor** rozbalte uzel **Úlohy** a klepněte na **tlačítko Spuštěno**. V závislosti na zadaných možnostech **zobrazení** se v podokně **Výsledky** zobrazí následující informace:
+#### <a name="to-view-currently-running-jobs"></a>Zobrazení aktuálně spuštěných úloh
+1. Kliknutím na ikonu na ploše spusťte StorSimple Snapshot Manager.
+2. V podokně **obor** rozbalte uzel **úlohy** a klikněte na možnost **spuštěno**. V závislosti na zadaných možnostech **zobrazení** se v podokně **výsledků** zobrazí následující informace:
    
    * **Název** – název naplánovaného snímku.
-   * **Spuštěno** – datum a čas, kdy snímek začal.
+   * **Začalo** – datum a čas zahájení snímku.
    * **Kontrolní bod** – aktuální akce zálohy.
-   * **Stav** – procento dokončení.
-   * **Uplynulý** – množství času, který uplynul od začátku zálohování. 
-   * **Průměrná propustnost (MB)** – poměr celkových bajtů zpracovávaných dat k celkovédobě času zpracování (MB).
-   * **Zpracovali jste (MB)** ( celkový počet bajtů zpracovávaných dat (v MB).
-   * **Zápis bajtů (MB)** – celkový počet zapsaných dat (v MB). Obsahuje data, stejně jako metadata a proto je obvykle větší než bytes zpracované.
+   * **Stav** – procentuální podíl dokončení.
+   * **Uplynulo** – množství času, které bylo od zahájení zálohování úspěšné. 
+   * **Průměrná propustnost (MB)** – poměr celkového objemu zpracovaných dat do celkového času pro zpracování (MB).
+   * **Zpracované bajty (MB)** – celkový počet zpracovaných dat (v MB).
+   * **Zapsané bajty (MB)** – celkový počet zapsaných dat (v MB). Zahrnuje data i metadata, a proto jsou obvykle větší než zpracované bajty.
      
      ![Aktuálně spuštěné úlohy](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_running.png)
-3. Chcete-li provést další akce u určité úlohy, klepněte pravým tlačítkem myši na název **úlohy** v podokně Výsledky a vyberte z možností nabídky.
+3. Chcete-li provést další akce na konkrétní úlohu, klikněte pravým tlačítkem myši na název úlohy v podokně **výsledků** a vyberte možnost z možností nabídky.
 
 ## <a name="next-steps"></a>Další kroky
-* Naučte se [používat Správce snímků StorSimple ke správě řešení StorSimple](storsimple-snapshot-manager-admin.md).
-* Naučte se [používat Správce snímků StorSimple ke správě katalogu záloh](storsimple-snapshot-manager-manage-backup-catalog.md).
+* Naučte se [používat Snapshot Manager StorSimple ke správě řešení StorSimple](storsimple-snapshot-manager-admin.md).
+* Naučte se [používat Snapshot Manager StorSimple ke správě katalogu záloh](storsimple-snapshot-manager-manage-backup-catalog.md).
 

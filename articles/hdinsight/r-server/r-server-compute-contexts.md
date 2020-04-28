@@ -1,6 +1,6 @@
 ---
-title: Možnosti výpočetního kontextu pro služby ML na HDInsight – Azure
-description: Informace o různých možnostech výpočetního kontextu dostupných uživatelům se službami ML na HDInsightu
+title: Možnosti výpočetního kontextu pro služby ML ve službě HDInsight – Azure
+description: Seznamte se s různými možnostmi výpočetního kontextu, které jsou dostupné pro uživatele se službami ML ve službě HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,77 +9,77 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
 ms.openlocfilehash: b67bd5b6310e1f8ce35dc14690757209ef62c9d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75660252"
 ---
-# <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Možnosti výpočetního kontextu pro služby ML na hdinsightu
+# <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Možnosti výpočetního kontextu pro služby ML v HDInsight
 
-Ml Služby na Azure HDInsight řídí, jak se volání provádí nastavením výpočetního kontextu. Tento článek popisuje možnosti, které jsou k dispozici určit, zda a jak je paralelní provádění mezi jádry hraničního uzlu nebo clusteru HDInsight.
+Služba ML Services ve službě Azure HDInsight řídí, jak se spouštějí volání, a to nastavením výpočetního kontextu. Tento článek popisuje možnosti, které jsou k dispozici pro určení, zda a jakým způsobem je provádění paralelní napříč jádry hraničního uzlu nebo clusteru HDInsight.
 
-Hraniční uzel clusteru poskytuje vhodné místo pro připojení ke clusteru a spuštění skriptů R. S hraničním uzlem máte možnost spustit paralelizované distribuované funkce RevoScaleR přes jádra serveru hraničního uzlu. Můžete je také spustit přes uzly clusteru pomocí revoscaler je Hadoop mapa snížit nebo Apache Spark výpočetní kontexty.
+Hraniční uzel clusteru poskytuje vhodné místo pro připojení ke clusteru a spouštění skriptů jazyka R. Pomocí hraničního uzlu máte možnost spouštět paralelní distribuované funkce RevoScaleR napříč jádry serveru hraničního uzlu. Můžete je také spouštět v uzlech clusteru pomocí RevoScaleR mapy Hadoop pro redukci nebo Apache Spark výpočetních kontextů.
 
-## <a name="ml-services-on-azure-hdinsight"></a>Ml služby na Azure HDInsight
+## <a name="ml-services-on-azure-hdinsight"></a>Služby ML ve službě Azure HDInsight
 
-[Ml Services na Azure HDInsight](r-server-overview.md) poskytuje nejnovější funkce pro analýzy založené na R. Můžete použít data uložená v kontejneru Apache Hadoop HDFS ve vašem účtu úložiště [objektů Blob Azure,](../../storage/common/storage-introduction.md "Azure Blob Storage") úložiště Data Lake Store nebo v místním souborovém systému Linux. Vzhledem k tomu, že ml služby je postaven na open source R, aplikace založené na R, které vytvoříte můžete použít některý z 8000 + open source R balíčky. Mohou také používat rutiny v [RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), Microsoft big data analytics balíček, který je součástí ML Services.  
+[Služba ml Services v Azure HDInsight](r-server-overview.md) poskytuje nejnovější funkce pro analýzy založené na jazyce R. Může použít data uložená v kontejneru Apache Hadoop HDFS v účtu služby [Azure Blob](../../storage/common/storage-introduction.md "Azure Blob Storage") Storage, v Data Lake Store nebo v místním systému souborů Linux. Vzhledem k tomu, že služba ML Services je postavená na Open Source R, aplikace založené na jazyce R můžou použít kterýkoli z balíčků verze 8000 + open-source. Můžou také používat rutiny v [RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), což je balíček pro analýzy velkých objemů dat od Microsoftu, který je součástí ml služeb.  
 
-## <a name="compute-contexts-for-an-edge-node"></a>Výpočetní kontexty pro hraniční uzel
+## <a name="compute-contexts-for-an-edge-node"></a>Kontexty výpočtů pro hraniční uzel
 
-Obecně platí, že skript R, který je spuštěn v clusteru SLUŽBY ML na hraničním uzlu, běží v rámci překladače R v tomto uzlu. Výjimky jsou tyto kroky, které volají funkci RevoScaleR. Volání RevoScaleR spustit ve výpočetním prostředí, které je určeno tím, jak nastavit kontext výpočetnírevoměřítkr.  Při spuštění skriptu R z hraničního uzlu jsou možné hodnoty výpočetního kontextu:
+Obecně platí, že skript R, který je spuštěn v clusteru služby ML na hraničním uzlu, je spuštěn v překladači R na tomto uzlu. Výjimkou jsou kroky, které volají funkci RevoScaleR. Volání RevoScaleR se spouštějí ve výpočetním prostředí, které je určeno nastavením výpočetního kontextu RevoScaleR.  Při spuštění skriptu R z hraničního uzlu jsou možné hodnoty kontextu Compute:
 
-- lokální sekvenční (*místní*)
-- lokální paralelní (*localpar*)
-- Omezit mapování
+- místní sekvenční (*místní*)
+- místní paralelní (*localpar*)
+- Zmenšit mapování
 - Spark
 
-*Místní* a *localpar* možnosti se liší pouze v tom, jak **rxExec** volání jsou prováděny. Oba provádějí další volání funkce rx paralelním způsobem ve všech dostupných jádrech, pokud není uvedeno jinak pomocí `rxOptions(numCoresToUse=6)`možnosti RevoScaleR **numCoresToUse,** například . Možnosti paralelního spuštění nabízejí optimální výkon.
+*Místní* a *localpar* možnosti se liší pouze v tom, jak se spouštějí volání **rxExec** . Oba mají paralelní volání funkce RX napříč všemi dostupnými jádry, pokud není uvedeno jinak pomocí možnosti RevoScaleR **numCoresToUse** , například `rxOptions(numCoresToUse=6)`. Možnosti paralelního provádění nabízejí optimální výkon.
 
-Následující tabulka shrnuje různé možnosti výpočetního kontextu a nastavuje způsob spouštění volání:
+Následující tabulka shrnuje různé možnosti výpočetního kontextu pro nastavení způsobu spuštění volání:
 
 | Výpočetní kontext  | Jak nastavit                      | Kontext spuštění                        |
 | ---------------- | ------------------------------- | ---------------------------------------- |
-| Místní sekvenční | rxSetComputeContext('místní')    | Paralelní provádění mezi jádry serveru hraničního uzlu, s výjimkou volání rxExec, která jsou prováděna sériově |
-| Místní paralelní   | rxSetComputeContext('localpar') | Paralelizované provádění mezi jádry serveru hraničního uzlu |
-| Spark            | RxSpark()                       | Paralelizované distribuované spuštění přes Spark přes uzly clusteru HDI |
-| Omezit mapování       | RxHadoopMR()                    | Paralelizované distribuované spuštění pomocí funkce Omezit mapování napříč uzly clusteru HDI |
+| Místní sekvenční | rxSetComputeContext (místní)    | Paralelní provádění napříč jádry serveru hraničního uzlu, s výjimkou volání rxExec, která se spouštějí sériově |
+| Místní paralelní   | rxSetComputeContext('localpar') | Paralelní provádění napříč jádry serveru hraničního uzlu |
+| Spark            | Výpočetního rxspark ()                       | Paralelní distribuované provádění prostřednictvím Sparku napříč uzly clusteru HDI |
+| Zmenšit mapování       | RxHadoopMR()                    | Paralelní distribuované provádění prostřednictvím mapy se zmenšuje v uzlech clusteru HDI. |
 
 ## <a name="guidelines-for-deciding-on-a-compute-context"></a>Pokyny pro rozhodování o výpočetním kontextu
 
-Která ze tří možností, které zvolíte a které poskytují paralelní spuštění, závisí na povaze vaší analytické práce, velikosti a umístění dat. Neexistuje žádný jednoduchý vzorec, který vám řekne, který výpočetní kontext použít. Existují však některé hlavní zásady, které vám mohou pomoci učinit správnou volbu, nebo alespoň pomoci zúžit vaše volby před spuštěním benchmarku. Mezi tyto hlavní zásady patří:
+Který ze tří možností, které si zvolíte, nabízí paralelní provádění, závisí na povaze vaší analýzy, velikosti a umístění vašich dat. Neexistuje žádný jednoduchý vzorec, který vám oznamuje, který výpočetní kontext se má použít. Existují však některé principy použití identifikátoru GUID, které vám pomohou s výběrem správné volby, nebo alespoň k zúžení výběru před spuštěním srovnávacího testu. Principy těchto identifikátorů GUID zahrnují:
 
-- Místní souborový systém Linux je rychlejší než HDFS.
+- Místní systém souborů Linux je rychlejší než HDFS.
 - Opakované analýzy jsou rychlejší, pokud jsou data místní a pokud jsou v XDF.
-- Je vhodnější streamovat malá množství dat ze zdroje textových dat. Pokud je množství dat větší, převeďte je před analýzou na XDF.
-- Režie kopírování nebo streamování dat do hraničního uzlu pro analýzu se stane nespravovatelné pro velmi velké množství dat.
-- ApacheSpark je rychlejší než Map Reduce pro analýzu v Hadoopu.
+- Je vhodnější streamovat malé objemy dat z textového zdroje dat. Pokud je množství dat větší, převeďte je do XDF před analýzou.
+- Režijní náklady na kopírování nebo streamování dat do hraničního uzlu pro účely analýzy se stávají nespravovatelnými pro velké objemy dat.
+- ApacheSpark je rychlejší než omezení map pro analýzu v Hadoop.
 
-Vzhledem k těmto zásadám následující části nabízejí některá obecná pravidla pro výběr výpočetního kontextu.
+V následujících částech jsou uvedené některé obecné pravidla pro výběr výpočetního kontextu.
 
 ### <a name="local"></a>Local
 
-- Pokud je množství dat k analýze malé a nevyžaduje opakovanou analýzu, pak je streamujte přímo do rutiny analýzy pomocí *místního* nebo *localparu*.
-- Pokud je množství dat k analýze malé nebo střední a vyžaduje opakovanou analýzu, zkopírujte je do místního systému souborů, importujte je do XDF a analyzujte je pomocí *místního* nebo *localparu*.
+- Pokud je objem dat k analýze malý a nevyžaduje opakovanou analýzu, pak ji Streamujte přímo do analytické rutiny pomocí *místních* nebo *localpar*.
+- Pokud je množství dat k analýze malé nebo středně velké a vyžaduje opakovanou analýzu, zkopírujte ji do místního systému souborů, importujte ji do XDF a analyzujte ji prostřednictvím *místních* nebo *localpar*.
 
 ### <a name="apache-spark"></a>Apache Spark
 
-- Pokud je množství dat k analýze velké, importujte je do datového rámce Spark pomocí **RxHiveData** nebo **RxParquetData**nebo do XDF v HDFS (pokud úložiště není problém) a analyzujte je pomocí výpočetního kontextu Spark.
+- Pokud je objem dat k analýze velký, importujte ho do datového rámce Spark pomocí **RxHiveData** nebo **RXPARQUETDATA**nebo na XDF v HDFS (Pokud se nejedná o problém) a analyzujte ho pomocí výpočetního kontextu Spark.
 
-### <a name="apache-hadoop-map-reduce"></a>Apache Hadoop mapa snížit
+### <a name="apache-hadoop-map-reduce"></a>Zmenšení Apache Hadoop mapy
 
-- Kontext výpočetního prostředí Omezit mapu použijte pouze v případě, že narazíte na nepřekonatelný problém s výpočetním kontextem Spark, protože je obecně pomalejší.  
+- Použijte mapování omezit výpočetní kontext jenom v případě, že jste procházeli nepřekonatelným problémem s výpočetním kontextem Spark, protože je obecně pomalejší.  
 
-## <a name="inline-help-on-rxsetcomputecontext"></a>Inline nápověda k rxSetComputeContext
-Další informace a příklady výpočetních kontextů RevoScaleR naleznete v nápovědě v r na metodě rxSetComputeContext, například:
+## <a name="inline-help-on-rxsetcomputecontext"></a>Vložená Pomocník pro rxSetComputeContext
+Další informace a příklady RevoScaleR výpočetních kontextů najdete v tématu s vloženou nápovědu v R na metodě rxSetComputeContext, například:
 
     > ?rxSetComputeContext
 
-Můžete také odkazovat na [přehled distribuovaného výpočetního prostředí](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing) v [dokumentaci k serveru Machine Learning Server](https://docs.microsoft.com/machine-learning-server/).
+Další informace najdete v tématu [Přehled distribuovaných výpočtů](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing) v [dokumentaci Machine Learning Server](https://docs.microsoft.com/machine-learning-server/).
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli o možnostech, které jsou k dispozici určit, zda a jak je provádění paralelizováno mezi jádry hraničního uzlu nebo clusteru HDInsight. Další informace o používání služeb ML v clusterech HDInsight naleznete v následujících tématech:
+V tomto článku jste se dozvěděli o možnostech, které jsou k dispozici pro určení toho, zda a jak je provádění paralelně v jádrech hraničního uzlu nebo clusteru HDInsight. Další informace o tom, jak používat služby ML s clustery HDInsight, najdete v následujících tématech:
 
-- [Přehled ml služeb pro Apache Hadoop](r-server-overview.md)
-- [Možnosti úložiště Azure pro služby ML na WEBU HDInsight](r-server-storage.md)
+- [Přehled služeb ML pro Apache Hadoop](r-server-overview.md)
+- [Možnosti Azure Storage pro služby ML v HDInsight](r-server-storage.md)

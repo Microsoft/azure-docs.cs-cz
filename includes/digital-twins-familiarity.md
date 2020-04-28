@@ -10,13 +10,13 @@ ms.topic: include
 ms.date: 01/10/2020
 ms.custom: include file
 ms.openlocfilehash: ee105969282dd41b4b56abb50e06f9fa219388ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75901881"
 ---
-Tento článek předpokládá určité znalosti o ověřování vašich azure digitální dvojče správu API.
+Tento článek předpokládá určitou znalost ověřování pro rozhraní API pro správu digitálních vláken Azure.
 
-* Další informace o ověřování pomocí api pro správu najdete v textu [Authenticating with Azure Digital Twins API](../articles/digital-twins/security-authenticating-apis.md).
-* Chcete-li se ověřit pomocí rozhraní API pro správu pomocí klienta Postman REST, přečtěte [si článek Jak nakonfigurovat Popšár](../articles/digital-twins/how-to-configure-postman.md).
+* Další informace o ověřování pomocí rozhraní API pro správu najdete v tématu [ověřování pomocí rozhraní API pro digitální vlákna Azure](../articles/digital-twins/security-authenticating-apis.md).
+* K ověření pomocí rozhraní API pro správu pomocí klienta post REST si přečtěte, [jak nakonfigurovat post](../articles/digital-twins/how-to-configure-postman.md).

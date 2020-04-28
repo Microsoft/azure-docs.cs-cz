@@ -1,22 +1,22 @@
 ---
-title: Element ui textového pole
-description: Popisuje prvek microsoft.common.textbox ui pro portál Azure. Používá se pro přidání neformátovaného textu.
+title: TextBox – element uživatelského rozhraní
+description: Popisuje prvek uživatelského rozhraní Microsoft. Common. TextBox pro Azure Portal. Slouží k přidání neformátovaného textu.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: e9f084badda9ea1905e43c6f00b29aaf957a6dbd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75652278"
 ---
-# <a name="microsoftcommontextbox-ui-element"></a>Element ui rozhraní Microsoft.Common.TextBox
+# <a name="microsoftcommontextbox-ui-element"></a>Microsoft. Common. TextBox – element uživatelského rozhraní
 
-Ovládací prvek, který lze použít k úpravě neformátovaného textu.
+Ovládací prvek, který lze použít k úpravám neformátovaného textu.
 
-## <a name="ui-sample"></a>Ukázka ui
+## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
 
 ![Microsoft.Common.TextBox](./media/managed-application-elements/microsoft.common.textbox.png)
 
@@ -46,12 +46,12 @@ Ovládací prvek, který lze použít k úpravě neformátovaného textu.
 
 ## <a name="remarks"></a>Poznámky
 
-- Pokud `constraints.required` je nastavena na **hodnotu true**, musí mít textové pole hodnotu, která má být úspěšně ověřena. Výchozí hodnota je **false** (nepravda).
-- `constraints.regex`je vzor regulárního výrazu JavaScriptu. Pokud je zadán, pak hodnota textového pole musí odpovídat vzorek úspěšně ověřit. Výchozí hodnota je **null**.
-- `constraints.validationMessage`je řetězec, který se zobrazí, když hodnota textového pole selže ověření. Pokud není zadán, pak se používají předdefinované ověřovací zprávy textového pole. Výchozí hodnota je **null**.
-- Je možné zadat hodnotu, `constraints.regex` `constraints.required` kdy je nastavena na **false**. V tomto scénáři není vyžadována hodnota pro textové pole úspěšně ověřit. Pokud je zadán, musí odpovídat vzoru regulárního výrazu.
+- Pokud `constraints.required` je vlastnost nastavena na **hodnotu true**, musí mít textové pole hodnotu k úspěšnému ověření. Výchozí hodnota je **false** (nepravda).
+- `constraints.regex`je vzor regulárního výrazu jazyka JavaScript. Je-li tento parametr zadán, musí být hodnota textového pole shodná se vzorem, aby bylo možné úspěšně ověřit. Výchozí hodnota je **null**.
+- `constraints.validationMessage`je řetězec, který se zobrazí, když se hodnota textového pole nezdařila. Není-li parametr zadán, jsou použity vestavěné zprávy ověřování v textovém poli. Výchozí hodnota je **null**.
+- Je možné zadat hodnotu `constraints.regex` , která `constraints.required` je nastavena na **hodnotu false**. V tomto scénáři není požadovaná hodnota pro úspěšné ověření tohoto textového pole. Pokud je zadaný, musí se shodovat se vzorem regulárního výrazu.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úvod k vytváření definic ui naleznete [v tématu Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
-* Popis běžných vlastností v prvcích uživatelského rozhraní naleznete v [tématu CreateUiDefinition elements](create-uidefinition-elements.md).
+* Úvod k vytváření definic uživatelského rozhraní najdete v tématu [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
+* Popis běžných vlastností v prvcích uživatelského rozhraní naleznete v tématu [CreateUiDefinition Elements](create-uidefinition-elements.md).

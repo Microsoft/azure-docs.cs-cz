@@ -1,5 +1,5 @@
 ---
-title: 'Připojení virtuální sítě k virtuální síti pomocí připojení virtuální sítě k virtuální síti: Azure CLI'
+title: 'Připojení virtuální sítě k virtuální síti pomocí připojení typu VNet-to-VNet: Azure CLI'
 description: Propojení virtuálních sítí s použitím připojení typu VNet-to-VNet a Azure CLI.
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/14/2018
 ms.author: cherylmc
 ms.openlocfilehash: a354f8031c26ca86876dc6f3a2092610226cc84b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75834570"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Konfigurace připojení brány VPN typu VNet-to-VNet pomocí Azure CLI
@@ -22,8 +22,8 @@ Tento článek vám pomůže propojit virtuální sítě s použitím typu přip
 Postupy v tomto článku se týkají modelu nasazení Resource Manager a používají Azure CLI. Tuto konfiguraci můžete vytvořit také pomocí jiného nástroje nasazení nebo pro jiný model nasazení, a to výběrem jiné možnosti z následujícího seznamu:
 
 > [!div class="op_single_selector"]
-> * [Portál Azure](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
-> * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
+> * [portál Azure](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Prostředí](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure Portal (Classic)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 > * [Propojení různých modelů nasazení – Azure Portal](vpn-gateway-connect-different-deployment-models-portal.md)
@@ -67,7 +67,7 @@ V tomto článku uvidíte dvě různé sady kroků připojení VNet-to-VNet. Jed
 
 Pro toto cvičení můžete konfigurace kombinovat nebo prostě vybrat tu, se kterou chcete pracovat. Všechny konfigurace používají typ připojení VNet-to-VNet. Provoz probíhá mezi virtuálními sítěmi, které jsou vzájemně přímo propojené. V tomto cvičení se provoz ze sítě TestVNet4 nesměruje do sítě TestVNet5.
 
-* [Virtuální sítě, které jsou umístěny ve stejném předplatném:](#samesub) Postup pro tuto konfiguraci používá TestVNet1 a TestVNet4.
+* [Virtuální sítě nacházející se ve stejném předplatném:](#samesub) Kroky pro tuto konfiguraci využívají virtuální sítě testvnet1 a virtuální sítě testvnet4.
 
   ![Diagram v2v](./media/vpn-gateway-howto-vnet-vnet-cli/v2vrmps.png)
 
@@ -78,7 +78,7 @@ Pro toto cvičení můžete konfigurace kombinovat nebo prostě vybrat tu, se kt
 
 ## <a name="connect-vnets-that-are-in-the-same-subscription"></a><a name="samesub"></a>Propojení virtuálních sítí patřících ke stejnému předplatnému
 
-### <a name="before-you-begin"></a>Než začnete
+### <a name="before-you-begin"></a>Před zahájením
 
 Než začnete, nainstalujte si nejnovější verzi příkazů rozhraní příkazového řádku (2.0 nebo novější). Informace o instalaci příkazů rozhraní příkazového řádku najdete v tématu [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
@@ -292,7 +292,7 @@ Při vytváření dalších připojení je důležité ověřit, že se adresní
 
 ### <a name="step-7---create-and-configure-testvnet5"></a><a name="TestVNet5"></a>Krok 7: Vytvoření a konfigurace virtuální sítě TestVNet5
 
-Tento krok je třeba provést v rámci nového předplatného (předplatné 5). Tuto část může provést správce v organizaci, která je vlastníkem druhého předplatného. Chcete-li přepnout `az account list --all` mezi předplatnými, použijte k `az account set --subscription <subscriptionID>` zobrazení seznamu předplatných, která jsou k dispozici pro váš účet, a pak přepněte na předplatné, které chcete použít.
+Tento krok je třeba provést v rámci nového předplatného (předplatné 5). Tuto část může provést správce v organizaci, která je vlastníkem druhého předplatného. K přepínání mezi předplatnými použijte `az account list --all` k vypsání předplatných, která `az account set --subscription <subscriptionID>` jsou k dispozici pro váš účet, a pak použijte k přepnutí na předplatné, které chcete použít.
 
 1. Ujistěte se, že jste připojeni k předplatnému 5, a pak vytvořte skupinu prostředků.
 
@@ -331,7 +331,7 @@ Tento krok je třeba provést v rámci nového předplatného (předplatné 5). 
 
 ### <a name="step-8---create-the-connections"></a><a name="connections5"></a>Krok 8: Vytvoření připojení
 
-Vzhledem k tomu, že brány patří do různých předplatných, je tento krok rozdělený do dvou relací rozhraní příkazového řádku označených jako **[Předplatné 1]** a **[Předplatné 5]**. Chcete-li přepnout `az account list --all` mezi předplatnými, použijte k `az account set --subscription <subscriptionID>` zobrazení seznamu předplatných, která jsou k dispozici pro váš účet, a pak přepněte na předplatné, které chcete použít.
+Vzhledem k tomu, že brány patří do různých předplatných, je tento krok rozdělený do dvou relací rozhraní příkazového řádku označených jako **[Předplatné 1]** a **[Předplatné 5]**. K přepínání mezi předplatnými použijte `az account list --all` k vypsání předplatných, která `az account set --subscription <subscriptionID>` jsou k dispozici pro váš účet, a pak použijte k přepnutí na předplatné, které chcete použít.
 
 1. **[Předplatné 1]** Přihlaste a připojte se k předplatnému 1. Spusťte následující příkaz a z výstupu získejte název a ID brány:
 

@@ -1,5 +1,5 @@
 ---
-title: 'Připojení virtuální sítě k jiné virtuální síti pomocí připojení virtuální sítě Azure VPN Gateway: PowerShell'
+title: 'Připojení virtuální sítě k jiné virtuální síti pomocí připojení typu VNet-to-VNet v Azure VPN Gateway: PowerShell'
 description: Propojení virtuálních sítí s použitím připojení typu VNet-to-VNet a PowerShellu.
 services: vpn-gateway
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: cherylmc
 ms.openlocfilehash: eebe66ca038b31f23ca864b107816b8cf761b29c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75860516"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Konfigurace připojení brány VPN typu VNet-to-VNet pomocí PowerShellu
@@ -21,8 +21,8 @@ Tento článek vám pomůže propojit virtuální sítě s použitím typu přip
 Postupy v tomto článku se týkají modelu nasazení Resource Manager a používají PowerShell. Tuto konfiguraci můžete vytvořit také pomocí jiného nástroje nasazení nebo pro jiný model nasazení, a to výběrem jiné možnosti z následujícího seznamu:
 
 > [!div class="op_single_selector"]
-> * [Portál Azure](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
-> * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
+> * [portál Azure](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Prostředí](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure Portal (Classic)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 > * [Propojení různých modelů nasazení – Azure Portal](vpn-gateway-connect-different-deployment-models-portal.md)
@@ -69,19 +69,19 @@ Pro toto cvičení můžete konfigurace kombinovat nebo prostě vybrat tu, se kt
 
   ![Diagram v2v](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
-* [Virtuální sítě, které jsou umístěny v různých předplatných](#difsub): Kroky pro tuto konfiguraci používají TestVNet1 a TestVNet5.
+* [Virtuální sítě nacházející se v různých předplatných](#difsub): kroky pro tuto konfiguraci využívají virtuální sítě testvnet1 a TestVNet5.
 
   ![Diagram v2v](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
 
 ## <a name="how-to-connect-vnets-that-are-in-the-same-subscription"></a><a name="samesub"></a>Postup při propojování virtuálních sítí patřících do stejného předplatného
 
-### <a name="before-you-begin"></a>Než začnete
+### <a name="before-you-begin"></a>Před zahájením
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* Vzhledem k tomu, že vytvoření brány trvá až 45 minut, bude Azure Cloud Shell během tohoto cvičení pravidelně outout časový plán. Cloud Shell můžete restartovat kliknutím v levém horním rohu terminálu. Ujistěte se, že znovu deklarovat všechny proměnné při restartování terminálu.
+* Vzhledem k tomu, že při vytváření brány trvá až 45 minut, bude Azure Cloud Shell pravidelně během tohoto cvičení časový limit. Cloud Shell můžete restartovat kliknutím do levého horního rohu terminálu. Nezapomeňte znovu deklarovat všechny proměnné při restartování terminálu.
 
-* Pokud byste raději nainstalovali nejnovější verzi modulu Azure PowerShell místně, přečtěte [si, jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview).
+* Pokud místo toho chcete nainstalovat nejnovější verzi modulu Azure PowerShell v místním prostředí, přečtěte si téma [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview).
 
 ### <a name="step-1---plan-your-ip-address-ranges"></a><a name="Step1"></a>Krok 1: Plánování rozsahů IP adres
 
@@ -125,7 +125,7 @@ V příkladech používáme následující hodnoty:
 
 1. Ověřte nastavení předplatného.
 
-   Pokud v počítači používáte powershell místně, připojte se ke svému účtu. Pokud používáte Azure Cloud Shell, jste připojeni automaticky.
+   Pokud používáte PowerShell místně na počítači, připojte se ke svému účtu. Pokud používáte Azure Cloud Shell, budete automaticky připojeni.
 
    ```azurepowershell-interactive
    Connect-AzAccount
@@ -166,7 +166,7 @@ V příkladech používáme následující hodnoty:
    ```azurepowershell-interactive
    New-AzResourceGroup -Name $RG1 -Location $Location1
    ```
-4. Vytvořte konfigurace podsítí pro virtuální síť TestVNet1. Tato ukázka vytvoří virtuální síť s názvem TestVNet1 a tři podsítě: jednu s názvem GatewaySubnet, jednu s názvem FrontEnd a jednu s názvem BackEnd. Při nahrazování hodnot je důležité vždy přiřadit podsíti brány konkrétní název GatewaySubnet. Pokud použijete jiný název, vytvoření brány se nezdaří. Z tohoto důvodu není přiřazena prostřednictvím proměnné níže.
+4. Vytvořte konfigurace podsítí pro virtuální síť TestVNet1. Tato ukázka vytvoří virtuální síť s názvem TestVNet1 a tři podsítě: jednu s názvem GatewaySubnet, jednu s názvem FrontEnd a jednu s názvem BackEnd. Při nahrazování hodnot je důležité vždy přiřadit podsíti brány konkrétní název GatewaySubnet. Pokud použijete jiný název, vytvoření brány se nezdaří. Z tohoto důvodu není přiřazena přes proměnnou níže.
 
    Následující příklad používá proměnné, které jste nastavili dříve. V příkladu používá podsíť brány možnost /27. I když je možné vytvořit podsíť brány s minimální velikostí /29, doporučujeme vytvořit větší podsíť, která pojme více adres, tzn. vybrat velikost aspoň /28 nebo /27. Tím vznikne dostatečný prostor pro adresy, který umožní nastavení případných dalších konfigurací v budoucnu.
 
@@ -203,13 +203,13 @@ V příkladech používáme následující hodnoty:
    -VpnType RouteBased -GatewaySku VpnGw1
    ```
 
-Po dokončení příkazů bude vytvoření této brány trvat až 45 minut. Pokud používáte Azure Cloud Shell, můžete restartovat relaci CloudShell kliknutím v levém horním rohu terminálu Cloud Shell a pak nakonfigurovat TestVNet4. Nemusíte čekat, až se dokončí brána TestVNet1.
+Až skončíte s příkazy, může trvat až 45 minut, než se tato brána vytvoří. Pokud používáte Azure Cloud Shell, můžete restartovat relaci Cloudshellu kliknutím do levého horního rohu Cloud Shell terminálu a potom nakonfigurovat virtuální sítě testvnet4. Nemusíte čekat, než se dokončí Brána virtuální sítě testvnet1.
 
 ### <a name="step-3---create-and-configure-testvnet4"></a>Krok 3: Vytvoření a konfigurace virtuální sítě TestVNet4
 
 Po konfiguraci virtuální sítě TestVNet1 vytvořte virtuální síť TestVNet4. Postupujte podle následujících kroků a podle potřeby nahrazujte hodnoty vlastními.
 
-1. Připojte se a deklarujte své proměnné. Nezapomeňte nahradit hodnoty těmi, které chcete použít pro svou konfiguraci.
+1. Připojte a deklarujte proměnné. Nezapomeňte nahradit hodnoty těmi, které chcete použít pro svou konfiguraci.
 
    ```azurepowershell-interactive
    $RG4 = "TestRG4"
@@ -268,7 +268,7 @@ Po konfiguraci virtuální sítě TestVNet1 vytvořte virtuální síť TestVNet
 
 ### <a name="step-4---create-the-connections"></a>Krok 4: Vytvoření připojení
 
-Počkejte, až budou dokončeny obě brány. Restartujte relaci Prostředí Azure Cloud Shell a zkopírujte a vložte proměnné od začátku kroku 2 a kroku 3 do konzoly, abyste znovu deklarovali hodnoty.
+Počkejte, dokud se obě brány nedokončí. Restartujte relaci Azure Cloud Shell a zkopírujte a vložte proměnné z začátku kroku 2 a kroku 3 do konzoly pro opětovné deklarování hodnot.
 
 1. Získejte obě brány virtuální sítě.
 
@@ -294,11 +294,11 @@ Počkejte, až budou dokončeny obě brány. Restartujte relaci Prostředí Azur
 
 ## <a name="how-to-connect-vnets-that-are-in-different-subscriptions"></a><a name="difsub"></a>Postup při propojování virtuálních sítí patřících do různých předplatných
 
-V tomto scénáři propojíte sítě TestVNet1 a TestVNet5. TestVNet1 a TestVNet5 jsou umístěny v různých předplatných. Předplatná nemusí být přidružená ke stejnému tenantovi Active Directory.
+V tomto scénáři propojíte sítě TestVNet1 a TestVNet5. Virtuální sítě testvnet1 a TestVNet5 se nacházejí v různých předplatných. Předplatná nemusí být přidružená ke stejnému tenantovi Active Directory.
 
 Rozdíl mezi těmito kroky a předchozí sadou spočívá v tom, že část kroků konfigurace je třeba provést v samostatné relaci PowerShellu v kontextu druhého předplatného. To je zvláště podstatné, když druhé předplatné patří jiné organizaci.
 
-Vzhledem ke změně kontextu předplatného v tomto cvičení může být snazší používat PowerShell místně v počítači, než pomocí Azure Cloud Shell, když se dostanete ke kroku 8.
+V důsledku změny kontextu předplatného v tomto cvičení možná budete v počítači snadno používat PowerShell místně a nemusíte používat Azure Cloud Shell, když se dostanete ke kroku 8.
 
 ### <a name="step-5---create-and-configure-testvnet1"></a>Krok 5: Vytvoření a konfigurace virtuální sítě TestVNet1
 
@@ -448,7 +448,7 @@ Jelikož brány v tomto příkladu patří do různých předplatných, rozděl�
    PS C:\> $vnet5gw.Id
    /subscriptions/66c8e4f1-ecd6-47ed-9de7-7e530de23994/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW
    ```
-3. **[Předplatné 1]** Vytvořte připojení TestVNet1 to TestVNet5. V tomto kroku vytvoříte propojení z virtuální sítě TestVNet1 do sítě TestVNet5. Rozdíl zde spočívá v tom, že hodnotu $vnet5gw nelze získat přímo, protože patří do jiného předplatného. Je třeba vytvořit nový objekt prostředí PowerShell s hodnotami zjištěnými z předplatného 1 v předchozích krocích. Postupujte podle následujícího příkladu. Nahraďte název, ID a sdílený klíč vlastními hodnotami. Důležité je, že se sdílený klíč pro obě připojení musí shodovat. Vytvoření připojení může nějakou dobu trvat.
+3. **[Předplatné 1]** Vytvořte virtuální sítě testvnet1 pro TestVNet5 připojení. V tomto kroku vytvoříte propojení z virtuální sítě TestVNet1 do sítě TestVNet5. Rozdíl zde spočívá v tom, že hodnotu $vnet5gw nelze získat přímo, protože patří do jiného předplatného. Je třeba vytvořit nový objekt prostředí PowerShell s hodnotami zjištěnými z předplatného 1 v předchozích krocích. Postupujte podle následujícího příkladu. Nahraďte název, ID a sdílený klíč vlastními hodnotami. Důležité je, že se sdílený klíč pro obě připojení musí shodovat. Vytvoření připojení může nějakou dobu trvat.
 
    Před spuštěním následujícího příkladu se připojte k předplatnému 1:
 
@@ -459,7 +459,7 @@ Jelikož brány v tomto příkladu patří do různých předplatných, rozděl�
    $Connection15 = "VNet1toVNet5"
    New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -VirtualNetworkGateway2 $vnet5gw -Location $Location1 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
    ```
-4. **[Předplatné 5]** Vytvořte připojení TestVNet5 na TestVNet1. Tento krok je podobný předchozímu, vytváříte však připojení z virtuální sítě TestVNet5 do virtuální sítě TestVNet1. Stejný postup vytváření objektu prostředí PowerShell na základě hodnot zjištěných z předplatného 1 se používá i zde. V tomto kroku ověřte, že se sdílené klíče shodují.
+4. **[Předplatné 5]** Vytvořte TestVNet5 pro virtuální sítě testvnet1 připojení. Tento krok je podobný předchozímu, vytváříte však připojení z virtuální sítě TestVNet5 do virtuální sítě TestVNet1. Stejný postup vytváření objektu prostředí PowerShell na základě hodnot zjištěných z předplatného 1 se používá i zde. V tomto kroku ověřte, že se sdílené klíče shodují.
 
    Před spuštěním následujícího příkladu se připojte k předplatnému 5:
 

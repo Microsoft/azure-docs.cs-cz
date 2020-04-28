@@ -1,5 +1,5 @@
 ---
-title: (ZASTARALÉ) Služba Kontejnerazure – nejčastější dotazy
+title: ZASTARALÉ Azure Container Service – Nejčastější dotazy
 description: Odpovědi na nejčastější dotazy týkající se Azure Container Service, služby, která zjednodušuje vytváření, konfiguraci a správu clusterů virtuálních počítačů pro spouštění aplikací typu kontejner Docker.
 services: container-service
 author: dlepow
@@ -10,13 +10,13 @@ ms.date: 08/30/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc
 ms.openlocfilehash: f031f55bbff534181459bb1bf7469f315aee27cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75887780"
 ---
-# <a name="deprecated-container-service-frequently-asked-questions"></a>(ZASTARALÉ) Nejčastější dotazy týkající se kontejnerové služby
+# <a name="deprecated-container-service-frequently-asked-questions"></a>ZASTARALÉ Nejčastější dotazy ke službě kontejneru
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -56,7 +56,7 @@ Pokud k nasazení clusteru služby kontejneru použijete příkazy rozhraní př
 
 ### <a name="how-do-i-create-a-service-principal-for-my-kubernetes-cluster"></a>Jak vytvořím instanční objekt pro cluster Kubernetes?
 
-K vytvoření clusteru Kubernetes ve službě Azure Container Service je potřeba také ID a heslo instančního objektu služby Azure Active Directory. Další informace naleznete [v tématu O instančním objektu clusteru Kubernetes](../../container-service/kubernetes/container-service-kubernetes-service-principal.md).
+K vytvoření clusteru Kubernetes ve službě Azure Container Service je potřeba také ID a heslo instančního objektu služby Azure Active Directory. Další informace najdete v tématu [o instančním objektu pro cluster Kubernetes](../../container-service/kubernetes/container-service-kubernetes-service-principal.md).
 
 Pokud k nasazení clusteru Kubernetes použijete [příkazy rozhraní příkazového řádku Azure](../../container-service/dcos-swarm/container-service-create-acs-cluster-cli.md), je možné přihlašovací údaje instančního objektu pro cluster vygenerovat automaticky.
 
@@ -104,7 +104,7 @@ Připojovací řetězec najdete na webu Azure Portal nebo pomocí nástrojů př
 
 4. Na stránce **Souhrn** v části **Výstupy** je uvedeno několik odkazů na cluster. **SSHMaster0** představuje připojovací řetězec SSH k prvnímu hlavnímu serveru ve vašem clusteru služby Container Service. 
 
-Jak bylo uvedeno výše, plně kvalifikovaný název domény hlavního serveru můžete najít také pomocí nástrojů Azure. Vytvořte připojení SSH k hlavnímu serveru pomocí plně kvalifikovaného názvu domény hlavního serveru a uživatelského jména, které jste zadali při vytváření clusteru. Například:
+Jak bylo uvedeno výše, plně kvalifikovaný název domény hlavního serveru můžete najít také pomocí nástrojů Azure. Vytvořte připojení SSH k hlavnímu serveru pomocí plně kvalifikovaného názvu domény hlavního serveru a uživatelského jména, které jste zadali při vytváření clusteru. Příklad:
 
 ```bash
 ssh userName@masterFQDN –A –p 22 
@@ -114,7 +114,7 @@ Další informace najdete v [Připojení ke clusteru služby Azure Container Ser
 
 ### <a name="my-dns-name-resolution-isnt-working-on-windows-what-should-i-do"></a>Nefunguje mi překlad názvů DNS ve Windows. Co bych měl/a dělat?
 
-Existují některé známé problémy se službou DNS v systému Windows, jejichž opravy jsou stále aktivně ukončovány. Ujistěte se, že používáte nejaktuálnější acs-engine a windows verze (s [KB4074588](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4074588) a [KB4089848),](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4089848) takže vaše prostředí může těžit z tohoto. Jinak si přečtěte kroky pro zmírnění rizika v následující tabulce:
+V systému Windows existují známé problémy služby DNS, jejichž opravy jsou stále aktivně odebírány. Ujistěte se prosím, že používáte nejnovější aktualizovanou verzi služby ACS-Engine a Windows (s nainstalovanou [KB4074588](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4074588) a [KB4089848](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4089848) ), aby vaše prostředí mohlo využívat výhod. Jinak si přečtěte kroky pro zmírnění rizika v následující tabulce:
 
 | Příznak DNS | Alternativní řešení  |
 |-------------|-------------|

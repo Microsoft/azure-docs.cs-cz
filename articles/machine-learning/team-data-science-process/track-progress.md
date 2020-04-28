@@ -1,6 +1,6 @@
 ---
-title: Sledování průběhu projektů procesu vědeckého zpracování týmových dat
-description: Jak správci skupiny datových věd, vedoucí týmu a vedoucí projektu mohou sledovat průběh projektu datové vědy.
+title: Sledování průběhu projektů vědeckého zpracování týmových dat
+description: Jak mohou správci skupin pro datové vědy, vedoucí týmu a vedoucí projektu sledovat průběh projektu pro datové vědy.
 author: marktab
 manager: marktab
 editor: marktab
@@ -11,43 +11,43 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 8cf1e5a4d97b882e7a8d0c81041bbcde709760d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75864192"
 ---
-# <a name="track-the-progress-of-data-science-projects"></a>Sledování pokroku v projektech datové vědy
+# <a name="track-the-progress-of-data-science-projects"></a>Sledování průběhu projektů pro datové vědy
 
-Manažeři skupindatových věd, vedoucí týmů a zájemci projektů mohou sledovat průběh svých projektů.  Manažeři chtějí vědět, co bylo vykonáno, kdo práci odvedl a jaká práce zůstává.   Řízení očekávání je důležitým prvkem úspěchu.
+Manažeři skupin pro datové vědy, vedoucí týmu a vedoucí projektu můžou sledovat průběh svých projektů.  Manažeři chtějí zjistit, jakou práci jste dokončili, kdo pracoval a jaká práce zůstává.   Správa očekávání je důležitým prvkem úspěchu.
 
 ## <a name="azure-devops-dashboards"></a>Řídicí panely Azure DevOps
 
-Pokud používáte Azure DevOps, můžete vytvořit řídicí panely ke sledování aktivit a pracovních položek přidružených k danému agilnímu projektu. Další informace o řídicích panelech naleznete v [tématu Řídicí panely, sestavy a widgety](/azure/devops/report/dashboards/).
+Pokud používáte Azure DevOps, můžete vytvořit řídicí panely, které sledují aktivity a pracovní položky přidružené k danému agilnímu projektu. Další informace o řídicích panelech najdete v tématu [řídicí panely, sestavy a widgety](/azure/devops/report/dashboards/).
 
-Pokyny k vytváření a přizpůsobení řídicích panelů a widgetů v Azure DevOps najdete v následujících rychlých startech:
+Pokyny k vytvoření a přizpůsobení řídicích panelů a widgetů v Azure DevOps najdete v následujících rychlých startech:
 
-- [Přidání a správa řídicích panelů](/azure/devops/report/dashboards/dashboards)
+- [Přidávání a Správa řídicích panelů](/azure/devops/report/dashboards/dashboards)
 - [Přidání widgetů na řídicí panel](/azure/devops/report/dashboards/add-widget-to-dashboard)
 
 ## <a name="example-dashboard"></a>Ukázkový řídicí panel
 
-Zde je jednoduchý příklad řídicího panelu, který sleduje sprint aktivity projektu agilní datové vědy, včetně počtu potvrzení do přidružených úložišť. 
+Tady je jednoduchý příklad řídicího panelu, který sleduje aktivity sprintu projektu agilního zpracování dat, včetně počtu potvrzení změn přidružených k úložištím. 
 
-- Dlaždice **odpočítávání** zobrazuje počet dní, které zůstávají v aktuálním sprintu. 
+- Dlaždice **odpočítávání** zobrazuje počet dní, které zůstanou v aktuálním sprintu. 
 
-- Dvě **dlaždice kódu** zobrazují počet potvrzení ve dvou úložištích projektu za posledních sedm dní. 
+- Dlaždice se dvěma **kódy** zobrazují počet potvrzení ve dvou úložištích projektu za posledních sedm dní. 
 
-- **Pracovní položky pro projekt zákazníka TDSP** zobrazuje výsledky dotazu pro všechny pracovní položky a jejich stav. 
+- **Projekt pracovních položek pro zákazníka TDSP** zobrazuje výsledky dotazu pro všechny pracovní položky a jejich stav. 
 
 - **Kumulativní vývojový diagram** (CFD) zobrazuje počet uzavřených a aktivních pracovních položek.
 
-- **Graf úbytku práce** zobrazuje práci, která je stále dokončena proti zbývajícímu času ve sprintu.
+- V **grafu burndown** se zobrazuje práce, která se pořád dokončuje ve zbývajícím čase v sprintu.
 
-- **Graf vyhoření** zobrazuje dokončenou práci ve srovnání s celkovým množstvím práce ve sprintu.
+- **Graf burnup** znázorňuje dokončenou práci ve srovnání s celkovým množstvím práce v sprintu.
 
 ![Řídicí panel](./media/track-progress/dashboard.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-[Návody provádějící proces vědeckého procesu týmových dat](walkthroughs.md) uvádí návody, které ukazují všechny kroky procesu. Propojené scénáře ilustrují, jak spravovat cloudové a místní prostředky do inteligentních aplikací. 
+[Návody, kterými se spouští vědecké zpracování týmových dat](walkthroughs.md) , uvádí postupy, které ukazují všechny kroky procesu. Propojené scénáře ukazují, jak spravovat cloudové a místní prostředky do inteligentních aplikací. 

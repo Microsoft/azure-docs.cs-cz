@@ -1,6 +1,6 @@
 ---
-title: Instalace adaptéru StorSimple pro SharePoint | Dokumenty společnosti Microsoft
-description: Popisuje, jak nainstalovat a nakonfigurovat nebo odebrat adaptér StorSimple pro SharePoint ve farmě serveru SharePoint.
+title: Nainstalovat adaptér StorSimple pro SharePoint | Microsoft Docs
+description: Popisuje, jak nainstalovat a nakonfigurovat nebo odebrat adaptér StorSimple pro službu SharePoint ve farmě serverů SharePoint.
 services: storsimple
 documentationcenter: NA
 author: twooley
@@ -15,246 +15,246 @@ ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: twooley
 ms.openlocfilehash: a841ce8b664389ccd8fdf55de9965f09412fecf5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75930210"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>Instalace a konfigurace adaptéru StorSimple pro SharePoint
 ## <a name="overview"></a>Přehled
-StorSimple Adaptér pro SharePoint je součást, která umožňuje poskytovat Microsoft Azure StorSimple flexibilní úložiště a ochranu dat pro farmy serveru SharePoint. Pomocí adaptéru můžete přesunout obsah binárního velkého objektu (BLOB) z databází obsahu serveru SQL Server do hybridního cloudového úložiště Microsoft Azure StorSimple.
+Adaptér StorSimple pro SharePoint je komponenta, která umožňuje poskytovat Microsoft Azure StorSimple flexibilní úložiště a ochranu dat pro serverové farmy služby SharePoint. Adaptér můžete použít k přesunu obsahu binárního Large Object (BLOB) z databáze SQL Server obsahu do Microsoft Azure StorSimple hybridního cloudového úložiště.
 
-StorSimple Adaptér pro SharePoint funguje jako zprostředkovatel vzdáleného úložiště BLOB (RBS) a používá funkci vzdáleného úložiště BLOB serveru SQL Server k ukládání nestrukturovaného obsahu služby SharePoint (ve formě objektů BLOB) na souborový server, který je zálohován zařízením StorSimple.
+Adaptér StorSimple pro SharePoint funguje jako poskytovatel vzdáleného úložiště objektů BLOB (RBS) a používá funkci SQL Server vzdáleného úložiště objektů BLOB k ukládání nestrukturovaného obsahu SharePointu (ve formě objektů BLOB) na souborovém serveru, který je zálohovaný zařízením StorSimple.
 
 > [!NOTE]
-> StorSimple Adaptér pro SharePoint podporuje sharepointové úložiště BLOB serveru 2010 (RBS). Nepodporuje sharepointový server 2010 externí úložiště BLOB (EBS).
+> Adaptér StorSimple pro SharePoint podporuje vzdálené úložiště objektů BLOB (RBS) serveru SharePoint Server 2010. Nepodporuje službu SharePoint Server 2010 externí BLOB Storage (EBS).
 
 
-* Chcete-li stáhnout adaptér StorSimple pro službu SharePoint, přejděte na [web StorSimple Adapter for SharePoint][1] v centru pro stahování Microsoft Download Center.
-* Informace o plánování omezení RBS a RBS naleznete [v částce Rozhodnutí o použití služby RBS v sharepointu 2013][2] nebo [plán pro účely služby RBS (SharePoint Server 2010).][3]
+* Chcete-li stáhnout adaptér StorSimple pro službu SharePoint, na webu Microsoft Download Center klikněte na [adaptér StorSimple pro SharePoint][1] .
+* Informace o plánování omezení RBS a RBS najdete v tomto rozhodnutí o [použití RBS ve službě SharePoint 2013][2] nebo [Naplánování pro RBS (SharePoint Server 2010)][3].
 
-Zbývající část tohoto přehledu stručně popisuje roli storsimple adaptéru pro SharePoint a limity kapacity a výkonu služby SharePoint, které byste měli znát před instalací a konfigurací adaptéru. Po kontrole těchto informací přejděte na [StorSimple Adapter pro instalaci služby SharePoint](#storsimple-adapter-for-sharepoint-installation) a začněte nastavovat adaptér.
+Zbytek tohoto přehledu krátce popisuje roli adaptéru StorSimple pro SharePoint a omezení kapacity a výkonu služby SharePoint, o které byste měli vědět před instalací a konfigurací adaptéru. Po kontrole těchto informací si přečtěte téma [Instalace adaptéru StorSimple pro službu SharePoint](#storsimple-adapter-for-sharepoint-installation) a začněte s nastavením adaptéru.
 
-### <a name="storsimple-adapter-for-sharepoint-benefits"></a>StorSimple Adaptér pro výhody SharePointu
-Na webu služby SharePoint je obsah uložen jako nestrukturovaná data objektů BLOB v jedné nebo více databázích obsahu. Ve výchozím nastavení jsou tyto databáze hostovány v počítačích se systémem SQL Server a jsou umístěny ve farmě serveru SharePoint. Objekty BLOB se mohou rychle zvětšovat a spotřebovávají velké množství místního úložiště. Z tohoto důvodu možná budete chtít najít jiné, levnější řešení úložiště. SQL Server poskytuje technologii nazvanou Vzdálené úložiště objektů blob (RBS), která umožňuje ukládat obsah objektu BLOB v systému souborů mimo databázi serveru SQL Server. Pomocí služby RBS mohou být objekty BLOB umístěny v systému souborů v počítači se systémem SQL Server nebo mohou být uloženy v systému souborů v jiném počítači serveru.
+### <a name="storsimple-adapter-for-sharepoint-benefits"></a>StorSimple Adapter pro výhody služby SharePoint
+V SharePointovém webu je obsah uložen jako nestrukturovaná data objektů BLOB v jedné nebo více databázích obsahu. Ve výchozím nastavení jsou tyto databáze hostovány na počítačích, na kterých běží SQL Server a nacházejí se v serverové farmě služby SharePoint. Objekty blob můžou rychle zvýšit velikost a spotřebovávat velké objemy místních úložišť. Z tohoto důvodu možná budete chtít najít další, levnější řešení úložiště. SQL Server poskytuje technologii s názvem Remote Blob Storage (RBS), která umožňuje uložit obsah objektu BLOB v systému souborů mimo databázi SQL Server. Pomocí RBS se můžou objekty blob nacházet v systému souborů na počítači, na kterém je spuštěný SQL Server, nebo můžou být uložené v systému souborů na jiném počítači se serverem.
 
-RBS vyžaduje, abyste k povolení služby RBS v sharepointu použili zprostředkovatele RBS, například adaptér StorSimple pro službu SharePoint. StorSimple Adaptér pro SharePoint pracuje s RBS, umožňuje přesunout objekty BLOB na server zálohovaný systémem Microsoft Azure StorSimple. Microsoft Azure StorSimple pak ukládá data BLOB místně nebo v cloudu, na základě využití. Objekty BLOB, které jsou velmi aktivní (obvykle označované jako Tier 1 nebo hot data) jsou umístěny místně. Méně aktivní data a archivní data jsou umístěna v cloudu. Po povolení RBS v databázi obsahu je veškerý nový obsah blob vytvořený v sharepointovém bodě uložen na zařízení StorSimple a nikoli v databázi obsahu.
+RBS vyžaduje, abyste pro povolení RBS v SharePointu použili poskytovatele RBS, jako je například adaptér StorSimple pro službu SharePoint. Adaptér StorSimple pro SharePoint funguje se službou RBS a umožňuje přesunout objekty blob na server zálohovaný systémem Microsoft Azure StorSimple. Microsoft Azure StorSimple pak data objektů BLOB uloží místně nebo v cloudu na základě využití. Objekty blob, které jsou velmi aktivní (obvykle označované jako vrstva 1 nebo Hot data), jsou umístěny lokálně. Méně aktivní data a Archivovaná data se nacházejí v cloudu. Po povolení RBS v databázi obsahu se veškerý nový obsah objektu BLOB vytvořený v SharePointu uloží na zařízení StorSimple, a ne v databázi obsahu.
 
-Implementace služby RBS služby Microsoft Azure StorSimple poskytuje následující výhody:
+Microsoft Azure StorSimple implementace RBS přináší následující výhody:
 
-* Přesunutím obsahu objektu BLOB na samostatný server můžete snížit zatížení dotazů na serveru SQL Server, což může zlepšit odezvu serveru SQL Server. 
-* Azure StorSimple používá odstranění duplicit a komprese ke snížení velikosti dat.
-* Azure StorSimple poskytuje ochranu dat ve formě místních a cloudových snímků. Také pokud umístíte samotnou databázi na zařízení StorSimple, můžete zálohovat databázi obsahu a objekty BLOB společně konzistentním způsobem selhání. (Přesunutí databáze obsahu do zařízení je podporováno pouze pro zařízení řady StorSimple 8000. Tato funkce není podporována pro řadu 5000 nebo 7000.)
-* Azure StorSimple obsahuje funkce zotavení po havárii, včetně převzetí služeb při selhání, obnovení souborů a svazků (včetně obnovení testu) a rychlé obnovení dat.
-* Můžete použít software pro obnovu dat, jako je například Kroll Ontrack PowerControls, s StorSimple snímky dat BLOB k provedení obnovení na úrovni položky obsahu SharePoint. (Tento software pro obnovu dat je samostatný nákup.)
-* StorSimple Adaptér pro SharePoint se zapojuje do portálu SharePoint Central Administration, což vám umožní spravovat celé řešení SharePointu z centrálního umístění.
+* Přesunutím obsahu objektů BLOB na samostatný server můžete snížit zatížení dotazů na SQL Server, což může zlepšit odezvu SQL Server. 
+* Azure StorSimple snižuje velikost dat pomocí odstranění duplicit a komprese.
+* Azure StorSimple poskytuje ochranu dat ve formě místních a cloudových snímků. Pokud tedy umístíte samotnou databázi do zařízení StorSimple, můžete zálohovat databázi obsahu a objekty blob dohromady konzistentním způsobem. (Přesun databáze obsahu do zařízení se podporuje jenom pro zařízení řady StorSimple 8000. Tato funkce není podporována pro řady 5000 nebo 7000.)
+* Azure StorSimple zahrnuje funkce zotavení po havárii, včetně převzetí služeb při selhání, obnovení souborů a svazků (včetně obnovení testů) a rychlého obnovení dat.
+* Pomocí softwaru pro obnovení dat, jako je Kroll Ontrack PowerControls, můžete s StorSimple snímky dat objektů BLOB provádět obnovení obsahu SharePointu na úrovni položek. (Tento software pro obnovení dat je samostatný nákup.)
+* Adaptér StorSimple pro SharePoint se připojuje na portál centrální správy služby SharePoint a umožňuje spravovat celé řešení služby SharePoint z centrálního umístění.
 
-Přesunutí obsahu blob do systému souborů může poskytnout další úspory nákladů a výhody. Například pomocí RBS může snížit potřebu nákladné úložiště Tier 1 a protože zmenší databázi obsahu, RBS může snížit počet databází požadovaných ve farmě serveru SharePoint. Požadavky na úložiště však mohou ovlivnit i další faktory, jako jsou omezení velikosti databáze a množství obsahu, který není součástí služby RBS. Další informace o nákladech a přínosech používání služby RBS naleznete v [tématech Plán pro službu RBS (SharePoint Foundation 2010)][4] a [Rozhodnutí o použití služby RBS v sharepointu 2013][5].
+Přesunutí obsahu objektů BLOB do systému souborů může poskytovat úspory za jiné náklady a výhody. Například použití kódu RBS může snížit potřebu nákladného úložiště vrstvy 1 a, protože zmenší databázi obsahu, kód RBS může snížit počet databází vyžadovaných ve farmě serverů SharePoint. Požadavky na úložiště ale můžou ovlivnit i jiné faktory, jako jsou limity velikosti databáze a množství obsahu bez RBS. Další informace o nákladech a výhodách používání služby RBS najdete v tématu [Plan for RBS (SharePoint Foundation 2010)][4] a [rozhodnutí o použití RBS ve službě SharePoint 2013][5].
 
-### <a name="capacity-and-performance-limits"></a>Kapacitní a výkonnostní limity
-Než začnete v sharepointovém řešení používat službu RBS, měli byste si být vědomi testovaných omezení výkonu a kapacity SharePoint Serveru 2010 a SharePoint Serveru 2013 a toho, jak tato omezení souvisejí s přijatelným výkonem. Další informace najdete [v tématu Softwarové hranice a limity pro SharePoint 2013](https://technet.microsoft.com/library/cc262787.aspx).
+### <a name="capacity-and-performance-limits"></a>Omezení kapacity a výkonu
+Než začnete používat RBS v řešení služby SharePoint, měli byste si být vědomi testovaných limitů výkonu a kapacity pro SharePoint Server 2010 a SharePoint Server 2013 a jak se tato omezení týkají přijatelného výkonu. Další informace najdete v tématu [hranice softwaru a omezení pro SharePoint 2013](https://technet.microsoft.com/library/cc262787.aspx).
 
-Před konfigurací služby RBS zkontrolujte následující:
+Před konfigurací RBS zkontrolujte následující:
 
-* Ujistěte se, že celková velikost obsahu (velikost databáze obsahu plus velikost všech přidružených externalizovaných objektů BLOB) nepřekračuje limit velikosti RBS podporovaný službou SharePoint. Tento limit je 200 GB. 
+* Ujistěte se, že celková velikost obsahu (velikost databáze obsahu a velikost jakýchkoli přidružených externě propojených objektů BLOB) nepřekračuje limit velikosti RBS, který podporuje SharePoint. Toto omezení je 200 GB. 
   
     **Měření databáze obsahu a velikosti objektu BLOB**
   
-  1. Spusťte tento dotaz na wfe centrální správy. Spusťte prostředí SharePoint Management Shell a zadejte následující příkaz prostředí Windows PowerShell, abyste získali velikost databází obsahu:
+  1. Spusťte tento dotaz na WFE centrální správy. Spusťte prostředí SharePoint Management Shell a potom zadejte následující příkaz prostředí Windows PowerShell, který získá velikost databází obsahu:
      
      `Get-SPContentDatabase | Select-Object -ExpandProperty DiskSizeRequired`
      
       Tento krok získá velikost databáze obsahu na disku.
-  2. Spusťte jeden z následujících dotazů SQL v sql management studiu v poli sql serveru v každé databázi obsahu a přidejte výsledek k číslu získanému v kroku 1.
+  2. Spusťte jeden z následujících dotazů SQL ve službě SQL Management Studio v poli SQL Server v každé databázi obsahu a přidejte výsledek k číslu získanému v kroku 1.
      
-     V databázích obsahu SharePointu 2013 zadejte:
+     V databázích obsahu SharePoint 2013 zadejte:
      
      `SELECT SUM([Size]) FROM [ContentDatabaseName].[dbo].[DocStreams] WHERE [Content] IS NULL`
      
-     V databázích obsahu SharePointu 2010 zadejte:
+     V databázích obsahu SharePoint 2010 zadejte:
      
      `SELECT SUM([Size]) FROM [ContentDatabaseName].[dbo].[AllDocs] WHERE [Content] IS NULL`
      
-     Tento krok získá velikost objektů BLOB, které byly externalizovány.
-* Doporučujeme uložit veškerý obsah BLOB a databáze místně na zařízení StorSimple. Zařízení StorSimple je cluster se dvěma uzlinami pro vysokou dostupnost. Umístění databází obsahu a objektů BLOB na zařízení StorSimple poskytuje vysokou dostupnost.
+     Tento krok získá velikost objektů blob, které byly externě.
+* Veškerý obsah objektů BLOB a databází doporučujeme ukládat lokálně na zařízení StorSimple. Zařízení StorSimple je cluster se dvěma uzly, který slouží k zajištění vysoké dostupnosti. Umístění databází obsahu a objektů blob na zařízení StorSimple poskytuje vysokou dostupnost.
   
-    Pomocí tradičních doporučených postupů pro migraci serveru SQL Server přesuňte databázi obsahu do zařízení StorSimple. Databázi přesuňte až poté, co byl veškerý obsah blob z databáze přesunut do sdílené složky prostřednictvím služby RBS. Pokud se rozhodnete přesunout databázi obsahu do zařízení StorSimple, doporučujeme nakonfigurovat úložiště databáze obsahu v zařízení jako primární svazek.
-* V Microsoft Azure StorSimple, pokud používáte vrstvené svazky, neexistuje žádný způsob, jak zaručit, že obsah uložený místně na zařízení StorSimple nebude vrstvené do cloudového úložiště Microsoft Azure. Proto doporučujeme používat místně vázaných svazků StorSimple ve spojení se službou SharePoint RBS. Tím zajistíte, že veškerý obsah blob zůstane místně na zařízení StorSimple a není přesunuta do Microsoft Azure.
-* Pokud neukládáte databáze obsahu na zařízení StorSimple, použijte tradiční SQL Server vysoké dostupnosti osvědčené postupy, které podporují RBS. Clustering serveru SQL Server podporuje službu RBS, zatímco zrcadlení serveru SQL Server nikoli. 
+    K přesunu databáze obsahu do zařízení StorSimple použijte tradiční postupy migrace SQL Server. Přesuňte databázi až po přesunutí veškerého obsahu objektu BLOB z databáze do sdílené složky prostřednictvím souboru RBS. Pokud se rozhodnete přesunout databázi obsahu na zařízení StorSimple, doporučujeme, abyste nakonfigurovali úložiště databáze obsahu na zařízení jako primární svazek.
+* Pokud v Microsoft Azure StorSimple používáte vrstvené svazky, neexistuje žádný způsob, jak zaručit, že obsah uložený místně na zařízení StorSimple nebude nastaven na Microsoft Azure cloudové úložiště. Proto doporučujeme používat místně připojené svazky StorSimple ve spojení se službou SharePoint RBS. Tím se zajistí, že veškerý obsah objektu BLOB zůstane místně na zařízení StorSimple a nepřesouvá se do Microsoft Azure.
+* Pokud neuložíte databáze obsahu na zařízení StorSimple, použijte SQL Server tradiční osvědčené postupy pro vysokou dostupnost, které podporují RBS. SQL Server clusteringu podporuje RBS, zatímco SQL Server zrcadlení ne. 
 
 > [!WARNING]
-> Pokud jste nepovolili RBS, nedoporučujeme přesunutí databáze obsahu do zařízení StorSimple. Toto je netestovaná konfigurace.
+> Pokud jste kód RBS nepovolili, nedoporučujeme přesouvat databázi obsahu na zařízení StorSimple. Toto je netestovaná konfigurace.
 
-## <a name="storsimple-adapter-for-sharepoint-installation"></a>StorSimple Adaptér pro instalaci služby SharePoint
-Před instalací adaptéru StorSimple pro službu SharePoint je nutné nakonfigurovat zařízení StorSimple a zajistit, aby serverová farma služby SharePoint a instance serveru SQL Server splňovaly všechny požadavky. Tento kurz popisuje požadavky na konfiguraci a také postupy pro instalaci a inovaci adaptéru StorSimple pro sharepoint.
+## <a name="storsimple-adapter-for-sharepoint-installation"></a>StorSimple adaptér pro instalaci služby SharePoint
+Předtím, než budete moci nainstalovat adaptér StorSimple pro službu SharePoint, je nutné nakonfigurovat zařízení StorSimple a zajistit, aby farma serveru SharePoint a instance SQL Server splňovaly všechny požadavky. Tento kurz popisuje požadavky na konfiguraci a také postupy pro instalaci a upgrade adaptéru StorSimple pro službu SharePoint.
 
-## <a name="configure-prerequisites"></a>Konfigurace požadavků
-Před instalací adaptéru StorSimple pro službu SharePoint se ujistěte, že instance zařízení StorSimple, serverové farmy služby SharePoint a serveru SQL Server splňují následující požadavky.
+## <a name="configure-prerequisites"></a>Konfigurovat požadavky
+Než budete moct nainstalovat adaptér StorSimple pro SharePoint, ujistěte se, že zařízení StorSimple, farma serverů SharePoint a instance SQL Server splňují následující požadavky.
 
 ### <a name="system-requirements"></a>Požadavky na systém
-Adaptér StorSimple pro sharepoint funguje s následujícím hardwarem a softwarem:
+Adaptér StorSimple pro SharePoint funguje s následujícím hardwarem a softwarem:
 
 * Podporovaný operační systém – Windows Server 2008 R2 SP1, Windows Server 2012 nebo Windows Server 2012 R2
 * Podporované verze SharePointu – SharePoint Server 2010 nebo SharePoint Server 2013
-* Podporované verze serveru SQL Server – SQL Server 2008 Enterprise Edition, SQL Server 2008 R2 Enterprise Edition nebo SQL Server 2012 Enterprise Edition
-* Podporovaná zařízení StorSimple – řada StorSimple 8000, Řada StorSimple 7000 nebo StorSimple 5000.
+* Podporované verze SQL Server – SQL Server 2008 Enterprise Edition, SQL Server 2008 R2 Enterprise Edition nebo SQL Server 2012 Enterprise Edition
+* Podporovaná zařízení StorSimple – StorSimple 8000 Series, StorSimple 7000 Series nebo StorSimple 5000 Series.
 
 ### <a name="storsimple-device-configuration-prerequisites"></a>Požadavky na konfiguraci zařízení StorSimple
-Zařízení StorSimple je blokové zařízení a jako takové vyžaduje souborový server, na kterém mohou být data hostována. Doporučujeme použít samostatný server, nikoli existující server z farmy služby SharePoint. Tento souborový server musí být ve stejné místní síti (LAN) jako počítač se serverem SQL Server, který je hostitelem databází obsahu.
+Zařízení StorSimple je blokové zařízení a jako takové vyžaduje souborový server, na kterém je možné hostovat data. Doporučujeme místo stávajícího serveru z farmy služby SharePoint použít samostatný server. Tento souborový server musí být ve stejné místní síti (LAN) jako SQL Server počítač, který je hostitelem databází obsahu.
 
 > [!TIP]
-> * Pokud nakonfigurujete sharepointovou farmu pro vysokou dostupnost, měli byste nasadit souborový server pro vysokou dostupnost také.
-> * Pokud neukládáte databázi obsahu na zařízení StorSimple, použijte tradiční osvědčené postupy s vysokou dostupností, které podporují rbs. Clustering serveru SQL Server podporuje službu RBS, zatímco zrcadlení serveru SQL Server nikoli. 
+> * Pokud nakonfigurujete farmu služby SharePoint pro vysokou dostupnost, měli byste také nasadit souborový server s vysokou dostupností.
+> * Pokud neuložíte databázi obsahu na zařízení StorSimple, použijte tradiční osvědčené postupy pro vysokou dostupnost, které podporují RBS. SQL Server clusteringu podporuje RBS, zatímco SQL Server zrcadlení ne. 
 
 
-Zkontrolujte, zda je zařízení StorSimple správně nakonfigurováno a zda jsou příslušné svazky pro podporu nasazení služby SharePoint nakonfigurovány a přístupné z počítače se serverem SQL Server. Přejděte na [nasazení místního zařízení StorSimple,](storsimple-8000-deployment-walkthrough-u2.md) pokud jste ještě nenasadili a nenakonfigurovali zařízení StorSimple. Poznamenejte si IP adresu zařízení StorSimple; budete potřebovat během instalace StorSimple Adapter pro sharepoint.
+Ujistěte se, že je správně nakonfigurováno zařízení StorSimple a že příslušné svazky pro podporu nasazení služby SharePoint jsou nakonfigurovány a přístupné z počítače s SQL Server. Pokud jste ještě nenainstalovali a nakonfigurovali zařízení StorSimple, můžete přejít na [nasazení místního zařízení StorSimple](storsimple-8000-deployment-walkthrough-u2.md) . Poznamenejte si IP adresu zařízení StorSimple. budete ho potřebovat při instalaci služby SharePoint v adaptéru StorSimple.
 
-Kromě toho se ujistěte, že svazek, který má být použit pro externalizaci blob splňuje následující požadavky:
+Kromě toho se ujistěte, že svazek, který se má použít pro externost objektů BLOB, splňuje následující požadavky:
 
-* Svazek musí být formátován s velikostí alokační jednotky kb 64 kB.
-* Webový front-end (WFE) a aplikační servery musí mít přístup ke svazku prostřednictvím cesty UNC (Universal Naming Convention).
-* Farma serveru SharePoint server musí být nakonfigurována pro zápis do svazku.
+* Svazek musí být naformátován velikostí alokační jednotky 64 KB.
+* Váš webový front-end (WFE) a aplikační servery musí mít přístup ke svazku prostřednictvím cesty UNC (Universal Naming Convention).
+* Farma serverů SharePoint musí být nakonfigurovaná tak, aby na tento svazek mohla zapisovat.
 
 > [!NOTE]
-> Po instalaci a konfiguraci adaptéru musí veškerá externalizace blob projít zařízením StorSimple (zařízení představí svazky serveru SQL Server a spravuje vrstvy úložiště). Nelze použít žádné jiné cíle pro externalizaci BLOB.
+> Po instalaci a konfiguraci adaptéru musí projít všechny externice objektů BLOB přes zařízení StorSimple (zařízení bude prezentovat svazky pro SQL Server a správu vrstev úložiště). Pro externing objektů BLOB nelze použít žádné jiné cíle.
 
 
-Pokud máte v plánu použít StorSimple Snapshot Manager pořizovat snímky blob a data databáze, nezapomeňte nainstalovat StorSimple Snapshot Manager na databázovém serveru tak, aby bylo možné použít SQL Writer Service k implementaci služby Windows Volume Shadow Copy Service (VSS).
+Pokud máte v úmyslu použít Snapshot Manager StorSimple k pořizování snímků dat objektu BLOB a databáze, nezapomeňte na databázový server nainstalovat StorSimple Snapshot Manager, aby mohl použít službu zapisovače SQL k implementaci Windows služba Stínová kopie svazku (VSS).
 
 > [!IMPORTANT]
-> Správce snímků StorSimple nepodporuje zapisovač služby SharePoint VSS a nemůže pořizovat snímky dat služby SharePoint konzistentní s aplikací. Ve scénáři služby SharePoint správce snímků StorSimple poskytuje pouze zálohy konzistentní s havárií.
+> StorSimple Snapshot Manager nepodporuje zapisovač SharePoint VSS a nemůže provádět snímky dat SharePointu konzistentní vzhledem k aplikacím. Ve scénáři SharePoint StorSimple Snapshot Manager poskytuje jenom zálohy konzistentní s chybou.
 
 
-## <a name="sharepoint-farm-configuration-prerequisites"></a>Požadavky konfigurace farmy služby SharePoint
-Zkontrolujte, zda je vaše serverová farma SharePoint správně nakonfigurovaná, a to následovně:
+## <a name="sharepoint-farm-configuration-prerequisites"></a>Požadavky na konfiguraci farmy služby SharePoint
+Ujistěte se, že je farma serverů SharePoint správně nakonfigurovaná, a to takto:
 
-* Ověřte, zda je vaše serverová farma SharePoint u zdravě, a zkontrolujte následující:
-* Všechny servery služby SharePoint WFE a aplikační servery registrované ve farmě jsou spuštěny a lze jej ze serveru, na který budete instalovat adaptér StorSimple pro službu SharePoint, příkaz ping.
-* Služba Časovač služby SharePoint (SPTimerV3 nebo SPTimerV4) je spuštěna na každém serveru WFE a aplikačním serveru.
+* Ověřte, zda je farma serveru SharePoint v dobrém stavu, a zkontrolujte následující:
+* Všechny služby SharePoint WFE a aplikační servery zaregistrované ve farmě jsou spuštěné a můžou se na serveru, na kterém budete instalovat adaptér StorSimple, použít příkazy pro službu SharePoint.
+* Služba Časovač služby SharePoint (SPTimerV3 nebo SPTimerV4) je spuštěná na každém serveru WFE a aplikačním serveru.
 * Služba Časovač služby SharePoint i fond aplikací služby IIS, pod kterým je spuštěn web centrální správy služby SharePoint, mají oprávnění správce.
-* Zkontrolujte, zda je zakázán kontext rozšířeného zabezpečení aplikace Internet Explorer (IE ESC). Chcete-li zakázat službu IE ESC, postupujte takto:
+* Zajistěte, aby byl zakázán kontext zabezpečení aplikace Internet Explorer (IE ESC). Pomocí těchto kroků zakážete funkci IE ESC:
   
   1. Zavřete všechny instance aplikace Internet Explorer.
   2. Spusťte Správce serveru.
-  3. V levém podokně klepněte na **položku Místní server**.
-  4. V pravém podokně vedle **položky Konfigurace rozšířeného zabezpečení aplikace IE**klepněte na tlačítko **Zapnuto**.
-  5. V části **Administrators**klepněte na **tlačítko Vypnout**.
+  3. V levém podokně klikněte na **místní server**.
+  4. V pravém podokně vedle **Možnosti konfigurace rozšířeného zabezpečení IE**klikněte **na zapnuto**.
+  5. V části **Správci**klikněte na **vypnout**.
   6. Klikněte na tlačítko **OK**.
 
-## <a name="remote-blob-storage-rbs-prerequisites"></a>Požadavky vzdáleného úložiště OBJEKTŮ BLOB (RBS)
-Ujistěte se, že používáte podporovanou verzi serveru SQL Server. Jsou podporovány a mohou používat pouze následující verze:
+## <a name="remote-blob-storage-rbs-prerequisites"></a>Požadavky na vzdálené úložiště objektů BLOB (RBS)
+Ujistěte se, že používáte podporovanou verzi SQL Server. K dispozici jsou pouze následující verze, které mohou používat RBS:
 
-* SQL Server 2008 Enterprise Edition
+* Edice SQL Server 2008 Enterprise
 * SQL Server 2008 R2 Enterprise Edition
-* SQL Server 2012 Enterprise Edition
+* Edice SQL Server 2012 Enterprise
 
-Objekty BLOB lze externalizovat pouze na svazcích, které zařízení StorSimple představuje sql serveru. Žádné další cíle pro externalizaci BLOB jsou podporovány.
+Objekty blob můžou být externě jenom na svazcích, které zařízení StorSimple prezentuje SQL Server. Nejsou podporovány žádné další cíle pro externing objektů BLOB.
 
-Po dokončení všech nezbytných kroků konfigurace přejděte na [nainstalovat adaptér StorSimple pro službu SharePoint](#install-the-storsimple-adapter-for-sharepoint).
+Po dokončení všech kroků konfigurace požadovaných součástí navštivte [instalaci adaptéru StorSimple pro SharePoint](#install-the-storsimple-adapter-for-sharepoint).
 
 ## <a name="install-the-storsimple-adapter-for-sharepoint"></a>Instalace adaptéru StorSimple pro SharePoint
-Pomocí následujících kroků nainstalujte adaptér StorSimple pro SharePoint. Pokud software přeinstalujete, [přečtěte si informace o inovaci nebo přeinstalaci adaptéru StorSimple pro službu SharePoint](#upgrade-or-reinstall-the-storsimple-adapter-for-sharepoint). Doba potřebná pro instalaci závisí na celkovém počtu databází služby SharePoint ve farmě serveru SharePoint Server.
+K instalaci adaptéru StorSimple pro SharePoint použijte následující postup. Pokud přeinstalujete software, přečtěte si téma [upgrade nebo přeinstalace adaptéru StorSimple pro službu SharePoint](#upgrade-or-reinstall-the-storsimple-adapter-for-sharepoint). Čas potřebný k instalaci závisí na celkovém počtu databází služby SharePoint ve farmě serverů SharePoint.
 
 [!INCLUDE [storsimple-install-sharepoint-adapter](../../includes/storsimple-install-sharepoint-adapter.md)]
 
-## <a name="configure-rbs"></a>Konfigurace služby RBS
-Po instalaci adaptéru StorSimple pro službu SharePoint nakonfigurujte službu RBS, jak je popsáno v následujícím postupu.
+## <a name="configure-rbs"></a>Konfigurace RBS
+Po instalaci adaptéru StorSimple pro službu SharePoint nakonfigurujte kód RBS, jak je popsáno v následujícím postupu.
 
 > [!TIP]
-> StorSimple Adaptér pro SharePoint se zapojuje do stránky Centrální správa SharePointu, což umožňuje povolení nebo zakázání služby RBS v každé databázi obsahu ve farmě služby SharePoint. Povolení nebo zakázání kódu RBS v databázi obsahu však způsobí obnovení služby IIS, které v závislosti na konfiguraci farmy může na okamžik narušit dostupnost webového front-endu služby SharePoint (WFE). (Faktory, jako je například použití front-endu vyrovnávání zatížení, aktuální zatížení serveru a tak dále, můžete omezit nebo eliminovat toto narušení.) Chcete-li chránit uživatele před přerušením, doporučujeme povolit nebo zakázat službu RBS pouze během plánovaného okna údržby.
+> Adaptér StorSimple pro službu SharePoint se připojí na stránku centrální správy služby SharePoint a povoluje, aby bylo možné povolit nebo zakázat RBS v každé databázi obsahu ve farmě služby SharePoint. Povolení nebo zakázání RBS v databázi obsahu ale způsobí, že obnovení služby IIS, které v závislosti na konfiguraci farmy může mít za následek přerušení dostupnosti webového front-endu služby SharePoint (WFE). (Faktory, jako je použití front-end nástroje pro vyrovnávání zatížení, aktuálního zatížení serveru a tak dále, mohou omezit nebo odstranit toto přerušení.) Při ochraně uživatelů před přerušením doporučujeme povolit nebo zakázat kód RBS pouze během plánovaného časového období údržby.
 
 
 [!INCLUDE [storsimple-sharepoint-adapter-configure-rbs](../../includes/storsimple-sharepoint-adapter-configure-rbs.md)]
 
-## <a name="configure-garbage-collection"></a>Konfigurovat uvolňování paměti
-Když jsou objekty odstraněny ze sharepointového webu, nejsou automaticky odstraněny ze svazku úložiště RBS. Místo toho asynchronní program údržby na pozadí odstraní osamocené objekty BLOB z úložiště souborů. Správci systému mohou naplánovat pravidelné spouštění tohoto procesu nebo jej mohou spustit, kdykoli je to nutné.
+## <a name="configure-garbage-collection"></a>Konfigurace uvolňování paměti
+Při odstranění objektů z webu služby SharePoint nejsou automaticky odstraněny ze svazku úložiště RBS. Místo toho se v rámci asynchronního programu pro údržbu na pozadí odstraní osamocené objekty BLOB z úložiště souborů. Správci systému můžou naplánovat pravidelné spouštění tohoto procesu nebo ho můžou spustit, kdykoli to bude nutné.
 
-Tento program údržby (Microsoft.Data.SqlRemoteBlobs.Maintainer.exe) je automaticky nainstalován na všech serverech a aplikačních serverech služby SharePoint WFE, pokud povolíte službu RBS. Program je nainstalován v následujícím umístění: *spouštěcí jednotka*:\Program Files\Microsoft SQL Remote Blob Storage 10.50\Maintainer\
+Tento program údržby (Microsoft. data. SqlRemoteBlobs. Maintainer. exe) se automaticky nainstaluje na všechny servery SharePoint WFE a aplikační servery, když povolíte RBS. Program je nainstalován v následujícím umístění: *spouštěcí jednotka*: \Program Files\Microsoft SQL Remote BLOB Storage 10.50 \ údržba \
 
-Informace o konfiguraci a používání programu údržby naleznete v tématu [Maintain RBS na SharePoint Serveru 2013][8].
+Informace o konfiguraci a používání programu údržby najdete v tématu [Správa RBS v SharePoint serveru 2013][8].
 
 > [!IMPORTANT]
-> Program správce RBS je náročný na zdroje. Měli byste naplánovat jeho spuštění pouze během období lehké aktivity na farmě služby SharePoint.
+> Program správy RBS je náročný na prostředky. Měli byste naplánovat spuštění pouze během období s lehkými aktivitami na farmě služby SharePoint.
 
 
-### <a name="delete-orphaned-blobs-immediately"></a>Okamžité odstranění osamocených objektů BLOB
-Pokud potřebujete odstranit osamocené objekty BLOB okamžitě, můžete použít následující pokyny. Všimněte si, že tyto pokyny jsou příkladem toho, jak to lze provést v prostředí SharePointu 2013 s následujícími součástmi:
+### <a name="delete-orphaned-blobs-immediately"></a>Okamžitě odstranit osamocené objekty blob
+Pokud potřebujete okamžitě odstranit osamocené objekty blob, můžete použít následující pokyny. Všimněte si, že tyto pokyny jsou příkladem toho, jak to lze provést v prostředí SharePoint 2013 s následujícími součástmi:
 
 * Název databáze obsahu je WSS_Content.
-* Název serveru SQL Server je SHRPT13-SQL12\SHRPT13.
+* Název SQL Server je SHRPT13-SQL12\SHRPT13..
 * Název webové aplikace je SharePoint – 80.
 
 [!INCLUDE [storsimple-sharepoint-adapter-garbage-collection](../../includes/storsimple-sharepoint-adapter-garbage-collection.md)]
 
 ## <a name="upgrade-or-reinstall-the-storsimple-adapter-for-sharepoint"></a>Upgrade nebo přeinstalace adaptéru StorSimple pro SharePoint
-Pomocí následujícího postupu upgradujte sharepointový server a potom přeinstalujte adaptér StorSimple pro sharepoint nebo jednoduše upgradujte nebo přeinstalujte adaptér v existující farmě serveru SharePoint Server.
+Následující postup použijte k upgradu serveru SharePoint Server a následnému přeinstalaci adaptéru StorSimple pro službu SharePoint nebo k upgradu nebo přeinstalování adaptéru v existující farmě serverů SharePoint.
 
 > [!IMPORTANT]
-> Než se pokusíte upgradovat software SharePointu nebo upgradovat nebo přeinstalovat adaptér StorSimple pro SharePoint, zkontrolujte následující informace:
+> Než se pokusíte upgradovat software SharePointu nebo upgradovat nebo přeinstalovat adaptér StorSimple pro službu SharePoint, přečtěte si následující informace:
 > 
-> * Všechny soubory, které byly dříve přesunuty do externího úložiště prostřednictvím služby RBS, nebudou k dispozici, dokud nebude přeinstalace dokončena a funkce RBS znovu povolena. Chcete-li omezit dopad na uživatele, proveďte upgrade nebo přeinstalaci během plánovaného časového období údržby.
-> * Doba potřebná pro upgrade nebo přeinstalaci se může lišit v závislosti na celkovém počtu databází služby SharePoint ve farmě serveru SharePoint Server.
-> * Po dokončení upgradu/přeinstalace je třeba povolit službu RBS pro databáze obsahu. Další informace naleznete [v tématu Konfigurace služby RBS.](#configure-rbs)
-> * Pokud konfigurujete rbs pro farmu služby SharePoint, která má velmi velký počet databází (větší než 200), může časový plán na stránce **Centrální správa služby SharePoint.** Pokud k tomu dojde, aktualizujte stránku. To nemá vliv na proces konfigurace.
+> * Všechny soubory, které byly dříve přesunuty do externího úložiště prostřednictvím RBS, nebudou k dispozici, dokud nebude dokončena opětovná instalace a funkce RBS je znovu povolena. Chcete-li omezit dopad na uživatele, proveďte upgrade nebo přeinstalaci během plánovaného časového období údržby.
+> * Čas potřebný k upgradu nebo přeinstalaci se může lišit v závislosti na celkovém počtu databází služby SharePoint v serverové farmě služby SharePoint.
+> * Po dokončení upgradu nebo přeinstalace musíte povolit RBS pro databáze obsahu. Další informace najdete v tématu [Konfigurace RBS](#configure-rbs) .
+> * Pokud konfigurujete kód RBS pro farmu služby SharePoint, která má velký počet databází (větší než 200), může dojít k vypršení časového limitu stránky **centrální správy služby SharePoint** . Pokud k tomu dojde, aktualizujte stránku. To nemá vliv na proces konfigurace.
 
 
 [!INCLUDE [storsimple-upgrade-sharepoint-adapter](../../includes/storsimple-upgrade-sharepoint-adapter.md)]
 
-## <a name="storsimple-adapter-for-sharepoint-removal"></a>StorSimple Adaptér pro odebrání služby SharePoint
-Následující postupy popisují, jak přesunout objekty BLOB zpět do databází obsahu serveru SQL Server a potom odinstalovat adaptér StorSimple pro službu SharePoint. 
+## <a name="storsimple-adapter-for-sharepoint-removal"></a>Adaptér StorSimple pro odebrání služby SharePoint
+Následující postupy popisují, jak přesunout objekty blob zpátky do SQL Server databází obsahu a pak odinstalovat adaptér StorSimple pro službu SharePoint. 
 
 > [!IMPORTANT]
-> Před odinstalací softwaru adaptéru je nutné přesunout objekty BLOB zpět do databází obsahu.
+> Před odinstalací softwaru adaptéru musíte objekty blob přesunout zpátky do databází obsahu.
 
 
-### <a name="before-you-begin"></a>Než začnete
-Než přesunete data zpět do databází obsahu serveru SQL Server a zahájíte proces odebrání adaptéru, shromážděte následující informace:
+### <a name="before-you-begin"></a>Před zahájením
+Než přesunete data zpět do databáze obsahu SQL Server a zahájíte proces odebrání adaptéru, shromážděte následující informace:
 
-* Názvy všech databází, pro které je povolena rbs
-* Cesta UNC nakonfigurovanéúložiště objektů BLOB
+* Názvy všech databází, pro které je povoleno RBS
+* Cesta UNC nakonfigurovaného úložiště objektů BLOB
 
-### <a name="move-the-blobs-back-to-the-content-databases"></a>Přesunutí objektů BLOB zpět do databází obsahu
-Před odinstalací softwaru StorSimple Adapter pro sharepointový adaptér je nutné migrovat všechny objekty BLOB, které byly externalizovány, zpět do databází obsahu serveru SQL Server. Pokud se pokusíte odinstalovat StorSimple adaptér pro SharePoint před přesunutím všechny objekty BLOB zpět do databáze obsahu, zobrazí se následující varovná zpráva.
+### <a name="move-the-blobs-back-to-the-content-databases"></a>Přesunout objekty blob zpátky do databází obsahu
+Před odinstalací adaptéru StorSimple pro software služby SharePoint je nutné migrovat všechny objekty blob, které byly externě, do databází obsahu SQL Server. Pokud se pokusíte odinstalovat adaptér StorSimple pro službu SharePoint před přesunutím všech objektů BLOB zpět do databází obsahu, zobrazí se následující zpráva upozornění.
 
-![Varovná zpráva](./media/storsimple-adapter-for-sharepoint/sasp1.png)
+![Zpráva upozornění](./media/storsimple-adapter-for-sharepoint/sasp1.png)
 
 #### <a name="to-move-the-blobs-back-to-the-content-databases"></a>Přesunutí objektů BLOB zpět do databází obsahu
-1. Stáhněte si každý z externalizovaných objektů.
-2. Otevřete stránku **Centrální správa SharePointu** a přejděte na **Položku Nastavení systému**.
-3. V **části Azure StorSimple**klikněte na **Konfigurovat storsimple adaptér**.
-4. Na stránce **Konfigurovat storsimple adaptér** klepněte na tlačítko **Zakázat** pod každou databází obsahu, kterou chcete odebrat z externího úložiště BLOB. 
+1. Stáhněte si všechny externované objekty.
+2. Otevřete stránku **centrální správy služby SharePoint** a přejděte do **nastavení systému**.
+3. V části **Azure StorSimple**klikněte na **konfigurovat adaptér StorSimple**.
+4. Na stránce **konfigurovat adaptér StorSimple** klikněte na tlačítko **Zakázat** pod každou databází obsahu, kterou chcete odebrat z externího úložiště objektů BLOB. 
 5. Odstraňte objekty ze SharePointu a pak je znovu nahrajte.
 
-Případně můžete použít rutinu `RBS Migrate()` prostředí Microsoft PowerShell, která je součástí SharePointu. Další informace naleznete v tématu [Migrace obsahu do nebo z rbs](https://technet.microsoft.com/library/ff628255.aspx).
+Alternativně můžete použít rutinu prostředí `RBS Migrate()` Microsoft PowerShell, která je součástí služby SharePoint. Další informace najdete v tématu [migrace obsahu do RBS nebo](https://technet.microsoft.com/library/ff628255.aspx)z něj.
 
-Po přesunutí objektů BLOB zpět do databáze obsahu přejděte k dalšímu kroku: [Odinstalujte adaptér](#uninstall-the-adapter).
+Po přesunutí objektů BLOB zpět do databáze obsahu přejděte k dalšímu kroku: [odinstalujte adaptér](#uninstall-the-adapter).
 
-### <a name="uninstall-the-adapter"></a>Odinstalace adaptéru
-Po přesunutí objektů BLOB zpět do databází obsahu serveru SQL Server použijte jednu z následujících možností k odinstalaci adaptéru StorSimple pro službu SharePoint.
+### <a name="uninstall-the-adapter"></a>Odinstalujte adaptér.
+Po přesunutí objektů BLOB zpět do databáze obsahu SQL Server použijte jednu z následujících možností k odinstalaci adaptéru StorSimple pro službu SharePoint.
 
-#### <a name="to-use-the-installation-program-to-uninstall-the-adapter"></a>Odinstalace adaptéru pomocí instalačního programu
-1. Pomocí účtu s oprávněními správce se přihlaste k serveru wfe (web front-end).
-2. Poklepejte na instalační program StorSimple Adapter pro SharePoint. Spustí se Průvodce instalací.
+#### <a name="to-use-the-installation-program-to-uninstall-the-adapter"></a>Použití instalačního programu k odinstalaci adaptéru
+1. K přihlášení na webový front-end Server (WFE) použijte účet s oprávněními správce.
+2. Dvakrát klikněte na adaptér StorSimple pro instalační službu SharePoint. Spustí se Průvodce instalací nástroje.
    
     ![Průvodce instalací](./media/storsimple-adapter-for-sharepoint/sasp2.png)
-3. Klikněte na **Další**. Zobrazí se následující stránka.
+3. Klikněte na **Další**. Zobrazí se následující stránka.
    
-    ![Průvodce instalací odebrat stránku](./media/storsimple-adapter-for-sharepoint/sasp3.png)
-4. Klepnutím na **tlačítko Odebrat** vyberte proces odebrání. Zobrazí se následující stránka.
+    ![Průvodce instalací – odebrání stránky](./media/storsimple-adapter-for-sharepoint/sasp3.png)
+4. Kliknutím na **Odebrat** vyberte proces odebrání. Zobrazí se následující stránka.
    
-    ![Stránka potvrzení průvodce instalací](./media/storsimple-adapter-for-sharepoint/sasp4.png)
-5. Chcete-li odebrání potvrdit, klepněte na **tlačítko Odebrat.** Zobrazí se následující stránka průběhu.
+    ![Stránka pro potvrzení Průvodce instalací](./media/storsimple-adapter-for-sharepoint/sasp4.png)
+5. Kliknutím na tlačítko **Odebrat** potvrďte odebrání. Zobrazí se následující stránka průběhu.
    
-    ![Stránka průběhu průvodce instalací](./media/storsimple-adapter-for-sharepoint/sasp5.png)
-6. Po dokončení odebrání se zobrazí stránka dokončení. Klepnutím na **tlačítko Dokončit** zavřete Průvodce instalací.
+    ![Stránka průběh Průvodce instalací](./media/storsimple-adapter-for-sharepoint/sasp5.png)
+6. Po dokončení odebrání se zobrazí stránka dokončení. Kliknutím na tlačítko **Dokončit** zavřete Průvodce instalací nástroje.
 
-#### <a name="to-use-the-control-panel-to-uninstall-the-adapter"></a>Odinstalace adaptéru pomocí Ovládacích panelů
-1. Otevřete Ovládací panely a klepněte na **položku Programy a funkce**.
-2. Vyberte **možnost StorSimple Adapter pro sharepoint a**klepněte na tlačítko **Odinstalovat**.
+#### <a name="to-use-the-control-panel-to-uninstall-the-adapter"></a>Postup při použití ovládacího panelu k odinstalaci adaptéru
+1. Otevřete ovládací panely a potom klikněte na **programy a funkce**.
+2. Vyberte **adaptér StorSimple pro SharePoint**a pak klikněte na **odinstalovat**.
 
 ## <a name="next-steps"></a>Další kroky
-[Další informace o StorSimple](storsimple-overview.md).
+[Přečtěte si další informace o StorSimple](storsimple-overview.md).
 
 <!--Reference links-->
 [1]: https://www.microsoft.com/download/details.aspx?id=44073

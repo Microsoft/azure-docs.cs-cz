@@ -1,6 +1,6 @@
 ---
 title: Připojení k Facebooku
-description: Automatizace úloh a pracovních postupů, které spravují vaši časovou osu a stránku na Facebooku pomocí Aplikací Azure Logic Apps
+description: Automatizace úloh a pracovních postupů, které spravují časovou osu a stránku Facebooku pomocí Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,37 +8,37 @@ ms.topic: conceptual
 ms.date: 11/07/2016
 tags: connectors
 ms.openlocfilehash: 803453291b5cab2c51fec6641f8b096f62336325
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75665798"
 ---
-# <a name="manage-your-facebook-timeline-and-page-by-using-azure-logic-apps"></a>Správa časové osy a stránky na Facebooku pomocí Aplikací Azure Logic Apps
+# <a name="manage-your-facebook-timeline-and-page-by-using-azure-logic-apps"></a>Správa časové osy a stránky Facebooku pomocí Azure Logic Apps
 
-Připojte se k Facebooku a zveřejňujte příspěvky na timeline, získejte informační kanál stránky a další informace. S Facebookem můžete:
+Připojení k Facebooku a odeslání na časovou osu, získání informačního kanálu stránky a dalších. Pomocí Facebooku můžete:
 
-* Sestavte si svůj obchodní tok na základě dat, která získáte z Facebooku. 
-* Při přijetí nového příspěvku použijte aktivační událost.
-* Použijte akce, které zveřejníte na vašem profilu Timeline, získejte informační kanál stránky a další. Tyto akce získat odpověď a potom zpřístupnit výstup pro jiné akce. Pokud je například na vašem profilu Timeline nový příspěvek, můžete tento příspěvek vzít a odeslat jej do kanálu Twitteru. 
+* Sestavte svůj obchodní tok na základě dat, která získáte z Facebooku. 
+* Při přijetí nového příspěvku použijte Trigger.
+* Použijte akce, které se účtují na časovou osu, Získejte kanál stránky a další. Tyto akce obdrží odpověď a následně zpřístupní výstup pro jiné akce. Například když je na časové ose nový příspěvek, můžete tento příspěvek přenést a vložit ho do svého informačního kanálu Twitteru. 
 
-Můžete začít vytvořením aplikace logiky teď, najdete v [tématu Vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Můžete začít vytvořením aplikace logiky hned teď v tématu [Vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="create-a-connection-to-facebook"></a>Vytvoření připojení k Facebooku
 
-Když přidáte tento konektor do aplikací logiky, musíte autorizovat aplikace logiky pro připojení k Facebooku.
+Když přidáte tento konektor do vašich aplikací logiky, musíte autorizovat aplikace logiky pro připojení k Facebooku.
 
-1. Přihlaste se ke svému účtu na Facebooku.
+1. Přihlaste se k účtu Facebook.
 
-2. Vyberte **Autorizovat**a povolte aplikacím logiky připojení a používání Facebooku. 
+2. Vyberte **autorizovat**a umožněte vašim aplikacím logiky připojení a používání Facebooku. 
 
 > [!INCLUDE [Steps to create a connection to Facebook](../../includes/connectors-create-api-facebook.md)]
 > 
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Technické podrobnosti, jako jsou aktivační události, akce a omezení, jak je popsáno v souboru OpenAPI (dříve Swagger) konektoru, naleznete [na referenční stránce konektoru](/connectors/facebook/).
+Podrobnosti o technických podrobnostech, jako jsou triggery, akce a omezení, jak je popsáno v souboru OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce konektoru](/connectors/facebook/).
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o dalších [konektorech logic apps](../connectors/apis-list.md)
+* Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)

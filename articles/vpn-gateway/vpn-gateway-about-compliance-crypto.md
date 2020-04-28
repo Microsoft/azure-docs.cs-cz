@@ -1,6 +1,6 @@
 ---
-title: 'Brána Azure VPN: Kryptografické požadavky'
-description: Tento článek popisuje kryptografické požadavky a brány Azure VPN
+title: 'Azure VPN Gateway: kryptografické požadavky'
+description: Tento článek popisuje kryptografické požadavky a brány Azure VPN.
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
@@ -8,57 +8,57 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: yushwang
 ms.openlocfilehash: 93e13592d9c434b159ad4f4c10ef30328941c64e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75902826"
 ---
-# <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>Kryptografické požadavky a brány Azure VPN
+# <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>O kryptografických požadavcích a branách Azure VPN Gateway
 
-Tento článek popisuje, jak můžete nakonfigurovat brány Azure VPN tak, aby splňovaly vaše kryptografické požadavky pro tunely VPN mezi místními servery S2S a připojení virtuální sítě k virtuální síti v rámci Azure.
+Tento článek popisuje, jak můžete nakonfigurovat brány VPN Azure tak, aby splňovaly vaše kryptografické požadavky pro tunelové propojení VPN mezi místními sítěmi a připojení typu VNet-to-VNet v rámci Azure.
 
-## <a name="about-ikev1-and-ikev2-for-azure-vpn-connections"></a>O připojeních VPN IKEv1 a IKEv2 pro Azure
+## <a name="about-ikev1-and-ikev2-for-azure-vpn-connections"></a>Informace o připojeních VPN IKEv1 a IKEv2 pro Azure
 
-Tradičně jsme povolili připojení IKEv1 pouze pro základní skuanové sítě a povolili připojení IKEv2 pro všechny sloky brány VPN než pro základní sloky. Základní skum umožňují pouze 1 připojení a spolu s dalšími omezeními, jako je například výkon, zákazníci, kteří používají starší zařízení, která podporují pouze protokoly IKEv1, měli omezené zkušenosti. Abychom zlepšili možnosti zákazníků používajících protokoly IKEv1, povolujeme nyní připojení IKEv1 pro všechny skladové položky brány VPN, s výjimkou základní skladové položky. Další informace naleznete v tématu [VPN Gateway Sku .](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#gwsku)
+Tradičně jsme povolili připojení IKEv1 jenom pro základní SKU a povolená připojení IKEv2 pro všechny skladové položky služby VPN Gateway kromě základních SKU. Základní skladové položky (SKU) umožňují pouze 1 připojení a společně s dalšími omezeními, jako je například výkon, zákazníci používající starší zařízení, která podporují pouze IKEv1 protokoly, mají omezené prostředí. Abychom vylepšili možnosti zákazníků pomocí IKEv1 protokolů, teď pro všechny SKU brány VPN Gateway povolujeme připojení IKEv1, a to s výjimkou základního SKU. Další informace najdete v tématu [VPN Gateway SKU](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#gwsku).
 
-![Připojení brány Azure VPN IKEv1 a IKEv2](./media/vpn-gateway-about-compliance-crypto/ikev1-ikev2-connections.png)
+![Připojení k Azure VPN Gateway IKEv1 a IKEv2](./media/vpn-gateway-about-compliance-crypto/ikev1-ikev2-connections.png)
 
-Při připojení IKEv1 a IKEv2 jsou použity na stejnou bránu VPN, přenos mezi těmito dvěma připojeními je automaticky povolena.
+Pokud jsou připojení IKEv1 a IKEv2 použita u stejné brány VPN, je přenos mezi těmito dvěma připojeními povolen automaticky.
 
-## <a name="about-ipsec-and-ike-policy-parameters-for-azure-vpn-gateways"></a>Parametry zásad Protokolu IPsec a IKE pro brány Azure VPN
+## <a name="about-ipsec-and-ike-policy-parameters-for-azure-vpn-gateways"></a>Parametry zásad IPsec a IKE pro Azure VPN Gateway
 
-Standard protokolu IPsec a IKE podporuje širokou škálu kryptografických algoritmů v různých kombinacích. Pokud nepožadujete konkrétní kombinaci kryptografických algoritmů a parametrů, brány Azure VPN používají sadu výchozích návrhů. Výchozí sady zásad byly vybrány pro maximalizaci interoperability s širokou škálou zařízení VPN jiných výrobců ve výchozích konfiguracích. V důsledku toho zásady a počet návrhů nemohou zahrnovat všechny možné kombinace dostupných kryptografických algoritmů a silných stránek klíčů.
+Protokol IPsec a IKE standard podporuje široké spektrum kryptografických algoritmů v různých kombinacích. Pokud nepožadujete určitou kombinaci kryptografických algoritmů a parametrů, Azure VPN Gateway použije sadu výchozích návrhů. Výchozí sady zásad byly zvoleny pro maximalizaci interoperability se široké škálou zařízení VPN jiných výrobců ve výchozích konfiguracích. V důsledku toho zásady a počet návrhů nemůžou pokrýt všechny možné kombinace dostupných kryptografických algoritmů a silných klíčů.
 
-Výchozí sada zásad pro bránu Azure VPN je uvedená v článku: [O zařízeních VPN a parametrech IPsec/IKE pro připojení brány VPN site-to-site](vpn-gateway-about-vpn-devices.md).
+Výchozí nastavení zásad pro Azure VPN Gateway najdete v článku: [informace o zařízeních VPN a parametrech protokolu IPSec/IKE pro připojení typu Site-to-site VPN Gateway](vpn-gateway-about-vpn-devices.md).
 
 ## <a name="cryptographic-requirements"></a>Kryptografické požadavky
 
-Pro komunikaci, která vyžaduje specifické kryptografické algoritmy nebo parametry, obvykle z důvodu požadavků na dodržování předpisů nebo zabezpečení, teď můžete nakonfigurovat jejich brány Azure VPN tak, aby používaly vlastní zásady IPsec/IKE se specifickými kryptografickými algoritmy a silnými stránkami klíčů, nikoli výchozí sady zásad Azure.
+V případě komunikace, která vyžaduje konkrétní kryptografické algoritmy nebo parametry, obvykle kvůli požadavkům na dodržování předpisů nebo zabezpečení, teď můžete nakonfigurovat své brány Azure VPN tak, aby používaly vlastní zásadu IPsec/IKE s konkrétními kryptografickými algoritmy a silnými klíči, nikoli výchozími sadami zásad Azure.
 
-Například zásady hlavního režimu IKEv2 pro brány Azure VPN využívají pouze Skupinu Diffie-Hellman Group 2 (1024 bitů), zatímco možná budete muset zadat silnější skupiny, které se mají používat v protokolu IKE, například Skupina 14 (2048 bitů), Skupina 24 (2048bitová Skupina MODP) nebo ECP (eliptická křivka). skupiny) 256 nebo 384 bitů (skupina 19 a skupina 20). Podobné požadavky platí také pro zásady rychlého režimu IPsec.
+Například zásady hlavního režimu IKEv2 pro Azure VPN Gateway využívají jenom skupinu Diffie-Hellman Group 2 (1024 bitů), zatímco možná budete muset zadat silnější skupiny, které se mají použít v protokolu IKE, jako je například skupina 14 (2048 bitů), skupina 24 (2048-bit MODP Group) nebo ECP (skupiny eliptických křivek) 256 nebo 384 (skupina 19 a skupina 20). Podobné požadavky platí i pro zásady rychlého režimu IPsec.
 
-## <a name="custom-ipsecike-policy-with-azure-vpn-gateways"></a>Vlastní zásady Protokolu IPsec/IKE s bránami Azure VPN
+## <a name="custom-ipsecike-policy-with-azure-vpn-gateways"></a>Vlastní zásady IPsec/IKE pomocí Azure VPN Gateway
 
-Brány Azure VPN teď podporují vlastní zásady IPsec/IKE pro připojení na připojení. Pro připojení Site-to-Site nebo VNet-to-VNet můžete zvolit konkrétní kombinaci kryptografických algoritmů pro IPsec a IKE s požadovanou silou klíče, jak je znázorněno v následujícím příkladu:
+Azure VPN Gateway teď podporují zásadu pro připojení, vlastní zásady IPsec/IKE. U připojení typu Site-to-site nebo VNet-to-VNet můžete zvolit konkrétní kombinaci kryptografických algoritmů pro protokol IPsec a IKE s požadovanou silou klíče, jak je znázorněno v následujícím příkladu:
 
-![ipsec-ike-politika](./media/vpn-gateway-about-compliance-crypto/ipsecikepolicy.png)
+![IPSec – IKE – zásada](./media/vpn-gateway-about-compliance-crypto/ipsecikepolicy.png)
 
-Můžete vytvořit zásadu IPsec/IKE a použít nové nebo existující připojení.
+Můžete vytvořit zásadu IPsec/IKE a použít ji pro nové nebo existující připojení.
 
 ### <a name="workflow"></a>Pracovní postup
 
-1. Vytvoření virtuálních sítí, bran VPN nebo místních síťových bran pro topologii připojení, jak je popsáno v jiných dokumentech s návody
+1. Vytvořte virtuální sítě, brány sítě VPN nebo brány místní sítě pro topologii připojení, jak je popsáno v tématu další dokumenty s postupy.
 2. Vytvoření zásady IPsec/IKE
-3. Zásadu můžete použít při vytváření připojení S2S nebo Virtuální sítě k virtuální síti.
-4. Pokud je připojení již vytvořeno, můžete zásadu použít nebo aktualizovat na existující připojení.
+3. Zásady můžete použít při vytváření připojení S2S nebo VNet-to-VNet.
+4. Pokud je připojení už vytvořené, můžete zásady použít nebo aktualizovat na existující připojení.
 
-## <a name="ipsecike-policy-faq"></a>Nejčastější dotazy k zásadám IPsec/IKE
+## <a name="ipsecike-policy-faq"></a>Nejčastější dotazy týkající se zásad IPsec/IKE
 
 [!INCLUDE [vpn-gateway-ipsecikepolicy-faq-include](../../includes/vpn-gateway-faq-ipsecikepolicy-include.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-Podrobné pokyny ke konfiguraci vlastních zásad Protokolu IPsec/IKE najdete v tématu [Konfigurace zásad protokolu IPsec/IKE](vpn-gateway-ipsecikepolicy-rm-powershell.md) pro připojení.
+Podrobné pokyny ke konfiguraci vlastních zásad IPsec/IKE pro připojení najdete v tématu [Konfigurace zásad IPSec/IKE](vpn-gateway-ipsecikepolicy-rm-powershell.md) .
 
-Další informace o možnosti UsePolicyBasedTrafficSelectors najdete také v [tématu Připojení více zařízení VPN založených na zásadách.](vpn-gateway-connect-multiple-policybased-rm-ps.md)
+Další informace o možnosti UsePolicyBasedTrafficSelectors najdete taky v tématu [připojení několika zařízení VPN založených na zásadách](vpn-gateway-connect-multiple-policybased-rm-ps.md) .

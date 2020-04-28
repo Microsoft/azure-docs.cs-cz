@@ -1,6 +1,6 @@
 ---
-title: StorSimple 8000 Series Update 2 poznámky k verzi | Dokumenty společnosti Microsoft
-description: Popisuje nové funkce, problémy a řešení pro aktualizaci Řady StorSimple 8000 2.
+title: StorSimple 8000 Series Update 2 – zpráva k vydání verze | Microsoft Docs
+description: Popisuje nové funkce, problémy a alternativní řešení pro StorSimple 8000 Series Update 2.
 services: storsimple
 documentationcenter: NA
 author: twooley
@@ -15,97 +15,97 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: twooley
 ms.openlocfilehash: 4e57fffd2f74ae1b14f51537c92299607f193ad5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75934055"
 ---
-# <a name="storsimple-8000-series-update-2-release-notes"></a>Poznámky k verzi verze StorSimple 8000 Series Update 2
+# <a name="storsimple-8000-series-update-2-release-notes"></a>Zpráva k vydání verze pro StorSimple 8000 Series Update 2
 
 ## <a name="overview"></a>Přehled
-Následující poznámky k verzi popisují nové funkce a identifikují kritické otevřené problémy pro aktualizaci Řady StorSimple 8000 2. Obsahují také seznam aktualizací softwaru StorSimple, ovladače a firmwaru disku, které jsou součástí této verze. 
+Následující poznámky k verzi popisují nové funkce a identifikují důležité otevřené problémy pro StorSimple 8000 Series Update 2. Obsahují také seznam aktualizací StorSimple softwaru, ovladače a firmwaru disku, které jsou součástí této verze. 
 
-Aktualizaci 2 lze použít na libovolné zařízení StorSimple se spuštěním verze (GA) nebo aktualizace 0.1 až aktualizace 1.2. Verze zařízení přidružená k aktualizaci 2 je 6.3.9600.17673.
+Aktualizaci 2 můžete použít pro jakékoli zařízení s StorSimple s verzí (GA) nebo Update 0,1 až do aktualizace 1,2. Verze zařízení, která je přidružená k Update 2, je 6.3.9600.17673.
 
-Před nasazením aktualizace v řešení StorSimple si přečtěte informace obsažené v poznámkách k verzi.
+Před nasazením aktualizace do řešení StorSimple si prosím přečtěte informace uvedené v poznámkách k verzi.
 
 > [!IMPORTANT]
-> * Instalace této aktualizace (včetně aktualizací systému Windows) trvá přibližně 4 až 7 hodin. 
-> * Aktualizace 2 obsahuje aktualizace softwaru, ovladače LSI a firmwaru SSD.
-> * U nových verzí se aktualizace nemusí zobrazit okamžitě, protože provádíme postupné zavádění aktualizací. Počkejte několik dní a pak znovu vyskenujte aktualizace, protože budou brzy k dispozici.
+> * Instalace této aktualizace (včetně aktualizací systému Windows) trvá přibližně 4-7 hodin. 
+> * Aktualizace 2 má software, ovladač LSI a aktualizace firmwaru SSD.
+> * Pro nové verze se aktualizace nemusí okamžitě zobrazovat, protože provádíme dvoufázové zavedení aktualizací. Počkejte několik dní a pak znovu vyhledejte aktualizace, protože budou brzy k dispozici.
 > 
 > 
 
-## <a name="whats-new-in-update-2"></a>Co je nového v aktualizaci 2
+## <a name="whats-new-in-update-2"></a>Co je nového v aktualizaci Update 2
 Aktualizace 2 zavádí následující nové funkce.
 
-* **Místně vázaných svazků** – V předchozích verzích řady StorSimple 8000 byly bloky dat vrstvené do cloudu na základě využití. Neexistoval žádný způsob, jak zaručit, že bloky zůstanou na místní. V aktualizaci 2 můžete při vytváření svazku určit svazek jako místně vázaný a primární data z tohoto svazku nebudou vrstvena do cloudu. Snímky místně vázaných svazků se budou stále zkopírovat do cloudu pro zálohování, aby bylo možné cloud použít pro účely mobility dat a zotavení po havárii. Kromě toho můžete změnit typ svazku (to znamená převést vrstvené svazky na místně vázaných svazků a převést místně vázaných svazků na vrstvené). 
-* **StorSimple vylepšení virtuálních zařízení** – Dříve řada StorSimple 8000 umístila virtuální zařízení jako řešení zotavení po havárii nebo řešení vývoje/testování. Existoval pouze jeden model virtuálního zařízení (model 1100). Aktualizace 2 zavádí dva modely virtuálních zařízení: 
+* **Místně připnuté svazky** – v předchozích verzích řady StorSimple 8000 byly bloky dat vrstveny do cloudu na základě využití. Neexistuje žádný způsob, jak zaručit, že by bloky zůstaly v místním prostředí. Když ve službě Update 2 vytvoříte svazek, můžete ho označit jako místně připojený a primární data z tohoto svazku nebudou vrstvená do cloudu. Snímky místně připnutého svazku se zkopírují do cloudu pro zálohování, takže Cloud se dá použít pro účely mobility dat a zotavení po havárii. Navíc můžete změnit typ svazku (to znamená převést vrstvené svazky na místně připojené svazky a převést místně připojené svazky na vrstvený). 
+* **Vylepšení virtuálních zařízení StorSimple** – řada StorSimple 8000 umístila virtuální zařízení jako řešení zotavení po havárii nebo pro vývoj/testování. Byl k dispozici pouze jeden model virtuálního zařízení (model 1100). Aktualizace 2 přináší dva modely virtuálních zařízení: 
   
-  * 8010 (dříve nazývané 1100) – Žádná změna; má kapacitu 30 TB a používá standardní úložiště Azure.
-  * 8020 – má kapacitu 64 TB a využívá úložiště Azure Premium pro lepší výkon.
+  * 8010 (dříve označované jako 1100) – bez změny; má kapacitu 30 TB a používá službu Azure Storage úrovně Standard.
+  * 8020 – má kapacitu 64 TB a využívá Azure Premium Storage pro zlepšení výkonu.
     
-    Pro oba modely virtuálních zařízení (8010/8020) je k dispozici jeden virtuální pevný disk. Při prvním spuštění virtuálního zařízení detekuje parametry platformy a použije správnou verzi modelu.
+    Pro modely virtuálních zařízení (8010/8020) existuje jeden virtuální pevný disk (VHD). Při prvním spuštění virtuálního zařízení se zjistí parametry platformy a použije se správná verze modelu.
 * **Vylepšení sítě** – aktualizace 2 obsahuje následující vylepšení sítě:
   
-  * Pro cloud lze povolit více nic, takže k převzetí služeb při selhání může dojít, pokud dojde k selhání síťové karty.
-  * Vylepšení směrování s pevnými metrikami pro bloky s podporou cloudu.
+  * Pro Cloud může být povoleno více síťových rozhraní, aby převzetí služeb při selhání mohlo probíhat v případě selhání síťové karty.
+  * Vylepšení směrování s pevnými metrikami pro bloky s povoleným cloudem.
   * Online opakování neúspěšných prostředků před převzetím služeb při selhání.
-  * Nové výstrahy pro selhání služby.
-* **Aktualizace vylepšení** – V aktualizaci 1.2 a starší byla řada StorSimple 8000 aktualizována prostřednictvím dvou kanálů: Windows Update pro clustering, iSCSI a tak dále a Microsoft Update pro binární soubory a firmware.
-    Aktualizace 2 používá službu Microsoft Update pro všechny balíčky aktualizací. To by mělo vést k kratšímu času opravy nebo provádění převzetí služeb při selhání. 
-* **Aktualizace firmwaru** – jsou zahrnuty následující aktualizace firmwaru:
+  * Nové výstrahy týkající se selhání služby.
+* **Aktualizace vylepšení** – v aktualizaci 1,2 a starších verzích se řada StorSimple 8000 aktualizovala prostřednictvím dvou kanálů: web Windows Update pro clusteringu, iSCSI atd. a Microsoft Update pro binární soubory a firmware.
+    Aktualizace 2 používá Microsoft Update pro všechny balíčky aktualizací. To by mělo mít za následek méně času na opravy nebo převzetí služeb při selhání. 
+* **Aktualizace firmwaru** – jsou k dispozici následující aktualizace firmwaru:
   
-  * LSI: lsi_sas2.sys verze produktu 2.00.72.10
-  * Pouze SSD (bez aktualizací HDD): XMGG, XGEG, KZ50, F6C2 a VR08
-* **Proaktivní podpora** – aktualizace 2 umožňuje společnosti Microsoft získat další diagnostické informace ze zařízení. Když náš provozní tým identifikuje zařízení, která mají problémy, jsme lépe vybaveni ke shromažďování informací ze zařízení a diagnostice problémů. **Přijetím aktualizace 2 nám umožňujete poskytovat tuto proaktivní podporu**.    
+  * LSI: lsi_sas2. sys verze produktu 2.00.72.10
+  * Pouze SSD (žádné aktualizace HDD): XMGG, XGEG, KZ50, F6C2 a VR08
+* **Proaktivní podpora** – aktualizace 2 umožňuje Microsoftu vyžádat si další diagnostické informace ze zařízení. V případě, že náš provozní tým identifikuje zařízení, u kterých dochází k problémům, je vhodnější shromažďovat informace ze zařízení a diagnostikovat problémy. **Přijetím aktualizace Update 2 nám umožníme poskytnout tuto proaktivní podporu**.    
 
-## <a name="issues-fixed-in-update-2"></a>Problémy opravené v aktualizaci 2
-Následující tabulky obsahují souhrn problémů, které byly opraveny v aktualizacích 2.    
+## <a name="issues-fixed-in-update-2"></a>Problémy opravené ve Update 2
+Následující tabulky obsahují souhrn problémů vyřešených v aktualizacích 2.    
 
 | Ne. | Funkce | Problém | Platí pro fyzické zařízení | Platí pro virtuální zařízení |
 | --- | --- | --- | --- | --- |
-| 1 |Síťová rozhraní |Po upgradu na aktualizaci 1 služba StorSimple Manager oznámila, že porty Data2 a Data3 se nezdařily na jednom řadiči. Tento problém byl opraven. |Ano |Ne |
-| 2 |Aktualizace |Po upgradu na aktualizaci 1 došlo k zvukovým poplachovým upozorněním na klasickém portálu Azure na více zařízeních. Tento problém byl opraven. |Ano |Ne |
-| 3 |Ověřování openstacku |Při použití Openstack jako poskytovatele cloudových služeb se může zobrazit chyba, že váš řetězec cloudového ověřování byl příliš dlouhý. To jsme opravili. |Ano |Ne |
+| 1 |Síťová rozhraní |Po upgradu na aktualizaci 1 Služba StorSimple Manager nahlásila, že porty Data2 a DATA3 se na jednom řadiči nezdařily. Tento problém byl opraven. |Ano |Ne |
+| 2 |Aktualizace |Po upgradu na aktualizaci 1 se na portálu Azure Classic na více zařízeních objevily zvukové výstrahy s varováním. Tento problém byl opraven. |Ano |Ne |
+| 3 |OpenStack ověřování |Při použití OpenStack jako poskytovatele cloudových služeb se může zobrazit chyba, že váš řetězec cloudového ověřování byl příliš dlouhý. To jsme opravili. |Ano |Ne |
 
-## <a name="known-issues-in-update-2"></a>Známé problémy v aktualizaci 2
-Následující tabulka obsahuje souhrn známých problémů v této verzi.
+## <a name="known-issues-in-update-2"></a>Známé problémy v aktualizaci Update 2
+Následující tabulka poskytuje souhrn známých problémů v této verzi.
 
-| Ne. | Funkce | Problém | Komentáře / řešení | Platí pro fyzické zařízení | Platí pro virtuální zařízení |
+| Ne. | Funkce | Problém | Komentáře a alternativní řešení | Platí pro fyzické zařízení | Platí pro virtuální zařízení |
 | --- | --- | --- | --- | --- | --- |
-| 1 |Diskové kvorum |Ve výjimečných případech pokud většina disků ve skříni EBOD zařízení 8600 jsou odpojeny, což vede k žádné kvorum disku, pak fond úložiště přejde do režimu offline. Zůstane v offline i v případě, že jsou disky znovu připojeny. |Budete muset restartovat zařízení. Pokud problém přetrvává, obraťte se na podporu společnosti Microsoft pro další kroky. |Ano |Ne |
-| 2 |Nesprávné ID řadiče |Při provedení výměny řadiče se může řadič 0 zobrazit jako řadič 1. Během nahrazení řadiče, když je bitová kopie načtena z uzlu peer, ID řadiče se může zpočátku zobrazit jako ID peer controller. Ve výjimečných případech toto chování může být také vidět po restartování systému. |Není vyžadována žádná akce uživatele. Tato situace se vyřeší sama po dokončení nahrazení řadiče. |Ano |Ne |
-| 3 |Účty úložiště |Použití služby Úložiště k odstranění účtu úložiště je nepodporovaný scénář. To povede k situaci, ve které nelze načíst uživatelská data. | |Ano |Ano |
-| 4 |Převzetí služeb při selhání zařízení |Více převzetí služeb při selhání kontejneru svazku ze stejného zdrojového zařízení do různých cílových zařízení není podporováno. Převzetí služeb při selhání z jednoho mrtvého zařízení na více zařízení způsobí, že kontejnery svazků na prvním převzetí služeb při selhání zařízení ztratí vlastnictví dat. Po takovém převzetí služeb při selhání se tyto kontejnery svazků zobrazí nebo se budou chovat jinak, když je zobrazíte na klasickém portálu Azure. | |Ano |Ne |
-| 5 |Instalace |Během instalace aplikace StorSimple Adapter pro službu SharePoint je třeba zadat ip adresu zařízení, aby byla instalace úspěšně dokončena. | |Ano |Ne |
-| 6 |Webový proxy server |Pokud je konfigurace webového proxy serveru jako zadaný protokol protokolem https, bude ovlivněna komunikace mezi zařízeními a službami a zařízení přejde do offline. Balíčky podpory budou také generovány v procesu, spotřebovávající významné prostředky na vašem zařízení. |Ujistěte se, že adresa URL webového proxy serveru má jako zadaný protokol protokol HTTP. Další informace najdete v článku [Konfigurace webového proxy serveru pro zařízení](storsimple-configure-web-proxy.md). |Ano |Ne |
-| 7 |Webový proxy server |Pokud nakonfigurujete a povolíte webový proxy server na registrovaném zařízení, budete muset restartovat aktivní řadič v zařízení. | |Ano |Ne |
-| 8 |Vysoká latence cloudu a vysoké vstupně-výstupní úlohy |Když vaše zařízení StorSimple narazí na kombinaci velmi vysoké latence cloudu (pořadí sekund) a vysoké vstupně-výstupní úlohy, svazky zařízení přejdou do zhoršeného stavu a vstupně-výstupních služeb může selhat s chybou "zařízení není připraveno". |Budete muset ručně restartovat řadiče zařízení nebo provést převzetí služeb při selhání zařízení k obnovení z této situace. |Ano |Ne |
-| 9 |Azure PowerShell |Při použití Rutina StorSimple **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object -First 1 -Wait** vybrat první objekt, takže můžete vytvořit nový **Objekt VolumeContainer,** rutina vrátí všechny objekty. |Zalomit rutinu do závorek takto: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** |Ano |Ano |
-| 10 |Migrace |Při předání více kontejnerů svazku pro migraci, ETA pro nejnovější zálohování je přesné pouze pro první kontejner svazku. Paralelní migrace navíc začne po migraci prvních 4 záloh v prvním kontejneru svazku. |Doporučujeme migrovat jeden kontejner svazku najednou. |Ano |Ne |
-| 11 |Migrace |Po obnovení nejsou svazky přidány do zásady zálohování nebo skupiny virtuálních disků. |Chcete-li vytvořit zálohy, budete muset tyto svazky přidat do zásad zálohování. |Ano |Ano |
-| 12 |Migrace |Po dokončení migrace zařízení řady 5000/7000 nesmí přistupovat k migrované datové kontejnery. |Doporučujeme odstranit migrované datové kontejnery po dokončení migrace a potvrzené. |Ano |Ne |
-| 13 |Klonování a dr. |Zařízení StorSimple se spuštěnou aktualizací 1 nemůže klonovat nebo provádět zotavení po havárii zařízení se systémem předaktualizací 1. |Chcete-li povolit tyto operace, budete muset aktualizovat cílové zařízení na aktualizaci 1. |Ano |Ano |
-| 14 |Migrace |Zálohování konfigurace pro migraci může selhat na zařízení řady 5000-7000, pokud existují skupiny svazků bez přidružených svazků. |Odstraňte všechny prázdné skupiny svazků bez přidružených svazků a opakujte zálohu konfigurace. |Ano |Ne |
-| 15 |Rutiny prostředí Azure PowerShell a místně vázaných svazků |Nelze vytvořit místně vázaný svazek prostřednictvím rutin Azure PowerShell. (Všechny svazky, které vytvoříte prostřednictvím Azure PowerShellu, se budou vrstvené.) |Ke konfiguraci místně vázaných svazků vždy používejte službu StorSimple Manager. |Ano |Ne |
-| 16 |Volné místo pro místně připnuté svazky |Pokud odstraníte místně vázaný svazek, místo, které je k dispozici pro nové svazky, nemusí být okamžitě aktualizováno. Služba StorSimple Manager aktualizuje místní prostor, který je k dispozici přibližně každou hodinu. |Počkejte hodinu, než se pokusíte vytvořit nový svazek. |Ano |Ne |
-| 17 |Místně připojené svazky |Úloha obnovení zpřístupňuje dočasné zálohy snímek v katalogu zálohování, ale pouze po dobu trvání úlohy obnovení. Navíc zpřístupňuje skupinu virtuálních disků s předponou **tmpCollection** na stránce **zásady zálohování,** ale pouze po dobu trvání úlohy obnovení. |K tomuto chování může dojít, pokud úloha obnovení má pouze místně vázaných svazků nebo kombinaci místně vázaných a vrstvených svazků. Pokud úloha obnovení obsahuje pouze vrstvené svazky, toto chování nedojde. Není vyžadován žádný zásah uživatele. |Ano |Ne |
-| 18 |Místně připojené svazky |Pokud zrušíte úlohu obnovení a převzetí služeb při selhání řadiče dojde bezprostředně poté, úloha obnovení se zobrazí **nezdařilo** místo **Zrušeno**. Pokud úloha obnovení selže a převzetí služeb při selhání řadiče dojde bezprostředně poté, úloha obnovení se zobrazí **Zrušeno** místo **Nezdařilo**. |K tomuto chování může dojít, pokud úloha obnovení má pouze místně vázaných svazků nebo kombinaci místně vázaných a vrstvených svazků. Pokud úloha obnovení obsahuje pouze vrstvené svazky, toto chování nedojde. Není vyžadován žádný zásah uživatele. |Ano |Ne |
-| 19 |Místně připojené svazky |Pokud zrušíte úlohu obnovení nebo pokud se obnovení nezdaří a dojde k převzetí služeb při selhání řadiče, zobrazí se na stránce Úlohy další **úloha** obnovení. |K tomuto chování může dojít, pokud úloha obnovení má pouze místně vázaných svazků nebo kombinaci místně vázaných a vrstvených svazků. Pokud úloha obnovení obsahuje pouze vrstvené svazky, toto chování nedojde. Není vyžadován žádný zásah uživatele. |Ano |Ne |
-| 20 |Místně připojené svazky |Pokud se pokusíte převést vrstvený svazek (vytvořený a klonovaný pomocí aktualizace 1.2 nebo starší) na místně vázaný svazek a zařízení nemá místo nebo dojde k výpadku cloudu, pak může být klon (y) poškozen. |K tomuto problému dochází pouze u svazků, které byly vytvořeny a klonovány pomocí softwaru pre-Update 2. To by mělo být zřídka scénář. | | |
-| 21 |Převod objemu |Neaktualizujte akreditované kartotéky připojené ke svazku v průběhu převodu svazku (vrstvené na místně připnuté nebo naopak). Aktualizace akrsů může vést k poškození dat. |V případě potřeby aktualizujte acr před převodem objemu a neprovázte žádné další aktualizace ACR, zatímco probíhá převod. | | |
+| 1 |Kvorum disku |Ve výjimečných případech dojde k odpojení většiny disků v EBOD skříni zařízení 8600, což způsobí nedostatečné diskové kvorum, ale fond úložiště přejde do režimu offline. Zůstane v režimu offline i v případě, že jsou disky znovu připojeny. |Budete muset zařízení restartovat. Pokud se problém opakuje, kontaktujte prosím podpora Microsoftu pro další kroky. |Ano |Ne |
+| 2 |Nesprávné ID kontroleru |Když se provede nahrazení řadiče, může se řadič 0 zobrazit jako kontroler 1. Když se při nahrazení řadiče načte z uzlu rovnocenného uzlu, ID kontroleru se může zpočátku zobrazit jako ID partnerského řadiče. Ve výjimečných případech se toto chování může zobrazit i po restartování systému. |Není vyžadována žádná akce uživatele. Tato situace se vyřeší sám po dokončení nahrazení kontroleru. |Ano |Ne |
+| 3 |Účty úložiště |Použití služby úložiště k odstranění účtu úložiště je nepodporovaný scénář. To vede k situaci, kdy nelze načíst uživatelská data. | |Ano |Ano |
+| 4 |Převzetí služeb při selhání zařízení |Víc převzetí služeb při selhání kontejneru svazků ze stejného zdrojového zařízení do různých cílových zařízení se nepodporuje. Při převzetí služeb při selhání z jednoho nedoručeného zařízení na několik zařízení dojde ke ztrátě vlastnictví dat v kontejnerech svazků u prvního zařízení při selhání. Po takovém převzetí služeb při selhání se tyto kontejnery svazků zobrazí nebo se budou chovat jinak, než je zobrazíte na portálu Azure Classic. | |Ano |Ne |
+| 5 |Instalace |Během instalace služby StorSimple Adapter pro SharePoint je potřeba zadat IP adresu zařízení, aby se instalace úspěšně dokončila. | |Ano |Ne |
+| 6 |Webový proxy server |Pokud vaše konfigurace webového proxy serveru jako zadaného protokolu obsahuje HTTPS, bude ovlivněná komunikace mezi zařízením a zařízení bude offline. Balíčky podpory budou také vygenerovány v procesu a budou spotřebovávat významné prostředky na vašem zařízení. |Ujistěte se, že adresa URL webového proxy serveru má jako zadaný protokol HTTP. Další informace najdete v článku [Konfigurace webového proxy serveru pro zařízení](storsimple-configure-web-proxy.md). |Ano |Ne |
+| 7 |Webový proxy server |Pokud nakonfigurujete a povolíte webový proxy server na registrovaném zařízení, budete muset na svém zařízení restartovat aktivní kontroler. | |Ano |Ne |
+| 8 |Vysoká latence v cloudu a vysoká zátěž/výstup |Když zařízení StorSimple zaznamená kombinaci velmi vysoké latence v cloudu (v řádu sekund) a vysoké vstupně-výstupní úlohy, svazky zařízení přejdou do stavu sníženo a vstupně-výstupní operace se nemusí zdařit s chybou zařízení není připraveno. |V takovém případě budete muset ručně restartovat řadiče zařízení nebo provést převzetí služeb při selhání zařízení pro obnovení. |Ano |Ne |
+| 9 |Azure PowerShell |Když použijete rutinu StorSimple **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object-First 1-počkat** na výběr prvního objektu, abyste mohli vytvořit nový objekt **ke kontejneru svazků** , rutina vrátí všechny objekty. |Zabalte rutinu do závorek následujícím způsobem: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object-First 1-Wait** |Ano |Ano |
+| 10 |Migrace |Pokud je pro migraci předána více kontejnerů svazků, je ETA pro nejnovější zálohování přesné pouze pro první kontejner svazků. Kromě toho se spustí paralelní migrace po migraci prvních 4 záloh v prvním kontejneru svazků. |Doporučujeme migrovat jeden kontejner svazků v jednom okamžiku. |Ano |Ne |
+| 11 |Migrace |Po obnovení nebudou svazky přidány do zásad zálohování nebo do skupiny virtuálních disků. |Tyto svazky budete muset přidat do zásad zálohování, aby bylo možné vytvářet zálohy. |Ano |Ano |
+| 12 |Migrace |Po dokončení migrace nesmí zařízení řady 5000/7000 přistupovat ke migrovaných datovým kontejnerům. |Po dokončení a potvrzení migrace doporučujeme odstranit migrované datové kontejnery. |Ano |Ne |
+| 13 |Klonování a zotavení po havárii |Zařízení StorSimple se systémem Update 1 nemůže klonovat nebo provést zotavení po havárii na zařízení, na kterém běží software před aktualizací 1. |Aby bylo možné tyto operace, je třeba aktualizovat cílové zařízení na aktualizaci 1. |Ano |Ano |
+| 14 |Migrace |Pokud existují skupiny svazků bez přidružených svazků, zálohování konfigurace pro migraci na zařízení řady 5000-7000 se nemusí zdařit. |Odstraňte všechny prázdné skupiny svazků bez přidružených svazků a opakujte zálohování konfigurace. |Ano |Ne |
+| 15 |Rutiny Azure PowerShell a místně připnuté svazky |Pomocí rutin Azure PowerShell nemůžete vytvořit místně připojený svazek. (Všechny svazky, které vytvoříte prostřednictvím Azure PowerShell, budou vrstveny.) |Vždy používejte službu StorSimple Manager ke konfiguraci místně připojených svazků. |Ano |Ne |
+| 16 |Místo k dispozici pro místně připojené svazky |Odstraníte-li místně připojený svazek, nebude možné okamžitě aktualizovat místo dostupné pro nové svazky. Služba StorSimple Manager aktualizuje místní prostor, který je k dispozici přibližně každou hodinu. |Než se pokusíte vytvořit nový svazek, počkejte hodinu. |Ano |Ne |
+| 17 |Místně připojené svazky |Vaše úloha obnovení zpřístupňuje dočasné zálohování snímku v katalogu záloh, ale pouze po dobu trvání úlohy obnovení. Kromě toho zveřejňuje skupinu virtuálních disků s předponou **tmpCollection** na stránce **zásady zálohování** , ale pouze po dobu trvání úlohy obnovení. |K tomuto chování může dojít v případě, že úloha obnovení má jenom místně připnuté svazky nebo kombinaci místně připnutého a vrstveného svazku. Pokud úloha obnovení zahrnuje jenom vrstvené svazky, pak k tomuto chování nedojde. Není vyžadován žádný zásah uživatele. |Ano |Ne |
+| 18 |Místně připojené svazky |Pokud zrušíte úlohu obnovení a okamžitě dojde k převzetí služeb při selhání, úloha obnovení **se místo** **zrušení**zobrazí. Pokud úloha obnovení selže a okamžitě dojde k převzetí služeb při selhání, úloha obnovení se místo **selhání**zobrazí jako **zrušená** . |K tomuto chování může dojít v případě, že úloha obnovení má jenom místně připnuté svazky nebo kombinaci místně připnutého a vrstveného svazku. Pokud úloha obnovení zahrnuje jenom vrstvené svazky, pak k tomuto chování nedojde. Není vyžadován žádný zásah uživatele. |Ano |Ne |
+| 19 |Místně připojené svazky |Pokud zrušíte úlohu obnovení, nebo pokud obnovení selhává a pak dojde k převzetí služeb při selhání, zobrazí se na stránce **úlohy** další úloha obnovení. |K tomuto chování může dojít v případě, že úloha obnovení má jenom místně připnuté svazky nebo kombinaci místně připnutého a vrstveného svazku. Pokud úloha obnovení zahrnuje jenom vrstvené svazky, pak k tomuto chování nedojde. Není vyžadován žádný zásah uživatele. |Ano |Ne |
+| 20 |Místně připojené svazky |Pokud se pokusíte převést vrstvený svazek (vytvořený a Klonovaný pomocí aktualizace 1,2 nebo starší) na místně připojený svazek a na vašem zařízení dochází volné místo nebo dojde k výpadku cloudu, klony můžou být poškozené. |K tomuto problému dochází pouze se svazky vytvořenými a klonovánými pomocí softwaru před aktualizací 2. To by mělo být nečastý scénář. | | |
+| 21 |Převod svazků |Neaktualizujte záznamů ACR připojené ke svazku, když probíhá převod svazku (vrstvené na místně připnuté nebo naopak). Aktualizace záznamů ACR by mohla způsobit poškození dat. |V případě potřeby aktualizujte záznamů ACR před převodem svazku a neprovádějte žádné další aktualizace ACR, zatímco probíhá převod. | | |
 
-## <a name="controller-and-firmware-updates-in-update-2"></a>Aktualizace řadiče a firmwaru v aktualizaci 2
-Tato verze aktualizuje ovladač a firmware disku v zařízení.
+## <a name="controller-and-firmware-updates-in-update-2"></a>Aktualizace řadiče a firmwaru v aktualizaci Update 2
+Tato verze aktualizuje ovladač a firmware disku na vašem zařízení.
 
-* Další informace o aktualizaci firmwaru LSI naleznete v článku 3121900 znalostní báze Microsoft Knowledge Base. 
-* Další informace o aktualizaci firmwaru disku naleznete v článku 3121899 znalostní báze Microsoft Knowledge Base.
+* Další informace o aktualizaci firmwaru LSI najdete v článku 3121900 znalostní báze Microsoft Knowledge Base. 
+* Další informace o aktualizaci firmwaru disku najdete v článku 3121899 znalostní báze Microsoft Knowledge Base.
 
-## <a name="virtual-device-updates-in-update-2"></a>Aktualizace virtuálních zařízení v aktualizaci 2
-Tuto aktualizaci nelze použít na virtuální zařízení. Bude třeba vytvořit nová virtuální zařízení. 
+## <a name="virtual-device-updates-in-update-2"></a>Aktualizace virtuálních zařízení v aktualizaci Update 2
+Tuto aktualizaci nelze použít pro virtuální zařízení. Nová virtuální zařízení bude potřeba vytvořit. 
 
 ## <a name="next-step"></a>Další krok
-Přečtěte si, jak [nainstalovat aktualizaci 2](storsimple-install-update-2.md) do zařízení StorSimple.
+Přečtěte si, jak [nainstalovat Update 2](storsimple-install-update-2.md) na zařízení StorSimple.
 

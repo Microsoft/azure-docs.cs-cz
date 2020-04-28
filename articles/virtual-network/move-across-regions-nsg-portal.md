@@ -1,52 +1,52 @@
 ---
-title: Přesunutí skupiny zabezpečení sítě Azure (NSG) do jiné oblasti Azure pomocí portálu Azure
-description: Pomocí šablony Azure Resource Manager můžete pomocí webu Azure Portal přesunout skupinu zabezpečení sítě Azure z jedné oblasti Azure do jiné.
+title: Přesuňte skupinu zabezpečení sítě Azure (NSG) do jiné oblasti Azure pomocí Azure Portal
+description: Pomocí šablony Azure Resource Manager můžete přesunout skupinu zabezpečení sítě Azure z jedné oblasti Azure do jiné pomocí Azure Portal.
 author: asudbring
 ms.service: virtual-network
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: allensu
 ms.openlocfilehash: dce267178c3caf813ccdcac4bba86ccfde3f3421
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75647182"
 ---
-# <a name="move-azure-network-security-group-nsg-to-another-region-using-the-azure-portal"></a>Přesunutí skupiny zabezpečení sítě Azure (NSG) do jiné oblasti pomocí portálu Azure
+# <a name="move-azure-network-security-group-nsg-to-another-region-using-the-azure-portal"></a>Přesuňte skupinu zabezpečení sítě Azure (NSG) do jiné oblasti pomocí Azure Portal
 
-Existují různé scénáře, ve kterých byste chtěli přesunout existující nsg z jedné oblasti do druhé. Například můžete chtít vytvořit skupinu zabezpečení se stejnou konfigurací a bezpečnostními pravidly pro testování. Můžete také přesunout nsg do jiné oblasti jako součást plánování zotavení po havárii.
+Existují různé scénáře, ve kterých byste chtěli přesunout stávající skupin zabezpečení sítě z jedné oblasti do druhé. Například může být vhodné vytvořit NSG se stejnou konfigurací a pravidly zabezpečení pro testování. V rámci plánování zotavení po havárii možná budete chtít přesunout NSG do jiné oblasti.
 
-Skupiny zabezpečení Azure nelze přesunout z jedné oblasti do druhé. Šablonu Azure Resource Manager však můžete použít k exportu existujícíkonfigurace a bezpečnostních pravidel skupiny zabezpečení.  Potom můžete zinscenovat prostředek v jiné oblasti exportem skupiny nsg do šablony, úpravou parametrů tak, aby odpovídaly cílové oblasti, a potom šablonu nasadit do nové oblasti.  Další informace o Správci prostředků a šablonách najdete v [tématu Úvodní příručka: Vytvoření a nasazení šablon Azure Resource Manageru pomocí portálu Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
+Skupiny zabezpečení Azure nejde přesunout z jedné oblasti do druhé. K exportu existující konfigurace a pravidel zabezpečení NSG ale můžete použít šablonu Azure Resource Manager.  Pak můžete vytvořit prostředek v jiné oblasti tak, že NSG exportujete do šablony, upravíte parametry tak, aby odpovídaly cílové oblasti, a pak šablonu nasadíte do nové oblasti.  Další informace o Správce prostředků a šablonách najdete v tématu [rychlý Start: vytvoření a nasazení Azure Resource Manager šablon pomocí Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Ujistěte se, že skupina zabezpečení sítě Azure je v oblasti Azure, ze které chcete přesunout.
+- Ujistěte se, že je skupina zabezpečení sítě Azure v oblasti Azure, ze které chcete přejít.
 
-- Skupiny zabezpečení sítě Azure nelze přesunout mezi oblastmi.  Budete muset přidružit nový skupiny nsg k prostředkům v cílové oblasti.
+- Skupiny zabezpečení sítě Azure nelze přesouvat mezi oblastmi.  Bude nutné přidružit nový NSG k prostředkům v cílové oblasti.
 
-- Chcete-li exportovat konfiguraci skupiny zabezpečení sítě a nasadit šablonu k vytvoření skupiny zabezpečení sítě v jiné oblasti, budete potřebovat roli přispěvatele sítě nebo vyšší.
+- Pokud chcete exportovat konfiguraci NSG a nasadit šablonu pro vytvoření NSG v jiné oblasti, budete potřebovat roli Přispěvatel sítě nebo vyšší.
 
-- Identifikujte rozložení zdrojové sítě a všechny prostředky, které právě používáte. Toto rozložení zahrnuje mimo jiné nástroje pro vyrovnávání zatížení, veřejné IP adresy a virtuální sítě.
+- Identifikujte rozložení zdrojové sítě a všechny prostředky, které aktuálně používáte. Toto rozložení zahrnuje, ale není omezené na nástroje pro vyrovnávání zatížení, veřejné IP adresy a virtuální sítě.
 
-- Ověřte, že vaše předplatné Azure umožňuje vytvářet skupiny zabezpečení zabezpečení v cílové oblasti, která se používá. O povolení požadované kvóty požádejte podporu.
+- Ověřte, že vaše předplatné Azure umožňuje vytvářet skupin zabezpečení sítě v cílové oblasti, která se používá. O povolení požadované kvóty požádejte podporu.
 
-- Ujistěte se, že vaše předplatné má dostatek prostředků pro podporu přidání nsg pro tento proces.  Viz [Limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
+- Ujistěte se, že vaše předplatné má dostatek prostředků na podporu přidání skupin zabezpečení sítě pro tento proces.  Viz [Limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
 
 ## <a name="prepare-and-move"></a>Příprava a přesun
-Následující kroky ukazují, jak připravit skupinu zabezpečení sítě pro přesunutí pravidla konfigurace a zabezpečení pomocí šablony Správce prostředků a přesunout pravidla konfigurace a zabezpečení skupiny zabezpečení sítě do cílové oblasti pomocí portálu.
+Následující kroky ukazují, jak připravit skupinu zabezpečení sítě pro pravidlo konfigurace a pravidla zabezpečení s použitím šablony Správce prostředků a přesunutím konfigurace a pravidel zabezpečení NSG do cílové oblasti pomocí portálu.
 
 
 ### <a name="export-the-template-and-deploy-from-the-portal"></a>Export šablony a nasazení z portálu
 
-1. Přihlaste se ke**skupinám prostředků** [portálu](https://portal.azure.com) > Azure .
-2. Vyhledejte skupinu prostředků, která obsahuje zdrojový soubor nsg, a klikněte na ni.
-3. Vyberte > **nastavení** > **exportovat šablonu**.
-4. V okně **Exportovat šablonu** zvolte **Nasadit.**
-5. Kliknutím na**parametry pro úpravy** **šablony** > otevřete soubor **parameters.json** v online editoru.
-6. Chcete-li upravit parametr názvu souboru NSG, změňte **vlastnost hodnoty** pod **parametry**:
+1. Přihlaste se ke**skupinám prostředků** [Azure Portal](https://portal.azure.com) > .
+2. Vyhledejte skupinu prostředků obsahující zdrojové NSG a klikněte na ni.
+3. Vyberte > **Nastavení** > **Exportovat šablonu**.
+4. V okně **Exportovat šablonu** vyberte **nasadit** .
+5. Kliknutím na **šablonu** > **Upravit parametry** otevřete soubor **Parameters. JSON** v online editoru.
+6. Chcete-li upravit parametr názvu NSG, změňte hodnotu vlastnosti **Value** v části **parametry**:
 
     ```json
             {
@@ -60,13 +60,13 @@ Následující kroky ukazují, jak připravit skupinu zabezpečení sítě pro p
             }
     ```
 
-7. Změňte zdrojovou hodnotu skupiny nsg v editoru na název, který si vyberete pro cílový soubor nsg. Ujistěte se, že jste název uzavřete do uvozovek.
+7. Změňte hodnotu vlastnosti source NSG v editoru na název, který si zvolíte pro cílový NSG. Zajistěte, aby byl název uzavřen v uvozovkách.
 
-8.  V editoru klikněte na **Uložit.**
+8.  V Editoru klikněte na **Uložit** .
 
-9.  Kliknutím na **Šablona** > **Upravit šablonu** otevřete soubor **template.json** v online editoru.
+9.  Kliknutím na **Šablona** > **Upravit šablonu** otevřete soubor **template. JSON** v online editoru.
 
-10. Chcete-li upravit cílovou oblast, ve které budou přesunuta pravidla konfigurace a zabezpečení skupiny zabezpečení, změňte vlastnost **umístění** pod **prostředky** v online editoru:
+10. Chcete-li upravit cílovou oblast, kde budou přesunuta konfigurace NSG a pravidla zabezpečení, změňte vlastnost **umístění** v části **prostředky** v online Editoru:
 
     ```json
             "resources": [
@@ -84,11 +84,11 @@ Následující kroky ukazují, jak připravit skupinu zabezpečení sítě pro p
 
     ```
 
-11. Kódy umístění oblasti najdete v [tématu Umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/).  Kód pro oblast je název oblasti bez mezer, **centrální US** = **centralus**.
+11. Pokud chcete získat kódy umístění oblastí, přečtěte si téma [umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/).  Kód oblasti je název oblasti bez mezer, **střed USA** = **centralus**.
 
-12. Můžete také změnit další parametry v šabloně, pokud se rozhodnete, a jsou volitelné v závislosti na vašich požadavcích:
+12. Můžete také změnit jiné parametry v šabloně, pokud zvolíte možnost a jsou nepovinné v závislosti na vašich požadavcích:
 
-    * **Pravidla zabezpečení** – Můžete upravit, která pravidla jsou nasazena do cílové skupiny zabezpečení nsg přidáním nebo odebráním pravidel do oddílu **securityRules** v souboru **template.json:**
+    * **Pravidla zabezpečení** – pravidla, která se nasazují do cílových NSG, můžete upravit přidáním nebo odebráním pravidel do oddílu **securityRules** v souboru **template. JSON** :
 
         ```json
            "resources": [
@@ -124,7 +124,7 @@ Následující kroky ukazují, jak připravit skupinu zabezpečení sítě pro p
             }
         ```
 
-      Chcete-li dokončit přidání nebo odebrání pravidel v cílovém souboru nsg, musíte také upravit vlastní typy pravidel na konci souboru **template.json** ve formátu následujícího příkladu:
+      Chcete-li dokončit sčítání nebo odebírání pravidel v cílovém NSG, je nutné také upravit typy vlastních pravidel na konci souboru **template. JSON** ve formátu níže uvedeného příkladu:
 
       ```json
            {
@@ -151,31 +151,31 @@ Následující kroky ukazují, jak připravit skupinu zabezpečení sítě pro p
             }
       ```
 
-13. V online editoru klikněte na **Uložit.**
+13. V online Editoru klikněte na **Uložit** .
 
-14. Kliknutím na**předplatné** **BASICS** > vyberte předplatné, ve kterém bude nasadit cílový soubor nsg.
+14. Klikněte na **základy** > **předplatné** a vyberte předplatné, ve kterém se bude nasazovat cílový NSG.
 
-15. Kliknutím na**skupinu prostředků** **BASICS** > zvolte skupinu prostředků, do které bude nasadit cílový soubor nsg.  Chcete-li vytvořit novou skupinu prostředků pro cílovou skupinu nsg, můžete klepnout na tlačítko **Vytvořit nový.**  Ujistěte se, že název není stejný jako zdrojová skupina prostředků existující skupiny nsg.
+15. Klikněte na **základy** > **Skupina prostředků** a vyberte skupinu prostředků, do které bude nasazený cílový NSG.  Kliknutím na **vytvořit novou** můžete vytvořit novou skupinu prostředků pro cílový NSG.  Ujistěte se, že název není stejný jako zdrojová skupina prostředků existující NSG.
 
-16. Ověřte, že**umístění** **BASICS** > je nastaveno na cílové umístění, kde chcete nasadit skupinu nsg.
+16. Ověření **základních** > **umístění** je nastaveno na cílové umístění, ve kterém chcete NSG nasadit.
 
-17. V části **NASTAVENÍ** ověřte, zda název odpovídá názvu, který jste zadali do výše uvedeného editoru parametrů.
+17. V části **Nastavení** ověřte, že se název shoduje s názvem, který jste zadali v editoru parametrů výše.
 
-18. Zaškrtněte políčko **v**podmínkách .
+18. Zaškrtněte políčko v části **podmínky a ujednání**.
 
-19. Klepnutím na tlačítko **Koupit** nasadíte cílovou skupinu zabezpečení sítě.
+19. Kliknutím na tlačítko **koupit** nasaďte cílovou skupinu zabezpečení sítě.
 
 ## <a name="discard"></a>Zahodit
 
-Pokud chcete zahodit cílový skupinu nsg, odstraňte skupinu prostředků, která obsahuje cílovou skupinu nsg.  Chcete-li tak učinit, vyberte skupinu prostředků z řídicího panelu na portálu a v horní části stránky přehledu vyberte **Odstranit.**
+Pokud chcete zrušit cílovou NSG, odstraňte skupinu prostředků, která obsahuje cílovou NSG.  Provedete to tak, že vyberete skupinu prostředků z řídicího panelu na portálu a v horní části stránky přehled vyberete **Odstranit** .
 
 ## <a name="clean-up"></a>Vyčištění
 
-Chcete-li potvrdit změny a dokončit přesun skupiny nsg, odstraňte zdrojový soubor nSG nebo skupinu prostředků. Chcete-li tak učinit, vyberte skupinu zabezpečení sítě nebo skupinu prostředků z řídicího panelu na portálu a v horní části každé stránky vyberte **Odstranit.**
+Pokud chcete potvrdit změny a dokončit přesun NSG, odstraňte zdrojový NSG nebo skupinu prostředků. Provedete to tak, že vyberete skupinu zabezpečení sítě nebo skupinu prostředků z řídicího panelu na portálu a v horní části každé stránky vyberete **Odstranit** .
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste přesunuli skupinu zabezpečení sítě Azure z jedné oblasti do druhé a vyčistili zdrojové prostředky.  Další informace o přesunu prostředků mezi oblastmi a zotavení po havárii v Azure najdete v tématu:
+V tomto kurzu jste přesunuli skupinu zabezpečení sítě Azure z jedné oblasti na jinou a vyčistili jste zdrojové prostředky.  Další informace o přesouvání prostředků mezi oblastmi a zotavení po havárii v Azure najdete tady:
 
 
 - [Přesun prostředků do nové skupiny prostředků nebo předplatného](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)

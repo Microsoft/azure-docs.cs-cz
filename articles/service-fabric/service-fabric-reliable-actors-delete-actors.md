@@ -1,21 +1,21 @@
 ---
-title: Odstranění objektů infrastruktury služeb Azure
-description: Zjistěte, jak ručně a úplně odstranit spolehlivé objekty actor a jejich stav v aplikaci Azure Service Fabric.
+title: Odstranit Azure Service Fabric Actors
+description: Přečtěte si, jak ručně a úplně odstranit Reliable Actors a jejich stav v aplikaci Azure Service Fabric.
 author: amanbha
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: amanbha
 ms.openlocfilehash: b90c5a10c64e273f1c8f48c7bf5713859796db65
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75645612"
 ---
 # <a name="delete-reliable-actors-and-their-state"></a>Odstranění objektů Reliable Actors a jejich stavu
-Uvolňování paměti deaktivované objekty actor pouze vyčistí objekt objektu actor, ale neodebere data, která je uložena ve správci stavu objektu actor. Při opětovné aktivaci objektu actor, jeho data je znovu k dispozici prostřednictvím Správce stavu. V případech, kdy objekty actor ukládají data ve Správci stavu a jsou deaktivovány, ale nikdy znovu aktivovány, může být nutné vyčistit jejich data.
+Uvolňování paměti deaktivovaných aktérů vyčistí jenom objekt actor, ale neodebere data uložená ve Správci stavu objektu actor. Po opětovné aktivaci objektu actor se data znovu zpřístupní prostřednictvím Správce stavu. V případech, kdy objekty actor ukládají data do Správce stavů a deaktivují se, ale nikdy se neaktivují, může být nutné vyčistit svá data.
 
-[Služba actor](service-fabric-reliable-actors-platform.md) poskytuje funkci pro odstranění objekty actor ze vzdáleného volajícího:
+[Služba objektu actor](service-fabric-reliable-actors-platform.md) poskytuje funkci pro odstranění objektů actor ze vzdáleného volajícího:
 
 ```csharp
 ActorId actorToDelete = new ActorId(id);
@@ -34,24 +34,24 @@ ActorService myActorServiceProxy = ActorServiceProxy.create(
 myActorServiceProxy.deleteActorAsync(actorToDelete);
 ```
 
-Odstranění objektu actor má následující účinky v závislosti na tom, zda je objekt actor aktuálně aktivní:
+Odstranění objektu actor má následující důsledky v závislosti na tom, zda je objekt actor aktuálně aktivní:
 
-* **Aktivní herec**
-  * Objekt actor je odebrán ze seznamu aktivních aktů a je deaktivován.
-  * Jeho stav je trvale odstraněn.
-* **Neaktivní herec**
-  * Jeho stav je trvale odstraněn.
+* **Aktivní objekt actor**
+  * Objekt actor je odebrán ze seznamu aktivních objektů actor a deaktivován.
+  * Stav je trvale odstraněn.
+* **Neaktivní objekt actor**
+  * Stav je trvale odstraněn.
 
-Objekt actor nemůže volat delete na sebe z jedné z jeho metody objektu actor, protože objekt actor nelze odstranit při provádění v kontextu volání objektu actor, ve kterém modul runtime získal zámek kolem volání objektu actor vynutit přístup s jedním podprocesem.
+Objekt actor nemůže volat odstranění samotného z jedné z jeho metod Actor, protože objekt actor nelze odstranit při provádění v kontextu volání objektu actor, ve kterém modul runtime získal zámek kolem volání objektu actor, aby vynutil přístup s jedním vláknem.
 
-Další informace o spolehlivých aktérech naleznete v následujících hodnotách:
-* [Časovače a připomenutí herce](service-fabric-reliable-actors-timers-reminders.md)
-* [Akce herce](service-fabric-reliable-actors-events.md)
-* [Herec reentrancy](service-fabric-reliable-actors-reentrancy.md)
-* [Diagnostika a sledování výkonu actoru](service-fabric-reliable-actors-diagnostics.md)
-* [Referenční dokumentace rozhraní API actor](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [Ukázkový kód jazyka C#](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Ukázkový kód Javy](https://github.com/Azure-Samples/service-fabric-java-getting-started)
+Další informace o Reliable Actors najdete v následujícím článku:
+* [Časovače a připomenutí objektu actor](service-fabric-reliable-actors-timers-reminders.md)
+* [Události objektu actor](service-fabric-reliable-actors-events.md)
+* [Vícenásobný přístup objektu actor](service-fabric-reliable-actors-reentrancy.md)
+* [Monitorování diagnostiky a výkonu objektu actor](service-fabric-reliable-actors-diagnostics.md)
+* [Referenční dokumentace k rozhraní API actor](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Ukázkový kód C#](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Vzorový kód Java](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-lifecycle/garbage-collection.png

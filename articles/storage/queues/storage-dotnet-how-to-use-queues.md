@@ -1,5 +1,5 @@
 ---
-title: Začínáme s úložištěm Fronty Azure pomocí rozhraní .NET – Azure Storage
+title: Začínáme s úložištěm Azure Queue pomocí Azure Storage .NET
 description: Fronty Azure Queue poskytují spolehlivý asynchronní přenos zpráv mezi součástmi aplikace. Cloudový přenos zpráv umožňuje nezávislé škálování součástí vaší aplikace.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -9,10 +9,10 @@ ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
 ms.openlocfilehash: 0806c1101c0bc93a1b917cb2d18709721ff0c6d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75968291"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Začínáme s úložištěm Azure Queue pomocí rozhraní .NET
@@ -34,8 +34,8 @@ V tomto kurzu si ukážeme, jak napsat kód .NET pro některé běžné scéná�
 ### <a name="prerequisites"></a>Požadavky
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-* [Společná klientská knihovna Azure Storage pro rozhraní .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
-* [Klientská knihovna fronty úložiště Azure pro rozhraní .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/)
+* [Azure Storage společnou klientskou knihovnu pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
+* [Klientská knihovna Azure Storage Queue pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/)
 * [Azure Configuration Manager for .NET](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)
 * [Účet úložiště Azure](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 
@@ -49,47 +49,47 @@ Potom si nastavte vývojové prostředí v sadě Visual Studio, abyste byli při
 
 ### <a name="create-a-windows-console-application-project"></a>Vytvoření projektu konzolové aplikace pro Windows
 
-V sadě Visual Studio vytvořte novou konzolovou aplikaci pro Windows. Následující kroky ukazují, jak vytvořit konzolovou aplikaci v Sadě Visual Studio 2019. Kroky u ostatních verzí sady Visual Studio jsou podobné.
+V sadě Visual Studio vytvořte novou konzolovou aplikaci pro Windows. Následující kroky ukazují, jak vytvořit konzolovou aplikaci v aplikaci Visual Studio 2019. Kroky u ostatních verzí sady Visual Studio jsou podobné.
 
-1. Vybrat**New** > nový **projekt souboru** > **Project**
-2. Vybrat **platformu** > **Windows**
+1. Vybrat **soubor** > **Nový** > **projekt**
+2. Vybrat **Platform** > **okna** platformy
 3. Vyberte **Aplikace konzoly (.NET Framework)**.
-4. Vybrat **další**
-5. Do pole **Název projektu** zadejte název aplikace.
-6. Vybrat **vytvořit**
+4. Vybrat **Další**
+5. Do pole **název projektu** zadejte název vaší aplikace.
+6. Vyberte **vytvořit** .
 
-Všechny příklady kódu v tomto kurzu lze přidat do **Main()** metoda **Program.cs** souboru konzolové aplikace.
+Všechny příklady kódu v tomto kurzu můžete přidat do metody **Main ()** souboru **program.cs** vaší konzolové aplikace.
 
-Klientské knihovny Azure Storage můžete používat v libovolném typu aplikace .NET, včetně cloudové služby Azure nebo webové aplikace a desktopových a mobilních aplikací. V této příručce použijeme konzolovou aplikaci kvůli zjednodušení.
+Můžete použít klientské knihovny Azure Storage v jakémkoli typu aplikace .NET, včetně cloudové služby Azure nebo webové aplikace a desktopových a mobilních aplikací. V této příručce použijeme konzolovou aplikaci kvůli zjednodušení.
 
 ### <a name="use-nuget-to-install-the-required-packages"></a>Použití balíčku NuGet k instalaci požadovaných balíčků
 
-Chcete-li dokončit tento kurz, musíte v projektu odkazovat na následující tři balíčky:
+Abyste mohli dokončit tento kurz, musíte odkazovat na následující tři balíčky v projektu:
 
-* [Microsoft Azure Storage Common Client Library pro .NET:](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)Tento balíček poskytuje programový přístup k datovým prostředkům ve vašem účtu úložiště.
-* [Knihovna front úložiště Microsoft Azure pro rozhraní .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/): Tato klientská knihovna umožňuje pracovat se službou Microsoft Azure Storage Queue pro ukládání zpráv, ke kterým může klient přistupovat.
+* [Microsoft Azure Storage Common Client Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): Tento balíček poskytuje programový přístup k datovým prostředkům ve vašem účtu úložiště.
+* [Knihovna Microsoft Azure Storage Queue Library pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/): Tato Klientská knihovna umožňuje pracovat s služba front Microsoft Azure Storage pro ukládání zpráv, ke kterým může klient přicházet.
 * [Microsoft Azure Configuration Manager library for .NET:](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) Tento balíček poskytuje třídu pro potřeby analýzy připojovacího řetězce v konfiguračním souboru bez ohledu na to, kde je aplikace spuštěná.
 
-Můžete použít NuGet získat tyto balíčky. Postupujte následovně:
+K získání těchto balíčků můžete použít NuGet. Postupujte následovně:
 
-1. Klepněte pravým tlačítkem myši na projekt v **Průzkumníku řešení**a zvolte **Spravovat balíčky NuGet**.
-2. Vybrat **Procházet**
-3. Vyhledejte "Microsoft.Azure.Storage.Queue" online a vyberte **Nainstalovat,** chcete-li nainstalovat klientskou knihovnu úložiště a její závislosti. Tím se také nainstaluje knihovna Microsoft.Azure.Storage.Common, což je závislost knihovny front.
-4. Vyhledejte "Microsoft.Azure.ConfigurationManager" online a kliknutím **na nainstalovat nainstalujte** Nástroj pro konfiguraci Azure.
+1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte možnost **Spravovat balíčky NuGet**.
+2. Vyberte **Procházet** .
+3. Online vyhledejte "Microsoft. Azure. Storage. Queue" a vyberte **nainstalovat** a nainstalujte tak knihovnu klienta úložiště a její závislosti. Tím se nainstaluje také knihovna Microsoft. Azure. Storage. Common, což je závislost knihovny front.
+4. Online vyhledejte "Microsoft. Azure. ConfigurationManager" a vyberte **nainstalovat** a nainstalujte Configuration Manager Azure.
 
 > [!NOTE]
-> Balíčky knihoven úložiště jsou také zahrnuty v [Azure SDK pro .NET](https://azure.microsoft.com/downloads/). Doporučujeme však také nainstalovat knihovny klienta úložiště z NuGet zajistit, že máte vždy nejnovější verze.
+> Balíčky klientských knihoven pro úložiště jsou taky součástí [sady Azure SDK for .NET](https://azure.microsoft.com/downloads/). Doporučujeme ale nainstalovat taky klientské knihovny pro úložiště z NuGet, abyste měli jistotu, že máte vždycky nejnovější verze.
 >
-> Závislosti ODataLib v knihovnách klienta úložiště pro rozhraní .NET jsou vyřešeny balíčky ODataLib dostupnými na NuGet, nikoli z datových služeb WCF. Knihovny ODataLib můžete stáhnout přímo nebo z odkazu ve vašem kódovém projektu prostřednictvím balíčku NuGet. Konkrétní balíčky ODataLib používané klientskými knihovnami úložiště jsou [OData](https://nuget.org/packages/Microsoft.Data.OData/), [Edm](https://nuget.org/packages/Microsoft.Data.Edm/)a [Spatial](https://nuget.org/packages/System.Spatial/). Zatímco tyto knihovny jsou používány třídy úložiště Tabulky Azure, jsou povinné závislosti pro programování s klientskými knihovnami úložiště.
+> ODataLibé závislosti v knihovnách klienta úložiště pro .NET jsou vyřešeny balíčky ODataLib dostupnými v NuGet, nikoli z WCF Data Services. Knihovny ODataLib můžete stáhnout přímo nebo z odkazu ve vašem kódovém projektu prostřednictvím balíčku NuGet. Konkrétní balíčky ODataLib používané klientskými knihovnami pro úložiště jsou [OData](https://nuget.org/packages/Microsoft.Data.OData/), [EDM](https://nuget.org/packages/Microsoft.Data.Edm/)a [prostor](https://nuget.org/packages/System.Spatial/). I když tyto knihovny používají třídy úložiště tabulek Azure, jsou požadované závislosti pro programování s klientskými knihovnami pro úložiště.
 
 ### <a name="determine-your-target-environment"></a>Určení cílového prostředí
 
 Ke spuštění příkladů z této příručky máte dvě možnosti prostředí:
 
 * Svůj kód můžete spustit na účtu služby Azure Storage v cloudu.
-* Svůj kód můžete spustit v emulátoru úložiště Azure. Emulátor úložiště je místní prostředí, které emuluje účet služby Azure Storage v cloudu. Emulátor je bezplatnou možností pro testování a ladění kódu během vývoje aplikace. Emulátor používá známý účet a klíč. Další informace najdete [v tématu použití emulátoru úložiště Azure pro vývoj a testování](../common/storage-use-emulator.md).
+* Svůj kód můžete spustit v emulátoru úložiště Azure. Emulátor úložiště je místní prostředí, které emuluje účet služby Azure Storage v cloudu. Emulátor je bezplatnou možností pro testování a ladění kódu během vývoje aplikace. Emulátor používá známý účet a klíč. Další informace najdete v tématu [použití emulátoru úložiště Azure pro vývoj a testování](../common/storage-use-emulator.md).
 
-Pokud se zaměřujete na účet úložiště v cloudu, zkopírujte z webu Azure Portal primární přístupový klíč svého účtu úložiště. Další informace naleznete v [tématu Správa přístupových klíčů účtu úložiště](../common/storage-account-keys-manage.md).
+Pokud se zaměřujete na účet úložiště v cloudu, zkopírujte z webu Azure Portal primární přístupový klíč svého účtu úložiště. Další informace najdete v tématu [Správa přístupových klíčů účtu úložiště](../common/storage-account-keys-manage.md).
 
 > [!NOTE]
 > Pokud se chcete vyhnout nákladům spojeným se službou Azure Storage, můžete se zaměřit na emulátor úložiště. I když se zaměříte na účet úložiště Azure v cloudu, budou náklady na vyzkoušení postupů z tohoto kurzu zanedbatelné.
@@ -103,7 +103,7 @@ Další informace o připojovacích řetězcích najdete v tématu věnovaném [
 > [!NOTE]
 > Klíč účtu úložiště je podobný kořenovému heslu vašeho účtu úložiště. Vždy klíč účtu úložiště pečlivě chraňte. Nedávejte ho jiným uživatelům, nezakódovávejte ho ani ho neukládejte do souboru ve formátu prostého textu, který je přístupný ostatním uživatelům. Pokud se domníváte, že klíč je ohrožený, vygenerujte ho znovu pomocí webu Azure Portal.
 
-Chcete-li nakonfigurovat připojovací řetězec, otevřete soubor **app.config** z Průzkumníka řešení v sadě Visual Studio. Přidejte obsah ** \<\> ** níže uvedeného prvku appSettings. *Nahraďte název účtu* názvem účtu úložiště a klíč *účtu* pomocí přístupového klíče účtu:
+Pokud chcete nakonfigurovat připojovací řetězec, otevřete soubor **App. config** z Průzkumník řešení v aplikaci Visual Studio. Přidejte obsah elementu ** \<appSettings\> ** zobrazeného níže. Nahraďte *název účtu* názvem svého účtu úložiště a klíčovým klíčem *účtu* pro přístup k účtu:
 
 ```xml
 <configuration>
@@ -374,9 +374,9 @@ queue.Delete();
 Teď, když jste se naučili základy používání služby Queue Storage, podívejte se na následujících odkazech na další informace o složitějších úlohách úložiště.
 
 * Projděte si referenční dokumentaci ke Službě front, kde najdete úplné podrobnosti o dostupných rozhraních API:
-  * [Klientská knihovna úložiště pro odkaz .NET](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
-  * [Odkaz na rozhraní REST API](https://msdn.microsoft.com/library/azure/dd179355)
-* Zjistěte, jak zjednodušit kód, který píšete pro práci s Azure Storage pomocí [sady Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).
+  * [Klientská knihovna pro úložiště – referenční informace pro .NET](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
+  * [Odkaz na REST API](https://msdn.microsoft.com/library/azure/dd179355)
+* Naučte se, jak zjednodušit psaní kódu pro práci s Azure Storage pomocí [sady Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).
 * Projděte si další průvodce funkcemi, kde najdete další informace o dalších možnostech pro ukládání dat v Azure.
   * [Začínáme s Azure Table Storage pomocí rozhraní .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md) pro ukládání strukturovaných dat
   * [Začínáme s Azure Blob Storage pomocí rozhraní .NET](../blobs/storage-dotnet-how-to-use-blobs.md) pro ukládání nestrukturovaných dat

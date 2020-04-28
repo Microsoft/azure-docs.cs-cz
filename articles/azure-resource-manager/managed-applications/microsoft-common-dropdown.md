@@ -1,22 +1,22 @@
 ---
-title: Element rozhraní a součásti dropdown
-description: Popisuje prvek ui Microsoft.Common.DropDown pro portál Azure. Slouží k výběru z dostupných možností při nasazování spravované aplikace.
+title: DropDown – element uživatelského rozhraní
+description: Popisuje prvek uživatelského rozhraní Microsoft. Common. DropDown pro Azure Portal. Slouží k výběru z dostupných možností při nasazování spravované aplikace.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: a09f9695c18f368a585dbcd0d1e654dee4adfa03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75652382"
 ---
-# <a name="microsoftcommondropdown-ui-element"></a>Element ui rozhraní Microsoft.Common.DropDown
+# <a name="microsoftcommondropdown-ui-element"></a>Microsoft. Common. DropDown – element uživatelského rozhraní
 
 Ovládací prvek výběru s rozevíracím seznamem.
 
-## <a name="ui-sample"></a>Ukázka ui
+## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
 
 ![Microsoft.Common.DropDown](./media/managed-application-elements/microsoft.common.dropdown.png)
 
@@ -54,12 +54,12 @@ Ovládací prvek výběru s rozevíracím seznamem.
 
 ## <a name="remarks"></a>Poznámky
 
-- Popisek `constraints.allowedValues` pro je zobrazovaný text pro položku a jeho hodnota je výstupní hodnota prvku při výběru.
-- Pokud je zadán, musí být výchozí `constraints.allowedValues`hodnota popisek v . Pokud není zadán, je `constraints.allowedValues` vybrána první položka v programu. Výchozí hodnota je **null**.
+- Popisek pro `constraints.allowedValues` je zobrazený text pro položku a její hodnota je výstupní hodnota prvku, když je vybraná.
+- Je-li tento parametr zadán, výchozí hodnota musí být popisek `constraints.allowedValues`přítomný v. Pokud není zadán, je vybrána první položka `constraints.allowedValues` v. Výchozí hodnota je **null**.
 - `constraints.allowedValues`musí mít alespoň jednu položku.
-- Chcete-li emulovat hodnotu, která není vyžadována, `""` přidejte položku s popiskem a hodnotou (prázdný řetězec) do . `constraints.allowedValues`
+- Chcete-li emulovat hodnotu, která není požadována, přidejte položku s popiskem a hodnotou `""` (prázdný řetězec) do. `constraints.allowedValues`
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úvod k vytváření definic ui naleznete [v tématu Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
-* Popis běžných vlastností v prvcích uživatelského rozhraní naleznete v [tématu CreateUiDefinition elements](create-uidefinition-elements.md).
+* Úvod k vytváření definic uživatelského rozhraní najdete v tématu [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
+* Popis běžných vlastností v prvcích uživatelského rozhraní naleznete v tématu [CreateUiDefinition Elements](create-uidefinition-elements.md).

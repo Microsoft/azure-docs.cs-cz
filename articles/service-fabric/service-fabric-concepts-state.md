@@ -1,35 +1,35 @@
 ---
-title: Správa stavu ve službách Azure Service Fabric
-description: Další informace o stavu v Azure Service Fabric, včetně toho, jak definovat a spravovat stav služby ve službách Service Fabric.
+title: Správa stavu ve službě Azure Service Fabric Services
+description: Přečtěte si o stavu ve službě Azure Service Fabric, včetně toho, jak v Service Fabricch službách definovat a spravovat stav služby.
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 9acd3031d1071d1822791b333976aaf76161600f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75614566"
 ---
 # <a name="service-state"></a>Stav služby
-**Stav služby** odkazuje na data v paměti nebo na disku, která služba vyžaduje ke funkci. Zahrnuje například datové struktury a členské proměnné, které služba čte a zapisuje do práce. V závislosti na tom, jak je služba navržena, může také obsahovat soubory nebo jiné prostředky, které jsou uloženy na disku. Například soubory databáze by použít k ukládání dat a protokoly transakcí.
+**Stav služby** odkazuje na data v paměti nebo na disku, která služba vyžaduje, aby fungovala. Obsahuje například datové struktury a proměnné členů, které služba načítá a zapisuje, aby fungovala. V závislosti na tom, jak je služba navržená, může taky zahrnovat soubory nebo jiné prostředky, které jsou uložené na disku. Například soubory, které databáze používá k ukládání dat a protokolů transakcí.
 
-Jako příklad služby zvažme kalkulačku. Základní kalkulačka služba trvá dvě čísla a vrátí jejich součet. Provedení tohoto výpočtu nezahrnuje žádné členské proměnné nebo jiné informace.
+Jako příklad služby bereme v úvahu kalkulačku. Základní služba kalkulačky používá dvě čísla a vrací jejich součet. Provádění tohoto výpočtu nevyžaduje žádné členské proměnné ani jiné informace.
 
-Nyní zvažte stejnou kalkulačku, ale s další metodou pro ukládání a vrácení posledního součtu, který vypočítal. Tato služba je nyní stavové. Stavové znamená, že obsahuje některé stav, který zapíše, když vypočítá nový součet a čte z při dotazu, že vrátí poslední vypočítaný součet.
+Nyní uvažujte o stejné kalkulačkě, ale s další metodou pro uložení a vrácení posledního součtu, který vypočítal. Tato služba je nyní stavová. Stav znamená, že obsahuje určitý stav, do kterého se zapisuje při výpočtu nového součtu a čtení z, když požádáte, aby vrátila poslední vypočítaný součet.
 
-Ve službě Azure Fabric první služba se nazývá bezstavová služba. Druhá služba se nazývá stavová služba.
+V Azure Service Fabric se první služba nazývá Bezstavová služba. Druhá služba se nazývá stavová služba.
 
-## <a name="storing-service-state"></a>Ukládání stavu služby
-Stav může být externalizovánnebo umístěn společně s kódem, který manipuluje se stavem. Externalizace stavu se obvykle provádí pomocí externí databáze nebo jiného úložiště dat, které běží na různých počítačích v síti nebo mimo proces ve stejném počítači. V našem příkladu kalkulačky může být úložiště dat databáze SQL nebo instance Azure Table Store. Každý požadavek na výpočet součtu provádí aktualizaci těchto dat a požadavky na službu vrátit výsledek hodnoty v aktuální hodnotu načtenou z úložiště. 
+## <a name="storing-service-state"></a>Ukládá se stav služby
+Stav může být buď externě, nebo společně umístěný s kódem, který zpracovává stav. Externing State se obvykle provádí pomocí externí databáze nebo jiného úložiště dat, které běží na různých počítačích v síti nebo mimo proces ve stejném počítači. V našem příkladu kalkulačky může být úložiště dat databáze SQL nebo instance Azure Table Storu. Každý požadavek na výpočet součtu provede aktualizaci těchto dat a požadavky na službu vrátí výsledek v aktuální hodnotě, která se načítá ze Storu. 
 
-Stav může být také umístěn společně s kódem, který manipuluje se stavem. Stavové služby v Service Fabric jsou obvykle sestaveny pomocí tohoto modelu. Service Fabric poskytuje infrastrukturu k zajištění, že tento stav je vysoce dostupné, konzistentní a trvanlivé a že služby vytvořené tímto způsobem lze snadno škálovat.
+Stav může být také umístěn společně s kódem, který zpracovává stav. Stavové služby v Service Fabric jsou obvykle sestavené pomocí tohoto modelu. Service Fabric poskytuje infrastrukturu, která zajistí, že je tento stav vysoce dostupný, konzistentní a trvalý a že služby vytvořené tímto způsobem je možné snadno škálovat.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o konceptech service fabric naleznete v následujících článcích:
+Další informace o Service Fabric konceptech najdete v následujících článcích:
 
-* [Dostupnost služeb Service Fabric](service-fabric-availability-services.md)
-* [Škálovatelnost služeb Service Fabric](service-fabric-concepts-scalability.md)
-* [Služby partitioning Service Fabric](service-fabric-concepts-partitioning.md)
-* [Spolehlivé služby Service Fabric](service-fabric-reliable-services-introduction.md)
+* [Dostupnost služeb Service Fabric Services](service-fabric-availability-services.md)
+* [Škálovatelnost služeb Service Fabric Services](service-fabric-concepts-scalability.md)
+* [Dělení Service Fabric služeb](service-fabric-concepts-partitioning.md)
+* [Service Fabric Reliable Services](service-fabric-reliable-services-introduction.md)

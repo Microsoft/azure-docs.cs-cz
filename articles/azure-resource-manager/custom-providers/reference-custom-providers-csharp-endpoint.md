@@ -1,24 +1,24 @@
 ---
-title: Odkaz na vlastní zprostředkovatele C# RESTful
-description: Poskytuje základní odkaz pro koncový bod Azure Custom Providers C# RESTful. Koncový bod se poskytuje prostřednictvím aplikace funkce Azure.
+title: Referenční informace o vlastním poskytovateli C# RESTful koncový bod
+description: Poskytuje základní reference pro vlastní poskytovatele Azure pro koncové body C# RESTful. Koncový bod je k dispozici prostřednictvím aplikace služby Azure Functions.
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: b6ecb22cb968e0d963242c8c2d5dd1a6cb24229c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75651173"
 ---
-# <a name="custom-provider-c-restful-endpoint-reference"></a>Odkaz na vlastní zprostředkovatele C# RESTful
+# <a name="custom-provider-c-restful-endpoint-reference"></a>Referenční informace o vlastním poskytovateli C# RESTful koncový bod
 
-Tento článek je základní odkaz pro vlastní zprostředkovatele C# RESTful koncový bod. Pokud nejste obeznámeni s vlastními poskytovateli Azure, podívejte se [na přehled o vlastních zprostředkovatelích prostředků](overview.md).
+Tento článek je základní referencí pro vlastní zprostředkovatel C# RESTful koncový bod. Pokud nejste obeznámeni se službou Azure Custom Providers, přečtěte si [Přehled vlastních poskytovatelů prostředků](overview.md).
 
-## <a name="azure-function-app-restful-endpoint"></a>Koncový bod aplikace Azure function APP RESTful
+## <a name="azure-function-app-restful-endpoint"></a>Koncový bod Azure Function App RESTful
 
-Následující kód funguje s aplikací funkce Azure. Informace o tom, jak nastavit aplikaci pro funkce Azure pro práci s vlastními zprostředkovateli Azure, najdete [v kurzu o nastavení Azure Functions for Azure Custom Providers](./tutorial-custom-providers-function-setup.md).
+Následující kód funguje s aplikací Azure Function. Informace o tom, jak nastavit aplikaci Azure Functions pro práci s vlastními poskytovateli Azure, najdete v [kurzu nastavení Azure Functions pro vlastní poskytovatele Azure](./tutorial-custom-providers-function-setup.md).
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -257,5 +257,5 @@ public static async Task<HttpResponseMessage> RemoveCustomResource(HttpRequestMe
 
 - [Přehled poskytovatelů vlastních prostředků Azure](overview.md)
 - [Kurz: Vytvoření vlastního poskytovatele prostředků Azure a nasazení vlastních prostředků](./create-custom-provider.md)
-- [Postup: Přidání vlastních akcí do rozhraní AZURE REST API](./custom-providers-action-endpoint-how-to.md)
-- [Odkaz: Odkaz na vlastní mezipaměť prostředků](proxy-cache-resource-endpoint-reference.md)
+- [Postupy: Přidání vlastních akcí do Azure REST API](./custom-providers-action-endpoint-how-to.md)
+- [Referenční dokumentace: vlastní odkaz na mezipaměť prostředků](proxy-cache-resource-endpoint-reference.md)

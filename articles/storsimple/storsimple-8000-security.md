@@ -1,6 +1,6 @@
 ---
-title: Zabezpečení řady StorSimple 8000 | Dokumenty společnosti Microsoft
-description: Popisuje funkce zabezpečení a ochrany osobních údajů, které chrání vaši službu StorSimple, zařízení a data v místním prostředí a v cloudu.
+title: Zabezpečení řady StorSimple 8000 | Microsoft Docs
+description: Popisuje funkce zabezpečení a ochrany osobních údajů, které chrání službu StorSimple, zařízení a data místně a v cloudu.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,273 +15,273 @@ ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
 ms.openlocfilehash: 4598f71f9b611e68f8eb00676138784833c39f32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75891503"
 ---
-# <a name="storsimple-security-and-data-protection"></a>StorJednoduché zabezpečení a ochrana dat
+# <a name="storsimple-security-and-data-protection"></a>Zabezpečení a ochrana dat v StorSimple
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ## <a name="overview"></a>Přehled
 
-Bezpečnost je velkým problémem pro každého, kdo přijímá novou technologii, zejména pokud je tato technologie používána s důvěrnými nebo proprietárními daty. Při vyhodnocování různých technologií je třeba zvážit zvýšená rizika a náklady na ochranu údajů. Microsoft Azure StorSimple poskytuje řešení zabezpečení i ochrany osobních údajů pro ochranu dat, které pomáhá zajistit:
+Zabezpečení je zásadním problémem pro kohokoli, kdo přijímají novou technologii, zejména v případě, že se technologie používá s důvěrnými nebo proprietárními daty. Když vyhodnocujete různé technologie, je třeba zvážit zvýšená rizika a náklady na ochranu dat. Microsoft Azure StorSimple poskytuje řešení zabezpečení a ochrany osobních údajů pro ochranu dat, což pomáhá zajistit:
 
-* **Důvěrnost** – Vaše data mohou zobrazit pouze oprávněné subjekty.
-* **Integrita** – Data mohou upravovat nebo odstraňovat pouze oprávněné entity.
+* **Důvěrné** – data můžou zobrazit jenom autorizovaní entity.
+* **Integrity** – data můžou upravovat nebo odstraňovat jenom autorizované entity.
 
-Řešení Microsoft Azure StorSimple se skládá ze čtyř hlavních součástí, které vzájemně spolupracují:
+Microsoft Azure StorSimple řešení se skládá ze čtyř hlavních součástí, které vzájemně spolupracují:
 
-* **Služba StorSimple Device Manager hostovaná v Microsoft Azure** – služba pro správu, kterou používáte ke konfiguraci a zřízení zařízení StorSimple.
-* **StorSimple zařízení** – fyzické zařízení nainstalované ve vašem datovém centru. Všichni hostitelé a klienti, kteří generují data, se připojují k zařízení StorSimple a zařízení je spravuje a podle potřeby je přesune do cloudu Azure.
-* **Klienti/hostitelé připojení k zařízení** – klienti ve vaší infrastruktuře, které se připojují k zařízení StorSimple a generují data, která je třeba chránit.
+* **Služba StorSimple Device Manager hostovaná v Microsoft Azure** – služba správy, kterou můžete použít ke konfiguraci a zřízení zařízení StorSimple.
+* **Zařízení StorSimple** – fyzické zařízení nainstalované ve vašem datacentru. Všichni hostitelé a klienti, kteří generují data, se připojují k zařízení StorSimple a zařízení data spravují a v případě potřeby ho přenáší do cloudu Azure.
+* **Klienti/hostitelé připojení k zařízení** – klienti v infrastruktuře, kteří se připojují k zařízení StorSimple a generují data, která je třeba chránit.
 * **Cloudové úložiště** – umístění v cloudu Azure, kam se data uloží.
 
-Následující části popisují funkce zabezpečení StorSimple, které pomáhají chránit každou z těchto součástí a data uložená v nich. Obsahuje také seznam otázek, které můžete mít o zabezpečení Microsoft Azure StorSimple a odpovídající odpovědi.
+Následující části popisují funkce zabezpečení StorSimple, které vám pomůžou chránit každou z těchto součástí a data, která jsou na nich uložená. Obsahuje také seznam otázek, které mohou mít Microsoft Azure StorSimple zabezpečení a příslušné odpovědi.
 
-## <a name="storsimple-device-manager-service-protection"></a>Ochrana služby StorSimple Device Manager
+## <a name="storsimple-device-manager-service-protection"></a>StorSimple Device Manager Service Protection
 
-Služba StorSimple Device Manager je služba pro správu hostovaná v Microsoft Azure a používaná ke správě všech zařízení StorSimple, která vaše organizace získala. Ke službě StorSimple Device Manager můžete přistupovat pomocí pověření organizace k přihlášení k portálu Azure prostřednictvím webového prohlížeče.
+Služba StorSimple Device Manager je služba správy hostovaná v Microsoft Azure a používá se ke správě všech zařízení StorSimple, která vaše organizace získala. Ke službě StorSimple Device Manager můžete přistupovat pomocí přihlašovacích údajů vaší organizace, abyste se přihlásili k Azure Portal prostřednictvím webového prohlížeče.
 
-Přístup ke službě StorSimple Device Manager vyžaduje, aby vaše organizace měla předplatné Azure, které zahrnuje StorSimple. Vaše předplatné určuje funkce, které máte na webu Azure Portal dostupné. Pokud vaše organizace nemá předplatné Azure a chcete o nich získat další informace, přečtěte [si přečtěte si název Registrace do Azure jako organizace](../active-directory/fundamentals/sign-up-organization.md).
+Přístup ke službě StorSimple Device Manager vyžaduje, aby vaše organizace měla předplatné Azure, které zahrnuje StorSimple. Vaše předplatné určuje funkce, které máte na webu Azure Portal dostupné. Pokud vaše organizace nemá předplatné Azure a chcete o nich získat další informace, přečtěte si téma [Registrace do Azure jako organizace](../active-directory/fundamentals/sign-up-organization.md).
 
-Vzhledem k tomu, že služba StorSimple Device Manager je hostovaná v Azure, je chráněna funkcemi zabezpečení Azure. Další informace o funkcích zabezpečení poskytovaných v prostředí Microsoft Azure najdete v [Centru zabezpečení Microsoft Azure](https://azure.microsoft.com/support/trust-center/security/).
+Vzhledem k tomu, že je služba StorSimple Device Manager hostovaná v Azure, je chráněná funkcemi zabezpečení Azure. Další informace o funkcích zabezpečení poskytovaných v prostředí Microsoft Azure najdete v [Centru zabezpečení Microsoft Azure](https://azure.microsoft.com/support/trust-center/security/).
 
-## <a name="storsimple-device-protection"></a>StorJednoduchá ochrana zařízení
+## <a name="storsimple-device-protection"></a>Ochrana zařízení StorSimple
 
-Zařízení StorSimple je místní hybridní paměťové zařízení, které obsahuje disky SSD a pevné disky (HDD) spolu s redundantními řadiči a automatickými možnostmi převzetí služeb při selhání. Řadiče spravují vrstvení úložiště, umísťují aktuálně používaná (nebo horká) data do místního úložiště (v zařízení StorSimple nebo místních serverech) při přesouvání méně často používaných dat do cloudu.
+Zařízení StorSimple je místní hybridní paměťové zařízení, které obsahuje jednotky SSD (Solid State Drive) a jednotky pevného disku (HDD), spolu s redundantními řadiči a možnostmi automatického převzetí služeb při selhání. Řadiče spravují vrstvení úložiště, umísťují aktuálně používaná (nebo horká) data do místního úložiště (v zařízení StorSimple nebo místních serverech) a při přesunu méně často využívaných dat do cloudu.
 
-Ke službě StorSimple, kterou jste vytvořili v předplatném Azure, se mohou připojit pouze autorizovaná zařízení StorSimple. Chcete-li autorizovat zařízení, musíte jej zaregistrovat u služby StorSimple Device Manager poskytnutím registračního klíče služby. Registrační klíč služby je 128bitový náhodný klíč generovaný na webu Azure Portal.
+Ke službě StorSimple Device Manager, kterou jste vytvořili ve svém předplatném Azure, se smí připojit jenom oprávnění zařízení StorSimple. K autorizaci zařízení je nutné ho zaregistrovat ve službě StorSimple Device Manager pomocí registračního klíče služby. Registrační klíč služby je 128 bitový náhodný klíč generovaný v Azure Portal.
 
 ![Registrační klíč služby](./media/storsimple-security/ServiceRegistrationKey.png)
 
-Chcete-li se dozvědět, jak získat registrační klíč služby, přejděte ke [kroku 2: Získání registračního klíče služby](storsimple-8000-deployment-walkthrough-u2.md#step-2-get-the-service-registration-key).
+Další informace o tom, jak získat registrační klíč služby, najdete [v kroku 2: získání registračního klíče služby](storsimple-8000-deployment-walkthrough-u2.md#step-2-get-the-service-registration-key).
 
-Registrační klíč služby je dlouhý klíč, který obsahuje více než 100 znaků. Klíč můžete zkopírovat a uložit do textového souboru na bezpečném místě, abyste jej mohli podle potřeby použít k autorizaci dalších zařízení. Pokud dojde ke ztrátě registračního klíče služby po registraci prvního zařízení, můžete vygenerovat nový klíč ze služby StorSimple Device Manager. To nebude mít vliv na provoz stávajících zařízení.
+Registrační klíč služby je dlouhý klíč, který obsahuje více než 100 znaků. Klíč můžete zkopírovat a uložit v textovém souboru na bezpečném místě, abyste ho mohli použít k autorizaci dalších zařízení podle potřeby. Pokud po registraci prvního zařízení dojde ke ztrátě registračního klíče služby, můžete vygenerovat nový klíč ze služby StorSimple Device Manager. Tato akce nebude mít vliv na provoz stávajících zařízení.
 
-Po registraci zařízení používá tokeny ke komunikaci s Microsoft Azure. Registrační klíč služby se nepoužívá po registraci zařízení.
+Po zaregistrování zařízení používá tokeny ke komunikaci s Microsoft Azure. Registrační klíč služby se nepoužívá po registraci zařízení.
 
 > [!NOTE]
-> Doporučujeme znovu vygenerovat registrační klíč služby po každém použití.
+> Po každém použití doporučujeme znovu vygenerovat registrační klíč služby.
 
 
 ## <a name="protect-your-storsimple-solution-via-passwords"></a>Chraňte své řešení StorSimple pomocí hesel
 
-Hesla jsou důležitým aspektem zabezpečení počítače a jsou široce používány v řešení StorSimple, aby bylo zajištěno, že vaše data jsou přístupná pouze oprávněným uživatelům. StorSimple umožňuje konfigurovat následující hesla:
+Hesla jsou důležitým aspektem zabezpečení počítače a často se používají v řešení StorSimple, které vám pomůžou zajistit, aby vaše data byla dostupná jenom autorizovaným uživatelům. StorSimple umožňuje nakonfigurovat následující hesla:
 
 * Heslo správce zařízení StorSimple
-* Iniciátor a cílová hesla protokolu CHAP (Challenge Handshake Authentication Protocol)
+* Iniciátor protokolu CHAP (Challenge Handshake Authentication Protocol) a cílová hesla
 * Heslo správce Snapshot Manageru zařízení StorSimple
 
-### <a name="windows-powershell-for-storsimple-and-the-storsimple-device-administrator-password"></a>Prostředí Windows PowerShell pro storsimple a heslo správce zařízení StorSimple
+### <a name="windows-powershell-for-storsimple-and-the-storsimple-device-administrator-password"></a>Windows PowerShell pro StorSimple a heslo správce zařízení StorSimple
 
-Prostředí Windows PowerShell for StorSimple je rozhraní příkazového řádku, které můžete použít ke správě zařízení StorSimple. Prostředí Windows PowerShell for StorSimple obsahuje funkce, které umožňují zaregistrovat zařízení, konfigurovat síťové rozhraní v zařízení, instalovat určité typy aktualizací, řešit potíže se zařízením přístupem k relaci podpory a měnit stav zařízení. K prostředí Windows PowerShell pro Službu StorSimple můžete přistupovat připojením k sériové konzoli v zařízení nebo pomocí vzdálené komunikace prostředí Windows PowerShell.
+Windows PowerShell pro StorSimple je rozhraní příkazového řádku, které můžete použít ke správě zařízení StorSimple. Windows PowerShell pro StorSimple mají funkce, které vám umožní zaregistrovat zařízení, nakonfigurovat síťové rozhraní na zařízení, nainstalovat určité typy aktualizací, vyřešit potíže s vaším zařízením a získat přístup k relaci podpory a změnit stav zařízení. Přístup k Windows PowerShell pro StorSimple získáte tak, že se připojíte ke konzole sériového portu na zařízení nebo pomocí vzdálené komunikace Windows PowerShellu.
 
-Vzdálené ověřování prostředí PowerShellu lze provést přes protokol HTTPS nebo HTTP. Pokud je povolena vzdálená správa prostředpou HTTPS, budete muset stáhnout certifikát vzdálené správy ze zařízení a nainstalovat jej do vzdáleného klienta. Další informace o vzdálené modusle prostředí PowerShell najdete v části [Vzdálená připojení k zařízení StorSimple](storsimple-8000-remote-connect.md).
+Vzdálená komunikace PowerShellu se dá provést přes protokol HTTPS nebo HTTP. Pokud je povolená Vzdálená správa přes protokol HTTPS, budete si muset ze zařízení stáhnout certifikát pro vzdálenou správu a nainstalovat ho do vzdáleného klienta. Další informace o vzdálené komunikaci PowerShellu najdete v pro [vzdálené připojení k zařízení StorSimple](storsimple-8000-remote-connect.md).
 
-Po použití prostředí Windows PowerShell pro StorSimple pro připojení k zařízení, budete muset zadat heslo správce zařízení pro přihlášení k zařízení.
+Po použití Windows PowerShell pro StorSimple k připojení k zařízení budete muset zadat heslo správce zařízení, abyste se mohli přihlásit k zařízení.
 
 ![Heslo správce zařízení](./media/storsimple-security/DeviceAdminPW.png)
 
-Mějte na paměti následující doporučené postupy:
+Mějte na paměti následující osvědčené postupy:
 
-* Vzdálená správa je ve výchozím nastavení vypnuta. K povolení můžete použít službu Správce zařízení StorSimple. Z bezpečnostních důvodů by měl být vzdálený přístup povolen pouze během období, které je skutečně zapotřebí.
-* Pokud změníte heslo, nezapomeňte upozornit všechny uživatele vzdáleného přístupu, aby nedošlo k neočekávané ztrátě připojení.
-* Služba StorSimple Device Manager nemůže načíst existující hesla: může je pouze obnovit. Doporučujeme uložit všechna hesla na bezpečném místě, abyste nemuseli resetovat heslo, pokud je zapomenuto. Pokud potřebujete obnovit heslo, nezapomeňte před resetováním upozornit všechny uživatele.
+* Vzdálená správa je ve výchozím nastavení vypnutá. K povolení této služby můžete použít službu StorSimple Device Manager. Z hlediska zabezpečení by měl být vzdálený přístup povolen pouze během časového období, které je skutečně potřeba.
+* Pokud změníte heslo, nezapomeňte se informovat o všech uživatelích vzdáleného přístupu tak, aby nedošlo k neočekávané ztrátě připojení.
+* Služba StorSimple Device Manager nemůže načíst stávající hesla: může je obnovit pouze. Doporučujeme uložit všechna hesla na bezpečném místě, aby při zapomenutí hesla nemuseli resetovat heslo. Pokud budete muset resetovat heslo, nezapomeňte se před resetováním všech uživatelů seznámit.
 
-K rozhraní prostředí Windows PowerShell můžete přistupovat pomocí sériového připojení k zařízení. Můžete k němu také vzdáleně přistupovat pomocí protokolu HTTP nebo HTTPS, které poskytují další zabezpečení. Protokol HTTPS poskytuje vyšší úroveň zabezpečení než sériové připojení nebo připojení HTTP. Chcete-li však používat protokol HTTPS, musíte nejprve nainstalovat certifikát do klientského počítače, který bude přistupovat k zařízení. Certifikát vzdáleného přístupu si můžete stáhnout ze stránky konfigurace zařízení ve službě StorSimple Device Manager. Pokud dojde ke ztrátě certifikátu pro vzdálený přístup, je nutné stáhnout nový certifikát a šířit jej všem klientům, kteří jsou oprávněni používat vzdálenou správu.
+K rozhraní Windows PowerShell můžete přistupovat pomocí sériového připojení k zařízení. K němu můžete také přistupovat vzdáleně pomocí protokolu HTTP nebo HTTPS, který poskytuje dodatečné zabezpečení. Protokol HTTPS poskytuje vyšší úroveň zabezpečení než sériové připojení nebo připojení HTTP. Pokud ale chcete použít protokol HTTPS, musíte nejdřív nainstalovat certifikát do klientského počítače, který bude mít přístup k zařízení. Certifikát vzdáleného přístupu si můžete stáhnout ze stránky konfigurace zařízení ve službě StorSimple Device Manager. Pokud dojde ke ztrátě certifikátu pro vzdálený přístup, musíte si stáhnout nový certifikát a rozšířit ho na všechny klienty, kteří mají autorizaci používat vzdálenou správu.
 
-### <a name="challenge-handshake-authentication-protocol-chap-initiator-and-target-passwords"></a>Iniciátor a cílová hesla protokolu CHAP (Challenge Handshake Authentication Protocol)
+### <a name="challenge-handshake-authentication-protocol-chap-initiator-and-target-passwords"></a>Iniciátor protokolu CHAP (Challenge Handshake Authentication Protocol) a cílová hesla
 
-Chap je schéma ověřování používané zařízením StorSimple k ověření identity vzdálených klientů. Ověření je založeno na sdíleném hesle. Chap může být jednosměrný (jednosměrný) nebo vzájemný (obousměrný). S jednosměrný CHAP cíl (StorSimple zařízení) ověřuje iniciátor (hostitel). Vzájemné nebo reverzní CHAP vyžaduje, aby cíl ověřit iniciátor a potom iniciátor ověřit cíl. Vaše StorSimple lze nakonfigurovat tak, aby používala obě metody.
+Protokol CHAP je schéma ověřování používané zařízením StorSimple k ověření identity vzdálených klientů. Ověřování je založeno na sdíleném hesle. Protokol CHAP může být jednosměrný (jednosměrný) nebo společný (obousměrný). V případě jednosměrného protokolu CHAP cíl (zařízení StorSimple) ověřuje iniciátor (hostitele). Protokol vzájemného nebo zpětného ověřování CHAP vyžaduje, aby cíl ověřil iniciátora a potom iniciátor ověřil cíl. Vaše StorSimple je možné nakonfigurovat tak, aby používaly kteroukoli z těchto metod.
 
-Při konfiguraci protokolu CHAP si uvědomte následující:
+Při konfiguraci protokolu CHAP mějte na paměti následující:
 
-* Uživatelské jméno chap musí obsahovat méně než 233 znaků.
-* Heslo chap musí být mezi 12 a 16 znaky. Pokus o použití delšího uživatelského jména nebo hesla bude mít za následek selhání ověřování na hostiteli systému Windows.
-* Stejné heslo nelze použít pro iniciátor chap i cíl CHAP.
-* Po nastavení hesla jej lze změnit, ale nelze jej načíst. Pokud se změní heslo, nezapomeňte upozornit všechny uživatele vzdáleného přístupu, aby se mohli úspěšně připojit k zařízení StorSimple.
+* Uživatelské jméno protokolu CHAP musí obsahovat méně než 233 znaků.
+* Heslo protokolu CHAP musí mít délku 12 až 16 znaků. Pokus o použití delšího uživatelského jména nebo hesla způsobí selhání ověřování na hostiteli Windows.
+* Pro iniciátor protokolu CHAP i cíl protokolu CHAP nelze použít stejné heslo.
+* Po nastavení můžete heslo změnit, ale nelze ho načíst. Pokud se změní heslo, nezapomeňte se informovat o všech uživatelích vzdáleného přístupu, aby se mohli úspěšně připojit k zařízení StorSimple.
 
-Další informace o protokolu CHAP a jeho konfiguraci pro řešení StorSimple naleznete v [části Konfigurace protokolu CHAP pro zařízení StorSimple](storsimple-8000-configure-chap.md).
+Další informace o protokolu CHAP a o tom, jak ho nakonfigurovat pro řešení StorSimple, najdete v tématu [Konfigurace protokolu CHAP pro zařízení StorSimple](storsimple-8000-configure-chap.md).
 
 ### <a name="storsimple-snapshot-manager-password"></a>Heslo správce Snapshot Manageru zařízení StorSimple
 
-StorSimple Snapshot Manager je modul snap-in konzoly MMC (MMC), který ke generování záloh konzistentních s aplikací používá skupiny svazků a službu Stínové kopie svazků systému Windows. Kromě toho můžete použít Správce snímků StorSimple k vytvoření plánů zálohování a klonování nebo obnovení svazků.
+StorSimple Snapshot Manager je modul snap-in konzoly MMC (Microsoft Management Console), který používá skupiny svazků a služba Stínová kopie svazku Windows ke generování záloh konzistentních vzhledem k aplikacím. Kromě toho můžete k vytváření plánů zálohování a klonování a obnovování svazků použít Snapshot Manager StorSimple.
 
-Při konfiguraci zařízení pro použití Správce snímků StorSimple, budete muset zadat heslo Správce snímků StorSimple. Toto heslo je nejprve nastaveno v prostředí Windows PowerShell pro StorSimple během registrace. Heslo lze také nastavit a změnit ze služby StorSimple Device Manager. Toto heslo ověřuje zařízení pomocí Správce snímků StorSimple.
+Když nakonfigurujete zařízení tak, aby používalo Snapshot Manager StorSimple, budete muset zadat heslo StorSimple Snapshot Manager. Toto heslo je nejprve nastaveno v Windows PowerShell pro StorSimple během registrace. Heslo může být také nastaveno a změněno ze služby StorSimple Device Manager. Toto heslo ověřuje zařízení pomocí Snapshot Manager StorSimple.
 
 ![Heslo správce Snapshot Manageru zařízení StorSimple](./media/storsimple-security/SnapshotMgrPassword.png)
 
-Heslo správce snímků StorSimple musí mít 14 až 15 znaků a musí obsahovat 3 nebo více kombinací velkých, malých, číselných a speciálních znaků. Po nastavení hesla Správce snímků StorSimple jej lze změnit, ale nelze jej načíst. Pokud změníte heslo, nezapomeňte upozornit všechny vzdálené uživatele.
+Heslo Snapshot Manager StorSimple musí mít 14 až 15 znaků a musí obsahovat 3 nebo více kombinací velkých a malých písmen, číslic a speciálních znaků. Jakmile nastavíte StorSimple Snapshot Manager heslo, dá se změnit, ale nedá se načíst. Pokud změníte heslo, nezapomeňte se informovat o všech vzdálených uživatelích.
 
-Další informace o Správci snímků StorSimple naleznete v najdete v informacích [O tom, co je Správce snímků StorSimple?](storsimple-what-is-snapshot-manager.md)
+Další informace o StorSimple Snapshot Manager najdete v Snapshot Manager k tomu, [co je StorSimple?](storsimple-what-is-snapshot-manager.md)
 
 ### <a name="password-best-practices"></a>Osvědčené postupy pro hesla
 
-Doporučujeme použít následující pokyny, které vám pomohou zajistit, aby hesla StorSimple byla silná a dobře chráněná:
+Doporučujeme, abyste používali následující pokyny, abyste zajistili, že hesla StorSimple jsou silná a dobře chráněná:
 
-* Změňte hesla každé tři měsíce. Změna hesla je vynucena každoročně.
-* Používejte silná hesla. Další informace naleznete v [tématu Vytvoření silnějších hesel a jejich ochrana](https://cloudblogs.microsoft.com/microsoftsecure/2014/08/25/create-stronger-passwords-and-protect-them/).
-* Vždy používejte různá hesla pro různé mechanismy přístupu; každé zadané heslo by mělo být jedinečné.
-* Nesdílejte hesla s nikým, kdo nemá oprávnění k přístupu k zařízení StorSimple.
-* Nemluvte o hesle před ostatními ani nenaznačujte formát hesla.
-* Pokud máte podezření, že byl poškozen účet nebo heslo, nahlaste incident svému oddělení pro bezpečnost informací.
-* Zacházejte se všemi hesly jako s citlivými důvěrnými informacemi. 
+* Hesla si změníte každé tři měsíce. Změna hesel se vynutila jednou ročně.
+* Používejte silná hesla. Další informace najdete v, kde můžete [vytvářet silnější hesla a chránit je](https://cloudblogs.microsoft.com/microsoftsecure/2014/08/25/create-stronger-passwords-and-protect-them/).
+* Pro různé mechanismy přístupu vždycky používejte jiná hesla; každé heslo, které zadáte, by mělo být jedinečné.
+* Nesdílejte hesla se všemi uživateli, kteří nemají oprávnění pro přístup k zařízení StorSimple.
+* Nemluvujte o heslech před ostatními nebo pomocným heslem ve formátu hesla.
+* Pokud máte podezření, že došlo k ohrožení bezpečnosti účtu nebo hesla, ohlaste incident vašemu oddělení zabezpečení informací.
+* Považovat všechna hesla za citlivá a důvěrná informace. 
 
-## <a name="storsimple-data-protection"></a>StorJednoduchá ochrana dat
+## <a name="storsimple-data-protection"></a>Ochrana dat StorSimple
 
 Tato část popisuje funkce zabezpečení StorSimple, které chrání data při přenosu a uložená data.
 
-Jak je popsáno v jiných částech, hesla se používají k autorizaci a ověření uživatelů před tím, než mohou získat přístup k řešení StorSimple. Dalším aspektem zabezpečení je ochrana dat před neoprávněnými uživateli při jejich přenosu mezi systémy úložiště a při jejich ukládání. Následující části popisují funkce ochrany dat poskytované s StorSimple.
+Jak je popsáno v dalších částech, hesla slouží k autorizaci a ověření uživatelů před tím, než získají přístup k řešení StorSimple. Dalším aspektem zabezpečení je ochrana dat před neoprávněnými uživateli během přenosu mezi systémy úložiště a při jejich ukládání. V následujících částech najdete popis funkcí ochrany dat poskytovaných pomocí StorSimple.
 
 > [!NOTE]
-> Odstranění duplicit poskytuje další ochranu dat uložených na zařízení StorSimple a v úložišti Microsoft Azure. Při odstranění duplicit dat jsou datové objekty uloženy odděleně od metadat použitých k mapování a přístupu k nim: neexistuje žádný dostupný kontext na úrovni úložiště, který by rekonstruoval data na základě struktury svazku, systému souborů nebo názvu souboru.
+> Odstranění duplicitních dat poskytuje dodatečnou ochranu pro data uložená na zařízení StorSimple a ve službě Microsoft Azure Storage. Při odstranění duplicitních dat se datové objekty ukládají odděleně od metadat používaných k namapování a přístup k nim: neexistuje žádný dostupný kontext na úrovni úložiště k rekonstrukci dat na základě struktury svazků, systému souborů nebo názvu souboru.
 
 
-## <a name="protect-data-flowing-through-the-service"></a>Ochrana dat protékajících službou
+## <a name="protect-data-flowing-through-the-service"></a>Ochrana dat toku prostřednictvím služby
 
-Primárním účelem služby StorSimple Device Manager je správa a konfigurace zařízení StorSimple. Služba StorSimple Device Manager běží v Microsoft Azure. Na webu Azure Portal můžete zadávat konfigurační data zařízení a pak Microsoft Azure použije službu StorSimple Device Manager k odeslání dat do zařízení. StorSimple používá systém asymetrických párů klíčů k zajištění, že ohrožení zabezpečení služby Azure nebude mít za následek ohrožení zabezpečení uložených informací.
+Hlavním účelem služby StorSimple Device Manager je Správa a konfigurace zařízení StorSimple. Služba StorSimple Device Manager běží v Microsoft Azure. Pomocí Azure Portal zadáte data konfigurace zařízení a pak Microsoft Azure pomocí služby StorSimple Device Manager odesílá data do zařízení. StorSimple používá systém párů asymetrických klíčů, aby bylo možné zajistit, že ohrožení služby Azure nebude mít za následek ohrožení uložených informací.
 
-![Šifrování dat za letu](./media/storsimple-security/DataEncryption.png)
+![Šifrování dat v letu](./media/storsimple-security/DataEncryption.png)
 
-Asymetrický systém klíčů pomáhá chránit data, která protéká službou, následujícím způsobem:
+Asymetrický klíčový systém pomáhá chránit data, která se prostřednictvím služby přecházejí následujícím způsobem:
 
-1. V zařízení je generován certifikát pro šifrování dat, který používá asymetrický pár veřejného a soukromého klíče, který se používá k ochraně dat. Klíče jsou generovány při registraci prvního zařízení.
-2. Klíče certifikátu šifrování dat jsou exportovány do souboru Výměny osobních informací (.pfx), který je chráněn šifrovacím klíčem služby, což je silný 128bitový klíč, který je náhodně generován prvním zařízením během registrace.
-3. Veřejný klíč certifikátu je bezpečně k dispozici službě StorSimple Device Manager a soukromý klíč zůstane se zařízením.
-4. Data vstupující do služby se zašifrují pomocí veřejného klíče a dešifrují pomocí privátního klíče uloženého v zařízení, což zajišťuje, že služba Azure nemůže dešifrovat data toku do zařízení.
+1. Certifikát pro šifrování dat, který používá asymetrický veřejný a privátní klíč, se vygeneruje v zařízení a používá se k ochraně dat. Klíče jsou generovány při registraci prvního zařízení.
+2. Klíče certifikátu pro šifrování dat se exportují do souboru Personal Information Exchange (. pfx), který je chráněný šifrovacím klíčem dat služby, což je silný 128 bitový klíč, který je při registraci náhodně generovaný prvním zařízením.
+3. Veřejný klíč certifikátu je bezpečně zpřístupněn službě StorSimple Device Manager a privátní klíč zůstane se zařízením.
+4. Data, která vstupují do služby, se šifrují pomocí veřejného klíče a dešifrují se pomocí privátního klíče uloženého v zařízení a zajišťují, že služba Azure nemůže dešifrovat tok dat do zařízení.
 
-Šifrovací klíč dat služby je generován pouze na prvním zařízení registrovaném ve službě. Všechna následující zařízení, která jsou registrována ve službě, musí používat stejný šifrovací klíč dat služby.
+Šifrovací klíč dat služby se vygeneruje jenom pro první zařízení zaregistrované ve službě. Všechna následující zařízení, která jsou zaregistrovaná ve službě, musí používat stejný šifrovací klíč dat služby.
 
 > [!IMPORTANT]
-> Je velmi důležité vytvořit kopii šifrovacího klíče dat služby a uložit jej na bezpečném místě. Kopie šifrovacího klíče dat služby by měla být uložena tak, aby k ní měla přístup oprávněná osoba a aby ji mohla snadno sdělit správce zařízení.
+> Je velmi důležité vytvořit kopii šifrovacího klíče dat služby a uložit ho na bezpečném místě. Kopie šifrovacího klíče dat služby by měla být uložena takovým způsobem, že k ní má oprávnění oprávněná osoba a může být snadno sdělena Správci zařízení.
 > 
-> Pokud dojde ke ztrátě šifrovacího klíče dat služby, může vám osoba podpory společnosti Microsoft pomoci s jeho načtením za předpokladu, že máte alespoň jedno zařízení ve stavu online. Doporučujeme změnit šifrovací klíč dat služby po jeho načtení.
+> Pokud dojde ke ztrátě šifrovacího klíče dat služby, může vám pracovník podpory Microsoftu pomoci ho načíst, pokud máte minimálně jedno zařízení ve stavu online. Po načtení doporučujeme změnit šifrovací klíč dat služby.
 
-Chcete-li změnit šifrovací klíč dat služby a odpovídající certifikát šifrování dat, postupujte podle pokynů v [tématu Změna šifrovacího klíče dat služby pro službu StorSimple Device Manager](storsimple-8000-manage-service.md#change-the-service-data-encryption-key). Změna šifrovacích klíčů vyžaduje, aby byla všechna zařízení aktualizována novým klíčem. Proto doporučujeme změnit klíč, když jsou všechna zařízení online. Pokud jsou zařízení offline, jejich klíče lze změnit v jiném čase. Zařízení s zastaralými klíči budou stále moci spouštět zálohy, ale nebudou moci obnovit data, dokud nebude klíč aktualizován.
+Chcete-li změnit šifrovací klíč dat služby a odpovídající certifikát pro šifrování dat, postupujte podle kroků v části [Změna šifrovacího klíče dat služby pro službu StorSimple Device Manager](storsimple-8000-manage-service.md#change-the-service-data-encryption-key). Změna šifrovacích klíčů vyžaduje, aby byla všechna zařízení aktualizována pomocí nového klíče. Proto doporučujeme, abyste změnili klíč, když jsou všechna zařízení online. Pokud jsou zařízení offline, můžou se jejich klíče změnit v jinou dobu. Zařízení se zastaralými klíči budou moci spustit zálohování, ale nebudou moci data obnovit, dokud nebude klíč aktualizován.
 
-Platnost šifrovacího klíče dat služby a certifikátu šifrování dat nevyprší. Doporučujeme však změnit kód pro šifrování dat služby každý rok, aby se zabránilo ohrožení zabezpečení klíčů.
+Platnost šifrovacího klíče dat služby a certifikátu pro šifrování dat nevyprší. Nicméně doporučujeme, abyste šifrovací klíč dat služby změnili ročně, aby se zabránilo ohrožení bezpečnosti klíčů.
 
 ## <a name="protect-data-at-rest"></a>Ochrana neaktivních uložených dat
 
-Zařízení StorSimple spravuje data tak, že je ukládá místně a v cloudu v závislosti na četnosti použití. Všechny hostitelské počítače, které jsou připojeny k zařízení, odesílají data do zařízení, které pak podle potřeby přesune data do cloudu. Data se přenášejí ze zařízení do cloudu bezpečně přes internet. Každé zařízení má jeden cíl iSCSI, který zobrazuje všechny sdílené svazky na tomto zařízení. Všechna data jsou před odesláním do cloudového úložiště zašifrována. 
+Zařízení StorSimple spravuje data tak, že je ukládá do vrstev místně a v cloudu v závislosti na frekvenci použití. Všechny hostitelské počítače, které jsou připojené k zařízení, odesílají data do zařízení, které pak v případě potřeby přesouvá data do cloudu. Data se ze zařízení přenáší zabezpečeně prostřednictvím Internetu. Každé zařízení má jeden cíl iSCSI, který na tomto zařízení nasdílí všechny sdílené svazky. Všechna data se šifrují předtím, než se odešlou do cloudového úložiště. 
 
 ![Šifrovací klíč cloudového úložiště](./media/storsimple-security/CloudStorageEncryption.png)
 
-Chcete-li zajistit zabezpečení a integritu dat přesunutých do cloudu, StorSimple umožňuje definovat šifrovací klíče cloudového úložiště následujícím způsobem:
+K zajištění zabezpečení a integrity dat přesunutých do cloudu vám StorSimple umožňuje definovat šifrovací klíče cloudového úložiště následujícím způsobem:
 
-* Šifrovací klíč cloudového úložiště zadáte při vytváření kontejneru svazku. Klíč nelze později změnit ani přidat.
-* Všechny svazky v kontejneru svazků sdílejí stejný šifrovací klíč. Pokud chcete pro určitý svazek použít jinou formu šifrování, doporučujeme vytvořit nový kontejner svazku pro hostování tohoto svazku.
-* Když zadáte šifrovací klíč cloudového úložiště ve službě StorSimple Device Manager, klíč je šifrován pomocí veřejné části šifrovacího klíče dat služby a poté odeslán do zařízení.
-* Šifrovací klíč cloudového úložiště není uložen nikde ve službě a je znám pouze zařízení.
-* Určení šifrovacího klíče cloudového úložiště je volitelné. Do zařízení můžete odeslat data, která byla na hostiteli zašifrována.
+* Šifrovací klíč cloudového úložiště určíte při vytváření kontejneru svazků. Klíč nelze upravit ani přidat později.
+* Všechny svazky v kontejneru svazků sdílejí stejný šifrovací klíč. Pokud chcete pro určitý svazek použít jinou formu šifrování, doporučujeme pro hostování tohoto svazku vytvořit nový kontejner svazků.
+* Když zadáte šifrovací klíč cloudového úložiště ve službě StorSimple Device Manager, klíč se zašifruje pomocí veřejné části šifrovacího klíče dat služby a pak se pošle do zařízení.
+* Šifrovací klíč cloudového úložiště není uložen kdekoli ve službě a je známý jenom pro zařízení.
+* Zadání šifrovacího klíče cloudového úložiště je volitelné. Do zařízení můžete odesílat data zašifrovaná v hostiteli.
 
-### <a name="additional-security-best-practices"></a>Další doporučené postupy zabezpečení
+### <a name="additional-security-best-practices"></a>Další osvědčené postupy zabezpečení
 
-* Rozdělený provoz: Izolujte síť iSCSI SAN od provozu uživatelů v podnikové síti LAN nasazením zcela oddělené sítě a použitím sítí VLAN, kde fyzická izolace nepřichází v úvahu. Vyhrazená síť pro úložiště iSCSI zaručí bezpečnost a výkon důležitých podnikových dat. Míchání úložiště a uživatelského provozu přes podnikovou síť LAN se nedoporučuje a může zvýšit latenci a způsobit selhání sítě.
-* Pro zabezpečení sítě na straně hostitele použijte síťová rozhraní, která podporují modul ToE (TCP/IP Offload Engine). TOE snižuje zatížení procesoru zpracováním protokolu TCP na síťovém adaptéru.
+* Rozdělení provozu: izolování sítě SAN iSCSI od uživatelského provozu v podnikové síti LAN nasazením zcela oddělené sítě a pomocí sítí VLAN, kde fyzickou izolaci není možnost. Vyhrazená síť pro úložiště iSCSI zaručuje bezpečnost a výkon důležitých podnikových dat. Kombinování úložiště a uživatelských přenosů přes podnikovou síť LAN se nedoporučuje a může zvýšit latenci a způsobit selhání sítě.
+* U zabezpečení sítě na straně hostitele použijte síťová rozhraní, která podporují modul TOE (TCP/IP Offload Engine). TOE snižuje zatížení procesoru zpracováním protokolu TCP na síťovém adaptéru.
 
 ## <a name="protect-data-via-storage-accounts"></a>Ochrana dat prostřednictvím účtů úložiště
 
-Každé předplatné Microsoft Azure může vytvořit jeden nebo více účtů úložiště. (Účet úložiště poskytuje jedinečný obor názvů pro práci s daty uloženými v cloudu Azure.) Přístup k účtu úložiště je řízen předplatným a přístupovými klíči přidruženými k tomuto účtu úložiště.
+Každý Microsoft Azure předplatné může vytvořit jeden nebo více účtů úložiště. (Účet úložiště poskytuje jedinečný obor názvů pro práci s daty uloženými v cloudu Azure.) Přístup k účtu úložiště řídí předplatné a přístupové klíče přidružené k tomuto účtu úložiště.
 
-Když vytvoříte účet úložiště, Microsoft Azure vygeneruje dva 512bitové přístupové klíče úložiště, z nichž jeden se používá k ověřování, když zařízení StorSimple přistupuje k účtu úložiště. Všimněte si, že pouze jeden z těchto klíčů je používán. Druhý klíč je držen v záloze, což vám umožní pravidelně otáčet klávesy. Chcete-li otočit klávesy, vytvořte aktivní sekundární klíč a odstraňte primární klíč. Poté můžete vytvořit nový klíč pro použití během dalšího otočení. (Z bezpečnostních důvodů vyžaduje mnoho datových center střídání klíčů.)
+Když vytváříte účet úložiště, Microsoft Azure generuje 2 512 klíče pro přístup k úložišti, jedna z nich se používá k ověřování, když zařízení StorSimple přistupuje k účtu úložiště. Všimněte si, že se používá pouze jeden z těchto klíčů. Druhý klíč je držen v rezervě, což vám umožní pravidelně střídat klíče. Chcete-li otočit klíče, nastavte sekundární klíč jako aktivní a pak odstraňte primární klíč. Pak můžete vytvořit nový klíč pro použití při dalším otočení. (Z bezpečnostních důvodů vyžaduje mnoho datových center rotaci klíčů.)
 
-Doporučujeme dodržovat tyto doporučené postupy pro střídání klíčů:
+Doporučujeme dodržovat tyto osvědčené postupy pro rotaci klíčů:
 
-* Klíče účtu úložiště byste měli pravidelně střídat, abyste zajistili, že k vašemu účtu úložiště nebudou mít přístup neoprávnění uživatelé.
-* Správce Azure by měl pravidelně měnit nebo regenerovat primární nebo sekundární klíč pomocí části Úložiště na webu Azure Portal pro přímý přístup k účtu úložiště.
+* Klíče účtu úložiště byste měli pravidelně otáčet, abyste měli jistotu, že k účtu úložiště nezískají přístup neoprávnění uživatelé.
+* Správce Azure by měl pravidelně měnit nebo obnovovat primární nebo sekundární klíč pomocí části úložiště Azure Portal pro přímý přístup k účtu úložiště.
 
 ## <a name="protect-data-via-encryption"></a>Ochrana dat pomocí šifrování
 
-StorSimple používá následující šifrovací algoritmy k ochraně dat uložených v nebo cestování mezi součástmi vašeho řešení StorSimple.
+StorSimple používá následující šifrovací algoritmy k ochraně dat, která jsou uložená v nebo na cestách mezi součástmi vašeho řešení StorSimple.
 
 | Algoritmus | Délka klíče | Protokoly/aplikace/komentáře |
 | --- | --- | --- |
-| RSA |2 048 |RSA PKCS 1 v1.5 používá portál Azure k šifrování konfiguračních dat, která se odesílají do zařízení: například pověření účtu úložiště, konfigurace zařízení StorSimple a šifrovací klíče cloudového úložiště. |
-| AES |256 |AES s CBC se používá k šifrování veřejné části šifrovacího klíče dat služby před odesláním na portál Azure ze zařízení StorSimple. Zařízení StorSimple jej také používá k šifrování dat před odesláním dat do účtu cloudového úložiště. |
+| RSA |2 048 |RSA PKCS 1 v 1.5 používá Azure Portal k šifrování konfiguračních dat, která se odesílají do zařízení: například přihlašovací údaje účtu úložiště, konfigurace zařízení StorSimple a šifrovací klíče cloudového úložiště. |
+| AES |256 |AES with CBC slouží k šifrování veřejné části šifrovacího klíče dat služby předtím, než se pošle do Azure Portal ze zařízení StorSimple. Používá ho i zařízení StorSimple k šifrování dat předtím, než se data odešlou do účtu cloudového úložiště. |
 
-## <a name="storsimple-cloud-appliance-security"></a>Zabezpečení cloudových zařízení StorSimple
+## <a name="storsimple-cloud-appliance-security"></a>StorSimple Cloud Appliance zabezpečení
 
 [!INCLUDE [storsimple Cloud Appliance security](../../includes/storsimple-virtual-device-security.md)]
 
 ## <a name="managing-personal-information"></a>Správa osobních údajů
 
-Správce zařízení StorSimple pro fyzické i virtuální řady shromažďuje osobní údaje v následujících klíčových případech:
+StorSimple Device Manager pro fyzické i virtuální řady shromažďuje osobní informace v následujících klíčových instancích:
 
-- Upozornit uživatele na nastavení, kde je nakonfigurována e-mailová adresa uživatelů. Tyto informace mohou být zobrazeny a vymazány správcem. To platí jak pro zařízení řady StorSimple 8000, tak pro virtuální pole StorSimple.
-  * Chcete-li zobrazit a vymazat nastavení řady StorSimple 8000, postupujte podle pokynů v [části Zobrazení a správa výstrah StorSimple](storsimple-8000-manage-alerts.md#configure-alert-settings)
-  * Chcete-li zobrazit a vymazat nastavení virtuálního pole StorSimple, postupujte podle pokynů v [části Zobrazení a správa výstrah StorSimple](storsimple-virtual-array-manage-alerts.md#configure-alert-settings)
-- Uživatelé, kteří mají přístup k datům s bydlištěm ve sdílených složek. Zobrazí se seznam uživatelů, kteří mají přístup k datům sdílené složky, a lze jej zobrazit. Tento seznam je také odstraněn při odstranění sdílených složek. To platí pouze pro virtuální pole StorSimple.
-  * Chcete-li zobrazit seznam uživatelů, kteří mají přístup ke sdílené položce nebo ji odstranit, postupujte podle pokynů v části [Správa sdílených složek ve virtuálním poli StorSimple](storsimple-virtual-array-manage-shares.md)
+- Upozornění na uživatelská nastavení, kde jsou nakonfigurovaná e-mailová adresa uživatelů Tyto informace může správce zobrazit a vymazat. To platí pro zařízení řady StorSimple 8000 i pro virtuální pole StorSimple.
+  * Pokud chcete zobrazit a vymazat nastavení pro řadu StorSimple 8000, postupujte podle kroků v části [zobrazení a správa výstrah StorSimple.](storsimple-8000-manage-alerts.md#configure-alert-settings)
+  * Pokud chcete zobrazit a vymazat nastavení pro virtuální pole StorSimple, postupujte podle kroků v části [zobrazení a správa výstrah StorSimple.](storsimple-virtual-array-manage-alerts.md#configure-alert-settings)
+- Uživatelé, kteří mají přístup k datům umístěným ve sdílených složkách. Zobrazí se seznam uživatelů, kteří mají přístup ke sdíleným datům, a lze je zobrazit. Tento seznam se odstraní také při odstranění sdílených složek. To platí jenom pro virtuální pole StorSimple.
+  * Pokud chcete zobrazit seznam uživatelů, kteří mají přístup k nebo odstranit sdílenou složku, postupujte podle kroků v části [Správa sdílených složek ve virtuálním poli StorSimple](storsimple-virtual-array-manage-shares.md) .
 
 Další informace najdete v Zásadách ochrany osobních údajů společnosti Microsoft v [Centru zabezpečení](https://www.microsoft.com/trustcenter).
 
 ## <a name="frequently-asked-questions-faq"></a>Nejčastější dotazy
 
-Následují některé otázky a odpovědi týkající se zabezpečení a Microsoft Azure StorSimple.
+Tady jsou uvedené otázky a odpovědi týkající se zabezpečení a Microsoft Azure StorSimple.
 
-**Otázka:** Moje služba je ohrožena. Jaké by měly být mé další kroky?
+**Otázka:** Dojde k ohrožení bezpečnosti mé služby. Jak by se měly provést další kroky?
 
-**A:** Měli byste okamžitě změnit šifrovací klíč dat služby a klíče účtu úložiště pro účet úložiště, který se používá pro vrstvení dat. Pokyny naleznete na adrese:
+**A:** Měli byste hned změnit šifrovací klíč dat služby a klíče účtu úložiště pro účet úložiště, který se používá pro data vrstvení. Pokyny najdete tady:
 
 * [Změna šifrovacího klíče dat služby](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 * [Střídání klíčů účtů úložiště](storsimple-8000-manage-storage-accounts.md#key-rotation-of-storage-accounts)
 
-**Otázka:** Mám nové zařízení StorSimple, které žádá o registrační klíč služby. Jak ji získám?
+**Otázka:** Mám nové zařízení StorSimple, které žádá o registrační klíč služby. Návody ho načíst?
 
-**A:** Tento klíč byl vytvořen při prvním vytvoření služby StorSimple Device Manager. Při použití služby StorSimple Device Manager pro připojení k zařízení, můžete použít stránku rychlého spuštění služby k zobrazení nebo obnovení registračního klíče služby. Generování nového registračního klíče služby neovlivní existující registrovaná zařízení. Pokyny naleznete na adrese:
+**A:** Tento klíč byl vytvořen při prvním vytvoření služby StorSimple Device Manager. Když ke svému zařízení použijete službu StorSimple Device Manager, můžete k zobrazení nebo opětovnému vygenerování registračního klíče služby použít stránku rychlý Start. Generování nového registračního klíče služby nebude mít vliv na existující registrovaná zařízení. Pokyny najdete tady:
 
-* [Zobrazení nebo obnovení registračního klíče služby](storsimple-8000-manage-service.md#regenerate-the-service-registration-key)
+* [Zobrazit nebo znovu vygenerovat registrační klíč služby](storsimple-8000-manage-service.md#regenerate-the-service-registration-key)
 
-**Otázka:** Ztratil jsem šifrovací klíč pro data služby. Co mám udělat?
+**Otázka:** Ztratil (a) jsem svůj šifrovací klíč dat služby. Co mám udělat?
 
-**A:** Obraťte se na podporu společnosti Microsoft. Mohou se přihlásit k relaci podpory na vašem zařízení a pomoci vám načíst klíč (za předpokladu, že alespoň jedno zařízení je online). Ihned po získání šifrovacího klíče dat služby byste jej měli změnit, abyste zajistili, že nový klíč bude znám pouze vám. Pokyny naleznete na adrese:
+**A:** Kontaktujte podpora Microsoftu. Můžou se přihlásit k relaci podpory na vašem zařízení a pomůžou vám načíst klíč (Pokud je aspoň jedno zařízení online). Ihned po získání šifrovacího klíče dat služby byste ho měli změnit, abyste měli jistotu, že je nový klíč známý jenom pro vás. Pokyny najdete tady:
 
 * [Změna šifrovacího klíče dat služby](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 
-**Otázka:**  Autorizoval jsem zařízení pro změnu šifrovacího klíče dat služby, ale proces změny klíče nebyl zahájen. Co bych měl/a dělat?
+**Otázka:**  Povolil (a) jsem zařízení pro změnu šifrovacího klíče dat služby, ale nespustila proces změny klíče. Co bych měl/a dělat?
 
-**A:** Pokud vypršelčasový limit, budete muset znovu autorizovat zařízení pro změnu šifrovacího klíče dat služby a znovu spustit proces.
+**A:** Pokud časový limit vypršel, budete muset znovu autorizovat zařízení pro změnu šifrovacího klíče dat služby a znovu spustit proces.
 
-**Otázka:**  Změnil jsem šifrovací klíč dat služby, ale nebyl jsem schopen aktualizovat ostatní zařízení do 4 hodin. Musím začít znovu?
+**Otázka:**  Změnil (a) jsem šifrovací klíč dat služby, ale nedokázali jsme aktualizovat ostatní zařízení během 4 hodin. Musím znovu začít?
 
-**A:** 4hodinové časové období je pouze pro zahájení změny. Po spuštění procesu aktualizace na autorizovaném zařízení StorSimple je autorizace platná, dokud nebudou aktualizována všechna zařízení.
+**A:** Časové období ve 4 hodinách je pouze pro zahájení změny. Po zahájení procesu aktualizace na autorizovaných zařízeních StorSimple je autorizace platná, dokud nebudou všechna zařízení aktualizována.
 
 **Otázka:** Náš správce StorSimple opustil společnost. Co bych měl/a dělat?
 
-**A:** Změňte a resetujte hesla, která umožňují přístup k zařízení StorSimple, a změňte šifrovací klíč dat služby, abyste zajistili, že nové informace nebudou známy neoprávněným osobám. Pokyny naleznete na adrese:
+**A:** Změna a resetování hesel, která umožňují přístup k zařízení StorSimple, a změna šifrovacího klíče dat služby, aby bylo zajištěno, že nové informace nebudou známy neoprávněným osobám. Pokyny najdete tady:
 
-* [Změna jednoduchých hesel storsimple správce zařízení pomocí služby StorSimple Device Manager](storsimple-8000-change-passwords.md)
+* [Použijte službu StorSimple Device Manager ke změně hesla StorSimple.](storsimple-8000-change-passwords.md)
 * [Změna šifrovacího klíče dat služby](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 * [Konfigurace protokolu CHAP pro zařízení StorSimple](storsimple-8000-configure-chap.md)
 
-**Otázka:** Chci poskytnout heslo Správce snímků StorSimple hostiteli, který se připojuje k zařízení StorSimple, ale heslo není k dispozici. Co mám udělat?
+**Otázka:** Chci zadat Snapshot Manager heslo StorSimple k hostiteli, který se připojuje k zařízení StorSimple, ale heslo není k dispozici. Co mám udělat?
 
-**A:** Pokud jste zapomněli heslo, měli byste vytvořit nové. Potom nezapomeňte informovat všechny stávající uživatele, že heslo bylo změněno a že by měli aktualizovat své klienty, aby používali nové heslo. Pokyny naleznete na adrese:
+**A:** Pokud jste zapomněli heslo, měli byste vytvořit nové. Pak se ujistěte, že všichni stávající uživatelé změnili heslo a že by měli aktualizovat své klienty, aby používali nové heslo. Pokyny najdete tady:
 
-* [Změna hesla Správce snímků StorSimple](storsimple-8000-change-passwords.md#set-the-storsimple-snapshot-manager-password)
+* [Změna StorSimple hesla Snapshot Manager](storsimple-8000-change-passwords.md#set-the-storsimple-snapshot-manager-password)
 * [Ověření zařízení](storsimple-snapshot-manager-manage-devices.md#authenticate-a-device)
 
-**Otázka:** Certifikát pro vzdálený přístup k prostředí Windows PowerShell for StorSimple byl v zařízení změněn. Jak lze aktualizovat klienty vzdáleného přístupu?
+**Otázka:** V zařízení se změnil certifikát pro vzdálený přístup k Windows PowerShell pro StorSimple. Návody aktualizovat klienty vzdáleného přístupu?
 
-**A:** Nový certifikát si můžete stáhnout ze služby StorSimple Device Manager a poté jej poskytnout k instalaci do úložiště certifikátů vzdálených klientů. Pokyny naleznete na adrese:
+**A:** Můžete si stáhnout nový certifikát ze služby StorSimple Device Manager a pak ho poskytnout do úložiště certifikátů klientů vzdáleného přístupu. Pokyny najdete tady:
 
-* [Rutina importu certifikátu](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate)
+* [Rutina Import-certifikát](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate)
 
-**Otázka:** Jsou moje data chráněna, pokud je ohrožena služba StorSimple Device Manager?
+**Otázka:** Je moje data chráněná, pokud dojde k ohrožení bezpečnosti služby StorSimple Device Manager?
 
-**A:** Při zobrazení ve webovém prohlížeči jsou data konfigurace služby vždy šifrována pomocí veřejného klíče. Vzhledem k tomu, že služba nemá přístup k soukromému klíči, nebude služba moci zobrazit žádná data. Pokud je ohrožena služba StorSimple Device Manager, neexistuje žádný dopad, protože ve službě StorSimple Device Manager nejsou uloženy žádné klíče.
+**A:** Data konfigurace služby se při prohlížení ve webovém prohlížeči vždycky šifrují s veřejným klíčem. Vzhledem k tomu, že služba nemá přístup k privátnímu klíči, služba nebude moci zobrazit žádná data. Pokud dojde k ohrožení bezpečnosti služby StorSimple Device Manager, nebudete mít žádný vliv, protože ve službě StorSimple Device Manager nejsou uložené žádné klíče.
 
-**Otázka:** Pokud někdo získá přístup k certifikátu šifrování dat, budou moje data ohrožena?
+**Otázka:** Pokud někdo získá přístup k certifikátu pro šifrování dat, budou se tato data ohrozit?
 
-**A:** Microsoft Azure ukládá šifrovací klíč dat zákazníka (soubor.pfx) v šifrovaném formátu. Vzhledem k tomu, že soubor .pfx je zašifrován a služba StorSimple nemá šifrovací klíč služby pro dešifrování souboru Pfx, jednoduše získání přístupu k souboru .pfx neodhalí žádné tajné klíče.
+**A:** Microsoft Azure ukládá datový šifrovací klíč (soubor. pfx) zákazníka v zašifrovaném formátu. Vzhledem k tomu, že je soubor. pfx zašifrovaný a Služba StorSimple nemá šifrovací klíč dat služby k dešifrování souboru. pfx, jednoduše získáte přístup k souboru. pfx, aby se nezveřejnily žádné tajné kódy.
 
-**Otázka:** Co se stane, když se vládní subjekt zeptá microsoftu na moje data?
+**Otázka:** Co se stane, když si vládní entita požádá společnost Microsoft o moje data?
 
-**A:** Vzhledem k tomu, že všechna data jsou šifrována ve službě a soukromý klíč je uložen se zařízením, musí vládní subjekt požádat zákazníka o data.
+**A:** Vzhledem k tomu, že jsou všechna data ve službě zašifrovaná a soukromý klíč je uložený v zařízení, musí se tato entita požádat zákazníka o data.
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Event Grid – průvodce odstraňováním potíží
-description: Tento článek obsahuje seznam kódů chyb, chybových zpráv, popisů a doporučených akcí.
+title: Azure Event Grid – Průvodce odstraňováním potíží
+description: Tento článek uvádí seznam kódů chyb, chybové zprávy, popisy a doporučené akce.
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,29 +8,29 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: spelluru
 ms.openlocfilehash: 1ab9aeac0bde21e229fdb57b7ad02d5d48471551
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75645068"
 ---
-# <a name="troubleshoot-azure-event-grid-errors"></a>Poradce při potížích s chybami služby Azure Event Grid
-Tento průvodce odstraňováním potíží poskytuje seznam kódů chyb služby Azure Event Grid, chybových zpráv, jejich popisů a doporučených akcí, které byste měli provést, když se zobrazí tyto chyby. 
+# <a name="troubleshoot-azure-event-grid-errors"></a>Řešení chyb Azure Event Grid
+Tato příručka pro řešení potíží poskytuje seznam chybových kódů Azure Event Grid, chybové zprávy, jejich popisy a doporučené akce, které byste měli provést při obdržení těchto chyb. 
 
 ## <a name="error-code-400"></a>Kód chyby: 400
 | Kód chyby | Chybová zpráva | Popis | Doporučení |
 | ---------- | ------------- | ----------- | -------------- | 
-| HttpStatusCode.BadRequest<br/>400 | Název tématu musí mít délku 3 až 50 znaků. | Délka názvu vlastního tématu by měla být dlouhá 3 až 50 znaků. V názvu tématu jsou povolena pouze alfanumerická písmena, číslice a znak '-'. Název by také neměl začínat následujícími vyhrazenými slovy: <ul><li>Microsoft</li><li>EventGrid</li><li>Systém</li></ul> | Zvolte jiný název tématu, který splňuje požadavky na název tématu. |
-| HttpStatusCode.BadRequest<br/>400 | Název domény musí mít délku 3 až 50 znaků. | Délka názvu domény by měla být dlouhá 3 až 50 znaků. V názvu tématu jsou povolena pouze alfanumerická písmena, číslice a znak '-'. Název by také neměl začínat následujícími vyhrazenými slovy:<ul><li>Microsoft</li><li>EventGrid</li><li>Systém</li> | Zvolte jiný název domény, který splňuje požadavky na název domény. |
-| HttpStatusCode.BadRequest<br/>400 | Neplatná doba vypršení platnosti. | Doba vypršení platnosti předplatného události určuje, kdy bude předplatné události vyřazeno. Tato hodnota by měla být platná DateTime hodnotu v budoucnu.| Ujistěte se, že čas vypršení platnosti odběru událostí v platném formátu DateTime a je nastavena na budoucnost. |
+| HttpStatusCode. důvodu chybného požadavku<br/>400 | Název tématu musí mít délku 3 až 50 znaků. | Název vlastního tématu by měl mít délku 3 až 50 znaků. V názvu tématu jsou povoleny pouze alfanumerické písmena, číslice a znak-. Název by měl také začínat následujícími rezervovanými slovy: <ul><li>Microsoft</li><li>EventGrid</li><li>Systém</li></ul> | Vyberte jiný název tématu, které dodržuje požadavky na název tématu. |
+| HttpStatusCode. důvodu chybného požadavku<br/>400 | Název domény musí mít délku 3 až 50 znaků. | Délka názvu domény by měla být 3 až 50 znaků. V názvu tématu jsou povoleny pouze alfanumerické písmena, číslice a znak-. Název by měl také začínat následujícími rezervovanými slovy:<ul><li>Microsoft</li><li>EventGrid</li><li>Systém</li> | Vyberte jiný název domény, který splňuje požadavky na název domény. |
+| HttpStatusCode. důvodu chybného požadavku<br/>400 | Neplatný čas vypršení platnosti. | Čas vypršení platnosti odběru události Určuje, kdy bude odběr události vyřazení. Tato hodnota by měla být v budoucnu platná hodnota DateTime.| Ujistěte se, že doba vypršení platnosti předplatného události v platném formátu data a času je nastavená na budoucnost. |
 
 ## <a name="error-code-409"></a>Kód chyby: 409
 | Kód chyby | Chybová zpráva | Popis | Doporučená akce |
 | ---------- | ------------- | ----------- | -------------- | 
-| HttpStatusCode.Conflict <br/>409 | Téma se zadaným názvem již existuje. Zvolte jiný název tématu.   | Vlastní název tématu by měl být jedinečný v jedné oblasti Azure, aby byla zajištěna správná operace publikování. Stejný název lze použít v různých oblastech Azure. | Zvolte jiný název tématu. |
-| HttpStatusCode.Conflict <br/> 409 | Doména se zadaným již existuje. Zvolte jiný název domény. | Název domény by měl být jedinečný v jedné oblasti Azure, aby byla zajištěna správná operace publikování. Stejný název lze použít v různých oblastech Azure. | Zvolte jiný název domény. |
-| HttpStatusCode.Conflict<br/>409 | Bylo dosaženo limitu kvóty. Další informace o těchto omezeních najdete v [tématu omezení služby Azure Event Grid](../azure-resource-manager/management/azure-subscription-service-limits.md#event-grid-limits).  | Každé předplatné Azure má limit na počet prostředků Azure Event Grid, které může používat. Některé nebo všechny tyto kvóty byly překročeny a nebylo možné vytvořit žádné další zdroje. |    Zkontrolujte aktuální využití prostředků a odstraňte všechny, které nejsou potřeba. Pokud stále potřebujete zvýšit kvótu, pošlete [aeg@microsoft.com](mailto:aeg@microsoft.com) e-mail s přesným počtem potřebných zdrojů. |
+| HttpStatusCode. konflikt <br/>409 | Téma se zadaným názvem již existuje. Vyberte jiný název tématu.   | Název vlastního tématu by měl být jedinečný v jedné oblasti Azure, aby se zajistila správná operace publikování. Stejný název se dá použít v různých oblastech Azure. | Vyberte jiný název tématu. |
+| HttpStatusCode. konflikt <br/> 409 | Doména se zadaným parametrem již existuje. Vyberte jiný název domény. | Název domény by měl být jedinečný v jedné oblasti Azure, aby se zajistila správná operace publikování. Stejný název se dá použít v různých oblastech Azure. | Vyberte jiný název domény. |
+| HttpStatusCode. konflikt<br/>409 | Dosáhlo se limitu kvóty. Další informace o těchto omezeních najdete v tématu [omezení Azure Event Grid](../azure-resource-manager/management/azure-subscription-service-limits.md#event-grid-limits).  | Každé předplatné Azure má omezení počtu Azure Event Grid prostředků, které může použít. Některá nebo všechna tato kvóta byla překročena a nebylo možné vytvořit žádné další prostředky. |    Projděte si aktuální využití prostředků a odstraňte všechny, které nepotřebujete. Pokud stále potřebujete zvýšit vaši kvótu, pošlete e-mail na [aeg@microsoft.com](mailto:aeg@microsoft.com) přesný počet potřebných prostředků. |
 
 
 ## <a name="next-steps"></a>Další kroky
-Pokud potřebujete další pomoc, zveřejněte svůj problém ve [fóru Přetečení zásobníku](https://stackoverflow.com/questions/tagged/azure-eventgrid) nebo otevřete [lístek podpory](https://azure.microsoft.com/support/options/). 
+Pokud potřebujete další pomoc, vystavte svůj problém ve [fóru Stack Overflow](https://stackoverflow.com/questions/tagged/azure-eventgrid) nebo otevřete [lístek podpory](https://azure.microsoft.com/support/options/). 
