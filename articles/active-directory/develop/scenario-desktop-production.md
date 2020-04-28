@@ -1,6 +1,6 @@
 ---
-title: Přesunutí webových rozhraní API pro volání webových rozhraní API pro stolní počítače do produkčního prostředí – platforma identit Microsoftu | Azure
-description: Přečtěte si, jak přesunout desktopovou aplikaci, která volá webová api do produkčního prostředí.
+title: Přesun aplikace klasické pracovní plochy volání webových rozhraní API do produkčního prostředí – Microsoft Identity Platform | Azure
+description: Přečtěte si, jak přesunout desktopovou aplikaci, která volá webová rozhraní API do produkčního prostředí.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,33 +12,33 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: ea564eb69f102d8e548bf8ae9a626598fa264cd4
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80882875"
 ---
-# <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Desktopová aplikace, která volá webová API: Přechod do produkčního prostředí
+# <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: přesunout do produkčního prostředí
 
-V tomto článku se dozvíte, jak přesunout desktopovou aplikaci, která volá webová api do produkčního prostředí.
+V tomto článku se dozvíte, jak přesunout desktopovou aplikaci, která volá webová rozhraní API do produkčního prostředí.
 
 ## <a name="handle-errors-in-desktop-applications"></a>Zpracování chyb v aplikacích klasické pracovní plochy
 
-V různých tocích jste se naučili, jak zpracovat chyby pro tiché toky, jak je znázorněno v fragmenty kódu. Viděli jste také, že existují případy, kdy je nutná interakce, jako v přírůstkovém souhlasu a podmíněném přístupu.
+V různých tocích jste se naučili, jak zpracovávat chyby pro tiché toky, jak je znázorněno ve fragmentech kódu. Také jste viděli, že existují případy, kdy je potřeba interakce, jako v rámci přírůstkového souhlasu a podmíněného přístupu.
 
-## <a name="have-the-user-consent-upfront-for-several-resources"></a>Mít souhlas uživatele předem pro několik zdrojů
+## <a name="have-the-user-consent-upfront-for-several-resources"></a>Mít souhlas uživatele před několika prostředky
 
 > [!NOTE]
-> Získání souhlasu pro několik prostředků funguje pro platformu identit Microsoftu, ale ne pro Azure Active Directory (Azure AD) B2C. Azure AD B2C podporuje pouze souhlas správce, ne souhlas uživatele.
+> Získání souhlasu pro několik prostředků funguje pro Microsoft Identity Platform, ale ne pro Azure Active Directory (Azure AD) B2C. Azure AD B2C podporuje jenom souhlas správce, ne pro vyjádření souhlasu s uživatelem.
 
-Nelze získat token pro několik prostředků najednou s koncovým bodem platformy identit y Microsoft (v2.0). Parametr `scopes` může obsahovat obory pouze pro jeden prostředek. Pomocí `extraScopesToConsent` parametru můžete zajistit, aby uživatel předem souhlasil s několika prostředky.
+Pomocí koncového bodu Microsoft Identity Platform (v 2.0) nemůžete získat token pro několik prostředků současně. `scopes` Parametr může obsahovat obory pouze pro jeden prostředek. Můžete zajistit, aby uživatel mohl předběžně odeslat několik prostředků pomocí `extraScopesToConsent` parametru.
 
-Můžete mít například dva prostředky, které mají každý dva obory:
+Například můžete mít dva prostředky, které mají dva obory:
 
 - `https://mytenant.onmicrosoft.com/customerapi`s rozsahy `customer.read` a`customer.write`
 - `https://mytenant.onmicrosoft.com/vendorapi`s rozsahy `vendor.read` a`vendor.write`
 
-V tomto příkladu `.WithAdditionalPromptToConsent` použijte modifikátor, který má `extraScopesToConsent` parametr.
+V tomto příkladu použijte `.WithAdditionalPromptToConsent` modifikátor, který má `extraScopesToConsent` parametr.
 
 Například:
 
@@ -79,7 +79,7 @@ interactiveParams.extraScopesToConsent = scopesForVendorApi;
 [application acquireTokenWithParameters:interactiveParams completionBlock:^(MSALResult *result, NSError *error) { /* handle result */ }];
 ```
 
-Swift:
+SWIFT
 
 ```swift
 let scopesForCustomerApi = ["https://mytenant.onmicrosoft.com/customerapi/customer.read",
@@ -95,15 +95,15 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 Toto volání vám získá přístupový token pro první webové rozhraní API.
 
-Když potřebujete volat druhé webové rozhraní `AcquireTokenSilent` API, zavolejte rozhraní API.
+Pokud potřebujete zavolat druhé webové rozhraní API, zavolejte `AcquireTokenSilent` rozhraní API.
 
 ```csharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();
 ```
 
-### <a name="microsoft-personal-account-requires-reconsent-each-time-the-app-runs"></a>Osobní účet Microsoft vyžaduje souhlas při každém spuštění aplikace
+### <a name="microsoft-personal-account-requires-reconsent-each-time-the-app-runs"></a>Osobní účet Microsoft vyžaduje při každém spuštění aplikace souhlas.
 
-Pro uživatele osobního účtu Microsoft je záměrné chování, které je pro uživatele osobního účtu Microsoft vyzvání k udělení souhlasu u každého nativního klienta (stolního nebo mobilního počítače) k autorizaci. Nativní identita klienta je ze své podstaty nejistá, což je v rozporu s důvěrnou identitou klientské aplikace. Důvěrné klientské aplikace si vyměňují tajný klíč s platformou Microsoft Identity, aby prokázaly svou identitu. Platforma identit společnosti Microsoft se rozhodla zmírnit tuto nejistotu pro spotřebitelské služby tím, že vyzve uživatele k udělení souhlasu při každém autorizaci aplikace.
+Pro uživatele osobního účtu Microsoft se znovu zobrazí výzva k zadání souhlasu každého nativního klienta (Desktop nebo mobilní aplikace) volání metody autorizovat je zamýšlené chování. Nativní identita klienta je ze své podstaty nezabezpečená, což je v rozporu s identitou důvěrné klientské aplikace. Důvěrné klientské aplikace vyměňují tajný kód s platformou Microsoft identity, aby prokázali jejich identitu. Platforma Microsoft identity se rozhodla snížit toto zabezpečení pro zákazníky pomocí výzvy k souhlasu uživatele při každém autorizaci aplikace.
 
 ## <a name="next-steps"></a>Další kroky
 

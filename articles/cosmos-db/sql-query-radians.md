@@ -1,6 +1,6 @@
 ---
-title: RADIANS v dotazovacím jazyce Azure Cosmos DB
-description: Další informace o funkci systému SQL RADIANS v Azure Cosmos DB.
+title: RADIÁNy v Azure Cosmos DB dotazovacího jazyka
+description: Přečtěte si o systémových funkcích SQL RADIÁNech v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 7831ef4bbd65bce7329b1ecf0f602b110a16834b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302232"
 ---
-# <a name="radians-azure-cosmos-db"></a>RADIANS (Azure Cosmos DB)
- Vrátí radiány, když je zadán číselný výraz ve stupních.  
+# <a name="radians-azure-cosmos-db"></a>RADIÁNy (Azure Cosmos DB)
+ Vrátí radiány při zadání číselného výrazu ve stupních.  
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -26,7 +26,7 @@ RADIANS (<numeric_expr>)
 ## <a name="arguments"></a>Argumenty
   
 *numeric_expr*  
-   Je číselný výraz.  
+   Je numerický výraz.  
   
 ## <a name="return-types"></a>Návratové typy
   
@@ -34,7 +34,7 @@ RADIANS (<numeric_expr>)
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad trvá několik úhlů jako vstup a vrátí jejich odpovídající hodnoty radian.  
+  Následující příklad bere několik úhlů jako vstup a vrátí jejich odpovídající hodnoty Radian.  
   
 ```sql
 SELECT RADIANS(-45.01) AS r1, RADIANS(-181.01) AS r2, RADIANS(0) AS r3, RADIANS(0.1472738) AS r4, RADIANS(197.1099392) AS r5  
@@ -54,7 +54,7 @@ SELECT RADIANS(-45.01) AS r1, RADIANS(-181.01) AS r2, RADIANS(0) AS r3, RADIANS(
 
 ## <a name="remarks"></a>Poznámky
 
-Tato systémová funkce nebude využívat index.
+Tato systémová funkce nebude index využívat.
 
 ## <a name="next-steps"></a>Další kroky
 

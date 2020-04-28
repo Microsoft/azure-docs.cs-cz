@@ -1,6 +1,6 @@
 ---
-title: Poradce při potížích se synchronizací hash hesla pomocí synchronizace Azure AD Connect | Dokumenty společnosti Microsoft
-description: Tento článek obsahuje informace o řešení problémů se synchronizací hodnot hash hesel.
+title: Řešení potíží se synchronizací hodnot hash hesel pomocí Azure AD Connect synchronizace | Microsoft Docs
+description: Tento článek poskytuje informace o tom, jak řešit potíže se synchronizací hodnot hash hesel.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,194 +17,194 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6feed11fcfc597658f3ec148b5dd18bb7e3f8f83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79253543"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Řešení potíží se synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect
 
-Toto téma obsahuje postup řešení problémů se synchronizací hodnot hash hesel. Pokud hesla nejsou synchronizovány podle očekávání, může být buď pro podmnožinu uživatelů nebo pro všechny uživatele.
+V tomto tématu najdete postup řešení potíží se synchronizací hodnot hash hesel. Pokud se hesla nesynchronizují podle očekávání, může to být buď pro podmnožinu uživatelů, nebo pro všechny uživatele.
 
-Pro Azure Active Directory (Azure AD) Připojte nasazení s verzí 1.1.614.0 nebo po, použijte úlohu řešení potíží v průvodci k řešení problémů se synchronizací hodnot hash hesla:
+Pokud chcete Azure Active Directory (Azure AD) připojit nasazení s verzí 1.1.614.0 nebo novější, použijte v průvodci úlohu řešení potíží k řešení potíží se synchronizací hodnot hash hesel:
 
-* Pokud máte problém, kdy nejsou synchronizována žádná hesla, podívejte se na [seznam Žádná hesla jsou synchronizovány: řešení potíží pomocí části úlohy řešení potíží.](#no-passwords-are-synchronized-troubleshoot-by-using-the-troubleshooting-task)
+* Pokud máte problém s tím, že se žádná hesla nesynchronizují, Projděte si informace o tom, že se nesynchronizují [žádná hesla: řešení potíží pomocí oddílu úlohy řešení potíží](#no-passwords-are-synchronized-troubleshoot-by-using-the-troubleshooting-task) .
 
-* Pokud máte problém s jednotlivými objekty, podívejte se na [jeden objekt není synchronizace hesla: řešení potíží pomocí části úlohy řešení potíží.](#one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-troubleshooting-task)
+* Pokud máte problém s jednotlivými objekty, Projděte si odkaz na [jeden objekt nesynchronizující hesla: Poradce při potížích pomocí oddílu úlohy řešení potíží](#one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-troubleshooting-task) .
 
-Pro nasazení s verzí 1.1.524.0 nebo novější je diagnostická rutina, kterou můžete použít k řešení problémů se synchronizací hash hesel:
+Pro nasazení s verzí 1.1.524.0 nebo novější je k dispozici diagnostická rutina, kterou můžete použít k řešení potíží se synchronizací hodnot hash hesel:
 
-* Pokud máte problém, kdy nejsou synchronizována žádná hesla, podívejte se na [nehesla jsou synchronizovány: řešení potíží pomocí diagnostické rutiny](#no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet) části.
+* Pokud máte problém s tím, že se žádná hesla nesynchronizují, Projděte si téma [žádná hesla nejsou synchronizovaná: řešení potíží pomocí diagnostické rutiny](#no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet) .
 
-* Pokud máte problém s jednotlivými objekty, podívejte se na [jeden objekt není synchronizace hesla: řešení potíží pomocí diagnostické rutiny](#one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet) části.
+* Pokud máte problém s jednotlivými objekty, Projděte si odkaz na [jeden objekt nesynchronizující hesla: řešení potíží pomocí části diagnostické rutiny](#one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet) .
 
-Pro starší verze nasazení Azure AD Connect:
+Pro starší verze Azure AD Connect nasazení:
 
-* Pokud máte problém, kdy nejsou synchronizována žádná hesla, podívejte se do části [Žádná hesla: Pokyny pro ruční řešení potíží.](#no-passwords-are-synchronized-manual-troubleshooting-steps)
+* Pokud máte problém s tím, že se žádná hesla nesynchronizují, přečtěte si téma [nesynchronizovaná hesla: oddíl ručních kroků při odstraňování potíží](#no-passwords-are-synchronized-manual-troubleshooting-steps) .
 
-* Pokud máte problém s jednotlivými objekty, podívejte se na [jeden objekt není synchronizace hesla: ruční řešení potíží kroky](#one-object-is-not-synchronizing-passwords-manual-troubleshooting-steps) části.
+* Pokud máte problém s jednotlivými objekty, přečtěte si informace o tom, že [jeden objekt nesynchronizuje hesla: oddíl ručních kroků při odstraňování potíží](#one-object-is-not-synchronizing-passwords-manual-troubleshooting-steps) .
 
 
 
-## <a name="no-passwords-are-synchronized-troubleshoot-by-using-the-troubleshooting-task"></a>Nejsou synchronizována žádná hesla: řešení potíží pomocí úlohy řešení potíží
+## <a name="no-passwords-are-synchronized-troubleshoot-by-using-the-troubleshooting-task"></a>Žádná hesla nejsou synchronizovaná: řešení potíží pomocí úlohy řešení potíží.
 
 Pomocí úlohy řešení potíží můžete zjistit, proč nejsou synchronizována žádná hesla.
 
 > [!NOTE]
-> Úloha řešení potíží je k dispozici jenom pro Azure AD Connect verze 1.1.614.0 nebo novější.
+> Úloha řešení potíží je k dispozici pouze pro Azure AD Connect verze 1.1.614.0 nebo novější.
 
-### <a name="run-the-troubleshooting-task"></a>Spuštění úlohy řešení potíží
+### <a name="run-the-troubleshooting-task"></a>Spuštění úlohy odstraňování potíží
 
-Postup řešení problémů, kdy nejsou synchronizována žádná hesla:
+Řešení potíží, při kterých se nesynchronizují žádná hesla:
 
-1. Otevřete novou relaci prostředí Windows PowerShell na serveru Azure AD Connect s možností **Spustit jako správce.**
+1. Na serveru Azure AD Connect otevřete novou relaci prostředí Windows PowerShell s možností **Spustit jako správce** .
 
-2. Spustit `Set-ExecutionPolicy RemoteSigned` `Set-ExecutionPolicy Unrestricted`nebo .
+2. Spusťte `Set-ExecutionPolicy RemoteSigned` nebo `Set-ExecutionPolicy Unrestricted`.
 
-3. Spusťte Průvodce připojením Azure AD Connect.
+3. Spusťte Průvodce Azure AD Connect.
 
-4. Přejděte na stránku **Další úkoly,** vyberte **Poradce při potížích**a klepněte na tlačítko **Další**.
+4. Přejděte na stránku **další úlohy** , vyberte možnost **řešení potíží**a klikněte na tlačítko **Další**.
 
-5. Na stránce Poradce při potížích klikněte na **Spustit** a spusťte nabídku řešení potíží v PowerShellu.
+5. Na stránce Poradce při potížích klikněte na **Spustit** a spusťte v PowerShellu nabídku pro odstraňování potíží.
 
-6. V hlavní nabídce vyberte **Poradce při potížích s synchronizací hash hesel**.
+6. V hlavní nabídce vyberte **řešit potíže se synchronizací hodnot hash hesel**.
 
-7. V dílčí nabídce vyberte **synchronizace hodnot hash hesla vůbec nefunguje**.
+7. V podnabídce vyberte možnost **synchronizace hodnot hash hesel nefunguje vůbec**.
 
-### <a name="understand-the-results-of-the-troubleshooting-task"></a>Vysvětlení výsledků úlohy řešení potíží
+### <a name="understand-the-results-of-the-troubleshooting-task"></a>Vysvětlení výsledků úlohy odstraňování potíží
 
 Úloha řešení potíží provádí následující kontroly:
 
-* Ověří, že funkce synchronizace hodnot hash hesla je povolená pro vašeho klienta Azure AD.
+* Ověří, jestli je pro vašeho tenanta Azure AD povolená funkce synchronizace hodnoty hash hesla.
 
-* Ověří, že server Azure AD Connect není v pracovním režimu.
+* Ověří, zda Azure AD Connect Server není v pracovním režimu.
 
-* Pro každý existující místní konektor služby Active Directory (který odpovídá existující doménové struktuře služby Active Directory):
+* Pro každý existující místní konektor služby Active Directory (který odpovídá stávající doménové struktuře služby Active Directory):
 
-   * Ověří, zda je povolena funkce synchronizace hodnot hash hesla.
+   * Ověří, jestli je povolená funkce synchronizace hodnot hash hesel.
    
-   * Vyhledá události prezenčního signálu synchronizace hodnot hash hesla v protokolech událostí aplikace systému Windows.
+   * Vyhledá události prezenčního signálu synchronizace hodnot hash hesel v protokolech událostí aplikace systému Windows.
 
-   * Pro každou doménu služby Active Directory v místním konektoru služby Active Directory:
+   * Pro každou doménu služby Active Directory v rámci místního konektoru služby Active Directory:
 
-      * Ověří, že doména je dosažitelná ze serveru Azure AD Connect.
+      * Ověří, jestli je doména dosažitelná z Azure AD Connectho serveru.
 
-      * Ověří, zda účty služby AD DS používané místním konektorem služby Active Directory mají správné uživatelské jméno, heslo a oprávnění vyžadovaná pro synchronizaci hodnot hash hesel.
+      * Ověří, jestli účty Active Directory Domain Services (služba AD DS) používané místním konektorem služby Active Directory mají správné uživatelské jméno, heslo a oprávnění, která se vyžadují pro synchronizaci hodnot hash hesel.
 
-Následující diagram znázorňuje výsledky rutiny pro topologii služby Active Directory s jednou doménou:
+Následující diagram znázorňuje výsledky rutiny pro jednu doménu místní topologie služby Active Directory:
 
-![Diagnostický výstup pro synchronizaci hodnot hash hesel](./media/tshoot-connect-password-hash-synchronization/phsglobalgeneral.png)
+![Výstup diagnostiky pro synchronizaci hodnot hash hesel](./media/tshoot-connect-password-hash-synchronization/phsglobalgeneral.png)
 
-Zbývající část této části popisuje konkrétní výsledky, které jsou vráceny úkol a odpovídající problémy.
+Zbytek této části popisuje konkrétní výsledky, které jsou vráceny úlohou a související problémy.
 
-#### <a name="password-hash-synchronization-feature-isnt-enabled"></a>Funkce synchronizace hodnot hash hesel není povolena
+#### <a name="password-hash-synchronization-feature-isnt-enabled"></a>funkce synchronizace hodnot hash hesel není povolená.
 
-Pokud jste nepovolili synchronizaci hash hesel pomocí Průvodce azure ad připojení, je vrácena následující chyba:
+Pokud jste nepovolili synchronizaci hodnot hash hesel pomocí Průvodce Azure AD Connect, vrátí se následující chyba:
 
-![Synchronizace hodnot hash hesel není povolena](./media/tshoot-connect-password-hash-synchronization/phsglobaldisabled.png)
+![synchronizace hodnot hash hesel není povolená.](./media/tshoot-connect-password-hash-synchronization/phsglobaldisabled.png)
 
-#### <a name="azure-ad-connect-server-is-in-staging-mode"></a>Server Azure AD Connect je v pracovním režimu
+#### <a name="azure-ad-connect-server-is-in-staging-mode"></a>Server Azure AD Connect je v pracovním režimu.
 
-Pokud je server Azure AD Connect v pracovním režimu, synchronizace hodnot hash hesel je dočasně zakázána a je vrácena následující chyba:
+Pokud je server Azure AD Connect v pracovním režimu, synchronizace hodnot hash hesel je dočasně zakázaná a vrátí se následující chyba:
 
-![Server Azure AD Connect je v pracovním režimu](./media/tshoot-connect-password-hash-synchronization/phsglobalstaging.png)
+![Server Azure AD Connect je v pracovním režimu.](./media/tshoot-connect-password-hash-synchronization/phsglobalstaging.png)
 
-#### <a name="no-password-hash-synchronization-heartbeat-events"></a>Žádné události prezenčního signálu synchronizace hodnot hash hesel
+#### <a name="no-password-hash-synchronization-heartbeat-events"></a>Události prezenčního signálu synchronizace hodnoty hash hesla
 
-Každý místní konektor služby Active Directory má vlastní kanál synchronizace hodnot hash hesel. Když je vytvořen kanál synchronizace hash hesla a neexistují žádné změny hesla, které mají být synchronizovány, událost prezenčního signálu (EventId 654) je generována jednou za 30 minut v protokolu událostí aplikace systému Windows. Pro každý místní konektor služby Active Directory rutina vyhledá odpovídající události prezenčního signálu za poslední tři hodiny. Pokud není nalezena žádná událost prezenčního signálu, je vrácena následující chyba:
+Každý místní konektor služby Active Directory má svůj vlastní kanál synchronizace hodnot hash hesel. Když se vytvoří kanál synchronizace hodnot hash hesel a neexistují žádné změny hesla, které by se měly synchronizovat, vygeneruje se událost prezenčního signálu (ID události 654) každých 30 minut v protokolu událostí aplikace systému Windows. Pro každý místní konektor služby Active Directory vyhledá rutiny odpovídající události prezenčního signálu za poslední tři hodiny. Pokud se nenajde žádná událost prezenčního signálu, vrátí se následující chyba:
 
-![Žádná událost synchronizace hash hesla srdeční hod](./media/tshoot-connect-password-hash-synchronization/phsglobalnoheartbeat.png)
+![Žádná událost synchronizace hodnot hash hesel – srdcový ráz](./media/tshoot-connect-password-hash-synchronization/phsglobalnoheartbeat.png)
 
-#### <a name="ad-ds-account-does-not-have-correct-permissions"></a>Účet ad DS nemá správná oprávnění
+#### <a name="ad-ds-account-does-not-have-correct-permissions"></a>Účet služba AD DS nemá správná oprávnění.
 
-Pokud účet služby AD DS používaný místním konektorem služby Active Directory k synchronizaci hashe hesel nemá příslušná oprávnění, vrátí se následující chyba:
+Pokud účet služba AD DS, který používá místní konektor služby Active Directory k synchronizaci hodnot hash hesel, nemá příslušná oprávnění, vrátí se následující chyba:
 
 ![Nesprávné pověření](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectpermission.png)
 
-#### <a name="incorrect-ad-ds-account-username-or-password"></a>Nesprávné uživatelské jméno nebo heslo účtu ad ds
+#### <a name="incorrect-ad-ds-account-username-or-password"></a>Nesprávné uživatelské jméno nebo heslo účtu služba AD DS
 
-Pokud má účet služby AD DS používaný místním konektorem služby Active Directory k synchronizaci hodnoty hashe hesel nesprávné uživatelské jméno nebo heslo, vrátí se následující chyba:
+Pokud účet služba AD DS, který používá místní konektor služby Active Directory k synchronizaci hodnot hash hesel, má nesprávné uživatelské jméno nebo heslo, vrátí se následující chyba:
 
 ![Nesprávné pověření](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectcredential.png)
 
 
 
-## <a name="one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-troubleshooting-task"></a>Jeden objekt nesynchronizuje hesla: řešení potíží pomocí úlohy řešení potíží
+## <a name="one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-troubleshooting-task"></a>Jeden objekt nesynchronizuje hesla: řešení potíží pomocí úlohy odstraňování potíží
 
 Pomocí úlohy řešení potíží můžete určit, proč jeden objekt nesynchronizuje hesla.
 
 > [!NOTE]
-> Úloha řešení potíží je k dispozici jenom pro Azure AD Connect verze 1.1.614.0 nebo novější.
+> Úloha řešení potíží je k dispozici pouze pro Azure AD Connect verze 1.1.614.0 nebo novější.
 
-### <a name="run-the-diagnostics-cmdlet"></a>Spuštění rutiny diagnostiky
+### <a name="run-the-diagnostics-cmdlet"></a>Spuštění diagnostické rutiny
 
-Postup řešení problémů s určitým objektem uživatele:
+Řešení potíží s určitým objektem uživatele:
 
-1. Otevřete novou relaci prostředí Windows PowerShell na serveru Azure AD Connect s možností **Spustit jako správce.**
+1. Na serveru Azure AD Connect otevřete novou relaci prostředí Windows PowerShell s možností **Spustit jako správce** .
 
-2. Spustit `Set-ExecutionPolicy RemoteSigned` `Set-ExecutionPolicy Unrestricted`nebo .
+2. Spusťte `Set-ExecutionPolicy RemoteSigned` nebo `Set-ExecutionPolicy Unrestricted`.
 
-3. Spusťte Průvodce připojením Azure AD Connect.
+3. Spusťte Průvodce Azure AD Connect.
 
-4. Přejděte na stránku **Další úkoly,** vyberte **Poradce při potížích**a klepněte na tlačítko **Další**.
+4. Přejděte na stránku **další úlohy** , vyberte možnost **řešení potíží**a klikněte na tlačítko **Další**.
 
-5. Na stránce Poradce při potížích klikněte na **Spustit** a spusťte nabídku řešení potíží v PowerShellu.
+5. Na stránce Poradce při potížích klikněte na **Spustit** a spusťte v PowerShellu nabídku pro odstraňování potíží.
 
-6. V hlavní nabídce vyberte **Poradce při potížích s synchronizací hash hesel**.
+6. V hlavní nabídce vyberte **řešit potíže se synchronizací hodnot hash hesel**.
 
-7. V dílčí nabídce není pro **konkrétní uživatelský účet synchronizováno políčko Heslo**.
+7. V podnabídce vyberte možnost **heslo není synchronizováno pro konkrétní uživatelský účet**.
 
-### <a name="understand-the-results-of-the-troubleshooting-task"></a>Vysvětlení výsledků úlohy řešení potíží
+### <a name="understand-the-results-of-the-troubleshooting-task"></a>Vysvětlení výsledků úlohy odstraňování potíží
 
 Úloha řešení potíží provádí následující kontroly:
 
-* Zkontroluje stav objektu služby Active Directory v prostoru konektoru služby Active Directory, Metaverse a Azure AD konektor prostoru.
+* Kontroluje stav objektu Active Directory v prostoru konektoru služby Active Directory, úložišti metaverse a v prostoru konektoru služby Azure AD.
 
-* Ověří, zda existují pravidla synchronizace s povolenou synchronizací hodnot hash hesel a použitou u objektu služby Active Directory.
+* Ověřuje, že existují synchronizační pravidla se zapnutou synchronizací hodnot hash hesel a že se aplikuje na objekt služby Active Directory.
 
-* Pokusí se načíst a zobrazit výsledky posledního pokusu o synchronizaci hesla pro objekt.
+* Pokusí se načíst a zobrazit výsledky posledního pokusu o synchronizaci hesla pro daný objekt.
 
-Následující diagram znázorňuje výsledky rutiny při řešení potíží se synchronizací hash hesel pro jeden objekt:
+Následující diagram ilustruje výsledky rutiny při řešení potíží se synchronizací hodnot hash hesel pro jeden objekt:
 
-![Diagnostický výstup pro synchronizaci hodnot hash hesel - jeden objekt](./media/tshoot-connect-password-hash-synchronization/phssingleobjectgeneral.png)
+![Výstup diagnostiky pro synchronizaci hodnot hash hesel – jeden objekt](./media/tshoot-connect-password-hash-synchronization/phssingleobjectgeneral.png)
 
-Zbývající část této části popisuje konkrétní výsledky vrácené rutinou a odpovídající problémy.
+Zbytek této části popisuje konkrétní výsledky vrácené rutinou a odpovídající problémy.
 
-#### <a name="the-active-directory-object-isnt-exported-to-azure-ad"></a>Objekt služby Active Directory se neexportuje do služby Azure AD.
+#### <a name="the-active-directory-object-isnt-exported-to-azure-ad"></a>Objekt služby Active Directory není exportován do služby Azure AD.
 
-Synchronizace hodnot hash hesla pro tento místní účet služby Active Directory se nezdaří, protože v tenantovi Azure AD neexistuje žádný odpovídající objekt. Je vrácena následující chyba:
+synchronizace hodnot hash hesel pro tento místní účet Active Directory se nezdařila, protože v tenantovi služby Azure AD není žádný odpovídající objekt. Vrátí se následující chyba:
 
-![Chybí objekt Azure AD](./media/tshoot-connect-password-hash-synchronization/phssingleobjectnotexported.png)
+![Chybí objekt Azure AD.](./media/tshoot-connect-password-hash-synchronization/phssingleobjectnotexported.png)
 
-#### <a name="user-has-a-temporary-password"></a>Uživatel má dočasné heslo
+#### <a name="user-has-a-temporary-password"></a>Uživatel má dočasné heslo.
 
-V současné době Azure AD Connect nepodporuje synchronizaci dočasných hesel s Azure AD. Heslo se považuje za dočasné, pokud je u místního uživatele služby Active Directory nastavena možnost Změnit heslo při **příštím přihlášení.** Je vrácena následující chyba:
+V současné době Azure AD Connect nepodporuje synchronizaci dočasných hesel se službou Azure AD. Heslo je považováno za dočasné, pokud je možnost **změnit heslo při příštím přihlášení** nastavena u místního uživatele služby Active Directory. Vrátí se následující chyba:
 
 ![Dočasné heslo není exportováno.](./media/tshoot-connect-password-hash-synchronization/phssingleobjecttemporarypassword.png)
 
 #### <a name="results-of-last-attempt-to-synchronize-password-arent-available"></a>Výsledky posledního pokusu o synchronizaci hesla nejsou k dispozici.
 
-Ve výchozím nastavení Azure AD Connect ukládá výsledky pokusů o synchronizaci hodnot hash hesla po dobu sedmi dnů. Pokud pro vybraný objekt služby Active Directory nejsou k dispozici žádné výsledky, bude vráceno následující upozornění:
+Ve výchozím nastavení Azure AD Connect ukládá výsledky pokusů o synchronizaci hodnot hash hesel po dobu sedmi dnů. Pokud pro vybraný objekt služby Active Directory nejsou k dispozici žádné výsledky, vrátí se následující upozornění:
 
-![Diagnostický výstup pro jeden objekt - bez historie synchronizace hesel](./media/tshoot-connect-password-hash-synchronization/phssingleobjectnohistory.png)
+![Výstup diagnostiky pro jeden objekt – žádná historie synchronizace hesel](./media/tshoot-connect-password-hash-synchronization/phssingleobjectnohistory.png)
 
 
 
-## <a name="no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet"></a>Nejsou synchronizována žádná hesla: řešení potíží pomocí diagnostické rutiny
+## <a name="no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet"></a>Žádná hesla nejsou synchronizovaná: řešení potíží pomocí diagnostické rutiny
 
-Pomocí rutiny `Invoke-ADSyncDiagnostics` můžete zjistit, proč nejsou synchronizována žádná hesla.
+Pomocí `Invoke-ADSyncDiagnostics` rutiny můžete zjistit, proč nejsou synchronizována žádná hesla.
 
 > [!NOTE]
-> Rutina `Invoke-ADSyncDiagnostics` je k dispozici pouze pro Azure AD Connect verze 1.1.524.0 nebo novější.
+> `Invoke-ADSyncDiagnostics` Rutina je k dispozici pouze pro Azure AD Connect verze 1.1.524.0 nebo novější.
 
-### <a name="run-the-diagnostics-cmdlet"></a>Spuštění rutiny diagnostiky
+### <a name="run-the-diagnostics-cmdlet"></a>Spuštění diagnostické rutiny
 
-Postup řešení problémů, kdy nejsou synchronizována žádná hesla:
+Řešení potíží, při kterých se nesynchronizují žádná hesla:
 
-1. Otevřete novou relaci prostředí Windows PowerShell na serveru Azure AD Connect s možností **Spustit jako správce.**
+1. Na serveru Azure AD Connect otevřete novou relaci prostředí Windows PowerShell s možností **Spustit jako správce** .
 
-2. Spustit `Set-ExecutionPolicy RemoteSigned` `Set-ExecutionPolicy Unrestricted`nebo .
+2. Spusťte `Set-ExecutionPolicy RemoteSigned` nebo `Set-ExecutionPolicy Unrestricted`.
 
 3. Spusťte `Import-Module ADSyncDiagnostics`.
 
@@ -214,18 +214,18 @@ Postup řešení problémů, kdy nejsou synchronizována žádná hesla:
 
 ## <a name="one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet"></a>Jeden objekt nesynchronizuje hesla: řešení potíží pomocí diagnostické rutiny
 
-Pomocí rutiny `Invoke-ADSyncDiagnostics` můžete určit, proč jeden objekt nesynchronizuje hesla.
+Pomocí `Invoke-ADSyncDiagnostics` rutiny můžete určit, proč jeden objekt nesynchronizuje hesla.
 
 > [!NOTE]
-> Rutina `Invoke-ADSyncDiagnostics` je k dispozici pouze pro Azure AD Connect verze 1.1.524.0 nebo novější.
+> `Invoke-ADSyncDiagnostics` Rutina je k dispozici pouze pro Azure AD Connect verze 1.1.524.0 nebo novější.
 
-### <a name="run-the-diagnostics-cmdlet"></a>Spuštění rutiny diagnostiky
+### <a name="run-the-diagnostics-cmdlet"></a>Spuštění diagnostické rutiny
 
-Postup řešení problémů, kdy nejsou pro uživatele synchronizována žádná hesla:
+Řešení potíží, které nesynchronizují žádná hesla pro uživatele:
 
-1. Otevřete novou relaci prostředí Windows PowerShell na serveru Azure AD Connect s možností **Spustit jako správce.**
+1. Na serveru Azure AD Connect otevřete novou relaci prostředí Windows PowerShell s možností **Spustit jako správce** .
 
-2. Spustit `Set-ExecutionPolicy RemoteSigned` `Set-ExecutionPolicy Unrestricted`nebo .
+2. Spusťte `Set-ExecutionPolicy RemoteSigned` nebo `Set-ExecutionPolicy Unrestricted`.
 
 3. Spusťte `Import-Module ADSyncDiagnostics`.
 
@@ -235,7 +235,7 @@ Postup řešení problémů, kdy nejsou pro uživatele synchronizována žádná
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName <Name-of-AD-Connector> -DistinguishedName <DistinguishedName-of-AD-object>
    ```
 
-   Například:
+   Příklad:
 
    ```powershell
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName "contoso.com" -DistinguishedName "CN=TestUserCN=Users,DC=contoso,DC=com"
@@ -243,130 +243,130 @@ Postup řešení problémů, kdy nejsou pro uživatele synchronizována žádná
 
 
 
-## <a name="no-passwords-are-synchronized-manual-troubleshooting-steps"></a>Nejsou synchronizována žádná hesla: postup ručního řešení potíží
+## <a name="no-passwords-are-synchronized-manual-troubleshooting-steps"></a>Žádná hesla nejsou synchronizovaná: ruční kroky při řešení potíží
 
-Chcete-li zjistit, proč nejsou synchronizována žádná hesla, postupujte takto:
+Pokud chcete zjistit, proč nejsou synchronizovaná žádná hesla, postupujte podle těchto kroků:
 
 1. Je server Connect v [pracovním režimu](how-to-connect-sync-staging-server.md)? Server v pracovním režimu nesynchronizuje žádná hesla.
 
-2. Spusťte skript v části [Získat stav nastavení synchronizace hesla.](#get-the-status-of-password-sync-settings) Poskytuje přehled konfigurace synchronizace hesel.  
+2. Spusťte skript v části [získání stavu nastavení synchronizace hesel](#get-the-status-of-password-sync-settings) . Poskytuje přehled o konfiguraci synchronizace hesel.  
 
     ![Výstup skriptu PowerShellu z nastavení synchronizace hesel](./media/tshoot-connect-password-hash-synchronization/psverifyconfig.png)  
 
-3. Pokud tato funkce není povolena ve službě Azure AD nebo pokud není povolen stav synchronizačního kanálu, spusťte Průvodce instalací připojení. Vyberte **Přizpůsobit možnosti synchronizace**a zrušte výběr synchronizace hesel. Tato změna dočasně zakáže funkci. Potom průvodce spusťte znovu a znovu povolte synchronizaci hesel. Spusťte skript znovu a ověřte, zda je konfigurace správná.
+3. Pokud tato funkce není ve službě Azure AD povolená nebo pokud není stav synchronizace kanálu povolený, spusťte Průvodce připojit instalaci. Vyberte možnost **přizpůsobit možnosti synchronizace**a zrušte výběr možnosti synchronizace hesel. Tato změna dočasně zakáže funkci. Pak spusťte průvodce znovu a znovu povolte synchronizaci hesel. Spusťte skript znovu a ověřte, zda je konfigurace správná.
 
-4. Vyhledejte v protokolu událostí chyby. Vyhledejte následující události, které by naznačovaly problém:
-    * Zdroj: ID synchronizace adresářů: 0, 611, 652, 655 Pokud se zobrazí tyto události, máte potíže s připojením. Zpráva protokolu událostí obsahuje informace o doménové struktuře, kde máte potíže. Další informace naleznete v tématu [Problém s připojením](#connectivity problem).
+4. Vyhledejte chyby v protokolu událostí. Vyhledejte následující události, což znamená problém:
+    * Zdroj: "synchronizace adresáře" ID: 0, 611, 652, 655 Pokud vidíte tyto události, máte problém s připojením. Zpráva protokolu událostí obsahuje informace o doménové struktuře, ve kterých došlo k problému. Další informace najdete v tématu [problém s připojením](#connectivity problem).
 
-5. Pokud nevidíte žádný prezenční signál nebo pokud nic jiného nefungovalo, [spusťte Spustit úplnou synchronizaci všech hesel](#trigger-a-full-sync-of-all-passwords). Spusťte skript pouze jednou.
+5. Pokud se nezobrazí žádný prezenční signál nebo pokud nic jiného nezpracováváte, spusťte [aktivaci úplné synchronizace všech hesel](#trigger-a-full-sync-of-all-passwords). Spusťte skript jenom jednou.
 
-6. Viz část Poradce při potížích s jedním objektem, který nesynchronizuje hesla.
+6. Podívejte se na téma Poradce při potížích s jedním objektem, který nesynchronizuje hesla.
 
 ### <a name="connectivity-problems"></a>Problémy s připojením
 
-Máte připojení k Azure AD?
+Máte připojení ke službě Azure AD?
 
-Má účet požadovaná oprávnění ke čtení hashe hesel ve všech doménách? Pokud jste aplikaci Connect nainstalovali pomocí nastavení Express, měla by být oprávnění již správná. 
+Má účet potřebná oprávnění ke čtení hodnot hash hesel ve všech doménách? Pokud jste nainstalovali připojení pomocí expresního nastavení, měla by být tato oprávnění správná. 
 
-Pokud jste použili vlastní instalaci, nastavte oprávnění ručně následujícím způsobem:
+Pokud jste použili vlastní instalaci, nastavte oprávnění ručně pomocí následujícího postupu:
     
-1. Chcete-li najít účet používaný konektorem služby Active Directory, **spusťte Správce synchronizačních služeb**. 
+1. Pokud chcete najít účet, který používá konektor služby Active Directory, spusťte **Synchronization Service Manager**. 
  
-2. Přejděte do **polepy a**vyhledejte místní doménovou strukturu služby Active Directory, kterou řešíte. 
+2. Přejít na **konektory**a vyhledat místní doménovou strukturu služby Active Directory, kterou řešíte. 
  
-3. Vyberte spojnici a klepněte na příkaz **Vlastnosti**. 
+3. Vyberte spojnici a klikněte na tlačítko **vlastnosti**. 
  
-4. Přejděte na **odkaz Připojit k doménové struktuře služby Active Directory**.  
+4. Přejít na **připojení k doménové struktuře služby Active Directory**.  
     
     ![Účet používaný konektorem služby Active Directory](./media/tshoot-connect-password-hash-synchronization/connectoraccount.png)  
-    Poznamenejte si uživatelské jméno a doménu, ve které je účet umístěn.
+    Poznamenejte si uživatelské jméno a doménu, ve které se účet nachází.
     
-5. Spusťte **službu Uživatelé a počítače služby Active Directory a**ověřte, zda dříve nalezený účet má oprávnění pro sledování nastavená v kořenovém adresáři všech domén v doménové struktuře:
+5. Spusťte modul **Uživatelé a počítače služby Active Directory**a ověřte, že účet, který jste dříve našli, má v kořenu všech domén v doménové struktuře nastavená oprávnění dodržovat:
     * Replikovat změny adresáře
     * Replikovat všechny změny adresáře
 
-6. Jsou řadiče domény dostupné pomocí služby Azure AD Connect? Pokud se server Connect nemůže připojit ke všem řadičům domény, nakonfigurujte **pouze upřednostňovaný řadič domény**.  
+6. Jsou řadiče domény dostupné pomocí Azure AD Connect? Pokud se server Connect nemůže připojit ke všem řadičům domény, nakonfigurujte **pouze upřednostňovaný řadič domény**.  
     
     ![Řadič domény používaný konektorem služby Active Directory](./media/tshoot-connect-password-hash-synchronization/preferreddc.png)  
     
-7. Vraťte se do **správce synchronizační služby** a **konfigurace oddílu adresáře**. 
+7. Vraťte se na **Synchronization Service Manager** a **nakonfigurujte oddíl adresáře**. 
  
-8. Zaškrtněte doménu v **části Vybrat oddíly adresáře**, zaškrtněte políčko **Pouze upřednostňované řadiče domény** a klepněte na tlačítko **Konfigurovat**. 
+8. V části **Vybrat oddíly adresáře**vyberte svoji doménu, zaškrtněte políčko **použít pouze upřednostňované řadiče domény** a pak klikněte na **Konfigurovat**. 
 
-9. V seznamu zadejte řadiče domény, které by měl použít connect pro synchronizaci hesel. Stejný seznam se používá také pro import a export. Proveďte tyto kroky pro všechny domény.
+9. V seznamu zadejte řadiče domény, které se mají připojit, aby je bylo nutné použít ke synchronizaci hesel. Stejný seznam se používá i pro import a export. Proveďte tyto kroky pro všechny domény.
 
-10. Pokud skript ukazuje, že není prezenční signál, spusťte skript v [aktivovat úplnou synchronizaci všech hesel](#trigger-a-full-sync-of-all-passwords).
+10. Pokud skript ukáže, že není k dispozici žádný prezenční signál, spusťte skript v [aktivační události Úplná synchronizace všech hesel](#trigger-a-full-sync-of-all-passwords).
 
-## <a name="one-object-is-not-synchronizing-passwords-manual-troubleshooting-steps"></a>Jeden objekt nesynchronizuje hesla: ruční postup řešení potíží
+## <a name="one-object-is-not-synchronizing-passwords-manual-troubleshooting-steps"></a>Jeden objekt nesynchronizuje hesla: ruční kroky při odstraňování potíží
 
-Můžete snadno řešit problémy se synchronizací hodnot hash hesla kontrolou stavu objektu.
+Můžete snadno řešit potíže se synchronizací hodnot hash hesel tak, že zkontrolujete stav objektu.
 
-1. Ve **službě Uživatelé a počítače služby Active Directory**vyhledejte uživatele a ověřte, zda je zaškrtnuto políčko Uživatel změnit heslo při příštím **přihlášení.**  
+1. V modulu **Uživatelé a počítače služby Active Directory**vyhledejte uživatele a ověřte, zda je zaškrtnuto políčko **při dalším přihlášení musí uživatel změnit heslo** .  
 
     ![Produktivní hesla služby Active Directory](./media/tshoot-connect-password-hash-synchronization/adprodpassword.png)  
 
-    Pokud je toto políčko zaškrtnuto, požádejte uživatele, aby se přihlásil a změnil heslo. Dočasná hesla nejsou synchronizovány s Azure AD.
+    Pokud je zaškrtnuté políčko, požádejte uživatele, aby se přihlásil a změnil heslo. Dočasná hesla nejsou synchronizovaná se službou Azure AD.
 
-2. Pokud heslo vypadá ve službě Active Directory správně, postupujte podle uživatele v synchronizačním modulu. Sledováním uživatele z místní služby Active Directory do služby Azure AD můžete zjistit, zda je na objektu popisná chyba.
+2. Pokud heslo vypadá ve službě Active Directory správně, postupujte podle uživatele v synchronizačním modulu. Když použijete uživatele z místní služby Active Directory do služby Azure AD, můžete zjistit, jestli je v objektu popisná chyba.
 
-    a. Spusťte [Správce synchronizačních služeb](how-to-connect-sync-service-manager-ui.md).
+    a. Spusťte [Synchronization Service Manager](how-to-connect-sync-service-manager-ui.md).
 
-    b. Klepněte na **položku Konektory**.
+    b. Klikněte na **konektory**.
 
-    c. Vyberte **konektor služby Active Directory,** ve kterém je uživatel umístěn.
+    c. Vyberte **konektor služby Active Directory** , kde se nachází uživatel.
 
-    d. Vyberte **možnost Hledat mezeru v spojnici**.
+    d. Vyberte možnost **Hledat místo v konektoru**.
 
-    e. V poli **Obor** vyberte **DN nebo Anchor**a zadejte úplný dn uživatele, kterému řešíte potíže.
+    e. V poli **obor** vyberte **rozlišující název nebo kotva**a pak zadejte úplný rozlišující název uživatele, kterého se chystáte řešit.
 
-    ![Hledání uživatele v prostoru konektoru pomocí dn](./media/tshoot-connect-password-hash-synchronization/searchcs.png)  
+    ![Hledat uživatele v prostoru konektoru s rozlišujícím názvem](./media/tshoot-connect-password-hash-synchronization/searchcs.png)  
 
-    f. Vyhledejte hledavého uživatele a kliknutím na **Vlastnosti** zopřete všechny atributy. Pokud uživatel není ve výsledku hledání, ověřte [pravidla filtrování](how-to-connect-sync-configure-filtering.md) a ujistěte se, že spustíte [Použít a ověřte změny,](how-to-connect-sync-configure-filtering.md#apply-and-verify-changes) aby se uživatel zobrazil v aplikaci Připojit.
+    f. Najděte hledaného uživatele a kliknutím na **vlastnosti** zobrazíte všechny atributy. Pokud uživatel není ve výsledku hledání, ověřte [pravidla filtrování](how-to-connect-sync-configure-filtering.md) a ujistěte se, že jste spustili příkaz [použít a ověřit změny](how-to-connect-sync-configure-filtering.md#apply-and-verify-changes) pro uživatele, který se zobrazí v okně připojit.
 
-    g. Chcete-li zobrazit podrobnosti o synchronizaci hesla objektu za poslední týden, klepněte na tlačítko **Protokolovat**.  
+    g. Pokud chcete zobrazit podrobnosti o synchronizaci hesel pro daný objekt za minulý týden, klikněte na **protokol**.  
 
     ![Podrobnosti protokolu objektů](./media/tshoot-connect-password-hash-synchronization/csobjectlog.png)  
 
-    Pokud je protokol objektů prázdný, azure ad connect nebyl schopen číst hash hesla ze služby Active Directory. Pokračujte v řešení potíží s chybami připojení. Pokud se zobrazí jiná hodnota než **úspěch**, podívejte se do tabulky v [protokolu synchronizace hesel](#password-sync-log).
+    Pokud je protokol objektu prázdný, Azure AD Connect nemohl přečíst hodnotu hash hesla ze služby Active Directory. Pokračujte v řešení potíží s chybami připojení. Pokud se zobrazí jakákoli jiná hodnota než **úspěch**, přečtěte si tabulku v [protokolu synchronizace hesel](#password-sync-log).
 
-    h. Vyberte kartu **linie** a ujistěte se, že alespoň jedno pravidlo synchronizace ve sloupci **PasswordSync** je **True**. Ve výchozí konfiguraci je název pravidla synchronizace **V ze služby AD – User AccountEnabled**.  
+    h. Vyberte kartu **čára** a ujistěte se, že nejméně jedno pravidlo synchronizace ve sloupci **PasswordSync** má **hodnotu true**. Ve výchozí konfiguraci se název synchronizačního pravidla nachází **v rámci služby AD-User AccountEnabled**.  
 
-    ![Informace o uživateli](./media/tshoot-connect-password-hash-synchronization/cspasswordsync.png)  
+    ![Informace o řádku uživatele](./media/tshoot-connect-password-hash-synchronization/cspasswordsync.png)  
 
-    i. Klepnutím na **položku Vlastnosti objektu Metaverse** zobrazíte seznam atributů uživatele.  
+    i. Kliknutím na **vlastnosti objektu úložiště metaverse** zobrazte seznam atributů uživatele.  
 
-    ![Metaverse informace](./media/tshoot-connect-password-hash-synchronization/mvpasswordsync.png)  
+    ![Informace v úložišti Metaverse](./media/tshoot-connect-password-hash-synchronization/mvpasswordsync.png)  
 
-    Ověřte, zda není k dispozici žádný atribut **cloudFiltered.** Ujistěte se, že atributy domény (domainFQDN a domainNetBios) mají očekávané hodnoty.
+    Ověřte, že není přítomen žádný atribut **cloudFiltered** . Ujistěte se, že atributy domény (domainFQDN a domainNetBios) mají očekávané hodnoty.
 
-    j. Klikněte na kartu **Konektory.**
+    j. Klikněte na kartu **konektory** . Ujistěte se, že jste viděli konektory do místní služby Active Directory a Azure AD.
 
-    ![Metaverse informace](./media/tshoot-connect-password-hash-synchronization/mvconnectors.png)  
+    ![Informace v úložišti Metaverse](./media/tshoot-connect-password-hash-synchronization/mvconnectors.png)  
 
-    k. Vyberte řádek, který představuje Azure AD, klikněte na **vlastnosti**a potom klikněte na kartu **Lineage** . Objekt prostoru konektoru by měl mít odchozí pravidlo ve sloupci **PasswordSync** nastavené na **hodnotu True**. Ve výchozí konfiguraci je název pravidla synchronizace **Out to AAD - User Join**.  
+    k. Vyberte řádek, který představuje Azure AD, klikněte na **vlastnosti**a potom klikněte na kartu vydaná **čára** . Objekt prostoru konektoru by měl mít odchozí pravidlo, které je ve sloupci **PasswordSync** nastaveno na **hodnotu true**. Ve výchozí konfiguraci je název synchronizačního pravidla **pro AAD – připojení uživatele**.  
 
-    ![Dialogové okno Vlastnosti objektu prostoru spojnice](./media/tshoot-connect-password-hash-synchronization/cspasswordsync2.png)  
+    ![Dialogové okno Vlastnosti objektu prostoru konektoru](./media/tshoot-connect-password-hash-synchronization/cspasswordsync2.png)  
 
 ### <a name="password-sync-log"></a>Protokol synchronizace hesel
 
-Sloupec stavu může mít následující hodnoty:
+Sloupec status (stav) může obsahovat následující hodnoty:
 
 | Status | Popis |
 | --- | --- |
 | Úspěch |Heslo bylo úspěšně synchronizováno. |
-| FilteredByTarget |Heslo je nastaveno na **uživatel musí změnit heslo při příštím přihlášení**. Heslo nebylo synchronizováno. |
-| NoTargetConnection |Žádný objekt v metaverse nebo v prostoru konektoru Azure AD. |
-| SourceConnectorNotPresent |V místním prostoru konektoru služby Active Directory nebyl nalezen žádný objekt. |
-| CílNotExportedToDirectory |Objekt v prostoru konektoru Azure AD ještě nebyl exportován. |
-| MigratedCheckDetailsForMoreInfo |Položka protokolu byla vytvořena před sestavením 1.0.9125.0 a je zobrazena v jeho starším stavu. |
+| FilteredByTarget |Heslo je nastavené na hodnotu **uživatel musí změnit heslo při příštím přihlášení**. Heslo nebylo synchronizováno. |
+| NoTargetConnection |V úložišti metaverse nebo v prostoru konektoru služby Azure AD není žádný objekt. |
+| SourceConnectorNotPresent |V prostoru konektoru služby Active Directory nebyl nalezen žádný objekt. |
+| TargetNotExportedToDirectory |Objekt v prostoru konektoru služby Azure AD ještě není exportovaný. |
+| MigratedCheckDetailsForMoreInfo |Záznam v protokolu byl vytvořen před sestavením 1.0.9125.0 a je zobrazen ve starším stavu. |
 | Chyba |Služba vrátila neznámou chybu. |
-| Není známo |Při pokusu o zpracování dávky hashe hesel došlo k chybě.  |
-| Chybějící atribut |Konkrétní atributy (například hodnota hash protokolu Kerberos) vyžadované službou Azure AD Domain Services nejsou k dispozici. |
-| Opakovat CílOvá skupina |Konkrétní atributy (například hodnota hash protokolu Kerberos) vyžadované službou Azure AD Domain Services nebyly dříve k dispozici. Je proveden pokus o synchronizaci hash hesla uživatele. |
+| Není známo |Při pokusu o zpracování dávky hodnot hash hesel došlo k chybě.  |
+| MissingAttribute |Konkrétní atributy (například hash protokolu Kerberos) vyžadované Azure AD Domain Services nejsou k dispozici. |
+| RetryRequestedByTarget |Konkrétní atributy (například hash protokolu Kerberos) vyžadované Azure AD Domain Services nebyly dříve k dispozici. Pokus o opětovnou synchronizaci hodnoty hash hesla uživatele je proveden. |
 
-## <a name="scripts-to-help-troubleshooting"></a>Skripty, které vám pomohou při řešení potíží
+## <a name="scripts-to-help-troubleshooting"></a>Skripty, které vám pomůžou při řešení potíží
 
-### <a name="get-the-status-of-password-sync-settings"></a>Získání stavu nastavení synchronizace hesel
+### <a name="get-the-status-of-password-sync-settings"></a>Získat stav nastavení synchronizace hesel
 
 ```powershell
 Import-Module ADSync
@@ -421,12 +421,12 @@ if ($adConnectors -eq $null)
 Write-Host
 ```
 
-#### <a name="trigger-a-full-sync-of-all-passwords"></a>Aktivace úplné synchronizace všech hesel
+#### <a name="trigger-a-full-sync-of-all-passwords"></a>Aktivovat úplnou synchronizaci všech hesel
 
 > [!NOTE]
-> Spusťte tento skript pouze jednou. Pokud potřebujete spustit více než jednou, něco jiného je problém. Chcete-li problém vyřešit, obraťte se na podporu společnosti Microsoft.
+> Spusťte tento skript jenom jednou. Pokud je potřebujete spustit více než jednou, problém je něco jiného. Pokud chcete tento problém vyřešit, obraťte se na podporu Microsoftu.
 
-Úplnou synchronizaci všech hesel můžete spustit pomocí následujícího skriptu:
+Úplnou synchronizaci všech hesel můžete aktivovat pomocí následujícího skriptu:
 
 ```powershell
 $adConnector = "<CASE SENSITIVE AD CONNECTOR NAME>"
@@ -444,6 +444,6 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Implementace synchronizace hash hesel se synchronizací Azure AD Connect](how-to-connect-password-hash-synchronization.md)
-* [Synchronizace připojení Azure AD: Přizpůsobení možností synchronizace](how-to-connect-sync-whatis.md)
+* [Implementace synchronizace hodnot hash hesel pomocí Azure AD Connect synchronizace](how-to-connect-password-hash-synchronization.md)
+* [Azure AD Connect synchronizace: přizpůsobení možností synchronizace](how-to-connect-sync-whatis.md)
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)

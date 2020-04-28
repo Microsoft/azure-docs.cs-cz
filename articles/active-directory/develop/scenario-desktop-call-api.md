@@ -1,6 +1,6 @@
 ---
-title: Volání webových rozhraní API z desktopové aplikace – platforma identit Microsoftu | Azure
-description: Přečtěte si, jak vytvořit desktopovou aplikaci, která volá webová api
+title: Volání webových rozhraní API z desktopové aplikace – Microsoft Identity Platform | Azure
+description: Informace o tom, jak vytvořit desktopovou aplikaci, která volá webová rozhraní API
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,15 +12,15 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 753892790a6f6b898b48d955e6806837967f3e92
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80882960"
 ---
-# <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Desktopová aplikace, která volá webová rozhraní API: Volání webového rozhraní API
+# <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: volání webového rozhraní API
 
-Teď, když máte token, můžete volat chráněné webové rozhraní API.
+Teď, když máte token, můžete zavolat chráněné webové rozhraní API.
 
 ## <a name="call-a-web-api"></a>Volání webového rozhraní API
 
@@ -60,11 +60,11 @@ if(responseCode != HttpURLConnection.HTTP_OK) {
 JSONObject responseObject = HttpClientHelper.processResponse(responseCode, response);
 ```
 
-# <a name="macos"></a>[Macos](#tab/macOS)
+# <a name="macos"></a>[MacOS](#tab/macOS)
 
 ## <a name="call-a-web-api-in-msal-for-ios-and-macos"></a>Volání webového rozhraní API v MSAL pro iOS a macOS
 
-Metody pro získání tokenů `MSALResult` vrátí objekt. `MSALResult`zpřístupňuje `accessToken` vlastnost, která lze použít k volání webové rozhraní API. Před voláním pro přístup k chráněnému webovému rozhraní API přidejte přístupový token do hlavičky autorizace protokolu HTTP.
+Metody získání tokenů vrací `MSALResult` objekt. `MSALResult`zpřístupňuje `accessToken` vlastnost, která se dá použít k volání webového rozhraní API. Než provedete volání pro přístup k chráněnému webovému rozhraní API, přidejte přístupový token do hlavičky autorizace protokolu HTTP.
 
 Cíl-C:
 
@@ -80,7 +80,7 @@ NSURLSessionDataTask *task =
 [task resume];
 ```
 
-Swift:
+SWIFT
 
 ```swift
 let urlRequest = NSMutableURLRequest()
@@ -92,9 +92,9 @@ let task = URLSession.shared.dataTask(with: urlRequest as URLRequest) { (data: D
 task.resume()
 ```
 
-## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>Volání několika api: Přírůstkový souhlas a podmíněný přístup
+## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>Volání několika rozhraní API: přírůstkový souhlas a podmíněný přístup
 
-Chcete-li volat několik rozhraní API pro stejného uživatele, po `AcquireTokenSilent`získání tokenu pro první rozhraní API volejte . Většinu času získáte token pro ostatní api tiše.
+Chcete-li volat několik rozhraní API pro stejného uživatele, poté, co získáte token pro první rozhraní API `AcquireTokenSilent`, zavolejte. Token pro ostatní rozhraní API bude v tichosti většinou.
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -104,10 +104,10 @@ result = await app.AcquireTokenSilent("scopeApi2")
                   .ExecuteAsync();
 ```
 
-Interakce je vyžadována, pokud:
+Interakce je povinná v těchto případech:
 
-- Uživatel souhlasil s prvním rozhraním API, ale nyní musí souhlasit s více obory. Tento druh souhlasu se označuje jako přírůstkový souhlas.
-- První rozhraní API nevyžadovalo vícefaktorové ověřování, ale další ano.
+- Uživatel souhlasil s prvním rozhraním API, ale teď musí souhlasit s více obory. Tento druh souhlasu se označuje jako přírůstkový souhlas.
+- První rozhraní API nevyžadovalo vícefaktorové ověřování, ale ten další.
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")

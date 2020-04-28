@@ -1,6 +1,6 @@
 ---
 title: Diagnostika a řešení potíží při používání sady .NET SDK služby Azure Cosmos DB
-description: Pomocí funkcí, jako je protokolování na straně klienta a další nástroje třetích stran k identifikaci, diagnostiku a řešení problémů Azure Cosmos DB při použití .NET SDK.
+description: K identifikaci, diagnostice a řešení potíží s Azure Cosmos DB při použití sady .NET SDK použijte funkce, jako je protokolování na straně klienta a další nástroje třetích stran.
 author: j82w
 ms.service: cosmos-db
 ms.date: 03/11/2020
@@ -9,102 +9,102 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: 5f92d98630c6fb875babeb907f92732b0c24bb52
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79137950"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Diagnostika a řešení potíží při používání sady .NET SDK služby Azure Cosmos DB
-Tento článek popisuje běžné problémy, řešení, diagnostické kroky a nástroje při použití [sady .NET SDK](sql-api-sdk-dotnet.md) s účty Azure Cosmos DB SQL API.
-Sada .NET SDK poskytuje logickou reprezentaci na straně klienta pro přístup k rozhraní SQL API Azure Cosmos DB. Tento článek popisuje nástroje a přístupy, které vám pomůžou v případě jakýchkoli problémů.
+Tento článek popisuje běžné problémy, alternativní řešení, diagnostické kroky a nástroje, pokud používáte [sadu .NET SDK](sql-api-sdk-dotnet.md) s Azure Cosmos DB účty rozhraní SQL API.
+Sada .NET SDK poskytuje logickou reprezentaci na straně klienta pro přístup k Azure Cosmos DB rozhraní SQL API. Tento článek popisuje nástroje a přístupy, které vám pomůžou v případě jakýchkoli problémů.
 
 ## <a name="checklist-for-troubleshooting-issues"></a>Kontrolní seznam pro řešení problémů:
-Před přesunutím aplikace do produkčního prostředí zvažte následující kontrolní seznam. Použití kontrolního seznamu zabrání několika běžným problémům, které se mohou zobrazit. Můžete také rychle diagnostikovat, když dojde k problému:
+Před přesunutím aplikace do produkčního prostředí Vezměte v úvahu následující kontrolní seznam. Při použití kontrolního seznamu se zabrání několik běžných problémů, které byste mohli vidět. Můžete také rychle diagnostikovat situaci, kdy dojde k problému:
 
-*    Použijte nejnovější [sadu SDK](sql-api-sdk-dotnet-standard.md). Náhled sady SDK by neměly být používány pro produkční prostředí. Tím zabráníte zasažení známých problémů, které jsou již opraveny.
-*    Projděte si tipy pro [výkon](performance-tips.md)a postupujte podle doporučených postupů. To pomůže zabránit škálování, latence a další problémy s výkonem.
-*    Povolte protokolování sady SDK, které vám pomůže vyřešit problém. Povolení protokolování může ovlivnit výkon, takže je nejlepší povolit pouze při řešení problémů. Můžete povolit následující protokoly:
-    *    [Protokolovat metriky](monitor-accounts.md) pomocí portálu Azure. Portál metriky zobrazit Azure Cosmos DB telemetrie, což je užitečné k určení, pokud problém odpovídá Azure Cosmos DB nebo pokud je ze strany klienta.
-    *    Protokolovat [řetězec diagnostiky](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring) v v2 SDK nebo [diagnostiky](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics) v V3 SDK z odezvy operace bodu.
-    *    Protokolovat [metriky dotazu SQL](sql-api-query-metrics.md) ze všech odpovědí na dotaz 
-    *    Postupujte podle nastavení [pro protokolování sady SDK]( https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/docs/documentdb-sdk_capture_etl.md)
+*    Použijte nejnovější [sadu SDK](sql-api-sdk-dotnet-standard.md). Sady SDK verze Preview by se neměly používat pro produkční prostředí. Zabráníte tak známým problémům, které již byly opraveny.
+*    Projděte si [tipy ke zvýšení výkonu](performance-tips.md)a řiďte se doporučenými postupy. To vám pomůže zabránit škálování, latenci a dalším problémům s výkonem.
+*    Povolení protokolování sady SDK, které vám může pomoct vyřešit problém. Povolení protokolování může mít vliv na výkon, takže je nejvhodnější ho povolit jenom při řešení problémů. Můžete povolit následující protokoly:
+    *    [Metriky protokolu](monitor-accounts.md) pomocí Azure Portal. Metriky portálu ukazují Azure Cosmos DB telemetrii, což je užitečné, pokud chcete zjistit, jestli tento problém odpovídá Azure Cosmos DB nebo pokud je ze strany klienta.
+    *    Protokoluje [řetězec diagnostiky](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring) v sadě v2 SDK nebo v [Diagnostics](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics) v sadě V3 SDK z odpovědí na operace bodu.
+    *    Protokoluje [metriky dotazů SQL](sql-api-query-metrics.md) ze všech odpovědí na dotazy. 
+    *    Postupujte podle pokynů pro nastavení [protokolování sady SDK]( https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/docs/documentdb-sdk_capture_etl.md) .
 
-Podívejte se na [běžné problémy a řešení](#common-issues-workarounds) části v tomto článku.
+Prohlédněte si část [běžné problémy a alternativní řešení](#common-issues-workarounds) v tomto článku.
 
-Podívejte se na [část problémů GitHubu,](https://github.com/Azure/azure-cosmos-dotnet-v2/issues) která je aktivně monitorovaná. Zkontrolujte, zda je podobný problém s tímto zástupným tématem již podán. Pokud jste nenašli řešení, pak soubor GitHub problém. Můžete otevřít podporu klíště pro naléhavé problémy.
+Podívejte se na [část problémy GitHubu](https://github.com/Azure/azure-cosmos-dotnet-v2/issues) , která je aktivně monitorována. Zkontrolujte, zda je již archivován případný podobný problém s alternativním řešením. Pokud jste nenalezli řešení, zapište problém GitHubu. Můžete otevřít značku podpory pro naléhavé problémy.
 
 
 ## <a name="common-issues-and-workarounds"></a><a name="common-issues-workarounds"></a>Běžné problémy a alternativní řešení
 
 ### <a name="general-suggestions"></a>Obecné návrhy
-* Spusťte aplikaci ve stejné oblasti Azure jako váš účet Azure Cosmos DB, kdykoli je to možné. 
-* Můžete spustit problémy s připojením nebo dostupností z důvodu nedostatku prostředků v klientském počítači. Doporučujeme sledovat využití procesoru na uzlech s klientem Azure Cosmos DB a škálování, pokud běží při vysokém zatížení.
+* Pokud je to možné, spouštějte svou aplikaci ve stejné oblasti Azure jako účet Azure Cosmos DB. 
+* V důsledku nedostatku prostředků na klientském počítači se můžete setkat s problémy s připojením nebo dostupností. Doporučujeme monitorovat využití CPU na uzlech, na kterých běží klient Azure Cosmos DB, a při vysokém zatížení se škálováním na více instancí.
 
-### <a name="check-the-portal-metrics"></a>Kontrola metrik portálu
-Kontrola [metriky portálu](monitor-accounts.md) pomůže určit, pokud se jedná o problém na straně klienta nebo pokud je problém se službou. Například pokud metriky obsahují vysokou rychlost požadavků s omezenou rychlostí (stavový kód HTTP 429), což znamená, že požadavek je stále omezen, zkontrolujte příliš velkou část [Požadavek.] 
+### <a name="check-the-portal-metrics"></a>Kontrolovat metriky portálu
+Kontrola [metrik portálu](monitor-accounts.md) vám pomůže určit, jestli se jedná o problém na straně klienta, nebo jestli došlo k potížím se službou. Pokud například metriky obsahují vysokou míru omezeného počtu požadavků (kód stavu HTTP 429), což znamená, že požadavek je omezený, zkontrolujte, že je [Počet požadavků příliš velký] . 
 
-### <a name="requests-timeouts"></a><a name="request-timeouts"></a>Požadavky na časové opození
-RequestTimeout se obvykle stane při použití Direct/TCP, ale může dojít v režimu brány. Tyto chyby jsou běžné známé příčiny a návrhy, jak problém vyřešit.
+### <a name="requests-timeouts"></a><a name="request-timeouts"></a>Vypršení časových limitů požadavků
+K RequestTimeout obvykle dochází při použití Direct/TCP, ale může se stát v režimu brány. Tyto chyby jsou běžné známé příčiny a návrhy, jak problém vyřešit.
 
-* Využití procesoru je vysoká, což způsobí latence nebo časový limit požadavku. Zákazník může navýšit kapacitu hostitelského počítače, aby mu poskytl více prostředků, nebo zatížení může být distribuováno mezi více počítačů.
-* Dostupnost soketu / portu může být nízká. Když běží v Azure, klienti pomocí .NET SDK můžete zasáhnout Azure SNAT (PAT) vyčerpání portu. Chcete-li snížit pravděpodobnost výskytu tohoto problému, použijte nejnovější verzi 2.x nebo 3.x sady .NET SDK. Toto je příklad, proč se doporučuje vždy spustit nejnovější verzi sady SDK.
-* Vytvoření více instancí DocumentClient může vést k konflikty připojení a problémy s časovým limitem. Postupujte podle [tipů pro výkon](performance-tips.md)a použijte jednu instanci DocumentClient v celém procesu.
-* Uživatelé někdy zobrazit zvýšené latence nebo časové limity požadavku, protože jejich kolekce jsou zřízeny nedostatečně, back-end škrticí akcelerátory požadavky a klient opakuje interně. Podívejte se na [metriky portálu](monitor-accounts.md).
-* Azure Cosmos DB distribuuje celkovou zřízenou propustnost rovnoměrně napříč fyzickými oddíly. Zkontrolujte metriky portálu a zjistěte, zda se při práci dochází k klávesové zkratky [.](partition-data.md) To způsobí, že agregátní spotřebované propustnost (RU/s) se zobrazí v rámci zřízených ru, ale jeden oddíl spotřebované propustnost (RU/s) překročí zřízenou propustnost. 
-* Sada 2.0 SDK navíc přidává sémantiku kanálu do přímých připojení TCP. Jedno připojení TCP se používá pro více požadavků současně. To může vést ke dvěma problémům v konkrétních případech:
-    * Vysoký stupeň souběžnosti může vést k tvrzení na kanálu.
-    * Velké požadavky nebo odpovědi může vést k head-of-line blokování na kanálu a zhoršit sváry, a to i při relativně nízký stupeň souběžnosti.
-    * Pokud případ spadá do některé z těchto dvou kategorií (nebo pokud existuje podezření na vysoké využití procesoru), jedná se o možné skutečnosti snižující závažnost rizika:
-        * Pokuste se škálovat aplikace nahoru / ven.
-        * Navíc protokoly sady SDK lze zachytit prostřednictvím [naslouchací proces trasování](https://github.com/Azure/azure-cosmosdb-dotnet/blob/master/docs/documentdb-sdk_capture_etl.md) získat další podrobnosti.
+* Využití procesoru je vysoké, což způsobí latenci nebo časový limit požadavku. Zákazník může škálovat hostitelský počítač, aby získal více prostředků, nebo může být zatížení distribuováno do více počítačů.
+* Dostupnost soketu/portu může být nízká. Při spuštění v Azure můžou klienti, kteří používají .NET SDK, dosáhnout vyčerpání portů Azure SNAT (PAT). Chcete-li snížit riziko, že se na tento problém zasáhne, použijte nejnovější verzi 2. x nebo 3. x sady .NET SDK. Toto je příklad, proč se doporučuje vždy spustit nejnovější verzi sady SDK.
+* Vytvoření více instancí DocumentClient může vést k potížím s vypršením sporů a s časovým limitem. Postupujte podle [tipů ke zvýšení výkonu](performance-tips.md)a v celém procesu použijte jednu instanci DocumentClient.
+* Uživatelům se někdy zobrazuje zvýšené latence nebo časový limit požadavku, protože jejich kolekce jsou nedostatečně zřízené, požadavky na omezení back-endu a interní opakované pokusy klienta. Ověřte [metriky portálu](monitor-accounts.md).
+* Azure Cosmos DB distribuuje celkovou zřízenou propustnost rovnoměrně napříč fyzickými oddíly. Zkontrolujte metriky portálu, abyste zjistili, jestli úloha nenalezne [klíč oddílu](partition-data.md)s příchodem. Tato akce způsobí, že agregovaná spotřebovaný propustnost (RU/s) bude pravděpodobně pod zřízeným Ruem, ale propustnost (RU/s), která byla využita v jednom oddílu, bude přesáhnout zřízenou propustnost. 
+* Sada SDK 2,0 navíc přidává sémantiku kanálu k přímým nebo TCP připojením. Jedno připojení TCP se používá pro více požadavků současně. To může v určitých případech vést k dvěma problémům:
+    * Vysoká míra souběžnosti může vést k kolizí na kanálu.
+    * Velké žádosti nebo odpovědi mohou vést k blokování na úrovni řádků a exacerbate, a to i s poměrně nízkou mírou souběžnosti.
+    * Pokud případ spadá do některé z těchto dvou kategorií (nebo pokud je podezření na vysoké využití procesoru), jsou to možné zmírnění:
+        * Zkuste aplikaci škálovat nebo zmenšit.
+        * Kromě toho se protokoly SDK dají zachytit prostřednictvím [naslouchacího procesu trasování](https://github.com/Azure/azure-cosmosdb-dotnet/blob/master/docs/documentdb-sdk_capture_etl.md) a získat tak další podrobnosti.
 
 ### <a name="high-network-latency"></a><a name="high-network-latency"></a>Vysoká latence sítě
-Vysoká latence sítě lze identifikovat pomocí [řetězce diagnostiky](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?view=azure-dotnet) v v2 SDK nebo [diagnostiky](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?view=azure-dotnet#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics) v V3 SDK.
+Vysoká latence sítě se dá identifikovat pomocí [diagnostického řetězce](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?view=azure-dotnet) v sadě v2 SDK nebo v [Diagnostics](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?view=azure-dotnet#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics) v sadě V3 SDK.
 
-Pokud nejsou k dispozici žádné [časové osy](#request-timeouts) a diagnostika zobrazit jednotlivé požadavky, kde je zřejmá vysoká latence na rozdíl mezi `ResponseTime` a `RequestStartTime`, jako tak (>300 milisekund v tomto příkladu):
+Pokud nejsou k dispozici žádné [časové limity](#request-timeouts) a diagnostika zobrazí jednotlivé požadavky, u kterých je vysoká latence zřejmá na `ResponseTime` rozdíl `RequestStartTime`mezi a, například (>300 milisekund v tomto příkladu):
 
 ```bash
 RequestStartTime: 2020-03-09T22:44:49.5373624Z, RequestEndTime: 2020-03-09T22:44:49.9279906Z,  Number of regions attempted:1
 ResponseTime: 2020-03-09T22:44:49.9279906Z, StoreResult: StorePhysicalAddress: rntbd://..., ...
 ```
 
-Tato latence může mít více příčin:
+Tato latence může mít několik příčin:
 
-* Vaše aplikace neběží ve stejné oblasti jako váš účet Azure Cosmos DB.
-* Vaše [Upřednostňovací umístění](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations) nebo [ApplicationRegion](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationregion) konfigurace je nesprávná a pokouší se připojit k jiné oblasti, kde je aktuálně spuštěna aplikace.
-* V síťovém rozhraní může být kritické místo z důvodu vysokého provozu. Pokud je aplikace spuštěná na virtuálních počítačích Azure, existují možná řešení:
-    * Zvažte použití [virtuálního počítače s povolenou zrychlenou sítí](../virtual-network/create-vm-accelerated-networking-powershell.md).
-    * Povolte [akcelerované sítě na existujícím virtuálním počítači](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms).
-    * Zvažte použití [vyššího virtuálního počítače](../virtual-machines/windows/sizes.md).
+* Vaše aplikace neběží ve stejné oblasti jako váš Azure Cosmos DB účet.
+* Vaše konfigurace [PreferredLocations](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations) nebo [ApplicationRegion](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationregion) není správná a pokouší se připojit k jiné oblasti, kde je aplikace momentálně spuštěná.
+* Kvůli vysokému provozu může být síťové rozhraní v kritickém případě. Pokud aplikace běží na Azure Virtual Machines, existují možná alternativní řešení:
+    * Zvažte použití [virtuálního počítače s povolenými akcelerovanými síťovými](../virtual-network/create-vm-accelerated-networking-powershell.md)službami.
+    * Povolí [akcelerované síťové služby na stávajícím virtuálním počítači](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms).
+    * Zvažte použití [vyššího koncového virtuálního počítače](../virtual-machines/windows/sizes.md).
 
-### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Vyčerpání portu Azure SNAT (PAT)
+### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Vyčerpání portů Azure SNAT (PAT)
 
-Pokud se vaše aplikace nasadí na [virtuálních počítačích Azure bez veřejné IP adresy](../load-balancer/load-balancer-outbound-connections.md#defaultsnat), ve výchozím nastavení navazují [porty Azure SNAT](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) připojení k libovolnému koncovému bodu mimo váš virtuální počítač. Počet připojení povolených z virtuálního počítače do koncového bodu Azure Cosmos DB je omezen [konfigurací Azure SNAT](../load-balancer/load-balancer-outbound-connections.md#preallocatedports). Tato situace může vést k omezení připojení, uzavření připojení nebo výše uvedené [požadavek časové limity](#request-timeouts).
+Pokud je vaše aplikace nasazená v [Azure Virtual Machines bez veřejné IP adresy](../load-balancer/load-balancer-outbound-connections.md#defaultsnat), ve výchozím nastavení [porty Azure SNAT](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) naváže připojení ke koncovému bodu mimo váš virtuální počítač. Počet připojení povolených z virtuálního počítače do koncového bodu Azure Cosmos DB je omezen [konfigurací Azure SNAT](../load-balancer/load-balancer-outbound-connections.md#preallocatedports). Tato situace může vést k omezení připojení, ukončení připojení nebo výše uvedeným [časovým limitům požadavků](#request-timeouts).
 
- Porty Azure SNAT se používají jenom v případě, že váš virtuální počítač má privátní IP adresu se připojuje k veřejné IP adrese. Existují dvě řešení, jak se vyhnout omezení Azure SNAT (za předpokladu, že už používáte jednu instanci klienta v celé aplikaci):
+ Porty Azure SNAT se používají jenom v případě, že váš virtuální počítač má privátní IP adresu, která se připojuje k veřejné IP adrese. Omezení Azure SNAT (za předpokladu, že už v celé aplikaci používáte jednu instanci klienta) se vyhnete dvěma řešením:
 
-* Přidejte koncový bod služby Azure Cosmos DB do podsítě virtuální sítě Virtuálních počítačů Azure. Další informace najdete v tématu [koncové body služby Azure Virtual Network](../virtual-network/virtual-network-service-endpoints-overview.md). 
+* Přidejte koncový bod služby Azure Cosmos DB do podsítě vaší virtuální sítě Azure Virtual Machines. Další informace najdete v tématu [koncové body služby Azure Virtual Network](../virtual-network/virtual-network-service-endpoints-overview.md). 
 
-    Pokud je koncový bod služby povolen, požadavky se už neodesílají z veřejné IP adresy do Azure Cosmos DB. Místo toho jsou odesílány virtuální sítě a identity podsítě. Tato změna může způsobit, že brána firewall klesne, pokud jsou povoleny pouze veřejné IP adresy. Pokud používáte bránu firewall, při povolení koncového bodu služby přidejte podsíť do brány firewall pomocí [seznamů ACL virtuální sítě](../virtual-network/virtual-networks-acl.md).
+    Pokud je povolen koncový bod služby, žádosti již nejsou odesílány z veřejné IP adresy do Azure Cosmos DB. Místo toho se pošle identita virtuální sítě a podsítě. Tato změna může vést k poklesu brány firewall, pokud jsou povolené jenom veřejné IP adresy. Pokud používáte bránu firewall a povolíte koncový bod služby, přidejte do brány firewall podsíť pomocí [Virtual Network ACL](../virtual-network/virtual-networks-acl.md).
 * Přiřaďte [k virtuálnímu počítači Azure veřejnou IP adresu](../load-balancer/load-balancer-outbound-connections.md#assignilpip).
 
 ### <a name="http-proxy"></a>Proxy server HTTP
-Pokud používáte proxy server HTTP, ujistěte se, že podporuje `ConnectionPolicy`počet připojení nakonfigurovaných v sadě SDK .
-V opačném případě budete čelit problémům s připojením.
+Pokud používáte proxy server HTTP, ujistěte se, že může podporovat počet připojení nakonfigurovaných v sadě SDK `ConnectionPolicy`.
+Jinak čelíte problémům s připojením.
 
-### <a name="request-rate-too-large"></a><a name="request-rate-too-large"></a>Příliš velká míra požadavků
-"Příliš velká míra požadavků" nebo kód chyby 429 označuje, že vaše požadavky jsou omezeny, protože spotřebovaná propustnost (RU/s) [překročila zřízenou propustnost](set-throughput.md). Sada SDK automaticky zopakují požadavky na základě zadané [zásady opakování](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions?view=azure-dotnet). Pokud se často dostanete k této chybě, zvažte zvýšení propustnost v kolekci. Podívejte se na [metriky portálu](use-metrics.md) a zjistěte, zda se vám zobrazuje 429 chyb. Zkontrolujte [klíč oddílu,](partitioning-overview.md#choose-partitionkey) abyste se ujistili, že výsledkem je rovnoměrná distribuce úložiště a objemu požadavků. 
+### <a name="request-rate-too-large"></a><a name="request-rate-too-large"></a>Příliš velký počet požadavků
+"Počet požadavků je moc velký" nebo kód chyby 429 označuje, že vaše požadavky jsou omezené, protože spotřebované propustnosti (RU/s) překročila [zřízenou propustnost](set-throughput.md). Sada SDK bude automaticky opakovat požadavky na základě zadaných [zásad opakování](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions?view=azure-dotnet). Pokud se toto selhání často dostanou, zvažte zvýšení propustnosti kolekce. Zkontrolujte [metriky na portálu](use-metrics.md) , abyste viděli, jestli se vám zobrazují chyby 429. Zkontrolujte [klíč oddílu](partitioning-overview.md#choose-partitionkey) a ujistěte se, že je výsledkem ještě distribuce úložiště a objemu požadavků. 
 
-### <a name="slow-query-performance"></a>Pomalý výkon dotazu
-[Metriky dotazu](sql-api-query-metrics.md) vám pomohou určit, kde dotaz tráví většinu času. Z metriky dotazu můžete vidět, kolik z toho se vynakládá na back-end vs klienta.
-* Pokud se dotaz back-end vrátí rychle a stráví velký čas na klienta zkontrolujte zatížení v počítači. Je pravděpodobné, že není dostatek prostředků a sada SDK čeká na prostředky, které mají být k dispozici pro zpracování odpovědi.
-* Pokud je dotaz back-end pomalý, zkuste [dotaz optimalizovat](optimize-cost-queries.md) a podívat se na aktuální [zásady indexování](index-overview.md) 
+### <a name="slow-query-performance"></a>Pomalý výkon dotazů
+[Metrika dotazu](sql-api-query-metrics.md) vám pomůže určit, kde je dotaz ve většině případů útrat. Z metriky dotazu vidíte, kolik z nich je stráveno na back-endu a klientovi.
+* Pokud se back-end dotaz rychle vrátí, a při kontrole zatížení počítače stráví na klientovi velký čas. Pravděpodobně není dostatek prostředků a sada SDK čeká, až budou prostředky k dispozici pro zpracování odpovědi.
+* Pokud je back-endové dotaz pomalý, zkuste [optimalizovat dotaz](optimize-cost-queries.md) a podívat se na aktuální [zásady indexování](index-overview.md) . 
 
  <!--Anchors-->
 [Common issues and workarounds]: #common-issues-workarounds
 [Enable client SDK logging]: #logging
-[Příliš velká míra požadavků]: #request-rate-too-large
+[Příliš velký počet požadavků]: #request-rate-too-large
 [Request Timeouts]: #request-timeouts
 [Azure SNAT (PAT) port exhaustion]: #snat
 [Production check list]: #production-check-list

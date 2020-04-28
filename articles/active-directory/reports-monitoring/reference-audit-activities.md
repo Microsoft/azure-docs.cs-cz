@@ -18,20 +18,20 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86a0e0b3c64554e00a5ba7734af28dc136df643f
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80891505"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referenční informace k aktivitám auditování Azure AD
 
-Pomocí sestav Azure Active Directory (Azure AD) můžete získat informace, které potřebujete k určení, jak se vaše prostředí daří.
+Pomocí sestav Azure Active Directory (Azure AD) můžete získat informace, které potřebujete k určení toho, jak vaše prostředí dělá.
 
 Architektura generování sestav v Azure AD se skládá z následujících komponent:
 
 - **Sestavy aktivit** 
-    - [Přihlášení](concept-sign-ins.md) – poskytuje informace o využití spravovaných aplikací a aktivity přihlášení uživatelů
+    - [Přihlášení](concept-sign-ins.md) – poskytuje informace o použití spravovaných aplikací a aktivitách přihlašování uživatelů.
     - [Protokoly auditu](concept-audit-logs.md) – Zajišťuje sledovatelnost prostřednictvím protokolů všech změn provedených různými funkcemi v rámci Azure AD. 
     
 - **Sestavy zabezpečení** 
@@ -64,16 +64,16 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Kontroly přístupu|Kontrola žádosti o schválení žádosti|
 |Kontroly přístupu|Zrušení připojení k řízení aplikací|
 |Kontroly přístupu|Aktualizace kontroly přístupu|
-|Kontroly přístupu|Aktualizace stavu registrace recenzí přístupu azure ad|
+|Kontroly přístupu|Aktualizovat stav zprovoznění kontrol přístupu Azure AD|
 |Kontroly přístupu|Aktualizace nastavení e-mailového oznámení o kontrole přístupu|
-|Kontroly přístupu|Aktualizovat nastavení počtu opakování kontroly přístupu|
-|Kontroly přístupu|Aktualizovat dobu opakování kontroly přístupu ve dnech nastavení|
-|Kontroly přístupu|Aktualizovat nastavení koncového typu opakování kontroly přístupu|
-|Kontroly přístupu|Aktualizovat nastavení typu opakování kontroly přístupu|
+|Kontroly přístupu|Nastavení aktualizace počtu opakování kontroly přístupu|
+|Kontroly přístupu|Nastavení aktualizace doby trvání opakování kontrol přístupu ve dnech|
+|Kontroly přístupu|Nastavení typu konce opakování kontroly přístupu aktualizace|
+|Kontroly přístupu|Nastavení aktualizace typu opakování kontroly přístupu|
 |Kontroly přístupu|Aktualizace nastavení připomenutí kontroly přístupu|
 |Kontroly přístupu|Aktualizace programu|
 |Kontroly přístupu|Aktualizace žádosti o schválení|
-|Kontroly přístupu|Uživatel je zakázán.|
+|Kontroly přístupu|Uživatel zakázán|
 
 ## <a name="account-provisioning"></a>Zřizování účtů
 
@@ -135,11 +135,11 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa aplikací|AdminPolicyDatas-SetResources|
 |Správa aplikací|AdminUserJourneys-GetResources|
 |Správa aplikací|AdminUserJourneys-RemoveResources|
-|Authentication|AdminUserJourneys-SetResources|
-|Authentication|Create IdentityProvider|
-|Authentication|Vytvoření aplikace V1|
-|Authentication|Vytvoření aplikace V2|
-|Authentication|Vytvoření vlastních domén v tenantovi|
+|Ověřování|AdminUserJourneys-SetResources|
+|Ověřování|Create IdentityProvider|
+|Ověřování|Vytvoření aplikace V1|
+|Ověřování|Vytvoření aplikace V2|
+|Ověřování|Vytvoření vlastních domén v tenantovi|
 |Autorizace|Vytvoření nového objektu AdminUserJourney|
 |Autorizace|Vytvoření kódu JSON lokalizovaného prostředku|
 |Autorizace|Vytvoření nového vlastního zprostředkovatele identity|
@@ -169,7 +169,7 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Autorizace|Získání aplikací V1|
 |Autorizace|Získání aplikace V2|
 |Autorizace|Získání aplikací V2|
-|Autorizace|Získání adresářového prostředku B2C|
+|Autorizace|Získat prostředek adresáře B2C|
 |Autorizace|Získání seznamu vlastních domén v tenantovi|
 |Autorizace|Získání cesty uživatele|
 |Autorizace|Získání povolených deklarací identity aplikace pro cestu uživatele|
@@ -234,7 +234,7 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Autorizace|Autorizace uživatelů: Uživatel má udělený přístup jako správce tenanta|
 |Autorizace|Autorizace uživatelů: Uživatel má udělená přístupová práva ověřeného uživatele|
 |Autorizace|Ověření povolení funkce B2C|
-|Autorizace|Ověřit, zda je funkce povolena|
+|Autorizace|Ověřte, jestli je funkce povolená.|
 |Autorizace|Vytvoření programu|
 |Autorizace|Odstranění programu|
 |Autorizace|Připojení k řízení aplikací|
@@ -256,17 +256,17 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa adresářů|Získání informací o tenantovi|
 |Správa adresářů|Získání povolených funkcí tenanta|
 |Správa adresářů|Získání objektu tenantDomains|
-|Klíč|Získá typ tenanta|
-|Klíč|Ověření povolení funkce B2C|
-|Klíč|Ověřit, zda je funkce povolena|
-|Klíč|Přidání partnera ke společnosti|
-|Klíč|Přidání neověřené domény|
-|Klíč|Přidání ověřené domény|
-|Klíč|Vytvoření společnosti|
-|Klíč|Vytvoření nastavení společnosti|
-|Klíč|Odstranění nastavení společnosti|
-|Klíč|Snížení úrovně partnera|
-|Klíč|Adresář je odstraněný|
+|Key|Získá typ tenanta|
+|Key|Ověření povolení funkce B2C|
+|Key|Ověřte, jestli je funkce povolená.|
+|Key|Přidání partnera ke společnosti|
+|Key|Přidání neověřené domény|
+|Key|Přidání ověřené domény|
+|Key|Vytvoření společnosti|
+|Key|Vytvoření nastavení společnosti|
+|Key|Odstranění nastavení společnosti|
+|Key|Snížení úrovně partnera|
+|Key|Adresář je odstraněný|
 |Ostatní|Adresář je trvale odstraněný|
 |Ostatní|Adresář s naplánovaným odstraněním|
 |Prostředek|Propagace společnosti u partnera|
@@ -348,10 +348,10 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 
 |Kategorie auditu|Aktivita|
 |---|---|
-|Správa jednotek pro správu|Stažení jednoho typu detekce rizik|
+|Správa jednotek pro správu|Stažení jediného typu detekce rizika|
 |Správa jednotek pro správu|Stažení správců a stavu týdenního přehledu vyjádření souhlasu|
-|Správa jednotek pro správu|Stažení všech typů detekce rizik|
-|Správa jednotek pro správu|Stáhněte si bezplatné detekce uživatelských rizik|
+|Správa jednotek pro správu|Stáhnout všechny typy detekce rizik|
+|Správa jednotek pro správu|Stáhnout zjišťování rizik uživatelů zdarma|
 |Správa jednotek pro správu|Stažení uživatelů označených příznakem rizika|
 |Správa aplikací|Zpracované hromadné pozvánky|
 |Správa aplikací|Odeslané hromadné pozvánky|
@@ -398,7 +398,7 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa adresářů|Získání prostředků adresáře B2C v předplatném|
 |Správa adresářů|Získání vlastního zprostředkovatele identity|
 |Správa adresářů|Získání zprostředkovatele identity|
-|Správa adresářů|Získání adresářového prostředku B2C|
+|Správa adresářů|Získat prostředek adresáře B2C|
 |Správa adresářů|Získání cesty uživatele|
 |Správa adresářů|Získání povolených deklarací identity aplikace pro cestu uživatele|
 |Správa adresářů|Získání povolených deklarací identity s vlastním potvrzením pro cestu uživatele|
@@ -408,14 +408,14 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa adresářů|Získání zprostředkovatelů identity pro konkrétní tok správy|
 |Správa adresářů|Získání seznamu všech toků správy|
 |Správa adresářů|Získání seznamu značek pro všechny toky správy všech uživatelů|
-|Správa skupin|Hromadně stahovat členy skupiny - spuštěno|
-|Správa skupin|Členové skupiny pro hromadné stahování - dokončeno|
+|Správa skupin|Členové skupiny hromadného stahování – zahájeno|
+|Správa skupin|Členové skupiny hromadného stahování – dokončeno|
 |Správa skupin|Členové skupiny hromadného importu – spuštěno|
-|Správa skupin|Členové skupiny hromadného importu - dokončeno|
-|Správa skupin|Hromadné odebrání členů skupiny – spuštěno|
-|Správa skupin|Hromadné odebrání členů skupiny - dokončeno|
-|Správa skupin|Skupiny hromadného stahování – spuštěno|
-|Správa skupin|Skupiny hromadného stahování - dokončeno|
+|Správa skupin|Členové skupiny hromadného importu – dokončeno|
+|Správa skupin|Hromadné odebrání členů skupiny – zahájeno|
+|Správa skupin|Hromadné odebrání členů skupiny – dokončeno|
+|Správa skupin|Hromadné stažení skupin – zahájeno|
+|Správa skupin|Hromadné stažení skupin – dokončeno|
 |Správa skupin|Získání seznamu tenantů pro uživatele|
 |Správa skupin|Získání deklarací identity s vlastním potvrzením pro místní účty|
 |Správa skupin|Získání kódu JSON lokalizovaného prostředku|
@@ -475,16 +475,16 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa uživatelů|Přidání vymezeného člena do role|
 |Správa uživatelů|Přidáno|
 |Správa uživatelů|Přiřazení|
-|Správa uživatelů|Hromadně vytvářet uživatele - spuštěno|
-|Správa uživatelů|Uživatelé hromadného vytváření - dokončeno|
-|Správa uživatelů|Hromadné odstranění uživatelů - spuštěno|
-|Správa uživatelů|Hromadně mazat uživatele - dokončeno|
+|Správa uživatelů|Hromadné vytvoření uživatelů – spuštěné|
+|Správa uživatelů|Hromadné vytvoření uživatelů – dokončeno|
+|Správa uživatelů|Hromadné odstranění uživatelů – spuštěné|
+|Správa uživatelů|Hromadné odstranění uživatelů – dokončeno|
 |Správa uživatelů|Uživatelé hromadného stahování – spuštěno|
-|Správa uživatelů|Uživatelé hromadného stahování - dokončeno|
-|Správa uživatelů|Hromadné obnovení odstraněných uživatelů – spuštěno|
-|Správa uživatelů|Hromadné obnovení odstraněných uživatelů - dokončeno|
-|Správa uživatelů|Hromadné pozvání uživatelů – spuštěno|
-|Správa uživatelů|Hromadné pozvání uživatelů - dokončeno|
+|Správa uživatelů|Uživatelé hromadného stahování – dokončeno|
+|Správa uživatelů|Hromadné obnovení odstraněných uživatelů-zahájeno|
+|Správa uživatelů|Hromadné obnovení odstraněných uživatelů – dokončeno|
+|Správa uživatelů|Uživatelé hromadného pozvání – spuštěno|
+|Správa uživatelů|Hromadná Pozvánka uživatelů – dokončeno|
 |Správa uživatelů|Odebrání registrovaného vlastníka ze zařízení|
 |Správa uživatelů|Odebrání registrovaných uživatelů ze zařízení|
 |Správa uživatelů|Odebrání oprávněného člena z role|
@@ -540,10 +540,10 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa skupin|Kontrola žádosti o schválení žádosti|
 |Správa skupin|Aktualizace kontroly přístupu|
 |Správa skupin|Aktualizace nastavení e-mailového oznámení o kontrole přístupu|
-|Správa skupin|Aktualizovat nastavení počtu opakování kontroly přístupu|
-|Správa skupin|Aktualizovat dobu opakování kontroly přístupu ve dnech nastavení|
-|Správa uživatelů|Aktualizovat nastavení koncového typu opakování kontroly přístupu|
-|Správa uživatelů|Aktualizovat nastavení typu opakování kontroly přístupu|
+|Správa skupin|Nastavení aktualizace počtu opakování kontroly přístupu|
+|Správa skupin|Nastavení aktualizace doby trvání opakování kontrol přístupu ve dnech|
+|Správa uživatelů|Nastavení typu konce opakování kontroly přístupu aktualizace|
+|Správa uživatelů|Nastavení aktualizace typu opakování kontroly přístupu|
 
 
 
@@ -554,16 +554,16 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |PIM|ActivationAborted|
 |PIM|ActivationApproved|
 |PIM|ActivationCanceled|
-|PIM|Aktivace byla zamítnuta.|
+|PIM|ActivationDenied|
 |PIM|ActivationRequested|
 |PIM|Přidáno|
 |PIM|AddedOutsidePIM|
 |PIM|Přiřazení|
-|PIM|Zavřít výstrahu|
+|PIM|DismissAlert|
 |PIM|Zvýšení oprávnění|
-|PIM|Znovu aktivovatvýstrahu|
+|PIM|ReactivateAlert|
 |PIM|Odebráno|
-|PIM|Odebráno voňav.|
+|PIM|RemovedOutsidePIM|
 |PIM|Žádost a zastavení kontroly|
 |PIM|Změny nastavení role|
 |PIM|ScanAlertsNow|
@@ -615,8 +615,8 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Podmínky použití|Odstranit souhlas|
 |Podmínky použití|Odstranění podmínek použití|
 |Podmínky použití|Úprava podmínky použití|
-|Podmínky použití|Podmínky použití vyprší|
-|Podmínky použití|Pevné odstranit podmínky použití|
+|Podmínky použití|Vypršení podmínek použití|
+|Podmínky použití|Pevné odstranění podmínek použití|
 |Podmínky použití|Publikování podmínek použití|
 |Podmínky použití|Zrušení publikování podmínek použití|
 

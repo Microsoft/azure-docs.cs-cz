@@ -1,6 +1,6 @@
 ---
-title: Změna nastavení žádosti a schválení pro balíček přístupu ve správě nároků Azure AD – Azure Active Directory
-description: Přečtěte si, jak změnit nastavení žádosti a schválení pro balíček přístupu ve správě nároků služby Azure Active Directory.
+title: Nastavení žádosti o změnu a schválení pro balíček pro přístup ve správě nároků Azure AD – Azure Active Directory
+description: Naučte se, jak změnit nastavení žádostí a schválení pro balíček přístupu v Azure Active Directory správě nároků.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,84 +17,84 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b0eae4f53283c33f3d7372a606f8c0a3ac27d079
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80655924"
 ---
-# <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Změna nastavení žádosti a schválení pro balíček přístupu ve správě oprávnění Azure AD
+# <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Nastavení žádosti o změnu a schválení pro balíček přístupu v Azure AD – Správa nároků
 
-Jako správce přístupových balíčků můžete kdykoli změnit uživatele, kteří mohou požádat o přístupový balíček, úpravou zásady nebo přidáním nové zásady. Můžete také změnit nastavení schválení.
+Jako správce balíčků přístupu můžete kdykoli změnit uživatele, kteří můžou požádat o přístup k balíčku, úpravou zásady nebo přidáním nové zásady. Můžete také změnit nastavení schvalování.
 
 Tento článek popisuje, jak změnit nastavení požadavku a schválení pro existující balíček přístupu.
 
-## <a name="choose-between-one-or-multiple-polices"></a>Vyberte si mezi jednou nebo více funkcemi
+## <a name="choose-between-one-or-multiple-polices"></a>Vyberte jednu nebo víc zásad.
 
-Způsob, jakým určíte, kdo může požádat o přístupový balíček, je se zásadami. Při vytváření balíčku přístupu zadáte nastavení požadavku a schválení, které vytvoří zásadu. Většina přístupových balíčků bude mít jednu zásadu, ale jeden balíček přístupu může mít více zásad. Pokud chcete povolit přiřazení různých skupin uživatelů s různým nastavením požadavku a schválení, vytvořte pro přístupový balíček více zásad. Například jednu zásadu nelze použít k přiřazení interních a externích uživatelů ke stejnému balíčku přístupu. Můžete však vytvořit dvě zásady ve stejném balíčku přístupu – jeden pro interní uživatele a jeden pro externí uživatele. Pokud existuje více zásad, které se vztahují na uživatele, budou vyzváni v době jejich žádosti vybrat zásady, které chcete být přiřazeny. Následující diagram znázorňuje balíček přístupu se dvěma zásadami.
+Způsob, jakým určíte, kdo může žádat o přístup k balíčku, je zásadou. Když vytvoříte balíček pro přístup, zadáte nastavení žádosti a schválení, které vytvoří zásadu. Většina přístupových balíčků bude mít jednu zásadu, ale jeden balíček přístupu může mít víc zásad. Vytvořili jste několik zásad pro balíček pro přístup, pokud chcete, aby bylo možné udělit různým sadám uživatelů přiřazení s různými nastaveními požadavků a schvalování. Například jedna zásada se nedá použít k přiřazení interních a externích uživatelů ke stejnému balíčku přístupu. V jednom balíčku pro přístup se ale dají vytvořit dvě zásady – jeden pro interní uživatele a jeden pro externí uživatele. Pokud je k dispozici více zásad, které platí pro uživatele, budou v době žádosti vyzváni k výběru zásady, ke kterým se mají přiřadit. Následující diagram znázorňuje balíček přístupu se dvěma zásadami.
 
-![Více zásad v balíčku přístupu](./media/entitlement-management-access-package-request-policy/access-package-policy.png)
+![Více zásad v balíčku pro přístup](./media/entitlement-management-access-package-request-policy/access-package-policy.png)
 
 | Scénář | Počet zásad |
 | --- | --- |
-| Chci, aby všichni uživatelé v mém adresáři měli stejné nastavení požadavků a schválení pro přístupový balíček | Jeden |
-| Chci, aby všichni uživatelé v některých připojených organizacích mohli požádat o přístupový balíček | Jeden |
-| Chci umožnit uživatelům v mém adresáři a také uživatelům mimo můj adresář požádat o přístupový balíček | Několik |
-| Chci pro některé uživatele zadat různá nastavení schválení | Několik |
-| Chci, aby platnost přiřazení balíčků pro některé uživatele vypršela, zatímco ostatní uživatelé mohou rozšířit svůj přístup | Několik |
+| Chci, aby všichni uživatelé v adresáři měli stejné nastavení požadavků a schvalování pro balíček pro přístup | Jeden |
+| Chci, aby všichni uživatelé v některých připojených organizacích mohli žádat o přístup k balíčku | Jeden |
+| Chci uživatelům v adresáři a také uživatelům, kteří jsou mimo můj adresář, dovolit přístup k balíčku pro přístup | Několik |
+| Chci pro některé uživatele zadat jiná nastavení schvalování | Několik |
+| Chci, aby někteří uživatelé měli přístup k vypršení platnosti přiřazení balíčků, zatímco ostatní uživatelé můžou svůj přístup rozšíří. | Několik |
 
-Informace o logice priority, která se používá při použití více zásad, naleznete [v tématu Více zásad](entitlement-management-troubleshoot.md#multiple-policies
+Informace o Logic prioritě, která se používá při použití více zásad, najdete v tématu [více zásad](entitlement-management-troubleshoot.md#multiple-policies
 ).
 
-### <a name="open-an-existing-policy-of-request-and-approval-settings"></a>Otevření existující zásady nastavení požadavku a schválení
+### <a name="open-an-existing-policy-of-request-and-approval-settings"></a>Otevře existující zásadu nastavení požadavků a schválení.
 
-Chcete-li změnit nastavení požadavku a schválení pro přístupový balíček, musíte otevřít odpovídající zásady. Chcete-li otevřít nastavení požadavku a schválení pro přístupový balíček, postupujte takto.
+Chcete-li změnit nastavení žádosti a schválení pro balíček pro přístup, je nutné otevřít odpovídající zásadu. Pomocí těchto kroků otevřete nastavení žádosti a schválení pro balíček přístupu.
 
-**Předpokladová role:** Globální správce, správce uživatele, vlastník katalogu nebo správce balíčků aplikace Access
+**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
 
-1. Na webu Azure Portal klikněte na **Azure Active Directory** a potom klikněte na **Identity Governance**.
+1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
 
-1. V levé nabídce klikněte na **accessové balíčky** a potom otevřete přístupový balíček.
+1. V nabídce vlevo klikněte na **přístup k balíčkům** a otevřete balíček pro přístup.
 
-1. Klikněte na **Zásady** a potom klikněte na zásady, které chcete upravit.
+1. Klikněte na **zásady** a potom klikněte na zásadu, kterou chcete upravit.
 
-    Otevře se podokno podrobností zásad v dolní části stránky.
+    V dolní části stránky se otevře podokno Podrobnosti o zásadách.
 
-    ![Balíček aplikace Access – podokno podrobností o zásadách](./media/entitlement-management-shared/policy-details.png)
+    ![Přístupový balíček – podokno podrobností zásad](./media/entitlement-management-shared/policy-details.png)
 
-1. Kliknutím na **Upravit** upravte zásadu.
+1. Zásadu upravíte kliknutím na **Upravit** .
 
-    ![Přístupový balíček – zásady úprav](./media/entitlement-management-shared/policy-edit.png)
+    ![Přístup k balíčku – upravit zásadu](./media/entitlement-management-shared/policy-edit.png)
 
-1. Kliknutím na kartu **Požadavky** otevřete nastavení požadavku a schválení.
+1. Kliknutím na kartu **žádosti** otevřete nastavení žádosti a schválení.
 
-1. Proveďte kroky v jedné z následujících částí požadavku.
+1. Proveďte kroky v jedné z následujících částí žádosti.
 
-### <a name="add-a-new-policy-of-request-and-approval-settings"></a>Přidání nové zásady nastavení požadavků a schválení
+### <a name="add-a-new-policy-of-request-and-approval-settings"></a>Přidat nové zásady nastavení požadavků a schválení
 
-Pokud máte sadu uživatelů, kteří by měli mít jiné nastavení požadavků a schválení, budete pravděpodobně muset vytvořit novou zásadu. Chcete-li začít přidávat nové zásady do existujícího balíčku přístupu, postupujte takto.
+Pokud máte sadu uživatelů, kteří by měli mít různá nastavení požadavků a schvalování, budete pravděpodobně muset vytvořit novou zásadu. Pomocí těchto kroků můžete začít přidávat nové zásady do stávajícího balíčku přístupu.
 
-**Předpokladová role:** Globální správce, správce uživatele, vlastník katalogu nebo správce balíčků aplikace Access
+**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
 
-1. Na webu Azure Portal klikněte na **Azure Active Directory** a potom klikněte na **Identity Governance**.
+1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
 
-1. V levé nabídce klikněte na **accessové balíčky** a potom otevřete přístupový balíček.
+1. V nabídce vlevo klikněte na **přístup k balíčkům** a otevřete balíček pro přístup.
 
-1. Klikněte na **Zásady** a potom **na Přidat zásady**.
+1. Klikněte na **zásady** a potom na **Přidat zásadu**.
 
 1. Zadejte název a popis zásady.
 
-    ![Vytvoření zásady s názvem a popisem](./media/entitlement-management-access-package-request-policy/policy-name-description.png)
+    ![Vytvořit zásadu s názvem a popisem](./media/entitlement-management-access-package-request-policy/policy-name-description.png)
 
-1. Kliknutím na **Další** otevřete kartu **Požadavky.**
+1. Kliknutím na **Další** otevřete kartu **žádosti** .
 
-1. Proveďte kroky v jedné z následujících částí požadavku.
+1. Proveďte kroky v jedné z následujících částí žádosti.
 
 [!INCLUDE [Entitlement management request policy](../../../includes/active-directory-entitlement-management-request-policy.md)]
 
-Pokud upravujete zásadu, klepněte na **tlačítko Aktualizovat**. Pokud přidáváte novou zásadu, klepněte na **tlačítko Vytvořit**.
+Pokud upravujete zásadu, klikněte na **aktualizovat**. Pokud přidáváte novou zásadu, klikněte na **vytvořit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Změna nastavení životního cyklu pro přístupový balíček](entitlement-management-access-package-lifecycle-policy.md)
-- [Zobrazit žádosti o přístupový balíček](entitlement-management-access-package-requests.md)
+- [Změnit nastavení životního cyklu pro balíček pro přístup](entitlement-management-access-package-lifecycle-policy.md)
+- [Zobrazit žádosti pro balíček pro přístup](entitlement-management-access-package-requests.md)

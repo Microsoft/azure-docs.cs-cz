@@ -1,6 +1,6 @@
 ---
-title: Kontrola přístupu k balíčku přístupu ve správě oprávnění Azure AD
-description: Přečtěte si, jak dokončit kontrolu přístupu k balíčkům přístupu ke správě nároků v recenzích přístupu ke službě Azure Active Directory (Preview).
+title: Kontrola přístupu k balíčku přístupu v Azure AD – Správa nároků
+description: Naučte se, jak dokončit kontrolu přístupu balíčků pro přístup pro správu opravňujících k přístupu v Azure Active Directorych kontrolách přístupu (Preview).
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,90 +17,90 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 99de022b7259b33baab3aa825673a8f85e932bff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78968747"
 ---
-# <a name="review-access-of-an-access-package-in-azure-ad-entitlement-management"></a>Kontrola přístupu k balíčku přístupu ve správě oprávnění Azure AD
+# <a name="review-access-of-an-access-package-in-azure-ad-entitlement-management"></a>Kontrola přístupu k balíčku přístupu v Azure AD – Správa nároků
 
-Správa nároků Azure AD zjednodušuje způsob, jakým podniky spravují přístup ke skupinám, aplikacím a webům SharePointu. Tento článek popisuje, jak provádět kontroly přístupu pro ostatní uživatele, kteří jsou přiřazeni k balíčku přístupu jako určený recenzent.
+Správa nároků Azure AD zjednodušuje způsob, jakým podniky spravují přístup ke skupinám, aplikacím a webům SharePointu. Tento článek popisuje, jak provést kontroly přístupu pro jiné uživatele, kteří jsou přiřazeni k balíčku přístupu jako určený kontrolor.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li zkontrolovat přiřazení balíčků aktivního přístupu uživatelů, musíte splnit požadavky na kontrolu přístupu:
+Chcete-li zkontrolovat přiřazení balíčku aktivních přístupů uživatelů, je nutné splnit požadavky na kontrolu přístupu:
 - Azure AD Premium P2
 - Globální správce
-- Určený správce uživatele, vlastník katalogu nebo správce balíčků aplikace Access
+- Určený správce uživatele, vlastník katalogu nebo správce balíčků přístupu
 
-Další informace naleznete v tématu [Licenční požadavky](entitlement-management-overview.md#license-requirements).
+Další informace najdete v tématu [licenční požadavky](entitlement-management-overview.md#license-requirements).
 
 
-## <a name="open-the-access-review"></a>Otevření kontroly přístupu
+## <a name="open-the-access-review"></a>Otevřít kontrolu přístupu
 
-Pomocí následujících kroků vyhledejte a otevřete kontrolu přístupu:
+K vyhledání a otevření kontroly přístupu použijte následující postup:
 
-1. Můžete obdržet e-mail od společnosti Microsoft, který vás požádá o kontrolu přístupu. Vyhledejte e-mail a otevřete kontrolu přístupu. Zde je příklad e-mailu pro kontrolu přístupu:
+1. Můžete obdržet e-mail od Microsoftu, který vás vyzve ke kontrole přístupu. Vyhledejte e-mail a otevřete tak kontrolu přístupu. Tady je příklad e-mailu pro kontrolu přístupu:
     
-    ![E-mail recenzenta accessu](./media/entitlement-management-access-reviews-review-access/review-access-reviewer-email.png)
+    ![E-mail kontrolora kontroly přístupu](./media/entitlement-management-access-reviews-review-access/review-access-reviewer-email.png)
 
-1. Kliknutím na odkaz **Zkontrolovat přístup uživatele** otevřete kontrolu přístupu. 
+1. Kliknutím na odkaz **Kontrola přístupu uživatele** otevřete kontrolu přístupu. 
 
-1. Pokud e-mail nemáte, můžete své nevyřízené kontroly přístupu https://myaccess.microsoft.comnajít tak, že přejdete přímo na .  (Pro vládu USA `https://myaccess.microsoft.us` použijte místo.)
+1. Pokud nemáte e-mail, můžete najít své nedokončené kontroly přístupu, a to tak, že přejdete přímo na https://myaccess.microsoft.com.  (Pro státní správu USA použijte `https://myaccess.microsoft.us` místo toho.)
 
-1. Kliknutím na **Access recenze** na levém navigačním panelu zobrazíte seznam čekajících kontrol přístupu, které vám byly přiřazeny.
+1. Kliknutím na kontroly **přístupu** na levém navigačním panelu zobrazte seznam nedokončených revizí přístupu, které jste vám přiřadili.
     
-    ![Výběr kontrol přístupu v aplikaci Můj přístup](./media/entitlement-management-access-reviews-review-access/review-access-myaccess-select-access-review.png)
+    ![Vybrat kontroly přístupu na mém přístupu](./media/entitlement-management-access-reviews-review-access/review-access-myaccess-select-access-review.png)
 
-1. Klikněte na recenzi, kterou chcete zahájit.
+1. Klikněte na recenzi, kterou chcete začít.
     
-    ![Výběr kontroly přístupu](./media/entitlement-management-access-reviews-review-access/review-access-select-access-review.png)
+    ![Vybrat kontrolu přístupu](./media/entitlement-management-access-reviews-review-access/review-access-select-access-review.png)
 
-## <a name="perform-the-access-review"></a>Provedení kontroly přístupu
+## <a name="perform-the-access-review"></a>Provést kontrolu přístupu
 
-Po otevření kontroly přístupu se zobrazí jména uživatelů, pro které je třeba zkontrolovat. Přístup můžete schválit nebo odepřít dvěma způsoby:
-- Přístup můžete ručně schválit nebo odepřít jednomu nebo více uživatelům.
-- Můžete přijmout systémová doporučení
+Po otevření kontroly přístupu se zobrazí jména uživatelů, pro které potřebujete kontrolu. Existují dva způsoby, jak můžete schválit nebo odepřít přístup:
+- Pro jednoho nebo více uživatelů můžete ručně schválit nebo odepřít přístup.
+- Můžete přijmout doporučení systému.
 
-### <a name="manually-approve-or-deny-access-for-one-or-more-users"></a>Ruční schválení nebo odepření přístupu pro jednoho nebo více uživatelů
-1. Zkontrolujte seznam uživatelů a určete, kteří uživatelé musí mít i nadále přístup.
+### <a name="manually-approve-or-deny-access-for-one-or-more-users"></a>Ruční schválení nebo zamítnutí přístupu pro jednoho nebo více uživatelů
+1. Zkontrolujte seznam uživatelů a určete, kteří uživatelé musí mít přístup i nadále.
 
     ![Seznam uživatelů ke kontrole](./media/entitlement-management-access-reviews-review-access/review-access-list-of-users.png)
 
-1. Chcete-li přístup schválit nebo odepřít, vyberte přepínací tlačítko nalevo od jména uživatele.
+1. Chcete-li schválit nebo odepřít přístup, vyberte přepínač nalevo od jména uživatele.
 
-1. V pruhu nad uživatelskými jmény vyberte **Schválit** nebo **Odepřít.**
+1. Na panelu nad uživatelskými jmény vyberte **schválit** nebo **Odepřít** .
 
-    ![Výběr uživatele](./media/entitlement-management-access-reviews-review-access/review-access-select-users.png)
+    ![Vybrat uživatele](./media/entitlement-management-access-reviews-review-access/review-access-select-users.png)
 
-1. Pokud si nejste jisti, můžete kliknout na tlačítko **Nevědět.**
+1. Pokud si nejste jisti, můžete kliknout na tlačítko **neznát** .
 
-    Pokud provedete tento výběr, uživatel udržuje přístup a tento výběr přejde do protokolů auditu. V protokolu se zobrazí další recenzenti, kterým jste recenzi ještě dokončili.
+    Pokud tento výběr provedete, uživatel zachová přístup a tento výběr přejde do protokolů auditu. Protokol zobrazí všechny další kontrolory, u kterých jste stále dokončili kontrolu.
 
-1. Můžete být požádáni, abyste své rozhodnutí zdůvodní. Zadejte důvod a klepněte na tlačítko **Odeslat**.
+1. Možná budete muset zadat důvod pro vaše rozhodnutí. Zadejte důvod a klikněte na **Odeslat**.
 
-    ![Schválení nebo odepření přístupu](./media/entitlement-management-access-reviews-review-access/review-access-decision-approve.png)
+    ![Schválit nebo zamítnout přístup](./media/entitlement-management-access-reviews-review-access/review-access-decision-approve.png)
 
-1. Své rozhodnutí můžete kdykoli změnit před koncem recenze. Chcete-li tak učinit, vyberte uživatele ze seznamu a změňte rozhodnutí. Můžete například schválit přístup pro uživatele, které jste dříve odmítli.
+1. Vaše rozhodnutí můžete kdykoli změnit na konci kontroly. Provedete to tak, že vyberete uživatele ze seznamu a změníte rozhodnutí. Můžete například schválit přístup pro uživatele, který jste předtím zamítli.
 
-Pokud existuje více recenzentů, zaznamená se poslední odeslaná odpověď. Vezměme si příklad, kdy správce určí dva recenzenty – Alici a Boba. Alice nejprve otevře recenzi a schválí přístup. Před ukončením kontroly Bob recenzi otevře a odepře přístup. V tomto případě se zaznamená poslední rozhodnutí o odepření přístupu.
+Pokud existuje více revidujících, je zaznamenána poslední odeslaná odpověď. Vezměte v úvahu příklad, kdy správce určí dva revidující – Alice a Bob. Alice otevře kontrolu jako první a schválí přístup. Před ukončením kontroly Bob otevře kontrolu a odmítne přístup. V tomto případě se zaznamená poslední rozhodnutí o odepření přístupu.
 
 >[!NOTE]
->Pokud je uživateli odepřen přístup, nejsou okamžitě odebrány z přístupového balíčku. Uživatel bude odebrán z balíčku přístupu po ukončení kontroly nebo správce ukončí kontrolu.
+>Pokud má uživatel odepřený přístup, neodebere se hned z balíčku pro přístup. Uživatel bude po skončení kontroly odebrán z balíčku pro přístup nebo Správce ukončí kontrolu.
 
-### <a name="approve-or-deny-access-using-the-system-generated-recommendations"></a>Schválení nebo odepření přístupu pomocí systémově generovaných doporučení
+### <a name="approve-or-deny-access-using-the-system-generated-recommendations"></a>Schválení nebo zamítnutí přístupu pomocí systémem vygenerovaných doporučení
 
-Chcete-li rychleji zkontrolovat přístup pro více uživatelů, můžete použít doporučení generovaná systémem a přijmout doporučení jediným kliknutím. Doporučení jsou generovány na základě aktivity přihlášení uživatele.
+Chcete-li zkontrolovat přístup více uživatelům rychleji, můžete použít vygenerovaná systémová doporučení a přijmout doporučení jediným kliknutím. Doporučení se generují na základě přihlašovací aktivity uživatele.
 
-1.  Na panelu v horní části stránky klikněte na **Přijmout doporučení**.
+1.  Na panelu v horní části stránky klikněte na **přijmout doporučení**.
     
-    ![Vybrat přijmout doporučení](./media/entitlement-management-access-reviews-review-access/review-access-use-recommendations.png)
+    ![Vyberte přijmout doporučení.](./media/entitlement-management-access-reviews-review-access/review-access-use-recommendations.png)
     
     Zobrazí se souhrn doporučených akcí.
 
-1.  Chcete-li doporučení přijmout, klepněte na **tlačítko Odeslat.**
+1.  Doporučení přijměte kliknutím na **Odeslat** .
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vlastní kontrola přístupových balíčků](entitlement-management-access-reviews-self-review.md)
+- [Samoobslužné přezkoumání balíčků přístupu](entitlement-management-access-reviews-self-review.md)

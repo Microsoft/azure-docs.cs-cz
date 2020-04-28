@@ -1,6 +1,6 @@
 ---
-title: Konfigurace služby nabízených oznámení windows v centrech oznámení Azure | Dokumenty společnosti Microsoft
-description: Přečtěte si, jak nakonfigurovat nastavení služby nabízených oznámení Windows pro centrum oznámení Azure.
+title: Konfigurovat službu nabízených oznámení Windows v Azure Notification Hubs | Microsoft Docs
+description: Naučte se konfigurovat nastavení služby nabízených oznámení Windows pro Centrum oznámení Azure.
 services: notification-hubs
 author: sethmanheim
 manager: femila
@@ -13,30 +13,30 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/25/2019
 ms.openlocfilehash: 73304e191242725c80204efb132c26aede9ce7e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80127313"
 ---
-# <a name="configure-windows-push-notification-service-settings-in-the-azure-portal"></a>Konfigurace nastavení služby nabízených oznámení Windows na webu Azure Portal
+# <a name="configure-windows-push-notification-service-settings-in-the-azure-portal"></a>Konfigurace nastavení služby nabízených oznámení systému Windows v Azure Portal
 
-Tento článek ukazuje, jak nakonfigurovat nastavení služby Windows Notification Service (WNS) pro centrum oznámení Azure pomocí portálu Azure.  
+V tomto článku se dozvíte, jak nakonfigurovat nastavení WNS (Windows Notification Service) pro Centrum oznámení Azure pomocí Azure Portal.  
 
 ## <a name="prerequisites"></a>Požadavky
-Pokud jste centrum oznámení ještě nevytvořili, vytvořte ho nyní. Další informace najdete [v tématu Vytvoření centra oznámení Azure na webu Azure Portal](create-notification-hub-portal.md). 
+Pokud jste centrum oznámení ještě nevytvořili, vytvořte ho hned teď. Další informace najdete v tématu [vytvoření centra oznámení Azure v Azure Portal](create-notification-hub-portal.md). 
 
-## <a name="configure-windows-push-notification-service-wns"></a>Konfigurace služby nabízených oznámení systému Windows (WNS)
+## <a name="configure-windows-push-notification-service-wns"></a>Konfigurace služby nabízených oznámení Windows (WNS)
 
-Následující postup poskytuje postup konfigurace nastavení služby NABÍZENÝCH Oznámení systému Windows (WNS) pro centrum oznámení: 
+Následující postup popisuje postup konfigurace nastavení WNS (Windows Push Notification Service) pro Centrum oznámení: 
 
-1. Na webu Azure Portal na stránce **Centrum oznámení** vyberte **windows (WNS)** v levé nabídce.
-2. Zadejte hodnoty pro **balíček SID** a **bezpečnostní klíč**.
+1. V Azure Portal na stránce **centra oznámení** vyberte v nabídce vlevo možnost **Windows (WNS)** .
+2. Zadejte hodnoty pro **SID balíčku** a **klíč zabezpečení**.
 3. Vyberte **Uložit**.
 
-   ![Snímek obrazovky s okny Sid balíčku a bezpečnostního klíče](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
+   ![Snímek obrazovky zobrazující pole SID balíčku a klíč zabezpečení](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
 
 ## <a name="next-steps"></a>Další kroky
-Kurz s podrobnými pokyny pro odesílání oznámení do aplikací univerzální platformy Windows pomocí center oznámení Azure a služby nabízených oznámení Windows (WNS) najdete v tématu [Odesílání oznámení do aplikací UPW pomocí center oznámení Azure](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
+Kurz s podrobnými pokyny pro doručování oznámení do aplikací Univerzální platforma Windows pomocí Azure Notification Hubs a WNS (Windows Push Notification Service) najdete v tématu [posílání oznámení do aplikací pro UWP pomocí azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
 
 

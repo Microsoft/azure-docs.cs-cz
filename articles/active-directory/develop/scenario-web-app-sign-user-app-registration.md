@@ -1,6 +1,6 @@
 ---
-title: Registrace webové aplikace, která se připisuje k uživatelům – platforma microsoft identit | Azure
-description: Přečtěte si, jak zaregistrovat webovou aplikaci, která se připisuje uživatelům.
+title: Registrace webové aplikace, která se podepisuje uživatelům – Microsoft Identity Platform | Azure
+description: Zjistěte, jak zaregistrovat webovou aplikaci, která se přihlásí uživatelům.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,99 +12,99 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 7d2eb5356b1abc54508fd6bf8d35fd9fc39d02ec
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80881575"
 ---
-# <a name="web-app-that-signs-in-users-app-registration"></a>Webová aplikace, která se připisuje uživatelům: Registrace aplikace
+# <a name="web-app-that-signs-in-users-app-registration"></a>Webová aplikace, která přihlašuje uživatele: registrace aplikace
 
-Tento článek vysvětluje podrobnosti o registraci aplikace pro webovou aplikaci, která se připisuje uživatelům.
+Tento článek vysvětluje konkrétní registraci aplikace pro webovou aplikaci, která se podepisuje uživatelům.
 
-Chcete-li zaregistrovat přihlášku, můžete použít:
+K registraci aplikace můžete použít:
 
-- Webová [aplikace se rychle spustí](#register-an-app-by-using-the-quickstarts). Kromě toho, že skvělé první zkušenosti s vytvářením aplikace, rychlé starty na portálu Azure obsahují tlačítko s názvem **Provést tuto změnu pro mě**. Pomocí tohoto tlačítka můžete nastavit vlastnosti, které potřebujete, a to i pro existující aplikaci. Hodnoty těchto vlastností budete muset přizpůsobit vlastnímu případu. Zejména adresa URL webového rozhraní API pro vaši aplikaci se pravděpodobně bude lišit od navrhovaného výchozího nastavení, což bude mít vliv také na identifikátor URI pro odhlášení.
-- Portál Azure k [ruční registraci aplikace](#register-an-app-by-using-the-azure-portal).
-- Nástroje PowerShellu a příkazového řádku.
+- [Webové aplikace jsou rychlé starty](#register-an-app-by-using-the-quickstarts). Kromě skvělého prvního prostředí při vytváření aplikace budou rychlé starty v Azure Portal obsahovat tlačítko s názvem **udělat tuto změnu pro mě**. Pomocí tohoto tlačítka můžete nastavit vlastnosti, které potřebujete, i pro existující aplikaci. Hodnoty těchto vlastností budete muset přizpůsobit na vlastní případ. Konkrétně adresa URL webového rozhraní API vaší aplikace se pravděpodobně liší od navrhované výchozí, což ovlivní také identifikátor URI pro odhlášení.
+- Azure Portal k [registraci aplikace ručně](#register-an-app-by-using-the-azure-portal).
+- PowerShell a nástroje příkazového řádku.
 
 ## <a name="register-an-app-by-using-the-quickstarts"></a>Registrace aplikace pomocí rychlých startů
 
-Tyto odkazy můžete použít k zavádění vytvoření webové aplikace:
+Pomocí těchto odkazů můžete spustit vytvoření webové aplikace:
 
 - [ASP.NET Core](https://aka.ms/aspnetcore2-1-aad-quickstart-v2)
 - [ASP.NET](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs)
 
-## <a name="register-an-app-by-using-the-azure-portal"></a>Registrace aplikace pomocí portálu Azure
+## <a name="register-an-app-by-using-the-azure-portal"></a>Registrace aplikace pomocí Azure Portal
 
 > [!NOTE]
-> Portál, který se má použít, se liší v závislosti na tom, jestli vaše aplikace běží ve veřejném cloudu Microsoft Azure nebo v národním nebo suverénním cloudu. Další informace naleznete v tématu [Národní cloudy](./authentication-national-cloud.md#app-registration-endpoints).
+> Portál, který se má použít, se liší v závislosti na tom, jestli vaše aplikace běží ve veřejném cloudu Microsoft Azure nebo v národním nebo svrchovaném cloudu. Další informace najdete v tématu [národní cloudy](./authentication-national-cloud.md#app-registration-endpoints).
 
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft. Případně se přihlaste k portálu Azure, který si vyberete pro národní cloud.
-1. Pokud váš účet umožňuje přístup k více než jednomu tenantovi, vyberte svůj účet v pravém horním rohu. Potom nastavte relaci portálu na požadovaný klient Azure Active Directory (Azure AD).
-1. V levém podokně vyberte službu **Azure Active Directory** a pak vyberte Registrace >  **aplikací****Nová registrace**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft. Případně se přihlaste k Azure Portal výběru pro národní Cloud.
+1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte svůj účet v pravém horním rohu. Potom nastavte relaci portálu na požadovaného tenanta Azure Active Directory (Azure AD).
+1. V levém podokně vyberte službu **Azure Active Directory** a pak vyberte **Registrace aplikací** > **Nová registrace**.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
-   1. Zvolte podporované typy účtů pro vaši aplikaci. (Viz [Podporované typy účtů](./v2-supported-account-types.md).)
-   1. V části **Název** zadejte smysluplný název aplikace, který se uživatelům aplikace zobrazí. Zadejte například **aspNetCore-WebApp**.
-   1. Do **identifikátoru URI přesměrování**přidejte typ aplikace a cíl identifikátoru URI, který bude po úspěšném ověřování přijímat vrácené odpovědi tokenů. Zadejte například . **https://localhost:44321** Potom vyberte **Registrovat**.
-1. Vyberte nabídku **Ověřování** a přidejte následující informace:
-   1. Do pole Adresa **https://localhost:44321/signin-oidc** URL **odpovědi**přidejte typ **Web**.
-   1. V části **Upřesnit nastavení** nastavte adresu **https://localhost:44321/signout-oidc**URL **odhlášení** na adresu .
+   1. Vyberte podporované typy účtů pro vaši aplikaci. (Viz [podporované typy účtů](./v2-supported-account-types.md).)
+   1. V části **název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace. Například zadejte **AspNetCore-WebApp**.
+   1. Pro **identifikátor URI přesměrování**přidejte typ aplikace a cíl identifikátoru URI, který bude po úspěšném ověření akceptovat vrácené odpovědi na tokeny. Zadejte **https://localhost:44321**například. Pak vyberte **Registrovat**.
+1. Vyberte nabídku **ověřování** a přidejte následující informace:
+   1. Pro **adresu URL odpovědi**přidejte **https://localhost:44321/signin-oidc** typ **Web**.
+   1. V části **Upřesnit nastavení** nastavte **adresu URL pro odhlášení** na **https://localhost:44321/signout-oidc**.
    1. V části **Implicitní udělení** vyberte **Tokeny ID**.
    1. Vyberte **Uložit**.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-1. Po zobrazení **stránky Registrovat přihlášku** zadejte registrační údaje vaší přihlášky:
-   1. Zvolte podporované typy účtů pro vaši aplikaci. (Viz [Podporované typy účtů](./v2-supported-account-types.md).)
-   1. V části **Název** zadejte smysluplný název aplikace, který se uživatelům aplikace zobrazí. Zadejte například **MailApp-openidconnect-v2**.
-   1. V části **Přesměrování identifikátoru URI (volitelné)** vyberte v poli se seznamem **možnost Web** a zadejte následující identifikátor URI přesměrování: **https://localhost:44326/**.
+1. Jakmile se zobrazí **Stránka Registrovat aplikaci** , zadejte informace o registraci vaší aplikace:
+   1. Vyberte podporované typy účtů pro vaši aplikaci. (Viz [podporované typy účtů](./v2-supported-account-types.md).)
+   1. V části **název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace. Zadejte například **MailApp-openidconnect-v2**.
+   1. V části **identifikátor URI přesměrování (volitelné)** vyberte v poli se seznamem možnost **Web** a zadejte následující identifikátor URI pro přesměrování **https://localhost:44326/**:.
 1. Výběrem možnosti **Registrovat** aplikaci vytvořte.
-1. Vyberte nabídku **Ověřování.**
-1. V části **Upřesnit nastavení** | **implicitní udělení** vyberte **Tokeny ID**. Tato ukázka vyžaduje [implicitní tok grantu,](v2-oauth2-implicit-grant-flow.md) který má být povolen pro přihlášení uživatele.
+1. Vyberte nabídku **ověřování** .
+1. V části **Upřesnit nastavení** | **implicitní udělení** vyberte možnost **tokeny ID**. Tato ukázka vyžaduje, aby byl [tok implicitního udělení](v2-oauth2-implicit-grant-flow.md) povolen pro přihlášení uživatele.
 1. Vyberte **Uložit**.
 
 # <a name="java"></a>[Java](#tab/java)
 
-1. Po zobrazení **stránky Registrovat aplikaci** zadejte zobrazovaný název aplikace. Zadejte například **java-webapp**.
-1. Vyberte **Účty v libovolném organizačním adresáři a osobních účtech Microsoft (např. skype, xbox, Outlook.com)** a pak vyberte **Webová aplikace / ROZHRANÍ API** pro typ **aplikace**.
-1. Chcete-li aplikaci zaregistrovat, vyberte **možnost Registrovat.**
-1. V levé nabídce vyberte **Možnost Ověřování**. V části **Přesměrovat identifikátory URI**vyberte **možnost Web**.
+1. Po zobrazení **stránky Registrovat aplikaci** zadejte zobrazovaný název aplikace. Zadejte například **Java-WebApp**.
+1. Vyberte **účty v libovolném organizačním adresáři a osobním účtu Microsoft (např. Skype, Xbox, Outlook.com)** a pak jako **Typ aplikace**vyberte **Webová aplikace/rozhraní API** .
+1. Vyberte **Registrovat** pro registraci aplikace.
+1. V nabídce vlevo vyberte **ověřování**. V části **identifikátory URI pro přesměrování**vyberte **Web**.
 
-1. Zadejte dvě identifikátory URI přesměrování: jednu pro přihlašovací stránku a jednu pro stránku grafu. Pro obě použijte stejný hostitel a číslo portu, následovaný **/msal4jsample/secure/aad** pro přihlašovací stránku a **msal4jsample/graph/me** pro stránku s informacemi o uživateli.
+1. Zadejte dva identifikátory URI pro přesměrování: jeden pro přihlašovací stránku a jeden pro stránku grafu. U obou použijte stejný hostitel a číslo portu následovaný **/msal4jsample/Secure/AAD** pro přihlašovací stránku a **msal4jsample/Graph/já** na stránce informace o uživateli.
 
    Ve výchozím nastavení ukázka používá:
 
    - **http://localhost:8080/msal4jsample/secure/aad**
    - **http://localhost:8080/msal4jsample/graph/me**
 
-  Potom vyberte **Uložit**.
+  Pak vyberte **Uložit**.
 
-1. V nabídce **vyberte & tajné kódy.**
-1. V části **Tajné klíče klienta** vyberte **Nový tajný klíč klienta**a potom:
+1. V nabídce vyberte **certifikáty & tajných** kódů.
+1. V části **tajné klíče klienta** vyberte **nový tajný klíč klienta**a potom:
 
    1. Zadejte popis klíče.
-   1. Vyberte dobu trvání klíče **Do 1 roku**.
+   1. Vyberte dobu trvání klíče **v 1 roce**.
    1. Vyberte **Přidat**.
-   1. Když se zobrazí hodnota klíče, zkopírujte ji na později. Tato hodnota nebude znovu zobrazena ani nebude moci být načíst jiným způsobem.
+   1. Jakmile se zobrazí hodnota klíče, zkopírujte ji pro pozdější verzi. Tato hodnota se znovu nezobrazí nebo ji nebude možné získat jakýmkoli jiným způsobem.
 
 # <a name="python"></a>[Python](#tab/python)
 
-1. Po zobrazení **stránky Registrovat přihlášku** zadejte registrační údaje vaší přihlášky:
-   1. V části **Název** zadejte smysluplný název aplikace, který se uživatelům aplikace zobrazí. Zadejte například **python-webapp**.
-   1. Změňte **podporované typy účtů** na účty v **libovolném organizačním adresáři a osobních účtech Microsoftu (např Outlook.com.**
-   1. V části **Přesměrování identifikátoru URI (volitelné)** vyberte v poli se seznamem **možnost Web** a zadejte následující identifikátor URI přesměrování: **http://localhost:5000/getAToken**.
+1. Jakmile se zobrazí **Stránka Registrovat aplikaci** , zadejte informace o registraci vaší aplikace:
+   1. V části **název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace. Zadejte například **Python-WebApp**.
+   1. Změňte **podporované typy účtů** na **účty v jakémkoli adresáři organizace a na osobních účtech Microsoft (např. Skype, Xbox, Outlook.com)**.
+   1. V části **identifikátor URI přesměrování (volitelné)** vyberte v poli se seznamem možnost **Web** a zadejte následující identifikátor URI pro přesměrování **http://localhost:5000/getAToken**:.
 1. Výběrem možnosti **Registrovat** aplikaci vytvořte.
-1. Na stránce **Přehled** aplikace najděte hodnotu **ID aplikace (klienta)** a zaznamenejte ji na později. Budete ji potřebovat ke konfiguraci konfiguračního souboru sady Visual Studio pro tento projekt.
-1. V levé nabídce vyberte **možnost Certifikáty & tajných kódů**.
-1. V části **Tajné klíče klienta** vyberte **Nový tajný klíč klienta**a potom:
+1. Na stránce **Přehled** aplikace vyhledejte hodnotu **ID aplikace (klienta)** a zaznamenejte ji pro pozdější použití. Budete ho potřebovat ke konfiguraci konfiguračního souboru sady Visual Studio pro tento projekt.
+1. V nabídce vlevo vyberte **certifikáty & tajných**kódů.
+1. V části **tajné klíče klienta** vyberte **nový tajný klíč klienta**a potom:
 
    1. Zadejte popis klíče.
-   1. Vyberte klíčovou dobu trvání **Do 1 roku**.
+   1. Vyberte dobu trvání klíče **v intervalu 1 roku**.
    1. Vyberte **Přidat**.
    1. Když se zobrazí hodnota klíče, zkopírujte ji. Budete ho potřebovat později.
 ---
@@ -112,12 +112,12 @@ Tyto odkazy můžete použít k zavádění vytvoření webové aplikace:
 ## <a name="register-an-app-by-using-powershell"></a>Registrace aplikace pomocí PowerShellu
 
 > [!NOTE]
-> V současné době Azure AD PowerShell vytváří aplikace s pouze následující podporované typy účtů:
+> V současné době Azure AD PowerShell vytváří aplikace s pouze těmito podporovanými typy účtů:
 >
-> - MyOrg (pouze účty v tomto organizačním adresáři)
-> - AnyOrg (účty v libovolném organizačním adresáři)
+> - MyOrg (jenom účty v této organizační složce)
+> - AnyOrg (účty v jakékoli organizační složce)
 >
-> Můžete vytvořit aplikaci, která se uživatelům přihlašuje k jejich osobním účtům Microsoft (například Skype, Xbox nebo Outlook.com). Nejprve vytvořte víceklientské aplikace. Podporované typy účtů jsou účty v libovolném organizačním adresáři. Potom změňte `signInAudience` vlastnost v manifestu aplikace z portálu Azure. Další informace naleznete v [kroku 1.3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) v kurzu ASP.NET Core. Tento krok můžete zobecnit na webové aplikace v libovolném jazyce.
+> Můžete vytvořit aplikaci, která se přihlásí uživatelům pomocí svých osobních účtů Microsoft (například Skype, Xbox nebo Outlook.com). Nejdřív vytvořte víceklientské aplikace. Podporované typy účtů jsou účty v jakémkoli organizačním adresáři. Pak změňte `signInAudience` vlastnost v manifestu aplikace z Azure Portal. Další informace najdete v tématu [krok 1,3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) v kurzu ASP.NET Core. Tento krok můžete zobecnit do Web Apps v libovolném jazyce.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,6 +1,6 @@
 ---
-title: 'Synchronizace služby Azure AD Connect: Konfigurace filtrování | Dokumenty společnosti Microsoft'
-description: Vysvětluje, jak nakonfigurovat filtrování v synchronizaci Azure AD Connect.
+title: 'Azure AD Connect synchronizace: Konfigurace filtrování | Microsoft Docs'
+description: Vysvětluje, jak nakonfigurovat filtrování v Azure AD Connect synchronizaci.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,125 +17,125 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 983699dfbfe3e8fa332da4810d1514a11029077f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79261096"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Synchronizace Azure AD Connect: Konfigurace filtrování
-Pomocí filtrování můžete řídit, které objekty se zobrazí ve službě Azure Active Directory (Azure AD) z místního adresáře. Výchozí konfigurace přebírá všechny objekty ve všech doménách v nakonfigurovaných doménových strukturách. Obecně se jedná o doporučenou konfiguraci. Uživatelé, kteří používají úlohy Office 365, jako je Exchange Online a Skype pro firmy, mají prospěch z kompletního globálního seznamu adres, aby mohli posílat e-maily a volat všem. S výchozí konfigurací by měli stejné zkušenosti, které by měli s místní implementací Exchange nebo Lyncu.
+Pomocí filtrování můžete určit, které objekty se zobrazí v Azure Active Directory (Azure AD) z místního adresáře. Výchozí konfigurace přebírá všechny objekty ve všech doménách v konfigurovaných doménových strukturách. Obecně platí, že se jedná o doporučenou konfiguraci. Uživatelé, kteří používají úlohy Office 365, jako je Exchange Online a Skype pro firmy, můžou využít kompletní globální seznam adres, aby mohli posílat e-maily a volat všechny. S výchozí konfigurací by měly stejné prostředí jako při místní implementaci Exchange nebo Lyncu.
 
-V některých případech však musíte provést některé změny výchozí konfigurace. Zde je několik příkladů:
+V některých případech ale potřebujete udělat změny ve výchozí konfiguraci. Zde je několik příkladů:
 
-* Plánujete použít [topologii adresáře služby Multi Azure AD](plan-connect-topologies.md#each-object-only-once-in-an-azure-ad-tenant). Potom je třeba použít filtr pro řízení objektů, které jsou synchronizovány s určitým adresářem Azure AD.
-* Spustíte pilotní projekt pro Azure nebo Office 365 a chcete jenom podmnožinu uživatelů ve službě Azure AD. V malém pilotním projektu není důležité mít úplný globální seznam adres, který předvede funkce.
-* Máte mnoho účtů služeb a dalších neosobních účtů, které nechcete ve službě Azure AD.
-* Z důvodů dodržování předpisů neodstraníte žádné uživatelské účty místně. Jen je znemožníš. Ale ve službě Azure AD chcete, aby byly k dispozici pouze aktivní účty.
+* Plánujete používání [topologie adresářů služby Multi-Azure AD](plan-connect-topologies.md#each-object-only-once-in-an-azure-ad-tenant). Pak je nutné použít filtr k řízení, které objekty jsou synchronizovány do konkrétního adresáře služby Azure AD.
+* Spustíte pilotní projekt pro Azure nebo Office 365 a budete chtít jenom podmnožinu uživatelů v Azure AD. V případě malého pilotního projektu není důležité mít úplný globální seznam adres k předvedení funkce.
+* Máte spoustu účtů služeb a dalších nepracovních účtů, které v Azure AD nechcete.
+* Z důvodu dodržování předpisů neodstraňujte žádné uživatelské účty v místním prostředí. Zakážete je jenom vy. Ale v Azure AD chcete mít k dispozici jenom aktivní účty.
 
 Tento článek popisuje, jak nakonfigurovat různé metody filtrování.
 
 > [!IMPORTANT]
-> Microsoft nepodporuje úpravy ani provoz synchronizace služby Azure AD Connect mimo formálně zdokumentované akce. Každá z těchto akcí může mít za následek nekonzistentní nebo nepodporovaný stav synchronizace Azure AD Connect. V důsledku toho společnost Microsoft nemůže poskytovat technickou podporu pro tato nasazení.
+> Microsoft nepodporuje úpravy ani provoz synchronizace služby Azure AD Connect mimo formálně zdokumentované akce. Některé z těchto akcí můžou mít za následek nekonzistentní nebo nepodporovaný stav Azure AD Connect synchronizace. V důsledku toho společnost Microsoft nemůže poskytnout technickou podporu pro taková nasazení.
 
 ## <a name="basics-and-important-notes"></a>Základy a důležité poznámky
-V synchronizaci Azure AD Connect můžete filtrování povolit kdykoli. Pokud začnete s výchozí konfigurací synchronizace adresářů a pak nakonfigurujete filtrování, objekty, které jsou odfiltrovány, se již nebudou synchronizovat do služby Azure AD. Z důvodu této změny všechny objekty ve službě Azure AD, které byly dříve synchronizovány, ale byly pak filtrovány jsou odstraněny ve službě Azure AD.
+V Azure AD Connect synchronizace můžete povolit filtrování kdykoli. Pokud začnete s výchozí konfigurací synchronizace adresářů a pak nakonfigurujete filtrování, objekty, které jsou odfiltrované, se už nebudou synchronizovat do Azure AD. Z důvodu této změny jsou všechny objekty v Azure AD, které byly dříve synchronizovány, ale byly filtrovány, odstraněny ve službě Azure AD.
 
-Než začnete provádět změny filtrování, ujistěte se, že [jste naplánovanou úlohu zakázali,](#disable-the-scheduled-task) abyste neomylně neexportovali změny, které jste ještě neověřili, že jsou správné.
+Než začnete provádět změny filtrování, ujistěte se, že jste [naplánovali úlohu](#disable-the-scheduled-task) , abyste omylem neexportovali změny, které jste ještě neověřili, aby byly správné.
 
-Vzhledem k tomu, že filtrování můžete odebrat mnoho objektů současně, chcete se ujistit, že nové filtry jsou správné před zahájením exportu všechny změny azure ad. Po dokončení kroků konfigurace důrazně doporučujeme, abyste před exportem a prováděním změn ve službě Azure AD postupovali podle [ověřovacích kroků.](#apply-and-verify-changes)
+Vzhledem k tomu, že filtrování může odebrat více objektů najednou, chcete zajistit, aby nové filtry byly správné, než začnete s exportem změn v Azure AD. Po dokončení kroků konfigurace důrazně doporučujeme, abyste před exportem a provedením změn ve službě Azure AD provedli [Postup ověření](#apply-and-verify-changes) .
 
-Chcete-li zabránit náhodnému odstranění mnoha objektů, je funkce["prevent accidental deletes"](how-to-connect-sync-feature-prevent-accidental-deletes.md)ve výchozím nastavení zapnuta. Pokud odstraníte mnoho objektů z důvodu filtrování (500 ve výchozím nastavení), je třeba postupovat podle kroků v tomto článku povolit odstranění přejít do Azure AD.
+Chcete-li chránit před odstraněním více objektů havárií, je ve výchozím nastavení zapnuta funkce "[zabránit nechtěnému odstranění](how-to-connect-sync-feature-prevent-accidental-deletes.md)". Pokud odstraníte mnoho objektů z důvodu filtrování (standardně 500), je nutné postupovat podle kroků v tomto článku, které umožní, aby se odstranění procházela do služby Azure AD.
 
-Pokud používáte sestavení před listopadem 2015[(1.0.9125](reference-connect-version-history.md#1091250)), proveďte změnu konfigurace filtru a použijte synchronizaci hash hesla, musíte po dokončení konfigurace spustit úplnou synchronizaci všech hesel. Postup spuštění úplné synchronizace hesla naleznete v [tématu Aktivace úplné synchronizace všech hesel](tshoot-connect-password-hash-synchronization.md#trigger-a-full-sync-of-all-passwords). Pokud používáte sestavení 1.0.9125 nebo novější, pak pravidelná **akce úplné synchronizace** také vypočítá, zda mají být hesla synchronizována a zda tento krok navíc již není vyžadován.
+Pokud použijete Build před 2015. listopadu ([1.0.9125](reference-connect-version-history.md#1091250)), proveďte změnu konfigurace filtru a použijte synchronizaci hodnot hash hesel, pak budete muset po dokončení konfigurace aktivovat úplnou synchronizaci všech hesel. Postup, jak spustit úplnou synchronizaci s heslem, najdete v tématu [Aktivace úplné synchronizace všech hesel](tshoot-connect-password-hash-synchronization.md#trigger-a-full-sync-of-all-passwords). Pokud jste na Build 1.0.9125 nebo novějším, pak pravidelná akce **úplné synchronizace** také vypočítá, jestli se mají hesla synchronizovat, a pokud už tento další krok nepotřebujete.
 
-Pokud byly **objekty uživatelů** neúmyslně odstraněny ve službě Azure AD z důvodu chyby filtrování, můžete znovu vytvořit uživatelské objekty ve službě Azure AD odebráním konfigurace filtrování. Pak můžete znovu synchronizovat adresáře. Tato akce obnoví uživatele z koše ve službě Azure AD. Nelze však obnovit jiné typy objektů. Pokud například omylem odstraníte skupinu zabezpečení, která byla použita pro acl prostředku, skupina a její seznamy Řízení pádu nelze obnovit.
+Pokud se **uživatelské** objekty ve službě Azure AD omylem odstranily kvůli chybě filtrování, můžete objekty uživatelů v Azure AD znovu vytvořit odebráním konfigurací filtrování. Potom můžete adresáře znovu synchronizovat. Tato akce obnoví uživatele z odpadkového koše ve službě Azure AD. Nemůžete však zrušit odstranění jiných typů objektů. Pokud například omylem odstraníte skupinu zabezpečení a použijete ji k prostředku ACL, skupinu a její seznamy ACL nelze obnovit.
 
-Azure AD Connect odstraní pouze objekty, které kdysi považuje za v oboru. Pokud existují objekty ve službě Azure AD, které byly vytvořeny jiným synchronizačním strojem a tyto objekty nejsou v oboru, přidání filtrování je neodebere. Pokud například začnete se serverem DirSync, který vytvořil úplnou kopii celého adresáře ve službě Azure AD, a nainstalujete nový synchronizační server Azure AD Connect paralelně s povoleným filtrováním od začátku, Azure AD Connect neodebere další objekty. které jsou vytvořeny DirSync.
+Azure AD Connect odstraní pouze objekty, které mají za následek, že jsou v oboru. Pokud jsou v Azure AD objekty, které byly vytvořené jiným synchronizačním modulem, a tyto objekty nejsou v oboru, přidání filtrování je neodstraní. Například pokud začnete se serverem DirSync, který vytvořil úplnou kopii celého adresáře ve službě Azure AD, a nainstalujete nový Azure AD Connect synchronizační Server paralelně s filtrováním povoleným od začátku, Azure AD Connect neodstraní nadbytečné objekty, které jsou vytvořené pomocí DirSync.
 
-Konfigurace filtrování se zachová při instalaci nebo upgradu na novější verzi služby Azure AD Connect. Je vždy osvědčeným postupem ověřit, že konfigurace nebyla neúmyslně změněna po upgradu na novější verzi před spuštěním prvního cyklu synchronizace.
+Konfigurace filtrování se zachová při instalaci nebo upgradu na novější verzi Azure AD Connect. Vždy je vhodné ověřit, že se konfigurace po upgradu na novější verzi ještě před spuštěním prvního synchronizačního cyklu neúmyslně změnila.
 
-Pokud máte více než jednu doménovou strukturu, je nutné použít konfigurace filtrování, které jsou popsány v tomto tématu, pro každou doménovou strukturu (za předpokladu, že chcete stejnou konfiguraci pro všechny z nich).
+Pokud máte více než jednu doménovou strukturu, musíte použít konfigurace filtrování popsané v tomto tématu pro každou doménovou strukturu (za předpokladu, že chcete stejnou konfiguraci pro všechny z nich).
 
-### <a name="disable-the-scheduled-task"></a>Zakázání naplánované úlohy
-Chcete-li zakázat předdefinovaný plánovač, který každých 30 minut spouští cyklus synchronizace, postupujte takto:
+### <a name="disable-the-scheduled-task"></a>Zakázat naplánovanou úlohu
+Chcete-li zakázat předdefinovaný Plánovač, který spouští cyklus synchronizace každých 30 minut, postupujte podle následujících kroků:
 
-1. Přejděte na výzvu powershellu.
-2. Spuštěním `Set-ADSyncScheduler -SyncCycleEnabled $False` zakážete plánovač.
-3. Proveďte změny, které jsou popsány v tomto článku.
-4. Chcete-li plánovač znovu povolit, spusťte `Set-ADSyncScheduler -SyncCycleEnabled $True` jej.
+1. Přejít na příkazový řádek PowerShellu.
+2. Spusťte `Set-ADSyncScheduler -SyncCycleEnabled $False` příkaz pro zakázání plánovače.
+3. Proveďte změny popsané v tomto článku.
+4. Spusťte `Set-ADSyncScheduler -SyncCycleEnabled $True` příkaz a znovu povolte Plánovač.
 
-**Pokud používáte sestavení Azure AD Connect před 1.1.105.0**  
-Chcete-li zakázat naplánovanou úlohu, která každé tři hodiny spustí cyklus synchronizace, postupujte takto:
+**Použijete-li sestavení Azure AD Connect před 1.1.105.0**  
+Pokud chcete zakázat naplánovanou úlohu, která spouští synchronizační cyklus každé tři hodiny, postupujte podle těchto kroků:
 
-1. Spusťte **plánovač úloh** z nabídky **Start.**
-2. Přímo v části **Knihovna plánovače úloh**vyhledejte úlohu s názvem **Plánovač synchronizace Azure AD**, klepněte pravým tlačítkem myši a vyberte **zakázat**.  
+1. Spusťte **Plánovač úloh** v nabídce **Start** .
+2. Přímo v rámci **knihovny Plánovač úloh**vyhledejte úkol s názvem **Azure AD Sync Scheduler**, klikněte pravým tlačítkem myši a vyberte možnost **Zakázat**.  
    ![Plánovač úloh](./media/how-to-connect-sync-configure-filtering/taskscheduler.png)  
-3. Nyní můžete provádět změny konfigurace a spustit synchronizační modul ručně z konzoly **Synchronizačního správce služeb.**
+3. Nyní můžete provést změny konfigurace a spustit synchronizační modul ručně z konzoly **Synchronization Service Manager** .
 
-Po dokončení všech změn filtrování nezapomeňte vrátit a úkol znovu **povolit.**
+Až dokončíte všechny změny filtrování, nezapomeňte se vrátit zpátky a znovu **Povolit** úlohu.
 
 ## <a name="filtering-options"></a>Možnosti filtrování
-Na nástroj pro synchronizaci adresářů můžete použít následující typy konfigurace filtrování:
+Pro nástroj pro synchronizaci adresářů můžete použít následující typy konfigurace filtrování:
 
-* [**Na základě skupiny**](#group-based-filtering): Filtrování založené na jedné skupině lze konfigurovat pouze při počáteční instalaci pomocí průvodce instalací.
-* [**Na základě domény**](#domain-based-filtering): Pomocí této možnosti můžete vybrat, které domény se synchronizují s Azure AD. Můžete také přidat a odebrat domény z konfigurace synchronizačního modulu při provádění změn místní infrastruktury po instalaci synchronizace Azure AD Connect.
-* [**Organizační jednotka (OU)-based:**](#organizational-unitbased-filtering)Pomocí této možnosti můžete vybrat, které organizační jednotky synchronizovat s Azure AD. Tato volba je pro všechny typy objektů ve vybraných vou.
-* [**Na základě atributů**](#attribute-based-filtering): Pomocí této volby můžete filtrovat objekty na základě hodnot atributů na objektech. Můžete také mít různé filtry pro různé typy objektů.
+* [**Založené na skupinách**](#group-based-filtering): filtrování založené na jedné skupině se dá nakonfigurovat jenom při počáteční instalaci pomocí Průvodce instalací.
+* [**Založené na doméně**](#domain-based-filtering): pomocí této možnosti můžete vybrat domény, které se synchronizují do Azure AD. Domény můžete také přidat a odebrat z konfigurace synchronizačního prostředí, když provedete změny v místní infrastruktuře po instalaci Azure AD Connect synchronizace.
+* [**Organizační jednotka (OU)**](#organizational-unitbased-filtering): pomocí této možnosti můžete vybrat, které organizační jednotky se synchronizují do Azure AD. Tato možnost je určena pro všechny typy objektů ve vybraných organizačních jednotkách.
+* [**Založené na atributech**](#attribute-based-filtering): pomocí této možnosti můžete objekty filtrovat na základě hodnot atributů objektů. Můžete mít také různé filtry pro různé typy objektů.
 
-Můžete použít více možností filtrování současně. Můžete například použít filtrování založené na ou k zahrnutí objektů do jedné ou. Současně můžete použít filtrování založené na atributech k dalšímu filtrování objektů. Při použití více metod filtrování filtry používají logické "A" mezi filtry.
+Můžete použít více možností filtrování současně. Filtrování na základě organizační jednotky můžete například použít pouze k zahrnutí objektů do jedné organizační jednotky. Ve stejnou chvíli můžete použít filtrování založené na atributech k dalšímu filtrování objektů. Při použití více metod filtrování používá filtr logické a mezi filtry.
 
 ## <a name="domain-based-filtering"></a>Filtrování založené na doméně
-Tato část obsahuje postup konfigurace filtru domény. Pokud jste po instalaci služby Azure AD Connect přidali nebo odebrali domény v doménové struktuře, budete muset také aktualizovat konfiguraci filtrování.
+V této části najdete postup konfigurace filtru domény. Pokud jste do doménové struktury přidali nebo odebrali domény po instalaci Azure AD Connect, je také nutné aktualizovat konfiguraci filtrování.
 
-Upřednostňovaným způsobem změny filtrování podle domény je spuštění průvodce instalací a změna [filtrování domény a ou.](how-to-connect-install-custom.md#domain-and-ou-filtering) Průvodce instalací automatizuje všechny úkoly, které jsou popsány v tomto tématu.
+Upřednostňovaným způsobem, jak změnit filtrování založené na doméně, je spuštění Průvodce instalací a změna [filtrování domén a organizačních jednotek](how-to-connect-install-custom.md#domain-and-ou-filtering). Průvodce instalací automatizuje všechny úlohy popsané v tomto tématu.
 
-Tyto kroky byste měli postupovat pouze v případě, že z nějakého důvodu nemůžete spustit průvodce instalací.
+Pokud z nějakého důvodu nemůžete spustit Průvodce instalací, měli byste postupovat podle těchto kroků.
 
-Konfigurace filtrování podle domény se skládá z těchto kroků:
+Konfigurace filtrování založené na doméně se skládá z těchto kroků:
 
 1. Vyberte domény, které chcete zahrnout do synchronizace.
-2. Pro každou přidanou a odebranou doménu upravte profily spuštění.
-3. [Použít a ověřit změny](#apply-and-verify-changes).
+2. U každé přidané a odebrané domény upravte profily spuštění.
+3. [Použijte a ověřte změny](#apply-and-verify-changes).
 
-### <a name="select-the-domains-to-be-synchronized"></a>Vyberte domény, které mají být synchronizovány.
-Existují dva způsoby, jak vybrat domény, které mají být synchronizovány:
-    - Použití služby synchronizace
-    - Pomocí průvodce Azure AD Connect.
+### <a name="select-the-domains-to-be-synchronized"></a>Vyberte domény, které chcete synchronizovat.
+Existují dva způsoby, jak vybrat domény k synchronizaci:
+    - Použití synchronizační služby
+    - Pomocí Průvodce Azure AD Connect.
 
 
-#### <a name="select-the-domains-to-be-synchronized-using-the-synchronization-service"></a>Vyberte domény, které mají být synchronizovány pomocí služby synchronizace.
-Chcete-li nastavit filtr domény, postupujte takto:
+#### <a name="select-the-domains-to-be-synchronized-using-the-synchronization-service"></a>Vyberte domény, které se mají synchronizovat pomocí synchronizační služby.
+Chcete-li nastavit filtr domény, proveďte následující kroky:
 
-1. Přihlaste se k serveru, na který běží synchronizace Azure AD Connect, pomocí účtu, který je členem skupiny zabezpečení **ADSyncAdmins.**
-2. **Spusťte službu synchronizace** z nabídky **Start.**
-3. Vyberte **Konektory**a v seznamu **Konektory** vyberte konektor s typem **Služby Active Directory Domain Services**. V **okně Akce**vyberte možnost **Vlastnosti**.  
+1. Přihlaste se k serveru, na kterém běží Azure AD Connect synchronizace pomocí účtu, který je členem skupiny zabezpečení **ADSyncAdmins** .
+2. Spusťte **synchronizační službu** z nabídky **Start** .
+3. Vyberte možnost **konektory**a v seznamu **konektory** vyberte konektor s typem **Active Directory Domain Services**. V **Možnosti akce**vyberte **vlastnosti**.  
    ![Vlastnosti konektoru](./media/how-to-connect-sync-configure-filtering/connectorproperties.png)  
-4. Klepněte na **tlačítko Konfigurovat oddíly adresáře**.
-5. V seznamu **Vybrat oddíly adresáře** vyberte a zrušte výběr domén podle potřeby. Ověřte, zda jsou vybrány pouze oddíly, které chcete synchronizovat.  
+4. Klikněte na **Konfigurovat oddíly adresáře**.
+5. V seznamu **Vybrat oddíly adresářů** vyberte a zrušte výběr domén podle potřeby. Ověřte, zda jsou vybrány pouze oddíly, které chcete synchronizovat.  
    ![Oddíly](./media/how-to-connect-sync-configure-filtering/connectorpartitions.png)  
-   Pokud jste změnili místní infrastrukturu služby Active Directory a přidali nebo odebrali domény z doménové struktury, klikněte na tlačítko **Aktualizovat** a získejte aktualizovaný seznam. Při aktualizaci budete požádáni o pověření. Zadejte všechna pověření s přístupem pro čtení do služby Active Directory systému Windows Server. Nemusí to být uživatel, který je předem vyplněn v dialogovém okně.  
-   ![Je nutná aktualizace.](./media/how-to-connect-sync-configure-filtering/refreshneeded.png)  
-6. Až budete hotovi, zavřete dialogové okno **Vlastnosti** klepnutím na **tlačítko OK**. Pokud jste odebrali domény z doménové struktury, vyskakovací okno se zprávou říká, že doména byla odebrána a tato konfigurace bude vyčištěna.
-7. Pokračujte v úpravě profilů spuštění.
+   Pokud jste změnili místní infrastrukturu služby Active Directory a přidali nebo odebrali domény z doménové struktury, klikněte na tlačítko **aktualizovat** a získejte aktualizovaný seznam. Po obnovení budete požádáni o zadání přihlašovacích údajů. Poskytněte jakékoli přihlašovací údaje s oprávněním ke čtení pro službu Windows Server Active Directory. Nemusí se jednat o uživatele, který je předem vyplněný v dialogovém okně.  
+   ![Nutná aktualizace](./media/how-to-connect-sync-configure-filtering/refreshneeded.png)  
+6. Až skončíte, zavřete dialogové okno **vlastnosti** kliknutím na **OK**. Pokud jste z doménové struktury odebrali domény, zobrazí se automaticky otevírané okno se zprávou, že se odebrala doména a tato konfigurace se vyčistí.
+7. Pokračujte v úpravách profilů spuštění.
 
-#### <a name="select-the-domains-to-be-synchronized-using-the-azure-ad-connect-wizard"></a>Vyberte domény, které mají být synchronizovány pomocí průvodce Azure AD Connect
-Chcete-li nastavit filtr domény, postupujte takto:
+#### <a name="select-the-domains-to-be-synchronized-using-the-azure-ad-connect-wizard"></a>Vyberte domény, které se mají synchronizovat pomocí Průvodce Azure AD Connect.
+Chcete-li nastavit filtr domény, proveďte následující kroky:
 
-1.  Spuštění průvodce Azure AD Connect
+1.  Spuštění Průvodce Azure AD Connect
 2.  Klikněte na **Konfigurovat**.
-3.  Vyberte **Možnosti vlastní synchronizace** a klepněte na tlačítko **Další**.
+3.  Vyberte možnost **přizpůsobit možnosti synchronizace** a klikněte na tlačítko **Další**.
 4.  Zadejte svoje přihlašovací údaje služby Azure AD.
-5.  Na obrazovce **Připojené adresáře** klepněte na **tlačítko Další**.
-6.  Na **stránce filtrování domény a ou položky** klepněte na **tlačítko Aktualizovat**.  Nové domény se nyní zobrazují a smazané domény zmizí.
+5.  Na obrazovce **připojené adresáře** klikněte na **Další**.
+6.  Na **stránce filtrování domén a organizačních jednotek** klikněte na **aktualizovat**.  Nové domény se nyní zobrazí a odstraněné domény zmizí.
    ![Oddíly](./media/how-to-connect-sync-configure-filtering/update2.png)  
 
 ### <a name="update-the-run-profiles"></a>Aktualizace profilů spuštění
-Pokud jste aktualizovali filtr domény, musíte také aktualizovat profily spuštění.
+Pokud jste aktualizovali svůj doménový filtr, budete také muset aktualizovat profily spuštění.
 
-1. V seznamu **Konektory** zkontrolujte, zda je vybránkonektor, který jste změnili v předchozím kroku. V **aplikaci Actions**vyberte **konfigurovat profily spuštění**.  
-   ![Profily spouštění konektorů 1](./media/how-to-connect-sync-configure-filtering/connectorrunprofiles1.png)  
-2. Vyhledejte a identifikujte následující profily:
+1. V seznamu **konektory** zkontrolujte, zda je zvolen konektor, který jste změnili v předchozím kroku. V **Možnosti akce**vyberte **Konfigurovat profily spuštění**.  
+   ![Profily spuštění konektoru 1](./media/how-to-connect-sync-configure-filtering/connectorrunprofiles1.png)  
+2. Vyhledejte a Identifikujte následující profily:
     * Full Import
     * Úplná synchronizace
     * Rozdílový import
@@ -143,191 +143,191 @@ Pokud jste aktualizovali filtr domény, musíte také aktualizovat profily spuš
     * Export
 3. Pro každý profil upravte **přidané** a **odebrané** domény.
     1. Pro každý z pěti profilů proveďte následující kroky pro každou **přidanou** doménu:
-        1. Vyberte profil spuštění a klepněte na **tlačítko Nový krok**.
-        2. Na stránce **Konfigurovat krok** vyberte v rozevírací nabídce **Typ** typ typu kroku se stejným názvem jako profil, který konfigurujete. Pak klikněte na **Další**.  
-        ![Profily spouštění konektorů 2](./media/how-to-connect-sync-configure-filtering/runprofilesnewstep1.png)  
-        3. Na stránce **Konfigurace konektoru** vyberte v rozevírací nabídce **Oddíl** název domény, kterou jste přidali do filtru domény.  
-        ![Profily spouštění konektorů 3](./media/how-to-connect-sync-configure-filtering/runprofilesnewstep2.png)  
-        4. Chcete-li zavřít dialogové **okno Konfigurovat profil spuštění,** klepněte na tlačítko **Dokončit**.
-    2. Pro každý z pěti profilů proveďte následující kroky pro každou **odebranou** doménu:
+        1. Vyberte profil spuštění a klikněte na **Nový krok**.
+        2. Na stránce **Konfigurovat krok** v rozevírací nabídce **typ** vyberte typ kroku se stejným názvem, jako má profil, který konfigurujete. Pak klikněte na **Další**.  
+        ![Profily spuštění konektoru 2](./media/how-to-connect-sync-configure-filtering/runprofilesnewstep1.png)  
+        3. Na stránce **Konfigurace konektoru** v rozevírací nabídce **oddíl** vyberte název domény, kterou jste přidali do filtru domény.  
+        ![Profily spuštění konektoru 3](./media/how-to-connect-sync-configure-filtering/runprofilesnewstep2.png)  
+        4. Zavřete dialogové okno **Konfigurovat profil spuštění** kliknutím na tlačítko **Dokončit**.
+    2. Pro každý z pěti profilů proveďte následující kroky pro každou z **odebraných** domén:
         1. Vyberte profil spuštění.
-        2. Pokud je **hodnota** atributu **Partition** identifikátorEM GUID, vyberte krok spuštění a klepněte na tlačítko **Odstranit krok**.  
-        ![Profily spouštění konektorů 4](./media/how-to-connect-sync-configure-filtering/runprofilesdeletestep.png)  
-    3. Ověřte změny. Každá doména, kterou chcete synchronizovat, by měla být uvedena jako krok v každém profilu spuštění.
-4. Chcete-li zavřít dialogové **okno Konfigurovat profily spuštění,** klepněte na tlačítko **OK**.
-5.  Chcete-li dokončit konfiguraci, je třeba spustit **úplný import** a **synchronizaci delta**. Pokračovat ve čtení části [Použít a ověřit změny](#apply-and-verify-changes).
+        2. Pokud je **hodnota** atributu **partition** identifikátorem GUID, vyberte krok spuštění a klikněte na **Odstranit krok**.  
+        ![Profily spuštění konektoru 4](./media/how-to-connect-sync-configure-filtering/runprofilesdeletestep.png)  
+    3. Ověřte změnu. Každá doména, kterou chcete synchronizovat, by měla být v jednotlivých profilech spuštění uvedena jako krok.
+4. Chcete-li zavřít dialogové okno **Konfigurovat profily spuštění** , klikněte na tlačítko **OK**.
+5.  Chcete-li dokončit konfiguraci, je nutné spustit **úplný import** a **rozdílovou synchronizaci**. Pokračujte v čtení části [použití a ověření změn](#apply-and-verify-changes).
 
-## <a name="organizational-unitbased-filtering"></a>Filtrování založené na organizačních jednotkách
-Upřednostňovaným způsobem, jak změnit filtrování založené na ou, je spuštění průvodce instalací a změna [filtrování domény a ou.](how-to-connect-install-custom.md#domain-and-ou-filtering) Průvodce instalací automatizuje všechny úkoly, které jsou popsány v tomto tématu.
+## <a name="organizational-unitbased-filtering"></a>Filtrování na základě organizační jednotky
+Upřednostňovaným způsobem, jak změnit filtrování na základě organizační jednotky, je spuštění Průvodce instalací a změna [filtrování domén a organizačních jednotek](how-to-connect-install-custom.md#domain-and-ou-filtering). Průvodce instalací automatizuje všechny úlohy popsané v tomto tématu.
 
-Tyto kroky byste měli postupovat pouze v případě, že z nějakého důvodu nemůžete spustit průvodce instalací.
+Pokud z nějakého důvodu nemůžete spustit Průvodce instalací, měli byste postupovat podle těchto kroků.
 
-Chcete-li nakonfigurovat filtrování založené na organizačních jednotkách, postupujte takto:
+Chcete-li nakonfigurovat filtrování na základě organizační jednotky, proveďte následující kroky:
 
-1. Přihlaste se k serveru, na který běží synchronizace Azure AD Connect, pomocí účtu, který je členem skupiny zabezpečení **ADSyncAdmins.**
-2. **Spusťte službu synchronizace** z nabídky **Start.**
-3. Vyberte **Konektory**a v seznamu **Konektory** vyberte konektor s typem **Služby Active Directory Domain Services**. V **okně Akce**vyberte možnost **Vlastnosti**.  
+1. Přihlaste se k serveru, na kterém běží Azure AD Connect synchronizace pomocí účtu, který je členem skupiny zabezpečení **ADSyncAdmins** .
+2. Spusťte **synchronizační službu** z nabídky **Start** .
+3. Vyberte možnost **konektory**a v seznamu **konektory** vyberte konektor s typem **Active Directory Domain Services**. V **Možnosti akce**vyberte **vlastnosti**.  
    ![Vlastnosti konektoru](./media/how-to-connect-sync-configure-filtering/connectorproperties.png)  
-4. Klepněte na tlačítko **Konfigurovat oddíly adresáře**, vyberte doménu, kterou chcete konfigurovat, a klepněte na **položku Kontejnery**.
-5. Po zobrazení výzvy zadejte všechna pověření s přístupem pro čtení do místní služby Active Directory. Nemusí to být uživatel, který je předem vyplněn v dialogovém okně.
-6. V dialogovém okně **Vybrat kontejnery** zrušte zaškrtnutí ouslužeb, které nechcete synchronizovat s cloudovým adresářem, a klepněte na tlačítko **OK**.  
-   ![Hlavní uživatele v dialogovém okně Vybrat kontejnery](./media/how-to-connect-sync-configure-filtering/ou.png)  
-   * **Kontejner Počítače** by měl být vybrán pro počítače s Windows 10, které mají být úspěšně synchronizovány s Azure AD. Pokud jsou počítače spojené s doménou umístěny v jiných operačních úsech, zkontrolujte, zda jsou vybrány.
+4. Klikněte na **Konfigurovat oddíly adresáře**, vyberte doménu, kterou chcete nakonfigurovat, a potom klikněte na **kontejnery**.
+5. Po zobrazení výzvy zadejte přihlašovací údaje s oprávněním ke čtení vaší místní služby Active Directory. Nemusí se jednat o uživatele, který je předem vyplněný v dialogovém okně.
+6. V dialogovém okně **Vybrat kontejnery** vymažte jednotky, které nechcete synchronizovat s adresářem cloudu, a klikněte na tlačítko **OK**.  
+   ![Organizační jednotky v dialogovém okně vybrat kontejnery](./media/how-to-connect-sync-configure-filtering/ou.png)  
+   * Pro počítače s Windows 10, které se mají úspěšně synchronizovat do Azure AD, by se měl vybrat kontejner **počítače** . Pokud jsou počítače připojené k doméně umístěné v jiných organizačních jednotkách, ujistěte se, že jsou vybrané.
    * Pokud máte několik doménových struktur se vztahem důvěryhodnosti, měl by být vybraný kontejner **ForeignSecurityPrincipals**. Tento kontejner umožňuje řešit členství ve skupinách zabezpečení napříč doménovými strukturami.
-   * Byla by vybrána hlavní výuce **RegisteredDevices,** pokud jste povolili funkci zpětného zápisu zařízení. Pokud používáte jinou funkci zpětného zápisu, například zpětný zápis skupiny, ujistěte se, že jsou vybrána tato umístění.
-   * Vyberte libovolnou jinou organizační organizační organizační položku, ve které jsou umístěni uživatelé, uživatelé, iNetOrgPersons, skupiny, kontakty a počítače. Na obrázku jsou všechny tyto hlavní nyové únoky umístěny v ousu ManagedObjects.
-   * Pokud používáte filtrování založené na skupině, musí být zahrnuta hlavní výtěr, ve které se skupina nachází.
-   * Všimněte si, že můžete nakonfigurovat, zda nové hlavní uživatele, které jsou přidány po dokončení konfigurace filtrování jsou synchronizovány nebo nejsou synchronizovány. Podrobnosti naleznete v další části.
-7. Až budete hotovi, zavřete dialogové okno **Vlastnosti** klepnutím na **tlačítko OK**.
-8. Chcete-li dokončit konfiguraci, je třeba spustit **úplný import** a **synchronizaci delta**. Pokračovat ve čtení části [Použít a ověřit změny](#apply-and-verify-changes).
+   * Pokud jste povolili funkci zpětného zápisu zařízení, měla by být vybraná organizační jednotka **RegisteredDevices** . Pokud používáte jinou funkci zpětného zápisu, třeba zpětný zápis skupiny, ujistěte se, že jsou tato umístění vybraná.
+   * Vyberte všechny ostatní organizační jednotky, kde se nacházejí uživatelé, třídy iNetOrgPerson, skupiny, kontakty a počítače. Na obrázku jsou všechny tyto organizační jednotky umístěny v ManagedObjects organizační jednotce.
+   * Pokud používáte filtrování na základě skupin, musí být zahrnutá organizační jednotka, ve které se skupina nachází.
+   * Všimněte si, že můžete nakonfigurovat, jestli se nové organizační jednotky, které se přidají po dokončení konfigurace filtrování, synchronizují nebo nesynchronizují. Podrobnosti naleznete v další části.
+7. Až skončíte, zavřete dialogové okno **vlastnosti** kliknutím na **OK**.
+8. Chcete-li dokončit konfiguraci, je nutné spustit **úplný import** a **rozdílovou synchronizaci**. Pokračujte v čtení části [použití a ověření změn](#apply-and-verify-changes).
 
-### <a name="synchronize-new-ous"></a>Synchronizace nových operačních dispozičů
-Nové výlonové uživatele, které jsou vytvořeny po konfiguraci filtrování, jsou ve výchozím nastavení synchronizovány. Tento stav je označen zaškrtnutým zaškrtávacím políčkem. Můžete také zrušit výběr některých dílčích ouunů. Chcete-li toto chování získat, klepněte na toto políčko, dokud se nestane bílým s modrým zaškrtnutím (jeho výchozí stav). Potom zrušte výběr všech dílčích ouun, které nechcete synchronizovat.
+### <a name="synchronize-new-ous"></a>Synchronizovat nové organizační jednotky
+Nové organizační jednotky, které se vytvoří po filtrování, se standardně synchronizují. Tento stav je označen vybraným zaškrtávacím políčkem. Můžete také zrušit výběr některých dílčích organizačních jednotek. Chcete-li získat toto chování, klikněte na pole, dokud se neobjeví bíle s modrou značkou zaškrtnutí (výchozí stav). Pak zrušte výběr všech dílčích organizačních jednotek, které nechcete synchronizovat.
 
-Pokud jsou synchronizovány všechny dílčí vou, je pole bílé s modrým zaškrtnutím.  
-![Ou se všemi vybranými poli](./media/how-to-connect-sync-configure-filtering/ousyncnewall.png)
+Pokud jsou všechny dílčí organizační jednotky synchronizovány, je pole bílá s modrou značkou zaškrtnutí.  
+![Organizační jednotka se všemi vybranými poli](./media/how-to-connect-sync-configure-filtering/ousyncnewall.png)
 
-Pokud některé dílčí vou nebyly vybrány, je pole šedé s bílým zaškrtnutím.  
-![Ou s některými sub-OU nevybranými](./media/how-to-connect-sync-configure-filtering/ousyncnew.png)
+Pokud se některé dílčí organizační jednotky zruší, je pole šedé s bílou značkou zaškrtnutí.  
+![Organizační jednotka s některými dílčími organizačními jednotkami není vybraná.](./media/how-to-connect-sync-configure-filtering/ousyncnew.png)
 
-S touto konfigurací je synchronizována nová ouon, která byla vytvořena v rámci managedobjects.
+V této konfiguraci je synchronizovaná nová organizační jednotka vytvořená v rámci ManagedObjects.
 
-Průvodce instalací služby Azure AD Connect vždy vytvoří tuto konfiguraci.
+Průvodce instalací Azure AD Connect vždy vytvoří tuto konfiguraci.
 
-### <a name="dont-synchronize-new-ous"></a>Nesynchronizovat nové operační příkazy
-Synchronizační modul můžete nakonfigurovat tak, aby po dokončení konfigurace filtrování nesynchronizoval nové hlavní uživatele. Tento stav je v uj. Chcete-li toto chování získat, klepněte na toto políčko, dokud nebude bílé bez zaškrtnutí. Potom vyberte dílčí hlavní uživatele, které chcete synchronizovat.
+### <a name="dont-synchronize-new-ous"></a>Nesynchronizovat nové organizační jednotky
+Po dokončení konfigurace filtrování můžete nakonfigurovat synchronizační modul tak, aby nesynchronizoval nové organizační jednotky. Tento stav je uveden v uživatelském rozhraní pomocí pole s plnou šedou barvou bez zaškrtnutí. Chcete-li získat toto chování, klikněte na pole, dokud se nevrátí do bílé bez zaškrtnutí. Pak vyberte dílčí organizační jednotky, které chcete synchronizovat.
 
-![OU s nevybraným kořenem](./media/how-to-connect-sync-configure-filtering/oudonotsyncnew.png)
+![Organizační jednotka s nevybraným kořenovým adresářem](./media/how-to-connect-sync-configure-filtering/oudonotsyncnew.png)
 
-S touto konfigurací není synchronizována nová ouon, která byla vytvořena pod managedobjekty.
+V této konfiguraci není synchronizovaná nová organizační jednotka vytvořená v rámci ManagedObjects.
 
-## <a name="attribute-based-filtering"></a>Filtrování založené na atributech
-Ujistěte se, že používáte listopad 2015[(1.0.9125)](reference-connect-version-history.md#1091250)nebo novější sestavení pro tyto kroky do práce.
+## <a name="attribute-based-filtering"></a>Filtrování na základě atributů
+Ujistěte se, že k práci s těmito kroky používáte Build 2015 ([1.0.9125](reference-connect-version-history.md#1091250)) nebo novější.
 
 > [!IMPORTANT]
->Společnost Microsoft doporučuje neupravovat výchozí pravidla vytvořená **službou Azure AD Connect**. Pokud chcete pravidlo upravit, naklonujte jej a zakažte původní pravidlo. Proveďte změny klonovaného pravidla. Vezměte prosím na vědomí, že tímto způsobem (zakázáním původního pravidla) vám budou chybět všechny opravy chyb nebo funkce povolené prostřednictvím tohoto pravidla.
+>Společnost Microsoft doporučuje, abyste nezměnili výchozí pravidla vytvořená nástrojem **Azure AD Connect**. Pokud chcete pravidlo upravit, naklonujte ho a zakažte původní pravidlo. Proveďte změny klonovaného pravidla. Počítejte s tím, že pokud to uděláte (zakážete původní pravidlo), nebudete mít k dispozici žádné opravy chyb nebo funkce povolené prostřednictvím tohoto pravidla.
 
-Filtrování založené na atributech je nejflexibilnější způsob filtrování objektů. Můžete použít moc [deklarativní zřizování](concept-azure-ad-connect-sync-declarative-provisioning.md) k řízení téměř každý aspekt při synchronizaci objektu do Azure AD.
+Filtrování na základě atributů je nejpružnější způsob, jak filtrovat objekty. Výkon [deklarativního zřizování](concept-azure-ad-connect-sync-declarative-provisioning.md) můžete využít k řízení téměř všech aspektů při synchronizaci objektu s Azure AD.
 
-[Příchozí](#inbound-filtering) filtrování ze služby Active Directory můžete použít na metaverse a [odchozí](#outbound-filtering) filtrování z metaverse do služby Azure AD. Doporučujeme použít příchozí filtrování, protože to je nejjednodušší udržovat. Odchozí filtrování byste měli použít pouze v případě, že je nutné připojit objekty z více než jedné doménové struktury, než může být provedeno vyhodnocení.
+Můžete použít [příchozí](#inbound-filtering) filtrování ze služby Active Directory do úložiště metaverse a [odchozí](#outbound-filtering) filtrování z úložiště metaverse do Azure AD. Doporučujeme použít filtrování příchozích zpráv, protože je nejjednodušší je udržovat. Filtrování odchozího připojení byste měli použít pouze v případě, že je vyžadováno pro připojení objektů z více než jedné doménové struktury před provedením vyhodnocení.
 
 ### <a name="inbound-filtering"></a>Příchozí filtrování
-Příchozí filtrování používá výchozí konfiguraci, kde objekty směřující do Služby Azure AD musí mít atribut metaverse cloudFiltered není nastavena na hodnotu, která má být synchronizována. Pokud je hodnota tohoto atributu nastavena na **hodnotu True**, objekt není synchronizován. Nemělby být nastaven na **False**, záměrné. Chcete-li se ujistit, že ostatní pravidla mají schopnost přispívat hodnotu, tento atribut má mít pouze hodnoty **True** nebo **NULL** (chybí).
+Příchozí filtrování používá výchozí konfiguraci, ve které objekty, které se budou nacházet do služby Azure AD, musí mít atribut úložiště metaverse cloudFiltered nastaven na hodnotu, která má být synchronizovaná. Je-li hodnota tohoto atributu nastavena na **hodnotu true**, objekt není synchronizován. Neměla by být nastavená na **false**, podle návrhu. Aby bylo zajištěno, že další pravidla mají možnost přispívat k hodnotě, má tento atribut pouze hodnoty **true** nebo **null** (chybí).
 
-Při příchozím filtrování použijete výkon **oboru** k určení objektů, které mají být synchronizovány nebo nejsou synchronizovány. Toto je místo, kde můžete provést úpravy, aby vyhovovaly vašim požadavkům organizace. Modul oboru má **skupinu** a **klauzuli** k určení, kdy je pravidlo synchronizace v oboru. Skupina obsahuje jednu nebo více klauzulí. Existuje logické "AND" mezi více klauzulí a logické "OR" mezi více skupin.
+V části příchozí filtrování můžete použít sílu **rozsahu** k určení, které objekty se mají synchronizovat nebo ne synchronizovat. V takovém případě provádíte úpravy podle požadavků vaší organizace. Modul Scope má **skupinu** a **klauzuli** pro určení, kdy je pravidlo synchronizace v oboru. Skupina obsahuje jednu nebo více klauzulí. K dispozici je logický operátor AND mezi více klauzulemi a logickým operátorem OR mezi více skupinami.
 
-Podívejme se na příklad:  
+Můžeme se podívat na příklad:  
 ![Rozsah](./media/how-to-connect-sync-configure-filtering/scope.png)  
-To by mělo být čteno jako **(oddělení = IT) NEBO (oddělení = Prodej A c = nás)**.
+Ta by se měla číst jako **(oddělení = IT) nebo (oddělení = Sales a c = US)**.
 
-V následujících ukázkách a krocích použijete jako příklad objekt uživatele, ale můžete jej použít pro všechny typy objektů.
+V následujících ukázkách a krocích použijete objekt uživatele jako příklad, ale můžete ho použít pro všechny typy objektů.
 
-V následujících ukázkách začíná hodnota priority 50. Může se jedná o libovolné číslo, které se nepoužívá, ale mělo by být nižší než 100.
+V následujících ukázkách začíná hodnota priority 50. Může to být jakékoli nepoužité číslo, ale mělo by být nižší než 100.
 
 #### <a name="negative-filtering-do-not-sync-these"></a>Negativní filtrování: "nesynchronizovat tyto"
-V následujícím příkladu odfiltrujete (nesynchronizujete) všechny uživatele, u kterých má **extensionAttribute15** hodnotu **NoSync**.
+V následujícím příkladu odfiltrujete (nesynchronizovat) všechny uživatele, u kterých má **extensionAttribute15** hodnotu **unsync**.
 
-1. Přihlaste se k serveru, na který běží synchronizace Azure AD Connect, pomocí účtu, který je členem skupiny zabezpečení **ADSyncAdmins.**
-2. **Spusťte Editor pravidel synchronizace** z nabídky **Start.**
-3. Zkontrolujte, jestli je **vybraná možnost Příchozí,** a klepněte na **tlačítko Přidat nové pravidlo**.
-4. Pojmenujte pravidlo popisným názvem, například *"In from AD – User DoNotSyncFilter*". Vyberte správnou doménovou strukturu, vyberte **Uživatel** jako **typ objektu CS**a jako **typ objektu MV**vyberte **Osoba** . V **okně Typ propojení**vyberte Připojit **.** Do **pole Priorita**zadejte hodnotu, která není aktuálně používána jiným pravidlem synchronizace (například 50), a klepněte na tlačítko **Další**.  
-   ![Popis příchozího 1](./media/how-to-connect-sync-configure-filtering/inbound1.png)  
-5. Ve **filtru Obory**klepněte na **tlačítko Přidat skupinu**a klepněte na tlačítko **Přidat klauzuli**. V **atributu**vyberte **Položku ExtensionAttribute15**. Ujistěte se, že **operátor** je nastavena na **EQUAL**a zadejte hodnotu **NoSync** do pole **Hodnota.** Klikněte na **Další**.  
-   ![Rozsah příchozích 2](./media/how-to-connect-sync-configure-filtering/inbound2.png)  
-6. Ponechejte pravidla **spojení** prázdná a klepněte na tlačítko **Další**.
-7. Klepněte na **Přidat transformaci**, vyberte **FlowType** jako **konstantní**a vyberte **cloudFiltered** jako **cílový atribut**. Do textového pole **Zdroj** zadejte **hodnotu True**. Kliknutím na **Přidat** pravidlo uložte.  
-   ![Příchozí transformace 3](./media/how-to-connect-sync-configure-filtering/inbound3.png)
-8. Chcete-li dokončit konfiguraci, je třeba spustit **úplnou synchronizaci**. Pokračovat ve čtení části [Použít a ověřit změny](#apply-and-verify-changes).
+1. Přihlaste se k serveru, na kterém běží Azure AD Connect synchronizace pomocí účtu, který je členem skupiny zabezpečení **ADSyncAdmins** .
+2. Spustí **Editor pravidel synchronizace** z nabídky **Start** .
+3. Ujistěte se, že je vybraná možnost **příchozí** , a klikněte na **Přidat nové pravidlo**.
+4. Zadejte pro pravidlo popisný název, například "*in from AD – User DoNotSyncFilter*". Vyberte správnou doménovou strukturu, vyberte možnost **uživatel** jako **typ objektu cs**a jako **typ objektu MV**vyberte **osoba** . V **typu odkazu**vyberte **připojit**. V poli **Priorita**zadejte hodnotu, která není aktuálně používána jiným synchronizačním pravidlem (například 50), a poté klikněte na tlačítko **Další**.  
+   ![Vstupní 1 Popis](./media/how-to-connect-sync-configure-filtering/inbound1.png)  
+5. Ve **filtru Rozsah**klikněte na **Přidat skupinu**a pak klikněte na **Přidat klauzuli**. V **atributu**vyberte **ExtensionAttribute15**. Ujistěte se, že je **operátor** nastavený na hodnotu **EQUAL**, a do pole **hodnota** zadejte hodnotu **nesynchronizováno** . Klikněte na **Další**.  
+   ![Obor příchozího 2](./media/how-to-connect-sync-configure-filtering/inbound2.png)  
+6. Nechejte pravidla **připojení** prázdná a pak klikněte na **Další**.
+7. Klikněte na **Přidat transformaci**, **Vyberte FlowType** jako **konstantu**a jako **cílový atribut**vyberte **cloudFiltered** . Do textového pole **zdroj** zadejte **hodnotu true**. Kliknutím na tlačítko **Přidat** uložte pravidlo.  
+   ![Vstupní 3 transformace](./media/how-to-connect-sync-configure-filtering/inbound3.png)
+8. Chcete-li dokončit konfiguraci, je nutné spustit **úplnou synchronizaci**. Pokračujte v čtení části [použití a ověření změn](#apply-and-verify-changes).
 
-#### <a name="positive-filtering-only-sync-these"></a>Pozitivní filtrování: "pouze synchronizovat tyto"
-Vyjádření pozitivního filtrování může být náročnější, protože je také třeba zvážit objekty, které nejsou zřejmé, že mají být synchronizovány, například konferenční místnosti. Budete také přepsat výchozí filtr v pravidle out-of-box **V ze ad - user join**. Při vytváření vlastního filtru nezapomeňte nezahrnout kritické systémové objekty, objekty konfliktů replikace, speciální poštovní schránky a účty služeb pro Azure AD Connect.
+#### <a name="positive-filtering-only-sync-these"></a>Kladné filtrování: pouze synchronizovat tyto
+Vyjádření kladného filtrování může být náročnější, protože také je nutné vzít v úvahu objekty, které nejsou zjevně synchronizovány, například konferenční místnosti. Také přepíšete výchozí filtr v předem vytvořeném pravidle **v rámci služby AD-User JOIN**. Když vytváříte vlastní filtr, nezapomeňte Nezahrnovat důležité systémové objekty, objekty konfliktů replikace, speciální poštovní schránky a účty služby pro Azure AD Connect.
 
-Možnost pozitivního filtrování vyžaduje dvě pravidla synchronizace. K synchronizaci potřebujete jedno pravidlo (nebo několik) se správným rozsahem objektů. Potřebujete také druhé pravidlo synchronizace catch-all, které odfiltruje všechny objekty, které ještě nebyly identifikovány jako objekt, který by měl být synchronizován.
+Možnost kladného filtrování vyžaduje dvě pravidla synchronizace. Potřebujete jedno pravidlo (nebo několik) se správným rozsahem objektů, které se mají synchronizovat. Potřebujete také druhé pravidlo pro zachycení všech synchronizací, které filtruje všechny objekty, které se ještě neidentifikovaly jako objekt, který by se měl synchronizovat.
 
-V následujícím příkladu synchronizujete pouze objekty uživatele, u kterých má atribut oddělení hodnotu **Prodej**.
+V následujícím příkladu synchronizujete pouze uživatelské objekty, kde má atribut oddělení hodnotu **prodej**.
 
-1. Přihlaste se k serveru, na který běží synchronizace Azure AD Connect, pomocí účtu, který je členem skupiny zabezpečení **ADSyncAdmins.**
-2. **Spusťte Editor pravidel synchronizace** z nabídky **Start.**
-3. Zkontrolujte, jestli je **vybraná možnost Příchozí,** a klepněte na **tlačítko Přidat nové pravidlo**.
-4. Pojmenujte pravidlo popisným názvem, například *"In from AD – User Sales sync*". Vyberte správnou doménovou strukturu, vyberte **Uživatel** jako **typ objektu CS**a jako **typ objektu MV**vyberte **Osoba** . V **okně Typ propojení**vyberte Připojit **.** Do **pole Priorita**zadejte hodnotu, která není aktuálně používána jiným pravidlem synchronizace (například 51), a klepněte na tlačítko **Další**.  
-   ![Popis příchozích 4](./media/how-to-connect-sync-configure-filtering/inbound4.png)  
-5. Ve **filtru Obory**klepněte na **tlačítko Přidat skupinu**a klepněte na tlačítko **Přidat klauzuli**. V **atributu**vyberte **oddělení**. Ujistěte se, že operátor je nastavena na **EQUAL**a zadejte hodnotu **Prodej** do pole **Hodnota.** Klikněte na **Další**.  
-   ![Rozsah příchozích 5](./media/how-to-connect-sync-configure-filtering/inbound5.png)  
-6. Ponechejte pravidla **spojení** prázdná a klepněte na tlačítko **Další**.
-7. Klepněte na **Přidat transformaci**, vyberte **konstantní** jako **FlowType**a vyberte **cloudFiltered** jako **cílový atribut**. Do pole **Zdroj** zadejte **false**. Kliknutím na **Přidat** pravidlo uložte.  
-   ![Příchozí 6 transformace](./media/how-to-connect-sync-configure-filtering/inbound6.png)  
-   Toto je zvláštní případ, kdy explicitně nastavit cloudFiltered na **False**.
-8. Nyní musíme vytvořit pravidlo synchronizace catch-all. Pojmenujte pravidlo popisným názvem, například "*In from AD – User Catch-all filter*". Vyberte správnou doménovou strukturu, vyberte **Uživatel** jako **typ objektu CS**a jako **typ objektu MV**vyberte **Osoba** . V **okně Typ propojení**vyberte Připojit **.** Do **pole Priorita**zadejte hodnotu, která není aktuálně používána jiným pravidlem synchronizace (například 99). Vybrali jste hodnotu priority, která je vyšší (nižší priorita) než předchozí pravidlo synchronizace. Ale také jste opustili některé místnosti, takže můžete přidat další filtrování pravidel synchronizace později, když chcete začít synchronizovat další oddělení. Klikněte na **Další**.  
-   ![Popis příchozího 7](./media/how-to-connect-sync-configure-filtering/inbound7.png)  
-9. Ponechejte **filtr oborů** prázdný a klepněte na tlačítko **Další**. Prázdný filtr označuje, že pravidlo má být použito na všechny objekty.
-10. Ponechejte pravidla **spojení** prázdná a klepněte na tlačítko **Další**.
-11. Klepněte na **Přidat transformaci**, vyberte **konstantní** jako **FlowType**a vyberte **cloudFiltered** jako **cílový atribut**. Do pole **Zdroj** zadejte **hodnotu True**. Kliknutím na **Přidat** pravidlo uložte.  
-    ![Příchozí transformace 3](./media/how-to-connect-sync-configure-filtering/inbound3.png)  
-12. Chcete-li dokončit konfiguraci, je třeba spustit **úplnou synchronizaci**. Pokračovat ve čtení části [Použít a ověřit změny](#apply-and-verify-changes).
+1. Přihlaste se k serveru, na kterém běží Azure AD Connect synchronizace pomocí účtu, který je členem skupiny zabezpečení **ADSyncAdmins** .
+2. Spustí **Editor pravidel synchronizace** z nabídky **Start** .
+3. Ujistěte se, že je vybraná možnost **příchozí** , a klikněte na **Přidat nové pravidlo**.
+4. Zadejte pro pravidlo popisný název, například "*in from AD – Sales Sales Sync*". Vyberte správnou doménovou strukturu, vyberte možnost **uživatel** jako **typ objektu cs**a jako **typ objektu MV**vyberte **osoba** . V **typu odkazu**vyberte **připojit**. V poli **Priorita**zadejte hodnotu, která není aktuálně používána jiným synchronizačním pravidlem (například 51), a poté klikněte na tlačítko **Další**.  
+   ![Popis pro příchozí 4](./media/how-to-connect-sync-configure-filtering/inbound4.png)  
+5. Ve **filtru Rozsah**klikněte na **Přidat skupinu**a pak klikněte na **Přidat klauzuli**. V **atributu**vyberte **oddělení**. Ujistěte se, že je operátor nastaven na hodnotu **EQUAL**a zadejte hodnotu **prodej** v poli **hodnota** . Klikněte na **Další**.  
+   ![Vstupní 5 oboru](./media/how-to-connect-sync-configure-filtering/inbound5.png)  
+6. Nechejte pravidla **připojení** prázdná a pak klikněte na **Další**.
+7. Klikněte na **Přidat transformaci**, jako **FlowType**vyberte **konstanta** a jako **cílový atribut**vyberte **cloudFiltered** . Do pole **zdroj** zadejte **false**. Kliknutím na tlačítko **Přidat** uložte pravidlo.  
+   ![Vstupní 6 transformace](./media/how-to-connect-sync-configure-filtering/inbound6.png)  
+   Jedná se o speciální případ, kdy explicitně nastavíte cloudFiltered na **hodnotu false**.
+8. Nyní musíme vytvořit pravidlo synchronizace catch-ALL. Zadejte pro pravidlo popisný název, například "*in from AD – User catch-All Filter*". Vyberte správnou doménovou strukturu, vyberte možnost **uživatel** jako **typ objektu cs**a jako **typ objektu MV**vyberte **osoba** . V **typu odkazu**vyberte **připojit**. V případě **priority**zadejte hodnotu, která není aktuálně používána jiným synchronizačním pravidlem (například 99). Vybrali jste hodnotu priority, která je vyšší (nižší priorita) než předchozí pravidlo synchronizace. Ale také jste ponechali několik místa, abyste mohli později přidat další filtrování synchronizačních pravidel, když budete chtít začít synchronizovat další oddělení. Klikněte na **Další**.  
+   ![Popis pro příchozí 7](./media/how-to-connect-sync-configure-filtering/inbound7.png)  
+9. Nechejte **Filtr oboru** nastaven na prázdné a klikněte na **Další**. Prázdný filtr znamená, že pravidlo bude použito pro všechny objekty.
+10. Nechejte pravidla **připojení** prázdná a pak klikněte na **Další**.
+11. Klikněte na **Přidat transformaci**, jako **FlowType**vyberte **konstanta** a jako **cílový atribut**vyberte **cloudFiltered** . Do pole **zdroj** zadejte **hodnotu true**. Kliknutím na tlačítko **Přidat** uložte pravidlo.  
+    ![Vstupní 3 transformace](./media/how-to-connect-sync-configure-filtering/inbound3.png)  
+12. Chcete-li dokončit konfiguraci, je nutné spustit **úplnou synchronizaci**. Pokračujte v čtení části [použití a ověření změn](#apply-and-verify-changes).
 
-Pokud potřebujete, můžete vytvořit další pravidla prvního typu, kde do synchronizace zahrnete více objektů.
+Pokud potřebujete, můžete vytvořit další pravidla prvního typu, kde v synchronizaci zahrnete více objektů.
 
-### <a name="outbound-filtering"></a>Odchozí filtrování
-V některých případech je nutné provést filtrování pouze po objekty se připojily v metaverse. Může být například nutné podívat se na atribut pošty z doménové struktury prostředků a atribut userPrincipalName z doménové struktury účtu, abyste zjistili, zda má být objekt synchronizován. V těchto případech vytvoříte filtrování odchozího pravidla.
+### <a name="outbound-filtering"></a>Filtrování odchozích zpráv
+V některých případech je nutné filtrování provádět až poté, co se objekty připojí do úložiště metaverse. Může být třeba zkontrolovat atribut mail z doménové struktury prostředků a atribut userPrincipalName z doménové struktury účtu, abyste zjistili, jestli by měl být objekt synchronizovaný. V těchto případech vytvoříte filtrování na odchozím pravidle.
 
-V tomto příkladu změníte filtrování tak, aby byly synchronizovány pouze @contoso.com uživatelé, kteří mají svou poštu a adresu userPrincipalName končící:
+V tomto příkladu změníte filtrování tak, aby byly synchronizovány pouze uživatelé, kteří mají své e-maily @contoso.com i userPrincipalName končící:
 
-1. Přihlaste se k serveru, na který běží synchronizace Azure AD Connect, pomocí účtu, který je členem skupiny zabezpečení **ADSyncAdmins.**
-2. **Spusťte Editor pravidel synchronizace** z nabídky **Start.**
-3. V části **Typ pravidla**klepněte na **položku Odchozí**.
-4. V závislosti na verzi aplikace Connect, kterou používáte, najděte buď pravidlo s názvem **Out to AAD – User Join** or Out to **AAD – User Join SOAInAD**a klepněte na tlačítko **Upravit**.
-5. V automaticky otevírané okno odpovězte **ano** a vytvořte kopii pravidla.
+1. Přihlaste se k serveru, na kterém běží Azure AD Connect synchronizace pomocí účtu, který je členem skupiny zabezpečení **ADSyncAdmins** .
+2. Spustí **Editor pravidel synchronizace** z nabídky **Start** .
+3. V části **Typ pravidel**klikněte na **odchozí**.
+4. V závislosti na používané verzi připojení Najděte buď pravidlo s názvem **out do AAD – připojení uživatele** nebo připojení **k AAD – uživatel SOAInAD**a klikněte na **Upravit**.
+5. V automaticky otevíraném okně odpovězte **Ano** a vytvořte kopii pravidla.
 6. Na stránce **Popis** změňte **prioritu** na nepoužitou hodnotu, například 50.
-7. V levé navigaci klikněte na **filtr oborů** a potom klikněte na **Add clause**. V **atributu**vyberte **položku Pošta**. V **operatoru**vyberte **možnost ENDSWITH**. Do **pole Hodnota**zadejte ** \@contoso.com**a klepněte na tlačítko Přidat **klauzuli**. V **atributu**vyberte **userPrincipalName**. V **operatoru**vyberte **možnost ENDSWITH**. Do **pole Hodnota**zadejte ** \@contoso.com**.
+7. V levém navigačním panelu klikněte na **Filtr oboru** a pak klikněte na **Přidat klauzuli**. V **atributu**vyberte **Pošta**. V **operátoru**vyberte **ENDSWITH**. Do **hodnoty**zadejte ** \@contoso.com**a pak klikněte na **Přidat klauzuli**. V **atributu**vyberte **userPrincipalName**. V **operátoru**vyberte **ENDSWITH**. Do **hodnoty**zadejte ** \@contoso.com**.
 8. Klikněte na **Uložit**.
-9. Chcete-li dokončit konfiguraci, je třeba spustit **úplnou synchronizaci**. Pokračovat ve čtení části [Použít a ověřit změny](#apply-and-verify-changes).
+9. Chcete-li dokončit konfiguraci, je nutné spustit **úplnou synchronizaci**. Pokračujte v čtení části [použití a ověření změn](#apply-and-verify-changes).
 
-## <a name="apply-and-verify-changes"></a>Použití a ověření změn
-Po provedené změny konfigurace je nutné je použít na objekty, které jsou již v systému k dispozici. Může se také zobrazit, že objekty, které nejsou aktuálně v synchronizačním modulu, by měly být zpracovány (a synchronizační modul musí znovu číst zdrojový systém, aby ověřil jeho obsah).
+## <a name="apply-and-verify-changes"></a>Použít a ověřit změny
+Po provedení změn konfigurace je musíte použít pro objekty, které jsou již v systému k dispozici. Může to také být, že by se měly zpracovat objekty, které nejsou aktuálně v synchronizačním modulu (a synchronizační modul potřebuje znovu načíst zdrojový systém a ověřit jeho obsah).
 
-Pokud jste změnili konfiguraci pomocí filtrování **domény** nebo **organizační jednotky,** je třeba provést **úplný import**následovaný **synchronizací delta**.
+Pokud jste změnili konfiguraci pomocí filtrování **domén** nebo **organizační jednotky** , musíte provést **úplný import**a následně **rozdílovou synchronizaci**.
 
-Pokud jste změnili konfiguraci pomocí filtrování **atributů,** je třeba provést **úplnou synchronizaci**.
+Pokud jste změnili konfiguraci pomocí filtrování **atributů** , je nutné provést **úplnou synchronizaci**.
 
-Postupujte takto:
+Proveďte následující kroky:
 
-1. **Spusťte službu synchronizace** z nabídky **Start.**
-2. Vyberte **konektory**. V seznamu **Konektory** vyberte konektor, ve kterém jste dříve provedli změnu konfigurace. V **poakcích**vyberte **Spustit**.  
-   ![Konektor spustit](./media/how-to-connect-sync-configure-filtering/connectorrun.png)  
-3. V **části Spustit profily**vyberte operaci, která byla zmíněna v předchozí části. Pokud potřebujete spustit dvě akce, spusťte druhou po dokončení první akce. (Sloupec **Stav** je **nečinný** pro vybraný konektor.)
+1. Spusťte **synchronizační službu** z nabídky **Start** .
+2. Vyberte **konektory**. V seznamu **konektory** vyberte konektor, ve kterém jste dříve provedli změnu konfigurace. V **Možnosti akce**vyberte **Spustit**.  
+   ![Spuštění konektoru](./media/how-to-connect-sync-configure-filtering/connectorrun.png)  
+3. V části **profily spuštění**vyberte operaci, která byla zmíněna v předchozí části. Pokud potřebujete spustit dvě akce, spusťte druhý po dokončení první operace. ( **Stavový** sloupec je **nečinný** pro vybraný konektor.)
 
-Po synchronizaci jsou všechny změny připraveny k exportu. Než skutečně provedete změny ve službě Azure AD, chcete ověřit, že všechny tyto změny jsou správné.
+Po synchronizaci jsou všechny změny připravené k exportu. Než skutečně provedete změny ve službě Azure AD, budete chtít ověřit, že jsou všechny tyto změny správné.
 
-1. Spusťte příkazový řádek `%ProgramFiles%\Microsoft Azure AD Sync\bin`a přejděte na .
+1. Spusťte příkazový řádek a pokračujte na `%ProgramFiles%\Microsoft Azure AD Sync\bin`.
 2. Spusťte `csexport "Name of Connector" %temp%\export.xml /f:x`.  
-   Název konektoru je ve službě synchronizace. Má název podobný "contoso.com – AAD" pro Azure AD.
+   Název konektoru je v synchronizační službě. Má název podobný řetězci "contoso.com – AAD" pro Azure AD.
 3. Spusťte `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv`.
-4. Nyní máte soubor v %temp% s názvem export.csv, který lze zkontrolováno v aplikaci Microsoft Excel. Tento soubor obsahuje všechny změny, které mají být exportovány.
-5. Proveďte potřebné změny dat nebo konfigurace a spusťte tyto kroky znovu (Import, Synchronizovat a Ověřit), dokud změny, které se chystají exportovat, nejsou podle očekávání.
+4. Nyní máte soubor v souboru% temp% s názvem export. csv, který lze prozkoumat v aplikaci Microsoft Excel. Tento soubor obsahuje všechny změny, které mají být exportovány.
+5. Proveďte potřebné změny dat nebo konfigurace a znovu spusťte tyto kroky (import, synchronizace a ověření), dokud nebudou změny, které se chystáte exportovat, odpovídat na to, co očekáváte.
 
 Až budete spokojeni, exportujte změny do Azure AD.
 
-1. Vyberte **konektory**. V seznamu **konektory** vyberte konektor Azure AD. V **poakcích**vyberte **Spustit**.
-2. V **možnosti Spustit profily**vyberte **exportovat**.
-3. Pokud změny konfigurace odstraní mnoho objektů, zobrazí se v exportu chyba, pokud je číslo větší než nakonfigurovaná prahová hodnota (ve výchozím nastavení 500). Pokud se zobrazí tato chyba, musíte dočasně zakázat funkci["zabránit náhodnému odstranění".](how-to-connect-sync-feature-prevent-accidental-deletes.md)
+1. Vyberte **konektory**. V seznamu **konektory** vyberte konektor Azure AD. V **Možnosti akce**vyberte **Spustit**.
+2. V **profilu spuštění**vyberte **exportovat**.
+3. Pokud se změní konfigurace odstranit mnoho objektů, zobrazí se při exportu chyba, pokud je počet vyšší než nastavená prahová hodnota (ve výchozím nastavení 500). Pokud se zobrazí tato chyba, musíte dočasně zakázat funkci[zabránit nechtěnému odstranění](how-to-connect-sync-feature-prevent-accidental-deletes.md).
 
-Nyní je čas znovu povolit plánovač.
+Teď je čas znovu povolit Plánovač.
 
-1. Spusťte **plánovač úloh** z nabídky **Start.**
-2. Přímo v části **Knihovna plánovače úloh**vyhledejte úlohu s názvem **Plánovač synchronizace Azure AD**, klepněte pravým tlačítkem myši a vyberte **povolit**.
+1. Spusťte **Plánovač úloh** v nabídce **Start** .
+2. Přímo v rámci **knihovny Plánovač úloh**vyhledejte úkol s názvem **Azure AD Sync Scheduler**, klikněte pravým tlačítkem myši a vyberte **Povolit**.
 
-## <a name="group-based-filtering"></a>Filtrování založené na skupině
-Filtrování založené na skupinách můžete nakonfigurovat při první instalaci služby Azure AD Connect pomocí [vlastní instalace](how-to-connect-install-custom.md#sync-filtering-based-on-groups). Je určen pro pilotní nasazení, kde chcete synchronizovat pouze malou sadu objektů. Pokud zakážete filtrování založené na skupinách, nelze jej znovu povolit. *Není podporováno* použití filtrování na základě skupiny ve vlastní konfiguraci. Konfigurace této funkce je podporována pouze pomocí průvodce instalací. Po dokončení pilotního projektu použijte jednu z dalších možností filtrování v tomto tématu. Při použití filtrování založeného na ou ve spojení s filtrováním na základě skupiny musí být zahrnuta ou diody, ve kterých se skupina a její členové nacházejí.
+## <a name="group-based-filtering"></a>Filtrování na základě skupin
+Filtrování na základě skupin můžete nakonfigurovat při první instalaci Azure AD Connect pomocí [vlastní instalace](how-to-connect-install-custom.md#sync-filtering-based-on-groups). Je určený pro pilotní nasazení, kde chcete synchronizovat jenom malou sadu objektů. Pokud zakážete filtrování na základě skupin, nebude možné ho znovu povolit. Použití filtrování na základě skupin ve vlastní konfiguraci se *nepodporuje* . Tato funkce se podporuje jenom pomocí Průvodce instalací. Až dokončíte pilotní nasazení, použijte jednu z dalších možností filtrování v tomto tématu. Při použití filtrování na základě organizačních jednotek ve spojení s filtrováním podle skupin musí být k dispozici organizační jednotky, kde se nachází skupina a její členové.
 
-Při synchronizaci více doménových struktur služby AD můžete nakonfigurovat filtrování založené na skupinách zadáním jiné skupiny pro každou spojnici služby AD. Pokud chcete synchronizovat uživatele v jedné doménové struktuře služby AD a stejný uživatel má jeden nebo více odpovídajících objektů v jiných doménových strukturách služby AD, musíte zajistit, aby objekt uživatele a všechny jeho odpovídající objekty byly v rámci oboru filtrování založeného na skupině. Příklady:
+Při synchronizaci více doménových struktur AD můžete nakonfigurovat filtrování založené na skupinách zadáním jiné skupiny pro každý konektor služby AD. Pokud chcete synchronizovat uživatele v jedné doménové struktuře služby AD a stejný uživatel má jeden nebo více odpovídajících objektů v jiných doménových strukturách služby AD, musíte zajistit, aby byl objekt uživatele a všechny jeho odpovídající objekty v oboru filtrování na základě skupiny. Příklady:
 
-* Máte uživatele v jedné doménové struktuře, která má odpovídající objekt FSP (Foreign Security Principal) v jiné doménové struktuře. Oba objekty musí být v rámci oboru filtrování na základě skupiny. V opačném případě nebude uživatel synchronizován do služby Azure AD.
+* Máte uživatele v jedné doménové struktuře, který má odpovídající objekt FSP (cizí objekt zabezpečení) v jiné doménové struktuře. Oba objekty musí být v oboru filtrování založeném na skupině. V opačném případě se uživatel nesynchronizuje do Azure AD.
 
-* Máte uživatele v jedné doménové struktuře, která má odpovídající účet prostředků (např. propojenou poštovní schránku) v jiné doménové struktuře. Dále jste nakonfigurovali Azure AD Connect pro propojení uživatele s účtem prostředků. Oba objekty musí být v rámci oboru filtrování na základě skupiny. V opačném případě nebude uživatel synchronizován do služby Azure AD.
+* Máte uživatele v jedné doménové struktuře, který má odpovídající účet prostředku (například propojenou poštovní schránku) v jiné doménové struktuře. Dále jste nakonfigurovali Azure AD Connect k propojení uživatele s účtem prostředků. Oba objekty musí být v oboru filtrování založeném na skupině. V opačném případě se uživatel nesynchronizuje do Azure AD.
 
-* Máte uživatele v jedné doménové struktuře, která má odpovídající kontakt pošty v jiné doménové struktuře. Dále jste nakonfigurovali Azure AD Connect pro propojení uživatele s kontaktem pošty. Oba objekty musí být v rámci oboru filtrování na základě skupiny. V opačném případě nebude uživatel synchronizován do služby Azure AD.
+* Máte uživatele v jedné doménové struktuře, který má odpovídající e-mailový kontakt v jiné doménové struktuře. Dále jste nakonfigurovali Azure AD Connect pro připojení uživatele k e-mailovým kontaktům. Oba objekty musí být v oboru filtrování založeném na skupině. V opačném případě se uživatel nesynchronizuje do Azure AD.
 
 
 ## <a name="next-steps"></a>Další kroky
-- Přečtěte si další informace o konfiguraci [synchronizace Azure AD Connect.](how-to-connect-sync-whatis.md)
+- Přečtěte si další informace o [Azure AD Connect konfiguraci synchronizace](how-to-connect-sync-whatis.md) .
 - Přečtěte si další informace o [integraci místních identit s Azure AD](whatis-hybrid-identity.md).

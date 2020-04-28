@@ -1,6 +1,6 @@
 ---
-title: Prostředky pro migraci aplikací do služby Azure Active Directory | Dokumenty společnosti Microsoft
-description: Prostředky, které vám pomohou migrovat přístup k aplikacím a ověřování do služby Azure Active Directory (Azure AD).
+title: Prostředky pro migraci aplikací na Azure Active Directory | Microsoft Docs
+description: Materiály, které vám pomůžou migrovat přístup k aplikacím a ověřování pro Azure Active Directory (Azure AD).
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -13,25 +13,25 @@ ms.author: mimart
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b30469858a5dd83f7f5f707f74466302b3000510
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78968725"
 ---
-# <a name="resources-for-migrating-applications-to-azure-active-directory"></a>Prostředky pro migraci aplikací do služby Azure Active Directory
+# <a name="resources-for-migrating-applications-to-azure-active-directory"></a>Prostředky pro migraci aplikací na Azure Active Directory
 
-Prostředky, které vám pomohou migrovat přístup k aplikacím a ověřování do služby Azure Active Directory (Azure AD). Udělejte sihttps://aka.ms/AppsMigrationFeedback) tento krátký průzkum (chcete-li poskytnout zpětnou vazbu o vašich zkušenostech s migrací aplikací do Azure AD (včetně blokátorů migrace, potřeby nástrojů / pokynů nebo důvodů pro zachování místního IDP). 
+Materiály, které vám pomůžou migrovat přístup k aplikacím a ověřování pro Azure Active Directory (Azure AD). Proveďte tento krátký průzkum (https://aka.ms/AppsMigrationFeedback) a poskytněte nám zpětnou vazbu k vašemu prostředí, které migruje aplikace do služby Azure AD (včetně blokovaných uživatelů pro migraci, potřebu nástrojů/pokynů nebo důvodů uchování místních IDP). 
 
 | Prostředek  | Popis  |
 |:-----------|:-------------|
-|[Migrace aplikací do Azure AD](https://aka.ms/migrateapps/whitepaper) | Tato bílá kniha představuje výhody migrace a popisuje, jak plánovat migraci ve čtyřech jasně nastíněných fázích: zjišťování, klasifikace, migrace a průběžné řízení. Budete vedeni tím, jak přemýšlet o procesu a rozdělit svůj projekt na snadno konzumovat kusy. V celém dokumentu jsou odkazy na důležité zdroje, které vám pomohou na cestě. |
-|[Průvodce řešením: Migrace aplikací ze služby AD FS (AD FS) do Služby Azure AD](https://aka.ms/migrateapps/adfssolutionguide) | Toto řešení vás provede stejnými čtyřmi fázemi plánování a provádění projektu migrace aplikací popsaného na vyšší úrovni v dokumentu white paper migrace. V této příručce se dozvíte, jak použít tyto fáze na konkrétní cíl přesunutí aplikace z Azure Directory Federated Services (AD FS) do Azure AD.|
-| [Nástroj: Skript připravenosti migrace služby Active Directory Federation Services](https://aka.ms/migrateapps/adfstools) | Toto je skript, který můžete spustit na místním serveru Služby AD FS (Active Directory Federation Services) a určit připravenost aplikací pro migraci do Služby Azure AD.|
-| [Plán nasazení: Migrace ze služby AD FS na synchronizaci hash hesel](https://aka.ms/ADFSTOPHSDPDownload) | Při synchronizaci hodnot hash hesel se hashy uživatelských hesel synchronizují z místní služby Active Directory do služby Azure AD. To umožňuje Azure AD k ověření uživatelů bez interakce s místní službou Active Directory.| 
-| [Plán nasazení: Migrace ze služby AD FS na předávací ověřování](https://aka.ms/ADFSTOPTADPDownload)|Předávací ověřování Azure AD pomáhá uživatelům přihlásit se k místním i cloudovým aplikacím pomocí stejného hesla. Tato funkce poskytuje uživatelům lepší zážitek, protože mají o jedno heslo méně k zapamatování. Snižuje také náklady na it helpdesk, protože uživatelé jsou méně pravděpodobné, že zapomenete, jak se přihlásit, když potřebují pamatovat pouze jedno heslo. Když se uživatelé přihlásí pomocí Azure AD, tato funkce ověří jejich hesla přímo v místní službě Active Directory.|
-| [Plán nasazení: Povolení jednotného přihlašování k aplikaci SaaS pomocí Azure AD](https://aka.ms/SSODPDownload) | Jednotné přihlašování (SSO) vám pomůže získat přístup ke všem aplikacím a prostředkům, které potřebujete k podnikání, při přihlášení pouze jednou pomocí jednoho uživatelského účtu. Například poté, co se uživatel přihlásí, může se uživatel přesunout z Microsoft Office do SalesForce do boxu bez ověření (například zadání hesla) podruhé. 
-| [Plán nasazení: Rozšíření aplikací do Azure AD pomocí proxy aplikace](https://aka.ms/AppProxyDPDownload)| Poskytování přístupu z přenosných počítačů zaměstnanců a dalších zařízení k místním aplikacím tradičně zahrnuje virtuální privátní sítě (VNU) nebo demilitarizované zóny (DMZ). Tato řešení jsou nejen složitá a obtížně zabezpečitelná, ale jsou také nákladná na nastavení a správu. Azure AD Proxy aplikace usnadňuje přístup k místním aplikacím. |
-| [Plány nasazení](../fundamentals/active-directory-deployment-plans.md) | Najděte další plány nasazení pro nasazení funkcí, jako je vícefaktorové ověřování, podmíněný přístup, zřizování uživatelů, bezproblémové jednotné přihlašování, samoobslužné resetování hesla a další! |
+|[Migrace aplikací do Azure AD](https://aka.ms/migrateapps/whitepaper) | Tento dokument White Paper přináší výhody migrace a popisuje, jak naplánovat migraci ve čtyřech jasně uvedených fázích: zjišťování, klasifikace, migrace a průběžná správa. Provedete vás postupem, jak se zamyslet na proces a rozdělte projekt na snadno ovladatelné části. V celém dokumentu jsou odkazy na důležité prostředky, které vám pomůžou na cestě. |
+|[Průvodce řešením: migrace aplikací z Active Directory Federation Services (AD FS) (AD FS) do služby Azure AD](https://aka.ms/migrateapps/adfssolutionguide) | Tento průvodce řešením vás provede stejnými čtyřmi fázemi plánování a provádění projektu migrace aplikace popsaného na vyšší úrovni v dokumentu White paper pro migraci. V této příručce se dozvíte, jak tyto fáze použít na konkrétní cíl přesunutí aplikace ze služby Azure Directory federovaným Services (AD FS) do Azure AD.|
+| [Nástroj: Active Directory Federation Services (AD FS) skript připravenosti migrace](https://aka.ms/migrateapps/adfstools) | Tento skript můžete spustit na místním serveru Active Directory Federation Services (AD FS) (AD FS) a určit připravenost aplikací pro migraci do služby Azure AD.|
+| [Plán nasazení: migrace z AD FS na synchronizaci hodnot hash hesel](https://aka.ms/ADFSTOPHSDPDownload) | Díky synchronizaci hodnot hash hesel jsou hash hesla uživatelů synchronizovaná z místní služby Active Directory do Azure AD. Díky tomu může Azure AD ověřovat uživatele bez interakce s místní službou Active Directory.| 
+| [Plán nasazení: migrace z AD FS do předávacího ověřování](https://aka.ms/ADFSTOPTADPDownload)|Předávací ověřování Azure AD pomáhá uživatelům přihlašovat se pomocí stejného hesla k místním i cloudovým aplikacím. Tato funkce poskytuje vašim uživatelům lepší možnosti, protože mají jedno méně hesla, než aby si pamatovali. Také snižuje náklady na helpdesk IT, protože uživatelé mají méně pravděpodobný způsob, jak se přihlásit, když potřebují pamatovat pouze jedno heslo. Když se uživatelé přihlásí pomocí Azure AD, tato funkce ověří jejich hesla přímo v místní službě Active Directory.|
+| [Plán nasazení: povolení jednotného přihlašování k aplikaci SaaS pomocí Azure AD](https://aka.ms/SSODPDownload) | Jednotné přihlašování (SSO) vám pomůže přistupovat ke všem aplikacím a prostředkům, které potřebujete k podnikání, a současně se přihlašujete pomocí jediného uživatelského účtu. Například po přihlášení uživatele může uživatel přesunout z systém Microsoft Office, do SalesForce, do boxu bez ověřování (například zadání hesla) podruhé. 
+| [Plán nasazení: rozšíření aplikací do Azure AD s využitím proxy aplikací](https://aka.ms/AppProxyDPDownload)| Poskytnutí přístupu z přenosných počítačů a jiných zařízení od zaměstnanců k místním aplikacím tradičně zahrnuje virtuální privátní sítě (VPN) nebo zóny demilitarizovaná (zóny DMZ). Tato řešení jsou nejen složitá a obtížně zabezpečitelná, ale jsou také nákladná na nastavení a správu. Azure Proxy aplikací služby AD usnadňuje přístup k místním aplikacím. |
+| [Plány nasazení](../fundamentals/active-directory-deployment-plans.md) | Seznamte se s dalšími plány nasazení pro nasazování funkcí, jako je Multi-Factor Authentication, podmíněný přístup, zřizování uživatelů, bezproblémové jednotné přihlašování, Samoobslužné resetování hesla a další. |
 
 

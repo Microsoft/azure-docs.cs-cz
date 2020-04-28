@@ -1,6 +1,6 @@
 ---
-title: Referenční příručka pro operace identity služby Azure active directory a správy přístupu
-description: Tato referenční příručka pro operace popisuje kontroly a akce, které byste měli provést k zabezpečení operací správy identity a přístupu.
+title: Referenční příručka operací správy identit a přístupu Azure Active Directory
+description: Referenční příručka operací popisuje kontroly a akce, které byste měli provést při zabezpečení operací správy identit a přístupu.
 services: active-directory
 author: martincoetzer
 manager: daveba
@@ -12,195 +12,195 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: 5653fa7c67d36dbf2ee71f51f182168bccb69105
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79298610"
 ---
-# <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Referenční příručka pro operace identity služby Azure active directory a správy přístupu
+# <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Referenční příručka operací správy identit a přístupu Azure Active Directory
 
-Tato část [referenční příručky pro operace Azure AD](active-directory-ops-guide-intro.md) popisuje kontroly a akce, které byste měli zvážit k zabezpečení a správě životního cyklu identit a jejich přiřazení.
+Tato část [Referenční příručka operací Azure AD](active-directory-ops-guide-intro.md) popisuje kontroly a akce, které byste měli zvážit při zabezpečení a správě životního cyklu identit a jejich přiřazení.
 
 > [!NOTE]
-> Tato doporučení jsou aktuální k datu publikování, ale mohou se v průběhu času měnit. Organizace by měly průběžně vyhodnocovat své postupy identity, jak se produkty a služby společnosti Microsoft v průběhu času vyvíjejí.
+> Tato doporučení jsou aktuální k datu publikování, ale mohou se v průběhu času měnit. Organizace by měly průběžně vyhodnocovat své postupy své identity, protože produkty a služby Microsoftu se v průběhu času vyvíjí.
 
 ## <a name="key-operational-processes"></a>Klíčové provozní procesy
 
-### <a name="assign-owners-to-key-tasks"></a>Přiřazení vlastníků ke klíčovým úkolům
+### <a name="assign-owners-to-key-tasks"></a>Přiřazení vlastníků ke klíčovým úlohám
 
-Správa služby Azure Active Directory vyžaduje průběžné provádění klíčových provozních úkolů a procesů, které nemusí být součástí projektu zavádění. Je stále důležité nastavit tyto úkoly pro udržení prostředí. Mezi klíčové úkoly a jejich doporučené vlastníky patří:
+Správa Azure Active Directory vyžaduje nepřetržité provádění klíčových provozních úloh a procesů, které nemusí být součástí projektu zavedení. Stále je důležité, abyste nastavili tyto úlohy pro zachování vašeho prostředí. Mezi klíčové úlohy a jejich Doporučené vlastníky patří:
 
 | Úkol | Vlastník |
 | :- | :- |
 | Definování procesu vytváření předplatných Azure | Liší se podle organizace |
-| Rozhodněte, kdo získá licence Enterprise Mobility + Security | Operační tým IAM |
-| Rozhodnutí, kdo získá licence Office 365 | Tým produktivity |
-| Rozhodněte, kdo získá další licence, například Dynamics, VSO | Vlastník aplikace |
-| Přiřazení licencí | Operační tým IAM |
-| Poradce při potížích s chybami přiřazení licencí a jejich náprava | Operační tým IAM |
-| Zřizování identit aplikacím ve službě Azure AD | Operační tým IAM |
+| Rozhodnutí o tom, kdo obdrží licence Enterprise Mobility + Security | Provozní tým IAM |
+| Rozhodnutí o tom, kdo získá licence pro Office 365 | Tým pro produktivitu |
+| Rozhodnutí o tom, kdo získá další licence, například Dynamics, VSO | Vlastník aplikace |
+| Přiřazení licencí | Provozní tým IAM |
+| Řešení potíží a oprava chyb přiřazení licencí | Provozní tým IAM |
+| Zřizování identit pro aplikace v Azure AD | Provozní tým IAM |
 
-Při kontrole seznamu můžete zjistit, že budete muset buď přiřadit vlastníka pro úkoly, které chybí vlastník, nebo upravit vlastnictví úkolů s vlastníky, kteří nejsou v souladu s výše uvedenými doporučeními.
+Při revizi seznamu se můžete setkat s tím, že budete muset buď přiřadit vlastníka pro úlohy, u kterých chybí vlastník, nebo upravit vlastnictví pro úlohy s vlastníky, které nejsou zarovnané na výše uvedená doporučení.
 
-#### <a name="assigning-owners-recommended-reading"></a>Přiřazení vlastníků doporučené čtení
+#### <a name="assigning-owners-recommended-reading"></a>Při přiřazování vlastníků se doporučuje číst.
 
 - [Přiřazení rolí správce v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)
 - [Zásady správného řízení v Azure](https://docs.microsoft.com/azure/security/governance-in-azure)
 
-## <a name="on-premises-identity-synchronization"></a>Místní synchronizace identit
+## <a name="on-premises-identity-synchronization"></a>Synchronizace místní identity
 
-### <a name="identify-and-resolve-synchronization-issues"></a>Identifikace a řešení problémů se synchronizací
+### <a name="identify-and-resolve-synchronization-issues"></a>Identifikace a řešení potíží s synchronizací
 
-Společnost Microsoft doporučuje mít dobrý směrný plán a pochopení problémů v místním prostředí, které mohou mít za následek problémy se synchronizací do cloudu. Vzhledem k tomu, že automatizované nástroje, jako je [IdFix](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix) a [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-azure-ad-connect#why-use-azure-ad-connect-health) můžete generovat velký objem falešných poplachů, doporučujeme určit chyby synchronizace, které byly ponechány bez adresované více než 100 dní vyčištěním těchto objektů omylem. Dlouhodobé nevyřešené chyby synchronizace mohou generovat incidenty podpory. [Řešení chyb během synchronizace](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-sync-errors) poskytuje přehled různých typů chyb synchronizace, některé z možných scénářů, které způsobují tyto chyby a potenciální způsoby, jak opravit chyby.
+Microsoft doporučuje, abyste měli dobrý základ a pochopili problémy v místním prostředí, které můžou vést k problémům se synchronizací do cloudu. Vzhledem k tomu, že automatizované nástroje, jako je [IdFix](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix) a [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-azure-ad-connect#why-use-azure-ad-connect-health) , mohou generovat velký objem falešně pozitivních hodnot, doporučujeme, abyste identifikovali chyby synchronizace, které byly ponechány po více než 100 dnech tím, že se tyto objekty při chybě čistí. Dlouhodobé nevyřešené chyby synchronizace můžou generovat incidenty podpory. [Řešení chyb během synchronizace](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-sync-errors) nabízí přehled různých typů chyb synchronizace. některé z možných scénářů způsobujících tyto chyby a potenciální způsoby, jak chyby opravit.
 
-### <a name="azure-ad-connect-sync-configuration"></a>Konfigurace synchronizace azure a připojení
+### <a name="azure-ad-connect-sync-configuration"></a>Konfigurace synchronizace Azure AD Connect
 
-Chcete-li povolit všechna hybridní prostředí, stav zabezpečení na základě zařízení a integraci s Azure AD, je nutné synchronizovat uživatelské účty, které vaši zaměstnanci používají k přihlášení ke svým počítačům.
+Aby bylo možné povolit veškeré hybridní prostředí, zabezpečení na základě zařízení a integraci s Azure AD, je nutné synchronizovat uživatelské účty, které vaši zaměstnanci používají pro přihlášení ke svým plochám.
 
-Pokud nesynchronizujete přihlášení uživatelů doménové struktury, měli byste změnit synchronizaci tak, aby pocházela ze správné doménové struktury.
+Pokud nesynchronizujete uživatele doménové struktury do nástroje, měli byste změnit synchronizaci tak, aby pocházela ze správné doménové struktury.
 
 #### <a name="synchronization-scope-and-object-filtering"></a>Obor synchronizace a filtrování objektů
 
-Odebrání známých bloků objektů, které nemusí být synchronizovány, má následující provozní výhody:
+Odebrání známých kontejnerů objektů, které nejsou nutné k synchronizaci, má následující provozní výhody:
 
 - Méně zdrojů chyb synchronizace
 - Rychlejší synchronizační cykly
-- Méně "odpadků" pro přenos z místních prostor, například znečištění globálního seznamu adres pro místní účty služeb, které nejsou relevantní v cloudu
+- Méně "uvolňování" pro přenos z místního prostředí, například znečištění globálního seznamu adres pro místní účty služeb, které nejsou relevantní v cloudu
 
 > [!NOTE]
-> Pokud zjistíte, že importujete mnoho objektů, které se neexportují do cloudu, měli byste filtrovat podle ou jednotky nebo podle konkrétních atributů.
+> Pokud hledáte import mnoha objektů, které nejsou exportovány do cloudu, měli byste filtrovat podle organizační jednotky nebo konkrétních atributů.
 
-Příklady objektů, které mají být vyloučeny, jsou:
+Příklady objektů, které se mají vyloučit:
 
 - Účty služeb, které se nepoužívají pro cloudové aplikace
-- Skupiny, které nejsou určeny k použití v cloudových scénářích, jako jsou ty, které se používají k udělení přístupu k prostředkům
-- Uživatelé nebo kontakty, které jsou externí identity, které jsou určeny k reprezentováns Azure AD B2B spolupráce
-- Účty počítačů, u kterých zaměstnanci nemají přístup ke cloudovým aplikacím například ze serverů
+- Skupiny, které nemají být používány v cloudových scénářích, jako jsou ty, které se používají pro udělení přístupu k prostředkům
+- Uživatelé nebo kontakty s externími identitami, které mají být zastoupeny spoluprací Azure AD B2B
+- Účty počítačů, ve kterých zaměstnanci nejsou určeni pro přístup ke cloudovým aplikacím, například servery
 
 > [!NOTE]
-> Pokud má jedna lidská identita zřízené více účtů z něčeho, jako je například migrace, fúze nebo akvizice starší domény, měli byste synchronizovat pouze účet používaný uživatelem na základě každodenního, například to, co používá k přihlášení k počítači .
+> Pokud má jedna lidská identita zřízenou víc účtů, jako je třeba migrace starší domény, fúze nebo akvizice, měli byste jenom synchronizovat účet používaný uživatelem v každodenním provozu, například to, co používají pro přihlášení ke svému počítači.
 
-V ideálním případě budete chtít dosáhnout rovnováhy mezi snížením počtu objektů k synchronizaci a složitostí pravidel. Obecně platí, že kombinace mezi [filtrováním](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-configure-filtering) ou/kontejnerů a jednoduchým mapováním atributů na atribut cloudFiltered je efektivní kombinace filtrování.
+V ideálním případě budete chtít dosáhnout rovnováhy mezi snížením počtu objektů, které se mají synchronizovat, a složitou složitostí pravidel. Obecně platí, že kombinace mezi [filtrováním](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-configure-filtering) organizační jednotky/kontejneru a jednoduchým mapováním atributů na atribut cloudFiltered je efektivní kombinací filtrování.
 
 > [!IMPORTANT]
-> Pokud používáte filtrování skupin v produkčním prostředí, měli byste přejít na jiný přístup filtrování.
+> Pokud používáte filtrování skupin v produkčním prostředí, měli byste přejít na jiný přístup pro filtrování.
 
 #### <a name="sync-failover-or-disaster-recovery"></a>Synchronizace převzetí služeb při selhání nebo zotavení po havárii
 
-Azure AD Connect hraje klíčovou roli v procesu zřizování. Pokud synchronizační server přejde z nějakého důvodu do režimu offline, změny v místním prostředí nelze aktualizovat v cloudu a může mít za následek problémy s přístupem pro uživatele. Proto je důležité definovat strategii převzetí služeb při selhání, která správcům umožňuje rychle obnovit synchronizaci po přepnesynchronizační server do režimu offline. Tyto strategie mohou spadat do těchto kategorií:
+Azure AD Connect hraje klíčovou roli v procesu zřizování. Pokud synchronizační Server z jakéhokoli důvodu přejde do offline režimu, změny v místním prostředí nejde v cloudu aktualizovat a můžou mít za následek problémy s přístupem pro uživatele. Proto je důležité definovat strategii převzetí služeb při selhání, která umožňuje správcům rychle obnovit synchronizaci po přechodu synchronizačního serveru do režimu offline. Tyto strategie můžou patřit do následujících kategorií:
 
-- **Nasazení serveru Azure AD Connect Server(y) v pracovním režimu** – umožňuje správci "povýšit" pracovní server do produkčního prostředí pomocí jednoduchého konfiguračního přepínače.
-- **Použití virtualizace** – pokud se připojení Azure AD nasadí ve virtuálním počítači (VM), správci můžou využít svůj zásobník virtualizace k živé migraci nebo rychlému opětovnému nasazení virtuálního počítače a proto obnovení synchronizace.
+- **Nasazení Azure AD Connectch serverů v pracovním režimu** – umožní správci "propagovat" pracovní server do produkčního prostředí jednoduchým přepínačem konfigurace.
+- **Použít virtualizaci** – Pokud je služba Azure AD Connect nasazená na virtuálním počítači, můžou správci využít svůj zásobník virtualizace k migraci za provozu nebo rychle znovu nasadit virtuální počítač, a proto obnovit synchronizaci.
 
-Pokud vaší organizaci chybí strategie zotavení po havárii a převzetí služeb při selhání pro synchronizaci, neměli byste váhat nasadit Azure AD Connect v pracovním režimu. Podobně pokud existuje neshoda mezi produkční a pracovní konfigurace, měli byste re-baseline Azure AD Connect pracovní režim tak, aby odpovídaly konfigurace výroby, včetně verzí softwaru a konfigurace.
+Pokud vaše organizace nemá strategii zotavení po havárii a převzetí služeb při selhání pro synchronizaci, neměli byste váhají nasazení Azure AD Connect v pracovním režimu. Podobně platí, že pokud dojde k neshodě mezi vaší produkční a pracovní konfigurací, měli byste znovu nasměrovat Azure AD Connect pracovní režim tak, aby odpovídal konfiguraci výroby, včetně verzí softwaru a konfigurací.
 
-![Snímek obrazovky konfigurace pracovního režimu Azure AD Connect](./media/active-directory-ops-guide/active-directory-ops-img1.png)
+![Snímek obrazovky s konfigurací pracovního režimu Azure AD Connect](./media/active-directory-ops-guide/active-directory-ops-img1.png)
 
 #### <a name="stay-current"></a>Zajištění aktuálnosti
 
-Microsoft pravidelně aktualizuje Azure AD Connect. Zůstaňte aktuální a využijte výhod vylepšení výkonu, oprav chyb a nových funkcí, které každá nová verze poskytuje.
+Aktualizace společnosti Microsoft Azure AD Connect pravidelně. Současným využitím vylepšení výkonu, oprav chyb a nových funkcí, které poskytuje každá nová verze.
 
-Pokud je vaše verze Azure AD Connect více než šest měsíců pozadu, měli byste upgradovat na nejnovější verzi.
+Pokud je vaše verze Azure AD Connect víc než šest měsíců, měli byste upgradovat na nejnovější verzi.
 
-#### <a name="source-anchor"></a>Zdrojová kotva
+#### <a name="source-anchor"></a>Zdrojové ukotvení
 
-Použití **ms-DS-consistencyguid** jako [zdrojové kotvy](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-design-concepts) umožňuje snadnější migraci objektů mezi doménovými strukturami a doménami, což je běžné v konsolidaci a vyčištění domény služby AD, fúzích, akvizicích a prodejích.
+Použití služby **MS-DS-consistencyguid** jako [zdrojového ukotvení](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-design-concepts) umožňuje snazší migraci objektů napříč doménovými strukturami a doménami, což je běžné při konsolidaci/vyčištění domény AD, fúzí, akvizicích a divestitures.
 
-Pokud aktuálně používáte **ObjektGuid** jako zdrojovou kotvu, doporučujeme přepnout na using **ms-DS-ConsistencyGuid**.
+Pokud v tuto chvíli jako zdrojové kotvy používáte **objectGUID** , doporučujeme přepnout na použití **MS-DS-ConsistencyGuid**.
 
 #### <a name="custom-rules"></a>Vlastní pravidla
 
-Vlastní pravidla Služby Azure AD Connect poskytují možnost řídit tok atributů mezi místními objekty a cloudovými objekty. Nadměrné používání nebo zneužití vlastních pravidel však může představovat následující rizika:
+Azure AD Connect vlastní pravidla poskytují možnost řídit tok atributů mezi místními objekty a objekty cloudu. Přestavování nebo nepoužívání vlastních pravidel ale může způsobit následující rizika:
 
-- Řešení složitosti řešení potíží
+- Řešení potíží s složitostí
 - Snížení výkonu při provádění složitých operací napříč objekty
-- Vyšší pravděpodobnost rozdílnosti konfigurace mezi produkčním a pracovním serverem
-- Další režie při upgradu Azure AD Connect, pokud jsou vytvořena vlastní pravidla v rámci priority větší než 100 (používá předdefinovaná pravidla)
+- Vyšší pravděpodobnost rozdílů mezi konfigurací mezi provozním serverem a přípravným serverem
+- Další režie při upgradu Azure AD Connect, pokud jsou vlastní pravidla vytvořená v rámci priority větší než 100 (používá se v předdefinovaných pravidlech)
 
-Pokud používáte příliš složitá pravidla, měli byste prozkoumat důvody složitosti a najít příležitosti pro zjednodušení. Podobně pokud jste vytvořili vlastní pravidla s hodnotou priority nad 100, měli byste je opravit tak, aby nebyla ohrožena nebo byla v konfliktu s výchozí sadou.
+Pokud používáte příliš složitá pravidla, měli byste prozkoumat důvody složitosti a najít příležitosti pro zjednodušení. Podobně platí, že pokud jste vytvořili vlastní pravidla s hodnotou priority vyšší než 100, měli byste pravidla opravit, aby nedocházelo k rizikům nebo byly v konfliktu s výchozí sadou.
 
-Příklady zneužití vlastních pravidel:
+Mezi příklady nepoužití vlastních pravidel patří:
 
-- **Kompenzovat nečistá data v adresáři** - V tomto případě se doporučuje pracovat s vlastníky týmu AD a vyčistit data v adresáři jako úkol nápravy a upravit procesy, aby se zabránilo opětovnému zavedení chybných dat.
-- **Jednorázová náprava jednotlivých uživatelů** - Je běžné najít pravidla, která se odkreslují zvláštní případ, obvykle z důvodu problému s konkrétním uživatelem.
-- **Overcomplicated "CloudFiltering"** – Při snížení počtu objektů je osvědčeným postupem, existuje riziko vytvoření a příliš složitý rozsah synchronizace pomocí mnoha pravidel synchronizace. Pokud existuje složitá logika zahrnout nebo vyloučit objekty mimo filtrování ou, je doporučeno řešit tuto logiku mimo synchronizaci a popisek objekty s jednoduchým "cloudFiltered" atribut, který může toku s jednoduchým pravidlem synchronizace.
+- Kompenzovat nezměněná **data v adresáři** – v takovém případě se doporučuje pracovat s vlastníky týmu AD a vyčistit data v adresáři jako úlohu nápravy a upravit procesy tak, aby nedocházelo k opětovnému nasazování chybných dat.
+- **Jednorázová náprava individuálních uživatelů** – je běžné najít pravidla, která mají zvláštní velká a malá písmena, většinou kvůli problému s konkrétním uživatelem.
+- Velmi **komplikované "CloudFiltering"** – při snižování počtu objektů je dobrým zvykem vytvoření a velmi komplikovaný rozsah synchronizace s použitím řady pravidel synchronizace. Pokud existuje složitá logika pro zahrnutí/vyloučení objektů mimo filtrování organizačních jednotek, doporučuje se řešit tuto logiku mimo synchronizaci a označit objekty jednoduchým atributem "cloudFiltered", který může být v rámci jednoduchého pravidla synchronizace.
 
-#### <a name="azure-ad-connect-configuration-documenter"></a>Dokumentátor konfigurace Azure AD Connect
+#### <a name="azure-ad-connect-configuration-documenter"></a>Dokumentace ke konfiguraci Azure AD Connect
 
-[Azure AD Connect Configuration Documenter](https://github.com/Microsoft/AADConnectConfigDocumenter) je nástroj, který můžete použít ke generování dokumentace instalace Azure AD Connect, abyste umožnili lepší pochopení konfigurace synchronizace, získali důvěru v správné nastavení věcí a věděli, co se změnilo, když jste použili nové sestavení nebo konfiguraci Azure AD Connect nebo přidali nebo aktualizovali vlastní pravidla synchronizace. Mezi současné možnosti nástroje patří:
+[Dokument konfigurace Azure AD Connect](https://github.com/Microsoft/AADConnectConfigDocumenter) je nástroj, pomocí kterého můžete vygenerovat dokumentaci k instalaci Azure AD Connect a umožnit tak lepší porozumění konfiguraci synchronizace, zajistit spolehlivější sestavování a vědět, co se změnilo při použití nového buildu nebo konfigurace Azure AD Connect nebo přidání nebo aktualizace vlastních pravidel synchronizace. Mezi aktuální funkce nástroje patří:
 
-- Dokumentace o kompletní konfiguraci synchronizace Azure AD Connect.
-- Dokumentace o všech změnách v konfiguraci dvou synchronizačních serverů Azure AD Connect nebo změny z daného směrného plánu konfigurace.
-- Generování skriptu nasazení prostředí PowerShell pro migraci rozdílů pravidel synchronizace nebo přizpůsobení z jednoho serveru na jiný.
+- Dokumentace k kompletní konfiguraci Azure AD Connect synchronizace.
+- Dokumentace o všech změnách v konfiguraci dvou Azure AD Connectch synchronizačních serverů nebo změnách z daného směrného plánu konfigurace.
+- Generování skriptu nasazení prostředí PowerShell pro migraci rozdílů v pravidlech synchronizace nebo přizpůsobení z jednoho serveru na jiný.
 
 ## <a name="assignment-to-apps-and-resources"></a>Přiřazení k aplikacím a prostředkům
 
-### <a name="group-based-licensing-for-microsoft-cloud-services"></a>Skupinové licencování cloudových služeb Microsoftu
+### <a name="group-based-licensing-for-microsoft-cloud-services"></a>Licencování na základě skupin pro cloudové služby Microsoftu
 
-Azure Active Directory zjednodušuje správu licencí prostřednictvím [skupinových licencí](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal) pro cloudové služby Microsoftu. Tímto způsobem IAM poskytuje infrastrukturu skupiny a delegované správu těchto skupin na správné týmy v organizacích. Existuje několik způsobů, jak nastavit členství ve skupinách ve službě Azure AD, včetně:
+Azure Active Directory zjednodušuje správu licencí prostřednictvím [licencování na základě skupin](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal) pro cloudové služby Microsoftu. Díky tomu IAM zajišťuje infrastrukturu skupin a delegovanou správu těchto skupin do řádných týmů v organizacích. Existuje několik způsobů, jak nastavit členství ve skupinách v Azure AD, včetně těchto:
 
-- **Synchronizované z místních** – skupiny mohou pocházet z místních adresářů, což může být vhodné pro organizace, které zavedly procesy správy skupiny, které lze rozšířit o přiřazení licencí v office 365.
+- **Synchronizace z místních** skupin může pocházet z místních adresářů, což může být vhodné pro organizace, které mají zavedené procesy správy skupin, které se dají rozšířit tak, aby se daly přiřazovat licence v Office 365.
 
-- **Založené na atributech / dynamické** - Skupiny mohou být vytvořeny v cloudu na základě výrazu založeného na atributech uživatele, například Oddělení se rovná "prodeji". Azure AD udržuje členy skupiny, udržovat konzistentní s definovaným výrazem. Použití tohoto druhu skupiny pro přiřazení licencí umožňuje přiřazení licencí na základě atributů, což je vhodné pro organizace, které mají vysokou kvalitu dat ve svém adresáři.
+- **Atributy založené na atributech a dynamické** skupiny se dají vytvořit v cloudu na základě výrazu založeného na uživatelských atributech, například oddělení se rovná "Sales". Azure AD udržuje členy skupiny a udržuje je konzistentní s definovaným výrazem. Použití tohoto druhu skupiny pro přiřazení licence umožňuje přiřazení licence na základě atributů, které je vhodné pro organizace, které mají ve svém adresáři vysokou kvalitu dat.
 
-- **Delegované vlastnictví** – skupiny lze vytvořit v cloudu a mohou být určeny vlastníky. Tímto způsobem můžete vlastníkům firem, například týmu spolupráce nebo týmu BI, poukázat k definování toho, kdo by měl mít přístup.
+- **Delegované vlastnictví** – skupiny se dají vytvářet v cloudu a můžou se jmenovat vlastníci. Tímto způsobem můžete svým vlastníkům, například týmu pro spolupráci nebo týmu BI, určit, kdo má mít přístup.
 
-Pokud aktuálně používáte ruční proces k přiřazení licencí a součástí uživatelům, doporučujeme implementovat skupinové licencování. Pokud váš aktuální proces nesleduje chyby licencí nebo to, co je přiřazeno versus k dispozici, měli byste definovat vylepšení procesu, který by řešil chyby licencí a monitoroval přiřazení licencí.
+Pokud aktuálně používáte ruční proces k přiřazení licencí a součástí uživatelům, doporučujeme implementovat licencování na základě skupin. Pokud váš aktuální proces nemonitoruje chyby licencování nebo to, co je k dispozici, měli byste definovat vylepšení procesu pro řešení chyb při licencování a monitorování přiřazení licencí.
 
-Dalším aspektem správy licencí je definice plánů služeb (součástí licence), které by měly být povoleny na základě pracovních funkcí v organizaci. Udělení přístupu k plánům služeb, které nejsou nutné, může vést k tomu, že se uživatelům na portálu Office zotlouže, pro které nebyli vyškoleni nebo by je neměli používat. Může zvýšit objem další chod technické podpory, zbytečné zřizování a ohrozit váš dodržování předpisů a zásady správného řízení, například při zřizování OneDrivu pro firmy jednotlivcům, kterým nemusí být povoleno sdílet obsah.
+Dalším aspektem správy licencí je definice plánů služeb (součásti licence), které by měly být povolené na základě pracovních funkcí v organizaci. Udělení přístupu k plánům služeb, které nejsou nezbytné, může mít za následek, že uživatelé uvidí nástroje na portálu Office, na které nebyli vyškolení nebo by se neměly používat. Může dodávat další objemy helpdesku, zbytečné zřizování a nastavovat dodržování předpisů a zásady správného řízení, například při zřizování OneDrivu pro firmy jednotlivcům, kteří nemusí mít povolený sdílení obsahu.
 
-K definování plánů služeb uživatelům použijte následující pokyny:
+Pro definování plánů služeb pro uživatele použijte následující pokyny:
 
-- Správci by měli definovat "balíčky" plánů služeb, které mají být nabízeny uživatelům na základě jejich role, například pracovníka s bílým límečkem versus pracovníka podlaží.
-- Vytvořte skupiny podle clusteru a přiřaďte licenci s plánem služeb.
-- Volitelně lze definovat atribut, který pojme balíčky pro uživatele.
+- Správci by měli definovat "sady" plánů služeb, které mají být nabídnuty uživatelům na základě jejich role, například pracovní proces bílého kroužku a pracovní proces.
+- Vytvořte skupiny podle clusteru a přiřaďte licenci k plánu služby.
+- Volitelně lze atribut definovat tak, aby obsahoval balíčky pro uživatele.
 
 > [!IMPORTANT]
-> Licencování na základě skupiny ve službě Azure AD zavádí koncept uživatelů ve stavu chyby licencování. Pokud zaznamenáte případné chyby v licencování, měli byste okamžitě [identifikovat a vyřešit](https://docs.microsoft.com/azure/active-directory/users-groups-roles/licensing-groups-resolve-problems) případné problémy s přiřazením licencí.
+> Licencování na základě skupin ve službě Azure AD zavádí koncept uživatelů v chybovém stavu licencování. Pokud si všimnete jakýchkoli chyb licencování, měli byste okamžitě [identifikovat a vyřešit](https://docs.microsoft.com/azure/active-directory/users-groups-roles/licensing-groups-resolve-problems) případné problémy s přiřazením licencí.
 
-![Automaticky generovaný snímek obrazovky počítače](./media/active-directory-ops-guide/active-directory-ops-img2.png)
+![Snímek obrazovky s popisem obrazovky počítače se automaticky vygeneroval.](./media/active-directory-ops-guide/active-directory-ops-img2.png)
 
 #### <a name="lifecycle-management"></a>Správa životního cyklu
 
-Pokud aktuálně používáte nástroj, například [Microsoft Identity Manager](https://docs.microsoft.com/microsoft-identity-manager/) nebo systém jiného výrobce, který se spoléhá na místní infrastrukturu, doporučujeme překládat přiřazení z existujícího nástroje, implementovat skupinové licencování a definovat správu životního cyklu skupiny na základě [skupin](https://docs.microsoft.com/azure/active-directory/users-groups-roles/licensing-group-advanced#use-group-based-licensing-with-dynamic-groups). Podobně pokud váš stávající proces nezohledňuje nové zaměstnance nebo zaměstnance, kteří opouštějí organizaci, měli byste nasadit skupinové licencování založené na dynamických skupinách a definovat životní cyklus členství ve skupině. Pokud se licencování na základě skupin nasazuje proti místním skupinám, které nemají správu životního cyklu, zvažte použití cloudových skupin k povolení funkcí, jako je delegované vlastnictví nebo dynamické členství založené na atributech.
+Pokud aktuálně používáte nástroj, například [Microsoft Identity Manager](https://docs.microsoft.com/microsoft-identity-manager/) nebo systém třetí strany, který spoléhá na místní infrastrukturu, doporučujeme, abyste přesměrovali přiřazení z existujícího nástroje, implementovali licencování na základě skupin a definovali správu životního cyklu skupin na základě [skupin](https://docs.microsoft.com/azure/active-directory/users-groups-roles/licensing-group-advanced#use-group-based-licensing-with-dynamic-groups). Podobně platí, že pokud se váš stávající proces nechystá pro nové zaměstnance nebo zaměstnance, kteří odejdou z organizace, měli byste nasadit licencování na základě skupin na základě dynamických skupin a definovat životní cyklus členství ve skupině. Nakonec, pokud se licencování na základě skupin nasadí do místních skupin, které nemají správu životního cyklu, zvažte použití skupin cloudových funkcí, které umožňují využívat možnosti, jako je delegované vlastnictví nebo dynamické členství založené na atributech.
 
-### <a name="assignment-of-apps-with-all-users-group"></a>Přiřazení aplikací se skupinou Všichni uživatelé
+### <a name="assignment-of-apps-with-all-users-group"></a>Přiřazení aplikací ke skupině Všichni uživatelé
 
-Vlastníci zdrojů se mohou domnívat, že skupina **Všichni uživatelé** obsahuje pouze **zaměstnance organizace,** pokud mohou ve skutečnosti obsahovat **zaměstnance organizace** i **hosty**. V důsledku toho byste měli věnovat zvláštní pozornost použití **skupiny Všichni uživatelé** pro přiřazení aplikací a udělení přístupu k prostředkům, jako je obsah služby SharePoint nebo aplikace.
+Vlastníci prostředků se můžou domnívat, že skupina **Všichni uživatelé** obsahuje jenom **zaměstnance v podniku** , když můžou ve skutečnosti obsahovat **podnikové zaměstnance** i **hosty**. V důsledku toho byste měli věnovat zvláštní pozornost při použití skupiny **Všichni uživatelé** pro přiřazení aplikace a udělení přístupu k prostředkům, jako je například sharepointový obsah nebo aplikace.
 
 > [!IMPORTANT]
-> Pokud je skupina **Všichni uživatelé** povolená a používá se pro zásady podmíněného přístupu, přiřazení aplikace nebo prostředků, nezapomeňte [ji zabezpečit,](https://docs.microsoft.com/azure/active-directory/b2b/use-dynamic-groups) pokud nechcete, aby zahrnovala uživatele typu Host. Kromě toho byste měli opravit přiřazení licencí vytvořením a přiřazením skupinám, které obsahují pouze **zaměstnance rozlehlé sítě.** Na druhou stranu, pokud zjistíte, že skupina **Všichni uživatelé** je povolena, ale není použita k udělení přístupu k prostředkům, ujistěte se, že provozní pokyny vaší organizace je záměrně používat tuto skupinu (která zahrnuje **zaměstnance rozlehlé sítě** a **hosty**).
+> Pokud je skupina **Všichni uživatelé** povolená a použitá pro zásady podmíněného přístupu, aplikaci nebo přiřazení prostředků, ujistěte se, že [skupinu zabezpečíte](https://docs.microsoft.com/azure/active-directory/b2b/use-dynamic-groups) , pokud nechcete, aby zahrnovala uživatele typu Host. Kromě toho byste měli opravit přiřazení licencí tím, že vytvoříte a přiřadíte skupiny, které obsahují pouze **zaměstnance v podniku** . Pokud zjistíte, že je povolená skupina **Všichni uživatelé** , ale nepoužívá se k udělení přístupu k prostředkům, ujistěte se, že provozní pokyny vaší organizace tuto skupinu záměrně používají (což zahrnuje i **zaměstnance v podniku** i **hosty**).
 
-### <a name="automated-user-provisioning-to-apps"></a>Automatické zřizování uživatelů do aplikací
+### <a name="automated-user-provisioning-to-apps"></a>Automatizované zřizování uživatelů pro aplikace
 
-[Automatizované zřizování uživatelů](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) pro aplikace je nejlepší způsob, jak vytvořit konzistentní zřizování, zrušení zřizování a životního cyklu identit ve více systémech.
+[Automatizované zřizování uživatelů](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) pro aplikace je nejlepší způsob, jak vytvořit konzistentní zřizování, zrušení zřízení a životní cyklus identit napříč různými systémy.
 
-Pokud aktuálně zřizujete aplikace ad-hoc způsobem nebo používáte věci, jako jsou soubory CSV, JIT nebo místní řešení, které neřeší správu životního cyklu, doporučujeme [implementovat zřizování aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#how-do-i-set-up-automatic-provisioning-to-an-application) s Azure AD pro podporované aplikace a definovat konzistentní vzor pro aplikace, které ještě nejsou podporované službou Azure AD.
+Pokud aktuálně vytváříte aplikace v rámci ad hoc nebo pomocí takových akcí jako soubory CSV, JIT nebo místní řešení, které neřeší správu životního cyklu, doporučujeme, abyste [implementovali zřizování aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#how-do-i-set-up-automatic-provisioning-to-an-application) s Azure AD pro podporované aplikace a definovali konzistentní vzor pro aplikace, které zatím Azure AD nepodporují.
 
-![Zřizovací služba Azure AD](./media/active-directory-ops-guide/active-directory-ops-img3.png)
+![Služba zřizování Azure AD](./media/active-directory-ops-guide/active-directory-ops-img3.png)
 
-### <a name="azure-ad-connect-delta-sync-cycle-baseline"></a>Základový plán cyklu rozdílové synchronizace připojení Azure AD
+### <a name="azure-ad-connect-delta-sync-cycle-baseline"></a>Standardní hodnota Azure AD Connect cyklus synchronizace Delta
 
-Je důležité porozumět objemu změn ve vaší organizaci a ujistit se, že netrvá příliš dlouho, než bude čas předvídatelné synchronizace.
+Je důležité porozumět objemu změn ve vaší organizaci a ujistit se, že netrvá příliš dlouho k předvídatelnému času synchronizace.
 
-Výchozí frekvence [synchronizace delta](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-scheduler) je 30 minut. Pokud synchronizace delta trvá déle než 30 minut konzistentně nebo existují významné rozdíly mezi výkonem synchronizace delta pracovní a produkční, měli byste prozkoumat a zkontrolovat [faktory ovlivňující výkon Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors).
+[Výchozí četnost rozdílové synchronizace](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-scheduler) je 30 minut. Pokud rozdílová synchronizace trvá déle než 30 minut, nebo dochází ke značným rozdílům mezi výkonem rozdílové synchronizace fázování a výroby, měli byste prozkoumat a zkontrolovat [faktory ovlivňující výkon Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors).
 
-#### <a name="azure-ad-connect-troubleshooting-recommended-reading"></a>Azure AD Connect poradce při potížích doporučená čtení
+#### <a name="azure-ad-connect-troubleshooting-recommended-reading"></a>Poradce při potížích s doporučeným čtením Azure AD Connect
 
-- [Příprava atributů adresáře pro synchronizaci s Office 365 pomocí nástroje IdFix – Office 365](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
-- [Azure AD Connect: Řešení potíží s chybami během synchronizace](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors)
+- [Příprava atributů adresáře pro synchronizaci se sadou Office 365 pomocí nástroje IdFix – Office 365](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
+- [Azure AD Connect: řešení chyb při synchronizaci](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors)
 
 ## <a name="summary"></a>Souhrn
 
-Existuje pět aspektů zabezpečené identity infrastruktury. Tento seznam vám pomůže rychle najít a přijmout nezbytná opatření k zabezpečení a správě životního cyklu identit a jejich nároků ve vaší organizaci.
+Zabezpečená infrastruktura identity má pět aspektů. Tento seznam vám pomůže rychle vyhledat a provést nezbytné akce pro zabezpečení a správu životního cyklu identit a jejich nároků ve vaší organizaci.
 
-- Přiřaďte vlastníky ke klíčovým úkolům.
-- Vyhledejte a vyřešte problémy se synchronizací.
+- Přiřaďte vlastníky ke klíčovým úlohám.
+- Vyhledejte a vyřešte problémy s synchronizací.
 - Definujte strategii převzetí služeb při selhání pro zotavení po havárii.
-- Zjednodušte správu licencí a přiřazení aplikací.
-- Automatizujte zřizování uživatelů do aplikací.
+- Zjednodušte správu licencí a přiřazování aplikací.
+- Automatizujte zřizování uživatelů s aplikacemi.
 
 ## <a name="next-steps"></a>Další kroky
 
-Začínáme s [kontrolami a akcemi správy ověřování](active-directory-ops-guide-auth.md).
+Začněte s [kontrolami a akcemi správy ověřování](active-directory-ops-guide-auth.md).

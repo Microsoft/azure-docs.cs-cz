@@ -1,6 +1,6 @@
 ---
-title: Přesunutí dat z obchodního skladu SAP pomocí Azure Data Factory
-description: Přečtěte si, jak přesunout data z SAP Business Warehouse pomocí Azure Data Factory.
+title: Přesun dat ze SAP Business Warehouse pomocí Azure Data Factory
+description: Přečtěte si, jak přesunout data ze SAP Business Warehouse pomocí Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,102 +13,102 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 108bdf057cd375e28b10a6838ec5c8c6f57749a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79281051"
 ---
-# <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Přesunutí dat z obchodního skladu SAP pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+# <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Přesun dat ze SAP Business Warehouse pomocí Azure Data Factory
+> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](data-factory-sap-business-warehouse-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-sap-business-warehouse.md)
 
 > [!NOTE]
-> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [konektor SAP Business Warehouse ve verzi V2](../connector-sap-business-warehouse.md).
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [konektor SAP Business Warehouse ve verzi v2](../connector-sap-business-warehouse.md).
 
 
-Tento článek vysvětluje, jak použít aktivitu kopírování v Azure Data Factory k přesunutí dat z místního SAP Business Warehouse (BW). Vychází z článku [Aktivity přesunu dat,](data-factory-data-movement-activities.md) který představuje obecný přehled přesunu dat s aktivitou kopírování.
+Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Factory přesouvat data z místního skladu SAP Business Warehouse (ČERNOBÍLý). Sestavuje se podle článku [aktivity přesunu dat](data-factory-data-movement-activities.md) , který prezentuje obecný přehled přesunu dat s aktivitou kopírování.
 
-Data z místního úložiště dat SAP Business Warehouse můžete zkopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako jímky naleznete v tabulce [Podporovaná úložiště dat.](data-factory-data-movement-activities.md#supported-data-stores-and-formats) Data Factory aktuálně podporuje pouze přesunutí dat z obchodního skladu SAP do jiných úložišť dat, ale ne pro přesun dat z jiných úložišť dat do obchodního skladu SAP. 
+Data z místního úložiště dat SAP Business Warehouse můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která aktivita kopírování podporuje jako jímky, najdete v tabulce [podporovaná úložiště dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) . Data Factory aktuálně podporuje jenom přesun dat z SAP Business Warehouse do jiných úložišť dat, ale ne pro přesun dat z jiných úložišť dat do SAP Business Warehouse. 
 
 ## <a name="supported-versions-and-installation"></a>Podporované verze a instalace
-Tento konektor podporuje SAP Business Warehouse verze 7.x. Podporuje kopírování dat z InfoCubes a QueryCubes (včetně dotazů BEx) pomocí dotazů MDX.
+Tento konektor podporuje SAP Business Warehouse verze 7. x. Podporuje kopírování dat z InfoCubes a QueryCubes (včetně BEx dotazů) pomocí dotazů MDX.
 
-Chcete-li povolit připojení k instanci SAP BW, nainstalujte následující součásti:
-- **Brána pro správu dat**: Služba Data Factory podporuje připojení k místním úložištím dat (včetně SAP Business Warehouse) pomocí komponenty s názvem Brána pro správu dat. Další informace o bráně pro správu dat a podrobných pokynech pro nastavení brány najdete v článku Přesunutí dat mezi místním úložištěm dat do článku [úložiště cloudových dat.](data-factory-move-data-between-onprem-and-cloud.md) Brána je povinná i v případě, že SAP Business Warehouse je hostovaný ve virtuálním počítači Azure IaaS (VM). Bránu můžete nainstalovat na stejný virtuální počítač jako úložiště dat nebo na jiný virtuální počítač, pokud se brána může připojit k databázi.
-- **Knihovna SAP NetWeaver** v počítači brány. Knihovnu SAP Netweaver můžete získat od správce SAP nebo přímo ze [služby SAP Software Download Center](https://support.sap.com/swdc). Vyhledejte **poznámku SAP #1025361** a získejte umístění pro stažení nejnovější verze. Ujistěte se, že architektura pro knihovnu SAP NetWeaver (32bitová nebo 64bitová) odpovídá instalaci brány. Poté nainstalujte všechny soubory obsažené v sadě SAP NetWeaver RFC SDK podle poznámky SAP. Knihovna SAP NetWeaver je také součástí instalace klientských nástrojů SAP.
+Pokud chcete povolit připojení k instanci SAP BW, nainstalujte následující komponenty:
+- **Správa dat Gateway**: Služba Data Factory podporuje připojení k místním úložištím dat (včetně SAP Business Warehouse) pomocí komponenty s názvem Správa dat Gateway. Další informace o Správa dat brány a podrobné pokyny k nastavení brány najdete v článku [přesun dat mezi místním úložištěm dat do cloudového úložiště dat](data-factory-move-data-between-onprem-and-cloud.md) . Brána se vyžaduje i v případě, že je SAP Business Warehouse hostovaný na virtuálním počítači Azure s IaaS (VM). Bránu můžete nainstalovat na stejný virtuální počítač jako úložiště dat nebo na jiný virtuální počítač, pokud se brána může připojit k databázi.
+- **Knihovna SAP NetWeaver** na počítači brány. Knihovnu SAP NetWeaver Library můžete získat od správce SAP nebo přímo z [webu SAP software Download Center](https://support.sap.com/swdc). Vyhledejte **#1025361 poznámky SAP** a získejte umístění pro stažení nejnovější verze. Ujistěte se, že architektura knihovny SAP NetWeaver (32-bit nebo 64) odpovídá instalaci brány. Pak nainstalujte všechny soubory zahrnuté v sadě SAP NetWeaver RFC SDK podle poznámky SAP. Knihovna SAP NetWeaver Library je také součástí instalace klientských nástrojů SAP.
 
 > [!TIP]
-> Vložte knihovny DLL extrahované ze sady NetWeaver RFC SDK do složky system32.
+> Vložte knihovny DLL extrahované z NetWeaver RFC SDK do složky System32.
 
 ## <a name="getting-started"></a>Začínáme
 Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data z místního úložiště dat Cassandra pomocí různých nástrojů nebo rozhraní API. 
 
-- Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Viz [Kurz: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) pro rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat. 
-- K vytvoření kanálu můžete taky použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Šablona Azure Resource Manager**, Rozhraní **.NET API**a REST **API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v tématu [Kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) aktivity. 
+- Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) . 
+- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
 
-Bez ohledu na to, zda používáte nástroje nebo api, provedete následující kroky k vytvoření kanálu, který přesune data ze zdrojového úložiště dat do úložiště dat jímky:
+Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
-1. Vytvořte **propojené služby** pro propojení vstupních a výstupních úložišť dat s vaší továrně dat.
-2. Vytvořte **datové sady** představující vstupní a výstupní data pro operaci kopírování. 
-3. Vytvořte **kanál** s aktivitou kopírování, která přebírá datovou sadu jako vstup a datovou sadu jako výstup. 
+1. Vytvořte **propojené služby** , které propojí vstupní a výstupní úložiště dat s datovou továrnou.
+2. Vytvořte datové **sady** , které reprezentují vstupní a výstupní data pro operaci kopírování. 
+3. Vytvořte **kanál** s aktivitou kopírování, která převezme datovou sadu jako vstup a datovou sadu jako výstup. 
 
-Při použití průvodce jsou automaticky vytvořeny definice JSON pro tyto entity Data Factory (propojené služby, datové sady a kanál). Při použití nástrojů nebo rozhraní API (s výjimkou rozhraní .NET API) definujete tyto entity Data Factory pomocí formátu JSON.  Ukázka s definicemi JSON pro entity Factory dat, které se používají ke kopírování dat z místního obchodního skladu SAP, najdete v [tématu JSON příklad: Kopírování dat z SAP Business Warehouse do Azure Blob](#json-example-copy-data-from-sap-business-warehouse-to-azure-blob) části tohoto článku. 
+Při použití Průvodce se automaticky vytvoří definice JSON pro tyto Entity Data Factory (propojené služby, datové sady a kanál). Pokud používáte nástroje/rozhraní API (s výjimkou rozhraní .NET API), definujete tyto Data Factory entit pomocí formátu JSON.  Ukázku s definicemi JSON pro Entity Data Factory, které se používají ke kopírování dat z místního datového skladu SAP, najdete v části [JSON example: kopírování dat z SAP Business Warehouse do Azure Blob](#json-example-copy-data-from-sap-business-warehouse-to-azure-blob) tohoto článku. 
 
-V následujících částech jsou uvedeny podrobnosti o vlastnostech JSON, které se používají k definování entit Factory dat specifických pro úložiště dat SAP BW:
+Následující části obsahují podrobné informace o vlastnostech JSON, které se používají k definování Data Factory entit specifických pro SAP BW úložiště dat:
 
-## <a name="linked-service-properties"></a>Vlastnosti propojených služeb
-Následující tabulka obsahuje popis prvků JSON specifických pro propojenou službu SAP Business Warehouse (BW).
+## <a name="linked-service-properties"></a>Vlastnosti propojené služby
+Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou službu SAP Business Warehouse (ČERNOBÍLý).
 
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
 server | Název serveru, na kterém se nachází instance SAP BW. | řetězec | Ano
-systemNumber | Systémové číslo systému SAP BW. | Dvoumístné desetinné číslo reprezentované jako řetězec. | Ano
-clientId | ID klienta v systému SAP W. | Třímístné desetinné číslo reprezentované jako řetězec. | Ano
+systemNumber | Číslo systému SAP BW systému | Desítkové číslo se dvěma číslicemi reprezentované jako řetězec. | Ano
+clientId | ID klienta klienta v systému SAP W. | Desítkové číslo se třemi číslicemi reprezentované jako řetězec. | Ano
 uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP | řetězec | Ano
 heslo | Heslo pro tohoto uživatele. | řetězec | Ano
-název brány | Název brány, kterou by měla služba Data Factory použít k připojení k místní instanci SAP BW. | řetězec | Ano
-šifrované pověření | Šifrovaný řetězec pověření. | řetězec | Ne
+gatewayName | Název brány, kterou by služba Data Factory měla použít pro připojení k místní instanci SAP BW | řetězec | Ano
+encryptedCredential | Šifrovaný řetězec přihlašovacích údajů. | řetězec | Ne
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
-Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování datových sad, naleznete v článku [Vytváření datových sad.](data-factory-create-datasets.md) Oddíly, jako je struktura, dostupnost a zásady datové sady JSON, jsou podobné pro všechny typy datových sad (Azure SQL, Azure blob, Tabulka Azure atd.).
+Úplný seznam sekcí & vlastností dostupných pro definování datových sad naleznete v článku [vytvoření datových sad](data-factory-create-datasets.md) . Oddíly, jako je například struktura, dostupnost a zásada pro datovou sadu JSON, jsou podobné pro všechny typy datových sad (Azure SQL, Azure Blob, tabulka Azure atd.).
 
-Sekce **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Pro datovou sadu SAP BW typu **RelationalTable**nejsou podporovány žádné vlastnosti specifické pro daný typ . 
+Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Pro SAP BW datovou sadu **relačních**objektů typu není podporována žádná vlastnost specifická pro typ. 
 
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
-Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování aktivit, naleznete v článku [Vytváření kanálů.](data-factory-create-pipelines.md) Vlastnosti, jako je název, popis, vstupní a výstupní tabulky, jsou zásady jsou k dispozici pro všechny typy aktivit.
+Úplný seznam sekcí & vlastností dostupných pro definování aktivit najdete v článku [vytvoření kanálů](data-factory-create-pipelines.md) . Vlastnosti, jako je název, popis, vstupní a výstupní tabulky, jsou zásady dostupné pro všechny typy aktivit.
 
-Vzhledem k tomu, vlastnosti, které jsou k dispozici v **typeProperties** části aktivity se liší s každým typem aktivity. U aktivity kopírování se liší v závislosti na typech zdrojů a propadů.
+V takovém případě se vlastnosti dostupné v části **typeProperties** v aktivitě liší podle typu aktivity. U aktivity kopírování se liší v závislosti na typech zdrojů a jímky.
 
-Pokud zdroj v aktivitě kopírování je typu **RelationalSource** (který zahrnuje SAP BW), následující vlastnosti jsou k dispozici v části typeProperties:
+Pokud je zdroj v aktivitě kopírování typu **RelationalSource** (který zahrnuje SAP BW), jsou v oddílu typeProperties k dispozici následující vlastnosti:
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| query | Určuje dotaz MDX pro čtení dat z instance SAP BW. | dotaz u MDX. | Ano |
+| query | Určuje dotaz MDX pro čtení dat z instance SAP BW. | Dotaz MDX. | Ano |
 
 
-## <a name="json-example-copy-data-from-sap-business-warehouse-to-azure-blob"></a>Příklad JSON: Kopírování dat z obchodního skladu SAP do objektu Blob Azure
-Následující příklad obsahuje ukázkové definice JSON, které můžete použít k vytvoření kanálu pomocí [Sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo Azure [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Tato ukázka ukazuje, jak zkopírovat data z místního SAP Business Warehouse do úložiště objektů blob Azure. Data však můžete zkopírovat **přímo** do některého z jímky [uvedené zde](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivity kopírování v Azure Data Factory.  
+## <a name="json-example-copy-data-from-sap-business-warehouse-to-azure-blob"></a>Příklad JSON: kopírování dat ze SAP Business Warehouse do Azure Blob
+Následující příklad poskytuje ukázkové definice JSON, které můžete použít k vytvoření kanálu pomocí sady [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). V této ukázce se dozvíte, jak kopírovat data z místního skladu SAP Business Warehouse do Azure Blob Storage. Data se ale dají zkopírovat **přímo** do kterékoli z těchto umyvadel, které jsou [tady](data-factory-data-movement-activities.md#supported-data-stores-and-formats) uvedené, pomocí aktivity kopírování v Azure Data Factory.  
 
 > [!IMPORTANT]
-> Tato ukázka obsahuje úryvky JSON. Neobsahuje podrobné pokyny pro vytvoření datové továrny. Podrobné pokyny najdete v článku [přesunutí dat mezi místními umístěními a článkem cloudu.](data-factory-move-data-between-onprem-and-cloud.md)
+> Tato ukázka poskytuje fragmenty kódu JSON. Nezahrnuje podrobné pokyny k vytvoření datové továrny. Podrobné pokyny najdete v článku [přesun dat mezi místními umístěními a v cloudu](data-factory-move-data-between-onprem-and-cloud.md) .
 
-Ukázka má následující entity datové továrny:
+Ukázka má následující Entity Data Factory:
 
 1. Propojená služba typu [SapBw](#linked-service-properties).
 2. Propojená služba typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-3. Vstupní [datová sada](data-factory-create-datasets.md) typu [RelationalTable](#dataset-properties).
-4. Výstupní [datová sada](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-5. [Kanál](data-factory-create-pipelines.md) s aktivitou kopírování, který používá [Relační zdroj](#copy-activity-properties) a [blobsink](data-factory-azure-blob-connector.md#copy-activity-properties).
+3. Vstupní [datová sada](data-factory-create-datasets.md) typu [relačních](#dataset-properties)objektů.
+4. Výstupní [datová sada](data-factory-create-datasets.md) typu [azureblobu](data-factory-azure-blob-connector.md#dataset-properties).
+5. [Kanál](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [RelationalSource](#copy-activity-properties) a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Ukázka zkopíruje data z instance SAP Business Warehouse do objektu blob Azure každou hodinu. Vlastnosti JSON použité v těchto vzorcích jsou popsány v následujících částech.
+Ukázka kopíruje data z instance SAP Business Warehouse do objektu blob Azure za hodinu. Vlastnosti JSON použité v těchto ukázkách jsou popsány v oddílech následujících po ukázkách.
 
-Jako první krok nastavte bránu pro správu dat. Pokyny jsou v [přesunutí dat mezi místními umístěními a článkem cloudu.](data-factory-move-data-between-onprem-and-cloud.md)
+Jako první krok nastavte bránu pro správu dat. Pokyny najdete v článku [přesun dat mezi místními umístěními a cloudem](data-factory-move-data-between-onprem-and-cloud.md) .
 
 ### <a name="sap-business-warehouse-linked-service"></a>Propojená služba SAP Business Warehouse
-Tato propojená služba propojuje vaši instanci SAP BW s továrnou na data. Vlastnost type je nastavena na **SapBw**. Část typeProperties obsahuje informace o připojení pro instanci SAP BW. 
+Tato propojená služba propojuje vaši instanci SAP BW s datovou továrnou. Vlastnost Type je nastavená na **SapBw**. Část typeProperties poskytuje informace o připojení pro instanci SAP BW. 
 
 ```json
 {
@@ -130,7 +130,7 @@ Tato propojená služba propojuje vaši instanci SAP BW s továrnou na data. Vla
 ```
 
 ### <a name="azure-storage-linked-service"></a>Propojená služba Azure Storage
-Tato propojená služba propojuje váš účet Azure Storage s toto datové továrně. Vlastnost type je nastavena na **AzureStorage**. Část typeProperties obsahuje informace o připojení pro účet Úložiště Azure.
+Tato propojená služba propojuje váš Azure Storage účet s datovou továrnou. Vlastnost Type je nastavená na **AzureStorage**. Část typeProperties poskytuje informace o připojení pro účet Azure Storage.
 
 ```json
 {
@@ -145,11 +145,11 @@ Tato propojená služba propojuje váš účet Azure Storage s toto datové tov�
 ```
 
 ### <a name="sap-bw-input-dataset"></a>Vstupní datová sada SAP BW
-Tato datová sada definuje datovou sadu SAP Business Warehouse. Nastavíte typ datové sady Data Factory na **RelationalTable**. V současné době nezadáte žádné vlastnosti specifické pro typ pro datovou sadu SAP BW. Dotaz v definici aktivity kopírování určuje, jaká data se mají číst z instance SAP BW. 
+Tato datová sada definuje datovou sadu SAP Business Warehouse. Můžete nastavit typ datové sady Data Factory na **relační**. V současné době neurčíte žádné vlastnosti specifické pro typ SAP BW DataSet. Dotaz v definici aktivity kopírování určuje, jaká data se mají číst z instance SAP BW. 
 
-Nastavení externí vlastnosti na hodnotu true informuje službu Data Factory, že tabulka je externí pro datovou továrnu a není vytvořena aktivitou v datové továrně.
+Nastavením vlastnosti External na hodnotu true dojde k informování služby Data Factory, že je tabulka z objektu pro vytváření dat externá a není vytvořená aktivitou v datové továrně.
 
-Vlastnosti frekvence a intervalu definují plán. V tomto případě jsou data čtena z instance SAP BW každou hodinu. 
+Vlastnosti četnosti a intervalu definují plán. V tomto případě se data čtou z SAP BW instance každou hodinu. 
 
 ```json
 {
@@ -170,7 +170,7 @@ Vlastnosti frekvence a intervalu definují plán. V tomto případě jsou data �
 
 
 ### <a name="azure-blob-output-dataset"></a>Výstupní datová sada Azure Blob
-Tato datová sada definuje výstupní datovou sadu objektů blob Azure. Vlastnost type je nastavena na AzureBlob. Oddíl typeProperties uvádí, kde jsou uložena data zkopírovaná z instance SAP BW. Data se zapisují do nového objektu blob každou hodinu (frekvence: hodina, interval: 1). Cesta ke složce pro objekt blob je dynamicky vyhodnocována na základě počátečního času zpracovávaného řezu. Cesta ke složce používá části počátečního času rok, měsíc, den a hodiny.
+Tato datová sada definuje výstupní datovou sadu Azure Blob. Vlastnost Type je nastavená na Azureblobu. Část typeProperties poskytuje, kde jsou uložena data zkopírovaná z SAP BW instance. Data se zapisují do nového objektu BLOB každou hodinu (frekvence: hodina, interval: 1). Cesta ke složce pro objekt BLOB je dynamicky vyhodnocována na základě počátečního času zpracovávaného řezu. Cesta ke složce používá části rok, měsíc, den a hodiny v počátečním čase.
 
 ```json
 {
@@ -229,8 +229,8 @@ Tato datová sada definuje výstupní datovou sadu objektů blob Azure. Vlastnos
 ```
 
 
-### <a name="pipeline-with-copy-activity"></a>Kanál s aktivitou Kopírování
-Kanál obsahuje aktivitu kopírování, která je nakonfigurována pro použití vstupních a výstupních datových sad a je naplánována na každou hodinu. V definici kanálu JSON je **typ zdroje** nastaven na **Relační zdroj** (pro zdroj SAP BW) a typ **jímky** je nastaven na **objekt BlobSink**. Dotaz zadaný pro vlastnost **dotazu** vybere data za poslední hodinu ke kopírování.
+### <a name="pipeline-with-copy-activity"></a>Kanál s aktivitou kopírování
+Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby používala vstupní a výstupní datové sady a má naplánované spuštění každou hodinu. V definici JSON kanálu je typ **zdroje** nastavený na **RelationalSource** (pro zdroj SAP BW) a typ **jímky** je nastavený na **BlobSink**. Dotaz zadaný pro vlastnost **dotazu** vybere data během uplynulé hodiny ke zkopírování.
 
 ```json
 {
@@ -281,47 +281,47 @@ Kanál obsahuje aktivitu kopírování, která je nakonfigurována pro použití
 
 
 ### <a name="type-mapping-for-sap-bw"></a>Mapování typů pro SAP BW
-Jak je uvedeno v článku [aktivity přesunu dat,](data-factory-data-movement-activities.md) copy aktivita provádí převody automatického typu z typů zdrojů na typy jímek s následujícím dvoustupňovým přístupem:
+Jak je uvedeno v článku [aktivity přesunu dat](data-factory-data-movement-activities.md) , aktivita kopírování provádí automatické převody typů ze zdrojových typů do typů jímky s následujícím dvěma kroky:
 
-1. Převod z nativních typů zdrojů na typ .NET
-2. Převod z typu .NET na nativní typ jímky
+1. Převod z nativních zdrojových typů na typ .NET
+2. Převést z typu .NET na nativní typ jímky
 
-Při přesouvání dat z SAP BW se používají následující mapování z typů SAP BW na typy .NET.
+Při přesunu dat z SAP BW se z SAP BW typů do typů .NET používají následující mapování.
 
-Datový typ ve slovníku ABAP | Datový typ .NET
+Datový typ ve slovníku ABAP | .NET – datový typ
 -------------------------------- | --------------
-Accp |  Int
-Char | Řetězec
-Clnt | Řetězec
+ACCP |  Int
+CHAR | Řetězec
+CLNT | Řetězec
 CURR | Desetinné číslo
 CUKY | Řetězec
-Prosince | Desetinné číslo
+18.12 | Desetinné číslo
 FLTP | Double
 INT1 | Byte
 INT2 | Int16
 INT4 | Int
-Lang | Řetězec
+JAZYK | Řetězec
 LCHR | Řetězec
-LRAW | Bajt[]
-PŘEDŠkolní hod | Int16
-Quan | Desetinné číslo
-Syrové | Bajt[]
-RAWSTRING | Bajt[]
-Řetězec | Řetězec
-Jednotka | Řetězec
-Dat | Řetězec
-SPOLEČNOST NUMC | Řetězec
-Tims | Řetězec
+LRAW | Byte []
+PREC | Int16
+QUAN | Desetinné číslo
+ZÍSKÁNÍ | Byte []
+RAWSTRING | Byte []
+ŘETEZCE | Řetězec
+JEDNOTCE | Řetězec
+DEFINIC | Řetězec
+NUMC | Řetězec
+TIMS | Řetězec
 
 > [!NOTE]
-> Pokud chcete mapovat sloupce ze zdrojové datové sady na sloupce z datové sady jímky, přečtěte si témat [mapování sloupců datových sad v Azure Data Factory](data-factory-map-columns.md).
+> Chcete-li mapovat sloupce ze zdrojové datové sady na sloupce z datové sady jímky, přečtěte si téma [mapování sloupců datové sady v Azure Data Factory](data-factory-map-columns.md).
 
 
-## <a name="map-source-to-sink-columns"></a>Mapovat zdroj pro jímací sloupce
-Další informace o mapování sloupců ve zdrojové datové sadě na sloupce v datové sadě jímky najdete [v tématu Mapování sloupců datových sad v Azure Data Factory](data-factory-map-columns.md).
+## <a name="map-source-to-sink-columns"></a>Mapovat zdroj na sloupce jímky
+Další informace o mapování sloupců ve zdrojové datové sadě na sloupce v datové sadě jímky najdete v tématu [mapování sloupců datové sady v Azure Data Factory](data-factory-map-columns.md).
 
-## <a name="repeatable-read-from-relational-sources"></a>Opakovatelné čtení ze relačních zdrojů
-Při kopírování dat z úložišť relačních dat mějte na paměti opakovatelnost, abyste se vyhnuli nezamýšleným výsledkům. V Azure Data Factory můžete znovu spustit řez ručně. Můžete také nakonfigurovat zásady opakování pro datovou sadu tak, aby řez je znovu spustit, když dojde k selhání. Při opětovném spuštění řezu v obou směrech je třeba se ujistit, že stejná data jsou čtena bez ohledu na to, kolikrát je řez spuštěn. Viz [Opakovatelné čtení ze relačních zdrojů](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)
+## <a name="repeatable-read-from-relational-sources"></a>Opakované čtení z relačních zdrojů
+Při kopírování dat z relačních úložišť dat mějte na paměti, že se vyhnete nezamýšleným výsledkům. V Azure Data Factory můžete řez znovu spustit ručně. Můžete také nakonfigurovat zásady opakování pro datovou sadu, aby se řez znovu opakoval, když dojde k selhání. Při opětovném spuštění řezu v obou případech je nutné zajistit, že stejná data budou čtena bez ohledu na to, kolikrát je řez spuštěn. Zobrazit [opakující se čtení z relačních zdrojů](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)
 
-## <a name="performance-and-tuning"></a>Výkon a ladění
-[V tématu Průvodce sledováním výkonu & optimalizací se](data-factory-copy-activity-performance.md) dozvíte o klíčových faktorech, které ovlivňují výkon přesunu dat (aktivita kopírování) ve Službě Azure Data Factory, a o různých způsobech jeho optimalizace.
+## <a name="performance-and-tuning"></a>Výkon a optimalizace
+Další informace o klíčových faktorech, které mají vliv na výkon přesunu dat (aktivita kopírování) v Azure Data Factory a různých způsobech jejich optimalizace, najdete v tématu [Průvodce optimalizací aktivity kopírování &](data-factory-copy-activity-performance.md) .

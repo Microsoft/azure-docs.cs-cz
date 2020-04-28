@@ -1,6 +1,6 @@
 ---
-title: Vizuální vytváření
-description: Přečtěte si, jak používat vizuální vytváření ve službě Azure Data Factory
+title: Vytváření vizuálních prvků
+description: Naučte se používat tvorbu vizuálů v Azure Data Factory
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -11,50 +11,50 @@ ms.reviewer: ''
 manager: anandsub
 ms.date: 12/19/2019
 ms.openlocfilehash: e7de92878dac72470c0b65d1cf18c1a2d526a0bb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418486"
 ---
-# <a name="visual-authoring-in-azure-data-factory"></a>Vizuální vytváření ve Službě Azure Data Factory
+# <a name="visual-authoring-in-azure-data-factory"></a>Vytváření vizuálů v Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Prostředí uživatelského rozhraní Azure Data Factory (UX) umožňuje vizuálně vytvářet a nasazovat prostředky pro vaši datovou továrnu, aniž byste museli psát jakýkoli kód. Můžete přetáhnout aktivity na plátno kanálu, provádět testovací jízdy, ladění iterativně a nasadit a sledovat spuštění kanálu.
+Prostředí uživatelského rozhraní Azure Data Factory (UX) umožňuje vizuálně vytvářet a nasazovat prostředky pro datovou továrnu bez nutnosti psát jakýkoli kód. Aktivity můžete přetáhnout na plátno kanálu, provádět testovací běhy, ladit je iterativní a nasazovat a monitorovat spuštění kanálu.
 
-V současné době je ux Azure Data Factory podporované jenom v Microsoft Edge a Google Chrome.
+V současné době je Azure Data Factory UX podporován pouze v Microsoft Edge a Google Chrome.
 
-## <a name="authoring-canvas"></a>Vytváření plátna
+## <a name="authoring-canvas"></a>Plátno pro vytváření obsahu
 
-Chcete-li otevřít **vývojové plátno**, klikněte na ikonu tužky. 
+**Plátno pro vytváření obsahu**otevřete kliknutím na ikonu tužky. 
 
-![Vytváření plátna](media/author-visually/authoring-canvas.png)
+![Plátno pro vytváření obsahu](media/author-visually/authoring-canvas.png)
 
-Zde vytvoříte kanály, aktivity, datové sady, propojené služby, toky dat, aktivační události a integrační runtimesy, které tvoří vaši továrnu. Informace o tom, jak začít vytvářet kanál pomocí vývojového plátna, najdete v [tématu Kopírování dat pomocí kopírování Aktivita](tutorial-copy-data-portal.md). 
+Tady budete vytvářet kanály, aktivity, datové sady, propojené služby, toky dat, triggery a prostředí Integration runtime, které tvoří vaši továrnu. Pokud chcete začít vytvářet kanál pomocí plátna pro vytváření obsahu, přečtěte si téma [kopírování dat pomocí aktivity kopírování](tutorial-copy-data-portal.md). 
 
-Výchozí vizuální vytváření prostředí je přímo pracovat se službou Data Factory. Integrace Azure Repos Git nebo GitHub je taky podporovaná, aby umožňovala správou zdrojového kódu a spolupráci při práci na vašich kanálech datové továrny. Další informace o rozdílech mezi těmito zkušenostmi vytváření najdete [v tématu Source control v Azure Data Factory](source-control.md).
+Výchozí prostředí pro vytváření vizuálů funguje přímo s Data Factory službou. Integrace s Azure Repos Git nebo GitHubem je taky podporovaná tak, aby umožňovala správu zdrojového kódu a spolupráci pro práci na kanálech datové továrny. Další informace o rozdílech mezi těmito prostředími pro vytváření najdete [v tématu Správa zdrojového kódu v Azure Data Factory](source-control.md).
 
 ## <a name="expressions-and-functions"></a>Výrazy a funkce
 
-Výrazy a funkce lze použít namísto statických hodnot k určení mnoha vlastností v Azure Data Factory.
+Výrazy a funkce lze místo statických hodnot použít k určení mnoha vlastností v Azure Data Factory.
 
-Chcete-li určit výraz pro hodnotu vlastnosti, vyberte **Přidat dynamický obsah** nebo klepněte na Alt + **P** při zaostřování na pole.
+Chcete-li zadat výraz pro hodnotu vlastnosti, vyberte možnost **Přidat dynamický obsah** nebo při zaměření na pole klikněte na tlačítko **ALT + P** .
 
-![Přidání dynamického obsahu](media/author-visually/dynamic-content-1.png)
+![Přidat dynamický obsah](media/author-visually/dynamic-content-1.png)
 
-Tím se otevře **Tvůrce výrazů data factory,** kde můžete vytvářet výrazy z podporovaných systémových proměnných, výstupu aktivity, funkcí a proměnných nebo parametrů zadaných uživatelem. 
+Otevře se **Data Factory Tvůrce výrazů** , kde můžete vytvářet výrazy z podporovaných systémových proměnných, výstupu aktivity, funkcí a uživatelem zadaných proměnných nebo parametrů. 
 
 ![Tvůrce výrazů](media/author-visually/dynamic-content-2.png)
 
-Informace o jazyku výrazu najdete [v tématu Výrazy a funkce v Azure Data Factory](control-flow-expression-language-functions.md).
+Informace o jazyce výrazů naleznete [v tématu Expressions and Functions in Azure Data Factory](control-flow-expression-language-functions.md).
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 
-Vyberte **Zpětná vazba,** která chcete komentovat funkce nebo upozornit společnost Microsoft na problémy s nástrojem:
+Vyberte **zpětnou vazbu** pro komentář k funkcím nebo upozorněte společnost Microsoft na problémy s nástrojem:
 
 ![Váš názor](media/author-visually/provide-feedback.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o monitorování a správě kanálů najdete v tématu [Programové sledování a správa kanálů](monitor-programmatically.md).
+Další informace o monitorování a správě kanálů najdete v tématu [monitorování a Správa kanálů prostřednictvím kódu programu](monitor-programmatically.md).

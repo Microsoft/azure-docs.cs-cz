@@ -1,6 +1,6 @@
 ---
-title: Vysoká dostupnost a vyrovnávání zatížení – proxy aplikace Azure AD
-description: Jak funguje distribuce provozu s nasazením proxy aplikace. Obsahuje tipy, jak optimalizovat výkon konektoru a použít vyrovnávání zatížení pro back-endové servery.
+title: Vysoká dostupnost a vyrovnávání zatížení – Azure Proxy aplikací služby AD
+description: Jak funguje distribuce provozu s vaším nasazením proxy aplikací. Obsahuje tipy pro optimalizaci výkonu konektoru a použití vyrovnávání zatížení pro back-endové servery.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,85 +17,85 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 992075378737552e890bd2d6fed3c519e6c62aa7
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81312937"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>Vysoká dostupnost a vyrovnávání zatížení konektorů a aplikací proxy aplikací
 
-Tento článek vysvětluje, jak funguje distribuce provozu s nasazením proxy aplikace. Probereme to takto:
+Tento článek vysvětluje, jak funguje distribuce provozu s vaším nasazením proxy aplikací. Budeme projednávat:
 
-- Jak je provoz distribuován mezi uživatele a konektory, spolu s tipy pro optimalizaci výkonu konektoru
+- Způsob distribuce provozu mezi uživateli a konektory spolu s tipy pro optimalizaci výkonu konektoru
 
-- Jak se toky provozu mezi konektory a servery back-end aplikací, s doporučeními pro vyrovnávání zatížení mezi více back-end servery
+- Jak přenos toků mezi konektory a back-end aplikační servery s doporučeními pro vyrovnávání zatížení mezi několika back-endové servery
 
-## <a name="traffic-distribution-across-connectors"></a>Rozložení provozu mezi konektory
+## <a name="traffic-distribution-across-connectors"></a>Distribuce provozu mezi konektory
 
-Konektory vytvořit jejich připojení na základě zásad pro vysokou dostupnost. Neexistuje žádná záruka, že provoz bude vždy rovnoměrně rozloženmezi konektory a neexistuje žádná spřažení relace. Použití se však liší a požadavky jsou náhodně odesílány do instancí služby Proxy aplikace. V důsledku toho je provoz obvykle distribuován téměř rovnoměrně mezi konektory. Následující diagram a kroky znázorňují, jak jsou navázána připojení mezi uživateli a konektory.
+Konektory vytvářejí svá připojení na základě zásad pro vysokou dostupnost. Není nijak zaručeno, že provoz bude vždycky rovnoměrně rozložen mezi konektory a neexistuje spřažení relací. Použití se ale liší a požadavky se náhodně odesílají do instancí služby proxy aplikací. V důsledku toho je provoz obvykle distribuován v konektorech téměř rovnoměrně. Diagram a kroky níže znázorňují způsob, jakým jsou mezi uživateli a konektory navázány připojení.
 
 ![Diagram znázorňující připojení mezi uživateli a konektory](media/application-proxy-high-availability-load-balancing/application-proxy-connections.png)
 
-1. Uživatel na klientském zařízení se pokusí získat přístup k místní aplikaci publikované prostřednictvím proxy aplikace.
-2. Požadavek prochází Azure Balancer k určení, která instance služby Proxy aplikace by měla přijmout požadavek. Podle oblasti jsou k dispozici desítky instancí, které mohou požadavek přijmout. Tato metoda pomáhá rovnoměrně distribuovat provoz mezi instancemi služby.
-3. Požadavek je odeslán do [služby Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/).
-4. Signály Service Bus k dostupnému konektoru. Konektor pak vyzvedne požadavek z service bus.
-   - V kroku 2 požadavky přejít na různé instance služby proxy aplikace, takže připojení jsou pravděpodobnější, že budou provedeny s různými konektory. V důsledku toho jsou konektory téměř rovnoměrně používány v rámci skupiny.
-5. Konektor předá požadavek na server back-end aplikace. Potom aplikace odešle odpověď zpět do konektoru.
-6. Konektor dokončí odpověď otevřením odchozí připojení k instanci služby, odkud přišel požadavek. Poté je toto připojení okamžitě uzavřeno. Ve výchozím nastavení je každý konektor omezen na 200 souběžných odchozích připojení.
-7. Odpověď je pak předána zpět klientovi z instance služby.
+1. Uživatel v klientském zařízení se pokusí o přístup k místní aplikaci publikované prostřednictvím proxy aplikací.
+2. Požadavek prochází Azure Load Balancer k určení, která instance služby proxy aplikace by měla požadavek přijmout. Pro každou oblast je k přijetí žádosti k dispozici desítka instancí. Tato metoda pomáhá rovnoměrně distribuovat provoz napříč instancemi služby.
+3. Požadavek se odešle do [Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/).
+4. Service Bus signály k dostupnému konektoru. Konektor pak vybere požadavek od Service Bus.
+   - V kroku 2 požadavky přecházejí na různé instance služby proxy aplikací, takže připojení jsou pravděpodobně vytvořena pomocí různých konektorů. V důsledku toho se konektory skoro v rámci skupiny používají téměř rovnoměrně.
+5. Konektor předá požadavek back-end serveru aplikace. Pak aplikace pošle odpověď zpátky do konektoru.
+6. Konektor dokončí odpověď otevřením odchozího připojení k instanci služby, ze které pochází požadavek. Pak se toto připojení okamžitě zavře. Ve výchozím nastavení je každý konektor omezený na 200 současných odchozích připojení.
+7. Odpověď je pak předána zpátky klientovi z instance služby.
 8. Následné požadavky ze stejného připojení opakují výše uvedené kroky.
 
-Aplikace má často mnoho prostředků a otevře více připojení, když je načten. Každé připojení prochází výše uvedenými kroky, aby se stala přidělena instance služby, vyberte nový konektor k dispozici, pokud připojení ještě nebyla dříve spárována s konektorem.
+Aplikace má často mnoho prostředků a při jejich načítání otevírá několik připojení. Každé připojení prochází pomocí výše uvedených kroků, aby bylo možné přidělit instanci služby, vyberte nový dostupný konektor, pokud připojení ještě dříve nebylo spárováno s konektorem.
 
 
-## <a name="best-practices-for-high-availability-of-connectors"></a>Doporučené postupy pro vysokou dostupnost konektorů
+## <a name="best-practices-for-high-availability-of-connectors"></a>Osvědčené postupy pro vysokou dostupnost konektorů
 
-- Vzhledem ke způsobu, jakým je provoz distribuován mezi konektory pro vysokou dostupnost, je nezbytné mít vždy alespoň dva konektory ve skupině konektorů. Tři konektory jsou upřednostňovány poskytnout další vyrovnávací paměť mezi konektory. Chcete-li zjistit správný počet konektorů, které potřebujete, postupujte podle dokumentace plánování kapacity.
+- Vzhledem k tomu, jak je přenos distribuován mezi konektory pro vysokou dostupnost, je nezbytné vždy mít ve skupině konektorů alespoň dva konektory. Tři konektory jsou upřednostňovány k poskytování další vyrovnávací paměti mezi konektory. K určení správného počtu konektorů, které jste potřebovali, použijte dokumentaci pro plánování kapacity.
 
-- Umístěte konektory na různá odchozí připojení, abyste se vyhnuli jedinému bodu selhání. Pokud konektory používají stejné odchozí připojení, může mít problém se sítí s připojením vliv na všechny konektory, které jej používají.
+- Umístěte konektory na různá odchozí připojení, abyste se vyhnuli jedinému bodu selhání. Pokud konektory používají stejné odchozí připojení, může mít problém se sítí s připojením vliv na všechny konektory, které ji používají.
 
-- Vyhněte se vynucení restartování konektorů při připojení k produkčním aplikacím. To by mohlo negativně ovlivnit distribuci provozu mezi konektory. Restartování konektorů způsobí, že nebude k dispozici více konektorů a vynutí připojení k zbývající dostupné spojnici. Výsledkem je zpočátku nerovnoměrné použití konektorů.
+- Vyhněte se restartování konektorů při připojení k produkčním aplikacím. To by mohlo mít negativní vliv na distribuci provozu mezi konektory. Restartování konektorů způsobí nedostupnost více konektorů a vynutí připojení k zbývajícímu dostupnému konektoru. Výsledkem je nerovnoměrné použití konektorů na začátku.
 
-- Vyhněte se všem formám inline kontroly odchozí komunikace TLS mezi konektory a Azure. Tento typ inline kontroly způsobí degradaci toku komunikace.
+- Vyhněte se všem formám vložené kontroly na odchozí komunikaci TLS mezi konektory a Azure. Tento typ vložené kontroly způsobuje snížení toku komunikace.
 
-- Ujistěte se, že automatické aktualizace jsou spuštěny pro vaše konektory. Pokud je spuštěna služba Aktualizace konektoru proxy aplikace, vaše konektory se automaticky aktualizují a obdrží nejnovější inovaci. Pokud na serveru nevidíte službu Aktualizace konektoru, je třeba přeinstalovat konektor, abyste získali všechny aktualizace.
+- Ujistěte se, že jsou pro vaše konektory spuštěné automatické aktualizace. Pokud je spuštěná služba proxy aplikace Aktualizátor konektorů, vaše konektory se automaticky aktualizují a získají nejnovější upgrady. Pokud se služba Aktualizátor konektorů na serveru nezobrazuje, je nutné přeinstalovat konektor, aby se získaly nějaké aktualizace.
 
-## <a name="traffic-flow-between-connectors-and-back-end-application-servers"></a>Tok provozu mezi konektory a servery back-end aplikací
+## <a name="traffic-flow-between-connectors-and-back-end-application-servers"></a>Přenosový tok mezi konektory a back-endové aplikační servery
 
-Další klíčovou oblastí, kde je vysoká dostupnost faktorem, je připojení mezi konektory a servery back-end. Když je aplikace publikována prostřednictvím proxy aplikace Azure AD, provoz od uživatelů k aplikacím toky prostřednictvím tří směrování:
+Další klíčovou oblastí, kde je vysoká dostupnost, je spojení mezi konektory a back-endové servery. Když se aplikace publikuje prostřednictvím služby Azure Proxy aplikací služby AD, přejdou přenosy uživatelů na aplikace na tři segmenty směrování:
 
-1. Uživatel se připojí k veřejné koncové službě Proxy aplikací Azure AD v Azure. Připojení je navázáno mezi původní IP adresou (veřejnou) klienta a IP adresou koncového bodu Proxy aplikace.
-2. Konektor proxy aplikace vytáhne požadavek HTTP klienta ze služby Proxy aplikace.
-3. Konektor proxy aplikace se připojuje k cílové aplikaci. Konektor používá vlastní IP adresu pro navázání připojení.
+1. Uživatel se připojí ke veřejnému koncovému bodu služby Azure Proxy aplikací služby AD v Azure. Připojení se naváže mezi původní IP adresou klienta (veřejnou) a IP adresou koncového bodu proxy aplikace.
+2. Konektor proxy aplikace vyžádá požadavek HTTP klienta ze služby proxy aplikace.
+3. Konektor proxy aplikace se připojí k cílové aplikaci. Konektor používá k navázání připojení vlastní IP adresu.
 
-![Diagram připojení uživatele k aplikaci přes proxy aplikace](media/application-proxy-high-availability-load-balancing/application-proxy-three-hops.png)
+![Diagram uživatele připojujícího se k aplikaci prostřednictvím proxy aplikace](media/application-proxy-high-availability-load-balancing/application-proxy-three-hops.png)
 
-### <a name="x-forwarded-for-header-field-considerations"></a>Aspekty pole záhlaví X-Forwarded-For
-V některých situacích (jako je auditování, vyrovnávání zatížení atd.) je sdílení původní IP adresy externího klienta s místním prostředím požadavkem. Chcete-li tento požadavek vyřešit, přidá konektor proxy aplikací Azure AD do požadavku HTTP pole záhlaví X-Forwarded-For s původní IP adresou klienta (veřejnou). Příslušné síťové zařízení (nástroj pro vyrovnávání zatížení, brána firewall) nebo webový server nebo back-endová aplikace pak mohou číst a používat informace.
+### <a name="x-forwarded-for-header-field-considerations"></a>Hledisko předávaného X-pro pole záhlaví
+V některých situacích (jako je auditování, Vyrovnávání zatížení atd.) znamená, že sdílení původní IP adresy externího klienta s místním prostředím je požadavek. Za účelem vyřešení požadavku konektor Azure Proxy aplikací služby AD přidá do požadavku protokolu HTTP pole s povýšenou hlavičkou X-pro s původní IP adresou klienta (Public). Příslušné síťové zařízení (Nástroj pro vyrovnávání zatížení, brána firewall) nebo webový server nebo aplikace back-end mohou číst a používat tyto informace.
 
-## <a name="best-practices-for-load-balancing-among-multiple-app-servers"></a>Doporučené postupy pro vyrovnávání zatížení mezi více aplikačními servery
-Pokud skupina konektorů, která je přiřazena k aplikaci Proxy aplikace, má dva nebo více konektorů a spouštějíte webovou aplikaci back-end na více serverech (serverová farma), je vyžadována dobrá strategie vyrovnávání zatížení. Dobrá strategie zajišťuje, že servery vyzvednout požadavky klientů rovnoměrně a zabraňuje nadměrnému nebo nedostatečnému využití serverů v serverové farmě.
-### <a name="scenario-1-back-end-application-does-not-require-session-persistence"></a>Scénář 1: Back-endová aplikace nevyžaduje trvalost relace
-Nejjednodušší scénář je, kde back-end webové aplikace nevyžaduje relace lepivost (trvalost relace). Jakýkoli požadavek od uživatele může být zpracován libovolnou instancí back-endové aplikace v serverové farmě. Můžete použít vývyčnici zatížení vrstvy 4 a nakonfigurovat ji bez spřažení. Některé možnosti zahrnují služby Microsoft Network Load Balancing a Azure Load Balancer nebo nástroje pro vyrovnávání zatížení od jiného dodavatele. Alternativně lze nakonfigurovat službu DNS kruhového dotazování.
-### <a name="scenario-2-back-end-application-requires-session-persistence"></a>Scénář 2: Back-endová aplikace vyžaduje trvalost relace
-V tomto scénáři back-end webové aplikace vyžaduje relace lepivost (trvalá relace) během ověřené relace. Všechny požadavky od uživatele musí být zpracovány instancí back-endové aplikace, která běží na stejném serveru v serverové farmě.
-Tento scénář může být složitější, protože klient obvykle vytvoří více připojení ke službě Proxy aplikace. Požadavky přes různá připojení může dorazit na různé konektory a servery ve farmě. Vzhledem k tomu, že každý konektor používá pro tuto komunikaci vlastní IP adresu, nemůže vyvratitelé zatížení zajistit lepivost relace na základě IP adresy konektorů. Zdrojová ip afinita nemůže být použita.
-Zde jsou některé možnosti pro scénář 2:
+## <a name="best-practices-for-load-balancing-among-multiple-app-servers"></a>Osvědčené postupy pro vyrovnávání zatížení mezi více aplikačními servery
+Pokud má skupina konektorů přiřazená aplikaci proxy aplikace dva nebo více konektorů a používáte back-end webovou aplikaci na více serverech (serverové farmy), je nutná vhodná strategie vyrovnávání zatížení. Dobrá strategie zajišťuje, aby servery vybraly požadavky klientů rovnoměrně a zabránily nadměrnému nebo nevytížení serverů v serverové farmě.
+### <a name="scenario-1-back-end-application-does-not-require-session-persistence"></a>Scénář 1: aplikace back-end nevyžaduje trvalou relaci.
+Nejjednodušším scénářem je, že back-end webová aplikace nevyžaduje relaci vytrvalost (trvalá relace). Jakoukoli žádost od uživatele může zpracovat jakákoli instance back-endové aplikace v serverové farmě. Můžete použít nástroj pro vyrovnávání zatížení vrstvy 4 a nakonfigurovat ho bez spřažení. Mezi možnosti patří služba Vyrovnávání zatížení sítě Microsoftu a Azure Load Balancer nebo nástroj pro vyrovnávání zatížení od jiného dodavatele. Alternativně je možné nakonfigurovat službu DNS pro kruhové dotazování.
+### <a name="scenario-2-back-end-application-requires-session-persistence"></a>Scénář 2: back-end aplikace vyžaduje trvalou relaci.
+V tomto scénáři vyžaduje back-end webová aplikace vytrvalost relace (trvalá relace) během ověřené relace. Všechny požadavky od uživatele musí být zpracovány instancí back-endové aplikace, která běží na stejném serveru v serverové farmě.
+Tento scénář může být složitější, protože klient obvykle vytváří více připojení ke službě proxy aplikací. Žádosti přes různá připojení můžou přijít do různých konektorů a serverů ve farmě. Vzhledem k tomu, že každý konektor používá pro tuto komunikaci svou vlastní IP adresu, nemůže nástroj pro vyrovnávání zatížení zajistit, aby se relace vytrvalost na základě IP adresy konektorů. Spřažení zdrojové IP adresy nelze použít ani jednu z nich.
+Tady je několik možností pro scénář 2:
 
-- Možnost 1: Založte trvalost relace na souborcookie relace nastavený vykladačem zatížení. Tato možnost je doporučena, protože umožňuje rovnoměrněji rozložit zatížení mezi servery back-end. Vyžaduje nástroj pro vyrovnávání zatížení vrstvy 7 s touto funkcí, který dokáže zpracovat přenosy HTTP a ukončit připojení TLS. Můžete použít Azure Application Gateway (Session Affinity) nebo vyrovnávání zatížení od jiného dodavatele.
+- Možnost 1: Založte trvalou relaci pro soubory cookie relace nastavené nástrojem pro vyrovnávání zatížení. Tato možnost se doporučuje, protože umožňuje, aby bylo zatížení rovnoměrně roztaženo mezi back-end servery. K této funkci vyžaduje nástroj pro vyrovnávání zatížení vrstvy 7 a který může zpracovávat přenosy HTTP a ukončit připojení TLS. Můžete použít Azure Application Gateway (spřažení relace) nebo nástroj pro vyrovnávání zatížení od jiného dodavatele.
 
-- Možnost 2: Založte trvalost relace na poli záhlaví X-Forwarded-For. Tato možnost vyžaduje nástroj pro vyrovnávání zatížení vrstvy 7 s touto funkcí, který dokáže zpracovat přenosy HTTP a ukončit připojení TLS.  
+- Možnost 2: Založte trvalost relace pro pole záhlaví X-předané. Tato možnost vyžaduje, aby nástroj pro vyrovnávání zatížení vrstvy 7 s touto funkcí byl a mohl zpracovávat přenosy HTTP a ukončit připojení TLS.  
 
-- Možnost 3: Nakonfigurujte aplikaci back-end tak, aby nevyžadovala trvalost relace.
+- Možnost 3: Nakonfigurujte back-end aplikaci tak, aby nevyžadovala trvalost relace.
 
-Informace o požadavcích back-endové aplikace na vyrovnávání zatížení naleznete v dokumentaci dodavatele softwaru.
+Informace o požadavcích na Vyrovnávání zatížení back-endové aplikace najdete v dokumentaci od dodavatele softwaru.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Povolit proxy aplikace](application-proxy-add-on-premises-application.md)
+- [Povolit proxy aplikací](application-proxy-add-on-premises-application.md)
 - [Povolení jednoduchého přihlášení](application-proxy-configure-single-sign-on-with-kcd.md)
-- [Povolení podmíněného přístupu](application-proxy-integrate-with-sharepoint-server.md)
+- [Povolit podmíněný přístup](application-proxy-integrate-with-sharepoint-server.md)
 - [Řešení potíží s proxy aplikace](application-proxy-troubleshoot.md)
-- [Zjistěte, jak architektura Azure AD podporuje vysokou dostupnost](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-architecture)
+- [Přečtěte si, jak architektura Azure AD podporuje vysokou dostupnost](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-architecture)

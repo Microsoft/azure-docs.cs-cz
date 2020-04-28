@@ -1,34 +1,34 @@
 ---
 title: Nastavení proměnných prostředí v instanci kontejneru
-description: Zjistěte, jak nastavit proměnné prostředí v kontejnerech, které spouštěte v azure container instances
+description: Naučte se, jak nastavit proměnné prostředí v kontejnerech, které spouštíte v Azure Container Instances
 ms.topic: article
 ms.date: 04/17/2019
 ms.openlocfilehash: c3c76ba0c6131a8ab3de68c13c9dfddaf7e8749a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79247225"
 ---
-# <a name="set-environment-variables-in-container-instances"></a>Nastavení proměnných prostředí v instancích kontejneru
+# <a name="set-environment-variables-in-container-instances"></a>Nastavení proměnných prostředí v instancích kontejnerů
 
-Když v instancích kontejnerů nastavíte proměnné prostředí, můžete dynamicky konfigurovat aplikaci nebo skript, které kontejner spustí. To je podobné `--env` argumentu příkazového řádku . `docker run` 
+Když v instancích kontejnerů nastavíte proměnné prostředí, můžete dynamicky konfigurovat aplikaci nebo skript, které kontejner spustí. To je podobné jako argument `--env` příkazového řádku pro `docker run`. 
 
-Chcete-li nastavit proměnné prostředí v kontejneru, zadejte je při vytváření instance kontejneru. Tento článek ukazuje příklady nastavení proměnných prostředí při spuštění kontejneru s [Azure CLI](#azure-cli-example), [Azure PowerShell](#azure-powershell-example)a [portál Azure](#azure-portal-example). 
+Chcete-li nastavit proměnné prostředí v kontejneru, určete je při vytváření instance kontejneru. Tento článek ukazuje příklady nastavení proměnných prostředí při spuštění kontejneru pomocí [Azure CLI](#azure-cli-example), [Azure PowerShell](#azure-powershell-example)a [Azure Portal](#azure-portal-example). 
 
-Pokud například spustíte bitovou kopii kontejneru [Microsoft aci-wordcount,][aci-wordcount] můžete upravit jeho chování zadáním následujících proměnných prostředí:
+Pokud například spustíte image kontejneru Microsoft [ACI-WORDCOUNT][aci-wordcount] , můžete změnit její chování zadáním následujících proměnných prostředí:
 
-*NumWords*: Počet slov odeslaných stdout.
+*NUMWORDS*: počet slov odeslaných do STDOUT.
 
-*MinLength*: Minimální počet znaků ve slově, které mají být započítány. Vyšší číslo ignoruje běžná slova jako "z" a "the".
+*MinLength*: minimální počet znaků ve slovech, které se mají spočítat. Vyšší číslo ignoruje běžná slova jako "z" a ".".
 
-Pokud potřebujete předat tajné klíče jako proměnné prostředí, instance kontejneru Azure podporuje [zabezpečené hodnoty](#secure-values) pro kontejnery Windows i Linux.
+Pokud potřebujete předat tajné klíče jako proměnné prostředí, Azure Container Instances podporuje [zabezpečené hodnoty](#secure-values) pro kontejnery Windows i Linux.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="azure-cli-example"></a>Příklad příkazového příkazového příkazu k Azure
+## <a name="azure-cli-example"></a>Příklad rozhraní příkazového řádku Azure
 
-Chcete-li zobrazit výchozí výstup kontejneru [aci-wordcount,][aci-wordcount] spusťte jej nejprve pomocí tohoto [příkazu az kontejner u vytvoření][az-container-create] (žádné proměnné prostředí zadány):
+Chcete-li zobrazit výchozí výstup kontejneru [ACI-WORDCOUNT][aci-wordcount] , spusťte jej nejprve pomocí příkazu [AZ Container Create][az-container-create] (nejsou zadány žádné proměnné prostředí):
 
 ```azurecli-interactive
 az container create \
@@ -38,7 +38,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-Chcete-li upravit výstup, spusťte druhý kontejner s přidaným argumentem `--environment-variables` a zadejte hodnoty pro proměnné *NumWords* a *MinLength.* (Tento příklad předpokládá, že používáte příkazového příkazové konto v prostředí Bash nebo Azure Cloud Shell. Pokud používáte příkazový řádek systému Windows, zadejte `--environment-variables "NumWords"="5" "MinLength"="8"`proměnné s dvojitými uvozovkami, například .)
+Chcete-li změnit výstup, spusťte druhý kontejner s přidaným `--environment-variables` argumentem a určete hodnoty proměnných *NUMWORDS* a *minLength* . (V tomto příkladu se předpokládá, že rozhraní příkazového řádku spouštíte v prostředí bash nebo v Azure Cloud Shell. Při použití příkazového řádku systému Windows zadejte proměnné s dvojitými uvozovkami, například `--environment-variables "NumWords"="5" "MinLength"="8"`.)
 
 ```azurecli-interactive
 az container create \
@@ -49,7 +49,7 @@ az container create \
     --environment-variables 'NumWords'='5' 'MinLength'='8'
 ```
 
-Jakmile se stav obou kontejnerů zobrazí jako *Ukončeno* (použijte [az kontejner show][az-container-show] ke kontrole stavu), zobrazte jejich protokoly s [protokoly kontejneru az,][az-container-logs] abyste viděli výstup.
+Jakmile se stav obou kontejnerů zobrazuje jako *ukončeno* (ke kontrole stavu použijte příkaz [AZ Container show][az-container-show] ), zobrazte jeho protokoly pomocí příkazu [AZ Container logs][az-container-logs] , aby se zobrazil výstup.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer1
@@ -72,7 +72,7 @@ Výstup kontejnerů ukazuje, jak jste upravili chování skriptu druhého kontej
  ('HAMLET', 386)]
 ```
 
-**mycontainer2**
+**mujkontejner2**
 ```output
 [('CLAUDIUS', 120),
  ('POLONIUS', 113),
@@ -81,11 +81,11 @@ Výstup kontejnerů ukazuje, jak jste upravili chování skriptu druhého kontej
  ('GUILDENSTERN', 54)]
 ```
 
-## <a name="azure-powershell-example"></a>Příklad Prostředí Azure PowerShell
+## <a name="azure-powershell-example"></a>Příklad Azure PowerShell
 
-Nastavení proměnných prostředí v prostředí PowerShell je podobné `-EnvironmentVariable` cli, ale používá argument příkazového řádku.
+Nastavení proměnných prostředí v PowerShellu se podobá rozhraní CLI, ale používá `-EnvironmentVariable` argument příkazového řádku.
 
-Nejprve spusťte kontejner [aci-wordcount][aci-wordcount] ve výchozí konfiguraci pomocí tohoto [příkazu New-AzContainerGroup:][new-Azcontainergroup]
+Nejdřív spusťte kontejner [ACI-WORDCOUNT][aci-wordcount] ve své výchozí konfiguraci pomocí tohoto příkazu [New-AzContainerGroup][new-Azcontainergroup] :
 
 ```azurepowershell-interactive
 New-AzContainerGroup `
@@ -94,7 +94,7 @@ New-AzContainerGroup `
     -Image mcr.microsoft.com/azuredocs/aci-wordcount:latest
 ```
 
-Nyní spusťte následující příkaz [New-AzContainerGroup.][new-Azcontainergroup] Tento je specifikován *numwords* a *minlength* proměnné prostředí po `envVars`vyplnění proměnné pole, :
+Nyní spusťte následující příkaz [New-AzContainerGroup][new-Azcontainergroup] . Tato hodnota určuje proměnné prostředí *NUMWORDS* a *minLength* po naplnění proměnné pole `envVars`:
 
 ```azurepowershell-interactive
 $envVars = @{'NumWords'='5';'MinLength'='8'}
@@ -106,14 +106,14 @@ New-AzContainerGroup `
     -EnvironmentVariable $envVars
 ```
 
-Jakmile je stav obou kontejnerů *ukončen* (ke kontrole stavu použijte [Get-AzContainerInstanceLog),][azure-instance-log] vyžádejte jejich protokoly pomocí příkazu [Get-AzContainerInstanceLog.][azure-instance-log]
+Po *ukončení* obou kontejnerů (ke kontrole stavu použijte příkaz [Get-AzContainerInstanceLog][azure-instance-log] ), pomocí příkazu [Get-AzContainerInstanceLog][azure-instance-log] načtěte jejich protokoly.
 
 ```azurepowershell-interactive
 Get-AzContainerInstanceLog -ResourceGroupName myResourceGroup -ContainerGroupName mycontainer1
 Get-AzContainerInstanceLog -ResourceGroupName myResourceGroup -ContainerGroupName mycontainer2
 ```
 
-Výstup pro každý kontejner ukazuje, jak jste změnili skript spuštěný kontejnerem nastavením proměnných prostředí.
+Výstup každého kontejneru ukazuje, jak jste změnili skript spouštěný kontejnerem nastavením proměnných prostředí.
 
 ```console
 PS Azure:\> Get-AzContainerInstanceLog -ResourceGroupName myResourceGroup -ContainerGroupName mycontainer1
@@ -139,31 +139,31 @@ PS Azure:\> Get-AzContainerInstanceLog -ResourceGroupName myResourceGroup -Conta
 Azure:\
 ```
 
-## <a name="azure-portal-example"></a>Příklad portálu Azure
+## <a name="azure-portal-example"></a>Příklad Azure Portal
 
-Pokud chcete nastavit proměnné prostředí při spuštění kontejneru na webu Azure Portal, zadejte je na stránce **Upřesnit** při vytváření kontejneru.
+Chcete-li nastavit proměnné prostředí při spuštění kontejneru v Azure Portal, určete je na stránce **Upřesnit** při vytváření kontejneru.
 
-1. Na stránce **Upřesnit** nastavte **zásadu Restartování** *na možnost Selhání*
-2. V části **Proměnné** `NumWords` prostředí zadejte `5` hodnotu pro první `MinLength` proměnnou `8` a zadejte s hodnotou pro druhou proměnnou. 
-1. Vyberte **Revize + vytvořit** k ověření a nasadit kontejner.
+1. Na stránce **Upřesnit** nastavte **zásady restartování** na při *selhání* .
+2. V části **proměnné prostředí**zadejte `NumWords` s hodnotou `5` pro první proměnnou a zadejte `MinLength` s hodnotou `8` pro druhou proměnnou. 
+1. Vyberte **zkontrolovat + vytvořit** a ověřte a nasaďte kontejner.
 
-![Stránka portálu s proměnnou prostředí Povolit tlačítka a textová pole][portal-env-vars-01]
+![Stránka portálu zobrazující tlačítko Povolit proměnnou prostředí a textová pole][portal-env-vars-01]
 
-Chcete-li zobrazit protokoly kontejneru, vyberte v části **Nastavení** **kontejnery**a potom **protokoly**. Podobně jako výstup zobrazený v předchozích oddílech CLI a PowerShell uvidíte, jak bylo chování skriptu změněno proměnnými prostředí. Zobrazí se pouze pět slov, z nichž každé má minimální délku osmi znaků.
+Chcete-li zobrazit protokoly kontejneru, v části **Nastavení** vyberte **kontejnery**a pak **protokoly**. Podobně jako výstup zobrazený v předchozích oddílech CLI a PowerShellu vidíte, jak bylo chování skriptu upraveno pomocí proměnných prostředí. Zobrazí se pouze pět slov, z nichž každá má minimální délku osm znaků.
 
-![Portál zobrazující výstup protokolu kontejneru][portal-env-vars-02]
+![Portál znázorňující výstup protokolu kontejneru][portal-env-vars-02]
 
 ## <a name="secure-values"></a>Zabezpečené hodnoty
 
-Objekty se zabezpečenými hodnotami jsou určeny k uložení citlivých informací, jako jsou hesla nebo klíče pro vaši aplikaci. Použití zabezpečených hodnot pro proměnné prostředí je bezpečnější a flexibilnější než jejich zahrnutí do image kontejneru. Další možností je použití tajných svazků popsaných v [poli Připojení tajného svazku v azure container instances](container-instances-volume-secret.md).
+Objekty s bezpečnými hodnotami jsou určeny pro ukládání citlivých informací, jako jsou hesla nebo klíče pro vaši aplikaci. Použití zabezpečených hodnot pro proměnné prostředí je bezpečnější a flexibilnější než zahrnutí do image kontejneru. Další možností je použít tajné svazky popsané v tématu [připojení tajného svazku v Azure Container Instances](container-instances-volume-secret.md).
 
-Proměnné prostředí se zabezpečenými hodnotami nejsou viditelné ve vlastnostech kontejneru – k jejich hodnotám lze přistupovat pouze z kontejneru. Například vlastnosti kontejneru zobrazené na webu Azure Portal nebo Azure CLI zobrazí pouze název zabezpečené proměnné, nikoli její hodnotu.
+Proměnné prostředí se zabezpečenými hodnotami nejsou viditelné ve vlastnostech kontejneru – jejich hodnoty lze použít pouze v rámci kontejneru. Například vlastnosti kontejneru zobrazené v Azure Portal nebo v rozhraní příkazového řádku Azure zobrazují pouze název zabezpečené proměnné, nikoli její hodnotu.
 
-Nastavte proměnnou zabezpečeného prostředí `secureValue` zadáním vlastnosti namísto běžné `value` pro typ proměnné. Dvě proměnné definované v následujícím YAML ukazují dva typy proměnných.
+Nastavte proměnnou zabezpečeného prostředí zadáním `secureValue` vlastnosti namísto regulárního `value` typu proměnné. Dvě proměnné definované v následujícím YAML ukazují dva typy proměnných.
 
 ### <a name="yaml-deployment"></a>Nasazení YAML
 
-Vytvořte `secure-env.yaml` soubor s následujícím úryvkem.
+Vytvořte `secure-env.yaml` soubor s následujícím fragmentem kódu.
 
 ```yaml
 apiVersion: 2018-10-01
@@ -190,21 +190,21 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Spusťte následující příkaz pro nasazení skupiny kontejnerů pomocí yaml (podle potřeby upravte název skupiny prostředků):
+Spuštěním následujícího příkazu nasaďte skupinu kontejnerů pomocí YAML (podle potřeby upravte název skupiny prostředků):
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --file secure-env.yaml
 ```
 
-### <a name="verify-environment-variables"></a>Ověření proměnných prostředí
+### <a name="verify-environment-variables"></a>Ověřit proměnné prostředí
 
-Spusťte příkaz [az container show][az-container-show] pro dotazování proměnných prostředí kontejneru:
+Spuštěním příkazu [AZ Container show zobrazíte][az-container-show] dotaz na proměnné prostředí kontejneru:
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name securetest --query 'containers[].environmentVariables'
 ```
 
-Odpověď JSON zobrazuje klíč a hodnotu nezabezpečené proměnné prostředí, ale pouze název proměnné zabezpečeného prostředí:
+Odpověď JSON zobrazuje klíč a hodnotu nezabezpečeného prostředí, ale pouze název proměnné zabezpečeného prostředí:
 
 ```json
 [
@@ -223,13 +223,13 @@ Odpověď JSON zobrazuje klíč a hodnotu nezabezpečené proměnné prostředí
 ]
 ```
 
-Pomocí příkazu [az container exec,][az-container-exec] který umožňuje provádění příkazu v běžícím kontejneru, můžete ověřit, zda byla nastavena proměnná zabezpečeného prostředí. Spuštěním interaktivní relace bash v kontejneru spusťte následující příkaz:
+Pomocí příkazu [AZ Container exec][az-container-exec] , který umožňuje provádění příkazu ve spuštěném kontejneru, můžete ověřit, zda byla nastavena proměnná zabezpečeného prostředí. Spuštěním následujícího příkazu spusťte interaktivní relaci bash v kontejneru:
 
 ```azurecli-interactive
 az container exec --resource-group myResourceGroup --name securetest --exec-command "/bin/bash"
 ```
 
-Po otevření interaktivního prostředí v kontejneru máte `SECRET` přístup k hodnotě proměnné:
+Po otevření interaktivního prostředí v rámci kontejneru můžete získat přístup k hodnotě `SECRET` proměnné:
 
 ```console
 root@caas-ef3ee231482549629ac8a40c0d3807fd-3881559887-5374l:/# echo $SECRET
@@ -238,7 +238,7 @@ my-secret-value
 
 ## <a name="next-steps"></a>Další kroky
 
-Scénáře založené na úlohách, jako je například dávkové zpracování velké datové sady s několika kontejnery, mohou využívat proměnné vlastního prostředí za běhu. Další informace o spouštění kontejnerů založených na úlohách naleznete v tématu [Spuštění kontejnerizovaných úloh se zásadami restartování](container-instances-restart-policy.md).
+Scénáře založené na úlohách, například dávkové zpracování velké datové sady s několika kontejnery, můžou využívat vlastní proměnné prostředí za běhu. Další informace o spuštění kontejnerů založených na úlohách najdete v tématu [spuštění kontejnerových úloh pomocí zásad restartování](container-instances-restart-policy.md).
 
 <!-- IMAGES -->
 [portal-env-vars-01]: ./media/container-instances-environment-variables/portal-env-vars-01.png

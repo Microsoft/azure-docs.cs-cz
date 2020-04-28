@@ -1,7 +1,7 @@
 ---
-title: Odkaz na registrační portál aplikace | Azure
+title: Referenční informace k portálu pro registraci aplikací | Azure
 titleSuffix: Microsoft identity platform
-description: Popis funkcí na portálu pro registraci aplikací Microsoftu.
+description: Popis funkcí na portálu pro registraci aplikací společnosti Microsoft.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -14,45 +14,45 @@ ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
 ms.openlocfilehash: 910aaf84d3563d4410826d3c0bdfde3d2dfc75e3
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885629"
 ---
 # <a name="app-registration-reference"></a>Reference k registraci aplikací
 
-Tento dokument obsahuje kontext a popisy různých funkcí, které se nacházejí v prostředí [registrace aplikací](https://aka.ms/appregistrations) na webu Azure Portal.
+Tento dokument obsahuje kontext a popisy různých funkcí, které najdete v Azure Portal prostředí [Registrace aplikací](https://aka.ms/appregistrations) .
 
-## <a name="my-applications-or-converged-applications"></a>Moje aplikace nebo konvergované aplikace
+## <a name="my-applications-or-converged-applications"></a>Moje aplikace nebo sblížené aplikace
 
-Tento seznam obsahuje všechny aplikace registrované pro použití s koncovým bodem platformy microsoft identit (v2.0). Tyto aplikace mají možnost přihlašovat uživatele pomocí osobních účtů Microsoft i pracovních a školních účtů z Azure Active Directory. Další informace o koncovém bodu platformy identity najdete [v přehledu v2.0](active-directory-appmodel-v2-overview.md). Tyto aplikace lze také integrovat s koncovým bodem `https://login.live.com`ověřování účtu Microsoft .
+Tento seznam obsahuje všechny vaše aplikace zaregistrované pro použití s koncovým bodem Microsoft Identity Platform (v 2.0). Tyto aplikace mají možnost přihlásit uživatele pomocí osobních účtů Microsoft i pracovních nebo školních účtů z Azure Active Directory. Další informace o koncovém bodu platformy identity najdete v tématu [Přehled verze 2.0](active-directory-appmodel-v2-overview.md). Tyto aplikace je také možné použít k integraci s koncovým bodem ověřování účet Microsoft `https://login.live.com`.
 
 ## <a name="azure-ad-only-applications"></a>Jenom aplikace Azure AD
 
-Tento seznam obsahuje všechny vaše aplikace registrované pro použití s koncovým bodem Azure AD v1.0. Tyto aplikace mají jenom možnost přihlásit uživatele pomocí pracovních a školních účtů z Azure Active Directory. Tento seznam obsahuje aplikace, které byly zaregistrovány pomocí **prostředí registrace aplikací** na webu Azure [Portal](https://portal.azure.com).
+Tento seznam obsahuje všechny vaše aplikace zaregistrované pro použití s koncovým bodem Azure AD v 1.0. Tyto aplikace umožňují uživatelům přihlašovat se pomocí pracovních nebo školních účtů z Azure Active Directory. Tento seznam obsahuje aplikace, které byly zaregistrovány pomocí prostředí **Registrace aplikací** v [Azure Portal](https://portal.azure.com).
 
 ## <a name="live-sdk-applications"></a>Živé aplikace sady SDK
 
-Tento seznam obsahuje všechny vaše aplikace registrované pro použití výhradně s účtem Microsoft. Nejsou povoleny pro použití s Azure Active Directory. Toto je místo, kde najdete všechny aplikace, které `https://account.live.com/developers/applications`byly dříve registrovány na portálu pro vývojáře MSA na adrese . Všechny funkce, které `https://account.live.com/developers/applications` jste dříve provedli, lze nyní provádět v [registracích aplikací](https://aka.ms/appregistrations).
+Tento seznam obsahuje všechny vaše aplikace zaregistrované pro použití výhradně s účet Microsoft. Nejsou povolené pro použití s Azure Active Directory. Tady najdete všechny aplikace, které byly dříve zaregistrované na portálu pro vývojáře MSA na `https://account.live.com/developers/applications`adrese. Všechny funkce, které jste dříve provedli, se teď `https://account.live.com/developers/applications` dají provádět v [Registrace aplikací](https://aka.ms/appregistrations).
 
 ## <a name="application-secrets"></a>Tajné klíče aplikace
 
-Tajné klíče aplikací jsou přihlašovací údaje, které umožňují vaší aplikaci provádět spolehlivé [ověřování klientů](https://tools.ietf.org/html/rfc6749#section-2.3) pomocí služby Azure AD. V OAuth & OpenID Connect se tajný klíč `client_secret`aplikace běžně označuje jako . V protokolu v2.0 musí každá aplikace, která obdrží token zabezpečení ve `https` webovém adresovatelném umístění (pomocí schématu), použít tajný klíč aplikace k identifikaci ve službě Azure AD při uplatnění tohoto tokenu zabezpečení. Kromě toho každý nativní klient, který přijímá tokeny na zařízení bude zakázáno používat tajný klíč aplikace k provádění ověřování klienta. To odrazuje od ukládání tajných kódů v nezabezpečených prostředích.
+Tajné klíče aplikace jsou přihlašovací údaje, které umožňují vaší aplikaci provádět spolehlivé [ověřování klientů](https://tools.ietf.org/html/rfc6749#section-2.3) pomocí Azure AD. V protokolu OAuth & OpenID Connect se klíč aplikace často označuje jako `client_secret`. V protokolu v 2.0 musí každá aplikace, která obdrží token zabezpečení v umístění web s adresou (pomocí `https` schématu), používat tajný klíč aplikace k identifikaci služby Azure AD při uplatnění tohoto tokenu zabezpečení. Kromě toho bude pro všechny nativní klienty, kteří přijímají tokeny na zařízení, zakázáno používat k ověřování klientů tajný klíč aplikace. Tím se nedoporučuje ukládání tajných klíčů v nezabezpečených prostředích.
 
-Každá aplikace může obsahovat dvě platné tajné klíče aplikace v daném okamžiku. Udržováním dvou tajných kódů máte možnost provádět periodický přechod pomocí klíče v celém prostředí aplikace. Po migraci celé aplikace na nový tajný klíč můžete starý tajný klíč odstranit a zřídit nový.
+Každá aplikace může v daném okamžiku obsahovat dvě platné tajné klíče aplikace. Díky udržování dvou tajných kódů máte možnost provádět pravidelné výměny klíčů v celém prostředí vaší aplikace. Po dokončení migrace celé aplikace na nový tajný kód můžete odstranit starý tajný klíč a zřídit nový.
 
-V současné době jsou povoleny pouze dva typy tajných kódů aplikace na portálu pro registraci aplikací. Výběrgenerovat **nové heslo** generuje a ukládá sdílený tajný klíč v příslušném úložišti dat, které můžete použít ve vaší aplikaci. Výběrgenerovat **nový pár klíčů** vytvoří nový pár veřejného a soukromého klíče, který lze stáhnout a použít pro ověřování klientů do Služby Azure AD. Volba **Nahrát veřejný klíč** umožňuje použít vlastní pár veřejného a soukromého klíče.
-Musíte nahrát certifikát, který obsahuje veřejný klíč.
+V tuto chvíli jsou na portálu pro registraci aplikací povolené jenom dva typy tajných klíčů. Zvolením možnosti **Generovat nové heslo** vygenerujete a uložíte sdílený tajný klíč do příslušného úložiště dat, které můžete použít ve své aplikaci. Výběrem možnosti **generovat nový pár klíčů** se vytvoří nový pár veřejného a privátního klíče, který se dá stáhnout a použít pro ověřování klientů v Azure AD. Možnost **nahrát veřejný klíč** vám umožní používat vlastní pár veřejného a privátního klíče.
+Je nutné nahrát certifikát, který obsahuje veřejný klíč.
 
 ## <a name="profile"></a>Profil
 
-Část profilu na portálu pro registraci aplikací lze použít k přizpůsobení přihlašovací stránky pro vaši aplikaci. V tuto chvíli můžete změnit logo aplikace přihlašovací stránky, adresu URL služby a adresu URL prohlášení o zásadách ochrany osobních údajů. Logo musí být průhledný obraz 48 x 48 nebo 50 x 50 pixelů v souboru GIF, PNG nebo JPEG, který je 15 KB nebo menší. Zkuste změnit hodnoty a zobrazit výslednou přihlašovací stránku!
+Oddíl profil portálu pro registraci aplikací se dá použít k přizpůsobení přihlašovací stránky pro vaši aplikaci. V tuto chvíli můžete změnit logo aplikace přihlašovací stránky, adresu URL podmínek služby a adresu URL prohlášení o zásadách ochrany osobních údajů. Logo musí být transparentní obrázek 48 x 48 nebo 50 × 50 pixelů v souboru GIF, PNG nebo JPEG, který je 15 KB nebo menší. Zkuste změnit hodnoty a zobrazit výslednou přihlašovací stránku!
 
-## <a name="live-sdk-support"></a>Podpora pro Live SDK
+## <a name="live-sdk-support"></a>Podpora sady Live SDK
 
-Když povolíte "Live SDK Support", všechny tajné kódy aplikací, které vytvoříte, budou zřízeny do datových úložišť Azure AD i účtu Microsoft. To umožňuje aplikaci integrovat přímo se službou Účet Microsoft (login.live.com). Pokud chcete vytvořit aplikaci pomocí účtu Microsoft přímo (na rozdíl od použití koncového bodu v2.0), měli byste se ujistit, že je povolena podpora Live SDK.
+Pokud povolíte podporu sady Live SDK, budou se všechny tajné klíče aplikace, které vytvoříte, zřídí do úložišť dat Azure AD i z účtu Microsoft. Díky tomu může být vaše aplikace integrována přímo se službou účtu Microsoft (login.live.com). Pokud chcete vytvořit aplikaci pomocí účtu Microsoft přímo (na rozdíl od použití koncového bodu v 2.0), měli byste zajistit, aby byla povolená podpora živé sady SDK.
 
-Zakázání podpory live SDK zajišťuje, že tajný klíč aplikace je pouze zapsána do úložiště dat Azure AD. Úložiště dat Azure AD zahrnuje předpisy na podnikové úrovni, které mu umožňují splňovat určité standardy, jako je dodržování předpisů FISMA. Pokud povolíte podporu live SDK, vaše aplikace nemusí dosáhnout souladu s některými z těchto standardů.
+Když se zakáže podpora sady Live SDK, zajistíte tak, že se tajný klíč aplikace zapíše jenom do úložiště dat Azure AD. Úložiště dat Azure AD zahrnuje předpisy na podnikové úrovni, které jim umožní splnit určité standardy, například FISMA dodržování předpisů. Pokud povolíte podporu sady Live SDK, vaše aplikace nemusí dosáhnout souladu s některými z těchto standardů.
 
-Pokud plánujete používat pouze koncový bod v2.0, můžete bezpečně zakázat podporu sady Live SDK.
+Pokud máte v plánu používat jenom koncový bod verze 2.0, můžete aktivní podporu sady SDK bezpečně zakázat.

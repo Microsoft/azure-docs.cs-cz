@@ -1,6 +1,6 @@
 ---
 title: Přehled portálu pro komerční marketplace v Partnerském centru
-description: Další informace o portálu Commercial Marketplace v Centru partnerů a o tom, jak vypsat a prodávat nabídky na Azure Marketplace, AppSource a prostřednictvím programu Zprostředkovatel cloudových řešení (CSP).
+description: Přečtěte si další informace o portálu pro komerční tržiště v partnerském centru a o tom, jak vypisovat a prodávat nabídky Azure Marketplace, AppSource a prostřednictvím programu Cloud Solution Provider (CSP).
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,68 +8,68 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.openlocfilehash: 909f044fd18ce98577e16d877f174dfa00bc1f3c
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81270396"
 ---
-# <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>Přehled portálu Commercial Marketplace v Partnerském centru
+# <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>Přehled portálu komerčního tržiště v partnerském centru
 
-Vítejte na portálu Commercial Marketplace v Partnerském centru. [Portál komerčního tržiště](https://partner.microsoft.com/dashboard/commercial-marketplace/) vám pomůže zpeněžit vaše produkty a služby, oslovit zákazníky a rozvíjet vaše podnikání.
+Vítá vás komerční portál pro Marketplace v partnerském centru. [Portál komerční na webu Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/) vám pomůže monetizovat vaše produkty a služby, oslovit zákazníky a rozšiřovat své podnikání.
 
-Tyto články popisují základy vytváření a používání účtu Partnerského centra. To zahrnuje vytváření nových nabídek, které mohou být uvedeny na [Azure Marketplace](https://azuremarketplace.microsoft.com/) nebo [AppSource](https://appsource.microsoft.com/), správu stávajících nabídek, které byly migrovány z portálu partnerů cloudu a poskytování prostředků, které vám pomohou s dotazy a sbírat vaše názory.
+Tyto články se týkají základů vytváření a používání účtu partnerského centra. To zahrnuje vytváření nových nabídek, které je možné uvést [Azure Marketplace](https://azuremarketplace.microsoft.com/) nebo [AppSource](https://appsource.microsoft.com/), správu stávajících nabídek, které byly migrovány z portál partnerů cloudu, a poskytování prostředků, které vám pomůžou s dotazy a shromažďovat vaše názory.
 
-## <a name="about-the-commercial-marketplace"></a>O komerčním trhu
+## <a name="about-the-commercial-marketplace"></a>O komerčním Marketplace
 
-Podniky, vlády a organizace všech velikostí naleznou podniková řešení, inovativní technologie a služby umožňující poskytování služeb prostřednictvím webových obchodů [Azure Marketplace](https://azuremarketplace.microsoft.com/) a [AppSource,](https://appsource.microsoft.com/) [prostředí portálu Azure](https://portal.azure.com)Portal v produktu , poskytovatelů [cloudových řešení](https://partner.microsoft.com/cloud-solution-provider)a prodejních týmů Microsoftu.
+Podniky, vlády a organizace všech velikostí hledají podniková řešení, inovativní technologie a služby povolování prostřednictvím webových úložišť [Azure Marketplace](https://azuremarketplace.microsoft.com/) a [AppSource](https://appsource.microsoft.com/) , [Azure Portal prostředí v produktu](https://portal.azure.com), [poskytovatelů cloudových řešení](https://partner.microsoft.com/cloud-solution-provider)a prodejních týmů Microsoftu.
 
-Partnerské centrum je centrem prostředí partnerů společnosti Microsoft. Pro organizace, které jdou na trh se společností Microsoft a využívají výhod komerčního trhu, je Partnerské centrum portál, který vydavatelé používají k vytváření a správě nabídek, k předvádění testovacích jízd a k zobrazení analýz y výkonu nabídky.
+Partnerským centrem je centrum zkušeností Microsoftu pro partnery. Pro organizace, které přicházejí na trh s Microsoftem a využívají komerční tržiště, je partnerským centrem portál, který vydavatelé používá k tvorbě a správě nabídek, poskytování demonstračních ukázek testovacích jednotek a zobrazení analýz na výkon nabídky.
 
-## <a name="migration-from-cloud-partner-portal"></a>Migrace z portálu partnerů cloudu
+## <a name="migration-from-cloud-partner-portal"></a>Migrace z portál partnerů cloudu
 
-Partnerské centrum se vyvíjí, aby lépe integrovala všechny aspekty našeho vztahu s vydavateli softwaru. V rámci tohoto vývoje migrujeme [portál partnerů cloudu](https://cloudpartner.azure.com/) do Partnerského centra.
+Partnerské centrum se vyvíjí, aby bylo možné lépe integrovat všechny aspekty našeho vztahu s vydavateli softwaru. V rámci tohoto vývoje migrujeme [portál partnerů cloudu](https://cloudpartner.azure.com/) do partnerského centra.
 
-Stávající vydavatelé komerčního tržiště najdou známé, ale vylepšené uživatelské prostředí s intuitivním rozhraním. Oznámení na portálu a e-mailová oznámení informují vydavatele o migraci. Uživatelé budou bez problémů přesměrováni na příslušné místo. Zákazníci nebudou tímto upgradem prostředí pro partnery ovlivněni.
+Stávající komerční vydavatelé webu Marketplace budou najít známé, ale vylepšené uživatelské prostředí pomocí intuitivního rozhraní. Oznámení na portálu a e-mailová oznámení, která vydavatelé této migrace informují. Uživatelé budou plynule přesměrováni na příslušné umístění. Tento upgrade tohoto partnerských zkušeností nebude mít na zákazníky vliv.
 
 >[!NOTE]
->Partnerské centrum v současné době podporuje vytváření a správu některých typů nabídek, jak je uvedeno v následující tabulce. Další typy nabídek budou podporovány, jakmile předáme veškerou správu nabídek do Partnerského centra.
+>Partnerské centrum v současné době podporuje vytváření a správu některých typů nabídek, jak je uvedeno v následující tabulce. Další typy nabídek se budou brzy podporovat, jakmile migrujeme veškerou správu nabídek do partnerského centra.
 
-|Typ nabídky  |Správa nabídek migrovala z portálu partnerů cloudu do partnerského centra  |
+|Typ nabídky  |Správa nabídek migrována z portál partnerů cloudu do partnerského centra  |
 |---------|---------|
 |Software jako služba (SaaS)     | Nově dostupné       |
-|Dynamics 365 pro zapojení zákazníků & PowerApps     | Nově dostupné         |
+|Dynamics 365 pro Customer Engagement & PowerApps     | Nově dostupné         |
 |Dynamics 365 pro operace     | Nově dostupné        |
-|Dynamics 365 pro centrální podnikání     | Nově dostupné        |
+|Dynamics 365 pro firmy – střed     | Nově dostupné        |
 |Azure Application     | Nově dostupné        |
-|Virtuální počítač Azure     | Všeobecná dostupnost duben–květen 2020        |
-|Kontejner Azure     | Všeobecná dostupnost duben–květen 2020        |
-|Konzultační servis     | Všeobecná dostupnost duben–květen 2020        |
-|Modul IoT Edge     | Všeobecná dostupnost duben–květen 2020        |
-|Aplikace Power BI    | Všeobecná dostupnost duben–květen 2020        |
+|Virtuální počítač Azure     | Obecná dostupnost duben – květen 2020        |
+|Kontejner Azure     | Obecná dostupnost duben – květen 2020        |
+|Konzultační služba     | Obecná dostupnost duben – květen 2020        |
+|Modul IoT Edge     | Obecná dostupnost duben – květen 2020        |
+|Aplikace Power BI    | Obecná dostupnost duben – květen 2020        |
 
-### <a name="improvements-on-publishing-and-offer-management-user-experience"></a>Vylepšení uživatelského prostředí pro publikování a správu nabídek
+### <a name="improvements-on-publishing-and-offer-management-user-experience"></a>Vylepšení publikování a řízení uživatelských prostředí pro správu
 
-Při přechodu do Centra partnerů jsou vydavatelům k dispozici nové funkce a vylepšení uživatelského prostředí.  Podrobnosti najdete [v tématu Nejčastější dotazy týkající se migrace z portálu partnerů cloudu do Centra partnerů](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-migration-faq).
+S přechodem do partnerského centra jsou kromě vylepšení uživatelského prostředí k dispozici nové funkce vydavatelům.  Podrobnosti najdete v tématu [Nejčastější dotazy k migraci z portál partnerů cloudu do partnerského centra](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-migration-faq).
 
 ### <a name="account-and-user-management-updates"></a>Aktualizace správy účtů a uživatelů
 
-Správa účtů a uživatelů v Partnerském centru usnadňuje přístup k portálu a správcům použití příslušných oprávnění. Ve srovnání s předchozími portály pro správu nabídek poskytují funkce řízení přístupu založené na rolích v Centru partnerů vylepšení zabezpečení, která usnadňují proces publikování pro velké organizace.
+Správa účtů a uživatelů v partnerském centru usnadňuje přístup k portálu a správcům, aby mohli použít příslušná oprávnění. V porovnání s předchozími portály pro správu nabídek poskytují funkce řízení přístupu na základě rolí v partnerském centru vylepšení zabezpečení, které zjednodušuje proces publikování pro velké organizace.
 
-### <a name="improved-certification-experience"></a>Vylepšené zkušenosti s certifikací
+### <a name="improved-certification-experience"></a>Vylepšené možnosti certifikace
 
-Partnerské centrum poskytuje vylepšené možnosti certifikace. Certifikace nyní využívá automatizaci a strojové učení pro lepší dobu odezvy a rychlejší zpracování. Zachování přesnosti zůstane nejvyšší prioritou, což zajistí, že trh je bezpečný a obsahuje cenné nabídky pro naše zákazníky. Požadavky se nezmění, ale nyní, když odešlete nabídky prostřednictvím Centra partnerů, obdržíte podrobnější a popisnější sestavy certifikace, které odkazují na [veřejné zásady](https://docs.microsoft.com/legal/marketplace/certification-policies).
+Partnerské centrum nabízí vylepšené možnosti certifikace. Certifikace teď využívá automatizaci a Machine Learning pro zlepšení časů vyřízení a rychlejšího zpracování. Zachování přesnosti zůstane nejvyšší prioritou, což zajistí, že tržiště bude v bezpečí a obsahuje cenné nabídky pro naše zákazníky. Požadavky se nezmění, ale teď když odešlete nabídky prostřednictvím partnerského centra, dostanete podrobnější a popisné sestavy certifikace, které odkazují na [veřejné zásady](https://docs.microsoft.com/legal/marketplace/certification-policies).
 
-### <a name="analytics-for-performance-reporting"></a>Analýza pro vykazování výkonu
+### <a name="analytics-for-performance-reporting"></a>Analýzy pro generování sestav výkonu
 
-Analýza Centra partnerů poskytuje přehled o výkonu vašich nabídek a vylepšených nástrojích pro vytváření sestav. Vydavatelé mohou sledovat prodej pomocí vizualizace dat a grafů přehledů pro optimalizaci výpisů. Vylepšené analytické nástroje vám umožní řídit se výsledky výkonu a udržovat lepší vztahy se zákazníky a prodejci.
+Analýzy partnerského centra poskytují přehled o výkonu nabídek a vylepšení nástrojů pro vytváření sestav. Vydavatelé můžou monitorovat prodej pomocí grafů vizualizace dat a přehledů k optimalizaci seznamů. Vylepšené analytické nástroje umožňují pracovat na výsledcích výkonu a udržovat lepší vztahy se zákazníky a prodejci.
 
-## <a name="view-the-roadmap-and-join-the-conversation"></a>Zobrazení plánu a připojení ke konverzaci
+## <a name="view-the-roadmap-and-join-the-conversation"></a>Zobrazit plán a spojit se s konverzací
 
-Další informace o nejnovějších a budoucích verzích naleznete v [plánu obchodního trhu společnosti Microsoft](https://docs.microsoft.com/azure/marketplace/marketplace-roadmap)nebo se připojte ke konverzaci v [komunitě partnerů společnosti Microsoft](https://www.microsoftpartnercommunity.com/).
+Další informace o nejnovějších a budoucích vydáních najdete v tématu [cestovní plán Microsoft komerčního tržiště](https://docs.microsoft.com/azure/marketplace/marketplace-roadmap), nebo se připojte ke konverzaci v [komunitě partnerů Microsoftu](https://www.microsoftpartnercommunity.com/).
 
 ## <a name="next-steps"></a>Další kroky
 
-- O nových partnerech společnosti Microsoft, kteří mají zájem publikovat nabídku na tržištích, najdete v [tématu Vytvoření účtu Commercial Marketplace v Centru partnerů](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account).
-- U stávajících partnerů, kteří dříve publikovali nabídky na portálu cloudových partnerů, [správa účtu Commercial Marketplace v Centru partnerů](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account).
-- Další informace o správě cloudového tržiště, které se přesouvá do Partnerského centra, najdete v tomto [příspěvku na blogu komunity partnerů](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293), který obsahuje ukázkové video.
+- Noví partneři Microsoftu, kteří mají zájem o publikování nabídky na tržištích, najdete v tématu [Vytvoření účtu komerčního tržiště v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account).
+- Stávajícím partnerům, kteří už dříve publikovali nabídky v portál partnerů cloudu, můžete [spravovat svůj účet komerčního tržiště v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account).
+- Přečtěte si další informace o správě cloudového tržiště přesunutí do partnerského centra v tomto [příspěvku na blogu komunity partnera](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293), který obsahuje ukázkové video.

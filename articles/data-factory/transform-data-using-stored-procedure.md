@@ -1,6 +1,6 @@
 ---
-title: Transformace dat pomocí aktivity Uložená procedura
-description: Vysvětluje, jak použít aktivitu uložené procedury serveru SQL Server k vyvolání uložené procedury v databázi Azure SQL/datovém skladu z kanálu datové továrny.
+title: Transformace dat pomocí aktivity uložené procedury
+description: Vysvětluje, jak pomocí aktivity SQL Server uložených procedur vyvolat uloženou proceduru v Azure SQL Database/datovém skladu z kanálu Data Factory.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,39 +12,39 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 11/27/2018
 ms.openlocfilehash: 57bf653aa3f421ae8897c4be661ceef589fcdc06
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418809"
 ---
-# <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity uložené procedury serveru SQL Server v Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+# <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Transformuje data pomocí aktivity SQL Server uložených procedur v Azure Data Factory
+> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](v1/data-factory-stored-proc-activity.md)
 > * [Aktuální verze](transform-data-using-stored-procedure.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Aktivity transformace dat v [kanálu](concepts-pipelines-activities.md) data factory transformovat a zpracovávat nezpracovaná data do předpovědi a přehledy. Aktivita uložené procedury je jednou z transformačních aktivit, které podporuje data factory. Tento článek vychází z článku [dat transformace,](transform-data.md) který představuje obecný přehled transformace dat a podporované transformační aktivity v Datové továrně.
+Aktivity transformace dat v [kanálu](concepts-pipelines-activities.md) Data Factory slouží k transformaci a zpracování nezpracovaných dat do předpovědi a přehledů. Aktivita uložená procedura je jednou z aktivit transformace, které Data Factory podporuje. Tento článek sestaví na článku s [transformačními daty](transform-data.md) , který prezentuje obecný přehled transformace dat a podporovaných transformačních aktivit v Data Factory.
 
 > [!NOTE]
-> Pokud jste s Azure Data Factory tečeme na [úvodním úvodu do Azure Data Factory](introduction.md) a proveďte kurz: Transformace [dat](tutorial-transform-data-spark-powershell.md) před přečtením tohoto článku. 
+> Pokud Azure Data Factory teprve začínáte, přečtěte si [Úvod do Azure Data Factory](introduction.md) a udělejte si kurz: [kurz: transformace dat](tutorial-transform-data-spark-powershell.md) před čtením tohoto článku. 
 
-Aktivita uložené procedury můžete použít k vyvolání uložené procedury v jednom z následujících úložišť dat v podniku nebo na virtuálním počítači Azure(VM): 
+Aktivitu uložené procedury můžete použít k vyvolání uložené procedury v jednom z následujících úložišť dat v podniku nebo na virtuálním počítači Azure (VM): 
 
 - Azure SQL Database
 - Azure SQL Data Warehouse
-- Databáze serveru SQL Server.  Pokud používáte SQL Server, nainstalujte modul runtime integrace s vlastním hostitelem na stejném počítači, který je hostitelem databáze, nebo na samostatném počítači, který má přístup k databázi. Runtime integrace s vlastním hostitelem je komponenta, která propojuje zdroje dat místně/na virtuálním počítači Azure s cloudovými službami bezpečným a spravovaným způsobem. Podrobnosti najdete v článku [runtime integrace s vlastním hostitelem.](create-self-hosted-integration-runtime.md)
+- SQL Server databázi.  Pokud používáte SQL Server, nainstalujte modul runtime integrace v místním prostředí do stejného počítače, který je hostitelem databáze, nebo na samostatném počítači, který má přístup k databázi. Místní prostředí Integration runtime je komponenta, která propojuje zdroje dat místně nebo na virtuálním počítači Azure s Cloud Services zabezpečeným a spravovaným způsobem. Podrobnosti najdete v článku věnovaném místnímu [prostředí Integration runtime](create-self-hosted-integration-runtime.md) .
 
 > [!IMPORTANT]
-> Při kopírování dat do Azure SQL Database nebo SQL Server, můžete nakonfigurovat **SqlSink** v aktivitě kopírování vyvolat uloženou proceduru pomocí **sqlWriterStoredProcedureName** vlastnost. Podrobnosti o vlastnosti naleznete v následujících článcích konektoru: [Azure SQL Database](connector-azure-sql-database.md), SQL [Server](connector-sql-server.md). Vyvolání uložené procedury při kopírování dat do datového skladu Azure SQL pomocí aktivity kopírování není podporováno. Ale můžete použít uloženou aktivitu procedury k vyvolání uložené procedury v datovém skladu SQL. 
+> Při kopírování dat do Azure SQL Database nebo SQL Server můžete nakonfigurovat **SqlSink** v aktivitě kopírování a vyvolat uloženou proceduru pomocí vlastnosti **sqlWriterStoredProcedureName** . Podrobnosti o této vlastnosti naleznete v následujících článcích konektoru: [Azure SQL Database](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md). Vyvolání uložené procedury při kopírování dat do Azure SQL Data Warehouse pomocí aktivity kopírování není podporováno. Můžete ale použít aktivitu uložená procedura k vyvolání uložené procedury v SQL Data Warehouse. 
 >
-> Při kopírování dat z Azure SQL Database nebo SQL Server nebo Azure SQL Data Warehouse, můžete nakonfigurovat **SqlSource** v aktivitě kopírování vyvolat uloženou proceduru pro čtení dat ze zdrojové databáze pomocí **sqlReaderStoredProcedureName** vlastnost. Další informace naleznete v následujících článcích konektoru: [Azure SQL Database](connector-azure-sql-database.md), SQL [Server](connector-sql-server.md), Azure SQL [Data Warehouse](connector-azure-sql-data-warehouse.md)          
+> Při kopírování dat z Azure SQL Database nebo SQL Server nebo Azure SQL Data Warehouse můžete nakonfigurovat **SqlSource** v aktivitě kopírování a vyvolat uloženou proceduru pro čtení dat ze zdrojové databáze pomocí vlastnosti **sqlReaderStoredProcedureName** . Další informace najdete v následujících článcích konektoru: [Azure SQL Database](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md) [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md)          
 
  
 
 ## <a name="syntax-details"></a>Podrobnosti syntaxe
-Zde je formát JSON pro definování aktivity uložené procedury:
+Tady je formát JSON pro definování aktivity uložené procedury:
 
 ```json
 {
@@ -66,19 +66,19 @@ Zde je formát JSON pro definování aktivity uložené procedury:
 }
 ```
 
-Následující tabulka popisuje tyto vlastnosti JSON:
+Tyto vlastnosti JSON jsou popsány v následující tabulce:
 
 | Vlastnost                  | Popis                              | Požaduje se |
 | ------------------------- | ---------------------------------------- | -------- |
 | jméno                      | Název aktivity                     | Ano      |
 | description               | Text popisující, k čemu se aktivita používá | Ne       |
-| type                      | Pro aktivitu uložené procedury je typem aktivity **SqlServerStoredProcedure** | Ano      |
-| linkedServiceName         | Odkaz na **Azure SQL Database** nebo Azure SQL Data **Warehouse** nebo SQL **Server** registrovaný jako propojená služba v Data Factory. Další informace o této propojené službě najdete v článku [Výpočetní propojené služby.](compute-linked-services.md) | Ano      |
-| storedProcedureName       | Zadejte název uložené procedury, kterou chcete vyvolat. | Ano      |
-| storedProcedureParameters | Zadejte hodnoty pro parametry uložené procedury. Slouží `"param1": { "value": "param1Value","type":"param1Type" }` k předání hodnot parametrů a jejich typu podporovaných zdrojem dat. Pokud potřebujete předat hodnotu null `"param1": { "value": null }` pro parametr, použijte (všechna malá písmena). | Ne       |
+| type                      | Pro aktivitu uložená procedura je typ aktivity **SqlServerStoredProcedure** | Ano      |
+| linkedServiceName         | Odkaz na **Azure SQL Database** nebo **Azure SQL Data Warehouse** nebo **SQL Server** zaregistrován jako propojená služba v Data Factory. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) . | Ano      |
+| storedProcedureName       | Zadejte název uložené procedury, která se má vyvolat. | Ano      |
+| storedProcedureParameters | Zadejte hodnoty parametrů uložených procedur. Slouží `"param1": { "value": "param1Value","type":"param1Type" }` k předání hodnot parametrů a jejich typu, které jsou podporovány zdrojem dat. Pokud pro parametr potřebujete předat hodnotu null, použijte `"param1": { "value": null }` (všechna malá písmena). | Ne       |
 
-## <a name="parameter-data-type-mapping"></a>Mapování datového typu parametru
-Datový typ, který zadáte pro parametr, je typ Azure Data Factory, který se mapuje na datový typ ve zdroji dat, který používáte. Mapování datových typů pro zdroj dat najdete v oblasti konektorů. Některé příklady jsou
+## <a name="parameter-data-type-mapping"></a>Mapování datových typů parametrů
+Datový typ, který zadáte pro parametr, je typ Azure Data Factory, který se mapuje na datový typ ve zdroji dat, který používáte. Mapování datových typů pro zdroj dat můžete najít v oblasti konektory. Některé příklady jsou
 
 | Zdroj dat          | Mapování datových typů |
 | ---------------------|-------------------|
@@ -90,17 +90,17 @@ Datový typ, který zadáte pro parametr, je typ Azure Data Factory, který se m
 
 ## <a name="error-info"></a>Informace o chybě
 
-Pokud uložená procedura selže a vrátí podrobnosti o chybě, nelze zachytit informace o chybě přímo ve výstupu aktivity. Data Factory však čerpadla všechny své aktivity spustit události azure monitoru. Mezi události, které Data Factory čerpadla na Azure Monitor, tlačí podrobnosti o chybě tam. Můžete například nastavit e-mailová upozornění z těchto událostí. Další informace najdete v [tématu Alert and Monitor data factories using Azure Monitor](monitor-using-azure-monitor.md).
+Pokud uložená procedura selhává a vrátí podrobnosti o chybě, nemůžete zachytit informace o chybě přímo ve výstupu aktivity. Data Factory se však všechny události spouštějí do Azure Monitor. V rámci událostí, které Data Factory pumpy Azure Monitor, se tam zobrazí podrobnosti o chybě. Můžete například nastavit e-mailová upozornění z těchto událostí. Další informace najdete v tématu [Alert and Monitoring Data Factory pomocí Azure monitor](monitor-using-azure-monitor.md).
 
 ## <a name="next-steps"></a>Další kroky
-Další články vysvětlují, jak transformovat data jinými způsoby: 
+Podívejte se na následující články, které vysvětlují, jak transformovat data jinými způsoby: 
 
 * [Aktivita U-SQL](transform-data-using-data-lake-analytics.md)
-* [Aktivita úlu](transform-data-using-hadoop-hive.md)
-* [Aktivita prasat](transform-data-using-hadoop-pig.md)
+* [Aktivita v podregistru](transform-data-using-hadoop-hive.md)
+* [Aktivita prasete](transform-data-using-hadoop-pig.md)
 * [Aktivita MapReduce](transform-data-using-hadoop-map-reduce.md)
-* [Aktivita streamování hadoopu](transform-data-using-hadoop-streaming.md)
-* [Aktivita jiskry](transform-data-using-spark.md)
+* [Aktivita streamování Hadoop](transform-data-using-hadoop-streaming.md)
+* [Aktivita Sparku](transform-data-using-spark.md)
 * [Vlastní aktivita .NET](transform-data-using-dotnet-custom-activity.md)
-* [Aktivita provádění strojového učení Bach](transform-data-using-machine-learning.md)
+* [Aktivita provádění Machine Learning Bach](transform-data-using-machine-learning.md)
 * [Aktivita uložené procedury](transform-data-using-stored-procedure.md)

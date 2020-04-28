@@ -1,6 +1,6 @@
 ---
-title: Renovované rozhraní API si nároky na burze – Azure Active Directory B2C
-description: Přidejte renominy deklarací rozhraní REST API do vlastních zásad ve službě Active Directory B2C.
+title: REST API výměn deklarací identity – Azure Active Directory B2C
+description: Přidejte REST API výměny deklarací identity do vlastních zásad v Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,32 +11,32 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 6316165ba08d055be1186995e2fe2ad5a0079fb7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80330725"
 ---
-# <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Návod: Přidání serveru REST API pro deklarace identity do vlastních zásad ve službě Azure Active Directory B2C
+# <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Návod: Přidání výměn deklarací identity REST API do vlastních zásad v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) umožňuje vývojářům identit integrovat interakci s rozhraním RESTful API v cestě uživatele. Na konci tohoto návodu budete moci vytvořit cestu uživatele Azure AD B2C, která spolupracuje se [službami RESTful](custom-policy-rest-api-intro.md).
+Azure Active Directory B2C (Azure AD B2C) umožňuje vývojářům identity integrovat interakci s rozhraním API RESTful v cestě uživatele. Na konci tohoto návodu budete moct vytvořit Azure AD B2C cestu uživatele, která komunikuje s [RESTful službami](custom-policy-rest-api-intro.md).
 
-V tomto scénáři obohacujeme data tokenů uživatele integrací s podnikovým pracovním postupem. Během registrace nebo přihlášení pomocí místního nebo federovaného účtu Azure AD B2C vyvolá rozhraní REST API, aby získaldata rozšířeného profilu uživatele ze vzdáleného zdroje dat. V této ukázce Azure AD B2C odešle jedinečný identifikátor uživatele, objectId. Rozhraní REST API pak vrátí zůstatek na účtu uživatele (náhodné číslo). Tuto ukázku použijte jako výchozí bod pro integraci s vlastním systémem CRM, marketingovou databází nebo jakýmkoli obchodním pracovním postupem.
+V tomto scénáři rozšiřujeme data tokenů uživatele integrací s podnikovým pracovním postupem. Při registraci nebo přihlašování pomocí místního nebo federovaného účtu Azure AD B2C vyvolá REST API, aby se data rozšířeného profilu uživatele získala ze vzdáleného zdroje dat. V této ukázce Azure AD B2C odesílá jedinečný identifikátor uživatele, objectId. REST API pak vrátí zůstatek účtu uživatele (náhodné číslo). Tuto ukázku použijte jako výchozí bod pro integraci s vlastním systémem CRM, marketingovou databází nebo jakýmkoli obchodním pracovním postupem.
 
-Můžete také navrhnout interakci jako technický profil ověření. To je vhodné, když rozhraní REST API bude ověřování dat na obrazovce a vrácení deklarací. Další informace naleznete v [tématu Návod: Integrace serveru deklarací rozhraní REST API v cestě uživatele Azure AD B2C k ověření vstupu uživatele](custom-policy-rest-api-claims-validation.md).
+Interakci můžete také navrhnout jako technický profil ověřování. To je vhodné, když REST API bude ověřovat data na obrazovce a vracet deklarace identity. Další informace najdete v tématu [Návod: integrace REST APIch výměn deklarací identity v cestě uživatele Azure AD B2C k ověření vstupu uživatele](custom-policy-rest-api-claims-validation.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Proveďte kroky v [části Začínáme s vlastními zásadami](custom-policy-get-started.md). Měli byste mít funkční vlastní zásady pro registraci a přihlášení pomocí místních účtů.
-- Zjistěte, jak [integrovat renovovat deklarace identity rozhraní REST ve vlastních zásadách Azure AD B2C](custom-policy-rest-api-intro.md).
+- Proveďte kroky v části Začínáme [s vlastními zásadami](custom-policy-get-started.md). Měli byste mít pracovní vlastní zásady pro registraci a přihlašování pomocí místních účtů.
+- Naučte se [integrovat REST API výměn deklarací identity do vlastních zásad Azure AD B2C](custom-policy-rest-api-intro.md).
 
-## <a name="prepare-a-rest-api-endpoint"></a>Příprava koncového bodu rozhraní REST API
+## <a name="prepare-a-rest-api-endpoint"></a>Příprava REST APIho koncového bodu
 
-Pro tento návod byste měli mít rozhraní REST API, které ověřuje, zda je objekt Id Azure AD B2C registrované ve vašem back-endovém systému. Pokud je zaregistrováno, rozhraní REST API vrátí zůstatek uživatelského účtu. V opačném případě rozhraní REST API zaregistruje nový účet `50.00`v adresáři a vrátí počáteční zůstatek .
+Pro tento návod byste měli mít REST API, který ověří, jestli je Azure AD B2C objectId uživatele v systému back-end zaregistrovaný. Pokud je zaregistrováno, REST API vrátí zůstatek uživatelského účtu. V opačném případě REST API zaregistruje nový účet v adresáři a vrátí počáteční zůstatek `50.00`.
 
-Následující kód JSON ilustruje data Azure AD B2C bude odesílat do koncového bodu rozhraní REST API. 
+Následující kód JSON znázorňuje data Azure AD B2C odešle do vašeho koncového bodu REST API. 
 
 ```json
 {
@@ -45,7 +45,7 @@ Následující kód JSON ilustruje data Azure AD B2C bude odesílat do koncovéh
 }
 ```
 
-Jakmile rozhraní REST API ověří data, musí vrátit http 200 (Ok), s následujícími daty JSON:
+Jakmile REST API ověří data, musí vrátit HTTP 200 (ok) s následujícími daty JSON:
 
 ```json
 {
@@ -53,16 +53,16 @@ Jakmile rozhraní REST API ověří data, musí vrátit http 200 (Ok), s násled
 }
 ```
 
-Nastavení koncového bodu rozhraní REST API je mimo rozsah tohoto článku. Vytvořili jsme ukázku [funkce Azure.](https://docs.microsoft.com/azure/azure-functions/functions-reference) K kompletnímu kódu funkce Azure můžete přistupovat na [GitHubu](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function).
+Nastavení koncového bodu REST API je mimo rámec tohoto článku. Vytvořili jsme ukázku [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) . K úplnému kódu funkce Azure můžete přistupovat na [GitHubu](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function).
 
 ## <a name="define-claims"></a>Definovat deklarace identity
 
-Deklarace poskytuje dočasné úložiště dat během provádění zásad Azure AD B2C. Deklarace identity můžete deklarovat v části [schématu deklarací](claimsschema.md) identity. 
+Deklarace identity poskytuje dočasné úložiště dat během provádění zásad Azure AD B2C. Deklarace identity můžete deklarovat v části [schéma deklarací](claimsschema.md) . 
 
-1. Otevřete soubor přípon zásad. Například <em> `SocialAndLocalAccounts/` </em>.
-1. Vyhledejte element [BuildingBlocks.](buildingblocks.md) Pokud prvek neexistuje, přidejte jej.
-1. Vyhledejte [ClaimsSchema](claimsschema.md) element. Pokud prvek neexistuje, přidejte jej.
-1. Přidejte následující deklarace identity do prvku **ClaimsSchema.**  
+1. Otevřete soubor rozšíření vaší zásady. Například <em> `SocialAndLocalAccounts/` </em>.
+1. Vyhledejte element [BuildingBlocks](buildingblocks.md) . Pokud element neexistuje, přidejte jej.
+1. Vyhledejte element [ClaimsSchema](claimsschema.md) . Pokud element neexistuje, přidejte jej.
+1. Do prvku **ClaimsSchema** přidejte následující deklarace identity.  
 
 ```xml
 <ClaimType Id="balance">
@@ -77,7 +77,7 @@ Deklarace poskytuje dočasné úložiště dat během provádění zásad Azure 
 
 ## <a name="configure-the-restful-api-technical-profile"></a>Konfigurace technického profilu rozhraní RESTful API 
 
-[Klidný technický profil](restful-technical-profile.md) poskytuje podporu pro propojení s vlastní službou RESTful. Azure AD B2C odesílá data do služby RESTful `InputClaims` v `OutputClaims` kolekci a přijímá data zpět do kolekce. Vyhledejte v <em>**`TrustFrameworkExtensions.xml`**</em> souboru element **ClaimsProviders** a přidejte nového poskytovatele deklarací identity následujícím způsobem:
+[Technický profil RESTful](restful-technical-profile.md) poskytuje podporu pro propojení s vlastní službou RESTful. Azure AD B2C odesílá data do služby RESTful v `InputClaims` kolekci a přijímá data zpátky v `OutputClaims` kolekci. V <em>**`TrustFrameworkExtensions.xml`**</em> souboru vyhledejte element **ClaimsProviders** a přidejte nového zprostředkovatele deklarací identity následujícím způsobem:
 
 ```xml
 <ClaimsProvider>
@@ -109,19 +109,19 @@ Deklarace poskytuje dočasné úložiště dat během provádění zásad Azure 
 </ClaimsProvider>
 ```
 
-V tomto příkladu `userLanguage` bude odeslána do `lang` služby REST jako v rámci datové části JSON. Hodnota deklarace `userLanguage` obsahuje aktuální ID uživatelského jazyka. Další informace naleznete v tématu [překládání deklarací .](claim-resolver-overview.md)
+V tomto příkladu `userLanguage` se do služby REST pošle jako `lang` v datové části JSON. Hodnota `userLanguage` deklarace identity obsahuje ID jazyka aktuálního uživatele. Další informace najdete v tématu [překladač deklarací identity](claim-resolver-overview.md).
 
-Výše uvedené `AuthenticationType` `AllowInsecureAuthInProduction` komentáře a určit změny, které byste měli provést při přechodu do produkčního prostředí. Informace o tom, jak zabezpečit rozhraní API RESTful pro produkční prostředí, naleznete [v tématu Secure RESTful API](secure-rest-api.md).
+Výše uvedené `AuthenticationType` komentáře a `AllowInsecureAuthInProduction` určete změny, které byste měli dělat při přesunu do produkčního prostředí. Informace o tom, jak zabezpečit rozhraní API RESTful pro produkční prostředí, najdete v tématu [Secure RESTFUL API](secure-rest-api.md).
 
-## <a name="add-an-orchestration-step"></a>Přidání kroku orchestrace
+## <a name="add-an-orchestration-step"></a>Přidat krok orchestrace
 
-[Cesty uživatele](userjourneys.md) určují explicitní cesty, jejichž prostřednictvím zásada umožňuje aplikaci předávající strany získat požadované deklarace identity pro uživatele. Cesta uživatele je reprezentována jako sekvence orchestrace, která musí být dodržena pro úspěšnou transakci. Můžete přidat nebo odečíst kroky orchestrace. V takovém případě přidáte nový krok orchestrace, který se používá k rozšíření informací poskytnutých do aplikace po registraci uživatele nebo přihlášení prostřednictvím volání rozhraní REST API.
+[Cesty uživatelů](userjourneys.md) určují explicitní cesty, pomocí kterých zásada umožňuje aplikaci předávající strany získat požadované deklarace identity pro uživatele. Cesta uživatele je reprezentována jako sekvence orchestrace, která musí následovat po úspěšné transakci. Můžete přidat nebo odečíst kroky orchestrace. V tomto případě přidáte nový krok orchestrace, který se použije k rozšíření informací poskytnutých aplikaci po registraci nebo přihlášení uživatele prostřednictvím volání REST API.
 
 1. Otevřete základní soubor zásad. Například <em> `SocialAndLocalAccounts/` </em>.
-1. Vyhledejte `<UserJourneys>` prvek. Zkopírujte celý prvek a odstraňte jej.
-1. Otevřete soubor přípon zásad. Například <em> `SocialAndLocalAccounts/` </em>.
-1. Po `<UserJourneys>` uzavření `<ClaimsProviders>` prvku vložte do souboru přípony.
-1. Vyhledejte `<UserJourney Id="SignUpOrSignIn">`a přidejte následující krok orchestrace před poslední krok.
+1. Vyhledejte `<UserJourneys>` element. Zkopírujte celý element a pak ho odstraňte.
+1. Otevřete soubor rozšíření vaší zásady. Například <em> `SocialAndLocalAccounts/` </em>.
+1. Vložte `<UserJourneys>` do souboru rozšíření za zavřením `<ClaimsProviders>` elementu.
+1. `<UserJourney Id="SignUpOrSignIn">`Vyhledejte a přidejte následující krok orchestrace před poslední.
 
     ```XML
     <OrchestrationStep Order="7" Type="ClaimsExchange">
@@ -131,7 +131,7 @@ Výše uvedené `AuthenticationType` `AllowInsecureAuthInProduction` komentáře
     </OrchestrationStep>
     ```
 
-1. Refaktorovat poslední krok orchestrace `Order` `8`změnou na . Poslední dva kroky orchestrace by měly vypadat takto:
+1. Refaktorujte poslední krok orchestrace změnou `Order` na. `8` Vaše poslední kroky orchestrace by měly vypadat takto:
 
     ```XML
     <OrchestrationStep Order="7" Type="ClaimsExchange">
@@ -143,12 +143,12 @@ Výše uvedené `AuthenticationType` `AllowInsecureAuthInProduction` komentáře
     <OrchestrationStep Order="8" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
     ```
 
-1. Opakujte poslední dva kroky pro cesty uživatele **ProfileEdit** a **PasswordReset.**
+1. Zopakujte poslední dva kroky pro cesty uživatele **ProfileEdit** a **PasswordReset** .
 
 
-## <a name="include-a-claim-in-the-token"></a>Zahrnout deklaraci do tokenu 
+## <a name="include-a-claim-in-the-token"></a>Zahrnutí deklarace identity do tokenu 
 
-Chcete-li `balance` vrátit deklaraci zpět do aplikace předávající <em> `SocialAndLocalAccounts/` </em> strany, přidejte výstupní deklaraci do souboru. Přidání výstupní deklarace vystaví deklaraci do tokenu po úspěšné cestě uživatele a bude odesláno do aplikace. Upravte prvek technického profilu v části `balance` předávající strany a přidejte jej jako výstupní deklaraci.
+Pokud chcete vrátit `balance` deklaraci identity zpátky do aplikace předávající strany, přidejte do <em> `SocialAndLocalAccounts/` </em> souboru výstupní deklaraci identity. Přidáním výstupní deklarace identity se tato deklarace vydá do tokenu po úspěšné cestě uživatele a pošle se do aplikace. Upravte prvek Technical Profile v části předávající strany a přidejte `balance` jako výstupní deklaraci identity.
  
 ```xml
 <RelyingParty>
@@ -171,20 +171,20 @@ Chcete-li `balance` vrátit deklaraci zpět do aplikace předávající <em> `So
 </RelyingParty>
 ```
 
-Tento krok opakujte pro cesty uživatele **ProfileEdit.xml**a **PasswordReset.xml.**
+Tento krok opakujte pro **ProfileEdit. XML**a cesty uživatele **PasswordReset. XML** .
 
-Uložte změněné soubory: *TrustFrameworkBase.xml*a *TrustFrameworkExtensions.xml*, *SignUpOrSignin.xml*, *ProfileEdit.xml*a *PasswordReset.xml*. 
+Uložte soubory, které jste změnili: *TrustFrameworkBase. XML*a *TrustFrameworkExtensions. XML*, *SignUpOrSignin. XML*, *ProfileEdit. XML*a *PasswordReset. XML*. 
 
 ## <a name="test-the-custom-policy"></a>Testování vlastních zásad
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
-1. Ujistěte se, že používáte adresář, který obsahuje vašeho klienta Azure AD výběrem filtru **directory + předplatné** v horní nabídce a výběrem adresáře, který obsahuje vašeho klienta Azure AD.
-1. V levém horním rohu portálu Azure zvolte **Všechny služby** a pak **vyhledejte**a vyberte registrace aplikací .
-1. Vyberte **rozhraní Identity Experience Framework**.
-1. Vyberte **Nahrát vlastní zásady**a potom nahrajte změněné soubory zásad: *TrustFrameworkBase.xml*a *TrustFrameworkExtensions.xml*, *SignUpOrSignin.xml*, *ProfileEdit.xml*a *PasswordReset.xml*. 
-1. Vyberte zásadu registrace nebo přihlášení, kterou jste nahráli, a klikněte na tlačítko **Spustit.**
-1. Měli byste být schopni se zaregistrovat pomocí e-mailové adresy nebo účtu na Facebooku.
-1. Token odeslaný zpět do `balance` vaší aplikace obsahuje deklaraci.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD, a to tak, že v horní nabídce vyberete adresář a filtr **předplatného** a zvolíte adresář, který obsahuje vašeho TENANTA Azure AD.
+1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Registrace aplikací**.
+1. Vyberte **architekturu prostředí identity**.
+1. Vyberte **Odeslat vlastní zásadu**a pak nahrajte soubory zásad, které jste změnili: *TrustFrameworkBase. XML*a *TrustFrameworkExtensions. XML*, *SignUpOrSignin. XML*, *ProfileEdit. XML*a *PasswordReset. XML*. 
+1. Vyberte zásadu registrace nebo přihlašování, kterou jste nahráli, a klikněte na tlačítko **Spustit** .
+1. Měli byste být schopni se zaregistrovat pomocí e-mailové adresy nebo účtu Facebook.
+1. Token, který se odesílá zpátky do vaší aplikace `balance` , zahrnuje deklaraci identity.
 
 ```json
 {
@@ -215,8 +215,8 @@ Uložte změněné soubory: *TrustFrameworkBase.xml*a *TrustFrameworkExtensions.
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o zabezpečení prostředí API naleznete v následujících článcích:
+Informace o tom, jak zabezpečit rozhraní API, najdete v následujících článcích:
 
-- [Návod: Integrace renomovaných deklarací rozhraní REST api v cestě uživatele Azure AD B2C jako krok orchestrace](custom-policy-rest-api-claims-exchange.md)
-- [Zabezpečte své RESTful API](secure-rest-api.md)
-- [Reference: Technický profil RESTful](restful-technical-profile.md)
+- [Návod: integrace REST APIch výměn deklarací identity v Azure AD B2C cestě uživatele jako kroku orchestrace](custom-policy-rest-api-claims-exchange.md)
+- [Zabezpečení rozhraní API RESTful](secure-rest-api.md)
+- [Referenční dokumentace: RESTful Technical Profile](restful-technical-profile.md)

@@ -1,6 +1,6 @@
 ---
-title: Monitorování dat Azure Cosmos DB pomocí nastavení Diagnostika Azure
-description: Zjistěte, jak pomocí nastavení Diagnostika Azure sledovat výkon a dostupnost dat uložených v Azure Cosmos DB
+title: Monitorování Azure Cosmos DB dat pomocí nastavení diagnostiky Azure
+description: Naučte se používat nastavení diagnostiky Azure ke sledování výkonu a dostupnosti dat uložených v Azure Cosmos DB
 author: SnehaGunda
 services: cosmos-db
 ms.service: cosmos-db
@@ -8,72 +8,72 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: sngun
 ms.openlocfilehash: f5a0b0f71a72ea76940450f73354fda230e09c5c
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80521051"
 ---
-# <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Monitorování dat Azure Cosmos DB pomocí diagnostických nastavení v Azure
+# <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Monitorování Azure Cosmos DB dat pomocí nastavení diagnostiky v Azure
 
-Diagnostická nastavení v Azure se používají ke shromažďování protokolů prostředků. Protokoly prostředků Azure jsou emitovány prostředek a poskytují bohaté, časté data o provozu tohoto prostředku. Tyto protokoly jsou zachyceny na požadavek a jsou také označovány jako "protokoly roviny dat". Mezi příklady operací s rovinou dat patří odstranění, vložení a čtení kanálu ReadFeed. Obsah těchto protokolů se liší podle typu prostředku.
+Nastavení diagnostiky v Azure slouží ke shromažďování protokolů prostředků. Protokoly prostředků Azure se generují prostředkem a poskytují bohatou a častou data o provozu daného prostředku. Tyto protokoly jsou zachyceny na žádost a jsou také označovány jako "protokoly roviny dat". Mezi Příklady operací s rovinou dat patří odstranění, vložení a readFeed. Obsah těchto protokolů se liší podle typu prostředku.
 
-Metriky platformy a protokoly aktivit jsou shromažďovány automaticky, zatímco je nutné vytvořit diagnostické nastavení pro shromažďování protokolů prostředků nebo jejich předávání mimo Azure Monitor. Diagnostické nastavení pro účty Azure Cosmos můžete zapnout pomocí následujících kroků:
+Metriky platforem a protokoly aktivit jsou shromažďovány automaticky, zatímco je nutné vytvořit nastavení diagnostiky pro shromáždění protokolů prostředků nebo jejich přeposílání mimo Azure Monitor. Nastavení diagnostiky pro účty Azure Cosmos můžete zapnout pomocí následujících kroků:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com).
 
-1. Přejděte na svůj účet Azure Cosmos. Otevřete podokno **Nastavení diagnostiky** a pak vyberte Přidat možnost **nastavení diagnostiky.**
+1. Přejděte k účtu Azure Cosmos. Otevřete podokno **nastavení diagnostiky** a pak vyberte **Přidat možnost nastavení diagnostiky** .
 
-1. V podokně **Nastavení diagnostiky** vyplňte formulář následujícími podrobnostmi: 
+1. V podokně **nastavení diagnostiky** vyplňte formulář následujícími podrobnostmi: 
 
-    * **Název**: Zadejte název pro protokoly, které chcete vytvořit.
+    * **Název**: zadejte název protokolů, které chcete vytvořit.
 
-    * Protokoly můžete uložit do **archivu do účtu úložiště**, **Streamovat do centra událostí** nebo **odeslat do analýzy protokolů.**
+    * Protokoly můžete ukládat k **archivaci do účtu úložiště**, **streamovat do centra událostí** nebo je **Odeslat do Log Analytics**
 
-1. Při vytváření diagnostickénastavení určíte, které kategorie protokolů shromažďovat. Kategorie protokolů podporovaných Službou Azure Cosmos DB jsou uvedeny níže spolu s ukázkovým protokolem, který shromažďují:
+1. Při vytváření nastavení diagnostiky určíte, kterou kategorii protokolů se mají shromažďovat. Kategorie protokolů, které podporuje Azure Cosmos DB, jsou uvedené dál spolu s ukázkovým protokolem, který jsou shromážděny:
 
- * **DataPlaneRequests**: Tuto možnost vyberte, chcete-li protokolovat back-endové požadavky ke všem rozhraním API, která zahrnují účty SQL, Graph, MongoDB, Cassandra a Table API v Azure Cosmos DB. Klíčové vlastnosti, `Requestcharge`které `statusCode` `clientIPaddress`je `partitionID`třeba poznamenat, jsou: , , a .
+ * **DataPlaneRequests**: tuto možnost vyberte, pokud chcete protokolovat požadavky back-endu do všech rozhraní API, mezi které patří účty SQL, Graph, MongoDB, Cassandra a rozhraní API pro tabulky v Azure Cosmos DB. Všimněte si klíčových vlastností, které `Requestcharge`jsou `statusCode`: `clientIPaddress`,, `partitionID`a.
 
     ```json
     { "time": "2019-04-23T23:12:52.3814846Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "DataPlaneRequests", "operationName": "ReadFeed", "properties": {"activityId": "66a0c647-af38-4b8d-a92a-c48a805d6460","requestResourceType": "Database","requestResourceId": "","collectionRid": "","statusCode": "200","duration": "0","userAgent": "Microsoft.Azure.Documents.Common/2.2.0.0","clientIpAddress": "10.0.0.24","requestCharge": "1.000000","requestLength": "0","responseLength": "372","resourceTokenUserRid": "","region": "East US","partitionId": "062abe3e-de63-4aa5-b9de-4a77119c59f8","keyType": "PrimaryReadOnlyMasterKey","databaseName": "","collectionName": ""}}
     ```
 
-* **MongoRequests**: Tuto možnost vyberte, chcete-li protokolovat požadavky iniciované uživatelem z front-endu, aby se zolíky zobrazovaly požadavky na rozhraní API služby Azure Cosmos DB pro MongoDB. Tento typ protokolu není k dispozici pro jiné účty rozhraní API. Klíčové vlastnosti, `Requestcharge`které `opCode`je třeba poznamenat, jsou: , . Když povolíte MongoRequests v protokolech diagnostiky, nezapomeňte vypnout DataPlaneRequests. U každého požadavku na rozhraní API by se udál jeden protokol.
+* **MongoRequests**: tuto možnost vyberte, pokud chcete protokolovat požadavky iniciované uživateli z front-endu, aby sloužily požadavky na rozhraní API služby Azure Cosmos DB pro MongoDB. Tento typ protokolu není k dispozici pro jiné účty rozhraní API. Klíčové vlastnosti, které se mají `Requestcharge`poznamenat:, `opCode`. Pokud povolíte MongoRequests v diagnostických protokolech, nezapomeňte vypnout DataPlaneRequests. V rozhraní API se zobrazí jeden protokol pro každý požadavek.
 
     ```json
     { "time": "2019-04-10T15:10:46.7820998Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "MongoRequests", "operationName": "ping", "properties": {"activityId": "823cae64-0000-0000-0000-000000000000","opCode": "MongoOpCode_OP_QUERY","errorCode": "0","duration": "0","requestCharge": "0.000000","databaseName": "admin","collectionName": "$cmd","retryCount": "0"}}
     ```
 
-* **CassandraRequests**: Tuto možnost vyberte, chcete-li protokolovat požadavky iniciované uživatelem z front-endu, aby se zobrazovaly požadavky na rozhraní API služby Azure Cosmos DB pro Cassandra. Tento typ protokolu není k dispozici pro jiné účty rozhraní API. Klíčové vlastnosti, `operationName`které `requestCharge` `piiCommandText`je třeba poznamenat, jsou , , . Když povolíte CassandraRequests v protokolech diagnostiky, ujistěte se, že vypnout DataPlaneRequests. U každého požadavku na rozhraní API by se udál jeden protokol.
+* **CassandraRequests**: tuto možnost vyberte, pokud chcete protokolovat požadavky iniciované uživateli z front-endu, aby sloužily požadavky na rozhraní API služby Azure Cosmos DB pro Cassandra. Tento typ protokolu není k dispozici pro jiné účty rozhraní API. Klíčové vlastnosti, které se mají `operationName`poznamenat, `requestCharge`jsou,, `piiCommandText`. Pokud povolíte CassandraRequests v diagnostických protokolech, nezapomeňte vypnout DataPlaneRequests. V rozhraní API se zobrazí jeden protokol pro každý požadavek.
 
    ```json
    { "time": "2020-03-30T23:55:10.9579593Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "CassandraRequests", "operationName": "QuerySelect", "properties": {"activityId": "6b33771c-baec-408a-b305-3127c17465b6","opCode": "<empty>","errorCode": "-1","duration": "0.311900","requestCharge": "1.589237","databaseName": "system","collectionName": "local","retryCount": "<empty>","authorizationTokenType": "PrimaryMasterKey","address": "104.42.195.92","piiCommandText": "{"request":"SELECT key from system.local"}","userAgent": """"}}
    ```
 
-* **QueryRuntimeStatistics**: Tuto možnost vyberte, chcete-li protokolovat text dotazu, který byl spuštěn. Tento typ protokolu je k dispozici pouze pro účty rozhraní SQL API.
+* **QueryRuntimeStatistics**: tuto možnost vyberte, pokud chcete protokolovat text dotazu, který se spustil. Tento typ protokolu je k dispozici pouze pro účty rozhraní SQL API.
 
     ```json
     { "time": "2019-04-14T19:08:11.6353239Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "QueryRuntimeStatistics", "properties": {"activityId": "278b0661-7452-4df3-b992-8aa0864142cf","databasename": "Tasks","collectionname": "Items","partitionkeyrangeid": "0","querytext": "{"query":"SELECT *\nFROM c\nWHERE (c.p1__10 != true)","parameters":[]}"}}
     ```
 
-* **PartitionKeyStatistics**: Tuto možnost vyberte, chcete-li protokolovat statistiky klíčů oddílů. To je aktuálně reprezentován o velikosti úložiště (KB) klíče oddílu. Podívejte se na [řešení problémů pomocí](#diagnostic-queries) diagnostické dotazy Azure části tohoto článku. Například dotazy, které používají "PartitionKeyStatistics". Protokol je vydáván proti první tři klíče oddílu, které zabírají většinu úložiště dat. Tento protokol obsahuje data, jako je například ID předplatného, název oblasti, název databáze, název kolekce, klíč oddílu a velikost úložiště v KB.
+* **PartitionKeyStatistics**: tuto možnost vyberte, pokud chcete protokolovat statistiky klíčů oddílů. V současné době se jedná o velikost úložiště klíčů oddílů (KB). V části [potíže s řešením potíží pomocí diagnostických dotazů Azure](#diagnostic-queries) v tomto článku. Například dotazy, které používají "PartitionKeyStatistics". Protokol je vygenerován proti prvním třem klíčům oddílu, které zabírají většinu úložiště dat. Tento protokol obsahuje data, jako je ID předplatného, název oblasti, název databáze, název kolekce, klíč oddílu a velikost úložiště v KB.
 
     ```json
     { "time": "2019-10-11T02:33:24.2018744Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "PartitionKeyStatistics", "properties": {"subscriptionId": "<your_subscription_ID>","regionName": "West US 2","databaseName": "KustoQueryResults","collectionname": "CapacityMetrics","partitionkey": "["CapacityMetricsPartition.136"]","sizeKb": "2048270"}}
     ```
 
-* **PartitionKeyRUConsumption**: Tento protokol hlásí agregovně za sekundu RU/s spotřeby klíče oddílů. V současné době Azure Cosmos DB hlásí klíče oddílů pouze pro účty rozhraní SQL API a pro operace čtení a zápisu bodu a uložené procedury. jiná řešení API a typy operací nejsou podporovány. U ostatních api bude sloupec klíče oddílu v tabulce diagnostického protokolu prázdný. Tento protokol obsahuje data, jako je například ID předplatného, název oblasti, název databáze, název kolekce, klíč oddílu, typ operace a poplatek požadavku požadavku. Podívejte se na [řešení problémů pomocí](#diagnostic-queries) diagnostické dotazy Azure části tohoto článku. Například dotazy, které používají "PartitionKeyRUConsumption". 
+* **PartitionKeyRUConsumption**: Tento protokol oznamuje agregovanou spotřebu klíčů oddílů za sekundu ru/s. V současné době Azure Cosmos DB sestavovat klíče oddílů pouze pro účty rozhraní SQL API a operace čtení, zápisu a uložených procedur v bodu. jiné typy rozhraní API a operací se nepodporují. V případě jiných rozhraní API bude sloupec klíče oddílu v tabulce diagnostického protokolu prázdný. Tento protokol obsahuje data, jako je ID předplatného, název oblasti, název databáze, název kolekce, klíč oddílu, typ operace a poplatek za požadavek. V části [potíže s řešením potíží pomocí diagnostických dotazů Azure](#diagnostic-queries) v tomto článku. Například dotazy, které používají "PartitionKeyRUConsumption". 
 
-* **ControlPlaneRequests**: Tento protokol obsahuje podrobnosti o operacích roviny ovládacího prvku, jako je vytvoření účtu, přidání nebo odebrání oblasti, aktualizace nastavení replikace účtu atd. Tento typ protokolu je k dispozici pro všechny typy rozhraní API, které zahrnují SQL (Core), MongoDB, Gremlin, Cassandra, Table API.
+* **ControlPlaneRequests**: Tento protokol obsahuje podrobnosti o operacích roviny ovládacího prvku, jako je vytvoření účtu, přidání nebo odebrání oblasti, aktualizace nastavení replikace účtů atd. Tento typ protokolu je k dispozici pro všechny typy rozhraní API, které obsahují SQL (Core), MongoDB, Gremlin, Cassandra, rozhraní API pro tabulky.
 
-* **Požadavky**: Tuto možnost vyberte, chcete-li shromažďovat metrická data z Azure Cosmos DB do cílů v diagnostickém nastavení. Jedná se o stejná data shromážděná automaticky v Azure Metrics. Shromažďujte metrická data pomocí protokolů prostředků, abyste společně analyzovali oba druhy dat a odesílli metrická data mimo Azure Monitor.
+* **Požadavky**: tuto možnost vyberte, pokud chcete shromažďovat data metrik z Azure Cosmos DB do cílových umístění v nastavení diagnostiky. Jedná se o stejná data shromažďovaná automaticky v metrikách Azure. Shromažďovat data metriky pomocí protokolů zdrojů k analýze obou druhů dat a k odesílání dat metriky mimo Azure Monitor.
 
-Podrobné informace o tom, jak vytvořit diagnostické nastavení pomocí portálu Azure, CLI nebo PowerShellu, najdete v [tématu Vytvoření diagnostického nastavení pro shromažďování protokolů platformy a metrik v](../azure-monitor/platform/diagnostic-settings.md) článku Azure.
+Podrobné informace o tom, jak vytvořit nastavení diagnostiky pomocí Azure Portal, CLI nebo PowerShellu, najdete v tématu [Vytvoření nastavení diagnostiky pro shromáždění protokolů platforem a metrik v článku Azure](../azure-monitor/platform/diagnostic-settings.md) .
 
 
-## <a name="troubleshoot-issues-with-diagnostics-queries"></a><a id="diagnostic-queries"></a>Poradce při potížích s diagnostickými dotazy
+## <a name="troubleshoot-issues-with-diagnostics-queries"></a><a id="diagnostic-queries"></a>Řešení potíží s diagnostickými dotazy
 
-1. Jak získat poplatky za požadavky na nákladné dotazy?
+1. Jak získat poplatky za žádosti pro nákladné dotazy?
 
    ```Kusto
    AzureDiagnostics
@@ -88,7 +88,7 @@ Podrobné informace o tom, jak vytvořit diagnostické nastavení pomocí portá
    | limit 100
    ```
 
-1. Jak zjistit, které operace využívají většinu Ru/s?
+1. Jak zjistit, které operace přebírají maximum RU/s?
 
     ```Kusto
    AzureDiagnostics
@@ -105,7 +105,7 @@ Podrobné informace o tom, jak vytvořit diagnostické nastavení pomocí portá
    | summarize count = count()  by OperationName, requestResourceType_s, bin(TimeGenerated, 1h) 
    ```
 
-1. Jaká je maximální propustnost, kterou oddíl spotřebovává?
+1. Jaká je maximální propustnost, kterou oddíl spotřeboval?
 
    ```Kusto
    AzureDiagnostics
@@ -114,7 +114,7 @@ Podrobné informace o tom, jak vytvořit diagnostické nastavení pomocí portá
    | summarize max(requestCharge_s) by bin(TimeGenerated, 1h), partitionId_g
    ```
 
-1. Jak získat informace o spotřebě klíče ru/s oddílů za sekundu?
+1. Jak získat informace o spotřebě klíčů oddílů RU/s za sekundu?
 
    ```Kusto
    AzureDiagnostics 
@@ -123,7 +123,7 @@ Podrobné informace o tom, jak vytvořit diagnostické nastavení pomocí portá
    | order by TimeGenerated asc 
    ```
 
-1. Jak získat poplatek za požadavek pro konkrétní klíč oddílu
+1. Jak získat poplatek za požadavek na konkrétní klíč oddílu
 
    ```Kusto
    AzureDiagnostics 
@@ -131,7 +131,7 @@ Podrobné informace o tom, jak vytvořit diagnostické nastavení pomocí portá
    | where parse_json(partitionKey_s)[0] == "2" 
    ```
 
-1. Jak získat horní klíče oddílu s většinou RU / s spotřebované v určitém období? 
+1. Jak získat nejdůležitější klíče oddílů s největším RU/s spotřebovaným v určitém období? 
 
    ```Kusto
    AzureDiagnostics 
@@ -149,7 +149,7 @@ Podrobné informace o tom, jak vytvořit diagnostické nastavení pomocí portá
    | where todouble(sizeKb_d) > 800000
    ```
 
-1. Jak získat oddíl Key statistiky vyhodnotit zkosení přes horní tři oddíly pro databázový účet?
+1. Jak získat statistiku klíče oddílu k vyhodnocení zkosení v rámci tří hlavních oddílů pro databázový účet?
 
     ```Kusto
     AzureDiagnostics 
@@ -160,4 +160,4 @@ Podrobné informace o tom, jak vytvořit diagnostické nastavení pomocí portá
 ## <a name="next-steps"></a>Další kroky
 
 * [Azure Monitor pro Azure Cosmos DB](../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json)
-* [Monitorování a ladění metrik v Azure Cosmos DB](use-metrics.md)
+* [Monitorování a ladění pomocí metrik v Azure Cosmos DB](use-metrics.md)

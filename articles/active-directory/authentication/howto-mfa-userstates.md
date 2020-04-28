@@ -1,6 +1,6 @@
 ---
-title: Povolení vícefaktorového ověřování na uživatele – služba Azure Active Directory
-description: Zjistěte, jak povolit vícefaktorové ověřování Azure pro jednotlivé uživatele změnou stavu uživatele.
+title: Povolit Multi-Factor Authentication pro jednotlivé uživatele – Azure Active Directory
+description: Přečtěte si, jak povolit Multi-Factor Authentication Azure pro jednotlivé uživatele změnou stavu uživatele.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,93 +12,93 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3e8ceaf13324864c7ec3df731c3e710815b0eba9
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81309786"
 ---
-# <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Povolení vícefaktorového ověřování Azure pro jednotlivé uživatele pro zabezpečení událostí přihlášení
+# <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Povolení služby Azure Multi-Factor Authentication pro jednotlivé uživatele k zabezpečení přihlašovacích událostí
 
-Existují dva způsoby, jak zabezpečit události přihlášení uživatele vyžadováním vícefaktorového ověřování ve službě Azure AD. První a upřednostňovanou možností je nastavení zásady podmíněného přístupu, která za určitých podmínek vyžaduje vícefaktorové ověřování. Druhou možností je povolit každému uživateli azure multifaktorové ověřování. Pokud jsou uživatelé povoleni jednotlivě, provádějí vícefaktorové ověřování při každém přihlášení (s některými výjimkami, například při přihlášení z důvěryhodných IP adres nebo když je zapnutá funkce _zapamatovaných zařízení)._
+Existují dva způsoby, jak zabezpečit události přihlašování uživatelů pomocí služby Multi-Factor Authentication ve službě Azure AD. První a upřednostňovaná možnost je nastavit zásadu podmíněného přístupu, která za určitých podmínek vyžaduje vícefaktorové ověřování. Druhou možností je povolit každému uživateli Azure Multi-Factor Authentication. Když jsou uživatelé povoleni samostatně, provádějí službu Multi-Factor Authentication pokaždé, když se přihlásí (s některými výjimkami, například když se přihlásí z důvěryhodných IP adres nebo když je zapnutá funkce _zapamatovaných zařízení_ ).
 
 > [!NOTE]
-> Povolení azure multifaktorové ověřování pomocí zásad podmíněného přístupu je doporučený přístup. Změna stavu uživatelů se již nedoporučuje, pokud vaše licence nezahrnují podmíněný přístup, protože vyžaduje, aby uživatelé prováděli vícefaktorové ověřování při každém přihlášení.
+> Doporučený postup je povolení Azure Multi-Factor Authentication pomocí zásad podmíněného přístupu. Změna stavů uživatele se už nedoporučuje, pokud vaše licence nezahrnují podmíněný přístup, protože vyžadují, aby uživatelé prováděli MFA při každém přihlášení.
 >
-> Pokud chcete začít používat podmíněný přístup, [přečtěte si informace o kurzu: Zabezpečené události přihlášení uživatelů pomocí azure multifaktorového ověřování](tutorial-enable-azure-mfa.md).
+> Pokud chcete začít používat podmíněný přístup, přečtěte si téma [kurz: zabezpečení událostí přihlašování uživatelů pomocí Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
 
-## <a name="azure-multi-factor-authentication-user-states"></a>Stavy uživatelů azure s vícefaktorovým ověřováním
+## <a name="azure-multi-factor-authentication-user-states"></a>Stavy uživatelů v Azure Multi-Factor Authentication
 
-Uživatelské účty v Azure Multi-Factor Authentication mají následující tři odlišné stavy:
+Uživatelské účty v Azure Multi-Factor Authentication mají následující tři různé stavy:
 
 > [!IMPORTANT]
-> Povolení azure vícefaktorového ověřování prostřednictvím zásad podmíněného přístupu nezmění stav uživatele. Nebuďte znepokojeni, pokud se uživatelé zobrazí jako zakázaní. Podmíněný přístup nezmění stav.
+> Povolení služby Azure Multi-Factor Authentication prostřednictvím zásad podmíněného přístupu nezmění stav uživatele. Nepoužívejte alarm, pokud se uživatelé jeví jako zakázané. Podmíněný přístup nezmění stav.
 >
-> **Pokud používáte zásady podmíněného přístupu, neměli byste povolovat ani vynucovat uživatele.**
+> **Pokud používáte zásady podmíněného přístupu, neměli byste povolit ani vyhovět uživatelům.**
 
-| Status | Popis | Ovlivněné aplikace, které nejsou ovlivněny prohlížečem | Ovlivněné aplikace prohlížeče | Ovlivněno moderní ověřování |
+| Status | Popis | Neprohlížečové aplikace ovlivněny | Ovlivněné aplikace v prohlížeči | Moderní ověřování ovlivněno |
 |:---:| --- |:---:|:--:|:--:|
-| Zakázáno | Výchozí stav pro nového uživatele, který není zaregistrovaný v Azure Multi-Factor Authentication. | Ne | Ne | Ne |
-| Povoleno | Uživatel byl zaregistrován v Azure Multi-Factor Authentication, ale nezaregistroval. Při příštím přihlášení obdrží výzvu k registraci. | Ne.  Pokračují v práci, dokud není dokončen proces registrace. | Ano. Po vypršení platnosti relace je vyžadována registrace Azure Multi-Factor Authentication.| Ano. Po vypršení platnosti přístupového tokenu je vyžadována registrace Azure Multi-Factor Authentication. |
-| Vynuceno | Uživatel byl zaregistrován a dokončil proces registrace pro azure multi-factor authentication. | Ano. Aplikace vyžadují hesla aplikací. | Ano. Azure Multi-Factor Authentication je vyžadováno při přihlášení. | Ano. Azure Multi-Factor Authentication je vyžadováno při přihlášení. |
+| Zakázáno | Výchozí stav nového uživatele, který není zaregistrovaný v Azure Multi-Factor Authentication. | Ne | Ne | Ne |
+| Povoleno | Uživatel je zaregistrovaný v Azure Multi-Factor Authentication, ale nezaregistroval. Obdrží výzvu k registraci při příštím přihlášení. | Ne.  Budou dál fungovat, dokud se proces registrace nedokončí. | Ano. Po vypršení platnosti relace se vyžaduje registrace služby Azure Multi-Factor Authentication.| Ano. Po vypršení platnosti přístupového tokenu se vyžaduje registrace Azure Multi-Factor Authentication. |
+| Vynuceno | Uživatel je zaregistrovaný a dokončil proces registrace pro Azure Multi-Factor Authentication. | Ano. Aplikace vyžadují hesla aplikací. | Ano. Při přihlášení se vyžaduje Azure Multi-Factor Authentication. | Ano. Při přihlášení se vyžaduje Azure Multi-Factor Authentication. |
 
-Stav uživatele odráží, zda je správce zaregistroval do Azure Multi-Factor Authentication a zda dokončil proces registrace.
+Stav uživatele odráží, jestli ho správce zaregistroval v Azure Multi-Factor Authentication a jestli dokončil proces registrace.
 
-Všichni uživatelé spustit *zakázáno*. Když zaregistrujete uživatele do Azure Multi-Factor Authentication, jejich stav se změní na *Povoleno*. Pokud je povoleno, uživatelé se přihlašují a dokončí proces registrace, jejich stav se změní na *Vynuceno*.
+Všichni uživatelé začínají *zakázáni*. Když zaregistrujete uživatele v Azure Multi-Factor Authentication, jejich stav se změní na *povoleno*. Když se uživatelé s povoleným přihlášením a dokončí proces registrace, jejich stav se změní na *vynutilo*.
 
 > [!NOTE]
-> Pokud je vícefaktorové ověřování znovu povoleno u objektu uživatele, který už má podrobnosti o registraci, jako je například telefon nebo e-mail, pak správci musí mít tento uživatel znovu zaregistrovat Vícefaktorové ověřování prostřednictvím portálu Azure nebo PowerShellu. Pokud se uživatel znovu nezaregistruje, jeho stav MFA nepřechází z *Povoleno* na *Vynuceno* v uživatelském rozhraní správy mfa.
+> Pokud je MFA znovu zapnuté u objektu uživatele, který už obsahuje podrobnosti o registraci, jako je telefon nebo e-mail, musí správci tento uživatel znovu zaregistrovat MFA prostřednictvím Azure Portal nebo PowerShellu. Pokud se uživatel znovu neregistruje, jejich stav MFA nepřejde z *Enabled* na *vynutilo* v UŽIVATELSKÉM rozhraní pro správu MFA.
 
-## <a name="view-the-status-for-a-user"></a>Zobrazení stavu uživatele
+## <a name="view-the-status-for-a-user"></a>Zobrazit stav uživatele
 
-Pomocí následujících kroků přejdete na stránku portálu Azure, kde můžete zobrazit a spravovat stavy uživatelů:
+Následující postup použijte pro přístup k Azure Portal stránce, kde můžete zobrazit a spravovat stavy uživatelů:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com) jako správce.
-1. Vyhledejte a vyberte *službu Azure Active Directory*a vyberte **možnost Uživatelé** > **Všichni uživatelé**.
-1. Vyberte **vícefaktorové ověřování**. Chcete-li zobrazit tuto možnost nabídky, může být nutné posunout doprava. Výběrem ukázkového snímku obrazovky níže zobrazíte celé okno portálu Azure a umístění nabídky:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Vyberte vícefaktorové ověřování z okna Uživatelé ve službě Azure AD.")](media/howto-mfa-userstates/selectmfa.png#lightbox)
-1. Otevře se nová stránka, která zobrazuje stav uživatele, jak je znázorněno v následujícím příkladu.
-   ![Snímek obrazovky s ukázkovými informacemi o stavu uživatele pro azure multifaktorové ověřování](./media/howto-mfa-userstates/userstate1.png)
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce.
+1. Vyhledejte a vyberte *Azure Active Directory*a pak vyberte **Uživatelé** > **Všichni uživatelé**.
+1. Vyberte **Multi-Factor Authentication**. Pokud chcete zobrazit tuto možnost nabídky, možná se budete muset posunout doprava. Kliknutím na ukázkový snímek obrazovky zobrazíte celé Azure Portal okno a umístění nabídky:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Výběr Multi-Factor Authentication v okně uživatelé ve službě Azure AD")](media/howto-mfa-userstates/selectmfa.png#lightbox)
+1. Otevře se nová stránka, která zobrazí stav uživatele, jak je znázorněno v následujícím příkladu.
+   ![Snímek obrazovky, který ukazuje ukázkové informace o stavu uživatele pro Azure Multi-Factor Authentication](./media/howto-mfa-userstates/userstate1.png)
 
 ## <a name="change-the-status-for-a-user"></a>Změna stavu uživatele
 
-Chcete-li změnit stav azure multi-factor authentication pro uživatele, proveďte následující kroky:
+Pokud chcete změnit stav služby Azure Multi-Factor Authentication pro uživatele, proveďte následující kroky:
 
-1. Pomocí předchozích kroků se dostanete na stránku **uživatelů** azure vícefaktorového ověřování.
-1. Najděte uživatele, kterého chcete povolit pro azure multifaktorové ověřování. Je možné, že bude nutné změnit zobrazení v horní části na **uživatele**.
-   ![Vyberte uživatele, pro který chcete změnit stav na kartě Uživatelé.](./media/howto-mfa-userstates/enable1.png)
-1. Zaškrtněte políčko vedle jména uživatele, pro které chcete změnit stav.
-1. Na pravé straně v **rychlých krocích**zvolte **Povolit** nebo **Zakázat**. V následujícím příkladu má uživatel *Jan Novák* kontrolu vedle svého jména ![a je povolen pro použití: Povolit vybraného uživatele kliknutím na povolit v nabídce rychlých kroků](./media/howto-mfa-userstates/user1.png)
+1. Pomocí předchozích kroků se dostanete na stránku Azure Multi-Factor Authentication **Users** .
+1. Vyhledejte uživatele, kterého chcete povolit pro Azure Multi-Factor Authentication. Možná budete muset změnit zobrazení na nejvyšší úrovni na **Uživatelé**.
+   ![Na kartě Uživatelé vyberte uživatele, jehož stav chcete změnit.](./media/howto-mfa-userstates/enable1.png)
+1. Zaškrtněte políčko vedle jména uživatelů, pro které chcete změnit stav.
+1. Na pravé straně v části **rychlé kroky**vyberte **Povolit** nebo **Zakázat**. V následujícím příkladu má uživatel *Jan Novák* zaškrtnutí vedle jejich názvu a je povolený pro použití: Povolit vybraného uživatele kliknutím na ![povolit v nabídce rychlé kroky.](./media/howto-mfa-userstates/user1.png)
 
    > [!TIP]
-   > *Oprávnění* uživatelé se při registraci pro vícefaktorové ověřování Azure automaticky přepnou na *Vynuceno.* Neměňte ručně stav uživatele na *Vynuceno*.
+   > *Povolení* uživatelé se automaticky přepínají, aby se *vynutili* při registraci k Azure Multi-Factor Authentication. Neměňte ručně stav uživatele na *vynutilo*.
 
-1. Potvrďte výběr v rozbalovacím okně, které se otevře.
+1. Potvrďte výběr v automaticky otevíraném okně, které se otevře.
 
-Po povolení uživatelů, upozorněte je e-mailem. Sdělte uživatelům, že se zobrazí výzva, která je požádá o registraci při příštím přihlášení. Pokud vaše organizace používá aplikace, které nepodporují moderní ověřování, musí také vytvářet hesla aplikací. Další informace najdete v [průvodci koncovým uživatelem Azure Multi-Factor Authentication,](../user-help/multi-factor-authentication-end-user.md) která jim pomůže začít.
+Jakmile povolíte uživatele, upozorněte je e-mailem. Sdělte uživatelům, že se zobrazí výzva, aby se zaregistrovali při příštím přihlášení. Pokud vaše organizace používá neprohlížečové aplikace, které nepodporují moderní ověřování, musí také vytvářet hesla aplikací. Další informace najdete v [Průvodci koncovými uživateli Azure Multi-Factor Authentication](../user-help/multi-factor-authentication-end-user.md) , který jim pomůže začít.
 
 ## <a name="change-state-using-powershell"></a>Změna stavu pomocí PowerShellu
 
-Chcete-li změnit stav uživatele pomocí prostředí Azure `$st.State` [AD PowerShell](/powershell/azure/overview), změňte parametr pro uživatelský účet. Existují tři možné stavy pro uživatelský účet:
+Pokud chcete změnit stav uživatele pomocí [Azure AD PowerShellu](/powershell/azure/overview), změňte `$st.State` parametr pro uživatelský účet. Existují tři možné stavy pro uživatelský účet:
 
 * *Enabled* (Povoleno)
 * *Vynuceno*
 * *Disabled* (Zakázáno)  
 
-Nepřesouvejte uživatele přímo do stavu *Vynuceno.* Pokud tak učiníte, přestanou fungovat aplikace, které nejsou založené na prohlížeči, protože uživatel neprošel registrací Azure Multi-Factor Authentication a nezískal [heslo aplikace](howto-mfa-mfasettings.md#app-passwords).
+Nepřesouvat uživatele přímo do *Vynutilého* stavu. Pokud to uděláte, aplikace nezaložené na prohlížeči přestanou fungovat, protože uživatel se nedostal přes Azure Multi-Factor Authentication registraci a nezískal [heslo aplikace](howto-mfa-mfasettings.md#app-passwords).
 
-Chcete-li začít, nainstalujte modul *MSOnline* pomocí [instalačního modulu](/powershell/module/powershellget/install-module) následujícím způsobem:
+Začněte tím, že pomocí [instalačního modulu](/powershell/module/powershellget/install-module) nainstalujete modul *MSOnline* následujícím způsobem:
 
 ```PowerShell
 Install-Module MSOnline
 ```
 
-Dále připojte pomocí [služby Connect-MsolService](/powershell/module/msonline/connect-msolservice):
+V dalším kroku se připojte pomocí [Connect-MsolService](/powershell/module/msonline/connect-msolservice):
 
 ```PowerShell
 Connect-MsolService
 ```
 
-Následující příklad skriptu prostředí PowerShell umožňuje *bsimon@contoso.com*vícefaktorové ověřování pro jednotlivéuživatele s názvem :
+Následující ukázkový skript PowerShellu umožňuje MFA pro jednotlivé uživatele s názvem *bsimon@contoso.com*:
 
 ```PowerShell
 $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
@@ -110,7 +110,7 @@ $sta = @($st)
 Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirements $sta
 ```
 
-Použití prostředí PowerShell je dobrá volba, když potřebujete hromadně povolit uživatele. Následující skript prochází seznam uživatelů a umožňuje vícefaktorové informace o jejich účtech. V prvním řádku `$users` nastavte uživatelské účty takto:
+Použití prostředí PowerShell je vhodné, pokud potřebujete hromadně povolit uživatele. Následující skript projde seznam uživatelů a povolí MFA na svých účtech. Zadejte uživatelské účty, které si v prvním řádku `$users` nastavili, a to následujícím způsobem:
 
    ```PowerShell
    # Define your list of users to update state in bulk
@@ -126,21 +126,21 @@ Použití prostředí PowerShell je dobrá volba, když potřebujete hromadně p
    }
    ```
 
-Chcete-li zakázat vícefaktorové ověřování, následující příklad získá uživatele s [Get-MsolUser](/powershell/module/msonline/get-msoluser), pak odebere všechny *StrongAuthenticationRequirements* nastavit pro definovaného uživatele pomocí [Set-MsolUser](/powershell/module/msonline/set-msoluser):
+Pokud chcete zakázat MFA, následující příklad získá uživatele s rutinou [Get-MsolUser](/powershell/module/msonline/get-msoluser)a pak odebere všechny *StrongAuthenticationRequirements* sady pro definovaného uživatele pomocí rutiny [set-MsolUser](/powershell/module/msonline/set-msoluser):
 
 ```PowerShell
 Get-MsolUser -UserPrincipalName bsimon@contoso.com | Set-MsolUser -StrongAuthenticationRequirements @()
 ```
 
-Můžete také přímo zakázat vícefaktorové ověřování pro uživatele pomocí [Set-MsolUser](/powershell/module/msonline/set-msoluser) takto:
+MFA můžete také přímo zakázat pro uživatele pomocí [set-MsolUser](/powershell/module/msonline/set-msoluser) následujícím způsobem:
 
 ```PowerShell
 Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirements @()
 ```
 
-## <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>Převod uživatelů z vícefaktorové ověřování pro jednotlivé uživatele na vícefaktorové ověřování založené na podmíněném přístupu
+## <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>Převod uživatelů z ověřování MFA na uživatele na vícefaktorové ověřování na základě podmíněného přístupu
 
-Následující Prostředí PowerShell vám může pomoci při převodu na azure multifaktorové ověřování založené na podmíněném přístupu.
+Následující PowerShell vám může pomoci při převodu na Multi-Factor Authentication Azure založené na podmíněném přístupu.
 
 ```PowerShell
 # Sets the MFA requirement state
@@ -177,12 +177,12 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 ```
 
 > [!NOTE]
-> Nedávno jsme změnili chování a tento skript prostředí PowerShell. Dříve skript uložen mimo metody MFA, zakázal vícefaktorové financování a obnovil metody. To již není nutné nyní, že výchozí chování pro zakázat nevymaže metody.
+> Nedávno jsme změnili chování a tento skript PowerShellu. Dříve byl skript uložen mimo metody MFA, zakázal MFA a obnovil metody. Už to není nutné, když výchozí chování pro Disable nevymaže tyto metody.
 >
-> Pokud je vícefaktorové ověřování znovu povoleno u objektu uživatele, který už má podrobnosti o registraci, jako je například telefon nebo e-mail, pak správci musí mít tento uživatel znovu zaregistrovat Vícefaktorové ověřování prostřednictvím portálu Azure nebo PowerShellu. Pokud se uživatel znovu nezaregistruje, jeho stav MFA nepřechází z *Povoleno* na *Vynuceno* v uživatelském rozhraní správy mfa.
+> Pokud je MFA znovu zapnuté u objektu uživatele, který už obsahuje podrobnosti o registraci, jako je telefon nebo e-mail, musí správci tento uživatel znovu zaregistrovat MFA prostřednictvím Azure Portal nebo PowerShellu. Pokud se uživatel znovu neregistruje, jejich stav MFA nepřejde z *Enabled* na *vynutilo* v UŽIVATELSKÉM rozhraní pro správu MFA.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete nakonfigurovat nastavení Azure pro vícefaktorové ověřování, jako jsou důvěryhodné IP adresy, vlastní hlasové zprávy a upozornění na podvody, přečtěte si informace [o konfiguraci nastavení azure multifaktorového ověřování](howto-mfa-mfasettings.md). Pokud chcete spravovat uživatelská nastavení pro vícefaktorové ověřování Azure, přečtěte si informace [o správě uživatelských nastavení pomocí azure multifaktorového ověřování](howto-mfa-userdevicesettings.md).
+Informace o konfiguraci nastavení Azure Multi-Factor Authentication, jako jsou důvěryhodné IP adresy, vlastní hlasové zprávy a výstrahy na podvod, najdete v tématu [Konfigurace nastavení azure Multi-Factor Authentication](howto-mfa-mfasettings.md). Pokud chcete spravovat uživatelská nastavení pro Azure Multi-Factor Authentication, přečtěte si téma [Správa uživatelských nastavení pomocí Azure Multi-Factor Authentication](howto-mfa-userdevicesettings.md).
 
-Informace o tom, proč byl uživatel vyzván nebo nebyl vyzván k provedení vícefaktorového ověřování, najdete [v tématu Sestavy azure multifaktorové ověřování](howto-mfa-reporting.md#azure-ad-sign-ins-report).
+Informace o tom, proč se uživateli zobrazila výzva k provedení MFA, najdete v tématu [sestavy služby Azure Multi-Factor Authentication](howto-mfa-reporting.md#azure-ad-sign-ins-report).

@@ -1,6 +1,6 @@
 ---
-title: Poradce při potížích s hybridními zařízeními azure active directory
-description: Řešení potíží s hybridní službou Azure Active Directory se připojilo k zařízením s Windows 10 a Windows Server 2016.
+title: Řešení potíží s hybridními Azure Active Directory připojenými zařízeními
+description: Řešení potíží se zařízeními s Windows 10 a Windows serverem 2016, která jsou připojená k hybridní Azure Active Directory
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -12,35 +12,35 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 26e52930211611673b6fe2309e2dca067a91ebc8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80331772"
 ---
-# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Poradce při potížích s hybridními zařízeními azure active directory 
+# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Řešení potíží s hybridními Azure Active Directory připojenými zařízeními 
 
-Obsah tohoto článku je použitelný pro zařízení se systémem Windows 10 nebo Windows Server 2016.
+Obsah tohoto článku se vztahuje na zařízení s Windows 10 nebo Windows Server 2016.
 
-Ostatní klienti s Windows najdete v článku [Poradce při potížích s hybridním zařízením Azure Active Directory, která se připojila k zařízením nižší úrovně](troubleshoot-hybrid-join-windows-legacy.md).
+Další klienty se systémem Windows najdete v článku [řešení potíží s hybridními Azure Active Directory připojenými zařízením nižší úrovně](troubleshoot-hybrid-join-windows-legacy.md).
 
-Tento článek předpokládá, že jste [nakonfigurovali hybridní zařízení Azure Active Directory připojená](hybrid-azuread-join-plan.md) k podpoře následujících scénářů:
+V tomto článku se předpokládá, že jste [nakonfigurovali zařízení se hybridem Azure Active Directory připojená](hybrid-azuread-join-plan.md) k podpoře následujících scénářů:
 
-- Podmíněný přístup založený na zařízení
+- Podmíněný přístup podle zařízení
 - [Podnikový roaming nastavení](../active-directory-windows-enterprise-state-roaming-overview.md)
 - [Windows Hello pro firmy](../active-directory-azureadjoin-passport-deployment.md)
 
-Tento dokument obsahuje pokyny pro řešení potíží k řešení potenciálních problémů. 
+Tento dokument poskytuje pokyny k odstraňování potíží, které vám pomohou vyřešit potenciální problémy. 
 
-Pro Windows 10 a Windows Server 2016 hybridní připojení Azure Active Directory podporuje aktualizaci Windows 10 z listopadu 2015 a vyšší.
+V případě systémů Windows 10 a Windows Server 2016 se v programu Hybrid Azure Active Directory JOIN podpora Windows 10 listopadu 2015 Update a vyšší.
 
-## <a name="troubleshoot-join-failures"></a>Poradce při potížích s připojením
+## <a name="troubleshoot-join-failures"></a>Řešení chyb připojení
 
-### <a name="step-1-retrieve-the-join-status"></a>Krok 1: Načtení stavu spojení 
+### <a name="step-1-retrieve-the-join-status"></a>Krok 1: načtení stavu připojení 
 
-**Chcete-li načíst stav spojení:**
+**Načtení stavu připojení:**
 
-1. Otevření příkazového řádku jako správce
+1. Otevřete příkazový řádek jako správce.
 2. Zadejte `dsregcmd /status`
 
 ```
@@ -88,31 +88,31 @@ WamDefaultAuthority: organizations
          AzureAdPrt: YES
 ```
 
-### <a name="step-2-evaluate-the-join-status"></a>Krok 2: Vyhodnocení stavu spojení 
+### <a name="step-2-evaluate-the-join-status"></a>Krok 2: vyhodnocení stavu připojení 
 
 Zkontrolujte následující pole a ujistěte se, že mají očekávané hodnoty:
 
-#### <a name="domainjoined--yes"></a>DoménaSpojená : ANO  
+#### <a name="domainjoined--yes"></a>DomainJoined: Ano  
 
-Toto pole označuje, zda je zařízení připojeno k místní službě Active Directory či nikoli. Pokud je hodnota **NE**, zařízení nelze provést hybridní připojení Azure AD.  
+Toto pole indikuje, jestli je zařízení připojené k místní službě Active Directory, nebo ne. Pokud je hodnota **ne**, zařízení nemůže provést hybridní připojení k Azure AD.  
 
-#### <a name="workplacejoined--no"></a>WorkplaceJoined : NE  
+#### <a name="workplacejoined--no"></a>WorkplaceJoined: ne  
 
-Toto pole označuje, jestli je zařízení registrované ve službě Azure AD jako osobní zařízení (označené jako *připojení k pracovnímu prostředí).* Tato hodnota by měla být **NE** pro počítač spojený s doménou, který je také hybridní Azure AD připojen. Pokud je hodnota **ANO**, pracovní nebo školní účet byl přidán před dokončením hybridní připojení Azure AD. V tomto případě je účet ignorován při použití verze výroční aktualizace systému Windows 10 (1607).
+Toto pole indikuje, jestli je zařízení zaregistrované ve službě Azure AD jako osobní zařízení (označené jako *připojené k pracovišti*). Tato hodnota by neměla **být pro počítač** připojený k doméně, který je taky připojený k hybridní službě Azure AD. Pokud je hodnota **Ano**, přidal se pracovní nebo školní účet před dokončením připojení k hybridní službě Azure AD. V takovém případě se účet ignoruje při použití aktualizace výročí Windows 10 (1607).
 
-#### <a name="azureadjoined--yes"></a>AzureAdJoined : ANO  
+#### <a name="azureadjoined--yes"></a>AzureAdJoined: Ano  
 
-Toto pole označuje, zda je zařízení připojeno. Hodnota bude **ANO,** pokud je zařízení zařízení zařízení připojil Azure AD zařízení nebo hybridní zařízení připojil Azure AD.
-Pokud je hodnota **NE**, připojení k Azure AD ještě není dokončena. 
+Toto pole indikuje, jestli je zařízení připojené. Pokud se jedná o zařízení připojené k Azure AD nebo k hybridnímu zařízení připojenému k Azure AD, bude tato hodnota **Ano** .
+Pokud je hodnota **ne**, připojení ke službě Azure AD ještě není dokončené. 
 
-Pokračujte dalšími kroky pro další řešení potíží.
+Další kroky k odstraňování potíží můžete pokračovat v dalších krocích.
 
-### <a name="step-3-find-the-phase-in-which-join-failed-and-the-errorcode"></a>Krok 3: Najděte fázi, ve které se připojení nezdařilo, a kód chyby
+### <a name="step-3-find-the-phase-in-which-join-failed-and-the-errorcode"></a>Krok 3: Najděte fázi, ve které selhalo připojení, a kód chyby.
 
-#### <a name="windows-10-1803-and-above"></a>Windows 10 1803 a vyšší
+#### <a name="windows-10-1803-and-above"></a>Windows 10 1803 a novější
 
-Vyhledejte podsekci "Předchozí registrace" v části Diagnostická data ve výstupu stavu spojení. Tato část se zobrazí pouze v případě, že zařízení je připojen k doméně a nelze hybridní připojení Azure AD.
-Pole "Fáze chyby" označuje fázi selhání spojení, zatímco kód client errorcode označuje kód chyby operace Spojení.
+Vyhledejte v části "předchozí registrace" v oddílu diagnostická data ve výstupu stavu připojení. Tato část se zobrazí jenom v případě, že je zařízení připojené k doméně a nemůže se připojit k hybridní službě Azure AD.
+Pole chybová fáze označuje fázi selhání spojení, zatímco ' Client ErrorCode ' označuje kód chyby operace JOIN.
 
 ```
 +----------------------------------------------------------------------+
@@ -129,60 +129,60 @@ Pole "Fáze chyby" označuje fázi selhání spojení, zatímco kód client erro
 
 #### <a name="older-windows-10-versions"></a>Starší verze Windows 10
 
-Pomocí protokolů Prohlížeče událostí vyhledejte kód fáze a chyby pro selhání spojení.
+Pomocí protokolů Prohlížeč událostí vyhledejte fázi a chybový kód pro selhání spojení.
 
-1. Otevřete protokoly událostí **Registrace uživatelského zařízení** v prohlížeči událostí. Nachází se v části **Přihlásit** > aplikace a služby**Registrace** > **uživatelského zařízení systému** **Microsoft Windows** > 
-2. Vyhledejte události s následujícími id události 304, 305, 307.
+1. V prohlížeči událostí otevřete protokoly událostí **registrace zařízení uživatele** . Umístění v **části aplikace a služby protokol** > **registrace uživatelských zařízení** systému**Microsoft** > **Windows** > 
+2. Vyhledejte události s následujícím identifikátory EventID rozmezí 304, 305, 307.
 
 ![Událost protokolu selhání](./media/troubleshoot-hybrid-join-windows-current/1.png)
 
 ![Událost protokolu selhání](./media/troubleshoot-hybrid-join-windows-current/2.png)
 
-### <a name="step-4-check-for-possible-causes-and-resolutions-from-the-lists-below"></a>Krok 4: Zkontrolujte možné příčiny a řešení z níže uvedených seznamů
+### <a name="step-4-check-for-possible-causes-and-resolutions-from-the-lists-below"></a>Krok 4: Projděte si možné příčiny a řešení ze seznamu níže.
 
-#### <a name="pre-check-phase"></a>Fáze předběžné kontroly
+#### <a name="pre-check-phase"></a>Předběžná kontrolní fáze
 
-Možné důvody selhání:
+Možné příčiny selhání:
 
-- Zařízení nemá žádný zorný dohled na řadičdomény.
-   - Zařízení musí být v interní síti organizace nebo v síti VPN se síťovým zorným polem k místnímu řadiči domény služby Active Directory (AD).
+- Zařízení nemá žádný pohled na řadič domény.
+   - Zařízení musí být v interní síti organizace nebo na VPN se síťovou linkou, která je v místním řadiči domény Active Directory (AD).
 
-#### <a name="discover-phase"></a>Fáze objevování
+#### <a name="discover-phase"></a>Fáze zjišťování
 
-Možné důvody selhání:
+Možné příčiny selhání:
 
-- Objekt SCP (Service Connection Point) nesprávně nakonfiguroval/nemohl číst objekt SCP z řadiče domény.
-   - Platný objekt SCP je povinný v doménové struktuře služby AD, do které zařízení patří, který odkazuje na ověřený název domény ve službě Azure AD.
-   - Podrobnosti naleznete v části [Konfigurace spojovacího bodu služby](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join).
-- Nepodařilo se připojit a načíst metadata zjišťování z koncového bodu zjišťování.
-   - Zařízení by mělo mít `https://enterpriseregistration.windows.net`přístup k přístupu v kontextu SYSTEM, ke zjištění koncových bodů registrace a autorizace. 
-   - Pokud místní prostředí vyžaduje odchozí proxy server, musí správce IT zajistit, aby účet počítače zařízení byl schopen zjistit a tiše ověřit odchozí proxy server.
-- Nepodařilo se připojit ke koncovému bodu sféry uživatele a provést zjišťování sféry. (Windows 10 verze 1809 a novější)
-   - Zařízení by mělo mít `https://login.microsoftonline.com`přístup k aplikaci SYSTEM, aby provedlo zjišťování sféry pro ověřenou doménu a určilo typ domény (spravované/federované).
-   - Pokud místní prostředí vyžaduje odchozí proxy server, musí správce IT zajistit, aby kontext SYSTEM v zařízení mohl zjistit a tiše ověřit odchozí proxy server.
+- Objekt spojovacího bodu služby (SCP) nesprávně nakonfigurovaný/nelze číst objekt SCP z řadiče domény.
+   - V doménové struktuře služby Active Directory je vyžadován platný objekt SCP, ke kterému patří zařízení, které odkazuje na ověřený název domény ve službě Azure AD.
+   - Podrobnosti najdete v části [Konfigurace spojovacího bodu služby](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join).
+- Nepovedlo se připojit a načíst metadata zjišťování z koncového bodu zjišťování.
+   - Zařízení by mělo mít přístup `https://enterpriseregistration.windows.net`v kontextu systému, aby bylo možné zjistit koncové body registrace a autorizace. 
+   - Pokud místní prostředí vyžaduje odchozí proxy server, správce IT musí zajistit, aby počítačový účet zařízení mohl zjišťovat a tiše ověřit u odchozího proxy serveru.
+- Nepovedlo se připojit ke koncovému bodu sféry uživatele a provádět zjišťování sféry. (Jenom Windows 10 verze 1809 a novější)
+   - Zařízení by mělo mít přístup `https://login.microsoftonline.com`v kontextu systému, aby bylo možné provést zjišťování sféry pro ověřenou doménu a určit typ domény (spravované/federované).
+   - Pokud místní prostředí vyžaduje odchozí proxy server, správce IT musí zajistit, aby kontext systému v zařízení mohl zjišťovat a tiše ověřovat na odchozím proxy serveru.
 
 **Běžné kódy chyb:**
 
 - **DSREG_AUTOJOIN_ADCONFIG_READ_FAILED** (0x801c001d/-2145648611)
-   - Důvod: Nelze číst objekt SCP a získat informace o tenantovi Azure AD.
-   - Řešení: Viz část [Konfigurace spojovacího bodu služby](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join).
+   - Důvod: nelze načíst objekt SCP a získat informace o tenantovi Azure AD.
+   - Řešení: Přečtěte si část [Konfigurace spojovacího bodu služby](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join).
 - **DSREG_AUTOJOIN_DISC_FAILED** (0x801c0021/-2145648607)
-   - Důvod: Selhání obecného zjišťování. Nepodařilo se získat metadata zjišťování z DRS.
-   - Řešení: Najděte níže uvedenou dílčí chybu a prozkoumat další.
+   - Důvod: selhání obecného zjišťování. Nepovedlo se získat metadata zjišťování z DRS.
+   - Řešení: Najděte níže uvedenou dílčí chybu a prozkoumejte ji.
 - **DSREG_AUTOJOIN_DISC_WAIT_TIMEOUT** (0x801c001f/-2145648609)
-   - Důvod: Při provádění zjišťování byl časový režim operace.
-   - Řešení: Ujistěte se, že `https://enterpriseregistration.windows.net` je přístupný v kontextu SYSTEM. Další informace naleznete v části [Požadavky na připojení k síti](hybrid-azuread-join-managed-domains.md#prerequisites).
+   - Důvod: při provádění zjišťování vypršel časový limit operace.
+   - Řešení: Ujistěte se `https://enterpriseregistration.windows.net` , že je přístupná v kontextu systému. Další informace najdete v části požadavky na [připojení k síti](hybrid-azuread-join-managed-domains.md#prerequisites).
 - **DSREG_AUTOJOIN_USERREALM_DISCOVERY_FAILED** (0x801c0021/-2145648611)
-   - Důvod: Selhání zjišťování obecné sféry. Nepodařilo se určit typ domény (spravované/federované) z SLUŽBY STS. 
-   - Řešení: Najděte níže uvedenou dílčí chybu a prozkoumat další.
+   - Důvod: selhání zjišťování obecných sfér. Nepovedlo se určit typ domény (spravované nebo federované) ze služby STS. 
+   - Řešení: Najděte níže uvedenou dílčí chybu a prozkoumejte ji.
 
-**Běžné kódy dílčích chyb:**
+**Kódy běžných chyb:**
 
-Chcete-li najít kód dílčí chyby pro kód chyby zjišťování, použijte jednu z následujících metod.
+Chcete-li najít kód pro chybu zjišťování kódu chyby, použijte jednu z následujících metod.
 
-##### <a name="windows-10-1803-and-above"></a>Windows 10 1803 a vyšší
+##### <a name="windows-10-1803-and-above"></a>Windows 10 1803 a novější
 
-Vyhledejte "TEST zjišťování DRS" v části Diagnostická data ve výstupu stavu spojení. Tato část se zobrazí pouze v případě, že zařízení je připojen k doméně a nelze hybridní připojení Azure AD.
+V části diagnostická data ve výstupu stavu připojení vyhledejte test DRS Discovery. Tato část se zobrazí jenom v případě, že je zařízení připojené k doméně a nemůže se připojit k hybridní službě Azure AD.
 
 ```
 +----------------------------------------------------------------------+
@@ -204,110 +204,110 @@ Vyhledejte "TEST zjišťování DRS" v části Diagnostická data ve výstupu st
 
 ##### <a name="older-windows-10-versions"></a>Starší verze Windows 10
 
-Pomocí protokolů Prohlížeče událostí vyhledejte fázový a chybový kód pro selhání spojení.
+Pomocí protokolů Prohlížeč událostí vyhledejte fázi a kód chyby připojení.
 
-1. Otevřete protokoly událostí **Registrace uživatelského zařízení** v prohlížeči událostí. Nachází se v části **Přihlásit** > aplikace a služby**Registrace** > **uživatelského zařízení systému** **Microsoft Windows** > 
-2. Podívejte se na události s následujícími id událostí 201
+1. V prohlížeči událostí otevřete protokoly událostí **registrace zařízení uživatele** . Umístění v **části aplikace a služby protokol** > **registrace uživatelských zařízení** systému**Microsoft** > **Windows** > 
+2. Vyhledejte události s následujícím identifikátory EventID rozmezí 201
 
 ![Událost protokolu selhání](./media/troubleshoot-hybrid-join-windows-current/5.png)
 
 ###### <a name="network-errors"></a>Chyby sítě
 
-- **WININET_E_CANNOT_CONNECT** (0x80072efd/-2147012867)
-   - Důvod: Nelze navázat spojení se serverem.
-   - Řešení: Zajistěte připojení k síti k požadovaným prostředkům společnosti Microsoft. Další informace naleznete v tématu [Požadavky na připojení k síti](hybrid-azuread-join-managed-domains.md#prerequisites).
-- **WININET_E_TIMEOUT** (0x80072ee2/-2147012894)
-   - Důvod: Obecný časový čas sítě.
-   - Řešení: Zajistěte připojení k síti k požadovaným prostředkům společnosti Microsoft. Další informace naleznete v tématu [Požadavky na připojení k síti](hybrid-azuread-join-managed-domains.md#prerequisites).
-- **WININET_E_DECODING_FAILED** (0x80072f8f/-2147012721)
-   - Důvod: Síťový zásobník nemohl dekódovat odpověď ze serveru.
-   - Řešení: Ujistěte se, že síťový proxy server nenarušuje a nemění odpověď serveru.
+- **WININET_E_CANNOT_CONNECT** (0x80072EFD/-2147012867)
+   - Důvod: Nepodařilo se navázat spojení se serverem.
+   - Řešení: Zajistěte síťové připojení k požadovaným prostředkům společnosti Microsoft. Další informace najdete v tématu [požadavky na připojení k síti](hybrid-azuread-join-managed-domains.md#prerequisites).
+- **WININET_E_TIMEOUT** (0x80072EE2/-2147012894)
+   - Důvod: obecný časový limit sítě.
+   - Řešení: Zajistěte síťové připojení k požadovaným prostředkům společnosti Microsoft. Další informace najdete v tématu [požadavky na připojení k síti](hybrid-azuread-join-managed-domains.md#prerequisites).
+- **WININET_E_DECODING_FAILED** (0x80072F8F/-2147012721)
+   - Důvod: síťový zásobník nemohl dekódovat odpověď ze serveru.
+   - Řešení: Zajistěte, aby síťový proxy server nenarušil a neměnil odpověď serveru.
 
 ###### <a name="http-errors"></a>Chyby protokolu HTTP
 
 - **DSREG_DISCOVERY_TENANT_NOT_FOUND** (0x801c003a/-2145648582)
-   - Důvod: Objekt SCP nakonfigurovaný s nesprávným ID klienta. Nebo nebyly nalezeny žádné aktivní odběry v tenantovi.
-   - Řešení: Ujistěte se, že objekt SCP je nakonfigurovaný se správným ID klienta Azure AD a aktivními předplatnými nebo v tenantovi.
+   - Důvod: objekt SCP nakonfigurovaný s nesprávným ID tenanta. V tenantovi se nenašly žádné aktivní odběry.
+   - Řešení: Ujistěte se, že je objekt SCP nakonfigurovaný se správným ID tenanta služby Azure AD a s aktivním předplatným nebo zda se nachází v tenantovi.
 - **DSREG_SERVER_BUSY** (0x801c0025/-2145648603)
    - Důvod: HTTP 503 ze serveru DRS.
-   - Řešení: Server není momentálně k dispozici. budoucí pokusy o připojení budou pravděpodobně úspěšné, jakmile je server opět online.
+   - Řešení: Server je momentálně nedostupný. budoucí pokusy o připojení budou po návratu serveru do režimu online nejspíš úspěšné.
 
 ###### <a name="other-errors"></a>Další chyby
 
-- **E_INVALIDDATA** (0x8007000d/-2147024883)
-   - Důvod: Odpověď serveru JSON nelze analyzovat. Pravděpodobně kvůli proxy návratu HTTP 200 s HTML auth stránku.
-   - Řešení: Pokud místní prostředí vyžaduje odchozí proxy server, musí správce IT zajistit, aby kontext SYSTEM v zařízení mohl zjistit a tiše ověřit odchozí proxy server.
+- **E_INVALIDDATA** (0x8007000D/-2147024883)
+   - Důvod: odpověď serveru JSON se nedala analyzovat. Důvodem je, že proxy vrací HTTP 200 se stránkou ověřování HTML.
+   - Řešení: Pokud místní prostředí vyžaduje odchozí proxy server, správce IT musí zajistit, aby kontext systému v zařízení mohl zjišťovat a tiše ověřovat na odchozím proxy serveru.
 
 #### <a name="authentication-phase"></a>Fáze ověřování
 
 Platí pouze pro účty federované domény.
 
-Důvody selhání:
+Důvody pro selhání:
 
-- Nelze získat token aplikace Access tiše pro prostředek DRS.
-   - Zařízení s Windows 10 získávají ověřovací token z federační služby pomocí integrovaného ověřování systému Windows do aktivního koncového bodu WS-Trust. Podrobnosti: [Konfigurace služby Federation Service](hybrid-azuread-join-manual.md#set-up-issuance-of-claims)
+- Nepovedlo se získat přístupový token pro prostředek DRS v tichém režimu.
+   - Zařízení s Windows 10 získávají ověřovací token ze služby Federation Service pomocí integrovaného ověřování systému Windows na aktivní koncový bod WS-Trust. Podrobnosti: [Služba FS (Federation Service) konfigurace](hybrid-azuread-join-manual.md#set-up-issuance-of-claims)
 
 **Běžné kódy chyb:**
 
-Pomocí protokolů Prohlížeče událostí vyhledejte kód chyby, kód dílčí chyby, kód chyby serveru a chybovou zprávu serveru.
+Použijte protokoly Prohlížeč událostí k vyhledání kódu chyby, kódu chyby, kódu chyby serveru a chybové zprávy serveru.
 
-1. Otevřete protokoly událostí **Registrace uživatelského zařízení** v prohlížeči událostí. Nachází se v části **Přihlásit** > aplikace a služby**Registrace** > **uživatelského zařízení systému** **Microsoft Windows** > 
-2. Vyhledejte události s následující událostíID 305
+1. V prohlížeči událostí otevřete protokoly událostí **registrace zařízení uživatele** . Umístění v **části aplikace a služby protokol** > **registrace uživatelských zařízení** systému**Microsoft** > **Windows** > 
+2. Vyhledejte události s následujícím ID události 305
 
 ![Událost protokolu selhání](./media/troubleshoot-hybrid-join-windows-current/3.png)
 
 ##### <a name="configuration-errors"></a>Chyby konfigurace
 
 - **ERROR_ADAL_PROTOCOL_NOT_SUPPORTED** (0xcaa90017/-894894057)
-   - Důvod: Ověřovací protokol není WS-Trust.
-   - Řešení: Místní zprostředkovatel identity musí podporovat ws-trust 
+   - Důvod: ověřovací protokol není WS-Trust.
+   - Řešení: místní zprostředkovatel identity musí podporovat WS-Trust. 
 - **ERROR_ADAL_FAILED_TO_PARSE_XML** (0xcaa9002c/-894894036)
-   - Důvod: Místní federační služba nevrátila odpověď XML.
-   - Řešení: Ujistěte se, že koncový bod MEX vrací platný XML. Ujistěte se, že proxy server nenarušuje a vrací odpovědi bez xml.
+   - Důvod: místní služba FS (Federation Service) nevrátila odpověď XML.
+   - Řešení: Zajistěte, aby koncový bod MEX vrátil platný kód XML. Zajistěte, aby proxy nenarušil a vracel odpovědi, které nejsou ve formátu XML.
 - **ERROR_ADAL_COULDNOT_DISCOVER_USERNAME_PASSWORD_ENDPOINT** (0xcaa90023/-894894045)
-   - Důvod: Nelze zjistit koncový bod pro ověřování uživatelského jména a hesla.
-   - Řešení: Zkontrolujte nastavení místního zprostředkovatele identity. Ujistěte se, že jsou povoleny koncové body WS-Trust a ujistěte se, že odpověď MEX obsahuje tyto správné koncové body.
+   - Důvod: nelze zjistit koncový bod pro ověřování uživatelského jména a hesla.
+   - Řešení: Podívejte se na nastavení místního zprostředkovatele identity. Zajistěte, aby byly povoleny koncové body WS-Trust a aby odpověď MEX obsahovala tyto správné koncové body.
 
 ##### <a name="network-errors"></a>Chyby sítě
 
 - **ERROR_ADAL_INTERNET_TIMEOUT** (0xcaa82ee2/-894947614)
-   - Důvod: Obecný časový čas sítě.
-   - Řešení: Ujistěte se, že `https://login.microsoftonline.com` je přístupný v kontextu SYSTEM. Ujistěte se, že místní zprostředkovatel identity je přístupný v kontextu SYSTEM. Další informace naleznete v tématu [Požadavky na připojení k síti](hybrid-azuread-join-managed-domains.md#prerequisites).
+   - Důvod: obecný časový limit sítě.
+   - Řešení: Ujistěte se `https://login.microsoftonline.com` , že je přístupná v kontextu systému. Zajistěte, aby byl místní zprostředkovatel identity přístupný v kontextu systému. Další informace najdete v tématu [požadavky na připojení k síti](hybrid-azuread-join-managed-domains.md#prerequisites).
 - **ERROR_ADAL_INTERNET_CONNECTION_ABORTED** (0xcaa82efe/-894947586)
-   - Důvod: Připojení s koncovým bodem auth bylo přerušeno.
-   - Řešení: Opakujte akci po nějaké akci nebo zkuste se připojit z alternativního stabilního síťového umístění.
+   - Důvod: spojení s koncovým bodem ověřování bylo přerušeno.
+   - Řešení: zkuste to po nějaké době znovu nebo se pokuste připojit z alternativního umístění stabilní sítě.
 - **ERROR_ADAL_INTERNET_SECURE_FAILURE** (0xcaa82f8f/-894947441)
-   - Důvod: Certifikát zabezpečení transportní vrstvy (TLS), dříve známý jako SSL (Secure Sockets L), nelze ověřit.
-   - Řešení: Zkontrolujte zkosení času klienta. Opakujte akci po nějaké akci nebo zkuste se připojit z alternativního stabilního síťového umístění. 
+   - Důvod: protokol TLS (Transport Layer Security), dříve označovaný jako SSL (Secure Sockets Layer) (SSL), nemohl být ověřený serverem.
+   - Řešení: Podívejte se na časový posun klienta. Zkuste to za chvíli znovu nebo se pokuste připojit z alternativního umístění stabilní sítě. 
 - **ERROR_ADAL_INTERNET_CANNOT_CONNECT** (0xcaa82efd/-894947587)
-   - Důvod: Pokus o `https://login.microsoftonline.com` připojení k programu se nezdařil.
-   - Řešení: Zkontrolujte `https://login.microsoftonline.com`síťové připojení k programu .
+   - Důvod: pokus o připojení `https://login.microsoftonline.com` se nezdařil.
+   - Řešení: Ověřte síťové připojení k `https://login.microsoftonline.com`.
 
 ##### <a name="other-errors"></a>Další chyby
 
 - **ERROR_ADAL_SERVER_ERROR_INVALID_GRANT** (0xcaa20003/-895352829)
-   - Důvod: Token SAML od místního zprostředkovatele identity nebyl přijat službou Azure AD.
-   - Řešení: Zkontrolujte nastavení federačního serveru. Vyhledejte kód chyby serveru v protokolech ověřování.
+   - Důvod: Služba Azure AD nepřijala token SAML od místního zprostředkovatele identity.
+   - Řešení: Podívejte se na nastavení federačního serveru. Vyhledejte kód chyby serveru v protokolech ověřování.
 - **ERROR_ADAL_WSTRUST_REQUEST_SECURITYTOKEN_FAILED** (0xcaa90014/-894894060)
-   - Důvod: Odpověď serveru WS-Trust ohlásila výjimku poruchy a nepodařilo se mu získat kontrolní výraz
-   - Řešení: Zkontrolujte nastavení federačního serveru. Vyhledejte kód chyby serveru v protokolech ověřování.
+   - Důvod: odpověď serveru WS-Trust nahlásila chybu a nedokázala získat kontrolní výraz.
+   - Řešení: Podívejte se na nastavení federačního serveru. Vyhledejte kód chyby serveru v protokolech ověřování.
 - **ERROR_ADAL_WSTRUST_TOKEN_REQUEST_FAIL** (0xcaa90006/-894894074)
-   - Důvod: Při pokusu o získání přístupového tokenu z koncového bodu tokenu byla přijata chyba.
-   - Řešení: Vyhledejte základní chybu v protokolu ADAL. 
+   - Důvod: při pokusu o získání přístupového tokenu z koncového bodu tokenu byla přijata chyba.
+   - Řešení: vyhledejte základní chybu v protokolu ADAL. 
 - **ERROR_ADAL_OPERATION_PENDING** (0xcaa1002d/-895418323)
-   - Důvod: Obecné selhání ADAL
-   - Řešení: Vyhledejte kód dílčí chyby nebo kód chyby serveru z protokolů ověřování.
+   - Důvod: Obecná chyba ADAL
+   - Řešení: Vyhledejte kód chyby nebo kód chyby serveru z protokolů ověřování.
     
-#### <a name="join-phase"></a>Připojit se k fázi
+#### <a name="join-phase"></a>Spojovací fáze
 
-Důvody selhání:
+Důvody pro selhání:
 
-Najděte typ registrace a vyhledejte kód chyby z níže uvedeného seznamu.
+Vyhledejte typ registrace a vyhledejte kód chyby ze seznamu níže.
 
-#### <a name="windows-10-1803-and-above"></a>Windows 10 1803 a vyšší
+#### <a name="windows-10-1803-and-above"></a>Windows 10 1803 a novější
 
-Vyhledejte podsekci "Předchozí registrace" v části Diagnostická data ve výstupu stavu spojení. Tato část se zobrazí pouze v případě, že zařízení je připojen k doméně a nelze hybridní připojení Azure AD.
-Pole Typ registrace označuje typ provedeného spojení.
+Vyhledejte v části "předchozí registrace" v oddílu diagnostická data ve výstupu stavu připojení. Tato část se zobrazí jenom v případě, že je zařízení připojené k doméně a nemůže se připojit k hybridní službě Azure AD.
+Pole registrace typu označuje typ provedeného spojení.
 
 ```
 +----------------------------------------------------------------------+
@@ -324,92 +324,92 @@ Pole Typ registrace označuje typ provedeného spojení.
 
 #### <a name="older-windows-10-versions"></a>Starší verze Windows 10
 
-Pomocí protokolů Prohlížeče událostí vyhledejte fázový a chybový kód pro selhání spojení.
+Pomocí protokolů Prohlížeč událostí vyhledejte fázi a kód chyby připojení.
 
-1. Otevřete protokoly událostí **Registrace uživatelského zařízení** v prohlížeči událostí. Nachází se v části **Přihlásit** > aplikace a služby**Registrace** > **uživatelského zařízení systému** **Microsoft Windows** > 
-2. Vyhledejte události s následujícími id událostí 204
+1. V prohlížeči událostí otevřete protokoly událostí **registrace zařízení uživatele** . Umístění v **části aplikace a služby protokol** > **registrace uživatelských zařízení** systému**Microsoft** > **Windows** > 
+2. Vyhledejte události s následujícím identifikátory EventID rozmezí 204
 
 ![Událost protokolu selhání](./media/troubleshoot-hybrid-join-windows-current/4.png)
 
-##### <a name="http-errors-returned-from-drs-server"></a>Chyby PROTOKOLU HTTP vrácené ze serveru DRS
+##### <a name="http-errors-returned-from-drs-server"></a>Chyby HTTP vrácené ze serveru DRS
 
 - **DSREG_E_DIRECTORY_FAILURE** (0x801c03f2/-2145647630)
-   - Důvod: Byla přijata chybová odpověď z protokolu DRS s chybovým kódem ErrorCode: "DirectoryError"
-   - Řešení: Z možných důvodů a řešení se podívejte na kód chyby serveru.
+   - Důvod: byla přijata chybová odpověď z DRS s kódem chyby: "DirectoryError"
+   - Řešení: možné příčiny a řešení najdete v kódu chyby serveru.
 - **DSREG_E_DEVICE_AUTHENTICATION_ERROR** (0x801c0002/-2145648638)
-   - Důvod: Byla přijata chybová odpověď z drs s ErrorCode: "AuthenticationError" a ErrorSubCode není "DeviceNotFound". 
-   - Řešení: Z možných důvodů a řešení se podívejte na kód chyby serveru.
+   - Důvod: byla přijata chybová odpověď z DRS s kódem chyby: "AuthenticationError" a ErrorSubCode není "DeviceNotFound". 
+   - Řešení: možné příčiny a řešení najdete v kódu chyby serveru.
 - **DSREG_E_DEVICE_INTERNALSERVICE_ERROR** (0x801c0006/-2145648634)
-   - Důvod: Byla přijata chybová odpověď z protokolu DRS s chybovým kódem ErrorCode: "DirectoryError"
-   - Řešení: Z možných důvodů a řešení se podívejte na kód chyby serveru.
+   - Důvod: byla přijata chybová odpověď z DRS s kódem chyby: "DirectoryError"
+   - Řešení: možné příčiny a řešení najdete v kódu chyby serveru.
 
 ##### <a name="tpm-errors"></a>Chyby čipu TPM
 
 - **NTE_BAD_KEYSET** (0x80090016/-2146893802)
-   - Důvod: Operace čipu TPM se nezdařila nebo byla neplatná.
-   - Rozlišení: Pravděpodobně kvůli chybné bitové kopii sysprep. Ujistěte se, že počítač, ze kterého byla vytvořena image sysprep není Azure AD připojen, hybridní Azure AD připojen, nebo Azure AD registrované.
+   - Důvod: operace čipu TPM se nezdařila nebo byla neplatná.
+   - Řešení: pravděpodobně kvůli chybné imagi nástroje Sysprep. Ujistěte se, že počítač, ze kterého byla vytvořená image nástroje Sysprep, není připojený k Azure AD, připojili jste k hybridní službě Azure AD nebo zaregistrovali Azure AD.
 - **TPM_E_PCP_INTERNAL_ERROR** (0x80290407/-2144795641)
    - Důvod: Obecná chyba čipu TPM. 
-   - Řešení: Zakázání čipu TPM na zařízeních s touto chybou. Windows 10 verze 1809 a vyšší automaticky detekuje selhání čipu TPM a dokončí hybridní připojení Azure AD bez použití čipu TPM.
+   - Řešení: zakáže čip TPM v zařízeních s touto chybou. Windows 10 verze 1809 a vyšší automaticky detekuje selhání čipu TPM a dokončuje připojení k hybridní službě Azure AD bez použití čipu TPM.
 - **TPM_E_NOTFIPS** (0x80280036/-2144862154)
-   - Důvod: Čip TPM v režimu FIPS není aktuálně podporován.
-   - Řešení: Zakázání čipu TPM na zařízeních s touto chybou. Windows 1809 automaticky detekuje selhání čipu TPM a dokončí hybridní připojení Azure AD bez použití čipu TPM.
+   - Důvod: čip TPM v režimu FIPS se momentálně nepodporuje.
+   - Řešení: zakáže čip TPM v zařízeních s touto chybou. Windows 1809 automaticky detekuje selhání čipu TPM a dokončuje připojení k hybridní službě Azure AD bez použití čipu TPM.
 - **NTE_AUTHENTICATION_IGNORED** (0x80090031/-2146893775)
-   - Důvod: Čip TPM uzamčen.
-   - Řešení: Přechodná chyba. Počkejte na dobu cooldownu. Pokus o připojení po určité době by měl být úspěšný. Více informací naleznete v článku [Základy TPM](/windows/security/information-protection/tpm/tpm-fundamentals#anti-hammering)
+   - Důvod: čip TPM byl uzamčen.
+   - Řešení: přechodná chyba. Počkejte na cooldown období. Pokus o připojení po určité době by měl být úspěšný. Další informace najdete v článku [základy čipu TPM](/windows/security/information-protection/tpm/tpm-fundamentals#anti-hammering) .
 
 ##### <a name="network-errors"></a>Chyby sítě
 
-- **WININET_E_TIMEOUT** (0x80072ee2/-2147012894)
-   - Důvod: Obecný časový čas sítě při pokusu o registraci zařízení na DRS
-   - Řešení: Zkontrolujte `https://enterpriseregistration.windows.net`připojení k síti .
-- **WININET_E_NAME_NOT_RESOLVED** (0x80072ee7/-2147012889)
-   - Důvod: Název serveru nebo adresa nelze přeložit.
-   - Řešení: Zkontrolujte `https://enterpriseregistration.windows.net`připojení k síti . Ujistěte se, že rozlišení DNS pro název hostitele je přesné v n /w a na zařízení.
+- **WININET_E_TIMEOUT** (0x80072EE2/-2147012894)
+   - Důvod: Celkový časový limit sítě při pokusu o registraci zařízení na DRS
+   - Řešení: Podívejte se na síťové `https://enterpriseregistration.windows.net`připojení k.
+- **WININET_E_NAME_NOT_RESOLVED** (0x80072EE7/-2147012889)
+   - Důvod: nepovedlo se přeložit název nebo adresu serveru.
+   - Řešení: Podívejte se na síťové `https://enterpriseregistration.windows.net`připojení k. Zajistěte, aby překlad názvů DNS pro název hostitele byl přesný v n/w a na zařízení.
 - **WININET_E_CONNECTION_ABORTED** (0x80072efe/-2147012866)
-   - Důvod: Připojení se serverem bylo abnormálně ukončeno.
-   - Řešení: Opakujte akci po nějaké akci nebo zkuste se připojit z alternativního stabilního síťového umístění.
+   - Důvod: připojení k serveru se neobvykle ukončilo.
+   - Řešení: zkuste to po nějaké době znovu nebo se pokuste připojit z alternativního umístění stabilní sítě.
 
-##### <a name="federated-join-server-errors"></a>Federované chyby serveru spojení
-
-| Kód chyby serveru | Chybová zpráva serveru | Možné důvody | Řešení |
-| --- | --- | --- | --- |
-| Chyba adresáře | Váš požadavek je dočasně omezen. Prosím, zkuste po 300 sekundách. | Očekávaná chyba. Možná kvůli několika žádostem o registraci v rychlém sledu. | Opakovat spojení po období přebíjení |
-
-##### <a name="sync-join-server-errors"></a>Synchronizace chyb serveru spojení
+##### <a name="federated-join-server-errors"></a>Chyby serveru federovaného připojení
 
 | Kód chyby serveru | Chybová zpráva serveru | Možné důvody | Řešení |
 | --- | --- | --- | --- |
-| Chyba adresáře | AADSTS90002: <UUID> Tenant nebyl nalezen. K této chybě může dojít, pokud neexistují žádné aktivní odběry pro klienta. Obraťte se na správce předplatného. | ID klienta v objektu SCP je nesprávné | Ujistěte se, že objekt SCP je nakonfigurovaný se správným ID klienta Azure AD a aktivními předplatnými a prezentuje se v tenantovi. |
-| Chyba adresáře | Objekt zařízení podle daného ID nebyl nalezen. | Očekávaná chyba pro synchronizační spojení. Objekt zařízení se nesynchronizoval ze služby AD do služby Azure AD. | Počkejte na dokončení synchronizace Azure AD Connect a další pokus o připojení po dokončení synchronizace vyřeší problém |
-| Chyba ověřování | Ověření sid cílového počítače | Certifikát na zařízení Azure AD neodpovídá certifikátu použitému k podepsání objektu blob během připojení synchronizace. Tato chyba obvykle znamená, že synchronizace ještě nebyla dokončena. |  Počkejte na dokončení synchronizace Azure AD Connect a další pokus o připojení po dokončení synchronizace vyřeší problém |
+| DirectoryError | Vaše žádost se dočasně omezuje. Zkuste to prosím po 300 sekundách. | Očekávaná chyba. Je možné, že v důsledku rychlé úspěšnosti je potřeba provést několik žádostí o registraci. | Opakovaný pokus o připojení po cooldown období |
 
-### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>Krok 5: Shromažďování protokolů a kontaktování podpory společnosti Microsoft
+##### <a name="sync-join-server-errors"></a>Chyby serveru připojit se k synchronizaci
 
-Získejte veřejné skripty zde: [ https://1drv.ms/u/s! AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ]( https://1drv.ms/u/s!AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ)
+| Kód chyby serveru | Chybová zpráva serveru | Možné důvody | Řešení |
+| --- | --- | --- | --- |
+| DirectoryError | AADSTS90002: tenant <UUID> se nenašel. K této chybě může dojít, pokud pro tenanta nejsou k dispozici žádná aktivní předplatná. Obraťte se na správce předplatného. | ID tenanta v objektu SCP je nesprávné. | Ujistěte se, že je objekt SCP nakonfigurovaný se správným ID tenanta Azure AD a s aktivním předplatným a že je přítomen v tenantovi. |
+| DirectoryError | Objekt zařízení se zadaným ID nebyl nalezen. | Očekávaná chyba připojení synchronizace. Objekt zařízení se nesynchronizoval ze služby AD do Azure AD. | Počkejte, než se Azure AD Connect synchronizace dokončí, a při dalším pokusu o připojení se problém vyřeší. |
+| AuthenticationError | Ověření identifikátoru SID cílového počítače | Certifikát na zařízení Azure AD se neshoduje s certifikátem použitým k podepsání objektu BLOB během připojení synchronizace. Tato chyba obvykle znamená, že synchronizace ještě nebyla dokončena. |  Počkejte, než se Azure AD Connect synchronizace dokončí, a při dalším pokusu o připojení se problém vyřeší. |
 
-1. Otevřete příkazový řádek `start_ngc_tracing_public.cmd`správce a spusťte aplikaci .
-2. Proveďte kroky k reprodukci problému.
-3. Ukončení spouštění skriptu `stop_ngc_tracing_public.cmd`protokolování spuštěním příkazu .
-4. Zip a poslat protokoly pod pro `%SYSTEMDRIVE%\TraceDJPP\*` analýzu.
+### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>Krok 5: shromáždění protokolů a kontaktování podpora Microsoftu
 
-## <a name="troubleshoot-post-join-issues"></a>Poradce při potížích po připojení
+Získejte veřejné skripty tady: [ https://1drv.ms/u/s! AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ]( https://1drv.ms/u/s!AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ)
 
-### <a name="retrieve-the-join-status"></a>Načíst stav spojení 
+1. Otevřete příkazový řádek správce a spusťte `start_ngc_tracing_public.cmd`příkaz.
+2. Proveďte kroky pro reprodukování problému.
+3. Zastavte skript protokolování spuštěním příkazu `stop_ngc_tracing_public.cmd`.
+4. Soubory zip a odesílají protokoly `%SYSTEMDRIVE%\TraceDJPP\*` pro účely analýzy.
 
-#### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet: ANO a AzureADPrt: ANO
+## <a name="troubleshoot-post-join-issues"></a>Řešení problémů po připojení
+
+### <a name="retrieve-the-join-status"></a>Načtení stavu připojení 
+
+#### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet: YES a AzureADPrt: YES
   
-Tato pole označují, zda se uživatel úspěšně ověřil ve službě Azure AD při přihlášení k zařízení. Pokud jsou hodnoty **NE**, může to být způsobeno:
+Tato pole označují, jestli se uživatel úspěšně ověřil do služby Azure AD při přihlášení k zařízení. Pokud jsou hodnoty **ne**, může to být způsobeno:
 
-- Chybný klíč úložiště v čipu TPM přidruženém k zařízení při registraci (zkontrolujte KeySignTest při spuštění se zvýšenými oprávněními).
+- Chybný klíč úložiště v čipu TPM přidruženého k zařízení při registraci (při spuštění se zvýšenými oprávněními zkontrolujte KeySignTest).
 - Alternativní ID přihlášení
-- Proxy HTTP nebyl a nalezen.
+- Proxy server HTTP se nenašel.
 
 ## <a name="known-issues"></a>Známé problémy
-- V části Nastavení -> účty -> přístup u práce nebo školy, hybridní Azure AD připojená zařízení může zobrazit dva různé účty, jeden pro Azure AD a jeden pro místní AD, při připojení k mobilním hotspotům nebo externím WiFi sítím. Toto je pouze problém s uznatým prostředím a nemá žádný vliv na funkčnost. 
+- V části nastavení-> účty – > přístup do práce nebo do školy můžou zařízení připojená k hybridní službě Azure AD zobrazovat dva různé účty, jednu pro Azure AD a jednu pro místní službu AD, když jsou připojeni k mobilním hotspotům nebo externím sítím Wi-Fi. Toto je jenom problém s uživatelským rozhraním a nemá žádný vliv na funkčnost. 
  
 ## <a name="next-steps"></a>Další kroky
 
-Pokračovat v [odstraňování potíží pomocí příkazu dsregcmd](troubleshoot-device-dsregcmd.md)
+Pokračování [v řešení potíží pomocí příkazu dsregcmd](troubleshoot-device-dsregcmd.md)
 
-Dotazy najdete v [nejčastějších dotazech ke správě zařízení.](faq.md)
+Otázky najdete v tématu [Nejčastější dotazy ke správě zařízení](faq.md) .

@@ -1,6 +1,6 @@
 ---
-title: Registrace jednostránkových aplikací – platforma identit Microsoftu | Azure
-description: Přečtěte si, jak vytvořit jednostránkovou aplikaci (registrace aplikace)
+title: Registrace jednostránkovéch aplikací – Microsoft Identity Platform | Azure
+description: Naučte se vytvářet jednostránkové aplikace (registrace aplikací).
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -12,35 +12,35 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 6f690a8b3436a45d434ccad2bbaa7d2a1b0b76aa
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80882144"
 ---
-# <a name="single-page-application-app-registration"></a>Jednostránková aplikace: Registrace aplikace
+# <a name="single-page-application-app-registration"></a>Jednostránkové aplikace: registrace aplikace
 
-Tato stránka vysvětluje specifika registrace aplikace pro jednostránkovou aplikaci (SPA).
+Tato stránka vysvětluje konkrétní registraci aplikace pro jednostránkové aplikace (SPA).
 
-Podle pokynů [zaregistrujte novou aplikaci na platformě microsoft identity](quickstart-register-app.md)a vyberte podporované účty pro vaši aplikaci. Scénář SPA může podporovat ověřování s účty ve vaší organizaci nebo v jakékoli organizaci a osobních účtech Microsoft.
+Podle postupu [Zaregistrujte novou aplikaci s platformou Microsoft Identity](quickstart-register-app.md)a vyberte podporované účty pro vaši aplikaci. Scénář SPA může podporovat ověřování s účty ve vaší organizaci nebo v jakékoli organizaci a osobní účty Microsoft.
 
-Dále se dozvíte konkrétní aspekty registrace aplikace, které se vztahují na jednostránkové aplikace.
+V dalším kroku se dozvíte, jaké jsou konkrétní aspekty registrace aplikace, které se vztahují k aplikacím s jednou stránkou.
 
-## <a name="register-a-redirect-uri"></a>Registrace identifikátoru URI přesměrování
+## <a name="register-a-redirect-uri"></a>Registrovat identifikátor URI pro přesměrování
 
-Implicitní tok odešle tokeny v přesměrování do jednostránkové aplikace spuštěné ve webovém prohlížeči. Proto je důležité zaregistrovat identifikátor URI přesměrování, kde může vaše aplikace přijímat tokeny. Ujistěte se, že identifikátor URI přesměrování přesně odpovídá identifikátoru URI pro vaši aplikaci.
+Implicitní tok odesílá tokeny v přesměrování na jednostránkovou aplikaci běžící ve webovém prohlížeči. Proto je důležité registrovat identifikátor URI přesměrování, kde vaše aplikace může získat tokeny. Zajistěte, aby identifikátor URI přesměrování přesně odpovídal identifikátoru URI vaší aplikace.
 
-Na [webu Azure Portal](https://go.microsoft.com/fwlink/?linkid=2083908)přejděte na registrovanou aplikaci. Na stránce **Ověřování** aplikace vyberte **webovou** platformu. Do pole **Identifikátor URI přesměrování** zadejte hodnotu identifikátoru URI přesměrování pro vaši aplikaci.
+V [Azure Portal](https://go.microsoft.com/fwlink/?linkid=2083908)přejdete do vaší registrované aplikace. Na stránce **ověřování** aplikace vyberte **webovou** platformu. Do pole **identifikátor URI pro přesměrování** zadejte hodnotu identifikátoru URI přesměrování vaší aplikace.
 
 ## <a name="enable-the-implicit-flow"></a>Povolit implicitní tok
 
-Na stejné stránce **ověřování** je v části **Upřesnit nastavení**také nutné povolit **implicitní udělení**. Pokud vaše aplikace jenom přihlášení uživatelů a získání Tokeny ID, stačí zaškrtnout políčko **ID tokeny.**
+Na stejné stránce **ověřování** musíte v části **Upřesnit nastavení**také povolit **implicitní udělení**. Pokud se vaše aplikace přihlašuje jenom uživatelům a získáváte tokeny ID, stačí zaškrtnout políčko **tokeny ID** .
 
-Pokud vaše aplikace také potřebuje získat přístupové tokeny pro volání api, nezapomeňte také zaškrtnout políčko **Tokeny přístupu.** Další informace naleznete v tématu [ID tokeny](./id-tokens.md) a [přístupové tokeny](./access-tokens.md).
+Pokud vaše aplikace také potřebuje získat přístupové tokeny pro volání rozhraní API, ujistěte se, že je zaškrtnuto i políčko **přístupové tokeny** . Další informace najdete v tématu [tokeny ID](./id-tokens.md) a [přístupové tokeny](./access-tokens.md).
 
 ## <a name="api-permissions"></a>Oprávnění rozhraní API
 
-Jednostránkové aplikace mohou volat rozhraní API jménem přihlášeného uživatele. Musí požádat o delegovaná oprávnění. Podrobnosti naleznete v tématu [Přidání oprávnění pro přístup k webovým sítím API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
+Jednostránkové aplikace mohou volat rozhraní API jménem přihlášeného uživatele. Potřebují požádat o delegovaná oprávnění. Podrobnosti najdete v tématu [Přidání oprávnění pro přístup k webovým rozhraním API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
 
 ## <a name="next-steps"></a>Další kroky
 

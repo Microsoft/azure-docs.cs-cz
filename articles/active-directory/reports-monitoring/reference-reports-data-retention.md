@@ -1,6 +1,6 @@
 ---
-title: Jak dlouho azure ad ukládat data vytváření sestav? | Dokumentace Microsoftu
-description: Zjistěte, jak dlouho Azure ukládá různé typy dat sestav.
+title: Jak dlouho jsou data sestav služby Azure AD Store? | Dokumentace Microsoftu
+description: Přečtěte si, jak dlouho Azure ukládá různé typy dat generování sestav.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,52 +18,52 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 54636600c208f8f5df9fa2e25460c63dd9f46e85
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80239549"
 ---
-# <a name="how-long-does-azure-ad-store-reporting-data"></a>Jak dlouho azure ad ukládat data vytváření sestav?
+# <a name="how-long-does-azure-ad-store-reporting-data"></a>Jak dlouho jsou data sestav služby Azure AD Store?
 
 
-V tomto článku se dozvíte o zásadách uchovávání dat pro různé sestavy aktivit ve službě Azure Active Directory. 
+V tomto článku se dozvíte o zásadách uchovávání dat pro různé sestavy aktivit v Azure Active Directory. 
 
-### <a name="when-does-azure-ad-start-collecting-data"></a>Kdy azure ad začít shromažďovat data?
+### <a name="when-does-azure-ad-start-collecting-data"></a>Kdy Azure AD začne shromažďovat data?
 
-| Azure AD Edition | Začátek kolekce |
+| Edice Azure AD | Začátek shromažďování |
 | :--              | :--   |
-| Azure AD Premium P1 <br /> Azure AD Premium P2 | Když si zaregistrujete předplatné |
-| Azure AD Free| Při prvním otevření [okna služby Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) nebo při použití [rozhraní API pro vytváření sestav](https://aka.ms/aadreports)  |
+| Azure AD Premium P1 <br /> Azure AD Premium P2 | Když se přihlásíte k předplatnému |
+| Azure AD Free| Při prvním otevření okna [Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) nebo použití [rozhraní API pro vytváření sestav](https://aka.ms/aadreports)  |
 
 ---
 
-### <a name="when-is-the-activity-data-available-in-the-azure-portal"></a>Kdy jsou data o aktivitách dostupná na webu Azure Portal?
+### <a name="when-is-the-activity-data-available-in-the-azure-portal"></a>Kdy jsou data aktivity k dispozici v Azure Portal?
 
-- **Okamžitě** – Pokud jste už pracovali se sestavami na webu Azure Portal.
-- **Do 2 hodin** – pokud jste nezapnuli vytváření sestav na webu Azure Portal.
-
----
-
-### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Za jak dlouho se mi po získání prémiové licence zobrazí údaje o aktivitách?
-
-Pokud již máte údaje o aktivitách s bezplatnou licencí, můžete je okamžitě vidět při upgradu. Pokud nemáte žádná data, bude trvat jeden nebo dva dny, než se data zobrazí v přehledech po upgradu na prémiovou licenci.
+- **Okamžitě** – Pokud jste již pracovali se sestavami v Azure Portal.
+- **Do 2 hodin** – Pokud jste neaktivovali vytváření sestav v Azure Portal.
 
 ---
 
-### <a name="can-i-see-last-months-data-after-getting-an-azure-ad-premium-license"></a>Můžu vidět data z minulého měsíce po získání licence Azure AD premium?
+### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Jak brzy můžu zobrazit data o aktivitách po získání licence na prémii?
 
-Pokud jste nedávno přešli na prémiovou verzi (včetně zkušební verze), můžete zpočátku zobrazit data až 7 dní. Když se data hromadí, můžete zobrazit data za posledních 30 dní.
-
----
-
-### <a name="when-does-azure-ad-start-collecting-security-signal-data"></a>Kdy azure ad začít shromažďovat data signálu zabezpečení?  
-
-U zabezpečovacích signálů se proces shromažďování spustí, když se přihlásíte k používání **Centra ochrany identity**. 
+Pokud již máte data o aktivitách s bezplatnou licencí, můžete ji okamžitě zobrazit při upgradu. Pokud nemáte žádná data, bude trvat jeden nebo dva dny, než se data zobrazí v sestavách po upgradu na licenci Premium.
 
 ---
 
-### <a name="how-long-does-azure-ad-store-the-data"></a>Jak dlouho Azure AD ukládat data?
+### <a name="can-i-see-last-months-data-after-getting-an-azure-ad-premium-license"></a>Můžu zobrazit data z posledního měsíce po získání licence Azure AD Premium?
+
+Pokud jste nedávno přešli na verzi Premium (včetně zkušební verze), můžete nejdřív zobrazit data až 7 dní. Po shromáždění dat můžete zobrazit data za posledních 30 dní.
+
+---
+
+### <a name="when-does-azure-ad-start-collecting-security-signal-data"></a>Kdy Azure AD začne shromažďovat data bezpečnostních signálů?  
+
+Pro bezpečnostní signály se proces shromažďování spustí, když se přihlásíte k používání **centra ochrany identit**. 
+
+---
+
+### <a name="how-long-does-azure-ad-store-the-data"></a>Jak dlouho Azure AD ukládá data?
 
 **Sestavy aktivit**    
 
@@ -73,9 +73,9 @@ U zabezpečovacích signálů se proces shromažďování spustí, když se při
 | Přihlášení               | 7 dní        | 30 dní             | 30 dní             |
 | Využití Azure MFA        | 30 dní       | 30 dní             | 30 dní             |
 
-Data o aktivitách auditu a přihlášení můžete uchovávat déle, než je výchozí doba uchovávání uvedená výše, a to tak, že je pomocí Azure Monitoru přejdete na účet úložiště Azure. Další informace najdete [v tématu archivace protokolů Azure AD na účet úložiště Azure](quickstart-azure-monitor-route-logs-to-storage-account.md).
+Data aktivity auditu a přihlašování můžete uchovávat déle než výchozí doba uchování, která je uvedená výše, směrováním do účtu služby Azure Storage pomocí Azure Monitor. Další informace najdete v tématu [archivace protokolů služby Azure AD do účtu služby Azure Storage](quickstart-azure-monitor-route-logs-to-storage-account.md).
 
-**Bezpečnostní signály**
+**Signály zabezpečení**
 
 | Sestava         | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--            | :--           | :--                 | :--                 |

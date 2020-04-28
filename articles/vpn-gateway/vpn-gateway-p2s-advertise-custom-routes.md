@@ -1,6 +1,6 @@
 ---
-title: 'Brána Azure VPN: Inzerování vlastních tras pro klienty P2S VPN'
-description: Postup inzerce vlastních tras klientům z bodu na pracoviště
+title: 'Azure VPN Gateway: inzerovat vlastní trasy pro klienty VPN P2S'
+description: Postup inzerce vlastních tras do klientů Point-to-site
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,23 +8,23 @@ ms.topic: article
 ms.date: 11/11/2019
 ms.author: cherylmc
 ms.openlocfilehash: 3588755e2aab1c84d443e917eca8c7fca280b49a
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80756895"
 ---
-# <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>Inzerování vlastních tras pro klienty P2S VPN
+# <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>Inzerovat vlastní trasy pro klienty VPN P2S
 
-Můžete chtít inzerovat vlastní trasy pro všechny klienty VPN point-to-site. Například pokud jste povolili koncové body úložiště ve virtuální síti a chcete, aby vzdálení uživatelé měli přístup k těmto účtům úložiště přes připojení VPN. Adresu IP koncového bodu úložiště můžete inzerovat všem vzdáleným uživatelům tak, aby přenosy na účet úložiště přecvály přes tunel VPN a nikoli veřejný Internet.
+Je možné, že budete chtít inzerovat vlastní trasy všem klientům VPN typu Point-to-site. Například pokud jste ve virtuální síti povolili koncové body úložiště a chcete, aby vzdálení uživatelé měli přístup k těmto účtům úložiště přes připojení VPN. IP adresu koncového bodu úložiště můžete inzerovat všem vzdáleným uživatelům, aby přenosy dat do účtu úložiště procházely přes tunelové připojení VPN, nikoli z veřejného Internetu.
 
 ![Příklad propojení Multi-Site pomocí Azure VPN Gateway](./media/vpn-gateway-p2s-advertise-custom-routes/custom-routes.png)
 
-## <a name="to-advertise-custom-routes"></a>Inzerce vlastních tras
+## <a name="to-advertise-custom-routes"></a>Inzerování vlastních tras
 
-Chcete-li inzerovat vlastní `Set-AzVirtualNetworkGateway cmdlet`trasy, použijte . Následující příklad ukazuje, jak inzerovat IP adresu pro [tabulky účtů úložiště Contoso](https://contoso.table.core.windows.net).
+K inzerování vlastních tras použijte `Set-AzVirtualNetworkGateway cmdlet`. Následující příklad ukazuje, jak inzerovat protokol IP pro [tabulky účtu úložiště contoso](https://contoso.table.core.windows.net).
 
-1. Příkaz *contoso.table.core.windows.net* contoso.table.core.windows.net příkazem ping a poznamenejte si adresu IP. Například:
+1. Proveďte test *contoso.Table.Core.Windows.NET* a poznamenejte si IP adresu. Příklad:
 
     ```cmd
     C:\>ping contoso.table.core.windows.net
@@ -38,20 +38,20 @@ Chcete-li inzerovat vlastní `Set-AzVirtualNetworkGateway cmdlet`trasy, použijt
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -CustomRoute 13.88.144.250/32
     ```
 
-3. Chcete-li přidat více vlastních tras, oddělte adresy čárkou a mezerami. Například:
+3. Chcete-li přidat více vlastních tras, použijte k oddělení adres čárku a mezery. Příklad:
 
     ```azurepowershell-interactive
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -CustomRoute x.x.x.x/xx , y.y.y.y/yy
     ```
 ## <a name="to-view-custom-routes"></a>Zobrazení vlastních tras
 
-Vlastní trasy slouží k následujícímu příkladu:
+Pomocí následujícího příkladu můžete zobrazit vlastní trasy:
 
   ```azurepowershell-interactive
   $gw = Get-AzVirtualNetworkGateway -Name <name of gateway> -ResourceGroupName <name of resource group>
   $gw.CustomRoutes | Format-List
   ```
-## <a name="to-delete-custom-routes"></a>Odstranění vlastních tras
+## <a name="to-delete-custom-routes"></a>Postup odstranění vlastních tras
 
 K odstranění vlastních tras použijte následující příklad:
 
@@ -61,4 +61,4 @@ K odstranění vlastních tras použijte následující příklad:
   ```
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o směrování P2S naleznete [v tématu O směrování z bodu na pracoviště](vpn-gateway-about-point-to-site-routing.md).
+Další informace o směrování v P2S najdete v tématu [o směrování Point-to-site](vpn-gateway-about-point-to-site-routing.md).

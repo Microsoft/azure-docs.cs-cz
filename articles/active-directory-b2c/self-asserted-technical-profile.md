@@ -1,7 +1,7 @@
 ---
-title: Definování vlastního technického profilu ve vlastních zásadách
+title: Definování technického profilu s vlastním uplatněním v vlastní zásadě
 titleSuffix: Azure AD B2C
-description: Definujte vlastní uplatněný technický profil ve vlastních zásadách ve službě Azure Active Directory B2C.
+description: V Azure Active Directory B2C ve vlastních zásadách definujte technický profil s vlastním uplatněním.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,23 +12,23 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 2b29b8b0975639e5c5315a55e1382794d7662665
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80332513"
 ---
-# <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování vlastního technického profilu ve vlastních zásadách služby Azure Active Directory B2C
+# <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu s vlastním uplatněním v Azure Active Directory B2C vlastní zásady
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Všechny interakce ve službě Azure Active Directory B2C (Azure AD B2C), kde se očekává, že uživatel poskytne vstup, jsou vlastní technické profily. Například registrační stránka, přihlašovací stránka nebo stránka pro obnovení hesla.
+Všechny interakce v Azure Active Directory B2C (Azure AD B2C), kde se očekává, že uživatel zadává vstup, jsou technické profily s vlastním uplatněním. Například stránku pro registraci, přihlašovací stránku nebo stránku pro resetování hesla.
 
 ## <a name="protocol"></a>Protocol (Protokol)
 
-**Atribut Name** elementu **Protocol** musí být `Proprietary`nastaven na . Atribut **obslužné rutiny** musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu, který používá Azure AD B2C, pro vlastní asserted:`Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
+Atribut **Name** elementu **Protocol** musí být nastaven na `Proprietary`hodnotu. Atribut **obslužné rutiny** musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu, které je používáno Azure AD B2C, pro samoobslužné vyhodnocení:`Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
 
-Následující příklad ukazuje vlastní uplatněný technický profil pro registraci e-mailu:
+Následující příklad ukazuje technický profil s vlastním uplatněním pro registraci e-mailu:
 
 ```XML
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -36,9 +36,9 @@ Následující příklad ukazuje vlastní uplatněný technický profil pro regi
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
 ```
 
-## <a name="input-claims"></a>Vstupní deklarace
+## <a name="input-claims"></a>Vstupní deklarace identity
 
-V samoobslužném technickém profilu můžete pomocí elementů **InputClaims** a **InputClaimsTransformations** předem naplnit hodnotu deklarací, které se zobrazují na stránce s vlastním uplatněním (zobrazení deklarací). Například v zásadách upravit profil uživatele cesta nejprve přečte profil uživatele z adresářové služby Azure AD B2C, pak se samoobslužné technický profil nastaví vstupní deklarace s uživatelská data uložená v profilu uživatele. Tyto deklarace identity jsou shromažďovány z profilu uživatele a poté prezentovány uživateli, který pak může upravit existující data.
+V technickém profilu s vlastním oceněním můžete použít prvky **InputClaims** a **InputClaimsTransformations** k předvyplnění hodnoty deklarací identity, které se zobrazí na stránce s vlastním kontrolním jménem (Zobrazit deklarace identity). Například v zásadě upravit zásadu profilace uživatele nejprve načte profil uživatele z adresářové služby Azure AD B2C, potom technický profil s vlastním uplatněním nastaví vstupní deklarace identity s uživatelskými daty uloženými v profilu uživatele. Tyto deklarace se shromažďují z profilu uživatele a pak se zobrazí uživateli, který pak může upravovat stávající data.
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
@@ -51,25 +51,25 @@ V samoobslužném technickém profilu můžete pomocí elementů **InputClaims**
   </InputClaims>
 ```
 
-## <a name="display-claims"></a>Zobrazit nároky
+## <a name="display-claims"></a>Zobrazit deklarace
 
-Funkce deklarací zobrazení je aktuálně ve **verzi Preview**.
+Funkce Zobrazit deklarace identity je aktuálně ve **verzi Preview**.
 
-**DisplayClaims** Element obsahuje seznam deklarací, které mají být prezentovány na obrazovce pro sběr dat od uživatele. Chcete-li předem vyplnit hodnoty deklarací zobrazení, použijte vstupní deklarace, které byly dříve popsány. Prvek může také obsahovat výchozí hodnotu.
+Element **DisplayClaims** obsahuje seznam deklarací, které mají být zobrazeny na obrazovce pro shromažďování dat od uživatele. Chcete-li předem naplnit hodnoty pro zobrazení deklarací identity, použijte vstupní deklarace, které byly dříve popsány. Element může obsahovat také výchozí hodnotu.
 
-Pořadí deklarací identity v **DisplayClaims** určuje pořadí, ve kterém Azure AD B2C vykreslí deklarace identity na obrazovce. Chcete-li vynutit, aby uživatel zadával hodnotu pro konkrétní `true`deklaraci, nastavte atribut **Required** prvku **DisplayClaim** na .
+Pořadí deklarací v **DisplayClaims** určuje pořadí, ve kterém Azure AD B2C vykreslí deklarace na obrazovce. Chcete-li vynutit, aby uživatel poskytoval hodnotu pro konkrétní deklaraci identity, nastavte **požadovaný** atribut prvku **DisplayClaim** na `true`hodnotu.
 
-**ClaimType** element v **displayclaims** kolekce musí nastavit **UserInputType** element na libovolný typ vstupu uživatele podporované Azure AD B2C. Příkladem je `TextBox` nebo `DropdownSingleSelect`.
+Element **ClaimType** v kolekci **DisplayClaims** musí nastavit element **UserInputType** na libovolný typ vstupu uživatele podporovaný Azure AD B2C. Příkladem je `TextBox` nebo `DropdownSingleSelect`.
 
-### <a name="add-a-reference-to-a-displaycontrol"></a>Přidání odkazu na ovládací prvek DisplayControl
+### <a name="add-a-reference-to-a-displaycontrol"></a>Přidat odkaz na ovládací prvek.
 
-Do kolekce deklarací zobrazení můžete zahrnout odkaz na [ovládací prvek DisplayControl,](display-controls.md) který jste vytvořili. Ovládací prvek zobrazení je prvek uživatelského rozhraní, který má speciální funkce a spolupracuje s back-endovou službou Azure AD B2C. Umožňuje uživateli provádět akce na stránce, které vyvolávají ověření technický profil na back-end. Například ověření e-mailové adresy, telefonního čísla nebo věrnostního čísla zákazníka.
+V části Zobrazit kolekci deklarací můžete zahrnout odkaz na [ovládací prvek](display-controls.md) zobrazení, který jste vytvořili. Ovládací prvek zobrazení je prvek uživatelského rozhraní, který má zvláštní funkce a komunikuje s Azure AD B2C back-end službou. Umožňuje uživateli provádět akce na stránce, která vyvolá technický profil ověření na back-endu. Například ověřte e-mailovou adresu, telefonní číslo nebo věrnostní číslo zákazníka.
 
-Následující příklad `TechnicalProfile` ilustruje použití deklarací zobrazení s ovládacími prvky zobrazení.
+Následující příklad `TechnicalProfile` znázorňuje použití deklarace zobrazení s ovládacími prvky zobrazení.
 
-* První nárok na zobrazení odkazuje `emailVerificationControl` na ovládací prvek zobrazení, který shromažďuje a ověřuje e-mailovou adresu.
-* Pátý displej tvrzení odkazuje na `phoneVerificationControl` ovládací prvek zobrazení, který shromažďuje a ověřuje telefonní číslo.
-* Ostatní deklarace zobrazení jsou ClaimTypes, které mají být shromažďovány od uživatele.
+* První deklarace identity zobrazení vytvoří odkaz na ovládací prvek `emailVerificationControl` zobrazení, který shromažďuje a ověřuje e-mailovou adresu.
+* Pátá deklarace zobrazení vytvoří odkaz na ovládací prvek `phoneVerificationControl` zobrazení, který shromáždí a ověří telefonní číslo.
+* Ostatní zobrazované deklarace identity jsou ClaimTypes, které se mají shromáždit od uživatele.
 
 ```XML
 <TechnicalProfile Id="Id">
@@ -85,13 +85,13 @@ Následující příklad `TechnicalProfile` ilustruje použití deklarací zobra
 </TechnicalProfile>
 ```
 
-Jak již bylo zmíněno, deklarace zobrazení s odkazem na ovládací prvek zobrazení může spustit vlastní ověření, například ověření e-mailové adresy. Kromě toho stránka s vlastním uplatněním podporuje použití technického profilu ověření k ověření celé stránky, včetně všech uživatelských vstupů (typů deklarací nebo ovládacích prvků zobrazení), než přejde k dalšímu kroku orchestrace.
+Jak bylo zmíněno, zobrazení deklarace s odkazem na ovládací prvek zobrazení může spustit vlastní ověřování, například ověření e-mailové adresy. Kromě toho Stránka s vlastním kontrolním jménem podporuje použití technického profilu ověření k ověření celé stránky, včetně uživatelského vstupu (typy deklarací nebo ovládacích prvků zobrazení), před přechodem k dalšímu kroku orchestrace.
 
-### <a name="combine-usage-of-display-claims-and-output-claims-carefully"></a>Pečlivě kombinujte použití deklarací zobrazení a výstupních deklarací
+### <a name="combine-usage-of-display-claims-and-output-claims-carefully"></a>Kombinovat využití deklarací zobrazení a deklarací výstupních událostí pečlivě
 
-Pokud zadáte jeden nebo více prvků **DisplayClaim** v samoobslužném technickém profilu, musíte použít DisplayClaim pro *každou* deklaraci, kterou chcete zobrazit na obrazovce a shromažďovat od uživatele. Žádné výstupní deklarace jsou zobrazeny vlastním technickým profilem, který obsahuje alespoň jednu deklaraci zobrazení.
+Pokud zadáte jeden nebo více **DisplayClaim** prvků v technickém profilu s vlastním uplatněním, musíte použít DisplayClaim pro *každou* deklaraci identity, kterou chcete zobrazit na obrazovce a shromažďovat ji od uživatele. Technický profil, který obsahuje alespoň jednu deklaraci identity zobrazení, nezobrazuje žádné deklarace výstupu.
 
-Vezměme si následující `age` příklad, ve kterém je deklarace definována jako **deklarace výstupu** v základní zásadě. Před přidáním jakýchkoli nároků na zobrazení do `age` samoobslužného technického profilu se reklamace zobrazí na obrazovce pro sběr dat od uživatele:
+Vezměte v úvahu následující příklad, ve `age` kterém je deklarace identity definovaná jako **výstupní** deklarace identity v základní zásadě. Před přidáním všech zobrazených deklarací do technického profilu s vlastním uplatněním se `age` deklarace identity zobrazí na obrazovce pro shromažďování dat od uživatele:
 
 ```XML
 <TechnicalProfile Id="id">
@@ -101,7 +101,7 @@ Vezměme si následující `age` příklad, ve kterém je deklarace definována 
 </TechnicalProfile>
 ```
 
-Pokud list zásady, které dědí, `officeNumber` že základ následně určuje jako **deklarace zobrazení:**
+Pokud koncová zásada, která dědí tuto základnu, `officeNumber` následně určí jako deklaraci **zobrazení** :
 
 ```XML
 <TechnicalProfile Id="id">
@@ -114,31 +114,31 @@ Pokud list zásady, které dědí, `officeNumber` že základ následně určuje
 </TechnicalProfile>
 ```
 
-Deklarace `age` v zásadách základní již není na obrazovce prezentována uživateli - je účinně "skrytá". Chcete-li `age` zobrazit deklaraci pohledávky a shromáždit věkovou hodnotu od uživatele, musíte přidat `age` **displayclaim**.
+`age` Deklarace identity v základních zásadách už není na obrazovce k dispozici uživateli – je to efektivně "skryté". Pokud chcete zobrazit `age` deklaraci identity a shromažďovat věkovou hodnotu od uživatele, musíte přidat `age` **DisplayClaim**.
 
-## <a name="output-claims"></a>Výstupní pohledávky
+## <a name="output-claims"></a>Deklarace výstupů
 
-**OutputClaims** Element obsahuje seznam deklarací, které mají být vráceny do dalšího kroku orchestrace. Atribut **DefaultValue** se projeví pouze v případě, že deklarace deklarace byla nikdy nastavena. Pokud byla nastavena v předchozím kroku orchestrace, výchozí hodnota se neprojeví i v případě, že uživatel ponechá hodnotu prázdnou. Chcete-li vynutit použití výchozí hodnoty, nastavte `true`atribut **AlwaysUseDefaultValue** na .
+Element **OutputClaims** obsahuje seznam deklarací identity, které se mají vrátit do dalšího kroku orchestrace. Atribut **DefaultValue** se uplatní pouze v případě, že deklarace identity nebyla nikdy nastavena. Pokud byl nastaven v předchozím kroku orchestrace, výchozí hodnota se neprojeví i v případě, že uživatel opustí hodnotu prázdnou. Chcete-li vynutit použití výchozí hodnoty, nastavte atribut **AlwaysUseDefaultValue** na `true`hodnotu.
 
-Z bezpečnostních důvodů je hodnota`UserInputType` deklarace hesla (nastavená na) `Password`k dispozici pouze pro technické profily ověření technického profilu, který se sám uplatňuje. V dalších krocích orchestrace nelze použít deklaraci hesla. 
+Z bezpečnostních důvodů je hodnota deklarace hesla (`UserInputType` nastavená na `Password`) dostupná jenom pro technické profily ověřování technického profilu s vlastním uplatněním. V dalších krocích orchestrace nelze použít deklaraci hesla. 
 
 > [!NOTE]
-> V předchozích verzích rozhraní IEF (Identity Experience Framework) byly výstupní deklarace použity ke shromažďování dat od uživatele. Chcete-li shromažďovat data od uživatele, použijte místo toho **kolekci DisplayClaims.**
+> V předchozích verzích architektury IEF (identity Experience Framework) byly pro shromažďování dat od uživatele použity výstupní deklarace identity. K shromažďování dat od uživatele použijte místo toho kolekci **DisplayClaims** .
 
-**OutputClaimsTransformations** Element může obsahovat kolekci **OutputClaimsTransformation** prvky, které se používají k úpravě výstupní deklarace nebo generovat nové.
+Element **OutputClaimsTransformations** může obsahovat kolekci prvků **OutputClaimsTransformation** , které se používají k úpravě výstupních deklarací identity nebo k vygenerování nových.
 
-### <a name="when-you-should-use-output-claims"></a>Kdy byste měli použít výstupní deklarace
+### <a name="when-you-should-use-output-claims"></a>Pokud byste měli použít výstupní deklarace identity
 
-V samoobslužném technickém profilu vrátí kolekce deklarací výstupu deklarace identity dalšímu kroku orchestrace.
+V technickém profilu s vlastním výkonem vrátí kolekce deklarací identity následující krok orchestrace.
 
-Výstupní deklarace použijte v:
+Použijte výstupní deklarace identity v těchto případech:
 
-- **Deklarace jsou výstupem transformace výstupních deklarací**.
-- **Nastavení výchozí hodnoty ve výstupní deklaraci** bez shromažďování dat od uživatele nebo vrácení dat z technického profilu ověření. Vlastní `LocalAccountSignUpWithLogonEmail` uplatněný technický profil nastaví **nárok na spuštění SelfAsserted-Input** `true`.
-- **Technický profil ověření vrátí výstupní deklarace –** váš technický profil může volat technický profil ověření, který vrací některé deklarace identity. Můžete chtít bubliny do deklarací identity a vrátit je do dalšíkroky orchestrace v cestě uživatele. Například při přihlášení pomocí místního účtu, self-tvrdil `SelfAsserted-LocalAccountSignin-Email` technický profil s `login-NonInteractive`názvem volá ověření technický profil s názvem . Tento technický profil ověří pověření uživatele a také vrátí profil uživatele. Například "userPrincipalName", 'displayName', 'givenName' a 'surName'.
-- **Ovládací prvek zobrazení vrátí výstupní deklarace -** Váš technický profil může mít odkaz na [ovládací prvek zobrazení](display-controls.md). Ovládací prvek zobrazení vrátí některé deklarace identity, například ověřenou e-mailovou adresu. Můžete chtít bubliny do deklarací identity a vrátit je do dalšíkroky orchestrace v cestě uživatele. Funkce ovládacího prvku zobrazení je aktuálně ve **verzi preview**.
+- **Deklarace identity jsou výstupní transformací deklarací výstupů**.
+- **Nastavení výchozí hodnoty ve výstupní deklaraci** , aniž by bylo potřeba shromažďovat data od uživatele nebo vracet data z technického profilu ověření. Technický `LocalAccountSignUpWithLogonEmail` profil s vlastním uplatněním nastavuje deklaraci **spuštěnou na SelfAsserted-Input** na `true`.
+- **Technický profil ověření vrací deklarace identity** – váš technický profil může zavolat technický profil ověření, který vrací některé deklarace identity. Je možné, že budete chtít deklarace identity a vrátit je k dalším krokům orchestrace v cestě uživatele. Například když se přihlašujete pomocí místního účtu, technický profil s vlastním uplatněním s názvem `SelfAsserted-LocalAccountSignin-Email` volá technický profil ověření s názvem. `login-NonInteractive` Tento technický profil ověří přihlašovací údaje uživatele a také vrátí profil uživatele. Například "userPrincipalName", "DisplayName", "dodaný" a "příjmení".
+- **Ovládací prvek zobrazení vrací výstupní deklarace** – váš technický profil může mít odkaz na [ovládací prvek zobrazení](display-controls.md). Ovládací prvek zobrazení vrátí některé deklarace identity, například ověřenou e-mailovou adresu. Je možné, že budete chtít deklarace identity a vrátit je k dalším krokům orchestrace v cestě uživatele. Funkce řízení zobrazení je nyní ve **verzi Preview**.
 
-Následující příklad ukazuje použití samoobslužného technického profilu, který používá deklarace identity zobrazení i výstupní deklarace identity.
+Následující příklad ukazuje použití technického profilu s vlastním uplatněním, který používá zobrazení deklarací identity a výstupní deklarace identity.
 
 ```XML
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -175,39 +175,39 @@ Následující příklad ukazuje použití samoobslužného technického profilu
 </TechnicalProfile>
 ```
 
-## <a name="persist-claims"></a>Trvalé nároky
+## <a name="persist-claims"></a>Zachovat deklarace identity
 
-Prvek PersistedClaims se nepoužívá. Vlastní uplatněný technický profil nezachová data do Azure AD B2C. Místo toho je provedeno volání technického profilu ověření, který je zodpovědný za zachování dat. Zásady registrace například používají `LocalAccountSignUpWithLogonEmail` vlastní uplatněný technický profil ke shromažďování nového profilu uživatele. Technický `LocalAccountSignUpWithLogonEmail` profil volá technický profil ověření k vytvoření účtu v Azure AD B2C.
+Element PersistedClaims se nepoužívá. Technický profil s vlastním uplatněním neuchovává data Azure AD B2C. Místo toho je provedeno volání na technický profil ověření, který je zodpovědný za uchování dat. Například zásada registrace používá ke shromáždění nového profilu uživatele technický `LocalAccountSignUpWithLogonEmail` profil s vlastním uplatněním. `LocalAccountSignUpWithLogonEmail` Technický profil volá technický profil ověření pro vytvoření účtu v Azure AD B2C.
 
-## <a name="validation-technical-profiles"></a>Validační technické profily
+## <a name="validation-technical-profiles"></a>Technické profily ověřování
 
-Technický profil ověření se používá pro ověření některých nebo všech výstupních deklarací referenčního technického profilu. Vstupní tvrzení technického profilu validace musí být uvedena ve výstupních tvrzeních samoobslužného technického profilu. Technický profil ověření ověří vstup uživatele a může uživateli vrátit chybu.
+Pro ověření některých nebo všech výstupních deklarací odkazujícího technického profilu se používá ověřovací technický profil. Vstupní deklarace technického profilu ověření se musí objevit ve výstupních deklaracích technického profilu s vlastním uplatněním. Technický profil ověření ověřuje vstup uživatele a může uživateli vrátit chybu.
 
-Technický profil ověření může být libovolný technický profil v zásadách, jako je [například Azure Active Directory](active-directory-technical-profile.md) nebo technické profily [rozhraní REST API.](restful-technical-profile.md) V předchozím příkladu `LocalAccountSignUpWithLogonEmail` technický profil ověří, že signinName neexistuje v adresáři. Pokud tomu tak není, technický profil ověření vytvoří místní účet a vrátí objectId, authenticationSource, newUser. Technický `SelfAsserted-LocalAccountSignin-Email` profil volá `login-NonInteractive` technický profil ověření k ověření pověření uživatele.
+Technický profil ověření může být jakýkoliv technický profil v zásadách, například [Azure Active Directory](active-directory-technical-profile.md) nebo [REST API](restful-technical-profile.md) technickými profily. V předchozím příkladu `LocalAccountSignUpWithLogonEmail` technický profil ověří, že signinName v adresáři neexistuje. Pokud ne, technický profil ověření vytvoří místní účet a vrátí objectId, authenticationSource, Nový_uživatel. `SelfAsserted-LocalAccountSignin-Email` Technický profil volá k ověření `login-NonInteractive` přihlašovacích údajů uživatele technický profil ověřování.
 
-Můžete také volat technický profil rozhraní REST API s obchodní logikou, přepsat vstupní deklarace nebo obohatit uživatelská data další integrací s podnikovou obchodní aplikací. Další informace naleznete v [tématu Ověření technického profilu](validation-technical-profile.md)
+Pomocí obchodní logiky můžete také volat REST API technický profil, přepsat vstupní deklarace identity nebo rozšířit uživatelská data další integrací s podnikovou obchodní aplikací. Další informace najdete v tématu [technický profil ověření](validation-technical-profile.md) .
 
 ## <a name="metadata"></a>Metadata
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| setting.operatingMode <sup>1</sup>| Ne | Pro přihlašovací stránku tato vlastnost řídí chování pole uživatelského jména, jako je například ověření vstupu a chybové zprávy. Očekávané `Username` hodnoty: `Email`nebo .  |
-| AllowGenerationOfClaimsWithNullValues| Ne| Povolit generování deklarace s nulovou hodnotou. Například v případě, že uživatel nezaškrtne políčko.|
-| ContentDefinitionReferenceId | Ano | Identifikátor definice [obsahu](contentdefinitions.md) přidružené k tomuto technickému profilu. |
-| EnforceEmailVerification | Ne | Pro registraci nebo úpravy profilu vynucuje ověření e-mailu. Možné hodnoty: `true` (výchozí) nebo `false`. |
-| setting.retryLimit | Ne | Určuje, kolikrát se uživatel může pokusit poskytnout data, která jsou kontrolována podle technického profilu ověření. Uživatel se například pokusí zaregistrovat pomocí účtu, který již existuje a stále se snaží, dokud není dosaženo limitu.
-| Cíl registrace <sup>1</sup>| Ne | Identifikátor výměny cíle registrace. Když uživatel klikne na tlačítko registrace, Azure AD B2C provede zadaný identifikátor výměny. |
-| setting.showCancelButton | Ne | Zobrazí tlačítko storno. Možné hodnoty: `true` (výchozí), nebo`false` |
-| setting.showContinueButton | Ne | Zobrazí tlačítko Pokračovat. Možné hodnoty: `true` (výchozí), nebo`false` |
-| setting.showSignupLink <sup>2</sup>| Ne | Zobrazí tlačítko registrace. Možné hodnoty: `true` (výchozí), nebo`false` |
-| setting.forgotPasswordLinkLocation <sup>2</sup>| Ne| Zobrazí odkaz na zapomenuté heslo. Možné hodnoty: `AfterInput` (výchozí) odkaz se zobrazí v dolní `None` části stránky nebo odebere odkaz na zapomenuté heslo.|
-| setting.enableRememberMe <sup>2</sup>| Ne| Zobrazí zaškrtávací políčko [Ponechat přihlášen.](custom-policy-keep-me-signed-in.md) Možné hodnoty: `true` `false` , nebo (výchozí). |
-| IncludeClaimResolvingInClaimsHandling  | Ne | Pro vstupní a výstupní deklarace určuje, zda je [řešení deklarací](claim-resolver-overview.md) zahrnuto do technického profilu. Možné hodnoty: `true` `false`  , nebo (výchozí). Pokud chcete použít překladač deklarací identity v `true`technickém profilu, nastavte toto na . |
+| nastavení. operatingMode <sup>1</sup>| Ne | Pro přihlašovací stránku Tato vlastnost řídí chování pole username, jako je například ověřování vstupu a chybové zprávy. Očekávané hodnoty: `Username` nebo `Email`.  |
+| AllowGenerationOfClaimsWithNullValues| Ne| Povoluje generování deklarace identity s hodnotou null. Například v případě, že uživatel nevybere zaškrtávací políčko.|
+| ContentDefinitionReferenceId | Ano | Identifikátor [definice obsahu](contentdefinitions.md) přidruženého k tomuto technickému profilu. |
+| EnforceEmailVerification | Ne | Pro registraci nebo úpravy profilu vynutilo ověřování e-mailů. Možné hodnoty: `true` (výchozí), nebo `false`. |
+| nastavení. retryLimit | Ne | Určuje počet pokusů, kolikrát se uživatel může pokusit zadat data, která jsou zkontrolována na technický profil ověření. Uživatel se například pokusí zaregistrovat pomocí účtu, který už existuje, a pokračuje v tom, dokud nedosáhne limitu.
+| SignUpTarget <sup>1</sup>| Ne | Identifikátor cílového Exchange registrace. Když uživatel klikne na tlačítko pro registraci, Azure AD B2C spustí zadaný identifikátor Exchange. |
+| nastavení. showCancelButton | Ne | Zobrazí tlačítko Storno. Možné hodnoty: `true` (výchozí), nebo`false` |
+| nastavení. showContinueButton | Ne | Zobrazí tlačítko pokračovat. Možné hodnoty: `true` (výchozí), nebo`false` |
+| nastavení. showSignupLink <sup>2</sup>| Ne | Zobrazí tlačítko pro registraci. Možné hodnoty: `true` (výchozí), nebo`false` |
+| nastavení. forgotPasswordLinkLocation <sup>2</sup>| Ne| Zobrazí odkaz zapomenuté heslo. Možné hodnoty: `AfterInput` (výchozí) odkaz se zobrazí v dolní části stránky nebo `None` odebere odkaz zapomenuté heslo.|
+| nastavení. enableRememberMe <sup>2</sup>| Ne| Zobrazí zaškrtávací políčko [zůstat přihlášeni](custom-policy-keep-me-signed-in.md) . Možné hodnoty: `true` , nebo `false` (výchozí). |
+| IncludeClaimResolvingInClaimsHandling  | Ne | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true`, nebo `false`  (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true`. |
 
 Poznámky:
-1. K dispozici pro definici `unifiedssp`obsahu `unifiedssd` [Typ DataUri](contentdefinitions.md#datauri) , nebo .
-1. K dispozici pro definici `unifiedssp`obsahu `unifiedssd` [Typ DataUri](contentdefinitions.md#datauri) , nebo . [Rozložení stránky verze](page-layout.md) 1.1.0 a vyšší.
+1. K dispozici pro [DataUri](contentdefinitions.md#datauri) typ `unifiedssp`definice obsahu nebo `unifiedssd`.
+1. K dispozici pro [DataUri](contentdefinitions.md#datauri) typ `unifiedssp`definice obsahu nebo `unifiedssd`. [Rozložení stránky verze](page-layout.md) 1.1.0 a vyšší.
 
 ## <a name="cryptographic-keys"></a>Kryptografické klíče
 
-Prvek **CryptographicKeys** se nepoužívá.
+Element **CryptographicKeys** se nepoužívá.

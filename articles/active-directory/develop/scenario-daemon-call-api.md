@@ -1,6 +1,6 @@
 ---
-title: Volání webového rozhraní API z aplikace daemon - platforma identit Microsoft | Azure
-description: Přečtěte si, jak vytvořit aplikaci pro daemon, která volá webová API
+title: Volání webového rozhraní API z aplikace démona – Microsoft Identity Platform | Azure
+description: Naučte se vytvářet aplikace démona, která volá webová rozhraní API.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,19 +12,19 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: e440628526dada7655cc71f63fc9fff006cc5ef5
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885442"
 ---
-# <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>Aplikace Daemon, která volá webová rozhraní API – volání webového rozhraní API z aplikace
+# <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>Aplikace démona, která volá webové rozhraní API – volání webového rozhraní API z aplikace
 
-Aplikace daemonu .NET mohou volat webové rozhraní API. Aplikace daemonu .NET mohou také volat několik předem schválených webových rozhraní API.
+Aplikace démona rozhraní .NET může volat webové rozhraní API. Aplikace démona rozhraní .NET může také volat několik předběžně schválených webových rozhraní API.
 
-## <a name="calling-a-web-api-from-a-daemon-application"></a>Volání webového rozhraní API z aplikace daemon
+## <a name="calling-a-web-api-from-a-daemon-application"></a>Volání webového rozhraní API z aplikace démona
 
-Tady je postup, jak použít token k volání rozhraní API:
+Tady je postup, jak použít token pro volání rozhraní API:
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -61,25 +61,25 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 ---
 
-## <a name="calling-several-apis"></a>Volání několika api
+## <a name="calling-several-apis"></a>Volání několika rozhraní API
 
-Pro aplikace daemon, webová api, které voláte musí být předem schválen. Neexistuje žádný přírůstkový souhlas s aplikacemi pro daemon. (Neexistuje žádná interakce s uživatelem.) Správce klienta musí předem poskytnout souhlas pro aplikaci a všechna oprávnění rozhraní API. Pokud chcete volat několik api, musíte získat token pro každý prostředek, při každém volání `AcquireTokenForClient`. MSAL bude používat mezipaměť tokenu aplikace, aby se zabránilo zbytečným voláním služby.
+Pro aplikace démona musí být webová rozhraní API, která zavoláte, předem schválená. Pro aplikace démona není k dispozici žádný přírůstkový souhlas. (Žádná interakce s uživatelem.) Správce tenanta musí pro aplikaci a všechna oprávnění rozhraní API poskytnout předem souhlas. Chcete-li volat několik rozhraní API, je nutné získat token pro každý prostředek při každém volání `AcquireTokenForClient`. MSAL použije mezipaměť tokenu aplikace, aby nedocházelo k zbytečným voláním služby.
 
 ## <a name="next-steps"></a>Další kroky
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!div class="nextstepaction"]
-> [Daemon app - přejít do výroby](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=dotnet)
+> [Aplikace démon – přesun do produkčního prostředí](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=dotnet)
 
 # <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
-> [Daemon app - přejít do výroby](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=python)
+> [Aplikace démon – přesun do produkčního prostředí](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=python)
 
 # <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
-> [Daemon app - přejít do výroby](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=java)
+> [Aplikace démon – přesun do produkčního prostředí](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=java)
 
 ---

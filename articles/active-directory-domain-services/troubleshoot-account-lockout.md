@@ -1,6 +1,6 @@
 ---
-title: Poradce při potížích se uzamčením účtu ve službě Azure AD Domain Services | Dokumenty společnosti Microsoft
-description: Zjistěte, jak řešit běžné problémy, které způsobují uzamčení uživatelských účtů ve službě Azure Active Directory Domain Services.
+title: Řešení potíží s uzamknutím účtu v Azure AD Domain Services | Microsoft Docs
+description: Naučte se řešit běžné problémy, které způsobují, že uživatelské účty budou v Azure Active Directory Domain Services uzamčeny.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -11,54 +11,54 @@ ms.topic: troubleshooting
 ms.date: 04/06/2020
 ms.author: iainfou
 ms.openlocfilehash: 7d2e22804c06f589c7990bf8f19319b897363a93
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80743448"
 ---
-# <a name="troubleshoot-account-lockout-problems-with-an-azure-ad-domain-services-managed-domain"></a>Poradce při potížích se uzamčením účtu se spravovanou doménou služby Azure AD Domain Services
+# <a name="troubleshoot-account-lockout-problems-with-an-azure-ad-domain-services-managed-domain"></a>Řešení problémů s uzamknutím účtu pomocí spravované domény Azure AD Domain Services
 
-Chcete-li zabránit opakovaným pokusům o přihlášení se škodlivým způsobem, služba Azure AD DS uzamkne účty po definované prahové hodnotě. K tomuto uzamčení účtu může dojít také náhodou bez incidentu s přihlašovacím útokem. Pokud například uživatel opakovaně zadá nesprávné heslo nebo se služba pokusí použít staré heslo, účet se uzamkne.
+Aby se předešlo opakovaným pokusům o přihlášení, Azure služba AD DS uzamkne účty po definované prahové hodnotě. K uzamčení účtu může dojít i v případě nehody bez incidentu útoku na přihlášení. Pokud třeba uživatel opakovaně zadá nesprávné heslo nebo se služba pokusí použít původní heslo, účet se zamkne.
 
-Tento článek o řešení potíží popisuje, proč dochází k uzamčení účtů a jak můžete nakonfigurovat chování a jak zkontrolovat audity zabezpečení k řešení událostí uzamčení.
+V tomto článku najdete informace o tom, proč dochází k uzamčení účtu a jak můžete nakonfigurovat chování a jak zkontrolovat audity zabezpečení pro řešení potíží s událostmi uzamčení.
 
 ## <a name="what-is-an-account-lockout"></a>Co je uzamčení účtu?
 
-Uživatelský účet ve službě Azure AD DS je uzamčen, když byla splněna definovaná prahová hodnota pro neúspěšné pokusy o přihlášení. Toto chování uzamčení účtu je navržentak, aby vás chránil před opakovanými pokusy o přihlášení hrubou silou, které mohou naznačovat automatický digitální útok.
+Uživatelský účet v Azure služba AD DS je uzamčený, když byla splněna definovaná prahová hodnota pro neúspěšné pokusy o přihlášení. Toto chování uzamčení účtu je navrženo tak, aby vás chránilo před opakovanými pokusy o přihlašování hrubou silou, které můžou znamenat automatizovaný digitální útok.
 
-**Ve výchozím nastavení, pokud je za 2 minuty 5 pokusů o chybné heslo, je účet uzamčen po dobu 30 minut.**
+**Ve výchozím nastavení platí, že pokud se v 2 minutách vyskytne 5 špatný počet pokusů o zadání hesla, účet se zablokuje na 30 minut.**
 
-Výchozí prahové hodnoty uzamčení účtu jsou konfigurovány pomocí zásad jemných hesel. Pokud máte určitou sadu požadavků, můžete přepsat tyto výchozí prahové hodnoty uzamčení účtu. Nedoporučuje se však zvýšit limity prahových hodnot a pokusit se snížit uzamčení účtu. Nejprve vyřešte zdroj chování uzamčení účtu.
+Výchozí prahové hodnoty pro uzamknutí účtu se konfigurují pomocí jemně odstupňovaných zásad hesel. Pokud máte konkrétní sadu požadavků, můžete tyto výchozí prahové hodnoty uzamčení účtu přepsat. Nedoporučuje se ale zvyšovat prahové limity, abyste se pokusili snížit počet uzamčení účtů. Nejprve vyřešte potíže se zdrojem uzamčení účtu.
 
-### <a name="fine-grained-password-policy"></a>Zásady jemně odstupňovaných hesel
+### <a name="fine-grained-password-policy"></a>Jemně odstupňované zásady hesel
 
-Jemně odstupňované zásady hesel (FGPP) umožňují použít konkrétní omezení pro zásady uzamčení hesla a účtu pro různé uživatele v doméně. FGPP ovlivňuje jenom uživatele v rámci spravované domény Azure AD DS. Uživatele cloudu a uživatele domény synchronizované do spravované domény Azure AD DS ze služby Azure AD mají vliv jenom zásady hesel v rámci služby Azure AD DS. Jejich účty ve službě Azure AD nebo místní adresář nejsou ovlivněny.
+Jemně odstupňované zásady hesel (FGPPs) umožňují použít specifická omezení pro zásady hesel a uzamčení účtů pro různé uživatele v doméně. Podrobné zásady má vliv jenom na uživatele v rámci spravované domény Azure služba AD DS. Uživatelé cloudu a uživatelé domény synchronizovaný do spravované domény Azure služba AD DS ve službě Azure AD jsou ovlivněné zásadami hesel v rámci Azure služba AD DS. Jejich účty ve službě Azure AD nebo v místním adresáři nejsou ovlivněny.
 
-Zásady jsou distribuovány prostřednictvím přidružení skupiny ve spravované doméně Azure AD DS a všechny změny, které provedete, se použijí při příštím přihlášení uživatele. Změnou zásadse neodemkne uživatelský účet, který je již uzamčen.
+Zásady se distribuují prostřednictvím přidružení skupiny ve spravované doméně Azure služba AD DS a veškeré změny, které provedete, se uplatní při přihlášení dalšího uživatele. Změna zásad neodemkne uživatelský účet, který je už uzamčený.
 
-Další informace o jemně odstupňovaných zásadách hesel a rozdílech mezi uživateli vytvořenými přímo ve službě Azure AD DS a synchronizovanými v aplikaci azure ad najdete v [tématu Konfigurace zásad uzamčení hesel a účtů][configure-fgpp].
+Další informace o podrobných zásadách pro hesla a rozdílech mezi uživateli vytvořenými přímo v Azure služba AD DS v porovnání se službou Azure AD najdete v tématu [Konfigurace zásad hesel a uzamčení účtů][configure-fgpp].
 
 ## <a name="common-account-lockout-reasons"></a>Běžné důvody uzamčení účtu
 
-Mezi nejčastější důvody uzamčení účtu bez škodlivých úmyslů nebo faktorů patří následující scénáře:
+Nejčastější důvody, proč je účet uzamčený bez jakéhokoli škodlivého záměru nebo faktorů, zahrnují následující scénáře:
 
-* **Uživatel se zamkl.**
-    * Po nedávné změně hesla, má uživatel i nadále používat předchozí heslo? Výchozí zásady uzamčení účtu 5 neúspěšných pokusů za 2 minuty může být způsobena uživatelem neúmyslně opakování staré heslo.
-* **Existuje aplikace nebo služba, která má staré heslo.**
-    * Pokud je účet používán aplikacemi nebo službami, mohou se tyto prostředky opakovaně pokoušet přihlásit pomocí starého hesla. Toto chování způsobí, že účet uzamčen.
-    * Pokuste se minimalizovat používání účtu v různých aplikacích nebo službách a zaznamenejte, kde se používají pověření. Pokud dojde ke změně hesla účtu, aktualizujte odpovídajícím způsobem přidružené aplikace nebo služby.
-* **Heslo bylo změněno v jiném prostředí a nové heslo ještě nebylo synchronizováno.**
-    * Pokud se změní heslo účtu mimo Azure AD DS, například v prostředí služby AD DS prem, může trvat několik minut, než se změna hesla synchronizuje prostřednictvím služby Azure AD a do služby Azure AD DS.
-    * Uživatel, který se pokusí přihlásit k prostředku prostřednictvím Služby Azure AD DS před dokončením tohoto procesu synchronizace hesel způsobí, že jejich účet bude uzamčen.
+* **Uživatel byl uzamčen.**
+    * Uživatel po změně hesla pokračoval v používání předchozího hesla? Výchozí zásada uzamčení účtu o 5 neúspěšných pokusů za 2 minuty může být způsobená tím, že uživatel nechtěně opakuje původní heslo.
+* **Existuje aplikace nebo služba, které mají staré heslo.**
+    * Pokud se účet používá v aplikacích nebo službách, můžou se tyto prostředky opakovaně pokoušet přihlásit pomocí starého hesla. Toto chování způsobí, že dojde k uzamknutí účtu.
+    * Zkuste minimalizovat použití účtu napříč několika různými aplikacemi nebo službami a zaznamenejte si, kde se používají přihlašovací údaje. Pokud dojde ke změně hesla účtu, aktualizujte odpovídající aplikace nebo služby.
+* **Heslo bylo změněno v jiném prostředí a nové heslo dosud nebylo synchronizováno.**
+    * Pokud se heslo účtu změní mimo Azure služba AD DS, například v prostředí Prem služba AD DS, může trvat několik minut, než se změna hesla synchronizuje přes Azure AD a do Azure služba AD DS.
+    * Uživatel, který se pokusí přihlásit k prostředku prostřednictvím služby Azure služba AD DS před dokončením procesu synchronizace hesel způsobí, že se účet zamkne.
 
-## <a name="troubleshoot-account-lockouts-with-security-audits"></a>Poradce při potížích s uzamčením účtu pomocí auditů zabezpečení
+## <a name="troubleshoot-account-lockouts-with-security-audits"></a>Řešení potíží s uzamčeními účtů pomocí auditů zabezpečení
 
-Chcete-li vyřešit řešení potíží s událostmi uzamčení účtu a odkud pocházejí, [povolte audity zabezpečení pro službu Azure AD DS][security-audit-events]. Události auditu jsou zachyceny pouze od okamžiku, kdy povolíte funkci. V ideálním případě byste měli povolit audity zabezpečení *dříve, než* dojde k problému uzamčení účtu k řešení potíží. Pokud má uživatelský účet opakovaně problémy se uzamčením, můžete povolit audity zabezpečení připravené pro další situaci.
+Pokud chcete řešit potíže, když dojde k událostem uzamčení účtu a odkud přicházejí, [Povolte audity zabezpečení pro Azure služba AD DS][security-audit-events]. Události auditu se zaznamenávají jenom z doby, kdy tuto funkci povolíte. V ideálním případě byste měli povolit audity zabezpečení *předtím, než* dojde k problému s uzamknutím účtu. Pokud má uživatelský účet opakovaně problémy s uzamčením, můžete povolit audity zabezpečení, které jsou připravené k dalšímu výskytu situace.
 
-Po povolení auditů zabezpečení následující ukázkové dotazy ukazují, jak zkontrolovat *události uzamčení účtu*, kód *4740*.
+Po povolení auditů zabezpečení se v následujících ukázkových dotazech ukáže, jak zkontrolovat *události uzamčení účtu*, kód *4740*.
 
-Zobrazení všech událostí uzamčení účtu za posledních sedm dní:
+Zobrazit všechny události uzamčení účtu za posledních sedm dní:
 
 ```Kusto
 AADDomainServicesAccountManagement
@@ -66,7 +66,7 @@ AADDomainServicesAccountManagement
 | where OperationName has "4740"
 ```
 
-Zobrazení všech událostí uzamčení účtu za posledních sedm dní pro účet s názvem *driley*.
+Zobrazit všechny události uzamčení účtu za posledních sedm dní pro účet s názvem *driley*.
 
 ```Kusto
 AADDomainServicesAccountLogon
@@ -75,7 +75,7 @@ AADDomainServicesAccountLogon
 | where "driley" == tolower(extract("Logon Account:\t(.+[0-9A-Za-z])",1,tostring(ResultDescription)))
 ```
 
-Zobrazit všechny události uzamčení účtu mezi 26. a 1. července 2019 o půlnoci, seřazeno vzestupně podle data a času:
+Zobrazit všechny události uzamčení účtu v rozmezí 26. června 2019 v 9:00 a od 1. července 2019 o půlnoci seřazené vzestupně podle data a času:
 
 ```Kusto
 AADDomainServicesAccountManagement
@@ -86,9 +86,9 @@ AADDomainServicesAccountManagement
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o jemně odstupňovaných zásadách hesel pro úpravu prahových hodnot uzamčení účtu naleznete v [tématu Konfigurace zásad uzamčení hesla a účtu][configure-fgpp].
+Další informace o jemně odstupňovaných zásadách pro hesla pro úpravu prahových hodnot uzamčení účtů najdete v tématu [Konfigurace zásad hesel a uzamčení účtů][configure-fgpp].
 
-Pokud máte pořád problémy s připojením virtuálního počítače ke spravované doméně Azure AD DS, [najděte nápovědu a otevřete lístek podpory pro Azure Active Directory][azure-ad-support].
+Pokud stále máte problémy s připojením k VIRTUÁLNÍmu počítači do spravované domény Azure služba AD DS, [Najděte nápovědu a otevřete lístek podpory pro Azure Active Directory][azure-ad-support].
 
 <!-- INTERNAL LINKS -->
 [configure-fgpp]: password-policy.md

@@ -1,6 +1,6 @@
 ---
-title: LOG10 v dotazovacím jazyce Azure Cosmos DB
-description: Informace o funkci systému LOG10 SQL v Azure Cosmos DB vrátit logaritmus základní 10 zadaného číselného výrazu
+title: Log10 – v jazyce pro dotaz na Azure Cosmos DB
+description: Přečtěte si o funkci log10 – SQL System v Azure Cosmos DB, která vrátí logaritmus o základu 10 zadaného číselného výrazu.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 6f47200f6978d91f46c010640bb9c2bb26e9b7d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302487"
 ---
-# <a name="log10-azure-cosmos-db"></a>LOG10 (Azure Cosmos DB)
- Vrátí logaritmus base-10 zadaného číselného výrazu.  
+# <a name="log10-azure-cosmos-db"></a>Log10 – (Azure Cosmos DB)
+ Vrátí logaritmus se základem 10 zadaného číselného výrazu.  
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -25,8 +25,8 @@ LOG10 (<numeric_expr>)
   
 ## <a name="arguments"></a>Argumenty
   
-*Numeric_expression*  
-   Je číselný výraz.  
+*numeric_expression*  
+   Je numerický výraz.  
   
 ## <a name="return-types"></a>Návratové typy
   
@@ -34,11 +34,11 @@ LOG10 (<numeric_expr>)
   
 ## <a name="remarks"></a>Poznámky
   
-  Funkce LOG10 a POWER jsou nepřímo vzájemně propojeny. Například 10 ^ LOG10(n) = n.  
+  Log10 – a POWER Functions spolu vzájemně souvisí. Například 10 ^ log10 – (n) = n.  
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad deklaruje proměnnou a vrátí hodnotu LOG10 zadané proměnné (100).  
+  Následující příklad deklaruje proměnnou a vrátí hodnotu log10 – zadané proměnné (100).  
   
 ```sql
 SELECT LOG10(100) AS log10 
@@ -52,7 +52,7 @@ SELECT LOG10(100) AS log10
 
 ## <a name="remarks"></a>Poznámky
 
-Tato systémová funkce nebude využívat index.
+Tato systémová funkce nebude index využívat.
 
 ## <a name="next-steps"></a>Další kroky
 

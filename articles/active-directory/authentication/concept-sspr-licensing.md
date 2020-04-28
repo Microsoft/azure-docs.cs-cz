@@ -1,6 +1,6 @@
 ---
-title: Samoobslužné resetování hesla – Azure Active Directory
-description: Informace o rozdílu, který je rozdílem samoobslužných licenčních požadavků služby Azure Active Directory
+title: Samoobslužné resetování hesla k licenci – Azure Active Directory
+description: Přečtěte si o rozdílech Azure Active Directory licenčních požadavcích na Samoobslužné resetování hesla
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,50 +12,50 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 45ca11af061e37cf4f804ce2d7ceed72a9448294
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393064"
 ---
-# <a name="licensing-requirements-for-azure-active-directory-self-service-password-reset"></a>Licenční požadavky na samoobslužné resetování hesla služby Azure Active Directory
+# <a name="licensing-requirements-for-azure-active-directory-self-service-password-reset"></a>Licenční požadavky pro Azure Active Directory Samoobslužné resetování hesla
 
-Chcete-li snížit volání technické podpory a ztrátu produktivity, když se uživatel nemůže přihlásit ke svému zařízení nebo aplikaci, lze povolit uživatelské účty ve službě Azure Active Directory (Azure AD) pro samoobslužné resetování hesla (SSPR). Mezi funkce, které tvoří samoresetování hesla, obnovení, odemknutí a zpětného zápisu do místního adresáře. Základní funkce sspr jsou k dispozici pro Office 365 a všechny uživatele Azure AD zdarma.
+Pokud se uživatel nemůže přihlásit ke svému zařízení nebo aplikaci, aby se snížila pravděpodobnost volání helpdesku a ztráty produktivity, můžou být pro Samoobslužné resetování hesla (SSPR) povolené uživatelské účty v Azure Active Directory (Azure AD). K funkcím, které tvoří SSPR, patří změna hesla, resetování, odemčení a zpětný zápis do místního adresáře. Základní funkce SSPR jsou k dispozici pro Office 365 a všechny uživatele Azure AD bez jakýchkoli nákladů.
 
-Tento článek podrobně popisuje různé způsoby, jak lze licencovat a používat samoobslužné resetování hesla. Konkrétní podrobnosti o cenách a fakturaci najdete na [stránce s cenami Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
+Tento článek podrobně popisuje různé způsoby, kterými se dá Samoobslužné resetování hesla licencovat a používat. Konkrétní podrobnosti o cenách a fakturaci najdete na [stránce s cenami služby Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
 
-## <a name="compare-editions-and-features"></a>Porovnání edic a funkcí
+## <a name="compare-editions-and-features"></a>Porovnání edicí a funkcí
 
-Sspr je licencován na uživatele. Aby bylo zachováno dodržování předpisů, organizace musí přiřadit příslušnou licenci svým uživatelům.
+SSPR má licenci na uživatele. Aby bylo možné zajistit dodržování předpisů, je nutné, aby organizace přiřadily příslušné licence svým uživatelům.
 
-Následující tabulka popisuje různé scénáře samoobslužného resetování hesla pro změnu hesla, obnovení nebo místní zpětný zápis a které skutové sady poskytují funkci.
+Následující tabulka popisuje různé scénáře SSPR pro změnu hesla, resetování nebo místní zpětný zápis a které skladové položky tuto funkci poskytují.
 
 | Funkce | Azure AD Free | Office 365 Business Premium | Microsoft 365 Business | Azure AD Premium P1 nebo P2 |
 | --- |:---:|:---:|:---:|:---:|
-| **Změna uživatelského hesla pouze v cloudu**<br />Když uživatel ve službě Azure AD zná své heslo a chce ho změnit na něco nového. | ● | ● | ● | ● |
-| **Resetování uživatelského hesla pouze v cloudu**<br />Když uživatel ve službě Azure AD zapomene své heslo a potřebuje ho obnovit. | | ● | ● | ● |
-| **Hybridní uživatelská změna nebo resetování hesla pomocí zpětného zápisu**<br />Když uživatel ve službě Azure AD, který je synchronizován z místního adresáře pomocí Služby Azure AD Connect chce změnit nebo obnovit své heslo a také zapsat nové heslo zpět do on-prem. | | | ● | ● |
+| **Změna hesla jenom pro Cloud uživatele**<br />Když uživatel ve službě Azure AD zná heslo a chce ho změnit na něco nového. | ● | ● | ● | ● |
+| **Resetování hesla uživatele jenom pro Cloud**<br />Když uživatel v Azure AD zapomněl heslo a potřebuje ho resetovat. | | ● | ● | ● |
+| **Změna nebo resetování hesla hybridního uživatele pomocí zpětného zápisu Prem**<br />Když uživatel v Azure AD, který je synchronizovaný z místního adresáře pomocí Azure AD Connect, chce změnit nebo resetovat heslo a zapsat nové heslo zpátky do Prem. | | | ● | ● |
 
 > [!WARNING]
-> Samostatné licenční plány Office 365 nepodporují samoobslužné brány správ s místním zpětným zápisem. Tyto licenční plány Office 365 vyžadují Azure AD Premium P1, Premium P2 nebo Microsoft 365 Business, aby tato funkce fungovala.
+> Samostatné plány licencování Office 365 nepodporují SSPR s místním zpětným zápisem. Tyto plány licencování Office 365 vyžadují Azure AD Premium P1, Premium P2 nebo Microsoft 365 Business, aby tato funkce fungovala.
 
-Další informace o licencích, včetně nákladů, naleznete na následujících stránkách:
+Další informace o licencování, včetně nákladů, najdete na následujících stránkách:
 
-* [Ceny služby Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/)
-* [Funkce a možnosti služby Azure Active Directory](https://www.microsoft.com/cloud-platform/azure-active-directory-features)
-* [Podniková mobilita + zabezpečení](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
+* [Ceny Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/)
+* [Azure Active Directory funkce a možnosti](https://www.microsoft.com/cloud-platform/azure-active-directory-features)
+* [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
 * [Microsoft 365 Enterprise](https://www.microsoft.com/microsoft-365/enterprise)
 * [Microsoft 365 Business](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)
 
-## <a name="enable-group-or-user-based-licensing"></a>Povolení skupinových nebo uživatelských licencí
+## <a name="enable-group-or-user-based-licensing"></a>Povolení licencování skupin nebo uživatelů
 
-Azure AD podporuje licencování na základě skupiny. Správci mohou hromadně přiřazovat licence skupině uživatelů, nikoli je přiřazovat po jednom. Další informace naleznete v tématu [Přiřazení, ověření a řešení problémů s licencemi](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).
+Azure AD podporuje licencování na základě skupin. Správci můžou hromadně přiřazovat licence skupině uživatelů, ale nepřiřazovat je po jednom. Další informace najdete v tématu [přiřazení, ověření a řešení problémů s licencemi](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).
 
-Některé služby společnosti Microsoft nejsou k dispozici ve všech umístěních. Před přiřazením licence uživateli musí správce určit vlastnost **Umístění použití** uživatele. Přiřazení licencí lze provést v části**Nastavení** **profilu** >  **uživatele** > na webu Azure Portal. *Při použití přiřazení skupinové licence zdědí umístění adresáře všichni uživatelé bez zadaného umístění použití.*
+Některé služby společnosti Microsoft nejsou k dispozici ve všech umístěních. Před přiřazením licence uživateli musí správce zadat pro uživatele vlastnost **umístění používání** . Přiřazení licencí se dá udělat v části**Nastavení** **profilu** >  **uživatele** > v Azure Portal. *Když použijete přiřazení skupinové licence, všichni uživatelé bez zadaného umístění pro použití zdědí umístění adresáře.*
 
 ## <a name="next-steps"></a>Další kroky
 
-Chcete-li začít s programem SSPR, proveďte následující kurz:
+Pokud chcete začít pracovat s SSPR, dokončete následující kurz:
 
 > [!div class="nextstepaction"]
-> [Kurz: Povolit samoobslužné resetování hesla (SSPR)](tutorial-enable-sspr.md)
+> [Kurz: povolení samoobslužného resetování hesla (SSPR)](tutorial-enable-sspr.md)

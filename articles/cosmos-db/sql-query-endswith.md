@@ -1,6 +1,6 @@
 ---
-title: ZAKONČENO V dotazovacím jazyce Azure Cosmos DB
-description: Informace o funkci systému ENDSWITH SQL v Azure Cosmos DB vrátit boolean označující, zda první řetězec výraz končí druhý
+title: ENDSWITH v Azure Cosmos DB dotazovací jazyk
+description: Přečtěte si o funkci ENDSWITH SQL System v Azure Cosmos DB a vrátí logickou hodnotu, která označuje, jestli první řetězcový výraz končí druhým.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 37c5a8b3c44c5ac46b837e4d851d22f85aeaf39c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78299444"
 ---
 # <a name="endswith-azure-cosmos-db"></a>ENDSWITH (Azure Cosmos DB)
- Vrátí logickou hodnotu označující, zda první řetězcový výraz končí druhým.  
+ Vrátí logickou hodnotu, která označuje, zda první řetězcový výraz končí druhým.  
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -26,10 +26,10 @@ ENDSWITH(<str_expr1>, <str_expr2>)
 ## <a name="arguments"></a>Argumenty
   
 *str_expr1*  
-   Je řetězec výraz.  
+   Je řetězcový výraz.  
   
 *str_expr2*  
-   Je řetězec výraz, který má být porovnán s koncem *str_expr1*.  
+   Je řetězcový výraz, který má být porovnán s koncem *str_expr1*.  
   
 ## <a name="return-types"></a>Návratové typy
   
@@ -37,7 +37,7 @@ ENDSWITH(<str_expr1>, <str_expr2>)
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad vrátí "abc" končí "b" a "bc".  
+  Následující příklad vrátí "ABC" končí "b" a "BC".  
   
 ```sql
 SELECT ENDSWITH("abc", "b") AS e1, ENDSWITH("abc", "bc") AS e2 
@@ -51,10 +51,10 @@ SELECT ENDSWITH("abc", "b") AS e1, ENDSWITH("abc", "bc") AS e2
 
 ## <a name="remarks"></a>Poznámky
 
-Tato systémová funkce nebude využívat index.
+Tato systémová funkce nebude index využívat.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Funkce řetězce Azure Cosmos DB](sql-query-string-functions.md)
+- [Azure Cosmos DB funkce řetězce](sql-query-string-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
 - [Úvod do Azure Cosmos DB](introduction.md)

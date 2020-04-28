@@ -1,6 +1,6 @@
 ---
-title: Odkaz na sdílení pro vyžádání balíčku přístupu ve správě nároků Azure AD – Azure Active Directory
-description: Přečtěte si, jak sdílet odkaz a požádat o přístupový balíček ve správě nároků služby Azure Active Directory.
+title: Odkaz pro sdílení pro vyžádání balíčku přístupu ve správě nároků Azure AD – Azure Active Directory
+description: Naučte se sdílet odkaz pro vyžádání balíčku přístupu v Azure Active Directory správě nároků.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,37 +17,37 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ea90032b1f0cfe598ffdb3d35448a996f3111036
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78968761"
 ---
-# <a name="share-link-to-request-an-access-package-in-azure-ad-entitlement-management"></a>Odkaz na sdílení pro vyžádání balíčku přístupu ve správě oprávnění Azure AD
+# <a name="share-link-to-request-an-access-package-in-azure-ad-entitlement-management"></a>Odkaz pro sdílení pro vyžádání balíčku přístupu ve správě nároků Azure AD
 
-Většina uživatelů ve vašem adresáři se může přihlásit k portálu Můj přístup a automaticky zobrazit seznam přístupových balíčků, které mohou požadovat. Pro externí uživatele obchodního partnera, kteří ještě nejsou ve vašem adresáři, jim však budete muset odeslat odkaz, který mohou použít k vyžádání přístupového balíčku. 
+Většina uživatelů v adresáři se může přihlásit k portálu pro přístup a automaticky uvidí seznam balíčků pro přístup, které si můžou vyžádat. U externích partnerských uživatelů, kteří ještě nejsou ve vašem adresáři, je ale budete muset poslat odkaz, který může použít k vyžádání přístupového balíčku. 
 
-Dokud je katalog pro přístupový balíček [povolen pro externí uživatele](entitlement-management-catalog-create.md) a máte [zásady pro adresář externího uživatele](entitlement-management-access-package-request-policy.md), může externí uživatel použít odkaz Portál přístupu k vyžádání přístupového balíčku.
+Pokud je katalog pro přístupový balíček [povolený pro externí uživatele](entitlement-management-catalog-create.md) a máte [zásadu pro adresář externího uživatele](entitlement-management-access-package-request-policy.md), může externí uživatel požádat o přístup k balíčku s odkazem na portál pro přístup.
 
-## <a name="share-link-to-request-an-access-package"></a>Odkaz na sdílení pro vyžádání přístupového balíčku
+## <a name="share-link-to-request-an-access-package"></a>Sdílet odkaz pro vyžádání balíčku pro přístup
 
-**Předpokladová role:** Globální správce, správce uživatele, vlastník katalogu nebo správce balíčků aplikace Access
+**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
 
-1. Na webu Azure Portal klikněte na **Azure Active Directory** a potom klikněte na **Identity Governance**.
+1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
 
-1. V levé nabídce klikněte na **accessové balíčky** a potom otevřete přístupový balíček.
+1. V nabídce vlevo klikněte na **přístup k balíčkům** a otevřete balíček pro přístup.
 
-1. Na stránce Přehled zkopírujte **odkaz Můj přístup ový portál**.
+1. Na stránce Přehled zkopírujte **odkaz Můj portál přístupu**.
 
-    ![Přehled přístupových balíčků – odkaz na portál Můj Přístup](./media/entitlement-management-shared/my-access-portal-link.png)
+    ![Přehled přístupu k balíčku – odkaz na portál pro přístup](./media/entitlement-management-shared/my-access-portal-link.png)
 
-    Je důležité, abyste při odesílání internímu obchodnímu partnerovi zkopírovali celý odkaz na portál Můj přístup. Tím zajistíte, že partner získá přístup k portálu vašeho adresáře, aby mohl požádat. Odkaz začíná `myaccess`aplikací , obsahuje nápovědu k adresáři a končí ID přístupového balíčku.  (Pro vládu USA bude `myaccess.microsoft.us`doména v odkazu Portál můj přístup .)
+    Je důležité, abyste při odesílání e-mailu na interní obchodní partner zkopírovali celý odkaz Můj portál pro přístup. Tím se zajistí, že partner získá přístup k portálu vašeho adresáře, aby mohl učinit svůj požadavek. Odkaz začíná na `myaccess`, obsahuje pomocný parametr adresáře a končí ID balíčku přístupu.  (Pro státní správu USA bude doména na portálu pro správu přístupu `myaccess.microsoft.us`.)
 
     `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 
-1. Pošlete e-mail nebo pošlete odkaz externímu obchodnímu partnerovi. Mohou sdílet odkaz se svými uživateli a požádat o přístupový balíček.
+1. Odešlete e-mail nebo pošlete odkaz na vašeho externího obchodního partnera. Můžou sdílet odkaz s uživateli, aby si vyžádali balíček pro přístup.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Požádat o přístup k přístupovému balíčku](entitlement-management-request-access.md)
+- [Vyžádat přístup k balíčku přístupu](entitlement-management-request-access.md)
 - [Schválení nebo zamítnutí žádostí o přístup](entitlement-management-request-approve.md)

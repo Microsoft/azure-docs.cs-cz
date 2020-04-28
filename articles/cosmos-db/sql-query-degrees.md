@@ -1,6 +1,6 @@
 ---
-title: STUPŇŮ v dotazovacím jazyce Azure Cosmos DB
-description: Další informace o funkci systému DEGREES SQL v Azure Cosmos DB vrátit odpovídající úhel ve stupních pro úhel určený v radiány
+title: STUPNĚ ve Azure Cosmos DB dotazovacího jazyka
+description: Přečtěte si o funkci DEGREES SQL System v Azure Cosmos DB, která vrátí odpovídající úhel ve stupních pro úhel zadaný v radiánech.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: d175ba53a71998fc8e7812a1b761f9cd264c38a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78299466"
 ---
-# <a name="degrees-azure-cosmos-db"></a>DEGREES (Azure Cosmos DB)
- Vrátí odpovídající úhel ve stupních pro úhel určený v radiánech.  
+# <a name="degrees-azure-cosmos-db"></a>STUPNĚ (Azure Cosmos DB)
+ Vrátí odpovídající úhel ve stupních pro úhel zadaný v radiánech.  
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -26,7 +26,7 @@ DEGREES (<numeric_expr>)
 ## <a name="arguments"></a>Argumenty
   
 *numeric_expr*  
-   Je číselný výraz.  
+   Je numerický výraz.  
   
 ## <a name="return-types"></a>Návratové typy
   
@@ -34,7 +34,7 @@ DEGREES (<numeric_expr>)
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad vrátí počet stupňů v úhlu pi/2 radiánů.  
+  Následující příklad vrátí počet stupňů ve úhlu pí/2 radiánů.  
   
 ```sql
 SELECT DEGREES(PI()/2) AS degrees  
@@ -48,7 +48,7 @@ SELECT DEGREES(PI()/2) AS degrees
 
 ## <a name="remarks"></a>Poznámky
 
-Tato systémová funkce nebude využívat index.
+Tato systémová funkce nebude index využívat.
 
 ## <a name="next-steps"></a>Další kroky
 

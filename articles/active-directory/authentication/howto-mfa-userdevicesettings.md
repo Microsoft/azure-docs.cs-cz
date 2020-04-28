@@ -1,6 +1,6 @@
 ---
-title: Správa uživatelských nastavení pro vícefaktorové ověřování Azure – Azure Active Directory
-description: Zjistěte, jak můžete nakonfigurovat uživatelská nastavení Služby Azure Active Directory pro vícefaktorové ověřování Azure
+title: Správa uživatelských nastavení pro Azure Multi-Factor Authentication – Azure Active Directory
+description: Přečtěte si, jak můžete nakonfigurovat Azure Active Directory nastavení uživatele pro Azure Multi-Factor Authentication
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,44 +12,44 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 048224a55c2bbcbc99281d070d88d34e2dc77168
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81309757"
 ---
-# <a name="manage-user-settings-for-azure-multi-factor-authentication"></a>Správa uživatelských nastavení pro vícefaktorové ověřování Azure
+# <a name="manage-user-settings-for-azure-multi-factor-authentication"></a>Správa uživatelských nastavení pro Azure Multi-Factor Authentication
 
-Chcete-li pomoci spravovat uživatele Azure Multi-Factor Authentication, můžete vyžadovat, aby uživatelé resetovali své heslo, znovu se zaregistrovali pro vícefaktorové ověřování nebo odvolali existující relace Vícefaktorové ověřování. Pro uživatele, kteří definovali hesla aplikací, můžete také tyto hesla odstranit, což způsobí selhání staršího ověřování v těchto aplikacích. Tyto akce mohou být nezbytné, pokud potřebujete poskytnout pomoc uživateli nebo chcete obnovit jeho stav zabezpečení.
+Pro usnadnění správy uživatelů Azure Multi-Factor Authentication můžete vyžadovat, aby uživatelé resetoval heslo, znovu zaregistrovali MFA nebo odvolali stávající relace MFA. Pro uživatele, kteří mají definovaná hesla aplikací, můžete také tato hesla odstranit, což způsobí, že se starší verze ověřování v těchto aplikacích nezdařila. Tyto akce mohou být nezbytné v případě, že potřebujete poskytnout pomoc uživateli nebo chcete resetovat stav zabezpečení.
 
-## <a name="manage-user-authentication-options"></a>Správa možností ověřování uživatelů
+## <a name="manage-user-authentication-options"></a>Spravovat možnosti ověřování uživatelů
 
-Pokud je vám přiřazena role *Správce ověřování,* můžete od uživatelů požadovat, aby resetovali své heslo, znovu se zaregistrovali pro vícefaktorové ověřování nebo odvolali existující relace Vícefaktorové ověřování z objektu uživatele. Chcete-li spravovat uživatelská nastavení, proveďte následující kroky:
-
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Vlevo vyberte **možnost Uživatelé** > **služby** > Azure Active Directory**Všichni uživatelé**.
-1. Vyberte uživatele, u kterýchcete provést akci, a vyberte **možnost Metody ověřování**. V horní části okna zvolte jednu z následujících možností pro uživatele:
-   - **Resetovat heslo** resetuje heslo uživatele a přiřadí dočasné heslo, které musí být změněno při příštím přihlášení.
-   - **Vyžadovat znovu zaregistrovat Vícefaktorové** ověřování umožňuje, aby při příštím přihlášení uživatele, jsou požádáni o nastavení nové metody ověřování Vícefaktorové ověřování.
-   - **Odvolat relace vícefaktorové ověřování** vymaže uživatele zapamatované relace Vícefaktorové ověřování a vyžaduje, aby provedli vícefaktorové ověřování při příštím vyžadovaném zásadami na zařízení.
-
-   ![Správa metod ověřování z webu Azure Portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods-in-azure.png)
-
-## <a name="delete-users-existing-app-passwords"></a>Odstranění existujících hesel aplikací uživatelů
-
-V případě potřeby můžete odstranit všechna hesla aplikací, která uživatel vytvořil. Aplikace, které nejsou v prohlížeči a které byly přidruženy k těmto heslům aplikací, přestanou fungovat, dokud se nevytvoří nové heslo aplikace. K provedení této akce jsou vyžadována oprávnění *globálního správce.*
-
-Chcete-li odstranit hesla aplikací uživatele, proveďte následující kroky:
+Pokud jste přiřadili roli *Správce ověřování* , můžete vyžadovat, aby uživatelé resetoval heslo, znovu zaregistrovali MFA nebo odvolali stávající relace MFA z jejich uživatelského objektu. Pokud chcete spravovat uživatelská nastavení, proveďte následující kroky:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Na levé straně vyberte možnost**Uživatelé služby** >  **Azure Active Directory** > **Všichni uživatelé**.
-1. Vyberte **vícefaktorové ověřování**. Chcete-li zobrazit tuto možnost nabídky, může být nutné posunout doprava. Výběrem ukázkového snímku obrazovky níže zobrazíte celé okno portálu Azure a umístění nabídky:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Vyberte vícefaktorové ověřování z okna Uživatelé ve službě Azure AD.")](media/howto-mfa-userstates/selectmfa.png#lightbox)
-1. Zaškrtněte políčko vedle uživatele nebo uživatelů, které chcete spravovat. Vpravo se zobrazí seznam možností rychlého kroku.
-1. Vyberte **Spravovat nastavení uživatelů**, zaškrtněte políčko Odstranit všechna existující hesla aplikací **generovaná vybranými uživateli**, jak je znázorněno v následujícím příkladu: ![Odstranit všechna existující hesla aplikací.](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
-1. Vyberte **uložit**a **zavřete**.
+1. Na levé straně vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
+1. Zvolte uživatele, u kterého chcete provést akci, a vyberte **metody ověřování**. V horní části okna vyberte jednu z následujících možností pro uživatele:
+   - **Resetovat heslo** obnoví heslo uživatele a přiřadí dočasné heslo, které se musí při příštím přihlášení změnit.
+   - **Vyžadovat opětovnou registraci MFA** znamená, že když se uživatel poprvé přihlásí, vyžádá si, aby nastavil novou metodu ověřování MFA.
+   - **Odvolání relací MFA** vymaže relace uživatele, které se pamatuje, a vyžaduje, aby při dalším požadavku na zařízení prováděli MFA.
+
+   ![Správa metod ověřování z Azure Portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods-in-azure.png)
+
+## <a name="delete-users-existing-app-passwords"></a>Odstranit stávající hesla uživatelů aplikací
+
+V případě potřeby můžete odstranit všechna hesla aplikací, která uživatel vytvořil. Neprohlížečové aplikace, které jsou přidružené k těmto heslům aplikace, přestanou fungovat, dokud se nevytvoří nové heslo aplikace. K provedení této akce jsou vyžadována oprávnění *globálního správce* .
+
+Pokud chcete odstranit hesla aplikací uživatele, proveďte následující kroky:
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Na levé straně vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
+1. Vyberte **Multi-Factor Authentication**. Pokud chcete zobrazit tuto možnost nabídky, možná se budete muset posunout doprava. Kliknutím na ukázkový snímek obrazovky zobrazíte celé Azure Portal okno a umístění nabídky:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Výběr Multi-Factor Authentication v okně uživatelé ve službě Azure AD")](media/howto-mfa-userstates/selectmfa.png#lightbox)
+1. Zaškrtněte políčko u uživatelů, které chcete spravovat. Zobrazí se seznam možností rychlého kroku na pravé straně.
+1. Vyberte **Spravovat uživatelská nastavení**a potom zaškrtněte políčko **Odstranit všechna existující hesla aplikací vytvořená vybranými uživateli**, jak je znázorněno v následujícím příkladu: odstranit ![všechna existující hesla aplikací.](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
+1. Vyberte **Uložit**a pak **Zavřít**.
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento článek pomohl nakonfigurovat jednotlivá uživatelská nastavení. Pokud chcete nakonfigurovat nastavení služby Azure Multi-Factor Authentication, přečtěte si informace [o konfiguraci nastavení azure multifaktorového ověřování.](howto-mfa-mfasettings.md)
+Tento článek pomohl nakonfigurovat jednotlivá uživatelská nastavení. Pokud chcete nakonfigurovat nastavení služby Azure Multi-Factor Authentication, přečtěte si téma [Konfigurace nastavení azure Multi-Factor Authentication](howto-mfa-mfasettings.md) .
 
-Pokud vaši uživatelé potřebují pomoc, podívejte se na [uživatelskou příručku pro Azure Multi-Factor Authentication](../user-help/multi-factor-authentication-end-user.md).
+Pokud uživatelé potřebují nápovědu, přečtěte si [příručku pro uživatele pro Azure Multi-Factor Authentication](../user-help/multi-factor-authentication-end-user.md).

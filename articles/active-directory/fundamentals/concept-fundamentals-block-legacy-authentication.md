@@ -1,6 +1,6 @@
 ---
-title: Blokování starších ověřovacích protokolů ve službě Azure AD
-description: Zjistěte, jak a proč by organizace měly blokovat starší ověřovací protokoly
+title: Blokování protokolů pro ověřování starší verze v Azure AD
+description: Zjistěte, jak a proč by měly organizace blokovat starší verze ověřovacích protokolů.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,91 +12,91 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 55ce0233fdefb8360376e94c0baafabe4c62ced7
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81309200"
 ---
-# <a name="blocking-legacy-authentication"></a>Blokování staršíverze ověřování
+# <a name="blocking-legacy-authentication"></a>Blokování starších verzí ověřování
  
-Aby měli uživatelé snadný přístup k vašim cloudovým aplikacím, azure active directory (Azure AD) podporuje širokou škálu ověřovacích protokolů včetně starších verzí ověřování. Starší verze ověřování je termín, který odkazuje na požadavek na ověření ze strany:
+Aby měli uživatelé snadný přístup k vašim cloudovým aplikacím, Azure Active Directory (Azure AD) podporuje širokou škálu ověřovacích protokolů, včetně starších verzí ověřování. Starší verze ověřování je termín, který odkazuje na žádost o ověření, kterou provedla:
 
 - Starší klienti Office, kteří nepoužívají moderní ověřování (například klient Office 2010)
-- Každý klient, který používá starší poštovní protokoly, například IMAP/SMTP/POP3
+- Každý klient, který používá starší e-mailové protokoly, jako je IMAP/SMTP/POP3
 
-Dnes většina všech kompromitujících pokusů o přihlášení pochází ze staršíverze ověřování. Starší verze ověřování nepodporuje vícefaktorové ověřování (MFA). I v případě, že máte v adresáři povolenou zásadu mfa, může chybný objekt actor ověřit pomocí staršího protokolu a obejít vícefaktorové ověřování. Nejlepší způsob, jak chránit váš účet před škodlivými požadavky na ověření ze strany starších protokolů, je tyto pokusy zcela zablokovat.
+V současné době většina všech neúspěšných pokusů o přihlášení pocházela ze staršího ověřování. Starší verze ověřování nepodporuje službu Multi-Factor Authentication (MFA). I v případě, že máte ve svém adresáři povolené zásady vícefaktorového ověřování, může se špatný objekt actor ověřit pomocí starší verze protokolu a obejít MFA. Nejlepším způsobem, jak ochránit váš účet před nebezpečnými požadavky na ověření, které udělaly starší protokoly, je blokovat tyto pokusy úplně.
 
-## <a name="identify-legacy-authentication-use"></a>Identifikace staršího použití ověřování
+## <a name="identify-legacy-authentication-use"></a>Identifikovat použití starší verze ověřování
 
-Než budete moci blokovat starší verze ověřování ve vašem adresáři, musíte nejprve pochopit, zda vaši uživatelé mají aplikace, které používají starší verze ověřování a jak ovlivňuje celkový adresář. Protokoly přihlášení Azure AD lze použít k pochopení, pokud používáte starší verze ověřování.
+Než budete moct v adresáři zablokovat starší verze ověřování, musíte nejdřív pochopit, jestli mají vaši uživatelé aplikace, které používají starší verze ověřování a jak ovlivňují celkový adresář. Protokoly přihlášení k Azure AD se dají použít k pochopení, jestli používáte starší verze ověřování.
 
-1. Přejděte na **portál Azure** > **Azure Active Directory** > **Přihlášení**.
-1. Přidejte sloupec **Klientská aplikace,** pokud se nezobrazuje kliknutím na **sloupce** > **klientské aplikace**.
-1. Filtrovat podle **klientské aplikace**  > zkontrolujte všechny **možnosti starších klientů ověřování** prezentovány.
+1. Přejděte do **Azure Portal** > **Azure Active Directory** Azure Active Directory> **přihlášení**.
+1. Pokud není zobrazený, klikněte na **sloupce** > **klientská aplikace**a přidejte sloupec **aplikace klienta** .
+1. Filtrovat podle **klientské aplikace**  > zajděte si uvedené možnosti pro **starší verze klientů ověřování** .
 1. Filtrovat podle **stavu** > **úspěch**. 
-1. V případě potřeby rozbalte rozsah dat pomocí filtru **Datum.**
+1. V případě potřeby rozbalíte rozsah dat pomocí filtru **data** .
 
-Filtrování zobrazí pouze úspěšné pokusy o přihlášení, které byly provedeny vybranými staršími ověřovacími protokoly. Kliknutím na každý jednotlivý pokus o přihlášení se zobrazí další podrobnosti. Sloupec Klientská aplikace nebo pole Klientská aplikace na kartě Základní informace po výběru jednotlivého řádku dat bude označovat, který starší ověřovací protokol byl použit. Tyto protokoly budou označovat, kteří uživatelé jsou stále závislé na starší verze ověřování a které aplikace používají starší protokoly k požadavkům na ověření. Pro uživatele, kteří se nezobrazují v těchto protokolech a je potvrzeno, že nepoužívají starší verze ověřování, implementujte zásady podmíněného přístupu nebo povolte zásadu směrného plánu: blokovat starší verze ověřování pouze pro tyto uživatele.
+Filtrování zobrazí jenom úspěšné pokusy o přihlášení, které udělaly vybrané starší protokoly ověřování. Kliknutím na každý jednotlivý pokus o přihlášení zobrazíte další podrobnosti. Sloupec klientské aplikace nebo pole klientské aplikace na kartě Základní informace po výběru jednotlivého řádku dat určuje, který starší verze ověřovacího protokolu se použil. Tyto protokoly určují, kteří uživatelé pořád závisejí na starší verzi ověřování a které aplikace používají starší protokoly k provádění požadavků na ověření. Pro uživatele, kteří se v těchto protokolech nezobrazují a které se potvrzují, že nepoužívají starší verze ověřování, implementujte zásady podmíněného přístupu nebo zapněte zásady standardních hodnot: zablokuje starší ověřování jenom pro tyto uživatele.
 
-## <a name="moving-away-from-legacy-authentication"></a>Odklon od staršíverze ověřování 
+## <a name="moving-away-from-legacy-authentication"></a>Přesun směrem od starší verze ověřování 
 
-Jakmile budete mít lepší představu o tom, kdo používá starší verze ověřování ve vašem adresáři a které aplikace na něm závisí, dalším krokem je upgrade uživatelů na moderní ověřování. Moderní ověřování je metoda správy identit, která nabízí bezpečnější ověřování a autorizaci uživatelů. Pokud máte v adresáři zavedenou zásadu mfa, moderní ověřování zajistí, že uživatel bude v případě potřeby vyzván k vícefaktorovému ověřování. Jedná se o bezpečnější alternativu ke starším ověřovacím protokolům.
+Jakmile budete mít lepší představu o tom, kdo používá starší verze ověřování v adresáři a které aplikace jsou na něm závislé, bude dalším krokem upgrade vašich uživatelů na používání moderního ověřování. Moderní ověřování je metoda správy identit, která nabízí bezpečnější ověřování uživatelů a autorizaci. Pokud máte v adresáři zásady MFA, moderní ověřování zajistí, že se uživateli zobrazí výzva k MFA v případě potřeby. Je to bezpečnější alternativa k starším ověřovacím protokolům.
 
-Tato část poskytuje podrobný přehled o tom, jak aktualizovat prostředí na moderní ověřování. Než povolíte starší zásady blokování ověřování ve vaší organizaci, přečtěte si níže uvedené kroky.
+Tato část obsahuje podrobný přehled o tom, jak aktualizovat prostředí na moderní ověřování. Před povolením zásad blokování ověřování starší verze v organizaci si Projděte následující kroky.
 
-### <a name="step-1-enable-modern-authentication-in-your-directory"></a>Krok 1: Povolení moderního ověřování v adresáři
+### <a name="step-1-enable-modern-authentication-in-your-directory"></a>Krok 1: povolení moderního ověřování v adresáři
 
-Prvním krokem při povolení moderního ověřování je zajištění, že adresář podporuje moderní ověřování. Moderní ověřování je ve výchozím nastavení povoleno pro adresáře vytvořené 1. Pokud byl adresář vytvořen před tímto datem, budete muset ručně povolit moderní ověřování adresáře pomocí následujících kroků:
+Prvním krokem při povolování moderního ověřování je zajištění, že váš adresář podporuje moderní ověřování. Moderní ověřování je ve výchozím nastavení povolené pro adresáře vytvořené od 1. srpna 2017. Pokud byl adresář vytvořen před tímto datem, budete muset ručně povolit moderní ověřování pro svůj adresář pomocí následujících kroků:
 
-1. Zkontrolujte, jestli váš adresář už `Get-CsOAuthConfiguration` podporuje moderní ověřování, spuštěním z [modulu PowerShellu Online Skypu pro firmy](https://docs.microsoft.com/office365/enterprise/powershell/manage-skype-for-business-online-with-office-365-powershell).
-1. Pokud příkaz vrátí `OAuthServers` prázdnou vlastnost, je moderní ověřování zakázáno. Aktualizujte nastavení a povolte moderní ověřování pomocí `Set-CsOAuthConfiguration`aplikace . Pokud `OAuthServers` váš majetek obsahuje položku, můžete jít.
+1. Zkontrolujte, jestli váš adresář už podporuje moderní ověřování, a to `Get-CsOAuthConfiguration` spuštěním z [online modulu PowerShellu pro Skype pro firmy](https://docs.microsoft.com/office365/enterprise/powershell/manage-skype-for-business-online-with-office-365-powershell).
+1. Pokud váš příkaz vrátí prázdnou `OAuthServers` vlastnost, je moderní ověřování zakázané. Aktualizujte nastavení tak, aby umožňovalo `Set-CsOAuthConfiguration`moderní ověřování pomocí. Pokud vaše `OAuthServers` vlastnost obsahuje položku, můžete začít.
 
-Než se pohnete kupředu, ujistěte se, že tento krok dokončíte. Je důležité, aby konfigurace adresářů byly nejprve změněny, protože určují, který protokol budou používat všichni klienti sady Office. I v případě, že používáte klienty Office, které podporují moderní ověřování, budou ve výchozím nastavení používat starší protokoly, pokud je v adresáři zakázáno moderní ověřování.
+Než budete pokračovat, nezapomeňte tento krok dokončit. Je důležité, abyste nejdřív změnili konfigurace adresáře, protože určují, který protokol budou používat všichni klienti Office. I když používáte klienty Office, kteří podporují moderní ověřování, budou ve výchozím nastavení používat starší protokoly, pokud je ve vašem adresáři zakázané moderní ověřování.
 
-### <a name="step-2-office-applications"></a>Krok 2: Aplikace Office
+### <a name="step-2-office-applications"></a>Krok 2: aplikace Office
 
-Jakmile povolíte moderní ověřování v adresáři, můžete začít aktualizovat aplikace povolením moderního ověřování pro klienty sady Office. Klienti Office 2016 nebo novější ve výchozím nastavení podporují moderní ověřování. Nejsou vyžadovány žádné další kroky.
+Jakmile povolíte moderní ověřování v adresáři, můžete začít aktualizovat aplikace tím, že povolíte moderní ověřování pro klienty Office. Klienti Office 2016 nebo novější podporují moderní ověřování ve výchozím nastavení. Nejsou nutné žádné další kroky.
 
-Pokud používáte klienty Office 2013 windows nebo starší, doporučujeme upgradovat na Office 2016 nebo novější. I po dokončení předchozího kroku povolení moderního ověřování v adresáři budou starší aplikace sady Office nadále používat starší ověřovací protokoly. Pokud používáte klienty Office 2013 a nemůžete okamžitě upgradovat na Office 2016 nebo novější, postupujte podle následujících kroků k [povolení moderního ověřování pro Office 2013 na zařízeních s Windows](https://docs.microsoft.com/office365/admin/security-and-compliance/enable-modern-authentication). Chcete-li chránit svůj účet při používání starších verzí ověřování, doporučujeme používat silná hesla v celém adresáři. Podívejte se na  [ochranu heslem Azure AD](../authentication/concept-password-ban-bad.md)zakázat slabá hesla v celém adresáři.
+Pokud používáte klienty se systémem Office 2013 nebo starší verze, doporučujeme upgradovat na sadu Office 2016 nebo novější. I po dokončení předchozího kroku povolení moderního ověřování ve vašem adresáři budou starší aplikace Office dál používat starší protokoly ověřování. Pokud používáte klienty Office 2013 a nemůžete hned upgradovat na Office 2016 nebo novější, postupujte podle kroků v následujícím článku a [Povolte moderní ověřování pro Office 2013 na zařízeních s Windows](https://docs.microsoft.com/office365/admin/security-and-compliance/enable-modern-authentication). Aby bylo možné chránit váš účet i v případě, že používáte starší verzi ověřování, doporučujeme v adresáři používat silná hesla. Podívejte se na  [ochranu heslem Azure AD](../authentication/concept-password-ban-bad.md), abyste v adresáři zakazují slabá hesla.
 
-Office 2010 nepodporuje moderní ověřování. Budete muset upgradovat všechny uživatele s Office 2010 na novější verzi Office. Doporučujeme upgradovat na Office 2016 nebo novější, protože ve výchozím nastavení blokuje starší verze ověřování.
+Office 2010 nepodporuje moderní ověřování. Budete muset upgradovat všechny uživatele pomocí Office 2010 na novější verzi Office. Doporučujeme upgradovat na Office 2016 nebo novější, protože ve výchozím nastavení blokuje starší verze ověřování.
 
-Pokud používáte macOS, doporučujeme upgradovat na Office for Mac 2016 nebo novější. Pokud používáte nativního poštovního klienta, budete muset mít macOS verze 10.14 nebo novější na všech zařízeních.
+Pokud používáte macOS, doporučujeme upgradovat na Office pro Mac 2016 nebo novější. Pokud používáte nativního poštovního klienta, budete muset mít na všech zařízeních verzi macOS 10,14 nebo novější.
 
 ### <a name="step-3-exchange-and-sharepoint"></a>Krok 3: Exchange a SharePoint
 
-Aby klienti outlooku se systémem Windows používali moderní ověřování, musí být exchange online také povoleno moderní ověřování. Pokud je pro Exchange Online zakázáno moderní ověřování, klienti Outlooku se systémem Windows, kteří podporují moderní ověřování (Outlook 2013 nebo novější), budou používat pro připojení k poštovním schránkám Exchange Online základní ověřování.
+Aby klienti Outlooku založené na Windows používali moderní ověřování, musí mít Exchange Online povolené i moderní ověřování. Pokud je pro Exchange Online zakázané moderní ověřování, klienti Outlooku s Windows, kteří podporují moderní ověřování (Outlook 2013 nebo novější), použijí základní ověřování pro připojení k poštovním schránkám Exchange Online.
 
-SharePoint Online je povolený pro moderní ověřování výchozí. Pro adresáře vytvořené po 1 srpnu 2017 je ve výchozím nastavení v Exchange Online povoleno moderní ověřování. Pokud jste však dříve zakázali moderní ověřování nebo používáte adresář vytvořený před tímto datem, postupujte podle pokynů v následujícím článku [a povolte moderní ověřování v exchange online](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online).
+SharePoint Online je povolen pro výchozí moderní ověřování. Pro adresáře vytvořené od 1. srpna 2017 je moderní ověřování ve výchozím nastavení povolené v Exchange Online. Pokud jste však dříve vypnuli moderní ověřování nebo jste používali adresář vytvořený před tímto datem, použijte postup v následujícím článku, který umožňuje [moderní ověřování v systému Exchange Online](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online).
 
 ### <a name="step-4-skype-for-business"></a>Krok 4: Skype pro firmy
 
-Chcete-li zabránit starším požadavkům na ověření ze strany Skypu pro firmy, je nutné povolit moderní ověřování pro Online Skype pro firmy. Pro adresáře vytvořené po 1.
+Aby se předešlo tomu, že se starší požadavky na ověřování provedly přes Skype pro firmy, je potřeba povolit moderní ověřování pro Online Skype pro firmy. Pro adresáře vytvořené od 1. srpna 2017 je moderní ověřování pro Skype pro firmy ve výchozím nastavení povolené.
 
-Doporučujeme přejít na Microsoft Teams, který ve výchozím nastavení podporuje moderní ověřování. Pokud se vám ale teď nedaří migrovat, budete muset povolit moderní ověřování pro Online Skype pro firmy, aby klienti Skypu pro firmy začali používat moderní ověřování. Chcete-li povolit moderní ověřování pro Skype pro firmy , postupujte podle pokynů v tomto článku [topologie Skypu pro firmy podporované moderním ověřováním](https://docs.microsoft.com/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported).
+Doporučujeme, abyste přešli na Microsoft teams, který ve výchozím nastavení podporuje moderní ověřování. Pokud ale v tuto chvíli nemůžete migrovat, budete muset povolit moderní ověřování pro Skype for Business Online, aby klienti Skypu pro firmy začali používat moderní ověřování. Pokud chcete povolit moderní ověřování pro Skype pro firmy, postupujte podle kroků v tomto článku [topologie Skypu pro firmy podporované moderním ověřováním](https://docs.microsoft.com/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported).
 
-Kromě povolení moderního ověřování pro Online Skype pro firmy doporučujeme povolit moderní ověřování pro Exchange Online, když povolíte moderní ověřování pro Skype pro firmy. Tento proces pomůže synchronizovat stav moderního ověřování ve Exchange Online a Skypu pro firmy online a zabrání vícenásobným přihlašovacím výzvám pro klienty Skypu pro firmy.
+Kromě povolení moderního ověřování pro Online Skype pro firmy doporučujeme povolit moderní ověřování pro Exchange Online, když povolíte moderní ověřování pro Skype pro firmy. Tento proces pomůže synchronizovat stav moderního ověřování v Exchange Online a Online Skypu pro firmy a zabrání pro klienty Skypu pro firmy víc přihlašovacích výzev.
 
-### <a name="step-5-using-mobile-devices"></a>Krok 5: Používání mobilních zařízení
+### <a name="step-5-using-mobile-devices"></a>Krok 5: použití mobilních zařízení
 
-Aplikace na vašem mobilním zařízení musí také blokovat starší verze ověřování. Doporučujeme používat Outlook pro mobily. Outlook for Mobile ve výchozím nastavení podporuje moderní ověřování a bude splňovat ostatní zásady ochrany podle směrného plánu vícefaktorové ověřování.
+Aplikace na vašem mobilním zařízení musí také zablokovat starší verze ověřování. Doporučujeme používat Outlook pro mobilní zařízení. Outlook pro mobilní zařízení podporuje ve výchozím nastavení moderní ověřování a bude vyhovovat ostatním zásadám základní ochrany MFA.
 
-Chcete-li používat nativní poštovní klient iOS, budete muset používat iOS verze 11.0 nebo novější, abyste zajistili, že poštovní klient byl aktualizován, aby zablokoval ověřování.
+Aby bylo možné používat nativního e-mailového klienta pro iOS, bude nutné, abyste spustili iOS verze 11,0 nebo novější, abyste zajistili, že se klient pro poštu aktualizoval tak, aby blokoval starší ověřování.
 
-### <a name="step-6-on-premises-clients"></a>Krok 6: Místní klienti
+### <a name="step-6-on-premises-clients"></a>Krok 6: místní klienti
 
-Pokud jste hybridní zákazník, který používá místní Exchange Server a místní Skype pro firmy, bude nutné aktualizovat obě služby, aby bylo možné povolit moderní ověřování. Při použití moderního ověřování v hybridním prostředí stále ověřujete uživatele v místním prostředí. Příběh autorizace jejich přístupu k prostředkům (souborům nebo e-mailům) se změní.
+Pokud jste hybridní zákazník používající místní Exchange Server a Skype pro firmy v místním prostředí, bude nutné aktualizovat obě služby, aby bylo možné povolit moderní ověřování. Při použití moderního ověřování v hybridním prostředí stále ověřujete uživatele místně. Příběh, který autorizuje přístup k prostředkům (soubory nebo e-maily), se změní.
 
-Než začnete povolovat moderní ověřování místně, ujistěte se, že jste splnili požadavky. Nyní jste připraveni povolit moderní ověřování místně.
+Než budete moct začít s povolením moderního ověřování v místním prostředí, ujistěte se, že jste splnili požadavky. Nyní jste připraveni povolit moderní ověřování v místním prostředí.
 
-Kroky pro povolení moderního ověřování naleznete v následujících článcích:
+Postup povolení moderního ověřování najdete v následujících článcích:
 
-* [Konfigurace místního serveru Exchange Server pro použití hybridního moderního ověřování](https://docs.microsoft.com/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
+* [Jak nakonfigurovat místní Exchange Server tak, aby používal hybridní moderní ověřování](https://docs.microsoft.com/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
 * [Jak používat moderní ověřování (ADAL) se Skypem pro firmy](https://docs.microsoft.com/skypeforbusiness/manage/authentication/use-adal)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Konfigurace místního serveru Exchange Server pro použití hybridního moderního ověřování](https://docs.microsoft.com/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
+- [Jak nakonfigurovat místní Exchange Server tak, aby používal hybridní moderní ověřování](https://docs.microsoft.com/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
 - [Jak používat moderní ověřování (ADAL) se Skypem pro firmy](https://docs.microsoft.com/skypeforbusiness/manage/authentication/use-adal)
 - [Blokování starší verze ověřování](../conditional-access/block-legacy-authentication.md)

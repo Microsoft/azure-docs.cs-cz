@@ -1,7 +1,7 @@
 ---
-title: Definování technického profilu Application Insights ve vlastních zásadách
+title: Definování Application Insights technického profilu ve vlastních zásadách
 titleSuffix: Azure AD B2C
-description: Ve vlastní chodníčkové službě Azure Active Directory B2C definujte technický profil přehledů aplikací ve vlastních zásadách.
+description: Definujte Application Insights technický profil ve vlastních zásadách v Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,29 +12,29 @@ ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: f50373b0841b7626bc405f121015c15ae1587a97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80108572"
 ---
-# <a name="define-an-application-insights-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Definování technického profilu Application Insights ve vlastních zásadách Azure AD B2C
+# <a name="define-an-application-insights-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Definování Application Insights technického profilu ve vlastních zásadách Azure AD B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) podporuje odesílání dat událostí přímo do [Application Insights](../azure-monitor/app/app-insights-overview.md) pomocí instrumentační klíč poskytované Azure AD B2C.  Pomocí technického profilu Application Insights můžete získat podrobné a přizpůsobené protokoly událostí pro vaše cesty uživatelů:
+Azure Active Directory B2C (Azure AD B2C) podporuje odesílání dat události přímo do [Application Insights](../azure-monitor/app/app-insights-overview.md) pomocí klíče instrumentace poskytnutého Azure AD B2C.  S Application Insights Technical profilem můžete získat podrobné a přizpůsobené protokoly událostí pro vaše uživatelské cesty:
 
 * Získejte přehled o chování uživatelů.
-* Poradce při potížích s vlastními zásadami ve vývoji nebo v produkčním prostředí.
-* Měření výkonu.
-* Vytvořte oznámení z Application Insights.
+* Řešení potíží s vlastními zásadami ve vývoji nebo v produkčním prostředí.
+* Změřte výkon.
+* Vytvoří oznámení z Application Insights.
 
 
 ## <a name="protocol"></a>Protocol (Protokol)
 
-**Atribut Name** elementu **Protocol** musí být `Proprietary`nastaven na . Atribut **obslužné rutiny** musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu, který používá Azure AD B2C pro application insights:`Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
+Atribut **Name** elementu **Protocol** musí být nastaven na `Proprietary`hodnotu. Atribut **obslužné rutiny** musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu, které používá Azure AD B2C pro Application Insights:`Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
 
-Následující příklad ukazuje společný technický profil Application Insights. Mezi další technické profily Application Insights patří AzureInsights-Common, které využívají jeho konfiguraci.  
+Následující příklad ukazuje běžný Application Insights technický profil. Mezi další Application Insights technické profily patří AzureInsights-Common pro využití jeho konfigurace.  
 
 ```xml
 <TechnicalProfile Id="AzureInsights-Common">
@@ -43,9 +43,9 @@ Následující příklad ukazuje společný technický profil Application Insigh
 </TechnicalProfile>
 ```
 
-## <a name="input-claims"></a>Vstupní deklarace
+## <a name="input-claims"></a>Vstupní deklarace identity
 
-**InputClaims** Element obsahuje seznam deklarací, které mají být odeslány do Application Insights. Název deklarace můžete také namapovat na název, který chcete zobrazit v Application Insights. Následující příklad ukazuje, jak odeslat telemetry do Application Insights. Vlastnosti události jsou přidány `{property:NAME}`prostřednictvím syntaxe , kde NAME je vlastnost, která je přidána do události. DefaultValue může být buď statická hodnota nebo hodnota, která je vyřešena jedním z podporovaných [překládání deklarací](claim-resolver-overview.md).
+Element **InputClaims** obsahuje seznam deklarací pro odeslání do Application Insights. Můžete také namapovat název vaší deklarace na název, který se zobrazí v Application Insights. Následující příklad ukazuje, jak odeslat telemetrií do Application Insights. Vlastnosti události jsou přidány pomocí syntaxe `{property:NAME}`, kde název je přidán do události. DefaultValue může být buď statická hodnota, nebo hodnota, která je vyřešená jedním z podporovaných [překladačů deklarací identity](claim-resolver-overview.md).
 
 ```XML
 <InputClaims>
@@ -56,31 +56,31 @@ Následující příklad ukazuje společný technický profil Application Insigh
 </InputClaims>
 ```
 
-**InputClaimsTransformations** Element může obsahovat kolekci **InputClaimsTransformation** prvky, které se používají k úpravě vstupní deklarace identity nebo generovat nové před odesláním do Application Insights.
+Element **InputClaimsTransformations** může obsahovat kolekci prvků **InputClaimsTransformation** , které se používají k úpravě vstupních deklarací identity nebo k vygenerování nových před odesláním do Application Insights.
 
-## <a name="persist-claims"></a>Trvalé nároky
+## <a name="persist-claims"></a>Zachovat deklarace identity
 
-Prvek PersistedClaims se nepoužívá.
+Element PersistedClaims se nepoužívá.
 
-## <a name="output-claims"></a>Výstupní pohledávky
+## <a name="output-claims"></a>Deklarace výstupů
 
-OutputClaims a OutputClaimsTransformations prvky nejsou použity.
+Prvky OutputClaims a OutputClaimsTransformations nejsou použity.
 
 ## <a name="cryptographic-keys"></a>Kryptografické klíče
 
-Prvek CryptographicKeys se nepoužívá.
+Element CryptographicKeys se nepoužívá.
 
 
 ## <a name="metadata"></a>Metadata
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| InstrumentaceKlíč| Ano | [Klíč instrumentace](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key)Application Insights , který bude použit pro protokolování událostí. | 
-| Režim vývojáře| Ne | Logická hodnota, která označuje, zda je povolen režim vývojáře. Možné `true` hodnoty: `false` nebo (výchozí). Tato metadata řídí, jak jsou události ukládání do vyrovnávací paměti. Ve vývojovém prostředí s minimálním objemem událostí, což umožňuje vývojářský režim, má za následek okamžité odeslání událostí do Application Insights.|  
-|Zakázat telemetrii |Ne |Logická hodnota, která označuje, zda by telemetrie měla být povolena nebo ne. Možné `true` hodnoty: `false` nebo (výchozí).| 
+| InstrumentationKey| Ano | Application Insights [klíč instrumentace](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key), který se použije pro protokolování událostí. | 
+| DeveloperMode| Ne | Logická hodnota, která označuje, zda je povolen režim pro vývojáře. Možné hodnoty: `true` nebo `false` (výchozí). Tato metadata řídí, jak jsou události ukládány do vyrovnávací paměti. Když ve vývojovém prostředí s minimálním objemem událostí povolíte vývojářský režim, budou se události odesílat okamžitě Application Insights.|  
+|DisableTelemetry |Ne |Logická hodnota, která označuje, zda má být povolena telemetrie. Možné hodnoty: `true` nebo `false` (výchozí).| 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vytvoření prostředku Přehledy aplikací](../azure-monitor/app/create-new-resource.md)
-- Zjistěte, jak [sledovat chování uživatelů ve službě Azure Active Directory B2C pomocí přehledů aplikací](analytics-with-application-insights.md)
+- [Vytvoření prostředku Application Insights](../azure-monitor/app/create-new-resource.md)
+- Naučte se [sledovat chování uživatele v Azure Active Directory B2C pomocí Application Insights](analytics-with-application-insights.md)

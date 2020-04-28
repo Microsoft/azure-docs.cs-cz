@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub jako zdroj gridu událostí
-description: Tento článek obsahuje vlastnosti a schéma pro události služby Azure IoT Hub. Obsahuje seznam dostupných typů událostí, ukázkové události a vlastností události.
+title: Azure IoT Hub jako zdroj Event Grid
+description: Tento článek poskytuje vlastnosti a schéma pro události Azure IoT Hub. Obsahuje seznam dostupných typů událostí, příklad události a vlastností události.
 services: iot-hub
 documentationcenter: ''
 author: spelluru
@@ -10,34 +10,34 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: f9bf807884ab5592fa320532f3ca10a223081263
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393331"
 ---
-# <a name="azure-iot-hub-as-an-event-grid-source"></a>Azure IoT Hub jako zdroj gridu událostí
-Tento článek obsahuje vlastnosti a schéma pro události služby Azure IoT Hub. Úvod do schémat událostí najdete v [tématu schéma událostí služby Azure Event Grid](event-schema.md). 
+# <a name="azure-iot-hub-as-an-event-grid-source"></a>Azure IoT Hub jako zdroj Event Grid
+Tento článek poskytuje vlastnosti a schéma pro události Azure IoT Hub. Úvod do schémat událostí najdete v tématu [Azure Event Grid schéma událostí](event-schema.md). 
 
-## <a name="event-grid-event-schema"></a>Schéma události Mřížka událostí
+## <a name="event-grid-event-schema"></a>Schéma událostí služby Event Grid
 
 ### <a name="available-event-types"></a>Dostupné typy událostí
 
-Azure IoT Hub vydává následující typy událostí:
+Azure IoT Hub emituje následující typy událostí:
 
 | Typ události | Popis |
 | ---------- | ----------- |
-| Microsoft.Devices.DeviceVytvořeno | Publikováno, když je zařízení registrované do centra IoT. |
-| Microsoft.Devices.DeviceOdstraněno | Publikováno při odstranění zařízení z centra IoT. | 
-| Microsoft.Devices.DevicePřipojeno | Publikováno, když je zařízení připojené k centru IoT hub. |
-| Microsoft.Devices.DeviceOdpojeno | Publikováno, když je zařízení odpojeno od centra IoT hub. | 
-| Telemetrie Microsoft.Devices.DeviceTelemetrie | Publikováno při odeslání telemetrické zprávy do služby IoT hub. |
+| Microsoft. Devices. DeviceCreated | Publikováno, když je zařízení zaregistrované do služby IoT Hub. |
+| Microsoft. Devices. DeviceDeleted | Publikováno při odstranění zařízení ze služby IoT Hub. | 
+| Microsoft. Devices. DeviceConnected | Publikováno, když je zařízení připojené ke IoT Hub. |
+| Microsoft. Devices. DeviceDisconnected | Publikováno, když se zařízení odpojí od služby IoT Hub. | 
+| Microsoft. Devices. DeviceTelemetry | Publikováno při odeslání zprávy telemetrie do služby IoT Hub. |
 
-Všechny události zařízení s výjimkou událostí telemetrie zařízení jsou obecně dostupné ve všech oblastech podporovaných službou Event Grid. Událost telemetrie zařízení je ve verzi Public Preview a je dostupná ve všech oblastech kromě východních USA, Západní USA, Západní Evropy, [Azure Government](../azure-government/documentation-government-welcome.md), Azure [China 21Vianet](/azure/china/china-welcome)a [Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/).
+Všechny události zařízení s výjimkou událostí telemetrie zařízení jsou všeobecně dostupné ve všech oblastech podporovaných nástrojem Event Grid. Událost telemetrie zařízení je ve verzi Public Preview a je dostupná ve všech oblastech kromě Východní USA, Západní USA, Západní Evropa, [Azure Government](../azure-government/documentation-government-welcome.md), [Azure Čína 21Vianet](/azure/china/china-welcome)a [Azure Německo](https://azure.microsoft.com/global-infrastructure/germany/).
 
 ### <a name="example-event"></a>Příklad události
 
-Schéma pro DeviceConnected a DeviceDisconnected události mají stejnou strukturu. Tato ukázková událost ukazuje schéma události vyvolané při připojení zařízení k centru IoT:
+Schéma pro události DeviceConnected a DeviceDisconnected mají stejnou strukturu. Tato ukázková událost ukazuje schéma události vyvolané při připojení zařízení ke službě IoT Hub:
 
 ```json
 [{
@@ -60,7 +60,7 @@ Schéma pro DeviceConnected a DeviceDisconnected události mají stejnou struktu
 }]
 ```
 
-DeviceTelemetry událost je aktivována při telemetrie událost je odeslána do služby IoT Hub. Ukázkové schéma pro tuto událost je uvedeno níže.
+Událost DeviceTelemetry se vyvolá při odeslání události telemetrie do IoT Hub. Ukázka schématu pro tuto událost je uvedena níže.
 
 ```json
 [{
@@ -94,7 +94,7 @@ DeviceTelemetry událost je aktivována při telemetrie událost je odeslána do
 }]
 ```
 
-Schéma pro DeviceCreated a DeviceDeleted události mají stejnou strukturu. Tato ukázková událost ukazuje schéma události vyvolané při registraci zařízení do centra IoT:
+Schéma pro události DeviceCreated a DeviceDeleted mají stejnou strukturu. Tato ukázková událost ukazuje schéma události vyvolané při registraci zařízení ve službě IoT Hub:
 
 ```json
 [{
@@ -149,69 +149,69 @@ Všechny události obsahují stejná data nejvyšší úrovně:
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | id | řetězec | Jedinečný identifikátor události |
-| téma | řetězec | Úplná cesta k prostředku ke zdroji události. Toto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
-| Předmět | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
-| Eventtype | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
-| eventTime | řetězec | Čas, kdy je událost generována na základě času UTC zprostředkovatele. |
-| data | objekt | Data událostí ioT hubu.  |
+| téma | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
+| závislosti | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
+| Typ | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
+| eventTime | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
+| data | objekt | IoT Hub data události.  |
 | dataVersion | řetězec | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
 | metadataVersion | řetězec | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
 
-Pro všechny události služby IoT Hub obsahuje datový objekt následující vlastnosti:
+Pro všechny události IoT Hub datový objekt obsahuje následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| název hubu | řetězec | Název centra IoT Hub, kde bylo zařízení vytvořeno nebo odstraněno. |
-| deviceId | řetězec | Jedinečný identifikátor zařízení. Tento řetězec rozlišující malá a velká písmena může mít až 128 znaků a `- : . + % _ # * ? ! ( ) , = @ ; $ '`podporuje 7bitové alfanumerické znaky ASCII a následující speciální znaky: . |
+| hubName | řetězec | Název IoT Hub, kde se zařízení vytvořilo nebo odstranilo |
+| deviceId | řetězec | Jedinečný identifikátor zařízení Tento řetězec, který rozlišuje velká a malá písmena, může být dlouhý až 128 znaků a podporuje i 7 bitů alfanumerických znaků a navíc následující `- : . + % _ # * ? ! ( ) , = @ ; $ '`speciální znaky:. |
 
-Obsah datového objektu se liší pro každého vydavatele události. 
+Obsah datového objektu se u každého vydavatele události liší. 
 
-Pro události služby IoT Hub **připojeného k zařízení** a **odpojeného od zařízení** obsahuje datový objekt následující vlastnosti:
+Pro události **připojené k zařízení** a **odpojení zařízení** IoT Hub datový objekt obsahuje následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| modulId | řetězec | Jedinečný identifikátor modulu. Toto pole je výstupní pouze pro modulová zařízení. Tento řetězec rozlišující malá a velká písmena může mít až 128 znaků a `- : . + % _ # * ? ! ( ) , = @ ; $ '`podporuje 7bitové alfanumerické znaky ASCII a následující speciální znaky: . |
-| deviceConnectionStateEventInfo | objekt | Informace o stavu připojení zařízení
-| sequenceNumber | řetězec | Číslo, které pomáhá indikovat pořadí událostí připojených k zařízení nebo odpojených zařízení. Poslední událost bude mít pořadové číslo, které je vyšší než předchozí událost. Toto číslo se může změnit o více než 1, ale striktně se zvyšuje. Podívejte [se, jak používat pořadové číslo](../iot-hub/iot-hub-how-to-order-connection-state-events.md). |
+| moduleId | řetězec | Jedinečný identifikátor modulu Toto pole je výstupní jenom pro zařízení modulu. Tento řetězec, který rozlišuje velká a malá písmena, může být dlouhý až 128 znaků a podporuje i 7 bitů alfanumerických znaků a navíc následující `- : . + % _ # * ? ! ( ) , = @ ; $ '`speciální znaky:. |
+| deviceConnectionStateEventInfo | objekt | Informace o událostech stavu připojení zařízení
+| sequenceNumber | řetězec | Číslo, které pomáhá indikovat pořadí připojených zařízení nebo událostí odpojení zařízení. Poslední událost bude mít pořadové číslo, které je vyšší než předchozí událost. Toto číslo se může změnit o více než 1, ale bude se striktně zvyšovat. Podívejte [se, jak použít pořadové číslo](../iot-hub/iot-hub-how-to-order-connection-state-events.md). |
 
-Pro událost Služby IoT Hub **telemetrie zařízení** obsahuje datový objekt zprávu zařízení cloud ve [formátu zpráv služby IoT hub](../iot-hub/iot-hub-devguide-messages-construct.md) a má následující vlastnosti:
+V případě **telemetrie zařízení** IoT Hub událost obsahuje datový objekt zprávu zařízení-Cloud ve [formátu zprávy služby IoT Hub](../iot-hub/iot-hub-devguide-messages-construct.md) a má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | text | řetězec | Obsah zprávy ze zařízení. |
-| properties | řetězec | Vlastnosti aplikace jsou uživatelem definované řetězce, které lze přidat do zprávy. Tato pole jsou nepovinná. |
-| vlastnosti systému | řetězec | [Vlastnosti systému](../iot-hub/iot-hub-devguide-routing-query-syntax.md#system-properties) pomáhají identifikovat obsah a zdroj zpráv. Zpráva telemetrie zařízení musí být v platném formátu JSON s contentType nastavena na JSON a contentEncoding nastavena na UTF-8 ve vlastnostech systému zpráv. Pokud to není nastaveno, pak IoT Hub bude psát zprávy v základním formátu 64 kódované.  |
+| properties | řetězec | Vlastnosti aplikace jsou uživatelsky definované řetězce, které lze přidat do zprávy. Tato pole jsou volitelná. |
+| Vlastnosti systému | řetězec | [Vlastnosti systému](../iot-hub/iot-hub-devguide-routing-query-syntax.md#system-properties) vám pomůžou identifikovat obsah a zdroj zpráv. Zpráva telemetrie zařízení musí být v platném formátu JSON se sadou contentType nastavenou na JSON a contentEncoding nastavenou na UTF-8 ve vlastnostech systému zpráv. Pokud tato akce není nastavena, IoT Hub zapíše zprávy ve formátu kódování Base 64.  |
 
-Pro události **služby** IoT Hub vytvořené zařízení a **odstraněné zařízení** obsahuje datový objekt následující vlastnosti:
+Pro **zařízení vytvořená** a **odstraněná** IoT Hub události obsahuje datový objekt následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| Twin | objekt | Informace o dvojčeti zařízení, což je cloudová reprezentace metadat aplikačního zařízení. | 
-| Deviceid | řetězec | Jedinečný identifikátor dvojčete zařízení. | 
-| Etag | řetězec | Validátor pro zajištění konzistence aktualizací dvojčete zařízení. Každý etag je zaručeno, že je jedinečný pro každé dvojče zařízení. |  
-| deviceEtag| řetězec | Validátor pro zajištění konzistence aktualizací registru zařízení. Každé deviceEtag je zaručeno, že je jedinečný registr na zařízení. |
-| status | řetězec | Zda je dvojče zařízení povoleno nebo zakázáno. | 
-| stavUpdateTime | řetězec | Časové razítko ISO8601 poslední aktualizace stavu dvojčete zařízení. |
-| connectionState | řetězec | Zda je zařízení připojeno nebo odpojeno. | 
-| lastActivityTime | řetězec | Časové razítko poslední aktivity ISO8601. | 
-| cloudToDeviceMessageCount | celé číslo | Počet zpráv z cloudu do zařízení odeslaných do tohoto zařízení. | 
-| authenticationType | řetězec | Typ ověřování používaný pro `SAS`toto zařízení: buď , `SelfSigned`nebo `CertificateAuthority`. |
-| x509Otisk palce | řetězec | Kryptografický otisk je jedinečná hodnota certifikátu x509, který se běžně používá k vyhledání konkrétního certifikátu v úložišti certifikátů. Kryptografický otisk je dynamicky generován pomocí algoritmu SHA1 a fyzicky neexistuje v certifikátu. | 
-| primární otisk palce | řetězec | Primární kryptografický otisk pro certifikát x509. |
-| sekundárníPalec | řetězec | Sekundární kryptografický otisk pro certifikát x509. | 
-| version | celé číslo | Celé číslo, které se po každém aktualizaci dvojčete zařízení zintátážmá o jednu. |
-| Požadované | objekt | Část vlastností, které mohou být zapsány pouze back-endaplikace a číst zařízení. | 
-| Hlášeny | objekt | Část vlastností, které mohou být zapsány pouze zařízení a číst back-end aplikace. |
-| lastUpdated | řetězec | Časové razítko ISO8601 poslední aktualizace vlastnosti dvojčete zařízení. | 
+| vyjde | objekt | Informace o dodaném zařízení, což je cloudová reprezentace metadat aplikačních zařízení. | 
+| deviceID | řetězec | Jedinečný identifikátor vlákna zařízení. | 
+| značk | řetězec | Validátor pro zajištění konzistence aktualizací v zařízení. U každého ETag je zaručeno, že bude jedinečný pro každé zařízení. |  
+| deviceEtag| řetězec | Validátor pro zajištění konzistence aktualizací registru zařízení. Každý deviceEtag je zaručený jako jedinečný v každém registru zařízení. |
+| status | řetězec | Zda je zařízení ve dvojím povoleném nebo zakázaném. | 
+| statusUpdateTime | řetězec | ISO8601 časové razítko poslední aktualizace stavu vystavení zařízení. |
+| Vlastnost ConnectionState | řetězec | Zda je zařízení připojeno nebo odpojeno. | 
+| lastActivityTime | řetězec | ISO8601 časové razítko poslední aktivity. | 
+| cloudToDeviceMessageCount | celé číslo | Počet zpráv z cloudu do zařízení odeslaných do tohoto zařízení | 
+| authenticationType | řetězec | Typ ověřování, který se používá pro toto `SAS`zařízení `SelfSigned`: buď `CertificateAuthority`, nebo. |
+| x509Thumbprint | řetězec | Kryptografický otisk je jedinečná hodnota pro certifikát x509, která se běžně používá k vyhledání konkrétního certifikátu v úložišti certifikátů. Kryptografický otisk se dynamicky generuje pomocí algoritmu SHA1 a v certifikátu fyzicky neexistuje. | 
+| primaryThumbprint | řetězec | Primární kryptografický otisk pro certifikát x509 |
+| secondaryThumbprint | řetězec | Sekundární kryptografický otisk pro certifikát x509 | 
+| version | celé číslo | Celé číslo, které je při každé aktualizaci neinteraktivního zařízení zvětšeno o jedno. |
+| dosažení | objekt | Část vlastností, které lze zapsat pouze back-end aplikací a kterou zařízení čte. | 
+| uvedené | objekt | Část vlastností, které mohou být zapsány pouze zařízením a které jsou čteny back-end aplikací. |
+| lastUpdated | řetězec | ISO8601 časové razítko poslední aktualizace vlastnosti vyzdvojené ze zařízení. | 
 
 ## <a name="tutorials-and-how-tos"></a>Kurzy a postupy
 |Nadpis  |Popis  |
 |---------|---------|
-| [Posílání e-mailových oznámení o událostech Azure IoT Hub pomocí Logic Apps](publish-iot-hub-events-to-logic-apps.md) | Aplikace logiky odešle e-mail s oznámením pokaždé, když se zařízení přidá do vašeho IoT Hubu. |
-| [Reakce na události služby IoT Hub pomocí služby Event Grid ke spuštění akcí](../iot-hub/iot-hub-event-grid.md) | Přehled integrace IoT Hubu s Event Grid. |
-| [Objednejte připojení zařízení a odpojené události zařízení](../iot-hub/iot-hub-how-to-order-connection-state-events.md) | Ukazuje, jak objednat události stavu připojení zařízení. |
+| [Posílání e-mailových oznámení o událostech Azure IoT Hub pomocí Logic Apps](publish-iot-hub-events-to-logic-apps.md) | Aplikace logiky pošle e-mailové oznámení pokaždé, když se do vašeho IoT Hub přidá zařízení. |
+| [Reakce na události IoT Hub pomocí Event Grid k aktivaci akcí](../iot-hub/iot-hub-event-grid.md) | Přehled integrace IoT Hub s Event Grid |
+| [Objednat události připojené k zařízení a odpojené zařízení](../iot-hub/iot-hub-how-to-order-connection-state-events.md) | Ukazuje, jak objednat události stavu připojení zařízení. |
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úvod do Služby Azure Event Grid najdete v tématu [Co je event grid?](overview.md)
-* Informace o tom, jak služby IoT Hub a Event Grid spolupracují, najdete v tématu [Reakce na události služby IoT Hub pomocí služby Event Grid k aktivaci akcí](../iot-hub/iot-hub-event-grid.md).
+* Úvod do Azure Event Grid najdete v tématu [co je Event Grid?](overview.md)
+* Další informace o tom, jak IoT Hub a Event Grid vzájemně spolupracují, najdete v tématu [reakce na IoT Hub události pomocí Event Grid k aktivaci akcí](../iot-hub/iot-hub-event-grid.md).

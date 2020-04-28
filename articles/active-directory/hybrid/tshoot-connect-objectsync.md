@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Poradce při potížích se synchronizací objektů | Dokumenty společnosti Microsoft'
-description: Toto téma obsahuje postup řešení problémů se synchronizací objektů pomocí úlohy řešení potíží.
+title: 'Azure AD Connect: řešení potíží se synchronizací objektů | Microsoft Docs'
+description: V tomto tématu najdete postup řešení potíží se synchronizací objektů pomocí úlohy řešení potíží.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,83 +16,83 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6e10d00ed90248319801974c7c1e7fadf835024b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81407020"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Řešení potíží se synchronizací objektů pomocí synchronizace Azure AD Connect
-Tento článek obsahuje postup řešení potíží se synchronizací objektů pomocí úlohy řešení potíží. Chcete-li zjistit, jak řešení potíží funguje ve službě Azure Active Directory (Azure AD) Connect, podívejte se na [toto krátké video](https://aka.ms/AADCTSVideo).
+Tento článek popisuje kroky pro řešení potíží se synchronizací objektů pomocí úlohy řešení potíží. Pokud chcete zjistit, jak řešení potíží funguje ve službě Azure Active Directory (Azure AD), podívejte se na [Toto krátké video](https://aka.ms/AADCTSVideo).
 
 ## <a name="troubleshooting-task"></a>Úloha řešení potíží
-V případě nasazení Azure AD Connect s verzí 1.1.749.0 nebo novější k řešení potíží se synchronizací objektů použijte úlohu řešení potíží v průvodci. U dřívějších verzí vyřešujte potíže ručně, jak je popsáno [zde](tshoot-connect-object-not-syncing.md).
+V případě nasazení Azure AD Connect s verzí 1.1.749.0 nebo novější k řešení potíží se synchronizací objektů použijte úlohu řešení potíží v průvodci. V případě starších verzí je třeba řešit potíže ručně, jak je popsáno [zde](tshoot-connect-object-not-syncing.md).
 
 ### <a name="run-the-troubleshooting-task-in-the-wizard"></a>Spuštění úlohy řešení potíží v průvodci
 Chcete-li spustit úlohu řešení potíží v průvodci, proveďte následující kroky:
 
-1.  Otevřete novou relaci prostředí Windows PowerShell na serveru Azure AD Connect s možností Spustit jako správce.
-2.  Spustit `Set-ExecutionPolicy RemoteSigned` `Set-ExecutionPolicy Unrestricted`nebo .
-3.  Spusťte Průvodce připojením Azure AD Connect.
-4.  Přejděte na stránku Další úkoly, vyberte Poradce při potížích a klikněte na Další.
-5.  Na stránce Poradce při potížích klikněte na Spustit a spusťte nabídku řešení potíží v PowerShellu.
-6.  V hlavní nabídce vyberte Poradce při potížích se synchronizací objektů.
-![Poradce při potížích se synchronizací objektů](media/tshoot-connect-objectsync/objsynch11.png)
+1.  Na serveru Azure AD Connect otevřete novou relaci prostředí Windows PowerShell s možností spustit jako správce.
+2.  Spusťte `Set-ExecutionPolicy RemoteSigned` nebo `Set-ExecutionPolicy Unrestricted`.
+3.  Spusťte Průvodce Azure AD Connect.
+4.  Přejděte na stránku další úlohy, vyberte možnost řešení potíží a klikněte na tlačítko Další.
+5.  Na stránce Poradce při potížích klikněte na spustit a spusťte v PowerShellu nabídku pro odstraňování potíží.
+6.  V hlavní nabídce vyberte řešení potíží s synchronizací objektů.
+![Řešení potíží se synchronizací objektů](media/tshoot-connect-objectsync/objsynch11.png)
 
-### <a name="troubleshooting-input-parameters"></a>Poradce při potížích se vstupními parametry
-Úloha řešení potíží potřebuje následující vstupní parametry:
-1.  **Rozlišující název objektu** – toto je rozlišující název objektu, který potřebuje řešení potíží
-2.  **Název konektoru služby AD** – toto je název doménové struktury služby AD, kde se nachází výše uvedený objekt.
-3.  Pověření globálního správce klienta ![Azure AD pověření globálního správce](media/tshoot-connect-objectsync/objsynch1.png)
+### <a name="troubleshooting-input-parameters"></a>Řešení potíží se vstupními parametry
+Úkol odstraňování potíží vyžaduje následující vstupní parametry:
+1.  **Rozlišující název objektu** – jedná se o rozlišující název objektu, který vyžaduje řešení potíží.
+2.  **Název konektoru služby AD** – jedná se o název doménové struktury služby Active Directory, ve které se nachází výše uvedený objekt.
+3.  Přihlašovací údaje globálního správce tenanta ![služby Azure AD pro globální správce](media/tshoot-connect-objectsync/objsynch1.png)
 
-### <a name="understand-the-results-of-the-troubleshooting-task"></a>Vysvětlení výsledků úlohy řešení potíží
+### <a name="understand-the-results-of-the-troubleshooting-task"></a>Vysvětlení výsledků úlohy odstraňování potíží
 Úloha řešení potíží provádí následující kontroly:
 
-1.  Zjištění neshody hlavního upn, pokud je objekt synchronizován se službou Azure Active Directory
-2.  Kontrola filtrování objektu z důvodu filtrování domény
-3.  Kontrola, zda je objekt filtrován z důvodu filtrování ou.
-4.  Kontrola, zda je synchronizace objektů blokována z důvodu propojené poštovní schránky
-5. Zkontrolujte, zda je objekt dynamickou distribuční skupinou, která nemá být synchronizována.
+1.  Rozpoznat neshodu hlavního názvu uživatele, pokud je objekt synchronizovaný, aby Azure Active Directory
+2.  Ověřit, zda je objekt filtrován z důvodu filtrování domény
+3.  Ověřit, zda je objekt filtrován z důvodu filtrování organizační jednotky
+4.  Zkontroluje, jestli je synchronizace objektů zablokovaná kvůli propojené poštovní schránce.
+5. Zkontroluje, jestli je objekt dynamická distribuční skupina, která by neměla být synchronizovaná.
 
-Zbývající část této části popisuje konkrétní výsledky, které jsou vráceny úkolem. V každém případě úkol poskytuje analýzu následovanou doporučenými akcemi k vyřešení problému.
+Zbytek této části popisuje konkrétní výsledky, které jsou vráceny úlohou. V každém případě úkol poskytuje analýzu následovaný doporučenými akcemi pro vyřešení tohoto problému.
 
-## <a name="detect-upn-mismatch-if-object-is-synced-to-azure-active-directory"></a>Zjištění neshody upn při synchronizaci objektu do služby Azure Active Directory
-### <a name="upn-suffix-is-not-verified-with-azure-ad-tenant"></a>Přípona UPN není ověřena pomocí klienta Azure AD
-Když přípona UserPrincipalName (UPN)/Alternate Login ID není ověřena pomocí tenanta Azure AD, azure active directory nahradí přípony UPN s výchozím názvem domény "onmicrosoft.com".
+## <a name="detect-upn-mismatch-if-object-is-synced-to-azure-active-directory"></a>Detekovat neshodu hlavního názvu uživatele, pokud je objekt synchronizovaný na Azure Active Directory
+### <a name="upn-suffix-is-not-verified-with-azure-ad-tenant"></a>Přípona UPN se neověřuje u tenanta Azure AD.
+Když přípona ID přihlášení/Alternate není ověřená u tenanta Azure AD, pak Azure Active Directory nahradí přípony hlavního názvu uživatele (UPN) výchozím názvem domény "onmicrosoft.com".
 
-![Azure AD nahradí UPN](media/tshoot-connect-objectsync/objsynch2.png)
+![Azure AD nahrazuje hlavní název uživatele (UPN)](media/tshoot-connect-objectsync/objsynch2.png)
 
-### <a name="azure-ad-tenant-dirsync-feature-synchronizeupnformanagedusers-is-disabled"></a>Funkce DirSync klienta Azure AD Je zakázána
-Když je funkce DirSync klienta Azure AD "SynchronizeUpnForManagedUsers" zakázána, služba Azure Active Directory nepovoluje synchronizaci aktualizací uživatelského jména/alternativního přihlašovacího ID pro licencované uživatelské účty se spravovaným ověřováním.
+### <a name="azure-ad-tenant-dirsync-feature-synchronizeupnformanagedusers-is-disabled"></a>Funkce SynchronizeUpnForManagedUsers tenanta Azure AD DirSync je zakázaná.
+Pokud je DirSync funkce SynchronizeUpnForManagedUsers tenanta Azure AD zakázaná, Azure Active Directory nepovoluje aktualizace synchronizace pro: UserPrincipalName/alternativní přihlašovací ID pro licencované uživatelské účty se spravovaným ověřováním.
 
 ![SynchronizeUpnForManagedUsers](media/tshoot-connect-objectsync/objsynch4.png)
 
 ## <a name="object-is-filtered-due-to-domain-filtering"></a>Objekt je filtrován z důvodu filtrování domény.
-### <a name="domain-is-not-configured-to-sync"></a>Doména není nakonfigurována pro synchronizaci.
-Objekt je mimo rozsah z důvodu domény není nakonfigurován. V níže uvedeném příkladu je objekt mimo rozsah synchronizace, protože doména, do které patří, je filtrována ze synchronizace.
+### <a name="domain-is-not-configured-to-sync"></a>Doména není nakonfigurovaná na synchronizaci.
+Objekt je mimo rozsah z důvodu nekonfigurace domény. V následujícím příkladu je objekt mimo rozsah synchronizace, protože doména, do které patří, je filtrována z synchronizace.
 
-![Doména není nakonfigurována pro synchronizaci.](media/tshoot-connect-objectsync/objsynch5.png)
+![Doména není nakonfigurovaná na synchronizaci.](media/tshoot-connect-objectsync/objsynch5.png)
 
-### <a name="domain-is-configured-to-sync-but-is-missing-run-profilesrun-steps"></a>Doména je nakonfigurována pro synchronizaci, ale chybí profily spuštění nebo kroky spuštění
-Objekt je mimo rozsah, protože v doméně chybí spustit profily nebo kroky spuštění. V následujícím příkladu je objekt mimo rozsah synchronizace, protože doména, do které patří, chybí kroky spuštění pro profil spuštění úplného importu.
+### <a name="domain-is-configured-to-sync-but-is-missing-run-profilesrun-steps"></a>Doména je nakonfigurovaná pro synchronizaci, ale chybí profily/kroky spuštění.
+Objekt je mimo rozsah, protože v doméně chybí profil spuštění/kroky spuštění. V následujícím příkladu je objekt mimo rozsah synchronizace, protože v doméně, do které patří, chybí kroky spuštění pro úplný profil spuštění importu.
 ![chybějící profily spuštění](media/tshoot-connect-objectsync/objsynch6.png)
 
-## <a name="object-is-filtered-due-to-ou-filtering"></a>Objekt je filtrován z důvodu filtrování ou.
-Objekt je mimo rozsah synchronizace z důvodu konfigurace filtrování ou. V níže uvedeném příkladu objekt patří do OU= NoSync,DC =bvtadwbackdc,DC=com.  Tato ouonina není součástí oboru synchronizace.</br>
+## <a name="object-is-filtered-due-to-ou-filtering"></a>Objekt je filtrován z důvodu filtrování organizační jednotky.
+Objekt je mimo rozsah synchronizace z důvodu konfigurace filtrování organizační jednotky. V následujícím příkladu objekt patří do OU = inSync, DC = bvtadwbackdc, DC = com.  Tato organizační jednotka není zahrnutá v oboru synchronizace.</br>
 
 ![OU](./media/tshoot-connect-objectsync/objsynch7.png)
 
-## <a name="linked-mailbox-issue"></a>Problém s propojenou poštovní schránkou
-Propojená poštovní schránka má být přidružena k externímu hlavnímu účtu umístěnému v jiné doménové struktuře důvěryhodného účtu. Pokud takový externí hlavní účet neexistuje, azure ad connect nebude synchronizovat uživatelský účet odpovídá propojené poštovní schránce v doménové struktuře Exchange do tenanta Azure AD.</br>
+## <a name="linked-mailbox-issue"></a>Problémy s propojenou poštovní schránkou
+Propojená poštovní schránka by měla být přidružená k externímu hlavnímu účtu umístěnému v jiné doménové struktuře důvěryhodných účtů. Pokud žádný takový externí hlavní účet neexistuje, Azure AD Connect nebude synchronizovat uživatelský účet, který odpovídá propojené poštovní schránce v doménové struktuře Exchange pro tenanta Azure AD.</br>
 ![Propojená poštovní schránka](./media/tshoot-connect-objectsync/objsynch12.png)
 
 ## <a name="dynamic-distribution-group-issue"></a>Problém s dynamickou distribuční skupinou
-Vzhledem k různým rozdílům mezi místní službou Active Directory a službou Azure Active Directory azure ad connect nesynchronizuje dynamické distribuční skupiny s klientem Azure AD.
+Z důvodu různých rozdílů mezi místními službami Active Directory a Azure Active Directory Azure AD Connect nesynchronizuje dynamické distribuční skupiny s klientem služby Azure AD.
 
 ![Dynamická distribuční skupina](./media/tshoot-connect-objectsync/objsynch13.png)
 
 ## <a name="html-report"></a>Sestava HTML
-Kromě analýzy objektu úloha řešení potíží také generuje sestavu HTML, která má vše, co je o objektu známo. Tuto sestavu HTML lze v případě potřeby sdílet s týmem podpory za účelem dalšího řešení potíží.
+Kromě analýzy objektu vygeneruje úloha odstraňování potíží také sestavu jazyka HTML, která má vše známou o objektu. Tuto sestavu HTML můžete sdílet s týmem podpory, aby bylo možné v případě potřeby dále řešit problémy.
 
 ![Sestava HTML](media/tshoot-connect-objectsync/objsynch8.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s přihlášením s podmíněným přístupem – Služba Azure Active Directory
-description: Tento článek popisuje, co dělat, když zásady podmíněného přístupu vedou k neočekávaným výsledkům
+title: Řešení potíží s přihlašováním pomocí podmíněného přístupu – Azure Active Directory
+description: Tento článek popisuje, co dělat, když zásady podmíněného přístupu vedou k neočekávaným výsledkům.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,57 +12,57 @@ manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bdf1daca79f3ed20d9b7a89af20d74ff5f3148b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80337438"
 ---
-# <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>Poradce při potížích s přihlášením s podmíněným přístupem
+# <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>Řešení potíží s přihlašováním pomocí podmíněného přístupu
 
-Informace v tomto článku lze použít k řešení neočekávaných výsledků přihlášení souvisejících s podmíněným přístupem pomocí chybových zpráv a protokolu přihlášení Azure AD.
+Informace v tomto článku se dají použít k řešení neočekávaných přihlašovacích údajů souvisejících s podmíněným přístupem, které využívají chybové zprávy a protokol přihlášení k Azure AD.
 
-## <a name="conditional-access-sign-in-interrupt"></a>Přerušení přihlášení podmíněného přístupu
+## <a name="conditional-access-sign-in-interrupt"></a>Přerušení přihlášení k podmíněnému přístupu
 
-Prvním způsobem je zkontrolovat chybovou zprávu, která se zobrazí. V případě problémů s přihlášením při používání webového prohlížeče obsahuje samotná chybová stránka podrobné informace. Tyto informace samy o sobě mohou popisovat, co je problém a které mohou navrhnout řešení.
+První způsob je zkontrolovat zobrazenou chybovou zprávu. Pro problémy, které se přihlašují při použití webového prohlížeče, má chybová stránka obsahuje podrobné informace. Tyto informace mohou být popsány v části problém a může navrhnout řešení.
 
-![Chyba přihlášení – je vyžadováno vyhovující zařízení](./media/troubleshoot-conditional-access/image1.png)
+![Vyžaduje se přihlášení zařízení vyhovujícího chybám.](./media/troubleshoot-conditional-access/image1.png)
 
-Ve výše uvedené chybě se zobrazí zpráva, že k aplikaci lze přistupovat pouze ze zařízení nebo klientských aplikací, které splňují zásady správy mobilních zařízení společnosti. V tomto případě aplikace a zařízení nesplňují tyto zásady.
+Ve výše uvedené chybě zpráva uvádí, že aplikace je dostupná jenom ze zařízení nebo klientských aplikací, které splňují zásady správy mobilních zařízení společnosti. V takovém případě aplikace a zařízení nesplňují tyto zásady.
 
-## <a name="azure-ad-sign-in-events"></a>Události přihlášení Azure AD
+## <a name="azure-ad-sign-in-events"></a>Události přihlášení ke službě Azure AD
 
-Druhou metodou pro získání podrobných informací o přerušení přihlášení je kontrola událostí přihlášení Služby Azure AD a zjistit, které zásady nebo zásady podmíněného přístupu byly použity a proč.
+Druhý způsob, jak získat podrobné informace o přerušení přihlašování, je zkontrolovat události přihlášení služby Azure AD, které vám pomohou zjistit, které zásady nebo zásady podmíněného přístupu byly aplikovány a proč.
 
-Další informace o problému naleznete kliknutím na **další podrobnosti** na úvodní chybové stránce. Kliknutím na **další podrobnosti** zobrazíte informace o řešení potíží, které jsou užitečné při vyhledávání událostí přihlášení služby Azure AD pro konkrétní událost selhání, kterou uživatel viděl, nebo při otevření incidentu podpory se společností Microsoft.
+Další informace o problému najdete kliknutím na **Další podrobnosti** na úvodní stránce s chybou. Kliknutím na **Další podrobnosti** zobrazíte informace o řešení problémů, které jsou užitečné při hledání událostí přihlášení služby Azure AD pro konkrétní událost selhání, kterou uživatel viděl, nebo při otevření incidentu podpory u Microsoftu.
 
-![Další podrobnosti z podmíněného přístupu přerušily přihlášení webového prohlížeče.](./media/troubleshoot-conditional-access/image2.png)
+![Další podrobnosti z podmíněného přístupu přerušily přihlášení k webovému prohlížeči.](./media/troubleshoot-conditional-access/image2.png)
 
-Chcete-li zjistit, které zásady podmíněného přístupu nebo zásady použity a proč postupujte takto.
+Pokud chcete zjistit, které zásady nebo zásady podmíněného přístupu se nastavily, a proč postupujte následovně.
 
-1. Přihlaste se k **portálu Azure** jako globální správce, správce zabezpečení nebo globální čtečka.
-1. Přejděte na**přihlašovací" služby** **Azure Active Directory** > .
-1. Najděte událost, kterou chcete zkontrolovat. Přidáním nebo odebráním filtrů a sloupců můžete odfiltrovat nepotřebné informace.
-   1. Přidáním filtrů zúžíte obor:
-      1. **ID korelace,** pokud máte konkrétní událost prozkoumat.
-      1. **Podmíněný přístup** zobrazíte selhání a úspěch zásad. Rozsah filtru zobrazit pouze selhání omezit výsledky.
+1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo globální čtecí zařízení.
+1. Přejděte k **Azure Active Directory** > **přihlášení**.
+1. Najděte událost pro přihlášení, která se má zkontrolovat. Přidejte nebo odeberte filtry a sloupce pro odfiltrování zbytečných informací.
+   1. Přidejte filtry pro zúžení rozsahu:
+      1. **ID korelace** , pokud máte konkrétní událost k prozkoumání.
+      1. **Podmíněný přístup** , který vám umožní zobrazit selhání zásad a úspěch. Nastavte obor filtru tak, aby zobrazoval pouze chyby pro omezení výsledků.
       1. **Uživatelské jméno** pro zobrazení informací týkajících se konkrétních uživatelů.
-      1. **Datum** vymezené do daného časového rámce.
+      1. **Datum** vymezené na příslušný časový rámec.
 
    ![Výběr filtru podmíněného přístupu v protokolu přihlášení](./media/troubleshoot-conditional-access/image3.png)
 
-1. Po přihlášení případě, který odpovídá selhání přihlášení uživatele byla nalezena vyberte **kartu Podmíněný přístup.** Na kartě Podmíněný přístup se zobrazí konkrétní zásady nebo zásady, které vedly k přerušení přihlášení.
-   1. Informace na kartě **Poradce při potížích a podpoře** mohou poskytnout jasný důvod, proč se přihlášení nezdařilo, například zařízení, které nesplňovalo požadavky na dodržování předpisů.
-   1. Chcete-li prozkoumat další, přejděte na konfiguraci zásad kliknutím na **název zásady**. Kliknutím na **název zásady** se zobrazí uživatelské rozhraní konfigurace zásad pro vybranou zásadu pro kontrolu a úpravy.
-   1. **Podrobnosti o** **uživateli klienta** a zařízení, které byly použity pro posouzení zásad podmíněného přístupu, jsou k dispozici také na kartách **Základní informace**, **Umístění**, Informace **o zařízení**, **Podrobnosti o ověřování**a Další **podrobnosti** události přihlášení.
+1. Jakmile se najde přihlašovací událost, která odpovídá neúspěšnému přihlášení uživatele, vyberte kartu **podmíněný přístup** . Na kartě podmíněný přístup se zobrazí konkrétní zásady nebo zásady, které vedly k přerušení přihlášení.
+   1. Informace na kartě **Poradce při potížích a podpoře** můžou mít jasný důvod, proč se nezdařilo přihlášení jako zařízení, které nevyhovělo požadavkům na dodržování předpisů.
+   1. Pokud chcete prozkoumat další postup, přejděte k podrobnostem o konfiguraci zásad kliknutím na **název zásady**. Kliknutím na **název zásady** zobrazíte uživatelské rozhraní konfigurace zásad pro vybranou zásadu pro kontrolu a úpravy.
+   1. Podrobnosti **o uživateli** a **zařízení** klienta, které byly použity pro vyhodnocení zásad podmíněného přístupu, jsou k dispozici také na kartách **základní informace**, **umístění**, **informace o zařízení**, **Podrobnosti o ověřování**a další karty **podrobností** události přihlášení.
 
-   ![Karta Podmíněný přístup k událostem přihlášení](./media/troubleshoot-conditional-access/image5.png)
+   ![Karta pro podmíněný přístup události přihlášení](./media/troubleshoot-conditional-access/image5.png)
 
-Pokud informace v události nestačí k pochopení výsledků přihlášení nebo upravit zásady pro dosažení požadovaných výsledků, pak může být otevřen incident podpory. Přejděte na kartu Poradce **při potížích a podpoře** této události přihlášení a vyberte **vytvořit novou žádost o podporu**.
+Pokud informace v události nestačí pro pochopení výsledků přihlášení nebo úpravou zásad za účelem získání požadovaných výsledků, může být otevřen incident podpory. Přejděte na kartu pro **odstraňování potíží a podporu** přihlašovací události a vyberte **vytvořit novou žádost o podporu**.
 
-![Karta Poradce při potížích a podpora události přihlášení](./media/troubleshoot-conditional-access/image6.png)
+![Karta Poradce při potížích a podpoře události přihlášení](./media/troubleshoot-conditional-access/image6.png)
 
-Při odesílání incidentu zadejte ID žádosti a čas a datum z události přihlášení v podrobnostech o odeslání incidentu. Tyto informace umožní podpoře společnosti Microsoft najít událost, která vás znepokojuje.
+Při odesílání incidentu zadejte ID žádosti a čas a datum z události přihlášení v podrobnostech o odeslání incidentu. Tyto informace umožní podpoře Microsoftu najít událost, o kterou máte obavy.
 
 ### <a name="conditional-access-error-codes"></a>Kódy chyb podmíněného přístupu
 
@@ -70,12 +70,12 @@ Při odesílání incidentu zadejte ID žádosti a čas a datum z události při
 | --- | --- |
 | 53000 | DeviceNotCompliant |
 | 53001 | DeviceNotDomainJoined |
-| 53002 | ApplicationUsedIsnotanApprovedApp |
+| 53002 | ApplicationUsedIsNotAnApprovedApp |
 | 53003 | BlockedByConditionalAccess |
 | 53004 | ProofUpBlockedDueToRisk |
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Sestavy aktivit přihlašování na portálu Azure Active Directory](../reports-monitoring/concept-sign-ins.md)
-- [Poradce při potížích s podmíněným přístupem pomocí nástroje Co-li](troubleshoot-conditional-access-what-if.md)
-- Doporučené postupy pro [podmíněný přístup ve službě Azure Active Directory](best-practices.md)
+- [Řešení potíží s podmíněným přístupem pomocí nástroje What If](troubleshoot-conditional-access-what-if.md)
+- Osvědčené postupy pro [podmíněný přístup v Azure Active Directory](best-practices.md)

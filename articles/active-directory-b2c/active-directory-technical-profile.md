@@ -1,7 +1,7 @@
 ---
 title: Definování technického profilu Azure AD ve vlastních zásadách
 titleSuffix: Azure AD B2C
-description: Definujte technický profil služby Azure Active Directory ve vlastních zásadách ve službě Azure Active Directory B2C.
+description: Definujte Azure Active Directory technický profil ve vlastních zásadách v Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,34 +12,34 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 7db47eda47850c1c080b6a49256c8a0b37bb0d3c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80330389"
 ---
-# <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu služby Azure Active Directory ve vlastní chodové službě Azure Active Directory B2C
+# <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování Azure Active Directory technického profilu ve vlastních zásadách Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) poskytuje podporu pro správu uživatelů Služby Azure Active Directory. Tento článek popisuje specifika technického profilu pro interakci s poskytovatelem deklarací identity, který podporuje tento standardizovaný protokol.
+Azure Active Directory B2C (Azure AD B2C) poskytuje podporu pro Azure Active Directory správu uživatelů. Tento článek popisuje konkrétní technické profily pro interakci se zprostředkovatelem deklarací, který podporuje tento standardizovaný protokol.
 
 ## <a name="protocol"></a>Protocol (Protokol)
 
-**Atribut Name** elementu **Protocol** musí být `Proprietary`nastaven na . Atribut **obslužné rutiny** musí obsahovat plně kvalifikovaný název sestavení `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`obslužné rutiny protokolu .
+Atribut **Name** elementu **Protocol** musí být nastaven na `Proprietary`hodnotu. Atribut **obslužné rutiny** musí obsahovat plně kvalifikovaný název sestavení `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`obslužné rutiny protokolu.
 
-Následující [vlastní zásady startovací balíček](custom-policy-get-started.md#custom-policy-starter-pack) Azure AD technické profily patří **AAD společné** technické profily. Technické profily Služby Azure AD neurčují protokol, protože protokol je nakonfigurovaný v technickém profilu **AAD-Common:**
+Následující technické profily služby Azure AD s [úvodním balíčkem pro vlastní zásady](custom-policy-get-started.md#custom-policy-starter-pack) zahrnují technický profil **AAD-Common** . Technické profily Azure AD nezaurčují protokol, protože protokol je nakonfigurovaný v technickém profilu **AAD-Common** :
  
-- **AAD-UserReadUsingAlternativeSecurityId** a **AAD-UserReadUsingAlternativeSecurityId-NoError** - Vyhledejte sociální účet v adresáři.
-- **AAD-UserWriteUsingAlternativeSecurityId** - Vytvořte nový sociální účet.
-- **AAD-UserReadUsingEmailAddress** - Vyhledejte místní účet v adresáři.
-- **AAD-UserWriteUsingLogonEmail** - Vytvoření nového místního účtu.
-- **AAD-UserWritePasswordUsingObjectId** - Aktualizace hesla místního účtu.
-- **AAD-UserWriteProfileUsingObjectId** - Aktualizace profilu uživatele místního nebo sociálního účtu.
-- **AAD-UserReadUsingObjectId** - Přečtěte si profil uživatele místního nebo sociálního účtu.
-- **AAD-UserWritePhoneUseUsingObjectId** - Zápis telefonního čísla MFA místního nebo sociálního účtu
+- **AAD-UserReadUsingAlternativeSecurityId** a **AAD-UserReadUsingAlternativeSecurityId-Error** – vyhledejte v adresáři účet pro sociální sítě.
+- **AAD-UserWriteUsingAlternativeSecurityId** – vytvoří nový účet sociální sítě.
+- **AAD-UserReadUsingEmailAddress** – vyhledání místního účtu v adresáři.
+- **AAD-UserWriteUsingLogonEmail** – vytvoří nový místní účet.
+- **AAD-UserWritePasswordUsingObjectId** – aktualizace hesla místního účtu.
+- **AAD-UserWriteProfileUsingObjectId** – aktualizuje profil uživatele místního nebo sociálního účtu.
+- **AAD-UserReadUsingObjectId** – Přečtěte si profil uživatele místního nebo sociálního účtu.
+- **AAD-UserWritePhoneNumberUsingObjectId** – zápis telefonního čísla MFA místního nebo sociálního účtu
 
-Následující příklad ukazuje technický profil **Společné ho daD:**
+Následující příklad ukazuje technický profil pro **AAD-Common** :
 
 ```XML
 <TechnicalProfile Id="AAD-Common">
@@ -56,29 +56,29 @@ Následující příklad ukazuje technický profil **Společné ho daD:**
 </TechnicalProfile>
 ```
 
-## <a name="inputclaims"></a>Vstupní deklarace
+## <a name="inputclaims"></a>InputClaims
 
-InputClaims Element obsahuje deklaraci identity, která se používá k vyhledat účet v adresáři nebo vytvořit nový. Musí být přesně jeden inputclaim prvek ve vstupní deklarace kolekce pro všechny technické profily Azure AD. Možná budete muset namapovat název deklarace deklarace definované ve vaší zásadě na název definovaný ve službě Azure Active Directory.
+Element InputClaims obsahuje deklaraci identity, která se používá k vyhledání účtu v adresáři, nebo vytvoření nového. Ve vstupní kolekci deklarací pro všechny technické profily služby Azure AD musí existovat přesně jeden element InputClaim. Možná budete muset namapovat název deklarace identity definované v zásadě na název definovaný v Azure Active Directory.
 
-Chcete-li číst, aktualizovat nebo odstranit existující uživatelský účet, vstupní deklarace identity je klíč, který jednoznačně identifikuje účet v adresáři Azure AD. Například **objectId**, **userPrincipalName**, **signInNames.emailAddress**, **signInNames.userName**nebo **alternativeSecurityId**. 
+Pokud chcete číst, aktualizovat nebo odstranit existující uživatelský účet, vstupní deklarace identity je klíč, který jedinečně identifikuje účet v adresáři služby Azure AD. Například **objectID**, **userPrincipalName**, **signInNames. EmailAddress**, **signInNames. username**nebo **alternativeSecurityId**. 
 
-Chcete-li vytvořit nový uživatelský účet, vstupní deklarace identity je klíč, který jednoznačně identifikuje místní nebo federovaný účet. Například místní účet: **signInNames.emailAddress**nebo **signInNames.userName**. Pro federovaný účet: **alternativeSecurityId**.
+Pokud chcete vytvořit nový uživatelský účet, vstupní deklarace identity je klíč, který jednoznačně identifikuje místní nebo federovaný účet. Například místní účet: **signInNames. EmailAddress**nebo **signInNames. username**. Pro federovaný účet: **alternativeSecurityId**.
 
-[InputClaimsTransformations](technicalprofiles.md#inputclaimstransformations) Element může obsahovat kolekci vstupní deklarace transformační prvky, které se používají k úpravě vstupní deklarace nebo generovat nové.
+Element [InputClaimsTransformations](technicalprofiles.md#inputclaimstransformations) může obsahovat kolekci vstupních transformačních prvků deklarací identity, které se používají k úpravě vstupní deklarace identity nebo k vygenerování nového.
 
 ## <a name="outputclaims"></a>OutputClaims
 
-**OutputClaims** Element obsahuje seznam deklarací vrácených technickým profilem Azure AD. Možná budete muset namapovat název deklarace deklarace definované ve vaší zásadě na název definovaný ve službě Azure Active Directory. Můžete také zahrnout deklarace identity, které nejsou vráceny službou `DefaultValue` Azure Active Directory, pokud nastavíte atribut.
+Element **OutputClaims** obsahuje seznam deklarací vrácených technickým profilem Azure AD. Možná budete muset namapovat název deklarace identity definované v zásadě na název definovaný v Azure Active Directory. Můžete také zahrnout deklarace identity, které nejsou vráceny Azure Active Directory, pokud nastavíte `DefaultValue` atribut.
 
-[OutputClaimsTransformations](technicalprofiles.md#outputclaimstransformations) Element může obsahovat kolekci **OutputClaimsTransformation** prvky, které se používají k úpravě výstupní deklarace nebo generovat nové.
+Element [OutputClaimsTransformations](technicalprofiles.md#outputclaimstransformations) může obsahovat kolekci prvků **OutputClaimsTransformation** , které se používají k úpravě výstupních deklarací identity nebo k vygenerování nových.
 
 Například technický profil **AAD-UserWriteUsingLogonEmail** vytvoří místní účet a vrátí následující deklarace identity:
 
-- **objectId**, což je identifikátor nového účtu
-- **newUser**, který označuje, zda je uživatel nový
-- **authenticationSource**, který nastaví ověřování na`localAccountAuthentication`
-- **userPrincipalName**, což je hlavní uživatelské jméno nového účtu
-- **signInNames.emailAddress**, což je přihlašovací jméno účtu, podobné deklaraci vstupu **e-mailu**
+- **objectID**, což je identifikátor nového účtu
+- **nový_uživatel**, který označuje, zda je uživatel nový
+- **authenticationSource**, který nastavuje ověřování na`localAccountAuthentication`
+- **userPrincipalName**, což je hlavní název uživatele nového účtu
+- **signInNames. EmailAddress**, což je přihlašovací jméno účtu, podobně jako deklarace vstupu **e-mailu**
 
 ```xml
 <OutputClaims>
@@ -90,11 +90,11 @@ Například technický profil **AAD-UserWriteUsingLogonEmail** vytvoří místn�
 </OutputClaims>
 ```
 
-## <a name="persistedclaims"></a>Trvalé deklarace identity
+## <a name="persistedclaims"></a>PersistedClaims
 
-**PersistedClaims** Element obsahuje všechny hodnoty, které by měly být trvalé služby Azure AD s možnými informacemi o mapování mezi typem deklarace identity již definované v [claimsSchema](claimsschema.md) části v zásadě a název atributu Azure AD.
+Element **PersistedClaims** obsahuje všechny hodnoty, které by se měly zachovat službou Azure AD s možnými informacemi o mapování mezi typem deklarace identity, který je už definovaný v části [ClaimsSchema](claimsschema.md) v zásadách a v názvu atributu Azure AD.
 
-Technický profil **AAD-UserWriteUsingLogonEmail,** který vytváří nový místní účet, přetrvává následující deklarace identity:
+Technický profil **AAD-UserWriteUsingLogonEmail** , který vytváří nový místní účet, uchovává následující deklarace identity:
 
 ```XML
   <PersistedClaims>
@@ -110,21 +110,21 @@ Technický profil **AAD-UserWriteUsingLogonEmail,** který vytváří nový mís
   </PersistedClaims>
 ```
 
-Název deklarace pohledávky je název atributu Azure AD, pokud není zadán atribut **PartnerClaimType,** který obsahuje název atributu Azure AD.
+Název deklarace identity je název atributu Azure AD, pokud není zadaný atribut **PartnerClaimType** , který obsahuje název atributu Azure AD.
 
 ## <a name="requirements-of-an-operation"></a>Požadavky na operaci
 
-- Musí být přesně jeden prvek **InputClaim** v vaku deklarací identity pro všechny technické profily Azure AD.
-- [Článek atributů profilu uživatele](user-profile-attributes.md) popisuje podporované atributy profilu uživatele Azure AD B2C, které můžete použít ve vstupních deklaracích identity, výstupní deklarace identity a trvalé deklarace identity. 
-- Pokud je `Write` operace `DeleteClaims`nebo , musí se také zobrazit v **prvku PersistedClaims.**
-- Hodnota deklarace **userPrincipalName** musí být ve `user@tenant.onmicrosoft.com`formátu .
-- Deklarace **displayName** je vyžadována a nemůže být prázdný řetězec.
+- V kontejneru deklarací se musí nacházet přesně jeden element **InputClaim** pro všechny technické profily služby Azure AD.
+- [Článek s atributy profilu uživatele](user-profile-attributes.md) popisuje podporované Azure AD B2C atributy profilu uživatele, které můžete použít ve vstupních deklaracích, výstupech deklarací identity a trvalých deklaracích identity. 
+- Pokud je `Write` operace nebo `DeleteClaims`, musí se také objevit v elementu **PersistedClaims** .
+- Hodnota deklarace **userPrincipalName** musí být ve formátu `user@tenant.onmicrosoft.com`.
+- Deklarace **DisplayName** je povinná a nemůže být prázdným řetězcem.
 
-## <a name="azure-ad-technical-provider-operations"></a>Operace technického zprostředkovatele Azure AD
+## <a name="azure-ad-technical-provider-operations"></a>Operace technického poskytovatele služby Azure AD
 
 ### <a name="read"></a>Čtení
 
-Operace **Čtení** čte data o jednom uživatelském účtu. Následující technický profil přečte data o uživatelském účtu pomocí objektu id uživatele:
+Operace **čtení** čte data o jednom uživatelském účtu. Následující technický profil čte data o uživatelském účtu pomocí identifikátoru objectId uživatele:
 
 ```XML
 <TechnicalProfile Id="AAD-UserReadUsingObjectId">
@@ -154,7 +154,7 @@ Operace **Čtení** čte data o jednom uživatelském účtu. Následující tec
 
 ### <a name="write"></a>Zápis
 
-Operace **Zápis** vytvoří nebo aktualizuje jeden uživatelský účet. Následující technický profil vytváří nový sociální účet:
+Operace **zápisu** vytvoří nebo aktualizuje jeden uživatelský účet. Následující technický profil vytvoří nový účet sociální sítě:
 
 ```XML
 <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
@@ -192,9 +192,9 @@ Operace **Zápis** vytvoří nebo aktualizuje jeden uživatelský účet. Násle
 </TechnicalProfile>
 ```
 
-### <a name="deleteclaims"></a>Odstranit deklarace identity
+### <a name="deleteclaims"></a>DeleteClaims
 
-Operace **DeleteClaims** vymaže informace z poskytnutého seznamu deklarací identity. Následující technický profil odstraní deklarace identity:
+Operace **DeleteClaims** vymaže informace ze zadaného seznamu deklarací identity. Následující technický profil odstraní deklarace identity:
 
 ```XML
 <TechnicalProfile Id="AAD-DeleteClaimsUsingObjectId">
@@ -213,9 +213,9 @@ Operace **DeleteClaims** vymaže informace z poskytnutého seznamu deklarací id
 </TechnicalProfile>
 ```
 
-### <a name="deleteclaimsprincipal"></a>Odstranit objekt DeleteClaimsPrincipal
+### <a name="deleteclaimsprincipal"></a>DeleteClaimsPrincipal
 
-Operace **DeleteClaimsPrincipal** odstraní z adresáře jeden uživatelský účet. Následující technický profil odstraní uživatelský účet z adresáře pomocí hlavního uživatelského jména:
+Operace **DeleteClaimsPrincipal** odstraní jeden uživatelský účet z adresáře. Následující technický profil odstraní uživatelský účet z adresáře pomocí hlavního názvu uživatele:
 
 ```XML
 <TechnicalProfile Id="AAD-DeleteUserUsingObjectId">
@@ -230,7 +230,7 @@ Operace **DeleteClaimsPrincipal** odstraní z adresáře jeden uživatelský ú�
 </TechnicalProfile>
 ```
 
-Následující technický profil odstraní sociální uživatelský účet pomocí **alternativeSecurityId**:
+Následující technický profil odstraní účet uživatele sociální sítě pomocí **alternativeSecurityId**:
 
 ```XML
 <TechnicalProfile Id="AAD-DeleteUserUsingAlternativeSecurityId">
@@ -248,28 +248,28 @@ Následující technický profil odstraní sociální uživatelský účet pomoc
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| Operace | Ano | Operace, která má být provedena. Možné `Read`hodnoty: `Write` `DeleteClaims`, `DeleteClaimsPrincipal`, , nebo . |
-| RaiseErrorIfClaimsPrincipalDoesNotExist | Ne | Pokud objekt uživatele v adresáři neexistuje, vyvolá temene chybou. Možné `true` hodnoty: `false`nebo . |
-| RaiseErrorIfClaimsPrincipalAlreadyExists | Ne | Pokud objekt uživatele již existuje, vyvolá temene chybou. Možné `true` hodnoty: `false`nebo .|
-| ApplicationObjectId | Ne | Identifikátor objektu aplikace pro atributy rozšíření. Hodnota: ObjectId aplikace. Další informace naleznete v tématu [Použití vlastních atributů ve vlastních zásadách úprav profilu](custom-policy-custom-attributes.md). |
-| ClientId | Ne | Identifikátor klienta pro přístup k tenantovi jako třetí strana. Další informace naleznete v tématu [Použití vlastních atributů ve vlastních zásadách úprav profilu.](custom-policy-custom-attributes.md) |
-| IncludeClaimResolvingInClaimsHandling  | Ne | Pro vstupní a výstupní deklarace určuje, zda je [řešení deklarací](claim-resolver-overview.md) zahrnuto do technického profilu. Možné hodnoty: `true` `false`  , nebo (výchozí). Pokud chcete použít překladač deklarací identity v `true`technickém profilu, nastavte toto na . |
+| Operace | Ano | Operace, která má být provedena. Možné hodnoty: `Read`, `Write`, `DeleteClaims`, nebo `DeleteClaimsPrincipal`. |
+| RaiseErrorIfClaimsPrincipalDoesNotExist | Ne | Vyvolá chybu, pokud objekt uživatele v adresáři neexistuje. Možné hodnoty: `true` nebo `false`. |
+| RaiseErrorIfClaimsPrincipalAlreadyExists | Ne | Vyvolá chybu, pokud objekt uživatele již existuje. Možné hodnoty: `true` nebo `false`.|
+| ApplicationObjectId | Ne | Identifikátor objektu aplikace pro atributy rozšíření. Hodnota: ObjectId objektu aplikace. Další informace najdete v tématu [použití vlastních atributů v zásadách úprav vlastního profilu](custom-policy-custom-attributes.md). |
+| ClientId | Ne | Identifikátor klienta pro přístup k tenantovi jako třetí strana. Další informace najdete v tématu [použití vlastních atributů v zásadách úprav vlastního profilu](custom-policy-custom-attributes.md) . |
+| IncludeClaimResolvingInClaimsHandling  | Ne | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true`, nebo `false`  (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true`. |
 
 ### <a name="ui-elements"></a>Prvky uživatelského rozhraní
  
-Následující nastavení lze použít ke konfiguraci chybové zprávy zobrazené při selhání. Metadata by měla být konfigurována v [samoobslužném technickém](self-asserted-technical-profile.md) profilu. Chybové zprávy lze [lokalizovat](localization.md).
+Následující nastavení lze použít ke konfiguraci chybové zprávy, která se zobrazí po selhání. Metadata by měla být nakonfigurovaná v technickém profilu s [vlastním kontrolním](self-asserted-technical-profile.md) výrazem. Chybové zprávy lze [lokalizovat](localization.md).
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| UserMessageIfClaimsPrincipalAlreadyExists | Ne | Pokud má být vyvolána chyba (viz RaiseErrorIfClaimsPrincipalAlreadyExists popis atributu), zadejte zprávu, která se má zobrazit uživateli, pokud objekt uživatele již existuje. |
-| UserMessageIfClaimsPrincipalDoesNotExist | Ne | Pokud má být vyvolána chyba (viz popis atributu RaiseErrorIfClaimsPrincipalDoesNotExist), zadejte zprávu, která se má uživateli zobrazit, pokud objekt uživatele neexistuje. |
+| UserMessageIfClaimsPrincipalAlreadyExists | Ne | Pokud má být vyvolána chyba (viz popis atributu RaiseErrorIfClaimsPrincipalAlreadyExists), zadejte zprávu, která se zobrazí uživateli, pokud již objekt uživatele existuje. |
+| UserMessageIfClaimsPrincipalDoesNotExist | Ne | Pokud se má vykazovat chyba (viz popis atributu RaiseErrorIfClaimsPrincipalDoesNotExist), zadejte zprávu, která se zobrazí uživateli, pokud objekt uživatele neexistuje. |
 
 
 ## <a name="next-steps"></a>Další kroky
 
-V následujícím článku, například pomocí technického profilu Azure AD:
+Podívejte se na následující článek, například používání technického profilu Azure AD:
 
-- [Přidání deklarací identity a přizpůsobení vstupu uživatele pomocí vlastních zásad ve službě Azure Active Directory B2C](custom-policy-configure-user-input.md)
+- [Přidání deklarací identity a přizpůsobení uživatelského vstupu pomocí vlastních zásad v Azure Active Directory B2C](custom-policy-configure-user-input.md)
 
 
 

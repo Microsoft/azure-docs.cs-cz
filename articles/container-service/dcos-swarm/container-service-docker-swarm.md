@@ -1,6 +1,6 @@
 ---
-title: (ZASTARALÉ) Správa clusteru Azure Swarm pomocí rozhraní Docker API
-description: Nasazení kontejnerů do clusteru Docker Swarm ve službě Azure Container Service
+title: ZASTARALÉ Správa clusteru Azure Swarm pomocí rozhraní Docker API
+description: Nasazení kontejnerů do clusteru Docker Swarm v Azure Container Service
 services: container-service
 author: rgardler
 manager: madhana
@@ -10,13 +10,13 @@ ms.date: 09/13/2016
 ms.author: rogardle
 ms.custom: mvc
 ms.openlocfilehash: c76701ce74aafcccdbb2f1a2454f9528b52fc096
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79136223"
 ---
-# <a name="deprecated-container-management-with-docker-swarm"></a>(ZASTARALÉ) Správa kontejnerů s Docker Swarm
+# <a name="deprecated-container-management-with-docker-swarm"></a>ZASTARALÉ Správa kontejnerů pomocí Docker Swarm
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -69,7 +69,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 ## <a name="deploy-containers-by-using-docker-compose"></a>Nasazení kontejnerů pomocí Docker Compose
 Pomocí Docker Compose je možné automatizovat nasazení a konfiguraci několika kontejnerů. Abyste toho mohli využít, ujistěte se, že je vytvořen tunel Secure Shell (SSH) a že je nastavena proměnná DOCKER_HOST (viz předpoklady výše).
 
-Vytvořte v lokálním systému soubor docker-compose.yml. Chcete-li to provést, použijte tuto ukázku:
+Vytvořte v lokálním systému soubor docker-compose.yml. K tomu použijte tuto ukázku:
 
 ```dockerfile
 web:

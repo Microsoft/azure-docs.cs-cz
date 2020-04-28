@@ -1,7 +1,7 @@
 ---
-title: Logické deklarace identity příklady transformace pro vlastní zásady
+title: Příklady logických transformací deklarací identity pro vlastní zásady
 titleSuffix: Azure AD B2C
-description: Logické deklarace identity transformace příklady pro rozhraní Identity Experience Framework (IEF) schéma Služby Azure Active Directory B2C.
+description: Příklady logických transformací deklarací identity pro schéma rozhraní IEF (identity Experience Framework) Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,29 +12,29 @@ ms.date: 04/01/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 007d613a1f170a0ee278a838c92ade2fce9c6dec
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80529206"
 ---
-# <a name="boolean-claims-transformations"></a>Logická hodnota deklarací identity
+# <a name="boolean-claims-transformations"></a>Logické transformace deklarací identity
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Tento článek obsahuje příklady pro použití logických deklarací transformace schématu identity experience framework v Azure Active Directory B2C (Azure AD B2C). Další informace naleznete v tématu [ClaimsTransformations](claimstransformations.md).
+Tento článek popisuje příklady použití logických transformací identity schématu rozhraní identity Experience v Azure Active Directory B2C (Azure AD B2C). Další informace najdete v tématu [ClaimsTransformations](claimstransformations.md).
 
 ## <a name="andclaims"></a>AndClaims
 
-Provede and operace dvou logických inputClaims a nastaví outputClaim s výsledkem operace.
+Provede operaci a se dvěma logickými inputClaims a nastaví outputClaim s výsledkem operace.
 
 | Položka  | TransformationClaimType  | Typ dat  | Poznámky |
 |-------| ------------------------ | ---------- | ----- |
-| Vstupní deklarace | inputClaim1 | Boolean | První ClaimType vyhodnotit. |
-| Vstupní deklarace | inputClaim2  | Boolean | Druhý ClaimType vyhodnotit. |
-|Výstupní nárok | outputClaim | Boolean | ClaimTypes, které budou vytvořeny po této deklarace transformace byla vyvolána (true nebo false). |
+| InputClaim | inputClaim1 | Boolean | První deklarace ClaimType pro vyhodnocení. |
+| InputClaim | inputClaim2  | Boolean | Druhá deklarace ClaimType pro vyhodnocení. |
+|OutputClaim | outputClaim | Boolean | ClaimTypes, který bude vytvořen po vyvolání této transformace deklarací (true nebo false). |
 
-Následující deklarace transformace ukazuje, jak and dva `isEmailNotExist`logické `isSocialAccount`ClaimTypes: , a . Výstupní deklarace `presentEmailSelfAsserted` je `true` nastavena na, pokud `true`je hodnota obou vstupních deklarací . V kroku orchestrace můžete použít předběžnou podmínku pro přednastavení stránky s vlastním uplatněním, pouze pokud je e-mail sociálního účtu prázdný.
+Následující transformace deklarací identity ukazuje, jak a dvě booleovské ClaimTypes: `isEmailNotExist`a `isSocialAccount`. Výstupní deklarace identity `presentEmailSelfAsserted` je nastavena na `true` hodnotu, pokud jsou `true`obě vstupní deklarace identity. V kroku orchestrace můžete použít předběžnou podmínku k přednastavení stránky s vlastním kontrolním účtem, jenom když je e-mail účtu v sociální síti prázdný.
 
 ```XML
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="AndClaims">
@@ -50,27 +50,27 @@ Následující deklarace transformace ukazuje, jak and dva `isEmailNotExist`logi
 
 ### <a name="example"></a>Příklad
 
-- Vstupní deklarace:
+- Vstupní deklarace identity:
     - **inputClaim1**: true
     - **inputClaim2**: false
-- Výstupní nároky:
+- Deklarace výstupů:
     - **outputClaim**: false
 
 
-## <a name="assertbooleanclaimisequaltovalue"></a>AssertToleanClaimIsEqualToValue
+## <a name="assertbooleanclaimisequaltovalue"></a>AssertBooleanClaimIsEqualToValue
 
-Zkontroluje, zda jsou logické hodnoty dvou deklarací stejné a vyvolá výjimku, pokud nejsou.
+Kontroluje, zda logické hodnoty dvou deklarací identity jsou stejné, a vyvolá výjimku, pokud nejsou.
 
 | Položka | TransformationClaimType  | Typ dat  | Poznámky |
 | ---- | ------------------------ | ---------- | ----- |
-| inputClaim | inputClaim | Boolean | ClaimType, které mají být uplatněny. |
-| Parametr Input |valueToCompareTo | Boolean | Hodnota porovnat (true nebo false). |
+| inputClaim | inputClaim | Boolean | Deklarace ClaimType, která má být uplatněna. |
+| InputParameter |valueToCompareTo | Boolean | Hodnota, která má být porovnána (true nebo false). |
 
-**AssertBooleanClaimIsEqualToValue** nároky transformace je vždy proveden z [ověření technického profilu,](validation-technical-profile.md) který je volán [samostatně uplatněný technický profil](self-asserted-technical-profile.md). Metadata technického profilu, která se zobrazuje v **uživatelskézprávěIfIfClaims, určuje základní hodnotu Jsounotačové** a nesená metadata technického profilu, určuje chybovou zprávu, kterou uživateli zobrazí technický profil. Chybové zprávy lze [lokalizovat](localization-string-ids.md#claims-transformations-error-messages).
+Transformace deklarací **AssertBooleanClaimIsEqualToValue** je vždy prováděna z [technického profilu ověření](validation-technical-profile.md) , který je volán pomocí [technického profilu s vlastním uplatněním](self-asserted-technical-profile.md). Metadata technického profilu **UserMessageIfClaimsTransformationBooleanValueIsNotEqual** s vlastním uplatněním řídí chybovou zprávu, kterou poskytuje technický profil uživateli. Chybové zprávy lze [lokalizovat](localization-string-ids.md#claims-transformations-error-messages).
 
-![AssertStringClaimsAreEqual provádění](./media/boolean-transformations/assert-execution.png)
+![Spuštění AssertStringClaimsAreEqual](./media/boolean-transformations/assert-execution.png)
 
-Následující transformace deklarací ukazuje, jak zkontrolovat hodnotu logického `true` claimtype s hodnotou. Pokud je hodnota `accountEnabled` ClaimType false, je vyvolána chybová zpráva.
+Následující transformace deklarací identity ukazuje, jak ověřit hodnotu logického typu ClaimType s `true` hodnotou. Pokud je hodnota `accountEnabled` ClaimType false, je vyvolána chybová zpráva.
 
 ```XML
 <ClaimsTransformation Id="AssertAccountEnabledIsTrue" TransformationMethod="AssertBooleanClaimIsEqualToValue">
@@ -84,7 +84,7 @@ Následující transformace deklarací ukazuje, jak zkontrolovat hodnotu logick�
 ```
 
 
-Technický `login-NonInteractive` profil ověření `AssertAccountEnabledIsTrue` volá transformaci deklarací identity.
+Technický `login-NonInteractive` profil ověření volá transformaci `AssertAccountEnabledIsTrue` deklarací identity.
 ```XML
 <TechnicalProfile Id="login-NonInteractive">
   ...
@@ -94,7 +94,7 @@ Technický `login-NonInteractive` profil ověření `AssertAccountEnabledIsTrue`
 </TechnicalProfile>
 ```
 
-Samoobslužný technický profil volá ověření **login-NonInteractive** technický profil.
+Technický profil s vlastním uplatněním volá ověřovací **přihlášení – neinteraktivní** technický profil.
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
@@ -109,23 +109,23 @@ Samoobslužný technický profil volá ověření **login-NonInteractive** techn
 
 ### <a name="example"></a>Příklad
 
-- Vstupní deklarace:
+- Vstupní deklarace identity:
     - **inputClaim**: false
     - **valueToCompareTo**: true
-- Výsledek: Vyvolána chyba
+- Výsledek: došlo k chybě
 
 ## <a name="comparebooleanclaimtovalue"></a>CompareBooleanClaimToValue
 
-Zkontroluje, zda je logická `true` hodnota `false`deklarace rovná nebo , a vrátí výsledek komprese.
+Kontroluje, zda je logická hodnota deklarace identity rovna `true` hodnotě `false`nebo a vrátí výsledek komprese.
 
 | Položka | TransformationClaimType  | Typ dat  | Poznámky |
 | ---- | ------------------------ | ---------- | ----- |
-| Vstupní deklarace | inputClaim | Boolean | ClaimType, které mají být uplatněny. |
-| Parametr Input |valueToCompareTo | Boolean | Hodnota porovnat (true nebo false). |
-| Výstupní nárok | compareVýsledek | Boolean | ClaimType, který je vytvořen po této ClaimsTransformation byla vyvolána. |
+| InputClaim | inputClaim | Boolean | Deklarace ClaimType, která má být uplatněna. |
+| InputParameter |valueToCompareTo | Boolean | Hodnota, která má být porovnána (true nebo false). |
+| OutputClaim | compareResult | Boolean | Deklarace ClaimType, která je vytvořena po vyvolání tohoto ClaimsTransformation. |
 
 
-Následující transformace deklarací ukazuje, jak zkontrolovat hodnotu logického `true` claimtype s hodnotou. Pokud je hodnota `IsAgeOver21Years` ClaimType rovna `true`, transformace `true`deklarací vrátí , jinak `false`.
+Následující transformace deklarací identity ukazuje, jak ověřit hodnotu logického typu ClaimType s `true` hodnotou. `IsAgeOver21Years` Pokud je hodnota ClaimType rovna `true`, transformace deklarací identity vrátí `true`, jinak. `false`
 
 ```XML
 <ClaimsTransformation Id="AssertAccountEnabled" TransformationMethod="CompareBooleanClaimToValue">
@@ -143,25 +143,25 @@ Následující transformace deklarací ukazuje, jak zkontrolovat hodnotu logick�
 
 ### <a name="example"></a>Příklad
 
-- Vstupní deklarace:
+- Vstupní deklarace identity:
     - **inputClaim**: false
 - Vstupní parametry:
     - **valueToCompareTo**: true
-- Výstupní nároky:
+- Deklarace výstupů:
     - **compareResult**: false
 
 
 
-## <a name="notclaims"></a>Notclaims
+## <a name="notclaims"></a>NotClaims
 
-Provede operaci Není logické vstupní Deklarace a nastaví výstupDeklarac s výsledkem operace.
+Provede operaci not pro logickou inputClaim a nastaví outputClaim s výsledkem operace.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| Vstupní deklarace | inputClaim | Boolean | Nárok, který má být provozován. |
-| Výstupní nárok | outputClaim | Boolean | ClaimTypes, které jsou vytvořeny po této ClaimsTransformation byla vyvolána (true nebo false). |
+| InputClaim | inputClaim | Boolean | Deklaraci identity, která se má provozovat. |
+| OutputClaim | outputClaim | Boolean | ClaimTypes, které jsou vytvářeny po vyvolání tohoto ClaimsTransformation (true nebo false). |
 
-Pomocí této transformace deklarace můžete provést logické negace deklarace identity.
+Pomocí této transformace deklarace identity proveďte logickou negaci deklarace identity.
 
 ```XML
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="NotClaims">
@@ -176,22 +176,22 @@ Pomocí této transformace deklarace můžete provést logické negace deklarace
 
 ### <a name="example"></a>Příklad
 
-- Vstupní deklarace:
+- Vstupní deklarace identity:
     - **inputClaim**: false
-- Výstupní nároky:
-    - **outputClaim**: true outputClaim : true outputClaim : true outputClaim
+- Deklarace výstupů:
+    - **outputClaim**: true
 
 ## <a name="orclaims"></a>OrClaims
 
-Vypočítá Nebo dvou logických vstupů Deklarace a nastaví outputClaim s výsledkem operace.
+Vypočítá nebo ze dvou logických inputClaims a nastaví outputClaim s výsledkem operace.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| Vstupní deklarace | inputClaim1 | Boolean | První ClaimType vyhodnotit. |
-| Vstupní deklarace | inputClaim2 | Boolean | Druhý ClaimType vyhodnotit. |
-| Výstupní nárok | outputClaim | Boolean | ClaimTypes, které budou vytvořeny po této ClaimsTransformation byla vyvolána (true nebo false). |
+| InputClaim | inputClaim1 | Boolean | První deklarace ClaimType pro vyhodnocení. |
+| InputClaim | inputClaim2 | Boolean | Druhá deklarace ClaimType pro vyhodnocení. |
+| OutputClaim | outputClaim | Boolean | ClaimTypes, který bude vytvořen po vyvolání této ClaimsTransformation (true nebo false). |
 
-Následující transformace deklarací ukazuje, jak dva `Or` logické ClaimTypes. V kroku orchestrace můžete použít předběžnou podmínku pro přednastavení stránky s vlastním uplatněním, `true`pokud je hodnota jedné z deklarací .
+Následující transformace deklarací identity ukazuje, jak `Or` se dvěma logickými ClaimTypesy. V kroku orchestrace můžete použít předběžnou podmínku k přednastavení stránky s vlastním oceněním, pokud je `true`hodnota jedné z deklarací.
 
 ```XML
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="OrClaims">
@@ -207,8 +207,8 @@ Následující transformace deklarací ukazuje, jak dva `Or` logické ClaimTypes
 
 ### <a name="example"></a>Příklad
 
-- Vstupní deklarace:
+- Vstupní deklarace identity:
     - **inputClaim1**: true
     - **inputClaim2**: false
-- Výstupní nároky:
-    - **outputClaim**: true outputClaim : true outputClaim : true outputClaim
+- Deklarace výstupů:
+    - **outputClaim**: true

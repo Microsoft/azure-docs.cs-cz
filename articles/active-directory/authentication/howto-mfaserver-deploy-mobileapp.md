@@ -1,5 +1,5 @@
 ---
-title: Webová služba Mobilní aplikace Azure MFA Server – Azure Active Directory
+title: Webová služba mobilní aplikace Azure MFA Server – Azure Active Directory
 description: Nakonfigurujte server MFA k zasílání nabízených oznámení uživatelům pomocí aplikace Microsoft Authenticator.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,20 +12,20 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 785c4ccf591ce6a7a50a3d144fb1740121c73ce6
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80653192"
 ---
 # <a name="enable-mobile-app-authentication-with-azure-multi-factor-authentication-server"></a>Povolení ověření přes mobilní aplikaci se serverem Azure Multi-Factor Authentication
 
-Aplikace Microsoft Authenticator nabízí možnost dalšího ověření mimo pásmo. Místo automatického telefonního hovoru nebo SMS uživateli během přihlášení, Azure Multi-Factor Authentication odešle oznámení do aplikace Microsoft Authenticator na smartphonu nebo tabletu uživatele. Uživatel jednoduše klepne **na ověřit** (nebo zadá PIN kód a klepne na "Ověřit") v aplikaci k dokončení jejich přihlášení.
+Aplikace Microsoft Authenticator nabízí možnost dalšího ověření mimo pásmo. Místo vložení automatizovaného telefonního hovoru nebo serveru SMS uživateli během přihlašování Azure Multi-Factor Authentication do aplikace Microsoft Authenticator smartphone nebo tabletu uživatele pošle oznámení. Uživatel jednoduše v aplikaci **klepne na ověřit** (nebo zadá kód PIN a klepne na "ověřit") a dokončí přihlášení.
 
 Použití mobilní aplikace pro dvojstupňové ověřování se upřednostňuje v případě, že je telefonní příjem nespolehlivý. Pokud aplikaci používáte jako generátor tokenu OAUTH, nevyžaduje připojení k síti ani k internetu.
 
 > [!IMPORTANT]
-> července 2019 již společnost Microsoft nebude nabízet server MFA pro nová nasazení. Noví zákazníci, kteří by chtěli od svých uživatelů vyžadovat vícefaktorové ověřování, by měli používat vícefaktorové ověřování Azure na základě cloudu. Stávající zákazníci, kteří aktivovali server MFA před 1.
+> Od 1. července 2019 už Microsoft nenabídne MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat službu Multi-Factor Authentication od uživatelů, by měli používat cloudové Multi-Factor Authentication Azure. Stávající zákazníci, kteří mají aktivovaný MFA Server před 1. července, budou moci stáhnout nejnovější verzi, budoucí aktualizace a generovat přihlašovací údaje pro aktivaci obvyklým způsobem.
 
 > [!IMPORTANT]
 > Pokud máte nainstalovaný Azure Multi-Factor Authentication Server v8.x nebo novější, většina následujících kroků se nevyžaduje. Ověřování přes mobilní aplikaci můžete nastavit podle pokynů v části [Konfigurace mobilní aplikace](#configure-the-mobile-app-settings-in-the-azure-multi-factor-authentication-server).
@@ -45,4 +45,4 @@ Pokud chcete použít aplikaci Microsoft Authenticator, musíte mít Azure Multi
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Pokročilé scénáře s azure multi-factor authentication a virtuálními sítěmi třetích stran](howto-mfaserver-nps-vpn.md).
+- [Pokročilé scénáře se službou Azure Multi-Factor Authentication a sítěmi VPN třetích stran](howto-mfaserver-nps-vpn.md).

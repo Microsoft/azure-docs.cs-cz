@@ -1,6 +1,6 @@
 ---
-title: Analýza dat zařízení v aplikaci Azure IoT Central | Dokumenty společnosti Microsoft
-description: Analyzujte data zařízení v aplikaci Azure IoT Central.
+title: Analýza dat zařízení ve vaší aplikaci Azure IoT Central | Microsoft Docs
+description: Analyzujte data zařízení ve vaší aplikaci Azure IoT Central.
 author: ankitscribbles
 ms.author: ankitgup
 ms.date: 11/27/2019
@@ -9,87 +9,87 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: 40460b58ede0ca0da8fe25475906bdbe41bfffe0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80158278"
 ---
-# <a name="how-to-use-analytics-to-analyze-device-data"></a>Jak používat analýzy k analýze dat zařízení
+# <a name="how-to-use-analytics-to-analyze-device-data"></a>Analýza dat zařízení pomocí analýzy
 
 *Tento článek je pro operátory, tvůrce a správce.*
 
 
 
-Azure IoT Central poskytuje bohaté analytické funkce pro analýzu historických trendů a korelovat různé telemerie z vašich zařízení. Chcete-li začít, navštivte v levém podokně **službu Analytics.**
+Azure IoT Central poskytuje bohatou analytickou možnost analýzy historických trendů a koreluje různé telemetrií ze svých zařízení. Začněte tím, že přejdete na web **Analytics** v levém podokně.
 
-## <a name="understanding-the-analytics-ui"></a>Principy ui analýzy
-Uživatelské rozhraní Analytics je tvořeno třemi hlavními součástmi:
-- **Panel konfigurace dat:** Na konfiguračním panelu začněte výběrem skupiny zařízení, pro kterou chcete analyzovat data. Dále vyberte telemetrii, kterou chcete analyzovat, a vyberte metodu agregace pro každou telemetrii. **Ovládací** prvek Rozdělit pomáhá seskupit data pomocí vlastností zařízení jako dimenzí.
+## <a name="understanding-the-analytics-ui"></a>Principy uživatelského rozhraní pro analýzu
+Uživatelské rozhraní analýzy se skládá ze tří hlavních součástí:
+- **Panel konfigurace dat:** Na panelu Konfigurace Začněte výběrem skupiny zařízení, pro kterou chcete data analyzovat. Dále vyberte telemetrii, kterou chcete analyzovat, a pro každou telemetrii vyberte metodu agregace. **Rozdělení podle** ovládacího prvku pomáhá seskupovat data pomocí vlastností zařízení jako dimenzí.
 
-- **Řízení času:** Řízení času se používá k výběru doby trvání, po kterou chcete analyzovat data. Přetažením jezdce času můžete vybrat časový rozsah. Řízení času má také posuvník **velikostinterval,** který řídí segment nebo velikost intervalu slouží k agregaci dat. 
+- **Řízení času:** Řízení času slouží k výběru doby trvání, pro kterou chcete data analyzovat. Časový rozsah můžete vybrat přetažením obou konců času posuvníku. Ovládací prvek Time má také posuvník **velikosti intervalu** , který řídí interval nebo velikost intervalu používaného k agregaci dat. 
 
-- **Ovládací prvek Grafu:** Ovládací prvek grafu vizualizuje data jako spojnicový graf. Můžete přepnout viditelnost určitých řádků interakcí s legendou grafu. 
+- **Ovládací prvek grafu:** Ovládací prvek graf vizualizuje data jako spojnicový graf. Viditelnost konkrétních řádků můžete přepínat interakcí s legendou grafu. 
 
 
-  ![Přehled ui analýzy](media/howto-create-analytics/analyticsui.png)
+  ![Přehled uživatelského rozhraní Analytics](media/howto-create-analytics/analyticsui.png)
 
 
 ## <a name="querying-your-data"></a>Dotazování na data
 
-Budete muset začít výběrem **skupiny zařízení**a telemetrie, kterou chcete analyzovat. Až budete hotovi, vyberte **Analyzovat** a začněte vizualizovat data.
+Musíte začít volbou **skupiny zařízení**a telemetrie, kterou chcete analyzovat. Až budete hotovi, vyberte **analyzovat** a začněte vizualizovat data.
 
-- **Skupina zařízení:** [Skupina zařízení](tutorial-use-device-groups.md) je uživatelem definovaná skupina vašich zařízení. Například všechny chladničky v Oaklandu nebo všechny verze 2.0 větrné turbíny.
+- **Skupina zařízení:** [Skupina zařízení](tutorial-use-device-groups.md) je uživatelem definovaná skupina vašich zařízení. Například všechny chladničky v Oakland nebo všechny verze 2,0 větrné turbíny.
 
-- **Telemetrie:** Vyberte telemetrii, kterou chcete analyzovat a prozkoumat. Můžete vybrat více telemerie analyzovat společně. Výchozí metoda agregace je nastavena na průměr pro číselné a Count pro typ dat řetězce v uvedeném pořadí. Podporované metody agregace pro číselné datové typy jsou Průměr, Maximum, Minimum, Počet a Součet.  Podporované metody agregace pro datový typ řetězce jsou počet.
+- **Telemetrie:** Vyberte telemetrii, kterou chcete analyzovat a prozkoumat. Můžete vybrat více telemetrií a analyzovat je dohromady. Výchozí agregační metoda je nastavená na průměr pro číselnou hodnotu a počet pro datový typ String v uvedeném pořadí. Podporované metody agregace pro číselné datové typy jsou Average, Max, minim, Count a Sum.  Podporované metody agregace pro datový typ String jsou Count.
 
-- **Rozdělit podle:** Ovládací prvek Rozdělení podle pomáhá seskupit data pomocí vlastností zařízení jako dimenzí. Hodnoty vlastností zařízení a cloudu jsou spojeny spolu s telemetrií, jak a kdy je odeslána zařízením. Pokud cloud nebo zařízení vlastnost byla aktualizována, pak se zobrazí telemetrie seskupené podle různých hodnot v grafu.
+- **Rozdělit podle:** Ovládací prvek rozdělit podle pomáhá seskupovat data pomocí vlastností zařízení jako dimenzí. Hodnoty vlastností zařízení a cloudu se spolu s telemetrie spojí jako a při posílání zařízením. Pokud se vlastnost cloudu nebo zařízení aktualizovala, zobrazí se telemetrie seskupená podle různých hodnot v grafu.
 
     > [!TIP]
-    > Chcete-li zobrazit data pro každé zařízení samostatně, vyberte ID zařízení v ovládacím prvku Rozdělit.
+    > Pokud chcete zobrazit data pro každé zařízení samostatně, vyberte v ovládacím prvku rozdělit podle ID zařízení.
 
 ## <a name="interacting-with-your-data"></a>Interakce s daty
 
-Po dotazování na data je můžete začít vizualizovat v spojnicovém grafu. Můžete zobrazit/skrýt telemetrii, změnit dobu trvání času, zobrazit telemetrii v datové mřížce.
+Po dotazování na data je můžete začít vizualizovat v spojnicovém grafu. Můžete zobrazit nebo skrýt telemetrii, změnit dobu trvání, zobrazit telemetrii v datové mřížce.
 
-- **Panel editoru času:** Ve výchozím nastavení budeme načítat data z posledních jednoho dne. Přetažením jezdce času můžete změnit dobu trvání. Pomocí ovládacího prvku kalendář můžete také vybrat jeden z předdefinovaných časových bloků nebo vybrat vlastní časový rozsah. Řízení času má také posuvník **velikostinterval,** který řídí segment nebo velikost intervalu slouží k agregaci dat.
+- **Panel editoru času:** Ve výchozím nastavení načteme data z minulého dne. Dobu trvání můžete změnit přetažením obou konců času posuvníku. Pomocí ovládacího prvku Kalendář můžete také vybrat jednu z předdefinovaných časových intervalů nebo vybrat vlastní časový rozsah. Ovládací prvek Time má také posuvník **velikosti intervalu** , který řídí interval nebo velikost intervalu používaného k agregaci dat.
 
     ![Editor času](media/howto-create-analytics/timeeditorpanel.png)
 
-    - **Jezdec vnitřního rozsahu dat**: Použijte dva ovládací prvky koncového bodu jejich přetažením v požadovaném časovém rozpětí. Tento vnitřní rozsah dat je omezen ovládacím prvkem posuvníku vnějšího rozsahu dat.
+    - **Nástroj pro posuvník rozsahu vnitřního data**: pomocí dvou ovládacích prvků koncového bodu je můžete přetáhnout v požadovaném časovém rozsahu. Tento vnitřní rozsah dat je omezen ovládacím prvkem posuvník rozsahu vnějšího data.
     
    
-    - **Ovládací prvek posuvníku vnějšího rozsahu dat**: Pomocí ovládacích prvků koncového bodu vyberte vnější rozsah dat, který bude k dispozici pro váš vnitřní ovládací prvek rozsahu dat.
+    - **Ovládací prvek posuvník rozsahu vnějšího data**: pomocí ovládacích prvků koncového bodu můžete vybrat rozsah vnějších kalendářních dat, který bude k dispozici pro ovládací prvek rozsahu vnitřního data.
 
-    - **Tlačítka pro zvýšení a zmenšení časového rozsahu**: Zvětšete nebo zmenšete časový rozsah výběrem jednoho tlačítka pro požadovaný interval.
+    - Tlačítko pro **zvýšení a snížení rozsahu data**: Zvyšte nebo snižte časový rozsah tak, že vyberete jedno tlačítko pro požadovaný interval.
 
-    - **Posuvník velikosti intervalů**: Slouží k přiblížení a oddálení intervalů ve stejném časovém rozpětí. Tato akce poskytuje přesnější kontrolu pohybu mezi velkými řezy času. Můžete ji použít k zobrazení granulovaných zobrazení dat s vysokým rozlišením, a to i do milisekund. Výchozí počáteční bod posuvníku je nastaven jako nejoptimálnější zobrazení dat z výběru, které vyvažuje rozlišení, rychlost dotazu a rozlišovací schopnost.
+    - **Posuvník velikosti intervalu**: používá se k přiblížení a oddálení intervalů v rámci stejného časového intervalu. Tato akce poskytuje přesnější kontrolu nad pohybem mezi velkými řezy času. Můžete ji použít k zobrazení podrobných zobrazení dat s vysokým rozlišením, a to i z provozu do milisekund. Výchozí počáteční bod posuvníku je nastaven jako optimální pohled na data z výběru, který vyrovnává rozlišení, rychlost dotazování a členitost.
     
-    - **Výběr rozsahu dat**: Pomocí tohoto webového ovládacího prvku můžete snadno vybrat požadované datum a čas. Ovládací prvek můžete také použít k přepínání mezi různými časovými pásmy. Po provedeném provádění změn, které se použijí v aktuálním pracovním prostoru, vyberte Uložit.
+    - **Výběr rozsahu kalendářních dat**: pomocí tohoto webového ovládacího prvku můžete snadno vybrat rozsahy dat a času, které chcete. Ovládací prvek lze také použít k přepínání mezi různými časovými pásmy. Až provedete změny, které se mají použít v aktuálním pracovním prostoru, vyberte Uložit.
 
     > [!TIP]
-    > Velikost intervalu je určena dynamicky na základě zvoleného časového rozpětí. Menší časové rozsahy umožní agregaci dat do velmi podrobné intervaly až několik sekund.
+    > Velikost intervalu je určena dynamicky v závislosti na vybraném časovém rozsahu. Menší časová rozpětí budou umožňovat agregaci dat do velmi podrobných intervalů až po několik sekund.
 
 
-- **Legenda grafu:** Legenda grafu zobrazuje vybranou telemetrii v grafu. Na každou položku na legendě můžete najet tak, aby se zaostřila na graf. Při použití "Rozdělit podle" je telemetrie seskupena podle příslušných hodnot vybrané dimenze. Viditelnost každé konkrétní telemetrie nebo celé skupiny můžete přepnout kliknutím na název skupiny.  
+- **Legenda grafu:** Legenda grafu zobrazuje vybranou telemetrii v grafu. Na každou položku v legendě můžete umístit ukazatel myši a zaměřit se tak na graf. Při použití operátoru Split by se telemetrie seskupují podle příslušných hodnot vybrané dimenze. Kliknutím na název skupiny můžete přepínat viditelnost každé konkrétní telemetrie nebo celé skupiny.  
 
 
-- **Ovládání formátu osy Y:** režim osy y prochází dostupnými možnostmi zobrazení osy y. Tento ovládací prvek je k dispozici pouze v případě, že jsou vizualizovány různé telemerie. Osu y můžete nastavit výběrem z jednoho ze tří režimů:
+- **Řízení formátu osy y:** v režimu osy y cykly procházejí dostupné možnosti zobrazení na ose y. Tento ovládací prvek je k dispozici pouze v případě, že jsou vizuálně vyladěny různé telemetrií. Osu y můžete nastavit tak, že vyberete jeden ze tří režimů:
 
-    - **Skládaný:** Graf pro každou telemetrii je skládaný a každý z grafů má svou vlastní osu y. Tento režim je nastaven jako výchozí.
-    - **Sdíleno:** Graf pro každou telemetrii je vykreslen proti stejné ose y.
-    - **Překrytí:** Slouží k stohování více čar na stejné ose y, přičemž data osy y se mění na základě vybrané čáry.
+    - **Skládané:** Graf pro každou telemetrii je skládaný a každý z grafů má svoji vlastní osu y. Tento režim je nastaven jako výchozí.
+    - **Sdílená:** Graf pro každou telemetrii se vykreslí na stejnou osu y.
+    - **Překryv:** Použijte ho k skládání více řádků na stejnou osu y, přičemž se mění data osy y na základě vybraného řádku.
 
-  ![Uspořádání dat na ose y pomocí různých režimů vizualizace](media/howto-create-analytics/yaxiscontrol.png)
+  ![Uspořádání dat napříč osou y pomocí různých režimů vizualizace](media/howto-create-analytics/yaxiscontrol.png)
 
-- **Ovládání přiblížení:** Zoom umožňuje přejít k podrobnostem vašich dat. Pokud najdete časové období, na které se chcete zaměřit v rámci sady výsledků, pomocí ukazatele myši oblast uchopte a přetáhněte ji do cílového bodu podle vašeho výběru. Pak klikněte pravým tlačítkem myši na vybranou oblast a klikněte na Lupa.
+- **Ovládací prvek Lupa:** Přiblížení vám umožní přejít k datům. Pokud zjistíte časové období, na které se chcete zaměřit v rámci sady výsledků, použijte ukazatel myši k umístění oblasti a přetáhněte ji na koncový bod podle vašeho výběru. Potom klikněte pravým tlačítkem na vybranou oblast a klikněte na tlačítko Lupa.
 
   ![Přiblížení dat](media/howto-create-analytics/zoom.png)
 
-Pod třemi tečkami jsou k dispozici další ovládací prvky grafu pro interakci s daty.
+Pod třemi tečkami je k interakci s daty k dispozici více ovládacích prvků grafu.
 
-- **Zobrazovaná mřížka:** Výsledky jsou k dispozici ve formátu tabulky, což umožňuje zobrazit konkrétní hodnotu pro každý datový bod.
+- **Zobrazit mřížku:** Vaše výsledky jsou k dispozici ve formátu tabulky a umožňují vám zobrazit konkrétní hodnotu pro každý datový bod.
 
-- **Zařadit značku:** Ovládací prvek 'Drop Marker' poskytuje způsob, jak ukotvit určité datové body v grafu. To je užitečné, když se pokoušíte porovnat data pro více řádků v různých časových obdobích.
+- **Odstranit značku:** Ovládací prvek Drop marker poskytuje způsob, jak ukotvit určité datové body v grafu. To je užitečné v případě, že se snažíte porovnat data pro více řádků v různých časových obdobích.
 
-  ![Zobrazení mřížky pro analýzu](media/howto-create-analytics/additionalchartcontrols.png)
+  ![Zobrazení mřížky pro vaše analýzy](media/howto-create-analytics/additionalchartcontrols.png)

@@ -1,6 +1,6 @@
 ---
-title: Nejčastější dotazy ke stavu služby Azure Active Directory Connect – Azure | Dokumenty společnosti Microsoft
-description: Tyto nejčastější dotazy odpovídají na otázky týkající se azure ad připojení stavu. Jde o dotazy k používání služby, včetně modelu fakturace, schopností, omezení a podpory.
+title: Nejčastější dotazy k Azure Active Directory Connect Health – Azure | Microsoft Docs
+description: Tato Nejčastější dotazy vám odpoví na dotazy týkající se Azure AD Connect Health. Jde o dotazy k používání služby, včetně modelu fakturace, schopností, omezení a podpory.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,153 +17,153 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f0c6484f46731e0ff2d16d00cb0038202511d193
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80331080"
 ---
-# <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health nejčastější dotazy
-Tento článek obsahuje odpovědi na nejčastější dotazy týkající se azure active directory (Azure AD) connect health. Tyto časté dotazy se týkají otázek týkajících se používání služby, která zahrnuje model fakturace, možnosti, omezení a podporu.
+# <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health nejčastějších dotazech
+Tento článek obsahuje odpovědi na nejčastější dotazy týkající se služby Azure Active Directory (Azure AD) Connect Health. Tyto nejčastější dotazy obsahují otázky týkající se používání služby, včetně modelu fakturace, možností, omezení a podpory.
 
 ## <a name="general-questions"></a>Obecné otázky
-**Otázka: Spravuji několik adresářů Azure AD. Jak přepnu na ten, který má Azure Active Directory Premium?**
+**Otázka: můžu spravovat více adresářů služby Azure AD. Návody přepnout na tu, která má Azure Active Directory Premium?**
 
-Pokud chcete přepínat mezi různými klienty Azure AD, vyberte aktuálně přihlášené **uživatelské jméno** v pravém horním rohu a pak zvolte příslušný účet. Pokud zde účet není uvedený, vyberte **Odhlásit**se a potom použijte přihlašovací údaje globálního správce adresáře, ve kterých je povolena služba Azure Active Directory Premium, a přihlaste se.
+Pokud chcete přepínat mezi různými klienty Azure AD, vyberte aktuálně přihlášené **uživatelské jméno** v pravém horním rohu a pak zvolte příslušný účet. Pokud zde uvedený účet není, vyberte **Odhlásit**se a pak použijte přihlašovací údaje globálního správce adresáře, který má Azure Active Directory Premium povoleno přihlásit se.
 
-**Otázka: Jakou verzi rolí identity podporuje Azure AD Connect Health?**
+**Otázka: jakou verzi rolí identity podporuje Azure AD Connect Health?**
 
-V následující tabulce jsou uvedeny role a podporované verze operačního systému.
+V následující tabulce jsou uvedeny role a podporované verze operačních systémů.
 
-|Role| Operační systém / Verze|
+|Role| Operační systém/verze|
 |--|--|
 |Active Directory Federation Services (AD FS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
 |Azure AD Connect | Verze 1.0.9125 nebo vyšší|
 |AD DS (Active Directory Domain Services)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
 
-Všimněte si, že funkce poskytované službou se mohou lišit v závislosti na roli a operačním systému. Jinými slovy, všechny funkce nemusí být k dispozici pro všechny verze operačního systému. Podrobnosti najdete v popisech funkcí.
+Všimněte si, že funkce poskytované službou se můžou lišit v závislosti na roli a operačním systému. Jinými slovy, některé funkce nemusí být k dispozici pro všechny verze operačního systému. Podrobnosti najdete v popisech funkcí.
 
-**Otázka: Kolik licencí potřebuji ke sledování infrastruktury?**
+**Otázka: kolik licencí potřebuji k monitorování své infrastruktury?**
 
-* První agent connect health vyžaduje alespoň jednu licenci Azure AD Premium.
-* Každý další registrovaný agent vyžaduje dalších 25 licencí Azure AD Premium.
-* Počet agentů je ekvivalentní celkovému počtu agentů, kteří jsou registrováni ve všech sledovaných rolích (AD FS, Azure AD Connect a/nebo AD DS).
-* Licencování služby AAD Connect Health nevyžaduje přiřazení licence konkrétním uživatelům. Potřebujete pouze požadovaný počet platných licencí.
+* První Agent pro stav připojení vyžaduje alespoň jednu licenci Azure AD Premium.
+* Každý další registrovaný agent vyžaduje 25 dalších licencí Azure AD Premium.
+* Počet agentů je stejný jako celkový počet agentů, kteří jsou zaregistrovaní ve všech monitorovaných rolích (AD FS, Azure AD Connect nebo služba AD DS).
+* Licencování AAD Connect Health nevyžaduje, abyste přiřadili licenci konkrétním uživatelům. Stačí, abyste měli požadovaný počet platných licencí.
 
-Informace o licencích se také nacházejí na [stránce Ceny Azure AD](https://aka.ms/aadpricing).
+Informace o licencování najdete taky na [stránce s cenami služby Azure AD](https://aka.ms/aadpricing).
 
 Příklad:
 
 | Registrovaní agenti | Potřebné licence | Příklad konfigurace monitorování |
 | ------ | --------------- | --- |
-| 1 | 1 | 1 Server Azure AD Connect |
-| 2 | 26| 1 Server Azure AD Connect a 1 řadič domény |
-| 3 | 51 | 1 server služby AD FS (Active Directory Federation Services), 1 proxy server služby AD FS a 1 řadič domény |
-| 4 | 76 | 1 server služby AD FS, 1 proxy server služby AD FS a 2 řadiče domény |
-| 5 | 101 | 1 server Azure AD Connect, 1 server Služby AD FS, 1 proxy server služby AD FS a 2 řadiče domény |
+| 1 | 1 | 1 Azure AD Connect Server |
+| 2 | 26| 1 Azure AD Connect Server a 1 řadič domény |
+| 3 | 51 | 1 Active Directory Federation Services (AD FS) (AD FS) Server, 1 AD FS proxy a 1 řadič domény |
+| 4 | 76 | 1 AD FS Server, 1 AD FS proxy a 2 řadiče domény |
+| 5 | 101 | 1 Azure AD Connect Server, 1 AD FS Server, 1 AD FS proxy a 2 řadiče domény |
 
-**Otázka: Podporuje Azure AD Connect Health Azure Germany Cloud?**
+**Otázka: Azure AD Connect Health podporuje Azure Německo Cloud?**
 
-Azure AD Connect Health není v Německu podporováno s výjimkou [funkce sestavy chyb synchronizace](how-to-connect-health-sync.md#object-level-synchronization-error-report).
+Azure AD Connect Health není v německém cloudu podporován s výjimkou [funkce hlášení chyb synchronizace](how-to-connect-health-sync.md#object-level-synchronization-error-report).
 
 | Role | Funkce | Podporováno v německém cloudu |
 | ------ | --------------- | --- |
-| Stav připojení pro synchronizaci | Monitoring / Insight / Upozornění / Analýza | Ne |
+| Připojit stav pro synchronizaci | Monitorování/Insight/výstrahy/analýza | Ne |
 |  | Zpráva o chybách synchronizace | Ano |
-| Stav připojení pro službu ADFS | Monitoring / Insight / Upozornění / Analýza | Ne |
-| Připojit stav pro přidává | Monitoring / Insight / Upozornění / Analýza | Ne |
+| Connect Health pro AD FS | Monitorování/Insight/výstrahy/analýza | Ne |
+| Připojit stav pro přidání | Monitorování/Insight/výstrahy/analýza | Ne |
 
-Chcete-li zajistit připojení agenta služby Connect Health pro synchronizaci, nakonfigurujte odpovídajícím způsobem [požadavek na instalaci.](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints)
+Aby bylo zajištěno připojení agenta ke službě Connect Health pro synchronizaci, nakonfigurujte prosím odpovídající [požadavky na instalaci](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) .
 
 ## <a name="installation-questions"></a>Otázky k instalaci
 
-**Otázka: Jaký je dopad instalace agenta azure ad připojení stavu na jednotlivých serverech?**
+**Otázka: Jaký je dopad instalace agenta Azure AD Connect Health na jednotlivé servery?**
 
-Dopad instalace Microsoft Azure AD Connect Health Agent, AD FS, proxy servery webových aplikací, Servery Azure AD Connect (synchronizace), řadiče domény je minimální s ohledem na procesor, využití paměti, šířku pásma sítě a úložiště.
+Dopad instalace agenta Microsoft Azure AD Connect Health, AD FS, proxy serverů webových aplikací, Azure AD Connect (synchronizovaných), jsou řadiče domény minimální v souvislosti s PROCESORem, spotřebou paměti, šířkou pásma sítě a úložištěm.
 
-Následující čísla jsou aproximace:
+Následující čísla představují aproximaci:
 
-* Spotřeba procesoru: ~ 1-5% nárůst.
-* Spotřeba paměti: Až 10 % celkové systémové paměti.
+* Spotřeba procesoru: ~ 1-5% zvětšit.
+* Spotřeba paměti: až 10% z celkové systémové paměti.
 
 > [!NOTE]
-> Pokud agent nemůže komunikovat s Azure, agent ukládá data místně pro definovaný maximální limit. Agent přepíše data "v mezipaměti" na základě "nejméně nedávno obsluhované" základ.
+> Pokud Agent nemůže komunikovat s Azure, agent uloží data místně pro stanovený maximální limit. Agent přepíše data uložená v mezipaměti v rámci "alespoň nedávno služby".
 >
 >
 
-* Místní úložiště vyrovnávací paměti pro agenty stavu Azure AD Connect: ~20 MB.
-* Pro servery služby AD FS doporučujeme zřídit místo na disku 1 024 MB (1 GB) pro kanál auditu služby AD FS pro agenty stavu Azure AD Connect ke zpracování všech dat auditu před jejich přepsáním.
+* Místní ukládání do vyrovnávací paměti pro agenty Azure AD Connect Health: ~ 20 MB.
+* Pro AD FS servery doporučujeme zřídit místo na disku 1 024 MB (1 GB) pro AD FS kanál auditu, aby Azure AD Connect Health agenti zpracovali všechna data auditu předtím, než se přepíší.
 
-**Otázka: Budu muset restartovat své servery během instalace agentů azure ad připojení stavu?**
+**Otázka: bude nutné restartovat servery během instalace agentů Azure AD Connect Health?**
 
-Ne. Instalace agentů nebude vyžadovat restartování serveru. Instalace některých nezbytných kroků však může vyžadovat restartování serveru.
+Ne. Instalace agentů nebude vyžadovat restartování serveru. Instalace některých nezbytných kroků ale může vyžadovat restartování serveru.
 
-Například v systému Windows Server 2008 R2 vyžaduje instalace rozhraní .NET 4.5 Framework restartování serveru.
+Například v systému Windows Server 2008 R2 vyžaduje instalace rozhraní .NET 4,5 restartování serveru.
 
-**Otázka: Funguje azure ad připojení stavu prostřednictvím předávací http proxy?**
+**Otázka: provádí Azure AD Connect Health práci prostřednictvím předávacího proxy serveru HTTP?**
 
-Ano. Pro probíhající operace můžete nakonfigurovat agenta stavu tak, aby k předávání odchozích požadavků HTTP používal proxy server HTTP.
-Přečtěte si další informace o [konfiguraci proxy protokolu HTTP pro agenty stavu](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy).
+Ano. U probíhajících operací můžete nakonfigurovat agenta stavu tak, aby používal proxy server HTTP k přeposílání odchozích požadavků HTTP.
+Přečtěte si další informace o [konfiguraci proxy serveru HTTP pro agenty stavu](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy).
 
-Pokud potřebujete nakonfigurovat proxy server během registrace agenta, bude pravděpodobně nutné předem upravit nastavení proxy serveru aplikace Internet Explorer.
+Pokud během registrace agenta potřebujete nakonfigurovat proxy server, může být nutné změnit nastavení proxy serveru aplikace Internet Explorer předem.
 
-1. Sem > Nastavení**aplikace Internet** >  **Explorer** > **Nastavení připojení k** > **síti LAN**.
-2. Vyberte **použít proxy server pro vaši síť LAN**.
-3. Pokud máte různé **porty** proxy pro protokoly HTTP a HTTPS/Secure, vyberte upřesnit.
+1. Otevřete Internet Explorer > **Nastavení** > **Možnosti** > Internetu**připojení** > **nastavení sítě LAN**.
+2. Vyberte možnost **použít proxy server pro vaši síť LAN**.
+3. Pokud máte různé proxy porty pro HTTP a HTTPS/zabezpečení, vyberte **Upřesnit** .
 
-**Otázka: Podporuje Azure AD Connect Health základní ověřování při připojování k proxy servery HTTP?**
+**Otázka: podporuje Azure AD Connect Health základní ověřování při připojování k proxy HTTP?**
 
-Ne. Mechanismus pro určení libovolného uživatelského jména a hesla pro základní ověřování není aktuálně podporován.
+Ne. Mechanismus pro zadání libovolného uživatelského jména a hesla pro základní ověřování není v současné době podporován.
 
-**Otázka: Jaké porty brány firewall je potřeba otevřít pro Azure AD Connect Health Agent pracovat?**
+**Otázka: jaké porty brány firewall potřebuji k tomu, aby mohl agent Azure AD Connect Health fungovat?**
 
-V [části požadavky](how-to-connect-health-agent-install.md#requirements) naleznete seznam portů brány firewall a další požadavky na připojení.
+Seznam portů brány firewall a dalších požadavků na připojení najdete v [části požadavky](how-to-connect-health-agent-install.md#requirements) .
 
-**Otázka: Proč se na portálu Azure AD Connect Health zobrazují dva servery se stejným názvem?**
+**Otázka: Proč se na portálu Azure AD Connect Health Portal zobrazí dva servery se stejným názvem?**
 
-Když odeberete agenta ze serveru, server se automaticky neodebere z portálu Azure AD Connect Health. Pokud ručně odeberete agenta ze serveru nebo odeberete samotný server, budete muset ručně odstranit položku serveru z portálu Azure AD Connect Health.
+Když odeberete agenta ze serveru, server se automaticky neodebere z portálu Azure AD Connect Health. Pokud ruční odebrání agenta ze serveru nebo odebrání samotného serveru, je nutné ručně odstranit položku serveru z portálu Azure AD Connect Health.
 
-Můžete znovu zobrazit server nebo vytvořit nový server se stejnými podrobnostmi (například názvem počítače). Pokud jste neodebrali již registrovaný server z portálu Azure AD Connect Health a nainstalovali jste agenta na nový server, mohou se zobrazit dvě položky se stejným názvem.
+Můžete obnovit kopii serveru nebo vytvořit nový server se stejnými podrobnostmi (například název počítače). Pokud jste už registrovaný Server z Azure AD Connect Healthového portálu neodebrali a nainstalovali jste agenta na nový server, můžou se zobrazit dvě položky se stejným názvem.
 
-V takovém případě ručně odstraňte položku, která patří ke staršímu serveru. Data pro tento server by měla být zastaralá.
+V takovém případě ručně odstraňte položku, která patří do staršího serveru. Data pro tento server by měla být zastaralá.
 
-## <a name="health-agent-registration-and-data-freshness"></a>Registrace agenta stavu a čerstvost dat
+## <a name="health-agent-registration-and-data-freshness"></a>Registrace a aktuálnost dat agenta stavu
 
-**Otázka: Jaké jsou běžné důvody selhání registrace agenta stavu a jak lze řešit problémy?**
+**Otázka: co jsou běžné důvody pro selhání registrace agenta stavu a jak řešit problémy?**
 
-Agent stavu může selhat zaregistrovat z následujících možných důvodů:
+Registraci agenta stavu z následujících možných důvodů se může zdařit:
 
-* Agent nemůže komunikovat s požadovanými koncovými body, protože brána firewall blokuje provoz. To je běžné zejména na proxy serverech webových aplikací. Ujistěte se, že jste povolili odchozí komunikaci s požadovanými koncovými body a porty. Podrobnosti naleznete v [části požadavky.](how-to-connect-health-agent-install.md#requirements)
-* Odchozí komunikace je podrobena kontrole TLS síťovou vrstvou. To způsobí, že certifikát, který agent používá k nahrazení kontrolní server nebo entita a kroky k dokončení registrace agenta nezdaří.
-* Uživatel nemá přístup k provedení registrace agenta. Globální správci mají ve výchozím nastavení přístup. Řízení [přístupu založené na rolích](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) můžete použít k delegování přístupu ostatním uživatelům.
+* Agent nemůže komunikovat s požadovanými koncovými body, protože brána firewall blokuje provoz. To je zvláště běžné na proxy serverech webových aplikací. Ujistěte se, že jste povolili odchozí komunikaci s požadovanými koncovými body a porty. Podrobnosti najdete v [části požadavky](how-to-connect-health-agent-install.md#requirements) .
+* Odchozí komunikace se řídí kontrolou TLS v síťové vrstvě. To způsobí, že certifikát, který agent používá, bude nahrazen kontrolním serverem nebo entitou a kroky pro dokončení registrace agenta selžou.
+* Uživatel nemá přístup k provedení registrace agenta. Globální správci mají ve výchozím nastavení přístup. K delegování přístupu jiným uživatelům můžete použít [Access Control na základě rolí](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) .
 
-**Otázka: Dostávám upozornění, že "Data zdravotní služby nejsou aktuální." Jak lze problém vyřešit?**
+**Otázka: zobrazuje se upozornění, že "Health Service data nejsou aktuální." Návody řešení problému?**
 
-Azure AD Connect Health generuje výstrahu, když neobdrží všechny datové body ze serveru v posledních dvou hodinách. [Přečtěte si další informace](how-to-connect-health-data-freshness.md).
+Azure AD Connect Health vygeneruje výstrahu, pokud neobdrží všechny datové body ze serveru za poslední dvě hodiny. [Přečtěte si další informace](how-to-connect-health-data-freshness.md).
 
-## <a name="operations-questions"></a>Provozní otázky
-**Otázka: Je nutné povolit auditování na proxy serverech webové aplikace?**
+## <a name="operations-questions"></a>Dotazy na operace
+**Otázka: Potřebuji povolit auditování na proxy serverech webových aplikací?**
 
-Ne, auditování nemusí být povoleno na proxy serverech webové aplikace.
+Ne, auditování není nutné povolit na proxy serverech webových aplikací.
 
-**Otázka: Jak se vyřeší výstrahy stavu Azure AD Connect?**
+**Otázka: jak se Výstrahy služby Azure AD Connect Health vyřešit?**
 
-Výstrahy stavu Azure AD Connect se vyřeší za podmínek úspěchu. Agenti stavu Azure AD Connect pravidelně zjišťují a hlásí podmínky úspěchu službě. U několika výstrah je potlačení založeno na čase. Jinými slovy, pokud stejný chybový stav není pozorován do 72 hodin od generování výstrahy, výstraha je automaticky vyřešena.
+Výstrahy Azure AD Connect Health se vyřeší při splnění podmínky úspěchu. Agenti Azure AD Connect Health pro službu pravidelně zjišťují a nahlásily podmínky úspěchu. U několika výstrah je potlačení založené na čase. Jinými slovy, pokud se stejný chybový stav nepozoruje během 72 hodin od generování výstrahy, výstraha se automaticky vyřeší.
 
-**Otázka: Dostávám upozornění, že "Test ověřovací požadavek (syntetická transakce) se nepodařilo získat token." Jak lze problém vyřešit?**
+**Otázka: zobrazuje se upozornění, že "žádost o testovací ověření (syntetická transakce) nedokázala získat token." Návody řešení problému?**
 
-Azure AD Connect Health pro službu AD FS generuje tuto výstrahu, když agent aagent stavu nainstalovaný na serveru služby AD FS nezíská token jako součást syntetické transakce iniciované agentem stavu. Agent stavu používá kontext místního systému a pokusí se získat token pro sebepředávající stranu. Toto je catch-all test k zajištění, že AD FS je ve stavu vydávání tokenů.
+Azure AD Connect Health pro AD FS vygeneruje toto upozornění, když Agent stavu nainstalovaný na serveru AD FS nepomůže získat token jako součást syntetické transakce iniciované agentem stavu. Agent stavu používá kontext místního systému a pokouší se získat token pro předávající stranu. Toto je test bez zachycení, který zajistí, že AD FS je ve stavu vydávání tokenů.
 
-Nejčastěji se tento test nezdaří, protože agent stavu není schopen přeložit název farmy služby AD FS. K tomu může dojít, pokud servery služby AD FS jsou za síťovými prostředky pro vyrovnávání zatížení a požadavek je iniciován z uzlu, který je za ekvizérem zatížení (na rozdíl od běžného klienta, který je před balancerem zatížení). To lze opravit aktualizací souboru "hosts" umístěného pod položkou "C:\Windows\System32\drivers\etc" tak, aby zahrnoval IP adresu serveru služby AD FS nebo adresu IP zpětné smyčky (127.0.0.1) pro název farmy služby AD FS (například sts.contoso.com). Přidání hostitelského souboru zkratuje volání sítě, což agentovi stavu umožní získat token.
+Většinou se tento test nezdařil, protože Agent stavu nemůže přeložit název AD FS farmy. K tomu může dojít, pokud AD FS servery jsou za nástroji pro vyrovnávání zatížení sítě a žádost se iniciuje z uzlu, který je za nástrojem pro vyrovnávání zatížení (na rozdíl od normálního klienta, který se nachází před nástrojem pro vyrovnávání zatížení). To se dá opravit tak, že aktualizujete soubor Hosts umístěný v části "C:\Windows\System32\drivers\etc", aby zahrnoval IP adresu AD FSho serveru nebo IP adresu zpětné smyčky (127.0.0.1) pro název AD FS farmy (například sts.contoso.com). Přidáním hostitelského souboru dojde k krátkému okruhu síťového volání, čímž umožníte agentovi stavu získat token.
 
-**Otázka: Dostal jsem e-mail, který naznačuje, že mé stroje nejsou opraveny pro nedávné útoky ransomware. Proč jsem obdržel(a) tento e-mail?**
+**Otázka: Mám e-mail s oznámením, že počítače nejsou opraveny pro nedávné útoky ransomwarem. Proč byl tento e-mail doručen?**
 
-Služba Azure AD Connect Health naskenovala všechny počítače, které monitoruje, aby zajistila, že byly nainstalovány požadované opravy. E-mail byl odeslán správcům klienta, pokud alespoň jeden počítač neměl kritické opravy. Následující logika byla použita k tomuto určení.
-1. Vyhledejte všechny opravy hotfix nainstalované v zařízení.
-2. Zkontrolujte, zda je k dispozici alespoň jedna z oprav hotfix z definovaného seznamu.
-3. Pokud ano, je zařízení chráněno. Pokud ne, stroj je ohrožen útokem.
+Služba Azure AD Connect Health kontrolovala všechny počítače, které monitoruje, aby se zajistilo, že se nainstalovaly požadované opravy. E-mail se poslal správcům tenanta, pokud aspoň jeden počítač neměl důležité opravy. K provedení tohoto určení se použila následující logika.
+1. Vyhledá všechny opravy hotfix nainstalované v počítači.
+2. Ověřte, zda je k dispozici alespoň jedna z oprav HotFix z definovaného seznamu.
+3. Pokud ano, počítač je chráněný. V takovém případě je počítač ohrožený útokem.
 
-K provedení této kontroly můžete použít následující skript prostředí PowerShell ručně. Implementuje výše uvedenou logiku.
+Tuto kontrolu můžete provést ručně pomocí následujícího skriptu prostředí PowerShell. Implementuje výše uvedenou logiku.
 
 ```powershell
 Function CheckForMS17-010 ()
@@ -186,23 +186,23 @@ CheckForMS17-010
 
 ```
 
-**Otázka: Proč rutina prostředí PowerShell <i>Get-MsolDirSyncProvisioningError</i> zobrazuje méně chyb synchronizace ve výsledku?**
+**Otázka: Proč rutina PowerShellu <i>Get-MsolDirSyncProvisioningError</i> zobrazuje méně chyb synchronizace ve výsledku?**
 
-<i>Get-MsolDirSyncProvisioningError</i> vrátí pouze chyby zřizování DirSync. Kromě toho portál Connect Health také zobrazuje další typy chyb synchronizace, jako jsou chyby exportu. To je konzistentní s výsledkem delta Azure AD Connect. Přečtěte si další informace o [chybách synchronizace připojení Azure AD](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors).
+<i>Get-MsolDirSyncProvisioningError</i> bude vracet jenom chyby zřizování DirSync. Kromě toho se na portálu Connect Health zobrazují také další typy chyb synchronizace, jako jsou například chyby exportu. To je konzistentní s Azure AD Connectm rozdílovým výsledkem. Přečtěte si další informace o [Azure AD Connect chybách synchronizace](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors).
 
-**Otázka: Proč nejsou generovány mé audity adfs?**
+**Otázka: Proč nejsou generovány moje audity služby AD FS?**
 
-Použijte rutinu prostředí PowerShell <i>Get-AdfsProperties -AuditLevel,</i> abyste zajistili, že protokoly auditu nejsou v zakázaném stavu. Přečtěte si další informace o [protokolech auditu systému ADFS](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016). Všimněte si, pokud jsou na server ADFS posununa upřesňující nastavení auditu, budou všechny změny pomocí auditpol.exe přepsány (událost, pokud není generována aplikace). V takovém případě nastavte místní zásady zabezpečení pro protokolování selhání a úspěchu generovaného aplikací.
+Ověřte prosím pomocí rutiny PowerShellu <i>Get-AdfsProperties-AuditLevel</i> , jestli protokoly auditu nejsou v zakázaném stavu. Přečtěte si další informace o [protokolech auditu služby ADFS](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016). Všimněte si, že pokud jsou na server ADFS vložená Pokročilá nastavení auditu, budou všechny změny v nástroji Auditpol. exe přepsány (událost, pokud aplikace vygenerovaná není). V takovém případě prosím nastavte místní zásady zabezpečení na protokolování chyb generovaných aplikací a úspěchu.
 
-**Otázka: Kdy bude certifikát agenta automaticky obnoven před vypršením platnosti?**
-Certifikace agenta bude automaticky obnovena **6 měsíců** před datem vypršení platnosti. Pokud není obnovena, ujistěte se, že síťové připojení agenta je stabilní. Problém může vyřešit také restartování služeb agenta nebo aktualizace na nejnovější verzi.
+**Otázka: kdy bude certifikát agenta pro vypršení platnosti automaticky obnoven?**
+Certifikát agenta se automaticky obnoví na **6 měsíců** před datem vypršení platnosti. Pokud se neobnoví, ujistěte se, že je síťové připojení agenta stabilní. Problém můžete vyřešit i tak, že restartujete služby agenta nebo aktualizujete na nejnovější verzi.
 
 
 ## <a name="related-links"></a>Související odkazy
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
 * [Instalace agenta služby Azure AD Connect Health](how-to-connect-health-agent-install.md)
-* [Operace služby Azure AD Connect Health](how-to-connect-health-operations.md)
+* [Azure AD Connect Health operace](how-to-connect-health-operations.md)
 * [Používání služby Azure AD Connect Health se službou AD FS](how-to-connect-health-adfs.md)
-* [Použití azure ad připojení stavu pro synchronizaci](how-to-connect-health-sync.md)
+* [Použití Azure AD Connect Health k synchronizaci](how-to-connect-health-sync.md)
 * [Používání služby Azure AD Connect Health se službou AD DS](how-to-connect-health-adds.md)
-* [Historie verzí stavu azure a připojení](reference-connect-health-version-history.md)
+* [Historie verzí služby Azure AD Connect Health](reference-connect-health-version-history.md)

@@ -1,6 +1,6 @@
 ---
-title: Jak získat certifikaci AppSource pro Azure Active Directory| Dokumenty společnosti Microsoft
-description: Podrobnosti o tom, jak získat aplikaci AppSource certifikovanou pro Azure Active Directory.
+title: Jak získat AppSource Certified for Azure Active Directory | Microsoft Docs
+description: Podrobnosti o tom, jak získat AppSource certifikaci aplikace pro Azure Active Directory.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -14,75 +14,75 @@ ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 3ad4efa3b8126a9b9c6557822f61e3bfff3fe120
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80154878"
 ---
-# <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Jak získat certifikaci AppSource pro Azure Active Directory
+# <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Jak získat AppSource Certified pro Azure Active Directory
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
-[Microsoft AppSource](https://appsource.microsoft.com/) je cíl pro podnikové uživatele, aby zjišťovali, zkoušeli a spravovali obchodní aplikace SaaS (samostatný SaaS a doplněk k existujícím produktům Microsoft SaaS).
+[Microsoft AppSource](https://appsource.microsoft.com/) je cílem pro obchodní uživatele zjistit, vyzkoušet a spravovat obchodní aplikace SaaS (samostatné SaaS a doplňky do stávajících produktů Microsoftu SaaS).
 
-Chcete-li uvést samostatnou aplikaci SaaS na AppSource, vaše aplikace musí přijmout jednotné přihlašování z pracovních účtů z jakékoli společnosti nebo organizace, která má Azure Active Directory (Azure AD). Proces přihlášení musí používat protokoly [OpenID Connect](v1-protocols-openid-connect-code.md) nebo [OAuth 2.0.](v1-protocols-oauth-code.md) Integrace SAML není přijata pro certifikaci AppSource.
+K vypsání samostatné aplikace SaaS na AppSource musí aplikace přijmout jednotné přihlašování z pracovních účtů z jakékoli společnosti nebo organizace, která má Azure Active Directory (Azure AD). Proces přihlášení musí používat protokoly [OpenID Connect](v1-protocols-openid-connect-code.md) nebo [OAuth 2,0](v1-protocols-oauth-code.md) . Integrace SAML není pro certifikaci AppSource přijata.
 
-## <a name="guides-and-code-samples"></a>Vodítka a ukázky kódu
+## <a name="guides-and-code-samples"></a>Příručky a ukázky kódu
 
-Pokud se chcete dozvědět o tom, jak integrovat vaši aplikaci s Azure AD pomocí Open ID connect, postupujte podle našich pokynů a ukázky kódu v [průvodci vývojářem Azure Active Directory](v1-overview.md#get-started "Začínáme s Azure AD pro vývojáře").
+Pokud se chcete dozvědět, jak integrovat aplikaci se službou Azure AD pomocí Open ID Connect, postupujte podle pokynů pro vývojáře a ukázky kódu v [příručce pro vývojáře Azure Active Directory](v1-overview.md#get-started "Začínáme se službou Azure AD pro vývojáře").
 
 ## <a name="multi-tenant-applications"></a>Víceklientské aplikace
 
-*Víceklientská aplikace* je aplikace, která přijímá přihlášení od uživatelů z jakékoli společnosti nebo organizace, které mají Azure AD bez nutnosti samostatné instance, konfigurace nebo nasazení. AppSource doporučuje, aby aplikace implementovat více klienta povolit *jedno kliknutí* bezplatné zkušební prostředí.
+*Víceklientské aplikace* je aplikace, která přijímá přihlášení od uživatelů z jakékoli společnosti nebo organizace, která má Azure AD bez nutnosti samostatné instance, konfigurace nebo nasazení. AppSource doporučuje, aby aplikace implementovaly víceklientské prostředí pro zajištění bezplatné zkušební verze *jedním kliknutím* .
 
-Chcete-li povolit více klienta v aplikaci, postupujte takto:
-1. Nastavte `Multi-Tenanted` vlastnost `Yes` na informace o registraci aplikace na [webu Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Ve výchozím nastavení jsou aplikace vytvořené na webu Azure Portal nakonfigurované jako *[jednoklientské](#single-tenant-applications)*.
-1. Aktualizujte kód a odesílejte `common` požadavky do koncového bodu. Chcete-li to provést, `https://login.microsoftonline.com/{yourtenant}` aktualizujte koncový bod z na `https://login.microsoftonline.com/common*`.
-1. Pro některé platformy, jako je technologie ASP .NET, je také nutné aktualizovat kód pro přijetí více vystavitelů.
+Pokud chcete v aplikaci povolit více tenantů, postupujte takto:
+1. Nastavte `Multi-Tenanted` vlastnost na `Yes` informace o registraci vaší aplikace v [Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Ve výchozím nastavení jsou aplikace vytvořené v Azure Portal nakonfigurované jako *[jeden tenant](#single-tenant-applications)*.
+1. Aktualizujte kód, aby odesílal požadavky na `common` koncový bod. To provedete tak, že aktualizujete koncový bod z `https://login.microsoftonline.com/{yourtenant}` na `https://login.microsoftonline.com/common*`.
+1. U některých platforem, jako je například ASP .NET, je nutné také aktualizovat kód, aby přijímal více vystavitelů.
 
-Další informace o víceklientských nájmech najdete [v tématu Jak se přihlásit k libovolnému uživateli služby Azure Active Directory (Azure AD) pomocí vzoru víceklientské aplikace](../develop/howto-convert-app-to-be-multi-tenant.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
+Další informace o víceklientské architektuře najdete v tématu [jak se přihlásit k libovolnému uživateli Azure Active Directory (Azure AD) pomocí vzoru aplikace pro více tenantů](../develop/howto-convert-app-to-be-multi-tenant.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
 
-### <a name="single-tenant-applications"></a>Aplikace s jedním tenantem
+### <a name="single-tenant-applications"></a>Aplikace s jedním klientem
 
-*Aplikace s jedním tenantem* je aplikace, která přijímá pouze přihlášení od uživatelů definované instance Azure AD. Externí uživatelé (včetně pracovních nebo školních účtů z jiných organizací nebo osobních účtů) se můžou přihlásit k aplikaci s jedním tenantem po přidání každého uživatele jako účtu hosta do instance Azure AD, že je aplikace registrovaná. 
+*Jediná klientská aplikace* je aplikace, která přijímá jenom přihlášení od uživatelů definované instance Azure AD. Externí uživatelé (včetně pracovních nebo školních účtů z jiných organizací nebo osobních účtů) se můžou přihlašovat k jednomu tenantovi aplikace po přidání každého uživatele jako účtu hosta do instance Azure AD, kterou je aplikace zaregistrovaná. 
 
-Můžete přidat uživatele jako účty hosta do Azure AD prostřednictvím [spolupráce Azure AD B2B](../b2b/what-is-b2b.md) a můžete to udělat [programově](../../active-directory-b2c/code-samples.md). Při použití B2B, uživatelé mohou vytvořit samoobslužný portál, který nevyžaduje pozvání k přihlášení. Další informace najdete v [tématu Samoobslužný portál pro registraci spolupráce Azure AD B2B](https://docs.microsoft.com/azure/active-directory/b2b/self-service-portal).
+Do Azure AD můžete přidat uživatele jako účty hosta prostřednictvím [Spolupráce B2B Azure AD](../b2b/what-is-b2b.md) a můžete to udělat [programově](../../active-directory-b2c/code-samples.md). Když uživatelé používají B2B, můžou vytvořit Samoobslužný portál, který nevyžaduje pozvání k přihlášení. Další informace najdete v tématu [Samoobslužný portál pro spolupráci služby Azure AD B2B – registrace](https://docs.microsoft.com/azure/active-directory/b2b/self-service-portal).
 
-Aplikace s jedním tenantem můžete povolit *možnost i funkci Kontaktujte mě,* ale pokud chcete povolit jedno kliknutí/bezplatnou zkušební verzi, kterou doporučuje AppSource, povolte místo toho víceklientské prostředí ve vaší aplikaci.
+Aplikace s jedním tenantům můžou povolit možnosti *kontakt mi* , ale pokud chcete povolit zkušební prostředí s jedním kliknutím nebo bezplatnou verzí, které AppSource doporučuje, povolte pro svoji aplikaci více tenantů.
 
-## <a name="appsource-trial-experiences"></a>Zkušební prostředí AppSource
+## <a name="appsource-trial-experiences"></a>AppSource zkušební prostředí
 
-### <a name="free-trial-customer-led-trial-experience"></a>Bezplatná zkušební verze (zkušební verze vedená zákazníkem)
+### <a name="free-trial-customer-led-trial-experience"></a>Bezplatná zkušební verze (zkušební prostředí pro zákazníky s indikátorem)
 
-Zákazníkem vedená zkušební verze je prostředí, které AppSource doporučuje, protože nabízí přístup k vaší aplikaci jedním kliknutím. Následující příklad ukazuje, jak toto prostředí vypadá:
+Zkušební verze na základě zákazníka je prostředí, které AppSource doporučuje, protože nabízí přístup k vaší aplikaci jediným kliknutím. Následující příklad ukazuje, jak toto chování vypadá takto:
 
 <table >
 <tr>
-    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step1.png" width="85%" alt-text="Shows Free trial for customer-led trial experience"/><ul><li>Uživatel najde vaši aplikaci na webu AppSource.</li><li>Vybere možnost "Bezplatná zkušební verze".</li></ul></td>
-    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step2.png" width="85%" alt-text="Shows how user is redirected to a URL in your web site"/><ul><li>AppSource přesměruje uživatele na adresu URL na vašem webu</li><li>Váš web spustí proces <i>jednotného přihlašování</i> automaticky (při načítání stránky)</li></ul></td>
-    <td valign="top" width="33%">3.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step3.png" width="85%" alt-text="Shows the Microsoft sign-in page"/><ul><li>Uživatel je přesměrován na přihlašovací stránku společnosti Microsoft.</li><li>Uživatel poskytuje přihlašovací údaje pro přihlášení</li></ul></td>
+    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step1.png" width="85%" alt-text="Shows Free trial for customer-led trial experience"/><ul><li>Uživatel najde vaši aplikaci na webu AppSource.</li><li>Vybere možnost bezplatné zkušební verze.</li></ul></td>
+    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step2.png" width="85%" alt-text="Shows how user is redirected to a URL in your web site"/><ul><li>AppSource přesměruje uživatele na adresu URL na webu.</li><li>Váš web automaticky spustí proces <i>jednotného přihlašování</i> (při zatížení stránky).</li></ul></td>
+    <td valign="top" width="33%">3.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step3.png" width="85%" alt-text="Shows the Microsoft sign-in page"/><ul><li>Uživatel je přesměrován na přihlašovací stránku Microsoftu.</li><li>Uživatel poskytne přihlašovací údaje pro přihlášení.</li></ul></td>
 </tr>
 <tr>
-    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step4.png" width="85%" alt-text="Example: Consent page for an application"/><ul><li>Uživatel dává souhlas pro vaši žádost</li></ul></td>
-    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%" alt-text="Shows the experience the user sees when redirected back to your site"/><ul><li>Přihlášení dokončeno a uživatel je přesměrován zpět na váš web</li><li>Uživatel spustí bezplatnou zkušební verzi</li></ul></td>
+    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step4.png" width="85%" alt-text="Example: Consent page for an application"/><ul><li>Uživatel udělí souhlas pro vaši aplikaci.</li></ul></td>
+    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%" alt-text="Shows the experience the user sees when redirected back to your site"/><ul><li>Přihlášení se dokončí a uživatel se přesměruje zpátky na váš web.</li><li>Uživatel spustí bezplatnou zkušební verzi.</li></ul></td>
     <td></td>
 </tr>
 </table>
 
-### <a name="contact-me-partner-led-trial-experience"></a>Kontaktujte mě (zkušenosti se zkušební mši vedenou partnerem)
+### <a name="contact-me-partner-led-trial-experience"></a>Kontaktujte mě (zkušební prostředí, které vedlo k partnerům)
 
-Zkušební prostředí partnera můžete použít v případě, že ruční nebo dlouhodobé operace musí dojít k zřízení uživatele nebo společnosti – například vaše aplikace potřebuje zřídit virtuální počítače, instance databáze nebo operace, které trvat hodně času na dokončení. V tomto případě poté, co uživatel vybere tlačítko **Požádat o zkušební** verzi a vyplní formulář, AppSource vám odešle kontaktní informace uživatele. Když obdržíte tyto informace, potom zřídit prostředí a odeslat pokyny k uživateli o tom, jak získat přístup k zkušební prostředí:<br/><br/>
+V případě, že se při zřizování uživatele/společnosti může provést ruční nebo dlouhodobá operace, můžete použít zkušební verzi partnerů. vaše aplikace potřebuje zřídit virtuální počítače, instance databáze nebo operace, jejichž dokončení trvá příliš dlouho. V takovém případě potom, co uživatel vybere tlačítko pro **vyžádání zkušební verze** a vyplní formulář, vám AppSource pošle kontaktní informace uživatele. Když tyto informace obdržíte, zřídíte prostředí a odešlete pokyny uživateli, jak získat přístup ke zkušební verzi:<br/><br/>
 
 <table valign="top">
 <tr>
-    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step1.png" width="85%" alt-text="Shows Contact me for partner-led trial experience"/><ul><li>Uživatel najde vaši aplikaci na webu AppSource</li><li>Vybere možnost "Kontaktujte mě".</li></ul></td>
-    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step2.png" width="85%" alt-text="Shows an example form with contact info"/><ul><li>Vyplňuje formulář s kontaktními informacemi</li></ul></td>
+    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step1.png" width="85%" alt-text="Shows Contact me for partner-led trial experience"/><ul><li>Uživatel najde vaši aplikaci na webu AppSource.</li><li>Vybere možnost kontakt mi</li></ul></td>
+    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step2.png" width="85%" alt-text="Shows an example form with contact info"/><ul><li>Vyplňování formuláře s kontaktními informacemi</li></ul></td>
      <td valign="top" width="33%">3.<br/><br/>
         <table bgcolor="#f7f7f7">
         <tr>
             <td><img src="media/active-directory-devhowto-appsource-certified/usercontact.png" width="55%" alt-text="Shows placeholder for user information"/></td>
-            <td>Obdržíte informace o uživateli</td>
+            <td>Dostanete informace o uživateli.</td>
         </tr>
         <tr>
             <td><img src="media/active-directory-devhowto-appsource-certified/setupenv.png" width="55%" alt-text="Shows placeholder for setup environment info"/></td>
@@ -90,36 +90,36 @@ Zkušební prostředí partnera můžete použít v případě, že ruční nebo
         </tr>
         <tr>
             <td><img src="media/active-directory-devhowto-appsource-certified/contactcustomer.png" width="55%" alt-text="Shows placeholder for trial info"/></td>
-            <td>Kontaktování uživatele s informacemi o zkušební verzi</td>
+            <td>Kontaktujte uživatele s informacemi o zkušební verzi</td>
         </tr>
         </table><br/><br/>
-        <ul><li>Obdržíte informace o uživateli a zkušební instanci nastavení</li><li>Odešlete hypertextový odkaz pro přístup k aplikaci uživateli</li></ul>
+        <ul><li>Získáte informace o uživateli a nastavování zkušební instance</li><li>Odešlete hypertextový odkaz pro přístup k aplikaci uživateli</li></ul>
     </td>
 </tr>
 <tr>
-    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step3.png" width="85%" alt-text="Shows the application sign-in screen"/><ul><li>Uživatel přistupuje k vaší aplikaci a dokončí proces jednotného přihlašování.</li></ul></td>
-    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step4.png" width="85%" alt-text="Shows an example consent page for an application"/><ul><li>Uživatel dává souhlas pro vaši žádost</li></ul></td>
-    <td valign="top" width="33%">6.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%" alt-text="Shows the experience the user sees when redirected back to your site"/><ul><li>Přihlášení dokončeno a uživatel je přesměrován zpět na váš web</li><li>Uživatel spustí bezplatnou zkušební verzi</li></ul></td>
+    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step3.png" width="85%" alt-text="Shows the application sign-in screen"/><ul><li>Uživatel přistupuje k aplikaci a dokončuje proces jednotného přihlašování.</li></ul></td>
+    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step4.png" width="85%" alt-text="Shows an example consent page for an application"/><ul><li>Uživatel udělí souhlas pro vaši aplikaci.</li></ul></td>
+    <td valign="top" width="33%">6.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%" alt-text="Shows the experience the user sees when redirected back to your site"/><ul><li>Přihlášení se dokončí a uživatel se přesměruje zpátky na váš web.</li><li>Uživatel spustí bezplatnou zkušební verzi.</li></ul></td>
    
 </tr>
 </table>
 
 ### <a name="more-information"></a>Další informace
 
-Další informace o zkušebním prostředí AppSource naleznete v [tomto videu](https://aka.ms/trialexperienceforwebapps). 
+Další informace o zkušebním prostředí AppSource najdete v [tomto videu](https://aka.ms/trialexperienceforwebapps). 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o vytváření aplikací, které podporují přihlášení azure ad, najdete v [tématu scénáře ověřování pro Azure AD](https://docs.microsoft.com/azure/active-directory/develop/v1-authentication-scenarios).
-- Informace o tom, jak zobrazit seznam aplikace SaaS v AppSource, najdete v [tématu AppSource Partner Information](https://appsource.microsoft.com/partners)
+- Další informace o vytváření aplikací podporujících přihlášení k Azure AD najdete v tématu [scénáře ověřování pro Azure AD](https://docs.microsoft.com/azure/active-directory/develop/v1-authentication-scenarios).
+- Informace o tom, jak v AppSource zobrazit seznam aplikací SaaS, najdete v tématu [informace o partnerovi AppSource](https://appsource.microsoft.com/partners) .
 
-## <a name="get-support"></a>Získat podporu
+## <a name="get-support"></a>Získání podpory
 
-Pro integraci Azure AD používáme [přetečení zásobníku](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) s komunitou k poskytování podpory.
+Pro integraci služby Azure AD používáme pro poskytování podpory [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) s komunitou.
 
-Důrazně doporučujeme, abyste nejprve položili otázky týkající se přetečení zásobníku a procházet existující problémy, abyste zjistili, zda někdo vaši otázku předtím položil. Zkontrolujte, zda jsou vaše dotazy nebo komentáře označeny [ `[azure-active-directory]` písmenem a. `[appsource]` ](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource)
+Důrazně doporučujeme, abyste si nejdřív položili své dotazy na Stack Overflow a mohli si projít stávající problémy, abyste zjistili, jestli se někdo na svůj dotaz předá. Ujistěte se, že jsou vaše dotazy nebo komentáře označeny [ `[azure-active-directory]` pomocí `[appsource]`a ](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource).
 
-V následující části s komentáři můžete poskytnout zpětnou vazbu a pomoci nám vylepšit a utvářet náš obsah.
+Následující komentáře vám poskytnou zpětnou vazbu a pomáhají nám zdokonalit a obsloužit náš obsah.
 
 <!--Reference style links -->
 [AAD-Auth-Scenarios]:v1-authentication-scenarios.md

@@ -1,6 +1,6 @@
 ---
-title: Vytvoření aplikace klasické pracovní plochy, která volá webová rozhraní API – platforma identit Microsoftu | Azure
-description: Přečtěte si, jak vytvořit desktopovou aplikaci, která volá webová API (přehled)
+title: Sestavení desktopové aplikace, která volá webová rozhraní API – Microsoft Identity Platform | Azure
+description: Informace o tom, jak vytvořit desktopovou aplikaci, která volá webová rozhraní API (přehled)
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,15 +12,15 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 09cc43dec2eff48754f5a6e693badd6bb1907cce
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80882996"
 ---
-# <a name="scenario-desktop-app-that-calls-web-apis"></a>Scénář: Desktopová aplikace, která volá webová api
+# <a name="scenario-desktop-app-that-calls-web-apis"></a>Scénář: desktopová aplikace, která volá webová rozhraní API
 
-Naučte se vše, co potřebujete k vytvoření desktopové aplikace, která volá webová API.
+Seznamte se s tím, že potřebujete vytvořit desktopovou aplikaci, která volá webová rozhraní API.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -28,43 +28,43 @@ Naučte se vše, co potřebujete k vytvoření desktopové aplikace, která vol�
 
 ## <a name="get-started"></a>Začínáme
 
-Pokud jste tak dosud neučinili, vytvořte první aplikaci podle rychlého startu na ploše .NET, na úvodním panelu univerzální platformy Windows (UPW) nebo nanativním úvodním startu nativní aplikace macOS:
+Pokud jste to ještě neudělali, vytvořte svou první aplikaci pomocí Průvodce rychlým startem pro plochu .NET, rychlým startem Univerzální platforma Windows (UWP) nebo rychlým startem macOS Native App:
 
 > [!div class="nextstepaction"]
 > [Rychlý start: Získání tokenu a volání rozhraní API Microsoft Graph z desktopové aplikace Windows](./quickstart-v2-windows-desktop.md)
 
 
 > [!div class="nextstepaction"]
-> [Úvodní příručka: Získání tokenu a volání rozhraní Microsoft Graph API z aplikace UPW](./quickstart-v2-uwp.md)
+> [Rychlý Start: získání tokenu a volání Microsoft Graph API z aplikace pro UWP](./quickstart-v2-uwp.md)
 
 > [!div class="nextstepaction"]
-> [Úvodní příručka: Získání tokenu a volání rozhraní Microsoft Graph API z nativní aplikace pro macOS](./quickstart-v2-ios.md)
+> [Rychlý Start: získání tokenu a volání Microsoft Graph API z nativní aplikace macOS](./quickstart-v2-ios.md)
 
 ## <a name="overview"></a>Přehled
 
-Napíšete desktopovou aplikaci a chcete se přihlásit k vaší aplikaci a volat webová rozhraní API, jako je Microsoft Graph, jiná rozhraní API společnosti Microsoft nebo vlastní webové rozhraní API. Máte několik možností:
+Napíšete desktopovou aplikaci a chcete se přihlašovat do vaší aplikace a volat webová rozhraní API, jako jsou Microsoft Graph, jiná rozhraní API Microsoftu nebo vlastní webové rozhraní API. Máte několik možností:
 
-- Můžete použít interaktivní pořízení tokenu:
+- Můžete použít získání interaktivního tokenu:
 
-  - Pokud vaše desktopová aplikace podporuje grafické ovládací prvky, například pokud se jedná o aplikaci Windows.Form, aplikaci WPF nebo nativní aplikaci macOS.
-  - Nebo pokud se jedná o aplikaci .NET Core a souhlasíte s tím, že k interakci ověřování se službou Azure Active Directory (Azure AD) dojde v systémovém prohlížeči.
+  - Pokud vaše desktopová aplikace podporuje grafické ovládací prvky, například, pokud se jedná o aplikaci Windows. Form, aplikaci WPF nebo nativní aplikaci macOS.
+  - Nebo, pokud se jedná o aplikaci .NET Core a souhlasíte s tím, že je interakce ověřování s Azure Active Directory (Azure AD) provedena v prohlížeči systému.
 
-- U aplikací hostovaných v systému Windows je také možné, že aplikace spuštěné v počítačích spojených s doménou Windows nebo Azure AD se připojily k tichému získání tokenu pomocí integrovaného ověřování systému Windows.
-- Nakonec, a i když to není doporučeno, můžete použít uživatelské jméno a heslo ve veřejných klientských aplikacích. Je to stále potřeba v některých scénářích, jako je DevOps. Jeho použití ukládá omezení pro vaši aplikaci. Například nemůže přihlásit uživatele, který potřebuje provést vícefaktorové ověřování (podmíněný přístup). Vaše aplikace také nebude mít prospěch z jednotného přihlašování (SSO).
+- U hostovaných aplikací pro Windows je také možné, že aplikace běžící na počítačích připojených k doméně systému Windows nebo službě Azure AD byly připojeny k tichému získání tokenu pomocí integrovaného ověřování systému Windows.
+- A konečně, i když se to nedoporučuje, můžete použít uživatelské jméno a heslo ve veřejných klientských aplikacích. Je stále potřeba v některých scénářích, jako je DevOps. Použití omezení pro vaši aplikaci. Například se nemůže přihlásit uživatel, který potřebuje provést vícefaktorové ověřování (podmíněný přístup). Vaše aplikace navíc nebude využívat jednotné přihlašování (SSO).
 
-  Je to také proti zásadám moderního ověřování a je poskytováno pouze z důvodů staršíverze.
+  Je také na principech moderního ověřování a je poskytována pouze z původních důvodů.
 
   ![Desktopová aplikace](media/scenarios/desktop-app.svg)
 
-- Pokud napíšete přenosný nástroj příkazového řádku, pravděpodobně aplikaci .NET Core, která běží na Linuxu nebo Macu, a pokud přijmete, že ověřování bude delegováno do systémového prohlížeče, můžete použít interaktivní ověřování. .NET Core neposkytuje [webový prohlížeč](https://aka.ms/msal-net-uses-web-browser), takže ověřování se děje v systémovém prohlížeči. V opačném případě je nejlepší volbou v takovém případě použít tok kódu zařízení. Tento tok se používá také pro aplikace bez prohlížeče, jako jsou například aplikace IoT.
+- Při psaní přenosného nástroje příkazového řádku, pravděpodobně aplikace .NET Core, která je spuštěna v systému Linux nebo Mac, a pokud přijmete Toto ověřování, bude delegováno do prohlížeče systému, můžete použít interaktivní ověřování. .NET Core neposkytuje [webový prohlížeč](https://aka.ms/msal-net-uses-web-browser), takže k ověřování dojde v prohlížeči systému. V opačném případě nejlepší možnost v takovém případě používá tok kódu zařízení. Tento tok se používá také pro aplikace bez prohlížeče, jako jsou aplikace IoT.
 
-  ![Aplikace bez prohlížeče](media/scenarios/device-code-flow-app.svg)
+  ![Aplikace s prohlížečem](media/scenarios/device-code-flow-app.svg)
 
 ## <a name="specifics"></a>Specifika
 
-Desktopové aplikace mají řadu specifik. Závisí hlavně na tom, zda vaše aplikace používá interaktivní ověřování nebo ne.
+Aplikace klasické pracovní plochy mají určitou řadu. Závisí hlavně na tom, jestli vaše aplikace používá interaktivní ověřování nebo ne.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Aplikace Pro stolní počítače: Registrace aplikace](scenario-desktop-app-registration.md)
+> [Desktopová aplikace: registrace aplikace](scenario-desktop-app-registration.md)

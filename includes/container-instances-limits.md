@@ -5,28 +5,28 @@ ms.topic: include
 ms.date: 02/13/2019
 ms.author: danlep
 ms.openlocfilehash: 33a82a55b03cde79d2d80826041ee6d43565476a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80334610"
 ---
 | Prostředek | Omezení |
 | --- | :--- |
-| Standardní skupiny kontejnerů sku na oblast na [předplatné](../articles/billing-buy-sign-up-azure-subscription.md) | 100<sup>1</sup> |
-| Vyhrazené skupiny kontejnerů sku na oblast na [předplatné](../articles/billing-buy-sign-up-azure-subscription.md) | 0<sup>1</sup> |
+| Standardní skupiny kontejnerů SKU na oblast a [předplatné](../articles/billing-buy-sign-up-azure-subscription.md) | 100<sup>1</sup> |
+| Vyhrazené skupiny kontejnerů SKU na oblast na [předplatné](../articles/billing-buy-sign-up-azure-subscription.md) | 0<sup>1</sup> |
 | Počet kontejnerů na skupinu kontejnerů | 60 |
 | Počet svazků na skupinu kontejnerů | 20 |
 | Počet portů na IP adresu | 5 |
 | Velikost protokolu instance kontejneru – spuštěná instance | 4 MB |
-| Velikost protokolu instance kontejneru - zastavená instance | 16 KB nebo 1 000 řádků |
+| Velikost protokolu instance kontejneru – zastavená instance | 16 KB nebo 1 000 řádků |
 | Vytvoření kontejneru za hodinu |300<sup>1</sup> |
 | Vytvoření kontejneru za 5 minut | 100<sup>1</sup> |
 | Odstranění kontejneru za hodinu | 300<sup>1</sup> |
 | Odstranění kontejneru za 5 minut | 100<sup>1</sup> |
 
 
-<sup>1.</sup> Chcete-li požádat o zvýšení limitu, vytvořte [žádost o podporu Azure][azure-support].<br />
+<sup>1</sup> Pokud chcete požádat o zvýšení limitu, vytvořte [support Request Azure][azure-support].<br />
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat do/z databáze Azure SQL Database
-description: Zjistěte, jak kopírovat data do/z Azure SQL Database pomocí Azure Data Factory.
+title: Kopírovat data do/z Azure SQL Database
+description: Naučte se, jak kopírovat data do a z Azure SQL Database pomocí Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,99 +13,99 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 7fc0b2822195d952c2a4f9c02bf3758c0e2b809a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260498"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>Kopírování dat do a z Azure SQL Database pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](data-factory-azure-sql-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-azure-sql-database.md)
 
 > [!NOTE]
-> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [Konektor azure SQL database ve V2](../connector-azure-sql-database.md).
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [konektor Azure SQL Database v v2](../connector-azure-sql-database.md).
 
-Tento článek vysvětluje, jak použít aktivitu kopírování v Azure Data Factory k přesunu dat do a z Azure SQL Database. Vychází z článku [Aktivity přesunu dat,](data-factory-data-movement-activities.md) který představuje obecný přehled přesunu dat s aktivitou kopírování.
+Tento článek vysvětluje, jak používat aktivitu kopírování v Azure Data Factory k přesunu dat do a z Azure SQL Database. Sestavuje se podle článku [aktivity přesunu dat](data-factory-data-movement-activities.md) , který prezentuje obecný přehled přesunu dat s aktivitou kopírování.
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
-Data z **Azure SQL Database** můžete zkopírovat do následujících úložišť dat:
+Data **z Azure SQL Database** můžete kopírovat do následujících úložišť dat:
 
 [!INCLUDE [data-factory-supported-sinks](../../../includes/data-factory-supported-sinks.md)]
 
-Data z následujících úložišť dat můžete zkopírovat **do azure sql database**:
+Data z následujících úložišť dat můžete zkopírovat **do Azure SQL Database**:
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
-## <a name="supported-authentication-type"></a>Podporovaný typ ověřování
+## <a name="supported-authentication-type"></a>Typ podporovaného ověřování
 Konektor Azure SQL Database podporuje základní ověřování.
 
 ## <a name="getting-started"></a>Začínáme
-Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data do nebo z databáze Azure SQL pomocí různých nástrojů nebo api.
+Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data do nebo z Azure SQL Database pomocí různých nástrojů/rozhraní API.
 
-Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Viz [Kurz: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) pro rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat.
+Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
 
-K vytvoření kanálu můžete taky použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Šablona Azure Resource Manager**, Rozhraní **.NET API**a REST **API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v tématu [Kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) aktivity.
+K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
-Bez ohledu na to, zda používáte nástroje nebo api, provedete následující kroky k vytvoření kanálu, který přesune data ze zdrojového úložiště dat do úložiště dat jímky:
+Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
-1. Vytvořte **datovou továrnu**. Továrna dat může obsahovat jeden nebo více kanálů.
-2. Vytvořte **propojené služby** pro propojení vstupních a výstupních úložišť dat s vaší továrně dat. Například pokud kopírujete data z úložiště objektů blob Azure do databáze Azure SQL, vytvoříte dvě propojené služby, které propojí váš účet úložiště Azure a databázi Azure SQL s vaší továrně dat. Vlastnosti propojené služby, které jsou specifické pro Azure SQL Database, najdete v tématu [vlastnosti propojené služby](#linked-service-properties) části.
-3. Vytvořte **datové sady** představující vstupní a výstupní data pro operaci kopírování. V příkladu uvedeném v posledním kroku vytvoříte datovou sadu, která určí kontejner objektů blob a složku, která obsahuje vstupní data. A vytvoříte další datovou sadu k určení tabulky SQL v databázi Azure SQL, která obsahuje data zkopírovaná z úložiště objektů blob. Vlastnosti datové sady, které jsou specifické pro Azure Data Lake Store, najdete v tématu [vlastnosti datové sady](#dataset-properties) části.
-4. Vytvořte **kanál** s aktivitou kopírování, která přebírá datovou sadu jako vstup a datovou sadu jako výstup. V příkladu uvedeném výše použijete Objekt blobSource jako zdroj a SqlSink jako jímku pro aktivitu kopírování. Podobně pokud kopírujete z Azure SQL Database do azure blob storage, použijete sqlsource a blobsink v aktivitě kopírování. Informace o vlastnostech aktivity kopírování, které jsou specifické pro Azure SQL Database, najdete v tématu [kopírování vlastností aktivity](#copy-activity-properties) části. Podrobnosti o tom, jak používat úložiště dat jako zdroj nebo jímku, klikněte na odkaz v předchozí části úložiště dat.
+1. Vytvořte **datovou továrnu**. Datová továrna může obsahovat jeden nebo více kanálů.
+2. Vytvořte **propojené služby** , které propojí vstupní a výstupní úložiště dat s datovou továrnou. Pokud například kopírujete data z úložiště objektů BLOB v Azure do databáze SQL Azure, vytvoříte dvě propojené služby, které propojí váš účet úložiště Azure a Azure SQL Database s datovou továrnou. Vlastnosti propojené služby, které jsou specifické pro Azure SQL Database, najdete v části [Vlastnosti propojené služby](#linked-service-properties) .
+3. Vytvořte datové **sady** , které reprezentují vstupní a výstupní data pro operaci kopírování. V příkladu uvedeném v posledním kroku vytvoříte datovou sadu pro určení kontejneru objektů BLOB a složky, která obsahuje vstupní data. A vytvoříte další datovou sadu pro určení tabulky SQL ve službě Azure SQL Database, která obsahuje data zkopírovaná z úložiště objektů BLOB. Vlastnosti datové sady, které jsou specifické pro Azure Data Lake Store, najdete v části [Vlastnosti datové sady](#dataset-properties) .
+4. Vytvořte **kanál** s aktivitou kopírování, která převezme datovou sadu jako vstup a datovou sadu jako výstup. V předchozím příkladu použijete jako jímku aktivity kopírování BlobSource jako zdroj a SqlSink. Podobně pokud kopírujete z Azure SQL Database do Azure Blob Storage, v aktivitě kopírování použijete SqlSource a BlobSink. Vlastnosti aktivity kopírování, které jsou specifické pro Azure SQL Database, najdete v části [vlastnosti aktivity kopírování](#copy-activity-properties) . Podrobnosti o tom, jak používat úložiště dat jako zdroj nebo jímku, získáte kliknutím na odkaz v předchozí části úložiště dat.
 
-Při použití průvodce jsou automaticky vytvořeny definice JSON pro tyto entity Data Factory (propojené služby, datové sady a kanál). Při použití nástrojů nebo rozhraní API (s výjimkou rozhraní .NET API) definujete tyto entity Data Factory pomocí formátu JSON. Ukázky s definicemi JSON pro entity Data Factory, které se používají ke kopírování dat do/z databáze Azure SQL, najdete v části [příklady JSON](#json-examples-for-copying-data-to-and-from-sql-database) v tomto článku.
+Při použití Průvodce se automaticky vytvoří definice JSON pro tyto Entity Data Factory (propojené služby, datové sady a kanál). Pokud používáte nástroje/rozhraní API (s výjimkou rozhraní .NET API), definujete tyto Data Factory entit pomocí formátu JSON. Ukázky s definicemi JSON pro Entity Data Factory používané ke kopírování dat do a z Azure SQL Database najdete v části [Příklady JSON](#json-examples-for-copying-data-to-and-from-sql-database) tohoto článku.
 
-V následujících částech jsou uvedeny podrobnosti o vlastnostech JSON, které se používají k definování entit Datové továrny specifické pro Azure SQL Database:
+Následující části obsahují podrobné informace o vlastnostech JSON, které se používají k definování Data Factory entit specifických pro Azure SQL Database:
 
-## <a name="linked-service-properties"></a>Vlastnosti propojených služeb
-Propojená služba Azure SQL propojuje databázi Azure SQL s vaší továrně dat. Následující tabulka obsahuje popis prvků JSON specifických pro propojenou službu Azure SQL.
+## <a name="linked-service-properties"></a>Vlastnosti propojené služby
+Propojená služba Azure SQL propojuje databázi SQL Azure s datovou továrnou. Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou službu Azure SQL.
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| type |Vlastnost type musí být nastavena na: **AzureSqlDatabase.** |Ano |
-| připojovací řetězec |Zadejte informace potřebné pro připojení k instanci Azure SQL Database pro vlastnost connectionString. Je podporováno pouze základní ověřování. |Ano |
+| type |Vlastnost Type musí být nastavená na: **AzureSqlDatabase** . |Ano |
+| připojovací řetězec |Zadejte informace potřebné pro připojení k instanci Azure SQL Database pro vlastnost connectionString. Podporuje se jenom základní ověřování. |Ano |
 
 > [!IMPORTANT]
-> Nakonfigurujte databázový server [Azure SQL Database Firewall](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) tak, aby [umožňoval přístup ke serveru službám Azure](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure). Navíc pokud kopírujete data do Azure SQL Database z mimo Azure, včetně místních zdrojů dat s bránou pro tovární data, nakonfigurujte příslušný rozsah IP adres pro počítač, který odesílá data do Azure SQL Database.
+> Nakonfigurujte [Azure SQL Database brány firewall](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) databázového serveru, aby měly [služby Azure přístup k serveru](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure). Pokud navíc kopírujete data Azure SQL Database mimo Azure, včetně z místních zdrojů dat pomocí brány služby Data Factory, nakonfigurujte odpovídající rozsah IP adres pro počítač, který odesílá data do Azure SQL Database.
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
-Chcete-li zadat datovou sadu představující vstupní nebo výstupní data v databázi Azure SQL, nastavte vlastnost type datové sady **na: AzureSqlTable**. Nastavte vlastnost **linkedServiceName** datové sady na název propojené služby Azure SQL.
+Chcete-li určit datovou sadu, která bude představovat vstupní nebo výstupní data ve službě Azure SQL Database, nastavte vlastnost Type datové sady na: **AzureSqlTable**. Nastavte vlastnost **linkedServiceName** datové sady na název propojené služby Azure SQL.
 
-Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování datových sad, naleznete v článku [Vytváření datových sad.](data-factory-create-datasets.md) Oddíly, jako je struktura, dostupnost a zásady datové sady JSON, jsou podobné pro všechny typy datových sad (Azure SQL, Azure blob, Tabulka Azure atd.).
+Úplný seznam sekcí & vlastností dostupných pro definování datových sad naleznete v článku [vytvoření datových sad](data-factory-create-datasets.md) . Oddíly, jako je například struktura, dostupnost a zásada pro datovou sadu JSON, jsou podobné pro všechny typy datových sad (Azure SQL, Azure Blob, tabulka Azure atd.).
 
-Sekce typeProperties se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Část **typeProperties** pro datovou sadu typu **AzureSqlTable** má následující vlastnosti:
+Oddíl typeProperties se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl **typeProperties** pro sadu dat typu **AzureSqlTable** má následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | tableName |Název tabulky nebo zobrazení v instanci Azure SQL Database, na kterou odkazuje propojená služba. |Ano |
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
-Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování aktivit, naleznete v článku [Vytváření kanálů.](data-factory-create-pipelines.md) Vlastnosti, jako je název, popis, vstupní a výstupní tabulky a zásady jsou k dispozici pro všechny typy aktivit.
+Úplný seznam sekcí & vlastností dostupných pro definování aktivit najdete v článku [vytvoření kanálů](data-factory-create-pipelines.md) . Pro všechny typy aktivit jsou k dispozici vlastnosti, jako je název, popis, vstupní a výstupní tabulka a zásada.
 
 > [!NOTE]
-> Aktivita kopírování trvá pouze jeden vstup a vytváří pouze jeden výstup.
+> Aktivita kopírování používá pouze jeden vstup a vytváří pouze jeden výstup.
 
-Vzhledem k tomu, vlastnosti, které jsou k dispozici v **typeProperties** části aktivity se liší s každým typem aktivity. U aktivity kopírování se liší v závislosti na typech zdrojů a propadů.
+V takovém případě se vlastnosti dostupné v části **typeProperties** v aktivitě liší podle typu aktivity. U aktivity kopírování se liší v závislosti na typech zdrojů a jímky.
 
-Pokud přesouváte data z databáze Azure SQL, nastavíte typ zdroje v aktivitě kopírování na **SqlSource**. Podobně pokud přesouváte data do databáze Azure SQL, nastavíte typ jímky v aktivitě kopírování do **SqlSink**. Tato část obsahuje seznam vlastností podporovaných sqlsource a sqlsink.
+Pokud přesouváte data z databáze SQL Azure, nastavíte typ zdroje v aktivitě kopírování na **SqlSource**. Podobně platí, že Pokud přesouváte data do databáze SQL Azure, nastavíte typ jímky v aktivitě kopírování na **SqlSink**. V této části najdete seznam vlastností podporovaných SqlSource a SqlSink.
 
-### <a name="sqlsource"></a>Zdroj Sql
-V aktivitě kopírování, pokud je zdroj typu **SqlSource**, jsou v části **typeProperties** k dispozici následující vlastnosti:
+### <a name="sqlsource"></a>SqlSource
+V aktivitě kopírování je-li zdrojem typu **SqlSource**, jsou v části **typeProperties** k dispozici následující vlastnosti:
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| sqlReaderQuery |Ke čtení dat použijte vlastní dotaz. |Řetězec dotazu SQL. Příklad: `select * from MyTable`. |Ne |
-| sqlReaderStoredProcedureName |Název uložené procedury, která čte data ze zdrojové tabulky. |Název uložené procedury. Poslední příkaz SQL musí být příkaz SELECT v uložené proceduře. |Ne |
-| storedProcedureParameters |Parametry pro uloženou proceduru. |Dvojice název/hodnota. Názvy a písmena parametrů se musí shodovat s názvy a písmeny parametrů uložené procedury. |Ne |
+| sqlReaderQuery |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Příklad: `select * from MyTable`. |Ne |
+| sqlReaderStoredProcedureName |Název uložené procedury, která čte data ze zdrojové tabulky. |Název uložené procedury Poslední příkaz SQL musí být příkaz SELECT v uložené proceduře. |Ne |
+| storedProcedureParameters |Parametry pro uloženou proceduru. |Páry název-hodnota. Názvy a malá písmena parametrů se musí shodovat s názvy a písmeny parametrů uložené procedury. |Ne |
 
-Pokud **sqlReaderQuery** je zadán pro SqlSource, aktivita kopírování spustí tento dotaz proti zdroji Azure SQL Database získat data. Alternativně můžete zadat uloženou proceduru zadáním **sqlReaderStoredProcedureName** a **storedProcedureParameters** (pokud uložená procedura přebírá parametry).
+Pokud je pro SqlSource určena **sqlReaderQuery** , aktivita kopírování spustí tento dotaz proti zdroji Azure SQL Database, aby získala data. Alternativně můžete zadat uloženou proceduru zadáním **sqlReaderStoredProcedureName** a **storedProcedureParameters** (Pokud uložená procedura přijímá parametry).
 
-Pokud nezadáte sqlReaderQuery nebo sqlReaderStoredProcedureName, sloupce definované v části struktury datové sady JSON se`select column1, column2 from mytable`použijí k vytvoření dotazu ( ) ke spuštění v databázi Azure SQL. Pokud definice datové sady nemá strukturu, jsou z tabulky vybrány všechny sloupce.
+Pokud nezadáte buď sqlReaderQuery nebo sqlReaderStoredProcedureName, budou použity sloupce definované v oddílu struktury JSON datové sady k vytvoření dotazu (`select column1, column2 from mytable`) ke spuštění na Azure SQL Database. Pokud definice datové sady nemá strukturu, všechny sloupce jsou vybrány z tabulky.
 
 > [!NOTE]
-> Při použití **sqlReaderStoredProcedureName**, stále je třeba zadat hodnotu **vlastnosti tableName** v datové sadě JSON. V šaku tabulce nejsou provedena žádná ověření.
+> Při použití **sqlReaderStoredProcedureName**je stále nutné zadat hodnotu pro vlastnost **TableName** v datové sadě JSON. V této tabulce neexistují žádná ověření, která by byla provedena.
 >
 >
 
@@ -141,20 +141,20 @@ END
 GO
 ```
 
-### <a name="sqlsink"></a>Systém SqlSink
+### <a name="sqlsink"></a>SqlSink
 **SqlSink** podporuje následující vlastnosti:
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| writeBatchTimeout |Počkejte čas pro operaci dávkové vložení k dokončení před časovým výpadkem. |Timespan<br/><br/> Příklad: "00:30:00" (30 minut). |Ne |
-| writeBatchSize |Vloží data do tabulky SQL, když velikost vyrovnávací paměti dosáhne writeBatchSize. |Celé číslo (počet řádků) |Ne (výchozí: 10000) |
-| sqlWriterCleanupScript |Zadejte dotaz pro aktivitu kopírování, který má být proveden tak, aby byla vyčištěna data určitého řezu. Další informace naleznete v [tématu opakovatelná kopie](#repeatable-copy). |Příkaz dotazu. |Ne |
-| sliceIdentifierColumnName |Zadejte název sloupce pro aktivitu kopírování, který se má vyplnit automaticky generovaným identifikátorem řezu, který se používá k vyčištění dat určitého řezu při opětovném spuštění. Další informace naleznete v [tématu opakovatelná kopie](#repeatable-copy). |Název sloupce s datovým typem binárního(32). |Ne |
-| sqlWriterStoredProcedureName |Název uložené procedury, která definuje, jak aplikovat zdrojová data do cílové tabulky, například k upserts nebo transformaci pomocí vlastní obchodní logiky. <br/><br/>Všimněte si, že tato uložená procedura bude **vyvolána na dávku**. Pokud chcete provést operaci, která běží pouze jednou a nemá nic společného se zdrojovými daty, např. `sqlWriterCleanupScript` |Název uložené procedury. |Ne |
-| storedProcedureParameters |Parametry pro uloženou proceduru. |Dvojice název/hodnota. Názvy a písmena parametrů se musí shodovat s názvy a písmeny parametrů uložené procedury. |Ne |
-| sqlWriterTableType |Zadejte název typu tabulky, který má být použit v uložené proceduře. Aktivita kopírování zpřístupňuje data přesunutá v dočasné tabulce s tímto typem tabulky. Uložený kód procedury pak může sloučit zkopírovaná data s existujícími daty. |Název typu tabulky. |Ne |
+| writeBatchTimeout |Počkejte, než se operace dávkového vložení dokončí předtím, než vyprší časový limit. |timespan<br/><br/> Příklad: "00:30:00" (30 minut). |Ne |
+| writeBatchSize |Když velikost vyrovnávací paměti dosáhne writeBatchSize, vloží data do tabulky SQL. |Integer (počet řádků) |Ne (výchozí: 10000) |
+| sqlWriterCleanupScript |Zadejte dotaz pro aktivitu kopírování, která se má provést, aby se vyčistila data konkrétního řezu. Další informace najdete v tématu [opakované kopírování](#repeatable-copy). |Příkaz dotazu. |Ne |
+| sliceIdentifierColumnName |Zadejte název sloupce pro aktivitu kopírování, která se má vyplnit automaticky generovaným identifikátorem řezu, který se použije k vyčištění dat určitého řezu při opakovaném spuštění. Další informace najdete v tématu [opakované kopírování](#repeatable-copy). |Název sloupce sloupce s datovým typem Binary (32). |Ne |
+| sqlWriterStoredProcedureName |Název uložené procedury definující, jak se mají použít zdrojová data na cílovou tabulku, například upsertuje nebo transformaci pomocí vlastní obchodní logiky. <br/><br/>Poznámka: Tato uložená procedura se **vyvolá na každou dávku**. Pokud chcete provést operaci, která se spustí pouze jednou a nemá nic ke zdroji dat, např. Delete/zkrácení, použijte `sqlWriterCleanupScript` vlastnost. |Název uložené procedury |Ne |
+| storedProcedureParameters |Parametry pro uloženou proceduru. |Páry název-hodnota. Názvy a malá písmena parametrů se musí shodovat s názvy a písmeny parametrů uložené procedury. |Ne |
+| sqlWriterTableType |Zadejte název typu tabulky, který se použije v uložené proceduře. Aktivita kopírování zpřístupňuje data, která jsou k dispozici v dočasné tabulce s tímto typem tabulky. Uložený kód procedury pak může sloučit data zkopírovaná se stávajícími daty. |Název typu tabulky |Ne |
 
-#### <a name="sqlsink-example"></a>Příklad aplikace SqlSink
+#### <a name="sqlsink-example"></a>Příklad SqlSink
 
 ```JSON
 "sink": {
@@ -171,19 +171,19 @@ GO
 }
 ```
 
-## <a name="json-examples-for-copying-data-to-and-from-sql-database"></a>Příklady JSON pro kopírování dat do a z databáze SQL
-Následující příklady poskytují ukázkové definice JSON, které můžete použít k vytvoření kanálu pomocí [Sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo Azure [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ukazují, jak kopírovat data do a z Azure SQL Database a Azure Blob Storage. Data však můžete zkopírovat **přímo** z libovolného zdroje do libovolného [jímky uvedené zde](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivity kopírování v Azure Data Factory.
+## <a name="json-examples-for-copying-data-to-and-from-sql-database"></a>Příklady JSON pro kopírování dat do a z SQL Database
+V následujících příkladech jsou uvedeny ukázkové definice JSON, které můžete použít k vytvoření kanálu pomocí sady [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ukazují, jak kopírovat data z Azure SQL Database a z Azure Blob Storage. Data se ale dají zkopírovat **přímo** z libovolného zdroje do kterékoli z těchto umyvadel, které jsou [tady](data-factory-data-movement-activities.md#supported-data-stores-and-formats) uvedené, pomocí aktivity kopírování v Azure Data Factory.
 
-### <a name="example-copy-data-from-azure-sql-database-to-azure-blob"></a>Příklad: Kopírování dat z Azure SQL Database do objektu Blob Azure
-Totéž definuje následující entity Data Factory:
+### <a name="example-copy-data-from-azure-sql-database-to-azure-blob"></a>Příklad: kopírování dat z Azure SQL Database do objektu blob Azure
+Stejný definuje následující Entity Data Factory:
 
 1. Propojená služba typu [AzureSqlDatabase](#linked-service-properties).
 2. Propojená služba typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
 3. Vstupní [datová sada](data-factory-create-datasets.md) typu [AzureSqlTable](#dataset-properties).
 4. Výstupní [datová sada](data-factory-create-datasets.md) typu [Azure Blob](data-factory-azure-blob-connector.md#dataset-properties).
-5. [Kanál](data-factory-create-pipelines.md) s aktivitou Copy, která používá [SqlSource](#copy-activity-properties) a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+5. [Kanál](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [SqlSource](#copy-activity-properties) a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Ukázka zkopíruje data časových řad (každou hodinu, denně atd.) z tabulky v databázi Azure SQL do objektu blob každou hodinu. Vlastnosti JSON použité v těchto vzorcích jsou popsány v následujících částech.
+Ukázka kopíruje data časových řad (každou hodinu, každý den atd.) z tabulky ve službě Azure SQL Database do objektu BLOB každou hodinu. Vlastnosti JSON použité v těchto ukázkách jsou popsány v oddílech následujících po ukázkách.
 
 **Propojená služba Azure SQL Database:**
 
@@ -198,9 +198,9 @@ Ukázka zkopíruje data časových řad (každou hodinu, denně atd.) z tabulky 
   }
 }
 ```
-Seznam vlastností podporovaných touto propojenou službou najdete v části Azure SQL Linked Service.
+Seznam vlastností podporovaných touto propojenou službou najdete v části propojená služba Azure SQL.
 
-**Propojená služba úložiště objektů blob Azure:**
+**Propojená služba úložiště objektů BLOB v Azure:**
 
 ```JSON
 {
@@ -213,14 +213,14 @@ Seznam vlastností podporovaných touto propojenou službou najdete v části Az
   }
 }
 ```
-Seznam vlastností podporovaných touto propojenou službou najdete v článku azure [blob.](data-factory-azure-blob-connector.md#azure-storage-linked-service)
+Seznam vlastností podporovaných touto propojenou službou najdete v článku o [objektu blob Azure](data-factory-azure-blob-connector.md#azure-storage-linked-service) .
 
 
 **Vstupní datová sada Azure SQL:**
 
-Ukázka předpokládá, že jste vytvořili tabulku "MyTable" v Azure SQL a obsahuje sloupec s názvem "sloupec časového razítka" pro data časových řad.
+Ukázka předpokládá, že jste v Azure SQL vytvořili tabulku "MyTable" a obsahuje sloupec s názvem "timestampcolumn" pro data časových řad.
 
-Nastavení "externí": "true" informuje službu Azure Data Factory, že datová sada je externí pro datovou továrnu a není vyráběna aktivitou v datové továrně.
+Nastavení "externí": "true" informuje službu Azure Data Factory o tom, že datová sada je externí pro objekt pro vytváření dat, a není vytvořena aktivitou v datové továrně.
 
 ```JSON
 {
@@ -247,11 +247,11 @@ Nastavení "externí": "true" informuje službu Azure Data Factory, že datová 
 }
 ```
 
-Seznam vlastností podporovaných tímto typem datové sady najdete v části Vlastnosti typu datové sady Azure SQL.
+Seznam vlastností, které tento typ datové sady podporuje, najdete v části vlastnosti typu datové sady Azure SQL.
 
-**Výstupní datová sada objektu Blob Azure:**
+**Výstupní datová sada Azure Blob:**
 
-Data se zapisují do nového objektu blob každou hodinu (frekvence: hodina, interval: 1). Cesta ke složce pro objekt blob je dynamicky vyhodnocována na základě počátečního času zpracovávaného řezu. Cesta ke složce používá části počátečního času rok, měsíc, den a hodiny.
+Data se zapisují do nového objektu BLOB každou hodinu (frekvence: hodina, interval: 1). Cesta ke složce pro objekt BLOB je dynamicky vyhodnocována na základě počátečního času zpracovávaného řezu. Cesta ke složce používá části rok, měsíc, den a hodiny v počátečním čase.
 
 ```JSON
 {
@@ -308,11 +308,11 @@ Data se zapisují do nového objektu blob každou hodinu (frekvence: hodina, int
   }
 }
 ```
-V části [Vlastnosti typu datové sady Azure blob](data-factory-azure-blob-connector.md#dataset-properties) najdete v seznamu vlastností podporovaných tímto typem datové sady.
+Seznam vlastností, které tento typ datové sady podporuje, najdete v části [vlastnosti typu datové sady objektů BLOB v Azure](data-factory-azure-blob-connector.md#dataset-properties) .
 
-**Aktivita kopírování v kanálu se zdrojem SQL a jímkou blob:**
+**Aktivita kopírování v kanálu se zdrojem SQL a jímkou objektů BLOB:**
 
-Kanál obsahuje aktivitu kopírování, která je nakonfigurována pro použití vstupních a výstupních datových sad a je naplánována na každou hodinu. V definici kanálu JSON je **typ zdroje** nastaven na **SqlSource** a typ **jímky** je nastaven na **Objekt blobSink**. Dotaz SQL zadaný pro vlastnost **SqlReaderQuery** vybere data za poslední hodinu ke kopírování.
+Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby používala vstupní a výstupní datové sady a má naplánované spuštění každou hodinu. V definici JSON kanálu je typ **zdroje** nastavený na **SqlSource** a typ **jímky** je nastavený na **BlobSink**. Dotaz SQL zadaný pro vlastnost **SqlReaderQuery** vybere data během uplynulé hodiny ke zkopírování.
 
 ```JSON
 {
@@ -360,22 +360,22 @@ Kanál obsahuje aktivitu kopírování, která je nakonfigurována pro použití
   }
 }
 ```
-V příkladu **sqlReaderQuery** je určen pro SqlSource. Aktivita kopírování spustí tento dotaz proti zdroji databáze Azure SQL, aby získala data. Alternativně můžete zadat uloženou proceduru zadáním **sqlReaderStoredProcedureName** a **storedProcedureParameters** (pokud uložená procedura přebírá parametry).
+V příkladu je **sqlReaderQuery** určena pro SqlSource. Aktivita kopírování spustí tento dotaz proti zdroji Azure SQL Database, aby získala data. Alternativně můžete zadat uloženou proceduru zadáním **sqlReaderStoredProcedureName** a **storedProcedureParameters** (Pokud uložená procedura přijímá parametry).
 
-Pokud nezadáte sqlReaderQuery nebo sqlReaderStoredProcedureName, sloupce definované v části struktura datové sady JSON se používají k vytvoření dotazu ke spuštění proti Azure SQL Database. Například: `select column1, column2 from mytable`. Pokud definice datové sady nemá strukturu, jsou z tabulky vybrány všechny sloupce.
+Pokud nezadáte buď sqlReaderQuery nebo sqlReaderStoredProcedureName, budou použity sloupce definované v oddílu struktury JSON datové sady k vytvoření dotazu pro spuštění proti Azure SQL Database. Například: `select column1, column2 from mytable`. Pokud definice datové sady nemá strukturu, všechny sloupce jsou vybrány z tabulky.
 
-Seznam vlastností podporovaných technologiemi SqlSource a BlobSink naleznete v části [Zdroj sql](#sqlsource) a [blobsink.](data-factory-azure-blob-connector.md#copy-activity-properties)
+Seznam vlastností podporovaných SqlSource a BlobSink najdete v části [zdroje SQL](#sqlsource) a v [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) .
 
-### <a name="example-copy-data-from-azure-blob-to-azure-sql-database"></a>Příklad: Kopírování dat z objektu Blob Azure do azure sql databáze
-Ukázka definuje následující entity Data Factory:
+### <a name="example-copy-data-from-azure-blob-to-azure-sql-database"></a>Příklad: kopírování dat z objektu blob Azure do Azure SQL Database
+Ukázka definuje následující Entity Data Factory:
 
 1. Propojená služba typu [AzureSqlDatabase](#linked-service-properties).
 2. Propojená služba typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-3. Vstupní [datová sada](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+3. Vstupní [datová sada](data-factory-create-datasets.md) typu [azureblobu](data-factory-azure-blob-connector.md#dataset-properties).
 4. Výstupní [datová sada](data-factory-create-datasets.md) typu [AzureSqlTable](#dataset-properties).
-5. [Kanál](data-factory-create-pipelines.md) s aktivitou Copy, která používá [objekty BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) a [SqlSink](#copy-activity-properties).
+5. [Kanál](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) a [SqlSink](#copy-activity-properties).
 
-Ukázka zkopíruje data časových řad (každou hodinu, denně atd.) z objektu blob Azure do tabulky v databázi Azure SQL každou hodinu. Vlastnosti JSON použité v těchto vzorcích jsou popsány v následujících částech.
+Ukázka kopíruje data časových řad (každou hodinu, každý den atd.) z objektu blob Azure do tabulky v Azure SQL Database každou hodinu. Vlastnosti JSON použité v těchto ukázkách jsou popsány v oddílech následujících po ukázkách.
 
 **Propojená služba Azure SQL:**
 
@@ -390,9 +390,9 @@ Ukázka zkopíruje data časových řad (každou hodinu, denně atd.) z objektu 
   }
 }
 ```
-Seznam vlastností podporovaných touto propojenou službou najdete v části Azure SQL Linked Service.
+Seznam vlastností podporovaných touto propojenou službou najdete v části propojená služba Azure SQL.
 
-**Propojená služba úložiště objektů blob Azure:**
+**Propojená služba úložiště objektů BLOB v Azure:**
 
 ```JSON
 {
@@ -405,12 +405,12 @@ Seznam vlastností podporovaných touto propojenou službou najdete v části Az
   }
 }
 ```
-Seznam vlastností podporovaných touto propojenou službou najdete v článku azure [blob.](data-factory-azure-blob-connector.md#azure-storage-linked-service)
+Seznam vlastností podporovaných touto propojenou službou najdete v článku o [objektu blob Azure](data-factory-azure-blob-connector.md#azure-storage-linked-service) .
 
 
-**Vstupní datová sada objektu Blob Azure:**
+**Vstupní datová sada Azure Blob:**
 
-Data se zírají z nového objektu blob každou hodinu (frekvence: hodina, interval: 1). Cesta ke složce a název souboru pro objekt blob jsou dynamicky vyhodnocovány na základě počátečního času zpracovávaného řezu. Cesta ke složce používá rok, měsíc a den část počátečního času a název souboru používá hodinovou část počátečního času. "externí": nastavení "true" informuje službu Data Factory, že tato tabulka je externí pro datovou továrnu a není vytvářena aktivitou v datové továrně.
+Data se vybírají z nového objektu BLOB každou hodinu (frekvence: hodina, interval: 1). Cesta ke složce a název souboru pro objekt BLOB jsou dynamicky vyhodnocovány na základě počátečního času zpracovávaného řezu. Cesta ke složce používá část rok, měsíc a den v čase zahájení a název souboru používá hodinovou část času spuštění. nastavení externí: "true" informuje službu Data Factory o tom, že tato tabulka je pro objekt pro vytváření dat externá a není vytvořená aktivitou v datové továrně.
 
 ```JSON
 {
@@ -476,11 +476,11 @@ Data se zírají z nového objektu blob každou hodinu (frekvence: hodina, inter
   }
 }
 ```
-V části [Vlastnosti typu datové sady Azure blob](data-factory-azure-blob-connector.md#dataset-properties) najdete v seznamu vlastností podporovaných tímto typem datové sady.
+Seznam vlastností, které tento typ datové sady podporuje, najdete v části [vlastnosti typu datové sady objektů BLOB v Azure](data-factory-azure-blob-connector.md#dataset-properties) .
 
 **Výstupní datová sada Azure SQL Database:**
 
-Ukázka zkopíruje data do tabulky s názvem "MyTable" v Azure SQL. Vytvořte tabulku v Azure SQL se stejným počtem sloupců, jako očekáváte, že soubor BLOB CSV bude obsahovat. Nové řádky jsou přidávány do tabulky každou hodinu.
+Ukázka zkopíruje data do tabulky s názvem "MyTable" v Azure SQL. Vytvořte tabulku v Azure SQL se stejným počtem sloupců, jako byste očekávali, že soubor CSV BLOB bude obsahovat. Nové řádky jsou do tabulky přidány každou hodinu.
 
 ```JSON
 {
@@ -498,11 +498,11 @@ Ukázka zkopíruje data do tabulky s názvem "MyTable" v Azure SQL. Vytvořte ta
   }
 }
 ```
-Seznam vlastností podporovaných tímto typem datové sady najdete v části Vlastnosti typu datové sady Azure SQL.
+Seznam vlastností, které tento typ datové sady podporuje, najdete v části vlastnosti typu datové sady Azure SQL.
 
-**Aktivita kopírování v kanálu se zdrojem objektů blob a jímkou SQL:**
+**Aktivita kopírování v kanálu se zdrojem objektů BLOB a jímkou SQL:**
 
-Kanál obsahuje aktivitu kopírování, která je nakonfigurována pro použití vstupních a výstupních datových sad a je naplánována na každou hodinu. V definici kanálu JSON je **typ zdroje** nastaven na **objekt BlobSource** a typ **jímky** je nastaven na **sqlsink**.
+Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby používala vstupní a výstupní datové sady a má naplánované spuštění každou hodinu. V definici JSON kanálu je typ **zdroje** nastavený na **BlobSource** a typ **jímky** je nastavený na **SqlSink**.
 
 ```JSON
 {
@@ -550,10 +550,10 @@ Kanál obsahuje aktivitu kopírování, která je nakonfigurována pro použití
   }
 }
 ```
-Podívejte se na část [Sql Sink](#sqlsink) a [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) pro seznam vlastností podporovaných SqlSink a BlobSource.
+Seznam vlastností podporovaných SqlSink a BlobSource najdete v části [jímka SQL](#sqlsink) a [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) .
 
 ## <a name="identity-columns-in-the-target-database"></a>Sloupce identity v cílové databázi
-Tato část obsahuje příklad kopírování dat ze zdrojové tabulky bez sloupce identity do cílové tabulky se sloupcem identity.
+V této části najdete příklad kopírování dat ze zdrojové tabulky bez sloupce identity do cílové tabulky se sloupcem identity.
 
 **Zdrojová tabulka:**
 
@@ -576,7 +576,7 @@ create table dbo.TargetTbl
 ```
 Všimněte si, že cílová tabulka má sloupec identity.
 
-**Definice zdrojového datového souboru JSON**
+**Definice JSON zdrojové datové sady**
 
 ```JSON
 {
@@ -621,61 +621,61 @@ Všimněte si, že cílová tabulka má sloupec identity.
 }
 ```
 
-Všimněte si, že jako zdroj a cílová tabulka mají různé schéma (cíl má další sloupec s identitou). V tomto scénáři je třeba zadat vlastnost **struktury** v definici cílové datové sady, která neobsahuje sloupec identity.
+Všimněte si, že protože vaše zdrojová a cílová tabulka mají jiné schéma (cíl má další sloupec s identitou). V tomto scénáři je nutné zadat vlastnost **struktury** v definici cílové datové sady, která neobsahuje sloupec identity.
 
 ## <a name="invoke-stored-procedure-from-sql-sink"></a>Vyvolat uloženou proceduru z jímky SQL
-Příklad vyvolání uložené procedury z jímky SQL v aktivitě kopírování kanálu najdete v tématu [Invoke stored procedure for SQL sink in copy activity](data-factory-invoke-stored-procedure-from-copy-activity.md) article.
+Příklad vyvolání uložené procedury z jímky SQL v aktivitě kopírování kanálu najdete v tématu [vyvolání uložené procedury pro JÍMKU SQL v článku o aktivitě kopírování](data-factory-invoke-stored-procedure-from-copy-activity.md) .
 
 ## <a name="type-mapping-for-azure-sql-database"></a>Mapování typů pro Azure SQL Database
-Jak je uvedeno v [aktivitách přesunu dat](data-factory-data-movement-activities.md) článek Aktivita kopírování provádí automatické převody typů z typů zdrojů na typy jímek s následujícím dvoustupňovým přístupem:
+Jak je uvedeno v článku aktivity [přesunu dat](data-factory-data-movement-activities.md) , provádí se automatické převody typů ze zdrojových typů do typů jímky s následujícím přístupem ke dvěma krokům:
 
-1. Převod z nativních typů zdrojů na typ .NET
-2. Převod z typu .NET na nativní typ jímky
+1. Převod z nativních zdrojových typů na typ .NET
+2. Převést z typu .NET na nativní typ jímky
 
-Při přesouvání dat do a z Azure SQL Database se používají následující mapování z typu SQL na typ .NET a naopak. Mapování je stejné jako mapování datového typu serveru SQL Server pro ADO.NET.
+Při přesunu dat do a z Azure SQL Database se z typu SQL do typu .NET použijí následující mapování a naopak. Mapování je stejné jako SQL Server mapování datových typů pro ADO.NET.
 
-| Typ databázového stroje serveru SQL Server | Typ rozhraní .NET Framework |
+| Typ databázového stroje SQL Server | Typ rozhraní .NET Framework |
 | --- | --- |
 | bigint |Int64 |
-| binární |Bajt[] |
+| binární |Byte [] |
 | bitové |Logická hodnota |
-| char |Řetězec, Znak[] |
+| char |Řetězec, znak [] |
 | date |DateTime |
 | Datum a čas |DateTime |
 | datetime2 |DateTime |
-| Datetimeoffset |DateTimeOffset |
+| DateTimeOffset |DateTimeOffset |
 | Desetinné číslo |Desetinné číslo |
-| ATRIBUT FILESTREAM (varbinary(max)) |Bajt[] |
+| Atribut FILESTREAM (varbinary (max)) |Byte [] |
 | Plovoucí desetinná čárka |Double |
-| image |Bajt[] |
+| image |Byte [] |
 | int |Int32 |
-| Peníze |Desetinné číslo |
-| Nchar |Řetězec, Znak[] |
-| Ntext |Řetězec, Znak[] |
+| papír |Desetinné číslo |
+| nchar |Řetězec, znak [] |
+| ntext |Řetězec, znak [] |
 | numerické |Desetinné číslo |
-| nvarchar |Řetězec, Znak[] |
-| reálná |Single |
-| Rowversion |Bajt[] |
-| Smalldatetime |DateTime |
+| nvarchar |Řetězec, znak [] |
+| real |Single |
+| rowversion |Byte [] |
+| smalldatetime |DateTime |
 | smallint |Int16 |
-| Smallmoney |Desetinné číslo |
-| Sql_variant |Objekt * |
-| text |Řetězec, Znak[] |
+| smallmoney |Desetinné číslo |
+| sql_variant |Předmětů |
+| text |Řetězec, znak [] |
 | time |TimeSpan |
-| časové razítko |Bajt[] |
+| časové razítko |Byte [] |
 | tinyint |Byte |
 | uniqueidentifier |Identifikátor GUID |
-| Varbinary |Bajt[] |
-| varchar |Řetězec, Znak[] |
+| varbinary |Byte [] |
+| varchar |Řetězec, znak [] |
 | xml |XML |
 
-## <a name="map-source-to-sink-columns"></a>Mapovat zdroj pro jímací sloupce
-Další informace o mapování sloupců ve zdrojové datové sadě na sloupce v datové sadě jímky najdete [v tématu Mapování sloupců datových sad v Azure Data Factory](data-factory-map-columns.md).
+## <a name="map-source-to-sink-columns"></a>Mapovat zdroj na sloupce jímky
+Další informace o mapování sloupců ve zdrojové datové sadě na sloupce v datové sadě jímky najdete v tématu [mapování sloupců datové sady v Azure Data Factory](data-factory-map-columns.md).
 
-## <a name="repeatable-copy"></a>Opakovatelná kopie
-Při kopírování dat do databáze serveru SQL Server aktivita připojí data do tabulky jímky ve výchozím nastavení. Chcete-li provést UPSERT místo toho, viz opakovatelný zápis do článku [SqlSink.](data-factory-repeatable-copy.md#repeatable-write-to-sqlsink)
+## <a name="repeatable-copy"></a>Opakující se kopie
+Při kopírování dat do SQL Server databáze aktivita kopírování ve výchozím nastavení připojí data do tabulky jímky. Pokud chcete místo toho provést UPSERT, přečtěte si článek s [možností opakovaného zápisu do SqlSink](data-factory-repeatable-copy.md#repeatable-write-to-sqlsink) .
 
-Při kopírování dat z úložišť relačních dat mějte na paměti opakovatelnost, abyste se vyhnuli nezamýšleným výsledkům. V Azure Data Factory můžete znovu spustit řez ručně. Můžete také nakonfigurovat zásady opakování pro datovou sadu tak, aby řez je znovu spustit, když dojde k selhání. Při opětovném spuštění řezu v obou směrech je třeba se ujistit, že stejná data jsou čtena bez ohledu na to, kolikrát je řez spuštěn. Viz [Opakovatelné čtení z relačních zdrojů](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+Při kopírování dat z relačních úložišť dat mějte na paměti, že se vyhnete nezamýšleným výsledkům. V Azure Data Factory můžete řez znovu spustit ručně. Můžete také nakonfigurovat zásady opakování pro datovou sadu, aby se řez znovu opakoval, když dojde k selhání. Při opětovném spuštění řezu v obou případech je nutné zajistit, že stejná data budou čtena bez ohledu na to, kolikrát je řez spuštěn. Viz [opakované čtení z relačních zdrojů](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
-## <a name="performance-and-tuning"></a>Výkon a ladění
-[V tématu Průvodce sledováním výkonu & optimalizací se](data-factory-copy-activity-performance.md) dozvíte o klíčových faktorech, které ovlivňují výkon přesunu dat (aktivita kopírování) ve Službě Azure Data Factory, a o různých způsobech jeho optimalizace.
+## <a name="performance-and-tuning"></a>Výkon a optimalizace
+Další informace o klíčových faktorech, které mají vliv na výkon přesunu dat (aktivita kopírování) v Azure Data Factory a různých způsobech jejich optimalizace, najdete v tématu [Průvodce optimalizací aktivity kopírování &](data-factory-copy-activity-performance.md) .

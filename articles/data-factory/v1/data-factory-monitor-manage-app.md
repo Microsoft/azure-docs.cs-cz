@@ -1,6 +1,6 @@
 ---
-title: Monitorování a správa datových kanálů – Azure
-description: Přečtěte si, jak pomocí aplikace Monitorování a správa monitorovat a spravovat datové továrny a kanály Azure.
+title: Monitorování a Správa datových kanálů – Azure
+description: Naučte se používat aplikaci pro monitorování a správu k monitorování a správě datových továrn a kanálů Azure.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -13,94 +13,94 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: de56ba1281d0f20c8be838fa1bc9ebc24905b26c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260368"
 ---
-# <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Sledování a správa kanálů Azure Data Factory pomocí aplikace Monitorování a správa
+# <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Monitorování a Správa kanálů Azure Data Factory pomocí aplikace pro monitorování a správu
 > [!div class="op_single_selector"]
-> * [Používání Azure portal/Azure PowerShellu](data-factory-monitor-manage-pipelines.md)
-> * [Používání aplikace Monitorování a správa](data-factory-monitor-manage-app.md)
+> * [Použití Azure Portal/Azure PowerShell](data-factory-monitor-manage-pipelines.md)
+> * [Používání aplikace pro monitorování a správu](data-factory-monitor-manage-app.md)
 >
 >
 
 > [!NOTE]
-> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si [téma monitorování a správa kanálů Data Factory v .](../monitor-visually.md)
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [monitorování a Správa kanálů Data Factory v nástroji](../monitor-visually.md).
 
-Tento článek popisuje, jak pomocí aplikace Monitorování a správa sledovat, spravovat a ladit kanály datové továrny. S používáním aplikace můžete začít sledováním následujícího videa:
+Tento článek popisuje, jak pomocí aplikace pro monitorování a správu monitorovat, spravovat a ladit kanály Data Factory. Můžete začít s používáním aplikace, a to sledováním následujícího videa:
 
 > [!NOTE]
-> Uživatelské rozhraní zobrazené ve videu nemusí přesně odpovídat tomu, co vidíte na portálu. Je o něco starší, ale koncepty zůstávají stejné. 
+> Uživatelské rozhraní zobrazené ve videu se nemusí přesně shodovat s tím, co vidíte na portálu. Je mírně starší, ale koncepty zůstanou stejné. 
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Azure-Data-Factory-Monitoring-and-Managing-Big-Data-Piplines/player]
 >
 
-## <a name="launch-the-monitoring-and-management-app"></a>Spuštění aplikace Monitorování a správa
-Chcete-li spustit aplikaci Sledování a správa, klikněte na dlaždici **Monitor & Správa** v okně Data **Factory** pro vaši datovou továrnu.
+## <a name="launch-the-monitoring-and-management-app"></a>Spuštění aplikace pro monitorování a správu
+Pokud chcete spustit aplikaci pro monitorování a správu, klikněte na dlaždici **monitorování & spravovat** v okně **Data Factory** pro vaši datovou továrnu.
 
-![Dlaždice sledování na domovské stránce datové továrny](./media/data-factory-monitor-manage-app/MonitoringAppTile.png)
+![Dlaždice monitorování na domovské stránce Data Factory](./media/data-factory-monitor-manage-app/MonitoringAppTile.png)
 
-Aplikace Monitorování a správa by se měla zobrazit v samostatném okně.  
+Měla by se zobrazit otevřená aplikace pro monitorování a správu v samostatném okně.  
 
 ![Monitorování a správa aplikací](./media/data-factory-monitor-manage-app/AppLaunched.png)
 
 > [!NOTE]
-> Pokud zjistíte, že webový prohlížeč je přilepená na "Autorizace...", zrušte **zaškrtnutí políčka Blokovat soubory cookie třetích stran a data webu** - nebo ji ponechat vybranou, vytvořte výjimku pro **login.microsoftonline.com**a zkuste aplikaci znovu otevřít.
+> Pokud zjistíte, že webový prohlížeč je zablokovaný při autorizaci..., zrušte zaškrtnutí políčka **Blokovat soubory cookie a data lokality třetích stran** – nebo ho nechte zaškrtnuté, vytvořte výjimku pro **Login.microsoftonline.com**a pak zkuste aplikaci znovu otevřít.
 
 
-V seznamu Windows aktivity v prostředním podokně se zobrazí okno aktivity pro každé spuštění aktivity. Pokud máte například aktivitu naplánovanou na hodinové spuštění po dobu pěti hodin, zobrazí se pět oken aktivit přidružených k pěti řezům dat. Pokud okna aktivit v seznamu dole nevidíte, postupujte takto:
+V seznamu okna aktivit v prostředním podokně se zobrazí okno aktivity pro každé spuštění aktivity. Například pokud máte po dobu pěti hodin naplánováno spuštění aktivity naplánované na každou hodinu, zobrazí se pět oken aktivit, která jsou přidružena k pěti datovým řezům. Pokud v seznamu nevidíte okna aktivit, postupujte takto:
  
-- Aktualizujte filtry **počátečního** a **koncového času** v horní části tak, aby odpovídaly počátečnímu a koncovému času kanálu, a klikněte na tlačítko **Použít.**  
-- Seznam Aktivita systému Windows není automaticky aktualizován. Klepněte na tlačítko **Aktualizovat** na panelu nástrojů v seznamu **Windows aktivity.**  
+- Aktualizujte filtry **čas zahájení** a čas **ukončení** v horní části tak, aby odpovídaly času spuštění a ukončení vašeho kanálu, a klikněte na tlačítko **použít** .  
+- Seznam oken aktivit se neaktualizuje automaticky. Klikněte na tlačítko **aktualizovat** na panelu nástrojů v seznamu **okna aktivit** .  
 
-Pokud nemáte aplikaci Data Factory, pomocí které chcete tyto kroky otestovat, proveďte kurz: [kopírování dat z úložiště objektů blob do databáze SQL pomocí data factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+Pokud nemáte Data Factory aplikaci k testování těchto kroků, postupujte podle kurzu: [zkopírování dat z BLOB Storage do SQL Database pomocí Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
-## <a name="understand-the-monitoring-and-management-app"></a>Principy aplikace Monitorování a správa
-Vlevo jsou tři karty: **Průzkumník prostředků**, **Zobrazení monitorování**a **Výstrahy**. Ve výchozím nastavení je vybrána první karta (**Průzkumník prostředků**).
+## <a name="understand-the-monitoring-and-management-app"></a>Pochopení aplikace pro monitorování a správu
+Vlevo jsou tři karty: **Průzkumník prostředků**, **zobrazení monitorování**a **výstrahy**. Ve výchozím nastavení je vybrána první karta (**Průzkumník prostředků**).
 
-### <a name="resource-explorer"></a>Průzkumník zdrojů
+### <a name="resource-explorer"></a>Průzkumník prostředků
 Zobrazí se následující:
 
-* **Stromové zobrazení** Průzkumníka prostředků v levém podokně.
-* **Zobrazení diagramu** v horní části prostředního podokna.
-* Seznam **Windows aktivity v** dolní části prostředního podokna.
-* Karty **Vlastnosti**, **Průzkumník oken aktivit**y a **Skript** v pravém podokně.
+* **Zobrazení stromové struktury** Průzkumník prostředků v levém podokně.
+* **Zobrazení diagramu** v horní části v prostředním podokně.
+* Seznam **oken aktivit** v dolní části podokna v prostředním podokně.
+* **Vlastnosti**, **Průzkumník okna aktivity**a karty **skriptu** v pravém podokně.
 
-V Průzkumníku prostředků se ve stromovém zobrazení zobrazí všechny prostředky (kanály, datové sady, propojené služby) v datové továrně. Když vyberete objekt v Průzkumníku zdrojů:
+V Průzkumník prostředků se ve stromovém zobrazení zobrazí všechny prostředky (kanály, datové sady, propojené služby) ve službě Data Factory. Když vyberete objekt v Průzkumník prostředků:
 
-* Přidružená entita Data Factory je zvýrazněna v zobrazení diagramu.
-* [Okna přidružených aktivit](data-factory-scheduling-and-execution.md) jsou zvýrazněna v seznamu Windows aktivity v dolní části.  
-* Vlastnosti vybraného objektu jsou zobrazeny v okně Vlastnosti v pravém podokně.
-* JSON definice vybraného objektu je zobrazen, pokud je k dispozici. Například: propojená služba, datová sada nebo kanál.
+* Přidružená Data Factory entita je v zobrazení diagramu zvýrazněna.
+* [Okna přidružených aktivit](data-factory-scheduling-and-execution.md) jsou v seznamu okna aktivit v dolní části zvýrazněna.  
+* Vlastnosti vybraného objektu jsou zobrazeny v okno Vlastnosti v pravém podokně.
+* V případě potřeby se zobrazí definice JSON vybraného objektu. Například: propojená služba, datová sada nebo kanál.
 
-![Průzkumník zdrojů](./media/data-factory-monitor-manage-app/ResourceExplorer.png)
+![Průzkumník prostředků](./media/data-factory-monitor-manage-app/ResourceExplorer.png)
 
-Podrobné koncepční informace o oknech aktivit y naleznete v článku [Plánování a spuštění.](data-factory-scheduling-and-execution.md)
+Podrobné koncepční informace o oknech aktivit najdete v článku [plánování a spouštění](data-factory-scheduling-and-execution.md) .
 
 ### <a name="diagram-view"></a>Zobrazení diagramu
-Zobrazení diagramu datové továrny poskytuje jediné podokno skla pro sledování a správu datové továrny a jejích prostředků. Když vyberete entitu Data Factory (datová sada/kanál) v zobrazení diagramu:
+Zobrazení diagramu datové továrny poskytuje jediné podokno skla pro monitorování a správu objektu pro vytváření dat a jeho assetů. Když v zobrazení diagramu vyberete entitu Data Factory (datová sada/kanál):
 
-* Entita datové továrny je vybrána ve stromovém zobrazení.
-* Okna souvisejících aktivit jsou zvýrazněna v seznamu Windows aktivity.
-* Vlastnosti vybraného objektu se zobrazí v okně Vlastnosti.
+* Entita Data Factory je vybrána ve stromovém zobrazení.
+* Okna přidružených aktivit jsou zvýrazněna v seznamu okna aktivit.
+* Vlastnosti vybraného objektu jsou zobrazeny v okno Vlastnosti.
 
-Pokud je kanál povolen (není v pozastaveném stavu), zobrazí se se zelenou čárou:
+Když je kanál povolený (není ve stavu pozastaveno), zobrazí se zelená čára:
 
-![Kanál běží](./media/data-factory-monitor-manage-app/PipelineRunning.png)
+![Spuštěný kanál](./media/data-factory-monitor-manage-app/PipelineRunning.png)
 
-Kanál můžete pozastavit, obnovit nebo ukončit tak, že ho vyberete v zobrazení diagramu a použijete tlačítka na panelu příkazů.
+Kanál můžete pozastavit, obnovit nebo ukončit jeho výběrem v zobrazení diagramu a pomocí tlačítek na panelu příkazů.
 
-![Pozastavení/pokračování na panelu příkazů](./media/data-factory-monitor-manage-app/SuspendResumeOnCommandBar.png)
+![Pozastavení nebo obnovení na panelu příkazů](./media/data-factory-monitor-manage-app/SuspendResumeOnCommandBar.png)
  
-V zobrazení diagramu jsou tři tlačítka panelu příkazů pro kanál. Druhé tlačítko můžete pozastavit. Pozastavení neukončí aktuálně spuštěné aktivity a umožní jim pokračovat v dokončení. Třetí tlačítko pozastaví kanál a ukončí jeho stávající provádění aktivit. První tlačítko obnoví potrubí. Když je kanál pozastaven, změní se barva kanálu. Například pozastavený kanál vypadá na následujícím obrázku: 
+Pro kanál v zobrazení diagramu jsou k dispozici tři tlačítka panelu příkazů. K pozastavení kanálu můžete použít druhé tlačítko. Při pozastavení se neukončí aktuálně spuštěné aktivity a umožní vám to pokračovat v dokončování. Třetí tlačítko pozastaví kanál a ukončí existující spuštěné aktivity. První tlačítko obnoví kanál. Když je kanál pozastaven, změní se barva kanálu. Například pozastavený kanál vypadá jako na následujícím obrázku: 
 
-![Kanál pozastaven.](./media/data-factory-monitor-manage-app/PipelinePaused.png)
+![Kanál pozastaven](./media/data-factory-monitor-manage-app/PipelinePaused.png)
 
-Pomocí klávesy Ctrl můžete vícenásobně vybrat dva nebo více kanálů. Pomocí tlačítek panelu příkazů můžete pozastavit nebo obnovit více kanálů najednou.
+Můžete vybrat dva nebo více kanálů pomocí klávesy CTRL. Pomocí tlačítek na panelu příkazů můžete pozastavit nebo obnovit více kanálů najednou.
 
-Můžete také klepnout pravým tlačítkem myši na kanál a vybrat možnosti pozastavení, obnovení nebo ukončení kanálu. 
+Můžete také kliknout pravým tlačítkem na kanál a vybrat možnosti pro pozastavení, obnovení nebo ukončení kanálu. 
 
 ![Místní nabídka pro kanál](./media/data-factory-monitor-manage-app/right-click-menu-for-pipeline.png)
 
@@ -108,190 +108,190 @@ Kliknutím na možnost **Otevřít kanál** zobrazíte všechny aktivity v kaná
 
 ![Nabídka Otevřít kanál](./media/data-factory-monitor-manage-app/OpenPipelineMenu.png)
 
-V otevřeném zobrazení kanálu se zobrazí všechny aktivity v kanálu. V tomto příkladu je pouze jedna aktivita: Aktivita kopírování. 
+V otevřeném Zobrazení kanálu uvidíte všechny aktivity v kanálu. V tomto příkladu je k dispozici pouze jedna aktivita: aktivita kopírování. 
 
-![Otevřený potrubí](./media/data-factory-monitor-manage-app/OpenedPipeline.png)
+![Otevřený kanál](./media/data-factory-monitor-manage-app/OpenedPipeline.png)
 
-Chcete-li se vrátit k předchozímu zobrazení, klepněte na název datové továrny v nabídce s popisem cesty v horní části.
+Chcete-li se vrátit k předchozímu zobrazení, klikněte na název datové továrny v nabídce s popisem cesty v horní části.
 
-V zobrazení kanálu se při výběru výstupní datové sady nebo při přesunutí myši nad výstupní datovou sadou zobrazí rozbalovací okno Aktivita systému Windows pro tuto datovou sadu.
+Když v Zobrazení kanálu vyberete výstupní datovou sadu nebo přesunete ukazatel myši na výstupní datovou sadu, zobrazí se v místním okně pro tuto datovou sadu okna aktivity.
 
-![Automaticky otevírané okno Aktivita windows](./media/data-factory-monitor-manage-app/ActivityWindowsPopup.png)
+![Místní okno okna aktivity](./media/data-factory-monitor-manage-app/ActivityWindowsPopup.png)
 
-Kliknutím na okno aktivity můžete zobrazit podrobnosti v okně **Vlastnosti** v pravém podokně.
+Kliknutím na okno aktivity můžete zobrazit podrobnosti v okně **vlastnosti** v pravém podokně.
 
 ![Vlastnosti okna aktivity](./media/data-factory-monitor-manage-app/ActivityWindowProperties.png)
 
-V pravém podokně přejděte na kartu **Průzkumník okna aktivity,** abyste viděli další podrobnosti.
+V pravém podokně se přepněte na kartu **Průzkumník okna aktivity** a zobrazí se další podrobnosti.
 
-![Průzkumník oken aktivit](./media/data-factory-monitor-manage-app/ActivityWindowExplorer.png)
+![Průzkumník okna aktivity](./media/data-factory-monitor-manage-app/ActivityWindowExplorer.png)
 
-Zobrazí se také **vyřešené proměnné** pro každý pokus o spuštění aktivity v části **Pokusy.**
+V části s **pokusy** se zobrazí také **vyřešené proměnné** pro každý pokus o spuštění aktivity.
 
 ![Vyřešené proměnné](./media/data-factory-monitor-manage-app/ResolvedVariables.PNG)
 
-Přepnutím na kartu **Skript** zobrazíte definici skriptu JSON pro vybraný objekt.   
+Přepněte na kartu **skript** , aby se zobrazila definice skriptu JSON pro vybraný objekt.   
 
-![Karta Skript](./media/data-factory-monitor-manage-app/ScriptTab.png)
+![Karta skript](./media/data-factory-monitor-manage-app/ScriptTab.png)
 
-Okna aktivit můžete zobrazit na třech místech:
+Okna aktivit si můžete prohlédnout na třech místech:
 
-* Automaticky otevírané okno Windows aktivity v zobrazení diagramu (prostřední podokno).
-* Průzkumník oken aktivit v pravém podokně.
-* Seznam Windows aktivity v dolním podokně.
+* Automaticky otevíraná okna aktivity v zobrazení diagramu (prostřední podokno).
+* Průzkumník okna aktivity v pravém podokně.
+* Seznam oken aktivit v dolním podokně.
 
-V průzkumníku automaticky otevíraných oken Windows a okna aktivity můžete přejít na předchozí týden a další týden pomocí levé a pravé šipky.
+V místní nabídce okna aktivity a v Průzkumníkovi oken aktivit můžete přejít na předchozí týden a další týden pomocí šipky vlevo a vpravo.
 
-![Šipky okna aktivity vlevo/vpravo](./media/data-factory-monitor-manage-app/ActivityWindowExplorerLeftRightArrows.png)
+![Šipky vlevo a vpravo v Průzkumníkovi okna aktivity](./media/data-factory-monitor-manage-app/ActivityWindowExplorerLeftRightArrows.png)
 
-V dolní části zobrazení diagramu se zobrazí tato tlačítka: Přiblížit, Oddálit, Přiblížit, Přizpůsobit, Zvětšit 100 %, Zamknout. Tlačítko **Zamknout rozložení** zabraňuje nechtěnému přesunutí tabulek a kanálů v zobrazení diagramu. Ve výchozím nastavení je zapnutý. Můžete jej vypnout a přesunout entity v diagramu. Když ji vypnete, můžete pomocí posledního tlačítka automaticky umístit tabulky a kanály. Zobrazení můžete také přiblížit nebo oddálit pomocí kolečka myši.
+V dolní části zobrazení diagramu se zobrazí tato tlačítka: přiblížit, oddálit, přiblížit podle potřeby, zvětšit 100%, zamknout rozložení. Tlačítko **Uzamknout rozložení** zabraňuje nechtěnému přesunu tabulek a kanálů v zobrazení diagramu. Ve výchozím nastavení je zapnutý. Můžete ji vypnout a přesunout entity kolem diagramu. Když ho vypnete, můžete k automatickému umístění tabulek a kanálů použít poslední tlačítko. Můžete také přiblížit nebo oddálit pomocí kolečka myši.
 
 ![Příkazy lupy zobrazení diagramu](./media/data-factory-monitor-manage-app/DiagramViewZoomCommands.png)
 
 ### <a name="activity-windows-list"></a>Seznam Okna aktivit
-Seznam Windows aktivity v dolní části prostředního podokna zobrazuje všechna okna aktivit pro datovou sadu, kterou jste vybrali v Průzkumníku zdrojů nebo v zobrazení diagramu. Ve výchozím nastavení je seznam v sestupném pořadí, což znamená, že se nahoře zobrazí poslední okno aktivity.
+V seznamu okna aktivity v dolní části podokna se zobrazí všechna okna aktivity pro datovou sadu, kterou jste vybrali v Průzkumník prostředků nebo zobrazení diagramu. Ve výchozím nastavení je seznam v sestupném pořadí, což znamená, že se v horní části zobrazí poslední okno aktivity.
 
 ![Seznam Okna aktivit](./media/data-factory-monitor-manage-app/ActivityWindowsList.png)
 
-Tento seznam se neaktualizuje automaticky, proto jej pomocí tlačítka aktualizovat na panelu nástrojů ručně aktualizujte.  
+Tento seznam se neaktualizuje automaticky, takže ho můžete aktualizovat ručně pomocí tlačítka Aktualizovat na panelu nástrojů.  
 
-Okna aktivit mohou být v jednom z následujících stavů:
+Okna aktivit můžou být v jednom z následujících stavů:
 
 <table>
 <tr>
-    <th align="left">Status</th><th align="left">Dílčí stav</th><th align="left">Popis</th>
+    <th align="left">Status</th><th align="left">SubStatus</th><th align="left">Popis</th>
 </tr>
 <tr>
-    <td rowspan="8">Čekání</td><td>ScheduleTime</td><td>Nenadešel čas spuštění okna aktivity.</td>
+    <td rowspan="8">Čekání</td><td>ScheduleTime</td><td>Čas nepřijde o spuštění okna aktivity.</td>
 </tr>
 <tr>
-<td>Závislostí datové sady</td><td>Upstream závislosti nejsou připraveny.</td>
+<td>DatasetDependencies</td><td>Nadřazené závislosti nejsou připravené.</td>
 </tr>
 <tr>
-<td>Výpočetní prostředky</td><td>Výpočetní prostředky nejsou k dispozici.</td>
+<td>ComputeResources</td><td>Výpočetní prostředky nejsou k dispozici.</td>
 </tr>
 <tr>
-<td>ConcurrencyLimit</td> <td>Všechny instance aktivity jsou zaneprázdněny spuštěním jiných oken aktivit.</td>
+<td>ConcurrencyLimit</td> <td>Všechny instance aktivity jsou zaneprázdněné spouštěním dalších oken aktivit.</td>
 </tr>
 <tr>
 <td>ActivityResume</td><td>Aktivita je pozastavena a nemůže spustit okna aktivity, dokud nebude obnovena.</td>
 </tr>
 <tr>
-<td>Retry</td><td>Provádění aktivity je opakováno.</td>
+<td>Retry</td><td>Probíhá pokus o opakované spuštění aktivity.</td>
 </tr>
 <tr>
-<td>Ověřování</td><td>Ověření ještě nezačalo.</td>
+<td>Ověřování</td><td>Ověřování ještě nebylo zahájeno.</td>
 </tr>
 <tr>
-<td>Ověření Opakování</td><td>Ověření čeká na opakování.</td>
+<td>ValidationRetry</td><td>Ověřování čeká na opakování.</td>
 </tr>
 <tr>
 <tr>
-<td rowspan="2">Probíhá</td><td>Ověřování</td><td>Probíhá ověření.</td>
+<td rowspan="2">InProgress</td><td>Opětovné</td><td>Probíhá ověřování.</td>
 </tr>
 <td>-</td>
-<td>Okno aktivity je zpracováváno.</td>
+<td>Zpracovává se okno aktivity.</td>
 </tr>
 <tr>
-<td rowspan="4">Failed</td><td>Timedout</td><td>Provádění aktivity trvalo déle, než je povoleno aktivitou.</td>
+<td rowspan="4">Failed</td><td>Vypršel časový limit</td><td>Provádění aktivit trvalo déle, než je povoleno aktivitou.</td>
 </tr>
 <tr>
-<td>Zrušeno</td><td>Okno aktivity bylo zrušeno akcí uživatele.</td>
+<td>Zrušeno</td><td>Činnost okna byla zrušena uživatelem.</td>
 </tr>
 <tr>
 <td>Ověřování</td><td>Ověření se nezdařilo.</td>
 </tr>
 <tr>
-<td>-</td><td>Okno aktivity se nezdařilo a nebylo vygenerováno nebo ověřeno.</td>
+<td>-</td><td>Nepodařilo se vygenerovat nebo ověřit okno aktivity.</td>
 </tr>
-<td>Připraveno</td><td>-</td><td>Okno aktivity je připraveno ke spotřebě.</td>
-</tr>
-<tr>
-<td>Přeskočen</td><td>-</td><td>Okno aktivity nebylo zpracováno.</td>
+<td>Připraveno</td><td>-</td><td>Okno aktivity je připravené na spotřebu.</td>
 </tr>
 <tr>
-<td>Žádný</td><td>-</td><td>Okno aktivity dříve existovalo s jiným stavem, ale bylo resetováno.</td>
+<td>Přeskočeno</td><td>-</td><td>Okno aktivity nebylo zpracováno.</td>
+</tr>
+<tr>
+<td>Žádná</td><td>-</td><td>Okno aktivity použité pro existenci jiného stavu, ale bylo resetováno.</td>
 </tr>
 </table>
 
 
-Když kliknete na okno aktivity v seznamu, zobrazí se podrobnosti o něm v **Průzkumníkovi aktivity** nebo v okně **Vlastnosti** vpravo.
+Když v seznamu kliknete na okno aktivity, zobrazí se vám podrobnosti v **Průzkumníkovi oken aktivity** nebo v pravém okně **vlastnosti** .
 
-![Průzkumník oken aktivit](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png)
+![Průzkumník okna aktivity](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png)
 
 ### <a name="refresh-activity-windows"></a>Aktualizovat okna aktivity
-Podrobnosti se neaktualizují automaticky, proto pomocí tlačítka aktualizace (druhé tlačítko) na panelu příkazů ručně aktualizujte seznam oken aktivit.  
+Podrobnosti se neaktualizují automaticky, proto pomocí tlačítka Aktualizovat (druhé tlačítko) na panelu příkazů ručně aktualizujte seznam oken aktivit.  
 
 ### <a name="properties-window"></a>Vlastnosti – okno
-Okno Vlastnosti se nachází v pravém podokně aplikace Monitorování a správa.
+Okno Vlastnosti je v pravém krajním podokně aplikace pro monitorování a správu.
 
 ![Vlastnosti – okno](./media/data-factory-monitor-manage-app/PropertiesWindow.png)
 
-Zobrazí vlastnosti položky, kterou jste vybrali v Průzkumníku zdrojů (stromové zobrazení), zobrazení diagramu nebo v seznamu Windows aktivity.
+Zobrazuje vlastnosti položky, kterou jste vybrali v seznamu Průzkumník prostředků (stromové zobrazení), zobrazení diagramu nebo okna aktivit.
 
-### <a name="activity-window-explorer"></a>Průzkumník oken aktivit
-Okno **Průzkumník aktivit** se nachází v pravém podokně aplikace Monitorování a správa. Zobrazí podrobnosti o okně aktivity, které jste vybrali v rozbalovacím okně Okna aktivity systému Windows nebo v seznamu Windows aktivity.
+### <a name="activity-window-explorer"></a>Průzkumník okna aktivity
+Okno **Průzkumník okna aktivity** je v pravém krajním podokně aplikace pro monitorování a správu. Zobrazuje podrobnosti o okně aktivity, které jste vybrali v místním okně okna aktivity nebo v seznamu okna aktivit.
 
-![Průzkumník oken aktivit](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-3.png)
+![Průzkumník okna aktivity](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-3.png)
 
-Do jiného okna aktivity můžete přepnout kliknutím v zobrazení kalendáře v horní části. Můžete také použít šipku vlevo / šipka vpravo tlačítka v horní části zobrazíte okna aktivity z předchozího týdne nebo příštího týdne.
+Kliknutím na něj v zobrazení Kalendář v horní části můžete přepnout na jiné okno aktivity. Můžete také použít tlačítka se šipkou doleva a doprava v horním rohu a zobrazit okna aktivity z předchozího týdne nebo příštího týdne.
 
-Pomocí tlačítek panelu nástrojů v dolním podokně můžete znovu spustit okno aktivity nebo aktualizovat podrobnosti v podokně.
+Pomocí tlačítek na panelu nástrojů v dolním podokně můžete znovu spustit okno aktivity nebo aktualizovat podrobnosti v podokně.
 
 ### <a name="script"></a>Skript
-Kartu **Skript** můžete použít k zobrazení definice JSON vybrané entity Data Factory (propojená služba, datová sada nebo kanál).
+Kartu **skript** můžete použít k zobrazení definice JSON vybrané entity data Factory (propojené služby, datové sady nebo kanálu).
 
-![Karta Skript](./media/data-factory-monitor-manage-app/ScriptTab.png)
+![Karta skript](./media/data-factory-monitor-manage-app/ScriptTab.png)
 
 ## <a name="use-system-views"></a>Použití systémových zobrazení
-Aplikace Monitorování a správa obsahuje předem vyestavěná systémová zobrazení (**okna poslední aktivity**, **okna s neúspěšnou aktivitou**, **okna probíhající aktivity**), která umožňují zobrazit okna posledních/neúspěšných/probíhajících aktivit pro vaši datovou továrnu.
+Aplikace pro monitorování a správu zahrnuje předem sestavená systémová zobrazení (**Poslední okna aktivity**, **okna se selháním aktivity**, probíhající **okna aktivity**), která umožňují zobrazit pro datovou továrnu okna poslední, neúspěšné/probíhající aktivity.
 
-Kliknutím na něj přepněte na kartu **Zobrazení monitorování** vlevo.
+Kliknutím na kartu **zobrazení monitorování** přejděte na levou stranu.
 
-![Karta Sledování zobrazení](./media/data-factory-monitor-manage-app/MonitoringViewsTab.png)
+![Karta zobrazení monitorování](./media/data-factory-monitor-manage-app/MonitoringViewsTab.png)
 
-V současné době existují tři zobrazení systému, které jsou podporovány. Vyberte možnost, chcete-li zobrazit okna posledních aktivit, okna s neúspěšnou aktivitou nebo okna probíhajícíaktivity v seznamu Windows aktivit (v dolní části prostředního podokna).
+V současné době existují tři podporovaná systémová zobrazení. Vyberte možnost pro zobrazení posledních oken aktivity, okna nezdařené aktivity nebo probíhající okna aktivity v seznamu okna aktivit (v dolní části podokna uprostřed).
 
-Když vyberete možnost **Okna poslední aktivity,** zobrazí se všechna okna nedávné aktivity v sestupném pořadí **podle posledního času pokusu**.
+Když vyberete možnost **Windows nedávné aktivity** , zobrazí se všechna okna nedávné aktivity v sestupném pořadí podle **času posledního pokusu**.
 
-Pomocí zobrazení **okna Se nezdařilou aktivity** můžete zobrazit všechna okna neúspěšných aktivit v seznamu. Vyberte okno neúspěšné aktivity v seznamu, chcete-li zobrazit podrobnosti o něm v okně **Vlastnosti** nebo v **Průzkumníku oken aktivit**. Můžete také stáhnout všechny protokoly pro okno neúspěšné aktivity.
+Pomocí zobrazení **Windows nezdařené aktivity** můžete zobrazit všechna okna s neúspěšnou aktivitou v seznamu. Vyberte v seznamu okno neúspěšné aktivity, ve kterém se zobrazí podrobnosti v okně **vlastnosti** nebo v **Průzkumníku okna aktivity**. Můžete si také stáhnout všechny protokoly pro okno neúspěšné aktivity.
 
 ## <a name="sort-and-filter-activity-windows"></a>Řazení a filtrování oken aktivit
-Změňte nastavení **počátečního a** **koncového času** v panelu příkazů tak, aby filtrovala okna aktivit. Po změně počátečního a koncového času klikněte na tlačítko vedle koncového času a aktualizujte seznam Windows aktivity.
+Na panelu příkazů změňte nastavení **čas spuštění** a čas **ukončení** na možnost filtrovat okna aktivit. Po změně počátečního a koncového času klikněte na tlačítko vedle možnosti koncový čas a aktualizujte seznam oken aktivit.
 
-![Počáteční a koncový čas](./media/data-factory-monitor-manage-app/StartAndEndTimes.png)
+![Počáteční a koncové časy](./media/data-factory-monitor-manage-app/StartAndEndTimes.png)
 
 > [!NOTE]
-> V současné době jsou všechny časy ve formátu UTC v aplikaci Monitorování a správa.
+> V současné době jsou všechny časy ve formátu UTC v aplikaci pro monitorování a správu.
 >
 >
 
-V **seznamu Windows aktivity**klepněte na název sloupce (například Stav).
+V **seznamu okna aktivit**klikněte na název sloupce (například: stav).
 
-![Nabídka sloupců seznamu Aktivita systému Windows](./media/data-factory-monitor-manage-app/ActivityWindowsListColumnMenu.png)
+![Nabídka sloupce seznamu oken aktivity](./media/data-factory-monitor-manage-app/ActivityWindowsListColumnMenu.png)
 
 Můžete provést následující akce:
 
-* Seřadit ve vzestupném pořadí.
-* Seřaďte se v sestupném pořadí.
-* Filtrujte podle jedné nebo více hodnot (Připraveno, Čekání a tak dále).
+* Řazení ve vzestupném pořadí.
+* Seřadit v sestupném pořadí.
+* Filtrovat podle jedné nebo více hodnot (připraveno, čeká a tak dále).
 
-Když zadáte filtr ve sloupci, zobrazí se pro tento sloupec povolené tlačítko filtru, které označuje, že hodnoty ve sloupci jsou filtrované hodnoty.
+Když pro sloupec zadáte filtr, zobrazí se pro tento sloupec tlačítko filtr, které určuje, že hodnoty ve sloupci jsou filtrované hodnoty.
 
-![Filtrování ve sloupci seznamu Windows pro aktivity](./media/data-factory-monitor-manage-app/ActivityWindowsListFilterInColumn.png)
+![Filtrovat podle sloupce seznamu oken aktivit](./media/data-factory-monitor-manage-app/ActivityWindowsListFilterInColumn.png)
 
-Ke vymazání filtrů můžete použít stejné vyskakovací okno. Chcete-li vymazat všechny filtry pro seznam Windows aktivity, klepněte na tlačítko vymazat filtr na panelu příkazů.
+Pomocí stejného překryvného okna můžete filtry vymazat. Chcete-li vymazat všechny filtry pro seznam oken aktivit, klikněte na panelu příkazů na tlačítko Vymazat filtr.
 
-![Vymazání všech filtrů pro seznam Windows aktivit](./media/data-factory-monitor-manage-app/ClearAllFiltersActivityWindowsList.png)
+![Vymaže všechny filtry pro seznam oken aktivit.](./media/data-factory-monitor-manage-app/ClearAllFiltersActivityWindowsList.png)
 
-## <a name="perform-batch-actions"></a>Provádět dávkové akce
-### <a name="rerun-selected-activity-windows"></a>Opětovné spuštění vybraných oken aktivit
-Vyberte okno aktivity, klepněte na šipku dolů pro první tlačítko panelu příkazů a vyberte **znovu spustit** / **s potrubím**proti proudu . Když vyberete **možnost Znovu spustit s možností upstream v kanálu,** znovu se spustí také všechna okna upstream aktivity.
-    ![Opětovné spuštění okna aktivity](./media/data-factory-monitor-manage-app/ReRunSlice.png)
+## <a name="perform-batch-actions"></a>Provést akce dávky
+### <a name="rerun-selected-activity-windows"></a>Znovu spustit vybraná okna aktivity
+Vyberte okno aktivity, klikněte na šipku dolů u prvního tlačítka panelu příkazů a vyberte **znovu** / spustit**znovu s možností nadřazený v kanálu**. Když vyberete možnost **znovu spustit s nadřazeným kanálem v kanálu, znovu** se spustí také všechna okna s nadřazenými aktivitami.
+    ![Znovu spustit okno aktivity](./media/data-factory-monitor-manage-app/ReRunSlice.png)
 
-Můžete také vybrat více oken aktivit v seznamu a znovu je spustit současně. Můžete chtít filtrovat okna aktivity na základě stavu (například: **Nezdařilo se**)-- a potom znovu spustit okna s neúspěšnou aktivitou po opravě problému, který způsobuje selhání oken aktivity. Podrobnosti o filtrování oken aktivit v seznamu naleznete v následující části.  
+V seznamu můžete také vybrat několik oken aktivit a znovu je spustit. Můžete chtít filtrovat okna aktivit na základě stavu (například **selhání**) – a pak znovu spustit okna nezdařené aktivity po opravě problému, který způsobí selhání okna aktivity. Podrobnosti o oknech aktivity filtrování v seznamu najdete v následující části.  
 
 ### <a name="pauseresume-multiple-pipelines"></a>Pozastavení/obnovení více kanálů
-Pomocí klávesy Ctrl můžete vícenásobně vybrat dva nebo více kanálů. Pomocí tlačítek panelu příkazů (která jsou zvýrazněna červeným obdélníkem na následujícím obrázku) je můžete pozastavit/obnovit.
+Můžete vybrat dva nebo více kanálů pomocí klávesy CTRL. K pozastavení nebo obnovení můžete použít tlačítka panelu příkazů (zvýrazněná v červeném obdélníku na následujícím obrázku).
 
-![Pozastavení/pokračování na panelu příkazů](./media/data-factory-monitor-manage-app/SuspendResumeOnCommandBar.png)
+![Pozastavení nebo obnovení na panelu příkazů](./media/data-factory-monitor-manage-app/SuspendResumeOnCommandBar.png)

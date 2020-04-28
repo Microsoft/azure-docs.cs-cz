@@ -1,7 +1,7 @@
 ---
-title: Režim sdíleného zařízení pro zařízení se systémem iOS
+title: Režim sdíleného zařízení pro zařízení s iOS
 titleSuffix: Microsoft identity platform | Azure
-description: Přečtěte si, jak povolit režim sdíleného zařízení, aby mohli pracovníci Firstline dělnické služby sdílet iOS zařízení.
+description: Naučte se povolit režim sdíleného zařízení, aby Firstline pracovníci mohli sdílet zařízení s iOS.
 services: active-directory
 author: brandwe
 manager: CelesteDG
@@ -14,85 +14,85 @@ ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: 7cecbc48eb362c2c0f1741352e6f7f5f6ad40c9e
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80550250"
 ---
-# <a name="shared-device-mode-for-ios-devices"></a>Režim sdíleného zařízení pro zařízení se systémem iOS
+# <a name="shared-device-mode-for-ios-devices"></a>Režim sdíleného zařízení pro zařízení s iOS
 
 > [!NOTE]
 > Tato funkce je ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Firstline Pracovníci, jako jsou maloobchodní partneři, členové letové posádky a pracovníci terénních služeb, často používají ke své práci sdílené mobilní zařízení. Tato sdílená zařízení mohou představovat bezpečnostní rizika, pokud uživatelé záměrně nebo nesdílejí svá hesla nebo PIN kódy pro přístup k zákaznickým a obchodním datům na sdíleném zařízení.
+Firstline pracovní procesy, jako jsou maloobchodníci, členové posádky a pracovníci polních služeb často používají ke své práci sdílené mobilní zařízení. Tato sdílená zařízení mohou představovat bezpečnostní rizika, pokud uživatelé sdílejí svá hesla nebo kódy PIN, úmyslně nebo nechtějí získat přístup k datům zákazníků a podnikových dat na sdíleném zařízení.
 
-Režim sdíleného zařízení umožňuje nakonfigurovat zařízení se systémem iOS 13 nebo vyšší tak, aby bylo snadněji a bezpečněji sdíleno zaměstnanci. Zaměstnanci se mohou rychle přihlásit a získat přístup k informacím o zákaznících. Po dokončení směny nebo úkolu se mohou odhlásit ze zařízení a je okamžitě připraveno k použití dalším zaměstnancem.
+Režim sdíleného zařízení umožňuje nakonfigurovat zařízení se systémem iOS 13 nebo vyšším, aby je bylo snazší a bezpečně sdílené zaměstnanci. Zaměstnanci se můžou rychle přihlašovat a přistupovat k informacím o zákaznících. Až se dokončí s jejich přesunutím nebo úlohou, můžou se odhlásit ze zařízení a hned ho začít používat pro dalšího zaměstnance.
 
-Režim sdíleného zařízení také poskytuje správu zařízení podporovanou identitou společnosti Microsoft.
+Režim sdíleného zařízení taky poskytuje správu zařízení, která je v rámci identity založená na identitě Microsoftu.
 
-Tato funkce používá [aplikaci Microsoft Authenticator](../user-help/user-help-auth-app-overview.md) ke správě uživatelů v zařízení a k distribuci [modulu plug-in Microsoft Enterprise SSO pro zařízení Apple](apple-sso-plugin.md).
+Tato funkce používá [aplikaci Microsoft Authenticator](../user-help/user-help-auth-app-overview.md) ke správě uživatelů na zařízení a k distribuci [modulu plug-in Microsoft Enterprise SSO pro zařízení Apple](apple-sso-plugin.md).
 
-## <a name="create-a-shared-device-mode-app"></a>Vytvoření aplikace režimu sdíleného zařízení
+## <a name="create-a-shared-device-mode-app"></a>Vytvoření aplikace v režimu sdíleného zařízení
 
-Pokud chcete vytvořit aplikaci pro režim sdíleného zařízení, vývojáři a správci cloudových zařízení spolupracují:
+Pokud chcete vytvořit sdílenou aplikaci v režimu zařízení, vývojáři a správci cloudových zařízení spolupracují:
 
-1. **Vývojáři aplikací** píší aplikaci s jedním účtem (aplikace s více účtůmi nejsou podporovány v režimu sdíleného zařízení) a zapisují kód pro zpracování věcí, jako je odhlášení sdíleného zařízení.
+1. **Vývojáři aplikací** napíší aplikace s jedním účtem (aplikace s více účty se v režimu sdíleného zařízení nepodporují) a napíší kód, který bude zpracovávat věci, jako je například odhlášení ze sdíleného zařízení.
 
-1. **Správci zařízení** připravují zařízení ke sdílení pomocí poskytovatele správy mobilních zařízení (MDM), jako je Microsoft Intune, ke správě zařízení v jejich organizaci. MDM odešle aplikaci Microsoft Authenticator do zařízení a zapne "Sdílený režim" pro každé zařízení prostřednictvím aktualizace profilu do zařízení. Toto nastavení sdíleného režimu mění chování podporovaných aplikací v zařízení. Tato konfigurace od poskytovatele MDM nastaví režim sdíleného zařízení pro zařízení a povolí [modul plug-in Microsoft Enterprise SSO pro zařízení Apple,](apple-sso-plugin.md) který je vyžadován pro režim sdíleného zařízení.
+1. **Správci zařízení** připraví zařízení pro sdílení pomocí poskytovatele správy mobilních zařízení (MDM), jako je Microsoft Intune ke správě zařízení v jejich organizaci. MDM vloží aplikaci Microsoft Authenticator do zařízení a zapne "sdílený režim" pro každé zařízení prostřednictvím aktualizace profilu na zařízení. V tomto nastavení sdíleného režimu se mění chování podporovaných aplikací na zařízení. Tato konfigurace od poskytovatele MDM nastavuje režim sdíleného zařízení pro zařízení a povoluje [modul plug-in Microsoft Enterprise SSO pro zařízení Apple](apple-sso-plugin.md) , která se vyžadují pro režim sdíleného zařízení.
 
-1. [**Povinné pouze během veřejného náhledu**] Uživatel s rolí [Správce cloudových zařízení](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator) pak musí spustit [aplikaci Microsoft Authenticator](../user-help/user-help-auth-app-overview.md) a připojit své zařízení k organizaci.
+1. [**Vyžadováno pouze během Public Preview**] Uživatel s rolí [správce cloudového zařízení](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator) musí potom spustit [aplikaci Microsoft Authenticator](../user-help/user-help-auth-app-overview.md) a připojit své zařízení k organizaci.
 
-    Konfigurace členství v organizačních rolích na webu Azure Portal: Role **Služby** > Azure a**správce cloudových zařízení** **správci služby** > Azure
+    Pokud chcete nakonfigurovat členství vaší organizační role v Azure Portal: **Azure Active Directory** > **role a správci** > **cloudového zařízení správce**
 
-Následující části vám pomohou aktualizovat aplikaci tak, aby podporovala režim sdíleného zařízení.
+Následující části vám pomůžou aktualizovat aplikaci tak, aby podporovala režim sdíleného zařízení.
 
-## <a name="use-intune-to-enable-shared-device-mode--sso-extension"></a>Povolení režimu sdíleného zařízení & rozšíření montovna SSO pomocí Intune
+## <a name="use-intune-to-enable-shared-device-mode--sso-extension"></a>Povolení režimu sdíleného zařízení &ho rozšíření jednotného přihlašování pomocí Intune
 
 > [!NOTE]
-> Následující krok je vyžadován pouze během verze Public Preview.
+> Následující krok je vyžadován pouze během veřejné verze Preview.
 
-Zařízení musí být nakonfigurováno tak, aby podporovalo režim sdíleného zařízení. Musí mít nainstalovaný iOS 13+ a musí být zaregistrován. Konfigurace MDM také potřebuje povolit [modul plug-in Microsoft Enterprise SSO pro zařízení Apple](apple-sso-plugin.md). Další informace o rozšířeních s přisytím služby SSO najdete ve [videu Apple](https://developer.apple.com/videos/play/tech-talks/301/).
+Vaše zařízení musí být nakonfigurované tak, aby podporovalo režim sdíleného zařízení. Musí mít nainstalované iOS 13 + a musí být zaregistrované v MDM. Konfigurace MDM taky musí povolit [modul plug-in Microsoft Enterprise SSO pro zařízení Apple](apple-sso-plugin.md). Další informace o rozšíření jednotného přihlašování najdete v tématu [Apple video](https://developer.apple.com/videos/play/tech-talks/301/).
 
-1. Na konfiguračním portálu Intune sdělte zařízení, aby povolilo [modul plug-in Microsoft Enterprise SSO pro zařízení Apple](apple-sso-plugin.md) s následující konfigurací:
+1. Na portálu konfigurace Intune řekněte zařízení, aby povolilo [modul plug-in Microsoft Enterprise SSO pro zařízení Apple](apple-sso-plugin.md) s následující konfigurací:
 
-    - **Typ**: Přesměrování
-    - **ID rozšíření:** com.microsoft.azureauthenticator.ssoextension
+    - **Typ**: přesměrování
+    - **ID rozšíření**: com. Microsoft. azureauthenticator. ssoextension
     - **ID týmu**: SGGM6D27TK
     - **Adresy URL**:https://login.microsoftonline.com
     - Další data ke konfiguraci:
       - Klíč: sharedDeviceMode
-      - Typ: Logická hodnota
-      - Hodnota: True
+      - Typ: Boolean
+      - Hodnota: true
 
-    Další informace o konfiguraci pomocí Intune najdete v [dokumentaci ke konfiguraci Intune](https://docs.microsoft.com/intune/configuration/ios-device-features-settings).
+    Další informace o konfiguraci služby Intune najdete v dokumentaci ke [konfiguraci Intune](https://docs.microsoft.com/intune/configuration/ios-device-features-settings).
 
-1. Dále nakonfigurujte mdm tak, aby aplikace Microsoft Authenticator do zařízení prostřednictvím profilu MDM.
+1. Potom nakonfigurujte MDM tak, aby se aplikace Microsoft Authenticator do zařízení vložila přes profil MDM.
 
-    Nastavte následující možnosti konfigurace pro zapnutí režimu sdíleného zařízení:
+    Nastavte následující možnosti konfigurace, abyste zapnuli režim sdíleného zařízení:
 
     - Konfigurace 1:
       - Klíč: sharedDeviceMode
-      - Typ: Logická hodnota
-      - Hodnota: True
+      - Typ: Boolean
+      - Hodnota: true
 
 ## <a name="modify-your-ios-application-to-support-shared-device-mode"></a>Úprava aplikace pro iOS tak, aby podporovala režim sdíleného zařízení
 
-Uživatelé jsou na vás závislí, aby zajistili, že jejich data neprosakují jinému uživateli. Následující části poskytují užitečné signály, které vaší aplikaci oznamují, že došlo ke změně a měla by být zpracována.
+Vaši uživatelé závisí na tom, abyste zajistili, že jejich data nebudou nevrácená jiným uživatelem. V následujících částech jsou uvedeny užitečné signály, které označují vaši aplikaci, že došlo ke změně a měla by být zpracována.
 
-Jste zodpovědní za kontrolu stavu uživatele na zařízení při každém použití aplikace a následné vymazání dat předchozího uživatele. To zahrnuje, pokud je znovu načten z pozadí v multi-tasking.
+Zodpovídáte za kontrolu stavu uživatele v zařízení pokaždé, když se vaše aplikace používá, a pak vymazat data předchozího uživatele. To zahrnuje, pokud se znovu načte z pozadí při více úlohách.
 
-Při změně uživatele byste měli zajistit, aby byla vymazána data předchozího uživatele a aby byla odebrána všechna data uložená v mezipaměti zobrazená v aplikaci. Důrazně doporučujeme vám a vaší společnosti, abyste po aktualizaci aplikace provedli proces kontroly zabezpečení, aby podporovali režim sdíleného zařízení.
+Při změně uživatele byste měli zkontrolovat, že se data předchozího uživatele vymažou a že se z aplikace odeberou všechna data uložená v mezipaměti. Důrazně doporučujeme, abyste vy a vaše společnost prováděli proces kontroly zabezpečení po aktualizaci aplikace na podporu režimu sdíleného zařízení.
 
-### <a name="detect-shared-device-mode"></a>Detekce režimu sdíleného zařízení
+### <a name="detect-shared-device-mode"></a>Detekovat režim sdíleného zařízení
 
-Detekce režimu sdíleného zařízení je pro vaši aplikaci důležitá. Mnoho aplikací bude vyžadovat změnu v jejich uživatelské zkušenosti (UX) při použití aplikace na sdíleném zařízení. Vaše aplikace může mít například funkci Registrace, která není vhodná pro pracovníka první linie, protože pravděpodobně již má účet. Můžete také přidat další zabezpečení pro vaše aplikace zpracování dat, pokud je v režimu sdíleného zařízení.
+Zjišťování režimu sdíleného zařízení je pro vaši aplikaci důležité. Mnoho aplikací bude při použití aplikace na sdíleném zařízení vyžadovat změnu v uživatelském prostředí (UX). Například vaše aplikace může mít funkci "registrace", která není vhodná pro pracovní proces Firstline, protože už pravděpodobně má účet. Pokud je v režimu sdíleného zařízení, můžete také pro zpracování dat aplikace přidat další zabezpečení.
 
-Pomocí `getDeviceInformationWithParameters:completionBlock:` rozhraní API `MSALPublicClientApplication` v aplikaci určete, jestli aplikace běží na zařízení v režimu sdíleného zařízení.
+K určení `getDeviceInformationWithParameters:completionBlock:` , jestli je aplikace spuštěná na zařízení v režimu sdíleného zařízení, použijte rozhraní API v. `MSALPublicClientApplication`
 
-Následující fragmenty kódu zobrazují příklady použití `getDeviceInformationWithParameters:completionBlock:` rozhraní API.
+Následující fragmenty kódu ukazují příklady použití `getDeviceInformationWithParameters:completionBlock:` rozhraní API.
 
 #### <a name="swift"></a>Swift
 
@@ -124,11 +124,11 @@ application.getDeviceInformation(with: nil, completionBlock: { (deviceInformatio
 }];
 ```
 
-### <a name="get-the-signed-in-user-and-determine-if-a-user-has-changed-on-the-device"></a>Získání přihlášeného uživatele a zjištění, zda se uživatel v zařízení změnil
+### <a name="get-the-signed-in-user-and-determine-if-a-user-has-changed-on-the-device"></a>Získá přihlášeného uživatele a určí, jestli se na zařízení změnil nějaký uživatel.
 
-Další důležitou součástí podpory režimu sdíleného zařízení je určení stavu uživatele v zařízení a vymazání dat aplikace, pokud se uživatel změnil nebo pokud v zařízení není vůbec žádný uživatel. Jste zodpovědní za zajištění, že data nebudou prozrazena jinému uživateli.
+Další důležitou součástí podpory režimu sdíleného zařízení je určení stavu uživatele v zařízení a vymazání dat aplikací, pokud se uživatel změnil nebo pokud na zařízení není vůbec žádný uživatel. Zodpovídáte za to, že nebudete moct data nevrácená jinému uživateli.
 
-Pomocí rozhraní `getCurrentAccountWithParameters:completionBlock:` API můžete zadat dotaz na aktuálně přihlášený účet v zařízení.
+Rozhraní API můžete `getCurrentAccountWithParameters:completionBlock:` použít k dotazování aktuálně přihlášeného účtu v zařízení.
 
 #### <a name="swift"></a>Swift
 
@@ -157,9 +157,9 @@ parameters.completionBlockQueue = dispatch_get_main_queue();
 }];
 ```
 
-### <a name="globally-sign-in-a-user"></a>Globální přihlášení uživatele
+### <a name="globally-sign-in-a-user"></a>Globálně přihlašovat uživatele
 
-Když je zařízení nakonfigurováno jako sdílené zařízení, může vaše aplikace volat `acquireTokenWithParameters:completionBlock:` rozhraní API pro přihlášení k účtu. Účet bude k dispozici globálně pro všechny způsobilé aplikace na zařízení po prvním přihlášení aplikace v účtu.
+Když je zařízení nakonfigurované jako sdílené zařízení, může vaše aplikace volat `acquireTokenWithParameters:completionBlock:` rozhraní API pro přihlášení k účtu. Účet bude k dispozici globálně pro všechny opravňující aplikace na zařízení po přihlášení první aplikace k účtu.
 
 #### <a name="objective-c"></a>Objective-C
 
@@ -171,16 +171,16 @@ parameters.loginHint = self.loginHintTextField.text;
 [application acquireTokenWithParameters:parameters completionBlock:completionBlock];
 ```
 
-### <a name="globally-sign-out-a-user"></a>Globální odhlášení uživatele
+### <a name="globally-sign-out-a-user"></a>Globálně odhlásit uživatele
 
-Následující kód odebere přihlášený účet a vymaže tokeny uložené v mezipaměti nejen z aplikace, ale také ze zařízení, které je v režimu sdíleného zařízení. Nečistí však *data* z vaší aplikace. Je nutné vymazat data z vaší aplikace, stejně jako vymazat všechna data uložená v mezipaměti aplikace může být zobrazena uživateli.
+Následující kód odstraní přihlášený účet a vymaže tokeny uložené v mezipaměti nejen z aplikace, ale také ze zařízení, které je v režimu sdíleného zařízení. Ale nevymaže *data* z vaší aplikace. Je nutné vymazat data z aplikace a vymazat všechna data uložená v mezipaměti, která vaše aplikace může zobrazit uživateli.
 
 #### <a name="clear-browser-state"></a>Vymazat stav prohlížeče
 
 > [!NOTE]
-> Následující krok je vyžadován pouze během verze Public Preview.
+> Následující krok je vyžadován pouze během veřejné verze Preview.
 
-V této verzi verze ver preview [modul plug-in Microsoft Enterprise SSO pro zařízení Apple](apple-sso-plugin.md) vymaže stav pouze pro aplikace. V prohlížeči Safari není jasný stav. Doporučujeme ručně vymazat relaci prohlížeče, abyste zajistili, že nezůstanou žádné stopy stavu uživatele. Pomocí níže uvedené `signoutFromBrowser` volitelné vlastnosti můžete vymazat všechny soubory cookie. To způsobí, že se prohlížeč krátce spustí v zařízení.
+V této verzi Public Preview [modul plug-in Microsoft Enterprise SSO pro zařízení Apple](apple-sso-plugin.md) vymaže stav jenom pro aplikace. V prohlížeči Safari není tento stav jasný. Doporučujeme, abyste ručně vymazali relaci prohlížeče, abyste se ujistili, že nezbývá žádné trasování stavu uživatele. K vymazání všech souborů cookie `signoutFromBrowser` můžete použít volitelnou vlastnost uvedenou níže. To způsobí, že se prohlížeč na zařízení krátce spustí.
 
 #### <a name="swift"></a>Swift
 
@@ -223,6 +223,6 @@ signoutParameters.signoutFromBrowser = YES; // Only needed for Public Preview.
 
 ## <a name="next-steps"></a>Další kroky
 
-Chcete-li zobrazit režim sdíleného zařízení v akci, následující ukázka kódu na GitHubu obsahuje příklad spuštění aplikace Firstline Worker na zařízení se systémem iOS v režimu sdíleného zařízení:
+Pokud chcete v akci zobrazit režim sdíleného zařízení, následující ukázka kódu na GitHubu obsahuje příklad spuštění aplikace pracovníka Firstline na zařízení s iOS v režimu sdíleného zařízení:
 
-[Ukázka rozhraní API rozhraní Microsoft Graph API msal iOS Swift](https://github.com/Azure-Samples/ms-identity-mobile-apple-swift-objc)
+[Ukázka rozhraní MSAL pro iOS SWIFT Microsoft Graph](https://github.com/Azure-Samples/ms-identity-mobile-apple-swift-objc)

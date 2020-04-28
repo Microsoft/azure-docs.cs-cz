@@ -1,7 +1,7 @@
 ---
-title: Definování technického profilu pro vystavittele SAML ve vlastní chod
+title: Definování technického profilu pro vystavitele SAML ve vlastních zásadách
 titleSuffix: Azure AD B2C
-description: Ve vlastní chodnících ve službě Azure Active Directory B2C definujte technický profil pro token jazyka značek kontrolního výrazu zabezpečení (SAML).
+description: Definujte technický profil vystavitele Security Assertion Markup Language tokenu (SAML) ve vlastních zásadách v Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,23 +12,23 @@ ms.date: 03/10/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c35f85b9ec5d86d1cd61f165b891c576c06a03db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78967267"
 ---
-# <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu pro vystavitela tokenu SAML ve vlastních zásadách služby Azure Active Directory B2C
+# <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu pro vystavitele tokenů SAML v Azure Active Directory B2C vlastní zásady
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) vydává několik typů tokenů zabezpečení při procesu každého toku ověřování. Technický profil pro vystavitele tokenu SAML vydává token SAML, který je vrácen zpět do aplikace předávající strany (zprostředkovatele služeb). Obvykle tento technický profil je poslední krok orchestrace v cestě uživatele.
+Azure Active Directory B2C (Azure AD B2C) emituje několik typů tokenů zabezpečení při zpracovávání každého toku ověřování. Technický profil vystavitele tokenu SAML generuje token SAML, který se vrátí zpátky do aplikace předávající strany (poskytovatel služeb). Obvykle je tento technický profil posledním krokem orchestrace v cestě uživatele.
 
 ## <a name="protocol"></a>Protocol (Protokol)
 
-**Atribut Name** elementu **Protocol** musí být `None`nastaven na . Nastavte element **OutputTokenFormat** na `SAML2`.
+Atribut **Name** elementu **Protocol** musí být nastaven na `None`hodnotu. Nastavte element **OutputTokenFormat** na `SAML2`.
 
-Následující příklad ukazuje technický `Saml2AssertionIssuer`profil pro :
+Následující příklad ukazuje technický profil pro `Saml2AssertionIssuer`:
 
 ```XML
 <TechnicalProfile Id="Saml2AssertionIssuer">
@@ -50,30 +50,30 @@ Následující příklad ukazuje technický `Saml2AssertionIssuer`profil pro :
 
 ## <a name="input-output-and-persist-claims"></a>Vstupní, výstupní a trvalé deklarace identity
 
-**InputClaims**, **OutputClaims**a **PersistClaims** prvky jsou prázdné nebo chybí. **InutputClaimsTransformations** a **OutputClaimsTransformations prvky** jsou také chybí.
+Prvky **InputClaims**, **OutputClaims**a **PersistClaims** jsou prázdné nebo chybí. Chybí také elementy **InutputClaimsTransformations** a **OutputClaimsTransformations** .
 
 ## <a name="metadata"></a>Metadata
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| IssuerUri | Ne | Název vystavithonek, který se zobrazí v odpovědi SAML. Hodnota by měla být stejný název jako nakonfigurován v aplikaci předávající strany. |
+| IssuerUri | Ne | Název vystavitele, který se zobrazí v odpovědi SAML. Hodnota by měla být stejný název jako nakonfigurovaný v aplikaci předávající strany. |
 
 ## <a name="cryptographic-keys"></a>Kryptografické klíče
 
-Prvek CryptographicKeys obsahuje následující atributy:
+Element CryptographicKeys obsahuje následující atributy:
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| Podepisování metadat | Ano | Certifikát X509 (sada klíčů RSA), který se má použít k podepisování metadat SAML. Azure AD B2C používá tento klíč k podepsání metadat. |
-| SamlMessagePodpis| Ano| Zadejte certifikát X509 (sada klíčů RSA), který se má použít k podepisování zpráv SAML. Azure AD B2C používá tento `<samlp:Response>` klíč k podepsání odpovědi odeslat předávající straně.|
+| MetadataSigning | Ano | Certifikát x509 (sada klíčů RSA), který se použije k podepisování metadat SAML. Azure AD B2C používá tento klíč k podepsání metadat. |
+| SamlMessageSigning| Ano| Zadejte certifikát x509 (sadu klíčů RSA), který se použije k podepisování zpráv SAML. Azure AD B2C používá tento klíč k podepsání odeslání `<samlp:Response>` odpovědi předávající straně.|
 
 ## <a name="session-management"></a>Správa relací
 
-Chcete-li nakonfigurovat relace Azure AD B2C SAML mezi `UseTechnicalProfileForSessionManagement` aplikací předávající strany, atribut prvku, odkaz na relaci [samlSSOSessionProvider](custom-policy-reference-sso.md#samlssosessionprovider) sso.
+Chcete-li nakonfigurovat Azure AD B2C relace SAML mezi aplikací předávající strany, atributem `UseTechnicalProfileForSessionManagement` elementu, odkazem na relaci jednotného přihlašování ( [SamlSSOSessionProvider](custom-policy-reference-sso.md#samlssosessionprovider) SSO).
 
 ## <a name="next-steps"></a>Další kroky
 
-V následujícím článku najdete například použití technického profilu vystavittele SAML:
+Příklad použití technického profilu vystavitele SAML najdete v následujícím článku:
 
 - [Registrace aplikace SAML v Azure AD B2C](connect-with-saml-service-providers.md)
 

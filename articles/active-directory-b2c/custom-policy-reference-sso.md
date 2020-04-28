@@ -1,7 +1,7 @@
 ---
-title: Správa relací jednotného přihlášení pomocí vlastních zásad
+title: Správa relací jednotného přihlašování pomocí vlastních zásad
 titleSuffix: Azure AD B2C
-description: Zjistěte, jak spravovat relace přizpůsobování individuálního zabezpečení pomocí vlastních zásad v Azure AD B2C.
+description: Naučte se spravovat relace jednotného přihlašování pomocí vlastních zásad v Azure AD B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,48 +12,48 @@ ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 80cf0d101a29de7fca9d4dd36e188a500d35e290
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79246029"
 ---
-# <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Správa relací jednotného přihlášení ve službě Azure Active Directory B2C
+# <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Správa relací jednotného přihlašování v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Správa relací jednotného přihlašování (SSO) ve službě Azure Active Directory B2C (Azure AD B2C) umožňuje správci řídit interakci s uživatelem po ověření uživatele. Správce může například určit, zda se zobrazí výběr zprostředkovatelů identity nebo zda je třeba znovu zadat podrobnosti místního účtu. Tento článek popisuje, jak nakonfigurovat nastavení přistahou k obecnému zabezpečení pro Azure AD B2C.
+Správa relací jednotného přihlašování (SSO) v Azure Active Directory B2C (Azure AD B2C) umožňuje správci řídit interakci s uživatelem poté, co uživatel již ověřený. Správce může třeba určit, jestli se má zobrazit výběr zprostředkovatelů identity, nebo jestli se mají zadat podrobnosti o místním účtu znovu. Tento článek popisuje, jak nakonfigurovat nastavení jednotného přihlašování pro Azure AD B2C.
 
-Správa relace spřimaže má dvě části. První se zabývá interakcemi uživatele přímo s Azure AD B2C a další se zabývá interakcemi uživatele s externími stranami, jako je Facebook. Azure AD B2C nepřepíše nebo obejít relace přistajení, které mohou být v držení externích stran. Spíše trasa přes Azure AD B2C se dostat do externí strany je "pamatoval", vyhnout se nutnosti znovu vyzvat uživatele k výběru jejich sociální nebo podnikové identity poskytovatele. Konečné rozhodnutí o sazbě s sebou zůstává na externí straně.
+Správa relace jednotného přihlašování má dvě části. První se zabývá interakcemi uživatele přímo s Azure AD B2C a dalšími obchody s interakcemi uživatele s externími stranami, jako je Facebook. Azure AD B2C nepřepisuje ani neobejde relace jednotného přihlašování, které mohou být uloženy externími stranami. Místo toho, aby se trasa mezi Azure AD B2C dostala na externí stranu, je "rememberd", takže není nutné znovu vyzvat uživatele k výběru poskytovatele identity pro sociální nebo podnikové prostředí. Konečné rozhodnutí SSO zůstává u externí strany.
 
-Správa relací při správě přiřazování obvyklých škol používá stejnou sémantiku jako jakýkoli jiný technický profil ve vlastních zásadách. Při spuštění kroku orchestrace technický profil přidružený ke kroku je `UseTechnicalProfileForSessionManagement` dotazován na odkaz. Pokud jeden existuje, odkazovaný zprostředkovatel relace s přihlašování k internetu je pak kontrolována, zda je uživatel účastníkem relace. Pokud ano, zprostředkovatel relace s přihlašování se používá k opětovnému naplnění relace. Podobně po dokončení provádění krok orchestrace zprostředkovatele slouží k ukládání informací v relaci, pokud byl zadán zprostředkovatel relace s přihlašování.
+Správa relací jednotného přihlašování používá stejnou sémantiku jako jakýkoliv jiný technický profil ve vlastních zásadách. Při spuštění kroku orchestrace se pro `UseTechnicalProfileForSessionManagement` referenci zobrazí dotaz na technický profil přidružený k tomuto kroku. Pokud existuje, pak se v odkazovaném poskytovateli relace jednotného přihlašování kontroluje, jestli je uživatel účastníkem relace. V takovém případě se k naplnění relace použije poskytovatel relace jednotného přihlašování. Podobně platí, že po dokončení kroku orchestrace se poskytovatel používá k ukládání informací v relaci, pokud byl zadán zprostředkovatel relace jednotného přihlašování.
 
-Azure AD B2C definovala řadu zprostředkovatelů relací při způsobovaného zabezpečení, které lze použít:
+Azure AD B2C definovali počet zprostředkovatelů relací jednotného přihlašování, které se dají použít:
 
-* Zprostředkovatel noopSSOSessionProvider
+* NoopSSOSessionProvider
 * DefaultSSOSessionProvider
-* Externí LoginSSOSessionProvider
+* ExternalLoginSSOSessionProvider
 * SamlSSOSessionProvider
 
-Třídy správy spřimjené stemi s stezací služby jsou určeny `<UseTechnicalProfileForSessionManagement ReferenceId="{ID}" />` pomocí prvku technického profilu.
+Třídy správy jednotného přihlašování jsou určené `<UseTechnicalProfileForSessionManagement ReferenceId="{ID}" />` pomocí elementu technického profilu.
 
-## <a name="input-claims"></a>Vstupní deklarace
+## <a name="input-claims"></a>Vstupní deklarace identity
 
-Prvek `InputClaims` je prázdný nebo chybí.
+`InputClaims` Element je prázdný nebo chybí.
 
-## <a name="persisted-claims"></a>Trvalé nároky
+## <a name="persisted-claims"></a>Trvalé deklarace identity
 
-Deklarace, které je třeba vrátit do aplikace nebo použít předběžné podmínky v následujících krocích, by měly být uloženy v relaci nebo rozšířeny o čtení z profilu uživatele v adresáři. Použití trvalých deklarací zajistí, že vaše cesty ověřování neselžou u chybějících deklarací identity. Chcete-li přidat deklarace `<PersistedClaims>` identity v relaci, použijte prvek technického profilu. Při použití zprostředkovatele k opětovnému naplnění relace, trvalé deklarace identity jsou přidány do vaku deklarací identity.
+Deklarace identity, které je potřeba vrátit do aplikace nebo použít v rámci předběžných podmínek v následujících krocích, by se měly ukládat do relace nebo rozšiřovat čtením z profilu uživatele v adresáři. Když použijete trvalé deklarace identity, zajistíte tak selhání cest ověřování u chybějících deklarací. Pokud chcete v relaci přidat deklarace identity, použijte `<PersistedClaims>` element technického profilu. Pokud se k naplnění relace použije zprostředkovatel, budou trvalé deklarace identity přidány do kontejneru deklarací identity.
 
-## <a name="output-claims"></a>Výstupní pohledávky
+## <a name="output-claims"></a>Deklarace výstupů
 
-Používá `<OutputClaims>` se pro načítání deklarací z relace.
+`<OutputClaims>` Slouží k načítání deklarací identity z relace.
 
-## <a name="session-providers"></a>Poskytovatelé relací
+## <a name="session-providers"></a>Zprostředkovatelé relací
 
-### <a name="noopssosessionprovider"></a>Zprostředkovatel noopSSOSessionProvider
+### <a name="noopssosessionprovider"></a>NoopSSOSessionProvider
 
-Jak určuje název, tento zprostředkovatel neprovede žádné. Tento zprostředkovatel lze použít k potlačení chování přisyzování služeb přisilničního a so pro konkrétní technický profil. Následující `SM-Noop` technický profil je součástí [sady custom policy starter pack](custom-policy-get-started.md#custom-policy-starter-pack).
+Když název určíte, tento zprostředkovatel neprovede žádnou akci. Tento zprostředkovatel se dá použít pro potlačení chování jednotného přihlašování pro konkrétní technický profil. Do `SM-Noop` [Úvodní sady Custom Policy Pack](custom-policy-get-started.md#custom-policy-starter-pack)je zahrnutý následující technický profil.
 
 ```XML
 <TechnicalProfile Id="SM-Noop">
@@ -64,7 +64,7 @@ Jak určuje název, tento zprostředkovatel neprovede žádné. Tento zprostřed
 
 ### <a name="defaultssosessionprovider"></a>DefaultSSOSessionProvider
 
-Tohoto zprostředkovatele lze použít pro ukládání deklarací identity v relaci. Tento zprostředkovatel je obvykle odkazován v technickém profilu používaném pro správu místních účtů. Následující `SM-AAD` technický profil je součástí [sady custom policy starter pack](custom-policy-get-started.md#custom-policy-starter-pack).
+Tento zprostředkovatel se dá použít k ukládání deklarací identity v relaci. Na tohoto poskytovatele se obvykle odkazuje v technickém profilu, který se používá pro správu místních účtů. Do `SM-AAD` [Úvodní sady Custom Policy Pack](custom-policy-get-started.md#custom-policy-starter-pack)je zahrnutý následující technický profil.
 
 ```XML
 <TechnicalProfile Id="SM-AAD">
@@ -84,7 +84,7 @@ Tohoto zprostředkovatele lze použít pro ukládání deklarací identity v rel
 </TechnicalProfile>
 ```
 
-Následující `SM-MFA` technický profil je součástí [sady custom policy starter pack](custom-policy-get-started.md#custom-policy-starter-pack) `SocialAndLocalAccountsWithMfa`. Tento technický profil spravuje vícefaktorové ověřování relace.
+Do `SM-MFA` [Úvodní sady Custom Policy Pack](custom-policy-get-started.md#custom-policy-starter-pack) `SocialAndLocalAccountsWithMfa`je zahrnutý následující technický profil. Tento technický profil spravuje relaci Multi-Factor Authentication.
 
 ```XML
 <TechnicalProfile Id="SM-MFA">
@@ -99,9 +99,9 @@ Následující `SM-MFA` technický profil je součástí [sady custom policy sta
 </TechnicalProfile>
 ```
 
-### <a name="externalloginssosessionprovider"></a>Externí LoginSSOSessionProvider
+### <a name="externalloginssosessionprovider"></a>ExternalLoginSSOSessionProvider
 
-Tento zprostředkovatel se používá k potlačení obrazovky "zvolit zprostředkovatele identity". Obvykle se na něj odkazuje v technickém profilu nakonfigurovaném pro externího poskytovatele identity, jako je Facebook. Následující `SM-SocialLogin` technický profil je součástí [sady custom policy starter pack](custom-policy-get-started.md#custom-policy-starter-pack).
+Pomocí tohoto poskytovatele se potlačí obrazovka "zvolit zprostředkovatele identity". Obvykle se na něj odkazuje v technickém profilu nakonfigurovaném pro externího zprostředkovatele identity, jako je Facebook. Do `SM-SocialLogin` [Úvodní sady Custom Policy Pack](custom-policy-get-started.md#custom-policy-starter-pack)je zahrnutý následující technický profil.
 
 ```XML
 <TechnicalProfile Id="SM-SocialLogin">
@@ -120,11 +120,11 @@ Tento zprostředkovatel se používá k potlačení obrazovky "zvolit zprostřed
 
 | Atribut | Požaduje se | Popis|
 | --- | --- | --- |
-| VždyFetchClaimsFromProvider | Ne | Není aktuálně používán, lze je ignorovat. |
+| AlwaysFetchClaimsFromProvider | Ne | Aktuálně se nepoužívá, může být ignorováno. |
 
 ### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
 
-Tento zprostředkovatel se používá pro správu relací Azure AD B2C SAML mezi aplikací předávající strany nebo federovaným poskytovatelem identity SAML. Při použití zprostředkovatele spřimit pro ukládání relace zprostředkovatele identity SAML, musí být nastavena `RegisterServiceProviders` na `false`. Následující `SM-Saml-idp` technický profil je používán [technickým profilem SAML](saml-technical-profile.md).
+Tento zprostředkovatel se používá ke správě Azure AD B2C relací SAML mezi aplikací předávající strany nebo poskytovatelem federované identity SAML. Při použití poskytovatele jednotného přihlašování pro uložení relace zprostředkovatele identity SAML `RegisterServiceProviders` musí být nastavená na. `false` `SM-Saml-idp` [Technický profil SAML](saml-technical-profile.md)používá následující technický profil.
 
 ```XML
 <TechnicalProfile Id="SM-Saml-idp">
@@ -136,9 +136,9 @@ Tento zprostředkovatel se používá pro správu relací Azure AD B2C SAML mezi
 </TechnicalProfile>
 ```
 
-Při použití zprostředkovatele pro ukládání relace B2C `RegisterServiceProviders` SAML `true`musí být nastavena na . Odhlášení relace SAML `SessionIndex` `NameID` vyžaduje a dokončení.
+Při použití poskytovatele pro ukládání relace SAML B2C `RegisterServiceProviders` musí být nastavená na. `true` Odhlášení relace SAML vyžaduje `SessionIndex` a `NameID` k dokončení.
 
-Následující `SM-Saml-idp` technický profil používá [technický profil emitenta SAML](saml-issuer-technical-profile.md)
+`SM-Saml-idp` [Technický profil vystavitele SAML](saml-issuer-technical-profile.md) používá následující technický profil
 
 ```XML
 <TechnicalProfile Id="SM-Saml-sp">
@@ -150,8 +150,8 @@ Následující `SM-Saml-idp` technický profil používá [technický profil emi
 
 | Atribut | Požaduje se | Popis|
 | --- | --- | --- |
-| IncludeSessionIndex | Ne | Není aktuálně používán, lze je ignorovat.|
-| RegisterServiceProviders | Ne | Označuje, že poskytovatel by měl zaregistrovat všechny poskytovatele služeb SAML, kterým byl vydán kontrolní výraz. Možné hodnoty: `true` (výchozí) nebo `false`.|
+| IncludeSessionIndex | Ne | Aktuálně se nepoužívá, může být ignorováno.|
+| RegisterServiceProviders | Ne | Indikuje, že by měl poskytovatel zaregistrovat všechny poskytovatele služeb SAML, u kterých bylo vydaný kontrolní výraz. Možné hodnoty: `true` (výchozí), nebo `false`.|
 
 
 

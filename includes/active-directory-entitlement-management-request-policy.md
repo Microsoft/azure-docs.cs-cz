@@ -9,201 +9,201 @@ ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
 ms.openlocfilehash: 7fd716be397d9ef6b9d6132cd4470f653f3cea0f
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80655950"
 ---
 ## <a name="for-users-in-your-directory"></a>Pro uživatele ve vašem adresáři
 
-Pokud chcete uživatelům ve vašem adresáři povolit, aby mohli požádat o tento přístupový balíček, postupujte takto. Při definování zásad požadavků můžete určit jednotlivé uživatele nebo častěji skupiny uživatelů. Vaše organizace může mít například skupinu, například **Všichni zaměstnanci**.  Pokud je tato skupina přidána do zásad pro uživatele, kteří mohou požádat o přístup, může o přístup požádat každý člen této skupiny.
+Postupujte podle těchto kroků, pokud chcete, aby uživatelé ve vašem adresáři mohli požadovat tento balíček přístupu. Při definování zásad žádosti můžete zadat jednotlivé uživatele nebo skupiny uživatelů, kteří jsou často. Vaše organizace například už může mít skupinu, jako je například **Všichni zaměstnanci**.  Pokud se tato skupina přidá v zásadách pro uživatele, kteří můžou požádat o přístup, pak může každý člen této skupiny požádat o přístup.
 
-1. V části **Uživatelé, kteří mohou požádat o přístup,** klepněte **ve svém adresáři**na tlačítko Pro uživatele .
+1. V části **Uživatelé, kteří můžou požádat o přístup** , klikněte na **uživatele v adresáři**.
 
-    Vyberete-li tuto možnost, zobrazí se nové možnosti, které dále upřesní, kdo ve vašem adresáři může požadovat tento přístupový balíček.
+    Když vyberete tuto možnost, zobrazí se nové možnosti, které vám pomůžou lépe upřesnit, kdo v adresáři může tento přístupový balíček požádat.
 
-    ![Přístupový balíček – požadavky – pro uživatele ve vašem adresáři](./media/active-directory-entitlement-management-request-policy/for-users-in-your-directory.png)
+    ![Přístup k balíčku – požadavky – pro uživatele ve vašem adresáři](./media/active-directory-entitlement-management-request-policy/for-users-in-your-directory.png)
 
 1. Vyberte jednu z následujících možností:
 
     |  |  |
     | --- | --- |
-    | **Konkrétní uživatelé a skupiny** | Tuto možnost zvolte, pokud chcete, aby mohli tento přístupový balíček požadovat pouze uživatelé a skupiny ve vašem adresáři, které zadáte. |
-    | **Všichni členové (kromě hostů)** | Tuto možnost zvolte, pokud chcete, aby všichni členové ve vašem adresáři mohli požadovat tento přístupový balíček. Tato možnost nezahrnuje žádné uživatele typu Host, které jste do adresáře pozvali. |
-    | **Všichni uživatelé (včetně hostů)** | Tuto možnost zvolte, pokud chcete, aby všichni členové a uživatelé typu Host ve vašem adresáři mohli požadovat tento přístupový balíček. |
+    | **Konkrétní uživatelé a skupiny** | Tuto možnost vyberte, pokud chcete, aby se tento balíček přístupu mohl vyžádat jenom pro uživatele a skupiny v adresáři, který jste zadali. |
+    | **Všichni členové (kromě hostů)** | Tuto možnost vyberte, pokud chcete, aby všichni členové členských uživatelů v adresáři mohli požádat o tento balíček přístupu. Tato možnost neobsahuje žádné uživatele typu Host, které jste mohli pozvat do svého adresáře. |
+    | **Všichni uživatelé (včetně hostů)** | Tuto možnost vyberte, pokud chcete, aby se tento balíček přístupu mohl vyžádat všichni členové a uživatelé typu Host v adresáři. |
 
-    Uživatelé typu Host odkazují na externí uživatele, kteří byli pozváni do vašeho adresáře pomocí [služby Azure AD B2B](../articles/active-directory/b2b/what-is-b2b.md). Další informace o rozdílech mezi členskými uživateli a uživateli typu Host najdete [v tématu Jaká jsou výchozí uživatelská oprávnění ve službě Azure Active Directory?](../articles/active-directory/fundamentals/users-default-permissions.md).
+    Uživatelé typu Host odkazují na externí uživatele, kteří byli pozváni do vašeho adresáře pomocí [Azure AD B2B](../articles/active-directory/b2b/what-is-b2b.md). Další informace o rozdílech mezi členskými uživateli a uživateli typu Host najdete v tématu [co jsou výchozí oprávnění uživatele v Azure Active Directory?](../articles/active-directory/fundamentals/users-default-permissions.md).
 
-1. Pokud jste vybrali **Konkrétní uživatele a skupiny**, klepněte na **tlačítko Přidat uživatele a skupiny**.
+1. Pokud jste vybrali **konkrétní uživatele a skupiny**, klikněte na **Přidat uživatele a skupiny**.
 
-1. V podokně Vybrat uživatele a skupiny vyberte uživatele a skupiny, které chcete přidat.
+1. V podokně vybrat uživatele a skupiny vyberte uživatele a skupiny, které chcete přidat.
 
-    ![Přístupový balíček – požadavky – výběr uživatelů a skupin](./media/active-directory-entitlement-management-request-policy/select-users-groups.png)
+    ![Přístup k balíčku – požadavky – výběr uživatelů a skupin](./media/active-directory-entitlement-management-request-policy/select-users-groups.png)
 
-1. Kliknutím na **Vybrat** přidáte uživatele a skupiny.
+1. Klikněte na **Vybrat** a přidejte uživatele a skupiny.
 
-1. Přeskočte dolů do části [Schválení.](#approval)
+1. Přeskočte dolů k části [schválení](#approval) .
 
 ## <a name="for-users-not-in-your-directory"></a>Pro uživatele, kteří nejsou ve vašem adresáři
 
- **Uživatelé, kteří nejsou ve vašem adresáři,** odkazují na uživatele, kteří jsou v jiném adresáři nebo doméně Azure AD. Tito uživatelé pravděpodobně ještě nebyli pozváni do vašeho adresáře. Adresáře Azure AD musí být nakonfigurované tak, aby umožňovaly pozvánky v **omezeních spolupráce**. Další informace naleznete [v tématu Povolení externí spolupráce B2B a správa toho, kdo může pozvat hosty](../articles/active-directory/b2b/delegate-invitations.md).
+ **Uživatelé, kteří nejsou v adresáři** , odkazují na uživatele, kteří jsou v jiném adresáři nebo adresáři služby Azure AD. Tito uživatelé možná nebyli přizváni do vašeho adresáře. Je potřeba nakonfigurovat adresáře Azure AD tak, aby umožňovaly pozvánky v **omezeních spolupráce**. Další informace najdete v tématu [Povolení externí spolupráce B2B a Správa toho, kdo může pozvat hosty](../articles/active-directory/b2b/delegate-invitations.md).
 
 > [!NOTE]
-> Uživatelský účet typu Host bude vytvořen pro uživatele, který ještě není ve vašem adresáři, jehož požadavek je schválen nebo automaticky schválen. Host bude pozván, ale neobdrží e-mail s pozvánkou. Místo toho obdrží e-mail při doručení přiřazení balíčku přístupu. Ve výchozím nastavení, později, když tento uživatel typu Host již nemá žádné přiřazení balíčků přístupu, protože jejich poslední přiřazení vypršelo nebo bylo zrušeno, bude tento uživatelský účet hosta zablokován z přihlášení a následně odstraněn. Pokud chcete, aby uživatelé typu Host zůstali ve vašem adresáři neomezeně dlouho, i když nemají žádná přiřazení balíčků přístupu, můžete změnit nastavení konfigurace správy nároků. Další informace o objektu uživatele typu Host naleznete v [tématu Vlastnosti uživatele spolupráce služby Azure Active Directory B2B](../articles/active-directory/b2b/user-properties.md).
+> Uživatelský účet hosta se vytvoří pro uživatele, který ještě není ve vašem adresáři, jehož žádost je schválená nebo automaticky schválená. Host bude pozván, ale neobdrží e-mail s pozvánkou. Místo toho obdrží e-mail po doručení jejich přiřazení balíčku přístupu. Ve výchozím nastavení platí, že pokud už uživatel typu host již nemá žádná přiřazení balíčku přístupu, protože jejich poslední přiřazení vypršela nebo byla zrušena, bude tento uživatelský účet hosta zablokován a následně odstraněn. Pokud chcete, aby uživatelé typu Host zůstali ve vašem adresáři po neomezenou dobu, a to i v případě, že nemají žádná přiřazení balíčků přístupu, můžete změnit nastavení pro konfiguraci správy nároků. Další informace o objektu uživatele hosta najdete v tématu [vlastnosti Azure Active Directoryho uživatele spolupráce B2B](../articles/active-directory/b2b/user-properties.md).
 
-Pokud chcete uživatelům, kteří nejsou ve vašem adresáři, povolit, aby tento přístupový balíček požadovali, postupujte takto:
+Postupujte podle těchto kroků, pokud chcete uživatelům, kteří nejsou ve vašem adresáři, vyžadovat tento balíček přístupu:
 
-1. V části **Uživatelé, kteří mohou požádat o přístup,** klepněte na tlačítko **Pro uživatele, kteří nejsou ve vašem adresáři**.
+1. V části **Uživatelé, kteří můžou požádat o přístup** , klikněte na uživatele, kteří **nejsou ve vašem adresáři**.
 
     Když vyberete tuto možnost, zobrazí se nové možnosti.
 
-    ![Přístupový balíček – požadavky – pro uživatele, kteří nejsou ve vašem adresáři](./media/active-directory-entitlement-management-request-policy/for-users-not-in-your-directory.png)
+    ![Přístup k balíčku – požadavky – pro uživatele, kteří nejsou ve vašem adresáři](./media/active-directory-entitlement-management-request-policy/for-users-not-in-your-directory.png)
 
 1. Vyberte jednu z následujících možností:
 
     |  |  |
     | --- | --- |
-    | **Konkrétní propojené organizace** | Tuto možnost vyberte, pokud chcete vybrat ze seznamu organizací, které dříve přidal správce. Tento přístupový balíček mohou požádat všichni uživatelé z vybraných organizací. |
-    | **Všechny propojené organizace** | Tuto možnost zvolte, pokud mohou všichni uživatelé ze všech připojených organizací požádat o tento přístupový balíček. |
-    | **Všichni uživatelé (všechny připojené organizace + noví externí uživatelé)** | Tuto možnost zvolte, pokud všichni uživatelé ze všech připojených organizací mohou požadovat tento přístupový balíček a že nastavení seznamu B2B povolit nebo odepřít by mělo mít přednost pro všechny nové externí uživatele. |
+    | **Konkrétní propojené organizace** | Tuto možnost vyberte, pokud chcete vybrat ze seznamu organizací, které jste přidali jako správce. Přístup k tomuto balíčku můžou vyžádat všichni uživatelé z vybraných organizací. |
+    | **Všechny připojené organizace** | Tuto možnost vyberte, pokud všichni uživatelé ze všech připojených organizací můžou tento balíček přístupu požádat. |
+    | **Všichni uživatelé (všechny připojené organizace a všichni noví externí uživatelé)** | Tuto možnost vyberte, pokud všichni uživatelé ze všech připojených organizací můžou požádat o tento balíček přístupu a že nastavení seznam povolených a zakázaných B2B by mělo mít přednost pro všechny nové externí uživatele. |
 
-    Připojená organizace je externí adresář nebo doména Azure AD, se kterou máte vztah.
+    Připojená organizace je externí adresář nebo doména služby Azure AD, ke kterým máte relaci.
 
-1. Pokud jste vybrali **Konkrétní připojené organizace**, klikněte na Přidat **adresáře** a vyberte ze seznamu připojených organizací, které dříve přidal správce.
+1. Pokud jste vybrali **konkrétní připojené organizace**, klikněte na **Přidat adresáře** a vyberte si ze seznamu připojených organizací, které jste přidali jako správce.
 
-1. Zadejte název nebo název domény, který chcete vyhledat pro dříve připojenou organizaci.
+1. Zadejte název nebo název domény, ve kterém chcete hledat dříve připojenou organizaci.
 
-    ![Přístupový balíček – požadavky – výběr adresářů](./media/active-directory-entitlement-management-request-policy/select-directories.png)
+    ![Přístup k balíčku – požadavky – výběr adresářů](./media/active-directory-entitlement-management-request-policy/select-directories.png)
 
-    Pokud organizace, se kterou chcete spolupracovat, není v seznamu, můžete požádat správce, aby ji přidal jako připojenou organizaci. Další informace naleznete [v tématu Přidání připojené organizace](../articles/active-directory/governance/entitlement-management-organization.md).
+    Pokud organizace, se kterou chcete spolupracovat, není v seznamu, můžete požádat správce, aby ho přidal jako připojenou organizaci. Další informace najdete v tématu [Přidání připojené organizace](../articles/active-directory/governance/entitlement-management-organization.md).
 
 1. Po výběru všech připojených organizací klikněte na **Vybrat**.
 
     > [!NOTE]
-    > Všichni uživatelé z vybraných připojených organizací budou moci požádat o tento přístupový balíček. To zahrnuje uživatele ve službě Azure AD ze všech subdomén přidružených k organizaci, pokud tyto domény nejsou blokovány seznamem povolených nebo odepřených azure B2B. Další informace naleznete v [tématu Povolit nebo blokovat pozvánky uživatelům B2B z konkrétních organizací](../articles/active-directory/b2b/allow-deny-list.md).
+    > Všichni uživatelé z vybraných připojených organizací budou moct požádat o tento balíček přístupu. To zahrnuje uživatele v Azure AD ze všech subdomén přidružených k organizaci, pokud tyto domény nejsou blokované seznamem povolených a zakázaných aplikací Azure B2B. Další informace najdete v tématu [Povolení nebo blokování pozvánek uživatelům B2B z konkrétních organizací](../articles/active-directory/b2b/allow-deny-list.md).
 
-1. Přeskočte dolů do části [Schválení.](#approval)
+1. Přeskočte dolů k části [schválení](#approval) .
 
-## <a name="none-administrator-direct-assignments-only"></a>Žádné (pouze přiřazení přímo správce)
+## <a name="none-administrator-direct-assignments-only"></a>Žádné (pouze přímé přiřazení správce)
 
-Pokud chcete obejít žádosti o přístup a povolit správcům přímé přiřazení konkrétních uživatelů k tomuto balíčku přístupu, postupujte takto. Uživatelé nebudou muset požadovat přístupový balíček. Stále můžete nastavit nastavení životního cyklu, ale neexistují žádné nastavení požadavků.
+Postupujte podle těchto kroků, pokud chcete vynechat žádosti o přístup a umožníte správcům, aby k tomuto balíčku přístupu přiřadili přímo konkrétní uživatele. Uživatelé nebudou muset vyžadovat balíček přístupu. Pořád můžete nastavit nastavení životního cyklu, ale neexistují žádná nastavení žádostí.
 
-1. V části **Uživatelé, kteří mohou požádat o přístup,** klepněte na **položku Žádný (pouze přiřazení přímo u správce**.
+1. V části **Uživatelé, kteří můžou požádat o přístup** , klikněte na možnost **žádný (pouze přímá přiřazení správců**).
 
-    ![Přístupový balíček – požadavky – pouze žádná přímá přiřazení správce](./media/active-directory-entitlement-management-request-policy/none-admin-direct-assignments-only.png)
+    ![Přístup k balíčku – požadavky – pouze přímá přiřazení správců](./media/active-directory-entitlement-management-request-policy/none-admin-direct-assignments-only.png)
 
-    Po vytvoření balíčku přístupu můžete přímo přiřadit konkrétní interní a externí uživatele k balíčku přístupu. Pokud zadáte externího uživatele, bude ve vašem adresáři vytvořen uživatelský účet typu Host. Informace o přímém přiřazení uživatele naleznete v tématu [Zobrazení, přidání a odebrání přiřazení pro přístupový balíček](../articles/active-directory/governance/entitlement-management-access-package-assignments.md).
+    Po vytvoření balíčku pro přístup můžete k balíčku pro přístup přímo přiřadit konkrétní interní a externí uživatele. Pokud zadáte externího uživatele, vytvoří se ve vašem adresáři uživatelský účet hosta. Informace o tom, jak přímo přiřazovat uživatele, najdete v tématu [zobrazení, přidání a odebrání přiřazení balíčku pro přístup](../articles/active-directory/governance/entitlement-management-access-package-assignments.md).
 
-1. Přejděte dolů k části [Povolit požadavky.](#enable-requests)
+1. Přeskočte dolů do oddílu [Povolit žádosti](#enable-requests) .
 
 ## <a name="approval"></a>Schválení
 
-V části Schválení určíte, zda je vyžadováno schválení, když uživatelé požadují tento přístupový balíček. Nastavení schválení funguje následujícím způsobem:
+V části schvalování určíte, jestli se vyžaduje schválení, když si uživatelé vyžádají tento přístupový balíček. Nastavení schválení fungují následujícím způsobem:
 
-- Pouze jeden z vybraných schvalovatelů nebo záložní schvalovatelé musí schválit žádost o jednofázové schválení. 
-- Žádost o dvoufázové schválení musí schválit pouze jeden z vybraných schvalovatelů z každé fáze.
-- Schvalovatel může být manažer, interní sponzor nebo externí sponzor v závislosti na tom, kdo zásady řídí přístup.
-- Schválení od každého vybraného schvalovatele není vyžadováno pro jednofázové nebo dvoustupňové schválení.
-- Rozhodnutí o schválení je založeno na tom, který schvalovatel nejprve zkontroluje žádost.
+- Pouze jeden z vybraných schvalovatelů nebo záložní schvalovatelé musí schválit žádost o schválení na základě jedné fáze. 
+- Pouze jeden z vybraných schvalovatelů z každé fáze musí schválit žádost o schválení ve dvou fázích.
+- Schvalovatelem může být manažer, interní sponzor nebo externí sponzor v závislosti na tom, kdo zásady řídí přístup.
+- Schválení od každého vybraného schvalovatele není vyžadováno pro schválení typu Single nebo 2 fáze.
+- Rozhodnutí o schválení vychází z toho, kdo žádost nejprve zkontroluje.
 
-Ukázku toho, jak přidat schvalovatele do zásad požadavků, nahlédli následující video:
+Ukázku, jak přidat schvalovatele do zásady žádosti, najdete v následujícím videu:
 
 >[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4cZfg]
 
-Ukázku toho, jak přidat vícestupňové schválení do zásad požadavků, nahlédli následující video:
+Ukázku toho, jak do zásad žádosti přidat schválení ve více fázích, najdete v následujícím videu:
 
 >[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4d1Jw]
 
-Chcete-li zadat nastavení schválení pro požadavky na přístupový balíček, postupujte takto:
+Pomocí těchto kroků určete nastavení schválení pro žádosti pro balíček pro přístup:
 
-1. Chcete-li vyžadovat schválení požadavků od vybraných uživatelů, nastavte přepínač **Vyžadovat schválení** na **Ano**. Chcete-li mít požadavky automaticky schváleny, nastavte přepínač na **ne**.
+1. Pokud chcete pro žádosti od vybraných uživatelů vyžadovat schválení, nastavte u přepínače **vyžadovat schválení** **hodnotu Ano**. Nebo pokud chcete, aby se požadavky automaticky schválily, nastavte přepínač na **ne**.
 
-1. Chcete-li požadovat, aby uživatelé poskytli odůvodnění pro vyžádání přístupového balíčku, nastavte přepínač **Vyžadovat zarovnání žádosti** na **Ano**.
+1. Pokud chcete, aby uživatelé zadali odůvodnění pro přístup k balíčku pro přístup, nastavte u přepínače **vyžadovat změnu zarovnání** na **hodnotu Ano**.
     
-1. Nyní určete, zda požadavky budou vyžadovat jednofázové nebo dvoufázové schválení. Nastavte přepínač **Kolik fází** na **1** pro jednostupňové schválení nebo nastavte přepínač na **2** pro dvoustupňové schválení.
+1. Teď určíte, jestli žádosti budou vyžadovat schválení jednou nebo 2 fázemi. Nastavte, **kolik fází** se má přepnout na **1** pro schválení v rámci jedné fáze nebo nastavte přepínač na **2** pro schválení ve dvou fázích.
 
-    ![Přístupový balíček – požadavky – nastavení schválení](./media/active-directory-entitlement-management-request-policy/approval.png)
+    ![Přístup k balíčku – nastavení schválení](./media/active-directory-entitlement-management-request-policy/approval.png)
 
-Pomocí následujících kroků přidejte schvalovatele po výběru, kolik fází požadujete: 
+Pomocí následujících kroků přidejte schvalovatele po výběru počtu fází, které požadujete: 
 
-### <a name="single-stage-approval"></a>Jednostupňové schválení
+### <a name="single-stage-approval"></a>Schválení jednou fází
 
 1. Přidejte **prvního schvalovatele**:
     
-    Pokud je zásada nastavena tak, aby řídila přístup uživatelů ve vašem adresáři, můžete vybrat **Správce jako schvalovatele**. Nebo přidejte konkrétního uživatele kliknutím na **Přidat schvalovatele** po výběru výběru konkrétních schvalovatelů z rozevírací nabídky.
+    Pokud je zásada nastavená tak, aby se řídil přístup pro uživatele ve vašem adresáři, můžete **jako schvalovatele vybrat správce**. Případně můžete přidat konkrétního uživatele kliknutím na **Přidat schvalovatele** po výběru možnosti zvolit konkrétní schvalovatele z rozevírací nabídky.
     
-    ![Přístupový balíček – požadavky – pro uživatele v adresáři – první schvalovatel](./media/active-directory-entitlement-management-request-policy/approval-single-stage-first-approver-manager.png)
+    ![Přístup k balíčku – požadavky – pro uživatele v adresáři – první schvalovatel](./media/active-directory-entitlement-management-request-policy/approval-single-stage-first-approver-manager.png)
 
-    Pokud je tato zásada nastavena tak, aby řídila přístup uživatelů, kteří nejsou ve vašem adresáři, můžete vybrat **externího sponzora** nebo **interního sponzora**. Nebo přidejte konkrétního uživatele kliknutím na **Přidat schvalovatele** nebo skupiny v části Zvolit konkrétní schvalovatele.
+    Pokud je tato zásada nastavená tak, aby se řídil přístup pro uživatele, kteří nejsou ve vašem adresáři, můžete vybrat **externí sponzora** nebo **interní sponzor**. Případně můžete přidat konkrétního uživatele kliknutím na **Přidat schvalovatele** nebo skupiny v části zvolit konkrétní schvalovatele.
     
-    ![Přístupový balíček – požadavky – pro uživatele mimo adresář – první schvalovatel](./media/active-directory-entitlement-management-request-policy/out-directory-first-approver.png)
+    ![Přístup k balíčku – požadavky – pro uživatele mimo adresář – první schvalovatel](./media/active-directory-entitlement-management-request-policy/out-directory-first-approver.png)
     
-1. Pokud jste jako první ho schvalovatel vybrali **Správce,** klikněte na **Přidat záložní položku** a vyberte jednoho nebo více uživatelů nebo skupin ve vašem adresáři jako záložního schvalovatele. Záložní schvalovatelé obdrží žádost, pokud správa oprávnění nemůže najít správce pro uživatele požadující přístup.
+1. Pokud jste jako první schvalovatel vybrali **správce** , klikněte na **Přidat zálohu** a vyberte jednoho nebo více uživatelů nebo skupin ve vašem adresáři jako záložního schvalovatele. Záložní schvalovatelé obdrží žádost, pokud Správa nároků nemůže najít správce pro uživatele, který žádá o přístup.
 
-    Správce je nalezen podle správy oprávnění pomocí atributu **Manager.** Atribut je v profilu uživatele ve službě Azure AD. Další informace najdete [v tématu Přidání nebo aktualizace informací o profilu uživatele pomocí služby Azure Active Directory](../articles/active-directory/fundamentals/active-directory-users-profile-azure-portal.md).
+    Správce je nalezen pomocí oprávnění Správa pomocí atributu **Manager** . Atribut je v profilu uživatele ve službě Azure AD. Další informace najdete v tématu [Přidání nebo aktualizace informací o profilu uživatele pomocí Azure Active Directory](../articles/active-directory/fundamentals/active-directory-users-profile-azure-portal.md).
 
-1. Pokud jste vybrali **Vybrat konkrétní schvalovatele**, klikněte na **Přidat schvalovatele** a vyberte jednoho nebo více uživatelů nebo skupin ve vašem adresáři jako schvalovatelů.
+1. Pokud jste vybrali **možnost zvolit konkrétní schvalovatele**, klikněte na **Přidat schvalovatele** a vyberte jednoho nebo více uživatelů nebo skupin v adresáři, které mají být schvalovatelé.
 
-1. V poli **podle rozhodnutí musí být provedena v kolik dní?**, uveďte počet dní, které schvalovatel musí zkontrolovat žádost o tento přístup balíček.
+1. V poli v části **rozhodnutí se musí**zadat počet dní, po které má schvalovatel zkontrolovat požadavek na tento přístupový balíček.
 
-    Pokud žádost nebude v této lhůtě schválena, bude automaticky zamítnuta. Uživatel bude muset odeslat další požadavek na přístupový balíček.
+    Pokud žádost není v rámci tohoto časového období schválena, bude automaticky odepřena. Uživatel bude muset odeslat další žádost o přístup k balíčku.
 
-1. Chcete-li vyžadovat, aby schvalovatelé poskytli odůvodnění svého rozhodnutí, nastavte na řadě Vyžadovat zarovnání schvalovatele na **ano**.
+1. Pokud chcete, aby schvalovatelé mohli poskytnout odůvodnění pro své rozhodnutí, nastavte vyžadovat odůvodnění schvalovatele na **Ano**.
 
-    Odůvodnění je viditelné pro ostatní schvalovatele a žadatel.
+    Odůvodnění se zobrazí ostatním schvalovatelům a žadateli.
 
-### <a name="2-stage-approval"></a>Dvoustupňové schválení
+### <a name="2-stage-approval"></a>schválení 2 fáze
 
-Pokud jste vybrali dvoufázové schválení, budete muset přidat druhého schvalovatele.
+Pokud jste vybrali schválení ve dvou fázích, budete muset přidat druhého schvalovatele.
 
 1. Přidejte **druhého schvalovatele**: 
     
-    Pokud jsou uživatelé ve vašem adresáři, přidejte konkrétního uživatele jako druhého schvalovatele kliknutím na **Přidat schvalovatele** v části Zvolit konkrétní schvalovatele.
+    Pokud se uživatelé nacházejí v adresáři, přidejte konkrétního uživatele jako druhého schvalovatele kliknutím na **Přidat schvalovatele** v části zvolit konkrétní schvalovatele.
 
-    ![Přístupový balíček – požadavky – pro uživatele v adresáři – druhý schvalovatel](./media/active-directory-entitlement-management-request-policy/in-directory-second-approver.png)
+    ![Přístup k balíčku – požadavky – pro uživatele v adresářovém druhém schvalovateli](./media/active-directory-entitlement-management-request-policy/in-directory-second-approver.png)
 
-    Pokud uživatelé nejsou ve vašem adresáři, vyberte jako druhého schvalovatele **interního sponzora** nebo **externího sponzora.** Po výběru schvalovatele přidejte záložní schvalovatele.
+    Pokud uživatelé nejsou ve vašem adresáři, jako druhý schvalovatel vyberte **interní sponzor** nebo **externí sponzor** . Po výběru schvalovatele přidejte záložní schvalovatele.
 
-    ![Přístupový balíček – požadavky – pro uživatele mimo adresář – druhý schvalovatel](./media/active-directory-entitlement-management-request-policy/out-directory-second-approver.png) 
+    ![Přístup k balíčku – požadavky – pro uživatele mimo adresář – druhý schvalovatel](./media/active-directory-entitlement-management-request-policy/out-directory-second-approver.png) 
 
-1. Zadejte počet dní, po které musí druhý schvalovatel schválit žádost v kolonce **rozhodnutí, která musí být podána v kolika dnech?**. 
+1. Zadejte počet dní, po které má druhý schvalovatel schválit žádost v poli v části **rozhodnutí se musí udělat v tom, kolik dní?**. 
 
-1. Nastavte přepínač Vyžadovat zarovnání schvalovatele na **Ano** nebo **Ne**.
+1. Nastavte přepínač požadovat zarovnání schvalovatele na **Ano** nebo **ne**.
 
 ### <a name="alternate-approvers"></a>Alternativní schvalovatelé
 
-Můžete určit alternativní schvalovatelé, podobně jako určení první a druhé schvalovatelů, kteří mohou schvalovat žádosti. Alternativní schvalovatelé vám pomohou zajistit, aby byly žádosti schváleny nebo zamítnuty před vypršením jejich platnosti (časový limit). Můžete vypsat alternativní schvalovatele prvního schvalovatele a druhého schvalovatele pro dvoufázové schválení. 
+Můžete zadat alternativní schvalovatele, podobně jako určení prvních a druhých schvalovatelů, kteří mohou schvalovat žádosti. U alternativních schvalovatelů pomůže zajistit, že žádosti byly schváleny nebo zamítnuty, než vyprší (časový limit). Můžete vypsat alternativní schvalovatele prvním schvalovatelem a druhým schvalovatelem pro schválení ve dvou fázích. 
 
-Určením alternativních schvalovatelů v případě, že první nebo druhý schvalovatel nemohl schválit nebo zamítnout žádost, bude čekající žádost předána alternativním schvalovatelům podle plánu předávání, který jste zadali během nastavení zásad. Obdrží e-mail ke schválení nebo zamítnutí nevyřízené žádosti.
+Zadáním alternativních schvalovatelů v případě, že první nebo druhé schvalovatelé nemohly žádost schválit nebo zamítnout, se čeká na vyřízení žádosti na alternativní schvalovatele podle plánu předávání, který jste zadali během nastavení zásad. Obdrží e-mail ke schválení nebo zamítnutí žádosti, která čeká na vyřízení.
 
-Po předání žádosti alternativním schvalovatelům mohou první nebo druhý schvalovatel žádost stále schválit nebo zamítnout. Alternativní schvalovatelé používají stejný web Můj přístup ke schválení nebo zamítnutí nevyřízené žádosti.
+Po přeposlání žádosti na alternativní schvalovatele může první nebo druhé schvalovatele tuto žádost schválit nebo zamítnout. Alternativní schvalovatelé používají stejný web pro přístup ke schválení nebo zamítnutí žádosti, která čeká na vyřízení.
 
-Můžeme uvést lidi nebo skupiny lidí, kteří mají být schvalovatelé a alternativní schvalovatelé. Ujistěte se, že jste seznam různých sad lidí, které mají být první, druhý a alternativní schvalovatelů.
-Pokud jste například uvedli Alici a Boba jako prvního schvalovatele, uveďte jako alternativní schvalovatele Carol a Davea. Pomocí následujících kroků přidejte alternativní schvalovatele do balíčku přístupu:
+Můžeme vypsat osoby nebo skupiny uživatelů, kteří mají být schvalovatelé a alternativní schvalovatelé. Ujistěte se, že jste si vyřadíte seznam různých skupin uživatelů, které mají být první, druhá a alternativní schvalovatelé.
+Například pokud jste jako první schvalovateli v seznamu Alice a Bob, vypíšete jako alternativní schvalovatele seznam Karolínu a Dave. Pomocí následujících kroků přidejte do balíčku pro přístup alternativní schvalovatele:
 
-1. V části První schvalovatel, Druhý schvalovatel nebo obojí klikněte na **Zobrazit upřesňující nastavení požadavku**.
+1. V části první schvalovatel, druhý schvalovatel nebo obojí klikněte na **Zobrazit upřesňující nastavení žádostí**.
 
-    ![Přístupový balíček – zásady – zobrazení nastavení upřesňujících požadavků](./media/active-directory-entitlement-management-request-policy/alternate-approvers-click-advanced-request.png)
+    ![Přístup k balíčku – zásady-Zobrazit upřesňující nastavení žádostí](./media/active-directory-entitlement-management-request-policy/alternate-approvers-click-advanced-request.png)
 
-1. Nastavit: **Pokud nebyla provedena žádná akce, přepněte přepošlete alternativním schvalovatelům** na **Ano**.
+1. Nastavit **, jestli se žádná akce neuskutečnila, předají se k alternativním schvalovatelům?** přepnout na **Ano**.
 
 1. Klikněte na **Přidat alternativní schvalovatele** a ze seznamu vyberte alternativní schvalovatele.
 
-    ![Přístupový balíček – zásady – přidání alternativních schvalovatelů](./media/active-directory-entitlement-management-request-policy/alternate-approvers-add.png)
+    ![Přístup k balíčku – zásady – přidání alternativních schvalovatelů](./media/active-directory-entitlement-management-request-policy/alternate-approvers-add.png)
 
-1. V poli **Forward to alternate approver (y) po počtu dní** uveďte počet dní, po které mají schvalovatelé schválit nebo zamítnout žádost. Pokud žádní schvalovatelé neschválili nebo nezamítli požadavek před trváním žádosti, vyprší platnost žádosti (časový limit) a uživatel bude muset odeslat další požadavek na přístupový balíček. 
+1. V poli **předávat k alternativním schvalovatelům po počtu dní** uveďte počet dní, po které schvalovatelé schválí nebo zamítnou požadavek. Pokud žádný schvalovatel neschválil nebo zamítl požadavek před trváním žádosti, vyprší platnost žádosti (časový limit) a uživatel bude muset odeslat další žádost o přístup k balíčku. 
 
-    Žádosti lze předat alternativním schvalovatelům pouze den poté, co doba trvání žádosti dosáhne poločasu. V tomto příkladu je doba trvání požadavku 14 dní. Takže doba trvání žádosti dosáhne poločasu v den 7. Takže žádost nemůže být předána dříve než den 8. Požadavky také nelze předat dál v poslední den trvání požadavku. Takže v příkladu nejnovější požadavek může být předán je den 13.
+    Žádosti je možné přeslat pouze alternativním schvalovatelům po dnech, kdy doba trvání žádosti dosáhne poloviny životního cyklu. V tomto příkladu je doba trvání žádosti 14 dní. To znamená, že doba trvání žádosti dosáhne poloviny životnosti 7 dní. Proto se žádost nedá přeposláním starší než 8 dní. Žádosti se taky nedají přeslat za poslední den trvání žádosti. Takže v tomto příkladu může být nejnovější žádost předána dne 13.
 
-## <a name="enable-requests"></a>Povolit požadavky
+## <a name="enable-requests"></a>Povolit žádosti
 
-1. Pokud chcete, aby byl přístupový balíček okamžitě k dispozici uživatelům v zásadách požadavku, přesuňte přepínač Povolit na **Ano**.
+1. Pokud chcete, aby byl balíček přístupu hned dostupný pro uživatele v zásadách žádosti, přesuňte přepínač Povolit na **Ano**.
 
-    Vždy jej můžete povolit v budoucnu po dokončení vytváření přístupového balíčku.
+    Po dokončení vytváření balíčku pro přístup ho můžete v budoucnu kdykoli povolit.
 
-    Pokud jste vybrali **možnost Žádné (pouze přiřazení přímo správce)** a nastavili jste možnost **Ne**, nemohou správci tento přístupový balíček přímo přiřadit.
+    Pokud jste vybrali **možnost žádné (pouze oprávnění správce)** a nastavíte možnost povolit na hodnotu **ne**, správci nebudou moci přiřadit tento balíček přístupu přímo.
 
-    ![Přístupový balíček – zásady – povolit nastavení zásad](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
+    ![Přístup k balíčku – nastavení zásad – Povolit zásadu](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
 
 1. Klikněte na **Další**.

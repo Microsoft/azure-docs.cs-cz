@@ -1,6 +1,6 @@
 ---
-title: Plánování a provádění pomocí datové továrny
-description: Naučte se aspekty plánování a provádění aplikačního modelu Azure Data Factory.
+title: Plánování a spouštění pomocí Data Factory
+description: Naučte se aspekty plánování a spouštění Azure Data Factory aplikačního modelu.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,24 +12,24 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 15a2d6ae5d8b80468ffcdd00d60b1f36843ed677
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79281064"
 ---
-# <a name="data-factory-scheduling-and-execution"></a>Plánování a provádění datové továrny
+# <a name="data-factory-scheduling-and-execution"></a>Plánování a provádění Data Factory
 > [!NOTE]
-> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si článek [spuštění kanálu a aktivační události.](../concepts-pipeline-execution-triggers.md)
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si článek [spuštění kanálu a triggery](../concepts-pipeline-execution-triggers.md) .
 
-Tento článek vysvětluje aspekty plánování a spouštění aplikačního modelu služby Azure Data Factory. Tento článek předpokládá, že rozumíte základům konceptů modelu aplikace Data Factory, včetně aktivity, kanálů, propojených služeb a datových sad. Základní koncepty Azure Data Factory najdete v následujících článcích:
+Tento článek vysvětluje aspekty plánování a spouštění aplikačního modelu služby Azure Data Factory. V tomto článku se předpokládá, že rozumíte základům Data Factory konceptů aplikačního modelu, včetně aktivit, kanálů, propojených služeb a datových sad. Základní koncepty Azure Data Factory najdete v následujících článcích:
 
 * [Úvodní informace k Data Factory](data-factory-introduction.md)
 * [Kanály](data-factory-create-pipelines.md)
-* [Soubory](data-factory-create-datasets.md) 
+* [Datové sady](data-factory-create-datasets.md) 
 
-## <a name="start-and-end-times-of-pipeline"></a>Počáteční a koncový čas potrubí
-Kanál je aktivní pouze mezi jeho **čas zahájení** a **čas ukončení.** Není proveden před časem zahájení nebo po koncovém čase. Pokud je kanál pozastaven, není proveden bez ohledu na jeho počáteční a koncový čas. Pro spuštění kanálu by neměl být pozastaven. Tato nastavení (začátek, konec, pozastaveno) najdete v definici kanálu: 
+## <a name="start-and-end-times-of-pipeline"></a>Počáteční a koncové časy kanálu
+Kanál je aktivní jenom mezi časem **spuštění** a časem **ukončení** . Není prováděna před časem spuštění nebo po ukončení. Pokud je kanál pozastaven, neprovede se bez ohledu na jeho počáteční a koncový čas. Pro spuštění kanálu by neměl být pozastaven. Tato nastavení najdete v definici kanálu (spustit, ukončit, pozastaveno): 
 
 ```json
 "start": "2017-04-01T08:00:00Z",
@@ -37,11 +37,11 @@ Kanál je aktivní pouze mezi jeho **čas zahájení** a **čas ukončení.** Ne
 "isPaused": false
 ```
 
-Další informace tyto vlastnosti, naleznete [v tématu vytvoření článku potrubí.](data-factory-create-pipelines.md) 
+Další informace o těchto vlastnostech najdete v článku o [vytvoření kanálů](data-factory-create-pipelines.md) . 
 
 
-## <a name="specify-schedule-for-an-activity"></a>Určení plánu aktivity
-Není kanál, který je spuštěn. Jsou aktivity v kanálu, které jsou prováděny v celkovém kontextu kanálu. Můžete určit opakovaný plán aktivity pomocí **plánovače** části aktivity JSON. Můžete například naplánovat, aby se aktivita spouštěla každou hodinu, a to následujícím způsobem:  
+## <a name="specify-schedule-for-an-activity"></a>Zadat plán aktivity
+Nejedná se o spuštěný kanál. Aktivity v kanálu se spouštějí v celkovém kontextu kanálu. Můžete zadat plán opakování pro aktivitu pomocí oddílu **Scheduler** aktivity JSON Activity. Například můžete naplánovat, aby aktivita běžela každou hodinu, a to takto:  
 
 ```json
 "scheduler": {
@@ -50,18 +50,18 @@ Není kanál, který je spuštěn. Jsou aktivity v kanálu, které jsou provád�
 },
 ```
 
-Jak je znázorněno v následujícím diagramu, zadání plánu pro aktivitu vytvoří řadu omílání oken s v počáteční a koncové časy kanálu. Omílání oken jsou řada pevných velikostí nepřekrývajících se souvislých časových intervalů. Tato logická okna pro omílání pro aktivitu se nazývají **okna aktivity**.
+Jak je znázorněno v následujícím diagramu, zadáním plánu pro aktivitu se vytvoří řada bubnových oken s časem zahájení a ukončení kanálu. Bubnová okna jsou řada překrývajících se souvislých časových intervalů s pevnou velikostí. Toto logické bubnové okna pro aktivitu se nazývají **okna aktivit**.
 
 ![Příklad plánovače aktivit](media/data-factory-scheduling-and-execution/scheduler-example.png)
 
-Vlastnost **plánovače** pro aktivitu je volitelná. Pokud zadáte tuto vlastnost, musí odpovídat kadenci, kterou zadáte v definici výstupní datové sady pro aktivitu. Výstupní datové sady v současné době řídí plán. Proto je nutné vytvořit výstupní datovou sadu i v případě, že aktivita nevytváří žádný výstup. 
+Vlastnost **Scheduler** pro aktivitu je volitelná. Pokud tuto vlastnost zadáte, musí odpovídat tempo, které zadáte v definici výstupní datové sady pro aktivitu. Výstupní datové sady v současné době řídí plán. Proto je nutné vytvořit výstupní datovou sadu i v případě, že aktivita nevytváří žádný výstup. 
 
 ## <a name="specify-schedule-for-a-dataset"></a>Určení plánu pro datovou sadu
-Aktivita v kanálu data factory může trvat nula nebo více **vstupních datových sad** a vytvářet jednu nebo více výstupních datových sad. Pro aktivitu můžete určit kadenci, při které jsou vstupní data k dispozici, nebo pomocí části **dostupnosti** v definicích datové sady. 
+Aktivita v kanálu Data Factory může mít nula nebo více vstupních **datových sad** a vytvoří jednu nebo více výstupních datových sad. V případě aktivity můžete zadat tempo, ve kterém jsou k dispozici vstupní data, nebo se výstupní data vytvoří pomocí oddílu **dostupnosti** v definicích datových sad. 
 
-**Frekvence** v části **dostupnosti** určuje časovou jednotku. Povolené hodnoty pro frekvenci jsou: Minuta, Hodina, Den, Týden a Měsíc. Vlastnost **interval** v části dostupnosti určuje násobitel pro frekvenci. Například: Pokud je frekvence nastavena na Den a interval je nastaven a 1 pro výstupní datové sady, výstupní data jsou vytvářena denně. Pokud zadáte frekvenci jako minutu, doporučujeme nastavit interval na nejméně 15. 
+**Frekvence** v části **dostupnost** Určuje časovou jednotku. Povolené hodnoty četnosti jsou: minuty, hodina, den, týden a měsíc. Vlastnost **interval** v oddílu Availability určuje násobitel pro frekvenci. Příklad: Pokud je frekvence nastavená na den a interval je nastaven na hodnotu 1 pro výstupní datovou sadu, budou výstupní data vyprodukována každý den. Pokud zadáte frekvenci jako minutu, doporučujeme nastavit interval na ne méně než 15. 
 
-V následujícím příkladu jsou vstupní data k dispozici každou hodinu`"frequency": "Hour", "interval": 1`a výstupní data jsou vytvářena každou hodinu ( . 
+V následujícím příkladu jsou vstupní data dostupná každou hodinu a výstupní data se vytvářejí každou hodinu (`"frequency": "Hour", "interval": 1`). 
 
 **Vstupní datová sada:** 
 
@@ -115,9 +115,9 @@ V následujícím příkladu jsou vstupní data k dispozici každou hodinu`"freq
 }
 ```
 
-V současné době **výstup datové sady řídí plán**. Jinými slovy, plán zadaný pro výstupní datovou sadu se používá ke spuštění aktivity za běhu. Proto je nutné vytvořit výstupní datovou sadu i v případě, že aktivita nevytváří žádný výstup. Pokud aktivita nemá žádný vstup, vstupní datovou sadu vytvářet nemusíte. 
+V současné době **výstupní datová sada zařídí plán**. Jinými slovy, plán zadaný pro výstupní datovou sadu se používá ke spuštění aktivity za běhu. Proto je nutné vytvořit výstupní datovou sadu i v případě, že aktivita nevytváří žádný výstup. Pokud aktivita nemá žádný vstup, vstupní datovou sadu vytvářet nemusíte. 
 
-V následující definici kanálu se vlastnost **plánovače** používá k určení plánu aktivity. Tato vlastnost je nepovinná. V současné době musí plán aktivity odpovídat plánu určenému pro výstupní datovou sadu.
+V následující definici kanálu se k určení plánu aktivity používá vlastnost **Scheduleru** . Tato vlastnost je nepovinná. V současné době musí být plán aktivity shodný s plánem zadaným pro výstupní datovou sadu.
  
 ```json
 {
@@ -162,36 +162,36 @@ V následující definici kanálu se vlastnost **plánovače** používá k urč
 }
 ```
 
-V tomto příkladu aktivita běží každou hodinu mezi počáteční a koncový čas kanálu. Výstupní data jsou vytvářena každou hodinu pro tříhodinová okna (8:00 - 9:00, 9:00 - 10:00 a 10:00 - 11:00). 
+V tomto příkladu se aktivita spouští každou hodinu mezi začátkem a koncovým časem kanálu. Výstupní data se vytvářejí po hodinách po dobu tří hodin (2,8-9 DOP, 9 dop. a od 2:00 do 11 am). 
 
-Každá jednotka dat spotřebovaných nebo vytvořených spuštěním aktivity se nazývá **řez dat**. Následující diagram znázorňuje příklad aktivity s jednou vstupní datovou sadou a jednou výstupní datovou sadou: 
+Každá jednotka dat spotřebovaná nebo vytvořená spuštěním aktivity se nazývá **datový řez**. Následující diagram znázorňuje příklad aktivity s jednou vstupní datovou sadou a jednou výstupní datovou sadou: 
 
 ![Plánovač dostupnosti](./media/data-factory-scheduling-and-execution/availability-scheduler.png)
 
-Diagram znázorňuje hodinové datové řezy pro vstupní a výstupní datovou sadu. Diagram znázorňuje tři vstupní řezy, které jsou připraveny ke zpracování. Aktivita 10-11 AM probíhá a vytváří výstupní řez 10-11 AM. 
+Diagram zobrazuje hodinové datové řezy pro vstupní a výstupní datovou sadu. Diagram znázorňuje tři vstupní řezy, které jsou připravené ke zpracování. Aktivita 10-11 AM probíhá a produkuje výstupní řez 10-11. 
 
-K časovému intervalu přidruženému k aktuálnímu řezu v datové sadě JSON můžete přistupovat pomocí proměnných: [SliceStart](data-factory-functions-variables.md#data-factory-system-variables) a [SliceEnd](data-factory-functions-variables.md#data-factory-system-variables). Podobně můžete přistupovat k časovému intervalu přidruženému k oknu aktivity pomocí WindowStart a WindowEnd. Plán aktivity musí odpovídat plánu výstupní datové sady pro aktivitu. Proto sliceStart a SliceEnd hodnoty jsou stejné jako WindowStart a WindowEnd hodnoty v uvedeném pořadí. Další informace o těchto proměnných naleznete v [tématu Funkce datové továrny a](data-factory-functions-variables.md#data-factory-system-variables) systémové proměnné články.  
+K časovému intervalu přidruženému k aktuálnímu řezu v datové sadě JSON můžete přistupovat pomocí proměnných: [vlastnosti slicestart](data-factory-functions-variables.md#data-factory-system-variables) a [SliceEnd](data-factory-functions-variables.md#data-factory-system-variables). Podobně můžete získat přístup k časovému intervalu přidruženému k oknu aktivity pomocí WindowStart a WindowEnd. Plán aktivity musí odpovídat plánu výstupní datové sady pro aktivitu. Hodnoty vlastnosti slicestart a SliceEnd se proto shodují s hodnotami WindowStart a WindowEnd. Další informace o těchto proměnných naleznete v článcích [Data Factory functions a System Variables](data-factory-functions-variables.md#data-factory-system-variables) .  
 
-Tyto proměnné můžete použít pro různé účely ve vaší aktivitě JSON. Můžete je například použít k výběru dat ze vstupních a výstupních datových sad představujících data časových řad (například: 8:00 až 9:00). Tento příklad také používá **WindowStart** a **WindowEnd** vybrat příslušná data pro spuštění aktivity a zkopírovat do objektu blob s příslušnou **folderPath**. **FolderPath** je parametrizován mít samostatnou složku pro každou hodinu.  
+Tyto proměnné můžete použít pro různé účely ve formátu JSON aktivity. Můžete je například použít k výběru dat ze vstupních a výstupních datových sad představujících data časových řad (například 8 AM až 9 dop.). Tento příklad také používá **WindowStart** a **WindowEnd** k výběru relevantních dat pro spuštění aktivity a jejich zkopírování do objektu BLOB s odpovídajícím **FolderPath**. **FolderPath** je parametrizovaný tak, aby měl samostatné složky pro každou hodinu.  
 
-V předchozím příkladu je plán zadaný pro vstupní a výstupní datové sady stejný (každou hodinu). Pokud vstupní datová sada pro aktivitu je k dispozici na jinou frekvenci, řekněme každých 15 minut, aktivita, která vytváří tuto výstupní datovou sadu stále běží jednou za hodinu jako výstupní datová sada je to, co řídí plán aktivity. Další informace naleznete v [tématu Model datové sady s různými frekvencemi](#model-datasets-with-different-frequencies).
+V předchozím příkladu je plán určený pro vstupní a výstupní datové sady stejný (každou hodinu). Pokud je vstupní datová sada pro aktivitu k dispozici v jiné frekvenci, například každých 15 minut, aktivita vytvářející tuto výstupní datovou sadu se pořád spustí jednou za hodinu jako výstupní datová sada, která řídí plán aktivity. Další informace najdete v tématu [model DataSets s různou frekvencí](#model-datasets-with-different-frequencies).
 
-## <a name="dataset-availability-and-policies"></a>Dostupnost datové sady a zásady
-Zobrazení využití vlastností frekvence a intervalu v části dostupnosti definice datové sady. Existuje několik dalších vlastností, které ovlivňují plánování a provádění aktivity. 
+## <a name="dataset-availability-and-policies"></a>Dostupnost a zásady datové sady
+V části dostupnost definice datové sady jste viděli použití vlastností četnost a interval. Existuje několik dalších vlastností, které mají vliv na plánování a provádění aktivity. 
 
 ### <a name="dataset-availability"></a>Dostupnost datové sady 
-Následující tabulka popisuje vlastnosti, které můžete použít v části **dostupnosti:**
+Následující tabulka obsahuje popis vlastností, které můžete použít v části **dostupnost** :
 
 | Vlastnost | Popis | Požaduje se | Výchozí |
 | --- | --- | --- | --- |
-| frequency |Určuje časovou jednotku pro výrobu řezů datové sady.<br/><br/><b>Podporovaná frekvence</b>: Minuta, Hodina, Den, Týden, Měsíc |Ano |Není k dispozici |
-| interval |Určuje násobitel pro frekvenci.<br/><br/>"Interval frekvence x" určuje, jak často se řez vyrábí.<br/><br/>Pokud potřebujete, aby byla datová sada rozdělena na základě hodin, nastavte <b>frekvenci</b> na <b>hodinu</b>a <b>interval</b> na <b>1</b>.<br/><br/><b>Poznámka:</b>Pokud zadáte Frekvenci jako minutu, doporučujeme nastavit interval na nejméně 15 |Ano |Není k dispozici |
-|  – styl |Určuje, zda má být řez vytvořen na začátku/na konci intervalu.<ul><li>Začátekintervalu</li><li>EndOfInterval</li></ul><br/><br/>Pokud frekvence je nastavena na Měsíc a styl je nastaven na EndOfInterval, řez se vyrábí na poslední den v měsíci. Pokud je styl nastaven na StartOfInterval, řez se vytváří první den v měsíci.<br/><br/>Pokud frekvence je nastavena na Den a styl je nastaven a EndOfInterval, řez se vyrábí v poslední hodině dne.<br/><br/>Pokud Frekvence je nastavena na hodinu a styl je nastaven na EndOfInterval, řez se vytváří na konci hodiny. Například pro řez pro 1 PM – 14 hodin období, řez se vyrábí v 14:00. |Ne |EndOfInterval |
-| anchorDateTime |Definuje absolutní časovou polohu používanou plánovačem k výpočtu hranic datových sad. <br/><br/><b>Poznámka:</b>Pokud AnchorDateTime má data části, které jsou podrobnější než frekvence pak podrobnější části jsou ignorovány. <br/><br/>Například pokud <b>interval</b> je <b>hodinová</b> (frekvence: hodina a interval: 1) a <b>AnchorDateTime</b> obsahuje <b>minuty a sekundy</b>, pak <b>minuty a sekundy</b> části AnchorDateTime jsou ignorovány. |Ne |01/01/0001 |
-| posun |Časový posun, o které jsou posunuty počáteční a koncové všechny řezy datové sady. <br/><br/><b>Poznámka:</b>Pokud jsou zadány anchorDateTime i offset, výsledkem je kombinovaný posun. |Ne |Není k dispozici |
+| frequency |Určuje časovou jednotku pro produkci řezu datové sady.<br/><br/><b>Podporovaná frekvence</b>: minuta, hodina, den, týden, měsíc |Ano |Není k dispozici |
+| interval |Určuje násobitel pro frekvenci.<br/><br/>Frekvence x interval určuje, jak často se řez vytvoří.<br/><br/>Pokud potřebujete datovou sadu rozdělit na každou hodinu, nastavte <b>četnost</b> na <b>hodinu</b>a <b>interval</b> na <b>1</b>.<br/><br/><b>Poznámka</b>: Pokud zadáte frekvenci jako minutu, doporučujeme nastavit interval na ne méně než 15. |Ano |Není k dispozici |
+|  – styl |Určuje, zda má být řez vytvořen na začátku nebo konci intervalu.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Pokud je frekvence nastavená na month (měsíc) a Style je nastavená na EndOfInterval, řez se vytvoří během posledního dne v měsíci. Pokud je styl nastaven na StartOfInterval, řez se vytvoří první den v měsíci.<br/><br/>Pokud je frekvence nastavená na den a styl je nastavený na EndOfInterval, řez se vytvoří za poslední hodinu dne.<br/><br/>Pokud je frekvence nastavená na Hour (hodina) a Style je nastavená na EndOfInterval, řez se vytvoří na konci hodiny. Například pro řez v období 1 PM – 2 se vytvoří řez na 2 ODP. |Ne |EndOfInterval |
+| anchorDateTime |Definuje absolutní pozici v čase využívané schedulerem k výpočtu hranic řezu datové sady. <br/><br/><b>Poznámka</b>: Pokud AnchorDateTime obsahuje části s daty, které jsou lépe podrobnější než frekvence, budou podrobnější části ignorovány. <br/><br/>Například pokud je <b>interval</b> <b>každou hodinu</b> (četnost: hodina a interval: 1) a <b>AnchorDateTime</b> obsahuje <b>minuty a sekundy</b>, budou části <b>minut a sekund</b> AnchorDateTime ignorovány. |Ne |01/01/0001 |
+| posun |Časový interval, podle kterého se posune začátek a konec všech řezů datové sady <br/><br/><b>Poznámka</b>: Pokud jsou zadány oba anchorDateTime i offset, výsledkem je kombinovaný posun. |Ne |Není k dispozici |
 
-### <a name="offset-example"></a>příklad odsazení
-Ve výchozím nastavení`"frequency": "Day", "interval": 1`začínají denní řezy ( ) v čase 12 AM UTC (půlnoc). Pokud chcete, aby čas zahájení byl čas 6 AM UTC místo, nastavte posun, jak je znázorněno v následujícím fragmentu: 
+### <a name="offset-example"></a>Příklad posunutí
+Ve výchozím nastavení se pro`"frequency": "Day", "interval": 1`každý den () řezy začnou začínat časem UTC (půlnoc). Pokud chcete, aby byl čas zahájení nastavený na hodnotu 6 času UTC, nastavte posun, jak je znázorněno v následujícím fragmentu kódu: 
 
 ```json
 "availability":
@@ -201,8 +201,8 @@ Ve výchozím nastavení`"frequency": "Day", "interval": 1`začínají denní ř
     "offset": "06:00:00"
 }
 ```
-### <a name="anchordatetime-example"></a>anchorDateTime příklad
-V následujícím příkladu je datová sada vytvářena jednou za 23 hodin. První řez začíná v čase určeném anchorDateTime, `2017-04-19T08:00:00` který je nastaven na (Čas UTC).
+### <a name="anchordatetime-example"></a>Příklad anchorDateTime
+V následujícím příkladu se datová sada vytvoří jednou za 23 hodin. První řez začíná v čase určeném parametrem anchorDateTime, který je nastaven na `2017-04-19T08:00:00` hodnotu (čas UTC).
 
 ```json
 "availability":    
@@ -213,8 +213,8 @@ V následujícím příkladu je datová sada vytvářena jednou za 23 hodin. Prv
 }
 ```
 
-### <a name="offsetstyle-example"></a>posun/styl Příklad
-Následující datová sada je měsíční datovou sadou a je vytvářena třetí den`3.08:00:00`každého měsíce v 8:00 ( ):
+### <a name="offsetstyle-example"></a>Příklad posunutí/stylu
+Následující datová sada je měsíční datová sada a je vytvořena na 3. v každém měsíci v 8:00.`3.08:00:00`():
 
 ```json
 "availability": {
@@ -225,18 +225,18 @@ Následující datová sada je měsíční datovou sadou a je vytvářena třet�
 }
 ```
 
-### <a name="dataset-policy"></a>Zásady datové sady
-Datová sada může mít definovanou zásadu ověření, která určuje, jak mohou být data generovaná spuštěním řezu ověřena před tím, než je připravena ke spotřebě. V takových případech po dokončení spuštění řezu se stav výstupní ho řezu změní na **Čekání** s dílčím stavem **ověření**. Po ověření řezů se stav řezu změní na **Připraveno**. Pokud byla vytvořena část dat, ale neprošla ověřením, aktivita se spustí pro podřízené řezy, které jsou závislé na tomto řezu, nebudou zpracovány. [Monitorování a správa kanálů](data-factory-monitor-manage-pipelines.md) pokrývá různé stavy řezů dat v datové továrně.
+### <a name="dataset-policy"></a>Zásada datové sady
+Datová sada může mít definované zásady ověřování, které určují, jak se dají ověřit data generovaná při spuštění v rámci řezu předtím, než bude připravená na spotřebu. V takových případech se po dokončení řezu stav výstupního řezu změní na **čekání** s podstavem **ověřování**. Po ověření řezů se stav řezu změní na **připraveno**. Pokud byl vytvořen datový řez, ale ověřování neprošlo, spuštění aktivit pro podřízené řezy, které jsou závislé na tomto řezu, se nezpracují. [Monitorování a Správa kanálů](data-factory-monitor-manage-pipelines.md) pokrývá různé stavy datových řezů v Data Factory.
 
-Oddíl **zásad** v definici datové sady definuje kritéria nebo podmínku, kterou musí řezy datové sady splňovat. Následující tabulka popisuje vlastnosti, které můžete použít v části **zásady:**
+Oddíl **Policy** v definici datové sady definuje kritéria nebo podmínku, kterou musí řezy datové sady splňovat. Následující tabulka obsahuje popis vlastností, které můžete použít v části **Policy (zásady** ):
 
-| Název zásady | Popis | Použito | Požaduje se | Výchozí |
+| Název zásady | Popis | Použito pro | Požaduje se | Výchozí |
 | --- | --- | --- | --- | --- |
-| minimumSizeMB | Ověří, že data v **objektu blob Azure** splňuje požadavky na minimální velikost (v megabajtech). |Azure Blob |Ne |Není k dispozici |
-| minimumRows | Ověří, zda data v **databázi Azure SQL** nebo **v tabulce Azure** obsahují minimální počet řádků. |<ul><li>Azure SQL Database</li><li>Tabulka Azure</li></ul> |Ne |Není k dispozici |
+| minimumSizeMB | Ověří, jestli data v **objektu blob Azure** splňují požadavky na minimální velikost (v megabajtech). |Azure Blob |Ne |Není k dispozici |
+| minimumRows | Ověří, jestli data v **databázi SQL Azure** nebo **tabulce Azure** obsahují minimální počet řádků. |<ul><li>Azure SQL Database</li><li>Tabulka Azure</li></ul> |Ne |Není k dispozici |
 
 #### <a name="examples"></a>Příklady
-**minimumVelikostMB:**
+**minimumSizeMB:**
 
 ```json
 "policy":
@@ -261,76 +261,76 @@ Oddíl **zásad** v definici datové sady definuje kritéria nebo podmínku, kte
 }
 ```
 
-Další informace o těchto vlastnostech a příkladech naleznete v tématu Vytvoření článku [datových sad.](data-factory-create-datasets.md) 
+Další informace o těchto vlastnostech a příkladech najdete v článku o [vytvoření datových sad](data-factory-create-datasets.md) . 
 
 ## <a name="activity-policies"></a>Zásady aktivit
-Zásady ovlivňují chování aktivity za běhu, konkrétně při zpracování řezu tabulky. V následující tabulce jsou uvedeny podrobnosti.
+Zásady ovlivňují chování aktivity za běhu, konkrétně při zpracování řezu tabulky. Podrobnosti jsou uvedeny v následující tabulce.
 
 | Vlastnost | Povolené hodnoty | Výchozí hodnota | Popis |
 | --- | --- | --- | --- |
-| souběžnost |Integer <br/><br/>Maximální hodnota: 10 |1 |Počet souběžných spuštění aktivity.<br/><br/>Určuje počet paralelních spuštění aktivit, ke kterým může dojít na různých řezech. Například pokud aktivita potřebuje projít velkou sadu dostupných dat, s větší hodnota souběžnosti urychluje zpracování dat. |
-| executionPriorityOrder |NejnovějšíPrvní<br/><br/>NejstaršíPrvní |NejstaršíPrvní |Určuje pořadí řezů dat, které jsou zpracovávány.<br/><br/>Například pokud máte 2 řezy (jeden se děje v 16:00 a další v 17:00) a oba čekají na spuštění. Pokud nastavíte spuštěníPriorityOrder být NewestFirst, řez v 17:00 je zpracována jako první. Podobně pokud nastavíte spuštěníPriorityORder být OldestFIrst, pak řez na 4 pm je zpracována. |
-| retry |Integer<br/><br/>Maximální hodnota může být 10 |0 |Počet opakování před zpracováním dat pro řez je označen jako selhání. Spuštění aktivity pro řez dat je opakován až do zadaného počtu opakování. Opakování se provádí co nejdříve po selhání. |
-| timeout |TimeSpan |00:00:00 |Časový čas aktivity. Příklad: 00:10:00 (znamená časový výtažek 10 min)<br/><br/>Pokud hodnota není zadána nebo je 0, časový čas je nekonečný.<br/><br/>Pokud doba zpracování dat na řezu překročí hodnotu časového limitu, je zrušena a systém se pokusí zopakovat zpracování. Počet opakování závisí na vlastnosti opakování. Když dojde k časovému výpadku, stav je nastaven na TimedOut. |
-| Zpoždění |TimeSpan |00:00:00 |Určete zpoždění před zahájením zpracování dat řezu.<br/><br/>Provádění aktivity pro řez dat je spuštěn a zpoždění je po očekávané době provádění.<br/><br/>Příklad: 00:10:00 (znamená zpoždění 10 minut) |
-| longRetry |Integer<br/><br/>Maximální hodnota: 10 |1 |Počet pokusů o dlouhou opakování před spuštěním řezu se nezdařilo.<br/><br/>LongRetry pokusy jsou rozmístěny longRetryInterval. Takže pokud potřebujete zadat čas mezi pokusy o opakování, použijte longRetry. Pokud jsou zadány Retry a longRetry jsou zadány, každý pokus longRetry zahrnuje pokusy opakovat a maximální počet pokusů je Opakovat * longRetry.<br/><br/>Například pokud máme následující nastavení v zásadách aktivity:<br/>Opakování: 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>Předpokládejme, že je pouze jeden řez ke spuštění (stav je Čekání) a provádění aktivity selže pokaždé. Zpočátku by došlo ke 3 po sobě jdoucím pokusům o provedení. Po každém pokusu by byl stav řezu Opakovat. Po prvních 3 pokusy jsou u konce, stav řezu by LongRetry.<br/><br/>Po hodině (to znamená longRetryInteval hodnota), by další sadu 3 po sobě jdoucích pokusů o spuštění. Poté by se stav řezu nezdařil a nepokoušeli by se o žádné další pokusy. Proto bylo provedeno celkem 6 pokusů.<br/><br/>Pokud je jakékoli spuštění úspěšné, stav řezu by byl Připraven a žádné další pokusy o opakování.<br/><br/>longRetry lze použít v situacích, kdy závislá data dorazí v nedeterministické době nebo celkové prostředí je šupinatá, za kterých dochází ke zpracování dat. V takových případech opakování jeden po druhém nemusí pomoci a to po časovém intervalu má za následek požadovaný výstup.<br/><br/>Upozornění: nenastavujte vysoké hodnoty pro longRetry nebo longRetryInterval. Vyšší hodnoty obvykle znamenají další systémové problémy. |
+| souběžnost |Integer <br/><br/>Maximální hodnota: 10 |1 |Počet souběžných spuštění aktivity.<br/><br/>Určuje počet paralelních spuštění aktivit, ke kterým může dojít v různých řezech. Například pokud aktivita potřebuje projít velkou sadou dostupných dat, větší hodnota souběžnosti zrychluje zpracování dat. |
+| executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Určuje pořadí datových řezů, které jsou zpracovávány.<br/><br/>Například pokud máte 2 řezy (jedna se děje na 16:00 a druhý na 17:00), a obě jsou vyřízeny. Pokud nastavíte executionPriorityOrder na NewestFirst, řez se nejprve zpracuje v 5 odp. Podobně pokud nastavíte executionPriorityORder na OldestFIrst, bude zpracován řez ve 4 PM. |
+| retry |Integer<br/><br/>Maximální hodnota může být 10. |0 |Počet opakovaných pokusů, než se zpracování dat pro řez označí jako selhání. Pokus o spuštění aktivity pro datový řez se opakuje do zadaného počtu opakování. Opakování se provede co nejdříve po selhání. |
+| timeout |TimeSpan |00:00:00 |Časový limit aktivity Příklad: 00:10:00 (implikuje časový limit 10 minut)<br/><br/>Pokud hodnota není zadaná nebo je 0, časový limit je nekonečný.<br/><br/>Pokud doba zpracování dat v řezu překročí hodnotu časového limitu, je zrušena a systém se pokusí o opakované zpracování. Počet opakování závisí na vlastnosti opakování. Pokud dojde k vypršení časového limitu, je stav nastavený na vypršel časový limit. |
+| způsobené |TimeSpan |00:00:00 |Určete zpoždění před spuštěním zpracování dat řezu.<br/><br/>Spuštění aktivity pro datový řez se spustí, jakmile je zpoždění po očekávanou dobu provádění.<br/><br/>Příklad: 00:10:00 (implikuje zpoždění po 10 minutách) |
+| Má |Integer<br/><br/>Maximální hodnota: 10 |1 |Počet dlouhých pokusů o opakování před neúspěšným provedením řezu<br/><br/>Má pokusy jsou rozmístěny pomocí longRetryInterval. Takže pokud potřebujete zadat čas mezi opakovanými pokusy, použijte má. Pokud jsou zadány parametry Retry a má, každý má pokus obsahuje pokusy o opakování a maximální počet pokusů o opakování * má.<br/><br/>Například pokud máme v zásadách aktivity následující nastavení:<br/>Opakovat: 3<br/>Má: 2<br/>longRetryInterval: 01:00:00<br/><br/>Předpokládejme, že je možné provést pouze jeden řez (stav čeká na vyřízení) a spuštění aktivity pokaždé neproběhne úspěšně. Zpočátku by se mělo 3 po sobě jdoucích pokusů o spuštění. Po každém pokusu se stav řezu opakuje. Po prvním 3 pokusech se bude stav řezu má.<br/><br/>Po hodinu (tj. hodnotě longRetryInteval) by existovala další sada 3 po sobě jdoucích pokusů o spuštění. Po této operaci se stav řezu nezdařil a nebude proveden pokus o další opakování. Proto byly provedeny celkem 6 pokusů.<br/><br/>Pokud je jakékoli spuštění úspěšné, bude stav řezu připravený a nebude proveden pokus o další opakované pokusy.<br/><br/>Má se můžou použít v situacích, kdy se závislá data dostanou v nedeterministických časech, nebo v celkovém prostředí je vločka, pod kterou se zpracování dat děje. V takových případech s tím, že se opakuje jeden po jiné, to nemusí pomáhat a provádět po uplynutí časového intervalu požadovaného výstupu.<br/><br/>Upozornění: nenastavujte vysoké hodnoty pro má nebo longRetryInterval. Vyšší hodnoty obvykle implikují jiné systémové problémy. |
 | longRetryInterval |TimeSpan |00:00:00 |Prodleva mezi dlouhými pokusy o opakování |
 
-Další informace naleznete v článku [Potrubí.](data-factory-create-pipelines.md) 
+Další informace najdete v článku [kanály](data-factory-create-pipelines.md) . 
 
 ## <a name="parallel-processing-of-data-slices"></a>Paralelní zpracování datových řezů
-Můžete nastavit počáteční datum kanálu v minulosti. Pokud tak učiníte, Data Factory automaticky vypočítá (zpět výplně) všechny řezy dat v minulosti a začne jejich zpracování. Například: Pokud vytvoříte kanál s počátečním datem 2017-04-01 a aktuální datum je 2017-04-10. Pokud je kadence výstupní datové sady denně, potom Data Factory začne zpracovávat všechny řezy od 2017-04-01 do 2017-04-09 okamžitě, protože počáteční datum je v minulosti. Řez 2017-04-10 ještě není zpracován, protože hodnota vlastnosti style v části dostupnosti je EndOfInterval ve výchozím nastavení. Nejstarší řez je zpracován jako první jako výchozí hodnota executionPriorityOrder je OldestFirst. Popis vlastnosti stylu naleznete v části [dostupnosti datové sady.](#dataset-availability) Popis části executionPriorityOrder naleznete v části [Zásady aktivity.](#activity-policies) 
+Můžete nastavit počáteční datum pro kanál v minulosti. Když to uděláte, Data Factory automaticky vypočítá (vrátí zpět) všechny datové řezy v minulosti a začne je zpracovávat. Příklad: Pokud vytvoříte kanál s počátečním datem 2017-04-01 a aktuální datum je 2017-04-10. Pokud je tempo výstupní datové sady denně, Data Factory spustí zpracování všech řezů od 2017-04-01 do 2017-04-09, protože počáteční datum je v minulosti. Řez z 2017-04-10 se ještě nezpracovává, protože hodnota vlastnosti Style v oddílu Availability je EndOfInterval ve výchozím nastavení. Nejdříve se zpracuje nejstarší řez, protože výchozí hodnota executionPriorityOrder je OldestFirst. Popis vlastnosti Style najdete v části věnované [dostupnosti datové sady](#dataset-availability) . Popis části executionPriorityOrder najdete v části věnované [zásadám aktivit](#activity-policies) . 
 
-Můžete nakonfigurovat zpětvyplněná data řezy, které mají být zpracovány paralelně nastavením **vlastnosti souběžnosti** v části **zásad** aktivity JSON. Tato vlastnost určuje počet paralelní chod aktivit, ke kterým může dojít na různých řezech. Výchozí hodnota vlastnosti souběžnosti je 1. Proto jeden řez je zpracována současně ve výchozím nastavení. Maximální hodnota je 10. Když potrubí potřebuje projít velkou sadu dostupných dat, s větší hodnota souběžnosti urychluje zpracování dat. 
+Můžete nakonfigurovat zpětně naplněné datové řezy, které mají být zpracovány paralelně, nastavením vlastnosti **souběžnosti** v části **zásady** JSON aktivity. Tato vlastnost určuje počet spuštění paralelní aktivity, ke kterým může dojít v různých řezech. Výchozí hodnota pro vlastnost Concurrency je 1. Proto ve výchozím nastavení je jeden řez zpracováván současně. Maximální hodnota je 10. Když kanál potřebuje projít velkou sadou dostupných dat, větší hodnota souběžnosti zrychluje zpracování dat. 
 
-## <a name="rerun-a-failed-data-slice"></a>Opětovné spuštění neúspěšného řezu dat
-Když dojde k chybě při zpracování řezu dat, můžete zjistit, proč se zpracování řezu nezdaří pomocí listů portálu Azure nebo monitorování a správa aplikace. Podrobnosti najdete [v tématu Monitorování a správa kanálů pomocí blades portálu Azure](data-factory-monitor-manage-pipelines.md) nebo [aplikace Monitorování a správa.](data-factory-monitor-manage-app.md)
+## <a name="rerun-a-failed-data-slice"></a>Opětovné spuštění neúspěšného datového řezu
+Když při zpracování datového řezu dojde k chybě, můžete zjistit, proč se zpracování řezu nepovedlo pomocí Azure Portalových oken nebo monitorovat a spravovat aplikace. Podrobnosti najdete v tématu [monitorování a Správa kanálů pomocí Azure Portalových](data-factory-monitor-manage-pipelines.md) oken nebo [aplikací pro monitorování a správu](data-factory-monitor-manage-app.md) .
 
-Vezměme si následující příklad, který zobrazuje dvě aktivity. Aktivita1 a Aktivita 2. Activity1 spotřebovává řez Dataset1 a vytvoří řez Dataset2, který je spotřebován jako vstup Activity2 k vytvoření řezu konečné datové sady.
+Vezměte v úvahu následující příklad, který ukazuje dvě aktivity. Activity1 a aktivita 2. Activity1 spotřebovává řez z DataSet1. a vytvoří řez Dataset2, který se spotřebuje jako vstup pomocí "Activity2" pro vytvoření řezu finální datové sady.
 
 ![Neúspěšný řez](./media/data-factory-scheduling-and-execution/failed-slice.png)
 
-Diagram ukazuje, že ze tří posledních řezů došlo k selhání, které vytvořilo řez 9-10 AM pro Dataset2. Data Factory automaticky sleduje závislost pro datovou sadu časových řad. V důsledku toho nespustí aktivitu spustit pro řez po proudu 9-10.
+Diagram ukazuje, že se třemi posledními řezy nedošlo k selhání při vytváření výseče 9-10 pro Dataset2. Data Factory automaticky sleduje závislost pro datovou sadu časových řad. V důsledku toho nespustí spuštění aktivit pro navazující průřez 9-10.
 
-Nástroje pro monitorování a správu data factory umožňují přejít k podrobnostem do diagnostických protokolů pro neúspěšný řez, abyste snadno našli hlavní příčinu problému a opravili ho. Po opevnění problému můžete snadno spustit spuštění aktivity a vytvořit neúspěšný řez. Další informace o tom, jak znovu spustit a pochopit přechody stavu pro řezy dat, najdete [v tématu monitorování a správa kanálů pomocí blades portálu Azure](data-factory-monitor-manage-pipelines.md) nebo [monitorování a správa aplikace](data-factory-monitor-manage-app.md).
+Data Factory nástroje pro monitorování a správu umožňují přejít k podrobnostem o diagnostických protokolech pro neúspěšnou výseč, abyste mohli snadno najít hlavní příčinu problému a opravit ho. Po vyřešení problému můžete snadno spustit běh aktivity a vytvořit tak neúspěšný řez. Další informace o tom, jak znovu spustit a pochopit přechody stavu pro datové řezy, najdete v tématu [monitorování a Správa kanálů pomocí Azure Portalch](data-factory-monitor-manage-pipelines.md) oken nebo [aplikací pro monitorování a správu](data-factory-monitor-manage-app.md).
 
-Po opětovném spuštění řezu 9-10 AM pro **Dataset2**spustí Data Factory spuštění pro řez závislý na 9-10 am na konečné datové sady.
+Po opětovném spuštění průřezu 9-10 pro **Dataset2**spustí Data Factory pro výslednou datovou sadu 9-10 závislý řez.
 
-![Opětovné spuštění řezu se nezdařilo](./media/data-factory-scheduling-and-execution/rerun-failed-slice.png)
+![Opětovné spuštění řezu, který selhal](./media/data-factory-scheduling-and-execution/rerun-failed-slice.png)
 
 ## <a name="multiple-activities-in-a-pipeline"></a>Více aktivit v kanálu
-Kanál může obsahovat víc než jednu aktivitu. Pokud máte více aktivit v kanálu a výstup aktivity není vstup emitovat jinou aktivitu, aktivity může běžet paralelně, pokud jsou připraveny řezy vstupních dat pro aktivity.
+Kanál může obsahovat víc než jednu aktivitu. Pokud máte v kanálu více aktivit a výstupem aktivity není vstup jiné aktivity, aktivity mohou běžet paralelně, pokud jsou vstupní datové řezy pro aktivity připravené.
 
-Dvě aktivity můžete zřetězit (spustit jednu aktivitu po druhé) nastavením výstupní datové sady jedné aktivity jako vstupní datové sady druhé aktivity. Aktivity mohou být ve stejném kanálu nebo v různých kanálech. Druhá aktivita se spustí pouze v případě, že první úspěšně dokončí.
+Dvě aktivity můžete zřetězit (spustit jednu aktivitu po druhé) nastavením výstupní datové sady jedné aktivity jako vstupní datové sady druhé aktivity. Aktivity můžou být ve stejném kanálu nebo v různých kanálech. Druhá aktivita se spustí jenom v případě, že se první úspěšně dokončí.
 
-Zvažte například následující případ, kdy má kanál dvě aktivity:
+Zvažte například následující případ, kde má kanál dvě aktivity:
 
-1. Aktivita A1, která vyžaduje externí vstupní datovou sadu D1 a vytváří výstupní datovou sadu D2.
-2. Aktivita A2, která vyžaduje vstup z datové sady D2 a vytváří výstupní datovou sadu D3.
+1. Aktivita a1, která vyžaduje externí vstupní datovou sadu D1 a vytváří výstupní datovou sadu D2.
+2. Aktivita a2, která vyžaduje vstup ze sady dat D2 a vytváří výstupní datovou sadu D3.
 
-V tomto scénáři aktivity A1 a A2 jsou ve stejném kanálu. Aktivita A1 se spustí, když jsou k dispozici externí data a je dosaženo naplánované frekvence dostupnosti. Aktivita A2 se spustí, když jsou k dispozici naplánované řezy z D2 a je dosažena naplánovaná frekvence dostupnosti. Pokud je chyba v jednom z řezů v datové sadě D2, A2 nespustí pro tento řez, dokud nebude k dispozici.
+V tomto scénáři jsou aktivity a1 a a2 ve stejném kanálu. Aktivita a1 se spustí, když jsou k dispozici externí data a dosáhnou plánované četnosti dostupnosti. Aktivita a2 se spustí, když budou k dispozici naplánované řezy z D2 a dojde k dosažení plánované četnosti dostupnosti. Pokud dojde k chybě v jednom z řezů v datové sadě D2, a2 se pro tento řez nespustí, dokud nebude k dispozici.
 
-Zobrazení diagramu s oběma aktivitami ve stejném kanálu bude vypadat jako následující diagram:
+Zobrazení diagramu s oběma aktivitami ve stejném kanálu by vypadalo jako v následujícím diagramu:
 
-![Řetězení aktivit ve stejném potrubí](./media/data-factory-scheduling-and-execution/chaining-one-pipeline.png)
+![Řetězení aktivit ve stejném kanálu](./media/data-factory-scheduling-and-execution/chaining-one-pipeline.png)
 
-Jak již bylo zmíněno dříve, činnosti by mohly být v různých potrubích. V takovém scénáři by zobrazení diagramu vypadat jako následující diagram:
+Jak bylo zmíněno dříve, aktivity mohou být v různých kanálech. V takovém scénáři by zobrazení diagramu vypadalo podobně jako v následujícím diagramu:
 
-![Řetězení ve dvou potrubích](./media/data-factory-scheduling-and-execution/chaining-two-pipelines.png)
+![Řetězení aktivit ve dvou kanálech](./media/data-factory-scheduling-and-execution/chaining-two-pipelines.png)
 
-Příklad naleznete v části kopie v dodatku.
+Příklad najdete v části kopírování sekvenčně v dodatku.
 
-## <a name="model-datasets-with-different-frequencies"></a>Modelové datové sady s různými frekvencemi
-Ve vzorcích byly frekvence vstupních a výstupních datových sad a okna plánu aktivit stejné. Některé scénáře vyžadují schopnost vytvářet výstup s frekvencí jinou než frekvence jednoho nebo více vstupů. Data Factory podporuje modelování těchto scénářů.
+## <a name="model-datasets-with-different-frequencies"></a>Modelování datových sad s různou frekvencí
+V ukázkách byly frekvence pro vstupní a výstupní datové sady a okno plánu aktivit stejné. Některé scénáře vyžadují možnost vytvářet výstup s různou frekvencí, než je frekvence jednoho nebo více vstupů. Data Factory podporuje modelování těchto scénářů.
 
-### <a name="sample-1-produce-a-daily-output-report-for-input-data-that-is-available-every-hour"></a>Ukázka 1: Vytvoření denní výstupní sestavy pro vstupní data, která jsou k dispozici každou hodinu
-Zvažte scénář, ve kterém máte vstupní naměřená data ze senzorů k dispozici každou hodinu v úložišti objektů Blob Azure. Chcete vytvořit denní agregační sestavu se statistikami, jako je průměr, maximum a minimum pro den s [aktivitou podregistru datové továrny](data-factory-hive-activity.md).
+### <a name="sample-1-produce-a-daily-output-report-for-input-data-that-is-available-every-hour"></a>Ukázka 1: vytvoření denní výstupní sestavy pro vstupní data, která jsou k dispozici každou hodinu
+Vezměte v úvahu scénář, ve kterém máte během každé hodiny ve službě Azure Blob Storage k dispozici vstupní měření dat od senzorů. Chcete vytvořit každodenní souhrnnou sestavu se statistikami, jako je například střední, maximální a minimální hodnota pro den s [Data Factory aktivitou podregistru](data-factory-hive-activity.md).
 
-Zde je postup, jak můžete modelovat tento scénář s Factory dat:
+Tady je postup, jak můžete modelovat tento scénář pomocí Data Factory:
 
 **Vstupní datová sada**
 
-Hodinové vstupní soubory jsou vynechány ve složce pro daný den. Dostupnost pro vstup je nastavena na **hodinu** (frekvence: hodina, interval: 1).
+Hodinové vstupní soubory jsou ve složce pro daný den vyřazeny. Dostupnost pro vstup je nastavená na **hodinu** (frekvence: hodina, interval: 1).
 
 ```json
 {
@@ -359,7 +359,7 @@ Hodinové vstupní soubory jsou vynechány ve složce pro daný den. Dostupnost 
 ```
 **Výstupní datová sada**
 
-Jeden výstupní soubor je vytvořen každý den ve složce dne. Dostupnost výstupu je nastavena na **den** (frekvence: Den a interval: 1).
+Jeden výstupní soubor se vytvoří každý den ve složce dne. Dostupnost výstupu je nastavená na **den** (frekvence: den a interval: 1).
 
 ```json
 {
@@ -386,9 +386,9 @@ Jeden výstupní soubor je vytvořen každý den ve složce dne. Dostupnost výs
 }
 ```
 
-**Aktivita: aktivita úlu v potrubí**
+**Aktivita: aktivita podregistru v kanálu**
 
-Skript podregistru obdrží příslušné informace *DateTime* jako parametry, které používají proměnnou **WindowStart,** jak je znázorněno v následujícím fragmentu. Skript podregistru používá tuto proměnnou k načtení dat ze správné složky pro den a spuštění agregace pro generování výstupu.
+Skript podregistru obdrží příslušné informace o *typu DateTime* jako parametry, které používají proměnnou **WindowStart** , jak je znázorněno v následujícím fragmentu kódu. Skript podregistru používá tuto proměnnou k načtení dat ze správné složky pro daný den a spuštění agregace pro vygenerování výstupu.
 
 ```json
 {  
@@ -437,22 +437,22 @@ Skript podregistru obdrží příslušné informace *DateTime* jako parametry, k
 }
 ```
 
-Následující diagram znázorňuje scénář z hlediska závislosti na datech.
+Následující diagram znázorňuje scénář z hlediska závislosti dat.
 
 ![Závislost dat](./media/data-factory-scheduling-and-execution/data-dependency.png)
 
-Výstupní řez pro každý den závisí na 24 hodinových řezech ze vstupní datové sady. Data Factory vypočítá tyto závislosti automaticky zjišťuje, že vstupní data řezy, které spadají do stejného časového období jako výstupní řez, který má být vytvořen. Pokud některý z 24 vstupních řezů není k dispozici, Data Factory čeká na vstupní řez, který má být připraven před zahájením denní aktivity spustit.
+Výstupní řez každého dne závisí na 24 hodinových řezech ze vstupní datové sady. Data Factory tyto závislosti automaticky vypočte pomocí zjištění vstupních datových řezů, které spadají do stejného časového období jako výstupní řez, který se má vyrobit. Pokud některý z 24 vstupních řezů není k dispozici, Data Factory čeká, než se vstupní řez před spuštěním každodenního spuštění aktivity vypustí.
 
-### <a name="sample-2-specify-dependency-with-expressions-and-data-factory-functions"></a>Ukázka 2: Určení závislosti pomocí výrazů a funkcí datové továrny
-Zvažme jiný scénář. Předpokládejme, že máte aktivitu podregistru, která zpracovává dvě vstupní datové sady. Jeden z nich má nová data denně, ale jeden z nich dostává nová data každý týden. Předpokládejme, že jste chtěli provést spojení mezi dvěma vstupy a vytvořit výstup každý den.
+### <a name="sample-2-specify-dependency-with-expressions-and-data-factory-functions"></a>Ukázka 2: určení závislosti s výrazy a Data Factory funkcemi
+Pojďme zvážit jiný scénář. Předpokládejme, že máte aktivitu podregistru, která zpracovává dvě vstupní datové sady. Jedna z nich má data denně, ale jeden z nich získává nová data každý týden. Předpokládejme, že jste chtěli spojit mezi dvěma vstupy a vytvořit výstup každý den.
 
-Jednoduchý přístup, ve kterém Data Factory automaticky zjidní správné vstupní řezy ke zpracování zarovnáním časové období výstupní ho dat nefunguje.
+Jednoduchý přístup, ve kterém Data Factory automaticky vyhodnotit správné vstupní řezy ke zpracování pomocí zarovnání na časové období výstupního datového řezu nefunguje.
 
-Je nutné zadat, že pro každé spuštění aktivity data factory by měl použít minulý týden datový řez pro týdenní vstupní datové sady. K implementaci tohoto chování se používají funkce Azure Data Factory, jak je znázorněno v následujícím fragmentu.
+Je nutné určit, že pro každý běh aktivity má Data Factory pro týdenní vstupní datovou sadu použít datový řez poslední týden. K implementaci tohoto chování použijte Azure Data Factory funkce, jak je znázorněno v následujícím fragmentu kódu.
 
-**Vstup1: Objekt blob Azure**
+**Input1: Azure Blob**
 
-První vstup je objekt blob Azure, který se aktualizuje denně.
+Prvním vstupem je denní aktualizace objektu blob Azure.
 
 ```json
 {
@@ -480,9 +480,9 @@ První vstup je objekt blob Azure, který se aktualizuje denně.
 }
 ```
 
-**Vstup2: Objekt blob Azure**
+**Input2: Azure Blob**
 
-Input2 je objekt blob Azure, který se aktualizuje každý týden.
+Input2 je týdenní aktualizace objektu blob Azure.
 
 ```json
 {
@@ -510,9 +510,9 @@ Input2 je objekt blob Azure, který se aktualizuje každý týden.
 }
 ```
 
-**Výstup: Objekt blob Azure**
+**Výstup: Azure Blob**
 
-Jeden výstupní soubor je vytvořen každý den ve složce pro den. Dostupnost výstupu je nastavena na **denní (frekvence:** Den, interval: 1).
+Jeden výstupní soubor se vytvoří každý den ve složce pro daný den. Dostupnost výstupu je nastavená na **den** (frekvence: den, interval: 1).
 
 ```json
 {
@@ -539,9 +539,9 @@ Jeden výstupní soubor je vytvořen každý den ve složce pro den. Dostupnost 
 }
 ```
 
-**Aktivita: aktivita úlu v potrubí**
+**Aktivita: aktivita podregistru v kanálu**
 
-Aktivita podregistru přebírá dva vstupy a vytváří výstupní řez každý den. Můžete určit výstupní řez každého dne, který bude záviset na vstupním řezu předchozího týdne pro týdenní vstup následujícím způsobem.
+Aktivita podregistru přijímá dva vstupy a vytváří výstupní řez každý den. Můžete zadat každý den výstupní řez, který bude záviset na vstupním řezu předchozího týdne pro týdenní vstup následujícím způsobem.
 
 ```json
 {  
@@ -595,24 +595,24 @@ Aktivita podregistru přebírá dva vstupy a vytváří výstupní řez každý 
 }
 ```
 
-Seznam funkcí a systémových proměnných, které data factory podporuje, najdete v tématu [Funkce datové továrny a systémové proměnné.](data-factory-functions-variables.md)
+Seznam funkcí a systémových proměnných, které Data Factory podporuje, najdete v tématu [Data Factory functions a systémových proměnných](data-factory-functions-variables.md) .
 
 ## <a name="appendix"></a>Příloha
 
-### <a name="example-copy-sequentially"></a>Příklad: kopírování postupně
-Je možné spustit více operací kopírování jeden po druhém sekvenčním/seřazeným způsobem. Můžete mít například dvě aktivity kopírování v kanálu (CopyActivity1 a CopyActivity2) s následujícími výstupními datovými sadami vstupních dat:   
+### <a name="example-copy-sequentially"></a>Příklad: kopírování sekvenčně
+Je možné spustit více operací kopírování jeden po druhém sekvenčním a seřazeným způsobem. Například můžete mít dvě aktivity kopírování v kanálu (soubor copyactivity1 a CopyActivity2) s následujícími vstupními datovými sadami výstupních dat:   
 
-CopyActivity1
+Soubor copyactivity1
 
-Vstup: Datová sada. Výstup: Dataset2.
+Input: DataSet. Výstup: Dataset2.
 
 CopyActivity2
 
 Vstup: Dataset2.  Výstup: Dataset3.
 
-CopyActivity2 by spustit pouze v případě, že CopyActivity1 úspěšně spuštěna dataset2 je k dispozici.
+CopyActivity2 se spustí jenom v případě, že soubor copyactivity1 běžel úspěšně a Dataset2 je k dispozici.
 
-Zde je ukázkový kanál JSON:
+Tady je ukázkový formát JSON kanálu:
 
 ```json
 {
@@ -693,13 +693,13 @@ Zde je ukázkový kanál JSON:
 }
 ```
 
-Všimněte si, že v příkladu je výstupní datová sada první aktivity kopírování (Dataset2) zadána jako vstup pro druhou aktivitu. Proto druhá aktivita spustí pouze v případě, že výstupní datová sada z první aktivity je připraven.  
+Všimněte si, že v příkladu je výstupní datová sada první aktivity kopírování (Dataset2) zadána jako vstup pro druhou aktivitu. Proto se druhá aktivita spustí pouze v případě, že je výstupní datová sada z první aktivity připravena.  
 
-V příkladu CopyActivity2 může mít jiný vstup, například Dataset3, ale zadáte Dataset2 jako vstup copyactivity2, takže aktivita nespustí, dokud CopyActivity1 nedokončí. Například:
+V tomto příkladu může mít CopyActivity2 jiný vstup, jako je například Dataset3, ale zadáte Dataset2 jako vstup do CopyActivity2, takže se aktivita nespustí až do dokončení soubor copyactivity1. Příklad:
 
-CopyActivity1
+Soubor copyactivity1
 
-Vstup: Dataset1. Výstup: Dataset2.
+Vstup: DataSet1.. Výstup: Dataset2.
 
 CopyActivity2
 
@@ -787,7 +787,7 @@ Vstupy: Dataset3, Dataset2. Výstup: Dataset4.
 }
 ```
 
-Všimněte si, že v příkladu jsou určeny dvě vstupní datové sady pro druhou aktivitu kopírování. Pokud je zadáno více vstupů, slouží ke kopírování dat pouze první vstupní datová sada, ale jako závislosti se používají jiné datové sady. CopyActivity2 by spustit až po splnění následujících podmínek:
+Všimněte si, že v tomto příkladu jsou pro druhou aktivitu kopírování zadány dvě vstupní datové sady. Pokud je zadáno více vstupů, pro kopírování dat se používá pouze první vstupní datová sada, ale jiné datové sady se používají jako závislosti. CopyActivity2 se spustí až po splnění následujících podmínek:
 
-* CopyActivity1 byl úspěšně dokončen a Dataset2 je k dispozici. Tato datová sada se nepoužívá při kopírování dat do Dataset4. Slouží pouze jako plánování závislost pro CopyActivity2.   
-* Dataset3 je k dispozici. Tato datová sada představuje data, která jsou zkopírována do cíle. 
+* Soubor copyactivity1 se úspěšně dokončil a k dispozici je Dataset2. Tato datová sada se nepoužívá při kopírování dat do Dataset4. Funguje pouze jako závislost plánování pro CopyActivity2.   
+* Dataset3 je k dispozici. Tato datová sada představuje data, která se zkopírují do cíle. 

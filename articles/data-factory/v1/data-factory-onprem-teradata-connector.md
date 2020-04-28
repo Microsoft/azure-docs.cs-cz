@@ -1,5 +1,5 @@
 ---
-title: Přesunutí dat z Teradata pomocí Azure Data Factory
+title: Přesun dat z Teradata pomocí Azure Data Factory
 description: Informace o konektoru Teradata pro službu Data Factory, která umožňuje přesun dat z databáze Teradata
 services: data-factory
 documentationcenter: ''
@@ -13,93 +13,93 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: ecde5784e759ef5259b8c67ed574cef6cae98f30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79281194"
 ---
-# <a name="move-data-from-teradata-using-azure-data-factory"></a>Přesunutí dat z Teradata pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+# <a name="move-data-from-teradata-using-azure-data-factory"></a>Přesun dat z Teradata pomocí Azure Data Factory
+> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](data-factory-onprem-teradata-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-teradata.md)
 
 > [!NOTE]
-> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, viz [Konektor Teradata ve V2](../connector-teradata.md).
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [Teradata Connector ve verzi v2](../connector-teradata.md).
 
-Tento článek vysvětluje, jak použít aktivitu kopírování v Azure Data Factory k přesunutí dat z místní databáze Teradata. Vychází z článku [Aktivity přesunu dat,](data-factory-data-movement-activities.md) který představuje obecný přehled přesunu dat s aktivitou kopírování.
+Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Factory přesouvat data z místní databáze Teradata. Sestavuje se podle článku [aktivity přesunu dat](data-factory-data-movement-activities.md) , který prezentuje obecný přehled přesunu dat s aktivitou kopírování.
 
-Můžete zkopírovat data z místního úložiště dat Teradata do libovolného úložiště dat podporované jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako jímky naleznete v tabulce [Podporovaná úložiště dat.](data-factory-data-movement-activities.md#supported-data-stores-and-formats) Data Factory aktuálně podporuje pouze přesunutí dat z úložiště dat Teradata do jiných úložišť dat, ale ne pro přesun dat z jiných úložišť dat do úložiště dat Teradata.
+Data z místního úložiště dat Teradata můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která aktivita kopírování podporuje jako jímky, najdete v tabulce [podporovaná úložiště dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) . Data Factory aktuálně podporuje pouze přesouvání dat z úložiště dat Teradata do jiných úložišť dat, ale ne pro přesun dat z jiných úložišť dat do úložiště dat Teradata.
 
 ## <a name="prerequisites"></a>Požadavky
-Data Factory podporuje připojení k místním zdrojům Teradata prostřednictvím brány pro správu dat. Podívejte [se na pohybující se data mezi místními lokacemi a cloudovým](data-factory-move-data-between-onprem-and-cloud.md) článkem, kde najdete informace o bráně pro správu dat a podrobné pokyny k nastavení brány.
+Data Factory podporuje připojení k místním zdrojům Teradata prostřednictvím brány Správa dat. Další informace o Správa dat bráně a podrobné pokyny k nastavení brány najdete v tématu [přesun dat mezi místními umístěními a v cloudovém](data-factory-move-data-between-onprem-and-cloud.md) článku.
 
-Brána je vyžadována i v případě, že Teradata je hostovaný ve virtuálním počítači Azure IaaS. Bránu můžete nainstalovat na stejný virtuální počítač IaaS jako úložiště dat nebo na jiný virtuální počítač, pokud se brána může připojit k databázi.
+Brána je vyžadována i v případě, že se Teradata hostuje na virtuálním počítači Azure IaaS. Bránu můžete nainstalovat na stejný virtuální počítač s IaaS jako úložiště dat nebo na jiný virtuální počítač, pokud se brána může připojit k databázi.
 
 > [!NOTE]
-> Tipy týkající se řešení problémů s připojením nebo bránou najdete v [tématu Poradce při potížích](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) s bránou.
+> Tipy k odstraňování potíží souvisejících s připojením nebo bránou najdete v tématu řešení potíží s [bránou](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) .
 
 ## <a name="supported-versions-and-installation"></a>Podporované verze a instalace
-Aby se brána pro správu dat připojila k databázi Teradata, musíte nainstalovat [zprostředkovatele dat .NET pro teradata](https://go.microsoft.com/fwlink/?LinkId=278886) verze 14 nebo vyšší do stejného systému jako brána pro správu dat. Teradata verze 12 a vyšší je podporována.
+Aby se Správa dat brána připojovala k databázi Teradata, musíte nainstalovat [rozhraní .net zprostředkovatel dat pro Teradata](https://go.microsoft.com/fwlink/?LinkId=278886) verze 14 nebo vyšší ve stejném systému jako brána Správa dat. Je podporována Teradata verze 12 a vyšší.
 
 ## <a name="getting-started"></a>Začínáme
 Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data z místního úložiště dat Cassandra pomocí různých nástrojů nebo rozhraní API.
 
-- Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Viz [Kurz: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) pro rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat.
-- K vytvoření kanálu můžete taky použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Šablona Azure Resource Manager**, Rozhraní **.NET API**a REST **API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v tématu [Kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) aktivity.
+- Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
+- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
-Bez ohledu na to, zda používáte nástroje nebo api, provedete následující kroky k vytvoření kanálu, který přesune data ze zdrojového úložiště dat do úložiště dat jímky:
+Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
-1. Vytvořte **propojené služby** pro propojení vstupních a výstupních úložišť dat s vaší továrně dat.
-2. Vytvořte **datové sady** představující vstupní a výstupní data pro operaci kopírování.
-3. Vytvořte **kanál** s aktivitou kopírování, která přebírá datovou sadu jako vstup a datovou sadu jako výstup.
+1. Vytvořte **propojené služby** , které propojí vstupní a výstupní úložiště dat s datovou továrnou.
+2. Vytvořte datové **sady** , které reprezentují vstupní a výstupní data pro operaci kopírování.
+3. Vytvořte **kanál** s aktivitou kopírování, která převezme datovou sadu jako vstup a datovou sadu jako výstup.
 
-Při použití průvodce jsou automaticky vytvořeny definice JSON pro tyto entity Data Factory (propojené služby, datové sady a kanál). Při použití nástrojů nebo rozhraní API (s výjimkou rozhraní .NET API) definujete tyto entity Data Factory pomocí formátu JSON.  Ukázka s definicemi JSON pro entity Data Factory, které se používají ke kopírování dat z místního úložiště dat Teradata, najdete v [tématu JSON příklad: Kopírování dat z Teradata do Azure Blob](#json-example-copy-data-from-teradata-to-azure-blob) části tohoto článku.
+Při použití Průvodce se automaticky vytvoří definice JSON pro tyto Entity Data Factory (propojené služby, datové sady a kanál). Pokud používáte nástroje/rozhraní API (s výjimkou rozhraní .NET API), definujete tyto Data Factory entit pomocí formátu JSON.  Ukázku s definicemi JSON pro Entity Data Factory, které se používají ke kopírování dat z místního úložiště dat Teradata, najdete v části [JSON example: kopírování dat z Teradata do Azure Blob](#json-example-copy-data-from-teradata-to-azure-blob) tohoto článku.
 
-V následujících částech jsou uvedeny podrobnosti o vlastnostech JSON, které se používají k definování entit Factory dat specifických pro úložiště dat Teradata:
+Následující části obsahují podrobné informace o vlastnostech JSON, které se používají k definování Data Factory entit specifických pro úložiště dat Teradata:
 
-## <a name="linked-service-properties"></a>Vlastnosti propojených služeb
-Následující tabulka obsahuje popis prvků JSON specifických pro propojenou službu Teradata.
+## <a name="linked-service-properties"></a>Vlastnosti propojené služby
+Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou službu Teradata.
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| type |Vlastnost type musí být nastavena **na: OnPremisesTeradata** |Ano |
+| type |Vlastnost Type musí být nastavená na: **OnPremisesTeradata** . |Ano |
 | server |Název serveru Teradata. |Ano |
-| authenticationType |Typ ověřování používaný pro připojení k databázi Teradata. Možné hodnoty jsou: Anonymní, Základní a Windows. |Ano |
-| uživatelské jméno |Zadejte uživatelské jméno, pokud používáte základní ověřování nebo ověřování systému Windows. |Ne |
+| authenticationType |Typ ověřování, který se používá pro připojení k databázi Teradata. Možné hodnoty jsou: anonymní, základní a Windows. |Ano |
+| uživatelské jméno |Pokud používáte základní ověřování nebo ověřování systému Windows, zadejte uživatelské jméno. |Ne |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
-| název brány |Název brány, kterou by měla služba Data Factory použít k připojení k místní databázi Teradata. |Ano |
+| gatewayName |Název brány, kterou by služba Data Factory měla použít pro připojení k místní databázi Teradata. |Ano |
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
-Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování datových sad, naleznete v článku [Vytváření datových sad.](data-factory-create-datasets.md) Oddíly, jako je struktura, dostupnost a zásady datové sady JSON, jsou podobné pro všechny typy datových sad (Azure SQL, Azure blob, Tabulka Azure atd.).
+Úplný seznam sekcí & vlastností dostupných pro definování datových sad naleznete v článku [vytvoření datových sad](data-factory-create-datasets.md) . Oddíly, jako je například struktura, dostupnost a zásada pro datovou sadu JSON, jsou podobné pro všechny typy datových sad (Azure SQL, Azure Blob, tabulka Azure atd.).
 
-Sekce **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. V současné době nejsou podporovány žádné vlastnosti typu pro datovou sadu Teradata.
+Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. V současné době nejsou podporovány žádné vlastnosti typu pro datovou sadu Teradata.
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
-Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování aktivit, naleznete v článku [Vytváření kanálů.](data-factory-create-pipelines.md) Vlastnosti, jako je název, popis, vstupní a výstupní tabulky a zásady jsou k dispozici pro všechny typy aktivit.
+Úplný seznam sekcí & vlastností dostupných pro definování aktivit najdete v článku [vytvoření kanálů](data-factory-create-pipelines.md) . Pro všechny typy aktivit jsou k dispozici vlastnosti, jako je název, popis, vstupní a výstupní tabulka a zásady.
 
-Vzhledem k tomu, vlastnosti, které jsou k dispozici v typeProperties části aktivity se liší s každým typem aktivity. U aktivity kopírování se liší v závislosti na typech zdrojů a propadů.
+V takovém případě se vlastnosti dostupné v části typeProperties v aktivitě liší podle typu aktivity. U aktivity kopírování se liší v závislosti na typech zdrojů a jímky.
 
-Pokud je zdroj typu **RelationalSource** (který zahrnuje Teradata), jsou v části **typeProperties** k dispozici následující vlastnosti:
+Pokud je zdrojem typ **RelationalSource** (který zahrnuje Teradata), jsou v části **typeProperties** k dispozici následující vlastnosti:
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| query |Ke čtení dat použijte vlastní dotaz. |Řetězec dotazu SQL. Příklad: vyberte * z MyTable. |Ano |
+| query |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Příklad: SELECT * FROM MyTable. |Ano |
 
-### <a name="json-example-copy-data-from-teradata-to-azure-blob"></a>Příklad JSON: Kopírování dat z Teradata do objektu Blob Azure
-Následující příklad obsahuje ukázkové definice JSON, které můžete použít k vytvoření kanálu pomocí [Sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo Azure [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ukazují, jak zkopírovat data z Teradata do úložiště objektů blob Azure. Data však můžete zkopírovat do libovolného jímky [uvedené zde](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivity kopírování v Azure Data Factory.
+### <a name="json-example-copy-data-from-teradata-to-azure-blob"></a>Příklad JSON: kopírování dat z Teradata do Azure Blob
+Následující příklad poskytuje ukázkové definice JSON, které můžete použít k vytvoření kanálu pomocí sady [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ukazují, jak kopírovat data z Teradata do Azure Blob Storage. Data však lze zkopírovat do kterékoli z těchto umyvadel, které jsou [zde](data-factory-data-movement-activities.md#supported-data-stores-and-formats) uvedeny, pomocí aktivity kopírování v Azure Data Factory.
 
-Ukázka má následující entity datové továrny:
+Ukázka má následující Entity Data Factory:
 
 1. Propojená služba typu [OnPremisesTeradata](#linked-service-properties).
 2. Propojená služba typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-3. Vstupní [datová sada](data-factory-create-datasets.md) typu [RelationalTable](#dataset-properties).
-4. Výstupní [datová sada](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-5. [Kanál](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [Relační zdroj](#copy-activity-properties) a [blobsink](data-factory-azure-blob-connector.md#copy-activity-properties).
+3. Vstupní [datová sada](data-factory-create-datasets.md) typu [relačních](#dataset-properties)objektů.
+4. Výstupní [datová sada](data-factory-create-datasets.md) typu [azureblobu](data-factory-azure-blob-connector.md#dataset-properties).
+5. [Kanál](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [RelationalSource](#copy-activity-properties) a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Ukázka zkopíruje data z výsledku dotazu v databázi Teradata do objektu blob každou hodinu. Vlastnosti JSON použité v těchto vzorcích jsou popsány v následujících částech.
+Ukázka kopíruje data z výsledků dotazu v databázi Teradata do objektu BLOB každou hodinu. Vlastnosti JSON použité v těchto ukázkách jsou popsány v oddílech následujících po ukázkách.
 
-Jako první krok nastavte bránu pro správu dat. Pokyny jsou v [přesunutí dat mezi místními umístěními a článkem cloudu.](data-factory-move-data-between-onprem-and-cloud.md)
+Jako první krok nastavte bránu pro správu dat. Pokyny najdete v článku [přesun dat mezi místními umístěními a cloudem](data-factory-move-data-between-onprem-and-cloud.md) .
 
 **Propojená služba Teradata:**
 
@@ -119,7 +119,7 @@ Jako první krok nastavte bránu pro správu dat. Pokyny jsou v [přesunutí dat
 }
 ```
 
-**Propojená služba úložiště objektů blob Azure:**
+**Propojená služba úložiště objektů BLOB v Azure:**
 
 ```json
 {
@@ -135,9 +135,9 @@ Jako první krok nastavte bránu pro správu dat. Pokyny jsou v [přesunutí dat
 
 **Vstupní datová sada Teradata:**
 
-Ukázka předpokládá, že jste vytvořili tabulku "MyTable" v Teradata a obsahuje sloupec s názvem "časové razítko" pro data časových řad.
+Ukázka předpokládá, že jste ve službě Teradata vytvořili tabulku "MyTable" a obsahuje sloupec s názvem "časové razítko" pro data časových řad.
 
-Nastavení "externí": true informuje službu Data Factory, že tabulka je externí pro datovou továrnu a není vytvářena aktivitou v datové továrně.
+Nastavení "externí": hodnota true informuje službu Data Factory, že je tabulka externí pro objekt pro vytváření dat, a není vytvořená aktivitou v datové továrně.
 
 ```json
 {
@@ -164,9 +164,9 @@ Nastavení "externí": true informuje službu Data Factory, že tabulka je exter
 }
 ```
 
-**Výstupní datová sada objektu Blob Azure:**
+**Výstupní datová sada Azure Blob:**
 
-Data se zapisují do nového objektu blob každou hodinu (frekvence: hodina, interval: 1). Cesta ke složce pro objekt blob je dynamicky vyhodnocována na základě počátečního času zpracovávaného řezu. Cesta ke složce používá části počátečního času rok, měsíc, den a hodiny.
+Data se zapisují do nového objektu BLOB každou hodinu (frekvence: hodina, interval: 1). Cesta ke složce pro objekt BLOB je dynamicky vyhodnocována na základě počátečního času zpracovávaného řezu. Cesta ke složce používá části rok, měsíc, den a hodiny v počátečním čase.
 
 ```json
 {
@@ -226,7 +226,7 @@ Data se zapisují do nového objektu blob každou hodinu (frekvence: hodina, int
 ```
 **Kanál s aktivitou kopírování:**
 
-Kanál obsahuje aktivitu kopírování, která je nakonfigurována pro použití vstupních a výstupních datových sad a je naplánováno na spouštění každou hodinu. V definici kanálu JSON je **typ zdroje** nastaven na **RelationalSource** a typ **jímky** je nastaven na **Objekt blobSink**. Dotaz SQL zadaný pro vlastnost **dotazu** vybere data za poslední hodinu ke kopírování.
+Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby používala vstupní a výstupní datové sady a má naplánované spuštění na každou hodinu. V definici JSON kanálu je typ **zdroje** nastavený na **RelationalSource** a typ **jímky** je nastavený na **BlobSink**. Dotaz SQL zadaný pro vlastnost **dotazu** vybere data během uplynulé hodiny ke zkopírování.
 
 ```json
 {
@@ -275,60 +275,60 @@ Kanál obsahuje aktivitu kopírování, která je nakonfigurována pro použití
 }
 ```
 ## <a name="type-mapping-for-teradata"></a>Mapování typů pro Teradata
-Jak je uvedeno v článku [aktivity přesunu dat,](data-factory-data-movement-activities.md) aktivita Copy provádí automatické převody typů z typů zdrojů na typy jímek s následujícím dvoustupňovým přístupem:
+Jak je uvedeno v článku [aktivity přesunu dat](data-factory-data-movement-activities.md) , aktivita kopírování provádí automatické převody typů ze zdrojových typů do typů jímky s následujícím přístupem ke dvěma krokům:
 
-1. Převod z nativních typů zdrojů na typ .NET
-2. Převod z typu .NET na nativní typ jímky
+1. Převod z nativních zdrojových typů na typ .NET
+2. Převést z typu .NET na nativní typ jímky
 
-Při přesouvání dat do Teradata se používají následující mapování z typu Teradata na typ .NET.
+Při přesunu dat do Teradata se z typu Teradata do typu .NET použijí následující mapování.
 
 | Typ databáze Teradata | Typ rozhraní .NET Framework |
 | --- | --- |
 | Char |Řetězec |
-| Clob |Řetězec |
-| Grafické |Řetězec |
-| Varchar |Řetězec |
-| VarGrafika |Řetězec |
-| Objekt blob |Bajt[] |
-| Byte |Bajt[] |
-| VarByte |Bajt[] |
-| Bigint |Int64 |
-| Bajt |Int16 |
+| Datový typ CLOB |Řetězec |
+| Objekty |Řetězec |
+| VarChar |Řetězec |
+| VarGraphic |Řetězec |
+| Objekt blob |Byte [] |
+| Byte |Byte [] |
+| VarByte |Byte [] |
+| BigInt |Int64 |
+| ByteInt |Int16 |
 | Desetinné číslo |Desetinné číslo |
 | Double |Double |
 | Integer |Int32 |
 | Číslo |Double |
-| Smallint |Int16 |
+| SmallInt |Int16 |
 | Datum |DateTime |
 | Time |TimeSpan |
 | Čas s časovým pásmem |Řetězec |
 | Časové razítko |DateTime |
 | Časové razítko s časovým pásmem |DateTimeOffset |
 | Den intervalu |TimeSpan |
-| Interval den od hodiny |TimeSpan |
-| Interval den na minutu |TimeSpan |
-| Interval den až druhý |TimeSpan |
-| Intervalová hodina |TimeSpan |
-| Interval od hodiny do minuty |TimeSpan |
-| Interval hodinu až sekunda |TimeSpan |
-| Intervalová minuta |TimeSpan |
-| Interval minuta až sekunda |TimeSpan |
-| Interval druhý |TimeSpan |
-| Intervalový rok |Řetězec |
-| Interval rok od měsíce |Řetězec |
-| Interval měsíc |Řetězec |
-| Období (datum) |Řetězec |
-| Období (čas) |Řetězec |
+| Každý den v intervalu hodiny |TimeSpan |
+| Interval mezi dny a minutou |TimeSpan |
+| Druhý den intervalu |TimeSpan |
+| Hodina intervalu |TimeSpan |
+| Interval – hodina až minuta |TimeSpan |
+| Hodina intervalu sekund |TimeSpan |
+| Minuta intervalu |TimeSpan |
+| Interval – minuta sekunda |TimeSpan |
+| Interval sekund |TimeSpan |
+| Interval – rok |Řetězec |
+| Interval od roku do měsíce |Řetězec |
+| Měsíc intervalu |Řetězec |
+| Tečka (datum) |Řetězec |
+| Tečka (čas) |Řetězec |
 | Období (čas s časovým pásmem) |Řetězec |
-| Období (časové razítko) |Řetězec |
-| Období (časové razítko s časovým pásmem) |Řetězec |
+| Tečka (časové razítko) |Řetězec |
+| Tečka (časové razítko s časovým pásmem) |Řetězec |
 | XML |Řetězec |
 
-## <a name="map-source-to-sink-columns"></a>Mapovat zdroj pro jímací sloupce
-Další informace o mapování sloupců ve zdrojové datové sadě na sloupce v datové sadě jímky najdete [v tématu Mapování sloupců datových sad v Azure Data Factory](data-factory-map-columns.md).
+## <a name="map-source-to-sink-columns"></a>Mapovat zdroj na sloupce jímky
+Další informace o mapování sloupců ve zdrojové datové sadě na sloupce v datové sadě jímky najdete v tématu [mapování sloupců datové sady v Azure Data Factory](data-factory-map-columns.md).
 
-## <a name="repeatable-read-from-relational-sources"></a>Opakovatelné čtení ze relačních zdrojů
-Při kopírování dat z úložišť relačních dat mějte na paměti opakovatelnost, abyste se vyhnuli nezamýšleným výsledkům. V Azure Data Factory můžete znovu spustit řez ručně. Můžete také nakonfigurovat zásady opakování pro datovou sadu tak, aby řez je znovu spustit, když dojde k selhání. Při opětovném spuštění řezu v obou směrech je třeba se ujistit, že stejná data jsou čtena bez ohledu na to, kolikrát je řez spuštěn. Viz [Opakovatelné čtení z relačních zdrojů](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+## <a name="repeatable-read-from-relational-sources"></a>Opakované čtení z relačních zdrojů
+Při kopírování dat z relačních úložišť dat mějte na paměti, že se vyhnete nezamýšleným výsledkům. V Azure Data Factory můžete řez znovu spustit ručně. Můžete také nakonfigurovat zásady opakování pro datovou sadu, aby se řez znovu opakoval, když dojde k selhání. Při opětovném spuštění řezu v obou případech je nutné zajistit, že stejná data budou čtena bez ohledu na to, kolikrát je řez spuštěn. Viz [opakované čtení z relačních zdrojů](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
-## <a name="performance-and-tuning"></a>Výkon a ladění
-[V tématu Průvodce sledováním výkonu & optimalizací se](data-factory-copy-activity-performance.md) dozvíte o klíčových faktorech, které ovlivňují výkon přesunu dat (aktivita kopírování) ve Službě Azure Data Factory, a o různých způsobech jeho optimalizace.
+## <a name="performance-and-tuning"></a>Výkon a optimalizace
+Další informace o klíčových faktorech, které mají vliv na výkon přesunu dat (aktivita kopírování) v Azure Data Factory a různých způsobech jejich optimalizace, najdete v tématu [Průvodce optimalizací aktivity kopírování &](data-factory-copy-activity-performance.md) .

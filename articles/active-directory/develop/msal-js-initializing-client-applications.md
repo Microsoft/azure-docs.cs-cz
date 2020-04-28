@@ -1,7 +1,7 @@
 ---
-title: Inicializovat klientské aplikace MSAL.js | Azure
+title: Inicializovat klientské aplikace MSAL. js | Azure
 titleSuffix: Microsoft identity platform
-description: Informace o inicializaci klientských aplikací pomocí Knihovny Microsoft Authentication Library pro JavaScript (MSAL.js).
+description: Seznamte se s inicializací klientských aplikací pomocí knihovny Microsoft Authentication Library pro JavaScript (MSAL. js).
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,28 +14,28 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: fbd700c787a844fa7538ed198f76ed5c06af2c28
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81010150"
 ---
-# <a name="initialize-client-applications-using-msaljs"></a>Inicializovat klientské aplikace pomocí souboru MSAL.js
-Tento článek popisuje inicializaci knihovny Microsoft Authentication Library pro JavaScript (MSAL.js) s instancí aplikace user-agent. Aplikace user-agent je forma veřejné klientské aplikace, ve které je klientský kód spuštěn v uživatelském agentovi, jako je například webový prohlížeč. Tito klienti neukládají tajné klíče, protože kontext prohlížeče je otevřeně přístupný. Další informace o typech klientských aplikací a možnostech konfigurace aplikace naleznete v [přehledu](msal-client-applications.md).
+# <a name="initialize-client-applications-using-msaljs"></a>Inicializace klientských aplikací pomocí MSAL. js
+Tento článek popisuje inicializaci knihovny Microsoft Authentication Library pro JavaScript (MSAL. js) s instancí aplikace uživatelského agenta. Aplikace User-Agent je forma veřejné klientské aplikace, ve které se klientský kód spouští v uživatelském agentovi, jako je webový prohlížeč. Tito klienti neukládají tajné kódy, protože kontext prohlížeče je otevřený. Další informace o typech klientských aplikací a možnostech konfigurace aplikací najdete v [přehledu](msal-client-applications.md).
 
 ## <a name="prerequisites"></a>Požadavky
-Před inicializací aplikace ji musíte nejdřív zaregistrovat na [portálu Azure,](scenario-spa-app-registration.md) aby se vaše aplikace mohla integrovat s platformou identit Microsoftu. Po registraci budete možná potřebovat následující informace (které najdete na webu Azure Portal):
+Před inicializací aplikace je nejdřív potřeba [ji zaregistrovat s Azure Portal](scenario-spa-app-registration.md) , aby bylo možné aplikaci integrovat s platformou Microsoft identity. Po registraci možná budete potřebovat následující informace (které najdete v Azure Portal):
 
-- ID klienta (řetězec představující identifikátor GUID pro vaši aplikaci)
-- Adresa URL poskytovatele identity (s názvem instance) a přihlašovací cílovou skupinu pro vaši aplikaci. Tyto dva parametry jsou souhrnně označovány jako autorita.
-- ID klienta, pokud píšete obchodní aplikaci výhradně pro vaši organizaci (také s názvem aplikace s jedním tenantem).
-- Pro webové aplikace budete muset také nastavit přesměrováníUri, kde se poskytovatel identity vrátí do vaší aplikace pomocí tokenů zabezpečení.
+- ID klienta (řetězec představující GUID vaší aplikace)
+- Adresa URL zprostředkovatele identity (pojmenovaná instance) a cílová skupina pro přihlášení k vaší aplikaci. Tyto dva parametry jsou souhrnně známé jako autorita.
+- ID tenanta, pokud píšete obchodní aplikaci výhradně pro vaši organizaci (nazývá se jenom jediná aplikace tenanta).
+- U webových aplikací budete muset také nastavit redirectUri, kde se poskytovatel identity vrátí do vaší aplikace s tokeny zabezpečení.
 
 ## <a name="initializing-applications"></a>Inicializace aplikací
 
-MSAL.js můžete použít následujícím způsobem v jednoduché aplikaci JavaScript/Typescript. Inicializovat kontext ověřování MSAL `UserAgentApplication` vytvořením instance pomocí konfiguračního objektu. Minimální požadovaná konfigurace pro inicializaci souboru MSAL.js je clientID vaší aplikace, které byste měli získat z portálu pro registraci aplikací.
+MSAL. js můžete použít následujícím způsobem v jednoduché aplikaci JavaScript/TypeScript. Inicializujte kontext ověřování MSAL vytvořením `UserAgentApplication` instance s objektem konfigurace. Minimální požadovaná konfigurace pro inicializaci MSAL. js je clientID vaší aplikace, kterou byste měli získat z portálu pro registraci aplikací.
 
-Pro metody ověřování s`loginRedirect` toky přesměrování ( a `acquireTokenRedirect`), v MSAL.js 1.2.x nebo starší, `handleRedirectCallback()` budete muset explicitně zaregistrovat zpětné volání pro úspěch nebo chybu prostřednictvím metody. To je potřeba, protože toky přesměrování nevracejí sliby jako metody s vyskakovací prostředí. To se stalo volitelné v MSAL.js verze 1.3.0.
+Pro metody ověřování pomocí toků přesměrování (`loginRedirect` a `acquireTokenRedirect`), v MSAL. js 1.2. x nebo starší, budete muset explicitně zaregistrovat zpětné volání pro úspěch nebo chybu prostřednictvím `handleRedirectCallback()` metody. To je potřeba, protože toky přesměrování nevrací příslibů jako metody s místním prostředím. Tato verze se stala volitelným v MSAL. js verze 1.3.0.
 
 ```javascript
 // Configuration object constructed
@@ -56,11 +56,11 @@ function authCallback(error, response) {
 myMSALObj.handleRedirectCallback(authCallback);
 ```
 
-Soubor MSAL.js je navržen tak, aby `UserAgentApplication` měl jednu instanci a konfiguraci, která představuje jeden kontext ověřování. Více instancí se nedoporučuje, protože způsobují konfliktní položky mezipaměti a chování v prohlížeči.
+MSAL. js je navržen tak, aby měl jedinou instanci a konfiguraci `UserAgentApplication` pro reprezentaci jediného kontextu ověřování. Více instancí se nedoporučuje, protože způsobují konfliktní položky a chování mezipaměti v prohlížeči.
 
 ## <a name="configuration-options"></a>Možnosti konfigurace
 
-Soubor MSAL.js má níže uvedený konfigurační objekt, který poskytuje `UserAgentApplication`seskupení konfigurovatelných možností, které jsou k dispozici pro vytvoření instance aplikace .
+MSAL. js má níže uvedený objekt konfigurace, který poskytuje seskupení konfigurovatelných možností, které jsou k dispozici pro `UserAgentApplication`vytvoření instance.
 
 ```javascript
 type storage = "localStorage" | "sessionStorage";
@@ -105,40 +105,40 @@ export type Configuration = {
 };
 ```
 
-Níže je uveden celkový počet konfigurovatelných možností, které jsou aktuálně podporovány v objektu config:
+Níže je uvedená celková sada konfigurovatelných možností, které jsou aktuálně podporovány v objektu config:
 
-- **clientID**: Povinné. ClientID vaší aplikace, měli byste si to z portálu registrace aplikace.
+- **clientID**: požadováno. ClientID vaší aplikace byste měli získat z portálu pro registraci aplikací.
 
-- **orgán**: Nepovinné. Adresa URL označující adresář, ze kterého může služba MSAL požadovat tokeny. Výchozí hodnota `https://login.microsoftonline.com/common`je: .
-    * Ve službě Azure AD je&lt;ve&gt;/&lt;&gt;formuláři &lt;&gt; https:// instancí cílové skupiny `https://login.microsoftonline.com`, &lt;&gt; kde instance je doména zprostředkovatele identity (například) a cílová skupina je identifikátor představující cílovou skupinu pro přihlášení. To může být následující hodnoty:
-        * `https://login.microsoftonline.com/<tenant>`- tenant je doména přidružená k tenantovi, například `TenantID` contoso.onmicrosoft.com nebo identifikátor GUID představující vlastnost adresáře, který slouží pouze k přihlášení uživatelů určité organizace.
-        * `https://login.microsoftonline.com/common`- Používá se k přihlášení uživatelů pomocí pracovních a školních účtů nebo osobního účtu Microsoft.
-        * `https://login.microsoftonline.com/organizations/`- Používá se k přihlášení uživatelů pomocí pracovních a školních účtů.
-        * `https://login.microsoftonline.com/consumers/`- Používá se k přihlášení uživatelů pouze s osobním účtem Microsoft (live).
-    * V Azure AD B2C je `https://<instance>/tfp/<tenant>/<policyName>/`ve formuláři , kde instance je doména Azure AD B2C, tj. {název tenanta}.b2clogin.com, tenant je název klienta Azure AD B2C, tj.
+- **autorita**: volitelné. Adresa URL označující adresář, ze kterého může MSAL žádat o tokeny. Výchozí hodnota je: `https://login.microsoftonline.com/common`.
+    * &lt;Ve službě Azure AD se jedná o cílovou skupinu&gt;/&lt;&gt;https://instance, kde &lt;je instance&gt; doménou poskytovatele identity (například `https://login.microsoftonline.com`) a &lt;cílová skupina&gt; je identifikátor reprezentující cílovou skupinu přihlášení. Může se jednat o následující hodnoty:
+        * `https://login.microsoftonline.com/<tenant>`-tenant je doména přidružená ke klientovi, jako je například contoso.onmicrosoft.com, nebo identifikátor GUID představující `TenantID` vlastnost adresáře, který se používá pouze pro přihlášení uživatelů určité organizace.
+        * `https://login.microsoftonline.com/common`– Slouží k přihlašování uživatelů pomocí pracovních a školních účtů nebo osobního účtu Microsoft.
+        * `https://login.microsoftonline.com/organizations/`– Slouží k přihlašování uživatelů pomocí pracovních a školních účtů.
+        * `https://login.microsoftonline.com/consumers/`– Slouží k přihlášení uživatelů pouze pomocí osobního účet Microsoft (živé).
+    * V Azure AD B2C má formu `https://<instance>/tfp/<tenant>/<policyName>/`, kde instance je doména Azure AD B2C, například {Your-tenant-Name}. b2clogin. com, tenant je název Azure AD B2Cho tenanta, tj. {your-tenant-Name}.. Microsoft. com, Policy je název zásady B2C, která se má použít.
 
 
-- **validateAuthority**: Nepovinné.  Ověřte vystavittele tokenů. Výchozí je `true`. Pro aplikace B2C, protože hodnota autority je známa a může se lišit podle zásad, `false`ověření orgánu nebude fungovat a musí být nastaveno na .
+- **validateAuthority**: volitelné.  Ověření vystavitele tokenů. Výchozí je `true`. Pro B2C aplikace, protože je hodnota autority známá a může se lišit podle zásad, ověření platnosti autority nebude fungovat a musí být nastavená na `false`.
 
-- **redirectUri**: Volitelné.  Identifikátor URI přesměrování vaší aplikace, kde mohou být odpovědi na ověřování odesílány a přijímány vaší aplikací. Musí přesně odpovídat jednomu z identifikátorů URI přesměrování, které jste zaregistrovali na portálu. Výchozí hodnota `window.location.href`je na .
+- **redirectUri**: volitelné.  Identifikátor URI pro přesměrování vaší aplikace, ve kterém může vaše aplikace odesílat a přijímat odpovědi na ověřování. Musí přesně odpovídat jednomu z identifikátorů URI přesměrování, které jste zaregistrovali na portálu. Výchozí hodnota `window.location.href`je.
 
-- **postLogoutRedirectUri**: Volitelné.  Přesměruje uživatele `postLogoutRedirectUri` po odhlášení. Výchozí hodnota `redirectUri`je .
+- **postLogoutRedirectUri**: volitelné.  Přesměruje uživatele na `postLogoutRedirectUri` po odhlášení. Výchozí hodnota je `redirectUri`.
 
-- **navigateToLoginRequestUrl**: Volitelné. Možnost vypnout výchozí navigaci na úvodní stránku po přihlášení. Platí výchozí hodnota. Používá se pouze pro přesměrovávat toky.
+- **navigateToLoginRequestUrl**: volitelné. Možnost vypnout výchozí navigaci na úvodní stránku po přihlášení. Platí výchozí hodnota. Používá se pouze pro toky přesměrování.
 
-- **cacheLocation**: Volitelné.  Nastaví úložiště `localStorage` prohlížeče `sessionStorage`na jedno nebo . Výchozí formát je `sessionStorage`.
+- **cacheLocation**: volitelné.  Nastaví úložiště prohlížeče na buď `localStorage` nebo `sessionStorage`. Výchozí formát je `sessionStorage`.
 
-- **storeAuthStateInCookie**: Nepovinné.  Tento příznak byl zaveden v MSAL.js v0.2.2 jako oprava [problémů s ověřovací smyčkou](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#1-issues-due-to-security-zones) v aplikaci Microsoft Internet Explorer a Microsoft Edge. Povolte `storeAuthStateInCookie` příznak true využít této opravy. Pokud je tato možnost povolena, soubor MSAL.js uloží stav požadavku ověření požadovaný pro ověření toků ověření v souborech cookie prohlížeče. Ve výchozím nastavení je `false`tento příznak nastaven na hodnotu .
+- **storeAuthStateInCookie**: volitelné.  Tento příznak byl představen v MSAL. js v 0.2.2 jako oprava pro problémy ve [smyčce ověřování](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#1-issues-due-to-security-zones) v aplikaci Microsoft Internet Explorer a Microsoft Edge. Pokud chcete tuto `storeAuthStateInCookie` opravu využít, povolte příznak na hodnotu true. Pokud je tato možnost povolena, bude MSAL. js ukládat stav žádosti o ověření, který je vyžadován pro ověření toků ověřování v souborech cookie prohlížeče. Ve výchozím nastavení je tento příznak nastaven `false`na hodnotu.
 
-- **logger**: Volitelné.  A Logger objekt s instanci zpětného volání, které mohou být poskytnuty vývojář využívat a publikovat protokoly vlastním způsobem. Podrobnosti o předávání objektu protokolování naleznete [v tématu protokolování pomocí souboru msal.js](msal-logging.md).
+- **protokolovací**nástroj: volitelné.  Objekt protokolovacího nástroje s instancí zpětného volání, kterou může vývojář poskytnout pro využívání a publikování protokolů vlastním způsobem. Podrobnosti o předávání objektu protokolovacího nástroje naleznete v tématu [protokolování pomocí msal. js](msal-logging.md).
 
-- **loadFrameTimeout**: Volitelné.  Počet milisekund nečinnosti před odpověď obnovení tokenu z Azure AD by měly být považovány za vypršení časového doby. Výchozí hodnota je 6 sekund.
+- **loadFrameTimeout**: volitelné.  Časový limit počtu milisekund nečinnosti, než má být odpověď na obnovení tokenu z Azure AD považována za časový limit. Výchozí hodnota je 6 sekund.
 
-- **tokenRenewalOffsetSeconds**: Volitelné. Počet milisekund, které nastaví okno posunu potřebné k obnovení tokenu před vypršením platnosti. Výchozí hodnota je 300 milisekund.
+- **tokenRenewalOffsetSeconds**: volitelné. Počet milisekund, které nastaví posunutí okna potřebné k obnovení tokenu před vypršením platnosti. Výchozí hodnota je 300 milisekund.
 
-- **navigateFrameWait**: Volitelné. Počet milisekund, které nastaví čekací dobu, než skryté iframe přejde na cíl. Výchozí hodnota je 500 milisekund.
+- **navigateFrameWait**: volitelné. Počet milisekund, které nastaví dobu čekání před tím, než skryté prvky IFrame přejdou do jejich cíle. Výchozí hodnota je 500 milisekund.
 
-Ty platí pouze pro předání z knihovny obalů MSAL Angular:
-- **nechráněné zdroje**: Volitelné.  Pole identifikátorů URI, které jsou nechráněnými prostředky. MSAL nepřipojí token k odchozím požadavkům, které mají tyto identifikátory URI. Výchozí hodnota `null`je na .
+Ty se dají použít jenom v případě, že se má předávat z MSALové knihovny obálek:
+- **unprotectedResources**: volitelné.  Pole identifikátorů URI, které jsou nechráněné prostředky. MSAL nebude připojovat token k odchozím žádostem, které mají tento identifikátor URI. Výchozí hodnota `null`je.
 
-- **protectedResourceMap**: Volitelné.  Toto je mapování prostředků na obory používané MSAL pro automatické připojení přístupových tokenů ve volání webového rozhraní API. Pro prostředek je získán jeden přístupový token. Můžete tedy namapovat konkrétní cestu prostředkuhttps://graph.microsoft.com/v1.0/metakto: {" ", ["user.read"]}nebo adresuhttps://graph.microsoft.com/URL aplikace prostředku jako: {" ", ["user.read", "mail.send"]}. To je vyžadováno pro volání CORS. Výchozí hodnota `null`je na .
+- **protectedResourceMap**: volitelné.  Jedná se o mapování prostředků na obory používané MSALem pro automatické připojení tokenů přístupu v voláních webového rozhraní API. Pro prostředek se získá jeden přístupový token. Můžete tedy mapovat konkrétní cestu prostředku následujícím způsobem: {"https://graph.microsoft.com/v1.0/me", ["User. Read"]} nebo adresa URL aplikace prostředku jako: {"https://graph.microsoft.com/", ["User. Read", "mail. Send"]}. To se vyžaduje pro volání CORS. Výchozí hodnota `null`je.

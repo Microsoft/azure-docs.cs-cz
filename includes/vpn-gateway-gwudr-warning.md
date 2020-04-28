@@ -9,10 +9,10 @@ ms.date: 09/28/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 97fde67c3ac7649418ed0239a2c7aa4f1a4b3f96
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81274851"
 ---
-Uživatelem definované trasy s cílem 0.0.0.0/0 a skupiny nsg v síti GatewaySubnet **nejsou podporovány**. Brány vytvořené pomocí této konfigurace budou blokovány od vytvoření. Brány vyžadují přístup k řadičům správy, aby správně fungovaly. [Šíření trasy Protokolu BGP](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#border-gateway-protocol) by mělo být nastaveno na možnost "Povoleno" v síti GatewaySubnet, aby byla zajištěna dostupnost brány. Pokud je tato funkce zakázána, brána nebude fungovat.
+Trasy definované uživatelem s cíli 0.0.0.0/0 a skupin zabezpečení sítě v GatewaySubnet nejsou **podporovány**. Pro brány vytvořené s touto konfigurací budou zablokovány vytváření. Brány vyžadují přístup k řadičům pro správu, aby fungovaly správně. [Šíření trasy protokolu BGP](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#border-gateway-protocol) by mělo být na GatewaySubnet nastaveno na povoleno, aby se zajistila dostupnost brány. Pokud je tato nastavení zakázaná, brána nebude fungovat.

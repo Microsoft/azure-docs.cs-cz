@@ -6,17 +6,17 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.author: mimart
 ms.openlocfilehash: 4e03d076fc9ed7d87326a4c8b4f8bf6c0b21c750
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79126737"
 ---
 ## <a name="disable-email-verification"></a>Zakázání ověření e-mailu
 
-Ve výchozím nastavení Azure Active Directory B2C (Azure AD B2C) ověřuje e-mailovou adresu zákazníka pro místní účty (účty pro uživatele, kteří se zaregistrují pomocí e-mailové adresy nebo uživatelského jména). Azure AD B2C zajišťuje platné e-mailové adresy tím, že vyžaduje, aby zákazníci ověřit během procesu registrace. Také zabraňuje škodlivým aktérům používat automatizované procesy ke generování podvodných účtů ve vašich aplikacích.
+Ve výchozím nastavení Azure Active Directory B2C (Azure AD B2C) ověřuje e-mailovou adresu vašeho zákazníka u místních účtů (účty pro uživatele, kteří se registrují pomocí e-mailové adresy nebo uživatelského jména). Azure AD B2C zajišťuje platné e-mailové adresy tím, že je vyžaduje, aby je uživatelé během procesu registrace ověřili. Zabraňuje také škodlivým aktérům v použití automatizovaných procesů ke generování podvodných účtů ve vašich aplikacích.
 
-Někteří vývojáři aplikací dávají přednost přeskočení ověření e-mailu během procesu registrace a místo toho mají zákazníci ověřit svou e-mailovou adresu později. Pro podporu tohoto, Azure AD B2C můžete nakonfigurovat zakázat ověření e-mailu. Tím se vytvoří hladší proces registrace a vývojářům poskytne flexibilitu k odlišení zákazníků, kteří ověřili svou e-mailovou adresu od zákazníků, kteří tak neučinili.
+Někteří vývojáři aplikací chtějí během procesu registrace přeskočit ověřování e-mailu a místo toho můžou e-mailové adresy ověřit později. V případě potřeby je Azure AD B2C možné nakonfigurovat pro zákaz ověřování e-mailů. Tím dojde k vytvoření plynulého procesu registrace a vývojářům umožníte odlišit zákazníky, kteří si ověřili jejich e-mailovou adresu od zákazníků, kteří ne.
 
 > [!WARNING]
-> Zakázání ověření e-mailu v procesu registrace může vést k spamu. Pokud zakážete výchozí ověření e-mailu poskytované Azure AD B2C, doporučujeme implementovat náhradní ověřovací systém.
+> Vypnutí ověřování e-mailu v procesu registrace může vést k spamu. Pokud zakážete výchozí ověřování e-mailů poskytnutých Azure AD B2C, doporučujeme implementovat systém náhradního ověřování.

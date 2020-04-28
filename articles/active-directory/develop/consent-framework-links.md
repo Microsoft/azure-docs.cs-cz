@@ -1,6 +1,6 @@
 ---
-title: Jak funguje souhlas s aplikací
-description: Další informace o tom, jak funguje architektura souhlasu Azure AD, abyste zjistili, jak ho můžete používat při vývoji aplikací ve službě Azure AD
+title: Jak funguje souhlas aplikace
+description: Přečtěte si další informace o tom, jak prostředí pro vyjádření souhlasu Azure AD funguje, abyste zjistili, jak ho můžete používat při vývoji aplikací v Azure AD.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,22 +12,22 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: ryanwi
 ms.openlocfilehash: 86b592ecf5485654ab6860addbfde48cee4df077
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885544"
 ---
-# <a name="how-application-consent-works"></a>Jak funguje souhlas s aplikací
+# <a name="how-application-consent-works"></a>Jak funguje souhlas aplikace
 
-Tento článek vám pomůže získat další informace o tom, jak funguje architektura souhlasu Azure AD, takže můžete efektivněji vyvíjet aplikace.
+Tento článek vám umožní získat další informace o tom, jak architektura pro vyjádření souhlasu Azure AD funguje, abyste mohli efektivněji vyvíjet aplikace.
 
 ## <a name="recommended-documents"></a>Doporučené dokumenty
 
-- Získejte obecné znalosti o tom, [jak souhlas umožňuje vlastníkovi prostředku řídit přístup aplikace k prostředkům](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#consent).
-- Získejte podrobný přehled o tom, [jak architektura souhlasu Azure AD implementuje souhlas](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
-- Pro větší hloubku se dozvíte, [jak víceklientská aplikace můžete použít rozhraní souhlasu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) k implementaci souhlasu "uživatel" a "správce", podpora pokročilejší vícevrstvé aplikace vzory.
-- Pro větší hloubku se dozvíte, [jak je souhlas podporován ve vrstvě protokolu OAuth 2.0 během toku udělení autorizačního kódu.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code#request-an-authorization-code)
+- Získejte Obecné informace o [tom, jak souhlas umožňuje vlastníkovi prostředku řídit přístup k prostředkům aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#consent).
+- Získejte podrobný přehled o [tom, jak rozhraní pro vyjádření souhlasu Azure AD implementuje souhlas](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
+- Podrobnější informace najdete v článku [o tom, jak aplikace pro více tenantů může používat souhlasu architektury](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) k implementaci souhlasu "User" a "admin", který podporuje pokročilejší vzory vícevrstvých aplikací.
+- Podrobnější informace najdete [v tématu o tom, jak je podpora podporovaná na úrovni protokolu OAuth 2,0 během toku udělení autorizačního kódu.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code#request-an-authorization-code)
 
 ## <a name="next-steps"></a>Další kroky
-[Přetečení zásobníku AzureAD](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

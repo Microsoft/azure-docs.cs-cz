@@ -1,33 +1,33 @@
 ---
-title: Zobrazit protokoly spuštění úloh – úkoly
-description: Jak zobrazit a spravovat protokoly spuštění generované úkoly ACR.
+title: Zobrazit protokoly spuštění úlohy – úlohy
+description: Jak zobrazit a spravovat protokoly spuštění generované ACR úkoly
 ms.topic: article
 ms.date: 03/09/2020
 ms.openlocfilehash: f7098f470a3f8a0cdac019f4bf8eb8fe14330337
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79246965"
 ---
 # <a name="view-and-manage-task-run-logs"></a>Zobrazení a správa protokolů spuštění úloh
 
-Každá úloha spuštěná v [úlohách registru kontejnerů Azure](container-registry-tasks-overview.md) generuje výstup protokolu, který můžete zkontrolovat a zjistit, zda byly kroky úlohy úspěšně spuštěny. 
+Každý běh úlohy v [Azure Container Registry úlohy](container-registry-tasks-overview.md) generuje výstup protokolu, který můžete zkontrolovat, abyste zjistili, jestli se kroky úlohy úspěšně spustily. 
 
 Tento článek vysvětluje, jak zobrazit a spravovat protokoly spuštění úloh.
 
-## <a name="view-streamed-logs"></a>Zobrazení streamovaných protokolů
+## <a name="view-streamed-logs"></a>Zobrazit protokoly streamování
 
-Při ručním spuštění úlohy je výstup protokolu přenášen přímo do konzoly. Pokud například spustíte úlohu ručně pomocí příkazu [az acr build](/cli/azure/acr#az-acr-build), [az acr run](/cli/azure/acr#az-acr-run)nebo [az acr task run,](/cli/azure/acr/task#az-acr-task-run) zobrazí se výstup protokolu vysílaný do konzoly. 
+Při ručním spuštění úlohy se výstup protokolu vysílá přímo do konzoly. Pokud například aktivujete úlohu ručně pomocí příkazu [AZ ACR Build](/cli/azure/acr#az-acr-build), [AZ ACR Run](/cli/azure/acr#az-acr-run)nebo [AZ ACR Task Run](/cli/azure/acr/task#az-acr-task-run) , zobrazí se výstup protokolu do konzoly. 
 
-Následující ukázkový příkaz [az acr run](/cli/azure/acr#az-acr-run) ručně spustí úlohu, která spouští kontejner vytažený ze stejného registru:
+Následující ukázka [AZ ACR Run](/cli/azure/acr#az-acr-run) Command ručně aktivuje úlohu, která spouští kontejner získaný ze stejného registru:
 
 ```azurecli
 az acr run --registry mycontainerregistry1220 \
   --cmd '$Registry/samples/hello-world:v1' /dev/null
 ```
 
-Streamovaný protokol:
+Protokol streamování:
 
 ```console
 Queued a run with ID: cf4
@@ -58,21 +58,21 @@ Run ID: cf4 was successful after 5s
 
 ## <a name="view-stored-logs"></a>Zobrazit uložené protokoly 
 
-Úložiště registru kontejnerů Azure spouštějí protokoly pro všechny úlohy. Uložené protokoly spuštění můžete zobrazit na webu Azure Portal. Nebo pomocí příkazu [az acr protokoly úloh](/cli/azure/acr/task#az-acr-task-logs) zobrazte vybraný protokol. Ve výchozím nastavení jsou protokoly uchovávány po dobu 30 dnů.
+Azure Container Registry ukládá protokoly spuštění pro všechny úlohy. Uložené protokoly spuštění můžete zobrazit v Azure Portal. Případně můžete pomocí příkazu [AZ ACR Task logs](/cli/azure/acr/task#az-acr-task-logs) zobrazit vybraný protokol. Ve výchozím nastavení se protokoly uchovávají po dobu 30 dnů.
 
-Pokud je úloha automaticky spuštěna, například aktualizací zdrojového kódu, je přístup k uloženým protokolům *jediným* způsobem, jak zobrazit protokoly spuštění. Mezi automatické aktivační události úloh patří potvrzení zdrojového kódu nebo žádosti o přijetí získat do kupy, aktualizace základní bitové kopie a aktivační události časovače.
+Pokud se úloha spustí automaticky, například při aktualizaci zdrojového kódu, přístup k uloženým protokolům je *jediným* způsobem, jak zobrazit protokoly spuštění. Automatické triggery úkolů zahrnují potvrzení zdrojového kódu nebo žádosti o přijetí změn, základní aktualizace obrázků a triggery časovače.
 
 Zobrazení protokolů spuštění na portálu:
 
-1. Přejděte do registru kontejnerů.
-1. Ve **službě Services**vyberte příkaz **Spouští úlohy** > **Runs**.
-1. Chcete-li zobrazit stav spuštění a spustit protokoly, vyberte **id spuštění.** Protokol obsahuje stejné informace jako datový proud protokolu, pokud je generován.
+1. Přejděte do registru kontejneru.
+1. V **služby**vyberte možnost **Tasks** > **spuštěné**úlohy.
+1. Vyberte **ID spuštění** pro zobrazení stavu spuštění a protokolů spuštění. Pokud je vygenerováno, protokol obsahuje stejné informace jako protokol streamování.
 
-![Zobrazit přihlašovací portál spuštění úlohy](./media/container-registry-tasks-logs/portal-task-run-logs.png)
+![Zobrazit portál pro přihlášení ke spuštění úlohy](./media/container-registry-tasks-logs/portal-task-run-logs.png)
 
-Chcete-li zobrazit protokol pomocí příkazového příkazu k onomu Azure CLI, [spusťte protokoly úloh az acr](/cli/azure/acr/task#az-acr-task-logs) a zadejte ID spuštění, název úlohy nebo konkrétní bitovou kopii vytvořit úlohou sestavení. Pokud je zadán název úlohy, příkaz zobrazí protokol pro poslední vytvořené spuštění.
+Pokud chcete zobrazit protokol pomocí Azure CLI, spusťte [protokol AZ ACR Task log](/cli/azure/acr/task#az-acr-task-logs) a zadejte ID spuštění, název úlohy nebo konkrétní obrázek, který vytvoří úloha sestavení. Je-li zadán název úlohy, příkaz zobrazí protokol posledního vytvořeného spuštění.
 
-Následující příklad výstupy protokolu pro spuštění s ID *cf4*:
+Následující příklad vypíše výstup protokolu pro běh s ID *CF4*:
 
 ```azurecli
 az acr task logs --registry mycontainerregistry1220 \
@@ -81,9 +81,9 @@ az acr task logs --registry mycontainerregistry1220 \
 
 ## <a name="alternative-log-storage"></a>Alternativní úložiště protokolů
 
-Můžete chtít uložit protokoly spuštění úloh v místním systému souborů nebo použít alternativní řešení archivace, jako je Azure Storage.
+Můžete chtít uložit protokoly spuštění úkolů v místním systému souborů nebo použít alternativní řešení archivace, například Azure Storage.
 
-Můžete například vytvořit místní adresář *tasklogů* a přesměrovat výstup [protokolů úloh az acr](/cli/azure/acr/task#az-acr-task-logs) do místního souboru:
+Vytvořte například místní adresář *tasklogs* a přesměrujte výstup [protokolu AZ ACR Task log](/cli/azure/acr/task#az-acr-task-logs) do místního souboru:
 
 ```azurecli
 mkdir ~/tasklogs
@@ -92,12 +92,12 @@ az acr task logs --registry mycontainerregistry1220 \
   --run-id cf4 > ~/tasklogs/cf4.log
 ```
 
-Můžete také uložit místní soubory protokolu do služby Azure Storage. Například použijte [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md), [portál Azure](../storage/blobs/storage-quickstart-blobs-portal.md)nebo jiné metody k nahrání souborů do účtu úložiště.
+Do Azure Storage můžete ukládat i místní soubory protokolů. Například můžete použít rozhraní příkazového [řádku Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md), [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md)nebo jiné metody pro nahrání souborů do účtu úložiště.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o [úlohách registru kontejnerů Azure](container-registry-tasks-overview.md)
+* Další informace o [úlohách Azure Container Registry](container-registry-tasks-overview.md)
 
 <!-- LINKS - External -->
 [base-alpine]: https://hub.docker.com/_/alpine/

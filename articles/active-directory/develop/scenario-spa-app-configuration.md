@@ -1,6 +1,6 @@
 ---
-title: Konfigurace jednostránkové aplikace – platforma identit Microsoftu | Azure
-description: Přečtěte si, jak vytvořit jednostránkovou aplikaci (konfigurace kódu aplikace)
+title: Konfigurace jednostránkové aplikace – Microsoft Identity Platform | Azure
+description: Naučte se vytvářet jednostránkové aplikace (konfigurace kódu aplikace).
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -12,28 +12,28 @@ ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: f159105046231ba5fb4e458cdd70d930a411a920
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80882331"
 ---
-# <a name="single-page-application-code-configuration"></a>Jednostránková aplikace: Konfigurace kódu
+# <a name="single-page-application-code-configuration"></a>Jednostránkové aplikace: Konfigurace kódu
 
-Přečtěte si, jak nakonfigurovat kód pro jednostránkovou aplikaci (SPA).
+Naučte se konfigurovat kód pro jednostránkové aplikace (SPA).
 
-## <a name="msal-libraries-that-support-implicit-flow"></a>Knihovny MSAL, které podporují implicitní tok
+## <a name="msal-libraries-that-support-implicit-flow"></a>MSAL knihovny podporující implicitní tok
 
-Platforma identit společnosti Microsoft poskytuje následující knihovny Microsoft Authentication Library (MSAL), které podporují implicitní tok pomocí postupů zabezpečení doporučených oborem:
+Platforma Microsoft Identity poskytuje následující knihovny Microsoft Authentication Library (MSAL) pro podporu implicitního toku pomocí doporučených postupů zabezpečení v oboru:
 
 | Knihovna MSAL | Popis |
 |--------------|--------------|
-| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)  | Plain JavaScript knihovna pro použití v každém klient-side webové aplikace, která je postavena prostřednictvím JavaScript nebo SPA frameworks jako Angular, Vue.js a React.js. |
-| ![MSAL Úhlové](media/sample-v2-code/logo_angular.png) <br/> [MSAL Úhlové](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | Obálka základní knihovny MSAL.js pro zjednodušení použití v jednostránkových aplikacích, které jsou vytvořeny prostřednictvím úhlového rámce. |
+| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)  | Prostá knihovna JavaScriptu pro použití v jakékoli webové aplikaci na straně klienta, která je sestavena prostřednictvím rozhraní JavaScript nebo SPA, jako je například úhlová Vue. js, a reaguje. js. |
+| ![MSALý úhlový](media/sample-v2-code/logo_angular.png) <br/> [MSALý úhlový](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | Obálka základní knihovny MSAL. js pro zjednodušení použití v aplikacích s jednou stránkou, které jsou sestaveny prostřednictvím úhlové architektury. |
 
 ## <a name="application-code-configuration"></a>Konfigurace kódu aplikace
 
-V knihovně MSAL jsou informace o registraci aplikace předány jako konfigurace během inicializace knihovny.
+V knihovně MSAL jsou informace o registraci aplikace předány jako konfigurace při inicializaci knihovny.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -50,9 +50,9 @@ const config = {
 const userAgentApplication = new UserAgentApplication(config);
 ```
 
-Další informace o konfigurovatelných možnostech naleznete v [tématu Inicializace aplikace pomocí souboru MSAL.js](msal-js-initializing-client-applications.md).
+Další informace o konfigurovatelných možnostech naleznete v tématu [inicializace aplikace pomocí MSAL. js](msal-js-initializing-client-applications.md).
 
-# <a name="angular"></a>[Úhlová](#tab/angular)
+# <a name="angular"></a>[Angular](#tab/angular)
 
 ```javascript
 // App.module.ts

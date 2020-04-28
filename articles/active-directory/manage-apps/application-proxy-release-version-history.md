@@ -1,6 +1,6 @@
 ---
-title: 'Proxy aplikace Azure AD: Historie verzí vydání | Dokumenty společnosti Microsoft'
-description: Tento článek obsahuje seznam všech verzí proxy aplikací Azure AD a popisuje nové funkce a opravené problémy
+title: 'Azure Proxy aplikací služby AD: Historie vydání verze | Microsoft Docs'
+description: V tomto článku jsou uvedené všechny verze Azure Proxy aplikací služby AD a popisuje nové funkce a opravené problémy.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,95 +17,95 @@ ms.subservice: app-mgmt
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f027fbce66a73306165a0ad35d1ba3faa7a5c0bc
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80983887"
 ---
-# <a name="azure-ad-application-proxy-version-release-history"></a>Proxy aplikace Azure AD: Historie verzí vydání
-Tento článek uvádí verze a funkce proxy aplikací Azure Active Directory (Azure AD), které byly vydány. Tým Azure AD pravidelně aktualizuje proxy aplikace s novými funkcemi a funkcemi. Konektory proxy aplikací jsou automaticky aktualizovány při vydání nové verze. 
+# <a name="azure-ad-application-proxy-version-release-history"></a>Azure Proxy aplikací služby AD: Historie verzí
+V tomto článku jsou uvedeny verze a funkce služby Azure Active Directory (Azure AD) proxy aplikací, které byly vydány. Tým Azure AD pravidelně aktualizuje proxy aplikace s novými funkcemi a funkcemi. Konektory proxy aplikací se aktualizují automaticky, když se uvolní nová verze. 
 
-Doporučujeme zajistit, aby byly pro vaše konektory povoleny automatické aktualizace, abyste měli k dispozici nejnovější funkce a opravy chyb. Společnost Microsoft poskytuje přímou podporu pro poslední verzi konektoru a jednu verzi před.
+Doporučujeme, abyste se ujistili, že pro vaše konektory jsou povolené automatické aktualizace, abyste měli jistotu, že máte nejnovější funkce a opravy chyb. Společnost Microsoft poskytuje přímou podporu pro poslední verzi konektoru a jednu verzi.
 
-Zde je seznam souvisejících zdrojů:
+Tady je seznam souvisejících prostředků:
 
 Prostředek |  Podrobnosti
 --------- | --------- |
-Jak povolit proxy aplikace | Předpoklady pro povolení proxy aplikace a instalaci a registraci konektoru jsou popsány v tomto [kurzu](application-proxy-add-on-premises-application.md).
-Principy konektorů proxy aplikací Azure AD | Další informace o [správě konektorů](application-proxy-connectors.md) a o [automatickém upgradu](application-proxy-connectors.md#automatic-updates)konektorů .
-Konektor proxy aplikace Azure AD ke stažení |  [Stáhněte si nejnovější konektor](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download).
+Jak povolit proxy aplikace | V tomto [kurzu](application-proxy-add-on-premises-application.md)jsou popsány předpoklady pro povolení proxy aplikací a instalace a registrace konektoru.
+Vysvětlení konektorů Azure Proxy aplikací služby AD | Přečtěte si další informace o [správě konektorů](application-proxy-connectors.md) a o tom, jak konektory [automaticky upgradují](application-proxy-connectors.md#automatic-updates).
+Stažení konektoru služby Azure Proxy aplikací služby AD |  [Stáhněte si nejnovější konektor](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download).
 
 ## <a name="1515260"></a>1.5.1526.0
 
 ### <a name="release-status"></a>Stav verze
 
-Duben 07, 2020: Vydáno ke stažení
+7. dubna 2020: vydáno ke stažení
 
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
--   Konektory používají tls 1.2 pouze pro všechna připojení. Další podrobnosti najdete [v tématu Požadavky konektoru.](application-proxy-add-on-premises-application.md#before-you-begin)
-- Vylepšená signalizace mezi konektorem a službami Azure. To zahrnuje podporu spolehlivé relace pro komunikaci WCF mezi konektorem a službami Azure a vylepšení ukládání DO mezipaměti DNS pro komunikaci WebSocket.
-- Podpora konfigurace proxy mezi konektorem a back-endovou aplikací. Další informace naleznete v [tématu Práce s existujícími místními proxy servery](application-proxy-configure-connectors-with-proxy-servers.md).
+-   Konektory používají pouze TLS 1,2 pro všechna připojení. Další podrobnosti najdete v tématu [požadavky konektoru](application-proxy-add-on-premises-application.md#before-you-begin) .
+- Vylepšené signalizace mezi konektorem a službami Azure. To zahrnuje podporu spolehlivých relací pro komunikaci WCF mezi konektorem a službami Azure a vylepšení mezipaměti protokolu DNS pro komunikaci pomocí protokolu WebSocket.
+- Podpora konfigurace proxy serveru mezi konektorem a aplikací back-end. Další informace najdete v tématu [práce se stávajícími místními proxy servery](application-proxy-configure-connectors-with-proxy-servers.md).
 
 ### <a name="fixed-issues"></a>Oprava potíží
-- Odebráno, když se vrátíte na port 8080 pro komunikaci ze služby Konektor do Služby Azure.
-- Přidány trasování ladění pro komunikaci WebSocket. 
-- Vyřešeno zachování atributu SameSite při nastavení souborů cookie back-endové aplikace.
+- Odebral se návrat k portu 8080 pro komunikaci z konektoru se službami Azure.
+- Přidání trasování ladění pro komunikaci protokolu WebSocket. 
+- Bylo vyřešeno zachování atributu SameSite při nastavení v souborech cookie aplikace back-endu.
 
 ## <a name="156120"></a>1.5.612.0
 
 ### <a name="release-status"></a>Stav verze
 
-Září 20, 2018: Vydáno ke stažení
+20. září 2018: vydáno ke stažení
 
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
 
-- Přidána podpora WebSocket pro aplikaci QlikSense. Další informace o integraci technologie QlikSense s proxy aplikací naleznete v tomto [návodu](application-proxy-qlik.md). 
-- Byl vylepšen průvodce instalací, aby bylo snazší konfigurovat odchozí proxy server. 
-- Nastavte TLS 1.2 jako výchozí protokol pro konektory. 
-- Byla přidána nová licenční smlouva s koncovým uživatelem (EULA).  
+- Přidání podpory protokolu WebSocket pro aplikaci QlikSense Další informace o tom, jak integrovat QlikSense s proxy aplikací, najdete v tomto [návodu](application-proxy-qlik.md). 
+- Vylepšený průvodce instalací, který usnadňuje konfiguraci odchozího proxy serveru. 
+- Jako výchozí protokol pro konektory nastavte TLS 1,2. 
+- Přidala se nová licenční smlouva s koncovým uživatelem (EULA).  
 
 ### <a name="fixed-issues"></a>Oprava potíží
 
-- Opravena chyba, která způsobovala nevracení paměti v konektoru.
-- Byla aktualizována verze služby Azure Service Bus, která zahrnuje opravu chyb pro problémy s časovým časem konektoru.
+- Opravili jsme chybu, která způsobila nevracení paměti v konektoru.
+- Aktualizace verze Azure Service Bus, která zahrnuje opravu chyby pro problémy s časovým limitem konektoru.
 
 ## <a name="154020"></a>1.5.402.0
 
 ### <a name="release-status"></a>Stav verze
 
-Leden 19, 2018: Vydáno ke stažení
+19. ledna 2018: vydáno ke stažení
 
 ### <a name="fixed-issues"></a>Oprava potíží
 
-- Byla přidána podpora pro vlastní domény, které potřebují překlad domény v souboru cookie.
+- Přidání podpory pro vlastní domény, které potřebují překlad domény v souboru cookie.
 
 ## <a name="151320"></a>1.5.132.0
 
 ### <a name="release-status"></a>Stav verze 
 
-Květen 25, 2017: Vydáno ke stažení 
+25. května 2017: vydáno ke stažení 
 
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení 
 
-Vylepšená kontrola nad limity odchozího připojení konektorů. 
+Vylepšená kontrola nad omezeními odchozího připojení konektorů. 
 
 ## <a name="15360"></a>1.5.36.0
 
 ### <a name="release-status"></a>Stav verze
 
-15. dubna 2017: Vydáno ke stažení
+15. dubna 2017: vydáno ke stažení
 
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
 
-- Zjednodušené zařazování a správa s menším počtem požadovaných portů. Proxy aplikace nyní vyžaduje otevření pouze dvou standardních odchozích portů: 443 a 80. Proxy aplikace nadále používá pouze odchozí připojení, takže stále nepotřebujete žádné součásti v DMZ. Podrobnosti naleznete v naší [konfigurační dokumentaci](application-proxy-add-on-premises-application.md).  
-- Pokud je to podporováno externím proxy serverem nebo bránou firewall, můžete nyní otevřít síť pomocí služby DNS namísto rozsahu IP adres. Služby proxy aplikací vyžadují pouze připojení k *.msappproxy.net a *.servicebus.windows.net.
+- Zjednodušená připojování a správa s menším počtem požadovaných portů. Proxy aplikace nyní vyžaduje otevření pouze dvou standardních odchozích portů: 443 a 80. Proxy aplikace i nadále používá pouze odchozí připojení, takže stále nepotřebujete žádné součásti v DMZ. Podrobnosti najdete v naší [dokumentaci ke konfiguraci](application-proxy-add-on-premises-application.md).  
+- Pokud to vaše externí proxy server nebo brána firewall podporuje, můžete teď síť otevřít pomocí DNS místo rozsahu IP adres. Služba proxy aplikací vyžaduje připojení pouze k *. msappproxy.net a *. servicebus.windows.net.
 
 
-## <a name="earlier-versions"></a>Dřívější verze
+## <a name="earlier-versions"></a>Starší verze
 
-Pokud používáte konektor proxy aplikace verze starší než 1.5.36.0, aktualizujte na nejnovější verzi a ujistěte se, že máte nejnovější plně podporované funkce.
+Pokud používáte aplikační konektor proxy verze starší než 1.5.36.0, aktualizujte na nejnovější verzi, abyste měli jistotu, že máte nejnovější plně podporované funkce.
 
 ## <a name="next-steps"></a>Další kroky
-- Další informace o [vzdáleném přístupu k místním aplikacím prostřednictvím proxy aplikací Azure AD](application-proxy.md).
-- Informace o spuštění proxy aplikace naleznete v [tématu Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace](application-proxy-add-on-premises-application.md).
+- Přečtěte si další informace o [vzdáleném přístupu k místním aplikacím prostřednictvím Azure proxy aplikací služby AD](application-proxy.md).
+- Pokud chcete začít používat proxy aplikace, přečtěte si téma [kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikací](application-proxy-add-on-premises-application.md).

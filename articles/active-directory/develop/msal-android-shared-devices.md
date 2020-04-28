@@ -1,7 +1,7 @@
 ---
 title: Režim sdíleného zařízení pro zařízení s Androidem
 titleSuffix: Microsoft identity platform | Azure
-description: Přečtěte si, jak povolit režim sdíleného zařízení, aby mohli pracovníci Firstline sdílet zařízení Android.
+description: Naučte se povolit režim sdíleného zařízení, aby Firstline pracovníci mohli sdílet zařízení s Androidem.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
 ms.openlocfilehash: d9874e27c21906512c2f6c841767b4d6591dbeaf
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80550263"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Režim sdíleného zařízení pro zařízení s Androidem
@@ -27,43 +27,43 @@ ms.locfileid: "80550263"
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Firstline Pracovníci, jako jsou maloobchodní partneři, členové letové posádky a pracovníci terénních služeb, často používají ke své práci sdílené mobilní zařízení. To se stává problematickým, když začnou sdílet hesla nebo pinová čísla pro přístup k zákaznickým a obchodním datům na sdíleném zařízení.
+Firstline pracovní procesy, jako jsou maloobchodníci, členové posádky a pracovníci polních služeb často používají ke své práci sdílené mobilní zařízení. To bude problematické, když začnou sdílet hesla nebo čísla PIN pro přístup k datům zákazníků a podnikových dat na sdíleném zařízení.
 
-Režim sdíleného zařízení umožňuje konfigurovat zařízení Android tak, aby jej mohlo snadno sdílet více zaměstnanců. Zaměstnanci se mohou rychle přihlásit a získat přístup k informacím o zákaznících. Po dokončení směny nebo úkolu se mohou odhlásit ze zařízení a bude okamžitě připraveno pro dalšího zaměstnance.
+Režim sdíleného zařízení umožňuje nakonfigurovat zařízení se systémem Android tak, aby ho bylo možné snadno sdílet s více zaměstnanci. Zaměstnanci se můžou rychle přihlašovat a přistupovat k informacím o zákaznících. Až se dokončí s jejich přesunutím nebo úlohou, můžou se odhlásit ze zařízení a okamžitě se připraví k používání dalšího zaměstnance.
 
-Režim sdíleného zařízení také poskytuje správu zařízení podporovanou identitou společnosti Microsoft.
+Režim sdíleného zařízení taky poskytuje zpětnou správu v rámci identity Microsoftu.
 
-Pokud chcete vytvořit aplikaci pro režim sdíleného zařízení, vývojáři a správci cloudových zařízení spolupracují:
+Pokud chcete vytvořit sdílenou aplikaci v režimu zařízení, vývojáři a správci cloudových zařízení spolupracují:
 
-- Vývojáři píší aplikaci s jedním účtem (aplikace s více `"shared_device_mode_supported": true` s is mařivé matné služby nejsou v režimu sdíleného zařízení podporované), přidají se do konfigurace aplikace a napíší kód pro zpracování věcí, jako je odhlášení ze sdíleného zařízení.
-- Správci zařízení připraví zařízení ke sdílení instalací ověřovací aplikace a nastavením zařízení do sdíleného režimu pomocí ověřovací aplikace. Pouze uživatelé, kteří jsou v roli [Správce cloudových zařízení,](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator-permissions) mohou zařízení převést do sdíleného režimu pomocí [aplikace Authenticator](../user-help/user-help-auth-app-overview.md). Členství v organizačních rolích na webu Azure Portal můžete nakonfigurovat prostřednictvím: Role **Služby Azure Active Directory** > a**Správce cloudových zařízení****Správci správců služby Administrators** > .
+- Vývojáři napsané aplikace s jedním účtem (aplikace s více účty se v režimu sdíleného zařízení nepodporují), přidají `"shared_device_mode_supported": true` do konfigurace aplikace a napíší kód, který bude zpracovávat věci, jako je třeba přihlášení ke sdílenému zařízení.
+- Správci zařízení připraví zařízení pro sdílení instalací ověřovací aplikace a nastavením zařízení do sdíleného režimu pomocí ověřovací aplikace. Pouze uživatelé, kteří jsou v roli [správce cloudového zařízení](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator-permissions) , mohou do sdíleného režimu umístit zařízení pomocí [ověřovací aplikace](../user-help/user-help-auth-app-overview.md). Členství v organizačních rolích můžete nakonfigurovat v Azure Portal prostřednictvím: **Azure Active Directory** > **role a správci** > **správce cloudového zařízení**.
 
- Tento článek se zaměřuje především na to, co by vývojáři měli přemýšlet.
+ Tento článek se zaměřuje především na to, co by si vývojáři měli představit.
 
-## <a name="single-vs-multiple-account-applications"></a>Aplikace s jedním vs více účtů
+## <a name="single-vs-multiple-account-applications"></a>Jednotlivé aplikace s více účty vs.
 
-Aplikace napsané pomocí sady Microsoft Authentication Library SDK (MSAL) mohou spravovat jeden účet nebo více účtů. Podrobnosti viz [režim jednoho účtu nebo režim více účtů](single-multi-account.md). Funkce platformy identit microsoftu, které jsou k dispozici pro vaši aplikaci, se liší v závislosti na tom, jestli je aplikace spuštěná v režimu s jedním účtem nebo v režimu s více svícením.
+Aplikace napsané pomocí sady Microsoft MSAL Library SDK () můžou spravovat jeden nebo víc účtů. Podrobnosti najdete v tématu [režim jednoho účtu nebo režim vícenásobného účtu](single-multi-account.md). Funkce Microsoft Identity Platform, které jsou dostupné pro vaši aplikaci, se liší v závislosti na tom, jestli je aplikace spuštěná v režimu jednoho účtu nebo v režimu vícenásobného účtu.
 
 **Aplikace v režimu sdíleného zařízení fungují pouze v režimu s jedním účtem**.
 
 > [!IMPORTANT]
-> Aplikace, které podporují pouze režim více účtů, nelze spustit na sdíleném zařízení. Pokud zaměstnanec načte aplikaci, která nepodporuje režim s jedním účtem, nespustí se na sdíleném zařízení.
+> Aplikace, které podporují jenom režim více účtů, nejde na sdíleném zařízení spustit. Pokud zaměstnanec načte aplikaci, která nepodporuje režim jednoho účtu, nespustí se na sdíleném zařízení.
 >
-> Aplikace napsané před vydáním sady MSAL SDK byly spuštěny v režimu s více účtůmi a před spuštěním na zařízení se sdíleným režimem je nutné je aktualizovat tak, aby podporovaly režim s jedním účtem.
+> Aplikace napsané před vydáním sady MSAL SDK byly vydány v režimu více účtů a je nutné je aktualizovat tak, aby podporovaly režim jednoho účtu, než bude možné spustit na zařízení se sdíleným režimem.
 
-**Podpora jak s jedním, tak s více účty**
+**Podpora jednoho účtu i několika účtů**
 
-Vaše aplikace může být vytvořena tak, aby podporovala běh na osobních i sdílených zařízeních. Pokud vaše aplikace aktuálně podporuje více účtů a chcete podporovat režim sdíleného zařízení, přidejte podporu pro režim jednoho účtu.
+Vaše aplikace může být sestavená tak, aby podporovala provoz na osobních zařízeních i ve sdílených zařízeních. Pokud vaše aplikace aktuálně podporuje víc účtů a chcete podporovat režim sdíleného zařízení, přidejte podporu pro režim jednoho účtu.
 
-Můžete také chtít, aby vaše aplikace změnila své chování v závislosti na typu zařízení, na kterém běží. Slouží `ISingleAccountPublicClientApplication.isSharedDevice()` k určení, kdy se má spustit v režimu s jedním účtem.
+V závislosti na typu zařízení, na kterém je spuštěný, můžete také chtít, aby vaše aplikace změnila jeho chování. Použijte `ISingleAccountPublicClientApplication.isSharedDevice()` k určení, kdy se má spustit v režimu jednoho účtu.
 
-Existují dvě různá rozhraní, které představují typ zařízení, na kterých je vaše aplikace. Když požadujete instanci aplikace z továrny aplikace MSAL, je automaticky k dispozici správný aplikační objekt.
+Existují dvě různá rozhraní, která představují typ zařízení, ve kterém je vaše aplikace zapnutá. Když vyžádáte instanci aplikace z objektu pro vytváření aplikací MSAL, je automaticky poskytnut správný objekt aplikace.
 
-Následující objektový model ilustruje typ objektu, který můžete obdržet, a jeho prostředky v kontextu sdíleného zařízení:
+Následující objektový model znázorňuje typ objektu, který můžete obdržet, a to znamená v kontextu sdíleného zařízení:
 
 ![model dědičnosti aplikace veřejného klienta](media/v2-shared-device-mode/ipublic-client-app-inheritance.png)
 
-Budete muset udělat kontrolu typu a obsazení na příslušné rozhraní, když se dostanete objekt. `PublicClientApplication` Následující kód kontroluje režim více účtů nebo režim jednoho účtu a přetypování aplikačního objektu odpovídajícím způsobem:
+Při získávání `PublicClientApplication` objektu budete muset provést kontrolu typu a přetypovat na příslušné rozhraní. Následující kód kontroluje režim více účtů nebo režim jednoho účtu a odpovídajícím způsobem přetypování objektu aplikace:
 
 ```java
 private IPublicClientApplication mApplication;
@@ -79,33 +79,33 @@ private IPublicClientApplication mApplication;
         }
 ```
 
-V závislosti na tom, jestli je aplikace spuštěná na sdíleném nebo osobním zařízení, platí následující rozdíly:
+V závislosti na tom, jestli je vaše aplikace spuštěná na sdíleném nebo osobním zařízení, platí následující rozdíly:
 
 |  | Zařízení sdíleného režimu  | Osobní zařízení |
 |---------|---------|---------|
-| **Účty**     | Jeden účet | Více účtů |
+| **Účty**     | Jeden účet | Několik účtů |
 | **Přihlášení** | Globální | Globální |
-| **Odhlašovací** | Globální | Každá aplikace může řídit, pokud je odhlášení místní do aplikace nebo pro rodinu aplikací. |
-| **Podporované typy účtu** | Pouze pracovní účty | Podporované osobní a pracovní účty  |
+| **Odhlášení** | Globální | Každá aplikace může řídit, jestli je odhlášení místní pro aplikaci nebo pro rodinu aplikací. |
+| **Podporované typy účtu** | Pouze pracovní účty | Podpora osobních a pracovních účtů  |
 
-## <a name="why-you-may-want-to-only-support-single-account-mode"></a>Proč můžete chtít podporovat pouze režim jednoho účtu
+## <a name="why-you-may-want-to-only-support-single-account-mode"></a>Proč je možné, že budete chtít podporovat jenom režim jednoho účtu
 
-Pokud píšete aplikaci, která se bude používat pouze pro pracovníky první linie, kteří používají sdílené zařízení, doporučujeme napsat aplikaci pouze pro podporu režimu s jedním účtem. To zahrnuje většinu aplikací, které jsou zaměřené na úkoly, jako jsou aplikace lékařských záznamů, fakturační aplikace a většina obchodních aplikací. Vývoj zjednodušuje pouze podpora režimu s jedním účtem, protože nebudete muset implementovat další funkce, které jsou součástí aplikací s více účtůmi.
+Pokud vytváříte aplikaci, která se bude používat jenom pro pracovní pracovníky Firstline pomocí sdíleného zařízení, doporučujeme napsat aplikaci tak, aby podporovala pouze režim jednoho účtu. To zahrnuje většinu aplikací, které jsou zaměřeny na úlohy, jako jsou lékařské záznamy aplikací, fakturační aplikace a většina obchodních aplikací. Pouze podpora režimu jednoho účtu zjednodušuje vývoj, protože nebudete muset implementovat další funkce, které jsou součástí aplikací s více účty.
 
 ## <a name="what-happens-when-the-device-mode-changes"></a>Co se stane, když se změní režim zařízení
 
-Pokud je aplikace spuštěna v režimu s více účty a správce přepne zařízení do režimu sdíleného zařízení, všechny účty v zařízení jsou vymazány z aplikace a aplikace přechází do režimu jednoho účtu.
+Pokud vaše aplikace běží v režimu více účtů a Správce zařízení vloží do režimu sdíleného zařízení, všechny účty v zařízení se z aplikace vymažou a aplikace přejde do režimu jednoho účtu.
 
-## <a name="shared-device-sign-out-and-the-overall-app-lifecycle"></a>Odhlášení sdíleného zařízení a celkový životní cyklus aplikace
+## <a name="shared-device-sign-out-and-the-overall-app-lifecycle"></a>Přihlášení ke sdílenému zařízení a celkový životní cyklus aplikace
 
-Když se uživatel odhlásí, budete muset podniknout kroky k ochraně soukromí a dat uživatele. Pokud například vytváříte aplikaci pro lékařské záznamy, budete se chtít ujistit, že když se uživatel odhlásí z dříve zobrazených záznamů o pacientech, budou vymazány. Vaše žádost musí být připravena pro toto a zkontrolujte pokaždé, když vstoupí do popředí.
+Když se uživatel odhlásí, budete muset provést akci, která ochrání soukromí a data uživatele. Pokud například vytváříte aplikaci se zdravotnickými záznamy, budete chtít zajistit, aby se v případě, že uživatel odhlásí dříve zobrazené záznamy o pacientech, zrušili. Vaše aplikace musí být připravená pro tuto kontrolu a kontrolovat pokaždé, když vstoupí do popředí.
 
-Když vaše aplikace používá MSAL k odhlášení uživatele v aplikaci spuštěné na zařízení, které je ve sdíleném režimu, přihlašovací účet a tokeny uložené v mezipaměti se odeberou z aplikace i zařízení.
+Když vaše aplikace používá MSAL k odhlášení uživatele v aplikaci běžící na zařízení, které je ve sdíleném režimu, přihlášený účet a tokeny uložené v mezipaměti se odeberou z aplikace i ze zařízení.
 
-Následující diagram znázorňuje celkový životní cyklus aplikace a běžné události, které mohou nastat při spuštění aplikace. Diagram popisuje od okamžiku spuštění aktivity, přihlášení a odhlášení účtu a způsob, jakým události, jako je pozastavení, obnovení a zastavení aktivity, zapadají.
+Následující diagram znázorňuje celkový životní cyklus aplikace a běžné události, které mohou nastat při spuštění aplikace. Diagram se zabývá tím, kdy se spustí aktivita, přihlašuje se a Odhlašujete k účtu a jakým způsobem se připadá na události, jako je pozastavení, obnovení a zastavování aktivity.
 
 ![Životní cyklus aplikace sdíleného zařízení](media/v2-shared-device-mode/lifecycle.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Zkuste [použít režim sdíleného zařízení v](tutorial-v2-shared-device-mode.md) kurzu aplikace pro Android, který ukazuje, jak spustit pracovní aplikaci firstline na sdíleném režimu zařízení Android.
+Vyzkoušejte si kurz [použití sdíleného zařízení v kurzu aplikace pro Android](tutorial-v2-shared-device-mode.md) , který ukazuje, jak spustit aplikaci Firstline Worker na zařízení s Androidem ve sdíleném režimu.

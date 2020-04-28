@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
 ms.openlocfilehash: 9d74ea2b967112a794cda204cbbfcac707e1d7c4
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80879458"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Plán připravenosti služby Azure Security Center
@@ -73,7 +73,7 @@ Video
 * [Řešení problémů zabezpečení pomocí Azure Security Center](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Mitigating-Security-Issues-using-Azure-Security-Center)
 
 ### <a name="security-center-for-incident-response"></a>Security Center a reakce na incidenty
-Chcete-li snížit náklady a poškození, je důležité mít před útokem na místě plán reakce na incidenty. Azure Security Center můžete využít v různých fázích reakce na incidenty.
+Aby se snížily náklady a škody, je důležité mít na úmyslu plán reakce na incidenty, než dojde k útoku. Azure Security Center můžete využít v různých fázích reakce na incidenty.
 
 Následující zdroje vám pomůžou porozumět tomu, jak zapojit Security Center do vašich procesů reakce na incidenty.
 
@@ -83,20 +83,20 @@ Videa
 
 Články    
 * [Využití Azure Security Center při reakci na incidenty](https://docs.microsoft.com/azure/security-center/security-center-incident-response)
-* [Automatizace odpovědí pomocí automatizace pracovních postupů](workflow-automation.md)
+* [Automatizace reakce díky automatizaci pracovního postupu](workflow-automation.md)
 
 ## <a name="advanced-cloud-defense"></a>Pokročilá obrana cloudu
 
-Virtuální počítače Azure můžou využít výhod pokročilé cloudové obrany, které Security Center nabízí. Mezi tyto funkce patří přístup k virtuálnímu počítači (VM) za čase a adaptivní ovládací prvky aplikací.
+Virtuální počítače Azure můžou využít výhod pokročilé cloudové obrany, které Security Center nabízí. Tyto možnosti zahrnují přístup k virtuálnímu počítači (VM) za běhu a adaptivní řízení aplikací.
 
 V následujících zdrojích se dozvíte, jak tyto možnosti ve službě Security Center využít.
 
 Videa    
-* [Azure Security Center – přístup k virtuálním počítačům za chvíli](https://youtu.be/UOQb2FcdQnU)
+* [Azure Security Center – přístup k virtuálnímu počítači za běhu](https://youtu.be/UOQb2FcdQnU)
 * [Azure Security Center – Adaptivní řízení aplikací](https://youtu.be/wWWekI1Y9ck)
 
 Články    
-* [Správa přístupu k virtuálním strojům pomocí možnosti just-in-time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
+* [Správa přístupu k virtuálnímu počítači pomocí za běhu](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
 * [Adaptivní řízení aplikací v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
 
 ## <a name="hands-on-activities"></a>Praktické aktivity
@@ -114,7 +114,7 @@ Videa
 * [Osvědčené postupy zabezpečení sítě](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices)
 * [Doporučení k PaaS](https://docs.microsoft.com/azure/security/security-paas-deployments)
 * [Dodržování předpisů](https://www.microsoft.com/trustcenter/compliance/due-diligence-checklist)
-* [Log analytics zákazníci teď můžou pomocí Azure Security Center chránit své hybridní cloudové úlohy.](https://blogs.technet.microsoft.com/msoms/2017/09/25/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads/)
+* [Zákazníci Log Analytics teď můžou použít Azure Security Center k ochraně svých hybridních cloudových úloh.](https://blogs.technet.microsoft.com/msoms/2017/09/25/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads/)
 
 ## <a name="community-resources"></a>Komunitní zdroje
 

@@ -1,6 +1,6 @@
 ---
-title: Ověření propustnost sítě VPN do virtuální sítě Microsoft Azure
-description: Účelem tohoto dokumentu je pomoci uživateli ověřit propustnost sítě z jejich místních prostředků do virtuálního počítače Azure.
+title: Ověření propustnosti sítě VPN pro Microsoft Azure Virtual Network
+description: Účelem tohoto dokumentu je pomáhat uživateli ověřit propustnost sítě z místních prostředků na virtuální počítač Azure.
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -11,67 +11,67 @@ ms.date: 05/29/2019
 ms.author: radwiv
 ms.reviewer: chadmat;genli
 ms.openlocfilehash: dcf86deda32069bf9711dbeb733dc9361e22a771
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80631767"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Ověření propustnosti sítě VPN do virtuální sítě
 
-Připojení brány VPN umožňuje navázat zabezpečené a mezimístní připojení mezi virtuální sítí v rámci Azure a místní IT infrastrukturou.
+Připojení brány VPN umožňuje vytvořit zabezpečené připojení mezi různými místy Virtual Network v rámci Azure a místní IT infrastruktury.
 
-Tento článek ukazuje, jak ověřit propustnost sítě z místních prostředků do virtuálního počítače Azure ....
+Tento článek ukazuje, jak ověřit propustnost sítě z místních prostředků na virtuální počítač Azure (VM).
 
 > [!NOTE]
-> Tento článek je určen k diagnostice a opravě běžných problémů. Pokud se vám nedaří problém vyřešit pomocí následujících informací, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+> Tento článek je určený pro pomoc s diagnostikou a řešením běžných problémů. Pokud tento problém nemůžete vyřešit pomocí následujících informací, obraťte se na [podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ## <a name="overview"></a>Přehled
 
-Připojení brány VPN zahrnuje následující součásti:
+Připojení ke službě VPN Gateway zahrnuje následující součásti:
 
-* Místní zařízení VPN (Zobrazení seznamu [ověřených zařízení VPN](vpn-gateway-about-vpn-devices.md#devicetable).)
-* Veřejný internet
-* Brána Azure VPN
+* Místní zařízení VPN (zobrazení seznamu [ověřených zařízení VPN](vpn-gateway-about-vpn-devices.md#devicetable))
+* Veřejný Internet
+* Azure VPN Gateway
 * Virtuální počítač Azure
 
 Následující diagram znázorňuje logické připojení místní sítě k virtuální síti Azure prostřednictvím sítě VPN.
 
-![Logické připojení sítě zákazníka k síti MSFT pomocí sítě VPN](./media/vpn-gateway-validate-throughput-to-vnet/VPNPerf.png)
+![Logická Konektivita sítě zákazníka k síti protokolu MSFT pomocí sítě VPN](./media/vpn-gateway-validate-throughput-to-vnet/VPNPerf.png)
 
-## <a name="calculate-the-maximum-expected-ingressegress"></a>Výpočet maximálního očekávaného příchozího přenosu/výstupu
+## <a name="calculate-the-maximum-expected-ingressegress"></a>Vypočítat maximální očekávaný počet příchozích a odchozích dat
 
-1. Určete požadavky na směrnou propustnost aplikace.
-1. Určete limity propustnost brány Azure VPN. Nápovědu najdete v části Brána skutážky v [části O bráně VPN .](vpn-gateway-about-vpngateways.md#gwsku)
-1. Určete pokyny pro [propustnost virtuálního počítače Azure](../virtual-machines/virtual-machines-windows-sizes.md) pro velikost virtuálního počítače.
+1. Určení požadavků na propustnost standardních hodnot vaší aplikace
+1. Určete omezení propustnosti Azure VPN Gateway. Nápovědu najdete v části "SKU brány" v tématu [o VPN Gateway](vpn-gateway-about-vpngateways.md#gwsku).
+1. Určete [pokyny k propustnosti virtuálních počítačů Azure](../virtual-machines/virtual-machines-windows-sizes.md) pro velikost virtuálního počítače.
 1. Určete šířku pásma poskytovatele internetových služeb (ISP).
-1. Vypočítejte očekávanou propustnost tak, že vezmete nejmenší šířku pásma virtuálního počítače, brány VPN nebo poskytovatelů. měřeno v Megabitech za sekundu (/) děleno osmi (8).
+1. Vypočítejte očekávanou propustnost tím, že vyberete minimální šířku pásma virtuálního počítače, VPN Gateway nebo poskytovatele internetových služeb. což se měří v megabajtech (/) dělených osmi (8).
 
-Pokud vypočtená propustnost nesplňuje požadavky na směrnou propustnost aplikace, je nutné zvýšit šířku pásma prostředku, který jste identifikovali jako kritické místo. Pokud chcete změnit velikost brány Azure VPN, přečtěte si informace [o změně skladové položky brány brány](vpn-gateway-about-vpn-gateway-settings.md#gwsku). Pokud chcete změnit velikost virtuálního počítače, [přečtěte si tématu Změna velikosti virtuálního počítače](../virtual-machines/virtual-machines-windows-resize-vm.md). Pokud nedochází k očekávané šířce pásma Internetu, můžete se také obrátit na svého internetového počítače.
+Pokud vypočtená propustnost nevyhovuje požadavkům na propustnost směrného plánu vaší aplikace, je nutné zvýšit šířku pásma prostředku, který jste identifikovali jako kritické místo. Pokud chcete změnit velikost VPN Gateway Azure, přečtěte si téma [Změna skladové položky brány](vpn-gateway-about-vpn-gateway-settings.md#gwsku). Pokud chcete změnit velikost virtuálního počítače, přečtěte si téma [Změna velikosti virtuálního](../virtual-machines/virtual-machines-windows-resize-vm.md)počítače. Pokud nejste u očekávané šířky pásma internetu, můžete se také obrátit na poskytovatele internetových služeb.
 
 > [!NOTE]
-> Propustnost brány VPN je agregace všech připojení Site-to-Site\VNET-to-VNET nebo Point-to-Site.
+> VPN Gateway propustnost je agregace všech Site-to-Site\VNET-to-VNET a připojení typu Point-to-site.
 
-## <a name="validate-network-throughput-by-using-performance-tools"></a>Ověření propustnostsítě pomocí nástrojů pro výkon
+## <a name="validate-network-throughput-by-using-performance-tools"></a>Ověření propustnosti sítě pomocí nástrojů pro sledování výkonu
 
-Toto ověření by mělo být provedeno během mimo špičky, protože saturace propustnost tunelového propojení VPN během testování neposkytuje přesné výsledky.
+Toto ověření by se mělo provádět v době mimo špičku, protože při testování propustnost propustnosti tunelového připojení VPN neposkytuje přesné výsledky.
 
-Nástroj, který používáme pro tento test, je iPerf, který funguje jak na Windows, tak na Linuxu a má klientský i serverový režim. Je omezena na 3Gbps pro virtuální servery se systémem Windows.
+Nástroj používaný pro tento test je iPerf, který funguje v systémech Windows i Linux a má režimy klienta i serveru. Je omezený na 3Gbps pro virtuální počítače s Windows.
 
-Tento nástroj neprovádí žádné operace čtení a zápisu na disk. Vytváří pouze vlastní generovaný přenos TCP z jednoho konce na druhý. Generuje statistiky založené na experimentování, které měří šířku pásma k dispozici mezi klientskými a serverovými uzly. Při testování mezi dvěma uzly jeden uzel funguje jako server a druhý uzel funguje jako klient. Po dokončení tohoto testu doporučujeme obrátit role uzlů a otestovat propustnost odesílání i stahování v obou uzlech.
+Tento nástroj neprovede žádné operace čtení a zápisu na disk. Výhradně vytváří samostatně generovaný provoz TCP od jednoho konce k druhému. Vygeneruje statistiku na základě experimentu, který měří šířku pásma dostupnou mezi klientským a serverovým uzlem. Při testování mezi dvěma uzly funguje jeden uzel jako server a druhý uzel funguje jako klient. Po dokončení tohoto testu doporučujeme vrátit role uzlů, abyste otestovali propustnost nahrávání i stahování obou uzlů.
 
-### <a name="download-iperf"></a>Stažení iPerf
+### <a name="download-iperf"></a>Stáhnout iPerf
 
-Stáhnout [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip). Podrobnosti viz [dokumentace iPerf](https://iperf.fr/iperf-doc.php).
+Stáhněte si [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip). Podrobnosti najdete v [dokumentaci k iPerf](https://iperf.fr/iperf-doc.php).
 
  > [!NOTE]
- > Produkty jiných výrobců popsané v tomto článku jsou vyráběny společnostmi nezávislými na společnosti Microsoft. Společnost Microsoft neposkytuje v souvislosti s výkonem a spolehlivostí těchto produktů žádnou záruku, předpokládanou ani jinou.
+ > Produkty třetích stran, které jsou popsány v tomto článku, jsou vyráběny společnostmi, které jsou nezávislé na společnosti Microsoft. Společnost Microsoft neposkytuje v souvislosti s výkonem a spolehlivostí těchto produktů žádnou záruku, předpokládanou ani jinou.
 
-### <a name="run-iperf-iperf3exe"></a>Spustit iPerf (iperf3.exe)
+### <a name="run-iperf-iperf3exe"></a>Spustit iPerf (iperf3. exe)
 
-1. Povolte pravidlo NSG/ACL umožňující provoz (pro testování veřejných IP adres na virtuálním počítači Azure).
+1. Povolit NSG/ACL pravidlo umožňující provoz (pro testování veřejné IP adresy na virtuálním počítači Azure)
 
-1. Na obou uzlech povolte výjimku brány firewall pro port 5001.
+1. V obou uzlech povolte výjimku brány firewall pro port 5001.
 
    **Windows:** Spusťte následující příkaz jako správce:
 
@@ -79,15 +79,15 @@ Stáhnout [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip). Po
    netsh advfirewall firewall add rule name="Open Port 5001" dir=in action=allow protocol=TCP localport=5001
    ```
 
-   Chcete-li pravidlo odebrat po dokončení testování, spusťte tento příkaz:
+   Chcete-li po dokončení testování odebrat pravidlo, spusťte tento příkaz:
 
    ```CMD
    netsh advfirewall firewall delete rule name="Open Port 5001" protocol=TCP localport=5001
    ```
 
-   **Azure Linux:** Image Azure Linux mají tolerantní brány firewall. Pokud je aplikace naslouchání na portu, přenos je povolena prostřednictvím. Vlastní image, které jsou zabezpečeny, mohou vyžadovat explicitně otevřené porty. Mezi běžné brány firewall na `iptables` `ufw`vrstvě `firewalld`operačního systému Linux patří , , nebo .
+   **Azure Linux:** Image Azure Linux mají opravňující brány firewall. Pokud je aplikace naslouchá na portu, je povolen přenos prostřednictvím služby. Vlastní image, které jsou zabezpečené, můžou vyžadovat explicitní otevření portů. Mezi běžné brány firewall pro Linux OS patří `iptables`, `ufw`, nebo `firewalld`.
 
-1. V uzlu serveru změňte na adresář, kde je extrahován soubor iperf3.exe. Poté spusťte iPerf v režimu serveru a nastavte jej tak, aby naslouchal na portu 5001 jako následující příkazy:
+1. V uzlu serveru přejděte do adresáře, kde je extrahována aplikace iperf3. exe. Pak spusťte iPerf v režimu serveru a nastavte ho tak, aby naslouchal na portu 5001 jako následující příkazy:
 
    ```CMD
    cd c:\iperf-3.1.2-win65
@@ -96,84 +96,84 @@ Stáhnout [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip). Po
    ```
 
    > [!Note]
-   > Port 5001 lze přizpůsobit tak, aby zohledňoval konkrétní omezení brány firewall ve vašem prostředí.
+   > Port 5001 je přizpůsobitelný pro účet pro konkrétní omezení brány firewall ve vašem prostředí.
 
-1. V klientském uzlu změňte na adresář, ve kterém je nástroj iperf extrahován, a spusťte následující příkaz:
+1. V uzlu klient přejděte do adresáře, kde je extrahován nástroj Iperf, a poté spusťte následující příkaz:
 
    ```CMD
    iperf3.exe -c <IP of the iperf Server> -t 30 -p 5001 -P 32
    ```
 
-   Klient směruje třicet sekund provozu na portu 5001 na server. Příznak '-P ' označuje, že provádíme 32 souběžných připojení k uzlu serveru.
+   Klient přesměruje třicet sekund provozu na portu 5001 na server. Příznak "-P" označuje, že provádíme 32 souběžných připojení k uzlu serveru.
 
    Následující obrazovka ukazuje výstup z tohoto příkladu:
 
    ![Výstup](./media/vpn-gateway-validate-throughput-to-vnet/06theoutput.png)
 
-1. (NEPOVINNÉ) Chcete-li zachovat výsledky testování, spusťte tento příkaz:
+1. VOLITELNÉ Chcete-li zachovat výsledky testování, spusťte tento příkaz:
 
    ```CMD
    iperf3.exe -c IPofTheServerToReach -t 30 -p 5001 -P 32  >> output.txt
    ```
 
-1. Po dokončení předchozích kroků proveďte stejné kroky s obrácenými rolemi, takže uzel serveru bude nyní klientským uzlem a naopak.
+1. Po dokončení předchozích kroků spusťte stejný postup s rolemi obráceně, aby uzel serveru byl nyní klientským uzlem, a naopak.
 
 > [!Note]
-> Iperf není jediný nástroj. [NTTTCP je alternativní řešení pro testování](https://docs.microsoft.com/azure/virtual-network/virtual-network-bandwidth-testing).
+> Iperf není jediným nástrojem. [NTTTCP je alternativní řešení pro testování](https://docs.microsoft.com/azure/virtual-network/virtual-network-bandwidth-testing).
 
-## <a name="test-vms-running-windows"></a>Testování virtuálních aplikací se systémem Windows
+## <a name="test-vms-running-windows"></a>Testovací virtuální počítače s Windows
 
-### <a name="load-latteexe-onto-the-vms"></a>Načtení souboru Latte.exe na virtuální počítač
+### <a name="load-latteexe-onto-the-vms"></a>Načtení latte. exe do virtuálních počítačů
 
-Stáhněte si nejnovější verzi [Latte.exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
+Stažení nejnovější verze nástroje [latte. exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
 
-Zvažte umístění souboru Latte.exe do samostatné složky, například`c:\tools`
+Zvažte umístění latte. exe do samostatné složky, například`c:\tools`
 
-### <a name="allow-latteexe-through-the-windows-firewall"></a>Povolit soubor Latte.exe prostřednictvím brány firewall systému Windows
+### <a name="allow-latteexe-through-the-windows-firewall"></a>Povolení latte. exe přes bránu Windows Firewall
 
-Na přijímači vytvořte pravidlo povolit v bráně Windows Firewall, které umožní doručení provozu latte.exe. Je nejjednodušší povolit celý program Latte.exe podle názvu, nikoli povolit příchozí příchozí porty TCP.
+Na přijímači vytvořte v bráně Windows Firewall pravidlo povolení, které umožní doručení provozu latte. exe. Je nejjednodušší povolit celý program latte. exe podle názvu, nikoli povolit příchozí porty TCP.
 
-### <a name="allow-latteexe-through-the-windows-firewall-like-this"></a>Povolit latte.exe prostřednictvím brány Windows Firewall, jako je tento
+### <a name="allow-latteexe-through-the-windows-firewall-like-this"></a>Povolte latte. exe přes bránu Windows Firewall jako
 
 `netsh advfirewall firewall add rule program=<PATH>\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY`
 
-Pokud jste například zkopírovali soubor latte.exe do složky "c:\tools", bude to příkaz
+Pokud jste například zkopírovali latte. exe do složky "c:\Tools", bude to příkaz
 
 `netsh advfirewall firewall add rule program=c:\tools\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY`
 
-### <a name="run-latency-tests"></a>Spuštění testů latence
+### <a name="run-latency-tests"></a>Testy latence spuštění
 
-Spuštění souboru latte.exe na přijímači (spuštění z CMD, nikoli z prostředí PowerShell):
+Spusťte latte. exe na PŘIJÍMAČi (spusťte z CMD, nikoli z PowerShellu):
 
 `latte -a <Receiver IP address>:<port> -i <iterations>`
 
-Kolem 65 kititů je dostatečně dlouhá, aby vrátila reprezentativní výsledky.
+Kolem iterací 65 KB pro je dostatečně dlouhý, aby vracely reprezentativní výsledky.
 
-Jakékoli dostupné číslo portu je v pořádku.
+Jakékoli dostupné číslo portu je přesné.
 
-Pokud má virtuální virtuální ms IP adresu 10.0.0.4, bude vypadat takto.
+Pokud má virtuální počítač IP adresu 10.0.0.4, může to vypadat takto.
 
 `latte -c -a 10.0.0.4:5005 -i 65100`
 
-Spuštění latte.exe na SENDER (spustit z CMD, ne z Prostředí PowerShell)
+Spusťte latte. exe na ODESILATELi (spusťte z CMD, ne z PowerShellu).
 
 `latte -c -a <Receiver IP address>:<port> -i <iterations>`
 
-Výsledný příkaz je stejný jako na přijímači s výjimkou přidání "-c" označující, že se jedná o "klient" nebo odesílatele
+Výsledný příkaz je stejný jako u přijímače s výjimkou přidání "-c", který označuje, že se jedná o klienta nebo odesílatele.
 
 `latte -c -a 10.0.0.4:5005 -i 65100`
 
-Počkejte na výsledky. V závislosti na tom, jak daleko od sebe virtuální chod, může trvat několik minut. Zvažte spuštění s menším počtem iterací, abyste otestovali úspěch před spuštěním delších testů.
+Počkejte na výsledky. V závislosti na tom, jak daleko se jedná o virtuální počítače, může trvat několik minut, než se dokončí. Zvažte, že začnete s menším počtem iterací a otestujete úspěch před spuštěním delších testů.
 
-## <a name="test-vms-running-linux"></a>Testování virtuálních počítačů se systémem Linux
+## <a name="test-vms-running-linux"></a>Testovací virtuální počítače se systémem Linux
 
-Použití [SockPerf](https://github.com/mellanox/sockperf) k testování virtuálních měn.
+Použijte [SockPerf](https://github.com/mellanox/sockperf) k testování virtuálních počítačů.
 
-### <a name="install-sockperf-on-the-vms"></a>Instalace SockPerf na virtuálních počítačích
+### <a name="install-sockperf-on-the-vms"></a>Instalace SockPerf na virtuální počítače
 
-Na virtuálních počítačích s Linuxem (odesílatel i příjemce) spusťte tyto příkazy a připravte sockPerf na virtuálních počítačích:
+Na virtuálních počítačích se systémem Linux (ODESÍLATEL i přijímač) spusťte tyto příkazy pro přípravu SockPerf na virtuálních počítačích:
 
-#### <a name="centos--rhel---install-git-and-other-helpful-tools"></a>CentOS / RHEL - Instalace GIT a dalších užitečných nástrojů
+#### <a name="centos--rhel---install-git-and-other-helpful-tools"></a>CentOS/RHEL – nainstalujte GIT a další užitečné nástroje
 
 `sudo yum install gcc -y -q`
 `sudo yum install git -y -q`
@@ -181,88 +181,88 @@ Na virtuálních počítačích s Linuxem (odesílatel i příjemce) spusťte ty
 `sudo yum install ncurses-devel -y`
 `sudo yum install -y automake`
 
-#### <a name="ubuntu---install-git-and-other-helpful-tools"></a>Ubuntu - Instalace GIT a dalších užitečných nástrojů
+#### <a name="ubuntu---install-git-and-other-helpful-tools"></a>Ubuntu – nainstalujte si GIT a další užitečné nástroje
 
 `sudo apt-get install build-essential -y`
 `sudo apt-get install git -y -q`
 `sudo apt-get install -y autotools-dev`
 `sudo apt-get install -y automake`
 
-#### <a name="bash---all"></a>Bash - vše
+#### <a name="bash---all"></a>Bash – vše
 
-Z příkazového řádku bash (předpokládá, že git je nainstalován)
+Z příkazového řádku bash (předpokládá instalaci Git)
 
 `git clone https://github.com/mellanox/sockperf`
 `cd sockperf/`
 `./autogen.sh`
 `./configure --prefix=`
 
-Make je pomalejší, může trvat několik minut
+Udělejte to pomaleji, může trvat několik minut.
 
 `make`
 
-Make instalace je rychlá
+Vytvoření instalace je rychlé
 
 `sudo make install`
 
-### <a name="run-sockperf-on-the-vms"></a>Spuštění sockPerf na virtuálních počítačích
+### <a name="run-sockperf-on-the-vms"></a>Spuštění SockPerf na virtuálních počítačích
 
-#### <a name="sample-commands-after-installation-serverreceiver---assumes-servers-ip-is-10004"></a>Ukázkové příkazy po instalaci. Server/přijímač - předpokládá, že IP adresa serveru je 10.0.0.4
+#### <a name="sample-commands-after-installation-serverreceiver---assumes-servers-ip-is-10004"></a>Ukázkové příkazy po instalaci. Server/přijímač – předpokládá, že IP adresa serveru je 10.0.0.4.
 
 `sudo sockperf sr --tcp -i 10.0.0.4 -p 12345 --full-rtt`
 
-#### <a name="client---assumes-servers-ip-is-10004"></a>Klient - předpokládá, že IP adresa serveru je 10.0.0.4
+#### <a name="client---assumes-servers-ip-is-10004"></a>Klient – předpokládá, že je IP adresa serveru 10.0.0.4
 
 `sockperf ping-pong -i 10.0.0.4 --tcp -m 1400 -t 101 -p 12345  --full-rtt`
 
 > [!Note]
-> Ujistěte se, že neexistují žádné mezilehlé směrování (například virtuální zařízení) během testování propustnosti mezi virtuálním počítačem a bránou.
-> Pokud existují špatné výsledky (z hlediska celkové propustnosti) pocházející z iPERF/NTTTCP testy výše, naleznete v následujícím článku pochopit klíčové faktory za možné příčiny problému:https://docs.microsoft.com/azure/virtual-network/virtual-network-tcpip-performance-tuning
+> Ujistěte se, že během testování propustnosti mezi virtuálním počítačem a bránou neexistují žádné zprostředkující segmenty (např. virtuální zařízení).
+> Pokud existují špatné výsledky (z hlediska celkové propustnosti) pocházející z výše uvedených testů iPERF/NTTTCP, přečtěte si následující článek, který vám pomůže pochopit klíčové faktory za možnými hlavními příčinami problému:https://docs.microsoft.com/azure/virtual-network/virtual-network-tcpip-performance-tuning
 
-Zejména analýza trasování sběru paketů (Wireshark/Network Monitor) shromážděná paralelně od klienta a serveru během těchto testů pomůže při hodnocení špatného výkonu. Tyto trasování může zahrnovat ztrátu paketů, vysokou latenci, velikost MTU. fragmentace, TCP 0 Window, Out of Order fragmenty a tak dále.
+Konkrétně analýza trasování paketů (Wireshark/Sledování sítě) shromážděných paralelně od klienta a serveru během těchto testů pomůže při posuzování špatného výkonu. Tato trasování můžou zahrnovat ztrátu paketů, vysokou latenci a velikost MTU. fragmentace, okno protokolu TCP 0, fragmenty mimo pořadí a tak dále.
 
-## <a name="address-slow-file-copy-issues"></a>Řešení problémů s pomalým kopírováním souborů
+## <a name="address-slow-file-copy-issues"></a>Vyřešit problémy s pomalým kopírováním souborů
 
-I v případě, že celková propustnost posuzovaná předchozími kroky (iPERF/NTTTCP/etc..) byla dobrá, může dojít k pomalému zvládání souborů při použití průzkumníka Windows nebo přetažení mačkání mačkání mj. Tento problém je obvykle způsoben jedním nebo oběma následujícími faktory:
+I v případě, že celková propustnost vyhodnocená pomocí předchozích kroků (iPERF/NTTTCP/atd.) byla dobrá, může docházet ke zpomalení souboru kopírování při použití Průzkumníka Windows nebo přetahování přes relaci RDP. K tomuto problému obvykle dochází v důsledku jednoho nebo obou následujících faktorů:
 
-* Aplikace pro kopírování souborů, například Průzkumník Windows a RDP, při kopírování souborů nepoužívají více vláken. Pro lepší výkon použijte vícevláknovou aplikaci pro kopírování souborů, jako je [Richcopy,](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) ke kopírování souborů pomocí 16 nebo 32 vláken. Chcete-li změnit číslo vlákna pro kopírování souborů v richcopy, klepněte na**možnosti kopírovat položky** >  **Akce** > **Kopírování souborů**.
+* Kopírování souborů aplikace, jako je například Průzkumník Windows nebo RDP, nepoužívají při kopírování souborů více vláken. Pro lepší výkon použijte vícevláknovou aplikaci kopírování souborů, například [RichCopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) , ke kopírování souborů pomocí 16 nebo 32 vláken. Pokud chcete změnit číslo vlákna pro kopírování souborů v RichCopy, klikněte na **Akce** > kopírovat**Možnosti** > kopírování**souborů**.
 
-   ![Problémy s pomalým kopírováním souborů](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
+   ![Pomalé problémy při kopírování souborů](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
 
    > [!Note]
-   > Ne všechny aplikace fungují stejně a ne všechny aplikace/proces využívá všechna vlákna. Pokud spustíte test, můžete vidět, že některá vlákna jsou prázdná a neposkytují přesné výsledky propustnost.
-   > Chcete-li zkontrolovat výkon přenosu souboru aplikace, použijte více vlákna zvýšením # vlákna za sebou nebo snížení, aby bylo možné najít optimální propustnost aplikace nebo přenosu souborů.
+   > Ne všechny aplikace pracují stejně, a ne všechny aplikace nebo procesy využívají všechna vlákna. Pokud spustíte test, můžete vidět, že některá vlákna jsou prázdná a neposkytují přesné výsledky propustnosti.
+   > Chcete-li ověřit výkon přenosu souborů aplikace, použijte více vláken tím, že zvýšíte počet vláken v průběhu úspěchu nebo je zmenšíte, aby bylo možné zjistit optimální propustnost aplikace nebo přenosu souborů.
 
-* Nedostatečná rychlost čtení a zápisu disku virtuálního počítače. Další informace najdete v [tématu Řešení potíží s úložištěm Azure](../storage/common/storage-e2e-troubleshooting.md).
+* Nedostatečná rychlost čtení/zápisu disku virtuálního počítače Další informace najdete v tématu [řešení potíží s Azure Storage](../storage/common/storage-e2e-troubleshooting.md).
 
-## <a name="on-premises-device-external-facing-interface"></a>Externí rozhraní pro externí přístup zařízení k místnímu zařízení
+## <a name="on-premises-device-external-facing-interface"></a>Externí rozhraní pro místní zařízení
 
-Zmínil podsítě místnírozsahy, které chcete, aby Azure přístup prostřednictvím VPN na místní síťové brány. Současně definujte adresní prostor virtuální sítě v Azure pro místní zařízení.
+Uvedli jsme podsítě místních rozsahů, které chcete, aby Azure dosáhl přes VPN v bráně místní sítě. Současně definujte adresní prostor virtuální sítě v Azure na místní zařízení.
 
-* **Brána založená na trase**: Zásady nebo volič provozu pro sítě VIRTUÁLNÍ SÍTĚ založené na trase jsou konfigurovány jako libovolné (nebo zástupné znaky).
+* **Brána založená na trasách**: zásady nebo selektor provozu pro sítě VPN založené na trasách jsou nakonfigurovány jako any (nebo zástupné karty).
 
-* **Brána založená na zásadách:** Sítě virtuálních sítí založené na zásadách šifrují a směrují pakety prostřednictvím tunelových propojení IPsec na základě kombinací předpon adres mezi místní sítí a virtuální sítí Azure. Zásada (nebo selektor provozu) se většinou v konfiguraci sítě VPN definuje jako přístupový seznam.
+* **Brána založená**na zásadách: sítě VPN založené na zásadách šifrují a směrují pakety prostřednictvím tunelů IPsec na základě kombinací předpon adres mezi vaší místní sítí a virtuální sítí Azure. Zásada (nebo selektor provozu) se většinou v konfiguraci sítě VPN definuje jako přístupový seznam.
 
-* **Připojení UsePolicyBasedTrafficSelector:** ("UsePolicyBasedTrafficSelectors" ke $True připojení nakonfiguruje bránu Azure VPN pro připojení k bráně vpn založené na zásadách v místním prostředí. Pokud povolíte PolicyBasedTrafficSelectors, musíte zajistit, že vaše zařízení VPN má odpovídající voliči provozu definované se všemi kombinacemi předpon místní sítě (místní síťová brána) do a z předpon virtuální sítě Azure, namísto libovolného.
+* Připojení **UsePolicyBasedTrafficSelector** : ("UsePolicyBasedTrafficSelectors" pro $true v připojení nakonfiguruje bránu Azure VPN, aby se připojila k místní bráně firewall sítě VPN na základě zásad. Pokud povolíte PolicyBasedTrafficSelectors, musíte zajistit, aby vaše zařízení VPN odpovídalo selektorům přenosu definovaných pomocí všech kombinací místní sítě (brány místní sítě) k předponám virtuální sítě Azure a místo libovolných.
 
-Nevhodná konfigurace může vést k častému odpojování v rámci tunelu, poklesu paketů, chybné propustnosti a latenci.
+Nesprávná konfigurace může vést k častému odpojení v rámci tunelu, poklesu paketů, špatné propustnosti a latenci.
 
-## <a name="check-latency"></a>Kontrola latence
+## <a name="check-latency"></a>Kontrolovat latenci
 
-Latenci můžete zkontrolovat pomocí následujících nástrojů:
+Latenci můžete kontrolovat pomocí následujících nástrojů:
 
 * WinMTR
-* Trasa TCPTraceroute
-* `ping`a `psping` (Tyto nástroje mohou poskytnout dobrý odhad RTT, ale nemohou být použity ve všech případech.)
+* TCPTraceroute
+* `ping`a `psping` (tyto nástroje můžou poskytovat dobrý odhad času RTT, ale nedají se použít ve všech případech.)
 
-![Zkontrolovat latenci](./media/vpn-gateway-validate-throughput-to-vnet/08checkinglatency.png)
+![Kontrolovat latenci](./media/vpn-gateway-validate-throughput-to-vnet/08checkinglatency.png)
 
-Pokud si všimnete špičky s vysokou latencí v některém z směrování před vstupem do páteřní sítě MS, můžete pokračovat v dalším šetření u svého poskytovatele internetových služeb.
+Pokud si všimnete vysoké latence u libovolného směrování před přechodem na páteřní síť v síti, můžete pokračovat s dalším šetřením u svého poskytovatele internetových služeb.
 
-Pokud je zaznamenán velký, neobvyklý nárůst latence z chmele v rámci "msn.net", obraťte se na podporu MS pro další šetření.
+Pokud se v rámci "msn.net" zaznamená velký špička latence, kontaktujte prosím podporu společnosti MS a požádejte o další šetření.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace nebo nápovědu najdete na následujícím odkazu:
+Chcete-li získat další informace nebo nápovědu, podívejte se na následující odkaz:
 
 * [Podpora společnosti Microsoft](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)

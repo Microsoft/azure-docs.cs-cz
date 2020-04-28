@@ -1,6 +1,6 @@
 ---
-title: Přiřazení uživatele nebo skupiny k podnikové aplikaci ve službě Azure AD
-description: Jak vybrat podnikovou aplikaci pro přiřazení uživatele nebo skupiny ve službě Azure Active Directory
+title: Přiřazení uživatele nebo skupiny k podnikové aplikaci v Azure AD
+description: Jak vybrat podnikovou aplikaci, do které se přiřadí uživatel nebo skupina v Azure Active Directory
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -13,87 +13,87 @@ ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 186e36e4625a60362c54972b16b53f0f3e6753fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79409188"
 ---
-# <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Přiřazení uživatele nebo skupiny k podnikové aplikaci ve službě Azure Active Directory
+# <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Přiřazení uživatele nebo skupiny k podnikové aplikaci v Azure Active Directory
 
-Tento článek ukazuje, jak přiřadit uživatele nebo skupiny k podnikovým aplikacím ve službě Azure Active Directory (Azure AD), buď z webu Azure Portal, nebo pomocí PowerShellu. Když přiřadíte uživatele k aplikaci, aplikace se zobrazí na [přístupovém panelu Moje aplikace](https://myapps.microsoft.com/) pro snadný přístup. Pokud aplikace zpřístupňuje role, můžete také přiřadit konkrétní roli uživateli.
+V tomto článku se dozvíte, jak přiřadit uživatele nebo skupiny k podnikovým aplikacím v Azure Active Directory (Azure AD) v rámci Azure Portal nebo pomocí prostředí PowerShell. Když přiřadíte uživatele k aplikaci, aplikace se zobrazí na [přístupovém panelu Moje aplikace](https://myapps.microsoft.com/) uživatele, který má snadný přístup. Pokud aplikace zveřejňuje role, můžete uživateli přiřadit také konkrétní roli.
 
-Pro větší kontrolu lze určité typy podnikových aplikací nakonfigurovat tak, aby [vyžadovaly přiřazení uživatele](#configure-an-application-to-require-user-assignment). 
+Pro lepší kontrolu je možné nakonfigurovat určité typy podnikových aplikací tak, aby [vyžadovaly přiřazení uživatele](#configure-an-application-to-require-user-assignment). 
 
-Pokud chcete [k podnikové aplikaci přiřadit uživatele nebo skupinu](#assign-users-or-groups-to-an-app-via-the-azure-portal), musíte se přihlásit jako globální správce, správce aplikací, správce cloudových aplikací nebo přiřazený vlastník podnikové aplikace.
+Pokud chcete [přiřadit uživatele nebo skupinu k podnikové aplikaci](#assign-users-or-groups-to-an-app-via-the-azure-portal), musíte se přihlásit jako globální správce, správce aplikace, správce cloudové aplikace nebo přiřazený vlastník podnikové aplikace.
 
 > [!NOTE]
-> Přiřazení na základě skupiny vyžaduje edici Azure Active Directory Premium P1 nebo P2. Přiřazení založené na skupině je podporováno pouze pro skupiny zabezpečení. Vnořená členství ve skupinách a skupiny Office 365 momentálně nejsou podporované. Další požadavky na licencování funkcí popsaných v tomto článku najdete na [stránce s cenami služby Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory). 
+> Přiřazení na základě skupin vyžaduje Azure Active Directory Premium edici P1 nebo P2. Přiřazení na základě skupin se podporuje jenom pro skupiny zabezpečení. Vnořené členství ve skupinách a skupiny Office 365 se aktuálně nepodporují. Další licenční požadavky na funkce popsané v tomto článku najdete na [stránce s cenami Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory). 
 
 ## <a name="configure-an-application-to-require-user-assignment"></a>Konfigurace aplikace tak, aby vyžadovala přiřazení uživatele
 
-S následujícími typy aplikací máte možnost vyžadovat, aby uživatelé byli přiřazeni k aplikaci před tím, než k ní budou mít přístup:
+S následujícími typy aplikací máte možnost vyžadovat, aby se uživatelé před přístupem k aplikaci přidělili:
 
-- Aplikace nakonfigurované pro federované jednotné přihlašování (SSO) s ověřováním na základě SAML
-- Aplikace proxy aplikací, které používají předběžné ověřování služby Azure Active Directory
-- Aplikace postavené na platformě aplikace Azure AD, které používají Ověřování OAuth 2.0 / OpenID Connect poté, co uživatel nebo správce s tímto uživatelem souhlasil.
+- Aplikace nakonfigurované pro federované jednotné přihlašování (SSO) s ověřováním založeném na SAML
+- Aplikace proxy aplikací, které používají předběžné ověření Azure Active Directory
+- Aplikace založené na platformě aplikace Azure AD, které používají ověřování OAuth 2,0/OpenID Connect po tom, co uživatel nebo správce souhlasí s touto aplikací.
 
-Pokud je vyžadováno přiřazení uživatele, budou se moci přihlásit pouze uživatelé, které explicitně přiřadíte k aplikaci. Přístup k aplikaci mohou přistupovat na stránce Moje aplikace nebo pomocí přímého odkazu. 
+Když se vyžaduje přiřazení uživatele, budou se moct přihlásit jenom uživatelé, které explicitně přiřadíte do aplikace. Mají přístup k aplikaci na stránce Moje aplikace nebo pomocí přímého odkazu. 
 
-Pokud přiřazení *není vyžadováno*, protože jste nastavili tuto možnost na **ne,** nebo proto, že aplikace používá jiný režim přihlašování, bude mít každý uživatel přístup k aplikaci, pokud má přímý odkaz na aplikaci nebo **adresu URL přístupu uživatele** na stránce **Vlastnosti** aplikace. 
+Pokud přiřazení není *vyžadováno*, protože jste tuto možnost nastavili na hodnotu **ne** nebo protože aplikace používá jiný režim jednotného přihlašování, bude mít každý uživatel přístup k aplikaci, pokud má přímý odkaz na aplikaci nebo **adresu URL přístupu uživatele** na stránce **vlastností** aplikace. 
 
-Toto nastavení nemá vliv na to, zda se aplikace zobrazí na přístupovém panelu Moje aplikace. Aplikace se zobrazí na panelech Přístup ke aplikacím Moje aplikace, jakmile k aplikaci přiřadíte uživatele nebo skupinu. Informace o pozadí najdete [v tématu Správa přístupu k aplikacím](what-is-access-management.md).
+Toto nastavení nemá vliv na to, jestli se aplikace zobrazuje na přístupovém panelu Moje aplikace. Po přiřazení uživatele nebo skupiny k aplikaci se aplikace zobrazí na panelech uživatelů moje aplikace v aplikaci. Základní informace najdete v tématu [Správa přístupu k aplikacím](what-is-access-management.md).
 
 
 Vyžadování přiřazení uživatele pro aplikaci:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com) pomocí účtu správce nebo jako vlastník aplikace.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu správce nebo jako vlastník aplikace.
 
-2. Vyberte **Azure Active Directory**. V levé navigační nabídce vyberte **možnost Podnikové aplikace**.
+2. Vyberte **Azure Active Directory**. V navigační nabídce vlevo vyberte **podnikové aplikace**.
 
-3. Vyberte aplikaci ze seznamu. Pokud aplikaci nevidíte, začněte do vyhledávacího pole psát její název. Nebo pomocí ovládacích prvků filtru vyberte typ, stav nebo viditelnost aplikace a pak vyberte **Použít**.
+3. Vyberte aplikaci ze seznamu. Pokud aplikaci nevidíte, začněte psát její název do vyhledávacího pole. Nebo použijte ovládací prvky filtru k výběru typu aplikace, stavu nebo viditelnosti a pak vyberte **použít**.
 
-4. V levé navigační nabídce vyberte **Vlastnosti**.
+4. V levé navigační nabídce vyberte **vlastnosti**.
 
-5. Ujistěte se, že **je vyžadováno přiřazení uživatele?** **Yes**
+5. Ujistěte se, že je **vyžadováno přiřazení uživatele?** přepínač je nastaven na **hodnotu Ano**.
 
    > [!NOTE]
-   > Pokud není k dispozici **přepínač Přiřazení uživatele?**
+   > Pokud je **vyžadováno přiřazení uživatele?** přepínač není k dispozici, můžete k nastavení vlastnosti appRoleAssignmentRequired u instančního objektu použít PowerShell.
 
-6. V horní části obrazovky vyberte tlačítko **Uložit.**
+6. V horní části obrazovky vyberte tlačítko **Uložit** .
 
-## <a name="assign-users-or-groups-to-an-app-via-the-azure-portal"></a>Přiřazení uživatelů nebo skupin k aplikaci prostřednictvím portálu Azure
+## <a name="assign-users-or-groups-to-an-app-via-the-azure-portal"></a>Přiřazení uživatelů nebo skupin k aplikaci prostřednictvím Azure Portal
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com) pomocí globálního správce, správce aplikací nebo účtu správce cloudových aplikací nebo jako přiřazený vlastník podnikové aplikace.
-2. Vyberte **Azure Active Directory**. V levé navigační nabídce vyberte **možnost Podnikové aplikace**.
-3. Vyberte aplikaci ze seznamu. Pokud aplikaci nevidíte, začněte do vyhledávacího pole psát její název. Nebo pomocí ovládacích prvků filtru vyberte typ, stav nebo viditelnost aplikace a pak vyberte **Použít**.
-4. V levé navigační nabídce vyberte **Možnost Uživatelé a skupiny**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu globálního správce, správce aplikace nebo účtu správce cloudové aplikace nebo jako přiřazeného vlastníka podnikové aplikace.
+2. Vyberte **Azure Active Directory**. V navigační nabídce vlevo vyberte **podnikové aplikace**.
+3. Vyberte aplikaci ze seznamu. Pokud aplikaci nevidíte, začněte psát její název do vyhledávacího pole. Nebo použijte ovládací prvky filtru k výběru typu aplikace, stavu nebo viditelnosti a pak vyberte **použít**.
+4. V navigační nabídce vlevo vyberte **Uživatelé a skupiny**.
    > [!NOTE]
-   > Pokud chcete přiřadit uživatele k aplikacím Microsoft, jako jsou aplikace Office 365, některé z těchto aplikací používají PowerShell. 
-5. Vyberte tlačítko **Přidat uživatele.**
-6. V podokně **Přidat přiřazení** vyberte **Možnost Uživatelé a skupiny**.
-7. Vyberte uživatele nebo skupinu, kterou chcete aplikaci přiřadit, nebo začněte do vyhledávacího pole zadávat jméno uživatele nebo skupiny. Můžete vybrat více uživatelů a skupin a výběry se zobrazí v části **Vybrané položky**.
-8. Po dokončení klepněte na **tlačítko Vybrat**.
+   > Pokud chcete přiřadit uživatele k aplikacím Microsoftu, jako jsou aplikace Office 365, některé z těchto aplikací používají PowerShell. 
+5. Klikněte na tlačítko **Přidat uživatele** .
+6. V podokně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
+7. Vyberte uživatele nebo skupinu, které chcete aplikaci přiřadit, nebo zadejte jméno uživatele nebo skupiny do vyhledávacího pole. Můžete zvolit více uživatelů a skupin a vaše výběry se zobrazí v části **vybrané položky**.
+8. Po dokončení klikněte na **Vybrat**.
 
    ![Přiřazení uživatele nebo skupiny k aplikaci](./media/assign-user-or-group-access-portal/assign-users.png)
 
-9. V podokně **Uživatelé a skupiny** vyberte ze seznamu jednoho nebo více uživatelů nebo skupin a v dolní části podokna zvolte tlačítko **Vybrat.**
-10. Pokud to aplikace podporuje, můžete přiřadit roli uživateli nebo skupině. V podokně **Přidat přiřazení** zvolte **Vybrat roli**. Potom v podokně **Vybrat roli** zvolte roli, která se má použít pro vybrané uživatele nebo skupiny, a v dolní části podokna vyberte **OK.** 
+9. V podokně **Uživatelé a skupiny** vyberte jednoho nebo více uživatelů nebo skupin ze seznamu a pak klikněte na tlačítko **Vybrat** v dolní části podokna.
+10. Pokud je aplikace podporuje, můžete uživateli nebo skupině přiřadit roli. V podokně **Přidat přiřazení** zvolte **Vybrat roli**. Pak v podokně **Vybrat roli** zvolte roli, kterou chcete použít pro vybrané uživatele nebo skupiny, a potom v dolní části podokna vyberte **OK** . 
 
     > [!NOTE]
-    > Pokud aplikace nepodporuje výběr rolí, je přiřazena výchozí přístupová role. V tomto případě aplikace spravuje úroveň přístupu, který mají uživatelé.
+    > Pokud aplikace nepodporuje výběr rolí, přiřadí se výchozí role přístupu. V takovém případě aplikace spravuje úroveň přístupu uživatelů.
 
-2. V podokně **Přidat přiřazení** vyberte tlačítko **Přiřadit** v dolní části podokna.
+2. V podokně **Přidat přiřazení** vyberte v dolní části podokna tlačítko **přiřadit** .
 
-## <a name="assign-users-or-groups-to-an-app-via-powershell"></a>Přiřazení uživatelů nebo skupin k aplikaci přes PowerShell
+## <a name="assign-users-or-groups-to-an-app-via-powershell"></a>Přiřazení uživatelů nebo skupin k aplikaci prostřednictvím PowerShellu
 
-1. Otevřete příkazový řádek prostředí Windows PowerShell se zvýšenými oprávněními.
+1. Otevřete příkazový řádek Windows PowerShellu se zvýšenými oprávněními.
 
    > [!NOTE]
-   > Musíte nainstalovat modul AzureAD (použijte `Install-Module -Name AzureAD`příkaz ). Pokud se zobrazí výzva k instalaci modulu NuGet nebo nového modulu PowerShell azure active directory V2, zadejte Y a stiskněte klávesu ENTER.
+   > Je potřeba nainstalovat modul AzureAD (použijte příkaz `Install-Module -Name AzureAD`). Pokud se zobrazí výzva k instalaci modulu NuGet nebo nového modulu Azure Active Directory v2 PowerShell, zadejte Y a stiskněte ENTER.
 
-1. Spouštět `Connect-AzureAD` a přihlašovat se pomocí uživatelského účtu globálního správce.
-1. Pomocí následujícího skriptu přiřaďte uživateli a roli k aplikaci:
+1. Spusťte `Connect-AzureAD` a přihlaste se pomocí uživatelského účtu globálního správce.
+1. K přiřazení uživatele a role k aplikaci použijte následující skript:
 
     ```powershell
     # Assign the values to the variables
@@ -110,15 +110,15 @@ Vyžadování přiřazení uživatele pro aplikaci:
     New-AzureADUserAppRoleAssignment -ObjectId $user.ObjectId -PrincipalId $user.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
     ```
 
-Další informace o tom, jak přiřadit uživatele k roli aplikace, naleznete v dokumentaci k [new-AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0)
+Další informace o tom, jak přiřadit uživatele k roli aplikace, najdete v dokumentaci pro [New-AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0) .
 
-Chcete-li přiřadit skupinu k podnikové `Get-AzureADUser` aplikaci, je třeba nahradit . `Get-AzureADGroup`
+Pokud chcete přiřadit skupinu k podnikové aplikaci, musíte ji nahradit `Get-AzureADUser` `Get-AzureADGroup`.
 
 ### <a name="example"></a>Příklad
 
-Tento příklad přiřadí uživatele Britta Simon k aplikaci [Microsoft Workplace Analytics](https://products.office.com/business/workplace-analytics) pomocí prostředí PowerShell.
+Tento příklad přiřadí uživatele Britta Simon k aplikaci [Microsoft Workplace Analytics](https://products.office.com/business/workplace-analytics) pomocí PowerShellu.
 
-1. V Prostředí PowerShell přiřaďte odpovídající hodnoty proměnným $username, $app_name a $app_role_name.
+1. V PowerShellu přiřaďte příslušné hodnoty k proměnným $username $app _name a $app _role_name.
 
     ```powershell
     # Assign the values to the variables
@@ -126,7 +126,7 @@ Tento příklad přiřadí uživatele Britta Simon k aplikaci [Microsoft Workpla
     $app_name = "Workplace Analytics"
     ```
 
-1. V tomto příkladu nevíme, jaký je přesný název role aplikace, kterou chceme přiřadit Brittě Simonové. Spusťte následující příkazy, abyste získali uživatele ($user) a instanční objekt ($sp) pomocí hlavního uživatelského názvy uživatelů a hlavního uživatele.
+1. V tomto příkladu nevím, jaký je přesný název aplikační role, kterou chceme přiřadit k Britta Simon. Spusťte následující příkazy, abyste získali uživatele ($user) a instanční objekt ($sp) pomocí hlavního názvu uživatele (UPN) a zobrazovaného názvu objektu služby.
 
     ```powershell
     # Get the user to assign, and the service principal for the app to assign to
@@ -134,11 +134,11 @@ Tento příklad přiřadí uživatele Britta Simon k aplikaci [Microsoft Workpla
     $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
     ```
 
-1. Spuštěním `$sp.AppRoles` příkazu zobrazíte role dostupné pro aplikaci Workplace Analytics. V tomto příkladu chceme přiřadit Britta Simon analytik (omezený přístup) role.
+1. Spusťte příkaz `$sp.AppRoles` pro zobrazení rolí dostupných pro aplikaci pracoviště Analytics. V tomto příkladu chceme přiřadit Britta Simon role analytik (s omezeným přístupem).
 
-   ![Zobrazuje role, které má uživatel k dispozici pomocí role Analýzy na workplace.](./media/assign-user-or-group-access-portal/workplace-analytics-role.png)
+   ![Zobrazuje role dostupné uživateli pomocí role Analytics na pracovišti.](./media/assign-user-or-group-access-portal/workplace-analytics-role.png)
 
-1. Přiřaďte `$app_role_name` proměnné název role.
+1. Přiřaďte k `$app_role_name` proměnné název role.
 
     ```powershell
     # Assign the values to the variables
@@ -146,7 +146,7 @@ Tento příklad přiřadí uživatele Britta Simon k aplikaci [Microsoft Workpla
     $appRole = $sp.AppRoles | Where-Object { $_.DisplayName -eq $app_role_name }
     ```
 
-1. Chcete-li přiřadit uživatele k roli aplikace, spusťte následující příkaz:
+1. Spusťte následující příkaz, který uživateli přiřadí roli aplikace:
 
     ```powershell
     # Assign the user to the app role
@@ -161,7 +161,7 @@ Tento příklad přiřadí uživatele Britta Simon k aplikaci [Microsoft Workpla
  
 ## <a name="next-steps"></a>Další kroky
 
-- [Zobrazit všechny mé skupiny](../fundamentals/active-directory-groups-view-azure-portal.md)
+- [Zobrazit všechny moje skupiny](../fundamentals/active-directory-groups-view-azure-portal.md)
 - [Odebrání přiřazení uživatele nebo skupiny z podnikové aplikace](remove-user-or-group-access-portal.md)
-- [Zakázání přihlášení uživatelů k podnikové aplikaci](disable-user-sign-in-portal.md)
+- [Zakázání přihlášení uživatelů pro podnikovou aplikaci](disable-user-sign-in-portal.md)
 - [Změna názvu nebo loga podnikové aplikace](change-name-or-logo-portal.md)
