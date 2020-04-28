@@ -9,18 +9,18 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: b214932f43ce20480ee37a7b4edf942f080b38e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67174900"
 ---
 Při instalaci klientského certifikátu budete potřebovat heslo, které bylo vytvořeno při jeho exportu.
 
-1. Vyhledejte soubor certifikátu .pfx a zkopírujte ho do Macu. Certifikát můžete do Macu získat několika způsoby, například soubor certifikátu můžete odeslat e-mailem.
-2. Po zkopírování certifikátu na Mac poklikejte na certifikát a otevřete pole **Přidat certifikáty,** kliknutím na **Přidat** zahájíte instalaci.
+1. Vyhledejte soubor certifikátu. pfx a zkopírujte ho do počítače Mac. Certifikát můžete k počítači Mac získat několika způsoby, například můžete odeslat e-mailem soubor certifikátu.
+2. Po zkopírování certifikátu na počítač Mac poklikejte na certifikát a otevřete tak pole **Přidat certifikáty** . Kliknutím na **Přidat** zahájíte instalaci.
 
-   ![Přidání certifikátů](./media/vpn-gateway-certificates-install-mac-client-cert-include/addcert.png)
-3. Zadejte heslo, které jste vytvořili při exportu klientského certifikátu. Heslo chrání soukromý klíč certifikátu. Chcete-li dokončit instalaci, klepněte na tlačítko **OK.**
+   ![Přidat certifikáty](./media/vpn-gateway-certificates-install-mac-client-cert-include/addcert.png)
+3. Zadejte heslo, které jste vytvořili při exportu klientského certifikátu. Heslo chrání privátní klíč certifikátu. Instalaci dokončíte kliknutím na **OK** .
 
    ![Heslo](./media/vpn-gateway-certificates-install-mac-client-cert-include/password.png)

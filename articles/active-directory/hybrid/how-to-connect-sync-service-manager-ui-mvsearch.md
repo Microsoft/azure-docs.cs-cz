@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect Sync Service Manager Metaverse Hledání| Dokumenty společnosti Microsoft
-description: Seznamte se s kartou Metaverse Search ve Správci synchronizačních služeb pro Azure AD Connect.
+title: Service Manager vyhledávání v úložišti Metaverse Azure AD Connect synchronizace | Microsoft Docs
+description: Pochopte kartu vyhledávání v úložišti Metaverse v Synchronization Service Manager pro Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,21 +17,21 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 59a52fa1b67d37abfc79fd5738d70afb8aecf670
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60382912"
 ---
-# <a name="sync-service-manager-metaverse-search"></a>Hledání Metaverse správce služeb synchronizace
+# <a name="sync-service-manager-metaverse-search"></a>Synchronizovat Service Manager hledání v úložišti Metaverse
 
-![Správce synchronizačních služeb](./media/how-to-connect-sync-service-manager-ui-mvsearch/mvsearch.png)
+![Synchronizovat Service Manager](./media/how-to-connect-sync-service-manager-ui-mvsearch/mvsearch.png)
 
-Karta hledání metaverse je užitečná pro řešení problémů souvisejících s daty. V horní polovině můžete vytvořit dotaz založený na kombinaci atributů. Až budete s dotazem spokojeni, klepněte na tlačítko **Hledat**. Výsledek je viditelný ve spodní mřížce. Pomocí **funkce Nastavení sloupců**můžete vybrat, které sloupce mají být viditelné .
+Karta vyhledávání v úložišti metaverse je užitečná pro řešení problémů souvisejících s daty. V horní polovině můžete vytvořit dotaz založený na kombinaci atributů. Až budete s dotazem spokojeni, klikněte na tlačítko **Hledat**. Výsledek je viditelný v dolní mřížce. Můžete vybrat, které sloupce se mají zobrazit s **nastavením sloupce**.
 
-Ve výsledcích hledání vyberte objekt a **Vlastnosti,** chcete-li zobrazit [vlastnosti objektu metaverse](tshoot-connect-object-not-syncing.md#metaverse-object-properties).
+Ve výsledcích hledání vyberte objekt a **vlastnosti** , aby se zobrazily [vlastnosti objektu Metaverse](tshoot-connect-object-not-syncing.md#metaverse-object-properties).
 
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si další informace o konfiguraci [synchronizace Azure AD Connect.](how-to-connect-sync-whatis.md)
+Přečtěte si další informace o konfiguraci [Azure AD Connect synchronizace](how-to-connect-sync-whatis.md) .
 
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).

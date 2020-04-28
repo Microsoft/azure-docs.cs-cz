@@ -1,6 +1,6 @@
 ---
-title: Jak vytvořit mediální procesor pomocí sady Azure Media Services SDK pro rozhraní .NET| Dokumenty společnosti Microsoft
-description: Přečtěte si, jak vytvořit komponentu mediálního procesoru pro kódování, převod formátu, šifrování nebo dešifrování mediálního obsahu pro Azure Media Services. Ukázky kódu jsou zapsány v c# a používají sady Media Services SDK pro rozhraní .NET.
+title: Jak vytvořit procesor médií pomocí sady Azure Media Services SDK pro .NET | Microsoft Docs
+description: Naučte se vytvořit komponentu procesoru médií ke kódování, převedení formátu, šifrování nebo dešifrování mediálního obsahu pro Azure Media Services. Ukázky kódu jsou napsané v jazyce C# a používají sadu Media Services SDK pro .NET.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,32 +15,32 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: af6badda426f1bb81d8528cfda9b8c02d55712b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61463826"
 ---
-# <a name="how-to-get-a-media-processor-instance"></a>Postup: Získání instance mediálního procesoru
+# <a name="how-to-get-a-media-processor-instance"></a>Postupy: získání instance procesoru multimédií
 > [!div class="op_single_selector"]
 > * [.NET](media-services-get-media-processor.md)
-> * [Odpočinku](media-services-rest-get-media-processor.md)
+> * [REST](media-services-rest-get-media-processor.md)
 > 
 > 
 
 ## <a name="overview"></a>Přehled
-V media services je mediální procesor součástí, která zpracovává určitou úlohu zpracování, jako je kódování, převod formátu, šifrování nebo dešifrování mediálního obsahu. Při vytváření úlohy kódování, šifrování nebo převodu formátu mediálního obsahu obvykle vytváříte mediální procesor.
+V Media Services procesor médií je komponenta, která zpracovává konkrétní úlohu zpracování, jako je například kódování, převod formátu, šifrování nebo dešifrování mediálního obsahu. Procesor médií se obvykle vytváří při vytváření úlohy pro kódování, šifrování nebo převod formátu mediálního obsahu.
 
-## <a name="azure-media-processors"></a>Mediální procesory Azure 
+## <a name="azure-media-processors"></a>Procesory médií Azure 
 
-Následující téma obsahuje seznam mediálních procesorů:
+V následujícím tématu najdete seznam procesorů médií:
 
 * [Kódovací procesory médií](scenarios-and-availability.md#encoding-media-processors)
 * [Analytické procesory médií](scenarios-and-availability.md#analytics-media-processors)
 
-## <a name="get-media-processor"></a>Získat mediální procesor
+## <a name="get-media-processor"></a>Získat procesor médií
 
-Následující metoda ukazuje, jak získat instanci mediálního procesoru. Příklad kódu předpokládá použití proměnné na úrovni modulu s názvem **_context** odkazovat na kontext serveru, jak je popsáno v části [Jak: Připojit k mediální služby programově](media-services-use-aad-auth-to-access-ams-api.md).
+Následující metoda ukazuje, jak získat instanci procesoru médií. Příklad kódu předpokládá použití proměnné na úrovni modulu s názvem **_context** pro odkazování na kontext serveru, jak je popsáno v části [Postupy: připojení k Media Services programově](media-services-use-aad-auth-to-access-ams-api.md).
 
     private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
     {
@@ -61,5 +61,5 @@ Následující metoda ukazuje, jak získat instanci mediálního procesoru. Př�
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Další kroky
-Nyní, když víte, jak získat instanci mediálního procesoru, přejděte na téma [Jak zakódovat datový zdroj,](media-services-dotnet-encode-with-media-encoder-standard.md) které vám ukáže, jak pomocí standardu kodéru médií kódovat datový zdroj.
+Když teď víte, jak získat instanci procesoru médií, přečtěte si téma [Postup kódování assetu](media-services-dotnet-encode-with-media-encoder-standard.md) , ve kterém se dozvíte, jak použít Media Encoder Standard ke kódování assetu.
 

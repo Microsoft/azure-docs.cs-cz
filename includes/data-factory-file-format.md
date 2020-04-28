@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 29be95a53004070753ca742cd8d76ca9d8384ea0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70166690"
 ---
 ## <a name="specifying-formats"></a>Zadávání formátů
@@ -69,7 +69,7 @@ Pokud chcete místo `quoteChar` použít `escapeChar`, nahraďte řádek s `quot
 * Kopírujete text z textového souboru a chcete vynechat několik prvních řádků, které neobsahují data ani informace záhlaví. Zadáním `skipLineCount` určete, kolik řádků se má přeskočit. Pokud zbytek souboru obsahuje řádek záhlaví, můžete také zadat `firstRowAsHeader`. Pokud je zadaný parametr `skipLineCount` i `firstRowAsHeader`, nejdřív se přeskočí příslušný počet řádků a potom se ze vstupního souboru načtou informace záhlaví.
 
 ### <a name="specifying-jsonformat"></a>Zadávání formátu JsonFormat
-Pokud chcete **importovat a exportovat soubory JSON tak, jak je do/z Azure Cosmos DB**, najdete v článku [Import a export dokumentů JSON](../articles/data-factory/v1/data-factory-azure-documentdb-connector.md#importexport-json-documents) v konektoru Azure Cosmos DB s podrobnostmi.
+Chcete **-li importovat/exportovat soubory JSON tak, jak jsou do nebo z Azure Cosmos DB**, přečtěte si část [Import/export dokumentů JSON](../articles/data-factory/v1/data-factory-azure-documentdb-connector.md#importexport-json-documents) v konektoru Azure Cosmos DB s podrobnostmi.
 
 Pokud chcete analyzovat soubory JSON nebo zapisovat data ve formátu JSON, nastavte vlastnost `format` `type` na hodnotu **JsonFormat**. Můžete také zadat následující **nepovinné** vlastnosti v oddílu `format`. Postup konfigurace najdete v části [Příklad typu JsonFormat](#jsonformat-example).
 
@@ -214,7 +214,7 @@ a chcete ho zkopírovat do tabulky Azure SQL v následujícím formátu a přito
 Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsobem (částečná definice obsahující jenom relevantní části). A konkrétně:
 
 - Oddíl `structure` definuje vlastní názvy sloupců a odpovídající datový typ při převodu do tabulkového formátu. Pokud mapování sloupců není potřeba, je tento oddíl **nepovinný**. Další informace najdete v tématu věnovaném určení definice struktury pro obdélníkové datové sady.
-- `jsonPathDefinition` určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data. Chcete-li kopírovat data z pole, můžete použít **vlastnost array[x].k** extrahování hodnoty dané vlastnosti z objektu xth nebo můžete použít **vlastnost array[*].k** nalezení hodnoty z libovolného objektu obsahujícího tuto vlastnost.
+- `jsonPathDefinition` určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data. Chcete-li kopírovat data z pole, můžete použít **pole [x]. Property** k extrakci hodnoty dané vlastnosti z objektu Xth nebo můžete použít **pole [*]. Property** k nalezení hodnoty z libovolného objektu, který tuto vlastnost obsahuje.
 
 ```json
 "properties": {

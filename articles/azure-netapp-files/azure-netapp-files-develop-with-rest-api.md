@@ -1,6 +1,6 @@
 ---
-title: Vývoj souborů Azure NetApp s rozhraním REST API | Dokumenty společnosti Microsoft
-description: Popisuje, jak začít s používáním rozhraní REST API souborů Azure NetApp.
+title: Vývoj pro Azure NetApp Files s využitím REST API | Microsoft Docs
+description: Popisuje, jak začít s používáním Azure NetApp Files REST API.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,30 +15,30 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: b-juche
 ms.openlocfilehash: 996fbcc7c3c9af0da9160216785ecd54840660e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65957042"
 ---
-# <a name="develop-for-azure-netapp-files-with-rest-api"></a>Vývoj pro soubory Azure NetApp s rozhraním REST API 
+# <a name="develop-for-azure-netapp-files-with-rest-api"></a>Vývoj pro Azure NetApp Files s využitím REST API 
 
-Rozhraní REST API pro službu Azure NetApp Files definuje operace HTTP proti prostředkům, jako je účet NetApp, fond kapacity, svazky a snímky. Tento článek vám pomůže začít s používáním rozhraní REST API souborů Azure NetApp.
+REST API služby Azure NetApp Files definuje operace HTTP s prostředky, jako je účet NetApp, fond kapacit, svazky a snímky. Tento článek vám pomůže začít s používáním Azure NetApp Files REST API.
 
-## <a name="azure-netapp-files-rest-api-specification"></a>Specifikace rozhraní REST soubory Azure NetApp
+## <a name="azure-netapp-files-rest-api-specification"></a>Specifikace Azure NetApp Files REST API
 
-Specifikace rozhraní REST API pro soubory Azure NetApp se publikuje prostřednictvím [GitHubu](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager):
+Specifikace REST API pro Azure NetApp Files je publikovaná prostřednictvím [GitHubu](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager):
 
 `https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager`
 
 
-## <a name="access-the-azure-netapp-files-rest-api"></a>Přístup k rozhraní REST souborů Azure NetApp  
+## <a name="access-the-azure-netapp-files-rest-api"></a>Přístup k Azure NetApp Files REST API  
 
-1. Pokud jste tak ještě neučinili, [nainstalujte příkazový příkaz k příkazu Konzumu Azure.](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-2. Vytvořte instanční objekt ve službě Azure Active Directory (Azure AD):
+1. Pokud jste to ještě neudělali, [nainstalujte rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) .
+2. Vytvoření instančního objektu v Azure Active Directory (Azure AD):
    1. Ověřte, zda máte [dostatečná oprávnění](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
 
-   1. Do příkazového příkazu Azure zadejte následující příkaz:  
+   1. V Azure CLI zadejte následující příkaz:  
 
            az ad sp create-for-rbac --name $YOURSPNAMEGOESHERE--password $YOURGENERATEDPASSWORDGOESHERE
 
@@ -52,13 +52,13 @@ Specifikace rozhraní REST API pro soubory Azure NetApp se publikuje prostředni
                "tenant": "tenantIDgoeshere" 
            } 
 
-      Zachovat výstup příkazu.  Budete potřebovat `appId`, `password`, `tenant` a hodnoty. 
+      Ponechte výstup příkazu.  Budete potřebovat hodnoty `appId`, `password`a. `tenant` 
 
-3. Vyžádejte si přístupový token OAuth:
+3. Vyžádání přístupového tokenu OAuth:
 
-    Příklady v tomto článku používají cURL.  Můžete také použít různé nástroje API, jako je [Pošťák](https://www.getpostman.com/), [Insomnie](https://insomnia.rest/)a [Paw](https://paw.cloud/).  
+    Příklady v tomto článku používají oblé.  Můžete také použít různé nástroje API, jako je například [post](https://www.getpostman.com/), [režimu spánku](https://insomnia.rest/)a [privilegovaným přístupem](https://paw.cloud/).  
 
-    Nahraďte proměnné v následujícím příkladu výstupem příkazu z výše uvedeného kroku 2. 
+    Nahraďte proměnné v následujícím příkladu příkazem výstup z kroku 2 výše. 
 
         curl -X POST -d 'grant_type=client_credentials&client_id=[APP_ID]&client_secret=[PASSWORD]&resource=https%3A%2F%2Fmanagement.azure.com%2F' https://login.microsoftonline.com/[TENANT_ID]/oauth2/token
 
@@ -66,24 +66,24 @@ Specifikace rozhraní REST API pro soubory Azure NetApp se publikuje prostředni
 
         eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5iQ3dXMTF3M1hrQi14VWFYd0tSU0xqTUhHUSIsImtpZCI6Im5iQ3dXMTF3M1hrQi14VWFYd0tSU0xqTUhHUSJ9
 
-    Zobrazený token je platný po dobu 3600 sekund. Poté musíte požádat o nový token. 
-    Uložte token do textového editoru.  Budete ji potřebovat pro další krok.
+    Zobrazený token je platný po dobu 3600 sekund. Potom je potřeba požádat o nový token. 
+    Uložte token do textového editoru.  Budete ho potřebovat pro další krok.
 
-4. Odešlete testovací hovor a zahrňte token pro ověření vašeho přístupu k rozhraní REST API:
+4. Odeslat testovací hovor a zahrnout token pro ověření přístupu k REST API:
 
         curl -X GET -H "Authorization: Bearer [TOKEN]" -H "Content-Type: application/json" https://management.azure.com/subscriptions/[SUBSCRIPTION_ID]/providers/Microsoft.Web/sites?api-version=2016-08-01
 
 ## <a name="examples-using-the-api"></a>Příklady použití rozhraní API  
 
-Tento článek používá následující adresu URL pro směrný plán požadavků. Tato adresa URL odkazuje na kořenový adresář oboru názvů Soubory Azure NetApp. 
+Tento článek používá následující adresu URL pro směrný plán požadavků. Tato adresa URL odkazuje na kořen oboru názvů Azure NetApp Files. 
 
 `https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts?api-version=2017-08-15`
 
 Hodnoty `subID` a `resourceGroups` v následujících příkladech byste měli nahradit vlastními hodnotami. 
 
-### <a name="get-request-examples"></a>Příklady požadavků GET
+### <a name="get-request-examples"></a>Příklady získání požadavků
 
-Požadavek GET se používá k dotazování objektů souborů Azure NetApp v předplatném, jak ukazují následující příklady: 
+Použijete požadavek GET k dotazování objektů Azure NetApp Files v předplatném, jak ukazují následující příklady: 
 
         #get NetApp accounts 
         curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts?api-version=2017-08-15
@@ -99,7 +99,7 @@ Požadavek GET se používá k dotazování objektů souborů Azure NetApp v př
 
 ### <a name="put-request-examples"></a>Příklady požadavků PUT
 
-Požadavek PUT se používá k vytvoření nových objektů v azure netapp soubory, jak ukazují následující příklady. Tělo požadavku PUT může obsahovat data ve formátu JSON pro změny nebo může určit soubor, ze který chcete číst. 
+K vytvoření nových objektů v Azure NetApp Files použijte požadavek PUT, jak ukazuje následující příklad. Tělo žádosti o vložení může obsahovat data ve formátu JSON pro změny, nebo může určit soubor, ze kterého se má číst. 
 
         #create a NetApp account  
         curl -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE?api-version=2017-08-15
@@ -126,7 +126,7 @@ Následující příklad ukazuje, jak vytvořit účet NetApp:
         }
     } 
 
-Následující příklad ukazuje, jak vytvořit fond kapacity: 
+Následující příklad ukazuje, jak vytvořit fond kapacit: 
 
     {
         "name": "MYNETAPPACCOUNT/POOLNAME",
@@ -167,8 +167,8 @@ Následující příklad ukazuje, jak vytvořit snímek svazku:
     }
 
 > [!NOTE] 
-> Je třeba `fileSystemId` zadat pro vytvoření snímku.  Hodnotu `fileSystemId` můžete získat pomocí požadavku GET na svazek. 
+> Je nutné zadat `fileSystemId` pro vytvoření snímku.  Můžete získat `fileSystemId` hodnotu s požadavkem get na svazek. 
 
 ## <a name="next-steps"></a>Další kroky
 
-[Podívejte se na odkaz rozhraní REST soubory Azure NetApp](https://docs.microsoft.com/rest/api/netapp/)
+[Podívejte se na odkaz Azure NetApp Files REST API](https://docs.microsoft.com/rest/api/netapp/)

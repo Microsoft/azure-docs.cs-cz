@@ -1,6 +1,6 @@
 ---
-title: Změna a opětovné nasazení mikroslužeb – Azure | Dokumenty společnosti Microsoft
-description: Tento kurz ukazuje, jak změnit a znovu nasadit mikroslužbu ve vzdáleném monitorování
+title: Změna a opětovné nasazení mikroslužeb – Azure | Microsoft Docs
+description: V tomto kurzu se dozvíte, jak změnit a znovu nasadit mikroslužbu ve vzdáleném monitorování.
 author: dominicbetts
 ms.author: dobett
 ms.service: iot-accelerators
@@ -8,93 +8,93 @@ services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1552c54afe2195d58a032e9cc7bfa5aa70c844b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "61447585"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>Přizpůsobení a opakované nasazení mikroslužby
 
-Tento kurz ukazuje, jak upravit jednu z [mikroslužeb](https://azure.com/microservices) v řešení vzdáleného monitorování, vytvořit bitovou kopii vaší mikroslužby, nasadit image do docker hubu a pak ji použít v řešení vzdáleného monitorování. Chcete-li zavést tento koncept, kurz používá základní scénář, kde zavoláte rozhraní API mikroslužeb a změnit stavovou zprávu z "Alive and Well" na "Nové úpravy provedené zde!"
+V tomto kurzu se dozvíte, jak upravit jednu z [mikroslužeb](https://azure.com/microservices) v řešení vzdáleného monitorování, jak vytvořit image mikroslužeb, nasadit image do Docker Hub a pak ji použít v řešení vzdáleného monitorování. K zavedení tohoto konceptu se v kurzu používá základní scénář, ve kterém voláte rozhraní API mikroslužeb a měníte stavovou zprávu z možnosti Alive a well na nové úpravy provedené v tomto případě.
 
-Vzdálené monitorování řešení používá mikroslužeb, které jsou vytvořeny pomocí imblin dockeru, které jsou vyčádkání z docker hubu. 
+Řešení vzdáleného monitorování používá mikroslužby vytvořené pomocí imagí Docker, které jsou načítány z Docker Hub. 
 
 V tomto kurzu se naučíte:
 
 >[!div class="checklist"]
-> * Úprava a sestavení mikroslužby v řešení vzdáleného monitorování
-> * Vytvoření image dockeru
-> * Zasunutí image dockeru do centra dockeru
-> * Vytáhnout novou bitovou kopii dockeru
+> * Úprava a vytvoření mikroslužby v řešení vzdáleného monitorování
+> * Sestavení image Docker
+> * Vložení image Docker do vašeho centra Docker
+> * Načíst novou bitovou kopii Docker
 > * Vizualizace změn 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li sledovat tento výukový program, musíte:
+Pokud chcete postupovat podle tohoto kurzu, budete potřebovat:
 
 >[!div class="checklist"]
 > * [Místní nasazení akcelerátoru řešení vzdáleného monitorování](iot-accelerators-remote-monitoring-deploy-local.md)
-> * [Účet Dockeru](https://hub.docker.com/)
-> * [Pošťák](https://www.getpostman.com/) - Potřebné k zobrazení odpovědi rozhraní API
+> * [Účet Docker](https://hub.docker.com/)
+> * [Pozálohovací](https://www.getpostman.com/) – potřebný k zobrazení odpovědi rozhraní API
 
 ## <a name="call-the-api-and-view-response-status"></a>Volání rozhraní API a zobrazení stavu odpovědi
 
-V této části zavoláte výchozí rozhraní API mikroslužeb správce centra IoT. Rozhraní API vrátí stavovou zprávu, kterou později změníte přizpůsobením mikroslužby.
+V této části zavoláte výchozí rozhraní API mikroslužeb Správce služby IoT Hub. Rozhraní API vrátí stavovou zprávu, kterou později změníte, přizpůsobením mikroslužby.
 
-1. Ujistěte se, že řešení vzdáleného monitorování běží místně v počítači.
-2. Vyhledejte, kde jste stáhli Pošťáka a otevřete ho.
-3. V pošťák, zadejte následující `http://localhost:8080/iothubmanager/v1/status`get: .
-4. Zobrazit návrat a měli byste vidět, "Status": "OK: Alive a Dobře".
+1. Ujistěte se, že je na vašem počítači místně spuštěné řešení vzdáleného monitorování.
+2. Vyhledejte, kam jste stáhli po stažení, a otevřete ji.
+3. V části post zadejte následující příkaz GET: `http://localhost:8080/iothubmanager/v1/status`.
+4. Zobrazte si návrat a měli byste vidět "stav": "OK: Alive a well".
 
-    ![Alive a dobře Pošťák zpráva](./media/iot-accelerators-microservices-example/postman-alive-well.png)
+    ![Alive a správně odeslaná zpráva](./media/iot-accelerators-microservices-example/postman-alive-well.png)
 
-## <a name="change-the-status-and-build-the-image"></a>Změna stavu a sestavení obrázku
+## <a name="change-the-status-and-build-the-image"></a>Změna stavu a sestavení image
 
-Teď změňte stavovou zprávu mikroslužby Správce centra Iot na "Nové úpravy provedené zde!" a potom znovu vytvořit image dockeru s tímto novým stavem. Pokud zde narazíte na problémy, přečtěte si naši část [Řešení potíží.](#Troubleshoot)
+Teď změňte stavovou zprávu mikroslužeb Správce služby IoT Hub na nové úpravy, které tady udělali! a pak znovu sestavte image Docker s tímto novým stavem. Pokud narazíte na problémy, přečtěte si část věnované [řešení potíží](#Troubleshoot) .
 
-1. Ujistěte se, že váš terminál je otevřený a převyšte adresář, do kterého jste naklonovali řešení vzdáleného monitorování. 
-1. Změňte svůj adresář na "azure-iot-pcs-remote-monitoring-dotnet/services/iothub-manager/Services".
-1. Otevřete StatusService.cs v libovolném textovém editoru nebo ide, které se vám líbí. 
+1. Ujistěte se, že je terminál otevřený, a přejděte do adresáře, do kterého jste naklonováni řešení vzdáleného monitorování. 
+1. Změňte adresář na Azure-IoT-PC-Remote-Monitoring-dotnet/Services/iothub-Manager/Services.
+1. Otevřete StatusService.cs v libovolném textovém editoru nebo integrovaném vývojovém prostředí, které chcete. 
 1. Vyhledejte následující kód:
 
     ```csharp
     var result = new StatusServiceModel(true, "Alive and well!");
     ```
 
-    a změnit jej na níže uvedený kód a uložit jej.
+    a pak ho změňte na následující kód a uložte ho.
 
     ```csharp
     var result = new StatusServiceModel(true, "New Edits Made Here!");
     ```
 
-5. Vraťte se do terminálu, ale nyní přejděte na následující adresář: "azure-iot-pcs-remote-monitoring-dotnet/services/iothub-manager/scripts/docker".
-6. Chcete-li vytvořit novou bitové kopie dockeru, zadejte
+5. Vraťte se do terminálu, ale teď se změňte na následující adresář: Azure-IoT-PC-Remote-Monitoring-dotnet/Services/iothub-Manager/Scripts/Docker.
+6. Pokud chcete vytvořit novou image Docker, zadejte
 
     ```sh
     sh build
     ```
     
-    nebo v systému Windows:
+    nebo ve Windows:
     
     ```cmd
     ./build.cmd
     ```
 
-7. Chcete-li ověřit, zda byl nový obrázek úspěšně vytvořen, zadejte
+7. Pokud chcete ověřit, že se nová image úspěšně vytvořila, zadejte
 
     ```cmd/sh
     docker images 
     ```
 
-Úložiště by mělo být "azureiotpcs/iothub-manager-dotnet".
+Úložiště by mělo být "azureiotpcs/iothub-Manager-dotnet".
 
-![Úspěšná image dockeru](./media/iot-accelerators-microservices-example/successful-docker-image.png)
+![Úspěšná image Docker](./media/iot-accelerators-microservices-example/successful-docker-image.png)
 
 ## <a name="tag-and-push-the-image"></a>Označení a odeslání image
-Než budete moci vaši novou image dockeru přemístit do dockerhubu, Docker očekává, že vaše image budou tagované. Pokud zde narazíte na problémy, přečtěte si naši část [Řešení potíží.](#Troubleshoot)
+Před nahráním nové image Docker do dokovacího centra očekává Docker, že vaše obrázky budou označené. Pokud narazíte na problémy, přečtěte si část věnované [řešení potíží](#Troubleshoot) .
 
-1. Vyhledejte ID image image image dockeru, kterou jste vytvořili zadáním:
+1. Vyhledejte ID image image Docker, kterou jste vytvořili zadáním:
 
     ```cmd/sh
     docker images
@@ -106,96 +106,96 @@ Než budete moci vaši novou image dockeru přemístit do dockerhubu, Docker oč
     docker tag [Image ID] [docker ID]/iothub-manager-dotnet:testing 
     ```
 
-3. Pokud chcete nově tagovaný obrázek přetlačit do docker hubu, zadejte
+3. Pokud chcete nově označenou bitovou kopii nasdílet do vašeho rozbočovače Docker, zadejte
 
     ```cmd/sh
     docker push [docker ID]/iothub-manager-dotnet:testing
     ```
 
-4. Otevřete internetový prohlížeč a přejděte do [docker hubu](https://hub.docker.com/) a přihlaste se.
-5. Nyní byste měli vidět nově posunutou image dockeru na vašem docker hubu.
-![Image Dockeru v centru dockeru](./media/iot-accelerators-microservices-example/docker-image-in-docker-hub.png)
+4. Otevřete internetový prohlížeč a přihlaste se k [centru Docker](https://hub.docker.com/) a přihlaste se.
+5. Nyní by se měla zobrazit vaše nově vložená image Docker do vašeho centra Docker.
+![Image Docker v Docker Hub](./media/iot-accelerators-microservices-example/docker-image-in-docker-hub.png)
 
 ## <a name="update-your-remote-monitoring-solution"></a>Aktualizace řešení vzdáleného monitorování
-Nyní je potřeba aktualizovat místní docker-compose.yml natáhnout novou image dockeru z vašeho docker hubu. Pokud zde narazíte na problémy, přečtěte si naši část [Řešení potíží.](#Troubleshoot)
+Teď je potřeba aktualizovat místní Docker-Compose. yml a načíst novou image Docker z vašeho centra Docker. Pokud narazíte na problémy, přečtěte si část věnované [řešení potíží](#Troubleshoot) .
 
-1. Vraťte se do terminálu a přejděte na následující adresář: "azure-iot-pcs-remote-monitoring-dotnet/services/scripts/local".
-2. Otevřete docker-compose.yml v libovolném textovém editoru nebo IDE, které se vám líbí.
+1. Vraťte se do terminálu a přejděte do následujícího adresáře: "Azure-IoT-PC-Remote-Monitoring-dotnet/Services/Scripts/local".
+2. Otevřete Docker-Compose. yml v libovolném textovém editoru nebo integrovaném vývojovém prostředí, které chcete.
 3. Vyhledejte následující kód:
 
     ```yml
     image: azureiotpcs/iothub-manager-dotnet:testing
     ```
 
-    a změňte ji tak, aby vypadala jako obrázek níže a uložte jej.
+    a pak ho změňte tak, aby vypadal jako obrázek níže, a uložte ho.
 
     ```yml
     image: [docker ID]/iothub-manager-dotnet:testing
     ```
 
 ## <a name="view-the-new-response-status"></a>Zobrazit nový stav odpovědi
-Dokončete opětovné nasazení místní instance řešení vzdáleného monitorování a zobrazení nové odpovědi na stav v Postman.
+Dokončete tak, že znovu nasadíte místní instanci řešení vzdáleného monitorování a zobrazíte novou odpověď na stav v poli post.
 
-1. Vraťte se do terminálu a přejděte na následující adresář: "azure-iot-pcs-remote-monitoring-dotnet/scripts/local".
+1. Vraťte se do terminálu a přejděte do následujícího adresáře: "Azure-IoT-PC-Remote-Monitoring-dotnet/Scripts/local".
 2. Spusťte místní instanci řešení vzdáleného monitorování zadáním následujícího příkazu do terminálu:
 
     ```cmd/sh
     docker-compose up
     ```
 
-3. Vyhledejte, kde jste stáhli Pošťáka a otevřete ho.
-4. V pošťáku zadejte do `http://localhost:8080/iothubmanager/v1/status`příkazu GET následující požadavek: . Nyní byste měli vidět, "Status": "OK: Nové úpravy made here!".
+3. Vyhledejte, kam jste stáhli po stažení, a otevřete ji.
+4. V části post zadejte do GET: `http://localhost:8080/iothubmanager/v1/status`následující požadavek. Nyní byste měli vidět "stav": "OK: nové úpravy provedené!".
 
-![Nová zpráva o úpravě made here postman](./media/iot-accelerators-microservices-example/new-postman-message.png)
+![Nové úpravy provedené v tomto příspěvku odesílají zprávy](./media/iot-accelerators-microservices-example/new-postman-message.png)
 
 ## <a name="troubleshoot"></a><a name="Troubleshoot"></a>Řešení potíží
 
-Pokud narážíte na problémy, zkuste odebrat image dockeru a kontejnery v místním počítači.
+Pokud máte problémy s problémy, zkuste z místního počítače odebrat image a kontejnery Docker.
 
-1. Chcete-li odebrat všechny kontejnery, musíte nejprve zastavit všechny spuštěné kontejnery. Otevřete terminál a zadejte
+1. Pokud chcete odebrat všechny kontejnery, musíte nejprve zastavit všechny spuštěné kontejnery. Otevřete terminál a zadejte
 
     ```cmd/sh
     docker stop $(docker ps -aq)
     docker rm $(docker ps -aq)
     ```
     
-2. Chcete-li odstranit všechny obrázky, otevřete terminál a zadejte 
+2. Pokud chcete odebrat všechny image, otevřete terminál a zadejte 
 
     ```cmd/sh
     docker rmi $(docker images -q)
     ```
 
-3. Můžete zkontrolovat, zda jsou na stroji nějaké kontejnery, zadáním
+3. Můžete zjistit, jestli na počítači nejsou nějaké kontejnery, a to tak, že zadáte
 
     ```cmd/sh
     docker ps -aq 
     ```
 
-    Pokud jste úspěšně odebrali všechny kontejnery, nic by se nemělo zobrazit.
+    Pokud jste úspěšně odebrali všechny kontejnery, neměli byste nic zobrazovat.
 
-4. Můžete zkontrolovat, zda jsou na zařízení nějaké obrázky zadáním
+4. Můžete zjistit, jestli na počítači nejsou žádné image, a to tak, že zadáte
 
     ```cmd/sh
     docker images
     ```
 
-    Pokud jste úspěšně odebrali všechny kontejnery, nic by se nemělo zobrazit.
+    Pokud jste úspěšně odebrali všechny kontejnery, neměli byste nic zobrazovat.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto tutoriálu jste viděli, jak:
+V tomto kurzu jste zjistili, jak:
 
 <!-- Repeat task list from intro -->
 >[!div class="checklist"]
-> * Úprava a sestavení mikroslužby v řešení vzdáleného monitorování
-> * Vytvoření image dockeru
-> * Zasunutí image dockeru do centra dockeru
-> * Vytáhnout novou bitovou kopii dockeru
+> * Úprava a vytvoření mikroslužby v řešení vzdáleného monitorování
+> * Sestavení image Docker
+> * Vložení image Docker do vašeho centra Docker
+> * Načíst novou bitovou kopii Docker
 > * Vizualizace změn 
 
-Další věcí, kterou můžete vyzkoušet, je [přizpůsobení mikroslužby simulátoru zařízení v řešení vzdáleného monitorování](iot-accelerators-microservices-example.md)
+Další věc, kterou si můžete vyzkoušet, je [přizpůsobení mikroslužby simulátoru zařízení v řešení vzdáleného monitorování](iot-accelerators-microservices-example.md) .
 
-Další informace pro vývojáře o řešení vzdáleného monitorování naleznete v následujících tématech:
+Další informace o vývojářích řešení vzdáleného monitorování najdete v těchto tématech:
 
 * [Referenční příručka pro vývojáře](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 <!-- Next tutorials in the sequence -->

@@ -5,24 +5,24 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 2d0fd904dd704c704662192e1e92fe403f0971c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67175037"
 ---
-#### <a name="to-install-maintenance-mode-hotfixes-via-windows-powershell-for-storsimple"></a>Instalace oprav hotfix v režimu údržby prostřednictvím prostředí Windows PowerShell for StorSimple
+#### <a name="to-install-maintenance-mode-hotfixes-via-windows-powershell-for-storsimple"></a>Instalace oprav hotfix režimu údržby přes Windows PowerShell pro StorSimple
 > [!IMPORTANT]
-> V režimu údržby je třeba nejprve použít opravu hotfix na jeden řadič a poté na druhý ovladač.
+> V režimu údržby musíte nejprve použít opravu hotfix na jednom řadiči a pak na druhém řadiči.
 > 
 > 
 
-1. Umístěte zařízení do režimu údržby. Pokyny, jak vstoupit do režimu údržby, naleznete [v kroku 2: Zadejte režim údržby.](../articles/storsimple/storsimple-update-device.md#step2)
+1. Umístěte zařízení do režimu údržby. Pokyny, jak zadat režim údržby, najdete v části [Krok 2: Zadejte režim údržby](../articles/storsimple/storsimple-update-device.md#step2) .
 2. Chcete-li použít opravu hotfix, zadejte:
    
      `Start-HcsHotfix` 
-3. Po zobrazení výzvy zadejcestu ke sdílené síťové složce, která obsahuje soubory oprav hotfix.
-4. Zobrazí se výzva k potvrzení. Chcete-li pokračovat v instalaci opravy hotfix, zadejte **zadejte Y.**
-5. Po použití opravy hotfix na jednom řadiči se přihlaste k druhému řadiči. Použijte opravu hotfix stejně jako u předchozího ovladače.
-6. Po použití oprav hotfix ukončete režim údržby. Pokyny naleznete [v kroku 4: Ukončete režim údržby.](../articles/storsimple/storsimple-update-device.md#step4)
+3. Po zobrazení výzvy zadejte cestu ke sdílené síťové složce, která obsahuje soubory oprav hotfix.
+4. Zobrazí se výzva k potvrzení. Pokud chcete pokračovat v instalaci opravy hotfix, zadejte **Y** .
+5. Po použití opravy hotfix na jednom řadiči se přihlaste k druhému kontroleru. Použijte opravu hotfix jako u předchozího kontroleru.
+6. Po použití oprav hotfix Ukončete režim údržby. Pokyny najdete v části [Krok 4: ukončení režimu údržby](../articles/storsimple/storsimple-update-device.md#step4) .
 

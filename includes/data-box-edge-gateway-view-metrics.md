@@ -5,57 +5,57 @@ ms.topic: include
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: e02c0b86cd542b3ea12914e35a6577cf4e9b43d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67175458"
 ---
-Můžete také zobrazit metriky pro sledování výkonu zařízení a v některých případech pro řešení problémů se zařízením.
+Můžete také zobrazit metriky pro monitorování výkonu zařízení a v některých případech pro řešení potíží se zařízením.
 
-Na webu Azure Portal vytvořte graf pro vybrané metriky zařízení následujícím postupem.
+Proveďte následující kroky v Azure Portal k vytvoření grafu pro vybrané metriky zařízení.
 
-1. Pro váš prostředek na webu Azure Portal přejděte na **sledování > metriky** a vyberte **Přidat metriku**.
+1. Pro prostředek v Azure Portal klikněte na **monitorování > metriky** a vyberte **Přidat metriky**.
 
     ![Přidání metriky](media/data-box-edge-gateway-view-metrics/view-metrics-1.png)
 
-2. Prostředek je automaticky naplněn.  
+2. Prostředek se vyplní automaticky.  
 
-    ![Aktuální zdroj](media/data-box-edge-gateway-view-metrics/view-metrics-2.png)
+    ![Aktuální prostředek](media/data-box-edge-gateway-view-metrics/view-metrics-2.png)
 
-    Chcete-li zadat jiný zdroj, vyberte jej. V **části Vybrat** okno prostředku vyberte předplatné, skupinu prostředků, typ prostředku a konkrétní prostředek, pro který chcete zobrazit metriky, a vyberte **použít**.
+    Pokud chcete zadat jiný prostředek, vyberte prostředek. V okně **Vybrat prostředek** vyberte předplatné, skupinu prostředků, typ prostředku a konkrétní prostředek, pro který chcete zobrazit metriky, a vyberte **použít**.
 
-    ![Výběr jiného zdroje](media/data-box-edge-gateway-view-metrics/view-metrics-3.png)
+    ![Zvolit jiný prostředek](media/data-box-edge-gateway-view-metrics/view-metrics-3.png)
 
-3. V rozevíracím seznamu vyberte metriku, která má sledovat vaše zařízení. Metriky mohou být **metriky kapacity** nebo **metriky transakce**. Metriky kapacity se vztahují k kapacitě zařízení. Metriky transakcí se vztahují k operacím čtení a zápisu do Služby Azure Storage.
+3. V rozevíracím seznamu vyberte metriku pro monitorování zařízení. Metrikami můžou být metriky **kapacity** nebo metriky **transakcí**. Metriky kapacity se týkají kapacity zařízení. Metriky transakcí souvisejí s operacemi čtení a zápisu, které jsou Azure Storage.
 
     |Metriky kapacity                     |Popis  |
     |-------------------------------------|-------------|
-    |**Dostupná kapacita**               | Odkazuje na velikost dat, která mohou být zapsána do zařízení. Jinými slovy, jedná se o kapacitu, která může být k dispozici na zařízení. <br></br>Kapacitu zařízení můžete uvolnit odstraněním místní kopie souborů, které mají kopii v zařízení i v cloudu.        |
-    |**Celková kapacita**                   | Odkazuje na celkový počet bajtů v zařízení pro zápis dat. To se také označuje jako celková velikost místní mezipaměti. <br></br> Nyní můžete zvýšit kapacitu existujícího virtuálního zařízení přidáním datového disku. Přidejte datový disk prostřednictvím správy hypervisoru pro virtuální počítač a restartujte virtuální počítač. Místní fond úložiště zařízení Gateway se rozbalí tak, aby vyhovoval nově přidanému datovému disku. <br></br>Další informace najdete [v najdete v doplňku Přidání pevného disku pro virtuální počítač Hyper-V](https://www.youtube.com/watch?v=EWdqUw9tTe4). |
+    |**Dostupná kapacita**               | Odkazuje na velikost dat, která se dají zapsat do zařízení. Jinými slovy, to je kapacita, kterou lze v zařízení zpřístupnit. <br></br>Kapacitu zařízení můžete uvolnit tak, že odstraníte místní kopii souborů, která má kopii na zařízení i v cloudu.        |
+    |**Celková kapacita**                   | Odkazuje na celkový počet bajtů na zařízení, do kterého se mají zapisovat data. To se také označuje jako celková velikost místní mezipaměti. <br></br> Kapacitu stávajícího virtuálního zařízení teď můžete zvýšit přidáním datového disku. Přidejte datový disk prostřednictvím správy hypervisoru pro virtuální počítač a pak restartujte virtuální počítač. Místní fond úložiště zařízení brány se rozšíří tak, aby odpovídal nově přidanému datovému disku. <br></br>Další informace získáte, když přejdete na [Přidat pevný disk pro virtuální počítač Hyper-V](https://www.youtube.com/watch?v=EWdqUw9tTe4). |
     
     |Transakční metriky              | Popis         |
     |-------------------------------------|---------|
-    |**Nahrané bajty v cloudu (zařízení)**    | Součet všech bajtů nahraných ve všech sdílených složek v zařízení        |
-    |**Nahrané bajty v cloudu (sdílet)**     | Bajty nahrané na sdílenou složku. Může to být: <br></br> Avg, což je (Součet všech bajtů nahraných na akcii / počet akcií),  <br></br>Max, což je maximální počet bajtů nahraných ze sdílené položky <br></br>Min, což je minimální počet bajtů nahraných ze sdílené položky      |
-    |**Propustnost stahování v cloudu (sdílená)**| Bajty stažené na sdílenou složku. Může to být: <br></br> Avg, což je (Součet všech bajtů přečtených nebo stažených do akcie / počet akcií) <br></br> Max, což je maximální počet bajtů stažených ze sdílené položky<br></br> a Min, což je minimální počet bajtů stažených z akcie  |
-    |**Propustnost pro čtení v cloudu**            | Součet všech bajtů přečtených z cloudu ve všech sdílených složek v zařízení     |
-    |**Propustnost nahrávání v cloudu**          | Součet všech bajtů zapsaných do cloudu ve všech sdílených složek v zařízení     |
-    |**Propustnost nahrávání do cloudu (sdílení)**  | Součet všech bajtů zapsaných do cloudu z podílu / # akcií je průměrný, max a min na akcii      |
-    |**Propustnost čtení (síť)**           | Zahrnuje propustnost systémové sítě pro všechny bajty přečtené z cloudu. Toto zobrazení může obsahovat data, která nejsou omezena na sdílené složky. <br></br>Rozdělení zobrazí provoz přes všechny síťové adaptéry v zařízení. To zahrnuje adaptéry, které nejsou připojeny nebo povoleny.      |
-    |**Propustnost zápisu (síť)**       | Zahrnuje propustnost systémové sítě pro všechny bajty zapsané do cloudu. Toto zobrazení může obsahovat data, která nejsou omezena na sdílené složky. <br></br>Rozdělení zobrazí provoz přes všechny síťové adaptéry v zařízení. To zahrnuje adaptéry, které nejsou připojeny nebo povoleny.          |
-    |**Edge compute – využití paměti**      | Tato metrika se nevztahuje na bránu datové schránky, a proto není naplněna.          |
-    |**Edge compute - procento CPU**    | Tato metrika se nevztahuje na bránu datové schránky, a proto není naplněna.         |
+    |**Odeslané bajty v cloudu (zařízení)**    | Součet všech bajtů odeslaných napříč všemi sdílenými složkami ve vašem zařízení        |
+    |**Odeslané bajty v cloudu (sdílená složka)**     | Počet odeslaných bajtů na sdílenou složku. Může to být: <br></br> Střední, což je (součet všech odeslaných bajtů na sdílenou položku/počet sdílených složek),  <br></br>Max, což je maximální počet bajtů odeslaných ze sdílené složky <br></br>Min, což je minimální počet bajtů odeslaných ze sdílené složky      |
+    |**Propustnost stahování do cloudu (sdílení)**| Počet stažených bajtů na sdílenou složku. Může to být: <br></br> Střední, což je (součet všech přečtených nebo stažených bajtů do sdílené složky/počtu sdílených složek) <br></br> Max, což je maximální počet bajtů stažených ze sdílené složky<br></br> a min, což je minimální počet bajtů stažených ze sdílené složky  |
+    |**Propustnost čtení v cloudu**            | Součet všech přečtených bajtů z cloudu napříč všemi sdílenými složkami v zařízení     |
+    |**Propustnost nahrávání do cloudu**          | Součet všech bajtů zapsaných do cloudu napříč všemi sdílenými složkami v zařízení     |
+    |**Propustnost nahrávání do cloudu (sdílení)**  | Součet všech bajtů zapsaných do cloudu ze sdílené složky/počtu sdílených složek je průměrně, Max a min na sdílenou složku.      |
+    |**Propustnost čtení (síť)**           | Zahrnuje propustnost systémové sítě pro všechny přečtené bajty z cloudu. Toto zobrazení může obsahovat data, která nejsou omezená na sdílené složky. <br></br>Při rozdělování se zobrazí přenos všech síťových adaptérů na zařízení. To zahrnuje adaptéry, které nejsou připojené nebo nejsou povolené.      |
+    |**Propustnost zápisu (síť)**       | Zahrnuje propustnost systémové sítě pro všechny bajty zapsané do cloudu. Toto zobrazení může obsahovat data, která nejsou omezená na sdílené složky. <br></br>Při rozdělování se zobrazí přenos všech síťových adaptérů na zařízení. To zahrnuje adaptéry, které nejsou připojené nebo nejsou povolené.          |
+    |**Výpočet využití paměti na hraničních zařízeních**      | Tato metrika se nedá použít pro Data Box Gateway a proto není naplněna.          |
+    |**Výpočetní prostředí Edge – procento využití procesoru**    | Tato metrika se nedá použít pro Data Box Gateway a proto není naplněna.         |
 
-4. Když je metrika vybrána z rozevíracího seznamu, lze také definovat agregaci. Agregace odkazuje na skutečnou hodnotu agregován v zadaném časovém rozpětí. Agregované hodnoty mohou být průměrné, minimální nebo maximální hodnoty. Vyberte agregaci z avg, max nebo min.
+4. Je-li v rozevíracím seznamu vybrána metrika, je možné definovat také agregaci. Agregace odkazuje na skutečnou hodnotu agregovanou v zadaném časovém rozsahu. Agregované hodnoty mohou být průměr, minimum nebo maximální hodnota. Vyberte agregaci z průměrných, maximálních nebo minimálních hodnot.
 
     ![Zobrazit graf](media/data-box-edge-gateway-view-metrics/view-metrics-4.png)
 
-5. Pokud metrika, kterou jste vybrali, obsahuje více instancí, je k dispozici možnost rozdělení. Vyberte **Použít rozdělení** a pak vyberte hodnotu, podle které chcete zobrazit rozdělení.
+5. Pokud vybraná metrika má více instancí, je možnost rozdělení k dispozici. Vyberte **použít rozdělení** a pak vyberte hodnotu, podle které chcete zobrazit rozpis.
 
     ![Použít rozdělení](media/data-box-edge-gateway-view-metrics/view-metrics-5.png)
 
-6. Pokud nyní chcete rozdělení zobrazit pouze pro několik instancí, můžete data filtrovat. Například v tomto případě, pokud chcete zobrazit propustnost sítě pouze pro dvě připojená síťová rozhraní v zařízení, můžete filtrovat tato rozhraní. Vyberte **Přidat filtr** a určete název síťového rozhraní pro filtrování.
+6. Pokud teď chcete zobrazit rozpis jenom pro pár instancí, můžete data filtrovat. Například v takovém případě, pokud chcete zobrazit propustnost sítě pouze pro dvě připojená síťová rozhraní v zařízení, můžete tato rozhraní filtrovat. Vyberte **Přidat filtr** a zadejte název síťového rozhraní pro filtrování.
 
     ![Přidat filtr](media/data-box-edge-gateway-view-metrics/view-metrics-6.png)
 
@@ -63,6 +63,6 @@ Na webu Azure Portal vytvořte graf pro vybrané metriky zařízení následují
 
     ![Připnout na řídicí panel](media/data-box-edge-gateway-view-metrics/view-metrics-7.png)
 
-8. Chcete-li exportovat data grafu do excelové tabulky nebo získat odkaz na graf, který můžete sdílet, vyberte možnost sdílení z panelu příkazů.
+8. Chcete-li exportovat data grafu do tabulky aplikace Excel nebo získat odkaz na graf, který lze sdílet, vyberte možnost sdílení z panelu příkazů.
 
     ![Exportovat data](media/data-box-edge-gateway-view-metrics/view-metrics-8.png)

@@ -1,6 +1,6 @@
 ---
-title: Monitorování sítě v protokolech Azure Monitor | Dokumenty společnosti Microsoft
-description: Přehled řešení monitorování sítě, včetně NPM, pro správu sítí v cloudových, místních a hybridních prostředích.
+title: Informace o monitorování sítě v protokolech Azure Monitor | Microsoft Docs
+description: Přehled řešení monitorování sítě, včetně NPM, pro správu sítí napříč cloudem, místními i hybridními prostředími.
 services: monitoring-and-diagnostics
 documentationcenter: na
 author: agummadi
@@ -16,111 +16,111 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
 ms.openlocfilehash: 2912488286745bf8d2e567d09e445b0a44dc7c39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67672182"
 ---
-# <a name="network-monitoring-solutions"></a>Řešení pro monitorování sítě 
+# <a name="network-monitoring-solutions"></a>Řešení monitorování sítě 
 
-Azure nabízí celou řadu řešení pro monitorování vašich síťových prostředků. Azure má řešení a nástroje pro monitorování připojení k síti, stav okruhů ExpressRoute a analýzu síťového provozu v cloudu.
+Azure nabízí hostitele řešení pro monitorování síťových prostředků. Azure nabízí řešení a pomůcky pro monitorování připojení k síti, stav okruhu ExpressRoute a analýzu síťového provozu v cloudu.
 
-## <a name="network-performance-monitor-npm"></a>Sledování výkonu sítě (NPM)
+## <a name="network-performance-monitor-npm"></a>Network Performance Monitor (NPM)
 
-Sledování výkonu sítě (NPM) je sada funkcí, z nichž každá je zaměřena na sledování stavu vaší sítě, připojení k síti k aplikacím a poskytuje přehled o výkonu vaší sítě. Služba NPM je založená na cloudu a poskytuje řešení pro monitorování hybridní sítě, které monitoruje připojení mezi:
+Network Performance Monitor (NPM) je sada funkcí, z nichž každá je zaměřená na monitorování stavu vaší sítě, síťové připojení k vašim aplikacím a poskytuje přehled o výkonu vaší sítě. NPM je cloudová a poskytuje řešení pro monitorování hybridní sítě, které monitoruje konektivitu mezi:
  
 * Cloudová nasazení a místní umístění
-* Více datových center a poboček
-* Kritické víceúrovňové aplikace/mikroslužby
-* Umístění uživatelů a webové aplikace (HTTP/HTTP) 
+* Několik datových center a poboček
+* Klíčové vysoce vícevrstvé aplikace/mikroslužby
+* Uživatelská umístění a webové aplikace (HTTP/HTTPs) 
 
-Sledování výkonu, monitor ExpressRoute a sledování připojení služby jsou funkce monitorování v rámci služby NPM a jsou popsány níže.
+Sledování výkonu, monitorování ExpressRoute a monitorování připojení služby jsou možnosti monitorování v rámci NPM a jsou popsány níže.
 
 ## <a name="performance-monitor"></a>Monitorování výkonu
 
-Sledování výkonu je součástí npm a je monitorování sítě pro cloudová, hybridní a místní prostředí. Připojení k síti můžete monitorovat napříč vzdálenými pobočkami a pobočkami, umístěními úložišť, datovými centry a cloudy. Problémy se sítí můžete zjistit dříve, než si uživatelé stěžují. Hlavní výhody jsou:
+Sledování výkonu je součástí NPM a je monitorování sítě pro cloudová, hybridní a místní prostředí. Můžete monitorovat síťové připojení mezi vzdálenými pobočkami a pobočkami, umístěními úložišť, datovými centry a cloudy. Můžete zjistit problémy se sítí, než si uživatelé vystěžují stížnost. Mezi klíčové výhody patří:
 
-* Sledování ztrát a latence v různých podsítích a nastavení výstrah
-* Sledování všech cest (včetně redundantních cest) v síti
-* Řešení potíží s přechodnou sítí a problémy se sítí v okamžiku, které je obtížné replikovat
-* Určení konkrétního segmentu v síti, který je zodpovědný za snížený výkon
-* Sledovat stav sítě, bez nutnosti SNMP
+* Monitorování ztrát a latence v různých podsítích a nastavení výstrah
+* Monitorovat všechny cesty (včetně redundantních cest) v síti
+* Řešení přechodných a nevyřešených problémů se sítí, které se obtížně replikují
+* Určení konkrétního segmentu sítě, který je zodpovědný za snížený výkon
+* Monitoruje stav sítě bez nutnosti SNMP.
 
-![Toplogická mapa NPM](./media/network-monitoring-overview/npm-topology-map.png) 
+![Mapa topologie NPM](./media/network-monitoring-overview/npm-topology-map.png) 
 
-Další informace naleznete v následujících článcích:
+Další informace najdete v následujících článcích:
 
-* [Konfigurace řešení sledování výkonu sítě v protokolech Azure Monitor](../azure-monitor/insights/network-performance-monitor.md) 
+* [Konfigurace řešení Network Performance Monitor v protokolech Azure Monitor](../azure-monitor/insights/network-performance-monitor.md) 
 * [Případy použití](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)
 * Aktualizace produktu:
   * [Únor 2017](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/)
   * [Srpen 2017](https://blogs.technet.microsoft.com/msoms/2017/08/14/improvements-to-oms-network-performance-monitor/)
 
-## <a name="expressroute-monitor"></a>ExpressRoute Monitor
+## <a name="expressroute-monitor"></a>Monitorování ExpressRoute
 
-NPM pro ExpressRoute nabízí komplexní monitorování ExpressRoute pro privátní partnerský vztah Azure a připojení partnerského vztahu Microsoftu. Můžete sledovat připojení a výkon E2E mezi pobočkami a Azure přes ExpressRoute. Klíčové možnosti jsou:
+NPM for ExpressRoute nabízí komplexní monitorování ExpressRoute pro privátní partnerské vztahy Azure a připojení partnerského vztahu Microsoftu. Můžete monitorovat připojení a výkon E2E mezi firemními pobočkami a Azure prostřednictvím ExpressRoute. Klíčové možnosti:
 
-* Automatická detekce obvodů ER spojených s vaším předplatným
-* Detekce topologie sítě z místních do cloudových aplikací
+* Automatické rozpoznávání okruhů ER přidružených k vašemu předplatnému
+* Detekce síťové topologie z místního prostředí do cloudových aplikací
 * Plánování kapacity, analýza využití šířky pásma
-* Monitorování a upozorňování na primární i sekundární cesty
-* Monitorování připojení ke službám Azure, jako je Office 365, Dynamics 365, ... přes ExpressRoute
-* Zjišťování degradace připojení k virtuálním sítím
+* Monitorování a upozorňování na primární i sekundární cestě
+* Monitorování připojení ke službám Azure, jako je například Office 365, Dynamics 365,... přes ExpressRoute
+* Zjištění degradace připojení k virtuální sítě
 
-![Geomapa zobrazující návštěvnost napříč regiony](./media/network-monitoring-overview/expressroute-topology-map.png) 
+![Geografické mapování znázorňující přenos napříč oblastmi](./media/network-monitoring-overview/expressroute-topology-map.png) 
 
 Další informace najdete v těchto článcích:
 
-* [Konfigurace Network Performance Monitor pro ExpressRoute](../expressroute/how-to-npm.md)
-* [Blogu](https://aka.ms/NPMExRmonitorGA)
+* [Konfigurace Network Performance Monitoru pro ExpressRoute](../expressroute/how-to-npm.md)
+* [Příspěvek na blogu](https://aka.ms/NPMExRmonitorGA)
 
 ## <a name="service-connectivity-monitor"></a>Monitorování připojení služby
 
-Díky monitorování připojení služeb můžete nyní testovat dostupnost aplikací a zjišťovat kritická místa výkonu v místním prostředí, sítích operátorů a cloudových/privátních datových centrech.
+Díky monitorování připojení služby teď můžete testovat dostupnost aplikací a detekovat kritická místa výkonu v místních sítích, sítích dopravců a v cloudových nebo privátních datových centrech.
 
-* Sledování síťového připojení k aplikacím od konce roku
-* Korelovat doručování aplikací s výkonem sítě, zjistit přesné umístění degradace podél cesty mezi uživatelem a aplikací
-* Testování dosažitelnosti aplikací z více uživatelských míst po celém světě
-* Určení latence sítě a ztráty paketů pro vaše obchodní aplikace a aplikace SaaS
-* Určení horkých míst v síti, která mohou způsobovat nízký výkon aplikace
-* Sledování dostupnosti aplikací Office 365 pomocí integrovaných testů pro Microsoft Office 365, Dynamics 365, Skype pro firmy a další služby Microsoftu
+* Monitorování kompletního síťového připojení k aplikacím
+* Korelace doručování aplikací s výkonem sítě, detekce přesného umístění rozkladu podél cesty mezi uživatelem a aplikací
+* Test dosažitelnosti aplikace z více umístění uživatelů po celém světě
+* Určení latence sítě a ztráty paketů pro vaše obchodní a SaaS aplikace
+* Určení aktivních bodů v síti, které mohou způsobovat špatný výkon aplikace
+* Pomocí integrovaných testů pro systém Microsoft Office 365, Dynamics 365, Skype pro firmy a dalších služeb Microsoftu můžete monitorovat dostupnost aplikací Office 365.
 
 Další informace najdete v těchto článcích:
 
-* [Konfigurace sledování výkonu sítě pro sledování koncových bodů služby](../azure-monitor/insights/network-performance-monitor-service-connectivity.md#configuration)
-* [Blogu](https://aka.ms/svcendptmonitor)
+* [Konfigurace Network Performance Monitor pro monitorování koncových bodů služby](../azure-monitor/insights/network-performance-monitor-service-connectivity.md#configuration)
+* [Příspěvek na blogu](https://aka.ms/svcendptmonitor)
 
 ## <a name="traffic-analytics"></a>Analýza provozu
-Traffic Analytics je cloudové řešení, které poskytuje přehled o aktivitách uživatelů a aplikací ve vašich cloudových sítích. Protokoly toku nsg jsou analyzovány poskytnout přehled o:
+Analýza provozu je cloudové řešení, které poskytuje přehled o aktivitách uživatelů a aplikací v cloudových sítích. Protokoly toku NSG se analyzují tak, aby poskytovaly přehledy:
 
-* Přenosy mezi vašimi sítěmi mezi Azure a Internetem, oblastmi veřejného cloudu, virtuálními sítěmi a podsítěmi
-* Aplikace a protokoly ve vaší síti bez nutnosti sledování nebo vyhrazených zařízení pro sběr průtoku
-* Nejlepší talkers, upovídaný aplikace, Virtuální konverzace v cloudu, dopravní hotspoty
-* Zdroje a cíle provozu napříč virtuálními sítěmi, vzájemné vztahy mezi kritickými obchodními službami a aplikacemi
-* Zabezpečení – škodlivý provoz, porty otevřené pro Internet, aplikace nebo virtuální aplikace, které se pokoušejí o přístup k Internetu...
-* Využití kapacity - pomáhá eliminovat problémy nadměrného zřizování nebo nedostatečného využití sledováním trendů využití vpn bran a dalších služeb
+* Přenos toků mezi vašimi sítěmi mezi Azure a internetem, oblastmi veřejných cloudů, virtuální sítě a podsítěmi
+* Aplikace a protokoly ve vaší síti, bez potřeby pro sledování a zařízení sběrače vyhrazeného toku
+* Hlavní mluvčí, aplikace v konverzaci, konverzace virtuálních počítačů v cloudu, provozní hotspoty
+* Zdroje a cíle provozu mezi virtuální sítě, mezi důležitými obchodními službami a aplikacemi
+* Zabezpečení – škodlivý provoz, porty otevřené pro Internet, aplikace nebo virtuální počítače, které se pokoušejí o přístup k Internetu...
+* Využití kapacity – pomáhá eliminovat problémy při nadměrném zřizování nebo nevyužití Díky monitorování trendů využití bran VPN a dalších služeb.
 
-Služba Traffic Analytics vás vybaví informacemi, které vám pomohou auditovat síťovou aktivitu vaší organizace, zabezpečit aplikace a data, optimalizovat výkon pracovního vytížení a zůstat v souladu s předpisy.
+Analýza provozu vám umožní získat užitečné informace, které vám pomůžou auditovat síťové aktivity vaší organizace, zabezpečit aplikace a data a optimalizovat výkon úloh a udržet si vyhovující předpisy.
 
-![Geomapa zobrazující návštěvnost napříč regiony](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
+![Geografické mapování znázorňující přenos napříč oblastmi](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
 
 Související odkazy:
-* [Příspěvek na blogu](https://aka.ms/trafficanalytics), [Dokumentace](https://aka.ms/trafficanalyticsdocs), [Nejčastější dotazy](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-faq)
+* [Blogový příspěvek](https://aka.ms/trafficanalytics), [dokumentace](https://aka.ms/trafficanalyticsdocs), [Nejčastější dotazy](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-faq)
 
 ## <a name="dns-analytics"></a>DNS Analytics
-Toto řešení, vytvořené pro správce DNS, shromažďuje, analyzuje a koreluje protokoly DNS, aby poskytovalo přehledy týkající se zabezpečení, operací a výkonu.  Některé z možností jsou:
+Toto řešení je vytvořené pro Správce DNS, shromažďuje, analyzuje a koreluje protokoly DNS za účelem poskytování zabezpečení, operací a přehledů souvisejících s výkonem.  Mezi tyto možnosti patří:
 
-* Identifikace klientů, kteří se pokoušejí vyřešit škodlivé domény
-* Identifikace zastaralých záznamů o prostředcích
-* Přehled o často dotazovaných doménových jménech a hovorných klientech DNS
+* Identifikace klientů, kteří se pokoušejí přeložit na škodlivé domény
+* Identifikace zastaralých záznamů prostředků
+* Přehled často dotazovaných názvů domén a prahová klientů DNS
 * Přehled o zatížení požadavků na serverech DNS
-* Sledování dynamických selhání registrace DNS
+* Monitorování selhání registrace dynamického serveru DNS
 
-![Řídicí panel služby DNS Analytics](./media/network-monitoring-overview/dns-analytics-overview.png) 
+![Řídicí panel DNS Analytics](./media/network-monitoring-overview/dns-analytics-overview.png) 
 
 Související odkazy:
-* [Příspěvek na blogu](https://blogs.technet.microsoft.com/msoms/2017/04/19/introducing-oms-dns-analytics/), [Dokumentace](https://docs.microsoft.com/azure/log-analytics/log-analytics-dns)
+* [Příspěvek na blogu](https://blogs.technet.microsoft.com/msoms/2017/04/19/introducing-oms-dns-analytics/), [dokumentace](https://docs.microsoft.com/azure/log-analytics/log-analytics-dns)
 
 ## <a name="miscellaneous"></a>Různé
 

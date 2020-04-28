@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: sngun
 ms.openlocfilehash: 9dbbc914580d8d80a3f9b7d730574e24b44827c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70093731"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>Jak používat Azure Kubernetes s Azure Cosmos DB (Preview)
@@ -25,7 +25,7 @@ Rozhraní etcd API v Azure Cosmos DB umožňuje používat Azure Cosmos DB jako 
 
 Další informace o rozhraní etcd API v Azure Cosmos DB najdete v článku [Přehled](etcd-api-introduction.md) . V tomto článku se dozvíte, jak pomocí [modulu Azure Kubernetes Engine](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md) (AKS-Engine) vytvořit cluster Kubernetes v Azure, který používá [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) namísto lokálně nainstalovaného a nakonfigurovaného etcd. 
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 1. Nainstalujte nejnovější verzi rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest). Můžete stáhnout Azure CLI specifické pro váš operační systém a nainstalovat.
 

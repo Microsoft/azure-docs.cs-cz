@@ -9,10 +9,10 @@ ms.date: 010/17/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 26e48d1af8e29c7d00a80910dcca62811da14822
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67673275"
 ---
 Na webu Azure Portal můžete zobrazit stav připojení VPN Gateway klasické virtuální sítě otevřením připojení. Následující postup ukazuje jeden ze způsobů přechodu k připojení a jeho ověření.
@@ -21,10 +21,10 @@ Na webu Azure Portal můžete zobrazit stav připojení VPN Gateway klasické vi
 2. V okně virtuální sítě klikněte na **Přehled**, abyste se dostali k části okna **Připojení VPN**.
 3. Na obrázku připojení VPN klikněte na web.
 
-    ![Místní web](./media/vpn-gateway-verify-connection-azureportal-classic/localsitename.png "místní web")
+    ![Místní lokalita](./media/vpn-gateway-verify-connection-azureportal-classic/localsitename.png "místní lokalita")
 4. V okně **Připojení VPN typu Site-to-Site** zobrazíte informace o vašem webu.
 
     ![Stav připojení](./media/vpn-gateway-verify-connection-azureportal-classic/siteconnectstatus.png "Stav připojení")
 5. Pokud chcete zobrazit další informace o připojení, klikněte na název připojení a otevřete okno **Připojení VPN typu Site-to-Site**.
 
-    ![Stav připojení více](./media/vpn-gateway-verify-connection-azureportal-classic/connections4.png "Stav připojení více informací")
+    ![Stav připojení – další](./media/vpn-gateway-verify-connection-azureportal-classic/connections4.png "Stav připojení – další informace")

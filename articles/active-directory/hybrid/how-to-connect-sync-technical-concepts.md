@@ -1,6 +1,6 @@
 ---
-title: 'Synchronizace služby Azure AD Connect: Technické koncepty | Dokumenty společnosti Microsoft'
-description: Vysvětluje technické koncepty synchronizace Azure AD Connect.
+title: 'Azure AD Connect synchronizace: technické koncepty | Microsoft Docs'
+description: Vysvětluje technické koncepce Azure AD Connect synchronizace.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,77 +17,77 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b8ec4a6100cfbb4419d7e30f4b97589113b88939
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60347566"
 ---
 # <a name="azure-ad-connect-sync-technical-concepts"></a>Synchronizace služby Azure AD Connect: Technické koncepty
 Tento článek je souhrnem tématu [Principy architektury](how-to-connect-sync-technical-concepts.md).
 
-Synchronizace Azure AD Connect se staví na platformě synchronizace pevného metaadresáře.
-V následujících částech jsou uvedeny koncepty synchronizace metaadresářů.
-V návaznosti na MIIS, ILM a FIM, Azure Active Directory Sync Services poskytuje další platformu pro připojení ke zdrojům dat, synchronizaci dat mezi zdroji dat, stejně jako zřizování a deprovisioning identit.
+Azure AD Connect synchronizovat buildy na pevné platformě pro synchronizaci Metaadresáře.
+V následujících částech jsou uvedeny koncepty pro Metaadresáře synchronizaci.
+Služba Azure Active Directory Sync umožňuje vytvářet na MIIS, ILM a FIM další platformu pro připojení ke zdrojům dat, synchronizaci dat mezi zdroji dat a také zřizování a rušení zřizování identit.
 
 ![Technické koncepce](./media/how-to-connect-sync-technical-concepts/scenario.png)
 
-V následujících částech jsou uvedeny další podrobnosti o následujících aspektech služby synchronizace FIM:
+Následující části obsahují další podrobnosti o následujících aspektech služby synchronizace FIM:
 
 * Konektor
 * Tok atributu
-* Prostor konektoru
+* Místo konektoru
 * Metaverse
 * Zřizování
 
 ## <a name="connector"></a>Konektor
-Moduly kódu, které se používají ke komunikaci s připojeným adresářem, se nazývají konektory (dříve známé jako agenti správy (MAs)).
+Kódové moduly, které se používají ke komunikaci s připojeným adresářem, se nazývají konektory (dříve označované jako agenti pro správu (MAs)).
 
-Ty se nainstalované v počítači se synchronizací Azure AD Connect. Konektory poskytují možnost bez agenta konverzovat pomocí vzdálených systémových protokolů namísto spoléhání se na nasazení specializovaných agentů. To znamená snížení rizika a doby nasazení, zejména při práci s kritickými aplikacemi a systémy.
+Tyto jsou nainstalovány na počítači se spuštěným Azure AD Connect synchronizace. Konektory poskytují nezávisle na nasazení specializovaných agentů možnost konverzace pomocí vzdálených systémových protokolů. To znamená, že se snížila rizika a doby nasazení, zejména při práci s důležitými aplikacemi a systémy.
 
-Na obrázku výše je konektor synonymem pro prostor konektoru, ale zahrnuje veškerou komunikaci s externím systémem.
+Na obrázku výše je konektor synonymem mezery mezi konektory, ale zahrnuje veškerou komunikaci s externím systémem.
 
-Spojnice je zodpovědná za všechny funkce importu a exportu do systému a osvobozuje vývojáře od nutnosti pochopit, jak se připojit ke každému systému nativně při použití deklarativnízři přizpůsobit transformace dat.
+Konektor zodpovídá za všechny funkce importu a exportu systému a vývojářům uvolňuje informace o tom, jak se připojit ke každému systému nativně při použití deklarativního zřizování pro přizpůsobení transformace dat.
 
-K importu a exportu dochází pouze v rámci plánu, což umožňuje další izolaci před změnami, ke kterým dochází v systému, protože změny se automaticky nešíří do připojeného zdroje dat. Kromě toho mohou vývojáři také vytvořit vlastní konektory pro připojení k prakticky libovolnému zdroji dat.
+K importu a exportu dochází pouze tehdy, když je naplánováno, což umožňuje další izolaci změn, ke kterým dochází v rámci systému, protože změny se nešíří automaticky do připojeného zdroje dat. Kromě toho mohou vývojáři také vytvořit vlastní konektory pro připojení k prakticky libovolnému zdroji dat.
 
 ## <a name="attribute-flow"></a>Tok atributu
-Metaverse je konsolidované zobrazení všech spojených identit ze sousedních spojnicových prostorů. Na výše uvedeném obrázku je tok atributů zobrazen čarami se šipkami pro příchozí i odchozí tok. Tok atributů je proces kopírování nebo transformace dat z jednoho systému do druhého a všechny toky atributů (příchozí nebo odchozí).
+Metaverse je konsolidované zobrazení všech připojených identit z prostorů sousedících konektorů. Na obrázku výše je tok atributů zobrazen pomocí čar se šipkami pro příchozí i výstupní tok. Tok atributů je proces kopírování nebo transformace dat z jednoho systému do druhého a všech toků atributů (příchozí nebo odchozí).
 
-Tok atributů probíhá mezi prostorem konektoru a metaverse obousměrně při synchronizaci (úplné nebo delta) operace jsou naplánovány ke spuštění.
+Tok atributů probíhá mezi prostorem konektoru a Metaverse v úložišti Metaverse v době, kdy je naplánováno spuštění synchronizace (úplné nebo rozdílové) operace.
 
-Tok atributů dochází pouze při spuštění těchto synchronizací. Toky atributů jsou definovány v pravidlech synchronizace. Ty mohou být příchozí (ISR na obrázku výše) nebo odchozí (OSR na obrázku výše).
+Tok atributů probíhá pouze v případě, že jsou spuštěny tyto synchronizace. V pravidlech synchronizace jsou definovány toky atributů. Můžou to být příchozí (ISR na obrázku výše) nebo odchozí (OSR na obrázku výše).
 
 ## <a name="connected-system"></a>Připojený systém
-Připojený systém (aka připojený adresář) odkazuje na vzdálený systém Azure AD Connect synchronizace se připojil a čtení a zápis dat identity do a z.
+Připojený systém (označuje se také jako připojený adresář) odkazuje na vzdálený systém Azure AD Connect synchronizace se připojila k a čte a zapisuje data identity do a z.
 
-## <a name="connector-space"></a>Prostor konektoru
-Každý připojený zdroj dat je reprezentován jako filtrovaná podmnožina objektů a atributů v prostoru spojnice.
-To umožňuje synchronizační služby pracovat místně bez nutnosti kontaktovat vzdálený systém při synchronizaci objektů a omezuje interakci pouze na importy a exporty.
+## <a name="connector-space"></a>Místo konektoru
+Každý připojený zdroj dat je reprezentován jako filtrovaná podmnožina objektů a atributů v prostoru konektoru.
+Díky tomu může synchronizační služba fungovat místně, aniž by bylo nutné kontaktovat vzdálený systém při synchronizaci objektů a omezit interakci jenom na Import a export.
 
-Pokud zdroj dat a konektor mají schopnost poskytnout seznam změn (delta import), pak provozní efektivita dramaticky zvyšuje jako pouze změny od posledního cyklem dotazování jsou vyměňovány. Prostor konektoru izoluje připojený zdroj dat od změn, které se automaticky šíří, tím, že vyžaduje, aby konektor naplánoval importaci a export. Toto přidané pojištění vám poskytuje klid při testování, náhledu nebo potvrzení další aktualizace.
+Když zdroj dat a konektor mají možnost poskytnout seznam změn (rozdílový import), pak se provozní efektivita zvyšuje až od posledního vyměňování cyklu cyklického dotazování. Prostor konektoru zaizolovaný s připojeným zdrojem dat ze změn, které se šíří automaticky, vyžaduje, aby plán konektoru import a export. Toto přidané pojištění vám uděluje pocit při testování, náhledu nebo potvrzení další aktualizace.
 
 ## <a name="metaverse"></a>Metaverse
-Metaverse je konsolidované zobrazení všech spojených identit ze sousedních spojnicových prostorů.
+Metaverse je konsolidované zobrazení všech připojených identit z prostorů sousedících konektorů.
 
-Jako identity jsou vzájemně propojeny a autorita je přiřazena pro různé atributy prostřednictvím mapování toku importu, centrální metaverse objekt začne agregovat informace z více systémů. Z tohoto toku atributů objektu mapování přenášet informace do odchozích systémů.
+Jelikož jsou identity spojeny společně a autorita je přiřazena k různým atributům prostřednictvím mapování toků importu, začíná centrálním objektem Metaverse agregované informace z více systémů. Z tohoto toku atributů objektu mapování přenáší informace do odchozích systémů.
 
-Objekty jsou vytvořeny, když autoritativní systém promítá je do metaverse. Jakmile jsou všechna připojení odebrána, objekt metaverse je odstraněn.
+Objekty se vytvoří, když je autoritativní systém projektuje do úložiště metaverse. Jakmile se všechna připojení odeberou, objekt Metaverse se odstraní.
 
-Objekty v metaverse nelze upravovat přímo. Všechna data v objektu musí být vložena prostřednictvím toku atributů. Metaverse udržuje trvalé konektory s každým prostorem konektoru. Tyto konektory nevyžadují přecenění pro každé spuštění synchronizace. To znamená, že synchronizace Azure AD Connect nemusí pokaždé vyhledat odpovídající vzdálený objekt. Tím se zabrání nutnosti nákladné agenty, aby se zabránilo změnám atributy, které by za normálních okolností odpovědný za korelaci objektů.
+Objekty v úložišti Metaverse nelze upravovat přímo. Všechna data v objektu musí být předávána prostřednictvím toku atributů. Metaverse udržuje trvalé konektory s každým místem konektoru. Tyto konektory nevyžadují opakované vyhodnocení každého spuštění synchronizace. To znamená, že Azure AD Connect synchronizace nemusí pokaždé vyhledat odpovídající vzdálený objekt. Tím se vyhnete nutnosti nákladným agentům zabránit změnám atributů, které by normálně byly zodpovědné za korelaci objektů.
 
-Při zjišťování nových zdrojů dat, které mohou mít již existující objekty, které je třeba spravovat, azure ad connect synchronizace používá proces nazývaný pravidlo spojení k vyhodnocení potenciálních kandidátů, s nimiž chcete vytvořit propojení.
-Jakmile je propojení vytvořeno, toto vyhodnocení se neopakovalo a mezi vzdáleným připojeným zdrojem dat a metaversem může dojít k normálnímu toku atributů.
+Při zjišťování nových zdrojů dat, které mohou mít předem existující objekty, které je třeba spravovat, Azure AD Connect synchronizace používá proces nazvaný pravidlo JOIN k vyhodnocení potenciálních kandidátů, se kterými se vytvoří odkaz.
+Po navázání spojení se toto vyhodnocení neprojeví a normální tok atributů může nastat mezi vzdáleným připojeným zdrojem dat a úložištěm Metaverse.
 
 ## <a name="provisioning"></a>Zřizování
-Když autoritativní zdroj promítne nový objekt do metaverse, může být vytvořen nový objekt prostoru konektoru v jiném konektoru představujícím následný připojený zdroj dat.
+Když autoritativní zdrojové projekty vytvoří nový objekt do úložiště metaverse, dá se vytvořit nový objekt prostoru konektoru v jiném konektoru, který představuje datový zdroj připojený pro příjem dat.
 
-To neodmyslitelně vytvoří propojení a tok atributů může pokračovat obousměrně.
+To v podstatě vytvoří odkaz a tok atributů může pokračovat v obousměrném směru.
 
-Vždy, když pravidlo určuje, že je třeba vytvořit nový objekt prostoru spojnice, nazývá se zřizování. Protože však tato operace probíhá pouze v prostoru konektoru, nepřenáší se do připojeného zdroje dat, dokud není proveden export.
+Pokaždé, když pravidlo určí, že je potřeba vytvořit nový objekt prostoru konektoru, se nazývá zřizování. Vzhledem k tomu, že tato operace probíhá pouze v prostoru konektoru, nebude přenesena do připojeného zdroje dat, dokud nebude proveden export.
 
 ## <a name="additional-resources"></a>Další zdroje
-* [Synchronizace připojení Azure AD: Přizpůsobení možností synchronizace](how-to-connect-sync-whatis.md)
+* [Azure AD Connect synchronizace: přizpůsobení možností synchronizace](how-to-connect-sync-whatis.md)
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)
 
 <!--Image references-->

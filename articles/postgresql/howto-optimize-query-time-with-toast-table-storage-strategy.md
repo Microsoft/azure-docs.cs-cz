@@ -1,35 +1,35 @@
 ---
-title: Optimalizace doby dotazu pomocí strategie úložiště tabulky TOAST v Azure Database for PostgreSQL – jeden server
-description: Tento článek popisuje, jak optimalizovat čas dotazu pomocí strategie úložiště tabulky TOAST na Azure Database for PostgreSQL - Single Server.
+title: Optimalizace času dotazu pomocí strategie ukládání tabulek informační služby v Azure Database for PostgreSQL-Single server
+description: Tento článek popisuje, jak optimalizovat dobu dotazování s využitím strategie ukládání tabulek informační služby na Azure Database for PostgreSQL jednom serveru.
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: ac1dc43a2b89bc1cc748947ec08e6ada87edbfcb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65066983"
 ---
-# <a name="optimize-query-time-with-the-toast-table-storage-strategy"></a>Optimalizace času dotazu pomocí strategie úložiště tabulky TOAST 
-Tento článek popisuje, jak optimalizovat časy dotazů pomocí strategie ukládání tabulek s nadrozměrnými atributy (TOAST).
+# <a name="optimize-query-time-with-the-toast-table-storage-strategy"></a>Optimalizace času dotazu pomocí strategie ukládání tabulek informační služby 
+Tento článek popisuje, jak optimalizovat dobu dotazování s využitím strategie úložiště tabulek s neoptimalizovanými atributy (informační technika).
 
-## <a name="toast-table-storage-strategies"></a>STRATEGIE SKLADOVÁNÍ STOLU TOAST
-Čtyři různé strategie se používají k ukládání sloupců na disk, který lze použít TOAST. Představují různé kombinace mezi kompresí a mimořádek úložiště. Strategii lze nastavit na úrovni datového typu a na úrovni sloupce.
-- **Plain** zabraňuje kompresi nebo mimo řádek úložiště. Zakáže použití jednobajtových hlaviček pro typy varlena. Prostý je jediná možná strategie pro sloupce datových typů, které nelze použít TOAST.
-- **Extended** umožňuje kompresi i out-of-line úložiště. Extended je výchozí pro většinu datových typů, které lze použít TOAST. Nejprve se pokusí o kompresi. Pokud je řádek stále příliš velký, dojde k pokusu o mimořádkové úložiště.
-- **Externí** umožňuje mimo-of-line skladování, ale ne komprese. Použití Externí umožňuje operace podřetězce na široký text a bytea sloupce rychleji. Tato rychlost přichází s trestem zvýšeného úložného prostoru. Tyto operace jsou optimalizovány tak, aby načítaly pouze požadované části out-of-line hodnoty, když není komprimována.
-- **Hlavní** umožňuje kompresi, ale ne out-of-line skladování. Pro tyto sloupce se stále provádí mimořádkové úložiště, ale pouze jako poslední možnost. K tomu dochází, když neexistuje žádný jiný způsob, jak vytvořit řádek dostatečně malý, aby se vešel na stránku.
+## <a name="toast-table-storage-strategies"></a>Strategie úložiště tabulek informační zprávy
+K ukládání sloupců na disk, který může používat informační zprávy, se používají čtyři různé strategie. Představují různé kombinace mezi kompresí a doplňováním úložiště. Strategii lze nastavit na úrovni datového typu a na úrovni sloupce.
+- Možnost **prostý** zabraňuje kompresi nebo dopředné úložiště. Zakáže použití hlaviček s jedním bajtem pro typy varlena. Jednoduchá je jediná možná strategie pro sloupce datových typů, které nemůžou používat informační zprávy.
+- **Rozšířená** umožňuje kompresi i dopředné úložiště. Rozšířená je výchozí hodnota pro většinu datových typů, které mohou používat informační zprávy. Při prvním pokusu o kompresi. V případě, že je řádek stále příliš velký, probíhá pokus o nedostatku úložiště.
+- **Externí** umožňuje dopředné úložiště, ale ne kompresi. Použití External umožňuje rychlejší operace s podřetězci na šířku textu a na sloupcích. Tato rychlost se dodává s pokutou zvýšeného úložného prostoru. Tyto operace jsou optimalizované tak, aby se načetly jenom požadované části přesahující hodnoty, když se nekomprimuje.
+- **Main** umožňuje kompresi, ale ne mimo řádek úložiště. Pro tyto sloupce se stále provádí přesahující úložiště, ale jenom jako poslední. K tomu dochází, pokud neexistuje žádný jiný způsob, jak řádek dostatečně přizpůsobit na stránku.
 
-## <a name="use-toast-table-storage-strategies"></a>Použití strategií ukládání stolu TOAST
-Pokud vaše dotazy přístup k datovým typům, které můžete použít TOAST, zvažte použití hlavní strategie namísto výchozí rozšířené možnost snížit časy dotazů. Hlavní nevylučuje mimo-of-line skladování. Pokud vaše dotazy nemají přístup k datovým typům, které můžete použít TOAST, může být výhodné zachovat možnost Rozšířené. Větší část řádků hlavní tabulky se vejde do sdílené mezipaměti vyrovnávací paměti, což pomáhá výkonu.
+## <a name="use-toast-table-storage-strategies"></a>Použití INFORMAČNÍch strategií tabulek pro ukládání zpráv
+Pokud vaše dotazy přistupují k datovým typům, které můžou používat informační zprávy, zvažte použití hlavní strategie namísto výchozí rozšířené možnosti pro zkrácení časů dotazů. Hlavní nepravidlo vyčerpá mimo řádek úložiště. Pokud vaše dotazy nepřístupují k datovým typům, které můžou používat informační zprávy, může být vhodné tuto rozšířenou možnost zachovat. Větší část řádků hlavní tabulky se vejde do sdílené mezipaměti vyrovnávací paměti, která pomáhá s výkonem.
 
-Pokud máte zatížení, které používá schéma s širokými tabulkami a vysokým počtu znaků, zvažte použití tabulek PostgreSQL TOAST. Příklad tabulky zákazníků měl větší než 350 sloupců s několika sloupci, které překlenuly 255 znaků. Poté, co byl převeden na hlavní strategii tabulky TOAST, se jejich čas srovnávacího dotazu snížil ze 4203 sekund na 467 sekund. To je 89% zlepšení.
+Pokud máte úlohy, které používají schéma s nejrůznějšími tabulkami a vysokými počty znaků, zvažte použití tabulek informační zprávy PostgreSQL. Ukázková tabulka zákazníků obsahovala více než 350 sloupců s několika sloupci, které rozrostly 255 znaků. Po převedení na hlavní strategii tabulky informační zprávy se jejich srovnávací čas dotazu na 467 sekund zkrátí z 4203 sekund. To je 89 procento vylepšení.
 
 ## <a name="next-steps"></a>Další kroky
-Zkontrolujte pracovní vytížení pro předchozí charakteristiky. 
+Předchozí charakteristiky si můžete projít u svých úloh. 
 
-Projděte si následující postgreSQL dokumentaci: 
-- [Kapitola 68, Fyzické úložiště databáze](https://www.postgresql.org/docs/current/storage-toast.html) 
+Přečtěte si následující dokumentaci k PostgreSQL: 
+- [Kapitola 68, databáze fyzického úložiště](https://www.postgresql.org/docs/current/storage-toast.html) 

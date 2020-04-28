@@ -9,10 +9,10 @@ ms.date: 06/19/2018
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: 49fbfe116a2fe554abb3a3ca4d1dcd6cab2b746d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "69626311"
 ---
 Pokud budete pokračovat k dalšímu doporučenému článku, můžete již vytvořené prostředky zachovat a znovu je použít.
@@ -27,10 +27,10 @@ Odstranění skupiny prostředků podle názvu:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) a potom vyberte **Skupiny prostředků**.
 
-2. Do textového pole **Filtr podle názvu** zadejte název skupiny prostředků obsahující ioT hub. 
+2. Do textového pole **filtrovat podle názvu** zadejte název skupiny prostředků obsahující IoT Hub. 
 
-3. Napravo od skupiny prostředků v seznamu výsledků vyberte **...** a pak **Odstranit skupinu prostředků**.
+3. Napravo od skupiny prostředků v seznamu výsledků vyberte **...** a pak **odstraňte skupinu prostředků**.
 
-    ![Odstranění](./media/iot-hub-quickstarts-clean-up-resources/iot-hub-delete-resource-group.png)
+    ![Odstranit](./media/iot-hub-quickstarts-clean-up-resources/iot-hub-delete-resource-group.png)
 
-4. Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Zadejte název skupiny prostředků znovu, abyste to potvrdili, a pak vyberte **Odstranit**. Po chvíli bude skupina prostředků včetně všech obsažených prostředků odstraněná.
+4. Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Opětovným zadáním názvu skupiny prostředků potvrďte a pak vyberte **Odstranit**. Po chvíli bude skupina prostředků včetně všech obsažených prostředků odstraněná.

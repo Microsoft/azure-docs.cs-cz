@@ -9,10 +9,10 @@ ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: ca4bd3d3b40934323bab8036f3ce72e9281f1de4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67175443"
 ---
 > [!div class="op_single_selector"]
@@ -23,59 +23,59 @@ ms.locfileid: "67175443"
 > * [Node.js v Raspberry Pi](../articles/iot-accelerators/iot-accelerators-connecting-pi-node.md)
 > * [Sada MXChip IoT DevKit](../articles/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md)
 
-V tomto kurzu implementovat **chladicí zařízení,** které odesílá následující telemetrie do [akcelerátoru řešení](../articles/iot-accelerators/about-iot-accelerators.md)vzdáleného monitorování :
+V tomto kurzu implementujete **chladicí** zařízení, které pošle následující telemetrii do [akcelerátoru řešení](../articles/iot-accelerators/about-iot-accelerators.md)vzdáleného monitorování:
 
 * Teplota
-* Tlak
+* Citlivost
 * Vlhkost
 
-Pro jednoduchost kód generuje ukázkové hodnoty telemetrie pro **chladič**. Můžete rozšířit vzorek připojením skutečných senzorů k vašemu zařízení a odesláním skutečné telemetrie.
+Pro zjednodušení kód generuje ukázkové hodnoty telemetrie pro **chlazení**. Ukázku můžete roztáhnout připojením skutečných senzorů k vašemu zařízení a odesláním skutečné telemetrie.
 
-Vzorové zařízení také:
+Ukázkové zařízení také:
 
-* Odešle metadata do řešení k popisu jeho schopnosti.
-* Reaguje na akce aktivované ze stránky **Zařízení** v řešení.
-* Reaguje na změny konfigurace odeslané ze stránky **Zařízení** v řešení.
+* Odešle metadata do řešení, aby bylo možné popsat jeho schopnosti.
+* Reaguje na akce aktivované na stránce **zařízení** v řešení.
+* Reaguje na změny konfigurace odesílané ze stránky **zařízení** v řešení.
 
 K dokončení tohoto kurzu potřebujete mít aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="before-you-start"></a>Než začnete
 
-Než napíšete libovolný kód pro vaše zařízení, nasaďte akcelerátor řešení vzdáleného monitorování a přidejte do něj nové skutečné zařízení.
+Než napíšete kód pro vaše zařízení, nasaďte akcelerátor řešení vzdáleného monitorování a přidejte do řešení nové reálné zařízení.
 
 ### <a name="deploy-your-remote-monitoring-solution-accelerator"></a>Nasazení akcelerátoru řešení vzdáleného monitorování
 
-**Zařízení chladiče,** které vytvoříte v tomto kurzu, odesílá data do instance akcelerátoru řešení [vzdáleného monitorování.](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md) Pokud jste ještě nezřídit akcelerátor řešení vzdáleného monitorování ve vašem účtu Azure, [přečtěte si informace o nasazení akcelerátoru řešení vzdáleného monitorování.](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md)
+**Chladicí** zařízení, které v tomto kurzu vytvoříte, odesílá data do instance akcelerátoru řešení [vzdáleného monitorování](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md) . Pokud jste ve svém účtu Azure ještě nezřídili akcelerátor řešení vzdáleného monitorování, přečtěte si téma [nasazení akcelerátoru řešení vzdáleného monitorování](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md) .
 
-Po dokončení procesu nasazení řešení vzdáleného monitorování otevřete řídicí panel řešení v prohlížeči kliknutím na **tlačítko Spustit.**
+Po dokončení procesu nasazení pro řešení vzdáleného monitorování kliknutím na **Spustit** otevřete řídicí panel řešení v prohlížeči.
 
 ![Řídicí panel řešení](media/iot-suite-selector-connecting/dashboard.png)
 
 ### <a name="add-your-device-to-the-remote-monitoring-solution"></a>Přidání zařízení do řešení vzdáleného monitorování
 
 > [!NOTE]
-> Pokud jste již přidali zařízení v řešení, můžete tento krok přeskočit. Další krok však vyžaduje připojovací řetězec zařízení. Připojovací řetězec zařízení můžete načíst z [webu Azure Portal](https://portal.azure.com) nebo pomocí nástroje [az iot](https://docs.microsoft.com/cli/azure/iot?view=azure-cli-latest) CLI.
+> Pokud jste už zařízení ve svém řešení přidali, můžete tento krok přeskočit. Další krok ale vyžaduje připojovací řetězec zařízení. Připojovací řetězec zařízení můžete načíst z [Azure Portal](https://portal.azure.com) nebo pomocí nástroje [AZ IoT](https://docs.microsoft.com/cli/azure/iot?view=azure-cli-latest) CLI.
 
-Aby se zařízení mohlo připojit k akcelerátoru řešení, musí se identifikovat ve službě IoT Hub pomocí platných přihlašovacích údajů. Máte možnost uložit připojovací řetězec zařízení, který obsahuje tato pověření při přidání zařízení do řešení. V tomto kurzu zahrnete připojovací řetězec zařízení do klientské aplikace dále.
+Aby se zařízení mohlo připojit k akcelerátoru řešení, musí identifikovat sebe, aby IoT Hub s použitím platných přihlašovacích údajů. Po přidání zařízení do řešení máte možnost Uložit připojovací řetězec zařízení, který tyto přihlašovací údaje obsahuje. Připojovací řetězec zařízení zahrnete do klientské aplikace dále v tomto kurzu.
 
-Chcete-li přidat zařízení do řešení vzdáleného monitorování, proveďte následující kroky na stránce **Průzkumník zařízení** v řešení:
+Pokud chcete přidat zařízení do řešení vzdáleného monitorování, na stránce **Device Explorer** v řešení proveďte následující kroky:
 
-1. Zvolte **+ Nové zařízení**a pak jako typ **zařízení**zvolte **Skutečné** :
+1. Zvolte **+ nové zařízení**a pak jako **typ zařízení**zvolte **reálné** :
 
     ![Přidání skutečného zařízení](media/iot-suite-selector-connecting/devicesprovision.png)
 
-1. Zadejte **Fyzický chladič** jako ID zařízení. Zvolte volby **Symetrické klávesy** **a Automatické generování kláves:**
+1. Jako ID zařízení zadejte **fyzický-chladicí** zařízení. Vyberte možnosti **symetrického klíče** a **Automatické generování klíčů** :
 
-    ![Volba možností zařízení](media/iot-suite-selector-connecting/devicesoptions.png)
+    ![Zvolit možnosti zařízení](media/iot-suite-selector-connecting/devicesoptions.png)
 
-1. Zvolte **Použít**. Potom poznamenejte **hodnoty ID zařízení**, **primárního klíče**a **připojovacího řetězce:**
+1. Zvolte **Použít**. Pak si poznamenejte hodnoty primárního klíče pro **ID zařízení**, **primární klíč**a **připojovací řetězec** :
 
-    ![Načíst pověření](media/iot-suite-selector-connecting/credentials.png)
+    ![Načíst přihlašovací údaje](media/iot-suite-selector-connecting/credentials.png)
 
-Nyní jste přidali skutečné zařízení do akcelerátoru řešení vzdáleného monitorování a poznamenali jste jeho připojovací řetězec zařízení. V následujících částech implementujete klientskou aplikaci, která používá připojovací řetězec zařízení pro připojení k řešení.
+Nyní jste přidali reálné zařízení do akcelerátoru řešení vzdáleného monitorování a poznamenali jste jeho připojovací řetězec zařízení. V následujících částech implementujete klientskou aplikaci, která pro připojení k vašemu řešení používá připojovací řetězec zařízení.
 
-Klientská aplikace implementuje model integrovaného **zařízení chladiče.** Model akcelerátoru řešení určuje následující informace o zařízení:
+Klientská aplikace implementuje vestavěný model **chladicího** zařízení. Model zařízení akcelerátoru řešení určuje následující informace o zařízení:
 
-* Vlastnosti zařízení hlásí řešení. Například **zařízení Chiller** hlásí informace o jeho firmware a umístění.
-* Typy telemetrie zařízení odešle do řešení. Například **chladicí** zařízení odesílá hodnoty teploty, vlhkosti a tlaku.
-* Metody, které můžete naplánovat z řešení ke spuštění v zařízení. Například **zařízení chiller** musí implementovat **Reboot**, **FirmwareUpdate**, **EmergencyValveRelease**a **IncreasePressure** metody.
+* Vlastnosti zařízení hlásí řešení. Například zařízení **chlazení** hlásí informace o jeho firmwaru a umístění.
+* Typy telemetrie, které zařízení odesílá do řešení. Například **chladicí** zařízení odesílá hodnoty teploty, vlhkosti a tlaku.
+* Metody, které můžete naplánovat v řešení, které se má spustit na zařízení. Například **chladicí** zařízení musí implementovat metody **restart**, **FirmwareUpdate**, **EmergencyValveRelease**a **IncreasePressure** .

@@ -1,6 +1,6 @@
 ---
-title: Instalace služby Azure AD Connect pomocí existující databáze ADSync | Dokumenty společnosti Microsoft
-description: Toto téma popisuje použití existující databáze ADSync.
+title: Instalace Azure AD Connect pomocí existující databáze ADSync | Microsoft Docs
+description: Toto téma popisuje, jak používat existující databázi ADSync.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,56 +18,56 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4dc6993586063c9c99a287c51d799b44f921768d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60245159"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Instalace nástroje Azure AD Connect s využitím existující databáze ADSync
-Azure AD Connect vyžaduje databázi SQL Serveru k ukládání dat. Můžete buď použít výchozí SQL Server 2012 Express LocalDB nainstalovaný s Azure AD Connect nebo použít vlastní plnou verzi SQL. Dříve při instalaci Služby Azure AD Connect byla vždy vytvořena nová databáze s názvem ADSync. S Azure AD Connect verze 1.1.613.0 (nebo po), máte možnost nainstalovat Azure AD Connect tím, že ukazuje na existující databázi ADSync.
+Azure AD Connect vyžaduje, aby databáze SQL Server ukládala data. Můžete buď použít výchozí SQL Server 2012 Express LocalDB nainstalované s Azure AD Connect nebo použít vlastní plnou verzi SQL. Dříve při instalaci Azure AD Connect byla vždy vytvořena nová databáze s názvem ADSync. U Azure AD Connect verze 1.1.613.0 (nebo po) máte možnost nainstalovat Azure AD Connect tak, že na ni přejdete na existující databázi ADSync.
 
 ## <a name="benefits-of-using-an-existing-adsync-database"></a>Výhody použití existující databáze ADSync
-Odkazem na existující databázi ADSync:
+Tak, že přejdete na existující databázi ADSync:
 
-- S výjimkou informací o pověřeních se konfigurace synchronizace uložená v databázi ADSync (včetně vlastních pravidel synchronizace, konektorů, filtrování a konfigurace volitelných funkcí) automaticky obnoví a použije během instalace. . Přihlašovací údaje používané službou Azure AD Connect k synchronizaci změn s místní službou AD a službou Azure AD jsou šifrované a lze k nim přistupovat jenom na předchozím serveru Azure AD Connect.
-- Všechna data identity (spojená s mezerami konektoru a metaverse) a synchronizační soubory cookie uložené v databázi ADSync jsou také obnoveny. Nově nainstalovaný server Azure AD Connect můžete pokračovat v synchronizaci z místa, kde předchozí server Azure AD Connect skončila, namísto nutnosti provést úplnou synchronizaci.
+- Výjimkou jsou informace o přihlašovacích údajích, konfigurace synchronizace uložená v databázi ADSync (včetně vlastních pravidel synchronizace, konektorů, filtrování a volitelných funkcí) se při instalaci automaticky obnoví a použije. Přihlašovací údaje, které Azure AD Connect používají k synchronizaci změn s místními službami AD a službou Azure AD, jsou zašifrované a můžou k nim mít jenom předchozí Azure AD Connect Server.
+- Také se obnoví všechna data identity (přidružená k prostorům konektoru a úložišti Metaverse) a synchronizačním souborům cookie uloženým v databázi ADSync. Nově nainstalovaný Azure AD Connect Server se může i nadále synchronizovat z místa, kde předchozí server Azure AD Connect vypnul, místo abyste museli provádět úplnou synchronizaci.
 
-## <a name="scenarios-where-using-an-existing-adsync-database-is-beneficial"></a>Scénáře, kde je výhodné používat existující databázi ADSync
+## <a name="scenarios-where-using-an-existing-adsync-database-is-beneficial"></a>Scénáře použití existující databáze ADSync jsou užitečné
 Tyto výhody jsou užitečné v následujících scénářích:
 
 
-- Máte existující nasazení Azure AD Connect. Váš stávající server Azure AD Connect už nefunguje, ale server SQL obsahující databázi ADSync stále funguje. Můžete nainstalovat nový server Azure AD Connect a nasměrovat ho na existující databázi ADSync. 
-- Máte existující nasazení Azure AD Connect. Server SQL obsahující databázi ADSync již nefunguje. Máte však nedávné zálohování databáze. Databázi ADSync můžete nejprve obnovit na nový server SQL. Poté můžete nainstalovat nový server Azure AD Connect a nasměrovat ho do obnovené databáze ADSync.
-- Máte existující nasazení Azure AD Connect, které používá LocalDB. Vzhledem k limitu 10 GB uloženému localdb, chcete migrovat do úplné SQL. Databázi ADSync můžete zálohovat z LocalDB a obnovit ji na server SQL. Poté můžete přeinstalovat nový server Azure AD Connect a nasměrovat ho do obnovené databáze ADSync.
-- Pokoušíte se nastavit pracovní server a chcete se ujistit, že jeho konfigurace odpovídá konfiguraci aktuálního aktivního serveru. Databázi ADSync můžete zálohovat a obnovit ji na jiný server SQL. Poté můžete přeinstalovat nový server Azure AD Connect a nasměrovat ho do obnovené databáze ADSync.
+- Máte existující nasazení Azure AD Connect. Stávající server Azure AD Connect nadále nepracuje, ale server SQL obsahující databázi ADSync stále funguje. Můžete nainstalovat nový server Azure AD Connect a nasměrovat ho na stávající databázi ADSync. 
+- Máte existující nasazení Azure AD Connect. SQL Server obsahující databázi ADSync už nefunguje. Máte ale k dispozici poslední zálohu databáze. Databázi ADSync můžete nejdřív obnovit na nový SQL Server. Potom můžete nainstalovat nový server Azure AD Connect a nasměrovat ho na obnovenou databázi ADSync.
+- Máte existující nasazení Azure AD Connect, které používá LocalDB. V důsledku limitu 10 GB, který je LocalDB, byste chtěli migrovat na úplný SQL. Databázi ADSync můžete zálohovat z LocalDB a obnovit ji na SQL Server. Potom můžete nový server Azure AD Connect přeinstalovat a nasměrovat ho na obnovenou databázi ADSync.
+- Pokoušíte se nastavit pracovní server a chce se ujistit, že jeho konfigurace odpovídá aktuálnímu aktivnímu serveru. Databázi ADSync můžete zálohovat a obnovit ji na jiný SQL Server. Potom můžete nový server Azure AD Connect přeinstalovat a nasměrovat ho na obnovenou databázi ADSync.
 
 ## <a name="prerequisite-information"></a>Informace o požadavcích
 
-Důležité poznámky, které je třeba vzít na vědomí, než budete pokračovat:
+Důležité poznámky, které byste si poznamenali, než budete pokračovat:
 
-- Ujistěte se, že zkontrolujte předpoklady pro instalaci Azure AD Connect na hardware a požadavky a účet a oprávnění potřebné pro instalaci Azure AD Connect. Oprávnění požadovaná pro instalaci Služby Azure AD Connect pomocí režimu "použít existující databázi" jsou stejná jako vlastní instalace.
-- Nasazení služby Azure AD Connect proti existující databázi ADSync je podporováno jenom s úplným SQL. Není podporován a SQL Express LocalDB. Pokud máte existující databázi ADSync v LocalDB, kterou chcete použít, musíte nejprve zálohovat databázi ADSync (LocalDB) a obnovit ji do úplného SQL. Po kterém můžete nasadit Azure AD Connect proti obnovené databázi pomocí této metody.
-- Verze služby Azure AD Connect používaná k instalaci musí splňovat následující kritéria:
-    - 1.1.613.0 nebo vyšší, And
-    - Stejné nebo vyšší než verze Azure AD Connect naposledy použitá s databází ADSync. Pokud je verze Azure AD Connect použitá pro instalaci vyšší než verze naposledy použitá s databází ADSync, může být vyžadována úplná synchronizace.  Úplná synchronizace je vyžadována, pokud mezi těmito dvěma verzemi dochází ke změnám schématu nebo pravidel synchronizace. 
-- Použitá databáze ADSync by měla obsahovat stav synchronizace, který je relativně aktuální. Poslední synchronizační aktivita s existující databází ADSync by měla být v posledních třech týdnech.
-- Při instalaci Azure AD Connect pomocí metody "použít existující databázi" není zachována metoda přihlášení nakonfigurovaná na předchozím serveru Azure AD Connect. Dále nelze konfigurovat metodu přihlášení během instalace. Metodu přihlášení lze konfigurovat pouze po dokončení instalace.
-- Nemůžete mít více serverů Azure AD Connect sdílet stejnou databázi ADSync. Metoda "použít existující databázi" umožňuje znovu použít existující databázi ADSync s novým serverem Azure AD Connect. Nepodporuje sdílení.
+- Nezapomeňte si projít předpoklady pro instalaci Azure AD Connect na hardware a požadavky a účet a oprávnění potřebné k instalaci Azure AD Connect. Oprávnění potřebná k instalaci Azure AD Connect pomocí režimu "použít existující databázi" je stejné jako instalace "vlastní".
+- Nasazení Azure AD Connect proti stávající databázi ADSync je podporováno pouze s úplným SQL. Pro SQL Express LocalDB se nepodporuje. Pokud máte existující databázi ADSync v LocalDB, kterou chcete použít, musíte nejdřív zálohovat databázi ADSync (LocalDB) a obnovit ji do úplného SQL. Potom můžete nasadit Azure AD Connect pro obnovenou databázi pomocí této metody.
+- Verze Azure AD Connect používaná pro instalaci musí splňovat následující kritéria:
+    - 1.1.613.0 nebo vyšší a
+    - Stejná nebo vyšší než verze Azure AD Connect naposledy použitá s databází ADSync. Pokud je verze Azure AD Connect použitá pro instalaci vyšší než verze naposledy použité v databázi ADSync, může být vyžadována Úplná synchronizace.  Úplná synchronizace je vyžadována, pokud se mezi těmito dvěma verzemi mění pravidlo schématu nebo synchronizace. 
+- Použitá databáze ADSync by měla obsahovat stav synchronizace, který je relativně nedávné. Poslední aktivita synchronizace s existující databází ADSync by měla být během posledních tří týdnů.
+- Při instalaci Azure AD Connect pomocí metody použít existující databázi se nezachová Metoda přihlašování nakonfigurovaná na předchozím serveru Azure AD Connect. Dále nemůžete konfigurovat metodu přihlašování během instalace. Metodu přihlašování můžete nakonfigurovat pouze po dokončení instalace.
+- Nemůžete mít více Azure AD Connectch serverů sdílejí stejnou databázi ADSync. Metoda "použít existující databázi" umožňuje znovu použít stávající databázi ADSync pomocí nového serveru Azure AD Connect. Sdílení nepodporuje.
 
-## <a name="steps-to-install-azure-ad-connect-with-use-existing-database-mode"></a>Postup instalace azure ad připojení s režimem "použít existující databázi"
-1.  Stáhněte si instalační službu Azure AD Connect (AzureADConnect.MSI) na server Windows. Poklikáním na instalační službu Azure AD Connect spusťte instalaci služby Azure AD Connect.
+## <a name="steps-to-install-azure-ad-connect-with-use-existing-database-mode"></a>Postup instalace Azure AD Connect s režimem "používání existující databáze"
+1.  Stáhněte si instalační program Azure AD Connect (souboru azureadconnect. MSI) do Windows serveru. Dvojím kliknutím na instalační program Azure AD Connect spusťte instalaci Azure AD Connect.
 2.  Po dokončení instalace MSI se spustí průvodce Azure AD Connect v režimu expresní instalace. Zavřete obrazovku kliknutím na ikonu Ukončit.
 ![Uvítání](./media/how-to-connect-install-existing-database/db1.png)
 3.  Spusťte nový příkazový řádek nebo novou relaci PowerShellu. Přejděte do složky C:\Program Files\Microsoft Azure Active Directory Connect. Spuštěním příkazu .\AzureADConnect.exe /useexistingdatabase spusťte průvodce Azure AD Connect v režimu instalace Použít stávající databázi.
 
 > [!NOTE]
-> Přepínač **/UseExistingDatabase** použijte pouze v případě, že databáze již obsahuje data z dřívější instalace služby Azure AD Connect. Například při přechodu z místní databáze do úplné databáze SQL Serveru nebo při opětovném vytvoření serveru Azure AD Connect a obnovení zálohy SQL databáze ADSync z dřívější instalace služby Azure AD Connect. Pokud je databáze prázdná, to znamená, že neobsahuje žádná data z předchozí instalace Služby Azure AD Connect, tento krok přeskočte.
+> Přepínač **/UseExistingDatabase** použijte pouze v případě, že databáze již obsahuje data z dřívější instalace Azure AD Connect. Například při přechodu z místní databáze do úplné SQL Server databáze nebo při opětovném vytvoření Azure AD Connectho serveru a obnovení zálohy SQL databáze ADSync ze starší instalace Azure AD Connect. Pokud je databáze prázdná, to znamená, že neobsahuje žádná data z předchozí instalace Azure AD Connect, přeskočte tento krok.
 
 ![PowerShell](./media/how-to-connect-install-existing-database/db2.png)
 1. Zobrazí se obrazovka Vítá vás Azure AD Connect. Jakmile odsouhlasíte licenční podmínky a oznámení o ochraně osobních údajů, klikněte na **Pokračovat**.
    ![Uvítání](./media/how-to-connect-install-existing-database/db3.png)
-1. Na obrazovce **Instalace požadovaných komponent** je povolená možnost **Použít existující SQL Server**. Zadejte název SQL Serveru, který je hostitelem databáze ADSync. Pokud instance stroje SQL použitá k hostování databáze ADSync není na SQL Serveru výchozí instancí, musíte zadat název instance stroje SQL. Dále, pokud není povolené procházení SQL, musíte zadat také číslo portu instance stroje SQL. Například:         
+1. Na obrazovce **Instalace požadovaných komponent** je povolená možnost **Použít existující SQL Server**. Zadejte název SQL Serveru, který je hostitelem databáze ADSync. Pokud instance stroje SQL použitá k hostování databáze ADSync není na SQL Serveru výchozí instancí, musíte zadat název instance stroje SQL. Dále, pokud není povolené procházení SQL, musíte zadat také číslo portu instance stroje SQL. Příklad:         
    ![Uvítání](./media/how-to-connect-install-existing-database/db4.png)           
 
 1. Na obrazovce **Připojení ke službě Azure AD** musíte zadat přihlašovací údaje globálního správce vašeho adresáře služby Azure AD. Je vhodné použít účet ve výchozí doméně onmicrosoft.com. Tento účet slouží jenom k vytvoření účtu služby v Azure AD, a po dokončení průvodce se už nepoužívá.
@@ -81,7 +81,7 @@ Důležité poznámky, které je třeba vzít na vědomí, než budete pokračov
    ![Uvítání](./media/how-to-connect-install-existing-database/db7.png)
  
  
-1. Po zadání přihlašovacích údajů se ikona červeného křížku změní na ikonu zeleného zaškrtnutí. Klikněte na **Další**.
+1. Po zadání přihlašovacích údajů se ikona červeného křížku změní na ikonu zeleného zaškrtnutí. Klikněte na **Další**.
    ![Uvítání](./media/how-to-connect-install-existing-database/db8.png)
  
  
@@ -92,16 +92,16 @@ Důležité poznámky, které je třeba vzít na vědomí, než budete pokračov
 1. Po dokončení instalace se na serveru Azure AD Connect automaticky zapne pracovní režim. Před vypnutím pracovního režimu se doporučuje zkontrolovat neočekávané změny v konfiguraci serveru a čekajících sestavách. 
 
 ## <a name="post-installation-tasks"></a>Úlohy po skončení instalace
-Při obnovení zálohy databáze vytvořené verzí služby Azure AD Connect před verzí 1.2.65.0 pracovní server automaticky vybere metodu přihlášení **Do Not Configure**. Zatímco budou obnoveny předvolby synchronizace hodnot hash hesel a zpětný zápis hesla, je nutné následně změnit metodu přihlášení tak, aby odpovídala ostatním zásadám, které jsou platné pro aktivní synchronizační server.  Pokud tyto kroky nedokončíte, může dojít k tomu, že se uživatelé nebudou přihlašovat, pokud bude tento server aktivní.  
+Při obnovení zálohy databáze vytvořené ve verzi Azure AD Connect před 1.2.65.0 bude pracovní server automaticky vybírat metodu přihlašování, kterou **nekonfigurujete**. I když budou obnoveny předvolby hodnoty hash hesla a zpětného zápisu hesel, musíte následně změnit metodu přihlašování tak, aby odpovídala ostatním zásadám platným pro aktivní synchronizační Server.  Při provádění těchto kroků se může stát, že se uživatelé nebudou přihlašovat, aby tento server byl aktivní.  
 
-V následující tabulce ověřte všechny další požadované kroky.
+Následující tabulku použijte k ověření dalších potřebných kroků.
 
 |Funkce|Kroky|
 |-----|-----|
-|Synchronizace hodnot hash hesel| Nastavení synchronizace hash hesel a zpětný zápis hesla jsou plně obnovena pro verze Azure AD Connect počínaje 1.2.65.0.  Pokud obnovení pomocí starší verze Azure AD Connect, zkontrolujte nastavení možnosti synchronizace pro tyto funkce, aby zajistily, že odpovídají aktivní synchronizační server.  Žádné další kroky konfigurace by neměly být nutné.|
-|Federace se službou AD FS|Ověřování Azure bude nadále používat zásady služby AD FS nakonfigurované pro aktivní synchronizační server.  Pokud ke správě farmy služby AD FS používáte službu Azure AD Connect, můžete volitelně změnit metodu přihlášení na federaci služby AD FS v rámci přípravy na to, že se váš pohotovostní server stane aktivní instancí synchronizace.   Pokud jsou na aktivním synchronizačním serveru povoleny možnosti zařízení, nakonfigurujte tyto možnosti na tomto serveru spuštěním úlohy Konfigurovat možnosti zařízení.|
-|Předávací ověřování a jednotné přihlašování na ploše|Aktualizujte metodu přihlášení tak, aby odpovídala konfiguraci na aktivním synchronizačním serveru.  Pokud to není dodrženo před povýšením serveru na primární, předávací ověřování spolu s bezproblémovým jednotném přihlášením bude zakázáno a váš tenant může být uzamčen, pokud nemáte synchronizaci hodnoty hash hesla jako možnost záložního přihlášení. Všimněte si také, že když povolíte předávací ověřování v pracovním režimu, bude nainstalován nový agent ověřování, zaregistruje se a bude spuštěn jako agent s vysokou dostupností, který bude přijímat požadavky na přihlášení.|
-|Federace s PingFederate|Ověřování Azure bude nadále používat zásady PingFederate nakonfigurované pro aktivní synchronizační server.  Volitelně můžete změnit metodu přihlášení na PingFederate v rámci přípravy na pohotovostní server stává aktivní instanci synchronizace.  Tento krok může být odložen, dokud nebudete muset federate další domény s PingFederate.|
+|Synchronizace hodnot hash hesel| nastavení synchronizace hodnoty hash hesla a zpětného zápisu hesla jsou plně obnovena pro verze Azure AD Connect počínaje verzí 1.2.65.0.  Při obnovení pomocí starší verze Azure AD Connect zkontrolujte nastavení možností synchronizace pro tyto funkce, abyste se ujistili, že odpovídají aktivnímu synchronizačnímu serveru.  Není nutné provádět žádné další kroky konfigurace.|
+|Federace se službou AD FS|Ověřování Azure budou dál používat zásady AD FS nakonfigurované pro aktivní synchronizační Server.  Pokud ke správě farmy AD FS používáte Azure AD Connect, můžete volitelně změnit metodu přihlašování na AD FS federaci při přípravě na pohotovostní server, který se stane aktivní instancí synchronizace.   Pokud jsou na aktivním synchronizačním serveru povolené možnosti zařízení, nakonfigurujte tyto možnosti na tomto serveru tak, že spustíte úlohu konfigurace možností zařízení.|
+|Předávací ověřování a jednotné přihlašování pro stolní počítače|Aktualizujte metodu přihlašování tak, aby odpovídala konfiguraci aktivního synchronizačního serveru.  Pokud se to nedoporučuje před zvýšením úrovně serveru na primární, předávající ověřování společně s bezproblémovém jednotným přihlašováním se zakáže a váš tenant může být uzamčený, pokud nemáte synchronizaci hodnot hash hesel jako záložní možnost přihlášení. Všimněte si také, že pokud povolíte předávací ověřování v pracovním režimu, bude nainstalován nový agent ověřování, který bude zaregistrován a spuštěn jako agent s vysokou dostupností, který bude přijímat žádosti o přihlášení.|
+|Federace s PingFederate|Ověřování Azure bude i nadále používat zásady PingFederate nakonfigurované pro aktivní synchronizační Server.  Volitelně můžete změnit způsob přihlašování, aby se PingFederate při přípravě na pohotovostní server, který se stane aktivní instancí synchronizace.  Tento krok může být odložený, dokud nebudete muset federovat další domény pomocí PingFederate.|
 
 ## <a name="next-steps"></a>Další kroky
 

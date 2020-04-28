@@ -1,39 +1,39 @@
 ---
-title: Řešení potíží s datovým katalogem Azure
-description: Tento článek popisuje běžné problémy s řešením potíží pro prostředky katalogu dat Azure.
+title: Řešení potíží s Azure Data Catalog
+description: Tento článek popisuje běžné otázky týkající se řešení potíží s Azure Data Catalog prostředky.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: troubleshooting
 ms.date: 08/01/2019
 ms.openlocfilehash: 84bd14f8ae18527b4f6e9d8509a12555baec8771
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68879543"
 ---
 # <a name="troubleshooting-azure-data-catalog"></a>Řešení potíží se službou Azure Data Catalog
 
-Tento článek popisuje běžné problémy s řešením potíží pro prostředky katalogu dat Azure. 
+Tento článek popisuje běžné otázky týkající se řešení potíží s Azure Data Catalog prostředky. 
 
 ## <a name="functionality-limitations"></a>Omezení funkčnosti
 
-Při použití Azure Data Catalog je omezená následující funkce:
+Při použití Azure Data Catalog jsou omezené následující funkce:
 
-- Účty s **typem Role hosta** nejsou podporovány. Účty hosta nelze přidat jako uživatele katalogu dat Azure [https://www.azuredatacatalog.com](https://www.azuredatacatalog.com)a uživatelé typu Host nemohou používat portál na adrese .
+- Účty s **rolí typu Host** se nepodporují. Účty hostů nemůžete přidat jako uživatele Azure Data Catalog a uživatelé typu Host nemůžou portál používat na [https://www.azuredatacatalog.com](https://www.azuredatacatalog.com).
 
-- Vytváření prostředků datového katalogu Azure pomocí šablon Azure Resource Manager nebo příkazů Azure PowerShellu není podporované.
+- Vytváření Azure Data Catalogch prostředků pomocí šablon Azure Resource Manager nebo Azure PowerShellch příkazů se nepodporuje.
 
-- Prostředek Katalogu dat Azure nelze přesunout mezi tenanty Azure.
+- Prostředek Azure Data Catalog nejde přesunout mezi klienty Azure.
 
 ## <a name="azure-active-directory-policy-configuration"></a>Konfigurace zásad Azure Active Directory
 
-Může nastat situace, že se budete moci přihlásit k portálu Azure Data Catalog, ale při pokusu o přihlášení k nástroji pro registraci zdroje dat narazíte na chybovou zprávu, která vám přihlášení neumožní. K této chybě může dojít, pokud jste v podnikové síti nebo při připojování mimo síť společnosti.
+Může nastat situace, že se budete moci přihlásit k portálu Azure Data Catalog, ale při pokusu o přihlášení k nástroji pro registraci zdroje dat narazíte na chybovou zprávu, která vám přihlášení neumožní. K této chybě může dojít, pokud jste v podnikové síti nebo když se připojujete z oblasti mimo podnikovou síť.
 
 Nástroj pro registraci používá *ověřování pomocí formulářů*, aby ověřil přihlášení uživatelů vůči službě Azure Active Directory. K úspěšnému přihlášení je nutné, aby správce Azure Active Directory v *zásadách globálního ověřování* povolil možnost ověřování pomocí formulářů.
 
-Pomocí zásad globálního ověřování můžete povolovat ověřování zvlášť pro připojení z intranetu a extranetu, jak ukazuje následující obrázek. Chyby přihlášení může dojít, pokud ověřování pomocí formulářů není povoleno pro síť, ze které se připojujete.
+Pomocí zásad globálního ověřování můžete povolovat ověřování zvlášť pro připojení z intranetu a extranetu, jak ukazuje následující obrázek. Pokud není povoleno ověřování pomocí formulářů pro síť, ze které se připojujete, může dojít k chybám při přihlašování.
 
  ![Zásady globálního ověřování Azure Active Directory](./media/troubleshoot-policy-configuration/global-auth-policy.png)
 

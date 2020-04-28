@@ -5,18 +5,18 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: 4eb794fa35164e3f86a5e3d6f67d446321f91f0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67133569"
 ---
-## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>Příprava k ověření požadavků Správce prostředků Azure
-Je nutné ověřit všechny operace, které provádíte na prostředky pomocí [Správce prostředků Azure][lnk-authenticate-arm] s Azure Active Directory (AD). Nejjednodušší způsob, jak to nakonfigurovat, je použití PowerShellu nebo Azure CLI.
+## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>Příprava na ověření Azure Resource Manager požadavků
+Je nutné ověřit všechny operace, které provádíte na zdrojích pomocí [Azure Resource Manager][lnk-authenticate-arm] s Azure Active Directory (AD). Nejjednodušší způsob, jak to nakonfigurovat, je použití PowerShellu nebo rozhraní příkazového řádku Azure CLI.
 
-Než budete pokračovat, nainstalujte [rutiny Prostředí Azure PowerShell.][lnk-powershell-install]
+Než budete pokračovat, nainstalujte [rutiny Azure PowerShell][lnk-powershell-install] .
 
-Následující kroky ukazují, jak nastavit ověřování hesla pro aplikaci služby AD pomocí prostředí PowerShell. Tyto příkazy můžete spustit ve standardní relaci prostředí PowerShell.
+Následující kroky ukazují, jak nastavit ověřování hesla pro aplikaci AD pomocí PowerShellu. Tyto příkazy můžete spustit ve standardní relaci prostředí PowerShell.
 
 1. Přihlaste se k předplatnému Azure pomocí následujícího příkazu:
 
@@ -24,44 +24,44 @@ Následující kroky ukazují, jak nastavit ověřování hesla pro aplikaci slu
     Connect-AzAccount
     ```
 
-1. Pokud máte více předplatných Azure, přihlášení k Azure vám uděluje přístup ke všem předplatným Azure přidruženým k vašim přihlašovacím údajům. Pomocí následujícího příkazu zobrazíte seznam předplatných Azure, která můžete použít:
+1. Pokud máte několik předplatných Azure, přihlaste se k Azure, abyste měli přístup ke všem předplatným Azure přidruženým k vašim přihlašovacím údajům. K vypsání předplatných Azure, která můžete použít, použijte následující příkaz:
 
     ```powershell
     Get-AzSubscription
     ```
 
-    Pomocí následujícího příkazu vyberte předplatné, které chcete použít ke spuštění příkazů ke správě služby IoT hub. Můžete použít název nebo ID předplatného z výstupu předchozího příkazu:
+    Pomocí následujícího příkazu vyberte předplatné, které chcete použít ke spuštění příkazů pro správu služby IoT Hub. Můžete použít název nebo ID předplatného z výstupu předchozího příkazu:
 
     ```powershell
     Select-AzSubscription `
         -SubscriptionName "{your subscription name}"
     ```
 
-2. Poznamenejte si vaše **TenantId** a **SubscriptionId**. Budete je potřebovat později.
-3. Vytvořte novou aplikaci Azure Active Directory pomocí následujícího příkazu, který nahradí zástupné symboly:
+2. Poznamenejte si své **TenantId** a **SubscriptionId**. Budete je potřebovat později.
+3. Pomocí následujícího příkazu vytvořte novou Azure Active Directory aplikaci, která nahradí držitele míst:
    
-   * **{Display name}:** zobrazovaný název aplikace, například **MySampleApp**
-   * **{Adresa URL domovské stránky}:** adresa URL domovské stránky aplikace, například **http:\//mysampleapp/home**. Tato adresa URL nemusí ukazovat na skutečnou aplikaci.
-   * **{Identifikátor aplikace}:** Jedinečný identifikátor, například **http:\//mysampleapp**. Tato adresa URL nemusí ukazovat na skutečnou aplikaci.
-   * **{Heslo}:** Heslo, které používáte k ověření pomocí aplikace.
+   * **{Display Name}:** zobrazovaný název vaší aplikace, například **MySampleApp**
+   * **{Adresa URL domovské stránky}:** adresa URL domovské stránky vaší aplikace, například **http:\//MySampleApp/Home**. Tato adresa URL nemusí odkazovat na skutečnou aplikaci.
+   * **{Identifikátor aplikace}:** Jedinečný identifikátor, například **http:\//MySampleApp**. Tato adresa URL nemusí odkazovat na skutečnou aplikaci.
+   * **{Password}:** Heslo, které používáte k ověření ve vaší aplikaci.
      
      ```powershell
      $SecurePassword=ConvertTo-SecureString {password} –asplaintext –force
      New-AzADApplication -DisplayName {Display name} -HomePage {Home page URL} -IdentifierUris {Application identifier} -Password $SecurePassword
      ```
-4. Poznamenejte si **ApplicationId** aplikace, kterou jste vytvořili. Budeš to potřebovat později.
-5. Vytvořte nový instanční objekt pomocí následujícího příkazu, který nahradí **{MyApplicationId}** **id aplikace** z předchozího kroku:
+4. Poznamenejte si **ApplicationId** aplikace, kterou jste vytvořili. Budete ho potřebovat později.
+5. Pomocí následujícího příkazu vytvořte nový instanční objekt a nahraďte **{MyApplicationId}** řetězcem **ApplicationId** z předchozího kroku:
    
     ```powershell
     New-AzADServicePrincipal -ApplicationId {MyApplicationId}
     ```
-6. Nastavte přiřazení role pomocí následujícího příkazu a nahraďte **{MyApplicationId}** **id aplikace ApplicationId**.
+6. Pomocí následujícího příkazu nastavte přiřazení role a nahraďte **{MyApplicationId}** svým **ApplicationId**.
    
     ```powershell
     New-AzRoleAssignment -RoleDefinitionName Owner -ServicePrincipalName {MyApplicationId}
     ```
 
-Nyní jste dokončili vytváření aplikace Azure AD, která umožňuje ověření z vlastní aplikace Jazyka C#. Následující hodnoty potřebujete dále v tomto kurzu:
+Nyní jste dokončili vytváření aplikace služby Azure AD, která umožňuje ověření z vlastní aplikace v jazyce C#. Následující hodnoty budete potřebovat později v tomto kurzu:
 
 * TenantId
 * SubscriptionId

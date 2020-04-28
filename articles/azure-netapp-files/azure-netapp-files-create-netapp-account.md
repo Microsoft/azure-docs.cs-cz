@@ -15,19 +15,19 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: b-juche
 ms.openlocfilehash: 25cae58663f6fa7ef27995c10509eb33e49dd4c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70012575"
 ---
 # <a name="create-a-netapp-account"></a>Vytvoření účtu NetApp
 Vytvoření účtu NetApp umožňuje nastavit fond kapacity a následně vytvořit svazek. K vytvoření nového účtu NetApp se používá okno Azure NetApp Files.
 
-## <a name="before-you-begin"></a>Než začnete
-Musíte obdržet e-mail od týmu Soubory Azure NetApp potvrzující, že vám byl udělen přístup ke službě. Viz [Odeslání žádosti o čekací listinu pro přístup ke službě](azure-netapp-files-register.md#waitlist).
+## <a name="before-you-begin"></a>Před zahájením
+Je nutné, abyste obdrželi e-mail od Azure NetApp Files týmu potvrzujícího, že vám byl udělen přístup k této službě. Viz [odeslání žádosti o přístup ke službě pořadníku](azure-netapp-files-register.md#waitlist).
 
-Musíte také zaregistrovat své předplatné pro používání poskytovatele prostředků NetApp. Viz [Registrace poskytovatele prostředků NetApp](azure-netapp-files-register.md#resource-provider).
+Musíte taky zaregistrovat předplatné pro používání poskytovatele prostředků NetApp. Viz [registrace poskytovatele prostředků NetApp](azure-netapp-files-register.md#resource-provider).
 
 ## <a name="steps"></a>Kroky 
 
@@ -58,7 +58,7 @@ Musíte také zaregistrovat své předplatné pro používání poskytovatele pr
    Vytvořený účet NetApp se teď zobrazí v okně Azure NetApp Files. 
 
 > [!NOTE] 
-> Pokud vám nebyl udělen přístup ke službě Azure NetApp Files, zobrazí se při pokusu o vytvoření prvního účtu NetApp následující chyba:  
+> Pokud jste neudělili přístup ke službě Azure NetApp Files, při pokusu o vytvoření prvního účtu NetApp se zobrazí následující chyba:  
 >
 > `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"NotFound","message":"{\r\n \"error\": {\r\n \"code\": \"InvalidResourceType\",\r\n \"message\": \"The resource type could not be found in the namespace 'Microsoft.NetApp' for api version '2017-08-15'.\"\r\n }\r\n}"}]}`
 

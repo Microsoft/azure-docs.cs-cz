@@ -5,16 +5,16 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: 7f7dc1483002c2bdfe3227a8aade8dbf2a8da417
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70803002"
 ---
-## <a name="obtain-an-azure-resource-manager-token"></a>Získání tokenu Správce prostředků Azure
-Služba Azure Active Directory musí ověřit všechny úlohy, které provádíte u prostředků pomocí Správce prostředků Azure. Zde uvedený příklad používá ověřování hesla pro jiné přístupy, viz [Ověřování požadavků Správce prostředků Azure][lnk-authenticate-arm].
+## <a name="obtain-an-azure-resource-manager-token"></a>Získání tokenu Azure Resource Manager
+Azure Active Directory musí ověřovat všechny úlohy, které provedete na prostředky pomocí Azure Resource Manager. Zde uvedený příklad používá ověřování hesla pro jiné přístupy, viz [ověřování Azure Resource Manager požadavků][lnk-authenticate-arm].
 
-1. Přidejte následující kód do **hlavní** metody v Program.cs načíst token z Azure AD pomocí id aplikace a heslo.
+1. Přidejte následující kód do metody **Main** v program.cs k načtení tokenu z Azure AD pomocí ID a hesla aplikace.
    
     ```csharp
     var authContext = new AuthenticationContext(string.Format  
@@ -29,7 +29,7 @@ Služba Azure Active Directory musí ověřit všechny úlohy, které provádít
       return;
     }
     ```
-2. Vytvořte objekt **ResourceManagementClient,** který používá token přidáním následujícího kódu na konec **Main** metody:
+2. Vytvořte objekt **ResourceManagementClient** , který používá token přidáním následujícího kódu na konec metody **Main** :
    
     ```csharp
     var creds = new TokenCredentials(token.AccessToken);

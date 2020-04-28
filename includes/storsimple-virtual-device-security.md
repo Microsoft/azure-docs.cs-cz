@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: cb160a140b5c0cb184a5172da10ade0de37c4fed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67175051"
 ---
 <!--v-sharos 10/13/2105 virtual device security-->
 
-Při použití virtuálního zařízení StorSimple mějte na paměti následující důležité informace o zabezpečení:
+Při používání virtuálního zařízení StorSimple mějte na paměti následující hlediska zabezpečení:
 
-* Virtuální zařízení je zabezpečené prostřednictvím předplatného Microsoft Azure. To znamená, že pokud používáte virtuální zařízení a vaše předplatné Azure je ohrožena, data uložená na vašem virtuálním zařízení je také citlivý.
-* Veřejný klíč certifikátu používaného k šifrování dat uložených v Azure StorSimple je bezpečně k dispozici na klasickém portálu Azure a soukromý klíč se uchovává se zařízením StorSimple. Na virtuálním zařízení StorSimple jsou veřejné i soukromé klíče uložené v Azure.
-* Virtuální zařízení je hostované v datovém centru Microsoft Azure.
+* Virtuální zařízení je zabezpečené prostřednictvím předplatného Microsoft Azure. To znamená, že pokud používáte virtuální zařízení a dojde k ohrožení zabezpečení vašeho předplatného Azure, data uložená ve vašem virtuálním zařízení jsou také vnímavá.
+* Veřejný klíč certifikátu, který slouží k šifrování dat uložených ve službě Azure StorSimple, je bezpečně zpřístupněný pro portál Azure Classic a soukromý klíč se zachovává se zařízením StorSimple. Ve virtuálním zařízení StorSimple jsou veřejné i privátní klíče uložené v Azure.
+* Virtuální zařízení je hostované ve Microsoft Azure datacentru.
 

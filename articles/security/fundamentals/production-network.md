@@ -1,6 +1,6 @@
 ---
 title: Produkční síť Azure
-description: Tento článek obsahuje obecný popis produkční sítě Azure.
+description: Tento článek poskytuje obecný popis produkční sítě Azure.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,77 +16,77 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 7c0748e4ff1531649274834cb1e602c228f102e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68726694"
 ---
 # <a name="the-azure-production-network"></a>Produkční síť Azure
-Mezi uživatele produkční sítě Azure patří jak externí zákazníci, kteří mají přístup k vlastním aplikacím Azure, tak interní pracovníci podpory Azure, kteří spravují produkční síť. Tento článek popisuje metody přístupu k zabezpečení a mechanismy ochrany pro navazování připojení k produkční síti Azure.
+Uživatelé produkční sítě Azure zahrnují externí zákazníky, kteří přistupují k vlastním aplikacím Azure a interním pracovníkům podpory Azure, kteří spravují produkční síť. Tento článek popisuje metody přístupu zabezpečení a mechanismy ochrany pro navázání připojení k produkční síti Azure.
 
-## <a name="internet-routing-and-fault-tolerance"></a>Internet směrování a odolnost proti chybám
-Globálně redundantní interní a externí infrastruktura DNS (Azure Domain Name Service) v kombinaci s více primárními a sekundárními serverovými clustery DNS poskytuje odolnost proti chybám. Současně další ovládací prvky zabezpečení sítě Azure, jako je například NetScaler, se používají k prevenci útoků distribuovaného odmítnutí služby (DDoS) a ochraně integrity služeb Azure DNS.
+## <a name="internet-routing-and-fault-tolerance"></a>Směrování v Internetu a odolnost proti chybám
+V kombinaci s několika primárními a sekundárními clustery serverů DNS zajišťuje odolnost proti chybám globálně redundantní interní a externí infrastruktura služby Azure Domain Name Service (DNS). V současné době se k tomu používají další ovládací prvky zabezpečení sítě Azure, jako je například NetScaler, aby se zabránilo distribuovaným útokům na útoky DDoS (Denial of Service) a chránily celistvost Azure DNS služeb.
 
-Servery Azure DNS jsou umístěné ve více zařízeních datového centra. Implementace Azure DNS zahrnuje hierarchii sekundárních a primárních serverů DNS k veřejnému překladu názvů domén zákazníků Azure. Názvy domén se obvykle přemisťují na CloudApp.net adresu, která zalomí adresu virtuální IP adresy (VIP) pro službu zákazníka. Jedinečný pro Azure, VIP, který odpovídá interní vyhrazené IP (DIP) adresu překladu klienta se provádí vykladače zatížení Microsoft udatné za tuto vip.
+Servery Azure DNS jsou umístěné na více zařízeních Datacenter. Implementace Azure DNS zahrnuje hierarchii sekundárních a primárních serverů DNS pro veřejně přeložení názvů domén zákazníků Azure. Názvy domén se obvykle překládají na adresu CloudApp.net, která zabalí virtuální IP adresu (VIP) pro službu zákazníka. V rámci Azure jsou jedinečné virtuální IP adresy, které odpovídají interní vyhrazené IP adrese (DIP) překladu tenanta, vychází ze služeb Microsoft Load Balancer zodpovědných za tuto VIP.
 
-Azure je hostovaný v geograficky distribuovaných datových centrech Azure v USA a je založený na nejmodernějších platformách směrování, které implementují robustní škálovatelné architektonické standardy. Mezi pozoruhodné rysy patří:
+Azure se hostuje v geograficky distribuovaných datových centrech Azure v USA a je postavená na špičkových platformách směrování, které implementují robustní a škálovatelné standardy architektury. Mezi významné funkce patří:
 
-- Víceprotokolové přepínání štítků (MPLS) založené na provozu, které poskytuje efektivní využití propojení a bezproblémové zhoršení služby v případě výpadku.
-- Sítě jsou implementovány s "potřeba plus jedna" (N + 1) redundance architektury nebo lepší.
-- Datacentra jsou externě obsluhována vyhrazenými síťovými okruhy s velkou šířkou pásma, které redundantně spojují vlastnosti s více než 1 200 poskytovateli internetových služeb po celém světě ve více partnerských bodech. Toto připojení poskytuje více než 2 000 gigabajtů za sekundu (GB/s) kapacity hrany.
+- Technický provoz založený na přepínání MPLS (), který poskytuje efektivní využití propojení a řádné snížení úrovně služeb v případě výpadku.
+- Sítě se implementují s "potřebnou a jednu" (N + 1) architekturou redundance nebo lepší.
+- Mimo jiné jsou datová centra obsluhována vyhrazenými síťovými okruhy s vysokou šířkou pásma, které redundantním připojením vlastností s více než 1 200 poskytovateli internetových služeb globálně na několika partnerských bodech. Toto připojení zajišťuje vyšší kapacitu hraniční kapacity 2 000 gigabajtů za sekundu (GB/s).
 
-Vzhledem k tomu, že Microsoft vlastní vlastní síťové okruhy mezi datovými centry, tyto atributy pomáhají nabídce Azure dosáhnout 99,9% dostupnosti sítě bez nutnosti tradičních poskytovatelů internetových služeb třetích stran.
+Vzhledem k tomu, že společnost Microsoft vlastní síťové okruhy mezi datovými centry, tyto atributy pomůžou zajistit dostupnost sítě v Azure 99,9 + Percent bez nutnosti tradičních poskytovatelů internetových služeb jiných výrobců.
 
-## <a name="connection-to-production-network-and-associated-firewalls"></a>Připojení k produkční síti a přidruženým firewallům
-Zásady toku toku síťového provozu Azure směruje provoz do produkční sítě Azure, která se nachází v nejbližším regionálním datovém centru v USA. Vzhledem k tomu, že produkční datová centra Azure udržují konzistentní síťovou architekturu a hardware, popis toku provozu, který následuje, platí konzistentně pro všechna datová centra.
+## <a name="connection-to-production-network-and-associated-firewalls"></a>Připojení k produkční síti a přidruženým branám firewall
+Zásady toku internetového provozu sítě Azure směrují provoz do produkční sítě Azure, která je umístěná v nejbližším regionálním datacentru v USA. Vzhledem k tomu, že produkční datacentra Azure udržují konzistentní síťovou architekturu a hardware, následující popis toku přenosů platí konzistentně pro všechna datová centra.
 
-Po směrování internetového provozu pro Azure do nejbližšího datového centra se nastavuje připojení k přístupovým směrovačům. Tyto přístupové směrovače slouží k izolování provozu mezi uzly Azure a virtuálními počítači instancemi zákazníka. Zařízení síťové infrastruktury v umístění přístupu a hrany jsou hraniční body, kde jsou použity filtry příchozího a odchozího přenosu dat. Tyto směrovače jsou konfigurovány prostřednictvím vrstveného seznamu řízení přístupu (ACL) pro filtrování nežádoucího síťového provozu a v případě potřeby použití omezení rychlosti provozu. Provoz, který je povolen acl je směrován do vykladačů zatížení. Distribuční směrovače jsou navrženy tak, aby umožňovaly pouze adresy IP schválené společností Microsoft, poskytovaly krytí proti falšování a navazovaly připojení TCP, která používají protokoly ACL.
+Až bude internetový provoz pro Azure směrován do nejbližšího datového centra, připojení k směrovačům přístupu se naváže. Tyto přístupové směrovače slouží k izolaci provozu mezi uzly Azure a virtuálními počítači vytvořenými zákazníky. Zařízení síťové infrastruktury v oblasti přístupu a hraničních umístění jsou hraniční body, ve kterých se používají příchozí a výstupní filtry. Tyto směrovače se konfigurují prostřednictvím vrstveného seznamu řízení přístupu (ACL) pro filtrování nežádoucích síťových přenosů a v případě potřeby platí omezení přenosové rychlosti. Provoz povolený seznamem ACL je směrován do nástroje pro vyrovnávání zatížení. Distribuční směrovače jsou navržené tak, aby povolovaly jenom IP adresy schválené společností Microsoft, poskytovaly ochranu proti falšování identity a navázaly připojení TCP, která používají seznamy ACL.
 
-Externí zařízení pro vyrovnávání zatížení jsou umístěna za přístupovými směrovači, aby bylo účelem provádění překladu síťových adres (NAT) z internetových adres IP na interní IP adresy Azure. Zařízení také směrují pakety do platných produkčních interních IP adres a portů a fungují jako ochranný mechanismus pro omezení vystavení adresního prostoru interní produkční sítě.
+Externí zařízení pro vyrovnávání zatížení se nacházejí za směrovači přístupu, aby bylo možné provést překlad síťových adres (NAT) z IP adres pro směrování přes Internet do interních IP adres Azure. Zařízení také směrují pakety k platným interním IP adresám a portům a slouží jako mechanismus ochrany pro omezení vystavení interního adresního prostoru produkční sítě.
 
-Ve výchozím nastavení společnost Microsoft vynucuje protokol HTTPS (HTTP) pro veškerý provoz přenášený do webových prohlížečů zákazníků, včetně přihlášení a veškerého provozu poté. Použití TLS v1.2 umožňuje bezpečné tunelové propojení pro protékat. Počet AVL na přístupových a základních směrovačích zajišťují, že zdroj provozu je konzistentní s očekávaným.
+Ve výchozím nastavení společnost Microsoft vynutila protokol HTTPS (Hypertext Transfer Protocol Secure) pro veškerý provoz, který se přenáší do webových prohlížečů zákazníků, včetně přihlášení a následného provozu. Použití protokolu TLS v 1.2 umožňuje zabezpečené tunelové propojení pro přenos přes. Seznamy ACL pro přístup a základní směrovače zajišťují, že zdroj provozu je konzistentní s tím, co se očekává.
 
-Důležitým rozdílem v této architektuře, když je ve srovnání s tradiční architekturou zabezpečení, je, že neexistují žádné vyhrazené hardwarové brány firewall, specializovaná zařízení pro detekci nebo prevenci vniknutí nebo jiná bezpečnostní zařízení, která jsou obvykle očekává, že před připojení k produkčnímu prostředí Azure. Zákazníci obvykle očekávají tato hardwarová zařízení brány firewall v síti Azure; však žádné jsou zaměstnáni v rámci Azure. Téměř výhradně jsou tyto funkce zabezpečení integrovány do softwaru, který spouští prostředí Azure, aby poskytoval robustní vícevrstvé mechanismy zabezpečení, včetně možností brány firewall. Kromě toho rozsah hranice a přidružené rozrůstání kritických zabezpečovacích zařízení je jednodušší spravovat a inventarizovat, jak je znázorněno na předchozím obrázku, protože je spravován softwarem, který běží Azure.
+Důležité rozlišení v této architektuře, pokud je v porovnání s tradiční architekturou zabezpečení, je, že neexistují žádné vyhrazené hardwarové brány firewall, speciální zařízení pro detekci vniknutí nebo prevence nebo jiná zařízení zabezpečení, která se obvykle očekávají před tím, než se provedou připojení k produkčnímu prostředí Azure. Zákazníci obvykle očekávají tato hardwarová zařízení brány firewall v síti Azure. v rámci Azure se ale nic nepoužívá. Prakticky výhradně tyto funkce zabezpečení jsou součástí softwaru, který spouští prostředí Azure pro zajištění robustních vícevrstvých mechanismů zabezpečení, včetně možností brány firewall. Kromě toho je možné zjednodušit správu a inventarizaci rozsahu hranic a přidružených neustálému zvětšování zařízení zabezpečení, jak je znázorněno na předchozím obrázku, protože je spravovaný softwarem, na kterém běží Azure.
 
 ## <a name="core-security-and-firewall-features"></a>Základní funkce zabezpečení a brány firewall
-Azure implementuje robustní funkce zabezpečení softwaru a brány firewall na různých úrovních k vynucení funkcí zabezpečení, které se obvykle očekávají v tradičním prostředí k ochraně základní hranice autorizace zabezpečení.
+Azure implementuje robustní zabezpečení softwaru a funkce brány firewall na různých úrovních, aby vynutila funkce zabezpečení, které se obvykle očekávají v tradičním prostředí, aby se chránila základní hranice autorizace zabezpečení.
 
 ### <a name="azure-security-features"></a>Funkce zabezpečení Azure
-Azure implementuje hostitelské softwarové brány firewall uvnitř produkční sítě. V základním prostředí Azure se nachází několik základních funkcí zabezpečení a brány firewall. Tyto funkce zabezpečení odrážejí strategii hloubkové ochrany v prostředí Azure. Zákaznická data v Azure jsou chráněna následujícími firewally:
+Azure implementuje v produkční síti brány firewall na základě hostitelských softwaru. V základním prostředí Azure se nachází několik základních funkcí zabezpečení a brány firewall. Tyto bezpečnostní funkce odrážejí strategii pro důkladnou hloubku v rámci prostředí Azure. Zákaznická data v Azure jsou chráněná následujícími branami firewall:
 
-**Brána firewall hypervisoru (filtr paketů)**: Tato brána firewall je implementována v hypervisoru a konfigurována agentem řadiče prostředků (FABRIC). Tato brána firewall chrání klienta, který běží uvnitř virtuálního počítače před neoprávněným přístupem. Ve výchozím nastavení při vytvoření virtuálního aplikace je veškerý provoz blokován a pak agent FC přidá pravidla a výjimky ve filtru povolit autorizovaný provoz.
+**Firewall hypervisoru (filtr paketů)**: Tato brána firewall je implementovaná v hypervisoru a nakonfigurovaná agentem technologie Fabric (FC). Tato brána firewall chrání klienta, který běží ve virtuálním počítači, před neoprávněným přístupem. Ve výchozím nastavení platí, že když se vytvoří virtuální počítač, zablokuje se veškerý provoz a Agent FC přidá do filtru pravidla a výjimky, které umožní autorizovaný provoz.
 
-Zde jsou naprogramovány dvě kategorie pravidel:
+Tady jsou naprogramované dvě kategorie pravidel:
 
-- **Pravidla konfigurace počítače nebo infrastruktury**: Ve výchozím nastavení je blokována veškerá komunikace. Existují výjimky, které umožňují virtuálnímu virtuálnímu počítače odesílat a přijímat komunikace a informace o SLUŽBĚ DNS (DHCP) protokolu DHCP (Dhcp) a odesílat přenosy do "veřejného" odchozího internetu do jiných virtuálních počítačů v rámci clusteru FC a aktivačního serveru operačního systému. Vzhledem k tomu, že seznam povolených odchozích cílů virtuálních počítačů neobsahuje podsítě směrovače Azure a další vlastnosti Microsoftu, pravidla pro ně fungují jako vrstva ochrany.
-- **Pravidla konfiguračního souboru role**: Definuje příchozí seznamy AC na základě modelu služby klientů. Například pokud má klient webový front-end na portu 80 na určitém virtuálním počítači, port 80 se otevře pro všechny IP adresy. Pokud má virtuální_ přitým virtuálním msa spuštěná role pracovního procesu, role pracovního procesu se otevře jenom pro virtuální ho v rámci stejného klienta.
+- **Konfigurace počítače nebo pravidla infrastruktury**: ve výchozím nastavení se zablokuje veškerá komunikace. Existují výjimky, které umožňují virtuálnímu počítači odesílat a přijímat informace o komunikaci protokolu DHCP (Dynamic Host Configuration Protocol) a DNS a odesílat provoz do odchozího internetového výstupu do dalších virtuálních počítačů v clusteru FC a na aktivačním serveru operačního systému. Vzhledem k tomu, že seznam povolených odchozích umístění virtuálních počítačů neobsahuje podsítě směrovačů Azure a další vlastnosti Microsoftu, pravidla slouží jako vrstva obrany pro ně.
+- **Pravidla konfiguračního souboru role**: definuje příchozí seznamy ACL na základě modelu služby klientů. Například pokud má tenant webový front-end na portu 80 na určitém virtuálním počítači, otevře se port 80 na všech IP adresách. Pokud má virtuální počítač spuštěnou roli pracovního procesu, je role pracovního procesu otevřená jenom pro virtuální počítač v rámci stejného tenanta.
 
-**Nativní brána firewall hostitele:** Azure Service Fabric a Azure Storage běží na nativním osu, který nemá žádný hypervisor, a proto je brána Windows Firewall nakonfigurovaná s předchozími dvěma sadami pravidel.
+**Nativní hostitelská brána firewall**: Azure Service Fabric a Azure Storage běžet na NATIVNÍM operačním systému, který nemá žádný hypervisor a proto je brána Windows Firewall nakonfigurovaná s předchozími dvěma sadami pravidel.
 
-**Brána firewall hostitele**: Brána firewall hostitele chrání oddíl hostitele, který spouští hypervisor. Pravidla jsou naprogramována tak, aby umožňovala pouze FC a jump boxy mluvit s hostitelským oddílem na konkrétním portu. Dalšími výjimkami jsou povolení odpovědí DHCP a odpovědí DNS. Azure používá konfigurační soubor počítače, který obsahuje šablonu pravidel brány firewall pro oddíl hostitele. Existuje také výjimka brány firewall hostitele, která umožňuje virtuálním mům komunikovat s hostitelskými součástmi, drátovým serverem a serverem metadat prostřednictvím konkrétního protokolu/portů.
+**Hostitelská brána firewall**: hostitelská brána firewall chrání oddíl hostitele, který spouští hypervisor. Tato pravidla jsou naprogramována tak, aby umožňovala komunikaci s hostitelským oddílem na určitém portu pouze v polích FC a skok. Další výjimkou je povolení odpovědí DHCP a odpovědí DNS. Azure používá konfigurační soubor počítače, který obsahuje šablonu pravidel brány firewall pro oddíl hostitele. Existuje taky výjimka brány firewall hostitele, která umožňuje virtuálním počítačům komunikovat s komponentami hostitele, komunikačním serverem a serverem metadat prostřednictvím konkrétního protokolu nebo portů.
 
-**Brána firewall pro hosta**: Část počítače S bránou Windows firewall hostovaného operačního systému, kterou zákazníci konfigurovat na virtuálních počítačích a úložišti zákazníků.
+**Brána firewall hosta**: součást brány Windows Firewall HOSTOVANÉHO operačního systému, kterou zákazníci můžou nakonfigurovat na virtuálním počítači a úložišti zákazníků.
 
-Mezi další funkce zabezpečení, které jsou integrované do funkcí Azure, patří:
+Mezi další funkce zabezpečení, které jsou součástí možností Azure, patří:
 
-- Součásti infrastruktury, kterým jsou přiřazeny adresy IP, které pocházejí z programů DIPs. Útočník na internetu nemůže na tyto adresy adresovat provoz, protože by se nedostal k společnosti Microsoft. Směrovače internetových bran filtrují pakety, které jsou adresovány výhradně interním adresám, takže by nevstoupily do produkční sítě. Jediné součásti, které přijímají provoz, který je směrován na VIP jsou vykladače zatížení.
-- Brány firewall, které jsou implementovány na všech interních uzlech, mají pro daný scénář tři důležité informace o primární architektuře zabezpečení:
+- Součásti infrastruktury, kterým jsou přiřazeny IP adresy, které jsou z DIP. Útočník na Internetu nemůže adresovat provoz na tyto adresy, protože by nedorazil na společnost Microsoft. Směrovače internetové brány filtrují pakety, které jsou adresovány výhradně na interní adresy, takže by nemuseli vstoupit do produkční sítě. Jedinými součástmi, které přijímají přenosy směrované na VIP, jsou nástroje pro vyrovnávání zatížení.
+- Brány firewall implementované na všech interních uzlech mají tři primární požadavky na architekturu zabezpečení pro libovolný daný scénář:
 
-   - Brány firewall jsou umístěny za vyrovnáváním zatížení a přijímají pakety odkudkoli. Tyto pakety jsou určeny k externě vystaveny a by odpovídaly otevřené porty v tradiční obvodové brány firewall.
-   - Brány firewall přijímají pakety pouze z omezené sady adres. Tato úvaha je součástí obranné hloubkové strategie proti Útokům DDoS. Taková připojení jsou kryptograficky ověřena.
-   - Brány firewall lze přistupovat pouze z vybraných interních uzlů. Přijímají pakety pouze ze seznamu zdrojových IP adres, které jsou všechny dips v rámci sítě Azure. Útok na podnikovou síť může například směrovat požadavky na tyto adresy, ale útoky by byly blokovány, pokud by zdrojová adresa paketu nebyla jedna ve seznamu ve výčtu v síti Azure.
-     - Přístupový směrovač na obvodu blokuje odchozí pakety, které jsou adresovány na adresu, která je uvnitř sítě Azure z důvodu nakonfigurovaných statických tras.
+   - Brány firewall jsou umístěné za nástrojem pro vyrovnávání zatížení a přijímají pakety odkudkoli. Tyto pakety jsou určené k externímu zpřístupnění a by odpovídaly otevřeným portům v tradiční hraniční bráně firewall.
+   - Brány firewall přijímají pakety jenom z omezené sady adres. Tato úvaha je součástí obrannou linií hloubkové strategie proti útokům DDoS. Taková připojení se kryptograficky ověřují.
+   - K bránám firewall se dá dostat jenom z vybraných interních uzlů. Přijímají pakety jenom z výčtového seznamu zdrojových IP adres, z nichž všechny jsou v síti Azure vyhrazené. Například útok na podnikovou síť může směrovat požadavky na tyto adresy, ale útoky by se zablokovaly, pokud by nebyla zdrojová adresa paketu v seznamu výčtu v rámci sítě Azure.
+     - Směrovač přístupu na hraničních blocích odchozí pakety, které jsou adresovány na adresu, která je v síti Azure, z důvodu konfigurovaných statických tras.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o tom, co Microsoft dělá pro zabezpečení infrastruktury Azure, najdete v tématu:
+Další informace o tom, co Microsoft dělá k zabezpečení infrastruktury Azure, najdete tady:
 
-- [Zařízení Azure, prostory a fyzické zabezpečení](physical-security.md)
+- [Zařízení, místní a fyzické zabezpečení Azure](physical-security.md)
 - [Dostupnost infrastruktury Azure](infrastructure-availability.md)
-- [Součásti a hranice informačního systému Azure](infrastructure-components.md)
+- [Komponenty a hranice informačních systémů Azure](infrastructure-components.md)
 - [Architektura sítě Azure](infrastructure-network.md)
 - [Funkce zabezpečení Azure SQL Database](infrastructure-sql.md)
-- [Produkční operace a správa Azure](infrastructure-operations.md)
+- [Provozní provoz a Správa Azure](infrastructure-operations.md)
 - [Monitorování infrastruktury Azure](infrastructure-monitoring.md)
 - [Integrita infrastruktury Azure](infrastructure-integrity.md)
 - [Ochrana zákaznických dat Azure](protection-customer-data.md)

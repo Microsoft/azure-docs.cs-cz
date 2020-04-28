@@ -5,23 +5,23 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 8861396db6f6b680ddb55ce020e5579dc25b118e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67174960"
 ---
-Je důležité si uvědomit, že existují dva způsoby konfigurace naslouchací proces skupiny dostupnosti v Azure. Způsoby se liší v typu Azure vyrovnávání zatížení, které používáte při vytváření naslouchací proces. Následující tabulka popisuje rozdíly:
+Je důležité si uvědomit, že existují dva způsoby konfigurace naslouchacího procesu skupiny dostupnosti v Azure. Způsoby se liší v typu nástroje pro vyrovnávání zatížení Azure, který používáte při vytváření naslouchacího procesu. Rozdíly jsou popsány v následující tabulce:
 
-| Typ pro vyrovnávání zatížení | Implementace | Použijte, když: |
+| Typ nástroje pro vyrovnávání zatížení | Implementace | Použijte, když: |
 | --- | --- | --- |
-| **Externí** |Používá *veřejnou virtuální IP adresu* cloudové služby, která hostuje virtuální počítače (VMs). |Je třeba získat přístup k naslouchací proces z mimo virtuální síť, včetně z Internetu. |
-| **Vnitřní** |Používá *interní vyrovnávání zatížení* s privátní adresu pro naslouchací proces. |K naslouchací procesu můžete přistupovat pouze ze stejné virtuální sítě. Tento přístup zahrnuje síť VPN mezi lokalitami v hybridních scénářích. |
+| **Zahraničních** |Používá *veřejnou virtuální IP adresu* cloudové služby, která hostuje virtuální počítače (VM). |Musíte získat přístup k naslouchacímu procesu mimo virtuální síť, včetně z Internetu. |
+| **Vnitřních** |Používá *interní nástroj pro vyrovnávání zatížení* s privátní adresou pro naslouchací proces. |K naslouchacího procesu můžete přistupovat jenom ze stejné virtuální sítě. Tento přístup zahrnuje síť Site-to-Site VPN v hybridních scénářích. |
 
 > [!IMPORTANT]
-> Pro naslouchací proces, který používá veřejné VIP cloudové služby (externí vyrovnávání zatížení), tak dlouho, dokud klient, naslouchací proces a databáze jsou ve stejné oblasti Azure, nebude vám vzniknout poplatky za odchozí přenos. V opačném případě všechna data vrácená prostřednictvím naslouchací proces je považován za odchozí a je účtován a normální přenos dat. 
+> Pro naslouchací proces, který používá veřejnou virtuální IP adresu cloudové služby (externí nástroj pro vyrovnávání zatížení), pokud je klient, naslouchací proces a databáze ve stejné oblasti Azure, nebudete mít poplatky za odchozí data. Jinak se veškerá data vrácená naslouchacím procesem považují za výstup a účtují se za běžné sazby za přenos dat. 
 > 
 > 
 
-ILB lze nakonfigurovat pouze ve virtuálních sítích s regionálním rozsahem. Existující virtuální sítě, které byly nakonfigurovány pro skupinu spřažení, nemohou používat službu ILB. Další informace naleznete [v tématu Interní přehled nástroje pro vyrovnávání zatížení](../articles/load-balancer/load-balancer-internal-overview.md).
+INTERNÍHO nástroje se dá nakonfigurovat jenom v rámci virtuálních sítí s regionálním rozsahem. Existující virtuální sítě, které jsou nakonfigurované pro skupinu vztahů, nemůžou používat interního nástroje. Další informace najdete v tématu [Přehled interního nástroje pro vyrovnávání zatížení](../articles/load-balancer/load-balancer-internal-overview.md).
 

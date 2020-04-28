@@ -9,13 +9,13 @@ ms.date: 07/27/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 0d5c3b55d20be19d4aeb92b82d6e44d417259a7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67174833"
 ---
-1. Otevřete příkazový řádek se zvýšenými oprávněními klepnutím pravým tlačítkem myši na **příkazový řádek** a výběrem **možnosti Spustit jako správce**.
+1. Otevřete příkazový řádek se zvýšenými oprávněními, a to tak, že kliknete pravým tlačítkem na **příkazový řádek** a vyberete **Spustit jako správce**.
 2. V příkazovém řádku spusťte následující příkazy:
 
    ```
@@ -33,5 +33,5 @@ ms.locfileid: "67174833"
 5. Připojte se k síti VPN.
 
 > [!NOTE]
-> Pokud používáte starší verzi systému Windows 10 (10240), budete muset nastavit výše uvedený klíč registru.
+> Pokud používáte starší verzi Windows 10 (10240), budete muset nastavit výše uvedený klíč registru.
 >

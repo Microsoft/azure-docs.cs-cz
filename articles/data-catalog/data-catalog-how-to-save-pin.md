@@ -1,78 +1,78 @@
 ---
-title: Ukládání vyhledávání a připnutí datových prostředků v Katalogu dat Azure
-description: Možnosti zvýraznění článku v Katalogu dat Azure pro ukládání zdrojů dat a datových prostředků pro pozdější použití.
+title: Uložení hledání a připnutí datových assetů v Azure Data Catalog
+description: Článek zvýrazňování možností v Azure Data Catalog pro ukládání zdrojů dat a datových assetů pro pozdější použití.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: a8545939fd027989519e0f7a161f750ec676749a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68976814"
 ---
-# <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>Ukládání vyhledávání a připnutí datových prostředků v Katalogu dat Azure
+# <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>Uložení hledání a připnutí datových assetů v Azure Data Catalog
 ## <a name="introduction"></a>Úvod
-Azure Data Catalog poskytuje funkce pro zjišťování zdrojů dat. Katalog můžete rychle vyhledat a filtrovat, abyste našli zdroje dat a porozuměli jejich zamýšlenému účelu, což usnadňuje nalezení správných dat pro práci.
+Azure Data Catalog poskytuje možnosti pro zjišťování zdrojů dat. Katalog můžete rychle vyhledat a vyfiltrovat, abyste našli zdroje dat a pochopili zamýšlený účel, což usnadňuje vyhledání správných dat pro danou úlohu.
 
-Ale co když potřebujete pravidelně pracovat se stejnými daty? A co když vy a ostatní uživatelé pravidelně přispíváte svými znalostmi do stejných zdrojů dat v katalogu? V těchto situacích nutnost opakovaně vydávat stejná hledání může být neefektivní. To to je místo, kde uložené vyhledávání a připnuté datové prostředky mohou pomoci.
+Ale co dělat v případě, že potřebujete pravidelně pracovat se stejnými daty? A co když vy a jiní uživatelé pravidelně přispějete k vašim znalostem do stejných zdrojů dat v katalogu? V těchto situacích může být opakované vystavení stejných hledání neefektivní. Tady může pomáhat uložené hledání a připnuté datové prostředky.
 
 ## <a name="saved-searches"></a>Uložená hledání
-Uložené hledání v katalogu dat je opakovaně použitelná definice vyhledávání pro jednotlivé uživatele. Můžete definovat hledání, včetně vyhledávacích dotazů, značek a dalších filtrů, a pak je uložit. Uloženou definici hledání můžete později znovu spustit a vrátit tak všechny datové prostředky, které odpovídají jejím kritériím vyhledávání.
+Uložené hledání ve Data Catalog je opakovaně použitelná definice vyhledávání podle uživatele. Můžete definovat hledání, včetně hledaných podmínek, značek a dalších filtrů, a pak je uložit. Uloženou definici hledání můžete znovu spustit později a vrátit všechny datové prostředky, které odpovídají kritériím vyhledávání.
 
 ### <a name="create-a-saved-search"></a>Vytvoření uloženého hledání
-Chcete-li vytvořit uložené hledání, postupujte takto:
-1. Na portálu Katalog dat Azure klikněte v okně **Aktuální hledání** na **Uložit**. 
+Pokud chcete vytvořit uložené hledání, udělejte toto:
+1. Na portálu Azure Data Catalog v **aktuálním okně hledání** klikněte na **Uložit**. 
 
-    ![Aktuální nastavení hledání Uložit odkaz](./media/data-catalog-how-to-save-pin/01-save-option.png) 
+    ![Aktuální nastavení vyhledávání – odkaz Uložit](./media/data-catalog-how-to-save-pin/01-save-option.png) 
 
-2. Zadejte kritéria hledání, která chcete znovu použít, a klepněte na tlačítko **Uložit**.
+2. Zadejte kritéria hledání, která chcete znovu použít, a potom klikněte na **Uložit**.
 
-    ![Aktuální nastavení hledání uložené název hledání](./media/data-catalog-how-to-save-pin/02-name.png)
+    ![Aktuální nastavení vyhledávání – uložený název hledání](./media/data-catalog-how-to-save-pin/02-name.png)
 
-3. Po zobrazení výzvy zadejte název uloženého hledání. Vyberte název, který je smysluplný a který popisuje datové prostředky, které budou vráceny hledáním.
+3. Po zobrazení výzvy zadejte název uloženého hledání. Vyberte název, který je smysluplný a popisuje datové prostředky, které bude hledání vracet.
 
-### <a name="manage-saved-searches"></a>Správa uložených hledání
-Po uložení jednoho nebo více hledání se pod polem Aktuální **hledání** zobrazí možnost **Uložená hledání.** Po rozbalení seznamu se zobrazí všechna uložená hledání.
+### <a name="manage-saved-searches"></a>Spravovat uložená hledání
+Po uložení jednoho nebo více hledání se zobrazí možnost **uložená** hledání pod **aktuálním vyhledávacím** polem. Po rozbalení seznamu se zobrazí všechna uložená hledání.
 
- ![Katalog dat - Seznam uložených vyhledávání](./media/data-catalog-how-to-save-pin/03-list.png)
+ ![Data Catalog – seznam uložených hledání](./media/data-catalog-how-to-save-pin/03-list.png)
 
 Proveďte jednu z následujících akcí:
 
-* Chcete-li provést hledání, vyberte uložené hledání v seznamu.
+* Chcete-li spustit hledání, vyberte uložené hledání v seznamu.
 
 * Chcete-li zobrazit seznam možností správy uloženého hledání, klikněte na šipku dolů vedle názvu hledání.
 
     ![Možnosti správy uložených hledání](./media/data-catalog-how-to-save-pin/04-managing.png)
 
-* Chcete-li zadat nový název uloženého hledání, vyberte **přejmenovat**. Definice hledání se nezmění.
+* Pokud chcete zadat nový název pro uložené hledání, vyberte **Přejmenovat**. Definice hledání se nemění.
 
-* Pokud chcete uložené hledání ze seznamu odebrat, vyberte **Odstranit**a potvrzte odstranění.
+* Pokud chcete uložené hledání odebrat ze seznamu, vyberte **Odstranit**a potvrďte odstranění.
 
-* Chcete-li uložené hledání označit jako výchozí, vyberte **uložit jako výchozí**. Pokud provedete "prázdné" hledání z domovské stránky katalogu dat Azure, spustí se výchozí hledání. Kromě toho se v horní části seznamu **Uložených vyhledávání** zobrazí hledání označené jako výchozí hledání.
+* Pokud chcete uložené hledání označit jako výchozí hledání, vyberte **Uložit jako výchozí**. Pokud provedete hledání "prázdného" na domovské stránce Azure Data Catalog, spustí se výchozí hledání. Kromě toho se v horní části seznamu **uložených hledání** zobrazí hledání, které je označeno jako výchozí hledání.
 
-### <a name="organizational-saved-searches"></a>Organizační uložená hledání
-Všichni uživatelé ve vaší organizaci mohou vyhledávat ukládat pro vlastní potřebu. Správci katalogu dat mohou také ukládat vyhledávání pro všechny uživatele v organizaci. Když správci uloží vyhledávání, zobrazí se jim **share v rámci možnosti společnosti.** Výběrem této možnosti sdílíte uložené hledání pro všechny uživatele v organizaci.
+### <a name="organizational-saved-searches"></a>Hledání uložených v organizaci
+Všichni uživatelé ve vaší organizaci můžou ukládat hledání vlastního použití. Správci Data Catalog můžou také ukládat hledání všech uživatelů v rámci organizace. Když správci uloží hledání, zobrazí se jim **v rámci možnosti společnosti sdílená složka** . Když vyberete tuto možnost, nasdílí se uložené hledání pro všechny uživatele v organizaci.
 
- ![Katalog dat - organizační uložená hledání](./media/data-catalog-how-to-save-pin/08-organizational-saved-search.png)
+ ![Data Catalog – uložená hledání v organizaci](./media/data-catalog-how-to-save-pin/08-organizational-saved-search.png)
 
 ## <a name="pinned-data-assets"></a>Připnuté datové prostředky
-Uložených hledání můžete ukládat a znovu používat definice vyhledávání. Datové prostředky, které jsou vráceny hledání může změnit v průběhu času jako obsah katalogu změnit. Když připnete datové prostředky, můžete explicitně identifikovat konkrétní datové datové prostředky, abyste jim usnadnili přístup bez nutnosti použití vyhledávání.
+Pomocí uložených hledání můžete vyhledávací definice Uložit a znovu použít. Datové assety, které jsou vraceny hledáními, se můžou v průběhu času v průběhu změny v katalogu měnit. Když přidáváte datové prostředky, můžete explicitně identifikovat konkrétní datové assety, které jim usnadní přístup, aniž byste museli používat hledání.
 
-Připnutí datového prostředku je jednoduché. Chcete-li datový datový zdroj přidat do připnutého seznamu, stačí kliknout na ikonu **připnutí.** Ikona se zobrazí v rohu dlaždice datového zdroje v zobrazení dlaždic a ve sloupci zcela vlevo v zobrazení seznamu na portálu Katalog dat Azure.
+Připnutí datového assetu je jednoduché. Chcete-li přidat datový Asset do připnutého seznamu, stačí kliknout na ikonu **připnutí** . Ikona se zobrazí v rohu dlaždice Asset v zobrazení dlaždice a ve sloupci nejvíce vlevo v zobrazení seznamu na portálu Azure Data Catalog.
 
-![Katalog dat – ikona pinu datového prostředku](./media/data-catalog-how-to-save-pin/05-pinning.png)
+![Data Catalog – ikona pinu (data-Asset)](./media/data-catalog-how-to-save-pin/05-pinning.png)
 
-Odepnutí datového prostředku je stejně jednoduché. Stačí kliknout na ikonu **odepnutí** a přepnout nastavení vybraného datového zdroje.
+Odpnutí datového assetu je stejně jasné. Jednoduše klikněte na ikonu **odepnout** a přepněte nastavení vybraného assetu.
 
-![Katalog dat – ikona odepnutí datového prostředku](./media/data-catalog-how-to-save-pin/06-unpinning.png)
+![Data Catalog – ikona odepnout datový Asset – ikona](./media/data-catalog-how-to-save-pin/06-unpinning.png)
 
-## <a name="the-my-assets-section"></a>Sekce Můj majetek
-Domovská stránka portálu Katalog dat obsahuje oddíl **Můj majetek,** který zobrazuje podklady, které zajímají aktuální ho uživatele. Tato část obsahuje připnuté datové zdroje i uložená hledání.
+## <a name="the-my-assets-section"></a>Oddíl moje Assety
+Na domovské stránce portálu Data Catalog se nachází oddíl **Moje assety** , ve kterém se zobrazují prostředky důležité pro aktuálního uživatele. Tato část obsahuje připnuté prostředky i uložená hledání.
 
-![Oddíl Můj majetek na domovské stránce](./media/data-catalog-how-to-save-pin/07-my-assets.png)
+![Část moje aktiva na domovské stránce](./media/data-catalog-how-to-save-pin/07-my-assets.png)
 
 ## <a name="summary"></a>Souhrn
-Azure Data Catalog poskytuje funkce, které usnadňují zjišťování zdrojů dat, které potřebujete, takže vy a ostatní členové organizace můžete strávit méně času hledáním dat a více času s ním pracovat. Uložená vyhledávání a připnuté datové prostředky vycházejí z těchto základních funkcí, takže uživatelé mohou snadno identifikovat zdroje dat, se kterými opakovaně pracují.
+Azure Data Catalog poskytuje funkce, které usnadňují zjišťování zdrojů dat, které potřebujete, takže vy a ostatní členové organizace můžete strávit méně času hledáním dat a více času s tím, jak s ní pracujete. Uložená hledání a připnuté datové prostředky se vytvářejí na těchto základních funkcích, aby uživatelé mohli snadno identifikovat zdroje dat, se kterými pracují opakovaně.

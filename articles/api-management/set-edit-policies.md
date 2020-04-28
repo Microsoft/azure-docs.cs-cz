@@ -1,6 +1,6 @@
 ---
-title: Jak nastavit nebo upravit zásady správy rozhraní Azure API | Dokumenty společnosti Microsoft
-description: Toto téma ukazuje, jak nastavit nebo upravit zásady správy rozhraní API Azure.
+title: Nastavení nebo úprava zásad Azure API Management | Microsoft Docs
+description: V tomto tématu se dozvíte, jak nastavit nebo upravit zásady Azure API Management.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -13,23 +13,23 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: apimpm
 ms.openlocfilehash: 2df57477ae5270405a1774b7a4f04ed185fea396
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "70071707"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>Postup při nastavení nebo úpravě zásad služby Azure API Management
 
-Definice zásady je dokument XML, který popisuje posloupnost příchozích a odchozích příkazů. XML lze upravovat přímo v definičním okně. Můžete také vybrat předdefinovanou zásadu ze seznamu, který je k dispozici vpravo od okna zásady. Příkazy platné pro aktuální obor jsou povoleny a zvýrazněny. Klepnutí na povolený příkaz přidá příslušný xml v umístění kurzoru v zobrazení definice. 
+Definice zásady je dokument XML, který popisuje sekvenci příchozích a odchozích příkazů. KÓD XML lze upravit přímo v okně definice. Můžete také vybrat předdefinované zásady ze seznamu, který je k dispozici na pravé straně okna zásad. Příkazy použitelné pro aktuální obor jsou povoleny a zvýrazněny. Kliknutím na příkaz Enabled přidáte příslušný kód XML do umístění kurzoru v zobrazení definice. 
 
-Podrobné informace o zásadách najdete [v tématu Zásady ve správě rozhraní Azure API](api-management-howto-policies.md).
+Podrobné informace o zásadách najdete v tématu [zásady v Azure API Management](api-management-howto-policies.md).
 
-## <a name="set-or-edit-a-policy"></a>Nastavení nebo úprava zásady
+## <a name="set-or-edit-a-policy"></a>Nastavení nebo úprava zásad
 
-Chcete-li nastavit nebo upravit zásadu, postupujte takto:
+Chcete-li nastavit nebo upravit zásadu, postupujte podle následujících kroků:
 
-1. Přihlaste se k [https://portal.azure.com](https://portal.azure.com)portálu Azure na adrese .
+1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 2. Přejděte k vaší instanci APIM.
 3. Klikněte na kartu **Rozhraní API**.
 
@@ -37,9 +37,9 @@ Chcete-li nastavit nebo upravit zásadu, postupujte takto:
 
 4. Vyberte některé z rozhraní API, která jste předtím naimportovali.
 5. Vyberte kartu **Návrh**.
-6. Vyberte operaci, na kterou chcete zásadu použít. Pokud chcete zásadu použít pro všechny operace, vyberte **možnost Všechny operace**.
-7. V **</>** části **Příchozí zpracování** nebo **Odchozí zpracování** vyberte ikonu (editor kódu).
-8. Vložte požadovaný kód zásad do jednoho z příslušných bloků.
+6. Vyberte operaci, na kterou chcete zásadu použít. Pokud chcete zásadu použít pro všechny operace, vyberte **všechny operace**.
+7. V části **</>** **příchozí zpracování** nebo **zpracování odchozího zpracování** vyberte ikonu (Editor kódu).
+8. Vložte požadovaný kód zásad do některého z příslušných bloků.
 
     ```XML
     <policies>
@@ -60,80 +60,80 @@ Chcete-li nastavit nebo upravit zásadu, postupujte takto:
  
 ## <a name="configure-scope"></a>Konfigurace oboru
 
-Zásady lze konfigurovat globálně nebo v rozsahu produktu, rozhraní API nebo operace. Chcete-li začít konfigurovat zásadu, musíte nejprve vybrat obor, ve kterém by měla zásada použít.
+Zásady se dají nakonfigurovat globálně nebo v oboru produktu, rozhraní API nebo operace. Pokud chcete začít konfigurovat zásadu, musíte nejdřív vybrat rozsah, na kterém by se měla zásada vztahovat.
 
 Obory zásad jsou vyhodnocovány v následujícím pořadí:
 
 1. Globální rozsah
 2. Rozsah produktu
-3. Obor rozhraní API
+3. Rozsah rozhraní API
 4. Rozsah operace
 
-Příkazy v rámci zásad jsou hodnoceny podle umístění `base` prvku, pokud je k dispozici. Globální zásady nemá žádné `<base>` nadřazené zásady a použití prvku v něm nemá žádný vliv.
+Příkazy v rámci zásad jsou vyhodnocovány podle umístění `base` elementu, pokud je k dispozici. Globální zásady nemají žádné nadřazené zásady a použití `<base>` elementu v něm nemá žádný vliv.
 
-Chcete-li zobrazit zásady v aktuálním oboru v editoru zásad, klepněte na tlačítko **Přepočítat efektivní zásady pro vybraný obor**.
+Pokud chcete zobrazit zásady v aktuálním oboru v editoru zásad, klikněte na **Přepočítat efektivní zásady pro vybraný obor**.
 
 ### <a name="global-scope"></a>Globální rozsah
 
-Globální obor je nakonfigurován pro **všechna rozhraní API** v instanci APIM.
+Globální rozsah je nakonfigurovaný pro **všechna rozhraní API** v instanci APIM.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/) a přejděte na instanci APIM.
-2. Klepněte na **položku Všechna přístupová a vynaliště .**
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) a přejděte k instanci APIM.
+2. Klikněte na **všechna rozhraní API**.
 
     ![Globální rozsah](./media/api-management-howto-policies/global-scope.png)
 
-3. Klepněte na ikonu trojúhelníku.
+3. Klikněte na ikonu trojúhelníku.
 4. Vyberte **Editor kódu**.
-5. Přidejte nebo upravte zásady.
+5. Přidat nebo upravit zásady.
 6. Stiskněte **Uložit**. 
 
-    Změny jsou šířeny do brány pro správu rozhraní API okamžitě.
+    Změny se rozšíří přímo na bránu API Management.
 
 ### <a name="product-scope"></a>Rozsah produktu
 
-Obor produktu je konfigurován pro vybraný produkt.
+Pro vybraný produkt je nakonfigurovaný obor produktu.
 
-1. Klepněte na **položku Produkty**.
+1. Klikněte na **produkty**.
 
     ![Rozsah produktu](./media/api-management-howto-policies/product-scope.png)
 
-2. Vyberte produkt, na který chcete použít zásady.
-3. Klepněte na **položku Zásady**.
-4. Přidejte nebo upravte zásady.
+2. Vyberte produkt, pro který chcete použít zásady.
+3. Klikněte na **zásady**.
+4. Přidat nebo upravit zásady.
 5. Stiskněte **Uložit**. 
 
-### <a name="api-scope"></a>Obor rozhraní API
+### <a name="api-scope"></a>Rozsah rozhraní API
 
-Obor rozhraní API je nakonfigurován pro **všechny operace** vybraného rozhraní API.
+Obor rozhraní API je nakonfigurovaný pro **všechny operace** vybraného rozhraní API.
 
-1. Vyberte **rozhraní API,** na které chcete použít zásady.
+1. Vyberte **rozhraní API** , na které chcete zásady použít.
 
-    ![Obor rozhraní API](./media/api-management-howto-policies/api-scope.png)
+    ![Rozsah rozhraní API](./media/api-management-howto-policies/api-scope.png)
 
 2. Vyberte **Všechny operace**.
-3. Klepněte na ikonu trojúhelníku.
+3. Klikněte na ikonu trojúhelníku.
 4. Vyberte **Editor kódu**.
-5. Přidejte nebo upravte zásady.
+5. Přidat nebo upravit zásady.
 6. Stiskněte **Uložit**. 
 
 ### <a name="operation-scope"></a>Rozsah operace 
 
-Obor operace je konfigurován pro vybranou operaci.
+Pro vybranou operaci je nakonfigurován obor operace.
 
 1. Vyberte **rozhraní API**.
-2. Vyberte operaci, na kterou chcete použít zásady.
+2. Vyberte operaci, na kterou chcete zásady použít.
 
     ![Rozsah operace](./media/api-management-howto-policies/operation-scope.png)
 
-3. Klepněte na ikonu trojúhelníku.
+3. Klikněte na ikonu trojúhelníku.
 4. Vyberte **Editor kódu**.
-5. Přidejte nebo upravte zásady.
+5. Přidat nebo upravit zásady.
 6. Stiskněte **Uložit**. 
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na následující související témata:
+Podívejte se na následující témata týkající se:
 
-+ [Transformovat api](transform-api.md)
-+ [Odkaz na zásady](api-management-policy-reference.md) pro úplný seznam prohlášení zásad a jejich nastavení
++ [Transformační rozhraní API](transform-api.md)
++ [Odkaz na zásady](api-management-policy-reference.md) pro úplný seznam příkazů zásad a jejich nastavení
 + [Ukázky zásad](policy-samples.md)

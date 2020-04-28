@@ -1,6 +1,6 @@
 ---
-title: Zaregistrujte svou organizaci – Azure Active Directory | Dokumenty společnosti Microsoft
-description: Pokyny, jak zaregistrovat organizaci k používání Azure a Azure Active Directory.
+title: Zaregistrujte si svoji organizaci Azure Active Directory | Microsoft Docs
+description: Pokyny k registraci organizace pro používání Azure a Azure Active Directory.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -14,21 +14,21 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eb306e1ecbbdf2142d88b837b9750bbd2166cfda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68561626"
 ---
-# <a name="sign-up-your-organization-to-use-azure-active-directory"></a>Zaregistrujte svou organizaci k používání Služby Azure Active Directory
-Zaregistrujte se do služby Azure Active Directory (Azure AD) nebo nového předplatného Microsoft Azure, a to buď:
+# <a name="sign-up-your-organization-to-use-azure-active-directory"></a>Zaregistrujte si organizaci, abyste mohli používat Azure Active Directory
+Zaregistrujte se do služby Azure Active Directory (Azure AD) nebo nového předplatného Microsoft Azure pomocí těchto akcí:
 
-- **účet Microsoft.** Pomocí svého osobního účtu Microsoft získáte přístup k Azure a všem produktům a cloudovým službám Microsoftu orientovaným na spotřebitele, jako je Outlook (Hotmail), Messenger, OneDrive, MSN, Xbox LIVE nebo Office 365. Přihlášení k odběru Outlook.com poštovní schránky automaticky vytvoří účet Microsoft. Další informace najdete v tématu [Přehled účtu Microsoft](https://account.microsoft.com/account).
+- **účet Microsoft.** Využijte své osobní účet Microsoft k získání přístupu k Azure a všem zákaznickým produktům a cloudovým službám Microsoftu, jako je Outlook (Hotmail), Messenger, OneDrive, MSN, Xbox LIVE nebo Office 365. Při registraci do poštovní schránky Outlook.com se automaticky vytvoří účet Microsoft. Další informace najdete v tématu [přehled účet Microsoft](https://account.microsoft.com/account).
 
-- **Pracovní nebo školní účet.** Pomocí pracovního nebo školního účtu získáte přístup ke všem malým, středním a podnikovým cloudovým službám od Microsoftu, jako je Azure, Microsoft Intune nebo Office 365. Po registraci pro jednu z těchto služeb jako organizace Azure AD automaticky zřídí cloudový adresář, který představuje vaši organizaci. Další informace najdete [v tématu Správa adresáře Azure AD](active-directory-administer.md).
+- **Pracovní nebo školní účet.** Využijte svůj pracovní nebo školní účet, abyste získali přístup ke všem malým, středním a podnikovým cloudovým službám Microsoftu, jako je Azure, Microsoft Intune nebo Office 365. Po registraci jedné z těchto služeb jako organizace Azure AD automaticky zřídí cloudový adresář, který představuje vaši organizaci. Další informace najdete v tématu [Správa adresáře služby Azure AD](active-directory-administer.md).
 
   > [!Note]
-  >   Doporučujeme použít pracovní nebo školní účet, pokud už máte přístup k Azure AD. Měli byste však použít podle toho, jaký typ účtu je přidružen k vašemu předplatnému Azure.
+  >   Pokud už máte přístup ke službě Azure AD, doporučujeme použít svůj pracovní nebo školní účet. K vašemu předplatnému Azure byste ale měli použít libovolný typ účtu.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -38,7 +38,7 @@ Zaregistrujte se do služby Azure Active Directory (Azure AD) nebo nového před
 
 - [Další informace o Azure AD](active-directory-whatis.md)
 
-- [Použití místní infrastruktury identit v cloudu](../connect/active-directory-aadconnect.md)
+- [Využijte místní infrastrukturu identity v cloudu.](../connect/active-directory-aadconnect.md)
 
-- [Navštivte blog Microsoft Azure](https://azure.microsoft.com/blog/)
+- [Navštívit blog Microsoft Azure](https://azure.microsoft.com/blog/)
 

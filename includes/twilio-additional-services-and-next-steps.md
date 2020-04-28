@@ -5,23 +5,23 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: MicrosoftHelp@twilio.com
 ms.openlocfilehash: 8acb75f1cac83595da88a4a5ffa33102136266f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67175033"
 ---
-## <a name="how-to-use-additional-twilio-services"></a><a name="AdditionalServices"></a>Postup: Použití dalších služeb Twilio
-Kromě příkladů uvedených zde nabízí Twilio webová řešení API, která můžete použít k využití dalších funkcí Twilio z vaší aplikace Azure. Podrobné informace naleznete v [dokumentaci k rozhraní TWILIO API][twilio_api_documentation].
+## <a name="how-to-use-additional-twilio-services"></a><a name="AdditionalServices"></a>Postupy: používání dalších služeb Twilio
+Kromě zde uvedených příkladů Twilio nabízí webová rozhraní API, která můžete použít k využití dalších funkcí Twilio z vaší aplikace Azure. Úplné podrobnosti najdete v [dokumentaci k rozhraní Twilio API][twilio_api_documentation].
 
 ## <a name="next-steps"></a><a name="NextSteps"></a>Další kroky
-Nyní, když jste se naučili základy služby Twilio, postupujte podle následujících odkazů a dozvíte se více:
+Teď, když jste se seznámili se základy služby Twilio, můžete získat další informace pomocí těchto odkazů:
 
-* [Bezpečnostní pokyny Twilio][twilio_security_guidelines]
-* [Twilio HowTos a příklad kódu][twilio_howtos]
-* [Úvodní kurzy rychlého startu Twilio][twilio_quickstarts] 
+* [Pokyny pro zabezpečení Twilio][twilio_security_guidelines]
+* [Twilio HowTos a ukázkový kód][twilio_howtos]
+* [Kurzy rychlý Start pro Twilio][twilio_quickstarts] 
 * [Twilio na GitHubu][twilio_on_github]
-* [Promluvte si s podporou Twilio][twilio_support]
+* [Kontaktujte podporu Twilio][twilio_support]
 
 [twilio_api_documentation]: http://www.twilio.com/api
 [twilio_security_guidelines]: http://www.twilio.com/docs/security

@@ -1,6 +1,6 @@
 ---
-title: 'Skript PowerShellu: Vytvoření nového účtu Azure Data Share | Dokumenty společnosti Microsoft'
-description: Tento skript prostředí PowerShell vytvoří nový účet Sdílení dat.
+title: 'PowerShellový skript: vytvoření nového účtu Azure Data Share | Microsoft Docs'
+description: Tento skript PowerShellu vytvoří nový účet pro sdílení dat.
 services: data-share
 author: joannapea
 ms.service: data-share
@@ -10,15 +10,15 @@ ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
 ms.openlocfilehash: c3852dd5f1d3d3df8a982716ce5dab9426782869
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70307274"
 ---
-# <a name="use-powershell-to-create-a-data-share-account-in-azure"></a>Vytvoření účtu sdílení dat v Azure pomocí PowerShellu
+# <a name="use-powershell-to-create-a-data-share-account-in-azure"></a>Použití PowerShellu k vytvoření účtu pro sdílení dat v Azure
 
-Tento skript prostředí PowerShell vytvoří nový účet Sdílení dat. 
+Tento skript PowerShellu vytvoří nový účet pro sdílení dat. 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -38,11 +38,11 @@ Tento skript používá následující příkazy:
 
 | Příkaz | Poznámky |
 |---|---|
-| [Nový účet AzDataShare](/powershell/module/az.datashare/new-azdatashareaccount?view=azps-2.6.0) | Vytvoří účet sdílení dat. |
+| [New-AzDataShareAccount](/powershell/module/az.datashare/new-azdatashareaccount?view=azps-2.6.0) | Vytvoří účet pro sdílení dat. |
 |||
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 
-Další ukázky skriptu Azure Data Share PowerShellu najdete ve [ukázkách Prostředí PowerShell Azure Data Share](../../samples-powershell.md).
+Další ukázkové skripty PowerShellu pro sdílení dat Azure najdete v [ukázkách Azure Data Share PowerShell](../../samples-powershell.md).

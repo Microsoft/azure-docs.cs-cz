@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: yegu
 ms.openlocfilehash: 61e93e3700b9a396d2ac4fdcbb51fc5c874cf9cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "68286192"
 ---
 Aplikace .NET mohou použít klienta mezipaměti **StackExchange.Redis**, kterého lze nakonfigurovat v aplikaci Visual Studio pomocí balíčku NuGet, který zjednodušuje konfiguraci aplikací klientů mezipaměti. 
 
 > [!NOTE]
-> Další informace naleznete na stránce [GitHub stackexchange.redis](https://github.com/StackExchange/StackExchange.Redis) a [dokumentaci klienta StackExchange.Azure Cache for Redis](https://github.com/StackExchange/StackExchange.Redis#documentation).
+> Další informace najdete na stránce GitHubu [stackexchange. Redis](https://github.com/StackExchange/StackExchange.Redis) a v [mezipaměti stackexchange. Azure pro Redis klienta dokumentace](https://github.com/StackExchange/StackExchange.Redis#documentation).
 >
 >
 
@@ -31,10 +31,10 @@ Do textového pole pro vyhledávání zadejte **StackExchange.Redis** nebo **Sta
 
 ![Balíček StackExchange.Redis NuGet](media/redis-cache-configure-stackexchange-redis-nuget/redis-cache-stackexchange-redis.png)
 
-Balíček NuGet se stáhne a přidá požadované odkazy na sestavení pro klientskou aplikaci pro přístup k Azure Cache pro Redis s klientem StackExchange.Azure Cache for Redis.
+Balíček NuGet stahuje a přidává požadované odkazy na sestavení pro vaši klientskou aplikaci pro přístup do mezipaměti Azure pro Redis pomocí klienta StackExchange. Azure cache pro Redis.
 
 > [!NOTE]
-> Pokud jste dříve nakonfigurovali projekt pro použití StackExchange.Redis, můžete zkontrolovat aktualizace do balíčku ze **Správce balíčků NuGet**. Chcete-li vyhledat a nainstalovat aktualizované verze balíčku StackExchange.Redis NuGet, klepněte na tlačítko **Aktualizace** v okně **Správce balíčků NuGet.** Pokud je k dispozici aktualizace pro balíček StackExchange.Redis NuGet, můžete aktualizovat projekt pro použití aktualizované verze.
+> Pokud jste dříve nakonfigurovali projekt pro použití StackExchange.Redis, můžete zkontrolovat aktualizace do balíčku ze **Správce balíčků NuGet**. Pokud chcete vyhledat a nainstalovat aktualizované verze balíčku NuGet StackExchange. Redis, klikněte na **aktualizace** v okně **Správce balíčků NuGet** . Pokud je k dispozici aktualizace pro balíček StackExchange.Redis NuGet, můžete aktualizovat projekt pro použití aktualizované verze.
 >
 >
 

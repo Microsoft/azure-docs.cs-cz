@@ -5,22 +5,22 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 28aab15dc67e051190e8d4e35e92240a56fe54a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67174955"
 ---
-Dále pokud všechny servery v clusteru používají Systém Windows Server 2008 R2 nebo Windows Server 2012, je nutné ověřit, zda je oprava hotfix [KB2854082](https://support.microsoft.com/kb/2854082) nainstalována na všech místních serverech nebo virtuálních počítačích Azure, které jsou součástí clusteru. U všech serverů nebo virtuálních aplikací, které jsou v clusteru, ale nejsou ve skupině dostupnosti, by měla být nainstalována také tato oprava hotfix.
+Pokud na všech serverech v clusteru běží Windows Server 2008 R2 nebo Windows Server 2012, musíte ověřit, jestli je na všech místních serverech nebo virtuálních počítačích Azure, které jsou součástí clusteru, nainstalované opravy hotfix [KB2854082](https://support.microsoft.com/kb/2854082) . Tato oprava hotfix by měla být nainstalována na jakémkoli serveru nebo na virtuálním počítači, který je v clusteru, ale ne ve skupině dostupnosti.
 
-V relaci vzdálené plochy pro každý uzel clusteru stáhněte [KB2854082](https://support.microsoft.com/kb/2854082) do místního adresáře. Potom postupně nainstalujte opravu hotfix do každého uzlu clusteru. Pokud je clusterová služba aktuálně spuštěna v uzlu clusteru, je server restartován na konci instalace opravy hotfix.
+V relaci vzdálené plochy pro každý uzel clusteru stáhněte [KB2854082](https://support.microsoft.com/kb/2854082) do místního adresáře. Pak nainstalujte opravu hotfix na každý uzel clusteru sekvenčně. Pokud je Clusterová služba aktuálně spuštěná na uzlu clusteru, server se restartuje na konci instalace oprav hotfix.
 
 > [!WARNING]
-> Zastavení clusterové služby nebo restartování serveru ovlivňuje stav kvora clusteru a skupiny dostupnosti a může způsobit, že cluster přejde do offline. Chcete-li zachovat vysokou dostupnost clusteru během instalace, ujistěte se, že:
+> Zastavení Clusterové služby nebo restartování serveru má vliv na stav kvora clusteru a skupinu dostupnosti a může způsobit, že by cluster přešel do offline režimu. Pokud chcete zajistit vysokou dostupnost clusteru během instalace, ujistěte se, že:
 > 
-> * Cluster je v optimálním stavu kvora. 
-> * Před instalací opravy hotfix na libovolný uzel jsou všechny uzly clusteru online.
-> * Před instalací opravy hotfix do libovolného jiného uzlu v clusteru povolte spuštění instalace opravy hotfix na jednom uzlu, včetně úplného restartování serveru.
+> * Cluster je ve stavu optimálního kvora. 
+> * Než nainstalujete opravu hotfix na libovolný uzel, budou všechny uzly clusteru online.
+> * Než nainstalujete opravu hotfix na jakýkoli jiný uzel v clusteru, umožněte spuštění instalace oprav hotfix v jednom uzlu, včetně úplného restartování serveru.
 > 
 > 
 

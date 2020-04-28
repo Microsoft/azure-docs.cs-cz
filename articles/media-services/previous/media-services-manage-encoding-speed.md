@@ -1,6 +1,6 @@
 ---
-title: Správa rychlosti a souběžnosti kódování pomocí Azure Media Services | Dokumenty společnosti Microsoft
-description: Tento článek poskytuje stručný přehled o tom, jak můžete spravovat rychlost a souběžnost úlohy nebo úlohy kódování pomocí Azure Media Services.
+title: Spravujte rychlost a souběžnost kódování pomocí Azure Media Services | Microsoft Docs
+description: Tento článek poskytuje stručný přehled o tom, jak můžete spravovat rychlost a souběžnost vašich úloh a úloh kódování pomocí Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,27 +15,27 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 6bcaadc8dd61899aff860ad246e30170c99ec0f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61463748"
 ---
 #  <a name="manage-speed-and-concurrency-of-your-encoding"></a>Správa rychlosti a souběžného zpracování vašeho kódování  
 
-Tento článek poskytuje stručný přehled o tom, jak můžete spravovat rychlost a souběžnost úlohy nebo úlohy kódování.
+Tento článek poskytuje stručný přehled o tom, jak můžete spravovat rychlost a souběžnost vašich úloh a úloh kódování.
 
 ## <a name="overview"></a>Přehled
 
-Ve službě Media Services určuje **typ rezervované jednotky** rychlost zpracování úloh zpracování médií. Můžete si vybrat mezi následujícími typy rezervovaných jednotek: **S1**, **S2** nebo **S3**. Například stejná úloha kódování bude rychlejší, když použijete typ rezervované jednotky **S2**, než kdybyste použili typ **S1**. Téma [jednotky kódování měřítka](media-services-scale-media-processing-overview.md) zobrazuje tabulku, která vám pomůže při rozhodování při výběru mezi různými rychlostmi kódování.
+V Media Services **typ rezervované jednotky** určuje rychlost, s jakou jsou zpracovávány úlohy zpracování médií. Můžete si vybrat mezi následujícími typy rezervovaných jednotek: **S1**, **S2** nebo **S3**. Například stejná úloha kódování bude rychlejší, když použijete typ rezervované jednotky **S2**, než kdybyste použili typ **S1**. V tématu [škálování jednotek kódování](media-services-scale-media-processing-overview.md) se zobrazuje tabulka, která vám pomůže udělat si rozhodnutí při výběru mezi různými rychlostmi kódování.
 
-Kromě určení typu rezervované jednotky můžete zadat zřízení účtu pomocí **rezervovaných jednotek**. Počet zřízených rezervovaných jednotek určuje počet úloh médií, které je možné v daném účtu zpracovávat současně. Pokud má například váš účet pět rezervovaných jednotek, bude současně spuštěno pět úloh médií, pokud budou zpracovány úlohy. Zbývající úkoly budou čekat ve frontě a budou po dokončení spuštěné úlohy vyzvednuty pro zpracování postupně. Pokud účet nemá žádné rezervované jednotky zřízena, pak úkoly budou vyzvednuty postupně. V takovém případě bude čekací doba mezi dokončením jednoho úkolu a dalším zahájením záviset na dostupnosti prostředků v systému.
+Kromě určení typu rezervované jednotky můžete zadat, aby se účet zřídil **rezervovanými jednotkami**. Počet zřízených rezervovaných jednotek určuje počet úloh médií, které je možné v daném účtu zpracovávat současně. Pokud má váš účet například pět rezervovaných jednotek, pak pět mediálních úloh bude spuštěno souběžně, dokud budou zpracovány úkoly. Zbývající úlohy budou čekat ve frontě a budou vyzvednuty pro zpracování po dokončení běžící úlohy. Pokud účet nemá zřízeny žádné rezervované jednotky, budou úkoly postupně vyzvednuty. V tomto případě bude doba čekání mezi dokončením jednoho úkolu a dalším počátkem záviset na dostupnosti prostředků v systému.
 
-Podrobné informace a příklady, které ukazují, jak škálovat jednotky kódování, naleznete v [tomto](media-services-scale-media-processing-overview.md) tématu.
+Podrobné informace a příklady, které ukazují, jak škálovat jednotky kódování, najdete v [tomto](media-services-scale-media-processing-overview.md) tématu.
 
 ## <a name="next-step"></a>Další krok
 
-[Jednotky kódování měřítka](media-services-scale-media-processing-overview.md)
+[Jednotky kódování škály](media-services-scale-media-processing-overview.md)
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

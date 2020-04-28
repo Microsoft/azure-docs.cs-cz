@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: b7881d38e04f9b5793f61110e0e3e4c76baeddf2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "70886753"
 ---
-Ovládací prvek zabezpečení je kvalita nebo funkce služby Azure, která přispívá ke schopnosti služby předcházet, zjišťovat a reagovat na chyby zabezpečení.
+Řízení zabezpečení je kvalita nebo funkce služby Azure, která přispívá ke schopnostem služby zabránit, zjišťovat a reagovat na ohrožení zabezpečení.
 
-Pro každý ovládací prvek používáme "Ano" nebo "Ne" k označení, zda je aktuálně na místě pro službu "Není k dispozici" pro ovládací prvek, který se nevztahuje na službu. Můžeme také poskytnout poznámku nebo odkazy na další informace o atributu.
+Pro každý ovládací prvek používáme "Ano" nebo "ne" k označení, zda je v současnosti pro službu, "N/A" pro ovládací prvek, který není použitelný pro službu. Můžete také zadat poznámku nebo odkazy na Další informace o atributu.

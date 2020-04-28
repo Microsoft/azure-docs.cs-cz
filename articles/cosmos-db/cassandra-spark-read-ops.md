@@ -1,7 +1,7 @@
 ---
-title: Čtení dat tabulky Rozhraní API Cassandra pomocí Spark
+title: Čtení dat rozhraní API Cassandra tabulky pomocí Sparku
 titleSufix: Azure Cosmos DB
-description: Tento článek popisuje, jak číst data z tabulek rozhraní API Cassandra v Azure Cosmos DB.
+description: Tento článek popisuje, jak číst data z rozhraní API Cassandra tabulky v Azure Cosmos DB.
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: 01a9582062d8eb0d039473a03901fc83fe179020
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60893385"
 ---
-# <a name="read-data-from-azure-cosmos-db-cassandra-api-tables-using-spark"></a>Čtení dat z tabulek rozhraní API Azure Cosmos DB Cassandra pomocí Sparku
+# <a name="read-data-from-azure-cosmos-db-cassandra-api-tables-using-spark"></a>Čtení dat z Azure Cosmos DB rozhraní API Cassandra tabulek pomocí Sparku
 
- Tento článek popisuje, jak číst data uložená v rozhraní API Azure Cosmos DB Cassandra ze Sparku.
+ Tento článek popisuje, jak číst data uložená v Azure Cosmos DB rozhraní API Cassandra ze Sparku.
 
 ## <a name="cassandra-api-configuration"></a>Konfigurace rozhraní API Cassandra
 ```scala
@@ -46,9 +46,9 @@ spark.conf.set("spark.cassandra.concurrent.reads", "512")
 spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
-## <a name="dataframe-api"></a>Rozhraní API datového rámce
+## <a name="dataframe-api"></a>Rozhraní API pro dataframe
 
-### <a name="read-table-using-sessionreadformat-command"></a>Číst tabulku pomocí příkazu session.read.format
+### <a name="read-table-using-sessionreadformat-command"></a>Čtení tabulky pomocí příkazu Session. Read. Format
 
 ```scala
 val readBooksDF = sqlContext
@@ -60,13 +60,13 @@ val readBooksDF = sqlContext
 readBooksDF.explain
 readBooksDF.show
 ```
-### <a name="read-table-using-sparkreadcassandraformat"></a>Čtení tabulky pomocí souboru spark.read.cassandraFormat 
+### <a name="read-table-using-sparkreadcassandraformat"></a>Čtení tabulky pomocí Spark. Read. cassandraFormat 
 
 ```scala
 val readBooksDF = spark.read.cassandraFormat("books", "books_ks", "").load()
 ```
 
-### <a name="read-specific-columns-in-table"></a>Čtení konkrétních sloupců v tabulce
+### <a name="read-specific-columns-in-table"></a>Čtení určitých sloupců v tabulce
 
 ```scala
 val readBooksDF = spark
@@ -83,7 +83,7 @@ readBooksDF.show
 
 ### <a name="apply-filters"></a>Použití filtrů
 
-V současné době predikát pushdown není podporována, ukázky níže odrážejí filtrování na straně klienta. 
+V současné době se nepodporuje predikáty směrem dolů. následující ukázky odrážejí filtrování na straně klienta. 
 
 ```scala
 val readBooksDF = spark
@@ -103,15 +103,15 @@ readBooksDF.explain
 readBooksDF.show
 ```
 
-## <a name="rdd-api"></a>RDD API
+## <a name="rdd-api"></a>ROZHRANÍ API PRO RDD
 
-### <a name="read-table"></a>Číst v tabulce
+### <a name="read-table"></a>Přečíst tabulku
 ```scala
 val bookRDD = sc.cassandraTable("books_ks", "books")
 bookRDD.take(5).foreach(println)
 ```
 
-### <a name="read-specific-columns-in-table"></a>Čtení konkrétních sloupců v tabulce
+### <a name="read-specific-columns-in-table"></a>Čtení určitých sloupců v tabulce
 
 ```scala
 val booksRDD = sc.cassandraTable("books_ks", "books").select("book_id","book_name").cache
@@ -120,7 +120,7 @@ booksRDD.take(5).foreach(println)
 
 ## <a name="sql-views"></a>Zobrazení SQL 
 
-### <a name="create-a-temporary-view-from-a-dataframe"></a>Vytvoření dočasného zobrazení z datového rámce
+### <a name="create-a-temporary-view-from-a-dataframe"></a>Vytvořit dočasné zobrazení z datového rámce
 
 ```scala
 spark
@@ -130,7 +130,7 @@ spark
   .load.createOrReplaceTempView("books_vw")
 ```
 
-### <a name="run-queries-against-the-view"></a>Spuštění dotazů v zobrazení
+### <a name="run-queries-against-the-view"></a>Spouštění dotazů pro zobrazení
 
 ```sql
 select * from books_vw where book_pub_year > 1891
@@ -138,10 +138,10 @@ select * from books_vw where book_pub_year > 1891
 
 ## <a name="next-steps"></a>Další kroky
 
-Následují další články o práci s rozhraním API Azure Cosmos DB Cassandra ze Sparku:
+Níže najdete další články o práci s Azure Cosmos DB rozhraní API Cassandra ze Sparku:
  
- * [Upsert operace](cassandra-spark-upsert-ops.md)
- * [Odstranit operace](cassandra-spark-delete-ops.md)
+ * [Operace Upsert](cassandra-spark-upsert-ops.md)
+ * [Operace odstranění](cassandra-spark-delete-ops.md)
  * [Agregační operace](cassandra-spark-aggregation-ops.md)
  * [Operace kopírování tabulky](cassandra-spark-table-copy-ops.md)
 

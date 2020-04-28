@@ -9,15 +9,15 @@ ms.date: 03/15/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 4c232e1ce183c6935d625b5bc9987a4981865ae4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67174887"
 ---
-Pokud pracujete s modelem nasazení Resource Manager, můžete změnit na nové brány skum. Když změníte ze starší brány Skladové položky na novou skladovou položku, odstraníte existující bránu VPN a vytvoříte novou bránu VPN.
+Pokud pracujete s modelem nasazení Správce prostředků, můžete přejít na nové SKU brány. Když změníte ze starší skladové položky brány na novou SKLADOVOU položku, odstraníte stávající bránu VPN a vytvoříte novou bránu VPN.
 
-Pracovního postupu:
+Pracovního postupu
 
 1. Odeberte všechna připojení k bráně virtuální sítě.
 2. Odstraňte starou bránu VPN.
@@ -29,7 +29,7 @@ Pracovního postupu:
 
 Požadavky:
 
-* Chcete-li přejít na nové sloky, musí být brána VPN v modelu nasazení Správce prostředků.
-* Pokud máte klasickou bránu VPN, musíte pokračovat v používání starších starších virtuálních zařízení pro tuto bránu, ale můžete změnit velikost mezi staršími virtuálními sadami. Nelze změnit na nové sku.
-* Budete mít prostoje připojení při změně ze starší skladové položky na novou skladovou položku.
-* Při přechodu na novou skladovou položku brány se změní veřejná IP adresa brány VPN. K tomu dochází i v případě, že zadáte stejný objekt veřejné IP adresy, který jste použili dříve.
+* Pokud chcete přejít na nové SKU, musí být vaše brána VPN v modelu nasazení Správce prostředků.
+* Pokud máte klasickou bránu VPN, musíte pro tuto bránu používat starší starší verze SKU, ale můžete změnit velikost mezi staršími SKU. Nemůžete změnit na nové SKU.
+* Při změně z původní SKU na novou SKU budete mít výpadek připojení.
+* Při přechodu na novou skladovou jednotku brány se změní veřejná IP adresa pro vaši bránu VPN. K tomu dojde i v případě, že zadáte stejný objekt veřejné IP adresy, který jste použili dříve.

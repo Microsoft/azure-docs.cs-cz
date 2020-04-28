@@ -9,19 +9,19 @@ ms.date: 01/17/2019
 ms.author: avneet723
 ms.custom: include file
 ms.openlocfilehash: 1f567b3d083853f9bb342bfad462e8545caa6480
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67175440"
 ---
-## <a name="download-the-source-code"></a>Stáhnout zdrojový kód
+## <a name="download-the-source-code"></a>Stažení zdrojového kódu
 
-Úložiště zdrojového kódu vzdáleného monitorování zahrnují zdrojový kód a konfigurační soubory Dockeru, které potřebujete ke spuštění bitových kopií Dockeru mikroslužeb.
+Mezi úložiště zdrojového kódu vzdáleného monitorování patří zdrojový kód a konfigurační soubory Docker, které potřebujete ke spuštění imagí Docker mikroslužeb.
 
-Chcete-li klonovat a vytvořit místní verzi úložiště, použijte prostředí příkazového řádku k přechodu do vhodné složky v místním počítači. Potom spusťte jednu z následujících sad příkazů a klonujte úložiště .NET:
+Pokud chcete klonovat a vytvořit místní verzi úložiště, použijte prostředí příkazového řádku a přejděte do vhodné složky na místním počítači. Pak spusťte jednu z následujících sad příkazů pro klonování úložiště .NET:
 
-Chcete-li stáhnout nejnovější verzi implementací mikroslužeb .NET, spusťte:
+Chcete-li stáhnout nejnovější verzi implementací mikroslužeb .NET, spusťte příkaz:
 
 ```cmd/sh
 git clone --recurse-submodules https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet.git
@@ -33,47 +33,47 @@ git submodule foreach git pull origin master
 ```
 
 > [!NOTE]
-> Tyto příkazy stáhnout zdrojový kód pro všechny mikroslužeb kromě skripty, které používáte ke spuštění mikroslužeb místně. I když nepotřebujete zdrojový kód ke spuštění mikroslužeb v Dockeru, zdrojový kód je užitečné, pokud později plánujete upravit akcelerátor řešení a otestovat změny místně.
+> Tyto příkazy stáhnou zdrojový kód pro všechny mikroslužby Kromě skriptů používaných k místnímu spouštění mikroslužeb. I když zdrojový kód nepotřebujete ke spuštění mikroslužeb v Docker, je zdrojový kód užitečný, pokud později plánujete změnit akcelerátor řešení a testovat změny místně.
 
 ## <a name="deploy-the-azure-services"></a>Nasazení služeb Azure
 
-I když tento článek ukazuje, jak spustit mikroslužeb místně, závisí na službách Azure spuštěných v cloudu. K nasazení služeb Azure použijte následující skript. Následující příklady skriptů předpokládají, že používáte úložiště .NET v počítači se systémem Windows. Pokud pracujete v jiném prostředí, upravte odpovídajícím způsobem cesty, přípony souborů a oddělovače cest.
+I když v tomto článku se dozvíte, jak místně spustit mikroslužby, závisí na službách Azure spuštěných v cloudu. Pomocí následujícího skriptu nasaďte služby Azure. V následujících příkladech skriptu se předpokládá, že používáte úložiště .NET na počítači s Windows. Pokud pracujete v jiném prostředí, upravte správně cesty, přípony souborů a oddělovače cest.
 
 ### <a name="create-new-azure-resources"></a>Vytvoření nových prostředků Azure
 
-Pokud jste ještě nevytvořili požadované prostředky Azure, postupujte takto:
+Pokud jste ještě nevytvořili požadované prostředky Azure, postupujte podle těchto kroků:
 
-1. V prostředí příkazového řádku přejděte do složky **\services\scripts\local\launch** ve své klonované kopii úložiště.
+1. V prostředí příkazového řádku přejděte do složky **\services\scripts\local\launch** v klonované kopii úložiště.
 
-1. Spusťte následující příkazy k instalaci nástroje **příkazu příkazu k lis ování počítačů** a přihlaste se ke svému účtu Azure:
+1. Spuštěním následujících příkazů nainstalujte nástroj pro **počítače** CLI a přihlaste se ke svému účtu Azure:
 
     ```cmd
     npm install -g iot-solutions
     pcs login
     ```
 
-1. Spusťte skript **start.cmd.** Skript vás vyzve k zadání následujících informací:
+1. Spusťte skript **Start. cmd** . Skript vás vyzve k zadání následujících informací:
    * Název řešení.
    * Předplatné Azure, které se má použít.
-   * Umístění datového centra Azure, které chcete použít.
+   * Umístění datacentra Azure, které se má použít.
 
-     Skript vytvoří skupinu prostředků v Azure s názvem vašeho řešení. Tato skupina prostředků obsahuje prostředky Azure, které používá akcelerátor řešení. Tuto skupinu prostředků můžete odstranit, jakmile již nebudete potřebovat odpovídající prostředky.
+     Skript vytvoří v Azure skupinu prostředků s názvem vašeho řešení. Tato skupina prostředků obsahuje prostředky Azure, které používá akcelerátor řešení. Tuto skupinu prostředků můžete odstranit, až už nebudete potřebovat odpovídající prostředky.
 
-     Skript také přidá sadu proměnných prostředí s předponou **PCS** do místního počítače. Tyto proměnné prostředí poskytují podrobnosti pro vzdálené monitorování, které mají být možné číst z prostředku Azure Key Vault. Tento prostředek trezoru klíčů je místo, kde vzdálené monitorování bude číst jeho hodnoty konfigurace z.
+     Skript také přidá sadu proměnných prostředí s předponou **počítačů** do místního počítače. Tyto proměnné prostředí obsahují podrobnosti o tom, jak vzdálené monitorování umožní číst z prostředku Azure Key Vault. V tomto prostředku Key Vault prostředek, ze kterého bude vzdálené monitorování číst hodnoty konfigurace z.
 
      > [!TIP]
-     > Po dokončení skriptu se také uloží proměnné prostředí do souboru nazývaného ** \<název\>řešení .env domovské složky\>\\\\\<.pcs**. Můžete je použít pro budoucí nasazení akcelerátoru řešení. Všimněte si, že všechny proměnné prostředí nastavené v místním počítači přepíší hodnoty v **místním\\\\\\** souboru ENV služby při spuštění **docker-compose**.
+     > Až se skript dokončí, uloží také proměnné prostředí do souboru s názvem ** \<Domovská složka\>\\. počítače\\\<název\>řešení. env**. Můžete je použít pro budoucí nasazení akcelerátoru řešení. Všimněte si, že všechny proměnné prostředí nastavené v místním počítači přepíší hodnoty v souboru **\\. ENV v\\\\souboru. env** , když spustíte **Docker-Dock**.
 
-1. Ukončete prostředí příkazového řádku.
+1. Z prostředí příkazového řádku ukončete.
 
 ### <a name="use-existing-azure-resources"></a>Použití existujících prostředků Azure
 
-Pokud jste už vytvořili požadované prostředky Azure, vytvořte odpovídající proměnné prostředí v místním počítači.
+Pokud jste už vytvořili požadované prostředky Azure, vytvořte na místním počítači odpovídající proměnné prostředí.
 Nastavte proměnné prostředí pro následující:
-* **PCS_KEYVAULT_NAME** – název prostředku azure key vault
-* **PCS_AAD_APPID** - ID aplikace AAD
-* **PCS_AAD_APPSECRET** - Tajný klíč aplikace AAD
+* **PCS_KEYVAULT_NAME** – název prostředku Azure Key Vault
+* **PCS_AAD_APPID** – ID aplikace AAD
+* **PCS_AAD_APPSECRET** – tajný klíč aplikace AAD
 
-Hodnoty konfigurace se budou číst z tohoto prostředku Azure Key Vault. Tyto proměnné prostředí mohou být uloženy v souboru ** \<\>\\\\\<\>.env složky .pcs domovské složky z** nasazení. Všimněte si, že proměnné prostředí nastavené v místním počítači přepíší hodnoty v **místním\\\\\\** souboru ENV služby při spuštění **docker-compose**.
+Z tohoto prostředku Azure Key Vault budou načteny konfigurační hodnoty. Tyto proměnné prostředí se můžou ukládat do souboru ** \<\\\<\>. ENV v\>\\domovské složce.** Všimněte si, že proměnné prostředí nastavené v místním počítači přepíší hodnoty v souboru **\\\\. env skriptu služby\\** , když spustíte **Docker-Dock**.
 
-Některé konfigurace potřebné mikroslužby je uložen v instanci **trezoru klíčů,** který byl vytvořen při počátečním nasazení. Odpovídající proměnné v trezoru klíčů by měly být upraveny podle potřeby.
+Některá z konfigurací, které potřebuje mikroslužba, je uložená v instanci **Key Vault** , která byla vytvořena při počátečním nasazení. Odpovídající proměnné v trezoru klíčů by měly být podle potřeby upraveny.

@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 2ae72045ae18d84eac2a6d619d94e3a9e49415ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67175005"
 ---
-## <a name="issue-custom-image-provisioning-errors"></a>Problém: Vlastní obrázek; zřizování chyb
-Chyby zřizování vznikají, pokud nahrajete nebo zachytíte zobecněnou image virtuálního zařízení jako specializovanou image virtuálního uživatele nebo naopak. První způsobí chybu časového času zřizování a druhý způsobí selhání zřizování. Chcete-li nasadit vlastní bitovou kopii bez chyb, musíte zajistit, aby se typ bitové kopie během procesu sběru nezměnil.
+## <a name="issue-custom-image-provisioning-errors"></a>Problém: vlastní image; chyby zřizování
+K chybám zřizování dojde, když nahrajete nebo zachytíte zobecněnou image virtuálního počítače jako specializovanou image virtuálního počítače nebo naopak. V bývalém důsledku dojde k chybě časového limitu zřizování a ta by způsobila chybu zřizování. Chcete-li nasadit vlastní image bez chyb, je nutné zajistit, aby se typ obrázku během procesu zachycení nezměnil.
 
-V následující tabulce jsou uvedeny možné kombinace generalizovaných a specializovaných bitových kopií, typ chyby, se kterými se setkáte, a co je třeba udělat pro opravu chyb.
+V následující tabulce jsou uvedeny možné kombinace zobecněných a specializovaných imagí, typ chyby, který se zobrazí, a informace o tom, co je třeba udělat k opravě chyb.
 

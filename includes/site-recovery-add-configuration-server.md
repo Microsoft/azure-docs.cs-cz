@@ -10,10 +10,10 @@ ms.date: 02/28/2019
 ms.author: mayg
 ms.custom: include file
 ms.openlocfilehash: 7c682105113dac7c1d457489cf926210ead77993
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67174721"
 ---
 1. Spusťte instalační soubor sjednocené instalace.
@@ -35,7 +35,7 @@ ms.locfileid: "67174721"
      ![Brána firewall](./media/site-recovery-add-configuration-server/combined-wiz4.png)
 6. Na stránce **Kontrola předpokladů** instalační program provede kontrolu a ověří, že lze spustit instalaci. Pokud se zobrazí varování u položky **Kontrola synchronizace globálního času**, ověřte, že čas na systémových hodinách (nastavení **Datum a čas**) je stejný jako časové pásmo.
 
-    ![Požadované součásti](./media/site-recovery-add-configuration-server/combined-wiz5.png)
+    ![Požadavky](./media/site-recovery-add-configuration-server/combined-wiz5.png)
 7. Na stránce **Konfigurace MySQL** vytvořte přihlašovací údaje pro přihlašování k nainstalované instanci serveru MySQL.
 
     ![MySQL](./media/site-recovery-add-configuration-server/combined-wiz6.png)

@@ -9,13 +9,13 @@ ms.date: 10/17/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 49f48c2d0bf865cf8c8fde831e7a597f8701d213
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67174835"
 ---
-Můžete ověřit, že vaše připojení proběhlo úspěšně pomocí rutiny Get-AzVirtualNetworkGatewayConnection, s nebo bez '-Ladění'. 
+Pomocí rutiny Get-AzVirtualNetworkGatewayConnection můžete ověřit, jestli připojení proběhlo úspěšně, a to bez ladění. 
 
 1. Použijte následující příklad rutiny a nakonfigurujte hodnoty tak, aby odpovídaly vašemu prostředí. Po zobrazení výzvy vyberte možnost „A“, abyste spustili „vše“. V příkladu odkazuje -Name na název připojení, které chcete testovat.
 

@@ -1,6 +1,6 @@
 ---
-title: Výstrahy Azure CDN v reálném čase | Dokumenty společnosti Microsoft
-description: Výstrahy v reálném čase v microsoft azure cdn. Výstrahy v reálném čase poskytují oznámení o výkonu koncových bodů v profilu CDN.
+title: Azure CDN upozornění v reálném čase | Microsoft Docs
+description: Výstrahy v reálném čase v Microsoft Azure CDN. Výstrahy v reálném čase poskytují oznámení o výkonu koncových bodů v profilu CDN.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 4b8cbc27757cf6c321ea4b3c27720a129aa27c1b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67593483"
 ---
-# <a name="real-time-alerts-in-microsoft-azure-cdn"></a>Výstrahy v reálném čase v microsoft azure cdn
+# <a name="real-time-alerts-in-microsoft-azure-cdn"></a>Výstrahy v reálném čase v Microsoft Azure CDN
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 ## <a name="overview"></a>Přehled
-Tento dokument vysvětluje výstrahy v reálném čase v microsoft azure cdn. Tato funkce poskytuje oznámení v reálném čase o výkonu koncových bodů v profilu CDN.  E-mailová nebo HTTP upozornění můžete nastavit na základě:
+Tento dokument vysvětluje výstrahy v reálném čase v Microsoft Azure CDN. Tato funkce poskytuje oznámení v reálném čase o výkonu koncových bodů v profilu CDN.  Můžete nastavit výstrahy e-mailu nebo HTTP na základě:
 
 * Šířka pásma
 * Stavové kódy
@@ -33,67 +33,67 @@ Tento dokument vysvětluje výstrahy v reálném čase v microsoft azure cdn. Ta
 * Připojení
 
 ## <a name="creating-a-real-time-alert"></a>Vytvoření výstrahy v reálném čase
-1. Na [webu Azure Portal](https://portal.azure.com)přejděte na svůj profil CDN.
+1. V [Azure Portal](https://portal.azure.com)přejděte do svého profilu CDN.
    
     ![Profil CDN](./media/cdn-real-time-alerts/cdn-profile-blade.png)
-1. V okně profilu CDN klepněte na tlačítko **Spravovat.**
+1. V okně profilu CDN klikněte na tlačítko **Spravovat** .
    
-    ![Tlačítko pro správu profilu CDN](./media/cdn-real-time-alerts/cdn-manage-btn.png)
+    ![Tlačítko Spravovat profil CDN](./media/cdn-real-time-alerts/cdn-manage-btn.png)
    
     Otevře se portál pro správu CDN.
-3. Najeďte na kartu **Analytics** a najeďte na informační **rámeček Statistiky v reálném čase.**  Klikněte na **Real-Time Upozornění**.
+3. Najeďte myší na kartu **Analýza** a potom najeďte myší na informační rámeček **statistiky v reálném čase** .  Klikněte na **výstrahy v reálném čase**.
    
     ![Portál pro správu CDN](./media/cdn-real-time-alerts/cdn-premium-portal.png)
    
     Zobrazí se seznam existujících konfigurací výstrah (pokud existují).
-4. Klikněte na tlačítko **Přidat výstrahu.**
+4. Klikněte na tlačítko **Přidat výstrahu** .
    
-    ![Tlačítko Přidat výstrahu](./media/cdn-real-time-alerts/cdn-add-alert.png)
+    ![Tlačítko pro přidání výstrahy](./media/cdn-real-time-alerts/cdn-add-alert.png)
    
     Zobrazí se formulář pro vytvoření nové výstrahy.
    
-    ![Nový výstražný formulář](./media/cdn-real-time-alerts/cdn-new-alert.png)
-5. Pokud chcete, aby tato výstraha byla aktivní po klepnutí na tlačítko **Uložit**, zaškrtněte políčko **Výstraha povolena.**
-6. Do pole **Název** zadejte popisný název výstrahy.
-7. V rozevíracím souboru **Typ média** vyberte možnost Velký **objekt HTTP**.
+    ![Formulář nové výstrahy](./media/cdn-real-time-alerts/cdn-new-alert.png)
+5. Pokud chcete, aby byla tato výstraha aktivní, když kliknete na **Uložit**, zaškrtněte políčko **Povolit výstrahu** .
+6. Do pole **název** zadejte popisný název upozornění.
+7. V rozevíracím seznamu **typ média** vyberte **http large object**.
    
-    ![Typ média s vybraným velkým objektem HTTP](./media/cdn-real-time-alerts/cdn-http-large.png)
+    ![Typ média s vybraným Large Object HTTP](./media/cdn-real-time-alerts/cdn-http-large.png)
    
    > [!IMPORTANT]
-   > Jako **typ média**je nutné vybrat velký objekt **PROTOKOLU HTTP** .  Ostatní možnosti nejsou používány **Azure CDN od společnosti Verizon**.  Pokud se nepodaří vybrat **velký objekt PROTOKOLU HTTP,** výstraha se nikdy nespustí.
+   > Jako **typ média**musíte vybrat **large object http** .  Ostatní možnosti nejsou používány **Azure CDN z Verizon**.  Nepodařilo se vybrat **large object http** způsobí, že se výstraha nikdy neaktivuje.
    > 
    > 
-8. Vytvořte **výraz** ke sledování výběrem hodnoty **Metrika**, **Operátor**a **Aktivační událost**.
+8. Vytvořte **výraz** , který se má monitorovat, a to výběrem **metriky**, **operátoru**a **hodnoty triggeru**.
    
-   * V **části Metrika**vyberte typ podmínky, kterou chcete sledovat.  **Mbps šířky pásma** je množství využití šířky pásma v megabitech za sekundu.  **Celkový počet připojení** je počet souběžných připojení HTTP k našim hraničním serverům.  Definice různých stavů mezipaměti a stavových kódů najdete v tématu [Azure CDN Cache Status Codes](/previous-versions/azure/mt759237(v=azure.100)) a Azure [CDN HTTP Status Codes](/previous-versions/azure/mt759238(v=azure.100))
-   * **Operátor** je matematický operátor, který vytváří vztah mezi metrikou a aktivační hodnotou.
-   * **Aktivační hodnota** je prahová hodnota, která musí být splněna před odesláním oznámení.
+   * V poli **metrika**vyberte typ podmínky, kterou chcete monitorovat.  **Šířka pásma MB/s** je velikost využití šířky pásma v megabajtech za sekundu.  **Čítač připojení (celkem** ) představuje počet souběžných připojení HTTP k našim hraničním serverům.  Definice různých stavů a stavů mezipaměti najdete v tématech [stavové kódy Azure CDN cache](/previous-versions/azure/mt759237(v=azure.100)) a [Azure CDN STAVové kódy http](/previous-versions/azure/mt759238(v=azure.100)) .
+   * **Operátor** je matematický operátor, který vytváří vztah mezi metrikou a hodnotou triggeru.
+   * **Hodnota triggeru** je prahová hodnota, která musí být splněna před odesláním oznámení.
      
-     V následujícím příkladu vytvořený výraz označuje, že oznámení je odesláno, pokud je počet stavových kódů 404 větší než 25.
+     V následujícím příkladu vytvářený výraz označuje, že je odesláno oznámení, když je počet stavových kódů 404 větší než 25.
      
-     ![Ukázkový výraz výstrah y v reálném čase](./media/cdn-real-time-alerts/cdn-expression.png)
-9. V **části Interval**zadejte, jak často chcete výraz vyhodnotit.
-10. V rozevíracím **souboru Upozornit na** vyberte, kdy chcete být upozorněni, když je výraz pravdivý.
+     ![Vzorový výraz výstrahy v reálném čase](./media/cdn-real-time-alerts/cdn-expression.png)
+9. Jako **interval**zadejte, jak často se má výraz vyhodnotit.
+10. V rozevíracím seznamu **oznámit pro** vyberte, kdy se má zobrazit oznámení, když je výraz pravdivý.
     
-    * **Podmínka Start** označuje, že oznámení je odeslána při prvním zjištění zadané podmínky.
-    * **Konec podmínky** označuje, že oznámení je odesláno, když zadaná podmínka již není zjištěna. Toto oznámení lze spustit až poté, co náš systém sledování sítě zjistí, že došlo k zadanému stavu.
-    * **Průběžné** označuje, že je odesíláno oznámení pokaždé, když systém sledování sítě zjistí zadanou podmínku. Mějte na paměti, že systém sledování sítě kontroluje zadanou podmínku pouze jednou za interval.
-    * **Podmínka Začátek a konec** označuje, že oznámení je odeslána při prvním zjištění zadané podmínky a znovu, když podmínka již není zjištěna.
-1. Pokud chcete dostávat oznámení e-mailem, zaškrtněte políčko **Upozornit e-mailem.**  
+    * **Podmínka Start** označuje, že oznámení je odesláno při prvním zjištění zadané podmínky.
+    * **Konec podmínky** označuje, že se pošle oznámení, když se zadaná podmínka už nedetekuje. Toto oznámení se může aktivovat, jenom když systém monitorování sítě zjistil, že se vyskytla zadaná podmínka.
+    * **Průběžné** znamená, že se pošle oznámení, když systém monitorování sítě detekuje zadanou podmínku. Mějte na paměti, že systém monitorování sítě pro zadanou podmínku kontroluje jenom jednou za interval.
+    * **Začátek podmínky a konec** označuje, že se pošle oznámení při prvním zjištění zadané podmínky a potom znovu, kdy se podmínka už nedetekuje.
+1. Pokud chcete oznámení dostávat e-mailem, zaškrtněte políčko **Upozornění e-mailem** .  
     
-    ![Upozornit e-mailem](./media/cdn-real-time-alerts/cdn-notify-email.png)
+    ![E-mailová forma s informacemi](./media/cdn-real-time-alerts/cdn-notify-email.png)
     
-    Do pole **Do** zadejte e-mailovou adresu, na kterou chcete odesílat oznámení. V **případě Předmět** a **Tělo**můžete ponechat výchozí nastavení nebo můžete zprávu přizpůsobit pomocí seznamu **Dostupná klíčová slova** pro dynamické vkládání dat výstrah při odeslání zprávy.
+    Do pole **do** zadejte e-mailovou adresu, na kterou chcete odesílat oznámení. U **předmětu** a **textu**můžete ponechat výchozí nastavení nebo můžete upravit zprávu pomocí seznamu **dostupná klíčová slova** k dynamickému vkládání dat výstrah při odeslání zprávy.
     
     > [!NOTE]
-    > E-mailové oznámení můžete otestovat kliknutím na tlačítko **Oznámení testu,** ale až po uložení konfigurace výstrahy.
+    > E-mailové oznámení můžete otestovat kliknutím na tlačítko **testovat oznámení** , ale až po uložení konfigurace výstrahy.
     > 
     > 
-12. Pokud chcete, aby byla oznámení zaúčtována na webový server, zaškrtněte políčko **Upozornit podle chyby HTTP.**
+12. Chcete-li odesílat oznámení na webový server, zaškrtněte políčko **oznámení pomocí HTTP POST** .
     
-    ![Upozornit pomocí formuláře HTTP Post](./media/cdn-real-time-alerts/cdn-notify-http.png)
+    ![Odeslat zprávu odesláním formuláře HTTP POST](./media/cdn-real-time-alerts/cdn-notify-http.png)
     
-    Do pole **Url** zadejte adresu URL, na kterou chcete odeslat zprávu HTTP. Do textového pole **Záhlaví** zadejte hlavičky HTTP, které mají být odeslány v požadavku.  V **části Tělo**můžete zprávu přizpůsobit pomocí seznamu **Dostupná klíčová slova** pro dynamické vkládání dat výstrah při odeslání zprávy.  **Záhlaví** a **tělo** výchozí datové části XML podobný následující příklad:
+    Do pole **Adresa URL** zadejte adresu URL, na kterou chcete zprávu HTTP odeslat. Do textového pole **Headers (hlavičky** ) zadejte hlavičky protokolu HTTP, které se mají odeslat v žádosti.  V případě **těla**můžete zprávu přizpůsobit pomocí seznamu **dostupná klíčová slova** k dynamickému vkládání dat výstrah při odeslání zprávy.  **Záhlaví** a **tělo** jako výchozí datovou část XML, podobně jako v následujícím příkladu:
     
     ```
     <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
@@ -102,13 +102,13 @@ Tento dokument vysvětluje výstrahy v reálném čase v microsoft azure cdn. Ta
     ```
     
     > [!NOTE]
-    > Oznámení http příspěvku můžete otestovat kliknutím na tlačítko **Oznámení testu,** ale až po uložení konfigurace výstrahy.
+    > Oznámení HTTP POST můžete otestovat kliknutím na tlačítko **testovat oznámení** , ale až po uložení konfigurace výstrahy.
     > 
     > 
-13. Kliknutím na tlačítko **Uložit** uložte konfiguraci výstrah.  Pokud jste v kroku 5 zaškrtli **povolenou výstrahu,** je výstraha nyní aktivní.
+13. Kliknutím na tlačítko **Uložit** uložte konfiguraci upozornění.  Pokud jste v kroku 5 zaškrtli políčko **Výstraha povolená** , vaše výstraha je teď aktivní.
 
 ## <a name="next-steps"></a>Další kroky
 * Analýza [statistik v reálném čase v Azure CDN](cdn-real-time-stats.md)
-* Ponořte se hlouběji pomocí [pokročilých zpráv HTTP](cdn-advanced-http-reports.md)
-* Analýza [vzorců využití](cdn-analyze-usage-patterns.md)
+* Dig hlouběji pomocí [pokročilých sestav http](cdn-advanced-http-reports.md)
+* Analýza [vzorů využití](cdn-analyze-usage-patterns.md)
 

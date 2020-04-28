@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: 297317ff33d88d6390220980ef35f2538579e310
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67174948"
 ---
 ### <a name="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine"></a>Otevření portů TCP v bráně Windows Firewall pro výchozí instanci databázového stroje
 1. Pomocí Vzdálené plochy se připojte k virtuálnímu počítači. Podrobné pokyny pro připojení k virtuálnímu počítači najdete v tématu věnovaném [otevření virtuálního počítače SQL pomocí Vzdálené plochy](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md#remotedesktop).
-2. Po přihlášení zadejte na úvodní obrazovce soubor **WF.msc**a stiskněte klávesu ENTER.
+2. Jakmile se přihlásíte, zadejte na obrazovce Start **WF. msc**a potom stiskněte ENTER.
    
     ![Spuštění programu brány firewall](./media/virtual-machines-sql-server-connection-steps/12Open-WF.png)
 3. V levém panelu okna **Brána Windows Firewall s pokročilým zabezpečením** klikněte pravým tlačítkem na **Příchozí pravidla** a potom v podokně akcí klikněte na **Nové pravidlo**.
@@ -23,7 +23,7 @@ ms.locfileid: "67174948"
 5. V dialogovém okně **Protokol a porty** použijte výchozí nastavení **TCP**. Do pole **Konkrétní místní porty** potom zadejte číslo portu instance databázového stroje (**1433** pro výchozí instanci, nebo vaši volbu pro privátní port vybranou v kroku pro koncový bod).
    
     ![Port 1433 protokolu TCP](./media/virtual-machines-sql-server-connection-steps/14Port-1433.png)
-6. Klikněte na **Další**.
+6. Klikněte na **Další**.
 7. V dialogovém okně **Akce** vyberte **Povolit připojení** a potom klikněte na **Další**.
    
     **Poznámka k zabezpečení:** Výběr nastavení **Povolit připojení, je-li zabezpečené** může zvýšit úroveň zabezpečení. Tuto možnost vyberte, pokud chcete konfigurovat další možnosti zabezpečení ve vašem prostředí.
@@ -55,7 +55,7 @@ Databázový stroj SQL Serveru nemůže používat ověřování systému Window
 1. Zůstaňte připojeni k virtuálnímu počítači a na úvodní stránce zadejte **SQL Server Management Studio** a klikněte na vybranou ikonu.
    
     Při prvním otevření sady Management Studio se musí vytvořit uživatelské prostředí sady Management Studio. Tato operace může chvíli trvat.
-2. Management Studio zobrazí dialogové okno **Připojit k serveru**. Do pole **Název serveru** zadejte název virtuálního počítače, který se má připojit k databázovému stroji s využitím Průzkumníka objektů. (Místo názvu virtuálního počítače můžete také jako **název serveru** použít text **(local)** nebo jednu tečku). Vyberte **ověřování systému Windows**a ponechte ***your_VM_name\your_local_administrator*** v poli **Uživatelské jméno.** Klikněte na **Připojit**.
+2. Management Studio zobrazí dialogové okno **Připojit k serveru**. Do pole **Název serveru** zadejte název virtuálního počítače, který se má připojit k databázovému stroji s využitím Průzkumníka objektů. (Místo názvu virtuálního počítače můžete také jako **název serveru** použít text **(local)** nebo jednu tečku). Vyberte **ověřování systému Windows**a ponechte ***your_VM_name \ Your_local_administrator*** v poli **uživatelské jméno** . Klikněte na **Připojit**.
    
     ![Připojení k serveru](./media/virtual-machines-sql-server-connection-steps/19Connect-to-Server.png)
 3. V Průzkumníku objektů systému SQL Server klikněte pravým tlačítkem na název instance SQL Serveru (název virtuálního počítače) a potom klikněte na **Vlastnosti**.

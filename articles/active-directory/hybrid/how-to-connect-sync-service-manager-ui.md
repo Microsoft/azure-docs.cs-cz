@@ -1,6 +1,6 @@
 ---
-title: 'Synchronizace služby Azure AD Connect: UI správce synchronizačních služeb | Dokumenty společnosti Microsoft'
-description: Principy správce synchronizačních služeb pro Azure AD Connect.
+title: 'Azure AD Connect synchronizace: uživatelské rozhraní Synchronization Service Manager | Microsoft Docs'
+description: Pochopení Synchronization Service Manager Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,25 +18,25 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c3a03b2320caa7facc04f589993907ab9b3a7703
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60381505"
 ---
-# <a name="introduction-to-the-azure-ad-connect-synchronization-service-manager-ui"></a>Úvod do uj.
+# <a name="introduction-to-the-azure-ad-connect-synchronization-service-manager-ui"></a>Úvod do uživatelského rozhraní Azure AD Connect Synchronization Service Manager
 
-![Správce synchronizačních služeb](./media/how-to-connect-sync-service-manager-ui/ssmui.png)
+![Synchronizovat Service Manager](./media/how-to-connect-sync-service-manager-ui/ssmui.png)
 
-Urozhraní **Správce synchronizačních služeb** se používá ke konfiguraci pokročilejších aspektů synchronizačního modulu a k zobrazení provozních aspektů služby.
+Rozhraní **Synchronization Service Manager** se používá ke konfiguraci pokročilejších aspektů synchronizačního modulu a k zobrazení provozních aspektů služby.
 
-Z nabídky Start **spustíte** uj. Má název **Synchronizační služba** a najdete ji ve skupině **Azure AD Connect.**  
-![Správce synchronizačních služeb](./media/how-to-connect-sync-service-manager-ui/startmenu.png)
+Z nabídky Start spustíte **Synchronization Service Manager** uživatelské rozhraní. Nazývá se **synchronizační služba** a dá se najít ve skupině **Azure AD Connect** .  
+![Synchronizovat Service Manager](./media/how-to-connect-sync-service-manager-ui/startmenu.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o uzdu Správce synchronizačních služeb, včetně [karet Operace](how-to-connect-sync-service-manager-ui-operations.md), [Konektory](how-to-connect-sync-service-manager-ui-connectors.md), [Metaverse Designer](how-to-connect-sync-service-manager-ui-mvdesigner.md)a [Metaverse Search.](how-to-connect-sync-service-manager-ui-mvsearch.md)
+Přečtěte si další informace o uživatelském rozhraní Synchronization Service Manager, včetně [operací](how-to-connect-sync-service-manager-ui-operations.md), [konektorů](how-to-connect-sync-service-manager-ui-connectors.md), úložiště [Metaverse designeru](how-to-connect-sync-service-manager-ui-mvdesigner.md)a karet [hledání v úložišti Metaverse](how-to-connect-sync-service-manager-ui-mvsearch.md) .
 
-Přečtěte si další informace o konfiguraci [synchronizace Azure AD Connect.](how-to-connect-sync-whatis.md)
+Přečtěte si další informace o konfiguraci [Azure AD Connect synchronizace](how-to-connect-sync-whatis.md) .
 
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).

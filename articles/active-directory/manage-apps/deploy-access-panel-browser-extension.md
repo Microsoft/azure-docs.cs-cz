@@ -1,6 +1,6 @@
 ---
-title: Nasazení rozšíření přístupového panelu Azure pro ie pomocí objektů skupiny | Dokumenty společnosti Microsoft
-description: Jak použít zásady skupiny k nasazení doplňku aplikace Internet Explorer pro portál Moje aplikace.
+title: Nasazení rozšíření přístupového panelu Azure pro IE pomocí objektu zásad skupiny | Microsoft Docs
+description: Použití zásad skupiny k nasazení doplňku Internet Exploreru pro portál moje aplikace
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,157 +16,157 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 71c342ede77349b3f6c22093e5877ad5f5ce6549
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67807685"
 ---
-# <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Postup: Nasazení rozšíření přístupového panelu pro aplikaci Internet Explorer pomocí zásad skupiny
+# <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Postupy: nasazení rozšíření přístupového panelu pro Internet Explorer pomocí zásad skupiny
 
-Tento kurz ukazuje, jak pomocí zásad skupiny vzdáleně nainstalovat rozšíření přístupového panelu pro aplikaci Internet Explorer do počítačů uživatelů. Toto rozšíření je vyžadováno pro uživatele aplikace Internet Explorer, kteří se potřebují přihlásit k aplikacím, které jsou nakonfigurovány pomocí [jednotného přihlašování založeného na heslech](what-is-single-sign-on.md#password-based-sso).
+V tomto kurzu se dozvíte, jak pomocí zásad skupiny vzdáleně nainstalovat rozšíření přístupového panelu pro Internet Explorer na počítačích uživatelů. Toto rozšíření se vyžaduje pro uživatele Internet Exploreru, kteří se potřebují přihlašovat k aplikacím nakonfigurovaným pomocí [jednotného přihlašování založeného na heslech](what-is-single-sign-on.md#password-based-sso).
 
-Doporučujese, aby správci automatizovali nasazení tohoto rozšíření. V opačném případě musí uživatelé stáhnout a nainstalovat rozšíření sami, což je náchylné k chybě uživatele a vyžaduje oprávnění správce. Tento kurz popisuje jednu metodu automatizace nasazení softwaru pomocí zásad skupiny. [Přečtěte si další informace o zásadách skupiny.](https://technet.microsoft.com/windowsserver/bb310732.aspx)
+Doporučuje správcům automatizovat nasazení tohoto rozšíření. V opačném případě musí uživatelé stáhnout a nainstalovat rozšíření samotné, což je náchylné k chybě uživatele a vyžaduje oprávnění správce. V tomto kurzu se zabývá jedna metoda automatizace nasazení softwaru pomocí zásad skupiny. [Přečtěte si další informace o zásadách skupiny.](https://technet.microsoft.com/windowsserver/bb310732.aspx)
 
-Rozšíření přístupového panelu je k dispozici také pro [Chrome](https://go.microsoft.com/fwLink/?LinkID=311859) a [Firefox](https://go.microsoft.com/fwLink/?LinkID=626998), z nichž ani jedno nevyžaduje oprávnění správce k instalaci.
+Rozšíření přístupového panelu je k dispozici také pro [Chrome](https://go.microsoft.com/fwLink/?LinkID=311859) a [Firefox](https://go.microsoft.com/fwLink/?LinkID=626998), ani když není potřeba instalovat oprávnění správce.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Nastavili jste [službu Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx)a připojili jste počítače uživatelů k doméně.
-* Chcete-li upravit objekt zásad skupiny (GPO), musíte mít oprávnění Upravit nastavení. Ve výchozím nastavení mají členové následujících skupin zabezpečení toto oprávnění: Správci domény, Podnikoví správci a Vlastníci tvůrců zásad skupiny. [Další informace](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
+* Nastavili jste [Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx)a připojili jste počítače uživatelů k vaší doméně.
+* Chcete-li upravit objekt Zásady skupiny (GPO), je nutné mít oprávnění upravit nastavení. Ve výchozím nastavení mají toto oprávnění členové těchto skupin zabezpečení: Domain Administrators, Enterprise Administrators a Zásady skupiny Creator Owners. [Další informace](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
 
 ## <a name="step-1-create-the-distribution-point"></a>Krok 1: Vytvoření distribučního bodu
 
-Nejprve je nutné umístit instalační balíček do síťového umístění, ke kterému mají přístup počítače, na které chcete rozšíření vzdáleně nainstalovat. Postupujte přitom takto:
+Nejdřív je nutné umístit instalační balíček do síťového umístění, ke kterému mají přístup počítače, na kterých chcete vzdáleně nainstalovat rozšíření. Postupujte přitom takto:
 
 1. Přihlaste se k serveru jako správce.
-1. V okně **Správce serveru** přejděte na **Soubory a služby úložiště**.
+1. V okně **Správce serveru** přejdete do části **soubory a služby úložiště**.
 
-    ![Otevřít soubory a služby úložiště](./media/deploy-access-panel-browser-extension/files-services.png)
+    ![Otevřené soubory a služby úložiště](./media/deploy-access-panel-browser-extension/files-services.png)
 
-1. Přejděte na kartu **Sdílené** položky. Pak klikněte na **Úkoly** > **nová sdílená...**
+1. Přejít na kartu **sdílené složky** . Pak klikněte na **úlohy** > **Nová sdílená složka...**
 
-    ![Snímek obrazovky ukazuje, kde najít novou sdílenou položku na obrazovce Úkoly](./media/deploy-access-panel-browser-extension/shares.png)
+    ![Snímek obrazovky s informacemi o tom, kde najít novou sdílenou složku z obrazovky úlohy](./media/deploy-access-panel-browser-extension/shares.png)
 
-1. Dokončete **Průvodce novou sdílenou položkou** a nastavte oprávnění, abyste zajistili, že k němu budete mít přístup z počítačů uživatelů. [Přečtěte si další informace o sdílených sazbě.](https://technet.microsoft.com/library/cc753175.aspx)
-1. Stáhněte si následující balíček Instalační služby systému Microsoft Windows (soubor MSI): [Rozšíření přístupového panelu.msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
+1. Dokončete **Průvodce vytvořením sdílené složky** a nastavte oprávnění, aby bylo zajištěno, že bude možné k němu přicházet z počítačů uživatelů. [Přečtěte si další informace o sdílených složkách.](https://technet.microsoft.com/library/cc753175.aspx)
+1. Stažení následujícího balíčku Microsoft Instalační služba systému Windows (soubor. msi): [přístupového panelu přípona. msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
 1. Zkopírujte instalační balíček do požadovaného umístění ve sdílené složce.
 
-    ![Zkopírování souboru MSI do sdílené složky](./media/deploy-access-panel-browser-extension/copy-package.png)
+    ![Zkopírujte soubor. msi do sdílené složky.](./media/deploy-access-panel-browser-extension/copy-package.png)
 
-1. Ověřte, zda jsou klientské počítače schopny získat přístup k balíčku instalačního programu ze sdílené položky.
+1. Ověřte, že klientské počítače mají přístup k instalačnímu balíčku ze sdílené složky.
 
-## <a name="step-2-create-the-group-policy-object"></a>Krok 2: Vytvoření objektu zásad skupiny
+## <a name="step-2-create-the-group-policy-object"></a>Krok 2: vytvoření objektu zásad skupiny
 
-1. Přihlaste se k serveru, který je hostitelem instalace služby AD DS (Active Directory Domain Services).
-1. Ve Správci serveru přejděte na **nástrojovou** > **správu zásad skupiny**.
+1. Přihlaste se k serveru, který je hostitelem instalace aplikace Active Directory Domain Services (služba AD DS).
+1. V správce serveru přejdete na **nástroje** > **Zásady skupiny Správa**.
 
-    ![Přejít na Nástroje > správa zásad skupiny](./media/deploy-access-panel-browser-extension/tools-gpm.png)
+    ![Přejít na nástroje > Zásady skupiny Management](./media/deploy-access-panel-browser-extension/tools-gpm.png)
 
-1. V levém podokně okna **Správa zásad skupiny** zobrazte hierarchii organizační jednotky (OU) a určete, ve kterém oboru chcete zásady skupiny použít. Můžete se například rozhodnout vybrat malou organizační výhonek, kterou chcete nasadit několika uživatelům k testování, nebo můžete vybrat organizační výučnou aktivitu nejvyšší úrovně, kterou chcete nasadit v celé organizaci.
+1. V levém podokně okna **správy Zásady skupiny** zobrazte hierarchii organizační jednotky (OU) a určete, ve kterém oboru byste chtěli zásady skupiny použít. Například se můžete rozhodnout vybrat malou organizační jednotku, která se má pro testování nasadit na několik uživatelů, nebo můžete vybrat organizační jednotku nejvyšší úrovně pro nasazení do celé organizace.
 
    > [!NOTE]
-   > Chcete-li vytvořit nebo upravit organizační jednotky, přepněte zpět do Správce serveru a přejděte na **nástroj nástroje** > **AD Uživatelé a počítače služby Active Directory**.
+   > Pokud chcete vytvořit nebo upravit organizační jednotky (OU), přepněte zpět na správce serveru a přejděte na **nástroje** > **Uživatelé a počítače služby Active Directory**.
 
-1. Jakmile vyberete ou, klikněte na ni pravým tlačítkem myši a v této doméně vyberte **Vytvořit objekt skupiny a propojte ji zde...**
+1. Po výběru organizační jednotky klikněte na ni pravým tlačítkem myši a vyberte **vytvořit objekt zásad skupiny v této doméně a propojit jej sem...**
 
-    ![Snímek obrazovky zobrazuje možnost Vytvořit nový gpo](./media/deploy-access-panel-browser-extension/create-gpo.png)
+    ![Snímek obrazovky se zobrazením možnosti vytvořit nový objekt zásad skupiny](./media/deploy-access-panel-browser-extension/create-gpo.png)
 
-1. Do výzvy **Nový objekt zásad skupiny** zadejte název nového objektu zásad skupiny.
-1. Klikněte pravým tlačítkem myši na objekt zásad skupiny, který jste vytvořili, a vyberte **upravit**.
+1. Do příkazového řádku **Nový objekt zásad skupiny** zadejte název nového objektu Zásady skupiny.
+1. Klikněte pravým tlačítkem na objekt Zásady skupiny, který jste vytvořili, a vyberte **Upravit**.
 
-## <a name="step-3-assign-the-installation-package"></a>Krok 3: Přiřazení instalačního balíčku
+## <a name="step-3-assign-the-installation-package"></a>Krok 3: přiřazení instalačního balíčku
 
-1. Určete, zda chcete rozšíření nasadit na základě **konfigurace počítače** nebo **konfigurace uživatele**. Při použití [konfigurace počítače](https://technet.microsoft.com/library/cc736413%28v=ws.10%29.aspx)je rozšíření nainstalováno v počítači bez ohledu na to, kteří uživatelé se k němu přihlašují. Při [konfiguraci uživatele](https://technet.microsoft.com/library/cc781953%28v=ws.10%29.aspx)mají uživatelé pro ně nainstalováno rozšíření bez ohledu na to, ke kterým počítačům se přihlašují.
-1. V levém podokně okna **Editor správy zásad skupiny** přejděte na jednu z následujících cest složek podle toho, jaký typ konfigurace jste zvolili:
+1. Určete, zda chcete rozšíření nasadit na základě **Konfigurace počítače** nebo **Konfigurace uživatele**. Při použití [Konfigurace počítače](https://technet.microsoft.com/library/cc736413%28v=ws.10%29.aspx)se rozšíření nainstaluje na počítač bez ohledu na to, kteří uživatelé se k němu přihlásí. V případě [Konfigurace uživatele](https://technet.microsoft.com/library/cc781953%28v=ws.10%29.aspx)mají uživatelé nainstalované rozšíření pro ně bez ohledu na to, k jakým počítačům se přihlašuje.
+1. V levém podokně okna **Editor pro správu zásad skupiny** v závislosti na zvoleném typu konfigurace přejít na jednu z následujících cest ke složkám:
 
    * `Computer Configuration/Policies/Software Settings/`
    * `User Configuration/Policies/Software Settings/`
 
-1. Klepněte pravým tlačítkem myši na **instalaci softwaru**a vyberte **možnost Nový** > **balíček...**
-1. Přejděte do sdílené složky obsahující balíček instalačního programu z [kroku 1: Vytvořte distribuční bod](#step-1-create-the-distribution-point), vyberte soubor MSI a klepněte na tlačítko **Otevřít**.
+1. Klikněte pravým tlačítkem na **Instalace softwaru**a pak vyberte **Nový** > **balíček...**
+1. Přejděte do sdílené složky, která obsahuje instalační balíček z [kroku 1: vytvořte distribuční bod](#step-1-create-the-distribution-point), vyberte soubor. msi a klikněte na tlačítko **otevřít**.
 
    > [!IMPORTANT]
-   > Pokud je sdílená složka umístěna na stejném serveru, ověřte, zda přistupujete k msi prostřednictvím cesty k síťovému souboru, nikoli k místní cestě k souboru.
+   > Pokud se sdílená složka nachází na stejném serveru, ověřte, že k souboru. msi přistupuje přes cestu k síťovému souboru, a ne k místní cestě k souboru.
 
-    ![Výběr instalačního balíčku ze sdílené složky](./media/deploy-access-panel-browser-extension/select-package.png)
+    ![Vyberte instalační balíček ze sdílené složky.](./media/deploy-access-panel-browser-extension/select-package.png)
 
-1. V **poruce Nasazení softwaru** vyberte **Přiřazeno** pro metodu nasazení. Pak klikněte na **OK**.
+1. V příkazovém řádku **nasadit software** vyberte **přiřazeno** pro metodu nasazení. Pak klikněte na **OK**.
 
-Rozšíření je nyní nasazeno do hlavní výužky, kterou jste vybrali. [Přečtěte si další informace o instalaci softwaru zásad skupiny.](https://technet.microsoft.com/library/cc738858%28v=ws.10%29.aspx)
+Rozšíření je nyní nasazeno do organizační jednotky, kterou jste vybrali. [Přečtěte si další informace o Zásady skupiny pro instalaci softwaru.](https://technet.microsoft.com/library/cc738858%28v=ws.10%29.aspx)
 
-## <a name="step-4-auto-enable-the-extension-for-internet-explorer"></a>Krok 4: Automatické povolení rozšíření pro Internet Explorer
+## <a name="step-4-auto-enable-the-extension-for-internet-explorer"></a>Krok 4: automatické povolení rozšíření pro Internet Explorer
 
-Kromě spuštění instalačního programu musí být před použitím explicitně povolena všechna rozšíření pro aplikaci Internet Explorer. Chcete-li rozšíření přístupového panelu povolit pomocí zásad skupiny, postupujte podle následujících kroků:
+Kromě spuštění instalačního programu musí být každé rozšíření pro Internet Explorer explicitně povoleno, aby bylo možné ho použít. Pomocí následujících kroků Povolte rozšíření přístupového panelu pomocí zásad skupiny:
 
-1. V okně **Editor správy zásad skupiny** přejděte na jednu z následujících cest v závislosti na typu konfigurace, kterou jste zvolili v [kroku 3: Přiřazení instalačního balíčku](#step-3-assign-the-installation-package):
+1. V okně **Editor pro správu zásad skupiny** v závislosti na typu konfigurace, který jste zvolili v kroku 3, přejít na kteroukoli z následujících cest: [přiřazení instalačního balíčku](#step-3-assign-the-installation-package):
 
    * `Computer Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
    * `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
 
-1. Klepněte pravým tlačítkem myši na **seznam doplňků**a vyberte příkaz **Upravit**.
+1. Klikněte pravým tlačítkem na **seznam doplňků**a vyberte **Upravit**.
 
-    ![Klikněte pravým tlačítkem na "Seznam doplňků" a vyberte "Upravit"](./media/deploy-access-panel-browser-extension/edit-add-on-list.png)
+    ![Klikněte pravým tlačítkem na seznam doplňků a vyberte Upravit.](./media/deploy-access-panel-browser-extension/edit-add-on-list.png)
 
-1. V okně **Seznam doplňků** vyberte **Možnost Povoleno**. Potom v části **Možnosti** klikněte na **Zobrazit...**.
+1. V okně se **seznamem doplňků** vyberte **povoleno**. Pak v části **Možnosti** klikněte na **Zobrazit...**.
 
-    ![Klikněte na Povolit a potom na Zobrazit...](./media/deploy-access-panel-browser-extension/edit-add-on-list-window.png)
+    ![Klikněte na povolit a pak na zobrazit...](./media/deploy-access-panel-browser-extension/edit-add-on-list-window.png)
 
 1. V okně **Zobrazit obsah** proveďte následující kroky:
 
-   1. Pro první sloupec (pole **Název hodnoty)** zkopírujte a vložte následující ID třídy:`{030E9A3F-7B18-4122-9A60-B87235E4F59E}`
-   1. Pro druhý sloupec (pole **Hodnota)** zadejte následující hodnotu:`1`
-   1. Klepnutím na **tlačítko OK** zavřete okno **Zobrazit obsah.**
+   1. Do prvního sloupce (pole **název hodnoty** ) zkopírujte a vložte následující ID třídy:`{030E9A3F-7B18-4122-9A60-B87235E4F59E}`
+   1. Pro druhý sloupec (pole **hodnota** ) zadejte následující hodnotu:`1`
+   1. Kliknutím na tlačítko **OK** zavřete okno **Zobrazit obsah** .
 
-      ![Vyplnění hodnot určených v předchozím kroku](./media/deploy-access-panel-browser-extension/show-contents.png)
+      ![Vyplňte hodnoty uvedené v předchozím kroku.](./media/deploy-access-panel-browser-extension/show-contents.png)
 
-1. Klepnutím na **tlačítko OK** aplikujte změny a zavřete okno **Seznam doplňků.**
+1. Kliknutím na tlačítko **OK** změny aplikujte a zavřete okno **seznam doplňků** .
 
-Rozšíření by nyní mělo být povoleno pro počítače ve vybrané hlavní výměře. [Přečtěte si další informace o povolení nebo zakázání doplňků aplikace Internet Explorer pomocí zásad skupiny.](https://technet.microsoft.com/library/dn454941.aspx)
+Rozšíření by teď mělo být povolené pro počítače ve vybrané organizační jednotce. [Další informace o použití zásad skupiny k povolení nebo zakázání doplňků v aplikaci Internet Explorer.](https://technet.microsoft.com/library/dn454941.aspx)
 
-## <a name="step-5-optional-disable-remember-password-prompt"></a>Krok 5 (nepovinné): Zakázat výzvu "Zapamatovat heslo"
+## <a name="step-5-optional-disable-remember-password-prompt"></a>Krok 5 (volitelné): vypnutí výzvy zapamatování hesla
 
-Když se uživatelé přihlašují k webům pomocí rozšíření přístupového panelu, může aplikace Internet Explorer zobrazit následující výzvu s dotazem" Chcete uložit heslo?"
+Když se uživatelé přihlásí k webům pomocí rozšíření přístupového panelu, může aplikace Internet Explorer zobrazit následující výzvu s dotazem "Přejete si uložit heslo?"
 
-![Zobrazuje "Chcete uložit heslo..." Výzva](./media/deploy-access-panel-browser-extension/remember-password-prompt.png)
+![Ukazuje, jak chcete uložit heslo... výzv](./media/deploy-access-panel-browser-extension/remember-password-prompt.png)
 
-Chcete-li uživatelům zabránit v zobrazení této výzvy, postupujte podle následujících kroků a zapamatujte te si hesla:
+Pokud chcete uživatelům zabránit v zobrazení této výzvy, postupujte podle následujících kroků, abyste zabránili automatickému dokončení hesla při zapamatování hesla:
 
-1. V okně **Editor správy zásad skupiny** přejděte na níže uvedenou cestu. Toto nastavení konfigurace je k dispozici pouze v části **Konfigurace uživatele**.
+1. V okně **Editor pro správu zásad skupiny** přejít na níže uvedenou cestu. Toto nastavení konfigurace je dostupné pouze v části **Konfigurace uživatele**.
 
    * `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/`
-1. Najít nastavení s názvem **Zapnout funkci automatického dokončování pro uživatelská jména a hesla ve formulářích**.
+1. Vyhledejte nastavení s názvem **zapnout funkci automatického dokončování pro uživatelská jména a hesla ve formulářích**.
 
    > [!NOTE]
-   > Předchozí verze služby Active Directory mohou toto nastavení uvést pod názvem **Nepovolit automatické dokončování ukládání hesel**. Konfigurace pro toto nastavení se liší od nastavení popsaného v tomto kurzu.
+   > Předchozí verze služby Active Directory můžou vypsat toto nastavení s názvem **Nepovolit automatické dokončování pro ukládání hesel**. Konfigurace tohoto nastavení se liší od nastavení popsaných v tomto kurzu.
 
-    ![Nezapomeňte se podívat na to v nastavení uživatele](./media/deploy-access-panel-browser-extension/disable-auto-complete.png)
+    ![Nezapomeňte to najít v části Uživatelská nastavení.](./media/deploy-access-panel-browser-extension/disable-auto-complete.png)
 
-1. Klepněte pravým tlačítkem myši na výše uvedené nastavení a vyberte **příkaz Upravit**.
-1. V okně s názvem **Zapnout funkci automatického dokončování uživatelských jmen a hesel ve formulářích**vyberte **Možnost Zakázáno**.
+1. Klikněte pravým tlačítkem na výše uvedené nastavení a vyberte **Upravit**.
+1. V okně s názvem **zapnout funkci automatického dokončování pro uživatelská jména a hesla ve formulářích**vyberte **zakázáno**.
 
-    ![Vyberte možnost "Zakázáno" pro funkci automatického dokončování zapnutí](./media/deploy-access-panel-browser-extension/disable-passwords.png)
+    ![Vyberte možnost disabled pro funkci zapnout automatické dokončování.](./media/deploy-access-panel-browser-extension/disable-passwords.png)
 
-1. Klepnutím na **tlačítko OK** tyto změny aplikujte a zavřete okno.
+1. Kliknutím na tlačítko **OK** aplikujte tyto změny a zavřete okno.
 
-Uživatelé již nebudou moci ukládat svá pověření ani používat automatické dokončování pro přístup k dříve uloženým přihlašovacím údajům. Tato zásada však umožňuje uživatelům nadále používat automatické dokončování pro jiné typy polí formuláře, jako jsou například vyhledávací pole.
+Uživatelé už nebudou moct ukládat svoje přihlašovací údaje ani používat automatické dokončování pro přístup k dříve uloženým přihlašovacím údajům. Tato zásada ale uživatelům umožní i nadále používat automatické dokončování pro jiné typy polí formuláře, například vyhledávací pole.
 
 > [!WARNING]
-> Pokud je tato zásada povolena poté, co se *not* uživatelé rozhodli uložit některá pověření, tato zásada nevymaže pověření, která již byla uložena.
+> Pokud je tato zásada povolená, když se uživatelé budou chtít ukládat nějaké přihlašovací údaje, tato zásada *nevymaže přihlašovací* údaje, které už jsou uložené.
 
-## <a name="step-6-testing-the-deployment"></a>Krok 6: Testování nasazení
+## <a name="step-6-testing-the-deployment"></a>Krok 6: testování nasazení
 
-Podle následujících kroků ověřte, jestli bylo nasazení rozšíření úspěšné:
+Postupujte podle následujících kroků a ověřte, zda nasazení rozšíření bylo úspěšné:
 
-1. Pokud jste nasadili pomocí **konfigurace počítače**, přihlaste se ke klientském počítači, který patří k hlavní pracovní pouzdravé aktivitě vybrané v [kroku 2: Vytvoření objektu zásad skupiny](#step-2-create-the-group-policy-object). Pokud jste nasadili pomocí **konfigurace uživatele**, ujistěte se, že se přihlásit jako uživatel, který patří do této ou.
-1. Může trvat několik přihlášení pro změny zásad skupiny plně aktualizovat s tímto počítačem. Chcete-li aktualizaci vynutit, otevřete okno **příkazového řádku** a spusťte následující příkaz:`gpupdate /force`
-1. Chcete-li provést instalaci, je nutné restartovat počítač. Bootup může trvat podstatně déle než obvykle při instalaci rozšíření.
-1. Po restartování otevřete **aplikaci Internet Explorer**. V pravém horním rohu okna klikněte na **Nástroje** (ikona ozubeného kola) a potom vyberte **Spravovat doplňky**.
-1. V okně **Spravovat doplňky** ověřte, zda bylo **nainstalováno rozšíření přístupového panelu** a zda bylo jeho **stav** nastaven na **hodnotu Povoleno**.
+1. Pokud jste nasadili pomocí **Konfigurace počítače**, přihlaste se ke klientskému počítači, který patří do organizační jednotky, kterou jste vybrali v [kroku 2: vytvoření objektu Zásady skupiny](#step-2-create-the-group-policy-object). Pokud jste nasadili pomocí **Konfigurace uživatele**, nezapomeňte se přihlásit jako uživatel, který patří do této organizační jednotky.
+1. Může trvat několik přihlášení, aby se změny zásad skupiny plně aktualizovaly s tímto počítačem. Pokud chcete tuto aktualizaci vynutit, otevřete okno **příkazového řádku** a spusťte následující příkaz:`gpupdate /force`
+1. Je nutné restartovat počítač, aby se instalace mohla uskutečnit. Spouštění může trvat delší dobu než obvykle při instalaci rozšíření.
+1. Po restartování spusťte **aplikaci Internet Explorer**. V pravém horním rohu okna klikněte na **nástroje** (ikona ozubeného kolečka) a pak vyberte **Spravovat doplňky**.
+1. V okně **Spravovat doplňky** ověřte, že je nainstalované **rozšíření přístupového panelu** a že jeho **stav** je nastavené na **povoleno**.
 
-   ![Ověření, zda je nainstalováno a povoleno rozšíření přístupového panelu](./media/deploy-access-panel-browser-extension/verify-install.png)
+   ![Ověřte, že je nainstalované a povolené rozšíření přístupového panelu.](./media/deploy-access-panel-browser-extension/verify-install.png)
 
 ## <a name="learn-more"></a>Další informace
 
-* [Přístup k aplikacím a jednotné přihlašování pomocí služby Azure Active Directory](what-is-single-sign-on.md)
-* [Poradce při potížích s rozšířením přístupového panelu pro aplikaci Internet Explorer](manage-access-panel-browser-extension.md)
+* [Přístup k aplikaci a jednotné přihlašování pomocí Azure Active Directory](what-is-single-sign-on.md)
+* [Řešení potíží s rozšířením přístupového panelu pro Internet Explorer](manage-access-panel-browser-extension.md)

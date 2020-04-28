@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 54cf1ba9648625e843ca6f4d9244c25d2d55d878
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67174683"
 ---
 > [!TIP]
 > 
-> Spravujte prostředky úložiště objektů blob Azure pomocí Azure Storage Explorer. 
-> [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) je bezplatná samostatná aplikace od Microsoftu, která umožňuje [spravovat prostředky úložiště Objektů blob Azure](../articles/vs-azure-tools-storage-explorer-blobs.md). Pomocí Průzkumníka azure storage můžete vizuálně vytvářet, číst, aktualizovat a odstraňovat kontejnery objektů blob a objekty BLOB a spravovat přístup k kontejnerům objektů BLOB a objektům BLOB.
+> Správa prostředků Azure Blob Storage pomocí Průzkumník služby Azure Storage. 
+> [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) je bezplatná samostatná aplikace od Microsoftu, která umožňuje [spravovat prostředky služby Azure Blob Storage](../articles/vs-azure-tools-storage-explorer-blobs.md). Pomocí Průzkumník služby Azure Storage můžete vizuálně vytvářet, číst, aktualizovat a odstraňovat kontejnery objektů BLOB a objekty BLOB a také spravovat přístup ke kontejnerům objektů BLOB a objektům blob.
 
 

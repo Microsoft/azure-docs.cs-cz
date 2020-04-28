@@ -1,6 +1,6 @@
 ---
-title: Poradce při potížích s rozšířením přístupového panelu Azure pro aplikaci IE | Dokumenty společnosti Microsoft
-description: Jak použít zásady skupiny k nasazení doplňku aplikace Internet Explorer pro portál Moje aplikace.
+title: Řešení potíží s rozšířením přístupového panelu Azure pro IE | Microsoft Docs
+description: Použití zásad skupiny k nasazení doplňku Internet Exploreru pro portál moje aplikace
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,71 +17,71 @@ ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a0269c87572e2a9242a54491103ae0fcc3637518
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67723917"
 ---
-# <a name="troubleshoot-the-access-panel-extension-for-internet-explorer"></a>Poradce při potížích s rozšířením přístupového panelu pro aplikaci Internet Explorer
+# <a name="troubleshoot-the-access-panel-extension-for-internet-explorer"></a>Řešení potíží s rozšířením přístupového panelu pro Internet Explorer
 
 Tento článek vám pomůže vyřešit následující problémy:
 
-* Při používání Internet Exploreru nemůžete přistupovat k aplikacím prostřednictvím portálu Moje aplikace.
-* Zobrazí se zpráva Instalovat software, i když jste software již nainstalovali.
+* Pomocí aplikace Internet Explorer nemůžete k vašim aplikacím přistupovat prostřednictvím portálu moje aplikace.
+* Zobrazí se zpráva o instalaci softwaru, i když jste už software nainstalovali.
 
-Pokud jste správce, přečtěte si informace [o tom, jak nasadit rozšíření přístupového panelu pro aplikaci Internet Explorer pomocí zásad skupiny](deploy-access-panel-browser-extension.md).
+Pokud jste správce, přečtěte si téma [nasazení rozšíření přístupového panelu pro Internet Explorer pomocí Zásady skupiny](deploy-access-panel-browser-extension.md).
 
 ## <a name="run-the-diagnostic-tool"></a>Spuštění diagnostického nástroje
 
-Problémy s instalací rozšíření přístupového panelu můžete diagnostikovat stažením a spuštěním diagnostického nástroje přístupového panelu. 
+Problémy s instalací můžete diagnostikovat pomocí rozšíření přístupového panelu stažením a spuštěním diagnostického nástroje přístupového panelu. 
 
 Stažení a instalace diagnostického nástroje:
 
-1. [Vyberte tento odkaz a stáhněte diagnostický nástroj.](https://account.activedirectory.windowsazure.com/applications/AccessPanelExtensionDiagnosticTool/AccessPanelExtensionDiagnosticTool.zip)
+1. [Pro stažení diagnostického nástroje vyberte tento odkaz.](https://account.activedirectory.windowsazure.com/applications/AccessPanelExtensionDiagnosticTool/AccessPanelExtensionDiagnosticTool.zip)
 1. Otevřete soubor a extrahujte obsah do počítače.
-1. Chcete-li nástroj spustit, klepněte pravým tlačítkem myši na soubor s názvem *AccessPanelExtensionDiagnosticTool.js* a vyberte příkaz **Otevřít pomocí** > **hostitele skriptů založených na systému Microsoft Windows .**
+1. Chcete-li spustit nástroj, klikněte pravým tlačítkem myši na soubor s názvem *AccessPanelExtensionDiagnosticTool. js* a vyberte možnost **otevřít v rámci** > programu**Script Host založený na systému Microsoft Windows**.
 
-    ![Otevřít s > windows založené ho script host](./media/manage-access-panel-browser-extension/open-access-panel-extension-diagnostic-tool.png)
+    ![Otevřít pomocí > hostitele skriptu založeného na systému Microsoft Windows](./media/manage-access-panel-browser-extension/open-access-panel-extension-diagnostic-tool.png)
 
-1. Zkontrolujte výsledky diagnostiky, které se zobrazí, a vyberte **Ano,** abyste problémy opravili. Zobrazí se dialogové okno **Zkontrolovat výsledky** s informacemi o tom, co dělat, když rozšíření nefunguje.  
+1. Zkontrolujte výsledky diagnostiky, které se zobrazí, a pokud chcete problémy vyřešit, vyberte **Ano** . Zobrazí se dialogové okno **výsledky kontroly** s informacemi o tom, co dělat, pokud rozšíření nefunguje.  
 1. Přečtěte si zprávu a vyberte **OK**.
 
-## <a name="check-that-the-access-panel-extension-is-enabled"></a>Kontrola, zda je povoleno rozšíření přístupového panelu
+## <a name="check-that-the-access-panel-extension-is-enabled"></a>Ověřte, že je povolené rozšíření přístupového panelu.
 
-Ověření, zda jste v aplikaci Internet Explorer povolili rozšíření přístupového panelu:
+Chcete-li ověřit, zda jste povolili rozšíření přístupového panelu v aplikaci Internet Explorer:
 
-1. V aplikaci Internet Explorer vyberte **ikonu Ozubená zařízení** v pravém horním rohu okna a vyberte **možnosti Internetu**.
-1. Přejděte na kartu **Programy** a vyberte **Spravovat doplňky**.
-1. V části Microsoft **Corporation** vyberte **Možnost Rozšíření přístupového panelu** a vyberte **Povolit**.
-1. Chcete-li změny uložit, zavřete všechna otevřená okna prohlížeče Internet Explorer. Změna se projeví při příštím spuštění aplikace Internet Explorer.
+1. V Internet Exploreru vyberte **ikonu ozubeného kolečka** v pravém horním rohu okna a vyberte **Možnosti Internetu**.
+1. Přejít na kartu **programy** a vyberte **Spravovat doplňky**.
+1. V části **Microsoft Corporation** vyberte **rozšíření přístupového panelu** a vyberte **Povolit**.
+1. Chcete-li uložit změny, zavřete všechna okna prohlížeče Internet Explorer, která jste otevřeli. Změna se projeví při příštím spuštění aplikace Internet Explorer.
 
-## <a name="enable-extensions-for-inprivate-browsing"></a>Povolení rozšíření pro procházení inprivate
+## <a name="enable-extensions-for-inprivate-browsing"></a>Povolit rozšíření pro procházení InPrivate
 
-Povolení rozšíření pro procházení inprivate:
+Povolení rozšíření pro procházení InPrivate:
 
-1. V aplikaci Internet Explorer vyberte **ikonu Ozubená zařízení** v pravém horním rohu okna a vyberte **možnosti Internetu**.
-1. Přejděte na kartu **Ochrana osobních údajů** a ověřte, zda je zaškrtnutí políčka **Zakázat panely nástrojů a rozšíření při spuštění procházení inprivate.**
-1. Chcete-li změny uložit, zavřete všechna otevřená okna prohlížeče Internet Explorer. Změna se projeví při příštím spuštění aplikace Internet Explorer.
+1. V Internet Exploreru vyberte **ikonu ozubeného kolečka** v pravém horním rohu okna a vyberte **Možnosti Internetu**.
+1. Přejděte na kartu **soukromí** a ověřte, že zaškrtávací políčko **Zakázat panely nástrojů a rozšíření, když se spustí procházení InPrivate** .
+1. Chcete-li uložit změny, zavřete všechna okna prohlížeče Internet Explorer, která jste otevřeli. Změna se projeví při příštím spuštění aplikace Internet Explorer.
 
 ## <a name="uninstall-the-access-panel-extension"></a>Odinstalace rozšíření přístupového panelu
 
-Jak odinstalovat rozšíření přístupového panelu z počítače:
+Odinstalace rozšíření přístupového panelu z počítače:
 
-1. V Ovládacích panelech vyhledejte možnost *Odinstalovat*.
+1. V Ovládacích panelech vyhledejte *odinstalaci*.
 1. Ve výsledcích hledání vyberte **Odinstalovat program**.
 
-    ![V ovládacím panelu vyberte možnost Odinstalovat program.](./media/manage-access-panel-browser-extension/uninstall-program-control-panel.png)
+    ![V Ovládacích panelech vyberte možnost odinstalovat program.](./media/manage-access-panel-browser-extension/uninstall-program-control-panel.png)
 
-1. V seznamu vyberte **Rozšíření přístupového panelu** a vyberte **Odinstalovat**.
+1. V seznamu vyberte možnost **rozšíření přístupového panelu** a vyberte možnost **odinstalovat**.
 
     ![Odinstalace rozšíření přístupového panelu](./media/manage-access-panel-browser-extension/uninstall-access-panel-extension.png)
 
-1. Potom můžete zkusit nainstalovat rozšíření znovu a zjistěte, zda byl problém vyřešen.
+1. Pak se můžete pokusit nainstalovat rozšíření znovu, abyste viděli, zda byl problém vyřešen.
 
-Pokud narazíte na problémy s odinstalací rozšíření, můžete ho také odebrat pomocí nástroje [Microsoft Fix It.](https://go.microsoft.com/?linkid=9779673)
+Pokud narazíte na problémy s odinstalací rozšíření, můžete ho taky odebrat pomocí nástroje [Microsoft Fix it](https://go.microsoft.com/?linkid=9779673) .
 
 ## <a name="related-articles"></a>Související články
 
-* [Přístup k aplikacím a jednotné přihlašování pomocí služby Azure Active Directory](what-is-single-sign-on.md)
-* [Jak nasadit rozšíření přístupového panelu pro aplikaci Internet Explorer pomocí zásad skupiny](deploy-access-panel-browser-extension.md)
+* [Přístup k aplikaci a jednotné přihlašování pomocí Azure Active Directory](what-is-single-sign-on.md)
+* [Nasazení rozšíření přístupového panelu pro Internet Explorer pomocí Zásady skupiny](deploy-access-panel-browser-extension.md)

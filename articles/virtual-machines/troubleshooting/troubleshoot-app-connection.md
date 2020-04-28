@@ -1,13 +1,13 @@
 ---
-title: Poradce při potížích s přístupem k aplikacím virtuálních aplikací v Azure | Dokumenty společnosti Microsoft
-description: Pomocí těchto podrobných kroků pro řešení potíží můžete izolovat problémy při připojování k aplikacím spuštěným na virtuálních počítačích v Azure.
+title: Řešení potíží s přístupem k aplikacím VM v Azure | Microsoft Docs
+description: Pomocí těchto podrobných kroků pro řešení potíží izolujte problémy při připojování k aplikacím běžícím na virtuálních počítačích v Azure.
 services: virtual-machines
 documentationcenter: ''
 author: genlin
 manager: dcscontentpm
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
-keywords: nelze spustit aplikaci, program se neotevře, naslouchací port je blokován, nelze spustit program, blokovat port pro poslech
+keywords: nelze spustit aplikaci, program nebude otevřen, blokovaný port zablokován, nelze spustit program, port naslouchání zablokován
 ms.assetid: b9ff7cd0-0c5d-4c3c-a6be-3ac47abf31ba
 ms.service: virtual-machines
 ms.workload: infrastructure-services
@@ -16,133 +16,133 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: caf73ffbc18a603ace22acfbd0da490048da698a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71058122"
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>Řešení potíží s připojením aplikace na virtuálních počítačích v Azure
 
-Existují různé důvody, proč se nejde spustit nebo se připojit k aplikaci spuštěné na virtuálním počítači Azure (VM). Důvody zahrnují aplikace není spuštěna nebo naslouchání na očekávané porty, naslouchání port blokován nebo pravidla sítě není správně předávání přenosů do aplikace. Tento článek popisuje metodický přístup k nalezení a opravě problému.
+Pokud nemůžete spustit aplikaci spuštěnou na virtuálním počítači Azure nebo se k ní připojit, máte k dispozici různé důvody. Důvody zahrnují, že aplikace neběží nebo naslouchá na očekávaných portech, naslouchajícímu portu blokováno nebo Síťová pravidla nemusejí správně předávat provoz do aplikace. Tento článek popisuje přístup metodologick k vyhledání a vyřešení problému.
 
-Pokud máte problémy s připojením k virtuálnímu počítači pomocí RDP nebo SSH, podívejte se nejprve na jeden z následujících článků:
+Pokud máte problémy s připojením k VIRTUÁLNÍmu počítači pomocí protokolu RDP nebo SSH, přečtěte si jeden z následujících článků jako první:
 
-* [Poradce při potížích s připojením ke vzdálené ploše k virtuálnímu počítači Azure založenému na Windows](troubleshoot-rdp-connection.md)
-* [Poradce při potížích s připojením zabezpečeného prostředí (SSH) k virtuálnímu počítači Azure založenému na Linuxu](troubleshoot-ssh-connection.md).
+* [Řešení potíží s připojením ke vzdálené ploše na virtuálním počítači Azure se systémem Windows](troubleshoot-rdp-connection.md)
+* [Řešení potíží s připojením Secure Shell (SSH) k virtuálnímu počítači Azure](troubleshoot-ssh-connection.md)se systémem Linux.
 
-Pokud potřebujete další pomoc v libovolném bodě v tomto článku, můžete kontaktovat odborníky Azure na [MSDN Azure a zásobníku přetečení fóra](https://azure.microsoft.com/support/forums/). Případně můžete také soubor incidentu podpory Azure. Přejděte na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte Získat **podporu**.
+Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete se obrátit na odborníky na Azure na [webu MSDN Azure a ve Stack Overflowch fórech](https://azure.microsoft.com/support/forums/). Případně můžete také použít incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
 
-## <a name="quick-start-troubleshooting-steps"></a>Postup řešení potíží s rychlým spuštěním
-Pokud máte problémy s připojením k aplikaci, vyzkoušejte následující obecné kroky řešení potíží. Po každém kroku zkuste připojit k aplikaci znovu:
+## <a name="quick-start-troubleshooting-steps"></a>Postup řešení potíží s rychlým zahájením
+Pokud máte problémy s připojením k aplikaci, zkuste následující obecné kroky pro řešení potíží. Po každém kroku se znovu pokuste připojit k aplikaci:
 
 * Restartování virtuálního počítače
-* Znovu vytvořit pravidla koncového bodu / brány firewall / pravidla skupiny zabezpečení sítě (NSG)
-  * [Model Správce prostředků – správa skupin zabezpečení sítě](../../virtual-network/manage-network-security-group.md)
-  * [Klasický model – Správa koncových bodů cloudových služeb](../../cloud-services/cloud-services-enable-communication-role-instances.md)
+* Opětovné vytvoření pravidel koncového bodu/brány firewall/skupiny zabezpečení sítě (NSG)
+  * [Model Správce prostředků – Správa skupin zabezpečení sítě](../../virtual-network/manage-network-security-group.md)
+  * [Klasický model – správa koncových bodů Cloud Services](../../cloud-services/cloud-services-enable-communication-role-instances.md)
 * Připojení z jiného umístění, například z jiné virtuální sítě Azure
 * Opětovné nasazení virtuálního počítače
-  * [Opětovné nasazení virtuálního aplikace pro Windows](redeploy-to-new-node-windows.md)
-  * [Opětovné nasazení virtuálního počítače s Linuxem](redeploy-to-new-node-linux.md)
-* Opětovné vytvoření virtuálního počítače
+  * [Znovu nasadit virtuální počítač s Windows](redeploy-to-new-node-windows.md)
+  * [Znovu nasadit virtuální počítač se systémem Linux](redeploy-to-new-node-linux.md)
+* Znovu vytvořit virtuální počítač
 
-Další informace naleznete [v tématu Poradce při potížích s připojením koncového bodu (RDP/SSH/HTTP atd. selhání)](https://social.msdn.microsoft.com/Forums/azure/en-US/538a8f18-7c1f-4d6e-b81c-70c00e25c93d/troubleshooting-endpoint-connectivity-rdpsshhttp-etc-failures?forum=WAVirtualMachinesforWindows).
+Další informace najdete v tématu [řešení potíží s připojením koncových bodů (RDP/SSH/http atd.)](https://social.msdn.microsoft.com/Forums/azure/en-US/538a8f18-7c1f-4d6e-b81c-70c00e25c93d/troubleshooting-endpoint-connectivity-rdpsshhttp-etc-failures?forum=WAVirtualMachinesforWindows).
 
 ## <a name="detailed-troubleshooting-overview"></a>Podrobný přehled řešení potíží
-Existují čtyři hlavní oblasti řešení potíží s přístupem k aplikaci, která běží na virtuálním počítači Azure.
+Existují čtyři hlavní oblasti pro řešení potíží s přístupem k aplikaci, která běží na virtuálním počítači Azure.
 
-![Poradce při potížích nelze spustit aplikaci](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access1.png)
+![řešení potíží nemůže spustit aplikaci](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access1.png)
 
 1. Aplikace spuštěná na virtuálním počítači Azure.
-   * Je samotná aplikace spuštěna správně?
+   * Běží aplikace správně?
 2. Virtuální počítač Azure.
-   * Je samotný virtuální virtuální hotel správně spuštěn a reaguje na požadavky?
+   * Spouští se virtuální počítač správně a reaguje na požadavky?
 3. Koncové body sítě Azure.
-   * Koncové body cloudové služby pro virtuální počítače v modelu klasického nasazení.
-   * Skupiny zabezpečení sítě a příchozí pravidla naváděcí ho programu NAT pro virtuální počítače v modelu nasazení Správce prostředků.
-   * Může přenos toku od uživatelů do virtuálního počítačů/aplikace na očekávané porty?
-4. Zařízení edge internetu.
-   * Jsou pravidla brány firewall na místě brání provoz z tekoucí správně?
+   * Koncové body cloudových služeb pro virtuální počítače v modelu nasazení Classic.
+   * Skupiny zabezpečení sítě a příchozí pravidla NAT pro virtuální počítače v modelu nasazení Správce prostředků.
+   * Může přenos toků z uživatelů do virtuálního počítače nebo aplikace na očekávaných portech?
+4. Vaše zařízení Internet Edge.
+   * Jsou pravidla brány firewall na místě, která brání správnému přenosu dat ze služby Flow?
 
-Pro klientské počítače, které přistupují k aplikaci přes síť VPN nebo ExpressRoute připojení, hlavní oblasti, které mohou způsobit problémy, jsou aplikace a virtuální počítač Azure.
+Pro klientské počítače, které přistupují k aplikaci přes připojení VPN typu Site-to-site nebo ExpressRoute, můžou hlavní oblasti, které způsobují problémy, být aplikace a virtuální počítač Azure.
 
-Chcete-li zjistit zdroj problému a jeho opravu, postupujte takto.
+Chcete-li zjistit zdroj problému a jeho opravu, postupujte podle těchto kroků.
 
-## <a name="step-1-access-application-from-target-vm"></a>Krok 1: Přístup k aplikaci z cílového virtuálního virtuálního mísy
-Pokuste se o přístup k aplikaci pomocí příslušného klientského programu z virtuálního počítači, na kterém je spuštěna. Použijte název místního hostitele, místní IP adresu nebo adresu zpětné smyčky (127.0.0.1).
+## <a name="step-1-access-application-from-target-vm"></a>Krok 1: přístup k aplikaci z cílového virtuálního počítače
+Pokuste se o přístup k aplikaci přes příslušný klientský program z virtuálního počítače, na kterém je spuštěná. Použijte místní název hostitele, místní IP adresu nebo adresu zpětné smyčky (127.0.0.1).
 
-![spuštění aplikace přímo z virtuálního virtuálního mísa](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access2.png)
+![spustit aplikaci přímo z virtuálního počítače](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access2.png)
 
-Například pokud je aplikace webový server, otevřete prohlížeč na virtuálním počítači a pokuste se o přístup k webové stránce hostované na virtuálním počítači.
+Například pokud je aplikace webovým serverem, otevřete na virtuálním počítači prohlížeč a pokuste se získat přístup k webové stránce hostované na virtuálním počítači.
 
 Pokud máte přístup k aplikaci, přejděte ke [kroku 2](#step2).
 
-Pokud nemáte přístup k aplikaci, ověřte následující nastavení:
+Pokud nemůžete získat přístup k aplikaci, ověřte následující nastavení:
 
-* Aplikace je spuštěna na cílovém virtuálním počítači.
-* Aplikace naslouchá očekávaným portům TCP a UDP.
+* Aplikace běží na cílovém virtuálním počítači.
+* Aplikace naslouchá na očekávaných portech TCP a UDP.
 
-Na virtuálních počítačích se systémem Windows i Linux použijte příkaz **netstat -a** k zobrazení aktivních naslouchacích portů. Zkontrolujte výstup pro očekávané porty, na kterých by měla být naslouchání aplikace. Restartujte aplikaci nebo ji nakonfigurujte tak, aby podle potřeby používala očekávané porty, a zkuste znovu získat přístup k aplikaci místně.
+Na virtuálních počítačích s Windows i Linuxem Zobrazte aktivní naslouchající porty pomocí příkazu **netstat-a** . Prověřte výstup očekávaných portů, na kterých by měla vaše aplikace naslouchat. Restartujte aplikaci nebo ji nakonfigurujte tak, aby podle potřeby používala očekávané porty, a znovu se pokuste o přístup k aplikaci.
 
-## <a name="step-2-access-application-from-another-vm-in-the-same-virtual-network"></a><a id="step2"></a>Krok 2: Přístup k aplikaci z jiného virtuálního počítače ve stejné virtuální síti
-Pokuste se získat přístup k aplikaci z jiného virtuálního počítače, ale ve stejné virtuální síti, pomocí názvu hostitele virtuálního počítače nebo jeho Azure přiřazené veřejné, privátní nebo zprostředkovatelip adresy. Pro virtuální počítače vytvořené pomocí klasického modelu nasazení nepoužívejte veřejnou IP adresu cloudové služby.
+## <a name="step-2-access-application-from-another-vm-in-the-same-virtual-network"></a><a id="step2"></a>Krok 2: přístup k aplikaci z jiného virtuálního počítače ve stejné virtuální síti
+Pokuste se o přístup k aplikaci z jiného virtuálního počítače, ale ve stejné virtuální síti, použijte název hostitele virtuálního počítače nebo jeho IP adresu veřejného, privátního nebo poskytovatele přiřazenou k Azure. Pro virtuální počítače vytvořené pomocí modelu nasazení Classic nepoužívejte veřejnou IP adresu cloudové služby.
 
-![spuštění aplikace z jiného virtuálního virtuálního aplikace](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access3.png)
+![spuštění aplikace z jiného virtuálního počítače](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access3.png)
 
-Pokud je například aplikace webový server, zkuste získat přístup k webové stránce z prohlížeče na jiném virtuálním počítači ve stejné virtuální síti.
+Například pokud je aplikace webovým serverem, zkuste získat přístup k webové stránce z prohlížeče na jiném virtuálním počítači ve stejné virtuální síti.
 
 Pokud máte přístup k aplikaci, přejděte ke [kroku 3](#step3).
 
-Pokud nemáte přístup k aplikaci, ověřte následující nastavení:
+Pokud nemůžete získat přístup k aplikaci, ověřte následující nastavení:
 
-* Brána firewall hostitele na cílovém virtuálním počítači umožňuje příchozí požadavek a odchozí přenosy odpovědí.
-* Software pro detekci vniknutí nebo sledování sítě spuštěný na cílovém virtuálním počítači povoluje přenos.
-* Koncové body cloudových služeb nebo skupiny zabezpečení sítě povolují přenos:
-  * [Klasický model – Správa koncových bodů cloudových služeb](../../cloud-services/cloud-services-enable-communication-role-instances.md)
-  * [Model Správce prostředků – správa skupin zabezpečení sítě](../../virtual-network/manage-network-security-group.md)
-* Samostatná součást spuštěná ve vašem virtuálním počítači v cestě mezi testovacím virtuálním počítačem a virtuálním počítačem, jako je například vyrovnávání zatížení nebo brána firewall, povoluje přenos.
+* Hostitelská brána firewall na cílovém virtuálním počítači povoluje přenosy příchozích požadavků a odchozích odpovědí.
+* Provoz je povolený v případě zjištění neoprávněného vniknutí nebo softwaru pro monitorování sítě běžícího na cílovém virtuálním počítači.
+* Přenosy umožňují Cloud Services koncové body nebo skupiny zabezpečení sítě:
+  * [Klasický model – správa koncových bodů Cloud Services](../../cloud-services/cloud-services-enable-communication-role-instances.md)
+  * [Model Správce prostředků – Správa skupin zabezpečení sítě](../../virtual-network/manage-network-security-group.md)
+* Provoz se zakládá na samostatné součásti běžící na vašem VIRTUÁLNÍm počítači v cestě mezi testovacím VIRTUÁLNÍm počítačem a vaším VIRTUÁLNÍm počítačem, jako je třeba nástroj pro vyrovnávání zatížení nebo brána firewall.
 
-Ve virtuálním počítači se systémem Windows můžete pomocí brány Windows Firewall s pokročilým zabezpečením určit, zda pravidla brány firewall vylučují příchozí a odchozí přenosy vaší aplikace.
+Na virtuálním počítači se systémem Windows použijte bránu Windows Firewall s pokročilým zabezpečením k určení, zda pravidla brány firewall vyloučí příchozí a odchozí přenosy vaší aplikace.
 
-## <a name="step-3-access-application-from-outside-the-virtual-network"></a><a id="step3"></a>Krok 3: Přístup k aplikaci mimo virtuální síť
-Pokuste se o přístup k aplikaci z počítače mimo virtuální síť jako virtuální počítač, na kterém je aplikace spuštěna. Jako původní klientský počítač použijte jinou síť.
+## <a name="step-3-access-application-from-outside-the-virtual-network"></a><a id="step3"></a>Krok 3: přístup k aplikaci mimo virtuální síť
+Pokuste se o přístup k aplikaci z počítače mimo virtuální síť jako virtuální počítač, na kterém je aplikace spuštěná. Použijte jinou síť jako původní klientský počítač.
 
 ![spuštění aplikace z počítače mimo virtuální síť](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access4.png)
 
-Pokud je například aplikace webový server, zkuste získat přístup k webové stránce z prohlížeče spuštěného v počítači, který není ve virtuální síti.
+Například pokud je aplikace webovým serverem, pokuste se získat přístup k webové stránce z prohlížeče běžícího na počítači, který není ve virtuální síti.
 
-Pokud nemáte přístup k aplikaci, ověřte následující nastavení:
+Pokud nemůžete získat přístup k aplikaci, ověřte následující nastavení:
 
-* Pro virtuální počítače vytvořené pomocí klasického modelu nasazení:
+* Pro virtuální počítače vytvořené pomocí modelu nasazení Classic:
   
-  * Ověřte, zda konfigurace koncového bodu pro virtuální počítače umožňuje příchozí provoz, zejména protokol (TCP nebo UDP) a čísla veřejného a soukromého portu.
-  * Ověřte, zda seznamy řízení přístupu (ACL) v koncovém bodě nebrání příchozímu provozu z Internetu.
-  * Další informace najdete v tématu [Jak nastavit koncové body na virtuální počítač](../windows/classic/setup-endpoints.md).
+  * Ověřte, jestli konfigurace koncového bodu pro virtuální počítač povoluje příchozí provoz, obzvláště protokol (TCP nebo UDP) a čísla veřejných a privátních portů.
+  * Ověřte, že seznamy řízení přístupu (ACL) na koncovém bodu nebrání příchozímu provozu z Internetu.
+  * Další informace najdete v tématu [nastavení koncových bodů na virtuální počítač](../windows/classic/setup-endpoints.md).
 * Pro virtuální počítače vytvořené pomocí modelu nasazení Správce prostředků:
   
-  * Ověřte, zda konfigurace příchozího pravidla NAT pro virtuální počítače povoluje příchozí provoz, zejména protokol (TCP nebo UDP) a čísla veřejných a soukromých portů.
-  * Ověřte, zda skupiny zabezpečení sítě povolují příchozí a odchozí přenosy odpovědí.
-  * Další informace naleznete v [tématu Co je skupina zabezpečení sítě?](../../virtual-network/security-overview.md)
+  * Ověřte, jestli Konfigurace příchozího pravidla NAT pro virtuální počítač povoluje příchozí přenosy, zejména protokol (TCP nebo UDP), a čísla veřejných a privátních portů.
+  * Ověřte, že skupiny zabezpečení sítě povolují příchozí požadavek a provoz odchozích odpovědí.
+  * Další informace najdete v tématu [co je skupina zabezpečení sítě](../../virtual-network/security-overview.md) .
 
 Pokud je virtuální počítač nebo koncový bod členem sady s vyrovnáváním zatížení:
 
-* Ověřte, zda jsou protokol sondy (TCP nebo UDP) a číslo portu správné.
-* Pokud se protokol a port sondy liší od protokolu a portu nastaveného zatížení s vyrovnáváním zatížení:
-  * Ověřte, zda aplikace naslouchá na protokolu sondy (TCP nebo UDP) a číslo portu (použijte **netstat –a** na cílovém virtuálním počítači).
-  * Ověřte, zda brána firewall hostitele na cílovém virtuálním počítači povoluje příchozí sonda a přenosy odpovědí odchozí sondy.
+* Ověřte správnost protokolu sondy (TCP nebo UDP) a čísla portu.
+* Pokud je protokol a port sondy jiný než protokol sady s vyrovnáváním zatížení a port:
+  * Ověřte, že aplikace naslouchá na protokolu sondy (TCP nebo UDP) a číslo portu (použijte **netstat – a** na cílovém virtuálním počítači).
+  * Ověřte, že hostitelská brána firewall na cílovém virtuálním počítači povoluje příchozí požadavek sondy a odchozí přenosy odezvy sondy.
 
-Pokud máte přístup k aplikaci, ujistěte se, že vaše zařízení edge internet umožňuje:
+Pokud máte přístup k aplikaci, ujistěte se, že vaše zařízení Internet Edge umožňuje:
 
-* Odchozí aplikace požadavek provoz z klientského počítače do virtuálního počítače Azure.
-* Příchozí provoz odezvy aplikace z virtuálního počítače Azure.
+* Odchozí požadavky aplikace z klientského počítače na virtuální počítač Azure.
+* Příchozí přenos odpovědí aplikace z virtuálního počítače Azure.
 
-## <a name="step-4-if-you-cannot-access-the-application-use-ip-verify-to-check-the-settings"></a>Krok 4 Pokud nemáte přístup k aplikaci, zkontrolujte nastavení pomocí protokolu IP Verify. 
+## <a name="step-4-if-you-cannot-access-the-application-use-ip-verify-to-check-the-settings"></a>Krok 4 Pokud nemůžete získat přístup k aplikaci, zkontrolujte nastavení pomocí ověřování IP. 
 
 Další informace najdete v tématu [Přehled monitorování sítě Azure](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview). 
 
 ## <a name="additional-resources"></a>Další zdroje
-[Poradce při potížích s připojením ke vzdálené ploše k virtuálnímu počítači Azure založenému na Windows](troubleshoot-rdp-connection.md)
+[Řešení potíží s připojením ke vzdálené ploše na virtuálním počítači Azure se systémem Windows](troubleshoot-rdp-connection.md)
 
-[Poradce při potížích s připojením zabezpečeného prostředí (SSH) k virtuálnímu počítači Azure založenému na Linuxu](troubleshoot-ssh-connection.md)
+[Řešení potíží s připojením Secure Shell (SSH) k virtuálnímu počítači Azure se systémem Linux](troubleshoot-ssh-connection.md)
 
 

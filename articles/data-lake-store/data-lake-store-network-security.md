@@ -1,6 +1,6 @@
 ---
 title: Zabezpečení sítě v Azure Data Lake Storage Gen1 | Microsoft Docs
-description: Zjistěte, jak funguje integrace virtuálních sítí v Azure Data Lake Storage Gen1
+description: Vysvětlení fungování integrace virtuální sítě v Azure Data Lake Storage Gen1
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -14,15 +14,15 @@ ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
 ms.openlocfilehash: 7d6c826df2a509ffb378809e3682073bd5ab1301
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60612560"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Integrace virtuální sítě pro Azure Data Lake Storage Gen1
 
-Tento článek představuje integraci virtuální sítě pro Azure Data Lake Storage Gen1. Díky integraci virtuální sítě můžete své účty nakonfigurovat tak, aby přijímaly provoz pouze z konkrétních virtuálních sítí a podsítí. 
+Tento článek zavádí integraci virtuální sítě pro Azure Data Lake Storage Gen1. Díky integraci virtuální sítě můžete své účty nakonfigurovat tak, aby přijímaly provoz pouze z konkrétních virtuálních sítí a podsítí. 
 
 Tato funkce vám pomůže zabezpečit účet Data Lake Storage před externími hrozbami.
 
@@ -73,9 +73,9 @@ Mezi dostupné možnosti patří:
 
 ## <a name="limitations"></a>Omezení
 
-- Clustery HDInsight, které byly vytvořeny před dostupností podpory integrace virtuální sítě Data Lake Storage Gen1, musí být znovu vytvořeny, aby podporovaly tuto novou funkci.
+- Pro podporu této nové funkce je nutné znovu vytvořit clustery HDInsight, které byly vytvořeny před tím, než byla k dispozici podpora integrace virtuální sítě Data Lake Storage Gen1.
  
-- Pokud vytvoříte nový cluster HDInsight a vyberete účet Data Lake Storage Gen1 s povolenou integrací virtuální sítě, proces selže. Nejprve zakažte pravidlo virtuální sítě. Případně v okně **Brána firewall a virtuální sítě** účtu Data Lake Storage vyberte **Povolit přístup ze všech sítí a služeb**. Potom vytvořte cluster HDInsight před konečnou opětovnou povolením pravidla virtuální sítě nebo zrušením výběru **povolit přístup ze všech sítí a služeb**. Další informace najdete v části [Výjimky](#exceptions).
+- Pokud vytvoříte nový cluster HDInsight a vyberete účet Data Lake Storage Gen1 s povolenou integrací virtuální sítě, proces selže. Nejprve zakažte pravidlo virtuální sítě. Případně v okně **Brána firewall a virtuální sítě** účtu Data Lake Storage vyberte **Povolit přístup ze všech sítí a služeb**. Pak vytvořte cluster HDInsight ještě před tím, než nakonec znovu povolíte pravidlo virtuální sítě, nebo zrušte výběr možnosti **Povolit přístup ze všech sítí a služeb**. Další informace najdete v části [Výjimky](#exceptions).
 
 - Integrace virtuální sítě Data Lake Storage Gen1 nefunguje se [spravovanými identitami pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
   
@@ -87,7 +87,7 @@ Mezi dostupné možnosti patří:
 
 1.  Přejděte na web Azure Portal a přihlaste se ke svému účtu.
  
-2.  [Vytvořte novou virtuální síť](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)ve vašem předplatném. Případně můžete přejít k existující virtuální síti. Virtuální síť musí být ve stejné oblasti jako účet Data Lake Storage Gen1.
+2.  Vytvořte ve svém předplatném [novou virtuální síť](https://docs.microsoft.com/azure/virtual-network/quick-create-portal). Případně můžete přejít k existující virtuální síti. Virtuální síť musí být ve stejné oblasti jako účet Data Lake Storage Gen1.
  
 3.  V okně **Virtuální síť** vyberte **Koncové body služby**.
  

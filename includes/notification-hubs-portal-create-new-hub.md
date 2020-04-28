@@ -9,44 +9,44 @@ ms.date: 01/17/2019
 ms.author: jowargo
 ms.custom: include file
 ms.openlocfilehash: 5afcc8e4524a0e8353766ba239d5ab9161b29d86
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67509092"
 ---
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-1. V levé nabídce vyberte **Všechny služby** a v části **Mobilní** vyberte **Centra oznámení.** Vyberte ikonu hvězdičky vedle názvu služby a přidejte službu do oddílu **OBLÍBENÉ položky** v levé nabídce. Po přidání **centra oznámení** do **oblíbených**položek je vyberte v levé nabídce.
+1. V nabídce vlevo vyberte **všechny služby** a v části **mobilní zařízení** vyberte **Notification Hubs** . Výběrem ikony hvězdičky vedle názvu služby přidáte službu do oddílu **Oblíbené položky** v levé nabídce. Po přidání **Notification Hubs** k **oblíbeným položkám**ji vyberte v nabídce vlevo.
 
-      ![Portál Azure – výběr center oznámení](./media/notification-hubs-portal-create-new-hub/all-services-select-notification-hubs.png)
+      ![Azure Portal – výběr Notification Hubs](./media/notification-hubs-portal-create-new-hub/all-services-select-notification-hubs.png)
 
-1. Na stránce **Centra oznámení** vyberte **Přidat** na panelu nástrojů.
+1. Na stránce **Notification Hubs** vyberte **Přidat** na panelu nástrojů.
 
-      ![Centra oznámení – tlačítko Přidat panel nástrojů](./media/notification-hubs-portal-create-new-hub/add-toolbar-button.png)
+      ![Notification Hubs – tlačítko Přidat panel nástrojů](./media/notification-hubs-portal-create-new-hub/add-toolbar-button.png)
 
-1. Na stránce **Centrum oznámení** postupujte takto:
+1. Na stránce **Centrum oznámení** proveďte následující kroky:
 
     1. Zadejte název do **centra oznámení**.  
 
-    1. Zadejte název v pole **Vytvoření nového oboru názvů**. Obor názvů obsahuje jeden nebo více rozbočovačů.
+    1. Zadejte název do v **vytvořit nový obor názvů**. Obor názvů obsahuje nejméně jedno rozbočovače.
 
-    1. Vrozené pole **Umístění** vyberte hodnotu. Tato hodnota určuje umístění, ve kterém chcete vytvořit rozbočovač.
+    1. V rozevíracím seznamu **umístění** vyberte hodnotu. Tato hodnota určuje umístění, ve kterém chcete vytvořit centrum.
 
-    1. Vyberte existující skupinu prostředků ve **skupině prostředků**nebo vytvořte název pro novou skupinu prostředků.
+    1. Vyberte existující skupinu prostředků ve **skupině prostředků**nebo vytvořte název nové skupiny prostředků.
 
     1. Vyberte **Vytvořit**.
 
         ![Azure Portal – nastavení vlastností centra oznámení](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-settings.png)
 
-1. Vyberte **Oznámení** (ikona zvonku) a pak vyberte **Přejít na zdroj**. Seznam můžete také aktualizovat na stránce **Centra oznámení** a vybrat centrum.
+1. Vyberte **oznámení** (ikona zvonku) a pak vyberte **Přejít k prostředku**. Můžete také aktualizovat seznam na stránce **Notification Hubs** a vybrat své centrum.
 
       ![Portál Azure Portal – oznámení -> Přejít k prostředku](./media/notification-hubs-portal-create-new-hub/go-to-notification-hub.png)
 
-1. Vyberte ze seznamu **Zásady přístupu**. Všimněte si, že dva připojovací řetězce jsou k dispozici. Budete je později potřebovat ke zpracování nabízených oznámení.
+1. Vyberte ze seznamu **Zásady přístupu**. Všimněte si, že jsou k dispozici dva připojovací řetězce. Budete je potřebovat později pro zpracování nabízených oznámení.
 
       >[!IMPORTANT]
-      >*Nepoužívejte* zásady **DefaultFullSharedAccessSignature** ve vaší aplikaci. To je chtěl být použit v zadní části pouze.
+      >V aplikaci *nepoužívejte zásady* **DefaultFullSharedAccessSignature** . To je určeno jenom pro použití v back-endu.
       >
 
       ![Azure Portal – připojovací řetězce centra oznámení](./media/notification-hubs-portal-create-new-hub/notification-hubs-connection-strings-portal.png)

@@ -5,61 +5,61 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: f84fe995e65d2b67aaaf4ff9acc4a6a44ce607dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67175047"
 ---
 > [!NOTE]
-> Při provádění změn konfigurace StorSimple Adapter pro sharepointový adaptér RBS musíte být přihlášeni pomocí uživatelského účtu, který patří do skupiny Domain Admins. Kromě toho je nutné přistupovat ke stránce konfigurace z prohlížeče spuštěného na stejném hostiteli jako centrální správa.
+> Při provádění změn konfigurace StorSimple adaptéru pro konfiguraci služby SharePoint RBS musíte být přihlášeni pomocí uživatelského účtu, který patří do skupiny Domain Admins. Kromě toho musíte přistupovat ke konfigurační stránce z prohlížeče běžícího na stejném hostiteli jako centrální Správa.
 > 
 > 
 
-#### <a name="to-configure-rbs"></a>Konfigurace služby RBS
-1. Otevřete stránku Centrální správa SharePointu a přejděte na **Položku Nastavení systému**. 
-2. V části **Azure StorSimple** klikněte na **Konfigurovat storsimple adaptér**.
+#### <a name="to-configure-rbs"></a>Konfigurace RBS
+1. Otevřete stránku centrální správy služby SharePoint a přejděte do **nastavení systému**. 
+2. V části **Azure StorSimple** klikněte na **konfigurovat adaptér StorSimple**.
    
     ![Konfigurace adaptéru StorSimple](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS1-include.png) 
-3. Na stránce **Konfigurovat storsimple adaptér:**
+3. Na stránce **Konfigurace adaptéru StorSimple** :
    
-   1. Ujistěte se, že je zaškrtnuté políčko **Povolit úpravy cesty.**
-   2. Do textového pole zadejte cestu unc (Univerzální konvence pojmenování) úložiště BLOB.
+   1. Ujistěte se, že je zaškrtnuté políčko **Povolit cestu pro úpravy** .
+   2. Do textového pole zadejte cestu UNC (Universal Naming Convention) úložiště objektů BLOB.
       
       > [!NOTE]
-      > Svazek úložiště objektů BLOB musí být hostován na svazku iSCSI nakonfigurovaném na zařízení StorSimple.
+      > Svazek úložiště objektů BLOB musí být hostovaný na svazku iSCSI nakonfigurovaném na zařízení StorSimple.
 
    3. Klikněte na tlačítko **Povolit** pod každou databází obsahu, kterou chcete nakonfigurovat pro vzdálené úložiště.
       
       > [!NOTE]
-      > Úložiště objektů BLOB musí být sdíleno a dosažitelné všemi servery webového front-endu (WFE) a uživatelský účet, který je nakonfigurován pro farmu serveru SharePoint, musí mít přístup ke sdílené položce.
+      > Úložiště objektů BLOB musí být sdíleno a dosažitelné všemi webovými front-end (WFE) servery a uživatelský účet nakonfigurovaný pro farmu serveru SharePoint musí mít přístup ke sdílené složce.
       
-      ![Povolit zprostředkovatele RBS](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS2-include.png)
+      ![Povolit poskytovatele RBS](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS2-include.png)
       
-      Pokud povolíte nebo zakážete rbs, zobrazí se také následující zpráva.
+      Při povolování nebo zakazování RBS se zobrazí také následující zpráva.
       
-      ![Konfigurovat zakázat funkci Zakázat adaptér StorSimple](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_ConfigureStorSimpleAdapterEnableDisableMessage-include.png)
+      ![Konfigurace povolení zakázání adaptéru StorSimple](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_ConfigureStorSimpleAdapterEnableDisableMessage-include.png)
 
-   4. Chcete-li použít konfiguraci, klepněte na tlačítko **Aktualizovat.** Po klepnutí na tlačítko **Aktualizovat** bude stav konfigurace RBS aktualizován na všech serverech WFE a celá farma bude povolena jako RBS. Zobrazí se následující zpráva.
+   4. Kliknutím na tlačítko **aktualizovat** aplikujete konfiguraci. Po kliknutí na tlačítko **aktualizovat** se stav konfigurace RBS aktualizuje na všech serverech WFE a celá farma bude mít povolený kód RBS. Zobrazí se následující zpráva.
       
-      ![Zpráva o konfiguraci adaptéru](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS3-include.png)
+      ![Zpráva konfigurace adaptéru](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS3-include.png)
       
       > [!NOTE]
-      > Pokud konfigurujete rbs pro farmu služby SharePoint s velkým počtem databází (větší než 200), může časový plán na webové stránce Centrální správy služby SharePoint. Pokud k tomu dojde, aktualizujte stránku. To nemá vliv na proces konfigurace.
+      > Pokud konfigurujete kód RBS pro farmu služby SharePoint s velmi velkým počtem databází (větší než 200), může webová stránka centrální správy služby SharePoint vyprší časový limit. Pokud k tomu dojde, aktualizujte stránku. To nemá vliv na proces konfigurace.
 
 4. Ověřte konfiguraci:
    
-   1. Přihlaste se k webu Centrální správy SharePointu a přejděte na stránku **Konfigurovat adaptér StorSimple.**
-   2. Zkontrolujte podrobnosti konfigurace, abyste se ujistili, že odpovídají zadanému nastavení. 
-5. Ověřte, zda služba RBS funguje správně:
+   1. Přihlaste se k webu centrální správy služby SharePoint a přejděte na stránku **Konfigurace adaptéru StorSimple** .
+   2. Zkontrolujte podrobnosti o konfiguraci a ujistěte se, že odpovídají zadaným nastavením. 
+5. Ověřte, že kód RBS funguje správně:
    
    1. Nahrajte dokument do SharePointu. 
-   2. Přejděte na cestu UNC, kterou jste nakonfigurovali. Ujistěte se, že byla vytvořena adresářová struktura RBS a zda obsahuje nahraný objekt.
-6. (Nepovinné) Rutina prostředí Microsoft `Migrate()` RBS PowerShell, která je součástí sharepointu, můžete použít k migraci existujícího obsahu objektu BLOB do zařízení StorSimple. Další informace najdete [v tématu Migrace obsahu do nebo z RBS v SharePointu 2013][6] nebo [Migrace obsahu do nebo z RBS (SharePoint Foundation 2010)][7].
-7. (Nepovinné) V testovacích instalacích můžete ověřit, že objekty BLOB byly přesunuty z databáze obsahu následujícím způsobem: 
+   2. Přejděte na cestu UNC, kterou jste nakonfigurovali. Ujistěte se, že se vytvořila adresářová struktura RBS a že obsahuje nahraný objekt.
+6. Volitelné K migraci existujícího obsahu objektů BLOB `Migrate()` do zařízení StorSimple můžete použít rutinu Microsoft RBS PowerShell, která je součástí SharePointu. Další informace najdete v tématu [migrace obsahu do RBS nebo z kódu RBS ve službě SharePoint 2013][6] nebo [migrace obsahu do nebo z kódu RBS (SharePoint Foundation 2010)][7].
+7. Volitelné V případě testovacích instalací můžete ověřit, že se objekty blob přesunuly z databáze obsahu následujícím způsobem: 
    
-   1. Spusťte sql management studio.
-   2. Spusťte dotaz ListBlobsInDB_2010.sql nebo ListBlobsInDB_2013.sql následujícím způsobem.
+   1. Spusťte SQL Management Studio.
+   2. Spusťte dotaz ListBlobsInDB_2010. SQL nebo ListBlobsInDB_2013. SQL následujícím způsobem.
       
       ```
       **ListBlobsInDB_2013.sql**
@@ -102,16 +102,16 @@ ms.locfileid: "67175047"
         GO
       ```
       
-      Pokud rbs byla nakonfigurována správně, hodnota NULL by se měla zobrazit ve sloupci SizeOfContentInDB pro všechny objekty, které byly odeslány a úspěšně externalizovány s RBS.
-8. (Nepovinné) Po konfiguraci RBS a přesunutí veškerého obsahu blob do zařízení StorSimple můžete přesunout databázi obsahu do zařízení. Pokud se rozhodnete přesunout databázi obsahu, doporučujeme nakonfigurovat úložiště databáze obsahu v zařízení jako primární svazek. Potom použijte zavedené SQL Server osvědčené postupy pro migraci databáze obsahu do zařízení StorSimple. 
+      Pokud byl kód RBS nakonfigurován správně, musí se ve sloupci SizeOfContentInDB zobrazit hodnota NULL pro libovolný objekt, který byl nahrán a úspěšně vytvořen externě pomocí RBS.
+8. Volitelné Až nakonfigurujete RBS a přesunete veškerý obsah objektu BLOB na zařízení StorSimple, můžete přesunout databázi obsahu do zařízení. Pokud se rozhodnete přesunout databázi obsahu, doporučujeme, abyste nakonfigurovali úložiště databáze obsahu na zařízení jako primární svazek. Pak použijte zřízené SQL Server osvědčené postupy k migraci databáze obsahu do zařízení StorSimple. 
    
    > [!NOTE]
-   > Přesunutí databáze obsahu do zařízení je podporováno pouze pro řadu StorSimple 8000 (není podporováno pro řadu 5000 nebo 7000).
+   > Přesunutí databáze obsahu do zařízení je podporováno pouze pro řady StorSimple 8000 (není podporováno pro řady 5000 nebo 7000).
    
-   Pokud ukládáte objekty BLOB a databázi obsahu v samostatných svazcích na zařízení StorSimple, doporučujeme je nakonfigurovat ve stejném kontejneru svazků. Tím je zajištěno, že budou zálohovány společně.
+   Pokud ukládáte objekty BLOB a databázi obsahu na samostatné svazky na zařízení StorSimple, doporučujeme, abyste je nakonfigurovali ve stejném kontejneru svazků. Tím zajistíte, že budou zálohovány společně.
    
    > [!WARNING]
-   > Pokud jste nepovolili RBS, nedoporučujeme přesunutí databáze obsahu do zařízení StorSimple. Toto je netestovaná konfigurace.
+   > Pokud jste kód RBS nepovolili, nedoporučujeme přesouvat databázi obsahu na zařízení StorSimple. Toto je netestovaná konfigurace.
    
 9. Přejít k dalšímu kroku: [Konfigurace uvolňování paměti](#configure-garbage-collection).
 

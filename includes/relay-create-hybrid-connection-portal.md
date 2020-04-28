@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
 ms.openlocfilehash: ceb2626a43ed44338bb0faad475ae2333af2de9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67175239"
 ---
 Ujistěte se, že jste již [vytvořili obor názvů služby Relay][namespace-how-to].
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. V nabídce vlevo vyberte **Všechny prostředky**.
 3. Vyberte obor názvů, ve kterém chcete vytvořit hybridní připojení. V tomto případě se jedná o **mynewns**.  
 4. V části **Obor názvů Relay** vyberte **Hybridní připojení**.

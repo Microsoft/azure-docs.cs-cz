@@ -9,10 +9,10 @@ ms.date: 06/05/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 2ed141847f923a847443d2293e850519357cdae2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67174898"
 ---
-Od 1. července 2018 se začíná rušit podpora protokolu TLS 1.0 a 1.1 ve službě Azure VPN Gateway. Služba VPN Gateway bude podporovat pouze protokol TLS 1.2. Ovlivněny jsou pouze připojení bodu k lokalitě. Připojení mezi lokalitami nebudou ovlivněna. Pokud používáte TLS pro sítě VIRTUÁLNÍ SÍTĚ s bodem na web v klientech windows 10, nemusíte provádět žádnou akci. Pokud používáte protokol TLS pro připojení z bodu na pracoviště v klientech se systémem Windows 7 a Windows 8, přečtěte si pokyny k aktualizaci v nejčastějších dotazech k [bráně VPN.](../articles/vpn-gateway/vpn-gateway-vpn-faq.md#P2S)
+Od 1. července 2018 se začíná rušit podpora protokolu TLS 1.0 a 1.1 ve službě Azure VPN Gateway. Služba VPN Gateway bude podporovat pouze protokol TLS 1.2. Ovlivněna jsou pouze připojení Point-to-site; připojení Site-to-site nebudou ovlivněna. Pokud používáte protokol TLS pro sítě VPN typu Point-to-site v klientech Windows 10, nemusíte provádět žádnou akci. Pokud používáte protokol TLS pro připojení Point-to-site v klientech se systémy Windows 7 a Windows 8, přečtěte si téma [VPN Gateway Nejčastější dotazy](../articles/vpn-gateway/vpn-gateway-vpn-faq.md#P2S) pro pokyny k aktualizaci.
