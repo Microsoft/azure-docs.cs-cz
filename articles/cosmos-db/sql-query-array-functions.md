@@ -1,6 +1,6 @@
 ---
-title: Funkce pole v dotazovacím jazyce Azure Cosmos DB
-description: Zjistěte, jak funkce pole umožňují provádět operace s poli v Azure Cosmos DB
+title: Funkce pole v jazyce Azure Cosmos DBho dotazovacího jazyka
+description: Přečtěte si, jak funkce pole umožňují provádět operace s poli v Azure Cosmos DB
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,19 +8,19 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: a0256470892d634361498f1632027aff562c7761
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74871801"
 ---
 # <a name="array-functions-azure-cosmos-db"></a>Funkce pole (Azure Cosmos DB)
 
-Funkce pole umožňují provádět operace na polích v Azure Cosmos DB.
+Funkce pole umožňují provádět operace s poli v Azure Cosmos DB.
 
-## <a name="functions"></a>Funkce
+## <a name="functions"></a>Functions
 
-Následující skalární funkce provádějí operaci se vstupní hodnotou pole a vracejí číselnou, logickou hodnotu nebo hodnotu pole:
+Následující skalární funkce provádějí operaci na vstupní hodnotě pole a vracejí číselnou, logickou nebo hodnotu pole:
   
 ||||  
 |-|-|-|  
@@ -32,5 +32,5 @@ Následující skalární funkce provádějí operaci se vstupní hodnotou pole 
 
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
 - [Úvod do Azure Cosmos DB](introduction.md)
-- [Uživatelem definované funkce](sql-query-udfs.md)
+- [Uživatelsky definované funkce](sql-query-udfs.md)
 - [Agregace](sql-query-aggregates.md)

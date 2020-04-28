@@ -1,7 +1,7 @@
 ---
-title: moreLikeThis (náhled) dotaz funkce
+title: funkce dotazu moreLikeThis (Preview)
 titleSuffix: Azure Cognitive Search
-description: Popisuje funkci MoreLikeThis (preview), která je dostupná ve verzi preview rozhraní REST API Azure Cognitive Search.
+description: Popisuje funkci moreLikeThis (Preview), která je k dispozici ve verzi Preview REST API Azure Kognitivní hledání.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -10,37 +10,37 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 95b9c76a2ff962cb2fa4bacbb1b1e9a953b7014f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74873807"
 ---
-# <a name="morelikethis-preview-in-azure-cognitive-search"></a>moreLikeThis (preview) v Azure Cognitive Search
+# <a name="morelikethis-preview-in-azure-cognitive-search"></a>moreLikeThis (Preview) v Azure Kognitivní hledání
 
 > [!IMPORTANT] 
-> Tato funkce je aktuálně ve verzi Public Preview. Funkce náhledu je k dispozici bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [Rozhraní REST API verze 2019-05-06-Preview](search-api-preview.md) poskytuje tuto funkci. V současné době neexistuje žádná podpora portálu nebo sady .NET SDK.
+> Tato funkce je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Tato funkce poskytuje [REST API verze 2019-05-06-Preview](search-api-preview.md) . V tuto chvíli není k dispozici žádný portál ani podpora sady .NET SDK.
 
-`moreLikeThis=[key]`je parametr dotazu v [rozhraní API pro hledání dokumentů,](https://docs.microsoft.com/rest/api/searchservice/search-documents) který vyhledá dokumenty podobné dokumentu určenému klíčem dokumentu. Pokud je požadavek `moreLikeThis`na hledání proveden pomocí aplikace , je generován dotaz s hledanými termíny extrahovanými z daného dokumentu, které tento dokument nejlépe popisují. Generovaný dotaz se pak použije k vytvoření požadavku na hledání. Ve výchozím nastavení se uvažuje o obsahu všech prohledávatelných polí `searchFields` bez všech omezených polí, která jste zadali pomocí parametru. Parametr `moreLikeThis` nelze použít s parametrem `search=[string]`search , .
+`moreLikeThis=[key]`je parametr dotazu v [rozhraní API pro hledání dokumentů](https://docs.microsoft.com/rest/api/searchservice/search-documents) , který najde dokumenty podobné dokumentu určenému klíčem dokumentu. Když se vytvoří požadavek na hledání `moreLikeThis`, vygeneruje se dotaz s hledanými výrazy z daného dokumentu, které tento dokument nejlépe popisují. Vygenerovaný dotaz se pak použije k vytvoření žádosti o vyhledávání. Ve výchozím nastavení se považuje obsah všech prohledávatelných polí, mínus všechna pole s omezením, která jste zadali `searchFields` pomocí parametru. `moreLikeThis` Parametr nelze použít společně s parametrem Search `search=[string]`.
 
-Ve výchozím nastavení se považuje obsah všech prohledávatelných polí nejvyšší úrovně. Pokud chcete místo toho zadat určitá `searchFields` pole, můžete použít parametr. 
+Ve výchozím nastavení se považuje obsah všech vyhledávacích polí na nejvyšší úrovni. Chcete-li místo toho zadat konkrétní pole, můžete použít `searchFields` parametr. 
 
-Prohledávatelná dílčí pole nelze použít `MoreLikeThis` ve [složitém typu](search-howto-complex-data-types.md).
+Nemůžete `MoreLikeThis` použít pro prohledávatelné dílčí pole v [komplexním typu](search-howto-complex-data-types.md).
 
 ## <a name="examples"></a>Příklady
 
-Všechny následující příklady používají ukázku hotelů z [úvodního startu: Vytvoření indexu vyhledávání na webu Azure Portal](search-get-started-portal.md).
+Všechny následující příklady používají ukázku hotelů z [rychlého startu: vytvoření indexu vyhledávání v Azure Portal](search-get-started-portal.md).
 
 ### <a name="simple-query"></a>Jednoduchý dotaz
 
-Následující dotaz vyhledá dokumenty, jejichž pole popisu jsou nejvíce podobná poli `moreLikeThis` zdrojového dokumentu určeného parametrem:
+Následující dotaz vyhledá dokumenty, jejichž pole popisu jsou nejvíce podobná poli zdrojového dokumentu, jak je určeno `moreLikeThis` parametrem:
 
 ```
 GET /indexes/hotels-sample-index/docs?moreLikeThis=29&searchFields=Description&api-version=2019-05-06-Preview
 ```
 
-V tomto příkladu žádost vyhledá hotely podobné `HotelId` tomu s 29.
-Spíše než pomocí HTTP GET, `MoreLikeThis` můžete také vyvolat pomocí HTTP POST:
+V tomto příkladu požadavek hledá hotely podobné tomuto: `HotelId` 29.
+Místo použití HTTP GET můžete také vyvolat `MoreLikeThis` pomocí http post:
 
 ```
 POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06-Preview
@@ -52,7 +52,7 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06-Preview
 
 ### <a name="apply-filters"></a>Použití filtrů
 
-`MoreLikeThis`lze kombinovat s dalšími běžnými `$filter`parametry dotazu, jako je . Dotaz může být například omezen pouze na hotely, jejichž kategorie je "Rozpočet" a kde je hodnocení vyšší než 3,5:
+`MoreLikeThis`lze kombinovat s dalšími společnými parametry dotazů, `$filter`jako je. Dotaz lze například omezit pouze na hotely, jejichž kategorie je "rozpočet" a kde je hodnocení vyšší než 3,5:
 
 ```
 GET /indexes/hotels-sample-index/docs?moreLikeThis=20&searchFields=Description&$filter=(Category eq 'Budget' and Rating gt 3.5)&api-version=2019-05-06-Preview
@@ -60,7 +60,7 @@ GET /indexes/hotels-sample-index/docs?moreLikeThis=20&searchFields=Description&$
 
 ### <a name="select-fields-and-limit-results"></a>Výběr polí a omezení výsledků
 
-Selektor `$top` lze omezit, kolik výsledků by měla `MoreLikeThis` být vrácena v dotazu. Pole lze také vybrat `$select`pomocí . Zde jsou vybrány tři nejlepší hotely spolu s jejich ID, name a ratingem: 
+`$top` Selektor lze použít k omezení počtu výsledků, které by měly být vráceny v `MoreLikeThis` dotazu. Pole lze také vybrat pomocí `$select`. Tady se vybere první tři hotely spolu s jejich ID, názvem a hodnocením: 
 
 ```
 GET /indexes/hotels-sample-index/docs?moreLikeThis=20&searchFields=Description&$filter=(Category eq 'Budget' and Rating gt 3.5)&$top=3&$select=HotelId,HotelName,Rating&api-version=2019-05-06-Preview
@@ -68,7 +68,7 @@ GET /indexes/hotels-sample-index/docs?moreLikeThis=20&searchFields=Description&$
 
 ## <a name="next-steps"></a>Další kroky
 
-S touto funkcí můžete experimentovat pomocí libovolného nástroje pro testování webu.  Pro toto cvičení doporučujeme používat Pošťáka.
+K experimentování s touto funkcí můžete použít libovolný nástroj webového testování.  Pro toto cvičení doporučujeme použít metodu post.
 
 > [!div class="nextstepaction"]
-> [Prozkoumejte azure kognitivní vyhledávání REST API pomocí Postman](search-get-started-postman.md)
+> [Prozkoumejte rozhraní REST API pro Azure Kognitivní hledání pomocí post](search-get-started-postman.md)

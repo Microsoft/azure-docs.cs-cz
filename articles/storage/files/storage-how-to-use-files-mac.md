@@ -8,10 +8,10 @@ ms.date: 09/19/2017
 ms.author: renash
 ms.subservice: files
 ms.openlocfilehash: 0e3420e469b117d90efb2949dab828021bfedcb6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74924714"
 ---
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>Připojení sdílené složky Azure přes protokol SMB v systému macOS
@@ -27,9 +27,9 @@ Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cl
 >    ```
 
 ## <a name="prerequisites-for-mounting-an-azure-file-share-on-macos"></a>Požadavky pro připojení sdílené složky Azure v systému macOS
-* **Název účtu úložiště**: Chcete-li připojit sdílenou složku Azure, budete potřebovat název účtu úložiště.
+* **Název účtu úložiště**: Pokud chcete připojit sdílenou složku Azure, budete potřebovat název účtu úložiště.
 
-* **Klíč účtu úložiště**: Chcete-li připojit sdílenou složku Azure, budete potřebovat primární (nebo sekundární) klíč úložiště. Klíče SAS aktuálně nejsou pro připojení podporovány.
+* **Klíč účtu úložiště**: Pokud chcete připojit sdílenou složku Azure, budete potřebovat primární (nebo sekundární) klíč úložiště. Klíče SAS aktuálně nejsou pro připojení podporovány.
 
 * **Ujistěte se, že je otevřený port 445:** Protokol SMB komunikuje přes port TCP 445. Na klientském počítači (Mac) zkontrolujte, že brána firewall neblokuje port TCP 445.
 
@@ -37,22 +37,22 @@ Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cl
 1. **Otevřete Finder:** Finder je v systému macOS otevřený standardně, ale můžete se ujistit, že je aktuálně vybranou aplikací, kliknutím na ikonu obličeje macOS v Docku:  
     ![Ikona obličeje macOS](./media/storage-how-to-use-files-mac/mount-via-finder-1.png)
 
-2. **V yberte "Připojit k serveru" z nabídky "Přejít":** Pomocí cesty UNC z`\\`předpokladů převeďte počáteční dvojité zpětné lomítko ( ) na `smb://` všechna ostatní zpětná lomítka (`\`) na přeposílání lomítka (`/`). Odkaz by měl vypadat následovně: ![Dialogové okno Connect to Server (Připojit k serveru)](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
+2. **V nabídce Přejít vyberte připojit k serveru**`\\`: použijte cestu UNC z požadavků, převeďte počáteční dvojité zpětné lomítko () na `smb://` a všechna ostatní zpětná lomítka (`\`) na předávané lomítka (`/`). Odkaz by měl vypadat následovně: ![Dialogové okno Connect to Server (Připojit k serveru)](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
 
 3. **Po zobrazení výzvy k zadání uživatelského jména a hesla použijte název účtu úložiště a klíč úložiště:** Po kliknutí na Connect (Připojit) v dialogovém okně Connect to Server (Připojit k serveru) se zobrazí výzva k zadání uživatelského jména a hesla (automaticky se vyplní uživatelské jméno macOS). Máte možnost uložit název účtu úložiště a klíč účtu úložiště do klíčenky macOS.
 
-4. **Použijte sdílenou složku Azure podle potřeby**: Po nahrazení názvu sdílené položky a klíče účtu úložiště v uživatelskéjméno a heslo, bude sdílená složka připojena. Můžete ji používat stejně, jako běžně používáte místní složky nebo sdílené složky, včetně přetahování souborů do sdílené složky:
+4. **Použijte sdílenou složku Azure podle potřeby**: po nahrazení názvu sdílené složky a klíče účtu úložiště v pro uživatelské jméno a heslo bude sdílená složka připojená. Můžete ji používat stejně, jako běžně používáte místní složky nebo sdílené složky, včetně přetahování souborů do sdílené složky:
 
     ![Snímek připojené sdílené složky Azure](./media/storage-how-to-use-files-mac/mount-via-finder-3.png)
 
 ## <a name="mount-an-azure-file-share-via-terminal"></a>Připojení sdílené složky Azure přes Terminál
-1. Nahraďte `<storage-account-name>` název účtu úložiště. Po zobrazení výzvy zadejte klíč účtu úložiště a heslo. 
+1. Nahraďte `<storage-account-name>` názvem vašeho účtu úložiště. Po zobrazení výzvy zadejte klíč účtu úložiště a heslo. 
 
     ```
     mount_smbfs //<storage-account-name>@<storage-account-name>.file.core.windows.net/<share-name> <desired-mount-point>
     ```
 
-2. **Použijte sdílenou složku Azure podle potřeby**: Sdílená složka Azure se připojí v přípojném bodu určeném předchozím příkazem.  
+2. **Použijte sdílenou složku Azure podle potřeby**: sdílená složka Azure bude připojena k přípojnému bodu určenému předchozím příkazem.  
 
     ![Snímek připojené sdílené složky Azure](./media/storage-how-to-use-files-mac/mount-via-terminal-1.png)
 

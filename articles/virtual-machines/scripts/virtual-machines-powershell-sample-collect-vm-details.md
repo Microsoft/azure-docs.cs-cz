@@ -1,6 +1,6 @@
 ---
-title: Shromažďování podrobností o všech virtuálních aplikacích v předplatném pomocí PowerShellu
-description: Shromažďování podrobností o všech virtuálních aplikacích v předplatném pomocí PowerShellu
+title: Shromažďování podrobností o všech virtuálních počítačích v rámci předplatného pomocí PowerShellu
+description: Shromažďování podrobností o všech virtuálních počítačích v rámci předplatného pomocí PowerShellu
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: v-miegge
@@ -16,15 +16,15 @@ ms.date: 07/01/2019
 ms.author: v-miegge
 ms.custom: mvc
 ms.openlocfilehash: 237081380445f2b2e4168ee3afe9a3ed7544fc89
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74900207"
 ---
-# <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>Shromažďování podrobností o všech virtuálních aplikacích v předplatném pomocí PowerShellu
+# <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>Shromažďování podrobností o všech virtuálních počítačích v rámci předplatného pomocí PowerShellu
 
-Tento skript vytvoří csv, který obsahuje název virtuálního počítače, název skupiny prostředků, oblast, virtuální síť, podsíť, privátní IP adresu, typ operačního serveru a veřejnou IP adresu virtuálních počítačů v zadaném předplatném.
+Tento skript vytvoří sdílený svazek clusteru, který obsahuje název virtuálního počítače, název skupiny prostředků, oblast, Virtual Network, podsíť, privátní IP adresu, typ operačního systému a veřejnou IP adresu virtuálních počítačů v poskytnutém předplatném.
 
 Pokud ještě nemáte [předplatné Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing), vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
 
@@ -32,7 +32,7 @@ Pokud ještě nemáte [předplatné Azure](https://docs.microsoft.com/azure/guid
 
 Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
 
-Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné [https://shell.azure.com/powershell](https://shell.azure.com/powershell)kartě prohlížeče tak, že přejdete na . Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
+Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče tak, že přejdete [https://shell.azure.com/powershell](https://shell.azure.com/powershell)na. Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -70,14 +70,14 @@ $report | Export-CSV "$home/$reportName"
 ```
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
-Tento skript používá následující příkazy k vytvoření csv export podrobností o virtuálních počítačích v předplatném. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
+Tento skript používá následující příkazy k vytvoření exportu CSV s podrobnostmi o virtuálních počítačích v rámci předplatného. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 |Příkaz|Poznámky|
 |-|-|
-|[Select-AzSubscription](https://docs.microsoft.com/powershell/module/Az.Accounts/Set-AzContext)|Nastaví klienta, předplatné a prostředí pro rutiny pro použití v aktuální relaci.|
-|[Získat-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Get-AzVM)|Získá vlastnosti virtuálního počítače.|
+|[Vybrat – AzSubscription](https://docs.microsoft.com/powershell/module/Az.Accounts/Set-AzContext)|Nastaví klienta, předplatné a prostředí pro rutiny, které se použijí v aktuální relaci.|
+|[Get-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Get-AzVM)|Získá vlastnosti virtuálního počítače.|
 |[Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzPublicIpAddress)|Získá veřejnou IP adresu.|
-|[Rozhraní Get-AzNetwork](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzNetworkInterface)|Získá síťové rozhraní.|
+|[Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzNetworkInterface)|Načte síťové rozhraní.|
 
 ## <a name="next-steps"></a>Další kroky
 

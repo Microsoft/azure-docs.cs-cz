@@ -1,6 +1,6 @@
 ---
-title: Zadejte klíč zadaný zákazníkem pro požadavek na úložiště objektů Blob s rozhraním .NET – Azure Storage
-description: Zjistěte, jak zadat klíč zadaný zákazníkem pro požadavek na úložiště objektů Blob pomocí rozhraní .NET.
+title: Zadejte klíč poskytnutý zákazníkem pro požadavek na úložiště objektů BLOB pomocí .NET-Azure Storage
+description: Naučte se, jak zadat klíč poskytnutý zákazníkem pro požadavek na úložiště objektů BLOB pomocí .NET.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,25 +10,25 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: ea8254f108aed9d40e6970a27409035b1e10ab41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74806996"
 ---
-# <a name="specify-a-customer-provided-key-on-a-request-to-blob-storage-with-net"></a>Určení klíče poskytnutého zákazníkem pro požadavek na úložiště objektů Blob s rozhraním .NET
+# <a name="specify-a-customer-provided-key-on-a-request-to-blob-storage-with-net"></a>Určení klíče poskytovaného zákazníkem pro požadavek na úložiště objektů BLOB s využitím .NET
 
-Klienti, kteří pořizují požadavky na úložiště objektů Blob Azure, mají možnost poskytnout šifrovací klíč na individuální požadavek. Zahrnutí šifrovacího klíče v požadavku poskytuje podrobnou kontrolu nad nastavením šifrování pro operace úložiště objektů Blob. Klíče poskytované zákazníkem (preview) lze uložit v trezoru klíčů Azure nebo v jiném úložišti klíčů.
+Klienti, kteří provádějí požadavky na úložiště objektů BLOB v Azure, mají možnost zadat šifrovací klíč pro jednotlivé požadavky. Zahrnutí šifrovacího klíče na žádost poskytuje podrobnou kontrolu nad nastavením šifrování pro operace BLOB Storage. Klíče poskytované zákazníky (Preview) je možné uložit v Azure Key Vault nebo v jiném úložišti klíčů.
 
-Tento článek ukazuje, jak zadat klíč zadaný zákazníkem na základě požadavku s rozhraním .NET.
+V tomto článku se dozvíte, jak zadat klíč poskytnutý zákazníkem v žádosti s .NET.
 
 [!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
 
-Další informace o tom, jak se ověřovat pomocí klientské knihovny Azure Identity z Azure Storage, najdete v části **Ověření pomocí knihovny Azure Identity** v [tématu Autorizace přístupu k objektům BLOB a frontám s Azure Active Directory a spravovaným i pro prostředky Azure](../common/storage-auth-aad-msi.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#authenticate-with-the-azure-identity-library).
+Další informace o tom, jak ověřit pomocí klientské knihovny Azure identity z Azure Storage, najdete v části s názvem **ověřování pomocí knihovny identit Azure** v tématu [autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory a spravovaných identit pro prostředky Azure](../common/storage-auth-aad-msi.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#authenticate-with-the-azure-identity-library).
 
-## <a name="example-use-a-customer-provided-key-to-upload-a-blob"></a>Příklad: K nahrání objektu blob pomocí klíče poskytnutého zákazníkem
+## <a name="example-use-a-customer-provided-key-to-upload-a-blob"></a>Příklad: použití klíčového zákazníka k nahrání objektu BLOB
 
-Následující příklad vytvoří klíč zadaný zákazníkem a použije tento klíč k nahrání objektu blob. Kód nahraje blok a pak potvrdí seznam blokování k zápisu objektu blob do Služby Azure Storage.
+Následující příklad vytvoří klíč poskytnutý zákazníkem a použije tento klíč k nahrání objektu BLOB. Kód nahraje blok a pak potvrdí seznam blokování, aby napsal objekt blob do Azure Storage.
 
 ```csharp
 async static Task UploadBlobWithClientKey(string accountName, string containerName,
@@ -74,5 +74,5 @@ async static Task UploadBlobWithClientKey(string accountName, string containerNa
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Šifrování Azure Storage pro data v klidovém stavu](../common/storage-service-encryption.md)
-- [Autorizace přístupu k objektům BLOB a frontám pomocí Služby Azure Active Directory a spravovaných identit pro prostředky Azure](../common/storage-auth-aad-msi.md)
+- [Azure Storage šifrování dat v klidovém umístění](../common/storage-service-encryption.md)
+- [Autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory a spravovaných identit pro prostředky Azure](../common/storage-auth-aad-msi.md)

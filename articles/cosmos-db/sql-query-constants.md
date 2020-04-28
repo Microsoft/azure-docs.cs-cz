@@ -1,35 +1,35 @@
 ---
-title: Konstanty SQL v Db Azure Cosmos
-description: Informace o tom, jak se konstanty dotazů SQL v Azure Cosmos DB používají k reprezentaci konkrétní hodnoty dat
+title: Konstanty SQL v Azure Cosmos DB
+description: Přečtěte si, jak se konstanty dotazů SQL v Azure Cosmos DB používají k vyjádření konkrétní hodnoty dat.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
 ms.openlocfilehash: cca62c358037dbe99fd16746ee081b1540161df2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74873416"
 ---
-# <a name="azure-cosmos-db-sql-query-constants"></a>Konstanty dotazu SQL azure cosmos DB  
+# <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB konstanty dotazů SQL  
 
- Konstanta, označovaná také jako literál nebo skalární hodnota, je symbol, který představuje určitou hodnotu dat. Formát konstanty závisí na datovém typu hodnoty, kterou představuje.  
+ Konstanta, která se označuje také jako literál nebo skalární hodnota, je symbol, který představuje konkrétní datovou hodnotu. Formát konstanty závisí na datovém typu hodnoty, kterou představuje.  
   
  **Podporované skalární datové typy:**  
   
 |**Typ**|**Pořadí hodnot**|  
 |-|-|  
-|**Nedefinované**|Jedna hodnota: **nedefinovaná**|  
-|**Null**|Jedna hodnota: **null**|  
+|**Nedefinované**|Jedna hodnota: **Nedefinováno**|  
+|**Platnost**|Jedna hodnota: **null**|  
 |**Logická hodnota**|Hodnoty: **false**, **true**.|  
-|**Číslo**|Dvojité přesné číslo s plovoucí desetinnou desetinnou hlavou, standard IEEE 754.|  
-|**Řetězec**|Posloupnost nula nebo více znaků Unicode. Řetězce musí být uzavřeny v jednoduché nebo dvojité uvozovky.|  
-|**Pole**|Posloupnost nula nebo více prvků. Každý prvek může být hodnotou libovolného skalárního datového typu, s výjimkou **undefined**.|  
-|**Objekt**|Neuspořádaná sada nulových nebo více párů název/hodnota. Název je řetězec Unicode, hodnota může být libovolného skalárního datového typu, s výjimkou **Undefined**.|  
+|**Automatické**|Číslo s plovoucí desetinnou čárkou a dvojitou přesností, Standard IEEE 754.|  
+|**Řetězec**|Sekvence nula nebo více znaků Unicode. Řetězce musí být uzavřeny v jednoduchých nebo dvojitých uvozovkách.|  
+|**Pole**|Sekvence nula nebo více prvků. Každý prvek může být hodnota jakéhokoli skalárního datového typu, s výjimkou **nedefinovaného**.|  
+|**Předmětů**|Neuspořádaná sada nula nebo více párů název/hodnota. Název je řetězec Unicode, hodnota může být jakýkoli skalární datový typ, s výjimkou **nedefinovaného**.|  
   
-## <a name="syntax"></a><a name="bk_syntax"></a>Syntaxe
+## <a name="syntax"></a><a name="bk_syntax"></a>Syntaktick
   
 ```sql  
 <constant> ::=  
@@ -59,27 +59,27 @@ ms.locfileid: "74873416"
   
 ```  
   
-##  <a name="arguments"></a><a name="bk_arguments"></a>Argumenty
+##  <a name="arguments"></a><a name="bk_arguments"></a>Náhodné
   
 * `<undefined_constant>; Undefined`  
   
-  Představuje nedefinovanou hodnotu typu Undefined.  
+  Představuje nedefinovanou hodnotu typu undefined.  
   
 * `<null_constant>; null`  
   
-  Představuje **hodnotu null** typu **Null**.  
+  Reprezentuje hodnotu **null** typu s hodnotou **null**.  
   
 * `<boolean_constant>`  
   
-  Představuje konstantu typu Logická hodnota.  
+  Představuje konstantu typu Boolean.  
   
 * `false`  
   
-  Představuje **false** hodnotu typu Logická hodnota.  
+  Představuje **falešnou** hodnotu typu Boolean.  
   
 * `true`  
   
-  Představuje **skutečnou** hodnotu typu Logická hodnota.  
+  Představuje hodnotu **true** typu Boolean.  
   
 * `<number_constant>`  
   
@@ -87,11 +87,11 @@ ms.locfileid: "74873416"
   
 * `decimal_literal`  
   
-  Desetinné literály jsou čísla reprezentovaná buď desítkovým zápisem, nebo vědeckýzápis.  
+  Desítkové literály jsou čísla reprezentovaná buď pomocí desítkového zápisu, nebo pomocí vědeckého zápisu.  
   
 * `hexadecimal_literal`  
   
-  Šestnáctkové literály jsou čísla reprezentovaná pomocí předpony 0x následovaná jednou nebo více šestnáctkovými číslicemi.  
+  Šestnáctkové literály jsou čísla reprezentovaná pomocí prefixu "0x" následovaný jednou nebo více šestnáctkovými číslicemi.  
   
 * `<string_constant>`  
   
@@ -99,24 +99,24 @@ ms.locfileid: "74873416"
   
 * `string _literal`  
   
-  Řetězcové literály jsou řetězce Unicode reprezentované posloupností nula nebo více znaků Unicode nebo řídicích sekvencí. Řetězcové literály jsou uzavřeny v jednoduchých uvozovkách (apostrof: ' ) nebo uvozovkách (uvozovky: ").  
+  Řetězcové literály jsou řetězce Unicode reprezentované sekvencí nula nebo více znaků Unicode nebo řídicí sekvence. Řetězcové literály jsou uzavřeny v jednoduchých uvozovkách (apostrof: ') nebo dvojité uvozovky (uvozovky: ").  
   
-  Následující únikové sekvence jsou povoleny:  
+  Jsou povoleny následující řídicí sekvence:  
   
-|**Úniková sekvence**|**Popis**|**znak Unicode**|  
+|**Řídicí sekvence**|**Popis**|**znak Unicode**|  
 |-|-|-|  
-|\\'|apostrof (')|U+0027|  
-|\\"|uvozovky (")|U+0022|  
-|\\\ |reverzní solidus\\( )|U+005C|  
-|\\/|solidus (/)|U+002F|  
-|\b|Backspace|U+0008|  
-|\f|informační kanál formuláře|U +000C|  
-|\n|posuv řádků|U+000A|  
-|\r|návrat na začátek řádku|U+000D|  
-|\t|Kartě|U+0009|  
-|\uXXXX|Znak Unicode definovaný 4 šestnáctkovými číslicemi.|U+XXXX|  
+|\\'|apostrof (')|U + 0027|  
+|\\"|uvozovky (")|U + 0022|  
+|\\\ |obrácené lomítko (\\)|U + 005C|  
+|\\/|lomítko (/)|U + 002F|  
+|\b|BACKSPACE|U + 0008|  
+|\f|informační kanál formuláře|U + 000C|  
+|\n|čárový kanál|U + 000A|  
+|\r|návrat na začátek řádku|U + 000D|  
+|\t|rážky|U + 0009|  
+|\uXXXX|Znak Unicode definovaný 4 šestnáctkovými číslicemi.|U + XXXX|  
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Ukázky služby Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Ukázky Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Modelování dat dokumentů](modeling-data.md)
