@@ -1,7 +1,7 @@
 ---
-title: Vlastní webové rozhraní API dovednosti v skillsets
+title: Vlastní dovednosti webového rozhraní API v dovednosti
 titleSuffix: Azure Cognitive Search
-description: Rozšiřte možnosti dovedností Azure Cognitive Search voláním na webová api. Pomocí vlastní webové rozhraní API dovednosti integrovat vlastní kód.
+description: Rozšíření schopností Azure Kognitivní hledání dovednosti voláním na webová rozhraní API. Použijte vlastní dovednosti webového rozhraní API a integrujte svůj vlastní kód.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,26 +9,26 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 29928d78c2cfc2f21def363341f8383c4efa89d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74484121"
 ---
-# <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Dovednosti vlastního webového rozhraní API v kanálu obohacení Azure Cognitive Search
+# <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Vlastní dovednosti webového rozhraní API v kanálu pro rozšíření Azure Kognitivní hledání
 
-Vlastní **webové rozhraní API** dovednosti umožňuje rozšířit obohacení AI voláním koncového bodu webového rozhraní API poskytující vlastní operace. Podobně jako vestavěné dovednosti, **vlastní webové rozhraní API** dovednost má vstupy a výstupy. V závislosti na vstupech vaše webové rozhraní API obdrží datovou část JSON při spuštění indexeru a výstupy datové části JSON jako odpověď, spolu s kódem stavu úspěchu. Očekává se, že odpověď bude mít výstupy určené vlastní dovedností. Jakákoli jiná odpověď je považována za chybu a nejsou prováděny žádné obohacení.
+**Vlastní dovednosti webového rozhraní API** umožňuje rozšířit rozšíření AI voláním koncového bodu webového rozhraní API, který poskytuje vlastní operace. Podobně jako u integrovaných dovedností má **vlastní dovednost webového rozhraní API** vstupy a výstupy. V závislosti na vstupech vaše webové rozhraní API obdrží datovou část JSON, když indexer běží, a vypíše datovou část JSON jako odpověď spolu s kódem stavu úspěch. Očekává se, že odpověď bude mít výstupy určené vaší vlastní dovedností. Jakákoli jiná odpověď se považuje za chybu a neprovádí se žádné obohacení.
 
-Struktura datové části JSON jsou popsány dále v tomto dokumentu.
+Struktura datových částí JSON je podrobněji popsána v tomto dokumentu.
 
 > [!NOTE]
-> Indexer se bude opakovat dvakrát pro určité standardní kódy stavu HTTP vrácené z webového rozhraní API. Tyto stavové kódy HTTP jsou: 
+> Indexer se dvakrát opakuje u určitých standardních stavových kódů HTTP vrácených z webového rozhraní API. Tyto stavové kódy HTTP: 
 > * `502 Bad Gateway`
 > * `503 Service Unavailable`
 > * `429 Too Many Requests`
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Custom.WebApiSkill
+Microsoft. dovednosti. Custom. WebApiSkill
 
 ## <a name="skill-parameters"></a>Parametry dovednosti
 
@@ -36,20 +36,20 @@ U parametrů se rozlišují malá a velká písmena.
 
 | Název parametru     | Popis |
 |--------------------|-------------|
-| Uri | Identifikátor URI webového rozhraní API, do kterého bude odeslána datová část _JSON._ Je povoleno pouze schéma **URI https.** |
-| httpMetoda | Metoda, která má být používána při odesílání datové části. Povolené metody `PUT` jsou nebo`POST` |
-| httpZáhlaví | Kolekce párů klíč hodnota, kde klíče představují názvy hlaviček a hodnoty představují hodnoty záhlaví, které budou odeslány do webového rozhraní API spolu s datovou částí. Následující záhlaví jsou zakázána v této `Accept`kolekci: `Content-Length` `Content-Type`, `Cookie` `Accept-Charset` `Accept-Encoding`, `Upgrade`, , , `Host`, `TE`, , , , , ,`Via` |
-| timeout | (Nepovinné) Pokud je zadán, označuje časový čas pro klienta http volání rozhraní API. Musí být formátován jako hodnota XSD "dayTimeDuration" (omezená podmnožina hodnoty [trvání ISO 8601).](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) Například `PT60S` po dobu 60 sekund. Pokud není nastavena, je vybrána výchozí hodnota 30 sekund. Časový limit lze nastavit na maximálně 230 sekund a minimálně 1 sekundu. |
-| batchSize | (Nepovinné) Označuje, kolik "datových záznamů" (viz struktura datové části _JSON_ níže) bude odesláno na volání rozhraní API. Pokud není nastaveno, je vybráno výchozí 1000. Doporučujeme použít tento parametr k dosažení vhodného kompromisu mezi propustností indexování a zatížením rozhraní API. |
-| degreeOfParallelism | (Nepovinné) Pokud je zadán, označuje počet volání indexeru bude provádět paralelně ke koncovému bodu, který jste zadali. Tuto hodnotu můžete snížit, pokud koncový bod selhává pod příliš vysokým zatížením požadavku, nebo jej zvýšit, pokud je koncový bod schopen přijmout další požadavky a chcete zvýšit výkon indexeru.  Pokud není nastavena, použije se výchozí hodnota 5. DegreeOfParallelism lze nastavit na maximálně 10 a minimálně 1. |
+| identifikátor URI | Identifikátor URI webového rozhraní API, na které se pošle datová část _JSON_ Je povolené jenom schéma identifikátoru URI **protokolu HTTPS** . |
+| httpMethod | Metoda, která se má použít při odesílání datové části Povolené metody jsou `PUT` nebo`POST` |
+| httpHeaders | Kolekce párů klíč-hodnota, kde klíče reprezentují názvy a hodnoty hlaviček, představuje hodnoty hlaviček, které budou odeslány do webového rozhraní API spolu s datovou částí. Následující záhlaví jsou v této kolekci zakázaná: `Accept`, `Accept-Charset`, `Accept-Encoding`, `Content-Length`, `Content-Type`, `Cookie`, `Host`, `TE`,, `Upgrade``Via` |
+| timeout | Volitelné Když se tato parametr zadá, označuje časový limit pro klienta http, který provádí volání rozhraní API. Musí být formátován jako hodnota XSD "dayTimeDuration" (omezená podmnožina hodnoty [Duration ISO 8601](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) ). Například `PT60S` po dobu 60 sekund. Pokud není nastavená, vybere se výchozí hodnota 30 sekund. Časový limit lze nastavit na maximálně 230 sekund a minimálně 1 sekundu. |
+| batchSize | Volitelné Určuje, kolik záznamů dat (viz struktura datové části _JSON_ níže) se pošle na volání rozhraní API. Pokud není nastavená, vybere se výchozí hodnota 1000. Doporučujeme použít tento parametr k dosažení vhodného kompromisu mezi propustností indexování a zatížením v rozhraní API. |
+| degreeOfParallelism | Volitelné Když se tato hodnota zadá, označuje počet volání, která indexer provede paralelně se zadaným koncovým bodem. Tuto hodnotu můžete snížit, pokud se Váš koncový bod nedaří s příliš vysokým zatížením žádosti nebo ho zvýšit, pokud je váš koncový bod schopný přijmout více požadavků a vy chcete zvýšit výkon indexeru.  Pokud není nastavená, použije se výchozí hodnota 5. DegreeOfParallelism může být nastavená na maximálně 10 a minimálně 1. |
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
-Pro tuto dovednost neexistují žádné "předdefinované" vstupy. Můžete zvolit jedno nebo více polí, která by již byla k dispozici v době provádění této dovednosti jako vstupy a datová část _JSON_ odeslaná do webového rozhraní API bude mít různá pole.
+Pro tuto dovednost neexistují žádné předdefinované vstupy. Můžete vybrat jedno nebo více polí, která budou již k dispozici v době provádění této dovednosti, jako vstupy a datová část _JSON_ odesílaná do webového rozhraní API budou mít různá pole.
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
-Pro tuto dovednost neexistují žádné "předdefinované" výstupy. V závislosti na odpovědi webového rozhraní API vrátí, přidejte výstupní pole tak, aby mohly být vyzvednuty z odpovědi _JSON._
+Pro tuto dovednost nejsou k dispozici žádné předdefinované výstupy. V závislosti na reakci, kterou webové rozhraní API vrátí, přidejte výstupní pole tak, aby bylo možné z odpovědi _JSON_ vybrat.
 
 
 ## <a name="sample-definition"></a>Definice vzorku
@@ -82,15 +82,15 @@ Pro tuto dovednost neexistují žádné "předdefinované" výstupy. V závislos
         ]
       }
 ```
-## <a name="sample-input-json-structure"></a>Vzorový vstup JSON struktura
+## <a name="sample-input-json-structure"></a>Ukázka vstupní struktury JSON
 
-Tato struktura _JSON_ představuje datovou část, která bude odeslána do webového rozhraní API.
-Vždy bude dodržovat tato omezení:
+Tato struktura _JSON_ představuje datovou část, která se pošle do webového rozhraní API.
+Vždy se bude řídit těmito omezeními:
 
-* Entita nejvyšší úrovně `values` je volána a bude pole objektů. Počet těchto objektů bude maximálně`batchSize`
-* Každý objekt `values` v poli bude mít
-    * Vlastnost, `recordId` která je **jedinečný** řetězec, který slouží k identifikaci tohoto záznamu.
-    * Vlastnost, `data` která je objektjkem _JSON._ Pole vlastnosti `data` budou odpovídat "názvům" `inputs` uvedeným v části definice dovednosti. Hodnota těchto polí bude podoby těchto `source` polí (která mohou popojít z pole v dokumentu nebo potenciálně z jiné dovednosti)
+* Je volána `values` entita nejvyšší úrovně a bude polem objektů. Počet takových objektů bude maximálně`batchSize`
+* Každý objekt v `values` poli bude mít
+    * `recordId` Vlastnost, která je **jedinečný** řetězec, který slouží k identifikaci daného záznamu.
+    * `data` Vlastnost, která je objektem _JSON_ . Pole `data` vlastnosti budou odpovídat "názvům" uvedeným v `inputs` části definice dovednosti. Hodnota těchto polí bude z `source` těchto polí (což může být z pole v dokumentu nebo potenciálně z jiné dovednosti).
 
 ```json
 {
@@ -135,18 +135,18 @@ Vždy bude dodržovat tato omezení:
 }
 ```
 
-## <a name="sample-output-json-structure"></a>Vzorový výstup JSON struktura
+## <a name="sample-output-json-structure"></a>Ukázka výstupní struktury JSON
 
-"Výstup" odpovídá odpovědi vrácené z webového rozhraní API. Webové rozhraní API by mělo vrátit pouze datovou část `Content-Type` _JSON_ (ověřenou pohledem na hlavičku odpovědi) a mělo by splňovat následující omezení:
+"Výstup" odpovídá odpovědi vrácené z vašeho webového rozhraní API. Webové rozhraní API by mělo vracet jenom datovou část _JSON_ (ověřená tak `Content-Type` , že si prohlíží hlavičku odpovědi) a má splnit tato omezení:
 
-* Měla by existovat entita `values` nejvyšší úrovně, která by měla být pole objektů.
-* Počet objektů v poli by měl být stejný jako počet objektů odeslaných do webového rozhraní API.
+* Měla by být volána `values` entita nejvyšší úrovně, která by měla být pole objektů.
+* Počet objektů v poli musí být stejný jako počet objektů odeslaných do webového rozhraní API.
 * Každý objekt by měl mít:
-   * Vlastnost `recordId`
-   * Vlastnost, `data` což je objekt, kde pole jsou obohacení odpovídající `output` "názvy" v a jehož hodnota je považována za obohacení.
-   * Vlastnost, `errors` pole se seznamem všech chyb, které byly zjištěny, které budou přidány do historie provádění indexeru. Tato vlastnost je povinná, `null` ale může mít hodnotu.
-   * Vlastnost, `warnings` pole se seznamem všech upozornění, která byla zjištěna a která budou přidána do historie provádění indexeru. Tato vlastnost je povinná, `null` ale může mít hodnotu.
-* Objekty v `values` poli nemusí být ve stejném pořadí `values` jako objekty v poli odeslané jako požadavek webového rozhraní API. Však `recordId` se používá pro korelaci, takže všechny `recordId` záznamy v odpovědi obsahující a, která nebyla součástí původního požadavku na webové rozhraní API budou zahozeny.
+   * `recordId` Vlastnost
+   * `data` Vlastnost, která je objektem, kde jsou obohacena pole s "názvy" v oblasti `output` a jejíž hodnota je považována za obohacení.
+   * `errors` Vlastnost, která obsahuje seznam všech zjištěných chyb, které budou přidány do historie spouštění indexeru. Tato vlastnost je povinná, ale může `null` mít hodnotu.
+   * `warnings` Vlastnost, která obsahuje seznam všech zjištěných upozornění, která budou přidána do historie spouštění indexeru. Tato vlastnost je povinná, ale může `null` mít hodnotu.
+* Objekty v `values` poli nemusí být ve stejném pořadí jako objekty v `values` poli odeslané jako požadavek do webového rozhraní API. `recordId` Nicméně se používá pro korelaci, takže jakýkoliv záznam v odpovědi obsahující a `recordId` , který nebyl součástí původní žádosti webového rozhraní API, se zahodí.
 
 ```json
 {
@@ -194,15 +194,15 @@ Vždy bude dodržovat tato omezení:
 ```
 
 ## <a name="error-cases"></a>Chybové případy
-Kromě toho, že webové rozhraní API není k dispozici nebo odesíláte neúspěšné stavové kódy, jsou následující případy považovány za chybné případy:
+Kromě nedostupného webového rozhraní API nebo odeslání stavových kódů, které nejsou úspěšné, se považují za chybné případy následující:
 
-* Pokud webové rozhraní API vrátí kód stavu úspěchu, `application/json` ale odpověď označuje, že není, je odpověď považována za neplatnou a nebude provedeno žádné obohacení.
-* Pokud jsou v `recordId` poli odpovědí `values` **neplatné** (s neuvedeným v původním požadavku nebo s duplicitními hodnotami), nebude pro **tyto** záznamy provedeno žádné obohacení.
+* Pokud webové rozhraní API vrátí stavový kód úspěchu, ale odezva indikuje, že `application/json` není, odpověď se považuje za neplatnou a neprovede se žádná rozšíření.
+* Pokud jsou záznamy **invalid** v poli Response `recordId` `values` neplatné (nejsou v původním požadavku nebo mají duplicitní hodnoty), pro **tyto** záznamy se neprovede žádné obohacení.
 
-V případech, kdy webové rozhraní API není k dispozici nebo vrátí chybu HTTP, bude do historie spuštění indexeru přidána popisná chyba se všemi dostupnými podrobnostmi o chybě PROTOKOLU HTTP.
+V případech, kdy webové rozhraní API není k dispozici nebo vrátí chybu protokolu HTTP, se do historie spouštění indexeru přidá popisné chyba s podrobnostmi o chybě HTTP.
 
 ## <a name="see-also"></a>Viz také
 
-+ [Jak definovat sadu dovedností](cognitive-search-defining-skillset.md)
-+ [Přidání vlastních dovedností do kanálu obohacení umělou ai.](cognitive-search-custom-skill-interface.md)
-+ [Příklad: Vytvoření vlastní dovednosti pro obohacení umělou aicí](cognitive-search-create-custom-skill-example.md)
++ [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
++ [Přidání vlastní dovednosti do kanálu pro obohacení AI](cognitive-search-custom-skill-interface.md)
++ [Příklad: Vytvoření vlastní dovednosti pro obohacení AI](cognitive-search-create-custom-skill-example.md)

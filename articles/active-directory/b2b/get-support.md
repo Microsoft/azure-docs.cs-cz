@@ -1,6 +1,6 @@
 ---
-title: Získání podpory pro spolupráci b2B – Azure Active Directory
-description: Jaké je prostředí podpory pro spolupráci služby Azure Active Directory B2B?
+title: Získávání podpory spolupráce B2B – Azure Active Directory
+description: Jaké jsou možnosti podpory pro Azure Active Directory spolupráci B2B?
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -13,30 +13,30 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 00817acf93295becefab2d1a61de84a3f5519338
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74272755"
 ---
 # <a name="getting-support-for-b2b-collaboration"></a>Získání podpory pro spolupráci B2B
 
-Prošel jste si dokumentaci, udělal jste správné věci, ale pořád nemůžete něco zpracovat? Otevřete lístek podpory (vyžaduje plán podpory):
+Přečetli jste si dokumentaci, jste si udělali správné věci, ale pořád nemůžete získat něco, co by fungovalo? Otevřete lístek podpory (vyžaduje plán podpory):
 
-1. Na [webu Azure Portal](https://portal.azure.com)přejděte na okno Nápověda a podpora a vyberte Nový požadavek na podporu:
+1. V [Azure Portal](https://portal.azure.com)přejděte do okna pomoc a podpora a vyberte Nová žádost o podporu:
    - Typ problému: Technický
-   - Předplatné: Zvolte ovlivněné předplatné.
-     - Služba: Služba Active Directory
-     - Plán podpory: Zvolte příslušný plán podpory
+   - Předplatné: vyberte ovlivněné předplatné.
+     - Služba: Active Directory
+     - Plán podpory: vyberte příslušný plán podpory.
 
-   ![Snímek obrazovky s novou žádostí o podporu](media/get-support/new-support-request.png)
+   ![Snímek obrazovky znázorňující novou žádost o podporu](media/get-support/new-support-request.png)
 
 2. Popište svůj problém:
-   - Zvolte příslušnou závažnost, která odráží vaše potřeby.
+   - Vyberte odpovídající závažnost, která odpovídá vašim potřebám.
    - Zvolit typ problému jako správu uživatelů a skupin
-   - Zvolte kategorii jako přidání uživatelů (B2B)
-   - Zahrnout všechny chybové zprávy, jako je correlationID, ovlivněné uživatele a tak dále.
+   - Zvolit kategorii jako přidávání uživatelů (B2B)
+   - Zahrňte všechny chybové zprávy, jako je například ID korelace, ovlivnění uživatelé atd.
 
    ![Snímek obrazovky s popisem problému s lístkem podpory](media/get-support/problem-description.png)
 
-3. Chcete-li, aby vás zástupce podpory kontaktoval pro další řešení potíží, přidejte kontaktní informace.
+3. Aby se mohl zástupce podpory obrátit na další řešení potíží, přidejte své kontaktní informace.

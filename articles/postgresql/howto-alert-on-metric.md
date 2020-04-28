@@ -1,88 +1,88 @@
 ---
-title: Konfigurace výstrah – portál Azure – databáze Azure pro PostgreSQL – jeden server
-description: Tento článek popisuje, jak nakonfigurovat a přistupovat k upozorněním metrik pro Azure Database for PostgreSQL – jeden server z webu Azure Portal.
+title: Konfigurace výstrah – Azure Portal-Azure Database for PostgreSQL – jeden server
+description: Tento článek popisuje, jak nakonfigurovat a přistupovat k výstrahám metrik pro Azure Database for PostgreSQL-Single server z Azure Portal.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: fe099dcb49d176d27466c08749a5873904d1ae2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74766833"
 ---
-# <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---single-server"></a>Nastavení výstrah na metriky pro Azure Database for PostgreSQL – jeden server pomocí portálu Azure Portal
+# <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---single-server"></a>K nastavení výstrah pro metriky pro Azure Database for PostgreSQL jeden server použijte Azure Portal.
 
-Tento článek ukazuje, jak nastavit azure databáze pro postgreSQL výstrahy pomocí portálu Azure. Můžete obdržet upozornění na základě metrik monitorování pro vaše služby Azure.
+V tomto článku se dozvíte, jak nastavit výstrahy Azure Database for PostgreSQL pomocí Azure Portal. Můžete obdržet upozornění na základě metrik monitorování vašich služeb Azure.
 
-Výstraha se aktivuje, když hodnota zadané metriky překročí prahovou hodnotu, kterou přiřadíte. Výstraha se aktivuje při prvním splnění podmínky a poté, když tato podmínka již není splněna. 
+Výstraha se aktivuje, když hodnota zadané metriky překračuje prahovou hodnotu, kterou přiřadíte. Tato výstraha se aktivuje při prvním splnění podmínky a následně v případě, že se už podmínka nesplní. 
 
-Výstrahu můžete nakonfigurovat tak, aby při aktivaci spustila následující akce:
-* Posílejte e-mailová oznámení správci služby a spolusprávcům.
+Můžete nakonfigurovat výstrahu, která provede následující akce při triggerech:
+* Odesílat e-mailová oznámení správcům služby a spolusprávcům.
 * Odešlete e-mail na další e-maily, které zadáte.
-* Zavolejte webhook.
+* Zavolejte Webhook.
 
-Informace o pravidlech výstrah můžete konfigurovat a získat pomocí:
-* [Portál Azure](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+Můžete nakonfigurovat a získat informace o pravidlech výstrah pomocí:
+* [portál Azure](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
 * [Rozhraní REST API služby Azure Monitor](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
-## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Vytvoření pravidla výstrahy pro metriku z webu Azure Portal
-1. Na [webu Azure Portal](https://portal.azure.com/)vyberte Azure Database for PostgreSQL server, který chcete monitorovat.
+## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Vytvoření pravidla výstrahy na metrikě z Azure Portal
+1. V [Azure Portal](https://portal.azure.com/)vyberte server Azure Database for PostgreSQL, který chcete monitorovat.
 
-2. V části **Monitorování** na postranním panelu vyberte **Výstrahy,** jak je znázorněno:
+2. V části **monitorování** na bočním panelu vyberte **výstrahy** , jak je znázorněno níže:
 
-   ![Vybrat pravidla výstrahy](./media/howto-alert-on-metric/2-alert-rules.png)
+   ![Vybrat pravidla výstrah](./media/howto-alert-on-metric/2-alert-rules.png)
 
-3. Vyberte **Přidat upozornění na metriku** (+ ikona).
+3. Vyberte **Přidat upozornění metriky** (+ ikona).
 
-4. Otevře se stránka **Vytvořit pravidlo,** jak je znázorněno níže. Vyplňte požadované informace:
+4. Otevře se stránka **vytvořit pravidlo** , jak je znázorněno níže. Vyplňte požadované informace:
 
-   ![Přidat formulář upozornění na metriku](./media/howto-alert-on-metric/4-add-rule-form.png)
+   ![Přidat formulář upozornění metriky](./media/howto-alert-on-metric/4-add-rule-form.png)
 
 5. V části **Podmínka** vyberte **Přidat podmínku**.
 
-6. Vyberte metriku ze seznamu signálů, na které chcete být upozorněni. V tomto příkladu vyberte "Procento úložiště".
+6. Vyberte metriku ze seznamu signálů, na kterých se má upozornit. V tomto příkladu vyberte "úložiště v procentech".
    
    ![Vybrat metriku](./media/howto-alert-on-metric/6-configure-signal-logic.png)
 
-7. Nakonfigurujte logiku výstrah včetně **podmínky** (např. "Větší než"), **Práh** (např. 85 procent), **Agregace času**, **Časové období,** které musí být pravidlo metriky splněno, než se aktivuje výstraha (např. "Za posledních 30 minut"), a **frekvence**.
+7. Nakonfigurujte logiku výstrahy včetně **podmínky** (např. "Větší než"), **prahová hodnota** (ex. 85 procent), **Časová agregace**, časový **interval** , po který musí být pravidlo metriky splněno před triggery výstrahy (např. Za posledních 30 minut a **frekvence**.
    
-   Po dokončení vyberte **Hotovo.**
+   Po dokončení vyberte **Hotovo** .
 
    ![Vybrat metriku](./media/howto-alert-on-metric/7-set-threshold-time.png)
 
-8. V části **Skupiny akcí** vyberte **Vytvořit nový** a vytvořte novou skupinu pro příjem oznámení o výstraze.
+8. V části **skupiny akcí** vyberte **vytvořit novou** a vytvořte novou skupinu pro příjem oznámení o výstraze.
 
-9. Vyplňte formulář "Přidat skupinu akcí" s názvem, krátkým názvem, předplatným a skupinou prostředků.
+9. Vyplňte formulář přidat skupinu akcí s názvem, krátkým názvem, předplatným a skupinou prostředků.
 
-10. Konfigurace typu akce **E-mail/SMS/Push/Hlas.**
+10. Nakonfigurujte typ akce **e-mail/SMS/Push/Voice** .
     
-    Zvolte "E-mail role Správce prostředků Azure" chcete-li vybrat vlastníky předplatného, přispěvatelé a čtenáři dostávat oznámení.
+    Zvolte možnost Azure Resource Manager role e-mailu a vyberte vlastníky, přispěvatele a čtenáři předplatného, kteří budou dostávat oznámení.
    
-    Volitelně zadejte platný identifikátor URI v poli **Webhook,** pokud chcete, aby byl volán při požáru výstrahy.
+    V případě potřeby zadejte do pole **Webhooku** platný identifikátor URI, pokud chcete, aby byla vyvolána, když se výstraha aktivuje.
 
-    Po dokončení vyberte **ok.**
+    Po dokončení vyberte **OK** .
 
     ![Skupina akcí](./media/howto-alert-on-metric/10-action-group-type.png)
 
-11. Zadejte název pravidla výstrahy, popis a závažnost.
+11. Zadejte název, popis a závažnost pravidla výstrahy.
 
     ![Skupina akcí](./media/howto-alert-on-metric/11-name-description-severity.png) 
 
-12. Chcete-li **výstrahu** vytvořit, vyberte vytvořit pravidlo výstrahy.
+12. Vyberte **vytvořit pravidlo výstrahy** a vytvořte výstrahu.
 
-    Během několika minut je výstraha aktivní a aktivuje se, jak bylo popsáno dříve.
+    Během několika minut je výstraha aktivní a triggery, jak je popsáno výše.
 
 ## <a name="manage-your-alerts"></a>Správa výstrah
 Jakmile vytvoříte výstrahu, můžete ji vybrat a provést následující akce:
 
-* Zobrazení grafu znázorňujícího prahovou hodnotu metriky a skutečné hodnoty z předchozího dne relevantní pro tuto výstrahu.
-* **Upravit** nebo **odstranit** pravidlo výstrahy.
-* Pokud chcete výstrahu dočasně zastavit nebo obnovit příjem oznámení, **zakažte** nebo **povolte** výstrahu.
+* Zobrazení grafu znázorňujícího prahovou hodnotu metriky a skutečné hodnoty z předchozího dne, které se týkají této výstrahy.
+* **Upravte** nebo **odstraňte** pravidlo výstrahy.
+* Pokud chcete dočasně zastavit nebo obnovit přijímání oznámení, **zakažte** nebo **Povolte** výstrahu.
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o [konfiguraci webových háků v výstrahách](../azure-monitor/platform/alerts-webhooks.md).
-* Získejte [přehled o kolekci metrik,](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) abyste se ujistili, že vaše služba je dostupná a citlivá.
+* Přečtěte si další informace o [konfiguraci webhooků v upozorněních](../azure-monitor/platform/alerts-webhooks.md).
+* Získejte [Přehled o kolekci metrik](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) , abyste měli jistotu, že je vaše služba dostupná a reaguje.

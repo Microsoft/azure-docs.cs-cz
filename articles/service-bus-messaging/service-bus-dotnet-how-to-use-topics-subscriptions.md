@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/27/2019
 ms.author: aschhab
 ms.openlocfilehash: 3fba1d62b9347303d630c80733c4fbfa279b5296
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74560098"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Začínáme s tématy služby Service Bus
@@ -32,12 +32,12 @@ Tento kurz se zabývá následujícími kroky:
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat [výhody pro předplatitele sady Visual Studio nebo MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo se zaregistrovat k [bezplatnému účtu](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Postupujte podle kroků na [úvodním panelu: Pomocí portálu Azure vytvořte téma služby Service Bus a odběry tématu](service-bus-quickstart-topics-subscriptions-portal.md) pro provedení následujících úkolů:
-    1. Vytvořte **obor názvů**service bus .
-    2. Získejte **připojovací řetězec**.
+1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele sady Visual Studio nebo MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Postupujte podle kroků v [rychlém startu: pomocí Azure Portal vytvořte Service Bus téma a odběry k tématu](service-bus-quickstart-topics-subscriptions-portal.md) , abyste mohli provádět následující úlohy:
+    1. Vytvořte **obor názvů**Service Bus.
+    2. Získá **připojovací řetězec**.
     3. Vytvořte **téma** v oboru názvů.
-    4. Vytvořte **jedno předplatné** tématu v oboru názvů.
+    4. Vytvořte **jedno předplatné** k tématu v oboru názvů.
 3. [Visual Studio 2017 s aktualizací Update 3 (verze 15.3, 26730.01)](https://www.visualstudio.com/vs) nebo novější.
 4. [NET Core SDK](https://www.microsoft.com/net/download/windows) verze 2.0 nebo novější.
  
@@ -75,7 +75,7 @@ Spusťte sadu Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NE
     static ITopicClient topicClient;
     ``` 
 
-3. Nahraďte metodu `Main()` následující **asynchronní** `Main` metodou, která odesílá zprávy asynchronně pomocí metody SendMessagesAsync, kterou přidáte v dalším kroku. 
+3. Nahraďte `Main()` metodu následující **asynchronní** `Main` metodou, která odesílá zprávy asynchronně pomocí metody SendMessagesAsync, kterou přidáte v dalším kroku. 
 
     ```csharp
     public static async Task Main(string[] args)
@@ -188,7 +188,7 @@ Spusťte sadu Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NE
 
 ## <a name="receive-messages-from-the-subscription"></a>Příjem zpráv z odběru
 
-Chcete-li přijímat odeslané zprávy, vytvořte jinou aplikaci konzoly .NET Core a nainstalujte balíček **Microsoft.Azure.ServiceBus** NuGet, podobně jako předchozí aplikace odesílatele.
+Pokud chcete přijímat zprávy, které jste odeslali, vytvořte další konzolovou aplikaci .NET Core a nainstalujte balíček NuGet **Microsoft. Azure. ServiceBus** , který se podobá předchozí aplikaci odesílatele.
 
 ### <a name="write-code-to-receive-messages-from-the-subscription"></a>Napsání kódu pro příjem zpráv z odběru
 
@@ -210,7 +210,7 @@ Chcete-li přijímat odeslané zprávy, vytvořte jinou aplikaci konzoly .NET Co
     static ISubscriptionClient subscriptionClient;
     ```
 
-3. Nahraďte metodu `Main()` následující **asynchronní** `Main` metodou. Volá metodu, `RegisterOnMessageHandlerAndReceiveMessages()` kterou přidáte v dalším kroku. 
+3. Nahraďte `Main()` metodu následující **asynchronní** `Main` metodou. Volá `RegisterOnMessageHandlerAndReceiveMessages()` metodu, kterou budete přidávat v dalším kroku. 
 
     ```csharp
     public static async Task Main(string[] args)
@@ -364,14 +364,14 @@ Chcete-li přijímat odeslané zprávy, vytvořte jinou aplikaci konzoly .NET Co
         }
     }
     ```
-9. Spusťte program a znovu se podívejte na portál. Všimněte si, že **počet zpráv** a **aktuální** hodnoty jsou nyní **0**.
+9. Spusťte program a znovu se podívejte na portál. Všimněte si, že hodnoty **počet zpráv** a **aktuální** jsou nyní **0**.
    
     ![Délka tématu][topic-message-receive]
 
 Blahopřejeme! Právě jste s použitím knihovny .NET Standard vytvořili téma a odběr, odeslali 10 zpráv a přijali tyto zprávy.
 
 > [!NOTE]
-> Prostředky služby Service Bus můžete spravovat pomocí [aplikace Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Průzkumník služby Service Bus umožňuje uživatelům připojit se k oboru názvů service bus a snadno spravovat entity zasílání zpráv. Nástroj poskytuje pokročilé funkce, jako je funkce importu a exportu nebo možnost testovat téma, fronty, předplatná, přenosové služby, centra oznámení a centra událostí. 
+> Prostředky Service Bus můžete spravovat pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer umožňuje uživatelům připojit se k oboru názvů Service Bus a snadno spravovat entity zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, nebo možnost testovat témata, fronty, odběry, služby Relay, centra oznámení a centra událostí. 
 
 ## <a name="next-steps"></a>Další kroky
 

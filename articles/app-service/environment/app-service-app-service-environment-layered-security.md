@@ -1,6 +1,6 @@
 ---
-title: Zabezpečení vrstvené v1
-description: Zjistěte, jak implementovat architekturu zabezpečení vrstvené ve vašem prostředí služby App Service. Tento dokument je k dispozici pouze pro zákazníky, kteří používají starší verze v1 ASE.
+title: Vrstvené zabezpečení v1
+description: Naučte se implementovat vícevrstvou architekturu zabezpečení v prostředí App Service. Tento dokument je k dispozici pouze pro zákazníky, kteří používají starší pomocného uživatele v1.
 author: stefsch
 ms.assetid: 73ce0213-bd3e-4876-b1ed-5ecad4ad5601
 ms.topic: article
@@ -8,52 +8,52 @@ ms.date: 08/30/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: a8920e97d315dc7bfd0ba22386b8b637afb7c05e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74688801"
 ---
-# <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>Implementace architektury zabezpečení vrstvené s prostředími služby App Service
-Vzhledem k tomu, že prostředí služby App Service poskytují izolované prostředí runtime nasazené do virtuální sítě, vývojáři mohou vytvořit architekturu zabezpečení s vrstvami, která poskytuje různé úrovně přístupu k síti pro každou fyzickou aplikační vrstvu.
+# <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>Implementace vrstvené architektury zabezpečení s App Service prostředími
+Vzhledem k tomu, že prostředí App Service poskytují izolované běhové prostředí nasazené ve virtuální síti, můžou vývojáři vytvořit vrstvenou architekturu zabezpečení, která poskytuje různé úrovně síťového přístupu pro každou fyzickou aplikační vrstvu.
 
-Běžnou touhou je skrýt back-endy rozhraní API před obecným přístupem k Internetu a povolit volání rozhraní API pouze prostřednictvím webových aplikací pro upstream.  [Skupiny zabezpečení sítě (NSGs)][NetworkSecurityGroups] lze použít v podsítích obsahujících prostředí služby App Service k omezení veřejného přístupu k aplikacím rozhraní API.
+Běžným přáním je skrýt back-endy rozhraní API z obecného přístupu k Internetu a jenom v případě, že jsou rozhraní API zavolána pomocí nadřazeného webového aplikace.  [Skupiny zabezpečení sítě (skupin zabezpečení sítě)][NetworkSecurityGroups] se dají použít na podsítích, které obsahují App Service prostředí, aby se omezil veřejný přístup k aplikacím API.
 
-Následující diagram znázorňuje ukázkovou architekturu s aplikací založenou na rozhraní WebAPI nasazenou v prostředí služby App Service.  Tři samostatné instance webových aplikací, nasazené ve třech samostatných prostředích služby App Service, uskutečují back-endová volání do stejné aplikace WebAPI.
+Následující diagram znázorňuje ukázkovou architekturu s aplikací založenou na WebAPI, která je nasazená na App Service Environment.  Tři samostatné instance webových aplikací nasazené ve třech různých App Service prostředích, které mají back-end volání do stejné aplikace WebAPI.
 
 ![Koncepční architektura][ConceptualArchitecture] 
 
-Zelené znaménko plus označují, že skupina zabezpečení sítě v podsíti obsahující "apiázu" umožňuje příchozí volání z upstream webových aplikací, stejně jako volání ze sebe sama.  Stejná skupina zabezpečení sítě však výslovně odepře přístup k obecnému příchozímu provozu z Internetu. 
+Zelené znaménko plus značí, že skupina zabezpečení sítě v podsíti, která obsahuje "apiase", umožňuje příchozí volání z nadřazených webových aplikací, stejně jako volání samotného.  Stejná skupina zabezpečení sítě ale explicitně odepře přístup k obecnému příchozímu provozu z Internetu. 
 
-Zbývající část tohoto článku prochází kroky potřebné ke konfiguraci skupiny zabezpečení sítě v podsíti obsahující "apiázy".
+Zbývající část tohoto článku vás provede kroky potřebnými ke konfiguraci skupiny zabezpečení sítě v podsíti obsahující "apiase".
 
 ## <a name="determining-the-network-behavior"></a>Určení chování sítě
-Chcete-li zjistit, jaká pravidla zabezpečení sítě jsou potřeba, musíte určit, kteří síťoví klienti budou moci dosáhnout prostředí služby App Service obsahujícího aplikaci rozhraní API a kteří klienti budou blokováni.
+Aby bylo možné zjistit, jaká pravidla zabezpečení sítě jsou potřebná, musíte určit, kteří síťoví klienti budou mít povolený přístup k App Service Environment, který obsahuje aplikaci API, a kteří klienti budou zablokováni.
 
-Vzhledem k tomu, [že skupiny zabezpečení sítě (NSG)][NetworkSecurityGroups] se používají pro podsítě a prostředí služby App Service se nasazují do podsítí, pravidla obsažená v souboru zabezpečení sítě se vztahují na **všechny** aplikace spuštěné v prostředí služby App Service.  Pomocí ukázkové architektury pro tento článek, jakmile je skupina zabezpečení sítě použita pro podsíť obsahující "apiázu", budou všechny aplikace spuštěné v prostředí služby App Service "apiase" chráněny stejnou sadou pravidel zabezpečení. 
+Vzhledem k tomu, že se [skupiny zabezpečení sítě (skupin zabezpečení sítě)][NetworkSecurityGroups] používají pro podsítě a App Service prostředí se nasazují do podsítí, pravidla obsažená v NSG se vztahují na **všechny** aplikace spuštěné v App Service Environment.  Po použití ukázkové architektury tohoto článku se po použití skupiny zabezpečení sítě pro podsíť obsahující "apiase" budou všechny aplikace běžící v App Service Environment apiase chránit stejnou sadou pravidel zabezpečení. 
 
-* **Určete odchozí IP adresu volajících upstream:**  Jaká je IP adresa nebo adresy volajících upstream?  Tyto adresy budou muset být explicitně povolen přístup v souboru nsg.  Vzhledem k tomu, že volání mezi prostředími služby App Service jsou považována za "internetová" volání, odchozí IP adresa přiřazená každému ze tří prostředí služby App Service musí být povolen přístup v podsíti "apiázy".   Další informace o určení odchozí IP adresy pro aplikace spuštěné v prostředí služby App Service najdete v článku Přehled [síťové architektury.][NetworkArchitecture]
-* **Bude aplikace back-end API muset volat sama sebe?**  Někdy přehlížena a subtilní bod je scénář, kde back-end aplikace potřebuje volat sám.  Pokud aplikace rozhraní API back-end v prostředí služby App Service potřebuje volat sám sebe, je také považována za volání "Internet".  V ukázkové architektuře to vyžaduje povolení přístupu z odchozí IP adresy prostředí služby App Service apiase.
+* **Určete odchozí IP adresu nadřazených volajících:**  Jaké jsou IP adresy nebo adresy nadřazených volajících?  Tyto adresy budou muset explicitně povolený přístup v NSG.  Vzhledem k tomu, že se volání mezi App Service prostředími považují za volání "Internet", odchozí IP adresa přiřazená ke každému ze tří nadřazených App Service prostředí musí mít povolený přístup v NSG pro podsíť "apiase".   Další informace o určení odchozí IP adresy pro aplikace běžící v App Service Environment najdete v článku Přehled [architektury sítě][NetworkArchitecture] .
+* **Bude aplikace API back-endu muset volat sám sebe?**  Někdy přebývající a jemný bod je scénář, ve kterém back-end aplikace musí volat sám sebe.  Pokud aplikace back-end API na App Service Environment musí volat sám sebe, je také považována za volání "Internet".  V ukázkové architektuře to vyžaduje i povolení přístupu z odchozí IP adresy App Service Environment apiase.
 
 ## <a name="setting-up-the-network-security-group"></a>Nastavení skupiny zabezpečení sítě
-Jakmile je známa sada odchozích adres IP, je dalším krokem vytvoření skupiny zabezpečení sítě.  Skupiny zabezpečení sítě lze vytvořit jak pro virtuální sítě založené na Resource Manageru, tak pro klasické virtuální sítě.  Níže uvedené příklady ukazují vytvoření a konfiguraci síťového připojení k síti v klasické virtuální síti pomocí prostředí Powershell.
+Po známé sadě odchozích IP adres je dalším krokem vytvoření skupiny zabezpečení sítě.  Skupiny zabezpečení sítě je možné vytvořit pro virtuální sítě založené na Správce prostředků i v klasických virtuálních sítích.  Níže uvedené příklady ukazují vytváření a konfiguraci NSG v klasické virtuální síti pomocí PowerShellu.
 
-Pro ukázkovou architekturu jsou prostředí umístěna v usa – –střed usa, takže v této oblasti je vytvořen prázdný soubor nSG:
+V případě ukázkové architektury se prostředí nacházejí v Střed USA – jih, takže se v této oblasti vytvoří prázdná NSG:
 
     New-AzureNetworkSecurityGroup -Name "RestrictBackendApi" -Location "South Central US" -Label "Only allow web frontend and loopback traffic"
 
-Nejprve se přidá explicitní pravidlo povolení pro infrastrukturu správy Azure, jak je uvedeno v článku o [příchozím provozu][InboundTraffic] pro prostředí služby App Service.
+Nejdřív se přidá pravidlo explicitního povolení pro infrastrukturu pro správu Azure, jak je uvedeno v článku o [příchozím provozu][InboundTraffic] pro App Service prostředí.
 
     #Open ports for access by Azure management infrastructure
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW AzureMngmt" -Type Inbound -Priority 100 -Action Allow -SourceAddressPrefix 'INTERNET' -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '454-455' -Protocol TCP
 
-Dále jsou přidána dvě pravidla, která umožňují volání HTTP a HTTPS z prvního prostředí služby upstream App Service ("fe1ase").
+Dále jsou přidána dvě pravidla, která povolují volání HTTP a HTTPS z prvního nadřazeného App Service Environment ("fe1ase").
 
     #Grant access to requests from the first upstream web front-end
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP fe1ase" -Type Inbound -Priority 200 -Action Allow -SourceAddressPrefix '65.52.xx.xyz'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS fe1ase" -Type Inbound -Priority 300 -Action Allow -SourceAddressPrefix '65.52.xx.xyz'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
 
-Opláchněte a opakujte pro druhé a třetí upstream App Service prostředí ("fe2ase" a "fe3ase").
+Vypláchněte a zopakujte pro druhý a třetí App Service prostředí pro odesílání dat ("fe2ase" a "fe3ase").
 
     #Grant access to requests from the second upstream web front-end
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP fe2ase" -Type Inbound -Priority 400 -Action Allow -SourceAddressPrefix '191.238.xyz.abc'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
@@ -63,31 +63,31 @@ Opláchněte a opakujte pro druhé a třetí upstream App Service prostředí ("
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP fe3ase" -Type Inbound -Priority 600 -Action Allow -SourceAddressPrefix '23.98.abc.xyz'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS fe3ase" -Type Inbound -Priority 700 -Action Allow -SourceAddressPrefix '23.98.abc.xyz'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
 
-Nakonec udělte přístup k odchozí IP adrese prostředí služby App Service rozhraní API back-endu, aby bylo možné volat zpět do sebe.
+Nakonec udělte přístup k odchozí IP adrese App Service Environment back-endu rozhraní API, aby se mohl volat zpátky sám.
 
     #Allow apps on the apiase environment to call back into itself
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP apiase" -Type Inbound -Priority 800 -Action Allow -SourceAddressPrefix '70.37.xyz.abc'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS apiase" -Type Inbound -Priority 900 -Action Allow -SourceAddressPrefix '70.37.xyz.abc'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
 
-Nejsou vyžadována žádná další pravidla zabezpečení sítě, protože každý soubor zabezpečení sítě má ve výchozím nastavení sadu výchozích pravidel, která blokují příchozí přístup z Internetu.
+Žádná další pravidla zabezpečení sítě se nevyžadují, protože každá NSG má sadu výchozích pravidel, která blokují příchozí přístup z Internetu, a to ve výchozím nastavení.
 
-Úplný seznam pravidel ve skupině zabezpečení sítě je uveden níže.  Všimněte si, jak poslední pravidlo, které je zvýrazněno, blokuje příchozí přístup od všech volajících, než volající, kterým byl explicitně udělen přístup.
+Úplný seznam pravidel ve skupině zabezpečení sítě je uvedený níže.  Všimněte si, jak poslední zvýrazněné pravidlo blokuje příchozí přístup ze všech volajících, kromě volajících, kterým byl explicitně udělen přístup.
 
-![Konfigurace nsg][NSGConfiguration] 
+![Konfigurace NSG][NSGConfiguration] 
 
-Posledním krokem je použití skupiny sítě sítě pro podsíť, která obsahuje prostředí služby App Service "apiase".
+Posledním krokem je použití NSG pro podsíť, která obsahuje App Service Environment "apiase".
 
      #Apply the NSG to the backend API subnet
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityGroupToSubnet -VirtualNetworkName 'yourvnetnamehere' -SubnetName 'API-ASE-Subnet'
 
-S nsg použít pro podsíť, pouze tři upstream App Service prostředí a app service prostředí obsahující back-end rozhraní API, mohou volat do prostředí "apiázy".
+U NSG, který se používá pro podsíť, se můžou do prostředí "apiase" volat jenom tři App Serviceová prostředí pro odesílání a App Service Environment obsahující back-end rozhraní API.
 
 ## <a name="additional-links-and-information"></a>Další odkazy a informace
 Informace o [skupinách zabezpečení sítě](../../virtual-network/security-overview.md).
 
-Principy [odchozích IP adres][NetworkArchitecture] a prostředí služby App Service.
+Principy [odchozích IP adres][NetworkArchitecture] a App Service prostředí.
 
-[Síťové porty][InboundTraffic] používané prostředími služby App Service.
+[Síťové porty][InboundTraffic] používané App Service prostředími.
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

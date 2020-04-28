@@ -1,6 +1,6 @@
 ---
-title: Integrace místních aplikací s cloudovým zabezpečením aplikací – Azure AD
-description: Nakonfigurujte místní aplikaci ve službě Azure Active Directory tak, aby fungovala se zabezpečením aplikací Microsoft Cloud App Security (MCAS). Pomocí řízení aplikací podmíněného přístupu MCAS můžete monitorovat a řídit relace v reálném čase na základě zásad podmíněného přístupu. Tyto zásady můžete použít pro místní aplikace, které používají proxy aplikace ve službě Azure Active Directory (Azure AD).
+title: Integrace místních aplikací s Cloud App Security – Azure AD
+description: Nakonfigurujte místní aplikaci v Azure Active Directory tak, aby fungovala s Microsoft Cloud App Security (MCAS). Pomocí Řízení podmíněného přístupu k aplikacím MCAS můžete monitorovat a řídit relace v reálném čase na základě zásad podmíněného přístupu. Tyto zásady můžete použít u místních aplikací, které používají proxy aplikace v Azure Active Directory (Azure AD).
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
@@ -12,60 +12,60 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eb97f9dd87277215a5d4708d3a6f49564c490204
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74275492"
 ---
-# <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>Konfigurace monitorování přístupu k aplikacím v reálném čase pomocí Microsoft Cloud App Security a Azure Active Directory
-Nakonfigurujte místní aplikaci ve službě Azure Active Directory (Azure AD) tak, aby používala Microsoft Cloud App Security (MCAS) pro monitorování v reálném čase. MCAS používá řízení aplikací podmíněného přístupu ke sledování a řízení relací v reálném čase na základě zásad podmíněného přístupu. Tyto zásady můžete použít pro místní aplikace, které používají proxy aplikace ve službě Azure Active Directory (Azure AD).
+# <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>Konfigurace monitorování přístupu aplikace v reálném čase pomocí Microsoft Cloud App Security a Azure Active Directory
+Nakonfigurujte místní aplikaci v Azure Active Directory (Azure AD), aby používala Microsoft Cloud App Security (MCAS) pro sledování v reálném čase. MCAS používá Řízení podmíněného přístupu k aplikacím k monitorování a řízení relací v reálném čase na základě zásad podmíněného přístupu. Tyto zásady můžete použít u místních aplikací, které používají proxy aplikace v Azure Active Directory (Azure AD).
 
-Zde je několik příkladů typů zásad, které můžete vytvořit pomocí funkce MCAS:
+Tady je několik příkladů typů zásad, které můžete vytvořit pomocí MCAS:
 
 - Blokovat nebo chránit stahování citlivých dokumentů na nespravovaných zařízeních.
-- Sledujte, kdy se vysoce rizikoví uživatelé přihlašují k aplikacím, a pak přihlaste své akce z relace. Pomocí těchto informací můžete analyzovat chování uživatelů a určit způsob použití zásad relace.
-- Pomocí klientských certifikátů nebo dodržování předpisů zařízení zablokujte přístup k určitým aplikacím z nespravovaných zařízení.
-- Omezte uživatelské relace z nepodnikových sítí. Uživatelům, kteří přistupují k aplikaci mimo podnikovou síť, můžete udělit omezený přístup. Tento omezený přístup může například uživateli zabránit ve stahování citlivých dokumentů.
+- Monitorujte, kdy se vysoce rizikové uživatelé přihlašují k aplikacím a následně protokolují své akce v rámci relace. Pomocí těchto informací můžete analyzovat chování uživatelů a určit, jak se mají zásady relace použít.
+- Použijte klientské certifikáty nebo dodržování předpisů zařízením k zablokování přístupu ke konkrétním aplikacím z nespravovaných zařízení.
+- Omezení uživatelských relací z jiných než firemních sítí. Uživatelům, kteří přistupují k aplikaci, můžete udělit omezený přístup mimo vaši podnikovou síť. Tento omezený přístup může například uživateli blokovat stahování citlivých dokumentů.
 
-Další informace najdete [v tématu Ochrana aplikací pomocí řízení aplikací podmíněného přístupu služby Microsoft Cloud App Security](/cloud-app-security/proxy-intro-aad).
+Další informace najdete v tématu [Ochrana aplikací pomocí Microsoft Cloud App Security řízení podmíněného přístupu k aplikacím](/cloud-app-security/proxy-intro-aad).
 
 ## <a name="requirements"></a>Požadavky
 
-Licence:
+Průkaz
 
-- licence EMS E5, nebo 
-- Azure Active Directory Premium P1 a MCAS samostatné.
+- Licence EMS E5 nebo 
+- Azure Active Directory Premium P1 a MCAS samostatně.
 
 Místní aplikace:
 
-- Místní aplikace musí používat delegování s omezeným i protokolem Kerberos (KCD).
+- Místní aplikace musí používat omezené delegování protokolu Kerberos (KCD).
 
-Konfigurace proxy aplikace:
+Konfigurovat proxy aplikace:
 
-- Nakonfigurujte Azure AD tak, aby používala proxy aplikace, včetně přípravy prostředí a instalace konektoru proxy aplikace. Kurz najdete v [tématu Přidání místních aplikací pro vzdálený přístup prostřednictvím proxy aplikace ve službě Azure AD](application-proxy-add-on-premises-application.md). 
+- Nakonfigurujte službu Azure AD tak, aby používala proxy aplikace, včetně přípravy prostředí a instalace konektoru proxy aplikací. Kurz najdete v tématu [Přidání místních aplikací pro vzdálený přístup prostřednictvím proxy aplikací v Azure AD](application-proxy-add-on-premises-application.md). 
 
 ## <a name="add-on-premises-application-to-azure-ad"></a>Přidání místní aplikace do Azure AD
 
-Přidejte místní aplikaci do Služby Azure AD. Úvodní příručka najdete [v tématu Přidání místní aplikace do Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad). Při přidávání aplikace nezapomeňte nastavit následující dvě nastavení v okně **Přidat místní aplikaci:**
+Přidejte místní aplikaci do Azure AD. Informace o rychlém startu najdete v tématu [Přidání místní aplikace do služby Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad). Při přidávání aplikace nezapomeňte v okně **Přidat místní aplikaci** nastavit následující dvě nastavení:
 
-- **Předběžné ověření:** Zadejte **službu Azure Active Directory**.
-- **Přeložit adresy URL v těle aplikace**: Zvolte **ano**.
+- **Předběžné ověření**: zadejte **Azure Active Directory**.
+- **Přeložit adresy URL v těle aplikace**: vyberte **Ano**.
 
-Tato dvě nastavení jsou vyžadována pro aplikaci pracovat s MCAS.
+Tato dvě nastavení jsou nutná, aby aplikace fungovala s MCAS.
 
 ## <a name="test-the-on-premises-application"></a>Testování místní aplikace
 
-Po přidání aplikace do Azure AD, použijte kroky v [test aplikace](application-proxy-add-on-premises-application.md#test-the-application) přidat uživatele pro testování a otestujte přihlášení. 
+Po přidání aplikace do služby Azure AD použijte kroky v části [test aplikace](application-proxy-add-on-premises-application.md#test-the-application) a přidejte uživatele k testování a otestujte přihlášení. 
 
-## <a name="deploy-conditional-access-app-control"></a>Nasazení řízení aplikací podmíněného přístupu
+## <a name="deploy-conditional-access-app-control"></a>Nasazení Řízení podmíněného přístupu k aplikacím
 
-Chcete-li aplikaci nakonfigurovat pomocí řízení aplikací podmíněného přístupu, postupujte podle pokynů v části [Nasazení řízení aplikací podmíněného přístupu pro aplikace Azure AD](/cloud-app-security/proxy-deployment-aad).
+Chcete-li nakonfigurovat aplikaci pomocí řízení aplikací podmíněného přístupu, postupujte podle pokynů v části [nasazení řízení aplikací podmíněného přístupu pro aplikace Azure AD](/cloud-app-security/proxy-deployment-aad).
 
 
-## <a name="test-conditional-access-app-control"></a>Testování řízení aplikací podmíněného přístupu
+## <a name="test-conditional-access-app-control"></a>Řízení podmíněného přístupu k aplikacím testu
 
-Chcete-li otestovat nasazení aplikací Azure AD s řízením aplikací podmíněného přístupu, postupujte podle pokynů v [části Testování nasazení pro aplikace Azure AD](/cloud-app-security/proxy-deployment-aad).
+Pokud chcete otestovat nasazení aplikací Azure AD pomocí řízení aplikací podmíněného přístupu, postupujte podle pokynů v části [testování nasazení pro aplikace Azure AD](/cloud-app-security/proxy-deployment-aad).
 
 
 

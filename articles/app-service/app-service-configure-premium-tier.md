@@ -1,33 +1,33 @@
 ---
 title: Konfigurace úrovně PremiumV2
-description: Zjistěte, jak zlepšit výkon pro vaši webovou, mobilní a api aplikaci ve službě Azure App Service škálováním na novou cenovou úroveň PremiumV2.
+description: Přečtěte si, jak lépe zvýšit výkon webové, mobilní a API aplikace v Azure App Service škálováním na novou cenovou úroveň PremiumV2.
 keywords: app service, azure app service, škálování, škálovatelné, plán služby App Service, náklady služby App Service
 ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.topic: article
 ms.date: 07/25/2018
 ms.custom: seodec18
 ms.openlocfilehash: f7f9f6d5617ad0f9be69c47ce514d395534fd892
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74672216"
 ---
-# <a name="configure-premiumv2-tier-for-azure-app-service"></a>Konfigurace úrovně PremiumV2 pro službu Azure App Service
+# <a name="configure-premiumv2-tier-for-azure-app-service"></a>Konfigurace PremiumV2 úrovně pro Azure App Service
 
-Nová cenová úroveň **PremiumV2** poskytuje rychlejší procesory, úložiště SSD a zdvojnásobuje poměr paměti k jádru stávajících cenových úrovní. Díky výhodě výkonu můžete ušetřit peníze spuštěním aplikací v menším počtu instancí. V tomto článku se dozvíte, jak vytvořit aplikaci na úrovni **PremiumV2** nebo vertikálně navýšit kapacitu aplikace na úroveň **PremiumV2.**
+Nová cenová úroveň **PremiumV2** poskytuje rychlejší procesory, SSD úložiště a zdvojnásobí poměr paměti k jádrům pro stávající cenové úrovně. Díky výhodám výkonu můžete ušetřit peníze tím, že své aplikace spustíte na méně instancí. V tomto článku se dozvíte, jak vytvořit aplikaci ve vrstvě **PremiumV2** nebo jak škálovat aplikaci na **PremiumV2** vrstvu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li rozšířit kapacitu aplikace na **PremiumV2**, musíte mít aplikaci Azure App Service, která běží v cenové úrovni nižší než **PremiumV2**a aplikace musí běžet v nasazení služby App Service, která podporuje PremiumV2.
+Abyste mohli škálovat aplikaci na **PremiumV2**, musíte mít Azure App Service aplikaci, která běží v cenové úrovni nižší než **PremiumV2**, a aplikace musí běžet v nasazení App Service, které podporuje PremiumV2.
 
 <a name="availability"></a>
 
 ## <a name="premiumv2-availability"></a>Dostupnost PremiumV2
 
-Úroveň **PremiumV2** je k dispozici pro službu App Service na _Windows_ i _Linuxu_.
+Úroveň **PremiumV2** je k dispozici pro App Service v obou oknech i v _systému_ _Linux_.
 
-**PremiumV2** je k dispozici ve většině oblastí Azure. Pokud chcete zjistit, jestli je dostupná ve vaší oblasti, spusťte v [prostředí Azure Cloud Shell](../cloud-shell/overview.md)následující příkaz y Azure CLI :
+**PremiumV2** je k dispozici ve většině oblastí Azure. Pokud chcete zjistit, jestli je ve vaší oblasti k dispozici, spusťte následující příkaz rozhraní příkazového řádku Azure v [Azure Cloud Shell](../cloud-shell/overview.md):
 
 ```azurecli-interactive
 az appservice list-locations --sku P1V2
@@ -35,63 +35,63 @@ az appservice list-locations --sku P1V2
 
 <a name="create"></a>
 
-## <a name="create-an-app-in-premiumv2-tier"></a>Vytvoření aplikace na úrovni PremiumV2
+## <a name="create-an-app-in-premiumv2-tier"></a>Vytvoření aplikace v PremiumV2 vrstvě
 
-Cenová úroveň aplikace App Service je definována v [plánu služby App Service,](overview-hosting-plans.md) na které běží. Plán služby App Service můžete vytvořit samostatně nebo jako součást vytváření aplikací.
+Cenová úroveň aplikace App Service je definována v [plánu App Service](overview-hosting-plans.md) , na kterém běží. Plán App Service můžete vytvořit samostatně nebo jako součást vytváření aplikací.
 
-Při konfiguraci plánu služby App Service na <a href="https://portal.azure.com" target="_blank">webu Azure Portal</a>vyberte **Cenová úroveň**. 
+Při konfiguraci plánu App Service v <a href="https://portal.azure.com" target="_blank">Azure Portal</a>vyberte **cenová úroveň**. 
 
-Vyberte **Výroba**, pak vyberte **P1V2**, **P2V2**nebo **P3V2**a klepněte na **tlačítko Použít**.
+Vyberte možnost **Výroba**, pak **Vyberte P1V2**, **P2V2**nebo **P3V2**a pak klikněte na **použít**.
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 > [!IMPORTANT] 
-> Pokud nevidíte **P1V2**, **P2V2**a **P3V2** jako možnosti, nebo pokud jsou možnosti šedě, pak **PremiumV2** pravděpodobně není k dispozici v základní nasazení služby App Service, která obsahuje plán služby App Service. Další podrobnosti najdete [v tématu Vertika navýšit kapacitu z kombinace nepodporované skupiny prostředků a oblastí,](#unsupported) kde najdete další podrobnosti.
+> Pokud nevidíte **P1V2**, **P2V2**a **P3V2** jako možnosti, nebo pokud jsou možnosti šedé, pak **PremiumV2** pravděpodobně není k dispozici v podkladovém nasazení App Service, které obsahuje plán App Service. Další podrobnosti najdete v tématu [horizontální navýšení kapacity z nepodporované skupiny prostředků a kombinace oblastí](#unsupported) .
 
-## <a name="scale-up-an-existing-app-to-premiumv2-tier"></a>Škálování na úroveň existující aplikace na úroveň PremiumV2
+## <a name="scale-up-an-existing-app-to-premiumv2-tier"></a>Horizontální navýšení kapacity existující aplikace na úroveň PremiumV2
 
-Před škálováním existující aplikace na úroveň **PremiumV2** se ujistěte, že je **PremiumV2** k dispozici. Další informace naleznete v [tématu PremiumV2 availability](#availability). Pokud není k dispozici, [přečtěte si tématu Vertika navýšit kapacitu z nepodporované kombinace skupiny prostředků a oblastí](#unsupported).
+Před změnou měřítka existující aplikace na **PremiumV2** úroveň se ujistěte, že je k dispozici **PremiumV2** . Informace najdete v tématu [dostupnost PremiumV2](#availability). Pokud není k dispozici, přečtěte si téma [horizontální navýšení kapacity z nepodporované skupiny prostředků a oblasti](#unsupported).
 
-V závislosti na hostitelském prostředí může škálování vyžadovat další kroky. 
+V závislosti na vašem hostitelském prostředí může škálování vyžadovat další kroky. 
 
-Na <a href="https://portal.azure.com" target="_blank">webu Azure Portal</a>otevřete stránku aplikace App Service.
+V <a href="https://portal.azure.com" target="_blank">Azure Portal</a>otevřete stránku aplikace App Service.
 
-V levém navigačním panelu na stránce aplikace App Service vyberte **Vertikálně navýšit kapacitu (plán služby App Service).**
+V levém navigačním panelu aplikace App Service vyberte **škálovat nahoru (App Service plán)**.
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
 
-Vyberte **Výroba**, pak vyberte **P1V2**, **P2V2**nebo **P3V2**a klepněte na **tlačítko Použít**.
+Vyberte možnost **Výroba**, pak **Vyberte P1V2**, **P2V2**nebo **P3V2**a pak klikněte na **použít**.
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
-Pokud vaše operace úspěšně skončí, stránka s přehledem aplikace ukazuje, že je teď na úrovni **PremiumV2.**
+Pokud se vaše operace úspěšně dokončí, zobrazí se na stránce Přehled vaší aplikace, že je teď ve vrstvě **PremiumV2** .
 
 ![](media/app-service-configure-premium-tier/finished.png)
 
 ### <a name="if-you-get-an-error"></a>Pokud se zobrazí chyba
 
-Některé plány služby App Service nelze vertikálně škálovat na úroveň PremiumV2, pokud základní nasazení služby App Service nepodporuje PremiumV2.  Další podrobnosti najdete [v tématu Vertika navýšit kapacitu z kombinace nepodporované skupiny prostředků a oblastí,](#unsupported) kde najdete další podrobnosti.
+Některé plány App Service nemůžou škálovat až na úroveň PremiumV2, pokud základní nasazení App Service nepodporuje PremiumV2.  Další podrobnosti najdete v tématu [horizontální navýšení kapacity z nepodporované skupiny prostředků a kombinace oblastí](#unsupported) .
 
 <a name="unsupported"></a>
 
-## <a name="scale-up-from-an-unsupported-resource-group-and-region-combination"></a>Škálování z nepodporované kombinace skupiny prostředků a oblastí
+## <a name="scale-up-from-an-unsupported-resource-group-and-region-combination"></a>Navýšení kapacity z nepodporované kombinace skupiny prostředků a oblastí
 
-Pokud vaše aplikace běží v nasazení služby App Service, kde **PremiumV2** není k dispozici, nebo pokud vaše aplikace běží v oblasti, která v současné době nepodporuje **PremiumV2**, budete muset znovu nasadit aplikaci využít **PremiumV2**.  Máte dvě možnosti:
+Pokud je vaše aplikace spuštěná v nasazení App Service, kde **PremiumV2** není k dispozici, nebo pokud je vaše aplikace spuštěná v oblasti, která v současné době nepodporuje **PremiumV2**, budete muset aplikaci znovu nasadit, abyste mohli využít výhod **PremiumV2**.  Máte dvě možnosti:
 
-- Vytvořte **novou** skupinu prostředků a pak vytvořte **nový** plán aplikace a služby App Service v **nové** skupině prostředků a během procesu vytváření vyberte požadovanou oblast Azure.  Plán **PremiumV2** **musíte** vybrat v okamžiku vytvoření nového plánu služby App Service.  Tím zajistíte, že kombinace skupiny prostředků, plánu služby App Service a oblasti Azure bude mít za následek vytvoření plánu služby App Service v nasazení služby App Service, které podporuje **PremiumV2**.  Pak znovu nasadit kód aplikace do nově vytvořené aplikace a plánu služby aplikace. V případě potřeby můžete následně škálovat plán služby App Service z **PremiumV2,** abyste ušetřili náklady, a v budoucnu budete moci úspěšně znovu škálovat pomocí **PremiumV2**.
-- Pokud vaše aplikace už běží na existující úrovni **Premium,** můžete ji naklonovat se všemi nastaveními aplikace, připojovacími řetězci a konfigurací nasazení do nového plánu služby App Service, který používá **PremiumV2**.
+- Vytvořte **novou** skupinu prostředků a potom v **nové** skupině prostředků vytvořte **Nový** plán aplikace a App Service a v rámci procesu vytváření vyberte požadovanou oblast Azure.  V době, kdy je vytvořen nový plán služby App Service, **musíte** vybrat plán **PremiumV2** .  Tím se zajistí, že kombinace skupiny prostředků, App Service plánu a oblasti Azure bude v nasazení App Service, která podporuje **PremiumV2**, vytvořena App Service plán.  Pak znovu nasaďte kód aplikace do nově vytvořené aplikace a plánu služby App Service. Pokud budete chtít, můžete následně škálovat App Service plán z **PremiumV2** a ušetřit tak náklady a stále budete moct znovu škálovat zálohování znovu v budoucnu pomocí **PremiumV2**.
+- Pokud už vaše aplikace běží na stávající úrovni **Premium** , můžete svoji aplikaci klonovat pomocí nastavení aplikace, připojovacích řetězců a konfigurace nasazení do nového plánu služby App Service, který používá **PremiumV2**.
 
     ![](media/app-service-configure-premium-tier/clone-app.png)
 
-    Na stránce **klonování aplikace** můžete vytvořit plán služby App Service pomocí **PremiumV2** v požadované oblasti a určit nastavení aplikace a konfiguraci, kterou chcete klonovat.
+    Na stránce **klonovat aplikaci** můžete vytvořit plán App Service pomocí **PremiumV2** v požadované oblasti a zadat nastavení a konfiguraci aplikace, které chcete klonovat.
 
 ## <a name="automate-with-scripts"></a>Automatizace pomocí skriptů
 
-Vytváření aplikací na úrovni **PremiumV2** můžete automatizovat pomocí skriptů pomocí [azure cli](/cli/azure/install-azure-cli) nebo [Azure PowerShellu](/powershell/azure/overview).
+Vytváření aplikací můžete automatizovat v **PremiumV2** vrstvě pomocí skriptů pomocí [Azure CLI](/cli/azure/install-azure-cli) nebo [Azure PowerShell](/powershell/azure/overview).
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Následující příkaz vytvoří plán služby App Service v _P1V2_. Můžete spustit v prostředí Cloud Shell. Možnosti `--sku` jsou P1V2, _P2V2_a _P3V2_.
+Následující příkaz vytvoří plán App Service v _P1V2_. Můžete ji spustit v Cloud Shell. Možnosti pro `--sku` jsou P1V2, _P2V2_a _P3V2_.
 
 ```azurecli-interactive
 az appservice plan create \
@@ -104,7 +104,7 @@ az appservice plan create \
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Následující příkaz vytvoří plán služby App Service v _P1V2_. Možnosti `-WorkerSize` pro jsou _malé_, _střední_a _velké_.
+Následující příkaz vytvoří plán App Service v _P1V2_. `-WorkerSize` Možnosti pro jsou _malá_, _střední_a _Velká_.
 
 ```powershell
 New-AzAppServicePlan -ResourceGroupName <resource_group_name> `

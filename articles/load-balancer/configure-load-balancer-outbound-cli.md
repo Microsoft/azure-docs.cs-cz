@@ -1,7 +1,7 @@
 ---
-title: Konfigurace pravidel vyrovnávání zatížení a odchozích pravidel pomocí rozhraní příkazového příkazu Azure
+title: Konfigurace vyrovnávání zatížení a odchozích pravidel pomocí Azure CLI
 titleSuffix: Azure Load Balancer
-description: Tento článek ukazuje, jak nakonfigurovat vyrovnávání zatížení a odchozí pravidla ve standardním vyrovnávání zatížení pomocí rozhraní příkazového příkazového příkazu KOnI Azure.
+description: V tomto článku se dozvíte, jak nakonfigurovat pravidla vyrovnávání zatížení a odchozí pravidla v Standard Load Balancer pomocí Azure CLI.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,17 +14,17 @@ ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: allensu
 ms.openlocfilehash: 7230b0c2b80137b068bbeacf43ab2133491a69b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74225474"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-using-azure-cli"></a>Konfigurace vyrovnávání zatížení a pravidel odchozích přenosů ve službě Standard Load Balancer pomocí rozhraní příkazového řádku Azure
 
-Tento rychlý start ukazuje, jak nakonfigurovat odchozí pravidla ve standardním vyvyřiču zatížení pomocí rozhraní příkazového příkazového příkazu Azure.  
+V tomto rychlém startu se dozvíte, jak nakonfigurovat odchozí pravidla v Standard Load Balancer pomocí Azure CLI.  
 
-Po dokončení obsahuje prostředek vyrovnávání zatížení dva front-endy a pravidla s nimi spojená: jeden pro příchozí a druhý pro odchozí.  Každý front-end má odkaz na veřejnou IP adresu a tento scénář používá jinou veřejnou IP adresu pro příchozí versus odchozí.   Pravidlo vyrovnávání zatížení poskytuje pouze příchozí vyrovnávání zatížení a odchozí pravidlo řídí odchozí NAT pro virtuální hod.  Tento rychlý start používá dva samostatné back-endové fondy, jeden pro příchozí a jeden pro odchozí, pro ilustraci schopnosti a umožňují flexibilitu pro tento scénář.
+Až to budete mít, prostředek Load Balancer obsahuje dva front-endové a pravidla, která jsou k nim přidružená: jedno pro příchozí a další pro odchozí.  Každý front-end má odkaz na veřejnou IP adresu a tento scénář používá pro příchozí a odchozí komunikaci jinou veřejnou IP adresu.   Pravidlo vyrovnávání zatížení poskytuje pouze příchozí vyrovnávání zatížení a odchozí pravidlo řídí odchozí překlad adres (NAT) poskytovaný pro virtuální počítač.  Tento rychlý Start používá dva samostatné back-end fondy, jeden pro příchozí a jeden pro odchozí, pro ilustraci možností a umožňuje flexibilitu pro tento scénář.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
@@ -34,7 +34,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 Vytvořte skupinu prostředků pomocí příkazu [az group create](https://docs.microsoft.com/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
-Následující příklad vytvoří skupinu prostředků s názvem *myresourcegroupoutbound* v umístění *eastus2:*
+Následující příklad vytvoří skupinu prostředků s názvem *myresourcegroupoutbound* v umístění *eastus2* :
 
 ```azurecli-interactive
   az group create \
@@ -42,7 +42,7 @@ Následující příklad vytvoří skupinu prostředků s názvem *myresourcegro
     --location eastus2
 ```
 ## <a name="create-virtual-network"></a>Vytvoření virtuální sítě
-Vytvořte virtuální síť s názvem *myvnetoutbound* s podsítí s názvem *mysubnetoutbound* v *myresourcegroupboundbound* pomocí [vytvoření sítě az](https://docs.microsoft.com/cli/azure/network/vnet)sítě .
+Vytvořte virtuální síť s názvem *myvnetoutbound* s podsítí s názvem *mysubnetoutbound* v *myresourcegroupoutbound* pomocí [AZ Network VNet Create](https://docs.microsoft.com/cli/azure/network/vnet).
 
 ```azurecli-interactive
   az network vnet create \
@@ -53,17 +53,17 @@ Vytvořte virtuální síť s názvem *myvnetoutbound* s podsítí s názvem *my
     --subnet-prefix 192.168.0.0/24
 ```
 
-## <a name="create-inbound-public-ip-address"></a>Vytvořit příchozí veřejnou IP adresu 
+## <a name="create-inbound-public-ip-address"></a>Vytvoření příchozí veřejné IP adresy 
 
-Pokud chcete mít k webové aplikaci přístup přes internet, potřebujete pro nástroj pro vyrovnávání zatížení veřejnou IP adresu. Load Balancer úrovně Standard podporuje pouze standardní veřejné IP adresy. Pomocí [vytvoření az sítě public-ip vytvořte](https://docs.microsoft.com/cli/azure/network/public-ip) standardní veřejnou IP adresu s názvem *mypublicipinbound* in *myresourcegroupoutbound*.
+Pokud chcete mít k webové aplikaci přístup přes internet, potřebujete pro nástroj pro vyrovnávání zatížení veřejnou IP adresu. Load Balancer úrovně Standard podporuje pouze standardní veřejné IP adresy. Pomocí [AZ Network Public-IP Create](https://docs.microsoft.com/cli/azure/network/public-ip) vytvořte standardní veřejnou IP adresu s názvem *mypublicipinbound* v *myresourcegroupoutbound*.
 
 ```azurecli-interactive
   az network public-ip create --resource-group myresourcegroupoutbound --name mypublicipinbound --sku standard
 ```
 
-## <a name="create-outbound-public-ip-address"></a>Vytvořit odchozí veřejnou IP adresu 
+## <a name="create-outbound-public-ip-address"></a>Vytvoření odchozí veřejné IP adresy 
 
-Vytvořte standardní IP adresu pro front-endovou konfiguraci nástroje pro vyrovnávání zatížení pomocí [vytvoření veřejné ip sítě az](https://docs.microsoft.com/cli/azure/network/public-ip).
+Pomocí [AZ Network Public-IP Create](https://docs.microsoft.com/cli/azure/network/public-ip)vytvořte standardní IP adresu pro odchozí konfiguraci front-endu Load Balancer.
 
 ```azurecli-interactive
   az network public-ip create --resource-group myresourcegroupoutbound --name mypublicipoutbound --sku standard
@@ -72,16 +72,16 @@ Vytvořte standardní IP adresu pro front-endovou konfiguraci nástroje pro vyro
 ## <a name="create-azure-load-balancer"></a>Vytvoření Azure Load Balanceru
 
 Tato část podrobně popisuje vytvoření a konfiguraci následujících komponent nástroje pro vyrovnávání zatížení:
-  - Front-endová IP adresa, která přijímá příchozí síťový provoz v systému vyrovnávání zatížení.
-  - Back-endový fond, kde front-endová IP adresa odesílá síťový provoz s vyrovnáváním zatížení.
-  - Back-endový fond pro odchozí připojení. 
-  - Sonda stavu, která určuje stav instancí back-endového virtuálního soudu.
-  - Pravidlo příchozího systému vyrovnávání zatížení, které definuje způsob distribuce provozu na virtuální chod.
-  - Odchozí pravidlo pro vyrovnávání zatížení, které definuje způsob distribuce provozu z virtuálních virtuálních pozemních).
+  - IP adresa front-endu, která přijímá příchozí síťový provoz v nástroji pro vyrovnávání zatížení.
+  - Back-end fond, ve kterém front-end IP odesílá síťový provoz s vyrovnáváním zatížení.
+  - Back-end fond pro odchozí připojení. 
+  - Sonda stavu, která určuje stav instancí virtuálních počítačů back-endu.
+  - Příchozí pravidlo nástroje pro vyrovnávání zatížení, které definuje způsob distribuce provozu do virtuálních počítačů.
+  - Odchozí pravidlo nástroje pro vyrovnávání zatížení, které definuje způsob distribuce provozu z virtuálních počítačů.
 
-### <a name="create-load-balancer"></a>Vytvořit balancer zatížení
+### <a name="create-load-balancer"></a>Vytvořit Load Balancer
 
-Vytvořte nástroj pro vyrovnávání zatížení s příchozí IP adresou pomocí [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) s názvem *lb,* která obsahuje příchozí front-endovou konfiguraci IP a back-endový *fond,* který je přidružen k veřejné IP adrese, kterou *jste vytvořili* v předchozím kroku.
+Vytvořte Load Balancer s příchozí IP adresou pomocí [AZ Network](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) Create s názvem disendy, který zahrnuje příchozí IP adresu front-endu a back-end *fondu, který* je přidružený k *mypublicipinboundu* veřejné IP *adresy, kterou* jste vytvořili v předchozím kroku.
 
 ```azurecli-interactive
   az network lb create \
@@ -94,9 +94,9 @@ Vytvořte nástroj pro vyrovnávání zatížení s příchozí IP adresou pomoc
     --public-ip-address mypublicipinbound   
   ```
 
-### <a name="create-outbound-pool"></a>Vytvoření odchozího fondu
+### <a name="create-outbound-pool"></a>Vytvořit odchozí fond
 
-Vytvořte další fond back-endových adres a definujte odchozí připojení pro fond virtuálních zařízení s [vytvořením fondu adres az network lb](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) s názvem *bepooloutbound*.  Vytvoření samostatného odchozího fondu poskytuje maximální flexibilitu, ale tento krok můžete vynechat a použít také příchozí *bepoolinbound.*
+Vytvořte další fond back-end adres pro definování odchozího připojení pro fond virtuálních počítačů pomocí [AZ Network disendu Address-Pool Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) s názvem *bepooloutbound*.  Vytvoření samostatného odchozího fondu poskytuje maximální flexibilitu, ale tento krok můžete vynechat a zároveň použít jenom příchozí *bepoolinbound* .
 
 ```azurecli-interactive
   az network lb address-pool create \
@@ -105,8 +105,8 @@ Vytvořte další fond back-endových adres a definujte odchozí připojení pro
     --name bepooloutbound
 ```
 
-### <a name="create-outbound-frontend-ip"></a>Vytvořit odchozí front-endip
-Vytvořte odchozí front-endovou konfiguraci IP pro nástroj Provydělávací systém zatížení pomocí [vytvoření front-ip služby AZ network lb,](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) která zahrnuje a odchozí front-endovou konfiguraci IP s názvem *myfrontendoutbound,* která je přidružena k veřejné IP adrese *mypublicipoutbound*
+### <a name="create-outbound-frontend-ip"></a>Vytvořit odchozí IP adresu front-endu
+Vytvořte odchozí nastavení IP adresy front-endu pro Load Balancer pomocí [AZ Network disendu-IP Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) , která zahrnuje a odchozí IP adresu front-endu s názvem *myfrontendoutbound* , která je přidružená k veřejné IP adrese *mypublicipoutbound*
 
 ```azurecli-interactive
   az network lb frontend-ip create \
@@ -132,10 +132,10 @@ Test stavu kontroluje všechny instance virtuálních počítačů a ověřuje, 
 
 ### <a name="create-load-balancing-rule"></a>Vytvořit pravidlo vyrovnávání zatížení
 
-Pravidlo nástroje pro vyrovnávání zatížení definuje konfiguraci ip adres front-endu pro příchozí provoz a back-endový fond pro příjem přenosů spolu s požadovaným zdrojovým a cílovým portem. Vytvořte pravidlo pro vyrovnávání zatížení *myinboundlbrule* s [az sítě lb pravidlo vytvořit](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) pro poslech portu 80 v frontend fondu *myfrontendinbound* a odesílání zatížení s vyrovnáváním síťového provozu do fondu adres back-end *také* pomocí portu 80. 
+Pravidlo nástroje pro vyrovnávání zatížení definuje konfiguraci IP adresy front-endu pro příchozí provoz a back-end fond pro příjem provozu a také požadovaný zdrojový a cílový port. Vytvořte pravidlo nástroje pro vyrovnávání zatížení *myinboundlbrule* pomocí [AZ Network diskont Rule Create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) pro naslouchání na portu 80 ve front-endu *myfrontendinbound* a odesílání síťového provozu s vyrovnáváním zatížení do fondu back-end adres *bepool* také pomocí portu 80. 
 
 >[!NOTE]
->Toto pravidlo vyrovnávání zatížení zakáže automatické odchozí (S)NAT v důsledku tohoto pravidla s parametrem --disable-outbound-snat. Odchozí NAT je poskytována pouze odchozí pravidlo.
+>Toto pravidlo vyrovnávání zatížení zakáže v důsledku tohoto pravidla automatických odchozích překladů adres (NAT) s parametrem--DISABLE-Outbound-SNAT. Odchozí NAT je poskytováno pouze odchozím pravidlem.
 
 ```azurecli-interactive
 az network lb rule create \
@@ -153,7 +153,7 @@ az network lb rule create \
 
 ### <a name="create-outbound-rule"></a>Vytvořit odchozí pravidlo
 
-Odchozí pravidlo definuje front-endovou veřejnou IP adresu, reprezentovanou frontend *frontendoutbound*, která bude použita pro všechny odchozí přenosy NAT a také pro back-endový fond, na který se toto pravidlo vztahuje.  Vytvořte odchozí pravidlo *myoutboundrule* pro odchozí síťový překlad všech virtuálních počítačů (konfigurace IP síťových připojení) v back-endovém fondu *bepool.*  Následující příkaz také změní časový limit odchozí nečinnosti ze 4 na 15 minut a přidělí 10000 portů SNAT namísto 1024.  Další podrobnosti naleznete v [odchozích pravidlech.](https://aka.ms/lboutboundrules)
+Odchozí pravidlo definuje veřejnou IP adresu front-end, která je reprezentovaná *myfrontendoutbound*front-endu, která se bude používat pro všechny odchozí přenosy NAT i pro back-end fond, na který se toto pravidlo vztahuje.  Vytvořte odchozí pravidlo *myoutboundrule* pro odchozí síťový překlad všech virtuálních počítačů (konfigurace IP adresy nic) ve fondu back-endu *bepool* .  Následující příkaz také změní odchozí časový limit nečinnosti ze 4 na 15 minut a přiděluje 10000 portů SNAT namísto 1024.  Další podrobnosti najdete v podrobnostech o [odchozích pravidlech](https://aka.ms/lboutboundrules) .
 
 ```azurecli-interactive
 az network lb outbound-rule create \
@@ -167,9 +167,9 @@ az network lb outbound-rule create \
  --address-pool bepooloutbound
 ```
 
-Pokud nechcete použít samostatný odchozí fond, můžete změnit argument fondu adres v předchozím příkazu a místo toho zadat *bepoolinbound.*  Doporučujeme používat samostatné fondy pro flexibilitu a čitelnost výsledné konfigurace.
+Pokud nechcete používat samostatný odchozí fond, můžete místo toho v předchozím příkazu změnit argument fondu adres, aby bylo možné zadat *bepoolinbound* .  Pro zajištění flexibility a čitelnosti výsledné konfigurace doporučujeme použít samostatné fondy.
 
-V tomto okamžiku můžete pokračovat přidáním virtuálních počítačů do back-endového fondu *bepoolinbound* __a__ *bepooloutbound* aktualizací konfigurace IP příslušných prostředků nic pomocí [přidání az network nic ip-config address-pool](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest).
+V tuto chvíli můžete pokračovat přidáním svého virtuálního počítače do back-end fondu *bepoolinbound* __a__ *bepooloutbound* tak, že aktualizujete konfiguraci IP adres příslušných prostředků nic pomocí [AZ Network nic IP-config Address-Pool Add](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -180,7 +180,7 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, nástro
 ```
 
 ## <a name="next-steps"></a>Další kroky
-V tomto článku jste vytvořili standardní vyrovnávání zatížení, nakonfigurované příchozí pravidla provozu vykladače zatížení, nakonfigurované a sondy stavu pro virtuální počítače v back-endovém fondu. Chcete-li zjistit další informace o službě Azure Load Balancer, přejděte ke kurzům pro Azure Load Balancer.
+V tomto článku jste vytvořili Standard Load Balancer, nakonfigurovali jste pravidla pro příchozí provoz vyrovnávání zatížení, nakonfigurovaná a sonda stavu pro virtuální počítače ve fondu back-endu. Chcete-li zjistit další informace o službě Azure Load Balancer, přejděte ke kurzům pro Azure Load Balancer.
 
 > [!div class="nextstepaction"]
 > [Kurzy o službě Azure Load Balancer](tutorial-load-balancer-standard-public-zone-redundant-portal.md)

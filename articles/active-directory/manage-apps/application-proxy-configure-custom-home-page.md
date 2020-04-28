@@ -1,6 +1,6 @@
 ---
-title: Vlastní domovská stránka pro publikované aplikace – proxy aplikací Azure AD
-description: Popisuje základy konektorů proxy aplikací Azure AD
+title: Vlastní Domovská stránka publikovaných aplikací – Azure Proxy aplikací služby AD
+description: Zahrnuje základní informace o konektorech Azure Proxy aplikací služby AD.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,57 +17,57 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1621b273f617955a374ed46d9c215ba99e5b2913
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74275602"
 ---
-# <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Nastavení vlastní domovské stránky pro publikované aplikace pomocí proxy aplikace Azure AD
+# <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Nastavení vlastní domovské stránky publikovaných aplikací s využitím Azure Proxy aplikací služby AD
 
-Tento článek popisuje, jak nakonfigurovat aplikaci tak, aby uživatele nasměrovala na vlastní domovskou stránku. Když publikujete aplikaci s proxy aplikací, nastavíte interní adresu URL, ale někdy to není stránka, kterou by měl uživatel vidět jako první. Nastavte vlastní domovskou stránku tak, aby uživatel získal správnou stránku při přístupu k aplikaci. Uživateli se zobrazí vlastní domovská stránka, kterou nastavíte, bez ohledu na to, jestli má přístup k aplikaci z panelu Azure Active Directory Access Panel nebo spouštěče aplikací Office 365.
+Tento článek popisuje, jak nakonfigurovat aplikaci, která uživatele nasměruje na vlastní domovskou stránku. Při publikování aplikace pomocí proxy aplikace nastavíte interní adresu URL, ale někdy to není stránka, kterou by měl uživatel vidět jako první. Nastavte vlastní domovskou stránku tak, aby uživatel při přístupu k aplikaci získá pravou stránku. Uživatel uvidí vlastní domovskou stránku, kterou jste nastavili, bez ohledu na to, jestli k aplikaci přistupuje z přístupového panelu Azure Active Directory nebo ze Spouštěče aplikací pro Office 365.
 
-Když uživatel spustí aplikaci, ve výchozím nastavení se přesměrovává na adresu URL kořenové domény publikované aplikace. Vstupní stránka je obvykle nastavena jako adresa URL domovské stránky. Modul Azure AD PowerShell slouží k definování vlastní adresy URL domovské stránky, když chcete, aby uživatel aplikace přistál na konkrétní stránce v rámci aplikace.
+Když uživatel aplikaci spustí, bude se ve výchozím nastavení směrovat na adresu URL kořenové domény publikované aplikace. Cílová stránka je obvykle nastavena jako adresa URL domovské stránky. Pomocí modulu Azure AD PowerShell definujte vlastní adresu URL domovské stránky, pokud chcete, aby uživatel aplikace na konkrétní stránce v rámci aplikace nakládal.
 
-Zde je jeden scénář, který vysvětluje, proč by vaše společnost nastavit vlastní domovskou stránku:
+Tady je jeden scénář, který vysvětluje, proč vaše společnost nastavila vlastní domovskou stránku:
 
-- Uvnitř podnikové sítě se uživatel `https://ExpenseApp/login/login.aspx` přihlásí a přihlášuje k vaší aplikaci.
-- Vzhledem k tomu, že máte další prostředky (například obrázky), které proxy aplikace `https://ExpenseApp` potřebuje přístup na nejvyšší úrovni struktury složek, publikujete aplikaci s jako interní adresu URL.
-- Výchozí externí adresa `https://ExpenseApp-contoso.msappproxy.net`URL je , která nepřenese externího uživatele na přihlašovací stránku.
-- Chcete místo `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` toho nastavit jako adresu URL domovské stránky, aby se nejprve zobrazí přihlašovací stránka externímu uživateli.
+- V rámci podnikové sítě uživatel přejde do aplikace, `https://ExpenseApp/login/login.aspx` aby se přihlásil a měl přístup k vaší aplikaci.
+- Vzhledem k tomu, že máte jiné prostředky (například obrázky), které proxy aplikace potřebuje k přístupu na nejvyšší úrovni struktury složek, je třeba aplikaci publikovat s `https://ExpenseApp` jako interní adresou URL.
+- Výchozí externí adresa URL je `https://ExpenseApp-contoso.msappproxy.net`, která na přihlašovací stránce nebere externího uživatele.
+- Místo toho je třeba `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` nastavit adresu URL domovské stránky, takže externí uživatel uvidí přihlašovací stránku jako první.
 
 > [!NOTE]
-> Když uživatelům uděláte přístup k publikovaným aplikacím, zobrazí se aplikace na [přístupovém panelu Azure AD](../user-help/my-apps-portal-end-user-access.md) a ve [spouštěči aplikací Office 365](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/).
+> Když uživatelům udělíte přístup k publikovaným aplikacím, zobrazí se tyto aplikace na [přístupovém panelu Azure AD](../user-help/my-apps-portal-end-user-access.md) a ve [Spouštěči aplikací pro Office 365](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/).
 
 ## <a name="before-you-start"></a>Než začnete
 
 Před nastavením adresy URL domovské stránky mějte na paměti následující požadavky:
 
-- Cesta, kterou zadáte, musí být subdoménovou cestou adresy URL kořenové domény.
+- Cesta, kterou zadáte, musí být cestou subdomény adresy URL kořenové domény.
 
-  Pokud je `https://apps.contoso.com/app1/`například adresa URL kořenové domény , musí adresa `https://apps.contoso.com/app1/`URL domovské stránky, kterou nakonfigurujete, začínat aplikací .
+  Pokud například adresa URL kořenové domény je `https://apps.contoso.com/app1/`, adresa URL domovské stránky, kterou nakonfigurujete, musí začínat na. `https://apps.contoso.com/app1/`
 
-- Pokud v publikované aplikaci provedete změnu, může změna obnovit hodnotu adresy URL domovské stránky. Když v budoucnu aktualizujete aplikaci, měli byste znovu zkontrolovat a v případě potřeby aktualizovat adresu URL domovské stránky.
+- Pokud provedete změnu publikované aplikace, může tato změna obnovit hodnotu adresy URL domovské stránky. Když aplikaci aktualizujete v budoucnu, měli byste znovu ověřit a v případě potřeby aktualizovat adresu URL domovské stránky.
 
-Adresu URL domovské stránky můžete nastavit buď prostřednictvím portálu Azure nebo pomocí PowerShellu.
+Adresu URL domovské stránky můžete nastavit buď pomocí Azure Portal, nebo pomocí prostředí PowerShell.
 
-## <a name="change-the-home-page-in-the-azure-portal"></a>Změna domovské stránky na webu Azure Portal
+## <a name="change-the-home-page-in-the-azure-portal"></a>Změna domovské stránky v Azure Portal
 
-Pokud chcete změnit adresu URL domovské stránky aplikace na portálu Azure AD, postupujte takto:
+Pokud chcete změnit adresu URL domovské stránky vaší aplikace prostřednictvím portálu Azure AD, postupujte takto:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/) jako správce.
-1. Vyberte **Službu Azure Active Directory**a potom **registrace aplikací**. Zobrazí se seznam registrovaných aplikací.
-1. Vyberte si aplikaci ze seznamu. Zobrazí se stránka s podrobnostmi o registrované aplikaci.
-1. V části **Správa**vyberte **Branding**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) jako správce.
+1. Vyberte **Azure Active Directory**a potom **Registrace aplikací**. Zobrazí se seznam registrovaných aplikací.
+1. Vyberte aplikaci ze seznamu. Zobrazí se stránka se zobrazenými podrobnostmi o registrované aplikaci.
+1. V části **Spravovat**vyberte **branding**.
 1. Aktualizujte **adresu URL domovské stránky** novou cestou.
 
-   ![Stránka značky pro registrovanou aplikaci s polem URL domovské stránky](media/application-proxy-configure-custom-home-page/app-proxy-app-branding.png)
+   ![Stránka branding pro registrovanou aplikaci, která zobrazuje pole adresy URL domovské stránky](media/application-proxy-configure-custom-home-page/app-proxy-app-branding.png)
 
 1. Vyberte **Uložit**.
 
 ## <a name="change-the-home-page-with-powershell"></a>Změna domovské stránky pomocí PowerShellu
 
-Chcete-li nakonfigurovat domovskou stránku aplikace pomocí PowerShellu, musíte:
+Pokud chcete nakonfigurovat domovskou stránku aplikace pomocí PowerShellu, musíte provést tyto kroky:
 
 1. Nainstalujte modul Azure AD PowerShell.
 1. Najděte hodnotu ObjectId aplikace.
@@ -75,43 +75,43 @@ Chcete-li nakonfigurovat domovskou stránku aplikace pomocí PowerShellu, musít
 
 ### <a name="install-the-azure-ad-powershell-module"></a>Instalace modulu Azure AD PowerShell
 
-Než definujete vlastní adresu URL domovské stránky pomocí PowerShellu, nainstalujte modul Azure AD PowerShell.Balíček si můžete stáhnout z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureAD/2.0.2.16), která používá koncový bod rozhraní API grafu.
+Před definováním vlastní adresy URL domovské stránky pomocí PowerShellu nainstalujte modul Azure AD PowerShell.Balíček si můžete stáhnout z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureAD/2.0.2.16), který používá koncový bod Graph API.
 
-Chcete-li balíček nainstalovat, postupujte takto:
+K instalaci balíčku použijte následující postup:
 
-1. Otevřete standardní okno PowerShellu a spusťte následující příkaz:
+1. Otevřete standardní okno prostředí PowerShell a potom spusťte následující příkaz:
 
    ```powershell
    Install-Module -Name AzureAD
    ```
 
-    Pokud příkaz používáte jako nesprávce, použijte `-scope currentuser` tuto možnost.
+    Pokud příkaz spouštíte jako správce bez správce, použijte `-scope currentuser` možnost.
 
-1. Během instalace vyberte **y,** chcete-li nainstalovat dva balíčky z Nuget.org. Oba balíčky jsou povinné.
+1. Během instalace vyberte **Y** pro instalaci dvou balíčků z NuGet.org. Oba balíčky jsou povinné.
 
-### <a name="find-the-objectid-of-the-app"></a>Najít Objektid aplikace
+### <a name="find-the-objectid-of-the-app"></a>Najít ObjectId aplikace
 
-Získáte ObjectId aplikace hledáním aplikace podle jejího zobrazovaného názvu nebo domovské stránky.
+Identifikátor ObjectId aplikace získáte tak, že ji vyhledáte jeho zobrazovaným jménem nebo domovskou stránkou.
 
-1. Ve stejném okně Prostředí PowerShell importujte modul Azure AD.
+1. Ve stejném okně PowerShellu Importujte modul Azure AD.
 
    ```powershell
    Import-Module AzureAD
    ```
 
-1. Přihlaste se k modulu Azure AD jako správce klienta.
+1. Přihlaste se k modulu Azure AD jako správce tenanta.
 
    ```powershell
    Connect-AzureAD
    ```
 
-1. Najděte aplikaci. Tento příklad používá PowerShell k vyhledání Objektu objectid `SharePoint`vyhledáním aplikace se zobrazovaným názvem .
+1. Najděte aplikaci. Tento příklad používá PowerShell k vyhledání identifikátoru ObjectId hledáním aplikace s názvem zobrazení `SharePoint`.
 
    ```powershell
    Get-AzureADApplication | Where-Object { $_.DisplayName -eq "SharePoint" } | Format-List DisplayName, Homepage, ObjectId
    ```
 
-   Měli byste získat výsledek, který je podobný tomu, který je zde zobrazen. Zkopírujte identifikátor GUID ObjektU pro uvažování, který chcete použít v další části.
+   Měli byste získat výsledek podobný tomu, který je zde zobrazen. Zkopírujte identifikátor GUID ObjectId pro použití v další části.
 
    ```console
    DisplayName : SharePoint
@@ -119,7 +119,7 @@ Získáte ObjectId aplikace hledáním aplikace podle jejího zobrazovaného ná
    ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
    ```
 
-   Případně můžete jen vytáhnout seznam všech aplikací, hledat v seznamu aplikace s konkrétním zobrazovaným jménem nebo domovskou stránkou a zkopírovat objekt ObjectId aplikace, jakmile je aplikace nalezena.
+   Alternativně můžete načíst seznam všech aplikací, vyhledat seznam pro aplikaci pomocí konkrétního zobrazovaného jména nebo domovské stránky a zkopírovat ObjectId aplikace, jakmile se aplikace najde.
 
    ```powershell
    Get-AzureADApplication | Format-List DisplayName, Homepage, ObjectId
@@ -127,27 +127,27 @@ Získáte ObjectId aplikace hledáním aplikace podle jejího zobrazovaného ná
 
 ### <a name="update-the-home-page-url"></a>Aktualizace adresy URL domovské stránky
 
-Vytvořte adresu URL domovské stránky a aktualizujte aplikaci s tou hodnotou. Pokračujte v používání stejného okna PowerShellu, nebo pokud používáte nové okno PowerShellu, přihlaste se znovu k modulu Azure AD pomocí `Connect-AzureAD`. Potom postupujte podle těchto kroků:
+Vytvořte adresu URL domovské stránky a aktualizujte aplikaci s touto hodnotou. Pokračujte v používání stejného okna PowerShellu, nebo pokud používáte nové okno PowerShellu, přihlaste se znovu k modulu Azure AD pomocí `Connect-AzureAD`. Potom postupujte podle těchto kroků:
 
-1. Vytvořte proměnnou pro uložení hodnoty ObjectId, kterou jste zkopírovali v předchozím oddíle. (Nahraďte hodnotu ObjectId použitou v tomto příkladu SharePointu hodnotou ObjectId aplikace.)
+1. Vytvořte proměnnou pro uchování hodnoty ObjectId, kterou jste zkopírovali v předchozí části. (Nahraďte hodnotu ObjectId použitou v tomto příkladu SharePointu s hodnotou ObjectId vaší aplikace.)
 
    ```powershell
    $objguid = "8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4"
    ```
 
-1. Spuštěním následujícího příkazu potvrďte, že máte správnou aplikaci. Výstup by měl být shodný s výstupem, který jste viděli v předchozí části ([Najděte objektid aplikace](#find-the-objectid-of-the-app)).
+1. Ověřte, že máte správnou aplikaci, a to spuštěním následujícího příkazu. Výstup by měl být stejný jako výstup, který jste viděli v předchozí části ([Najít objectID aplikace](#find-the-objectid-of-the-app)).
 
    ```powershell
    Get-AzureADApplication -ObjectId $objguid | Format-List DisplayName, Homepage, ObjectId
    ```
 
-1. Vytvořte prázdný objekt aplikace, který uchová změny, které chcete provést.
+1. Vytvořte prázdný aplikační objekt pro uložení změn, které chcete provést.
 
    ```powershell
    $appnew = New-Object "Microsoft.Open.AzureAD.Model.Application"
    ```
 
-1. Nastavte adresu URL domovské stránky na požadovanou hodnotu. Hodnota musí být subdoménovou cestou publikované aplikace. Pokud například změníte adresu URL `https://sharepoint-iddemo.msappproxy.net/` `https://sharepoint-iddemo.msappproxy.net/hybrid/`domovské stránky z na , uživatelé aplikace přejdou přímo na vlastní domovskou stránku.
+1. Nastavte adresu URL domovské stránky na požadovanou hodnotu. Hodnota musí být cesta subdomény publikované aplikace. Například pokud změníte adresu URL domovské stránky z `https://sharepoint-iddemo.msappproxy.net/` na `https://sharepoint-iddemo.msappproxy.net/hybrid/`, uživatelé aplikace přejdou přímo na vlastní domovskou stránku.
 
    ```powershell
    $homepage = "https://sharepoint-iddemo.msappproxy.net/hybrid/"
@@ -159,13 +159,13 @@ Vytvořte adresu URL domovské stránky a aktualizujte aplikaci s tou hodnotou. 
    Set-AzureADApplication -ObjectId $objguid -Homepage $homepage
    ```
 
-1. Chcete-li ověřit, zda byla změna úspěšná, spusťte znovu následující příkaz z kroku 2.
+1. Chcete-li ověřit, zda byla změna úspěšná, spusťte následující příkaz z kroku 2 znovu.
 
    ```powershell
    Get-AzureADApplication -ObjectId $objguid | Format-List DisplayName, Homepage, ObjectId
    ```
 
-   Pro náš příklad by měl výstup nyní vypadat takto:
+   Výstup by měl nyní vypadat takto:
 
    ```console
    DisplayName : SharePoint
@@ -173,12 +173,12 @@ Vytvořte adresu URL domovské stránky a aktualizujte aplikaci s tou hodnotou. 
    ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
    ```
 
-1. Restartujte aplikaci a potvrďte, že se domovská stránka zobrazí jako první obrazovka podle očekávání.
+1. Restartujte aplikaci a potvrďte tak, že se Domovská stránka zobrazí jako první obrazovka, podle očekávání.
 
 > [!NOTE]
-> Všechny změny provedené v aplikaci mohou obnovit adresu URL domovské stránky. Pokud se adresa URL domovské stránky resetuje, opakujte kroky v této části a nastavte ji zpět.
+> Všechny změny, které provedete v aplikaci, mohou resetovat adresu URL domovské stránky. Pokud se adresa URL domovské stránky resetuje, opakujte postup v této části a nastavte ji zpátky.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Povolení vzdáleného přístupu k SharePointu s využitím Proxy aplikací služby Azure AD](application-proxy-integrate-with-sharepoint-server.md)
-- [Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace ve službě Azure Active Directory](application-proxy-add-on-premises-application.md)
+- [Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory](application-proxy-add-on-premises-application.md)

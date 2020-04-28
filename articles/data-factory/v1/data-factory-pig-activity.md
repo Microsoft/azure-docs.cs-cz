@@ -1,6 +1,6 @@
 ---
 title: Transformace dat pomocí aktivity prasete v Azure Data Factory
-description: Zjistěte, jak můžete pomocí aktivity prasete v datové továrně Azure spouštět skripty Pig na vyžádání nebo ve vlastním clusteru HDInsight.
+description: Zjistěte, jak můžete pomocí aktivity prasete v datové továrně Azure spouštět skripty prasete na vyžádání nebo vlastním clusteru HDInsight.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -13,33 +13,33 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 5b8e7201a6239ef1fe83fb89d4b361995e305bbf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74703193"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity prasete v Azure Data Factory
-> [!div class="op_single_selector" title1="Transformační aktivity"]
-> * [Aktivita úlu](data-factory-hive-activity.md) 
-> * [Aktivita prasat](data-factory-pig-activity.md)
+> [!div class="op_single_selector" title1="Aktivity transformace"]
+> * [Aktivita v podregistru](data-factory-hive-activity.md) 
+> * [Aktivita prasete](data-factory-pig-activity.md)
 > * [Aktivita MapReduce](data-factory-map-reduce.md)
-> * [Aktivita streamování hadoopu](data-factory-hadoop-streaming-activity.md)
-> * [Aktivita jiskry](data-factory-spark.md)
+> * [Aktivita streamování Hadoop](data-factory-hadoop-streaming-activity.md)
+> * [Aktivita Sparku](data-factory-spark.md)
 > * [Aktivita Provedení dávky služby Machine Learning](data-factory-azure-ml-batch-execution-activity.md)
-> * [Aktivita Aktualizace prostředků služby Machine Learning](data-factory-azure-ml-update-resource-activity.md)
+> * [Aktivita aktualizace prostředku služby Machine Learning](data-factory-azure-ml-update-resource-activity.md)
 > * [Aktivita Uložená procedura](data-factory-stored-proc-activity.md)
 > * [Aktivita U-SQL služby Data Lake Analytics](data-factory-usql-activity.md)
 > * [Vlastní aktivita rozhraní .NET](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte [si téma transformace dat pomocí aktivity Pig v datové továrně](../transform-data-using-hadoop-pig.md).
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [transformace dat pomocí aktivity prasete v Data Factory](../transform-data-using-hadoop-pig.md).
 
 
-Aktivita HDInsight Pig v [datové továrně](data-factory-create-pipelines.md) provádí dotazy Pig na [vašem vlastním](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) nebo na [vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) založeném hdinsight clusteru windows/linuxu. Tento článek vychází z článku [aktivit transformace dat,](data-factory-data-transformation-activities.md) který představuje obecný přehled transformace dat a podporovaných transformačních aktivit.
+Aktivita prasete v HDInsight v [kanálu](data-factory-create-pipelines.md) Data Factory spouští dotazy na prasaty na [vašem](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) clusteru HDInsight založeném na systému Windows/Linux nebo [na vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) . Tento článek se sestavuje na článku [aktivity transformace dat](data-factory-data-transformation-activities.md) , který představuje obecný přehled transformace dat a podporovaných transformačních aktivit.
 
 > [!NOTE] 
-> Pokud jste s Azure Data Factory teprve noví, přečtěte si [úvodní článek azure data factory](data-factory-introduction.md) a proveďte kurz: [Sestavte si první datový kanál](data-factory-build-your-first-pipeline.md) před přečtením tohoto článku. 
+> Pokud se Azure Data Factory teprve začínáte, přečtěte si [Úvod do Azure Data Factory](data-factory-introduction.md) a udělejte si kurz: [Vytvoření prvního datového kanálu](data-factory-build-your-first-pipeline.md) před přečtením tohoto článku. 
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -87,17 +87,17 @@ Aktivita HDInsight Pig v [datové továrně](data-factory-create-pipelines.md) p
 | jméno |Název aktivity |Ano |
 | description |Text popisující, k čemu se aktivita používá |Ne |
 | type |HDinsightPig |Ano |
-| Vstupy |Jeden nebo více vstupů spotřebovaných aktivitou prasete |Ne |
-| Výstupy |Jeden nebo více výstupů produkovaných aktivitou prasete |Ano |
-| linkedServiceName |Odkaz na cluster HDInsight registrovaný jako propojená služba v Datové továrně |Ano |
-| . |Zadejte vložku skriptu Prase |Ne |
-| scriptPath |Uložte skript Pig do úložiště objektů blob Azure a zadejte cestu k souboru. Použijte vlastnost 'script' nebo 'scriptPath'. Obojí nelze použít společně. Název souboru rozlišuje malá a velká písmena. |Ne |
-| Definuje |Zadejte parametry jako páry klíč/hodnota pro odkazování ve skriptu Pig |Ne |
+| vztahují |Jeden nebo více vstupů spotřebovaných aktivitou prasete |Ne |
+| činnosti |Jeden nebo více výstupů vyprodukovaných aktivitou prasete |Ano |
+| linkedServiceName |Odkaz na cluster HDInsight registrovaný jako propojená služba v Data Factory |Ano |
+| . |Zadat vložený skript prasete |Ne |
+| scriptPath |Uložte skript prasete do úložiště objektů BLOB v Azure a zadejte cestu k souboru. Použijte vlastnost Script nebo scriptPath. Nelze použít současně. V názvu souboru se rozlišují malá a velká písmena. |Ne |
+| definuje |Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skriptu pro vepřové prostředí. |Ne |
 
 ## <a name="example"></a>Příklad
-Podívejme se na příklad analýzy herních protokolů, kde chcete identifikovat čas strávený hráči, kteří hrají hry spuštěné vaší společností.
+Podívejme se na příklad analýzy herních protokolů, u kterých chcete zjistit čas strávený hráči, které hrají hry spuštěné vaší společností.
 
-Následující ukázkový herní protokol je oddělený soubor čárkou (,). Obsahuje následující pole – ProfileID, SessionStart, Duration, SrcIPAddress a GameType.
+Následující ukázkový protokol hry je čárkou oddělený soubor (,). Obsahuje následující pole – ProfileID, SessionStart, Duration, SrcIPAddress a GameType.
 
 ```
 1809,2014-05-04 12:04:25.3470000,14,221.117.223.75,CaptureFlag
@@ -107,7 +107,7 @@ Následující ukázkový herní protokol je oddělený soubor čárkou (,). Obs
 .....
 ```
 
-**Pig skript** pro zpracování těchto údajů:
+**Skript prasete** pro zpracování těchto dat:
 
 ```
 PigSampleIn = LOAD 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/samplein/' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);
@@ -119,18 +119,18 @@ PigSampleOut = Foreach GroupProfile Generate PigSampleIn.ProfileID, SUM(PigSampl
 Store PigSampleOut into 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/sampleoutpig/' USING PigStorage (',');
 ```
 
-Chcete-li spustit tento skript Pig v kanálu data factory, postupujte takto:
+Chcete-li spustit tento skript pro vepřový postup v kanálu Data Factory, proveďte následující kroky:
 
-1. Vytvořte propojenou službu pro [registraci vlastního výpočetního clusteru HDInsight](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) nebo nakonfigurujte [výpočetní cluster HDInsight na vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service). Nazvěme tuto propojenou službu **HDInsightLinkedService**.
-2. Vytvořte [propojenou službu](data-factory-azure-blob-connector.md) pro konfiguraci připojení k úložišti objektů Blob Azure, které jsou hostující data. Nazvěme tuto propojenou **službu StorageLinkedService**.
-3. Vytvořte [datové sady](data-factory-create-datasets.md) směřující na vstupní a výstupní data. Pojďme volat vstupní datovou sadu **PigSampleIn** a výstupní datovou sadu **PigSampleOut**.
-4. Zkopírujte dotaz Pig do souboru Azure Blob Storage nakonfigurované v kroku #2. Pokud se úložiště Azure, které jsou hostiteli dat, liší od úložiště, které hostuje soubor dotazu, vytvořte samostatnou propojenou službu Azure Storage. Odkazovat na propojenou službu v konfiguraci aktivity. Pomocí **aplikace scriptPath** určete cestu k souboru prasečího skriptu a **skriptuLinkedService**. 
+1. Vytvořte propojenou službu pro registraci [vlastního výpočetního clusteru HDInsight](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) nebo nakonfigurujte [výpočetní cluster HDInsight na vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service). Pojďme zavolat tuto propojenou službu **HDInsightLinkedService**.
+2. Vytvořte [propojenou službu](data-factory-azure-blob-connector.md) , abyste nakonfigurovali připojení k úložišti objektů BLOB v Azure, která hostují data. Pojďme zavolat tuto propojenou službu **StorageLinkedService**.
+3. Vytvořte datové [sady](data-factory-create-datasets.md) ukazující na vstupní a výstupní data. Pojďme zavolat vstupní datovou sadu **PigSampleIn** a výstupní datovou sadu **PigSampleOut**.
+4. Zkopírujte dotaz na prase do souboru, který je Blob Storage Azure nakonfigurovaný v kroku #2. Pokud úložiště Azure, které hostuje data, se liší od toho, který hostuje soubor dotazů, vytvořte samostatnou propojenou službu Azure Storage. Podívejte se na propojenou službu v konfiguraci aktivity. Pomocí **ScriptPath** zadejte cestu k souboru skriptu prasete a **scriptLinkedService**. 
    
    > [!NOTE]
-   > Můžete také zadat Pig skript vřádku v definici aktivity pomocí vlastnosti **script.** Tento přístup však nedoporučujeme, protože všechny speciální znaky ve skriptu musí být uvozeny a mohou způsobit problémy s laděním. Osvědčeným postupem je postupovat podle #4 kroků.
+   > Můžete také zadat vložený skript prasete do definice aktivity pomocí vlastnosti **skriptu** . Tento přístup však nedoporučujeme, protože všechny speciální znaky ve skriptu musí být uvozeny řídicím znakem a mohou způsobit problémy s laděním. Osvědčeným postupem je postupovat podle kroků #4.
    >
    >
-5. Vytvořte kanál s aktivitou HDInsightPig. Tato aktivita zpracovává vstupní data spuštěním skriptu Pig v clusteru HDInsight.
+5. Vytvořte kanál s aktivitou HDInsightPig. Tato aktivita zpracuje vstupní data spuštěním skriptu prasete v clusteru HDInsight.
 
     ```JSON
     {
@@ -164,15 +164,15 @@ Chcete-li spustit tento skript Pig v kanálu data factory, postupujte takto:
       }
     }
     ```
-6. Nasaďte potrubí. Podrobnosti [najdete v článku Vytváření kanálů.](data-factory-create-pipelines.md) 
-7. Sledujte kanál pomocí zobrazení monitorování a správy datové továrny. Podrobnosti najdete v článku [Monitorování a správa kanálů datové továrny.](data-factory-monitor-manage-pipelines.md)
+6. Nasaďte kanál. Podrobnosti najdete v článku [vytvoření kanálů](data-factory-create-pipelines.md) . 
+7. Monitorujte kanál pomocí zobrazení pro monitorování a správu objektu pro vytváření dat. Podrobnosti najdete v článku [monitorování a Správa kanálů Data Factory](data-factory-monitor-manage-pipelines.md) .
 
-## <a name="specifying-parameters-for-a-pig-script"></a>Určení parametrů pro pig skript
-Vezměme si následující příklad: herní protokoly jsou ingestovány denně do úložiště objektů blob Azure a uloženy ve složce rozdělené na základě data a času. Chcete parametrizovat pig skript a předat umístění vstupní složky dynamicky za běhu a také vytvořit výstup rozdělený s datem a časem.
+## <a name="specifying-parameters-for-a-pig-script"></a>Určení parametrů pro skript vepřového sádla
+Vezměte v úvahu následující příklad: herní protokoly se každý den ingestují do služby Azure Blob Storage a ukládají se do složky na základě data a času. Chcete parametrizovat skript prasete a dynamicky předat umístění vstupní složky během běhu a také vytvořit rozdělený výstup s použitím data a času.
 
-Chcete-li použít parametrizovaný skript Pig, postupujte takto:
+Chcete-li použít parametrizovaný skript prasete, postupujte následovně:
 
-* Definujte parametry v **definicích**.
+* Definujte parametry v **definuje**.
 
     ```JSON
     {
@@ -210,7 +210,7 @@ Chcete-li použít parametrizovaný skript Pig, postupujte takto:
       }
     }
     ```
-* Ve skriptu prasete viz parametry pomocí "**$parameterName**", jak je znázorněno v následujícím příkladu:
+* V rámci skriptu pro vepřové zobrazení použijte parametry pomocí příkazu '**$ParameterName**', jak je znázorněno v následujícím příkladu:
 
     ```
     PigSampleIn = LOAD '$Input' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);
@@ -220,8 +220,8 @@ Chcete-li použít parametrizovaný skript Pig, postupujte takto:
     ```
 
 ## <a name="see-also"></a>Viz také
-* [Aktivita úlu](data-factory-hive-activity.md)
+* [Aktivita v podregistru](data-factory-hive-activity.md)
 * [Aktivita MapReduce](data-factory-map-reduce.md)
-* [Aktivita streamování hadoopu](data-factory-hadoop-streaming-activity.md)
+* [Aktivita streamování Hadoop](data-factory-hadoop-streaming-activity.md)
 * [Vyvolání programů Spark](data-factory-spark.md)
 * [Vyvolání skriptů jazyka R](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)

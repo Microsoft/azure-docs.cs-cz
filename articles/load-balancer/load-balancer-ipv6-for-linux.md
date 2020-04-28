@@ -1,11 +1,11 @@
 ---
-title: Konfigurace dhcpv6 pro virtuální počítače s Linuxem
+title: Konfigurace protokolu DHCPv6 pro virtuální počítače se systémem Linux
 titleSuffix: Azure Load Balancer
-description: V tomto článku se dozvíte, jak nakonfigurovat virtuální počítače DHCPv6 pro Linux.
+description: V tomto článku se dozvíte, jak nakonfigurovat DHCPv6 pro virtuální počítače se systémem Linux.
 services: load-balancer
 documentationcenter: na
 author: asudbring
-keywords: ipv6, azure balancer, dual stack, public ip, nativní ipv6, mobilní, iot
+keywords: IPv6, Azure Load Balancer, duální zásobník, veřejná IP adresa, nativní IPv6, mobilní zařízení, IoT
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -15,48 +15,48 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: allensu
 ms.openlocfilehash: 6ea215b6aa826231e940f88c3687bb65591303f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74225322"
 ---
-# <a name="configure-dhcpv6-for-linux-vms"></a>Konfigurace dhcpv6 pro virtuální počítače s Linuxem
+# <a name="configure-dhcpv6-for-linux-vms"></a>Konfigurace protokolu DHCPv6 pro virtuální počítače se systémem Linux
 
 
-Některé image virtuálního počítače linuxu na Azure Marketplace nemají ve výchozím nastavení nakonfigurovaný protokol Dhcp verze 6 (DHCPv6). Pro podporu IPv6 musí být DHCPv6 nakonfigurován v distribuci operačního systému Linux, kterou používáte. Různé distribuce Linuxu konfigurují DHCPv6 různými způsoby, protože používají různé balíčky.
+Některé image virtuálních počítačů se systémem Linux v Azure Marketplace nemají ve výchozím nastavení nakonfigurován protokol DHCPv6 (Dynamic Host Configuration Protocol verze 6). Aby bylo možné podporovat protokol IPv6, musí být v rámci distribuce operačního systému Linux, kterou používáte, nakonfigurován protokol DHCPv6. Různá distribuce systému Linux konfiguruje DHCPv6 různými způsoby, protože používají různé balíčky.
 
 > [!NOTE]
-> Nejnovější image SUSE Linux a CoreOS na Azure Marketplace byly předem nakonfigurované s DHCPv6. Při použití těchto obrázků nejsou nutné žádné další změny.
+> Poslední image SUSE Linux a CoreOS v Azure Marketplace jsou předem nakonfigurované pomocí protokolu DHCPv6. Při použití těchto imagí nejsou vyžadovány žádné další změny.
 
-Tento dokument popisuje, jak povolit DHCPv6 tak, aby váš virtuální počítač linux získá adresu IPv6.
+Tento dokument popisuje, jak povolit protokol DHCPv6, aby virtuální počítač se systémem Linux získal adresu IPv6.
 
 > [!WARNING]
-> Nesprávnou úpravou konfiguračních souborů sítě můžete ztratit přístup k síti k virtuálnímu počítači. Doporučujeme otestovat změny konfigurace v neprodukčních systémech. Pokyny v tomto článku byly testovány na nejnovější verze ibi linuxových inama na Azure Marketplace. Podrobnější pokyny najdete v dokumentaci k vlastní verzi Linuxu.
+> Při nesprávné úpravě konfiguračních souborů sítě můžete ztratit síťový přístup k vašemu VIRTUÁLNÍmu počítači. Doporučujeme, abyste otestovali změny konfigurace v jiných než produkčních systémech. Pokyny v tomto článku byly testovány na nejnovější verze imagí pro Linux v Azure Marketplace. Podrobnější pokyny najdete v dokumentaci k vaší vlastní verzi systému Linux.
 
 ## <a name="ubuntu"></a>Ubuntu
 
-1. Upravte soubor */etc/dhcp/dhclient6.conf* a přidejte následující řádek:
+1. Upravte soubor */etc/DHCP/dhclient6.conf* a přidejte následující řádek:
 
         timeout 10;
 
 2. Upravte konfiguraci sítě pro rozhraní eth0 s následující konfigurací:
 
-   * Na **Ubuntu 12.04 a 14.04**upravte soubor */etc/network/interfaces.d/eth0.cfg.* 
-   * Na **Ubuntu 16.04**upravte soubor */etc/network/interfaces.d/50-cloud-init.cfg.*
+   * V **Ubuntu 12,04 a 14,04**upravte soubor */etc/Network/Interfaces.d/eth0.cfg* . 
+   * V **Ubuntu 16,04**upravte soubor */etc/Network/Interfaces.d/50-Cloud-init.cfg* .
 
          iface eth0 inet6 auto
              up sleep 5
              up dhclient -1 -6 -cf /etc/dhcp/dhclient6.conf -lf /var/lib/dhcp/dhclient6.eth0.leases -v eth0 || true
 
-3. Obnovte adresu IPv6:
+3. Prodloužit adresu IPv6:
 
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
     ```
-Počínaje Ubuntu 17.10 je výchozím mechanismem konfigurace sítě [NETPLAN]( https://netplan.io).  V době instalace/instance netplan čte konfiguraci sítě z konfiguračních souborů YAML v tomto umístění: /{lib,etc,run}/netplan/*.yaml.
+Počínaje verzí Ubuntu 17,10 je výchozí mechanismus konfigurace sítě [NETPLAN]( https://netplan.io).  V době instalace/vytvoření instance NETPLAN přečte konfiguraci sítě z konfiguračních souborů YAML v tomto umístění:/{lib, atd. Run}/netplan/*. yaml.
 
-Do konfigurace uveďte příkaz *dhcp6:true* pro každé ethernetové rozhraní.  Například:
+Pro každé rozhraní sítě Ethernet ve vaší konfiguraci uveďte příkaz *dhcp6: true* .  Příklad:
   
         network:
           version: 2
@@ -64,11 +64,11 @@ Do konfigurace uveďte příkaz *dhcp6:true* pro každé ethernetové rozhraní.
             eno1:
               dhcp6: true
 
-Během předčasného spuštění netplan "network renderer" zapisuje konfiguraci do /run předat ovládání zařízení určenému https://netplan.io/referencesíťovému daemonu Pro referenční informace o NETPLAN naleznete v tématu .
+Během předčasného spuštění netplan "Nástroj pro vyřízení sítě" zapisuje konfiguraci do programu/Run, aby bylo možné předat řízení zařízení zadanému síťovému démonu pro https://netplan.io/referencereferenční informace o netplan najdete v tématu.
  
 ## <a name="debian"></a>Debian
 
-1. Upravte soubor */etc/dhcp/dhclient6.conf* a přidejte následující řádek:
+1. Upravte soubor */etc/DHCP/dhclient6.conf* a přidejte následující řádek:
 
         timeout 10;
 
@@ -78,7 +78,7 @@ Během předčasného spuštění netplan "network renderer" zapisuje konfigurac
             up sleep 5
             up dhclient -1 -6 -cf /etc/dhcp/dhclient6.conf -lf /var/lib/dhcp/dhclient6.eth0.leases -v eth0 || true
 
-3. Obnovte adresu IPv6:
+3. Prodloužit adresu IPv6:
 
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
@@ -86,16 +86,16 @@ Během předčasného spuštění netplan "network renderer" zapisuje konfigurac
 
 ## <a name="rhel-centos-and-oracle-linux"></a>RHEL, CentOS a Oracle Linux
 
-1. Upravte soubor */etc/sysconfig/network* a přidejte následující parametr:
+1. Upravte soubor */etc/sysconfig/Network* a přidejte následující parametr:
 
         NETWORKING_IPV6=yes
 
-2. Upravte soubor */etc/sysconfig/network-scripts/ifcfg-eth0* a přidejte následující dva parametry:
+2. Upravte soubor */etc/sysconfig/Network-Scripts/ifcfg-eth0* a přidejte následující dva parametry:
 
         IPV6INIT=yes
         DHCPV6C=yes
 
-3. Obnovte adresu IPv6:
+3. Prodloužit adresu IPv6:
 
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
@@ -103,7 +103,7 @@ Během předčasného spuštění netplan "network renderer" zapisuje konfigurac
 
 ## <a name="sles-11-and-opensuse-13"></a>SLES 11 a openSUSE 13
 
-Nedávné SUSE Linux Enterprise Server (SLES) a openSUSE image v Azure byly předem nakonfigurovány s DHCPv6. Při použití těchto obrázků nejsou nutné žádné další změny. Pokud máte virtuální počítač založený na starší nebo vlastní image SUSE, postupujte takto:
+Nedávné SUSE Linux Enterprise Server (SLES) a image openSUSE v Azure jsou předem nakonfigurované s protokolem DHCPv6. Při použití těchto imagí nejsou vyžadovány žádné další změny. Pokud máte virtuální počítač, který je založený na starší nebo vlastní imagi SUSE, udělejte toto:
 
 1. V `dhcp-client` případě potřeby nainstalujte balíček:
 
@@ -111,29 +111,29 @@ Nedávné SUSE Linux Enterprise Server (SLES) a openSUSE image v Azure byly pře
     sudo zypper install dhcp-client
     ```
 
-2. Upravte soubor */etc/sysconfig/network/ifcfg-eth0* a přidejte následující parametr:
+2. Upravte soubor */etc/sysconfig/Network/ifcfg-eth0* a přidejte následující parametr:
 
         DHCLIENT6_MODE='managed'
 
-3. Obnovte adresu IPv6:
+3. Prodloužit adresu IPv6:
 
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
     ```
 
-## <a name="sles-12-and-opensuse-leap"></a>SLES 12 a openSUSE Leap
+## <a name="sles-12-and-opensuse-leap"></a>SLES 12 a openSUSE – přestupnost
 
-Nedávné sles a openSUSE image v Azure byly předem nakonfigurované s DHCPv6. Při použití těchto obrázků nejsou nutné žádné další změny. Pokud máte virtuální počítač založený na starší nebo vlastní image SUSE, postupujte takto:
+Poslední image SLES a openSUSE v Azure jsou předem nakonfigurované s protokolem DHCPv6. Při použití těchto imagí nejsou vyžadovány žádné další změny. Pokud máte virtuální počítač, který je založený na starší nebo vlastní imagi SUSE, udělejte toto:
 
-1. Upravte soubor */etc/sysconfig/network/ifcfg-eth0* a `#BOOTPROTO='dhcp4'` nahraďte parametr následující hodnotou:
+1. Upravte soubor */etc/sysconfig/Network/ifcfg-eth0* a nahraďte `#BOOTPROTO='dhcp4'` parametr následující hodnotou:
 
         BOOTPROTO='dhcp'
 
-2. Do souboru */etc/sysconfig/network/ifcfg-eth0* přidejte následující parametr:
+2. Do souboru */etc/sysconfig/Network/ifcfg-eth0* přidejte následující parametr:
 
         DHCLIENT6_MODE='managed'
 
-3. Obnovte adresu IPv6:
+3. Prodloužit adresu IPv6:
 
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
@@ -141,9 +141,9 @@ Nedávné sles a openSUSE image v Azure byly předem nakonfigurované s DHCPv6. 
 
 ## <a name="coreos"></a>CoreOS
 
-Nejnovější image CoreOS v Azure byly předem nakonfigurované s DHCPv6. Při použití těchto obrázků nejsou nutné žádné další změny. Pokud máte virtuální počítač založený na starší nebo vlastní image CoreOS, postupujte takto:
+Poslední image CoreOS v Azure jsou předem nakonfigurované s protokolem DHCPv6. Při použití těchto imagí nejsou vyžadovány žádné další změny. Pokud máte virtuální počítač založený na starší nebo vlastní imagi CoreOS, udělejte toto:
 
-1. Upravte soubor */etc/systemd/network/10_dhcp.network:*
+1. Upravte soubor */etc/systemd/network/10_dhcp. Network* :
 
         [Match]
         eth0
@@ -151,7 +151,7 @@ Nejnovější image CoreOS v Azure byly předem nakonfigurované s DHCPv6. Při 
         [Network]
         DHCP=ipv6
 
-2. Obnovte adresu IPv6:
+2. Prodloužit adresu IPv6:
 
     ```bash
     sudo systemctl restart systemd-networkd

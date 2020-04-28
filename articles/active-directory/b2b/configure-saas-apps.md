@@ -13,97 +13,97 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7c73a14c2a8cd063672bd0998368ca660f52cd5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74272956"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>Konfigurace aplikací SaaS pro spolupráci B2B
 
-Spolupráce b2B služby Azure Active Directory (Azure AD) funguje s většinou aplikací, které se integrují s Azure AD. V této části procházíme pokyny pro konfiguraci některých oblíbených aplikací SaaS pro použití s Azure AD B2B.
+Spolupráce B2B Azure Active Directory (Azure AD) spolupracuje s většinou aplikací, které se integrují se službou Azure AD. V této části si projdeme pokyny pro konfiguraci některých oblíbených aplikací SaaS pro použití s Azure AD B2B.
 
-Než se podíváte na pokyny pro konkrétní aplikace, tady jsou některá pravidla:
+Než se podíváte na pokyny specifické pro danou aplikaci, tady je několik pravidel pro palec:
 
-* U většiny aplikací se nastavení uživatele musí uskutečnit ručně. To znamená, že uživatelé musí být vytvořeny ručně v aplikaci také.
+* Pro většinu aplikací musí uživatelské nastavení probíhat ručně. To znamená, že uživatelé musí být vytvořeni také ručně v aplikaci.
 
-* Pro aplikace, které podporují automatické nastavení, jako je Dropbox, se z nich vytvářejí samostatné pozvánky. Uživatelé musí být jisti, že přijmout každou pozvánku.
+* Pro aplikace, které podporují automatickou instalaci, jako je třeba Dropbox, se z aplikací vytvoří samostatné pozvánky. Uživatelé musí být přijměte každou pozvánku.
 
-* Chcete-li zmírnit případné problémy s pošanitým diskem profilu uživatele (UPD) u uživatelů typu Host, nastavte vždy **identifikátor uživatele** na **soubor user.mail**.
+* Chcete-li v uživatelských atributech zmírnit problémy s pozměněným diskem s profilem uživatele (UPD) v uživatelích typu Host, vždy nastavte **identifikátor uživatele** na hodnotu **User. mail**.
 
 
-## <a name="dropbox-business"></a>Dropbox podnikání
+## <a name="dropbox-business"></a>Obchodní Dropbox
 
-Chcete-li uživatelům povolit přihlášení pomocí svého účtu organizace, musíte ručně nakonfigurovat Dropbox Business tak, aby používal Azure AD jako zprostředkovatele identity s výrčitek zabezpečení (SAML). Pokud Dropbox Business nebyl nakonfigurován tak, že nemůže vyzvat nebo jinak povolit uživatelům přihlásit pomocí Azure AD.
+Pokud chcete uživatelům povolit, aby se přihlásili pomocí svého účtu organizace, musíte ručně nakonfigurovat společnost Dropbox na použití Azure AD jako zprostředkovatele identity Security Assertion Markup Language (SAML). Pokud společnost pro Dropbox není nakonfigurovaná tak, aby to provedla, nemůže se uživatelům dotázat nebo jinak povolit přihlášení pomocí Azure AD.
 
-1. Pokud chcete přidat aplikaci Dropbox Business do Azure AD, v levém podokně vyberte **podnikové aplikace** a klikněte na **Přidat**.
+1. Pokud chcete obchodní aplikaci Dropboxu přidat do služby Azure AD, v levém podokně vyberte **podnikové aplikace** a pak klikněte na **Přidat**.
 
-   ![Tlačítko "Přidat" na stránce Podnikové aplikace](media/configure-saas-apps/add-dropbox.png)
+   ![Tlačítko Přidat na stránce podnikové aplikace](media/configure-saas-apps/add-dropbox.png)
 
-2. V okně **Přidat aplikaci** zadejte do vyhledávacího pole **rozevírací políčko** a v seznamu výsledků vyberte **Dropbox pro firmy.**
+2. V okně **Přidat aplikaci** zadejte do vyhledávacího pole **Dropbox** a potom v seznamu výsledků vyberte **Dropbox pro firmy** .
 
-   ![Hledání "dropbox" na stránce Přidat aplikaci](media/configure-saas-apps/add-app-dialog.png)
+   ![Hledání "Dropboxu" na stránce Přidat aplikaci](media/configure-saas-apps/add-app-dialog.png)
 
-3. Na stránce **Jednotné přihlašování** vyberte v levém podokně **jednotné přihlašování** a zadejte **user.mail** do pole **Identifikátor uživatele.** (Ve výchozím nastavení je nastavenjako UPN.)
+3. Na stránce **jednotného přihlašování** vyberte v levém podokně **jednotné přihlašování** a potom do pole **identifikátor uživatele** zadejte **User. mail** . (Ve výchozím nastavení je nastavený jako hlavní název uživatele (UPN).)
 
-   ![Konfigurace jednotného přihlášení pro aplikaci](media/configure-saas-apps/configure-app-sso.png)
+   ![Konfigurace jednotného přihlašování pro aplikaci](media/configure-saas-apps/configure-app-sso.png)
 
-4. Chcete-li stáhnout certifikát, který chcete použít pro konfiguraci Dropboxu, vyberte **konfigurovat DropBox**a v seznamu vyberte **adresu URL služby jednotného přihlašování SAML.**
+4. Pokud chcete stáhnout certifikát, který se má použít pro konfiguraci Dropboxu, vyberte **Konfigurovat Dropbox**a pak v seznamu vyberte **adresu URL jednotného přihlašování SAML** .
 
-   ![Stažení certifikátu pro konfiguraci Dropboxu](media/configure-saas-apps/download-certificate.png)
+   ![Stahuje se certifikát pro konfiguraci Dropboxu.](media/configure-saas-apps/download-certificate.png)
 
-5. Přihlaste se do Dropboxu pomocí přihlašovací adresy URL na stránce **jednotného přihlášení.**
+5. Přihlaste se k Dropboxu pomocí přihlašovací adresy URL na stránce **jednotného přihlašování** .
 
-   ![Snímek obrazovky s přihlašovací stránkou Dropboxu](media/configure-saas-apps/sign-in-to-dropbox.png)
+   ![Snímek obrazovky zobrazující přihlašovací stránku Dropboxu](media/configure-saas-apps/sign-in-to-dropbox.png)
 
-6. V nabídce vyberte **Admin Console**.
+6. V nabídce vyberte **Konzola správce**.
 
-   ![Odkaz "Admin Console" v nabídce Dropbox](media/configure-saas-apps/dropbox-menu.png)
+   ![Odkaz Konzola pro správu v nabídce Dropbox](media/configure-saas-apps/dropbox-menu.png)
 
-7. V dialogovém okně **Ověřování** vyberte **Další**, nahrajte certifikát a potom do pole **Přihlašovací adresa URL** zadejte adresu URL jednotného přihlášení SAML.
+7. V dialogovém okně **ověřování** vyberte **Další**, nahrajte certifikát a potom do pole **přihlašovací adresa URL** zadejte adresu URL jednotného přihlašování SAML.
 
-   ![Odkaz Další ve sbaleném dialogovém okně Ověřování](media/configure-saas-apps/dropbox-auth-01.png)
+   ![Odkaz další v dialogovém okně sbalené ověřování](media/configure-saas-apps/dropbox-auth-01.png)
 
-   ![Přihlašovací adresa URL v rozbaleném dialogovém okně Ověřování](media/configure-saas-apps/paste-single-sign-on-URL.png)
+   ![Přihlašovací adresa URL v dialogovém okně Rozšířené ověřování](media/configure-saas-apps/paste-single-sign-on-URL.png)
 
-8. Pokud chcete nakonfigurovat automatické nastavení uživatele na webu Azure Portal, v levém podokně vyberte **Zřizování,** vyberte **Automaticky** v poli **Režim zřizování** a pak vyberte **Autorizovat**.
+8. Chcete-li konfigurovat automatické nastavení uživatele v Azure Portal, v levém podokně vyberte možnost **zřizování** , v rozevíracím seznamu **režim zřizování** vyberte možnost **automaticky** a potom vyberte **autorizovat**.
 
-   ![Konfigurace automatického zřizování uživatelů na webu Azure Portal](media/configure-saas-apps/set-up-automatic-provisioning.png)
+   ![Konfigurace automatického zřizování uživatelů v Azure Portal](media/configure-saas-apps/set-up-automatic-provisioning.png)
 
-Poté, co byli uživatelé hosta nebo člena nastaveni v aplikaci Dropbox, obdrží od Dropboxu samostatnou pozvánku. Chcete-li používat jednotné přihlašování dropboxu, musí pozvaní přijmout pozvánku kliknutím na odkaz v něm.
+Po nastavení uživatelů hosta nebo členů v aplikaci Dropbox obdrží samostatná Pozvánka z Dropboxu. Pokud chcete použít jednotné přihlašování Dropboxu, musí pozvánky přijmout kliknutím na odkaz v něm.
 
 ## <a name="box"></a>Box
-Můžete povolit uživatelům ověřování uživatelů typu Host box u jejich účtu Azure AD pomocí federace, která je založena na protokolu SAML. V tomto postupu nahrajete metadata do Box.com.
+Uživatelům můžete povolit, aby mohli k účtu Azure AD ověřovat uživatele typu host s použitím federace založeného na protokolu SAML. V tomto postupu nahrajete metadata do Box.com.
 
-1. Přidejte aplikaci Box z podnikových aplikací.
+1. Přidejte aplikaci box z podnikových aplikací.
 
-2. Nakonfigurujte jednotné přihlašování v následujícím pořadí:
+2. Konfigurace jednotného přihlašování v tomto pořadí:
 
-   ![Snímek obrazovky s nastavením konfigurace jednotného přihlášení](media/configure-saas-apps/configure-box-sso.png)
+   ![Snímek obrazovky zobrazující nastavení konfigurace jednotného přihlašování](media/configure-saas-apps/configure-box-sso.png)
 
-   a. V poli **Přihlásit se na adresu URL** se ujistěte, že přihlašovací adresa URL je správně nastavená pro Box na webu Azure Portal. Tato adresa URL je adresou URL Box.com tenanta. Měl by se *https://.box.com*řídit konvencí pojmenování .  
-   **Identifikátor** se na tuto aplikaci nevztahuje, ale stále se zobrazuje jako povinné pole.
+   a. V poli **Adresa URL pro přihlášení** zkontrolujte, že je správně nastavená přihlašovací adresa URL pro pole Azure Portal. Tato adresa URL je adresa URL vašeho tenanta Box.com. Měl by následovat po konvenci *https://.box.com*pojmenování.  
+   **Identifikátor** se nedá použít pro tuto aplikaci, ale pořád se zobrazuje jako povinné pole.
 
-   b. Do pole **Identifikátor uživatele** zadejte **user.mail** (pro spřibíka pro účty hosta).
+   b. Do pole **identifikátor uživatele** zadejte **User. mail** (pro jednotné přihlašování pro účty hosta).
 
-   c. V části **PODPISOVÝ Certifikát SAML**klepněte na tlačítko **Vytvořit nový certifikát**.
+   c. V části **podpisový certifikát SAML**klikněte na **vytvořit nový certifikát**.
 
-   d. Chcete-li začít konfigurovat Box.com tenanta pro použití Azure AD jako zprostředkovatele identity, stáhněte soubor metadat a uložte ho na místní disk.
+   d. Pokud chcete začít konfigurovat tenanta Box.com, aby používal Azure AD jako zprostředkovatele identity, Stáhněte si soubor metadat a uložte ho na místní disk.
 
-   e. Přepošlete soubor metadat týmu podpory boxu, který pro vás nakonfiguruje jednotné přihlašování.
+   e. Předejte soubor metadat do týmu podpory box, který nakonfiguruje jednotné přihlašování za vás.
 
-3. Pro automatické nastavení uživatele Azure AD v levém podokně vyberte **Zřizování**a pak vyberte **Autorizovat**.
+3. Pro automatické uživatelské nastavení Azure AD v levém podokně vyberte **zřizování**a potom vyberte **autorizovat**.
 
-   ![Autorizace Azure AD pro připojení k Boxu](media/configure-saas-apps/auth-azure-ad-to-connect-to-box.png)
+   ![Autorizace Azure AD pro připojení k boxu](media/configure-saas-apps/auth-azure-ad-to-connect-to-box.png)
 
-Stejně jako pozvaní uživatelé Dropboxu musí pozvaní boxu uplatnit pozvánku z aplikace Box.
+Podobně jako pozvánky na Dropbox musí pozvánky boxu uplatnit svoji pozvánku z aplikace box.
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na následující články o spolupráci Azure AD B2B:
+Přečtěte si následující články o spolupráci Azure AD B2B:
 
 - [Co je spolupráce B2B ve službě Azure AD?](what-is-b2b.md)
-- [Dynamické skupiny a b2B spolupráce](use-dynamic-groups.md)
+- [Dynamické skupiny a spolupráce B2B](use-dynamic-groups.md)
 - [Mapování deklarací identity uživatelů spolupráce B2B](claims-mapping.md)
 - [Externí sdílení Office 365](o365-external-user.md)
 

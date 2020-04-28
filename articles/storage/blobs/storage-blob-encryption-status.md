@@ -1,6 +1,6 @@
 ---
-title: Kontrola stavu šifrování objektu blob – Azure Storage
-description: Zjistěte, jak pomocí azure portálu, PowerShellu nebo Azure CLI zkontrolovat, jestli je daný objekt blob šifrovaný. Pokud objekt blob není šifrovaný, přečtěte si, jak pomocí AzCopy vynutit šifrování stažením a opětovným nahráním objektu blob.
+title: Ověřte stav šifrování objektu blob-Azure Storage
+description: Naučte se pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure CLI ověřit, jestli je zadaný objekt BLOB zašifrovaný. Pokud objekt BLOB není zašifrovaný, Naučte se používat AzCopy k vynucení šifrování stažením a znovu nahráním objektu BLOB.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,36 +10,36 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 5cef0e94a43b3ef16d45f7f43658f962e07b5345
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74707599"
 ---
-# <a name="check-the-encryption-status-of-a-blob"></a>Kontrola stavu šifrování objektu blob
+# <a name="check-the-encryption-status-of-a-blob"></a>Zkontroluje stav šifrování objektu BLOB.
 
-Každý objekt blob bloku, objekt blob připojení nebo objekt blob stránky, který byl zapsán do služby Azure Storage po 20. Objekty BLOB vytvořené před tímto datem jsou nadále šifrovány procesem na pozadí.
+Všechny objekty blob bloku, doplňovací objekty blob nebo objekty blob stránky, které byly zapsány do Azure Storage po 20. října 2017, jsou šifrovány pomocí šifrování Azure Storage. Objekty blob vytvořené před tímto datem budou i nadále zašifrovány procesem na pozadí.
 
-Tento článek ukazuje, jak zjistit, zda byl daný objekt blob zašifrován.
+V tomto článku se dozvíte, jak zjistit, jestli je zadaný objekt BLOB zašifrovaný.
 
-## <a name="check-a-blobs-encryption-status"></a>Kontrola stavu šifrování objektu blob
+## <a name="check-a-blobs-encryption-status"></a>Zkontroluje stav šifrování objektu BLOB.
 
-Pomocí portálu Azure, PowerShellu nebo Azure CLI určete, jestli je objekt blob zašifrovaný bez kódu.
+Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure můžete zjistit, jestli je objekt BLOB zašifrovaný bez kódu.
 
-### <a name="azure-portal"></a>[Portál Azure](#tab/portal)
+### <a name="azure-portal"></a>[portál Azure](#tab/portal)
 
-Chcete-li pomocí portálu Azure zkontrolovat, jestli byl objekt blob zašifrovaný, postupujte takto:
+Chcete-li použít Azure Portal ke kontrole, zda byl objekt BLOB zašifrován, postupujte podle následujících kroků:
 
 1. Na portálu Azure Portal přejděte k účtu úložiště.
-1. Výběrem **možnosti Kontejnery** přejdete na seznam kontejnerů v účtu.
-1. Vyhledejte objekt blob a zobrazte jeho kartu **Přehled.**
-1. Zobrazení vlastnosti **Server Encrypted.** Pokud **True**, jak je znázorněno na následujícím obrázku, pak objekt blob je zašifrována. Všimněte si, že vlastnosti objektu blob také zahrnují datum a čas, kdy byl objekt blob vytvořen.
+1. Vyberte **kontejnery** a přejděte na seznam kontejnerů v účtu.
+1. Vyhledejte objekt BLOB a zobrazte kartu s **přehledem** .
+1. Zobrazení vlastnosti **šifrovaného serveru** . Pokud je nastaveno na **true**, jak je znázorněno na následujícím obrázku, je objekt BLOB zašifrovaný. Všimněte si, že vlastnosti objektu BLOB obsahují také datum a čas vytvoření objektu BLOB.
 
-    ![Snímek obrazovky znázorňující kontrolu služby Šifrovaná server na webu Azure Portal](media/storage-blob-encryption-status/blob-encryption-property-portal.png)
+    ![Snímek obrazovky ukazující, jak kontrolovat vlastnost šifrovanou pro server v Azure Portal](media/storage-blob-encryption-status/blob-encryption-property-portal.png)
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Chcete-li pomocí prostředí PowerShell zkontrolovat, zda byl objekt blob zašifrován, zkontrolujte vlastnost **IsServerEncrypted objektu** blob. Nezapomeňte nahradit zástupné hodnoty v úhlových závorkách vlastními hodnotami:
+Pokud chcete pomocí PowerShellu ověřit, jestli je objekt BLOB zašifrovaný, podívejte se na vlastnost **IsServerEncrypted** objektu BLOB. Nezapomeňte nahradit zástupné hodnoty v lomených závorkách vlastními hodnotami:
 
 ```powershell
 $account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
@@ -50,7 +50,7 @@ $blob = Get-AzStorageBlob -Context $account.Context `
 $blob.ICloudBlob.Properties.IsServerEncrypted
 ```
 
-Chcete-li zjistit, kdy byl objekt blob vytvořen, zkontrolujte hodnotu **vlastnosti Vytvořeno:**
+Chcete-li zjistit, kdy byl objekt BLOB vytvořen, zkontrolujte hodnotu vlastnosti **Vytvořeno** :
 
 ```powershell
 $blob.ICloudBlob.Properties.IsServerEncrypted
@@ -58,7 +58,7 @@ $blob.ICloudBlob.Properties.IsServerEncrypted
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Chcete-li použít Azure CLI ke kontrole, zda byl objekt blob zašifrován, zkontrolujte vlastnost **IsServerEncrypted objektu** blob. Nezapomeňte nahradit zástupné hodnoty v úhlových závorkách vlastními hodnotami:
+Pokud chcete pomocí Azure CLI ověřit, jestli je objekt BLOB zašifrovaný, podívejte se na vlastnost **IsServerEncrypted** objektu BLOB. Nezapomeňte nahradit zástupné hodnoty v lomených závorkách vlastními hodnotami:
 
 ```azurecli-interactive
 az storage blob show \
@@ -68,15 +68,15 @@ az storage blob show \
     --query "properties.serverEncrypted"
 ```
 
-Chcete-li zjistit, kdy byl objekt blob vytvořen, zkontrolujte hodnotu **vytvořené** vlastnosti.
+Chcete-li zjistit, kdy byl objekt BLOB vytvořen, zkontrolujte hodnotu vlastnosti **Vytvořeno** .
 
 ---
 
-## <a name="force-encryption-of-a-blob"></a>Vynucení šifrování objektu blob
+## <a name="force-encryption-of-a-blob"></a>Vynutit šifrování objektu BLOB
 
-Pokud objekt blob, který byl vytvořen před 20 října 2017 ještě nebyl zašifrován procesem na pozadí, můžete vynutit šifrování dojít okamžitě stažením a znovu nahrát objekt blob. Jednoduchý způsob, jak to udělat, je s AzCopy.
+Pokud objekt blob, který se vytvořil před 20. října 2017, ještě není zašifrovaný procesem na pozadí, můžete vynutit, aby se šifrování nacházelo hned stažením a znovu nahráním objektu BLOB. To lze provést jednoduchým způsobem pomocí AzCopy.
 
-Chcete-li stáhnout objekt blob do místního systému souborů pomocí aplikace AzCopy, použijte následující syntaxi:
+K stažení objektu blob do místního systému souborů pomocí AzCopy použijte následující syntaxi:
 
 ```
 azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>' '<local-file-path>'
@@ -85,7 +85,7 @@ Example:
 azcopy copy 'https://storagesamples.blob.core.windows.net/sample-container/blob1.txt' 'C:\temp\blob1.txt'
 ```
 
-Chcete-li objekt blob znovu nahrát do Služby Azure Storage pomocí azcopy, použijte následující syntaxi:
+Pokud chcete znovu nahrát objekt blob do Azure Storage pomocí AzCopy, použijte následující syntaxi:
 
 ```
 azcopy copy '<local-file-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-name>'
@@ -94,8 +94,8 @@ Example:
 azcopy copy 'C:\temp\blob1.txt' 'https://storagesamples.blob.core.windows.net/sample-container/blob1.txt'
 ```
 
-Další informace o kopírování dat objektů blob pomocí AzCopy naleznete v [tématu Přenos dat pomocí úložiště Objektů BloB](../common/storage-use-azcopy-blobs.md).
+Další informace o použití AzCopy ke kopírování dat objektů BLOB najdete v tématu [přenos dat pomocí služby AzCopy a BLOB Storage](../common/storage-use-azcopy-blobs.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-[Šifrování Azure Storage pro data v klidovém stavu](../common/storage-service-encryption.md)
+[Azure Storage šifrování dat v klidovém umístění](../common/storage-service-encryption.md)

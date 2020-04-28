@@ -1,6 +1,6 @@
 ---
-title: Používání Azure CDN s CORS | Dokumenty společnosti Microsoft
-description: Zjistěte, jak používat Síť pro doručování obsahu Azure (CDN) pomocí sdílení prostředků mezi zdroji (CORS).
+title: Použití Azure CDN s CORS | Microsoft Docs
+description: Naučte se používat Azure Content Delivery Network (CDN) pro sdílení prostředků mezi zdroji (CORS).
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -15,91 +15,91 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 169de21b6dbdafaaeff64e315daa104f3b6faadd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74278101"
 ---
-# <a name="using-azure-cdn-with-cors"></a>Používání Azure CDN s CORS
+# <a name="using-azure-cdn-with-cors"></a>Použití Azure CDN s CORS
 ## <a name="what-is-cors"></a>Co je CORS?
-CORS (Cross Origin Resource Sharing) je funkce HTTP, která umožňuje webové aplikaci spuštěné pod jednou doménou přístup k prostředkům v jiné doméně. Aby se snížila možnost útoků skriptování mezi weby, všechny moderní webové prohlížeče implementují bezpečnostní omezení známé jako [zásady stejného původu](https://www.w3.org/Security/wiki/Same_Origin_Policy).  Tím zabráníte webové stránce v volání api v jiné doméně.  CORS poskytuje bezpečný způsob, jak povolit jeden původ (původní doména) volat api v jiném původu.
+CORS (sdílení prostředků mezi zdroji) je funkce HTTP, která umožňuje webové aplikaci spuštěné v jedné doméně přistupovat k prostředkům v jiné doméně. Aby se snížila pravděpodobnost útoků prostřednictvím skriptování mezi weby, všechny moderní webové prohlížeče implementují omezení zabezpečení označované jako [zásady stejného původu](https://www.w3.org/Security/wiki/Same_Origin_Policy).  To brání webové stránce v volání rozhraní API v jiné doméně.  CORS poskytuje zabezpečený způsob, jak umožníte jednomu zdroji (zdrojové doméně) volat rozhraní API v jiném zdroji.
 
 ## <a name="how-it-works"></a>Jak to funguje
-Existují dva typy požadavků CORS, *jednoduché požadavky* a *složité požadavky.*
+Existují dva typy požadavků CORS, *jednoduchých požadavků* a *složitých požadavků.*
 
 ### <a name="for-simple-requests"></a>Pro jednoduché požadavky:
 
-1. Prohlížeč odešle požadavek CORS s další hlavičkou požadavku **HTTP originu.** Hodnota tohoto záhlaví je původ, který sloužil nadřazené stránce, která je definována jako kombinace *protokolu,* *domény* a *portu.*  Když se stránka\:z https //www.contoso.com pokusí o přístup k datům uživatele v fabrikam.com původu, bude fabrikam.com odeslána následující hlavička požadavku:
+1. Prohlížeč odešle požadavek CORS s další hlavičkou **původní** žádosti protokolu HTTP. Hodnota tohoto záhlaví je zdrojem, který sloužil nadřazenou stránku, která je definována jako kombinace *protokolu,* *domény* a *portu.*  Když se stránka z https\://www.contoso.com pokusí získat přístup k datům uživatele v Fabrikam.com původu, pošle se následující Hlavička požadavku na Fabrikam.com:
 
    `Origin: https://www.contoso.com`
 
-2. Server může odpovědět některou z následujících možností:
+2. Server může reagovat s některým z následujících způsobů:
 
-   * Hlavička **Access-Control-Allow-Origin** v odpovědi označující, která původní lokalita je povolena. Například:
+   * Hlavička **Access-Control-Allow-Origin** v odpovědi, která označuje, který zdrojový web je povolen. Příklad:
 
      `Access-Control-Allow-Origin: https://www.contoso.com`
 
-   * Kód chyby HTTP, například 403, pokud server nepovoluje požadavek na příčný původ po kontrole hlavičky Originu
+   * Kód chyby HTTP, například 403, pokud Server nepovoluje požadavek na více zdrojů po kontrole původní hlavičky
 
-   * Hlavička **Access-Control-Allow-Origin** se zástupným znakem, který umožňuje všechny počátky:
+   * Hlavička **Access-Control-Allow-Origin** , která má zástupný znak, který umožňuje všechny zdroje:
 
      `Access-Control-Allow-Origin: *`
 
 ### <a name="for-complex-requests"></a>Pro komplexní požadavky:
 
-Komplexní požadavek je požadavek CORS, kde je prohlížeč povinen odeslat *požadavek před výstupem* (tj. předběžnou sondu) před odesláním skutečného požadavku CORS. Požadavek kontroly před výstupem požádá server o oprávnění, `OPTIONS` pokud původní požadavek CORS může pokračovat a je požadavkem na stejnou adresu URL.
+Komplexní požadavek je požadavek CORS, ve kterém se před odesláním skutečné žádosti CORS vyžaduje, aby se v prohlížeči poslal *požadavek na kontrolu před výstupem* (tj. Předběžný test). Požadavek na předběžné kontroly požádá o oprávnění serveru, pokud může pokračovat původní žádost CORS, `OPTIONS` a je požadavek na stejnou adresu URL.
 
 > [!TIP]
-> Další podrobnosti o tocích CORS a běžných úskalích naleznete v [průvodci cors pro rest API](https://www.moesif.com/blog/technical/cors/Authoritative-Guide-to-CORS-Cross-Origin-Resource-Sharing-for-REST-APIs/).
+> Další podrobnosti o tocích CORS a běžných nástrah najdete v [Průvodci CORS pro rozhraní REST API](https://www.moesif.com/blog/technical/cors/Authoritative-Guide-to-CORS-Cross-Origin-Resource-Sharing-for-REST-APIs/).
 >
 >
 
-## <a name="wildcard-or-single-origin-scenarios"></a>Scénáře zástupných symbolů nebo jednoho původu
-CORS v Azure CDN bude fungovat automaticky bez další konfigurace, když je **hlavička Access-Control-Allow-Origin** nastavena na zástupný znak (*) nebo jeden původ.  CDN uloží první odpověď do mezipaměti a následné požadavky budou používat stejnou hlavičku.
+## <a name="wildcard-or-single-origin-scenarios"></a>Scénáře se zástupnými znaky nebo jedním zdrojem
+CORS v Azure CDN bude fungovat automaticky bez další konfigurace, pokud je hlavička **Access-Control-Allow-Origin** nastavená na zástupný znak (*) nebo na jeden počátek.  CDN bude ukládat první odpověď do mezipaměti a následné požadavky budou používat stejnou hlavičku.
 
-Pokud již byly na CDN podány požadavky před nastavením CORS v původu, budete muset vyčistit obsah v obsahu koncového bodu, abyste znovu načetli obsah pomocí záhlaví **Access-Control-Allow-Origin.**
+Pokud se už požadavky na síť CDN nastavily na svém zdroji, budete muset vyprázdnit obsah v obsahu koncového bodu, aby se obsah znovu načítat pomocí hlavičky **Access-Control-Allow-Origin** .
 
-## <a name="multiple-origin-scenarios"></a>Více scénářů původu
-Pokud potřebujete povolit, aby byl pro CORS povolen konkrétní seznam původů, věci se trochu zkomplikují. K problému dochází, když CDN ukládá do mezipaměti **hlavičku Access-Control-Allow-Origin** pro první původ CORS.  Když jiný původ CORS provede další požadavek, CDN bude sloužit v mezipaměti **Access-Control-Allow-Origin** záhlaví, které se neshodují.  Existuje několik způsobů, jak to napravit.
+## <a name="multiple-origin-scenarios"></a>Scénáře s více zdroji
+Pokud potřebujete povolit, aby určitý seznam zdrojů byl pro CORS povolený, věci budou mít trochu složitější. K tomuto problému dochází, když CDN ukládá do mezipaměti hlavičku **Access-Control-Allow-Origin** pro první původ CORS.  Když jiný původ CORS vytvoří následnou žádost, bude CDN **používat hlavičku Access-Control-Allow-Origin** v mezipaměti, která se neshoduje.  Existuje několik způsobů, jak to opravit.
 
-### <a name="azure-cdn-standard-profiles"></a>Standardní profily Azure CDN
-Na Azure CDN Standard od Microsoftu můžete vytvořit pravidlo v [modulu standardnípravidla](cdn-standard-rules-engine-reference.md) pro kontrolu záhlaví **Origin** u požadavku. Pokud se jedná o platný původ, pravidlo nastaví hlavičku **Access-Control-Allow-Origin** s požadovanou hodnotou. V tomto případě je **hlavička Access-Control-Allow-Origin** ze zdrojového serveru souboru ignorována a modul pravidel CDN zcela spravuje povolené počátky CORS.
+### <a name="azure-cdn-standard-profiles"></a>Profily Azure CDN Standard
+Na Azure CDN Standard od Microsoftu můžete vytvořit pravidlo v [modulu Standard Rules](cdn-standard-rules-engine-reference.md) pro kontrolu **původní** hlavičky v žádosti. Pokud se jedná o platný zdroj, vaše pravidlo nastaví hlavičku **Access-Control-Allow-Origin** s požadovanou hodnotou. V tomto případě se hlavička **Access-Control-Allow-Origin** ze zdrojového serveru souboru ignoruje a modul pravidel CDN plně spravuje povolené zdroje CORS.
 
-![Příklad pravidel s motorem standardních pravidel](./media/cdn-cors/cdn-standard-cors.png)
+![Příklad pravidel se strojem standardních pravidel](./media/cdn-cors/cdn-standard-cors.png)
 
 > [!TIP]
-> Do pravidla můžete přidat další akce a upravit další hlavičky odpovědí, například **Metody přístupu a řízení- povolení**.
+> Do pravidla můžete přidat další akce, které upraví další hlavičky odpovědí, jako je například **Access-Control-Allow-Methods**.
 > 
 
-V **Azure CDN Standard od Akamai**, jediný mechanismus, který umožňuje více původů bez použití původu zástupných symbolů je použití [mezipaměti řetězce dotazu](cdn-query-string.md). Povolte nastavení řetězce dotazu pro koncový bod CDN a potom použijte jedinečný řetězec dotazu pro požadavky z každé povolené domény. To bude mít za následek cdn ukládání do mezipaměti samostatný objekt pro každý jedinečný řetězec dotazu. Tento přístup však není ideální, protože bude mít za následek více kopií stejného souboru uloženého v mezipaměti na CDN.  
+V **Azure CDN Standard od Akamai**je jediným mechanismem, který umožňuje více míst původu bez použití zástupného znaku, použít [ukládání řetězců dotazu do mezipaměti](cdn-query-string.md). Povolte nastavení řetězce dotazu pro koncový bod CDN a pak pro žádosti z každé povolené domény použijte jedinečný řetězec dotazu. Výsledkem je, že CDN ukládá do mezipaměti samostatný objekt pro každý řetězec jedinečného dotazu. Tento přístup není ideální, ale v takovém případě bude výsledkem více kopií stejného souboru v mezipaměti CDN.  
 
-### <a name="azure-cdn-premium-from-verizon"></a>Azure CDN Premium od společnosti Verizon
-Pomocí modulu pravidel Verizon Premium budete muset [vytvořit pravidlo pro](cdn-rules-engine.md) kontrolu záhlaví **Originu** na žádosti.  Pokud se jedná o platný původ, vaše pravidlo nastaví hlavičku **Access-Control-Allow-Origin** s původem uvedeným v žádosti.  Pokud není povolen původ zadaný v hlavičce **Originu,** pravidlo by mělo vynechat hlavičku **Access-Control-Allow-Origin,** což způsobí, že prohlížeč požadavek odmítne. 
+### <a name="azure-cdn-premium-from-verizon"></a>Azure CDN Premium z Verizon
+Pomocí modulu pravidel Verizon Premium budete muset [vytvořit pravidlo](cdn-rules-engine.md) pro kontrolu **počáteční** hlavičky v žádosti.  Pokud se jedná o platný zdroj, vaše pravidlo nastaví hlavičku **Access-Control-Allow-Origin** s počátkem uvedeným v žádosti.  Pokud se počátek zadaný v záhlaví **původu** nepovoluje, vaše pravidlo by mělo vynechat hlavičku **Access-Control-Allow-Origin** , která způsobí odmítnutí žádosti v prohlížeči. 
 
-S motorem pravidel Premium to lze provést dvěma způsoby. V obou případech je **hlavička Access-Control-Allow-Origin** ze zdrojového serveru souboru ignorována a modul pravidel CDN zcela spravuje povolené počátky CORS.
+Existují dva způsoby, jak to provést s modulem pravidel Premium. V obou případech se hlavička **Access-Control-Allow-Origin** ze zdrojového serveru souboru ignoruje a modul pravidel pro CDN plně spravuje povolené zdroje CORS.
 
-#### <a name="one-regular-expression-with-all-valid-origins"></a>Jeden regulární výraz se všemi platnými počátky
-V takovém případě vytvoříte regulární výraz, který obsahuje všechny počátky, které chcete povolit: 
+#### <a name="one-regular-expression-with-all-valid-origins"></a>Jeden regulární výraz se všemi platnými zdroji
+V tomto případě vytvoříte regulární výraz, který bude obsahovat všechny zdroje, které chcete dovolit: 
 
     https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
 
 > [!TIP]
-> **Azure CDN Premium od společnosti Verizon** používá [regulární výrazy kompatibilní s perlem](https://pcre.org/) jako modul pro regulární výrazy.  K ověření regulárního výrazu můžete použít nástroj, jako jsou [regulární výrazy 101.](https://regex101.com/)  Všimněte si, že znak "/" je platný v regulárních výrazech a nemusí být uvozen, ale únik tohoto znaku je považován za osvědčený postup a je očekáván některými validátory regulárních výrazů.
+> **Azure CDN Premium od Verizon** využívá jako svůj modul regulární [výrazy kompatibilní s Perl](https://pcre.org/) jako jeho modul pro regulární výrazy.  Můžete použít nástroj jako [regulární výrazy 101](https://regex101.com/) k ověření regulárního výrazu.  Všimněte si, že znak "/" je platný v regulárních výrazech a nemusí být uvozen řídicím znakem, ale označení je považováno za osvědčený postup a je očekáváno některými validátory regulárního výrazu.
 > 
 > 
 
-Pokud se regulární výraz shoduje, vaše pravidlo nahradí hlavičku **Access-Control-Allow-Origin** (pokud existuje) z počátku s původem, který odeslal žádost.  Můžete také přidat další hlavičky CORS, například **metody access-control-allow-methods**.
+Pokud regulární výraz odpovídá, vaše pravidlo nahradí hlavičku **Access-Control-Allow-Origin** (pokud existuje) od počátku s počátkem, který odeslal požadavek.  Můžete také přidat další hlavičky CORS, například **Access-Control-Allow-Methods**.
 
 ![Příklad pravidel s regulárním výrazem](./media/cdn-cors/cdn-cors-regex.png)
 
-#### <a name="request-header-rule-for-each-origin"></a>Požadavek záhlaví pravidlo pro každý původ.
-Místo regulárních výrazů můžete místo toho vytvořit samostatné pravidlo pro každý původ, který chcete povolit, pomocí [podmínky shody](/previous-versions/azure/mt757336(v=azure.100)#match-conditions) **zástupných symbolů záhlaví požadavku** . Stejně jako u metody regulárního výrazu samotný modul pravidel nastaví záhlaví CORS. 
+#### <a name="request-header-rule-for-each-origin"></a>Pravidlo pro záhlaví žádosti pro každý počátek.
+Místo regulárních výrazů můžete místo toho vytvořit samostatné pravidlo pro každý zdroj, který chcete použít, pomocí [podmínky shody](/previous-versions/azure/mt757336(v=azure.100)#match-conditions)se **zástupnými znaky v hlavičce požadavku** . Stejně jako u metody regulárních výrazů nastavuje modul pravidel pouze hlavičky CORS. 
 
 ![Příklad pravidel bez regulárního výrazu](./media/cdn-cors/cdn-cors-no-regex.png)
 
 > [!TIP]
-> Ve výše uvedeném příkladu použití zástupného znaku * říká modulu pravidel tak, aby odpovídal protokolu HTTP i PROTOKOLU HTTPS.
+> V předchozím příkladu použití zástupného znaku * instruuje modul pravidel, aby odpovídal HTTP i HTTPS.
 > 
 > 
 

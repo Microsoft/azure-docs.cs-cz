@@ -1,54 +1,54 @@
 ---
-title: Poradce při potížích se snížením výkonu
-description: Zjistěte, jak řešit problémy s pomalým výkonem aplikací ve službě Azure App Service, včetně monitorování chování aplikací, shromažďování dat a zmírnění problému.
+title: Řešení potíží s snížením výkonu
+description: Zjistěte, jak řešit potíže s pomalými problémy s výkonem aplikace v Azure App Service, včetně monitorování chování aplikace, shromažďování dat a zmírnění problému.
 tags: top-support-issue
-keywords: výkon webové aplikace, pomalá aplikace, aplikace pomalá
+keywords: výkon webové aplikace, pomalá aplikace, aplikace je pomalá.
 ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
 ms.openlocfilehash: 98c11a72b5aea0fac15d943977402289dc33a970
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74688302"
 ---
-# <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Řešení problémů s pomalým výkonem aplikací ve službě Azure App Service
-Tento článek vám pomůže vyřešit problémy s pomalým výkonem aplikací ve [službě Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714).
+# <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Řešení potíží s výkonem pomalých aplikací v Azure App Service
+Tento článek vám pomůže při řešení problémů s výkonem pomalých aplikací v [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714).
 
-Pokud potřebujete další pomoc v libovolném bodě v tomto článku, můžete kontaktovat odborníky Azure na [MSDN Azure a zásobníku přetečení fóra](https://azure.microsoft.com/support/forums/). Případně můžete také soubor incidentu podpory Azure. Přejděte na [web podpory Azure](https://azure.microsoft.com/support/options/) a klikněte na Získat **podporu**.
+Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete se obrátit na odborníky na Azure na [webu MSDN Azure a ve Stack Overflowch fórech](https://azure.microsoft.com/support/forums/). Případně můžete také použít incident podpory Azure. Přejděte na [web podpory Azure](https://azure.microsoft.com/support/options/) a klikněte na **získat podporu**.
 
 ## <a name="symptom"></a>Příznak
-Při procházení aplikace se stránky načítají pomalu a někdy i časový majestát.
+Při procházení aplikace se stránky načítají pomalu a někdy vypršel časový limit.
 
 ## <a name="cause"></a>Příčina
 Tento problém je často způsoben problémy na úrovni aplikace, například:
 
-* síťové požadavky, které trvá dlouhou dobu
+* síťové požadavky trvá dlouhou dobu
 * neefektivní kód aplikace nebo databázové dotazy
-* aplikace s vysokou pamětí/CPU
-* shazovat aplikaci kvůli výjimce
+* aplikace s využitím vysoké paměti nebo procesoru
+* selhání aplikace z důvodu výjimky
 
 ## <a name="troubleshooting-steps"></a>Postup při řešení potíží
-Řešení problémů lze rozdělit do tří různých úkolů v sekvenčním pořadí:
+Řešení potíží se dá rozdělit na tři různé úkoly v sekvenčním pořadí:
 
-1. [Sledování a sledování chování aplikací](#observe)
+1. [Sledování a monitorování chování aplikace](#observe)
 2. [Shromažďování dat](#collect)
-3. [Zmírnění problému](#mitigate)
+3. [Zmírnit problém](#mitigate)
 
-[Služba App Service](overview.md) nabízí různé možnosti v každém kroku.
+[App Service](overview.md) poskytuje v každém kroku různé možnosti.
 
 <a name="observe" />
 
-### <a name="1-observe-and-monitor-application-behavior"></a>1. Sledujte a sledujte chování aplikací
-#### <a name="track-service-health"></a>Sledování stavu služby
-Microsoft Azure zveřejňuje pokaždé, když dojde k přerušení služby nebo snížení výkonu. Můžete sledovat stav služby na [webu Azure Portal](https://portal.azure.com/). Další informace naleznete v [tématu Sledování stavu služby](../monitoring-and-diagnostics/insights-service-health.md).
+### <a name="1-observe-and-monitor-application-behavior"></a>1. Sledujte a sledujte chování aplikace
+#### <a name="track-service-health"></a>Sledovat stav služby
+Microsoft Azure publicizes pokaždé, když dojde k přerušení služby nebo snížení výkonu. Stav služby můžete sledovat na [Azure Portal](https://portal.azure.com/). Další informace najdete v tématu [sledování stavu služby](../monitoring-and-diagnostics/insights-service-health.md).
 
-#### <a name="monitor-your-app"></a>Sledování aplikace
-Tato možnost umožňuje zjistit, zda vaše aplikace má nějaké problémy. V okně aplikace klikněte na dlaždici **Požadavky a chyby.** Okno **Metrika** zobrazuje všechny metriky, které můžete přidat.
+#### <a name="monitor-your-app"></a>Monitorování aplikace
+Tato možnost umožňuje zjistit, jestli má aplikace nějaké problémy. V okně vaší aplikace klikněte na dlaždici **požadavky a chyby** . Okno **metrika** zobrazuje všechny metriky, které můžete přidat.
 
-Některé metriky, které budete chtít pro svou aplikaci sledovat, jsou
+Některé metriky, které můžete chtít monitorovat pro vaši aplikaci, jsou
 
 * Průměrná pracovní sada paměti
 * Průměrná doba odezvy
@@ -56,109 +56,109 @@ Některé metriky, které budete chtít pro svou aplikaci sledovat, jsou
 * Pracovní sada paměti
 * Žádosti
 
-![sledování výkonu aplikace](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
+![monitorování výkonu aplikace](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
 
 Další informace naleznete v tématu:
 
-* [Monitorování aplikací ve službě Azure App Service](web-sites-monitor.md)
+* [Monitorování aplikací v Azure App Service](web-sites-monitor.md)
 * [Zobrazování oznámení o výstrahách](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
 
-#### <a name="monitor-web-endpoint-status"></a>Sledování stavu koncového serveru webu
-Pokud aplikaci spouštěte v cenové úrovni **Standard,** služba App Service vám umožní sledovat dva koncové body ze tří geografických umístění.
+#### <a name="monitor-web-endpoint-status"></a>Monitorovat stav webového koncového bodu
+Pokud používáte aplikaci v cenové úrovni **Standard** , App Service vám umožní monitorovat dva koncové body ze tří geografických umístění.
 
-Monitorování koncových bodů konfiguruje webové testy z geograficky distribuovaných umístění, která testují dobu odezvy a dobu provozu webových adres URL. Test provádí operaci HTTP GET na webové adrese URL k určení doby odezvy a doby provozu z každého umístění. Každé nakonfigurované umístění spustí test každých pět minut.
+Monitorování koncového bodu konfiguruje webové testy z geograficky distribuovaných umístění, která testují dobu odezvy a dobu provozu webových adres URL. Test provede operaci HTTP GET na webové adrese URL a určí dobu odezvy a dobu provozu z každého umístění. Každé nakonfigurované umístění spouští test každých pět minut.
 
-Doba odezvy je sledována pomocí kódů odezvy HTTP a doba odezvy se měří v milisekundách. Monitorovací test se nezdaří, pokud je kód odpovědi HTTP větší nebo roven 400 nebo pokud odpověď trvá déle než 30 sekund. Koncový bod je považován za dostupný, pokud jeho monitorování testy úspěšné ze všech zadaných umístění.
+Doba provozu se monitoruje pomocí kódů HTTP Response a doba odezvy se měří v milisekundách. Test monitorování se nezdařil, pokud je kód odpovědi HTTP větší nebo roven 400, nebo pokud odpověď trvá déle než 30 sekund. Koncový bod se považuje za dostupný, pokud se jeho testy monitorování zdaří ze všech zadaných umístění.
 
-Pokud chcete to nastavit, přečtěte si informace [o sledování aplikací ve službě Azure App Service](web-sites-monitor.md).
+Pokud ho chcete nastavit, přečtěte si téma [monitorování aplikací v Azure App Service](web-sites-monitor.md).
 
-Taky najdete v tématu [Udržování webů Azure a sledování koncových bodů – se Stefanem Schackowem,](https://channel9.msdn.com/Shows/Azure-Friday/Keeping-Azure-Web-Sites-up-plus-Endpoint-Monitoring-with-Stefan-Schackow) kde najdete video o monitorování koncových bodů.
+Podívejte se také na téma [udržování webů Azure a monitorování koncových bodů – s Stefan Schackow](https://channel9.msdn.com/Shows/Azure-Friday/Keeping-Azure-Web-Sites-up-plus-Endpoint-Monitoring-with-Stefan-Schackow) pro video o monitorování koncového bodu.
 
-#### <a name="application-performance-monitoring-using-extensions"></a>Monitorování výkonu aplikací pomocí rozšíření
-Výkon aplikace můžete také sledovat pomocí *rozšíření webu*.
+#### <a name="application-performance-monitoring-using-extensions"></a>Application Performance Monitoring pomocí rozšíření
+Můžete také monitorovat výkon aplikace pomocí *rozšíření webu*.
 
-Každá aplikace App Service poskytuje rozšiřitelný koncový bod pro správu, který umožňuje používat výkonnou sadu nástrojů nasazených jako rozšíření webu. Rozšíření zahrnují: 
+Každá aplikace App Service poskytuje rozšiřitelný koncový bod správy, který umožňuje používat výkonné sady nástrojů nasazených jako rozšíření webu. Mezi rozšíření patří: 
 
-- Editory zdrojového kódu, jako [je Azure DevOps](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx). 
-- Nástroje pro správu připojených prostředků, jako je databáze MySQL připojená k aplikaci.
+- Editory zdrojového kódu, jako je například [Azure DevOps](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx). 
+- Nástroje pro správu připojených prostředků, například databáze MySQL připojené k aplikaci.
 
-[Azure Application Insights](https://azure.microsoft.com/services/application-insights/) je rozšíření webu monitorování výkonu, které je také k dispozici. Chcete-li použít Application Insights, znovu sestavte kód pomocí sady SDK. Můžete také nainstalovat rozšíření, které poskytuje přístup k dalším datům. Sada SDK umožňuje psát kód pro podrobnější sledování využití a výkonu aplikace. Další informace naleznete [v tématu Sledování výkonu ve webových aplikacích](../azure-monitor/app/web-monitor-performance.md).
+[Azure Application Insights](https://azure.microsoft.com/services/application-insights/) je rozšíření webu pro monitorování výkonu, které je dostupné taky. Chcete-li použít Application Insights, znovu sestavte kód pomocí sady SDK. Můžete také nainstalovat rozšíření, které poskytuje přístup k dalším datům. Sada SDK umožňuje psát kód pro sledování využití a výkonu vaší aplikace podrobněji. Další informace najdete v tématu [monitorování výkonu ve webových aplikacích](../azure-monitor/app/web-monitor-performance.md).
 
 <a name="collect" />
 
-### <a name="2-collect-data"></a>2. Shromažďování údajů
-Služba App Service poskytuje diagnostické funkce pro protokolování informací z webového serveru i webové aplikace. Informace jsou rozděleny do diagnostiky webového serveru a diagnostiky aplikací.
+### <a name="2-collect-data"></a>2. shromažďování dat
+App Service poskytuje diagnostické funkce pro protokolování informací z webového serveru i z webové aplikace. Tyto informace jsou rozdělené na diagnostiku webových serverů a Application Diagnostics.
 
-#### <a name="enable-web-server-diagnostics"></a>Povolení diagnostiky webového serveru
-Můžete povolit nebo zakázat následující druhy protokolů:
+#### <a name="enable-web-server-diagnostics"></a>Povolit diagnostiku webového serveru
+Můžete povolit nebo zakázat následující typy protokolů:
 
-* **Podrobné protokolování chyb** – podrobné informace o chybě pro stavové kódy HTTP, které označují selhání (stavový kód 400 nebo vyšší). To může obsahovat informace, které mohou pomoci určit, proč server vrátil kód chyby.
-* **Trasování neúspěšných požadavků** – podrobné informace o neúspěšných požadavcích, včetně trasování součástí služby IIS použitých ke zpracování požadavku a času v jednotlivých součástech. To může být užitečné, pokud se pokoušíte zlepšit výkon aplikace nebo izolovat, co je příčinou konkrétní chyby PROTOKOLU HTTP.
-* **Protokolování webového serveru** – informace o transakcích PROTOKOLU HTTP pomocí rozšířeného formátu souboru protokolu W3C. To je užitečné při určování celkové metriky aplikace, jako je například počet zpracovaných požadavků nebo kolik požadavků jsou z konkrétní IP adresy.
+* **Podrobné protokolování chyb** – podrobné informace o chybě pro stavové kódy http indikující selhání (Stavový kód 400 nebo vyšší). Může to obsahovat informace, které vám pomůžou určit, proč Server vrátil kód chyby.
+* **Trasování chybných požadavků** – podrobné informace o neúspěšných žádostech, včetně trasování komponent služby IIS použitých ke zpracování žádosti a doby trvání jednotlivých komponent. To může být užitečné, pokud se pokoušíte zvýšit výkon aplikace nebo izolovat, co způsobuje konkrétní chybu protokolu HTTP.
+* **Protokolování webového serveru** – informace o transakcích HTTP pomocí formátu souboru protokolu W3C Extended. To je užitečné při určování celkových metrik aplikace, jako je počet zpracovaných požadavků nebo kolik požadavků pochází z konkrétní IP adresy.
 
-#### <a name="enable-application-diagnostics"></a>Povolení diagnostiky aplikací
-Existuje několik možností, jak shromažďovat data o výkonu aplikace ze služby App Service, profilovat aplikaci živě z sady Visual Studio nebo upravit kód aplikace pro protokolování dalších informací a trasování. Můžete si vybrat možnosti na základě toho, jak velký přístup máte k aplikaci a co jste pozorovali z monitorovacích nástrojů.
+#### <a name="enable-application-diagnostics"></a>Povolit diagnostiku aplikace
+K dispozici je několik možností, jak shromažďovat data o výkonu aplikací z App Service, profilovat aplikaci v reálném čase ze sady Visual Studio nebo upravit kód aplikace a Protokolovat další informace a trasování. Můžete zvolit možnosti na základě toho, kolik přístupu máte k aplikaci a co jste si vyznamenali v nástrojích pro monitorování.
 
-##### <a name="use-application-insights-profiler"></a>Použití profileru Přehledů aplikací
-Profileru přehledů aplikací můžete povolit tak, aby začal zachycovat podrobné sledování výkonu. Můžete přistupovat k trasám zachycených až před pěti dny, když potřebujete prozkoumat problémy, ke nini došlo v minulosti. Tuto možnost můžete zvolit, pokud máte přístup k prostředku Application Insights aplikace na webu Azure Portal.
+##### <a name="use-application-insights-profiler"></a>Použít Application Insights Profiler
+Můžete povolit, aby Application Insights Profiler spouštěla zachytávání podrobných trasování výkonu. Pokud potřebujete prozkoumat problémy, ke kterým došlo v minulosti, můžete získat přístup k trasováním až k pěti dnům. Tuto možnost můžete zvolit, pokud máte přístup k prostředkům Application Insights aplikace na Azure Portal.
 
-Profiler application insights poskytuje statistiky o době odezvy pro každé webové volání a trasování, které označuje, který řádek kódu způsobil pomalé odpovědi. Někdy je aplikace App Service pomalá, protože určitý kód není napsán výkonným způsobem. Příklady zahrnují sekvenční kód, který lze spustit v paralelní a nežádoucí tvrzení uzamčení databáze. Odebrání těchto kritických míst v kódu zvyšuje výkon aplikace, ale je obtížné je zjistit bez nastavení komplikovaných trasování a protokolů. Trasování shromážděné profilerem Application Insights pomáhají identifikovat řádky kódu, které zpomalují aplikaci a překonávají tuto výzvu pro aplikace služby App Service.
+Application Insights Profiler poskytuje statistiku doby odezvy pro každé webové volání a trasování, které označují, který řádek kódu způsobil pomalé odezvy. Někdy je aplikace App Service pomalá, protože určitý kód není zapsaný způsobem. Mezi příklady patří sekvenční kód, který lze spustit paralelně a nepožadovánými spory zámků databáze. Odebrání těchto kritických bodů v kódu zvyšuje výkon aplikace, ale je obtížné je detekovat bez nastavování zpracovaných trasování a protokolů. Trasování shromážděná pomocí Application Insights Profiler pomáhají identifikovat řádky kódu, které zpomalují aplikaci a překonat tuto výzvu pro App Service aplikace.
 
- Další informace najdete [v tématu Profilování živých aplikací ve službě Azure App Service s Application Insights](../azure-monitor/app/profiler.md).
+ Další informace najdete v tématu [profilace živých aplikací v Azure App Service s](../azure-monitor/app/profiler.md)využitím Application Insights.
 
-##### <a name="use-remote-profiling"></a>Použití vzdáleného profilování
-Ve službě Azure App Service lze vzdáleně profilovat webové aplikace, aplikace api, mobilní back-endy a webjobs. Tuto možnost zvolte, pokud máte přístup k prostředku aplikace a víte, jak problém reprodukovat, nebo pokud znáte přesný časový interval, kdy k problému s výkonem dochází.
+##### <a name="use-remote-profiling"></a>Použít vzdálené profilování
+V Azure App Service můžou být vzdáleně profilované webové aplikace, aplikace API, mobilní back-endy a WebJobs. Tuto možnost vyberte, pokud máte přístup k prostředku aplikace a víte, jak problém reprodukován, nebo pokud znáte přesný časový interval, po který dojde k problému s výkonem.
 
-Vzdálené profilování je užitečné, pokud je využití procesoru procesu vysoké a proces běží pomaleji, než se očekávalo, nebo latence požadavků HTTP jsou vyšší než normální, můžete vzdáleně profilovat proces a získat zásobníky volání vzorkování procesoru k analýze procesu aktivity a kódovat horké cesty.
+Vzdálené profilování je užitečné v případě, že je využití CPU vysoké a proces běží pomaleji, než se čekalo nebo je latence požadavků HTTP vyšší než normální, můžete vzdáleně profilovat svůj proces a získat zásobníky volání pro vzorkování procesoru pro analýzu aktivity procesu a cest k Hot Code.
 
-Další informace najdete [v tématu Podpora vzdáleného profilování ve službě Azure App Service](https://azure.microsoft.com/blog/remote-profiling-support-in-azure-app-service).
+Další informace najdete v tématu [Podpora vzdáleného profilování v Azure App Service](https://azure.microsoft.com/blog/remote-profiling-support-in-azure-app-service).
 
 ##### <a name="set-up-diagnostic-traces-manually"></a>Ruční nastavení diagnostických trasování
-Pokud máte přístup ke zdrojovému kódu webové aplikace, diagnostika aplikací umožňuje zachytit informace vytvořené webovou aplikací. ASP.NET aplikace mohou `System.Diagnostics.Trace` třídu používat k protokolování informací do protokolu diagnostiky aplikací. Je však nutné změnit kód a znovu nasadit aplikaci. Tato metoda se doporučuje, pokud vaše aplikace běží v testovacím prostředí.
+Máte-li přístup ke zdrojovému kódu webové aplikace, nástroj Application Diagnostics umožňuje zachytit informace vytvářené webovou aplikací. Aplikace ASP.NET můžou použít `System.Diagnostics.Trace` třídu k protokolování informací do protokolu diagnostiky aplikace. Je však nutné změnit kód a znovu nasadit aplikaci. Tato metoda se doporučuje, pokud je vaše aplikace spuštěná v testovacím prostředí.
 
-Podrobné pokyny ke konfiguraci aplikace pro protokolování najdete [v tématu Povolení protokolování diagnostiky pro aplikace ve službě Azure App Service](troubleshoot-diagnostic-logs.md).
+Podrobné pokyny týkající se konfigurace aplikace pro protokolování najdete v tématu [Povolení protokolování diagnostiky pro aplikace v Azure App Service](troubleshoot-diagnostic-logs.md).
 
-#### <a name="use-the-diagnostics-tool"></a>Použití diagnostického nástroje
-Služba App Service poskytuje inteligentní a interaktivní prostředí, které vám pomůže vyřešit potíže s aplikací bez nutnosti konfigurace. Když narazíte na problémy s vaší aplikací, diagnostický nástroj poukáže na to, co je špatné, aby vás vedl ke správným informacím snadněji a rychleji řešit a vyřešit problém.
+#### <a name="use-the-diagnostics-tool"></a>Použití nástroje pro diagnostiku
+App Service poskytuje inteligentní a interaktivní prostředí, které vám umožní řešit problémy s aplikací bez nutnosti konfigurace. Když narazíte na problémy s vaší aplikací, nástroj pro diagnostiku zjistí, co je špatné, aby vás převedl na správné informace pro snadnější a rychlé řešení potíží a vyřešení problému.
 
-Chcete-li získat přístup k diagnostice služby App Service, přejděte do aplikace App Service nebo prostředí služby App Service na [webu Azure Portal](https://portal.azure.com). V levém navigačním panelu klikněte na **Diagnostikovat a vyřešit problémy**.
+Pokud chcete získat přístup k diagnostice App Service, přejděte v [Azure Portal](https://portal.azure.com)do aplikace App Service nebo App Service Environment. V levém navigačním panelu klikněte na **diagnostikovat a řešte problémy**.
 
 #### <a name="use-the-kudu-debug-console"></a>Použití konzoly ladění Kudu
-Služba App Service je dodávána s ladicí konzolou, kterou můžete použít pro ladění, zkoumání, nahrávání souborů a také koncové body JSON pro získání informací o vašem prostředí. Tato konzola se nazývá *Kudu Console* nebo *Řídicí panel SCM* pro vaši aplikaci.
+App Service se dodává s konzolou ladění, kterou můžete použít pro ladění, prozkoumávání, nahrávání souborů a také pro koncové body JSON pro získání informací o vašem prostředí. Tato konzola se nazývá *Konzola Kudu* nebo *řídicí panel SCM* pro vaši aplikaci.
 
-K tomuto řídicímu panelu se dostanete na odkaz **https://&lt;Název aplikace>.scm.azurewebsites.net/**.
+K tomuto řídicímu panelu se dostanete tak, že na odkaz **https://&lt;název vaší aplikace>. SCM.azurewebsites.NET/**.
 
-Některé z věcí, které Kudu poskytuje, jsou:
+K dispozici jsou některé z věcí, které Kudu poskytuje:
 
 * nastavení prostředí pro vaši aplikaci
-* datový proud protokolu
-* diagnostický výpis
-* ladicí konzola, ve které můžete spouštět rutiny Powershellu a základní příkazy DOSu.
+* Stream protokolu
+* výpis stavu diagnostiky
+* ladit konzolu, ve které můžete spouštět rutiny prostředí PowerShell a základní příkazy systému DOS.
 
-Další užitečnou funkcí Kudu je, že v případě, že vaše aplikace je vyvolání první šance výjimky, můžete použít Kudu a Nástroj SysInternals Procdump k vytvoření výpisy stavu paměti. Tyto výpisy stavu paměti jsou snímky procesu a často vám mohou pomoci vyřešit složitější problémy s vaší aplikací.
+Další užitečnou funkcí Kudu je to, že v případě, že aplikace vyvolává první výjimky, můžete k vytváření výpisů paměti použít Kudu a ProcDump nástrojů Sysinternals. Tyto výpisy paměti jsou snímky procesu a často vám můžou pomoct řešit složitější problémy s vaší aplikací.
 
-Další informace o funkcích dostupných v Kudu najdete v [tématu nástroje Azure DevOps, o kterých byste měli vědět](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/).
+Další informace o funkcích dostupných v Kudu najdete v tématu [nástroje Azure DevOps, které byste měli znát](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/).
 
 <a name="mitigate" />
 
-### <a name="3-mitigate-the-issue"></a>3. Zmírnit problém
+### <a name="3-mitigate-the-issue"></a>3. zmírnění problému
 #### <a name="scale-the-app"></a>Škálování aplikace
-Ve službě Azure App Service můžete pro zvýšení výkonu a propustnost, můžete upravit měřítko, ve kterém spouštěte aplikaci. Škálování aplikace zahrnuje dvě související akce: změna plánu služby App Service na vyšší cenovou úroveň a konfigurace určitých nastavení po přepnutí na vyšší cenovou úroveň.
+V Azure App Service můžete pro zvýšení výkonu a propustnosti upravit měřítko, na kterém aplikaci spouštíte. Horizontální navýšení kapacity aplikace zahrnuje dvě související akce: Změna plánu App Service na vyšší cenovou úroveň a konfiguraci určitého nastavení po přepnutí na vyšší cenovou úroveň.
 
-Další informace o škálování najdete v [tématu Škálování aplikace ve službě Azure App Service](manage-scale-up.md).
+Další informace o škálování najdete v tématu horizontální navýšení [kapacity aplikace v Azure App Service](manage-scale-up.md).
 
-Kromě toho můžete spustit aplikaci na více než jednu instanci. Horizontální navýšení kapacity poskytuje nejen více možností zpracování, ale také poskytuje určité množství odolnosti proti chybám. Pokud proces přejde dolů na jednu instanci, ostatní instance nadále obsluhovat požadavky.
+Kromě toho můžete zvolit spuštění aplikace na více než jedné instanci. Horizontální navýšení kapacity vám poskytuje více funkcí zpracování, ale také poskytuje určitou úroveň odolnosti proti chybám. Pokud proces přejde na jednu instanci, ostatní instance budou dál obsluhovat požadavky.
 
-Měřítko můžete nastavit tak, aby bylo ruční nebo automatické.
+Můžete nastavit škálování na ruční nebo automatické.
 
-#### <a name="use-autoheal"></a>Použít automatické uzdravování
-AutoHeal recykluje pracovní proces pro vaši aplikaci na základě nastavení, které zvolíte (jako jsou změny konfigurace, požadavky, limity založené na paměti nebo čas potřebný k provedení požadavku). Většinu času, recyklovat proces je nejrychlejší způsob, jak se zotavit z problému. I když můžete aplikaci restartovat vždy přímo z portálu Azure, AutoHeal to udělá automaticky za vás. Vše, co musíte udělat, je přidat některé aktivační události v kořenovém web.config pro vaši aplikaci. Tato nastavení by fungovala stejným způsobem i v případě, že vaše aplikace není aplikace .NET.
+#### <a name="use-autoheal"></a>Použít reretušovací
+Automatické zacele recykluje pracovní proces vaší aplikace na základě nastavení, které zvolíte (například změny konfigurace, požadavky, limity založené na paměti nebo doba potřebná ke spuštění žádosti). Ve většině případů je recyklací procesu nejrychlejší způsob, jak se zotavit z problému. I když aplikaci můžete kdykoli znovu spustit přímo v rámci Azure Portal, automatické automatický opravování ji provede automaticky. Stačí přidat některé triggery do kořenového souboru Web. config pro vaši aplikaci. Tato nastavení budou fungovat stejným způsobem i v případě, že vaše aplikace není aplikací .NET.
 
-Další informace naleznete [v tématu Auto-Healing Azure Web Sites](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/).
+Další informace najdete v tématu věnovaném [automatickému retušování webů Azure](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/).
 
-#### <a name="restart-the-app"></a>Restartování aplikace
-Restartování je často nejjednodušší způsob, jak se zotavit z jednorázových problémů. Na [portálu Azure](https://portal.azure.com/)máte v okně aplikace možnost i zastavení nebo restartování aplikace.
+#### <a name="restart-the-app"></a>Restartujte aplikaci.
+Restartování je často nejjednodušší způsob, jak provést zotavení při jednorázových potížích. V okně [Azure Portal](https://portal.azure.com/)máte v okně aplikace možnosti, jak aplikaci zastavit nebo restartovat.
 
- ![restartování aplikace pro řešení problémů s výkonem](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
+ ![restartování aplikace za účelem řešení problémů s výkonem](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
-Aplikaci můžete taky spravovat pomocí Azure Powershellu. Další informace najdete v tématu [Použití Azure PowerShellu s Azure Resource Managerem](../powershell-azure-resource-manager.md).
+Svou aplikaci můžete spravovat i pomocí Azure PowerShellu. Další informace najdete v tématu [Použití Azure PowerShellu s Azure Resource Managerem](../powershell-azure-resource-manager.md).

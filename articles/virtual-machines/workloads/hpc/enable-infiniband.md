@@ -1,6 +1,6 @@
 ---
-title: Povolení inifinbandu s SR-IOV – virtuální počítače Azure | Dokumenty společnosti Microsoft
-description: Přečtěte si, jak povolit InfiniBand s SR-IOV.
+title: Povolit InifinBand s SR-IOV – Azure Virtual Machines | Microsoft Docs
+description: Naučte se, jak povolit InfiniBand s rozhraním SR-IOV.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -13,33 +13,33 @@ ms.topic: article
 ms.date: 10/17/2019
 ms.author: amverma
 ms.openlocfilehash: 7f7907482da886d9da17ef1e7844b205f3e4b906
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74196772"
 ---
-# <a name="enable-infiniband-with-sr-iov"></a>Povolení infinibandu s SR-IOV
+# <a name="enable-infiniband-with-sr-iov"></a>Povolit InfiniBand s rozhraním SR-IOV
 
-Azure NC, ND a H-série virtuálních počítačů jsou všechny podporované vyhrazené sítě InfiniBand. Všechny velikosti s podporou RDMA jsou schopny využít tuto síť pomocí technologie Intel MPI. Některé řady virtuálních her rozšířily podporu pro všechny implementace MPI a slovesa RDMA prostřednictvím SR-IOV. Virtuální počítače s podporou RDMA zahrnují virtuální počítače [optimalizované pro GPU](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) a [vysoce výkonné výpočetní (HPC)](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) virtuální počítače.
+Řada virtuálních počítačů Azure NC, ND a H-Series je zajištěná vyhrazenou InfiniBand sítí. Všechny velikosti podporující RDMA jsou schopné využití této sítě pomocí Intel MPI. Některé řady virtuálních počítačů mají rozšířenou podporu pro všechny implementace MPI a akce RDMA prostřednictvím rozhraní SR-IOV. Virtuální počítače s podporou RDMA zahrnují [optimalizované grafické procesory](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) a virtuální počítače [HPC (High Performance COMPUTE)](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) .
 
-## <a name="choose-your-installation-path"></a>Vyberte si instalační cestu
+## <a name="choose-your-installation-path"></a>Zvolit cestu instalace
 
-Chcete-li začít, nejjednodušší možností je použít bitovou kopii platformy předem nakonfigurovanou pro InfiniBand, pokud je k dispozici:
+Chcete-li začít, nejjednodušší možností je použít bitovou kopii platformy, která je předem nakonfigurovaná pro InfiniBand, pokud je k dispozici:
 
-- **Virtuální počítače HPC IaaS** – Chcete-li začít s virtuálními počítači IaaS pro HPC, nejjednodušším řešením je použití [bitové kopie operačního systému VM CentOS-HPC 7.6](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557), která je již nakonfigurována s infiniBandem. Vzhledem k tomu, že tato bitová kopie je již nakonfigurována pomocí aplikace InfiniBand, není nutné ji konfigurovat ručně. Kompatibilní verze systému Windows naleznete v tématu instance podporující verzi [systému Windows RDMA](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances).
+- **Virtuální počítače HPC IaaS** – Pokud chcete začít s virtuálními počítači IaaS pro HPC, nejjednodušší řešení je použít [bitovou kopii operačního systému CentOS-HPC 7,6](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557), která je už nakonfigurovaná s InfiniBand. Vzhledem k tomu, že je tato image už nakonfigurovaná pomocí InfiniBand, nemusíte ji konfigurovat ručně. Kompatibilní verze systému Windows najdete v tématu [instance podporující Windows RDMA](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances).
 
-- **Virtuální počítače IAAS GPU** – žádné image platformy nejsou momentálně předem nakonfigurované pro virtuální počítače optimalizované pro GPU, s výjimkou [image operačního systému VM CentOS-HPC 7.6](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557). Chcete-li nakonfigurovat vlastní bitovou kopii pomocí aplikace InfiniBand, přečtěte si [část Ruční instalace mellanoxu OFED](#manually-install-mellanox-ofed).
+- **Virtuální počítače IaaS GPU** – pro virtuální počítače optimalizované pro GPU se momentálně nenakonfigurovaly žádné image platforem, s výjimkou [image operačního systému CentOS-HPC 7,6](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557). Pokud chcete nakonfigurovat vlastní image pomocí InfiniBand, přečtěte si téma [Ruční instalace Mellanox OFED](#manually-install-mellanox-ofed).
 
-Pokud používáte vlastní image virtuálního počítače nebo virtuální počítač [optimalizovaný pro GPU,](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) měli byste ho nakonfigurovat pomocí InfiniBandu přidáním rozšíření infiniBandDriverLinux nebo InfiniBandDriverWindows do vašeho nasazení. Přečtěte si, jak používat tato rozšíření virtuálních aplikací s [Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances) a [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances).
+Pokud používáte vlastní image virtuálního počítače nebo virtuální počítač s [optimalizovaným grafickým procesorem](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) , měli byste ho nakonfigurovat pomocí InfiniBand přidáním rozšíření virtuálního počítače InfiniBandDriverLinux nebo InfiniBandDriverWindows do svého nasazení. Naučte se používat tato rozšíření virtuálních počítačů se systémy [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances) a [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances).
 
 ## <a name="manually-install-mellanox-ofed"></a>Ruční instalace Mellanox OFED
 
-Chcete-li ručně nakonfigurovat aplikaci InfiniBand pomocí s rozhraním SR-IOV, postupujte podle následujících kroků. Příklad v těchto krocích ukazuje syntaxi pro RHEL/CentOS, ale kroky jsou obecné a lze je použít pro jakýkoli kompatibilní operační systém, jako je Ubuntu (16.04, 18.04 19.04) a SLES (12 SP4 a 15). Ovladače doručené pošty fungují také, ale ovladače Mellanox OpenFabrics poskytují více funkcí.
+Pokud chcete ručně nakonfigurovat InfiniBand s rozhraním SR-IOV, použijte následující postup. Příklad v těchto krocích zobrazuje syntaxi pro RHEL/CentOS, ale postup je obecný a dá se použít pro libovolný kompatibilní operační systém, jako je například Ubuntu (16,04, 18,04 19,04) a SLES (12 SP4 a 15). Ovladače doručené pošty jsou také funkční, ale ovladače Mellanox OpenFabrics poskytují více funkcí.
 
-Další informace o podporovaných distribucích ovladače Mellanox naleznete v nejnovějších [ovladačích Mellanox OpenFabrics](https://www.mellanox.com/page/products_dyn?product_family=26). Další informace o ovladači Mellanox OpenFabrics naleznete v [uživatelské příručce Mellanox](https://docs.mellanox.com/category/mlnxofedib).
+Další informace o podporovaných distribucích pro ovladač Mellanox najdete v nejnovějších [ovladačích OpenFabrics Mellanox](https://www.mellanox.com/page/products_dyn?product_family=26). Další informace o ovladači Mellanox OpenFabrics najdete v [uživatelské příručce pro Mellanox](https://docs.mellanox.com/category/mlnxofedib).
 
-Postup konfigurace náramku InfiniBand na Linuxu najdete v následujícím příkladu:
+V následujícím příkladu se naučíte konfigurovat InfiniBand pro Linux:
 
 ```bash
 # Modify the variable to desired Mellanox OFED version
@@ -53,9 +53,9 @@ sudo ./mlnxofedinstall
 popd
 ```
 
-Pro Windows stáhněte a nainstalujte [ovladače Mellanox OFED pro Windows](https://www.mellanox.com/page/products_dyn?product_family=32&menu_section=34).
+Pro Windows Stáhněte a nainstalujte [ovladače Mellanox OFED for Windows](https://www.mellanox.com/page/products_dyn?product_family=32&menu_section=34).
 
-## <a name="enable-ip-over-infiniband"></a>Povolení protokolu IP přes síť InfiniBand
+## <a name="enable-ip-over-infiniband"></a>Povolit IP adresu přes InfiniBand
 
 K povolení protokolu IP přes InfiniBand použijte následující příkazy.
 
@@ -66,4 +66,4 @@ sudo systemctl restart waagent
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [HPC v](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) Azure.
+Přečtěte si další informace o [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) v Azure.

@@ -1,6 +1,6 @@
 ---
-title: Poskytování zpětné vazby od rizik v programu Azure Active Directory Identity Protection
-description: Jak a proč byste měli poskytnout zpětnou vazbu k detekci rizik ochrany identity.
+title: Poskytněte zpětnou vazbu rizika v Azure Active Directory Identity Protection
+description: Jak a proč byste měli poskytovat zpětnou vazbu k detekcím rizik ochrany identity
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -12,52 +12,52 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4be8290f12d64f0c556100c63ec159bd414c6fcb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74382092"
 ---
-# <a name="how-to-give-risk-feedback-in-azure-ad-identity-protection"></a>Postup: Poskytnutí zpětné vazby od rizik v azure ad identity protection
+# <a name="how-to-give-risk-feedback-in-azure-ad-identity-protection"></a>Postupy: poskytnutí zpětné vazby o riziku v Azure AD Identity Protection
 
-Azure AD Identity Protection umožňuje poskytnout zpětnou vazbu na jeho posouzení rizik. V následujícím dokumentu jsou uvedeny scénáře, kde chcete poskytnout zpětnou vazbu na posouzení rizik Azure AD Identity Protection a jak ho začleňujeme.
+Azure AD Identity Protection vám umožní sdělit svůj názor na posouzení rizik. Následující dokument obsahuje seznam scénářů, ve kterých byste chtěli sdělit svůj názor na posouzení rizika Azure AD Identity Protection a způsob, jakým ho zachováme.
 
-## <a name="what-is-a-detection"></a>Co je detekce?
+## <a name="what-is-a-detection"></a>Co je zjišťování?
 
-Detekce identity Protection je indikátorem podezřelé aktivity z hlediska rizika identity. Tyto podezřelé aktivity se nazývají detekce rizik. Tyto detekce založené na identitě mohou být založeny na heuristiky, strojové učení nebo mohou pocházet z partnerských produktů. Tyto detekce se používají k určení rizika přihlášení a rizika pro uživatele,
+Detekce Identity Protection je indikátorem podezřelé aktivity z perspektivy rizika identity. Tyto podezřelé aktivity se nazývají detekce rizik. Tyto detekce na základě identity můžou být založené na heuristikách, strojovém učení nebo může pocházet z partnerských produktů. Tyto detekce slouží k určení rizika přihlašování a rizika pro uživatele.
 
-* Uživatelské riziko představuje pravděpodobnost ohrožení identity.
-* Riziko přihlášení představuje pravděpodobnost, že přihlášení je ohrožena (například přihlášení není povoleno vlastníkem identity).
+* Riziko uživatele představuje pravděpodobnost ohrožení identity.
+* Riziko přihlášení představuje pravděpodobnost, že je přihlášení ohroženo (například přihlášení není autorizováno vlastníkem identity).
 
-## <a name="why-should-i-give-risk-feedback-to-azure-ads-risk-assessments"></a>Proč bych měl poskytnout zpětnou vazbu rizik k hodnocení rizik Azure AD? 
+## <a name="why-should-i-give-risk-feedback-to-azure-ads-risk-assessments"></a>Proč bych měl poskytnout rizikovou zpětnou vazbu k posouzení rizik Azure AD? 
 
-Existuje několik důvodů, proč byste měli poskytnout zpětnou vazbu o riziku Azure AD:
+Existuje několik důvodů, proč byste měli poskytnout zpětnou vazbu k riziku Azure AD:
 
-- **Zjistili jste, že uživatel azure ad nebo přihlášení posouzení rizik nesprávné**. Například přihlášení uvedené v sestavě Rizikové přihlášení bylo neškodné a všechna zjištění tohoto přihlášení byla falešně pozitivní.
-- **Ověřili jste, že azure ad uživatele nebo přihlášení posouzení rizika byla správná**. Například přihlášení zobrazené v sestavě rizikové přihlášení bylo skutečně škodlivé a chcete, aby služba Azure AD věděla, že všechna zjišťování v tomto přihlášení byla true positives.
-- **Bylo opraveno riziko pro tohoto uživatele mimo Azure AD Identity Protection** a chcete, aby byla aktualizována úroveň rizika uživatele.
+- **Našli jste nesprávné vyhodnocení rizika uživatele nebo přihlášení služby Azure AD**. Například přihlášení zobrazené v sestavě rizikové přihlášení bylo neškodné a všechny detekce tohoto přihlášení byly falešně pozitivní.
+- **Ověřili jste správnost vyhodnocení rizika uživatele nebo přihlašování služby Azure AD**. Například přihlášení zobrazené v sestavě rizikové přihlášení bylo opravdu škodlivé a chcete, aby služba Azure AD věděla, že všechna zjištění tohoto přihlášení byla pravdivá.
+- Napravili **jste riziko pro daného uživatele mimo Azure AD Identity Protection** a chcete aktualizovat úroveň rizika uživatele.
 
-## <a name="how-does-azure-ad-use-my-risk-feedback"></a>Jak Azure AD používá moji zpětnou vazbu o riziku?
+## <a name="how-does-azure-ad-use-my-risk-feedback"></a>Jak Azure AD využívá můj názor na rizika?
 
-Azure AD používá vaši zpětnou vazbu k aktualizaci rizika základního uživatele nebo přihlášení a přesnosti těchto událostí. Tato zpětná vazba pomáhá zabezpečit koncového uživatele. Například po potvrzení ohrožení zabezpečení přihlášení, Azure AD okamžitě zvyšuje riziko uživatele a přihlášení celkové riziko (není riziko v reálném čase) na vysoké. Pokud je tento uživatel zahrnut do zásad rizika uživatele, aby vynutil uživatelům s vysokým rizikem, aby bezpečně resetovali svá hesla, uživatel se při příštím přihlášení automaticky napraví.
+Azure AD používá vaši zpětnou vazbu k aktualizaci rizika podkladového uživatele nebo přihlašování a přesnosti těchto událostí. Tato zpětná vazba pomáhá zabezpečit koncového uživatele. Když například ověříte, že je přihlášení ohrožené, Azure AD okamžitě zvyšuje riziko uživatele a agregované riziko přihlášení (ne riziko v reálném čase) na maximum. Pokud je tento uživatel zahrnutý v zásadách rizik uživatelů, aby mohli uživatelé s vysokým rizikem bezpečně resetovat hesla, uživatel se při příštím přihlášení automaticky opraví.
 
-## <a name="how-should-i-give-risk-feedback-and-what-happens-under-the-hood"></a>Jak mám poskytnout zpětnou vazbu od rizika a co se děje pod kapotou?
+## <a name="how-should-i-give-risk-feedback-and-what-happens-under-the-hood"></a>Jak mám sdělit svůj názor na riziko a co se stane pod digestoří?
 
-Tady jsou scénáře a mechanismy, které poskytují zpětnou vazbu rizik azure ad.
+Tady jsou scénáře a mechanismy, které vám poskytnou zpětnou vazbu na rizika pro Azure AD.
 
-| Scénář | Jak poskytnout zpětnou vazbu? | Co se děje pod kapotou? | Poznámky |
+| Scénář | Jak můžete sdělit svůj názor? | Co se stane pod digestoří? | Poznámky |
 | --- | --- | --- | --- |
-| **Přihlášení není ohroženo (falešně pozitivní)** <br> Zpráva "Risky sign-in" zobrazuje rizikové přihlášení [Rizikový stav = V riziku], ale toto přihlášení nebylo ohroženo. | Vyberte přihlášení a klikněte na "Potvrdit přihlašovací trezor". | Azure AD přesune celkové riziko přihlášení na žádný [Stav rizika = Potvrzeno bezpečné; Úroveň rizika (Agregát) = -] a zvrátí jeho dopad na riziko uživatele. | V současné době je možnost Potvrdit bezpečné přihlášení k dispozici pouze v sestavě Rizikové přihlášení. |
-| **Ohrožení zabezpečení přihlášení (True positive)** <br> Zpráva "Risky sign-in" zobrazuje rizikové přihlášení [Rizikový stav = Rizikový stav] s nízkým rizikem [Úroveň rizika (Agregát) = Nízká] a toto přihlášení bylo skutečně ohroženo. | Vyberte přihlášení a klikněte na "Potvrdit ohrožení zabezpečení přihlášení". | Azure AD přesune celkové riziko přihlášení a riziko uživatele na vysoké [stav rizika = Potvrzeno ohroženo; Úroveň rizika = vysoká]. | V současné době je možnost Potvrdit ohrožení zabezpečení přihlášení je k dispozici pouze v sestavě Rizikové přihlášení. |
-| **Ohrožení zabezpečení uživatelem (True positive)** <br> "Zpráva rizikových uživatelů" ukazuje rizikového uživatele [Rizikový stav = Rizikový stav] s nízkým rizikem [Úroveň rizika = Nízká] a tento uživatel byl skutečně ohrožen. | Vyberte uživatele a klikněte na "Potvrdit ohrožení zabezpečení uživatele". | Azure AD přesune riziko uživatele na vysoké [stav rizika = Potvrzeno ohroženo; Úroveň rizika = Vysoká] a přidá novou detekci "Admin potvrdil uživatele ohrožena". | V současné době je možnost Potvrdit ohrožení zabezpečení uživatele matná pouze v sestavě Rizikových uživatelů. <br> Detekce "Správce potvrdil uživatele ohrožena" se zobrazí na kartě "Detekce rizik, které nejsou spojeny s přihlášením" v sestavě "Rizikoví uživatelé". |
-| **Uživatelem opraveným mimo azure ad identity protection (True positive + Remediated)** <br> Sestava "Rizikových uživatelů" zobrazuje ohroženého uživatele a následně jsem uživatele nachtěl mimo azure ad identity protection. | 1. Vyberte uživatele a klikněte na tlačítko "Potvrdit ohrožení zabezpečení uživatele". (Tento proces potvrzuje Azure AD, že uživatel byl skutečně ohrožena.) <br> 2. Počkejte, až se úroveň rizika uživatele přejde na vysokou. (Tento čas poskytuje Azure AD potřebný čas, aby výše uvedené zpětné vazby na řízení rizik.) <br> 3. Vyberte uživatele a klikněte na tlačítko "Odmítnout riziko uživatele". (Tento proces potvrzuje azure ad, že uživatel již není ohrožena.) |  Azure AD přesune riziko uživatele na žádný [Stav rizika = Zamítnuto; Úroveň rizika = -] a uzavírá riziko u všech existujících přihlášení s aktivním rizikem. | Kliknutím na tlačítko Odmítnout riziko uživatele uzavřete všechna rizika u uživatele a minulých přihlášení. Tuto akci nelze vrátit zpět. |
-| **Uživatel nebyl ohrožen (falešně pozitivní)** <br> Sestava "Rizikových uživatelů" se zobrazuje u rizikového uživatele, ale uživatel není ohrožen. | Vyberte uživatele a klikněte na tlačítko "Odmítnout riziko uživatele". (Tento proces potvrzuje azure ad, že uživatel není ohrožena.) | Azure AD přesune riziko uživatele na žádný [Stav rizika = Zamítnuto; Úroveň rizika = -]. | Kliknutím na tlačítko Odmítnout riziko uživatele uzavřete všechna rizika u uživatele a minulých přihlášení. Tuto akci nelze vrátit zpět. |
-| Chci uzavřít riziko uživatele, ale nejsem si jistý, zda je uživatel ohrožen / bezpečný. | Vyberte uživatele a klikněte na tlačítko "Odmítnout riziko uživatele". (Tento proces potvrzuje azure ad, že uživatel již není ohrožena.) | Azure AD přesune riziko uživatele na žádný [Stav rizika = Zamítnuto; Úroveň rizika = -]. | Kliknutím na tlačítko Odmítnout riziko uživatele uzavřete všechna rizika u uživatele a minulých přihlášení. Tuto akci nelze vrátit zpět. Doporučujeme, abyste uživatele okamžitě nalézali kliknutím na "Resetheslo" nebo požádali jej, aby bezpečně resetoval/změnil své přihlašovací údaje. |
+| **Neohrožené přihlášení (falešně pozitivní)** <br> Sestava rizikových přihlášení zobrazuje nerizikové přihlašování [rizikový stav = ohroženo], ale toto přihlášení nebylo ohroženo. | Vyberte přihlášení a klikněte na potvrdit bezpečné přihlášení. | Azure AD přesune agregované riziko přihlášení do žádného [stav rizika = potvrzené zabezpečení; Úroveň rizika (agregace) =-] a vrátí dopad na riziko uživatele. | V současné době je možnost potvrdit přihlášení bezpečně dostupná jenom v sestavě rizikové přihlašovacích. |
+| **Narušeno přihlášení (true pozitivní)** <br> Sestava rizikové přihlašovací údaje zobrazuje nerizikové přihlašování [rizikový stav = ohroženo] s nízkým rizikem [úroveň rizika (agregace) = nízká] a toto přihlášení bylo skutečně ohroženo. | Vyberte přihlášení a klikněte na potvrdit narušené přihlášení. | Azure AD přesune agregované riziko přihlášení a riziko pro uživatele do vysoké úrovně [rizikový stav = potvrzené ohrožení zabezpečení; Úroveň rizika = vysoká]. | V současné době je možnost potvrdit narušení přihlášení dostupná jenom v sestavě rizikové přihlašovacích. |
+| **Ohrožení zabezpečení uživatele (true pozitivní)** <br> Sestava rizikové uživatele zobrazuje nerizikové uživatele [rizikový stav = ohroženo] s nízkým rizikem [úroveň rizika = nízká] a tímto uživatelem došlo k ohrožení zabezpečení. | Vyberte uživatele a klikněte na potvrdit ohrožení zabezpečení uživatele. | Azure AD přesune riziko uživatele do vysoké úrovně [rizikový stav = potvrzené ohrožení zabezpečení; Úroveň rizika = vysoká] a přidá nový detekční účet správce potvrzující ohrožení uživatele. | V současné době je možnost potvrdit ohrožení uživatele dostupná jenom v sestavě rizikové uživatele. <br> Detekce "správce potvrzuje, že došlo k ohrožení uživatele", se zobrazí v části detekce rizik, která není propojena s přihlášením v sestavě rizikové uživatele. |
+| **Napravení uživatele mimo Azure AD Identity Protection (true kladné + opraveno)** <br> Sestava rizikové uživatele zobrazuje nerizikového uživatele a uživatel ho následně napravoval mimo Azure AD Identity Protection. | 1. Vyberte uživatele a klikněte na potvrdit napadení uživatelem. (Tento proces potvrzuje službě Azure AD, že uživatel byl skutečně ohrožen.) <br> 2. Počkejte, až bude úroveň rizika uživatele přejít na hodnotu Vysoká. (Tentokrát poskytuje Azure AD potřebnou dobu k tomu, aby se výše uvedená zpětná vazba vybrala na rizikový modul.) <br> 3. Vyberte uživatele a klikněte na tlačítko Zavřít riziko uživatele. (Tento proces potvrzuje službě Azure AD, že uživatel už není ohrožen.) |  Azure AD přesune riziko pro uživatele na žádné [stav rizika = zrušeno; Úroveň rizika =-] a uzavře riziko pro všechna existující přihlášení, která mají aktivní riziko. | Kliknutím na Zavřít riziko uživatele zavřete všechna rizika pro přihlášení a uživatele v minulosti. Tuto akci nelze vrátit zpět. |
+| **Uživatel není napadený (falešně pozitivní).** <br> Sestava rizikové uživatele zobrazuje uživatele v rizikovém uživateli, ale uživatel není ohrožen. | Vyberte uživatele a klikněte na tlačítko Zavřít riziko uživatele. (Tento proces potvrdí službě Azure AD, že uživatel není ohrožen.) | Azure AD přesune riziko pro uživatele na žádné [stav rizika = zrušeno; Úroveň rizika =-]. | Kliknutím na Zavřít riziko uživatele zavřete všechna rizika pro přihlášení a uživatele v minulosti. Tuto akci nelze vrátit zpět. |
+| Chci zavřít riziko uživatele, ale nejste si jistí, jestli je uživatel napadený/bezpečný. | Vyberte uživatele a klikněte na tlačítko Zavřít riziko uživatele. (Tento proces potvrzuje službě Azure AD, že uživatel už není ohrožen.) | Azure AD přesune riziko pro uživatele na žádné [stav rizika = zrušeno; Úroveň rizika =-]. | Kliknutím na Zavřít riziko uživatele zavřete všechna rizika pro přihlášení a uživatele v minulosti. Tuto akci nelze vrátit zpět. Doporučujeme, abyste uživatele opravili kliknutím na resetovat heslo nebo požádat uživatele, aby bezpečně obnovil nebo změnil své přihlašovací údaje. |
 
-Zpětná vazba na detekci rizik uživatelů v aplikaci Identity Protection je zpracována offline a může nějakou dobu trvat jejich aktualizace. Sloupec stavu zpracování rizika bude poskytovat aktuální stav zpracování zpětné vazby.
+Zpětná vazba na zjišťování rizik uživatelů v ochraně identity je zpracována offline a aktualizace může nějakou dobu trvat. Sloupec stav zpracování rizika vám poskytne aktuální stav zpracování zpětné vazby.
 
-![Stav zpracování rizikpro zprávu o rizikovém uživateli](./media/howto-identity-protection-risk-feedback/risky-users-provide-feedback.png)
+![Stav zpracování rizik pro sestavu rizikového uživatele](./media/howto-identity-protection-risk-feedback/risky-users-provide-feedback.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Odkaz na zjišťování rizik ochrany identitslužby Azure Active Directory](risk-events-reference.md)
+- [Referenční informace o Azure Active Directory Identity Protection detekci rizik](risk-events-reference.md)

@@ -1,6 +1,6 @@
 ---
 title: Možnosti podpory
-description: Informace o tom, jak otevřít požadavek s týmem podpory Azure Spatial Anchors.
+description: Informace o tom, jak otevřít žádost s týmem podpory prostorových kotev Azure
 author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
@@ -9,45 +9,45 @@ ms.date: 02/24/2019
 ms.topic: troubleshooting
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 371cb9ade54da42af1ed75c3e9857b6d1a7a0f4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74276974"
 ---
-# <a name="azure-spatial-anchors-support-options"></a>Možnosti podpory azure prostorových kotvy
+# <a name="azure-spatial-anchors-support-options"></a>Možnosti podpory prostorových kotev Azure
 
 ## <a name="open-a-tech-support-ticket"></a>Otevření lístku technické podpory
 
-Otevření lístku technické podpory v rámci portálu Azure portal pro prostorové kotvy Azure:
+Otevření lístku technické podpory na webu Azure Portal pro prostorové kotvy Azure:
 
-1. Když je [portál Azure](https://azure.microsoft.com/account/) otevřený, vyberte ikonu nápovědy z horního řádku nabídek a pak vyberte tlačítko **Nápověda + podpora.**
+1. Pomocí [Azure Portal](https://azure.microsoft.com/account/) otevřít vyberte ikonu pro pomoc v horním panelu nabídek a pak vyberte tlačítko **help + Support (podpora** ).
 
-![Nápověda a podpora portálu Azure](./media/spatial-anchor-support.png)
+![Azure Portal pomoc a podpora](./media/spatial-anchor-support.png)
 
-1. S otevřenou stránkou Nápověda + podpora vyberte **+ Nová žádost o podporu**.
+1. Po otevření stránky pro pomoc a podporu vyberte **+ Nová žádost o podporu**.
 
-![Žádost o novou podporu portálu Azure Portal](./media/spatial-anchor-support2.png)
+![Azure Portal novou žádost o podporu](./media/spatial-anchor-support2.png)
 
-1. Při vyplňování polí lístku podpory:
+1. Při dokončování polí lístku podpory:
 
 - Typ problému: Technický
-- Služba: Prostorové kotvy
+- Služba: prostorové kotvy
 
-![Pole lístků podpory portálu Azure](./media/spatial-anchor-support3.png)
+![Pole lístků podpory Azure Portal](./media/spatial-anchor-support3.png)
 
 ## <a name="community-support"></a>Podpora komunity
 
-Podporu z komunity uživatelů najdete v [tématu Azure prostorové kotvy na přetečení zásobníku](https://stackoverflow.com/questions/tagged/azure-spatial-anchors).
+Pokud chcete podporu od komunity uživatelů, přečtěte si téma [prostorové kotvy Azure na Stack Overflow](https://stackoverflow.com/questions/tagged/azure-spatial-anchors).
 
-## <a name="provide-content-feedback"></a>Poskytnutí zpětné vazby od obsahu
+## <a name="provide-content-feedback"></a>Poskytnutí zpětné vazby k obsahu
 
-V dolní části každého článku obsahu je příležitost otevřít problém GitHub a poskytnout zpětnou vazbu k obsahu dokumentace Azure spatial anchor.
+V dolní části každého článku o obsahu je k dispozici možnost otevřít problém GitHubu a poskytnout zpětnou vazbu k obsahu dokumentace k prostorovým kotvám Azure.
 
 ## <a name="provide-product-feedback"></a>Poskytnutí zpětné vazby k produktu
 
-Chcete-li poskytnout zpětnou vazbu, podělte se o nápad nebo návrh služby Azure Spatial Anchors nebo hlasujte o nápadech, které odeslali jiní, navštivte [Fórum pro zpětnou vazbu pro prostorové kotvy Azure](https://feedback.azure.com/forums/919252-azure-spatial-anchors).
+Pokud chcete poskytnout zpětnou vazbu, podělte se o nápady nebo návrhy na službu Azure prostorových kotev nebo Hlasujte na nápadech, které odeslali jiní uživatelé, navštivte [fórum pro názory na prostorové kotvy Azure](https://feedback.azure.com/forums/919252-azure-spatial-anchors).
 
 ## <a name="next-steps"></a>Další kroky
 
-Nejčastější dotazy týkající se prostorových ukotvení Azure najdete na stránce [nejčastějších dotazů.](spatial-anchor-faq.md)
+Nejčastější dotazy k prostorovým kotvám Azure najdete na stránce s [nejčastějšími dotazy](spatial-anchor-faq.md) .

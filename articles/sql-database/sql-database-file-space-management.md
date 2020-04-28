@@ -1,6 +1,6 @@
 ---
-title: Správa prostoru souborů s jednou/sdruženou databází
-description: Tato stránka popisuje, jak spravovat místo v souborech s jednu a sdružené databáze v Azure SQL Database a poskytuje ukázky kódu, jak zjistit, zda je potřeba zmenšit jednu nebo sdružené databáze, stejně jako jak provést databázi zmenšit operace.
+title: Správa prostoru souborů pro jednu nebo více fondů databáze
+description: Tato stránka popisuje, jak spravovat prostor souborů s jednou a sdruženými databázemi v Azure SQL Database a obsahuje ukázky kódu, jak určit, jestli potřebujete zmenšit jednu nebo ve fondu databáze, a jak provést operaci zmenšení databáze.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -12,22 +12,22 @@ ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 007bbffbd7c4fcad339f88eb78991eb39fb829e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74420982"
 ---
-# <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>Správa místa v souborech pro jednu a sdružené databáze v Azure SQL Database
+# <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>Správa prostoru souborů pro databáze s jednou a fondem v Azure SQL Database
 
-Tento článek popisuje různé typy úložného prostoru pro jednu a sdružené databáze v Azure SQL Database a kroky, které lze přijmout, když je třeba explicitně spravovat místo v souborech přidělené pro databáze a elastické fondy.
+Tento článek popisuje různé typy prostoru úložiště pro databáze typu Single a pool v Azure SQL Database a kroky, které lze provést v případě, že je nutné explicitně spravovat prostor souborů přidělený pro databáze a elastické fondy.
 
 > [!NOTE]
-> Tento článek se nevztahuje na možnost nasazení spravované instance v Azure SQL Database.
+> Tento článek neplatí pro možnost nasazení spravované instance v Azure SQL Database.
 
 ## <a name="overview"></a>Přehled
 
-S jednu a sdružené databáze v Azure SQL Database existují vzory úloh, kde přidělení podkladových datových souborů pro databáze může být větší než množství použitých datových stránek. Tento stav může nastat v případě, že se zvýší množství využitého prostoru a data se následně odstraní. Důvodem je, že přidělené místo v souboru není automaticky regenerované při odstranění dat.
+U databází s jedním a sdruženým fondem v Azure SQL Database existují vzorce úloh, ve kterých může být přidělení základních datových souborů pro databáze větší než množství použitých datových stránek. Tento stav může nastat v případě, že se zvýší množství využitého prostoru a data se následně odstraní. Důvodem je skutečnost, že přidělené místo v souboru není automaticky uvolněno při odstranění dat.
 
 V následujících scénářích může být potřeba monitorovat využití prostoru souborů a zmenšení datových souborů:
 
@@ -35,47 +35,47 @@ V následujících scénářích může být potřeba monitorovat využití pros
 - Povolení snížení maximální velikosti jednoúčelové databáze nebo elastického fondu
 - Povolení změny jednoúčelové databáze nebo elastického fondu na jinou úroveň služby nebo výkonu s nižší maximální velikostí
 
-### <a name="monitoring-file-space-usage"></a>Sledování využití místa souboru
+### <a name="monitoring-file-space-usage"></a>Monitorování využití místa na souboru
 
-Většina metrik úložného prostoru zobrazených na webu Azure Portal a následující api měří jenom velikost použitých datových stránek:
+Většina metrik prostorů úložiště se zobrazuje v Azure Portal a následující rozhraní API měří pouze velikost použitých datových stránek:
 
-- Azure Resource Manager na metriky api, včetně [metriky get-](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetric)
-- T-SQL: [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
+- Rozhraní API metrik založené na Azure Resource Manager, včetně PowerShellu [Get – metrik](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetric)
+- T-SQL: [Sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
-Následující api však také měří velikost místa přiděleného pro databáze a elastické fondy:
+Následující rozhraní API však také měří velikost vyhrazeného místa pro databáze a elastické fondy:
 
-- T-SQL: [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
-- T-SQL: [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
+- T-SQL: [Sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
+- T-SQL: [Sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
 ### <a name="shrinking-data-files"></a>Zmenšení datových souborů
 
-Služba SQL Database automaticky nezmenšuje datové soubory, aby získala nevyužité přidělené místo z důvodu potenciálního dopadu na výkon databáze.  Zákazníci však mohou zmenšit datové soubory prostřednictvím samoobslužné služby v době, kdy se jim to rozhodne, a to podle kroků popsaných v [rekultivaci nevyužitého přiděleného místa](#reclaim-unused-allocated-space).
+Služba SQL Database automaticky nezmenšuje datové soubory pro uvolnění nevyužitého přiděleného místa z důvodu potenciálního dopadu na výkon databáze.  Zákazníci ale můžou soubory dat zmenšit pomocí samoobslužné služby v době jejich výběru podle kroků popsaných v tématu [uvolnění nevyužitého vyhrazeného místa](#reclaim-unused-allocated-space).
 
 > [!NOTE]
 > Na rozdíl od datových souborů služba SQL Database automaticky zmenší soubory protokolu, protože tato operace nemá vliv na výkon databáze.
 
-## <a name="understanding-types-of-storage-space-for-a-database"></a>Principy typů úložného prostoru pro databázi
+## <a name="understanding-types-of-storage-space-for-a-database"></a>Porozumění typům úložného prostoru pro databázi
 
-Pochopení následujícímnožství úložného prostoru jsou důležité pro správu prostoru souboru databáze.
+Při správě místa v databázi je důležité pochopit následující množství úložného prostoru.
 
 |Množství databáze|Definice|Komentáře|
 |---|---|---|
-|**Využitý datový prostor**|Velikost místa použitého k ukládání dat databáze na 8 stránkách KB.|Obecně platí, že využité místo se zvyšuje (zmenšuje) na vložky (odstraní). V některých případech se využité místo nemění na vloží nebo odstraní v závislosti na množství a vzor dat zapojených do operace a jakékoli fragmentace. Například odstranění jednoho řádku z každé datové stránky nemusí nutně snížit využité místo.|
-|**Přidělený datový prostor**|Velikost formátovaného místa souboru, které je k dispozici pro ukládání dat databáze.|Množství přiděleného místa se automaticky zvětšuje, ale po odstranění se nikdy nesníží. Toto chování zajišťuje, že budoucí vloží jsou rychlejší, protože prostor není nutné přeformátovat.|
-|**Přidělené, ale nevyužité místo dat**|Rozdíl mezi množstvím přiděleného datového prostoru a využitého datového prostoru.|Toto množství představuje maximální množství volného místa, které lze uvolnit zmenšením datových souborů databáze.|
-|**Maximální velikost dat**|Maximální množství místa, které lze použít pro ukládání dat databáze.|Velikost přiděleného datového prostoru nemůže přesáhnout maximální velikost dat.|
+|**Využité místo pro data**|Velikost místa využitého k uložení dat databáze na stránkách 8 KB.|Obecně se využité místo zvětšuje (snižuje) při vložení (odstraní). V některých případech se využité místo nemění v závislosti na množství a vzoru dat zahrnutých v operaci a na jakékoli fragmentaci. Například odstranění jednoho řádku z každé datové stránky nemusí zbytečně snížit využité místo.|
+|**Přidělené datové místo**|Velikost formátovaného místa v souboru, které je k dispozici pro ukládání dat databáze.|Velikost přiděleného místa se zvětšuje automaticky, ale po odstranění se nikdy nezkrátí. Toto chování zajistí rychlejší vkládání budoucích vložení, protože místo není nutné přeformátovat.|
+|**Přidělené datové místo, ale nepoužívá se**|Rozdíl mezi objemem přiděleného datového prostoru a využitým datovým prostorem.|Toto množství představuje maximální množství volného místa, které může být uvolněno zmenšením datových souborů databáze.|
+|**Maximální velikost dat**|Maximální množství místa, které lze použít pro ukládání databázových dat.|Velikost přiděleného datového prostoru nemůže být větší než maximální velikost dat.|
 
-Následující diagram znázorňuje vztah mezi různými typy úložného prostoru pro databázi.
+Následující diagram znázorňuje vztah mezi různými typy prostoru úložiště pro databázi.
 
-![typy a vztahy úložného prostoru](./media/sql-database-file-space-management/storage-types.png)
+![typy a vztahy prostoru úložiště](./media/sql-database-file-space-management/storage-types.png)
 
-## <a name="query-a-single-database-for-storage-space-information"></a>Dotaz na jednu databázi pro informace o úložném prostoru
+## <a name="query-a-single-database-for-storage-space-information"></a>Dotazování na izolovanou databázi pro informace o prostoru úložiště
 
-Následující dotazy lze určit množství úložného prostoru pro jednu databázi.  
+K určení množství úložného prostoru pro izolovanou databázi lze použít následující dotazy.  
 
-### <a name="database-data-space-used"></a>Využité datové místo databáze
+### <a name="database-data-space-used"></a>Využité místo pro data databáze
 
-Upravte následující dotaz a vraťte velikost využitého datového prostoru databáze.  Jednotky výsledku dotazu jsou v MB.
+Upravte následující dotaz, který vrátí velikost využitého místa pro data databáze.  Jednotky výsledku dotazu jsou v MB.
 
 ```sql
 -- Connect to master
@@ -86,9 +86,9 @@ WHERE database_name = 'db1'
 ORDER BY end_time DESC
 ```
 
-### <a name="database-data-space-allocated-and-unused-allocated-space"></a>Přidělené a nevyužité přidělené místo v databázi dat
+### <a name="database-data-space-allocated-and-unused-allocated-space"></a>Přidělené a nevyužité volné místo v databázi dat
 
-Následující dotaz slouží k vrácení množství přiděleného datového prostoru databáze a množství přiděleného nevyužitého místa.  Jednotky výsledku dotazu jsou v MB.
+Pomocí následujícího dotazu vraťte množství přiděleného místa pro data databáze a velikost přiděleného místa.  Jednotky výsledku dotazu jsou v MB.
 
 ```sql
 -- Connect to database
@@ -102,7 +102,7 @@ HAVING type_desc = 'ROWS'
 
 ### <a name="database-data-max-size"></a>Maximální velikost dat databáze
 
-Upravte následující dotaz a vraťte maximální velikost dat databáze.  Jednotky výsledku dotazu jsou v bajtech.
+Upravte následující dotaz tak, aby vracel maximální velikost dat databáze.  Počet jednotek výsledku dotazu je v bajtech.
 
 ```sql
 -- Connect to database
@@ -110,24 +110,24 @@ Upravte následující dotaz a vraťte maximální velikost dat databáze.  Jedn
 SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes
 ```
 
-## <a name="understanding-types-of-storage-space-for-an-elastic-pool"></a>Principy typů úložného prostoru pro elastický fond
+## <a name="understanding-types-of-storage-space-for-an-elastic-pool"></a>Porozumění typům úložného prostoru pro elastický fond
 
-Pochopení následující množství úložného prostoru jsou důležité pro správu prostoru souboru elastického fondu.
+Při správě prostoru pro elastický fond je důležité pochopit následující množství úložného prostoru.
 
 |Množství elastického fondu|Definice|Komentáře|
 |---|---|---|
-|**Využitý datový prostor**|Součet datového prostoru používaného všemi databázemi v elastickém fondu.||
-|**Přidělený datový prostor**|Součet datového prostoru přidělené všechny databáze v elastickém fondu.||
-|**Přidělené, ale nevyužité místo dat**|Rozdíl mezi množstvím přiděleného datového prostoru a datovým prostorem používaným všemi databázemi v elastickém fondu.|Toto množství představuje maximální množství místa přidělené pro elastický fond, který lze uvolnit zmenšením datových souborů databáze.|
-|**Maximální velikost dat**|Maximální množství datového prostoru, který může elastický fond použít pro všechny jeho databáze.|Místo přidělené pro elastický fond by nemělo překročit maximální velikost elastického fondu.  Pokud dojde k této podmínce, pak místo přidělené, které je nevyužité lze uvolnit zmenšením datových souborů databáze.|
+|**Využité místo pro data**|Součet datových prostorů používaných všemi databázemi v elastickém fondu.||
+|**Přidělené datové místo**|Součet datového prostoru přiděleného všemi databázemi v elastickém fondu.||
+|**Přidělené datové místo, ale nepoužívá se**|Rozdíl mezi objemem přiděleného datového prostoru a datovým prostorem používaným všemi databázemi v elastickém fondu.|Toto množství představuje maximální prostor přidělený pro elastický fond, který je možné uvolnit zmenšením datových souborů databáze.|
+|**Maximální velikost dat**|Maximální množství datového prostoru, které může elastický fond používat pro všechny jeho databáze.|Prostor přidělený elastickému fondu by neměl překročit maximální velikost elastického fondu.  Pokud k tomuto stavu dojde, může být přidělené místo, které není používáno, uvolněno zmenšením datových souborů databáze.|
 
-## <a name="query-an-elastic-pool-for-storage-space-information"></a>Dotaz na elastický fond pro informace o prostoru úložiště
+## <a name="query-an-elastic-pool-for-storage-space-information"></a>Dotazování elastického fondu pro informace o prostoru úložiště
 
-Následující dotazy lze určit množství prostoru úložiště pro elastický fond.  
+K určení množství úložného prostoru pro elastický fond lze použít následující dotazy.  
 
-### <a name="elastic-pool-data-space-used"></a>Využité datové místo elastického fondu
+### <a name="elastic-pool-data-space-used"></a>Využité místo datového prostoru elastického fondu
 
-Upravte následující dotaz a vraťte velikost použitého datového prostoru elastického fondu.  Jednotky výsledku dotazu jsou v MB.
+Upravte následující dotaz, který vrátí velikost využitého datového prostoru elastického fondu.  Jednotky výsledku dotazu jsou v MB.
 
 ```sql
 -- Connect to master
@@ -138,16 +138,16 @@ WHERE elastic_pool_name = 'ep1'
 ORDER BY end_time DESC
 ```
 
-### <a name="elastic-pool-data-space-allocated-and-unused-allocated-space"></a>Přidělené a nevyužité přidělené místo datového fondu elastického fondu
+### <a name="elastic-pool-data-space-allocated-and-unused-allocated-space"></a>Přidělené a nevyužité volné místo v datovém prostoru elastického fondu
 
-Upravte následující příklady a vraťte tabulku se seznamem přiděleného a nevyužitého místa pro každou databázi v elastickém fondu. Tabulka objednává databáze z těchto databází s největším množstvím nevyužitého přiděleného místa na nejmenší množství nevyužitého přiděleného místa.  Jednotky výsledku dotazu jsou v MB.  
+Upravte následující příklady a vraťte tabulku se seznamem přiděleného místa a nevyužitého prostoru pro každou databázi v elastickém fondu. Tabulka seřadí databáze z těchto databází s největším množstvím nevyužitého vyhrazeného místa k minimálnímu množství nevyužitého přiděleného místa.  Jednotky výsledku dotazu jsou v MB.  
 
-Výsledky dotazu pro určení místa přidělené pro každou databázi ve fondu lze sečíst k určení celkového místa přidělené pro elastický fond. Přidělené místo elastického fondu by nemělo překročit maximální velikost elastického fondu.  
+Výsledky dotazu pro určení prostoru přiděleného pro každou databázi ve fondu je možné přidat společně a určit tak celkové místo přidělené elastickému fondu. Přidělené místo elastického fondu by nemělo přesáhnout maximální velikost elastického fondu.  
 
 > [!IMPORTANT]
-> Modul Správce prostředků Azure (RM) prostředí PowerShell je stále podporovaný službou Azure SQL Database, ale veškerý budoucí vývoj je pro modul Az.Sql. Modul AzureRM bude nadále dostávat opravy chyb nejméně do prosince 2020.  Argumenty pro příkazy v modulu Az a v modulech AzureRm jsou v podstatě identické. Další informace o jejich kompatibilitě [najdete v tématu Představení nového modulu Azure PowerShell Az](/powershell/azure/new-azureps-module-az).
+> Modul Azure Resource Manager PowerShellu (RM) je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou k dispozici pro modul AZ. SQL. V modulu AzureRM bude i nadále docházet k opravám chyb až do prosince 2020.  Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické. Další informace o kompatibilitě najdete v tématu [představení nového Azure PowerShell AZ Module](/powershell/azure/new-azureps-module-az).
 
-Skript PowerShellu vyžaduje modul SQL Server PowerShell – viz [Stažení modulu PowerShellu](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module) k instalaci.
+Skript prostředí PowerShell vyžaduje SQL Server modul prostředí PowerShell – viz téma [stažení modulu PowerShell](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module) k instalaci.
 
 ```powershell
 $resourceGroupName = "<resourceGroupName>"
@@ -180,13 +180,13 @@ Write-Output "`n" "ElasticPoolName: $poolName"
 Write-Output $databaseStorageMetrics | Sort -Property DatabaseDataSpaceAllocatedUnusedInMB -Descending | Format-Table
 ```
 
-Následující snímek obrazovky je příkladem výstupu skriptu:
+Následující snímek obrazovky ukazuje příklad výstupu skriptu:
 
-![elastický fond přidělené místo a nevyužité přidělené místo příklad](./media/sql-database-file-space-management/elastic-pool-allocated-unused.png)
+![Příklad přiděleného prostoru elastického fondu a nevyužitého místa přidělení](./media/sql-database-file-space-management/elastic-pool-allocated-unused.png)
 
 ### <a name="elastic-pool-data-max-size"></a>Maximální velikost dat elastického fondu
 
-Upravte následující dotaz T-SQL a vraťte maximální velikost dat elastického fondu.  Jednotky výsledku dotazu jsou v MB.
+Upravte následující dotaz T-SQL, který vrátí maximální velikost dat elastického fondu.  Jednotky výsledku dotazu jsou v MB.
 
 ```sql
 -- Connect to master
@@ -197,27 +197,27 @@ WHERE elastic_pool_name = 'ep1'
 ORDER BY end_time DESC
 ```
 
-## <a name="reclaim-unused-allocated-space"></a>Uvolnit nevyužité přidělené místo
+## <a name="reclaim-unused-allocated-space"></a>Uvolnění nevyužitého přiděleného místa
 
 > [!NOTE]
-> Tento příkaz může ovlivnit výkon databáze, když je spuštěn, a pokud je to možné, by měl být spuštěn během období nízké využití.
+> Tento příkaz může mít vliv na výkon databáze, pokud je spuštěný, a pokud je to možné, měly by být spuštěny během období nízkého využití.
 
-### <a name="dbcc-shrink"></a>Zmenšit DBCC
+### <a name="dbcc-shrink"></a>Sbalení příkazu DBCC
 
-Jakmile jsou databáze identifikovány pro rekultivaci nevyužitého přiděleného místa, upravte název databáze v následujícím příkazu a zmenšete datové soubory pro každou databázi.
+Jakmile zjistíte, že databáze byly zjištěny pro získání nevyužitého přiděleného místa, upravte název databáze v následujícím příkazu, aby se zmenšily datové soubory pro každou databázi.
 
 ```sql
 -- Shrink database data space allocated.
 DBCC SHRINKDATABASE (N'db1')
 ```
 
-Tento příkaz může ovlivnit výkon databáze, když je spuštěn, a pokud je to možné, by měl být spuštěn během období nízké využití.  
+Tento příkaz může mít vliv na výkon databáze, pokud je spuštěný, a pokud je to možné, měly by být spuštěny během období nízkého využití.  
 
-Další informace o tomto příkazu naleznete v tématu [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql).
+Další informace o tomto příkazu najdete v tématu [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql).
 
 ### <a name="auto-shrink"></a>Automatické zmenšení
 
-Alternativně auto zmenšit lze povolit pro databázi.  Automatické zmenšení snižuje složitost správy souborů a má `SHRINKDATABASE` `SHRINKFILE`menší dopad na výkon databáze než nebo .  Automatické zmenšení může být užitečné zejména pro správu elastických fondů s mnoha databázemi.  Automatické zmenšení však může být méně efektivní `SHRINKDATABASE` `SHRINKFILE`při rekultivaci místa souboru než a .
+Alternativně lze pro databázi povolit automatické zmenšení.  Automatické zmenšení snižuje složitost správy souborů a je méně ovlivněná na výkon databáze `SHRINKDATABASE` než `SHRINKFILE`nebo.  Automatické zmenšení může být užitečné hlavně při správě elastických fondů s mnoha databázemi.  Automatické zmenšení ale může být méně účinné při uvolnění místa v souboru než `SHRINKDATABASE` a. `SHRINKFILE`
 Chcete-li povolit automatické zmenšení, upravte název databáze v následujícím příkazu.
 
 ```sql
@@ -225,18 +225,18 @@ Chcete-li povolit automatické zmenšení, upravte název databáze v následuj�
 ALTER DATABASE [db1] SET AUTO_SHRINK ON
 ```
 
-Další informace o tomto příkazu naleznete v [tématu DATABASE SET](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) options.
+Další informace o tomto příkazu najdete v tématu možnosti [sady databáze](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) .
 
-### <a name="rebuild-indexes"></a>Znovu sestavit indexy
+### <a name="rebuild-indexes"></a>Opětovné sestavení indexů
 
-Po zmenšení datových souborů databáze indexy může dojít k fragmentaci a ztratí účinnost optimalizace výkonu. Pokud dojde ke snížení výkonu, zvažte opětovné sestavení indexů databáze. Další informace o fragmentaci a opětovné sestavení indexy, naleznete v [tématu Reorganizovat a znovu sestavit indexy](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).
+Až budou soubory dat databáze zmenšené, indexy se můžou fragmentovat a ztratit jejich efektivitu optimalizace výkonu. Pokud dojde ke snížení výkonu, zvažte opakované sestavení indexů databáze. Další informace o fragmentaci a opětovném sestavování indexů najdete v tématu [reorganizace a opětovné sestavení indexů](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o maximálnívelikosti databáze naleznete v tématu:
-  - [Limity nákupního modelu na základě virtuálních jader Azure SQL Database pro jednu databázi](sql-database-vcore-resource-limits-single-databases.md)
-  - [Omezení prostředků pro jednotlivé databáze používající nákupní model založený na DTU](sql-database-dtu-resource-limits-single-databases.md)
-  - [Limity nákupních modelů založených na virtuálních jádrech Azure SQL Database pro elastické fondy](sql-database-vcore-resource-limits-elastic-pools.md)
+- Informace o maximální velikosti databáze najdete v těchto tématech:
+  - [Azure SQL Database omezení pro nákupní model založený na vCore pro jednu databázi](sql-database-vcore-resource-limits-single-databases.md)
+  - [Omezení prostředků pro izolované databáze s využitím nákupního modelu založeného na DTU](sql-database-dtu-resource-limits-single-databases.md)
+  - [Azure SQL Database omezení pro nákupní model založený na vCore pro elastické fondy](sql-database-vcore-resource-limits-elastic-pools.md)
   - [Omezení prostředků pro elastické fondy pomocí nákupního modelu založeného na DTU](sql-database-dtu-resource-limits-elastic-pools.md)
 - Další informace o `SHRINKDATABASE` příkazu naleznete v tématu [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql).
-- Další informace o fragmentaci a opětovné sestavení indexy, naleznete v [tématu Reorganizovat a znovu sestavit indexy](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).
+- Další informace o fragmentaci a opětovném sestavování indexů najdete v tématu [reorganizace a opětovné sestavení indexů](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).
