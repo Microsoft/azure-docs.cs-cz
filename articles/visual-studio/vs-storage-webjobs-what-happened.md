@@ -1,6 +1,6 @@
 ---
 title: Co se stalo s mým projektem WebJob (Visual Studio Azure Storage)?
-description: Popisuje, co se stalo v projektu Azure WebJob po připojení k účtu úložiště pomocí připojených služeb Visual Studia
+description: Popisuje, co se stalo v projektu webové úlohy Azure po připojení k účtu úložiště pomocí připojených služeb sady Visual Studio.
 services: storage
 author: ghogen
 manager: jillfra
@@ -14,28 +14,28 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 17861b7c25dfaf9bc9399e5261cdf2a5b43caf21
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72298724"
 ---
-# <a name="what-happened-to-my-webjob-project-visual-studio-azure-storage-connected-service"></a>Co se stalo s mým projektem WebJob (služba připojení Visual Studio Azure Storage)?
+# <a name="what-happened-to-my-webjob-project-visual-studio-azure-storage-connected-service"></a>Co se stalo s mým projektem WebJob (připojená služba Visual Studio Azure Storage)?
 ## <a name="references-added"></a>Přidané odkazy
-Balíček Azure Storage NuGet byl přidán nebo aktualizován v projektu sady Visual Studio.  
+Balíček NuGet Azure Storage byl do projektu sady Visual Studio přidán nebo aktualizován.  
 Tento balíček přidává následující odkazy .NET:
 
-* **Microsoft.Data.Edm**
-* **Microsoft.Data.OData**
-* **Microsoft.data.Services.client**
-* **Microsoft.WindowsAzure.ConfigurationManager**
+* **Microsoft. data. Edm**
+* **Microsoft. data. OData**
+* **Microsoft. data. Services. Client**
+* **Microsoft. WindowsAzure. ConfigurationManager**
 * **Microsoft.WindowsAzure.Storage**
 * **Newtonsoft.Json**
 * **System.Data**
-* **System.Spatial**
+* **System. prostor**
 
 ## <a name="connection-string-for-azure-storage-added"></a>Připojovací řetězec pro Azure Storage přidán
-V souboru App.config vašeho projektu byly položky **AzureWebJobsStorage** a **AzureWebJobsDashboard** aktualizovány s připojovacím řetězcem a klíčem vybraného účtu úložiště.
+V souboru App. config projektu se položky **AzureWebJobsStorage** a **AzureWebJobsDashboard** aktualizovaly pomocí připojovacího řetězce a klíče vybraného účtu úložiště.
 
-Další informace najdete v [tématu Azure WebJobs dokumentace zdrojů](https://go.microsoft.com/fwlink/?linkid=390226).
+Další informace najdete v tématu [Azure WebJobs materiály pro dokumentaci](https://go.microsoft.com/fwlink/?linkid=390226).
 

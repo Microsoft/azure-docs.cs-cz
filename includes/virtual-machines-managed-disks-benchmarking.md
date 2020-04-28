@@ -9,102 +9,102 @@ ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: e5148ff9e92a2e550a3117356a4e77cbac8fc6f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67673282"
 ---
 *Zahřívání mezipaměti*  
-Disk s mezipamětí hostitele ReadOnly jsou schopni poskytnout vyšší viops než limit disku. Chcete-li získat tento maximální výkon čtení z mezipaměti hostitele, musíte nejprve zahřívat mezipaměť tohoto disku. Tím je zajištěno, že read iOs, že srovnávací nástroj bude řídit na cachereads svazku, ve skutečnosti hity cache a nikoli disk přímo. Přístupy do mezipaměti mají za následek další viopy z disku s povolenou jednou mezipamětí.
+Disk s ukládáním do mezipaměti hostitele jen pro čtení umožňuje poskytnout vyšší IOPS, než je limit disku. Chcete-li získat tento maximální výkon pro čtení z mezipaměti hostitele, nejprve je nutné zahříváním mezipaměti tohoto disku. Tím se zajistí, že se v IOs pro čtení, který nástroj pro srovnávací testy na svazek CacheReads, bude ve skutečnosti načítat mezipaměť, a ne přímo disk. Výsledkem přístupů do mezipaměti je další IOPS z disku s povolenou jedinou mezipamětí.
 
 > [!IMPORTANT]
-> Před spuštěním srovnávacího testu je nutné zahřívat mezipaměť při každém restartování virtuálního počítače.
+> Před spuštěním srovnávacích testů je nutné zavěsit mezipaměť a pokaždé, když se virtuální počítač restartuje.
 
 ## <a name="tools"></a>Nástroje
 
-### <a name="iometer"></a>Iometr
+### <a name="iometer"></a>Iometer
 
-[Stáhněte si nástroj Iometer](https://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) na virtuálním počítači.
+[Stáhněte si nástroj IOMeter](https://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) na virtuálním počítači.
 
 #### <a name="test-file"></a>Testovací soubor
 
-Iometer používá testovací soubor, který je uložen na svazku, na kterém spustíte srovnávací test. Řídí čtení a zápisy na tento testovací soubor k měření vstupně-sad vstupně-up disku a propustnosti. Iometer vytvoří tento testovací soubor, pokud jste jej neposkytli. Vytvořte testovací soubor o velikosti 200 GB s názvem iobw.tst na svazcích CacheReads a NoCacheWrites.
+IOMeter používá testovací soubor, který je uložený na svazku, na kterém spouštíte test srovnávacích testů. Pro měření vstupně-výstupních operací disku a propustnosti disků v tomto testovacím souboru disky čte a zapisuje. IOMeter vytvoří tento testovací soubor, pokud jste ho nezadali. Vytvořte testovací soubor 200 GB s názvem iobw. tst na svazcích CacheReads a NoCacheWrites.
 
 #### <a name="access-specifications"></a>Specifikace přístupu
 
-Specifikace, velikost požadavku vstupně-amp; vstupně-to, % čtení/zápis, % náhodné/sekvenční jsou konfigurovány pomocí karty "Přístupové specifikace" v iometru. Vytvořte specifikaci přístupu pro každý z níže popsaných scénářů. Vytvořte specifikace přístupu a "Uložit" s příslušným\_názvem jako\_- RandomWrites 8K, RandomReads 8K. Při spuštění testovacího scénáře vyberte odpovídající specifikaci.
+Specifikace, velikost vstupně-výstupních operací požadavků,% čtení/zápisu,% Random/sekvenční, se konfigurují pomocí karty specifikace přístupu v IOMeter. Vytvořte specifikaci přístupu pro každý ze scénářů popsaných níže. Vytvořte specifikace přístupu a "Uložit" s odpovídajícím názvem, například – RandomWrites\_8K, RandomReads\_8K. Vyberte odpovídající specifikaci při spuštění testovacího scénáře.
 
-Příklad specifikací přístupu pro scénář maximálního zápisu IOPS je uveden níže,  
-    ![Příklad specifikací přístupu pro maximální zápis viops](../articles/virtual-machines/linux/media/premium-storage-performance/image8.png)
+Příklad specifikací přístupu pro maximální scénář zápisu IOPS je uveden níže.  
+    ![Příklad specifikací přístupu pro maximální zápis IOPS](../articles/virtual-machines/linux/media/premium-storage-performance/image8.png)
 
-#### <a name="maximum-iops-test-specifications"></a>Maximální specifikace testu VOPS
+#### <a name="maximum-iops-test-specifications"></a>Specifikace maxima testů IOPS
 
-Chcete-li prokázat maximální iOP, použijte menší velikost požadavku. Použijte velikost požadavku 8 K a vytvořte specifikace pro náhodné zápisy a čtení.
+K předvedení maximálního IOPs použijte menší velikost žádosti. Použijte 8K velikost žádosti a vytvořte specifikace pro náhodné zápisy a čtení.
 
-| Specifikace přístupu | Velikost požadavku | Náhodné % | Číst % |
+| Specifikace přístupu | Velikost požadavku | Vybraných | Oprávnění |
 | --- | --- | --- | --- |
 | RandomWrites\_8K |8 tis. |100 |0 |
 | RandomReads\_8K |8 tis. |100 |100 |
 
-#### <a name="maximum-throughput-test-specifications"></a>Specifikace testu maximální propustností
+#### <a name="maximum-throughput-test-specifications"></a>Specifikace maximální propustnosti testu
 
-Chcete-li prokázat maximální propustnost, použijte větší velikost požadavku. Použijte velikost požadavku 64 K a vytvořte specifikace pro náhodné zápisy a čtení.
+K předvedení maximální propustnosti použijte větší velikost žádosti. Použijte velikost žádosti 64 K a vytvořte specifikace pro náhodné zápisy a čtení.
 
-| Specifikace přístupu | Velikost požadavku | Náhodné % | Číst % |
+| Specifikace přístupu | Velikost požadavku | Vybraných | Oprávnění |
 | --- | --- | --- | --- |
-| RandomWrites\_64K |64 K |100 |0 |
-| RandomReads\_64K |64 K |100 |100 |
+| RandomWrites\_64 KB |64 K |100 |0 |
+| RandomReads\_64 KB |64 K |100 |100 |
 
-#### <a name="run-the-iometer-test"></a>Spuštění testu iometru
+#### <a name="run-the-iometer-test"></a>Spustit test IOMeter
 
-Provedení následujících kroků pro zahřátí mezipaměti
+Provedením následujících kroků zahříváte mezipaměť.
 
-1. Vytvořte dvě specifikace přístupu s níže uvedenými hodnotami,
+1. Vytvořte dvě specifikace přístupu s hodnotami uvedenými níže,
 
-   | Name (Název) | Velikost požadavku | Náhodné % | Číst % |
+   | Název | Velikost požadavku | Vybraných | Oprávnění |
    | --- | --- | --- | --- |
-   | RandomWrites\_1MB |1 MB |100 |0 |
+   | RandomWrites\_1 MB |1 MB |100 |0 |
    | RandomReads\_1 MB |1 MB |100 |100 |
-1. Spusťte test iometru pro inicializaci disku mezipaměti s následujícími parametry. Pro cílový svazek použijte tři pracovní podprocesy a hloubku fronty 128. Nastavte dobu běhu testu na 2 hodiny na kartě "Testovací nastavení".
+1. Spusťte test IOMeter pro inicializaci disku mezipaměti s následujícími parametry. Pro cílový svazek použijte tři pracovní vlákna a hloubku fronty 128. Nastavte hodnotu doba běhu testu na 2 hodiny na kartě nastavení testu.
 
-   | Scénář | Cílový svazek | Name (Název) | Doba trvání |
+   | Scénář | Cílový svazek | Název | Doba trvání |
    | --- | --- | --- | --- |
-   | Inicializovat disk mezipaměti |Čtení z mezipaměti |RandomWrites\_1MB |2 hod. |
-1. Spusťte test iometru pro zahřívání disku mezipaměti s následujícími parametry. Pro cílový svazek použijte tři pracovní podprocesy a hloubku fronty 128. Nastavte dobu běhu testu na 2 hodiny na kartě "Testovací nastavení".
+   | Inicializovat disk mezipaměti |CacheReads |RandomWrites\_1 MB |2 hodiny |
+1. Spusťte test IOMeter pro vyhřívání disku mezipaměti s následujícími parametry. Pro cílový svazek použijte tři pracovní vlákna a hloubku fronty 128. Nastavte hodnotu doba běhu testu na 2 hodiny na kartě nastavení testu.
 
-   | Scénář | Cílový svazek | Name (Název) | Doba trvání |
+   | Scénář | Cílový svazek | Název | Doba trvání |
    | --- | --- | --- | --- |
-   | Zahřívání disku mezipaměti |Čtení z mezipaměti |RandomReads\_1 MB |2 hod. |
+   | Zahřívání disku mezipaměti |CacheReads |RandomReads\_1 MB |2 hodiny |
 
-Po zahřátí disku mezipaměti pokračujte v níže uvedených testovacích scénářích. Chcete-li spustit test iometru, použijte alespoň tři pracovní podprocesy pro **každý** cílový svazek. Pro každý pracovní podproces vyberte cílový svazek, nastavte hloubku fronty a vyberte jednu z uložených testovacích specifikací, jak je znázorněno v následující tabulce, a spusťte odpovídající testovací scénář. Tabulka také ukazuje očekávané výsledky pro IOPS a propustnost při spuštění těchto testů. Pro všechny scénáře se používá malá velikost vi 8 kB a vysoká hloubka fronty 128.
+Po zahřívání disku mezipaměti pokračujte podle níže uvedených scénářů testování. Chcete-li spustit test IOMeter, použijte pro **každý** cílový svazek alespoň tři pracovní vlákna. Pro každé pracovní vlákno vyberte cílový svazek, nastavte hloubku fronty a vyberte jednu z uložených specifikací testu, jak je znázorněno v následující tabulce, aby se mohl spustit odpovídající testovací scénář. Tabulka také ukazuje očekávané výsledky pro IOPS a propustnost při spuštění těchto testů. Pro všechny scénáře se používá malá vstupně-výstupní operace o velikosti 8 KB a vysoká hloubka fronty 128.
 
-| Testovací scénář | Cílový svazek | Name (Název) | Výsledek |
+| Scénář testu | Cílový svazek | Název | Výsledek |
 | --- | --- | --- | --- |
-| Max. Čtení vops |Čtení z mezipaměti |RandomWrites\_8K |50 000 IOPS |
-| Max. Zápis vops |NoCacheWrites |RandomReads\_8K |64 000 IOPS |
-| Max. Kombinované IOPS |Čtení z mezipaměti |RandomWrites\_8K |100 000 IOPS |
+| Max. Čtení IOPS |CacheReads |RandomWrites\_8K |50 000 IOPS |
+| Max. Zápis IOPS |NoCacheWrites |RandomReads\_8K |64 000 IOPS |
+| Max. Kombinované IOPS |CacheReads |RandomWrites\_8K |100 000 IOPS |
 | NoCacheWrites |RandomReads\_8K | &nbsp; | &nbsp; |
-| Max. Čtení MB/s |Čtení z mezipaměti |RandomWrites\_64K |524 MB/s |
-| Max. Zápis MB/s |NoCacheWrites |RandomReads\_64K |524 MB/s |
-| Kombinovaná MB/s |Čtení z mezipaměti |RandomWrites\_64K |1000 MB/s |
-| NoCacheWrites |RandomReads\_64K | &nbsp; | &nbsp; |
+| Max. Čtení MB/s |CacheReads |RandomWrites\_64 KB |524 MB/s |
+| Max. Zápisy MB/s |NoCacheWrites |RandomReads\_64 KB |524 MB/s |
+| Kombinované MB/s |CacheReads |RandomWrites\_64 KB |1000 MB/s |
+| NoCacheWrites |RandomReads\_64 KB | &nbsp; | &nbsp; |
 
-Níže jsou screenshoty z výsledků testů Iometer pro kombinované IOPS a propustnost scénáře.
+Níže jsou uvedeny snímky obrazovky výsledků IOMeter testů pro kombinované scénáře IOPS a propustnosti.
 
-#### <a name="combined-reads-and-writes-maximum-iops"></a>Kombinované čtení a zápisy maximální vstupně-operace
+#### <a name="combined-reads-and-writes-maximum-iops"></a>Kombinované čtení a zápisy – maximální počet IOPS
 
-![Kombinované čtení a zápisy maximální vstupně-operace](../articles/virtual-machines/linux/media/premium-storage-performance/image9.png)
+![Kombinované čtení a zápisy – maximální počet IOPS](../articles/virtual-machines/linux/media/premium-storage-performance/image9.png)
 
-#### <a name="combined-reads-and-writes-maximum-throughput"></a>Kombinovaná maximální propustnost čtení a zápisů
+#### <a name="combined-reads-and-writes-maximum-throughput"></a>Kombinované čtení a zápis s maximální propustností
 
-![Maximální propustnost kombinovaných čtení a zápisů](../articles/virtual-machines/linux/media/premium-storage-performance/image10.png)
+![Kombinované čtení a zápis s maximální propustností](../articles/virtual-machines/linux/media/premium-storage-performance/image10.png)
 
 ### <a name="fio"></a>FIO
 
-FIO je populární nástroj pro benchmark úložiště na virtuálních počítačích SIP. Má flexibilitu pro výběr různých velikostí vstupně-up, sekvenční nebo náhodné čtení a zápisy. Spouští pracovní vlákna nebo procesy k provedení zadaných vstupně-va/o operací. Můžete určit typ vstupně-va/O operací, které musí každý pracovní podproces provádět pomocí souborů úloh. Vytvořili jsme jeden soubor úloh y pro každý scénář znázorněný v níže uvedených příkladech. Můžete změnit specifikace v těchto souborech úloh a opomíjet různé úlohy spuštěné v úložišti Premium. V příkladech používáme standardní virtuální ms DS 14 se systémem **Ubuntu**. Použijte stejné nastavení popsané na začátku sekce Benchmarking a před spuštěním srovnávacích testů zahřívat mezipaměť.
+FIO je oblíbený nástroj pro srovnávací úložiště virtuálních počítačů se systémem Linux. Nabízí flexibilitu pro výběr různých velikostí v/v, sekvenčních nebo náhodných operací čtení a zápisu. Vytvoří pracovní vlákna nebo procesy pro provedení zadaných vstupně-výstupních operací. Můžete určit typ vstupně-výstupních operací, které musí každá pracovní vlákno provádět pomocí souborů úloh. Vytvořili jsme jeden soubor úlohy pro každý scénář, který je znázorněný v níže uvedených příkladech. Specifikace v těchto souborech úloh můžete změnit na srovnávací testy různých úloh, které běží na Premium Storage. V příkladech používáme standardní virtuální počítač DS 14 se systémem **Ubuntu**. Použijte stejné nastavení, které je popsané na začátku srovnávacího testu, a před spuštěním testů srovnávacích testů zahřívání mezipaměť.
 
-Než začnete, [stáhněte si FIO](https://github.com/axboe/fio) a nainstalujte jej do virtuálního počítače.
+Než začnete, [Stáhněte si FIO](https://github.com/axboe/fio) a nainstalujte ho do svého virtuálního počítače.
 
 Spusťte následující příkaz pro Ubuntu,
 
@@ -112,11 +112,11 @@ Spusťte následující příkaz pro Ubuntu,
 apt-get install fio
 ```
 
-Používáme čtyři pracovní podprocesy pro řízení operace zápisu a čtyři pracovní podprocesy pro řízení operací čtení na discích. Pracovníci zápisu řídí provoz na svazku "nocache", který má 10 disků s mezipamětí nastavenou na "Žádný". Pracovníci čtení řídí provoz na svazku "readcache", který má jeden disk s mezipamětí nastavenou na "ReadOnly".
+Pro řízení operací zápisu a čtyři pracovní vlákna pro řízení operací čtení na discích používáme čtyři pracovní vlákna. Pracovníci pro zápis jsou schopni provozovat na svazku ". Cache", který má 10 disků s mezipamětí nastavenou na hodnotu None. Přípravní pracovníci načítají provoz na svazku "readcache", který má jeden disk s mezipamětí nastavenou na "ReadOnly".
 
-#### <a name="maximum-write-iops"></a>Maximální vipops zápisu
+#### <a name="maximum-write-iops"></a>Maximální počet IOPS zápisu
 
-Vytvořte soubor úlohy s následujícími specifikacemi, abyste získali maximální zápis viops. Pojmenujte jej "fiowrite.ini".
+Vytvořte soubor úlohy s následujícími specifikacemi pro získání maximálního počtu vstupně-výstupních operací zápisu. Pojmenujte ho "fiowrite. ini".
 
 ```ini
 [global]
@@ -140,24 +140,24 @@ rw=randwrite
 directory=/mnt/nocache
 ```
 
-Všimněte si, postupujte podle klíčových věcí, které jsou v souladu s pokyny pro návrh popsané v předchozích částech. Tyto specifikace jsou nezbytné pro řízení maximálních  
+Poznamenejte si následující klíčové věci, které jsou v souladu s pokyny návrhu popsanými v předchozích částech. Tyto specifikace jsou nezbytné pro zajištění maximálního počtu IOPS,  
 
 * Vysoká hloubka fronty 256.  
-* Malý blok o velikosti 8 KB.  
+* Velikost malého bloku na 8 KB.  
 * Více vláken provádějících náhodné zápisy.
 
-Spusťte následující příkaz, abyste zahájili test FIO po dobu 30 sekund,  
+Spusťte následující příkaz, který zahájí test FIO po dobu 30 sekund.  
 
 ```
 sudo fio --runtime 30 fiowrite.ini
 ```
 
-Při spuštění testu můžete zobrazit počet zápisu VOPS, které disky virtuálního počítače a premium doručují. Jak je znázorněno v následující ukázce, virtuální ms DS14 poskytuje maximální limit zápisu viops 50 000 VOPS.  
-    ![Počet disků VM zápisu AOPS a Premium doručují](../articles/virtual-machines/linux/media/premium-storage-performance/image11.png)
+V průběhu testu můžete zobrazit počet vstupně-výstupních operací pro zápis, které virtuální počítač a prémiové disky přináší. Jak je znázorněno v následující ukázce, virtuální počítač DS14 poskytuje maximální limit zápisu IOPS 50 000 IOPS.  
+    ![Dodává se počet virtuálních počítačů pro zápis IOPS a prémiových disků.](../articles/virtual-machines/linux/media/premium-storage-performance/image11.png)
 
-#### <a name="maximum-read-iops"></a>Maximální čtení VOPS
+#### <a name="maximum-read-iops"></a>Maximální počet IOPS pro čtení
 
-Vytvořte soubor úlohy s následujícími specifikacemi, abyste získali maximální počet čtení vzpona. Pojmenujte to "fioread.ini".
+Vytvořte soubor úlohy s následujícími specifikacemi pro získání maximálního počtu vstupně-výstupních operací čtení. Pojmenujte ho "fioread. ini".
 
 ```ini
 [global]
@@ -181,24 +181,24 @@ rw=randread
 directory=/mnt/readcache
 ```
 
-Všimněte si, postupujte podle klíčových věcí, které jsou v souladu s pokyny pro návrh popsané v předchozích částech. Tyto specifikace jsou nezbytné pro řízení maximálních
+Poznamenejte si následující klíčové věci, které jsou v souladu s pokyny návrhu popsanými v předchozích částech. Tyto specifikace jsou nezbytné pro zajištění maximálního počtu IOPS,
 
 * Vysoká hloubka fronty 256.  
-* Malý blok o velikosti 8 KB.  
+* Velikost malého bloku na 8 KB.  
 * Více vláken provádějících náhodné zápisy.
 
-Spusťte následující příkaz, abyste zahájili test FIO po dobu 30 sekund,
+Spusťte následující příkaz, který zahájí test FIO po dobu 30 sekund.
 
 ```
 sudo fio --runtime 30 fioread.ini
 ```
 
-Při spuštění testu můžete zobrazit počet čtení VOPS virtuálního počítače a premium disky jsou doručována. Jak je znázorněno na ukázce níže, virtuální ms DS14 dodává více než 64 000 viponových operací pro čtení. Jedná se o kombinaci disku a výkonu mezipaměti.  
+I když se test spustí, můžete zobrazit počet vstupně-výstupních operací, které virtuální počítače a disky Premium doručí. Jak je znázorněno v následující ukázce, DS14 virtuální počítač nabízí více než 64 000 čtení IOPS. Toto je kombinace disku a výkonu mezipaměti.  
     ![](../articles/virtual-machines/linux/media/premium-storage-performance/image12.png)
 
-#### <a name="maximum-read-and-write-iops"></a>Maximální čtení a zápis viop
+#### <a name="maximum-read-and-write-iops"></a>Maximální počet vstupně-výstupních operací čtení a zápisu
 
-Vytvořte soubor úlohy s následujícími specifikacemi, abyste získali maximální kombinované čtení a zápis viopů. Pojmenujte jej "fioreadwrite.ini".
+Vytvořte soubor úlohy s následujícími specifikacemi pro získání maximálního počtu vstupně-výstupních operací čtení a zápisu. Pojmenujte ho "fioreadwrite. ini".
 
 ```ini
 [global]
@@ -239,21 +239,21 @@ directory=/mnt/nocache
 rate_iops=12500
 ```
 
-Všimněte si, postupujte podle klíčových věcí, které jsou v souladu s pokyny pro návrh popsané v předchozích částech. Tyto specifikace jsou nezbytné pro řízení maximálních
+Poznamenejte si následující klíčové věci, které jsou v souladu s pokyny návrhu popsanými v předchozích částech. Tyto specifikace jsou nezbytné pro zajištění maximálního počtu IOPS,
 
 * Vysoká hloubka fronty 128.  
-* Malý blok o velikosti 4 KB.  
+* Velikost malého bloku na 4 KB.  
 * Více vláken provádějících náhodné čtení a zápisy.
 
-Spusťte následující příkaz, abyste zahájili test FIO po dobu 30 sekund,
+Spusťte následující příkaz, který zahájí test FIO po dobu 30 sekund.
 
 ```
 sudo fio --runtime 30 fioreadwrite.ini
 ```
 
-Při spuštění testu můžete zobrazit počet kombinovaných čtení a zápisu viop, které virtuální počítače a premium disky doručují. Jak je znázorněno na ukázce níže, virtuální ms DS14 dodává více než 100 000 kombinovaných čtení a zápisu viops. Jedná se o kombinaci disku a výkonu mezipaměti.  
-    ![Kombinované čtení a zápis VOPS](../articles/virtual-machines/linux/media/premium-storage-performance/image13.png)
+I když se test spustí, můžete zobrazit počet operací čtení a zápisu IOPS, které virtuální počítač a prémiové disky poskytují. Jak je znázorněno v následující ukázce, DS14 virtuální počítač nabízí více než 100 000 kombinovaných vstupně-výstupních operací čtení a zápisu. Toto je kombinace disku a výkonu mezipaměti.  
+    ![Kombinované vstupně-výstupní operace čtení a zápisu](../articles/virtual-machines/linux/media/premium-storage-performance/image13.png)
 
-#### <a name="maximum-combined-throughput"></a>Maximální kombinovaná propustnost
+#### <a name="maximum-combined-throughput"></a>Maximální celková propustnost
 
-Chcete-li získat maximální kombinovanou propustnost pro čtení a zápisu, použijte větší velikost bloku a velkou hloubku fronty s více vlákny provádějícími čtení a zápisy. Můžete použít velikost bloku 64 KB a hloubku fronty 128.
+Pro získání maximální propustnosti čtení a zápisu použijte větší velikost bloku a velkou hloubku fronty s více vlákny, které provádí čtení a zápis. Můžete použít velikost bloku 64 KB a hloubku fronty 128.

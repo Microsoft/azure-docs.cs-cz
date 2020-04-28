@@ -1,7 +1,7 @@
 ---
-title: Zastaralé kognitivní dovednosti
+title: Zastaralé dovednosti při rozpoznávání
 titleSuffix: Azure Cognitive Search
-description: Tato stránka obsahuje seznam kognitivních dovedností, které jsou považovány za zastaralé a nebudou podporovány v blízké budoucnosti v dovednostech Azure Cognitive Search.
+description: Tato stránka obsahuje seznam dovedností rozpoznávání, které se považují za zastaralé a v blízké budoucnosti se v Azure Kognitivní hledání dovednosti nepodporují.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,51 +9,51 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 5f3587e4398be28cbaa2372be720258196bb48ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72792021"
 ---
-# <a name="deprecated-cognitive-skills-in-azure-cognitive-search"></a>Zastaralé kognitivní dovednosti v Azure Cognitive Search
+# <a name="deprecated-cognitive-skills-in-azure-cognitive-search"></a>Zastaralé dovednosti při rozpoznávání v Azure Kognitivní hledání
 
-Tento dokument popisuje kognitivní dovednosti, které jsou považovány za zastaralé. Pro obsah použijte následující příručku:
+Tento dokument popisuje vnímání dovedností, které se považují za zastaralé. Pro obsah použijte následující příručku:
 
-* Název dovednosti: Název dovednosti, která bude zastaralá, se @odata.type mapuje na atribut.
-* Poslední dostupná verze rozhraní API: Poslední verze veřejného rozhraní API Azure Cognitive Search, jehož prostřednictvím lze vytvořit nebo aktualizovat dovednosti obsahující odpovídající zastaralé dovednosti.
-* Konec podpory: Poslední den, po kterém je odpovídající dovednost považována za nepodporovanou. Dříve vytvořené dovednosti by měly i nadále fungovat, ale uživatelům se doporučuje migrovat z zastaralé dovednosti.
-* Doporučení: Cesta k migraci vpřed použít podporovanou dovednost. Uživatelům se doporučuje dodržovat doporučení, aby i nadále dostávat podporu.
+* Dovednost název: název dovednosti, která bude zastaralá, bude mapována na @odata.type atribut.
+* Poslední dostupná verze rozhraní API: poslední verze veřejného rozhraní API Azure Kognitivní hledání, přes který se dá vytvořit nebo aktualizovat dovednosti obsahující odpovídající vystaralou dovednost.
+* Konec podpory: poslední den, po kterém se odpovídající dovednost považuje za nepodporovanou. Dříve vytvořená dovednosti by měla dál fungovat, ale uživatelé se doporučují migrovat z nepoužívané dovednosti.
+* Doporučení: předejte cestu k migraci, aby používala podporovanou dovednost. Uživatelům se doporučuje postupovat podle doporučení, aby mohli nadále přijímat podporu.
 
-## <a name="microsoftskillstextnamedentityrecognitionskill"></a>Microsoft.Skills.Text.NamedEntityRecognitionSkill
+## <a name="microsoftskillstextnamedentityrecognitionskill"></a>Microsoft. dovednosti. text. NamedEntityRecognitionSkill
 
 ### <a name="last-available-api-version"></a>Poslední dostupná verze rozhraní API
 
 2017-11-11-Preview
 
-### <a name="end-of-support"></a>Ukončení podpory
+### <a name="end-of-support"></a>Konec podpory
 
 15. února 2019
 
 ### <a name="recommendations"></a>Doporučení 
 
-Místo toho použijte [Microsoft.Skills.Text.EntityRecognitionSkill.](cognitive-search-skill-entity-recognition.md) Poskytuje většinu funkcí NamedEntityRecognitionSkill ve vyšší kvalitě. Má také bohatší informace ve svých složitých výstupních polích.
+Místo toho použijte [Microsoft. dovednosti. text. EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md) . Poskytuje většinu funkcí NamedEntityRecognitionSkill s vyšší kvalitou. Obsahuje také bohatší informace ve svých komplexních výstupních polích.
 
-Chcete-li migrovat na [dovednost rozpoznávání entit](cognitive-search-skill-entity-recognition.md), budete muset provést jednu nebo více z následujících změn definice dovedností. Definici dovedností můžete aktualizovat pomocí rozhraní [Update Skillset API](https://docs.microsoft.com/rest/api/searchservice/update-skillset).
+Chcete-li provést migraci na [dovednost rozpoznávání entit](cognitive-search-skill-entity-recognition.md), budete muset provést jednu nebo více následujících změn definice dovednosti. Definici dovedností můžete aktualizovat pomocí [rozhraní Update dovednosti API](https://docs.microsoft.com/rest/api/searchservice/update-skillset).
 
 > [!NOTE]
-> V současné době není podporováno skóre spolehlivosti jako koncept. Parametr `minimumPrecision` existuje pro `EntityRecognitionSkill` budoucí použití a pro zpětnou kompatibilitu.
+> V současné době není hodnocení spolehlivosti v rámci konceptu podporováno. `minimumPrecision` Parametr existuje v `EntityRecognitionSkill` pro budoucí použití a pro zpětnou kompatibilitu.
 
-1. *(Povinné)* Změňte `@odata.type` `"#Microsoft.Skills.Text.NamedEntityRecognitionSkill"` z `"#Microsoft.Skills.Text.EntityRecognitionSkill"`na .
+1. *(Povinné)* Změňte `@odata.type` z `"#Microsoft.Skills.Text.NamedEntityRecognitionSkill"` na `"#Microsoft.Skills.Text.EntityRecognitionSkill"`.
 
-2. *(Nepovinné)* Pokud používáte `entities` výstup, použijte výstup `namedEntities` komplexní kolekce `EntityRecognitionSkill` z místo. Definici `targetName` dovednosti můžete použít k mapování na poznámku `entities`nazvanou .
+2. *(Volitelné)* Pokud používáte `entities` výstup, použijte `namedEntities` `EntityRecognitionSkill` místo toho komplexní výstup z kolekce. Můžete použít `targetName` v definici dovedností k namapování na poznámku nazvanou `entities`.
 
-3. *(Nepovinné)* Pokud nezadáte explicitně `categories`, `EntityRecognitionSkill` může vrátit jiný typ kategorií kromě `NamedEntityRecognitionSkill`těch, které byly podporovány . Pokud je toto chování nežádoucí, nezapomeňte `categories` explicitně nastavit parametr na `["Person", "Location", "Organization"]`.
+3. *(Volitelné)* Pokud explicitně neurčíte `categories`, `EntityRecognitionSkill` může vracet jiný typ kategorií kromě těch, které byly podporovány v. `NamedEntityRecognitionSkill` Pokud je toto chování nežádoucí, nezapomeňte explicitně nastavit `categories` parametr na. `["Person", "Location", "Organization"]`
 
     _Ukázkové definice migrace_
 
     * Jednoduchá migrace
 
-        _(Dříve) Definice dovednosti NamedEntityRecognition_
+        _Uložení Definice dovednosti NamedEntityRecognition_
         ```json
         {
             "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
@@ -73,7 +73,7 @@ Chcete-li migrovat na [dovednost rozpoznávání entit](cognitive-search-skill-e
             ]
         }
         ```
-        _(Po) Definice dovednosti EntityRecognition_
+        _Konci Definice dovednosti EntityRecognition_
         ```json
         {
             "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
@@ -94,9 +94,9 @@ Chcete-li migrovat na [dovednost rozpoznávání entit](cognitive-search-skill-e
         }
         ```
     
-    * Mírně komplikovaná migrace
+    * Mírně složitá migrace
 
-        _(Dříve) Definice dovednosti NamedEntityRecognition_
+        _Uložení Definice dovednosti NamedEntityRecognition_
         ```json
         {
             "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
@@ -119,7 +119,7 @@ Chcete-li migrovat na [dovednost rozpoznávání entit](cognitive-search-skill-e
             ]
         }
         ```
-        _(Po) Definice dovednosti EntityRecognition_
+        _Konci Definice dovednosti EntityRecognition_
         ```json
         {
             "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
@@ -148,5 +148,5 @@ Chcete-li migrovat na [dovednost rozpoznávání entit](cognitive-search-skill-e
 ## <a name="see-also"></a>Viz také
 
 + [Integrované dovednosti](cognitive-search-predefined-skills.md)
-+ [Jak definovat sadu dovedností](cognitive-search-defining-skillset.md)
-+ [Dovednost rozpoznávání entit](cognitive-search-skill-entity-recognition.md)
++ [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
++ [Dovednost pro rozpoznávání entit](cognitive-search-skill-entity-recognition.md)

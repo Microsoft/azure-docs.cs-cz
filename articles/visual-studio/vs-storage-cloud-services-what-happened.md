@@ -1,6 +1,6 @@
 ---
 title: Co se stalo s mým projektem cloudové služby?
-description: Popisuje, co se stane v projektu cloudových služeb po připojení k účtu úložiště Azure pomocí připojených služeb Visual Studia
+description: Popisuje, co se stane v projektu Cloud Services po připojení k účtu služby Azure Storage pomocí připojených služeb sady Visual Studio.
 services: storage
 author: ghogen
 manager: jillfra
@@ -14,30 +14,30 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: ac5a635b687e51ddd34899717497548296c2fc23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72298759"
 ---
 # <a name="what-happened-to-my-cloud-services-project-visual-studio-azure-storage-connected-service"></a>Co se stalo s projektem cloudových služeb (připojená služba Visual Studio Azure Storage)?
 ## <a name="references-added"></a>Přidané odkazy
-Balíček Azure Storage NuGet byl přidán do projektu Sady Visual Studio.  
+Do projektu Visual studia se přidal balíček NuGet Azure Storage.  
 Tento balíček přidává následující odkazy .NET:
 
-* **Microsoft.Data.Edm**
-* **Microsoft.Data.OData**
-* **Microsoft.data.Services.client**
-* **Microsoft.WindowsAzure.Configuration**
+* **Microsoft. data. Edm**
+* **Microsoft. data. OData**
+* **Microsoft. data. Services. Client**
+* **Microsoft. WindowsAzure. Configuration**
 * **Microsoft.WindowsAzure.Storage**
 * **Newtonsoft.Json**
 * **System.Data**
-* **System.Spatial**
+* **System. prostor**
 
 ## <a name="connection-string-for-azure-storage-added"></a>Připojovací řetězec pro Azure Storage přidán
-Prvky byly vytvořeny pomocí připojovacího řetězce a klíče vybraného účtu úložiště. Byly provedeny změny v následujících souborech:
+Prvky se vytvořily s připojovacím řetězcem a klíčem vybraného účtu úložiště. V následujících souborech byly provedeny změny:
 
-* **ServiceDefinition.csdef**
-* **ServiceConfiguration.Cloud.cscfg**
-* **ServiceConfiguration.Local.cscfg**
+* **ServiceDefinition. csdef**
+* **ServiceConfiguration. Cloud. cscfg**
+* **ServiceConfiguration. Local. cscfg**
 

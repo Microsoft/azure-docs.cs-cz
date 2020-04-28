@@ -1,6 +1,6 @@
 ---
-title: Začínáme s úložištěm front pomocí sady Visual Studio (projekty WebJob)
-description: Jak začít používat úložiště Fronty Azure v projektu WebJob po připojení k účtu úložiště pomocí připojených služeb Visual Studia.
+title: Začínáme s úložištěm Queue pomocí sady Visual Studio (projekty WebJob)
+description: Jak začít používat úložiště Azure Queue v projektu webové úlohy po připojení k účtu úložiště pomocí připojených služeb sady Visual Studio.
 services: storage
 author: ghogen
 manager: jillfra
@@ -14,27 +14,27 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: ffba203bafaf3837cd2d7fc1a6fd962a6926b186
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72298746"
 ---
-# <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Začínáme s úložištěm fronty Azure a připojenými službami Visual Studia (Projekty webových úloh)
+# <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Začínáme s Azure Queue Storage a připojenými službami sady Visual Studio (projekty WebJob)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Přehled
-Tento článek popisuje, jak začít používat úložiště fronty Azure v projektu Visual Studio Azure WebJob po vytvoření nebo odkazování na účet úložiště Azure pomocí dialogového okna **Přidat připojené služby** Visual Studia. Když přidáte účet úložiště do projektu WebJob pomocí dialogového okna **Přidat připojené služby** sady Visual Studio, najdou se příslušné balíčky Azure Storage NuGet, do projektu se přidají příslušné odkazy .NET a v souboru App.config se aktualizují připojovací řetězce pro účet úložiště.  
+Tento článek popisuje, jak začít používat Azure Queue Storage v projektu webové úlohy Azure Visual Studio po vytvoření nebo odkazu na účet služby Azure Storage pomocí dialogového okna **Přidat připojené služby** v aplikaci Visual Studio. Když přidáte účet úložiště do projektu webové úlohy pomocí dialogového okna **Přidat připojené služby** sady Visual Studio, nainstalují se příslušné balíčky NuGet Azure Storage, do projektu se přidají příslušné odkazy .NET a v souboru App. config se aktualizují připojovací řetězce pro účet úložiště.  
 
-Tento článek obsahuje ukázky kódu jazyka C#, které ukazují, jak používat Azure WebJobs SDK verze 1.x se službou úložiště Fronty Azure.
+Tento článek obsahuje ukázky kódu jazyka C#, které ukazují, jak používat sadu Azure WebJobs SDK verze 1. x ve službě Azure Queue Storage.
 
-Azure Queue Storage je služba pro ukládání velkého počtu zpráv, ke které můžete získat přístup z jakéhokoli místa na světě prostřednictvím ověřených volání s využitím protokolu HTTP nebo HTTPS. Zpráva s jednou frontou může mít velikost až 64 kB a jedna fronta můžete obsahovat miliony zpráv, až do dosažení celkové kapacity účtu úložiště. Další informace [najdete v tématu Začínáme s azure queue storage pomocí rozhraní .NET.](../storage/queues/storage-dotnet-how-to-use-queues.md) Další informace o ASP.NET naleznete v [tématu ASP.NET](https://www.asp.net).
+Azure Queue Storage je služba pro ukládání velkého počtu zpráv, ke které můžete získat přístup z jakéhokoli místa na světě prostřednictvím ověřených volání s využitím protokolu HTTP nebo HTTPS. Zpráva s jednou frontou může mít velikost až 64 kB a jedna fronta můžete obsahovat miliony zpráv, až do dosažení celkové kapacity účtu úložiště. Další informace najdete v tématu Začínáme [s Azure Queue Storage pomocí rozhraní .NET](../storage/queues/storage-dotnet-how-to-use-queues.md) . Další informace o ASP.NET najdete v tématu [ASP.NET](https://www.asp.net).
 
-## <a name="how-to-trigger-a-function-when-a-queue-message-is-received"></a>Jak spustit funkci při přijetí zprávy fronty
-Chcete-li napsat funkci, kterou sada WebJobs SDK volá při přijetí zprávy fronty, použijte atribut **QueueTrigger.** Konstruktor atributu přebírá parametr řetězce, který určuje název fronty k dotazování. Chcete-li zjistit, jak dynamicky nastavit název fronty, podívejte [se na informace o nastavení možností konfigurace](#how-to-set-configuration-options).
+## <a name="how-to-trigger-a-function-when-a-queue-message-is-received"></a>Jak aktivovat funkci při přijetí zprávy fronty
+Chcete-li napsat funkci, kterou Sada WebJobs SDK volá při přijetí zprávy fronty, použijte atribut **QueueTrigger** . Konstruktor atributu přebírá parametr řetězce, který určuje název fronty, která se má dotazovat. Pokud chcete zjistit, jak dynamicky nastavit název fronty, podívejte [se na postup nastavení možností konfigurace](#how-to-set-configuration-options).
 
-### <a name="string-queue-messages"></a>Zprávy fronty řetězců
-V následujícím příkladu fronta obsahuje zprávu řetězce, takže **QueueTrigger** se použije na parametr řetězce s názvem **logMessage,** který obsahuje obsah zprávy fronty. Funkce [zapíše zprávu protokolu na řídicí panel](#how-to-write-logs).
+### <a name="string-queue-messages"></a>Zprávy ve frontě řetězců
+V následujícím příkladu fronta obsahuje zprávu o řetězci, takže **QueueTrigger** se použije na řetězcový parametr s názvem **LogMessage –** , který obsahuje obsah zprávy fronty. Funkce [zapíše zprávu protokolu na řídicí panel](#how-to-write-logs).
 
 ```csharp
 public static void ProcessQueueMessage([QueueTrigger("logqueue")] string logMessage, TextWriter logger)
@@ -43,10 +43,10 @@ public static void ProcessQueueMessage([QueueTrigger("logqueue")] string logMess
 }
 ```
 
-Kromě **řetězce**může být parametr emitovat pole bajtů, objekt **CloudQueueMessage** nebo POCO, který definujete.
+Kromě **řetězce**parametr může být bajtové pole, objekt **CloudQueueMessage** nebo POCO, který definujete.
 
-### <a name="poco-plain-old-clr-object-queue-messages"></a>Zprávy fronty POCO [(Prostý starý objekt CLR)](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)
-V následujícím příkladu zpráva fronty obsahuje JSON pro **objekt BlobInformation,** který obsahuje vlastnost **BlobName.** Sada SDK objekt automaticky rekonstruuje.
+### <a name="poco-plain-old-clr-object-queue-messages"></a>Zprávy fronty POCO [(obyčejný starý objekt CLR](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object))
+V následujícím příkladu zpráva ve frontě obsahuje JSON pro objekt **BlobInformation** , který obsahuje vlastnost **BLOB** . Sada SDK automaticky deserializace objekt.
 
 ```csharp
 public static void WriteLogPOCO([QueueTrigger("logqueue")] BlobInformation blobInfo, TextWriter logger)
@@ -55,7 +55,7 @@ public static void WriteLogPOCO([QueueTrigger("logqueue")] BlobInformation blobI
 }
 ```
 
-Sada SDK používá [newtonsoft.Json NuGet balíček](https://www.nuget.org/packages/Newtonsoft.Json) serializovat a rekonstruovat zprávy. Pokud vytvoříte zprávy fronty v programu, který nepoužívá webjobs SDK, můžete napsat kód jako v následujícím příkladu k vytvoření zprávy fronty POCO, kterou může sada SDK analyzovat.
+Sada SDK používá [balíček NuGet Newtonsoft. JSON](https://www.nuget.org/packages/Newtonsoft.Json) k serializaci a deserializaci zpráv. Pokud vytvoříte zprávy ve frontě v programu, který nepoužívá sadu WebJobs SDK, můžete napsat kód jako v následujícím příkladu, a vytvořit tak zprávu fronty POCO, kterou může sada SDK analyzovat.
 
 ```csharp
 BlobInformation blobInfo = new BlobInformation() { BlobName = "log.txt" };
@@ -73,7 +73,7 @@ public async static Task ProcessQueueMessageAsync([QueueTrigger("logqueue")] str
 }
 ```
 
-Asynchronní funkce může mít [token zrušení](https://www.asp.net/mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4#CancelToken), jak je znázorněno v následujícím příkladu, který zkopíruje objekt blob. (Vysvětlení zástupného symbolu **fronttrigger** upozorňují na část [Objekty blob.)](#how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message)
+Asynchronní funkce mohou mít [token zrušení](https://www.asp.net/mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4#CancelToken), jak je znázorněno v následujícím příkladu, který kopíruje objekt BLOB. (Vysvětlení zástupného textu **queueTrigger** naleznete v části [objekty blob](#how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message) .)
 
 ```csharp
 public async static Task ProcessQueueMessageAsyncCancellationToken(
@@ -86,39 +86,39 @@ public async static Task ProcessQueueMessageAsyncCancellationToken(
 }
 ```
 
-## <a name="types-the-queuetrigger-attribute-works-with"></a>Zadá atribut QueueTrigger, se kterým pracuje.
-**FrontTrigger** můžete použít s následujícími typy:
+## <a name="types-the-queuetrigger-attribute-works-with"></a>Typy atributů QueueTrigger fungují s
+**QueueTrigger** můžete použít s následujícími typy:
 
-* **Řetězec**
+* **řetězec**
 * Typ POCO serializovaný jako JSON
-* **bajt[]**
+* **Byte []**
 * **CloudQueueMessage**
 
-## <a name="polling-algorithm"></a>Algoritmus dotazování
-Sada SDK implementuje algoritmus náhodného exponenciálního back-off, aby se snížil vliv dotazování fronty nečinnosti na náklady na transakce úložiště.  Při nalezení zprávy sada SDK čeká dvě sekundy a potom zkontroluje další zprávu; Pokud není nalezena žádná zpráva, čeká asi čtyři sekundy, než se pokusí znovu. Po následných neúspěšných pokusech o získání zprávy fronty se čekací doba nadále zvyšuje, dokud nedosáhne maximální čekací doby, která je výchozí na jednu minutu. [Maximální čekací doba je konfigurovatelná](#how-to-set-configuration-options).
+## <a name="polling-algorithm"></a>Algoritmus cyklického dotazování
+Sada SDK implementuje náhodný exponenciální algoritmus pro snížení účinku nečinnosti při cyklickém dotazování na poplatky za transakce úložiště.  Když se najde zpráva, sada SDK počká dvě sekundy a pak vyhledá jinou zprávu. Pokud se nenalezne žádná zpráva, počká přibližně čtyři sekundy, než to zkusí znovu. Po následném neúspěšném pokusu o získání zprávy fronty se doba čekání zvětšuje, dokud nedosáhne maximální čekací doby, která je ve výchozím nastavení jedna minuta. [Maximální doba čekání je konfigurovatelná](#how-to-set-configuration-options).
 
 ## <a name="multiple-instances"></a>Několik instancí
-Pokud vaše webová aplikace běží na více instancích, kontinuální WebJobs běží na každém počítači a každý počítač bude čekat na aktivační události a pokus o spuštění funkcí. V některých případech to může vést k některé funkce zpracování stejných dat dvakrát, takže funkce by měly být idempotentní (napsaný tak, aby jejich opakované volání se stejnými vstupními daty nevytváří duplicitní výsledky).  
+Pokud webová aplikace běží na více instancích, spouští se v každém počítači průběžné webové úlohy a každý počítač bude čekat na triggery a pokusí se spustit funkce. V některých scénářích to může vést k tomu, že některé funkce zpracovávají stejná data dvakrát, takže funkce by měly být idempotentní (zapsány tak, aby opakovaně volaly se stejnými vstupními daty, nevytvářejí duplicitní výsledky).  
 
 ## <a name="parallel-execution"></a>Paralelní provádění
-Pokud máte více funkcí naslouchání v různých frontách, sada SDK je bude volat paralelně při současném přijetí zpráv.
+Pokud máte více funkcí naslouchajících v různých frontách, sada SDK je při současném přijetí zpráv paralelně zavolá paralelně.
 
-Totéž platí, pokud je přijato více zpráv pro jednu frontu. Ve výchozím nastavení sada SDK získá dávku zpráv fronty 16 najednou a spustí funkci, která je zpracovává paralelně. [Velikost dávky je konfigurovatelná](#how-to-set-configuration-options). Když číslo, které jsou zpracovávány, se zmenší na polovinu velikosti dávky, sada SDK získá další dávku a začne tyto zprávy zpracovávat. Proto je maximální počet souběžných zpráv zpracovávaných na funkci jeden a půl násobek velikosti dávky. Toto omezení platí samostatně pro každou funkci, která má atribut **QueueTrigger.** Pokud nechcete paralelní spuštění pro zprávy přijaté v jedné frontě, nastavte velikost dávky na 1.
+Totéž platí při přijetí více zpráv pro jednu frontu. Sada SDK ve výchozím nastavení získá dávku 16 zpráv fronty v čase a spustí funkci, která je zpracovává paralelně. [Velikost dávky je konfigurovatelná](#how-to-set-configuration-options). Když se zpracovávané číslo dostane do poloviny velikosti dávky, sada SDK získá další dávku a začne tyto zprávy zpracovávat. Proto je maximální počet souběžných zpráv zpracovávaných na funkci jedna a poloviční velikost dávky. Toto omezení se vztahuje odděleně na každou funkci s atributem **QueueTrigger** . Pokud nechcete paralelní spouštění pro zprávy přijaté v jedné frontě, nastavte velikost dávky na 1.
 
 ## <a name="get-queue-or-queue-message-metadata"></a>Získat metadata zprávy fronty nebo fronty
-Přidáním parametrů do podpisu metody můžete získat následující vlastnosti zprávy:
+Následující vlastnosti zprávy můžete získat přidáním parametrů do signatury metody:
 
-* **DateTimeOffset** expiraceČas
-* **DatumTimeOffset** insertionTime
-* **DateTimeOffset** nextVisibleTime
-* **řetězec** queueTrigger (obsahuje text zprávy)
-* id **řetězce**
-* **řetězec** popReceipt
-* **int** dequeueCount
+* ExpirationTime **DateTimeOffset**
+* InsertionTime **DateTimeOffset**
+* NextVisibleTime **DateTimeOffset**
+* **String** queueTrigger (obsahuje text zprávy)
+* ID **řetězce**
+* popReceipt **řetězce**
+* dequeueCount **int**
 
-Pokud chcete pracovat přímo s rozhraním API úložiště Azure, můžete také přidat parametr **CloudStorageAccount.**
+Pokud chcete pracovat přímo s rozhraním API služby Azure Storage, můžete také přidat parametr **CloudStorageAccount** .
 
-Následující příklad zapíše všechna tato metadata do protokolu aplikace INFO. V příkladu logMessage a queueTrigger obsahují obsah zprávy fronty.
+V následujícím příkladu jsou všechna tato metadata zapsána do protokolu informační aplikace. V příkladu obě LogMessage – a queueTrigger obsahují obsah zprávy fronty.
 
 ```csharp
 public static void WriteLog([QueueTrigger("logqueue")] string logMessage,
@@ -147,7 +147,7 @@ public static void WriteLog([QueueTrigger("logqueue")] string logMessage,
 }
 ```
 
-Zde je ukázkový protokol napsaný ukázkovým kódem:
+Tady je ukázkový protokol zapsaný vzorovým kódem:
 
         logMessage=Hello world!
         expirationTime=10/14/2014 10:31:04 PM +00:00
@@ -159,10 +159,10 @@ Zde je ukázkový protokol napsaný ukázkovým kódem:
         queue endpoint=https://contosoads.queue.core.windows.net/
         queueTrigger=Hello world!
 
-## <a name="graceful-shutdown"></a>Bezproblémové vypnutí
-Funkce, která běží v průběžné webjob může přijmout **CancellationToken** parametr, který umožňuje operačnímu systému upozornit na funkci, když WebJob se chystá být ukončena. Toto oznámení můžete použít k ujistěte se, že funkce neukončí neočekávaně způsobem, který ponechává data v nekonzistentním stavu.
+## <a name="graceful-shutdown"></a>Řádné vypnutí
+Funkce, která běží v průběžné úloze WebJob, může přijmout parametr **CancellationToken** , který umožňuje operačnímu systému upozornit funkci, když bude webová úloha ukončena. Toto oznámení můžete použít k tomu, abyste se ujistili, že funkce nekončí nečekaně způsobem, který opustí data v nekonzistentním stavu.
 
-Následující příklad ukazuje, jak zkontrolovat blížící se ukončení webjob ve funkci.
+Následující příklad ukazuje, jak kontrolovat chystané ukončení úlohy WebJob ve funkci.
 
 ```csharp
 public static void GracefulShutdownDemo(
@@ -183,15 +183,15 @@ public static void GracefulShutdownDemo(
 }
 ```
 
-**Poznámka:** Řídicí panel nemusí správně zobrazit stav a výstup funkcí, které byly vypnuty.
+**Poznámka:** Řídicí panel nemusí správně zobrazovat stav a výstup funkcí, které byly vypnuty.
 
-Další informace naleznete v [tématu WebJobs Graceful Shutdown](http://blog.amitapple.com/post/2014/05/webjobs-graceful-shutdown/#.VCt1GXl0wpR).   
+Další informace najdete v tématu [řádné vypnutí služby WebJobs](http://blog.amitapple.com/post/2014/05/webjobs-graceful-shutdown/#.VCt1GXl0wpR).   
 
-## <a name="how-to-create-a-queue-message-while-processing-a-queue-message"></a>Jak vytvořit zprávu fronty při zpracování zprávy fronty
-Chcete-li napsat funkci, která vytvoří novou zprávu fronty, použijte atribut **Queue.** Podobně jako **QueueTrigger**předáte název fronty jako řetězec nebo můžete [nastavit název fronty dynamicky](#how-to-set-configuration-options).
+## <a name="how-to-create-a-queue-message-while-processing-a-queue-message"></a>Vytvoření zprávy ve frontě při zpracování zprávy ve frontě
+Chcete-li napsat funkci, která vytvoří novou zprávu fronty, použijte atribut **Queue** . Podobně jako **QueueTrigger**, předáváte název fronty jako řetězec, nebo můžete [název fronty nastavit dynamicky](#how-to-set-configuration-options).
 
-### <a name="string-queue-messages"></a>Zprávy fronty řetězců
-Následující ukázka neasynchronního kódu vytvoří novou zprávu fronty ve frontě s názvem "outputqueue" se stejným obsahem jako zpráva fronty přijatá ve frontě s názvem "inputqueue". (Pro asynchronní funkce použijte **IAsyncCollector\<T>** jak je znázorněno dále v této části.)
+### <a name="string-queue-messages"></a>Zprávy ve frontě řetězců
+Následující neasynchronní ukázka kódu vytvoří novou zprávu fronty ve frontě s názvem "funkce outputqueue" se stejným obsahem, jako je zpráva fronty přijatá ve frontě s názvem "InputQueue". (Pro asynchronní funkce použijte **IAsyncCollector\<T>** , jak je uvedeno dále v této části.)
 
 ```csharp
 public static void CreateQueueMessage(
@@ -202,8 +202,8 @@ public static void CreateQueueMessage(
 }
 ```
 
-### <a name="poco-plain-old-clr-object-queue-messages"></a>Zprávy fronty POCO [(Prostý starý objekt CLR)](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)
-Chcete-li vytvořit zprávu fronty, která obsahuje poco spíše než řetězec, předajte typ POCO jako výstupní parametr konstruktoru **atributu Queue.**
+### <a name="poco-plain-old-clr-object-queue-messages"></a>Zprávy fronty POCO [(obyčejný starý objekt CLR](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object))
+Chcete-li vytvořit zprávu fronty obsahující POCO místo řetězce, předejte typ POCO jako výstupní parametr do konstruktoru atributu **Queue** .
 
 ```csharp
 public static void CreateQueueMessage(
@@ -214,10 +214,10 @@ public static void CreateQueueMessage(
 }
 ```
 
-Sada SDK automaticky serializuje objekt do aplikace JSON. Zpráva fronty je vždy vytvořena, i v případě, že objekt je null.
+Sada SDK automaticky serializace objektu do formátu JSON. Zpráva fronty je vždy vytvořena, a to i v případě, že objekt má hodnotu null.
 
 ### <a name="create-multiple-messages-or-in-async-functions"></a>Vytvoření více zpráv nebo v asynchronních funkcích
-Chcete-li vytvořit více zpráv, vytvořte typ parametru pro výstupní frontu **ICollector\<T>** nebo **IAsyncCollector\<T>**, jak je znázorněno v následujícím příkladu.
+Chcete-li vytvořit více zpráv, nastavte typ parametru pro výstupní frontu **\<ICollector t>** nebo **\<IAsyncCollector t>**, jak je znázorněno v následujícím příkladu.
 
 ```csharp
 public static void CreateQueueMessages(
@@ -231,23 +231,23 @@ public static void CreateQueueMessages(
 }
 ```
 
-Každá zpráva fronty je vytvořena okamžitě **při** add metoda je volána.
+Každá zpráva fronty je vytvořena ihned při volání metody **Add** .
 
-### <a name="types-that-the-queue-attribute-works-with"></a>Typy, se kterými atribut Queue pracuje
+### <a name="types-that-the-queue-attribute-works-with"></a>Typy, ve kterých pracuje atribut Queue
 Atribut **Queue** můžete použít u následujících typů parametrů:
 
-* **out řetězec** (vytvoří zprávu fronty, pokud hodnota parametru není null, když funkce končí)
-* **out byte[]** (funguje jako **řetězec**)
+* **výstupní řetězec** (vytvoří zprávu fronty, pokud hodnota parametru končí funkcí)
+* **out Byte []** (funguje jako **řetězec**)
 * **out CloudQueueMessage** (funguje jako **řetězec**)
-* **out POCO** (serializovatelný typ, vytvoří zprávu s nulovým objektem, pokud je parametr nulový, když funkce končí)
-* **ISběratel**
-* **Kolekce IAsyncCollector**
-* **CloudQueue** (pro ruční vytváření zpráv pomocí rozhraní AZURE Storage API přímo)
+* **out POCO** (serializovatelný typ vytvoří zprávu s objektem s hodnotou null, pokud je parametr null, když funkce skončí)
+* **ICollector**
+* **IAsyncCollector**
+* **CloudQueue** (ruční vytváření zpráv pomocí rozhraní API Azure Storage přímo)
 
 ### <a name="use-webjobs-sdk-attributes-in-the-body-of-a-function"></a>Použití atributů sady WebJobs SDK v těle funkce
-Pokud potřebujete provést nějakou práci ve funkci před použitím atributu WebJobs SDK, jako je **fronta**, **blob**nebo **tabulka**, můžete použít rozhraní **IBinder.**
+Pokud potřebujete před použitím atributu sady WebJobs SDK, jako je například **Queue**, **BLOB**nebo **Table**, udělat nějakou práci, můžete použít rozhraní **IBinder** .
 
-Následující příklad přebírá zprávu vstupní fronty a vytvoří novou zprávu se stejným obsahem ve výstupní frontě. Název výstupní fronty je nastaven kódem v těle funkce.
+Následující příklad přebírá zprávu vstupní fronty a vytvoří novou zprávu se stejným obsahem ve výstupní frontě. Název výstupní fronty je nastaven podle kódu v těle funkce.
 
 ```csharp
 public static void CreateQueueMessage(
@@ -261,16 +261,16 @@ public static void CreateQueueMessage(
 }
 ```
 
-**Rozhraní IBinder** lze také použít s **table** a **blob** atributy.
+Rozhraní **IBinder** lze také použít s atributy **Table** a **BLOB** .
 
-## <a name="how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message"></a>Jak číst a psát objekty BLOB a tabulky při zpracování zprávy fronty
-Atributy **objektů Blob** a **tabulka** umožňují číst a zapisovat objekty BLOB a tabulky. Ukázky v této části platí pro objekty BLOB. Ukázky kódu, které ukazují, jak aktivovat procesy při vytváření nebo aktualizaci objektů BLOB, najdete v tématu [Jak používat úložiště objektů blob Azure s sadou WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).
+## <a name="how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message"></a>Čtení a zápis objektů BLOB a tabulek během zpracování zprávy ve frontě
+Atributy **objektu BLOB** a **tabulky** umožňují čtení a zápis objektů BLOB a tabulek. Ukázky v této části se vztahují na objekty blob. Ukázky kódu, které ukazují, jak aktivovat procesy při vytváření nebo aktualizaci objektů blob, najdete v tématu [Jak používat úložiště objektů BLOB v Azure se sadou WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).
 <!-- , and for code samples that read and write tables, see [How to use Azure table storage with the WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-storage-tables-how-to.md). -->
 
-### <a name="string-queue-messages-triggering-blob-operations"></a>Zprávy fronty řetězců spouštějící operace objektů blob
-Pro zprávu fronty, která obsahuje řetězec, **queueTrigger** je zástupný symbol, který můžete použít v **objektu blob atributu blobPath** parametr, který obsahuje obsah zprávy. **Blob**
+### <a name="string-queue-messages-triggering-blob-operations"></a>Zprávy fronty řetězců spouštějící operace objektů BLOB
+U zprávy ve frontě, která obsahuje řetězec, **queueTrigger** je zástupný symbol, který můžete použít v parametru **Blobpath cestou** atributu **objektu BLOB** , který obsahuje obsah zprávy.
 
-Následující příklad používá **Stream** objekty ke čtení a zápisu objektů BLOB. Zpráva fronty je název objektu blob umístěného v kontejneru textblobs. Kopie objektu blob s "-new" připojené k názvu je vytvořen ve stejném kontejneru.
+Následující příklad používá objekty **Stream** ke čtení a zápisu objektů BLOB. Zpráva fronty je název objektu BLOB umístěný v kontejneru textblobs. Kopie objektu BLOB s názvem-New připojeného k názvu se vytvoří ve stejném kontejneru.
 
 ```csharp
 public static void ProcessQueueMessage(
@@ -282,11 +282,11 @@ public static void ProcessQueueMessage(
 }
 ```
 
-Konstruktor atributu **Blob** přebírá parametr **blobPath,** který určuje název kontejneru a objektu blob. Další informace o tomto zástupném symbolu najdete [v tématu Jak používat úložiště objektů blob Azure s sadou WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).
+Konstruktor atributu **BLOB** přebírá parametr **blobpath cestou** , který určuje kontejner a název objektu BLOB. Další informace o tomto zástupném symbolu najdete v tématu [Jak používat úložiště objektů BLOB v Azure se sadou WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).
 
-Když atribut zdobí **Stream** objekt, jiný parametr konstruktoru určuje režim **FileAccess** jako čtení, zápis nebo čtení/zápis.
+Když atribut upraví objekt **datového proudu** , parametr jiného konstruktoru určuje režim **FileAccess** jako čtení, zápis nebo čtení a zápis.
 
-Následující příklad používá **Objekt CloudBlockBlob** k odstranění objektu blob. Zpráva fronty je název objektu blob.
+Následující příklad používá objekt **CloudBlockBlob** k odstranění objektu BLOB. Zpráva fronty je název objektu BLOB.
 
 ```csharp
 public static void DeleteBlob(
@@ -297,10 +297,10 @@ public static void DeleteBlob(
 }
 ```
 
-### <a name="poco-plain-old-clr-object-queue-messages"></a>Zprávy fronty POCO [(Prostý starý objekt CLR)](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)
-Pro poco uložené jako JSON ve zprávě fronty, můžete použít zástupné symboly, které název vlastnosti objektu v **atributu Queue** **blobPath** parametr. Jako zástupné symboly můžete také použít názvy vlastností metadat fronty. Viz [Získání metadat zprávy fronty nebo fronty](#get-queue-or-queue-message-metadata).
+### <a name="poco-plain-old-clr-object-queue-messages"></a>Zprávy fronty POCO [(obyčejný starý objekt CLR](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object))
+Pro POCO uložený jako JSON ve zprávě fronty můžete použít zástupné symboly, které vlastnosti názvu objektu v parametru **blobpath cestou** atributu **Queue** . Můžete také použít názvy vlastností Queue metadata jako zástupné symboly. Viz [získat metadata zprávy fronty nebo fronty](#get-queue-or-queue-message-metadata).
 
-Následující příklad zkopíruje objekt blob do nového objektu blob s jiným rozšířením. Zpráva fronty je objekt **BlobInformation,** který obsahuje **vlastnosti BlobName** a **BlobNameWithoutExtension.** Názvy vlastností se používají jako zástupné symboly v cestě objektu blob pro atributy **objektu Blob.**
+Následující příklad zkopíruje objekt blob do nového objektu BLOB s jinou příponou. Zpráva fronty je objekt **BlobInformation** , který obsahuje vlastnosti **BLOB** a **BlobNameWithoutExtension** . Názvy vlastností se používají jako zástupné symboly v cestě objektů BLOB pro atributy **objektu BLOB** .
 
 ```csharp
 public static void CopyBlobPOCO(
@@ -312,7 +312,7 @@ public static void CopyBlobPOCO(
 }
 ```
 
-Sada SDK používá [newtonsoft.Json NuGet balíček](https://www.nuget.org/packages/Newtonsoft.Json) serializovat a rekonstruovat zprávy. Pokud vytvoříte zprávy fronty v programu, který nepoužívá webjobs SDK, můžete napsat kód jako v následujícím příkladu k vytvoření zprávy fronty POCO, kterou může sada SDK analyzovat.
+Sada SDK používá [balíček NuGet Newtonsoft. JSON](https://www.nuget.org/packages/Newtonsoft.Json) k serializaci a deserializaci zpráv. Pokud vytvoříte zprávy ve frontě v programu, který nepoužívá sadu WebJobs SDK, můžete napsat kód jako v následujícím příkladu, a vytvořit tak zprávu fronty POCO, kterou může sada SDK analyzovat.
 
 ```csharp
 BlobInformation blobInfo = new BlobInformation() { BlobName = "boot.log", BlobNameWithoutExtension = "boot" };
@@ -320,32 +320,32 @@ var queueMessage = new CloudQueueMessage(JsonConvert.SerializeObject(blobInfo));
 logQueue.AddMessage(queueMessage);
 ```
 
-Pokud potřebujete provést nějakou práci ve funkci před vazbou objektu blob na objekt, můžete použít atribut v těle funkce, jak je znázorněno v [použití atributů WebJobs SDK v těle funkce](#use-webjobs-sdk-attributes-in-the-body-of-a-function).
+Pokud potřebujete před navázáním objektu BLOB na objekt udělat nějakou práci, můžete použít atribut v těle funkce, jak je znázorněno v části [použití atributů sady SDK WebJobs v těle funkce](#use-webjobs-sdk-attributes-in-the-body-of-a-function).
 
-### <a name="types-you-can-use-the-blob-attribute-with"></a>Typy, se kterými můžete použít atribut Objekt blob
-Atribut **Blob** lze použít s následujícími typy:
+### <a name="types-you-can-use-the-blob-attribute-with"></a>Typy, ve kterých můžete použít atribut objektu BLOB
+Atribut **objektu BLOB** lze použít s následujícími typy:
 
-* **Stream** (čtení nebo zápis, určené pomocí parametru konstruktoru FileAccess)
-* **Textreader**
+* **Stream** (čtení nebo zápis, zadaný pomocí parametru konstruktoru FileAccess)
+* **Elementu**
 * **TextWriter**
 * **řetězec** (čtení)
-* **out řetězec** (zápis; vytvoří objekt blob pouze v případě, že parametr řetězce je non-null, když funkce vrátí)
-* POCO (číst)
-* out POCO (zápis; vždy vytvoří objekt blob, vytvoří jako nulový objekt, pokud parametr POCO je null, když funkce vrátí)
+* **výstupní řetězec** (zápis; vytvoří objekt BLOB pouze v případě, že parametr řetězce má hodnotu null, když se funkce vrátí)
+* POCO (čtení)
+* out POCO (zápis; vždy vytvoří objekt blob, vytvoří se jako objekt s hodnotou null, pokud parametr POCO má hodnotu null, když se funkce vrátí)
 * **CloudBlobStream** (zápis)
 * **ICloudBlob** (čtení nebo zápis)
-* **CloudBlockBlob** (číst nebo psát)
+* **CloudBlockBlob** (čtení nebo zápis)
 * **CloudPageBlob** (čtení nebo zápis)
 
-## <a name="how-to-handle-poison-messages"></a>Jak zacházet s otrávenými zprávami
-Zprávy, jejichž obsah způsobí selhání funkce se nazývají *poškozená zprávy*. Pokud funkce selže, zpráva fronty není odstraněna a nakonec je znovu zvedl, což způsobuje opakování cyklu. Sada SDK může automaticky přerušit cyklus po omezeném počtu iterací, nebo to můžete udělat ručně.
+## <a name="how-to-handle-poison-messages"></a>Postup zpracování poškozených zpráv
+Zprávy, jejichž obsah způsobuje selhání funkce, se nazývají *poškozené zprávy*. Když dojde k selhání této funkce, zpráva fronty se neodstraní a nakonec se znovu vybere, což způsobí, že se cyklus opakuje. Sada SDK může cykly automaticky přerušit po omezeném počtu iterací, nebo můžete to provést ručně.
 
-### <a name="automatic-poison-message-handling"></a>Automatické zpracování poškozené zprávy
-Sada SDK zavolá funkci až pětkrát ke zpracování zprávy fronty. Pokud pátý pokus selže, zpráva je přesunuta do fronty jedovatý. Jak nakonfigurovat maximální počet opakování v [tématu Jak nastavit možnosti konfigurace](#how-to-set-configuration-options).
+### <a name="automatic-poison-message-handling"></a>Automatické zpracování nepoškozených zpráv
+Sada SDK zavolá funkci až pětkrát, aby zpracovala zprávu fronty. Pokud se pátý pokus nezdařil, zpráva bude přesunuta do fronty nepoškozeného. Můžete si prohlédnout, jak nakonfigurovat maximální počet opakování při [nastavování možností konfigurace](#how-to-set-configuration-options).
 
-Poškozená fronta má název *{originalqueuename}*-poison. Můžete napsat funkci pro zpracování zpráv z fronty jed jejich protokolováním nebo odesláním oznámení, že je nutná ruční pozornost.
+Fronta poškození má název *{originalqueuename}*– jed. Můžete napsat funkci pro zpracování zpráv z fronty poškození tím, že je přihlásíte nebo posíláte oznámení, že je potřeba ruční pozornost.
 
-V následujícím příkladu funkce **CopyBlob** selže, pokud zpráva fronty obsahuje název objektu blob, který neexistuje. V takovém případě je zpráva přesunuta z fronty copyblobqueue do fronty copyblobqueue poison. **ProcessPoisonMessage** pak zaznamená poškozenou zprávu.
+V následujícím příkladu se funkce **CopyBlob** nezdaří, pokud zpráva fronty obsahuje název objektu blob, který neexistuje. Pokud k tomu dojde, bude zpráva přesunuta z fronty copyblobqueue do fronty copyblobqueue-otrav. **ProcessPoisonMessage** pak zaznamená poškozenou zprávu.
 
 ```csharp
 public static void CopyBlob(
@@ -363,12 +363,12 @@ public static void ProcessPoisonMessage(
 }
 ```
 
-Následující obrázek znázorňuje výstup konzoly z těchto funkcí při zpracování poškozená zpráva.
+Následující ilustrace znázorňuje výstup z těchto funkcí v případě, že je zpracována nezpracovatelná zpráva.
 
-![Výstup konzoly pro zpracování poškozená zpráva](./media/vs-storage-webjobs-getting-started-queues/poison.png)
+![Výstup konzoly pro zpracování nezpracovatelných zpráv](./media/vs-storage-webjobs-getting-started-queues/poison.png)
 
-### <a name="manual-poison-message-handling"></a>Ruční zpracování poškozená zpráva
-Můžete získat počet, kolikrát byla zpráva zvedl ke zpracování přidáním **int** parametr s názvem **dequeueCount** do vaší funkce. Potom můžete zkontrolovat počet vyřazení fronty v kódu funkce a provést vlastní zpracování poškozená zpráva, když číslo překročí prahovou hodnotu, jak je znázorněno v následujícím příkladu.
+### <a name="manual-poison-message-handling"></a>Manipulace s ručními nepoškozenými zprávami
+Počet vyzvednutí zprávy pro zpracování můžete získat tak, že do své funkce přidáte parametr **int** s názvem **dequeueCount** . Pak můžete zjistit počet vyřazení z fronty v kódu funkce a provést vlastní zpracování nezpracovatelných zpráv, když číslo překročí prahovou hodnotu, jak je znázorněno v následujícím příkladu.
 
 ```csharp
 public static void CopyBlob(
@@ -388,12 +388,12 @@ public static void CopyBlob(
 }
 ```
 
-## <a name="how-to-set-configuration-options"></a>Jak nastavit možnosti konfigurace
+## <a name="how-to-set-configuration-options"></a>Nastavení možností konfigurace
 Pomocí typu **JobHostConfiguration** můžete nastavit následující možnosti konfigurace:
 
 * Nastavte připojovací řetězce sady SDK v kódu.
-* Nakonfigurujte nastavení **triggeru fronty,** například maximální počet vyřazení z fronty.
-* Získejte názvy front z konfigurace.
+* Nakonfigurujte nastavení **QueueTrigger** , jako je třeba maximální počet vyřazování z fronty.
+* Získá názvy front z konfigurace.
 
 ### <a name="set-sdk-connection-strings-in-code"></a>Nastavení připojovacích řetězců sady SDK v kódu
 Nastavení připojovacích řetězců sady SDK v kódu umožňuje používat vlastní názvy připojovacích řetězců v konfiguračních souborech nebo proměnných prostředí, jak je znázorněno v následujícím příkladu.
@@ -419,14 +419,14 @@ static void Main(string[] args)
 }
 ```
 
-### <a name="configure-queuetrigger--settings"></a>Konfigurovat nastavení triggeru fronty
-Můžete nakonfigurovat následující nastavení, která platí pro zpracování zpráv fronty:
+### <a name="configure-queuetrigger--settings"></a>Konfigurace nastavení QueueTrigger
+Můžete nakonfigurovat následující nastavení, která se vztahují na zpracování zprávy ve frontě:
 
-* Maximální počet zpráv fronty, které jsou současně zachyceny, aby byly provedeny paralelně (výchozí hodnota je 16).
-* Maximální počet opakování před odesláním zprávy fronty do fronty poison (výchozí hodnota je 5).
-* Maximální čekací doba před dotazováníznovu, když je fronta prázdná (výchozí hodnota je 1 minuta).
+* Maximální počet zpráv ve frontě, které jsou současně spouštěny souběžně (výchozí hodnota je 16).
+* Maximální počet opakovaných pokusů, než se zpráva fronty pošle do fronty poškození (výchozí hodnota je 5).
+* Maximální doba čekání před opětovným dotazem, když je fronta prázdná (výchozí hodnota je 1 minuta).
 
-Následující příklad ukazuje, jak konfigurovat tato nastavení:
+Následující příklad ukazuje, jak nakonfigurovat tato nastavení:
 
 ```csharp
 static void Main(string[] args)
@@ -440,12 +440,12 @@ static void Main(string[] args)
 }
 ```
 
-### <a name="set-values-for-webjobs-sdk-constructor-parameters-in-code"></a>Nastavení hodnot parametrů konstruktoru sady WebJobs SDK v kódu
-Někdy chcete zadat název fronty, název objektu blob nebo kontejner nebo název tabulky v kódu, nikoli pevný kód. Můžete například zadat název fronty pro **QueueTrigger** v konfiguračním souboru nebo proměnné prostředí.
+### <a name="set-values-for-webjobs-sdk-constructor-parameters-in-code"></a>Nastavení hodnot pro parametry konstruktoru sady WebJobs SDK v kódu
+Někdy je třeba zadat název fronty, název objektu BLOB nebo kontejner nebo název tabulky v kódu, nikoli jako pevný kód. Například můžete chtít zadat název fronty pro **QueueTrigger** v konfiguračním souboru nebo v proměnné prostředí.
 
-Můžete to udělat předáním objektu **NameResolver** typu **JobHostConfiguration.** Zahrnete speciální zástupné symboly obklopené procenty (%) podepisuje v parametrech konstruktoru atributu WebJobs SDK a kód **NameResolver** určuje skutečné hodnoty, které mají být použity místo těchto zástupných symbolů.
+To lze provést předáním objektu **NameResolver** do typu **JobHostConfiguration** . Zahrnete speciální zástupné symboly, které jsou obklopeny procenty (%) v části parametry konstruktoru atributu WebJobs SDK a váš **NameResolver** kód určuje skutečné hodnoty, které budou použity místo těchto zástupných symbolů.
 
-Předpokládejme například, že chcete použít frontu s názvem logqueuetest v testovacím prostředí a jeden s názvem logqueueprod v produkčním prostředí. Namísto pevně zakódovaného názvu fronty chcete zadat název položky v **kolekci appSettings,** která by měla skutečný název fronty. Pokud je klíč **appSettings** logqueue, vaše funkce může vypadat jako v následujícím příkladu.
+Předpokládejme například, že chcete použít frontu s názvem logqueuetest v testovacím prostředí a jednu s názvem logqueueprod v produkčním prostředí. Místo pevně zakódovaného názvu fronty chcete zadat název položky v kolekci **appSettings** , která by měla mít skutečný název fronty. Pokud je klíč **appSettings** logqueue, může funkce vypadat jako v následujícím příkladu.
 
 ```csharp
 public static void WriteLog([QueueTrigger("%logqueue%")] string logMessage)
@@ -454,7 +454,7 @@ public static void WriteLog([QueueTrigger("%logqueue%")] string logMessage)
 }
 ```
 
-Vaše třída **NameResolver** by pak mohla získat název fronty z **appSettings,** jak je znázorněno v následujícím příkladu:
+Vaše třída **NameResolver** pak může získat název fronty z **appSettings** , jak je znázorněno v následujícím příkladu:
 
 ```csharp
 public class QueueNameResolver : INameResolver
@@ -466,7 +466,7 @@ public class QueueNameResolver : INameResolver
 }
 ```
 
-Třídu **NameResolver** předáte objektu **JobHost,** jak je znázorněno v následujícím příkladu.
+Třídu **NameResolver** předáte do objektu **JobHost** , jak je znázorněno v následujícím příkladu.
 
 ```csharp
 static void Main(string[] args)
@@ -478,10 +478,10 @@ static void Main(string[] args)
 }
 ```
 
-**Poznámka:** Názvy front, tabulek a objektů blob jsou vyřešeny při každém volání funkce, ale názvy kontejnerů objektů blob jsou vyřešeny pouze při spuštění aplikace. Název kontejneru objektů blob nelze změnit, když je úloha spuštěna.
+**Poznámka:** Názvy front, tabulek a objektů BLOB jsou vyřešeny pokaždé, když je zavolána funkce, ale názvy kontejnerů objektů BLOB jsou vyřešeny pouze při spuštění aplikace. Když je úloha spuštěná, nemůžete změnit název kontejneru objektů BLOB.
 
-## <a name="how-to-trigger-a-function-manually"></a>Jak spustit funkci ručně
-Chcete-li spustit funkci ručně, použijte metodu **Call** nebo **CallAsync** na objektu **JobHost** a atribut **NoAutomaticTrigger** na funkci, jak je znázorněno v následujícím příkladu.
+## <a name="how-to-trigger-a-function-manually"></a>Ruční aktivace funkce
+Chcete-li funkci aktivovat ručně, použijte metodu **Call** nebo **CallAsync** objektu **JobHost** a atribut **NoAutomaticTrigger** pro funkci, jak je znázorněno v následujícím příkladu.
 
 ```csharp
 public class Program
@@ -504,24 +504,24 @@ public class Program
 }
 ```
 
-## <a name="how-to-write-logs"></a>Jak psát protokoly
-Řídicí panel zobrazuje protokoly na dvou místech: na stránce webjob a na stránce pro konkrétní vyvolání webjob.
+## <a name="how-to-write-logs"></a>Zápis protokolů
+Řídicí panel zobrazuje protokoly na dvou místech: na stránce webové úlohy a na stránce pro konkrétní volání webové úlohy.
 
-![Protokoly na stránce WebJob](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
+![Stránka přihlášení na webové stránce](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
 
-![Přihlašuje stránku vyvolání funkce](./media/vs-storage-webjobs-getting-started-queues/dashboardlogs.png)
+![Stránka pro vyvolání funkce log](./media/vs-storage-webjobs-getting-started-queues/dashboardlogs.png)
 
-Výstup z Console metody, které voláte ve funkci nebo v **Main()** metoda se zobrazí na stránce Řídicí panel pro webjob, nikoli na stránce pro konkrétní vyvolání metody. Výstup z objektu TextWriter, který získáte z parametru v podpisu metody, se zobrazí na stránce Řídicí panel pro vyvolání metody.
+Výstup z metod konzoly, které voláte ve funkci nebo v metodě **Main ()** , se zobrazí na stránce řídicí panel pro webovou úlohu, nikoli na stránce pro konkrétní volání metody. Výstup z objektu TextWriter, který získáte z parametru v podpisu metody, se zobrazí na stránce řídicího panelu pro vyvolání metody.
 
-Výstup konzoly nelze propojit s voláním určité metody, protože konzola je jednovláknová, zatímco mnoho funkcí úloh může být spuštěno současně. To je důvod, proč sada SDK poskytuje každé vyvolání funkce s vlastním jedinečným objektem zapisovače protokolu.
+Výstup konzoly nelze propojit s konkrétním voláním metody, protože konzola je tvořena jedním vláknem, zatímco mnoho pracovních funkcí může být spuštěno ve stejnou dobu. Proto sada SDK poskytuje jednotlivá volání funkcí s vlastním jedinečným objektem zapisovače protokolů.
 
-Chcete-li zapsat [protokoly trasování aplikací](../app-service/troubleshoot-dotnet-visual-studio.md#logsoverview), použijte **Console.Out** (vytvoří protokoly označené jako INFO) a **Console.Error** (vytvoří protokoly označené jako CHYBA). Alternativou je použití [trace nebo TraceSource](https://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx), který poskytuje verbose, upozornění a kritické úrovně kromě informace a chyby. Protokoly trasování aplikací se zobrazují v souborech protokolu webové aplikace, v tbulkách Azure nebo blobech Azure v závislosti na konfiguraci webové aplikace Azure. Stejně jako u všech výstupů konzoly se nejnovější protokoly 100 aplikací zobrazí také na stránce Řídicí panel pro webovou úlohu, nikoli na stránce vyvolání funkce.
+Chcete-li zapisovat [protokoly trasování aplikace](../app-service/troubleshoot-dotnet-visual-studio.md#logsoverview), použijte **konzolu. out** (vytvoří protokoly označené jako info) a **Console. Error** (vytvoří protokoly označené jako chyba). Alternativou je použití [Trace nebo TraceSource](https://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx), které kromě informací a chyb poskytuje podrobné, varovné a kritické úrovně. Protokoly trasování aplikace se zobrazí v souborech protokolu webové aplikace, v tabulkách Azure nebo v objektech blob Azure v závislosti na konfiguraci webové aplikace Azure. Vzhledem k tomu, že se jedná o všechny výstupy konzoly, se na stránce řídicí panel pro webovou úlohu zobrazí také nejnovější protokoly aplikací 100, nikoli stránka pro vyvolání funkce.
 
-Výstup konzoly se zobrazí v řídicím panelu pouze v případě, že program běží v Azure WebJob, ne v případě, že program běží místně nebo v jiném prostředí.
+Výstup konzoly se zobrazí na řídicím panelu jenom v případě, že je program spuštěný ve webové úloze Azure, a ne v případě, že je program spuštěný místně nebo v některém jiném prostředí.
 
-Protokolování můžete zakázat nastavením připojovacího řetězce řídicího panelu na hodnotu null. Další informace naleznete v tématu [Jak nastavit možnosti konfigurace](#how-to-set-configuration-options).
+Protokolování můžete zakázat nastavením připojovacího řetězce řídicího panelu na hodnotu null. Další informace najdete v tématu [Nastavení možností konfigurace](#how-to-set-configuration-options).
 
-Následující příklad ukazuje několik způsobů zápisu protokolů:
+Následující příklad ukazuje několik způsobů, jak zapisovat protokoly:
 
 ```csharp
 public static void WriteLog(
@@ -535,30 +535,30 @@ public static void WriteLog(
 }
 ```
 
-V řídicím panelu Sady WebJobs SDK se výstup z objektu **TextWriter** zobrazí, když přejdete na stránku pro vyvolání určité funkce a vyberete **Přepnout výstup**:
+V řídicím panelu sady WebJobs se zobrazí výstup objektu **TextWriter** , když přejdete na stránku pro konkrétní vyvolání funkce a vyberete **přepínač výstup**:
 
-![Odkaz vyvolání](./media/vs-storage-webjobs-getting-started-queues/dashboardinvocations.png)
+![Odkaz na vyvolání](./media/vs-storage-webjobs-getting-started-queues/dashboardinvocations.png)
 
-![Přihlašuje stránku vyvolání funkce](./media/vs-storage-webjobs-getting-started-queues/dashboardlogs.png)
+![Stránka pro vyvolání funkce log](./media/vs-storage-webjobs-getting-started-queues/dashboardlogs.png)
 
-Na řídicím panelu sady WebJobs SDK se zobrazí posledních 100 řádků výstupu konzoly, když přejdete na stránku pro webovou úlohu (nikoli pro vyvolání funkce) a vyberete **Přepnout výstup**.
+V řídicím panelu SDK WebJobs se při přechodu na stránku webové úlohy (ne pro vyvolání funkce) zobrazí poslední 100 řádky výstupu konzoly. Vyberte možnost **přepnout výstup**.
 
 ![Přepnout výstup](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
 
-V nepřetržité matné službě WebJob se v souborovém systému webové aplikace /data/jobs/continuous/*{webjobname}*/job_log.txt zobrazují protokoly aplikací.
+V průběžné úloze WebJob se protokoly aplikací zobrazí v/data/Jobs/Continuous/*{webjobname}*/job_log. txt v systému souborů webové aplikace.
 
         [09/26/2014 21:01:13 > 491e54: INFO] Console.Write - Hello world!
         [09/26/2014 21:01:13 > 491e54: ERR ] Console.Error - Hello world!
         [09/26/2014 21:01:13 > 491e54: INFO] Console.Out - Hello world!
 
-V objektu blob Azure protokoly aplikací vypadat takto: 2014-09-26T21:01:13,Informace,contosoadsnew,491e54,635473620738373502,0,17404,Console.Write - Hello world!, 2014-09-26T21:01:13,Chyba,contosoadsnew,491e54, 635473620738373502,0,17404,19,Console.Error - Hello world!, 2014-09-26T21:01:13,Informace,contosoadsnew,491e54,635473620738529920,0,17404,17,Console.Out - Dobrý den, svět!,
+V objektu blob Azure budou protokoly aplikací vypadat takto: 2014-09-26T21:01:13, informace, contosoadsnew, 491e54, 635473620738373502, 0, 17404, 17, Console. Write-Hello World!, 2014-09-26T21:01:13, Error, contosoadsnew, 491e54, 635473620738373502, 0, 17404, 19, Console. Error-Hello World!, 2014-09-26T21:01:13, informace, contosoadsnew, 491e54, 635473620738529920, 0, 17404, 17, konzola. out-Hello World!,
 
-A v tabulce Azure **console.out** a **console.error** protokoly vypadají takto:
+A v tabulce Azure **konzole. out** a **Console. Errors** vypadají takto:
 
-![Informace přihlásit v tabulce](./media/vs-storage-webjobs-getting-started-queues/tableinfo.png)
+![Informační log v tabulce](./media/vs-storage-webjobs-getting-started-queues/tableinfo.png)
 
-![Protokolování chyb v tabulce](./media/vs-storage-webjobs-getting-started-queues/tableerror.png)
+![Protokol chyb v tabulce](./media/vs-storage-webjobs-getting-started-queues/tableerror.png)
 
 ## <a name="next-steps"></a>Další kroky
-Tento článek poskytl ukázky kódu, které ukazují, jak zpracovat běžné scénáře pro práci s frontami Azure. Další informace o tom, jak používat Azure WebJobs a WebJobs SDK, najdete v [tématu Materiály pro dokumentaci Azure WebJobs](https://go.microsoft.com/fwlink/?linkid=390226).
+V tomto článku jsou uvedené ukázky kódu, které ukazují, jak zpracovávat běžné scénáře pro práci s frontami Azure. Další informace o tom, jak používat Azure WebJobs a sadu WebJobs SDK, najdete v [dokumentaci k prostředkům Azure WebJobs](https://go.microsoft.com/fwlink/?linkid=390226).
 

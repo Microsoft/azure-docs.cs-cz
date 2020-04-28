@@ -1,7 +1,7 @@
 ---
-title: Kognitivní dovednosti OCR
+title: Dovednost rozpoznávání OCR
 titleSuffix: Azure Cognitive Search
-description: Extrahujte text z obrazových souborů pomocí optického rozpoznávání znaků (OCR) v kanálu obohacení v Azure Cognitive Search.
+description: Extrakce textu ze souborů obrázků pomocí optického rozpoznávání znaků (OCR) v kanálu rozšíření v Azure Kognitivní hledání.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,32 +9,32 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: bdb510113a8d65ac04b54e77158f46d03cccd9de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72791928"
 ---
-# <a name="ocr-cognitive-skill"></a>Kognitivní dovednosti OCR
+# <a name="ocr-cognitive-skill"></a>Dovednost rozpoznávání OCR
 
-Dovednost **Optickérozpoznávání znaků (OCR)** rozpozná tištěný a ručně psaný text v obrazových souborech. Tato dovednost používá modely strojového učení poskytované [počítačové vidění](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) v cognitive services. Dovednost **Rozpoznávání OCR** se mapuje na následující funkce:
+Dovednosti **optického rozpoznávání znaků (OCR)** rozpoznává vytištěný a ručně psaný text v souborech obrázků. Tato dovednost používá v Cognitive Services modely strojového učení, které poskytuje [počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) . Dovednosti v **OCR** se mapují na následující funkce:
 
-+ [Rozhraní API "OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-optical-character-recognition-api) se používá pro jiné jazyky než angličtinu. 
-+ Pro angličtinu se používá nové rozhraní API [pro čtení.](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api)
++ Rozhraní API ["OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-optical-character-recognition-api) se používá pro jiné jazyky než angličtinu. 
++ V anglickém jazyce se používá nové rozhraní API [pro čtení](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) .
 
-Dovednost **Rozpoznávání OCR** extrahuje text z obrazových souborů. Mezi podporované formáty souborů patří:
+Dovednost **optického rozpoznávání znaků** extrahuje text ze souborů obrázků. Mezi podporované formáty souborů patří:
 
-+ . Jpeg
-+ . Jpg
-+ . Png
-+ . Bmp
-+ . Gif
-+ . Tiff
++ . VE
++ . FORMÁTU
++ . PNG
++ . BMP
++ . VE
++ . TIFF
 
 > [!NOTE]
-> Při rozšiřování oboru zvýšením četnosti zpracování, přidáním dalších dokumentů nebo přidáním dalších algoritmů AI budete muset [připojit fakturovatelný prostředek služeb Cognitive Services](cognitive-search-attach-cognitive-services.md). Poplatky narůstají při volání API ve službách Cognitive Services a pro extrakci image jako součást fáze prolomení dokumentů v Azure Cognitive Search. Za extrakci textu z dokumentů se neúčtují žádné poplatky.
+> Když rozbalíte rozsah zvýšením četnosti zpracování, přidáním dalších dokumentů nebo přidáním dalších algoritmů AI, budete muset [připojit fakturovatelné Cognitive Services prostředku](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API v Cognitive Services a pro extrakci obrázků jako součást fáze pro vystavování dokumentů ve službě Azure Kognitivní hledání. Pro extrakci textu z dokumentů se neúčtují žádné poplatky.
 >
-> Provádění vestavěných dovedností se účtuje za stávající [cenu průběžných plateb služeb Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakci obrázků jsou popsané na [stránce s cenami Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400).
+> Při provádění integrovaných dovedností se účtují poplatky za stávající [Cognitive Services průběžných plateb](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakci imagí jsou popsané na [stránce s cenami za Azure kognitivní hledání](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 
 ## <a name="skill-parameters"></a>Parametry dovednosti
@@ -43,24 +43,24 @@ U parametrů se rozlišují malá a velká písmena.
 
 | Název parametru     | Popis |
 |--------------------|-------------|
-| detectOrientace | Umožňuje automatickou detekci orientace obrazu. <br/> Platné hodnoty: true / false.|
-|defaultLanguageCode | <p>  Kód jazyka vstupního textu. Mezi podporované jazyky patří: <br/> zh-Hans (ČínštinaZjednoduše) <br/> zh-Hant (ČínštinaTradiční) <br/>cs (česky) <br/>da (dánština) <br/>nl (holandština) <br/>en (anglicky) <br/>fi (finština)  <br/>fr (francouzština) <br/>  de (Něm.) <br/>el (řecová řečtina) <br/> hu (maď. <br/> to (italsky) <br/>  ja (japonština) <br/> ko (korejština) <br/> pozn.) <br/>   pl (polština) <br/> pt (portugalština) <br/>  ru (Rus.) <br/>  es (španělština) <br/>  sv (Švéd.) <br/>  tr (turečtina) <br/> ar (arabština) <br/> ro (rumunština) <br/> sr-Cyrl (srbština cyrilice) <br/> sr-Latn (SrbskoLatinsko) <br/>  sk (Slovenština). <br/>  unk (Neznámý) <br/><br/> Pokud kód jazyka není zadán nebo má hodnotu null, bude jazyk nastaven na angličtinu. Pokud je jazyk explicitně nastaven na "unk", bude jazyk automaticky rozpoznán. </p> |
-|lineEnding | Hodnota, která má být používána mezi jednotlivými zjištěnými čarami. Možné hodnoty: 'Prostor','CarriageReturn','LineFeed'.  Výchozí hodnota je "Mezera" |
+| detectOrientation | Umožňuje automatickou detekci orientace obrázku. <br/> Platné hodnoty: true nebo false.|
+|defaultLanguageCode | <p>  Kód jazyka vstupního textu Mezi podporované jazyky patří: <br/> zh-Hans (ChineseSimplified) <br/> zh-Hant (ChineseTraditional) <br/>cs (Čeština) <br/>da (dánština) <br/>NL (holandština) <br/>EN (angličtina) <br/>Fi (Finština)  <br/>FR (francouzština) <br/>  de (němčina) <br/>El (řečtina) <br/> hu (Maďarština) <br/> IT (italština) <br/>  Ja (japonština) <br/> Ko (korejština) <br/> NB (norština) <br/>   pl (polština) <br/> PT (portugalština) <br/>  ru (ruština) <br/>  ES (španělština) <br/>  SV (švédština) <br/>  TR (turečtina) <br/> ar (arabské písmo) <br/> ro (rumunština) <br/> sr-Cyrl (SerbianCyrillic) <br/> SR-Latn (SerbianLatin) <br/>  SK (slovenština). <br/>  unk (neznámé) <br/><br/> Pokud kód jazyka není zadán nebo je null, jazyk bude nastaven na angličtinu. Pokud je jazyk explicitně nastaven na "unk", jazyk bude automaticky rozpoznán. </p> |
+|lineEnding | Hodnota, která má být použita mezi každým zjištěným řádkem. Možné hodnoty: Space, CarriageReturn, disřádkování.  Výchozí hodnota je Space. |
 
-Dříve byl parametr s názvem "textExtractionAlgorithm" pro určení, zda dovednost by měla extrahovat "tištěný" nebo "ručně psaný" text.  Tento parametr je zastaralé a již není nutné jako nejnovější algoritmus rozhraní API pro čtení je schopen extrahování obou typů textu najednou.  Pokud definice dovedností již tento parametr obsahuje, není nutné jej odebrat, ale již nebude použit a oba typy textu budou extrahovány do budoucna bez ohledu na to, na co je nastaven.
+Dříve existoval parametr s názvem "textExtractionAlgorithm", který určuje, zda by měla být tato dovednost extrahována "vytištěna" nebo "rukou" text.  Tento parametr je zastaralý a už není nutný, protože nejnovější algoritmus rozhraní API pro čtení je schopný extrahovat oba typy textu najednou.  Pokud definice dovednosti už tento parametr obsahuje, nemusíte ho odebírat, ale už se nepoužije a oba typy textu se budou extrahovat bez ohledu na to, k čemu je nastavené.
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
-| Vstupní název      | Popis                                          |
+| Název vstupu      | Popis                                          |
 |---------------|------------------------------------------------------|
-| image         | Komplexní typ. V současné době funguje pouze s "/document/normalized_images" pole, ```imageAction``` vyrobené indexerem objektů ```none```blob Azure, pokud je nastavena na jinou hodnotu než . Další informace naleznete v [ukázce.](#sample-output)|
+| image         | Komplexní typ. V současné době funguje pouze s polem "/Document/normalized_images" vytvořeným indexerem Azure Blob, ```imageAction``` Pokud je nastavena na jinou hodnotu než ```none```. Další informace najdete v [ukázce](#sample-output) .|
 
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
 | Název výstupu     | Popis                   |
 |---------------|-------------------------------|
-| text          | Prostý text extrahovaný z obrázku.   |
-| layoutText    | Komplexní typ, který popisuje extrahovaný text a umístění, kde byl nalezen text.|
+| text          | Z obrázku byl extrahován prostý text.   |
+| layoutText    | Komplexní typ, který popisuje extrahovaný text a umístění, kde byl text nalezen.|
 
 
 ## <a name="sample-definition"></a>Definice vzorku
@@ -96,7 +96,7 @@ Dříve byl parametr s názvem "textExtractionAlgorithm" pro určení, zda doved
 ```
 <a name="sample-output"></a>
 
-## <a name="sample-text-and-layouttext-output"></a>Ukázkový text a rozloženíVýstup textu
+## <a name="sample-text-and-layouttext-output"></a>Ukázkový text a layoutText výstup
 
 ```json
 {
@@ -134,11 +134,11 @@ Dříve byl parametr s názvem "textExtractionAlgorithm" pro určení, zda doved
 }
 ```
 
-## <a name="sample-merging-text-extracted-from-embedded-images-with-the-content-of-the-document"></a>Ukázka: Sloučení textu extrahovaného z vložených obrazů s obsahem dokumentu.
+## <a name="sample-merging-text-extracted-from-embedded-images-with-the-content-of-the-document"></a>Ukázka: sloučení textu extrahovaného z vložených obrázků s obsahem dokumentu.
 
-Běžným případem použití pro sloučení textu je možnost sloučit textovou reprezentaci obrázků (text z dovednosti rozpoznávání OCR nebo titulek obrázku) do pole obsahu dokumentu.
+Běžný případ použití pro spojování textu je schopnost sloučit textové znázornění obrázků (text z dovednosti optického rozpoznávání znaků nebo titulku obrázku) do pole obsah dokumentu.
 
-Následující příklad skillset vytvoří *pole merged_text.* Toto pole obsahuje textový obsah dokumentu a text OCRed z každého obrázku vloženého do tohoto dokumentu.
+Následující příklad dovednosti vytvoří pole *merged_text* . Toto pole obsahuje textový obsah vašeho dokumentu a OCRed text z každého obrázku vloženého do tohoto dokumentu.
 
 #### <a name="request-body-syntax"></a>Syntaxe textu požadavku
 ```json
@@ -190,7 +190,7 @@ Následující příklad skillset vytvoří *pole merged_text.* Toto pole obsahu
   ]
 }
 ```
-Výše uvedený příklad skillset předpokládá, že existuje pole normalizované obrázky. Chcete-li generovat toto pole, nastavte konfiguraci *imageAction* v definici indexeru tak, aby *generovala normalizované obrázky,* jak je znázorněno níže:
+Výše uvedený příklad dovednosti předpokládá, že existuje pole Normalized-images. Pro vygenerování tohoto pole nastavte konfiguraci *imageAction* v definici indexeru na *generateNormalizedImages* , jak je znázorněno níže:
 
 ```json
 {
@@ -206,6 +206,6 @@ Výše uvedený příklad skillset předpokládá, že existuje pole normalizova
 
 ## <a name="see-also"></a>Viz také
 + [Integrované dovednosti](cognitive-search-predefined-skills.md)
-+ [Dovednost TextMerger](cognitive-search-skill-textmerger.md)
-+ [Jak definovat sadu dovedností](cognitive-search-defining-skillset.md)
++ [TextMerger dovednost](cognitive-search-skill-textmerger.md)
++ [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
 + [Vytvoření indexeru (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

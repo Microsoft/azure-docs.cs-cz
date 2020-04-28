@@ -1,7 +1,7 @@
 ---
-title: Správa souběžných zápisů do prostředků
+title: Jak spravovat souběžné zápisy do prostředků
 titleSuffix: Azure Cognitive Search
-description: Pomocí optimistické souběžnosti se vyhnete kolizím ve vzduchu při aktualizacích nebo odstranění indexů Azure Cognitive Search, indexerů, zdrojů dat.
+description: Použijte optimistickou souběžnost, abyste zabránili kolizím středního proudění při aktualizacích nebo odstraňování do Azure Kognitivní hledání indexů, indexerů a datových zdrojů.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,42 +9,42 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: edfb2fe5cc37a00335ca7b5be851a88825b03eb1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72792217"
 ---
-# <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>Jak spravovat souběžnost v Azure Cognitive Search
+# <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>Jak spravovat souběžnost v Azure Kognitivní hledání
 
-Při správě prostředků Azure Cognitive Search, jako jsou indexy a zdroje dat, je důležité aktualizovat prostředky bezpečně, zejména pokud prostředky jsou přístupné současně různými součástmi vaší aplikace. Pokud dva klienti současně aktualizují prostředek bez koordinace, jsou možné podmínky časování. Chcete-li tomu zabránit, Azure Cognitive Search nabízí *optimistický model souběžnosti*. Neexistují žádné zámky na prostředek. Místo toho je eTag pro každý prostředek, který identifikuje verzi prostředku, takže můžete řemesla požadavky, které se vyhýbají náhodné přepsání.
+Při správě prostředků Azure Kognitivní hledání, jako jsou indexy a zdroje dat, je důležité aktualizovat prostředky bezpečně, zejména v případě, že se k prostředkům přistupoval současně pomocí různých komponent aplikace. Když dva klienti souběžně aktualizují prostředek bez koordinace, jsou možné situace časování. Aby k tomu nedocházelo, Azure Kognitivní hledání nabízí *optimistický model souběžnosti*. U prostředku neexistují žádné zámky. Místo toho je k dispozici značka ETag pro každý prostředek, který identifikuje verzi prostředku, aby bylo možné vytvořit požadavky, které zabrání náhodnému přepsání.
 
 > [!Tip]
-> Koncepční kód v [ukázkovém řešení Jazyka C#](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) vysvětluje, jak funguje řízení souběžnosti v Azure Cognitive Search. Kód vytvoří podmínky, které vyvolávají řízení souběžnosti. Čtení [fragmentu kódu níže](#samplecode) je pravděpodobně dostačující pro většinu vývojářů, ale pokud chcete spustit, upravte appsettings.json přidat název služby a admin api-key. Vzhledem k `http://myservice.search.windows.net`tomu, adresa `myservice`URL služby , název služby je .
+> Koncepční kód v [ukázkovém řešení jazyka C#](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) vysvětluje, jak řízení souběžnosti funguje v Azure kognitivní hledání. Kód vytvoří podmínky, které vyvolávají řízení souběžnosti. Čtení [fragmentu kódu níže](#samplecode) je pravděpodobně dostačující pro většinu vývojářů, ale pokud ho chcete spustit, upravte appSettings. JSON a přidejte název služby a klíč rozhraní API pro správu. Název služby je `myservice`dán adresou `http://myservice.search.windows.net`URL služby.
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Optimistická souběžnost je implementována prostřednictvím kontroly podmínek přístupu ve volání rozhraní API, které zapisují indexy, indexery, zdroje dat a synonymaMap.
+Optimistická souběžnost je implementována prostřednictvím kontrol podmínek přístupu v volání rozhraní API při psaní do indexů, indexerů, zdrojů dat a prostředků synonymMap.
 
-Všechny prostředky mají [*značku entity (ETag),*](https://en.wikipedia.org/wiki/HTTP_ETag) která poskytuje informace o verzi objektu. Kontrolou eTag první, můžete se vyhnout souběžné aktualizace v typické workflow (získat, upravit místně, aktualizovat) tím, že zajistí prostředek ETag odpovídá místní kopii.
+Všechny prostředky mají [*značku entity (ETag)*](https://en.wikipedia.org/wiki/HTTP_ETag) , která poskytuje informace o verzi objektu. Zaškrtnutím ETag First (získat, upravit místně, aktualizovat) se můžete vyhnout souběžným aktualizacím, a to tak, že zaručíte, že značka ETag prostředku odpovídá vaší místní kopii.
 
-+ Rozhraní REST API používá [etag](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) v hlavičce požadavku.
-+ Sada .NET SDK nastaví eTag prostřednictvím accessCondition objektu, nastavení [If-Match | If-Match-None záhlaví](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) na prostředek. Libovolný objekt dědící z [IResourceWithETag (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.iresourcewithetag) má accessCondition objekt.
++ REST API používá [ETag](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) v hlavičce požadavku.
++ Sada .NET SDK nastaví značku ETag prostřednictvím objektu accessCondition, nastavení [If-Match | Záhlaví If-Match-None](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) u prostředku Libovolný objekt, který dědí z [IResourceWithETag (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.iresourcewithetag) , má objekt accessCondition.
 
-Pokaždé, když aktualizujete prostředek, jeho ETag se automaticky změní. Při implementaci správy souběžnosti, vše, co děláte, je uvedení předběžnou podmínku na požadavek na aktualizaci, která vyžaduje, aby vzdálený prostředek mít stejné eTag jako kopie prostředku, který jste upravili na straně klienta. Pokud souběžný proces již změnil vzdálený prostředek, eTag nebude odpovídat předpokladu a požadavek se nezdaří s HTTP 412. Pokud používáte .NET SDK, to manifesty `CloudException` jako `IsAccessConditionFailed()` kde metoda rozšíření vrátí true.
+Pokaždé, když aktualizujete prostředek, jeho značka ETag se automaticky změní. Když implementujete řízení souběžnosti, vše, co provádíte, je předběžnou podmínkou pro žádost o aktualizaci, která vyžaduje, aby vzdálený prostředek měl stejnou značku ETag jako kopie prostředku, který jste změnili v klientovi. Pokud již souběžný proces změnil vzdálený prostředek, značka ETag se neshoduje s podmínkou a požadavek selže s protokolem HTTP 412. Pokud používáte sadu .NET SDK, tento manifest jako `CloudException` metoda `IsAccessConditionFailed()` rozšíření vrátí hodnotu true.
 
 > [!Note]
-> Existuje pouze jeden mechanismus pro souběžnost. Vždy se používá bez ohledu na to, které rozhraní API se používá pro aktualizace prostředků.
+> Existuje pouze jeden mechanismus pro souběžnost. Vždycky se používá bez ohledu na to, jaké rozhraní API se používá pro aktualizace prostředků.
 
 <a name="samplecode"></a>
-## <a name="use-cases-and-sample-code"></a>Případy použití a ukázkový kód
+## <a name="use-cases-and-sample-code"></a>Případy použití a ukázka kódu
 
-Následující kód ukazuje kontroly accessCondition pro operace aktualizace klíče:
+Následující kód ukazuje accessCondition kontroly operací aktualizace klíčů:
 
-+ Pokud prostředek již neexistuje, nepodaří se mu aktualizace.
-+ Selhání aktualizace, pokud se změní verze prostředku
++ Neúspěšná aktualizace, pokud prostředek už neexistuje
++ Neúspěšná aktualizace, pokud se změní verze prostředku
 
-### <a name="sample-code-from-dotnetetagsexplainer-program"></a>Ukázkový kód z [programu DotNetETagsExplainer](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)
+### <a name="sample-code-from-dotnetetagsexplainer-program"></a>Ukázkový kód z [DotNetETagsExplainer programu](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)
 
 ```
     class Program
@@ -165,13 +165,13 @@ Následující kód ukazuje kontroly accessCondition pro operace aktualizace kl�
 }
 ```
 
-## <a name="design-pattern"></a>Návrhový vzor
+## <a name="design-pattern"></a>Vzor návrhu
 
-Návrhový vzor pro implementaci optimistické souběžnosti by měl obsahovat smyčku, která opakuje kontrolu podmínky přístupu, test podmínky přístupu a volitelně načte aktualizovaný prostředek před pokusem o opětovné použití změn.
+Vzor návrhu pro implementaci optimistického řízení souběžnosti by měl zahrnovat smyčku, která opakuje kontrolu podmínky přístupu, otestuje podmínku přístupu a volitelně načte aktualizovaný prostředek před pokusem o opětovné použití změn.
 
-Tento fragment kódu ilustruje přidání synonymMap do indexu, který již existuje. Tento kód je z [příkladu synonyma C# pro Azure Cognitive Search](search-synonyms-tutorial-sdk.md).
+Tento fragment kódu ilustruje přidání synonymMap k indexu, který již existuje. Tento kód pochází z [příkladu synonym jazyka C# pro Azure kognitivní hledání](search-synonyms-tutorial-sdk.md).
 
-Výstřižek získá index "hotels", zkontroluje verzi objektu při operaci aktualizace, vyvolá výjimku, pokud se podmínka nezdaří, a pak opakuje operaci (až třikrát) počínaje načítáním indexu ze serveru, aby získal nejnovější verzi.
+Fragment Načte index "hotely", zkontroluje verzi objektu u operace Update, vyvolá výjimku, pokud se podmínka nezdařila, a poté opakuje operaci (až třikrát), počínaje načítáním indexu ze serveru za účelem získání nejnovější verze.
 
         private static void EnableSynonymsInHotelsIndexSafely(SearchServiceClient serviceClient)
         {
@@ -207,15 +207,15 @@ Výstřižek získá index "hotels", zkontroluje verzi objektu při operaci aktu
 
 ## <a name="next-steps"></a>Další kroky
 
-Zkontrolujte [synonyma C# ukázka](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms) pro další kontext o tom, jak bezpečně aktualizovat existující index.
+Podívejte se na [ukázku synonym v C#](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms) , kde najdete další informace o tom, jak bezpečně aktualizovat existující index.
 
-Zkuste upravit některý z následujících ukázek zahrnout ETags nebo AccessCondition objekty.
+Zkuste upravit některý z následujících vzorků, aby obsahovaly ETag nebo AccessCondition objekty.
 
-+ [Ukázka rozhraní REST API na GitHubu](https://github.com/Azure-Samples/search-rest-api-getting-started)
-+ [Ukázka sady .NET SDK na GitHubu](https://github.com/Azure-Samples/search-dotnet-getting-started). Toto řešení zahrnuje projekt "DotNetEtagsExplainer", který obsahuje kód uvedený v tomto článku.
++ [Ukázka REST API na GitHubu](https://github.com/Azure-Samples/search-rest-api-getting-started)
++ [Ukázka .NET SDK na GitHubu](https://github.com/Azure-Samples/search-dotnet-getting-started). Toto řešení zahrnuje projekt "DotNetEtagsExplainer" obsahující kód uvedený v tomto článku.
 
 ## <a name="see-also"></a>Viz také
 
-[Běžné http požadavky a hlavičky](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
-odpovědí[HTTP stavové kódy](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)
-[Index operace (REST API)](https://docs.microsoft.com/rest/api/searchservice/index-operations)
+[Běžné požadavky protokolu HTTP a hlavičky](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
+odpovědí[http stavové kódy](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)
+[operací index (REST API)](https://docs.microsoft.com/rest/api/searchservice/index-operations)
