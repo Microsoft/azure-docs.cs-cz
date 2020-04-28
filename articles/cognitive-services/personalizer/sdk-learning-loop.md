@@ -1,24 +1,24 @@
 ---
-title: 'Úvodní příručka: Vytvoření a použití výukové smyčky pomocí sady SDK – personalizátor'
-description: Tento rychlý start ukazuje, jak vytvořit a spravovat znalostní bázi pomocí sady SDK klienta.
+title: 'Rychlý Start: vytvoření a použití výukového cyklu pomocí sady SDK – přizpůsobování'
+description: V tomto rychlém startu se dozvíte, jak vytvořit a spravovat znalostní bázi pomocí klientské sady SDK.
 ms.topic: quickstart
-ms.date: 01/15/2020
+ms.date: 04/27/2020
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: 7ebe22227b4323b2e6b1c3fc9ca31e171d1d97cd
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: c65be6c68372ffe92ffd942bf71d2b635ec2fd16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77524865"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188846"
 ---
-# <a name="quickstart-personalizer-client-library"></a>Úvodní příručka: Klientská knihovna personalisty
+# <a name="quickstart-personalizer-client-library"></a>Rychlý Start: Klientská knihovna pro přizpůsobování
 
-Zobrazení přizpůsobeného obsahu v tomto rychlém startu pomocí služby Personalizace.
+Zobrazit přizpůsobený obsah v tomto rychlém startu pomocí služby pro přizpůsobení.
 
-Začínáme s klientskou knihovnou Personalista. Následujícím postupem nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úkoly.
+Začínáme s klientskou knihovnou pro přizpůsobování Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.
 
- * Rozhraní API pořadí – vybere nejlepší položku z položek obsahu na základě informací o obsahu a kontextu v reálném čase.
- * Bonus API - Určíte skóre odměny na základě vašich obchodních potřeb a pak je odešlete personalistovi s tímto rozhraním API. Toto skóre může být jedna hodnota, například 1 pro dobré a 0 pro špatné nebo algoritmus, který vytvoříte na základě vašich obchodních potřeb.
+ * Rozhraní API pro řazení – vybere nejlepší položku z akcí na základě informací v reálném čase, které poskytnete o obsahu a kontextu.
+ * API pro odměnu – na základě vašich obchodních potřeb určíte skóre odměňování a pak ho pošlete do přizpůsobeného rozhraní API. Toto skóre může být jedna hodnota, například 1 pro dobrý, a 0 pro špatný nebo algoritmus, který vytvoříte na základě vašich obchodních potřeb.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Get intent with C# SDK](./includes/quickstart-sdk-csharp.md)]
@@ -34,7 +34,7 @@ Začínáme s klientskou knihovnou Personalista. Následujícím postupem nainst
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete vyčistit a odebrat předplatné služeb Cognitive Services, můžete odstranit prostředek nebo skupinu prostředků. Odstraněním skupiny prostředků také odstraníte všechny další prostředky, které jsou s ní spojené.
+Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prostředek nebo skupinu prostředků odstranit. Odstraněním skupiny prostředků se odstraní také všechny další prostředky, které jsou k ní přidružené.
 
 * [Portál](../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
@@ -46,5 +46,5 @@ Pokud chcete vyčistit a odebrat předplatné služeb Cognitive Services, může
 
 * [Co je služba Personalizace?](what-is-personalizer.md)
 * [Kde se dá služba Personalizace využít?](where-can-you-use-personalizer.md)
-* [Řešení potíží](troubleshooting.md)
-* Zdrojový kód pro tuto ukázku lze nalézt na [GitHubu](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py).
+* [Odstraňování potíží](troubleshooting.md)
+* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py).

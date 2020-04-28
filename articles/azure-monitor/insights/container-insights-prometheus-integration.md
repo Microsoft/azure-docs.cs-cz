@@ -1,114 +1,93 @@
 ---
-title: Konfigurace Azure Monitor u kontejnerů Prometheus Integrace | Dokumenty společnosti Microsoft
-description: Tento článek popisuje, jak můžete nakonfigurovat Azure Monitor pro kontejnery agent a škrábání metriky z Prometheus s clusteru Kubernetes.
+title: Konfigurace Azure Monitor pro kontejnery integrace Prometheus | Microsoft Docs
+description: Tento článek popisuje, jak můžete nakonfigurovat agenta Azure Monitor for Containers, aby vyodpadí metriky z Prometheus s clusterem Kubernetes.
 ms.topic: conceptual
-ms.date: 04/16/2020
-ms.openlocfilehash: 7fcf52cceb69834f68f8e4ce7a2674972a6430fd
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.date: 04/22/2020
+ms.openlocfilehash: fcf1a2e5d2cf11cd9d612506e1ec56a392309121
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537368"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186488"
 ---
-# <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>Konfigurace škrábání metrik Prometheus pomocí Azure Monitoru pro kontejnery
+# <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>Konfigurace vyřazení metrik Prometheus s Azure Monitor pro kontejnery
 
-[Prometheus](https://prometheus.io/) je populární open source metrické monitorování řešení a je součástí [Cloud Native Compute Foundation](https://www.cncf.io/). Azure Monitor pro kontejnery poskytuje bezproblémové připojení prostředí pro shromažďování metrik Prometheus. Obvykle, chcete-li použít Prometheus, musíte nastavit a spravovat server Prometheus s úložištěm. Díky integraci s Azure Monitor, server Prometheus není vyžadováno. Stačí jen vystavit koncový bod metriky Prometheus prostřednictvím vývozců nebo podů (aplikace) a kontejnerizovaného agenta pro Azure Monitor pro kontejnery můžete scrape metriky pro vás. 
+[Prometheus](https://prometheus.io/) je oblíbený open source řešení pro monitorování metrik a je součástí [cloudového nativního výpočetního základu](https://www.cncf.io/). Azure Monitor for Containers poskytuje bezproblémové prostředí pro připojování ke shromažďování metrik Prometheus. Aby bylo možné používat Prometheus, je obvykle potřeba nastavit a spravovat server Prometheus s úložištěm. Integrací s Azure Monitor není třeba server Prometheus. Potřebujete jenom vystavit koncový bod Prometheus metriky prostřednictvím vývozců nebo lusků (aplikace) a kontejnerový Agent pro Azure Monitor pro kontejnery může metriky vyřadit. 
 
 ![Architektura monitorování kontejnerů pro Prometheus](./media/container-insights-prometheus-integration/monitoring-kubernetes-architecture.png)
 
 >[!NOTE]
->Minimální verze agenta podporovaná pro škrábání metrikY Prometheus je ciprod07092019 nebo novější a `KubeMonAgentEvents` verze agenta podporovaná pro psaní chyb konfigurace a agentů v tabulce je ciprod10112019. Další informace o verzích agenta a o tom, co je součástí každé verze, naleznete v [poznámkách k verzi agenta](https://github.com/microsoft/Docker-Provider/tree/ci_feature_prod). Chcete-li ověřit verzi agenta, vyberte na kartě **Uzel** uzel a v podokně vlastností hodnotu poznámky **vlastnosti Číslo obrázku agenta.**
+>Minimální verze agenta podporovaná metrikami Prometheus je ciprod07092019 nebo novější a verze agenta podporovaná pro psaní konfigurace a chyb agenta v `KubeMonAgentEvents` tabulce je ciprod10112019. Pro Azure Red Hat OpenShift a Red Hat OpenShift v4, verze agenta ciprod04162020 nebo vyšší. 
+>
+>Další informace o verzích agenta a o tom, co je součástí každé vydané verze, najdete v tématu [poznámky k verzi agenta](https://github.com/microsoft/Docker-Provider/tree/ci_feature_prod). 
+>Chcete-li ověřit verzi agenta, na kartě **uzel** vyberte uzel a v podokně vlastností hodnotu poznámky pro vlastnost **značka image agenta** .
 
-Škrábání metrik Prometheus je podporováno clustery Kubernetes hostovanými na:
+Vyřazení metrik Prometheus se podporuje u clusterů Kubernetes hostovaných na:
 
 - Azure Kubernetes Service (AKS)
 - Azure Stack nebo místní
-- Azure Red Hat OpenShift
+- Azure Red Hat OpenShift verze 3. x
+- Azure Red Hat OpenShift a Red Hat OpenShift verze 4. x
 
->[!NOTE]
->Pro Azure Red Hat OpenShift šablona ConfigMap soubor se vytvoří v oboru názvů *openshift-azure protokolování.* Není nakonfigurován tak, aby aktivně scrape metriky nebo shromažďování dat z agenta.
->
+### <a name="prometheus-scraping-settings"></a>Nastavení pro likvidační Prometheus
 
-## <a name="azure-red-hat-openshift-prerequisites"></a>Předpoklady Prosazuje Red Hat OpenShift
+Aktivní likvidace metrik z Prometheus se provádí z jednoho ze dvou perspektiv:
 
-Než začnete, potvrďte, že jste členem role správce clusteru clusteru zákazníka vašeho clusteru Azure Red Hat OpenShift a nakonfigurujte kontejnerizovaného agenta a nastavení scrapingu Prometheus. Chcete-li ověřit, zda jste členem *skupiny osa-customer-admins,* spusťte následující příkaz:
-
-``` bash
-  oc get groups
-```
-
-Výstup se bude podobat následujícímu:
-
-``` bash
-NAME                  USERS
-osa-customer-admins   <your-user-account>@<your-tenant-name>.onmicrosoft.com
-```
-
-Pokud jste členem *skupiny osa-customer-admins,* měli byste `container-azm-ms-agentconfig` být schopni uvést ConfigMap pomocí následujícího příkazu:
-
-``` bash
-oc get configmaps container-azm-ms-agentconfig -n openshift-azure-logging
-```
-
-Výstup se bude podobat následujícímu:
-
-``` bash
-NAME                           DATA      AGE
-container-azm-ms-agentconfig   4         56m
-```
-
-### <a name="prometheus-scraping-settings"></a>Nastavení škrábání Prometheus
-
-Aktivní škrábání metrik z Prometheus se provádí z jedné ze dvou perspektiv:
-
-* Adresa URL celého clusteru – adresa URL HTTP a zjišťuje cíle z uvedených koncových bodů služby. Například k8s služby, jako je kube-dns a kube-state-metrics a pod poznámky specifické pro aplikaci. Metriky shromážděné v tomto kontextu budou definovány v části ConfigMap *[Prometheus data_collection_settings.cluster]*.
-* Adresa URL pro celý uzel – http a zjišťují cíle z uvedených koncových bodů služby. Metriky shromážděné v tomto kontextu budou definovány v části ConfigMap *[Prometheus_data_collection_settings.node]*.
+* Adresa URL pro clustery v rámci clusteru a zjišťování cílů z uvedených koncových bodů služby. Například služby k8s Services, jako jsou Kube-DNS a Kube – metriky a pod, jsou specifické pro aplikaci. Metriky shromážděné v tomto kontextu budou definovány v části ConfigMap *[Prometheus data_collection_settings. cluster]*.
+* Adresa URL v rámci uzlu-HTTP a zjišťují se cíle z uvedených koncových bodů služby. Metriky shromážděné v tomto kontextu budou definovány v části ConfigMap *[Prometheus_data_collection_settings. Node]*.
 
 | Koncový bod | Rozsah | Příklad |
 |----------|-------|---------|
-| Anotace podu | Celý cluster | Poznámky: <br>`prometheus.io/scrape: "true"` <br>`prometheus.io/path: "/mymetrics"` <br>`prometheus.io/port: "8000"` <br>`prometheus.io/scheme: "http"` |
-| Kubernetes servis | Celý cluster | `http://my-service-dns.my-namespace:9100/metrics` <br>`https://metrics-server.kube-system.svc.cluster.local/metrics` |
-| adresa URL/koncový bod | Uzel a/nebo celý cluster | `http://myurl:9101/metrics` |
+| Pod – Poznámka | Napříč clustery | anotac <br>`prometheus.io/scrape: "true"` <br>`prometheus.io/path: "/mymetrics"` <br>`prometheus.io/port: "8000"` <br>`prometheus.io/scheme: "http"` |
+| Služba Kubernetes | Napříč clustery | `http://my-service-dns.my-namespace:9100/metrics` <br>`https://metrics-server.kube-system.svc.cluster.local/metrics` |
+| Adresa URL/koncový bod | Pro jednotlivé uzly nebo pro clustery v rámci clusteru | `http://myurl:9101/metrics` |
 
-Když je zadána adresa URL Azure Monitor pro kontejnery pouze scrapes koncový bod. Je-li zadána služba Kubernetes, je název služby vyřešen serverem DNS clusteru, aby se získala adresa IP, a pak je vyřešená služba vyřazena.
+Pokud je zadána adresa URL, Azure Monitor pro kontejnery vyřadí pouze koncový bod. Při zadání služby Kubernetes se název služby vyřeší se serverem DNS clusteru, aby získal IP adresu, a pak se vyhodnocená služba vyřadí.
 
-|Rozsah | Klíč | Datový typ | Hodnota | Popis |
+|Rozsah | Key | Datový typ | Hodnota | Popis |
 |------|-----|-----------|-------|-------------|
-| Celý cluster | | | | Zadejte některou z následujících tří metod pro scrape koncové body pro metriky. |
-| | `urls` | Řetězec | Pole oddělené čárkami | HTTP koncový bod (zadána adresa IP nebo platná cesta URL). Například: `urls=[$NODE_IP/metrics]`. ($NODE_IP je specifický parametr Azure Monitor pro kontejnery a lze použít místo IP adresy uzlu. Musí být všechna velká.) |
-| | `kubernetes_services` | Řetězec | Pole oddělené čárkami | Pole služeb Kubernetes pro škrábání metriky z kube-state-metriky. Například`kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics",http://my-service-dns.my-namespace:9100/metrics]`.|
-| | `monitor_kubernetes_pods` | Logická hodnota | true nebo false | Pokud je `true` nastavena na v nastavení celého clusteru, Azure Monitor pro kontejnery agent bude škrábání Kubernetes pods v celém clusteru pro následující poznámky Prometheus:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
-| | `prometheus.io/scrape` | Logická hodnota | true nebo false | Umožňuje škrábání modulu. `monitor_kubernetes_pods`musí být `true`nastavena na . |
-| | `prometheus.io/scheme` | Řetězec | http nebo https | Výchozí je vyřazení přes protokol HTTP. V případě potřeby `https`nastavte na . | 
-| | `prometheus.io/path` | Řetězec | Pole oddělené čárkami | Cesta k prostředku HTTP, na kterém chcete načíst metriky. Pokud cesta metriky `/metrics`není , definujte ji pomocí této poznámky. |
-| | `prometheus.io/port` | Řetězec | 9102 | Zadejte port, ze který chcete seškrábat. Pokud port není nastaven, bude výchozí 9102. |
-| | `monitor_kubernetes_pods_namespaces` | Řetězec | Pole oddělené čárkami | Seznam povolených oborů názvů pro škrábání metriky z podů Kubernetes.<br> Například `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]`. |
-| Celý uzel | `urls` | Řetězec | Pole oddělené čárkami | HTTP koncový bod (zadána adresa IP nebo platná cesta URL). Například: `urls=[$NODE_IP/metrics]`. ($NODE_IP je specifický parametr Azure Monitor pro kontejnery a lze použít místo IP adresy uzlu. Musí být všechna velká.) |
-| Uzel široký nebo celý cluster | `interval` | Řetězec | 60s | Výchozí interval kolekce je jedna minuta (60 sekund). Kolekci můžete upravit pro *[prometheus_data_collection_settings.node]* a/nebo *[prometheus_data_collection_settings.cluster]* na časové jednotky, jako jsou s, m, h. |
-| Uzel široký nebo celý cluster | `fieldpass`<br> `fielddrop`| Řetězec | Pole oddělené čárkami | Můžete určit určité metriky, které mají být shromažďovány nebo`fieldpass`ne z koncového bodu nastavením povolit ( ) a zakázat (`fielddrop`) výpis. Nejprve je nutné nastavit seznam povolených položek. |
+| Napříč clustery | | | | Zadejte jednu z následujících tří metod pro vyřazení koncových bodů pro metriky. |
+| | `urls` | Řetězec | Pole oddělené čárkami | Koncový bod HTTP (buď zadaná IP adresa, nebo platná cesta URL) Například: `urls=[$NODE_IP/metrics]`. ($NODE _IP je konkrétní Azure Monitor pro parametr Containers a dá se použít místo IP adresy uzlu. Musí být všechna velká.) |
+| | `kubernetes_services` | Řetězec | Pole oddělené čárkami | Pole služeb Kubernetes pro vyřazení metrik z Kube-State-Metrics. Například`kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics",http://my-service-dns.my-namespace:9100/metrics]`.|
+| | `monitor_kubernetes_pods` | Logická hodnota | true nebo false | Když se nastaví `true` na nastavení v rámci celého clusteru, Azure monitor pro agenty kontejnerů vyřadí v celém clusteru Kubernetes lusky pro následující poznámky Prometheus:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
+| | `prometheus.io/scrape` | Logická hodnota | true nebo false | Povoluje vyřazení pod. `monitor_kubernetes_pods`musí být nastaven na `true`hodnotu. |
+| | `prometheus.io/scheme` | Řetězec | http nebo https | Výchozím nastavením je vyřazení přes protokol HTTP. V případě potřeby nastavte na `https`. | 
+| | `prometheus.io/path` | Řetězec | Pole oddělené čárkami | Cesta prostředku HTTP, ze které se mají načíst metriky Pokud cesta metriky není `/metrics`, definujte ji pomocí této poznámky. |
+| | `prometheus.io/port` | Řetězec | 9102 | Zadejte port, ze kterého se má vyřadit. Pokud není Port nastavený, použije se výchozí hodnota 9102. |
+| | `monitor_kubernetes_pods_namespaces` | Řetězec | Pole oddělené čárkami | Seznam povolených oborů názvů, ze kterých se mají vyřadit metriky z Kubernetes lusků<br> Například `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]`. |
+| Napříč uzly | `urls` | Řetězec | Pole oddělené čárkami | Koncový bod HTTP (buď zadaná IP adresa, nebo platná cesta URL) Například: `urls=[$NODE_IP/metrics]`. ($NODE _IP je konkrétní Azure Monitor pro parametr Containers a dá se použít místo IP adresy uzlu. Musí být všechna velká.) |
+| V rozsáhlých uzlech nebo v clusteru | `interval` | Řetězec | 60 s | Výchozí interval shromažďování je jedna minuta (60 sekund). Můžete upravit kolekci pro *[prometheus_data_collection_settings. Node]* a/nebo *[prometheus_data_collection_settings. cluster]* na časové jednotky, například s, m, h. |
+| V rozsáhlých uzlech nebo v clusteru | `fieldpass`<br> `fielddrop`| Řetězec | Pole oddělené čárkami | Nastavením seznamu Povolit (`fieldpass`) a zakázat (`fielddrop`) můžete určit určité metriky, které mají být shromažďovány nebo nikoli z koncového bodu. Nejprve musíte nastavit seznam povolených. |
 
-ConfigMaps je globální seznam a může být pouze jeden ConfigMap použít na agenta. Nelze mít jiný ConfigMaps převažují nad kolekce.
+ConfigMaps je globální seznam a v agentovi může být použit pouze jeden ConfigMap. Nemůžete mít k dispozici další ConfigMaps pro kolekce.
 
-## <a name="configure-and-deploy-configmaps"></a>Konfigurace a nasazení map ConfigMaps
+## <a name="configure-and-deploy-configmaps"></a>Konfigurace a nasazení ConfigMaps
 
-Chcete-li nakonfigurovat konfigurační soubor ConfigMap pro clustery Kubernetes, proveďte následující kroky.
+Proveďte následující kroky ke konfiguraci konfiguračního souboru ConfigMap pro následující clustery:
 
-1. [Stáhněte si](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/Kubernetes/container-azm-ms-agentconfig.yaml) šablonu ConfigMap yaml soubor a uložte jej jako kontejner-azm-ms-agentconfig.yaml.
+* Azure Kubernetes Service (AKS)
+* Azure Stack nebo místní
+* Azure Red Hat OpenShift verze 4. x a Red Hat OpenShift verze 4. x
+
+1. [Stáhněte](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/Kubernetes/container-azm-ms-agentconfig.yaml) si soubor Template ConfigMap YAML a uložte ho jako Container-AZM-MS-agentconfig. yaml.
 
    >[!NOTE]
-   >Tento krok není vyžadován při práci s Azure Red Hat OpenShift, protože šablona ConfigMap již v clusteru existuje.
+   >Tento krok není nutný při práci s Azure Red Hat OpenShift, protože šablona ConfigMap už v clusteru existuje.
 
-2. Upravte soubor Yaml ConfigMap pomocí vlastního nastavení, abyste se škrábali na metrikách Prometheus. Pokud upravujete soubor Yaml ConfigMap pro Azure Red Hat OpenShift, nejprve spusťte příkaz `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` a otevřete soubor v textovém editoru.
+2. Upravte soubor ConfigMap YAML s vlastními úpravami, abyste mohli vyřadit metriky Prometheus.
 
     >[!NOTE]
-    >Následující poznámky `openshift.io/reconcile-protect: "true"` musí být přidány pod metadata *kontejneru azm-ms-agentconfig* ConfigMap zabránit odsouhlasení. 
+    >Pokud upravujete soubor ConfigMap YAML pro Azure Red Hat OpenShift, nejprve spusťte příkaz `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` a otevřete soubor v textovém editoru.
+
+    >[!NOTE]
+    >Aby se zabránilo odsouhlasení, je nutné přidat následující poznámku `openshift.io/reconcile-protect: "true"` pod metadata *kontejneru-AZM-MS-agentconfig* ConfigMap. 
     >```
     >metadata:
     >   annotations:
     >       openshift.io/reconcile-protect: "true"
     >```
 
-    - Chcete-li shromažďovat služby Kubernetes v celém clusteru, nakonfigurujte soubor ConfigMap pomocí následujícího příkladu.
+    - Pokud chcete shromáždit cluster Kubernetes Services v rámci clusteru, nakonfigurujte soubor ConfigMap pomocí následujícího příkladu.
 
         ```
         prometheus-data-collection-settings: |- 
@@ -120,7 +99,7 @@ Chcete-li nakonfigurovat konfigurační soubor ConfigMap pro clustery Kubernetes
         kubernetes_services = ["http://my-service-dns.my-namespace:9102/metrics"]
         ```
 
-    - Chcete-li nakonfigurovat škrábání metrik Prometheus z určité adresy URL v celém clusteru, nakonfigurujte soubor ConfigMap pomocí následujícího příkladu.
+    - Pokud chcete nakonfigurovat vyřazení metrik Prometheus z konkrétní adresy URL v clusteru, nakonfigurujte soubor ConfigMap pomocí následujícího příkladu.
 
         ```
         prometheus-data-collection-settings: |- 
@@ -132,7 +111,7 @@ Chcete-li nakonfigurovat konfigurační soubor ConfigMap pro clustery Kubernetes
         urls = ["http://myurl:9101/metrics"] ## An array of urls to scrape metrics from
         ```
 
-    - Chcete-li nakonfigurovat škrábání metrik Prometheus z daemonset agenta pro každý jednotlivý uzel v clusteru, nakonfigurujte následující v ConfigMap:
+    - Pokud chcete nakonfigurovat vyřazení metrik Prometheus z DaemonSet agenta pro každý jednotlivý uzel v clusteru, nakonfigurujte následující v ConfigMap:
     
         ```
         prometheus-data-collection-settings: |- 
@@ -145,11 +124,11 @@ Chcete-li nakonfigurovat konfigurační soubor ConfigMap pro clustery Kubernetes
         ```
 
         >[!NOTE]
-        >$NODE_IP je specifický parametr Azure Monitor pro kontejnery a dá se použít místo IP adresy uzlu. Musí to být velká písmena. 
+        >$NODE _IP je konkrétní Azure Monitor pro parametr Containers a dá se použít místo IP adresy uzlu. Musí se jednat o všechna velká písmena. 
 
-    - Chcete-li nakonfigurovat škrábání metrik Prometheus zadáním poznámky podu, proveďte následující kroky:
+    - Chcete-li nakonfigurovat vyřazení metrik Prometheus zadáním poznámky pod, proveďte následující kroky:
 
-       1. V konfigurační mapě zadejte následující:
+       1. V části ConfigMap zadejte následující:
 
             ```
             prometheus-data-collection-settings: |- 
@@ -159,7 +138,7 @@ Chcete-li nakonfigurovat konfigurační soubor ConfigMap pro clustery Kubernetes
             monitor_kubernetes_pods = true 
             ```
 
-       2. Pro poznámky podu zadejte následující konfiguraci:
+       2. Pro poznámky pod zadejte následující konfiguraci:
 
            ```
            - prometheus.io/scrape:"true" #Enable scraping for this pod 
@@ -168,75 +147,194 @@ Chcete-li nakonfigurovat konfigurační soubor ConfigMap pro clustery Kubernetes
            - prometheus.io/port:"8000" #If port is not 9102 use this annotation
            ```
     
-          Pokud chcete omezit monitorování na určité obory názvů pro pody, které mají poznámky, například `monitor_kubernetes_pod` zahrnout `true` pouze pody vyhrazené pro produkční `monitor_kubernetes_pods_namespaces` úlohy, nastavte na v ConfigMap a přidejte filtr oboru názvů určující obory názvů, ze kterých chcete získat škrábání. Například `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]`.
+          Chcete-li omezit monitorování na konkrétní obory názvů pro lusky, které mají poznámky, například pouze v případě produkčních úloh, které jsou `monitor_kubernetes_pod` vyhrazeny pro produkční úlohy, nastavte na `true` hodnotu `monitor_kubernetes_pods_namespaces` v ConfigMap a přidejte filtr oboru názvů určující obory názvů, ze kterých se mají vyřadit. Například `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]`.
 
-3. Pro jiné clustery než Azure Red Hat OpenShift spusťte následující příkaz kubectl: `kubectl apply -f <configmap_yaml_file.yaml>`.
+3. Spusťte následující příkaz kubectl: `kubectl apply -f <configmap_yaml_file.yaml>`.
     
     Příklad: `kubectl apply -f container-azm-ms-agentconfig.yaml`. 
 
-    Pro Azure Red Hat OpenShift uložte změny v editoru.
+Dokončení změny konfigurace může trvat několik minut, než se projeví, a všechny omsagent v clusteru se restartují. Restartování je postupné restartování pro všechny omsagent lusky, ne pro všechna restartování ve stejnou dobu. Po dokončení restartů se zobrazí zpráva podobná následujícímu příkladu a obsahuje výsledek: `configmap "container-azm-ms-agentconfig" created`.
 
-Změna konfigurace může trvat několik minut před projevem a všechny omsagent pody v clusteru se restartuje. Restartování je postupné restartování pro všechny pody omsagent, ne všechny restartovat současně. Po dokončení restartování se zobrazí zpráva podobná následující a obsahuje výsledek: `configmap "container-azm-ms-agentconfig" created`.
+## <a name="configure-and-deploy-configmaps---azure-red-hat-openshift-v3"></a>Konfigurace a nasazení ConfigMaps – Azure Red Hat OpenShift V3
 
-Aktualizovaný configMap pro Azure Red Hat OpenShift můžete `oc describe configmaps container-azm-ms-agentconfig -n openshift-azure-logging`zobrazit spuštěním příkazu . 
+Tato část obsahuje požadavky a kroky pro úspěšnou konfiguraci konfiguračního souboru ConfigMap pro cluster Azure Red Hat OpenShift v3. x.
 
-## <a name="applying-updated-configmap"></a>Použití aktualizované hospo-
+>[!NOTE]
+>V případě Azure Red Hat OpenShift v3. x se vytvoří soubor šablony ConfigMap v oboru názvů *OpenShift-Azure-Logging* . Není nastavené na aktivní vyřazení metrik nebo shromažďování dat z agenta.
 
-Pokud jste již do clusteru nasadili configmap a chcete ji aktualizovat novější konfigurací, můžete upravit dříve používaný soubor ConfigMap a použít je pomocí stejných příkazů jako dříve.
+### <a name="prerequisites"></a>Požadavky
 
-Pro kubernetes clustery než Azure Red Hat `kubectl apply -f <configmap_yaml_file.yaml`OpenShift spusťte příkaz . 
+Než začnete, potvrďte, že jste členem role Správce clusteru pro zákazníky v clusteru Azure Red Hat OpenShift ke konfiguraci kontejnerového nastavení s kontejnery a Prometheus. Pokud chcete ověřit, že jste členem skupiny *osa-Customer-Admins* , spusťte následující příkaz:
 
-V clusteru Azure Red Hat OpenShift spusťte příkaz a `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` otevřete soubor ve výchozím editoru, který chcete upravit a pak ho uložit.
+``` bash
+  oc get groups
+```
 
-Změna konfigurace může trvat několik minut před projevem a všechny omsagent pody v clusteru se restartuje. Restartování je postupné restartování pro všechny pody omsagent, ne všechny restartovat současně. Po dokončení restartování se zobrazí zpráva podobná následující a obsahuje výsledek: `configmap "container-azm-ms-agentconfig" updated`.
+Výstup bude vypadat přibližně takto:
+
+``` bash
+NAME                  USERS
+osa-customer-admins   <your-user-account>@<your-tenant-name>.onmicrosoft.com
+```
+
+Pokud jste členem skupiny *osa-Customers-Admins* , měli byste být schopni zobrazit seznam `container-azm-ms-agentconfig` ConfigMap pomocí následujícího příkazu:
+
+``` bash
+oc get configmaps container-azm-ms-agentconfig -n openshift-azure-logging
+```
+
+Výstup bude vypadat přibližně takto:
+
+``` bash
+NAME                           DATA      AGE
+container-azm-ms-agentconfig   4         56m
+```
+
+### <a name="enable-monitoring"></a>Povolení monitorování
+
+Pomocí následujících kroků proveďte konfiguraci konfiguračního souboru ConfigMap pro cluster Azure Red Hat OpenShift v3. x.
+
+1. Upravte soubor ConfigMap YAML s vlastními úpravami, abyste mohli vyřadit metriky Prometheus. Šablona ConfigMap již existuje v clusteru Red Hat OpenShift v3. Spuštěním příkazu `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` otevřete soubor v textovém editoru.
+
+    >[!NOTE]
+    >Aby se zabránilo odsouhlasení, je nutné přidat následující poznámku `openshift.io/reconcile-protect: "true"` pod metadata *kontejneru-AZM-MS-agentconfig* ConfigMap. 
+    >```
+    >metadata:
+    >   annotations:
+    >       openshift.io/reconcile-protect: "true"
+    >```
+
+    - Pokud chcete shromáždit cluster Kubernetes Services v rámci clusteru, nakonfigurujte soubor ConfigMap pomocí následujícího příkladu.
+
+        ```
+        prometheus-data-collection-settings: |- 
+        # Custom Prometheus metrics data collection settings
+        [prometheus_data_collection_settings.cluster] 
+        interval = "1m"  ## Valid time units are s, m, h.
+        fieldpass = ["metric_to_pass1", "metric_to_pass12"] ## specify metrics to pass through 
+        fielddrop = ["metric_to_drop"] ## specify metrics to drop from collecting
+        kubernetes_services = ["http://my-service-dns.my-namespace:9102/metrics"]
+        ```
+
+    - Pokud chcete nakonfigurovat vyřazení metrik Prometheus z konkrétní adresy URL v clusteru, nakonfigurujte soubor ConfigMap pomocí následujícího příkladu.
+
+        ```
+        prometheus-data-collection-settings: |- 
+        # Custom Prometheus metrics data collection settings
+        [prometheus_data_collection_settings.cluster] 
+        interval = "1m"  ## Valid time units are s, m, h.
+        fieldpass = ["metric_to_pass1", "metric_to_pass12"] ## specify metrics to pass through 
+        fielddrop = ["metric_to_drop"] ## specify metrics to drop from collecting
+        urls = ["http://myurl:9101/metrics"] ## An array of urls to scrape metrics from
+        ```
+
+    - Pokud chcete nakonfigurovat vyřazení metrik Prometheus z DaemonSet agenta pro každý jednotlivý uzel v clusteru, nakonfigurujte následující v ConfigMap:
+    
+        ```
+        prometheus-data-collection-settings: |- 
+        # Custom Prometheus metrics data collection settings 
+        [prometheus_data_collection_settings.node] 
+        interval = "1m"  ## Valid time units are s, m, h. 
+        urls = ["http://$NODE_IP:9103/metrics"] 
+        fieldpass = ["metric_to_pass1", "metric_to_pass2"] 
+        fielddrop = ["metric_to_drop"] 
+        ```
+
+        >[!NOTE]
+        >$NODE _IP je konkrétní Azure Monitor pro parametr Containers a dá se použít místo IP adresy uzlu. Musí se jednat o všechna velká písmena. 
+
+    - Chcete-li nakonfigurovat vyřazení metrik Prometheus zadáním poznámky pod, proveďte následující kroky:
+
+       1. V části ConfigMap zadejte následující:
+
+            ```
+            prometheus-data-collection-settings: |- 
+            # Custom Prometheus metrics data collection settings
+            [prometheus_data_collection_settings.cluster] 
+            interval = "1m"  ## Valid time units are s, m, h
+            monitor_kubernetes_pods = true 
+            ```
+
+       2. Pro poznámky pod zadejte následující konfiguraci:
+
+           ```
+           - prometheus.io/scrape:"true" #Enable scraping for this pod 
+           - prometheus.io/scheme:"http:" #If the metrics endpoint is secured then you will need to set this to `https`, if not default ‘http’
+           - prometheus.io/path:"/mymetrics" #If the metrics path is not /metrics, define it with this annotation. 
+           - prometheus.io/port:"8000" #If port is not 9102 use this annotation
+           ```
+    
+          Chcete-li omezit monitorování na konkrétní obory názvů pro lusky, které mají poznámky, například pouze v případě produkčních úloh, které jsou `monitor_kubernetes_pod` vyhrazeny pro produkční úlohy, nastavte na `true` hodnotu `monitor_kubernetes_pods_namespaces` v ConfigMap a přidejte filtr oboru názvů určující obory názvů, ze kterých se mají vyřadit. Například `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]`.
+
+2. Uložte změny v editoru.
+
+Dokončení změny konfigurace může trvat několik minut, než se projeví, a všechny omsagent v clusteru se restartují. Restartování je postupné restartování pro všechny omsagent lusky, ne pro všechna restartování ve stejnou dobu. Po dokončení restartů se zobrazí zpráva podobná následujícímu příkladu a obsahuje výsledek: `configmap "container-azm-ms-agentconfig" created`.
+
+Aktualizované ConfigMap můžete zobrazit spuštěním příkazu `oc describe configmaps container-azm-ms-agentconfig -n openshift-azure-logging`. 
+
+## <a name="applying-updated-configmap"></a>Použití aktualizovaných ConfigMap
+
+Pokud jste už nasadili ConfigMap do clusteru a chcete ji aktualizovat pomocí novější konfigurace, můžete upravit soubor ConfigMap, který jste předtím použili, a pak použít stejné příkazy jako předtím.
+
+Pro následující prostředí Kubernetes:
+
+- Azure Kubernetes Service (AKS)
+- Azure Stack nebo místní
+- Azure Red Hat OpenShift a Red Hat OpenShift verze 4. x
+
+Spusťte příkaz `kubectl apply -f <configmap_yaml_file.yaml`. 
+
+Pro cluster Azure Red Hat OpenShift v3. x spusťte příkaz a otevřete soubor ve `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` výchozím editoru, který chcete upravit, a pak ho uložte.
+
+Dokončení změny konfigurace může trvat několik minut, než se projeví, a všechny omsagent v clusteru se restartují. Restartování je postupné restartování pro všechny omsagent lusky, ne pro všechna restartování ve stejnou dobu. Po dokončení restartů se zobrazí zpráva podobná následujícímu příkladu a obsahuje výsledek: `configmap "container-azm-ms-agentconfig" updated`.
 
 ## <a name="verify-configuration"></a>Ověřit konfiguraci
 
-Chcete-li ověřit, zda byla konfigurace úspěšně použita v clusteru, zkontrolujte `kubectl logs omsagent-fdf58 -n=kube-system`protokoly z modulu agenta pomocí následujícího příkazu: . 
+Chcete-li ověřit, zda byla konfigurace úspěšně aplikována na cluster, použijte následující příkaz ke kontrole protokolů z agenta pod: `kubectl logs omsagent-fdf58 -n=kube-system`. 
 
 >[!NOTE]
->Tento příkaz se nevztahuje na cluster Azure Red Hat OpenShift.
+>Tento příkaz se nedá použít pro cluster Azure Red Hat OpenShift v3. x.
 > 
 
-Pokud jsou chyby konfigurace z omsagent pods, výstup se zobrazí chyby podobné následující:
+Pokud dojde k chybám konfigurace z omsagent lusků, ve výstupu se zobrazí chyby podobné následujícímu:
 
 ``` 
 ***************Start Config Processing******************** 
 config::unsupported/missing config schema version - 'v21' , using defaults
 ```
 
-Chyby související s použitím změn konfigurace jsou také k dispozici ke kontrole. Následující možnosti jsou k dispozici pro provedení dalších řešení potíží se změnami konfigurace a škrábáním metrik Prometheus:
+Chyby související s použitím změn konfigurace jsou k dispozici také ke kontrole. K dispozici jsou následující možnosti, které umožňují další řešení potíží se změnami konfigurace a vyřazení Prometheus metriky:
 
-- Z protokolů pod agenta `kubectl logs` pomocí stejného příkazu 
+- Od agenta pod protokoly pomocí stejného `kubectl logs` příkazu 
     >[!NOTE]
-    >Tento příkaz se nevztahuje na cluster Azure Red Hat OpenShift.
+    >Tento příkaz se nedá použít pro cluster Azure Red Hat OpenShift.
     > 
 
-- Z živých dat (náhled). Protokoly živých dat (náhled) zobrazují chyby podobné následujícímu:
+- Z živých dat (Preview). V protokolech Live data (Preview) se zobrazují chyby podobné následujícímu:
 
     ```
     2019-07-08T18:55:00Z E! [inputs.prometheus]: Error in plugin: error making HTTP request to http://invalidurl:1010/metrics: Get http://invalidurl:1010/metrics: dial tcp: lookup invalidurl on 10.0.0.10:53: no such host
     ```
 
-- Z tabulky **KubeMonAgentEvents** v pracovním prostoru Analýzy protokolů. Data jsou odesílána každou hodinu s *varovnou* závažností chyby při škrábání a *závažností chyb* pro chyby konfigurace. Pokud nejsou žádné chyby, položka v tabulce bude mít data s *informacemi o*závažnosti , která nehlásí žádné chyby. **Vlastnost Tags** obsahuje další informace o pod a id kontejneru, na kterém došlo k chybě a také první výskyt, poslední výskyt a počet za poslední hodinu.
+- Z tabulky **KubeMonAgentEvents** v pracovním prostoru Log Analytics. Data se odesílají každou hodinu se závažností *Upozornění* pro chyby vyřazení a závažnost *chyby* pro chyby konfigurace. Pokud nedochází k žádným chybám, bude mít položka v tabulce údaje *o*závažnosti, které hlásí žádné chyby. Vlastnost **tagss** obsahuje další informace o ID pod a kontejneru, na kterém došlo k chybě, a také o prvním výskytu, posledním výskytu a počtu za poslední hodinu.
 
-- Pro Azure Red Hat OpenShift zkontrolujte protokoly omsagent hledáním **tabulka ContainerLog** ověřit, jestli je povolena kolekce protokolu openshift-azure-logging.
+- V případě Azure Red Hat OpenShift v3. x a v4. x zkontrolujte protokoly omsagent hledáním v tabulce **ContainerLog** a ověřte, jestli je povolená kolekce protokolů OpenShift-Azure-Logging.
 
-Chyby brání omsagent v analýzě souboru, přimět jej restartovat a použít výchozí konfiguraci. Po opravě chyby v ConfigMap na clusterech než Azure Red Hat OpenShift, uložte soubor yaml a `kubectl apply -f <configmap_yaml_file.yaml`použít aktualizované ConfigMaps spuštěním příkazu: . 
+Chyby zabraňují omsagent analýze souboru, což způsobí, že se restartuje a použije se výchozí konfigurace. Po opravě chyb v ConfigMap na jiných clusterech než Azure Red Hat OpenShift v3. x uložte soubor YAML a použijte aktualizovaný ConfigMaps spuštěním příkazu: `kubectl apply -f <configmap_yaml_file.yaml`. 
 
-V případě Azure Red Hat OpenShift upravte a uložte `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging`aktualizované configmaps spuštěním příkazu: .
+V případě Azure Red Hat OpenShift v3. x upravte a uložte aktualizované ConfigMaps spuštěním příkazu: `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging`.
 
-## <a name="query-prometheus-metrics-data"></a>Dotaz Prometheus metriky data
+## <a name="query-prometheus-metrics-data"></a>Data metrik Prometheus dotazů
 
-Chcete-li zobrazit metriky prometheus seškrábnuté službou Azure Monitor a všechny chyby konfigurace/škrábání hlášené agentem, zkontrolujte [data metrik Query Prometheus](container-insights-log-search.md#query-prometheus-metrics-data) a [chyby konfigurace nebo škrábání dotazu](container-insights-log-search.md#query-config-or-scraping-errors).
+Chcete-li zobrazit metriky Prometheus Azure Monitor a všechny chyby konfigurace/vyřazení hlášené agentem, zkontrolujte [data metrik dotazů Prometheus](container-insights-log-search.md#query-prometheus-metrics-data) a konfiguraci [dotazů nebo chyby](container-insights-log-search.md#query-config-or-scraping-errors)při vyřazení.
 
-## <a name="view-prometheus-metrics-in-grafana"></a>Zobrazit metriky Prometheus v Grafaně
+## <a name="view-prometheus-metrics-in-grafana"></a>Zobrazení metrik Prometheus v Grafana
 
-Azure Monitor pro kontejnery podporuje zobrazení metriky uložené v pracovním prostoru Log Analytics v řídicích panelech Grafana. Poskytli jsme šablonu, kterou si můžete stáhnout z [úložiště řídicích panelů](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) grafany, abyste mohli začít a odkazovat, abyste se naučili, jak zadat další data ze sledovaných clusterů, abyste je mohli vizualizovat ve vlastních řídicích panelech Grafana. 
+Azure Monitor for Containers podporuje zobrazování metrik uložených v pracovním prostoru Log Analytics v řídicích panelech Grafana. K dispozici je šablona, kterou si můžete stáhnout z [úložiště řídicích panelů](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) Grafana, abyste mohli začít s odkazem na pomoc s postupem, jak se dotazovat na další data z monitorovaných clusterů, aby je bylo možné vizualizovat ve vlastních řídicích panelech Grafana. 
 
-## <a name="review-prometheus-data-usage"></a>Kontrola využití dat společnosti Prometheus
+## <a name="review-prometheus-data-usage"></a>Kontrola využití dat Prometheus
 
-Chcete-li identifikovat objem ingestování každé velikosti metriky v GB za den, abyste zjistili, zda je vysoká, je k dispozici následující dotaz.
+Pokud chcete zjistit objem příjmu každé metriky v GB za den, abyste zjistili, jestli je vysoká, je k dispozici následující dotaz.
 
 ```
 InsightsMetrics 
@@ -246,11 +344,11 @@ InsightsMetrics
 | order by VolumeInGB desc
 | render barchart
 ```
-Výstup zobrazí výsledky podobné následujícímu:
+Ve výstupu se zobrazí výsledky podobné následujícímu:
 
-![Protokolovat výsledky dotazu na svazek při požití dat](./media/container-insights-prometheus-integration/log-query-example-usage-03.png)
+![Výsledky dotazu do protokolu pro objem příjmu dat](./media/container-insights-prometheus-integration/log-query-example-usage-03.png)
 
-Chcete-li odhadnout, jaká je velikost jednotlivých metrik v GB za měsíc, abyste zjistili, zda je objem přijatých dat přijatých v pracovním prostoru vysoký, je k dispozici následující dotaz.
+Pokud chcete odhadnout, co je velikost každé metriky v GB, je každý měsíc, abyste zjistili, jestli je objem dat přijatých v pracovním prostoru vysoký, je k dispozici následující dotaz.
 
 ```
 InsightsMetrics 
@@ -261,12 +359,12 @@ InsightsMetrics
 | render barchart
 ```
 
-Výstup zobrazí výsledky podobné následujícímu:
+Ve výstupu se zobrazí výsledky podobné následujícímu:
 
-![Protokolovat výsledky dotazu na svazek při požití dat](./media/container-insights-prometheus-integration/log-query-example-usage-02.png)
+![Výsledky dotazu do protokolu pro objem příjmu dat](./media/container-insights-prometheus-integration/log-query-example-usage-02.png)
 
-Další informace o tom, jak sledovat využití dat a analyzovat náklady, jsou k dispozici v [aplikaci Správa využití a nákladů pomocí protokolů monitorování Azure](../platform/manage-cost-storage.md).
+Další informace o tom, jak monitorovat využití dat a analyzovat náklady, najdete v tématu [Správa využití a nákladů pomocí protokolů Azure monitor](../platform/manage-cost-storage.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o konfiguraci nastavení kolekce agenta pro stdout, stderr a proměnné prostředí z úloh kontejneru [zde](container-insights-agent-config.md). 
+Další informace o konfiguraci nastavení kolekce agentů pro stdout, stderr a proměnné prostředí z úloh kontejnerů [najdete tady](container-insights-agent-config.md). 

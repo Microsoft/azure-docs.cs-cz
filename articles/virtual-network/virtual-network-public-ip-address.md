@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
-ms.openlocfilehash: a03ace1553bd845d8a221e458fd47f3d8aa3d611
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: de680e7cb542e7606b80ad46934f4ad7256bfb92
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82146543"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186063"
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Vytvoření, změna nebo odstranění veřejné IP adresy
 
@@ -72,7 +72,7 @@ I když portál nabízí možnost vytvořit dva prostředky veřejné IP adresy 
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create)|
+|CLI|[az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create)|
 |PowerShell|[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)|
 
 ## <a name="view-change-settings-for-or-delete-a-public-ip-address"></a>Zobrazení, změna nastavení nebo odstranění veřejné IP adresy
@@ -91,7 +91,7 @@ I když portál nabízí možnost vytvořit dva prostředky veřejné IP adresy 
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[AZ Network Public-IP list](/cli/azure/network/public-ip#az-network-public-ip-list) pro výpis veřejných IP adres, [AZ Network Public-IP show](/cli/azure/network/public-ip#az-network-public-ip-show) pro zobrazení nastavení; [AZ Network Public-IP Update](/cli/azure/network/public-ip#az-network-public-ip-update) to Update; [AZ Network Public-IP Delete](/cli/azure/network/public-ip#az-network-public-ip-delete) to Delete|
+|CLI|[AZ Network Public-IP list](/cli/azure/network/public-ip#az-network-public-ip-list) pro výpis veřejných IP adres, [AZ Network Public-IP show](/cli/azure/network/public-ip#az-network-public-ip-show) pro zobrazení nastavení; [AZ Network Public-IP Update](/cli/azure/network/public-ip#az-network-public-ip-update) to Update; [AZ Network Public-IP Delete](/cli/azure/network/public-ip#az-network-public-ip-delete) to Delete|
 |PowerShell|[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) pro načtení objektu veřejné IP adresy a zobrazení jeho nastavení [nastavte-AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress) na aktualizovat nastavení; [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) k odstranění|
 
 ## <a name="assign-a-public-ip-address"></a>Přiřazení veřejné IP adresy
@@ -118,4 +118,4 @@ Aby bylo možné provádět úlohy na veřejných IP adresách, musí být váš
 ## <a name="next-steps"></a>Další kroky
 
 - Vytvoření veřejné IP adresy pomocí [PowerShellu](powershell-samples.md) nebo ukázkových skriptů [Azure CLI](cli-samples.md) nebo používání [šablon Azure správce prostředků](template-samples.md)
-- Vytvoření a použití [zásad Azure](policy-samples.md) pro veřejné IP adresy
+- Vytvoření a přiřazení [definic Azure Policy](policy-samples.md) pro veřejné IP adresy

@@ -1,17 +1,17 @@
 ---
-title: Průvodce ověřováním klientů služby Azure SignalR Service
-description: Zjistěte, jak implementovat vlastní ověřování a integrovat ho se službou Azure SignalR podle příkladu e2e.
+title: Příručka pro ověřování klientů služby signalizace Azure
+description: Zjistěte, jak implementovat vlastní ověřování a jak ho integrovat se službou Azure Signal Service pomocí příkladu e2e.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: cc955adffbe7df5809f9c4c860877ad22df3e99b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5608d71c4a91c9b46b8ed7de13c9d4c06a3f195f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74158277"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82194597"
 ---
 # <a name="azure-signalr-service-authentication"></a>Ověřování pomocí služby Azure SignalR
 
@@ -48,21 +48,21 @@ Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 * [Git](https://git-scm.com/)
 * [Sada .NET Core SDK](https://www.microsoft.com/net/download/windows)
 * [Nakonfigurovaná služba Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart)
-* Stáhněte nebo naklonujte úložiště [GitHub uvzorku AzureSignalR.](https://github.com/aspnet/AzureSignalR-samples)
+* Stáhněte nebo naklonujte úložiště GitHub [AzureSignalR-Sample](https://github.com/aspnet/AzureSignalR-samples) .
 
 ## <a name="create-an-oauth-app"></a>Vytvoření aplikace OAuth
 
 1. Otevřete webový prohlížeč, přejděte na `https://github.com` a přihlaste se k účtu.
 
-2. Pro svůj účet přejděte do **nastavení** > **nastavení pro vývojáře** a klikněte na **Zaregistrovat novou aplikaci**nebo **Novou aplikaci OAuth** v části *OAuth Apps*.
+2. Pro váš účet přejděte na **Nastavení** > **vývojář nastavení** a v části *aplikace OAuth*klikněte na **zaregistrovat novou aplikaci**nebo **novou aplikaci OAuth** .
 
 3. Pro tuto novou aplikaci OAuth použijte následující nastavení a potom klikněte na **Zaregistrovat aplikaci**:
 
     | Název nastavení | Navrhovaná hodnota | Popis |
     | ------------ | --------------- | ----------- |
-    | Název aplikace | *Azure SignalR Chat* | Uživatel GitHubu by měl být schopen rozpoznat a důvěřovat aplikaci, kterou ověřuje.   |
+    | Název aplikace | *Azure SignalR Chat* | Uživatel GitHubu by měl být schopný rozpoznat a důvěřovat aplikaci, se kterou ověřuje.   |
     | Adresa URL domovské stránky | `http://localhost:5000/home` | |
-    | Popis aplikace | *Ukázka konverzační místnosti pomocí služby Azure SignalR s ověřováním GitHubu* | Popis aplikace je užitečný, protože pomůže uživatelům vaší aplikace zjistit, v jakém kontextu se ověřování používá. |
+    | Popis aplikace | *Ukázka chatovací místnosti pomocí služby signalizace Azure s ověřováním GitHubu* | Popis aplikace je užitečný, protože pomůže uživatelům vaší aplikace zjistit, v jakém kontextu se ověřování používá. |
     | Adresa URL zpětného volání autorizace | `http://localhost:5000/signin-github` | Toto nastavení je nejdůležitějším nastavením vaší aplikace OAuth. Je to adresa URL pro zpětné volání, na kterou GitHub po úspěšném ověření uživatele vrátí. V tomto kurzu musíte použít výchozí adresu URL pro zpětné volání pro balíček *AspNet.Security.OAuth.GitHub*, */signin-github*.  |
 
 4. Jakmile je registrace nové aplikace OAuth hotová, přidejte *ID klienta* a *tajný klíč klienta* do nástroje Secret Manager, a to pomocí následujících příkazů. Hodnoty *Your_GitHub_Client_Id* a *Your_GitHub_Client_Secret* nahraďte hodnotami pro vaši aplikaci OAuth.
@@ -377,7 +377,7 @@ V této části zapnete reálné ověřování přidáním atributu `Authorize` 
 
 ## <a name="deploy-the-app-to-azure"></a>Nasadit aplikaci do Azure
 
-V této části použijete rozhraní příkazového řádku Azure (CLI) z Azure Cloud Shell k vytvoření nové webové aplikace ve [službě Azure App Service](https://docs.microsoft.com/azure/app-service/) pro hostování vaší ASP.NET aplikace v Azure. Tato webová aplikace bude nakonfigurovaná tak, aby využívala místní nasazení z Gitu. Tato webová aplikace bude také nakonfigurovaná s využitím vašeho připojovacího řetězce SignalR, tajných kódů aplikace OAuth GitHubu a uživatele nasazení.
+V této části použijete rozhraní příkazového řádku Azure (CLI) z Azure Cloud Shell k vytvoření nové webové aplikace v [Azure App Service](https://docs.microsoft.com/azure/app-service/) k hostování vaší aplikace ASP.NET v Azure. Tato webová aplikace bude nakonfigurovaná tak, aby využívala místní nasazení z Gitu. Tato webová aplikace bude také nakonfigurovaná s využitím vašeho připojovacího řetězce SignalR, tajných kódů aplikace OAuth GitHubu a uživatele nasazení.
 
 Kroky v této části používají rozšíření *signalr* pro rozhraní příkazového řádku Azure. Spuštěním následujícího příkazu nainstalujte rozšíření *signalr* pro Azure CLI:
 
@@ -539,14 +539,14 @@ Pokud chcete nasadit váš kód, spusťte následující příkazy v Git Shellu.
 
 Poslední věcí, která zbývá, je aktualizace nastavení **Adresa URL domovské stránky** a **Adresa URL zpětného volání autorizace** aplikace OAuth GitHubu, aby odkazovaly na novou hostovanou aplikaci.
 
-1. Otevřete [https://github.com](https://github.com) v prohlížeči a přejděte do **nastavení** > **Developer settings** > vašeho účtu Pro vývojáře**Oauth Apps**.
+1. V [https://github.com](https://github.com) prohlížeči otevřete prohlížeč a přejděte na **Nastavení** > vašeho účtu**aplikace OAuth****Nastavení** > pro vývojáře.
 
 2. Klikněte na vaši ověřovací aplikaci a aktualizujte nastavení **Adresa URL domovské stránky** a **Adresa URL zpětného volání autorizace**, jak je uvedeno dál:
 
     | Nastavení | Příklad |
     | ------- | ------- |
-    | Adresa URL domovské stránky | https://signalrtestwebapp22665120.azurewebsites.net/home |
-    | Adresa URL zpětného volání autorizace | https://signalrtestwebapp22665120.azurewebsites.net/signin-github |
+    | Adresa URL domovské stránky | `https://signalrtestwebapp22665120.azurewebsites.net/home` |
+    | Adresa URL zpětného volání autorizace | `https://signalrtestwebapp22665120.azurewebsites.net/signin-github` |
 
 3. Přejděte na adresu URL webové aplikace a otestujte aplikaci.
 
@@ -565,7 +565,7 @@ Přihlaste se na web [Azure Portal ](https://portal.azure.com) a klikněte na **
 
 Do textového pole **Filtrovat podle názvu** zadejte název vaší skupiny prostředků. V pokynech v tomto článku se používala skupina prostředků *SignalRTestResources*. Ve výsledcích hledání klikněte na **...** u vaší skupiny prostředků a pak na **Odstranit skupinu prostředků**.
 
-![Odstranění](./media/signalr-concept-authenticate-oauth/signalr-delete-resource-group.png)
+![Odstranit](./media/signalr-concept-authenticate-oauth/signalr-delete-resource-group.png)
 
 Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Potvrďte odstranění zadáním názvu vaší skupiny prostředků a klikněte na **Odstranit**.
 

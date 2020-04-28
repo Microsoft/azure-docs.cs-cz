@@ -1,163 +1,163 @@
 ---
-title: Rozšíření zásad Azure pro kód Visual Studia
-description: Přečtěte si, jak pomocí rozšíření zásad Azure pro kód Visual Studia vyhledat aliasy Správce prostředků.
+title: Azure Policy rozšíření pro Visual Studio Code
+description: Přečtěte si, jak pomocí rozšíření Azure Policy Visual Studio Code vyhledat Správce prostředků aliasy.
 ms.date: 03/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 5e31af652f2746adbf0eda386bdb178c752f5f84
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 0c4e04cc352744fed1c7c2965f8096f0f05c2a50
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641022"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82182561"
 ---
-# <a name="use-azure-policy-extension-for-visual-studio-code"></a>Použití rozšíření zásad Azure pro kód Visual Studia
+# <a name="use-azure-policy-extension-for-visual-studio-code"></a>Použít rozšíření Azure Policy pro Visual Studio Code
 
-> Platí pro rozšíření rozšíření zásad Azure **verze 0.0.21** a novější
+> Platí pro Azure Policy rozšíření verze **0.0.21** a novější.
 
-Zjistěte, jak pomocí rozšíření zásad Azure pro Visual Studio Code vyhledat [aliasy](../concepts/definition-structure.md#aliases) a zkontrolovat prostředky a zásady. Nejprve popíšeme, jak nainstalovat rozšíření zásad Azure v kódu Visual Studia. Pak si projdeme, jak vyhledat aliasy.
+Naučte se používat rozšíření Azure Policy pro Visual Studio Code k vyhledání [aliasů](../concepts/definition-structure.md#aliases) a kontrole prostředků a zásad. Nejdřív popíšeme, jak nainstalovat rozšíření Azure Policy v Visual Studio Code. Pak vás provedeme vyhledáním aliasů.
 
-Rozšíření zásad Azure pro visual studio kód lze nainstalovat na všech platformách, které jsou podporované Visual Studio Code. Tato podpora zahrnuje Windows, Linux a macOS.
+Azure Policy rozšíření pro Visual Studio Code lze nainstalovat na všechny platformy, které Visual Studio Code podporuje. Tato podpora zahrnuje Windows, Linux a macOS.
 
 > [!NOTE]
-> Změny provedené místně zásad zobrazené v rozšíření zásad Azure pro visual studio kód nejsou synchronizovány s Azure.
+> Změny provedené lokálně v zásadách zobrazených v rozšíření Azure Policy pro Visual Studio Code se nesynchronizují do Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Následující položky jsou vyžadovány pro dokončení kroků v tomto článku:
+K dokončení kroků v tomto článku jsou vyžadovány následující položky:
 
-- Předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
-- [Visual Studio kód](https://code.visualstudio.com).
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+- [Visual Studio Code](https://code.visualstudio.com).
 
-## <a name="install-azure-policy-extension"></a>Instalace rozšíření zásad Azure
+## <a name="install-azure-policy-extension"></a>Nainstalovat rozšíření Azure Policy
 
-Po splnění požadavků můžete nainstalovat rozšíření zásad Azure pro Visual Studio Code takto:
+Po splnění požadavků můžete nainstalovat rozšíření Azure Policy pro Visual Studio Code pomocí následujících kroků:
 
 1. Otevřete Visual Studio Code.
 
-1. Na řádku nabídek přejděte na **Zobrazit** > **rozšíření**.
+1. V řádku nabídek přejděte na **Zobrazit** > **rozšíření**.
 
-1. Do vyhledávacího pole zadejte **Zásady Azure**.
+1. Do vyhledávacího pole zadejte **Azure Policy**.
 
-1. Ve výsledcích hledání vyberte **Zásady Azure** a pak vyberte **Instalovat**.
+1. Ve výsledcích hledání vyberte **Azure Policy** a pak vyberte **nainstalovat**.
 
-1. V případě potřeby vyberte **znovu načíst.**
+1. V případě potřeby vyberte **znovu načíst** .
 
 ## <a name="set-the-azure-environment"></a>Nastavení prostředí Azure
 
-Pro uživatele národního cloudu nejprve nastavte prostředí Azure takto:
+V případě národního cloudového uživatele použijte následující postup a nastavte prostředí Azure jako první:
 
-1. Vyberte **Soubor\Předvolby\Nastavení**.
+1. Vyberte **File\Preferences\Settings**.
 
-1. Hledání podle následujícího řetězce: _Azure: Cloud_
+1. Hledat v následujícím řetězci: _Azure: Cloud_
 
-1. Ze seznamu vyberte národní cloud:
+1. Ze seznamu Vyberte cloudovou zemi:
 
-   ![Nastavení výchozího přihlášení do cloudu Azure pro kód Visual Studia](../media/extension-for-vscode/set-default-azure-cloud-sign-in.png)
+   :::image type="content" source="../media/extension-for-vscode/set-default-azure-cloud-sign-in.png" alt-text="Nastavení výchozího cloudového přihlášení Azure pro Visual Studio Code" border="false":::
 
 ## <a name="connect-to-an-azure-account"></a>Připojení k účtu Azure
 
-Chcete-li vyhodnotit prostředky a vyhledávací aliasy, musíte se připojit ke svému účtu Azure. Chcete-li se připojit k Azure z Visual Studia Code, postupujte takto:
+K vyhodnocení prostředků a aliasů pro vyhledávání musíte být připojeni ke svému účtu Azure. Pomocí těchto kroků se připojte k Azure z Visual Studio Code:
 
-1. Přihlaste se k Azure z rozšíření zásad Azure nebo palety příkazů.
+1. Přihlaste se k Azure z rozšíření Azure Policy nebo z palety příkazů.
 
-   - Rozšíření zásad Azure
+   - Rozšíření Azure Policy
 
-     Z rozšíření Zásad Azure vyberte **Přihlásit se k Azure**.
+     V rozšíření Azure Policy vyberte **Přihlásit se k Azure**.
 
-     ![Přihlášení ke cloudu Azure pro kód Visual Studia z rozšíření zásad Azure](../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png)
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png" alt-text="Přihlášení do cloudu Azure pro Visual Studio Code z rozšíření Azure Policy" border="false":::
 
    - Paleta příkazů
 
-     Na řádku nabídek přejděte na **Zobrazit** > **paletu příkazů**a zadejte **Azure: Přihlásit se**.
+     V řádku nabídek přejděte na **Zobrazit** > **paleta příkazů**a zadejte **Azure: přihlásit**se.
 
-     ![Přihlášení k cloudu Azure pro kód Visual Studia z palety příkazů](../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png)
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="Přihlášení k Azure cloudu pro Visual Studio Code z palety příkazů" border="false":::
 
-1. Podle přihlašovacích pokynů se přihlaste do Azure. Po připojení se název účtu Azure zobrazí na stavovém řádku v dolní části okna Kódu Visual Studia.
+1. Postupujte podle pokynů pro přihlášení a přihlaste se k Azure. Po připojení se váš název účtu Azure zobrazí na stavovém řádku v dolní části okna Visual Studio Code.
 
-## <a name="select-subscriptions"></a>Vybrat předplatná
+## <a name="select-subscriptions"></a>Vybrat odběry
 
-Při prvním přihlášení jsou pouze výchozí prostředky předplatného a zásady načteny rozšíření zásad Azure. Chcete-li přidat nebo odebrat předplatná ze zobrazení prostředků a zásad, postupujte takto:
+Při prvním přihlášení se rozšíření Azure Policy načte jenom výchozí prostředky a zásady předplatného. Pokud chcete přidat nebo odebrat předplatná, která se budou zobrazovat v prostředcích a zásadách, použijte následující postup:
 
-1. Spusťte příkaz předplatného z palety příkazů nebo zápatí okna.
+1. Spusťte příkaz odběr z palety příkazů nebo z zápatí okna.
 
    - Paleta příkazů: 
 
-     Na řádku nabídek přejděte na **Zobrazit** > **paletu příkazů**a zadejte **Azure: Vyberte předplatná**.
+     V řádku nabídek přejděte na **Zobrazit** > **paleta příkazů**a zadejte **Azure: Vyberte odběry**.
 
    - Zápatí okna
 
      V zápatí okna v dolní části obrazovky vyberte segment, který odpovídá **Azure: \<váš účet\>**.
 
-1. Pomocí pole filtru můžete rychle najít předplatná podle názvu. Potom zkontrolujte nebo odeberte kontrolu z každého předplatného a nastavte předplatná zobrazená v rozšíření zásad Azure. Po přidání nebo odebrání odběrů, které chcete zobrazit, vyberte **ok**.
+1. K rychlému vyhledání předplatných podle názvu použijte pole filtru. Potom zaškrtněte nebo odstraňte kontrolu z každého předplatného a nastavte odběry zobrazené rozšířením Azure Policy. Až se dokončí přidávání nebo odebírání předplatných k zobrazení, vyberte **OK**.
 
-## <a name="search-for-and-view-resources"></a>Hledání a zobrazení zdrojů
+## <a name="search-for-and-view-resources"></a>Hledání a zobrazení prostředků
 
-Rozšíření zásad Azure uvádí prostředky ve vybraných předplatných podle zprostředkovatele prostředků a podle skupiny prostředků v podokně **prostředků.** Stromové zobrazení obsahuje následující seskupení prostředků v rámci vybraného předplatného nebo na úrovni předplatného:
+Rozšíření Azure Policy obsahuje seznam prostředků v vybraných předplatných podle poskytovatele prostředků a skupiny prostředků v podokně **prostředky** . Stromová kopie obsahuje následující seskupení prostředků v rámci vybraného předplatného nebo na úrovni předplatného:
 
 - **Poskytovatelé prostředků**
-  - Každý registrovaný zprostředkovatel prostředků s prostředky a souvisejícípodřízené prostředky, které mají aliasy zásad
+  - Každý registrovaný poskytovatel prostředků s prostředky a souvisejícími podřízenými prostředky, které mají aliasy zásad
 - **Skupiny prostředků**
-  - Všechny prostředky podle skupiny prostředků, ve které se najdou
+  - Všechny prostředky podle skupiny prostředků, na kterých se nachází
 
-Ve výchozím nastavení rozšíření filtruje část Zprostředkovatel prostředků podle existujících prostředků a prostředků, které mají aliasy zásad. Změňte toto chování v **rozšíření** > **nastavení** > **Azure Zásady** zobrazíte všechny zprostředkovatele prostředků bez filtrování.
+Ve výchozím nastavení rozšíření filtruje část poskytovatele prostředků pomocí existujících prostředků a prostředků, které mají aliasy zásad. Toto chování můžete změnit v části **Nastavení** > **rozšíření** > **Azure Policy** , abyste viděli všechny poskytovatele prostředků bez filtrování.
 
-Zákazníci se stovkami nebo tisíci prostředků v jednom předplatném mohou upřednostňovat prohledávatelný způsob, jak najít své prostředky. Rozšíření zásad Azure umožňuje vyhledat konkrétní prostředek pomocí následujících kroků:
+Zákazníci se stovkami nebo tisíci prostředků v rámci jednoho předplatného můžou preferovat způsob, jak vyhledat své prostředky. Rozšíření Azure Policy umožňuje vyhledat konkrétní prostředek pomocí následujících kroků:
 
-1. Spusťte vyhledávací rozhraní z rozšíření zásad Azure nebo palety příkazů.
+1. Spusťte vyhledávací rozhraní z rozšíření Azure Policy nebo paleta příkazů.
 
-   - Rozšíření zásad Azure
+   - Rozšíření Azure Policy
 
-     V rozšíření Zásad Azure najeďte na panel **Prostředky** a vyberte tři tečky a pak vyberte **Hledat prostředky**.
+     Z rozšíření Azure Policy najeďte myší na panel **prostředky** a vyberte tři tečky a pak vyberte **Hledat prostředky**.
 
    - Paleta příkazů:
 
-     Na řádku nabídek přejděte na **Zobrazit** > **paletu příkazů**a zadejte **Zdroje: Hledat zdroje**.
+     V řádku nabídek přejděte na **zobrazení** > **paleta příkazů**a zadejte **prostředky: Hledat prostředky**.
 
-1. Pokud je pro zobrazení vybráno více než jedno předplatné, vyberte pomocí filtru, které předplatné chcete vyhledat.
+1. Pokud je vybráno více než jedno předplatné k zobrazení, použijte filtr k výběru předplatného, které chcete vyhledat.
 
-1. Pomocí filtru vyberte skupinu prostředků, která má být prohledána a která je součástí dříve zvoleného předplatného.
+1. Pomocí filtru vyberte skupinu prostředků, kterou chcete vyhledat, která je součástí dříve zvoleného předplatného.
 
-1. Pomocí filtru vyberte, který zdroj se má zobrazit. Filtr funguje jak pro název prostředku, tak pro typ prostředku.
+1. Pomocí filtru vyberte, který prostředek se má zobrazit. Filtr funguje jak pro název prostředku, tak pro typ prostředku.
 
-## <a name="discover-aliases-for-resource-properties"></a>Zjišťování aliasů pro vlastnosti prostředků
+## <a name="discover-aliases-for-resource-properties"></a>Zjištění aliasů pro vlastnosti prostředku
 
-Když je vybrán prostředek, ať už prostřednictvím vyhledávacího rozhraní nebo jeho výběrem v zobrazení stromu, rozšíření Zásad azure otevře soubor JSON představující tento prostředek a všechny jeho hodnoty vlastností Správce prostředků.
+Pokud je vybrán prostředek, ať už prostřednictvím rozhraní vyhledávání, nebo jeho výběrem v ovládacím prvku TreeView, Azure Policy rozšíření otevře soubor JSON, který představuje tento prostředek a všechny jeho Správce prostředků hodnoty vlastností.
 
-Po otevření prostředku se na jenom nad názvem nebo hodnotou správce prostředků zobrazí alias Zásad azure, pokud existuje. V tomto příkladu je `Microsoft.Compute/virtualMachines` prostředek typ prostředku a vlastnost **properties.storageProfile.imageReference.offer** je nad. Najetím je zobrazeny odpovídající aliasy.
+Jakmile je prostředek otevřený, najeďte myší na Správce prostředků název vlastnosti nebo hodnota zobrazí alias Azure Policy, pokud jeden existuje. V tomto příkladu je prostředkem typ `Microsoft.Compute/virtualMachines` prostředku a vlastnost **. storageProfile. element imagereference. Offer** je najetí myší. Při najetí myší se zobrazí vyhovující aliasy.
 
-![Vznášející se rozšíření zásad Azure zobrazuje alias vlastnosti Správce prostředků.](../media/extension-for-vscode/extension-hover-shows-property-alias.png)
+:::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Azure Policy se při najetí myší zobrazuje alias vlastnosti Správce prostředků" border="false":::
 
 ## <a name="search-for-and-view-policies-and-assignments"></a>Hledání a zobrazení zásad a přiřazení
 
-Rozšíření zásad Azure uvádí typy zásad a přiřazení zásad jako stromové zobrazení pro vybraná předplatná, která se mají zobrazit v podokně **Zásady.** Zákazníci se stovkami nebo tisíci zásad nebo přiřazení v jednom předplatném mohou upřednostňovat prohledávatelný způsob, jak najít své zásady nebo přiřazení. Rozšíření zásad Azure umožňuje vyhledat konkrétní zásady nebo přiřazení pomocí následujících kroků:
+Rozšíření Azure Policy obsahuje seznam typů zásad a přiřazení zásad jako strom pro předplatná, která se mají zobrazit v podokně **zásady** . Zákazníci se stovkami nebo tisíci zásad nebo přiřazení v rámci jednoho předplatného můžou upřednostňovat způsob, jak vyhledat své zásady nebo přiřazení. Rozšíření Azure Policy umožňuje vyhledat konkrétní zásadu nebo přiřazení pomocí následujících kroků:
 
-1. Spusťte vyhledávací rozhraní z rozšíření zásad Azure nebo palety příkazů.
+1. Spusťte vyhledávací rozhraní z rozšíření Azure Policy nebo paleta příkazů.
 
-   - Rozšíření zásad Azure
+   - Rozšíření Azure Policy
 
-     V rozšíření Zásad Azure najeďte na panel **Zásady** a vyberte tři tečky a vyberte **Zásady vyhledávání**.
+     Z rozšíření Azure Policy najeďte myší na panel **zásady** a vyberte tři tečky a pak vyberte **zásady hledání**.
 
    - Paleta příkazů:
 
-     Na řádku nabídek přejděte na **Zobrazit** > **paletu příkazů**a zadejte **Zásady: Zásady hledání**.
+     V řádku nabídek přejděte na **Zobrazit** > **paleta příkazů**a zadejte **zásady: zásady hledání**.
 
-1. Pokud je pro zobrazení vybráno více než jedno předplatné, vyberte pomocí filtru, které předplatné chcete vyhledat.
+1. Pokud je vybráno více než jedno předplatné k zobrazení, použijte filtr k výběru předplatného, které chcete vyhledat.
 
-1. Pomocí filtru vyberte typ zásady nebo přiřazení k vyhledávání, které je součástí dříve zvoleného předplatného.
+1. Pomocí filtru vyberte, který typ zásad nebo přiřazení chcete vyhledat, který je součástí dříve zvoleného předplatného.
 
-1. Pomocí filtru vyberte, které zásady nebo které se mají zobrazit. Filtr funguje pro _displayName_ pro definici zásady nebo přiřazení zásad.
+1. Pomocí filtru vyberte, které zásady nebo které chcete zobrazit. Filtr pracuje s parametrem _DisplayName_ pro definici zásady nebo přiřazení zásady.
 
-Při výběru zásady nebo přiřazení, ať už prostřednictvím vyhledávacího rozhraní nebo výběrem v zobrazení stromu, rozšíření zásad Azure otevře JSON, který představuje zásady nebo přiřazení a všechny jeho hodnoty vlastností Správce prostředků. Rozšíření můžete ověřit otevřené schéma Azure Policy JSON.
+Když vyberete zásadu nebo přiřazení, ať už přes vyhledávací rozhraní, nebo ho vyberete v ovládacím prvku TreeView, Azure Policy rozšíření otevře JSON, který představuje zásadu nebo přiřazení a všechny jeho Správce prostředků hodnoty vlastností. Rozšíření může ověřit otevřené schéma JSON Azure Policy.
 
 ## <a name="sign-out"></a>Odhlásit se
 
-Na řádku nabídek přejděte na **Zobrazit** > **paletu příkazů**a zadejte **Azure: Odhlásit se**.
+V řádku nabídek přejděte na **Zobrazit** > **paleta příkazů**a pak zadejte **Azure: odhlásit**se.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Projděte si příklady na [ukázkách zásad Azure](../samples/index.md).
+- Přečtěte si příklady na [Azure Policy Samples](../samples/index.md).
 - Projděte si [strukturu definic Azure Policy](../concepts/definition-structure.md).
 - Projděte si [Vysvětlení efektů zásad](../concepts/effects.md).
-- Pochopit, jak [programově vytvářet zásady](programmatically-create.md).
-- Přečtěte si, jak [napravit nekompatibilní prostředky](remediate-resources.md).
-- Zkontrolujte, co je skupina pro správu [pomocí organizace Uspořádat prostředky pomocí skupin pro správu Azure](../../management-groups/overview.md).
+- Zjistěte, jak [programově vytvářet zásady](programmatically-create.md).
+- Přečtěte si, jak [opravit prostředky, které nedodržují předpisy](remediate-resources.md).
+- Seznamte se s tím, co skupina pro správu [organizuje vaše prostředky pomocí skupin pro správu Azure](../../management-groups/overview.md).

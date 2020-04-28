@@ -1,6 +1,6 @@
 ---
-title: Odebrání účtů z mezipaměti tokenů při odhlašování – platforma identit Microsoftu | Azure
-description: Přečtěte si, jak odebrat účet z mezipaměti tokenů při odhlašování
+title: Odebrání účtů z mezipaměti tokenů při odhlašování – Microsoft Identity Platform | Azure
+description: Zjistěte, jak odebrat účet z mezipaměti tokenů při odhlášení.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,66 +11,38 @@ ms.workload: identity
 ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 934b756329065c466f21fca1480247065bdea28b
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: e138b3513b42dda47b0a114d866d657e18e3e393
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881608"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181643"
 ---
-# <a name="a-web-app-that-calls-web-apis-remove-accounts-from-the-token-cache-on-global-sign-out"></a>Webová aplikace, která volá webová api: Odebrání účtů z mezipaměti tokenů při globálním odhlašování
+# <a name="a-web-app-that-calls-web-apis-remove-accounts-from-the-token-cache-on-global-sign-out"></a>Webová aplikace, která volá webová rozhraní API: Odebrání účtů z mezipaměti tokenů při globálním odhlašování
 
-Zjistili jste, jak přidat přihlášení do webové aplikace ve [webové aplikaci, která se přihlašuje k uživatelům: Přihlášení a odhlášení](scenario-web-app-sign-user-sign-in.md).
+Zjistili jste, jak přidat přihlášení do webové aplikace ve [webové aplikaci, která se přihlásí uživatelům: přihlášení a](scenario-web-app-sign-user-sign-in.md)odhlášení.
 
-Odhlášení se liší u webové aplikace, která volá webové apis. Když se uživatel odhlásí z vaší aplikace nebo z libovolné aplikace, je nutné odebrat tokeny přidružené k tomuto uživateli z mezipaměti tokenů.
+Odhlášení se liší u webové aplikace, která volá webová rozhraní API. Když se uživatel odhlásí z vaší aplikace nebo z jakékoli aplikace, musíte tokeny přidružené k tomuto uživateli odebrat z mezipaměti tokenů.
 
-## <a name="intercept-the-callback-after-single-sign-out"></a>Zachycení zpětného volání po jednotném odhlášení
+## <a name="intercept-the-callback-after-single-sign-out"></a>Zachytit zpětné volání po jednotném odhlašování
 
-Chcete-li vymazat položku mezipaměti tokenu přidruženou k účtu, který se odhlásil, může vaše aplikace zachytit událost po. `logout` Webové aplikace ukládají přístupové tokeny pro každého uživatele v mezipaměti tokenů. Zachycením po `logout` zpětnévolání, vaše webová aplikace můžete odebrat uživatele z mezipaměti.
+Pokud chcete vymazat položku mezipaměti tokenů přidruženou k účtu, který se odhlásil, může vaše aplikace zachytit `logout` událost po události. Webové aplikace ukládají přístupové tokeny pro každého uživatele v mezipaměti tokenů. Zachytáváním po `logout` zpětném volání může webová aplikace odebrat uživatele z mezipaměti.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Pro ASP.NET Core je mechanismus zachycení `AddMsal()` znázorněn v metodě [WebAppServiceCollectionExtensions.cs#L151-L157](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L157).
-
-Adresa URL odhlášení, kterou jste dříve zaregistrovali pro vaši aplikaci, umožňuje implementovat jednotné odhlášení. Koncový bod platformy `logout` identity Microsoftvolá adresu URL odhlášení. K tomuto volání dojde, pokud se odhlášení spustilo z vaší webové aplikace nebo z jiné webové aplikace nebo prohlížeče. Další informace naleznete [v tématu Jednotné odhlášení](v2-protocols-oidc.md#single-sign-out).
-
-```csharp
-public static class WebAppServiceCollectionExtensions
-{
- public static IServiceCollection AddMsal(this IServiceCollection services, IConfiguration configuration, IEnumerable<string> initialScopes, string configSectionName = "AzureAd")
- {
-  // Code omitted here
-
-  services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
-  {
-   // Code omitted here
-
-   // Handling the sign-out: Remove the account from MSAL.NET cache.
-   options.Events.OnRedirectToIdentityProviderForSignOut = async context =>
-   {
-    // Remove the account from MSAL.NET token cache.
-    var tokenAcquisition = context.HttpContext.RequestServices.GetRequiredService<ITokenAcquisition>();
-    await tokenAcquisition.RemoveAccountAsync(context).ConfigureAwait(false);
-   };
-  });
-  return services;
- }
-}
-```
-
-Kód pro `RemoveAccountAsync` je k dispozici od [Microsoft.Identity.Web/TokenAcquisition.cs#L264-L288](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/TokenAcquisition.cs#L264-L288).
+Microsoft. identity. Web se stará o implementaci odhlašování za vás.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-Ukázka ASP.NET neodebere účty z mezipaměti při globálním odhlašování.
+Ukázka ASP.NET neodebírá účty z mezipaměti při globálním odhlašování.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Ukázka jazyka Java neodebere účty z mezipaměti při globálním odhlašování.
+Ukázka Java neodebírá účty z mezipaměti při globálním odhlašování.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Ukázka Pythonu neodebere účty z mezipaměti při globálním odhlašování.
+Ukázka Pythonu neodebírá účty z mezipaměti při globálním odhlašování.
 
 ---
 

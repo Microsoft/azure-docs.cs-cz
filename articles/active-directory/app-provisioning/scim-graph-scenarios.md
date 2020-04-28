@@ -1,6 +1,6 @@
 ---
-title: Použití SCIM, Microsoft Graphu a zřizovací služby Azure AD pro zřizování uživatelů a obohacení aplikace o data, která potřebuje | Dokumenty společnosti Microsoft
-description: Společné použití scim a microsoft graphu k zřizování uživatelů a obohacování aplikace o data, která potřebuje .
+title: Použití SCIM, Microsoft Graph a služby zřizování Azure AD ke zřízení uživatelů a rozšíření vaší aplikace s potřebnými daty | Microsoft Docs
+description: Použití SCIM a Microsoft Graph dohromady ke zřízení uživatelů a rozšíření vaší aplikace s potřebnými daty.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -12,36 +12,41 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 04/23/2020
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 134237b66a803abaf07621112e3a4a518a3ae8a7
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
-ms.translationtype: MT
+ms.openlocfilehash: 79ffe0474fcfeb28b49f5c2504ede86cd38459d9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82087618"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181830"
 ---
-# <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>Společné používání SCIM a Microsoft Graphu k zřizování uživatelů a obohacování aplikace o data, která potřebuje
+# <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>Použití SCIM a Microsoft Graph společně ke zřízení uživatelů a rozšíření vaší aplikace s potřebnými daty
 
-**Cílová skupina:** Tento dokument je určen pro vývojáře vytváření aplikací integrovaných s Azure AD. Pro ostatní, kteří chtějí integrovat stávající aplikace, jako je Zoom, ServiceNow a DropBox můžete přeskočit a zkontrolujte aplikace specifické [návody](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list). 
+**Cílová skupina:** Tento dokument je zaměřený na vývojáře, kteří vytvářejí aplikace, které mají být integrovány se službou Azure AD. Pokud chcete ostatním uživatelům, kteří chtějí používat aplikace, které už jsou integrované s Azure AD, jako je třeba Lupa, ServiceNow a DropBox, můžete tuto akci přeskočit a podívat se na konkrétní [kurzy](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) k aplikacím nebo si projít, [Jak služba zřizování funguje](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works).
 
 **Typické scénáře**
 
+Azure AD poskytuje od služby Box službu pro zřizování a rozšiřitelnou platformu pro vytváření aplikací na. Rozhodovací strom popisuje, jak má vývojář použít [SCIM](https://aka.ms/scimoverview) a [Microsoft Graph](https://docs.microsoft.com/graph/overview) k automatizaci zřizování. 
+
 > [!div class="checklist"]
-> * Automatické vytváření uživatelů v mé aplikaci
-> * Automatické odebrání uživatelů z mé aplikace, když už k ní nemají přístup
-> * Integrace mé aplikace s více poskytovateli identit pro zřizování
-> * Obohaťte aplikaci o data ze služeb Microsoftu, jako je Sharepoint, Outlook a Office.
-> * Automatické vytváření, aktualizace a odstraňování uživatelů a skupin ve službě Azure AD a Active Directory
+> * Automaticky vytvářet uživatele v mojí aplikaci
+> * Automaticky odebrat uživatele z aplikace, když k nim nemají přístup
+> * Integrujte moji aplikaci s více zprostředkovateli identity pro zřizování
+> * Rozšířit svou aplikaci o data ze služeb Microsoftu, jako jsou týmy, Outlook a Office
+> * Automatické vytváření, aktualizace a odstraňování uživatelů a skupin v Azure AD a Active Directory
 
-![Rozhodovací strom scim grafu](./media/user-provisioning/scim-graph.png)
+![Rozhodovací strom grafu SCIM](./media/user-provisioning/scim-graph.png)
 
-## <a name="scenario-1-automatically-create-users-in-my-app"></a>Scénář 1: Automatické vytváření uživatelů v mé aplikaci
-Správci IT dnes ručně vytvářejí uživatelské účty v mé aplikaci pokaždé, když někdo potřebuje přístup nebo pravidelně nahrává soubory CSV. Tento proces je časově náročný pro zákazníky a zpomaluje přijetí mé žádosti. Vše, co potřebuji, je základní informace o [uživateli,](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0) jako je jméno, e-mail a userPrincipalName k vytvoření uživatele. Kromě toho moji zákazníci používají různé ipadresy a nemám prostředky k údržbě synchronizačního modulu a vlastních integrací s každým idp. 
+## <a name="scenario-1-automatically-create-users-in-my-app"></a>Scénář 1: automatické vytváření uživatelů v mojí aplikaci
+V dnešní době správci IT zřídí uživatele ručním vytvářením uživatelských účtů nebo pravidelným nahráváním souborů CSV do své aplikace. Proces je časově náročný pro zákazníky a zpomaluje přijetí naší aplikace. Vše Potřebuji jenom základní uživatelské informace, jako je jméno, e-mail a userPrincipalName, abyste mohli vytvořit uživatele. 
 
-**Doporučení:** Podpora koncový bod kompatibilní s SCIM [/Users.](https://aka.ms/scimreferencecode) Vaši zákazníci budou moci snadno použít tento koncový bod k integraci se službou zřizování Azure AD a automaticky vytvářet uživatelské účty, když potřebují přístup. Můžete vytvořit koncový bod jednou a bude kompatibilní se všemi ipadresy, aniž by bylo nutné udržovat synchronizační modul. Podívejte se na ukázkový požadavek níže, jak by byl vytvořen uživatel.
+**Doporučení**: 
+* Pokud vaši zákazníci používají různé zprostředkovatelů identity a nechcete spravovat synchronizační modul pro integraci s každým, podporují koncový bod SCIM splňující požadavky [/Users](https://aka.ms/scimreferencecode) . Vaši zákazníci budou moct tento koncový bod snadno použít k integraci se službou zřizování Azure AD a automaticky vytvářet uživatelské účty, když potřebují přístup. Koncový bod můžete vytvořit jednou a bude kompatibilní se všemi zprostředkovatelů identity. Další informace o tom, jak se uživatel vytvoří pomocí SCIM, najdete v níže uvedeném příkladu.
+* Pokud vyžadujete, aby byla uživatelská data v objektu uživatele v Azure AD a dalších datech od Microsoftu, zvažte vytvoření koncového bodu SCIM pro zřizování uživatelů a volání do Microsoft Graph k získání zbytku dat. 
+
 
 ```json
 POST /Users
@@ -65,9 +70,9 @@ POST /Users
 ```
     
 ## <a name="scenario-2-automatically-remove-users-from-my-app"></a>Scénář 2: Automatické odebrání uživatelů z mé aplikace
-Zákazníci, kteří používají moji aplikaci, jsou zaměřeni na zabezpečení a mají požadavky na zásady, aby odebrali účty, když je zaměstnanci již nepotřebují. Jak lze automatizovat deprovisioning z mé aplikace?
+Zákazníci, kteří používají moji aplikaci, jsou zaměřené na zabezpečení a mají požadavky na zásady správného řízení pro odebrání účtů, pokud je už zaměstnanci nepotřebují. Jak můžu automatizovat zrušení zřizování z mé aplikace?
 
-**Doporučení:** Podpora koncový bod kompatibilní s parametrem SCIM /Users. Služba zřizování Azure AD bude odesílat požadavky na zakázání a odstranění, když uživatel už nemá přístup. Doporučujeme podporovat zakázání i odstranění uživatelů. Podívejte se na příklady níže, jak vypadá požadavek na zakázání a odstranění. 
+**Doporučení:** Podpora koncového bodu SCIM splňujícího požadavky/Users. Služba zřizování Azure AD pošle žádosti o zakázání a odstranění, když uživatel nebude mít přístup už. Doporučujeme, abyste podporovali zakazování i odstraňování uživatelů. V níže uvedených příkladech najdete informace o tom, jak se má požadavek na zakázání a odstranění zobrazit. 
 
 Zakázat uživatele
 ```json
@@ -90,33 +95,33 @@ Odstranění uživatele
 DELETE /Users/5171a35d82074e068ce2 HTTP/1.1
 ```
 
-## <a name="scenario-3-automate-managing-group-memberships-in-my-app"></a>Scénář 3: Automatizace správy členství ve skupinách v mé aplikaci
-Moje aplikace spoléhá na skupiny pro přístup k různým prostředkům a zákazníci chtějí znovu použít skupiny, které mají ve službě Azure AD. Jak můžu importovat skupiny z Azure AD a aktualizovat je, jak se mění členství?  
+## <a name="scenario-3-automate-managing-group-memberships-in-my-app"></a>Scénář 3: automatizace správy členství ve skupinách v aplikaci
+Moje aplikace spoléhá na skupiny pro přístup k různým prostředkům a zákazníci chtějí znovu použít skupiny, které mají ve službě Azure AD. Jak můžu importovat skupiny z Azure AD a nechat je aktualizovat, jakmile se členství změní?  
 
-**Doporučení:** Podpora [koncového bodu](https://aka.ms/scimreferencecode)/Groups kompatibilního s SCIM . Služba zřizování Azure AD se postará o vytváření skupin a správu aktualizací členství ve vaší aplikaci. 
+**Doporučení:** Podpora [koncového bodu](https://aka.ms/scimreferencecode)/Groups kompatibilního s SCIM. Služba zřizování Azure AD se postará o vytváření skupin a správu aktualizací členství ve vaší aplikaci. 
 
-## <a name="scenario-4-enrich-my-app-with-data-from-microsoft-services-such-as-teams-outlook-and-onedrive"></a>Scénář 4: Obohaťte aplikaci o data ze služeb Microsoftu, jako jsou Teams, Outlook a OneDrive.
-Moje aplikace je integrována do Microsoft Teams a spoléhá na data zpráv. Kromě toho ukládáme soubory pro uživatele na OneDrivu. Jak mohu obohatit svou aplikaci o data z těchto služeb a napříč společností Microsoft?
+## <a name="scenario-4-enrich-my-app-with-data-from-microsoft-services-such-as-teams-outlook-and-onedrive"></a>Scénář 4: rozšíření aplikace o data ze služeb Microsoftu, jako jsou týmy, Outlook a OneDrive
+Moje aplikace je integrovaná do Microsoft teams a spoléhá na data zpráv. Kromě toho ukládáme soubory pro uživatele na OneDrivu. Jak můžu aplikaci rozšířit o data z těchto služeb a přes Microsoft?
 
-**Doporučení:** [Microsoft Graph](https://docs.microsoft.com/graph/) je vstupní bod pro přístup k datům společnosti Microsoft. Každá úloha zveřejňuje api s daty, která potřebujete. Graf Microsoft lze použít spolu s [zřizování SCIM](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) pro výše uvedené scénáře. Pomocí scim můžete zřídit základní uživatelské atributy do aplikace při volání do grafu získat další data, která potřebujete. 
+**Doporučení:** [Microsoft Graph](https://docs.microsoft.com/graph/) je vaším vstupním bodem pro přístup k datům Microsoftu. Každé zatížení zveřejňuje rozhraní API s daty, která potřebujete. Microsoft Graph se dá použít společně s [zřizováním SCIM](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) pro výše uvedené scénáře. SCIM můžete použít ke zřízení základních uživatelských atributů do vaší aplikace při volání do grafu, abyste získali všechna další data, která potřebujete. 
 
-## <a name="scenario-5-track-changes-in-microsoft-services-such-as-teams-outlook-and-azure-ad"></a>Scénář 5: Sledujte změny ve službách Microsoftu, jako jsou Teams, Outlook a Azure AD.
-Musím být schopen sledovat změny v Teams a Outlook zprávy a reagovat na ně v reálném čase. Jak lze tyto změny zasunout do aplikace?
+## <a name="scenario-5-track-changes-in-microsoft-services-such-as-teams-outlook-and-azure-ad"></a>Scénář 5: sledování změn v rámci služeb Microsoftu, jako jsou týmy, Outlook a Azure AD
+Potřebuji mít schopnost sledovat změny týmů a zpráv Outlooku a reagovat na ně v reálném čase. Jak mohu tyto změny načíst do mé aplikace?
 
-**Doporučení:** Microsoft Graph poskytuje [oznámení o změnách](https://docs.microsoft.com/graph/webhooks) a sledování změn pro různé prostředky. Všimněte si následujících omezení oznámení o změnách:
-- Pokud příjemce události událost potvrdí událost, ale z jakéhokoli důvodu na ní nezareaguje, může dojít ke ztrátě události.
-- Pokud příjemce události událost potvrdí událost, ale z jakéhokoli důvodu na ní nezareaguje, může dojít ke ztrátě události.
-- Oznámení o změnách neobsahují vždy [data o prostředcích](https://docs.microsoft.com/graph/webhooks-with-resource-data) Z výše uvedených důvodů vývojáři často používají oznámení o změnách spolu se sledováním změn pro scénáře synchronizace. 
+**Doporučení:** Microsoft Graph poskytuje [oznámení o změnách](https://docs.microsoft.com/graph/webhooks) a [sledování změn](https://docs.microsoft.com/graph/delta-query-overview) pro různé prostředky. Všimněte si následujících omezení upozornění na změny:
+- Pokud příjemce události potvrdí událost, ale z nějakého důvodu ji nedokáže zpracovat, může dojít ke ztrátě události.
+- Pokud příjemce události potvrdí událost, ale z nějakého důvodu ji nedokáže zpracovat, může dojít ke ztrátě události.
+- Oznámení o změnách neobsahují vždy [data prostředků](https://docs.microsoft.com/graph/webhooks-with-resource-data) z výše uvedených důvodů. vývojáři často používají oznámení o změnách spolu se sledováním změn pro synchronizační scénáře. 
 
-## <a name="scenario-6-provision-users-and-groups-in-azure-ad"></a>Scénář 6: Zřizování uživatelů a skupin ve službě Azure AD.
-Moje aplikace vytvoří informace o uživateli, které zákazníci potřebují ve službě Azure AD. Může se jedná o hr aplikace než spravuje nábor, komunikační aplikace, která vytváří telefonní čísla pro uživatele, nebo jiné aplikace, která generuje data, která by byla cenná ve službě Azure AD. Jak naplním uživatelský záznam ve službě Azure AD těmito daty? 
+## <a name="scenario-6-provision-users-and-groups-in-azure-ad"></a>Scénář 6: zřízení uživatelů a skupin ve službě Azure AD
+Moje aplikace vytvoří informace o uživateli, který potřebují v Azure AD. Může to být aplikace pro personální oddělení, než Správa pronájmu, komunikační aplikace, která vytvoří telefonní čísla pro uživatele nebo jinou aplikaci, která generuje data, která by byla užitečná v Azure AD. Pomocí těchto dat Návody naplnit záznam uživatele v Azure AD? 
 
-**Doporučení** Graf Microsoftu zveřejňuje koncové body /Users a /Groups, se kterými můžete dnes integrovat a zřídit uživatele do Azure AD. Upozorňujeme, že služba Azure Active Directory nepodporuje zápis těchto uživatelů zpět do služby Active Directory. 
+**Doporučení** Microsoft Graph zpřístupňuje body/Users a/Groups, které můžete integrovat s dnešním účelem pro zřizování uživatelů do Azure AD. Upozorňujeme, že Azure Active Directory nepodporuje zápis uživatelů zpátky do služby Active Directory. 
 
 > [!NOTE]
-> Společnost Microsoft má zřizovací službu, která získává data z hr aplikací, jako je Workday a SuccessFactors. Tyto integrace jsou vytvořeny a spravovány společností Microsoft. Pro připojení nové hr aplikace do naší služby, můžete si ji vyžádat na [UserVoice](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests). 
+> Microsoft má službu zřizování, která vyžádá data z aplikací pro personální oddělení, jako je například Workday a SuccessFactors. Tyto integrace jsou sestavené a spravované Microsoftem. Pro registraci nové aplikace v rámci služby HR pro naši službu ji můžete požádat na [UserVoice](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests). 
 
 ## <a name="related-articles"></a>Související články
 
-- [Kontrola dokumentace k synchronizaci aplikace Microsoft Graph](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
-- [Integrace vlastní aplikace SCIM s Azure AD](use-scim-to-provision-users-and-groups.md)
+- [Projděte si dokumentaci Microsoft Graph synchronizace.](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
+- [Integrace vlastní aplikace v SCIM s Azure AD](use-scim-to-provision-users-and-groups.md)

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 04/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01f969c3bc6f546025b3bbe5826181efdfa69be0
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 02b0d8290e279b6ed4de08d074597154208cac6b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983626"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183976"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s DocuSign
 
@@ -45,7 +45,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * DocuSign podporuje jednotné přihlašování iniciované poskytovatelem služeb (SP).
 
-* DocuSign podporuje zřizování uživatelů *za běhu* .
+* DocuSign podporuje zřizování uživatelů **za běhu** .
 
 * DocuSign podporuje [Automatické zřizování uživatelů](https://docs.microsoft.com/azure/active-directory/saas-apps/docusign-provisioning-tutorial).
 * Po nakonfigurování DocuSign můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
@@ -75,7 +75,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
     1. [Vytvořte Docusign testovacího uživatele](#create-docusign-test-user) , který vygeneruje protějšek B. Simon v Docusign, která je propojená se zastoupením uživatele v Azure AD.
 1. [Otestujte jednotné přihlašování](#test-sso) a ověřte, jestli konfigurace funguje.
 
-## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pokud chcete povolit jednotné přihlašování služby Azure AD v Azure Portal, postupujte následovně:
 
@@ -87,22 +87,30 @@ Pokud chcete povolit jednotné přihlašování služby Azure AD v Azure Portal,
 
 1. V části **základní konfigurace SAML** postupujte následovně:
 
-    a. Do pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login/sp/<IDPID>`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:
 
-    b. Do pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2`
+    `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login/sp/<IDPID>`
+
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:
+
+    `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2`
+
+    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
+    
+    `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login`
 
     > [!NOTE]
-    > Tyto hodnoty v závorkách jsou zástupné symboly. Nahraďte je hodnotami v poli vlastní přihlašovací adresa URL a identifikátor. Tyto podrobnosti jsou vysvětleny v části "zobrazení koncových bodů SAML 2,0" dále v tomto kurzu.
+    > Tyto hodnoty v závorkách jsou zástupné symboly. Nahraďte je hodnotami v poli vlastní přihlašovací adresa URL, identifikátor a adresa URL odpovědi. Tyto podrobnosti jsou vysvětleny v části "zobrazení koncových bodů SAML 2,0" dále v tomto kurzu.
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **certifikát (Base64)** . Vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **certifikát (Base64)**. Vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
+    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
 1. V části **Nastavení Docusign** zkopírujte na základě vašich požadavků příslušnou adresu URL (nebo adresy URL).
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure Portal.
 
@@ -114,7 +122,7 @@ V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure 
    1. Zaškrtněte políčko **Zobrazit heslo** a potom si poznamenejte hodnotu zobrazenou v poli **heslo** .
    1. Vyberte **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části udělíte B. Simon přístup k DocuSign, aby tento uživatel mohl používat jednotné přihlašování Azure.
 
@@ -122,7 +130,7 @@ V této části udělíte B. Simon přístup k DocuSign, aby tento uživatel moh
 1. V seznamu aplikace vyberte **Docusign**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
 
@@ -206,20 +214,23 @@ V této části udělíte B. Simon přístup k DocuSign, aby tento uživatel moh
        ![Zprostředkovatelé identity/koncové body][59]
 
     l. V části **zobrazení koncových bodů SAML 2,0** na portálu pro správu Docusign postupujte takto:
-       1. Zkopírujte **adresu URL vystavitele poskytovatele služby**a vložte ji do pole **identifikátor** v **základní části Konfigurace SAML** v Azure Portal.
 
+       ![Zobrazit koncové body SAML 2,0][60]
+       
+       1. Zkopírujte **adresu URL vystavitele poskytovatele služby**a vložte ji do pole **identifikátor** v **základní části Konfigurace SAML** v Azure Portal.
+       
+       1. Zkopírujte **adresu URL služby vyhodnocení poskytovatele služby**a vložte ji do pole **Adresa URL odpovědi** v části **základní konfigurace SAML** v Azure Portal.
+       
        1. Zkopírujte **přihlašovací adresu URL poskytovatele služby**a pak ji vložte do pole **Adresa URL pro přihlášení** v základní části **Konfigurace SAML** v Azure Portal.
 
        1. Vyberte **Zavřít**.
-
-       ![Zobrazit koncové body SAML 2,0][60]
 
 ### <a name="create-docusign-test-user"></a>Vytvořit testovacího uživatele DocuSign
 
 V této části se v DocuSign vytvoří uživatel s názvem B. Simon. DocuSign podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě v DocuSign neexistuje, vytvoří se po ověření nový.
 
->[!Note]
->Pokud potřebujete ručně vytvořit uživatele, obraťte se na [tým podpory Docusign](https://support.docusign.com/).
+> [!Note]
+> Pokud potřebujete ručně vytvořit uživatele, obraťte se na [tým podpory Docusign](https://support.docusign.com/).
 
 ## <a name="test-sso"></a>Test SSO 
 
@@ -227,7 +238,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu vyberete dlaždici DocuSign, měli byste se automaticky přihlásit k instanci DocuSign, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
 - [Kurzy týkající se integrace aplikací SaaS s Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

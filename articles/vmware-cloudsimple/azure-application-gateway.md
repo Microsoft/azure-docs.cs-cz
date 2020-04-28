@@ -1,6 +1,6 @@
 ---
-title: Použití aplikační brány Azure s virtuálními počítači VMware
-description: Popisuje, jak používat aplikační bránu Azure ke správě příchozího webového provozu pro webové servery spuštěné ve virtuálních počítačích VMware, vyhrává prostředí CloudSimple Private Cloud.
+title: Použití Azure Application Gateway s virtuálními počítači VMware
+description: Popisuje, jak pomocí služby Azure Application Gateway spravovat příchozí webový provoz na webových serverech, které běží na virtuálních počítačích VMware, do prostředí privátního cloudu CloudSimple.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -8,72 +8,72 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2cbfdd358fdfd5403c677c067376142169cdc6bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7dce0181987b7e61b243a7eb0e13b7ed687eb08
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77015452"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185689"
 ---
-# <a name="use-azure-application-gateway-with-vmware-virtual-machines-in-the-cloudsimple-private-cloud-environment"></a>Použití aplikační brány Azure s virtuálními počítači VMware v prostředí CloudSimple Privátního cloudu
+# <a name="use-azure-application-gateway-with-vmware-virtual-machines-in-the-cloudsimple-private-cloud-environment"></a>Použití Azure Application Gateway s virtuálními počítači VMware v prostředí privátního cloudu CloudSimple
 
-Azure Application Gateway můžete použít ke správě příchozího webového provozu pro vaše webové servery spuštěné ve virtuálních počítačích VMware v prostředí CloudSimple Private Cloud.
+Azure Application Gateway můžete použít ke správě příchozího webového provozu pro webové servery běžící na virtuálních počítačích VMware v rámci vašeho privátního cloudového prostředí CloudSimple.
 
-Využitím Azure Application Gateway v hybridním nasazení veřejného a soukromého sektoru můžete spravovat webový provoz do vašich aplikací, poskytovat zabezpečené front-endy a offload SSL zpracování pro jejich služby spuštěné v prostředí VMware. Azure Application Gateway směruje příchozí webový provoz do back-endového fondu instancí, které se v prostředích VMware ubytovají podle nakonfigurovaných pravidel a sond stavu.
+Díky využití Azure Application Gateway v hybridním nasazení veřejného privátního prostředí můžete spravovat webový provoz do vašich aplikací, poskytovat zabezpečený front-end a přesměrovat zpracování TLS pro své služby běžící v prostředí VMware. Azure Application Gateway směruje příchozí webový provoz do instancí back-endu, které se nacházejí v prostředí VMware, podle nakonfigurovaných pravidel a sond stavu.
 
-Toto řešení Azure Application Gateway vyžaduje:
+Toto řešení Application Gateway Azure vyžaduje:
 
 * Mít předplatné Azure.
 * Vytvořte a nakonfigurujte virtuální síť Azure a podsíť v rámci virtuální sítě.
-* Vytvořte a nakonfigurujte pravidla skupiny zabezpečení sítě a přepojujte virtuální síť pomocí expressroute do privátního cloudu CloudSimple.
-* Vytvořte & Konfigurace privátního cloudu.
-* Vytvořte & Konfigurace aplikační brány Azure.
+* Vytváření a konfigurace pravidel NSG a partnerských virtuálních sítí pomocí ExpressRoute k privátnímu cloudu CloudSimple.
+* Vytvoření & konfigurace privátního cloudu.
+* Vytvořte & nakonfigurujte Application Gateway Azure.
 
 ## <a name="azure-application-gateway-deployment-scenario"></a>Scénář nasazení Azure Application Gateway
 
-V tomto scénáři azure aplikační brána běží ve vaší virtuální síti Azure. Virtuální síť je připojena k privátnímu cloudu přes okruh ExpressRoute. Všechny podsítě v privátním cloudu jsou IP dosažitelné z podsítí virtuální sítě.
+V tomto scénáři se Azure Application Gateway spouští ve vaší virtuální síti Azure. Virtuální síť je připojená k privátnímu cloudu přes okruh ExpressRoute. Všechny podsítě v privátním cloudu jsou IP adresy dosažitelné z podsítí virtuální sítě.
 
-![Nástroj pro vyrovnávání zatížení Azure ve virtuální síti Azure](media/load-balancer-use-case.png)
+![Azure Load Balancer ve službě Azure Virtual Network](media/load-balancer-use-case.png)
 
 ## <a name="how-to-deploy-the-solution"></a>Jak nasadit řešení
 
-Proces nasazení se skládá z následujících úkolů:
+Proces nasazení se skládá z následujících úloh:
 
-1. [Ověření, zda jsou splněny požadavky](#1-verify-prerequisites)
+1. [Ověření splnění požadavků](#1-verify-prerequisites)
 2. [Připojení virtuálního připojení Azure k privátnímu cloudu](#2-connect-your-azure-virtual-network-to-your-private-cloud)
-3. [Nasazení aplikační brány Azure](#3-deploy-an-azure-application-gateway)
-4. [Vytvoření a konfigurace fondu virtuálních aplikací webového serveru v privátním cloudu](#4-create-and-configure-a-web-server-vm-pool-in-your-private-cloud)
+3. [Nasazení služby Azure Application Gateway](#3-deploy-an-azure-application-gateway)
+4. [Vytvoření a konfigurace fondu virtuálních počítačů webového serveru v privátním cloudu](#4-create-and-configure-a-web-server-vm-pool-in-your-private-cloud)
 
-## <a name="1-verify-prerequisites"></a>1. Ověření požadavků
+## <a name="1-verify-prerequisites"></a>1. Ověření požadovaných součástí
 
-Ověřte, zda jsou tyto požadavky splněny:
+Ověřte, že jsou splněné tyto požadavky:
 
-* Správce prostředků Azure a virtuální síť se už vytvoří.
-* Vyhrazená podsíť (pro aplikační bránu) v rámci virtuální sítě Azure je už vytvořená.
-* CloudSimple Privátní cloud je již vytvořen.
-* Neexistuje žádný konflikt IP mezi podsítěmi IP ve virtuální síti a podsítěmi v privátním cloudu.
+* Azure Resource Manager a virtuální síť už je vytvořená.
+* Vyhrazená podsíť (pro Application Gateway) v rámci vaší virtuální sítě Azure je už vytvořená.
+* Privátní cloud CloudSimple je už vytvořený.
+* Mezi podsítěmi IP ve virtuální síti a podsítěmi v privátním cloudu nedochází ke konfliktu IP adres.
 
-## <a name="2-connect-your-azure-virtual-network-to-your-private-cloud"></a>2. Připojení virtuální sítě Azure k privátnímu cloudu
+## <a name="2-connect-your-azure-virtual-network-to-your-private-cloud"></a>2. Připojte svoji virtuální síť Azure k privátnímu cloudu
 
-Pokud chcete virtuální síť Azure připojit k privátnímu cloudu, postupujte podle tohoto postupu.
+Pokud chcete připojit virtuální síť Azure k privátnímu cloudu, postupujte podle tohoto postupu.
 
-1. [Na portálu CloudSimple zkopírujte informace o partnerskému vztahu ExpressRoute](virtual-network-connection.md).
+1. [Na portálu CloudSimple zkopírujte informace o partnerském vztahu ExpressRoute](virtual-network-connection.md).
 
-2. [Konfigurace brány virtuální sítě pro vaši virtuální síť Azure](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md).
+2. [Nakonfigurujte bránu virtuální sítě pro vaši virtuální síť Azure](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md).
 
-3. [Propojte virtuální síť s okruhem CloudSimple ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#connect-a-vnet-to-a-circuit---different-subscription).
+3. [Připojte virtuální síť k okruhu ExpressRoute CloudSimple](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#connect-a-vnet-to-a-circuit---different-subscription).
 
-4. [Informace o partnerském vztahu, které jste zkopírovali, použijte k propojení virtuální sítě s okruhem ExpressRoute](virtual-network-connection.md).
+4. [Pomocí informací o partnerském vztahu, které jste zkopírovali k propojení virtuální sítě s okruhem ExpressRoute](virtual-network-connection.md).
 
-## <a name="3-deploy-an-azure-application-gateway"></a>3. Nasazení aplikační brány Azure
+## <a name="3-deploy-an-azure-application-gateway"></a>3. nasazení služby Azure Application Gateway
 
-Podrobné pokyny k tomu jsou k dispozici v [části Vytvoření aplikační brány s pravidly směrování na základě cesty pomocí portálu Azure](../application-gateway/create-url-route-portal.md). Zde je přehled požadovaných kroků:
+Podrobné pokyny k tomuto postupu jsou k dispozici v tématu [Vytvoření aplikační brány s pravidly směrování na základě cesty pomocí Azure Portal](../application-gateway/create-url-route-portal.md). Tady je souhrn požadovaných kroků:
 
-1. Vytvořte virtuální síť ve skupině předplatného a prostředků.
-2. Vytvořte podsíť (pro použití jako vyhrazená podsíť) v rámci virtuální sítě.
-3. Vytvořte standardní aplikační bránu (volitelně povolte WAF): Na domovské stránce portálu Azure klikněte na**Networking** > **Brána aplikací** **sítě prostředků** > z levé horní části stránky. Vyberte standardní skladovou položku a velikost a poskytněte informace o předplatném Azure, skupině prostředků a umístění. V případě potřeby vytvořte novou veřejnou IP adresu pro tuto aplikační bránu a zadejte podrobnosti o virtuální síti a vyhrazené podsíti pro aplikační bránu.
-4. Přidejte back-endový fond s virtuálními počítači a přidejte ho do brány aplikace.
+1. Vytvořte ve svém předplatném a skupině prostředků virtuální síť.
+2. Vytvořte podsíť (která se má použít jako vyhrazená podsíť) v rámci vaší virtuální sítě.
+3. Vytvořit standardní Application Gateway (volitelně povolit WAF): na domovské stránce Azure Portal klikněte na **prostředky** > **Networking** > **Application Gateway** sítě v levém horním rohu stránky. Vyberte standardní SKU a velikost a zadejte předplatné Azure, informace o skupině prostředků a umístění. V případě potřeby vytvořte novou veřejnou IP adresu pro tuto aplikační bránu a zadejte podrobnosti o virtuální síti a vyhrazené podsíti pro aplikační bránu.
+4. Přidejte back-end fond s virtuálními počítači a přidejte ho do aplikační brány.
 
-## <a name="4-create-and-configure-a-web-server-vm-pool-in-your-private-cloud"></a>4. Vytvoření a konfigurace fondu virtuálních aplikací webového serveru v privátním cloudu
+## <a name="4-create-and-configure-a-web-server-vm-pool-in-your-private-cloud"></a>4. vytvoření a konfigurace fondu virtuálních počítačů webového serveru v privátním cloudu
 
-V aplikaci vCenter vytvářejte virtuální počítače pomocí operačního systému a webového serveru podle vašeho výběru (například Windows/IIS nebo Linux/Apache). Zvolte podsíť/Síť VLAN, která je určena pro webovou vrstvu ve vašem privátním cloudu. Ověřte, že alespoň jeden virtuální počítač virtuálních počítačích webového serveru je v podsíti webové vrstvy.
+V vCenter vytvořte virtuální počítače s operačním systémem a webovým serverem podle vašeho výběru (například Windows/IIS nebo Linux/Apache). Vyberte podsíť/síť VLAN, která je určená pro webovou vrstvu ve vašem privátním cloudu. Ověřte, že minimálně jeden vNIC virtuálních počítačů webového serveru je na podsíti webové vrstvy.

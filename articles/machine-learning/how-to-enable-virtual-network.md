@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 04/17/2020
-ms.openlocfilehash: bd4dabe1d5fbc4722d03f31492d2118802292df2
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 6cf89790ee125d8d09d9bdead2f6e34dcb73e8f8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82111948"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188119"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Zabezpečení experimentů s Azure ML a odvození úloh v rámci Azure Virtual Network
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ Tento článek také poskytuje podrobné informace o *pokročilých nastaveních
 > [!WARNING]
 > Společnost Microsoft nepodporuje použití funkcí Azure Machine Learning Studio, jako jsou automatizované ML, datové sady, popisky dat, návrháře a poznámkové bloky, pokud je v podkladovém úložišti povolená virtuální síť.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 + [Pracovní prostor](how-to-manage-workspace.md)Azure Machine Learning.
 
@@ -508,19 +508,7 @@ Pokud chcete použít ACI ve virtuální síti k vašemu pracovnímu prostoru, p
 
 ## <a name="use-azure-firewall"></a>Použít Azure Firewall
 
-Při použití Azure Firewall musíte nakonfigurovat síťové pravidlo, které povoluje provoz do a z následujících adres:
-
-- `*.batchai.core.windows.net`
-- `ml.azure.com`
-- `*.azureml.ms`
-- `*.experiments.azureml.net`
-- `*.modelmanagement.azureml.net`
-- `mlworkspace.azure.ai`
-- `*.aether.ms`
-
-Když přidáte pravidlo, nastavte __protokol__ na any a porty na `*`.
-
-Další informace o konfiguraci pravidla sítě najdete v tématu [nasazení a konfigurace Azure firewall](/azure/firewall/tutorial-firewall-deploy-portal#configure-a-network-rule).
+Informace o použití Azure Machine Learning s Azure Firewall najdete v tématu [použití Azure Machine Learningho pracovního prostoru za Azure firewall](how-to-access-azureml-behind-firewall.md).
 
 ## <a name="use-azure-container-registry"></a>Použití služby Azure Container Registry
 

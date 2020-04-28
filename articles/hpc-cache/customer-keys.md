@@ -1,24 +1,24 @@
 ---
-title: Použití klíčů vytvořených zákazníky k šifrování dat v azure hpc cache
-description: Jak používat Azure Key Vault s Azure HPC Cache k řízení přístupu k šifrovacímu klíči namísto použití výchozích šifrovacích klíčů spravovaných Microsoftem
+title: Použití klíčů Customer-spravovaných k šifrování dat v mezipaměti HPC Azure
+description: Použití Azure Key Vault s mezipamětí Azure HPC k řízení přístupu šifrovacího klíče místo používání výchozích šifrovacích klíčů spravovaných Microsoftem
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 04/23/2020
 ms.author: v-erkel
-ms.openlocfilehash: a31979763dd1ab5d8f289deef0e30cce27bb0df4
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: f8a8b8dfedd9c4ac0590dc91e5cdced50d2be6ef
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538866"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195073"
 ---
-# <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Použití šifrovacích klíčů spravovaných zákazníkem pro Azure HPC Cache
+# <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Použití šifrovacích klíčů spravovaných zákazníkem pro mezipaměť HPC Azure
 
-Azure Key Vault můžete použít k řízení vlastnictví klíčů používaných k šifrování dat v Azure HPC Cache. Tento článek vysvětluje, jak používat klíče spravované zákazníkem pro šifrování dat mezipaměti.
+Azure Key Vault můžete použít k řízení vlastnictví klíčů používaných k šifrování vašich dat v mezipaměti HPC Azure. Tento článek vysvětluje, jak používat klíče spravované zákazníky pro šifrování dat v mezipaměti.
 
 > [!NOTE]
-> Všechna data uložená v Azure, včetně na disky mezipaměti, se ve výchozím nastavení šifrují pomocí klíčů spravovaných microsoftem. Pokud chcete spravovat klíče používané k šifrování dat, postupujte podle kroků uvedených v tomto článku.
+> Všechna data uložená v Azure, včetně na discích mezipaměti, jsou v klidovém stavu zašifrovaná pomocí klíčů spravovaných Microsoftem. Pokud chcete spravovat klíče používané k šifrování vašich dat, stačí postupovat podle kroků v tomto článku.
 
 Tato funkce je dostupná jenom v těchto oblastech Azure:
 
@@ -26,125 +26,130 @@ Tato funkce je dostupná jenom v těchto oblastech Azure:
 * USA – středojih
 * USA – západ 2
 
-Existují tři kroky, jak povolit šifrování klíčů spravovaných zákazníkem pro Azure HPC Cache:
+Existují tři kroky pro povolení šifrování klíče spravovaného zákazníkem pro mezipaměť prostředí Azure HPC:
 
-1. Nastavte trezor klíčů Azure pro uložení klíčů.
-1. Při vytváření mezipaměti Azure HPC zvolte šifrování klíčů spravované zákazníkem a určete trezor klíčů a klíč, který chcete použít.
+1. Nastavte Azure Key Vault pro uložení klíčů.
+1. Při vytváření mezipaměti prostředí Azure HPC zvolte šifrování klíče spravované zákazníkem a zadejte Trezor klíčů a klíč, který chcete použít.
 1. Po vytvoření mezipaměti ji autorizujte pro přístup k trezoru klíčů.
 
-Šifrování není zcela nastaveno, dokud jej neautorizujete z nově vytvořené mezipaměti (krok 3). Je to proto, že je nutné předat identitu mezipaměti do trezoru klíčů, aby byl autorizovaným uživatelem. Před vytvořením mezipaměti to nelze provést, protože identita neexistuje, dokud není mezipaměť vytvořena.
+Šifrování není zcela nastaveno, dokud jej nepovolíte z nově vytvořené mezipaměti (krok 3). Důvodem je to, že musíte předat identitě mezipaměti do trezoru klíčů, aby byl ověřený uživatel. Tento postup nelze provést před vytvořením mezipaměti, protože identita neexistuje, dokud nebude vytvořena mezipaměť.
 
-Po vytvoření mezipaměti nelze měnit mezi klíči spravovanými zákazníky a klíči spravovanými společností Microsoft. Pokud však vaše mezipaměť používá klíče spravované zákazníkem, můžete podle potřeby [změnit](#update-key-settings) šifrovací klíč, verzi klíče a trezor klíčů.
+Po vytvoření mezipaměti nemůžete měnit klíče spravované zákazníkem a klíče spravované Microsoftem. Pokud však vaše mezipaměť používá zákaznicky spravované klíče, můžete podle potřeby [změnit](#update-key-settings) šifrovací klíč, verzi klíče a trezor klíčů.
 
-## <a name="understand-key-vault-and-key-requirements"></a>Principy trezoru klíčů a požadavků na klíče
+## <a name="understand-key-vault-and-key-requirements"></a>Principy trezoru klíčů a klíčových požadavků
 
-Trezor klíčů a klíč musí splňovat tyto požadavky pro práci s Azure HPC Cache.
+Trezor klíčů a klíč musí splňovat tyto požadavky, aby fungovaly s mezipamětí Azure HPC cache.
 
 Vlastnosti trezoru klíčů:
 
 * **Předplatné** – použijte stejné předplatné, které se používá pro mezipaměť.
-* **Oblast** – trezor klíčů musí být ve stejné oblasti jako mezipaměť HPC Azure.
-* **Cenová úroveň** – úroveň Standard je dostatečná pro použití s mezipamětí Azure HPC.
-* **Obnovitelné odstranění** – Azure HPC Cache povolí obnovitelné odstranění, pokud ještě není nakonfigurované v trezoru klíčů.
-* **Ochrana proti vymazání** – ochrana proti vymazání musí být povolena.
+* **Oblast** – Trezor klíčů musí být ve stejné oblasti jako mezipaměť prostředí Azure HPC.
+* **Cenová úroveň** – úroveň Standard je dostačující pro použití s mezipamětí Azure HPC.
+* **Obnovitelné odstranění** – mezipaměť prostředí Azure HPC umožní obnovitelné odstranění, pokud už není v trezoru klíčů nakonfigurované.
+* **Vyprázdnit ochranu** – vyprázdnit ochranu je nutné povolit.
 * **Zásady přístupu** – výchozí nastavení jsou dostatečná.
-* **Připojení k síti** – Azure HPC Cache musí mít přístup k trezoru klíčů bez ohledu na nastavení koncového bodu, které zvolíte.
+* **Připojení k síti** – Azure HPC cache musí být schopný získat přístup k trezoru klíčů bez ohledu na nastavení koncového bodu, které zvolíte.
 
 Klíčové vlastnosti:
 
-* **Typ klíče** - RSA
-* **Velikost klíče RSA** - 2048
-* **Povoleno** – ano
+* **Typ klíče** – RSA
+* **Velikost klíče RSA** – 2048
+* **Povoleno** – Ano
 
 Přístupová oprávnění trezoru klíčů:
 
-* Uživatel, který vytvoří mezipaměť Azure HPC, musí mít oprávnění ekvivalentní [roli přispěvatele trezoru klíčů](../role-based-access-control/built-in-roles.md#key-vault-contributor). Stejná oprávnění jsou potřeba k nastavení a správě Azure Key Vault.
+* Uživatel, který vytváří mezipaměť prostředí Azure HPC, musí mít oprávnění ekvivalentní [roli přispěvatele Key Vault](../role-based-access-control/built-in-roles.md#key-vault-contributor). K nastavení a správě Azure Key Vault je potřeba mít stejná oprávnění.
 
-  Další informace načtete [na článek Zabezpečený přístup k trezoru klíčů.](../key-vault/key-vault-secure-your-key-vault.md)
+  Pro další informace si přečtěte [zabezpečený přístup k trezoru klíčů](../key-vault/key-vault-secure-your-key-vault.md) .
 
-## <a name="1-set-up-azure-key-vault"></a>1. Nastavení trezoru klíčů Azure
+## <a name="1-set-up-azure-key-vault"></a>1. nastavení Azure Key Vault
 
-Před vytvořením mezipaměti můžete nastavit trezor klíčů a klíč nebo to provést jako součást vytváření mezipaměti. Ujistěte se, že tyto zdroje splňují [výše](#understand-key-vault-and-key-requirements)uvedené požadavky .
+Trezor klíčů a klíč můžete nastavit před vytvořením mezipaměti nebo v rámci vytváření mezipaměti. Zajistěte, aby tyto prostředky splňovaly požadavky [uvedené výše](#understand-key-vault-and-key-requirements).
 
-V době vytváření mezipaměti je nutné zadat trezor, klíč a verzi klíče, která bude pro šifrování mezipaměti použít.
+V okamžiku vytvoření mezipaměti musíte zadat trezor, klíč a verzi klíče, které se mají použít pro šifrování mezipaměti.
 
-Podrobnosti načtete v [dokumentaci k úložišti klíčů Azure.](../key-vault/key-vault-overview.md)
+Podrobnosti najdete v [dokumentaci k Azure Key Vault](../key-vault/key-vault-overview.md) .
 
 > [!NOTE]
-> Azure Key Vault musí používat stejné předplatné a být ve stejné oblasti jako azure hpc cache. Použijte jednu z podporovaných oblastí uvedených na začátku tohoto článku.
+> Azure Key Vault musí používat stejné předplatné a musí být ve stejné oblasti jako mezipaměť prostředí Azure HPC. Použijte jednu z podporovaných oblastí uvedených na začátku tohoto článku.
 
-## <a name="2-create-the-cache-with-customer-managed-keys-enabled"></a>2. Vytvoření mezipaměti s povolenými klíči spravovanými zákazníky
+## <a name="2-create-the-cache-with-customer-managed-keys-enabled"></a>2. vytvoření mezipaměti s povolenými klíči spravovanými zákazníky
 
-Při vytváření mezipaměti Azure HPC je nutné zadat zdroj šifrovacího klíče. Postupujte podle pokynů v [tématu Vytvoření mezipaměti Azure HPC](hpc-cache-create.md)a zadejte trezor klíčů a klíč na stránce **klíče šifrování disku.** Během vytváření mezipaměti můžete vytvořit nový trezor klíčů a klíč.
+Když vytváříte mezipaměť prostředí Azure HPC, musíte zadat zdroj šifrovacího klíče. Postupujte podle pokynů v tématu [vytvoření mezipaměti Azure HPC](hpc-cache-create.md)a zadáním klíče trezoru klíčů a klíče na stránce **klíče pro šifrování disku** . Během vytváření mezipaměti můžete vytvořit nový trezor klíčů a klíč.
 
 > [!TIP]
-> Pokud se stránka **klíče šifrování disku** nezobrazí, zkontrolujte, zda je mezipaměť v jedné z podporovaných oblastí.
+> Pokud se nezobrazí stránka **šifrovací klíče disku** , ujistěte se, že je vaše mezipaměť v některé z podporovaných oblastí.
 
-Uživatel, který vytvoří mezipaměť, musí mít oprávnění rovnající se [roli přispěvatele trezoru klíčů](../role-based-access-control/built-in-roles.md#key-vault-contributor) nebo vyšší.
+Uživatel, který vytváří mezipaměť, musí mít oprávnění rovna [roli přispěvatele Key Vault](../role-based-access-control/built-in-roles.md#key-vault-contributor) nebo vyšší.
 
-1. Kliknutím na tlačítko povolíte soukromě spravované klíče. Po změně tohoto nastavení se zobrazí nastavení trezoru klíčů.
+1. Kliknutím na toto tlačítko povolíte soukromě spravované klíče. Po změně tohoto nastavení se zobrazí nastavení trezoru klíčů.
 
-1. Kliknutím na **Vybrat trezor klíčů** otevřete stránku výběru klíčů. Zvolte nebo vytvořte trezor klíčů a klíč pro šifrování dat na discích této mezipaměti.
+1. Kliknutím na **Vybrat Trezor klíčů** otevřete stránku výběr klíče. Vyberte nebo vytvořte Trezor klíčů a klíč pro šifrování dat na discích této mezipaměti.
 
-   Pokud se váš trezor klíčů Azure v seznamu nezobrazuje, zkontrolujte tyto požadavky:
+   Pokud se Azure Key Vault v seznamu nezobrazí, ověřte tyto požadavky:
 
-   * Je mezipaměť ve stejném předplatném jako trezor klíčů?
-   * Je mezipaměť ve stejné oblasti jako trezor klíčů?
-   * Je síťové připojení mezi portálem Azure a trezoru klíčů?
+   * Je mezipaměť ve stejném předplatném jako Trezor klíčů?
+   * Je mezipaměť ve stejné oblasti jako Trezor klíčů?
+   * Existuje síťové připojení mezi Azure Portal a trezorem klíčů?
 
-1. Po výběru trezoru vyberte jednotlivé klávesy z dostupných možností nebo vytvořte nový klíč. Klíč musí být 2048bitový klíč RSA.
+1. Po výběru trezoru Vyberte jednotlivý klíč z dostupných možností nebo vytvořte nový klíč. Klíč musí být 2048 klíč RSA.
 
-1. Zadejte verzi pro vybraný klíč. Další informace o správu verzí v [dokumentaci k úložišti klíčů Azure](../key-vault/about-keys-secrets-and-certificates.md#objects-identifiers-and-versioning).
+1. Zadejte verzi vybraného klíče. Přečtěte si další informace o tom, jak se správou verzí v [dokumentaci Azure Key Vault](../key-vault/about-keys-secrets-and-certificates.md#objects-identifiers-and-versioning).
 
-Pokračujte se zbývajícími specifikacemi a vytvořte mezipaměť, jak je popsáno v [části Vytvoření mezipaměti Azure HPC](hpc-cache-create.md).
+Pokračujte ve zbývajících specifikacích a vytvořte mezipaměť, jak je popsáno v tématu [vytvoření mezipaměti prostředí Azure HPC](hpc-cache-create.md).
 
-## <a name="3-authorize-azure-key-vault-encryption-from-the-cache"></a>3. Autorizace šifrování Azure Key Vault z mezipaměti
+## <a name="3-authorize-azure-key-vault-encryption-from-the-cache"></a>3. autorizace Azure Key Vault šifrování z mezipaměti
 <!-- header is linked from create article, update if changed -->
 
-Po několika minutách se na vašem webu Azure Portal zobrazí nová mezipaměť HPC Azure. Přejděte na stránku **Přehled** a autorizujte ji pro přístup k úložišti klíčů Azure a povolte šifrování klíčů spravované zákazníkem. (Mezipaměť se může zobrazit v seznamu prostředků před vymazáním zpráv "probíhá nasazení".)
+Po několika minutách se nová mezipaměť prostředí Azure HPC objeví ve vašem Azure Portal. Přejděte na stránku **Přehled** a udělte jí přístup k vašemu Azure Key Vault a povolíte šifrování klíče spravovaného zákazníkem.
 
-Tento dvoustupňový proces je nezbytný, protože instance Azure HPC Cache potřebuje identitu, aby se předala trezoru klíčů Azure pro autorizaci. Identita mezipaměti neexistuje, dokud nebudou dokončeny počáteční kroky vytvoření.
+> [!TIP]
+> Mezipaměť se může zobrazit v seznamu prostředků předtím, než se vymaže zprávy "probíhá nasazení". Po uplynutí minuty nebo dvou informací se seznam prostředků vraťte na oznámení o úspěšnosti.
+
+Tento proces se dvěma kroky je nezbytný, protože instance mezipaměti prostředí Azure HPC potřebuje k předání Azure Key Vault pro autorizaci identitu. Identita mezipaměti neexistuje až po dokončení počátečních kroků vytváření.
 
 > [!NOTE]
-> Šifrování je nutné autorizovat do 90 minut po vytvoření mezipaměti. Pokud tento krok nedokončíte, dojde k časovému uznamu mezipaměti a nezdaří se. Neúspěšná mezipaměť musí být znovu vytvořena, nelze ji opravit.
+> Po vytvoření mezipaměti musíte ověřit šifrování během 90 minut. Pokud tento krok nedokončíte, dojde k vypršení časového limitu mezipaměti a selhání. Neúspěšná mezipaměť musí být vytvořena znovu, nelze ji opravit.
 
-Mezipaměť zobrazuje stav **Čekání na klíč**. Kliknutím na tlačítko **Povolit šifrování** v horní části stránky autorizujete, aby mezipaměť přistupovala k zadanému trezoru klíčů.
+Mezipaměť zobrazuje stav čekání na **klíč**. Kliknutím na tlačítko **Povolit šifrování** v horní části stránky autorizujete mezipaměť pro přístup k zadanému trezoru klíčů.
 
-![snímek obrazovky stránky přehledu mezipaměti na portálu se zvýrazněním na tlačítku Povolit šifrování (horní řádek) a Stav: Čekání na klíč](media/waiting-for-key.png)
+![snímek stránky s přehledem mezipaměti na portálu s zvýrazněním tlačítka povolit šifrování (horní řádek) a stav: čekání na klíč](media/waiting-for-key.png)
 
-Klikněte na **Povolit šifrování** a potom kliknutím na tlačítko **Ano** autorizujte mezipaměť k použití šifrovacího klíče. Tato akce také umožňuje odstranění a vymazání ochrany pomocí měkkého odstranění (pokud již není povoleno) v trezoru klíčů.
+Klikněte na **Povolit šifrování** a potom kliknutím na tlačítko **Ano** autorizujte mezipaměť pro použití šifrovacího klíče. Tato akce také umožňuje ochranu před vymazáním a vyprázdněním (Pokud ještě není povolená) v trezoru klíčů.
 
-![snímek obrazovky stránky přehledu mezipaměti na portálu s bannerovou zprávou v horní části, která žádá uživatele o povolení šifrování kliknutím na tlačítko ano](media/enable-keyvault.png)
+![snímek stránky s přehledem mezipaměti na portálu s hlavičkou v horní části, která žádá uživatele o povolení šifrování kliknutím na Ano](media/enable-keyvault.png)
 
-Poté, co mezipaměť požádá o přístup k trezoru klíčů, může vytvořit a zašifrovat disky, které ukládají data uložená v mezipaměti.
+Poté, co mezipaměť požaduje přístup k trezoru klíčů, může vytvořit a zašifrovat disky, které ukládají data v mezipaměti.
 
-Po autorizaci šifrování prochází Azure HPC Cache několika dalšími minutami instalace a vytvoří šifrované disky a související infrastrukturu.
+Po autorizaci šifrování provede mezipaměť prostředí Azure HPC několik dalších minut instalačního programu, aby se vytvořily šifrované disky a související infrastruktura.
 
 ## <a name="update-key-settings"></a>Aktualizovat nastavení klíče
 
-Můžete změnit trezor klíčů, klíč nebo verzi klíče pro vaši mezipaměť z webu Azure Portal. Kliknutím na odkaz **Nastavení šifrování** mezipaměti otevřete stránku Nastavení klíče **zákazníka.** (Mezi klíči spravovanými zákazníky a klíči spravovanými systémem nelze změnit mezi mezipamětí.)
+Můžete změnit Trezor klíčů, klíč nebo verzi klíče pro mezipaměť z Azure Portal. Kliknutím na odkaz nastavení **šifrování** v mezipaměti otevřete stránku **nastavení klíče zákazníka** .
 
-![snímek obrazovky stránky Nastavení zákaznických klíčů, které bylo dosaženo kliknutím na Nastavení > šifrování na stránce mezipaměti na webu Azure Portal](media/change-key-click.png)
+Nemůžete změnit mezipaměť mezi uživatelsky spravovanými klíči a klíči spravovanými systémem.
 
-Klikněte na odkaz **Změnit klíč** a potom kliknutím na Změnit **trezor klíčů, klíč nebo verzi** otevřete volič klíčů.
+![snímek obrazovky nastavení klíčů zákazníka získáte tak, že kliknete na nastavení > šifrování ze stránky mezipaměti v Azure Portal](media/change-key-click.png)
 
-![Snímek obrazovky stránky "Vybrat klíč z úložiště klíčů Azure" se třemi rozevíracími voliči pro výběr trezoru klíčů, klíče a verze](media/select-new-key.png)
+Klikněte na odkaz **změnit klíč** a potom kliknutím na **změnit Trezor klíčů, klíč nebo verzi** Otevřete selektor klíčů.
 
-Trezory klíčů ve stejném předplatném a ve stejné oblasti jako tato mezipaměť jsou zobrazeny v seznamu.
+![snímek obrazovky "vybrat klíč z Azure Key Vault" se třemi selektory rozevíracího seznamu pro výběr trezoru klíčů, klíče a verze](media/select-new-key.png)
 
-Po výběru nových hodnot šifrovacího klíče klepněte na **tlačítko Vybrat**. Zobrazí se stránka s potvrzením s novými hodnotami. Kliknutím na **Uložit** výběr dokončíte.
+V seznamu se zobrazují trezory klíčů ve stejném předplatném a stejné oblasti jako Tato mezipaměť.
 
-![snímek obrazovky s potvrzovací stránkou s tlačítkem Uložit vlevo nahoře](media/save-key-settings.png)
+Po výběru nových hodnot šifrovacího klíče klikněte na **Vybrat**. Zobrazí se stránka s potvrzením, která má nové hodnoty. Kliknutím na **Uložit** dokončete výběr.
 
-## <a name="read-more-about-customer-managed-keys-in-azure"></a>Další informace o klíčích spravovaných zákazníky v Azure
+![snímek obrazovky s potvrzením na stránce s tlačítkem Uložit vlevo nahoře](media/save-key-settings.png)
 
-Tyto články vysvětlují další informace o používání Azure Key Vault a klíčů spravovaných zákazníky k šifrování dat v Azure:
+## <a name="read-more-about-customer-managed-keys-in-azure"></a>Další informace o klíčích spravovaných zákazníkem v Azure
 
-* [Přehled šifrování úložiště Azure](../storage/common/storage-service-encryption.md)
-* [Šifrování disku pomocí klíčů spravovaných zákazníkem](../virtual-machines/linux/disk-encryption.md#customer-managed-keys) – dokumentace pro použití služby Azure Key Vault a spravovaných disků, což je podobné procesu používanému v azure hpc cache
+Tyto články vysvětlují Další informace o používání Azure Key Vault a klíčů spravovaných zákazníkem k šifrování dat v Azure:
+
+* [Přehled šifrování Azure Storage](../storage/common/storage-service-encryption.md)
+* [Šifrování disku pomocí klíčů spravovaných zákazníkem](../virtual-machines/linux/disk-encryption.md#customer-managed-keys) – dokumentace k používání Azure Key Vault se spravovanými disky, což je podobný scénář mezipaměti HPC Azure
 
 ## <a name="next-steps"></a>Další kroky
 
-Po vytvoření mezipaměti Azure HPC a autorizovaného šifrování založeného na úložišti klíčů pokračujte v nastavování mezipaměti tím, že jí uděláte přístup ke zdrojům dat.
+Po vytvoření mezipaměti HPC Azure a ověření šifrování založeného na Key Vault pokračujte v nastavení mezipaměti tím, že udělíte přístup k vašim zdrojům dat.
 
 * [Přidání cílů úložiště](hpc-cache-add-storage.md)

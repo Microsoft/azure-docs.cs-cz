@@ -5,20 +5,20 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 04/23/2020
 ms.author: dsindona
-ms.openlocfilehash: 2249dde8578dcd5cc3444aeef6b51c8afb2f31fa
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: abc71d644b44b432d0ebf2a8c849554fe8db0256
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160592"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82190329"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Výhody vašeho komerčního tržiště
 
 Publikovali jste na webu Marketplace, nyní chcete zobrazit vaši nabídku, která je úspěšná. Poskytujeme vám výhody – prodej, technický a marketing – potřebujete k urychlení růstu vaší nabídky.
 
-Když budete pracovat s vaší nabídkou, bude se tým na webu Marketplace vystihnout a začít pracovat s vámi na základě vašich nároků na vaše výhody. Výhody na webu Marketplace se účtují na základě zapojení do komerčního tržiště a prodeje. Tím více zahájíte, tím více se vrátíte zpět.
+Jakmile je vaše nabídka živá na Azure Marketplace nebo AppSource, přejděte do [partnerského centra](https://partner.microsoft.com/dashboard/mpn/membership/benefits/commercialmarketplace) , kde můžete získat přístup k potenciálním marketingovým, prodejním i technickým výhodám a aktivovat je. Výhody na webu Marketplace se účtují na základě zapojení do komerčního tržiště a prodeje. Tím více zahájíte, tím více se vrátíte zpět.
 
 ## <a name="marketplace-rewards"></a>Ceny Marketplace
 
@@ -41,7 +41,19 @@ Podrobné popisy všech výhod programu najdete na [webu Marketplace](https://on
 Postup, jak začít, je snadné:
 
 1. Publikování nabídky buď Microsoft AppSource, nebo Azure Marketplace.
-2. Tým dosáhne nabídky vlastník nebo primární kontakt na nabídku Marketplace. Osvědčeným postupem je zadat buď jednotlivce, nebo alias, který pravidelně kontrolujete: zprávy odesílané aliasům, například info@company.com často se ztratí.
+2. Přejděte na [řídicí panel](https://partner.microsoft.com/dashboard/directory)partnerského centra, na stránce ceny na webu Marketplace vyberte kartu **výhody prodeje a marketingu** , abyste viděli seznam výhod.
+3. Pokud chcete aktivovat prodejní a marketingové výhody, musíte nejdřív přiřadit marketingový kontakt společnosti. Tento kontakt vám pošle následnou komunikaci o vašich vzhráčích na webu Marketplace.
+4. Pokud chcete přidat nebo aktualizovat svoje marketingové kontaktní údaje, přejděte na stránku s výhodami prodeje a marketingu na stránce výhody Marketplace a pak vyberte **Přidat, aktualizovat nebo změnit**.  Dále postupujte následovně:
+
+    1. Vyberte uživatele ze seznamu. Pokud se uživatel, kterého chcete přiřadit, nenachází v seznamu, můžete přidat nové uživatele v **Nastavení účtu**.
+    1. Zadejte e-mailovou adresu uživatele, která se liší od e-mailové adresy přidružené k účtu partnerského centra vaší společnosti. Budeme vám poslat e-mail s pokyny pro použití vašeho webu Marketplace pro vaši e-mailovou adresu vašeho dodavatele.
+    1. Zadejte kontaktní telefon a preferovaný jazyk pro tento marketingový kontakt. Po dokončení zadávání těchto informací vyberte **přiřadit uživatele**.
+    1. Po aktualizaci marketingového kontaktu vyberte možnost **aktivovat** pro zvýhodnění, které chcete začít používat. Po aktivaci výhody bude váš marketingový kontakt kontaktován členem týmu, který je v týdnu.
+
+**Technické výhody**
+
+1. Můžete využít svůj technický přínos k vyžádání technické pomoci během fází předprodejní, návrhu, nasazení a vývoje aplikací v cloudových a hybridních řešeních. Pokud chcete požádat o pomoc, vyplňte formulář žádosti a pak vyberte **Odeslat žádost**.
+2. Používání výhod sponzorství Azure bude při odemčení těchto výhod sdíleno prostřednictvím e-mailu.
 
 >[!Note]
 >Pokud byla nabídka živá po dobu více než čtyř týdnů a neobdrželi jste zprávu, zkontrolujte v partnerském centru v organizaci, která je vlastníkem příslušné nabídky. Měly by mít komunikaci a další kroky. <br> <br> Pokud nemůžete určit vlastníka nebo pokud vlastník opustil vaši společnost, můžete lístek podpory vyvolat na stránce [pomoc a podpora](https://partner.microsoft.com/support/v2/?stage=1).

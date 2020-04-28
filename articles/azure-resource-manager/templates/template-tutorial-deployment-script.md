@@ -1,6 +1,6 @@
 ---
-title: Použití skriptů pro nasazení šablony | Dokumenty společnosti Microsoft
-description: Přečtěte si, jak používat skripty nasazení v šablonách Azure Resource Manageru.
+title: Použití skriptů nasazení šablony | Microsoft Docs
+description: Naučte se používat skripty pro nasazení v šablonách Azure Resource Manager.
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -10,22 +10,22 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 04/07/2020
+ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f369eb54dc92a29ba122a8a645262dc085b1ed36
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 2b4b94c05b39dddcef83644638a105d5b6c75118
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "80930051"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184975"
 ---
-# <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Kurz: Vytvoření certifikátu podepsaného svým držitelem (Preview) pomocí skriptů nasazení
+# <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Kurz: použití skriptů pro nasazení k vytvoření certifikátu podepsaného svým držitelem (Preview)
 
-Zjistěte, jak používat skripty nasazení v šablonách Azure Resource Manage (ARM). Skripty nasazení lze použít k provedení vlastníkroky, které nelze provést pomocí šablony ARM. Například vytvoření certifikátu podepsaného svým držitelem.  V tomto kurzu vytvoříte šablonu pro nasazení trezoru `Microsoft.Resources/deploymentScripts` klíčů Azure a pak pomocí prostředku ve stejné šabloně vytvořte certifikát a pak přidáte certifikát do trezoru klíčů. Další informace o skriptu nasazení najdete [v tématu Použití skriptů nasazení v šablonách ARM](./deployment-script-template.md).
+Naučte se používat skripty pro nasazení v šablonách Azure Resource Manage (ARM). Skripty pro nasazení lze použít k provedení vlastních kroků, které nelze provést pomocí šablon ARM. Například vytvoření certifikátu podepsaného svým držitelem.  V tomto kurzu vytvoříte šablonu pro nasazení trezoru klíčů Azure a pak pomocí `Microsoft.Resources/deploymentScripts` prostředku ve stejné šabloně vytvoříte certifikát a pak certifikát přidáte do trezoru klíčů. Další informace o skriptu nasazení najdete v tématu [použití skriptů nasazení v šablonách ARM](./deployment-script-template.md).
 
 > [!IMPORTANT]
-> Dva prostředky skriptu nasazení, účet úložiště a instance kontejneru, jsou vytvořeny ve stejné skupině prostředků pro spuštění skriptu a řešení potíží. Tyto prostředky jsou obvykle odstraněny službou skriptu při spuštění skriptu dostane do terminálového stavu. Prostředky se vám budou účtovat, dokud nebudou prostředky odstraněny. Další informace naleznete v [tématu Vyčištění prostředků skriptu nasazení](./deployment-script-template.md#clean-up-deployment-script-resources).
+> Dva prostředky skriptu nasazení, účet úložiště a instance kontejneru, se vytvoří ve stejné skupině prostředků ke spuštění skriptu a odstraňování potíží. Tyto prostředky obvykle odstraní služba skriptu, když se spuštění skriptu dostane do stavu terminálu. Budou se vám účtovat prostředky, dokud se prostředky neodstraní. Další informace najdete v tématu [vyčištění prostředků skriptu nasazení](./deployment-script-template.md#clean-up-deployment-script-resources).
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -40,15 +40,15 @@ Tento kurz se zabývá následujícími úkony:
 
 K dokončení tohoto článku potřebujete:
 
-* ** [Visual Studio Kód](https://code.visualstudio.com/) s rozšířením Nástroje Správce prostředků**. Viz [Použití kódu Visual Studia k vytvoření šablon ARM](./use-vs-code-to-create-template.md).
+* ** [Visual Studio Code](https://code.visualstudio.com/) s rozšířením nástroje Správce prostředků Tools**. [Vytvoření šablon ARM](./use-vs-code-to-create-template.md)najdete v tématu použití Visual Studio Code.
 
-* **Uživatelem přiřazená spravovaná identita s rolí přispěvatele na úrovni předplatného**. Tato identita se používá ke spuštění skriptů nasazení. Pokud chcete ji vytvořit, přečtěte si informace o [spravované identitě přiřazené uživateli](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity). Při nasazování šablony potřebujete ID identity. Formát identity je:
+* **Spravovaná identita přiřazená uživatelem s rolí přispěvatele na úrovni předplatného**. Tato identita se používá ke spouštění skriptů nasazení. Pokud ho chcete vytvořit, přečtěte si téma [spravovaná identita přiřazená uživatelem](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity). ID identity budete potřebovat při nasazení šablony. Formát identity je:
 
   ```json
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
   ```
 
-  Pomocí následujícího skriptu příkazového příkazu získat ID zadáním názvu skupiny prostředků a název identity.
+  Pomocí následujícího skriptu CLI Získejte ID zadáním názvu skupiny prostředků a názvu identity.
 
   ```azurecli-interactive
   echo "Enter the Resource Group name:" &&
@@ -58,11 +58,11 @@ K dokončení tohoto článku potřebujete:
 
 ## <a name="open-a-quickstart-template"></a>Otevření šablony pro rychlý start
 
-Šablonu nemusíte vytvářet od začátku, ale můžete místo toho otevřít některou [šablonu pro rychlý start Azure](https://azure.microsoft.com/resources/templates/). Azure Quickstart Templates je úložiště pro šablony ARM.
+Šablonu nemusíte vytvářet od začátku, ale můžete místo toho otevřít některou [šablonu pro rychlý start Azure](https://azure.microsoft.com/resources/templates/). Šablony pro rychlý Start Azure jsou úložiště pro šablony ARM.
 
-Šablona použitá v tomto rychlém startu se nazývá [Vytvoření trezoru klíčů Azure a tajný klíč](https://azure.microsoft.com/resources/templates/101-key-vault-create/). Šablona vytvoří trezor klíčů a přidá tajný klíč do trezoru klíčů.
+Šablona použitá v tomto rychlém startu se nazývá [vytvořit Azure Key Vault a tajný klíč](https://azure.microsoft.com/resources/templates/101-key-vault-create/). Šablona vytvoří Trezor klíčů a potom do trezoru klíčů přidá tajný klíč.
 
-1. V kódu sady Visual Studio vyberte **Soubor**>**otevřít soubor**.
+1. Z Visual Studio Code vyberte **soubor**>**otevřít soubor**.
 2. Do pole **File name** (Název souboru) vložte následující adresu URL:
 
     ```url
@@ -70,30 +70,30 @@ K dokončení tohoto článku potřebujete:
     ```
 
 3. Výběrem **Open** (Otevřít) soubor otevřete.
-4. Vyberte **Soubor**>**Uložit jako,** chcete-li soubor uložit jako **azuredeploy.json** do místního počítače.
+4. Vyberte **soubor**>**Uložit jako** a uložte soubor jako **azuredeploy. JSON** do místního počítače.
 
 ## <a name="edit-the-template"></a>Úprava šablony
 
-Proveďte v šabloně následující změny:
+Proveďte následující změny šablony:
 
 ### <a name="clean-up-the-template-optional"></a>Vyčištění šablony (volitelné)
 
-Původní šablona přidá tajný klíč do trezoru klíčů.  Chcete-li kurz zjednodušit, odeberte následující zdroj:
+Původní šablona přidá do trezoru klíčů tajný klíč.  Pro zjednodušení tohoto kurzu odeberte následující prostředek:
 
-* **Microsoft.KeyVault/trezory/tajné klíče**
+* **Trezor a tajné kódy Microsoft.**
 
-Odeberte následující dvě definice parametrů:
+Odeberte následující definice dvou parametrů:
 
-* **tajný_název**
+* **secretName**
 * **secretValue**
 
-Pokud se rozhodnete tyto definice neodebírat, je třeba během nasazení zadat hodnoty parametrů.
+Pokud se rozhodnete tyto definice neodebírat, je nutné zadat hodnoty parametrů během nasazování.
 
 ### <a name="configure-the-key-vault-access-policies"></a>Konfigurace zásad přístupu trezoru klíčů
 
-Skript nasazení přidá certifikát do trezoru klíčů. Nakonfigurujte zásady přístupu trezoru klíčů tak, aby udělit oprávnění ke spravované identity:
+Skript nasazení přidá certifikát do trezoru klíčů. Konfigurace zásad přístupu trezoru klíčů pro udělení oprávnění spravované identitě:
 
-1. Přidáním parametru získáte ID spravované identity:
+1. Přidejte parametr pro získání ID spravované identity:
 
     ```json
     "identityId": {
@@ -105,7 +105,7 @@ Skript nasazení přidá certifikát do trezoru klíčů. Nakonfigurujte zásady
     ```
 
     > [!NOTE]
-    > Rozšíření šablony Správce prostředků kódu sady Visual Studio ještě není schopno formátovat skripty nasazení. Nepoužívejte [SHIFT]+[ALT]+F k formátování prostředků deploymentScripts, jako je následující.
+    > Rozšíření Správce prostředků šablon Visual Studio Code není schopné zatím naformátovat skripty nasazení. Nepoužívejte [SHIFT] + [ALT] + F k formátování prostředků deploymentScripts, jako je následující.
 
 1. Přidejte parametr pro konfiguraci zásad přístupu trezoru klíčů tak, aby spravovaná identita mohla přidávat certifikáty do trezoru klíčů.
 
@@ -124,7 +124,7 @@ Skript nasazení přidá certifikát do trezoru klíčů. Nakonfigurujte zásady
     }
     ```
 
-1. Aktualizujte existující zásady přístupu k trezoru klíčů na:
+1. Aktualizujte stávající zásady přístupu trezoru klíčů na:
 
     ```json
     "accessPolicies": [
@@ -149,11 +149,11 @@ Skript nasazení přidá certifikát do trezoru klíčů. Nakonfigurujte zásady
     ],
     ```
 
-    Existují dvě zásady definované, jeden pro přihlášený uživatel a druhý je pro spravovanou identitu.  Přihlášený uživatel potřebuje pouze oprávnění *k ověření* nasazení.  Pro zjednodušení kurzu je stejný certifikát přiřazen jak spravované identitě, tak přihlášeným uživatelům.
+    Jsou definovány dvě zásady, jeden pro přihlášeného uživatele a druhý pro spravovanou identitu.  Přihlášený uživatel potřebuje jenom oprávnění *seznam* pro ověření nasazení.  Pro zjednodušení tohoto kurzu se ke spravované identitě a přihlášeným uživatelům přiřadí stejný certifikát.
 
 ### <a name="add-the-deployment-script"></a>Přidání skriptu nasazení
 
-1. Přidejte tři parametry, které jsou používány skriptnasazení.
+1. Přidejte tři parametry, které používá skript nasazení.
 
     ```json
     "certificateName": {
@@ -170,10 +170,10 @@ Skript nasazení přidá certifikát do trezoru klíčů. Nakonfigurujte zásady
     }
     ```
 
-1. Přidejte prostředek deploymentScripts:
+1. Přidat prostředek deploymentScripts:
 
     > [!NOTE]
-    > Vzhledem k tomu, že skripty vsazení jsou uzavřeny v uvozovkách, řetězce uvnitř skriptů nasazení musí být místo toho uzavřeny v jednoduchých uvozovkách. Řídicí znak pro prostředí PowerShell je **&#92;**.
+    > Vzhledem k tomu, že vložené skripty pro nasazení jsou uzavřeny do dvojitých uvozovek, řetězce v skriptech nasazení musí být místo toho uzavřeny v jednoduchých uvozovkách. Řídicí znak pro PowerShell je **&#92;**.
 
     ```json
     {
@@ -253,98 +253,106 @@ Skript nasazení přidá certifikát do trezoru klíčů. Nakonfigurujte zásady
     }
     ```
 
-    Zdroj `deploymentScripts` závisí na prostředku trezoru klíčů a zdroji přiřazení role.  Má tyto vlastnosti:
+    `deploymentScripts` Prostředek závisí na prostředku trezoru klíčů a prostředku přiřazení role.  Má tyto vlastnosti:
 
-    * **identita**: Skript nasazení používá k spuštění skriptů uživatelem přiřazenou spravovanou identitu.
-    * **druh**: Zadejte typ skriptu. V současné době je podporován pouze skript prostředí PowerShell.
-    * **forceUpdateTag**: Zjistěte, zda má být skript nasazení spuštěn i v případě, že se nezměnil zdroj skriptu. Může být aktuální časové razítko nebo IDENTIFIKÁTOR GUID. Další informace naleznete v [tématu Spuštění skriptu více než jednou](./deployment-script-template.md#run-script-more-than-once).
-    * **azPowerShellVersion**: Určuje verzi modulu Azure PowerShell, která má být použita. V současné době podporuje skript nasazení verze 2.7.0, 2.8.0 a 3.0.0.
-    * **Časový limit**: Zadejte maximální povolenou dobu spuštění skriptu zadanou ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). Výchozí hodnota je **P1D**.
-    * **argumenty**: Zadejte hodnoty parametrů. Hodnoty jsou odděleny mezerami.
-    * **scriptContent**: Zadejte obsah skriptu. Chcete-li spustit externí skript, použijte místo toho **primární jazykScriptURI.** Další informace naleznete v [tématu Použití externího skriptu](./deployment-script-template.md#use-external-scripts).
-        Deklarování **$DeploymentScriptOutputs** je vyžadováno pouze při testování skriptu v místním počítači. Deklarování proměnné umožňuje spuštění skriptu v místním počítači a v prostředku deploymentScript bez nutnosti provádění změn. Hodnota přiřazená $DeploymentScriptOutputs je k dispozici jako výstupy v nasazeních. Další informace naleznete v [tématu Práce s výstupy ze skriptů nasazení prostředí PowerShell](./deployment-script-template.md#work-with-outputs-from-powershell-script) nebo [Práce s výstupy ze skriptů pro nasazení cli](./deployment-script-template.md#work-with-outputs-from-cli-script).
-    * **cleanupPreference**: Zadejte předvolbu, kdy se mají odstranit prostředky skriptu nasazení.  Výchozí hodnota je **Always**, což znamená, že prostředky skriptu nasazení jsou odstraněny i přes stav terminálu (Proběhlo úspěšně, Nezdařilo se, zrušeno). V tomto kurzu **OnSuccess** se používá tak, že máte možnost zobrazit výsledky spuštění skriptu.
-    * **retentionInterval**: Zadejte interval, pro který služba zachová prostředky skriptu po dosažení terminálového stavu. Prostředky budou po vypršení této doby trvání odstraněny. Doba trvání je založena na vzoru ISO 8601. Tento kurz používá P1D, což znamená jeden den.  Tato vlastnost se používá při **cleanupPreference** je nastavena **na OnExpiration**. Tato vlastnost není aktuálně povolena.
+    * **Identita**: skript nasazení používá ke spouštění skriptů spravovanou identitu přiřazenou uživatelem.
+    * **druh**: zadejte typ skriptu. V současné době je podporován pouze skript prostředí PowerShell.
+    * **forceUpdateTag**: Zjistěte, jestli se má skript nasazení spustit, i když se nezměnil zdroj skriptu. Může to být aktuální časové razítko nebo identifikátor GUID. Další informace najdete v tématu [spuštění skriptu více než jednou](./deployment-script-template.md#run-script-more-than-once).
+    * **azPowerShellVersion**: Určuje verzi modulu Azure PowerShell, která se má použít. Skript nasazení v současné době podporuje verze 2.7.0, 2.8.0 a 3.0.0.
+    * **timeout**: zadejte maximální povolenou dobu spuštění skriptu zadanou ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). Výchozí hodnota je **P1D**.
+    * **argumenty**: zadejte hodnoty parametrů. Hodnoty jsou oddělené mezerami.
+    * **scriptContent**: Zadejte obsah skriptu. Pokud chcete spustit externí skript, použijte místo toho **primaryScriptURI** . Další informace najdete v tématu [použití externího skriptu](./deployment-script-template.md#use-external-scripts).
+        Deklarace **$DeploymentScriptOutputs** se vyžaduje jenom při testování skriptu na místním počítači. Deklarování proměnné umožňuje spuštění skriptu na místním počítači a v prostředku deploymentScript bez nutnosti provádět změny. Hodnota přiřazená k $DeploymentScriptOutputs je k dispozici jako výstupy v nasazeních. Další informace najdete v tématu [práce s výstupy ze skriptů nasazení PowerShellu](./deployment-script-template.md#work-with-outputs-from-powershell-script) nebo [práce s výstupy ze skriptů nasazení CLI](./deployment-script-template.md#work-with-outputs-from-cli-script).
+    * **cleanupPreference**: Zadejte prioritu při odstraňování prostředků skriptu nasazení.  Výchozí hodnota je **vždycky**, což znamená, že prostředky skriptu nasazení se odstraní navzdory stavu terminálu (úspěšné, neúspěšné, zrušené). V tomto kurzu se používá **úspěch** , abyste získali možnost Zobrazit výsledky spuštění skriptu.
+    * **retentionInterval**: zadejte interval, po který služba uchovává prostředky skriptu po dosažení stavu terminálu. Prostředky budou odstraněny po uplynutí této doby trvání. Doba trvání vychází ze vzoru ISO 8601. V tomto kurzu se používá P1D, což znamená jeden den.  Tato vlastnost se používá, pokud je **cleanupPreference** nastaveno na hodnotu- **vypršení platnosti**. Tato vlastnost není aktuálně povolena.
 
-    Skript nasazení má tři parametry: název trezoru klíčů, název certifikátu a název subjektu.  Vytvoří certifikát a potom přidá certifikát do trezoru klíčů.
+    Skript nasazení používá tři parametry: název trezoru klíčů, název certifikátu a název subjektu.  Vytvoří certifikát a pak certifikát přidá do trezoru klíčů.
 
-    **$DeploymentScriptOutputs** se používá k ukládání výstupní hodnoty.  Další informace najdete v [tématu Práce s výstupy ze skriptů nasazení prostředí PowerShell](./deployment-script-template.md#work-with-outputs-from-powershell-script) nebo [Práce s výstupy ze skriptů pro nasazení cli](./deployment-script-template.md#work-with-outputs-from-cli-script).
+    **$DeploymentScriptOutputs** slouží k uložení výstupní hodnoty.  Další informace najdete v tématu [práce s výstupy ze skriptů nasazení PowerShellu](./deployment-script-template.md#work-with-outputs-from-powershell-script) nebo [práce s výstupy ze skriptů nasazení CLI](./deployment-script-template.md#work-with-outputs-from-cli-script).
 
-    Vyplněnou šablonu naleznete [zde](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault.json).
+    Dokončenou šablonu najdete [tady](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault.json).
 
-1. Chcete-li zobrazit proces ladění, umístěte chybu v kódu přidáním následujícího řádku do skriptu nasazení:
+1. Chcete-li zobrazit proces ladění, vložte chybu do kódu přidáním následujícího řádku do skriptu nasazení:
 
     ```powershell
     Write-Output1 $keyVaultName
     ```
 
-    Správný příkaz je **Zápis-Výstup** namísto **zápisu-výstup1**.
+    Správný příkaz je **Write-Output** namísto **Write-Output1**.
 
-1. Chcete-li soubor uložit, vyberte **Uložit**>**Save** soubor.
+1. Vyberte **soubor**>**Uložit** a soubor uložte.
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-Podívejte se na [část Nasazení šablony](./quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell#deploy-the-template) v rychlém startu kódu visual studia pro otevření prostředí Cloud a nahrání souboru šablony do prostředí. A pak spusťte následující skript Prostředí PowerShell:
+1. Přihlaste se k [Azure Cloud Shell](https://shell.azure.com)
 
-```azurepowershell-interactive
-$projectName = Read-Host -Prompt "Enter a project name that is used to generate resource names"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$upn = Read-Host -Prompt "Enter your email address used to sign in to Azure"
-$identityId = Read-Host -Prompt "Enter the user-assigned managed identity ID"
+1. Vyberte prostředí **PowerShell** nebo **bash** (pro CLI) v levém horním rohu a zvolte své preferované prostředí.  Po přepnutí se vyžaduje restartování prostředí.
 
-$adUserId = (Get-AzADUser -UserPrincipalName $upn).Id
-$resourceGroupName = "${projectName}rg"
-$keyVaultName = "${projectName}kv"
+    ![Azure Portal Cloud Shell nahrát soubor](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-New-AzResourceGroup -Name $resourceGroupName -Location $location
+1. Vyberte **Nahrát nebo stáhnout soubory** a potom vyberte **Nahrát**. Viz předchozí snímek obrazovky.  Vyberte soubor, který jste uložili v předchozí části. Po nahrání souboru můžete pomocí příkazu **ls** a příkazu **Cat** ověřit, jestli se soubor úspěšně nahrál.
 
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json" -identityId $identityId -keyVaultName $keyVaultName -objectId $adUserId
+1. Spuštěním následujícího skriptu PowerShellu nasaďte šablonu.
 
-Write-Host "Press [ENTER] to continue ..."
-```
+    ```azurepowershell-interactive
+    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource names"
+    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+    $upn = Read-Host -Prompt "Enter your email address used to sign in to Azure"
+    $identityId = Read-Host -Prompt "Enter the user-assigned managed identity ID"
 
-Služba skriptu nasazení musí vytvořit další prostředky skriptu nasazení pro spuštění skriptu. Příprava a proces čištění může trvat až jednu minutu k dokončení kromě skutečného času spuštění skriptu.
+    $adUserId = (Get-AzADUser -UserPrincipalName $upn).Id
+    $resourceGroupName = "${projectName}rg"
+    $keyVaultName = "${projectName}kv"
 
-Nasazení se nezdařilo z důvodu neplatného **příkazu, zápis-výstup1** se používá ve skriptu. Dostanete chybu, která říká:
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
 
-```error
-The term 'Write-Output1' is not recognized as the name of a cmdlet, function, script file, or operable
-program.\nCheck the spelling of the name, or if a path was included, verify that the path is correct and try again.\n
-```
+    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json" -identityId $identityId -keyVaultName $keyVaultName -objectId $adUserId
 
-Výsledek spuštění skriptu nasazení je uložen v prostředcích skriptu nasazení pro účely řešení potíží.
+    Write-Host "Press [ENTER] to continue ..."
+    ```
+
+    Služba skriptu nasazení potřebuje vytvořit další prostředky skriptu nasazení pro provedení skriptu. Příprava a proces čištění může trvat až jednu minutu, než se dokončí Skutečná doba spuštění skriptu.
+
+    Nasazení se nepovedlo kvůli neplatnému příkazu. ve skriptu se používá **Write-Output1** . Zobrazí se chybová zpráva:
+
+    ```error
+    The term 'Write-Output1' is not recognized as the name of a cmdlet, function, script file, or operable
+    program.\nCheck the spelling of the name, or if a path was included, verify that the path is correct and try again.\n
+    ```
+
+    Výsledek spuštění skriptu nasazení je uložen do prostředků skriptu nasazení pro účely řešení potíží.
 
 ## <a name="debug-the-failed-script"></a>Ladění neúspěšného skriptu
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Otevřete skupinu prostředků. Jedná se o název projektu s **rg** připojen. Zobrazí se dva další prostředky ve skupině prostředků. Tyto prostředky jsou označovány jako *prostředky skriptu nasazení*.
+1. Otevřete skupinu prostředků. Je to název projektu s připojeným **RG** . Ve skupině prostředků se zobrazí dva další prostředky. Tyto prostředky se označují jako *prostředky skriptu nasazení*.
 
-    ![Prostředky skriptu nasazení šablony Správce prostředků Správce prostředků](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)
+    ![Prostředky skriptu pro nasazení Správce prostředků šablon](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)
 
-    Oba soubory mají příponu **azscripts.** Jeden je účet úložiště a druhý je instance kontejneru.
+    Oba soubory mají příponu **azscripts** . Jedním z nich je účet úložiště a druhý je instance kontejneru.
 
-    Výběrem **možnosti Zobrazit skryté typy** zobrazíte seznam prostředků jazyka deploymentScripts.
+    Pokud chcete zobrazit seznam prostředků deploymentScripts, vyberte **Zobrazit skryté typy** .
 
-1. Vyberte účet úložiště s příponou **azscripts.**
-1. Vyberte dlaždici **Sdílení souborů.** Zobrazí se složka **azscripts.**  Složka obsahuje soubory spuštění skriptu nasazení.
-1. Vyberte **azscripts**. Zobrazí se dvě složkyL **azscriptinput** a **azscriptoutput**.  Vstupní složka obsahuje soubor skriptu systému PowerShell a soubory skriptu pro nasazení uživatele. Výstupní složka obsahuje **executionresult.json** a výstupní soubor skriptu. Zobrazí se chybová zpráva v **executionresult.json**. Výstupní soubor není k dispozici, protože spuštění se nezdařilo.
+1. Vyberte účet úložiště s příponou **azscripts** .
+1. Vyberte dlaždici **sdílení souborů** . Zobrazí se složka **azscripts** .  Složka obsahuje spouštěcí soubory skriptu nasazení.
+1. Vyberte **azscripts**. Zobrazí se dvě složky **azscriptinput** a **azscriptoutput**.  Vstupní složka obsahuje systémový soubor skriptu PowerShellu a soubory skriptu nasazení uživatele. Výstupní složka obsahuje **ExecutionResult. JSON** a výstupní soubor skriptu. Chybová zpráva se zobrazí v **ExecutionResult. JSON**. Výstupní soubor není k dispozici, protože spuštění selhalo.
 
-Odeberte řádek **Write-Output1** a znovu nasadit šablonu.
+Odeberte řádek **Write-Output1** a znovu nasaďte šablonu.
 
-Při úspěšném spuštění druhého nasazení musí být prostředky skriptu nasazení odebrány službou skriptu, protože vlastnost **cleanupPreference** je nastavena **na hodnotu OnSuccess**.
+Po úspěšném spuštění druhého nasazení budou prostředky skriptu nasazení odebrány službou skriptu, protože vlastnost **cleanupPreference** je nastavena na hodnotu **úspěch**.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněním skupiny prostředků.
 
-1. Na portálu Azure vyberte **skupinu prostředků** z levé nabídky.
+1. Z Azure Portal v nabídce vlevo vyberte **Skupina prostředků** .
 2. Do pole **Filtrovat podle názvu** zadejte název skupiny prostředků.
 3. Vyberte název skupiny prostředků.  Ve skupině prostředků uvidíte celkem šest prostředků.
-4. V horní nabídce vyberte **Odstranit skupinu prostředků.**
+4. V horní nabídce vyberte **Odstranit skupinu prostředků** .
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili používat skript nasazení v šablonách ARM. Informace o tom, jak nasazovat prostředky Azure na základě podmínek, najdete v tomto tématu:
+V tomto kurzu jste zjistili, jak používat skript nasazení v šablonách ARM. Informace o tom, jak nasazovat prostředky Azure na základě podmínek, najdete v tomto tématu:
 
 > [!div class="nextstepaction"]
 > [Použití podmínek](./template-tutorial-use-conditions.md)

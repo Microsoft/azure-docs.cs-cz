@@ -1,86 +1,86 @@
 ---
 title: Offline zálohování pro DPM a Azure Backup Server
-description: Pomocí služby Azure Backup můžete odesílat data ze sítě pomocí služby Azure Import/Export. Tento článek vysvětluje pracovní postup zálohování offline pro DPM a Azure Backup Server.
+description: Pomocí Azure Backup můžete odesílat data mimo síť pomocí služby Azure import/export. Tento článek vysvětluje pracovní postup offline zálohování pro DPM a Azure Backup Server.
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 080b0bc53b2058bd186e90f354b8f5bcda510414
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d45716fea92a25b0deea6ee5c1972820341d64a1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78197040"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183853"
 ---
-# <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>Pracovní postup zálohování offline pro DPM a Azure Backup Server
+# <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>Pracovní postup offline zálohování pro DPM a Azure Backup Server
 
-Azure Backup má několik integrovaných efektivit, které šetří náklady na síť a úložiště během počátečního úplného zálohování dat do Azure. Počáteční úplné zálohy obvykle přenášejí velké množství dat a vyžadují větší šířku pásma sítě ve srovnání s následnými zálohami, které přenášejí pouze rozdíly/přírůstky. Azure Backup komprimuje počáteční zálohy. Prostřednictvím procesu offline osevací azure backup můžete použít disky k nahrání komprimované počáteční záložní data offline do Azure.
+Azure Backup má několik předdefinovaných efektivit, které při počátečním úplném zálohování dat do Azure šetří náklady na síť a úložiště. Počáteční úplné zálohování obvykle přenáší velké objemy dat a vyžaduje více šířky pásma sítě ve srovnání s dalšími zálohami, které přenášejí pouze rozdíly a přírůstkové. Azure Backup zkomprimuje počáteční zálohy. Díky procesu offline osazení může Azure Backup použít disky k nahrání komprimovaných počátečních zálohovaných dat offline do Azure.
 
-Offline proces seeding u Azure Backup je úzce integrovaný se [službou Azure Import/Export](../storage/common/storage-import-export-service.md). Tuto službu můžete použít k přenosu dat do Azure pomocí disků. Pokud máte terabajty (RB) počátečních záložních dat, které je potřeba přenést přes síť s vysokou latencí a nízkou šířkou pásma, můžete použít pracovní postup offline seedingu k odeslání počáteční záložní kopie na jeden nebo více pevných disků do datového centra Azure. Tento článek obsahuje přehled a další kroky, které dokončí tento pracovní postup pro Správce ochrany dat system center (DPM) a Microsoft Azure Backup Server (MABS).
+Proces offline nasazení Azure Backup je úzce integrovaný do [služby Azure import/export](../storage/common/storage-import-export-service.md). Tuto službu můžete použít k přenosu dat do Azure pomocí disků. Pokud máte terabajty (TBs) počátečních zálohovaných dat, která je potřeba přenést po síti s vysokou latencí a malou šířkou pásma, můžete k odeslání prvotní záložní kopie na jednom nebo více pevných discích do datacentra Azure použít pracovní postup offline. Tento článek poskytuje přehled a další kroky, které dokončí tento pracovní postup pro System Center Data Protection Manager (DPM) a server Microsoft Azure Backup (MABS).
 
 > [!NOTE]
-> Proces zálohování offline pro agenta Microsoft Azure Recovery Services (MARS) se liší od dpm a MABS. Informace o použití offline zálohování s agentem MARS najdete [v tématu Offline pracovní postup zálohování v azure backup](backup-azure-backup-import-export.md). Offline zálohování není podporováno pro zálohování stavu systému provedené pomocí agenta zálohování Azure.
+> Proces offline zálohování agenta Microsoft Azure Recovery Services (MARS) se liší od DPM a MABS. Informace o použití zálohování offline s agentem MARS najdete v tématu [pracovní postup offline zálohování v Azure Backup](backup-azure-backup-import-export.md). Zálohování v režimu offline není podporováno pro zálohy stavu systému pomocí agenta Azure Backup.
 >
 
 ## <a name="overview"></a>Přehled
 
-Díky offline secí službě Azure Backup a službě Azure Import/Export je snadné nahrávat data do Azure offline pomocí disků. Proces zálohování offline zahrnuje následující kroky:
+Díky funkcím pro online osazení Azure Backup a službě Azure pro import/export je jednoduché nahrávat data do Azure v režimu offline pomocí disků. Proces zálohování offline zahrnuje následující kroky:
 
 > [!div class="checklist"]
 >
-> * Záložní data se zapisují do pracovního umístění namísto odesílání po síti.
-> * Data v pracovním umístění se pak zapisují na jeden nebo více disků SATA pomocí nástroje *AzureOfflineBackupDiskPrep.*
-> * Úloha importu Azure se automaticky vytvoří pomocí nástroje.
-> * Jednotky SATA se pak odešlou do nejbližšího datového centra Azure.
-> * Po dokončení nahrávání dat zálohování do Azure Azure Zálohování zkopíruje záložní data do úložiště záloh a přírůstkové zálohy jsou naplánovány.
+> * Zálohovaná data se zapisují do pracovního umístění, místo aby se odesílala přes síť.
+> * Data v pracovním umístění se pak zapisují na jeden nebo více disků SATA pomocí nástroje *AzureOfflineBackupDiskPrep* .
+> * Pomocí nástroje se automaticky vytvoří úloha importu Azure.
+> * Jednotky SATA se pak odesílají do nejbližšího datacentra Azure.
+> * Po dokončení nahrávání zálohovaných dat do Azure Azure Backup zkopíruje zálohovaná data do trezoru záloh a naplánují se přírůstkové zálohy.
 
 ## <a name="supported-configurations"></a>Podporované konfigurace
 
-Offline zálohování je podporované pro všechny modely nasazení Služby Azure Backup, které zálohují data z místního do cloudu Microsoftu. Mezi tyto modely patří:
+Offline zálohování je podporované pro všechny modely nasazení Azure Backup, které zálohují data z místního prostředí do cloudu Microsoftu. Mezi tyto modely patří:
 
 > [!div class="checklist"]
 >
-> * Zálohování souborů a složek pomocí agenta MARS nebo agenta zálohování Azure.
+> * Zálohování souborů a složek pomocí agenta MARS nebo agenta Azure Backup.
 > * Zálohování všech úloh a souborů pomocí aplikace DPM.
 > * Zálohování všech úloh a souborů pomocí MABS.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před zahájením pracovního postupu zálohování offline se ujistěte, že jsou splněny následující požadavky:
+Než spustíte pracovní postup offline zálohování, ujistěte se, že jsou splněné následující předpoklady:
 
-* Byl vytvořen [trezor služby Recovery Services.](backup-azure-recovery-services-vault-overview.md) Chcete-li jej vytvořit, postupujte podle pokynů v [části Vytvoření trezoru služby Recovery Services.](tutorial-backup-windows-server-to-azure.md#create-a-recovery-services-vault)
-* Agent zálohování Azure nebo MABS nebo DPM byla nainstalována na Windows Server nebo klient systému Windows, podle potřeby a počítač je registrován v trezoru služby Recovery Services. Ujistěte se, že se používá jenom [nejnovější verze azure backupu.](https://go.microsoft.com/fwlink/?linkid=229525)
-* [Stáhněte si soubor nastavení publikování Azure](https://portal.azure.com/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) v počítači, ze kterého chcete zálohovat data. Předplatné, ze kterého stáhnete soubor nastavení publikování se může lišit od předplatného, který obsahuje úložiště služby Recovery Services. Pokud je vaše předplatné na suverénní cloudy Azure, pak použijte následující odkazy podle potřeby ke stažení souboru nastavení publikování Azure.
+* Byl vytvořen [Recovery Services trezor](backup-azure-recovery-services-vault-overview.md) . Pokud ho chcete vytvořit, postupujte podle kroků v části [Vytvoření trezoru Recovery Services](tutorial-backup-windows-server-to-azure.md#create-a-recovery-services-vault) .
+* Agent Azure Backup nebo MABS nebo DPM byl nainstalován buď na Windows Server, nebo na klienta Windows, a počítač je zaregistrovaný v trezoru Recovery Services. Zajistěte, aby se používala jenom [nejnovější verze Azure Backup](https://go.microsoft.com/fwlink/?linkid=229525) .
+* [Stáhněte si soubor nastavení publikování v Azure](https://portal.azure.com/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) na počítači, ze kterého plánujete zálohovat vaše data. Předplatné, ze kterého stahujete soubor nastavení publikování, se může lišit od předplatného, které obsahuje Recovery Services trezor. Pokud je vaše předplatné ve službě Azure cloudy, pak pomocí následujících odkazů stáhněte soubor s nastavením publikování v Azure.
 
-    | Suverénní cloudová oblast | Propojení souborů nastavení publikování Azure |
+    | Oblast cloudu svrchovan | Odkaz na soubor nastavení publikování v Azure |
     | --- | --- |
     | Spojené státy | [Odkaz](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
     | Čína | [Odkaz](https://portal.azure.cn/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
 
-* Účet úložiště Azure s modelem nasazení Resource Manager u byl vytvořen v předplatném, ze kterého jste stáhli soubor nastavení publikování.
+* V předplatném, ze kterého jste stáhli soubor nastavení publikování, byl vytvořen účet služby Azure Storage s modelem nasazení Správce prostředků.
 
-  ![Vytvoření účtu úložiště s vývojem Správce prostředků](./media/backup-azure-backup-import-export/storage-account-resource-manager.png)
+  ![Vytvoření účtu úložiště pomocí Správce prostředkůho vývoje](./media/backup-azure-backup-import-export/storage-account-resource-manager.png)
 
-* Vytvoří se pracovní umístění, které může být sdílenou sítí nebo jakákoli další jednotka v počítači, interní nebo externí, s dostatkem místa na disku pro uložení počáteční kopie. Chcete-li například zálohovat souborový server o velikosti 500 GB, ujistěte se, že pracovní oblast je alespoň 500 GB. (Menší množství se používá z důvodu komprese.)
-* U disků odeslaných do Azure se ujistěte, že se používá pouze 2,5palcový disk SSD nebo 2,5palcový nebo 3,5palcový interní pevné disky SATA II/III. Můžete použít pevné disky až 10 TB. Podívejte se na [dokumentaci služby Azure Import/Export](../storage/common/storage-import-export-requirements.md#supported-hardware) pro nejnovější sadu jednotek, které služba podporuje.
-* Jednotky SATA musí být připojeny k počítači (označované jako *kopírovací počítač),* odkud se provádí kopie záložních dat z pracovního umístění do jednotek SATA. Zkontrolujte, zda je v kopírovacím počítači povolen nástroj BitLocker.
+* Vytvoří se pracovní umístění, které může být sdílená síťová složka nebo jakákoli další jednotka na počítači, interní nebo externí, s dostatkem místa na disku pro uložení počáteční kopie. Pokud třeba chcete zálohovat souborový server 500-GB, ujistěte se, že pracovní oblast má aspoň 500 GB. (V důsledku komprese se používá menší množství.)
+* U disků odeslaných do Azure zajistěte, aby se používaly interní pevné disky SATA nebo 2,5, 2,5 nebo 3,5. Můžete použít pevné disky až do 10 TB. Nejnovější sadu jednotek, které služba podporuje, najdete v [dokumentaci ke službě Import/export v Azure](../storage/common/storage-import-export-requirements.md#supported-hardware) .
+* Jednotky SATA musí být připojené k počítači (označovanému jako *počítač pro kopírování*), ze kterého se provádí Kopírování zálohovaných dat z pracovního umístění na jednotky SATA. Ujistěte se, že je na počítači pro kopírování povolený nástroj BitLocker.
 
-## <a name="prepare-the-server-for-the-offline-backup-process"></a>Příprava serveru na proces zálohování offline
+## <a name="prepare-the-server-for-the-offline-backup-process"></a>Příprava serveru pro proces offline zálohování
 
 >[!NOTE]
-> Pokud nemůžete najít uvedené nástroje, jako je například *AzureOfflineBackupCertGen.exe*, v instalaci AskAzureBackupTeam@microsoft.com agenta MARS, zapište, chcete-li k nim získat přístup.
+> Pokud v instalaci agenta MARS nemůžete najít uvedené nástroje, jako je třeba *AzureOfflineBackupCertGen. exe*, zapište AskAzureBackupTeam@microsoft.com do, abyste k nim měli přístup.
 
-* Otevřete příkazový řádek se zvýšenými oprávněními na serveru a spusťte následující příkaz:
+* Na serveru otevřete příkazový řádek se zvýšenými oprávněními a spusťte následující příkaz:
 
     ```cmd
     AzureOfflineBackupCertGen.exe CreateNewApplication SubscriptionId:<Subs ID>
     ```
 
-    Nástroj vytvoří aplikaci Azure Offline Backup Active Directory, pokud neexistuje.
+    Nástroj vytvoří aplikaci Active Directory offline zálohování Azure, pokud neexistuje.
 
-    Pokud aplikace již existuje, tento spustitelný soubor vás požádá o ruční nahrání certifikátu do aplikace v tenantovi. Podle kroků v [této části](#manually-upload-an-offline-backup-certificate) nahrajte certifikát ručně do aplikace.
+    Pokud aplikace již existuje, zobrazí se výzva k ručnímu nahrání certifikátu do aplikace v tenantovi. Podle pokynů v [této části](#manually-upload-an-offline-backup-certificate) Nahrajte certifikát do aplikace ručně.
 
-* Nástroj *AzureOfflineBackup.exe* generuje soubor *OfflineApplicationParams.xml.* Zkopírujte tento soubor na server pomocí mabs nebo dpm.
-* Nainstalujte [nejnovějšího agenta MARS](https://aka.ms/azurebackup_agent) na instanci DPM nebo na server Azure Backup.
+* Nástroj *AzureOfflineBackup. exe* vygeneruje soubor *OfflineApplicationParams. XML* . Zkopírujte tento soubor na server pomocí MABS nebo DPM.
+* Nainstalujte [nejnovějšího agenta Mars](https://aka.ms/azurebackup_agent) na instanci aplikace DPM nebo na server Azure Backup.
 * Zaregistrujte server do Azure.
 * Spusťte následující příkaz:
 
@@ -88,194 +88,194 @@ Před zahájením pracovního postupu zálohování offline se ujistěte, že js
     AzureOfflineBackupCertGen.exe AddRegistryEntries SubscriptionId:<subscriptionid> xmlfilepath:<path of the OfflineApplicationParams.xml file>  storageaccountname:<storageaccountname configured with Azure Data Box>
     ```
 
-* Předchozí příkaz vytvoří `C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch\MicrosoftBackupProvider\OfflineApplicationParams_<Storageaccountname>.xml`soubor .
+* Předchozí příkaz vytvoří soubor `C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch\MicrosoftBackupProvider\OfflineApplicationParams_<Storageaccountname>.xml`.
 
-## <a name="manually-upload-an-offline-backup-certificate"></a>Ruční nahrání zálohovacího certifikátu offline
+## <a name="manually-upload-an-offline-backup-certificate"></a>Ruční nahrání certifikátu offline zálohování
 
-Chcete-li ručně nahrát certifikát zálohování offline do dříve vytvořené aplikace Azure Active Directory určené pro zálohování offline, postupujte takto.
+Pomocí těchto kroků ručně Nahrajte certifikát offline zálohování do dříve vytvořené Azure Active Directory aplikace určené pro offline zálohování.
 
 1. Přihlaste se k portálu Azure.
-1. Přejděte na**registrace aplikací** **Azure Active Directory** > .
-1. Na kartě **Vlastní aplikace** vyhledejte aplikaci `AzureOfflineBackup _<Azure User Id`s formátem zobrazovaného názvu .
+1. Přejít na **Azure Active Directory** > **Registrace aplikací**.
+1. Na kartě **vlastněné aplikace** vyhledejte aplikaci ve formátu `AzureOfflineBackup _<Azure User Id`zobrazovaného názvu.
 
-    ![Vyhledání aplikace na kartě Použité aplikace](./media/backup-azure-backup-import-export/owned-applications.png)
+    ![Najít aplikaci na kartě vlastní aplikace](./media/backup-azure-backup-import-export/owned-applications.png)
 
-1. Vyberte aplikaci. V části **Spravovat** v levém podokně přejděte na **certifikáty & tajných kódů**.
-1. Zkontrolujte již existující certifikáty nebo veřejné klíče. Pokud žádné nejsou, můžete aplikaci bezpečně odstranit výběrem tlačítka **Odstranit** na stránce **Přehled** aplikace. Potom můžete zopakovat kroky k [přípravě serveru pro](#prepare-the-server-for-the-offline-backup-process) proces zálohování offline a přeskočit následující kroky. V opačném případě pokračujte v těchto krocích z instance DPM nebo serveru Azure Backup, kde chcete nakonfigurovat zálohování offline.
-1. Vyberte kartu **Spravovat aplikaci** > certifikátu počítače**Osobní.** Vyhledejte certifikát s názvem `CB_AzureADCertforOfflineSeeding_<ResourceId>`.
-1. Vyberte certifikát, klepněte pravým tlačítkem myši na **všechny úkoly**a pak vyberte **exportovat**bez soukromého klíče ve formátu CER.
-1. Přejděte na offline aplikaci pro zálohování Azure na webu Azure Portal.
-1. Vyberte **Spravovat** > **certifikáty & tajných kódů** > **Nahrát certifikát**. Nahrajte certifikát exportovaný v předchozím kroku.
+1. Vyberte aplikaci. V části **Spravovat** v levém podokně přejdete na **certifikáty & tajných**kódů.
+1. Zkontroluje existující certifikáty nebo veřejné klíče. Pokud žádné nemáte, můžete aplikaci bezpečně odstranit tak, že na stránce **Přehled** aplikace vyberete tlačítko **Odstranit** . Pak můžete opakovat postup pro [přípravu serveru pro offline proces zálohování](#prepare-the-server-for-the-offline-backup-process) a přeskočit následující kroky. V opačném případě pokračujte dále podle těchto kroků z instance aplikace DPM nebo serveru Azure Backup, kde chcete nakonfigurovat offline zálohování.
+1. Vyberte kartu **Správa počítačových certifikátů aplikace** > **osobní** . vyhledejte certifikát s názvem `CB_AzureADCertforOfflineSeeding_<ResourceId>`.
+1. Vyberte certifikát, klikněte pravým tlačítkem na **všechny úlohy**a pak vyberte **exportovat**bez privátního klíče ve formátu. cer.
+1. V Azure Portal přejdete do aplikace Azure offline Backup.
+1. Vyberte **Spravovat** > **certifikáty & tajných klíčů** > **nahrát certifikát**. Nahrajte certifikát exportovaný v předchozím kroku.
 
     ![Odeslání certifikátu](./media/backup-azure-backup-import-export/upload-certificate.png)
 
-1. Na serveru otevřete registr zadáním **regedit** v okně spustit.
-1. Přejděte na položku *registru Počítač\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider*.
-1. Klepněte pravým tlačítkem myši na **položku CloudBackupProvider**a přidejte novou hodnotu řetězce s názvem `AzureADAppCertThumbprint_<Azure User Id>`.
+1. Na serveru otevřete registr zadáním příkazu **Regedit** v okně Spustit.
+1. Do položky registru otevřete *počítač \ HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Config\CloudBackupProvider*.
+1. Klikněte pravým tlačítkem na **CloudBackupProvider**a přidejte novou řetězcovou hodnotu s názvem `AzureADAppCertThumbprint_<Azure User Id>`.
 
     >[!NOTE]
-    > Pokud chcete Najít ID uživatele Azure, proveďte jeden z následujících kroků:
+    > Pokud chcete najít ID uživatele Azure, proveďte jeden z následujících kroků:
     >
-    >* Z PowerShellu připojeného k `Get-AzureRmADUser -UserPrincipalName “Account Holder’s email as appears in the portal”` Azure spusťte příkaz.
-    >* Přejděte na `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup; Name: CurrentUserId;`cestu registru .
+    >* Z PowerShellu připojeného k Azure spusťte `Get-AzureRmADUser -UserPrincipalName “Account Holder’s email as appears in the portal”` příkaz.
+    >* Přejít na cestu `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup; Name: CurrentUserId;`k registru.
 
-1. Klepněte pravým tlačítkem myši na řetězec přidaný v předchozím kroku a vyberte **příkaz Změnit**. V hodnotě zadejte kryptografický otisk certifikátu, který jste exportovali v kroku 7. Pak vyberte **OK**.
-1. Chcete-li získat hodnotu kryptografického otisku, poklepejte na certifikát. Vyberte kartu **Podrobnosti** a posuňte se dolů, dokud se nezobrazí pole kryptografického otisku. Vyberte **Kryptografický otisk**a zkopírujte hodnotu.
+1. Klikněte pravým tlačítkem na řetězec přidaný v předchozím kroku a vyberte **změnit**. V poli hodnota zadejte kryptografický otisk certifikátu, který jste exportovali v kroku 7. Pak vyberte **OK**.
+1. Pokud chcete získat hodnotu kryptografického otisku, poklikejte na certifikát. Vyberte kartu **Podrobnosti** a posuňte se dolů, dokud se nezobrazí pole kryptografický otisk. Vyberte **kryptografický otisk**a zkopírujte hodnotu.
 
-    ![Kopírovat hodnotu z pole kryptografického potisku](./media/backup-azure-backup-import-export/thumbprint-field.png)
+    ![Kopírovat hodnotu z pole kryptografický otisk](./media/backup-azure-backup-import-export/thumbprint-field.png)
 
-1. Pokračujte do části [Pracovní postup](#workflow) a pokračujte v procesu zálohování offline.
+1. Pokračujte v části [pracovní postup](#workflow) a pokračujte v procesu offline zálohování.
 
 ## <a name="workflow"></a>Pracovní postup
 
-Informace v této části vám pomohou dokončit pracovní postup zálohování offline, aby se vaše data mohla doručit do datového centra Azure a nahrát do Azure Storage. Pokud máte dotazy týkající se služby importu nebo jakéhokoli aspektu procesu, podívejte se na [dokumentaci přehledu služby importu,](../storage/common/storage-import-export-service.md) na kterou odkazuje dříve.
+Informace v této části vám pomůžou dokončit pracovní postup offline zálohování, aby se vaše data mohla doručovat do datacentra Azure a nahrály na Azure Storage. Pokud máte dotazy týkající se služby pro import nebo jakéhokoli aspektu procesu, přečtěte si [dokumentaci přehled služby Import služby](../storage/common/storage-import-export-service.md) , na kterou se odkazuje dříve.
 
-### <a name="initiate-offline-backup"></a>Zahájení zálohování offline
+### <a name="initiate-offline-backup"></a>Zahájit zálohování offline
 
-1. Při plánování zálohování se v systému Windows Server, klientovi systému Windows nebo aplikaci DPM zobrazí následující stránka.
+1. Při plánování zálohování se zobrazí následující stránka v systému Windows Server, klient Windows nebo DPM.
 
-    ![Stránka importu](./media/backup-azure-backup-import-export/offlineBackupscreenInputs.png)
+    ![Importovat stránku](./media/backup-azure-backup-import-export/offlineBackupscreenInputs.png)
 
-    Zde je odpovídající stránka v DPM. <br/>
-    
-    ![Stránka importu DPM a Zálohovacího serveru Azure](./media/backup-azure-backup-import-export/dpmoffline.png)
+    Zde je odpovídající stránka v aplikaci DPM. <br/>
 
-    Vysuňte pole, která vyplníte, jsou:
+    ![Stránka Import aplikace DPM a Azure Backup Server](./media/backup-azure-backup-import-export/dpmoffline.png)
 
-   * **Pracovní umístění**: Dočasné umístění úložiště, do kterého je zapsána počáteční záložní kopie. Pracovní umístění může být ve sdílené síťové složce nebo v místním počítači. Pokud se kopírovací počítač a zdrojový počítač liší, zadejte úplnou síťovou cestu pracovního umístění.
-   * **Nastavení publikování Azure**: Místní cesta k souboru nastavení publikování.
-   * **Název úlohy importu Azure:** Jedinečný název, podle kterého služba Azure Import/Export a Azure Backup sledují přenos dat odeslaných na disky do Azure.
-   * **ID předplatného Azure**: ID předplatného Azure pro předplatné, ze kterého jste stáhli soubor nastavení publikování Azure.
-   * **Účet úložiště Azure**: Název účtu úložiště v předplatném Azure přidruženéka k souboru nastavení publikování Azure.
-   * **Azure Storage Container**: Název cílového objektu blob úložiště v účtu úložiště Azure, kde se importují data zálohy.
+    Pole, která vyplníte, jsou:
 
-   Uložte **pracovní umístění** a informace o názvu **úlohy importu Azure,** které jste zadali. Je nutné připravit disky.
+   * **Pracovní umístění**: dočasné umístění úložiště, do kterého se vytvořila prvotní záložní kopie. Pracovní umístění může být ve sdílené síťové složce nebo na místním počítači. Pokud je počítač kopírování a zdrojový počítač jiný, zadejte úplnou síťovou cestu k pracovnímu umístění.
+   * **Nastavení publikování v Azure**: místní cesta k souboru nastavení publikování.
+   * **Název úlohy pro import do Azure**: jedinečný název, pomocí kterého služba Azure Import/Export a Azure Backup sleduje přenos dat odeslaných na disky do Azure.
+   * **ID předplatného Azure**: ID předplatného Azure pro předplatné, ze kterého jste stáhli soubor nastavení publikování v Azure.
+   * **Účet Azure Storage**: název účtu úložiště v předplatném Azure přidruženého k souboru nastavení publikování v Azure.
+   * **Azure Storage kontejner**: název cílového objektu BLOB úložiště v účtu služby Azure Storage, do kterého se importují zálohovaná data.
 
-1. Dokončete pracovní postup. Pokud chcete spustit offline záložní kopii, vyberte **Zálohovat na** konzoli pro správu agenta zálohování Azure. Počáteční záloha je zapsána do pracovní oblasti jako součást tohoto kroku.
+   Uložte **pracovní umístění** a informace o **názvu úlohy importu Azure** , které jste zadali. Je nutné připravit disky.
 
-    ![Zálohování nyní](./media/backup-azure-backup-import-export/backupnow.png)
+1. Dokončete pracovní postup. Chcete-li spustit kopii offline zálohování, vyberte možnost **Zálohovat nyní** v konzole pro správu agenta Azure Backup. Počáteční záloha je zapsána do pracovní oblasti v rámci tohoto kroku.
 
-    Chcete-li dokončit odpovídající pracovní postup v aplikaci DPM nebo Azure Backup Server, klepněte pravým tlačítkem myši na **položku Skupina ochrany**. Vyberte možnost **Vytvořit bod obnovení.** Pak vyberte možnost **Online ochrana.**
+    ![Zálohovat hned](./media/backup-azure-backup-import-export/backupnow.png)
 
-    ![DPM a MABS zálohovat](./media/backup-azure-backup-import-export/dpmbackupnow.png)
+    Chcete-li dokončit odpovídající pracovní postup v aplikaci DPM nebo Azure Backup Server, klikněte pravým tlačítkem myši na **skupinu ochrany**. Vyberte možnost **vytvořit bod obnovení** . Pak vyberte možnost **Online ochrany** .
 
-    Po dokončení operace je pracovní umístění připraveno k použití pro přípravu disku.
+    ![Zálohování DPM a MABS nyní](./media/backup-azure-backup-import-export/dpmbackupnow.png)
+
+    Po dokončení operace je pracovní umístění připravené k použití pro přípravu disku.
 
     ![Průběh zálohování](./media/backup-azure-backup-import-export/opbackupnow.png)
 
-### <a name="prepare-sata-drives-and-ship-to-azure"></a>Příprava disků SATA a odeslání do Azure
+### <a name="prepare-sata-drives-and-ship-to-azure"></a>Příprava jednotek SATA a odeslání do Azure
 
-Nástroj *AzureOfflineBackupDiskPrep* se používá k přípravě jednotek SATA, které jsou odesílány do nejbližšího datového centra Azure. Tento nástroj je k dispozici v instalačním adresáři agenta služby Recovery Services v následující cestě:
+Nástroj *AzureOfflineBackupDiskPrep* se používá k přípravě jednotek SATA, které se odesílají do nejbližšího datacentra Azure. Tento nástroj je k dispozici v instalačním adresáři agenta Recovery Services v následující cestě:
 
 `*\\Microsoft Azure Recovery Services Agent\Utils\*`
 
-1. Přejděte do adresáře a zkopírujte adresář *AzureOfflineBackupDiskPrep* do kopírovacího počítače, ve kterém jsou připojeny jednotky SATA, které mají být připraveny. Zajistit:
+1. Do adresáře přejdete a zkopírujte adresář *AzureOfflineBackupDiskPrep* do kopírovacího počítače, do kterého se mají připojit jednotky SATA, které mají být připraveny. Zajistěte, aby:
 
-   * Kopírovací počítač může přistupovat k pracovnímu umístění pracovního postupu offline seeding pomocí stejné síťové cesty, která byla poskytnuta v pracovním postupu v části Zahájit zálohování offline.
-   * Nástroj BitLocker je povolen v kopírovacím počítači.
-   * Kopírovací počítač má přístup k portálu Azure. V případě potřeby může být kopírovací počítač stejný jako zdrojový počítač.
+   * Počítač pro kopírování může získat přístup k pracovnímu umístění pracovního postupu offline-osazení pomocí stejné síťové cesty, kterou jste zadali v pracovním postupu v části "zahájení zálohování offline".
+   * V počítači pro kopírování je povolený nástroj BitLocker.
+   * Počítač pro kopírování má přístup k Azure Portal. V případě potřeby může být počítač kopírování stejný jako zdrojový počítač.
 
      > [!IMPORTANT]
-     > Pokud je zdrojový počítač virtuální počítač, je povinné používat jako kopírovací počítač jiný fyzický nebo klientský počítač.
+     > Pokud je zdrojový počítač virtuální počítač, je nutné použít jiný fyzický server nebo klientský počítač jako počítač pro kopírování.
 
-1. Otevřete příkazový řádek se zvýšenými oprávněními v kopírovacím počítači s adresářem nástrojů *AzureOfflineBackupDiskPrep* jako aktuálním adresářem. Spusťte následující příkaz:
+1. Otevřete příkazový řádek se zvýšenými oprávněními na počítači pro kopírování s adresářem nástroje *AzureOfflineBackupDiskPrep* jako s aktuálním adresářem. Spusťte následující příkaz:
 
     `*.\AzureOfflineBackupDiskPrep.exe*   s:<*Staging Location Path*>   [p:<*Path to AzurePublishSettingsFile*>]`
 
     | Parametr | Popis |
     | --- | --- |
-    | s:&lt;*Cesta pracovního umístění*&gt; |Tento povinný vstup slouží k poskytnutí cesty k pracovnímu umístění, které jste zadali do pracovního postupu v části Zahájit zálohování offline. |
-    | p:&lt;*Cesta k PublishSettingsFile*&gt; |Tento volitelný vstup se používá k poskytnutí cesty k souboru nastavení publikování Azure, který jste zadali do pracovního postupu v části Zahájit zálohování offline. |
+    | s:&lt;*cesta k pracovnímu umístění*&gt; |Tento povinný vstup slouží k zadání cesty k pracovnímu umístění, které jste zadali v pracovním postupu v části "zahájení offline zálohování". |
+    | p:&lt;*cesta k PublishSettingsFile*&gt; |Tento nepovinný vstup slouží k zadání cesty k souboru nastavení publikování v Azure, který jste zadali v pracovním postupu v části "zahájení offline zálohování". |
 
     > [!NOTE]
-    > Cesta &lt;k AzurePublishSettingFile&gt; hodnota je povinná, pokud se liší kopírovací počítač a zdrojový počítač.
+    > Hodnota &lt;cesta k AzurePublishSettingFile&gt; je povinná, pokud se počítač kopírování a zdrojový počítač liší.
     >
     >
 
-    Při spuštění příkazu nástroj požaduje výběr úlohy importu Azure, která odpovídá jednotky, které je třeba připravit. Pokud je k zadanému pracovnímu umístění přidružena pouze jedna úloha importu, zobrazí se stránka, jako je tato.
+    Když příkaz spustíte, nástroj vyžádá výběr úlohy importu Azure, která odpovídá diskům, které je potřeba připravit. Pokud je k dispozici pouze jedna úloha importu s dodaným pracovním umístěním, zobrazí se stránka podobná této.
 
     ![Vstup nástroje pro přípravu disku Azure](./media/backup-azure-backup-import-export/azureDiskPreparationToolDriveInput.png) <br/>
 
-1. Zadejte písmeno jednotky bez koncovédvojtečky pro připojený disk, který chcete připravit k přenosu do Azure. Po zobrazení výzvy poskytněte potvrzení formátování jednotky.
+1. Zadejte písmeno jednotky bez koncové dvojtečky pro připojený disk, který chcete připravit na přenos do Azure. Po zobrazení výzvy zadejte potvrzení formátování jednotky.
 
-    Nástroj pak začne připravit disk a zkopírovat záložní data. Pokud daný disk nemá dostatek místa pro záložní data, může být nutné připojit další disky. <br/>
+    Nástroj pak začne připravovat disk a kopírovat zálohovaná data. Po zobrazení výzvy nástrojem může být nutné připojit další disky pro případ, že na poskytnutém disku není dostatek místa pro data záloh. <br/>
 
-    Po úspěšném dokončení nástroje se připraví jeden nebo více disků, které jste zadali k odeslání do Azure. Úloha importu s názvem, který jste zadali během pracovního postupu v části Zahájit zálohování offline, se také vytvoří v Azure. Nakonec nástroj zobrazí dodací adresu do datového centra Azure, kde je potřeba odeslat disky.
+    Po úspěšném dokončení nástroje se k odeslání do Azure připraví jeden nebo víc disků, které jste zadali. V Azure se také vytvoří úloha importu s názvem, který jste zadali během pracovního postupu v části "iniciování offline zálohování". Nástroj nakonec zobrazí dodací adresu v datovém centru Azure, kde je potřeba dodat disky.
 
-    ![Příprava disku Azure byla dokončena](./media/backup-azure-backup-import-export/azureDiskPreparationToolSuccess.png)<br/>
+    ![Příprava disku Azure dokončena](./media/backup-azure-backup-import-export/azureDiskPreparationToolSuccess.png)<br/>
 
-1. Na konci spuštění příkazu se také zobrazí možnost aktualizovat informace o dopravě.
+1. Na konci příkazu se zobrazí také možnost aktualizovat informace o dopravě.
 
-    ![Aktualizovat informace o přepravě](./media/backup-azure-backup-import-export/updateshippingutility.png)<br/>
+    ![Možnost aktualizace informací o expedici](./media/backup-azure-backup-import-export/updateshippingutility.png)<br/>
 
-1. Můžete zadat podrobnosti ihned. Nástroj vás provede procesem, který zahrnuje řadu vstupů. Pokud nemáte informace, jako je sledovací číslo nebo jiné podrobnosti týkající se dopravy, můžete relaci ukončit. Kroky k aktualizaci podrobností o dopravě později jsou uvedeny v tomto článku.
+1. Podrobnosti můžete zadat hned. Tento nástroj vás provede procesem, který zahrnuje řadu vstupů. Pokud nemáte informace, jako je sledovací číslo nebo jiné podrobnosti související s dodávkou, můžete relaci ukončit. V tomto článku jsou uvedené pokyny k aktualizaci podrobností o dopravě později.
 
-1. Disky předevčit na adresu, kterou nástroj zadaný. Ponechte sledovací číslo pro budoucí použití.
+1. Dodejte disky na adresu, kterou poskytuje nástroj. Ponechte sledovací číslo pro budoucí referenci.
 
    > [!IMPORTANT]
-   > Žádné dvě úlohy importu Azure nemůže mít stejné číslo sledování. Ujistěte se, že jednotky připravené nástrojem v rámci jedné úlohy importu Azure jsou dodávány společně v jednom balíčku a že pro balíček existuje jediné jedinečné sledovací číslo. Nekombinujte jednotky připravené jako součást různých úloh importu Azure v jednom balíčku.
+   > Žádné dvě úlohy importu Azure nemohou mít stejné sledovací číslo. Zajistěte, aby jednotky připravené nástrojem v rámci jedné úlohy importu Azure byly dodávány společně v jednom balíčku a aby existovalo jedno jedinečné sledovací číslo pro daný balíček. Nekombinujte jednotky připravené jako součást různých úloh importu Azure v jednom balíčku.
 
-1. Pokud máte informace o sledovacím čísle, přejděte do zdrojového počítače, který čeká na dokončení úlohy importu. Spusťte následující příkaz v příkazovém řádku se zvýšenými oprávněními s adresářem nástrojů *AzureOfflineBackupDiskPrep* jako aktuálním adresářem.
+1. Po zadání informací o čísle sledování přejdete na zdrojový počítač, který čeká na dokončení úlohy importu. Spusťte následující příkaz v příkazovém řádku se zvýšenými oprávněními s adresářem nástroje *AzureOfflineBackupDiskPrep* jako s aktuálním adresářem.
 
    `*.\AzureOfflineBackupDiskPrep.exe*  u:`
 
-   Volitelně můžete spustit následující příkaz z jiného počítače, jako je například kopírovací počítač, s adresářem nástroje *AzureOfflineBackupDiskPrep* jako aktuálním adresářem.
+   Volitelně můžete spustit následující příkaz z jiného počítače, jako je například kopírovat počítač, pomocí adresáře nástrojů *AzureOfflineBackupDiskPrep* jako aktuálního adresáře.
 
    `*.\AzureOfflineBackupDiskPrep.exe*  u:  s:<*Staging Location Path*>   p:<*Path to AzurePublishSettingsFile*>`
 
     | Parametr | Popis |
     | --- | --- |
-    | U: | Tento povinný vstup se používá k aktualizaci podrobností o dopravě pro úlohu importu Azure. |
-    | s:&lt;*Cesta pracovního umístění*&gt; | Tento povinný vstup se používá v případě, že příkaz není spuštěn ve zdrojovém počítači. Slouží k poskytnutí cesty k pracovnímu umístění, které jste zadali do pracovního postupu v části Zahájit zálohování offline. |
-    | p:&lt;*Cesta k PublishSettingsFile*&gt; | Tento povinný vstup se používá v případě, že příkaz není spuštěn ve zdrojovém počítači. Používá se k poskytnutí cesty k souboru nastavení publikování Azure, který jste zadali do pracovního postupu v části "Zahájit zálohování offline". |
+    | h | Tento povinný vstup se používá k aktualizaci informací o dopravě pro úlohu importu Azure. |
+    | s:&lt;*cesta k pracovnímu umístění*&gt; | Tento povinný vstup se používá v případě, že se příkaz na zdrojovém počítači nespustí. Slouží k zadání cesty k pracovnímu umístění, které jste zadali v pracovním postupu v části "zahájení offline zálohování". |
+    | p:&lt;*cesta k PublishSettingsFile*&gt; | Tento povinný vstup se používá v případě, že se příkaz na zdrojovém počítači nespustí. Slouží k zadání cesty k souboru nastavení publikování v Azure, který jste zadali v pracovním postupu v části "zahájení offline zálohování". |
 
-    Nástroj automaticky detekuje úlohu importu, na kterou zdrojový počítač čeká, nebo úlohy importu přidružené k pracovnímu umístění při spuštění příkazu v jiném počítači. Potom poskytuje možnost aktualizovat informace o dopravě prostřednictvím řady vstupů.
+    Nástroj automaticky detekuje úlohu importu, na které zdrojový počítač čeká, nebo úlohy importu, které jsou přidruženy k pracovnímu umístění při spuštění příkazu v jiném počítači. Pak poskytuje možnost aktualizovat informace o dopravě prostřednictvím řady vstupů.
 
-    ![Zadejte informace o zásilce.](./media/backup-azure-backup-import-export/shippinginputs.png)<br/>
+    ![Zadat informace o expedici](./media/backup-azure-backup-import-export/shippinginputs.png)<br/>
 
-1. Po poskytnutí všech vstupů si pečlivě prohlédněte podrobnosti a zasuzujte informace o přepravě, které jste poskytli, zadáním **ano**.
+1. Po zadání všech vstupů si pečlivě Projděte podrobnosti a potvrďte informace o expedici, které jste zadali, zadáním **Ano**.
 
-    ![Kontrola informací o přepravě](./media/backup-azure-backup-import-export/reviewshippinginformation.png)<br/>
+    ![Zkontrolovat informace o expedici](./media/backup-azure-backup-import-export/reviewshippinginformation.png)<br/>
 
-1. Po úspěšné aktualizaci informací o přepravě poskytuje nástroj místní umístění, kde jsou uloženy zadané podrobnosti o dopravě.
+1. Po úspěšné aktualizaci informací o expedici poskytuje nástroj místní umístění, kde jsou uloženy podrobnosti o expedici, které jste zadali.
 
-    ![Uložit informace o přepravě](./media/backup-azure-backup-import-export/storingshippinginformation.png)<br/>
+    ![Uložit informace o expedici](./media/backup-azure-backup-import-export/storingshippinginformation.png)<br/>
 
    > [!IMPORTANT]
-   > Ujistěte se, že jednotky dorazí do datového centra Azure do dvou týdnů od poskytnutí informací o dopravě pomocí nástroje *AzureOfflineBackupDiskPrep.* Pokud tak neučiníte, může dojít k tomu, že jednotky nebudou zpracovány. 
+   > Zajistěte, aby jednotky byly dostupné v datacentru Azure během dvou týdnů od poskytování informací o expedici pomocí nástroje *AzureOfflineBackupDiskPrep* . V takovém případě může dojít k tomu, že se jednotky nezpracovávají.
 
-Po dokončení předchozích kroků je datové centrum Azure připravené přijímat jednotky a dále je zpracovat k přenosu záložních dat z jednotek do klasického účtu úložiště Azure, který jste vytvořili.
+Po dokončení předchozích kroků je datové centrum Azure připravené přijímat jednotky a dále je zpracovávat k přenosu zálohovaných dat z jednotek na účet služby Azure Storage s klasickým typem, který jste vytvořili.
 
-### <a name="time-to-process-the-drives"></a>Čas na zpracování jednotek
+### <a name="time-to-process-the-drives"></a>Čas ke zpracování jednotek
 
-Doba, kterou zpracování úlohy importu Azure trvá, se liší. Doba zpracování závisí na faktorech, jako je doba expedice, typ úlohy, typ a velikost kopírovaných dat a velikost poskytnutých disků. Služba Azure Import/Export nemá sla. Po přijetí disků se služba snaží dokončit záložní kopii dat do vašeho účtu úložiště Azure za 7 až 10 dní. V další části je popsáno, jak můžete sledovat stav úlohy importu Azure.
+Doba potřebná ke zpracování úlohy importu do Azure se liší. Doba zpracování závisí na faktorech, jako je čas expedice, typ úlohy, typ a velikost kopírovaných dat, a velikost poskytnutých disků. Služba Azure import/export nemá smlouvu SLA. Po přijetí disků se služba snaží dokončit Kopírování zálohovaných dat do účtu služby Azure Storage během 7 až 10 dnů. V další části se dozvíte, jak můžete monitorovat stav úlohy importu Azure.
 
-### <a name="monitor-azure-import-job-status"></a>Sledování stavu úlohy importu Azure
+### <a name="monitor-azure-import-job-status"></a>Monitorovat stav úlohy Azure import
 
-Zatímco vaše jednotky jsou v tranzitu nebo v datovém centru Azure, které se mají zkopírovat do účtu úložiště, agent zálohování Azure nebo DPM nebo konzola MABS ve zdrojovém počítači zobrazí následující stav úlohy pro naplánované zálohy:
+Zatímco vaše jednotky jsou v cestě nebo v datacentru Azure, které se mají zkopírovat do účtu úložiště, Azure Backup Agent nebo DPM nebo konzola MABS na zdrojovém počítači zobrazuje následující stav úlohy pro naplánované zálohy:
 
   `Waiting for Azure Import Job to complete. Please check on Azure Management portal for more information on job status`
 
-Kontrola stavu úlohy importu:
+Postup kontroly stavu úlohy importu:
 
-1. Otevřete příkazový řádek se zvýšenými oprávněními ve zdrojovém počítači a spusťte následující příkaz:
+1. Na zdrojovém počítači otevřete příkazový řádek se zvýšenými oprávněními a spusťte následující příkaz:
 
      `AzureOfflineBackupDiskPrep.exe u:`
 
 1. Výstup zobrazuje aktuální stav úlohy importu.
 
-    ![Zkontrolovat stav úlohy importu](./media/backup-azure-backup-import-export/importjobstatusreporting.png)<br/>
+    ![Zkontroluje stav úlohy importu.](./media/backup-azure-backup-import-export/importjobstatusreporting.png)<br/>
 
-Další informace o různých stavech úlohy importu Azure najdete [v tématu Zobrazení stavu úloh importu a exportu Azure](../storage/common/storage-import-export-view-drive-status.md).
+Další informace o různých stavech úlohy importu Azure najdete v tématu [zobrazení stavu úloh Azure import/export](../storage/common/storage-import-export-view-drive-status.md).
 
 ### <a name="finish-the-workflow"></a>Dokončení pracovního postupu
 
-Po dokončení úlohy importu jsou počáteční data zálohování k dispozici v účtu úložiště. V době další naplánované zálohy Azure Backup zkopíruje obsah dat z účtu úložiště do trezoru služby Recovery Services.
+Po dokončení úlohy importu budou data počáteční zálohy k dispozici ve vašem účtu úložiště. V době příštího naplánovaného zálohování Azure Backup zkopíruje obsah dat z účtu úložiště do trezoru Recovery Services.
 
-   ![Kopírování dat do trezoru služby Recovery Services](./media/backup-azure-backup-import-export/copyingfromstorageaccounttoazurebackup.png)<br/>
+   ![Kopírovat data do trezoru Recovery Services](./media/backup-azure-backup-import-export/copyingfromstorageaccounttoazurebackup.png)<br/>
 
-V době dalšího naplánovaného zálohování azure backup provádí přírůstkové zálohování přes počáteční záložní kopii.
+V době příštího plánovaného zálohování Azure Backup provede přírůstkové zálohování při prvotním záložním kopírování.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Jakékoli dotazy týkající se pracovního postupu služby Import a export Azure najdete v [tématu Přenos dat do úložiště objektů Blob pomocí služby Import a Export Microsoft Azure](../storage/common/storage-import-export-service.md).
+* Jakékoli dotazy týkající se pracovního postupu služby Import/export v Azure najdete v tématu [použití služby Microsoft Azure import/export k přenosu dat do úložiště objektů BLOB](../storage/common/storage-import-export-service.md).

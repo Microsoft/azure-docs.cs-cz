@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: a80079574dc29c54de89f5275c65637b205742d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cbfd0e36307210851070c22e74acb0a858446ce1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74227413"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866717"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Podpora metadat OpenAPI 2.0 ve funkcích Azure (preview)
 Podpora metadat OpenAPI 2.0 (dříve Swagger) ve službě Azure Functions je funkce náhledu, kterou můžete použít k zápisu definice OpenAPI 2.0 do aplikace funkcí. Potom můžete hostovat tento soubor pomocí aplikace funkce.
@@ -40,7 +40,7 @@ Podrobné pokyny naleznete v kurzu [Začínáme](./functions-api-definition-gett
 
 ### <a name="available-templates"></a><a name="templates"></a>Dostupné šablony
 
-|Name (Název)| Popis |
+|Název| Popis |
 |:-----|:-----|
 |Vygenerovaná definice|Definice OpenAPI s maximálním množstvím informací, které lze odvodit z existujících metadat funkce.|
 
@@ -60,7 +60,7 @@ Následující tabulka představuje nastavení portálu Azure a odpovídající 
 > [!NOTE]
 > Rozšíření x-ms-summary poskytuje zobrazovaný název v Logic Apps, PowerApps a Flow.
 >
-> Další informace najdete [v tématu Přizpůsobení definice Swaggeru pro PowerApps](https://powerapps.microsoft.com/tutorials/customapi-how-to-swagger/).
+> Další informace najdete [v tématu Přizpůsobení definice Swaggeru pro PowerApps](https://docs.microsoft.com/connectors/custom-connectors/openapi-extensions).
 
 ## <a name="use-cicd-to-set-an-api-definition"></a><a name="CICD"></a>Nastavení definice rozhraní API pomocí CI/CD
 

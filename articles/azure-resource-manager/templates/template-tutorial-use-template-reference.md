@@ -1,25 +1,25 @@
 ---
-title: Použít odkaz na šablonu
-description: K vytvoření šablony použijte odkaz na šablonu Správce prostředků Azure.
+title: Použití referenčních informací k šablonám
+description: K vytvoření šablony použijte odkaz na šablonu Azure Resource Manager.
 author: mumian
-ms.date: 03/27/2020
+ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: b713d508a5e28291778d3727c15e12972eea3a77
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 12990238455046d837b175318225bb4f3d317706
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878481"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185043"
 ---
-# <a name="tutorial-utilize-the-resource-manager-template-reference"></a>Kurz: Využití odkazu na šablonu Správce prostředků
+# <a name="tutorial-utilize-the-resource-manager-template-reference"></a>Kurz: využití odkazu na šablonu Správce prostředků
 
-Zjistěte, jak najít informace o schématu šablony a použít tyto informace k vytvoření šablon Azure Resource Manager (ARM).
+Naučte se najít informace o schématu šablony a použít je k vytvoření šablon Azure Resource Manager (ARM).
 
-V tomto kurzu použijete základní šablonu Azure pro rychlý start. Pomocí referenční dokumentace šablony můžete šablonu přizpůsobit.
+V tomto kurzu použijete základní šablonu Azure pro rychlý start. Pomocí referenční dokumentace šablon můžete šablonu přizpůsobit.
 
-![Odkaz na šablonu správce prostředků na nasazení účtu úložiště](./media/template-tutorial-use-template-reference/resource-manager-template-tutorial-deploy-storage-account.png)
+![Odkaz na šablonu Správce prostředků nasazení účtu úložiště](./media/template-tutorial-use-template-reference/resource-manager-template-tutorial-deploy-storage-account.png)
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -30,19 +30,19 @@ Tento kurz se zabývá následujícími úkony:
 > * Úprava šablony
 > * Nasazení šablony
 
-Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku potřebujete:
 
-* Visual Studio Kód s rozšířením Nástroje Správce prostředků. Viz [Použití kódu Visual Studia k vytvoření šablon ARM](use-vs-code-to-create-template.md).
+* Visual Studio Code s rozšířením nástrojů Správce prostředků Tools. [Vytvoření šablon ARM](use-vs-code-to-create-template.md)najdete v tématu použití Visual Studio Code.
 
 ## <a name="open-a-quickstart-template"></a>Otevření šablony pro rychlý start
 
-[Azure Quickstart Templates](https://azure.microsoft.com/resources/templates/) je úložiště pro šablony ARM. Místo vytvoření šablony úplně od začátku si můžete najít ukázkovou šablonu a přizpůsobit ji. Šablona, kterou jsme použili v tomto rychlém startu, se nazývá [Create a standard storage account](https://azure.microsoft.com/resources/templates/101-storage-account-create/) (Vytvoření standardního účtu úložiště). Šablona definuje prostředek účtu služby Azure Storage.
+[Šablony pro rychlý Start Azure](https://azure.microsoft.com/resources/templates/) jsou úložiště pro šablony ARM. Místo vytvoření šablony úplně od začátku si můžete najít ukázkovou šablonu a přizpůsobit ji. Šablona, kterou jsme použili v tomto rychlém startu, se nazývá [Create a standard storage account](https://azure.microsoft.com/resources/templates/101-storage-account-create/) (Vytvoření standardního účtu úložiště). Šablona definuje prostředek účtu služby Azure Storage.
 
-1. V kódu sady Visual Studio vyberte **Soubor**>**otevřít soubor**.
+1. Z Visual Studio Code vyberte **soubor**>**otevřít soubor**.
 1. Do pole **File name** (Název souboru) vložte následující adresu URL:
 
     ```url
@@ -50,7 +50,7 @@ K dokončení tohoto článku potřebujete:
     ```
 
 1. Výběrem **Open** (Otevřít) soubor otevřete.
-1. Vyberte **Soubor**>**Uložit jako,** chcete-li soubor uložit jako **azuredeploy.json** do místního počítače.
+1. Vyberte **soubor**>**Uložit jako** a uložte soubor jako **azuredeploy. JSON** do místního počítače.
 
 ## <a name="understand-the-schema"></a>Vysvětlené schématu
 
@@ -65,67 +65,88 @@ K dokončení tohoto článku potřebujete:
     * **resources**: určete typy prostředků nasazovaných nebo aktualizovaných ve skupině prostředků.
     * **outputs**: uvádí hodnoty vrácené po nasazení.
 
-1. Rozbalte element **resources**. Obsahuje definici prostředku `Microsoft.Storage/storageAccounts`. Název skladové položky používá hodnotu parametru.  Parametr se nazývá **storageAccountType**.
+1. Rozbalte element **resources**. Obsahuje definici prostředku `Microsoft.Storage/storageAccounts`. Název SKU používá hodnotu parametru.  Parametr se nazývá **storageAccountType**.
 
     ![Definice účtu úložiště v šabloně Resource Manageru](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resource.png)
 
-1. Rozbalte **parametry** a podívejte se, jak je definován **storageAccountType.** Parametr má čtyři povolené hodnoty. Najdete další povolené hodnoty a potom revidovat definici parametru.
+1. Rozbalením **parametrů** zjistíte, jak je definována **storageAccountType** . Parametr má čtyři povolené hodnoty. Zjistíte ostatní povolené hodnoty a pak opravíte definici parametru.
 
-    ![Prostředky účtu úložiště šablony Správce prostředků skus](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resources-skus-old.png)
+    ![Skladové jednotky prostředků účtu úložiště Správce prostředků šablony](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resources-skus-old.png)
 
 ## <a name="find-the-template-reference"></a>Vyhledání referenčních informací k šablonám
 
-1. Přejděte na [odkaz na šablonu Azure](https://docs.microsoft.com/azure/templates/).
-1. Do pole **Filtrpodle nadpisu** zadejte **účty úložiště**a vyberte první **účty úložiště** v části Odkaz **> úložiště**.
+1. Přejděte na [odkaz šablony Azure](https://docs.microsoft.com/azure/templates/).
+1. V poli **filtrovat podle názvu** zadejte **účty úložiště**a v části **referenční > úložiště**vyberte první **účty úložiště** .
 
     ![Odkaz šablony Azure Resource Manageru na účet úložiště](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts.png)
 
     Poskytovatel prostředků má obvykle několik verzí rozhraní API:
 
-    ![Verze účtu úložiště pro odkaz na šablonu správce prostředků](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-versions.png)
+    ![Verze účtu úložiště odkazů na šablonu Správce prostředků](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-versions.png)
 
-1. V levém podokně vyberte **Všechny prostředky** v části **Úložiště.** Na této stránce jsou uvedeny typy prostředků a verze zprostředkovatele prostředků úložiště. Doporučujeme použít nejnovější verze rozhraní API pro typy prostředků definované v šabloně.
+1. V levém podokně vyberte **všechny prostředky** v části **úložiště** . Tato stránka obsahuje seznam typů prostředků a verzí poskytovatele prostředků úložiště. Pro typy prostředků definované v šabloně doporučujeme použít nejnovější verze rozhraní API.
 
-    ![Verze účtů úložiště pro odkazy na šablony Správce prostředků](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-types-versions.png)
+    ![Verze typů účtů úložiště odkazů na šablonu Správce prostředků](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-types-versions.png)
 
-1. Vyberte nejnovější verzi typu prostředku **účtu úložiště.** Nejnovější verze je **2019-06-01** při napsání tohoto článku. Ujistěte se, že tato verze odpovídá verzi použité pro prostředek účtu úložiště v šabloně. Pokud aktualizujete verzi rozhraní API, ověřte, zda definice prostředku odpovídá odkazu na šablonu.
+1. Vyberte nejnovější verzi typu prostředku **storageAccount** . Nejnovější verze je **2019-06-01** , pokud je tento článek napsán. Ujistěte se, že tato verze odpovídá verzi používané pro prostředek účtu úložiště ve vaší šabloně. Pokud aktualizujete verzi rozhraní API, ověřte, zda definice prostředků odpovídá odkazu na šablonu.
 
-1. Na této stránce jsou uvedeny podrobnosti o typu prostředku account úložiště.  Například uvádí povolené hodnoty pro objekt **Sku.** Existuje více skus než to, co je uvedeno v šabloně rychlého startu, kterou jste otevřeli dříve. Šablonu rychlého startu můžete přizpůsobit tak, aby zahrnovala všechny dostupné typy úložišť.
+1. Tato stránka obsahuje podrobné informace o typu prostředku storageAccount.  Například obsahuje seznam povolených hodnot pro objekt **SKU** . Existuje více SKU, než je uvedeno v šabloně pro rychlý Start, kterou jste otevřeli dříve. Šablonu pro rychlé zprovoznění můžete přizpůsobit tak, aby zahrnovala všechny dostupné typy úložišť.
 
-    ![Účet úložiště šablony Správce prostředků skus](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-skus.png)
+    ![Správce prostředků referenčních skladů pro šablonu úložiště](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-skus.png)
 
 ## <a name="edit-the-template"></a>Úprava šablony
 
-Z kódu Visual Studia přidejte další typy účtů úložiště, jak je znázorněno na následujícím snímku obrazovky:
+Z Visual Studio Code přidejte další typy účtů úložiště, jak je znázorněno na následujícím snímku obrazovky:
 
-![Prostředky účtu úložiště šablony Správce prostředků](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resources-skus.png)
+![Prostředky účtu úložiště pro šablonu Správce prostředků](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resources-skus.png)
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-Informace o procesu nasazení najdete v části [Nasazení šablony](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template) v rychlém startu pro Visual Studio Code. Při nasazení šablony zadejte parametr **storageAccountType** s nově přidanou hodnotou, například **Premium_ZRS**. Nasazení by se nezdaří, pokud použijete původní šablonu rychlého **startu,** protože Premium_ZRS nebyla povolená hodnota.  Chcete-li předat hodnotu parametru, přidejte do příkazu nasazení následující přepínač:
+1. Přihlaste se k [Azure Cloud Shell](https://shell.azure.com)
 
-# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
+1. Vyberte prostředí **PowerShell** nebo **bash** (pro CLI) v levém horním rohu a zvolte své preferované prostředí.  Po přepnutí se vyžaduje restartování prostředí.
 
-```azurecli
---parameters storageAccountType='Premium_ZRS'
-```
+    ![Azure Portal Cloud Shell nahrát soubor](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+1. Vyberte **Nahrát nebo stáhnout soubory** a potom vyberte **Nahrát**. Viz předchozí snímek obrazovky. Vyberte soubor, který jste uložili v předchozí části. Po nahrání souboru můžete pomocí příkazu **ls** a příkazu **Cat** ověřit, jestli se soubor úspěšně nahrál.
 
-```azurepowershell
--storageAccountType "Premium_ZRS"
-```
+1. Z Cloud Shell spusťte následující příkazy. Výběrem odpovídající karty zobrazíte kód PowerShellu nebo kód rozhraní příkazového řádku.
 
----
+    # <a name="cli"></a>[CLI](#tab/CLI)
+
+    ```azurecli
+    echo "Enter a project name that is used to generate resource group name:" &&
+    read projectName &&
+    echo "Enter the location (i.e. centralus):" &&
+    read location &&
+    resourceGroupName="${projectName}rg" &&
+    az group create --name $resourceGroupName --location "$location" &&
+    az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json" --parameters storageAccountType='Standard_RAGRS'
+    ```
+
+    # <a name="powershell"></a>[Prostředí](#tab/PowerShell)
+
+    ```azurepowershell
+    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
+    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+    $resourceGroupName = "${projectName}rg"
+
+    New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json" -storageAccountType "Standard_RAGRS"
+    ```
+
+    ---
+
+ Když nasadíte šablonu, zadejte parametr **storageAccountType** s nově přidanou hodnotou, například **Standard_RAGRS**. Nasazení se nezdaří, pokud použijete původní šablonu pro rychlé spuštění, protože **Standard_RAGRS** nebyla povolená hodnota.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněním skupiny prostředků.
 
-1. Na portálu Azure vyberte **skupinu prostředků** z levé nabídky.
+1. Z Azure Portal v nabídce vlevo vyberte **Skupina prostředků** .
 2. Do pole **Filtrovat podle názvu** zadejte název skupiny prostředků.
 3. Vyberte název skupiny prostředků.  Ve skupině prostředků uvidíte celkem šest prostředků.
-4. V horní nabídce vyberte **Odstranit skupinu prostředků.**
+4. V horní nabídce vyberte **Odstranit skupinu prostředků** .
 
 ## <a name="next-steps"></a>Další kroky
 

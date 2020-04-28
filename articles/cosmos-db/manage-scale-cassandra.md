@@ -1,68 +1,68 @@
 ---
-title: Elastické škálování pomocí rozhraní Cassandra API v Db Azure Cosmos
-description: Seznamte se s možnostmi, které jsou k dispozici pro škálování účtu rozhraní API Azure Cosmos DB Cassandra a jejich výhodami a nevýhodami
+title: Elastické škálování pomocí rozhraní API Cassandra v Azure Cosmos DB
+description: Přečtěte si o dostupných možnostech škálování Azure Cosmos DB rozhraní API Cassandra účtu a jejich výhodách a nevýhodách.
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: thvankra
-ms.openlocfilehash: 10d81de48c0d8f56c7c3fd26e3fd82a8c3df84c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 94cdeff36553268d691fc968036c5264e77fddc2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79474675"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188803"
 ---
-# <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Elastické škálování účtu rozhraní API Azure Cosmos DB Cassandra
+# <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Elastické škálování účtu Azure Cosmos DB rozhraní API Cassandra
 
-Existuje celá řada možností, jak prozkoumat elastickou povahu rozhraní API Azure Cosmos DB pro Cassandra. Chcete-li pochopit, jak efektivně škálovat v Azure Cosmos DB, je důležité pochopit, jak zřídit správné množství jednotek požadavků (RU/s) pro účet požadavky na výkon ve vašem systému. Další informace o jednotkách požadavků naleznete v článku [jednotky požadavků.](request-units.md) 
+K dispozici je celá řada možností, jak prozkoumat elastickou povahu rozhraní Azure Cosmos DB API pro Cassandra. Pokud chcete pochopit, jak efektivně škálovat v Azure Cosmos DB, je důležité pochopit, jak zřídit správné množství jednotek žádostí (RU/s), aby se zohlednily nároky na výkon ve vašem systému. Další informace o jednotkách žádostí najdete v článku [o jednotkách žádosti](request-units.md) . 
 
-Pro rozhraní CASSANDRA API můžete načíst poplatek jednotky požadavku pro jednotlivé dotazy pomocí [sad SDK .NET a Java](https://docs.microsoft.com/azure/cosmos-db/find-request-unit-charge#cassandra-api). To je užitečné při určování výše Ru / s budete muset dát do služby.
+Pro rozhraní API Cassandra můžete načíst poplatek za jednotky žádosti pro jednotlivé dotazy pomocí [sad .NET a Java SDK](https://docs.microsoft.com/azure/cosmos-db/find-request-unit-charge#cassandra-api). To je užitečné při určování množství RU/s, které budete muset zřídit ve službě.
 
-![Databázové operace spotřebovávají jednotky požadavků](./media/request-units/request-units.png)
+![Databázové operace spotřebovávají jednotky žádosti](./media/request-units/request-units.png)
 
-## <a name="handling-rate-limiting-429-errors"></a>Omezení manipulační rychlosti (429 chyb)
+## <a name="handling-rate-limiting-429-errors"></a>Omezení rychlosti zpracování (429 chyb)
 
-Azure Cosmos DB vrátí sazby omezené (429) chyby, pokud klienti spotřebovávají více prostředků (RU/s) než částka, kterou jste zřízené. Rozhraní CASSSandra API v Azure Cosmos DB překládá tyto výjimky na přetížené chyby v nativním protokolu Cassandra. 
+Azure Cosmos DB vrátí chyby s omezením četnosti (429), pokud klienti spotřebují více prostředků (RU/s), než je množství, které jste zřídili. Rozhraní API Cassandra v Azure Cosmos DB překládá tyto výjimky na přetížené chyby v nativním protokolu Cassandra. 
 
-Pokud váš systém není citlivý na latenci, může být dostačující pro zpracování omezení propustnosti pomocí opakování. Podívejte se na [ukázku kódu Jazyka Java,](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample) jak transparentně zpracovat omezení rychlosti pomocí [rozšíření Azure Cosmos DB](https://github.com/Azure/azure-cosmos-cassandra-extensions) pro [zásady opakování Cassandra](https://docs.datastax.com/en/developer/java-driver/4.4/manual/core/retries/) v Jazyce Java. Rozšíření [Spark](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) můžete také použít ke zpracování omezení rychlosti.
+Pokud váš systém není citlivý na latenci, může být dostačující pro zpracování rychlosti propustnosti pomocí opakovaných pokusů. Informace o tom, jak zvládnout omezení četnosti transparentní pomocí [rozšíření Azure Cosmos DB](https://github.com/Azure/azure-cosmos-cassandra-extensions) pro [zásady opakování Cassandra](https://docs.datastax.com/en/developer/java-driver/4.4/manual/core/retries/) v jazyce Java, najdete v [ukázce kódu Java](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample) . K obsluze omezení rychlosti můžete také použít [rozšíření Spark](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) .
 
-## <a name="manage-scaling"></a>Správa změny měřítka
+## <a name="manage-scaling"></a>Správa škálování
 
-Pokud potřebujete minimalizovat latenci, existuje spektrum možností pro správu škálování a zřizování propustnosti (RU) v rozhraní CASSANDRA API:
+Pokud potřebujete minimalizovat latenci, existuje spektrum možností správy škálování a propustnosti (ru) v rozhraní API Cassandra:
 
-* [Ručně pomocí portálu Azure](#use-azure-portal)
-* [Programově pomocí prvků roviny ovládacího prvku](#use-control-plane)
-* [Programově pomocí příkazů CQL s konkrétní sadou SDK](#use-cql-queries)
-* [Dynamicky pomocí autopilota](#use-autopilot)
+* [Ručně pomocí Azure Portal](#use-azure-portal)
+* [Prostřednictvím kódu programu pomocí funkce plochy ovládacího prvku](#use-control-plane)
+* [Prostřednictvím kódu programu pomocí příkazů CQL s konkrétní sadou SDK](#use-cql-queries)
+* [Dynamicky pomocí automatického škálování](#use-autoscale)
 
-V následujících částech jsou vysvětleny výhody a nevýhody každého přístupu. Poté se můžete rozhodnout pro nejlepší strategii pro vyvážení potřeb škálování vašeho systému, celkových nákladů a potřeb efektivity vašeho řešení.
+Následující části vysvětlují výhody a nevýhody jednotlivých přístupů. Pak se můžete rozhodnout, co nejlepší strategii pro vyrovnání požadavků na škálování vašeho systému, celkových nákladů a potřeb efektivity pro vaše řešení.
 
-## <a name="use-the-azure-portal"></a><a id="use-azure-portal"></a>Použití portálu Azure
+## <a name="use-the-azure-portal"></a><a id="use-azure-portal"></a>Použití webu Azure Portal
 
-Prostředky můžete škálovat v účtu rozhraní API Azure Cosmos DB Cassandra pomocí portálu Azure. Další informace naleznete v článku [o propustnost provision na kontejnery a databáze](set-throughput.md). Tento článek vysvětluje relativní výhody nastavení propustnost na úrovni [databáze](set-throughput.md#set-throughput-on-a-database) nebo [kontejneru](set-throughput.md#set-throughput-on-a-container) na webu Azure Portal. Termíny "databáze" a "kontejner" uvedené v těchto článcích mapovat na "keyspace" a "tabulka" respektive pro Cassandra API.
+Prostředky můžete škálovat v Azure Cosmos DB rozhraní API Cassandra účet pomocí Azure Portal. Další informace najdete v článku o [zřízení propustnosti v kontejnerech a databázích](set-throughput.md). Tento článek vysvětluje relativní výhody nastavení propustnosti na úrovni [databáze](set-throughput.md#set-throughput-on-a-database) nebo [kontejneru](set-throughput.md#set-throughput-on-a-container) v Azure Portal. Výrazy "Database" a "Container" zmíněné v těchto článcích jsou mapovány na "místo" a "Tabulka" v tomto rozhraní API Cassandra.
 
-Výhodou této metody je, že se jedná o jednoduchý způsob správy kapacity propustnosti v databázi. Nevýhodou však je, že v mnoha případech váš přístup k škálování může vyžadovat určité úrovně automatizace, které mají být nákladově efektivní a vysoce výkonné. V dalších částech jsou vysvětleny příslušné scénáře a metody.
+Výhodou této metody je, že jde o jednoduchý klíč způsob, jak spravovat kapacitu propustnosti v databázi. Nevýhodou je však, že váš přístup k škálování může vyžadovat, aby určité úrovně automatizace byly nákladově efektivní a vysoké. Další části vysvětlují relevantní scénáře a metody.
 
 ## <a name="use-the-control-plane"></a><a id="use-control-plane"></a>Použití roviny ovládacího prvku
 
-Rozhraní API Azure Cosmos DB pro Cassandra poskytuje možnost programovat propustnost pomocí různých funkcí řídicí roviny. Pokyny a ukázky najdete v článcích [Správce prostředků Azure](manage-cassandra-with-resource-manager.md), [Powershell u](powershell-samples-cassandra.md)a v článku s [příkazy k videím Azure.](cli-samples-cassandra.md)
+Rozhraní API pro Azure Cosmos DB pro Cassandra poskytuje schopnost programově upravovat propustnost pomocí našich různých funkcí pro kontrolu rovin. Pokyny a ukázky najdete v článcích [Azure Resource Manager](manage-cassandra-with-resource-manager.md), [POWERSHELL](powershell-samples-cassandra.md)a [Azure CLI](cli-samples-cassandra.md) .
 
-Výhodou této metody je, že můžete automatizovat škálování nahoru nebo dolů prostředků na základě časovače účet pro špičkovou aktivitu nebo období nízké aktivity. Podívejte se na naši [ukázku,](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler) jak toho dosáhnout pomocí Azure Functions a Powershell.
+Výhodou této metody je, že můžete automatizovat horizontální navýšení nebo snížení kapacity prostředků na základě časovače k účtu aktivity špičky nebo obdobích s nízkou aktivitou. Podívejte se na [naši ukázku, jak to můžete udělat](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler) pomocí Azure functions a PowerShellu.
 
-Nevýhodou tohoto přístupu může být, že nemůžete reagovat na nepředvídatelné měnící se potřeby měřítka v reálném čase. Místo toho může být nutné využít kontext aplikace v systému, na úrovni klienta/sady SDK nebo pomocí [funkce Autopilot](provision-throughput-autopilot.md).
+Nevýhodou tohoto přístupu může být to, že nemůžete reagovat na nepředvídatelné změny potřeb škálování v reálném čase. Místo toho možná budete muset využít kontext aplikace v systému, na úrovni klienta/sady SDK nebo pomocí [automatického škálování](provision-throughput-autoscale.md).
 
 ## <a name="use-cql-queries-with-a-specific-sdk"></a><a id="use-cql-queries"></a>Použití dotazů CQL s konkrétní sadou SDK
 
-Systém můžete dynamicky škálovat pomocí kódu spuštěním [příkazů CQL ALTER](cassandra-support.md#keyspace-and-table-options) pro danou databázi nebo kontejner.
+Systém lze škálovat dynamicky pomocí kódu spuštěním příkazu [ALTER CQL](cassandra-support.md#keyspace-and-table-options) pro danou databázi nebo kontejner.
 
-Výhodou tohoto přístupu je, že umožňuje reagovat na potřeby škálování dynamicky a vlastním způsobem, který vyhovuje vaší aplikaci. S tímto přístupem můžete stále využít standardní ru/ s poplatky a sazby. Pokud jsou potřeby škálování vašeho systému většinou předvídatelné (přibližně 70 % nebo více), může být použití sady SDK s cql nákladově efektivnější metodou automatického škálování než použití automatického pilota. Nevýhodou tohoto přístupu je, že může být poměrně složité implementovat opakování, zatímco omezení rychlosti může zvýšit latenci.
+Výhodou tohoto přístupu je, že vám umožní reagovat na požadavky na škálování dynamicky a vlastním způsobem, který odpovídá vaší aplikaci. S tímto přístupem můžete dál využívat ceny a sazby Standard RU/s. Pokud jsou požadavky na škálování vašeho systému hlavně předvídatelné (přibližně 70% nebo více), může být použití sady SDK s CQL cenově výhodnější metodou automatického škálování než použití automatického škálování. Nevýhodou tohoto přístupu je, že může být poměrně složitá implementace opakování, zatímco omezení rychlosti může zvýšit latenci.
 
-## <a name="use-autopilot"></a><a id="use-autopilot"></a>Použití autopilota
+## <a name="use-autoscale"></a><a id="use-autoscale"></a>Použití automatického škálování
 
-Kromě ručního nebo programového způsobu zřizování propustnosti můžete také nakonfigurovat kontejnery Cosmos Azure v režimu autopilota. Režim autopilota se automaticky a okamžitě škáluje podle vašich potřeb spotřeby v rámci stanovených rozsahů RU, aniž by došlo ke kompromisu s la. Další informace najdete v [článku vytvoření kontejnerů a databází Azure Cosmos v režimu autopilota.](provision-throughput-autopilot.md)
+Kromě ručního nebo programového způsobu zřizování propustnosti můžete také nakonfigurovat kontejnery Azure Cosmos v režimu automatického škálování. Režim automatického škálování automaticky a okamžitě se škáluje podle potřeb spotřeby v zadaných rozsahech RU bez narušení SLA. Další informace najdete v článku [Vytvoření kontejnerů a databází Azure Cosmos v článku věnovaném režimu automatického škálování](provision-throughput-autoscale.md) .
 
-Výhodou tohoto přístupu je, že je nejjednodušší způsob, jak spravovat škálování potřeb ve vašem systému. Zaručuje, že nebude uplatňovat omezení rychlosti **v rámci nakonfigurovaných rozsahů ŽP**. Nevýhodou je, že pokud jsou potřeby škálování ve vašem systému předvídatelné, může být autopilot méně nákladově efektivním způsobem, jak pracovat s vašimi potřebami škálování než pomocí výše uvedených přístupů na míru řídicí roviny nebo úrovně SDK.
+Výhodou tohoto přístupu je, že je nejjednodušší způsob, jak spravovat požadavky na škálování ve vašem systému. Garantuje, že neuplatní omezení četnosti **v rámci konfigurovaných rozsahů ru**. Nevýhodou je, že pokud jsou v systému předvídatelné požadavky na škálování, může být automatické škálování méně nákladově efektivním způsobem, jakým je potřeba zpracovat požadavky na škálování, než na základě výše uvedených přístupů na úrovni ovládacího prvku Bespoke nebo úrovně SDK.
 
 ## <a name="next-steps"></a>Další kroky
 

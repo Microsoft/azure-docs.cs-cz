@@ -1,67 +1,68 @@
 ---
-title: Analýza protokolů a metrik v Azure Spring Cloud | Dokumenty společnosti Microsoft
-description: Zjistěte, jak analyzovat diagnostická data v Azure Spring Cloudu
+title: Analýza protokolů a metrik v Azure jaře cloudu | Microsoft Docs
+description: Naučte se analyzovat diagnostická data v Azure jaře cloudu.
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
-ms.openlocfilehash: adbcf28cfbbe2ea3b7cc9c7fd0d1c76246938344
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 83b223ab2195516492d55ac85be6e7db0dffbd98
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81870405"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176783"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Analýza protokolů a metrik pomocí nastavení diagnostiky
 
-Pomocí diagnostických funkcí Služby Azure Spring Cloud můžete analyzovat protokoly a metriky pomocí některé z následujících služeb:
+Pomocí diagnostických funkcí Azure jarního cloudu můžete analyzovat protokoly a metriky pomocí kterékoli z následujících služeb:
 
-* Použijte Azure Log Analytics, kde se data zapisují do Azure Storage. Při exportu protokolů do analýzy protokolů dochází ke zpoždění.
-* Uložte protokoly do účtu úložiště pro auditování nebo ruční kontrolu. Můžete zadat retenční čas (ve dnech).
-* Streamujte protokoly do centra událostí pro příjem službou třetí strany nebo vlastním analytickým řešením.
+* Použijte službu Azure Log Analytics, do které se zapisují data do Azure Storage. Při exportu protokolů do Log Analytics dojde k prodlevě.
+* Ukládat protokoly do účtu úložiště pro auditování nebo ruční kontrolu. Můžete určit dobu uchování (ve dnech).
+* Streamování protokolů do centra událostí pro ingestování prostřednictvím služby třetí strany nebo řešení pro vlastní analýzu.
 
-Zvolte kategorii protokolu a kategorii metrik, kterou chcete sledovat.
+Vyberte kategorii protokolu a kategorii metrik, které chcete monitorovat.
 
 > [!TIP]
-> Chcete jen streamovat své záznamy? Podívejte se na tento [příkaz Azure CLI!](https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud/app?view=azure-cli-latest#ext-spring-cloud-az-spring-cloud-app-logs)
+> Chcete jenom zasílat streamování protokolů? Podívejte se na tento [příkaz rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud/app?view=azure-cli-latest#ext-spring-cloud-az-spring-cloud-app-logs).
 
 ## <a name="logs"></a>Protokoly
 
 |Protokol | Popis |
 |----|----|
-| **Konzola aplikace** | Protokol konzoly všech zákaznických aplikací. | 
-| **SystemLogs** | V současné době pouze [Spring Cloud Config Server](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) protokoly v této kategorii. |
+| **ApplicationConsole** | Protokol konzoly všech zákaznických aplikací. |
+| **SystemLogs** | V současné době se v této kategorii v této kategorii jenom protokoly [jarního cloudového konfiguračního serveru](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) . |
 
 ## <a name="metrics"></a>Metriky
 
-Úplný seznam metrik najdete v tématu [Spring Cloud Metrics](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-metrics-options).
+Úplný seznam metrik najdete v tématu [metriky jarního cloudu](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-metrics-options).
 
-Chcete-li začít, povolte jednu z těchto služeb pro příjem dat. Další informace o konfiguraci Analýzy protokolů najdete [v tématu Začínáme s analýzou protokolů v Azure Monitoru](../azure-monitor/log-query/get-started-portal.md). 
+Chcete-li začít, povolte jednu z těchto služeb pro příjem dat. Další informace o konfiguraci Log Analytics najdete [v tématu Začínáme s Log Analytics v Azure monitor](../azure-monitor/log-query/get-started-portal.md).
 
 ## <a name="configure-diagnostics-settings"></a>Konfigurace nastavení diagnostiky
 
-1. Na webu Azure Portal přejděte na instanci Azure Spring Cloud.
-1. Vyberte možnost **Nastavení diagnostiky** a pak vyberte **Přidat nastavení diagnostiky**.
+1. V Azure Portal přejdete do své instance Azure jaře cloudu.
+1. Vyberte možnost **nastavení diagnostiky** a pak vyberte **Přidat nastavení diagnostiky**.
 1. Zadejte název nastavení a pak zvolte, kam chcete protokoly odeslat. Můžete vybrat libovolnou kombinaci následujících tří možností:
-    * **Archivovat do účtu úložiště**
+    * **Archivace do účtu úložiště**
     * **Streamování do centra událostí**
     * **Odeslání do Log Analytics**
 
-1. Zvolte kategorii protokolu a kategorii metriky, kterou chcete sledovat, a zadejte čas uchování (ve dnech). Doba uchovávání se vztahuje pouze na účet úložiště.
+1. Zvolte, kterou kategorii protokolů a kategorii metrik chcete monitorovat, a pak zadejte dobu uchování (ve dnech). Doba uchování se vztahuje jenom na účet úložiště.
 1. Vyberte **Uložit**.
 
 > [!NOTE]
-> Může existovat mezera až 15 minut mezi při vyzařování protokolů nebo metrik a když se zobrazí ve vašem účtu úložiště, v centru událostí nebo v Log Analytics.
+> 1. Může existovat mezera mezi až 15 minutami, kdy se generují protokoly nebo metriky, a když se objeví ve vašem účtu úložiště, v centru událostí nebo Log Analytics.
+> 1. Pokud se instance jarního cloudu Azure odstraní nebo přesune, nebude se tato operace do prostředků **nastavení diagnostiky** kaskádovat. Prostředky **nastavení diagnostiky** je nutné odstranit ručně před operací proti její nadřazené položce, tj. instanci cloudu Azure pro jaře. V opačném případě, pokud je nová instance cloudové cloudové služby Azure zřízena se stejným ID prostředku jako Odstraněná, nebo pokud se instance Azure jaře cloudu přesune zpátky, předchozí zdroje **nastavení diagnostiky** ji budou rozšiřovat.
 
-## <a name="view-the-logs-and-metrics"></a>Zobrazení protokolů a metrik
-Existují různé metody pro zobrazení protokolů a metrik, jak je popsáno v následujících okružích.
+## <a name="view-the-logs-and-metrics"></a>Zobrazit protokoly a metriky
+Existují různé způsoby, jak zobrazit protokoly a metriky, jak je popsáno v následujících nadpisech.
 
-### <a name="use-logs-blade"></a>Použít okno Protokoly
+### <a name="use-the-logs-blade"></a>Použijte okno protokoly
 
-1. Na webu Azure Portal přejděte na instanci Azure Spring Cloud.
-1. Chcete-li otevřít podokno **Hledání protokolu,** vyberte **možnost Protokoly**.
-1. V poli **Hledání protokolu**
+1. V Azure Portal přejdete do své instance Azure jaře cloudu.
+1. Chcete-li otevřít podokno **prohledávání protokolu** , vyberte možnost **protokoly**.
+1. V poli hledání **tabulek**
    * Chcete-li zobrazit protokoly, zadejte jednoduchý dotaz, například:
 
     ```sql
@@ -74,71 +75,70 @@ Existují různé metody pro zobrazení protokolů a metrik, jak je popsáno v n
     AzureMetrics
     | limit 50
     ```
-1. Chcete-li zobrazit výsledek hledání, vyberte **spustit**.
+1. Chcete-li zobrazit výsledek hledání, vyberte možnost **Spustit**.
 
 ### <a name="use-log-analytics"></a>Použití Log Analytics
 
-1. Na webu Azure Portal v levém podokně vyberte **Log Analytics**.
+1. V Azure Portal v levém podokně vyberte možnost **Log Analytics**.
 1. Vyberte pracovní prostor Log Analytics, který jste zvolili při přidání nastavení diagnostiky.
-1. Chcete-li otevřít podokno **Hledání protokolu,** vyberte **možnost Protokoly**.
-1. V poli **Vyhledávání protokolu**
-   * chcete-li zobrazit protokoly, zadejte jednoduchý dotaz, například:
+1. Chcete-li otevřít podokno **prohledávání protokolu** , vyberte možnost **protokoly**.
+1. V poli hledání **tabulek**
+   * Chcete-li zobrazit protokoly, zadejte jednoduchý dotaz, například:
 
     ```sql
     AppPlatformLogsforSpring
     | limit 50
     ```
-    * chcete-li zobrazit metriky, zadejte jednoduchý dotaz, například:
+    * Chcete-li zobrazit metriky, zadejte jednoduchý dotaz, například:
 
     ```sql
     AzureMetrics
     | limit 50
     ```
 
-1. Chcete-li zobrazit výsledek hledání, vyberte **spustit**.
-1. Protokoly konkrétní aplikace nebo instance můžete prohledávat nastavením podmínky filtru:
+1. Chcete-li zobrazit výsledek hledání, vyberte možnost **Spustit**.
+1. Nastavením podmínky filtru můžete vyhledat protokol určité aplikace nebo instance.
 
     ```sql
     AppPlatformLogsforSpring
     | where ServiceName == "YourServiceName" and AppName == "YourAppName" and InstanceName == "YourInstanceName"
     | limit 50
     ```
-> [!NOTE]  
-> `==`rozlišuje `=~` malá a velká písmena, ale není.
+> [!NOTE]
+> `==`rozlišuje velká a malá písmena `=~` , ale není.
 
-Další informace o dotazovacím jazyce, který se používá v Log Analytics, najdete v [tématu dotazy protokolu Azure Monitor](../azure-monitor/log-query/query-language.md).
+Další informace o dotazovacím jazyku, který se používá v Log Analytics, najdete v tématu [Azure monitor protokolování dotazů](../azure-monitor/log-query/query-language.md).
 
-### <a name="use-your-storage-account"></a>Použití účtu úložiště 
+### <a name="use-your-storage-account"></a>Použití účtu úložiště
 
-1. Na webu Azure Portal v levém podokně vyberte **Účty úložiště**.
+1. V Azure Portal vyhledejte **účty úložiště** v levém navigačním panelu nebo ve vyhledávacím poli.
+1. Vyberte účet úložiště, který jste zvolili při přidávání nastavení diagnostiky.
+1. Pokud chcete otevřít podokno **kontejneru objektů BLOB** , vyberte **objekty blob**.
+1. Pokud chcete zkontrolovat protokoly aplikací, vyhledejte kontejner s názvem **Insights-logs-applicationconsole**.
+1. Pokud chcete zkontrolovat metriky aplikace, vyhledejte kontejner s názvem **Insights – metriky – pt1m**.
 
-1. Vyberte účet úložiště, který jste zvolili při přidání nastavení diagnostiky.
-1. Chcete-li otevřít podokno **Kontejner objektů blob,** vyberte **objekty BLOB**.
-1. Chcete-li zkontrolovat protokoly aplikací, vyhledejte kontejner s názvem **insights-logs-applicationconsole**.
-1. Chcete-li zkontrolovat metriky aplikace, vyhledejte kontejner s názvem **insights-metrics-pt1m**.
-
-Další informace o odesílání diagnostických informací do účtu úložiště najdete v tématu [Store a zobrazení diagnostických dat ve službě Azure Storage](../storage/common/storage-introduction.md).
+Další informace o odesílání diagnostických informací do účtu úložiště najdete v tématu [ukládání a zobrazení diagnostických dat v Azure Storage](../storage/common/storage-introduction.md).
 
 ### <a name="use-your-event-hub"></a>Použití centra událostí
 
-1. Na webu Azure Portal v levém podokně vyberte **Centra událostí**.
+1. V Azure Portal vyhledejte **Event Hubs** v levém navigačním panelu nebo ve vyhledávacím poli.
 
-1. Vyhledejte a vyberte centrum událostí, které jste zvolili při přidání nastavení diagnostiky.
-1. Chcete-li otevřít podokno **Seznam centra událostí,** vyberte **centrum událostí**.
-1. Chcete-li zkontrolovat protokoly aplikací, vyhledejte centrum událostí s názvem **insights-logs-applicationconsole**.
-1. Chcete-li zkontrolovat metriky aplikace, vyhledejte centrum událostí s názvem **insights-metrics-pt1m**.
+1. Vyhledejte a vyberte centrum událostí, které jste si zvolili při přidávání nastavení diagnostiky.
+1. Chcete-li otevřít podokno **seznam centra událostí** , vyberte možnost **Event Hubs**.
+1. Pokud chcete zkontrolovat protokoly aplikací, vyhledejte centrum událostí s názvem **Insights-logs-applicationconsole**.
+1. Pokud chcete zkontrolovat metriky aplikací, vyhledejte centrum událostí s názvem **Insights – metriky – pt1m**.
 
-Další informace o odesílání diagnostických informací do centra událostí najdete [v tématu Streamování dat Azure Diagnostics v horké cestě pomocí centra událostí](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-stream-event-hubs).
+Další informace o odesílání diagnostických informací do centra událostí najdete v tématu [streamování Azure Diagnostics data v Hot Path pomocí Event Hubs](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-stream-event-hubs).
 
 ## <a name="analyze-the-logs"></a>Analyzovat protokoly
 
-Azure Log Analytics běží s motorem Kusto, takže můžete dotazovat protokoly pro analýzu. Rychlý úvod k dotazování protokolů pomocí Kusto, přečtěte si [kurz Log Analytics](../azure-monitor/log-query/get-started-portal.md).
+Azure Log Analytics běží s modulem Kusto, takže se můžete dotazovat na své protokoly k analýze. Rychlý úvod k dotazování protokolů pomocí Kusto najdete v [kurzu Log Analytics](../azure-monitor/log-query/get-started-portal.md).
 
-Protokoly aplikací poskytují důležité informace a podrobné protokoly o stavu, výkonu a dalších aplikacích. V dalších částech jsou některé jednoduché dotazy, které vám pomohou pochopit aktuální a minulé stavy vaší aplikace.
+Protokoly aplikací poskytují důležité informace a podrobné protokoly o stavu vaší aplikace, výkonu a dalších. V dalších částech najdete několik jednoduchých dotazů, které vám pomůžou pochopit aktuální a poslední stavy vaší aplikace.
 
-### <a name="show-application-logs-from-azure-spring-cloud"></a>Zobrazení protokolů aplikací z Azure Spring Cloud
+### <a name="show-application-logs-from-azure-spring-cloud"></a>Zobrazit protokoly aplikací ze jarního cloudu Azure
 
-Chcete-li zkontrolovat seznam protokolů aplikací z Azure Spring Cloud, seřazené podle času s nejnovější protokoly zobrazeny jako první, spusťte následující dotaz:
+Pokud chcete zkontrolovat seznam protokolů aplikací ze jarního cloudu Azure, seřazené podle času s nejnovějšími protokoly zobrazenými jako první, spusťte následující dotaz:
 
 ```sql
 AppPlatformLogsforSpring
@@ -148,7 +148,7 @@ AppPlatformLogsforSpring
 
 ### <a name="show-logs-entries-containing-errors-or-exceptions"></a>Zobrazit položky protokolů obsahující chyby nebo výjimky
 
-Chcete-li zkontrolovat neseřazené položky protokolu, které zmiňují chybu nebo výjimku, spusťte následující dotaz:
+Chcete-li zkontrolovat neseřazené položky protokolu, které uváděly chybu nebo výjimku, spusťte následující dotaz:
 
 ```sql
 AppPlatformLogsforSpring
@@ -156,11 +156,11 @@ AppPlatformLogsforSpring
 | where Log contains "error" or Log contains "exception"
 ```
 
-Pomocí tohoto dotazu můžete vyhledat chyby nebo upravit termíny dotazu a vyhledat konkrétní kódy chyb nebo výjimky. 
+Pomocí tohoto dotazu můžete najít chyby nebo upravit tyto výrazy a vyhledat konkrétní kódy chyb nebo výjimky.
 
-### <a name="show-the-number-of-errors-and-exceptions-reported-by-your-application-over-the-last-hour"></a>Zobrazit počet chyb a výjimek nahlášených vaší aplikací za poslední hodinu
+### <a name="show-the-number-of-errors-and-exceptions-reported-by-your-application-over-the-last-hour"></a>Zobrazit počet chyb a výjimek hlášených vaší aplikací za poslední hodinu
 
-Chcete-li vytvořit výsečový graf, který zobrazuje počet chyb a výjimek zaznamenaných aplikací za poslední hodinu, spusťte následující dotaz:
+Chcete-li vytvořit výsečový graf, který zobrazuje počet chyb a výjimek protokolovaných aplikací během poslední hodiny, spusťte následující dotaz:
 
 ```sql
 AppPlatformLogsforSpring
@@ -173,4 +173,4 @@ AppPlatformLogsforSpring
 
 ### <a name="learn-more-about-querying-application-logs"></a>Další informace o dotazování protokolů aplikací
 
-Azure Monitor poskytuje rozsáhlou podporu pro dotazování protokolů aplikací pomocí Log Analytics. Další informace o této službě najdete [v tématu Začínáme s dotazy protokolu v Azure Monitoru](../azure-monitor/log-query/get-started-queries.md). Další informace o vytváření dotazů k analýze protokolů aplikací najdete [v tématu Přehled dotazů protokolu v Azure Monitoru](../azure-monitor/log-query/log-query-overview.md).
+Azure Monitor poskytuje rozsáhlou podporu pro dotazování protokolů aplikací pomocí Log Analytics. Další informace o této službě najdete v tématu [Začínáme s dotazy protokolu v Azure monitor](../azure-monitor/log-query/get-started-queries.md). Další informace o vytváření dotazů k analýze protokolů aplikací najdete v tématu [Přehled dotazů protokolu v Azure monitor](../azure-monitor/log-query/log-query-overview.md).

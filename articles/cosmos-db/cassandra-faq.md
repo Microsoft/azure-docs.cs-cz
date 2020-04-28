@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: thvankra
-ms.openlocfilehash: 2d6cae3a7a41eae05783d3bcc12ec2bfe8220c4c
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: 9b771a82d88f9902aeb6022f07811ded8a6e0e62
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82148326"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192829"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-for-azure-cosmos-db"></a>Nejčastější dotazy týkající se rozhraní API Cassandra pro Azure Cosmos DB
 
 ## <a name="what-are-some-key-differences-between-apache-cassandra-and-the-cassandra-api"></a>Jaké jsou některé klíčové rozdíly mezi Apache Cassandra a rozhraní API Cassandra?
 
-- Apache Cassandra doporučuje pro velikost klíče oddílu omezení 100 MB. Rozhraní API Cassandra pro Azure Cosmos DB umožňuje až 10 GB na oddíl.
+- Apache Cassandra doporučuje pro velikost klíče oddílu omezení 100 MB. Rozhraní API Cassandra pro Azure Cosmos DB umožňuje až 20 GB na oddíl.
 - Apache Cassandra umožňuje zakázat trvalá potvrzení změn. Můžete přeskočit zápis do protokolu potvrzení a přejít přímo na memtables. To může způsobit ztrátu dat v případě, že se uzel přestane vyprázdnit, než se memtables SSTables na disk. Azure Cosmos DB vždy provádí trvalá potvrzení, aby se zabránilo ztrátě dat.
 - Apache Cassandra se může podívat na snížený výkon, pokud zatížení zahrnuje mnoho nahrazení nebo odstranění. Důvodem je označení, že úlohy čtení musí přeskočit, aby se načetla nejnovější data. Rozhraní API Cassandra se nezobrazuje snížený výkon při čtení, pokud má zatížení mnoho nahrazení nebo odstranění.
 - V rámci scénářů s vysokým počtem úloh se musí komprimace spustit pro sloučení SSTables na disku. (Sloučení je potřeba, protože zápisy Apache Cassandra jsou jenom připojené. Několik aktualizací je uloženo jako jednotlivé SSTable položky, které je třeba pravidelně slučovat. Tato situace může také vést k nižšímu výkonu čtení během komprimace. Tento dopad na výkon se v rozhraní API Cassandra neprovádí, protože rozhraní API neimplementuje komprimaci.

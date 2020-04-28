@@ -1,7 +1,7 @@
 ---
-title: 'Vytvořit model Pythonu: Odkaz na modul'
+title: 'Vytvoření modelu Pythonu: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak pomocí modulu Vytvořit model Pythonu v Azure Machine Learning vytvořit vlastní modelování nebo zpracování dat modulu.
+description: Naučte se, jak pomocí modulu vytvořit model Pythonu v Azure Machine Learning vytvořit vlastní modul pro modelování nebo zpracování dat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,45 +9,45 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: c8be0882452dc120f538394a5481769e26e3fa15
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 0285520c2733cd6e190f9055824cdfed0ce4b842
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81682808"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189850"
 ---
-# <a name="create-python-model-module"></a>Vytvořit modul Modelu Pythonu
+# <a name="create-python-model-module"></a>Vytvořit modul Python model
 
-Tento článek popisuje modul v návrháři Azure Machine Learning (preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
-Přečtěte si, jak pomocí modulu Vytvořit model Pythonu vytvořit netrénovaný model ze skriptu Pythonu. Model můžete založit na jakémkoli studentovi, který je součástí balíčku Pythonu v prostředí návrháře Azure Machine Learning. 
+Naučte se používat modul vytvořit model Python k vytvoření nevýukového modelu ze skriptu Pythonu. Model můžete založit na jakémkoli učení, které je součástí balíčku Pythonu v prostředí návrháře Azure Machine Learning. 
 
-Po vytvoření modelu můžete použít [Model Train](train-model.md) k trénování modelu v datové sadě, jako každý jiný student v Azure Machine Learning. Trénovaný model může být předán [skóre modelu,](score-model.md) aby předpovědi. Potom můžete uložit trénovaný model a publikovat pracovní postup hodnocení jako webovou službu.
+Po vytvoření modelu můžete použít [model výuky](train-model.md) pro výuku modelu pro datovou sadu, jako je jakékoli jiné informace v Azure Machine Learning. Školený model lze předat [modelu skóre](score-model.md) , aby bylo možné provést předpovědi. Potom můžete uložit trained model a publikovat pracovní postup bodování jako webovou službu.
 
 > [!WARNING]
-> V současné době není možné předat výsledky skóre modelu [Pythonu k vyhodnocení modelu](evaluate-model.md). Pokud potřebujete vyhodnotit model, můžete napsat vlastní skript Pythonu a spustit jej pomocí modulu [Spustit skript Pythonu.](execute-python-script.md)  
+> V současné době není možné předat výsledky skóre modelu Pythonu k [vyhodnocení modelu](evaluate-model.md). Pokud potřebujete vyhodnotit model, můžete napsat vlastní skript Pythonu a spustit ho pomocí modulu [spuštění skriptu Pythonu](execute-python-script.md) .  
 
 
 ## <a name="configure-the-module"></a>Konfigurace modulu
 
-Použití tohoto modulu vyžaduje středně pokročilé nebo odborné znalosti Pythonu. Modul podporuje použití všech studentů, který je součástí balíčků Pythonu, které jsou už nainstalované v Azure Machine Learning. Podívejte se na předinstalovaný seznam balíčků Pythonu v [aplikaci Execute Python Script](execute-python-script.md).
+Použití tohoto modulu vyžaduje mezilehlé nebo odborné znalosti Pythonu. Modul podporuje použití všech informací, které jsou součástí balíčků Pythonu, které jsou už nainstalované v Azure Machine Learning. Podívejte se na seznam předinstalovaných balíčků Pythonu v tématu [spuštění skriptu Pythonu](execute-python-script.md).
 
 > [!NOTE]
-> Při psaní skriptu buďte velmi opatrní a ujistěte se, že nedochází k žádné chybě syntaxe, například při použití nedeklarovaného objektu nebo neimportovaného modulu.
+> Při psaní skriptu Buďte velmi opatrní a zajistěte, aby nedošlo k žádné chybě syntaxe, jako je například použití nedeklarovaného objektu nebo neimportovaného modulu.
 
 > [!NOTE]
-Zvláštní pozornost také věnujte seznamu předinstalovaných modulů v [aplikaci Execute Python Script](execute-python-script.md). Importujte pouze předinstalované moduly. Prosím, neinstalujte další balíčky, jako je "pip install xgboost" v tomto skriptu, jinak chyby budou vyvolány při čtení modelů v down-stream modulů.
+> Navíc věnujte další pozornost seznamu předinstalovaných modulů v příkazu [Spustit skript Pythonu](execute-python-script.md). Importujte jenom předem nainstalované moduly. V tomto skriptu neinstalujte dodatečné balíčky, jako je například "PIP Install xgboost", jinak se při čtení modelů v modulech s nižšími proudy vyvolá chyby.
   
-Tento článek ukazuje, jak používat **vytvořit model Pythonu** s jednoduchým kanálem. Zde je diagram potrubí:
+V tomto článku se dozvíte, jak pomocí jednoduchého kanálu **vytvořit model Pythonu** . Zde je diagram kanálu:
 
 ![Diagram vytvoření modelu Pythonu](./media/module/create-python-model.png)
 
-1. Vyberte **Vytvořit model Pythonu**a upravte skript, abyste implementovali proces modelování nebo správy dat. Model můžete založit na jakémkoli studentovi, který je součástí balíčku Pythonu v prostředí Azure Machine Learning.
+1. Vyberte **vytvořit model Python**a upravte skript pro implementaci modelování nebo procesu správy dat. Model můžete založit na jakémkoli učení, které je součástí balíčku Pythonu v prostředí Azure Machine Learning.
 
 > [!NOTE]
-> Věnujte prosím zvláštní pozornost komentářům v ukázkovém kódu skriptu a ujistěte se, že váš skript přísně dodržuje požadavek, včetně názvu třídy, metod a podpisu metody. Porušení povede k výjimkám. 
+> Věnujte zvláštní pozornost komentářům v ukázkovém kódu skriptu a ujistěte se, že skript přesně dodržuje požadavky, včetně názvu třídy, metod a signatury metody. Porušení bude mít za následek výjimky. 
 
-   Následující ukázkový kód klasifikátoru Dvoutřídy Naive Bayes používá populární balíček *sklearn:*
+   Následující vzorový kód Naive Bayes klasifikátoru používá oblíbený balíček *skriptu sklearn* :
 
    ```Python
 
@@ -88,11 +88,11 @@ Tento článek ukazuje, jak používat **vytvořit model Pythonu** s jednoduchý
 
    ```
 
-1. Připojte modul **Vytvořit model Pythonu,** který jste právě vytvořili pro **trénování modelu** a modelu **skóre**.
+2. Připojte modul pro **Vytvoření modelu Pythonu** , který jste právě vytvořili, ke **výukovém** modelu a **modelu hodnocení**.
 
-1. Pokud potřebujete model vyhodnotit, přidejte modul [Spustit skript Pythonu](execute-python-script.md) a upravte skript Pythonu.
+3. Pokud potřebujete tento model vyhodnotit, přidejte modul [spuštění skriptu Pythonu](execute-python-script.md) a upravte skript Pythonu.
 
-   Následující skript je ukázkový kód hodnocení:
+   Následující skript je ukázkový zkušební kód:
 
    ```Python
 
@@ -103,7 +103,7 @@ Tento článek ukazuje, jak používat **vytvořit model Pythonu** s jednoduchý
    # imports up here can be used to 
    import pandas as pd
 
-   # The entry point function can contain up to two input arguments:
+   # The entry point function MUST have two input arguments:
    #   Param<dataframe1>: a pandas.DataFrame
    #   Param<dataframe2>: a pandas.DataFrame
    def azureml_main(dataframe1 = None, dataframe2 = None):

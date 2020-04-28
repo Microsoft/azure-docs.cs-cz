@@ -1,40 +1,40 @@
 ---
-title: Vývoj ve službě Azure Kubernetes Service (AKS) s helmou
-description: Pomocí helmu s AKS a Azure Container Registry zabalit a spustit kontejnery aplikací v clusteru.
+title: Vývoj ve službě Azure Kubernetes Service (AKS) s využitím Helm
+description: Použijte Helm s AKS a Azure Container Registry k zabalení a spuštění kontejnerů aplikací v clusteru.
 services: container-service
 author: zr-msft
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: zarhoads
-ms.openlocfilehash: 77627ab846999ea5ba42fde7a9c49b9cc7559fba
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 1f67605918e093e9ab28aa88be777d27acd831ef
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81873430"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82169564"
 ---
-# <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>Úvodní příručka: Vývoj ve službě Azure Kubernetes Service (AKS) s helmou
+# <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>Rychlý Start: vývoj ve službě Azure Kubernetes Service (AKS) s využitím Helm
 
-[Helm][helm] je open source obalový nástroj, který vám pomůže nainstalovat a spravovat životní cyklus aplikací Kubernetes. Podobně jako u linuxových správců balíčků, jako jsou *APT* a *Yum*, se Helm používá ke správě Kubernetesových grafů, což jsou balíčky předkonfigurovaných kubernetesových zdrojů.
+[Helm][helm] je open source nástroj pro balení, který vám pomůže s instalací a správou životního cyklu aplikací Kubernetes. Podobně jako správci balíčků pro Linux, jako je *apt* a *Yumu*, se Helm používá ke správě Kubernetes grafů, což jsou balíčky předkonfigurovaných prostředků Kubernetes.
 
-Tento článek ukazuje, jak použít Helm k balení a spuštění aplikace na AKS. Další podrobnosti o instalaci existující aplikace pomocí helmu najdete v [tématu Instalace existujících aplikací s helmou v AKS][helm-existing].
+V tomto článku se dozvíte, jak pomocí Helm zabalit a spustit aplikaci na AKS. Další informace o instalaci existující aplikace pomocí Helm najdete v tématu [instalace existujících aplikací pomocí Helm v AKS][helm-existing].
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 * [Nainstalované rozhraní Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
 * Docker je nainstalovaný a nakonfigurovaný. Docker nabízí balíčky pro konfiguraci Dockeru v systému [Mac][docker-for-mac], [Windows][docker-for-windows] nebo [Linux][docker-for-linux].
-* [Helm v3 nainstalován][helm-install].
+* [Nainstalovaná verze Helm V3][helm-install].
 
 ## <a name="create-an-azure-container-registry"></a>Vytvoření služby Azure Container Registry
-Chcete-li použít Helm ke spuštění aplikace v clusteru AKS, budete potřebovat Azure Container Registry pro ukládání ibi kontejnerů. Níže uvedený příklad používá [az acr create][az-acr-create] k vytvoření ACR s názvem *MyHelmACR* ve skupině prostředků *MyResourceGroup* se *základní* skladovou položkou. Měli byste zadat svůj vlastní jedinečný název registru. Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. Skladová položka *Basic* představuje vstupní bod optimalizovaný z hlediska nákladů pro účely vývoje a poskytuje vyváženou kombinaci úložiště a propustnosti.
+Pokud chcete používat Helm ke spuštění aplikace v clusteru AKS, budete potřebovat Azure Container Registry k ukládání imagí kontejneru. Následující příklad používá [AZ ACR Create][az-acr-create] k vytvoření ACR s názvem *MyHelmACR* ve skupině prostředků *MyResourceGroup* se *základní* SKU. Měli byste zadat vlastní jedinečný název registru. Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. Skladová položka *Basic* představuje vstupní bod optimalizovaný z hlediska nákladů pro účely vývoje a poskytuje vyváženou kombinaci úložiště a propustnosti.
 
 ```azurecli
 az group create --name MyResourceGroup --location eastus
 az acr create --resource-group MyResourceGroup --name MyHelmACR --sku Basic
 ```
 
-Výstup se podobá následujícímu příkladu. Poznamenejte si hodnotu *loginServer* pro acr, protože bude použita v pozdějším kroku. V níže uvedeném příkladu je *myhelmacr.azurecr.io* *loginServer* pro *MyHelmACR*.
+Výstup se podobá následujícímu příkladu. Poznamenejte si hodnotu *loginServer* pro svůj ACR, protože se použije v pozdějším kroku. V následujícím příkladu je *Myhelmacr.azurecr.IO* *loginServer* pro *myhelmacr*.
 
 ```console
 {
@@ -58,23 +58,23 @@ Výstup se podobá následujícímu příkladu. Poznamenejte si hodnotu *loginSe
 }
 ```
 
-Chcete-li použít instanci ACR, musíte se nejprve přihlásit. Pro přihlášení použijte příkaz [az acr login.][az-acr-login] Níže uvedený příklad se přihlásí k ACR s názvem *MyHelmACR*.
+Pokud chcete použít instanci ACR, musíte se nejdřív přihlásit. Přihlaste se pomocí příkazu [AZ ACR Login][az-acr-login] . Následující příklad se přihlásí k ACR s názvem *MyHelmACR*.
 
 ```azurecli
 az acr login --name MyHelmACR
 ```
 
-Příkaz vrátí *zprávu Úspěšné přihlášení* po dokončení.
+Příkaz po dokončení vrátí zprávu o *úspěšném přihlášení* .
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Vytvoření clusteru služby Azure Kubernetes
 
-Vytvořte cluster AKS. Níže uvedený příkaz vytvoří cluster AKS s názvem MyAKS a připojí MyHelmACR.
+Vytvořte cluster AKS. Následující příkaz vytvoří cluster AKS s názvem MyAKS a připojí MyHelmACR.
 
 ```azurecli
 az aks create -g MyResourceGroup -n MyAKS --location eastus  --attach-acr MyHelmACR --generate-ssh-keys
 ```
 
-Cluster AKS potřebuje přístup k acr k vytahování inicií kontejneru a jejich spuštění. Výše uvedený příkaz také uděluje clusteru *MyAKS* přístup k *myHelmACR* ACR.
+Váš cluster AKS potřebuje přístup k vašemu ACR, aby mohl načíst image kontejneru a spustit je. Výše uvedený příkaz také udělí *MyAKS* clusteru přístup k vašemu *MyHelmACR* ACR.
 
 ## <a name="connect-to-your-aks-cluster"></a>Připojení ke clusteru AKS
 
@@ -86,7 +86,7 @@ Pokud používáte Azure Cloud Shell, `kubectl` je už nainstalovaný. Můžete 
 az aks install-cli
 ```
 
-Pomocí příkazu [az aks get-credentials][] nakonfigurujte klienta `kubectl` pro připojení k vašemu clusteru Kubernetes. Následující příklad získá pověření pro cluster AKS s názvem *MyAKS* v *MyResourceGroup*:
+Pomocí příkazu [az aks get-credentials][] nakonfigurujte klienta `kubectl` pro připojení k vašemu clusteru Kubernetes. Následující příklad vrátí pověření pro cluster AKS s názvem *MyAKS* v *MyResourceGroup*:
 
 ```azurecli
 az aks get-credentials --resource-group MyResourceGroup --name MyAKS
@@ -94,7 +94,7 @@ az aks get-credentials --resource-group MyResourceGroup --name MyAKS
 
 ## <a name="download-the-sample-application"></a>Stažení ukázkové aplikace
 
-Tento rychlý start používá [ukázkovou aplikaci Node.js z ukázkového úložiště Azure Dev Spaces][example-nodejs]. Klonujte aplikaci z GitHubu `dev-spaces/samples/nodejs/getting-started/webfrontend` a přejděte do adresáře.
+Tento rychlý Start používá ukázkovou [aplikaci Node. js z ukázkového úložiště Azure dev Spaces][example-nodejs]. Naklonujte aplikaci z GitHubu a přejděte `dev-spaces/samples/nodejs/getting-started/webfrontend` do adresáře.
 
 ```console
 git clone https://github.com/Azure/dev-spaces
@@ -103,7 +103,7 @@ cd dev-spaces/samples/nodejs/getting-started/webfrontend
 
 ## <a name="create-a-dockerfile"></a>Vytvoření souboru Dockerfile
 
-Vytvořte nový soubor *Dockerfile* pomocí následujících možností:
+Vytvořte nový soubor *souboru Dockerfile* pomocí následujících kroků:
 
 ```dockerfile
 FROM node:latest
@@ -120,15 +120,15 @@ EXPOSE 80
 CMD ["node","server.js"]
 ```
 
-## <a name="build-and-push-the-sample-application-to-the-acr"></a>Sestavení a přesunutí ukázkové aplikace do ACR
+## <a name="build-and-push-the-sample-application-to-the-acr"></a>Sestavení a vložení ukázkové aplikace do ACR
 
-Získejte přihlašovací adresu serveru pomocí příkazu [az acr list][az-acr-list] a dotazování na *loginServer*:
+Adresu přihlašovacího serveru získáte pomocí příkazu [AZ ACR list][az-acr-list] a dotazování na *loginServer*:
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-Pomocí Dockeru můžete vytvářet, označovat a přesouvat ukázkový kontejner aplikace do acr:
+Pomocí Docker sestavíte, označíte a nahrajete vzorový kontejner aplikace do ACR:
 
 ```console
 docker build -t webfrontend:latest .
@@ -136,15 +136,15 @@ docker tag webfrontend <acrLoginServer>/webfrontend:v1
 docker push <acrLoginServer>/webfrontend:v1
 ```
 
-## <a name="create-your-helm-chart"></a>Vytvoření grafu kormul
+## <a name="create-your-helm-chart"></a>Vytvoření grafu Helm
 
-Pomocí příkazu `helm create` vygenerujte graf Helm.
+Vygenerujte graf Helm pomocí `helm create` příkazu.
 
 ```console
 helm create webfrontend
 ```
 
-Proveďte následující aktualizace *webfrontend/values.yaml*:
+Proveďte následující aktualizace pro *webendu/Values. yaml*:
 
 * Změnit `image.repository` na`<acrLoginServer>/webfrontend`
 * Změnit `service.type` na`LoadBalancer`
@@ -168,7 +168,7 @@ service:
 ...
 ```
 
-Aktualizace `appVersion` `v1` na in *webfrontend/Chart.yaml*. Například
+Aktualizace `appVersion` na `v1` *webendu/Chart. yaml* Například
 
 ```yml
 apiVersion: v2
@@ -181,13 +181,13 @@ appVersion: v1
 
 ## <a name="run-your-helm-chart"></a>Spuštění grafu Helm
 
-Pomocí `helm create` příkazu nainstalujte aplikaci pomocí grafu Helm.
+Použijte `helm install` příkaz k instalaci aplikace pomocí grafu Helm.
 
 ```console
 helm install webfrontend webfrontend/
 ```
 
-Trvá několik minut, než služba vrátí veřejnou IP adresu. Chcete-li sledovat průběh, použijte `kubectl get service` příkaz s parametrem *watch:*
+Vrácení veřejné IP adresy službou může trvat několik minut. Chcete-li monitorovat průběh, `kubectl get service` použijte příkaz s parametrem *Watch* :
 
 ```console
 $ kubectl get service --watch
@@ -198,25 +198,25 @@ webfrontend         LoadBalancer  10.0.141.72   <pending>     80:32150/TCP   2m
 webfrontend         LoadBalancer  10.0.141.72   <EXTERNAL-IP> 80:32150/TCP   7m
 ```
 
-Přejděte do zařízení pro vyrovnávání zatížení `<EXTERNAL-IP>` aplikace v prohlížeči pomocí ukázkové aplikace.
+Přejděte do nástroje pro vyrovnávání zatížení vaší aplikace v prohlížeči pomocí nástroje `<EXTERNAL-IP>` , aby se zobrazila ukázková aplikace.
 
 ## <a name="delete-the-cluster"></a>Odstranění clusteru
 
-Pokud cluster již není potřeba, použijte příkaz [odstranění skupiny az][az-group-delete] k odebrání skupiny prostředků, clusteru AKS, registru kontejnerů, bitových kopií kontejnerů, které jsou v něm uloženy, a všech souvisejících prostředků.
+Pokud už cluster nepotřebujete, odeberte pomocí příkazu [AZ Group Delete][az-group-delete] skupinu prostředků, cluster AKS, registr kontejnerů, uložené image kontejnerů a všechny související prostředky.
 
 ```azurecli-interactive
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> Při odstranění clusteru se neodebere instanční objekt služby Azure Active Directory používaný clusterem AKS. Postup odebrání instančního objektu najdete v tématu věnovaném [aspektům instančního objektu AKS a jeho odstranění][sp-delete]. Pokud jste použili spravovanou identitu, identita je spravována platformou a nevyžaduje odebrání.
+> Při odstranění clusteru se neodebere instanční objekt služby Azure Active Directory používaný clusterem AKS. Postup odebrání instančního objektu najdete v tématu věnovaném [aspektům instančního objektu AKS a jeho odstranění][sp-delete]. Pokud jste použili spravovanou identitu, tato identita je spravovaná platformou a nevyžaduje odebrání.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o použití helmu naleznete v dokumentaci k helmu.
+Další informace o použití Helm najdete v dokumentaci k Helm.
 
 > [!div class="nextstepaction"]
-> [Dokumentace kormidelníku][helm-documentation]
+> [Dokumentace k Helm][helm-documentation]
 
 [az-acr-login]: /cli/azure/acr#az-acr-login
 [az-acr-create]: /cli/azure/acr#az-acr-create
