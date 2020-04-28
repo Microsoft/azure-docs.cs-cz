@@ -1,38 +1,38 @@
 ---
-title: Plány služeb a kvóty pro Azure Spring Cloud
-description: Informace o kvótách služeb a plánech služeb pro Azure Spring Cloud
+title: Plány a kvóty služeb pro Azure jaře Cloud
+description: Další informace o kvótách služby a plánech služeb pro jarní cloud Azure
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: brendm
 ms.openlocfilehash: 8a7ba3c3b9c19b2084b6892b55ac417da38ab047
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76278893"
 ---
-# <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Kvóty a plány služeb pro Azure Spring Cloud
+# <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Kvóty a plány služeb pro jarní Cloud v Azure
 
-Všechny služby Azure nastavují výchozí limity a kvóty pro prostředky a funkce.  Azure Spring Cloud nabízí během období předběžné verze jenom jeden plán služeb.
+Všechny služby Azure nastavily výchozí limity a kvóty pro prostředky a funkce.  Během období Preview nabízí Azure jaře Cloud jenom jeden plán služby.
 
-Tento článek podrobně popisuje kvóty služeb nabízené během aktuálního období náhledu.
+Tento článek podrobně popisuje kvóty služeb nabízené během období Preview.
 
-## <a name="azure-spring-cloud-service-tiers-and-quotas"></a>Úrovně a kvóty služeb Azure Spring Cloud
+## <a name="azure-spring-cloud-service-tiers-and-quotas"></a>Úrovně služeb a kvóty Azure pro jaře Cloud Service
 
-Během období náhledu Azure Spring Cloud nabízí jenom jednu úroveň služeb.
+Během období Preview nabízí Azure jaře Cloud jenom jednu úroveň služby.
 
 Prostředek | Částka
 ------- | -------
 Virtuální procesory | 4 na instanci služby
-Memory (Paměť) | 8 Bajtů na instanci služby
-Instance služeb Azure Spring Cloud na oblast na předplatné | 10
-Celkový počet instancí aplikací na instanci služby Azure Spring Cloud | 500
-Celkový počet instancí aplikací na jarní aplikaci | 20
-Trvalé svazky | 10 x 50 gbajtů
+Memory (Paměť) | 8 GBytes na instanci služby
+Instance služby Azure jaře Cloud Service na oblast na předplatné | 10
+Celkový počet instancí aplikace na jednu instanci cloudové služby Azure na jaře | 500
+Celkový počet instancí aplikace na jarní aplikaci | 20
+Trvalé svazky | 10 × 50 GBytes
 
-Když dosáhnete kvóty, zobrazí se chyba 400 s nápisem: "Kvóta překračuje limit předplatného *pro vaše předplatné* v *oblasti, kde se vaše služba Azure Spring Cloud vytvoří*.
+Když se dostanete k kvótě, obdržíte chybu 400 s upozorněním, že "kvóta překročila limit pro předplatné *vašeho* předplatného v oblasti *, kde se vytváří vaše jarní cloudová služba Azure*.
 
 ## <a name="next-steps"></a>Další kroky
 

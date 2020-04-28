@@ -1,6 +1,6 @@
 ---
-title: Propojené přihlášení pro aplikace Azure AD – platforma identit Microsoftu
-description: Konfigurace propojeného jednotného přihlašování (SSO) do podnikových aplikací Azure AD v platformě Microsoft identity (Azure AD)
+title: Propojené přihlašování pro aplikace Azure AD – Microsoft Identity Platform
+description: Konfigurace propojeného jednotného přihlašování (SSO) k podnikovým aplikacím Azure AD na platformě Microsoft Identity Platform (Azure AD)
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -13,37 +13,37 @@ ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dfe4aeb17f482cc9d4126efc6d65d3f7d173536b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77063539"
 ---
 # <a name="configure-linked-sign-on"></a>Konfigurace propojeného přihlašování
 
-Přidáte-li galerii nebo webovou aplikaci mimo galerii, je jednou z možností jednotného přihlášení, které máte k dispozici, [propojené přihlášení](what-is-single-sign-on.md). Tuto možnost vyberte, pokud chcete přidat odkaz na aplikaci na přístupovém panelu Azure AD vaší organizace nebo na portálu Office 365. Pomocí této metody můžete přidat odkazy na vlastní webové aplikace, které aktuálně používají službu AD FS (nebo jinou federační službu) namísto Azure AD pro ověřování. Nebo můžete přidat přímé odkazy na konkrétní stránky SharePointu nebo jiné webové stránky, které se mají zobrazit na panelech přístupu uživatele.
+Když přidáte galerii nebo webovou aplikaci mimo galerii, je k dispozici jedna z možností jednotného [přihlašování,](what-is-single-sign-on.md)která je k dispozici. Tuto možnost vyberte, pokud chcete přidat odkaz na aplikaci na přístupovém panelu Azure AD nebo na portálu Office 365 vaší organizace. Pomocí této metody můžete přidat odkazy na vlastní webové aplikace, které aktuálně používají Active Directory Federation Services (AD FS) (nebo jinou federační službu) místo Azure AD k ověřování. Nebo můžete přidat přímé odkazy na konkrétní SharePointové stránky nebo jiné webové stránky, které chcete zobrazit na přístupových panelech uživatele.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Pokud aplikace nebyla přidána do vašeho klienta Azure AD, přečtěte si informace [o přidání aplikace galerie](add-gallery-app.md) nebo přidání [aplikace, která není galerie.](add-non-gallery-app.md)
+Pokud se aplikace nepřidala do tenanta Azure AD, přečtěte si téma [Přidání aplikace Galerie](add-gallery-app.md) nebo [Přidání aplikace mimo galerii](add-non-gallery-app.md).
 
-### <a name="open-the-app-and-select-linked-sign-on"></a>Otevření aplikace a výběr propojeného přihlášení
+### <a name="open-the-app-and-select-linked-sign-on"></a>Otevřete aplikaci a vyberte odkazovaná přihlašování.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com) jako správce cloudových aplikací nebo správce aplikace pro vašeho klienta Azure AD.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce cloudové aplikace nebo správce aplikace pro vašeho TENANTA Azure AD.
 
-1. Přejděte k**aplikacím** **Azure Active Directory** > Enterprise . Zobrazí se náhodný vzorek aplikací v tenantovi Azure AD. 
+1. Přejděte na **Azure Active Directory** > **podnikové aplikace**. Zobrazí se náhodná ukázka aplikací v tenantovi Azure AD. 
 
-1. V nabídce **Typ aplikace** vyberte **Všechny aplikace**a pak vyberte **Použít**.
+1. V nabídce **Typ aplikace** vyberte **všechny aplikace**a pak vyberte **použít**.
 
-1. Do vyhledávacího pole zadejte název aplikace a vyberte ji z výsledků.
+1. Do vyhledávacího pole zadejte název aplikace a pak vyberte aplikaci z výsledků.
 
-1. V části **Správa** vyberte **Jednotné přihlašování**. 
+1. V části **Spravovat** vyberte **jednotné přihlašování**. 
 
-1. Vyberte **Propojeno**.
+1. Vyberte **propojeno**.
 
-1. Zadejte adresu URL aplikace, na kterou chcete vytvořit odkaz. Zadejte adresu URL a vyberte **Uložit**. 
+1. Zadejte adresu URL aplikace, na kterou se má vytvořit odkaz. Zadejte adresu URL a vyberte **Uložit**. 
  
-1. K aplikaci můžete přiřadit uživatele a skupiny, což způsobí, že se aplikace zobrazí ve [spouštěči aplikací Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) nebo na [přístupovém panelu Azure AD](end-user-experiences.md) pro tyto uživatele.
+1. K aplikaci můžete přiřadit uživatele a skupiny, což způsobí, že se aplikace zobrazí ve [Spouštěči aplikací Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) nebo na [přístupovém panelu Azure AD](end-user-experiences.md) pro tyto uživatele.
 
 1. Vyberte **Uložit**.
 

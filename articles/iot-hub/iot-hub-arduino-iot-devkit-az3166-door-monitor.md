@@ -1,6 +1,6 @@
 ---
-title: Odeslání e-mailu při otevření dveří pomocí funkce Azure
-description: Sledujte magnetický senzor, abyste zjistili, kdy se dveře otevřou, a pomocí funkce Azure odešlete e-mailové oznámení.
+title: Odeslat e-mail, když se otevřou dvířka pomocí Azure Functions
+description: Monitorujte magnetické senzory a zjistěte, kdy se dvířka otevřou, a použijte Azure Functions k odeslání e-mailového oznámení.
 author: liydu
 ms.service: iot-hub
 services: iot-hub
@@ -9,195 +9,195 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
 ms.openlocfilehash: 6bebe8ac6b9869466938600d6267fd0062c84477
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75977298"
 ---
-# <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>Monitorování dveří – pomocí funkcí Azure a SendGrid, odeslat e-mail při otevření dveří           
+# <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>Monitorování dvířek – používání Azure Functions a SendGrid, odesílání e-mailů, když se otevřou dvířka           
 
-MXChip IoT DevKit obsahuje vestavěný magnetický senzor. V tomto projektu zjistíte přítomnost nebo nepřítomnost blízkého silného magnetického pole - v tomto případě pocházejícího z malého, permanentního magnetu.
+MXChip IoT DevKit obsahuje vestavěný magnetický senzor. V tomto projektu zjistíte přítomnost nebo absence nejbližšího magnetického magnetického pole – v tomto případě přichází od malého a trvalého magnetu.
 
 ## <a name="what-you-learn"></a>Co se naučíte
 
-V tomto projektu se dozvíte:
-- Jak používat magnetický senzor MXChip IoT DevKit k detekci pohybu blízkého magnetu.
-- Jak pomocí služby SendGrid odeslat oznámení na vaši e-mailovou adresu.
+V tomto projektu se naučíte:
+- Jak pomocí magnetického senzoru MXChip IoT DevKit detekovat pohyb okolního magnetu.
+- Jak používat službu SendGrid k odeslání oznámení na vaši e-mailovou adresu.
 
 > [!NOTE]
-> Pro praktické využití tohoto projektu proveďte následující úkoly:
-> - Namontujte magnet na okraj dveří.
-> - DevKit namontujte na zárubně dveří v blízkosti magnetu. Otevřením nebo zavřením dveří se spustí senzor, což vede k tomu, že obdržíte e-mailové oznámení o události.
+> Pro praktické použití tohoto projektu proveďte následující úlohy:
+> - Připojte magnet k okraji dvířek.
+> - Připojte DevKit na dvířka jamb blízko k magnetu. Otevřením nebo zavřením dvířek se spustí senzor a výsledkem bude příjem e-mailových oznámení o události.
 
 ## <a name="what-you-need"></a>Co potřebujete
 
-Dokončete [příručku Začínáme](iot-hub-arduino-iot-devkit-az3166-get-started.md) s tímto účelem:
+Dokončete [průvodce Začínáme](iot-hub-arduino-iot-devkit-az3166-get-started.md) :
 
-* Připojení devKitu k Wi-Fi
+* Připojení DevKit k Wi-Fi
 * Příprava vývojového prostředí
 
-Aktivní předplatné Azure. Pokud ho nemáte, můžete se zaregistrovat jednou z těchto metod:
+Aktivní předplatné Azure. Pokud ho nemáte, můžete se zaregistrovat pomocí jedné z těchto metod:
 
-* Aktivujte [bezplatnou 30denní zkušební verzi účtu Microsoft Azure](https://azure.microsoft.com/free/).
-* Nárokujte svůj [kredit Azure,](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) pokud jste předplatitelem MSDN nebo Visual Studia.
+* Aktivujte si [bezplatný 30denní zkušební účet Microsoft Azure](https://azure.microsoft.com/free/).
+* Pokud jste předplatitelem MSDN nebo Visual studia, můžete svůj [kredit Azure](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) uplatnit.
 
 ## <a name="deploy-the-sendgrid-service-in-azure"></a>Nasazení služby SendGrid v Azure
 
-[SendGrid](https://sendgrid.com/) je cloudová platforma pro doručování e-mailů. Tato služba bude použita k odesílání e-mailových oznámení.
+[SendGrid](https://sendgrid.com/) je cloudová platforma pro doručování e-mailů. Tato služba se použije k posílání e-mailových oznámení.
 
 > [!NOTE]
-> Pokud jste už nasadili službu SendGrid, můžete přejít přímo do [nasazení služby IoT Hub v Azure](#deploy-iot-hub-in-azure).
+> Pokud jste už nasadili službu SendGrid, můžete přejít přímo na [nasazení IoT Hub v Azure](#deploy-iot-hub-in-azure).
 
-### <a name="sendgrid-deployment"></a>Nasazení sendgridu
+### <a name="sendgrid-deployment"></a>Nasazení SendGrid
 
-Chcete-li zřídit služby Azure, použijte tlačítko **Nasadit do Azure.** Toto tlačítko umožňuje rychlé a snadné nasazení open source projektů do Microsoft Azure.
+Ke zřízení služeb Azure použijte tlačítko **nasadit do Azure** . Toto tlačítko umožňuje rychlé a snadné nasazení open source projektů pro Microsoft Azure.
 
-Klikněte na tlačítko **Nasadit do Azure** níže. 
+Klikněte na tlačítko **nasadit do Azure** níže. 
 
 [![Nasazení do Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FVSChina%2Fdevkit-door-monitor%2Fmaster%2FSendGridDeploy%2Fazuredeploy.json)
 
-Pokud ještě nejste přihlášení ke svému účtu Azure, přihlaste se teď. 
+Pokud ještě nejste přihlášení ke svému účtu Azure, přihlaste se hned. 
 
-Nyní se zobrazí registrační formulář SendGrid.
+Nyní se zobrazí formulář pro registraci SendGrid.
 
-![Nasazení sendgridu](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-deploy.png)
+![Nasazení SendGrid](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-deploy.png)
 
-Vyplňte registrační formulář:
+Vyplňte formulář pro registraci:
 
-   * **Skupina prostředků**: Vytvořte skupinu prostředků pro hostování služby SendGrid nebo použijte existující. Viz [Správa prostředků Azure pomocí skupin prostředků](../azure-resource-manager/management/manage-resource-groups-portal.md).
+   * **Skupina prostředků**: Vytvořte skupinu prostředků pro hostování služby SendGrid nebo použijte existující. Další informace najdete v tématu [použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
-   * **Název**: Název služby SendGrid. Zvolte jedinečný název, který se liší od ostatních služeb, které můžete mít.
+   * **Name**(název): název vaší služby SendGrid. Vyberte jedinečný název, který se liší od jiných služeb, které máte.
 
-   * **Heslo**: Služba vyžaduje heslo, které nebude použito pro nic v tomto projektu.
+   * **Heslo**: služba vyžaduje heslo, které se nebude používat pro cokoli v tomto projektu.
 
-   * **E-mail**: Služba SendGrid odešle ověření na tuto e-mailovou adresu.
+   * **E-mail**: služba SendGrid bude odesílat ověření na tuto e-mailovou adresu.
 
-Zaškrtněte možnost **Připnout na řídicí panel,** abyste tuto aplikaci v budoucnu snadněji našli, a kliknutím na **Koupit** odešlete přihlašovací formulář.
+Zaškrtněte možnost **Připnout na řídicí panel** , aby se tato aplikace v budoucnu zjednodušila, a pak kliknutím na **koupit** odešlete formulář pro přihlášení.
  
 ### <a name="sendgrid-api-key-creation"></a>Vytvoření klíče rozhraní API SendGrid
 
-Po dokončení nasazení na něj klikněte a potom klikněte na tlačítko **Spravovat.** Zobrazí se stránka účtu SendGrid, kde je třeba ověřit svou e-mailovou adresu.
+Po dokončení nasazení klikněte na něj a potom klikněte na tlačítko **Spravovat** . Zobrazí se stránka účet SendGrid, ve které budete potřebovat ověřit svou e-mailovou adresu.
 
-![Správa sítě SendGrid](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-manage.png)
+![Správa SendGrid](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-manage.png)
 
-Na stránce SendGrid klikněte na **Settings** > **API Keys** > **Create API Key**.
+Na stránce SendGrid klikněte na **Nastavení** > **klíče** > rozhraní API**vytvořit klíč rozhraní API**.
 
-![SendGrid vytvořit rozhraní API jako první](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-create-api-first.png)
+![Nejdřív SendGrid vytvořit rozhraní API](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-create-api-first.png)
 
-Na stránce **Vytvořit klíč rozhraní API** zadejte název klíče rozhraní **API** a klepněte na tlačítko Vytvořit **& zobrazení**.
+Na stránce **vytvořit klíč rozhraní** API zadejte **název klíče rozhraní API** a klikněte na **vytvořit & zobrazení**.
 
-![SendGrid Vytvořit rozhraní API druhé](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-create-api-second.png)
+![SendGrid vytvoření rozhraní API sekundu](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-create-api-second.png)
 
-Klíč rozhraní API se zobrazí pouze jednou. Ujistěte se, že jej bezpečně zkopírujete a uložíte, protože se používá v dalším kroku.
+Klíč rozhraní API se zobrazuje jenom jednou. Nezapomeňte je zkopírovat a bezpečně uložit, jak se používá v dalším kroku.
 
-## <a name="deploy-iot-hub-in-azure"></a>Nasazení služby IoT Hub v Azure
+## <a name="deploy-iot-hub-in-azure"></a>Nasazení IoT Hub v Azure
 
-Následující kroky zřídí další služby související s Azure IoT a nasadí funkce Azure pro tento projekt.
+Následující kroky zřídí další služby související se službou Azure IoT a nasadí Azure Functions pro tento projekt.
 
-Klikněte na tlačítko **Nasadit do Azure** níže. 
+Klikněte na tlačítko **nasadit do Azure** níže. 
 
 [![Nasazení do Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FVSChina%2Fdevkit-door-monitor%2Fmaster%2Fazuredeploy.json)
 
-Zobrazí se registrační formulář.
+Zobrazí se formulář pro registraci.
 
-![Nasazení IoTHubu](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/iot-hub-deploy.png)
+![Nasazení IoTHub](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/iot-hub-deploy.png)
 
-Vyplňte pole v registračním formuláři.
+Vyplňte pole ve formuláři pro registraci.
 
-   * **Skupina prostředků**: Vytvořte skupinu prostředků pro hostování služby SendGrid nebo použijte existující. Viz [Správa prostředků Azure pomocí skupin prostředků](../azure-resource-manager/management/manage-resource-groups-portal.md).
+   * **Skupina prostředků**: Vytvořte skupinu prostředků pro hostování služby SendGrid nebo použijte existující. Další informace najdete v tématu [použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
-   * **Název aplikace Iot Hub:** Název vašeho centra IoT hub. Zvolte jedinečný název, který se liší od ostatních služeb, které můžete mít.
+   * **Název centra IoT**: název vašeho centra IoT. Vyberte jedinečný název, který se liší od jiných služeb, které máte.
 
-   * **Iot Hub Sku**: F1 (omezeno na jedno předplatné) je zdarma. Další informace o cenách naleznete na [stránce s cenami](https://azure.microsoft.com/pricing/details/iot-hub/).
+   * **SKU centra IoT**: F1 (omezeno na jeden pro každé předplatné) je zdarma. Další informace o cenách najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/iot-hub/).
 
-   * **Z e-mailu**: Toto pole by mělo být stejné e-mailové adresy, kterou jste použili při nastavování služby SendGrid.
+   * **Z e-mailu**: Toto pole musí být stejná e-mailová adresa, kterou jste použili při nastavování služby SendGrid.
 
-Zaškrtněte možnost **Připnout na řídicí panel,** abyste tuto aplikaci v budoucnu snadněji našli, a až budete připraveni pokračovat v dalším kroku, klikněte na **Koupit.**
+Zaškrtněte možnost **Připnout na řídicí panel** , aby se tato aplikace v budoucnu zjednodušila a pak klikněte na **koupit** , až budete připraveni pokračovat k dalšímu kroku.
  
 ## <a name="build-and-upload-the-code"></a>Sestavení a nahrání kódu
 
-Dále načtěte ukázkový kód v kódu VS a zřídíte potřebné služby Azure.
+Dále načtěte ukázkový kód v VS Code a zřiďte nezbytné služby Azure.
 
-### <a name="start-vs-code"></a>Spustit vs kód
+### <a name="start-vs-code"></a>Spustit VS Code
 
-- Zkontrolujte, zda **není** devKit připojen k počítači.
+- Ujistěte se, že vaše DevKit **není připojené k** vašemu počítači.
 - Spusťte VS Code.
-- Připojte devKit k počítači.
+- Připojte DevKit k počítači.
 
 > [!NOTE]
-> Při spuštění VS kód, může se zobrazit chybová zpráva oznamující, že nemůže najít Arduino IDE nebo související palubě balíčku. Pokud se zobrazí tato chyba, zavřete Kód VS, spusťte Arduino IDE znovu a VS kód by měl najít Arduino IDE cestu správně.
+> Při spuštění VS Code se může zobrazit chybová zpráva s oznámením, že nemůže najít Arduino IDE nebo balíček související desky. Pokud se zobrazí tato chyba, zavřete VS Code, znovu spusťte IDE Arduino a VS Code by měla správně najít cestu IDE Arduino.
 
-### <a name="open-arduino-examples-folder"></a>Otevřít složku Příklady Arduina
+### <a name="open-arduino-examples-folder"></a>Otevřít složku příkladů Arduino
 
-Rozbalte levou stranu **ARDUINO EXAMPLES** sekce, přejděte na **příklady pro MXCHIP AZ3166 > AzureIoT**, a vyberte **DoorMonitor**. Tato akce otevře nové okno VS Kód se složkou projektu v něm.
+Rozbalte část s **Příklady Arduino** na levé straně, přejděte k **příkladům pro MXCHIP AZ3166 > AzureIoT**a vyberte **DoorMonitor**. Tato akce otevře nové okno VS Code se složkou projektu v něm.
 
-![příklady mini řešení](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/vscode-examples.png)
+![zkrácené řešení – příklady](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/vscode-examples.png)
 
-Ukázkovou aplikaci můžete také otevřít z palety příkazů. Pomocí `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) otevřete paletu příkazů, zadejte **Arduino**a pak najděte a vyberte **Arduino: Příklady**.
+Ukázkovou aplikaci můžete otevřít také z palety příkazů. Použijte `Ctrl+Shift+P` (MacOS: `Cmd+Shift+P`) k otevření palety příkazů, zadejte **Arduino**a pak vyhledejte a vyberte **Arduino: příklady**.
 
-### <a name="provision-azure-services"></a>Poskytování služeb Azure
+### <a name="provision-azure-services"></a>Zřizování služeb Azure
 
-V okně řešení spusťte úlohu zřizování cloudu:
-- Typ `Ctrl+P` (macOS: `Cmd+P`).
-- Zadejte `task cloud-provision` do dodaných textových pole.
+V okně řešení spusťte úlohu zřízení cloudu:
+- Typ `Ctrl+P` (MacOS: `Cmd+P`).
+- Do `task cloud-provision` zadaného textového pole zadejte.
 
-V terminálu VS Code vás interaktivní příkazový řádek provede zřízením požadovaných služeb Azure. Vyberte všechny stejné položky ze seznamu s výzvami, který jste dříve zřídit v [nasazení služby IoT Hub v Azure](#deploy-iot-hub-in-azure).
+V terminálu VS Code vás interaktivní příkazový řádek provede zřízením požadovaných služeb Azure. Vyberte všechny stejné položky ze seznamu výzev, které jste dříve zřídili v [nasazení IoT Hub v Azure](#deploy-iot-hub-in-azure).
 
-![Poskytování cloudu](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/cloud-provision.png)
+![Zřízení cloudu](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/cloud-provision.png)
 
 > [!NOTE]
-> Pokud se stránka zasekne ve stavu načítání při pokusu o přihlášení k Azure, najdete v [části "stránka zablokuje při přihlášení" části IoT DevKit FAQ](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#page-hangs-when-log-in-azure) k vyřešení tohoto problému. 
+> Pokud se stránka při pokusu o přihlášení k Azure přestane načítat, přečtěte si část Nejčastější dotazy k řešení tohoto problému v [části "stránka se zablokuje, když se přihlašujete" v článku věnovaném přihlášení v DevKit IoT](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#page-hangs-when-log-in-azure) . 
 
-### <a name="build-and-upload-the-device-code"></a>Vytvoření a nahrání kódu zařízení
+### <a name="build-and-upload-the-device-code"></a>Sestavení a nahrání kódu zařízení
 
-Dále nahrajte kód zařízení.
+V dalším kroku nahrajte kód pro zařízení.
 
 #### <a name="windows"></a>Windows
 
-1. Slouží `Ctrl+P` ke `task device-upload`spuštění .
+1. Použijte `Ctrl+P` ke spuštění `task device-upload`.
 
-2. Terminál vás vyzve k přepání konfiguračního režimu. Chcete-li tak učinit, podržte tlačítko A a stiskněte a uvolněte tlačítko reset. Na obrazovce se zobrazí identifikační číslo DevKit a slovo *Konfigurace*.
+2. Terminál vás vyzve k zadání režimu konfigurace. Provedete to tak, že stisknete tlačítko a, nahrajete a uvolníte tlačítko obnovit. Na obrazovce se zobrazí identifikační číslo DevKit a *Konfigurace*aplikace Word.
 
 #### <a name="macos"></a>macOS
 
-1. Přepněte DevKit do konfiguračního režimu: Podržte tlačítko A a stiskněte a uvolněte tlačítko reset. Na obrazovce se zobrazí "Konfigurace".
+1. Vložte DevKit do režimu konfigurace: podržte stisknuté tlačítko a a pak nasaďte a uvolněte tlačítko Resetovat. Obrazovka zobrazí ' Configuration '.
 
-2. Klepnutím `Cmd+P` spusťte položku `task device-upload`.
+2. Kliknutím `Cmd+P` spustíte `task device-upload`.
 
-#### <a name="verify-upload-and-run-the-sample-app"></a>Ověření, nahrání a spuštění ukázkové aplikace
+#### <a name="verify-upload-and-run-the-sample-app"></a>Ověřte, nahrajte a spusťte ukázkovou aplikaci.
 
-Připojovací řetězec, který se načte z kroku [Zřízení služeb Azure](#provision-azure-services) je nyní nastavena. 
+Připojovací řetězec, který se načte z kroku [zřízení služeb Azure](#provision-azure-services) , je teď nastavený. 
 
-VS Kód pak začne ověřovat a nahrávat arduino skicu devKit.
+VS Code potom spustí ověřování a nahrání Arduino náčrtu do DevKit.
 
-![nahrávání zařízení](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/device-upload.png)
+![zařízení – nahrání](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/device-upload.png)
 
-DevKit restartuje a spustí kód.
+DevKit se restartuje a začne používat kód.
 
 > [!NOTE]
-> V některých případě se může zobrazit chybová zpráva "Chyba: AZ3166: Neznámý balíček" chybová zpráva. K této chybě dochází, pokud index balíčku desky není správně aktualizován. Chcete-li tuto chybu vyřešit, naleznete v [části vývoje v nejčastějších dotazech k IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
+> V některých případech se může zobrazit chybová zpráva "Chyba: AZ3166: neznámý balíček". K této chybě dochází, pokud se index balíčku panelu není správně aktualizovat. Pokud chcete tuto chybu vyřešit, přečtěte si [část věnované vývoji v tématu Nejčastější dotazy ke službě IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
 
 ## <a name="test-the-project"></a>Testování projektu
 
-Program se poprvé inicializuje, když je DevKit v přítomnosti stabilního magnetického pole.
+Program se nejprve inicializuje, když je DevKit v přítomnosti stabilního magnetického pole.
 
-Po inicializaci se `Door closed` zobrazí na obrazovce. Dojde-li ke změně magnetického pole, `Door opened`stav se změní na . Pokaždé, když se změní stav dveří, obdržíte e-mailové oznámení. (Přijetí těchto e-mailových zpráv může trvat až pět minut.)
+Po inicializaci `Door closed` se na obrazovce zobrazí. Když dojde ke změně v magnetickém poli, stav se změní na `Door opened`. Pokaždé, když se změní stav dvířek, obdržíte e-mailové oznámení. (Tyto e-mailové zprávy můžou trvat až pět minut.)
 
-![Magnety v blízkosti senzoru: Dveře zavřené](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-closed.jpg "Magnety v blízkosti senzoru: Dveře zavřené")
+![Magnety blízko senzoru: dvířka zavřena](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-closed.jpg "Magnety blízko senzoru: dvířka zavřena")
 
-![Magnet se odklonil od senzoru: Dveře se otevřely](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-opened.jpg "Magnet se odklonil od senzoru: Dveře se otevřely")
+![Magnet se přesunul mimo senzor: otevřená dvířka](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-opened.jpg "Magnet se přesunul mimo senzor: otevřená dvířka")
 
 ## <a name="problems-and-feedback"></a>Problémy a zpětná vazba
 
-Pokud narazíte na problémy, podívejte se na [IoT DevKit FAQ](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) nebo se připojte pomocí následujících kanálů:
+Pokud narazíte na problémy, přečtěte si [Nejčastější dotazy ke službě IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) nebo se připojte pomocí následujících kanálů:
 
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučili jste se připojit zařízení DevKit k akcelerátoru řešení vzdáleného monitorování Azure IoT a k odeslání e-mailu použili službu SendGrid. Zde jsou navrhované další kroky:
+Zjistili jste, jak připojit zařízení DevKit k akcelerátoru řešení vzdáleného monitorování Azure IoT a použít službu SendGrid k odeslání e-mailu. Tady jsou doporučené další kroky:
 
 * [Přehled akcelerátoru řešení vzdáleného monitorování Azure IoT](https://docs.microsoft.com/azure/iot-suite/)
-* [Připojení zařízení MXChip IoT DevKit k aplikaci Azure IoT Central](/azure/iot-central/core/howto-connect-devkit)
+* [Připojení zařízení IoT DevKit MXChip k aplikaci Azure IoT Central](/azure/iot-central/core/howto-connect-devkit)

@@ -1,6 +1,6 @@
 ---
-title: Začínáme s úložištěm tabulek Azure pomocí Visual Studia (ASP.NET)
-description: Jak začít používat úložiště tabulek Azure v projektu ASP.NET v sadě Visual Studio po připojení k účtu úložiště pomocí služby Visual Studio Connected Services
+title: Začínáme s Azure Table Storage s využitím sady Visual Studio (ASP.NET)
+description: Jak začít používat úložiště Azure Table v projektu ASP.NET v aplikaci Visual Studio po připojení k účtu úložiště pomocí připojených služeb sady Visual Studio
 services: storage
 author: ghogen
 manager: jillfra
@@ -14,20 +14,20 @@ ms.date: 12/21/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: c49df689ae859c93046c19af043aa2001dbb5481
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75979626"
 ---
-# <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Začínáme s úložištěm tabulek Azure a připojenými službami Visual Studia (ASP.NET)
+# <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Začínáme s Azure Table Storage a připojenými službami sady Visual Studio (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
 ## <a name="overview"></a>Přehled
 
-Azure Table storage umožňuje ukládat velké množství strukturovaných dat. Služba je úložiště dat NoSQL, které přijímá ověřená volání z cloudu Azure i mimo něj. Tabulky Azure jsou ideální pro ukládání strukturovaných, nerelačních dat.
+Azure Table Storage umožňuje ukládat velké objemy strukturovaných dat. Služba je úložiště dat NoSQL, které přijímá ověřená volání zevnitř i mimo cloud Azure. Tabulky Azure jsou ideální pro ukládání strukturovaných, nerelačních dat.
 
-Tento kurz ukazuje, jak psát ASP.NET kód pro některé běžné scénáře pomocí entit úložiště tabulek Azure. Tyto scénáře zahrnují vytvoření tabulky a přidání, dotazování a odstranění entit tabulky. 
+V tomto kurzu se dozvíte, jak napsat kód ASP.NET pro některé běžné scénáře s využitím entit služby Azure Table Storage. Mezi tyto scénáře patří vytvoření tabulky a přidání, dotazování a odstranění entit tabulky. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -40,21 +40,21 @@ Tento kurz ukazuje, jak psát ASP.NET kód pro některé běžné scénáře pom
 
 [!INCLUDE [storage-development-environment-include](../../includes/vs-storage-aspnet-getting-started-setup-dev-env.md)]
 
-### <a name="create-an-mvc-controller"></a>Vytvoření řadiče MVC 
+### <a name="create-an-mvc-controller"></a>Vytvoření kontroleru MVC 
 
-1. V **Průzkumníku řešení**klepněte pravým tlačítkem myši na **řadiče**a v místní nabídce vyberte **položku Správce >doplňků**.
+1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na **řadiče**a v místní nabídce vyberte možnost **Přidat kontroler >**.
 
-    ![Přidání ovladače do aplikace ASP.NET MVC](./media/vs-storage-aspnet-getting-started-tables/add-controller-menu.png)
+    ![Přidání kontroleru do aplikace ASP.NET MVC](./media/vs-storage-aspnet-getting-started-tables/add-controller-menu.png)
 
-1. V dialogovém okně **Přidat kancovací okno** vyberte **MVC 5 Controller - Empty**a vyberte **Přidat**.
+1. V dialogovém okně **Přidat generování uživatelského rozhraní** vyberte možnost kontroler **MVC 5 – prázdné**a vyberte **Přidat**.
 
-    ![Zadejte typ řadiče MVC](./media/vs-storage-aspnet-getting-started-tables/add-controller.png)
+    ![Zadat typ kontroleru MVC](./media/vs-storage-aspnet-getting-started-tables/add-controller.png)
 
-1. V dialogovém okně **Přidat řadič** pojmenujte řadič *TablesController*a vyberte **Přidat**.
+1. V dialogovém okně **Přidat řadič** pojmenujte kontrolér *TablesController*a vyberte **Přidat**.
 
-    ![Pojmenování řadiče MVC](./media/vs-storage-aspnet-getting-started-tables/add-controller-name.png)
+    ![Pojmenování kontroleru MVC](./media/vs-storage-aspnet-getting-started-tables/add-controller-name.png)
 
-1. Do souboru přidejte `TablesController.cs` následující *příkazy pomocí* direktiv:
+1. Do `TablesController.cs` souboru přidejte následující direktivy *using* :
 
     ```csharp
     using Microsoft.Azure;
@@ -65,19 +65,19 @@ Tento kurz ukazuje, jak psát ASP.NET kód pro některé běžné scénáře pom
 
 ### <a name="create-a-model-class"></a>Vytvoření třídy modelu
 
-Mnoho příkladů v tomto článku používá třídu odvoděnou odtíráno **tabulkou**s názvem **CustomerEntity**. Následující kroky vás provedou deklarováním této třídy jako třídy modelu:
+Mnohé z příkladů v tomto článku používají třídu odvozenou od **TableEntity**s názvem **CustomerEntity**. Následující kroky vás provedou deklarováním této třídy jako třídy modelu:
 
-1. V **Průzkumníku řešení**klepněte pravým tlačítkem myši na **položku Modely**a v místní nabídce vyberte **položku Přidat >třídu**.
+1. V **Průzkumník řešení**klikněte pravým tlačítkem na **modely**a v místní nabídce vyberte **Přidat třídu >**.
 
 1. V dialogovém okně **Přidat novou položku** pojmenujte třídu **CustomerEntity**.
 
-1. Otevřete `CustomerEntity.cs` soubor a přidejte následující **pomocí** směrnice:
+1. Otevřete `CustomerEntity.cs` soubor a přidejte následující direktivu **using** :
 
     ```csharp
     using Microsoft.WindowsAzure.Storage.Table;
     ```
 
-1. Upravte třídu tak, aby po dokončení byla třída deklarována jako v následujícím kódu. Třída deklaruje třídu entity nazvanou **CustomerEntity,** která používá křestní jméno zákazníka jako klíč řádku a příjmení jako klíč oddílu.
+1. Upravte třídu tak, aby po dokončení byla třída deklarována jako v následujícím kódu. Třída deklaruje třídu entity s názvem **CustomerEntity** , která používá křestní jméno zákazníka jako klíč řádku a příjmení jako klíč oddílu.
 
     ```csharp
     public class CustomerEntity : TableEntity
@@ -96,15 +96,15 @@ Mnoho příkladů v tomto článku používá třídu odvoděnou odtíráno **ta
 
 ## <a name="create-a-table"></a>Vytvoření tabulky
 
-Následující kroky ilustrují, jak vytvořit tabulku:
+Následující postup ukazuje, jak vytvořit tabulku:
 
 > [!NOTE]
 > 
-> Tato část předpokládá, že jste dokončili kroky v [nastavení vývojového prostředí](#set-up-the-development-environment). 
+> V této části se předpokládá, že jste dokončili kroky v tématu [Nastavení vývojového prostředí](#set-up-the-development-environment). 
 
 1. Otevřete soubor `TablesController.cs`.
 
-1. Přidejte metodu s názvem **CreateTable,** která vrací **hodnotu ActionResult**.
+1. Přidejte metodu nazvanou **Create** , která vrací **ActionResult**.
 
     ```csharp
     public ActionResult CreateTable()
@@ -115,26 +115,26 @@ Následující kroky ilustrují, jak vytvořit tabulku:
     }
     ```
 
-1. V rámci **CreateTable** metoda získat **Objekt CloudStorageAccount,** který představuje informace o účtu úložiště. Pomocí následujícího kódu získáte informace o připojovacím řetězci * &lt;* úložiště a účtu úložiště z konfigurace služby Azure: (Změňte>název účtu úložiště na název účtu úložiště Azure, ke které přistupujete.)
+1. V rámci metody **Create** získejte objekt **CloudStorageAccount** , který představuje informace o vašem účtu úložiště. Použijte následující kód k získání informací o připojovacím řetězci a účtu úložiště z konfigurace služby Azure: (změňte * &lt;název úložiště-účet-Name>* na název účtu úložiště Azure, ke kterému přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
        CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
     ```
 
-1. Získejte **Objekt CloudTableClient** představuje klienta služby table service.
+1. Získání objektu **cloudtableclient vám** představuje klienta služby Table Service.
    
     ```csharp
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
     ```
 
-1. Získejte **Objekt CloudTable,** který představuje odkaz na požadovaný název tabulky. Metoda **CloudTableClient.GetTableReference** neprovádí požadavek proti úložišti tabulky. Odkaz je vrácena, zda tabulka existuje nebo ne. 
+1. Získejte objekt **cloudu** , který představuje odkaz na požadovaný název tabulky. Metoda **cloudtableclient vám. GetTableReference** nevytvoří požadavek na úložiště tabulek. Odkaz je vrácen bez ohledu na to, zda tabulka existuje. 
    
     ```csharp
     CloudTable table = tableClient.GetTableReference("TestTable");
     ```
 
-1. Volání **CloudTable.CreateIfNotExists** metoda k vytvoření tabulky, pokud ještě neexistuje. Metoda **CloudTable.CreateIfNotExists** vrátí **hodnotu true,** pokud tabulka neexistuje a je úspěšně vytvořena. V opačném případě je **vrácena false.**    
+1. Voláním metody **Cloud. CreateIfNotExists** vytvořte tabulku, pokud ještě neexistuje. Metoda **Cloud. CreateIfNotExists** vrátí **hodnotu true** , pokud tabulka neexistuje a je úspěšně vytvořena. V opačném případě se vrátí **hodnota false** .    
 
     ```csharp
     ViewBag.Success = table.CreateIfNotExists();
@@ -146,11 +146,11 @@ Následující kroky ilustrují, jak vytvořit tabulku:
     ViewBag.TableName = table.Name;
     ```
 
-1. V **Průzkumníku řešení**rozbalte složku **Zobrazení,** klepněte pravým **tlačítkem**myši na tabulky a v místní nabídce vyberte **příkaz Přidat >zobrazení**.
+1. V **Průzkumník řešení**rozbalte složku **zobrazení** , klikněte pravým tlačítkem myši na **tabulky**a v místní nabídce vyberte možnost **Přidat zobrazení >**.
 
-1. V dialogovém okně **Přidat zobrazení** zadejte pro název zobrazení položku **Vytvořittabulku** a vyberte **Přidat**.
+1. V dialogovém okně **Přidat zobrazení** zadejte pro název zobrazení možnost **vytvořit** a vyberte **Přidat**.
 
-1. Otevřete `CreateTable.cshtml`a upravte tak, aby vypadal jako následující fragment kódu:
+1. Otevřete `CreateTable.cshtml`a upravte jej tak, aby vypadal jako následující fragment kódu:
 
     ```csharp
     @{
@@ -162,38 +162,38 @@ Následující kroky ilustrují, jak vytvořit tabulku:
     Creation of @ViewBag.TableName @(ViewBag.Success == true ? "succeeded" : "failed")
     ```
 
-1. V **Průzkumníku řešení**rozbalte složku **Sdílená zobrazení >** a otevřete `_Layout.cshtml`.
+1. V **Průzkumník řešení**rozbalte položku **zobrazení->sdílená** složka a otevřete `_Layout.cshtml`.
 
-1. Za poslední **Html.ActionLink**přidejte následující **html.actionlink**:
+1. Za poslední **HTML. ActionLink**přidejte následující **HTML. ActionLink**:
 
     ```html
     <li>@Html.ActionLink("Create table", "CreateTable", "Tables")</li>
     ```
 
-1. Spusťte aplikaci a výběrem **možnosti Vytvořit tabulku** zobrazte výsledky podobné následujícímu snímku obrazovky:
+1. Spusťte aplikaci a vyberte **vytvořit tabulku** , aby se zobrazily podobné výsledky jako na následujícím snímku obrazovky:
   
     ![Vytvoření tabulky](./media/vs-storage-aspnet-getting-started-tables/create-table-results.png)
 
-    Jak již bylo zmíněno dříve, **CloudTable.CreateIfNotExists** metoda vrátí **true** pouze v případě, že tabulka neexistuje a je vytvořen. Proto pokud spustíte aplikaci, když tabulka existuje, metoda vrátí **false**. Chcete-li aplikaci spustit vícekrát, musíte tabulku před znovu spuštěním odstranit. Odstranění tabulky lze provést pomocí **metody CloudTable.Delete.** Tabulku můžete odstranit taky pomocí [portálu Azure nebo](https://go.microsoft.com/fwlink/p/?LinkID=525040) [Průzkumníka úložiště Microsoft Azure](../vs-azure-tools-storage-manage-with-storage-explorer.md).  
+    Jak bylo zmíněno dříve, metoda **Cloud. CreateIfNotExists** vrátí **hodnotu true** pouze v případě, že tabulka neexistuje a je vytvořena. Proto pokud aplikaci spustíte, když tabulka existuje, vrátí metoda **hodnotu false**. Chcete-li aplikaci spustit několikrát, je nutné tabulku před spuštěním aplikace odstranit. Odstranění tabulky se dá provést pomocí metody **Cloud. Delete** . Tabulku můžete také odstranit pomocí [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) nebo [Průzkumník služby Microsoft Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md).  
 
 ## <a name="add-an-entity-to-a-table"></a>Přidání entity do tabulky
 
-*Entity* mapovat\# na objekty C pomocí vlastní třídy odvozené z **TableEntity**. Když budete chtít do tabulky přidat entitu, vytvořte třídu, která definuje vlastnosti vaší entity. V této části uvidíte, jak definovat třídu entity, která používá křestní jméno zákazníka jako klíč řádku a příjmení jako klíč oddílu. Společně pak klíč oddílu a řádku entity jednoznačně identifikují entitu v tabulce. Na entity se stejným klíčem oddílu je možné se (v porovnání s těmi, které mají různé klíče oddílů) rychleji dotazovat, ale používání různých klíčů oddílů umožňuje větší škálovatelnost paralelních operací. Pro všechny vlastnosti, které by měly být uloženy ve službě table, vlastnost musí být veřejná vlastnost podporovaného typu, který zveřejňuje nastavení a načítání hodnoty.
+*Entity* se mapují na\# objekty jazyka C pomocí vlastní třídy odvozené z **TableEntity**. Když budete chtít do tabulky přidat entitu, vytvořte třídu, která definuje vlastnosti vaší entity. V této části se dozvíte, jak definovat třídu entity, která používá křestní jméno zákazníka jako klíč řádku a příjmení jako klíč oddílu. Společně pak klíč oddílu a řádku entity jednoznačně identifikují entitu v tabulce. Na entity se stejným klíčem oddílu je možné se (v porovnání s těmi, které mají různé klíče oddílů) rychleji dotazovat, ale používání různých klíčů oddílů umožňuje větší škálovatelnost paralelních operací. Pro jakoukoliv vlastnost, která by měla být uložena ve službě Table Service, musí být vlastnost veřejnou vlastností podporovaného typu, která zpřístupňuje nastavení a načítá hodnoty.
 Třída entity *musí* deklarovat veřejný konstruktor bez parametrů.
 
 > [!NOTE]
 > 
-> Tato část předpokládá, že jste dokončili kroky v [nastavení vývojového prostředí](#set-up-the-development-environment).
+> V této části se předpokládá, že jste dokončili kroky v tématu [Nastavení vývojového prostředí](#set-up-the-development-environment).
 
 1. Otevřete soubor `TablesController.cs`.
 
-1. Přidejte následující direktivu, aby kód v souboru `TablesController.cs` měl přístup ke třídě **CustomerEntity:**
+1. Přidejte následující direktivu, aby kód v `TablesController.cs` souboru mohl přistupovat ke třídě **CustomerEntity** :
 
     ```csharp
     using StorageAspnet.Models;
     ```
 
-1. Přidejte metodu s názvem **AddEntity,** která vrací **hodnotu ActionResult**.
+1. Přidejte metodu s názvem **AddEntity** , která vrátí **ActionResult**.
 
     ```csharp
     public ActionResult AddEntity()
@@ -204,56 +204,56 @@ Třída entity *musí* deklarovat veřejný konstruktor bez parametrů.
     }
     ```
 
-1. V rámci **AddEntity** metoda získat **Objekt CloudStorageAccount,** který představuje informace o účtu úložiště. Pomocí následujícího kódu získáte informace o připojovacím řetězci * &lt;* úložiště a účtu úložiště z konfigurace služby Azure: (Změňte>název účtu úložiště na název účtu úložiště Azure, ke které přistupujete.)
+1. V rámci metody **AddEntity** získejte objekt **CloudStorageAccount** , který představuje informace o vašem účtu úložiště. Použijte následující kód k získání informací o připojovacím řetězci a účtu úložiště z konfigurace služby Azure: (změňte * &lt;název úložiště-účet-Name>* na název účtu úložiště Azure, ke kterému přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
        CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
     ```
 
-1. Získejte **Objekt CloudTableClient** představuje klienta služby table service.
+1. Získání objektu **cloudtableclient vám** představuje klienta služby Table Service.
    
     ```csharp
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
     ```
 
-1. Získejte **Objekt CloudTable,** který představuje odkaz na tabulku, do které se chystáte přidat novou entitu. 
+1. Získejte objekt **cloudu** , který představuje odkaz na tabulku, do které se chystáte přidat novou entitu. 
    
     ```csharp
     CloudTable table = tableClient.GetTableReference("TestTable");
     ```
 
-1. Vytvořte inializujte a inicializovat třídu **CustomerEntity.**
+1. Vytvořte instanci a inicializujte třídu **CustomerEntity** .
 
     ```csharp
     CustomerEntity customer1 = new CustomerEntity("Harp", "Walter");
     customer1.Email = "Walter@contoso.com";
     ```
 
-1. Vytvořte objekt **TableOperation,** který vloží entitu zákazníka.
+1. Vytvořte objekt **TableOperation** , který vloží entitu zákazníka.
 
     ```csharp
     TableOperation insertOperation = TableOperation.Insert(customer1);
     ```
 
-1. Spusťte operaci vložení voláním metody **CloudTable.Execute.** Výsledek operace můžete ověřit kontrolou vlastnosti **TableResult.HttpStatusCode.** Stavový kód 2xx označuje, že akce požadovaná klientem byla úspěšně zpracována. Například úspěšné vložení nových entit má za následek stavový kód HTTP 204, což znamená, že operace byla úspěšně zpracována a server nevrátil žádný obsah.
+1. Spusťte operaci vložení voláním metody **Cloud. Execute** . Výsledek operace můžete ověřit kontrolou vlastnosti **při metody tableresult. HttpStatusCode** . Stavový kód 2xx indikuje, že akce, kterou klient požadoval, byl úspěšně zpracován. Například úspěšné vložení nových entit má za následek stavový kód HTTP 204, což znamená, že operace byla úspěšně zpracována a server nevrátil žádný obsah.
 
     ```csharp
     TableResult result = table.Execute(insertOperation);
     ```
 
-1. Aktualizujte **ViewBag** s názvem tabulky a výsledky operace vložení.
+1. Aktualizujte **ViewBag** pomocí názvu tabulky a výsledků operace vložení.
 
     ```csharp
     ViewBag.TableName = table.Name;
     ViewBag.Result = result.HttpStatusCode;
     ```
 
-1. V **Průzkumníku řešení**rozbalte složku **Zobrazení,** klepněte pravým **tlačítkem**myši na tabulky a v místní nabídce vyberte **příkaz Přidat >zobrazení**.
+1. V **Průzkumník řešení**rozbalte složku **zobrazení** , klikněte pravým tlačítkem myši na **tabulky**a v místní nabídce vyberte možnost **Přidat zobrazení >**.
 
-1. V dialogovém okně **Přidat zobrazení** zadejte **addentity** pro název zobrazení a vyberte **Přidat**.
+1. V dialogovém okně **Přidat zobrazení** jako název zobrazení zadejte **AddEntity** a vyberte **Přidat**.
 
-1. Otevřete `AddEntity.cshtml`a upravte tak, aby vypadal jako následující fragment kódu:
+1. Otevřete `AddEntity.cshtml`a upravte jej tak, aby vypadal jako následující fragment kódu:
 
     ```csharp
     @{
@@ -264,31 +264,31 @@ Třída entity *musí* deklarovat veřejný konstruktor bez parametrů.
 
     Insert of entity into @ViewBag.TableName @(ViewBag.Result == 204 ? "succeeded" : "failed")
     ```
-1. V **Průzkumníku řešení**rozbalte složku **Sdílená zobrazení >** a otevřete `_Layout.cshtml`.
+1. V **Průzkumník řešení**rozbalte položku **zobrazení->sdílená** složka a otevřete `_Layout.cshtml`.
 
-1. Za poslední **Html.ActionLink**přidejte následující **html.actionlink**:
+1. Za poslední **HTML. ActionLink**přidejte následující **HTML. ActionLink**:
 
     ```html
     <li>@Html.ActionLink("Add entity", "AddEntity", "Tables")</li>
     ```
 
-1. Spusťte aplikaci a výběrem **možnosti Přidat entitu** zobrazíte výsledky podobné následujícímu snímku obrazovky:
+1. Spusťte aplikaci a vyberte **Přidat entitu** a podívejte se na podobné výsledky jako na následujícím snímku obrazovky:
   
     ![Přidání entity](./media/vs-storage-aspnet-getting-started-tables/add-entity-results.png)
 
-    Můžete ověřit, že entita byla přidána podle kroků v části [Získat jednu entitu](#get-a-single-entity). Explorer [úložiště Microsoft Azure](../vs-azure-tools-storage-manage-with-storage-explorer.md) můžete také použít k zobrazení všech entit pro vaše tabulky.
+    Pomocí kroků v části si můžete ověřit, že se entita přidala, a [získat jednu entitu](#get-a-single-entity). Můžete také použít [Průzkumník služby Microsoft Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md) k zobrazení všech entit pro tabulky.
 
 ## <a name="add-a-batch-of-entities-to-a-table"></a>Přidání dávky entit do tabulky
 
-Kromě toho, že můžete [přidávat entitu do tabulky jeden po druhém](#add-an-entity-to-a-table), můžete také přidat entity v dávce. Přidání entit v dávce snižuje počet zpátečních cest mezi kódem a službou azure table service. Následující kroky ilustrují, jak přidat více entit do tabulky s operací jedné vložení:
+Kromě toho, že je možné [Přidat entitu do tabulky po jednom](#add-an-entity-to-a-table), můžete také přidat entity do služby Batch. Přidáním entit do dávky se sníží počet přenosů mezi kódem a službou Azure Table. Následující postup ukazuje, jak přidat více entit do tabulky s jednou operací vložení:
 
 > [!NOTE]
 > 
-> Tato část předpokládá, že jste dokončili kroky v [nastavení vývojového prostředí](#set-up-the-development-environment).
+> V této části se předpokládá, že jste dokončili kroky v tématu [Nastavení vývojového prostředí](#set-up-the-development-environment).
 
 1. Otevřete soubor `TablesController.cs`.
 
-1. Přidejte metodu s názvem **AddEntities,** která vrací **ActionResult**.
+1. Přidejte metodu s názvem **AddEntities** , která vrátí **ActionResult**.
 
     ```csharp
     public ActionResult AddEntities()
@@ -299,26 +299,26 @@ Kromě toho, že můžete [přidávat entitu do tabulky jeden po druhém](#add-a
     }
     ```
 
-1. V rámci **AddEntities** metoda získat **Objekt CloudStorageAccount,** který představuje informace o účtu úložiště. Pomocí následujícího kódu získáte informace o připojovacím řetězci * &lt;* úložiště a účtu úložiště z konfigurace služby Azure: (Změňte>název účtu úložiště na název účtu úložiště Azure, ke které přistupujete.)
+1. V rámci metody **AddEntities** získejte objekt **CloudStorageAccount** , který představuje informace o vašem účtu úložiště. Použijte následující kód k získání informací o připojovacím řetězci a účtu úložiště z konfigurace služby Azure: (změňte * &lt;název úložiště-účet-Name>* na název účtu úložiště Azure, ke kterému přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
        CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
     ```
 
-1. Získejte **Objekt CloudTableClient** představuje klienta služby table service.
+1. Získání objektu **cloudtableclient vám** představuje klienta služby Table Service.
    
     ```csharp
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
     ```
 
-1. Získejte **Objekt CloudTable,** který představuje odkaz na tabulku, do které se chystáte přidat nové entity. 
+1. Získejte objekt **cloudu** , který představuje odkaz na tabulku, do které budete přidávat nové entity. 
    
     ```csharp
     CloudTable table = tableClient.GetTableReference("TestTable");
     ```
 
-1. Vytvořte instanci některých objektů zákazníka na základě třídy modelu **CustomerEntity** uvedené v části [Přidat entitu do tabulky](#add-an-entity-to-a-table).
+1. Vytvořte instanci některých zákaznických objektů na základě třídy modelu **CustomerEntity** prezentované v části a [přidejte do tabulky entitu](#add-an-entity-to-a-table).
 
     ```csharp
     CustomerEntity customer1 = new CustomerEntity("Smith", "Jeff");
@@ -328,36 +328,36 @@ Kromě toho, že můžete [přidávat entitu do tabulky jeden po druhém](#add-a
     customer2.Email = "Ben@contoso.com";
     ```
 
-1. Získejte objekt **TableBatchOperation.**
+1. Získá objekt **TableBatchOperation** .
 
     ```csharp
     TableBatchOperation batchOperation = new TableBatchOperation();
     ```
 
-1. Přidejte entity do objektu operace dávkové vložení.
+1. Přidejte entity do objektu dávkového vložení operace.
 
     ```csharp
     batchOperation.Insert(customer1);
     batchOperation.Insert(customer2);
     ```
 
-1. Spusťte operaci dávkového vložení voláním metody **CloudTable.ExecuteBatch.**   
+1. Spusťte operaci dávkového vložení voláním metody **Cloud. ExecuteBatch** .   
 
     ```csharp
     IList<TableResult> results = table.ExecuteBatch(batchOperation);
     ```
 
-1. Metoda **CloudTable.ExecuteBatch** vrátí seznam objektů **TableResult,** kde každý objekt **TableResult** může být zkontrolován, aby se zjistilo, že každá jednotlivá operace je úspěšná nebo neúspěšná. V tomto příkladu předaj seznam do zobrazení a nechte zobrazení zobrazit výsledky každé operace. 
+1. Metoda **Cloud. ExecuteBatch** vrátí seznam objektů **při metody tableresult** , ve kterých lze prozkoumat každý objekt **při metody tableresult** , abyste zjistili úspěch nebo selhání každé jednotlivé operace. V tomto příkladu předáte seznam do zobrazení a umožníte zobrazení zobrazit výsledky jednotlivých operací. 
  
     ```csharp
     return View(results);
     ```
 
-1. V **Průzkumníku řešení**rozbalte složku **Zobrazení,** klepněte pravým **tlačítkem**myši na tabulky a v místní nabídce vyberte **příkaz Přidat >zobrazení**.
+1. V **Průzkumník řešení**rozbalte složku **zobrazení** , klikněte pravým tlačítkem myši na **tabulky**a v místní nabídce vyberte možnost **Přidat zobrazení >**.
 
-1. V dialogovém okně **Přidat zobrazení** zadejte pro název zobrazení **položku AddEntities** a vyberte **Přidat**.
+1. V dialogovém okně **Přidat zobrazení** jako název zobrazení zadejte **AddEntities** a vyberte **Přidat**.
 
-1. Otevřete `AddEntities.cshtml`a upravte tak, aby vypadal takto.
+1. Otevřete `AddEntities.cshtml`a upravte jej tak, aby vypadal jako následující.
 
     ```csharp
     @model IEnumerable<Microsoft.WindowsAzure.Storage.Table.TableResult>
@@ -384,31 +384,31 @@ Kromě toho, že můžete [přidávat entitu do tabulky jeden po druhém](#add-a
     </table>
     ```
 
-1. V **Průzkumníku řešení**rozbalte složku **Sdílená zobrazení >** a otevřete `_Layout.cshtml`.
+1. V **Průzkumník řešení**rozbalte položku **zobrazení->sdílená** složka a otevřete `_Layout.cshtml`.
 
-1. Za poslední **Html.ActionLink**přidejte následující **html.actionlink**:
+1. Za poslední **HTML. ActionLink**přidejte následující **HTML. ActionLink**:
 
     ```html
     <li>@Html.ActionLink("Add entities", "AddEntities", "Tables")</li>
     ```
 
-1. Spusťte aplikaci a výběrem **možnosti Přidat entity** zobrazíte výsledky podobné následujícímu snímku obrazovky:
+1. Spusťte aplikaci a vyberte **Přidat entity** pro zobrazení výsledků podobně jako na následujícím snímku obrazovky:
   
     ![Přidání entit](./media/vs-storage-aspnet-getting-started-tables/add-entities-results.png)
 
-    Můžete ověřit, že entita byla přidána podle kroků v části [Získat jednu entitu](#get-a-single-entity). Explorer [úložiště Microsoft Azure](../vs-azure-tools-storage-manage-with-storage-explorer.md) můžete také použít k zobrazení všech entit pro vaše tabulky.
+    Pomocí kroků v části si můžete ověřit, že se entita přidala, a [získat jednu entitu](#get-a-single-entity). Můžete také použít [Průzkumník služby Microsoft Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md) k zobrazení všech entit pro tabulky.
 
-## <a name="get-a-single-entity"></a>Získání jedné entity
+## <a name="get-a-single-entity"></a>Získat jednu entitu
 
 Tato část ukazuje, jak získat jednu entitu z tabulky pomocí klíče řádku entity a klíče oddílu. 
 
 > [!NOTE]
 > 
-> Tato část předpokládá, že jste dokončili kroky v [nastavení vývojového prostředí](#set-up-the-development-environment)a používá data z [přidat dávku entit do tabulky](#add-a-batch-of-entities-to-a-table). 
+> V této části se předpokládá, že jste dokončili kroky v tématu [Nastavení vývojového prostředí](#set-up-the-development-environment)a použijete data z [Přidání dávky entit do tabulky](#add-a-batch-of-entities-to-a-table). 
 
 1. Otevřete soubor `TablesController.cs`.
 
-1. Přidejte metodu s názvem **GetSingle,** která vrací **ActionResult**.
+1. Přidejte metodu s názvem **getsingle** , která vrátí **ActionResult**.
 
     ```csharp
     public ActionResult GetSingle()
@@ -419,26 +419,26 @@ Tato část ukazuje, jak získat jednu entitu z tabulky pomocí klíče řádku 
     }
     ```
 
-1. V rámci **GetSingle** metoda získat **objekt CloudStorageAccount,** který představuje informace o účtu úložiště. Pomocí následujícího kódu získáte informace o připojovacím řetězci * &lt;* úložiště a účtu úložiště z konfigurace služby Azure: (Změňte>název účtu úložiště na název účtu úložiště Azure, ke které přistupujete.)
+1. V rámci metody **getsingle** získejte objekt **CloudStorageAccount** , který představuje informace o vašem účtu úložiště. Použijte následující kód k získání informací o připojovacím řetězci a účtu úložiště z konfigurace služby Azure: (změňte * &lt;název úložiště-účet-Name>* na název účtu úložiště Azure, ke kterému přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
        CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
     ```
 
-1. Získejte **Objekt CloudTableClient** představuje klienta služby table service.
+1. Získání objektu **cloudtableclient vám** představuje klienta služby Table Service.
    
     ```csharp
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
     ```
 
-1. Získejte **Objekt CloudTable,** který představuje odkaz na tabulku, ze které načítáte entitu. 
+1. Získejte objekt **cloudu** , který představuje odkaz na tabulku, ze které načítáte entitu. 
    
     ```csharp
     CloudTable table = tableClient.GetTableReference("TestTable");
     ```
 
-1. Vytvořte objekt načtení operace, který přebírá objekt entity odvozený z **TableEntity**. První parametr je *partitionKey*a druhý parametr je *rowKey*. Pomocí třídy **CustomerEntity** a dat uvedených v části [Přidejte dávku entit do tabulky](#add-a-batch-of-entities-to-a-table), následující fragment kódu se dotazuje na tabulku entity **CustomerEntity** s hodnotou *partitionKey* "Smith" a hodnotou *rowKey* "Ben":
+1. Vytvořte objekt operace načtení, který převezme objekt entity odvozený z **TableEntity**. První parametr je *partitionKey*a druhým parametrem je *rowKey*. Pomocí třídy **CustomerEntity** a dat uvedených v oddílu přidejte do [tabulky dávku entit](#add-a-batch-of-entities-to-a-table). následující fragment kódu dotazuje tabulku pro entitu **CustomerEntity** s hodnotou *partitionKey* "Smith" a *rowKey* hodnotou "Robert":
 
     ```csharp
     TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
@@ -450,17 +450,17 @@ Tato část ukazuje, jak získat jednu entitu z tabulky pomocí klíče řádku 
     TableResult result = table.Execute(retrieveOperation);
     ```
 
-1. Předaj výsledek do zobrazení pro zobrazení.
+1. Předejte výsledek do zobrazení pro zobrazení.
 
     ```csharp
     return View(result);
     ```
 
-1. V **Průzkumníku řešení**rozbalte složku **Zobrazení,** klepněte pravým **tlačítkem**myši na tabulky a v místní nabídce vyberte **příkaz Přidat >zobrazení**.
+1. V **Průzkumník řešení**rozbalte složku **zobrazení** , klikněte pravým tlačítkem myši na **tabulky**a v místní nabídce vyberte možnost **Přidat zobrazení >**.
 
-1. V dialogovém okně **Přidat zobrazení** zadejte pro název zobrazení příkaz **GetSingle** a vyberte **Přidat**.
+1. V dialogovém okně **Přidat zobrazení** zadejte **getsingle** pro název zobrazení a vyberte **Přidat**.
 
-1. Otevřete `GetSingle.cshtml`a upravte tak, aby vypadal jako následující fragment kódu:
+1. Otevřete `GetSingle.cshtml`a upravte jej tak, aby vypadal jako následující fragment kódu:
 
     ```csharp
     @model Microsoft.WindowsAzure.Storage.Table.TableResult
@@ -486,29 +486,29 @@ Tato část ukazuje, jak získat jednu entitu z tabulky pomocí klíče řádku 
     </table>
     ```
 
-1. V **Průzkumníku řešení**rozbalte složku **Sdílená zobrazení >** a otevřete `_Layout.cshtml`.
+1. V **Průzkumník řešení**rozbalte položku **zobrazení->sdílená** složka a otevřete `_Layout.cshtml`.
 
-1. Za poslední **Html.ActionLink**přidejte následující **html.actionlink**:
+1. Za poslední **HTML. ActionLink**přidejte následující **HTML. ActionLink**:
 
     ```html
     <li>@Html.ActionLink("Get single", "GetSingle", "Tables")</li>
     ```
 
-1. Spusťte aplikaci a výběrem **možnosti Získat single** zobrazte výsledky podobné následujícímu snímku obrazovky:
+1. Spusťte aplikaci a výběrem **získat jednoduché** zobrazte výsledky podobné následujícímu snímku obrazovky:
   
-    ![Získejte jeden](./media/vs-storage-aspnet-getting-started-tables/get-single-results.png)
+    ![Získat jednu](./media/vs-storage-aspnet-getting-started-tables/get-single-results.png)
 
-## <a name="get-all-entities-in-a-partition"></a>Získání všech entit v oddílu
+## <a name="get-all-entities-in-a-partition"></a>Získá všechny entity v oddílu.
 
-Jak je uvedeno v části [Přidání entity do tabulky](#add-an-entity-to-a-table), kombinace oddílu a klíče řádku jednoznačně identifikovat entitu v tabulce. Entity se stejným klíčem oddílu mohou být dotazovány rychleji než entity s různými klíči oddílu. Tato část ukazuje, jak dotaz ovat tabulku pro všechny entity ze zadaného oddílu.  
+Jak je uvedeno v části, [Přidání entity do tabulky](#add-an-entity-to-a-table), kombinace oddílu a klíče řádku jedinečně identifikují entitu v tabulce. Na entity se stejným klíčem oddílu je možné zadávat dotazy rychleji než entity s různými klíči oddílů. Tato část ukazuje, jak zadat dotaz na tabulku pro všechny entity ze zadaného oddílu.  
 
 > [!NOTE]
 > 
-> Tato část předpokládá, že jste dokončili kroky v [nastavení vývojového prostředí](#set-up-the-development-environment)a používá data z [přidat dávku entit do tabulky](#add-a-batch-of-entities-to-a-table). 
+> V této části se předpokládá, že jste dokončili kroky v tématu [Nastavení vývojového prostředí](#set-up-the-development-environment)a použijete data z [Přidání dávky entit do tabulky](#add-a-batch-of-entities-to-a-table). 
 
 1. Otevřete soubor `TablesController.cs`.
 
-1. Přidejte metodu s názvem **GetPartition,** která vrací **ActionResult**.
+1. Přidejte metodu s názvem **getpartition** , která vrací **ActionResult**.
 
     ```csharp
     public ActionResult GetPartition()
@@ -519,26 +519,26 @@ Jak je uvedeno v části [Přidání entity do tabulky](#add-an-entity-to-a-tabl
     }
     ```
 
-1. V rámci **GetPartition** metoda získat **Objekt CloudStorageAccount,** který představuje informace o účtu úložiště. Pomocí následujícího kódu získáte informace o připojovacím řetězci * &lt;* úložiště a účtu úložiště z konfigurace služby Azure: (Změňte>název účtu úložiště na název účtu úložiště Azure, ke které přistupujete.)
+1. V rámci metody **getpartition** získejte objekt **CloudStorageAccount** , který představuje informace o vašem účtu úložiště. Použijte následující kód k získání informací o připojovacím řetězci a účtu úložiště z konfigurace služby Azure: (změňte * &lt;název úložiště-účet-Name>* na název účtu úložiště Azure, ke kterému přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
        CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
     ```
 
-1. Získejte **Objekt CloudTableClient** představuje klienta služby table service.
+1. Získání objektu **cloudtableclient vám** představuje klienta služby Table Service.
    
     ```csharp
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
     ```
 
-1. Získejte **Objekt CloudTable,** který představuje odkaz na tabulku, ze které načítáte entity. 
+1. Získejte objekt **cloudu** , který představuje odkaz na tabulku, ze které se entity načítají. 
    
     ```csharp
     CloudTable table = tableClient.GetTableReference("TestTable");
     ```
 
-1. Vytvořte sutipři objektu **TableQuery** určujícího dotaz v klauzuli **Where.** Pomocí třídy **CustomerEntity** a dat uvedených v části [Přidejte dávku entit do tabulky](#add-a-batch-of-entities-to-a-table), zobrazí se následující fragment kódu v tabulce pro všechny entity, kde má **partitionkey** (příjmení zákazníka) hodnotu "Novák":
+1. Vytvořte instanci objektu **TableQuery** určujícího dotaz v klauzuli **WHERE** . Pomocí třídy **CustomerEntity** a dat uvedených v části přidejte do [tabulky dávku entit](#add-a-batch-of-entities-to-a-table). následující fragment kódu dotazuje tabulku pro všechny entity, kde **PartitionKey** (příjmení zákazníka) má hodnotu "Smith":
 
     ```csharp
     TableQuery<CustomerEntity> query = 
@@ -546,7 +546,7 @@ Jak je uvedeno v části [Přidání entity do tabulky](#add-an-entity-to-a-tabl
         .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Smith"));
     ```
 
-1. V rámci smyčky volejte metodu **CloudTable.ExecuteQuerySegmented,** která předává objekt dotazu, který jste instancitoubyli v předchozím kroku.  Metoda **CloudTable.ExecuteQuerySegmented** vrátí objekt **TableContinuationToken,** který - pokud **je null** - znamená, že neexistují žádné další entity, které by bylo možné načíst. V rámci smyčky použijte jinou smyčku k iterace přes vrácené entity. V následujícím příkladu kódu je každá vrácená entita přidána do seznamu. Po ukončení smyčky je seznam předán do zobrazení pro zobrazení: 
+1. V rámci smyčky zavolejte metodu **Cloud. ExecuteQuerySegmented** , která předává objekt dotazu, který jste vytvořili v předchozím kroku.  Metoda **Cloud. ExecuteQuerySegmented** vrátí objekt **TableContinuationToken** , který-when **null** – označuje, že neexistují žádné další entity, které by bylo možné načíst. V rámci smyčky použijte k iterování vrácených entit jinou smyčku. V následujícím příkladu kódu se každou vrácenou entitu přidá do seznamu. Po ukončení smyčky se seznam předává zobrazení pro zobrazení: 
 
     ```csharp
     List<CustomerEntity> customers = new List<CustomerEntity>();
@@ -565,11 +565,11 @@ Jak je uvedeno v části [Přidání entity do tabulky](#add-an-entity-to-a-tabl
     return View(customers);
     ```
 
-1. V **Průzkumníku řešení**rozbalte složku **Zobrazení,** klepněte pravým **tlačítkem**myši na tabulky a v místní nabídce vyberte **příkaz Přidat >zobrazení**.
+1. V **Průzkumník řešení**rozbalte složku **zobrazení** , klikněte pravým tlačítkem myši na **tabulky**a v místní nabídce vyberte možnost **Přidat zobrazení >**.
 
-1. V dialogovém okně **Přidat zobrazení** zadejte pro název zobrazení **příkaz GetPartition** a vyberte **Přidat**.
+1. V dialogovém okně **Přidat zobrazení** zadejte **getpartition** pro název zobrazení a vyberte **Přidat**.
 
-1. Otevřete `GetPartition.cshtml`a upravte tak, aby vypadal jako následující fragment kódu:
+1. Otevřete `GetPartition.cshtml`a upravte jej tak, aby vypadal jako následující fragment kódu:
 
     ```csharp
     @model IEnumerable<StorageAspnet.Models.CustomerEntity>
@@ -596,15 +596,15 @@ Jak je uvedeno v části [Přidání entity do tabulky](#add-an-entity-to-a-tabl
     </table>
     ```
 
-1. V **Průzkumníku řešení**rozbalte složku **Sdílená zobrazení >** a otevřete `_Layout.cshtml`.
+1. V **Průzkumník řešení**rozbalte položku **zobrazení->sdílená** složka a otevřete `_Layout.cshtml`.
 
-1. Za poslední **Html.ActionLink**přidejte následující **html.actionlink**:
+1. Za poslední **HTML. ActionLink**přidejte následující **HTML. ActionLink**:
 
     ```html
     <li>@Html.ActionLink("Get partition", "GetPartition", "Tables")</li>
     ```
 
-1. Spusťte aplikaci a výběrem **možnosti Získat oddíl** zobrazte výsledky podobné následujícímu snímku obrazovky:
+1. Spusťte aplikaci a vyberte **získat oddíl** , aby se zobrazily podobné výsledky jako na následujícím snímku obrazovky:
   
     ![Získat oddíl](./media/vs-storage-aspnet-getting-started-tables/get-partition-results.png)
 
@@ -614,11 +614,11 @@ Tato část ukazuje, jak odstranit entitu z tabulky.
 
 > [!NOTE]
 > 
-> Tato část předpokládá, že jste dokončili kroky v [nastavení vývojového prostředí](#set-up-the-development-environment)a používá data z [přidat dávku entit do tabulky](#add-a-batch-of-entities-to-a-table). 
+> V této části se předpokládá, že jste dokončili kroky v tématu [Nastavení vývojového prostředí](#set-up-the-development-environment)a použijete data z [Přidání dávky entit do tabulky](#add-a-batch-of-entities-to-a-table). 
 
 1. Otevřete soubor `TablesController.cs`.
 
-1. Přidejte metodu s názvem **DeleteEntity,** která vrací **hodnotu ActionResult**.
+1. Přidejte metodu s názvem **DeleteEntity** , která vrátí **ActionResult**.
 
     ```csharp
     public ActionResult DeleteEntity()
@@ -629,49 +629,49 @@ Tato část ukazuje, jak odstranit entitu z tabulky.
     }
     ```
 
-1. V rámci **DeleteEntity** metoda získat **objekt CloudStorageAccount,** který představuje informace o účtu úložiště. Pomocí následujícího kódu získáte informace o připojovacím řetězci * &lt;* úložiště a účtu úložiště z konfigurace služby Azure: (Změňte>název účtu úložiště na název účtu úložiště Azure, ke které přistupujete.)
+1. V rámci metody **DeleteEntity** získejte objekt **CloudStorageAccount** , který představuje informace o vašem účtu úložiště. Použijte následující kód k získání informací o připojovacím řetězci a účtu úložiště z konfigurace služby Azure: (změňte * &lt;název úložiště-účet-Name>* na název účtu úložiště Azure, ke kterému přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
        CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
     ```
 
-1. Získejte **Objekt CloudTableClient** představuje klienta služby table service.
+1. Získání objektu **cloudtableclient vám** představuje klienta služby Table Service.
    
     ```csharp
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
     ```
 
-1. Získejte **Objekt CloudTable,** který představuje odkaz na tabulku, ze které jsou odstranění entity. 
+1. Získejte objekt **cloudu** , který představuje odkaz na tabulku, ze které entitu odstraňujete. 
    
     ```csharp
     CloudTable table = tableClient.GetTableReference("TestTable");
     ```
 
-1. Vytvořte objekt operace delete, který přebírá objekt entity odvozený z **TableEntity**. V tomto případě použijeme třídu **CustomerEntity** a data uvedená v části [Přidat dávku entit do tabulky](#add-a-batch-of-entities-to-a-table). **ETag** entity musí být nastaven na platnou hodnotu.  
+1. Vytvořte objekt operace odstranění, který převezme objekt entity odvozený z **TableEntity**. V tomto případě používáme třídu **CustomerEntity** a data uvedená v části [Přidání dávky entit do tabulky](#add-a-batch-of-entities-to-a-table). **Značka ETag** entity musí být nastavená na platnou hodnotu.  
 
     ```csharp
     TableOperation deleteOperation = 
         TableOperation.Delete(new CustomerEntity("Smith", "Ben") { ETag = "*" } );
     ```
 
-1. Proveďte operaci odstranění.   
+1. Spusťte operaci DELETE.   
 
     ```csharp
     TableResult result = table.Execute(deleteOperation);
     ```
 
-1. Předaj výsledek do zobrazení pro zobrazení.
+1. Předejte výsledek do zobrazení pro zobrazení.
 
     ```csharp
     return View(result);
     ```
 
-1. V **Průzkumníku řešení**rozbalte složku **Zobrazení,** klepněte pravým **tlačítkem**myši na tabulky a v místní nabídce vyberte **příkaz Přidat >zobrazení**.
+1. V **Průzkumník řešení**rozbalte složku **zobrazení** , klikněte pravým tlačítkem myši na **tabulky**a v místní nabídce vyberte možnost **Přidat zobrazení >**.
 
-1. V dialogovém okně **Přidat zobrazení** zadejte pro název zobrazení položku **DeleteEntity** a vyberte **Přidat**.
+1. V dialogovém okně **Přidat zobrazení** jako název zobrazení zadejte **DeleteEntity** a vyberte **Přidat**.
 
-1. Otevřete `DeleteEntity.cshtml`a upravte tak, aby vypadal jako následující fragment kódu:
+1. Otevřete `DeleteEntity.cshtml`a upravte jej tak, aby vypadal jako následující fragment kódu:
 
     ```csharp
     @model Microsoft.WindowsAzure.Storage.Table.TableResult
@@ -696,20 +696,20 @@ Tato část ukazuje, jak odstranit entitu z tabulky.
 
     ```
 
-1. V **Průzkumníku řešení**rozbalte složku **Sdílená zobrazení >** a otevřete `_Layout.cshtml`.
+1. V **Průzkumník řešení**rozbalte položku **zobrazení->sdílená** složka a otevřete `_Layout.cshtml`.
 
-1. Za poslední **Html.ActionLink**přidejte následující **html.actionlink**:
+1. Za poslední **HTML. ActionLink**přidejte následující **HTML. ActionLink**:
 
     ```html
     <li>@Html.ActionLink("Delete entity", "DeleteEntity", "Tables")</li>
     ```
 
-1. Spusťte aplikaci a výběrem **možnosti Odstranit entitu** zobrazíte výsledky podobné následujícímu snímku obrazovky:
+1. Spusťte aplikaci a vyberte **Odstranit entitu** , aby se zobrazily výsledky podobné následujícímu snímku obrazovky:
   
-    ![Získejte jeden](./media/vs-storage-aspnet-getting-started-tables/delete-entity-results.png)
+    ![Získat jednu](./media/vs-storage-aspnet-getting-started-tables/delete-entity-results.png)
 
 ## <a name="next-steps"></a>Další kroky
 Projděte si další průvodce funkcemi, kde najdete další informace o dalších možnostech pro ukládání dat v Azure.
 
-  * [Začínáme s úložištěm objektů blob Azure a připojenými službami Visual Studia (ASP.NET)](../storage/vs-storage-aspnet-getting-started-blobs.md)
-  * [Začínáme s úložištěm front Azure a připojenými službami Visual Studia (ASP.NET)](../storage/vs-storage-aspnet-getting-started-queues.md)
+  * [Začínáme se službou Azure Blob Storage a připojenými službami sady Visual Studio (ASP.NET)](../storage/vs-storage-aspnet-getting-started-blobs.md)
+  * [Začínáme s Azure Queue Storage a připojenými službami sady Visual Studio (ASP.NET)](../storage/vs-storage-aspnet-getting-started-queues.md)

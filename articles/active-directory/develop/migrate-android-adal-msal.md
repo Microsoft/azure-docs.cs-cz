@@ -1,6 +1,6 @@
 ---
-title: ADAL na MSAL migrace průvodce pro Android | Azure
-description: Zjistěte, jak migrovat aplikaci Azure Active Directory Authentication Library (ADAL) pro Android do knihovny Microsoft Authentication Library (MSAL).
+title: Příručka k migraci ADAL do MSAL pro Android | Azure
+description: Naučte se migrovat aplikaci pro Android Azure Active Directory Authentication Library (ADAL) do knihovny Microsoft Authentication Library (MSAL).
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,121 +14,121 @@ ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
 ms.openlocfilehash: 21866bb7dab3d5a093ffc4655161b80853eadfc5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77084049"
 ---
-# <a name="adal-to-msal-migration-guide-for-android"></a>Průvodce migrací ADAL na MSAL pro Android
+# <a name="adal-to-msal-migration-guide-for-android"></a>Příručka k migraci ADAL do MSAL pro Android
 
-Tento článek upozorňuje na změny, které je třeba provést k migraci aplikace, která používá Azure Active Directory Authentication Library (ADAL) k použití Knihovny ověřování Microsoft (MSAL).
+Tento článek popisuje změny, které je třeba provést při migraci aplikace, která používá knihovnu Azure Active Directory Authentication Library (ADAL) k použití knihovny Microsoft Authentication Library (MSAL).
 
-## <a name="difference-highlights"></a>Zvýraznění rozdílů
+## <a name="difference-highlights"></a>Rozdíly – světla
 
-ADAL pracuje s koncovým bodem Azure Active Directory v1.0. Knihovna ověřování Microsoft (MSAL) pracuje s platformou identit Microsoftu – dříve označovanou jako koncový bod Azure Active Directory v2.0. Platforma identit Microsoftu se liší od Azure Active Directory v1.0 v tom, že:
+ADAL funguje s koncovým bodem Azure Active Directory v 1.0. Knihovna Microsoft Authentication Library (MSAL) spolupracuje s platformou Microsoft identity, která se dřív jmenovala jako koncový bod Azure Active Directory v 2.0. Platforma Microsoft identity se liší od Azure Active Directory v 1.0 v tom, že:
 
-Podporuje:
+Podporovaných
   - Identita organizace (Azure Active Directory)
-  - Neorganizační identity, jako jsou Outlook.com, Xbox Live a tak dále
-  - (pouze B2C) Federované přihlášení s Google, Facebook, Twitter a Amazon
+  - Neorganizační identity, jako jsou Outlook.com, Xbox Live atd.
+  - (Jenom B2C) Federované přihlášení pomocí Google, Facebook, Twitteru a Amazon
 
-- Jsou standardy kompatibilní s:
-  - OAuth v2.0
+- Jsou kompatibilní se standardy:
+  - OAuth v 2.0
   - OpenID Connect (OIDC)
 
-Veřejné rozhraní API MSAL zavádí důležité změny, včetně:
+Veřejné rozhraní API MSAL přináší důležité změny, včetně:
 
 - Nový model pro přístup k tokenům:
-  - ADAL poskytuje přístup k `AuthenticationContext`tokenům prostřednictvím , který představuje server. MSAL poskytuje přístup k `PublicClientApplication`tokeny prostřednictvím , který představuje klienta. Vývojáři klientů nemusí vytvářet `PublicClientApplication` novou instanci pro každý úřad, se kterým potřebují komunikovat. Je `PublicClientApplication` vyžadována pouze jedna konfigurace.
-  - Podpora pro vyžádání přístupových tokenů pomocí oborů kromě identifikátorů prostředků.
-  - Podpora pro přírůstkový souhlas. Vývojáři mohou požadovat obory, protože uživatel přistupuje k dalším funkcím v aplikaci, včetně těch, které nejsou zahrnuty při registraci aplikace.
-  - Úřady se již neověřují za běhu. Místo toho vývojář deklaruje seznam "známých autorit" během vývoje.
+  - ADAL poskytuje přístup k tokenům prostřednictvím `AuthenticationContext`, který představuje server. MSAL poskytuje přístup k tokenům prostřednictvím `PublicClientApplication`, který představuje klienta. Vývojáři klientů nepotřebují vytvářet novou `PublicClientApplication` instanci pro všechny autority, se kterými potřebují pracovat. Vyžaduje se `PublicClientApplication` jenom jedna konfigurace.
+  - Podpora pro vyžádání přístupových tokenů pomocí oborů Kromě identifikátorů prostředků.
+  - Podpora pro přírůstkové vyjádření souhlasu. Vývojáři můžou vyžádat obory, protože uživatel přistupuje k více a více funkcím aplikace, včetně těch, které nejsou zahrnuté při registraci aplikace.
+  - Po dobu běhu již nejsou ověřeny autority. Místo toho vývojář deklaruje seznam známých autorit během vývoje.
 - Změny rozhraní API tokenu:
-  - V ADAL `AcquireToken()` nejprve provede tichý požadavek. V opačném případě vytvoří interaktivní požadavek. Toto chování mělo za následek, `AcquireToken`že někteří vývojáři spoléhají pouze na , což mělo za následek, že uživatel byl někdy neočekávaně vyzván k zadání pověření. MSAL vyžaduje, aby vývojáři byli záměrní o tom, kdy uživatel obdrží výzvu uživatelského rozhraní.
-    - `AcquireTokenSilent`vždy vede k tichému požadavku, který buď uspěje, nebo se nezdaří.
-    - `AcquireToken`vždy vede k požadavku, který vyzve uživatele prostřednictvím uživatelského rozhraní.
-- MSAL podporuje přihlášení z výchozího prohlížeče nebo z vloženého webového zobrazení:
-  - Ve výchozím nastavení se používá výchozí prohlížeč v zařízení. To umožňuje MSAL používat stav ověřování (soubory cookie), které již mohou být k dispozici pro jeden nebo více přihlášených účtů. Pokud není k dispozici žádný stav ověřování, ověřování během autorizace prostřednictvím služby MSAL má za následek vytvoření stavu ověřování (soubory cookie) ve prospěch jiných webových aplikací, které budou použity ve stejném prohlížeči.
+  - V ADAL `AcquireToken()` nejprve vytvoří tichý požadavek. V takovém případě se to provede interaktivním požadavkem. Výsledkem tohoto chování je, že někteří vývojáři se spoléhají jenom `AcquireToken`na, což by způsobilo, že se uživatel neočekávaně vyzve k zadání přihlašovacích údajů. MSAL vyžaduje, aby vývojáři byli úmyslné, kdy uživatel obdrží výzvu k zadání uživatelského rozhraní.
+    - `AcquireTokenSilent`vždy má za následek tichou žádost, která se buď zdaří, nebo selže.
+    - `AcquireToken`vždy má za následek požadavek, který vyzývá uživatele prostřednictvím uživatelského rozhraní.
+- MSAL podporuje přihlášení buď z výchozího prohlížeče, nebo z vloženého webového zobrazení:
+  - Ve výchozím nastavení se použije výchozí prohlížeč v zařízení. Díky tomu může MSAL používat stav ověřování (soubory cookie), které už mohou být k dispozici pro jeden nebo více přihlášených účtů. Pokud není k dispozici žádný stav ověřování, ověřování během autorizace prostřednictvím MSAL má za následek vytvoření stavu ověřování (cookies) pro výhody dalších webových aplikací, které budou použity ve stejném prohlížeči.
 - Nový model výjimky:
-  - Výjimky jasněji definovat typ chyby, ke které došlo a co vývojář musí udělat, aby ji vyřešit.
-- MSAL podporuje parametry a `AcquireToken` `AcquireTokenSilent` volání.
+  - Výjimky jasně definují typ chyby, ke které došlo, a to, co vývojář potřebuje k vyřešení.
+- MSAL podporuje objekty parametrů pro `AcquireToken` volání `AcquireTokenSilent` a.
 - MSAL podporuje deklarativní konfiguraci pro:
   - ID klienta, identifikátor URI přesměrování.
-  - Vložený vs výchozí prohlížeč
-  - Orgány
-  - Nastavení protokolu HTTP, například časový limit čtení a připojení
+  - Vložený a výchozí prohlížeč
+  - Autority
+  - Nastavení HTTP, jako je například čtení a časový limit připojení
 
-## <a name="your-app-registration-and-migration-to-msal"></a>Registrace aplikace a migrace do MSAL
+## <a name="your-app-registration-and-migration-to-msal"></a>Registrace a migrace vaší aplikace do MSAL
 
-Nemusíte měnit stávající registraci aplikace, abyste měli používat MSAL. Pokud chcete využít přírůstkového/progresivního souhlasu, možná budete muset zkontrolovat registraci, abyste identifikovali konkrétní obory, které chcete požádat postupně. Následuje další informace o oborech a přírůstkovém souhlasu.
+Pro použití MSAL nemusíte měnit stávající registraci aplikace. Pokud chcete využít výhod přírůstkového a postupného souhlasu, možná budete muset zkontrolovat registraci a identifikovat konkrétní obory, které chcete vyžádat přírůstkově. Další informace o oborech a postupu pro přírůstkové vyjádření.
 
-V registraci aplikace na portálu se zobrazí karta **oprávnění rozhraní API.** To poskytuje seznam api a oprávnění (obory), které vaše aplikace je aktuálně nakonfigurován pro žádost o přístup. Zobrazuje také seznam názvů oborů přidružených ke každému oprávnění rozhraní API.
+V registraci vaší aplikace na portálu se zobrazí karta **oprávnění rozhraní API** . Tato část poskytuje seznam rozhraní API a oprávnění (oborů), pro které je vaše aplikace momentálně nakonfigurovaná na požadování přístupu. Zobrazuje také seznam názvů oborů přidružených ke každému oprávnění rozhraní API.
 
 ### <a name="user-consent"></a>Souhlas uživatele
 
-S ADAL a koncový bod AAD v1, souhlas uživatele s prostředky, které vlastní byla udělena při prvním použití. S MSAL a platformou identit microsoftu lze požádat o souhlas postupně. Přírůstkový souhlas je užitečný pro oprávnění, která může uživatel považovat za vysoké oprávnění, nebo může jinak zpochybnit, pokud není poskytnuto jasné vysvětlení, proč je vyžadováno oprávnění. V ADAL tato oprávnění může mít za následek, že uživatel opustil přihlášení k vaší aplikaci.
+S ADAL a koncovým bodem AAD v1 uživatel získal při prvním použití souhlas uživatele u prostředků, které vlastní. S MSAL a platformou Microsoft identity se dá souhlas vyžádat přírůstkově. Přírůstkové vyjádření souhlasu je užitečné pro oprávnění, která může uživatel zvážit při vysokém oprávnění, nebo může jinak klást otázky, pokud není k dispozici jasné vysvětlení, proč se oprávnění vyžaduje. V ADAL mohla být tato oprávnění způsobena tím, že uživatel přejímá přihlášení do vaší aplikace.
 
 > [!TIP]
-> Doporučujeme použít přírůstkový souhlas ve scénářích, kde je potřeba poskytnout uživateli další kontext o tom, proč vaše aplikace potřebuje oprávnění.
+> Doporučujeme použití přírůstkového souhlasu ve scénářích, kdy potřebujete poskytnout uživateli další kontext o tom, proč vaše aplikace potřebuje oprávnění.
 
 ### <a name="admin-consent"></a>Souhlas správce
 
-Správci organizace mohou souhlasit s oprávněními, která vaše aplikace vyžaduje jménem všech členů organizace. Některé organizace umožňují správcům pouze souhlas s aplikacemi. Souhlas správce vyžaduje, abyste do registrace aplikace zahrnuli všechna oprávnění rozhraní API a obory používané vaší aplikací.
+Správci organizace můžou udělit souhlas s oprávněními, které vaše aplikace vyžaduje, jménem všech členů jejich organizace. Některé organizace umožňují správcům pouze udělit souhlas s aplikacemi. Souhlas správce vyžaduje, abyste v registraci vaší aplikace zahrnuli všechna oprávnění a rozsahy rozhraní API, které vaše aplikace používá.
 
 > [!TIP]
-> I když můžete požádat o obor pomocí MSAL pro něco, co není součástí registrace aplikace, doporučujeme aktualizovat registraci aplikace tak, aby zahrnovala všechny prostředky a obory, které uživatel může někdy udělit oprávnění.
+> I když si můžete vyžádat rozsah pomocí MSAL pro něco, co není součástí registrace vaší aplikace, doporučujeme, abyste aktualizovali registraci aplikace tak, aby zahrnovala všechny prostředky a rozsahy, kterým by mohl uživatel někdy udělit oprávnění.
 
 ## <a name="migrating-from-resource-ids-to-scopes"></a>Migrace z ID prostředků do oborů
 
-### <a name="authenticate-and-request-authorization-for-all-permissions-on-first-use"></a>Ověření a vyžádání autorizace pro všechna oprávnění při prvním použití
+### <a name="authenticate-and-request-authorization-for-all-permissions-on-first-use"></a>Ověřování a vyžádat autorizaci pro všechna oprávnění při prvním použití
 
-Pokud aktuálně používáte ADAL a nepotřebujete použít přírůstkový souhlas, nejjednodušší způsob, jak začít používat `acquireToken` MSAL `AcquireTokenParameter` je podat žádost pomocí nového objektu a nastavení hodnoty ID prostředku.
+Pokud aktuálně používáte ADAL a nepotřebujete používat přírůstkový souhlas, nejjednodušší způsob, jak začít používat MSAL, je vytvořit `acquireToken` požadavek s použitím nového `AcquireTokenParameter` objektu a nastavením hodnoty ID prostředku.
 
 > [!CAUTION]
-> Není možné nastavit obory i ID prostředku. Pokus o nastavení obou bude `IllegalArgumentException`mít za následek .
+> Není možné nastavit oba obory a ID prostředku. Pokus o nastavení obou výsledků bude `IllegalArgumentException`.
 
- Výsledkem bude stejné chování v1, které se používá. Všechna oprávnění požadovaná při registraci aplikace jsou požadována od uživatele během jeho první interakce.
+ Výsledkem bude stejné chování V1, které jste použili. Všechna oprávnění požadovaná v registraci vaší aplikace jsou během první interakce požadována od uživatele.
 
-### <a name="authenticate-and-request-permissions-only-as-needed"></a>Ověřování a vyžádání oprávnění pouze podle potřeby
+### <a name="authenticate-and-request-permissions-only-as-needed"></a>Ověření a vyžádání oprávnění pouze podle potřeby
 
-Pokud chcete využít výhod přírůstkového souhlasu, vytvořte seznam oprávnění (oborů), která vaše aplikace používá z registrace aplikace, a uspořádejte je do dvou seznamů na základě:
+Pokud chcete využít výhod přírůstkového souhlasu, vytvořte seznam oprávnění (oborů), které vaše aplikace používá k registraci vaší aplikace, a uspořádejte je do dvou seznamů na základě:
 
-- Jaké obory chcete požádat během první interakce uživatele s vaší aplikací během přihlášení.
-- Oprávnění, která jsou přidružena k důležité funkci vaší aplikace, která budete muset také vysvětlit uživateli.
+- Které obory si chcete během první interakce uživatele s vaší aplikací během přihlašování vyžádat.
+- Oprávnění, která jsou přidružená k důležité funkci aplikace, kterou budete muset také vysvětlit uživateli.
 
-Po uspořádání oborů uspořádejte každý seznam, podle kterého prostředek (API) chcete požádat o token. Stejně jako všechny ostatní obory, které chcete, aby uživatel schválil současně.
+Po uspořádání oborů uspořádejte jednotlivé seznamy podle toho, podle kterého prostředku (API) chcete požádat o token. Stejně jako všechny ostatní obory, které chcete uživateli autorizovat.
 
-Parametry objekt použitý k požadavku na MSAL podporuje:
+Objekt Parameters, který slouží k vytvoření požadavku na MSAL, podporuje:
 
 - `Scope`: Seznam oborů, pro které chcete požádat o autorizaci a získat přístupový token.
-- `ExtraScopesToConsent`: Další seznam oborů, pro které chcete požádat o autorizaci, když požadujete přístupový token pro jiný prostředek. Tento seznam oborů umožňuje minimalizovat počet, kolikrát je třeba požádat o autorizaci uživatele. Což znamená méně uživatelských oprávnění nebo výzev k souhlasu.
+- `ExtraScopesToConsent`: Další seznam oborů, pro které chcete požádat o autorizaci v případě, že budete požadovat přístupový token pro jiný prostředek. Tento seznam oborů vám umožní minimalizovat počet pokusů o autorizaci uživatelů. To znamená méně výzvy k autorizaci nebo souhlasu uživatele.
 
-## <a name="migrate-from-authenticationcontext-to-publicclientapplications"></a>Migrace z AuthenticationContext do PublicClientApplications
+## <a name="migrate-from-authenticationcontext-to-publicclientapplications"></a>Migrace z AuthenticationContext na PublicClientApplications
 
-### <a name="constructing-publicclientapplication"></a>Vytváření aplikace PublicClientApplication
+### <a name="constructing-publicclientapplication"></a>Sestavování PublicClientApplication
 
-Při použití MSAL, konkretizovat `PublicClientApplication`. Tento objekt modeluje identitu vaší aplikace a používá se k pořizovat požadavky na jeden nebo více úřadů. Pomocí tohoto objektu nakonfigurujete identitu klienta, přesměrujete identifikátor URI, výchozí autoritu, zda chcete použít prohlížeč zařízení vs. vložené webové zobrazení, úroveň protokolu a další.
+Při použití MSAL se vytváří instance `PublicClientApplication`. Tento objekt modeluje identitu vaší aplikace a slouží k provádění požadavků jednomu nebo více autoritám. Pomocí tohoto objektu nakonfigurujete identitu klienta, identifikátor URI pro přesměrování, výchozí autoritu, jestli se má používat prohlížeč zařízení vs. vložené webové zobrazení, úroveň protokolování a další.
 
-Tento objekt můžete deklarativně nakonfigurovat pomocí služby JSON, kterou zadáte jako soubor nebo uložíte jako prostředek v rámci sady APK.
+Můžete deklarativně nakonfigurovat tento objekt pomocí formátu JSON, který můžete buď zadat jako soubor, nebo Uložit jako prostředek v rámci APK.
 
-Přestože tento objekt není singleton, interně používá sdílené `Executors` pro interaktivní a tiché požadavky.
+I když tento objekt není typu Singleton, interně používá sdílené `Executors` pro interaktivní i tiché požadavky.
 
-### <a name="business-to-business"></a>Business to Business
+### <a name="business-to-business"></a>Firmy do firmy
 
-V ADAL každá organizace, které požadujete přístupové tokeny od vyžaduje samostatnou instanci `AuthenticationContext`. V MSAL, to již není požadavek. Můžete určit autoritu, od které chcete požádat o token jako součást vašeho tichého nebo interaktivního požadavku.
+V ADAL každá organizace, které požadujete přístupové tokeny, vyžaduje samostatnou instanci `AuthenticationContext`. V MSAL už to není potřeba. Můžete zadat autoritu, ze které chcete požádat o token v rámci vaší tiché nebo interaktivní žádosti.
 
-### <a name="migrate-from-authority-validation-to-known-authorities"></a>Migrace z ověření autority na známé úřady
+### <a name="migrate-from-authority-validation-to-known-authorities"></a>Migrace ověření autority na známé úřady
 
-MSAL nemá příznak pro povolení nebo zakázání ověření autority. Ověření autority je funkce v ADAL a v časných verzích MSAL, která zabraňuje váš kód v vyžádání tokenů z potenciálně škodlivé autority. MSAL nyní načte seznam úřadů známých společnosti Microsoft a sloučí tento seznam s úřady, které jste zadali v konfiguraci.
+MSAL nemá příznak pro povolení nebo zakázání ověřování autority. Ověřování autority je funkce v ADAL a v dřívějších verzích MSAL, která brání vašemu kódu v žádosti o tokeny od potenciálně škodlivé autority. MSAL nyní načte seznam autorit známých společnosti Microsoft a sloučí tento seznam s autoritami, které jste zadali v konfiguraci.
 
 > [!TIP]
-> Pokud jste uživatelem Azure Business to Consumer (B2C), znamená to, že už nemusíte zakazovat ověřování autority. Místo toho zahrňte všechny podporované zásady Azure AD B2C jako autority v konfiguraci MSAL.
+> Pokud jste uživatelem Azure Business to Consumer (B2C), znamená to, že už nemusíte ověřování autority vypínat. Místo toho Zahrňte všechny podporované zásady Azure AD B2C jako autority v konfiguraci MSAL.
 
-Pokud se pokusíte použít autoritu, která není společnosti Microsoft známa a není zahrnuta ve vaší konfiguraci, získáte . `UnknownAuthorityException`
+Pokud se pokusíte použít autoritu, která není známá na Microsoftu, a není zahrnutá do vaší konfigurace, zobrazí se `UnknownAuthorityException`.
 
 ### <a name="logging"></a>protokolování
-Nyní můžete deklarativně nakonfigurovat protokolování jako součást konfigurace, například takto:
+Nyní můžete v rámci konfigurace deklarativně nakonfigurovat protokolování, například takto:
 
  ```
  "logging": {
@@ -138,31 +138,31 @@ Nyní můžete deklarativně nakonfigurovat protokolování jako součást konfi
   }
   ```
 
-## <a name="migrate-from-userinfo-to-account"></a>Migrace z UserInfo do účtu
+## <a name="migrate-from-userinfo-to-account"></a>Migrace z UserInfo na účet
 
-V ADAL `AuthenticationResult` poskytuje `UserInfo` objekt používaný k načtení informací o ověřeném účtu. Termín "uživatel", což znamenalo lidského nebo softwarového agenta, byl použit způsobem, který ztěžoval komunikaci, že některé aplikace podporují jednoho uživatele (ať už člověka nebo softwarového agenta), který má více účtů.
+V ADAL `AuthenticationResult` poskytuje `UserInfo` objekt, který slouží k načtení informací o ověřeném účtu. Pojem "uživatel", který byl určen jako lidský nebo softwarový agent, byl použit způsobem, který bylo obtížné oznámit, že některé aplikace podporují jediného uživatele (ať už jde o lidského nebo softwarový agent) s více účty.
 
-Zvažte bankovní účet. Můžete mít více než jeden účet u více než jedné finanční instituce. Při otevření účtu vám (uživateli) budou vydána pověření, například kód PIN & karty ATM, která se používají pro přístup k zůstatku, platbám faktur a tak dále pro každý účet. Tyto pověřovací listiny lze použít pouze u finanční instituce, která je vydala.
+Uvažujte o bankovním účtu. Můžete mít více než jeden účet ve více než jedné finanční instituci. Po otevření účtu jste vy (uživatel) vystavili přihlašovací údaje, jako je například karta ATM & kód PIN, která se používá pro přístup k vašemu zůstatku, fakturaci a tak dále, pro každý účet. Tyto přihlašovací údaje se dají použít jenom na finanční instituci, která je vystavila.
 
-Analogicky, stejně jako účty u finanční instituce, účty v platformě identit Microsoft jsou přístupné pomocí pověření. Tato pověření jsou registrována nebo vydána společností Microsoft. Nebo společností Microsoft jménem organizace.
+Obdobně, jako jsou účty na finanční instituci, se k účtům na platformě Microsoft Identity přistupovaly pomocí přihlašovacích údajů. Tyto přihlašovací údaje jsou buď registrované v, nebo vydané společností Microsoft. Nebo Microsoft jménem organizace.
 
-Pokud se platforma identit společnosti Microsoft liší od finanční instituce, je v této analogii to, že platforma identit společnosti Microsoft poskytuje rámec, který uživateli umožňuje používat jeden účet a přidružená pověření pro přístup k prostředkům, do kterých patří více jednotlivců a organizací. Je to jako být schopen používat kartu vydanou jednou bankou, v další finanční instituci. To funguje, protože všechny dotyčné organizace používají platformu identit společnosti Microsoft, která umožňuje použití jednoho účtu ve více organizacích. Tady je příklad:
+V takovém případě se platforma Microsoft Identity liší od finanční instituce. v této analogii je to, že platforma Microsoft Identity poskytuje rozhraní, které umožňuje uživateli používat jeden účet a jeho přidružené přihlašovací údaje pro přístup k prostředkům, které patří více jednotlivcům a organizacím. To znamená, že je možné využít kartu vydanou jednou bankou, ale ještě jinou finanční instituci. To funguje, protože všechny příslušné organizace používají platformu Microsoft identity, která umožňuje použití jednoho účtu v různých organizacích. Tady je příklad:
 
-Sam pracuje pro Contoso.com ale spravuje virtuální počítače Azure, které patří do Fabrikam.com. Aby sam mohl spravovat fabrikamovy virtuální počítače, musí mít oprávnění k přístupu k nim. Tento přístup lze udělit přidáním Účtu Sam Fabrikam.com a udělením jeho účtu roli, která mu umožňuje pracovat s virtuálními počítači. To by se stalo s portálem Azure.
+Sam funguje pro Contoso.com, ale spravuje virtuální počítače Azure, které patří do Fabrikam.com. Aby mohl správce Sam spravovat virtuální počítače společnosti Fabrikam, musí mít oprávnění pro přístup k nim. Tento přístup je možné udělit přidáním účtu SAM do Fabrikam.com a přidělením jeho účtu roli, která mu umožní pracovat s virtuálními počítači. To se provádí s Azure Portal.
 
-Přidání Samova účtu Contoso.com jako člena Fabrikam.com by mělo za následek vytvoření nového záznamu ve službě Azure Active Directory společnosti Fabrikam.com pro Sama. Samův záznam ve službě Azure Active Directory se označuje jako objekt uživatele. V tomto případě by tento objekt uživatele směřovat zpět na objekt uživatele Sam v Contoso.com. Sam je Fabrikam uživatelský objekt je místní reprezentace Sam, a bude použit k ukládání informací o účtu spojené se Sam v kontextu Fabrikam.com. V Contoso.com, Sam titul je Senior DevOps Konzultant. Ve společnosti Fabrikam je Samův titul Contractor-Virtual Machines. V Contoso.com Sam není zodpovědný, ani oprávněn, ke správě virtuálních počítačů. V Fabrikam.com je to jeho jediná práce. Přesto Sam má stále jen jednu sadu pověření sledovat, které jsou pověření vydané Contoso.com.
+Když se účet Contoso.com účtu SAM přidá jako člen služby Fabrikam.com, vytvoří se nový záznam v Azure Active Directory Fabrikam. com pro Sam. Záznam Sam v Azure Active Directory je známý jako objekt uživatele. V takovém případě by objekt uživatele odkazoval zpátky na objekt uživatele Sam v Contoso.com. Objekt uživatele Fabrikam Sam je místní reprezentace Sam a slouží k ukládání informací o účtu přidruženém k Sam v kontextu Fabrikam.com. V Contoso.com je název SAM hlavní DevOps konzultant. Ve společnosti Fabrikam je název SAM dodavatelem Virtual Machines. V Contoso.com není pro správu virtuálních počítačů správce Sam zodpovědný ani autorizovaný. V Fabrikam.com se jedná o jeho jedinou pracovní funkci. I když Sam stále obsahuje jenom jednu sadu přihlašovacích údajů, která bude sledovat, které přihlašovací údaje vystavil Contoso.com.
 
-Po úspěšném `acquireToken` volání se zobrazí odkaz na `IAccount` objekt, který lze `acquireTokenSilent` použít v pozdějších požadavcích.
+Po úspěšném `acquireToken` volání se zobrazí odkaz na `IAccount` objekt, který lze použít v pozdějších `acquireTokenSilent` požadavcích.
 
-### <a name="imultitenantaccount"></a>iVíceklientského účtu
+### <a name="imultitenantaccount"></a>IMultiTenantAccount
 
-Pokud máte aplikaci, která přistupuje k deklaracím o účtu od `IAccount` každého `IMultiTenantAccount`z klientů, ve kterém je účet reprezentován, můžete přetypovat objekty do . Toto rozhraní poskytuje `ITenantProfiles`mapu , zakódované podle ID klienta, která umožňuje přístup k deklaracím, které patří do účtu v každém z klientů, od kterých jste požadovali token, vzhledem k aktuálnímu účtu.
+Pokud máte aplikaci, která přistupuje k deklaracím účtu ze všech tenantů, ve kterých je účet zastoupený, můžete objekty přetypovat `IAccount` na. `IMultiTenantAccount` Toto rozhraní poskytuje mapu `ITenantProfiles`podle ID tenanta, která umožňuje přístup k deklaracím, které patří k účtu v každém z klientů, od kterých jste si vyžádali token, vzhledem k aktuálnímu účtu.
 
-Nároky v kořenovém adresáři `IAccount` a `IMultiTenantAccount` vždy obsahují nároky od domácího nájemce. Pokud jste ještě neprovedli žádost o token v rámci domácího tenanta, bude tato kolekce prázdná.
+Deklarace identity v kořenovém adresáři `IAccount` a `IMultiTenantAccount` vždy obsahují deklarace z domovského tenanta. Pokud jste ještě nevytvořili žádost o token v rámci domovského tenanta, tato kolekce bude prázdná.
 
 ## <a name="other-changes"></a>Další změny
 
-### <a name="use-the-new-authenticationcallback"></a>Použití nového zpětného volání Authentication
+### <a name="use-the-new-authenticationcallback"></a>Použití nového AuthenticationCallback
 
 ```java
 // Existing ADAL Interface
@@ -233,28 +233,28 @@ public interface SilentAuthenticationCallback {
 
 ```
 
-## <a name="migrate-to-the-new-exceptions"></a>Migrace na nové výjimky
+## <a name="migrate-to-the-new-exceptions"></a>Migrovat na nové výjimky
 
-V ADAL existuje jeden typ výjimky , `AuthenticationException`který zahrnuje metodu pro načtení hodnoty `ADALError` výčtu.
-V MSAL existuje hierarchie výjimek a každý má vlastní sadu přidružených specifických kódů chyb.
+V ADAL existuje jeden typ výjimky `AuthenticationException`, která obsahuje metodu pro načtení hodnoty `ADALError` výčtu.
+V MSAL existuje hierarchie výjimek a každá má vlastní sadu souvisejících specifických kódů chyb.
 
 Seznam výjimek MSAL
 
 |Výjimka  | Popis  |
 |---------|---------|
-| `MsalException`     | Výchozí zaškrtnutá výjimka vyvolána MSAL.  |
-| `MsalClientException`     | Vyvolána, pokud je chyba na straně klienta. |
-| `MsalArgumentException`     | Vyvolána, pokud jeden nebo více argumentů vstupů jsou neplatné. |
-| `MsalClientException`     | Vyvolána, pokud je chyba na straně klienta. |
+| `MsalException`     | Výchozí vyzkoušená výjimka vyvolaná nástrojem MSAL.  |
+| `MsalClientException`     | Vyvolána, pokud se jedná o chybu na straně klienta. |
+| `MsalArgumentException`     | Vyvoláno, pokud je jeden nebo více argumentů vstupů neplatných. |
+| `MsalClientException`     | Vyvolána, pokud se jedná o chybu na straně klienta. |
 | `MsalServiceException`     | Vyvolána, pokud je chyba na straně serveru. |
 | `MsalUserCancelException`     | Vyvolána, pokud uživatel zrušil tok ověřování.  |
-| `MsalUiRequiredException`     | Vyvolána, pokud token nelze aktualizovat tiše.  |
-| `MsalDeclinedScopeException`     | Vyvolána, pokud jeden nebo více požadovaných oborů byly odmítnuty serverem.  |
-| `MsalIntuneAppProtectionPolicyRequiredException` | Vyvolána, pokud má prostředek povolenou zásadu ochrany MAMCA. |
+| `MsalUiRequiredException`     | Vyvoláno, pokud token nelze aktualizovat tiše.  |
+| `MsalDeclinedScopeException`     | Vyvoláno, pokud server odmítl jeden nebo více požadovaných oborů.  |
+| `MsalIntuneAppProtectionPolicyRequiredException` | Vyvoláno, pokud má prostředek zapnutou zásadu ochrany MAMCA. |
 
-### <a name="adalerror-to-msalexception-errorcode"></a>ADALError Code aDALErrorError
+### <a name="adalerror-to-msalexception-errorcode"></a>ADALError kód chyby MsalException
 
-### <a name="adal-logging-to-msal-logging"></a>Protokolování ADAL do protokolování MSAL
+### <a name="adal-logging-to-msal-logging"></a>Protokolování ADAL k protokolování MSAL
 
 ```java
 // Legacy Interface

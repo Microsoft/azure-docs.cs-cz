@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace aplikace iPass SmartConnect pro automatické zřizování uživatelů pomocí služby Azure Active Directory | Dokumenty společnosti Microsoft'
-description: Přečtěte si, jak nakonfigurovat Službu Azure Active Directory tak, aby automaticky zřašovala a odpojila uživatelské účty pro iPass SmartConnect.
+title: 'Kurz: Konfigurace iPass SmartConnect pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
+description: Naučte se, jak nakonfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro iPass SmartConnect.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,136 +16,136 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: fb3a5d03f390b88f9856f03bdc97a35b845874ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77057513"
 ---
-# <a name="tutorial-configure-ipass-smartconnect-for-automatic-user-provisioning"></a>Kurz: Konfigurace aplikace iPass SmartConnect pro automatické zřizování uživatelů
+# <a name="tutorial-configure-ipass-smartconnect-for-automatic-user-provisioning"></a>Kurz: Konfigurace iPass SmartConnect pro Automatické zřizování uživatelů
 
-Cílem tohoto kurzu je demonstrovat kroky, které je třeba provést v iPass SmartConnect a Azure Active Directory (Azure AD) nakonfigurovat Azure AD tak, aby automaticky zřizování a de-zřizování uživatelů nebo skupin pro iPass SmartConnect.
+Cílem tohoto kurzu je Ukázat kroky, které je třeba provést v iPass SmartConnect a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD tak, aby automaticky zřídily a zrušily zřizování uživatelů a/nebo skupin pro iPass SmartConnect.
 
 > [!NOTE]
-> Tento kurz popisuje konektor postavený na nad službou zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá, jak funguje, a nejčastější dotazy, najdete [v tématu Automatizace zřizování uživatelů a zrušení zřizování aplikací SaaS pomocí služby Azure Active Directory](../app-provisioning/user-provisioning.md).
+> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
-> Tento konektor je aktuálně ve verzi Public Preview. Další informace o obecných podmínkách použití Microsoft Azure pro funkce preview najdete v [tématu Doplňkové podmínky použití pro Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že již máte následující požadavky:
+Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
 * Tenanta Azure AD.
-* [Tenant iPass SmartConnect](https://www.ipass.com/buy-ipass/).
+* [Tenant IPASS SmartConnect](https://www.ipass.com/buy-ipass/).
 * Uživatelský účet v iPass SmartConnect s oprávněními správce.
 
 ## <a name="assigning-users-to-ipass-smartconnect"></a>Přiřazení uživatelů k iPass SmartConnect
 
-Azure Active Directory používá koncept s názvem *přiřazení* k určení, kteří uživatelé by měli získat přístup k vybraným aplikacím. V kontextu automatickézřižené zřizování uživatelů jsou synchronizovány pouze uživatelé nebo skupiny, které byly přiřazeny k aplikaci ve službě Azure AD.
+Azure Active Directory používá koncept nazvaný *přiřazení* k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelů se synchronizují jenom uživatelé a skupiny, které jsou přiřazené k aplikaci v Azure AD.
 
-Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé nebo skupiny ve službě Azure AD potřebují přístup k iPass SmartConnect. Jakmile se rozhodnete, můžete přiřadit tyto uživatele a / nebo skupiny k iPass SmartConnect podle pokynů zde:
+Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé a skupiny ve službě Azure AD potřebují přístup k iPass SmartConnect. Po rozhodnutí můžete přiřadit tyto uživatele nebo skupiny k iPass SmartConnect podle pokynů uvedených tady:
 * [Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-ipass-smartconnect"></a>Důležité tipy pro přiřazení uživatelů do aplikace iPass SmartConnect
+## <a name="important-tips-for-assigning-users-to-ipass-smartconnect"></a>Důležité tipy pro přiřazení uživatelů k iPass SmartConnect
 
-* Doporučuje se, aby jeden uživatel Azure AD je přiřazen k iPass SmartConnect k testování konfigurace automatického zřizování uživatelů. Další uživatelé a/nebo skupiny mohou být přiřazeny později.
+* Doporučujeme, abyste k testování automatické konfigurace zřizování uživatelů přiřadili jediného uživatele Azure AD, který je přiřazený k iPass SmartConnect. Další uživatele a skupiny můžete přiřadit později.
 
-* Při přiřazování uživatele k aplikaci iPass SmartConnect musíte v dialogovém okně přiřazení vybrat libovolnou platnou roli specifickou pro aplikaci (pokud je k dispozici). Uživatelé s rolí **Výchozí přístup** jsou z zřizování vyloučeni.
+* Když přiřadíte uživatele k iPass SmartConnect, musíte v dialogovém okně přiřazení vybrat libovolnou platnou roli specifickou pro aplikaci (Pokud je dostupná). Uživatelé s **výchozí rolí přístupu** se z zřizování vylučují.
 
 ## <a name="setup-ipass-smartconnect-for-provisioning"></a>Nastavení iPass SmartConnect pro zřizování
 
-Před konfigurací iPass SmartConnect pro automatické zřizování uživatelů pomocí Azure AD budete muset načíst informace o konfiguraci z admin konzole iPass SmartConnect:
+Před konfigurací iPass SmartConnect pro Automatické zřizování uživatelů pomocí Azure AD bude nutné načíst informace o konfiguraci z konzoly pro správu iPass SmartConnect:
 
-1. Chcete-li získat nosný token, který je potřebný k ověření proti vašemu koncovému bodu iPass SmartConnect SCIM, podívejte se na první čas, kdy jste nastavili iPass SmartConnect, protože tato hodnota je poskytována pouze tehdy. 
-2. Pokud nemáte žeton nosiče, oslovte [tým podpory iPass SmartConnect,](mailto:help@ipass.com) abyste získali nový.
+1. Pokud chcete načíst nosný token, který je potřeba k ověření vůči iPassmu koncovému bodu SmartConnect, přečtěte si velmi poprvé, co nastavíte iPass SmartConnect, protože tato hodnota je poskytována pouze potom. 
+2. Pokud nemáte nosný token, přihlaste se k [IPASS týmu podpory SmartConnect](mailto:help@ipass.com) , abyste načetli nový.
 
-## <a name="add-ipass-smartconnect-from-the-gallery"></a>Přidání iPass SmartConnect z galerie
+## <a name="add-ipass-smartconnect-from-the-gallery"></a>Přidání iPass SmartConnect z Galerie
 
-Chcete-li nakonfigurovat iPass SmartConnect pro automatické zřizování uživatelů pomocí Azure AD, musíte přidat iPass SmartConnect z galerie aplikací Azure AD do seznamu spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat iPass SmartConnect pro Automatické zřizování uživatelů pomocí Azure AD, musíte přidat iPass SmartConnect z Galerie aplikací Azure AD do svého seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat iPass SmartConnect z galerie aplikací Azure AD, proveďte následující kroky:**
+**Pokud chcete přidat iPass SmartConnect z Galerie aplikací Azure AD, proveďte následující kroky:**
 
-1. Na **[webu Azure Portal](https://portal.azure.com)** vyberte na levém navigačním panelu **položku Azure Active Directory**.
+1. V **[Azure Portal](https://portal.azure.com)** v levém navigačním panelu vyberte možnost **Azure Active Directory**.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte na **podnikové aplikace**a vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
-    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
+    ![Okno podnikové aplikace](common/enterprise-applications.png)
 
 3. Chcete-li přidat novou aplikaci, vyberte tlačítko **Nová aplikace** v horní části podokna.
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **iPass SmartConnect**, vyberte **iPass SmartConnect** v panelu výsledků a pak klikněte na tlačítko **Přidat** a přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **IPASS SmartConnect**, na panelu výsledků vyberte **IPASS SmartConnect** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![iPass SmartConnect v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configuring-automatic-user-provisioning-to-ipass-smartconnect"></a>Konfigurace automatického zřizování uživatelů pro iPass SmartConnect 
 
-Tato část vás provede kroky konfigurace služby zřizování Azure AD k vytvoření, aktualizaci a zakázání uživatelů nebo skupin v iPass SmartConnect na základě přiřazení uživatelů a/nebo skupin ve službě Azure AD.
+V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v iPass SmartConnect na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
 > [!TIP]
->  Můžete se také rozhodnout povolit jednotné přihlašování na bázi SAML pro BitaBIZ podle pokynů uvedených v [tutoriálu iPass SmartConnect Single sign-on](ipasssmartconnect-tutorial.md). Jednotné přihlašování lze nakonfigurovat nezávisle na automatické zřizování uživatelů, i když tyto dvě funkce kompliment navzájem.
+>  Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro BitaBIZ podle pokynů uvedených v [kurzu IPASS SmartConnect jednotného přihlašování](ipasssmartconnect-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když se tyto dvě funkce navzájem doplňují.
 
-### <a name="to-configure-automatic-user-provisioning-for-ipass-smartconnect-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro iPass SmartConnect v Azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-ipass-smartconnect-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro iPass SmartConnect ve službě Azure AD:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **Všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **iPass SmartConnect**.
+2. V seznamu aplikace vyberte možnost **IPASS SmartConnect**.
 
-    ![Odkaz iPass SmartConnect v seznamu Aplikací](common/all-applications.png)
+    ![Odkaz iPass SmartConnect v seznamu aplikací](common/all-applications.png)
 
-3. Vyberte kartu **Zřizování.**
+3. Vyberte kartu **zřizování** .
 
-    ![Karta Zřizování](common/provisioning.png)
+    ![Karta zřizování](common/provisioning.png)
 
-4. Nastavte **režim zřizování** na **automatické**.
+4. Nastavte **režim zřizování** na **automaticky**.
 
-    ![Karta Zřizování](common/provisioning-automatic.png)
+    ![Karta zřizování](common/provisioning-automatic.png)
 
-5. V části **Pověření správce** `https://openmobile.ipass.com/moservices/scim/v1` zadejte adresu **URL klienta**. Zadejte žeton nosiče načtený dříve v **tajném tokenu**. Kliknutím na **Testovat připojení** zajistíte, že se Azure AD může připojit k iPass SmartConnect. Pokud se připojení nezdaří, ujistěte se, že váš účet iPass SmartConnect má oprávnění správce a zkuste to znovu.
+5. V části **přihlašovací údaje správce** zadejte `https://openmobile.ipass.com/moservices/scim/v1` **adresu URL tenanta**. Zadejte token nosiče načtený dříve v **tajném tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k IPASS SmartConnect. Pokud se připojení nepovede, ujistěte se, že účet iPass SmartConnect má oprávnění správce, a zkuste to znovu.
 
-    ![Adresa URL klienta + token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Adresa URL tenanta + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Do pole **E-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, která by měla dostávat oznámení o chybách při zřizování, a zaškrtněte políčko – **Odeslat e-mailové oznámení, když dojde k chybě**.
+6. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
 
     ![E-mail s oznámením](common/provisioning-notification-email.png)
 
 7. Klikněte na **Uložit**.
 
-8. V části Mapování vyberte **Synchronizovat uživatele služby Azure Active Directory s iPass SmartConnect**. **Mappings**
+8. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory uživatele a IPASS SmartConnect**.
 
-    ![Mapování uživatelů aplikace iPass SmartConnect](media/ipass-smartconnect-provisioning-tutorial/usermapping.png)
+    ![Mapování uživatelů iPass SmartConnect](media/ipass-smartconnect-provisioning-tutorial/usermapping.png)
 
-9. Zkontrolujte atributy uživatele, které jsou synchronizovány z Azure AD na iPass SmartConnect v části **Mapování atributů.** Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelským účtům v iPass SmartConnect pro operace aktualizace. Chcete-li potvrdit všechny změny, vyberte tlačítko **Uložit.**
+9. Zkontrolujte atributy uživatele synchronizované z Azure AD do iPass SmartConnect v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v IPASS SmartConnect pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Mapování uživatelů aplikace iPass SmartConnect](media/ipass-smartconnect-provisioning-tutorial/userattribute.png)
+    ![Mapování uživatelů iPass SmartConnect](media/ipass-smartconnect-provisioning-tutorial/userattribute.png)
 
 
-10. Chcete-li konfigurovat filtry oborů, naleznete v následujících pokynech uvedených v [kurzu filtru oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+10. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-11. Chcete-li povolit službu zřizování Azure AD pro iPass SmartConnect, změňte **stav zřizování** **na Zapnuto** v části **Nastavení.**
+11. Pokud chcete povolit službu Azure AD Provisioning pro iPass SmartConnect, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
-    ![Stav zřizování zapnutý](common/provisioning-toggle-on.png)
+    ![Zapnutý stav zřizování](common/provisioning-toggle-on.png)
 
-12. Definujte uživatele a /nebo skupiny, které chcete zřídit iPass SmartConnect výběrem požadovaných hodnot v **rozsahu** v sekci **Nastavení.**
+12. Určete uživatele nebo skupiny, které chcete zřídit pro iPass SmartConnect, a to tak, že v části **Nastavení** vyberete požadované hodnoty v **oboru** .
 
-    ![Obor zřizování](common/provisioning-scope.png)
+    ![Rozsah zřizování](common/provisioning-scope.png)
 
-13. Až budete připraveni k zřízení, klikněte na **Uložit**.
+13. Až budete připraveni zřídit, klikněte na **Uložit**.
 
-    ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
+    ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
 
-Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení.** Počáteční synchronizace trvá déle než následné synchronizace, ke kterým dochází přibližně každých 40 minut tak dlouho, dokud je spuštěna služba zřizování Azure AD. Část **Podrobnosti synchronizace** můžete použít ke sledování průběhu a sledování odkazů na sestavu aktivit zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD na iPass SmartConnect.
+Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na sestavu aktivit zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD na IPASS SmartConnect.
 
-Další informace o tom, jak číst protokoly zřizování Azure AD, naleznete [v tématu Vytváření sestav na automatické zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Omezení konektoru
 
-* iPass SmartConnect přijímá pouze uživatelská jména, která mají své domény registrované v admin konzoli iPass SmartConnect.  
+* iPass SmartConnect přijímá jenom uživatelská jména, která mají své domény zaregistrované v konzole pro správu iPass SmartConnect.  
 
 ## <a name="additional-resources"></a>Další zdroje
 
@@ -154,4 +154,4 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, naleznete [
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy o aktivitě zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)

@@ -9,17 +9,17 @@ ms.date: 06/05/2018
 ms.author: jaboes
 ms.custom: include file
 ms.openlocfilehash: 126b488d2bb59e2904bee646301240efe6fe71a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76037944"
 ---
-Tento dokument vás provede rozdíly mezi spravovanými a nespravovanými disky při použití šablon Azure Resource Manager u zřizování virtuálních počítačů. Příklady vám pomohou aktualizovat existující šablony, které používají nespravované disky na spravované disky. Pro referenci používáme jako vodítko šablonu [101-vm-simple-windows.](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) Šablonu můžete zobrazit pomocí [spravovaných disků](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json) i předchozí verze pomocí [nespravovaných disků,](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) pokud je chcete přímo porovnat.
+Tento dokument vás provede rozdíly mezi spravovanými a nespravovanými disky při použití šablon Azure Resource Manager k zřizování virtuálních počítačů. Příklady vám pomůžou aktualizovat existující šablony, které používají nespravované disky na spravované disky. Pro referenci používáme jako vodítko šablonu [101-VM-Simple-Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) . Můžete zobrazit šablonu pomocí [spravovaných disků](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json) i předchozí verze s použitím [nespravovaných disků](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) , pokud byste je chtěli přímo porovnat.
 
-## <a name="unmanaged-disks-template-formatting"></a>Formátování šablony nespravované disky
+## <a name="unmanaged-disks-template-formatting"></a>Formátování šablony nespravovaných disků
 
-Chcete-li začít, podívejme se na to, jak jsou nasazeny nespravované disky. Při vytváření nespravovaných disků potřebujete účet úložiště pro uložení souborů v pevném disku. Můžete vytvořit nový účet úložiště nebo použít účet, který již existuje. V tomto článku se zobrazí, jak vytvořit nový účet úložiště. Vytvořte prostředek účtu úložiště v bloku prostředků, jak je znázorněno níže.
+Začněte podíváme se na to, jak jsou nasazené nespravované disky. Při vytváření nespravovaných disků potřebujete účet úložiště pro uchovávání souborů VHD. Můžete vytvořit nový účet úložiště, nebo použít jiný, který už existuje. V tomto článku se dozvíte, jak vytvořit nový účet úložiště. Vytvořte prostředek účtu úložiště v bloku Resources, jak je znázorněno níže.
 
 ```json
 {
@@ -35,7 +35,7 @@ Chcete-li začít, podívejme se na to, jak jsou nasazeny nespravované disky. P
 }
 ```
 
-V rámci objektu virtuálního počítače přidejte závislost na účtu úložiště, abyste zajistili, že se vytvoří před virtuálním počítačem. V `storageProfile` části zadejte úplný identifikátor URI umístění virtuálního pevného disku, který odkazuje na účet úložiště a je potřebný pro disk operačního systému a všechny datové disky.
+V rámci objektu virtuálního počítače přidejte závislost na účet úložiště, abyste měli jistotu, že se vytvoří před virtuálním počítačem. V `storageProfile` části zadejte úplný identifikátor URI umístění virtuálního pevného disku, který odkazuje na účet úložiště a který je nutný pro disk s operačním systémem a všechny datové disky.
 
 ```json
 {
@@ -83,27 +83,27 @@ V rámci objektu virtuálního počítače přidejte závislost na účtu úlož
 }
 ```
 
-## <a name="managed-disks-template-formatting"></a>Formátování šablony spravovaných disků
+## <a name="managed-disks-template-formatting"></a>Formátování šablon spravovaných disků
 
-Se spravovanými disky Azure se disk stane prostředkem nejvyšší úrovně a už nevyžaduje, aby uživatel vytvořil účet úložiště. Spravované disky byly nejprve vystaveny ve verzi `2016-04-30-preview` rozhraní API, jsou k dispozici ve všech následujících verzích rozhraní API a jsou nyní výchozím typem disku. Následující části procházejí výchozím nastavením a podrobně popisují, jak disky dále přizpůsobit.
+V případě Azure Managed Disks se disk stane prostředkem nejvyšší úrovně a již nepotřebuje, aby uživatel vytvořil účet úložiště. Spravované disky se nejdřív vystavily `2016-04-30-preview` ve verzi rozhraní API, jsou dostupné ve všech dalších verzích rozhraní API a teď jsou výchozí typ disku. V následujících částech se dozvíte o výchozím nastavení a podrobné informace o tom, jak tyto disky dále upravovat.
 
 > [!NOTE]
-> Doporučujese použít verzi rozhraní API `2016-04-30-preview` později, než `2016-04-30-preview` `2017-03-30`jako došlo k přerušení změny mezi a .
+> Doporučuje se použít verzi rozhraní API novější než `2016-04-30-preview` v případě, že došlo k narušení změn `2016-04-30-preview` mezi `2017-03-30`a.
 >
 >
 
 ### <a name="default-managed-disk-settings"></a>Výchozí nastavení spravovaného disku
 
-Chcete-li vytvořit virtuální virtuální počítače se spravovanými disky, už nemusíte vytvářet prostředek účtu úložiště. Odkazující na příklad šablony níže, existují určité rozdíly od předchozích nemanged disk příklady na vědomí:
+Pokud chcete vytvořit virtuální počítač se spravovanými disky, nebudete už muset vytvořit prostředek účtu úložiště. Odkazy na níže uvedený příklad šablony obsahuje několik rozdílů oproti předchozím příkladům unmanged disku, které byste si poznamenali:
 
-- Jedná `apiVersion` se o verzi, která podporuje spravované disky.
-- `osDisk`a `dataDisks` již neodkazují na konkrétní identifikátor URI pro virtuální pevný disk.
-- Při nasazování bez zadání dalších vlastností bude disk používat typ úložiště na základě velikosti virtuálního počítače. Například pokud používáte velikost virtuálního počítače, který podporuje úložiště premium (velikosti s "s" v jejich názvu, jako je Standard_D2s_v3), pak premium disky budou nakonfigurovány ve výchozím nastavení. Toto nastavení můžete změnit pomocí nastavení sku disku a určit typ úložiště.
-- Pokud není zadán žádný název disku, přebírá `<VMName>_OsDisk_1_<randomstring>` formát pro disk `<VMName>_disk<#>_<randomstring>` operačního systému a pro každý datový disk.
-  - Pokud se virtuální modul vytváří z vlastní bitové kopie, načte se výchozí nastavení pro typ účtu úložiště a název disku z vlastností disku definovaných ve vlastním prostředku bitové kopie. Ty mohou být přepsány zadáním hodnot pro tyto v šabloně.
-- Ve výchozím nastavení je šifrování disku Azure zakázáno.
-- Ve výchozím nastavení je ukládání disku do mezipaměti pro disk operačního systému čtení a zápis a žádné pro datové disky.
-- V níže uvedeném příkladu je stále závislost účtu úložiště, i když je to pouze pro ukládání diagnostiky a není potřeba pro diskové úložiště.
+- `apiVersion` Je verze, která podporuje spravované disky.
+- `osDisk`a `dataDisks` už neodkazuje na konkrétní identifikátor URI pro virtuální pevný disk.
+- Při nasazování bez zadání dalších vlastností disk použije typ úložiště na základě velikosti virtuálního počítače. Pokud například používáte velikost virtuálního počítače, která podporuje Premium Storage (velikosti s "s" v názvu, například Standard_D2s_v3), budou standardně nakonfigurované prémiové disky. Tuto změnu můžete změnit pomocí nastavení skladové položky (SKU) disku pro určení typu úložiště.
+- Pokud není zadaný žádný název disku, bude mít formát `<VMName>_OsDisk_1_<randomstring>` pro disk s operačním systémem a `<VMName>_disk<#>_<randomstring>` pro každý datový disk.
+  - Pokud se virtuální počítač vytváří z vlastní image, výchozí nastavení pro typ účtu úložiště a název disku se načtou z vlastností disku definovaných v prostředku vlastní image. Ty mohou být přepsány zadáním hodnot pro tyto hodnoty v šabloně.
+- Ve výchozím nastavení je služba Azure Disk Encryption zakázaná.
+- Ve výchozím nastavení je ukládání do mezipaměti disku pro disk s operačním systémem nastaveno na čtení a zápis a pro datové disky není k dispozici.
+- V následujícím příkladu je stále závislá na účtu úložiště, ale je to jenom pro úložiště diagnostiky a není potřeba pro úložiště na disku.
 
 ```json
 {
@@ -144,7 +144,7 @@ Chcete-li vytvořit virtuální virtuální počítače se spravovanými disky, 
 
 ### <a name="using-a-top-level-managed-disk-resource"></a>Použití prostředku spravovaného disku nejvyšší úrovně
 
-Jako alternativu k určení konfigurace disku v objektu virtuálního počítače můžete vytvořit prostředek disku nejvyšší úrovně a připojit jej jako součást vytváření virtuálního počítače. Můžete například vytvořit diskový prostředek následujícím způsobem, který se použije jako datový disk.
+Jako alternativu k zadání konfigurace disku v objektu virtuálního počítače můžete vytvořit diskový prostředek na nejvyšší úrovni a připojit ho jako součást vytváření virtuálního počítače. Například můžete vytvořit prostředek disku následujícím způsobem, který se použije jako datový disk.
 
 ```json
 {
@@ -164,7 +164,7 @@ Jako alternativu k určení konfigurace disku v objektu virtuálního počítač
 }
 ```
 
-V rámci objektu virtuálního počítače odkazovat na objekt disku, který má být připojen. Určení ID prostředku spravovaného disku vytvořeného `managedDisk` ve vlastnosti umožňuje připojení disku při vytvoření virtuálního počítače. Pro `apiVersion` prostředek virtuálního virtuálního `2017-03-30`min. je nastavena na . Závislost na prostředku disku je přidána, aby bylo zajištěno, že je úspěšně vytvořen před vytvořením virtuálního počítače. 
+V rámci objektu virtuálního počítače odkazujte na objekt disku, který se má připojit. Zadáním ID prostředku spravovaného disku vytvořeného ve `managedDisk` vlastnosti umožníte vytvoření přílohy disku jako virtuálního počítače. `apiVersion` Pro prostředek virtuálního počítače je nastavená na `2017-03-30`. Přidala se závislost na prostředku disku, aby se zajistilo jejich úspěšné vytvoření před vytvořením virtuálního počítače. 
 
 ```json
 {
@@ -207,9 +207,9 @@ V rámci objektu virtuálního počítače odkazovat na objekt disku, který má
 }
 ```
 
-### <a name="create-managed-availability-sets-with-vms-using-managed-disks"></a>Vytváření spravovaných sad dostupnosti pomocí virtuálních počítačů pomocí spravovaných disků
+### <a name="create-managed-availability-sets-with-vms-using-managed-disks"></a>Vytvoření spravovaných skupin dostupnosti pomocí virtuálních počítačů pomocí spravovaných disků
 
-Chcete-li vytvořit sady spravované dostupnosti pomocí virtuálních počítačů pomocí spravovaných disků, přidejte `sku` objekt do prostředku sady dostupnosti a nastavte `name` vlastnost na `Aligned`. Tato vlastnost zajišťuje, že disky pro každý virtuální počítače jsou dostatečně izolované od sebe navzájem, aby se zabránilo jednotlivé body selhání. Všimněte si `apiVersion` také, že pro `2018-10-01`zdroj pro dostupnost nastavit prostředek .
+Pokud chcete vytvořit spravované skupiny dostupnosti s virtuálními počítači pomocí spravovaných `sku` disků, přidejte objekt do prostředku skupiny dostupnosti a `name` nastavte vlastnost `Aligned`na. Tato vlastnost zajišťuje, aby byly disky pro každý virtuální počítač dostatečně izolované od sebe navzájem, aby se předešlo jednomu bodu selhání. Všimněte si také, `apiVersion` že u prostředku skupiny dostupnosti je nastavena na `2018-10-01`hodnotu.
 
 ```json
 {
@@ -227,14 +227,14 @@ Chcete-li vytvořit sady spravované dostupnosti pomocí virtuálních počíta�
 }
 ```
 
-### <a name="standard-ssd-disks"></a>Standardní Disky SSD
+### <a name="standard-ssd-disks"></a>SSD úrovně Standard disky
 
-Níže jsou uvedeny parametry potřebné v šabloně Správce prostředků k vytvoření standardních disků SSD:
+Níže jsou uvedeny parametry, které jsou potřeba v šabloně Správce prostředků k vytvoření SSD úrovně Standard disků:
 
-* *apiVersion* pro Microsoft.Compute musí `2018-04-01` být nastavena jako (nebo novější)
-* Zadejte *managedDisk.storageAccountType* jako`StandardSSD_LRS`
+* *apiVersion* pro Microsoft. COMPUTE musí být nastavené jako `2018-04-01` (nebo novější).
+* Zadejte *managedDisk. storageAccountType* jako`StandardSSD_LRS`
 
-Následující příklad ukazuje oddíl *properties.storageProfile.osDisk* pro virtuální počítače, který používá standardní disky SSD:
+Následující příklad ukazuje oddíl *Properties. storageProfile. osDisk* pro virtuální počítač, který používá SSD úrovně Standard disky:
 
 ```json
 "osDisk": {
@@ -248,18 +248,18 @@ Následující příklad ukazuje oddíl *properties.storageProfile.osDisk* pro v
 }
 ```
 
-Úplný příklad šablony, jak vytvořit standardní disk SSD se šablonou, najdete v [tématu Vytvoření virtuálního počítače z bitové kopie systému Windows se standardními datovými disky SSD](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/).
+Kompletní příklad vytvoření SSD úrovně Standard disku pomocí šablony najdete v tématu [Vytvoření virtuálního počítače z image Windows s datovými disky SSD úrovně Standard](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/).
 
-### <a name="additional-scenarios-and-customizations"></a>Další scénáře a vlastní nastavení
+### <a name="additional-scenarios-and-customizations"></a>Další scénáře a přizpůsobení
 
-Úplné informace o specifikacích rozhraní REST API naleznete v [dokumentaci k rozhraní REST API spravovaného disku](/rest/api/manageddisks/disks/disks-create-or-update). Najdete další scénáře, stejně jako výchozí a přijatelné hodnoty, které lze odeslat do rozhraní API prostřednictvím nasazení šablony. 
+Úplné informace o specifikacích REST API najdete v [dokumentaci k vytvoření spravovaného disku REST API](/rest/api/manageddisks/disks/disks-create-or-update). Najdete v nich další scénáře a také výchozí a přijatelné hodnoty, které je možné odeslat do rozhraní API prostřednictvím nasazení šablon. 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úplné šablony, které používají spravované disky, najdete na následujících odkazech azure quickstart repo.
-    * [Virtuální modul Windows se spravovaným diskem](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
-    * [Virtuální počítač s Linuxem se spravovaným diskem](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
-* Další informace o spravovaných discích najdete v dokumentu [Přehled spravovaných disků Azure.](../articles/virtual-machines/windows/managed-disks-overview.md)
-* Projděte si referenční dokumentaci k šabloně pro prostředky virtuálních počítačů na stránce referenčního dokumentu [šablony Microsoft.Compute/virtualMachines.](/azure/templates/microsoft.compute/virtualmachines)
-* Zkontrolujte referenční dokumentaci k disku pomocí referenčního dokumentu [šablony Microsoft.Compute/disks.](/azure/templates/microsoft.compute/disks)
-* Informace o tom, jak používat spravované disky ve škálovacích sadách virtuálních počítačů Azure, najdete v dokumentu [Use data disků with scale sets.](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks)
+* U úplných šablon, které používají spravované disky, navštivte následující odkazy na úložiště Azure pro rychlý Start.
+    * [Virtuální počítač s Windows se spravovaným diskem](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
+    * [Virtuální počítač se systémem Linux se spravovaným diskem](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
+* Další informace o spravovaných discích najdete v dokumentu [Přehled služby Azure Managed disks](../articles/virtual-machines/windows/managed-disks-overview.md) .
+* Projděte si referenční dokumentaci k šabloně pro prostředky virtuálních počítačů, a to návštěvou [referenčního dokumentu šablony Microsoft. COMPUTE/virtualMachines](/azure/templates/microsoft.compute/virtualmachines) .
+* Projděte si referenční dokumentaci k šabloně pro diskové prostředky, která se nachází v [referenčním dokumentu šablony Microsoft. COMPUTE/disks](/azure/templates/microsoft.compute/disks) .
+* Informace o tom, jak používat spravované disky ve službě Azure Virtual Machine Scale Sets, najdete v dokumentu [použití datových disků se sadami škálování](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks) .

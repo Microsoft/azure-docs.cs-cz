@@ -1,59 +1,59 @@
 ---
-title: Kontinuita podnikání – databáze Azure pro PostgreSQL – jeden server
-description: Tento článek popisuje kontinuitu podnikání (obnovení bodu v čase, výpadek datového centra, geografické obnovení) při použití Azure Database pro PostgreSQL.
+title: Provozní kontinuita – Azure Database for PostgreSQL – jeden server
+description: Tento článek popisuje provozní kontinuitu (obnovení včas v čase, výpadek datového centra, geografické obnovení) při použití Azure Database for PostgreSQL.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.openlocfilehash: afa03399933bdc8bd8ff869125955cfd9e0abecb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75981920"
 ---
-# <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Přehled kontinuity podnikání s databází Azure pro PostgreSQL – jeden server
+# <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Přehled provozní kontinuity pomocí Azure Database for PostgreSQL-Single server
 
-Tento přehled popisuje funkce, které Azure Database pro PostgreSQL poskytuje pro kontinuitu podnikání a zotavení po havárii. Další informace o možnostech obnovení z rušivých událostí, které by mohly způsobit ztrátu dat nebo způsobit, že databáze a aplikace nebudou k dispozici. Zjistěte, co dělat, když chyba uživatele nebo aplikace ovlivňuje integritu dat, oblast Azure má výpadek nebo vaše aplikace vyžaduje údržbu.
+Tento přehled popisuje možnosti, které Azure Database for PostgreSQL poskytuje pro provozní kontinuitu a zotavení po havárii. Seznamte se s možnostmi pro zotavení z rušivých událostí, které by mohly způsobit ztrátu dat nebo způsobit nedostupnost databáze a aplikace. Přečtěte si, co dělat, když dojde k chybě uživatele nebo aplikace při vlivu na integritu dat, když dojde k výpadku oblasti Azure nebo když vaše aplikace vyžaduje údržbu.
 
-## <a name="features-that-you-can-use-to-provide-business-continuity"></a>Funkce, které můžete použít k zajištění kontinuity provozu
+## <a name="features-that-you-can-use-to-provide-business-continuity"></a>Funkce, které můžete použít k zajištění kontinuity podnikových aplikací
 
-Azure Database for PostgreSQL poskytuje funkce kontinuity podnikání, které zahrnují automatické zálohování a možnost pro uživatele zahájit geografické obnovení. Každý z nich má různé charakteristiky pro odhadovaný čas obnovení (ERT) a potenciální ztrátu dat. Jakmile tyto možnosti pochopíte, můžete si mezi nimi vybrat a použít je společně pro různé scénáře. Při vývoji plánu kontinuity provozu je třeba pochopit maximální přijatelnou dobu, než se aplikace plně zotaví po rušivé události – toto je váš cíl doby obnovení (RTO). Musíte také pochopit maximální množství nedávných aktualizací dat (časový interval), které aplikace může tolerovat ztrátu při obnovení po rušivé události - to je váš cíl bodu obnovení (RPO).
+Azure Database for PostgreSQL poskytuje funkce pro provozní kontinuitu, které zahrnují automatizované zálohování a schopnost uživatelů zahájit geografické obnovení. Každý má různé charakteristiky pro odhadovanou dobu obnovení (ERT) a potenciální ztrátu dat. Jakmile tyto možnosti pochopíte, můžete si je vybrat mezi nimi a použít je společně pro různé scénáře. Při vývoji plánu provozní kontinuity je potřeba pochopit maximální přijatelnou dobu, než aplikace plně obnoví po přerušení události – to je vaše plánovaná doba obnovení (RTO). Také je potřeba pochopit maximální množství nedávných aktualizací dat (časový interval), které může aplikace tolerovat při obnovování po přerušení události – to je váš cíl bodu obnovení (RPO).
 
-Následující tabulka porovnává ert a rpo pro dostupné funkce:
+Následující tabulka porovnává ERT a RPO pro dostupné funkce:
 
-| **Schopnost** | **Basic** | **Obecný účel** | **Optimalizované z hlediska paměti** |
+| **Schopnost** | **Základní** | **Pro obecné účely** | **Optimalizované z hlediska paměti** |
 | :------------: | :-------: | :-----------------: | :------------------: |
-| Obnovení k určitému bodu v čase ze zálohy | Jakýkoli bod obnovení během retenční ho období | Jakýkoli bod obnovení během retenční ho období | Jakýkoli bod obnovení během retenční ho období |
-| Geografické obnovení z geograficky replikovaných záloh | Nepodporuje se | ERT < 12 h<br/>RPO < 1 h | ERT < 12 h<br/>RPO < 1 h |
+| Obnovení k určitému bodu v čase ze zálohy | Libovolný bod obnovení v rámci doby uchování | Libovolný bod obnovení v rámci doby uchování | Libovolný bod obnovení v rámci doby uchování |
+| Geografické obnovení ze geograficky replikovaných záloh | Nepodporuje se | ERT < 12 h<br/>RPO < 1 h | ERT < 12 h<br/>RPO < 1 h |
 
 > [!IMPORTANT]
-> Odstraněné servery **nelze** obnovit. Pokud odstraníte server, budou odstraněny také všechny databáze, které patří k serveru, a nelze je obnovit. Pomocí [zámku prostředků Azure](../azure-resource-manager/management/lock-resources.md) můžete zabránit nechtěnému odstranění serveru.
+> Odstraněné servery **nelze** obnovit. Pokud server odstraníte, odstraní se i všechny databáze patřící do serveru a nebude možné je obnovit. Pomocí [zámku prostředků Azure](../azure-resource-manager/management/lock-resources.md) můžete zabránit nechtěnému odstranění serveru.
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>Obnovení serveru po chybě uživatele nebo aplikace
 
-Zálohy služby můžete použít k obnovení serveru z různých rušivých událostí. Uživatel může omylem odstranit některá data, nechtěně vynechat důležitou tabulku nebo dokonce přetažení celé databáze. Aplikace může omylem přepsat dobrá data se špatnými daty z důvodu vady aplikace a tak dále.
+Zálohy služby můžete použít k obnovení serveru z různých rušivých událostí. Uživatel může omylem odstranit některá data, neúmyslně odstranit důležitou tabulku nebo dokonce odstranit celou databázi. Aplikace může omylem přepsat dobrá data s chybnými daty z důvodu vady aplikace atd.
 
-Můžete provést **bod-in-time-restore** a vytvořit kopii serveru do známého dobrého bodu v čase. Tento bod v čase musí být v rámci doby uchování zálohy, které jste nakonfigurovali pro server. Po obnovení dat na nový server můžete buď nahradit původní server nově obnoveným serverem, nebo zkopírovat potřebná data z obnoveného serveru na původní server.
+Můžete provést obnovení k určitému **bodu v čase** a vytvořit tak kopii serveru pro známý dobrý bod v čase. Tento bod v čase musí být v období uchovávání záloh, které jste nakonfigurovali pro váš server. Po obnovení dat na novém serveru můžete původní server nahradit novým obnoveným serverem nebo zkopírovat potřebná data z obnoveného serveru na původní server.
 
-## <a name="recover-from-an-azure-data-center-outage"></a>Obnovení výpadku datového centra Azure
+## <a name="recover-from-an-azure-data-center-outage"></a>Zotavení z výpadku datového centra Azure
 
-Přestože je taková situace výjimečná, i u datového centra Azure může dojít k výpadku. Dojde-li k výpadku, způsobí narušení podnikání, které může trvat pouze několik minut, ale může trvat několik hodin.
+Přestože je taková situace výjimečná, i u datového centra Azure může dojít k výpadku. Pokud dojde k výpadku, způsobí to narušení podniku, které může trvat jenom několik minut, ale může to trvat i hodinu.
 
-Jednou z možností je počkat, až se server vrátí do režimu online, až skončí výpadek datového centra. To funguje pro aplikace, které si mohou dovolit mít server offline po určitou dobu, například vývojové prostředí. Pokud má datové centrum výpadek, nevíte, jak dlouho může výpadek trvat, takže tato možnost funguje pouze v případě, že server nějakou dobu nepotřebujete.
+Jednou z možností je počkat, až se váš server vrátí zpátky do režimu online, když dojde k výpadku datového centra. To funguje u aplikací, které můžou umožnit, aby byl server v určitou dobu offline, například vývojové prostředí. Když dojde k výpadku datového centra, nevíte, jak dlouho může výpadek trvat, takže tato možnost funguje jenom v případě, že server ještě nepotřebujete.
 
 ## <a name="geo-restore"></a>Geografické obnovení
 
-Funkce geografického obnovení obnoví server pomocí geograficky redundantních záloh. Zálohy jsou hostovány ve [spárované oblasti](../best-practices-availability-paired-regions.md)serveru . Z těchto záloh můžete obnovit do jakékoli jiné oblasti. Geografické obnovení vytvoří nový server s daty ze záloh. Další informace o geografickém obnovení v [článku o konceptech zálohování a obnovení](concepts-backup.md).
+Funkce geografického obnovení obnoví Server pomocí geograficky redundantních záloh. Zálohy se hostují v [spárované oblasti](../best-practices-availability-paired-regions.md)vašeho serveru. Z těchto záloh můžete tyto zálohy obnovit do jakékoli jiné oblasti. Geografické obnovení vytvoří nový server s daty ze zálohy. Další informace o geografickém obnovení najdete v [článku o principech zálohování a obnovení](concepts-backup.md).
 
 > [!IMPORTANT]
-> Geografické obnovení je možné pouze v případě, že jste zřídit server s geograficky redundantní úložiště záloh. Pokud chcete přepnout z místně redundantní zálohy pro existující server, je nutné provést výpis pomocí pg_dump existujícího serveru a obnovit jej na nově vytvořený server nakonfigurovaný s geograficky redundantní zálohy.
+> Geografické obnovení je možné pouze v případě, že jste zřídili Server s geograficky redundantním úložištěm záloh. Pokud chcete přepnout z místně redundantního na geograficky redundantní zálohy pro existující server, musíte použít výpis pg_dump stávajícího serveru a obnovit ho na nově vytvořený server nakonfigurovaný pomocí geograficky redundantních záloh.
 
-## <a name="cross-region-read-replicas"></a>Repliky pro čtení mezi oblastmi
-Pomocí replik pro čtení napříč oblastmi můžete zlepšit kontinuitu provozu a plánování zotavení po havárii. Repliky čtení jsou aktualizovány asynchronně pomocí technologie fyzické replikace PostgreSQL. Další informace o čtení repliky, dostupné oblasti a jak převzetí služeb při selhání z [článku koncepty replik čtení](concepts-read-replicas.md). 
+## <a name="cross-region-read-replicas"></a>Repliky čtení mezi oblastmi
+Repliky čtení pro různé oblasti můžete použít ke zvýšení provozní kontinuity a plánování zotavení po havárii. Repliky čtení jsou asynchronně aktualizované pomocí technologie fyzické replikace PostgreSQL. Přečtěte si další informace o replikách pro čtení, dostupných oblastech a o tom, jak převzít služby při selhání v článku věnovaném [konceptům čtení replik](concepts-read-replicas.md). 
 
 ## <a name="next-steps"></a>Další kroky
-- Další informace o [automatických zálohách v Azure Database for PostgreSQL](concepts-backup.md). 
-- Přečtěte si, jak obnovit pomocí [portálu Azure nebo](howto-restore-server-portal.md) [azure cli](howto-restore-server-cli.md).
-- Další informace o [replikách pro čtení v Azure Database for PostgreSQL](concepts-read-replicas.md).
+- Přečtěte si další informace o [automatizovaných zálohách v Azure Database for PostgreSQL](concepts-backup.md). 
+- Naučte se, jak obnovit pomocí [Azure Portal](howto-restore-server-portal.md) nebo rozhraní příkazového [řádku Azure](howto-restore-server-cli.md).
+- Přečtěte si o [replikách pro čtení v Azure Database for PostgreSQL](concepts-read-replicas.md).

@@ -1,6 +1,6 @@
 ---
-title: Spouštění úloh Apache Sqoop pomocí rozhraní .NET a HDInsight – Azure
-description: Přečtěte si, jak pomocí sady HDInsight .NET SDK spouštět import a export Apache Sqoop mezi clusterem Apache Hadoop a databází Azure SQL Database.
+title: Spouštění úloh Apache Sqoop pomocí .NET a HDInsight – Azure
+description: Naučte se používat sadu HDInsight .NET SDK ke spouštění služby Sqoop pro import a export mezi Apache Hadoopm a Azure SQL Database.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,45 +9,45 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/14/2020
 ms.openlocfilehash: f0f767273a40bc91b1d49477c896b0b157623106
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76157060"
 ---
-# <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>Spuštění úloh Apache Sqoop pomocí sady .NET SDK pro Apache Hadoop v HDInsightu
+# <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>Spouštění úloh Apache Sqoop pomocí sady .NET SDK pro Apache Hadoop ve službě HDInsight
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Naučte se používat Azure HDInsight .NET SDK ke spuštění úloh Apache Sqoop v HDInsight u importu a exportu mezi clusterem HDInsight a databází Azure SQL Database nebo SQL Serveru.
+Naučte se používat sadu Azure HDInsight .NET SDK ke spouštění úloh Apache Sqoop ve službě HDInsight k importu a exportu mezi clusterem HDInsight a databází Azure SQL Database nebo SQL Server.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Dokončení [Nastavení testovacího prostředí](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) z [use Apache Sqoop s Hadoopem v HDInsightu](./hdinsight-use-sqoop.md).
+* Dokončení [Nastavení testovacího prostředí](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) [pro použití Apache Sqoop se systémem Hadoop ve službě HDInsight](./hdinsight-use-sqoop.md).
 
 * [Visual Studio](https://visualstudio.microsoft.com/vs/community/).
 
-* Obeznámenost s Sqoop. Další informace naleznete v [uživatelské příručce společnosti Sqoop](https://sqoop.apache.org/docs/1.4.7/SqoopUserGuide.html).
+* Seznamte se se znalostí pro Sqoop. Další informace najdete v tématu [uživatelská příručka pro Sqoop](https://sqoop.apache.org/docs/1.4.7/SqoopUserGuide.html).
 
-## <a name="use-sqoop-on-hdinsight-clusters-with-the-net-sdk"></a>Použití sqoopu v clusterech HDInsight s sadou .NET SDK
+## <a name="use-sqoop-on-hdinsight-clusters-with-the-net-sdk"></a>Použití Sqoop v clusterech HDInsight se sadou .NET SDK
 
-Sada HDInsight .NET SDK poskytuje klientské knihovny .NET, takže je snazší pracovat s clustery HDInsight z rozhraní .NET. V této části vytvoříte konzolovou aplikaci `hivesampletable` Jazyka C# pro export tabulky Azure SQL Database, kterou jste vytvořili z předpokladů.
+Sada HDInsight .NET SDK poskytuje klientské knihovny .NET, takže je snazší pracovat s clustery HDInsight z .NET. V této části vytvoříte konzolovou aplikaci v jazyce C#, která bude `hivesampletable` exportována do Azure SQL Database tabulky, kterou jste vytvořili z požadovaných součástí.
 
 ## <a name="set-up"></a>Nastavit
 
-1. Spusťte Visual Studio a vytvořte konzolovou aplikaci Jazyka C#.
+1. Spusťte Visual Studio a vytvořte konzolovou aplikaci v jazyce C#.
 
-1. Přejděte na **tools** > **NuGet Package Manager** > **Console** a spusťte následující příkaz:
+1.  > Přejděte do **nástroje** > **Správce balíčků NuGet****Konzola správce balíčků** a spusťte následující příkaz:
 
     ```
     Install-Package Microsoft.Azure.Management.HDInsight.Job
     ```
 
-## <a name="sqoop-export"></a>Vývoz Sqoop
+## <a name="sqoop-export"></a>Export Sqoop
 
-Z Hive na SQL Server.  Tento příklad exportuje `hivesampletable` data z `mobiledata` tabulky Hive do tabulky v databázi SQL.
+Z podregistru do SQL Server.  Tento příklad exportuje data z tabulky podregistru `hivesampletable` do `mobiledata` tabulky v SQL Database.
 
-1. V souboru Program.cs použijte následující kód. Upravte kód a nastavte `ExistingClusterName`hodnoty `ExistingClusterPassword`pro písmena a) a .
+1. V souboru Program.cs použijte následující kód. Upravte kód a nastavte hodnoty pro `ExistingClusterName`, a. `ExistingClusterPassword`
 
     ```csharp
     using Microsoft.Azure.Management.HDInsight.Job;
@@ -111,13 +111,13 @@ Z Hive na SQL Server.  Tento příklad exportuje `hivesampletable` data z `mobil
     }
     ```
 
-1. Chcete-li program spustit, vyberte klávesu **F5.**
+1. Chcete-li program spustit, vyberte klávesu **F5** .
 
 ## <a name="sqoop-import"></a>Import Sqoop
 
-Z SQL Serveru do úložiště Azure. Tento příklad závisí na provedeném exportu výše.  Tento příklad importuje `mobiledata` data z tabulky `wasb:///tutorials/usesqoop/importeddata` v databázi SQL do adresáře ve výchozím účtu úložiště clusteru.
+Z SQL Server Azure Storage. Tento příklad závisí na výše provedeném exportu.  Tento příklad importuje data z `mobiledata` tabulky v SQL Database do `wasb:///tutorials/usesqoop/importeddata` adresáře na výchozím účtu úložiště v clusteru.
 
-1. Nahraďte výše `//sqoop start //sqoop end` uvedený kód v bloku následujícím kódem:
+1. Nahraďte kód uvedený výše v `//sqoop start //sqoop end` bloku následujícím kódem:
 
     ```csharp
     var tableName = "mobiledata";
@@ -129,19 +129,19 @@ Z SQL Serveru do úložiště Azure. Tento příklad závisí na provedeném exp
     };
     ```
 
-1. Chcete-li program spustit, vyberte klávesu **F5.**
+1. Chcete-li program spustit, vyberte klávesu **F5** .
 
 ## <a name="limitations"></a>Omezení
 
-HdInsight založený na Linuxu představuje následující omezení:
+HDInsight se systémem Linux nabízí tato omezení:
 
-* Hromadný export: Konektor Sqoop, který se používá k exportu dat na Microsoft SQL Server nebo Azure SQL Database, momentálně nepodporuje hromadné vložení.
+* Hromadný export: konektor Sqoop, který se používá k exportu dat do Microsoft SQL Server nebo Azure SQL Database v současné době nepodporuje hromadné vložení.
 
-* Dávkování: Pomocí přepínače `-batch` Sqoop provádí více břitových destiček namísto dávkování operace vložení.
+* Dávkování: pomocí `-batch` přepínače Sqoop provede vícenásobné vkládání místo dávkování operací vložení.
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď jste se naučili používat Sqoop. Další informace naleznete v tématu:
+Nyní jste se naučili, jak používat Sqoop. Další informace naleznete v tématu:
 
-* [Použijte Apache Oozie s HDInsight:](../hdinsight-use-oozie-linux-mac.md)Použijte akci Sqoop v pracovním postupu Oozie.
-* [Nahrávání dat do HDInsightu](../hdinsight-upload-data.md): Najděte další metody nahrávání dat do HDInsightu nebo úložiště objektů Blob Azure.
+* [Použití Apache Oozie se službou HDInsight](../hdinsight-use-oozie-linux-mac.md): použijte akci Sqoop v pracovním postupu Oozie.
+* [Nahrávání dat do HDInsight](../hdinsight-upload-data.md): Najděte další metody pro nahrávání dat do služby HDInsight nebo Azure Blob Storage.

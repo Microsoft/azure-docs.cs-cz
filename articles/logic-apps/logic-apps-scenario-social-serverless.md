@@ -1,6 +1,6 @@
 ---
-title: Vytvoření řídicího panelu přehledů zákazníků
-description: Spravujte zpětnou vazbu od zákazníků, data sociálních médií a další funkce vytvořením řídicího panelu zákazníků pomocí aplikací Azure Logic Apps a funkcí Azure
+title: Vytvořit řídicí panel Customer Insights
+description: Spravujte názory zákazníků, data sociálních médií a další informace vytvořením řídicího panelu zákazníka pomocí Azure Logic Apps a Azure Functions
 services: logic-apps
 ms.suite: integration
 author: jeffhollan
@@ -9,104 +9,104 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 03/15/2018
 ms.openlocfilehash: e300bf9c9aa0acf0bed6426eb73f690f9a38bd74
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75980428"
 ---
-# <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Vytvoření řídicího panelu přehledů zákazníků streamování pomocí Aplikací logiky Azure a funkcí Azure
+# <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Vytvoření řídicího panelu pro streamování zákaznických přehledů pomocí Azure Logic Apps a Azure Functions
 
-Azure nabízí nástroje [bez serveru,](https://azure.microsoft.com/solutions/serverless/) které vám pomůžou rychle vytvářet a hostovat aplikace v cloudu, aniž byste museli přemýšlet o infrastruktuře. V tomto kurzu můžete vytvořit řídicí panel, který se aktivuje na zpětnou vazbu od zákazníků, analyzuje zpětnou vazbu pomocí strojového učení a publikuje přehledy do zdroje, jako je Power BI nebo Azure Data Lake.
+Azure nabízí nástroje bez [serveru](https://azure.microsoft.com/solutions/serverless/) , které vám pomůžou rychle vytvářet a hostovat aplikace v cloudu, aniž byste se museli zabývat infrastrukturou. V tomto kurzu můžete vytvořit řídicí panel, který se aktivuje na základě zpětné vazby od zákazníků, analyzuje zpětnou vazbu pomocí machine learningu a zveřejňuje přehledy na zdroj, jako je Power BI nebo Azure Data Lake.
 
-Pro toto řešení použijete tyto klíčové součásti Azure pro aplikace bez serveru: [Azure Functions](https://azure.microsoft.com/services/functions/) a Azure [Logic Apps](https://azure.microsoft.com/services/logic-apps/).
-Azure Logic Apps poskytuje modul pracovních postupů bez serveru v cloudu, takže můžete vytvářet orchestrace napříč komponentami bez serveru a připojit se k více než 200 službám a virtuálním i hraničním určovatčasům. Funkce Azure poskytují v cloudu bezserverové výpočty. Toto řešení používá Funkce Azure pro označování tweetů zákazníků na základě předdefinovaných klíčových slov.
+Pro toto řešení použijete tyto klíčové součásti Azure pro aplikace bez serveru: [Azure Functions](https://azure.microsoft.com/services/functions/) a [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/).
+Azure Logic Apps poskytuje modul pracovního postupu bez serveru v cloudu, takže můžete vytvářet orchestraci napříč komponentami bez serveru a připojit se k 200 službám a rozhraním API. Azure Functions poskytuje výpočetní prostředí bez serveru v cloudu. Toto řešení používá Azure Functions pro označení zákaznických tweety na základě předdefinovaných klíčových slov.
 
-V tomto scénáři vytvoříte aplikaci logiky, která se aktivuje při hledání zpětné vazby od zákazníků. Některé konektory, které vám pomohou reagovat na zpětnou vazbu od zákazníků, zahrnují Outlook.com, Office 365, Survey Monkey, Twitter a [požadavek HTTP z webového formuláře](https://blogs.msdn.microsoft.com/logicapps/2017/01/30/calling-a-logic-app-from-an-html-form/). Pracovní postup, který vytvoříte, sleduje hashtag na Twitteru.
+V tomto scénáři vytvoříte aplikaci logiky, která se aktivuje při hledání zpětné vazby od zákazníků. Mezi konektory, které vám pomůžou reagovat na názory zákazníků, patří Outlook.com, Office 365, opice průzkumu, Twitter a [požadavek HTTP z webového formuláře](https://blogs.msdn.microsoft.com/logicapps/2017/01/30/calling-a-logic-app-from-an-html-form/). Pracovní postup, který vytvoříte, monitoruje hashtag na Twitteru.
 
-Můžete [vytvořit celé řešení v Sadě Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) a [nasadit řešení pomocí šablony Azure Resource Manager](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md). Video návod, který ukazuje, jak toto řešení vytvořit, [najdete v tomto videu kanálu 9](https://aka.ms/logicappsdemo). 
+Můžete [sestavit celé řešení v aplikaci Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) a [nasadit řešení pomocí šablony Azure Resource Manager](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md). Návod pro video, který ukazuje, jak vytvořit toto řešení, najdete v [tomto videu kanálu 9](https://aka.ms/logicappsdemo). 
 
-## <a name="trigger-on-customer-data"></a>Aktivační událost u dat zákazníků
+## <a name="trigger-on-customer-data"></a>Aktivovat zákaznická data
 
-1. Na webu Azure Portal nebo Visual Studiu vytvořte prázdnou aplikaci logiky. 
+1. V Azure Portal nebo Visual Studiu vytvořte prázdnou aplikaci logiky. 
 
-   Pokud s aplikacemi logiky tečte, přečtěte si [úvodní příručku pro portál Azure nebo](../logic-apps/quickstart-create-first-logic-app-workflow.md) úvodní start pro Visual [Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
+   Pokud s Logic Apps začínáte, přečtěte si [rychlý Start pro Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md) nebo [rychlý Start pro Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
 
-2. V Aplikaci Logika Designer, najít a přidat Twitter aktivační událost, která má tuto akci: **Když je vyslán nový tweet**
+2. V návrháři aplikace logiky vyhledejte a přidejte Trigger Twitteru, který má tuto akci: **při zveřejnění nového** přístavu
 
-3. Nastavte aktivační událost tak, aby poslouchala tweety na základě klíčového slova nebo hashtagu.
+3. Nastavte Trigger tak, aby naslouchal tweety na základě klíčového slova nebo hashtagu.
 
-   Na aktivačních událostech založených na dotazování, jako je například aktivační událost Twitter, vlastnost opakování určuje, jak často aplikace logiky kontroluje nové položky.
+   U triggerů založených na dotazech, jako je například Trigger Twitteru, vlastnost opakování určuje, jak často aplikace logiky kontroluje nové položky.
 
-   ![Příklad twitterové spouštěče][1]
+   ![Příklad triggeru Twitteru][1]
 
-Tato logická aplikace nyní požáry na všechny nové tweets. Potom můžete vzít a analyzovat data tweetu, abyste lépe porozuměli vyjádřeným pocitům. 
+Tato aplikace logiky se teď aktivuje pro všechny nové tweety. Pak můžete data probírat a analyzovat, abyste lépe porozuměli zabarvení vyjádřené. 
 
-## <a name="analyze-tweet-text"></a>Analýza textu tweetu
+## <a name="analyze-tweet-text"></a>Analyzovat text v poli
 
-Chcete-li zjistit mínění za některé text, můžete použít [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/).
+K detekci mínění za nějakým textem můžete použít [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/).
 
-1. V Návrháři aplikací logiky pod aktivační událostí zvolte **Nový krok**.
+1. V návrháři aplikace logiky pod triggerem vyberte **Nový krok**.
 
-2. Najděte konektor **Analýzy textu.**
+2. Najděte konektor **Analýza textu** .
 
-3. Vyberte akci **Rozpoznat mínění.**
+3. Vyberte akci **zjistit mínění** .
 
-4. Pokud se zobrazí výzva, zadejte platný klíč služeb Cognitive Services pro službu Analýza textu.
+4. Po zobrazení výzvy zadejte platný klíč Cognitive Services služby Analýza textu.
 
-5. V části **Text požadavku**vyberte pole **Tweet Text,** které poskytuje text tweetu jako vstup pro analýzu.
+5. V části text **žádosti**vyberte **textové** pole v poli, které jako vstup pro analýzu poskytne text.
 
-Poté, co získáte data tweetu a přehledy o tweetu, můžete nyní použít několik dalších relevantních konektorů a jejich akcí:
+Po získání dat v poli se základními informacemi o promoci teď můžete použít několik dalších relevantních konektorů a jejich akce:
 
-* **Power BI – Přidání řádků do datové sady datových proudů**: Zobrazení příchozích tweetů na řídicím panelu Power BI.
-* **Azure Data Lake – připojit soubor**: Přidání zákaznických dat do datové sady Azure Data Lake, která bude zahrnuta do úloh analýzy.
-* **SQL - Přidat řádky**: Uložte data v databázi pro pozdější načtení.
-* **Časová rezerva – odeslat zprávu**: Upozorněte kanál Slack na negativní zpětnou vazbu, která může vyžadovat akci.
+* **Power BI – přidání řádků do datové sady streamování**: zobrazení příchozích tweety na řídicím panelu Power BI.
+* **Azure Data Lake – připojit soubor**: přidejte zákaznická Data do Azure Data Lake datové sady, která se mají zahrnout do úloh analýzy.
+* **SQL – přidání řádků**: uložení dat v databázi pro pozdější načtení.
+* **Časová rezerva – odeslání zprávy**: oznámení kanálu časové rezervy o negativní zpětné vazbě, která může vyžadovat akci.
 
-Můžete také vytvořit a funkce Azure, takže můžete provádět vlastní zpracování na vaše data. 
+Můžete také vytvořit a funkci Azure Function, abyste mohli provádět vlastní zpracování dat. 
 
-## <a name="process-data-with-azure-functions"></a>Zpracování dat pomocí funkcí Azure
+## <a name="process-data-with-azure-functions"></a>Zpracování dat pomocí Azure Functions
 
-Před vytvořením funkce vytvořte ve svém předplatném Azure aplikaci funkcí. Také pro aplikaci logiky přímo volat funkci, funkce musí mít aktivační vazby HTTP, například použít šablonu **HttpTrigger.** Přečtěte [si, jak vytvořit první funkční aplikaci a funkci na webu Azure Portal](../azure-functions/functions-create-first-azure-function-azure-portal.md).
+Před vytvořením funkce vytvořte v předplatném Azure aplikaci Function App. Pro aplikaci logiky, aby přímo volala funkci, musí mít funkce vazbu triggeru HTTP, například pomocí šablony **HttpTrigger** . Naučte [se, jak vytvořit svou první aplikaci funkcí a funkci v Azure Portal](../azure-functions/functions-create-first-azure-function-azure-portal.md).
 
-V tomto scénáři použijte tweet text jako tělo požadavku pro funkci Azure. V kódu funkce definujte logiku, která určuje, zda text tweetu obsahuje klíčové slovo nebo frázi. Udržujte funkci tak jednoduché nebo složité, jak je nezbytné pro scénář.
-Na konci funkce vrátí odpověď do aplikace logiky s některá data, například `containsKeyword` jednoduché logické hodnoty, jako je například nebo komplexní objekt.
+V tomto scénáři jako text žádosti pro funkci Azure použijte text. V kódu funkce definujte logiku, která určuje, zda text příznaku obsahuje klíčové slovo nebo frázi. Tuto funkci nechte v případě potřeby ve scénáři jednoduché nebo složitější.
+Na konci funkce vrátí odpověď do aplikace logiky s některými daty, například jednoduchou logickou hodnotu, jako je například `containsKeyword` nebo složitý objekt.
 
 > [!TIP]
-> Chcete-li získat přístup ke složité odpovědi z funkce v aplikaci logiky, použijte akci **Analyzovat JSON.**
+> Pro přístup ke složitou odezvě z funkce v aplikaci logiky použijte akci **analyzovat JSON** .
 
-Až budete hotovi, uložte funkci a pak přidejte funkci jako akci v aplikaci logiky, kterou vytváříte.
+Až to budete mít, uložte funkci a pak funkci přidejte jako akci do aplikace logiky, kterou vytváříte.
 
-## <a name="add-azure-function-to-logic-app"></a>Přidání funkce Azure do aplikace logiky
+## <a name="add-azure-function-to-logic-app"></a>Přidat funkci Azure Functions do aplikace logiky
 
-1. V Návrháři aplikací logiky v části **Akce Rozpoznat mínění** zvolte Nový **krok**.
+1. V návrháři aplikace logiky v akci **detekovat mínění** vyberte možnost **Nový krok**.
 
-2. Najděte konektor **Azure Functions** a vyberte funkci, kterou jste vytvořili.
+2. Najděte konektor **Azure Functions** a pak vyberte funkci, kterou jste vytvořili.
 
-3. V části **Text žádosti**vyberte **Tweet Text**.
+3. V části text **žádosti**vyberte **text**.
 
-![Krok nakonfigurované funkce Azure][2]
+![Nakonfigurovaný krok Azure Functions][2]
 
 ## <a name="run-and-monitor-your-logic-app"></a>Spuštění a monitorování aplikace logiky
 
-Chcete-li zkontrolovat všechny aktuální nebo předchozí spuštění pro vaši aplikaci logiky, můžete použít bohaté možnosti ladění a monitorování, které Azure Logic Apps poskytuje na webu Azure Portal, Visual Studio nebo prostřednictvím Azure REST API a SDKs.
+Pokud si chcete projít jakékoli aktuální nebo předchozí běhy aplikace logiky, můžete použít bohatou možnost ladění a monitorování, kterou Azure Logic Apps poskytuje v Azure Portal, Visual Studiu nebo v rozhraních Azure REST API a sadách SDK.
 
-Chcete-li snadno otestovat aplikaci logiky, v návrháři aplikací logiky zvolte **Spustit aktivační událost**. Aktivační událost se provádí na základě zadaného plánu, dokud nebude nalezen tweet, který splňuje vaše kritéria. Zatímco spuštění postupuje, návrhář zobrazí živé zobrazení pro toto spuštění.
+Pro snadné testování aplikace logiky v návrháři aplikace logiky vyberte možnost **Spustit Trigger**. Aktivační událost se spustí dotazování pro tweety podle zadaného plánu až do doby, kdy se najde ta, která splňuje vaše kritéria. Během běhu Návrhář zobrazuje živé zobrazení pro tento běh.
 
-Zobrazení předchozích historie spuštění ve Visual Studiu nebo na webu Azure Portal: 
+Chcete-li zobrazit předchozí historie spuštění v aplikaci Visual Studio nebo Azure Portal: 
 
-* Otevřete Průzkumníka Visual Studio Cloud Explorer. Najděte aplikaci logiky a otevřete místní nabídku aplikace. Vyberte **Možnost Otevřít historii spuštění**.
+* Otevřete Průzkumníka cloudu sady Visual Studio. Najděte aplikaci logiky a otevřete místní nabídku aplikace. Vyberte **otevřít historii spuštění**.
 
   > [!TIP]
-  > Pokud tento příkaz nemáte v Sadě Visual Studio 2019, zkontrolujte, zda máte nejnovější aktualizace pro Visual Studio.
+  > Pokud tento příkaz v aplikaci Visual Studio 2019 nemáte, ověřte, že máte nejnovější aktualizace pro Visual Studio.
 
-* Na webu Azure Portal najděte aplikaci logiky. V nabídce aplikace logiky zvolte **Přehled**. 
+* V Azure Portal Najděte aplikaci logiky. V nabídce aplikace logiky klikněte na **Přehled**. 
 
 ## <a name="create-automated-deployment-templates"></a>Vytvoření šablon pro automatické nasazení
 
-Po vytvoření řešení aplikace logiky můžete zachytit a nasadit aplikaci jako [šablonu Azure Resource Manager](../azure-resource-manager/templates/overview.md) do libovolné oblasti Azure na světě. Tuto možnost můžete použít jak k úpravě parametrů pro vytváření různých verzí aplikace, tak k integraci vašeho řešení do Azure Pipelines. Funkce Azure můžete také zahrnout do šablony nasazení, abyste mohli spravovat celé řešení se všemi závislostmi jako jednu šablonu. Přečtěte si, jak [automatizovat nasazení aplikace logiky](logic-apps-azure-resource-manager-templates-overview.md).
+Po vytvoření řešení aplikace logiky můžete aplikaci zachytit a nasadit jako [šablonu Azure Resource Manager](../azure-resource-manager/templates/overview.md) do jakékoli oblasti Azure na světě. Tuto možnost můžete použít jak pro úpravu parametrů pro vytváření různých verzí aplikace a pro integraci svého řešení do Azure Pipelines. Můžete také zahrnout Azure Functions do šablony nasazení, abyste mohli spravovat celé řešení se všemi závislostmi jako s jedinou šablonou. Naučte se [automatizovat nasazení aplikace logiky](logic-apps-azure-resource-manager-templates-overview.md).
 
-Příklad šablony nasazení s funkcí Azure najdete v [úložišti šablon Azure quickstart](https://github.com/Azure/azure-quickstart-templates/tree/master/101-function-app-create-dynamic).
+Ukázkovou šablonu nasazení s funkcí Azure Functions najdete v [úložišti šablon Azure pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/101-function-app-create-dynamic).
 
 ## <a name="next-steps"></a>Další kroky
 

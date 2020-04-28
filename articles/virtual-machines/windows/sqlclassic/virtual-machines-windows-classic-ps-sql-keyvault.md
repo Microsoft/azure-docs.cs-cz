@@ -1,6 +1,6 @@
 ---
-title: Integrace trezoru klíčů s klasickým virtuálním počítačem Azure SQL Server
-description: Zjistěte, jak automatizovat konfiguraci šifrování serveru SQL Server pro použití s trezorem klíčů Azure. Toto téma vysvětluje, jak používat Azure Key Vault Integrace s virtuálními počítači SQL Server vytvořit v modelu klasické nasazení.
+title: Integrace Key Vault s klasickým virtuálním počítačem Azure SQL Server
+description: Naučte se automatizovat konfiguraci SQL Serverho šifrování pro použití s Azure Key Vault. Toto téma vysvětluje, jak pomocí Azure Key Vault integrace s SQL Server virtuálních počítačů vytvořit v modelu nasazení Classic.
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
@@ -17,13 +17,13 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: f878c6f7a59328e2f68ffbaee066bba4a5b6c898
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75978128"
 ---
-# <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-classic"></a>Konfigurace integrace úložiště klíčů Azure pro SQL Server na virtuálních počítačích Azure (classic)
+# <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-classic"></a>Konfigurace integrace Azure Key Vault pro SQL Server v Azure Virtual Machines (Classic)
 > [!div class="op_single_selector"]
 > * [Resource Manager](../sql/virtual-machines-windows-ps-sql-keyvault.md)
 > * [Classic](../classic/ps-sql-keyvault.md)
@@ -31,39 +31,39 @@ ms.locfileid: "75978128"
 > 
 
 ## <a name="overview"></a>Přehled
-Existuje více funkcí šifrování serveru SQL Server, jako je [například transparentní šifrování dat (TDE),](https://msdn.microsoft.com/library/bb934049.aspx) [šifrování na úrovni sloupců (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)a [šifrování záloh](https://msdn.microsoft.com/library/dn449489.aspx). Tyto formy šifrování vyžadují správu a ukládání kryptografických klíčů, které používáte pro šifrování. Služba Azure Key Vault (AKV) je navržena tak, aby zlepšila zabezpečení a správu těchto klíčů v zabezpečeném a vysoce dostupném umístění. [Sql Server Connector](https://www.microsoft.com/download/details.aspx?id=45344) umožňuje SQL Server používat tyto klíče z Azure Key Vault.
+Existuje několik funkcí SQL Server šifrování, jako je [transparentní šifrování dat (TDE)](https://msdn.microsoft.com/library/bb934049.aspx), [šifrování na úrovni sloupce (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)a [šifrování záloh](https://msdn.microsoft.com/library/dn449489.aspx). Tyto formy šifrování vyžadují, abyste mohli spravovat a ukládat kryptografické klíče, které používáte pro šifrování. Služba Azure Key Vault (integrace) je navržená tak, aby vylepšila zabezpečení a správu těchto klíčů v zabezpečeném a vysoce dostupném umístění. [Konektor SQL serveru](https://www.microsoft.com/download/details.aspx?id=45344) umožňuje SQL Server používat tyto klíče z Azure Key Vault.
 
 > [!IMPORTANT] 
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a Classic](../../../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití modelu klasické nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a Classic](../../../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
 
-Pokud používáte SQL Server s místními počítači, existují [kroky, které můžete postupovat pro přístup k Azure Key Vault z místního počítače SQL Server](https://msdn.microsoft.com/library/dn198405.aspx). Ale pro SQL Server ve virtuálních počítačích Azure můžete ušetřit čas pomocí funkce *Integrace úložiště klíčů Azure.* Pomocí několika rutin Azure PowerShell, které tuto funkci povolí, můžete automatizovat konfiguraci potřebnou pro přístup k trezoru klíčů pro virtuální počítač SQL.
+Pokud používáte SQL Server s místními počítači, můžete postupovat [podle pokynů k přístupu k Azure Key Vault z místního počítače SQL Server](https://msdn.microsoft.com/library/dn198405.aspx). Ale pro SQL Server ve virtuálních počítačích Azure můžete ušetřit čas pomocí funkce *integrace Azure Key Vault* . Pomocí několika rutin Azure PowerShell pro povolení této funkce můžete automatizovat konfiguraci nutnou k tomu, aby virtuální počítač SQL měl přístup k trezoru klíčů.
 
-Pokud je tato funkce povolena, automaticky nainstaluje konektor SQL Server, nakonfiguruje zprostředkovatele EKM pro přístup k úložišti klíčů Azure a vytvoří pověření, které vám umožní přístup k trezoru. Pokud jste se podívali na kroky ve výše uvedené místní dokumentaci, uvidíte, že tato funkce automatizuje kroky 2 a 3. Jediné, co byste ještě museli udělat ručně, je vytvořit trezor klíčů a klíče. Odtud je automatizováno celé nastavení virtuálního počítače SQL. Jakmile tato funkce dokončí toto nastavení, můžete spustit příkazy T-SQL a začít šifrovat databáze nebo zálohy obvyklým způsobem.
+Když je tato funkce povolená, nainstaluje se Konektor SQL Serveru automaticky, nakonfiguruje poskytovatele EKM pro přístup k Azure Key Vault a vytvoří přihlašovací údaje, které vám umožní přístup k trezoru. Pokud jste si prohlédli postup uvedený v předchozí dokumentaci, vidíte, že tato funkce automatizuje kroky 2 a 3. Jedinou věcí, kterou byste pořád museli ručně udělat, je vytvoření trezoru klíčů a klíčů. Odtud je celá instalace vašeho virtuálního počítače SQL automatizovaná. Až tato funkce dokončí tuto instalaci, můžete spustit příkazy T-SQL, které zahájí šifrování databází nebo zálohování, jako byste to udělali normálně.
 
 [!INCLUDE [AKV Integration Prepare](../../../../includes/virtual-machines-sql-server-akv-prepare.md)]
 
-## <a name="configure-akv-integration"></a>Konfigurace integrace AKV
-Pomocí PowerShellu nakonfigurujte integraci trezoru klíčů Azure. Následující části poskytují přehled požadovaných parametrů a pak ukázkový skript prostředí PowerShell.
+## <a name="configure-akv-integration"></a>Konfigurace integrace integrace
+Ke konfiguraci Integrace Azure Key Vault použijte PowerShell. Následující části obsahují přehled požadovaných parametrů a pak vzorový skript PowerShellu.
 
 ### <a name="install-the-sql-server-iaas-extension"></a>Instalace rozšíření SQL Server IaaS
-Nejprve [nainstalujte rozšíření SQL Server IaaS](../classic/sql-server-agent-extension.md).
+Nejdřív [nainstalujte SQL Server rozšíření IaaS](../classic/sql-server-agent-extension.md).
 
 ### <a name="understand-the-input-parameters"></a>Pochopení vstupních parametrů
 V následující tabulce jsou uvedeny parametry potřebné ke spuštění skriptu prostředí PowerShell v další části.
 
 | Parametr | Popis | Příklad |
 | --- | --- | --- |
-| **$akvURL** |**Adresa URL trezoru klíčů** |"https:\//contosokeyvault.vault.azure.net/" |
-| **$spName** |**Název hlavního_serveru service** |"fde2b411-33d5-4e11-af04eb07b669ccf2" |
-| **$spSecret** |**Tajný klíč hlavního povinného servisu** |"9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM=" |
+| **$akvURL** |**Adresa URL trezoru klíčů** |"https:\//contosokeyvault.Vault.Azure.NET/" |
+| **$spName** |**Hlavní název služby** |"fde2b411-33d5-4e11-af04eb07b669ccf2" |
+| **$spSecret** |**Tajný klíč objektu služby** |"9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM =" |
 | **$credName** |**Název přihlašovacího údaje:** Integrace se službou Azure Key Vault vytvoří přihlašovací údaje v rámci SQL Serveru, díky čemuž mají virtuální počítače přístup do trezoru klíčů. Zvolte název pro tyto přihlašovací údaje. |"mycred1" |
-| **$vmName** |**Název virtuálního počítače**: Název dříve vytvořeného virtuálního počítače SQL. |"myvmname" |
-| **$serviceName** |**Název služby**: Název cloudové služby, který je přidružen k virtuálnímu virtuálnímu mísu SQL. |"mycloudservicename" |
+| **$vmName** |**Název virtuálního počítače**: název dříve vytvořeného virtuálního počítače SQL. |"myvmname" |
+| **$serviceName** |**Název služby**: název cloudové služby, který je přidružený k virtuálnímu počítači SQL. |"mycloudservicename" |
 
-### <a name="enable-akv-integration-with-powershell"></a>Povolení integrace AKV s PowerShellem
-Rutina **New-AzureVMSqlServerKeyVaultConfig** vytvoří objekt konfigurace pro funkci integrace úložiště klíčů Azure. **Rozšíření Set-AzureVMSqlServerExtension** konfiguruje tuto integraci s parametrem **KeyVaultCredentialSettings.** Následující kroky ukazují, jak používat tyto příkazy.
+### <a name="enable-akv-integration-with-powershell"></a>Povolení integrace integrace s prostředím PowerShell
+Rutina **New-AzureVMSqlServerKeyVaultCredentialConfig** vytvoří objekt konfigurace pro funkci Integrace Azure Key Vault. Rutina **set-AzureVMSqlServerExtension** nakonfiguruje tuto integraci s parametrem **KeyVaultCredentialSettings** . Následující kroky ukazují, jak tyto příkazy použít.
 
-1. V Azure PowerShell, nejprve nakonfigurujte vstupní parametry s konkrétní hodnoty, jak je popsáno v předchozích částech tohoto tématu. Následující skript je příkladem.
+1. V Azure PowerShell nejprve nakonfigurujte vstupní parametry s konkrétními hodnotami, jak je popsáno v předchozích částech tohoto tématu. Následující skript je příkladem.
    
         $akvURL = "https:\//contosokeyvault.vault.azure.net/"
         $spName = "fde2b411-33d5-4e11-af04eb07b669ccf2"
@@ -71,13 +71,13 @@ Rutina **New-AzureVMSqlServerKeyVaultConfig** vytvoří objekt konfigurace pro f
         $credName = "mycred1"
         $vmName = "myvmname"
         $serviceName = "mycloudservicename"
-2. Potom použijte následující skript ke konfiguraci a povolení integrace AKV.
+2. Potom pomocí následujícího skriptu nakonfigurujte a povolte integraci integrace.
    
         $secureakv =  $spSecret | ConvertTo-SecureString -AsPlainText -Force
         $akvs = New-AzureVMSqlServerKeyVaultCredentialConfig -Enable -CredentialName $credname -AzureKeyVaultUrl $akvURL -ServicePrincipalName $spName -ServicePrincipalSecret $secureakv
         Get-AzureVM -ServiceName $serviceName -Name $vmName | Set-AzureVMSqlServerExtension -KeyVaultCredentialSettings $akvs | Update-AzureVM
 
-Rozšíření agenta SQL IaaS aktualizuje virtuální ho virtuálního počítače SQL pomocí této nové konfigurace.
+Rozšíření agenta SQL IaaS bude aktualizovat virtuální počítač SQL pomocí této nové konfigurace.
 
 [!INCLUDE [AKV Integration Next Steps](../../../../includes/virtual-machines-sql-server-akv-next-steps.md)]
 

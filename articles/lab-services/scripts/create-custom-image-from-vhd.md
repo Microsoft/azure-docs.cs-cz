@@ -1,6 +1,6 @@
 ---
-title: PowerShell – vytvoření vlastní image ze souboru Virtuálního pevného disku ve službě Azure Lab Services
-description: Tento skript prostředí PowerShell vytvoří vlastní image ze souboru Virtuálního pevného disku ve službě Azure Lab Services.
+title: PowerShell – vytvoření vlastní image ze souboru VHD v Azure Lab Services
+description: Tento skript PowerShellu vytvoří vlastní image ze souboru VHD v Azure Lab Services.
 services: lab-services
 author: spelluru
 manager: ''
@@ -13,22 +13,22 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 38383462a665ced1ccb6c6a2f062fab0492eee9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76169987"
 ---
-# <a name="use-powershell-to-create-a-custom-image-from-a-vhd-file-in-azure-lab-services"></a>Vytvoření vlastní image ze souboru VHD ve službě Azure Lab Services pomocí PowerShellu
+# <a name="use-powershell-to-create-a-custom-image-from-a-vhd-file-in-azure-lab-services"></a>Použití PowerShellu k vytvoření vlastní image ze souboru VHD v Azure Lab Services
 
-Tento ukázkový skript Prostředí PowerShell vytvoří vlastní bitovou kopii ze souboru Virtuálního pevného disku ve službě Azure Lab Services
+Tento ukázkový skript PowerShellu vytvoří vlastní image ze souboru VHD v Azure Lab Services
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ## <a name="prerequisites"></a>Požadavky
-* **Laboratoř**. Skript vyžaduje, abyste měli existující testovací prostředí. 
+* **Testovací prostředí**. Tento skript vyžaduje, abyste měli existující testovací prostředí. 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -40,7 +40,7 @@ Tento skript používá následující příkazy:
 
 | Příkaz | Poznámky |
 |---|---|
-| [Get-AzZdroj](/powershell/module/az.resources/get-azresource) | Získá prostředky. |
+| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Získá prostředky. |
 | [Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey) | Získá seznam přístupových klíčů pro účet služby Azure Storage. |
 | [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) | Přidá nasazení Azure do skupiny prostředků. |
 
@@ -48,4 +48,4 @@ Tento skript používá následující příkazy:
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 
-Další ukázky skriptu PowerShellu azure lab services najdete ve [vzorcích prostředí PowerShell azure lab services](../samples-powershell.md).
+Další Azure Lab Services ukázkových skriptech PowerShellu najdete v [ukázkách Azure Lab Services PowerShellu](../samples-powershell.md).

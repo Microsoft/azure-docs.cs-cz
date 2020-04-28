@@ -1,7 +1,7 @@
 ---
-title: Získat souhlas s několika zdroji (MSAL.NET) | Azure
+title: Získání souhlasu pro několik prostředků (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: Zjistěte, jak může uživatel získat předběžný souhlas s několika prostředky pomocí knihovny Microsoft Authentication Library for .NET (MSAL.NET).
+description: Přečtěte si, jak může uživatel získat předem souhlas s několika prostředky pomocí knihovny Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,24 +14,24 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 94c9a2b6a46262ad293da9ca3ba493d6f898c870
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77085836"
 ---
-# <a name="user-gets-consent-for-several-resources-using-msalnet"></a>Uživatel získá souhlas s několika prostředky pomocí MSAL.NET
-Koncový bod platformy identity Společnosti Microsoft neumožňuje získat token pro několik prostředků najednou. Při použití knihovny Microsoft Authentication Library pro .NET (MSAL.NET) by parametr oborů v metodě tokenu získání měl obsahovat pouze obory pro jeden prostředek. Můžete však předem souhlasit s několika prostředky předem zadáním `.WithExtraScopeToConsent` dalšíobory pomocí metody tvůrce.
+# <a name="user-gets-consent-for-several-resources-using-msalnet"></a>Uživatel získá souhlas s několika prostředky pomocí MSAL.NET.
+Koncový bod platformy Microsoft Identity vám neumožňuje získat token pro několik prostředků najednou. Pokud používáte Microsoft Authentication Library for .NET (MSAL.NET), parametr scopes v metodě získat token by měl obsahovat jenom obory pro jeden prostředek. Nicméně můžete předem udělit souhlas několika prostředkům a zadat další rozsahy pomocí metody `.WithExtraScopeToConsent` tvůrce.
 
 > [!NOTE]
-> Získání souhlasu pro několik prostředků funguje pro platformu identit Microsoftu, ale ne pro Azure AD B2C. Azure AD B2C podporuje pouze souhlas správce, ne souhlas uživatele.
+> Získání souhlasu pro několik prostředků funguje pro platformu Microsoft identity, ale ne pro Azure AD B2C. Azure AD B2C podporuje jenom souhlas správce, ne pro vyjádření souhlasu s uživatelem.
 
-Například pokud máte dva prostředky, které mají dva obory každý:
+Například pokud máte dva prostředky, které mají 2 obory, každý:
 
-- https:\//mytenant.onmicrosoft.com/customerapi (se `customer.read` 2 `customer.write`obory a )
-- https:\//mytenant.onmicrosoft.com/vendorapi (se `vendor.read` 2 `vendor.write`obory a )
+- https:\//mytenant.onmicrosoft.com/customerapi (s 2 `customer.read` obory `customer.write`a)
+- https:\//mytenant.onmicrosoft.com/vendorapi (s 2 `vendor.read` obory `vendor.write`a)
 
-Měli byste `.WithExtraScopeToConsent` použít modifikátor, který má *parametr extraScopesToConsent,* jak je znázorněno v následujícím příkladu:
+Použijte `.WithExtraScopeToConsent` modifikátor, který má parametr *extraScopesToConsent* , jak je znázorněno v následujícím příkladu:
 
 ```csharp
 string[] scopesForCustomerApi = new string[]
@@ -52,7 +52,7 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
                      .ExecuteAsync();
 ```
 
-Tím získáte přístupový token pro první webové rozhraní API. Potom, když potřebujete získat přístup k druhému webovému rozhraní API, můžete tiše získat token z mezipaměti tokenu:
+Tím získáte přístupový token pro první webové rozhraní API. Když pak budete potřebovat přístup k druhému webovému rozhraní API, můžete z mezipaměti tokenů tiše získat token:
 
 ```csharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();

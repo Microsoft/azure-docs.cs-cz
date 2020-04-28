@@ -10,21 +10,21 @@ ms.topic: include
 ms.date: 01/15/2020
 ms.custom: include file
 ms.openlocfilehash: cb43c8b8c952d8db6cf450a7015c22c85e7fe4b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76268241"
 ---
-(Typ `objectIdType` **identifikátoru objektu**) odkazuje na typ identity, která je dána roli. Kromě typů `DeviceId` `UserDefinedFunctionId` a odpovídají typy identifikátorů objektů vlastnostem objektů služby Azure Active Directory.
+`objectIdType` (Nebo **typ identifikátoru objektu**) odkazuje na typ identity, který je přidělen roli. Kromě typů `DeviceId` a `UserDefinedFunctionId` typy identifikátorů objektů odpovídají vlastnostem objektů Azure Active Directory.
 
-Následující tabulka obsahuje typy podporovaných identifikátorů objektů v Azure Digital Twins:
+Následující tabulka obsahuje podporované typy identifikátorů objektů v digitálních autovlákench Azure:
 
 | Typ | Popis |
 | --- | --- |
-| UserId | Přiřadí roli uživateli. |
-| DeviceId | Přiřadí roli zařízení. |
-| DomainName | Přiřadí roli názvu domény. Každý uživatel se zadaným názvem domény má přístupová práva odpovídající role. |
-| TenantId | Přiřadí roli klientovi. Každý uživatel, který patří do zadaného ID klienta Azure AD, má přístupová práva odpovídající role. |
-| Id serviceprincipalid | Přiřadí roli ID objektu instančního objektu. |
-| UserDefinedFunctionId | Přiřadí roli uživatelem definované funkci (UDF). |
+| UserId | Přiřadí uživateli roli. |
+| DeviceId | Přiřadí k zařízení roli. |
+| DomainName | Přiřadí roli názvu domény. Každý uživatel se zadaným názvem domény má přístupová práva k odpovídající roli. |
+| TenantId | Přiřadí klientovi roli. Každý uživatel, který patří do zadaného ID tenanta služby Azure AD, má přístupová práva odpovídající role. |
+| ServicePrincipalId | Přiřadí roli k ID instančního objektu služby. |
+| UserDefinedFunctionId | Přiřadí roli k uživatelsky definované funkci (UDF). |

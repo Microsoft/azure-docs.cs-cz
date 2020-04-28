@@ -1,6 +1,6 @@
 ---
-title: Náhled náhledu skupin umístění bezkontaktních umístění pro škálovací sady virtuálních strojů
-description: Přečtěte si o vytváření a používání skupin umístění bezkontaktní komunikace pro škálovací sady virtuálních strojů s Windows v Azure.
+title: Náhled skupin umístění pro Proximity pro Virtual Machine Scale Sets
+description: Seznamte se s vytvářením a používáním skupin umístění blízkosti pro Windows Virtual Machine Scale Sets v Azure.
 author: cynthn
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
@@ -9,27 +9,27 @@ ms.workload: infrastructure-services
 ms.date: 07/01/2019
 ms.author: cynthn
 ms.openlocfilehash: 4fa2949e2a7e1b99ac26caa35f967e9dc9cf359a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76273625"
 ---
-# <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>Náhled: Vytváření a používání skupin umístění bezkontaktní komunikace pomocí PowerShellu
+# <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>Preview: vytváření a používání skupin umístění blízkosti pomocí PowerShellu
 
-Chcete-li získat virtuální počítače co nejblíže, dosažení nejnižší možnou latenci, měli byste nasadit škálovací sadu v rámci [skupiny umístění bez kontaktní místo](co-location.md#preview-proximity-placement-groups).
+Pokud chcete co nejblíže získat virtuální počítače a dosáhnout nejnižší možné latence, měli byste v rámci [skupiny umístění blízkosti](co-location.md#preview-proximity-placement-groups)nasadit svou sadu škálování.
 
-Skupina umístění bezkontaktní komunikace je logické seskupení, které se používá k zajištění, že výpočetní prostředky Azure jsou fyzicky umístěny blízko sebe. Skupiny umístění bezkontaktní komunikace jsou užitečné pro úlohy, kde je požadavek nízké latence.
+Skupina umístění blízkosti je logické seskupení, které se používá k zajištění, že výpočetní prostředky Azure jsou fyzicky umístěné blízko sebe. Skupiny umístění blízkosti jsou užitečné pro úlohy, u kterých je minimální latence požadavek.
 
 > [!IMPORTANT]
-> Skupiny umístění bezkontaktní komunikace jsou aktuálně ve verzi Public Preview.
+> Skupiny umístění blízkosti jsou momentálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> Skupiny umístění bezkontaktního umístění nejsou v těchto oblastech během předběžné verze k dispozici: **Japonsko – východ**, Austrálie – **východ** a Indie **– střed**.
+> Skupiny umístění blízkosti nejsou v těchto oblastech k dispozici ve verzi Preview: **Japonsko – východ**, **Austrálie – východ** a **Indie – střed**.
 
 
 ## <a name="create-a-proximity-placement-group"></a>Vytvoření skupiny umístění bezkontaktní komunikace
-Vytvořte skupinu umístění bezkontaktní komunikace pomocí [rutiny New-AzProximityPlacementGroup.](https://docs.microsoft.com/powershell/module/az.compute/new-azproximityplacementgroup) 
+Pomocí rutiny [New-AzProximityPlacementGroup](https://docs.microsoft.com/powershell/module/az.compute/new-azproximityplacementgroup) vytvořte skupinu umístění blízkosti. 
 
 ```azurepowershell-interactive
 $resourceGroup = "myPPGResourceGroup"
@@ -43,9 +43,9 @@ $ppg = New-AzProximityPlacementGroup `
    -ProximityPlacementGroupType Standard
 ```
 
-## <a name="list-proximity-placement-groups"></a>Seznam skupin umístění bezkontaktní komunikace
+## <a name="list-proximity-placement-groups"></a>Seznam skupin umístění blízkosti
 
-Můžete vypsat všechny skupiny umístění bezkontaktní umístění pomocí [rutiny Get-AzProximityPlacementGroup.](/powershell/module/az.compute/get-azproximityplacementgroup)
+Pomocí rutiny [Get-AzProximityPlacementGroup](/powershell/module/az.compute/get-azproximityplacementgroup) můžete zobrazit seznam všech skupin umístění blízkosti.
 
 ```azurepowershell-interactive
 Get-AzProximityPlacementGroup
@@ -54,7 +54,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-scale-set"></a>Vytvoření škálovací sady
 
-Při vytváření škálovací sady vytvořte měřítko ve skupině umístění bezkontaktní [New-AzVMSS](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) komunikace pomocí `-ProximityPlacementGroup $ppg.Id` odkazu na ID skupiny umístění bez kontaktní ch ustavování.
+Pomocí `-ProximityPlacementGroup $ppg.Id` [New-AzVMSS](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) pro vytvoření sady škálování vytvořte v skupině umístění blízkosti rozsah, ve kterém se bude vztahovat na ID skupiny umístění blízkosti.
 
 ```azurepowershell-interactive
 $scalesetName = "myVM"
@@ -71,7 +71,7 @@ New-AzVmss `
   -ProximityPlacementGroup $ppg.Id
 ```
 
-Instanci můžete zobrazit ve skupině umístění pomocí [get-azproximityplacementgroup](/powershell/module/az.compute/get-azproximityplacementgroup).
+Instanci ve skupině umístění můžete zobrazit pomocí [Get-AzProximityPlacementGroup](/powershell/module/az.compute/get-azproximityplacementgroup).
 
 ```azurepowershell-interactive
   Get-AzProximityPlacementGroup `
@@ -82,4 +82,4 @@ Instanci můžete zobrazit ve skupině umístění pomocí [get-azproximityplace
 
 ## <a name="next-steps"></a>Další kroky
 
-Můžete také použít [Azure CLI](../virtual-machines/linux/proximity-placement-groups.md) k vytvoření skupiny umístění bezkontaktní.
+Pomocí rozhraní příkazového [řádku Azure](../virtual-machines/linux/proximity-placement-groups.md) můžete také vytvořit skupiny umístění pro Proximity.

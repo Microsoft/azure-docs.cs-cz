@@ -1,6 +1,6 @@
 ---
-title: Běžné vzorce dotazů ve Službě Azure Stream Analytics
-description: Tento článek popisuje několik běžných vzorů dotazů a návrhů, které jsou užitečné v azure stream analytics úlohy.
+title: Běžné vzory dotazů v Azure Stream Analytics
+description: Tento článek popisuje několik běžných vzorů a návrhů dotazů, které jsou užitečné v Azure Stream Analytics úlohách.
 services: stream-analytics
 author: rodrigoaatmicrosoft
 ms.author: rodrigoa
@@ -9,43 +9,43 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.openlocfilehash: aa8bd6e89dd47c4e972a860691d1bc3779ba5bc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75982318"
 ---
-# <a name="common-query-patterns-in-azure-stream-analytics"></a>Běžné vzorce dotazů ve Službě Azure Stream Analytics
+# <a name="common-query-patterns-in-azure-stream-analytics"></a>Běžné vzory dotazů v Azure Stream Analytics
 
-Dotazy ve službě Azure Stream Analytics se vyjadřují v dotazovacím jazyce podobném SQL. Konstrukce jazyka jsou zdokumentovány v referenční příručce [pro dotazovací jazyk Stream Analytics.](/stream-analytics-query/stream-analytics-query-language-reference) 
+Dotazy v Azure Stream Analytics jsou vyjádřeny v dotazovacím jazyce podobném SQL. Jazykové konstrukce jsou zdokumentovány v referenční příručce [jazyka Stream Analytics dotazů](/stream-analytics-query/stream-analytics-query-language-reference) . 
 
-Návrh dotazu může vyjádřit jednoduchou logiku předání pro přesunutí dat událostí z jednoho vstupního datového proudu do výstupního úložiště dat nebo může provést bohatou porovnávání vzorů a časovou analýzu pro výpočet agregací v různých časových oknech jako v [řešení Sestavení IoT pomocí průvodce Stream Analytics.](stream-analytics-build-an-iot-solution-using-stream-analytics.md) Můžete spojit data z více vstupů kombinovat události streamování a můžete provést vyhledávání proti statickým referenčním datům a obohatit hodnoty událostí. Můžete také zapisovat data do více výstupů.
+Návrh dotazu může vyjádřit jednoduchou předávací logiku pro přesun dat událostí z jednoho vstupního datového proudu do výstupního úložiště dat, nebo může provádět bohatou porovnávání vzorů a dočasnou analýzu pro výpočet agregovaných hodnot v různých časových oknech, jako v [sestavení řešení IoT pomocí průvodce Stream Analytics](stream-analytics-build-an-iot-solution-using-stream-analytics.md) . K kombinování událostí streamování můžete spojit data z několika vstupů a můžete provádět vyhledávání na základě statických referenčních dat a rozšířit hodnoty událostí. Můžete také zapisovat data do více výstupů.
 
-Tento článek popisuje řešení několika běžných vzorů dotazů založených na reálných scénářích.
+Tento článek popisuje řešení několika běžných vzorů dotazů založených na scénářích reálného světa.
 
 ## <a name="supported-data-formats"></a>Podporované formáty dat
 
-Azure Stream Analytics podporuje zpracování událostí ve formátech dat CSV, JSON a Avro.
+Azure Stream Analytics podporuje zpracování událostí v datových formátech CSV, JSON a Avro.
 
-JSON a Avro mohou obsahovat složité typy, jako jsou vnořené objekty (záznamy) nebo pole. Další informace o práci s těmito složitými datovými typy naleznete v článku [analýzy json a avro dat.](stream-analytics-parsing-json.md)
+JSON a Avro mohou obsahovat komplexní typy, jako jsou například vnořené objekty (záznamy) nebo pole. Další informace o práci s těmito komplexními datovými typy najdete v článku [Analýza JSON a data Avro](stream-analytics-parsing-json.md) .
 
 ## <a name="simple-pass-through-query"></a>Jednoduchý předávací dotaz
 
-Jednoduchý předávací dotaz lze zkopírovat vstupní data datového proudu do výstupu. Například pokud proud dat obsahující informace o vozidle v reálném čase je třeba uložit v databázi SQL pro analýzu dopisů, bude to provést jednoduchý předávací dotaz.
+Pomocí jednoduchého předávacího dotazu můžete zkopírovat data vstupního datového proudu do výstupu. Například pokud se datový proud dat, který obsahuje informace o vozidlech v reálném čase, musí uložit do databáze SQL pro analýzu dopisů, provede jednoduchý předávací dotaz úlohu.
 
 **Vstup**:
 
 | Značka | Time | Hmotnost |
 | --- | --- | --- |
-| Ovčák1 |2015-01-01T00:00:01.0000000Z |"1000" |
-| Ovčák1 |2015-01-01T00:00:02.0000000z |"2000" |
+| Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
+| Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
 
 **Výstup**:
 
 | Značka | Time | Hmotnost |
 | --- | --- | --- |
-| Ovčák1 |2015-01-01T00:00:01.0000000Z |"1000" |
-| Ovčák1 |2015-01-01T00:00:02.0000000z |"2000" |
+| Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
+| Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
 
 **Dotaz**:
 
@@ -56,23 +56,23 @@ INTO Output
 FROM Input
 ```
 
-A **SELECT** * dotaz projekty všechna pole příchozí události a odešle je do výstupu. Stejným způsobem **select** lze také použít pouze projekt oválná požadovaná pole ze vstupu. V tomto příkladu, *Time* pokud *jsou* pouze povinná pole vozidla, která mají být uložena, lze tato pole zadat v příkazu **SELECT.**
+Dotaz **Select** * vyprojektech všechna pole příchozí události a odesílá je do výstupu. Stejný způsob, jak **Vybrat** , lze také použít pouze k projektu povinných polí ze vstupu. V tomto příkladu, pokud je *vytvářená* a *Časová a časová* pole, která se mají uložit, je možné tato pole zadat v příkazu **Select** .
 
 **Vstup**:
 
 | Značka | Time | Hmotnost |
 | --- | --- | --- |
-| Ovčák1 |2015-01-01T00:00:01.0000000Z |1000 |
-| Ovčák1 |2015-01-01T00:00:02.0000000z |2000 |
-| Vytvořit2 |2015-01-01T00:00:04.0000000z |1 500 |
+| Make1 |2015-01-01T00:00:01.0000000 Z |1000 |
+| Make1 |2015-01-01T00:00:02.0000000 Z |2000 |
+| Make2 |2015-01-01T00:00:04.0000000 Z |1 500 |
 
 **Výstup**:
 
 | Značka | Time |
 | --- | --- |
-| Ovčák1 |2015-01-01T00:00:01.0000000Z |
-| Ovčák1 |2015-01-01T00:00:02.0000000z |
-| Vytvořit2 |2015-01-01T00:00:04.0000000z |
+| Make1 |2015-01-01T00:00:01.0000000 Z |
+| Make1 |2015-01-01T00:00:02.0000000 Z |
+| Make2 |2015-01-01T00:00:04.0000000 Z |
 
 **Dotaz**:
 
@@ -84,22 +84,22 @@ FROM Input
 ```
 ## <a name="data-aggregation-over-time"></a>Agregace dat v průběhu času
 
-Chcete-li vypočítat informace v časovém okně, data lze agregovat společně. V tomto příkladu se počítá počet za posledních 10 minut času pro každou konkrétní automobilovou řadu.
+Chcete-li vypočítat informace v časovém intervalu, lze data agregovat dohromady. V tomto příkladu je počet vypočítán za posledních 10 minut času pro všechny konkrétní auto.
 
 **Vstup**:
 
 | Značka | Time | Hmotnost |
 | --- | --- | --- |
-| Ovčák1 |2015-01-01T00:00:01.0000000Z |1000 |
-| Ovčák1 |2015-01-01T00:00:02.0000000z |2000 |
-| Vytvořit2 |2015-01-01T00:00:04.0000000z |1 500 |
+| Make1 |2015-01-01T00:00:01.0000000 Z |1000 |
+| Make1 |2015-01-01T00:00:02.0000000 Z |2000 |
+| Make2 |2015-01-01T00:00:04.0000000 Z |1 500 |
 
 **Výstup**:
 
 | Značka | Počet |
 | --- | --- |
-| Ovčák1 | 2 |
-| Vytvořit2 | 1 |
+| Make1 | 2 |
+| Make2 | 1 |
 
 **Dotaz**:
 
@@ -114,28 +114,28 @@ GROUP BY
     TumblingWindow(second, 10)
 ```
 
-Tato agregace seskupuje auta podle *make* a počítá je každých 10 sekund. Výstup má *Make* a *Count* automobilů, které prošly mýtného.
+Tato agregace seskupuje *automobily pomocí a* počítá je každých 10 sekund. Výstup má na začátku a na *počtu* vozidel, která se *provedla* prostřednictvím mýtné.
 
-TumblingWindow je funkce okna slouží ke seskupení událostí dohromady. Agregace lze použít přes všechny seskupené události. Další informace naleznete v [tématu funkce okna](stream-analytics-window-functions.md).
+TumblingWindow je funkce Window, která slouží k seskupení událostí dohromady. Agregaci lze použít pro všechny seskupené události. Další informace najdete v tématu [funkce pro okna](stream-analytics-window-functions.md).
 
-Další informace o agregaci naleznete v [agregačních funkcích](/stream-analytics-query/aggregate-functions-azure-stream-analytics).
+Další informace o agregaci naleznete v tématu [agregační funkce](/stream-analytics-query/aggregate-functions-azure-stream-analytics).
 
 ## <a name="data-conversion"></a>Převod dat
 
-Data mohou být přetypována v reálném čase pomocí metody **CAST.** Například hmotnost auta může být převedena z typu **nvarchar(max)** na typ **bigint** a může být použita na číselném výpočtu.
+Data je možné přetypovat v reálném čase pomocí metody **cast** . Například Tloušťka auta může být převedena z typu **nvarchar (max)** na typ **bigint** a lze ji použít pro číselný výpočet.
 
 **Vstup**:
 
 | Značka | Time | Hmotnost |
 | --- | --- | --- |
-| Ovčák1 |2015-01-01T00:00:01.0000000Z |"1000" |
-| Ovčák1 |2015-01-01T00:00:02.0000000z |"2000" |
+| Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
+| Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
 
 **Výstup**:
 
 | Značka | Hmotnost |
 | --- | --- |
-| Ovčák1 |3000 |
+| Make1 |3000 |
 
 **Dotaz**:
 
@@ -150,28 +150,28 @@ GROUP BY
     TumblingWindow(second, 10)
 ```
 
-K určení jeho datového typu použijte příkaz **CAST.** Podívejte se na seznam podporovaných datových typů na [datových typech (Azure Stream Analytics).](/stream-analytics-query/data-types-azure-stream-analytics)
+Použijte příkaz **cast** k určení jeho datového typu. Podívejte se na seznam podporovaných datových typů u [datových typů (Azure Stream Analytics)](/stream-analytics-query/data-types-azure-stream-analytics).
 
-Další informace o [funkcích převodu dat](/stream-analytics-query/conversion-functions-azure-stream-analytics).
+Další informace o [funkcích pro převod dat](/stream-analytics-query/conversion-functions-azure-stream-analytics).
 
-## <a name="string-matching-with-like-and-not-like"></a>Porovnávání řetězců s like a ne jako
+## <a name="string-matching-with-like-and-not-like"></a>Shoda řetězců s PODOBNÝm a nepodobným
 
-**LIKE** a **NOT LIKE** lze použít k ověření, zda pole odpovídá určitému vzoru. Například filtr může být vytvořen vrátit pouze registrační značky, které začínají písmenem 'A' a končí číslem 9.
+**Podobně jako** a **nikoli** , lze použít k ověření, zda pole odpovídá určitému vzoru. Můžete například vytvořit filtr, který vrátí pouze ty licenční štítky, které začínají písmenem "A" a končí číslem 9.
 
 **Vstup**:
 
 | Značka | License_plate | Time |
 | --- | --- | --- |
-| Ovčák1 |ABC-123 |2015-01-01T00:00:01.0000000Z |
-| Vytvořit2 |AAA-999 |2015-01-01T00:00:02.0000000z |
-| Osekat3 |ABC-369 |2015-01-01T00:00:03.0000000Z |
+| Make1 |ABC – 123 |2015-01-01T00:00:01.0000000 Z |
+| Make2 |AAA-999 |2015-01-01T00:00:02.0000000 Z |
+| Make3 |ABC – 369 |2015-01-01T00:00:03.0000000 Z |
 
 **Výstup**:
 
 | Značka | License_plate | Time |
 | --- | --- | --- |
-| Vytvořit2 |AAA-999 |2015-01-01T00:00:02.0000000z |
-| Osekat3 |ABC-369 |2015-01-01T00:00:03.0000000Z |
+| Make2 |AAA-999 |2015-01-01T00:00:02.0000000 Z |
+| Make3 |ABC – 369 |2015-01-01T00:00:03.0000000 Z |
 
 **Dotaz**:
 
@@ -184,26 +184,26 @@ WHERE
     License_plate LIKE 'A%9'
 ```
 
-Ke kontrole hodnoty **pole License_plate** použijte příkaz **LIKE.** Měl by začínat písmenem "A", pak mít libovolný řetězec nula nebo více znaků, končící číslem 9.
+Použijte příkaz **Like** pro kontrolu hodnoty pole **License_plate** . Měl by začínat písmenem A a pak mít libovolný řetězec nula nebo více znaků, který končí číslem 9.
 
-## <a name="specify-logic-for-different-casesvalues-case-statements"></a>Zadejte logiku pro různé případy/hodnoty (příkazy CASE)
+## <a name="specify-logic-for-different-casesvalues-case-statements"></a>Zadejte logiku pro různé případy nebo hodnoty (příkazy CASE).
 
-**Case** příkazy mohou poskytovat různé výpočty pro různá pole, na základě konkrétního kritéria. Například přiřaďte jízdní pruh "A" vozům *Make1* a pruhu "B" jakékoli jiné výrobě.
+Příkazy **case** můžou poskytovat různé výpočty pro různá pole na základě konkrétního kritéria. Například přiřaďte Lane ' A ' do auta *Make1* a Lane ' B ' do jakékoli jiné.
 
 **Vstup**:
 
 | Značka | Time |
 | --- | --- |
-| Ovčák1 |2015-01-01T00:00:01.0000000Z |
-| Vytvořit2 |2015-01-01T00:00:02.0000000z |
-| Vytvořit2 |2015-01-01T00:00:03.0000000Z |
+| Make1 |2015-01-01T00:00:01.0000000 Z |
+| Make2 |2015-01-01T00:00:02.0000000 Z |
+| Make2 |2015-01-01T00:00:03.0000000 Z |
 
 **Výstup**:
 
 | Značka |Dispatch_to_lane | Time |
 | --- | --- | --- |
-| Ovčák1 |"A" |2015-01-01T00:00:01.0000000Z |
-| Vytvořit2 |"B" |2015-01-01T00:00:02.0000000z |
+| Make1 |Určitého |2015-01-01T00:00:01.0000000 Z |
+| Make2 |B |2015-01-01T00:00:02.0000000 Z |
 
 **Řešení:**
 
@@ -219,39 +219,39 @@ FROM
     Input TIMESTAMP BY Time
 ```
 
-Výraz **CASE** porovnává výraz se sadou jednoduchých výrazů k určení jeho výsledku. V tomto příkladu jsou vozidla *Make1* odeslána do jízdního pruhu "A", zatímco vozidlům jiné hospo-
+Výraz **case** porovná výraz se sadou jednoduchých výrazů k určení jeho výsledku. V tomto příkladu se vozidla *Make1* odesílají na pás "A", zatímco vozidlo kterékoli jiné z nich bude přiřazeno Lane ' B '.
 
-Další informace naleznete v [písmenu výraz](/stream-analytics-query/case-azure-stream-analytics).
+Další informace najdete v tématu [výraz Case](/stream-analytics-query/case-azure-stream-analytics).
 
 ## <a name="send-data-to-multiple-outputs"></a>Odesílání dat do více výstupů
 
-Více **příkazů SELECT** lze použít k výstupu dat do různých výstupních propadů. Například jeden **SELECT** můžete výstup výstrahy založené na prahové hodnotě, zatímco jiný může výstup událostí do úložiště objektů blob.
+Pro výstup dat do různých výstupních umyvadel lze použít vícenásobné příkazy **Select** . Například jedna **možnost vybrat** může vygenerovat výstrahu na základě prahové hodnoty, zatímco jiná může vygenerovat události do úložiště objektů BLOB.
 
 **Vstup**:
 
 | Značka | Time |
 | --- | --- |
-| Ovčák1 |2015-01-01T00:00:01.0000000Z |
-| Ovčák1 |2015-01-01T00:00:02.0000000z |
-| Vytvořit2 |2015-01-01T00:00:01.0000000Z |
-| Vytvořit2 |2015-01-01T00:00:02.0000000z |
-| Vytvořit2 |2015-01-01T00:00:03.0000000Z |
+| Make1 |2015-01-01T00:00:01.0000000 Z |
+| Make1 |2015-01-01T00:00:02.0000000 Z |
+| Make2 |2015-01-01T00:00:01.0000000 Z |
+| Make2 |2015-01-01T00:00:02.0000000 Z |
+| Make2 |2015-01-01T00:00:03.0000000 Z |
 
-**Výstup ArchiveOutputOutput**:
+**Výstupní ArchiveOutput**:
 
 | Značka | Time |
 | --- | --- |
-| Ovčák1 |2015-01-01T00:00:01.0000000Z |
-| Ovčák1 |2015-01-01T00:00:02.0000000z |
-| Vytvořit2 |2015-01-01T00:00:01.0000000Z |
-| Vytvořit2 |2015-01-01T00:00:02.0000000z |
-| Vytvořit2 |2015-01-01T00:00:03.0000000Z |
+| Make1 |2015-01-01T00:00:01.0000000 Z |
+| Make1 |2015-01-01T00:00:02.0000000 Z |
+| Make2 |2015-01-01T00:00:01.0000000 Z |
+| Make2 |2015-01-01T00:00:02.0000000 Z |
+| Make2 |2015-01-01T00:00:03.0000000 Z |
 
-**Výstupní výstrahaVýstup**:
+**Výstupní AlertOutput**:
 
 | Značka | Time | Počet |
 | --- | --- | --- |
-| Vytvořit2 |2015-01-01T00:00:10.0000000Z |3 |
+| Make2 |2015-01-01T00:00:10.0000000 Z |3 |
 
 **Dotaz**:
 
@@ -278,9 +278,9 @@ HAVING
     [Count] >= 3
 ```
 
-Klauzule **INTO** říká Stream Analytics, které výstupy pro zápis dat. První **SELECT** definuje předávací dotaz, který přijímá data ze vstupu a odesílá je do výstupu s názvem **ArchiveOutput**. Druhý dotaz provádí některé jednoduché agregace a filtrování před odesláním výsledků na výstup systému následnévýstrahy s názvem **AlertOutput**.
+Klauzule **into** oznamuje Stream Analytics, na které výstupy mají zapisovat data. První **Výběr** definuje předávací dotaz, který přijímá data ze vstupu a odesílá je do výstupu s názvem **ArchiveOutput**. Druhý dotaz provede několik jednoduchých agregací a filtrování před odesláním výsledků do výstupního systému výstrah pro příjem dat s názvem **AlertOutput**.
 
-Všimněte si, že **WITH** klauzule lze definovat více bloků dílčí dotaz. Tato možnost má tu výhodu, že otevírá méně čteček vstupnímu zdroji.
+Všimněte si, že klauzuli **with** lze použít k definování více bloků dílčího dotazu. Tato možnost je výhodou otevření menšího počtu čtenářů ke vstupnímu zdroji.
 
 **Dotaz**:
 
@@ -306,30 +306,30 @@ GROUP BY
 HAVING [Count] >= 3
 ```
 
-Další informace naleznete v [klauzuli **WITH** ](/stream-analytics-query/with-azure-stream-analytics).
+Další informace najdete [ **v tématu s klauzulí with** ](/stream-analytics-query/with-azure-stream-analytics).
 
-## <a name="count-unique-values"></a>Počítat jedinečné hodnoty
+## <a name="count-unique-values"></a>Počet jedinečných hodnot
 
-**COUNT** a **DISTINCT** lze spočítat počet jedinečných hodnot polí, které se zobrazí v datovém proudu v časovém okně. Můžete vytvořit dotaz pro výpočet počtu jedinečných *osazení* vozů projetých mýtnou kabinou v okně 2 sekundy.
+**Počet** a **rozdíl** lze použít k výpočtu počtu jedinečných hodnot polí, které se zobrazí v datovém proudu v časovém intervalu. Je možné vytvořit dotaz, který *vypočítá, kolik jedinečných* vozidel předávaných přes telefonní stánku v okně 2 sekund.
 
 **Vstup**:
 
 | Značka | Time |
 | --- | --- |
-| Ovčák1 |2015-01-01T00:00:01.0000000Z |
-| Ovčák1 |2015-01-01T00:00:02.0000000z |
-| Vytvořit2 |2015-01-01T00:00:01.0000000Z |
-| Vytvořit2 |2015-01-01T00:00:02.0000000z |
-| Vytvořit2 |2015-01-01T00:00:03.0000000Z |
+| Make1 |2015-01-01T00:00:01.0000000 Z |
+| Make1 |2015-01-01T00:00:02.0000000 Z |
+| Make2 |2015-01-01T00:00:01.0000000 Z |
+| Make2 |2015-01-01T00:00:02.0000000 Z |
+| Make2 |2015-01-01T00:00:03.0000000 Z |
 
-**Výstup:**
+**Výkonem**
 
 | Count_make | Time |
 | --- | --- |
-| 2 |2015-01-01T00:00:02.000Z |
-| 1 |2015-01-01T00:00:04.000Z |
+| 2 |2015-01-01T00:00:02.000 Z |
+| 1 |2015-01-01T00:00:04.000 Z |
 
-**Dotazu:**
+**Zadávání**
 
 ```SQL
 SELECT
@@ -340,25 +340,25 @@ GROUP BY
      TumblingWindow(second, 2)
 ```
 
-**COUNT(DISTINCT Make)** vrátí počet odlišných hodnot ve sloupci **Vytvořit** v časovém okně.
-Další informace naleznete v souhrnné funkci [ **COUNT** ](/stream-analytics-query/count-azure-stream-analytics).
+**Count (jedinečné)** vrátí počet jedinečných hodnot ve sloupci **zpřístupnit** v časovém intervalu.
+Další informace najdete v tématu funkce [ **Count** Aggregate](/stream-analytics-query/count-azure-stream-analytics).
 
-## <a name="calculation-over-past-events"></a>Výpočet oproti minulým událostem
+## <a name="calculation-over-past-events"></a>Výpočet za minulé události
 
-Funkci **MAS** lze použít k prohlédnutí minulých událostí v časovém okně a jejich porovnání s aktuální událostí. Například, aktuální auto make může být výstup, pokud se liší od posledního vozu, který prošel mýtného.
+Funkci **Lag** lze použít k zobrazení minulých událostí v časovém intervalu a jejich porovnání s aktuální událostí. Například aktuální automobilový výstup může být výstupem, pokud se liší od posledního automobilu, který se přes placená linka provedl.
 
 **Vstup**:
 
 | Značka | Time |
 | --- | --- |
-| Ovčák1 |2015-01-01T00:00:01.0000000Z |
-| Vytvořit2 |2015-01-01T00:00:02.0000000z |
+| Make1 |2015-01-01T00:00:01.0000000 Z |
+| Make2 |2015-01-01T00:00:02.0000000 Z |
 
 **Výstup**:
 
 | Značka | Time |
 | --- | --- |
-| Vytvořit2 |2015-01-01T00:00:02.0000000z |
+| Make2 |2015-01-01T00:00:02.0000000 Z |
 
 **Dotaz**:
 
@@ -372,32 +372,32 @@ WHERE
     LAG(Make, 1) OVER (LIMIT DURATION(minute, 1)) <> Make
 ```
 
-Pomocí **MAS** můžete nahlédnout do vstupního datového proudu o jednu událost zpět, načíst hodnotu *Make* a porovnat ji s hodnotou *Make* aktuální události a výstupem události.
+Pomocí **prodlevy** můžete prohlížet vstupní datový proud jednu událost zpět, načíst hodnotu a porovnávat ji *s hodnotou pro* aktuální událost a *vydávat* výstup události.
 
-Další informace naleznete v [**masce MAS**](/stream-analytics-query/lag-azure-stream-analytics).
+Další informace najdete v tématu [**Prodleva**](/stream-analytics-query/lag-azure-stream-analytics).
 
 ## <a name="retrieve-the-first-event-in-a-window"></a>Načtení první události v okně
 
-**IsFirst** lze načíst první událost v časovém okně. Například v každém intervalu 10 minut předávací první informace o voze.
+Možnost- **First** se dá použít k načtení první události v časovém intervalu. Například je třeba uvést první informace o automobilu do intervalu 10 minut.
 
 **Vstup**:
 
 | License_plate | Značka | Time |
 | --- | --- | --- |
-| DXE 5291 |Ovčák1 |2015-07-27T00:00:05.0000000z |
-| YZK 5704 |Osekat3 |2015-07-27T00:02:17.0000000z |
-| RMV 8282 |Ovčák1 |2015-07-27T00:05:01.0000000z |
-| YHN 6970 |Vytvořit2 |2015-07-27T00:06:00.0000000z |
-| VFE 1616 |Vytvořit2 |2015-07-27T00:09:31.0000000Z |
-| QYF 9358 |Ovčák1 |2015-07-27T00:12:02.0000000z |
-| MDR 6128 |Ovčák4 |2015-07-27T00:13:45.0000000z |
+| DXE 5291 |Make1 |2015 – 07 – 27T00:00:05.0000000 Z |
+| YZK 5704 |Make3 |2015 – 07 – 27T00:02:17.0000000 Z |
+| RMV 8282 |Make1 |2015 – 07 – 27T00:05:01.0000000 Z |
+| YHN 6970 |Make2 |2015 – 07 – 27T00:06:00.0000000 Z |
+| VFE 1616 |Make2 |2015 – 07 – 27T00:09:31.0000000 Z |
+| QYF 9358 |Make1 |2015 – 07 – 27T00:12:02.0000000 Z |
+| MDR 6128 |Make4 |2015 – 07 – 27T00:13:45.0000000 Z |
 
 **Výstup**:
 
 | License_plate | Značka | Time |
 | --- | --- | --- |
-| DXE 5291 |Ovčák1 |2015-07-27T00:00:05.0000000z |
-| QYF 9358 |Ovčák1 |2015-07-27T00:12:02.0000000z |
+| DXE 5291 |Make1 |2015 – 07 – 27T00:00:05.0000000 Z |
+| QYF 9358 |Make1 |2015 – 07 – 27T00:12:02.0000000 Z |
 
 **Dotaz**:
 
@@ -412,17 +412,17 @@ WHERE
     IsFirst(minute, 10) = 1
 ```
 
-**IsFirst** může také rozdělit data a vypočítat první událost pro každé konkrétní auto *Make* nalezené v každém intervalu 10 minut.
+**Je možné také** rozdělit data na oddíly a vypočítat první událost u každého konkrétního auta *,* který byl nalezen v každém intervalu 10 minut.
 
 **Výstup**:
 
 | License_plate | Značka | Time |
 | --- | --- | --- |
-| DXE 5291 |Ovčák1 |2015-07-27T00:00:05.0000000z |
-| YZK 5704 |Osekat3 |2015-07-27T00:02:17.0000000z |
-| YHN 6970 |Vytvořit2 |2015-07-27T00:06:00.0000000z |
-| QYF 9358 |Ovčák1 |2015-07-27T00:12:02.0000000z |
-| MDR 6128 |Ovčák4 |2015-07-27T00:13:45.0000000z |
+| DXE 5291 |Make1 |2015 – 07 – 27T00:00:05.0000000 Z |
+| YZK 5704 |Make3 |2015 – 07 – 27T00:02:17.0000000 Z |
+| YHN 6970 |Make2 |2015 – 07 – 27T00:06:00.0000000 Z |
+| QYF 9358 |Make1 |2015 – 07 – 27T00:12:02.0000000 Z |
+| MDR 6128 |Make4 |2015 – 07 – 27T00:13:45.0000000 Z |
 
 **Dotaz**:
 
@@ -437,30 +437,30 @@ WHERE
     IsFirst(minute, 10) OVER (PARTITION BY Make) = 1
 ```
 
-Další informace naleznete v [**isfirst**](/stream-analytics-query/isfirst-azure-stream-analytics).
+Další informace najdete v části co [**nejdřív**](/stream-analytics-query/isfirst-azure-stream-analytics).
 
-## <a name="return-the-last-event-in-a-window"></a>Vrátit poslední událost v okně
+## <a name="return-the-last-event-in-a-window"></a>Vrátí poslední událost v okně.
 
-Jako události jsou spotřebovány systémem v reálném čase, neexistuje žádná funkce, která může určit, zda událost bude poslední, která dorazí pro toto časové období. K dosažení tohoto cíle vstupní datový proud musí být spojen s jiným, kde čas události je maximální čas pro všechny události v tomto okně.
+Když systém spotřebovává události v reálném čase, není k dispozici žádná funkce, která by mohla určit, jestli bude událost poslední pro doručení daného časového období. Aby se to dosáhlo, musí se vstupní datový proud připojit k druhému, kde čas události je maximální doba pro všechny události v tomto okně.
 
 **Vstup**:
 
 | License_plate | Značka | Time |
 | --- | --- | --- |
-| DXE 5291 |Ovčák1 |2015-07-27T00:00:05.0000000z |
-| YZK 5704 |Osekat3 |2015-07-27T00:02:17.0000000z |
-| RMV 8282 |Ovčák1 |2015-07-27T00:05:01.0000000z |
-| YHN 6970 |Vytvořit2 |2015-07-27T00:06:00.0000000z |
-| VFE 1616 |Vytvořit2 |2015-07-27T00:09:31.0000000Z |
-| QYF 9358 |Ovčák1 |2015-07-27T00:12:02.0000000z |
-| MDR 6128 |Ovčák4 |2015-07-27T00:13:45.0000000z |
+| DXE 5291 |Make1 |2015 – 07 – 27T00:00:05.0000000 Z |
+| YZK 5704 |Make3 |2015 – 07 – 27T00:02:17.0000000 Z |
+| RMV 8282 |Make1 |2015 – 07 – 27T00:05:01.0000000 Z |
+| YHN 6970 |Make2 |2015 – 07 – 27T00:06:00.0000000 Z |
+| VFE 1616 |Make2 |2015 – 07 – 27T00:09:31.0000000 Z |
+| QYF 9358 |Make1 |2015 – 07 – 27T00:12:02.0000000 Z |
+| MDR 6128 |Make4 |2015 – 07 – 27T00:13:45.0000000 Z |
 
 **Výstup**:
 
 | License_plate | Značka | Time |
 | --- | --- | --- |
-| VFE 1616 |Vytvořit2 |2015-07-27T00:09:31.0000000Z |
-| MDR 6128 |Ovčák4 |2015-07-27T00:13:45.0000000z |
+| VFE 1616 |Make2 |2015 – 07 – 27T00:09:31.0000000 Z |
+| MDR 6128 |Make4 |2015 – 07 – 27T00:13:45.0000000 Z |
 
 **Dotaz**:
 
@@ -486,31 +486,31 @@ FROM
     AND Input.Time = LastInWindow.LastEventTime
 ```
 
-První krok v dotazu najde maximální časové razítko v 10minutových oknech, což je časové razítko poslední události pro toto okno. Druhý krok spojuje výsledky prvního dotazu s původním datovým proudem a vyhledá událost, která odpovídá posledním časovým razítkům v každém okně. 
+První krok v dotazu najde maximální časové razítko v oknech o velikosti 10 minut, což je časové razítko poslední události pro toto okno. Druhý krok spojí výsledky prvního dotazu s původním datovým proudem, aby bylo možné najít událost, která se shoduje s posledními časovými razítky v jednotlivých oknech. 
 
-**DATEDIFF** je funkce specifická pro datum, která porovnává a vrací časový rozdíl mezi dvěma poli DateTime, další informace naleznete v [date function](https://docs.microsoft.com/stream-analytics-query/date-and-time-functions-azure-stream-analytics).
+**DateDiff** je funkce specifická pro datum, která porovnává a vrátí časový rozdíl mezi dvěma poli DateTime. Další informace najdete v tématu [Date Functions](https://docs.microsoft.com/stream-analytics-query/date-and-time-functions-azure-stream-analytics).
 
-Další informace o spojování datových proudů naleznete v odkazech [**JOIN**](/stream-analytics-query/join-azure-stream-analytics).
+Další informace o spojování datových proudů najdete v tématu věnovaném [**připojení**](/stream-analytics-query/join-azure-stream-analytics).
 
 
 ## <a name="correlate-events-in-a-stream"></a>Korelace událostí v datovém proudu
 
-Korelační události ve stejném datovém proudu lze provést při pohledu na minulé události pomocí funkce **MAS.** Například výstup může být generován pokaždé, když dvě po sobě jdoucí auta ze *stejnémake* projít mýtnéza posledních 90 sekund.
+Korelace událostí ve stejném datovém proudu se dá udělat tak, že si prohlížíte minulé události pomocí funkce **Lag** . Výstup lze například vygenerovat pokaždé, když dvě po sobě jdoucí automobily ze *stejné linky* projdou za posledních 90 sekund.
 
 **Vstup**:
 
 | Značka | License_plate | Time |
 | --- | --- | --- |
-| Ovčák1 |ABC-123 |2015-01-01T00:00:01.0000000Z |
-| Ovčák1 |AAA-999 |2015-01-01T00:00:02.0000000z |
-| Vytvořit2 |DEF-987 |2015-01-01T00:00:03.0000000Z |
-| Ovčák1 |GHI-345 |2015-01-01T00:00:04.0000000z |
+| Make1 |ABC – 123 |2015-01-01T00:00:01.0000000 Z |
+| Make1 |AAA-999 |2015-01-01T00:00:02.0000000 Z |
+| Make2 |DEF – 987 |2015-01-01T00:00:03.0000000 Z |
+| Make1 |GHI-345 |2015-01-01T00:00:04.0000000 Z |
 
 **Výstup**:
 
 | Značka | Time | Current_car_license_plate | First_car_license_plate | First_car_time |
 | --- | --- | --- | --- | --- |
-| Ovčák1 |2015-01-01T00:00:02.0000000z |AAA-999 |ABC-123 |2015-01-01T00:00:01.0000000Z |
+| Make1 |2015-01-01T00:00:02.0000000 Z |AAA-999 |ABC – 123 |2015-01-01T00:00:01.0000000 Z |
 
 **Dotaz**:
 
@@ -527,26 +527,26 @@ WHERE
     LAG(Make, 1) OVER (LIMIT DURATION(second, 90)) = Make
 ```
 
-Funkce **MAS** můžete nahlédnout do vstupního datového proudu jednu událost zpět a načíst *Make* hodnotu, porovnáním, že s *Make* hodnotu aktuální události.  Jakmile je podmínka splněna, data z předchozí události lze promítnout pomocí **MAS** v příkazu **SELECT.**
+Funkce **Lag** může ve vstupním datovém proudu vyhledat jednu událost zpět a načíst *hodnotu,* a to porovnáním s *hodnotou pro* aktuální událost.  Po splnění podmínky lze data z předchozí události promítnout pomocí příkazu **Lag** v příkazu **Select** .
 
-Další informace naleznete v [masce MAS](/stream-analytics-query/lag-azure-stream-analytics).
+Další informace najdete v tématu [Prodleva](/stream-analytics-query/lag-azure-stream-analytics).
 
-## <a name="detect-the-duration-between-events"></a>Zjištění doby mezi událostmi
+## <a name="detect-the-duration-between-events"></a>Zjištění trvání mezi událostmi
 
-Dobu trvání události lze vypočítat pohledem na poslední událost Start po přijetí události End. Tento dotaz může být užitečný k určení času, který uživatel stráví na stránce nebo funkci.
+Dobu trvání události lze vypočítat vyhledáním poslední události spuštění po přijetí události end. Tento dotaz může být užitečný k určení času stráveného uživatelem na stránce nebo funkci.
 
 **Vstup**:  
 
 | Uživatel | Funkce | Událost | Time |
 | --- | --- | --- | --- |
-| user@location.com |Pravá nabídka |Start |2015-01-01T00:00:01.0000000Z |
-| user@location.com |Pravá nabídka |End |2015-01-01T00:00:08.0000000z |
+| user@location.com |RightMenu |Spustit |2015-01-01T00:00:01.0000000 Z |
+| user@location.com |RightMenu |End |2015-01-01T00:00:08.0000000 Z |
 
 **Výstup**:  
 
 | Uživatel | Funkce | Doba trvání |
 | --- | --- | --- |
-| user@location.com |Pravá nabídka |7 |
+| user@location.com |RightMenu |7 |
 
 **Dotaz**:
 
@@ -563,30 +563,30 @@ WHERE
     Event = 'end'
 ```
 
-**Funkci LAST** lze použít k načtení poslední události v rámci určité podmínky. V tomto příkladu je podmínka událost typu Start, která rozdělí hledání podle uživatele a funkce **PARTITION BY.** Tímto způsobem každý uživatel a funkce je zacházeno nezávisle při hledání Start události. **LIMIT DURATION** omezuje hledání zpět v čase na 1 hodinu mezi události Konec a Zahájení.
+**Poslední** funkce se dá použít k načtení poslední události v konkrétní podmínce. V tomto příkladu je podmínka událost typu Start, dělení hledání podle **oddílů podle** uživatele a funkce. V takovém případě se každý uživatel a funkce při hledání události Start nezávisle považovat za nezávisle. **Doba omezení** : omezí dobu hledání v čase na 1 hodinu mezi koncovými a počátečními událostmi.
 
 ## <a name="detect-the-duration-of-a-condition"></a>Zjištění doby trvání podmínky
 
-Pro podmínky, které se rozprostírají přes více událostí, lze funkci **MAS** použít k identifikaci doby trvání této podmínky. Předpokládejme například, že chyba za následek všechny vozy s nesprávnou hmotností (nad 20 000 liber) a doba trvání této chyby musí být vypočítána.
+Pro podmínky, které jsou v rozsahu více událostmi, lze funkci **Lag** použít k identifikaci doby trvání této podmínky. Předpokládejme například, že chyba byla způsobena tím, že všechna auta mají nesprávnou váhu (nad 20 000 libry) a že se musí vypočítat doba trvání této chyby.
 
 **Vstup**:
 
 | Značka | Time | Hmotnost |
 | --- | --- | --- |
-| Ovčák1 |2015-01-01T00:00:01.0000000Z |2000 |
-| Vytvořit2 |2015-01-01T00:00:02.0000000z |250 000 |
-| Ovčák1 |2015-01-01T00:00:03.0000000Z |26000 |
-| Vytvořit2 |2015-01-01T00:00:04.0000000z |250 000 |
-| Ovčák1 |2015-01-01T00:00:05.0000000z |26000 |
-| Vytvořit2 |2015-01-01T00:00:06.0000000z |250 000 |
-| Ovčák1 |2015-01-01T00:00:07.0000000z |26000 |
-| Vytvořit2 |2015-01-01T00:00:08.0000000z |2000 |
+| Make1 |2015-01-01T00:00:01.0000000 Z |2000 |
+| Make2 |2015-01-01T00:00:02.0000000 Z |250 000 |
+| Make1 |2015-01-01T00:00:03.0000000 Z |26000 |
+| Make2 |2015-01-01T00:00:04.0000000 Z |250 000 |
+| Make1 |2015-01-01T00:00:05.0000000 Z |26000 |
+| Make2 |2015-01-01T00:00:06.0000000 Z |250 000 |
+| Make1 |2015-01-01T00:00:07.0000000 Z |26000 |
+| Make2 |2015-01-01T00:00:08.0000000 Z |2000 |
 
 **Výstup**:
 
 | Start_fault | End_fault |
 | --- | --- |
-| 2015-01-01T00:00:02.000Z |2015-01-01T00:00:07.000Z |
+| 2015-01-01T00:00:02.000 Z |2015-01-01T00:00:07.000 Z |
 
 **Dotaz**:
 
@@ -608,13 +608,13 @@ WHERE
     [weight] < 20000
     AND previous_weight > 20000
 ```
-První příkaz **SELECT** koreluje aktuální měření hmotnosti s předchozím měřením a promítá jej společně s aktuálním měřením. Druhý **SELECT** se ohlíží zpět na poslední akci, kde *je previous_weight* menší než 20000, kde je aktuální hmotnost menší než 20000 a *previous_weight* aktuální události byla větší než 20000.
+První příkaz **Select** koreluje aktuální váhu s předchozí měřením a propojuje je s aktuální měření. Druhý **Výběr** se vrátí k poslední události, kde je *previous_weight* menší než 20000, přičemž aktuální váha je menší než 20000 a *previous_weight* aktuální události byla větší než 20000.
 
-End_fault je aktuální nevadla, kdy předchozí událost byla vadná a Start_fault je poslední nevadla předtím.
+End_fault je aktuální nepoškozená událost, u které došlo k chybě předchozí události, a Start_fault je poslední nepoškozená událost.
 
-## <a name="periodically-output-values"></a>Pravidelně výstupní hodnoty
+## <a name="periodically-output-values"></a>Periodické výstupní hodnoty
 
-V případě nepravidelných nebo chybějících událostí lze z řídkějšího datového vstupu vygenerovat výstup pravidelného intervalu. Například generovat událost každých 5 sekund, která hlásí naposledy viděný datový bod.
+V případě nepravidelných nebo chybějících událostí lze výstup pravidelného intervalu vygenerovat z zhuštěného datového vstupu. Vygenerujte například událost každých 5 sekund, která hlásí poslední zjištěný datový bod.
 
 **Vstup**:
 
@@ -627,20 +627,20 @@ V případě nepravidelných nebo chybějících událostí lze z řídkějšíh
 | "2014-01-01T06:01:30" |5 |
 | "2014-01-01T06:01:35" |6 |
 
-**Výstup (prvních 10 řádků):**
+**Výstup (prvních 10 řádků)**:
 
-| Window_end | Last_event. Čas | Last_event. Hodnotu |
+| Window_end | Last_event. Interval | Last_event. Osa |
 | --- | --- | --- |
-| 2014-01-01T14:01:00.000Z |2014-01-01T14:01:00.000Z |1 |
-| 2014-01-01T14:01:05.000Z |2014-01-01T14:01:05.000Z |2 |
-| 2014-01-01T14:01:10.000Z |2014-01-01T14:01:10.000Z |3 |
-| 2014-01-01T14:01:15.000Z |2014-01-01T14:01:15.000Z |4 |
-| 2014-01-01T14:01:20.000Z |2014-01-01T14:01:15.000Z |4 |
-| 2014-01-01T14:01:25.000Z |2014-01-01T14:01:15.000Z |4 |
-| 2014-01-01T14:01:30.000Z |2014-01-01T14:01:30.000Z |5 |
-| 2014-01-01T14:01:35.000Z |2014-01-01T14:01:35.000Z |6 |
-| 2014-01-01T14:01:40.000Z |2014-01-01T14:01:35.000Z |6 |
-| 2014-01-01T14:01:45.000Z |2014-01-01T14:01:35.000Z |6 |
+| 2014-01-01T14:01:00.000 Z |2014-01-01T14:01:00.000 Z |1 |
+| 2014-01-01T14:01:05.000 Z |2014-01-01T14:01:05.000 Z |2 |
+| 2014-01-01T14:01:10.000 Z |2014-01-01T14:01:10.000 Z |3 |
+| 2014-01-01T14:01:15.000 Z |2014-01-01T14:01:15.000 Z |4 |
+| 2014-01-01T14:01:20.000 Z |2014-01-01T14:01:15.000 Z |4 |
+| 2014-01-01T14:01:25.000 Z |2014-01-01T14:01:15.000 Z |4 |
+| 2014-01-01T14:01:30.000 Z |2014-01-01T14:01:30.000 Z |5 |
+| 2014-01-01T14:01:35.000 Z |2014-01-01T14:01:35.000 Z |6 |
+| 2014-01-01T14:01:40.000 Z |2014-01-01T14:01:35.000 Z |6 |
+| 2014-01-01T14:01:45.000 Z |2014-01-01T14:01:35.000 Z |6 |
 
 **Dotaz**:
 
@@ -654,27 +654,27 @@ GROUP BY
     HOPPINGWINDOW(second, 300, 5)
 ```
 
-Tento dotaz generuje události každých 5 sekund a výstupy poslední událost, která byla přijata dříve. **HoppingWINDOW** doba trvání určuje, jak daleko zpět dotaz vypadá najít nejnovější událost.
+Tento dotaz generuje události každých 5 sekund a vypíše poslední událost, která byla dříve přijata. Doba trvání **HOPPINGWINDOW** určuje, jak daleko se má dotaz Hledat v poslední události.
 
-Další informace naleznete v [okně Hopping](/stream-analytics-query/hopping-window-azure-stream-analytics).
+Další informace najdete v [okně skákající](/stream-analytics-query/hopping-window-azure-stream-analytics).
 
-## <a name="process-events-with-independent-time-substreams"></a>Zpracovat události s nezávislým časem (Substreams)
+## <a name="process-events-with-independent-time-substreams"></a>Zpracování událostí s nezávislým časem (podproudy)
 
-Události mohou být doručeny pozdě nebo mimo pořadí z důvodu zkosení hodin mezi výrobci událostí, zkosením hodin mezi oddíly nebo latencí sítě.
-Například hodiny zařízení pro *TollID* 2 je pět sekund za *TollID* 1 a hodiny zařízení pro *TollID* 3 je deset sekund za *TollID* 1. Výpočtmůže dojít nezávisle pro každé mýtné, s ohledem pouze na vlastní hodiny data jako časové razítko.
+Události mohou docházet pozdě nebo mimo pořadí z důvodu výpadků hodin mezi výrobci událostí, hodinovým zkosením mezi oddíly nebo latencí sítě.
+Například hodiny zařízení pro *TollID* 2 jsou pět sekund za *TollID* 1 a hodiny zařízení pro *TollID* 3 jsou deset sekund po hodnotě *TollID* 1. Výpočet může být nezávisle u každého placená linka a zvažuje pouze vlastní data o hodinách jako časové razítko.
 
 **Vstup**:
 
-| Registrační značka | Značka | Time | TollID |
+| LicensePlate | Značka | Time | TollID |
 | --- | --- | --- | --- |
-| DXE 5291 |Ovčák1 |2015-07-27T00:00:01.0000000Z | 1 |
-| YHN 6970 |Vytvořit2 |2015-07-27T00:00:05.0000000z | 1 |
-| QYF 9358 |Ovčák1 |2015-07-27T00:00:01.0000000Z | 2 |
-| GXF 9462 |Osekat3 |2015-07-27T00:00:04.0000000z | 2 |
-| VFE 1616 |Vytvořit2 |2015-07-27T00:00:10.0000000z | 1 |
-| RMV 8282 |Ovčák1 |2015-07-27T00:00:03.0000000z | 3 |
-| MDR 6128 |Osekat3 |2015-07-27T00:00:11.0000000z | 2 |
-| YZK 5704 |Ovčák4 |2015-07-27T00:00:07.0000000z | 3 |
+| DXE 5291 |Make1 |2015 – 07 – 27T00:00:01.0000000 Z | 1 |
+| YHN 6970 |Make2 |2015 – 07 – 27T00:00:05.0000000 Z | 1 |
+| QYF 9358 |Make1 |2015 – 07 – 27T00:00:01.0000000 Z | 2 |
+| GXF 9462 |Make3 |2015 – 07 – 27T00:00:04.0000000 Z | 2 |
+| VFE 1616 |Make2 |2015 – 07 – 27T00:00:10.0000000 Z | 1 |
+| RMV 8282 |Make1 |2015 – 07 – 27T00:00:03.0000000 Z | 3 |
+| MDR 6128 |Make3 |2015 – 07 – 27T00:00:11.0000000 Z | 2 |
+| YZK 5704 |Make4 |2015 – 07 – 27T00:00:07.0000000 Z | 3 |
 
 **Výstup**:
 
@@ -698,28 +698,28 @@ FROM input
 GROUP BY TUMBLINGWINDOW(second, 5), TollId
 ```
 
-Klauzule **TIMESTAMP OVER BY** se dívá na časovou osu každého zařízení nezávisle pomocí substreams. Výstupní událost pro každý *TollID* je generována, jak jsou vypočítány, což znamená, že události jsou v pořadí s ohledem na každý *TollID* namísto přeuspořádané, jako kdyby všechna zařízení byla na stejné hodiny.
+**Časová osa přes** klauzuli vyhledává každou časovou osu zařízení nezávisle na podproudech. Výstupní událost pro každý *TollID* je vygenerována při jejich výpočtu, což znamená, že události jsou v souladu s jednotlivými *TollIDy* namísto přeřazení, jako kdyby byla všechna zařízení ve stejný čas.
 
-Další informace naleznete [v timestamp by over](/stream-analytics-query/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering).
+Další informace najdete v tématu [časové razítko pomocí](/stream-analytics-query/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering)služby.
 
-## <a name="remove-duplicate-events-in-a-window"></a>Odebrání duplicitních událostí v okně
+## <a name="remove-duplicate-events-in-a-window"></a>Odstranění duplicitních událostí v okně
 
-Při provádění operace, jako je výpočet průměrů nad událostmi v daném časovém okně, by měly být filtrovány duplicitní události. V následujícím příkladu druhá událost je duplikát první.
+Při provádění operace, jako je výpočet průměru pro události v daném časovém intervalu, by se měly filtrovat duplicitní události. V následujícím příkladu je druhá událost duplikátem prvního.
 
 **Vstup**:  
 
 | DeviceId | Time | Atribut | Hodnota |
 | --- | --- | --- | --- |
-| 1 |2018-07-27T00:00:01.0000000Z |Teplota |50 |
-| 1 |2018-07-27T00:00:01.0000000Z |Teplota |50 |
-| 2 |2018-07-27T00:00:01.0000000Z |Teplota |40 |
-| 1 |2018-07-27T00:00:05.0000000z |Teplota |60 |
-| 2 |2018-07-27T00:00:05.0000000z |Teplota |50 |
-| 1 |2018-07-27T00:00:10.0000000Z |Teplota |100 |
+| 1 |2018-07-27T00:00:01.0000000 Z |Teplota |50 |
+| 1 |2018-07-27T00:00:01.0000000 Z |Teplota |50 |
+| 2 |2018-07-27T00:00:01.0000000 Z |Teplota |40 |
+| 1 |2018-07-27T00:00:05.0000000 Z |Teplota |60 |
+| 2 |2018-07-27T00:00:05.0000000 Z |Teplota |50 |
+| 1 |2018-07-27T00:00:10.0000000 Z |Teplota |100 |
 
 **Výstup**:  
 
-| Průměrná hodnota | DeviceId |
+| AverageValue | DeviceId |
 | --- | --- |
 | 70 | 1 |
 |45 | 2 |
@@ -747,32 +747,32 @@ FROM Temp
 GROUP BY DeviceId,TumblingWindow(minute, 5)
 ```
 
-**funkce COUNT(DISTINCT Time)** vrátí počet odlišných hodnot ve sloupci Čas v časovém okně. Výstup prvního kroku pak lze použít k výpočtu průměru na zařízení, zahozením duplikátů.
+**Počet (jedinečný čas)** vrátí počet jedinečných hodnot ve sloupci čas v časovém intervalu. Výstup prvního kroku se pak dá použít k výpočtu průměru na zařízení tím, že zahodí duplicity.
 
-Další informace naleznete [v count(distinct time)](/stream-analytics-query/count-azure-stream-analytics).
+Další informace najdete v tématu o [počtu (jedinečný čas)](/stream-analytics-query/count-azure-stream-analytics).
 
-## <a name="session-windows"></a>Relace Windows
+## <a name="session-windows"></a>Okna relace
 
-Okno relace je okno, které se neustále rozpíná, když dochází k událostem, a zavře se pro výpočty, pokud není přijata žádná událost po určité době nebo pokud okno dosáhne maximální doby trvání.
-Toto okno je užitečné zejména při výpočtu dat interakce uživatele. Okno se spustí, když uživatel začne pracovat se systémem a zavře se, když nejsou pozorovány žádné další události, což znamená, že uživatel přestal komunikovat.
-Uživatel například interaguje s webovou stránkou, kde je zaznamenán počet kliknutí, okno relace lze použít k zjištění, jak dlouho uživatel s webem komunikoval.
+Okno relace je okno, které udržuje rozbalení jako události a je zavřené pro výpočet, pokud se po určité době neobdrží žádná událost ani když okno dosáhne maximální doby trvání.
+Toto okno je zvláště užitečné při výpočtu dat interakce uživatele. Okno se spustí, když uživatel spustí interakci se systémem a zavře, když se nepozorují žádné další události, což znamená, že uživatel zastavil interakci.
+Uživatel například komunikuje s webovou stránkou, kde je zaznamenán počet kliknutí, okno relace lze použít k zjištění, jak dlouho uživatel pracuje s webem.
 
 **Vstup**:
 
 | User_id | Time | zprostředkovatele identity |
 | --- | --- | --- |
-| 0 | 2017-01-26T00:00:00.0000000z | "www.example.com/a.html" |
-| 0 | 2017-01-26T00:00:20.0000000z | "www.example.com/b.html" |
-| 1 | 2017-01-26T00:00:55.0000000z | "www.example.com/c.html" |
-| 0 | 2017-01-26T00:01:10.0000000Z | "www.example.com/d.html" |
-| 1 | 2017-01-26T00:01:15.0000000z | "www.example.com/e.html" |
+| 0 | 2017-01-26T00:00:00.0000000 Z | "www.example.com/a.html" |
+| 0 | 2017-01-26T00:00:20.0000000 Z | "www.example.com/b.html" |
+| 1 | 2017-01-26T00:00:55.0000000 Z | "www.example.com/c.html" |
+| 0 | 2017-01-26T00:01:10.0000000 Z | "www.example.com/d.html" |
+| 1 | 2017-01-26T00:01:15.0000000 Z | "www.example.com/e.html" |
 
 **Výstup**:
 
 | User_id | StartTime | EndTime | Duration_in_seconds |
 | --- | --- | --- | --- |
-| 0 | 2017-01-26T00:00:00.0000000z | 2017-01-26T00:01:10.0000000Z | 70 |
-| 1 | 2017-01-26T00:00:55.0000000z | 2017-01-26T00:01:15.0000000z | 20 |
+| 0 | 2017-01-26T00:00:00.0000000 Z | 2017-01-26T00:01:10.0000000 Z | 70 |
+| 1 | 2017-01-26T00:00:55.0000000 Z | 2017-01-26T00:01:15.0000000 Z | 20 |
 
 **Dotaz**:
 
@@ -788,19 +788,19 @@ GROUP BY
     SessionWindow(minute, 1, 60) OVER (PARTITION BY user_id)
 ```
 
-**SELECT** promítá data relevantní pro interakci s uživatelem spolu s dobou trvání interakce. Seskupení dat podle uživatele a **SessionWindow,** který zavře, pokud žádná interakce dojde do 1 minuty, s maximální velikost okna 60 minut.
+**Výběr** projektuje data relevantní pro interakci s uživatelem, a to spolu s dobou trvání interakce. Seskupení dat podle uživatele a **SessionWindow** , které se zavřou, pokud žádná interakce neproběhne během 1 minuty, s maximální velikostí okna 60 minut.
 
-Další informace o **SessionWindow**naleznete v [okně relace](/stream-analytics-query/session-window-azure-stream-analytics) .
+Další informace o **SessionWindow**najdete v [okně relace](/stream-analytics-query/session-window-azure-stream-analytics) .
 
-## <a name="language-extensibility-with-user-defined-function-in-javascript-and-c"></a>Rozšiřitelnost jazyka s uživatelem definovanou funkcí v JavaScriptu a C #
+## <a name="language-extensibility-with-user-defined-function-in-javascript-and-c"></a>Jazyková rozšíření s uživatelsky definovanou funkcí v jazycích JavaScript a C #
 
-Dotazovací jazyk Azure Stream Analytics lze rozšířit o vlastní funkce napsané v jazyce JavaScript nebo C#. Uživatelem definované funkce (UDF) jsou vlastní/složité výpočty, které nelze snadno vyjádřit pomocí jazyka **SQL.** Tyto UDFs lze definovat jednou a použít vícekrát v rámci dotazu. Například UDF lze použít k převodu šestnáctkové *nvarchar(max)* hodnotu *bigint* hodnotu.
+Dotazovací jazyk Azure Stream Analytics lze rozšířit pomocí vlastních funkcí napsaných v jazyce JavaScript nebo C#. Uživatelsky definované funkce (UDF) jsou vlastní nebo komplexní výpočty, které nelze snadno vyjádřit pomocí jazyka **SQL** . Tyto UDF se dají v rámci dotazu definovat jednou a používat víckrát. Například UDF lze použít k převodu hexadecimální hodnoty *nvarchar (max)* na hodnotu *bigint* .
 
 **Vstup**:
 
-| Device_id | Hodnota HexValue |
+| Device_id | HexValue |
 | --- | --- |
-| 1 | "B4" |
+| 1 | B4 |
 | 2 | "11B" |
 | 3 | "121" |
 
@@ -834,31 +834,31 @@ From
     Input
 ```
 
-Uživatelem definovaná funkce vypočítá hodnotu *bigint* z Hodnoty HexValue při každé spotřebované události.
+Funkce definovaná uživatelem vypočítá hodnotu *bigint* z HexValue na všech spotřebovaných událostech.
 
-Další informace naleznete v [jazycích JavaScript](/azure/stream-analytics/stream-analytics-javascript-user-defined-functions) a [C#](/azure/stream-analytics/stream-analytics-edge-csharp-udf).
+Další informace najdete v tématu [JavaScript](/azure/stream-analytics/stream-analytics-javascript-user-defined-functions) a [C#](/azure/stream-analytics/stream-analytics-edge-csharp-udf).
 
-## <a name="advanced-pattern-matching-with-match_recognize"></a>Pokročilé porovnávání vzorů s MATCH_RECOGNIZE
+## <a name="advanced-pattern-matching-with-match_recognize"></a>Rozšířené porovnávání vzorů s MATCH_RECOGNIZE
 
-**MATCH_RECOGNIZE** je pokročilý mechanismus porovnávání vzorů, který lze použít k porovnání posloupnosti událostí s dobře definovaným vzorem regulárního výrazu.
-Například atm je sledován v reálném čase pro selhání, během provozu ATM, pokud existují dvě po sobě jdoucí varovné zprávy správce musí být upozorněni.
+**MATCH_RECOGNIZE** je pokročilý mechanismus porovnávání vzorů, který lze použít k porovnání sekvence událostí s dobře definovaným vzorem regulárního výrazu.
+Například v reálném čase je sledování sítě ATM v reálném čase k selháním, když se při provozu služby ATM zobrazí dvě po sobě jdoucí zprávy upozorňující na to, že správce musí být upozorněni.
 
 **Vstup**:
 
 | ATM_id | Operation_id | Return_Code | Time |
 | --- | --- | --- | --- |
-| 1 | "Zadání pinu" | "Úspěch" | 2017-01-26T00:10:00.0000000Z |
-| 2 | "Otevření money slot" | "Úspěch" | 2017-01-26T00:10:07.0000000z |
-| 2 | "Uzavření money slot" | "Úspěch" | 2017-01-26T00:10:11.0000000z |
-| 1 | "Zadání vybrat množství" | "Úspěch" | 2017-01-26T00:10:08.0000000Z |
-| 1 | "Otevření money slot" | "Varování" | 2017-01-26T00:10:14.0000000z |
-| 1 | "Tisk bankovního zůstatku" | "Varování" | 2017-01-26T00:10:19.0000000z |
+| 1 | "Zadávání kódu PIN" | Nástup | 2017-01-26T00:10:00.0000000 Z |
+| 2 | "Otevření měnové přihrádky" | Nástup | 2017-01-26T00:10:07.0000000 Z |
+| 2 | "Uzavírací peníze – slot" | Nástup | 2017-01-26T00:10:11.0000000 Z |
+| 1 | "Vstup do množství pro stažení" | Nástup | 2017-01-26T00:10:08.0000000 Z |
+| 1 | "Otevření měnové přihrádky" | Upozornění | 2017-01-26T00:10:14.0000000 Z |
+| 1 | "Vytištění bankovního zůstatku" | Upozornění | 2017-01-26T00:10:19.0000000 Z |
 
 **Výstup**:
 
 | ATM_id | First_Warning_Operation_id | Warning_Time |
 | --- | --- | --- |
-| 1 | "Otevření money slot" | 2017-01-26T00:10:14.0000000z |
+| 1 | "Otevření měnové přihrádky" | 2017-01-26T00:10:14.0000000 Z |
 
 ```SQL
 SELECT *
@@ -878,38 +878,38 @@ MATCH_RECOGNIZE (
 ) AS patternMatch
 ```
 
-Tento dotaz odpovídá alespoň dvěma po sobě jdoucím událostem selhání a při splnění podmínek vygeneruje alarm.
-**VZOR** definuje regulární výraz, který má být použit při porovnávání, v tomto případě libovolný počet úspěšných operací následovaný choulenými alespoň dvěma po sobě jdoucími selháními.
-Úspěch a neúspěch jsou definovány pomocí Return_Code hodnoty a po splnění podmínky jsou **funkce MEASURES** promítány s *ATM_id*, první výstražnou operací a prvním časem upozornění.
+Tento dotaz se shoduje s nejméně dvěma po sobě jdoucími událostmi selhání a při splnění podmínek vygeneruje alarm.
+**Vzor** definuje regulární výraz, který se má použít u porovnávání, v tomto případě libovolný počet úspěšných operací následovaný nejméně dvěma po sobě jdoucími selháními.
+Úspěch a neúspěch jsou definovány pomocí Return_Code hodnoty a jakmile je podmínka splněna, **míry** se procházejí *ATM_id*, první operací upozornění a prvním časem upozornění.
 
-Další informace naleznete [v MATCH_RECOGNIZE](/stream-analytics-query/match-recognize-stream-analytics).
+Další informace najdete v tématu [MATCH_RECOGNIZE](/stream-analytics-query/match-recognize-stream-analytics).
 
-## <a name="geofencing-and-geospatial-queries"></a>Geofencing a geoprostorové dotazy
-Azure Stream Analytics poskytuje integrované geoprostorové funkce, které lze použít k implementaci scénářů, jako je správa vozového parku, sdílení jízd, propojená auta a sledování majetku.
-Geoprostorová data mohou být ingestována ve formátech GeoJSON nebo WKT jako součást datového proudu událostí nebo referenčních dat.
-Například společnost, která se specializuje na výrobu strojů pro tisk pasů, pronajímá své stroje vládám a konzulátům. Umístění těchto strojů je silně kontrolováno, aby se zabránilo nesprávnému umístění a možnému použití pro padělání cestovních pasů. Každý počítač je vybaven gps trackerem, který se předává zpět do úlohy Azure Stream Analytics.
-Výrobce by chtěl sledovat umístění těchto strojů a být upozorněni, pokud jeden z nich opustí povolenou oblast, tímto způsobem mohou vzdáleně vypnout, upozornit orgány a získat zařízení.
+## <a name="geofencing-and-geospatial-queries"></a>Geografická a geoprostorové dotazy
+Azure Stream Analytics poskytuje integrované geoprostorové funkce, které se dají použít k implementaci scénářů, jako je Správa loďstva, nasdílení po evidenci, připojená auta a sledování prostředků.
+Geoprostorové údaje lze ingestovat v Well formátech nebo v rámci datového proudu událostí nebo referenčních dat.
+Například společnost, která je specializovaná na výrobní počítače pro tisk passportů, zapůjčí své počítače vládám a konzulárním úřadům. Umístění těchto počítačů je intenzivně řízeno, aby nedocházelo k chybám při umísťování a možnému použití při padělání cestovních pasů. Každý počítač je vybaven sledovacím nástrojem GPS, tyto informace jsou předávány zpět do Azure Stream Analytics úlohy.
+Výroba by mohla sledovat umístění těchto počítačů a zobrazovat výstrahy, pokud některý z nich opustí oprávněnou oblast, a to tak, jak můžou vzdáleně zakázat, upozorňovat autority a načítat zařízení.
 
 **Vstup**:
 
 | Equipment_id | Equipment_current_location | Time |
 | --- | --- | --- |
-| 1 | "POINT(-122.1328797982818 47.64082002051315)" | 2017-01-26T00:10:00.0000000Z |
-| 1 | "POINT(-122.13307252987875 47.64081350934929)" | 2017-01-26T00:11:00.0000000z |
-| 1 | "POINT(-122.13308862313283 47.6406508603241)" | 2017-01-26T00:12:00.0000000z |
-| 1 | "POINT(-122.13341048821462 47.64043760861279)" | 2017-01-26T00:13:00.0000000z |
+| 1 | "POINT (-122.13288797982818 47.64082002051315)" | 2017-01-26T00:10:00.0000000 Z |
+| 1 | "POINT (-122.13307252987875 47.64081350934929)" | 2017-01-26T00:11:00.0000000 Z |
+| 1 | "POINT (-122.13308862313283 47.6406508603241)" | 2017-01-26T00:12:00.0000000 Z |
+| 1 | "POINT (-122.13341048821462 47.64043760861279)" | 2017-01-26T00:13:00.0000000 Z |
 
-**Vstup referenčních dat**:
+**Referenční datové vstupy**:
 
 | Equipment_id | Equipment_lease_location |
 | --- | --- |
-| 1 | "POLYGON(-122.13326028450979 47.6409833866794,-122.13261655434621 47.6409833866794,-122.1326165554346 21 47.64061471602751,-122.13326028450979 47.64061471602751,-122.13326028450979 47.6409833866794)" |
+| 1 | "MNOHOÚHELNÍK ((-122.13326028450979 47.6409833866794,-122.13261655434621 47.6409833866794,-122.13261655434621 47.64061471602751,-122.13326028450979 47.64061471602751,-122.13326028450979 47.6409833866794))" |
 
 **Výstup**:
 
 | Equipment_id | Equipment_alert_location | Time |
 | --- | --- | --- |
-| 1 | "POINT(-122.13341048821462 47.64043760861279)" | 2017-01-26T00:13:00.0000000z |
+| 1 | "POINT (-122.13341048821462 47.64043760861279)" | 2017-01-26T00:13:00.0000000 Z |
 
 ```SQL
 SELECT
@@ -924,13 +924,13 @@ JOIN
         ST_WITHIN(input.Equipment_currenct_location, referenceInput.Equipment_lease_location) = 1
 ```
 
-Dotaz umožňuje výrobci sledovat umístění počítačů automaticky, získávání výstrah, když počítač opustí povolenou geografickou zónu. Vestavěná geoprostorová funkce umožňuje uživatelům používat data GPS v rámci dotazu bez knihoven třetích stran.
+Dotaz umožňuje výrobci automaticky monitorovat umístění počítačů a získávat výstrahy, když počítač opustí povolenou geografickou oblast. Integrovaná geoprostorové funkce umožňuje uživatelům používat data GPS v rámci dotazu bez knihoven třetích stran.
 
-Další informace najdete v článku [Geofencing a geospatial agregace s Azure Stream Analytics.](geospatial-scenarios.md)
+Další informace najdete v článku [scénáře použití geografických zón a geoprostorové agregace s Azure Stream Analytics](geospatial-scenarios.md) článkem.
 
 ## <a name="get-help"></a>Podpora
 
-Další pomoc našlápneme na fórum [Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Pokud potřebujete další pomoc, vyzkoušejte naši [Azure Stream Analytics Fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Další kroky
 * [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)

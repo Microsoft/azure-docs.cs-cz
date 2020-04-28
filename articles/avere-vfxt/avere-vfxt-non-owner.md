@@ -1,32 +1,32 @@
 ---
-title: Avere vFXT řešení bez vlastníka - Azure
-description: Řešení umožňující uživatelům bez oprávnění vlastníka předplatného k nasazení Avere vFXT pro Azure
+title: Alternativní řešení avere vFXT, které není vlastníkem – Azure
+description: Alternativní řešení umožňující uživatelům bez oprávnění vlastníka předplatného nasazovat avere vFXT pro Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.openlocfilehash: 1b411fe465a67f8ea5421ac0dc93348b4e92e8ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76153271"
 ---
 # <a name="authorize-non-owners-to-deploy-avere-vfxt"></a>Oprávnění k nasazení Avere vFXT pro jiné uživatele než vlastníky
 
-Tyto pokyny jsou řešení, které umožňuje uživateli bez oprávnění vlastníka předplatného vytvořit systém Avere vFXT pro Azure.
+Tyto pokyny představují alternativní řešení, které umožňuje uživateli bez oprávnění vlastníka předplatného vytvářet avere vFXT pro systém Azure.
 
-(Doporučený způsob nasazení systému Avere vFXT je mít uživatele s oprávněními vlastníka provést kroky vytváření, jak je vysvětleno v [připravte se na vytvoření Avere vFXT](avere-vfxt-prereqs.md).)  
+(Doporučený způsob, jak nasadit systém avere vFXT, je mít uživatele s oprávněním vlastníka udělat kroky vytváření, jak je vysvětleno v tématu [Příprava na vytvoření avere vFXT](avere-vfxt-prereqs.md).)  
 
-Toto zástupné řešení zahrnuje vytvoření další přístupové role, která poskytuje uživatelům dostatečná oprávnění k instalaci clusteru. Role musí být vytvořena vlastníkem předplatného a vlastník ji musí přiřadit příslušným uživatelům.
+Alternativní řešení zahrnuje vytvoření další role přístupu, která poskytne svým uživatelům dostatečná oprávnění k instalaci clusteru. Role musí být vytvořena vlastníkem předplatného a vlastník ji musí přiřadit odpovídajícím uživatelům.
 
-Vlastník předplatného musí také [přijmout podmínky použití](avere-vfxt-prereqs.md) pro image tržiště Avere vFXT.
+Vlastník předplatného musí také [přijmout podmínky použití](avere-vfxt-prereqs.md) pro Image avere vFXT Marketplace.
 
 > [!IMPORTANT]
-> Všechny tyto kroky musí být provedeny uživatelem s oprávněními vlastníka v předplatném, které bude použito pro cluster.
+> Všechny tyto kroky musí provést uživatel s oprávněním vlastníka v předplatném, které se bude používat pro cluster.
 
-1. Zkopírujte tyto řádky a uložte je `averecreatecluster.json`do souboru (například). V příkazu `AssignableScopes` použijte ID předplatného.
+1. Zkopírujte tyto řádky a uložte je do souboru (například `averecreatecluster.json`). V `AssignableScopes` příkazu použijte své ID předplatného.
 
    ```json
    {
@@ -58,7 +58,7 @@ Vlastník předplatného musí také [přijmout podmínky použití](avere-vfxt-
    }
    ```
 
-1. Chcete-li vytvořit roli, spusťte tento příkaz:
+1. Spuštěním tohoto příkazu vytvořte roli:
 
    `az role definition create --role-definition <PATH_TO_FILE>`
 
@@ -72,8 +72,8 @@ Vlastník předplatného musí také [přijmout podmínky použití](avere-vfxt-
 
    `az role assignment create --assignee <USERNAME> --scope /subscriptions/<SUBSCRIPTION_ID> --role 'avere-create-cluster'`
 
-Po dokončení tohoto procesu, role dává každému uživateli přiřazena následující oprávnění pro odběr:
+Po dokončení tohoto procesu poskytne role každému uživateli přiřazenému pro toto předplatné následující oprávnění:
 
 * Vytvoření a konfigurace síťové infrastruktury
 * Vytvoření řadiče clusteru
-* Spuštění skriptů pro vytváření clusteru z řadiče clusteru k vytvoření clusteru
+* Spusťte skripty pro vytvoření clusteru z řadiče clusteru a vytvořte cluster.

@@ -1,6 +1,6 @@
 ---
-title: Silent install Konektor proxy aplikace Azure AD | Dokumenty společnosti Microsoft
-description: Popisuje, jak provést bezobslužnou instalaci konektoru proxy aplikací Azure AD, který poskytuje zabezpečený vzdálený přístup k místním aplikacím.
+title: Konektor proxy Aplikace Azure AD pro tichou instalaci | Microsoft Docs
+description: Popisuje, jak provést bezobslužnou instalaci konektoru služby Azure Proxy aplikací služby AD, která poskytuje zabezpečený vzdálený přístup k místním aplikacím.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,56 +17,56 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b43d2de0a366d7e69a025b2e4e2998dccda2038e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76756207"
 ---
-# <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Vytvoření skriptu bezobslužné instalace pro konektor proxy aplikací Azure AD
+# <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Vytvoření skriptu bezobslužné instalace pro konektor Azure Proxy aplikací služby AD
 
-Toto téma vám pomůže vytvořit skript prostředí Windows PowerShell, který umožňuje bezobslužnou instalaci a registraci konektoru proxy aplikací Azure AD.
+Toto téma vám pomůže vytvořit skript prostředí Windows PowerShell, který umožňuje bezobslužnou instalaci a registraci konektoru služby Azure Proxy aplikací služby AD.
 
-Tato funkce je užitečná, pokud chcete:
+Tato funkce je užitečná v případě, že chcete:
 
-* Nainstalujte konektor na servery windows, které nemají povolené uživatelské rozhraní nebo ke kterým nemáte přístup pomocí vzdálené plochy.
+* Nainstalujte konektor na Windows servery, které nemají povolené uživatelské rozhraní, nebo jestli nemáte přístup pomocí vzdálené plochy.
 * Nainstalujte a zaregistrujte mnoho konektorů najednou.
-* Integrujte instalaci a registraci konektoru jako součást jiného postupu.
-* Vytvořte standardní bit serveru, který obsahuje bity konektoru, ale není registrován.
+* Integrujte instalaci konektoru a registraci jako součást jiného postupu.
+* Vytvořte standardní image serveru, která obsahuje bity konektoru, ale není zaregistrovaná.
 
-Aby [konektor proxy aplikace](application-proxy-connectors.md) fungoval, musí být zaregistrován v adresáři Azure AD pomocí správce aplikace a hesla. Obvykle se tyto informace zadávají během instalace konektoru v rozbalovacím dialogovém okně, ale místo toho můžete tento proces automatizovat pomocí prostředí PowerShell.
+Aby [konektor proxy aplikací](application-proxy-connectors.md) fungoval, musí být zaregistrovaný v adresáři služby Azure AD pomocí správce aplikace a hesla. Tyto informace se obvykle zadávají při instalaci konektoru v automaticky otevíraném dialogovém okně, ale k automatizaci tohoto procesu můžete použít PowerShell.
 
-Existují dva kroky pro bezobslužnou instalaci. Nejprve nainstalujte konektor. Za druhé zaregistrujte konektor s Azure AD. 
+Existují dva kroky pro bezobslužnou instalaci. Nejdřív nainstalujte konektor. Za druhé Zaregistrujte konektor u služby Azure AD. 
 
 ## <a name="install-the-connector"></a>Instalace konektoru
-Pomocí následujících kroků nainstalujte konektor bez registrace:
+K instalaci konektoru bez jeho registrace použijte následující postup:
 
 1. Otevřete příkazový řádek.
-2. Spusťte následující příkaz, ve kterém /q znamená tichou instalaci. Tichá instalace vás nevyzve k přijetí licenční smlouvy s koncovým uživatelem.
+2. Spusťte následující příkaz, ve kterém parametr/q znamená tichou instalaci. Tichá instalace vás nevyzve, abyste přijali Licenční smlouvu s koncovým uživatelem.
    
         AADApplicationProxyConnectorInstaller.exe REGISTERCONNECTOR="false" /q
 
-## <a name="register-the-connector-with-azure-ad"></a>Registrace konektoru pomocí Azure AD
+## <a name="register-the-connector-with-azure-ad"></a>Registrace konektoru ve službě Azure AD
 Existují dvě metody, které můžete použít k registraci konektoru:
 
-* Registrace konektoru pomocí objektu pověření prostředí Windows PowerShell
-* Registrace konektoru pomocí tokenu vytvořeného offline
+* Zaregistrujte konektor pomocí objektu přihlašovacích údajů prostředí Windows PowerShell.
+* Registrace konektoru pomocí vytvořeného tokenu offline
 
-### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>Registrace konektoru pomocí objektu pověření prostředí Windows PowerShell
-1. Vytvořte objekt `$cred` pověření prostředí Windows PowerShell, který obsahuje uživatelské jméno a heslo pro správce vašeho adresáře. Spusťte následující příkaz, který nahradí * \<uživatelské jméno\> * a * \<heslo\>*:
+### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>Zaregistrujte konektor pomocí objektu přihlašovacích údajů prostředí Windows PowerShell.
+1. Vytvořte objekt `$cred` přihlašovacích údajů prostředí Windows PowerShell, který obsahuje uživatelské jméno a heslo pro váš adresář. Spusťte následující příkaz a nahraďte * \<uživatelské\> jméno* a * \<heslo\>*:
    
         $User = "<username>"
         $PlainPassword = '<password>'
         $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
         $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
-2. Přejděte na **c:\Program Files\Microsoft AAD App Proxy** `$cred` Connector a spusťte následující skript pomocí vytvořeného objektu:
+2. Přejít na **C:\Program Files\Microsoft AAD App proxy Connector** a spusťte následující skript pomocí `$cred` objektu, který jste vytvořili:
    
         .\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature ApplicationProxy
 
-### <a name="register-the-connector-using-a-token-created-offline"></a>Registrace konektoru pomocí tokenu vytvořeného offline
-1. Vytvořte offline token pomocí třídy AuthenticationContext pomocí hodnot v tomto fragmentu kódu nebo rutinách prostředí PowerShell níže:
+### <a name="register-the-connector-using-a-token-created-offline"></a>Registrace konektoru pomocí vytvořeného tokenu offline
+1. Vytvořte offline token pomocí třídy AuthenticationContext pomocí hodnot v tomto fragmentu kódu nebo rutin PowerShellu níže:
 
-    **Použití jazyka C#:**
+    **Pomocí jazyka C#:**
 
         using System;
         using System.Diagnostics;
@@ -121,7 +121,7 @@ Existují dvě metody, které můžete použít k registraci konektoru:
             tenantID = authResult.TenantId;
         }
 
-    **Použití Prostředí PowerShell:**
+    **Použití PowerShellu:**
 
         # Locate AzureAD PowerShell Module
         # Change Name of Module to AzureAD after what you have installed
@@ -171,11 +171,11 @@ Existují dvě metody, které můžete použít k registraci konektoru:
         
         #endregion
 
-2. Jakmile budete mít token, vytvořte SecureString pomocí tokenu:
+2. Jakmile máte token, vytvořte SecureString pomocí tokenu:
 
    `$SecureToken = $Token | ConvertTo-SecureString -AsPlainText -Force`
 
-3. Spusťte následující příkaz prostředí \<Windows PowerShell, který nahradí identifikátor GUID klienta\> id adresáře:
+3. Spusťte následující příkaz prostředí Windows PowerShell a nahraďte \<identifikátor\> GUID tenanta vaším ID adresáře:
 
    `.\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Token -Token $SecureToken -TenantId <tenant GUID> -Feature ApplicationProxy`
 

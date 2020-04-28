@@ -1,6 +1,6 @@
 ---
-title: Šifrování disků pro škálovací sady Azure pomocí Azure PowerShellu
-description: Zjistěte, jak pomocí Azure PowerShellu šifrovat instance virtuálních počítačů a připojené disky ve škálovací sadě virtuálních počítačů s Windows.
+title: Šifrování disků pro Azure Scale Sets pomocí Azure PowerShell
+description: Naučte se používat Azure PowerShell k šifrování instancí virtuálních počítačů a připojených disků v sadě škálování virtuálního počítače s Windows.
 author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
@@ -9,23 +9,23 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: mbaldwin
 ms.openlocfilehash: bd7f92c104e06896f4b3c8bb2adef45983cf5d4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76278984"
 ---
-# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-azure-powershell"></a>Šifrování operačního systému a připojených datových disků ve škálovací sadě virtuálních počítačů pomocí Azure PowerShellu
+# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-azure-powershell"></a>Šifrování operačních systémů a připojených datových disků v sadě škálování virtuálního počítače s Azure PowerShell
 
-Modul Azure PowerShell slouží k vytváření a správě prostředků Azure z příkazového řádku PowerShellu nebo ve skriptech.  Tento článek ukazuje, jak pomocí Azure PowerShellu vytvořit a šifrovat škálovací sadu virtuálních strojů. Další informace o použití Azure Disk Encryption na škálovací sadu virtuálních počítačů najdete v [tématu Azure Disk Encryption for Virtual Machine Scale Sets](disk-encryption-overview.md).
+Modul Azure PowerShell slouží k vytváření a správě prostředků Azure z příkazového řádku PowerShellu nebo ve skriptech.  V tomto článku se dozvíte, jak pomocí Azure PowerShell vytvořit a zašifrovat sadu škálování virtuálního počítače. Další informace o použití Azure Disk Encryption pro sadu škálování virtuálního počítače najdete v článku [Azure Disk Encryption Virtual Machine Scale Sets](disk-encryption-overview.md).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-an-azure-key-vault-enabled-for-disk-encryption"></a>Vytvoření trezoru klíčů Azure povoleného pro šifrování disku
+## <a name="create-an-azure-key-vault-enabled-for-disk-encryption"></a>Vytvoření Azure Key Vault s povoleným šifrováním disku
 
-Azure Key Vault můžete ukládat klíče, tajné klíče nebo hesla, které vám umožní bezpečně implementovat ve vašich aplikacích a službách. Kryptografické klíče jsou uloženy v trezoru klíčů Azure pomocí softwarové ochrany nebo můžete importovat nebo generovat klíče v modulech hardwarového zabezpečení (HSM) certifikovaných podle standardů FIPS 140-2 úrovně 2. Tyto kryptografické klíče se používají k šifrování a dešifrování virtuálních disků připojených k virtuálnímu počítači. Zachováte kontrolu nad těmito kryptografickými klíči a můžete auditovat jejich použití.
+Azure Key Vault můžou ukládat klíče, tajné klíče nebo hesla, které vám umožní je bezpečně implementovat ve svých aplikacích a službách. Kryptografické klíče jsou uložené v Azure Key Vault pomocí ochrany softwaru nebo můžete klíče importovat nebo generovat v modulech hardwarového zabezpečení (HSM) certifikovaným pro standardy standardu FIPS 140-2 úrovně 2. Tyto kryptografické klíče slouží k šifrování a dešifrování virtuálních disků připojených k vašemu VIRTUÁLNÍmu počítači. Podržíte kontrolu nad těmito kryptografickými klíči a můžete auditovat jejich použití.
 
-Vytvořte trezor klíčů s [new-azkeyvault](/powershell/module/az.keyvault/new-azkeyvault). Chcete-li povolit použití trezoru klíčů pro šifrování disku, nastavte parametr *EnabledForDiskEncryption.* Následující příklad také definuje proměnné pro název skupiny prostředků, název trezoru klíčů a umístění. Zadejte svůj vlastní jedinečný název trezoru klíčů:
+Vytvořte Key Vault pomocí [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault). Pokud chcete Key Vault použít pro šifrování disku, nastavte parametr *EnabledForDiskEncryption* . Následující příklad také definuje proměnné pro název skupiny prostředků, Key Vault název a umístění. Zadejte vlastní jedinečný Key Vault název:
 
 ```azurepowershell-interactive
 $rgName="myResourceGroup"
@@ -36,11 +36,11 @@ New-AzResourceGroup -Name $rgName -Location $location
 New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $location -EnabledForDiskEncryption
 ```
 
-### <a name="use-an-existing-key-vault"></a>Použití existujícího trezoru klíčů
+### <a name="use-an-existing-key-vault"></a>Použít existující Key Vault
 
-Tento krok je vyžadován pouze v případě, že máte existující trezor klíčů, který chcete použít s šifrováním disku. Tento krok přeskočte, pokud jste v předchozí části vytvořili trezor klíčů.
+Tento krok se vyžaduje jenom v případě, že máte existující Key Vault, kterou chcete používat s šifrováním disku. Tento krok přeskočte, pokud jste vytvořili Key Vault v předchozí části.
 
-Pomocí [zásad Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-AzKeyVaultAccessPolicy)můžete povolit existující trezor klíčů ve stejném předplatném a oblasti jako škálovací sadu pro šifrování disku . V proměnné *$vaultName* definujte název existujícího trezoru klíčů takto:
+Existující Key Vault můžete povolit ve stejném předplatném a oblasti jako sadu škálování pro šifrování disků pomocí [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-AzKeyVaultAccessPolicy). Zadejte název existující Key Vault v proměnné *$vaultName* následujícím způsobem:
 
 
 ```azurepowershell-interactive
@@ -56,7 +56,7 @@ Nejprve pomocí rutiny [Get-Credential](https://msdn.microsoft.com/powershell/re
 $cred = Get-Credential
 ```
 
-Nyní vytvořte škálovací sadu virtuálních strojů s [novou AzVmss](/powershell/module/az.compute/new-azvmss). Za účelem distribuce provozu do jednotlivých instancí virtuálních počítačů se vytvoří také nástroj pro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení obsahuje pravidla pro distribuci provozu na portu TCP 80, stejně jako provozu vzdálené plochy na portu TCP 3389 a vzdálené komunikace PowerShellu na portu TCP 5985:
+Teď vytvořte sadu škálování virtuálního počítače pomocí [New-AzVmss](/powershell/module/az.compute/new-azvmss). Za účelem distribuce provozu do jednotlivých instancí virtuálních počítačů se vytvoří také nástroj pro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení obsahuje pravidla pro distribuci provozu na portu TCP 80, stejně jako provozu vzdálené plochy na portu TCP 3389 a vzdálené komunikace PowerShellu na portu TCP 5985:
 
 ```azurepowershell-interactive
 $vmssName="myScaleSet"
@@ -75,7 +75,7 @@ New-AzVmss `
 
 ## <a name="enable-encryption"></a>Povolit šifrování
 
-Chcete-li šifrovat instance virtuálních počítačích ve škálovací sadě, nejprve získejte některé informace o identifikátoru URI úložiště klíčů a ID prostředku pomocí [služby Get-AzKeyVault](/powershell/module/az.keyvault/Get-AzKeyVault). Tyto proměnné se používají k spuštění procesu šifrování pomocí [rozšíření Set-AzVmssDiskEncryptionExtension](/powershell/module/az.compute/Set-AzVmssDiskEncryptionExtension):
+K šifrování instancí virtuálních počítačů v sadě škálování je třeba nejdřív získat nějaké informace o Key Vault identifikátor URI a ID prostředku pomocí [Get-AzKeyVault](/powershell/module/az.keyvault/Get-AzKeyVault). Tyto proměnné se používají ke spuštění procesu šifrování pomocí [set-AzVmssDiskEncryptionExtension](/powershell/module/az.compute/Set-AzVmssDiskEncryptionExtension):
 
 
 ```azurepowershell-interactive
@@ -86,11 +86,11 @@ Set-AzVmssDiskEncryptionExtension -ResourceGroupName $rgName -VMScaleSetName $vm
     -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -VolumeType "All"
 ```
 
-Po zobrazení výzvy zadejte *y,* chcete-li pokračovat v procesu šifrování disku na instancích virtuálních počítačů škálovací sady.
+Po zobrazení výzvy zadejte *y* a pokračujte v procesu šifrování disku na INSTANCÍCH virtuálních počítačů sady škálování.
 
-### <a name="enable-encryption-using-kek-to-wrap-the-key"></a>Povolení šifrování pomocí kek zabalit klíč
+### <a name="enable-encryption-using-kek-to-wrap-the-key"></a>Povolení šifrování pomocí KEK k zabalení klíče
 
-Šifrovací klíč klíče můžete také použít pro zvýšení zabezpečení při šifrování škálovací sady virtuálních strojů.
+Při šifrování sady škálování virtuálního počítače můžete také použít šifrovací klíč klíče pro zvýšení zabezpečení.
 
 ```azurepowershell-interactive
 $diskEncryptionKeyVaultUrl=(Get-AzKeyVault -ResourceGroupName $rgName -Name $vaultName).VaultUri
@@ -103,21 +103,21 @@ Set-AzVmssDiskEncryptionExtension -ResourceGroupName $rgName -VMScaleSetName $vm
 ```
 
 > [!NOTE]
->  Syntaxe hodnoty parametru disk-encryption-keyvault je úplný řetězec identifikátoru:</br>
-/subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]</br></br>
-> Syntaxe pro hodnotu parametru klíč šifrování klíč je úplné URI k KEK jako v:</br>
-https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id]
+>  Syntaxe pro hodnotu parametru Disk-Encryption-trezor je úplný řetězec identifikátoru:</br>
+/Subscriptions/[ID předplatného-GUID]/resourceGroups/[Resource-Group-name]/providers/Microsoft.KeyVault/vaults/[Trezor klíčů-name]</br></br>
+> Syntaxe pro hodnotu parametru klíč-šifrování klíče je úplný identifikátor URI pro KEK jako v:</br>
+https://[Trezor klíčů-name]. trezor. Azure. NET/Keys/[kekname]/[KEK-Unique-ID]
 
-## <a name="check-encryption-progress"></a>Kontrola průběhu šifrování
+## <a name="check-encryption-progress"></a>Průběh šifrování kontroly
 
-Chcete-li zkontrolovat stav šifrování disku, použijte [get-AzVmssDiskEncryption](/powershell/module/az.compute/Get-AzVmssDiskEncryption):
+Pokud chcete zjistit stav šifrování disku, použijte [příkaz Get-AzVmssDiskEncryption](/powershell/module/az.compute/Get-AzVmssDiskEncryption):
 
 
 ```azurepowershell-interactive
 Get-AzVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $vmssName
 ```
 
-Když jsou instance virtuálních zařízení zašifrované, kód *EncryptionSummary* hlásí *ProvisioningState/succeed,* jak je znázorněno v následujícím příkladu výstupu:
+Když jsou instance virtuálních počítačů šifrované, *EncryptionSummary* kód *ProvisioningState/uspěl* , jak je znázorněno v následujícím příkladu výstupu:
 
 ```powershell
 ResourceGroupName            : myResourceGroup
@@ -139,7 +139,7 @@ EncryptionExtensionInstalled : True
 
 ## <a name="disable-encryption"></a>Zakázat šifrování
 
-Pokud již nechcete používat šifrované disky instancí virtuálních počítačů, můžete zakázat šifrování [pomocí disable-AzVmssDiskEncryption](/powershell/module/az.compute/Disable-AzVmssDiskEncryption) následujícím způsobem:
+Pokud už nechcete disky s šifrovanými instancemi virtuálních počítačů používat, můžete zakázat šifrování pomocí příkazu [Disable-AzVmssDiskEncryption](/powershell/module/az.compute/Disable-AzVmssDiskEncryption) následujícím způsobem:
 
 
 ```azurepowershell-interactive
@@ -148,5 +148,5 @@ Disable-AzVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $vmssNam
 
 ## <a name="next-steps"></a>Další kroky
 
-- V tomto článku jste použili Azure PowerShell k šifrování škálovací sady virtuálních strojů. Můžete taky použít azure [CLI](disk-encryption-cli.md) nebo [Azure Resource Manager šablony](disk-encryption-azure-resource-manager.md).
-- Pokud chcete, aby bylo šifrování disku Azure použito po zřízení jiného rozšíření, můžete použít [řazení rozšíření](virtual-machine-scale-sets-extension-sequencing.md).
+- V tomto článku jste použili Azure PowerShell k šifrování sady škálování virtuálních počítačů. Můžete také použít šablony [Azure CLI](disk-encryption-cli.md) nebo [Azure Resource Manager](disk-encryption-azure-resource-manager.md).
+- Pokud chcete po zřízení jiného rozšíření použít Azure Disk Encryption, můžete použít [sekvencování rozšíření](virtual-machine-scale-sets-extension-sequencing.md).

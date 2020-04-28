@@ -1,6 +1,6 @@
 ---
-title: Automatické opravy pro virtuální servery SQL Server (classic) | Dokumenty společnosti Microsoft
-description: Vysvětluje funkci automatickéopravy pro virtuální počítače SQL Serveru spuštěné v Azure pomocí klasického režimu nasazení.
+title: Automatizované opravy pro virtuální počítače s SQL Server (Classic) | Microsoft Docs
+description: Vysvětluje funkci automatizované opravy SQL Server Virtual Machines běží v Azure s využitím klasického režimu nasazení.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -16,20 +16,20 @@ ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: efc6d0c25c5186b391deb08ee0e41dcb8ae6edf0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75978081"
 ---
-# <a name="automated-patching-for-sql-server-in-azure-virtual-machines-classic"></a>Automatické opravy pro SQL Server ve virtuálních počítačích Azure (Classic)
+# <a name="automated-patching-for-sql-server-in-azure-virtual-machines-classic"></a>Automatizované opravy pro SQL Server v Azure Virtual Machines (Classic)
 > [!div class="op_single_selector"]
 > * [Resource Manager](../sql/virtual-machines-windows-sql-automated-patching.md)
 > * [Classic](../classic/sql-automated-patching.md)
 > 
 > 
 
-Automatizované opravy vytvoří pro virtuální počítač Azure s SQL Serverem časové období údržby. Automatizované aktualizace je možné nainstalovat pouze během tohoto časového období údržby. Pro SQL Server tím zajistíte, že aktualizace systému a všechny přidružené restartování dojít v nejlepším možném čase pro databázi. 
+Automatizované opravy vytvoří pro virtuální počítač Azure s SQL Serverem časové období údržby. Automatizované aktualizace je možné nainstalovat pouze během tohoto časového období údržby. Pro SQL Server to zajistí, aby se aktualizace systému a všechny související restarty vyskytnout v nejlepším možné době databáze. 
 
 > [!IMPORTANT]
 > Nainstalují se pouze aktualizace Windows označené jako **Důležité**. Ostatní aktualizace SQL Serveru, jako jsou kumulativní aktualizace, je potřeba nainstalovat ručně. 
@@ -37,10 +37,10 @@ Automatizované opravy vytvoří pro virtuální počítač Azure s SQL Serverem
 Automatizované opravy závisí na [rozšíření agenta SQL Server IaaS](../classic/sql-server-agent-extension.md).
 
 > [!IMPORTANT] 
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a Classic](../../../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití modelu klasické nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Pokud chcete zobrazit verzi tohoto článku ve Správci prostředků, [přečtěte si téma Automatické opravy pro SQL Server ve Správci prostředků virtuálních počítačů Azure](../sql/virtual-machines-windows-sql-automated-patching.md).
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a Classic](../../../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Pokud si chcete zobrazit Správce prostředků verzi tohoto článku, přečtěte si téma [automatizované opravy pro SQL Server v Azure Virtual Machines správce prostředků](../sql/virtual-machines-windows-sql-automated-patching.md).
 
 ## <a name="prerequisites"></a>Požadavky
-Chcete-li používat automatické opravy, zvažte následující požadavky:
+Pokud chcete používat automatizované opravy, vezměte v úvahu následující požadavky:
 
 **Operační systém**:
 
@@ -48,7 +48,7 @@ Chcete-li používat automatické opravy, zvažte následující požadavky:
 * Windows Server 2012 R2
 * Windows Server 2016
 
-**Verze serveru SQL Server**:
+**Verze SQL Server**:
 
 * SQL Server 2012
 * SQL Server 2014
@@ -56,45 +56,45 @@ Chcete-li používat automatické opravy, zvažte následující požadavky:
 
 **Azure PowerShell**:
 
-* [Nainstalujte nejnovější příkazy Azure PowerShellu](/powershell/azure/overview).
+* [Nainstalujte nejnovější příkazy Azure PowerShell](/powershell/azure/overview).
 
-**Rozšíření SQL Server IaaS**:
+**IaaS rozšíření SQL Server**:
 
 * [Nainstalujte rozšíření SQL Server IaaS](../classic/sql-server-agent-extension.md).
 
 ## <a name="settings"></a>Nastavení
-Následující tabulka popisuje možnosti, které lze nakonfigurovat pro automatické opravy. U klasických virtuálních počítače je nutné k konfiguraci těchto nastavení použít prostředí PowerShell.
+Následující tabulka popisuje možnosti, které je možné nakonfigurovat pro automatizované opravy. U klasických virtuálních počítačů musíte ke konfiguraci těchto nastavení použít PowerShell.
 
 | Nastavení | Možné hodnoty | Popis |
 | --- | --- | --- |
-| **Automatické opravy** |Povolit/zakázat (zakázáno) |Povolí nebo zakáže automatické opravy pro virtuální počítač Azure. |
-| **Plán údržby** |Každý den, pondělí, úterý, středa, čtvrtek, pátek, sobota, neděle |Plán stahování a instalace aktualizací systému Windows, SQL Server a Microsoft pro váš virtuální počítač. |
-| **Počáteční hodina údržby** |0-24 |Místní čas spuštění aktualizace virtuálního počítače. |
-| **Doba trvání okna údržby** |30-180 |Počet minut povolených k dokončení stahování a instalace aktualizací. |
-| **Kategorie opravy** |Důležité |Kategorie aktualizací ke stažení a instalaci. |
+| **Automatizované opravy** |Povolit/zakázat (zakázáno) |Povolí nebo zakáže automatizované opravy pro virtuální počítač Azure. |
+| **Plán údržby** |Každodenní, pondělí, úterý, středa, čtvrtek, pátek, sobota, neděle |Plán pro stažení a instalaci aktualizací Windows, SQL Server a Microsoft pro váš virtuální počítač. |
+| **Hodina zahájení údržby** |0-24 |Místní čas zahájení aktualizace virtuálního počítače. |
+| **Doba trvání časového období údržby** |30-180 |Počet minut, po které je povoleno dokončení stahování a instalace aktualizací. |
+| **Kategorie opravy** |Důležité |Kategorie aktualizací, které se mají stáhnout a nainstalovat. |
 
-## <a name="configuration-with-powershell"></a>Konfigurace s PowerShellem
-V následujícím příkladu se prostředí PowerShell používá ke konfiguraci automatickéopravy na existujícím virtuálním počítači sql serveru. Příkaz **New-AzureVMSqlServerAutoPatchingConfig** konfiguruje nové okno údržby pro automatické aktualizace.
+## <a name="configuration-with-powershell"></a>Konfigurace pomocí PowerShellu
+V následujícím příkladu se prostředí PowerShell používá ke konfiguraci automatizované opravy na stávajícím virtuálním počítači s SQL Server. Příkaz **New-AzureVMSqlServerAutoPatchingConfig** nakonfiguruje nové okno údržby pro automatické aktualizace.
 
     $aps = New-AzureVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory "Important"
 
     Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -AutoPatchingSettings $aps | Update-AzureVM
 
-Na základě tohoto příkladu následující tabulka popisuje praktický vliv na cílový virtuální počítač Azure:
+Na základě tohoto příkladu popisuje následující tabulka praktický efekt na cílovém virtuálním počítači Azure:
 
 | Parametr | Účinek |
 | --- | --- |
-| **Dayofweek** |Patche instalovány každý čtvrtek. |
-| **MaintenanceWindowStartingHour** |Aktualizace můžete zahájit v 11:00. |
-| **MaintenanceWindowDuration** |Záplaty musí být nainstalovány do 120 minut. Na základě času zahájení musí být dokončeny do 13:00. |
-| **Kategorie patch** |Jediné možné nastavení pro tento parametr je "Důležité". |
+| **DayOfWeek** |Opravy se nainstalují každý čtvrtek. |
+| **MaintenanceWindowStartingHour** |Začněte s aktualizacemi na 11:10:00. |
+| **MaintenanceWindowDuration** |Opravy musí být nainstalované během 120 minut. V závislosti na čase spuštění musí být dokončeny pomocí 1:13:00. |
+| **PatchCategory** |Jediným možným nastavením pro tento parametr je "důležité". |
 
-Instalace a konfigurace agenta SQL Server IaaS agenta serveru SQL Server může trvat několik minut.
+Instalace a konfigurace agenta SQL Server IaaS může trvat několik minut.
 
-Chcete-li zakázat automatické opravy, spusťte stejný skript bez parametru -Enable na new-AzureVMSqlServerAutoPatchingConfig. Stejně jako při instalaci může zakácet automatické opravy několik minut.
+Chcete-li zakázat automatizované opravy, spusťte stejný skript bez parametru-Enable pro rutinu New-AzureVMSqlServerAutoPatchingConfig. Jako u instalace může trvat několik minut, než se zakáže automatizované opravy.
 
 ## <a name="next-steps"></a>Další kroky
-Informace o dalších dostupných úlohách automatizace naleznete v tématu [SQL Server IaaS Agent Extension](../classic/sql-server-agent-extension.md).
+Informace o dalších dostupných úlohách automatizace najdete v tématu [SQL Server rozšíření agenta IaaS](../classic/sql-server-agent-extension.md).
 
-Další informace o spuštění SQL Serveru na virtuálních počítačích Azure najdete v tématu [SQL Server ve virtuálních počítačích Azure přehled](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Další informace o spuštění SQL Server na virtuálních počítačích Azure najdete v tématu [SQL Server na azure Virtual Machines přehled](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
 

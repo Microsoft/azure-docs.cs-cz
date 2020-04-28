@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 91a52e7eac40c0ac2ab682f251a2ae0013259b25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77013695"
 ---
 ## <a name="what-is-table-storage"></a>Co je služba Table Storage
@@ -30,8 +30,8 @@ Služba Table Storage obsahuje následující komponenty:
 
   Účty rozhraní API pro tabulky Azure Cosmos DB používají tento formát: `http://<storage account>.table.cosmosdb.azure.com/<table>`  
 
-  Tabulky Azure můžete adresovat přímo pomocí této adresy s protokolem OData. Další informace naleznete [v tématu OData.org][OData.org].
-* **Účty:** Veškerý přístup ke službě Azure Storage se provádí prostřednictvím účtu úložiště. Další informace o účtech úložiště najdete v [tématu Přehled účtu úložiště](../articles/storage/common/storage-account-overview.md).
+  Tabulky Azure můžete adresovat přímo pomocí této adresy s protokolem OData. Další informace najdete v tématu [OData.org][OData.org].
+* **Účty:** Veškerý přístup ke službě Azure Storage se provádí prostřednictvím účtu úložiště. Další informace o účtech úložiště najdete v tématu [Přehled účtu úložiště](../articles/storage/common/storage-account-overview.md).
 
     Veškerý přístup ke službě Azure Cosmos DB se provádí prostřednictvím účtu rozhraní API pro tabulky. Podrobnosti o vytvoření účtu rozhraní API pro tabulky najdete v tématu věnovaném [Vytvoření účtu rozhraní API pro tabulky](../articles/cosmos-db/create-table-dotnet.md#create-a-database-account).
 * **Tabulka**: Tabulka je kolekcí entit. Tabulky nevynucují u entit schéma, což znamená, že jedna tabulka může obsahovat entity s různými sadami vlastností.  

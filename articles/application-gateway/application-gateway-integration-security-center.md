@@ -1,6 +1,6 @@
 ---
-title: Integrace aplikační brány s Azure Security Center | Dokumenty společnosti Microsoft
-description: Tato stránka obsahuje informace o tom, jak je aplikační brána integrovaná do Azure Security Center.
+title: Application Gateway integrace s Azure Security Center | Microsoft Docs
+description: Tato stránka poskytuje informace o tom, jak je Application Gateway Integrovaná do Azure Security Center.
 services: application-gateway
 author: vhorne
 ms.author: victorh
@@ -10,73 +10,73 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 06/07/2017
 ms.openlocfilehash: f5ecd2334ca80f5561c0611239b5bb00d222112a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76277191"
 ---
-# <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>Přehled integrace mezi aplikační bránou a Centrem zabezpečení Azure
+# <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>Přehled integrace mezi Application Gateway a Azure Security Center
 
-Zjistěte, jak služba Application Gateway a Security Center pomáhají chránit prostředky webových aplikací. Brána firewall webových aplikací (APPLICATION gateway firewall) se integruje s [Security Center](../security-center/security-center-intro.md) poskytovat bezproblémové zobrazení pro prevenci, detekci a reakci na hrozby nechráněných webových aplikací ve vašem prostředí.
+Přečtěte si, jak Application Gateway a Security Center lépe chránit prostředky webových aplikací. Firewall webových aplikací služby Application Gateway (WAF) se integruje s [Security Center](../security-center/security-center-intro.md) , aby poskytoval bezproblémové zobrazení, které zabraňuje, detekuje a reaguje na hrozby nechráněných webových aplikací ve vašem prostředí.
 
 ## <a name="overview"></a>Přehled
 
-Aplikace Gateway WAF je doporučení v Centru zabezpečení pro ochranu webových aplikací před zneužitím a zranitelností. Webové prostředky, které nejsou chráněny waf zobrazit v centru zabezpečení jako doporučení s vysokou závažností. Doporučení pro brány firewall webových aplikací jsou zobrazena na stránce **Přehled** v části **Aplikace**.
+Application Gateway WAF je doporučení Security Center pro ochranu webových aplikací před zneužitím a ohrožení zabezpečení. Webové prostředky s povolenou ochranou pomocí WAF ukazují ve službě Security Center jako doporučení s vysokou závažností. Doporučení pro brány firewall webových aplikací se zobrazují na stránce **Přehled** v části **aplikace**.
 
-![integrace s bezpečnostním centrem][1]
+![integrace se službou Security Center][1]
 
-Kliknutím na všechna doporučení týkající se brány firewall webových aplikací se otevře nová stránka s podrobnostmi o doporučení.
+Kliknutím na jakékoli doporučení týkající se brány firewall webových aplikací se otevře nová stránka s podrobnostmi o doporučení.
 
-## <a name="add-a-web-application-firewall-to-an-existing-resource"></a>Přidání brány firewall webové aplikace do existujícího prostředku
+## <a name="add-a-web-application-firewall-to-an-existing-resource"></a>Přidání firewallu webových aplikací do existujícího prostředku
 
-Přejděte na**Centrum zabezpečení** **zabezpečení + identity** >  **a** > na **centrum zabezpečení – přehled**, klepněte na **položku Aplikace**. V **Centru zabezpečení – aplikace**obsahuje tabulka seznam aplikací, které centrum zabezpečení zjistilo ve vašem předplatném.
+Přejděte na **všechny služby** > **zabezpečení a identita** > **Security Center** a v **Security Center – přehled**klikněte na **aplikace**. V **Security Centerch aplikacích**tabulka obsahuje seznam aplikací, které Security Center zjištěné ve vašem předplatném.
 
 ![webové aplikace][3]
 
-Kliknutím na webovou aplikaci s kritickým problémem získáte stránku **Stav zabezpečení aplikace.** Na obrázku níže, webová aplikace, která není chráněna bránou firewall webové aplikace. 
+Kliknutím na webovou aplikaci s kritickým problémem získáte stránku **stavu zabezpečení aplikací** . Na následujícím obrázku je webová aplikace, která není chráněna bránou firewall webových aplikací. 
 
 ![webové prostředky nejsou chráněny][2]
 
-Kliknutím na **Přidat bránu firewall webové aplikace** v části **Doporučení** otevřete **stránku Přidat bránu firewall webové aplikace.**
+Kliknutím na **Přidat Firewall webových aplikací** v části **doporučení** otevřete stránku **Přidat Firewall webových aplikací** .
 
-Pokud nemáte existující aplikační bránu nebo chcete vytvořit novou, klepněte na **tlačítko Vytvořit nový** a v **příkazu Vytvořit novou bránu firewall webových aplikací**a klepněte na položku Microsoft – **brána aplikací**. Tím provedete kroky k vytvoření aplikační brány. V tomto okamžiku je vaše webová aplikace přidána jako chráněný prostředek, Security Center nyní sleduje, že tento prostředek je chráněn bránou firewall webové aplikace. To nepřidá jako člen fondu back-endu.
+Pokud nemáte existující Application Gateway nebo chcete vytvořit nový, klikněte na **vytvořit nové** a **vytvořte novou bránu firewall webových aplikací**a klikněte na **Microsoft-Application Gateway**. Provede vás kroky k vytvoření aplikační brány. V tomto okamžiku je webová aplikace přidána jako chráněný prostředek, Security Center nyní sleduje, zda je tento prostředek chráněn bránou firewall webových aplikací. Tím se nepřidá jako člen fondu back-end.
 
-Pokud máte existující aplikační bránu, můžete ji zvolit v části **Použít existující řešení**
+Pokud máte existující Aplikační bránu, můžete ji vybrat v části **použít existující řešení** .
 
-![Stránka pro přidání brány firewall webové aplikace][4]
+![Stránka pro přidání brány firewall webových aplikací][4]
 
-Přidání webové aplikace do brány aplikace prostřednictvím Centra zabezpečení nepřidá prostředek jako člena back-endového fondu. To je nutné provést přímo u prostředku brány aplikace.
+Přidání webové aplikace do aplikační brány prostřednictvím Security Center nepřidá prostředek jako člena fondu back-end. To je nutné provést přímo na prostředku služby Application Gateway.
 
-## <a name="add-a-resource-to-an-existing-web-application-firewall"></a>Přidání prostředku do existující brány firewall webové aplikace
+## <a name="add-a-resource-to-an-existing-web-application-firewall"></a>Přidání prostředku do existující brány firewall webových aplikací
 
-Přejděte na **Centrum** > **zabezpečení zabezpečení + identity** > **Security Center** a na centru zabezpečení **– přehled**, klikněte na **partnerská řešení**. Existující brány aplikací centra zabezpečení se zobrazují na stránce **Partnerská řešení.**
+Přejděte na **všechny služby** > **zabezpečení a identita** > **Security Center** a v **Security Center – přehled**klikněte na možnost **Partnerská řešení**. Existující brány Application Gateway, které používají Security Center, se zobrazí na stránce **Partnerská řešení** .
 
-![partnerská řešení][7]
+![Partnerská řešení][7]
 
-Kliknutím na **odkaz aplikace** otevřete **Link Aplikace**, zde máte možnost vybrat existující aplikace. Vyberte aplikace, které chcete chránit, a klepněte na tlačítko **OK**. To nepřidá webovou aplikaci do back-endového fondu aplikační brány. Tím nastavíte prostředky jako chráněný prostředek, aby jej centrum zabezpečení mohlo sledovat. Chcete-li přidat prostředek jako člen back-endového fondu, je nutné to provést na bráně aplikace, z aktuální stránky můžete kliknout na **konzolu řešení,** která má být převedena do prostředku brány aplikace, kde můžete přidat webovou aplikaci do fondu back-endu.
+Kliknutím na **propojit aplikaci** otevřete **linku aplikace**. zobrazí se zde možnosti výběru existujících aplikací. Vyberte aplikace, které chcete chránit, a klikněte na **OK**. Tato aplikace nepřidá webovou aplikaci do fondu back-end služby Application Gateway. Tím se prostředky nastaví jako chráněný prostředek, aby ho Security Center mohl sledovat. Chcete-li přidat prostředek jako člena fondu back-end, musí být tato akce provedena v bráně Application Gateway, a to z aktuální stránky, kterou můžete kliknout na **konzolu řešení** , aby se převzala do prostředku služby Application Gateway, kde můžete přidat webovou aplikaci do fondu back-end.
 
-![partnerské řešení aplikace][6]
+![aplikace partnerských řešení][6]
 
-## <a name="finalize-configuration"></a>Dokončení konfigurace
+## <a name="finalize-configuration"></a>Dokončit konfiguraci
 
-Security Center sleduje aplikace přidané do aplikační brány jako chráněný prostředek.  Monitoruje stav tohoto prostředku a zajišťuje, že je chráněn aplikační bránou. Dalším krokem je přidání privátní IP, veřejné IP nebo NIC virtuálního počítače do back-endového fondu aplikační brány. Dokud se tak neprovádí další doporučení **Finalize ochrany aplikace** se zobrazí, dokud prostředek je přidán.
+Security Center sleduje aplikace přidané do služby Application Gateway jako chráněný prostředek.  Monitoruje stav tohoto prostředku a zajišťuje jeho ochranu pomocí aplikační brány. Dalším krokem je přidání privátní IP adresy, veřejné IP adresy nebo síťové karty virtuálního počítače do back-endového fondu služby Application Gateway. Až to uděláte, zobrazí se další doporučení k **finalizaci ochrany aplikací** , dokud se prostředek nepřidá.
 
-![Stránka pro přidání brány firewall webové aplikace][5]
+![Stránka pro přidání brány firewall webových aplikací][5]
 
 ## <a name="security-alerts"></a>Výstrahy zabezpečení
 
-V centru zabezpečení přejděte na**upozornění zabezpečení** **DETECTION** > .  Zde najdete waf upozornění pro vaše aplikační brány. Výstrahy jsou rozděleny podle pravidla WAF.
+V rámci Security Center přejděte na **zjišťování** > **výstrah zabezpečení**.  Tady najdete WAF výstrahy pro vaše aplikační brány. Výstrahy jsou rozdělené podle pravidla WAF.
 
 ![výstrahy zabezpečení][8]
 
-Výběrpravidla poskytne seznam výstrah pro dané pravidlo WAF. Každá výstraha zobrazuje další podrobnosti o nálezu. Podrobnosti poskytují odkaz na bránu aplikace.
+Výběrem pravidla se zobrazí seznam výstrah pro pravidlo konkrétního WAF. Každá výstraha obsahuje další podrobnosti o hledání. Podrobnosti poskytují odkaz na aplikační bránu.
  
-![podrobnosti výstrahy][9]
+![Podrobnosti výstrahy][9]
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o povolení brány firewall webových aplikací na existující bráně aplikace najdete v části [Vytvoření nebo aktualizace brány aplikace Azure pomocí brány firewall webové aplikace](application-gateway-web-application-firewall-portal.md).
+Informace o tom, jak povolit bránu firewall webových aplikací v existující aplikační bráně, najdete v tématu [Vytvoření nebo aktualizace Application Gateway Azure pomocí brány firewall webových aplikací](application-gateway-web-application-firewall-portal.md).
 
 [1]: ./media/application-gateway-integration-security-center/figure1.png
 [2]: ./media/application-gateway-integration-security-center/figure2.png

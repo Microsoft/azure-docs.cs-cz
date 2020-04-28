@@ -1,7 +1,7 @@
 ---
-title: Předat vlastní stav v požadavcích na ověření (MSAL.js) | Azure
+title: Předání vlastního stavu v žádostech o ověření (MSAL. js) | Azure
 titleSuffix: Microsoft identity platform
-description: Zjistěte, jak předat hodnotu parametru vlastního stavu v žádosti o ověření pomocí knihovny Microsoft Authentication Library for JavaScript (MSAL.js).
+description: Přečtěte si, jak předat hodnotu parametru vlastního stavu v žádosti o ověření pomocí knihovny Microsoft Authentication Library pro JavaScript (MSAL. js).
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,17 +14,17 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 1c05956f83ad3a6491627be8916fac2c8be2b7ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77084933"
 ---
-# <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>Předání vlastního stavu v požadavcích na ověření pomocí souboru MSAL.js
+# <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>Předání vlastního stavu v žádostech o ověření pomocí MSAL. js
 
-Parametr *stavu,* jak je definován oAuth 2.0, je součástí požadavku na ověření a je také vrácena v odpovědi tokenu zabránit útokům padělání požadavků na příčce webu. Ve výchozím nastavení předá Microsoft Authentication Library for JavaScript (MSAL.js) náhodně generovanou hodnotu parametru jedinečného *stavu* v požadavcích na ověření.
+Parametr *stavu* definovaný protokolem OAuth 2,0 je součástí žádosti o ověření a je také vrácen v odpovědi tokenu, aby nedocházelo k útokům proti padělání požadavků mezi weby. Ve výchozím nastavení projde knihovna Microsoft Authentication Library pro JavaScript (MSAL. js) náhodně generovanou hodnotu parametru *stavu* v žádostech o ověření.
 
-Parametr stavu lze také použít ke kódování informací o stavu aplikace před přesměrováním. Můžete předat stav uživatele v aplikaci, například stránku nebo zobrazení, na kterých byl, jako vstup do tohoto parametru. Knihovna MSAL.js umožňuje předat vlastní stav jako `Request` parametr stavu v objektu:
+Parametr State lze také použít ke kódování informací o stavu aplikace před přesměrování. Do tohoto parametru můžete předat stav uživatele v aplikaci, jako je například stránka nebo zobrazení, na kterých byly, jako vstup. Knihovna MSAL. js umožňuje předat vlastní stav jako parametr stavu v `Request` objektu:
 
 ```javascript
 // Request type
@@ -45,13 +45,13 @@ export type AuthenticationParameters = {
 ```
 
 > [!Note]
-> Pokud chcete přeskočit token uložený v mezipaměti a přejít na `forceRefresh` server, předejte logický seznam do objektu AuthenticationParameters, který slouží k vytvoření požadavku na přihlášení/token.
-> `forceRefresh`by neměl být používán ve výchozím nastavení, z důvodu dopadu na výkon na vaši aplikaci.
-> Spoléhání se na mezipaměť poskytne uživatelům lepší zážitek.
-> Přeskočení mezipaměti by mělo být použito pouze ve scénářích, kde víte, že aktuálně uložená data nemají aktuální informace.
+> Pokud chcete přeskočit token z mezipaměti a přejít na server, předejte prosím logickou hodnotu `forceRefresh` do objektu AuthenticationParameters, který se používá k vytvoření žádosti o přihlášení nebo token.
+> `forceRefresh`by neměl být ve výchozím nastavení použit, protože má vliv na výkon vaší aplikace.
+> Spoléhání se na mezipaměť, aby vaši uživatelé měli lepší zkušenosti.
+> Přeskočení mezipaměti by mělo být použito pouze ve scénářích, kde víte, že data aktuálně uložených v mezipaměti nemají aktuální informace.
 > Například nástroj pro správu, který přidává role uživateli, který potřebuje získat nový token s aktualizovanými rolemi.
 
-Například:
+Příklad:
 
 ```javascript
 let loginRequest = {
@@ -62,7 +62,7 @@ let loginRequest = {
 myMSALObj.loginPopup(loginRequest);
 ```
 
-Předánve stavu je připojen k jedinečné GUID nastavené MSAL.js při odesílání požadavku. Po vrácení odpovědi msal.js zkontroluje shodu stavu a potom `Response` vrátí `accountState`vlastní předán ve stavu v objektu jako .
+Předaný stav je připojen k jedinečnému identifikátoru GUID nastavenému pomocí MSAL. js při odesílání žádosti. Když je vrácena odpověď, MSAL. js zkontroluje shodu stavu a potom vrátí vlastní předaný stav `Response` objektu jako. `accountState`
 
 ```javascript
 export type AuthResponse = {
@@ -78,4 +78,4 @@ export type AuthResponse = {
 };
 ```
 
-Další informace najdete v informacích o [vytváření jednostránkové aplikace (SPA)](scenario-spa-overview.md) pomocí souboru MSAL.js.
+Další informace najdete v tématu [Vytvoření jednostránkové aplikace (Spa)](scenario-spa-overview.md) pomocí MSAL. js.

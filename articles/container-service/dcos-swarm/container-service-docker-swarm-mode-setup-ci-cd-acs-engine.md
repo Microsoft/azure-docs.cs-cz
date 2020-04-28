@@ -1,6 +1,6 @@
 ---
-title: (ZASTARALÉ) CI/CD s azure kontejnerovým servisním strojem a režimem roje
-description: Použití Azure Container Service Engine s režimem Docker Swarm, registrem kontejnerů Azure a Azure DevOps k průběžnému doručování vícekontejnerové aplikace .NET Core
+title: ZASTARALÉ CI/CD s modulem Azure Container Service a režimem Swarm
+description: Použití Azure Container Serviceho modulu s režimem Docker Swarm, Azure Container Registry a Azure DevOps pro průběžnou distribuci aplikace .NET Core s více kontejnery
 author: diegomrtnzg
 ms.service: container-service
 ms.topic: conceptual
@@ -8,96 +8,96 @@ ms.date: 05/27/2017
 ms.author: dimart
 ms.custom: mvc
 ms.openlocfilehash: 1ec7ece6f5afd1bbd2613ae08af04b82e8a156b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76277918"
 ---
-# <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>(ZASTARALÉ) Úplný kanál CI/CD pro nasazení aplikace s více kontejnery ve službě Azure Container Service pomocí služby ACS Engine a Docker Swarm Mode pomocí Azure DevOps
+# <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>ZASTARALÉ Úplný kanál CI/CD pro nasazení aplikace s více kontejnery na Azure Container Service s modulem ACS a režimem Docker Swarm s využitím Azure DevOps
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-*Tento článek je založený na [kanálu Úplné CI/CD k nasazení aplikace s více kontejnery ve službě Azure Container Service s Docker Swarm pomocí dokumentace Azure DevOps](container-service-docker-swarm-setup-ci-cd.md)*
+*Tento článek je založený na [úplném kanálu CI/CD pro nasazení aplikace s více kontejnery na Azure Container Service s využitím nástroje Docker Swarm v dokumentaci ke službě Azure DevOps](container-service-docker-swarm-setup-ci-cd.md) .*
 
-V současné době je jednou z největších výzev při vývoji moderních aplikací pro cloud možnost i průběžné doručování těchto aplikací. V tomto článku se dozvíte, jak implementovat kanál úplné průběžné integrace a nasazení (CI/CD) pomocí: 
-* Azure Container Service Engine s režimem Docker Swarm Mode
+Současné době jedním z největších problémů při vývoji moderních aplikací pro Cloud je schopnost doručovat tyto aplikace průběžně. V tomto článku se dozvíte, jak implementovat kompletní kanál průběžné integrace a nasazování (CI/CD) pomocí: 
+* Azure Container Service modul s režimem Docker Swarm
 * Azure Container Registry
 * Azure DevOps
 
 
 ![Ukázková aplikace MyShop](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/myshop-application.png)
 
-Cílem je poskytovat tuto aplikaci nepřetržitě v clusteru Docker Swarm Mode pomocí Azure DevOps. Následující obrázek podrobně popisuje tento kanál průběžného doručování:
+Cílem je zajistit nepřetržitou distribuci této aplikace v clusteru režimu Docker Swarm pomocí Azure DevOps. Následující obrázek podrobně popisuje tento kanál průběžného doručování:
 
 ![Ukázková aplikace MyShop](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/full-ci-cd-pipeline.png)
 
 Zde je stručné vysvětlení kroků:
 
-1. Změny kódu jsou potvrzeny do úložiště zdrojového kódu (zde GitHub) 
-2. GitHub aktivuje sestavení v Azure DevOps 
-3. Azure DevOps získá nejnovější verzi zdrojů a vytvoří všechny image, které tvoří aplikaci 
-4. Azure DevOps odešle každou bitovou kopii do registru Dockeru vytvořeného pomocí služby Azure Container Registry 
-5. Azure DevOps aktivuje novou verzi 
-6. Verze spustí některé příkazy pomocí SSH na hlavním uzlu clusteru clusteru kontejnerů Azure 
-7. Režim Docker Swarm v clusteru vytáhne nejnovější verzi bitových kopií 
-8. Nová verze aplikace se nasazuje pomocí zásobníku Dockeru. 
+1. Změny kódu se potvrdí do úložiště zdrojového kódu (tady, GitHub). 
+2. GitHub spustí sestavení ve službě Azure DevOps 
+3. Azure DevOps získá nejnovější verzi zdrojů a sestaví všechny image, které tvoří aplikaci. 
+4. Azure DevOps vloží jednotlivé image do registru Docker vytvořeného pomocí služby Azure Container Registry. 
+5. Azure DevOps aktivuje novou verzi. 
+6. Vydaná verze spouští některé příkazy pomocí SSH v hlavním uzlu clusteru Azure Container Service. 
+7. Režim Docker Swarm v clusteru vyžádá nejnovější verzi imagí. 
+8. Nová verze aplikace je nasazena pomocí zásobníku Docker 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před zahájením tohoto kurzu je třeba dokončit následující úkoly:
+Než začnete tento kurz, musíte provést následující úlohy:
 
-- [Vytvoření clusteru režimu roje ve službě Azure Container Service pomocí modulu ACS Engine](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acsengine-swarmmode)
+- [Vytvoření clusteru Swarm režimu v Azure Container Service s modulem ACS](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acsengine-swarmmode)
 - [Propojení s clusterem Swarm v Azure Container Service](../container-service-connect.md)
-- [Vytvoření registru kontejnerů Azure](../../container-registry/container-registry-get-started-portal.md)
-- [Vytvoření organizace a projektu Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student)
-- [Vyvlečte úložiště GitHub u svého účtu GitHub](https://github.com/jcorioland/MyShop/tree/docker-linux)
+- [Vytvoření služby Azure Container Registry](../../container-registry/container-registry-get-started-portal.md)
+- [Máte vytvořenou organizaci a projekt Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student)
+- [Rozvětvení úložiště GitHubu do vašeho účtu GitHubu](https://github.com/jcorioland/MyShop/tree/docker-linux)
 
 >[!NOTE]
-> Orchestrátor Docker Swarm v Azure Container Service používá starší verzi samostatného Swarmu. Integrovaný [režim Swarm](https://docs.docker.com/engine/swarm/) (v Dockeru 1.12 a novějším) aktuálně není podporovaným orchestrátorem v Azure Container Service. Z tohoto důvodu používáme [ACS Engine](https://github.com/Azure/acs-engine/blob/master/docs/swarmmode.md), komunitou inověovnou [šablonu rychlého startu](https://azure.microsoft.com/resources/templates/101-acsengine-swarmmode/)nebo řešení Dockeru na [Azure Marketplace](https://azuremarketplace.microsoft.com).
+> Orchestrátor Docker Swarm v Azure Container Service používá starší verzi samostatného Swarmu. Integrovaný [režim Swarm](https://docs.docker.com/engine/swarm/) (v Dockeru 1.12 a novějším) aktuálně není podporovaným orchestrátorem v Azure Container Service. Z tohoto důvodu používáme [modul ACS](https://github.com/Azure/acs-engine/blob/master/docs/swarmmode.md), [šablonu pro rychlý Start](https://azure.microsoft.com/resources/templates/101-acsengine-swarmmode/)od komunity nebo řešení Docker v [Azure Marketplace](https://azuremarketplace.microsoft.com).
 >
 
-## <a name="step-1-configure-your-azure-devops-organization"></a>Krok 1: Konfigurace organizace Azure DevOps 
+## <a name="step-1-configure-your-azure-devops-organization"></a>Krok 1: konfigurace vaší organizace Azure DevOps 
 
-V této části nakonfigurujete organizaci Azure DevOps. Pokud chcete nakonfigurovat koncové body služby Azure DevOps, klikněte v projektu Azure DevOps na ikonu **Nastavení** na panelu nástrojů a vyberte **Služby**.
+V této části nakonfigurujete organizaci Azure DevOps. Pokud chcete nakonfigurovat koncové body Azure DevOps Services, v projektu Azure DevOps klikněte na ikonu **Nastavení** na panelu nástrojů a vyberte **služby**.
 
-![Otevřít koncový bod služeb](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/services-vsts.PNG)
+![Koncový bod služby Open Services](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/services-vsts.PNG)
 
-### <a name="connect-azure-devops-and-azure-account"></a>Připojení účtu Azure DevOps a Azure
+### <a name="connect-azure-devops-and-azure-account"></a>Připojení Azure DevOps a účtu Azure
 
-Nastavte si připojení mezi projektem Azure DevOps a účtem Azure.
+Nastavte připojení mezi vaším projektem Azure DevOps a vaším účtem Azure.
 
-1. Vlevo klikněte na **New Service Endpoint** > **Azure Resource Manager**.
-2. Pokud chcete autorizovat Azure DevOps pro práci s vaším účtem Azure, vyberte **předplatné** a klikněte na **OK**.
+1. Na levé straně klikněte na **Nový koncový bod** > služby**Azure Resource Manager**.
+2. Pokud chcete autorizovat Azure DevOps pracovat s vaším účtem Azure, vyberte své **předplatné** a klikněte na **OK**.
 
     ![Azure DevOps – autorizace Azure](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-azure.PNG)
 
 ### <a name="connect-azure-devops-and-github"></a>Připojení Azure DevOps a GitHubu
 
-Nastavte připojení mezi projektem Azure DevOps a účtem GitHub.
+Nastavte připojení mezi vaším projektem Azure DevOps a vaším účtem GitHub.
 
-1. Vlevo klikněte na **Nový koncový bod** > služby**GitHub**.
-2. Pokud chcete autorizovat Azure DevOps pro práci s vaším účtem GitHub, klikněte na **Autorizovat** a postupujte podle postupu v okně, které se otevře.
+1. Na levé straně klikněte na **Nový koncový bod** > služby**GitHub**.
+2. Pokud chcete autorizovat Azure DevOps pracovat s vaším účtem GitHubu, klikněte na **autorizovat** a postupujte podle pokynů v okně, které se otevře.
 
     ![Azure DevOps – autorizace GitHubu](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-github.png)
 
-### <a name="connect-azure-devops-to-your-azure-container-service-cluster"></a>Připojení Azure DevOps ke clusteru Služby kontejnerů Azure
+### <a name="connect-azure-devops-to-your-azure-container-service-cluster"></a>Připojení Azure DevOps ke clusteru Azure Container Service
 
-Poslední kroky před vstupem do kanálu CI/CD jsou konfigurace externích připojení ke clusteru Docker Swarm v Azure. 
+Poslední kroky před tím, než se dostanete do kanálu CI/CD, jsou konfigurace externích připojení k vašemu clusteru Docker Swarm v Azure. 
 
-1. Pro cluster Docker Swarm přidejte koncový bod typu **SSH**. Poté zadejte informace o připojení SSH clusteru Swarm (hlavní uzel).
+1. Pro cluster Docker Swarm přidejte koncový bod typu **SSH**. Pak zadejte informace o připojení SSH pro váš cluster Swarm (hlavní uzel).
 
     ![Azure DevOps – SSH](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-ssh.png)
 
-Veškerá konfigurace je nyní hotová. V dalších krocích vytvoříte kanál CI/CD, který vytvoří a nasadí aplikaci do clusteru Docker Swarm. 
+Všechny konfigurace se provedly nyní. V dalších krocích vytvoříte kanál CI/CD, který sestaví a nasadí aplikaci do clusteru Docker Swarm. 
 
-## <a name="step-2-create-the-build-pipeline"></a>Krok 2: Vytvoření kanálu sestavení
+## <a name="step-2-create-the-build-pipeline"></a>Krok 2: vytvoření kanálu sestavení
 
-V tomto kroku nastavíte kanál sestavení pro váš projekt Azure DevOps a definujete pracovní postup sestavení pro ibi kontejnerů
+V tomto kroku nastavíte kanál sestavení pro projekt Azure DevOps a definujete pracovní postup sestavení pro Image kontejnerů.
 
 ### <a name="initial-pipeline-setup"></a>Počáteční nastavení kanálu
 
-1. Pokud chcete vytvořit kanál sestavení, připojte se k projektu Azure DevOps a klikněte na **Build & Release**. V části **Definice sestavení** klikněte na **+ Nový**. 
+1. Pokud chcete vytvořit kanál sestavení, připojte se k projektu Azure DevOps a klikněte na **sestavit & verzi**. V části **definice sestavení** klikněte na **+ Nový**. 
 
     ![Azure DevOps – nový kanál sestavení](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/create-build-vsts.PNG)
 
@@ -105,149 +105,149 @@ V tomto kroku nastavíte kanál sestavení pro váš projekt Azure DevOps a defi
 
     ![Azure DevOps – nový prázdný kanál sestavení](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/create-empty-build-vsts.PNG)
 
-4. Potom klepněte na kartu **Proměnné** a vytvořte dvě nové proměnné: **RegistryURL** a **AgentURL**. Vložte hodnoty služby DNS agentů registru a clusteru.
+4. Pak klikněte na kartu **proměnné** a vytvořte dvě nové proměnné: **RegistryURL** a **AgentURL**. Vložte hodnoty registru a DNS agentů clusteru.
 
     ![Azure DevOps – konfigurace proměnných sestavení](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-variables.png)
 
-5. Na stránce **Definice sestavení** otevřete kartu **Aktivační události** a nakonfigurujte sestavení tak, aby používalo průběžnou integraci s roztečí projektu MyShop, který jste vytvořili v požadavcích. Potom vyberte **Dávkové změny**. Ujistěte se, že jste vybrali *docker-linux* jako **specifikaci větve**.
+5. Na stránce **definice sestavení** otevřete kartu **triggery** a nakonfigurujte sestavení tak, aby používalo kontinuální integraci s rozvětvem projektu MyShop, který jste vytvořili v části požadavky. Pak vyberte **změny v dávce**. Ujistěte se, že jako **specifikaci větve**vyberete *Docker-Linux* .
 
     ![Azure DevOps – konfigurace úložiště sestavení](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-github-repo-conf.PNG)
 
 
-6. Nakonec klepněte na kartu **Možnosti** a nakonfigurujte výchozí frontu agentů na **hostovaný linuxový náhled**.
+6. Nakonec klikněte na kartu **Možnosti** a nakonfigurujte výchozí frontu agenta na **hostovaná verze Linux Preview**.
 
     ![Azure DevOps – konfigurace agenta hostitele](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-agent.png)
 
-### <a name="define-the-build-workflow"></a>Definování pracovního postupu sestavení
-Další kroky definují pracovní postup sestavení. Nejprve je třeba nakonfigurovat zdroj kódu. Chcete-li to provést, vyberte **GitHub** a **úložiště** a **větev** (docker-linux).
+### <a name="define-the-build-workflow"></a>Definovat pracovní postup sestavení
+Další kroky definují pracovní postup sestavení. Nejprve je třeba nakonfigurovat zdroj kódu. Pokud to chcete udělat, vyberte **GitHub** a vaše **úložiště** a **větev** (Docker – Linux).
 
 ![Azure DevOps – konfigurace zdroje kódu](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-source-code.png)
 
-Existuje pět image kontejneru k vytvoření pro aplikaci *MyShop.* Každá bitová kopie je vytvořena pomocí souboru Dockerfile umístěného ve složkách projektu:
+K sestavení aplikace *MyShop* je k dispozici pět imagí kontejneru. Každý obrázek je sestaven pomocí souboru Dockerfile nacházející se ve složkách projektu:
 
-* ProduktyApi
+* ProductsApi
 * Proxy server
 * RatingsApi
-* DoporučeníApi
+* RecommendationsApi
 * ShopFront
 
-Potřebujete dva kroky Dockeru pro každou bitovou kopii, jeden pro sestavení image a jeden pro nabízení image v registru kontejnerů Azure. 
+Pro každý obrázek budete potřebovat dva kroky Docker, jednu pro sestavení image a jednu pro vložení image do služby Azure Container Registry. 
 
-1. Chcete-li přidat krok v pracovním postupu sestavení, klikněte na **+ Přidat krok sestavení** a vyberte **Docker**.
+1. Pokud chcete přidat krok do pracovního postupu sestavení, klikněte na **+ Přidat krok sestavení** a vyberte **Docker**.
 
     ![Azure DevOps – přidání kroků sestavení](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-add-task.png)
 
-2. Pro každou bitovou kopii `docker build` nakonfigurujte jeden krok, který používá příkaz.
+2. Pro každý obrázek nakonfigurujte jeden krok, který používá `docker build` příkaz.
 
-    ![Azure DevOps – sestavení Dockeru](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-docker-build.png)
+    ![Sestavení Azure DevOps-Docker](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-docker-build.png)
 
-    Pro operaci sestavení vyberte registr kontejnerů Azure, **akci Sestavení bitové kopie** a dockerový soubor, který definuje každou bitovou kopii. Nastavte **pracovní adresář** jako kořenový adresář dockerového souboru, definujte **název obrázku**a vyberte **Zahrnout nejnovější značku**.
+    V případě operace sestavení vyberte Azure Container Registry, akci **sestavení obrázku** a souboru Dockerfile, který definuje jednotlivé obrázky. Nastavte **pracovní adresář** jako kořenový adresář souboru Dockerfile, definujte **název bitové kopie**a vyberte **zahrnout nejnovější značku**.
     
-    Název obrázku musí být v ```$(RegistryURL)/[NAME]:$(Build.BuildId)```tomto formátu: . Nahraďte **[NÁZEV]** názvem obrázku:
+    Název bitové kopie musí být v tomto formátu: ```$(RegistryURL)/[NAME]:$(Build.BuildId)```. Nahraďte **[name]** názvem Image:
     - ```proxy```
     - ```products-api```
     - ```ratings-api```
     - ```recommendations-api```
     - ```shopfront```
 
-3. Pro každou bitovou kopii nakonfigurujte druhý krok, který používá `docker push` příkaz.
+3. Pro každý obrázek nakonfigurujte druhý krok, který používá `docker push` příkaz.
 
-    ![Azure DevOps – nabízená podpora dockeru](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-docker-push.png)
+    ![Nabízená oznámení Azure DevOps-Docker](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-docker-push.png)
 
-    Pro operaci nabízená tiskovou nabídku vyberte registr kontejnerů Azure, akci **Push image,** zadejte **název obrázku,** který je vytvořený v předchozím kroku, a vyberte **Zahrnout nejnovější značku**.
+    Pro operaci Push vyberte svůj registr kontejnerů Azure, akci **Odeslat obrázek** , zadejte **název Image** , která je vytvořená v předchozím kroku, a vyberte **Zahrnout poslední značku**.
 
-4. Po konfiguraci sestavení a push kroky pro každou z pěti bitových kopií, přidejte další tři kroky v pracovním postupu sestavení.
+4. Po nakonfigurování kroků sestavení a vložení pro každý z pěti imagí přidejte do pracovního postupu sestavení tři další kroky.
 
-   ![Azure DevOps – přidat úlohu příkazového řádku](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-command-task.png)
+   ![Azure DevOps – přidání úlohy příkazového řádku](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-command-task.png)
 
-   1. Úloha příkazového řádku, která používá skript bash k nahrazení výskytu *RegistryURL* v souboru docker-compose.yml proměnnou RegistryURL. 
+   1. Úloha příkazového řádku, která používá skript bash k nahrazení výskytu *RegistryURL* v souboru Docker-Compose. yml pomocí proměnné RegistryURL 
     
        ```-c "sed -i 's/RegistryUrl/$(RegistryURL)/g' src/docker-compose-v3.yml"```
 
-       ![Azure DevOps – aktualizovat soubor s adresou URL registru](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-replace-registry.png)
+       ![Azure DevOps – aktualizace souboru s použitím adresy URL registru](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-replace-registry.png)
 
-   2. Úloha příkazového řádku, která používá skript bash k nahrazení výskytu *AgentURL* v souboru docker-compose.yml proměnnou AgentURL.
+   2. Úloha příkazového řádku, která používá skript bash k nahrazení výskytu *AgentURL* v souboru Docker-Compose. yml pomocí proměnné AgentURL
   
        ```-c "sed -i 's/AgentUrl/$(AgentURL)/g' src/docker-compose-v3.yml"```
 
-      1. Úloha, která klesne aktualizovaný soubor Compose jako artefakt sestavení, takže jej lze použít ve verzi. Podrobnosti najdete na následující obrazovce.
+      1. Úkol, který uvolní aktualizovaný soubor pro sestavení jako artefakt sestavení, aby jej bylo možné použít v této verzi. Podrobnosti najdete na následující obrazovce.
 
       ![Azure DevOps – publikování artefaktu](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-publish.png) 
 
-      ![Azure DevOps – publikovat soubor s publikováním](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-publish-compose.png) 
+      ![Azure DevOps – publikování souboru s psaním](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-publish-compose.png) 
 
-5. Chcete-li otestovat kanál sestavení, klepněte na tlačítko **Uložit & fronty.**
+5. Kliknutím na **uložit & frontu** otestujete svůj kanál sestavení.
 
    ![Azure DevOps – uložení a zařazení do fronty](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-save.png) 
 
    ![Azure DevOps – nová fronta](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-queue.png) 
 
-6. Pokud **sestavení** je správné, musíte vidět tuto obrazovku:
+6. Pokud je **sestavení** správné, je třeba zobrazit tuto obrazovku:
 
-   ![Azure DevOps – sestavení proběhlo úspěšně.](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-succeeded.png) 
+   ![Azure DevOps – sestavení bylo úspěšné.](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-succeeded.png) 
 
-## <a name="step-3-create-the-release-pipeline"></a>Krok 3: Vytvoření kanálu vydání
+## <a name="step-3-create-the-release-pipeline"></a>Krok 3: vytvoření kanálu pro vydávání verzí
 
-Azure DevOps umožňuje [spravovat vydání napříč prostředími](https://www.visualstudio.com/team-services/release-management/). Můžete povolit průběžné nasazení a ujistěte se, že vaše aplikace je nasazena v různých prostředích (například vývoj, testování, předprodukční a produkční) hladkým způsobem. Můžete vytvořit prostředí, které představuje váš cluster Azure Container Service Docker Swarm Mode.
+Azure DevOps umožňuje [Spravovat verze v různých prostředích](https://www.visualstudio.com/team-services/release-management/). Průběžné nasazování můžete povolit, abyste se ujistili, že vaše aplikace je nasazená v různých prostředích (například vývoj, testování, předprodukční a produkční prostředí) plynule. Můžete vytvořit prostředí, které představuje cluster Azure Container Service Docker Swarm Mode.
 
-![Azure DevOps – vydání do ACS](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-acs.png) 
+![Azure DevOps – vydání na ACS](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-acs.png) 
 
-### <a name="initial-release-setup"></a>Počáteční nastavení vydání
+### <a name="initial-release-setup"></a>Instalace počáteční verze
 
-1. Chcete-li vytvořit kanál pro vydání, klikněte na **položku Releases** > **+ Release**
+1. Chcete-li vytvořit kanál verze, klikněte na tlačítko **verze** > **a verze** .
 
-2. Chcete-li nakonfigurovat zdroj artefaktů, klepněte na **položku Artefakty** > **Propojit zdroj artefaktů**. Zde propojte tento kanál nové verze s sestavením, které jste definovali v předchozím kroku. Poté je soubor docker-compose.yml k dispozici v procesu vydání.
+2. Pokud chcete nakonfigurovat zdroj artefaktů, klikněte na **artefakty** > **propojit se zdrojem artefaktu**. Zde propojte tento nový kanál verze se sestavením, které jste definovali v předchozím kroku. Následně je soubor Docker-Compose. yml k dispozici v procesu vydávání verzí.
 
-    ![Azure DevOps – artefakty vydání](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-artefacts.png) 
+    ![Azure DevOps – artefakty vydaných verzí](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-artefacts.png) 
 
-3. Chcete-li nakonfigurovat aktivační událost vydání, klepněte na **položku Aktivační události** a vyberte **možnost Průběžné nasazení**. Nastavte aktivační událost na stejném zdroji artefaktů. Toto nastavení zajišťuje, že se po úspěšném dokončení sestavení spustí nová verze.
+3. Pokud chcete nakonfigurovat aktivační událost vydání, klikněte na **triggery** a vyberte **průběžné nasazování**. Nastavte Trigger na stejném zdroji artefaktů. Toto nastavení zajistí, že se nové vydání začne po úspěšném dokončení sestavení.
 
-    ![Azure DevOps – aktivační události vydání](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-trigger.png) 
+    ![Aktivační události Azure DevOps-Release](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-trigger.png) 
 
-4. Chcete-li nakonfigurovat proměnné vydání, klepněte na **položku Proměnné** a výběrem **možnosti +Variable** vytvořte tři nové proměnné s informacemi o registru: **docker.username**, **docker.password**a **docker.registry**. Vložte hodnoty služby DNS agentů registru a clusteru.
+4. Pokud chcete nakonfigurovat proměnné verze, klikněte **na proměnné** a **Vyberte + proměnná** a vytvořte tři nové proměnné s informacemi v registru: **Docker. username**, **Docker. Password**a **Docker. Registry**. Vložte hodnoty registru a DNS agentů clusteru.
 
     ![Azure DevOps – konfigurace úložiště sestavení](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-variables.png)
 
     >[!IMPORTANT]
-    > Jak je znázorněno na předchozí obrazovce, klikněte na zaškrtávací políčko **Zamknout** v docker.password. Toto nastavení je důležité omezit heslo.
+    > Jak je znázorněno na předchozí obrazovce, klikněte na zaškrtávací políčko **Uzamknout** v Docker. Password. Toto nastavení je důležité k omezení hesla.
     >
 
-### <a name="define-the-release-workflow"></a>Definování pracovního postupu vydání
+### <a name="define-the-release-workflow"></a>Definovat pracovní postup vydání
 
-Pracovní postup vydání se skládá ze dvou úkolů, které přidáte.
+Pracovní postup vydání se skládá ze dvou úloh, které přidáte.
 
-1. Nakonfigurujte úlohu tak, aby bezpečně zkopírovala soubor compose do složky *nasazení* v uzlu hlavního serveru Docker Swarm pomocí dříve nakonfigurovaného připojení SSH. Podrobnosti najdete na následující obrazovce.
+1. Nakonfigurujte úlohu pro bezpečné kopírování souboru s příponou do složky *Deploy* v hlavním uzlu Docker Swarm pomocí připojení SSH, které jste nakonfigurovali dříve. Podrobnosti najdete na následující obrazovce.
     
     Zdrojová složka:```$(System.DefaultWorkingDirectory)/MyShop-CI/drop```
 
-    ![Azure DevOps – vydání SCP](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-scp.png)
+    ![BOD připojení služby Azure DevOps-Release](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-scp.png)
 
-2. Nakonfigurujte druhou úlohu `docker` pro `docker stack deploy` spuštění příkazu bash a příkazy v hlavním uzlu. Podrobnosti najdete na následující obrazovce.
+2. Nakonfigurujte druhý úkol, který spustí příkaz bash ke spuštění `docker` příkazů a `docker stack deploy` příkazů v hlavním uzlu. Podrobnosti najdete na následující obrazovce.
 
     ```
     docker login -u $(docker.username) -p $(docker.password) $(docker.registry) && export DOCKER_HOST=:2375 && cd deploy && docker stack deploy --compose-file docker-compose-v3.yml myshop --with-registry-auth
     ```
 
-    ![Azure DevOps – bash vydání](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-bash.png)
+    ![Azure DevOps – Release bash](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-bash.png)
 
-    Příkaz provedený na předloze používá cli Dockeru a cli docker-compose k provedení následujících úkolů:
+    Příkaz provedený v hlavním serveru používá rozhraní Docker CLI a rozhraní příkazového řádku Docker, které provádí následující úlohy:
 
-   - Přihlaste se do registru kontejnerů Azure (používá tři proměnné sestavení, které jsou definovány na kartě **Proměnné)**
-   - Definujte **proměnnou DOCKER_HOST** pro práci s koncovým bodem Swarm (:2375)
-   - Přejděte do složky *nasazení,* která byla vytvořena předchozí úlohou zabezpečeného kopírování a obsahuje soubor docker-compose.yml 
-   - Spouštějte `docker stack deploy` příkazy, které vytahují nové obrázky a vytvářejí kontejnery.
+   - Přihlaste se ke službě Azure Container Registry (používá tři proměnné sestavení, které jsou definovány na kartě **proměnné** ).
+   - Zadejte **DOCKER_HOST** proměnnou pro práci s koncovým bodem Swarm (: 2375)
+   - Přejděte do složky pro *nasazení* , kterou vytvořila předchozí úloha zabezpečeného kopírování a která obsahuje soubor Docker-Compose. yml. 
+   - Spusťte `docker stack deploy` příkazy, které vyžádají nové image a vytvoří kontejnery.
 
      >[!IMPORTANT]
-     > Jak je znázorněno na předchozí obrazovce, ponechte **zaškrtávací políčko Selhání na STDERR** nezaškrtnuté. Toto nastavení nám umožňuje dokončit `docker-compose` proces vydání z důvodu tisku několika diagnostických zpráv, jako jsou kontejnery, které se zastavují nebo odstraňují, na standardním výstupu chyb. Pokud zaškrtnete políčko, Azure DevOps hlásí, že chyby došlo během vydání, i když vše půjde dobře.
+     > Jak je znázorněno na předchozí obrazovce, nechejte zaškrtávací políčko nezaškrtnuto **při selhání u stderr** . Toto nastavení umožňuje dokončení procesu vydávání verzí kvůli `docker-compose` vytištění několika diagnostických zpráv, jako je například zastavení nebo odstranění kontejnerů, na standardním výstupu chyby. Pokud zaškrtnete toto políčko, Azure DevOps oznámí, že při vydání došlo k chybám, i když vše bude dobré.
      >
-3. Uložte tento nový kanál vydání.
+3. Uložte tento nový kanál pro vydávání verzí.
 
-## <a name="step-4-test-the-cicd-pipeline"></a>Krok 4: Testování kanálu CI/CD
+## <a name="step-4-test-the-cicd-pipeline"></a>Krok 4: testování kanálu CI/CD
 
-Nyní, když jste hotovi s konfigurací, je čas otestovat tento nový kanál CI/CD. Nejjednodušší způsob, jak ji otestovat, je aktualizovat zdrojový kód a potvrdit změny do úložiště GitHub. Několik sekund po nabízení kódu se zobrazí nové sestavení spuštěné v Azure DevOps. Po úspěšném dokončení se aktivuje nová verze a nasadí novou verzi aplikace v clusteru služby Azure Container Service.
+Teď, když jste s konfigurací hotovi, je čas otestovat tento nový kanál CI/CD. Nejjednodušší způsob, jak ho otestovat, je aktualizovat zdrojový kód a potvrdit změny do úložiště GitHub. Několik sekund po nahrání kódu se zobrazí nové sestavení běžící v Azure DevOps. Po úspěšném dokončení se spustí nová verze a nasadí se nová verze aplikace v clusteru Azure Container Service.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o CI/CD s Azure DevOps najdete v článku [dokumentace k Azure Pipelines.](/azure/devops/pipelines/?view=azure-devops)
-* Další informace o modulu ACS engine naleznete v [úložišti GitHub modulu ACS](https://github.com/Azure/acs-engine).
+* Další informace o CI/CD s Azure DevOps najdete v článku věnovaném [dokumentaci Azure Pipelines](/azure/devops/pipelines/?view=azure-devops) .
+* Další informace o modulu ACS najdete v [úložišti GitHub modulu ACS](https://github.com/Azure/acs-engine).
 * Další informace o režimu Docker Swarm najdete v tématu [Přehled režimu Docker Swarm](https://docs.docker.com/engine/swarm/).

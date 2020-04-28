@@ -1,26 +1,26 @@
 ---
-title: Automatizace registru a zjišťování služeb
-description: Naučte se automatizovat zjišťování a registraci služeb pomocí registru služeb Spring Cloud Service
+title: Automatizace registru služby a zjišťování
+description: Naučte se automatizovat zjišťování a registraci služeb pomocí registru jarní cloudové služby.
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: brendm
 ms.openlocfilehash: 6c217096f0ba4200f49bd1fd8056768a6f6f6dbd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76278863"
 ---
-# <a name="discover-and-register-your-spring-cloud-services"></a>Objevte a zaregistrujte své služby Spring Cloud
+# <a name="discover-and-register-your-spring-cloud-services"></a>Objevte a zaregistrujte své jarní cloudové služby
 
-Zjišťování služeb je klíčovým požadavkem pro architekturu založenou na mikroslužbách.  Konfigurace každého klienta ručně vyžaduje čas a zavádí možnost lidské chyby.  Azure Spring Cloud Service Registry tento problém řeší.  Po konfiguraci bude server registru služeb řídit registraci a zjišťování služby pro mikroslužby vaší aplikace. Server registru služeb udržuje registr nasazených mikroslužeb, umožňuje vyrovnávání zatížení na straně klienta a odděluje poskytovatele služeb od klientů bez spoléhání se na služby DNS.
+Zjišťování služeb je klíčovým požadavkem na architekturu založenou na mikroslužbách.  Ruční konfigurace každého klienta trvá určitou dobu a zavádí možnost lidské chyby.  Registr služby Azure jaře Cloud Service tento problém řeší.  Po nakonfigurování bude server registru služby řídit registraci služby a zjišťování pro mikroslužby vaší aplikace. Server registru služby udržuje registr nasazených mikroslužeb, umožňuje vyrovnávání zatížení na straně klienta a odděluje poskytovatele služeb od klientů, aniž by se museli spoléhat na DNS.
 
-## <a name="register-your-application-using-spring-cloud-service-registry"></a>Registrace aplikace pomocí registru služby Spring Cloud Service
+## <a name="register-your-application-using-spring-cloud-service-registry"></a>Registrace aplikace pomocí registru jarní cloudové služby
 
-Před tím, než vaše aplikace může spravovat registraci a zjišťování služby pomocí spring cloudového registru služby, musí být do souboru *pom.xml* aplikace zahrnuto několik závislostí.
-Zahrnout závislosti pro *spring-cloud-starter-netflix-eureka-client* a *spring-cloud-starter-azure-spring-cloud-client-client* do vašeho *pom.xml*
+Předtím, než může vaše aplikace spravovat registraci a zjišťování služby pomocí registru jarní cloudové služby, musí být do souboru *pom. XML* aplikace zahrnuty několik závislostí.
+Zahrňte závislosti pro *jaře-Cloud-Started-Netflix-Eureka-Client* a *jaře-Cloud-Start-Azure-jaře-Cloud-Client* to a *pom. XML.*
 
 ```xml
     <dependency>
@@ -34,9 +34,9 @@ Zahrnout závislosti pro *spring-cloud-starter-netflix-eureka-client* a *spring-
     </dependency>
 ```
 
-## <a name="update-the-top-level-class"></a>Aktualizace nejvyšší třídy
+## <a name="update-the-top-level-class"></a>Aktualizovat třídu nejvyšší úrovně
 
-Nakonec přidáme poznámku do nejvyšší třídy vaší aplikace.
+Nakonec přidáme anotaci do třídy nejvyšší úrovně vaší aplikace.
 
  ```java
     package foo.bar;
@@ -52,6 +52,6 @@ Nakonec přidáme poznámku do nejvyšší třídy vaší aplikace.
     }
  ```
 
-Koncový bod serveru registru služby Spring Cloud Service bude vložen jako proměnná prostředí ve vaší aplikaci.  Mikroslužby se teď budou moci zaregistrovat na serveru registru služeb a zjistit další závislé mikroslužby.
+Koncový bod serveru registru služby jarní Cloud Service bude ve vaší aplikaci vložen jako proměnná prostředí.  Mikroslužby teď budou moct zaregistrovat se serverem registru služby a zjišťovat další závislé mikroslužby.
 
-Všimněte si, že může trvat několik minut pro změny šířit ze serveru do všech mikroslužeb.
+Všimněte si, že může trvat několik minut, než se změny rozšíří ze serveru do všech mikroslužeb.

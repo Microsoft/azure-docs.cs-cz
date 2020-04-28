@@ -1,7 +1,7 @@
 ---
 title: Konfigurace klíčenky
 titleSuffix: Microsoft identity platform
-description: Přečtěte si, jak nakonfigurovat řetězec klíčů tak, aby vaše aplikace mohla ukládat tokeny do mezipaměti v řetězci klíčů.
+description: Naučte se konfigurovat řetězce klíčů tak, aby vaše aplikace mohla ukládat tokeny do mezipaměti v řetězci klíčů.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,37 +14,37 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: d94bf7ffe955c9ec9ee2a2e7f7c4dbaaa28df270
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77085863"
 ---
 # <a name="configure-keychain"></a>Konfigurace klíčenky
 
-Když se v uživateli přihlásí [knihovna ověřování Microsoft pro iOS a macOS](msal-overview.md) (MSAL) nebo aktualizuje token, pokusí se ukládat tokeny do mezipaměti v řetězci klíčů. Ukládání tokenů do mezipaměti v řetězci klíčů umožňuje službě MSAL poskytovat tiché jednotné přihlašování (SSO) mezi více aplikacemi, které jsou distribuovány stejným vývojářem Apple. SSO je dosaženo prostřednictvím funkce přístupové skupiny klíčenky. Další informace naleznete v [dokumentaci k položkám klíčenky](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc)společnosti Apple .
+Když se v rámci uživatele v [knihovně pro ověřování pro iOS a MacOS](msal-overview.md) (MSAL) přihlásí nebo aktualizuje token, pokusí se v řetězci klíčů ukládat tokeny do mezipaměti. Ukládání tokenů do mezipaměti v řetězci klíčů umožňuje MSAL poskytovat tiché jednotné přihlašování (SSO) mezi více aplikacemi, které distribuuje stejný vývojář Apple. Jednotné přihlašování se dosahuje prostřednictvím funkcí přístupových skupin pro řetězce klíčů. Další informace najdete v [dokumentaci k položkám řetězce klíčů](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc)společnosti Apple.
 
-Tento článek popisuje, jak nakonfigurovat nároky aplikací tak, aby MSAL můžete psát tokeny uložené v mezipaměti pro iOS a macOS klíčenky.
+Tento článek popisuje, jak nakonfigurovat nároky aplikace tak, aby MSAL mohli zapisovat tokeny do mezipaměti pro iOS a macOS řetězce klíčů.
 
-## <a name="default-keychain-access-group"></a>Výchozí přístupová skupina řetězce klíčů
+## <a name="default-keychain-access-group"></a>Výchozí přístupová skupina pro řetězce klíčů
 
 ### <a name="ios"></a>iOS
 
-MSAL v systému `com.microsoft.adalcache` iOS používá přístupovou skupinu ve výchozím nastavení. Toto je sdílená přístupová skupina používaná sadami SDK knihovny MSAL i Azure AD Authentication Library (ADAL) a zajišťuje nejlepší jednotné přihlašování (SSO) mezi více aplikacemi od stejného vydavatele.
+MSAL v systému iOS používá `com.microsoft.adalcache` ve výchozím nastavení přístupovou skupinu. Jedná se o sdílenou přístupovou skupinu, kterou používají sady SDK MSAL i Azure AD Authentication Library (ADAL), a zajišťuje nejlepší jednotné přihlašování (SSO) mezi více aplikacemi od stejného vydavatele.
 
-V iOS přidejte `com.microsoft.adalcache` skupinu klíčů ke svému oprávnění aplikace v XCode v části Nastavení **projektu** > **Sdílení** > **klíčů.**
+V systému iOS přidejte skupinu `com.microsoft.adalcache` řetězce klíčů do nároku vaší aplikace v Xcode v části > **Možnosti** >  **nastavení projektu****sdílení řetězce klíčů** .
 
 ### <a name="macos"></a>macOS
 
-MSAL na macOS používá `com.microsoft.identity.universalstorage` přístupovou skupinu ve výchozím nastavení.
+MSAL v macOS používá `com.microsoft.identity.universalstorage` ve výchozím nastavení přístupovou skupinu.
 
-Z důvodu omezení řetězce klíčů macOS se `access group` MSAL přímo nepřekládá do atributu skupiny přístupových řetězců klíčů (viz [kSecAttrAccessGroup)](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc)v macOS 10.14 a starších. Však chová podobně z hlediska spřimhou přihlašování tím, že zajišťuje, že více aplikací distribuovaných stejným vývojářem Apple může mít tiché přihlašování.
+Z důvodu omezení řetězce klíčů macOS se MSAL `access group` nepřeloží přímo na atribut přístupové skupiny pro řetězce klíčů (viz [KSecAttrAccessGroup](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc)) v MacOS 10,14 a starších. Nicméně se chová podobně jako v perspektivě jednotného přihlašování. zajišťuje, že více aplikací distribuovaných stejným vývojářem Apple může mít tiché jednotné přihlašování.
 
-V macOS 10.15 a dále (macOS Catalina), MSAL používá atribut skupiny přístupu klíčenky k dosažení tichého sso, podobně jako iOS.
+V macOS 10,15 a vyšším (macOS Catalina) využívá MSAL k zajištění tichého přihlašování () atribut přístupovou skupinu pro řetězce klíčů, podobně jako iOS.
 
-## <a name="custom-keychain-access-group"></a>Vlastní přístupová skupina řetězce klíčů
+## <a name="custom-keychain-access-group"></a>Vlastní přístupová skupina pro řetězce klíčů
 
-Pokud chcete použít jinou skupinu přístupových řetězců klíčů, můžete `MSALPublicClientApplicationConfig` před `MSALPublicClientApplication`vytvořením předat vlastní skupinu takto:
+Pokud chcete použít jinou přístupovou skupinu pro řetězce klíčů, můžete vlastní skupinu předat při vytváření `MSALPublicClientApplicationConfig` před vytvořením `MSALPublicClientApplication`, například takto:
 
 # <a name="objective-c"></a>[Objective-C](#tab/objc)
 
@@ -80,9 +80,9 @@ do {
 
 ---
 
-## <a name="disable-keychain-sharing"></a>Zakázat sdílení klíčenky
+## <a name="disable-keychain-sharing"></a>Zakázat sdílení řetězce klíčů
 
-Pokud nechcete sdílet stav přihlašovacího systému mezi více aplikacemi nebo použít libovolnou skupinu přístupových řetězců klíčů, zakažte sdílení řetězce klíčů předáním ID sady aplikací jako skupiny klíčů:
+Pokud nechcete sdílet stav jednotného přihlašování mezi více aplikacemi nebo použít jakoukoli přístupovou skupinu pro řetězce klíčů, zakažte sdílení řetězce klíčů předáním ID sady prostředků aplikace jako své skupiny klíčů:
 
 # <a name="objective-c"></a>[Objective-C](#tab/objc)
 
@@ -100,14 +100,14 @@ if let bundleIdentifier = Bundle.main.bundleIdentifier {
 
 ---
 
-## <a name="handle--34018-error-failed-to-set-item-into-keychain"></a>Popisovač -34018 chyba (nepodařilo se nastavit položku do klíčenky)
+## <a name="handle--34018-error-failed-to-set-item-into-keychain"></a>Chyba popisovače-34018 (Nepodařilo se nastavit položku na řetězec klíčů)
 
-Chyba -34018 obvykle znamená, že klíčenka nebyla správně nakonfigurována. Ujistěte se, že přístupová skupina řetězce klíčů, která byla nakonfigurována v msal, odpovídá skupině nakonfigurované v oprávněních.
+Chyba-34018 obvykle znamená, že řetězec klíčů nebyl správně nakonfigurován. Ujistěte se, že přístupová skupina pro řetězce klíčů, která je nakonfigurovaná v MSAL, odpovídá hodnotě nakonfigurované v oprávněních.
 
-## <a name="ensure-your-application-is-properly-signed"></a>Ujistěte se, že je vaše žádost řádně podepsána
+## <a name="ensure-your-application-is-properly-signed"></a>Ujistěte se, že je aplikace správně podepsaná.
 
-V macOS se aplikace můžou spouštět, aniž by je vývojář podepsal. Zatímco většina funkcí MSAL bude i nadále fungovat, spřijit pomocí přístupu řetězce klíčů vyžaduje, aby byla aplikace podepsána. Pokud se u vás vyskytne více výzev řetězce klíčů, ujistěte se, že podpis aplikace je platný.
+V macOS můžou být aplikace spouštěné bez podpisu vývojářem. I když většina funkcí MSAL bude i nadále fungovat, SSO prostřednictvím přístupového řetězce klíčů vyžaduje, aby byla aplikace podepsaná. Pokud máte více výzev pro řetězce klíčů, ujistěte se, že signatura aplikace je platná.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o přístupových skupinách pro klíčenky najdete v článku [Sdílení přístupu apple k položkám klíčenky v kolekci aplikací.](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc)
+Přečtěte si další informace o přístupových skupinách pro řetězce klíčů v tématu [přístup k položkám řetězce klíčů](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc) v rámci kolekce článků v aplikacích v Apple.

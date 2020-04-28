@@ -1,6 +1,6 @@
 ---
-title: Jak nakonfigurovat jednotné přihlašování hesla pro aplikace Azure AD | Dokumenty společnosti Microsoft
-description: Jak nakonfigurovat jednotné přihlašování hesla (SSO) k podnikovým aplikacím Azure AD v platformě microsoftových identit (Azure AD)
+title: Jak nakonfigurovat jednotné přihlašování k heslům pro aplikace Azure AD | Microsoft Docs
+description: Jak nakonfigurovat jednotné přihlašování (SSO) k podnikovým aplikacím Azure AD v platformě Microsoft Identity Platform (Azure AD)
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -12,85 +12,85 @@ ms.date: 07/10/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 563bda275b73f76b042b5e57a9909ca78c504bb3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77063522"
 ---
-# <a name="configure-password-single-sign-on"></a>Konfigurace jednotného přihlašování hesla
+# <a name="configure-password-single-sign-on"></a>Konfigurace jednotného přihlašování k heslům
 
-Když do aplikací Azure AD Enterprise [připřidáte aplikaci galerie](add-gallery-app.md) nebo [webovou aplikaci,](add-non-gallery-app.md) která není galerie, je jednou z možností jednotného přihlášení, které máte k dispozici, [jednotné přihlašování založené na heslech](what-is-single-sign-on.md#password-based-sso). Tato možnost je k dispozici pro všechny weby s přihlašovací stránkou HTML. Zabezpečení založené na heslech, označované také jako trezor hesel, umožňuje spravovat přístup uživatelů a hesla k webovým aplikacím, které nepodporují federaci identit. Je to také užitečné pro scénáře, kde několik uživatelů potřebuje sdílet jeden účet, například s účty aplikací sociálních médií vaší organizace. 
+Když [přidáte aplikaci Galerie](add-gallery-app.md) nebo [webovou aplikaci mimo galerii](add-non-gallery-app.md) do podnikových aplikací Azure AD, jedna z dostupných možností jednotného přihlašování je [jednotné přihlašování založené na heslech](what-is-single-sign-on.md#password-based-sso). Tato možnost je k dispozici pro všechny webové stránky s přihlašovací stránkou HTML. Jednotné přihlašování založené na heslech, označované taky jako trezor hesel, umožňuje spravovat přístup uživatelů a hesla k webovým aplikacím, které nepodporují federaci identit. Je to také užitečné ve scénářích, kdy je potřeba, aby několik uživatelů sdílelo jeden účet, například k účtům aplikací sociálních médií vaší organizace. 
 
-Zabezpečení založené na heslech je skvělý způsob, jak začít rychle integrovat aplikace do Azure AD a umožňuje:
+Jednotné přihlašování založené na heslech je skvělým způsobem, jak rychle začít integrovat aplikace do služby Azure AD a umožní vám:
 
--   Povolení **jednotného přihlašování pro uživatele** bezpečným ukládáním a přehráním uživatelských jmen a hesel pro aplikaci, kterou jste integrovali do Azure AD
+-   Povolení **jednotného přihlašování pro uživatele** díky bezpečnému ukládání a přehrávání uživatelských jmen a hesel pro aplikaci, kterou jste integrací se službou Azure AD.
 
--   **Podpora aplikací, které vyžadují více polí pro přihlášení** pro aplikace, které vyžadují více než jen pole uživatelského jména a hesla pro přihlášení
+-   **Podpora aplikací, které vyžadují více polí přihlašování** pro aplikace, které pro přihlášení vyžadují víc než jenom uživatelské jméno a heslo
 
--   **Přizpůsobení popisků** polí pro zadávání uživatelského jména a hesla, která se uživatelům zobrazí na [panelu Pro přístup k aplikacím](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) při zadávání přihlašovacích údajů
+-   **Přizpůsobení popisků** vstupních polí uživatelského jména a hesla, která se uživatelům zobrazí na [přístupovém panelu aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) při zadání přihlašovacích údajů
 
--   Umožněte **uživatelům** zadat vlastní uživatelská jména a hesla pro všechny existující účty aplikací, které zadávají ručně na [panelu Přístupkové zařízení](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+-   Umožněte **uživatelům** zadání vlastních uživatelských jmen a hesel pro všechny existující účty aplikací, které na [přístupovém panelu aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) zadávají ručně.
 
--   Povolit **členovi obchodní skupiny** zadat uživatelská jména a hesla přiřazená uživateli pomocí funkce [Samoobslužný přístup k aplikacím](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)
+-   Umožňuje **členům obchodní skupiny** zadat uživatelská jména a hesla přiřazená uživateli pomocí funkce [Samoobslužný přístup k aplikacím](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) .
 
--   Povolit **správci** zadat uživatelské jméno a heslo, které mají jednotlivci nebo skupiny používat při přihlašování k aplikaci pomocí funkce Aktualizovat pověření 
+-   Umožňuje **Správci** zadat uživatelské jméno a heslo, které mají jednotlivci nebo skupiny používat při přihlašování k aplikaci pomocí funkce aktualizovat přihlašovací údaje. 
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Pokud aplikace nebyla přidána do vašeho klienta Azure AD, přečtěte si informace [o přidání aplikace galerie](add-gallery-app.md) nebo přidání [aplikace, která není galerie.](add-non-gallery-app.md)
+Pokud se aplikace nepřidala do tenanta Azure AD, přečtěte si téma [Přidání aplikace Galerie](add-gallery-app.md) nebo [Přidání aplikace mimo galerii](add-non-gallery-app.md).
 
-## <a name="open-the-app-and-select-password-single-sign-on"></a>Otevření aplikace a výběr jednotného přihlašování hesla
+## <a name="open-the-app-and-select-password-single-sign-on"></a>Otevřete aplikaci a vyberte možnost jednotné přihlašování pomocí hesla.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com) jako správce cloudových aplikací nebo správce aplikace pro vašeho klienta Azure AD.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce cloudové aplikace nebo správce aplikace pro vašeho TENANTA Azure AD.
 
-2. Přejděte k**aplikacím** **Azure Active Directory** > Enterprise . Zobrazí se náhodný vzorek aplikací v tenantovi Azure AD. 
+2. Přejděte na **Azure Active Directory** > **podnikové aplikace**. Zobrazí se náhodná ukázka aplikací v tenantovi Azure AD. 
 
-3. V nabídce **Typ aplikace** vyberte **Všechny aplikace**a pak vyberte **Použít**.
+3. V nabídce **Typ aplikace** vyberte **všechny aplikace**a pak vyberte **použít**.
 
-4. Do vyhledávacího pole zadejte název aplikace a vyberte ji z výsledků.
+4. Do vyhledávacího pole zadejte název aplikace a pak vyberte aplikaci z výsledků.
 
-5. V části **Správa** vyberte **Jednotné přihlašování**. 
+5. V části **Spravovat** vyberte **jednotné přihlašování**. 
 
-6. Vyberte **možnost Založené na heslech**.
+6. Vyberte možnost **založené na heslech**.
 
-7. Zadejte adresu URL webové přihlašovací stránky aplikace. Tento řetězec musí být stránka, která obsahuje vstupní pole uživatelského jména.
+7. Zadejte adresu URL stránky pro přihlášení na webu aplikace. Tento řetězec musí být stránka, která obsahuje pole pro zadání uživatelského jména.
 
    ![Jednotné přihlašování založené na heslech](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
 
-8. Vyberte **Uložit**. Azure AD se pokusí analyzovat přihlašovací stránku pro vstup uživatelského jména a zadání hesla. Pokud se pokus uspěje, je po všem. 
+8. Vyberte **Uložit**. Služba Azure AD se pokusí analyzovat přihlašovací stránku pro zadání uživatelského jména a zadání hesla. Pokud je pokus úspěšný, jste hotovi. 
  
 > [!NOTE]
-> Dalším krokem je [přiřazení uživatelů nebo skupin k aplikaci](methods-for-assigning-users-and-groups.md). Po přiřazení uživatelů a skupin můžete zadat pověření, která budou použita jménem uživatele při přihlášení k aplikaci. Vyberte **Uživatelé a skupiny**, zaškrtněte políčko pro řádek uživatele nebo **skupiny**a klepněte na tlačítko Aktualizovat pověření . Poté zadejte uživatelské jméno a heslo, které chcete použít jménem uživatele nebo skupiny. V opačném případě budou uživatelé při spuštění vyzváni k zadání pověření sami.
+> Dalším krokem je [přiřazení uživatelů nebo skupin k aplikaci](methods-for-assigning-users-and-groups.md). Po přiřazení uživatelů a skupin můžete zadat přihlašovací údaje, které se budou používat jménem uživatele při přihlášení k aplikaci. Vyberte **Uživatelé a skupiny**, zaškrtněte políčko pro řádek uživatele nebo skupiny a potom klikněte na **Aktualizovat přihlašovací údaje**. Pak zadejte uživatelské jméno a heslo, které chcete použít jménem uživatele nebo skupiny. V opačném případě budou uživatelé vyzváni k zadání přihlašovacích údajů sami při spuštění.
  
 
 ## <a name="manual-configuration"></a>Ruční konfigurace
 
-Pokud se nezdaří pokus o analýzu služby Azure AD, můžete nakonfigurovat přihlášení ručně.
+Pokud se pokus o analýzu služby Azure AD nezdaří, můžete nakonfigurovat ruční přihlášení.
 
-1. V ** \<** části název aplikace> Konfigurace vyberte **Konfigurovat \<název aplikace> nastavení jednotného přihlášení hesla,** **chcete-li** zobrazit stránku Konfigurovat přihlášení. 
+1. V části ** \<název aplikace> konfigurace**vyberte **Konfigurovat \<název aplikace> nastavení jednotné přihlašování** . zobrazí se stránka **Konfigurace přihlášení** . 
 
-2. Vyberte **Ručně rozpoznat přihlašovací pole**. Zobrazí se další pokyny popisující ruční zjišťování polí pro přihlášení.
+2. Vyberte možnost **ručně zjišťovat přihlašovací pole**. Zobrazí se další pokyny, které popisují ruční zjišťování polí přihlašování.
 
    ![Ruční konfigurace jednotného přihlašování založeného na heslech](./media/configure-password-single-sign-on/password-configure-sign-on.png)
-3. Vyberte **Zachytit přihlašovací pole**. Na nové kartě se otevře stránka se stavem zachycení, která zobrazuje **právě probíhající sběr metadat**zprávy .
+3. Vyberte možnost **zachytávání přihlašovacích polí**. Na nové kartě se otevře stránka stavu zachycení, která ukazuje, že **právě probíhá zachytávání metadat**zprávy.
 
-4. Pokud se na nové kartě zobrazí pole **Povinné rozšíření přístupového panelu,** vyberte Nainstalovat **a** nainstalujte rozšíření rozšíření rozšíření zabezpečení přihlášení **moje aplikace.** (Rozšíření prohlížeče vyžaduje Microsoft Edge, Chrome nebo Firefox.) Potom nainstalujte, spusťte a povolte rozšíření a aktualizujte stránku stavu sběru.
+4. Pokud se na nové kartě zobrazí pole **požadované rozšíření přístupového panelu** , vyberte **instalovat hned** a nainstalujte rozšíření prohlížeče **rozšíření pro zabezpečené přihlašování k aplikacím** . (Rozšíření prohlížeče vyžaduje Microsoft Edge, Chrome nebo Firefox.) Pak nainstalujte, spusťte a povolte rozšíření a aktualizujte stránku stavu zachycení.
 
-   Rozšíření prohlížeče pak otevře další kartu, která zobrazuje zadanou adresu URL.
-5. Na kartě se zadanou adresou URL projděte procesem přihlášení. Vyplňte pole uživatelského jména a hesla a zkuste se přihlásit. (Není třeba zavést správné heslo.)
+   Rozšíření prohlížeče pak otevře jinou kartu, která zobrazí zadanou adresu URL.
+5. Na kartě se zadanou adresou URL Projděte přihlašovací proces. Do polí uživatelské jméno a heslo zadejte a zkuste se přihlásit. (Nemusíte zadávat správné heslo.)
 
-   Zobrazí se výzva s výzvou k uložení zachycených přihlašovacích polí.
-6. Vyberte **OK**. Rozšíření prohlížeče aktualizuje stránku stavu sběru zpráv **Metadata byla aktualizována pro aplikaci**. Karta prohlížeče se zavře.
+   Zobrazí se výzva k uložení zachycených přihlašovacích polí.
+6. Vyberte **OK**. Rozšíření prohlížeče aktualizuje stránku stavu zachycení s metadaty zprávy, která byla **pro aplikaci aktualizována**. Karta prohlížeče se zavře.
 
-7. Na stránce **konfigurace služby** Azure AD vyberte Ok, podařilo se mi **úspěšně se přihlásit k aplikaci**.
+7. Na **přihlašovací stránce konfigurace** Azure AD vyberte **OK, přihlášení k aplikaci bylo úspěšné**.
 
 8. Vyberte **OK**.
 
-Po zachycení přihlašovací stránky můžete přiřadit uživatele a skupiny a můžete nastavit zásady pověření stejně jako běžné [aplikace s přihlašování heslem](what-is-single-sign-on.md).
+Po zachytávání přihlašovací stránky můžete přiřadit uživatele a skupiny a zásady pro přihlašovací údaje můžete nastavit stejně jako běžné [aplikace jednotného hesla](what-is-single-sign-on.md).
 
 > [!NOTE]
-> Logo dlaždice pro aplikaci můžete nahrát pomocí tlačítka **Nahrát logo** na kartě **Konfigurovat** pro aplikaci.
+> Pro aplikaci můžete nahrát logo dlaždice pomocí tlačítka **nahrát logo** na kartě **Konfigurace** aplikace.
 
 ## <a name="next-steps"></a>Další kroky
 

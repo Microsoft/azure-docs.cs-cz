@@ -1,6 +1,6 @@
 ---
-title: Rozdíly mezi delegovanými oprávněními a oprávněními aplikace | Azure
-description: Informace o delegovaných oprávněních a oprávněních aplikací, o tom, jak je používají klienti a které jsou vystaveny prostředkům pro aplikace, které vyvíjíte s Azure AD
+title: Rozdíly mezi delegovanými a aplikačními oprávněními | Azure
+description: Přečtěte si o oprávněních delegovaná a aplikace, jak je používají klienti a které zveřejňují prostředky pro aplikace, které vyvíjíte pomocí Azure AD.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ms.openlocfilehash: 5f7035472ae408987a14f06492a762b56fa657b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76697604"
 ---
-# <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>Jak rozpoznat rozdíly mezi delegovanými oprávněními a oprávněními aplikací
+# <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>Rozpoznání rozdílů mezi delegovanými a aplikačními oprávněními
 
 ## <a name="recommended-documents"></a>Doporučené dokumenty
 
-- Přečtěte si další informace o tom, jak klientské aplikace používají [delegované a žádosti o oprávnění aplikací](developer-glossary.md#permissions) pro přístup k prostředkům.
-- Podrobné pokyny ke [konfiguraci požadavků klientské aplikace](quickstart-configure-app-access-web-apis.md) na oprávnění
-- Pro větší hloubku se dozvíte, jak aplikace prostředků [zveřejňují obory](developer-glossary.md#scopes) a [role aplikací](developer-glossary.md#roles) pro klientské aplikace, které se projevují jako delegovaná a oprávnění aplikací na webu Azure Portal. 
+- Přečtěte si další informace o tom, jak klientské aplikace používají [delegované a žádosti o oprávnění aplikací](developer-glossary.md#permissions) k přístupu k prostředkům.
+- Přečtěte si podrobné pokyny ke [konfiguraci žádostí o oprávnění klientské aplikace](quickstart-configure-app-access-web-apis.md) .
+- Další podrobnosti najdete v tématu Jak aplikace prostředků zveřejňují [obory](developer-glossary.md#scopes) a [aplikační role](developer-glossary.md#roles) klientským aplikacím, které se v Azure Portal manifestují jako delegovaná a oprávnění aplikace. 
 
 ## <a name="next-steps"></a>Další kroky
-[Přetečení zásobníku AzureAD](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

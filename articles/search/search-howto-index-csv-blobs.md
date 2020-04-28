@@ -1,7 +1,7 @@
 ---
-title: Hledání přes objekty BLOB CSV
+title: Hledání v případě objektů BLOB ve formátu CSV
 titleSuffix: Azure Cognitive Search
-description: Extrahujte a importujte CSV z úložiště objektů Blob Azure pomocí režimu analýzy odděleného textu.
+description: Extrahujte a importujte CSV z úložiště objektů BLOB v Azure pomocí režimu analýzy delimitedText.
 manager: nitinme
 author: mgottein
 ms.author: magottei
@@ -10,27 +10,27 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: bf600890bfed570e712a159005b8ef5267298cc0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76122317"
 ---
-# <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>Jak indexovat objekty BLOB CSV pomocí režimu analýzy odděleného textu a indexerů objektů Blob v Azure Cognitive Search
+# <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>Indexování objektů BLOB ve formátu CSV pomocí režimu analýzy delimitedText a indexerů objektů BLOB v Azure Kognitivní hledání
 
-Ve výchozím nastavení [indexer objektů blob Azure Cognitive Search](search-howto-indexing-azure-blob-storage.md) analyzuje objekty BLOB s omezeným přístupem jako jeden blok textu. U objektů BLOB obsahujících data CSV však často chcete považovat každý řádek v objektu blob za samostatný dokument. Například s ohledem na následující text oddělený, můžete jej analyzovat do dvou dokumentů, z nichž každý obsahuje "id", "datePublished" a "tagy" pole: 
+Služba [Azure kognitivní hledání BLOB](search-howto-indexing-azure-blob-storage.md) ve výchozím nastavení analyzuje objekty BLOB s oddělovači textu jako jeden blok textu. Nicméně s objekty blob obsahujícími data CSV často chcete s každým řádkem v objektu BLOB zacházet jako se samostatným dokumentem. Například s ohledem na následující oddělený text můžete ho chtít analyzovat do dvou dokumentů, z nichž každý obsahuje pole ID, datePublished a Tags: 
 
     id, datePublished, tags
     1, 2016-01-12, "azure-search,azure,cloud" 
     2, 2016-07-07, "cloud,mobile" 
 
-V tomto článku se dozvíte, jak analyzovat objekty BLOB CSV pomocí indexeru objektů blob Azure Cognitive Search nastavením režimu `delimitedText` analýzy. 
+V tomto článku se dozvíte, jak analyzovat objekty blob ve formátu CSV pomocí indexeru objektů BLOB v Azure Kognitivní hledání `delimitedText` nastavením režimu analýzy. 
 
 > [!NOTE]
-> Postupujte podle doporučení konfigurace indexeru v [indexování 1:N](search-howto-index-one-to-many-blobs.md) a vydejte se na výstupu více vyhledávacích dokumentů z jednoho objektu blob Azure.
+> Při indexování několika dokumentů hledání z jednoho objektu blob Azure postupujte podle doporučení pro konfiguraci indexeru v indexu [1: n](search-howto-index-one-to-many-blobs.md) .
 
 ## <a name="setting-up-csv-indexing"></a>Nastavení indexování CSV
-Chcete-li indexovat objekty BLOB CSV, `delimitedText` vytvořte nebo aktualizujte definici indexeru s režimem analýzy v požadavku [vytvořit indexer:](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
+Chcete-li indexovat objekty blob ve formátu CSV, vytvořte nebo aktualizujte definici indexeru s režimem `delimitedText` analýzy u žádosti [vytvořit indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) :
 
     {
       "name" : "my-csv-indexer",
@@ -38,27 +38,27 @@ Chcete-li indexovat objekty BLOB CSV, `delimitedText` vytvořte nebo aktualizujt
       "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "firstLineContainsHeaders" : true } }
     }
 
-`firstLineContainsHeaders`označuje, že první (neprázdný) řádek každého objektu blob obsahuje záhlaví.
-Pokud objekty BLOB neobsahují počáteční řádek záhlaví, měly by být záhlaví zadána v konfiguraci indexeru: 
+`firstLineContainsHeaders`označuje, že první (neprázdný) řádek každého objektu BLOB obsahuje hlavičky.
+Pokud objekty blob neobsahují počáteční řádek záhlaví, hlavičky by se měly zadat v konfiguraci indexeru: 
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } } 
 
-Znak oddělovače můžete přizpůsobit `delimitedTextDelimiter` pomocí nastavení konfigurace. Například:
+Pomocí nastavení `delimitedTextDelimiter` konfigurace můžete změnit znak oddělovače. Příklad:
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextDelimiter" : "|" } }
 
 > [!NOTE]
-> V současné době je podporováno pouze kódování UTF-8. Pokud potřebujete podporu pro další kódování, hlasujte pro něj na [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
+> V současné době je podporována pouze kódování UTF-8. Pokud potřebujete podporu pro další kódování, Hlasujte pro ni na webu [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
 
 > [!IMPORTANT]
-> Při použití režimu oddělené analýzy textu Azure Cognitive Search předpokládá, že všechny objekty BLOB ve zdroji dat bude CSV. Pokud potřebujete podporovat kombinaci objektů BLOB CSV a nesouvisejících s CSV ve stejném zdroji dat, hlasujte pro něj na [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
+> Když použijete režim pro analýzu textu s oddělovači, Azure Kognitivní hledání předpokládá, že všechny objekty blob ve zdroji dat budou CSV. Pokud potřebujete podporovat kombinaci sdílených svazků clusteru CSV a jiných objektů BLOB ve stejném zdroji dat, Hlasujte prosím na webu [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
 > 
 > 
 
 ## <a name="request-examples"></a>Příklady požadavků
-Když to všechno dáme dohromady, zde jsou kompletní příklady užitečné hodu. 
+Zde jsou uvedeny kompletní příklady datové části. 
 
-Datasource: 
+Datového 
 
     POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
@@ -71,7 +71,7 @@ Datasource:
         "container" : { "name" : "my-container", "query" : "<optional, my-folder>" }
     }   
 
-Indexer:
+Indexer
 
     POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
@@ -84,6 +84,6 @@ Indexer:
       "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } }
     }
 
-## <a name="help-us-make-azure-cognitive-search-better"></a>Pomozte nám vylepšit Azure Cognitive Search
-Pokud máte požadavky na funkce nebo nápady na vylepšení, zadejte svůj vstup na [UserVoice](https://feedback.azure.com/forums/263029-azure-search/).
+## <a name="help-us-make-azure-cognitive-search-better"></a>Pomozte nám zdokonalit Azure Kognitivní hledání
+Pokud máte na vylepšení žádosti o funkce nebo nápady, poskytněte svůj vstup na [UserVoice](https://feedback.azure.com/forums/263029-azure-search/).
 

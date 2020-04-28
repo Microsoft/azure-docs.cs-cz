@@ -1,6 +1,6 @@
 ---
-title: Úvod do zobrazení skupiny zabezpečení v Azure Network Watcher | Dokumenty společnosti Microsoft
-description: Tato stránka obsahuje přehled funkce zobrazení zabezpečení Sledování sítě
+title: Seznámení se zobrazením skupiny zabezpečení v Azure Network Watcher | Microsoft Docs
+description: Tato stránka poskytuje přehled možností zobrazení zabezpečení Network Watcher.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -12,29 +12,29 @@ ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: damendo
 ms.openlocfilehash: 18619cc0f7a21a39d0802575c484c68c5fa1a624
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76840753"
 ---
-# <a name="introduction-to-effective-security-rules-view-in-azure-network-watcher"></a>Úvod k zobrazení efektivních pravidel zabezpečení v Azure Network Watcher
+# <a name="introduction-to-effective-security-rules-view-in-azure-network-watcher"></a>Úvod do zobrazení efektivních pravidel zabezpečení v Azure Network Watcher
 
-Skupiny zabezpečení sítě jsou přidruženy na úrovni podsítě nebo na úrovni síťové sítě. Pokud je přidružena na úrovni podsítě, vztahuje se na všechny instance virtuálních virtuálních mitv v podsíti. Zobrazení efektivních pravidel zabezpečení vrátí všechny nakonfigurované skupiny zabezpečení sítě a pravidla, která jsou přidružena na úrovni síťové karty a podsítě pro virtuální počítač poskytující přehled o konfiguraci. Kromě toho jsou vrácena účinná pravidla zabezpečení pro každý z nic ve virtuálním počítači. Pomocí zobrazení efektivní pravidla zabezpečení můžete posoudit virtuální ho virtuálního virtuálního papíru pro zabezpečení sítě, jako jsou otevřené porty. Můžete také ověřit, zda skupina zabezpečení sítě pracuje podle očekávání na základě [porovnání mezi nakonfigurovanými a schválenými pravidly zabezpečení](network-watcher-nsg-auditing-powershell.md).
+Skupiny zabezpečení sítě jsou přidružené na úrovni podsítě nebo na úrovni síťové karty. V případě, že se přidruží na úrovni podsítě, platí pro všechny instance virtuálních počítačů v podsíti. Zobrazení platná pravidla zabezpečení vrací všechna nakonfigurovaná skupin zabezpečení sítě a pravidla, která jsou přidružená na síťové kartě a na úrovni podsítě pro virtuální počítač, který poskytuje přehled o konfiguraci. Kromě toho jsou pro každou ze síťových adaptérů ve virtuálním počítači vracena platná pravidla zabezpečení. Pomocí zobrazení efektivních pravidel zabezpečení můžete vyhodnotit virtuální počítač pro ohrožení zabezpečení sítě, například otevřít porty. Můžete také ověřit, jestli vaše skupina zabezpečení sítě funguje podle očekávání, na základě [porovnání mezi nakonfigurovanými a schválenými pravidly zabezpečení](network-watcher-nsg-auditing-powershell.md).
 
-Delší případ použití je v dodržování předpisů zabezpečení a auditování. Jako model pro zásady správného řízení zabezpečení ve vaší organizaci můžete definovat normativní sadu pravidel zabezpečení. Pravidelný audit dodržování předpisů lze implementovat programovým způsobem porovnáním normativních pravidel s platnými pravidly pro každý z virtuálních počítačů ve vaší síti.
+Rozšířený případ použití je v souladu se zabezpečením a auditováním. Můžete definovat sadu pravidel zabezpečení jako model pro řízení zabezpečení ve vaší organizaci. Pravidelný audit dodržování předpisů se dá implementovat programovým způsobem tím, že se porovnávají pravidla pro všechny virtuální počítače ve vaší síti s platnými pravidly.
 
-V portálu pravidla jsou zobrazeny pro každé síťové rozhraní a seskupeny podle příchozí vs odchozí. To poskytuje jednoduché zobrazení do pravidel používaných pro virtuální počítač. Tlačítko pro stažení je k dispozici pro snadné stažení všech bezpečnostních pravidel bez ohledu na kartu do souboru CSV.
+V pravidlech portálu se zobrazují pro každé síťové rozhraní a seskupují podle příchozího vs odchozího. To poskytuje jednoduché zobrazení do pravidel použitých pro virtuální počítač. K dispozici je tlačítko Stáhnout pro snadné stažení všech pravidel zabezpečení bez ohledu na kartu na soubor CSV.
 
 ![zobrazení skupiny zabezpečení][1]
 
-Pravidla lze vybrat a otevře se nové okno, které zobrazí skupinu zabezpečení sítě a předpony zdroje a cíle. Z tohoto okna můžete přejít přímo na prostředek skupiny zabezpečení sítě.
+Můžete vybrat pravidla a otevře se nové okno, ve kterém se zobrazí skupina zabezpečení sítě a předpony zdroje a cíle. Z tohoto okna můžete přejít přímo k prostředku skupiny zabezpečení sítě.
 
-![Procházení][2]
+![drobná][2]
 
 ### <a name="next-steps"></a>Další kroky
 
-Informace o auditování nastavení skupiny zabezpečení sítě nastráncením [na stránce Audit Network Security Group pomocí prostředí PowerShell](network-watcher-nsg-auditing-powershell.md)
+Informace o tom, jak auditovat nastavení skupiny zabezpečení sítě, najdete v tématu [audit nastavení skupiny zabezpečení sítě pomocí PowerShellu](network-watcher-nsg-auditing-powershell.md) .
 
 [1]: ./media/network-watcher-security-group-view-overview/securitygroupview.png
 [2]: ./media/network-watcher-security-group-view-overview/figure1.png

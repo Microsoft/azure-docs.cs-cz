@@ -1,6 +1,6 @@
 ---
-title: Aktualizace mediálních služeb po přístupových klíčích pro zpřístupnění ke rolling storage | Dokumenty společnosti Microsoft
-description: V tomto článku se můžete naučit aktualizovat služby Media Services po zpřístupnění klíčů ke rolling storage.
+title: Aktualizovat Media Services po navracení přístupových klíčů k úložišti | Microsoft Docs
+description: V tomto článku najdete pokyny, jak aktualizovat Media Services po zavedení přístupových klíčů k úložišti.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -16,49 +16,49 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga;cenkdin
 ms.openlocfilehash: 2a0d1c5af572c88dc11bed950b46706f0a2f081f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75981966"
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>Aktualizace Media Services po postupném zavedení přístupových klíčů k úložišti 
 
-Když vytvoříte nový účet Azure Media Services (AMS), budete také vyzváni k výběru účtu Azure Storage, který se používá k ukládání mediálního obsahu. Do účtu Mediálních služeb můžete přidat více než jeden účet úložiště. Tento článek ukazuje, jak otáčet klíče úložiště. Také ukazuje, jak přidat účty úložiště do účtu média. 
+Když vytvoříte nový účet Azure Media Services (AMS), zobrazí se také výzva k výběru účtu Azure Storage, který se používá k uložení mediálního obsahu. K vašemu Media Services účtu můžete přidat více účtů úložiště. Tento článek ukazuje, jak otočit klíče úložiště. Také ukazuje, jak přidat účty úložiště k účtu média. 
 
-Chcete-li provést akce popsané v tomto článku, měli byste používat [Azure Resource Manager API](/rest/api/media/operations/azure-media-services-rest-api-reference) a [Powershell](https://docs.microsoft.com/powershell/module/az.media).  Další informace najdete v tématu [Správa prostředků Azure pomocí PowerShellu a Správce prostředků](../../azure-resource-manager/management/manage-resource-groups-powershell.md).
+K provedení akcí popsaných v tomto článku byste měli používat [rozhraní Azure Resource Manager API](/rest/api/media/operations/azure-media-services-rest-api-reference) a [PowerShell](https://docs.microsoft.com/powershell/module/az.media).  Další informace najdete v tématu [Správa prostředků Azure pomocí PowerShellu a správce prostředků](../../azure-resource-manager/management/manage-resource-groups-powershell.md).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Přehled
 
-Když se vytvoří nový účet úložiště, Azure generuje dva 512bitové klíče přístupu k úložišti, které se používají k ověření přístupu k vašemu účtu úložiště. Chcete-li, aby byla připojení úložiště bezpečnější, doporučujeme pravidelně obnovovat a otáčet přístupový klíč úložiště. Dva přístupové klíče (primární a sekundární) jsou k dispozici, aby vám umožní udržovat připojení k účtu úložiště pomocí jednoho přístupového klíče při regeneraci druhého přístupového klíče. Tento postup se také nazývá "klíčem pro sádkový přístup".
+Když se vytvoří nový účet úložiště, Azure vygeneruje 2 512 přístupové klíče k úložišti, které se používají k ověření přístupu k vašemu účtu úložiště. Aby se vaše připojení úložiště lépe zabezpečilo, doporučuje se pravidelně znovu vygenerovat a otočit přístupový klíč k úložišti. K dispozici jsou dva přístupové klíče (primární a sekundární), aby bylo možné spravovat připojení k účtu úložiště pomocí jednoho přístupového klíče, zatímco znovu vygenerujete druhý přístupový klíč. Tento postup se nazývá také "přístupové klíče pro vracení".
 
-Mediální služby závisí na klíči úložiště, který je k němu poskytnut. Konkrétně lokátory, které se používají k streamování nebo stahování vašich datových zdrojů, závisí na zadaném přístupovém klíči úložiště. Při vytvoření účtu AMS trvá závislost na primárním přístupovém klíči úložiště ve výchozím nastavení, ale jako uživatel můžete aktualizovat klíč úložiště, který má AMS. Je třeba, aby media services vědět, který klíč použít pomocí následujících kroků popsaných v tomto článku.  
+Media Services závisí na klíči úložiště, který je mu k dispozici. Konkrétně Lokátory, které se používají ke streamování nebo stahování vašich assetů, závisí na zadaném přístupovém klíči úložiště. Při vytvoření účtu AMS se ve výchozím nastavení převezme závislost na primárním přístupovém klíči úložiště, ale jako uživatel můžete aktualizovat klíč úložiště, který AMS má. Musíte se ujistit, že Media Services znát, který klíč chcete použít, podle kroků popsaných v tomto článku.  
 
 >[!NOTE]
-> Pokud máte více účtů úložiště, provedete tento postup s každým účtem úložiště. Pořadí, ve kterém střídáte klíče úložiště, není pevné. Nejprve můžete otočit sekundární klíč a potom primární klíč nebo naopak.
+> Pokud máte více účtů úložiště, provedete tento postup u každého účtu úložiště. Pořadí, ve kterém se klíče úložiště otočí, není pevně dané. Sekundární klíč můžete nejdřív otočit a pak primární klíč nebo naopak.
 >
-> Před provedením kroků popsaných v tomto článku na produkčním účtu je nezapomeňte otestovat na předprodukčním účtu.
+> Před provedením kroků popsaných v tomto článku na produkčním účtu se ujistěte, že je otestujete na předprodukčním účtu.
 >
 
-## <a name="steps-to-rotate-storage-keys"></a>Postup otočení klíčů úložiště 
+## <a name="steps-to-rotate-storage-keys"></a>Postup pro otočení klíčů úložiště 
  
- 1. Změňte účet úložiště Primární klíč prostřednictvím rutiny powershellu nebo [portálu Azure.](https://portal.azure.com/)
- 2. Volání rutiny Sync-AzMediaServiceStorageKeys s příslušnými paramy, které nutí mediální účet k vyzvednutí klíčů účtu úložiště
+ 1. Pomocí rutiny PowerShellu nebo webu [Azure](https://portal.azure.com/) Portal změňte primární klíč účtu úložiště.
+ 2. Volejte rutinu Sync-AzMediaServiceStorageKeys s příslušnými parami k vynucení účtu média pro výběr klíčů účtu úložiště.
  
     Následující příklad ukazuje, jak synchronizovat klíče s účty úložiště.
   
          Sync-AzMediaServiceStorageKeys -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccountId $storageAccountId
   
- 3. Počkejte asi hodinu. Ověřte, zda scénáře streamování fungují.
- 4. Změňte sekundární klíč účtu úložiště prostřednictvím rutiny powershellu nebo portálu Azure.
- 5. Volání Sync-AzMediaServiceStorageKeys powershell s příslušnými params vynutit mediální účet vyzvednout nové klíče účtu úložiště. 
- 6. Počkejte asi hodinu. Ověřte, zda scénáře streamování fungují.
+ 3. Počkejte hodinu nebo. Ověřte, jestli fungují scénáře streamování.
+ 4. Pomocí rutiny PowerShellu nebo Azure Portal změňte sekundární klíč účtu úložiště.
+ 5. Volání Sync-AzMediaServiceStorageKeys PowerShell s příslušnými parami k vynucení účtu média pro výběr nových klíčů účtu úložiště. 
+ 6. Počkejte hodinu nebo. Ověřte, jestli fungují scénáře streamování.
  
-### <a name="a-powershell-cmdlet-example"></a>Příklad rutiny powershellu 
+### <a name="a-powershell-cmdlet-example"></a>Příklad rutiny PowerShellu 
 
-Následující příklad ukazuje, jak získat účet úložiště a synchronizovat jej s účtem AMS.
+Následující příklad ukazuje, jak získat účet úložiště a synchronizovat ho s účtem AMS.
 
     $regionName = "West US"
     $resourceGroupName = "SkyMedia-USWest-App"
@@ -71,7 +71,7 @@ Následující příklad ukazuje, jak získat účet úložiště a synchronizov
  
 ## <a name="steps-to-add-storage-accounts-to-your-ams-account"></a>Postup přidání účtů úložiště do účtu AMS
 
-Následující článek ukazuje, jak přidat účty úložiště do účtu AMS: [Připojení více účtů úložiště k účtu Mediální služby](meda-services-managing-multiple-storage-accounts.md).
+Následující článek ukazuje, jak přidat účty úložiště do účtu AMS: [připojení více účtů úložiště k účtu Media Services](meda-services-managing-multiple-storage-accounts.md).
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -80,4 +80,4 @@ Následující článek ukazuje, jak přidat účty úložiště do účtu AMS: 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ### <a name="acknowledgments"></a>Poděkování
-Rádi bychom ocenili následující lidi, kteří přispěli k vytvoření tohoto dokumentu: Cenk Dingiloglu, Milan Gada, Seva Titov.
+Chtěli bychom potvrdit následující lidi, kteří přispěli k vytváření tohoto dokumentu: Cenk Dingiloglu, Milán Gada, Seva Titov.

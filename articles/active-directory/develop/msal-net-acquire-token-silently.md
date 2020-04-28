@@ -1,7 +1,7 @@
 ---
 title: Získání tokenu z mezipaměti (MSAL.NET)
 titleSuffix: Microsoft identity platform
-description: Zjistěte, jak získat přístupový token tiše (z mezipaměti tokenů) pomocí knihovny Microsoft Authentication Library pro rozhraní .NET (MSAL.NET).
+description: Přečtěte si, jak získat přístupový token v tichém režimu (z mezipaměti tokenu) pomocí knihovny Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,19 +14,19 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 90189a1d7fd6421b7a24940e8c6ed615fa0df6d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77084829"
 ---
-# <a name="get-a-token-from-the-token-cache-using-msalnet"></a>Získejte token z mezipaměti tokenů pomocí MSAL.NET
+# <a name="get-a-token-from-the-token-cache-using-msalnet"></a>Získání tokenu z mezipaměti tokenů pomocí MSAL.NET
 
-Když získáte přístupový token pomocí Knihovny ověřování Microsoft pro .NET (MSAL.NET), token je uložen do mezipaměti. Když aplikace potřebuje token, měla by `AcquireTokenSilent` nejprve zavolat metodu k ověření, zda je přijatelný token v mezipaměti. V mnoha případech je možné získat jiný token s více obory na základě tokenu v mezipaměti. Je také možné aktualizovat token, když se blíží vypršení platnosti (jako mezipaměť tokenu také obsahuje obnovovací token).
+Při získání přístupového tokenu pomocí knihovny Microsoft Authentication Library pro .NET (MSAL.NET) se token uloží do mezipaměti. Když aplikace potřebuje token, měla by nejdřív zavolat `AcquireTokenSilent` metodu pro ověření, jestli je přijatelný token v mezipaměti. V mnoha případech je možné získat další token s více rozsahy na základě tokenu v mezipaměti. Je také možné aktualizovat token, když se blíží vypršení platnosti (protože mezipaměť tokenů obsahuje také obnovovací token).
 
-Doporučený vzor je nejprve volat metodu. `AcquireTokenSilent`  Pokud `AcquireTokenSilent` se nezdaří, pak získat token pomocí jiných metod.
+Doporučeným vzorem je nejprve zavolat `AcquireTokenSilent` metodu.  Pokud `AcquireTokenSilent` dojde k chybě, Získejte token pomocí jiných metod.
 
-V následujícím příkladu se aplikace nejprve pokusí získat token z mezipaměti tokenu.  Pokud `MsalUiRequiredException` je vyvolána výjimka, aplikace získá token interaktivně. 
+V následujícím příkladu se aplikace poprvé pokusí získat token z mezipaměti tokenu.  Pokud je `MsalUiRequiredException` vyvolána výjimka, aplikace získá token interaktivně. 
 
 ```csharp
 AuthenticationResult result = null;

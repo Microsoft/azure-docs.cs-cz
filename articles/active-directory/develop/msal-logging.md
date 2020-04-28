@@ -1,7 +1,7 @@
 ---
-title: Protokolování aplikací MSAL | Azure
+title: Přihlášení k MSAL aplikacím | Azure
 titleSuffix: Microsoft identity platform
-description: Další informace o protokolování v aplikacích Microsoft Authentication Library (MSAL).
+description: Přečtěte si o protokolování aplikací MSAL (Microsoft Authentication Library).
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,44 +14,44 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 58697cc535357710c6889f05060b5e04e129ae7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77084892"
 ---
-# <a name="logging-in-msal-applications"></a>Protokolování v aplikacích MSAL
+# <a name="logging-in-msal-applications"></a>Protokolování aplikací MSAL
 
-Aplikace Microsoft Authentication Library (MSAL) generují zprávy protokolu, které mohou pomoci diagnostikovat problémy. Aplikace můžete nakonfigurovat protokolování s několika řádky kódu a mají vlastní kontrolu nad úrovní podrobností a zda jsou zaznamenána osobní a organizační data. Doporučujeme vytvořit zpětné volání protokolování MSAL a poskytnout způsob, jak pro uživatele odeslat protokoly, když mají problémy s ověřováním.
+Aplikace Microsoft Authentication Library (MSAL) generují zprávy protokolu, které mohou pomáhat diagnostikovat problémy. Aplikace může nakonfigurovat protokolování s několika řádky kódu a mít vlastní kontrolu nad úrovní podrobností a bez ohledu na to, jestli se protokolují osobní údaje a data organizace. Doporučujeme vytvořit MSAL zpětného volání protokolování a poskytnout uživatelům možnost Odeslat protokoly, když budou mít problémy s ověřením.
 
 ## <a name="logging-levels"></a>Úrovně protokolování
 
-MSAL poskytuje několik úrovní protokolování podrobností:
+MSAL poskytuje několik úrovní podrobností protokolování:
 
-- Chyba: Označuje, že se něco pokazilo a byla vygenerována chyba. Slouží k ladění a identifikaci problémů.
-- Upozornění: Nemusí dojít k chybě nebo selhání, ale jsou určeny pro diagnostiku a určení problémů.
-- Info: MSAL bude protokolovat události určené pro informační účely, které nemusí být nutně určeny pro ladění.
-- Podrobné: Výchozí. MSAL zaznamenává úplné podrobnosti o chování knihovny.
+- Chyba: indikuje, že došlo k chybě, a vygenerovala se chyba. Slouží k ladění a identifikaci problémů.
+- Upozornění: došlo k chybě nebo selhání nutně, ale jsou určené pro diagnostiku a problémy.
+- Informace: MSAL bude protokolovat události určené pro informativní účely, které nejsou nutně určené pro ladění.
+- Verbose: výchozí. MSAL zaznamená všechny podrobnosti o chování knihovny.
 
-## <a name="personal-and-organizational-data"></a>Osobní a organizační údaje
+## <a name="personal-and-organizational-data"></a>Osobní a organizační data
 
-Ve výchozím nastavení protokolování MSAL nezachycuje žádná vysoce citlivá osobní nebo organizační data. Knihovna poskytuje možnost povolit protokolování osobních a organizačních dat, pokud se tak rozhodnete.
+Protokolovací nástroj MSAL ve výchozím nastavení nezachytí žádná citlivá osobní nebo organizační data. Knihovna nabízí možnost povolit protokolování osobních a organizačních dat, pokud se rozhodnete tak učinit.
 
-Podrobnosti o protokolování msal v určitém jazyce, zvolte kartu odpovídající vašemu jazyku:
+Podrobnosti o MSAL protokolování v konkrétním jazyce získáte výběrem karty odpovídajícího vašemu jazyku:
 
 ## <a name="net"></a>[.NET](#tab/dotnet)
 
 ## <a name="logging-in-msalnet"></a>Přihlášení MSAL.NET
 
  > [!NOTE]
- > Ukázky MSAL.NET protokolování a další informace najdete na [wiki MSAL.NET.](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki)
+ > Ukázky protokolování MSAL.NET a další informace najdete na [wikiwebu MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki) .
 
-V MSAL 3.x protokolování je nastavena `.WithLogging` pro aplikaci při vytváření aplikací pomocí tvůrce modifikátoru. Tato metoda přebírá volitelné parametry:
+V MSAL 3. x je protokolování nastaveno na aplikaci při vytváření aplikací pomocí modifikátoru `.WithLogging` tvůrce. Tato metoda přebírá volitelné parametry:
 
-- `Level`umožňuje rozhodnout, jakou úroveň protokolování chcete. Nastavení na chyby se zobrazí pouze chyby
-- `PiiLoggingEnabled`umožňuje protokolovat osobní a organizační data, pokud je nastavena na hodnotu true. Ve výchozím nastavení je tato hodnota nastavena na hodnotu false, takže aplikace nezaznamenává osobní údaje.
-- `LogCallback`je nastavena na delegáta, který provádí protokolování. Pokud `PiiLoggingEnabled` je true, tato metoda obdrží zprávy `containsPii` dvakrát: jednou s parametrem rovná false a zpráva `containsPii` bez osobních údajů, a podruhé s parametrem rovná true a zpráva může obsahovat osobní údaje. V některých případech (pokud zpráva neobsahuje osobní údaje) bude zpráva stejná.
-- `DefaultLoggingEnabled`umožňuje výchozí protokolování pro platformu. Ve výchozím nastavení je to nepravdivé. Pokud ji nastavíte na hodnotu true, používá trasování událostí v aplikacích Desktop/UPWP, NSLog v systému iOS a logcat v systému Android.
+- `Level`umožňuje rozhodnout, jakou úroveň protokolování chcete. Při jejich nastavení na chyby se zobrazí jenom chyby.
+- `PiiLoggingEnabled`umožňuje protokolovat osobní a organizační data, pokud je nastaveno na hodnotu true. Ve výchozím nastavení je tato hodnota nastavena na false, aby vaše aplikace neprotokoloval osobní údaje.
+- `LogCallback`je nastaven na delegáta, který provede protokolování. Pokud `PiiLoggingEnabled` je hodnota true, bude tato metoda přijímat zprávy dvakrát: jednou s `containsPii` parametrem se rovná false a zpráva bez osobních údajů a druhá s `containsPii` parametrem se rovná hodnotě true a zpráva může obsahovat osobní údaje. V některých případech (Pokud zpráva neobsahuje osobní údaje), bude zpráva stejná.
+- `DefaultLoggingEnabled`povolí výchozí protokolování pro platformu. Ve výchozím nastavení má hodnotu false. Pokud ho nastavíte na true, používá se k trasování událostí v aplikacích Desktop/UWP NSLog v iOS a Logcat na Androidu.
 
 ```csharp
 class Program
@@ -82,14 +82,14 @@ class Program
 
 ## <a name="android"></a>[Android](#tab/android)
 
-## <a name="logging-in-msal-for-android-using-java"></a>Přihlášení do MSAL pro Android pomocí Javy
+## <a name="logging-in-msal-for-android-using-java"></a>Přihlášení MSAL pro Android pomocí Java
 
-Zapněte protokolování při vytváření aplikací vytvořením zpětného volání protokolování. Zpětné volání přebírá tyto parametry:
+Zapněte při vytváření aplikace přihlášení vytvořením zpětného volání protokolování. Zpětné volání přebírá tyto parametry:
 
-- `tag`je řetězec předaný zpětnému volání knihovnou. Je spojena s položkou protokolu a lze ji použít k řazení zpráv protokolování.
-- `logLevel`umožňuje rozhodnout, jakou úroveň protokolování chcete. Podporované úrovně protokolu `Error`jsou: `Info`, `Verbose` `Warning`, a .
+- `tag`je řetězec předaný do zpětného volání knihovny. Je spojena s položkou protokolu a lze ji použít k řazení zpráv protokolování.
+- `logLevel`umožňuje rozhodnout, jakou úroveň protokolování chcete. Podporované úrovně protokolu jsou `Error`:, `Warning`, `Info`a. `Verbose`
 - `message`je obsah položky protokolu.
-- `containsPII`určuje, zda jsou protokolovány zprávy obsahující osobní údaje nebo údaje organizace. Ve výchozím nastavení je nastavena na false, takže aplikace nezaznamenává osobní údaje. Pokud `containsPII` `true`je , tato metoda obdrží zprávy `containsPII` dvakrát: `false` jednou `message` s parametrem nastaveným na `containsPii` a bez `true` osobních údajů a podruhé s parametrem nastaveným na a zpráva může obsahovat osobní údaje. V některých případech (pokud zpráva neobsahuje osobní údaje) bude zpráva stejná.
+- `containsPII`Určuje, jestli se mají protokolovat zprávy obsahující osobní údaje nebo data organizace. Ve výchozím nastavení je tato hodnota nastavená na false, aby vaše aplikace neprotokoloval osobní údaje. V `containsPII` případě `true`, tato metoda obdrží zprávy dvakrát `containsPII` : jednou s parametrem nastaveným na `false` a `message` bez osobních údajů a podruhé s `containsPii` parametrem nastaveným na `true` a zpráva může obsahovat osobní údaje. V některých případech (Pokud zpráva neobsahuje osobní údaje), bude zpráva stejná.
 
 ```java
 private StringBuilder mLogs;
@@ -105,33 +105,33 @@ Logger.getInstance().setExternalLogger(new ILoggerCallback()
 });
 ```
 
-Ve výchozím nastavení protokolování MSAL nezachytí žádné identifikovatelné osobní údaje nebo identifikovatelné informace organizace.
-Povolení protokolování identifikovatelných osobních údajů nebo identifikovatelných organizačních informací:
+Protokolovací nástroj MSAL ve výchozím nastavení nezachytí žádné osobní údaje ani organizační údaje, které by se vám mohly identifikovat.
+Postup povolení protokolování osobních identifikovatelných informací nebo organizačních informací:
 
 ```java
 Logger.getInstance().setEnablePII(true);
 ```
 
-Zakázání protokolování osobních dat a dat organizace:
+Postup zakázání protokolování osobních údajů a dat organizace:
 
 ```java
 Logger.getInstance().setEnablePII(false);
 ```
 
-Ve výchozím nastavení je protokolování do logcatu zakázáno. Chcete-li povolit:
+Ve výchozím nastavení je protokolování do Logcat zakázané. Povolení:
 
 ```java
 Logger.getInstance().setEnableLogcatLog(true);
 ```
 
-## <a name="javascript"></a>[Javascript](#tab/javascript)
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
- Povolte protokolování v MSAL.js (JavaScript) předáním objektu protokolování během konfigurace pro vytvoření `UserAgentApplication` instance. Tento objekt protokolování má následující vlastnosti:
+ Povolte protokolování v MSAL. js (JavaScript) předáním objektu protokolovacího nástroje během konfigurace pro vytvoření `UserAgentApplication` instance. Tento objekt protokolovacího nástroje má následující vlastnosti:
 
-- `localCallback`: instance zpětného volání, kterou může vývojář poskytnout ke spotřebě a publikování protokolů vlastním způsobem. Implementujte metodu localCallback v závislosti na tom, jak chcete přesměrovat protokoly.
-- `level`(volitelné): konfigurovatelná úroveň protokolu. Podporované úrovně protokolu `Error`jsou: `Info`, `Verbose` `Warning`, a . Výchozí formát je `Info`.
-- `piiLoggingEnabled`(volitelné): pokud je nastavena na hodnotu true, protokoly osobní a organizační data. Ve výchozím nastavení je to nepravdivé, aby vaše aplikace nezaznamenávala osobní údaje. Protokoly osobních údajů se nikdy nezapisují do výchozích výstupů, jako je Console, Logcat nebo NSLog.
-- `correlationId`(volitelné): jedinečný identifikátor, který se používá k mapování požadavku s odpovědí pro účely ladění. Výchozí hodnota je RFC4122 verze 4 guid (128 bitů).
+- `localCallback`: instance zpětného volání, kterou může vývojář poskytnout pro využívání a publikování protokolů vlastním způsobem. Implementujte metodu localCallback v závislosti na tom, jak chcete přesměrovat protokoly.
+- `level`(volitelné): konfigurovatelná úroveň protokolu. Podporované úrovně protokolu jsou `Error`:, `Warning`, `Info`a. `Verbose` Výchozí formát je `Info`.
+- `piiLoggingEnabled`(volitelné): Pokud je nastavené na true, protokoluje osobní a organizační data. Ve výchozím nastavení je to false, aby vaše aplikace nehlásila osobní údaje. Protokoly osobních údajů se nikdy nezapisují do výchozích výstupů, jako je konzola, Logcat nebo NSLog.
+- `correlationId`(volitelné): jedinečný identifikátor, který slouží k mapování požadavku na odezvu pro účely ladění. Ve výchozím nastavení se RFC4122 identifikátor GUID verze 4 (128 bitů).
 
 ```javascript
 function loggerCallback(logLevel, message, containsPii) {
@@ -158,9 +158,9 @@ var UserAgentApplication = new Msal.UserAgentApplication(msalConfig);
 
 ## <a name="objective-c"></a>[Objective-C](#tab/objc)
 
-## <a name="msal-for-ios-and-macos-logging-objc"></a>MSAL pro protokolování iOS a macOS-ObjC
+## <a name="msal-for-ios-and-macos-logging-objc"></a>MSAL pro iOS a macOS protokolování – ObjC
 
-Nastavte zpětné volání pro zachycení protokolování MSAL a začlenit jej do protokolování vlastní aplikace. Podpis zpětného volání vypadá takto:
+Nastavte zpětné volání pro zachycení protokolování MSAL a zahrňte ho do protokolování vlastní aplikace. Signatura zpětného volání vypadá takto:
 
 ```objc
 /*!
@@ -177,7 +177,7 @@ Nastavte zpětné volání pro zachycení protokolování MSAL a začlenit jej d
 typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL containsPII);
 ```
 
-Například:
+Příklad:
 
 ```objc
 [MSALGlobalConfig.loggerConfig setLogCallback:^(MSALLogLevel level, NSString *message, BOOL containsPII)
@@ -194,7 +194,7 @@ Například:
 
 ### <a name="personal-data"></a>Osobní údaje
 
-Ve výchozím nastavení msal nezachycuje ani nezaznamenává žádné osobní údaje (PII). Knihovna umožňuje vývojářům aplikací zapnout prostřednictvím vlastnosti ve třídě MSALLogger. Zapnutím `pii.Enabled`aplikace přebírá odpovědnost za bezpečné zpracování vysoce citlivých dat a dodržování regulačních požadavků.
+Ve výchozím nastavení MSAL nezachytí ani neprotokoluje žádná osobní data (PII). Knihovna umožňuje vývojářům aplikací tuto možnost zapínat prostřednictvím vlastnosti ve třídě MSALLogger. Když zapnete `pii.Enabled`, aplikace vezme zodpovědnost za bezpečné zpracování vysoce citlivých dat a následujících zákonných požadavků.
 
 ```objc
 // By default, the `MSALLogger` doesn't capture any PII
@@ -208,37 +208,37 @@ MSALGlobalConfig.loggerConfig.piiEnabled = NO;
 
 ### <a name="logging-levels"></a>Úrovně protokolování
 
-Chcete-li nastavit úroveň protokolování při protokolování pomocí msal pro iOS a macOS, použijte jednu z následujících hodnot:
+Pokud chcete nastavit úroveň protokolování při protokolování pomocí MSAL pro iOS a macOS, použijte jednu z následujících hodnot:
 
 |Úroveň  |Popis |
 |---------|---------|
-| `MSALLogLevelNothing`| Zakázat veškeré protokolování |
+| `MSALLogLevelNothing`| Zakázat všechna protokolování |
 | `MSALLogLevelError` | Výchozí úroveň, vytiskne informace pouze v případě, že dojde k chybám |
 | `MSALLogLevelWarning` | Upozornění |
-| `MSALLogLevelInfo` |  Vstupní body knihovny s parametry a různými operacemi klíčenky |
+| `MSALLogLevelInfo` |  Vstupní body knihovny s parametry a různými operacemi řetězce klíčů |
 |`MSALLogLevelVerbose`     |  Trasování rozhraní API |
 
-Například:
+Příklad:
 
 ```objc
 MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
  ```
 
- ### <a name="log-message-format"></a>Protokolovat formát zprávy
+ ### <a name="log-message-format"></a>Formát zprávy protokolu
 
-Část zprávy msal protokolu zprávy je ve formátu`TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
+Část zprávy protokolu MSAL je ve formátu`TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
 
-Například:
+Příklad:
 
 `TID = 551563 MSAL 0.2.0 iOS Sim 12.0 [2018-09-24 00:36:38 - 36764181-EF53-4E4E-B3E5-16FE362CFC44] acquireToken returning with error: (MSALErrorDomain, -42400) User cancelled the authorization session.`
 
-Poskytování id korelace a časová razítka jsou užitečné pro sledování problémů. Informace o časovém razítku a ID korelace jsou k dispozici ve zprávě protokolu. Jediné spolehlivé místo pro jejich načtení je ze zpráv protokolování MSAL.
+Poskytování ID korelace a časových razítek je užitečné pro sledování problémů. Informace o časovém razítku a ID korelace jsou k dispozici ve zprávě protokolu. Jediným spolehlivým místem, kde se dají načíst, je ze zpráv protokolu MSAL.
 
 ## <a name="swift"></a>[Swift](#tab/swift)
 
-## <a name="msal-for-ios-and-macos-logging-swift"></a>MSAL pro protokolování iOS a macOS-Swift
+## <a name="msal-for-ios-and-macos-logging-swift"></a>MSAL pro iOS a protokolování macOS – SWIFT
 
-Nastavte zpětné volání pro zachycení protokolování MSAL a začlenit jej do protokolování vlastní aplikace. Podpis (reprezentované v Objective-C) pro zpětné volání vypadá takto:
+Nastavte zpětné volání pro zachycení protokolování MSAL a zahrňte ho do protokolování vlastní aplikace. Signatura (reprezentovaná v cíli-C) pro zpětné volání vypadá takto:
 
 ```objc
 /*!
@@ -255,7 +255,7 @@ Nastavte zpětné volání pro zachycení protokolování MSAL a začlenit jej d
 typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL containsPII);
 ```
 
-Například:
+Příklad:
 
 ```swift
 MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
@@ -271,7 +271,7 @@ MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
 
 ### <a name="personal-data"></a>Osobní údaje
 
-Ve výchozím nastavení msal nezachycuje ani nezaznamenává žádné osobní údaje (PII). Knihovna umožňuje vývojářům aplikací zapnout prostřednictvím vlastnosti ve třídě MSALLogger. Zapnutím `pii.Enabled`aplikace přebírá odpovědnost za bezpečné zpracování vysoce citlivých dat a dodržování regulačních požadavků.
+Ve výchozím nastavení MSAL nezachytí ani neprotokoluje žádná osobní data (PII). Knihovna umožňuje vývojářům aplikací tuto možnost zapínat prostřednictvím vlastnosti ve třídě MSALLogger. Když zapnete `pii.Enabled`, aplikace vezme zodpovědnost za bezpečné zpracování vysoce citlivých dat a následujících zákonných požadavků.
 
 ```swift
 // By default, the `MSALLogger` doesn't capture any PII
@@ -285,39 +285,39 @@ MSALGlobalConfig.loggerConfig.piiEnabled = false
 
 ### <a name="logging-levels"></a>Úrovně protokolování
 
-Chcete-li nastavit úroveň protokolování při protokolování pomocí msal pro iOS a macOS, použijte jednu z následujících hodnot:
+Pokud chcete nastavit úroveň protokolování při protokolování pomocí MSAL pro iOS a macOS, použijte jednu z následujících hodnot:
 
 |Úroveň  |Popis |
 |---------|---------|
-| `MSALLogLevelNothing`| Zakázat veškeré protokolování |
+| `MSALLogLevelNothing`| Zakázat všechna protokolování |
 | `MSALLogLevelError` | Výchozí úroveň, vytiskne informace pouze v případě, že dojde k chybám |
 | `MSALLogLevelWarning` | Upozornění |
-| `MSALLogLevelInfo` |  Vstupní body knihovny s parametry a různými operacemi klíčenky |
+| `MSALLogLevelInfo` |  Vstupní body knihovny s parametry a různými operacemi řetězce klíčů |
 |`MSALLogLevelVerbose`     |  Trasování rozhraní API |
 
-Například:
+Příklad:
 
 ```swift
 MSALGlobalConfig.loggerConfig.logLevel = .verbose
  ```
 
-### <a name="log-message-format"></a>Protokolovat formát zprávy
+### <a name="log-message-format"></a>Formát zprávy protokolu
 
-Část zprávy msal protokolu zprávy je ve formátu`TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
+Část zprávy protokolu MSAL je ve formátu`TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
 
-Například:
+Příklad:
 
 `TID = 551563 MSAL 0.2.0 iOS Sim 12.0 [2018-09-24 00:36:38 - 36764181-EF53-4E4E-B3E5-16FE362CFC44] acquireToken returning with error: (MSALErrorDomain, -42400) User cancelled the authorization session.`
 
-Poskytování id korelace a časová razítka jsou užitečné pro sledování problémů. Informace o časovém razítku a ID korelace jsou k dispozici ve zprávě protokolu. Jediné spolehlivé místo pro jejich načtení je ze zpráv protokolování MSAL.
+Poskytování ID korelace a časových razítek je užitečné pro sledování problémů. Informace o časovém razítku a ID korelace jsou k dispozici ve zprávě protokolu. Jediným spolehlivým místem, kde se dají načíst, je ze zpráv protokolu MSAL.
 
 ## <a name="java"></a>[Java](#tab/java)
 
-## <a name="msal-for-java-logging"></a>MSAL pro java protokolování
+## <a name="msal-for-java-logging"></a>MSAL pro protokolování Java
 
-MSAL pro Java umožňuje používat knihovnu protokolování, kterou již používáte s vaší aplikací, pokud je kompatibilní s SLF4J. MSAL pro Javu používá [Simple Logging Facade pro Javu](http://www.slf4j.org/) (SLF4J) jako jednoduchou fasádu nebo abtrakci pro různé rámce protokolování, jako je [java.util.logging](https://docs.oracle.com/javase/7/docs/api/java/util/logging/package-summary.html), [Logback](http://logback.qos.ch/) a [Log4j](https://logging.apache.org/log4j/2.x/). SLF4J umožňuje uživateli připojit požadované rozhraní protokolování v době nasazení.
+MSAL for Java umožňuje používat knihovnu protokolování, kterou už používáte s vaší aplikací, pokud je kompatibilní s SLF4J. MSAL for Java používá [jednoduché protokolování průčelí pro Java](http://www.slf4j.org/) (SLF4J) jako jednoduchou fasádu nebo abstrakci pro různá protokolovací rozhraní, jako je [Java. util. Logging](https://docs.oracle.com/javase/7/docs/api/java/util/logging/package-summary.html), [Logback](http://logback.qos.ch/) a [log4j](https://logging.apache.org/log4j/2.x/). SLF4J umožňuje uživateli připojit se k požadovanému rozhraní protokolování v době nasazení.
 
-Chcete-li například použít logback jako architekturu protokolování ve vaší aplikaci, přidejte závislost při hlásání do souboru Maven pom pro vaši aplikaci:
+Například pro použití Logback jako protokolovacího rozhraní v aplikaci přidejte závislost Logback do souboru Maven pom pro vaši aplikaci:
 
 ```xml
 <dependency>
@@ -327,7 +327,7 @@ Chcete-li například použít logback jako architekturu protokolování ve vaš
 </dependency>
 ```
 
-Pak přidejte konfigurační soubor zpětného odpojitsení:
+Pak přidejte konfigurační soubor Logback:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -336,13 +336,13 @@ Pak přidejte konfigurační soubor zpětného odpojitsení:
 </configuration>
 ```
 
-SLF4J se automaticky váže k odpojit v době nasazení. Protokoly MSAL budou zapsány do konzoly.
+SLF4J se automaticky váže k Logback v době nasazení. Protokoly MSAL se zapíší do konzoly.
 
-Pokyny k vytvoření vazby na jiné architektury protokolování naleznete v [příručce SLF4J](http://www.slf4j.org/manual.html).
+Pokyny k vytvoření vazby na další protokolovací rozhraní naleznete v [příručce SLF4J](http://www.slf4j.org/manual.html).
 
-### <a name="personal-and-organization-information"></a>Osobní a organizační informace
+### <a name="personal-and-organization-information"></a>Osobní údaje a informace o organizaci
 
-Ve výchozím nastavení protokolování MSAL nezachycuje ani nezaznamenává žádná osobní nebo organizační data. V následujícím příkladu je protokolování osobních nebo organizačních dat ve výchozím nastavení vypnuto:
+Ve výchozím nastavení protokolování MSAL nezachycuje ani neprotokoluje žádná osobní nebo organizační data. V následujícím příkladu je protokolování osobních nebo organizačních dat ve výchozím nastavení vypnuté:
 
 ```java
     PublicClientApplication app2 = PublicClientApplication.builder(PUBLIC_CLIENT_ID)
@@ -350,7 +350,7 @@ Ve výchozím nastavení protokolování MSAL nezachycuje ani nezaznamenává ž
             .build();
 ```
 
-Zapněte protokolování osobních a `logPii()` organizačních dat nastavením tvůrce klientských aplikací. Pokud zapnete protokolování osobních nebo organizačních dat, musí vaše aplikace převzít odpovědnost za bezpečné zpracování vysoce citlivých dat a dodržování jakýchkoli regulačních požadavků.
+Zapněte možnost protokolování osobních a organizačních dat `logPii()` podle nastavení v Tvůrci klientských aplikací. Pokud zapnete protokolování osobních nebo organizačních dat, vaše aplikace musí převzít zodpovědnost za bezpečné zpracování vysoce citlivých dat a dodržování zákonných požadavků.
 
 V následujícím příkladu je povoleno protokolování osobních nebo organizačních dat:
 
@@ -363,21 +363,21 @@ PublicClientApplication app2 = PublicClientApplication.builder(PUBLIC_CLIENT_ID)
 
 ## <a name="python"></a>[Python](#tab/python)
 
-## <a name="msal-for-python-logging"></a>MSAL pro protokolování pythonu
+## <a name="msal-for-python-logging"></a>MSAL pro protokolování v Pythonu
 
-Protokolování v MSAL Pythonu používá standardní `logging.info("msg")` mechanismus protokolování Pythonu, například Můžete nakonfigurovat protokolování MSAL následujícím způsobem (a vidět to v akci v [username_password_sample](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.0.0/sample/username_password_sample.py#L31L32)):
+Přihlášení v MSAL Pythonu používá standardní mechanismus protokolování Pythonu, například `logging.info("msg")` můžete nakonfigurovat protokolování MSAL následujícím způsobem (a zobrazit ho v akci v [username_password_sample](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.0.0/sample/username_password_sample.py#L31L32)):
 
 ### <a name="enable-debug-logging-for-all-modules"></a>Povolit protokolování ladění pro všechny moduly
 
-Ve výchozím nastavení je protokolování v libovolném skriptu Pythonu vypnuto. Pokud chcete povolit protokolování ladění pro všechny moduly v celém skriptu Pythonu, použijte:
+Ve výchozím nastavení je protokolování v jakémkoli skriptu Pythonu vypnuté. Pokud chcete povolit protokolování ladění pro všechny moduly v celém skriptu Pythonu, použijte:
 
 ```python
 logging.basicConfig(level=logging.DEBUG)
 ```
 
-### <a name="silence-only-msal-logging"></a>Ticho pouze protokolování MSAL
+### <a name="silence-only-msal-logging"></a>Protokolování pouze tichého MSAL
 
-Chcete-li ztlumit pouze protokolování knihovny MSAL a současně povolit protokolování ladění ve všech ostatních modulech ve skriptu Pythonu, vypněte protokolovací nástroj používaný msal pythonem:
+Chcete-li pouze tiché protokolování MSAL knihovny a povolit protokolování ladění ve všech ostatních modulech skriptu Python, vypněte protokolovací nástroj používaný MSAL Pythonem:
 
 ```Python
 logging.getLogger("msal").setLevel(logging.WARN)
@@ -385,10 +385,10 @@ logging.getLogger("msal").setLevel(logging.WARN)
 
 ### <a name="personal-and-organizational-data-in-python"></a>Osobní a organizační data v Pythonu
 
-MSAL pro Python nezaznamenává osobní data ani data organizace. Neexistuje žádná vlastnost pro zapnutí nebo vypnutí osobních nebo organizačních dat.
+MSAL for Python neprotokoluje osobní data ani organizační data. Neexistuje žádná vlastnost pro zapnutí nebo vypnutí protokolování osobních nebo organizačních dat.
 
-Standardní protokolování Pythonu můžete použít k protokolování, co chcete, ale jste zodpovědní za bezpečné zpracování citlivých dat a dodržování regulačních požadavků.
+Pomocí standardního protokolování Pythonu se můžete přihlásit cokoli, co potřebujete, ale zodpovídáte za bezpečné zpracování citlivých dat a následujících zákonných požadavků.
 
-Další informace o protokolování v Pythonu najdete v [jazyce HowTO pro protokolování](https://docs.python.org/3/howto/logging.html#logging-basic-tutorial)v Pythonu .
+Další informace o protokolování v Pythonu najdete v tématu věnovaném [protokolování](https://docs.python.org/3/howto/logging.html#logging-basic-tutorial)v Pythonu.
 
 ---

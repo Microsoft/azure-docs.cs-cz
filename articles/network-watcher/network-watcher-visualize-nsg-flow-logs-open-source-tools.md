@@ -1,7 +1,7 @@
 ---
-title: Vizualizace protokolů toku nsg - elastický zásobník
+title: Vizualizace protokolů toku NSG – elastický zásobník
 titleSuffix: Azure Network Watcher
-description: Spravujte a analyzujte protokoly toku skupiny zabezpečení sítě v Azure pomocí sledování sítě a elastického zásobníku.
+description: Spravujte a analyzujte protokoly toku skupin zabezpečení sítě v Azure pomocí Network Watcher a elastického zásobníku.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -13,38 +13,38 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: e567994038fb4f71ef86dc577760ecf4699a0b1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76840634"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Vizualizace protokolů toku skupin zabezpečení sítě, které jsou ve službě Azure Network Watcher, s použitím opensourcových nástrojů
 
-Protokoly toku skupiny zabezpečení sítě poskytují informace, které lze použít k pochopení příchozího přenosu dat a odchozího přenosu ip ve skupinách zabezpečení sítě. Tyto protokoly toku zobrazují odchozí a příchozí toky na základě pravidla, nic toku se vztahuje na 5 řazené kolekce členů informace o toku (zdroj/cíl IP, zdrojový/cílový port, protokol), a pokud byl provoz povolen nebo odepřen.
+Protokoly toku skupin zabezpečení sítě poskytují informace, které se dají použít k pochopení příchozího a odchozího provozu IP v skupinách zabezpečení sítě. Tyto protokoly toku ukazují odchozí a příchozí toky pro každé pravidlo. síťové rozhraní, ke kterému se tok vztahuje, je 5 informací řazené kolekce členů toku (zdrojová nebo cílová IP adresa, zdrojový/cílový port, protokol) a pokud byl provoz povolený nebo zakázaný.
 
-Tyto protokoly toku může být obtížné ručně analyzovat a získat přehledy z. Existuje však několik nástrojů s otevřeným zdrojovým kódem, které mohou pomoci vizualizovat tato data. Tento článek bude poskytovat řešení pro vizualizaci těchto protokolů pomocí elastický zásobníku, který vám umožní rychle indexovat a vizualizovat protokoly toku na řídicím panelu Kibana.
+Tyto protokoly toků můžou být obtížné ručně analyzovat a získávat z nich přehledy. Existuje však několik open source nástrojů, které vám mohou vizualizovat tato data. Tento článek vám poskytne řešení pro vizualizaci těchto protokolů pomocí elastického zásobníku, který vám umožní rychle indexovat a vizualizovat protokoly toku na řídicím panelu Kibana.
 
 > [!Warning]  
-> Následující kroky pracují s protokoly toku verze 1. Podrobnosti naleznete [v tématu Úvod k protokolování toku pro skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md). Následující pokyny nebudou fungovat s verzí 2 souborů protokolu bez úprav.
+> Následující kroky fungují s protokoly toku verze 1. Podrobnosti najdete v tématu [Úvod do protokolování toků pro skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md). Následující pokyny nebudou fungovat s verzí 2 souborů protokolu bez úprav.
 
 ## <a name="scenario"></a>Scénář
 
-V tomto článku nastavíme řešení, které vám umožní vizualizovat protokoly toku skupiny zabezpečení sítě pomocí elastického zásobníku.  Modul plug-in pro vstup Logstash získá protokoly toku přímo z objektu blob úložiště nakonfigurovaného pro obsahující protokoly toku. Potom pomocí elastického zásobníku protokoly toku budou indexovány a slouží k vytvoření řídicího panelu Kibana vizualizovat informace.
+V tomto článku nastavíme řešení, které vám umožní vizualizovat protokoly toku skupin zabezpečení sítě pomocí elastického zásobníku.  Vstupní modul plug-in Logstash získá protokoly toku přímo z objektu BLOB úložiště nakonfigurovaného pro obsahující protokoly toku. Poté pomocí elastického zásobníku budou protokoly toku indexovány a použity k vytvoření řídicího panelu Kibana k vizualizaci informací.
 
 ![scénář][scenario]
 
 ## <a name="steps"></a>Kroky
 
-### <a name="enable-network-security-group-flow-logging"></a>Povolit protokolování toku skupiny zabezpečení sítě
-V tomto scénáři musíte mít v účtu povoleno protokolování toku skupiny zabezpečení sítě alespoň v jedné skupině zabezpečení sítě. Pokyny k povolení protokolů toku zabezpečení sítě naleznete v následujícím článku [Úvod k protokolování toku pro skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md).
+### <a name="enable-network-security-group-flow-logging"></a>Povolit protokolování toku skupin zabezpečení sítě
+V tomto scénáři musíte mít povolené protokolování toku skupin zabezpečení sítě ve vašem účtu aspoň v jedné skupině zabezpečení sítě. Pokyny k povolení protokolů toku zabezpečení sítě najdete v následujícím článku [Úvod do protokolování toků pro skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md).
 
 ### <a name="set-up-the-elastic-stack"></a>Nastavení elastického zásobníku
-Připojením protokolů toku skupiny NSG s elastickým zásobníkem můžeme vytvořit řídicí panel Kibana, který nám umožňuje vyhledávat, vytvářet grafy, analyzovat a odvozovat poznatky z našich protokolů.
+Díky propojení protokolů toku NSG s elastickým zásobníkem můžeme vytvořit řídicí panel Kibana, který nám umožní Hledat, graf, analyzovat a odvodit přehledy z našich protokolů.
 
-#### <a name="install-elasticsearch"></a>Instalace elastického vyhledávání
+#### <a name="install-elasticsearch"></a>Nainstalovat Elasticsearch
 
-1. Elastický zásobník z verze 5.0 a vyšší vyžaduje Java 8. Spusťte `java -version` příkaz a zkontrolujte svou verzi. Pokud nemáte nainstalovanou java, podívejte se do dokumentace na [Azure-suppored JDKs](https://aka.ms/azure-jdks).
+1. Elastická sada z verze 5,0 a vyšší vyžaduje Java 8. Spusťte příkaz `java -version` a ověřte svou verzi. Pokud nemáte nainstalovaný Java, přečtěte si dokumentaci k [Azure-suppored sady JDK](https://aka.ms/azure-jdks).
 2. Stáhněte si správný binární balíček pro váš systém:
 
    ```bash
@@ -53,15 +53,15 @@ Připojením protokolů toku skupiny NSG s elastickým zásobníkem můžeme vyt
    sudo /etc/init.d/elasticsearch start
    ```
 
-   Další způsoby instalace lze nalézt na [Elasticsearch Instalace](https://www.elastic.co/guide/en/beats/libbeat/5.2/elasticsearch-installation.html)
+   Další metody instalace najdete v [Elasticsearch instalace](https://www.elastic.co/guide/en/beats/libbeat/5.2/elasticsearch-installation.html) .
 
-3. Ověřte, zda je pomocí příkazu spuštěno elastické hledání:
+3. Ověřte, že je Elasticsearch spuštěný s příkazem:
 
     ```bash
     curl http://127.0.0.1:9200
     ```
 
-    Měli byste vidět odpověď podobnou této:
+    Měla by se zobrazit odpověď podobná této:
 
     ```json
     {
@@ -78,23 +78,23 @@ Připojením protokolů toku skupiny NSG s elastickým zásobníkem můžeme vyt
     }
     ```
 
-Další pokyny k instalaci elastického vyhledávání naleznete [v pokynech k instalaci](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/_installation.html).
+Další pokyny k instalaci elastického hledání najdete v [pokynech k instalaci](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/_installation.html).
 
-### <a name="install-logstash"></a>Instalace logstash
+### <a name="install-logstash"></a>Nainstalovat Logstash
 
-1. Chcete-li nainstalovat Logstash spustit následující příkazy:
+1. Pro instalaci Logstash spusťte následující příkazy:
 
     ```bash
     curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-5.2.0.deb
     sudo dpkg -i logstash-5.2.0.deb
     ```
-2. Dále musíme nakonfigurovat Logstash pro přístup a analyzovat protokoly toku. Vytvořte soubor logstash.conf pomocí:
+2. Dál musíme nakonfigurovat Logstash pro přístup k protokolům Flow a jejich analýzu. Vytvořte soubor logstash. conf pomocí:
 
     ```bash
     sudo touch /etc/logstash/conf.d/logstash.conf
     ```
 
-3. Přidejte do souboru následující obsah:
+3. Do souboru přidejte následující obsah:
 
    ```
    input {
@@ -157,93 +157,93 @@ Další pokyny k instalaci elastického vyhledávání naleznete [v pokynech k i
    }  
    ```
 
-Další pokyny k instalaci logstash naleznete v [oficiální dokumentaci](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html).
+Další pokyny k instalaci Logstash najdete v [oficiální dokumentaci](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html).
 
-### <a name="install-the-logstash-input-plugin-for-azure-blob-storage"></a>Instalace vstupního modulu plug-in Logstash pro úložiště objektů blob Azure
+### <a name="install-the-logstash-input-plugin-for-azure-blob-storage"></a>Instalace vstupního modulu plug-in Logstash pro úložiště objektů BLOB v Azure
 
-Tento plugin Logstash vám umožní přímý přístup k protokolům toku z jejich určeného účtu úložiště. Chcete-li nainstalovat tento plugin, z výchozího instalačního adresáře Logstash (v tomto případě /usr/share/logstash/bin) spusťte příkaz:
+Tento modul plug-in Logstash vám umožní přímý přístup k protokolům toků z určeného účtu úložiště. Pokud chcete tento modul plug-in nainstalovat z výchozího instalačního adresáře Logstash (v tomto případě/usr/share/logstash/bin), spusťte příkaz:
 
 ```bash
 logstash-plugin install logstash-input-azureblob
 ```
 
-Spuštění příkazu Logstash:
+Spuštění Logstash spustíte příkazem:
 
 ```bash
 sudo /etc/init.d/logstash start
 ```
 
-Další informace o tomto pluginu naleznete v [dokumentaci](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob).
+Další informace o tomto modulu plug-in najdete v [dokumentaci](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob).
 
-### <a name="install-kibana"></a>Instalace Kibany
+### <a name="install-kibana"></a>Nainstalovat Kibana
 
-1. Chcete-li nainstalovat kibanu, spusťte následující příkazy:
+1. Spusťte následující příkazy a nainstalujte Kibana:
 
    ```bash
    curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-5.2.0-linux-x86_64.tar.gz
    tar xzvf kibana-5.2.0-linux-x86_64.tar.gz
    ```
 
-2. Chcete-li spustit Kibana, použijte příkazy:
+2. Pro spuštění Kibana použijte příkazy:
 
    ```bash
    cd kibana-5.2.0-linux-x86_64/
    ./bin/kibana
    ```
 
-3. Chcete-li zobrazit webové rozhraní kibana, přejděte na`http://localhost:5601`
-4. V tomto scénáři je index vzor použitý pro protokoly toku je "nsg-flow-logs". Můžete změnit vzor indexu v části "výstup" souboru logstash.conf.
-5. Chcete-li zobrazit řídicí panel Kibana vzdáleně, vytvořte příchozí pravidlo nsg umožňující přístup k **portu 5601**.
+3. Pokud chcete zobrazit webové rozhraní Kibana, přejděte na`http://localhost:5601`
+4. Pro tento scénář je vzor indexu použitý pro protokoly toku "NSG-Flow-logs". Vzor indexu můžete změnit v části "výstup" v souboru logstash. conf.
+5. Pokud chcete zobrazit řídicí panel Kibana vzdáleně, vytvořte příchozí pravidlo NSG, které umožní přístup k **portu 5601**.
 
 ### <a name="create-a-kibana-dashboard"></a>Vytvoření řídicího panelu Kibana
 
-Ukázkový řídicí panel pro zobrazení trendů a podrobností ve vašich výstrahách se zobrazí na následujícím obrázku:
+Vzorový řídicí panel pro zobrazení trendů a podrobností v upozorněních se zobrazuje na následujícím obrázku:
 
 ![Obrázek 1][1]
 
-Stáhněte si [soubor řídicího panelu](https://aka.ms/networkwatchernsgflowlogdashboard), [vizualizační soubor](https://aka.ms/networkwatchernsgflowlogvisualizations)a [uložený vyhledávací soubor](https://aka.ms/networkwatchernsgflowlogsearch).
+Stáhněte si [soubor řídicího panelu](https://aka.ms/networkwatchernsgflowlogdashboard), [soubor vizualizace](https://aka.ms/networkwatchernsgflowlogvisualizations)a [uložený hledaný soubor](https://aka.ms/networkwatchernsgflowlogsearch).
 
-Na kartě **Správa** v Kibaně přejděte na **Uložené objekty** a importujte všechny tři soubory. Potom můžete na kartě **Řídicí panel** otevřít a načíst ukázkový řídicí panel.
+Na kartě **Správa** Kibana přejděte na **uložené objekty** a importujte všechny tři soubory. Pak na kartě **řídicí panel** můžete otevřít a načíst ukázkový řídicí panel.
 
-Můžete také vytvořit vlastní vizualizace a řídicí panely přizpůsobené metrikám vašeho vlastního zájmu. Přečtěte si více o vytváření vizualizací Kibana z [oficiální dokumentace](https://www.elastic.co/guide/en/kibana/current/visualize.html)Kibany .
+Můžete také vytvořit vlastní vizualizace a řídicí panely, které jsou přizpůsobené všem metrikám svého vlastního zájmu. Přečtěte si další informace o vytváření vizualizací Kibana z [oficiální dokumentace](https://www.elastic.co/guide/en/kibana/current/visualize.html)Kibana.
 
-### <a name="visualize-nsg-flow-logs"></a>Vizualizace protokolů toku nsg
+### <a name="visualize-nsg-flow-logs"></a>Vizualizace protokolů toku NSG
 
-Ukázkový řídicí panel poskytuje několik vizualizací protokolů toku:
+Vzorový řídicí panel nabízí několik vizualizací protokolů Flow:
 
-1. Toky podle rozhodnutí/směru v průběhu času - grafy časových řad zobrazující počet toků za časové období. Jednotku času a rozpětí obou těchto vizualizací můžete upravit. Toky podle rozhodnutí zobrazuje podíl povolit nebo odepřít rozhodnutí, zatímco toky podle směru zobrazuje podíl příchozía odchozí provoz. Pomocí těchto vizuálů můžete prozkoumat trendy provozu v průběhu času a hledat nějaké špičky nebo neobvyklé vzory.
+1. Toky podle rozhodnutí nebo směr v grafech časových řad času znázorňující počet toků za časové období. Můžete upravit jednotku času a rozpětí obou těchto vizualizací. V části toky podle rozhodnutí se zobrazuje poměr povolených nebo odepřených rozhodnutí, zatímco toky podle směru ukazují poměr příchozích a odchozích přenosů. Pomocí těchto vizuálů můžete sledovat trendy provozu v průběhu času a hledat jakékoli špičky nebo neobvyklé vzory.
 
-   ![Obrázek2][2]
+   ![Obrázek 2][2]
 
-2. Toky podle cílového/zdrojového portu – výsečové grafy zobrazující rozdělení toků na příslušné porty. V tomto zobrazení můžete vidět nejčastěji používané porty. Pokud kliknete na konkrétní port ve výsečovém grafu, zbytek řídicího panelu se bude filtrovat dolů na toky tohoto portu.
+2. Toky podle cílového/zdrojového portu – výsečové grafy znázorňující rozpis toků na příslušné porty. V tomto zobrazení uvidíte nejčastěji používané porty. Pokud kliknete na konkrétní port v rámci výsečového grafu, zbývající část řídicího panelu se vyfiltruje na toky tohoto portu.
 
-   ![Obrázek3][3]
+   ![figure3][3]
 
-3. Počet toků a nejbližší čas protokolu – metriky zobrazující počet zaznamenaných toků a datum nejstaršího záznamu.
+3. Počet toků a nejstarší čas protokolu – metriky ukazují počet zaznamenaných toků a datum nejstaršího zaznamenaného protokolu.
 
-   ![Obrázek4][4]
+   ![figure4][4]
 
-4. Toky podle nsg a pravidlo – pruhový graf zobrazující rozdělení toků v rámci každého nsg, stejně jako rozdělení pravidel v rámci každého nsg. Zde můžete vidět, které NSG a pravidla generované největší provoz.
+4. Toky podle NSG a rule – pruhový graf zobrazující distribuci toků v rámci jednotlivých NSG a také distribuci pravidel v rámci jednotlivých NSG. Tady si můžete prohlédnout, která NSG a pravidla vygenerovala nejvíce provozu.
 
-   ![Obrázek5][5]
+   ![figure5][5]
 
-5. Top 10 Zdrojové/cílové IP adresy – pruhové grafy zobrazující 10 hlavních zdrojových a cílových IP adresy. Tyto grafy můžete upravit tak, aby zobrazovala více či méně horní chip. Odtud můžete vidět nejčastěji se vyskytující IP adresy, stejně jako dopravní rozhodnutí (povolit nebo popřít) se provádí na každé IP.
+5. Nejčastějších 10 zdrojů a cílových IP adres – pruhové grafy zobrazující prvních 10 zdrojových a cílových IP adres. Úpravou těchto grafů můžete zobrazit více nebo méně hlavních IP adres. Tady se můžete podívat na nejčastější IP adresy a také rozhodnutí o provozu (povolit nebo odepřít) pro každou IP adresu.
 
-   ![obrázek6][6]
+   ![figure6][6]
 
-6. Kolekce dat toku – tato tabulka zobrazuje informace obsažené v každé řazené kolekce členů toku, stejně jako odpovídající NGS a pravidlo.
+6. Řazené kolekce členů toku – v této tabulce jsou uvedeny informace obsažené v rámci každé řazené kolekce členů toku a odpovídající avit a pravidlo.
 
-   ![obrázek7][7]
+   ![figure7][7]
 
-Pomocí panelu dotazů v horní části řídicího panelu můžete filtrovat řídicí panel na základě libovolného parametru toků, jako je ID předplatného, skupiny prostředků, pravidlo nebo jakákoli jiná proměnná, která vás zajímá. Další informace o dotazech a filtrech společnosti Kibana naleznete v [oficiální dokumentaci](https://www.elastic.co/guide/en/beats/packetbeat/current/kibana-queries-filters.html)
+Pomocí panelu dotazů v horní části řídicího panelu můžete vyfiltrovat řídicí panel na základě libovolného parametru toků, jako je ID předplatného, skupiny prostředků, pravidlo nebo jakákoli jiná proměnná zájmu. Další informace o dotazech a filtrech Kibana najdete v [oficiální dokumentaci](https://www.elastic.co/guide/en/beats/packetbeat/current/kibana-queries-filters.html) .
 
 ## <a name="conclusion"></a>Závěr
 
-Kombinací protokolů toku skupiny zabezpečení sítě s elastickým zásobníkem jsme přišli s výkonným a přizpůsobitelným způsobem vizualizace našeho síťového provozu. Tyto řídicí panely umožňují rychle získat a sdílet přehledy o síťovém provozu, stejně jako filtrovat dolů a zkoumat případné anomálie. Pomocí kibany můžete tyto řídicí panely přizpůsobit a vytvořit konkrétní vizualizace tak, aby vyhovovaly všem potřebám zabezpečení, auditu a dodržování předpisů.
+Kombinací protokolu toku skupin zabezpečení sítě s elastickým zásobníkem jsme získali výkonný a přizpůsobitelný způsob, jak vizualizovat náš síťový provoz. Tyto řídicí panely umožňují rychle získat a sdílet přehledy o síťových přenosech a také vyfiltrovat a prozkoumat případné anomálie. Pomocí Kibana můžete tyto řídicí panely přizpůsobit a vytvořit konkrétní vizualizace, které budou vyhovovat požadavkům na zabezpečení, audit a dodržování předpisů.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si, jak vizualizovat protokoly toku nsg pomocí Power BI na stránce [Visualize Protokoly toků nsg pomocí Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
+Naučte se vizualizovat protokoly toku NSG pomocí Power BI tím, že navštívíte [vizualizace NSG toků protokolů s Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 
 <!--Image references-->
 

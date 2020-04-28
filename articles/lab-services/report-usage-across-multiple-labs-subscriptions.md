@@ -1,6 +1,6 @@
 ---
-title: Využití azure devtest labs ve více testovacích prostředích a předplatných
-description: Zjistěte, jak nahlásit využití azure devtest labs napříč několika testovacími prostředími a předplatnými.
+title: Azure DevTest Labs využití napříč několika cvičeními a předplatnými
+description: Naučte se, jak ohlásit Azure DevTest Labs využití napříč několika cvičeními a předplatnými.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: tanmayeekamath
@@ -14,83 +14,83 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: takamath
 ms.openlocfilehash: 912f510f6380c0ba1eb92b7c485091801123558e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76169184"
 ---
-# <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>Nastavte využití laboratoří Azure DevTest Labs ve více testovacích prostředích a předplatných
+# <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>Nahlášení využití Azure DevTest Labs napříč několika cvičeními a předplatnými
 
-Většina velkých organizací chce sledovat využití prostředků, aby byly efektivnější s těmito prostředky vizualizací trendů a odlehlých hodnot v využití. Na základě využití prostředků mohou vlastníci nebo správci testovacího prostředí přizpůsobit testovací prostředí za [účelem zlepšení využití prostředků a nákladů](https://docs.microsoft.com/azure/billing/billing-getting-started). V Azure DevTest Labs, můžete stáhnout využití prostředků na testovací prostředí umožňuje hlubší historický pohled na vzorce využití. Tyto vzorce použití mohou pomoci určit změny ke zlepšení efektivity. Většina podniků chce použití jednotlivých testovacích prostředí a celkové využití ve [více testovacích prostředích a předplatných](https://docs.microsoft.com/azure/architecture/cloud-adoption/decision-guides/subscriptions/). 
+Většina velkých organizací chce pomocí těchto prostředků sledovat trendy a odlehlé využití prostředků, aby bylo možné s těmito prostředky lépe zefektivnit. Na základě využití prostředků můžou vlastníci testovacího prostředí nebo manažeři přizpůsobit cvičení, aby [vylepšili využití prostředků a náklady](https://docs.microsoft.com/azure/billing/billing-getting-started). V Azure DevTest Labs můžete stáhnout využití prostředků na testovací prostředí, které vám umožní hlubší historický vzhled vzorců používání. Tyto vzorce používání můžou usnadnit změnu v vylepšení efektivity. Většina podniků má individuální využití testovacího prostředí a celkové využití v rámci [více cvičení a předplatných](https://docs.microsoft.com/azure/architecture/cloud-adoption/decision-guides/subscriptions/). 
 
-Tento článek popisuje, jak zpracovat informace o využití prostředků napříč více testovacích prostředí a odběry.
+Tento článek popisuje, jak zpracovávat informace o využití prostředků napříč několika cvičeními a předplatnými.
 
 ![Hlášení využití](./media/report-usage-across-multiple-labs-subscriptions/report-usage.png)
 
-## <a name="individual-lab-usage"></a>Individuální použití v laboratoři
+## <a name="individual-lab-usage"></a>Individuální použití testovacího prostředí
 
-Tato část popisuje, jak exportovat využití prostředků pro jedno testovací prostředí.
+Tato část popisuje, jak exportovat využití prostředků v jednom testovacím prostředí.
 
-Před exportem využití prostředků DevTest Labs, musíte nastavit účet Azure Storage povolit různé soubory, které obsahují data o využití, které mají být uloženy. Existují dva běžné způsoby provedení exportu dat:
+Než budete moct exportovat využití prostředků DevTest Labs, musíte nastavit účet Azure Storage, aby bylo možné ukládat různé soubory, které obsahují data o využití. Existují dva běžné způsoby, jak spustit Export dat:
 
-* [Rozhraní REST DevTest Labs](https://docs.microsoft.com/rest/api/dtl/labs/exportresourceusage) 
-* Modul PowerShell Az.Resource [Invoke-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction?view=azps-2.5.0&viewFallbackFrom=azps-2.3.2) s `exportResourceUsage`akcí , ID prostředku testovacího prostředí a potřebné parametry. 
+* [REST API DevTest Labs](https://docs.microsoft.com/rest/api/dtl/labs/exportresourceusage) 
+* PowerShell AZ. Resource Module [Invoke-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction?view=azps-2.5.0&viewFallbackFrom=azps-2.3.2) s akcí `exportResourceUsage`, ID prostředku testovacího prostředí a potřebné parametry. 
 
-    Článek [o exportu nebo odstranění osobních dat](personal-data-delete-export.md) obsahuje ukázkový skript prostředí PowerShell s podrobnými informacemi o exportovaných datech. 
+    Článek o [exportu nebo odstranění osobních údajů](personal-data-delete-export.md) obsahuje ukázkový skript prostředí PowerShell s podrobnými informacemi o exportovaných datech. 
 
     > [!NOTE]
-    > Parametr date neobsahuje časové razítko, takže data zahrnují vše od půlnoci na základě časového pásma, ve kterém se nachází testovací prostředí.
+    > Parametr data neobsahuje časové razítko, takže data zahrnují vše od půlnoci na základě časového pásma, ve kterém je testovací prostředí umístěno.
 
-Po dokončení exportu bude v úložišti objektů blob více souborů CSV s různými informacemi o prostředkůch.
+Po dokončení exportu bude v úložišti objektů BLOB více souborů CSV s různými informacemi o prostředcích.
   
-V současné době existují dva soubory CSV:
+V současné době jsou k dispozici dva soubory CSV:
 
-* *virtualmachines.csv* - obsahuje informace o virtuálních počítačích v laboratoři
-* *disks.csv* - obsahuje informace o různých discích v testovacím prostředí 
+* *VirtualMachines. csv* – obsahuje informace o virtuálních počítačích v testovacím prostředí.
+* *disks. csv* – obsahuje informace o různých discích v testovacím prostředí. 
 
-Tyto soubory jsou uloženy v kontejneru objektů blob *labresourceusage* pod názvem testovacího prostředí, jedinečné ID testovacího prostředí, datum spuštění a úplné nebo počáteční datum, které bylo založeno do požadavku na export. Příklad struktury objektu blob by bylo:
+Tyto soubory jsou uložené v kontejneru objektů BLOB *labresourceusage* v rámci názvu testovacího prostředí, jedinečného ID testovacího prostředí, data provedení a úplného nebo počátečního data, které bylo založené na žádosti o export. Příklad struktury objektu BLOB by byl:
 
 * `labresourceusage/labname/1111aaaa-bbbb-cccc-dddd-2222eeee/<End>DD26-MM6-2019YYYY/full/virtualmachines.csv`
 * `labresourceusage/labname/1111aaaa-bbbb-cccc-dddd-2222eeee/<End>DD-MM-YYYY/26-6-2019/20-6-2019<Start>DD-MM-YYYY/virtualmachines.csv`
 
-## <a name="exporting-usage-for-all-labs"></a>Export využití pro všechna testovací prostředí
+## <a name="exporting-usage-for-all-labs"></a>Export využití pro všechny laboratoře
 
-Chcete-li exportovat informace o použití pro více testovacích prostředí, zvažte použití 
+Pokud chcete exportovat informace o využití pro víc cvičení, zvažte použití 
 
-* [Funkce Azure](https://docs.microsoft.com/azure/azure-functions/), dostupné v mnoha jazycích, včetně PowerShellu, nebo 
-* [Azure Automation runbook](https://docs.microsoft.com/azure/automation/), použijte PowerShell, Python nebo vlastní grafický návrhář k napsání kódu exportu.
+* [Azure Functions](https://docs.microsoft.com/azure/azure-functions/), k dispozici v mnoha jazycích, včetně PowerShellu nebo 
+* [Azure Automation sadu Runbook](https://docs.microsoft.com/azure/automation/), pomocí PowerShellu, Pythonu nebo vlastního grafického návrháře napište kód exportu.
 
-Pomocí těchto technologií můžete provést jednotlivé testovací exporty ve všech testovacích prostředích v určitém datu a čase. 
+Pomocí těchto technologií můžete spustit jednotlivé exporty testovacího prostředí ve všech cvičeních v konkrétní datum a čas. 
 
-Vaše funkce Azure by měla tlačit data do dlouhodobějšího úložiště. Při exportu dat pro více testovacích prostředí může export nějakou dobu trvat. Chcete-li pomoci s výkonem a snížit možnost duplikace informací, doporučujeme spustit každou laboratoř paralelně. Chcete-li dosáhnout paralelismu, spusťte funkce Azure asynchronně. Využijte také aktivační událost časovače, kterou funkce Azure nabízejí.
+Funkce Azure by měla nabízet data pro dlouhodobé uložení. Při exportu dat pro více cvičení může export nějakou dobu trvat. Abychom vám pomohli s výkonem a omezit možnost duplikace informací, doporučujeme spustit každé testovací prostředí paralelně. Pro dosažení paralelismu spouštějte Azure Functions asynchronně. Využijte také Trigger časovače, který Azure Functions nabídku.
 
-## <a name="using-a-long-term-storage"></a>Použití dlouhodobého skladování
+## <a name="using-a-long-term-storage"></a>Použití dlouhodobě vybývajícího úložiště
 
-Dlouhodobé úložiště konsoliduje informace o exportu z různých testovacích prostředí do jednoho zdroje dat. Další výhodou použití dlouhodobého úložiště je možnost odebrat soubory z účtu úložiště, aby se snížila duplicita a náklady. 
+Dlouhodobá úložiště konsoliduje informace o exportu z různých laboratoří do jednoho zdroje dat. Další výhodou použití dlouhodobého úložiště je schopnost odebrat soubory z účtu úložiště, aby se snížilo duplicity a náklady. 
 
-Dlouhodobé úložiště lze použít k jakékoli manipulaci s textem, například: 
+Dlouhodobé úložiště lze použít k provedení jakékoli manipulace s textem, například: 
 
-* přidání popisných názvů
-* vytváření složitých seskupení
+* přidávání popisných názvů
+* vytváření komplexních seskupení
 * agregace dat.
 
-Některá běžná řešení úložiště jsou: [SQL Server](https://azure.microsoft.com/services/sql-database/), Azure [Data Lake](https://azure.microsoft.com/services/storage/data-lake-storage/)a [Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Výběr dlouhodobého úložného řešení, které zvolíte, závisí na preferencích. Můžete zvážit výběr nástroje v závislosti na tom, co nabízí z hlediska dostupnosti interakce při vizualizaci dat.
+Mezi běžná řešení úložiště patří: [SQL Server](https://azure.microsoft.com/services/sql-database/), [Azure Data Lake](https://azure.microsoft.com/services/storage/data-lake-storage/)a [Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Výběr řešení dlouhodobého úložiště, které zvolíte, závisí na předvolbách. Můžete zvážit výběr nástroje podle toho, co nabízí z pohledu dostupnosti interakce při vizualizaci dat.
 
 ## <a name="visualizing-data-and-gathering-insights"></a>Vizualizace dat a shromažďování přehledů
 
-Pomocí nástroje pro vizualizaci dat, který si vyberete, se můžete připojit k dlouhodobému úložišti, abyste zobrazili data o využití a shromáždili přehledy pro ověření efektivity využití. [Power BI](https://docs.microsoft.com/power-bi/power-bi-overview) lze například použít k uspořádání a zobrazení dat o využití. 
+Pomocí nástroje pro vizualizaci dat podle vlastního výběru se připojte k dlouhodobému úložišti, abyste mohli zobrazit data o využití a shromažďovat přehledy pro ověření efektivity využití. [Power BI](https://docs.microsoft.com/power-bi/power-bi-overview) lze například použít k uspořádání a zobrazení dat o využití. 
 
-[Azure Data Factory](https://azure.microsoft.com/services/data-factory/) můžete použít k vytváření, propojování a správě prostředků v rámci rozhraní s jedním umístěním. Pokud je potřeba větší kontrolu, jednotlivé prostředky lze vytvořit v rámci jedné skupiny prostředků a spravovat nezávisle na službě Data Factory.  
+Pomocí [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) můžete vytvářet, propojovat a spravovat prostředky v rámci jednoho rozhraní umístění. Pokud je potřeba větší řízení, může se jednotlivé prostředky vytvořit v rámci jedné skupiny prostředků a spravovat nezávisle na službě Data Factory.  
 
 ## <a name="next-steps"></a>Další kroky
 
-Jakmile je systém nastaven a data se přesunou do dlouhodobého úložiště, dalším krokem je přijít s otázkami, které data musí odpovědět. Například: 
+Až se systém nastaví a data se přesunou do dlouhodobého úložiště, další krok se doplní otázkami, které data potřebují k zodpovězení. Příklad: 
 
--   Co je využití velikosti virtuálního počítače?
+-   Jaké je využití velikosti virtuálního počítače?
 
-    Vybírají uživatelé vysoce výkonné (dražší) velikosti virtuálních počítačů?
--   Které obrázky marketplace se používají?
+    Mají uživatelé výběr vysoce výkonných (dražších) velikostí virtuálních počítačů?
+-   Které image Marketplace se používají?
 
-    Jsou vlastní image nejběžnější základnou virtuálních počítačů, pokud by se vytvořilo společné úložiště obrázků, jako [je Galerie sdílených obrázků](../virtual-machines/windows/shared-image-galleries.md) nebo [Továrna obrázků](image-factory-create.md).
--   Které vlastní obrázky jsou používány nebo nepoužívány?
+    Jsou vlastní image nejběžnějším základem virtuálních počítačů, které by měly být sestavené jako [Galerie sdílených imagí](../virtual-machines/windows/shared-image-galleries.md) nebo [objekt pro vytváření imagí](image-factory-create.md).
+-   Které vlastní image se používají nebo které se nepoužívají?

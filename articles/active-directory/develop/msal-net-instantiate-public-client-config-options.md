@@ -1,7 +1,7 @@
 ---
 title: Vytvoření instance veřejné klientské aplikace (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: Zjistěte, jak vytvořit instanci veřejné klientské aplikace s možnostmi konfigurace pomocí knihovny Microsoft Authentication Library for .NET (MSAL.NET).
+description: Naučte se vytvářet instance veřejné klientské aplikace s možnostmi konfigurace pomocí knihovny Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,25 +14,25 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 1dd06e139f931bbf8554f05f05c5d9b9ccf200e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77083594"
 ---
-# <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>Vytvoření instance aplikace veřejného klienta s možnostmi konfigurace pomocí MSAL.NET
+# <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>Vytvoření instance veřejné klientské aplikace s možnostmi konfigurace pomocí MSAL.NET
 
-Tento článek popisuje, jak vytvořit instanci [veřejné klientské aplikace](msal-client-applications.md) pomocí Knihovny ověřování Microsoft pro .NET (MSAL.NET).  Aplikace je vytvořena s možnostmi konfigurace definovanými v souboru nastavení.
+Tento článek popisuje, jak vytvořit instanci [veřejné klientské aplikace](msal-client-applications.md) pomocí knihovny Microsoft Authentication Library pro .net (MSAL.NET).  Instance aplikace je vytvořena s možnostmi konfigurace definovanými v souboru nastavení.
 
-Před inicializací aplikace je třeba ji [nejprve zaregistrovat,](quickstart-register-app.md) aby bylo možné aplikaci integrovat s platformou identit Microsoftu. Po registraci budete možná potřebovat následující informace (které najdete na webu Azure Portal):
+Před inicializací aplikace je nejprve nutné ji [zaregistrovat](quickstart-register-app.md) , aby bylo možné aplikaci integrovat s platformou Microsoft identity. Po registraci možná budete potřebovat následující informace (které najdete v Azure Portal):
 
-- ID klienta (řetězec představující identifikátor GUID)
-- Adresa URL poskytovatele identity (s názvem instance) a přihlašovací cílovou skupinu pro vaši aplikaci. Tyto dva parametry jsou souhrnně označovány jako autorita.
-- ID klienta, pokud píšete řadu obchodních aplikací výhradně pro vaši organizaci (také s názvem aplikace s jedním tenantem).
-- Pro webové aplikace a někdy i pro aplikace veřejných klientů (zejména když vaše aplikace potřebuje používat zprostředkovatele), budete mít také nastavit redirectUri, kde poskytovatel identity bude kontaktovat zpět vaši aplikaci s tokeny zabezpečení.
+- ID klienta (řetězec představující GUID)
+- Adresa URL zprostředkovatele identity (pojmenovaná instance) a cílová skupina pro přihlášení k vaší aplikaci. Tyto dva parametry jsou souhrnně známé jako autorita.
+- ID tenanta, pokud píšete obchodní aplikaci výhradně pro vaši organizaci (nazývá se jenom jediná aplikace tenanta).
+- Pro webové aplikace a někdy pro veřejné klientské aplikace (zejména v případě, že vaše aplikace potřebuje použít zprostředkovatele) nastavíte také redirectUri, kde bude poskytovatel identity kontaktovat zpět vaší aplikaci pomocí tokenů zabezpečení.
 
 
-Konzolová aplikace .NET Core může mít následující konfigurační soubor *appsettings.json:*
+Konzolová aplikace .NET Core může mít následující konfigurační soubor *appSettings. JSON* :
 
 ```json
 {

@@ -1,5 +1,5 @@
 ---
-title: Vytvoření interního vyvažovače zatížení Azure pomocí PowerShellu
+title: Vytvoření interního Load Balancer Azure pomocí PowerShellu
 titleSuffix: Azure Load Balancer
 description: Zjistěte, jak vytvořit interní nástroj pro vyrovnávání zatížení pomocí modulu Azure PowerShellu a Azure Resource Manageru
 services: load-balancer
@@ -14,19 +14,19 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: da564f8d49675ba0d51c5120768028e9d333e2fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76045485"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Vytvoření interního nástroje pro vyrovnávání zatížení pomocí modulu Azure PowerShellu
 
 > [!div class="op_single_selector"]
-> * [Portál Azure](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
-> * [PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
+> * [portál Azure](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
+> * [Prostředí](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
 > * [Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
-> * [Šablony](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
+> * [Šablona](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -48,7 +48,7 @@ Pokud chcete nasadit nástroj pro vyrovnávání zatížení, musíte vytvořit 
 * Konfigurace sondy: Sondy stavu pro virtuální počítače.
 * Příchozí pravidla NAT: Pravidla portů pro přímý přístup k virtuálním počítačům.
 
-Další informace o součástech vykladače zatížení naleznete v [tématu součásti Azure Load Balancer](concepts-limitations.md#load-balancer-components).
+Další informace o součástech nástroje pro vyrovnávání zatížení najdete v tématu [Azure Load Balancer Components](concepts-limitations.md#load-balancer-components).
 
 V následujícím postupu se dozvíte, jak nakonfigurovat nástroj pro vyrovnávání zatížení mezi dvěma virtuálními počítači.
 
@@ -251,7 +251,7 @@ Po vytvoření virtuálního počítače přidejte síťové rozhraní.
 
 ### <a name="step-1-store-the-load-balancer-resource"></a>Krok 1: Uložení prostředku nástroje pro vyrovnávání zatížení
 
-Uložte prostředek nástroje pro vyrovnávání zatížení do proměnné (pokud jste tak ještě neučinili). Používáme název proměnné **$lb**. Pro hodnoty atributů ve skriptu použijte názvy pro prostředky vyrovnávání zatížení, které byly vytvořeny v předchozích krocích.
+Uložte prostředek nástroje pro vyrovnávání zatížení do proměnné (pokud jste tak ještě neučinili). Používáme název proměnné **$lb**. Pro hodnoty atributu ve skriptu použijte názvy pro prostředky nástroje pro vyrovnávání zatížení, které byly vytvořeny v předchozích krocích.
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer –name NRP-LB -resourcegroupname NRP-RG

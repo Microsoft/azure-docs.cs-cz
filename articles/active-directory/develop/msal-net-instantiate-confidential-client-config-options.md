@@ -1,7 +1,7 @@
 ---
-title: Vytvoření instance důvěrné klientské aplikace (MSAL.NET) | Azure
+title: Vytvoření instance aplikace důvěrného klienta (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: Zjistěte, jak vytvořit instanci důvěrné klientské aplikace s možnostmi konfigurace pomocí knihovny Microsoft Authentication Library for .NET (MSAL.NET).
+description: Naučte se vytvářet instance důvěrných klientských aplikací s možnostmi konfigurace pomocí knihovny Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,28 +14,28 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 1a520c5a1002e401f880fba84f8fc02a0a678133
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77084731"
 ---
-# <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>Vytvořte instanci důvěrné klientské aplikace s možnostmi konfigurace pomocí MSAL.NET
+# <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>Vytvoření instance aplikace důvěrného klienta s možnostmi konfigurace pomocí MSAL.NET
 
-Tento článek popisuje, jak vytvořit instanci [důvěrné klientské aplikace](msal-client-applications.md) pomocí Knihovny ověřování Microsoft pro .NET (MSAL.NET).  Aplikace je vytvořena s možnostmi konfigurace definovanými v souboru nastavení.
+Tento článek popisuje, jak vytvořit instanci [důvěrné klientské aplikace](msal-client-applications.md) pomocí knihovny Microsoft Authentication Library pro .net (MSAL.NET).  Instance aplikace je vytvořena s možnostmi konfigurace definovanými v souboru nastavení.
 
-Před inicializací aplikace je třeba ji [nejprve zaregistrovat,](quickstart-register-app.md) aby bylo možné aplikaci integrovat s platformou identit Microsoftu. Po registraci budete možná potřebovat následující informace (které najdete na webu Azure Portal):
+Před inicializací aplikace je nejprve nutné ji [zaregistrovat](quickstart-register-app.md) , aby bylo možné aplikaci integrovat s platformou Microsoft identity. Po registraci možná budete potřebovat následující informace (které najdete v Azure Portal):
 
-- ID klienta (řetězec představující identifikátor GUID)
-- Adresa URL poskytovatele identity (s názvem instance) a přihlašovací cílovou skupinu pro vaši aplikaci. Tyto dva parametry jsou souhrnně označovány jako autorita.
-- ID klienta, pokud píšete řadu obchodních aplikací výhradně pro vaši organizaci (také s názvem aplikace s jedním tenantem).
+- ID klienta (řetězec představující GUID)
+- Adresa URL zprostředkovatele identity (pojmenovaná instance) a cílová skupina pro přihlášení k vaší aplikaci. Tyto dva parametry jsou souhrnně známé jako autorita.
+- ID tenanta, pokud píšete obchodní aplikaci výhradně pro vaši organizaci (nazývá se jenom jediná aplikace tenanta).
 - Tajný klíč aplikace (tajný řetězec klienta) nebo certifikát (typu X509Certificate2), pokud se jedná o důvěrnou klientskou aplikaci.
-- Pro webové aplikace a někdy i pro aplikace veřejných klientů (zejména když vaše aplikace potřebuje používat zprostředkovatele), budete mít také nastavit redirectUri, kde poskytovatel identity bude kontaktovat zpět vaši aplikaci s tokeny zabezpečení.
+- Pro webové aplikace a někdy pro veřejné klientské aplikace (zejména v případě, že vaše aplikace potřebuje použít zprostředkovatele) nastavíte také redirectUri, kde bude poskytovatel identity kontaktovat zpět vaší aplikaci pomocí tokenů zabezpečení.
 
 ## <a name="configure-the-application-from-the-config-file"></a>Konfigurace aplikace z konfiguračního souboru
-Název vlastností možností v MSAL.NET se shoduje s názvem `AzureADOptions` vlastností v ASP.NET jádra, takže nemusíte psát žádný kód lepidla.
+Název vlastností možností v MSAL.NET se shoduje s názvem vlastností `AzureADOptions` v ASP.NET Core, takže nemusíte psát žádný spojovací kód.
 
-Konfigurace aplikace ASP.NET Core je popsána v souboru *appsettings.json:*
+Konfigurace aplikace ASP.NET Core je popsána v souboru *appSettings. JSON* :
 
 ```json
 {
@@ -58,9 +58,9 @@ Konfigurace aplikace ASP.NET Core je popsána v souboru *appsettings.json:*
 }
 ```
 
-Počínaje MSAL.NET v3.x, můžete nakonfigurovat důvěrné klientské aplikace z konfiguračního souboru.
+Od MSAL.NET v3. x můžete svoji důvěrnou klientskou aplikaci nakonfigurovat z konfiguračního souboru.
 
-Ve třídě, kde chcete konfigurovat a konstanci aplikace, `ConfidentialClientApplicationOptions` je třeba deklarovat objekt.  Svázat konfiguraci přečtenou ze zdroje (včetně souboru appconfig.json) s `IConfigurationRoot.Bind()` instancí možností aplikace pomocí metody z [balíčku Microsoft.Extensions.Configuration.Binder nuget](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder):
+Ve třídě, kde chcete konfigurovat a vytvářet instance aplikace, je nutné deklarovat `ConfidentialClientApplicationOptions` objekt.  Navažte konfiguraci načtenou ze zdroje (včetně souboru appconfig. JSON) do instance možností aplikace pomocí `IConfigurationRoot.Bind()` metody z [balíčku NuGet Microsoft. Extensions. Configuration. Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder):
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -70,7 +70,7 @@ _applicationOptions = new ConfidentialClientApplicationOptions();
 configuration.Bind("AzureAD", _applicationOptions);
 ```
 
-To umožňuje obsah "AzureAD" části *appsettings.json* souboru vázána na odpovídající `ConfidentialClientApplicationOptions` vlastnosti objektu.  Dále vytvořte `ConfidentialClientApplication` objekt:
+To umožňuje svázat obsah oddílu "AzureAD" souboru *appSettings. JSON* s odpovídajícími vlastnostmi `ConfidentialClientApplicationOptions` objektu.  V dalším kroku Sestavte `ConfidentialClientApplication` objekt:
 
 ```csharp
 IConfidentialClientApplication app;
@@ -78,8 +78,8 @@ app = ConfidentialClientApplicationBuilder.CreateWithApplicationOptions(_applica
         .Build();
 ```
 
-## <a name="add-runtime-configuration"></a>Přidat konfiguraci runtime
-V důvěrné klientské aplikaci obvykle máte mezipaměť na uživatele. Proto budete muset získat mezipaměti spojené s uživatelem a informovat tvůrce aplikací, který chcete použít. Stejným způsobem může mít dynamicky vypočítané přesměrování URI. V tomto případě je kód následující:
+## <a name="add-runtime-configuration"></a>Přidat konfiguraci modulu runtime
+V důvěrné klientské aplikaci máte obvykle mezipaměť na uživatele. Proto budete muset získat mezipaměť přidruženou k uživateli a informovat tvůrce aplikace, že ho chcete použít. Stejným způsobem může být k dispozici dynamicky vypočítaný identifikátor URI přesměrování. V tomto případě kód je následující:
 
 ```csharp
 IConfidentialClientApplication app;

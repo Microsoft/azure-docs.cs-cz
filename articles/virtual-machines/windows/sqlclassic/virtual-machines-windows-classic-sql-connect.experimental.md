@@ -1,6 +1,6 @@
 ---
-title: Připojení k virtuálnímu počítači SQL Server v Azure (classic) | Dokumenty společnosti Microsoft
-description: Zjistěte, jak se připojit k SQL Serveru spuštěného na virtuálním počítači v Azure. Toto téma používá klasický model nasazení. Scénáře se liší v závislosti na konfiguraci sítě a umístění klienta.
+title: Připojení k virtuálnímu počítači s SQL Server v Azure (Classic) | Microsoft Docs
+description: Naučte se, jak se připojit k SQL Server běžícímu na virtuálním počítači v Azure. Toto téma používá model nasazení Classic. Scénáře se liší v závislosti na konfiguraci sítě a umístění klienta.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -17,10 +17,10 @@ ms.reviewer: jroth
 experimental: true
 experimental_id: d51f3cc6-753b-4e
 ms.openlocfilehash: 1c2d5ae5d85624ea172eb9a95d4086dd71287c4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75978205"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Připojení k virtuálnímu počítači s SQL Serverem v Azure (nasazení Classic)
@@ -31,71 +31,71 @@ ms.locfileid: "75978205"
 > 
 
 ## <a name="overview"></a>Přehled
-Toto téma popisuje, jak se připojit k instanci SQL Serveru spuštěné na virtuálním počítači Azure. Zahrnuje některé [obecné scénáře připojení](#connection-scenarios) a pak poskytuje podrobné kroky pro [konfiguraci připojení SQL Server v virtuálním počítači Azure](#steps-for-configuring-sql-server-connectivity-in-an-azure-vm).
+Toto téma popisuje, jak se připojit k instanci SQL Server běžící na virtuálním počítači Azure. Zabývá se některými [obecnými scénáři připojení](#connection-scenarios) a pak poskytuje [podrobné pokyny ke konfiguraci SQL Serverho připojení ve virtuálním počítači Azure](#steps-for-configuring-sql-server-connectivity-in-an-azure-vm).
 
 > [!IMPORTANT] 
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a Classic](../../../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití modelu klasické nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Pokud používáte virtuální počítače Správce prostředků, přečtěte [si tématu Připojení k virtuálnímu počítači SQL Serveru v Azure pomocí Správce prostředků](../sql/virtual-machines-windows-sql-connect.md).
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a Classic](../../../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Pokud používáte Správce prostředků virtuálních počítačů, přečtěte si téma [připojení k virtuálnímu počítači s SQL Server na Azure pomocí Správce prostředků](../sql/virtual-machines-windows-sql-connect.md).
 
 ## <a name="connection-scenarios"></a>Scénáře připojení
-Způsob, jakým se klient připojuje k serveru SQL Server spuštěný ve virtuálním počítači, se liší v závislosti na umístění klienta a konfiguraci počítače/sítě. Mezi tyto scénáře patří:
+Způsob, jakým se klient připojuje k SQL Server běžícímu na virtuálním počítači, se liší v závislosti na umístění klienta a konfiguraci počítače nebo sítě. Mezi tyto scénáře patří:
 
-* [Připojení k SQL Serveru ve stejné cloudové službě](#connect-to-sql-server-in-the-same-cloud-service)
-* [Připojení k serveru SQL Server přes internet](#connect-to-sql-server-over-the-internet)
-* [Připojení k serveru SQL Server ve stejné virtuální síti](#connect-to-sql-server-in-the-same-virtual-network)
+* [Připojení k SQL Server ve stejné cloudové službě](#connect-to-sql-server-in-the-same-cloud-service)
+* [Připojení k SQL Server přes Internet](#connect-to-sql-server-over-the-internet)
+* [Připojení k SQL Server ve stejné virtuální síti](#connect-to-sql-server-in-the-same-virtual-network)
 
 > [!NOTE]
-> Než se připojíte k některé z těchto metod, je nutné [ke konfiguraci připojení nakonfigurovat pomocí kroků uvedených v tomto článku](#steps-for-configuring-sql-server-connectivity-in-an-azure-vm).
+> Předtím, než se připojíte pomocí kterékoli z těchto metod, je třeba postupovat podle [kroků v tomto článku Konfigurace připojení](#steps-for-configuring-sql-server-connectivity-in-an-azure-vm).
 > 
 > 
 
-### <a name="connect-to-sql-server-in-the-same-cloud-service"></a>Připojení k SQL Serveru ve stejné cloudové službě
-Ve stejné cloudové službě lze vytvořit více virtuálních počítačů. Informace o tomto scénáři virtuálních počítačů najdete v tématu [Jak připojit virtuální počítače k virtuální síti nebo cloudové službě](/previous-versions/azure/virtual-machines/windows/classic/connect-vms-classic#connect-vms-in-a-standalone-cloud-service). V tomto scénáři se klient na jednom virtuálním počítači pokusí připojit k SERVERU SQL Server spuštěný na jiném virtuálním počítači ve stejné cloudové službě.
+### <a name="connect-to-sql-server-in-the-same-cloud-service"></a>Připojení k SQL Server ve stejné cloudové službě
+Ve stejné cloudové službě se dá vytvořit několik virtuálních počítačů. Chcete-li pochopit tento scénář virtuálních počítačů, přečtěte si téma [Postup připojení virtuálních počítačů k virtuální síti nebo cloudové službě](/previous-versions/azure/virtual-machines/windows/classic/connect-vms-classic#connect-vms-in-a-standalone-cloud-service). V tomto scénáři se klient na jednom virtuálním počítači pokusí připojit k SQL Server běžícímu na jiném virtuálním počítači ve stejné cloudové službě.
 
-V tomto scénáři se můžete připojit pomocí **názvu** virtuálního počítače (také zobrazený jako **název počítače** nebo **název hostitele** na portálu). Toto je název, který jste zadali pro virtuální ho během vytváření. Například pokud jste pojmenovali sql VM **mysqlvm**, klientský virtuální počítač ve stejné cloudové službě může použít následující připojovací řetězec pro připojení:
+V tomto scénáři se můžete připojit pomocí **názvu** virtuálního počítače (také uvedeného jako **název počítače** nebo název **hostitele** na portálu). Toto je název, který jste zadali pro virtuální počítač během vytváření. Pokud jste například najmenovali virtuální počítač SQL **mysqlvm**, může klientský virtuální počítač ve stejné cloudové službě použít k připojení následující připojovací řetězec:
 
     "Server=mysqlvm;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
 
-### <a name="connect-to-sql-server-over-the-internet"></a>Připojení k serveru SQL Server přes Internet
-Pokud se chcete připojit k databázovému stroji SQL Server z Internetu, musíte vytvořit koncový bod virtuálního počítače pro příchozí komunikaci TCP. Tento krok konfigurace Azure směruje příchozí provoz portu TCP na port TCP, který je pro virtuální počítač přístupný.
+### <a name="connect-to-sql-server-over-the-internet"></a>Připojení k SQL Server přes Internet
+Pokud se chcete připojit ke svému databázovému stroji SQL Server z Internetu, musíte pro příchozí komunikaci TCP vytvořit koncový bod virtuálního počítače. Tento krok konfigurace Azure směruje příchozí provoz portu TCP na port TCP, který je pro virtuální počítač přístupný.
 
-Chcete-li se připojit přes internet, musíte použít název DNS virtuálního počítače a číslo portu koncového bodu virtuálního počítače (nakonfigurované dále v tomto článku). Pokud chcete najít název DNS, přejděte na portál Azure a vyberte **Virtuální počítače (klasické).** Pak vyberte svůj virtuální počítač. **Název DNS** je zobrazen v části **Přehled.**
+Pokud se chcete připojit přes Internet, musíte použít název DNS virtuálního počítače a číslo portu koncového bodu virtuálního počítače (nakonfigurovaného dále v tomto článku). Pokud chcete najít název DNS, přejděte na Azure Portal a vyberte **virtuální počítače (Classic)**. Pak vyberte svůj virtuální počítač. **Název DNS** se zobrazí v části **Přehled** .
 
-Zvažte například klasický virtuální počítač s názvem **mysqlvm** s názvem DNS **mysqlvm7777.cloudapp.net** a koncovým bodem virtuálního počítače **57500**. Za předpokladu, že správně nakonfigurované připojení, následující připojovací řetězec lze použít pro přístup k virtuálnímu počítači z libovolného místa na internetu:
+Představte si třeba klasický virtuální počítač s názvem **mysqlvm** s názvem DNS **mysqlvm7777.cloudapp.NET** a koncovým bodem virtuálního počítače **57500**. Za předpokladu správného nakonfigurovaného připojení se pro přístup k virtuálnímu počítači odkudkoli na internetu dá použít následující připojovací řetězec:
 
     "Server=mycloudservice.cloudapp.net,57500;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
 
-Přestože tento připojovací řetězec umožňuje připojení pro klienty přes Internet, neznamená to, že kdokoli může připojit k serveru SQL Server. Externí klienti mají správné uživatelské jméno a heslo. Pro další zabezpečení nepoužívejte známý port 1433 pro koncový bod veřejného virtuálního počítače. A pokud je to možné, zvažte přidání acl na koncový bod omezit provoz pouze na klienty, které povolíte. Pokyny k použití acl s koncovými body naleznete [v tématu Správa acl na koncovém bodu](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint).
+I když tento připojovací řetězec umožňuje připojení klientů přes Internet, neznamená to, že se kdokoli může připojit k vašemu SQL Server. Mimo klienty musí mít správné uživatelské jméno a heslo. Pro zvýšení zabezpečení nepoužívejte známý port 1433 pro veřejný koncový bod virtuálního počítače. A pokud je to možné, zvažte přidání seznamu ACL na koncový bod, který omezí provoz jenom na klienty, které povolíte. Pokyny k používání seznamů ACL s koncovými body najdete v tématu [Správa seznamu ACL na koncovém bodu](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint).
 
 > [!NOTE]
-> Při použití této techniky ke komunikaci s SQL Server, všechna odchozí data z datového centra Azure podléhá normální [ceny na odchozí datové přenosy](https://azure.microsoft.com/pricing/details/data-transfers/).
+> Když použijete tento postup ke komunikaci s SQL Server, všechna odchozí data z datového centra Azure se budou vztahovat na běžné [ceny za odchozí přenosy dat](https://azure.microsoft.com/pricing/details/data-transfers/).
 > 
 > 
 
-### <a name="connect-to-sql-server-in-the-same-virtual-network"></a>Připojení k serveru SQL Server ve stejné virtuální síti
-[Virtuální síť](../../../virtual-network/virtual-networks-overview.md) umožňuje další scénáře. Virtuální počítače můžete připojit ve stejné virtuální síti, i když tyto virtuální počítače existují v různých cloudových službách. A s [VPN site-to-site](../../../vpn-gateway/vpn-gateway-site-to-site-create.md)můžete vytvořit hybridní architekturu, která propojuje virtuální počítače s místními sítěmi a počítači.
+### <a name="connect-to-sql-server-in-the-same-virtual-network"></a>Připojení k SQL Server ve stejné virtuální síti
+[Virtual Network](../../../virtual-network/virtual-networks-overview.md) umožňuje další scénáře. Virtuální počítače můžete připojit ve stejné virtuální síti i v případě, že tyto virtuální počítače existují v různých cloudových službách. A pomocí [sítě VPN typu Site-to-site](../../../vpn-gateway/vpn-gateway-site-to-site-create.md)můžete vytvořit hybridní architekturu, která propojuje virtuální počítače s místními sítěmi a počítači.
 
-Virtuální sítě také umožňují připojit vaše virtuální počítače Azure k doméně. Připojení k doméně je jediný způsob, jak používat ověřování systému Windows s SQL Server. Ostatní scénáře připojení vyžadují ověřování SQL s uživatelskými jmény a hesly.
+Virtuální sítě taky umožňují připojit virtuální počítače Azure k doméně. Připojení k doméně je jediným způsobem, jak použít ověřování systému Windows s SQL Server. Ostatní scénáře připojení vyžadují ověřování SQL s uživatelskými jmény a hesly.
 
-Pokud plánujete nakonfigurovat prostředí domény a ověřování systému Windows, není nutné konfigurovat veřejný koncový bod nebo ověřování SQL a přihlášení. V tomto scénáři se můžete připojit k instanci serveru SQL Server zadáním názvu virtuálního počítače SQL Server v připojovacím řetězci. Následující příklad předpokládá, že ověřování systému Windows bylo nakonfigurováno a že uživateli byl udělen přístup k instanci serveru SQL Server.
+Pokud plánujete nakonfigurovat prostředí domény a ověřování systému Windows, nemusíte konfigurovat veřejný koncový bod nebo ověřování SQL a přihlášení. V tomto scénáři se můžete připojit k instanci SQL Server zadáním názvu SQL Server virtuálního počítače v připojovacím řetězci. Následující příklad předpokládá, že bylo nakonfigurováno ověřování systému Windows a že uživateli byl udělen přístup k instanci SQL Server.
 
     "Server=mysqlvm;Integrated Security=true"
 
-## <a name="steps-for-configuring-sql-server-connectivity-in-an-azure-vm"></a>Postup konfigurace připojení SQL Serveru ve virtuálním počítači Azure
-Následující kroky ukazují, jak se připojit k instanci serveru SQL Server přes internet pomocí SQL Server Management Studio (SSMS). Stejné kroky však platí pro zpřístupnění virtuálního počítače SQL Serveru pro vaše aplikace, které běží místně i v Azure.
+## <a name="steps-for-configuring-sql-server-connectivity-in-an-azure-vm"></a>Postup konfigurace připojení SQL Server na virtuálním počítači Azure
+Následující kroky ukazují, jak se připojit k instanci SQL Server přes Internet pomocí SQL Server Management Studio (SSMS). Stejný postup se ale vztahuje na to, aby byl váš SQL Server virtuální počítač dostupný pro vaše aplikace, a přitom běží místně i v Azure.
 
-Než se budete moct připojit k instanci SQL Serveru z jiného virtuálního serveru nebo z Internetu, musíte dokončit následující úkoly:
+Předtím, než se můžete připojit k instanci SQL Server z jiného virtuálního počítače nebo z Internetu, je nutné provést následující úlohy:
 
 * [Vytvoření koncového bodu TCP pro virtuální počítač](#create-a-tcp-endpoint-for-the-virtual-machine)
-* [Otevření portů TCP v bráně firewall systému Windows](#open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine)
+* [Otevření portů TCP v bráně Windows Firewall](#open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine)
 * [Konfigurace naslouchání SQL Serveru pro protokol TCP](#configure-sql-server-to-listen-on-the-tcp-protocol)
 * [Konfigurace SQL Serveru pro kombinovaný režim ověřování](#configure-sql-server-for-mixed-mode-authentication)
 * [Vytvoření účtů ověřování serveru SQL](#create-sql-server-authentication-logins)
 * [Určení názvu DNS virtuálního počítače](#determine-the-dns-name-of-the-virtual-machine)
 * [Připojení k databázovému stroji z jiného počítače](#connect-to-the-database-engine-from-another-computer)
 
-Cesta připojení je shrnuta pomocí následujícího diagramu:
+Cesta k připojení je shrnuta podle následujícího diagramu:
 
-![Připojení k virtuálnímu počítači serveru SQL Server](../../../../includes/media/virtual-machines-sql-server-connection-steps/SQLServerinVMConnectionMap.png)
+![Připojení k virtuálnímu počítači s SQL Server](../../../../includes/media/virtual-machines-sql-server-connection-steps/SQLServerinVMConnectionMap.png)
 
 [!INCLUDE [Connect to SQL Server in a VM Classic TCP Endpoint](../../../../includes/virtual-machines-sql-server-connection-steps-classic-tcp-endpoint.md)]
 
@@ -104,11 +104,11 @@ Cesta připojení je shrnuta pomocí následujícího diagramu:
 [!INCLUDE [Connect to SQL Server in a VM Classic Steps](../../../../includes/virtual-machines-sql-server-connection-steps-classic.md)]
 
 ## <a name="next-steps"></a>Další kroky
-Pokud také plánujete použít AlwaysOn skupiny dostupnosti pro vysokou dostupnost a zotavení po havárii, měli byste zvážit implementaci naslouchací proces. Databázoví klienti se připojují k naslouchací proces, nikoli přímo k jedné z instancí serveru SQL Server. Naslouchací proces směruje klienty do primární repliky ve skupině dostupnosti. Další informace najdete [v tématu Konfigurace naslouchací proces ILB pro skupiny dostupnosti AlwaysOn v Azure](../classic/ps-sql-int-listener.md).
+Pokud také plánujete použít Skupiny dostupnosti AlwaysOn pro vysokou dostupnost a zotavení po havárii, měli byste zvážit implementaci naslouchacího procesu. Klienti databáze se připojují ke službě Listener, nikoli přímo k jedné z SQL Server instancí. Naslouchací proces směruje klienty do primární repliky ve skupině dostupnosti. Další informace najdete v tématu [Konfigurace naslouchacího procesu interního nástroje pro skupiny dostupnosti AlwaysOn v Azure](../classic/ps-sql-int-listener.md).
 
-Je důležité zkontrolovat všechny doporučené postupy zabezpečení pro SQL Server spuštěný na virtuálním počítači Azure. Další informace najdete v tématu [Informace o zabezpečení pro SQL Server na virtuálních počítačích Azure](../sql/virtual-machines-windows-sql-security.md).
+Je důležité si projít všechny osvědčené postupy zabezpečení pro SQL Server běžící na virtuálním počítači Azure. Další informace najdete v tématu [Informace o zabezpečení pro SQL Server na virtuálních počítačích Azure](../sql/virtual-machines-windows-sql-security.md).
 
 [Projděte si mapy kurzů](https://azure.microsoft.com/documentation/learning-paths/sql-azure-vm/) pro SQL Server na virtuálních počítačích Azure. 
 
-Další témata související se spuštěním SQL Serveru ve virtuálních počítačích Azure najdete v článku [SQL Server na virtuálních počítačích Azure](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Další témata související se spouštěním SQL Server ve virtuálních počítačích Azure najdete v tématu [SQL Server v Azure Virtual Machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
 
