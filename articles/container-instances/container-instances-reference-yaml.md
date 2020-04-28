@@ -1,27 +1,27 @@
 ---
-title: Odkaz YAML pro skupinu kontejnerů
-description: Odkaz na soubor YAML podporovaný instancemi kontejnerů Azure pro konfiguraci skupiny kontejnerů
+title: YAML reference pro skupinu kontejnerů
+description: Odkaz na soubor YAML podporovaný nástrojem Azure Container Instances ke konfiguraci skupiny kontejnerů
 ms.topic: article
 ms.date: 08/12/2019
 ms.openlocfilehash: 8497330a327201c4c64e9f7ae57e6fc4225b52de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74896570"
 ---
-# <a name="yaml-reference-azure-container-instances"></a>Odkaz na YAML: Instance kontejnerů Azure
+# <a name="yaml-reference-azure-container-instances"></a>Odkaz na YAML: Azure Container Instances
 
-Tento článek popisuje syntaxi a vlastnosti souboru YAML podporované instance azure kontejneru pro [konfiguraci skupiny kontejnerů](container-instances-container-groups.md). Pomocí souboru YAML zadejte konfiguraci skupiny do [příkazu az kontejneru vytvořit][az-container-create] v azure cli. 
+Tento článek se zabývá syntaxí a vlastnostmi souboru YAML, který podporuje Azure Container Instances ke konfiguraci [skupiny kontejnerů](container-instances-container-groups.md). Pomocí souboru YAML zadejte konfiguraci skupiny do příkazu [AZ Container Create][az-container-create] v rozhraní příkazového řádku Azure CLI. 
 
-Soubor YAML je pohodlný způsob konfigurace skupiny kontejnerů pro reprodukovatelná nasazení. Je stručnou alternativou k použití [šablony Správce prostředků](/azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups) nebo sad SDK s instancemi kontejnerů Azure k vytvoření nebo aktualizaci skupiny kontejnerů.
+Soubor YAML je pohodlný způsob, jak nakonfigurovat skupinu kontejnerů pro reprodukovatelná nasazení. Je to Stručná alternativa k použití [šablony Správce prostředků](/azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups) nebo sady Azure Container Instances SDK k vytvoření nebo aktualizaci skupiny kontejnerů.
 
 > [!NOTE]
-> Tento odkaz se vztahuje na soubory YAML pro `2018-10-01`verzi rozhraní REST ROZHRANÍ REST instance Azure Container Instances .
+> Tento odkaz se vztahuje na soubory YAML pro REST API verzi `2018-10-01`Azure Container Instances.
 
 ## <a name="schema"></a>Schéma 
 
-Schéma pro soubor YAML následuje, včetně komentářů pro zvýraznění klíčových vlastností. Popis vlastností v tomto schématu naleznete v části [Hodnoty vlastností.](#property-values)
+Schéma pro soubor YAML je následující, včetně komentářů k vlastnostem klíč zvýraznění. Popis vlastností v tomto schématu naleznete v části [hodnoty vlastností](#property-values) .
 
 ```yml
 name: string  # Name of the container group
@@ -131,19 +131,19 @@ properties: # Properties of container group
 
 ## <a name="property-values"></a>Hodnoty vlastností
 
-Následující tabulky popisují hodnoty, které je třeba nastavit ve schématu.
+V následujících tabulkách jsou popsány hodnoty, které je třeba nastavit ve schématu.
 
 <a id="Microsoft.ContainerInstance/containerGroups" />
 
-### <a name="microsoftcontainerinstancecontainergroups-object"></a>Objekt Microsoft.ContainerInstance/containerGroups
+### <a name="microsoftcontainerinstancecontainergroups-object"></a>Objekt Microsoft. ContainerInstance/containerGroups
 
-|  Name (Název) | Typ | Požaduje se | Hodnota |
+|  Název | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
 |  jméno | řetězec | Ano | Název skupiny kontejnerů. |
 |  apiVersion | enum | Ano | 2018-10-01 |
-|  location | řetězec | Ne | Umístění zdroje. |
+|  location | řetězec | Ne | Umístění prostředku. |
 |  tags | objekt | Ne | Značky prostředků. |
-|  identity | objekt | Ne | Identita skupiny kontejnerů, pokud je nakonfigurována. - [Objekt ContainerGroupIdentity](#ContainerGroupIdentity) |
+|  identity | objekt | Ne | Identita skupiny kontejnerů, je-li nakonfigurována. - [Objekt ContainerGroupIdentity](#ContainerGroupIdentity) |
 |  properties | objekt | Ano | [Objekt ContainerGroupProperties](#ContainerGroupProperties) |
 
 
@@ -151,101 +151,101 @@ Následující tabulky popisují hodnoty, které je třeba nastavit ve schématu
 
 ### <a name="containergroupidentity-object"></a>Objekt ContainerGroupIdentity
 
-|  Name (Název) | Typ | Požaduje se | Hodnota |
+|  Název | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
-|  type | enum | Ne | Typ identity použité pro skupinu kontejnerů. Typ SystemAssigned, UserAssigned zahrnuje implicitně vytvořenou identitu a sadu identit přiřazených uživateli. Typ None odebere všechny identity ze skupiny kontejnerů. - Systémpřiřazený, Přiřazený uživatel, Přiřazený systém, Přiřazený uživatel, Žádný |
-|  userAssignedIdentities | objekt | Ne | Seznam identit uživatelů přidružených ke skupině kontejnerů. Odkazy na klíče slovníku identity uživatele budou ID prostředků Správce prostředků Azure ve formuláři: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. |
+|  type | enum | Ne | Typ identity použitý pro skupinu kontejnerů. Typ "SystemAssigned, UserAssigned" zahrnuje implicitně vytvořenou identitu a sadu identit přiřazených uživateli. Typ None odebere všechny identity ze skupiny kontejnerů. -SystemAssigned, UserAssigned, SystemAssigned, UserAssigned, None |
+|  userAssignedIdentities | objekt | Ne | Seznam identit uživatelů přidružených ke skupině kontejnerů. Odkazy na klíč uživatele slovníku identity budou Azure Resource Manager ID prostředků ve formátu: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName} '. |
 
 
 <a id="ContainerGroupProperties" />
 
 ### <a name="containergroupproperties-object"></a>Objekt ContainerGroupProperties
 
-|  Name (Název) | Typ | Požaduje se | Hodnota |
+|  Název | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
 |  containers | pole | Ano | Kontejnery v rámci skupiny kontejnerů. - [Objekt kontejneru](#Container) |
-|  imageRegistryCredentials | pole | Ne | Pověření registru bitové kopie, ze kterých je skupina kontejnerů vytvořena. - [Objekt ImageRegistryCredential](#ImageRegistryCredential) |
-|  restartpolicy | enum | Ne | Restartujte zásady pro všechny kontejnery v rámci skupiny kontejnerů. - `Always`Vždy restartovat- `OnFailure` Restartovat při selhání- `Never` Nikdy restartovat. - Vždy, OnFailure, Nikdy |
-|  adresa IP | objekt | Ne | Typ adresy IP skupiny kontejnerů. - [Objekt IpAddress](#IpAddress) |
-|  osTyp | enum | Ano | Typ operačního systému vyžadované kontejnery ve skupině kontejnerů. - Windows nebo Linux |
-|  volumes | pole | Ne | Seznam svazků, které mohou být připojeny kontejnery v této skupině kontejnerů. - [Objekt svazku](#Volume) |
+|  imageRegistryCredentials | pole | Ne | Přihlašovací údaje registru bitové kopie, ze kterých se vytvoří skupina kontejnerů. - [Objekt ImageRegistryCredential](#ImageRegistryCredential) |
+|  restartPolicy | enum | Ne | Restartujte zásady pro všechny kontejnery v rámci skupiny kontejnerů. - `Always`Vždy restartovat a `OnFailure` restartovat při selhání – `Never` Nikdy nerestartovat – Vždycky, chyba, nikdy |
+|  Adresa | objekt | Ne | Typ IP adresy skupiny kontejnerů. - [IpAddress – objekt](#IpAddress) |
+|  osType | enum | Ano | Typ operačního systému vyžadovaný kontejnery ve skupině kontejnerů. – Windows nebo Linux |
+|  volumes | pole | Ne | Seznam svazků, které mohou být připojeny kontejnery v této skupině kontejnerů. - [Volume – objekt](#Volume) |
 |  Diagnostika | objekt | Ne | Diagnostické informace pro skupinu kontejnerů. - [Objekt ContainerGroupDiagnostics](#ContainerGroupDiagnostics) |
 |  networkProfile | objekt | Ne | Informace o profilu sítě pro skupinu kontejnerů. - [Objekt ContainerGroupNetworkProfile](#ContainerGroupNetworkProfile) |
-|  Dnsconfig | objekt | Ne | Informace o konfiguraci DNS pro skupinu kontejnerů. - [Objekt DnsConfiguration](#DnsConfiguration) |
+|  dnsConfig | objekt | Ne | Informace o konfiguraci DNS pro skupinu kontejnerů. - [Objekt DnsConfiguration](#DnsConfiguration) |
 
 
 <a id="Container" />
 
 ### <a name="container-object"></a>Objekt kontejneru
 
-|  Name (Název) | Typ | Požaduje se | Hodnota |
+|  Název | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
-|  jméno | řetězec | Ano | Uživatelem poskytnutý název instance kontejneru. |
-|  properties | objekt | Ano | Vlastnosti instance kontejneru. - [Objekt ContainerProperties](#ContainerProperties) |
+|  jméno | řetězec | Ano | Uživatelem zadaný název instance kontejneru. |
+|  properties | objekt | Ano | Vlastnosti instance kontejneru - [Objekt ContainerProperties](#ContainerProperties) |
 
 
 <a id="ImageRegistryCredential" />
 
 ### <a name="imageregistrycredential-object"></a>Objekt ImageRegistryCredential
 
-|  Name (Název) | Typ | Požaduje se | Hodnota |
+|  Název | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
-|  server | řetězec | Ano | Server registru bitových obrázků Dockeru bez protokolu, například "http" a "https". |
-|  uživatelské jméno | řetězec | Ano | Uživatelské jméno soukromého registru. |
-|  heslo | řetězec | Ne | Heslo pro soukromý registr. |
+|  server | řetězec | Ano | Server registru Docker image bez protokolu, například http a HTTPS. |
+|  uživatelské jméno | řetězec | Ano | Uživatelské jméno privátního registru |
+|  heslo | řetězec | Ne | Heslo k privátnímu registru |
 
 
 <a id="IpAddress" />
 
-### <a name="ipaddress-object"></a>Objekt IpAddress
+### <a name="ipaddress-object"></a>IpAddress – objekt
 
-|  Name (Název) | Typ | Požaduje se | Hodnota |
+|  Název | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
-|  ports | pole | Ano | Seznam portů vystavených ve skupině kontejnerů. - [Objekt portu](#Port) |
-|  type | enum | Ano | Určuje, zda je adresa IP vystavena veřejné síti nebo privátní virtuální síti. - Veřejné nebo soukromé |
-|  Ip | řetězec | Ne | IP vystavena veřejnému internetu. |
-|  dnsNameLabel | řetězec | Ne | Popisek názvu DNS pro adresu IP. |
+|  ports | pole | Ano | Seznam portů, které jsou vystavené ve skupině kontejnerů. - [Port – objekt](#Port) |
+|  type | enum | Ano | Určuje, jestli se IP adresa zveřejňuje pro veřejnou internetovou nebo privátní virtuální síť. – Veřejné nebo soukromé |
+|  IP | řetězec | Ne | IP adresa veřejného Internetu. |
+|  dnsNameLabel | řetězec | Ne | Popisek názvu DNS pro IP adresu. |
 
 
 <a id="Volume" />
 
-### <a name="volume-object"></a>Objekt svazku
+### <a name="volume-object"></a>Volume – objekt
 
-|  Name (Název) | Typ | Požaduje se | Hodnota |
+|  Název | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
 |  jméno | řetězec | Ano | Název svazku. |
-|  soubor azureFile | objekt | Ne | Svazek souboru Azure. - [Objekt AzureFileVolume](#AzureFileVolume) |
+|  azureFile | objekt | Ne | Svazek souboru Azure. - [Objekt AzureFileVolume](#AzureFileVolume) |
 |  emptyDir | objekt | Ne | Prázdný svazek adresáře. |
 |  Tajný kód | objekt | Ne | Tajný svazek. |
-|  gitRepo | objekt | Ne | Git repo svazek. - [GitRepoVolume, objekt](#GitRepoVolume) |
+|  gitRepo | objekt | Ne | Svazek úložiště Git. - [Objekt GitRepoVolume](#GitRepoVolume) |
 
 
 <a id="ContainerGroupDiagnostics" />
 
 ### <a name="containergroupdiagnostics-object"></a>Objekt ContainerGroupDiagnostics
 
-|  Name (Název) | Typ | Požaduje se | Hodnota |
+|  Název | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
-|  logAnalytics | objekt | Ne | Informace o analýze protokolu skupiny kontejnerů. - [Objekt LogAnalytics](#LogAnalytics) |
+|  logAnalytics | objekt | Ne | Informace o Log Analytics skupiny kontejnerů. - [Objekt LogAnalytics](#LogAnalytics) |
 
 
 <a id="ContainerGroupNetworkProfile" />
 
 ### <a name="containergroupnetworkprofile-object"></a>Objekt ContainerGroupNetworkProfile
 
-|  Name (Název) | Typ | Požaduje se | Hodnota |
+|  Název | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
-|  id | řetězec | Ano | Identifikátor pro profil sítě. |
+|  id | řetězec | Ano | Identifikátor síťového profilu. |
 
 
 <a id="DnsConfiguration" />
 
 ### <a name="dnsconfiguration-object"></a>Objekt DnsConfiguration
 
-|  Name (Název) | Typ | Požaduje se | Hodnota |
+|  Název | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
-|  Nameservery | pole | Ano | Servery DNS pro skupinu kontejnerů. - řetězec |
-|  searchDomains | řetězec | Ne | Vyhledávací domény DNS pro vyhledávání názvů hostitelů ve skupině kontejnerů. |
+|  Názvové servery | pole | Ano | Servery DNS pro skupinu kontejnerů. – řetězec |
+|  searchDomains | řetězec | Ne | Domény hledání DNS pro vyhledávání názvů hostitelů ve skupině kontejnerů. |
 |  možnosti | řetězec | Ne | Možnosti DNS pro skupinu kontejnerů. |
 
 
@@ -253,25 +253,25 @@ Následující tabulky popisují hodnoty, které je třeba nastavit ve schématu
 
 ### <a name="containerproperties-object"></a>Objekt ContainerProperties
 
-|  Name (Název) | Typ | Požaduje se | Hodnota |
+|  Název | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
-|  image | řetězec | Ano | Název bitové kopie použité k vytvoření instance kontejneru. |
-|  command | pole | Ne | Příkazy, které mají být provedeny v rámci instance kontejneru ve formě exec. - řetězec |
-|  ports | pole | Ne | Vystavené porty na instanci kontejneru. - [Objekt ContainerPort](#ContainerPort) |
-|  environmentVariables | pole | Ne | Proměnné prostředí nastavit v instanci kontejneru. - [Objekt EnvironmentVariable](#EnvironmentVariable) |
-|  resources | objekt | Ano | Požadavky na prostředky instance kontejneru. - [Objekt ResourceRequirements](#ResourceRequirements) |
-|  volumeMounts | pole | Ne | Svazek se připojí k dispozici pro instanci kontejneru. - [Objekt VolumeMount](#VolumeMount) |
-|  livenessProbe | objekt | Ne | Sonda živosti. - [Objekt ContainerProbe](#ContainerProbe) |
-|  připravenostSonda | objekt | Ne | Sonda připravenosti. - [Objekt ContainerProbe](#ContainerProbe) |
+|  image | řetězec | Ano | Název Image, která se použila k vytvoření instance kontejneru |
+|  command | pole | Ne | Příkazy, které se mají spustit v rámci instance kontejneru ve formuláři Exec. – řetězec |
+|  ports | pole | Ne | Vystavené porty v instanci kontejneru. - [Objekt ContainerPort](#ContainerPort) |
+|  environmentVariables | pole | Ne | Proměnné prostředí, které se mají nastavit v instanci kontejneru - [Objekt objekt EnvironmentVariable](#EnvironmentVariable) |
+|  resources | objekt | Ano | Požadavky na prostředky pro instanci kontejneru. - [Objekt ResourceRequirements](#ResourceRequirements) |
+|  volumeMounts | pole | Ne | Připojené svazky jsou k dispozici pro instanci kontejneru. - [Objekt VolumeMount](#VolumeMount) |
+|  livenessProbe | objekt | Ne | Test živého provozu. - [Objekt ContainerProbe](#ContainerProbe) |
+|  readinessProbe | objekt | Ne | Test připravenosti. - [Objekt ContainerProbe](#ContainerProbe) |
 
 
 <a id="Port" />
 
-### <a name="port-object"></a>Objekt portu
+### <a name="port-object"></a>Port – objekt
 
-|  Name (Název) | Typ | Požaduje se | Hodnota |
+|  Název | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
-|  Protokol | enum | Ne | Protokol přidružený k portu. - TCP nebo UDP |
+|  protokol | enum | Ne | Protokol přidružený k portu – TCP nebo UDP |
 |  port | celé číslo | Ano | Číslo portu |
 
 
@@ -279,151 +279,151 @@ Následující tabulky popisují hodnoty, které je třeba nastavit ve schématu
 
 ### <a name="azurefilevolume-object"></a>Objekt AzureFileVolume
 
-|  Name (Název) | Typ | Požaduje se | Hodnota |
+|  Název | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
-|  Název_sdílené_položky | řetězec | Ano | Název sdílené složky Azure File, který se má připojit jako svazek. |
-|  Readonly | Boolean | Ne | Příznak označující, zda sdílený soubor Azure připojen jako svazek je jen pro čtení. |
+|  shareName | řetězec | Ano | Název sdílené složky Azure, která se má připojit jako svazek. |
+|  readOnly | Boolean | Ne | Příznak označující, zda je sdílené soubory Azure připojené jako svazek jen pro čtení. |
 |  storageAccountName | řetězec | Ano | Název účtu úložiště, který obsahuje sdílenou složku Azure. |
 |  storageAccountKey | řetězec | Ne | Přístupový klíč účtu úložiště, který se používá pro přístup ke sdílené složce Azure. |
 
 
 <a id="GitRepoVolume" />
 
-### <a name="gitrepovolume-object"></a>GitRepoVolume, objekt
+### <a name="gitrepovolume-object"></a>Objekt GitRepoVolume
 
-|  Name (Název) | Typ | Požaduje se | Hodnota |
+|  Název | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
-|  adresář | řetězec | Ne | Cílový název adresáře. Nesmí obsahovat ani začínat na '...  Pokud je zadáno '.' , bude adresář svazku úložiště git.  V opačném případě, pokud je zadán, bude svazek obsahovat úložiště git v podadresáři s daným názvem. |
+|  adresář | řetězec | Ne | Název cílového adresáře Nesmí obsahovat ani začínat znakem '.. '.  Je-li zadán znak ".", bude adresář svazku úložištěm Git.  V opačném případě bude svazek obsahovat úložiště Git v podadresáři se zadaným názvem. |
 |  úložiště | řetězec | Ano | Adresa URL úložiště |
-|  revision | řetězec | Ne | Potvrzení hash pro zadanou revizi. |
+|  revision | řetězec | Ne | Potvrďte hodnotu hash pro zadanou revizi. |
 
 
 <a id="LogAnalytics" />
 
 ### <a name="loganalytics-object"></a>Objekt LogAnalytics
 
-|  Name (Název) | Typ | Požaduje se | Hodnota |
+|  Název | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
-|  workspaceId | řetězec | Ano | ID pracovního prostoru pro analýzu protokolů |
-|  klíč pracovního prostoru | řetězec | Ano | Klíč pracovního prostoru pro analýzu protokolů |
-|  logType | enum | Ne | Typ protokolu, který má být použit. - ContainerInsights nebo ContainerInstanceLogs |
-|  zprostředkovatele identity | objekt | Ne | Metadata pro analýzu protokolu. |
+|  workspaceId | řetězec | Ano | ID pracovního prostoru pro Log Analytics |
+|  workspaceKey | řetězec | Ano | Klíč pracovního prostoru pro Log Analytics |
+|  logType | enum | Ne | Typ protokolu, který se má použít. – ContainerInsights nebo ContainerInstanceLogs |
+|  zprostředkovatele identity | objekt | Ne | Metadata pro Log Analytics. |
 
 
 <a id="ContainerPort" />
 
 ### <a name="containerport-object"></a>Objekt ContainerPort
 
-|  Name (Název) | Typ | Požaduje se | Hodnota |
+|  Název | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
-|  Protokol | enum | Ne | Protokol přidružený k portu. - TCP nebo UDP |
-|  port | celé číslo | Ano | Číslo portu vystavené v rámci skupiny kontejnerů. |
+|  protokol | enum | Ne | Protokol přidružený k portu – TCP nebo UDP |
+|  port | celé číslo | Ano | Číslo portu, které je zveřejněné ve skupině kontejnerů. |
 
 
 <a id="EnvironmentVariable" />
 
-### <a name="environmentvariable-object"></a>Objekt EnvironmentVariable
+### <a name="environmentvariable-object"></a>Objekt objekt EnvironmentVariable
 
-|  Name (Název) | Typ | Požaduje se | Hodnota |
+|  Název | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
-|  jméno | řetězec | Ano | Název proměnné prostředí. |
+|  jméno | řetězec | Ano | Název proměnné prostředí |
 |  value | řetězec | Ne | Hodnota proměnné prostředí. |
-|  secureValue | řetězec | Ne | Hodnota proměnné zabezpečeného prostředí. |
+|  secureValue | řetězec | Ne | Hodnota proměnné prostředí zabezpečení |
 
 
 <a id="ResourceRequirements" />
 
 ### <a name="resourcerequirements-object"></a>Objekt ResourceRequirements
 
-|  Name (Název) | Typ | Požaduje se | Hodnota |
+|  Název | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
-|  Požadavky | objekt | Ano | Požadavky na prostředky této instance kontejneru. - [Objekt ResourceRequests](#ResourceRequests) |
-|  Limity | objekt | Ne | Omezení prostředků této instance kontejneru. - [ResourceLimits objekt](#ResourceLimits) |
+|  požádal | objekt | Ano | Požadavky na prostředky této instance kontejneru - [Objekt ResourceRequests](#ResourceRequests) |
+|  lhůty | objekt | Ne | Omezení prostředků této instance kontejneru. - [Objekt ResourceLimits](#ResourceLimits) |
 
 
 <a id="VolumeMount" />
 
 ### <a name="volumemount-object"></a>Objekt VolumeMount
 
-|  Name (Název) | Typ | Požaduje se | Hodnota |
+|  Název | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
-|  jméno | řetězec | Ano | Název připojení svazku. |
-|  mountPath | řetězec | Ano | Cesta v kontejneru, kde by měl být svazek namontován. Nesmí obsahovat dvojtečku (:). |
-|  Readonly | Boolean | Ne | Příznak označující, zda je připojení svazku jen pro čtení. |
+|  jméno | řetězec | Ano | Název připojení svazku |
+|  mountPath | řetězec | Ano | Cesta v kontejneru, do které má být svazek připojen. Nesmí obsahovat dvojtečku (:). |
+|  readOnly | Boolean | Ne | Příznak označující, zda je připojení svazku jen pro čtení. |
 
 
 <a id="ContainerProbe" />
 
 ### <a name="containerprobe-object"></a>Objekt ContainerProbe
 
-|  Name (Název) | Typ | Požaduje se | Hodnota |
+|  Název | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
-|  Exec | objekt | Ne | Příkaz spuštění pro sondu - [Objekt ContainerExec](#ContainerExec) |
-|  httpGet | objekt | Ne | Http Get nastavení pro sondu - [ContainerHttpGet objektu](#ContainerHttpGet) |
+|  Průměrná | objekt | Ne | Příkaz pro spuštění testu – [objekt ContainerExec](#ContainerExec) |
+|  httpGet | objekt | Ne | Nastavení HTTP GET pro test- [ContainerHttpGet objekt](#ContainerHttpGet) |
 |  initialDelaySeconds | celé číslo | Ne | Počáteční zpoždění sekund. |
-|  periodSeconds | celé číslo | Ne | Období sekund. |
+|  periodSeconds | celé číslo | Ne | Doba v sekundách. |
 |  failureThreshold | celé číslo | Ne | Prahová hodnota selhání. |
-|  successThreshold | celé číslo | Ne | Práh úspěchu. |
-|  timeoutSeconds | celé číslo | Ne | Časový rozsah sekund. |
+|  successThreshold | celé číslo | Ne | Prahová hodnota úspěšnosti. |
+|  timeoutSeconds | celé číslo | Ne | Časový limit v sekundách |
 
 
 <a id="ResourceRequests" />
 
 ### <a name="resourcerequests-object"></a>Objekt ResourceRequests
 
-|  Name (Název) | Typ | Požaduje se | Hodnota |
+|  Název | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
-|  memoryInGB | číslo | Ano | Požadavek na paměť v GB této instance kontejneru. |
-|  Cpu | číslo | Ano | Požadavek procesoru této instance kontejneru. |
-|  Gpu | objekt | Ne | Požadavek GPU této instance kontejneru. - [Objekt GpuResource](#GpuResource) |
+|  memoryInGB | číslo | Ano | Požadavek na paměť v GB této instance kontejneru |
+|  včetně | číslo | Ano | Požadavek na procesor této instance kontejneru |
+|  procesor | objekt | Ne | Požadavek GPU této instance kontejneru - [Objekt GpuResource](#GpuResource) |
 
 
 <a id="ResourceLimits" />
 
-### <a name="resourcelimits-object"></a>ResourceLimits objekt
+### <a name="resourcelimits-object"></a>Objekt ResourceLimits
 
-|  Name (Název) | Typ | Požaduje se | Hodnota |
+|  Název | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
 |  memoryInGB | číslo | Ne | Limit paměti v GB této instance kontejneru. |
-|  Cpu | číslo | Ne | Limit procesoru této instance kontejneru. |
-|  Gpu | objekt | Ne | Limit GPU této instance kontejneru. - [Objekt GpuResource](#GpuResource) |
+|  včetně | číslo | Ne | Limit procesoru této instance kontejneru. |
+|  procesor | objekt | Ne | Limit GPU této instance kontejneru - [Objekt GpuResource](#GpuResource) |
 
 
 <a id="ContainerExec" />
 
 ### <a name="containerexec-object"></a>Objekt ContainerExec
 
-|  Name (Název) | Typ | Požaduje se | Hodnota |
+|  Název | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
-|  command | pole | Ne | Příkazy, které mají být provedeny v kontejneru. - řetězec |
+|  command | pole | Ne | Příkazy, které se mají provést v rámci kontejneru. – řetězec |
 
 
 <a id="ContainerHttpGet" />
 
 ### <a name="containerhttpget-object"></a>Objekt ContainerHttpGet
 
-|  Name (Název) | Typ | Požaduje se | Hodnota |
+|  Název | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
-|  cesta | řetězec | Ne | Cesta ke sondě. |
-|  port | celé číslo | Ano | Číslo portu pro sondu. |
-|  scheme | enum | Ne | Schéma. - http nebo https |
+|  cesta | řetězec | Ne | Cesta k testu |
+|  port | celé číslo | Ano | Číslo portu k testování. |
+|  scheme | enum | Ne | Schéma. – http nebo https |
 
 
 <a id="GpuResource" />
 
 ### <a name="gpuresource-object"></a>Objekt GpuResource
 
-|  Name (Název) | Typ | Požaduje se | Hodnota |
+|  Název | Typ | Požaduje se | Hodnota |
 |  ---- | ---- | ---- | ---- |
-|  count | celé číslo | Ano | Počet prostředků GPU. |
-|  Sku | enum | Ano | Skladová položka prostředku GPU. - K80, P100, V100 |
+|  count | celé číslo | Ano | Počet prostředků GPU |
+|  skladové | enum | Ano | SKU zdroje GPU. – K80, P100, V100 |
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na kurz [Nasazení skupiny s více kontejnery pomocí souboru YAML](container-instances-multi-container-yaml.md).
+Podívejte se na kurz [nasazení skupiny s více kontejnery pomocí souboru YAML](container-instances-multi-container-yaml.md).
 
-Podívejte se na příklady použití souboru YAML k nasazení skupin kontejnerů ve [virtuální síti](container-instances-vnet.md) nebo připojení [externího svazku](container-instances-volume-azure-files.md).
+Podívejte se na příklady použití souboru YAML k nasazení skupin kontejnerů ve [virtuální síti](container-instances-vnet.md) nebo [připojení externího svazku](container-instances-volume-azure-files.md).
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create

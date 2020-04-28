@@ -1,51 +1,51 @@
 ---
-title: Přehled runtime funkcí Azure
-description: Přehled náhledu runtime funkcí Azure
+title: Přehled Modul runtime služby Azure Functions
+description: Přehled Modul runtime služby Azure Functions Preview
 author: apwestgarth
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
 ms.openlocfilehash: ab04aa4ca7f54e8de120d078a313c3096a350aa5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74226631"
 ---
-# <a name="azure-functions-runtime-overview-preview"></a>Přehled runtime funkcí Azure (preview)
+# <a name="azure-functions-runtime-overview-preview"></a>Přehled Modul runtime služby Azure Functions (Preview)
 
 [!INCLUDE [intro](../../includes/functions-runtime-preview-note.md)]
 
-Azure Functions Runtime (preview) poskytuje nový způsob, jak využít jednoduchost a flexibilitu programovacího modelu Azure Functions místně. Azure Functions Runtime, postavený na stejných kořenech open source jako Azure Functions, se nasazuje místně, aby poskytoval téměř identické vývojové prostředí jako cloudová služba.
+Modul runtime služby Azure Functions (Preview) poskytuje nový způsob, jak využít jednoduchost a flexibilitu Azure Functions programovacího modelu v místním prostředí. Modul runtime služby Azure Functions je postavená na stejných kořenech Open Source jako Azure Functions, je nasazená místně, aby poskytovala skoro stejné vývojové prostředí jako cloudová služba.
 
-![Portál Preview runtime funkcí Azure][1]
+![Portál Preview Modul runtime služby Azure Functions][1]
 
-Azure Functions Runtime poskytuje způsob, jak si před potvrzením do cloudu zažít Funkce Azure. Tímto způsobem prostředky kódu, které vytvoříte, pak mohou být při migraci přeneseny s sebou do cloudu.  Runtime také otevírá nové možnosti pro vás, jako je například použití náhradní výpočetní výkon místních počítačů ke spuštění dávkových procesů přes noc. Zařízení v rámci vaší organizace můžete také použít k podmíněnému odesílání dat do jiných systémů, a to jak v místním prostředí, tak v cloudu.
+Modul runtime služby Azure Functions poskytuje způsob, jak se Azure Functions před potvrzením cloudu. Tímto způsobem můžete při migraci do cloudu považovat prostředky kódu, které vytvoříte.  Modul runtime také otevírá nové možnosti, jako je například použití náhradní výpočetní síly vašich místních počítačů ke spouštění dávkových procesů v noci. Zařízení v rámci vaší organizace taky můžete použít k podmíněnému posílání dat do jiných systémů, místních i cloudových.
 
-Azure Functions Runtime se skládá ze dvou částí:
+Modul runtime služby Azure Functions se skládá ze dvou částí:
 
-* Role správy za běhu funkcí Azure
-* Role pracovního procesu Azure Functions
+* Role správy Modul runtime služby Azure Functions
+* Modul runtime služby Azure Functions role pracovního procesu
 
-## <a name="azure-functions-management-role"></a>Role správy funkcí Azure
+## <a name="azure-functions-management-role"></a>Role správy Azure Functions
 
-Role správy funkcí Azure poskytuje hostitele pro správu vašich funkcí místně. Tato role provádí následující úkoly:
+Role správy Azure Functions poskytuje hostitele pro správu vašich funkcí v místním prostředí. Tato role provádí následující úlohy:
 
-* Hostování portálu pro správu funkcí Azure, který je stejný jako ten, který vidíte na [portálu Azure](https://portal.azure.com). Portál poskytuje konzistentní prostředí, které vám umožní rozvíjet vaše funkce stejným způsobem jako na webu Azure Portal.
-* Distribuce funkcí mezi více pracovníků funkce.
-* Poskytnutí koncového bodu publikování, abyste mohli publikovat funkce přímo z aplikace Microsoft Visual Studio stažením a importem profilu publikování.
+* Hostování Azure Functions Portál pro správu, který je stejný jako ten, který vidíte v [Azure Portal](https://portal.azure.com). Portál nabízí konzistentní prostředí, které umožňuje vyvíjet funkce stejným způsobem jako v Azure Portal.
+* Distribuce funkcí mezi více pracovníků funkcí.
+* Poskytnutím koncového bodu publikování, abyste mohli publikovat své funkce přímo z Microsoft Visual Studio stažením a importem profilu publikování.
 
-## <a name="azure-functions-worker-role"></a>Role pracovního procesu Azure Functions
+## <a name="azure-functions-worker-role"></a>Azure Functions role pracovního procesu
 
-Role pracovních míst Azure Functions se nasazují v kontejnerech Windows a jsou tam, kde se spustí kód vaší funkce.  Můžete nasadit více rolí pracovních sil v celé organizaci a tato možnost je klíčovým způsobem, ve kterém zákazníci mohou využít náhradní výpočetní výkon.  Jedním z příkladů, kde náhradní výpočetní prostředky existuje v mnoha organizacích je stroje neustále na zapnuté, ale nejsou používány pro velké časové období.
+Role pracovního procesu Azure Functions jsou nasazeny v kontejnerech systému Windows a jsou v místě, kde je spuštěn kód funkce.  V rámci vaší organizace můžete nasadit více rolí pracovního procesu a tato možnost je klíčovým způsobem, ve kterém můžou zákazníci využít náhradní výpočetní výkon.  Jeden z příkladů, kde v mnoha organizacích existují náhradní výpočetní prostředky, jsou počítače s nepřetržitým chodem, ale nepoužívají se po velkých časových obdobích.
 
 ## <a name="minimum-requirements"></a>Minimální požadavky
 
-Abyste mohli začít pracovat s prostředím Azure Functions Runtime, musíte mít počítač s aktualizací Windows Server 2016 nebo Windows 10 Creators Update s přístupem k instanci SQL Serveru.
+Pokud chcete začít s Modul runtime služby Azure Functions, musíte mít počítač s Windows serverem 2016 nebo Windows 10 Creators Update s přístupem k instanci SQL Server.
 
 ## <a name="next-steps"></a>Další kroky
 
-Instalace [náhledu runtime funkce Azure](https://aka.ms/azafrdoc)
+Nainstalovat [modul runtime služby Azure Functions Preview](https://aka.ms/azafrdoc)
 
 <!--Image references-->
 [1]: ./media/functions-runtime-overview/AzureFunctionsRuntime_Portal.png

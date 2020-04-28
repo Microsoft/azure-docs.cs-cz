@@ -1,6 +1,6 @@
 ---
-title: Vytvoření & publikování dokumentace k jednotnému přihlášení pro vaši aplikaci
-description: Pokyny pro nezávislé dodavatele softwaru pro integraci s Azure Active Directory
+title: Vytvoření & publikování dokumentace jednotného přihlašování pro vaši aplikaci
+description: Pokyny pro nezávislé výrobce softwaru při integraci s Azure Active Directory
 services: active-directory
 author: barbaraselden
 manager: CelesteDG
@@ -13,52 +13,52 @@ ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cb223ec8ab7b5c053136c78d3b4ca30ad4da4e18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74232286"
 ---
-# <a name="create-and-publish-single-sign-on-documentation-for-your-application"></a>Vytvoření a publikování dokumentace k jednotnému přihlášení pro vaši aplikaci   
+# <a name="create-and-publish-single-sign-on-documentation-for-your-application"></a>Vytvoření a publikování dokumentace jednotného přihlašování pro vaši aplikaci   
 
 ## <a name="documentation-on-your-site"></a>Dokumentace na vašem webu
 
-Snadné přijetí je významným faktorem při rozhodování o podnikovém softwaru. Přehledná přehledná dokumentace podporuje vaše zákazníky při jejich cestě k přijetí a snižuje náklady na podporu. Ve spolupráci s tisíci dodavateli softwaru společnost Microsoft viděla, co funguje.
+Snadné přijetí je významným faktorem při rozhodování podnikového softwaru. Jasná dokumentace, která se dá snadno sledovat, podporuje vaše zákazníky v cestě k přijetí a snižuje náklady na podporu. Při práci s tisíci výrobců softwaru si Microsoft viděli, co funguje.
 
-Doporučujeme, aby vaše dokumentace na vašem webu obsahovala minimálně následující položky.
+Doporučujeme, aby vaše dokumentace na webu obsahovala minimálně následující položky.
 
-* Úvod do funkce přisuzování zařízení
+* Seznámení s funkcemi jednotného přihlašování
 
   * Podporované protokoly
 
-  * Verze a skladová položka
+  * Verze a SKU
 
-  * Seznam podporovaných zprostředkovatelů identit s odkazy na dokumentaci
+  * Seznam podporovaných zprostředkovatelů identity s odkazy na dokumentaci
 
-* Informace o licencích pro vaši aplikaci
+* Licenční informace pro vaši aplikaci
 
-* Řízení přístupu na základě rolí pro konfiguraci služby Přiřazování a zabezpečení
+* Řízení přístupu na základě role pro konfiguraci jednotného přihlašování
 
-* Kroky konfigurace přizpůsobořivém zabezpečení
+* Kroky konfigurace jednotného přihlašování
 
-  * Konfigurační prvky uživatelského rozhraní pro SAML s očekávanými hodnotami od zprostředkovatele
+  * Prvky konfigurace uživatelského rozhraní pro SAML s očekávanými hodnotami od poskytovatele
 
-  * Informace o poskytovateli služeb, které mají být předány poskytovatelům identity
+  * Informace o poskytovateli služeb, které se mají předat zprostředkovatelům identity
 
 * Pokud OIDC/OAuth
 
-  * Seznam oprávnění požadovaných pro souhlas s obchodním odůvodněním
+  * Seznam oprávnění vyžadovaných pro vyjádření souhlasu s obchodními odůvodněními
 
-* Testovací kroky pro pilotní uživatele
+* Postup testování pro uživatele pilotního nasazení
 
-* Informace o odstraňování potíží, včetně kódů chyb a zpráv
+* Informace o řešení potíží, včetně chybových kódů a zpráv
 
 * Mechanismy podpory pro zákazníky
 
 ## <a name="documentation-on-the-microsoft-site"></a>Dokumentace na webu společnosti Microsoft
 
-Když uvedete svou aplikaci v Galerii aplikací Azure Active Directory, která také publikuje vaši aplikaci na Azure Marketplace, Microsoft vygeneruje dokumentaci pro naše vzájemné zákazníky vysvětlující postup krok za krokem. Příklad si můžete prohlédnout [zde](https://aka.ms/appstutorial). Tato dokumentace se vytvoří na základě vašeho odeslání do galerie a můžete ji snadno aktualizovat, pokud provedete změny v aplikaci pomocí účtu GitHub.
+Při vytváření seznamu aplikací pomocí Azure Active Directory Galerie aplikací, která také publikuje vaši aplikaci v Azure Marketplace, společnost Microsoft vygeneruje dokumentaci pro naše vzájemné zákazníky, kteří vysvětlují podrobný proces. [Tady](https://aka.ms/appstutorial)vidíte příklad. Tato dokumentace je vytvořena na základě odeslání do galerie a můžete ji snadno aktualizovat, pokud provedete změny aplikace pomocí účtu GitHub.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Seznam aplikace v Galerii aplikací Azure AD](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)
+[Vypsání aplikace v galerii aplikací Azure AD](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)

@@ -1,6 +1,6 @@
 ---
-title: Připojení k rozhraní API Azure Media Services v3 – node.js
-description: Tento článek ukazuje, jak se připojit k rozhraní API Media Services v3 s Node.js.
+title: Připojení k Azure Media Services V3 API – Node. js
+description: Tento článek ukazuje, jak se připojit k rozhraní Media Services V3 API pomocí Node. js.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,27 +14,27 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: juliako
 ms.openlocfilehash: 0381a2e2b8fd2a8b60e7cb702e0336a5678df057
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74896099"
 ---
-# <a name="connect-to-media-services-v3-api---nodejs"></a>Připojení k rozhraní API media services v3 – node.js
+# <a name="connect-to-media-services-v3-api---nodejs"></a>Připojení k Media Services V3 API – Node. js
 
-Tento článek ukazuje, jak se připojit k Azure Media Services v3 node.js SDK pomocí metody přihlášení instanční ho instančního objektu.
+V tomto článku se dozvíte, jak se připojit k sadě Azure Media Services V3 Node. js SDK pomocí metody přihlašování instančního objektu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Nainstalujte [soubor Node.js](https://nodejs.org/en/download/).
-- [Vytvořte účet mediálních služeb](create-account-cli-how-to.md). Nezapomeňte si zapamatovat název skupiny prostředků a název účtu Služby Media Services.
+- Nainstalujte [Node. js](https://nodejs.org/en/download/).
+- [Vytvořte účet Media Services](create-account-cli-how-to.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services.
 
 > [!IMPORTANT]
-> Zkontrolujte [konvence pojmenování](media-services-apis-overview.md#naming-conventions).
+> Přečtěte si [zásady vytváření názvů](media-services-apis-overview.md#naming-conventions).
 
-## <a name="create-packagejson"></a>Vytvořit soubor package.json
+## <a name="create-packagejson"></a>Vytvořit soubor Package. JSON
 
-1. Vytvořte soubor package.json pomocí oblíbeného editoru.
+1. Pomocí oblíbeného editoru vytvořte soubor Package. JSON.
 1. Otevřete soubor a vložte následující kód:
 
 ```json
@@ -52,25 +52,25 @@ Tento článek ukazuje, jak se připojit k Azure Media Services v3 node.js SDK p
 }
 ```
 
-Je třeba specifikovat následující balíčky:
+Je třeba zadat následující balíčky:
 
 |Balíček|Popis|
 |---|---|
-|`azure-arm-mediaservices`|Azure Media Services SDK. <br/>Chcete-li se ujistit, že používáte nejnovější balíček Azure Media Services, zkontrolujte, zda [npm nainstalovat azure-arm-mediaservices](https://www.npmjs.com/package/azure-arm-mediaservices/).|
-|`azure-storage`|Úložiště Sady SDK. Používá se při nahrávání souborů do datových zdrojů.|
-|`ms-rest-azure`| Používá se k přihlášení.|
+|`azure-arm-mediaservices`|Azure Media Services SDK. <br/>Pokud chcete mít jistotu, že používáte nejnovější balíček Azure Media Services, zkontrolujte [npm instalaci Azure-ARM-MediaServices](https://www.npmjs.com/package/azure-arm-mediaservices/).|
+|`azure-storage`|Sada SDK pro úložiště Používá se při nahrávání souborů do assetů.|
+|`ms-rest-azure`| Slouží k přihlášení.|
 
-Můžete spustit následující příkaz, abyste se ujistili, že používáte nejnovější balíček:
+Abyste měli jistotu, že používáte nejnovější balíček, můžete spustit následující příkaz:
 
 ```
 npm install azure-arm-mediaservices
 ```
 
-## <a name="connect-to-nodejs-client"></a>Připojení ke klientovi Node.js
+## <a name="connect-to-nodejs-client"></a>Připojení k klientovi Node. js
 
-1. Vytvořte soubor JS pomocí oblíbeného editoru.
+1. Pomocí oblíbeného editoru vytvořte soubor. js.
 1. Otevřete soubor a vložte následující kód.
-1. Nastavte hodnoty v části "konfigurace koncového bodu" na hodnoty, které jste získali z [přístupových api](access-api-cli-how-to.md).
+1. Nastavte hodnoty v části "konfigurace koncového bodu" na hodnoty, které jste získali z [rozhraní API pro přístup](access-api-cli-how-to.md).
 
 ```js
 'use strict';
@@ -116,7 +116,7 @@ msRestAzure.loginWithServicePrincipalSecret(aadClientId, aadSecret, aadTenantId,
 
 ## <a name="run-your-app"></a>Spuštění aplikace
 
-Otevřete příkazový řádek. Přejděte do adresáře ukázky a proveďte následující příkazy:
+Otevřete příkazový řádek. Přejděte do adresáře ukázky a spusťte následující příkazy:
 
 ```
 npm install 
@@ -125,10 +125,10 @@ node index.js
 
 ## <a name="see-also"></a>Viz také
 
-- [Koncepty mediálních služeb](concepts-overview.md)
+- [Media Services koncepty](concepts-overview.md)
 - [Instalace azure-arm-mediaservices v NPM](https://www.npmjs.com/package/azure-arm-mediaservices/)
 
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte dokumentaci [ref.js node.js](/javascript/api/overview/azure/mediaservices/management) mediálních služeb a prohlédněte si [ukázky,](https://github.com/Azure-Samples/media-services-v3-node-tutorials) které ukazují, jak používat rozhraní API mediálních služeb s souborem node.js.
+Prozkoumejte referenční dokumentaci Media Services [Node. js](/javascript/api/overview/azure/mediaservices/management) a podívejte se na [ukázky](https://github.com/Azure-Samples/media-services-v3-node-tutorials) , které ukazují, jak používat rozhraní API pro Media Services s Node. js.
 

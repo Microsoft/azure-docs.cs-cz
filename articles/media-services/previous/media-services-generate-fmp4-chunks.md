@@ -1,6 +1,6 @@
 ---
-title: Vytvoření úlohy kódování mediální služby Azure, která generuje bloky dat fMP4 | Dokumenty společnosti Microsoft
-description: Toto téma ukazuje, jak vytvořit úlohu kódování, která generuje bloky fMP4. Pokud je tato úloha použita s kodérem Media Encoder Standard nebo Media Encoder Premium Workflow Encoder, bude výstupní datový zdroj obsahovat bloky fMP4 namísto souborů ISO MP4.
+title: Vytvoření úlohy kódování Azure Media Services, která generuje bloky dat fMP4 | Microsoft Docs
+description: V tomto tématu se dozvíte, jak vytvořit úlohu kódování, která generuje fMP4 bloky dat. Pokud se tato úloha používá v kodéru Media Encoder Standard nebo Media Encoder Premium Workflow, bude výstupní prostředek obsahovat bloky fMP4 místo souborů ISO MP4.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 48c09a6100586c0c99f3d54f9708c770488c681f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61463835"
 ---
-#  <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>Vytvoření úlohy kódování, která generuje bloky fMP4
+#  <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>Vytvoření úlohy kódování, která generuje fMP4 bloky dat
 
 ## <a name="overview"></a>Přehled
 
-Tento článek ukazuje, jak vytvořit úlohu kódování, která generuje fragmentované bloky MP4 (fMP4) namísto souborů ISO MP4. Chcete-li generovat bloky bitových blocích fMP4, použijte k vytvoření úlohy kódování pomocí kodéru Standard pro kodéru pro kodéru kodéru kanedu Media **Encoder Standard** nebo **Kodéru elektronického pracovního postupu** pro kódování a také zadejte možnost **AssetFormatOption.AdaptiveStreaming,** jak je znázorněno v tomto fragmentu kódu:  
+Tento článek ukazuje, jak vytvořit úlohu kódování, která generuje fragmenty souboru MP4 (fMP4), nikoli soubory ISO MP4. Chcete-li generovat fMP4 bloky dat, použijte kodér **Media Encoder Standard** nebo **Media Encoder Premium Workflow** k vytvoření úlohy kódování a také Určete možnost **AssetFormatOption. AdaptiveStreaming** , jak je znázorněno v tomto fragmentu kódu:  
     
 ```csharp
     task.OutputAssets.AddNew(@"Output Asset containing fMP4 chunks", 
@@ -34,14 +34,14 @@ Tento článek ukazuje, jak vytvořit úlohu kódování, která generuje fragme
 
 ## <a name="encoding-with-media-services-net-sdk"></a><a id="encoding_with_dotnet"></a>Kódování pomocí sady Media Services .NET SDK
 
-Následující příklad kódu používá k provádění následujících úloh sad Media Services .NET SDK následující úkoly:
+Následující příklad kódu používá sadu Media Services .NET SDK k provádění následujících úloh:
 
 - Vytvořte úlohu kódování.
-- Získejte odkaz na standardní kodér **mediálního kodéru.**
-- Přidejte úlohu kódování do úlohy a určete, aby se používalo přednastavení **Adaptivní streamování.** 
-- Vytvořte výstupní datový zdroj, který bude obsahovat bloky fMP4 a soubor ISM.
+- Získejte odkaz na kodér **Media Encoder Standard** .
+- Přidejte úlohu kódování do úlohy a určete, že se má použít přednastavení **adaptivního streamování** . 
+- Vytvořte výstupní prostředek, který bude obsahovat fMP4 bloky dat a soubor. ISM.
 - Přidejte obslužnou rutinu události pro kontrolu průběhu úlohy.
-- Odešlete práci.
+- Odešlete úlohu.
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 
@@ -177,5 +177,5 @@ namespace AdaptiveStreaming
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Viz také
-[Přehled kódování mediálních služeb](media-services-encode-asset.md)
+[Přehled kódování Media Services](media-services-encode-asset.md)
 

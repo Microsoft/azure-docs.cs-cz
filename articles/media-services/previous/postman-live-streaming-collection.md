@@ -1,6 +1,6 @@
 ---
-title: Import kolekce Postman pro azure live streaming volání REST
-description: Tento článek obsahuje definici kolekce Postman pro azure media services rest volání.
+title: Import kolekce po pro volání REST služby Azure Live streamování
+description: Tento článek poskytuje definici následné kolekce pro volání REST Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 897513abcc9f829f1cbdc315208e4451ae4dbc41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60637586"
 ---
-# <a name="import-a-postman-collection-with-live-streaming-operations"></a>Import kolekce Postman s operacemi živého streamování 
+# <a name="import-a-postman-collection-with-live-streaming-operations"></a>Import kolekce po publikování s operacemi živého streamování 
 
-Tento článek obsahuje definici Kolekce **Postman,** která obsahuje seskupené požadavky HTTP, které volají **live streaming** Azure Media Services REST API. Informace o tom, jak nakonfigurovat **Postman** tak, aby jej lze použít k volání media services REST API, naleznete [v tématu Konfigurace Postman pro media services volání rozhraní REST API](media-rest-apis-with-postman.md) kurzu.
+Tento článek obsahuje definici **následné** kolekce, která obsahuje seskupené požadavky HTTP, které volají **živé streamování** Azure Media Services rozhraní REST API. Informace o tom, jak nakonfigurovat **metodu post** , aby ji bylo možné volat Media Services rozhraní REST API najdete v kurzu věnovaném [konfiguraci služby post pro Media Services REST API volání](media-rest-apis-with-postman.md) .
 
 ```
 {

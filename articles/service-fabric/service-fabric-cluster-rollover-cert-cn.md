@@ -1,21 +1,21 @@
 ---
-title: Převrácení certifikátu clusteru Azure Service Fabric
-description: Přečtěte si, jak převést certifikát clusteru Service Fabric identifikovaný běžným názvem certifikátu.
+title: Převeďte certifikát clusteru Azure Service Fabric.
+description: Naučte se, jak převrátit Service Fabric certifikát clusteru identifikovaný běžným názvem certifikátu.
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: 94cc6841886b1b0eb4271ac0f727a2e3561e0081
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75451961"
 ---
-# <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Ruční převrácení certifikátu clusteru Service Fabric
-Pokud se certifikát clusteru Service Fabric blíží vypršení platnosti, je třeba certifikát aktualizovat.  Přechod certifikátu je jednoduchý, pokud byl cluster [nastaven tak, aby používal certifikáty založené na běžném názvu](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (namísto kryptografického otisku).  Získejte nový certifikát od certifikační autority s novým datem vypršení platnosti.  Certifikáty podepsané svým držitelem nejsou pro produkční clustery Service Fabric support, které zahrnují certifikáty generované během pracovního postupu vytváření clusteru portálu Azure. Nový certifikát musí mít stejný běžný název jako starší certifikát. 
+# <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Ruční vrácení Service Fabric certifikátu clusteru
+Pokud se platnost certifikátu Service Fabric clusteru blíží k vypršení platnosti, budete muset certifikát aktualizovat.  Změna certifikátu je jednoduchá, pokud byl cluster [nastavený tak, aby používal certifikáty založené na běžném názvu](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (místo kryptografických otisků).  Získejte nový certifikát od certifikační autority s novým datem vypršení platnosti.  Certifikáty podepsané svým držitelem nejsou podporované pro produkční Service Fabric clustery, aby zahrnovaly certifikáty vygenerované během pracovního postupu vytvoření Azure Portal clusteru. Nový certifikát musí mít stejný běžný název jako starší certifikát. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Cluster Service Fabric bude automaticky používat deklarovaný certifikát s dalším datem vypršení platnosti. pokud je na hostiteli nainstalováno více certifikátů ověření. Osvědčeným postupem je použití šablony Správce prostředků k zřizování prostředků Azure. V neprodukčním prostředí lze k nahrání nového certifikátu do trezoru klíčů použít následující skript a potom jej nainstalovat do škálovací sady virtuálních strojů: 
+Cluster Service Fabric bude automaticky používat deklarovaný certifikát s dalšími daty k budoucímu datu vypršení platnosti. v případě, že je na hostiteli nainstalováno více než jeden ověřovací certifikát. Osvědčeným postupem je použití šablony Správce prostředků ke zřízení prostředků Azure. V neprodukčním prostředí můžete použít následující skript k nahrání nového certifikátu do trezoru klíčů a následné instalaci certifikátu do sady škálování virtuálních počítačů: 
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
@@ -71,9 +71,9 @@ Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Name $VmssName -Virtual
 ```
 
 >[!NOTE]
-> Vypočítá tajné kódy sady velikosti virtuálního počítače nepodporují stejné id prostředků pro dva samostatné tajné klíče, protože každý tajný klíč je jedinečný prostředek s verzí. 
+> Tajné klíče COMPUTE Virtual Machine Scale set nepodporují stejné ID prostředku pro dvě samostatná tajná klíče, protože každý tajný klíč je jedinečným prostředkem verze. 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o [zabezpečení clusteru](service-fabric-cluster-security.md).
-* [Aktualizace a správa certifikátů clusteru](service-fabric-cluster-security-update-certs-azure.md)
+* Přečtěte si o [zabezpečení clusteru](service-fabric-cluster-security.md).
+* [Aktualizace a Správa certifikátů clusteru](service-fabric-cluster-security-update-certs-azure.md)

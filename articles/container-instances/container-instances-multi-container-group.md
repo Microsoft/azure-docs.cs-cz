@@ -1,49 +1,49 @@
 ---
-title: Kurz – nasazení skupiny s více kontejnery – šablona
-description: V tomto kurzu se dozvíte, jak nasadit skupinu kontejnerů s více kontejnery v instanci kontejneru Azure pomocí šablony Azure Resource Manager s Azure CLI.
+title: Kurz – nasazení skupiny více kontejnerů – šablona
+description: V tomto kurzu se naučíte, jak nasadit skupinu kontejnerů s více kontejnery v Azure Container Instances pomocí Azure Resource Manager šablony pomocí Azure CLI.
 ms.topic: article
 ms.date: 04/03/2019
 ms.custom: mvc
 ms.openlocfilehash: d2b4e20520cad28c5d62118f6c9d10fcc43ac89e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74533624"
 ---
-# <a name="tutorial-deploy-a-multi-container-group-using-a-resource-manager-template"></a>Kurz: Nasazení skupiny s více kontejnery pomocí šablony Správce prostředků
+# <a name="tutorial-deploy-a-multi-container-group-using-a-resource-manager-template"></a>Kurz: nasazení skupiny s více kontejnery pomocí šablony Správce prostředků
 
 > [!div class="op_single_selector"]
 > * [YAML](container-instances-multi-container-yaml.md)
 > * [Resource Manager](container-instances-multi-container-group.md)
 
-Azure Container Instances podporuje nasazení více kontejnerů na jednoho hostitele pomocí [skupiny kontejnerů](container-instances-container-groups.md). Skupina kontejnerů je užitečná při vytváření postranního varu aplikace pro protokolování, monitorování nebo jakoukoli jinou konfiguraci, kde služba potřebuje druhý připojený proces.
+Azure Container Instances podporuje nasazení více kontejnerů do jednoho hostitele pomocí [skupiny kontejnerů](container-instances-container-groups.md). Skupina kontejnerů je užitečná při sestavování postranního vozíku aplikace pro protokolování, monitorování nebo jakoukoli jinou konfiguraci, kde služba potřebuje druhý připojený proces.
 
-V tomto kurzu postupujte podle kroků ke spuštění jednoduché konfigurace sajdcovna dvou kontejnerů nasazením šablony Azure Resource Manager pomocí azure cli. Získáte informace o těchto tématech:
+V tomto kurzu budete postupovat podle kroků pro spuštění jednoduché konfigurace na dvou kontejnerech, a to nasazením šablony Azure Resource Manager pomocí Azure CLI. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Konfigurace šablony skupiny s více kontejnery
+> * Konfigurace více kontejnerových šablon skupiny
 > * Nasazení skupiny kontejnerů
 > * Zobrazit protokoly kontejnerů
 
-Šablonu Správce prostředků lze snadno přizpůsobit pro scénáře, kdy potřebujete nasadit další prostředky služby Azure (například sdílené složky Azure Files nebo virtuální síť) se skupinou kontejnerů. 
+Šablonu Správce prostředků lze snadno přizpůsobit pro scénáře, pokud potřebujete nasadit další prostředky služby Azure (například sdílenou složku Azure Files nebo virtuální síť) se skupinou kontejnerů. 
 
 > [!NOTE]
-> Skupiny s více kontejnery jsou aktuálně omezeny na kontejnery Linuxu. 
+> Skupiny více kontejnerů jsou aktuálně omezené na kontejnery Linux. 
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="configure-a-template"></a>Konfigurace šablony
 
-Začněte zkopírováním následujícího jsonu `azuredeploy.json`do nového souboru s názvem . V Prostředí Azure Cloud Shell můžete použít visual studio kód k vytvoření souboru ve vašem pracovním adresáři:
+Začněte tím, že zkopírujete následující JSON do nového souboru `azuredeploy.json`s názvem. V Azure Cloud Shell můžete pomocí Visual Studio Code vytvořit soubor v pracovním adresáři:
 
 ```
 code azuredeploy.json
 ```
 
-Tato šablona Správce prostředků definuje skupinu kontejnerů se dvěma kontejnery, veřejnou IP adresou a dvěma exponovanými porty. První kontejner ve skupině spouští internetovou webovou aplikaci. Druhý kontejner, sajdkaři, vytvoří požadavek HTTP na hlavní webovou aplikaci prostřednictvím místní sítě skupiny.
+Tato šablona Správce prostředků definuje skupinu kontejnerů se dvěma kontejnery, veřejnou IP adresou a dvěma vystavenými porty. První kontejner ve skupině spouští internetovou webovou aplikaci. Druhý kontejner, postranní vozík, provede požadavek HTTP hlavní webové aplikaci prostřednictvím místní sítě skupiny.
 
 ```JSON
 {
@@ -131,7 +131,7 @@ Tato šablona Správce prostředků definuje skupinu kontejnerů se dvěma konte
 }
 ```
 
-Chcete-li použít registr bitových obrázků soukromého kontejneru, přidejte objekt do dokumentu JSON v následujícím formátu. Příklad implementace této konfigurace naleznete v referenční dokumentaci [k šabloně Správce prostředků ACI.][template-reference]
+K použití privátního registru imagí kontejneru přidejte objekt do dokumentu JSON s následujícím formátem. Ukázkovou implementaci této konfigurace najdete v referenční dokumentaci k [ACI správce prostředků Template][template-reference] .
 
 ```JSON
 "imageRegistryCredentials": [
@@ -151,7 +151,7 @@ Vytvořte skupinu prostředků pomocí příkazu [az group create][az-group-crea
 az group create --name myResourceGroup --location eastus
 ```
 
-Nasaďte šablonu pomocí příkazu [vytvořit nasazení skupiny az.][az-group-deployment-create]
+Šablonu nasaďte pomocí příkazu [AZ Group Deployment Create][az-group-deployment-create] .
 
 ```azurecli-interactive
 az group deployment create --resource-group myResourceGroup --template-file azuredeploy.json
@@ -161,13 +161,13 @@ Během několika sekund by se měla zobrazit první odezva z Azure.
 
 ## <a name="view-deployment-state"></a>Zobrazit stav nasazení
 
-Chcete-li zobrazit stav nasazení, použijte následující příkaz [az container show:][az-container-show]
+Chcete-li zobrazit stav nasazení, použijte následující příkaz [AZ Container show][az-container-show] :
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name myContainerGroup --output table
 ```
 
-Pokud chcete zobrazit spuštěnou aplikaci, přejděte v prohlížeči na její IP adresu. Například IP je `52.168.26.124` v tomto příkladu výstupu:
+Pokud chcete zobrazit spuštěnou aplikaci, přejděte v prohlížeči na jeho IP adresu. Například IP adresa je `52.168.26.124` v tomto příkladu výstupu:
 
 ```bash
 Name              ResourceGroup    Status    Image                                                                                               IP:ports              Network    CPU/Memory       OsType    Location
@@ -177,7 +177,7 @@ myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tut
 
 ## <a name="view-container-logs"></a>Zobrazení protokolů kontejneru
 
-Zobrazení výstupu protokolu kontejneru pomocí příkazu [az container logs.][az-container-logs] Argument `--container-name` určuje kontejner, ze kterého chcete vyžádat protokoly. V tomto příkladu `aci-tutorial-app` je určen kontejner.
+Zobrazte výstup protokolu kontejneru pomocí příkazu [AZ Container logs][az-container-logs] . `--container-name` Argument určuje kontejner, ze kterého mají být vyžádané protokoly. V tomto příkladu je určen `aci-tutorial-app` kontejner.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-app
@@ -192,7 +192,7 @@ listening on port 80
 ::1 - - [21/Mar/2019:23:17:54 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
 ```
 
-Chcete-li zobrazit protokoly pro kontejner sajdkár, spusťte podobný příkaz určující `aci-tutorial-sidecar` kontejner.
+Chcete-li zobrazit protokoly pro kontejner vozíku, spusťte podobný příkaz určující `aci-tutorial-sidecar` kontejner.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-sidecar
@@ -218,20 +218,20 @@ Date: Thu, 21 Mar 2019 20:36:41 GMT
 Connection: keep-alive
 ```
 
-Jak můžete vidět, sajdkár pravidelně provádí požadavek HTTP na hlavní webovou aplikaci prostřednictvím místní sítě skupiny, aby bylo zajištěno, že je spuštěn. Tento příklad postranního sajdkáře by mohl být `200 OK`rozšířen tak, aby aktivoval výstrahu, pokud obdržel jiný kód odpovědi HTTP než .
+Jak vidíte, postranní vozík pravidelně vytváří požadavek HTTP do hlavní webové aplikace prostřednictvím místní sítě skupiny, aby bylo zajištěno, že je spuštěný. Tento příklad postranního vozíku se dá rozšířit tak, aby aktivoval výstrahu, pokud obdržel jiný `200 OK`kód odpovědi HTTP než.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste použili šablonu Azure Resource Manager k nasazení skupiny více kontejnerů v instanci kontejneru Azure. Naučili jste se tyto postupy:
+V tomto kurzu jste použili šablonu Azure Resource Manager k nasazení skupiny více kontejnerů v Azure Container Instances. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
-> * Konfigurace šablony skupiny s více kontejnery
+> * Konfigurace více kontejnerových šablon skupiny
 > * Nasazení skupiny kontejnerů
 > * Zobrazit protokoly kontejnerů
 
-Další ukázky šablon najdete v [tématu šablony Azure Resource Manager pro instance kontejnerů Azure](container-instances-samples-rm.md).
+Další ukázky šablon najdete v tématu [šablony Azure Resource Manager pro Azure Container Instances](container-instances-samples-rm.md).
 
-Můžete také určit skupinu více kontejnerů pomocí [souboru YAML](container-instances-multi-container-yaml.md). Vzhledem k stručnější povaze formátu YAML je nasazení se souborem YAML dobrou volbou, když vaše nasazení obsahuje pouze instance kontejnerů.
+Skupinu s více kontejnery můžete zadat také pomocí [souboru YAML](container-instances-multi-container-yaml.md). Vzhledem k výstižnější povaze formátu YAML je nasazení se souborem YAML vhodné, pokud vaše nasazení zahrnuje jenom instance kontejnerů.
 
 
 <!-- LINKS - Internal -->

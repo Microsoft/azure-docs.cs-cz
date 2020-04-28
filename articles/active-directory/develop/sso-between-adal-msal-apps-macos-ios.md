@@ -1,5 +1,5 @@
 ---
-title: Připojovací služby mezi ADAL & aplikace Misal (iOS/macOS) – platforma identit microsoftu | Azure
+title: Jednotné přihlašování mezi aplikacemi ADAL & MSAL (iOS/macOS) – Microsoft Identity Platform | Azure
 description: ''
 services: active-directory
 author: mmacy
@@ -13,45 +13,45 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 7a8a1667ba1ca2a99c053c6941e3ba778299fd53
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80880746"
 ---
-# <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>Postup: Přizpůsobovat služby při přijmutí mezi aplikacemi ADAL a MSAL v systému macOS a iOS
+# <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>Postupy: jednotné přihlašování mezi aplikacemi ADAL a MSAL v macOS a iOS
 
-Knihovna ověřování Microsoft (MSAL) pro iOS můžete sdílet stav spři přihlašování s [ADAL Objective-C](https://github.com/AzureAD/azure-activedirectory-library-for-objc) mezi aplikacemi. Aplikace můžete migrovat do služby MSAL vlastním tempem a zajistit, aby vaši uživatelé měli stále prospěch z vlastního přiřazování služeb při práci mezi aplikacemi – a to i díky kombinaci aplikací založených na Službě ADAL a MSAL.
+Knihovna Microsoft Authentication Library (MSAL) pro iOS může sdílet stav jednotného přihlašování s [cíli ADAL-C](https://github.com/AzureAD/azure-activedirectory-library-for-objc) mezi aplikacemi. Své aplikace můžete migrovat tak, aby se MSAL vlastním tempem, což zajistí, že uživatelé budou mít pořád možnost jednotného přihlašování mezi aplikacemi, a to i s kombinací aplikací založených na ADAL a MSAL.
 
-Pokud hledáte pokyny k nastavení přihlašování mezi aplikacemi pomocí sady MSAL SDK, přečtěte si část [Tiché přihlašování mezi více aplikacemi](single-sign-on-macos-ios.md#silent-sso-between-apps). Tento článek se zaměřuje na sací byt mezi ADAL a MSAL.
+Pokud hledáte pokyny k nastavení jednotného přihlašování mezi aplikacemi pomocí sady MSAL SDK, přečtěte si téma [bezobslužné jednotné přihlašování mezi několika aplikacemi](single-sign-on-macos-ios.md#silent-sso-between-apps). Tento článek se zaměřuje na jednotné přihlašování mezi ADAL a MSAL.
 
-Specifika implementace spři závisí na verzi ADAL, které používáte.
+Konkrétní implementace jednotného přihlašování závisí na verzi ADAL, kterou používáte.
 
-## <a name="adal-27x"></a>ADAL 2.7.x
+## <a name="adal-27x"></a>ADAL 2.7. x
 
-Tato část se zabývá rozdíly v prohlášení sondami mezi msal a adal 2.7.x
+Tato část popisuje rozdíly v jednotném přihlašování mezi MSAL a ADAL 2.7. x
 
 ### <a name="cache-format"></a>Formát mezipaměti
 
-ADAL 2.7.x může číst formát mezipaměti MSAL. Nemusíte dělat nic zvláštního pro cross-app spři přihlašovat s verzí ADAL 2.7.x. Je však třeba si uvědomit rozdíly v identifikátory účtů, které tyto dvě knihovny podporují.
+ADAL 2.7. x může číst formát MSAL cache. Pro jednotné přihlašování mezi aplikacemi nemusíte nic dělat s verzí ADAL 2.7. x. Je však třeba mít na paměti rozdíly v identifikátorech účtů, které tyto dvě knihovny podporují.
 
-### <a name="account-identifier-differences"></a>Rozdíly identifikátoru účtu
+### <a name="account-identifier-differences"></a>Rozdíly v identifikátorech účtů
 
-MSAL a ADAL používají různé identifikátory účtů. ADAL používá hlavní číslo sítě jako svůj primární identifikátor účtu. MSAL používá nezobrazitelný identifikátor účtu, který je založen na ID objektu a ID klienta pro účty AAD a `sub` deklaraci pro jiné typy účtů.
+MSAL a ADAL používají jiné identifikátory účtu. ADAL používá jako svůj primární identifikátor účtu hlavní název uživatele (UPN). MSAL používá nezobrazitelný identifikátor účtu, který je založen na ID objektu a ID tenanta pro účty AAD, a `sub` deklarace identity pro jiné typy účtů.
 
-Když obdržíte `MSALAccount` objekt ve výsledku MSAL, obsahuje `identifier` identifikátor účtu ve vlastnosti. Aplikace by měla použít tento identifikátor pro následné tiché požadavky.
+Když obdržíte `MSALAccount` objekt ve výsledku MSAL, obsahuje identifikátor účtu ve `identifier` vlastnosti. Aplikace by měla tento identifikátor používat pro následné tiché požadavky.
 
-Kromě `identifier`objektu `MSALAccount` obsahuje zobrazitelný identifikátor `username`s názvem . To se `userId` překládá do ADAL. `username`není považován za jedinečný identifikátor a může kdykoli změnit, takže by měl být použit pouze pro scénáře zpětné kompatibility s ADAL. MSAL podporuje dotazy mezipaměti pomocí buď `username` nebo `identifier`, kde dotazování podle `identifier` se doporučuje.
+Kromě `identifier`toho `MSALAccount` objekt obsahuje zobrazitelný identifikátor s názvem `username`. To se týká i `userId` v ADAL. `username`není považován za jedinečný identifikátor a může být kdykoli změněn, takže by měl být použit pouze pro scénáře zpětné kompatibility s ADAL. MSAL podporuje dotazy mezipaměti pomocí `username` nebo `identifier`, kde se doporučuje dotazování `identifier` podle.
 
-Následující tabulka shrnuje rozdíly v identifikátoru účtu mezi ADAL a MSAL:
+Následující tabulka shrnuje rozdíly v identifikátorech účtů mezi ADAL a MSAL:
 
-| Identifikátor účtu                | MSAL                                                         | ADAL 2.7.x      | Starší ADAL (před ADAL 2.7.x) |
+| Identifikátor účtu                | MSAL                                                         | ADAL 2.7. x      | Starší knihovna ADAL (před ADAL 2.7. x) |
 | --------------------------------- | ------------------------------------------------------------ | --------------- | ------------------------------ |
 | zobrazitelný identifikátor            | `username`                                                   | `userId`        | `userId`                       |
 | jedinečný nezobrazitelný identifikátor | `identifier`                                                 | `homeAccountId` | –                            |
-| Není známo žádné id účtu.               | Dotaz na `allAccounts:` všechny účty prostřednictvím rozhraní API`MSALPublicClientApplication` | –             | –                            |
+| Není známé žádné ID účtu.               | Dotazování všech účtů `allAccounts:` prostřednictvím rozhraní API v`MSALPublicClientApplication` | –             | –                            |
 
-Toto `MSALAccount` je rozhraní poskytující tyto identifikátory:
+Toto je rozhraní `MSALAccount` , které poskytuje tyto identifikátory:
 
 ```objc
 @protocol MSALAccount <NSObject>
@@ -82,30 +82,30 @@ Toto `MSALAccount` je rozhraní poskytující tyto identifikátory:
 @end
 ```
 
-### <a name="sso-from-msal-to-adal"></a>SSO od MSAL do ADAL
+### <a name="sso-from-msal-to-adal"></a>Jednotné přihlašování z MSAL do ADAL
 
-Pokud máte aplikaci MSAL a aplikaci ADAL a uživatel se nejprve přihlásí do aplikace založené na MSAL, `MSALAccount` můžete získat semanové služby `userId`v aplikaci ADAL uložením `username` z objektu a jeho předáním do aplikace založené na ADAL jako . ADAL pak můžete najít informace o `acquireTokenSilentWithResource:clientId:redirectUri:userId:completionBlock:` účtu tiše s rozhraním API.
+Pokud máte aplikaci MSAL a aplikaci ADAL a uživatel se poprvé přihlásí do aplikace založené na MSAL, můžete v aplikaci ADAL získat jednotné přihlašování, a to tak, že ho `username` uložíte z `MSALAccount` objektu a předáte ho do aplikace založené na knihovně ADAL `userId`. ADAL pak může najít informace o účtu v tichém režimu `acquireTokenSilentWithResource:clientId:redirectUri:userId:completionBlock:` pomocí rozhraní API.
 
-### <a name="sso-from-adal-to-msal"></a>SSO od ADAL do MSAL
+### <a name="sso-from-adal-to-msal"></a>Jednotné přihlašování z ADAL do MSAL
 
-Pokud máte aplikaci MSAL a aplikaci ADAL a uživatel se nejprve přihlásí do aplikace založené na ADAL, můžete použít identifikátory uživatelů ADAL pro vyhledávání účtů v MSAL. To platí i při migraci z ADAL do MSAL.
+Pokud máte aplikaci MSAL a aplikaci ADAL a uživatel se poprvé přihlásí do aplikace založené na ADAL, můžete použít identifikátory uživatelů ADAL pro vyhledávání účtů v MSAL. To platí také při migraci z ADAL do MSAL.
 
-#### <a name="adals-homeaccountid"></a>ADAL je homeAccountId
+#### <a name="adals-homeaccountid"></a>HomeAccountId ADAL
 
-ADAL 2.7.x `homeAccountId` vrátí `ADUserInformation` v objektu ve výsledku prostřednictvím této vlastnosti:
+ADAL 2.7. x vrátí `homeAccountId` `ADUserInformation` objekt ve výsledku prostřednictvím této vlastnosti:
 
 ```objc
 /*! Unique AAD account identifier across tenants based on user's home OID/home tenantId. */
 @property (readonly) NSString *homeAccountId;
 ```
 
-`homeAccountId`v ADAL je ekvivalentní `identifier` v MSAL. Tento identifikátor můžete uložit pro použití v MSAL `accountForIdentifier:error:` pro vyhledávání účtů s rozhraním API.
+`homeAccountId`v ADAL je ekvivalentem `identifier` v MSAL. Tento identifikátor můžete uložit pro použití v MSAL pro vyhledávání účtů s `accountForIdentifier:error:` rozhraním API.
 
-#### <a name="adals-userid"></a>ADAL je`userId`
+#### <a name="adals-userid"></a>ADAL`userId`
 
-Pokud `homeAccountId` není k dispozici, nebo máte pouze zobrazitelný identifikátor, `userId` můžete použít ADAL k vyhledávání účtu v MSAL.
+Pokud `homeAccountId` není k dispozici nebo máte jenom zobrazitelný identifikátor, můžete `userId` k vyhledání účtu v MSAL použít ADAL.
 
-V MSAL nejprve vyhledejte `username` `identifier`účet podle nebo . Vždy `identifier` používejte pro dotazování, pokud ji `username` máte, a používejte pouze jako záložní. Pokud je účet nalezen, použijte `acquireTokenSilent` účet ve volání.
+V MSAL nejdřív vyhledejte účet pomocí `username` nebo. `identifier` Vždy používejte `identifier` pro dotazování, pokud ho máte, a používejte `username` ho jenom jako záložní. Pokud je účet nalezen, použijte účet při `acquireTokenSilent` volání.
 
 Cíl-C:
 
@@ -134,7 +134,7 @@ MSALSilentTokenParameters *silentParameters = [[MSALSilentTokenParameters alloc]
 [application acquireTokenSilentWithParameters:silentParameters completionBlock:completionBlock];
 ```
 
-Swift:
+SWIFT
 
 ```swift
         
@@ -161,7 +161,7 @@ do {
 
 
 
-MSAL podporované řešení API vyhledávání účtů:
+Rozhraní API pro vyhledávání MSAL podporovaných účtů:
 
 ```objc
 /*!
@@ -184,13 +184,13 @@ Returns account for for the given username (received from an account object retu
                               error:(NSError * __autoreleasing *)error;
 ```
 
-## <a name="adal-2x-266"></a>ADAL 2.x-2.6.6
+## <a name="adal-2x-266"></a>ADAL 2. x – 2.6.6
 
-Tato část se zabývá rozdíly s přihlašuje mezi MSAL a ADAL 2.x-2.6.6.
+Tato část popisuje rozdíly v jednotném přihlašování mezi MSAL a ADAL 2. x-2.6.6.
 
-Starší verze ADAL nativně nepodporují formát mezipaměti MSAL. Chcete-li však zajistit hladkou migraci z ADAL na MSAL, může msal číst starší formát mezipaměti ADAL bez výzvy k vytvoření pověření uživatele.
+Starší verze ADAL nepodporují nativně formát mezipaměti MSAL. Aby se ale zajistila bezproblémová migrace z ADAL na MSAL, může MSAL načíst starší formát mezipaměti ADAL bez výzvy k zadání přihlašovacích údajů uživatele.
 
-Protože `homeAccountId` není k dispozici ve starších verzích ADAL, budete `username`muset vyhledat účty pomocí:
+Protože `homeAccountId` není k dispozici ve starších verzích ADAL, budete potřebovat vyhledat účty pomocí `username`:
 
 ```objc
 /*!
@@ -214,7 +214,7 @@ MSALSilentTokenParameters *silentParameters = [[MSALSilentTokenParameters alloc]
 [application acquireTokenSilentWithParameters:silentParameters completionBlock:completionBlock];
 ```
 
-Swift:
+SWIFT
 
 ```swift
 do {
@@ -231,7 +231,7 @@ do {
 
 
 
-Případně si můžete přečíst všechny účty, které budou také číst informace o účtu z ADAL:
+Případně si můžete přečíst všechny účty, které budou také číst informace o účtech z ADAL:
 
 Cíl-C:
 
@@ -254,7 +254,7 @@ MSALSilentTokenParameters *silentParameters = [[MSALSilentTokenParameters alloc]
 [application acquireTokenSilentWithParameters:silentParameters completionBlock:completionBlock];
 ```
 
-Swift:
+SWIFT
 
 ```swift
       

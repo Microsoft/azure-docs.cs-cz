@@ -1,6 +1,6 @@
 ---
-title: Monitorování zařízení Azure Data Box Gateway | Dokumenty společnosti Microsoft
-description: Popisuje, jak používat portál Azure a místní webové uživatelské prostředí ke sledování brány datové schránky Azure.
+title: Monitorování zařízení Azure Data Box Gateway | Microsoft Docs
+description: Popisuje, jak pomocí Azure Portal a místního webového uživatelského rozhraní monitorovat Azure Data Box Gateway.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,21 +9,21 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 61da2454d6a72d43a7b4600d7ea85e6a3f82958f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60754951"
 ---
-# <a name="monitor-your-azure-data-box-gateway"></a>Sledování brány datové schránky Azure
+# <a name="monitor-your-azure-data-box-gateway"></a>Monitorování Azure Data Box Gateway
 
-Tento článek popisuje, jak sledovat bránu datové schránky Azure. Ke sledování zařízení můžete použít portál Azure nebo místní webové uživatelské rozhraní. Na webu Azure Portal můžete zobrazit události zařízení, konfigurovat a spravovat výstrahy a zobrazovat metriky.
+Tento článek popisuje, jak monitorovat Azure Data Box Gateway. Pokud chcete monitorovat své zařízení, můžete použít Azure Portal nebo místní webové uživatelské rozhraní. Pomocí Azure Portal můžete zobrazit události zařízení, konfigurovat a spravovat výstrahy a zobrazovat metriky.
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Zobrazení událostí zařízení a odpovídajících výstrah
-> * Zobrazení metrik kapacity a transakcí pro vaše zařízení
+> * Zobrazit kapacitu a metriky transakcí pro vaše zařízení
 > * Konfigurace a správa výstrah
 
 ## <a name="view-device-events"></a>Zobrazit události zařízení

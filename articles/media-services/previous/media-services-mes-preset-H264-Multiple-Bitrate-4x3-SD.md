@@ -1,6 +1,6 @@
 ---
-title: H264 Vícenásobný přenosový tok 4x3 SD | Dokumenty společnosti Microsoft
-description: Toto téma poskytuje přehled přednastavení **úlohy H264 Multiple Bitrate 4x3 SD.**
+title: H264 s více přenosovými rychlostmi 4x3 SD | Microsoft Docs
+description: Téma obsahuje přehled přednastavení úlohy **4X3 SD H264 s více přenosovými rychlostmi** .
 author: Juliako
 manager: femila
 editor: ''
@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: e5a0251ffd7d013a2e90d05609c04cec5c9dc1e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61129592"
 ---
 # <a name="h264-multiple-bitrate-4x3-sd"></a>H264 Multiple Bitrate 4x3 SD
-`Media Encoder Standard`definuje sadu přednastavení kódování, které můžete použít při vytváření úloh kódování. Můžete buď použít `preset name` k určení formátu, do kterého chcete mediální soubor zakódovat. Nebo můžete vytvořit vlastní přednastavení JSON nebo XML (pomocí kódování UTF-8 nebo UTF-16. Vlastní přednastavení byste pak předali kodéru. Seznam všech přednastavených názvů podporovaných `Media Encoder Standard` tímto kodérem naleznete [v tématu Přednastavení úloh pro standard kodéru médií](media-services-mes-presets-overview.md).  
+`Media Encoder Standard`definuje sadu přednastavení kódování, kterou můžete použít při vytváření úloh kódování. Můžete buď použít `preset name` k určení formátu, ve kterém chcete mediální soubor zakódovat. Nebo můžete vytvořit vlastní přednastavení založené na JSON nebo XML (pomocí kódování UTF-8 nebo UTF-16). Pak byste měli předat vlastní předvolbu kodéru. Seznam všech přednastavených názvů podporovaných tímto `Media Encoder Standard` kodérem najdete v tématu [předvolby úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  
   
- Toto téma `H264 Multiple Bitrate 4x3 SD` zobrazuje přednastavení ve formátu XML a JSON.  
+ Toto téma ukazuje `H264 Multiple Bitrate 4x3 SD` Předvolby ve formátu XML a JSON.  
   
- Toto přednastavení vytváří sadu 5 souborů MP4 zarovnaných do GOP, od 1600 kbps do 400 kbps a stereo AAC audio. Podrobné informace o profilu, přenosovérychlosti, vzorkovací frekvenci atd. Vysvětlení, co jednotlivé prvky v těchto přednastaveních znamenají, a platné hodnoty pro každý prvek naleznete v tématu [standardního schématu kodéru médií.](media-services-mes-schema.md)  
+ Tato předvolba vytvoří sadu 5 souborů MP4 zarovnaných na skupinu GOP, od 1600 do 400 KB/s a stereofonního zvuku AAC. Podrobné informace o profilu, přenosové rychlosti, vzorkovací frekvenci atd. z této předvolby najdete v souboru XML nebo JSON definovaném níže. Vysvětlení toho, co každý prvek v těchto přednastaveních znamená, a platné hodnoty pro každý prvek naleznete v tématu [Media Encoder Standard schématu](media-services-mes-schema.md) .  
   
 > [!NOTE]
->  Při úpravách `Width` `Height` hodnot a napříč vrstvami se ujistěte, že poměr stran zůstává konzistentní. Například: 1920x1080, 1280x720, 1080x576, 640x360. Neměli byste používat směs poměrů stran, například: 1280x720, 720x480, 640x360.  
+>  Při úpravách `Width` hodnot `Height` a v rámci vrstev se ujistěte, že poměr stran zůstává konzistentní. Příklad: 1080, 1280 × 720, 1080x576, 640x360. Neměli byste používat kombinaci poměrů stran, například: 1280 × 720, 720x480, 640x360.  
   
  XML  
   

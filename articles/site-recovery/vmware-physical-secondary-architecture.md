@@ -1,6 +1,6 @@
 ---
-title: Obnova architektury-VMware/fyzické havárie do sekundární lokality s Azure Site Recovery
-description: Tento článek obsahuje přehled součástí a architektury používané při zotavení po havárii místních virtuálních počítačích VMware nebo fyzických serverů Windows/Linux na sekundárním webu VMware s Azure Site Recovery.
+title: Architektura – VMware/fyzické zotavení po havárii do sekundární lokality s Azure Site Recovery
+description: Tento článek poskytuje přehled komponent a architektury používaných při zotavení po havárii místních virtuálních počítačů VMware nebo fyzických serverech s Windows/Linux do sekundární lokality VMware s Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: b0a46dcf8fe298494a53713f122b1bda8ce07e5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73954572"
 ---
-# <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>Architektura replikace serveru VMware/fyzického serveru do sekundární místní lokality
+# <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>Architektura pro replikaci VMware/fyzických serverů do sekundární místní lokality
 
-Tento článek popisuje architekturu a procesy používané při nastavení replikace zotavení po havárii, převzetí služeb při selhání a obnovení místních virtuálních počítačů VMware nebo fyzických serverů Windows/Linux na sekundární web VMware pomocí [azure site recovery](site-recovery-overview.md).
+Tento článek popisuje architekturu a procesy používané při nastavení replikace, převzetí služeb při selhání a obnovení místních virtuálních počítačů VMware do sekundární lokality VMware pomocí [Azure Site Recovery](site-recovery-overview.md).
 
 
 ## <a name="architectural-components"></a>Komponenty architektury
 
-**Oblast** | **Komponenta** | **Podrobnosti**
+**Oblast** | **Komponenta** | **Zobrazí**
 --- | --- | ---
 **Azure** | Tento scénář nasadíte pomocí nástroje InMage Scout. | K získání nástroje InMage Scout potřebujete předplatné Azure.<br/><br/> Po vytvoření trezoru služby Recovery Services si stáhnete InMage Scout a nainstalujete nejnovější aktualizace pro nastavení nasazení.
-**Procesní server** | Umístěný v primární lokalitě | Procesový server nasadíte, aby se staral o ukládání do mezipaměti, kompresi a optimalizaci dat.<br/><br/> Také obstará nabízenou instalaci nástroje Unified Agent na počítače, které chcete chránit.
+**Procesový Server** | Umístěný v primární lokalitě | Procesový server nasadíte, aby se staral o ukládání do mezipaměti, kompresi a optimalizaci dat.<br/><br/> Také obstará nabízenou instalaci nástroje Unified Agent na počítače, které chcete chránit.
 **Konfigurační server** | Umístěný v sekundární lokalitě | Konfigurační server spravuje, konfiguruje a monitoruje nasazení – buď pomocí webu pro správu, nebo konzoly vContinuum.
 **Server vContinuum** | Nepovinný parametr. Instaluje se do stejné lokality jako konfigurační server. | Poskytuje konzoli pro správu a monitorování chráněného prostředí.
 **Hlavní cílový server** | Umístěný v sekundární lokalitě | Na hlavní cílový server se ukládají replikovaná data. Přijímá data z procesního serveru, vytváří repliku počítače v sekundární lokalitě a ukládá body pro uchovávání dat.<br/><br/> Počet hlavních cílových serverů, které potřebujete, závisí na počtu počítačů, které chráníte.<br/><br/> Pokud chcete po obnovení vrátit služby do primární lokality, potřebujete hlavní cílový server i tam. Na tento server je třeba nainstalovat Unified Agent.
@@ -45,4 +45,4 @@ Tento článek popisuje architekturu a procesy používané při nastavení repl
 
 ## <a name="next-steps"></a>Další kroky
 
-[Nastavte](vmware-physical-secondary-disaster-recovery.md) zotavení po havárii virtuálních virtuálních zařízení VMware a fyzických serverů do sekundární lokality.
+[Nastavte](vmware-physical-secondary-disaster-recovery.md) zotavení po havárii virtuálních počítačů VMware a fyzických serverů do sekundární lokality.

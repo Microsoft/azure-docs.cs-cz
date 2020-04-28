@@ -1,6 +1,6 @@
 ---
-title: Protokol SAML pro jednotné odhlášení Azure
-description: Tento článek popisuje protokol SAML jednotného odhlášení ve službě Azure Active Directory.
+title: Protokol SAML pro jednotné odhlašování v Azure
+description: Tento článek popisuje protokol SAML jednotného odhlašování v Azure Active Directory
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,22 +13,22 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.openlocfilehash: dbe21d020d5d01f24913b95587721403fa218cc8
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80881261"
 ---
-# <a name="single-sign-out-saml-protocol"></a>Protokol SAML pro jednotné odhlášení
+# <a name="single-sign-out-saml-protocol"></a>Protokol SAML pro jednotné odhlašování
 
-Azure Active Directory (Azure AD) podporuje saml 2.0 profil jednotného odhlašování webového prohlížeče. Aby jednotné odhlášení fungovalo správně, musí být **adresa Url logouturl** pro aplikaci explicitně zaregistrována ve službě Azure AD během registrace aplikace. Azure AD používá LogoutURL k přesměrování uživatelů po jejich odhlášení.
+Azure Active Directory (Azure AD) podporuje profil jednotného přihlašování webového prohlížeče SAML 2,0. Aby jednotné přihlašování fungovalo správně, musí se **LogoutURL** pro aplikaci během registrace aplikace explicitně zaregistrovat ve službě Azure AD. Azure AD používá LogoutURL k přesměrování uživatelů poté, co se odhlásí.
 
-Následující diagram znázorňuje pracovní postup procesu jednotného odhlašování Azure AD.
+Následující diagram znázorňuje pracovní postup procesu jednotného odhlašování služby Azure AD.
 
 ![Pracovní postup jednotného odhlašování Azure AD](./media/single-sign-out-saml-protocol/active-directory-saml-single-sign-out-workflow.png)
 
-## <a name="logoutrequest"></a>Požadavek na odhlášení
-Cloudová služba `LogoutRequest` odešle zprávu do služby Azure AD označující, že relace byla ukončena. Následující výňatek ukazuje `LogoutRequest` ukázkový prvek.
+## <a name="logoutrequest"></a>LogoutRequest
+Cloudová služba pošle `LogoutRequest` zprávu službě Azure AD, která indikuje, že relace byla ukončena. Následující úryvek ukazuje vzorový `LogoutRequest` prvek.
 
 ```
 <samlp:LogoutRequest xmlns="urn:oasis:names:tc:SAML:2.0:metadata" ID="idaa6ebe6839094fe4abc4ebd5281ec780" Version="2.0" IssueInstant="2013-03-28T07:10:49.6004822Z" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -37,21 +37,21 @@ Cloudová služba `LogoutRequest` odešle zprávu do služby Azure AD označují
 </samlp:LogoutRequest>
 ```
 
-### <a name="logoutrequest"></a>Požadavek na odhlášení
-Prvek `LogoutRequest` odeslaný do služby Azure AD vyžaduje následující atributy:
+### <a name="logoutrequest"></a>LogoutRequest
+`LogoutRequest` Element odeslaný do Azure AD vyžaduje následující atributy:
 
-* `ID`- To identifikuje žádost o odhlášení. Hodnota by `ID` neměla začínat číslem. Typickým postupem je připojit **id** k řetězcové reprezentaci identifikátoru GUID.
-* `Version`- Nastavte hodnotu tohoto prvku na **2,0**. Tato hodnota se vyžaduje.
-* `IssueInstant`- Jedná `DateTime` se o řetězec s hodnotou Coordinate Universal Time (UTC) a [formátu round-trip ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD očekává hodnotu tohoto typu, ale nevynucuje ji.
+* `ID`– Identifikuje žádost o odhlášení. Hodnota `ID` by neměla začínat číslicí. Typický postup je připojit **ID** k řetězcové REprezentaci identifikátoru GUID.
+* `Version`-Nastavte hodnotu tohoto prvku na **2,0**. Tato hodnota se vyžaduje.
+* `IssueInstant`– Jedná se o `DateTime` řetězec s hodnotou souřadnic Universal Time (UTC) a [formátu Round-Trip ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD očekává hodnotu tohoto typu, ale neuplatní ji.
 
 ### <a name="issuer"></a>Vystavitel
-Prvek `Issuer` v `LogoutRequest` musí přesně odpovídat jednomu z **ServicePrincipalNames** v cloudové službě ve službě Azure AD. Obvykle je to nastaveno na **identifikátor URI ID aplikace,** který je zadán při registraci aplikace.
+`Issuer` Element v elementu `LogoutRequest` musí přesně odpovídat jednomu z **ServicePrincipalNames** v cloudové službě v Azure AD. Obvykle je tento parametr nastavený na **identifikátor URI ID aplikace** , který je zadaný při registraci aplikace.
 
 ### <a name="nameid"></a>NameID
-Hodnota `NameID` prvku musí přesně odpovídat `NameID` uživateli, který je odhlášen.
+Hodnota `NameID` elementu musí přesně odpovídat `NameID` uživateli, který je právě podepsán.
 
-## <a name="logoutresponse"></a>Odhlášení
-Azure AD `LogoutResponse` odešle v `LogoutRequest` reakci na prvek. Následující výňatek ukazuje `LogoutResponse`ukázku .
+## <a name="logoutresponse"></a>LogoutResponse
+Azure AD pošle `LogoutResponse` odpověď na `LogoutRequest` element. Následující úryvek ukazuje ukázku `LogoutResponse`.
 
 ```
 <samlp:LogoutResponse ID="_f0961a83-d071-4be5-a18c-9ae7b22987a4" Version="2.0" IssueInstant="2013-03-18T08:49:24.405Z" InResponseTo="iddce91f96e56747b5ace6d2e2aa9d4f8c" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -62,13 +62,13 @@ Azure AD `LogoutResponse` odešle v `LogoutRequest` reakci na prvek. Následují
 </samlp:LogoutResponse>
 ```
 
-### <a name="logoutresponse"></a>Odhlášení
-Azure AD `ID`nastaví a `Version` `LogoutResponse` `IssueInstant` hodnoty v prvku. Také nastaví `InResponseTo` prvek na hodnotu `ID` atributu, `LogoutRequest` který vyvolal odpověď.
+### <a name="logoutresponse"></a>LogoutResponse
+`ID`Azure AD nastaví `Version` hodnoty a `IssueInstant` v `LogoutResponse` elementu. Také nastaví `InResponseTo` element na hodnotu `ID` atributu `LogoutRequest` , který vyvolá odpověď.
 
 ### <a name="issuer"></a>Vystavitel
-Azure AD nastaví `https://login.microsoftonline.com/<TenantIdGUID>/` \<tuto hodnotu, kde TenantIdGUID> je ID klienta klienta klienta Azure AD klienta.
+Azure AD Nastaví tuto hodnotu na `https://login.microsoftonline.com/<TenantIdGUID>/` , \<kde TenantIdGUID> je ID tenanta tenanta Azure AD.
 
-Chcete-li vyhodnotit `Issuer` hodnotu prvku, použijte hodnotu **identifikátoru URI aplikace** poskytnuté během registrace aplikace.
+K vyhodnocení hodnoty `Issuer` elementu použijte hodnotu **identifikátoru URI ID aplikace** poskytnutou během registrace aplikace.
 
 ### <a name="status"></a>Status
-Azure AD `StatusCode` používá prvek `Status` v elementu k označení úspěchu nebo selhání odhlášení. Pokud se pokus o odhlášení nezdaří, `StatusCode` prvek může také obsahovat vlastní chybové zprávy.
+Azure AD pomocí `StatusCode` elementu v `Status` elementu indikuje úspěch nebo neúspěch odhlášení. Pokud se pokus o odhlášení nezdaří, `StatusCode` element může obsahovat také vlastní chybové zprávy.

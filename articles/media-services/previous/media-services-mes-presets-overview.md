@@ -1,6 +1,6 @@
 ---
-title: Přednastavení úloh pro standard kodéru médií (MES) | Dokumenty společnosti Microsoft
-description: Toto téma poskytuje a přehled přednastavení vzorků definovaných službou pro standard kodéru médií (MES).
+title: Přednastavení úloh pro Media Encoder Standard (status) | Microsoft Docs
+description: Téma obsahuje přehled předdefinovaných vzorů definovaných službou pro Media Encoder Standard (status).
 author: Juliako
 manager: femila
 editor: johndeu
@@ -15,75 +15,75 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 50c52369a5a957a4dd6279cac5079e2dea023106
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61463399"
 ---
-# <a name="sample-presets-for-media-encoder-standard-mes"></a>Ukázková přednastavení pro standard kodéru médií (MES)
+# <a name="sample-presets-for-media-encoder-standard-mes"></a>Přednastavené ukázky pro Media Encoder Standard (status)
 
-**Standard kodéru médií** definuje sadu přednastavení kódování předdefinovaného systému, které lze použít při vytváření úloh kódování. Pokud chcete kódovat video pro streamování pomocí mediálních služeb, doporučujeme použít přednastavení "Adaptivní streamování". Když zadáte toto přednastavení, standard kodéru médií [automaticky vygeneruje žebřík s přenosovou rychlostí](media-services-autogen-bitrate-ladder-with-mes.md). 
+**Media Encoder Standard** definuje sadu předem definovaných předvoleb kódování systému, které můžete použít při vytváření úloh kódování. Pokud chcete zakódovat video pro streamování pomocí Media Services, doporučuje se použít přednastavení adaptivního streamování. Když zadáte tuto předvolbu, Media Encoder Standard [automaticky vygeneruje žebřík přenosové rychlosti](media-services-autogen-bitrate-ladder-with-mes.md). 
 
-### <a name="creating-custom-presets-from-samples"></a>Vytváření vlastních přednastavení ze vzorků
-Mediální služby plně podporují přizpůsobení všech hodnot v přednastaveních tak, aby vyhovovaly vašim specifickým potřebám a požadavkům kódování. Pokud potřebujete přizpůsobit přednastavení kódování, měli byste začít s jedním z níže uvedených přednastavení systému, které jsou k dispozici v této části jako šablona pro vlastní konfiguraci. Vysvětlení, co jednotlivé prvky v těchto přednastaveních znamenají, a platné hodnoty pro každý prvek naleznete v tématu [standardního schématu kodéru médií.](media-services-mes-schema.md)  
+### <a name="creating-custom-presets-from-samples"></a>Vytváření vlastních přednastavení z ukázek
+Media Services plně podporuje přizpůsobení všech hodnot v předvolbách, aby splňovaly vaše specifické požadavky na kódování a požadavky. Pokud potřebujete přizpůsobit předdefinované kódování, měli byste začít s jedním z níže uvedených systémů, které jsou v této části k dispozici jako šablona pro vlastní konfiguraci. Vysvětlení toho, co každý prvek v těchto přednastaveních znamená, a platné hodnoty pro každý prvek naleznete v tématu [Media Encoder Standard schématu](media-services-mes-schema.md) .  
   
 > [!NOTE]
->  Při použití přednastavení pro kódování 4k byste `S3` měli získat typ rezervované jednotky. Další informace naleznete v tématu [Jak změnit velikost kódování](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
+>  Při použití předvolby pro kódování 4k byste měli získat typ `S3` rezervované jednotky. Další informace najdete v tématu [Jak škálovat kódování](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
 
-#### <a name="video-rotation-default-setting-in-presets"></a>Výchozí nastavení střídání videa v přednastaveních:
-Při práci se standardem Media Encoder Standard je ve výchozím nastavení povoleno střídání videa. Pokud bylo video nahráno na mobilním zařízení v režimu Na výšku, tato přednastavení je před kódováním otočí do režimu na šířku.
+#### <a name="video-rotation-default-setting-in-presets"></a>Výchozí nastavení rotace videa v předvolbách:
+Při práci s Media Encoder Standard je ve výchozím nastavení zapnuté otočení videa. Pokud se vaše video nahrálo v režimu na výšku v mobilním zařízení, pak se tyto předvolby před kódováním otočí do režimu na šířku.
  
-## <a name="available-presets"></a>Dostupná přednastavení: 
+## <a name="available-presets"></a>Dostupné předvolby: 
 
- [H264 Multiple Bitrate 1080p Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-1080p-Audio-5.1.md) vytváří sadu 8 souborů MP4 zarovnaných do GOP v rozsahu od 6000 kbps do 400 kbps a zvuku AAC 5.1.  
+ [H264 s více přenosovými rychlostmi 1080P zvuk 5,1](media-services-mes-preset-H264-Multiple-Bitrate-1080p-Audio-5.1.md) vytvoří sadu souborů MP4 s 8 skupinu GOP, od 6000 KB/s až 400 KB/s a zvukem ve formátu AAC 5,1.  
   
- [H264 Multiple Bitrate 1080p](media-services-mes-preset-H264-Multiple-Bitrate-1080p.md) vytváří sadu 8 souborů MP4 zarovnaných do GOP, od 6000 kbps do 400 kbps a stereo AAC audio.  
+ [H264 s více přenosovými rychlostmi 1080p](media-services-mes-preset-H264-Multiple-Bitrate-1080p.md) se vytvoří sada souborů MP4 s 8 skupinu GOP, od 6000 do 400 KB/s a stereofonního zvuku AAC.  
   
- [H264 Multiple Bitrate 16x9 pro iOS](media-services-mes-preset-H264-Multiple-Bitrate-16x9-for-iOS.md) vytváří sadu 8 souborů MP4 zarovnaných gop, v rozmezí od 8500 kbps do 200 kbps a stereo AAC audio.  
+ [H264 s více přenosovými rychlostmi 16x9 pro iOS](media-services-mes-preset-H264-Multiple-Bitrate-16x9-for-iOS.md) vznikne sadu 8 souborů MP4 zarovnaných na skupinu GOP, od 8500 do 200 KB/s a stereofonního zvuku AAC.  
   
- [H264 Multiple Bitrate 16x9 SD Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-16x9-SD-Audio-5.1.md) vytváří sadu 5 souborů MP4 zarovnaných do GOP, od 1900 kbps do 400 kbps a zvuku AAC 5.1.  
+ [H264 s více přenosovými rychlostmi 16X9 SD 5,1](media-services-mes-preset-H264-Multiple-Bitrate-16x9-SD-Audio-5.1.md) vytvoří sadu souborů MP4 s ZAROVNÁNÍm skupinu GOP v rozsahu od 1900 KB/s až 400 KB/s a zvukem ve formátu AAC 5,1.  
   
- [H264 Multiple Bitrate 16x9 SD](media-services-mes-preset-H264-Multiple-Bitrate-16x9-SD.md) vytváří sadu 5 GOP-zarovnaných MP4 souborů, v rozmezí od 1900 kbps do 400 kbps, a stereo AAC audio.  
+ [H264 s více přenosovými rychlostmi 16X9 SD](media-services-mes-preset-H264-Multiple-Bitrate-16x9-SD.md) vytvoří sadu souborů MP4 zarovnaných na skupinu GOP, od 1900 do 400 KB/s a stereofonního zvuku AAC.  
   
- [H264 Multiple Bitrate 4K Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-4K-Audio-5.1.md) vytváří sadu 12 souborů MP4 zarovnaných do GOP, od 20000 kbps do 1000 kbps a zvuku AAC 5.1.  
+ [H264 s více přenosovými rychlostmi 4k zvuk 5,1](media-services-mes-preset-H264-Multiple-Bitrate-4K-Audio-5.1.md) vytvoří sadu souborů MP4 s 15 skupinu GOPy v rozsahu od 20000 KB/s až 1000 kb/s a zvukem ve formátu AAC 5,1.  
   
- [H264 Multiple Bitrate 4K](media-services-mes-preset-H264-Multiple-Bitrate-4K.md) vytváří sadu 12 souborů MP4 zarovnaných do GOP, od 20000 kbps do 1000 kbps a stereo AAC audio.  
+ [H264 s více přenosovými rychlostmi 4k](media-services-mes-preset-H264-Multiple-Bitrate-4K.md) vytvoří sadu souborů MP4 s ZAROVNÁNÍm skupinu GOP v rozsahu od 20000 do 1000 kb/s a stereofonního zvuku AAC.  
   
- [H264 Multiple Bitrate 4x3 pro iOS](media-services-mes-preset-H264-Multiple-Bitrate-4x3-for-iOS.md) vytváří sadu 8 souborů MP4 zarovnaných gop, v rozmezí od 8500 kbps do 200 kbps a stereo AAC audio.  
+ [H264 s více přenosovými rychlostmi 4x3 pro iOS](media-services-mes-preset-H264-Multiple-Bitrate-4x3-for-iOS.md) vznikne sadu 8 souborů MP4 zarovnaných na skupinu GOP, od 8500 do 200 KB/s a stereofonního zvuku AAC.  
   
- [H264 Multiple Bitrate 4x3 SD Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-4x3-SD-Audio-5.1.md) vytváří sadu 5 souborů MP4 zarovnaných do GOP, od 1600 kbps do 400 kbps a zvuku AAC 5.1.  
+ [H264 s více přenosovými rychlostmi 4X3 SD 5,1](media-services-mes-preset-H264-Multiple-Bitrate-4x3-SD-Audio-5.1.md) vytvoří sadu souborů MP4 s ZAROVNÁNÍm skupinu GOP v rozsahu od 1600 KB/s až 400 KB/s a zvukem ve formátu AAC 5,1.  
   
- [H264 Multiple Bitrate 4x3 SD](media-services-mes-preset-H264-Multiple-Bitrate-4x3-SD.md) vytváří sadu 5 GOP-zarovnaných MP4 souborů, v rozmezí od 1600 kbps do 400 kbps, a stereo AAC audio.  
+ [H264 s více přenosovými rychlostmi 4X3 SD](media-services-mes-preset-H264-Multiple-Bitrate-4x3-SD.md) vytvoří sadu souborů MP4 zarovnaných na skupinu GOP, od 1600 do 400 KB/s a stereofonního zvuku AAC.  
   
- [H264 Multiple Bitrate 720p Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-720p-Audio-5.1.md) vytváří sadu 6 souborů MP4 zarovnaných do GOP, od 3400 kbps do 400 kbps a zvuku AAC 5.1.  
+ [H264 s více přenosovými rychlostmi – zvuk 5,1](media-services-mes-preset-H264-Multiple-Bitrate-720p-Audio-5.1.md) vytvoří sadu souborů MP4 s skupinu GOP zarovnanými do rozsahu od 3400 KB/s až 400 KB/s a zvukem AAC 5,1.  
   
- [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) vytváří sadu 6 souborů MP4 zarovnaných do GOP, od 3400 kbps do 400 kbps a stereo AAC audio.  
+ [H264 Multiple přenosu 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) vytvoří sadu souborů MP4 s skupinu GOP zarovnanými do rozsahu od 3400 do až 400 KB/s a stereofonního zvuku AAC.  
   
- [H264 Single Bitrate 1080p Audio 5.1](media-services-mes-preset-H264-Single-Bitrate-1080p-Audio-5.1.md) vytváří jeden soubor MP4 s přenosovou rychlostí 6750 kbps a zvuk EmC 5.1.  
+ [H264 s jednou přenosovou rychlostí 1080P audio 5,1](media-services-mes-preset-H264-Single-Bitrate-1080p-Audio-5.1.md) vytvoří jeden soubor MP4 s přenosovou rychlostí 6750 KB/s a AAC 5,1 zvuk.  
   
- [H264 Single Bitrate 1080p](media-services-mes-preset-H264-Single-Bitrate-1080p.md) vytváří jeden soubor MP4 s přenosovou rychlostí 6750 kbps a stereo AAC audio.  
+ [H264 s jednou přenosovou rychlostí](media-services-mes-preset-H264-Single-Bitrate-1080p.md) : vytvoří jeden soubor MP4 s přenosovou rychlostí 6750 KB/s a stereofonním zvukem AAC.  
   
- [H264 Single Bitrate 4K Audio 5.1](media-services-mes-preset-H264-Single-Bitrate-4K-Audio-5.1.md) vytváří jeden soubor MP4 s přenosovou rychlostí 18000 kbps a zvuk AAC 5.1.  
+ [H264 s jednou přenosovou rychlostí 4k zvuk 5,1](media-services-mes-preset-H264-Single-Bitrate-4K-Audio-5.1.md) vytvoří jeden soubor MP4 s přenosovou rychlostí 18000 KB/s a AAC 5,1 zvuk.  
   
- [H264 Single Bitrate 4K](media-services-mes-preset-H264-Single-Bitrate-4K.md) vytváří jeden soubor MP4 s přenosovým tokem 18000 kbps a stereo AAC audio.  
+ [H264 s jednou přenosovou rychlostí 4k](media-services-mes-preset-H264-Single-Bitrate-4K.md) vytvoří jeden soubor MP4 s přenosovou rychlostí 18000 KB/s a stereofonním zvukem AAC.  
   
- [H264 Single Bitrate 4x3 SD Audio 5.1](media-services-mes-preset-H264-Single-Bitrate-4x3-SD-Audio-5.1.md) vytváří jeden soubor MP4 s přenosovou rychlostí 1800 kbps a zvuk AAC 5.1.  
+ [H264 s jednou přenosovou rychlostí 4X3 SD 5,1](media-services-mes-preset-H264-Single-Bitrate-4x3-SD-Audio-5.1.md) vytvoří jeden soubor MP4 s přenosovou rychlostí 1800 KB/s a AAC 5,1 zvuk.  
   
- [H264 Single Bitrate 4x3 SD](media-services-mes-preset-H264-Single-Bitrate-4x3-SD.md) vytváří jeden soubor MP4 s přenosovou rychlostí 1800 kbps a stereo AAC audio.  
+ [H264 s jednou přenosovou rychlostí 4X3 SD](media-services-mes-preset-H264-Single-Bitrate-4x3-SD.md) vytvoří jeden soubor MP4 s přenosovou rychlostí 1800 KB/s a stereofonním zvukem AAC.  
   
- [H264 Single Bitrate 16x9 SD Audio 5.1](media-services-mes-preset-H264-Single-Bitrate-16x9-SD-Audio-5.1.md) vytváří jeden soubor MP4 s přenosovou rychlostí 2200 kbps a zvuk AAC 5.1.  
+ [H264 s jednou přenosovou rychlostí 16X9 SD 5,1](media-services-mes-preset-H264-Single-Bitrate-16x9-SD-Audio-5.1.md) vytvoří jeden soubor MP4 s přenosovou rychlostí 2200 KB/s a AAC 5,1 zvuk.  
   
- [H264 Single Bitrate 16x9 SD](media-services-mes-preset-H264-Single-Bitrate-16x9-SD.md) vytváří jeden soubor MP4 s přenosovou rychlostí 2200 kbps a stereo AAC audio.  
+ [H264 s jednou přenosovou rychlostí 16X9 SD](media-services-mes-preset-H264-Single-Bitrate-16x9-SD.md) vytvoří jeden soubor MP4 s přenosovou rychlostí 2200 KB/s a stereofonním zvukem AAC.  
   
- [H264 Single Bitrate 720p Audio 5.1](media-services-mes-preset-H264-Single-Bitrate-720p-Audio-5.1.md) vytváří jeden soubor MP4 s přenosovou rychlostí 4500 kbps a zvuk EmC 5.1.  
+ [H264 s jednou přenosovou rychlostí 720p – zvukový 5,1](media-services-mes-preset-H264-Single-Bitrate-720p-Audio-5.1.md) vytvoří jeden soubor MP4 s přenosovou rychlostí 4500 KB/s a AAC 5,1 zvuk.  
   
- [H264 Single Bitrate 720p pro Android](media-services-mes-preset-H264-Single-Bitrate-720p-for-Android.md) přednastavení produkuje jeden soubor MP4 s přenosovou rychlostí 2000 kbps, a stereo AAC.  
+ [H264 Single přenosová rychlost 720p pro Android](media-services-mes-preset-H264-Single-Bitrate-720p-for-Android.md) vytvoří jeden soubor MP4 s přenosovou rychlostí 2000 KB/s a stereo AAC.  
   
- [H264 Single Bitrate 720p](media-services-mes-preset-H264-Single-Bitrate-720p.md) vytváří jeden soubor MP4 s přenosovou rychlostí 4500 kbps a stereo AAC audio.  
+ [H264 Single přenosová rychlost](media-services-mes-preset-H264-Single-Bitrate-720p.md) vytvoří jeden soubor MP4 s přenosovou rychlostí 4500 KB/s a stereofonním zvukem AAC.  
   
- [H264 Single Bitrate High Quality SD pro Android](media-services-mes-preset-H264-Single-Bitrate-High-Quality-SD-for-Android.md) produkuje jeden soubor MP4 s přenosovou rychlostí 500 kbps a stereo AAC audio..  
+ [H264 s jednou přenosovou rychlostí – vysoce kvalitní SD pro Android](media-services-mes-preset-H264-Single-Bitrate-High-Quality-SD-for-Android.md) vytvoří jeden soubor MP4 s přenosovou rychlostí 500 kB/s a stereofonním zvukem AAC.  
   
- [H264 Single Bitrate Low Quality SD pro Android](media-services-mes-preset-H264-Single-Bitrate-Low-Quality-SD-for-Android.md) produkuje jeden soubor MP4 s přenosovou rychlostí 56 kbps a stereo AAC audio.  
+ [H264 s jednou přenosovou rychlostí: nízká kvalita SD pro Android](media-services-mes-preset-H264-Single-Bitrate-Low-Quality-SD-for-Android.md) vytvoří jeden soubor MP4 s přenosovou rychlostí 56 kb/s a stereofonním zvukem AAC.  
   
- Další informace týkající se kodéry Mediálních služeb najdete [v tématu Kódování na vyžádání pomocí mediálních služeb Azure](https://azure.microsoft.com/documentation/articles/media-services-encode-asset/).
+ Další informace týkající se Media Services Encoder najdete v tématu [kódování na vyžádání pomocí Azure Media Services](https://azure.microsoft.com/documentation/articles/media-services-encode-asset/).

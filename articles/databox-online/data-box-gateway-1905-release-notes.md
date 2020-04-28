@@ -1,6 +1,6 @@
 ---
-title: Poznámky k verzi Azure Data Box Gateway 1905| Dokumenty společnosti Microsoft
-description: Popisuje kritické otevřené problémy a řešení pro bránu Azure Data Box Gateway, která používá obecnou dostupnost.
+title: Zpráva k vydání verze Azure Data Box Gateway 1905 | Microsoft Docs
+description: Popisuje kritické otevřené problémy a řešení pro Azure Data Box Gateway, ve kterých je spuštěná verze s obecnou dostupností.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,35 +9,35 @@ ms.topic: article
 ms.date: 06/12/2019
 ms.author: alkohli
 ms.openlocfilehash: 345666b53336cc6959a65eefd4b0f2475bea8c80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67078609"
 ---
-# <a name="azure-data-box-edge-and-azure-data-box-gateway-1905-release-notes"></a>Azure Data Box Edge a Azure Data Box Gateway 1905 poznámky k verzi
+# <a name="azure-data-box-edge-and-azure-data-box-gateway-1905-release-notes"></a>Poznámky k verzi pro Azure Data Box Edge a Azure Data Box Gateway 1905
 
 ## <a name="overview"></a>Přehled
 
-Následující poznámky k verzi identifikují důležité problémy s otevřením a vyřešené problémy pro verzi 1905 pro Azure Data Box Edge a Azure Data Box Gateway.
+Následující poznámky k verzi identifikují kritické otevřené problémy a vyřešené problémy pro vydání 1905 pro Azure Data Box Edge a Azure Data Box Gateway.
 
-Poznámky k verzi jsou průběžně aktualizovány a jako kritické problémy, které vyžadují řešení jsou zjištěny, jsou přidány. Před nasazením brány Data Box Edge/Data Box Gateway pečlivě zkontrolujte informace obsažené v poznámkách k verzi.
+Poznámky k verzi se průběžně aktualizují a při zjištění kritických problémů vyžadujících alternativní řešení se přidají. Před nasazením Data Box Edge/Data Box Gateway pečlivě zkontrolujte informace obsažené v poznámkách k verzi.
 
 Tato verze odpovídá verzím softwaru:
 
-- **Brána datové schránky 1905 (1.6.887.626)**
-- **Datová schránka Edge 1905 (1.6.887.626)**
+- **Data Box Gateway 1905 (1.6.887.626)**
+- **Data Box Edge 1905 (1.6.887.626)**
 
 > [!NOTE]
-> Aktualizaci 1905 lze použít pouze pro zařízení Data Box Edge, na kterých je spuštěna verze softwaru GA.
+> Aktualizaci 1905 lze použít pouze pro Data Box Edge zařízení, na kterých je spuštěná verze GA softwaru.
 
 ## <a name="whats-new"></a>Co je nového
 
-- **Vylepšení protokolování Field ProgramMable Gate Array (FPGA)** – V této verzi jsme provedli vylepšení protokolování a výstrah související s FPGA. Toto je požadovaná aktualizace pro Data Box Edge, pokud používáte výpočetní funkci Edge s FPGA. Další informace najdete v tématu [transformace dat pomocí edge compute na datové schránce Edge](data-box-edge-deploy-configure-compute-advanced.md).
+- **Vylepšení protokolování v poli programovatelné brány pole (FPGA)** – v této verzi jsme udělali vylepšení protokolování a upozornění související s FPGA. Toto je požadovaná aktualizace pro Data Box Edge, pokud používáte funkci Edge COMPUTE s FPGA. Další informace najdete v tématu Jak [transformovat data pomocí hraničních výpočtů na data box Edge](data-box-edge-deploy-configure-compute-advanced.md).
 
 ## <a name="known-issues-in-ga-release"></a>Známé problémy ve verzi GA
 
-Žádné nové problémy jsou vydání uvedeno pro tuto verzi. Všechny problémy s vydáním se přenesly z předchozích verzí. Seznam známých problémů naleznete ve verzi GA na jdete na [známé problémy.](data-box-gateway-release-notes.md#known-issues-in-ga-release)
+Pro tuto verzi se neuvedly žádné nové problémy. Všechny uvedené verze převzaly problémy z předchozích verzí. Pokud chcete zobrazit seznam známých problémů, přejděte ke [známým problémům ve verzi GA](data-box-gateway-release-notes.md#known-issues-in-ga-release).
 
 
 ## <a name="next-steps"></a>Další kroky

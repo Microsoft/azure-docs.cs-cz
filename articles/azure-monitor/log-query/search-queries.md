@@ -1,35 +1,35 @@
 ---
-title: Vyhledávací dotazy v protokolech Azure Monitor | Dokumenty společnosti Microsoft
-description: Tento článek obsahuje kurz, jak začít používat vyhledávání v dotazech protokolu Azure Monitor.
+title: Hledat dotazy v protokolech Azure Monitor | Microsoft Docs
+description: Tento článek popisuje kurz, jak začít používat hledání v Azure Monitorch dotazech protokolu.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/06/2018
 ms.openlocfilehash: e13f4abc37e348759e7d0b8a2f7d890c82fe0d15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77660236"
 ---
-# <a name="search-queries-in-azure-monitor-logs"></a>Vyhledávací dotazy v protokolech Azure Monitoru
-Dotazy protokolu Azure Monitor můžete začít s názvem tabulky nebo příkaz hledání. Tento kurz se zabývá dotazy založené na vyhledávání. Každá metoda má své výhody.
+# <a name="search-queries-in-azure-monitor-logs"></a>Hledání dotazů v protokolech Azure Monitor
+Azure Monitor dotazy protokolu mohou začít buď s názvem tabulky, nebo pomocí příkazu pro hledání. Tento kurz se zabývá dotazy založenými na hledání. Existují výhody pro jednotlivé metody.
 
-Dotazy založené na tabulce začínají oborem dotazu a proto mají tendenci být efektivnější než vyhledávací dotazy. Vyhledávací dotazy jsou méně strukturované, což z nich dělá lepší volbu při hledání určité hodnoty ve sloupcích nebo tabulkách. **hledání** může prohledat všechny sloupce v dané tabulce nebo ve všech tabulkách pro zadanou hodnotu. Množství zpracovávaných dat může být enormní, což je důvod, proč tyto dotazy může trvat déle a může vrátit velmi velké sady výsledků.
+Dotazy založené na tabulkách začínají oborem dotazu, a proto jsou v úmyslu efektivnější než vyhledávací dotazy. Vyhledávací dotazy jsou méně strukturované, což jim umožňuje lepší volbu při hledání konkrétní hodnoty napříč sloupci nebo tabulkami. **hledání** může pro zadanou hodnotu vyhledat všechny sloupce v dané tabulce nebo ve všech tabulkách. Objem zpracovávaných dat může být mimořádně velký, což znamená, že tyto dotazy mohou trvat delší dobu a mohou vracet velmi velké sady výsledků.
 
 ## <a name="search-a-term"></a>Hledání termínu
-Příkaz **hledání** se obvykle používá k prohledání určitého výrazu. V následujícím příkladu jsou všechny sloupce ve všech tabulkách zkontrolovány na termín "chyba":
+Vyhledávací **příkaz se** obvykle používá k prohledávání konkrétního termínu. V následujícím příkladu jsou všechny sloupce ve všech tabulkách prohledávány pro termín "Chyba":
 
 ```Kusto
 search "error"
 | take 100
 ```
 
-I když jsou snadno použitelné, neskonsupované dotazy, jako je ten, který je uveden výše, nejsou účinné a pravděpodobně vrátí mnoho irelevantních výsledků. Lepší maješc by bylo hledat v příslušné tabulce, nebo dokonce v konkrétním sloupci.
+I když je lze snadno použít, nevymezené dotazy, jako je ten, který byl zobrazen výše, nejsou efektivní a mohou vracet mnoho nepodstatných výsledků. Lepším postupem je vyhledat v příslušné tabulce nebo dokonce konkrétní sloupec.
 
-### <a name="table-scoping"></a>Obor tabulky
-Chcete-li vyhledat výraz v `in (table-name)` určité tabulce, přidejte těsně za **vyhledávací** operátor:
+### <a name="table-scoping"></a>Rozsah tabulky
+Chcete-li vyhledat termín v určité tabulce, přidejte `in (table-name)` hned za operátorem **hledání** :
 
 ```Kusto
 search in (Event) "error"
@@ -42,8 +42,8 @@ search in (Event, SecurityEvent) "error"
 | take 100
 ```
 
-### <a name="table-and-column-scoping"></a>Obor tabulky a sloupců
-Ve výchozím nastavení **bude hledání** vyhodnocovat všechny sloupce v sadě dat. Chcete-li vyhledat pouze určitý sloupec (pojmenovaný *Zdroj* v níže uvedeném příkladu), použijte tuto syntaxi:
+### <a name="table-and-column-scoping"></a>Rozsah tabulek a sloupců
+Ve výchozím nastavení vyhodnotí **hledání** všechny sloupce v datové sadě. Chcete-li vyhledat pouze konkrétní sloupec (pojmenovaný *zdroj* v následujícím příkladu), použijte tuto syntaxi:
 
 ```Kusto
 search in (Event) Source:"error"
@@ -51,75 +51,75 @@ search in (Event) Source:"error"
 ```
 
 > [!TIP]
-> Pokud použijete `==` `:`místo , výsledky by zahrnovaly záznamy, ve kterém *zdroj* sloupec má přesnou hodnotu "chyba", a v tomto přesném případě. Použití ':' bude zahrnovat záznamy, kde *Source* má hodnoty, jako je například "kód chyby 404" nebo "Chyba".
+> Použijete `==` `:`-li místo, výsledky budou zahrnovat záznamy, ve kterých má *zdrojový* sloupec přesně hodnotu "Chyba" a v tomto případě přesně. Použití ': ' bude obsahovat záznamy, kde *zdroj* obsahuje hodnoty, například "kód chyby 404" nebo "Error".
 
-## <a name="case-sensitivity"></a>Rozlišování malých a velkých písmen
-Ve výchozím nastavení je hledání termínů bez rozlišování velkých a malých písmen, takže hledání "dns" může přinést výsledky, jako je "DNS", "dns" nebo "Dns". Chcete-li, aby hledání rozlišování, použijte `kind` možnost:
+## <a name="case-sensitivity"></a>Rozlišování velkých a malých písmen
+Ve výchozím nastavení pojem hledání nerozlišuje velká a malá písmena, takže hledání "DNS" by mohlo mít za následek například "DNS", "DNS" nebo "DNS". Pokud chcete rozlišovat velikost písmen pro hledání, použijte `kind` možnost:
 
 ```Kusto
 search kind=case_sensitive in (Event) "DNS"
 | take 100
 ```
 
-## <a name="use-wild-cards"></a>Použití zástupných znaků
-Příkaz **Hledat** podporuje zástupné znaky na začátku, na konci nebo uprostřed termínu.
+## <a name="use-wild-cards"></a>Použití zástupných karet
+Příkaz **Search** podporuje zástupné znaky na začátku, konci nebo uprostřed období.
 
-Hledané výrazy začínající na "výhra":
+Hledání podmínek začínajících řetězcem "Win":
 ```Kusto
 search in (Event) "win*"
 | take 100
 ```
 
-Hledané výrazy, které končí na ".com":
+Hledání podmínek, které končí na ". com":
 ```Kusto
 search in (Event) "*.com"
 | take 100
 ```
 
-Hledané výrazy, které obsahují "www":
+Chcete-li hledat výrazy, které obsahují text "www":
 ```Kusto
 search in (Event) "*www*"
 | take 100
 ```
 
-Chcete-li hledat termíny, které začínají na "corp" a končí na ".com", například "corp.mydomain.com""
+Hledat výrazy, které začínají na "Corp" a končí v ". com", například "corp.mydomain.com".
 
 ```Kusto
 search in (Event) "corp*.com"
 | take 100
 ```
 
-Můžete také získat vše v tabulce pomocí pouze `search in (Event) *`divokou kartu: , ale `Event`to by bylo stejné jako psaní jen .
+Vše v tabulce můžete také získat pomocí stejné zástupné karty: `search in (Event) *`, ale to by bylo stejné jako psaní pouze `Event`pro zápis.
 
 > [!TIP]
-> Zatímco můžete `search *` použít k získání každého sloupce z každé tabulky, doporučujeme vždy obor dotazy na konkrétní tabulky. Neskopované dotazy může chvíli trvat a může vrátit příliš mnoho výsledků.
+> I když můžete použít `search *` k získání každého sloupce z každé tabulky, doporučuje se vždy určit rozsah dotazů na konkrétní tabulky. Dokončení dotazů bez oboru může chvíli trvat a může vrátit příliš mnoho výsledků.
 
-## <a name="add-and--or-to-search-queries"></a>Přidání *and* / *nebo* provyhledávání dotazů
-Použití **a** vyhledávání záznamů, které obsahují více termínů:
+## <a name="add-and--or-to-search-queries"></a>/ Přidání *and* *nebo* vyhledání dotazů
+Pomocí **a** můžete vyhledat záznamy, které obsahují několik výrazů:
 
 ```Kusto
 search in (Event) "error" and "register"
 | take 100
 ```
 
-Použití **nebo** získání záznamů, které obsahují alespoň jeden z termínů:
+Použijte **nebo** k získání záznamů, které obsahují alespoň jeden z těchto podmínek:
 
 ```Kusto
 search in (Event) "error" or "register"
 | take 100
 ```
 
-Pokud máte více podmínek vyhledávání, můžete je kombinovat do stejného dotazu pomocí závorek:
+Pokud máte více podmínek vyhledávání, můžete je zkombinovat do stejného dotazu pomocí závorek:
 
 ```Kusto
 search in (Event) "error" and ("register" or "marshal*")
 | take 100
 ```
 
-Výsledky tohoto příkladu by záznamy, které obsahují termín "chyba" a také obsahují buď "registrovat" nebo něco, co začíná "marshal".
+Výsledky tohoto příkladu by byly záznamy, které obsahují pojem "Chyba" a také obsahují "Registry" nebo něco, co začíná "zařazování".
 
-## <a name="pipe-search-queries"></a>Dotazy na vyhledávání potrubí
-Stejně jako jakýkoli jiný příkaz, **vyhledávání** může být potrubím, takže výsledky hledání lze filtrovat, seřazené a agregované. Chcete-li například získat počet záznamů *událostí,* které obsahují "vyhrát":
+## <a name="pipe-search-queries"></a>Vyhledávací dotazy kanálu
+Stejně jako u jakéhokoli jiného příkazu může být **vyhledávání** rozděleno do kanálu, aby bylo možné výsledky hledání filtrovat, seřadit a agregovat. Například pro získání počtu záznamů *událostí* , které obsahují "Win":
 
 ```Kusto
 search in (Event) "win"
@@ -131,4 +131,4 @@ search in (Event) "win"
 
 ## <a name="next-steps"></a>Další kroky
 
-- Podívejte se na další výukové programy na [webu kusto dotazovacího jazyka](/azure/kusto/query/).
+- Další kurzy najdete na [webu dotazovacího jazyka Kusto](/azure/kusto/query/).

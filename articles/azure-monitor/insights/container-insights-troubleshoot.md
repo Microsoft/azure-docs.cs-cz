@@ -1,52 +1,52 @@
 ---
-title: Řešení potíží s Azure Monitorem pro kontejnery | Dokumenty společnosti Microsoft
-description: Tento článek popisuje, jak můžete řešit a řešit problémy s Azure Monitor pro kontejnery.
+title: Řešení potíží s Azure Monitor pro kontejnery | Microsoft Docs
+description: Tento článek popisuje, jak můžete řešit problémy a řešit problémy s Azure Monitor pro kontejnery.
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.openlocfilehash: 17a2817b320599b2aa2c331c354d316b9d864a32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75403377"
 ---
-# <a name="troubleshooting-azure-monitor-for-containers"></a>Poradce při potížích s Azure Monitorem pro kontejnery
+# <a name="troubleshooting-azure-monitor-for-containers"></a>Řešení potíží s Azure Monitor pro kontejnery
 
-Když nakonfigurujete monitorování clusteru služby Azure Kubernetes Service (AKS) s Azure Monitor pro kontejnery, může dojít k problému, který brání shromažďování dat nebo stavu vykazování. Tento článek podrobně popisuje některé běžné problémy a kroky řešení potíží.
+Když nakonfigurujete monitorování clusteru Azure Kubernetes Service (AKS) s Azure Monitor pro kontejnery, může dojít k potížím s ochranou stavu shromažďování dat nebo vytváření sestav. Tento článek podrobně popisuje některé běžné problémy a postup řešení potíží.
 
-## <a name="authorization-error-during-onboarding-or-update-operation"></a>Chyba autorizace během registrace nebo aktualizace
-Při povolení Azure Monitor pro kontejnery nebo aktualizaci clusteru pro podporu shromažďování metrik, může se zobrazit chyba připomínající následující – *Klient <identity uživatele>' s id objektu '<uživatele objectId>' nemá oprávnění k provedení akce 'Microsoft.AuthorizationAssignments/write' přes obor*
+## <a name="authorization-error-during-onboarding-or-update-operation"></a>Chyba autorizace během připojování nebo operace aktualizace
+Když povolíte Azure Monitor pro kontejnery nebo aktualizujete cluster tak, aby podporoval shromažďování metrik, může se zobrazit chyba podobná následujícímu – *klient <Identity> s ID objektu <uživatele objectId> nemá autorizaci k provedení akce Microsoft. Authorization/roleAssignments/Write v rámci oboru* .
 
-Během procesu registrace nebo aktualizace se v prostředku clusteru pokusí o udělení přiřazení role **vydavatele metrik monitorování.** Uživatel, který iniciuje proces povolení azure monitoru pro kontejnery nebo aktualizaci pro podporu shromažďování metrik, musí mít přístup k oprávnění **Microsoft.Authorization/roleAssignments/write** v oboru prostředků clusteru AKS. K tomuto oprávnění mají přístup pouze členové předdefinované role **Vlastník** a **Správce přístupu uživatelů.** Pokud zásady zabezpečení vyžadují přiřazení oprávnění na úrovni podrobné úrovně, doporučujeme zobrazit [vlastní role](../../role-based-access-control/custom-roles.md) a přiřadit je uživatelům, kteří je potřebují. 
+Při připojování nebo aktualizaci se u prostředku clusteru pokusy o přiřazení role **vydavatele metrik monitorování** . Uživatel iniciující proces povolení Azure Monitor pro kontejnery nebo aktualizace pro podporu kolekce metrik musí mít přístup k oprávněním **Microsoft. Authorization/roleAssignments/Write** v oboru prostředků clusteru AKS. Přístup k tomuto oprávnění mají udělit jenom členové předdefinovaných rolí **vlastník** a **Správce přístupu uživatelů** . Pokud vaše zásady zabezpečení vyžadují přiřazení podrobných oprávnění na úrovni, doporučujeme zobrazit [vlastní role](../../role-based-access-control/custom-roles.md) a přiřadit je uživatelům, kteří je potřebují. 
 
-Tuto roli můžete také ručně udělit z portálu Azure provedením následujících kroků:
+Tuto roli můžete také ručně udělit z Azure Portal provedením následujících kroků:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com). 
-2. Na webu Azure Portal klikněte v levém horním rohu na **Všechny služby**. V seznamu zdrojů zadejte **Příkaz Kubernetes**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Azure Kubernetes**.
-3. V seznamu Kubernetesových klastrů vyberte jednu ze seznamu.
-2. V levé nabídce klikněte na **Ovládací prvek přístupu (IAM).**
-3. Výběrem **možnosti + Přidat** přidáte přiřazení role a vyberte roli **Vydavatel metrik monitorování metrik** a v poli **Vybrat** typ **AKS** filtrovat výsledky pouze na objekty služby clusterů definované v předplatném. Vyberte ten ze seznamu, který je specifický pro daný cluster.
-4. Chcete-li dokončit přiřazení role, vyberte **uložit.** 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+2. Na webu Azure Portal klikněte v levém horním rohu na **Všechny služby**. V seznamu prostředků zadejte **Kubernetes**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Azure Kubernetes**.
+3. V seznamu clusterů Kubernetes vyberte jeden ze seznamu.
+2. V nabídce na levé straně klikněte na **řízení přístupu (IAM)**.
+3. Vyberte **+ Přidat** , chcete-li přidat přiřazení role a vybrat roli **vydavatele metrik monitorování** a v poli **Vybrat** **AKS** zadejte příkaz pro filtrování výsledků jenom v clusterových objektech definovaných v předplatném. Vyberte jednu ze seznamu, která je specifická pro daný cluster.
+4. Kliknutím na **Uložit** dokončete přiřazení role. 
 
-## <a name="azure-monitor-for-containers-is-enabled-but-not-reporting-any-information"></a>Azure Monitor pro kontejnery je povolený, ale nehlásí žádné informace
-Pokud azure monitorování pro kontejnery je úspěšně povolena a nakonfigurována, ale nelze zobrazit informace o stavu nebo žádné výsledky jsou vráceny z dotazu protokolu, diagnostikovat problém pomocí následujících kroků: 
+## <a name="azure-monitor-for-containers-is-enabled-but-not-reporting-any-information"></a>Azure Monitor pro kontejnery jsou povolené, ale nehlásí žádné informace.
+Pokud je Azure Monitor pro kontejnery úspěšně zapnuté a nakonfigurované, ale nemůžete zobrazit informace o stavu nebo nejsou vráceny žádné výsledky z dotazu protokolu, Diagnostikujte problém pomocí následujících kroků: 
 
-1. Zkontrolujte stav agenta spuštěním příkazu: 
+1. Ověřte stav agenta spuštěním příkazu: 
 
     `kubectl get ds omsagent --namespace=kube-system`
 
-    Výstup by se měl podobat následujícímu, což znamená, že byl správně nasazen:
+    Výstup by měl vypadat podobně jako v následujícím příkladu, což znamená, že byl správně nasazen:
 
     ```
     User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system 
     NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
     omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
     ```  
-2. Zkontrolujte stav nasazení pomocí verze agenta *06072018* nebo novějšípomocí příkazu:
+2. Pomocí příkazu ověřte stav nasazení pomocí agenta verze *06072018* nebo novějšího:
 
     `kubectl get deployment omsagent-rs -n=kube-system`
 
-    Výstup by se měl podobat následujícímu příkladu, což znamená, že byl správně nasazen:
+    Výstup by měl vypadat podobně jako v následujícím příkladu, což znamená, že byl správně nasazen:
 
     ```
     User@aksuser:~$ kubectl get deployment omsagent-rs -n=kube-system 
@@ -54,9 +54,9 @@ Pokud azure monitorování pro kontejnery je úspěšně povolena a nakonfigurov
     omsagent   1         1         1            1            3h
     ```
 
-3. Zkontrolujte stav podu a ověřte, zda je spuštěn pomocí příkazu:`kubectl get pods --namespace=kube-system`
+3. Zkontrolujte stav pod, abyste ověřili, že je spuštěný, pomocí příkazu:`kubectl get pods --namespace=kube-system`
 
-    Výstup by se měl podobat následujícímu příkladu se stavem *Running* pro omsagent:
+    Výstup by měl vypadat jako v následujícím příkladu se stavem *spuštěným* pro omsagent:
 
     ```
     User@aksuser:~$ kubectl get pods --namespace=kube-system 
@@ -68,11 +68,11 @@ Pokud azure monitorování pro kontejnery je úspěšně povolena a nakonfigurov
     omsagent-fkq7g                      1/1       Running   0          1d 
     ```
 
-4. Zkontrolujte protokoly agenta. Když kontejnerizovaného agenta nasadí, spustí rychlou kontrolu spuštěním příkazů OMI a zobrazí verzi agenta a zprostředkovatele. 
+4. Ověřte protokoly agenta. Po nasazení kontejnerového agenta se spustí rychlá kontroly spuštěním příkazů OMI a zobrazí se verze agenta a poskytovatele. 
 
 5. Chcete-li ověřit, zda byl agent úspěšně nasazen, spusťte příkaz:`kubectl logs omsagent-484hw --namespace=kube-system`
 
-    Stav by se měl podobat následujícímu příkladu:
+    Stav by měl vypadat podobně jako v následujícím příkladu:
 
     ```
     User@aksuser:~$ kubectl logs omsagent-484hw --namespace=kube-system
@@ -97,19 +97,19 @@ Pokud azure monitorování pro kontejnery je úspěšně povolena a nakonfigurov
 
 ## <a name="error-messages"></a>Chybové zprávy
 
-Níže uvedená tabulka shrnuje známé chyby, se kterými se můžete setkat při používání Azure Monitoru pro kontejnery.
+Následující tabulka shrnuje známé chyby, se kterými se můžete setkat při používání Azure Monitor pro kontejnery.
 
 | Chybové zprávy  | Akce |  
 | ---- | --- |  
-| Chybová zpráva`No data for selected filters`  | Vytvoření toku dat monitorování pro nově vytvořené clustery může nějakou dobu trvat. Vyčkejte alespoň 10 až 15 minut, než se data zobrazí ve vašem clusteru. |   
-| Chybová zpráva`Error retrieving data` | Zatímco cluster služby Azure Kubernetes se nastavuje pro monitorování stavu a výkonu, nastaví se připojení mezi clusterem a pracovním prostorem Azure Log Analytics. Pracovní prostor Log Analytics se používá k ukládání všech dat monitorování pro váš cluster. K této chybě může dojít, pokud byl odstraněn pracovní prostor Analýzy protokolů. Zkontrolujte, jestli byl pracovní prostor odstraněn a pokud byl, budete muset znovu povolit monitorování clusteru pomocí Azure Monitor u kontejnerů a určit existující nebo vytvořit nový pracovní prostor. Chcete-li znovu povolit, budete muset [zakázat](container-insights-optout.md) monitorování pro cluster a [znovu povolit](container-insights-enable-new-cluster.md) Azure Monitor pro kontejnery. |  
-| `Error retrieving data`po přidání Azure Monitor pro kontejnery prostřednictvím az aks cli | Když povolíte `az aks cli`monitorování pomocí , Azure Monitor pro kontejnery nemusí být správně nasazené. Zkontrolujte, zda je řešení nasazeno. Chcete-li to provést, přejděte do pracovního prostoru Log Analytics a zjistěte, zda je řešení k dispozici výběrem **řešení** z podokna na levé straně. Chcete-li tento problém vyřešit, budete muset znovu nasadit řešení podle [pokynů, jak nasadit Azure Monitor pro kontejnery](container-insights-onboard.md) |  
+| Chybová zpráva`No data for selected filters`  | Vytvoření toku dat monitorování pro nově vytvořené clustery může nějakou dobu trvat. Pro zobrazení dat pro váš cluster povolte aspoň 10 až 15 minut. |   
+| Chybová zpráva`Error retrieving data` | I když je cluster služby Azure Kubernetes nastaven pro monitorování stavu a výkonu, připojení mezi clusterem a pracovním prostorem Azure Log Analytics je navázáno. Pracovní prostor Log Analytics slouží k ukládání všech dat monitorování pro váš cluster. K této chybě může dojít, když byl pracovní prostor Log Analytics odstraněn. Kontrola, zda byl pracovní prostor odstraněn a v případě potřeby bude nutné znovu povolit monitorování clusteru pomocí Azure Monitor pro kontejnery a zadat existující nebo vytvořit nový pracovní prostor. Pokud ho chcete znovu povolit, budete muset [Zakázat](container-insights-optout.md) monitorování clusteru a [Povolit](container-insights-enable-new-cluster.md) Azure monitor pro kontejnery znovu. |  
+| `Error retrieving data`Po přidání Azure Monitor pro kontejnery pomocí AZ AKS CLI | Pokud povolíte monitorování `az aks cli`pomocí, Azure monitor pro kontejnery pravděpodobně nebudou správně nasazeny. Ověřte, zda je řešení nasazeno. Provedete to tak, že přejdete do svého pracovního prostoru Log Analytics a zjistíte, jestli je řešení dostupné, a to tak, že v podokně na levé straně vyberete **řešení** . Chcete-li tento problém vyřešit, budete muset řešení znovu nasadit podle pokynů pro [nasazení Azure monitor pro kontejnery](container-insights-onboard.md) . |  
 
-Chcete-li problém diagnostikovat, poskytli jsme skript pro řešení potíží, který je k dispozici [zde](https://github.com/Microsoft/OMS-docker/tree/ci_feature_prod/Troubleshoot#troubleshooting-script).
+Abychom vám pomohli diagnostikovat problém, máme [tady](https://github.com/Microsoft/OMS-docker/tree/ci_feature_prod/Troubleshoot#troubleshooting-script)k dispozici skript pro řešení potíží.
 
-## <a name="azure-monitor-for-containers-agent-replicaset-pods-are-not-scheduled-on-non-azure-kubernetes-cluster"></a>Azure Monitor pro kontejnery agent ReplicaSet pods nejsou naplánované v clusteru kubernetes jiného než Azure
+## <a name="azure-monitor-for-containers-agent-replicaset-pods-are-not-scheduled-on-non-azure-kubernetes-cluster"></a>Azure Monitor pro kontejnery agentů ReplicaSet se neplánují na Kubernetes cluster mimo Azure.
 
-Azure Monitor pro kontejnery agent ReplicaSet Pods má závislost na následující chod selektory na pracovní pracovník (nebo agent) uzly pro plánování:
+Azure Monitor for Containers agent ReplicaSet lusky má závislost na následujících selektorech uzlů v uzlech pracovního procesu (nebo agenta) pro plánování:
 
 ```
 nodeSelector:
@@ -117,16 +117,16 @@ nodeSelector:
   kubernetes.io/role: agent
 ```
 
-Pokud vaše pracovní uzly nemají připojené popisky uzlů, agent ReplicaSet Pods nebude naplánovat. Pokyny k připojení štítku naleznete v části [Kubernetes, která přiřazují voliče štítků.](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/)
+Pokud k vašim pracovním uzlům nejsou připojené popisky uzlů, pak se agent ReplicaSet neplánuje. Pokyny k připojení popisku najdete v tématu [Kubernetes Assign pro selektory Label](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/) .
 
-## <a name="performance-charts-dont-show-cpu-or-memory-of-nodes-and-containers-on-a-non-azure-cluster"></a>Grafy výkonu nezobrazují procesor nebo paměť uzlů a kontejnerů v clusteru mimo Azure
+## <a name="performance-charts-dont-show-cpu-or-memory-of-nodes-and-containers-on-a-non-azure-cluster"></a>Grafy výkonu nezobrazují PROCESORy nebo paměť uzlů a kontejnerů v clusteru mimo Azure.
 
-Azure Monitor pro kontejnery agent pods používá koncový bod cAdvisor na agenta uzlu ke shromažďování metriky výkonu. Ověřte, zda je kontejnerizovaný agent `cAdvisor port: 10255` v uzlu nakonfigurován tak, aby mohl být otevřen ve všech uzlech v clusteru za účelem shromažďování metrik výkonu.
+Azure Monitor for Containers agent lusky pomocí koncového bodu cAdvisor v agentovi uzlu shromažďují metriky výkonu. Ověřte, že je agent s kontejnerem na uzlu nakonfigurovaný tak `cAdvisor port: 10255` , aby umožňoval jeho otevírání na všech uzlech v clusteru za účelem shromažďování metrik výkonu.
 
-## <a name="non-azure-kubernetes-cluster-are-not-showing-in-azure-monitor-for-containers"></a>Cluster Kubernetes, který není Azure, se v Azure Monitoru pro kontejnery nezobrazuje.
+## <a name="non-azure-kubernetes-cluster-are-not-showing-in-azure-monitor-for-containers"></a>Cluster s Kubernetes, který není v Azure, se v Azure Monitor pro kontejnery nezobrazuje.
 
-Chcete-li zobrazit cluster u jiného než Azure Kubernetes v Azure Monitor pro kontejnery, přístup pro čtení je vyžadováno v pracovním prostoru Log Analytics podporující tento přehled a na kontejnerinsights řešení prostředku **ContainerInsights *(pracovní prostor)***.
+Pokud chcete zobrazit cluster Kubernetes mimo Azure v Azure Monitor for Containers, vyžaduje se v pracovním prostoru Log Analytics přístup pro čtení, který podporuje tento přehled a v ContainerInsights prostředků řešení Container Insights **(*pracovní prostor*)**.
 
 ## <a name="next-steps"></a>Další kroky
 
-Díky monitorování povoleno pro zachycení metriky stavu pro uzly clusteru AKS a pody, tyto metriky stavu jsou k dispozici na webu Azure Portal. Informace o tom, jak používat Azure Monitor pro kontejnery, najdete [v tématu Zobrazení stavu služby Azure Kubernetes](container-insights-analyze.md).
+Díky monitorování, které povoluje zachycení metrik stavu pro uzly clusteru AKS a lusky, jsou tyto metriky stavu dostupné v Azure Portal. Informace o tom, jak používat Azure Monitor pro kontejnery, najdete v tématu [zobrazení stavu služby Azure Kubernetes](container-insights-analyze.md).

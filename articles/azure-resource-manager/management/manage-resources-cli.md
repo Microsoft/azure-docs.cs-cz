@@ -6,24 +6,24 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
 ms.openlocfilehash: f00c1725201b0e49f80fec64e5d69b375ec7a233
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75485530"
 ---
 # <a name="manage-azure-resources-by-using-azure-cli"></a>Správa prostředků Azure pomocí Azure CLI
 
-Zjistěte, jak používat Azure CLI s [Azure Resource Manager](overview.md) ke správě prostředků Azure. Správa skupin prostředků najdete v [tématu Správa skupin prostředků Azure pomocí Azure CLI](manage-resource-groups-cli.md).
+Naučte se používat Azure CLI s [Azure Resource Manager](overview.md) ke správě prostředků Azure. Informace o správě skupin prostředků najdete v tématu [Správa skupin prostředků Azure pomocí Azure CLI](manage-resource-groups-cli.md).
 
-Další články o správě zdrojů:
+Další články o správě prostředků:
 
-- [Správa prostředků Azure pomocí portálu Azure](manage-resources-portal.md)
-- [Správa prostředků Azure pomocí Azure PowerShellu](manage-resources-powershell.md)
+- [Správa prostředků Azure pomocí Azure Portal](manage-resources-portal.md)
+- [Správa prostředků Azure pomocí Azure PowerShell](manage-resources-powershell.md)
 
 ## <a name="deploy-resources-to-an-existing-resource-group"></a>Nasazení prostředků do existující skupiny prostředků
 
-Prostředky Azure můžete nasadit přímo pomocí azure cli nebo nasadit šablonu Správce prostředků k vytvoření prostředků Azure.
+Prostředky Azure můžete nasadit přímo pomocí Azure CLI nebo nasadit šablonu Správce prostředků pro vytvoření prostředků Azure.
 
 ### <a name="deploy-a-resource"></a>Nasazení prostředku
 
@@ -42,7 +42,7 @@ az storage account show --resource-group $resourceGroupName --name $storageAccou
 
 ### <a name="deploy-a-template"></a>Nasazení šablony
 
-Následující skript vytvoří nasazení šablony Rychlého startu k vytvoření účtu úložiště. Další informace najdete [v tématu Úvodní příručka: Vytvoření šablon Azure Resource Manager pomocí kódu Visual Studia](../templates/quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell).
+Následující skript vytvoří nasazení šablony pro rychlý Start pro vytvoření účtu úložiště. Další informace najdete v tématu [rychlý Start: vytváření Azure Resource Manager šablon pomocí Visual Studio Code](../templates/quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell).
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -52,15 +52,15 @@ read location &&
 az group deployment create --resource-group $resourceGroupName --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
 ```
 
-Další informace najdete [v tématu Nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../templates/deploy-cli.md).
+Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../templates/deploy-cli.md).
 
 ## <a name="deploy-a-resource-group-and-resources"></a>Nasazení skupiny prostředků a prostředků
 
-Můžete vytvořit skupinu prostředků a nasadit prostředky do skupiny. Další informace naleznete v [tématu Vytvoření skupiny prostředků a nasazení prostředků](../templates/deploy-to-subscription.md#resource-group-and-resources).
+Můžete vytvořit skupinu prostředků a nasadit prostředky do skupiny. Další informace najdete v tématu [Vytvoření skupiny prostředků a nasazení prostředků](../templates/deploy-to-subscription.md#resource-group-and-resources).
 
 ## <a name="deploy-resources-to-multiple-subscriptions-or-resource-groups"></a>Nasazení prostředků do více předplatných nebo skupin prostředků
 
-Obvykle nasadíte všechny prostředky v šabloně do jedné skupiny prostředků. Existují však scénáře, kde chcete nasadit sadu prostředků společně, ale umístit je do různých skupin prostředků nebo předplatných. Další informace najdete [v tématu Nasazení prostředků Azure do více předplatných nebo skupin prostředků](../templates/cross-resource-group-deployment.md).
+Obvykle se všechny prostředky v šabloně nasazují do jedné skupiny prostředků. Existují však situace, kdy chcete nasadit sadu prostředků dohromady, ale umístit je do různých skupin prostředků nebo předplatných. Další informace najdete v tématu [nasazení prostředků Azure do několika předplatných nebo skupin prostředků](../templates/cross-resource-group-deployment.md).
 
 ## <a name="delete-resources"></a>Odstranění prostředků
 
@@ -74,7 +74,7 @@ read storageAccountName &&
 az storage account delete --resource-group $resourceGroupName --name $storageAccountName 
 ```
 
-Další informace o tom, jak Azure Resource Manager objednávky odstranění prostředků, najdete v [tématu Odstranění skupiny prostředků Azure Resource Manager](delete-resource-group.md).
+Další informace o tom, jak Azure Resource Manager objednává odstranění prostředků, najdete v tématu [Azure Resource Manager odstranění skupiny prostředků](delete-resource-group.md).
 
 ## <a name="move-resources"></a>Přesunutí prostředků
 
@@ -95,9 +95,9 @@ Další informace najdete v tématu, které se zabývá [přesunutím prostředk
 
 ## <a name="lock-resources"></a>Uzamčení prostředků
 
-Uzamčení zabrání ostatním uživatelům ve vaší organizaci v náhodném odstranění nebo úpravě kritických prostředků, jako je předplatné Azure, skupina prostředků nebo prostředek. 
+Uzamykání brání jiným uživatelům ve vaší organizaci v neúmyslném odstranění nebo úpravě důležitých prostředků, jako je například předplatné Azure, skupina prostředků nebo prostředek. 
 
-Následující skript uzamkne účet úložiště, takže účet nelze odstranit.
+Následující skript zamkne účet úložiště, takže účet nejde odstranit.
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -132,15 +132,15 @@ Další informace najdete v tématu [Zamknutí prostředků pomocí Azure Resour
 
 ## <a name="tag-resources"></a>Označení prostředků
 
-Označování pomáhá logicky organizovat skupinu prostředků a prostředky. Další informace najdete [v tématu Použití značek k uspořádání prostředků Azure](tag-resources.md#azure-cli).
+Označení pomáhá organizovat skupinu prostředků a prostředky logicky. Informace najdete v tématu [použití značek k uspořádání prostředků Azure](tag-resources.md#azure-cli).
 
 ## <a name="manage-access-to-resources"></a>Správa přístupu k prostředkům
 
-[Řízení přístupu na základě rolí (RBAC)](../../role-based-access-control/overview.md) je způsob, jakým spravujete přístup k prostředkům v Azure. Další informace naleznete [v tématu Správa přístupu pomocí RBAC a Azure CLI](../../role-based-access-control/role-assignments-cli.md).
+[Řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md) je způsob, jakým můžete spravovat přístup k prostředkům v Azure. Další informace najdete v tématu [Správa přístupu pomocí RBAC a Azure CLI](../../role-based-access-control/role-assignments-cli.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud se chcete naučit Správce prostředků Azure, přečtěte si [přehled správce prostředků Azure](overview.md).
-- Syntaxe syntaxe šablony Správce prostředků najdete [v tématu Principy struktury a syntaxe šablon Azure Resource Manageru](../templates/template-syntax.md).
-- Chcete-li se dozvědět, jak vyvíjet šablony, podívejte se na [podrobné výukové programy](/azure/azure-resource-manager/).
-- Pokud chcete zobrazit schémata šablon Azure Resource Manager, přečtěte si [odkaz na šablonu](/azure/templates/).
+- Informace o Azure Resource Manager najdete v tématu [Azure Resource Manager Overview](overview.md).
+- Další informace o syntaxi šablon Správce prostředků naleznete v tématu [pochopení struktury a syntaxe šablon Azure Resource Manager](../templates/template-syntax.md).
+- Další informace o vývoji šablon najdete v [podrobných kurzech](/azure/azure-resource-manager/).
+- Chcete-li zobrazit schémata šablon Azure Resource Manager, přečtěte si téma [reference šablony](/azure/templates/).

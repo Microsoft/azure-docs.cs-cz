@@ -1,37 +1,37 @@
 ---
-title: Správa načítání aplikací Azure Service Fabric pomocí metrik
+title: Správa zatížení aplikace v Azure Service Fabric pomocí metrik
 description: Přečtěte si, jak nakonfigurovat a používat metriky v Service Fabric ke správě spotřeby prostředků služby.
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: ea21502cdab35b261e20af7f23b7b522f77c6667
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75452001"
 ---
-# <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Správa spotřeby prostředků a zatížení v Service Fabric s metrikami
-*Metriky* jsou prostředky, které vaše služby péče a které jsou poskytovány uzly v clusteru. Metrika je vše, co chcete spravovat za účelem zlepšení nebo sledování výkonu vašich služeb. Můžete například sledovat spotřebu paměti, abyste věděli, zda je vaše služba přetížena. Dalším použitím je zjistit, zda služba může přesunout jinde, kde je paměť méně omezená, aby se získal lepší výkon.
+# <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Správa spotřeby prostředků a načítání v Service Fabric se metrikami
+*Metriky* jsou prostředky, o kterých se vaše služby týkají a které jsou poskytovány uzly v clusteru. Metrika je cokoli, co chcete spravovat, aby bylo možné zlepšit nebo sledovat výkon služeb. Můžete například sledovat spotřebu paměti a zjistit, jestli je vaše služba přetížená. Dalším použitím je zjistit, zda se může služba přesunout jinam, kde je paměť méně omezená, aby bylo možné dosáhnout vyššího výkonu.
 
-Věci jako paměť, disk a využití procesoru jsou příklady metrik. Tyto metriky jsou fyzické metriky, prostředky, které odpovídají fyzické prostředky na uzlu, které je třeba spravovat. Metriky mohou být také (a běžně jsou) logické metriky. Logické metriky jsou věci jako "MyWorkQueueDepth" nebo "MessagesToProcess" nebo "TotalRecords". Logické metriky jsou definovány aplikací a nepřímo odpovídají některé fyzické spotřeby prostředků. Logické metriky jsou běžné, protože může být obtížné měřit a vykazovat spotřebu fyzických zdrojů na základě služby. Složitost měření a vykazování vlastní fyzické metriky je také důvod, proč Service Fabric poskytuje některé výchozí metriky.
+Příklady metrik se týkají například paměti, disku a využití procesoru. Tyto metriky představují fyzické metriky, prostředky, které odpovídají fyzickým prostředkům v uzlu, který je třeba spravovat. Metriky mohou být také logickými metrikami (a obvykle). Logické metriky jsou například "MyWorkQueueDepth" nebo "MessagesToProcess" nebo "TotalRecords". Logické metriky jsou definované aplikací a nepřímo odpovídají některým fyzickým spotřebám prostředků. Logické metriky jsou běžné, protože může být obtížné změřit a ohlásit spotřebu fyzických prostředků na základě jednotlivých služeb. Složitost měření a vytváření sestav vašich vlastních fyzických metrik také znamená, proč Service Fabric poskytuje některé výchozí metriky.
 
 ## <a name="default-metrics"></a>Výchozí metriky
-Řekněme, že chcete začít psát a nasazovat službu. V tomto okamžiku nevíte, jaké fyzické nebo logické prostředky spotřebovává. To je v pořádku! Správce prostředků clusteru Service Fabric používá některé výchozí metriky, pokud nejsou zadány žádné jiné metriky. Jsou to tyto:
+Řekněme, že chcete začít s psaním a nasazením služby. V tuto chvíli nevíte, jaké fyzické nebo logické prostředky spotřebovává. To je dobré! Cluster Service Fabric Správce prostředků používá některé výchozí metriky, pokud nejsou zadány žádné jiné metriky. Jsou to tyto:
 
-  - PrimaryCount - počet primárních replik v uzlu 
-  - ReplicaCount - počet celkových stavových replik v uzlu
-  - Počet - počet všech objektů služby (bezstavové a stavové) na uzlu
+  - PrimaryCount – počet primárních replik na uzlu 
+  - ReplicaCount – počet celkových stavových replik na uzlu
+  - Count – počet všech objektů služby (bezstavových a stavových) na uzlu
 
-| Metrika | Zatížení instance bez stavů | Stavové sekundární zatížení | Stavové primární zatížení | Hmotnost |
+| Metrika | Bezstavová zátěžová instance | Stavové sekundární zatížení | Stavové primární zatížení | Hmotnost |
 | --- | --- | --- | --- | --- |
 | PrimaryCount |0 |0 |1 |Vysoká |
 | ReplicaCount |0 |1 |1 |Střednědobé používání |
 | Počet |1 |1 |1 |Nízká |
 
 
-Pro základní úlohy výchozí metriky poskytují slušné rozdělení práce v clusteru. V následujícím příkladu se podíváme, co se stane, když vytvoříme dvě služby a spoléháme na výchozí metriky pro vyrovnávání. První služba je stavová služba se třemi oddíly a cílovou sadou replik velikosti tři. Druhá služba je bezstavová služba s jedním oddílem a počet instancí tři.
+Výchozí metriky pro základní úlohy poskytují dát distribuci práce v clusteru. V následujícím příkladu se podívejme na to, co se stane, když vytvoříme dvě služby a spoléhá se na výchozí metriky pro vyrovnávání. První služba je stavová služba se třemi oddíly a cílovou sadou repliky o velikosti tři. Druhá služba je Bezstavová služba s jedním oddílem a počtem instancí tři.
 
 Získáme:
 
@@ -41,46 +41,46 @@ Získáme:
 </center>
 
 Všimněte si:
-  - Primární repliky pro stavovou službu jsou distribuovány mezi několika uzly
-  - Repliky pro stejný oddíl jsou na různých uzlech
-  - Celkový počet primárek a sekundárních je distribuován v clusteru
-  - Celkový počet objektů služby jsou rovnoměrně přiděleny na každém uzlu
+  - Primární repliky stavové služby jsou distribuované napříč několika uzly.
+  - Repliky pro stejný oddíl jsou v různých uzlech.
+  - Celkový počet primárních a sekundárních primárních serverů se distribuuje v clusteru.
+  - Celkový počet objektů služby je rovnoměrně přidělen na každý uzel.
 
 Dobré!
 
-Výchozí metriky fungují skvěle jako začátek. Výchozí metriky vás však přenesou pouze do posudku. Například: Jaká je pravděpodobnost, že schéma dělení, které jste vybrali, má za následek dokonalé rovnoměrné využití všemi oddíly? Jaká je šance, že zatížení pro danou službu je konstantní v průběhu času, nebo dokonce stejně napříč více oddíly právě teď?
+Výchozí metriky fungují skvěle jako na začátku. Výchozí metriky ale budou zatím přenášet. Například: jaká je pravděpodobnost, že schéma dělení, které jste vybrali, má za následek naprostou i použití všemi oddíly? Jaká je pravděpodobnost, že zatížení dané služby je v průběhu času konstantní, nebo dokonce jenom stejné v několika oddílech hned?
 
-Můžete spustit pouze s výchozími metrikami. To však obvykle znamená, že využití clusteru je nižší a nerovnoměrnější, než byste chtěli. Důvodem je, že výchozí metriky nejsou adaptivní a předpokládají, že vše je ekvivalentní. Například Primární, který je zaneprázdněn a ten, který není oba přispívají "1" na PrimaryCount metriky. V nejhorším případě pomocí pouze výchozí metriky může také způsobit, že přeplánované uzly za následek problémy s výkonem. Pokud máte zájem získat co nejvíce z vašeho clusteru a vyhnout se problémům s výkonem, musíte použít vlastní metriky a dynamické vykazování zatížení.
+Mohli byste spustit pouze s výchozími metrikami. To ale obvykle znamená, že využití clusteru je menší a více než vám to vyhovuje. Důvodem je to, že výchozí metriky nejsou adaptivní a předpokládají se, že vše je ekvivalentní. Například primární primární, který je zaneprázdněný a jeden, který do metriky PrimaryCount přispěje "1". V nejhorším případě můžou použití jenom výchozích metrik způsobit také naplánované uzly, které mají za následek problémy s výkonem. Pokud vás zajímá, jak využít váš cluster a vyhnout se problémům s výkonem, je nutné použít vlastní metriky a generování sestav dynamického načtení.
 
 ## <a name="custom-metrics"></a>Vlastní metriky
-Metriky jsou konfigurovány na základě pojmenovaná instance služby při vytváření služby.
+Při vytváření služby jsou metriky nakonfigurovány na základě instance podle názvu služby.
 
-Každá metrika má některé vlastnosti, které ji popisují: název, hmotnost a výchozí zatížení.
+Každá metrika má některé vlastnosti, které ji popisují: název, váhu a výchozí zatížení.
 
-* Název metriky: Název metriky. Název metriky je jedinečný identifikátor pro metriku v rámci clusteru z pohledu Správce prostředků.
-* Hmotnost: Metrika hmotnost definuje, jak důležitá je tato metrika vzhledem k ostatním metrikám pro tuto službu.
-* Výchozí zatížení: Výchozí zatížení je reprezentováno odlišně v závislosti na tom, zda je služba bezstavová nebo stavová.
-  * Pro bezstavové služby má každá metrika jednu vlastnost s názvem DefaultLoad
-  * Pro stavové služby definujete:
-    * PrimaryDefaultLoad: Výchozí částka této metriky, kterou tato služba spotřebovává, když je primární
-    * SecondaryDefaultLoad: Výchozí částka této metriky, kterou tato služba spotřebovává, pokud je sekundární
+* Název metriky: název metriky. Název metriky je jedinečný identifikátor pro metriku v rámci clusteru z hlediska Správce prostředků.
+* Váha: váha metriky definuje, jak je tato metrika relativní vzhledem k ostatním metrikám této služby.
+* Výchozí zatížení: výchozí zatížení je znázorněno různě v závislosti na tom, zda je služba Bezstavová nebo stavová.
+  * U bezstavových služeb má každá metrika jedinou vlastnost s názvem DefaultLoad.
+  * Pro stavové služby, které definujete, postupujte takto:
+    * PrimaryDefaultLoad: výchozí hodnota této metriky, kterou tato služba využívá, když je primární
+    * SecondaryDefaultLoad: výchozí hodnota této metriky, kterou tato služba využívá, když je sekundární
 
 > [!NOTE]
-> Pokud definujete vlastní metriky a chcete _také_ použít výchozí metriky, musíte _explicitně_ přidat výchozí metriky zpět a definovat váhy a hodnoty pro ně. Je to proto, že je nutné definovat vztah mezi výchozí metriky a vlastní metriky. Například možná vám záleží ConnectionCount nebo WorkQueueDepth více než primární distribuce. Ve výchozím nastavení je hmotnost metriky PrimaryCount vysoká, takže ji chcete snížit na střední, když přidáte další metriky, abyste zajistili, že mají přednost.
+> Pokud definujete vlastní metriky a chcete _také_ použít výchozí metriky, musíte _explicitně_ přidat výchozí metriky a definovat váhy a hodnoty pro ně. Je to proto, že je nutné definovat relaci mezi výchozími metrikami a vlastními metrikami. Například můžete se starat o ConnectionCount nebo WorkQueueDepth více než k primární distribuci. Ve výchozím nastavení je váha metriky PrimaryCount vysoká, takže ji chcete snížit na střední, když přidáte další metriky, abyste zajistili jejich přednost.
 >
 
-### <a name="defining-metrics-for-your-service---an-example"></a>Definování metrik pro vaši službu – příklad
+### <a name="defining-metrics-for-your-service---an-example"></a>Definování metrik pro službu – příklad
 Řekněme, že chcete následující konfiguraci:
 
-  - Vaše služba hlásí metriku s názvem ConnectionCount.
+  - Vaše služba hlásí metriku s názvem "ConnectionCount".
   - Chcete také použít výchozí metriky 
-  - Provedli jste některá měření a víte, že primární replika této služby obvykle zabírá 20 jednotek "ConnectionCount"
-  - Sekundární použití 5 jednotek "ConnectionCount"
-  - Víte, že "ConnectionCount" je nejdůležitější metrika z hlediska správy výkonu této konkrétní služby
-  - Stále chcete primární repliky vyvážené. Vyvažování primární repliky je obecně dobrý nápad bez ohledu na to, co. To pomáhá zabránit ztrátě některých uzlů nebo domény selhání ovlivnění většiny primárních replik spolu s ním. 
-  - V opačném případě jsou výchozí metriky v pořádku
+  - Provedli jste některá měření a věděli, že primární replika této služby zabere 20 jednotek "ConnectionCount".
+  - Sekundární jednotky používají 5 jednotek "ConnectionCount"
+  - Víte, že "ConnectionCount" je nejdůležitější metrikou v souvislosti s řízením výkonu této konkrétní služby.
+  - Pořád chcete vyrovnávat primární repliky. Vyvážení primárních replik je obecně dobrý nápad bez ohledu na to, co. To pomáhá zabránit ztrátě některých uzlů nebo domén selhání proti ovlivnění většiny primárních replik spolu s ní. 
+  - V opačném případě jsou výchozí metriky přesné.
 
-Tady je kód, který byste zapisovali, abyste vytvořili službu s tou metrickou konfigurací:
+Zde je kód, který byste napsali pro vytvoření služby s touto metrikou konfigurace:
 
 Kód:
 
@@ -118,54 +118,54 @@ serviceDescription.Metrics.Add(totalCountMetric);
 await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
 
-Powershell:
+Prostředí
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton –Metric @("ConnectionCount,High,20,5”,"PrimaryCount,Medium,1,0”,"ReplicaCount,Low,1,1”,"Count,Low,1,1”)
 ```
 
 > [!NOTE]
-> Výše uvedené příklady a zbytek tohoto dokumentu popisují správu metrik na základě pojmenovanou službu. Je také možné definovat metriky pro vaše služby na úrovni _typu_ služby. Toho lze dosáhnout zadáním je ve vašich manifestech služby. Definování metriky úrovně typu se nedoporučuje z několika důvodů. Prvním důvodem je, že názvy metrik jsou často specifické pro prostředí. Pokud neexistuje pevná smlouva na místě, nemůžete si být jisti, že metrika "Jádra" v jednom prostředí není "MiliCores" nebo "CoReS" v jiných. Pokud jsou metriky definovány v manifestu, musíte vytvořit nové manifesty pro jedno prostředí. To obvykle vede k šíření různých manifestů pouze s malými rozdíly, což může vést k problémům s řízením.  
+> Výše uvedené příklady a zbytek tohoto dokumentu popisují správu metrik na základě jednotlivých pojmenovaných služeb. Je také možné definovat metriky pro vaše služby na úrovni _typu_ služby. To lze provést zadáním v manifestech služby. Definování metrik na úrovni typu se z několika důvodů nedoporučuje. Prvním důvodem je to, že názvy metrik jsou často specifické pro konkrétní prostředí. Pokud není k dispozici žádný pracovní kontrakt, nemusíte mít jistotu, že metrika "jádra" v jednom prostředí není "MiliCores" nebo "CoRes" v jiných prostředích. Pokud jsou vaše metriky definované v manifestu, potřebujete vytvořit nové manifesty pro každé prostředí. To obvykle vede k rozmnožení různých manifestů s pouze drobnými rozdíly, což může vést k potížím se správou.  
 >
-> Metrika zatížení jsou běžně přiřazovány na základě pojmenovaná instance služby. Řekněme například, že vytvoříte jednu instanci služby pro CustomerA, která ji plánuje používat pouze lehce. Řekněme také, že vytvoříte další pro CustomerB, který má větší pracovní vytížení. V takovém případě byste pravděpodobně chtěli vyladit výchozí zatížení pro tyto služby. Pokud máte metriky a zatížení definované prostřednictvím manifestů a chcete podporovat tento scénář, vyžaduje různé typy aplikací a služeb pro každého zákazníka. Hodnoty definované v době vytvoření služby přepíší hodnoty definované v manifestu, takže je můžete použít k nastavení konkrétních výchozích hodnot. Však způsobuje hodnoty deklarované v manifestech neodpovídá těm, se kterými služba skutečně běží. To může vést ke zmatku. 
+> Zatížení metriky se obvykle přiřazují na základě instance podle názvu služby. Řekněme například, že vytvoříte jednu instanci služby pro zákazníka, která plánuje použití jenom lehce. Řekněme také, že vytvoříte další pro CustomerB, který má větší zatížení. V takovém případě byste pravděpodobně chtěli pro tyto služby vylepšit výchozí zatížení. Pokud máte metriky a načítáte je definována prostřednictvím manifestů a chcete tento scénář podporovat, vyžaduje pro každého zákazníka různé typy aplikací a služeb. Hodnoty definované při vytváření služby popíší ty, které jsou definované v manifestu, takže je můžete použít k nastavení specifických výchozích hodnot. Nicméně to způsobí, že hodnoty deklarované v manifestech se neshodují s hodnotami, se kterými služba skutečně běží. To může vést k nejasnostem. 
 >
 
-Připomínáme: Pokud chcete použít pouze výchozí metriky, nemusíte se při vytváření služby dotýkat kolekce metrik vůbec ani dělat nic zvláštního. Výchozí metriky se použijí automaticky, když nejsou definovány žádné jiné. 
+Jako připomenutí: Pokud chcete používat jenom výchozí metriky, nemusíte se při vytváření služby nic dotýkat s kolekcí metrik. Výchozí metriky se automaticky použijí, když žádné jiné nejsou definované. 
 
-Nyní si projdeme každé z těchto nastavení podrobněji a promluvme si o chování, které ovlivňuje.
+Teď projdeme každé z těchto nastavení podrobněji a podíváme se na chování, které ovlivňuje.
 
 ## <a name="load"></a>Načtení
-Celý bod definování metriky je představují některé zatížení. *Zatížení* je, kolik dané metriky spotřebovává některé instance služby nebo repliky na daném uzlu. Zatížení lze konfigurovat téměř v každém bodě. Například:
+Celý bod definující metriky představuje určité zatížení. *Zatížení* je způsob, jakým je velká část dané metriky spotřebovaná určitou instancí služby nebo replikou na daném uzlu. Zatížení je možné nakonfigurovat prakticky v jakémkoli bodě. Příklad:
 
-  - Zatížení lze definovat při vytvoření služby. Tose nazývá _výchozí zatížení_.
-  - Informace o metrikách, včetně výchozího zatížení, pro službu lze aktualizovat po vytvoření služby. Tato aktualizace se nazývá _aktualizace služby_. 
-  - Zatížení pro daný oddíl lze obnovit na výchozí hodnoty pro tuto službu. Tomu se říká _obnovení zatížení oddílu_.
-  - Zatížení lze vykazovat na základě objektu služby dynamicky za běhu. Tose nazývá _zatížení vykazování_. 
+  - Zatížení lze definovat při vytvoření služby. Nazývá se to _výchozí zatížení_.
+  - Informace o metrikách, včetně výchozích zatížení, se pro službu můžou po vytvoření služby aktualizovat. To se označuje jako _aktualizace služby_. 
+  - Načtení pro daný oddíl lze obnovit na výchozí hodnoty pro danou službu. Označuje se jako _resetování zatížení oddílu_.
+  - Zatížení se dá v závislosti na instančních objektech dynamicky nahlásit za běhu. Označuje se jako _načítání sestav_. 
   
-Všechny tyto strategie lze použít v rámci stejné služby po celou dobu její životnosti. 
+Všechny tyto strategie lze použít ve stejné službě v průběhu své životnosti. 
 
 ## <a name="default-load"></a>Výchozí zatížení
-*Výchozí zatížení* je, kolik z metriky každý objekt služby (bezstavová instance nebo stavové repliky) této služby spotřebovává. Správce prostředků clusteru používá toto číslo pro zatížení objektu služby, dokud neobdrží další informace, například zprávu o dynamickém zatížení. Pro jednodušší služby je výchozí zatížení statickou definicí. Výchozí zatížení se nikdy neaktualizuje a používá se po dobu životnosti služby. Výchozí zatížení funguje skvěle pro jednoduché scénáře plánování kapacity, kde určité množství prostředků jsou vyhrazeny pro různé úlohy a nemění.
+*Výchozí zatížení* je množství metriky jednotlivých objektů služby (Bezstavová instance nebo stavová replika) této služby. Cluster Správce prostředků používá toto číslo pro zatížení objektu služby, dokud neobdrží jiné informace, jako je například sestava dynamického načtení. Pro jednodušší služby je výchozí zatížení Statická definice. Výchozí zatížení se nikdy neaktualizovalo a používá se pro dobu života služby. Výchozí zátěž funguje skvěle pro jednoduché scénáře plánování kapacity, kdy určité množství prostředků je vyhrazeno pro různé úlohy a nemění se.
 
 > [!NOTE]
-> Další informace o správě kapacity a definování kapacit pro uzly v clusteru naleznete v [tomto článku](service-fabric-cluster-resource-manager-cluster-description.md#capacity).
+> Další informace o správě kapacity a definování kapacit pro uzly ve vašem clusteru najdete v [tomto článku](service-fabric-cluster-resource-manager-cluster-description.md#capacity).
 > 
 
-Správce prostředků clusteru umožňuje stavové služby určit jiné výchozí zatížení pro jejich primárky a sekundární. Bezstavové služby můžete zadat pouze jednu hodnotu, která platí pro všechny instance. Pro stavové služby se výchozí zatížení primárních a sekundárních replik obvykle liší, protože repliky provádějí různé druhy práce v každé roli. Například Primárky obvykle slouží čtení i zápisy a zpracovávat většinu výpočetní zátěže, zatímco sekundární ne. Výchozí zatížení primární repliky je obvykle vyšší než výchozí zatížení pro sekundární repliky. Reálná čísla by měla záviset na vašich vlastních měřeních.
+Cluster Správce prostředků umožňuje stavovým službám zadat jiné výchozí zatížení pro primární a sekundární. Bezstavové služby můžou určovat jenom jednu hodnotu, která se vztahuje na všechny instance. U stavových služeb se výchozí zatížení primárních a sekundárních replik obvykle liší od toho, že repliky v jednotlivých rolích dělají různé druhy práce. Základní například obvykle slouží ke čtení i zápisu a k zpracování většiny výpočetního zatížení, zatímco sekundární není. Výchozí zatížení primární repliky je obvykle vyšší než výchozí zatížení sekundárních replik. Reálné hodnoty by měly záviset na vlastních měřeních.
 
-## <a name="dynamic-load"></a>Dynamické zatížení
-Řekněme, že už nějakou dobu řídíš své služby. S některými sledování, jste si všimli, že:
+## <a name="dynamic-load"></a>Dynamické načtení
+Řekněme, že v průběhu chvilky běželi vaši službu. U některých monitorování jste si všimli, že:
 
-1. Některé oddíly nebo instance dané služby spotřebovávají více prostředků než jiné
+1. Některé oddíly nebo instance dané služby spotřebují více prostředků než jiné.
 2. Některé služby mají zatížení, které se v průběhu času mění.
 
-Existuje spousta věcí, které by mohly způsobit tyto typy kolísání zatížení. Například různé služby nebo oddíly jsou spojeny s různými zákazníky s různými požadavky. Zatížení může také změnit, protože množství práce služby se liší v průběhu dne. Bez ohledu na důvod obvykle neexistuje žádné jediné číslo, které můžete použít pro výchozí. To platí zejména, pokud chcete získat co nejvíce využití z clusteru. Jakákoli hodnota, kterou vyberete pro výchozí zatížení, je někdy chybná. Nesprávné výchozí zatížení má za následek správce prostředků clusteru přes nebo pod přidělování prostředků. V důsledku toho máte uzly, které jsou nad nebo pod využívány, i když správce prostředků clusteru si myslí, že cluster je vyvážený. Výchozí zatížení jsou stále dobré, protože poskytují některé informace pro počáteční umístění, ale nejsou úplným příběhem pro skutečné úlohy. Chcete-li přesně zachytit měnící se požadavky na prostředky, Správce prostředků clusteru umožňuje každému objektu služby aktualizovat vlastní zatížení za běhu. To se nazývá dynamické vykazování zatížení.
+Existují spousty věcí, které by mohly způsobovat tyto typy výkyvů zatížení. Například různé služby nebo oddíly jsou přidruženy k různým zákazníkům s různými požadavky. Zátěž se může také změnit, protože množství práce, které se služba v průběhu dne liší. Bez ohledu na důvod není obvykle k dispozici žádné jednotné číslo, které můžete použít pro výchozí nastavení. To platí hlavně v případě, že chcete získat nejvíc využití z clusteru. Všechny hodnoty, které vybíráte pro výchozí zatížení, jsou v některých časových intervalech chybné. Nesprávná výchozí načtení způsobí, že se cluster Správce prostředků buď přes, nebo pod přidělením prostředků. V důsledku toho máte uzly, které se překročí nebo jsou využívány, i když cluster Správce prostředků považuje cluster za vyvážený. Výchozí zatížení jsou pořád dobrá, protože poskytují nějaké informace pro počáteční umístění, ale nejedná se o kompletní příběh pro reálné úlohy. Aby bylo možné přesně zachytit změny požadavků na prostředky, cluster Správce prostředků umožňuje, aby každý objekt služby aktualizoval vlastní zatížení během běhu. Tato funkce se nazývá generování sestav dynamického načtení.
 
-Dynamické sestavy zatížení umožňují replikám nebo instancím upravit jejich přidělení/hlášené zatížení metrik po celou dobu jejich životnosti. Replika služby nebo instance, která byla studená a neprovádí žádnou práci, by obvykle hlásila, že používá nízké množství dané metriky. Zaneprázdněná replika nebo instance by hlásila, že používají více.
+Sestavy dynamického načtení umožňují replikám nebo instancím upravit jejich přidělení a nahlášené zatížení metriky během své životnosti. Replika nebo instance služby, která byla studena a nikoli, by obvykle hlásila, že používala nízké množství dané metriky. Zaneprázdněná replika nebo instance by nahlásila, že používá více.
 
-Vytváření sestav zatížení na repliku nebo instanci umožňuje Správci prostředků clusteru reorganizovat jednotlivé objekty služby v clusteru. Reorganizace služeb pomáhá zajistit, že získají potřebné prostředky. Zaneprázdněné služby efektivně získat "kultivovat" prostředky z jiných replik nebo instancí, které jsou aktuálně studené nebo dělat méně práce.
+Zatížení sestav na základě repliky nebo instance umožňuje, aby cluster Správce prostředků reorganizovat jednotlivé objekty služby v clusteru. Změna uspořádání služeb pomáhá zajistit, že získají prostředky, které vyžadují. Zaneprázdněné služby se efektivně dostanou k "získání" prostředků z jiných replik nebo instancí, které jsou v současné době studené nebo méně fungují.
 
-V rámci spolehlivé služby, kód sestavy zatížení dynamicky vypadá takto:
+V rámci Reliable Services kód pro nahlášení dynamického načítání vypadá takto:
 
 Kód:
 
@@ -173,97 +173,97 @@ Kód:
 this.Partition.ReportLoad(new List<LoadMetric> { new LoadMetric("CurrentConnectionCount", 1234), new LoadMetric("metric1", 42) });
 ```
 
-Služba může vykazovat všechny metriky definované pro ni v době vytvoření. Pokud služba hlásí zatížení pro metriku, která není nakonfigurována pro použití, Service Fabric ignoruje tuto sestavu. Pokud jsou současně hlášeny další metriky, které jsou platné, jsou tyto přehledy přijaty. Kód služby můžete měřit a hlásit všechny metriky, které ví, jak a operátory můžete zadat konfiguraci metriky použít bez nutnosti měnit kód služby. 
+Služba může vykazovat jakoukoli metriku, která je pro ni definována v okamžiku vytvoření. Pokud služba hlásí metriku, že není nakonfigurovaná k použití, Service Fabric tuto sestavu ignoruje. Pokud jsou hlášeny jiné metriky v platném okamžiku, jsou tyto zprávy přijaty. Kód služby může měřit a hlásit všechny metriky, které ví, jak a můžou určit konfiguraci metriky, která se má použít, aniž byste museli měnit kód služby. 
 
-### <a name="updating-a-services-metric-configuration"></a>Aktualizace konfigurace metriky služby
-Seznam metrik spojených se službou a vlastnosti těchto metrik lze aktualizovat dynamicky, zatímco služba je aktivní. To umožňuje experimentování a flexibilitu. Některé příklady, kdy je to užitečné, jsou:
+### <a name="updating-a-services-metric-configuration"></a>Aktualizuje se konfigurace metriky služby.
+Seznam metrik přidružených ke službě a vlastnosti těchto metrik se dají dynamicky aktualizovat, pokud je služba živá. To umožňuje experimenty a flexibilitu. Některé příklady, kdy je to užitečné:
 
-  - zakázání metriky s přehledem buggy pro konkrétní službu
-  - změna konfigurace hmotností metrik na základě požadovaného chování
+  - Zakázání metriky pomocí sestavy ladění pro určitou službu
+  - Změna konfigurace vah metrik na základě požadovaného chování
   - povolení nové metriky až poté, co byl kód již nasazen a ověřen prostřednictvím jiných mechanismů
-  - změna výchozího zatížení služby na základě pozorovaného chování a spotřeby
+  - Změna výchozího zatížení služby na základě pozorovaného chování a spotřeby
 
-Hlavní api pro změnu `FabricClient.ServiceManagementClient.UpdateServiceAsync` konfigurace metriky `Update-ServiceFabricService` jsou v C# a v PowerShellu. Jakékoli informace, které zadáte pomocí těchto api nahradí existující informace metriky pro službu okamžitě. 
+Hlavní rozhraní API pro změnu konfigurace metriky `FabricClient.ServiceManagementClient.UpdateServiceAsync` jsou v jazyce `Update-ServiceFabricService` C# a v prostředí PowerShell. Jakékoli informace, které zadáte pomocí těchto rozhraní API, nahradí okamžitě existující informace metriky pro službu. 
 
-## <a name="mixing-default-load-values-and-dynamic-load-reports"></a>Míchání výchozích hodnot zatížení a dynamických sestav zatížení
-Pro stejnou službu lze použít výchozí zatížení a dynamická zatížení. Pokud služba využívá výchozí zatížení i dynamické sestavy zatížení, výchozí zatížení slouží jako odhad, dokud se nezobrazí dynamické sestavy. Výchozí zatížení je dobré, protože poskytuje Správci prostředků clusteru něco, s čím může pracovat. Výchozí zatížení umožňuje Správci prostředků clusteru umístit objekty služby na dobrá místa při jejich vytvoření. Pokud nejsou k dispozici žádné výchozí informace o zatížení, umístění služeb je efektivně náhodné. Když sestavy zatížení dorazí později počáteční náhodné umístění je často nesprávné a Správce prostředků clusteru má přesunout služby.
+## <a name="mixing-default-load-values-and-dynamic-load-reports"></a>Kombinování výchozích hodnot zatížení a sestav dynamického načtení
+Pro stejnou službu lze použít výchozí zatížení a dynamické načtení. Když služba využívá výchozí zatížení a dynamické sestavy zatížení, slouží jako odhad výchozí zatížení, dokud se nezobrazují dynamické sestavy. Výchozí zatížení je dobré, protože zajišťuje, aby cluster Správce prostředků něco. Výchozí zatížení umožňuje, aby cluster Správce prostředků umístit objekty služby do dobrých umístění při jejich vytvoření. Pokud nejsou k dispozici žádné výchozí informace o načtení, umístění služeb je efektivně náhodné. Když budou načteny sestavy později, počáteční náhodné umístění je často chybné a cluster Správce prostředků musí přesunout služby.
 
-Vezměme si náš předchozí příklad a uvidíme, co se stane, když přidáme některé vlastní metriky a dynamické vykazování zatížení. V tomto příkladu používáme "MemoryInMb" jako ukázkovou metriku.
+Pojďme si vyzkoušet náš předchozí příklad a podívat se, co se stane, když přidáme některé vlastní metriky a generování sestav dynamického načtení. V tomto příkladu používáme jako ukázkovou metriku "MemoryInMb".
 
 > [!NOTE]
-> Paměť je jednou ze systémových metrik, které service fabric může [řídit prostředky](service-fabric-resource-governance.md)a hlášení sami je obvykle obtížné. Ve skutečnosti neočekáváme, že budete podávat zprávy o spotřebě paměti; Paměť se zde používá jako pomůcka pro učení o možnostech Správce prostředků clusteru.
+> Paměť je jednou ze systémových metrik, které Service Fabric mohou [řídit prostředky](service-fabric-resource-governance.md)a jejich ruční vytváření sestav je obvykle obtížné. Ve skutečnosti neočekáváme, že budete hlásit spotřebu paměti; Zde se používá paměť jako pomůcka pro učení o možnostech Správce prostředků clusteru.
 >
 
-Předpokládejme, že jsme původně vytvořili stavovou službu s následujícím příkazem:
+Řekněme, že jsme původně vytvořili stavovou službu pomocí následujícího příkazu:
 
-Powershell:
+Prostředí
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton –Metric @("MemoryInMb,High,21,11”,"PrimaryCount,Medium,1,0”,"ReplicaCount,Low,1,1”,"Count,Low,1,1”)
 ```
 
-Připomínáme, že tato syntaxe je ("MetricName, MetricWeight, PrimaryDefaultLoad, SecondaryDefaultLoad").
+Tato syntaxe je jako připomenutí ("metric, MetricWeight, PrimaryDefaultLoad, SecondaryDefaultLoad").
 
-Podívejme se, jak by mohlo vypadat jedno možné rozložení clusteru:
-
-<center>
-
-![Vyrovnaný cluster s výchozí i vlastní metriky][Image2]
-</center>
-
-Některé věci, které stojí za zmínku:
-
-* Sekundární repliky v rámci oddílu může mít každý své vlastní zatížení
-* Celkově metriky vypadají vyváženě. Pro paměť je poměr mezi maximálním a minimálním zatížením 1,75 (uzel s největším zatížením je N3, nejmenší je N2 a 28/16 = 1,75).
-
-Je tu několik věcí, které musíme ještě vysvětlit:
-
-* Co určilo, zda byl poměr 1,75 přiměřený, nebo ne? Jak Správce prostředků clusteru pozná, zda je to dost dobré nebo co je třeba udělat víc práce?
-* Kdy dochází k vyvažování?
-* Co to znamená, že paměť byla vážena "High"?
-
-## <a name="metric-weights"></a>Metrická závaží
-Sledování stejných metrik v různých službách je důležité. Toto globální zobrazení umožňuje Správci prostředků clusteru sledovat spotřebu v clusteru, vyvážit spotřebu mezi uzly a zajistit, aby uzly nepřekročily kapacitu. Služby však mohou mít různá zobrazení, pokud jde o důležitost stejné metriky. Také v clusteru s mnoha metrikami a spoustou služeb nemusí pro všechny metriky existovat dokonale vyvážená řešení. Jak má Správce prostředků clusteru tyto situace řešit?
-
-Metrika váhy umožňují Správce prostředků clusteru rozhodnout, jak vyvážit clusteru, když neexistuje dokonalá odpověď. Metrika váhy také umožňují Správce prostředků clusteru vyvážit konkrétní služby odlišně. Metriky mohou mít čtyři různé úrovně hmotnosti: Nula, Nízká, Střední a Vysoká. Metrika s váhou nula nepřispívá při zvažování, zda jsou věci vyvážené nebo ne. Jeho zatížení však stále přispívá k řízení kapacity. Metriky s nulovou hmotností jsou stále užitečné a jsou často používány jako součást chování služby a sledování výkonu. [Tento článek](service-fabric-diagnostics-event-generation-infra.md) obsahuje další informace o použití metrik pro monitorování a diagnostiku vašich služeb. 
-
-Skutečný dopad různých metrik váhy v clusteru je, že Správce prostředků clusteru generuje různá řešení. Metriky váhy informujte Správce prostředků clusteru, že některé metriky jsou důležitější než jiné. Pokud neexistuje dokonalé řešení, správce prostředků clusteru může upřednostňovat řešení, která lépe vyvažují vyšší vážené metriky. Pokud si služba myslí, že určitá metrika není důležitá, může zjistit, že jejich použití této metriky je nevyvážené. To umožňuje jiné službě získat rovnoměrné rozdělení některé metriky, která je pro něj důležitá.
-
-Podívejme se na příklad některých sestav zatížení a jak různé metriky váhy má za následek různé přidělení v clusteru. V tomto příkladu vidíme, že přepnutí relativní hmotnost metriky způsobí, že Správce prostředků clusteru vytvořit různá uspořádání služeb.
+Pojďme se podívat, jak může vypadat možné rozložení clusteru:
 
 <center>
 
-![Příklad metrické hmotnosti a jeho dopad na řešení vyvažování][Image3]
+![Cluster s vyrovnáváním s výchozí i vlastní metrikou][Image2]
 </center>
 
-V tomto příkladu existují čtyři různé služby, všechny vykazování různé hodnoty pro dvě různé metriky, MetricA a MetricB. V jednom případě všechny služby definovat MetricA je nejdůležitější (Hmotnost = Vysoká) a MetricB jako nedůležité (Hmotnost = Nízká). V důsledku toho vidíme, že Správce prostředků clusteru umístí služby tak, aby MetricA je lépe vyvážená než MetricB. "Lépe vyvážené" znamená, že MetricA má nižší má nižší směrodatnou odchylku než MetricB. Ve druhém případě obrátíme metrickou hmotnost. V důsledku toho Správce prostředků clusteru swapy služby A a B přijít s přidělením, kde MetricB je lépe vyvážené než MetricA.
+Zde jsou některé věci, které se zaznamenaly:
+
+* Sekundární repliky v rámci oddílu můžou mít své vlastní zatížení.
+* Celkově metriky vypadají jako vyrovnané. Pro paměť je poměr mezi maximální a minimální zátěží 1,75 (uzel s největším zatížením je N3, nejméně je N2 a 28/16 = 1,75).
+
+K dispozici jsou některé věci, které ještě potřebujeme vysvětlit:
+
+* Jak bylo zjištěno, zda byl poměr 1,75 rozumný nebo ne? Jak cluster Správce prostředků ví, jestli je dostatečně dobrý, nebo pokud je to tak více práce?
+* Kdy dojde k vyvážení?
+* Co to znamená, že paměť byla vážená "vysoká"?
+
+## <a name="metric-weights"></a>Váhy metriky
+Sledování stejných metrik v různých službách je důležité. Toto globální zobrazení umožňuje Správce prostředků clusteru sledovat spotřebu v clusteru, vyrovnávat spotřebu napříč uzly a zajistit, aby uzly nepřešly do kapacity. Nicméně služby mohou mít různá zobrazení, která mají význam stejné metriky. Také v clusteru s mnoha metrikami a velkým množstvím služeb nemusí pro všechny metriky existovat dokonale vyvážená řešení. Jak by měl cluster Správce prostředků zvládnout tyto situace?
+
+Váhy metriky umožňují, aby se cluster Správce prostředků rozhodl, jak vyrovnávat cluster, pokud neexistuje žádná dokonalý odpověď. Váhy metriky také umožňují, aby cluster Správce prostředků různým způsobem vyrovnávat konkrétní služby. Metriky můžou mít čtyři různé úrovně důležitosti: 0, nízká, střední a vysoká. Metrika s váhou nula nepřispívá k tomu, když zvažujete, jestli jsou věci vyvážené. Jeho zatížení ale pořád přispívá k řízení kapacity. Metriky s nulovou váhou jsou stále užitečné a často se používají jako součást chování služby a sledování výkonu. V [tomto článku](service-fabric-diagnostics-event-generation-infra.md) najdete další informace o použití metrik pro monitorování a diagnostiku vašich služeb. 
+
+Skutečný dopad různých vah v clusteru je, že cluster Správce prostředků generuje různá řešení. Váhy metriky oznamují clusteru Správce prostředků, že některé metriky jsou důležitější než jiné. Pokud není k dispozici žádné dokonalé řešení, může cluster Správce prostředků preferovat řešení, která lépe vyrovnávají vyšší vážené metriky. Pokud se služba domnívá, že určitá metrika je neimportovaná, může najít jejich použití v nevyrovnaném měřítku. To umožňuje, aby jiná služba získala ještě rozmístění některé metriky, které jsou pro ni důležité.
+
+Pojďme se podívat na příklad některých sestav zatížení a na to, jak různé váhy metriky mají za následek různá přidělení v clusteru. V tomto příkladu vidíte, že přepínání relativní váhy metrik způsobí, že cluster Správce prostředků vytvoří různé mechanismy služeb.
+
+<center>
+
+![Příklad váhy metriky a jeho dopad na vyvážení řešení][Image3]
+</center>
+
+V tomto příkladu jsou k dispozici čtyři různé služby, které vytvářejí sestavy různých hodnot pro dvě různé metriky, metriky a MetricB. V jednom případě jsou všechny služby, které definuje metrika, nejdůležitější (váha = vysoká) a MetricB jako neimportované (váha = nízká). V důsledku toho uvidí, že cluster Správce prostředků umístí služby, aby byla metrika lépe vyvážená, než MetricB. "Lépe vyvážené" znamená, že metrika má nižší směrodatnou odchylku než MetricB. V druhém případě vrátíme váhy metriky. V důsledku toho cluster Správce prostředků prohodí služby A a B, aby se přizpůsobilo přidělení, kde je MetricB lépe vyvážené, než je metrika.
 
 > [!NOTE]
-> Metrika váhy určit, jak správce prostředků clusteru by měl zůstatek, ale ne, když by mělo dojít k vyrovnávání. Další informace o vyvažování naleznete v [tomto článku](service-fabric-cluster-resource-manager-balancing.md)
+> Váhy metriky určují, jak se má cluster Správce prostředků vyrovnávat, ale ne v případě, kdy by mělo dojít k vyvážení Další informace o vyrovnávání zatížení najdete v [tomto článku](service-fabric-cluster-resource-manager-balancing.md) .
 >
 
-### <a name="global-metric-weights"></a>Globální metrická vahovky
-Řekněme, že ServiceA definuje MetricA jako vysokou váhu a ServiceB nastaví váhu pro MetricA na nízkou nebo nulovou. Jaká je skutečná váha, která nakonec zvykne?
+### <a name="global-metric-weights"></a>Hmotnosti globálních metrik
+Řekněme, že služba Service definuje metriku jako vysokou váhu a ServiceB nastaví váhu metriky na nízká nebo nula. Jaká je skutečná váha, která končí použití?
 
-Existuje více závaží, které jsou sledovány pro každou metriku. První váha je ta, která je definována pro metriku při vytvoření služby. Druhá váha je globální hmotnost, která se vypočítá automaticky. Správce prostředků clusteru používá obě tyto váhy při vyhodnocování řešení. Vezmeme-li v úvahu obě váhy, je důležité. To umožňuje Správci prostředků clusteru vyvážit každou službu podle vlastních priorit a také zajistit, aby byl cluster jako celek přidělen správně.
+Pro každou metriku je sledováno více vah. První tloušťka je ta, která je definována pro metriku při vytvoření služby. Druhá váha je globální váha, která je automaticky vypočítána. Správce prostředků clusteru používá tyto váhy při bodování řešení. Je důležité brát v úvahu oba váhy. To umožňuje, aby cluster Správce prostředků vyrovnávat každou službu podle svých priorit a také zajistil, že se cluster jako celek přidělí správně.
 
-Co by se stalo, kdyby správce prostředků clusteru nezáleželo na globální i místní rovnováze? No, je to snadné vytvořit řešení, která jsou globálně vyvážené, ale které mají za následek špatnou rovnováhu zdrojů pro jednotlivé služby. V následujícím příkladu se podívejme na službu nakonfigurovanou pouze s výchozími metrikami a podívejte se, co se stane, když se vezme v úvahu pouze globální zůstatek:
+Co se stane, když se cluster Správce prostředků nestará o globální i místní zůstatek? Dobře je snadné vytvořit řešení, která jsou globálně vyvážená, ale výsledkem je špatné vyvážení prostředků pro jednotlivé služby. V následujícím příkladu se podíváme na službu nakonfigurovanou pouze s výchozími metrikami a zjistíte, co se stane, když se bude brát pouze globální zůstatek:
 
 <center>
 
-![Dopad globálního řešení][Image4]
+![Dopad jenom na globální řešení][Image4]
 </center>
 
-V nejvyšším příkladu založeném pouze na globální rovnováze je cluster jako celek skutečně vyvážený. Všechny uzly mají stejný počet primárek a stejný počet celkových replik. Pokud se však podíváte na skutečný dopad této alokace, není to tak dobré: ztráta libovolného uzlu nepřiměřeně ovlivňuje určitou pracovní zátěž, protože vynese všechny své primárky. Například pokud první uzel selže tři primárky pro tři různé oddíly circle služby by všechny být ztraceny. Naopak triangle a hexagon služby mají své oddíly ztratí repliku. To nezpůsobí žádné narušení, než nutnost obnovit dolů repliky.
+V horním příkladu, který je založený jenom na globálním zůstatku, cluster jako celek je skutečně vyvážený. Všechny uzly mají stejný počet primárních prvků a stejné číslo jako celkový počet replik. Nicméně pokud se podíváte na skutečný dopad tohoto přidělení, není tak dobrý: ztráta jakéhokoli uzlu má dopad na určitou úlohu, protože zabírá všechny primární údaje. Například pokud první uzel neprojde tři primárními verzemi pro tři různé oddíly služby Circle, ztratí se všechny tři. Naopak, trojúhelník a šestiúhelníkové služby mají své oddíly ke ztrátě repliky. To nezpůsobuje žádné přerušení, kromě nutnosti obnovení repliky.
 
-V dolním příkladu správce prostředků clusteru distribuuje repliky na základě globálního i provozního zůstatku na základě služby. Při výpočtu skóre řešení dává většinu váhy globálnímu řešení a (konfigurovatelnou) část pro jednotlivé služby. Globální zůstatek pro metriku se vypočítá na základě průměru metriky váhy z každé služby. Každá služba je vyvážená podle vlastních definovaných metrických vahou. Tím je zajištěno, že služby jsou v sobě vyváženy podle svých vlastních potřeb. V důsledku toho pokud stejný první uzel selže selhání selhání je distribuován napříč všechny oddíly všech služeb. Dopad na každého z nich je stejný.
+V dolním příkladu cluster Správce prostředků distribuuje repliky založené na globálním zůstatku i na úrovni služby. Při výpočtu skóre řešení poskytuje většina váhy globálnímu řešení a (konfigurovatelná) část k jednotlivým službám. Globální zůstatek pro metriku se vypočítá na základě průměru vah metriky od jednotlivých služeb. Každá služba je vyvážená podle vlastní definované váhy metriky. Tím se zajistí, že se služby rovnoměrně vyrovnávají podle svých potřeb. V důsledku toho dojde při selhání jednoho prvního uzlu k distribuci selhání napříč všemi oddíly všech služeb. Dopad na každý je stejný.
 
 ## <a name="next-steps"></a>Další kroky
-- Další informace o konfiguraci služeb [naleznete v informacích o konfiguraci služeb](service-fabric-cluster-resource-manager-configure-services.md)(service-fabric-cluster-resource-manager-configure-services.md)
-- Definování defragmentace metriky je jedním ze způsobů, jak konsolidovat zatížení uzlů namísto jeho rozprostření. Informace o konfiguraci defragmentace naleznete v [tomto článku](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
-- Informace o tom, jak Správce prostředků clusteru spravuje a vyrovnává zatížení clusteru, naleznete v článku o [vyrovnávání zatížení](service-fabric-cluster-resource-manager-balancing.md)
-- Začněte od začátku a [získejte úvod do Správce prostředků clusteru Service Fabric](service-fabric-cluster-resource-manager-introduction.md)
-- Náklady na přesun je jedním ze způsobů, jak správci prostředků clusteru signalizovat, že přesun některých služeb je nákladnější než jiné. Další informace o nákladech na přesun naleznete v [tomto článku](service-fabric-cluster-resource-manager-movement-cost.md)
+- Další informace o konfiguraci služeb najdete v informacích [o konfiguraci služeb](service-fabric-cluster-resource-manager-configure-services.md)(Service-Fabric-cluster-Resource-Manager-Configure-Services.MD).
+- Definování metrik defragmentace je jedním ze způsobů, jak konsolidovat zatížení uzlů místo jejich rozprostření. Informace o tom, jak nakonfigurovat defragmentaci, najdete v [tomto článku](service-fabric-cluster-resource-manager-defragmentation-metrics.md) .
+- Informace o tom, jak cluster Správce prostředků spravuje a vyrovnává zatížení v clusteru, najdete v článku o [Vyrovnávání zatížení](service-fabric-cluster-resource-manager-balancing.md) .
+- Začněte od začátku a [Získejte Úvod do clusteru Service Fabric správce prostředků](service-fabric-cluster-resource-manager-introduction.md)
+- Náklady na pohyb jsou jedním ze způsobů signalizace clusteru Správce prostředků, že některé služby jsou dražší než ostatní. Další informace o nákladech na přesun najdete v [tomto článku](service-fabric-cluster-resource-manager-movement-cost.md) .
 
 [Image1]:./media/service-fabric-cluster-resource-manager-metrics/cluster-resource-manager-cluster-layout-with-default-metrics.png
 [Image2]:./media/service-fabric-cluster-resource-manager-metrics/Service-Fabric-Resource-Manager-Dynamic-Load-Reports.png

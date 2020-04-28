@@ -1,6 +1,6 @@
 ---
-title: Monitorování zařízení Azure Data Box Edge | Dokumenty společnosti Microsoft
-description: Popisuje, jak používat portál Azure a místní webové uživatelské prostředí ke sledování azure data box edge.
+title: Monitorování zařízení Azure Data Box Edge | Microsoft Docs
+description: Popisuje, jak pomocí Azure Portal a místního webového uživatelského rozhraní monitorovat Azure Data Box Edge.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,22 +9,22 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 188f5c6cfbb4650ad1ff767955d064f8e0c3cb70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60756742"
 ---
-# <a name="monitor-your-azure-data-box-edge"></a>Sledování azure data boxu Edge
+# <a name="monitor-your-azure-data-box-edge"></a>Monitorování Azure Data Box Edge
 
-Tento článek popisuje, jak sledovat azure data box edge. Ke sledování zařízení můžete použít portál Azure nebo místní webové uživatelské rozhraní. Na webu Azure Portal můžete zobrazit události zařízení, konfigurovat a spravovat výstrahy a zobrazovat metriky. Pomocí místního webového uživatelského rozhraní ve fyzickém zařízení můžete zobrazit stav hardwaru různých součástí zařízení.
+Tento článek popisuje, jak monitorovat Azure Data Box Edge. Pokud chcete monitorovat své zařízení, můžete použít Azure Portal nebo místní webové uživatelské rozhraní. Pomocí Azure Portal můžete zobrazit události zařízení, konfigurovat a spravovat výstrahy a zobrazovat metriky. Pomocí místního webového uživatelského rozhraní na fyzickém zařízení můžete zobrazit stav hardwaru různých součástí zařízení.
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Zobrazení událostí zařízení a odpovídajících výstrah
-> * Zobrazení stavu hardwaru součástí zařízení
-> * Zobrazení metrik kapacity a transakcí pro vaše zařízení
+> * Zobrazit stav hardwaru pro součásti zařízení
+> * Zobrazit kapacitu a metriky transakcí pro vaše zařízení
 > * Konfigurace a správa výstrah
 
 ## <a name="view-device-events"></a>Zobrazit události zařízení
@@ -33,10 +33,10 @@ V tomto článku získáte informace o těchto tématech:
 
 ## <a name="view-hardware-status"></a>Zobrazit stav hardwaru
 
-Chcete-li zobrazit stav hardwaru součástí zařízení, postupujte v místním webovém uživatelském rozhraní následujícím postupem.
+Chcete-li zobrazit stav hardwaru komponent zařízení, proveďte následující kroky v místním webovém uživatelském rozhraní.
 
 1. Připojte se k místnímu webovému uživatelskému rozhraní vašeho zařízení.
-2. Přejděte na **stav údržby > hardware**. Můžete zobrazit stav různých součástí zařízení.
+2. **> stav hardwaru**přejít na údržba. Můžete zobrazit stav různých součástí zařízení.
 
     ![Zobrazit stav hardwaru](media/data-box-edge-monitor/view-hardware-status.png)
 

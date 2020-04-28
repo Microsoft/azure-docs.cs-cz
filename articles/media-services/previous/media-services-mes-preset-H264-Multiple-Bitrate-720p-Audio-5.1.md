@@ -1,6 +1,6 @@
 ---
-title: H264 Vícenásobný přenosový tok 720p Audio 5.1 | Dokumenty společnosti Microsoft
-description: Téma dává andverview **h264 vícebitový tok 720p Audio 5.1** přednastavení úlohy.
+title: H264 více přenosů ve formátu 720p 5,1 | Microsoft Docs
+description: Téma poskytuje andverview přednastavené úlohy **H264 s více přenosovými rychlostmi pro zvuk 5,1** .
 author: Juliako
 manager: femila
 editor: ''
@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: ac21558b1480f43b398f44949e18416284c3f606
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61129495"
 ---
 # <a name="h264-multiple-bitrate-720p-audio-51"></a>H264 Multiple Bitrate 720p Audio 5.1
-`Media Encoder Standard`definuje sadu přednastavení kódování, které můžete použít při vytváření úloh kódování. Můžete buď použít `preset name` k určení formátu, do kterého chcete mediální soubor zakódovat. Nebo můžete vytvořit vlastní přednastavení JSON nebo XML (pomocí kódování UTF-8 nebo UTF-16. Vlastní přednastavení byste pak předali kodéru. Seznam všech přednastavených názvů podporovaných `Media Encoder Standard` tímto kodérem naleznete [v tématu Přednastavení úloh pro standard kodéru médií](media-services-mes-presets-overview.md).  
+`Media Encoder Standard`definuje sadu přednastavení kódování, kterou můžete použít při vytváření úloh kódování. Můžete buď použít `preset name` k určení formátu, ve kterém chcete mediální soubor zakódovat. Nebo můžete vytvořit vlastní přednastavení založené na JSON nebo XML (pomocí kódování UTF-8 nebo UTF-16). Pak byste měli předat vlastní předvolbu kodéru. Seznam všech přednastavených názvů podporovaných tímto `Media Encoder Standard` kodérem najdete v tématu [předvolby úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  
   
- Toto téma `H264 Multiple Bitrate 720p Audio 5.1` zobrazuje přednastavení ve formátu XML a JSON.  
+ Toto téma ukazuje `H264 Multiple Bitrate 720p Audio 5.1` Předvolby ve formátu XML a JSON.  
   
- Toto přednastavení vytváří sadu 6 souborů MP4 zarovnaných do GOP, od 3400 kbps do 400 kbps a zvuku AAC 5.1. Podrobné informace o profilu, přenosovérychlosti, vzorkovací frekvenci atd. Vysvětlení, co každý prvek znamená, a platné hodnoty pro každý prvek naleznete schéma [Standard kodéru médií](media-services-mes-schema.md).  
+ Tato předvolba vytvoří sadu souborů MP4 s skupinu GOP zarovnaných do rozsahu od 3400 do 400 KB/s a AAC 5,1 zvuk. Podrobné informace o profilu, přenosové rychlosti, vzorkovací frekvenci atd. z této předvolby najdete v souboru XML nebo JSON definovaném níže. Vysvětlení toho, co každý prvek znamená, a platné hodnoty pro každý prvek naleznete v [Media Encoder Standard schématu](media-services-mes-schema.md).  
   
 > [!NOTE]
->  Při úpravách `Width` `Height` hodnot a napříč vrstvami se ujistěte, že poměr stran zůstává konzistentní. Například: 1920x1080, 1280x720, 1080x576, 640x360. Neměli byste používat směs poměrů stran, například: 1280x720, 720x480, 640x360.  
+>  Při úpravách `Width` hodnot `Height` a v rámci vrstev se ujistěte, že poměr stran zůstává konzistentní. Příklad: 1080, 1280 × 720, 1080x576, 640x360. Neměli byste používat kombinaci poměrů stran, například: 1280 × 720, 720x480, 640x360.  
   
  XML  
   

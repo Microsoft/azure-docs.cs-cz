@@ -1,6 +1,6 @@
 ---
 title: Začínáme s Azure AD v projektech Visual Studio WebApi
-description: Jak začít používat Azure Active Directory v projektech WebApi po připojení nebo vytvoření Azure AD pomocí připojených služeb Visual Studio
+description: Jak začít používat Azure Active Directory v projektech WebApi po připojení k nebo vytvoření Azure AD pomocí připojených služeb sady Visual Studio
 author: ghogen
 manager: jillfra
 ms.prod: visual-studio-windows
@@ -11,10 +11,10 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.openlocfilehash: 9a9f8aaa9e3f90e78668d2294ea9959b480e3384
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80886071"
 ---
 # <a name="get-started-with-azure-active-directory-webapi-projects"></a>Začínáme s Azure Active Directory (projekty WebApi)
@@ -23,15 +23,15 @@ ms.locfileid: "80886071"
 > - [Začínáme](vs-active-directory-webapi-getting-started.md)
 > - [Co se přihodilo](vs-active-directory-webapi-what-happened.md)
 
-Tento článek obsahuje další pokyny po přidání služby Active Directory do projektu ASP.NET WebAPI prostřednictvím příkazu **Project > Connected Services** sady Visual Studio. Pokud jste službu ještě do projektu nepřidali, můžete tak učinit kdykoli.
+Tento článek poskytuje další doprovodné materiály po přidání služby Active Directory do projektu ASP.NET WebAPI prostřednictvím příkazu **project > Connected Services** sady Visual Studio. Pokud jste ještě nepřidali službu do projektu, můžete to udělat kdykoli.
 
-Informace o změnách provedených v projektu projektu při přidávání připojené služby naleznete v tématu [Co se stalo s projektem WebAPI?](vs-active-directory-webapi-what-happened.md)
+Podívejte se, [co se stalo s mým projektem WebApi?](vs-active-directory-webapi-what-happened.md) pro změny provedené v projektu při přidávání připojené služby.
 
 ## <a name="requiring-authentication-to-access-controllers"></a>Vyžadování ověřování pro přístup k řadičům
 
-Všechny řadiče v projektu byly `[Authorize]` ozdobeny atributem. Tento atribut vyžaduje, aby byl uživatel ověřen před přístupem k rozhraním API definovaným těmito řadiči. Chcete-li povolit přístup k řadiči anonymně, odeberte tento atribut z řadiče. Pokud chcete nastavit oprávnění na podrobnější úrovni, použijte atribut pro každou metodu, která vyžaduje autorizaci namísto jeho použití na třídu kontroleru.
+Všechny řadiče v projektu se napracovaly s `[Authorize]` atributem. Tento atribut vyžaduje, aby byl uživatel ověřen před přístupem k rozhraním API definovaným těmito řadiči. K povolení anonymního přístup k řadiči odeberte tento atribut z kontroleru. Chcete-li nastavit oprávnění na podrobnější úrovni, použijte atribut pro každou metodu, která vyžaduje autorizaci namísto použití pro třídu kontroleru.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Scénáře ověřování pro Službu Azure Active Directory](authentication-scenarios.md)
-- [Přidání přihlášení s Microsoftem do ASP.NET webové aplikace](quickstart-v2-aspnet-webapp.md)
+- [Scénáře ověřování pro Azure Active Directory](authentication-scenarios.md)
+- [Přidání přihlašování do webové aplikace ASP.NET pomocí Microsoftu](quickstart-v2-aspnet-webapp.md)

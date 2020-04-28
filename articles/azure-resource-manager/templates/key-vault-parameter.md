@@ -1,26 +1,26 @@
 ---
-title: Tajný klíč trezoru klíčů se šablonou
-description: Ukazuje, jak předat tajný klíč z trezoru klíčů jako parametr během nasazení.
+title: Key Vault tajný klíč se šablonou
+description: Ukazuje, jak předat tajný klíč z trezoru klíčů jako parametr během nasazování.
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.openlocfilehash: d21a7d727091b427fee59e22db6a77a495a4eab7
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81458262"
 ---
-# <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Použití trezoru klíčů Azure k předání hodnoty zabezpečeného parametru během nasazení
+# <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazení
 
-Místo umístění zabezpečené hodnoty (například hesla) přímo do šablony nebo souboru parametrů můžete hodnotu během nasazení načíst z [trezoru klíčů Azure.](../../key-vault/general/overview.md) Hodnotu načtete odkazem na trezor klíčů a tajný klíč v souboru parametrů. Hodnota není nikdy vystavena, protože odkazujete pouze na id trezoru klíčů. Trezor klíčů může existovat v jiném předplatném než skupina prostředků, do které nasazujete.
+Namísto vložení zabezpečené hodnoty (například hesla) přímo do šablony nebo souboru parametrů můžete načíst hodnotu z [Azure Key Vault](../../key-vault/general/overview.md) během nasazení. Hodnotu načtete odkazem na Trezor klíčů a tajný kód v souboru parametrů. Hodnota se nikdy nezveřejňuje, protože odkazujete jenom na její ID trezoru klíčů. Trezor klíčů může existovat v jiném předplatném, než je skupina prostředků, do které nasazujete.
 
-Tento článek se zaměřuje na scénář předávání citlivé hodnoty v jako parametr šablony. Nezahrnuje scénář nastavení vlastnosti virtuálního počítače na adresu URL certifikátu v trezoru klíčů. Šablonu pro rychlý start tohoto scénáře najdete [v tématu Instalace certifikátu z azure key vaultu na virtuálním počítači](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows).
+Tento článek se zaměřuje na scénář předávání citlivé hodnoty v jako parametr šablony. Nezabývá se scénářem nastavení vlastnosti virtuálního počítače na adresu URL certifikátu ve Key Vault. Šablonu pro rychlý Start v tomto scénáři najdete v tématu [instalace certifikátu z Azure Key Vault na virtuálním počítači](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows).
 
 ## <a name="deploy-key-vaults-and-secrets"></a>Nasazení trezorů klíčů a tajných kódů
 
-Chcete-li získat přístup k `enabledForTemplateDeployment` trezoru klíčů `true`během nasazení šablony, nastavte v trezoru klíčů na .
+Pro přístup k trezoru klíčů během nasazování šablony `enabledForTemplateDeployment` nastavte v trezoru klíčů `true`na.
 
-Pokud již trezor klíčů máte, ujistěte se, že umožňuje nasazení šablon.
+Pokud již máte Key Vault, ujistěte se, že umožňuje nasazení šablon.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -36,7 +36,7 @@ Set-AzKeyVaultAccessPolicy -VaultName ExampleVault -EnabledForTemplateDeployment
 
 ---
 
-Chcete-li vytvořit nový trezor klíčů a přidat tajný klíč, použijte:
+Pokud chcete vytvořit nový Key Vault a přidat tajný klíč, použijte:
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -65,7 +65,7 @@ $secret = Set-AzKeyVaultSecret -VaultName ExampleVault -Name 'ExamplePassword' -
 
 ---
 
-Jako vlastník trezoru klíčů máte automaticky přístup k vytváření tajných kódů. Pokud uživatel pracující s tajnými klíči není vlastníkem trezoru klíčů, udělte přístup pomocí:
+Jako vlastník trezoru klíčů automaticky máte přístup k vytváření tajných kódů. Pokud uživatel, který pracuje s tajnými kódy, není vlastníkem trezoru klíčů, udělte přístup pomocí:
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -89,19 +89,19 @@ Set-AzKeyVaultAccessPolicy `
 
 ---
 
-Další informace o vytváření trezorů klíčů a přidávání tajných kódů naleznete v tématu:
+Další informace o vytváření trezorů klíčů a přidávání tajných klíčů najdete v těchto tématech:
 
-- [Nastavení a načtení tajného klíče pomocí funkce cli](../../key-vault/secrets/quick-create-cli.md)
-- [Nastavení a načtení tajného klíče pomocí powershellu](../../key-vault/secrets/quick-create-powershell.md)
+- [Nastavení a načtení tajného klíče pomocí rozhraní příkazového řádku](../../key-vault/secrets/quick-create-cli.md)
+- [Nastavení a načtení tajného klíče pomocí PowerShellu](../../key-vault/secrets/quick-create-powershell.md)
 - [Nastavení a načtení tajného klíče pomocí portálu](../../key-vault/secrets/quick-create-portal.md)
-- [Nastavení a načtení tajného klíče pomocí rozhraní .NET](../../key-vault/secrets/quick-create-net.md)
-- [Nastavení a načtení tajného klíče pomocí souboru Node.js](../../key-vault/secrets/quick-create-node.md)
+- [Nastavení a načtení tajného klíče pomocí .NET](../../key-vault/secrets/quick-create-net.md)
+- [Nastavení a načtení tajného klíče pomocí Node. js](../../key-vault/secrets/quick-create-node.md)
 
-## <a name="grant-access-to-the-secrets"></a>Udělit přístup k tajným kódům
+## <a name="grant-access-to-the-secrets"></a>Udělení přístupu k tajným klíčům
 
-Uživatel, který šablonu nasazuje, musí mít `Microsoft.KeyVault/vaults/deploy/action` oprávnění pro obor skupiny prostředků a trezoru klíčů. Tento přístup udělují role [Vlastník](../../role-based-access-control/built-in-roles.md#owner) i [Přispěvatel.](../../role-based-access-control/built-in-roles.md#contributor) Pokud jste trezor klíčů vytvořili, jste vlastníkem, takže máte oprávnění.
+Uživatel, který šablonu nasadí, musí mít `Microsoft.KeyVault/vaults/deploy/action` oprávnění pro rozsah skupiny prostředků a trezoru klíčů. Tento přístup udělují i role [vlastníka](../../role-based-access-control/built-in-roles.md#owner) a [Přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) . Pokud jste vytvořili Trezor klíčů, jste vlastníkem, abyste měli oprávnění.
 
-Následující postup ukazuje, jak vytvořit roli s minimálním oprávněním a jak přiřadit uživatele
+Následující postup ukazuje, jak vytvořit roli s minimálním oprávněním a jak přiřadit uživatele.
 
 1. Vytvořte vlastní soubor JSON definice role:
 
@@ -121,7 +121,7 @@ Následující postup ukazuje, jak vytvořit roli s minimálním oprávněním a
       ]
     }
     ```
-    Nahraďte "000000000-0000-0000-0000-0000000000000000" ID předplatného.
+    Nahraďte "00000000-0000-0000-0000-000000000000" IDENTIFIKÁTORem předplatného.
 
 2. Vytvořte novou roli pomocí souboru JSON:
 
@@ -147,19 +147,19 @@ Následující postup ukazuje, jak vytvořit roli s minimálním oprávněním a
 
     ---
 
-    Ukázky přiřazují vlastní roli uživateli na úrovni skupiny prostředků.
+    V ukázkách se uživateli přiřadí vlastní role na úrovni skupiny prostředků.
 
-Při použití trezoru klíčů se šablonou pro [spravovanou aplikaci](../managed-applications/overview.md)je nutné udělit přístup k instančnímu objektu **zprostředkovatele prostředků zařízení.** Další informace najdete [v tématu Tajný klíč aplikace Access Key Vault při nasazování spravovaných aplikací Azure](../managed-applications/key-vault-access.md).
+Při použití Key Vault se šablonou pro [spravovanou aplikaci](../managed-applications/overview.md)je nutné udělit přístup k instančnímu objektu **poskytovatele prostředků zařízení** . Další informace najdete v tématu [přístup Key Vault tajného klíče při nasazení Azure Managed Applications](../managed-applications/key-vault-access.md).
 
 ## <a name="reference-secrets-with-static-id"></a>Referenční tajné klíče se statickým ID
 
-S tímto přístupem odkazujete na trezor klíčů v souboru parametrů, nikoli na šablonu. Následující obrázek ukazuje, jak soubor parametru odkazuje na tajný klíč a předá tuto hodnotu šabloně.
+S tímto přístupem odkazujete na Trezor klíčů v souboru parametrů, nikoli na šablonu. Následující obrázek ukazuje, jak soubor parametrů odkazuje na tajný kód a předá tuto hodnotu šabloně.
 
-![Diagram statického ID integrace trezoru klíčů Správce prostředků](./media/key-vault-parameter/statickeyvault.png)
+![Správce prostředků diagramu statického ID integrace trezoru klíčů](./media/key-vault-parameter/statickeyvault.png)
 
-[Kurz: Integrace trezoru klíčů Azure v nasazení šablony Správce prostředků](./template-tutorial-use-key-vault.md) používá tuto metodu.
+[Kurz: integrování Azure Key Vault v Správce prostředků Template Deployment](./template-tutorial-use-key-vault.md) používá tuto metodu.
 
-Následující šablona nasazuje server SQL, který obsahuje heslo správce. Parametr hesel je nastaven na zabezpečený řetězec. Šablona však neurčuje, odkud tato hodnota pochází.
+Následující šablona nasadí SQL Server, který obsahuje heslo správce. Parametr password je nastaven na zabezpečený řetězec. Ale šablona neurčuje, ze které hodnoty pochází.
 
 ```json
 {
@@ -195,9 +195,9 @@ Následující šablona nasazuje server SQL, který obsahuje heslo správce. Par
 }
 ```
 
-Nyní vytvořte soubor parametrů pro předchozí šablonu. V souboru parametrů zadejte parametr, který odpovídá názvu parametru v šabloně. Pro hodnotu parametru odkaz tajný klíč z trezoru klíčů. Na tajný klíč odkazujete předáním identifikátoru prostředku trezoru klíčů a názvu tajného klíče:
+Nyní vytvořte soubor parametrů pro předchozí šablonu. V souboru parametrů zadejte parametr, který odpovídá názvu parametru v šabloně. Pro hodnotu parametru odkázat na tajný klíč z trezoru klíčů. Odkazujte na tajný klíč předáním identifikátoru prostředku trezoru klíčů a názvu tajného kódu:
 
-V následujícím souboru parametrů musí tajný klíč trezoru klíčů již existovat a zadáte statickou hodnotu pro jeho ID prostředku.
+V následujícím souboru parametrů již musí existovat tajný klíč trezoru klíčů a pro jeho ID prostředku poskytnete statickou hodnotu.
 
 ```json
 {
@@ -222,14 +222,14 @@ V následujícím souboru parametrů musí tajný klíč trezoru klíčů již e
 }
 ```
 
-Pokud potřebujete použít jinou verzi než aktuální verzi, `secretVersion` použijte vlastnost.
+Pokud potřebujete použít jinou verzi tajného klíče, než je aktuální verze, použijte `secretVersion` vlastnost.
 
 ```json
 "secretName": "ExamplePassword",
 "secretVersion": "cd91b2b7e10e492ebb870a6ee0591b68"
 ```
 
-Nasaďte šablonu a předaďte v souboru parametrů:
+Nasaďte šablonu a předejte ji do souboru parametrů:
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -255,11 +255,11 @@ New-AzResourceGroupDeployment `
 
 ## <a name="reference-secrets-with-dynamic-id"></a>Referenční tajné klíče s dynamickým ID
 
-Předchozí část ukázala, jak předat id statického prostředku pro tajný klíč trezoru klíčů z parametru. V některých případech je však nutné odkazovat na tajný klíč trezoru klíčů, který se liší v závislosti na aktuálním nasazení. Nebo můžete chtít předat hodnoty parametrů do šablony, nikoli vytvořit referenční parametr v souboru parametrů. V obou případech můžete dynamicky generovat ID prostředku pro tajný klíč trezoru klíčů pomocí propojené šablony.
+Předchozí část ukázala, jak předat identifikátor statického prostředku pro tajný klíč trezoru klíčů z parametru. V některých scénářích ale musíte odkazovat na tajný klíč trezoru klíčů, který se liší v závislosti na aktuálním nasazení. Nebo můžete chtít předat hodnoty parametrů do šablony, nikoli vytvořit parametr odkazu v souboru parametrů. V obou případech můžete dynamicky generovat ID prostředku pro tajný kód trezoru klíčů pomocí propojené šablony.
 
-ID prostředku nelze v souboru parametrů dynamicky generovat, protože výrazy šablony nejsou v souboru parametrů povoleny.
+V souboru parametrů nelze dynamicky generovat ID prostředku, protože výrazy šablony nejsou povoleny v souboru parametrů.
 
-V nadřazené šabloně přidáte vnořenou šablonu a předáte parametr, který obsahuje dynamicky generované ID prostředku. Následující obrázek ukazuje, jak parametr v propojené šabloně odkazuje na tajný klíč.
+V nadřazené šabloně přidáte vnořenou šablonu a předáte parametr, který obsahuje dynamicky generované ID prostředku. Následující obrázek ukazuje, jak parametr v propojené šabloně odkazuje na tajný kód.
 
 ![Dynamické ID](./media/key-vault-parameter/dynamickeyvault.png)
 
@@ -375,5 +375,5 @@ Následující šablona dynamicky vytvoří ID trezoru klíčů a předá ho jak
 
 ## <a name="next-steps"></a>Další kroky
 
-- Obecné informace o trezorech klíčů najdete v tématu [Co je Azure Key Vault?](../../key-vault/general/overview.md).
-- Úplné příklady odkazování na klíče klíčů naleznete v [příkladech trezoru klíčů](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).
+- Obecné informace o trezorech klíčů najdete v tématu [co je Azure Key Vault?](../../key-vault/general/overview.md).
+- Kompletní Příklady referenčních tajných klíčů najdete v tématu [Key Vault příklady](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).

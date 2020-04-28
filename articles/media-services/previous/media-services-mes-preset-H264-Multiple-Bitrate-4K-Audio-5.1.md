@@ -1,6 +1,6 @@
 ---
-title: 264 Vícenásobný přenosový tok 4K Audio 5.1 | Dokumenty společnosti Microsoft
-description: Toto téma poskytuje přehled přednastavení **úlohy 264 Multiple Bitrate 4K Audio 5.1.**
+title: 264 víc přenosů 4K zvuku 5,1 | Microsoft Docs
+description: Téma obsahuje přehled o přednastavených **4Kch úlohách zvuk 5,1 264 s více přenosovými rychlostmi** .
 author: Juliako
 manager: femila
 editor: ''
@@ -15,24 +15,24 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 2466edb3d14ebbe9296fad087fce432b83005437
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61463680"
 ---
 # <a name="h264-multiple-bitrate-4k-audio-51"></a>H264 Multiple Bitrate 4K Audio 5.1
-`Media Encoder Standard`definuje sadu přednastavení kódování, které můžete použít při vytváření úloh kódování. Můžete buď použít `preset name` k určení formátu, do kterého chcete mediální soubor zakódovat. Nebo můžete vytvořit vlastní přednastavení JSON nebo XML (pomocí kódování UTF-8 nebo UTF-16. Vlastní přednastavení byste pak předali kodéru. Seznam všech přednastavených názvů podporovaných `Media Encoder Standard` tímto kodérem naleznete [v tématu Přednastavení úloh pro standard kodéru médií](media-services-mes-presets-overview.md).  
+`Media Encoder Standard`definuje sadu přednastavení kódování, kterou můžete použít při vytváření úloh kódování. Můžete buď použít `preset name` k určení formátu, ve kterém chcete mediální soubor zakódovat. Nebo můžete vytvořit vlastní přednastavení založené na JSON nebo XML (pomocí kódování UTF-8 nebo UTF-16). Pak byste měli předat vlastní předvolbu kodéru. Seznam všech přednastavených názvů podporovaných tímto `Media Encoder Standard` kodérem najdete v tématu [předvolby úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  
   
- Toto téma `H264 Multiple Bitrate 4K Audio 5.1` zobrazuje přednastavení ve formátu XML a JSON.  
+ Toto téma ukazuje `H264 Multiple Bitrate 4K Audio 5.1` Předvolby ve formátu XML a JSON.  
   
- Toto přednastavení vytváří sadu 12 souborů MP4 zarovnaných do GOP v rozsahu od 20000 kbps do 1000 kbps a zvuku AAC 5.1. Podrobné informace o profilu, přenosovérychlosti, vzorkovací frekvenci atd. Vysvětlení, co každý prvek znamená, a platné hodnoty pro každý prvek naleznete schéma [Standard kodéru médií](media-services-mes-schema.md).  
-  
-> [!NOTE]
->  Měli byste dostat typ rezervované jednotky Premium s kódy 4K. Další informace naleznete v tématu [Jak změnit velikost kódování](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
+ Tato předvolba vytvoří sadu 12 souborů MP4 zarovnaných na skupinu GOP, od 20000 do 1000 kb/s a AAC 5,1 zvuk. Podrobné informace o profilu, přenosové rychlosti, vzorkovací frekvenci atd. z této předvolby najdete v souboru XML nebo JSON definovaném níže. Vysvětlení toho, co každý prvek znamená, a platné hodnoty pro každý prvek naleznete v [Media Encoder Standard schématu](media-services-mes-schema.md).  
   
 > [!NOTE]
->  Při úpravách `Width` `Height` hodnot a napříč vrstvami se ujistěte, že poměr stran zůstává konzistentní. Například: 1920x1080, 1280x720, 1080x576, 640x360. Neměli byste používat směs poměrů stran, například: 1280x720, 720x480, 640x360.  
+>  Měli byste získat typ rezervované jednotky Premium s kódováním 4K. Další informace najdete v tématu [Jak škálovat kódování](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
+  
+> [!NOTE]
+>  Při úpravách `Width` hodnot `Height` a v rámci vrstev se ujistěte, že poměr stran zůstává konzistentní. Příklad: 1080, 1280 × 720, 1080x576, 640x360. Neměli byste používat kombinaci poměrů stran, například: 1280 × 720, 720x480, 640x360.  
   
  XML  
   

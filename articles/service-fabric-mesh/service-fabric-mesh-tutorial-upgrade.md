@@ -1,25 +1,25 @@
 ---
-title: Kurz – upgrade aplikace Azure Service Fabric Mesh
-description: Tento kurz je čtvrtá část řady a ukazuje, jak upgradovat aplikaci Azure Service Fabric Mesh přímo z Visual Studia.
+title: Kurz – upgrade aplikace sítě pro Azure Service Fabric
+description: Tento kurz je čtvrtou částí série a ukazuje, jak upgradovat aplikaci Service Fabric sítě Azure přímo ze sady Visual Studio.
 author: dkkapur
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 7cdb8868f760ef0f35ab90c06b411110f871738c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75351718"
 ---
-# <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>Kurz: Naučte se upgradovat aplikaci Service Fabric pomocí sady Visual Studio
+# <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>Kurz: informace o tom, jak upgradovat Service Fabric aplikaci pomocí sady Visual Studio
 
-Tento kurz je čtvrtá část řady a ukazuje, jak upgradovat aplikaci Azure Service Fabric Mesh přímo z Visual Studia. Upgrade bude zahrnovat aktualizaci kódu i aktualizaci konfigurace. Uvidíte, že kroky pro upgrade a publikování z v rámci sady Visual Studio jsou stejné.
+Tento kurz je čtvrtou částí série a ukazuje, jak upgradovat aplikaci Service Fabric sítě Azure přímo ze sady Visual Studio. Upgrade bude zahrnovat aktualizaci kódu i aktualizaci konfigurace. Uvidíte, že kroky pro upgrade a publikování v rámci sady Visual Studio jsou stejné.
 
 Co se v tomto kurzu naučíte:
 > [!div class="checklist"]
-> * Upgrade služby Service Fabric Mesh pomocí sady Visual Studio
+> * Upgrade služby Service Fabric sítě pomocí sady Visual Studio
 
 V této sérii kurzů se naučíte:
 > [!div class="checklist"]
@@ -37,35 +37,35 @@ Než začnete s tímto kurzem:
 
 * Pokud jste nenasadili aplikaci seznamu úkolů, postupujte podle pokynů v článku o [publikování webové aplikace Service Fabric Mesh](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md).
 
-## <a name="upgrade-a-service-fabric-mesh-service-by-using-visual-studio"></a>Upgrade služby Service Fabric Mesh pomocí sady Visual Studio
+## <a name="upgrade-a-service-fabric-mesh-service-by-using-visual-studio"></a>Upgrade služby Service Fabric sítě pomocí sady Visual Studio
 
-Tento článek ukazuje, jak upgradovat mikroslužbu v rámci aplikace. V tomto příkladu upravíme službu `WebFrontEnd` tak, aby zobrazovala kategorii úkolů a zvýšila množství procesoru, které je k dispozici. Pak inovujeme nasazenou službu.
+V tomto článku se dozvíte, jak upgradovat mikroslužbu v rámci aplikace. V tomto příkladu změníme `WebFrontEnd` službu tak, aby se zobrazila kategorie úlohy, a zvýšilo se množství procesoru, které je dané. Pak upgraduje nasazenou službu.
 
-## <a name="modify-the-config"></a>Změna konfigurace
+## <a name="modify-the-config"></a>Úprava konfigurace
 
-Když vytvoříte aplikaci Service Fabric Mesh, Visual Studio přidá soubor **parameters.yaml** pro každé prostředí nasazení (cloud a místní). V těchto souborech můžete definovat parametry a jejich hodnoty, na které pak lze odkazovat ze souborů Mesh *.yaml, například service.yaml nebo network.yaml.  Visual Studio poskytuje některé proměnné pro vás, například kolik procesoru služba může používat.
+Když vytvoříte aplikaci Service Fabric mřížka, Visual Studio přidá soubor **Parameters. yaml** pro každé prostředí nasazení (Cloud a místní). V těchto souborech můžete definovat parametry a jejich hodnoty, na které se pak můžete odkazovat z vaší sítě * soubory YAML, jako je Service. YAML nebo Network. yaml.  Visual Studio poskytuje některé proměnné za vás, například kolik CPU může služba využívat.
 
-Aktualizujeme `WebFrontEnd_cpu` parametr pro aktualizaci prostředků `1.5` procesoru v očekávání, že služba **WebFrontEnd** bude více využívána.
+Aktualizujeme `WebFrontEnd_cpu` parametr a aktualizujeme prostředky procesoru na, aby `1.5` se předpokládalo, že se služba **webendu** bude intenzivně používat.
 
-1. V projektu **todolistapp** otevřete v části **Environments** > **Cloud**soubor **parameters.yaml.** Upravte `WebFrontEnd_cpu`hodnotu `1.5`, na . Název parametru je označen názvem `WebFrontEnd_` služby jako osvědčený postup k jeho odlišení od parametrů se stejným názvem, které platí pro různé služby.
+1. V projektu **todolistapp** v části **prostředí** > **cloudu**otevřete soubor **Parameters. yaml** . `WebFrontEnd_cpu`Změňte hodnotu na `1.5`. Název parametru je před názvem `WebFrontEnd_` služby doporučený postup pro odlišení od parametrů stejného názvu, které se vztahují k různým službám.
 
     ```xml
     WebFrontEnd_cpu: 1.5
     ```
 
-2. Otevřete soubor **service.yaml** projektu **WebFrontEnd** v části**Zdroje služeb** **WebFrontEnd** > .
+2. Otevřete soubor **Service. yaml** projektu **webendu** v části**prostředky služby** **webendu** > .
 
-    Všimněte si, `cpu:` že v `"[parameters('WebFrontEnd_cpu')]"` `resources:` části, je nastavena na . Pokud je projekt sektován pro `'WebFrontEnd_cpu` cloud, hodnota pro bude převzata ze souboru **Environments** > **Cloud** > **parameters.yaml** a bude `1.5`. Pokud je projekt sektován tak, aby byl spuštěn místně, bude hodnota převzata ze souboru **Environments** > **Local** > **parameters.yaml** a bude "0.5".
+    Všimněte si, že `resources:` v části `cpu:` v je nastavena `"[parameters('WebFrontEnd_cpu')]"`na. Pokud projekt sestavíte pro Cloud `'WebFrontEnd_cpu` , hodnota pro bude provedena z**cloudových** > **parametrů prostředí** **Environments** > . yaml soubor a bude. `1.5` Pokud je projekt sestaven tak, aby běžel místně, hodnota bude provedena z **prostředí** > **místních** > **parametrů. yaml** a bude "0,5".
 
 > [!Tip]
-> Ve výchozím nastavení bude soubor parametrů, který je rovnocenným partnerem souboru profile.yaml, použit k zadání hodnot pro tento soubor profile.yaml.
-> Například Environments > Cloud > parameters.yaml poskytuje hodnoty parametrů pro prostředí > Cloud > profile.yaml.
+> Ve výchozím nastavení se soubor parametrů, který je partnerským souborem profilu. yaml, použije k zadání hodnot pro tento soubor Profile. yaml.
+> Například prostředí > cloudových > Parameters. yaml poskytuje hodnoty parametrů pro prostředí > cloudového > Profile. yaml.
 >
-> Tuto možnost můžete přepsat přidáním následujícího příkazu do`parametersFilePath=”relative or full path to the parameters file”` souboru `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` profile.yaml: Například nebo`parametersFilePath=”..\CommonParameters.yaml”`
+> To můžete přepsat přidáním následujícího do souboru Profile. yaml,`parametersFilePath=”relative or full path to the parameters file”` `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` například nebo.`parametersFilePath=”..\CommonParameters.yaml”`
 
 ## <a name="modify-the-model"></a>Úprava modelu
 
-Chcete-li zavést změnu kódu, přidejte `Category` vlastnost do `ToDoItem` třídy v souboru. `ToDoItem.cs`
+Chcete-li zavést změnu kódu, přidejte `Category` do `ToDoItem` třídy v `ToDoItem.cs` souboru vlastnost.
 
 ```csharp
 public class ToDoItem
@@ -75,7 +75,7 @@ public class ToDoItem
 }
 ```
 
-Potom aktualizujte metodu `Load()` ve stejném souboru a nastavte kategorii na výchozí řetězec:
+Pak aktualizujte `Load()` metodu do stejného souboru, chcete-li nastavit kategorii na výchozí řetězec:
 
 ```csharp
 public static ToDoItem Load(string description, int index, bool completed)
@@ -93,7 +93,7 @@ public static ToDoItem Load(string description, int index, bool completed)
 
 ## <a name="modify-the-service"></a>Úprava služby
 
-Projekt `WebFrontEnd` je ASP.NET základní aplikace s webovou stránkou, která zobrazuje položky seznamu úkolů. V `WebFrontEnd` projektu otevřete `Index.cshtml` a přidejte následující dva řádky, které jsou uvedeny níže, pro zobrazení kategorie úkolu:
+`WebFrontEnd` Projekt je ASP.NET Core aplikace s webovou stránkou, která zobrazuje položky seznamu úkolů. V `WebFrontEnd` projektu otevřete `Index.cshtml` a přidejte následující dva řádky, které jsou uvedeny níže, aby se zobrazila Kategorie úkolu:
 
 ```HTML
 <div>
@@ -119,43 +119,43 @@ Projekt `WebFrontEnd` je ASP.NET základní aplikace s webovou stránkou, která
 </div>
 ```
 
-Vytvořte a spusťte aplikaci a ověřte, zda se na webové stránce se seznamem úkolů zobrazuje nový sloupec kategorie.
+Sestavte a spusťte aplikaci, abyste ověřili, že se na webové stránce zobrazí nový sloupec kategorie, který obsahuje seznam úkolů.
 
-## <a name="upgrade-the-app-from-visual-studio"></a>Upgrade aplikace z Visual Studia
+## <a name="upgrade-the-app-from-visual-studio"></a>Upgrade aplikace ze sady Visual Studio
 
-Ať už provádíte upgrade kódu nebo upgrade konfigurace (v tomto případě děláme obojí), upgradujte aplikaci Service Fabric Mesh v Azure kliknutím pravým tlačítkem myši na **todolistapp** v sadě Visual Studio a pak vyberte **Publikovat...**
+Bez ohledu na to, jestli provádíte upgrade kódu nebo upgrade konfigurace (v tomto případě provádíme obojí), upgradujte svou Service Fabricovou aplikaci v Azure tak, že kliknete pravým tlačítkem na **todolistapp** v aplikaci Visual Studio a pak vyberete **publikovat...**
 
 Zobrazí se dialogové okno **Publikovat aplikaci Service Fabricu**.
 
-Pomocí rozevíracího nabídky **Cílový profil** vyberte soubor profile.yaml, který chcete použít pro toto nasazení. Upgradujeme aplikaci v cloudu, takže v rozbalovací části vybereme **cloud.yaml,** který použije `WebFrontEnd_cpu` hodnotu 1.0 definovanou v tomto souboru.
+Pomocí rozevíracího seznamu **cílový profil** vyberte soubor Profile. yaml, který chcete použít pro toto nasazení. Upgradujete aplikaci v cloudu, takže v rozevíracím seznamu vybereme soubor **Cloud. yaml** , který bude používat `WebFrontEnd_cpu` hodnotu 1,0 definovanou v tomto souboru.
 
 ![Dialogové okno pro publikování aplikace Service Fabric Mesh v sadě Visual Studio](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-dialog.png)
 
-Vyberte účet a předplatné Azure. Nastavte **umístění** na umístění, které jste použili při původním publikování aplikace pro práci do Azure. Tento článek používá **východní USA**.
+Vyberte účet a předplatné Azure. Nastavte **umístění** na místo, které jste použili při původním publikování aplikace v aplikaci do Azure. Tento článek se používá **východní USA**.
 
-Nastavte **skupinu prostředků** na skupinu prostředků, kterou jste použili při původním publikování aplikace pro práci do Azure.
+Nastavte **skupinu prostředků** na skupinu prostředků, kterou jste použili při původním publikování aplikace v aplikaci do Azure.
 
-Nastavte **Azure Container Registry** na název registru kontejneru Azure, který jste vytvořili při původním publikování aplikace pro práci do Azure.
+Nastavte **Azure Container Registry** na název služby Azure Container Registry, který jste vytvořili při původním publikování aplikace v aplikaci do Azure.
 
-V dialogovém okně publikovat stiskněte tlačítko **Publikovat** a upgradujte aplikaci pro práci v Azure.
+Kliknutím na tlačítko **publikovat** v dialogovém okně Publikovat provedete upgrade aplikace na aplikaci v Azure.
 
-Sledujte průběh upgradu výběrem podokna **Nástroje prostředků infrastruktury služeb** v okně **Výstup** sady Visual Studio. 
+Sledujte průběh upgradu tak, že v okně **výstup** sady Visual Studio vyberete podokno **nástroje Service Fabric** . 
 
-Po vytvoření bitové kopie a jeho zasunutí do registru kontejnerů Azure se ve výstupu, na který můžete kliknout a sledovat nasazení na webu Azure Portal, zobrazí odkaz **Pro.**
+Po sestavení obrázku a vložení do Azure Container Registry se ve výstupu zobrazí odkaz **pro stav** , ve kterém můžete kliknout a monitorovat nasazení v Azure Portal.
 
-Po dokončení upgradu se ve výstupu **Nástroje prostředků pro služby** zobrazí adresa IP a port aplikace ve formě adresy URL.
+Po dokončení upgradu zobrazí **nástroje Service Fabric** výstup IP adresu a port vaší aplikace ve formě adresy URL.
 
 ```json
 The application was deployed successfully and it can be accessed at http://10.000.38.000:20000.
 ```
 
-Spusťte webový prohlížeč a přejděte na tuto adresu URL, abyste se mohli podívat na web spuštěný v Azure. Nyní byste měli vidět webovou stránku, která obsahuje sloupec kategorie.
+Spusťte webový prohlížeč a přejděte na tuto adresu URL, abyste se mohli podívat na web spuštěný v Azure. Nyní by se měla zobrazit webová stránka, která obsahuje sloupec kategorie.
 
 ## <a name="next-steps"></a>Další kroky
 
 V této části kurzu jste se dozvěděli:
 > [!div class="checklist"]
-> * Jak upgradovat aplikaci Service Fabric Mesh pomocí Sady Visual Studio
+> * Postup upgradu aplikace Service Fabric sítě pomocí sady Visual Studio
 
 Přejděte k dalšímu kurzu:
 > [!div class="nextstepaction"]

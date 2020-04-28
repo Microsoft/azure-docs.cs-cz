@@ -1,5 +1,5 @@
 ---
-title: Správa plánů šířky pásma v bráně Azure Data Box Gateway | Dokumenty společnosti Microsoft
+title: Správa plánů šířky pásma na Azure Data Box Gateway | Microsoft Docs
 description: Popisuje používání webu Azure Portal ke správě plánů služby Bandwidth ve službě Azure Data Box Gateway.
 services: databox
 author: alkohli
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 63f3572dcb5affb9fcf89d86a665bef9414cb011
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60755301"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-gateway"></a>Web Azure Portal můžete použít ke správě plánů služby Bandwidth ve službě Azure Data Box Gateway  
@@ -44,7 +44,7 @@ Pokud chcete přidat uživatele, proveďte na webu Azure Portal následující k
    2. Pokud tento plán běží celý den, můžete zaškrtnout možnost **Celý den**. 
    3. **Rychlost šířky pásma** je šířka pásma v megabitech za sekundu (Mb/s), používaná vašim zařízením při operacích zahrnujících cloud (nahrávání i stahování). Do tohoto pole zadejte číslo od 1 do 1 000. 
    4. Pokud nechcete omezit nahrávání a stahování dat, zaškrtněte možnost **Neomezená šířka pásma**. 
-   5. Klikněte na **Přidat**.
+   5. Klikněte na tlačítko **Add** (Přidat).
 
       ![Přidání uživatele kliknutím](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-2.png)
 

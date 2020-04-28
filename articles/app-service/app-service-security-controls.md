@@ -1,63 +1,63 @@
 ---
 title: Ovládací prvky zabezpečení
-description: Najděte kontrolní seznam ovládacích prvků zabezpečení pro vyhodnocení služby Azure App Service pro vaši organizaci.
+description: Vyhledejte kontrolní seznam bezpečnostních ovládacích prvků pro vyhodnocení Azure App Service vaší organizace.
 author: msmbaldwin
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 2586821c4c48f809efb5408c3cdae5e42e3b3fcf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74671456"
 ---
-# <a name="security-controls-for-azure-app-service"></a>Ovládací prvky zabezpečení pro službu Azure App Service
+# <a name="security-controls-for-azure-app-service"></a>Ovládací prvky zabezpečení pro Azure App Service
 
-Tento článek dokumentuje ovládací prvky zabezpečení integrované do služby Azure App Service.
+Tento článek popisuje ovládací prvky zabezpečení integrované do Azure App Service.
 
 [!INCLUDE [Security controls header](../../includes/security-controls-header.md)]
 
-## <a name="network"></a>Network (Síť)
+## <a name="network"></a>Síť
 
-| Ovládací prvek zabezpečení | Ano/Ne | Poznámky | Dokumentace
+| Řízení zabezpečení | Ano/Ne | Poznámky | Dokumentace
 |---|---|--|
-| Podpora koncového bodu služby| Ano | K dispozici pro službu App Service.| [Omezení přístupu k službě Azure App Service](app-service-ip-restrictions.md)
-| Podpora vstřikování virtuální sítě| Ano | Prostředí služby App Service jsou privátní implementace služby App Service určené pro jednoho zákazníka vložené do virtuální sítě zákazníka. | [Úvod do služby App Service Environment](environment/intro.md)
-| Podpora izolace sítě a brány firewall| Ano | Pro veřejné víceklientské varianty app service, zákazníci mohou nakonfigurovat síťové aklů (OMEZENÍ IP) uzamknout povolené příchozí provoz.  Prostředí služby App Service se nasazují přímo do virtuálních sítí, a proto je lze zabezpečit pomocí cílů sítě. | [Omezení přístupu k službě Azure App Service](app-service-ip-restrictions.md)
-| Podpora vynuceného tunelování| Ano | Prostředí služby App Service lze nasadit do virtuální sítě zákazníka, kde je nakonfigurováno vynucené tunelové propojení. | [Konfigurace vynuceného tunelového propojení ve službě App Service Environment](environment/forced-tunnel-support.md)
+| Podpora koncového bodu služby| Ano | K dispozici pro App Service.| [Omezení přístupu Azure App Service](app-service-ip-restrictions.md)
+| Podpora vkládání virtuální sítě| Ano | App Service prostředí jsou soukromá implementace App Service vyhrazená pro jednoho zákazníka, který je vložený do virtuální sítě zákazníka. | [Úvod do služby App Service Environment](environment/intro.md)
+| Izolace sítě a podpora brány firewall| Ano | Pro účely App Service veřejné varianty pro více tenantů můžou zákazníci nakonfigurovat seznamy ACL sítě (omezení IP adres), aby se mohl zamknout povolený příchozí provoz.  Prostředí App Service se nasazují přímo do virtuálních sítí, takže je můžete zabezpečit pomocí skupin zabezpečení sítě. | [Omezení přístupu Azure App Service](app-service-ip-restrictions.md)
+| Podpora vynuceného tunelování| Ano | Prostředí App Service můžete nasadit do virtuální sítě zákazníka, ve které je nakonfigurované vynucené tunelování. | [Konfigurace vynuceného tunelového propojení ve službě App Service Environment](environment/forced-tunnel-support.md)
 
-## <a name="monitoring--logging"></a>Sledování & protokolování
+## <a name="monitoring--logging"></a>Monitorování protokolování &
 
-| Ovládací prvek zabezpečení | Ano/Ne | Poznámky | Dokumentace
+| Řízení zabezpečení | Ano/Ne | Poznámky | Dokumentace
 |---|---|--|
-| Podpora monitorování Azure (analýza protokolů, přehledy aplikací atd.)| Ano | Služba App Service se integruje s Application Insights pro jazyky, které podporují Application Insights (Full .NET Framework, .NET Core, Java a Node.JS).  Viz [Monitorování výkonu služby Azure App Service](../azure-monitor/app/azure-web-apps.md). Služba App Service také odesílá metriky aplikací do Azure Monitoru. | [Monitorování aplikací ve službě Azure App Service](web-sites-monitor.md)
-| Protokolování a audit roviny řízení a správy| Ano | Všechny operace správy prováděné na objektech služby App Service probíhají prostřednictvím [Správce prostředků Azure](../azure-resource-manager/index.yml). Historické protokoly těchto operací jsou k dispozici jak na portálu, tak prostřednictvím rozhraní příkazového příkazu. | [Operace zprostředkovatele prostředků Azure Resource Manager](../role-based-access-control/resource-provider-operations.md#microsoftweb), [az monitor protokol aktivit](/cli/azure/monitor/activity-log)
-| Protokolování a audit roviny dat | Ne | Rovina dat pro službu App Service je vzdálená sdílená složka obsahující obsah nasazeného webu zákazníkem.  Neexistuje žádný audit vzdálené sdílené složky. |
+| Podpora monitorování Azure (Log Analytics, App Insights atd.)| Ano | App Service se integruje s Application Insights pro jazyky, které podporují Application Insights (kompletní .NET Framework, .NET Core, Java a Node. JS).  Viz [monitorování výkonu Azure App Service](../azure-monitor/app/azure-web-apps.md). App Service také odesílá metriky aplikace do Azure Monitor. | [Monitorování aplikací v Azure App Service](web-sites-monitor.md)
+| Protokolování a audit roviny řízení a správy| Ano | Všechny operace správy prováděné s App Service objekty nastávají přes [Azure Resource Manager](../azure-resource-manager/index.yml). Historické protokoly těchto operací jsou k dispozici na portálu i prostřednictvím rozhraní příkazového řádku. | [Azure Resource Manager operací poskytovatele prostředků](../role-based-access-control/resource-provider-operations.md#microsoftweb), [AZ monitor Activity-log](/cli/azure/monitor/activity-log)
+| Protokolování a audit roviny dat | Ne | Rovina dat pro App Service je vzdálená sdílená složka, která obsahuje obsah webu nasazeného zákazníka.  Neexistuje žádné auditování sdílené složky vzdáleného souboru. |
 
 ## <a name="identity"></a>Identita
 
-| Ovládací prvek zabezpečení | Ano/Ne | Poznámky |  Dokumentace
+| Řízení zabezpečení | Ano/Ne | Poznámky |  Dokumentace
 |---|---|--|
-| Ověřování| Ano | Zákazníci můžou vytvářet aplikace ve službě App Service, které se automaticky integrují s [Azure Active Directory (Azure AD)](../active-directory/index.yml) a s dalšími poskytovateli identit kompatibilními s OAuth Pro správu přístupu k prostředkům služby App Service je veškerý přístup řízen kombinací ověřených primárních a azure resource managerů RBAC rolí. | [Ověřování a autorizace v prostředí Azure App Service](overview-authentication-authorization.md)
-| Autorizace| Ano | Pro přístup ke správě prostředků služby App Service je veškerý přístup řízen kombinací ověřených primárních objektů Azure AD a rolí RBAC Azure Resource Manager.  | [Ověřování a autorizace v prostředí Azure App Service](overview-authentication-authorization.md)
+| Ověřování| Ano | Zákazníci můžou sestavovat aplikace na App Service, které se automaticky integrují s [Azure Active Directory (Azure AD)](../active-directory/index.yml) , stejně jako další zprostředkovatelé identit kompatibilní s OAuth pro přístup pro správu k App Service assetů. veškerý přístup se řídí kombinací ověřených objektů zabezpečení Azure AD a Azure Resource Manager rolí RBAC. | [Ověřování a autorizace v prostředí Azure App Service](overview-authentication-authorization.md)
+| Autorizace| Ano | Pro přístup pro správu k prostředkům App Service se veškerý přístup řídí kombinací ověřeného objektu zabezpečení Azure AD a Azure Resource Manager rolí RBAC.  | [Ověřování a autorizace v prostředí Azure App Service](overview-authentication-authorization.md)
 
 ## <a name="data-protection"></a>Ochrana dat
 
-| Ovládací prvek zabezpečení | Ano/Ne | Poznámky | Dokumentace
+| Řízení zabezpečení | Ano/Ne | Poznámky | Dokumentace
 |---|---|--|
-| Šifrování na straně serveru v klidovém stavu: Klíče spravované společností Microsoft | Ano | Obsah souboru webu se ukládá ve službě Azure Storage, která automaticky šifruje obsah v klidovém stavu. <br><br>Tajné informace zadané zákazníkem jsou v klidovém stavu zašifrovány. Tajné klíče jsou šifrovány v klidovém stavu při ukládání v konfiguračních databázích služby App Service.<br><br>Místně připojené disky mohou být volitelně použity jako dočasné úložiště weby (D:\local a %TMP%). Místně připojené disky nejsou šifrovány v klidovém stavu. | [Šifrování Azure Storage pro data v klidovém stavu](../storage/common/storage-service-encryption.md)
-| Šifrování na straně serveru v klidovém stavu: klíče spravované zákazníkem (BYOK) | Ano | Zákazníci si mohou uložit tajné klíče aplikací v trezoru klíčů a načíst je za běhu. | [Použití odkazů trezoru klíčů pro službu App Service a funkce Azure (preview)](app-service-key-vault-references.md)
-| Šifrování na úrovni sloupců (Azure Data Services)| Není dostupné. | |
-| Šifrování při přenosu (například šifrování ExpressRoute, šifrování ve virtuální síti a šifrování virtuální sítě)| Ano | Zákazníci mohou nakonfigurovat webové servery tak, aby vyžadovaly a používaly protokol HTTPS pro příchozí provoz.  | [Jak vytvořit jenom azure app service HTTPS](https://blogs.msdn.microsoft.com/benjaminperkins/2017/11/30/how-to-make-an-azure-app-service-https-only/) (blog post)
-| Zašifrovaná volání rozhraní API| Ano | Volání správy ke konfiguraci služby App Service probíhají prostřednictvím volání [Azure Resource Manager](../azure-resource-manager/index.yml) přes protokol HTTPS. |
+| Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft | Ano | Obsah souboru webu je uložen v Azure Storage, který automaticky zašifruje obsah v klidovém formátu. <br><br>Tajné kódy poskytnuté zákazníkem jsou zašifrované v klidovém stavu. Tajné klíče jsou v klidovém stavu zašifrované a ukládají se do konfiguračních databází App Service.<br><br>Místně připojené disky je možné volitelně použít jako dočasné úložiště na webech (D:\Local a% TMP%). Místně připojené disky nejsou v klidovém stavu šifrované. | [Azure Storage šifrování dat v klidovém umístění](../storage/common/storage-service-encryption.md)
+| Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | Ano | Zákazníci se můžou rozhodnout ukládat tajná klíč aplikace do Key Vault a načíst je za běhu. | [Použití Key Vault odkazů pro App Service a Azure Functions (Preview)](app-service-key-vault-references.md)
+| Šifrování na úrovni sloupce (Azure Data Services)| – | |
+| Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Ano | Zákazníci mohou nakonfigurovat webové servery tak, aby vyžadovaly a používaly protokol HTTPS pro příchozí provoz.  | [Jak nastavit jenom Azure App Service https](https://blogs.msdn.microsoft.com/benjaminperkins/2017/11/30/how-to-make-an-azure-app-service-https-only/) (Blogový příspěvek)
+| Zašifrovaná volání rozhraní API| Ano | Volání správy ke konfiguraci App Service nastávají prostřednictvím volání [Azure Resource Manager](../azure-resource-manager/index.yml) prostřednictvím protokolu HTTPS. |
 
 ## <a name="configuration-management"></a>Správa konfigurace
 
-| Ovládací prvek zabezpečení | Ano/Ne | Poznámky | Dokumentace
+| Řízení zabezpečení | Ano/Ne | Poznámky | Dokumentace
 |---|---|--|
-| Podpora správy konfigurace (správa verzí konfigurace atd.)| Ano | Pro operace správy lze stav konfigurace služby App Service exportovat jako šablonu Azure Resource Manager a v průběhu času se bude verzí. Pro operace s provozem runtime mohou zákazníci udržovat více různých živých verzí aplikace pomocí funkce slotů pro nasazení služby App Service. | 
+| Podpora správy konfigurace (Správa verzí konfigurace atd.)| Ano | V případě operací správy lze stav konfigurace App Service exportovat jako šablonu Azure Resource Manager a v průběhu času. Pro běhové operace můžou zákazníci spravovat několik různých živých verzí aplikace pomocí funkce App Servicech slotů nasazení. | 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [integrovaných ovládacích prvcích zabezpečení napříč službami Azure](../security/fundamentals/security-controls.md).
+- Přečtěte si další informace o [integrovaných kontrolních prvcích zabezpečení napříč službami Azure](../security/fundamentals/security-controls.md).

@@ -1,6 +1,6 @@
 ---
-title: 'Interoperabilita v funkcích back-endového připojení Azure: Podrobnosti o konfiguraci | Dokumenty společnosti Microsoft'
-description: Tento článek popisuje podrobnosti konfigurace pro nastavení testu, které můžete použít k analýze interoperability mezi ExpressRoute, VPN mezi lokalitami a partnerským vztahem virtuální sítě v Azure.
+title: 'Interoperabilita funkcí back-end připojení Azure: podrobnosti konfigurace | Microsoft Docs'
+description: Tento článek popisuje konfigurační údaje pro instalaci testu, které můžete použít k analýze vzájemné funkční spolupráce mezi ExpressRoute, VPN typu Site-to-site a partnerského vztahu virtuálních sítí v Azure.
 documentationcenter: na
 services: networking
 author: rambk
@@ -11,47 +11,47 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 9c4a57111566248d3537cab0d9d85c0c3be874a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "68335940"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Interoperabilita v funkcích back-endu Azure: Testování podrobností konfigurace
+# <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Interoperabilita funkcí back-end připojení Azure: podrobnosti konfigurace testu
 
-Tento článek popisuje podrobnosti konfigurace [testovacího nastavení][Setup]. Nastavení testu vám pomůže analyzovat, jak síťové služby Azure spolupracují na úrovni roviny řízení a na úrovni roviny dat.
+Tento článek popisuje konfigurační podrobnosti [nastavení testu][Setup]. Nastavení testu vám pomůže analyzovat, jak síťové služby Azure spolupracují na úrovni roviny ovládacího prvku a roviny dat.
 
-## <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>Připojení virtuální sítě Paprsku pomocí partnerského vztahu virtuální sítě
+## <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>Připojení k virtuální síti na straně koncové sítě pomocí partnerského vztahu virtuální sítě
 
-Následující obrázek znázorňuje podrobnosti partnerského vztahu virtuální sítě Azure o virtuální síti s paprskem. Informace o tom, jak nastavit partnerský vztah mezi dvěma virtuálními sítěmi, najdete v [tématu Správa partnerského vztahu virtuální sítě][VNet-Config]. Pokud chcete, aby virtuální síť pro paprsky používala brány připojené k virtuální síti rozbočovače, vyberte **Použít vzdálené brány**.
+Následující obrázek ukazuje podrobnosti partnerského vztahu Azure Virtual Network pro virtuální síť rozbočovače (VNet). Další informace o tom, jak nastavit partnerský vztah mezi dvěma virtuální sítě, najdete v tématu [Správa partnerského vztahu virtuální][VNet-Config]sítě. Pokud chcete, aby virtuální síť rozbočovače používala brány, které jsou připojené k virtuální síti centra, vyberte **použít vzdálené brány**.
 
-[![1]][1]
+[![první]][1]
 
-Na následujícím obrázku jsou zobrazeny podrobnosti partnerského vztahu virtuální sítě virtuální sítě. Pokud chcete, aby virtuální síť rozbočovače povolila virtuální síti pro paprsky používat brány rozbočovače, vyberte **Povolit přenos brány**.
+Následující obrázek ukazuje podrobnosti partnerského vztahu virtuální sítě pro virtuální síť centra. Pokud chcete, aby virtuální síť rozbočovače povolovala použití bran rozbočovače, vyberte možnost **Povolit přenos brány**.
 
-[![2]][2]
+[![odst]][2]
 
-## <a name="branch-vnet-connectivity-by-using-a-site-to-site-vpn"></a>Připojení virtuální sítě pobočky pomocí sítě VPN mezi lokalitami
+## <a name="branch-vnet-connectivity-by-using-a-site-to-site-vpn"></a>Připojení k virtuální síti větví pomocí sítě VPN typu Site-to-site
 
-Nastavte připojení VPN mezi sítěmi SITE-TO-site mezi rozbočovačem a virtuálními sítěmi pobočky pomocí bran VPN v azure vpn gateway. Ve výchozím nastavení používají brány VPN a brány Azure ExpressRoute hodnotu číslo soukromého autonomního systému (ASN) **65515**. Hodnotu ASN můžete změnit v bráně VPN. V testovacím nastavení se hodnota ASN brány virtuální sítě VPN změní na **65516** pro podporu směrování eBGP mezi rozbočovačem a virtuálními sítěmi pobočky.
-
-
-[![3]][3]
+Nastavte připojení VPN typu Site-to-site mezi centrem a větví virtuální sítě pomocí bran VPN Gateway v Azure VPN Gateway. Ve výchozím nastavení používají brány sítě VPN a brány Azure ExpressRoute privátní hodnotu autonomního systému číslo (ASN) **65515**. Hodnotu ASN můžete změnit v VPN Gateway. V nastavení testu se hodnota ASN brány VPN virtuální sítě pro větev změnila na **65516** , aby podporovala eBGP směrování mezi virtuální sítě centra a větví.
 
 
-## <a name="on-premises-location-1-connectivity-by-using-expressroute-and-a-site-to-site-vpn"></a>Připojení k místní poloze 1 pomocí expressroute a sítě VPN site-to-site
+[![1]][3]
+
+
+## <a name="on-premises-location-1-connectivity-by-using-expressroute-and-a-site-to-site-vpn"></a>Připojení k místnímu umístění 1 pomocí ExpressRoute a VPN typu Site-to-site
 
 ### <a name="expressroute-1-configuration-details"></a>Podrobnosti konfigurace ExpressRoute 1
 
-Následující obrázek znázorňuje konfiguraci okruhu Azure Region 1 ExpressRoute směrem k místním směrovačům edge zákazníka location 1 (CE):
+Následující obrázek ukazuje konfiguraci okruhu ExpressRoute Azure region 1 k místním směrovačům umístění 1 pro zákazníky (CE):
 
 [![4]][4]
 
-Následující obrázek znázorňuje konfiguraci připojení mezi okruhem ExpressRoute 1 a virtuální sítí rozbočovače:
+Následující obrázek znázorňuje konfiguraci připojení mezi okruhem ExpressRoute 1 a virtuální sítí centra:
 
-[![5]][5]
+[![čl]][5]
 
-V následujícím seznamu je uvedena primární konfigurace směrovače CE pro privátní připojení partnerského vztahu ExpressRoute. (Směrovače Cisco ASR1000 se používají jako směrovače CE v testovacím nastavení.) Když jsou okruhy VPN a ExpressRoute mezi lokalitami nakonfigurovány paralelně pro připojení místní sítě k Azure, Azure ve výchozím nastavení upřednostňuje okruh ExpressRoute. Aby se zabránilo asymetrickému směrování, měla by místní síť také upřednostňovat připojení ExpressRoute před připojením VPN mezi lokalitami. Následující konfigurace stanoví stanovení priority pomocí atributu **místní předvolby** protokolu BGP:
+Následující seznam ukazuje konfiguraci primárního směrovače CE pro připojení privátního partnerského vztahu ExpressRoute. (V nastavení testu se používají směrovače Cisco ASR1000 jako směrovače CE.) Pokud jsou okruhy VPN typu Site-to-site a ExpressRoute nastaveny paralelně pro připojení místní sítě k Azure, Azure ve výchozím nastavení upřednostní okruh ExpressRoute. Aby se zabránilo asymetrickému směrování, místní síť by měla také upřednostnit ExpressRoute připojení prostřednictvím připojení VPN typu Site-to-site. Následující konfigurace vytvoří stanovení priority pomocí atributu **místní předvolby** protokolu BGP:
 
     interface TenGigabitEthernet0/0/0.300
      description Customer 30 private peering to Azure
@@ -91,9 +91,9 @@ V následujícím seznamu je uvedena primární konfigurace směrovače CE pro p
     ip prefix-list Cust30_to_Private seq 10 permit 10.2.30.0/25
     !
 
-### <a name="site-to-site-vpn-configuration-details"></a>Podrobnosti o konfiguraci sítě VPN mezi lokalitami
+### <a name="site-to-site-vpn-configuration-details"></a>Podrobnosti konfigurace sítě Site-to-Site VPN
 
-V následujícím seznamu je uvedena primární konfigurace směrovače CE pro připojení VPN typu site-to-site:
+Následující seznam uvádí konfiguraci primárního směrovače CE pro připojení VPN typu Site-to-site:
 
     crypto ikev2 proposal Cust30-azure-proposal
      encryption aes-cbc-256 aes-cbc-128 3des
@@ -148,69 +148,69 @@ V následujícím seznamu je uvedena primární konfigurace směrovače CE pro p
     !
     ip route vrf 30 10.10.30.254 255.255.255.255 Tunnel30
 
-## <a name="on-premises-location-2-connectivity-by-using-expressroute"></a>Připojení k místnímu umístění 2 pomocí expressroute
+## <a name="on-premises-location-2-connectivity-by-using-expressroute"></a>Připojení k místnímu umístění 2 pomocí ExpressRoute
 
-Druhý okruh ExpressRoute v těsné blízkosti místní lokace 2 spojuje místní lokaci 2 s virtuální sítí rozbočovače. Následující obrázek znázorňuje druhou konfiguraci ExpressRoute:
+Druhý okruh ExpressRoute, v bližší blízkosti k místnímu umístění 2, připojuje místní umístění 2 k virtuální síti rozbočovače. Následující obrázek ukazuje druhou konfiguraci ExpressRoute:
 
 [![6]][6]
 
-Následující obrázek znázorňuje konfiguraci připojení mezi druhým okruhem ExpressRoute a virtuální sítí rozbočovače:
+Následující obrázek znázorňuje konfiguraci připojení mezi druhým okruhem ExpressRoute a virtuální sítí centra:
 
-[![7]][7]
+[![čl]][7]
 
-ExpressRoute 1 propojuje virtuální síť rozbočovače i místní lokaci 1 se vzdálenou virtuální sítí v jiné oblasti Azure:
+ExpressRoute 1 připojuje virtuální síť centra i místní umístění 1 ke vzdálené virtuální síti v jiné oblasti Azure:
 
 [![8]][8]
 
-## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>Připojení ExpressRoute a vpn site-to-site v tandemu
+## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>ExpressRoute a připojení VPN typu Site-to-site společně
 
-###  <a name="site-to-site-vpn-over-expressroute"></a>VPN mezi lokalitami přes ExpressRoute
+###  <a name="site-to-site-vpn-over-expressroute"></a>VPN typu Site-to-site přes ExpressRoute
 
-Síť VPN typu site-to-site můžete nakonfigurovat pomocí partnerského vztahu Microsoftu expressroute k soukromé výměně dat mezi místní sítí a virtuálními sítěmi Azure. Pomocí této konfigurace si můžete vyměňovat data s důvěrností, pravostí a integritou. Výměna dat je také anti-replay. Další informace o konfiguraci sítě IPsec VPN sítě na webu v režimu tunelového propojení pomocí partnerského vztahu Microsoft u ExpressRoute naleznete v [tématu Síť VPN nad programem ExpressRoute Microsoft][S2S-Over-ExR]. 
+SÍŤ VPN typu Site-to-site můžete nakonfigurovat pomocí partnerského vztahu ExpressRoute Microsoftu pro soukromou výměnu dat mezi vaší místní sítí a Azure virtuální sítě. V této konfiguraci můžete vyměňovat data s důvěrnými, pravostmi a integritou. Výměna dat je také anti-Play. Další informace o tom, jak nakonfigurovat síť VPN typu Site-to-Site VPN v tunelovém režimu pomocí partnerského vztahu Microsoftu ExpressRoute, najdete v tématu [VPN typu Site-to-site over ExpressRoute Microsoft peering][S2S-Over-ExR]. 
 
-Primární maješku konfigurace sítě VPN typu site-to-site, která používá partnerský vztah Microsoftu, je propustnost. Propustnost tunelového propojení IPsec je omezena kapacitou brány VPN. Propustnost brány VPN je nižší než propustnost ExpressRoute. V tomto scénáři pomocí tunelu IPsec pro vysoce zabezpečené přenosy a pomocí soukromého partnerského vztahu pro všechny ostatní přenosy pomáhá optimalizovat využití šířky pásma ExpressRoute.
+Primární omezení konfigurace sítě Site-to-Site VPN, která používá partnerský vztah Microsoft, je propustnost. Propustnost prostřednictvím tunelu IPsec je omezená na kapacitu brány VPN. Propustnost brány VPN Gateway je nižší než ExpressRoute propustnost. V tomto scénáři pomáhá použití tunelového propojení IPsec pro vysoce zabezpečený provoz a používání privátních partnerských vztahů pro všechny ostatní přenosy optimalizovat využití šířky pásma ExpressRoute.
 
-### <a name="site-to-site-vpn-as-a-secure-failover-path-for-expressroute"></a>VPN site-to-site jako bezpečná cesta převzetí služeb při selhání pro ExpressRoute
+### <a name="site-to-site-vpn-as-a-secure-failover-path-for-expressroute"></a>Síť VPN typu Site-to-site jako zabezpečenou cestu převzetí služeb při selhání pro ExpressRoute
 
-ExpressRoute slouží jako redundantní okruh pár pro zajištění vysoké dostupnosti. Geograficky redundantní připojení ExpressRoute můžete nakonfigurovat v různých oblastech Azure. Jak je také ukázáno v našem testovacím nastavení, v rámci oblasti Azure můžete použít vpn mezi lokalitami k vytvoření cesty převzetí služeb při selhání pro připojení ExpressRoute. Když jsou stejné předpony inzerovány přes ExpressRoute i VPN site-to-site, Azure upřednostňuje ExpressRoute. Chcete-li se vyhnout asymetrickému směrování mezi ExpressRoute a sítí VPN mezi lokalitami, měla by místní konfigurace sítě také oplatit pomocí připojení ExpressRoute před použitím připojení VPN mezi lokalitami.
+ExpressRoute slouží jako redundantní dvojice okruhů, aby se zajistila vysoká dostupnost. Geograficky redundantní připojení ExpressRoute můžete nakonfigurovat v různých oblastech Azure. Jak je znázorněno v našem nastavení testu v rámci oblasti Azure, můžete použít síť VPN typu Site-to-site k vytvoření cesty převzetí služeb při selhání pro připojení ExpressRoute. Pokud jsou stejné předpony inzerovány v rámci obou ExpressRoute a VPN typu Site-to-site, Azure upřednostní ExpressRoute. Aby se zabránilo asymetrickému směrování mezi ExpressRoute a VPN typu Site-to-site, místní konfigurace sítě by se měla docházet také pomocí připojení ExpressRoute, než použije připojení Site-to-Site VPN.
 
-Další informace o konfiguraci koexistujících připojení pro ExpressRoute a síť VPN mezi lokalitami naleznete v [tématu ExpressRoute a koexistence mezi lokalitami][ExR-S2S-CoEx].
+Další informace o tom, jak nakonfigurovat současně existující připojení pro ExpressRoute a síť Site-to-Site VPN, najdete v tématu [ExpressRoute a koexistence typu Site][ExR-S2S-CoEx]-to-site.
 
-## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>Rozšíření back-endového připojení na virtuální sítě s paprsky a pobočky
+## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>Rozšiřování připojení back-endu k paprskovým virtuální sítě a umístěním větví
 
-### <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>Připojení virtuální sítě Paprsku pomocí partnerského vztahu virtuální sítě
+### <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>Připojení k virtuální síti na straně koncové sítě pomocí partnerského vztahu virtuální sítě
 
-Architektura virtuální sítě rozbočovače a paprsku se používá široce. Rozbočovač je virtuální síť v Azure, která funguje jako centrální bod připojení mezi virtuálními sítěmi pro paprsky a s vaší místní sítí. Paprsky jsou virtuální sítě, které se sítovky s rozbočovačem a které můžete použít k izoluje úlohy. Přenosy mezi místním datovým centrem a centrem prostřednictvím připojení ExpressRoute nebo VPN. Další informace o architektuře najdete v [tématu Implementace topologie sítě s rozbočovačem v Azure][Hub-n-Spoke].
+Architektura sítě VNet centra a paprsků se běžně používá. Centrum je virtuální síť v Azure, která funguje jako centrální bod připojení mezi virtuální sítě paprsky a vaší místní sítí. Paprsky jsou virtuální sítě v partnerském vztahu s rozbočovačem a můžete je použít k izolaci úloh. Přenos toků mezi místním datacentrem a centrem prostřednictvím připojení ExpressRoute nebo VPN. Další informace o architektuře najdete v tématu [implementace síťové topologie centra s paprsky v Azure][Hub-n-Spoke].
 
-V partnerském vztahu virtuální sítě v rámci oblasti můžou virtuální sítě pro paprsky ke komunikaci se vzdálenými sítěmi používat brány virtuální sítě hubu (brány VPN i ExpressRoute).
+V rámci partnerského vztahu virtuálních sítí v rámci oblasti může paprskový virtuální sítě používat brány virtuální sítě rozbočovače (brány VPN a ExpressRoute) ke komunikaci se vzdálenými sítěmi.
 
-### <a name="branch-vnet-connectivity-by-using-site-to-site-vpn"></a>Připojení virtuální sítě pobočky pomocí sítě VPN mezi lokalitami
+### <a name="branch-vnet-connectivity-by-using-site-to-site-vpn"></a>Připojení k virtuální síti větví pomocí sítě VPN typu Site-to-site
 
-Můžete chtít pobočkové virtuální sítě, které jsou v různých oblastech a místní sítě komunikovat mezi sebou prostřednictvím virtuální sítě rozbočovače. Nativní řešení Azure pro tuto konfiguraci je připojení VPN mezi lokalitami pomocí sítě VPN. Alternativou je použití síťového virtuálního zařízení (NVA) pro směrování v rozbočovači.
+Můžete chtít, aby větev virtuální sítě, která je v různých oblastech, a místní sítě vzájemně komunikovaly přes virtuální síť rozbočovače. Nativní řešení Azure pro tuto konfiguraci je připojení VPN typu Site-to-site pomocí sítě VPN. Alternativou je použití síťového virtuálního zařízení (síťové virtuální zařízení) pro směrování v centru.
 
-Další informace naleznete v tématu [Co je brána VPN?][VPN] a [nasazení vysoce dostupného zařízení NVA][Deploy-NVA].
+Další informace najdete v tématu [co je VPN Gateway?][VPN] a [nasazení vysoce dostupného síťové virtuální zařízeníu][Deploy-NVA].
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si o [analýze roviny řízení][Control-Analysis] nastavení testu a zobrazení různých virtuálních sítí nebo sítí VLAN v topologii.
+Přečtěte si o [analýze roviny ovládacího prvku][Control-Analysis] pro nastavení testu a zobrazení různých virtuální sítě nebo sítí VLAN v topologii.
 
-Přečtěte si o [analýze roviny dat][Data-Analysis] nastavení testu a zobrazení funkcí monitorování sítě Azure.
+Seznamte se s [analýzou roviny dat][Data-Analysis] pro nastavení testu a zobrazeními funkcí monitorování sítě Azure.
 
-Podívejte se na [nejčastější dotazy k Expresní trase:][ExR-FAQ]
--   Zjistěte, kolik okruhů ExpressRoute se můžete připojit k bráně ExpressRoute.
--   Zjistěte, kolik bran ExpressRoute se můžete připojit k okruhu ExpressRoute.
--   Seznamte se s dalšími omezeními škálování ExpressRoute.
+Podívejte se na téma [Nejčastější dotazy k ExpressRoute][ExR-FAQ] :
+-   Přečtěte si, kolik okruhů ExpressRoute se můžete připojit k bráně ExpressRoute.
+-   Podívejte se, kolik bran ExpressRoute se můžete připojit k okruhu ExpressRoute.
+-   Přečtěte si o dalších omezeních škálování pro ExpressRoute.
 
 
 <!--Image References-->
-Partnerský vztah virtuální sítě virtuální sítě s [1]: ./media/backend-interoperability/SpokeVNet_peering.png "paprsky"
-[Partnerský]: ./media/backend-interoperability/HubVNet-peering.pngvztah virtuální sítě virtuální sítě 2 "rozbočovače"
-[3]: ./media/backend-interoperability/BranchVNet-VPNGW.png "Konfigurace brány VPN pobočkové virtuální sítě"
+[1]: ./media/backend-interoperability/SpokeVNet_peering.png "partnerský vztah" virtuálních sítí virtuální sítě s paprsky
+[2]: ./media/backend-interoperability/HubVNet-peering.pngVNet "peering pro virtuální síť ve středu"
+[3]: ./media/backend-interoperability/BranchVNet-VPNGW.png "VPN Gateway konfigurace virtuální sítě pobočky"
 [4]: ./media/backend-interoperability/ExR1.png "Konfigurace ExpressRoute 1"
-[5]: ./media/backend-interoperability/ExR1-Hub-Connection.png "Konfigurace připojení ExpressRoute 1 k bráně ExR virtuální sítě rozbočovače"
+[5]: ./media/backend-interoperability/ExR1-Hub-Connection.png "Konfigurace připojení ExpressRoute 1 k ExR brány virtuální sítě rozbočovače"
 [6]: ./media/backend-interoperability/ExR2.png "Konfigurace ExpressRoute 2"
-[7]: ./media/backend-interoperability/ExR2-Hub-Connection.png "Konfigurace připojení ExpressRoute 2 k bráně ExR virtuální sítě rozbočovače"
-[8]: ./media/backend-interoperability/ExR2-Remote-Connection.png "Konfigurace připojení ExpressRoute 2 ke vzdálené bráně ExR virtuální sítě"
+[7]: ./media/backend-interoperability/ExR2-Hub-Connection.png "Konfigurace připojení ExpressRoute 2 k bráně virtuální sítě rozbočovače ExR"
+[8]: ./media/backend-interoperability/ExR2-Remote-Connection.png "Konfigurace připojení ExpressRoute 2 ke vzdálené ExR bráně VNet"
 
 <!--Link References-->
 [Setup]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-preface

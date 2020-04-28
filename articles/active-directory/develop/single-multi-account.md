@@ -1,6 +1,6 @@
 ---
-title: Aplikace pro veřejné klienty s jedním a více klienty s více a více Azure
-description: Přehled aplikací pro veřejné klienty s jedním a více účtů.
+title: Veřejné klientské aplikace s jedním a několika účty | Azure
+description: Přehled veřejných klientských aplikací jednoho a více účtů.
 services: active-directory
 author: shoatman
 manager: CelesteDG
@@ -13,42 +13,42 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.openlocfilehash: 89a383aabf3487a0938604bc28ddb06c0541d13e
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80881328"
 ---
-# <a name="single-and-multiple-account-public-client-apps"></a>Jedno a více klientských aplikací s více obchodními vztahy
+# <a name="single-and-multiple-account-public-client-apps"></a>Veřejné klientské aplikace s jedním a několika účty
 
-Tento článek vám pomůže pochopit typy používané v aplikacích veřejného klienta s jedním a více účtů se zaměřením na aplikace veřejného klienta s jedním účtem. 
+Tento článek vám pomůže pochopit typy používané v veřejných klientských aplikacích s jedním a více účty a soustředit se na veřejné klientské aplikace s jedním účtem. 
 
-Azure Active Directory Authentication Library (ADAL) modely serveru.  Knihovna ověřování společnosti Microsoft (MSAL) místo toho modeluje klientskou aplikaci.  Většina aplikací pro Android jsou považovány za veřejné klienty. Veřejný klient je aplikace, která nemůže bezpečně udržet tajemství.  
+Model knihovny Azure Active Directory Authentication Library (ADAL) serveru.  Knihovna Microsoft Authentication Library (MSAL) místo toho vytváří model klientské aplikace.  Většina aplikací pro Android se považuje za veřejné klienty. Veřejný klient je aplikace, která nemůže bezpečně uchovávat tajný klíč.  
 
-MSAL se specializuje na `PublicClientApplication` povrch rozhraní API pro zjednodušení a objasnění prostředí pro vývoj aplikací, které umožňují používat pouze jeden účet najednou. `PublicClientApplication`je podtřídou `SingleAccountPublicClientApplication` `MultipleAccountPublicClientApplication`podle a .  Následující diagram znázorňuje vztah mezi těmito třídami.
+MSAL specializuje plochu rozhraní API, `PublicClientApplication` aby zjednodušila a objasnila vývojové prostředí pro aplikace, které umožňují používat pouze jeden účet v jednom okamžiku. `PublicClientApplication`je podtříd `SingleAccountPublicClientApplication` a `MultipleAccountPublicClientApplication`.  Následující diagram znázorňuje vztah mezi těmito třídami.
 
-![Diagram třídy UML aplikace SingleAccountPublicClientApplication](./media/single-multi-account/single-and-multiple-account.png)
+![Diagram tříd UML SingleAccountPublicClientApplication](./media/single-multi-account/single-and-multiple-account.png)
 
-## <a name="single-account-public-client-application"></a>Jednoúčtu veřejné klientské aplikace
+## <a name="single-account-public-client-application"></a>Veřejná klientská aplikace s jedním účtem
 
-Třída `SingleAccountPublicClientApplication` umožňuje vytvořit aplikaci založenou na MSAL, která umožňuje pouze jeden účet, který má být přihlášen najednou. `SingleAccountPublicClientApplication`se liší `PublicClientApplication` od následujících způsobů:
+`SingleAccountPublicClientApplication` Třída umožňuje vytvořit aplikaci založenou na MSAL, která umožňuje, aby byl pouze jeden účet přihlášen v jednom okamžiku. `SingleAccountPublicClientApplication`se liší od `PublicClientApplication` následujících způsobů:
 
 - MSAL sleduje aktuálně přihlášený účet.
-  - Pokud vaše aplikace používá zprostředkovatele (výchozí během registrace aplikace Portálazure) a je nainstalovaný na zařízení, kde je k dispozici zprostředkovatele, MSAL ověří, že účet je stále k dispozici na zařízení.
-- `signIn`umožňuje přihlásit účet explicitně a odděleně od požadujících oborů.
-- `acquireTokenSilent`nevyžaduje parametr účtu.  Pokud zadáte účet a účet, který zadáte, neodpovídá aktuálnímu účtu sledovanému `MsalClientException` msal, je vyvolána.
-- `acquireToken`neumožňuje uživateli přepínat účty. Pokud se uživatel pokusí přepnout na jiný účet, je vyvolána výjimka.
-- `getCurrentAccount`vrátí výsledek objektu, který poskytuje následující:
-  - Logická hodnota označující, zda se účet změnil. Účet může být změněn v důsledku odebrání ze zařízení, například.
-  - Předchozí účet. To je užitečné, pokud potřebujete provést vyčištění místních dat při odebrání účtu ze zařízení nebo při přihlášení nového účtu.
+  - Pokud vaše aplikace používá zprostředkovatele (výchozí během Azure Portal registrace aplikace) a je nainstalovaný na zařízení, ve kterém je zprostředkovatel přítomen, MSAL ověří, jestli je účet pořád k dispozici na zařízení.
+- `signIn`slouží k tomu, abyste se k účtu přihlásili explicitně a nezávisle na žádosti o obory.
+- `acquireTokenSilent`nevyžaduje parametr účtu.  Pokud účet zadáte a účet, který zadáte, se neshoduje s aktuálním účtem sledovaným nástrojem MSAL `MsalClientException` , je vyvolána výjimka.
+- `acquireToken`neumožňuje uživateli přepnout účty. Pokud se uživatel pokusí přepnout na jiný účet, je vyvolána výjimka.
+- `getCurrentAccount`Vrátí objekt výsledku, který poskytuje následující:
+  - Logická hodnota označující, zda byl účet změněn. Účet může být změněn v důsledku odebrání ze zařízení, například.
+  - Předchozí účet. To je užitečné v případě, že při odebrání účtu ze zařízení nebo při přihlášení k novému účtu potřebujete provést jakékoli místní vyčištění dat.
   - CurrentAccount.
-- `signOut`odebere ze zařízení všechny tokeny přidružené k vašemu klientovi.  
+- `signOut`Odebere ze zařízení všechny tokeny přidružené ke klientovi.  
 
-Když je v zařízení nainstalovaný zprostředkovatel ověřování androida, jako je Microsoft Authenticator nebo `signOut` Portál společnosti Intune, a vaše aplikace je nakonfigurovaná tak, aby používala zprostředkovatele, účet ze zařízení neodebere.
+Když je na zařízení nainstalovaný zprostředkovatel ověřování Androidu, jako je Microsoft Authenticator nebo Portál společnosti Intune, a vaše aplikace je nakonfigurovaná tak, aby `signOut` používala zprostředkovatele, účet neodebere ze zařízení.
 
-## <a name="single-account-scenario"></a>Scénář jednoho účtu
+## <a name="single-account-scenario"></a>Scénář pro jeden účet
 
-Následující pseudo kód ilustruje `SingleAccountPublicClientApplication`použití .
+Následující pseudo kód ilustruje použití `SingleAccountPublicClientApplication`.
 
 ```java
 // Construct Single Account Public Client Application
@@ -105,28 +105,28 @@ if (app.signOut())
 }
 ```
 
-## <a name="multiple-account-public-client-application"></a>Více klientská aplikace účtu
+## <a name="multiple-account-public-client-application"></a>Veřejná klientská aplikace s více účty
 
-Třída `MultipleAccountPublicClientApplication` se používá k vytvoření aplikací založených na MSAL, které umožňují přihlášení více účtů současně. To vám umožní získat, přidat a odebrat účty takto:
+`MultipleAccountPublicClientApplication` Třída se používá k vytváření aplikací založených na MSAL, které umožňují přihlášení více účtů současně. Umožňuje získat, přidat a odebrat účty následujícím způsobem:
 
 ### <a name="add-an-account"></a>Přidání účtu
 
-Použijte jeden nebo více účtů `acquireToken` v aplikaci voláním jednou nebo vícekrát.  
+Použijte jeden nebo více účtů v aplikaci voláním `acquireToken` jednoho nebo více než jednou.  
 
 ### <a name="get-accounts"></a>Získání účtů
 
-- Zavolejte `getAccount` a získejte konkrétní účet.
-- Volání `getAccounts`získat seznam účtů, které jsou v současné době známé aplikaci.
+- Zavolejte `getAccount` na získat konkrétní účet.
+- Volá `getAccounts`se, aby se získal seznam účtů, které aplikace aktuálně zná.
 
-Vaše aplikace nebude moct vytvořit výčet všech účtů platformy identit Microsoftu na zařízení známém aplikaci broker. Může pouze vytvořit výčet účtů, které byly používány vaší aplikací.  Účty, které byly odebrány ze zařízení, nebudou těmito funkcemi vráceny.
+Vaše aplikace nebude moct zobrazit výčet všech účtů Microsoft Identity Platform na zařízení, které je v aplikaci zprostředkovatele známé. Může vytvořit jenom výčet účtů, které vaše aplikace použila.  Pomocí těchto funkcí se nevrátí účty, které jste odebrali ze zařízení.
 
-### <a name="remove-an-account"></a>Odebrání účtu
+### <a name="remove-an-account"></a>Odebrat účet
 
-Odeberte účet `removeAccount` voláním s identifikátorem účtu.
+Odeberte účet voláním `removeAccount` pomocí identifikátoru účtu.
 
-Pokud je vaše aplikace nakonfigurovaná tak, aby používala makléře, a v zařízení `removeAccount`je nainstalovaný broker, účet se z brokera při volání neodebere .  Jsou odebrány pouze tokeny přidružené k vašemu klientovi.
+Pokud je vaše aplikace nakonfigurovaná tak, aby používala zprostředkovatele, a v zařízení je nainstalovaný zprostředkovatel, při volání `removeAccount`se účet neodebere ze zprostředkovatele.  Odeberou se jenom tokeny přidružené k vašemu klientovi.
 
-## <a name="multiple-account-scenario"></a>Scénář více účtů
+## <a name="multiple-account-scenario"></a>Scénář s více účty
 
 Následující pseudo kód ukazuje, jak vytvořit aplikaci s více účty, vypsat účty v zařízení a získat tokeny.
 

@@ -1,42 +1,42 @@
 ---
 title: Změnit nastavení ReliableDictionaryActorStateProvider
-description: Další informace o konfiguraci Azure Service Fabric stavové objekty actor typu ReliableDictionaryActorStateProvider.
+description: Přečtěte si o konfiguraci stavových aktérů Azure Service Fabric typu ReliableDictionaryActorStateProvider.
 author: sumukhs
 ms.topic: conceptual
 ms.date: 10/2/2017
 ms.author: sumukhs
 ms.openlocfilehash: fbd6f7cd3ade753c659464522408aa715cce48f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75609736"
 ---
-# <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>Konfigurace spolehlivých herců–ReliableDictionaryActorStateProvider
-Výchozí konfiguraci služby ReliableDictionaryActorStateProvider můžete změnit změnou souboru settings.xml generovaného v kořenovém adresáři balíčku sady Visual Studio ve složce Config pro zadaný objekt actor.
+# <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>Konfigurace Reliable Actors--ReliableDictionaryActorStateProvider
+Můžete upravit výchozí konfiguraci ReliableDictionaryActorStateProvider změnou souboru Settings. XML vygenerovaného v kořenovém adresáři balíčku sady Visual Studio v konfigurační složce pro zadaný objekt actor.
 
-Prostředí Azure Service Fabric hledá předdefinované názvy oddílů v souboru settings.xml a spotřebovává hodnoty konfigurace při vytváření podkladových komponent runtime.
+Modul runtime Azure Service Fabric vyhledá předdefinované názvy oddílů v souboru Settings. XML a při vytváření podkladových komponent modulu runtime spotřebovává konfigurační hodnoty.
 
 > [!NOTE]
-> Neodstraňujte **ani neupravujte** názvy oddílů následujících konfigurací v souboru settings.xml, který je generován v řešení sady Visual Studio.
+> **Neodstraňujte** ani neměňte názvy oddílů následujících konfigurací v souboru Settings. XML, který je generován v řešení sady Visual Studio.
 > 
 > 
 
-Existují také globální nastavení, které ovlivňují konfiguraci ReliableDictionaryActorStateProvider.
+Existují také globální nastavení, která mají vliv na konfiguraci ReliableDictionaryActorStateProvider.
 
 ## <a name="global-configuration"></a>Globální konfigurace
-Globální konfigurace je určena v manifestu clusteru pro cluster v části KtlLogger. Umožňuje konfiguraci sdílené umístění protokolu a velikost plus globální limity paměti používané protokolovacíprotokol. Všimněte si, že změny v manifestu clusteru ovlivnit všechny služby, které používají ReliableDictionaryActorStateProvider a spolehlivé stavové služby.
+Globální konfigurace je určena v manifestu clusteru pro cluster v části KtlLogger. Umožňuje konfiguraci umístění a velikosti sdíleného protokolu a také omezení globální paměti používané protokolovacím nástrojem. Všimněte si, že změny v manifestu clusteru mají vliv na všechny služby, které používají ReliableDictionaryActorStateProvider a spolehlivé stavové služby.
 
-Manifest clusteru je jeden soubor XML, který obsahuje nastavení a konfigurace, které platí pro všechny uzly a služby v clusteru. Soubor se obvykle nazývá ClusterManifest.xml. Manifest clusteru pro váš cluster se zobrazí pomocí příkazu Get-ServiceFabricClusterManifest powershellu.
+Manifest clusteru je jeden soubor XML, který obsahuje nastavení a konfigurace, které platí pro všechny uzly a služby v clusteru. Soubor se obvykle nazývá manifestem clusteru. XML. Manifest clusteru pro cluster můžete zobrazit pomocí příkazu Get-ServiceFabricClusterManifest prostředí PowerShell.
 
 ### <a name="configuration-names"></a>Názvy konfigurací
-| Name (Název) | Jednotka | Výchozí hodnota | Poznámky |
+| Název | Jednotka | Výchozí hodnota | Poznámky |
 | --- | --- | --- | --- |
-| ZápisBufferMemoryPoolminimumInKB |Kilobajtech |8388608 |Minimální počet KB přidělit v režimu jádra pro zásobníku paměti paměti zápisu protokolů. Tento fond paměti se používá pro ukládání informací o stavu ukládání do mezipaměti před zápisem na disk. |
-| WriteBufferMemoryPoolMaximumInKB |Kilobajtech |Bez omezení |Maximální velikost, na kterou může růst fond vyrovnávací paměti pro zápis do protokolování. |
-| SharedLogId |GUID |"" |Určuje jedinečný identifikátor GUID, který se má použít k identifikaci výchozího sdíleného souboru protokolu používaného všemi spolehlivými službami ve všech uzlech v clusteru, které neurčují identifikátor SharedLogId v konfiguraci specifické pro službu. Pokud sharedLogId je zadán, pak SharedLogPath musí být také zadán. |
-| SharedLogPath |Plně kvalifikovaný název cesty |"" |Určuje plně kvalifikovanou cestu, kde sdílený soubor protokolu používaný všemi spolehlivými službami ve všech uzlech v clusteru, které neurčují sdílenou položku The SharedLogPath v konfiguraci specifické pro službu. Pokud je však zadána aplikace SharedLogPath, musí být zadána také sharedlogid. |
-| SharedLogSizeInMB |Megabajtů |8192 |Určuje počet MB místa na disku, které má být staticky přiděleno pro sdílený protokol. Hodnota musí být 2048 nebo větší. |
+| WriteBufferMemoryPoolMinimumInKB |Kilobajtů |8388608 |Minimální počet KB pro přidělení v režimu jádra pro fond paměti vyrovnávací paměti zápisu pro protokolovací nástroj. Tento fond paměti se používá k ukládání informací o stavu do mezipaměti před zápisem na disk. |
+| WriteBufferMemoryPoolMaximumInKB |Kilobajtů |Bez omezení |Maximální velikost, do které může růst fondu paměti zápisu pro zápis protokolovacího nástroje. |
+| SharedLogId |GUID |"" |Určuje jedinečný identifikátor GUID, který se použije pro identifikaci výchozího sdíleného souboru protokolu používaného všemi spolehlivými službami na všech uzlech v clusteru, které neurčují SharedLogId v konfiguraci specifické pro danou službu. Je-li zadán parametr SharedLogId, musí být také zadán parametr SharedLogPath. |
+| SharedLogPath |Plně kvalifikovaný název cesty |"" |Určuje plně kvalifikovanou cestu, kde se sdílený soubor protokolu používaný všemi spolehlivými službami na všech uzlech v clusteru nespecifikuje SharedLogPath v konfiguraci specifické pro danou službu. Pokud je však zadán parametr SharedLogPath, musí být také zadán parametr SharedLogId. |
+| SharedLogSizeInMB |Megabajty |8192 |Určuje počet MB místa na disku, které se staticky přidělí pro sdílený protokol. Hodnota musí být 2048 nebo větší. |
 
 ### <a name="sample-cluster-manifest-section"></a>Ukázkový oddíl manifestu clusteru
 ```xml
@@ -50,43 +50,43 @@ Manifest clusteru je jeden soubor XML, který obsahuje nastavení a konfigurace,
 ```
 
 ### <a name="remarks"></a>Poznámky
-Protokolování má globální fond paměti přidělené z paměti bez stránkovaného jádra, který je k dispozici pro všechny spolehlivé služby na uzlu pro ukládání dat stavu do mezipaměti před zápisem do vyhrazeného protokolu přidruženého k replikě spolehlivé služby. Velikost fondu je řízena nastaveními WriteBufferMemoryPoolMaximumInKB a WriteBufferMemoryPoolMaximumInKB. WriteBufferMemoryPoolMinimumInKB určuje počáteční velikost tohoto fondu paměti a nejnižší velikost, do které může zmenšit fondu paměti. WriteBufferMemoryPoolMaximumInKB je nejvyšší velikost, do které může růst fondu paměti. Každá replika spolehlivé služby, která je otevřena může zvýšit velikost fondu paměti o systémem určené množství až WriteBufferMemoryPoolMaximumInKB. Pokud je větší poptávka po paměti z fondu paměti, než je k dispozici, požadavky na paměť bude zpožděna, dokud není k dispozici paměť. Proto pokud fond paměti vyrovnávací paměti zápisu je příliš malý pro konkrétní konfiguraci pak může dojít k unesení výkonu.
+Protokolovací nástroj má Globální fond paměti přidělený z nestránkované paměti jádra, který je dostupný pro všechny spolehlivé služby na uzlu pro ukládání dat stavu do mezipaměti, než se zapíše do vyhrazeného protokolu přidruženého k spolehlivé replice služby. Velikost fondu je řízena nastavením WriteBufferMemoryPoolMinimumInKB a WriteBufferMemoryPoolMaximumInKB. WriteBufferMemoryPoolMinimumInKB Určuje počáteční velikost tohoto fondu paměti a nejnižší velikost, se kterou se může fond paměti zmenšit. WriteBufferMemoryPoolMaximumInKB je nejvyšší velikost, na kterou může fond paměti růst. Každá otevřená replika spolehlivé služby může zvětšit velikost fondu paměti podle zjištěného množství systému až do WriteBufferMemoryPoolMaximumInKB. Pokud je paměť z fondu paměti větší, než je k dispozici, požadavky na paměť budou zpožděny, dokud nebude k dispozici paměť. Pokud je fond paměti pro vyrovnávací paměť pro zápis příliš malý pro určitou konfiguraci, může dojít ke zhoršení výkonu.
 
-Nastavení SharedLogId a SharedLogPath se vždy používají společně k definování identifikátoru GUID a umístění výchozího sdíleného protokolu pro všechny uzly v clusteru. Výchozí sdílený protokol se používá pro všechny spolehlivé služby, které neurčují nastavení v souboru settings.xml pro konkrétní službu. Pro dosažení nejlepšího výkonu by měly být sdílené soubory protokolu umístěny na disky, které se používají výhradně pro sdílený soubor protokolu ke snížení kolizí.
+Nastavení SharedLogId a SharedLogPath se vždycky používají společně k definování identifikátoru GUID a umístění pro výchozí sdílený protokol pro všechny uzly v clusteru. Výchozí sdílený protokol se používá pro všechny spolehlivé služby, které neurčují nastavení v souboru Settings. XML pro konkrétní službu. Pro dosažení co nejlepších výsledků by se měly soubory sdíleného protokolu umístit na disky, které se používají výhradně pro sdílený soubor protokolu pro snížení kolizí.
 
-SharedLogSizeInMB určuje velikost místa na disku, které má být předem přiděleno pro výchozí sdílený protokol ve všech uzlech.  SharedLogId a SharedLogPath není nutné zadat, aby bylo určeno SharedLogSizeInMB.
+SharedLogSizeInMB určuje velikost místa na disku, které se má předem přidělit pro výchozí sdílený protokol na všech uzlech.  SharedLogId a SharedLogPath není nutné zadávat, aby bylo možné zadat SharedLogSizeInMB.
 
 ## <a name="replicator-security-configuration"></a>Konfigurace zabezpečení replikátoru
-Konfigurace zabezpečení replikátoru se používají k zabezpečení komunikačního kanálu, který se používá během replikace. To znamená, že služby nemohou zobrazit navzájem replikační provoz, zajištění dat, která je k dispozici vysoce dostupné je také zabezpečené.
-Ve výchozím nastavení brání prázdný oddíl konfigurace zabezpečení zabezpečení zabezpečení zabezpečení.
+Konfigurace zabezpečení replikátoru slouží k zabezpečení komunikačního kanálu, který se používá při replikaci. To znamená, že služby nevidí provoz replikace mezi ostatními, takže data, která jsou vytvořená jako vysoce dostupná, jsou také zabezpečená.
+Ve výchozím nastavení se v prázdném oddílu konfigurace zabezpečení zabrání zabezpečení replikace.
 
 > [!IMPORTANT]
-> V uzlech Linuxu musí být certifikáty ve formátu PEM. Další informace o vyhledání a konfiguraci certifikátů pro Linux najdete [v tématu Konfigurace certifikátů v Linuxu](./service-fabric-configure-certificates-linux.md). 
+> V uzlech se systémem Linux musí být certifikáty PEM ve formátu. Další informace o vyhledání a konfiguraci certifikátů pro Linux najdete v tématu [Konfigurace certifikátů v systému Linux](./service-fabric-configure-certificates-linux.md). 
 > 
 
 ### <a name="section-name"></a>Název oddílu
-&lt;ActorName&gt;ServiceReplicatorSecurityConfig
+&lt;Jméno objektu&gt;actor ServiceReplicatorSecurityConfig
 
 ## <a name="replicator-configuration"></a>Konfigurace replikátoru
-Replikátor konfigurace se používají ke konfiguraci replikátoru, který je zodpovědný za nastavení stavu actor státního zprostředkovatele vysoce spolehlivé replikaci a trvalé stavu místně.
-Výchozí konfigurace je generována šablonou sady Visual Studio a měla by stačit. Tato část hovoří o další konfigurace, které jsou k dispozici pro ladění replikátoru.
+Konfigurace replikátoru slouží ke konfiguraci replikátoru, který zodpovídá za to, aby byl stav poskytovatele stavu objektu actor vysoce spolehlivý díky replikaci a trvalému zachování stavu.
+Výchozí konfigurace je generována šablonou sady Visual Studio a měla by stačit. Tato část pojednává o dalších konfiguracích, které jsou k dispozici pro optimalizaci replikátoru.
 
 ### <a name="section-name"></a>Název oddílu
-&lt;ActorName&gt;ServiceReplicatorConfig
+&lt;Jméno objektu&gt;actor ServiceReplicatorConfig
 
 ### <a name="configuration-names"></a>Názvy konfigurací
-| Name (Název) | Jednotka | Výchozí hodnota | Poznámky |
+| Název | Jednotka | Výchozí hodnota | Poznámky |
 | --- | --- | --- | --- |
-| Interval potvrzení dávky |Sekundy |0.015 |Časové období, pro které replikátor na sekundární čeká po přijetí operace před odesláním zpět potvrzení primární. Všechna ostatní potvrzení, která mají být odeslána pro operace zpracované v tomto intervalu, jsou odeslána jako jedna odpověď. |
-| ReplikátorEndpoint |Není dostupné. |Žádný výchozí -- povinný parametr |Adresa IP a port, který primární a sekundární replikátor použije ke komunikaci s ostatními replikátory v sadě replik. To by měl odkazovat na koncový bod prostředku TCP v manifestu služby. Odkazovat na [service manifest prostředky](service-fabric-service-manifest-resources.md) se přečtěte více o definování prostředků koncového bodu v manifestu služby. |
-| MaxReplicationMessageSize |Bajty |50 MB |Maximální velikost dat replikace, která lze přenášet v jedné zprávě. |
-| Velikost maxprimárníreplikační fronty |Počet operací |8192 |Maximální počet operací v primární frontě. Operace je uvolněna poté, co primární replikátor obdrží potvrzení od všech sekundárních replikátorů. Tato hodnota musí být větší než 64 a mocninu 2. |
-| Velikost fronty maxsekundární replikace |Počet operací |16384 |Maximální počet operací v sekundární frontě. Operace je uvolněna po provedení jeho stavu vysoce dostupné prostřednictvím trvalosti. Tato hodnota musí být větší než 64 a mocninu 2. |
-| CheckpointThresholdInMB |MB |200 |Velikost místa v souboru protokolu, po kterém je stav kontrolním bodem. |
-| MaxRecordSizeInKB |KB |1024 |Největší velikost záznamu, který replikátor může zapsat do protokolu. Tato hodnota musí být násobkem 4 a větší než 16. |
-| OptimizeLogForLowerDiskUsage |Logická hodnota |true |Pokud je hodnota true, je protokol nakonfigurován tak, aby byl vyhrazený soubor protokolu repliky vytvořen pomocí řídkého souboru NTFS. Tím se sníží skutečné využití místa na disku pro soubor. Pokud false, soubor je vytvořen s pevnou přidělení, které poskytují nejlepší výkon zápisu. |
-| SharedLogId |Identifikátor guid |"" |Určuje jedinečný identifikátor GUID, který se má použít k identifikaci sdíleného souboru protokolu použitého v této replice. Služby by obvykle neměly používat toto nastavení. Pokud je však zadáno SharedLogId, musí být zadána také aplikace SharedLogPath. |
-| SharedLogPath |Plně kvalifikovaný název cesty |"" |Určuje plně kvalifikovanou cestu, kde bude vytvořen sdílený soubor protokolu pro tuto repliku. Služby by obvykle neměly používat toto nastavení. Pokud je však zadána aplikace SharedLogPath, musí být zadána také sharedlogid. |
+| BatchAcknowledgementInterval |Sekundy |0,015 |Časové období, po které se Replikátor v sekundárním čekání po přijetí operace před odesláním zpět na primární. Jakékoli další potvrzení, která se mají odeslat pro operace zpracovávané v tomto intervalu, se odešlou jako jedna odpověď. |
+| ReplicatorEndpoint |– |Žádný výchozí – parametr není povinný. |IP adresa a port, které bude primární a sekundární Replikátor používat ke komunikaci s ostatními replikačními replikami v sadě replik. To by mělo odkazovat na koncový bod prostředku TCP v manifestu služby. Další informace o definování prostředků koncového bodu v manifestu služby najdete v článku [prostředky manifestu služby](service-fabric-service-manifest-resources.md) . |
+| MaxReplicationMessageSize |Bajty |50 MB |Maximální velikost replikačních dat, která se dají přenést v jedné zprávě |
+| MaxPrimaryReplicationQueueSize |Počet operací |8192 |Maximální počet operací v primární frontě. Když primární Replikátor dostane potvrzení ze všech sekundárních replikátorů, operace se uvolní. Tato hodnota musí být větší než 64 a mocnina 2. |
+| MaxSecondaryReplicationQueueSize |Počet operací |16384 |Maximální počet operací v sekundární frontě. Po zajištění vysoké dostupnosti stavu prostřednictvím trvalosti se operace uvolní. Tato hodnota musí být větší než 64 a mocnina 2. |
+| CheckpointThresholdInMB |MB |200 |Velikost místa pro soubor protokolu, po kterém je stav nastaven na kontrolní bod. |
+| MaxRecordSizeInKB |KB |1024 |Největší velikost záznamu, kterou může Replikátor zapsat do protokolu. Tato hodnota musí být násobkem 4 a větší než 16. |
+| OptimizeLogForLowerDiskUsage |Logická hodnota |true |V případě hodnoty true je protokol nakonfigurován tak, aby byl soubor protokolu vyhrazené repliky vytvořen pomocí zhuštěného souboru systému souborů NTFS. Tím se sníží skutečné využití místa na disku pro daný soubor. Pokud je hodnota false, vytvoří se soubor s pevnými alokacemi, které poskytují nejlepší výkon zápisu. |
+| SharedLogId |guid |"" |Určuje jedinečný identifikátor GUID, který se použije pro identifikaci sdíleného souboru protokolu používaného v této replice. Služby by obvykle neměly používat toto nastavení. Pokud je však zadán parametr SharedLogId, musí být také zadán parametr SharedLogPath. |
+| SharedLogPath |Plně kvalifikovaný název cesty |"" |Určuje plně kvalifikovanou cestu, kam se vytvoří sdílený soubor protokolu pro tuto repliku. Služby by obvykle neměly používat toto nastavení. Pokud je však zadán parametr SharedLogPath, musí být také zadán parametr SharedLogId. |
 
 ## <a name="sample-configuration-file"></a>Ukázkový konfigurační soubor
 ```xml
@@ -110,14 +110,14 @@ Výchozí konfigurace je generována šablonou sady Visual Studio a měla by sta
 ```
 
 ## <a name="remarks"></a>Poznámky
-Parametr BatchAcknowledgementInterval řídí latenci replikace. Hodnota "0" má za následek nejnižší možnou latenci za cenu propustnosti (protože musí být odesláno a zpracováno více potvrzení zpráv, z nichž každá obsahuje méně potvrzení).
-Čím větší je hodnota batchacknowledgementinterval, tím vyšší je celková propustnost replikace za cenu vyšší latence provozu. To se přímo promítá do latence potvrzení transakcí.
+Parametr BatchAcknowledgementInterval řídí latenci replikace. Hodnota 0 má za následek nejnižší možnou latenci. náklady na propustnost (v případě, že je nutné odesílat a zpracovávat další zprávy o potvrzení, obsahují méně potvrzení).
+Čím větší je hodnota pro BatchAcknowledgementInterval, tím vyšší je celková propustnost replikace za cenu vyšší latence operace. To přímo překládá na latenci potvrzení transakcí.
 
-Parametr CheckpointThresholdInMB určuje velikost místa na disku, které může replikátor použít k ukládání informací o stavu do vyhrazeného souboru protokolu repliky. Zvýšení této hodnoty na vyšší hodnotu než výchozí může mít za následek rychlejší rekonfigurace časy při přidání nové repliky do sady. To je způsobeno částečným přenosem stavu, ke kterému dochází z důvodu dostupnosti další historie operací v protokolu. To může potenciálně zvýšit dobu obnovení repliky po selhání.
+Parametr CheckpointThresholdInMB řídí velikost místa na disku, které může Replikátor použít k ukládání informací o stavu do vyhrazeného souboru protokolu repliky. Zvýšením hodnoty na vyšší hodnotu, než je výchozí, může způsobit rychlejší opakovanou konfiguraci při přidání nové repliky do sady. Důvodem je přenos s částečným stavem, který probíhá v důsledku dostupnosti další historie operací v protokolu. To může potenciálně prodloužit dobu obnovení repliky po havárii.
 
-Pokud nastavíte OptimizeForLowerDiskUsage na true, místo v souboru protokolu bude nadměrně zřízeno, takže aktivní repliky mohou ukládat více informací o stavu v souborech protokolu, zatímco neaktivní repliky budou používat méně místa na disku. To umožňuje hostovat více replik na uzlu. Pokud nastavíte OptimizeForLowerDiskUsage na false, informace o stavu se zapisuje do souborů protokolu rychleji.
+Pokud nastavíte OptimizeForLowerDiskUsage na hodnotu true, místo pro soubory protokolu bude zajištěno, aby aktivní repliky ukládaly do svých souborů protokolů více informací o stavu, zatímco neaktivní repliky budou používat méně místa na disku. Díky tomu je možné hostovat více replik na uzlu. Pokud nastavíte OptimizeForLowerDiskUsage na false, informace o stavu se zapisují do souborů protokolu rychleji.
 
-Nastavení MaxRecordSizeInKB definuje maximální velikost záznamu, který může replikátor zapsat do souboru protokolu. Ve většině případů je optimální výchozí velikost záznamu 1024 KB. Pokud však služba způsobuje, že větší datové položky jsou součástí informací o stavu, může být nutné tuto hodnotu zvýšit. Je malý přínos v tom, že MaxRecordSizeInKB menší než 1024, protože menší záznamy používají pouze místo potřebné pro menší záznam. Očekáváme, že tato hodnota bude muset být změněna pouze ve výjimečných případech.
+Nastavení MaxRecordSizeInKB definuje maximální velikost záznamu, který může být zapsán replikátorem do souboru protokolu. Ve většině případů je výchozí velikost záznamu 1024-KB optimální. Pokud však služba způsobuje, že jsou větší datové položky součástí informací o stavu, může být nutné zvýšit tuto hodnotu. Je málo výhod při vytváření MaxRecordSizeInKB menších než 1024, protože menší záznamy používají pouze prostor, který je potřeba pro menší záznam. Očekáváme, že by se tato hodnota musela změnit jenom ve výjimečných případech.
 
-Nastavení SharedLogId a SharedLogPath se vždy používají společně k tomu, aby služba používala samostatný sdílený protokol z výchozího sdíleného protokolu pro uzel. Pro nejlepší efektivitu by mělo zadat stejný sdílený protokol co nejvíce služeb. Sdílené soubory protokolu by měly být umístěny na disky, které se používají výhradně pro sdílený soubor protokolu, ke snížení nároky pohybu hlavy. Očekáváme, že tyto hodnoty budou muset být změněny pouze ve vzácných případech.
+Nastavení SharedLogId a SharedLogPath se vždycky používají společně k vytvoření služby, která používá samostatný sdílený protokol z výchozího sdíleného protokolu pro uzel. Pro dosažení co nejlepších výsledků je potřeba, aby bylo možné zadat stejný sdílený protokol, kolik služeb je možné. Sdílené soubory protokolu by měly být umístěné na discích, které se používají výhradně pro sdílený soubor protokolu, aby se snížila platnost přesunutí hlav. Očekáváme, že tyto hodnoty by se měly změnit jenom ve výjimečných případech.
 

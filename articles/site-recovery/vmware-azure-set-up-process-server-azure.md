@@ -1,6 +1,6 @@
 ---
-title: Nastavení procesního serveru VMware/fyzické navrácení služeb po obnovení v azure site recovery
-description: Tento článek popisuje, jak nastavit procesní server v Azure, aby navrácení služeb po službě Azure virtuální počítače na VMware.
+title: Nastavení procesového serveru VMware/fyzické navrácení služeb po obnovení v Azure Site Recovery
+description: Tento článek popisuje, jak nastavit procesový Server v Azure pro navrácení služeb po obnovení virtuálních počítačů Azure do VMware.
 services: site-recovery
 author: Rajeswari-Mamilla
 manager: rochakm
@@ -9,41 +9,41 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: ramamill
 ms.openlocfilehash: 16214fa07b14c8db2f32fa2c69739b7fa3dc1907
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74083958"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>Nastavení procesového serveru v Azure pro účely navrácení služeb po obnovení
 
-Po převzetí služeb při selhání virtuálních počítačů VMware nebo fyzických serverů do Azure pomocí [site recovery](site-recovery-overview.md), můžete je vypovědět zpět na místní web, když je znovu spuštěna. Aby bylo možné navrácení služeb po službě, musíte nastavit dočasný proces server v Azure, pro zpracování replikace z Azure do místního. Tento virtuální virtuální ms můžete odstranit po dokončení navrácení služeb po selhání.
+Po převzetí služeb při selhání virtuálních počítačů VMware nebo fyzických serverů do Azure pomocí [Site Recovery](site-recovery-overview.md)můžete navrátit služby po obnovení do místní lokality, když se znovu spustí. Aby bylo možné navrácení služeb po obnovení, musíte v Azure nastavit dočasný procesový Server, abyste mohli zpracovávat replikaci z Azure do místního prostředí. Po dokončení navrácení služeb po obnovení můžete tento virtuální počítač odstranit.
 
 ## <a name="before-you-start"></a>Než začnete
 
-Další informace o [procesu opětovnéochrany](vmware-azure-reprotect.md) a [navrácení služeb po obnovení.](vmware-azure-failback.md)
+Přečtěte [si další](vmware-azure-reprotect.md) informace o procesu [překlopení a navrácení služeb po obnovení](vmware-azure-failback.md) .
 
 [!INCLUDE [site-recovery-vmware-process-server-prerequ](../../includes/site-recovery-vmware-azure-process-server-prereq.md)]
 
 
-## <a name="deploy-a-process-server-in-azure"></a>Nasazení procesního serveru v Azure
+## <a name="deploy-a-process-server-in-azure"></a>Nasazení procesového serveru v Azure
 
-1. V úschovně > **infrastruktury**> obnovení sítě**Spravujte** > **konfigurační servery**vyberte konfigurační server.
-2. Na stránce serveru klikněte na **+ Procesní server**
-3. Na stránce **Přidat procesní server** a vyberte nasazení procesního serveru v Azure.
-4. Zadejte nastavení Azure, včetně předplatného používaného pro převzetí služeb při selhání, skupiny prostředků, oblasti Azure používané pro převzetí služeb při selhání a virtuální sítě, ve které jsou virtuální počítače Azure umístěny. Pokud jste použili více sítí Azure, budete potřebovat proces server v každé z nich.
+1. V trezoru > **Site Recovery infrastruktura**> **Spravovat** > **konfigurační servery**, vyberte konfigurační server.
+2. Na stránce Server klikněte na **+ procesový Server** .
+3. Na stránce **Přidat procesový Server** a vyberte možnost nasazení procesového serveru v Azure.
+4. Zadejte nastavení Azure, včetně předplatného používaného pro převzetí služeb při selhání, skupiny prostředků, oblasti Azure, která se používá pro převzetí služeb při selhání, a virtuální sítě, ve které jsou umístěné virtuální počítače Azure. Pokud jste použili více sítí Azure, budete potřebovat procesový Server v každém z nich.
 
-   ![Přidání položky galerie procesního serveru](./media/vmware-azure-set-up-process-server-azure/add-ps-page-1.png)
+   ![Přidat položku galerie procesového serveru](./media/vmware-azure-set-up-process-server-azure/add-ps-page-1.png)
 
-4. V **poli Název serveru**, Uživatelské **jméno**a **Heslo**zadejte název procesu serveru a pověření, kterým budou na serveru přiřazena oprávnění správce.
-5. Zadejte účet úložiště, který se má použít pro disky virtuálních počítačů serveru, podsíť, ve které bude virtuální modul procesního serveru umístěn, a adresu IP serveru, která bude přiřazena při spuštění virtuálního počítače.
-6. Klepnutím na tlačítko **OK** spusťte nasazení virtuálního virtuálního soudu procesního serveru. Procesový server bude nasazen na Standard_A8_v2 skladové položky. Ujistěte se, že tato stoka virtuálních zařízení je k dispozici pro vaše předplatné.
+4. Do pole **název serveru**, **uživatelské jméno**a **heslo**zadejte název procesového serveru a přihlašovací údaje, které budou přiřazeny oprávnění správce na serveru.
+5. Zadejte účet úložiště, který se má použít pro disky virtuálních počítačů serveru, podsíť, ve které se virtuální počítač procesového serveru nachází, a IP adresu serveru, která se přiřadí při spuštění virtuálního počítače.
+6. Kliknutím na tlačítko **OK** začněte NASAZOVAT virtuální počítač procesového serveru. Procesový Server se nasadí na Standard_A8_v2 SKU. Ujistěte se, že je tato skladová položka virtuálního počítače k dispozici pro vaše předplatné.
 
 >
 
-## <a name="registering-the-process-server-running-in-azure-to-a-configuration-server-running-on-premises"></a>Registrace procesního serveru (spuštěného v Azure) na konfigurační server (spuštěný místně)
+## <a name="registering-the-process-server-running-in-azure-to-a-configuration-server-running-on-premises"></a>Registrace procesového serveru (běžícího v Azure) na konfiguračním serveru (běžící místně)
 
-Po spuštění virtuálního počítače procesního serveru je potřeba jej zaregistrovat na místním konfiguračním serveru takto:
+Až bude virtuální počítač procesového serveru v provozu, musíte ho zaregistrovat na místním konfiguračním serveru následujícím způsobem:
 
 [!INCLUDE [site-recovery-vmware-register-process-server](../../includes/site-recovery-vmware-register-process-server.md)]
 
