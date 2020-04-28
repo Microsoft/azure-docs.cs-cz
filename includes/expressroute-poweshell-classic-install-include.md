@@ -5,22 +5,22 @@ ms.service: expressroute
 ms.topic: include
 ms.author: cherylmc
 ms.openlocfilehash: f04861d55c9cea3c79f4983f7be2e1f5a3c6d864
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74926229"
 ---
-Nainstalujte nejnovější verze modulů PowerShellu azure service managementu (SM) a modulu ExpressRoute. Prostředí Azure CloudShell nelze použít ke spuštění modulů SM.
+Nainstalujte nejnovější verze modulů Azure Service Management (SM) PowerShell a modulu ExpressRoute. Nemůžete použít prostředí Azure Cloudshellu ke spouštění modulů SM.
 
-1. Pomocí pokynů v článku [Instalace modulu Správa služeb](/powershell/azure/servicemanagement/install-azure-ps) nainstalujte modul správy služeb Azure. Pokud máte již nainstalovaný modul Az nebo RM, nezapomeňte použít '-AllowClobber'.
-2. Importujte nainstalované moduly. Při použití následujícího příkladu upravte cestu tak, aby odrážela umístění a verzi nainstalovaných modulů prostředí PowerShell.
+1. Pomocí pokynů v článku [Instalace modulu správy služeb](/powershell/azure/servicemanagement/install-azure-ps) nainstalujte modul Azure Service Management. Pokud máte modul AZ nebo RM nainstalovaný už, nezapomeňte použít-AllowClobber.
+2. Naimportujte nainstalované moduly. Když použijete následující příklad, upravte cestu tak, aby odrážela umístění a verzi nainstalovaných modulů PowerShellu.
 
    ```powershell
    Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.3.0\Azure.psd1'
    Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.3.0\ExpressRoute\ExpressRoute.psd1'
    ```
-3. Pokud se chcete přihlásit ke svému účtu Azure, otevřete si konzolu PowerShell se zvýšenými právy a připojte se ke svému účtu. Pomocí následujícího příkladu můžete připojit pomocí modulu Správa služeb:
+3. Pokud se chcete přihlásit ke svému účtu Azure, otevřete konzolu PowerShellu se zvýšenými právy a připojte se ke svému účtu. Použijte následující příklad, který vám umožní připojit se pomocí modulu pro správu služeb:
 
    ```powershell
    Add-AzureAccount

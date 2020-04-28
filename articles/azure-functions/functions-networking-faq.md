@@ -1,70 +1,70 @@
 ---
-title: Nejčastější dotazy týkající se sítí ve funkcích Azure
-description: Odpovědi na některé z nejčastějších otázek a scénářů pro vytváření sítí s Funkcemi Azure.
+title: Nejčastější dotazy týkající se sítě v Azure Functions
+description: Odpovědi na některé z nejběžnějších otázek a scénářů pro síť s Azure Functions.
 author: alexkarcher-msft
 ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.author: alkarche
 ms.reviewer: glenga
 ms.openlocfilehash: acb1e942c1f342ce6fee7d8aeacafcc1d7b6fd91
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75409533"
 ---
-# <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Nejčastější dotazy týkající se sítí ve funkcích Azure
+# <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Nejčastější dotazy týkající se sítě v Azure Functions
 
-V tomto článku jsou uvedeny nejčastější dotazy týkající se sítí ve funkcích Azure. Podrobnější přehled naleznete v tématu [Funkce možnosti sítě](functions-networking-options.md).
+V tomto článku jsou uvedeny nejčastější dotazy týkající se sítě v Azure Functions. Komplexnější přehled najdete v tématu [funkce síťových možností](functions-networking-options.md).
 
-## <a name="how-do-i-set-a-static-ip-in-functions"></a>Jak nastavím statickou IP adresu ve funkcích?
+## <a name="how-do-i-set-a-static-ip-in-functions"></a>Návody nastavit statickou IP adresu ve funkcích Functions?
 
-Nasazení funkce v prostředí služby App Service je aktuálně jediný způsob, jak mít statickou příchozí a odchozí IP adresu pro vaši funkci. Podrobnosti o používání prostředí služby App Service nastoupte v článku [Vytvoření a použití interního vyvyčovávače zatížení s prostředím služby App Service](../app-service/environment/create-ilb-ase.md).
+Nasazení funkce v App Service Environment je v současné době jediným způsobem, jak pro vaši funkci vytvořit statickou příchozí a odchozí IP adresu. Podrobné informace o použití App Service Environment začněte s článkem [Vytvoření a použití interního nástroje pro vyrovnávání zatížení s App Service Environment](../app-service/environment/create-ilb-ase.md).
 
-## <a name="how-do-i-restrict-internet-access-to-my-function"></a>Jak mohu omezit přístup k internetu na svou funkci?
+## <a name="how-do-i-restrict-internet-access-to-my-function"></a>Návody omezit přístup k Internetu na moji funkci?
 
-Přístup k internetu můžete omezit několika způsoby:
+Přístup k Internetu můžete omezit několika způsoby:
 
-* [Omezení IP](../app-service/app-service-ip-restrictions.md)adres: Omezte příchozí provoz na aplikaci funkcí podle rozsahu IP adres.
-    * V rámci omezení IP můžete také nakonfigurovat [koncové body služby](../virtual-network/virtual-network-service-endpoints-overview.md), které omezují funkci tak, aby přijímala pouze příchozí přenosy z určité virtuální sítě.
-* Odebrání všech aktivačních událostí PROTOKOLU HTTP. U některých aplikací stačí jednoduše vyhnout aktivační události HTTP a použít jakýkoli jiný zdroj událostí k aktivaci funkce.
+* [Omezení IP adres](../app-service/app-service-ip-restrictions.md): umožňuje omezit příchozí provoz do aplikace Function za rozsah IP adres.
+    * V části omezení protokolu IP můžete také nakonfigurovat [koncové body služby](../virtual-network/virtual-network-service-endpoints-overview.md), které omezují, aby funkce přijímala příchozí provoz jenom z konkrétní virtuální sítě.
+* Odebrání všech triggerů HTTP. U některých aplikací je stačí jednoduše zabránit aktivačním událostem HTTP a použít k aktivaci funkce jiný zdroj událostí.
 
-Mějte na paměti, že editor portálu Azure vyžaduje přímý přístup k vaší spuštěné funkci. Všechny změny kódu prostřednictvím portálu Azure budou vyžadovat, aby zařízení, které používáte k procházení portálu, bylo na seznamu ip povolených. Ale stále můžete použít cokoliv pod záložkou funkce platformy s síťovými omezeními na místě.
+Mějte na paměti, že editor Azure Portal vyžaduje přímý přístup ke spuštěným funkcím. Jakékoli změny kódu prostřednictvím Azure Portal budou vyžadovat, aby zařízení, které používáte k procházení portálu, mělo jeho IP adresu povolenou. Můžete ale pořád použít cokoli na kartě funkce platformy se zavedenými omezeními sítě.
 
-## <a name="how-do-i-restrict-my-function-app-to-a-virtual-network"></a>Jak můžu omezit svou aplikaci funkcí na virtuální síť?
+## <a name="how-do-i-restrict-my-function-app-to-a-virtual-network"></a>Návody omezit aplikaci Function App na virtuální síť?
 
-Můžete omezit **příchozí** provoz pro aplikaci funkce na virtuální síť pomocí [koncových bodů služby](./functions-networking-options.md#private-site-access). Tato konfigurace stále umožňuje aplikaci funkce provádět odchozí volání na internet.
+**Příchozí** provoz pro aplikaci Function App můžete omezit na virtuální síť pomocí [koncových bodů služby](./functions-networking-options.md#private-site-access). Tato konfigurace pořád umožňuje, aby aplikace Functions provedla odchozí volání na Internet.
 
-Jediný způsob, jak zcela omezit funkci tak, že veškerý provoz toky prostřednictvím virtuální sítě je použití prostředí služby App Service s vyrovnáváním zatížení. Tato možnost nasazuje váš web na vyhrazené infrastruktuře uvnitř virtuální sítě a odesílá všechny aktivační události a provoz prostřednictvím virtuální sítě. 
+Jediným způsobem, jak úplně omezit funkci tak, aby všechny přenosy přes virtuální síť používaly interní App Service Environment s vyrovnáváním zatížení. Tato možnost nasadí váš web na vyhrazené infrastruktuře uvnitř virtuální sítě a pošle všechny aktivační události a přenosy přes virtuální síť. 
 
-Podrobnosti o používání prostředí služby App Service nastoupte v článku [Vytvoření a použití interního vyvyčovávače zatížení s prostředím služby App Service](../app-service/environment/create-ilb-ase.md).
+Podrobné informace o použití App Service Environment začněte s článkem [Vytvoření a použití interního nástroje pro vyrovnávání zatížení s App Service Environment](../app-service/environment/create-ilb-ase.md).
 
-## <a name="how-can-i-access-resources-in-a-virtual-network-from-a-function-app"></a>Jak můžu získat přístup k prostředkům ve virtuální síti z aplikace funkcí?
+## <a name="how-can-i-access-resources-in-a-virtual-network-from-a-function-app"></a>Jak můžu získat přístup k prostředkům ve virtuální síti z aplikace Function App?
 
-K prostředkům ve virtuální síti můžete přistupovat z běžící funkce pomocí integrace virtuální sítě. Další informace naleznete v tématu [Integrace virtuální sítě](functions-networking-options.md#virtual-network-integration).
+K prostředkům ve virtuální síti můžete přistupovat ze spuštěné funkce pomocí integrace virtuální sítě. Další informace najdete v tématu [Integrace virtuální sítě](functions-networking-options.md#virtual-network-integration).
 
-## <a name="how-do-i-access-resources-protected-by-service-endpoints"></a>Jak lze získat přístup k prostředkům chráněným koncovými body služby?
+## <a name="how-do-i-access-resources-protected-by-service-endpoints"></a>Návody přístup k prostředkům chráněným koncovými body služby?
 
-Pomocí integrace virtuální sítě můžete přistupovat k prostředkům zabezpečeným koncovým bodem služby z běžící funkce. Další informace naleznete v tématu [integrace virtuální sítě](functions-networking-options.md#virtual-network-integration).
+Pomocí integrace virtuální sítě můžete získat přístup k prostředkům zabezpečeným koncovým bodem z běžící funkce. Další informace najdete v tématu [Integrace virtuální sítě](functions-networking-options.md#virtual-network-integration).
 
-## <a name="how-can-i-trigger-a-function-from-a-resource-in-a-virtual-network"></a>Jak lze aktivovat funkci z prostředku ve virtuální síti?
+## <a name="how-can-i-trigger-a-function-from-a-resource-in-a-virtual-network"></a>Jak můžu aktivovat funkci z prostředku ve virtuální síti?
 
-Můžete povolit aktivační události PROTOKOLU HTTP, které mají být volány z virtuální sítě pomocí [koncových bodů služby](./functions-networking-options.md#private-site-access). 
+Můžete umožnit volání aktivačních událostí HTTP z virtuální sítě pomocí [koncových bodů služby](./functions-networking-options.md#private-site-access). 
 
-Můžete také aktivovat funkci ze všech ostatních prostředků ve virtuální síti nasazením aplikace funkce do plánu Premium, plán služby App Service nebo prostředí služby App Service. Další informace naleznete v [tématu aktivační události virtuální sítě bez protokolu HTTP](./functions-networking-options.md#virtual-network-triggers-non-http)
+Můžete také aktivovat funkci ze všech ostatních prostředků ve virtuální síti nasazením aplikace Function App do plánu Premium, App Service plánu nebo App Service Environment. Další informace najdete v tématu [triggery jiné virtuální sítě než http](./functions-networking-options.md#virtual-network-triggers-non-http) .
 
-## <a name="how-can-i-deploy-my-function-app-in-a-virtual-network"></a>Jak můžu nasadit svou aplikaci funkcí ve virtuální síti?
+## <a name="how-can-i-deploy-my-function-app-in-a-virtual-network"></a>Jak můžu nasadit aplikaci Function App ve virtuální síti?
 
-Nasazení do prostředí služby App Service je jediný způsob, jak vytvořit aplikaci funkce, která je zcela uvnitř virtuální sítě. Podrobnosti o použití interního vyvyčovávače zatížení s prostředím služby App Service, začněte s [článkem Vytvořit a použít interní vyrovnávání zatížení s prostředím služby App Service](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase).
+Nasazení do App Service Environment je jediným způsobem, jak vytvořit aplikaci Function App, která je zcela uvnitř virtuální sítě. Podrobnosti o používání interního nástroje pro vyrovnávání zatížení s App Service Environment můžete začít s článkem [Vytvoření a použití interního nástroje pro vyrovnávání zatížení s App Service Environment](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase).
 
-Pro scénáře, kde potřebujete pouze jednosměrný přístup k prostředkům virtuální sítě nebo méně komplexní izolaci sítě, naleznete v [přehledu sítí Functions](functions-networking-options.md).
+V případě scénářů, kdy potřebujete pouze jednosměrný přístup k prostředkům virtuální sítě nebo méně komplexní izolaci sítě, přečtěte si téma [Přehled funkcí sítě](functions-networking-options.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o vytváření sítí a funkcích: 
+Další informace o sítích a funkcích: 
 
-* [Postupujte podle kurzu o začínáme s integrací virtuální sítě](./functions-create-vnet.md)
-* [Další informace o možnostech sítě v Azure Functions](./functions-networking-options.md)
-* [Další informace o integraci virtuálních sítí pomocí služby App Service a funkcí](../app-service/web-sites-integrate-with-vnet.md)
+* [Postup Začínáme s integrací virtuální sítě najdete v kurzu.](./functions-create-vnet.md)
+* [Přečtěte si další informace o možnostech sítě v Azure Functions](./functions-networking-options.md)
+* [Další informace o integraci virtuální sítě s App Service a funkcemi](../app-service/web-sites-integrate-with-vnet.md)
 * [Další informace o virtuálních sítích v Azure](../virtual-network/virtual-networks-overview.md)
-* [Povolení dalších síťových funkcí a řízení pomocí prostředí služby App Service](../app-service/environment/intro.md)
+* [Povolení více síťových funkcí a řízení pomocí App Servicech prostředí](../app-service/environment/intro.md)

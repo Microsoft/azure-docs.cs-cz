@@ -1,6 +1,6 @@
 ---
-title: Ochrana obsahu HLS pomocí microsoftplayready nebo Apple FairPlay – Azure | Dokumenty společnosti Microsoft
-description: Toto téma poskytuje přehled a ukazuje, jak pomocí Mediálních služeb Azure dynamicky šifrovat obsah http živého streamování (HLS) pomocí Apple FairPlay. Ukazuje také, jak používat službu doručování licencí Media Services k doručování licencí FairPlay klientům.
+title: Ochrana obsahu HLS pomocí Microsoft PlayReady nebo Apple FairPlay – Azure | Microsoft Docs
+description: Toto téma poskytuje přehled a ukazuje, jak použít Azure Media Services k dynamickému šifrování obsahu HTTP Live Streaming (HLS) pomocí nástroje Apple FairPlay. Také ukazuje, jak používat službu Media Services License Delivery Service k doručování licencí FairPlay klientům.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,86 +14,86 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 873bc4ab5e435b91ff4400a39c92db0d0bb9baa8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74968761"
 ---
-# <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Chraňte svůj obsah HLS pomocí Apple FairPlay nebo Microsoft PlayReady
+# <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Chraňte svůj HLS obsah pomocí Apple FairPlay nebo Microsoft PlayReady
 
 > [!NOTE]
-> K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).   > Do služby Media Services v2 nejsou přidávány žádné nové funkce ani funkce. <br/>Podívejte se na nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
+> K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).   > do Media Services V2 se přidávají žádné nové funkce ani funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 >
 
-Azure Media Services umožňuje dynamicky šifrovat obsah http živého streamování (HLS) pomocí následujících formátů:  
+Azure Media Services slouží k dynamickému šifrování obsahu HTTP Live Streaming (HLS) pomocí následujících formátů:  
 
-* **AES-128 obálka zrušte klíč**
+* **Nejasný klíč pro obálku AES-128**
 
-    Celý blok je šifrován pomocí režimu **AES-128 CBC.** Dešifrování datového proudu je podporováno iOS a OS X přehrávačnativně. Další informace naleznete [v tématu Použití dynamického šifrování AES-128 a služby doručování klíčů](media-services-protect-with-aes128.md).
+    Celý blok dat je zašifrovaný pomocí režimu **CBC AES-128** . Dešifrování datového proudu je podporováno v nativním přehrávači pro iOS a OS X. Další informace najdete v tématu [použití dynamického šifrování AES-128 a služby pro doručování klíčů](media-services-protect-with-aes128.md).
 * **Apple FairPlay**
 
-    Jednotlivé vzorky videa a zvuku jsou šifrovány pomocí režimu **AES-128 CBC.** **FairPlay Streaming** (FPS) je integrován do operačních systémů zařízení s nativní podporou v systémech iOS a Apple TV. Safari na OS X umožňuje FPS pomocí podpory rozhraní Encrypted Media Extensions (EME).
+    Jednotlivé ukázky videa a zvuku jsou zašifrované pomocí režimu **CBC AES-128** . **Fairplay streamování** (FPS) je integrované do operačních systémů zařízení s nativní podporou pro iOS a Apple TV. Safari v OS X umožňuje použití snímků na základě podpory rozhraní EME (Encrypted Media Extensions).
 * **Microsoft PlayReady**
 
-Následující obrázek znázorňuje pracovní postup **dynamického šifrování HLS + FairPlay nebo PlayReady.**
+Na následujícím obrázku vidíte pracovní postup **dynamického šifrování HLS + Fairplay nebo PlayReady** .
 
 ![Diagram pracovního postupu dynamického šifrování](./media/media-services-content-protection-overview/media-services-content-protection-with-FairPlay.png)
 
-Tento článek ukazuje, jak pomocí mediálních služeb dynamicky šifrovat obsah HLS pomocí Apple FairPlay. Ukazuje také, jak používat službu doručování licencí Media Services k doručování licencí FairPlay klientům.
+Tento článek ukazuje, jak použít Media Services k dynamickému šifrování obsahu HLS pomocí Apple FairPlay. Také ukazuje, jak používat službu Media Services License Delivery Service k doručování licencí FairPlay klientům.
 
 > [!NOTE]
-> Pokud chcete také šifrovat obsah HLS pomocí služby PlayReady, musíte vytvořit společný klíč obsahu a přidružit jej ke svému datovému zdroji. Je také třeba nakonfigurovat zásady autorizace klíče obsahu, jak je popsáno v [části Použití běžného dynamického šifrování PlayReady](media-services-protect-with-playready-widevine.md).
+> Pokud chcete obsah HLS šifrovat pomocí PlayReady, je potřeba vytvořit společný klíč obsahu a přidružit ho k assetu. Také je potřeba nakonfigurovat zásady autorizace klíče obsahu, jak je popsáno v tématu [použití dynamického dynamického šifrování PlayReady](media-services-protect-with-playready-widevine.md).
 >
 >
 
-## <a name="requirements-and-considerations"></a>Požadavky a úvahy
+## <a name="requirements-and-considerations"></a>Požadavky a předpoklady
 
-Při používání Mediálních služeb je nutné dodat HLS šifrované pomocí FairPlay a dodat licence FairPlay:
+Při použití Media Services k zajištění HLS šifrovaných s FairPlay a k doručování licencí FairPlay se vyžadují následující:
 
-  * Účet Azure. Podrobnosti najdete v [tématu bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F).
-  * Účet Media Services. Pokud si ho nechcete vytvořit, přečtěte [si tématu Vytvoření účtu Mediální chodníčků Azure pomocí portálu Azure](media-services-portal-create-account.md).
-  * Zaregistrujte se [pomocí vývojového programu Apple](https://developer.apple.com/).
-  * Společnost Apple vyžaduje, aby vlastník obsahu získal [balíček nasazení](https://developer.apple.com/contact/fps/). Uveďte, že jste již implementovali modul zabezpečení klíčů (KSM) s mediálními službami a že požadujete konečný balíček FPS. V konečném balíčku FPS jsou pokyny pro generování certifikace a získání tajného klíče aplikace (ASK). Ke konfiguraci FairPlay používáte ASK.
+  * Účet Azure. Podrobnosti najdete v článku [bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F).
+  * Účet Media Services. Pokud ho chcete vytvořit, přečtěte si téma [Vytvoření účtu Azure Media Services pomocí Azure Portal](media-services-portal-create-account.md).
+  * Zaregistrujte se pomocí [vývojového programu Apple](https://developer.apple.com/).
+  * Apple vyžaduje, aby vlastník obsahu získal [balíček pro nasazení](https://developer.apple.com/contact/fps/). Stav, kdy už jste implementovali modul zabezpečení klíčů (KSM) s Media Services a že požadujete finální balíček pro FPS. K dispozici jsou pokyny v posledním balíčku FPS pro vygenerování certifikace a získání tajného klíče aplikace (ASK). Pro konfiguraci FairPlay použijte dotaz.
   * Azure Media Services .NET SDK verze **3.6.0** nebo novější.
 
-Následující věci musí být nastaveny na straně doručování klíčů mediálních služeb:
+Na straně Media Services Key Delivery se musí nastavit následující věci:
 
-  * **Certifikát aplikace (AC):** Jedná se o soubor .pfx, který obsahuje soukromý klíč. Tento soubor vytvoříte a zašifrujete heslem.
+  * **Certifikát aplikace (AC)**: Jedná se o soubor. pfx, který obsahuje privátní klíč. Vytvořte tento soubor a Zašifrujte ho heslem.
 
-       Při konfiguraci zásady doručování klíčů je nutné zadat toto heslo a soubor PFX ve formátu Base64.
+       Když konfigurujete zásady doručování klíčů, musíte toto heslo a soubor. pfx zadat ve formátu base64.
 
-      Následující kroky popisují, jak generovat soubor certifikátu .pfx pro FairPlay:
+      Následující postup popisuje, jak vygenerovat soubor certifikátu. pfx pro FairPlay:
 
     1. Nainstalujte OpenSSL z https://slproweb.com/products/Win32OpenSSL.html.
 
-        Přejděte do složky, kde je certifikát FairPlay a další soubory dodané společností Apple.
-    2. V příkazovém řádku spusťte následující příkaz. Tím se převede soubor CER na soubor PEM.
+        Přejít do složky, kde je certifikát FairPlay a další soubory dodávané společností Apple.
+    2. V příkazovém řádku spusťte následující příkaz. Tím se soubor. cer převede na soubor. pem.
 
-        "C:\OpenSSL-Win32\bin\openssl.exe" x509 -inform der -in FairPlay.cer -out FairPlay-out.pem
-    3. V příkazovém řádku spusťte následující příkaz. Tím se soubor PEM převede na soubor Pfx se soukromým klíčem. Heslo pro soubor .pfx je pak požádán OpenSSL.
+        "C:\OpenSSL-Win32\bin\openssl.exe" x509-informující der-in FairPlay. cer-out FairPlay-out. pem
+    3. V příkazovém řádku spusťte následující příkaz. Tím se soubor. pem převede na soubor. pfx s privátním klíčem. Heslo pro soubor. pfx pak vyzve OpenSSL.
 
-        "C:\OpenSSL-Win32\bin\openssl.exe" pkcs12 -export -out FairPlay-out.pfx -inkey privatekey.pem -in FairPlay-out.pem -passin file:privatekey-pem-pass.txt
-  * **Heslo certifikátu aplikace**: Heslo pro vytvoření souboru .pfx.
-  * **Id hesla certifikátu aplikace**: Musíte nahrát heslo, podobně jako nahrají další klíče Mediálních služeb. K získání ID mediálních služeb použijte výčet výčet **ContentKeyType.FairPlayPfxPassword.** To je to, co je třeba použít uvnitř klíčové možnosti zásad doručování.
-  * **iv**: Jedná se o náhodnou hodnotu 16 bajtů. Musí odpovídat iv v zásadách doručování majetku. Vygenerujete iv a umístíte jej na obě místa: zásady doručování majetku a možnost zásady klíčového doručování.
-  * **ASK**: Tento klíč je přijat při generování certifikace pomocí portálu Apple Developer. Každý vývojový tým obdrží jedinečný ASK. Uložte kopii ask a uložte ji na bezpečném místě. Ask je třeba nakonfigurovat ASK jako FairPlayAsk na Media Services později.
-  * **ASK ID**: Toto ID se získá při nahrávání ASK do media services. Musíte nahrát ASK pomocí **contentkeytype.FairPlayAsk** výčet hodnotu. V důsledku toho je vráceno ID mediálních služeb, a to je to, co by mělo být použito při nastavování možnosti zásad y klíčového doručení.
+        "C:\OpenSSL-Win32\bin\openssl.exe" PKCS12-export FairPlay-out. pfx-INKEY PrivateKey. pem-in Fairplay-out. pem-Passin soubor: PrivateKey-PEM-Pass. txt
+  * **Heslo certifikátu aplikace**: heslo pro vytvoření souboru. pfx.
+  * **Heslo certifikátu aplikace**: heslo musíte nahrát podobně jako při odesílání jiných klíčů Media Services. K získání ID Media Services použijte hodnotu výčtu **ContentKeyType. FairPlayPfxPassword** . To je to, co potřebují k použití v rámci možnosti zásady doručování klíčů.
+  * **IV**: Tato náhodná hodnota je 16 bajtů. Musí odpovídat IV v zásadě doručení assetu. Vygenerujete IV a umístíte ho na obě místa: zásady doručení assetu a zásady doručení klíčů.
+  * **Dotaz**: Tento klíč se obdrží, když vygenerujete certifikaci pomocí portálu pro vývojáře Apple. Každý vývojový tým obdrží jedinečný dotaz. Uložte kopii žádosti a uložte ji na bezpečném místě. Musíte nakonfigurovat ASK jako FairPlayAsk pro pozdější Media Services.
+  * **ID žádosti**: Toto ID se získá, když odešlete dotaz do Media Services. Je nutné nahrát dotaz pomocí hodnoty výčtu **ContentKeyType. FairPlayAsk** . V důsledku toho se vrátí ID Media Services a to, co byste měli použít při nastavování možnosti zásady doručování klíčů.
 
-Na straně klienta FPS musí být nastaveny následující věci:
+Následující akce musí být nastaveny na straně klienta FPS:
 
-  * **Certifikát aplikace (AC)**: Jedná se o soubor CER/.der, který obsahuje veřejný klíč, který operační systém používá k šifrování některých datových částek. Media Services potřebuje vědět o tom, protože je vyžadovánpřehrávačem. Služba doručování klíčů ji dešifruje pomocí odpovídajícího soukromého klíče.
+  * **Certifikát aplikace (AC)**: Jedná se o soubor. cer/. der obsahující veřejný klíč, který operační systém používá k šifrování některých datových částí. Media Services musí o tom znát, protože ho vyžaduje hráč. Služba doručování klíčů dešifruje pomocí odpovídajícího privátního klíče.
 
-Chcete-li přehrát šifrovaný stream FairPlay, získejte nejprve skutečný ASK a poté vygenerujte skutečný certifikát. Tento proces vytváří všechny tři části:
+Pokud chcete přehrát FairPlay zašifrovaný Stream, Získejte nejdřív skutečný dotaz a pak vygenerujte skutečný certifikát. Tento proces vytvoří všechny tři části:
 
-  * Soubor .der
-  * Soubor .pfx
-  * heslo pro .pfx
+  * soubor. der
+  * soubor. pfx
+  * heslo pro soubor. pfx
 
-Následující klienti podporují HLS s **šifrováním AES-128 CBC:** Safari na OS X, Apple TV, iOS.
+Následující klienti podporují HLS šifrování **AES-128 CBC** : Safari v OS X, Apple TV, iOS.
 
-## <a name="configure-fairplay-dynamic-encryption-and-license-delivery-services"></a>Konfigurace dynamických šifrovacích a doručovacích služeb FairPlay
-Níže jsou uvedeny obecné kroky pro ochranu vašich datových zdrojů pomocí fairplay pomocí služby doručování licencí Media Services a také pomocí dynamického šifrování.
+## <a name="configure-fairplay-dynamic-encryption-and-license-delivery-services"></a>Konfigurace dynamického šifrování FairPlay a služeb doručování licencí
+Níže najdete obecné kroky pro ochranu prostředků pomocí FairPlay pomocí služby doručování licencí Media Services a také pomocí dynamického šifrování.
 
 1. Vytvořte prostředek a nahrajte do něj soubory.
 2. Zakódujte prostředek obsahující soubor do sady souborů MP4 s adaptivní přenosovou rychlostí.
@@ -101,51 +101,51 @@ Níže jsou uvedeny obecné kroky pro ochranu vašich datových zdrojů pomocí 
 4. Nakonfigurujte zásady autorizace pro klíč k obsahu. Určete následující nastavení:
 
    * Způsob doručení (v tomto případě FairPlay).
-   * Konfigurace možností zásad FairPlay. Podrobnosti o konfiguraci FairPlay naleznete v metodě **ConfigureFairPlayPolicyOptions()** v následující ukázce.
+   * Konfigurace možností zásad FairPlay Podrobnosti o tom, jak nakonfigurovat FairPlay, najdete v níže uvedené ukázce metody **ConfigureFairPlayPolicyOptions ()** .
 
      > [!NOTE]
-     > Obvykle byste chtěli nakonfigurovat možnosti zásad FairPlay pouze jednou, protože budete mít pouze jednu sadu certifikace a ASK.
+     > Obvykle byste chtěli nakonfigurovat možnosti zásad FairPlay jenom jednou, protože budete mít jenom jednu sadu certifikace a dotaz.
      >
      >
    * Omezení (otevřít nebo token).
-   * Informace specifické pro typ doručení klíče, který definuje, jak je klíč doručován klientovi.
-5. Nakonfigurujte zásady poskytování majetku. Konfigurace zásad doručení zahrnuje:
+   * Informace specifické pro typ doručení klíče, který definuje, jak se klíč doručí klientovi.
+5. Nakonfigurujte zásady doručení assetu. Konfigurace zásad doručování zahrnuje:
 
    * Protokol doručení (HLS).
-   * Typ dynamického šifrování (běžné šifrování CBC).
-   * Adresa URL získání licence.
+   * Typ dynamického šifrování (společné šifrování CBC).
+   * Adresa URL pro získání licence
 
      > [!NOTE]
-     > Pokud chcete dodat datový proud, který je šifrován pomocí FairPlay a jiného systému správy digitálních práv (DRM), musíte nakonfigurovat samostatné zásady doručování:
+     > Pokud chcete doručovat datový proud, který je zašifrovaný pomocí FairPlay a jiný systém DRM (Digital Rights Management), musíte nakonfigurovat samostatné zásady doručování:
      >
-     > * Jeden iAssetDeliveryPolicy pro konfiguraci dynamického adaptivního streamování přes HTTP (DASH) s běžným šifrováním (CENC) (PlayReady + Widevine) a Plynulý s PlayReady
-     > * Další IAssetDeliveryPolicy pro konfiguraci FairPlay pro HLS
+     > * Jedna IAssetDeliveryPolicya pro konfiguraci dynamického adaptivního streamování přes HTTP (POMLČKa) pomocí Common Encryption (CENC) (PlayReady + Widevine) a hladkého pomocí PlayReady
+     > * Další IAssetDeliveryPolicy ke konfiguraci FairPlay pro HLS
      >
      >
 6. Pokud chcete získat adresu URL streamování, vytvořte lokátor OnDemand.
 
-## <a name="use-fairplay-key-delivery-by-player-apps"></a>Použití doručení klíče FairPlay podle aplikací pro hráče
-Aplikace přehrávače můžete vyvíjet pomocí sady iOS SDK. Abyste mohli přehrávat obsah FairPlay, musíte implementovat protokol výměny licencí. Tento protokol není společností Apple určen. Je na každé aplikaci, jak odeslat žádosti o doručení klíčů. Služba doručování klíčů Media Services FairPlay očekává, že SPC přijde jako postová zpráva s kódem www-form-url v následujícím formuláři:
+## <a name="use-fairplay-key-delivery-by-player-apps"></a>Použití FairPlay Key Delivery v aplikacích přehrávače
+Aplikace přehrávače můžete vyvíjet pomocí sady iOS SDK. Aby bylo možné přehrávat FairPlay obsah, je nutné implementovat protokol License Exchange. Tento protokol není specifikován společností Apple. Jak odesílat požadavky na doručení klíčů, je k diskaždé aplikaci. Služba doručování klíčů Media Services FairPlay očekává, že se SPC přidělí jako webová zpráva zakódovaná v URL formátu www v následujícím tvaru:
 
     spc=<Base64 encoded SPC>
 
 > [!NOTE]
-> Azure Media Player podporuje přehrávání FairPlay. Další informace najdete v [dokumentaci k programu Azure Media Player.](https://amp.azure.net/libs/amp/latest/docs/index.html)
+> Azure Media Player podporuje přehrávání FairPlay. Další informace najdete v [dokumentaci k Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) .
 >
 >
 
-## <a name="streaming-urls"></a>Datové adresy URL pro streamování
-Pokud byl váš prostředek zašifrován pomocí více než jednoho DRM, měli byste použít šifrovací značku v adrese URL streamování: (format='m3u8-aapl', encryption='xxx').
+## <a name="streaming-urls"></a>Adresy URL streamování
+Pokud byl váš Asset zašifrovaný s více než jedním DRM, měli byste použít šifrovací značku v adrese URL streamování: (Format = ' 3u8-AAPL ', Encryption = ' xxx ').
 
 Platí následující důležité informace:
 
-* Lze zadat pouze nulový nebo jeden typ šifrování.
-* Typ šifrování nemusí být zadán v adrese URL, pokud bylo na prostředek použito pouze jedno šifrování.
-* Typ šifrování je malá a velká písmena.
+* Lze zadat pouze nula nebo jeden typ šifrování.
+* V případě, že se k assetu použilo jenom jedno šifrování, nemusí se typ šifrování zadat v adrese URL.
+* Typ šifrování rozlišuje velká a malá písmena.
 * Lze zadat následující typy šifrování:  
-  * **cenc**: Běžné šifrování (PlayReady nebo Widevine)
-  * **cbcs-aapl**: FairPlay
-  * **cbc**: Šifrování obálky AES
+  * **CENC**: běžné šifrování (PlayReady nebo Widevine)
+  * **cbcs-AAPL**: Fairplay
+  * **CBC**: šifrování obálek AES
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
 
@@ -159,12 +159,12 @@ Platí následující důležité informace:
 
 ## <a name="example"></a>Příklad
 
-Následující ukázka ukazuje schopnost používat mediální služby k doručování obsahu zašifrovaného pomocí FairPlay. Tato funkce byla zavedena v Azure Media Services SDK pro .NET verze 3.6.0. 
+Následující ukázka demonstruje možnost použití Media Services k doručování obsahu zašifrovaného pomocí FairPlay. Tato funkce byla představena v sadě Azure Media Services SDK pro .NET verze 3.6.0. 
 
 Přepište kód v souboru Program.cs kódem zobrazeným v této části.
 
 >[!NOTE]
->Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Pokud vždy používáte stejné dny / přístupová oprávnění, například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez odeslání), měli byste použít stejné ID zásad. Další informace naleznete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) článku.
+>Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Pokud vždy používáte stejné dny / přístupová oprávnění, například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez odeslání), měli byste použít stejné ID zásad. Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) článku.
 
 Nezapomeňte aktualizovat proměnné tak, aby odkazovaly do složek, ve kterých jsou umístěné vaše vstupní soubory.
 
@@ -557,7 +557,7 @@ namespace DynamicEncryptionWithFairPlay
 
 ## <a name="additional-notes"></a>Další poznámky
 
-* Widevine je služba poskytovaná společností Google Inc. a podléhá podmínkám služeb a zásadám ochrany osobních údajů společnosti Google, Inc.
+* Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
 
 ## <a name="next-steps-media-services-learning-paths"></a>Další kroky: Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

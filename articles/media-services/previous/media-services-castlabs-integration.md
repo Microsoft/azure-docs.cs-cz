@@ -1,6 +1,6 @@
 ---
-title: Použití castLabs dodat Widevine licence pro Azure Media Services | Dokumenty společnosti Microsoft
-description: Tento článek popisuje, jak můžete pomocí Azure Media Services (AMS) dodat datový proud, který je dynamicky šifrována AMS s PlayReady a Widevine DRM.
+title: Použití castLabs k doručování licencí Widevine Azure Media Services | Microsoft Docs
+description: Tento článek popisuje, jak můžete pomocí Azure Media Services (AMS) doručovat datový proud, který je dynamicky zašifrovaný pomocí AMS, pomocí PlayReady i Widevine několikanásobnou.
 services: media-services
 documentationcenter: ''
 author: Mingfeiy
@@ -16,10 +16,10 @@ ms.date: 03/14/2019
 ms.author: Juliako
 ms.reviewer: willzhan
 ms.openlocfilehash: 29a344c739d8d99da2e5c81d41a11c601e48022e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74969135"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>Distribuce licencí Widevine pro Azure Media Services pomocí castLabs 
@@ -31,93 +31,93 @@ ms.locfileid: "74969135"
 
 ## <a name="overview"></a>Přehled
 
-Tento článek popisuje, jak můžete pomocí Azure Media Services (AMS) dodat datový proud, který je dynamicky šifrována AMS s PlayReady a Widevine DRM. Licence PlayReady pochází z licenčního serveru Media Services PlayReady a licence Widevine je dodávána licenčním serverem **castLabs.**
+Tento článek popisuje, jak můžete pomocí Azure Media Services (AMS) doručovat datový proud, který je dynamicky zašifrovaný pomocí AMS, pomocí PlayReady i Widevine několikanásobnou. Licence PlayReady pochází z Media Services licenční server PlayReady a licence Widevine se doručují prostřednictvím licenčního serveru **castLabs** .
 
-Chcete-li přehrávat streamovaný obsah chráněný cenc (PlayReady a/nebo Widevine), můžete použít [Azure Media Player](https://aka.ms/azuremediaplayer). Podrobnosti najdete v [dokumentu AMP.](https://amp.azure.net/libs/amp/latest/docs/)
+Pokud chcete přehrávat obsah streamování chráněný pomocí CENC (PlayReady nebo Widevine), můžete použít [Azure Media Player](https://aka.ms/azuremediaplayer). Podrobnosti najdete v [dokumentu amp](https://amp.azure.net/libs/amp/latest/docs/) .
 
-Následující diagram znázorňuje architekturu integrace Azure Media Services na vysoké úrovni a castLabs.
+Následující diagram znázorňuje architekturu integrace na nejvyšší úrovni Azure Media Services a castLabs.
 
-![Integrace](./media/media-services-castlabs-integration/media-services-castlabs-integration.png)
+![spolupráci](./media/media-services-castlabs-integration/media-services-castlabs-integration.png)
 
 ## <a name="typical-system-set-up"></a>Typické nastavení systému
 
-* Mediální obsah je uložen v AMS.
-* ID klíčů obsahu jsou uložena v kolečkách i v AMS.
-* castLabs a AMS mají zabudované ověřování tokenů. Následující části popisují ověřovací tokeny. 
-* Když klient požádá o streamování videa, obsah je dynamicky šifrován **pomocí společného šifrování** (CENC) a dynamicky zabalen ams na hladké streamování a DASH. Dodáváme také PlayReady M2TS základní stream šifrování pro HLS streaming protokol.
-* Licence PlayReady je načtena z licenčního serveru AMS a licence Widevine je načtena z licenčního serveru castLabs. 
-* Program Media Player automaticky rozhoduje o tom, kterou licenci má načíst, a to na základě možnosti klientské platformy. 
+* Mediální obsah je uložený v AMS.
+* ID klíčů klíčů obsahu se ukládají jak v castLabs, tak v AMS.
+* castLabs a AMS mají i integrované ověřování tokenů. Následující části popisují ověřovací tokeny. 
+* Když klient požaduje streamování videa, obsah se dynamicky zašifruje pomocí **Common Encryption** (CENC) a dynamicky balí v AMS do Smooth Streaming a pomlčky. Pro protokol streamování HLS zajišťujeme také základní šifrování datového proudu PlayReady M2TS.
+* Licence PlayReady se načte z licenčního serveru AMS a licence Widevine se načte z licenčního serveru castLabs. 
+* Media Player automaticky rozhoduje o tom, která licence se má načíst na základě schopnosti klientské platformy. 
 
 ## <a name="authentication-token-generation-for-getting-a-license"></a>Generování ověřovacího tokenu pro získání licence
 
-Kolečka i AMS podporují formát tokenu JWT (JSON Web Token), který se používá k autorizaci licence. 
+CastLabs i AMS podporují formát tokenu JWT (JSON Web Token), který slouží k autorizaci licence. 
 
-### <a name="jwt-token-in-ams"></a>JWT token v AMS
+### <a name="jwt-token-in-ams"></a>Token JWT v AMS
 
 Následující tabulka popisuje token JWT v AMS. 
 
-| Vystavitel | Řetězec vystavittele z vybrané služby Zabezpečených tokenů (STS) |
+| Vystavitel | Řetězec vystavitele z vybrané služby tokenů zabezpečení (STS) |
 | --- | --- |
-| Cílová skupina |Řetězec publika z použitého STS |
-| Deklarace identity |Soubor nároků |
-| Není před |Zahájit platnost tokenu |
+| Cílová skupina |Řetězec cílové skupiny z použité služby STS |
+| Deklarace identity |Sada deklarací identity |
+| NotBefore |Počáteční platnost tokenu |
 | Platnost vyprší |Konec platnosti tokenu |
-| Podepisování přihlašovacích údajů |Klíč, který je sdílen mezi PlayReady License Server, castLabs License Server a STS, může být buď symetrický nebo asymetrický klíč. |
+| SigningCredentials |Klíč sdílený mezi licenčním serverem PlayReady, castLabs licenčním serverem a službou STS, může být buď symetrický, nebo asymetrický klíč. |
 
-### <a name="jwt-token-in-castlabs"></a>JWT token v castLabs
+### <a name="jwt-token-in-castlabs"></a>Token JWT v castLabs
 
 Následující tabulka popisuje token JWT v castLabs. 
 
-| Name (Název) | Popis |
+| Název | Popis |
 | --- | --- |
 | optData |Řetězec JSON obsahující informace o vás. |
-| Crt |Řetězec JSON obsahující informace o datovém zdroji, jeho informace o licenci a práva na přehrávání. |
-| iat |Aktuální datetime v epochě. |
-| jti |Jedinečný identifikátor o tomto tokenu (každý token lze použít pouze jednou v systému castLabs). |
+| promítací |Řetězec JSON obsahující informace o assetu, licenční informace a práva k přehrávání. |
+| IAT |Aktuální hodnota DateTime v epocha. |
+| jti |Jedinečný identifikátor tohoto tokenu (každý token se dá použít jenom jednou v castLabs systému). |
 
-## <a name="sample-solution-setup"></a>Nastavení ukázkového roztoku
+## <a name="sample-solution-setup"></a>Nastavení ukázkového řešení
 
-[Vzorové řešení](https://github.com/AzureMediaServicesSamples/CastlabsIntegration) se skládá ze dvou projektů:
+[Ukázkové řešení](https://github.com/AzureMediaServicesSamples/CastlabsIntegration) se skládá ze dvou projektů:
 
-* Konzolová aplikace, kterou lze použít k nastavení omezení DRM pro již ingestovaný prostředek pro playready i widevine.
-* Webová aplikace, která rozdává žetony, které by mohly být považovány za velmi zjednodušené verze STS.
+* Konzolová aplikace, která se dá použít k nastavení omezení DRM pro již příjmový prostředek pro PlayReady i Widevine.
+* Webová aplikace, která se dodávají tokeny, které by se mohly zobrazit jako velmi ZJEDNODUŠENá verze služby STS.
 
 Použití konzolové aplikace:
 
-1. Změňte soubor app.config na nastavení přihlašovacích údajů AMS, pověření castLabs, konfigurace SLUŽBY STS a sdíleného klíče.
-2. Nahrajte datový zdroj do AMS.
-3. Získejte UUID z nahraného datového zdroje a změňte řádek 32 v souboru Program.cs:
+1. Změňte soubor App. config a nastavte přihlašovací údaje AMS, castLabs přihlašovací údaje, konfiguraci STS a sdílený klíč.
+2. Nahrajte Asset do AMS.
+3. Získat UUID z nahraného Assetu a změnit řádek 32 v souboru Program.cs:
    
-      var objIAsset = _context. Assets.Where(x => x.Id == "nb:cid:UUID:dac53a5d-1500-80bd-b864-f1e4b62594cf"). FirstOrDefault();
-4. Použijte AssetId pro pojmenování datového zdroje v systému castLabs (řádek 44 v souboru Program.cs).
+      var objIAsset = _context. Assets. Where (x => x.Id = = "NB: CID: UUID: dac53a5d-1500-80bd-b864-f1e4b62594cf"). FirstOrDefault ();
+4. Použijte AssetId pro pojmenování assetu v systému castLabs (řádek 44 v souboru Program.cs).
    
-   Musíte nastavit AssetId pro **castLabs**; musí se jedná o jedinečný alfanumerický řetězec.
+   Je nutné nastavit AssetId pro **castLabs**; musí se jednat o jedinečný alfanumerický řetězec.
 5. Spusťte program.
 
 Použití webové aplikace (STS):
 
-1. Změňte web.config na nastavení id obchodníka castlabs, konfiguraci STS a sdílený klíč.
-2. Nasazujte se na weby Azure.
+1. Změnou souboru Web. config nastavte castlabs obchodní ID, konfiguraci služby STS a sdílený klíč.
+2. Nasazení na Azure websites.
 3. Přejděte na web.
 
 ## <a name="playing-back-a-video"></a>Přehrávání videa
 
-Chcete-li přehrát video zašifrované běžným šifrováním (PlayReady a/nebo Widevine), můžete použít [Azure Media Player](https://aka.ms/azuremediaplayer). Při spuštění aplikace konzoly se zobrazí ID klíče obsahu a adresa URL manifestu.
+Pokud chcete přehrát video šifrované se společným šifrováním (PlayReady nebo Widevine), můžete použít [Azure Media Player](https://aka.ms/azuremediaplayer). Při spuštění konzolové aplikace se ID klíče obsahu a adresa URL manifestu vrátí do ozvěny.
 
-1. Otevřete novou kartu a spusťte STS: http://[yourStsName].azurewebsites.net/api/token/assetid/[yourCastLabsAssetId]/contentkeyid/[thecontentkeyid].
-2. Přejděte na [Azure Media Player](https://aka.ms/azuremediaplayer).
-3. Vložte do adresy URL streamování.
-4. Zaškrtněte políčko **Upřesnit možnosti.**
-5. V rozevíracím souboru **Ochrana** vyberte PlayReady a/nebo Widevine.
-6. Vložte token, který jste získali z vašeho STS do textového pole Token. 
+1. Otevřete novou kartu a spusťte svoji službu STS: http://[yourStsName]. azurewebsites. NET/API/token/AssetID/[yourCastLabsAssetId]/contentkeyid/[thecontentkeyid].
+2. Přejít na [Azure Media Player](https://aka.ms/azuremediaplayer).
+3. Vložte adresu URL streamování.
+4. Klikněte na zaškrtávací políčko **Upřesnit možnosti** .
+5. V rozevíracím seznamu **ochrana** vyberte PlayReady nebo Widevine.
+6. Do textového pole tokenu vložte token, který jste získali ze své služby STS. 
    
-   Licenční server castLab nepotřebuje předponu "Bearer=" před tokenem. Takže prosím, odstraňte, že před odesláním tokenu.
+   Licenční server castLab nepotřebuje před tokenem předponu "Bearer =". Před odesláním tokenu ho prosím odeberte.
 7. Aktualizujte přehrávač.
-8. Video by se mělo přehrávat.
+8. Video by mělo být přehráváno.
 
 ## <a name="additional-notes"></a>Další poznámky
 
-* Widevine je služba poskytovaná společností Google Inc. a podléhá podmínkám služeb a zásadám ochrany osobních údajů společnosti Google, Inc.
+* Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

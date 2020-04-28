@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: Přidání brány do virtuální sítě: klasické'
-description: Nakonfigurujte bránu virtuální sítě pro virtuální síť klasického nasazení pomocí prostředí PowerShell pro konfiguraci ExpressRoute.
+title: 'Azure ExpressRoute: přidání brány do virtuální sítě: Classic'
+description: Nakonfigurujte bránu virtuální sítě pro virtuální síť modelu nasazení Classic pomocí prostředí PowerShell pro konfiguraci ExpressRoute.
 services: expressroute
 author: charwen
 ms.service: expressroute
@@ -9,21 +9,21 @@ ms.date: 12/06/2019
 ms.author: charwen
 ms.custom: seodec18
 ms.openlocfilehash: d7927af5b831dbe3294e1abc3a878e323bf1867e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74928051"
 ---
-# <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell-classic"></a>Konfigurace brány virtuální sítě pro ExpressRoute pomocí PowerShellu (klasického)
+# <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell-classic"></a>Konfigurace brány virtuální sítě pro ExpressRoute pomocí prostředí PowerShell (Classic)
 > [!div class="op_single_selector"]
 > * [Resource Manager – PowerShell](expressroute-howto-add-gateway-resource-manager.md)
-> * [Classic - PowerShell](expressroute-howto-add-gateway-classic.md)
-> * [Video – portál Azure](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)
+> * [Klasický – PowerShell](expressroute-howto-add-gateway-classic.md)
+> * [Video – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)
 > 
 > 
 
-Tento článek vás provede kroky pro přidání, změna velikosti a odebrání brány virtuální sítě (VNet) pro již existující virtuální síť. Kroky pro tuto konfiguraci jsou speciálně pro virtuální sítě, které byly vytvořeny pomocí **klasického modelu nasazení** a které se použijí v konfiguraci ExpressRoute. 
+Tento článek vás provede jednotlivými kroky pro přidání, změnu velikosti a odebrání brány virtuální sítě (VNet) pro stávající virtuální síť. Kroky pro tuto konfiguraci jsou určené konkrétně pro virtuální sítě, které byly vytvořeny pomocí **modelu nasazení Classic** a které budou použity v konfiguraci ExpressRoute. 
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
@@ -32,12 +32,12 @@ Tento článek vás provede kroky pro přidání, změna velikosti a odebrání 
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="before-beginning"></a>Před zahájením
-Ověřte, že jste nainstalovali rutiny Prostředí Azure PowerShell potřebné pro tuto konfiguraci.
+Ověřte, že jste nainstalovali rutiny Azure PowerShell potřebné pro tuto konfiguraci.
 
 [!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
 [!INCLUDE [expressroute-gateway-classic-ps](../../includes/expressroute-gateway-classic-ps-include.md)]
 
 ## <a name="next-steps"></a>Další kroky
-Po vytvoření brány virtuální sítě můžete virtuální síť propojit s okruhem ExpressRoute. Viz [Propojení virtuální sítě s okruhem ExpressRoute](expressroute-howto-linkvnet-classic.md).
+Po vytvoření brány virtuální sítě můžete připojit virtuální síť k okruhu ExpressRoute. Viz [propojení Virtual Network k okruhu ExpressRoute](expressroute-howto-linkvnet-classic.md).
 

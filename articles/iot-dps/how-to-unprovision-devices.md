@@ -1,6 +1,6 @@
 ---
-title: Zrušení zřízení zařízení, která byla zřízena se službou Azure IoT Hub Device Provisioning Service
-description: Jak zrušili zařízení, která byla zřízena pomocí služby Azure IoT Hub DeviceProvisioning Service (DPS)
+title: Zrušení zřízení zařízení, která byla zřízená s Azure IoT Hub Device Provisioning Service
+description: Postup zrušení zřízení zařízení, která byla zřízená s Azure IoT Hub Device Provisioning Service (DPS)
 author: wesmc7777
 ms.author: wesmc
 ms.date: 05/11/2018
@@ -8,62 +8,62 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 8a3677ba285f5b02407ca3d176979bf6c016ef9b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74974832"
 ---
-# <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>Jak odpojit zařízení, která byla dříve automaticky zřízených 
+# <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>Postup zrušení zřízení zařízení, která byla dříve automaticky zřízena 
 
-Může být nezbytné, aby zrušení zařízení, která byla dříve automaticky zřízené prostřednictvím služby zřizování zařízení. Zařízení může být například prodáno nebo přesunuto do jiného centra IoT hub nebo může být ztraceno, odcizeno nebo jinak ohroženo. 
+Možná bude nutné zrušit zřízení zařízení, která byla dříve automaticky zřízena prostřednictvím služby Device Provisioning. Zařízení se například může prodávat nebo přesouvat do jiného centra IoT nebo může být ztraceno, odcizeno nebo jinak ohroženo. 
 
-Obecně deprovisioning zařízení zahrnuje dva kroky:
+Obecně platí, že zrušení zřízení zařízení se skládá ze dvou kroků:
 
-1. Pokud chcete zabránit budoucímu automatickému zřizování, odevzdejte zařízení ze služby zřizování. V závislosti na tom, zda chcete přístup dočasně nebo trvale odvolat, můžete zakázat nebo odstranit položku zápisu. U zařízení, která používají atestaci X.509, můžete zakázat nebo odstranit položku v hierarchii existujících skupin zápisu.  
+1. Zrušením registrace zařízení ze služby zřizování zabráníte budoucímu automatickému zřizování. V závislosti na tom, jestli chcete dočasně nebo trvale odvolat přístup, možná budete chtít zakázat nebo odstranit položku registrace. U zařízení, která používají ověření identity X. 509, můžete chtít zakázat nebo odstranit položku v hierarchii stávajících skupin pro registraci.  
  
-   - Informace o tom, jak zrušit registraci zařízení, najdete v [tématu Jak zrušit registraci zařízení ze služby Azure IoT Hub Device Provisioning Service](how-to-revoke-device-access-portal.md).
-   - Informace o tom, jak programově zrušit zařízení pomocí jedné z sad SDK služby zřizovací služby, naleznete [v tématu Správa registrací zařízení pomocí sad SDK služby](how-to-manage-enrollments-sdks.md).
+   - Informace o tom, jak zrušit registraci zařízení, najdete v tématu [Jak zrušit registraci zařízení z Azure IoT Hub Device Provisioning Service](how-to-revoke-device-access-portal.md).
+   - Informace o tom, jak zrušit registraci zařízení pomocí jedné ze sad SDK služby zřizování, najdete v tématu [Správa registrace zařízení pomocí sad SDK služby](how-to-manage-enrollments-sdks.md).
 
-2. Odregistrujte zařízení ze svého centra IoT Hub, abyste zabránili budoucí komunikaci a přenosu dat. Znovu můžete dočasně zakázat nebo trvale odstranit položku zařízení v registru identit pro službu IoT Hub, kde byla zřízena. Další informace o zakázání platnosti tématu [Zakázání zařízení](/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices) najdete v tématu Zakázání zařízení. Viz "Správa zařízení / Zařízení IoT" pro váš prostředek služby IoT Hub, na [webu Azure Portal](https://portal.azure.com).
+2. Zrušte registraci zařízení od IoT Hub, abyste zabránili budoucí komunikaci a přenosu dat. Znovu můžete dočasně zakázat nebo trvale odstranit položku zařízení v registru identit pro IoT Hub, kde byla zřízena. Další informace o zakazování najdete v tématu [Zakázání zařízení](/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices) . Projděte si téma Správa zařízení/zařízení IoT pro váš prostředek IoT Hub v [Azure Portal](https://portal.azure.com).
 
-Přesné kroky, které provedete k zrušení zřízení zařízení, závisí na jeho mechanismu ověřování a na jeho příslušné matné položce registrace s vaší službou zřizování. Následující části poskytují přehled procesu na základě typu zápisu a osvědčení.
+Přesný postup pro zrušení zřízení zařízení závisí na mechanismu ověřování a příslušné položce registrace ve vaší službě zřizování. Následující části obsahují přehled procesu na základě registrace a typu ověření identity.
 
-## <a name="individual-enrollments"></a>Individuální zápisy
-Zařízení, která používají ověřování čipu TPM nebo osvědčení X.509 s listovým certifikátem, jsou zřízena prostřednictvím jednotlivé položky zápisu. 
+## <a name="individual-enrollments"></a>Jednotlivé registrace
+Zařízení, která používají ověření identity pomocí čipu TPM nebo ověřování X. 509 s listovým certifikátem, se zřídí prostřednictvím jednotlivé položky registrace. 
 
-Zrušení zřízení zařízení, které má individuální registraci: 
+Zrušení zřízení zařízení, které má jednotlivou registraci: 
 
-1. Vyžádejte zařízení ze služby zřizování:
+1. Zrušení registrace zařízení ze služby zřizování:
 
-   - U zařízení, která používají atestaci čipu TPM, odstraňte jednotlivou položku registrace, abyste trvale zrušili přístup zařízení ke službě zřizování, nebo zakažte položku, abyste dočasně odvolali jeho přístup. 
-   - U zařízení, která používají atestaci X.509, můžete položku odstranit nebo zakázat. Uvědomte si však, že pokud odstraníte individuální zápis pro zařízení, které používá X.509 a povolená skupina pro zápis existuje pro podpisový certifikát v řetězu certifikátů tohoto zařízení, zařízení se může znovu zaregistrovat. Pro taková zařízení může být bezpečnější zakázat položku registrace. Tím zabráníte zařízení v opětovnéregistraci bez ohledu na to, zda existuje povolená skupina zápisu pro jeden z jeho podpisových certifikátů.
+   - U zařízení, která používají ověření identity pomocí čipu TPM, odstraňte jednotlivé položky registrace, abyste trvale odvolali přístup zařízení ke službě zřizování, nebo tuto položku zakážete pro dočasné odvolání přístupu. 
+   - U zařízení, která používají ověření identity X. 509, můžete položku buď odstranit, nebo zakázat. Mějte na paměti, že pokud odstraníte jednotlivou registraci pro zařízení, které používá X. 509 a povolenou skupinu registrací, existuje pro podpisový certifikát v řetězu certifikátů daného zařízení, může se zařízení znovu zaregistrovat. U takových zařízení může být bezpečnější zakázat položku registrace. Zabráníte tak opětovné registraci zařízení, a to bez ohledu na to, jestli povolená skupina pro registraci existuje pro jeden z jeho podpisových certifikátů.
 
-2. Zakažte nebo odstraňte zařízení v registru identit služby IoT hub, do kterého bylo zřízeno. 
+2. Zakažte nebo odstraňte zařízení v registru identit ve službě IoT Hub, pro kterou byla zřízena. 
 
 
-## <a name="enrollment-groups"></a>Skupiny zápisů
-S Atestací X.509 lze zařízení také zřídit prostřednictvím skupiny registrace. Skupiny zápisů jsou konfigurovány s podpisovým certifikátem, zprostředkujícím nebo kořenovým certifikátem certifikační autority, a řídí přístup ke službě zřizování pro zařízení s tímto certifikátem v řetězci certifikátů. Další informace o skupinách zápisů a certifikátech X.509 se službou zřizování naleznete v [tématu Certifikáty X.509](concepts-security.md#x509-certificates). 
+## <a name="enrollment-groups"></a>Skupiny registrací
+Pomocí ověřování X. 509 se dají zařízení zřídit taky prostřednictvím skupiny pro registraci. Skupiny registrací se konfigurují pomocí podpisového certifikátu, buď zprostředkujícího, nebo kořenového certifikátu certifikační autority, a kontrolujte přístup ke službě zřizování pro zařízení s tímto certifikátem v řetězu certifikátů. Další informace o skupinách registrace a certifikátech X. 509 pomocí služby zřizování najdete v tématu [certifikáty x. 509](concepts-security.md#x509-certificates). 
 
-Chcete-li zobrazit seznam zařízení, která byla zřízena prostřednictvím skupiny registrace, můžete zobrazit podrobnosti skupiny registrace. Toto je snadný způsob, jak pochopit, které centrum IoT každé zařízení bylo zřízeno. Zobrazení seznamu zařízení: 
+Chcete-li zobrazit seznam zařízení, která byla zřízena prostřednictvím skupiny registrací, můžete zobrazit podrobnosti skupiny registrací. Toto je jednoduchý způsob, jak pochopit, ke kterému IoT Hub je každé zařízení zřízené. Zobrazení seznamu zařízení: 
 
-1. Přihlaste se k portálu Azure a klikněte na **všechny prostředky** v levé nabídce.
-2. Klikněte na zřizovací službu v seznamu prostředků.
-3. Ve službě zřizování klikněte na **Spravovat registrace**a pak vyberte kartu **Skupiny zápisů.**
-4. Kliknutím na skupinu zápisů ji otevřete.
+1. Přihlaste se k Azure Portal a klikněte na **všechny prostředky** v nabídce na levé straně.
+2. V seznamu prostředků klikněte na svou službu zřizování.
+3. Ve vaší službě zřizování klikněte na **Správa**registrací a pak vyberte kartu **skupiny** registrací.
+4. Kliknutím na skupinu pro zápis ji otevřete.
 
-   ![Zobrazit položku skupiny zápisu na portálu](./media/how-to-unprovision-devices/view-enrollment-group.png)
+   ![Zobrazit položku skupiny registrace na portálu](./media/how-to-unprovision-devices/view-enrollment-group.png)
 
-Se skupinami zápisu je třeba zvážit dva scénáře:
+Pomocí skupin registrací je možné zvážit dva scénáře:
 
-- Zrušení zřízení všech zařízení, která byla zřízena prostřednictvím skupiny registrace:
-  1. Zakažte skupině zápisů, aby byla na černé listině podpisového certifikátu. 
-  2. Pomocí seznamu zřízených zařízení pro tuto skupinu registrací můžete zakázat nebo odstranit každé zařízení z registru identit příslušného centra IoT Hub. 
-  3. Po zakázání nebo odstranění všech zařízení z příslušných center IoT můžete volitelně odstranit skupinu registrace. Uvědomte si však, že pokud odstraníte skupinu zápisu a existuje povolená skupina zápisu pro podpisový certifikát výše v řetězci certifikátů jednoho nebo více zařízení, mohou se tato zařízení znovu zaregistrovat. 
+- Zrušení zřízení všech zařízení, která byla zřízena prostřednictvím skupiny pro registraci:
+  1. Zakažte skupinu registrací, která má zakázaný podpisový certifikát. 
+  2. Pomocí seznamu zřízených zařízení pro tuto skupinu registrací zakažte nebo odstraňte jednotlivá zařízení z registru identit příslušného centra IoT Hub. 
+  3. Po zakázání nebo odstranění všech zařízení ze svých příslušných hub IoT můžete případně odstranit skupinu registrací. Mějte ale na paměti, že pokud odstraníte skupinu registrací a v řetězu certifikátů jednoho nebo více zařízení je povolená skupina pro zápis podpisového certifikátu vyšší, můžou se tato zařízení znovu zaregistrovat. 
 
-- Zrušení zřízení jednoho zařízení ze skupiny registrace:
-  1. Vytvořte zakázaný individuální zápis pro jeho listový certifikát (zařízení). Tím se odvolá přístup ke službě zřizování pro toto zařízení a zároveň povolujepřístup pro jiná zařízení, která mají podpisový certifikát skupiny pro zápis v jejich řetězci. Neodstraňujte zakázanou individuální registraci zařízení. To umožní zařízení znovu zaregistrovat prostřednictvím skupiny registrace. 
-  2. Pomocí seznamu zřízených zařízení pro tuto skupinu registrací vyhledejte službu IoT hub, do které bylo zařízení zřízeno, a zakažte nebo odstraňte z registru identit tohoto centra. 
+- Zrušení zřízení jednoho zařízení ze skupiny pro registraci:
+  1. Vytvořte zakázanou jednotlivou registraci pro svůj certifikát na listovém (zařízení). Tím odvoláte přístup ke službě zřizování pro toto zařízení a zároveň povolíte přístup pro jiná zařízení, která mají podpisový certifikát skupiny registrací ve svém řetězci. Neodstraňujte zakázanou jednotlivou registraci zařízení. Tím umožníte, aby se zařízení znovu zaregistrovalo prostřednictvím skupiny pro registraci. 
+  2. Pomocí seznamu zřízených zařízení pro tuto skupinu registrací vyhledejte IoT Hub, ke kterému se zařízení zřídilo, a zakažte nebo odstraňte z registru identit tohoto centra. 
   
   
 

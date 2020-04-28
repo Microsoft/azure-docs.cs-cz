@@ -1,6 +1,6 @@
 ---
-title: 'Brána Azure VPN: Konfigurace zachycení paketů'
-description: Přečtěte si o funkcích zachytávání paketů, které můžete použít u bran VPN.
+title: 'Azure VPN Gateway: Konfigurace zachycení paketů'
+description: Přečtěte si o funkcích zachytávání paketů, které můžete používat na branách VPN.
 services: vpn-gateway
 author: radwiv
 ms.service: vpn-gateway
@@ -8,53 +8,53 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: radwiv
 ms.openlocfilehash: 2429a8d08baa34aed120cffa069abae1fb9a3df9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75353507"
 ---
-# <a name="configure-packet-captures-for-vpn-gateways"></a>Konfigurace sběru paketů pro brány VPN
+# <a name="configure-packet-captures-for-vpn-gateways"></a>Konfigurace zachycení paketů pro brány VPN
 
-Problémy s připojením a výkonem jsou často krát složité a trvat značné množství času a úsilí jen zúžit příčinu problému. Možnost sběru paketů výrazně pomáhá zkrátit dobu při zužování rozsahu problému na určité části sítě, například zda je problém na straně zákazníka sítě, na straně Azure sítě nebo někde mezi nimi. Jakmile byl problém zúžen, je mnohem efektivnější ladit a přijmout nápravná opatření.
+Problémy související s připojením a výkonem jsou často složité a využívají velký čas a úsilí jenom k zúžení příčiny problému. Schopnost zachytávání paketů významně pomáhá snižovat čas při zúžení rozsahu problému na určité části sítě, třeba na tom, jestli je problém na straně zákazníka sítě, na straně Azure v síti nebo někde mezi. Po zúžení problému je mnohem efektivnější ladit a provádět nápravné akce.
 
-Existují některé běžně dostupné nástroje pro sběr paketů. Získání relevantní paket zachycení pomocí těchto nástrojů je však často krát těžkopádné zejména při práci s scénáře velkoobjemového provozu. Možnosti filtrování poskytované sběrem paketů brány VPN se stávají hlavním rozlišovacím programem. Kromě běžně dostupných nástrojů pro digitalizaci paketů můžete použít také sběr paketů brány VPN.
+K dispozici jsou některé běžně dostupné nástroje pro zachytávání paketů. Získání relevantních zachycení paketů pomocí těchto nástrojů je ale často náročné na čas, zejména při práci s vysokými scénáři provozu. Funkce filtrování, které poskytuje zachytávání paketů brány VPN, se staly významnými odlišnostmi. Kromě běžně dostupných nástrojů pro zachytávání paketů můžete použít také zachytávání paketů brány VPN.
 
-## <a name="vpn-gateway-packet-capture-filtering-capabilities"></a>Možnosti filtrování sběru paketů brány VPN
+## <a name="vpn-gateway-packet-capture-filtering-capabilities"></a>Možnosti filtrování zachytávání paketů brány VPN
 
-Zachycení paketů brány VPN lze spustit na bráně nebo na konkrétním připojení v závislosti na potřebách zákazníka. Můžete také spustit zachycení paketů ve více tunelových propojeních současně. Můžete zachytit jednosměrový nebo obousměrný provoz, provoz Protokolu IKE a ESP a vnitřní pakety spolu s filtrováním na bráně VPN.
+Zachytávání paketů služby VPN Gateway můžete v bráně nebo konkrétním připojení spustit v závislosti na potřebách zákazníka. Zachytávání paketů můžete také spouštět na více tunelech současně. Můžete zachytit provoz s jedním nebo obousměrným směrováním, provoz IKE a ESP a vnitřní pakety spolu s filtrováním v bráně VPN.
 
-Použití filtru 5 n-tic (zdrojová podsíť, cílová podsíť, zdrojový port, cílový port, protokol) a příznaky TCP (SYN, ACK, FIN, URG, PSH, RST) je užitečné při izolování problémů s velkým objemem provozu.
+Použití filtru 5 řazených kolekcí členů (zdrojová podsíť, cílová podsíť, zdrojový port, cílový port, protokol) a příznaky TCP (SYN, ACK, FIN, URG, PSH, RST) je užitečné při izolaci problémů s vysokým objemem provozu.
 
-Při spuštění sběru paketů můžete použít pouze jednu možnost pro jednu vlastnost.
+Při spuštění zachytávání paketů můžete pro každou vlastnost použít jenom jednu možnost.
 
-## <a name="setup-packet-capture-using-powershell"></a>Nastavení zachycení paketů pomocí prostředí PowerShell
+## <a name="setup-packet-capture-using-powershell"></a>Nastavení zachytávání paketů pomocí prostředí PowerShell
 
-Podívejte se na příklady níže pro příkazy prostředí PowerShell pro spuštění a zastavení sběru paketů. Další informace o možnostech parametrů (například jak vytvořit filtr) najdete v tomto [dokumentu](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)prostředí PowerShell .
+Pokud chcete spustit a zastavit zachytávání paketů, podívejte se na příklady níže pro příkazy prostředí PowerShell. Další informace o možnostech parametrů (například o tom, jak vytvořit filtr) najdete v tomto [dokumentu](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)PowerShellu.
 
-### <a name="start-packet-capture-for-a-vpn-gateway"></a>Spuštění sběru paketů pro bránu VPN
+### <a name="start-packet-capture-for-a-vpn-gateway"></a>Spustit zachytávání paketů pro bránu sítě VPN
 
 ```azurepowershell-interactive
 Start-AzVirtualnetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayName"
 ```
 
-Volitelný parametr **-FilterData** lze použít k použití filtru.
+Volitelný parametr **-fulltextových** lze použít k použití filtru.
 
-### <a name="stop-packet-capture-for-a-vpn-gateway"></a>Zastavit sběr paketů pro bránu VPN
+### <a name="stop-packet-capture-for-a-vpn-gateway"></a>Zastavení zachytávání paketů pro bránu sítě VPN
 
 ```azurepowershell-interactive
 Stop-AzVirtualNetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayName" -SasUrl "YourSASURL"
 ```
 
-### <a name="start-packet-capture-for-a-vpn-gateway-connection"></a>Spuštění sběru paketů pro připojení brány VPN
+### <a name="start-packet-capture-for-a-vpn-gateway-connection"></a>Spustit zachytávání paketů pro připojení brány VPN
 
 ```azurepowershell-interactive
 Start-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayConnectionName"
 ```
 
-Volitelný parametr **-FilterData** lze použít k použití filtru.
+Volitelný parametr **-fulltextových** lze použít k použití filtru.
 
-### <a name="stop-packet-capture-on-a-vpn-gateway-connection"></a>Zastavit sběr paketů v připojení brány VPN
+### <a name="stop-packet-capture-on-a-vpn-gateway-connection"></a>Zastavit zachytávání paketů u připojení brány sítě VPN
 
 ```azurepowershell-interactive
 Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayConnectionName" -SasUrl "YourSASURL"
@@ -62,10 +62,10 @@ Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourReso
 
 ## <a name="key-considerations"></a>Klíčové aspekty
 
-- Spuštění zachycení paketů může ovlivnit výkon. Nezapomeňte zastavit sběr paketů, když není potřeba.
-- Doporučená minimální doba sběru paketů je 600 sekund. Kratší doba sběru paketů nemusí poskytovat úplná data z důvodu problémů se synchronizací mezi více součástmi na cestě.
-- Datové soubory sběru paketů jsou generovány ve formátu PCAP. K otevření souborů PCAP použijte Wireshark nebo jiné běžně dostupné aplikace.
+- Spuštění zachycení paketů může mít vliv na výkon. Nezapomeňte zachytávání paketů zastavit, pokud není potřeba.
+- Navrhovaná minimální doba zachytávání paketů je 600 sekund. Pokud má kratší doba trvání zachytávání paketů, nesmí doplňovat kompletní data kvůli synchronizaci problémů mezi několika součástmi v cestě.
+- Soubory dat zachycení paketů se generují ve formátu PCAP. K otevření souborů PCAP použijte Wireshark nebo jiné běžně dostupné aplikace.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o bráně VPN najdete v tématu [O bráně VPN](vpn-gateway-about-vpngateways.md)
+Další informace o VPN Gateway najdete v tématu [o VPN Gateway](vpn-gateway-about-vpngateways.md)

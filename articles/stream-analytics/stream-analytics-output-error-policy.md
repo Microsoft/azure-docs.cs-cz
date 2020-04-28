@@ -1,6 +1,6 @@
 ---
-title: Zásady chyb výstupu ve Službě Azure Stream Analytics
-description: Přečtěte si o zásadách zpracování výstupních chyb, které jsou dostupné ve službě Azure Stream Analytics.
+title: Zásady chyb výstupu v Azure Stream Analytics
+description: Přečtěte si o zásadách zpracování chyb výstupu dostupných v Azure Stream Analytics.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,28 +9,28 @@ ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
 ms.openlocfilehash: 22112272bb302769e5969cf6995d486438deb41f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75431613"
 ---
-# <a name="azure-stream-analytics-output-error-policy"></a>Zásady chyb výstupu Azure Stream Analytics
-Tento článek popisuje zásady zpracování výstupních dat, které lze nakonfigurovat ve službě Azure Stream Analytics.
+# <a name="azure-stream-analytics-output-error-policy"></a>Zásada pro chyby výstupu Azure Stream Analytics
+Tento článek popisuje zásady zpracování chyb výstupních dat, které je možné nakonfigurovat v Azure Stream Analytics.
 
-Zásady zpracování chyb výstupních dat platí pouze pro chyby převodu dat, ke kterým dochází, když výstupní událost vytvořená úlohou Stream Analytics neodpovídá schématu cílového jímky. Tuto zásadu můžete nakonfigurovat výběrem možnosti **Opakovat** nebo **Přetažení**. Na webu Azure Portal v yberte v části Konfigurace v části **Konfigurace**vyberte **zásady chyb.**
+Zásady zpracování chyb výstupních dat se vztahují jenom na chyby převodu dat, ke kterým dochází, když výstupní událost vytvořená úlohou Stream Analytics nevyhovuje schématu cílové jímky. Tuto zásadu můžete nakonfigurovat tak, že vyberete možnost **Opakovat** nebo **vyřadit**. V Azure Portal, zatímco v Stream Analytics úlohy, v části **Konfigurovat**vyberte **zásady chyb** , aby se provedl výběr.
 
-![Umístění zásad chyb výstupu služby Azure Stream Analytics](./media/stream-analytics-output-error-policy/stream-analytics-error-policy-locate.png)
+![Umístění zásad chyb výstupu Azure Stream Analytics](./media/stream-analytics-output-error-policy/stream-analytics-error-policy-locate.png)
 
 
 ## <a name="retry"></a>Retry
-Dojde-li k chybě, Azure Stream Analytics opakuje zápis události neomezeně dlouho, dokud zápis proběhne úspěšně. Neexistuje žádný časový časový osývač pro opakování. Nakonec všechny následné události jsou blokovány zpracování událostí, která se pokouší znovu. Tato možnost je výchozí zásady zpracování výstupních chyb.
+Pokud dojde k chybě, Azure Stream Analytics pokusy o zápis události po neomezenou dobu, dokud zápis nebude úspěšný. Pro opakované pokusy není k dispozici žádný časový limit. Nakonec se všechny následné události zablokují ze zpracování událostí, která se opakuje. Tato možnost je výchozí zásadou zpracování chyb výstupu.
 
-## <a name="drop"></a>Drop
+## <a name="drop"></a>Umístíte
 Azure Stream Analytics zahodí všechny výstupní události, které vedou k chybě převodu dat. Zahozené události není možné obnovit pro pozdější opětovné zpracování.
 
 
-Všechny přechodné chyby (například chyby sítě) jsou opakovány bez ohledu na konfiguraci zásad zpracování výstupních chyb.
+Všechny přechodné chyby (například chyby sítě) se zopakují bez ohledu na konfiguraci zásad zpracování chyb výstupu.
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -1,6 +1,6 @@
 ---
-title: Pravidla pro pojmenování entit Azure Data Factory
-description: Popisuje pravidla pojmenování entit Data Factory.
+title: Pravidla pro pojmenování Azure Data Factory entit
+description: Popisuje pravidla vytváření názvů pro Entity Data Factory.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -13,21 +13,21 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 8fa1340b586434bf98d51437d4dc6b08594f0afa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74931891"
 ---
 # <a name="azure-data-factory---naming-rules"></a>Azure Data Factory – pravidla pojmenování
 > [!NOTE]
-> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte [si téma pravidla pojmenování v datové továrně](../naming-rules.md).
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [pravidla pojmenování v Data Factory](../naming-rules.md).
 
-Následující tabulka obsahuje pravidla pojmenování artefaktů datové továrny.
+Následující tabulka poskytuje pravidla pro pojmenování artefaktů Data Factory.
 
-| Name (Název) | Jedinečnost názvu | Kontroly ověření |
+| Název | Jedinečnost názvu | Kontroly ověřování |
 |:--- |:--- |:--- |
-| Data Factory |Jedinečné v celém Microsoft Azure. Názvy jsou malá a velká `MyDF` `mydf` písmena, to znamená, a odkazují na stejnou datovou továrnu. |<ul><li>Každá datová továrna je vázaná přesně na jedno předplatné Azure.</li><li>Názvy objektů musí začínat písmenem nebo číslem a mohou obsahovat pouze písmena, číslice a znak pomlčky (-).</li><li>Každému znaku pomlčky (-) musí bezprostředně předcházet a musí za ním následovat písmeno nebo číslo. Po sobě jdoucí pomlčky nejsou v názvech kontejnerů povoleny.</li><li>Název může být dlouhý 3-63 znaků.</li></ul> |
-| Propojené služby/tabulky/kanály |Unikátní s v datové továrně. Názvy nerozlišují malá a velká písmena. |<ul><li>Maximální počet znaků v názvu tabulky: 260.</li><li>Názvy objektů musí začínat písmenem, číslem nebo podtržítkem (_).</li><li>Následující znaky nejsou povoleny: ".", "+", "?", "/", "<", ">","*","%","&","","","&","",""""""""\\</li></ul> |
-| Skupina prostředků |Jedinečné v celém Microsoft Azure. Názvy nerozlišují malá a velká písmena. |<ul><li>Maximální počet znaků: 1000.</li><li>Název může obsahovat písmena, číslice a následující znaky: "-", "_", "" a "."</li></ul> |
+| Data Factory |Jedinečné v rámci Microsoft Azure. V názvech se nerozlišují malá `MyDF` a velká písmena, `mydf` to znamená a odkazují na stejný objekt pro vytváření dat. |<ul><li>Každá datová továrna je vázaná na právě jedno předplatné Azure.</li><li>Název objektu musí začínat písmenem nebo číslicí a může obsahovat jenom písmena, číslice a spojovníky (-).</li><li>Každý znak spojovníku (-) musí bezprostředně předcházet a musí následovat písmeno nebo číslo. Po sobě jdoucí pomlčky nejsou v názvech kontejnerů povolené.</li><li>Název může být 3-63 znaků dlouhý.</li></ul> |
+| Propojené služby, tabulky a kanály |Jedinečné v objektu pro vytváření dat. V názvech se nerozlišují malá a velká písmena. |<ul><li>Maximální počet znaků v názvu tabulky: 260.</li><li>Názvy objektů musí začínat písmenem, číslicí nebo podtržítkem (_).</li><li>Nejsou povoleny následující znaky: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", "\\"</li></ul> |
+| Skupina prostředků |Jedinečné v rámci Microsoft Azure. V názvech se nerozlišují malá a velká písmena. |<ul><li>Maximální počet znaků: 1000.</li><li>Název může obsahovat písmena, číslice a následující znaky: "-", "_", "," a "."</li></ul> |
 

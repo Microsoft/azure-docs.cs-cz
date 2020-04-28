@@ -1,6 +1,6 @@
 ---
-title: Programové sledování a správa úloh Azure Stream Analytics
-description: Tento článek popisuje, jak programově sledovat úlohy Stream Analytics vytvořené prostřednictvím rest API, Azure SDK nebo PowerShell.
+title: Programové monitorování a správa úloh Azure Stream Analytics
+description: Tento článek popisuje, jak programově monitorovat úlohy Stream Analytics vytvořené prostřednictvím rozhraní REST API, Azure SDK nebo PowerShellu.
 author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
@@ -8,35 +8,35 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.openlocfilehash: 23c0cc0d0e4a007fdf46021f857b559266f6a193
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75431670"
 ---
-# <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Programově vytvořit monitor úlohy Stream Analytics
+# <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Programové vytvoření monitorování úloh Stream Analytics
 
-Tento článek ukazuje, jak povolit monitorování úlohy Stream Analytics. Úlohy Analýzy datových proudů, které se vytvářejí pomocí rozhraní REST API, Sady Azure SDK nebo prostředí PowerShell, nemají ve výchozím nastavení povolené monitorování. Můžete ručně povolit na portálu Azure tak, že přejdete na stránce monitor úlohy a kliknutím na tlačítko Povolit nebo můžete automatizovat tento proces podle kroků v tomto článku. Data monitorování se zobrazí v oblasti Metriky na portálu Azure pro úlohu Stream Analytics.
+Tento článek ukazuje, jak povolit monitorování Stream Analytics úlohy. Stream Analytics úlohy vytvořené přes rozhraní REST API, Azure SDK nebo PowerShell nemají ve výchozím nastavení povolené monitorování. Můžete ji ručně povolit v Azure Portal tak, že přejdete na stránku monitorování úlohy a kliknete na tlačítko Povolit nebo tento proces můžete automatizovat podle kroků v tomto článku. Data monitorování se zobrazí v oblasti metriky Azure Portal pro vaši úlohu Stream Analytics.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete tento proces, musíte mít následující požadavky:
+Než zahájíte tento proces, musíte splnit následující předpoklady:
 
 * Visual Studio 2019 nebo 2015
-* [Sada Azure .NET SDK](https://azure.microsoft.com/downloads/) stažená a nainstalovaná
-* Existující úloha Stream Analytics, která potřebuje mít povoleno monitorování
+* Stažená a nainstalovaná [sada Azure .NET SDK](https://azure.microsoft.com/downloads/)
+* Existující úloha Stream Analytics, která musí mít povolené monitorování
 
 ## <a name="create-a-project"></a>Vytvoření projektu
 
-1. Vytvořte aplikaci konzoly Visual Studio C# .NET.
-2. V konzole Správce balíčků spusťte následující příkazy k instalaci balíčků NuGet. První z nich je Azure Stream Analytics Management .NET SDK. Druhá je sada Azure Monitor SDK, která se použije k povolení monitorování. Poslední z nich je klient Azure Active Directory, který se bude používat pro ověřování.
+1. Vytvořte konzolovou aplikaci Visual Studio C# .NET.
+2. V konzole správce balíčků spusťte následující příkazy a nainstalujte balíčky NuGet. První z nich je sada Azure Stream Analytics Management .NET SDK. Druhým je Azure Monitor sada SDK, která se bude používat k povolení monitorování. Poslední je klient Azure Active Directory, který se bude používat pro ověřování.
    
    ```powershell
    Install-Package Microsoft.Azure.Management.StreamAnalytics
    Install-Package Microsoft.Azure.Insights -Pre
    Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
    ```
-3. Přidejte do souboru App.config následující oddíl appSettings.
+3. Do souboru App. config přidejte následující oddíl appSettings.
    
    ```csharp
    <appSettings>
@@ -53,7 +53,7 @@ Než začnete tento proces, musíte mít následující požadavky:
      <add key="ActiveDirectoryTenantId" value="YOUR TENANT ID" />
    </appSettings>
    ```
-   Nahraďte hodnoty *pro SubscriptionId* a *ActiveDirectoryTenantId* s vaším předplatným Azure a ID klienta. Tyto hodnoty můžete získat spuštěním následující rutiny prostředí PowerShell:
+   Nahraďte hodnoty *SubscriptionId* a *ActiveDirectoryTenantId* vaším předplatným Azure a ID tenantů. Tyto hodnoty můžete získat spuštěním následující rutiny prostředí PowerShell:
    
    ```powershell
    Get-AzureAccount
@@ -109,7 +109,7 @@ Než začnete tento proces, musíte mít následující požadavky:
    }
    ```
 
-## <a name="create-management-clients"></a>Vytvořit klienty pro správu
+## <a name="create-management-clients"></a>Vytváření klientů pro správu
 
 Následující kód nastaví potřebné proměnné a klienty pro správu.
 
@@ -133,18 +133,18 @@ Následující kód nastaví potřebné proměnné a klienty pro správu.
     InsightsManagementClient(aadTokenCredentials, resourceManagerUri);
    ```
 
-## <a name="enable-monitoring-for-an-existing-stream-analytics-job"></a>Povolení monitorování pro existující úlohu Stream Analytics
+## <a name="enable-monitoring-for-an-existing-stream-analytics-job"></a>Povolit monitorování pro existující úlohu Stream Analytics
 
-Následující kód umožňuje monitorování **pro existující** úlohu Stream Analytics. První část kódu provádí požadavek GET proti službě Stream Analytics k načtení informací o konkrétní úloze Stream Analytics. Používá *ID* vlastnost (načtené z požadavku GET) jako parametr pro Put metoda v druhé polovině kódu, který odešle put požadavek na službu Insights povolit monitorování pro úlohu Stream Analytics.
+Následující kód umožňuje monitorování pro **existující** úlohu Stream Analytics. První část kódu provádí požadavek GET na službu Stream Analytics, aby načetla informace o konkrétní Stream Analytics úlohy. Používá vlastnost *ID* (získanou z požadavku GET) jako parametr metody Put v druhé polovině kódu, který ODEŠLE požadavek PUT do služby Insights, aby povolil monitorování Stream Analytics úlohy.
 
 > [!WARNING]
-> Pokud jste dříve povolili monitorování pro jinou úlohu Stream Analytics, a to buď prostřednictvím portálu Azure, nebo programově pomocí níže uvedeného kódu, **doporučujeme zadat stejný název účtu úložiště, který jste použili, když jste dříve povolili monitorování.**
+> Pokud jste dříve povolili monitorování pro jinou Stream Analytics úlohu, a to buď prostřednictvím Azure Portal nebo programově prostřednictvím níže uvedeného kódu, doporučujeme **zadat stejný název účtu úložiště, který jste použili, když jste předtím povolili monitorování.**
 > 
-> Účet úložiště je propojený s oblastí, ve které jste vytvořili úlohu Stream Analytics, ne konkrétně se samotnou úlohou.
+> Účet úložiště je propojený s oblastí, ve které jste vytvořili úlohu Stream Analytics, a ne specificky pro samotnou úlohu.
 > 
-> Všechny úlohy Stream Analytics (a všechny ostatní prostředky Azure) ve stejné oblasti sdílejí tento účet úložiště pro ukládání dat monitorování. Pokud zadáte jiný účet úložiště, může to způsobit nežádoucí vedlejší účinky při monitorování dalších úloh Stream Analytics nebo jiných prostředků Azure.
+> Všechny úlohy Stream Analytics (a všechny ostatní prostředky Azure) v této oblasti sdílejí tento účet úložiště pro ukládání dat monitorování. Pokud zadáte jiný účet úložiště, může to způsobit nezamýšlené vedlejší účinky při monitorování dalších Stream Analytics úloh nebo jiných prostředků Azure.
 > 
-> Název účtu úložiště, který `<YOUR STORAGE ACCOUNT NAME>` použijete k nahrazení v následujícím kódu, by měl být účet úložiště, který je ve stejném předplatném jako úloha Stream Analytics, pro kterou povolujete monitorování.
+> Název účtu úložiště, který použijete k nahrazení `<YOUR STORAGE ACCOUNT NAME>` v následujícím kódu, by měl být účet úložiště, který se nachází ve stejném předplatném jako Stream Analytics úloha, pro kterou povolujete monitorování.
 > 
 > 
 >    ```csharp
@@ -167,9 +167,9 @@ Následující kód umožňuje monitorování **pro existující** úlohu Stream
 >   ```
 
 
-## <a name="get-support"></a>Získat podporu
+## <a name="get-support"></a>Získání podpory
 
-Další pomoc našlápneme na fórum [Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Pokud potřebujete další pomoc, vyzkoušejte naši [Azure Stream Analytics Fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,5 +1,5 @@
 ---
-title: Vysokofrekvenční obchodování pomocí Azure Stream Analytics
+title: Vysoká frekvence obchodování pomocí Azure Stream Analytics
 description: Provádění trénování a vyhodnocování modelu lineární regrese v úloze Azure Stream Analytics
 author: mamccrea
 ms.author: mamccrea
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: 06a4bdb8a8ee5d458347d30b53f740952151799e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75426207"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Simulace vysokofrekvenčního obchodování pomocí Stream Analytics
@@ -70,7 +70,7 @@ VOI (Volume Order Imbalance) je funkce aktuální kupní/prodejní ceny a objemu
 
 Natrénovaný model se pak použije k předvídání změny cen u nabídek v aktuálním obchodním dni v reálném čase. Pokud je předpokládaná změna ceny dostatečně velká, uzavře se obchod. V závislosti na nastavení prahové hodnoty se dají během trénovacího dne očekávat tisíce obchodů jedné akcie.
 
-![Definice nevyváženosti objemového pořadí](./media/stream-analytics-high-frequency-trading/volume-order-imbalance-formula.png)
+![Definice nevyrovnanosti objednávky svazku](./media/stream-analytics-high-frequency-trading/volume-order-imbalance-formula.png)
 
 Teď vyjádříme operace trénování a predikce v úloze Azure Stream Analytics.
 
@@ -202,7 +202,7 @@ modelInput AS (
 
 Vzhledem k tomu, že Azure Stream Analytics neobsahuje integrovanou funkci lineární regrese, koeficienty pro lineární model vypočítáme pomocí agregací **SUM** a **AVG**.
 
-![Vzorec lineární regresní matematiky](./media/stream-analytics-high-frequency-trading/linear-regression-formula.png)
+![Matematický vzorec lineární regrese](./media/stream-analytics-high-frequency-trading/linear-regression-formula.png)
 
 ```SQL
 modelagg AS (
@@ -450,9 +450,9 @@ SELECT
 FROM simulation /* output trade simulation to PBI */
 ```
 
-![Obchody s vizuálem grafu Power BI](./media/stream-analytics-high-frequency-trading/trades-power-bi-chart.png)
+![Vizuál obchodu Power BI grafu](./media/stream-analytics-high-frequency-trading/trades-power-bi-chart.png)
 
-![PNL Power BI graf vizuál](./media/stream-analytics-high-frequency-trading/pnl-power-bi-chart.png)
+![Vizuál grafu Power BI PNL](./media/stream-analytics-high-frequency-trading/pnl-power-bi-chart.png)
 
 
 ## <a name="summary"></a>Souhrn

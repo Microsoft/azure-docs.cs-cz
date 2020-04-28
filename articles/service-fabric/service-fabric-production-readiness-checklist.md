@@ -1,60 +1,60 @@
 ---
-title: Kontrolní seznam připravenosti infrastruktury azure service fabric
-description: Připravte si aplikaci Service Fabric a produkční prostředí clusteru podle doporučených postupů.
+title: Kontrolní seznam připravenosti na produkci pro Azure Service Fabric
+description: Připravte svou Service Fabricovou aplikaci a produkční clustery podle osvědčených postupů.
 ms.topic: conceptual
 ms.date: 6/05/2019
 ms.openlocfilehash: 90d600b01aa870f7b3a58e70ef32e774e7107524
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75376796"
 ---
 # <a name="production-readiness-checklist"></a>Kontrolní seznam připravenosti k produkci
 
-Je vaše aplikace a cluster připraven k převzetí produkčního provozu? Spuštění a testování aplikace a clusteru nemusí nutně znamenat, že je připraven a přejde do produkčního prostředí. Udržujte aplikaci a cluster běží hladce procházením následující kontrolní seznam. Důrazně doporučujeme, aby všechny tyto položky byly odškrtnuty. Je zřejmé, že můžete použít alternativní řešení pro konkrétní řádkovou položku (například vlastní diagnostické rámce).
+Je vaše aplikace a cluster připravený přijmout provozní provoz? Spuštění a testování vaší aplikace a clusteru nemusí nutně znamenat, že je připraveno přejít do produkčního prostředí. Zajistěte plynulé zprovoznění aplikace a clusteru tím, že projdete následující kontrolní seznam. Důrazně doporučujeme, abyste všechny tyto položky kontrolovali. Zjevně můžete zvolit použití alternativních řešení pro konkrétní řádkovou položku (například vlastní diagnostické architektury).
 
 
-## <a name="prerequisites-for-production"></a>Předpoklady pro výrobu
-1. Osvědčené postupy Azure Service Fabric: [Návrh aplikace](./service-fabric-best-practices-applications.md), [zabezpečení](./service-fabric-best-practices-security.md), [sítě](./service-fabric-best-practices-networking.md), [plánování kapacity a škálování](./service-fabric-best-practices-capacity-scaling.md), [infrastruktura jako kód](./service-fabric-best-practices-infrastructure-as-code.md)a monitorování a [diagnostika](./service-fabric-best-practices-monitoring.md). 
-1. Implementujte konfiguraci zabezpečení Reliable Actors, pokud používáte programovací model Actors
-1. Pro clustery s více než 20 jádry nebo 10 uzly vytvořte vyhrazený typ primárního uzlu pro systémové služby. Přidáním [omezení umístění vyhradíte](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) typ primárního uzlu pro systémové služby.
-1. Pro primární typ uzlu použijte skladovou položku D2v2 nebo vyšší. Doporučujeme vybrat skladovou položku s kapacitou pevného disku alespoň 50 GB.
-1. Produkční clustery musí být [zabezpečené](service-fabric-cluster-security.md). Příklad nastavení zabezpečeného clusteru naleznete v této [šabloně clusteru](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/7-VM-Windows-3-NodeTypes-Secure-NSG). Používejte běžné názvy certifikátů a vyhněte se použití certifikátů podepsaných svým držitelem.
-1. Přidejte [omezení prostředků na kontejnery a služby](service-fabric-resource-governance.md), aby nespotřebovávaly více než 75 % prostředků uzlu. 
-1. Pochopte a nastavte [úroveň trvanlivosti](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster). Stříbrná nebo vyšší úroveň odolnosti se doporučuje pro typy uzlů se stavové úlohy. Typ primárního uzlu by měl mít úroveň odolnosti nastavenou na stříbrnou nebo vyšší.
-1. Pochopit a vybrat [úroveň spolehlivosti](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) typu uzlu. Doporučuje se stříbrná nebo vyšší spolehlivost.
-1. Načtení a škálování otestujte své úlohy k identifikaci [požadavků na kapacitu](service-fabric-cluster-capacity.md) pro váš cluster. 
-1. Vaše služby a aplikace jsou monitorovány a protokoly aplikací jsou generovány a uloženy s výstrahami. Například najdete v [tématu přidání protokolování do aplikace Service Fabric](service-fabric-how-to-diagnostics-log.md) a monitorování [kontejnerů s protokoly Azure Monitor](service-fabric-diagnostics-oms-containers.md).
-1. Cluster je monitorován pomocí výstrah (například [protokoly Azure Monitoru).](service-fabric-diagnostics-event-analysis-oms.md) 
-1. Základní infrastruktura škálovací sady virtuálních strojů se monitoruje pomocí výstrah (například [protokoly Azure Monitoru](service-fabric-diagnostics-oms-agent.md).
-1. Cluster má [primární a sekundární certifikáty](service-fabric-cluster-security-update-certs-azure.md) vždy (takže se nedostanete uzamčeni).
-1. Udržujte samostatné clustery pro vývoj, přípravu a výrobu. 
-1. [Upgrady aplikací](service-fabric-application-upgrade.md) a [upgrady clusteru](service-fabric-tutorial-upgrade-cluster.md) jsou nejprve testovány ve vývojových a přípravných clusterech. 
-1. Vypněte automatické upgrady v produkčních clusterech a zapněte je pro vývoj a pracovní clustery (vrácení zpět podle potřeby). 
-1. Vytvořte cíl bodu obnovení (RPO) pro vaši službu a nastavte [proces zotavení po havárii](service-fabric-disaster-recovery.md) a vyzkoušejte ho.
-1. [Naplánujte škálování clusteru](service-fabric-cluster-scaling.md) ručně nebo programově.
-1. Naplánujte [opravy](service-fabric-patch-orchestration-application.md) uzlů clusteru. 
-1. Vytvořte kanál CI/CD tak, aby vaše nejnovější změny byly průběžně testovány. Například pomocí [Azure DevOps](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) nebo [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md)
-1. Otestujte vývoj & pracovní clustery pod zatížením pomocí [služby Fault Analysis Service](service-fabric-testability-overview.md) a vyvolat řízený [chaos](service-fabric-controlled-chaos.md). 
-1. Plán pro [škálování](service-fabric-concepts-scalability.md) aplikací. 
+## <a name="prerequisites-for-production"></a>Předpoklady pro produkční prostředí
+1. Osvědčené postupy pro Azure Service Fabric: [Návrh aplikace](./service-fabric-best-practices-applications.md), [zabezpečení](./service-fabric-best-practices-security.md), [sítě](./service-fabric-best-practices-networking.md), [plánování a škálování kapacity](./service-fabric-best-practices-capacity-scaling.md), [Infrastruktura jako kód](./service-fabric-best-practices-infrastructure-as-code.md)a [monitorování a diagnostika](./service-fabric-best-practices-monitoring.md). 
+1. Implementace konfigurace Reliable Actors zabezpečení při použití programovacího modelu Actors
+1. Pro clustery s více než 20 jádry nebo 10 uzly Vytvořte vyhrazený typ primárního uzlu pro systémové služby. Přidejte [omezení umístění](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) pro rezervaci typu primárního uzlu pro systémové služby.
+1. Pro typ primárního uzlu použijte SKU D2v2 nebo vyšší. Doporučuje se vybrat SKU, která má minimálně 50 GB kapacity pevného disku.
+1. Provozní clustery musí být [zabezpečené](service-fabric-cluster-security.md). Příklad nastavení zabezpečeného clusteru najdete v této [šabloně clusteru](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/7-VM-Windows-3-NodeTypes-Secure-NSG). Používejte běžné názvy certifikátů a nepoužívejte certifikáty podepsané svým vlastníkem.
+1. Přidejte [omezení prostředků na kontejnery a služby](service-fabric-resource-governance.md), aby nespotřeboval více než 75% prostředků uzlu. 
+1. Pochopení a nastavení [úrovně trvanlivosti](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster). Pro typy uzlů spouštějících stavová zatížení se doporučují stříbrná nebo vyšší úroveň odolnosti. Typ primárního uzlu by měl mít úroveň odolnosti nastavenou na hodnotu stříbrné nebo vyšší.
+1. Pochopení a výběr [úrovně spolehlivosti](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) typu uzlu. Doporučuje se spolehlivost stříbra nebo vyšší.
+1. Zátěžový a škálovatelný test úloh vám umožní identifikovat [požadavky na kapacitu](service-fabric-cluster-capacity.md) clusteru. 
+1. Vaše služby a aplikace jsou monitorovány a protokoly aplikací se generují a ukládají s výstrahami. Podívejte se například [na téma Přidání protokolování do aplikace Service Fabric](service-fabric-how-to-diagnostics-log.md) a [monitorování kontejnerů pomocí protokolů Azure monitor](service-fabric-diagnostics-oms-containers.md).
+1. Cluster se monitoruje pomocí upozorňování (například pomocí [protokolů Azure monitor](service-fabric-diagnostics-event-analysis-oms.md)). 
+1. Základní infrastruktura sady škálování virtuálního počítače se monitoruje pomocí upozorňování (například pomocí [protokolů Azure monitor](service-fabric-diagnostics-oms-agent.md).
+1. Cluster má vždycky [primární a sekundární certifikát](service-fabric-cluster-security-update-certs-azure.md) (takže se nebudete zablokovat).
+1. Udržujte samostatné clustery pro vývoj, přípravu a produkci. 
+1. [Upgrady aplikací](service-fabric-application-upgrade.md) a [upgrady clusterů](service-fabric-tutorial-upgrade-cluster.md) se nejprve testují ve vývojových a pracovních clusterech. 
+1. Vypněte automatické upgrady v produkčních clusterech a zapněte je pro vývojové a přípravné clustery (vrácení zpět podle potřeby). 
+1. Navažte cíl bodu obnovení (RPO) pro vaši službu a nastavte [proces zotavení po havárii](service-fabric-disaster-recovery.md) a otestujte ho.
+1. Naplánujte ruční nebo programové [škálování](service-fabric-cluster-scaling.md) clusteru.
+1. Naplánujte [opravy](service-fabric-patch-orchestration-application.md) vašich uzlů clusteru. 
+1. Vytvořte kanál CI/CD, abyste mohli průběžně testovat nejnovější změny. Například pomocí [Azure DevOps](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) nebo [Jenkinse](service-fabric-cicd-your-linux-applications-with-jenkins.md)
+1. Otestujte vývoj & přípravných clusterů pod zátěží pomocí [služby analýzy chyb](service-fabric-testability-overview.md) a [nachaos](service-fabric-controlled-chaos.md)řízených. 
+1. Naplánujte [škálování](service-fabric-concepts-scalability.md) aplikací. 
 
 
-Pokud používáte service fabric spolehlivé služby nebo spolehlivé actors programovací model, je třeba odškrtnout následující položky:
-1. Upgrade aplikací během místního vývoje zkontrolovat, že váš kód `RunAsync` služby je ctít zrušení token v metodě a zavření vlastní naslouchací procesy komunikace.
-1. Vyhněte se [běžným nástrahám](service-fabric-work-with-reliable-collections.md) při používání spolehlivých kolekcí.
-1. Monitorujte čítače výkonu paměti .NET CLR při spuštění zátěžových testů a zkontrolujte vysokou míru růstu haldy nebo haldy runaway.
-1. Udržujte offline zálohování [spolehlivých služeb a spolehlivých aktérů](service-fabric-reliable-services-backup-restore.md) a otestujte proces obnovení.
-1. Počet instancí primárního typu nodetype virtuálního počítače by se v ideálním případě měl rovnat minimu pro úroveň spolehlivosti clusterů. podmínky, pokud je to vhodné k překročení minimální úrovně zahrnuje: dočasně při vertikálníškálování primární chod typy virtuálních počítačů škálovací sady skladových položk.
+Pokud používáte Service Fabric Reliable Services nebo Reliable Actors programovací model, je nutné zkontrolovat následující položky:
+1. Upgradujte aplikace během místního vývoje, abyste zkontrolovali, jestli kód služby dodržuje token zrušení v `RunAsync` metodě a zavřeli vlastní naslouchací procesy komunikace.
+1. Vyhněte se [běžným nástrah](service-fabric-work-with-reliable-collections.md) při používání spolehlivých kolekcí.
+1. Sledujte čítače výkonu paměti .NET CLR při spuštění zátěžových testů a kontrolujte vysoké míry uvolňování paměti nebo nárůstu haldy.
+1. Udržujte offline zálohování [Reliable Services a Reliable Actors](service-fabric-reliable-services-backup-restore.md) a otestujte proces obnovení.
+1. Váš primární počet instancí virtuálních počítačů NodeType by se měl ideálně rovnat minimální úrovni spolehlivosti clusterů; podmínky, které jsou vhodné pro překročení minima úrovně: dočasně při vertikálním škálování primárních jednotek SKU sady škálování virtuálních počítačů.
 
 ## <a name="optional-best-practices"></a>Volitelné osvědčené postupy
 
-Zatímco výše uvedené seznamy jsou předpokladem pro vstup do výroby, je třeba vzít v úvahu také následující položky:
-1. Připojte se k [modelu stavu Service Fabric](service-fabric-health-introduction.md) pro rozšíření integrované hodnocení stavu a vykazování.
-1. Nasaďte vlastní sledovací zařízení, které monitoruje vaši aplikaci a [načte](service-fabric-cluster-resource-manager-metrics.md) se pro [vyrovnávání prostředků](service-fabric-cluster-resource-manager-balancing.md). 
+I když se výše uvedené seznamy dostanou do produkčního prostředí, měly by se vzít v úvahu taky tyto položky:
+1. Připojte se k [modelu Service Fabric stavu](service-fabric-health-introduction.md) pro rozšíření integrovaného vyhodnocení stavu a vytváření sestav.
+1. Nasaďte vlastní sledovací zařízení, které monitoruje [zatížení](service-fabric-cluster-resource-manager-metrics.md) vaší aplikace a sestav pro [vyrovnávání prostředků](service-fabric-cluster-resource-manager-balancing.md). 
 
 
 ## <a name="next-steps"></a>Další kroky
-* [Nasazení clusteru Windows fabric služby](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
+* [Nasazení Service Fabric clusteru se systémem Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 * [Nasazení clusteru Service Fabric Linux](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 * Informace o [životním cyklu aplikace](service-fabric-application-lifecycle.md) Service Fabric.

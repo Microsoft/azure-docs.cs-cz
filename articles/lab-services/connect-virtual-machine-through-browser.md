@@ -1,6 +1,6 @@
 ---
-title: Připojení k virtuálním počítačům prostřednictvím prohlížeče – Azure | Dokumenty společnosti Microsoft
-description: Přečtěte si, jak se připojit k virtuálním počítačům prostřednictvím prohlížeče.
+title: Připojení k virtuálním počítačům pomocí prohlížeče – Azure | Microsoft Docs
+description: Přečtěte si, jak se připojit k virtuálním počítačům přes prohlížeč.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: tanmayeekamath
@@ -14,30 +14,30 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: takamath
 ms.openlocfilehash: 4549ee0f50c06040b70307c96b5ca96cd4162214
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74974277"
 ---
-# <a name="connect-to-your-virtual-machines-through-a-browser"></a>Připojení k virtuálním počítačům prostřednictvím prohlížeče 
+# <a name="connect-to-your-virtual-machines-through-a-browser"></a>Připojení k virtuálním počítačům přes prohlížeč 
 
-DevTest Labs se integruje s [Azure Bastion](https://docs.microsoft.com/azure/bastion/), který umožňuje připojení k virtuálním počítačům prostřednictvím prohlížeče. Informace o povolení této funkce v devTest Labs najdete v [tématu Povolení připojení prohlížeče na virtuálních počítačích testovacího prostředí](enable-browser-connection-lab-virtual-machines.md).
+DevTest Labs se integruje s [Azure bastionu](https://docs.microsoft.com/azure/bastion/), což vám umožní připojit se k virtuálním počítačům přes prohlížeč. Informace o tom, jak povolit tuto funkci v DevTest Labs, najdete v tématu [Povolení připojení prohlížeče na virtuálních počítačích testovacího prostředí](enable-browser-connection-lab-virtual-machines.md).
 
-Jakmile je *připojení prohlížeče* povoleno, uživatelé testovacího prostředí mají přístup k virtuálním počítačům prostřednictvím prohlížeče.  
+Po povolení *připojení prohlížeče* k virtuálním počítačům můžou uživatelé testovacího prostředí přistupovat přes prohlížeč.  
 
-## <a name="create-a-lab-virtual-machine"></a>Vytvoření testovacího virtuálního počítače
+## <a name="create-a-lab-virtual-machine"></a>Vytvořit virtuální počítač testovacího prostředí
 
-Nejprve je třeba vytvořit virtuální počítač testovacího prostředí v rámci virtuální sítě, která má Bastion nakonfigurován na něm. Vyberte druhou **podsíť,** kterou jste vytvořili, ne AzureBastionSubnet. Virtuální síť můžete vybrat během vytváření virtuálního počítače tak, že přejdete na kartu **Upřesnit nastavení.**
+Nejdřív je potřeba vytvořit virtuální počítač testovacího prostředí ve virtuální síti s nakonfigurovaným bastionu. Vyberte druhou **podsíť** , kterou jste vytvořili, nikoli AzureBastionSubnet. Virtuální síť můžete vybrat během vytváření virtuálního počítače tak, že na kartě **Upřesnit nastavení** kliknete.
 
 ![Vytvoření virtuálního počítače](./media/connect-virtual-machine-through-browser/create-virtual-machine.png)
 
-## <a name="launch-virtual-machine-in-a-browser"></a>Spuštění virtuálního počítače v prohlížeči
+## <a name="launch-virtual-machine-in-a-browser"></a>Spustit virtuální počítač v prohlížeči
 
-Jakmile je virtuální počítač vytvořen, můžete jej spustit v prohlížeči kliknutím na tlačítko *Připojení prohlížeče* a zadáním uživatelského jména a hesla pro stroj.  
+Po vytvoření virtuálního počítače ho můžete spustit v prohlížeči kliknutím na tlačítko *připojit k prohlížeči* a zadáním uživatelského jména a hesla pro tento počítač.  
 
-![Spuštění v prohlížeči](./media/connect-virtual-machine-through-browser/browser-connect.png)
+![Spustit v prohlížeči](./media/connect-virtual-machine-through-browser/browser-connect.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-[Přidání virtuálního počítače do testovacího prostředí v azure devtest labs](devtest-lab-add-vm.md)
+[Přidání virtuálního počítače do testovacího prostředí v Azure DevTest Labs](devtest-lab-add-vm.md)

@@ -1,6 +1,6 @@
 ---
-title: Spouštění úloh po spuštění ve cloudových službách Azure | Dokumenty společnosti Microsoft
-description: Úlohy při spuštění pomáhají připravit prostředí cloudové služby pro vaši aplikaci. To vás naučí, jak úlohy spuštění fungují a jak je vytvořit
+title: Spouštění úloh po spuštění v Azure Cloud Services | Microsoft Docs
+description: Úlohy po spuštění vám pomůžou připravit prostředí cloudové služby pro vaši aplikaci. Naučíte se, jak fungují úlohy při spouštění a jak je udělat
 services: cloud-services
 author: tgore03
 ms.service: cloud-services
@@ -8,55 +8,55 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: fa48953e5e86ffa758fe556b7fb1072be9d74647
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75360306"
 ---
-# <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Konfigurace a spuštění úloh při spuštění pro cloudovou službu
-Úlohy spuštění můžete použít k provádění operací před spuštěním role. Mezi operace, které můžete chtít provést, patří instalace součásti, registrace součástí modelu COM, nastavení klíčů registru nebo spuštění dlouho běžícího procesu.
+# <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Jak nakonfigurovat a spustit úlohy po spuštění pro cloudovou službu
+Úlohy po spuštění můžete použít k provádění operací před spuštěním role. Operace, které můžete chtít provést, zahrnují instalaci komponenty, registraci komponent modelu COM, nastavení klíčů registru nebo spuštění dlouhotrvajícího procesu.
 
 > [!NOTE]
-> Úlohy při spuštění se nevztahují na virtuální počítače, ale pouze na webové role cloudových služeb a role pracovních dělníků.
+> Úlohy po spuštění se nevztahují na Virtual Machines, a to pouze na webové role a role pracovních procesů cloudové služby.
 > 
 > 
 
 ## <a name="how-startup-tasks-work"></a>Jak fungují úlohy při spuštění
-Úlohy při spuštění jsou akce, které jsou prováděny před zahájením rolí a jsou definovány v souboru [ServiceDefinition.csdef] pomocí prvku [Task] v rámci prvku [Po spuštění.] Často spouštěcí úlohy jsou dávkové soubory, ale mohou to být také konzolové aplikace nebo dávkové soubory, které spouštějí skripty prostředí PowerShell.
+Úlohy po spuštění jsou akce, které jsou provedeny před začátkem rolí a jsou definovány v souboru [ServiceDefinition. csdef] pomocí elementu [Task] v elementu [Startup] . Často spouštěné úlohy jsou dávkové soubory, ale mohou být také konzolové aplikace nebo dávkové soubory, které spouštějí skripty prostředí PowerShell.
 
-Proměnné prostředí předávají informace do úlohy při spuštění a místní úložiště lze použít k předání informací z úlohy při spuštění. Proměnná prostředí může například určit cestu k programu, který chcete nainstalovat, a soubory mohou být zapsány do místního úložiště, které pak mohou být později přečteny vašimi rolemi.
+Proměnné prostředí předávají informace do spouštěcí úlohy a pomocí místního úložiště je možné předávat informace z úlohy po spuštění. Například proměnná prostředí může určovat cestu k programu, který chcete nainstalovat, a do místního úložiště je možné zapisovat soubory, které pak můžou později číst vaše role.
 
-Úloha při spuštění může protokolovat informace a chyby do adresáře určeného proměnnou prostředí **TEMP.** Během úlohy při spuštění se proměnná prostředí **TEMP** překládá na *dočasnou\\\\hodnotu C: Zdroje\\[guid].[ rolename]\\Adresář RoleTemp* při spuštění v cloudu.
+Úloha po spuštění může protokolovat informace a chyby do adresáře určeného proměnnou prostředí **TEMP** . V průběhu úlohy po spuštění se proměnná prostředí **TEMP** přeloží na *C:\\Resources\\Temp\\[GUID]. [ roleName]\\RoleTemp* adresář při spuštění v cloudu.
 
-Úlohy po spuštění je také možné provádět několikrát mezi restartováními. Úlohu po spuštění je například možné spustit při každé recyklaci role a ty nemusí vždy zahrnovat restartování. Úlohy při spuštění by měly být napsány způsobem, který jim umožňuje několikrát spustit bez problémů.
+Úlohy po spuštění je také možné provádět několikrát mezi restartováními. Úlohu po spuštění je například možné spustit při každé recyklaci role a ty nemusí vždy zahrnovat restartování. Úlohy po spuštění by měly být zapsány způsobem, který jim umožní běžet několikrát bez problémů.
 
-Úlohy při spuštění musí končit **úrovní chyby** (nebo ukončovacím kódem) nula, aby byl proces spuštění dokončen. Pokud úloha při spuštění končí chybovou **úrovní**bez nuly , role se nespustí.
+Spouštěcí úlohy musí končit znakem **errorlevel** (nebo ukončovacím kódem) nula, aby bylo možné proces spuštění dokončit. Pokud úloha po spuštění skončí s nenulovou hodnotou **errorlevel**, role se nespustí.
 
-## <a name="role-startup-order"></a>Pořadí spuštění role
-V následujícím seznamu je uvedena procedura spuštění role v Azure:
+## <a name="role-startup-order"></a>Pořadí spouštění role
+Následuje seznam spouštěcí procedury role v Azure:
 
-1. Instance je označena jako **Spuštění** a nepřijímá přenosy.
-2. Všechny úlohy při spuštění jsou prováděny podle jejich **taskType** atribut.
+1. Instance je označena jako **spuštěná** a nepřijímá provoz.
+2. Všechny úlohy po spuštění jsou spouštěny podle jejich atributu **taskType** .
    
-   * **Jednoduché** úkoly jsou prováděny synchronně, jeden po druhém.
-   * Úlohy **na pozadí** a **popředí** jsou spouštěny asynchronně, paralelně s úlohou při spuštění.  
+   * **Jednoduché** úlohy jsou spouštěny synchronně, jeden po druhém.
+   * Úlohy na **pozadí** a na **popředí** jsou spouštěny asynchronně, paralelně s úlohou po spuštění.  
      
      > [!WARNING]
-     > Služba IIS nemusí být během fáze úlohy spuštění v procesu spuštění plně nakonfigurována, takže data specifická pro roli nemusí být k dispozici. Úlohy při spuštění, které vyžadují data specifická pro konkrétní role, by měly používat [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)).
+     > Služba IIS nemusí být během procesu spuštění plně nakonfigurovaná během fáze úlohy po spuštění, takže data specifická pro role možná nebudou k dispozici. Úlohy po spuštění, které vyžadují data specifická pro danou roli, by měly používat [Microsoft. windowsazure. ServiceRuntime. RoleEntryPoint. OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)).
      > 
      > 
-3. Proces hostitele role je spuštěn a web je vytvořen ve službě IIS.
-4. Nazývá se metoda [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart.](/previous-versions/azure/reference/ee772851(v=azure.100))
-5. Instance je označena jako **Připravena** a provoz je směrován na instanci.
-6. Nazývá se metoda [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.Run.](/previous-versions/azure/reference/ee772746(v=azure.100))
+3. Proces hostitele role je spuštěn a lokalita je vytvořena ve službě IIS.
+4. Je volána metoda [Microsoft. windowsazure. ServiceRuntime. RoleEntryPoint. OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) .
+5. Instance je označena jako **připravená** a provoz se směruje do instance.
+6. Je volána metoda [Microsoft. windowsazure. ServiceRuntime. RoleEntryPoint. Run](/previous-versions/azure/reference/ee772746(v=azure.100)) .
 
-## <a name="example-of-a-startup-task"></a>Příklad úlohy spuštění
-Úlohy při spuštění jsou definovány v souboru [ServiceDefinition.csdef] v elementu **Task.** Atribut **commandLine** určuje název a parametry spouštěcího dávkového souboru nebo příkazu konzoly, atribut **executionContext** určuje úroveň oprávnění spouštěcí úlohy a atribut **taskType** určuje způsob provedení úlohy.
+## <a name="example-of-a-startup-task"></a>Příklad úlohy po spuštění
+Úlohy po spuštění jsou definovány v souboru [ServiceDefinition. csdef] v elementu **Task** . Atribut **CommandLine** Určuje název a parametry spouštěcího dávkového souboru nebo konzoly příkazového řádku, atribut **ExecutionContext** určuje úroveň oprávnění úlohy po spuštění a atribut **taskType** určuje, jak bude úkol proveden.
 
-V tomto příkladu je pro úlohu při spuštění vytvořena proměnná prostředí **MyVersionNumber**a nastavena na hodnotu "**1.0.0.0**".
+V tomto příkladu je pro úlohu po spuštění vytvořena proměnná prostředí **MyVersionNumber**a je nastavena na hodnotu**1.0.0.0**.
 
-**ServiceDefinition.csdef**:
+**ServiceDefinition. csdef**:
 
 ```xml
 <Startup>
@@ -68,7 +68,7 @@ V tomto příkladu je pro úlohu při spuštění vytvořena proměnná prostře
 </Startup>
 ```
 
-V následujícím příkladu dávkový soubor **Startup.cmd** zapíše řádek "Aktuální verze je 1.0.0.0" do souboru StartupLog.txt v adresáři určeném proměnnou prostředí TEMP. Řádek `EXIT /B 0` zajišťuje, že úloha při spuštění končí **chybovou úrovní** nula.
+V následujícím příkladu vytvoří dávkový soubor **Startup. cmd** řádek "aktuální verze je 1.0.0.0" do souboru StartupLog. txt v adresáři určeném PROMĚNNOU prostředí TEMP. Na `EXIT /B 0` řádku se zaručí, že úloha po spuštění skončí s hodnotou **errorlevel** nula.
 
 ```cmd
 ECHO The current version is %MyVersionNumber% >> "%TEMP%\StartupLog.txt" 2>&1
@@ -76,58 +76,58 @@ EXIT /B 0
 ```
 
 > [!NOTE]
-> V sadě Visual Studio by měla být vlastnost **Kopírovat do výstupního adresáře** pro spouštěcí dávkový soubor nastavena na **Kopírovat vždy,** abyste měli jistotu, že je spouštěcí dávkový soubor správně nasazen do vašeho projektu v Azure **(přihrádka aplikace\\** pro webové role a **kořenová složka aplikace** pro role pracovního procesu).
+> V sadě Visual Studio by měla být vlastnost **Kopírovat do výstupního adresáře** pro spouštěcí dávkový soubor nastavená na hodnotu **vždy kopírovat** , aby bylo zajištěno, že váš spouštěcí dávkový soubor bude správně nasazen do projektu v Azure (**AppRoot\\bin** pro webové role a **AppRoot** pro role pracovního procesu).
 > 
 > 
 
 ## <a name="description-of-task-attributes"></a>Popis atributů úloh
-Následující text popisuje atributy prvku **Task** v souboru [ServiceDefinition.csdef:]
+Následující popis popisuje atributy elementu **Task** v souboru [ServiceDefinition. csdef] :
 
-**příkazcommandLine** - Určuje příkazový řádek pro úlohu při spuštění:
+**CommandLine** – Určuje příkazový řádek pro úlohu po spuštění:
 
-* Příkaz s volitelnými parametry příkazového řádku, který začíná úlohu při spuštění.
-* Často se jedná o název souboru cmd nebo .bat batch.
-* Úloha je relativní vzhledem ke složce AppRoot\\Bin pro nasazení. Proměnné prostředí nejsou rozbaleny při určování cesty a souboru úlohy. Pokud je vyžadováno rozšíření prostředí, můžete vytvořit malý skript CMD, který volá úlohu při spuštění.
-* Může se na pokládá být konzolová aplikace nebo dávkový soubor, který spouští [skript prostředí PowerShell](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task).
+* Příkaz s nepovinnými parametry příkazového řádku, které začínají úlohu po spuštění.
+* Často se jedná o název souboru dávkového souboru. cmd nebo. bat.
+* Úkol je relativní vzhledem ke složce AppRoot\\bin pro nasazení. Proměnné prostředí nejsou roztažené při určování cesty a souboru úlohy. Pokud je nutné rozšíření prostředí, můžete vytvořit malý skript. cmd, který bude volat úlohu po spuštění.
+* Může se jednat o konzolovou aplikaci nebo dávkový soubor, který spouští [powershellový skript](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task).
 
-**executionContext** - Určuje úroveň oprávnění pro úlohu při spuštění. Úroveň oprávnění může být omezena nebo zvýšena:
+**ExecutionContext** – určuje úroveň oprávnění pro úlohu po spuštění. Úroveň oprávnění může být omezená nebo zvýšená:
 
-* **Omezené**  
-  Úloha při spuštění je spuštěna se stejnými oprávněními jako role. Pokud je také **omezený**atribut **executionContext** pro prvek [Runtime] , použijí se oprávnění uživatele.
-* **Zvýšené**  
-  Úloha při spuštění je spuštěna s oprávněními správce. To umožňuje úlohám při spuštění instalovat programy, provádět změny konfigurace služby IIS, provádět změny registru a další úlohy na úrovni správce, aniž by se zvýšila úroveň oprávnění samotné role.  
+* **limitovan**  
+  Úloha po spuštění se spouští se stejnými oprávněními jako role. Je-li atribut **ExecutionContext** pro element [runtime] také **omezen**, jsou použita oprávnění uživatele.
+* **úrovně**  
+  Úloha po spuštění se spouští s oprávněními správce. To umožňuje úlohám po spuštění instalovat programy, provádět změny konfigurace služby IIS, provádět změny v registru a další úlohy na úrovni správce bez zvýšení úrovně oprávnění samotné role.  
 
 > [!NOTE]
-> Úroveň oprávnění spouštěcí úlohy nemusí být stejná jako samotná role.
+> Úroveň oprávnění úlohy po spuštění nemusí být stejná jako samotná role.
 > 
 > 
 
-**taskType** - Určuje způsob spuštění úlohy.
+**taskType** – určuje způsob spuštění spouštěného úkolu.
 
-* **Jednoduché**  
-  Úkoly jsou prováděny synchronně, jeden po druhém, v pořadí určeném v souboru [ServiceDefinition.csdef.] Když jedna **jednoduchá** spouštěcí úloha skončí **chybovou úrovní** nula, provede se další **jednoduchá** spouštěcí úloha. Pokud nejsou k dispozici žádné další **jednoduché** úlohy spuštění spustit, pak role sama o sobě bude spuštěna.   
+* **pouh**  
+  Úlohy jsou spouštěny synchronně, po jednom v pořadí určeném v souboru [ServiceDefinition. csdef] . Když jedna **Jednoduchá** úloha po spuštění skončí s **errorlevel** hodnotou nula, spustí se další **jednoduchý** úkol po spuštění. Pokud neexistují žádné **jednoduché** úlohy po spuštění, spustí se tato role.   
   
   > [!NOTE]
-  > Pokud **jednoduchý** úkol končí nenulovou **chybovou úrovní**, instance bude blokována. Následné **jednoduché** úlohy při spuštění a samotná role se nespustí.
+  > Pokud je **jednoduchý** úkol ukončen s nenulovou hodnotou **errorlevel**, instance bude zablokována. Následné **jednoduché** úvodní úlohy a samotné role se nespustí.
   > 
   > 
   
-    Chcete-li zajistit, aby dávkový soubor skončil úrovní `EXIT /B 0` **chyby** nula, spusťte příkaz na konci procesu dávkového souboru.
-* **Pozadí**  
-  Úlohy jsou prováděny asynchronně, souběžně se spuštěním role.
-* **Popředí**  
-  Úlohy jsou prováděny asynchronně, souběžně se spuštěním role. Hlavní rozdíl mezi **úkolem na popředí** a **úlohou na pozadí** spočívá v tom, že úloha v **popředí** zabrání roli v recyklaci nebo vypnutí, dokud úkol neskončí. Úlohy **na pozadí** nemají toto omezení.
+    Aby se zajistilo, že dávkový soubor skončí **errorlevel** s hodnotou nula, spusťte příkaz `EXIT /B 0` na konci procesu dávkového souboru.
+* **pozadí**  
+  Úlohy jsou spouštěny asynchronně, paralelně s spuštěním role.
+* **zachovat**  
+  Úlohy jsou spouštěny asynchronně, paralelně s spuštěním role. Klíčovým rozdílem mezi **popředí** a úlohou na **pozadí** je, že úloha na **popředí** brání roli v recyklaci nebo vypnutí, dokud se úloha neukončí. Úlohy na **pozadí** nemají toto omezení.
 
 ## <a name="environment-variables"></a>Proměnné prostředí
-Proměnné prostředí jsou způsob, jak předat informace spouštěcí úlohy. Můžete například umístit cestu k objektu blob, který obsahuje program k instalaci, nebo čísla portů, která bude vaše role používat, nebo nastavení pro řízení funkcí úlohy při spuštění.
+Proměnné prostředí představují způsob, jak předat informace spouštěcí úloze. Můžete například umístit cestu k objektu blob, který obsahuje program k instalaci, nebo čísla portů, která vaše role bude používat, nebo nastavení pro řízení funkcí úlohy po spuštění.
 
-Existují dva druhy proměnných prostředí pro úlohy při spuštění; proměnné statického prostředí a proměnné prostředí založené na členech třídy [RoleEnvironment.] Oba jsou v části [Prostředí] souboru [ServiceDefinition.csdef] a oba používají element [Variable] a **atribut name.**
+Existují dva druhy proměnných prostředí pro úlohy po spuštění; statické proměnné prostředí a proměnné prostředí založené na členech třídy [RoleEnvironment] . Obě jsou v oddílu [prostředí] souboru [ServiceDefinition. csdef] a oba používají atribut [Variable] element a **Name** .
 
-Proměnné statického prostředí používají atribut **hodnoty** prvku [Variable.] Výše uvedený příklad vytvoří proměnnou prostředí **MyVersionNumber,** která má statickou hodnotu "**1.0.0.0**". Dalším příkladem by bylo vytvoření proměnné prostředí **StagingOrProduction,** kterou můžete ručně nastavit na hodnoty "**staging**" nebo "**production**" k provádění různých spouštěcích akcí na základě hodnoty proměnné prostředí **StagingOrProduction.**
+Statické proměnné prostředí používají atribut **Value** elementu [Variable] . Výše uvedený příklad vytvoří proměnnou prostředí **MyVersionNumber** , která má statickou hodnotu "**1.0.0.0**". Dalším příkladem je vytvoření proměnné prostředí **StagingOrProduction** , kterou můžete ručně nastavit na hodnoty "**fázování**" nebo "**produkční**", aby se na základě hodnoty proměnné prostředí **StagingOrProduction** prováděly různé akce při spuštění.
 
-Proměnné prostředí založené na členech třídy RoleEnvironment nepoužívají atribut **value** elementu [Variable.] Místo toho [roleInstanceValue] podřízený prvek, s příslušnou hodnotou **atributu XPath,** se používají k vytvoření proměnné prostředí na základě konkrétního člena třídy [RoleEnvironment.] Hodnoty atributu **XPath** pro přístup k různým hodnotám [RoleEnvironment] naleznete [zde](cloud-services-role-config-xpath.md).
+Proměnné prostředí založené na členech třídy RoleEnvironment nepoužívají atribut **Value** elementu [Variable] . Namísto toho je podřízený prvek [RoleInstanceValue] s odpovídající hodnotou atributu **XPath** použit k vytvoření proměnné prostředí na základě konkrétního člena třídy [RoleEnvironment] . Hodnoty pro atribut **XPath** pro přístup k různým hodnotám [RoleEnvironment] lze nalézt [zde](cloud-services-role-config-xpath.md).
 
-Chcete-li například vytvořit proměnnou prostředí, která je **"true**", když je instance spuštěna v emulátoru výpočetního prostředí, a "**false**" při spuštění v cloudu, použijte následující [elementy Variable] a [RoleInstanceValue:]
+Pokud například chcete vytvořit proměnnou prostředí, která je "**true**", když je instance spuštěna v emulátoru služby COMPUTE a "**NEPRAVDA**" při spuštění v cloudu, použijte následující [proměnnou] a [RoleInstanceValue] prvky:
 
 ```xml
 <Startup>
@@ -149,18 +149,18 @@ Chcete-li například vytvořit proměnnou prostředí, která je **"true**", kd
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si, jak provádět některé [běžné úlohy při spuštění](cloud-services-startup-tasks-common.md) pomocí cloudové služby.
+Naučte se provádět některé [běžné úlohy po spuštění](cloud-services-startup-tasks-common.md) s vaší cloudovou službou.
 
-[Zabalte](cloud-services-model-and-package.md) si cloudovou službu.  
+[Zabalit](cloud-services-model-and-package.md) cloudovou službu.  
 
-[ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
+[ServiceDefinition. csdef]: cloud-services-model-and-package.md#csdef
 [Úkol]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Spuštění]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Modul runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
 [Prostředí]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
 [Proměnná]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
-[Hodnota instance role]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
-[Prostředí role]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
+[RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
+[RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
 
 
 

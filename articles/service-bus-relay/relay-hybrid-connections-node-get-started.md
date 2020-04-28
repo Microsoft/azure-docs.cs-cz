@@ -1,5 +1,5 @@
 ---
-title: Hybridní připojení azure relay – websockety v uzlu
+title: Azure Relay Hybrid Connections – WebSockets v uzlu
 description: Napište konzolovou aplikaci v Node.js pro WebSockety Azure Relay Hybrid Connections.
 services: service-bus-relay
 documentationcenter: node
@@ -15,30 +15,30 @@ ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
 ms.openlocfilehash: 818db4db082a441877b573fd52361e63becce374
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75352677"
 ---
-# <a name="get-started-with-relay-hybrid-connections-websockets-in-nodejs"></a>Začínáme s webovými sokety hybridních připojení přenosu v souboru Node.js
+# <a name="get-started-with-relay-hybrid-connections-websockets-in-nodejs"></a>Začínáme s přenosovým Hybrid Connections WebSockets v Node. js
 
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
-V tomto rychlém startu vytvoříte aplikace odesílatele a příjemce node.js, které odesílají a přijímají zprávy pomocí hybridních připojení WebSockets v Azure Relay. Další informace o Azure Relay obecně najdete v [tématu Azure Relay](relay-what-is-it.md). 
+V tomto rychlém startu vytvoříte aplikace pro odesílatele a přijímače v Node. js, které odesílají a přijímají zprávy pomocí Hybrid Connections WebSockets v Azure Relay. Další informace o Azure Relay obecně najdete v tématu [Azure Relay](relay-what-is-it.md). 
 
-V tomto rychlém startu provedete následující kroky: 
+V tomto rychlém startu proveďte následující kroky: 
 
 1. Pomocí webu Azure Portal vytvoříte obor názvů služby Relay.
 2. Pomocí webu Azure Portal vytvoříte v tomto oboru názvů hybridní připojení.
 3. Napíšeme konzolovou aplikaci serveru (naslouchacího procesu) pro příjem zpráv.
 4. Napíšeme konzolovou aplikaci klienta (odesílatele) pro odesílání zpráv.
-5. Spouštět aplikace. 
+5. Spusťte aplikace. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Soubor Node.js](https://nodejs.org/en/).
-- Předplatné Azure. Pokud ho nemáte, [vytvořte si účet zdarma,](https://azure.microsoft.com/free/) než začnete.
+- [Node. js](https://nodejs.org/en/).
+- Předplatné Azure. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="create-a-namespace"></a>Vytvoření oboru názvů
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
@@ -67,8 +67,8 @@ Aby bylo možné odesílat zprávy do služby Relay, napíšeme konzolovou aplik
 Blahopřejeme, vytvořili jste kompletní aplikaci Hybrid Connections pomocí Node.js!
 
 ## <a name="next-steps"></a>Další kroky
-V tomto rychlém startu jste vytvořili klientské a serverové aplikace Node.js, které používaly websockety k odesílání a přijímání zpráv. Funkce Hybridní připojení azure relay také podporuje použití protokolu HTTP pro odesílání a přijímání zpráv. Informace o použití protokolu HTTP s hybridními připojeními azure relay naleznete v [rychlém spuštění protokolu Node.js HTTP](relay-hybrid-connections-http-requests-node-get-started.md).
+V tomto rychlém startu jste vytvořili klientské a serverové aplikace Node. js, které používají objekty WebSockets k posílání a přijímání zpráv. Funkce Hybrid Connections Azure Relay také podporuje odesílání a příjem zpráv pomocí protokolu HTTP. Informace o tom, jak používat protokol HTTP s Azure Relay Hybrid Connections, najdete v tématu [rychlý Start pro Node. js http](relay-hybrid-connections-http-requests-node-get-started.md).
 
-V tomto rychlém startu jste použili soubor Node.js k vytvoření klientských a serverových aplikací. Informace o zápisu klientských a serverových aplikací pomocí rozhraní .NET Framework naleznete [v rychlém startu .NET WebSockets](relay-hybrid-connections-dotnet-get-started.md) nebo [v rychlém startu protokolu .NET HTTP](relay-hybrid-connections-http-requests-dotnet-get-started.md).
+V tomto rychlém startu jste použili Node. js k vytváření klientských a serverových aplikací. Informace o tom, jak psát klientské a serverové aplikace pomocí .NET Framework, najdete v tématu [rychlý Start k rozhraní .NET WebSockets](relay-hybrid-connections-dotnet-get-started.md) nebo [rychlé zprovoznění protokolu HTTP .NET](relay-hybrid-connections-http-requests-dotnet-get-started.md).
 
 

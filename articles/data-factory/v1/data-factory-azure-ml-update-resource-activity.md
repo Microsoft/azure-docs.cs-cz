@@ -1,6 +1,6 @@
 ---
 title: Aktualizace modelů Machine Learning pomocí Azure Data Factory
-description: Popisuje, jak vytvořit prediktivní kanály pomocí Azure Data Factory a Azure Machine Learning
+description: Popisuje postup vytváření prediktivních kanálů pomocí Azure Data Factory a Azure Machine Learning
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,60 +12,60 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: afc79badd19fa180e631f1f8fa9735567a0b1e33
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74978709"
 ---
-# <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Aktualizace modelů Azure Machine Learning pomocí aktivity aktualizačních prostředků
+# <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Aktualizace modelů Azure Machine Learning pomocí aktivity aktualizovat prostředek
 
-> [!div class="op_single_selector" title1="Transformační aktivity"]
-> * [Aktivita úlu](data-factory-hive-activity.md) 
-> * [Aktivita prasat](data-factory-pig-activity.md)
+> [!div class="op_single_selector" title1="Aktivity transformace"]
+> * [Aktivita v podregistru](data-factory-hive-activity.md) 
+> * [Aktivita prasete](data-factory-pig-activity.md)
 > * [Aktivita MapReduce](data-factory-map-reduce.md)
-> * [Aktivita streamování hadoopu](data-factory-hadoop-streaming-activity.md)
-> * [Aktivita jiskry](data-factory-spark.md)
+> * [Aktivita streamování Hadoop](data-factory-hadoop-streaming-activity.md)
+> * [Aktivita Sparku](data-factory-spark.md)
 > * [Aktivita Provedení dávky služby Machine Learning](data-factory-azure-ml-batch-execution-activity.md)
-> * [Aktivita Aktualizace prostředků služby Machine Learning](data-factory-azure-ml-update-resource-activity.md)
+> * [Aktivita aktualizace prostředku služby Machine Learning](data-factory-azure-ml-update-resource-activity.md)
 > * [Aktivita Uložená procedura](data-factory-stored-proc-activity.md)
 > * [Aktivita U-SQL služby Data Lake Analytics](data-factory-usql-activity.md)
 > * [Vlastní aktivita rozhraní .NET](data-factory-use-custom-activities.md)
 
 
 > [!NOTE]
-> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si [téma aktualizace modelů strojového učení v datové továrně](../update-machine-learning-models.md).
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [aktualizace modelů strojového učení v Data Factory](../update-machine-learning-models.md).
 
-Tento článek doplňuje hlavní Azure Data Factory – Azure Machine Learning integrace článek: [Vytvoření prediktivní kanály pomocí Azure Machine Learning a Azure Data Factory](data-factory-azure-ml-batch-execution-activity.md). Pokud jste tak ještě neučinili, přečtěte si hlavní článek před přečtením tohoto článku. 
+Tento článek doplňuje hlavní článek o integraci Azure Data Factory Azure Machine Learning: [vytváření prediktivních kanálů pomocí Azure Machine Learning a Azure Data Factory](data-factory-azure-ml-batch-execution-activity.md). Pokud jste to ještě neudělali, přečtěte si hlavní článek před čtením tohoto článku. 
 
 ## <a name="overview"></a>Přehled
-V průběhu času je třeba přeškolit prediktivní modely v experimentech vyhodnocování Azure ML pomocí nových vstupních datových sad. Po dokončení rekvalifikace, chcete aktualizovat vyhodnocování webové služby s retrained ML modelu. Typické kroky umožňující rekvalifikaci a aktualizaci modelů Azure ML prostřednictvím webových služeb jsou:
+Prediktivní modely v experimentech s hodnocením Azure ML v průběhu času musí být převlakované pomocí nových vstupních datových sad. Až budete s rekurzem hotovi, chcete aktualizovat webovou službu bodování pomocí předaného modelu ML. Typický postup, jak povolit přeškolení a aktualizace modelů Azure ML prostřednictvím webových služeb, jsou tyto:
 
-1. Vytvořte experiment v [Azure Machine Learning Studio (klasické)](https://studio.azureml.net).
-2. Až budete s modelem spokojeni, použijte Azure Machine Learning Studio (klasické) k publikování webových služeb pro **trénovací experiment** i vyhodnocování či**prediktivní experiment**.
+1. Vytvořte experiment v [Azure Machine Learning Studio (Classic)](https://studio.azureml.net).
+2. Pokud jste s modelem spokojeni, použijte Azure Machine Learning Studio (Classic) k publikování webových služeb pro **školicí experiment** i bodování/**prediktivní experiment**.
 
-Následující tabulka popisuje webové služby používané v tomto příkladu.  Podrobnosti najdete [v tématu Programové přeškolovací modely strojového učení.](../../machine-learning/machine-learning-retrain-models-programmatically.md)
+Následující tabulka popisuje webové služby použité v tomto příkladu.  Podrobnosti najdete v tématu [přeučení modelů Machine Learning programově](../../machine-learning/machine-learning-retrain-models-programmatically.md) .
 
-- **Školení webová služba** - Přijímá trénovací data a vytváří trénované modely. Výstup retraining je soubor .ilearner v úložišti objektů blob Azure. **Výchozí koncový bod** se automaticky vytvoří při publikování trénovacího experimentu jako webové služby. Můžete vytvořit více koncových bodů, ale v příkladu používá pouze výchozí koncový bod.
-- **Vyhodnocování webové služby** – přijímá neoznačené příklady dat a dělá předpovědi. Výstup předpověď může mít různé formuláře, jako je například soubor .csv nebo řádky v databázi Azure SQL, v závislosti na konfiguraci experimentu. Výchozí koncový bod se automaticky vytvoří při publikování prediktivníexperiment jako webové služby. 
+- **Školení webové služby** – přijímá školicí data a vytváří školené modely. Výstupem rekurze je soubor. ilearner v úložišti objektů BLOB v Azure. **Výchozím koncovým bodem** se automaticky vytvoří při publikování experimentu školení jako webové služby. Můžete vytvořit další koncové body, ale v příkladu se používá pouze výchozí koncový bod.
+- **Webová služba bodování** – přijímá příklady neoznačených dat a zpřístupňuje předpovědi. Výstup předpovědi může mít různé formuláře, jako je například soubor. csv nebo řádky ve službě Azure SQL Database v závislosti na konfiguraci experimentu. Výchozí koncový bod je automaticky vytvořen při publikování prediktivního experimentu jako webové služby. 
 
-Následující obrázek znázorňuje vztah mezi školení a bodování koncových bodů v Azure ML.
+Následující obrázek znázorňuje vztah mezi školicími a vyhodnocovacími koncovými body v Azure ML.
 
 ![Webové služby](./media/data-factory-azure-ml-batch-execution-activity/web-services.png)
 
-Můžete vyvolat **školení webové služby** pomocí **aktivity azure ml dávkového spuštění**. Vyvolání trénovací webové služby je stejné jako vyvolání webové služby Azure ML (vyhodnocování webové služby) pro vyhodnocování dat. Předchozí části popisují, jak vyvolat webovou službu Azure ML z kanálu Azure Data Factory podrobně. 
+**Webovou službu školení** můžete vyvolat pomocí **aktivity provádění dávky Azure ml**. Vyvolání webové služby školení je stejné jako volání webové služby Azure ML (webová služba bodování) pro data bodování. Předchozí části obsahují podrobnosti o tom, jak vyvolat webovou službu Azure ML z Azure Data Factoryho kanálu. 
 
-**Webovou službu hodnocení** můžete vyvolat pomocí **aktivity aktualizačních prostředků Azure ML** k aktualizaci webové služby pomocí nově trénovaného modelu. Následující příklady poskytují definice propojených služeb: 
+**Webovou službu bodování** můžete vyvolat pomocí **aktivity prostředku aktualizace služby Azure ml** a aktualizovat webovou službu pomocí nově vyučeného modelu. V následujících příkladech jsou uvedeny definice propojených služeb: 
 
-## <a name="scoring-web-service-is-a-classic-web-service"></a>Bodování webové služby je klasická webová služba
-Pokud je webová služba vyhodnocování **klasickou webovou službou**, vytvořte druhý **nevýchozí a aktualizovatelný koncový bod** pomocí portálu Azure. Postup najdete v článku [Vytvoření koncových bodů.](../../machine-learning/machine-learning-create-endpoint.md) Po vytvoření nevýchozího aktualizovatelného koncového bodu proveďte následující kroky:
+## <a name="scoring-web-service-is-a-classic-web-service"></a>Webová služba bodování je klasický Web Service.
+Pokud webová služba bodování je **klasický web**, vytvořte druhý **nevýchozí a aktualizovatelný koncový bod** pomocí Azure Portal. Postup najdete v článku [Vytvoření koncových bodů](../../machine-learning/machine-learning-create-endpoint.md) . Po vytvoření nevýchozího koncového bodu s možností aktualizace proveďte následující kroky:
 
-* Chcete-li získat hodnotu URI pro vlastnost **mlEndpoint** JSON, klepněte na tlačítko **BATCH EXECUTION.**
-* Chcete-li získat hodnotu IDENTIFIKÁTOR URI pro vlastnost **updateResourceEndpoint** JSON, klepněte na tlačítko AKTUALIZOVAT ODKAZ **PROSTŘEDEK.** Klíč rozhraní API je na samotné stránce koncového bodu (v pravém dolním rohu).
+* Kliknutím na **DÁVKOVÉ spuštění** Získejte hodnotu identifikátoru URI pro vlastnost **mlEndpoint** JSON.
+* Kliknutím na odkaz **aktualizovat prostředek** získáte hodnotu identifikátoru URI pro vlastnost **updateResourceEndpoint** JSON. Klíč rozhraní API se nachází na samotné stránce koncového bodu (v pravém dolním rohu).
 
 ![aktualizovatelný koncový bod](./media/data-factory-azure-ml-batch-execution-activity/updatable-endpoint.png)
 
-Následující příklad obsahuje ukázkovou definici JSON pro propojenou službu AzureML. Propojená služba používá apiKey pro ověřování.  
+Následující příklad uvádí ukázku definice JSON pro propojenou službu AzureML. Propojená služba používá apiKey k ověřování.  
 
 ```json
 {
@@ -81,14 +81,14 @@ Následující příklad obsahuje ukázkovou definici JSON pro propojenou služb
 }
 ```
 
-## <a name="scoring-web-service-is-azure-resource-manager-web-service"></a>Vyhodnocování webové služby je webová služba Azure Resource Manager 
-Pokud je webová služba nový typ webové služby, která zveřejňuje koncový bod Azure Resource Manager, není nutné přidat druhý **koncový bod, než výchozí.** **UpdateResourceEndpoint** v propojené službě je formátu: 
+## <a name="scoring-web-service-is-azure-resource-manager-web-service"></a>Webová služba bodování je Azure Resource Manager webové služby. 
+Pokud je webová služba novým typem webové služby, který zveřejňuje Azure Resource Manager koncový bod, nemusíte přidávat druhý **jiný než výchozí** koncový bod. **UpdateResourceEndpoint** v propojené službě má formát: 
 
 ```
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. 
 ```
 
-Hodnoty pro držitele míst můžete získat v adrese URL při dotazování webové služby na [portálu Webových služeb Azure Machine Learning](https://services.azureml.net/). Nový typ koncového bodu prostředku aktualizace vyžaduje token AAD (Azure Active Directory). Zadejte **servicePrincipalId** a **servicePrincipalKey** v propojené službě Azure Machine Learning. Podívejte [se, jak vytvořit instanční objekt a přiřadit oprávnění ke správě prostředků Azure](../../active-directory/develop/howto-create-service-principal-portal.md). Tady je ukázka definice propojené služby AzureML: 
+Můžete získat hodnoty pro držitele v adrese URL při dotazování webové služby na [portálu Azure Machine Learning Web Services](https://services.azureml.net/). Nový typ koncového bodu prostředku aktualizace vyžaduje token AAD (Azure Active Directory). V propojené službě Azure Machine Learning zadejte **servicePrincipalId** a **servicePrincipalKey** . Přečtěte si téma [Vytvoření instančního objektu a přiřazení oprávnění ke správě prostředků Azure](../../active-directory/develop/howto-create-service-principal-portal.md). Tady je ukázka definice propojené služby AzureML: 
 
 ```json
 {
@@ -108,22 +108,22 @@ Hodnoty pro držitele míst můžete získat v adrese URL při dotazování webo
 }
 ```
 
-Následující scénář obsahuje další podrobnosti. Má příklad pro přetrénování a aktualizaci modelů Azure ML z kanálu Azure Data Factory.
+Další podrobnosti najdete v následujícím scénáři. Obsahuje příklad pro přeškolení a aktualizaci modelů Azure ML z Azure Data Factoryho kanálu.
 
 ## <a name="scenario-retraining-and-updating-an-azure-ml-model"></a>Scénář: přeškolení a aktualizace modelu Azure ML
-Tato část obsahuje ukázkový kanál, který používá **aktivitu azure ml dávkového spuštění** k přeškolení modelu. Kanál také používá **aktivitu azure ml aktualizační prostředek** k aktualizaci modelu ve webové službě vyhodnocování. Část také obsahuje fragmenty JSON pro všechny propojené služby, datové sady a kanál v příkladu.
+V této části najdete ukázkový kanál, který používá **aktivitu provádění dávky Azure ml** k přeučení modelu. Kanál také využívá **aktivitu prostředku aktualizace Azure ml** k aktualizaci modelu ve webové službě bodování. Oddíl také poskytuje fragmenty JSON pro všechny propojené služby, datové sady a kanály v příkladu.
 
-Zde je zobrazení diagramu ukázkového kanálu. Jak můžete vidět, aktivita dávkového spuštění Azure ML přebírá vstup školení a vytváří tréninkový výstup (soubor iLearner). Aktivita aktualizačních prostředků Azure ML přebírá tento výstup školení a aktualizuje model v koncovém bodě vyhodnocování webové služby. Aktualizace aktivity zdrojů nevytváří žádný výstup. Zástupný objekt Blob je pouze fiktivní výstupní datová sada, kterou služba Azure Data Factory vyžaduje ke spuštění kanálu.
+Tady je zobrazení diagramu ukázkového kanálu. Jak vidíte, aktivita provádění dávky Azure ML vezme vstup školení a vytvoří školicí výstup (soubor iLearner). Aktivita prostředku aktualizace služby Azure ML převezme tento výstup školení a aktualizuje model na koncovém bodu webové služby bodování. Aktivita aktualizace prostředku nevytváří žádný výstup. PlaceholderBlob je pouze fiktivní výstupní datová sada, kterou služba Azure Data Factory vyžaduje ke spuštění kanálu.
 
-![diagram potrubí](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
+![Diagram kanálu](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
 
-### <a name="azure-blob-storage-linked-service"></a>Propojená služba úložiště objektů blob Azure:
+### <a name="azure-blob-storage-linked-service"></a>Propojená služba úložiště objektů BLOB v Azure:
 Azure Storage obsahuje následující data:
 
-* údaje o školení. Vstupní data pro webovou službu školení Azure ML.  
-* iLearner. Výstup z webové služby školení Azure ML. Tento soubor je také vstupem do aktivity aktualizovat zdroj.  
+* školicí data. Vstupní data pro webovou službu školení Azure ML.  
+* soubor iLearner Výstup z webové služby školení pro Azure ML. Tento soubor je také vstupem aktivity aktualizovat prostředek.  
 
-Zde je ukázka json definice propojené služby:
+Tady je ukázka definice JSON propojené služby:
 
 ```JSON
 {
@@ -137,8 +137,8 @@ Zde je ukázka json definice propojené služby:
 }
 ```
 
-### <a name="training-input-dataset"></a>Trénování vstupní datové sady:
-Následující datová sada představuje vstupní trénovací data pro webovou službu školení Azure Machine Learning. Aktivita dávkového spuštění Azure Machine Learning přebírá tuto datovou sadu jako vstup.
+### <a name="training-input-dataset"></a>Vstupní datová sada pro školení:
+Následující datová sada představuje vstupní školicí data pro webovou službu Azure Machine Learning Training. Aktivita spuštění dávky Azure Machine Learning přebírá tuto datovou sadu jako vstup.
 
 ```JSON
 {
@@ -168,8 +168,8 @@ Následující datová sada představuje vstupní trénovací data pro webovou s
 }
 ```
 
-### <a name="training-output-dataset"></a>Trénování výstupní datové sady:
-Následující datová sada představuje výstupní soubor iLearner z webové služby školení Azure ML. Aktivita dávkového spuštění Azure ML vytváří tuto datovou sadu. Tato datová sada je také vstup pro aktivitu azure ml aktualizační prostředky.
+### <a name="training-output-dataset"></a>Školení výstupní datové sady:
+Následující datová sada představuje výstupní soubor iLearner z webové služby školení pro Azure ML. Aktivita provádění dávky Azure ML vytváří tuto datovou sadu. Tato datová sada je také vstupem aktivity prostředku aktualizace služby Azure ML.
 
 ```JSON
 {
@@ -192,8 +192,8 @@ Následující datová sada představuje výstupní soubor iLearner z webové sl
 }
 ```
 
-### <a name="linked-service-for-azure-machine-learning-training-endpoint"></a>Propojený koncový bod školení Azure Machine Learning
-Následující fragment JSON definuje propojenou službu Azure Machine Learning, která odkazuje na výchozí koncový bod školicí webové služby.
+### <a name="linked-service-for-azure-machine-learning-training-endpoint"></a>Propojená služba pro školicí koncový bod služby Azure Machine Learning
+Následující fragment kódu JSON definuje propojenou službu Azure Machine Learning, která odkazuje na výchozí koncový bod webové služby školení.
 
 ```JSON
 {    
@@ -208,16 +208,16 @@ Následující fragment JSON definuje propojenou službu Azure Machine Learning,
 }
 ```
 
-V **Azure Machine Learning Studio (classic)**, postupujte takto, chcete-li získat hodnoty pro **mlEndpoint** a **apiKey**:
+V **Azure Machine Learning Studio (Classic)** proveďte následující kroky a získejte hodnoty pro **mlEndpoint** a **apiKey**:
 
-1. V levé nabídce klikněte na **WEBOVÉ SLUŽBY.**
+1. V nabídce vlevo klikněte na položku **webové služby** .
 2. Klikněte na **webovou službu školení** v seznamu webových služeb.
-3. Klikněte na kopírovat vedle textového pole **klíče rozhraní API.** Vložte klíč do schránky do editoru JSON datové továrny.
-4. V **Azure Machine Learning Studio (klasické)** klikněte na odkaz **BATCH SPUŠTĚNÍ.**
-5. Zkopírujte **identifikátor URI požadavku** z části **Požadavek** a vložte jej do editoru JSON datové továrny.   
+3. Klikněte na Kopírovat vedle textového pole **klíč rozhraní API** . Vložte klíč do schránky do editoru JSON Data Factory.
+4. V **Azure Machine Learning Studio (Classic)** klikněte na odkaz **spuštění dávky** .
+5. Zkopírujte **identifikátor URI žádosti** z oddílu **žádosti** a vložte ho do Data Factory Editor JSON.   
 
-### <a name="linked-service-for-azure-ml-updatable-scoring-endpoint"></a>Koncový bod aktualizovatelného vyhodnocování propojené služby pro Azure ML:
-Následující fragment JSON definuje propojenou službu Azure Machine Learning, která odkazuje na nevýchozí aktualizovatelný koncový bod vyhodnocovací webové služby.  
+### <a name="linked-service-for-azure-ml-updatable-scoring-endpoint"></a>Propojená služba pro hodnoticí koncový bod Azure ML:
+Následující fragment kódu JSON definuje propojenou službu Azure Machine Learning, která odkazuje na jiný než výchozí aktualizovatelný koncový bod webové služby bodování.  
 
 ```JSON
 {
@@ -236,8 +236,8 @@ Následující fragment JSON definuje propojenou službu Azure Machine Learning,
 }
 ```
 
-### <a name="placeholder-output-dataset"></a>Zástupná výstupní datová sada:
-Aktivita aktualizovat prostředek Azure ML negeneruje žádný výstup. Azure Data Factory však vyžaduje výstupní datovou sadu řídit plán kanálu. Proto v tomto příkladu používáme fiktivní/zástupnou datovou sadu.  
+### <a name="placeholder-output-dataset"></a>Zástupný znak výstupní datové sady:
+Aktivita prostředku aktualizace Azure ML negeneruje žádný výstup. Azure Data Factory ale vyžaduje výstupní datovou sadu k naplánování plánu kanálu. Proto v tomto příkladu používáme datovou sadu fiktivní/zástupný znak.  
 
 ```JSON
 {
@@ -260,9 +260,9 @@ Aktivita aktualizovat prostředek Azure ML negeneruje žádný výstup. Azure Da
 ```
 
 ### <a name="pipeline"></a>Kanál
-Kanál má dvě aktivity: **AzureMLBatchExecution** a **AzureMLUpdateResource**. Azure ML Batch Execution aktivita bere trénovací data jako vstup a vytvoří soubor iLearner jako výstup. Aktivita vyvolá trénovací webovou službu (trénovací experiment vystavený jako webová služba) se vstupními trénovacími daty a obdrží soubor ilearner z webové služby. Zástupný objekt Blob je pouze fiktivní výstupní datová sada, kterou služba Azure Data Factory vyžaduje ke spuštění kanálu.
+Kanál má dvě aktivity: **AzureMLBatchExecution** a **povinná**. Aktivita provádění dávky Azure ML vezme data školení jako vstup a vytvoří soubor iLearner jako výstup. Tato aktivita vyvolá webovou službu školení (zkušební experiment vydaný jako webovou službu) se vstupními školicími daty a přijme soubor ilearner z webové služby. PlaceholderBlob je pouze fiktivní výstupní datová sada, kterou služba Azure Data Factory vyžaduje ke spuštění kanálu.
 
-![diagram potrubí](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
+![Diagram kanálu](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
 
 ```JSON
 {

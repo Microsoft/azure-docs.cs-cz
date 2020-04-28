@@ -1,6 +1,6 @@
 ---
-title: Principy monitorování úloh ve Službě Azure Stream Analytics
-description: Tento článek popisuje, jak sledovat úlohy Azure Stream Analytics na webu Azure Portal.
+title: Pochopení monitorování úloh v Azure Stream Analytics
+description: Tento článek popisuje, jak monitorovat úlohy Azure Stream Analytics v Azure Portal.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,54 +9,54 @@ ms.topic: conceptual
 ms.date: 06/21/2018
 ms.custom: seodec18
 ms.openlocfilehash: 4e9f90035816269d2d41781be34d0d8080628b12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75431656"
 ---
-# <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Principy monitorování úloh Služby Stream Analytics a monitorování dotazů
+# <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Pochopení Stream Analytics monitorování úloh a postup monitorování dotazů
 
-## <a name="introduction-the-monitor-page"></a>Úvod: Stránka monitoru
-Portál Azure zobrazuje klíčové metriky výkonu, které se dá použít ke sledování a řešení potíží s dotazem a výkonem úlohy. Chcete-li tyto metriky zobrazit, přejděte k úloze Stream Analytics, pro kterou máte zájem, a podívejte se na část **Monitorování** na stránce Přehled.  
+## <a name="introduction-the-monitor-page"></a>Úvod: stránka monitorování
+Klíčové metriky výkonu Azure Portalch ploch, které se dají použít k monitorování a řešení problémů s výkonem a úlohami. Pokud se chcete podívat na tyto metriky, přejděte k Stream Analytics úlohy, které vás zajímá, zobrazit metriky pro a zobrazit část **monitorování** na stránce Přehled.  
 
-![Odkaz pro monitorování úloh služby Stream Analytics](./media/stream-analytics-monitoring/02-stream-analytics-monitoring-block.png)
+![Stream Analytics odkaz monitorování úloh](./media/stream-analytics-monitoring/02-stream-analytics-monitoring-block.png)
 
-Okno se zobrazí takto:
+Okno se zobrazí, jak je znázorněno na následujícím obrázku:
 
-![Řídicí panel monitorování úloh Služby Stream Analytics](./media/stream-analytics-monitoring/01-stream-analytics-monitoring.png)  
+![Řídicí panel monitorování úloh Stream Analytics](./media/stream-analytics-monitoring/01-stream-analytics-monitoring.png)  
 
 ## <a name="metrics-available-for-stream-analytics"></a>Metriky dostupné pro Stream Analytics
 | Metrika                 | Definice                               |
 | ---------------------- | ---------------------------------------- |
-| Zpětné vstupní události       | Počet vstupních událostí, které jsou backlogged. Nenulová hodnota pro tuto metriku znamená, že vaše úloha není schopna držet krok s počtem příchozích událostí. Pokud se tato hodnota pomalu zvyšuje nebo konzistentně nenulová, měli byste horizontální navýšení kapacity úlohy. Další informace naleznete na stránce [Principy a úprava jednotek streamování](stream-analytics-streaming-unit-consumption.md). |
-| Chyby převodu dat | Počet výstupních událostí, které nelze převést na očekávané výstupní schéma. Zásady chyb lze změnit na 'Drop' k přetažení události, které se setkávají s tímto scénářem. |
-| Události včasného vstupu       | Události, jejichž časové razítko aplikace je dřívější než čas jejich příjezdu o více než 5 minut. |
-| Neúspěšné požadavky na funkci | Počet neúspěšných volání funkce Azure Machine Learning (pokud je k dispozici). |
-| Události funkcí        | Počet událostí odeslaných do funkce Azure Machine Learning (pokud je k dispozici). |
-| Požadavky na funkce      | Počet volání funkce Azure Machine Learning (pokud je k dispozici). |
-| Vstupní chyby deserializace       | Počet vstupních událostí, které nelze rekonstruovat.  |
-| Bajty vstupních událostí      | Množství dat přijatých úlohou Stream Analytics v bajtech. To lze použít k ověření, že události jsou odesílány do vstupního zdroje. |
-| Vstupní události           | Počet záznamů rekonstruovaných ze vstupních událostí. Tento počet nezahrnuje příchozí události, které vedou k chybám deserializace. |
-| Přijaté vstupní zdroje       | Počet zpráv přijatých úlohou. Pro Centrum událostí je zpráva jedna EventData. Pro objekt Blob je zpráva jeden objekt blob. Vezměte prosím na vědomí, že vstupní zdroje se počítají před rekonstrukcí. Pokud existují chyby deserializace, vstupní zdroje mohou být větší než vstupní události. V opačném případě může být menší než nebo rovna vstupní události, protože každá zpráva může obsahovat více událostí. |
-| Události pozdního vstupu      | Události, které byly doručeny později než nakonfigurované okno tolerance pozdního doručení. Přečtěte si další informace o [aspektech objednávky událostí Azure Stream Analytics](stream-analytics-out-of-order-and-late-events.md) . |
-| Události mimo pořadí    | Počet událostí přijatých mimo pořadí, které byly vynechány nebo upraveno časové razítko, na základě zásad řazení událostí. To může být ovlivněno konfigurací nastavení Okno tolerance mimo pořadí. |
-| Výstupní události          | Množství dat odeslaných úlohou Stream Analytics do výstupního cíle v počtu událostí. |
-| Chyby za běhu         | Celkový počet chyb souvisejících se zpracováním dotazů (s výjimkou chyb zjištěných při ingestování událostí nebo vykreslování výsledků) |
-| Využití SU %       | Využití jednotek streamování přiřazených k úloze na kartě Měřítko úlohy. Pokud tento ukazatel dosáhne 80 % nebo vyšší, je vysoká pravděpodobnost, že zpracování událostí může být zpožděno nebo zastaveno. |
-| Zpoždění vodoznaku       | Maximální zpoždění vodoznaku ve všech oddílech všech výstupů v úloze. |
+| Nevyřízené události vstupu       | Počet nevyřízených vstupních událostí. Nenulová hodnota této metriky znamená, že vaše úloha nebude moci udržovat počet příchozích událostí. Pokud je tato hodnota pomalá nebo stále nenulová, měli byste škálovat svou úlohu. Další informace najdete v tématu [pochopení a úpravy jednotek streamování](stream-analytics-streaming-unit-consumption.md). |
+| Chyby převodu dat | Počet výstupních událostí, které nebylo možné převést na očekávané výstupní schéma. Chcete-li odstranit události, které se vyskytnou v tomto scénáři, můžete změnit zásady chyb na možnost drop. |
+| Události předčasného vstupu       | Události, jejichž časové razítko aplikace je dřívější než doba jejich příchodu, o více než 5 minut. |
+| Neúspěšné žádosti o funkce | Počet neúspěšných volání funkce Azure Machine Learning (Pokud je k dispozici). |
+| Události funkcí        | Počet událostí odeslaných do funkce Azure Machine Learning (Pokud je k dispozici). |
+| Žádosti o funkce      | Počet volání funkce Azure Machine Learning (Pokud je k dispozici). |
+| Chyby při deserializaci vstupu       | Počet vstupních událostí, které nebylo možné deserializovat.  |
+| Bajty vstupních událostí      | Množství dat přijatých úlohou Stream Analytics v bajtech Tato možnost slouží k ověření, zda jsou události odesílány do vstupního zdroje. |
+| Události vstupu           | Počet záznamů odkonstruovaných ze vstupních událostí. Tento počet neobsahuje příchozí události, jejichž výsledkem jsou chyby deserializace. |
+| Přijaté vstupní zdroje       | Počet zpráv přijatých úlohou. V případě centra událostí je zpráva jedním EventDataem. V případě objektu BLOB je zpráva jedním objektem BLOB. Všimněte si, že vstupní zdroje jsou počítány před deserializací. Pokud dojde k chybám deserializace, mohou být vstupní zdroje větší než vstupní události. V opačném případě může být menší nebo rovno vstupním událostem, protože každá zpráva může obsahovat více událostí. |
+| Zpožděné vstupní události      | Události, které dorazily později než nakonfigurované okno tolerance zpožděného doručení. Přečtěte si další informace o [Azure Stream Analyticsch důležitých informací o pořadí událostí](stream-analytics-out-of-order-and-late-events.md) . |
+| Události mimo pořadí    | Počet událostí, které byly přijaty mimo pořadí, které byly buď vyřazeny nebo předány upravenému časovému razítku, na základě zásad řazení událostí. To může být ovlivněno konfigurací nastavení okna mimo pořadí tolerance. |
+| Výstupní události          | Množství dat zaslaných úlohou Stream Analytics do cíle výstupu v rámci počtu událostí |
+| Běhové chyby         | Celkový počet chyb souvisejících se zpracováním dotazů (kromě chyb nalezených při ingestování událostí nebo výstupních výsledků) |
+| Využití SU%       | Využití jednotek streamování přiřazených k úloze na kartě škálování v rámci úlohy. Pokud by tento ukazatel dosáhl 80% nebo výše, je velmi pravděpodobnost, že zpracování událostí může být zpožděné nebo zastavené. |
+| Zpoždění vodoznaku       | Maximální prodleva vodoznaku napříč všemi oddíly všech výstupů v rámci úlohy. |
 
-Pomocí těchto metrik můžete [sledovat výkon úlohy Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#scenarios-to-monitor). 
+Pomocí těchto metrik můžete [monitorovat výkon Stream Analytics úlohy](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#scenarios-to-monitor). 
 
-## <a name="customizing-monitoring-in-the-azure-portal"></a>Přizpůsobení monitorování na webu Azure Portal
-Typ grafu, zobrazené metriky a časový rozsah můžete upravit v nastavení Upravit graf. Podrobnosti naleznete v tématu [Přizpůsobení monitorování](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
+## <a name="customizing-monitoring-in-the-azure-portal"></a>Přizpůsobení monitorování v Azure Portal
+V nastavení úprav grafu můžete upravit typ grafu, zobrazené metriky a časový rozsah. Podrobnosti najdete v tématu [Postup přizpůsobení monitorování](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
 
-  ![Časový graf sledování dotazu Stream Analytics](./media/stream-analytics-monitoring/08-stream-analytics-monitoring.png)  
+  ![Graf času monitorování Stream Analyticsového dotazu](./media/stream-analytics-monitoring/08-stream-analytics-monitoring.png)  
 
 
-## <a name="latest-output"></a>Nejnovější výstup
-Dalším zajímavým datovým bodem pro sledování vaší úlohy je čas posledního výstupu, který je zobrazen na stránce Přehled.
-Tento čas je čas aplikace (tj. čas pomocí časového razítka z dat události) nejnovějšího výstupu vaší úlohy.
+## <a name="latest-output"></a>Poslední výstup
+Další zajímavou datovou bodem pro monitorování vaší úlohy je čas posledního výstupu, který je zobrazený na stránce Přehled.
+Tentokrát je čas aplikace (tj. čas použití časového razítka z dat události) posledního výstupu úlohy.
 
 ## <a name="get-help"></a>Podpora
 Další podporu naleznete v našem [fóru služby Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)

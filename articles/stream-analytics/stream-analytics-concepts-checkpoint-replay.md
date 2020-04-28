@@ -1,6 +1,6 @@
 ---
-title: Kontrolní bod a koncepty obnovení opětovného přehrání ve službě Azure Stream Analytics
-description: Tento článek popisuje koncepty obnovení úloh se kontrolním bodem a přehráním úloh ve službě Azure Stream Analytics.
+title: Vytváření kontrolních bodů a opětovného přehrání konceptů v Azure Stream Analytics
+description: Tento článek popisuje koncepty a opětovné přehrání konceptů obnovení úloh v Azure Stream Analytics.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,66 +9,66 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: f5bb2b97d7da770828c2f4f03167483ad2044c79
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75426390"
 ---
-# <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Koncepty kontrolního bodu a přehrávání v pracovních úlohách Azure Stream Analytics
-Tento článek popisuje interní kontrolní bod a přehrání koncepty ve službě Azure Stream Analytics a dopad těchto mají na obnovení úlohy. Při každém spuštění úlohy Stream Analytics jsou informace o stavu udržovány interně. Tyto informace o stavu jsou pravidelně ukládány do kontrolního bodu. V některých scénářích informace o kontrolním bodu se používá pro obnovení úlohy, pokud dojde k selhání úlohy nebo upgradu. Za jiných okolností kontrolní bod nelze použít pro obnovení a přehrání je nezbytné.
+# <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Koncepty kontrolního bodu a přehrání v úlohách Azure Stream Analytics
+Tento článek popisuje interní body kontrolního bodu a přehrání v Azure Stream Analytics a dopad na obnovení úlohy. Při každém spuštění úlohy Stream Analytics se informace o stavu udržují interně. Tyto informace o stavu se pravidelně ukládají do kontrolního bodu. V některých scénářích se pro obnovení úlohy použijí informace kontrolního bodu, pokud dojde k selhání nebo upgradu úlohy. V jiných případech se kontrolní bod nedá použít k obnovení a je potřeba ho přehrát znovu.
 
-## <a name="stateful-query-logicin-temporal-elements"></a>Logika stavového dotazu v časových prvcích
-Jednou z jedinečných funkcí úlohy Azure Stream Analytics je provádět stavové zpracování, jako jsou agregace v okně, časová spojení a časové analytické funkce. Každý z těchto operátorů uchovává informace o stavu při spuštění úlohy.Maximální velikost okna pro tyto prvky dotazu je sedm dní. 
+## <a name="stateful-query-logicin-temporal-elements"></a>Logika stavových dotazů v dočasnách prvcích
+Jednou z jedinečných možností Azure Stream Analytics úlohy je provádět stavové zpracování, jako jsou například agregovaná okna, dočasná spojení a dočasné analytické funkce. Každý z těchto operátorů uchovává informace o stavu při spuštění úlohy.Maximální velikost okna pro tyto prvky dotazu je sedm dní. 
 
-Koncept časového okna se zobrazí v několika prvcích dotazu Služby Stream Analytics:
-1. Okenní agregáty (GROUP BY of Tumbling, Hopping, a Posuvné okna)
+Koncept dočasného okna se zobrazí v několika Stream Analyticsch prvcích dotazu:
+1. Okna agregace (seskupení podle bubnu, skákající a posuvných oken)
 
-2. Časová spojení (SPOJENÍ s DATEDIFF)
+2. Dočasná spojení (spojit s DATEDIFF)
 
-3. Časové analytické funkce (ISFIRST, LAST a MAS s LIMIT DURATION)
+3. Dočasné analytické funkce (jako první, poslední a PRODLEVa s dobou omezení)
 
 
-## <a name="job-recovery-from-node-failure-including-os-upgrade"></a>Obnovení úlohy z selhání uzlu, včetně upgradu operačního systému
-Pokaždé, když se spustí úloha Stream Analytics, interně se škálovat tak, aby fungovala napříč více pracovními uzly. Stav každého pracovního uzlu je každých několik minut kontrolním bodem, což pomáhá systému obnovit, pokud dojde k selhání.
+## <a name="job-recovery-from-node-failure-including-os-upgrade"></a>Obnovení úlohy z neúspěšného uzlu, včetně upgradu operačního systému
+Pokaždé, když se spustí úloha Stream Analytics, interně se škáluje tak, aby fungovala v několika pracovních uzlech. Každý stav pracovního uzlu je každé několik minut popsán příslušně, což pomáhá obnovit systém, pokud dojde k selhání.
 
-Někdy může dojít k selhání daného pracovního uzlu nebo může dojít k upgradu operačního systému pro tento pracovní uzel. Chcete-li obnovit automaticky, Stream Analytics získá nový uzel v pořádku a stav předchozího pracovního uzlu se obnoví z nejnovějšího dostupného kontrolního bodu. Chcete-li pokračovat v práci, malé množství přehrání je nutné obnovit stav od okamžiku, kdy je kontrolní bod přijata. Obvykle je mezera obnovení jen několik minut. Pokud je pro úlohu vybráno dostatečné množství jednotek streamování, mělo by být přehrávání dokončeno rychle. 
+V některých případech se může stát, že určitý pracovní uzel selže nebo dojde k upgradu operačního systému pro tento pracovní uzel. K automatickému obnovení Stream Analytics získá nový uzel v pořádku a předchozí stav pracovního uzlu se obnoví z posledního dostupného kontrolního bodu. Aby bylo možné pokračovat v práci, je potřeba pro obnovení stavu z doby, kdy je kontrolní bod proveden, malé množství opakování. Mezera obnovy je obvykle jenom několik minut. Je-li pro úlohu vybrán dostatečný počet jednotek streamování, je třeba provést opětovné přehrání. 
 
-V plně paralelní dotaz čas potřebný k doplnění po selhání pracovního uzlu je úměrná:
+V plně paralelním dotazu je čas potřebný k zachytávání po selhání pracovního uzlu úměrný:
 
-[rychlost vstupních událostí] x [délka mezery] / [počet oddílů zpracování]
+[míra vstupních událostí] x [Délka mezery]/[počet zpracovávaných oddílů]
 
-Pokud někdy zjistíte významné zpoždění zpracování z důvodu selhání uzlu a upgradu operačního systému, zvažte vytvoření dotazu plně paralelní a škálování úlohy přidělit více jednotek streamování. Další informace najdete v [tématu Škálování úlohy Azure Stream Analytics pro zvýšení propustnost .](stream-analytics-scale-jobs.md)
+Pokud někdy obdržíte významné zpoždění při zpracování kvůli selhání uzlu a upgradu operačního systému, zvažte, že dotaz je plně paralelní a škálovat úlohu pro přidělení dalších jednotek streamování. Další informace najdete v tématu [škálování Azure Stream Analytics úlohy za účelem zvýšení propustnosti](stream-analytics-scale-jobs.md).
 
-Aktuální Stream Analytics nezobrazuje přehled, když probíhá tento druh procesu obnovení.
+Pokud tento druh procesu obnovení probíhá, aktuální Stream Analytics nezobrazuje sestavu.
 
 ## <a name="job-recovery-from-a-service-upgrade"></a>Obnovení úlohy z upgradu služby 
-Microsoft příležitostně upgraduje binární soubory, které spouštějí úlohy Stream Analytics ve službě Azure. V těchto časech jsou spuštěné úlohy uživatelů upgradovány na novější verzi a úloha se automaticky restartuje. 
+Microsoft občas provede upgrade binárních souborů, které spouštějí Stream Analytics úlohy ve službě Azure. V této době se spuštěné úlohy uživatelů upgradují na novější verzi a úloha se restartuje automaticky. 
 
-V současné době není zachován formát kontrolního bodu obnovení mezi upgrady. V důsledku toho musí být stav dotazu streamování obnoven zcela pomocí techniky přehrání. Chcete-li povolit úlohy Stream Analytics přehrát přesně stejný vstup z dříve, je důležité nastavit zásady uchovávání informací pro zdrojová data alespoň velikosti oken v dotazu. Pokud tak neučiníte, může dojít k nesprávné nebo částečné výsledky během upgradu služby, protože zdrojová data nemusí být zachována dostatečně daleko zpět zahrnout velikost celého okna.
+V současné době není formát kontrolního bodu obnovení zachován mezi upgrady. V důsledku toho je nutné obnovit stav dotazu streamování výhradně pomocí techniky přehrání. Aby bylo možné, aby Stream Analytics úlohy přehrály přesně stejný vstup než předtím, je důležité nastavit zásady uchovávání dat pro zdrojová data alespoň na velikosti oken v dotazu. V takovém případě může docházet k nesprávným nebo částečným výsledkům během upgradu služby, protože zdrojová data nemusí být dostatečně velká, aby bylo možné zahrnout celou velikost okna.
 
-Obecně je množství potřebného přehrání úměrné velikosti okna vynásobené průměrnou mírou událostí. Například pro úlohu s vstupní rychlostí 1000 událostí za sekundu velikost okna větší než jedna hodina se považuje za velikost velké přehrání. Až jednu hodinu dat může být nutné znovu zpracovat k inicializaci stavu, aby mohl vytvářet úplné a správné výsledky, což může způsobit zpožděný výstup (žádný výstup) po delší dobu. Dotazy bez oken nebo jiných časových `JOIN` `LAG`operátorů, jako je nebo , by měly nulový záznam.
+Velikost potřebného přehrání je obecně úměrná velikosti okna vynásobené průměrnou sazbou události. Například pro úlohu se vstupní rychlostí 1000 událostí za sekundu je velikost okna větší než jedna hodina považována za velikost většího počtu přehrání. Po dobu až jedné hodiny bude nutné znovu zpracovat data, aby bylo možné stav inicializovat, aby bylo možné vytvořit úplné a správné výsledky, což může způsobit zpožděný výstup (žádný výstup) pro delší dobu. Dotazy bez oken nebo jiných dočasných operátorů, jako `JOIN` je `LAG`například nebo, by měly nulové přehrání.
 
-## <a name="estimate-replay-catch-up-time"></a>Odhad doby dohánění přehrání
-Chcete-li odhadnout délku zpoždění z důvodu upgradu služby, můžete postupovat podle této techniky:
+## <a name="estimate-replay-catch-up-time"></a>Odhad doby zachycení přehrání
+Chcete-li odhadnout délku zpoždění v důsledku upgradu služby, můžete postupovat podle tohoto postupu:
 
-1. Načtěte vstupní centrum událostí s dostatečnými daty, která pokryjí největší velikost okna v dotazu, při očekávané rychlosti událostí. Časové razítko událostí by mělo být v blízkosti času nástěnných hodin po celou tuto dobu, jako by se jedná o živý vstupní kanál. Pokud máte například v dotazu 3denní okno, odesílejte události do centra událostí po dobu tří dnů a pokračujte v odesílání událostí. 
+1. Načtěte vstupní centrum událostí s dostatečnými daty, abyste pokryli největší velikost okna v dotazu, a to za očekávanou rychlost události. Časové razítko události by mělo být v průběhu tohoto časového období blízko času, jako by to byl živý vstupní kanál. Pokud máte například v dotazu tříleté okno, pošlete události do centra událostí po dobu tří dní a pokračujte v posílání událostí. 
 
-2. Spusťte úlohu pomocí **funkce Nyní** jako čas zahájení. 
+2. Spusťte úlohu **hned** jako počáteční čas. 
 
-3. Změřte čas mezi časem zahájení a generováním prvního výstupu. Čas je hrubý, kolik zpoždění úlohy vznikne během upgradu služby.
+3. Změřte čas mezi časem spuštění a při vygenerování prvního výstupu. Čas je přibližný, kolik času by úloha během upgradu služby znamenala.
 
-4. Pokud zpoždění je příliš dlouhá, zkuste rozdělit úlohu a zvýšit počet su, takže zatížení je rozložena do více uzlů. Případně zvažte zmenšení velikosti oken v dotazu a proveďte další agregaci nebo jiné stavové zpracování na výstupu vytvořeném úlohou Stream Analytics v následném jímce (například pomocí databáze Azure SQL).
+4. Pokud je zpoždění příliš dlouhé, zkuste vytvořit oddíly úlohy a zvýšit počet služby SUs, aby bylo zatížení rozděleno na více uzlů. Případně zvažte zmenšení velikosti oken v dotazu a proveďte další agregaci nebo jiné stavové zpracování výstupu vypracovaného úlohou Stream Analytics v jímky pro příjem dat (například pomocí Azure SQL Database).
 
-Obecné obavy o stabilitu služeb během upgradu klíčových úloh zvažte spuštění duplicitních úloh ve spárovaných oblastech Azure. Další informace naleznete [v tématu Guarantee Stream Analytics spolehlivost úlohběhem aktualizací služeb](stream-analytics-job-reliability.md).
+Pro všeobecnou pozornost stability služeb během upgradu důležitých úloh je potřeba zvážit spouštění duplicitních úloh v spárovaných oblastech Azure. Další informace najdete v tématu [záruka Stream Analytics spolehlivost úloh během aktualizací služby](stream-analytics-job-reliability.md).
 
-## <a name="job-recovery-from-a-user-initiated-stop-and-start"></a>Obnovení úlohy z uživatelem iniciované zastavení a spuštění
-Chcete-li upravit syntaxi dotazu na úlohu streamování nebo upravit vstupy a výstupy, úloha musí být zastavena, aby bylo možné provést změny a upgradovat návrh úlohy. V takových scénářích, když uživatel zastaví úlohu streamování a spustí ji znovu, scénář obnovení je podobný upgradu služby. 
+## <a name="job-recovery-from-a-user-initiated-stop-and-start"></a>Obnovení úlohy od uživatele, který zahájil zastavení a zahájení
+Chcete-li upravit syntaxi dotazu na úlohu streamování nebo upravit vstupy a výstupy, je nutné úlohu zastavit, aby provedla změny a Upgradoval návrh úlohy. V takových scénářích když uživatel zastaví úlohu streamování a znovu ji spustí, scénář obnovení je podobný upgradu služby. 
 
-Data kontrolního bodu nelze použít pro restartování úlohy iniciované uživatelem. Chcete-li odhadnout zpoždění výstupu během takového restartování, použijte stejný postup, jak je popsáno v předchozí části a použít podobné zmírnění, pokud zpoždění je příliš dlouhá.
+Data kontrolního bodu nelze použít pro uživatele iniciující restart úlohy. K odhadu zpoždění výstupu během restartování použijte stejný postup, jak je popsáno v předchozí části, a pokud je zpoždění příliš dlouhé, použijte podobné zmírnění.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o spolehlivosti a škálovatelnosti naleznete v těchto článcích:
-- [Kurz: Nastavení výstrah pro úlohy Azure Stream Analytics](stream-analytics-set-up-alerts.md)
-- [Škálování úlohy Azure Stream Analytics za účelem zvýšení propustnosti](stream-analytics-scale-jobs.md)
-- [Zaručit spolehlivost úloh Stream Analytics během aktualizací služeb](stream-analytics-job-reliability.md)
+Další informace o spolehlivosti a škálovatelnosti najdete v těchto článcích:
+- [Kurz: nastavení výstrah pro úlohy Azure Stream Analytics](stream-analytics-set-up-alerts.md)
+- [Škálování Azure Stream Analytics úlohy za účelem zvýšení propustnosti](stream-analytics-scale-jobs.md)
+- [Záruka Stream Analytics spolehlivost úloh během aktualizací služby](stream-analytics-job-reliability.md)

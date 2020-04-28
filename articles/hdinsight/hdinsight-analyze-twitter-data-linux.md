@@ -1,6 +1,6 @@
 ---
-title: Analýza dat twitteru pomocí Apache Hive – Azure HDInsight
-description: Přečtěte si, jak používat Apache Hive a Apache Hadoop na HDInsight k transformaci nezpracovaných dat TWitter u tabulky Hive, kterou lze prohledávat.
+title: Analýza dat Twitteru pomocí Apache Hive – Azure HDInsight
+description: Naučte se, jak pomocí Apache Hive a Apache Hadoop v HDInsight transformovat nezpracovaná data TWitteru do tabulky s možností prohledávání.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,63 +9,63 @@ ms.topic: conceptual
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 12/16/2019
 ms.openlocfilehash: f3705170be28f33e5994bd00e363dc7ec7f94642
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75435617"
 ---
-# <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>Analyzujte data twitteru pomocí Apache Hive a Apache Hadoop na HDInsight
+# <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>Analýza dat Twitteru pomocí Apache Hive a Apache Hadoop v HDInsight
 
-Přečtěte si, jak používat [Apache Hive](https://hive.apache.org/) ke zpracování dat na Twitteru. Výsledkem je seznam uživatelů Twitteru, kteří poslali nejvíce tweetů, které obsahují určité slovo.
+Naučte se používat [Apache Hive](https://hive.apache.org/) ke zpracování dat Twitteru. Výsledkem je seznam uživatelů Twitteru, kteří poslali nejvíce tweety, která obsahují určité slovo.
 
 > [!IMPORTANT]  
-> Kroky v tomto dokumentu byly testovány na HDInsight 3.6.
+> Kroky v tomto dokumentu byly testovány v HDInsight 3,6.
 
 ## <a name="get-the-data"></a>Získání dat
 
-Twitter umožňuje načíst data pro každý tweet jako dokument JavaScript Object Notation (JSON) prostřednictvím REST API. [OAuth](https://oauth.net) je vyžadován pro ověřování rozhraní API.
+Twitter umožňuje načíst data pro každý disk ve formátu. v podobě dokumentu JavaScript Object Notation (JSON) prostřednictvím REST API. Pro ověřování do rozhraní API je vyžadován protokol [OAuth](https://oauth.net) .
 
 ### <a name="create-a-twitter-application"></a>Vytvoření aplikace Twitter
 
-1. Ve webovém prohlížeči [https://developer.twitter.com/apps/](https://developer.twitter.com/apps/)se přihlaste k aplikaci . Pokud nemáte účet na Twitteru, vyberte nyní odkaz **Registrace.**
+1. Z webového prohlížeče se přihlaste [https://developer.twitter.com/apps/](https://developer.twitter.com/apps/). Pokud nemáte účet na Twitteru, vyberte odkaz **registrace nyní** .
 
-2. Vyberte **Vytvořit novou aplikaci**.
+2. Vyberte **vytvořit novou aplikaci**.
 
-3. Zadejte **název**, **popis**, **web**. Můžete vytvořit adresu URL pro pole **Web.** V následující tabulce jsou uvedeny některé ukázkové hodnoty, které mají být používány:
+3. Zadejte **název**, **Popis**, **Web**. Pro pole **Web** můžete vytvořit adresu URL. V následující tabulce jsou uvedeny některé ukázkové hodnoty, které se mají použít:
 
    | Pole | Hodnota |
    |--- |--- |
-   | Name (Název) |Aplikace MyHDInsight |
-   | Popis |Aplikace MyHDInsight |
+   | Název |MyHDInsightApp |
+   | Popis |MyHDInsightApp |
    | Web |`https://www.myhdinsightapp.com` |
 
-4. Vyberte **Ano, souhlasím**a pak vyberte **Vytvořit aplikaci Twitter**.
+4. Vyberte **Ano,** souhlasím a pak vyberte **vytvořit aplikaci Twitter**.
 
-5. Vyberte kartu **Oprávnění.** Výchozí oprávnění je **jen pro čtení**.
+5. Vyberte kartu **oprávnění** . Výchozí oprávnění je jen **pro čtení**.
 
-6. Vyberte kartu **Klíče a přístupové tokeny.**
+6. Vyberte kartu **klíče a přístupové tokeny** .
 
 7. Vyberte **vytvořit přístupový token**.
 
-8. V pravém horním rohu stránky vyberte **Testovat OAuth.**
+8. V pravém horním rohu stránky vyberte **test OAuth** .
 
-9. Poznamenejte si **spotřebitelský klíč**, **tajný klíč příjemce**, **přístupový token**a tajný klíč **tokenu aplikace Access**.
+9. Zapište **klíč příjemce**, **tajný klíč příjemce**, **přístupový token**a **tajný klíč přístupového tokenu**.
 
 ### <a name="download-tweets"></a>Stáhnout tweety
 
-Následující kód Pythonu stáhne 10 000 tweetů z Twitteru a uloží je do souboru s názvem **tweets.txt**.
+Následující kód Pythonu stáhne 10 000 tweety z Twitteru a uloží je do souboru s názvem **tweety. txt**.
 
 > [!NOTE]  
-> Následující kroky se provádějí v clusteru HDInsight, protože Python je již nainstalován.
+> Následující kroky se provádějí v clusteru HDInsight, protože Python je už nainstalovaný.
 
-1. Pomocí [příkazu ssh](./hdinsight-hadoop-linux-use-ssh-unix.md) se připojte ke clusteru. Upravte níže uvedený příkaz nahrazením názvu clusteru názvem clusteru a zadejte příkaz:
+1. Připojte se ke clusteru pomocí [příkazu SSH](./hdinsight-hadoop-linux-use-ssh-unix.md) . Níže uvedený příkaz upravte tak, že ho nahradíte názvem clusteru a pak zadáte tento příkaz:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. K instalaci [tweepy](https://www.tweepy.org/), [indikátoru průběhu](https://pypi.python.org/pypi/progressbar/2.2)a dalších požadovaných balíčků použijte následující příkazy:
+1. Pomocí následujících příkazů nainstalujte [Tweepy](https://www.tweepy.org/), [indikátor průběhu](https://pypi.python.org/pypi/progressbar/2.2)a další požadované balíčky:
 
    ```bash
    sudo apt install python-dev libffi-dev libssl-dev
@@ -84,7 +84,7 @@ Následující kód Pythonu stáhne 10 000 tweetů z Twitteru a uloží je do so
    nano gettweets.py
    ```
 
-1. Upravte níže uvedený `Your consumer secret`kód `Your consumer key` `Your access token`nahrazením `Your access token secret` , , , a s příslušnými informacemi z vaší aplikace twitter. Poté vložte upravený kód jako obsah **gettweets.py** souboru.
+1. Níže uvedený kód nahraďte `Your consumer secret`nahrazením `Your consumer key`, `Your access token`, a `Your access token secret` s příslušnými informacemi z vaší aplikace Twitter. Pak vložte upravený kód jako obsah souboru **gettweets.py** .
 
    ```python
    #!/usr/bin/python
@@ -141,24 +141,24 @@ Následující kód Pythonu stáhne 10 000 tweetů z Twitteru a uloží je do so
    ```
 
     > [!TIP]  
-    > Upravte filtr témat na posledním řádku a sledujte oblíbená klíčová slova. Použití klíčových slov populární v době spuštění skriptu umožňuje rychlejší sběr dat.
+    > Upravte témata filtr na posledním řádku, abyste mohli sledovat oblíbená klíčová slova. Používání klíčových slov oblíbená v době spuštění skriptu umožňuje rychlejší zachytávání dat.
 
-1. Soubor uložte pomocí **kláves Ctrl + X**a potom pomocí **y.**
+1. Použijte **kombinaci kláves CTRL + X**a potom kliknutím na **Y** soubor uložte.
 
-1. Ke spuštění souboru a stažení tweetů použijte následující příkaz:
+1. Pomocí následujícího příkazu spusťte soubor a stáhněte tweety:
 
     ```bash
     python gettweets.py
     ```
 
-    Zobrazí se indikátor průběhu. To se počítá až 100% jako tweets jsou staženy.
+    Zobrazí se indikátor průběhu. Počítá až 100% po stažení tweety.
 
    > [!NOTE]  
-   > Pokud trvá dlouho, než indikátor průběhu posune, měli byste změnit filtr tak, aby sledoval aktuální témata. Když existuje mnoho tweets o tématu ve filtru, můžete rychle získat 100 tweets potřebné.
+   > Pokud má indikátor průběhu trvat dlouhou dobu, měli byste změnit filtr tak, aby sledoval témata týkající se trendů. Pokud existuje mnoho tweety o tématu ve vašem filtru, můžete rychle získat 100 tweety, který potřebujete.
 
-### <a name="upload-the-data"></a>Nahrání dat
+### <a name="upload-the-data"></a>Nahrajte data
 
-Chcete-li data nahrát do úložiště HDInsight, použijte následující příkazy:
+Pokud chcete nahrát data do úložiště HDInsight, použijte následující příkazy:
 
 ```bash
 hdfs dfs -mkdir -p /tutorials/twitter/data
@@ -169,7 +169,7 @@ Tyto příkazy ukládají data do umístění, ke kterému mají přístup všec
 
 ## <a name="run-the-hiveql-job"></a>Spuštění úlohy HiveQL
 
-1. Pomocí následujícího příkazu vytvořte soubor obsahující příkazy [HiveQL:](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
+1. Pomocí následujícího příkazu vytvořte soubor obsahující příkazy [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) :
 
    ```bash
    nano twitter.hql
@@ -283,17 +283,17 @@ Tyto příkazy ukládají data do umístění, ke kterému mají přístup všec
    WHERE (length(json_response) > 500);
    ```
 
-1. Stisknutím **kláves Ctrl + X**a stisknutím **klávesy Y** soubor uložte.
+1. Stiskněte klávesy **CTRL + X**a potom stisknutím klávesy **Y** soubor uložte.
 
-1. Ke spuštění hiveql obsaženého v souboru použijte následující příkaz:
+1. Pomocí následujícího příkazu spusťte HiveQL obsaženou v souboru:
 
    ```bash
    beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -i twitter.hql
    ```
 
-    Tento příkaz spustí soubor **twitter.hql.** Po dokončení dotazu se `jdbc:hive2//localhost:10001/>` zobrazí výzva.
+    Tento příkaz spustí soubor **Twitter. HQL** . Po dokončení dotazu se zobrazí `jdbc:hive2//localhost:10001/>` výzva.
 
-1. V řádku s příkazem řádku ověřte, zda byla data importována, pomocí následujícího dotazu:
+1. Z příkazového řádku Beeline použijte následující dotaz k ověření, že data byla importována:
 
    ```hiveql
    SELECT name, screen_name, count(1) as cc
@@ -303,14 +303,14 @@ Tyto příkazy ukládají data do umístění, ke kterému mají přístup všec
    ORDER BY cc DESC LIMIT 10;
    ```
 
-    Tento dotaz vrátí maximálně 10 tweets, které obsahují slovo **Azure** v textu zprávy.
+    Tento dotaz vrátí maximálně 10 tweety, které obsahují slovo **Azure** v textu zprávy.
 
     > [!NOTE]  
-    > Pokud jste změnili `gettweets.py` filtr ve skriptu, nahraďte **Azure** jedním z filtrů, které jste použili.
+    > Pokud jste filtr změnili ve `gettweets.py` skriptu, nahraďte **Azure** jedním z filtrů, které jste použili.
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučili jste se transformovat nestrukturovanou datovou sadu JSON do strukturované tabulky [Apache Hive.](https://hive.apache.org/) Další informace o Hive na HDInsight, najdete v následujících dokumentech:
+Zjistili jste, jak transformovat nestrukturované datové sady JSON do strukturované [Apache Hive](https://hive.apache.org/) tabulky. Další informace o podregistru v HDInsight najdete v následujících dokumentech:
 
 * [Začínáme se službou HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [Analýza dat zpoždění letu pomocí HDInsight](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
+* [Analýza dat zpoždění letů pomocí HDInsight](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)

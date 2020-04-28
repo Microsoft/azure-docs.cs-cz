@@ -1,5 +1,5 @@
 ---
-title: Konfigurace zásad autorizace klíče obsahu pomocí portálu Azure | Dokumenty společnosti Microsoft
+title: Nakonfigurujte zásady autorizace klíče obsahu pomocí Azure Portal | Microsoft Docs
 description: Tento článek ukazuje, jak nakonfigurovat zásady autorizace pro klíč obsahu.
 services: media-services
 documentationcenter: ''
@@ -15,56 +15,56 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 8580bafd4d68ef6567b09fefcaa01c682ae2cafe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74968786"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>Konfigurace zásad autorizace klíče obsahu
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
 ## <a name="overview"></a>Přehled
- Pomocí mediálních služeb Azure můžete doručovat datové proudy MPEG-DASH, Smooth Streaming a HTTP Live Streaming (HLS) chráněné standardem Advanced Encryption Standard (AES) pomocí 128bitových šifrovacích klíčů nebo [správy digitálních práv PlayReady (DRM).](https://www.microsoft.com/playready/overview/) Pomocí služby Media Services můžete také dodávat datové proudy DASH šifrované pomocí widevine DRM. Technologie PlayReady i Widevine jsou šifrované podle specifikace Common Encryption (ISO/IEC CENC 23001-7).
+ Azure Media Services můžete použít k doručování datových proudů MPEG-POMLČKa, Smooth Streaming a HTTP Live Streaming (HLS) chráněných pomocí standard AES (Advanced Encryption Standard) (AES) pomocí 128 bitových šifrovacích klíčů nebo [technologie PlayReady DRM (Správa digitálních práv)](https://www.microsoft.com/playready/overview/). Pomocí Media Services můžete také doručovat PŘERUŠOVANé datové proudy šifrované pomocí Widevine DRM. Technologie PlayReady i Widevine jsou šifrované podle specifikace Common Encryption (ISO/IEC CENC 23001-7).
 
-Služba Media Services také poskytuje službu doručování klíčů a licencí, ze které mohou klienti získat klíče AES nebo licence PlayReady/Widevine k přehrávání šifrovaného obsahu.
+Media Services taky poskytuje službu pro doručování klíčů a licencí, ze které můžou klienti získat klíče AES nebo licence PlayReady/Widevine, aby mohli přehrávat zašifrovaný obsah.
 
-Tento článek ukazuje, jak pomocí portálu Azure nakonfigurovat zásady autorizace klíče obsahu. Klíč lze později použít k dynamickému šifrování obsahu. V současné době můžete šifrovat formáty HLS, MPEG-DASH a Smooth Streaming. Nelze šifrovat progresivní stahování.
+Tento článek ukazuje, jak použít Azure Portal ke konfiguraci zásad autorizace klíče obsahu. Klíč lze později použít k dynamickému šifrování vašeho obsahu. V současné době můžete šifrovat formáty HLS, MPEG-SPOJOVNÍK a Smooth Streaming. Progresivní stahování nemůžete šifrovat.
 
-Když přehrávač požaduje datový proud, který je nastaven na dynamicky šifrovaný, používá služba Media Services nakonfigurovaný klíč k dynamickému šifrování obsahu pomocí šifrování AES nebo DRM. K dešifrování streamu si přehrávač vyžádá klíč ze služby doručování klíčů. Chcete-li zjistit, zda je uživatel oprávněn získat klíč, služba vyhodnotí zásady autorizace, které jste zadali pro klíč.
+Když hráč požádá o datový proud, který je nastaven na dynamický šifrování, Media Services používá nakonfigurovaný klíč k dynamickému šifrování vašeho obsahu pomocí šifrování AES nebo DRM. K dešifrování streamu si přehrávač vyžádá klíč ze služby doručování klíčů. Aby bylo možné zjistit, zda je uživatel autorizován pro získání klíče, služba vyhodnotí zásady autorizace, které jste zadali pro klíč.
 
-Pokud plánujete mít více klíčů obsahu nebo chcete zadat jinou adresu URL služby doručování klíčů nebo licencí než službu doručování klíčů Mediální služby, použijte rozhraní API media services .NET SDK nebo REST. Další informace naleznete v tématu:
+Pokud máte v plánu používat více klíčů obsahu nebo chcete zadat jinou adresu URL služby pro doručování licencí, než je služba doručování klíčů Media Services, použijte rozhraní Media Services .NET SDK nebo rozhraní REST API. Další informace naleznete v tématu:
 
 * [Konfigurace zásad autorizace klíče obsahu pomocí sady Media Services .NET SDK](media-services-dotnet-configure-content-key-auth-policy.md)
-* [Konfigurace zásad autorizace klíče obsahu pomocí rozhraní REST API služby Media Services](media-services-rest-configure-content-key-auth-policy.md)
+* [Konfigurace zásad autorizace klíče obsahu pomocí Media Services REST API](media-services-rest-configure-content-key-auth-policy.md)
 
-### <a name="some-considerations-apply"></a>Platí některé aspekty
-* Po vytvoření účtu Media Services se do vašeho účtu přidá výchozí koncový bod streamování ve stavu Zastaveno. Chcete-li spustit streamování obsahu a využít výhod dynamického balení a dynamického šifrování, musí být koncový bod streamování ve stavu Spuštěno. 
-* Datový zdroj musí obsahovat sadu souborů MP4 s adaptivním datovým tokem nebo adaptivní datové rychlosti Plynulé streamování. Další informace naleznete [v tématu Kódování datového zdroje](media-services-encode-asset.md).
-* Služba doručování klíčů ukládá do mezipaměti ContentKeyAuthorizationPolicy a jeho související objekty (možnosti zásad a omezení) po dobu 15 minut. Můžete vytvořit ContentKeyAuthorizationPolicy a určit použití omezení tokenu, otestovat a potom aktualizovat zásady na otevřené omezení. Tento proces trvá přibližně 15 minut, než se zásada přepne na otevřenou verzi.
-* Koncový bod streamování mediální služby nastaví hodnotu hlavičky CORS Access-Control-Allow-Origin\*v odpovědi kontroly před výstupem jako zástupný znak " ". Tato hodnota funguje dobře s většinou hráčů, včetně Azure Media Player, Roku a JWPlayer a další. Někteří hráči, kteří používají soubor dash.js, však nefungují, protože s režimem pověření nastaveným na "zahrnout", XMLHttpRequest v jejich dash.js nepovoluje zástupný znak "\*" jako hodnotu Access-Control-Allow-Origin. Jako řešení tohoto omezení v dash.js, pokud hostujete klienta z jedné domény, media services můžete určit, že doména v záhlaví odpovědi kontroly před výstupem. Pro pomoc otevřete lístek podpory prostřednictvím portálu Azure.
+### <a name="some-considerations-apply"></a>Platí některé předpoklady.
+* Po vytvoření účtu Media Services se do vašeho účtu přidá výchozí koncový bod streamování ve stavu Zastaveno. Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamického šifrování, musí být koncový bod streamování ve stavu spuštěno. 
+* Vaše Asset musí obsahovat sadu adaptivních přenosů rychlostmi nebo souborů s adaptivní přenosovou rychlostí Smooth Streaming. Další informace najdete v tématu [kódování assetu](media-services-encode-asset.md).
+* Služba doručení klíčů ukládá do mezipaměti ContentKeyAuthorizationPolicy a související objekty (možnosti zásad a omezení) po dobu 15 minut. Můžete vytvořit ContentKeyAuthorizationPolicy a určit, že se má použít omezení tokenu, otestovat ho a pak aktualizovat zásadu na otevřené omezení. Tento proces trvá zhruba 15 minut, než se zásada přepne na otevřenou verzi.
+* Koncový bod streamování Media Services nastaví hodnotu hlavičky Access-Control-Allow-Origin v odpovědi na kontrolu před výstupem jako zástupný znak\*"". Tato hodnota dobře funguje u většiny hráčů, včetně Azure Media Player, roku a JWPlayer a dalších. Někteří hráči, kteří používají pomlčku. js, ale nefungují, protože s režimem přihlašovacích údajů nastaveným na include, XMLHttpRequest ve své pomlčkě. js\*nepovoluje zástupný znak "" jako hodnotu možnosti Access-Control-Allow-Origin. Jako alternativní řešení pro toto omezení v typu pomlčka. js, pokud hostuje klienta z jedné domény, Media Services může zadat tuto doménu v hlavičce odpovědi na předběžné služby. Pokud potřebujete pomoc, otevřete lístek podpory prostřednictvím Azure Portal.
 
 ## <a name="configure-the-key-authorization-policy"></a>Konfigurace zásad autorizace klíčů
-Chcete-li nakonfigurovat zásady autorizace klíče, vyberte stránku **OCHRANA OBSAHU.**
+Pokud chcete nakonfigurovat zásady autorizace klíčů, vyberte stránku **Content Protection** .
 
-Služba Media Services podporuje několik způsobů ověřování uživatelů, kteří požadují klíčové klíče. Zásady autorizace klíče obsahu mohou mít omezení autorizace otevření, tokenu nebo IP adresy. (IP lze nakonfigurovat pomocí rest nebo .NET SDK.)
+Media Services podporuje více způsobů ověřování uživatelů, kteří vytvářejí požadavky na klíč. Zásady autorizace klíče obsahu můžou mít omezení autorizace otevření, tokenu nebo protokolu IP. (IP se dá nakonfigurovat pomocí REST nebo sady .NET SDK.)
 
 ### <a name="open-restriction"></a>Otevřené omezení
-Otevřené omezení znamená, že systém doručí klíč každému, kdo požádá o klíč. Toto omezení může být užitečné pro účely testování.
+Otevřené omezení znamená, že systém doručí klíč všem, kdo vytvoří klíčovou žádost. Toto omezení může být užitečné pro účely testování.
 
 ![OpenPolicy][open_policy]
 
 ### <a name="token-restriction"></a>Omezení tokenu
-Chcete-li zvolit zásadu s omezeným přístupem tokenu, vyberte tlačítko **TOKEN.**
+Chcete-li zvolit zásadu omezeného tokenu, vyberte tlačítko **token** .
 
-Zásady omezené token musí být doprovázentoken vydaný službou tokenu zabezpečení (STS). Media Services podporuje tokeny ve formátu jednoduchého webového tokenu ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) a JSON Web Token (JWT). Další informace naleznete v tématu [JWT authentication](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/).
+Zásady omezeného tokenu musí být doplněny tokenem vydaným službou tokenů zabezpečení (STS). Media Services podporuje tokeny ve formátech jednoduchých webových tokenů ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) a JSON web token (Jwt). Další informace najdete v tématu [ověřování JWT](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/).
 
-Mediální služby neposkytují STS. Můžete vytvořit vlastní STS vydávat tokeny. Služba STS musí být nakonfigurována tak, aby vytvořila token podepsaný zadaným klíčem a vydala deklarace identity, které jste zadali v konfiguraci omezení tokenu. Pokud je token platný a deklarace identity v tokenu odpovídají deklaracím nakonfigurovaným pro klíč obsahu, vrátí služba doručování klíčů Mediální služby šifrovací klíč klientovi.
+Media Services neposkytuje službu STS. Můžete vytvořit vlastní STS pro vydávání tokenů. Služba STS musí být nakonfigurovaná tak, aby vytvořila token podepsaný pomocí zadaného klíče a vydávala deklarace identity, které jste zadali v konfiguraci omezení tokenu. Pokud je token platný a deklarace identity v tokenu odpovídají nastavením nakonfigurovaným pro klíč obsahu, služba doručování Media Services Key vrátí šifrovací klíč klientovi.
 
-Při konfiguraci zásad s omezeným přístupem tokenu je nutné zadat primární ověřovací klíč, vystavitel a parametry publika. Primární ověřovací klíč obsahuje klíč, se kterým byl token podepsán. Vystavitel je STS, který vydává token. Cílová skupina (někdy označovaná jako obor) popisuje záměr tokenu nebo prostředku, ke kterému token autorizuje přístup. Služba doručování klíčů Mediální služby ověří, zda tyto hodnoty v tokenu odpovídají hodnotám v šabloně.
+Když konfigurujete zásady s omezením tokenu, musíte zadat primární ověřovací klíč, Vystavitel a parametry cílové skupiny. Primární ověřovací klíč obsahuje klíč, pomocí kterého byl token podepsán. Vystavitel je STS, který vydává token. Cílová skupina (někdy označovaná jako obor) popisuje účel tokenu nebo prostředku, ke kterému token opravňuje přístup. Služba doručení Media Services Key ověřuje, že se tyto hodnoty v tokenu shodují s hodnotami v šabloně.
 
 ### <a name="playready"></a>PlayReady
-Při ochraně obsahu pomocí služby PlayReady je jednou z věcí, které je třeba zadat v zásadách autorizace, řetězec XML, který definuje šablonu licence PlayReady. Ve výchozím nastavení jsou nastaveny následující zásady:
+Když chráníte obsah pomocí PlayReady, je jedním z věcí, které potřebujete zadat v zásadách autorizace, řetězec XML, který definuje šablonu licence PlayReady. Ve výchozím nastavení jsou nastaveny následující zásady:
 
     <PlayReadyLicenseResponseTemplate xmlns:i="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1">
           <LicenseTemplates>
@@ -78,11 +78,11 @@ Při ochraně obsahu pomocí služby PlayReady je jednou z věcí, které je tř
           </LicenseTemplates>
         </PlayReadyLicenseResponseTemplate>
 
-Můžete vybrat tlačítko **XML zásad importu** a poskytnout jiný kód XML, který odpovídá schématu XML definovanému v [přehledu šablony licence PlayReady služby Media Services](media-services-playready-license-template-overview.md).
+Můžete vybrat tlačítko **Importovat zásady XML** a zadat jiný kód XML, který odpovídá schématu XML definovanému v [přehledu šablony licencí Media Services PlayReady](media-services-playready-license-template-overview.md).
 
 ## <a name="additional-notes"></a>Další poznámky
 
-* Widevine je služba poskytovaná společností Google Inc. a podléhá podmínkám služeb a zásadám ochrany osobních údajů společnosti Google, Inc.
+* Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
 
 ## <a name="next-steps"></a>Další kroky
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

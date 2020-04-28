@@ -1,65 +1,65 @@
 ---
-title: Poradce při potížích s připojením – Hyperscale (Citus) – databáze Azure pro PostgreSQL
-description: Zjistěte, jak řešit problémy s připojením k Azure Database for PostgreSQL – Hyperscale (Citus)
-keywords: postgresql připojení,připojovací řetězec,problémy s připojením,přechodná chyba,chyba připojení
+title: Řešení potíží s připojením – Citus (-Scale) – Azure Database for PostgreSQL
+description: Přečtěte si, jak řešit potíže s připojením Azure Database for PostgreSQL – Citus (škálování)
+keywords: připojení PostgreSQL, připojovací řetězec, problémy s připojením, přechodná chyba, Chyba připojení
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/8/2019
 ms.openlocfilehash: c064aca484f85c44dada9888012140784a96863f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74977501"
 ---
-# <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---hyperscale-citus"></a>Řešení problémů s připojením k databázi Azure pro PostgreSQL – hyperškálování (Citus)
+# <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---hyperscale-citus"></a>Řešení potíží s připojením pro Azure Database for PostgreSQL – škálování (Citus)
 
-Problémy s připojením mohou být způsobeny několika věcmi, například:
+Problémy s připojením mohou být způsobeny několika způsoby, například:
 
 * Nastavení brány firewall
 * Časový limit připojení
-* Nesprávné přihlašovací informace
-* Pro skupinu serverů bylo dosaženo limitu připojení.
+* Nesprávné přihlašovací údaje
+* Byl dosažen limit počtu připojení pro skupinu serverů.
 * Problémy s infrastrukturou služby
-* Servisní údržba
-* Převzetí selhání uzlu koordinátora na nový hardware
+* Údržba služby
+* Převzetí služeb při selhání uzlem koordinátora na novém hardwaru
 
-Obecně platí, že problémy s připojením k hyperškálování lze klasifikovat takto:
+Obecně platí, že problémy s připojením k škálovatelnému škálování můžou být klasifikovány takto:
 
-* Přechodné chyby (krátkodobé nebo přerušované)
+* Přechodné chyby (krátkodobé nebo občasné)
 * Trvalé nebo nepřechodné chyby (chyby, které se pravidelně opakují)
 
-## <a name="troubleshoot-transient-errors"></a>Poradce při potížích s přechodným chybám
+## <a name="troubleshoot-transient-errors"></a>Řešení přechodných chyb
 
-K přechodným chybám dochází z mnoha důvodů. Mezi nejběžnější patří údržba systému, chyba s hardwarem nebo softwarem a upgrady virtuálních jader uzlu koordinátora.
+K přechodným chybám dochází z několika důvodů. Nejběžnější zahrnuje údržbu systému, chybu s hardwarem nebo softwarem a vCore upgrady uzlů koordinátora.
 
-Povolení vysoké dostupnosti pro uzly skupiny serverů Hyperscale může tyto typy problémů automaticky zmírnit. Aplikace by však měla být stále připravena krátce ztratit připojení. Také jiné události může trvat déle zmírnit, například když velké transakce způsobí dlouhotrvající obnovení.
+Povolení vysoké dostupnosti pro uzly skupin serverů ve velkém měřítku může automaticky zmírnit tyto typy problémů. Vaše aplikace by ale měla být stále připravená, aby krátce ztratila připojení. I další události mohou trvat delší dobu, například když velká transakce způsobí dlouhotrvající obnovení.
 
-### <a name="steps-to-resolve-transient-connectivity-issues"></a>Postup řešení problémů s přechodným připojením
+### <a name="steps-to-resolve-transient-connectivity-issues"></a>Postup řešení potíží s přechodným připojením
 
-1. Zkontrolujte [řídicí panel služby Microsoft Azure](https://azure.microsoft.com/status) pro všechny známé výpadky, ke kterým došlo během doby, ve které aplikace hlásila chyby.
-2. Aplikace, které se připojují ke cloudové službě, jako je Hyperscale (Citus), by měly očekávat přechodné chyby a řádně reagovat. Například aplikace by měly implementovat logiku opakování pro zpracování těchto chyb namísto jejich navařování jako chyby aplikace pro uživatele.
-3. Jakmile se skupina serverů blíží omezením prostředků, mohou se chyby jevit jako přechodné problémy s připojením. Zvýšení paměti RAM uzlu nebo přidání pracovních uzlů a vyvažování dat může pomoci.
-4. Pokud problémy s připojením přetrvávají nebo trvají déle než 60 sekund nebo se stávají více než jednou denně, zadejte žádost o podporu Azure výběrem **možnosti Získat podporu** na webu [podpory Azure.](https://azure.microsoft.com/support/options)
+1. Podívejte se na [řídicí panel služby Microsoft Azure](https://azure.microsoft.com/status) pro všechny známé výpadky, ke kterým došlo v době, kdy aplikace nahlásila chyby.
+2. Aplikace, které se připojují ke cloudové službě, jako je Citus (s měřítkem), by měly očekávat přechodné chyby a řádně reagovat. Například aplikace by měly implementovat logiku opakování pro zpracování těchto chyb namísto jejich zpřístupnění jako chyby aplikací uživatelům.
+3. Když skupina serverů přistupuje k omezením prostředků, můžou se chyby zdát jako problémy s přechodným připojením. Zvýšení velikosti paměti RAM uzlů nebo přidávání pracovních uzlů a vyrovnávání dat může pomáhat.
+4. Pokud potíže s připojením trvají nebo trvají déle než 60 sekund nebo pokud se k tomu dojde více než jednou denně, zastavte žádost o podporu Azure výběrem možnosti **získat podporu** na webu [podpory Azure](https://azure.microsoft.com/support/options) .
 
-## <a name="troubleshoot-persistent-errors"></a>Poradce při potížích s trvalými chybami
+## <a name="troubleshoot-persistent-errors"></a>Řešení trvalých chyb
 
-Pokud se aplikaci trvale nedaří připojit k hyperscale (Citus), nejčastější příčinou jsou chybná konfigurace brány firewall nebo chyba uživatele.
+Pokud se aplikace trvale nepřipojí ke škálování (Citus), nejběžnější příčiny jsou chybná konfigurace brány firewall nebo chyba uživatele.
 
-* Konfigurace brány firewall uzlu koordinátora: Ujistěte se, že je brána firewall serveru Hyperscale nakonfigurována tak, aby umožňovala připojení z vašeho klienta, včetně proxy serverů a bran.
-* Konfigurace brány firewall klienta: Brána firewall klienta musí umožňovat připojení k databázovému serveru. Některé brány firewall vyžadují povolení nejen aplikace podle názvu, ale povolení IP adres a portů serveru.
-* Chyba uživatele: Zkontrolujte připojovací řetězec. Pravděpodobně jste zadali chybně zadané parametry, jako je název serveru. Připojovací řetězce pro různé jazykové architektury a psql najdete na webu Azure Portal. Přejděte na stránku **Připojovací řetězce** ve skupině serverů Hyperscale (Citus). Také mějte na paměti, že Hyperscale (Citus) clustery mají pouze jednu databázi a jeho předdefinovaný název je **citus**.
+* Konfigurace brány firewall uzlu koordinátora: Ujistěte se, že je brána firewall serveru pro škálování na úrovni serveru nakonfigurovaná tak, aby povolovala připojení z vašeho klienta, včetně proxy serverů a bran.
+* Konfigurace brány firewall klienta: Brána firewall klienta musí umožňovat připojení k vašemu databázovému serveru. Některé brány firewall vyžadují, aby povolily nejen aplikaci podle názvu, ale povolily IP adresy a porty serveru.
+* Chyba uživatele: dvakrát ověřte připojovací řetězec. Můžete mít netypové parametry, jako je název serveru. Připojovací řetězce můžete najít pro různé jazykové architektury a psql v Azure Portal. Přejít na stránku **připojovací řetězce** ve skupině serverů Citus (vlastní měřítko). Pamatujte také na to, že clustery Citus () mají pouze jednu databázi a její předdefinovaný název je **Citus**.
 
-### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Postup řešení přetrvávajících problémů s připojením
+### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Postup řešení potíží s trvalým připojením
 
-1. Nastavte [pravidla brány firewall](howto-hyperscale-manage-firewall-using-portal.md) tak, aby umožňovala IP adresu klienta. Pouze pro dočasné testovací účely nastavte pravidlo brány firewall, které používá 0.0.0.0 jako počáteční adresu IP a jako koncovou adresu IP 255.255.255. Toto pravidlo otevře server všem IP adresám. Pokud pravidlo vyřeší problém s připojením, odeberte ho a vytvořte pravidlo brány firewall pro přiměřeně omezenou adresu IP nebo rozsah adres.
-2. U všech bran firewall mezi klientem a Internetem zkontrolujte, zda je port 5432 otevřený pro odchozí připojení.
+1. Nastavte [pravidla brány firewall](howto-hyperscale-manage-firewall-using-portal.md) tak, aby povolovala IP adresu klienta. Pro účely dočasného testování nastavte pravidlo brány firewall pomocí direktivy 0.0.0.0 jako počáteční IP adresu a jako koncovou IP adresu použijte 255.255.255.255. Toto pravidlo otevře Server pro všechny IP adresy. Pokud pravidlo vyřeší problém s připojením, odeberte ho a vytvořte pravidlo brány firewall pro odpovídající omezené IP adresy nebo rozsah adres.
+2. U všech bran firewall mezi klientem a internetem se ujistěte, že je port 5432 otevřený pro odchozí připojení.
 3. Ověřte připojovací řetězec a další nastavení připojení.
-4. Zkontrolujte stav služby na řídicím panelu.
+4. Projděte si stav služby na řídicím panelu.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Naučte se koncepty [pravidel brány firewall v Databázi Azure pro PostgreSQL – Hyperscale (Citus)](concepts-hyperscale-firewall-rules.md)
-* Podívejte se, jak [spravovat pravidla brány firewall pro Azure Database for PostgreSQL – Hyperscale (Citus)](howto-hyperscale-manage-firewall-using-portal.md)
+* Seznamte se s koncepty [pravidel brány firewall v Azure Database for PostgreSQL – Citus (škálování)](concepts-hyperscale-firewall-rules.md)
+* Přečtěte si téma [Správa pravidel brány firewall pro Azure Database for PostgreSQL – Citus (škálování)](howto-hyperscale-manage-firewall-using-portal.md) .

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: b832831a2483b11a7a3c1942dd79065e8be65bf9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75360714"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Webové role a role pracovních procesů Pythonu při použití nástrojů Python Tools for Visual Studio
@@ -323,7 +323,7 @@ V okně výstupu uvidíte průběh a pak se zobrazí okno Protokoly aktivit Micr
 Pár minut bude probíhat nasazování a pak už vám na Azure začne běžet webová role a role pracovního procesu.
 
 ### <a name="investigate-logs"></a>Prozkoumání protokolů
-Po spuštění virtuálního počítače cloudové služby a instalaci Pythonu si můžete prohlédnou protokoly a hledat případné zprávy o neúspěchu. Tyto protokoly jsou umístěny ve složce **C:\Resources\Directory\\{role}\LogFiles.** Soubor **PrepPython.err.txt** obsahuje alespoň jednu chybu, protože se skript pokusil zjistit, zda je nainstalován Python, a soubor **PipInstaller.err.txt** může obsahovat zprávu ohledně zastaralé verze programu pip.
+Po spuštění virtuálního počítače cloudové služby a instalaci Pythonu si můžete prohlédnou protokoly a hledat případné zprávy o neúspěchu. Tyto protokoly se nacházejí ve složce **C:\Resources\Directory\\{role} \LogFiles** . Soubor **PrepPython.err.txt** obsahuje alespoň jednu chybu, protože se skript pokusil zjistit, zda je nainstalován Python, a soubor **PipInstaller.err.txt** může obsahovat zprávu ohledně zastaralé verze programu pip.
 
 ## <a name="next-steps"></a>Další kroky
 Další podrobné informace o práci s webovými rolemi a rolemi pracovních procesů v nástrojích Python Tools for Visual Studio najdete v dokumentaci k těmto nástrojům:
@@ -332,10 +332,10 @@ Další podrobné informace o práci s webovými rolemi a rolemi pracovních pro
 
 Další podrobnosti o používání služeb Azure z vaší webové role a role pracovního procesu, například pomocí služeb Azure Storage nebo Azure Service Bus, najdete v následujících článcích:
 
-* [Služba blob][Blob Service]
+* [Blob Service][Blob Service]
 * [Služba Table service][Table Service]
 * [Služba front][Queue Service]
-* [Fronty služby Service Bus][Service Bus Queues]
+* [Fronty Service Bus][Service Bus Queues]
 * [Témata služby Service Bus][Service Bus Topics]
 
 <!--Link references-->

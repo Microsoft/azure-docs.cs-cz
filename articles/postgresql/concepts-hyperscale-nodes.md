@@ -1,6 +1,6 @@
 ---
-title: Uzly – hyperškálování (Citus) – databáze Azure pro PostgreSQL
-description: Seznamte se s dvěma typy uzlů, koordinátorem a pracovníky, ve skupině serverů v Azure Database for PostgreSQL.
+title: Uzly – Citus (Velká měřítko) – Azure Database for PostgreSQL
+description: Přečtěte si o dvou typech uzlů, koordinátora a pracovní procesy ve skupině serverů v Azure Database for PostgreSQL.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,21 +8,21 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 04ebb4298f8a5398b0aa9921d740e3eaacfd8e11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74973998"
 ---
-# <a name="nodes-in-azure-database-for-postgresql--hyperscale-citus"></a>Uzly v databázi Azure pro PostgreSQL – hyperškálování (Citus)
+# <a name="nodes-in-azure-database-for-postgresql--hyperscale-citus"></a>Uzly v Azure Database for PostgreSQL – Citus (škálování)
 
-Typ hostování Hyperscale (Citus) umožňuje Azure Database pro servery PostgreSQL (nazývané uzly) vzájemně koordinovat v architektuře "sdílené nic". Uzly ve skupině serverů společně uchovávat více dat a používat více jader procesoru, než by bylo možné na jednom serveru. Architektura také umožňuje databázi škálovat přidáním dalších uzlů do skupiny serverů.
+Typ hostingu Citus () Azure Database for PostgreSQL umožňuje, aby se servery (označované jako uzly) mezi sebou vzájemně koordinovaly v architektuře "Shared Nothing". Uzly ve skupině serverů společně uchovávají více dat a využívají více jader procesoru, než by bylo možné na jednom serveru. Architektura také umožňuje škálování databáze přidáním dalších uzlů do skupiny serverů.
 
 ## <a name="coordinator-and-workers"></a>Koordinátor a pracovníci
 
-Každá skupina serverů má uzel koordinátora a více pracovníků. Aplikace odesílají své dotazy do uzlu koordinátora, který je předává příslušným pracovníkům a shromažďuje jejich výsledky. Aplikace se nemohou připojit přímo k pracovníkům.
+Každá skupina serverů má uzel koordinátora a více pracovních procesů. Aplikace odesílají své dotazy do uzlu koordinátora, který je přenáší na příslušné pracovníky a shromažďuje jejich výsledky. Aplikace se nemůžou přímo připojit k pracovníkům.
 
-Pro každý dotaz koordinátor buď směruje do jednoho pracovního uzlu nebo paralelizuje přes několik v závislosti na tom, zda požadovaná data žije na jednom uzlu nebo více. Koordinátor rozhoduje o tom, co má dělat, nahlédnutím do tabulek metadat. Tyto tabulky sledují názvy DNS a stav uzlů pracovníka a distribuci dat mezi uzly.
+U každého dotazu ho koordinátor směruje buď na jeden pracovní uzel, nebo ho parallelizes napříč několika v závislosti na tom, jestli jsou požadovaná data umístěná v jednom uzlu nebo víc. Koordinátor rozhodne o tom, co dělat v rámci konzultací s tabulkami metadat. Tyto tabulky sledují názvy DNS a stav pracovních uzlů a distribuci dat napříč uzly.
 
 ## <a name="next-steps"></a>Další kroky
-- Zjistěte, jak uzly ukládají [distribuovaná data](concepts-hyperscale-distributed-data.md)
+- Informace o tom, jak uzly ukládají [distribuovaná data](concepts-hyperscale-distributed-data.md)

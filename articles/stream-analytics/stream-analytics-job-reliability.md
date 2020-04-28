@@ -1,6 +1,6 @@
 ---
-title: Vyhněte se přerušení min. služby v azure stream analytics úlohy
-description: Tento článek popisuje pokyny k tomu, aby vaše úlohy Služby Stream Analytics byly odolné.
+title: Vyhněte se přerušením služeb v Azure Stream Analytics úlohách
+description: Tento článek popisuje pokyny k tomu, jak Stream Analytics úlohy upgradu odolné.
 author: jseb225
 ms.author: sidram
 ms.reviewer: mamccrea
@@ -9,30 +9,30 @@ ms.topic: conceptual
 ms.date: 06/21/2019
 ms.custom: seodec18
 ms.openlocfilehash: d2d21e081b274bd985c48dac91fff5203a6b5b8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75425991"
 ---
-# <a name="guarantee-stream-analytics-job-reliability-during-service-updates"></a>Zaručit spolehlivost úloh Stream Analytics během aktualizací služeb
+# <a name="guarantee-stream-analytics-job-reliability-during-service-updates"></a>Záruka Stream Analytics spolehlivost úloh během aktualizací služby
 
-Součástí plně spravované služby je schopnost rychle zavádět nové funkce a vylepšení služeb. V důsledku toho stream analytics může mít aktualizace služby nasadit na týdenní (nebo častější) základě. Bez ohledu na to, kolik testování se provádí, stále existuje riziko, že existující spuštěná úloha může přerušit v důsledku zavedení chyby. Pokud provozujete kritické úlohy, je třeba se těmto rizikům vyhnout. Toto riziko můžete snížit podle modelu **[spárované oblasti](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)** Azure. 
+Součástí plně spravované služby je schopnost zavádět nové funkce a vylepšení služby při rychlém tempu. V důsledku toho Stream Analytics možné mít aktualizaci Service Update na týden (nebo častější) bázi. Bez ohledu na to, kolik je testování provedeno, je stále riziko, že existující spuštěná úloha může být přerušena z důvodu zavedení chyby. Pokud spouštíte důležité úlohy, je nutné jim zabránit v těchto rizicích. Toto riziko můžete snížit následujícím modelem **[spárované oblasti](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)** Azure. 
 
-## <a name="how-do-azure-paired-regions-address-this-concern"></a>Jak spárované oblasti Azure řeší tento problém?
+## <a name="how-do-azure-paired-regions-address-this-concern"></a>Jak se tyto informace týkají spárovaných oblastí Azure?
 
-Stream Analytics zaručuje, že úlohy ve spárovaných oblastech jsou aktualizovány v samostatných dávkách. V důsledku toho existuje dostatečná časová prodleva mezi aktualizacemi pro identifikaci potenciálních problémů a jejich nápravu.
+Stream Analytics garantuje, že se úlohy v spárovaných oblastech aktualizují v samostatných dávkách. Výsledkem je dostatečné časové rozmezí mezi aktualizacemi k identifikaci potenciálních problémů a jejich napravení.
 
-_S výjimkou střední Indie_ (jejíž spárovaná oblast, Jižní Indie, nemá přítomnost služby Stream Analytics), by k nasazení aktualizace do Služby Stream Analytics nedošlo současně v sadě spárovaných oblastí. Nasazení ve více oblastech **ve stejné skupině** může dojít **současně**.
+_S výjimkou střed Indie_ (jejichž spárovaná oblast, Jižní Indie, nemá Stream Analytics přítomnost), nasazení aktualizace Stream Analytics se v sadě spárovaných oblastí neprojeví současně. Nasazení ve více oblastech **ve stejné skupině** se může vyskytovat **ve stejnou dobu**.
 
-Článek o **[dostupnosti a spárovaných oblastech](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)** obsahuje nejaktuálnější informace o tom, které oblasti jsou spárovány.
+Článek o **[dostupnosti a spárovaných oblastech](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)** obsahuje nejaktuálnější informace o párování oblastí.
 
-Doporučuje se nasadit identické úlohy do obou spárovaných oblastí. Potom byste měli [sledovat tyto úlohy,](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#scenarios-to-monitor) abyste byli upozorněni, když se stane něco neočekávaného. Pokud jedna z těchto úloh skončí po aktualizaci služby Stream Analytics ve [stavu Selhání,](https://docs.microsoft.com/azure/stream-analytics/job-states) můžete se obrátit na zákaznickou podporu a zjistit hlavní příčinu. Měli byste také převzetí služeb při selhání všechny následné spotřebitele na výstupu úlohy v pořádku.
+Doporučuje se nasazovat stejné úlohy do obou spárovaných oblastí. [Tyto úlohy](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#scenarios-to-monitor) byste pak měli sledovat, abyste byli informováni, když dojde k neočekávanému problému. Pokud dojde k [selhání](https://docs.microsoft.com/azure/stream-analytics/job-states) jedné z těchto úloh po aktualizaci služby Stream Analytics, obraťte se na zákaznickou podporu, která vám může pomoci identifikovat hlavní příčinu. Měli byste také převzít služby při selhání na výstup úlohy v pořádku.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Úvod do streamové analýzy](stream-analytics-introduction.md)
+* [Úvod do Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme se Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování úloh Stream Analytics](stream-analytics-scale-jobs.md)
-* [Odkaz na dotaz ového jazyka Stream Analytics](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Odkaz na rozhraní REST API správy Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Referenční dokumentace jazyka Stream Analytics dotazů](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Referenční informace o REST API správy Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)

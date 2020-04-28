@@ -5,10 +5,10 @@ ms.date: 12/18/2019
 ms.topic: article
 ms.reviewer: coborn
 ms.openlocfilehash: 7e9af5c501b58f6828360ee280440ea85698bf16
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75387505"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Nasazení šablony řešení Ethereem pro kontrolu pravopisu pro účely úřadu v Azure
@@ -555,7 +555,7 @@ Chcete-li kompilovat, nasazovat a testovat inteligentní kontrakty, je zde něko
 
 V následujícím příkladu vytvoříte jednoduchou inteligentní kontrakt. Truffle můžete použít ke kompilaci a nasazení inteligentních kontraktů do vaší sítě blockchain. Po nasazení zavoláte funkci inteligentního kontraktu prostřednictvím transakce.
 
-#### <a name="prerequisites"></a>Požadované součásti
+#### <a name="prerequisites"></a>Požadavky
 
 * Nainstalujte [Python 2.7.15](https://www.python.org/downloads/release/python-2715/). Python je potřeba pro Truffle a Web3. Vyberte možnost instalovat, pokud chcete zahrnout Python do vaší cesty.
 * Nainstalujte Truffle v 5.0.5 `npm install -g truffle@v5.0.5`. Truffle vyžaduje instalaci několika nástrojů, včetně [Node. js](https://nodejs.org), [Gitu](https://git-scm.com/). Další informace najdete v [dokumentaci k Truffle](https://github.com/trufflesuite/truffle).

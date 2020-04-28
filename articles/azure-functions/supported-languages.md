@@ -1,53 +1,53 @@
 ---
-title: Podporované jazyky ve funkcích Azure
-description: Zjistěte, které jazyky jsou podporovány (GA) a které jsou experimentální nebo ve verzi Preview.
+title: Podporované jazyky v Azure Functions
+description: Zjistěte, které jazyky jsou podporované (GA) a které jsou experimentální nebo ve verzi Preview.
 ms.topic: conceptual
 ms.date: 11/27/2019
 ms.openlocfilehash: 029ea753439dca3093bf214a5adfb6d58a1fe567
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74942252"
 ---
-# <a name="supported-languages-in-azure-functions"></a>Podporované jazyky ve funkcích Azure
+# <a name="supported-languages-in-azure-functions"></a>Podporované jazyky v Azure Functions
 
-Tento článek vysvětluje úrovně podpory nabízené pro jazyky, které můžete použít s funkcemi Azure.
+Tento článek vysvětluje úrovně podpory poskytované pro jazyky, které můžete používat s Azure Functions.
 
 ## <a name="levels-of-support"></a>Úrovně podpory
 
 Existují tři úrovně podpory:
 
-* **Obecně dostupné (GA)** - Plně podporované a schválené pro použití ve výrobě.
-* **Náhled** - Zatím není podporován, ale očekává se, že v budoucnu dosáhne stavu GA.
-* **Experimentální** - není podporována a může být opuštěna v budoucnu; žádná záruka případného náhledu nebo stavu GA.
+* **Všeobecně dostupná (GA)** – plně podporované a schválené pro použití v produkčním prostředí.
+* **Verze Preview** – zatím není podporovaná, ale očekává se, že bude v budoucnu dostupný stav GA.
+* **Experimentální** – nepodporované a můžou být v budoucnu opuštěné; bez záruky na konečný stav Preview nebo GA.
 
-## <a name="languages-by-runtime-version"></a>Jazyky podle verze za běhu 
+## <a name="languages-by-runtime-version"></a>Jazyky podle verze modulu runtime 
 
-K dispozici jsou [tři verze runtime Azure Functions.](functions-versions.md) V následující tabulce jsou uvedeny jazyky, které jsou podporovány v každé verzi modulu runtime.
+K dispozici jsou [tři verze modulu runtime Azure Functions](functions-versions.md) . Následující tabulka uvádí, které jazyky jsou podporovány v každé verzi modulu runtime.
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
 ### <a name="experimental-languages"></a>Experimentální jazyky
 
-Experimentální jazyky ve verzi 1.x nejsou dobře škálovat a nepodporují všechny vazby.
+Experimentální jazyky verze 1. x se neškálují správně a nepodporují všechny vazby.
 
-Nepoužívejte experimentální funkce pro nic, na co se spoléháte, protože pro ně neexistuje žádná oficiální podpora. Případy podpory by neměly být otevřeny pro problémy s experimentálními jazyky. 
+Nepoužívejte experimentální funkce pro cokoli, co jste se spoléhali, protože pro ně není oficiální podpora k dispozici. Pro problémy s experimentálními jazyky by se neměly otevírat případy podpory. 
 
-Novější runtime verze nepodporují experimentální jazyky. Podpora pro nové jazyky je přidána pouze v případě, že jazyk může být podporován v produkčním prostředí. 
+Novější verze modulu runtime nepodporují experimentální jazyky. Podpora pro nové jazyky se přidá jenom v případě, že je možné jazyk v produkčním prostředí podporovat. 
 
-### <a name="language-extensibility"></a>Rozšiřitelnost jazyka
+### <a name="language-extensibility"></a>Jazyková rozšíření
 
-Počínaje verzí 2.x je runtime navržen tak, aby nabízel [rozšiřitelnost jazyka](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility). Jazyky JavaScript a Java v běhu 2.x jsou vytvořeny s touto rozšiřitelností.
+Počínaje verzí 2. x je modul runtime navržený tak, aby nabízel [jazykové rozšíření](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility). Jazyky JavaScript a Java v modulu runtime 2. x jsou sestaveny s tímto rozšířením.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o vývoji funkcí v podporovaných jazycích naleznete v následujících zdrojích:
+Další informace o vývoji funkcí v podporovaných jazycích najdete v následujících zdrojích informací:
 
-+ [Odkaz na vývojáře knihovny tříd C#](functions-dotnet-class-library.md)
-+ [Odkaz na vývojáře skriptů Jazyka C#](functions-reference-csharp.md)
-+ [Referenční příručka pro vývojáře v Jazyce Java](functions-reference-java.md)
-+ [Referenční příručka pro vývojáře javascriptu](functions-reference-node.md)
-+ [Odkaz na vývojáře prostředí PowerShell](functions-reference-powershell.md)
-+ [Odkaz na vývojáře pythonu](functions-reference-python.md)
-+ [Odkaz vývojáře jazyka TypeScript](functions-reference-node.md#typescript)
++ [Referenční dokumentace pro vývojáře knihovny tříd C#](functions-dotnet-class-library.md)
++ [Referenční informace pro vývojáře skriptů v jazyce C#](functions-reference-csharp.md)
++ [Referenční dokumentace pro vývojáře v jazyce Java](functions-reference-java.md)
++ [JavaScript – reference pro vývojáře](functions-reference-node.md)
++ [Referenční informace pro vývojáře PowerShellu](functions-reference-powershell.md)
++ [Referenční dokumentace pro vývojáře v Pythonu](functions-reference-python.md)
++ [Referenční dokumentace pro vývojáře TypeScript](functions-reference-node.md#typescript)

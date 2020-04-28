@@ -1,7 +1,7 @@
 ---
-title: Ukázkové zásady správy rozhraní Azure API – použití OAuth2 pro autorizaci mezi bránou a back-endem
+title: Ukázková zásada služby Azure API Management – použití OAuth2 k autorizaci mezi bránou a back-endu
 titleSuffix: Azure API Management
-description: Ukázka zásad správy rozhraní Azure API – ukazuje, jak používat OAuth2 pro autorizaci mezi bránou a back-endem. Ukazuje, jak získat token přístupu z AAD a předat ho do back-endu.
+description: Ukázka zásad Azure API Management – ukazuje, jak používat OAuth2 k autorizaci mezi bránou a back-endu. Ukazuje, jak získat token přístupu z AAD a předat ho do back-endu.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,23 +14,23 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: 09d51759c07e7dacc25d5b5ffce9698831c37a7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75442351"
 ---
-# <a name="use-oauth2-for-authorization-between-the-gateway-and-a-backend"></a>Použití OAuth2 pro autorizaci mezi bránou a back-endem
+# <a name="use-oauth2-for-authorization-between-the-gateway-and-a-backend"></a>Použití OAuth2 k autorizaci mezi bránou a back-endu
 
-Tento článek ukazuje ukázku zásad správy rozhraní Azure, která ukazuje, jak používat OAuth2 pro autorizaci mezi bránou a back-endem. Ukazuje, jak získat token přístupu z AAD a předat ho do back-endu. 
+Tento článek ukazuje ukázku zásad služby Azure API Management, která demonstruje použití OAuth2 k autorizaci mezi bránou a back-endu. Ukazuje, jak získat token přístupu z AAD a předat ho do back-endu. 
 
-Chcete-li nastavit nebo upravit kód zásad, postupujte podle kroků popsaných v části [Nastavení nebo úpravu zásady](../set-edit-policies.md). Další příklady naleznete v [tématu ukázky zásad](../policy-samples.md).
+Pokud chcete nastavit nebo upravit kód zásady, postupujte podle kroků popsaných v tématu [nastavení nebo úprava zásad](../set-edit-policies.md). Další příklady najdete v tématu [ukázky zásad](../policy-samples.md).
 
-Následující skript používá vlastnosti, které se zobrazují v {{property}}. Další informace o vlastnostech a jejich použití v zásadách správy rozhraní API najdete v [tomto](../api-management-howto-properties.md) tématu.
+Následující skript používá vlastnosti, které se zobrazují v {{Property}}. Další informace o vlastnostech a jejich použití v zásadách API Management najdete v [tomto](../api-management-howto-properties.md) tématu.
  
 ## <a name="policy"></a>Zásada
 
-Vložte kód do **příchozího** bloku.
+Vložte kód do **vstupního** bloku.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Get OAuth2 access token from AAD and forward it to the backend.policy.xml)]
   
