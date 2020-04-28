@@ -6,38 +6,38 @@ ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
 ms.openlocfilehash: d3a323a28d92e2a5834b65316d61c7d53a42aacf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78183770"
 ---
-Chcete-li zaregistrovat aplikaci ve vašem tenantovi Azure AD B2C, můžete použít aktuální prostředí **aplikací** nebo naše nové jednotné **registrace aplikací (Preview).** [Další informace o novém prostředí](https://aka.ms/b2cappregintro).
+K registraci aplikace ve vašem tenantovi Azure AD B2C můžete použít aktuální prostředí **aplikací** nebo naše nové sjednocené **Registrace aplikací (Preview)** . [Další informace o novém prostředí](https://aka.ms/b2cappregintro).
 
 #### <a name="applications"></a>[Aplikace](#tab/applications/)
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
-1. V horní nabídce vyberte filtr **Directory + subscription** a pak vyberte adresář, který obsahuje vašeho klienta Azure AD B2C.
-1. V levé nabídce vyberte **Azure AD B2C**. Nebo vyberte **Všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
-1. Vyberte **Aplikace**a pak vyberte **Přidat**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
+1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
+1. Vyberte **aplikace**a pak vyberte **Přidat**.
 1. Zadejte název aplikace. Například *nativeapp1*.
-1. V **seznamu Nativní klient**vyberte možnost **Ano**.
-1. Zadejte **identifikátor URI vlastního přesměrování** s jedinečným schématem. Například, `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`. Při výběru identifikátoru URI přesměrování jsou důležité dvě důležité aspekty:
-    * **Jedinečný**: Schéma identifikátoru URI přesměrování musí být jedinečné pro každou aplikaci. V `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`příkladu `com.onmicrosoft.contosob2c.exampleapp` je schéma. Tento vzor by měl být dodržován. Pokud dvě aplikace sdílejí stejné schéma, má uživatel možnost zvolit aplikaci. Pokud uživatel zvolí nesprávně, přihlášení se nezdaří.
-    * **Dokončení**: Identifikátor URI přesměrování musí mít schéma i cestu. Cesta musí obsahovat alespoň jedno lomítko za doménou. Například `//oauth/` funguje `//oauth` při selhání. Nezahrnujte do identifikátoru URI speciální znaky, například podtržítka.
+1. V případě **nativního klienta**vyberte **Ano**.
+1. Zadejte **vlastní identifikátor URI přesměrování** s jedinečným schématem. Například, `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`. Pro výběr identifikátoru URI přesměrování existují dva důležité informace:
+    * **Jedinečné**: schéma identifikátoru URI pro přesměrování musí být pro každou aplikaci jedinečné. V příkladu `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` `com.onmicrosoft.contosob2c.exampleapp` je schéma. Tento vzor by měl následovat. Pokud dvě aplikace sdílejí stejné schéma, uživateli je dána možnost zvolit aplikaci. Pokud uživatel zvolí nesprávně, přihlášení se nezdařilo.
+    * **Dokončeno**: identifikátor URI pro přesměrování musí mít schéma i cestu. Cesta musí po doméně obsahovat alespoň jedno lomítko. Například funguje v `//oauth/` `//oauth` případě, že se nezdařila. Nepoužívejte speciální znaky v identifikátoru URI, například podtržítka.
 1. Vyberte **Vytvořit**.
 
-#### <a name="app-registrations-preview"></a>[Registrace aplikací (náhled)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
-1. V horní nabídce vyberte filtr **Directory + subscription** a pak vyberte adresář, který obsahuje vašeho klienta Azure AD B2C.
-1. V levé nabídce vyberte **Azure AD B2C**. Nebo vyberte **Všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
-1. Vyberte **Registrace aplikací (preview)** a pak vyberte **Nová registrace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
+1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
+1. Vyberte **Registrace aplikací (Preview)** a pak vyberte **Nová registrace**.
 1. Zadejte **název** aplikace. Například *nativeapp1*.
-1. V části **Podporované typy účtů**vyberte Účty v **libovolném organizačním adresáři nebo v libovolném poskytovateli identity**.
-1. V části **Identifikátor URI přesměrování**vyberte pomocí rozevíracího seznamu Veřejný **klient/nativní (mobilní & plochy).**
-1. Zadejte identifikátor URI přesměrování s jedinečným schématem. Například, `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`. Při výběru identifikátoru URI přesměrování jsou důležité dvě důležité aspekty:
-    * **Jedinečný**: Schéma identifikátoru URI přesměrování musí být jedinečné pro každou aplikaci. V `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`příkladu `com.onmicrosoft.contosob2c.exampleapp` je schéma. Tento vzor by měl být dodržován. Pokud dvě aplikace sdílejí stejné schéma, má uživatel možnost zvolit aplikaci. Pokud uživatel zvolí nesprávně, přihlášení se nezdaří.
-    * **Dokončení**: Identifikátor URI přesměrování musí mít schéma i cestu. Cesta musí obsahovat alespoň jedno lomítko za doménou. Například `//oauth/` funguje `//oauth` při selhání. Nezahrnujte do identifikátoru URI speciální znaky, například podtržítka.
-1. V **části Oprávnění**zaškrtněte políčko *Udělit oprávnění správce k oprávněním openid a offline_access.*
+1. V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři nebo jakémkoli poskytovateli identity**.
+1. V části **identifikátor URI pro přesměrování**vyberte v rozevíracím seznamu možnost **veřejný klient/nativní (mobilní & Desktop)**.
+1. Zadejte identifikátor URI přesměrování s jedinečným schématem. Například, `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`. Pro výběr identifikátoru URI přesměrování existují dva důležité informace:
+    * **Jedinečné**: schéma identifikátoru URI pro přesměrování musí být pro každou aplikaci jedinečné. V příkladu `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` `com.onmicrosoft.contosob2c.exampleapp` je schéma. Tento vzor by měl následovat. Pokud dvě aplikace sdílejí stejné schéma, uživateli je dána možnost zvolit aplikaci. Pokud uživatel zvolí nesprávně, přihlášení se nezdařilo.
+    * **Dokončeno**: identifikátor URI pro přesměrování musí mít schéma i cestu. Cesta musí po doméně obsahovat alespoň jedno lomítko. Například funguje v `//oauth/` `//oauth` případě, že se nezdařila. Nepoužívejte speciální znaky v identifikátoru URI, například podtržítka.
+1. V části **oprávnění**zaškrtněte políčko *udělit souhlas správcům oprávnění OpenID a offline_access* .
 1. Vyberte **Zaregistrovat**.

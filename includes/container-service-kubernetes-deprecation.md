@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 11/27/2018
 ms.author: iainfou
 ms.openlocfilehash: 858bc0814bc798cec31fb2be22608122a95c09db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77651520"
 ---
 > [!WARNING]
->  **Služba Azure Container Service (ACS) se zastaralá. Do acs nejsou přidávány žádné nové funkce nebo funkce. Všechna prostředí API, prostředí portálu, příkazy příkazu k příkazu příkazu příkazu a dokumentace jsou označeny jako zastaralé.**
+>  **Azure Container Service (ACS) se už nepoužívá. Do služby ACS se přidávají žádné nové funkce ani funkce. Všechna rozhraní API, možnosti portálu, příkazy CLI a dokumentace jsou označena jako zastaralá.**
 >
-> V roce 2017 jsme představili službu Azure Kubernetes Service (AKS) pro zjednodušení správy, nasazení a provozu Kubernetes. Pokud používáte orchestrátor Kubernetes, migrujte do 31. Chcete-li začít, [přečtěte si informace o migraci do služby Azure Kubernetes Service](../articles/aks/aks-migration.md).
+> V 2017 jsme představili službu Azure Kubernetes Service (AKS), která zjednodušuje správu Kubernetes, nasazení a operace. Pokud používáte nástroj Kubernetes Orchestrator, proveďte prosím migraci na AKS od 31. ledna 2020. Informace o tom, jak začít, najdete v tématu [migrace do služby Azure Kubernetes](../articles/aks/aks-migration.md).
 >
-> Další informace najdete v oznámení [o vyřazení služby Azure Container Service v Azure.com](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/).
+> Další informace najdete v tématu [Azure Container Service oznámení o zastaralosti na Azure.com](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/).

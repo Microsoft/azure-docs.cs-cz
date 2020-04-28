@@ -1,6 +1,6 @@
 ---
 title: Co je riziko? Azure AD Identity Protection
-description: Vysvětlení rizika v azure ad identity ochrany
+description: Vysvětlení rizika v Azure AD Identity Protection
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -12,60 +12,60 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 775ff6b3ba003bed22ccd5a42cb4da005c4dbb69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79253686"
 ---
 # <a name="what-is-risk"></a>Co je riziko?
 
-Detekce rizik v Azure AD Identity Protection zahrnují všechny identifikované podezřelé akce související s uživatelskými účty v adresáři.
+Detekce rizik v Azure AD Identity Protection zahrnuje všechny identifikované podezřelé akce týkající se uživatelských účtů v adresáři.
 
-Ochrana identity poskytuje organizacím přístup k výkonným prostředkům, aby tyto podezřelé akce rychle viděly a reagovaly na ně. 
+Identity Protection poskytuje organizacím přístup k výkonným prostředkům, abyste mohli rychle sledovat tyto podezřelé akce a reagovat na ně. 
 
-![Přehled zabezpečení zobrazující rizikové uživatele a přihlášení](./media/concept-identity-protection-risks/identity-protection-security-overview.png)
+![Přehled zabezpečení znázorňující rizikové uživatele a přihlášení](./media/concept-identity-protection-risks/identity-protection-security-overview.png)
 
-## <a name="risk-types-and-detection"></a>Typy rizik a detekce
+## <a name="risk-types-and-detection"></a>Typy a detekce rizik
 
-Existují dva typy **rizika Uživatel** a **přihlášení** a dva typy detekce nebo výpočtu **v reálném čase** a **offline**.
+Existují dva typy rizikového **uživatele** a **přihlášení** a dva typy detekce nebo výpočtu v **reálném čase** a v **režimu offline**.
 
 ### <a name="user-risk"></a>Riziko uživatele
 
-Riziko uživatele představuje pravděpodobnost, že je ohrožena daná identita nebo účet. 
+Riziko uživatele představuje pravděpodobnost zneužití dané identity nebo účtu. 
 
-Tato rizika se počítají offline pomocí interních a externích zdrojů analýzy hrozeb společnosti Microsoft, včetně výzkumných pracovníků v oblasti zabezpečení, odborníků v oblasti vymáhání práva, bezpečnostních týmů společnosti Microsoft a dalších důvěryhodných zdrojů.
+Tato rizika se počítají v režimu offline pomocí interních a externích zdrojů informací o hrozbách Microsoftu, včetně výzkumných pracovníků v oblasti zabezpečení, odborníků na prosazování zákonů, týmů zabezpečení v Microsoftu a dalších důvěryhodných zdrojů.
 
 | Detekce rizik | Popis |
 | --- | --- |
-| Uniklá pověření | Tento typ zjišťování rizika označuje, že byla nevrácena platná pověření uživatele. Když počítačoví zločinci ohrožují platná hesla legitimních uživatelů, často tyto přihlašovací údaje sdílejí. Toto sdílení se obvykle provádí zveřejněním na tmavém webu, vkládáním stránek nebo obchodováním a prodejem pověření na černém trhu. Když služba microsoft leaked credentials získává přihlašovací údaje uživatelů z tmavého webu, vkládání webů nebo jiných zdrojů, jsou kontrolovány proti aktuálníplatná pověření uživatelů Azure AD najít platné shody. |
-| Azure AD threat intelligence | Tento typ zjišťování rizik a označuje aktivitu uživatele, která je pro daného uživatele neobvyklá nebo je konzistentní se známými vzory útoků založenými na interních a externích zdrojích analýzy hrozeb společnosti Microsoft. |
+| Nevrácená pověření | Tento typ detekce rizika označuje, že došlo k úniku platných přihlašovacích údajů uživatele. Pokud cybercriminals ohrozit platná hesla legitimních uživatelů, často tyto přihlašovací údaje sdílejí. Toto sdílení se obvykle provádí publikováním veřejně na tmavém webu, vložením webů nebo obchodováním a prodejem přihlašovacích údajů na černém trhu. Když služba nevrácených přihlašovacích údajů od Microsoftu Získá přihlašovací údaje uživatele z tmavého webu, vloží weby nebo jiné zdroje, vyhledá platné shody pomocí aktuálních platných přihlašovacích údajů uživatelů Azure AD. |
+| Analýza hrozeb v Azure AD | Tento typ detekce rizika označuje aktivitu uživatele, která je pro daného uživatele neobvyklá nebo je konzistentní se známými vzorci útoku na základě interních a externích zdrojů analýzy hrozeb Microsoftu. |
 
 ### <a name="sign-in-risk"></a>Riziko přihlášení
 
-Riziko přihlášení představuje pravděpodobnost, že daný požadavek na ověření není autorizován vlastníkem identity. 
+Riziko přihlášení představuje pravděpodobnost, že daný požadavek na ověření není autorizovaný vlastníkem identity. 
 
-Tato rizika lze vypočítat v reálném čase nebo vypočítat offline pomocí interních a externích zdrojů analýzy hrozeb společnosti Microsoft, včetně výzkumných pracovníků v oblasti zabezpečení, odborníků v oblasti vymáhání práva, bezpečnostních týmů společnosti Microsoft a dalších důvěryhodných zdrojů.
+Tato rizika se dají vypočítat v reálném čase nebo vypočítat v režimu offline pomocí interních a externích zdrojů informací o hrozbách Microsoftu, včetně bezpečnostních výzkumníků, profesionálů v oblasti vynucování zákonů, týmů zabezpečení v Microsoftu a dalších důvěryhodných zdrojů.
 
 | Detekce rizik | Typ detekce | Popis |
 | --- | --- | --- |
-| Anonymní IP adresa | Reálný čas | Tento typ detekce rizik označuje přihlášení z anonymní IP adresy (například prohlížeče Tor nebo anonymní VPN). Tyto IP adresy jsou obvykle používány subjekty, kteří chtějí skrýt své přihlašovací telemetrie (IP adresa, umístění, zařízení atd.) pro potenciálně škodlivý záměr. |
-| Atypické cestování | Offline | Tento typ zjišťování rizika identifikuje dvě přihlášení pocházející z geograficky vzdálených umístění, kde alespoň jedno z umístění může být také atypické pro uživatele, vzhledem k minulému chování. Mezi několika dalšími faktory tento algoritmus strojového učení bere v úvahu čas mezi dvěma přihlášeními a čas, který by uživateli trvalo, než cestoval z prvního místa do druhého, což naznačuje, že jiný uživatel používá stejné Pověření. <br><br> Algoritmus ignoruje zjevné "falešně pozitivní výsledky", které přispívají k nemožným podmínkám cestování, jako jsou virtuální ny a místa pravidelně používaná ostatními uživateli v organizaci. Systém má počáteční období učení nejdříve 14 dnů nebo 10 přihlášení, během kterého se dozví chování nového uživatele přihlášení. |
-| Ip adresa propojená s malwarem | Offline | Tento typ detekce rizika označuje přihlášení z IP adres infikovaných malwarem, o kterých je známo, že aktivně komunikuje se serverem robotů. Tato detekce je určena korelacemi IP adres zařízení uživatele s IP adresami, které byly v kontaktu se serverem robotů, když byl robotový server aktivní. |
-| Neznámé přihlašovací vlastnosti | Reálný čas | Tento typ detekce rizik a považuje historii přihlášení v minulosti (IP, Zeměpisná šířka / zeměpisná délka a ASN) za účelem hledání neobvyklých přihlášení. Systém ukládá informace o předchozích umístěních používaných uživatelem a považuje tato "známá" umístění. Zjišťování rizika se aktivuje, když dojde k přihlášení z umístění, které ještě není v seznamu známých umístění. Nově vytvořené uživatelé budou v "režimu učení" po dobu, ve které neznámé přihlašovací vlastnosti detekce rizik a detekce rizik bude vypnuta, zatímco naše algoritmy se učí chování uživatele. Doba výuky režimu je dynamický a závisí na tom, kolik času trvá algoritmus shromáždit dostatek informací o vzorcích přihlášení uživatele. Minimální doba trvání je pět dní. Uživatel se může po dlouhé době nečinnosti vrátit do režimu učení. Systém také ignoruje přihlášení ze známých zařízení a umístění, která jsou geograficky blízko známého místa. <br><br> Toto zjišťování také spouštějíme pro základní ověřování (nebo starší protokoly). Vzhledem k tomu, že tyto protokoly nemají moderní vlastnosti, jako je například ID klienta, je omezená telemetrie ke snížení falešně pozitivních hodnot. Doporučujeme našim zákazníkům přejít na moderní ověřování. |
-| Admin potvrdil, že uživatel byl ohrožen. | Offline | Toto zjištění znamená, že správce vybral v uživatelském rozhraní rizikových uživatelů nebo pomocí rozhraní API rizikových uživatelů možnost Potvrdit ohrožení zabezpečení uživatele. Chcete-li zjistit, který správce potvrdil tento uživatel ohrožen, zkontrolujte historii rizik uživatele (pomocí uživatelského rozhraní nebo rozhraní API). |
-| Škodlivá IP adresa | Offline | Toto zjištění označuje přihlášení ze škodlivé adresy IP. Adresa IP je považována za škodlivou na základě vysoké míry selhání z důvodu neplatných pověření přijatých z adresy IP nebo jiných zdrojů reputace IP adresy. |
-| Podezřelá pravidla manipulace s doručenou poštou | Offline | Toto zjištění je zjištěno [microsoft cloud app security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-manipulation-rules). Toto zjišťování profily vašeho prostředí a aktivuje výstrahy, když podezřelá pravidla, která odstraňují nebo přesunout zprávy nebo složky jsou nastaveny na doručené poště uživatele. To může znamenat, že je ohrožen účet uživatele, že zprávy jsou záměrně skryté a že poštovní schránka se používá k distribuci nevyžádané pošty nebo malwaru ve vaší organizaci. |
-| Neuskutečnitelná cesta | Offline | Toto zjištění je zjištěno [microsoft cloud app security (MCAS)](/cloud-app-security/anomaly-detection-policy#impossible-travel). Toto zjištění identifikuje dvě aktivity uživatele (je jedna nebo více relací) pocházející z geograficky vzdálených míst v časovém období kratším, než je doba, po kterou by uživatel mohl cestovat z prvního místa do druhého, což znamená, že že jiný uživatel používá stejná pověření. |
+| Anonymní IP adresa | Reálný čas | Tento typ detekce rizika označuje přihlášení z anonymní IP adresy (například samoobslužný prohlížeč nebo anonymní síť VPN). Tyto IP adresy obvykle používají aktéri, kteří chtějí skrýt svou telemetrii přihlašování (IP adresa, umístění, zařízení atd.) pro potenciálně škodlivý záměr. |
+| Neobvyklé cestování | Offline | Tento typ detekce rizika identifikuje dvě přihlášení pocházející z geograficky vzdálených umístění, kde aspoň jedno z umístění může být pro uživatele neobvyklá, a to s ohledem na minulé chování. Kromě několika dalších faktorů tento algoritmus strojového učení bere v úvahu čas mezi dvěma přihlášeními a časem, kdy by uživatel musel cestovat z prvního umístění do druhé, což značí, že stejný přihlašovací údaj používá jiný uživatel. <br><br> Algoritmus ignoruje zjevné "falešně pozitivní", které přispívají k nemožným cestovním podmínkám, jako jsou sítě VPN a lokality pravidelně používané jinými uživateli v organizaci. Systém má počáteční období učení nejstarších 14 dní nebo 10 přihlášení, během kterých se učí chování přihlášení nového uživatele. |
+| Propojená IP adresa pro malware | Offline | Tento typ detekce rizika označuje přihlášení z IP adres nakažených malwarem, u kterých je známo, že aktivně komunikuje se serverem robot. Tato detekce je určena korelacemi IP adres zařízení uživatele proti IP adresám, které se nacházely v kontaktu se serverem robota, zatímco byl server robot aktivní. |
+| Neznámou vlastnost přihlášení | Reálný čas | Tento typ detekce rizika považuje předchozí historii přihlášení (IP, zeměpisná šířka/délka a ASN), aby vyhledal neobvyklé přihlášení. Systém ukládá informace o předchozích umístěních používaných uživatelem a považuje se za "známá" umístění. Zjišťování rizik se aktivuje, když se přihlásí z umístění, které ještě není v seznamu známých umístění. Nově vytvoření uživatelé budou v "výukovém režimu" po určitou dobu, během které se neznámé detekce rizik při neznámých vlastnostech přihlášení vypne, zatímco se naše algoritmy budou učit chování uživatele. Doba trvání výukového režimu je dynamická a závisí na tom, kolik času má algoritmus získat dostatek informací o vzorech přihlášení uživatele. Minimální doba trvání je pět dní. Uživatel se může po dlouhou době nečinnosti vrátit do výukového režimu. Systém také ignoruje přihlášení ze známých zařízení a umístění, která jsou geograficky blízko známého umístění. <br><br> Tuto detekci také spouštíme pro základní ověřování (nebo starší protokoly). Vzhledem k tomu, že tyto protokoly nemají moderní vlastnosti, jako je například ID klienta, je k dispozici omezená telemetrie k omezení falešně pozitivních hodnot. Zákazníkům doporučujeme, aby přešli na moderní ověřování. |
+| Správce potvrzuje ohrožení zabezpečení uživatele. | Offline | Tato detekce indikuje, že správce v uživatelském rozhraní rizikové uživatele nebo pomocí rozhraní riskyUsers API vybral možnost potvrdit zneužití uživatele. Pokud chcete zjistit, který správce potvrdil ohrožení tohoto uživatele, Zkontrolujte historii rizika uživatele (prostřednictvím uživatelského rozhraní nebo rozhraní API). |
+| Škodlivá IP adresa | Offline | Tato detekce indikuje přihlášení ze škodlivé IP adresy. IP adresa je považována za škodlivou na základě vysoké míry selhání kvůli neplatným přihlašovacím údajům z IP adresy nebo jiných zdrojů reputace IP. |
+| Podezřelá pravidla pro manipulaci s doručenou poštou | Offline | Tato detekce je zjištěna [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-manipulation-rules). Toto zjišťování profiluje vaše prostředí a aktivuje výstrahy v případě, že jsou v doručené poště uživatele podezřelá pravidla, která odstraňují nebo přesunují zprávy nebo složky. To může znamenat, že došlo k ohrožení zabezpečení účtu uživatele, že zprávy jsou záměrně skryté a že se poštovní schránka používá k distribuci spamu nebo malwaru ve vaší organizaci. |
+| Neuskutečnitelná cesta | Offline | Tato detekce je zjištěna [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#impossible-travel). Toto zjišťování identifikuje dvě uživatelské aktivity (Jedná se o jednu nebo víc relací) pocházející z geograficky vzdálených umístění v časovém období kratším než čas, kdy by uživatel musel použít stejné přihlašovací údaje jako jiný uživatel. |
 
 ### <a name="other-risk-detections"></a>Další detekce rizik
 
 | Detekce rizik | Typ detekce | Popis |
 | --- | --- | --- |
-| Bylo zjištěno další riziko | V reálném čase nebo offline | Tato detekce indikuje, že byla zjištěna jedna z výše uvedených detekcí prémií. Vzhledem k tomu, že detekce premium jsou viditelné jenom pro zákazníky Azure AD Premium P2, mají název "další zjištěné riziko" pro zákazníky bez licencí Azure AD Premium P2. |
+| Bylo zjištěno další riziko. | V reálném čase nebo offline | Toto zjištění indikuje, že bylo zjištěno jedno z výše uvedených detekcí Premium. Vzhledem k tomu, že zjišťování úrovně Premium je viditelné pouze pro zákazníky Azure AD Premium P2, jsou pro zákazníky s názvem "dodatečné riziko zjištěny" pro zákazníky bez licencí Azure AD Premium P2. |
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Dostupné zásady ke zmírnění rizik](concept-identity-protection-policies.md)
+- [Dostupné zásady pro zmírnění rizik](concept-identity-protection-policies.md)
 
 - [Přehled zabezpečení](concept-identity-protection-security-overview.md)

@@ -1,6 +1,6 @@
 ---
-title: Vyžádání balíčku přístupu – správa oprávnění Azure AD
-description: Přečtěte si, jak pomocí portálu Můj Přístup požádat o přístup k přístupovému balíčku ve správě nároků služby Azure Active Directory.
+title: Vyžádání přístupového balíčku – Správa nároků Azure AD
+description: Naučte se používat portál pro přístup k vyžádání přístupu k balíčku přístupu v Azure Active Directory správě nároků.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,109 +17,109 @@ ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4b1ccde2f1f92237978ab4e68acaa26393bbb9d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79261746"
 ---
-# <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Žádost o přístup k balíčku přístupu ve správě oprávnění Azure AD
+# <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Požádat o přístup k balíčku přístupu v Azure AD – Správa nároků
 
-Díky správě oprávnění Azure AD umožňuje balíček přístupu jednorázové nastavení prostředků a zásad, které automaticky spravuje přístup po dobu životnosti balíčku přístupu. 
+Díky správě opravňujících k Azure AD umožňuje balíček pro přístup jednorázovou instalaci prostředků a zásad, které automaticky spravují přístup po dobu života balíčku přístupu. 
 
-Správce balíčků přístupu může nakonfigurovat zásady tak, aby vyžadovaly schválení pro uživatele, aby měli přístup k balíčkům. Uživatel, který potřebuje přístup k přístupu balíček můžete odeslat žádost o získání přístupu. Tento článek popisuje, jak odeslat žádost o přístup.
+Správce balíčků přístupu může nakonfigurovat zásady, které vyžadují schválení pro uživatele, kteří mají přístup k balíčkům přístupu. Uživatel, který potřebuje přístup k přístupovému balíčku, může odeslat žádost o získání přístupu. Tento článek popisuje, jak odeslat žádost o přístup.
 
-## <a name="sign-in-to-the-my-access-portal"></a>Přihlášení k portálu Můj přístup
+## <a name="sign-in-to-the-my-access-portal"></a>Přihlášení k portálu pro přístup
 
-Prvním krokem je přihlášení k portálu Můj přístup, kde můžete požádat o přístup k balíčku přístupu.
+Prvním krokem je přihlášení k portálu pro přístup, kde si můžete vyžádat přístup k balíčku přístupu.
 
-**Předpokladová role:** Žadatele
+**Požadovaná role:** Žadatele
 
-1. Vyhledejte e-mail nebo zprávu od projektu nebo obchodního manažera, se kterým pracujete. E-mail by měl obsahovat odkaz na přístupový balíček, ke které budete potřebovat přístup. Odkaz začíná `myaccess`aplikací , obsahuje nápovědu k adresáři a končí ID přístupového balíčku.  (Pro vládu USA může `https://myaccess.microsoft.us` být doména místo.)
+1. Vyhledejte e-mail nebo zprávu z projektu nebo obchodního manažera, se kterým pracujete. E-mail by měl obsahovat odkaz na balíček pro přístup, ke kterému budete potřebovat přístup. Odkaz začíná na `myaccess`, obsahuje pomocný parametr adresáře a končí ID balíčku přístupu.  (Pro státní správu USA může být `https://myaccess.microsoft.us` místo toho doména.)
  
     `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 
 1. Otevřete odkaz.
 
-1. Přihlaste se k portálu Můj přístup.
+1. Přihlaste se k portálu přístupu.
 
-    Ujistěte se, že používáte účet organizace (práce nebo školy). Pokud si nejste jisti, obraťte se na svůj projekt nebo obchodního manažera.
+    Ujistěte se, že používáte svůj organizační (pracovní nebo školní) účet. Pokud si nejste jistí, obraťte se na svého projektu nebo obchodní manažer.
 
-## <a name="request-an-access-package"></a>Žádost o přístupový balíček
+## <a name="request-an-access-package"></a>Vyžádání balíčku pro přístup
 
-Jakmile najdete přístupový balíček na portálu Můj přístup, můžete odeslat žádost.
+Po nalezení balíčku přístupu na portálu pro přístup můžete odeslat žádost.
 
-**Předpokladová role:** Žadatele
+**Požadovaná role:** Žadatele
 
-1. Najděte přístupový balíček v seznamu.  V případě potřeby můžete hledat zadáním vyhledávacího řetězce a výběrem filtru **Název**, **Katalog**nebo **Zdroje.**
+1. V seznamu vyhledejte balíček pro přístup.  V případě potřeby můžete hledat zadáním hledaného řetězce a následným výběrem filtru **název**, **katalog**nebo **prostředky** .
 
-    ![Portál Můj přístup – vyhledávání prostředků](./media/entitlement-management-request-access/my-access-resource-search.png)
+    ![Můj portál pro přístup – vyhledávání prostředků](./media/entitlement-management-request-access/my-access-resource-search.png)
 
-1. Klepnutím na zaškrtnutí vyberte přístupový balíček.
+1. Klikněte na značku zaškrtnutí a vyberte balíček pro přístup.
 
-1. Kliknutím na **Požádat o přístup** otevřete podokno Požádat o přístup.
+1. Kliknutím na **požádat o přístup** otevřete podokno žádosti o přístup.
 
-    ![Můj přístupový portál – přístupové balíčky](./media/entitlement-management-request-access/my-access-request-access-button.png)
+    ![Portál přístupu – přístupové balíčky](./media/entitlement-management-request-access/my-access-request-access-button.png)
 
-1. Pokud se zobrazí pole **Zarovnání firmy,** zadejte odůvodnění, které potřebuje přístup.
+1. Pokud se zobrazí pole **obchodní odůvodnění** , zadejte odůvodnění přístupu pro potřebu přístupu.
 
-1. Pokud je **možnost Žádost o určité období** povolena, vyberte možnost **Ano** nebo **Ne**.
+1. Pokud je **požadavek na určité období** povolený, vyberte **Ano** nebo **ne**.
 
 1. V případě potřeby zadejte počáteční a koncové datum.
 
-    ![Portál Můj přístup – žádost o přístup](./media/entitlement-management-shared/my-access-request-access.png)
+    ![Můj portál přístupu – požádat o přístup](./media/entitlement-management-shared/my-access-request-access.png)
 
-1. Po dokončení odešlete požadavek na **Odeslat.**
+1. Po dokončení kliknutím na **Odeslat** odešlete žádost.
 
-1. Kliknutím na **Historie žádostí** zobrazíte seznam vašich požadavků a stav.
+1. Kliknutím na **Historie žádostí** zobrazíte seznam žádostí a stav.
 
-    Pokud balíček přístupu vyžaduje schválení, požadavek je nyní ve stavu čekající na schválení.
+    Pokud přístupový balíček vyžaduje schválení, je žádost nyní ve stavu čeká na schválení.
 
 ### <a name="select-a-policy"></a>Výběr zásady
 
-Pokud požadujete přístup k přístupový balíček, který má více zásad, které platí, můžete být vyzváni k výběru zásad. Správce balíčků přístupu může například nakonfigurovat balíček přístupu se dvěma zásadami pro dvě skupiny interních zaměstnanců. První zásady mohou umožnit přístup po dobu 60 dnů a vyžadují schválení. Druhá zásada může umožnit přístup po dobu 2 dnů a nevyžaduje schválení. Pokud narazíte na tento scénář, musíte vybrat zásadu, kterou chcete použít.
+Pokud požadujete přístup k balíčku přístupu, který má víc zásad, které platí, můžete být požádáni, abyste vybrali zásadu. Správce balíčků pro přístup může například nakonfigurovat balíček přístupu se dvěma zásadami pro dvě skupiny interních zaměstnanců. První zásada může mít povolený přístup po 60 dnech a vyžaduje schválení. Druhá zásada může mít povolený přístup 2 dny a nemusí vyžadovat schválení. Pokud se setkáte s tímto scénářem, musíte vybrat zásadu, kterou chcete použít.
 
-![Portál Můj přístup – žádost o přístup – více zásad](./media/entitlement-management-request-access/my-access-multiple-policies.png)
+![Můj portál přístupu – žádost o přístup-více zásad](./media/entitlement-management-request-access/my-access-multiple-policies.png)
 
-## <a name="resubmit-a-request"></a>Opětovné odeslání žádosti
+## <a name="resubmit-a-request"></a>Odeslat žádost znovu
 
-Když požádáte o přístup k přístupovému balíčku, může být váš požadavek zamítnut nebo může vypršet platnost vaší žádosti, pokud schvalovatelé neodpoví včas. Pokud potřebujete přístup, můžete to zkusit znovu a žádost odeslat znovu. Následující postup vysvětluje, jak znovu odeslat žádost o přístup:
+Když vyžádáte přístup k balíčku přístupu, může být žádost zamítnutá nebo může vypršet platnost vaší žádosti, pokud schvalovatelé neodpoví včas. Pokud potřebujete přístup, můžete to zkusit znovu a odeslat žádost znovu. Následující postup vysvětluje, jak znovu odeslat žádost o přístup:
 
-**Předpokladová role:** Žadatele
+**Požadovaná role:** Žadatele
 
-1. Přihlaste se k portálu **Můj přístup.**
+1. Přihlaste se k portálu **přístupu** .
 
-1. V navigační nabídce vlevo klikněte na **Vyžádat historii.**
+1. Klikněte na **historie požadavků** z navigační nabídky vlevo.
 
-1. Najděte přístupový balíček, pro který znovu odesíláte žádost.
+1. Najděte balíček pro přístup, pro který znovu odešlete žádost.
 
-1. Kliknutím na zaškrtnutí vyberte přístupový balíček.
+1. Kliknutím na značku zaškrtnutí vyberte balíček přístupu.
 
-1. Klikněte na modrý odkaz **Zobrazení** vpravo od vybraného přístupového balíčku.
+1. Klikněte na modré **zobrazení** na odkaz napravo od vybraného balíčku přístupu.
     
-    ![Vybrat přístupový balíček a odkaz pro zobrazení](./media/entitlement-management-request-access/resubmit-request-select-request-and-view.png)
+    ![Vybrat přístup k balíčku a odkazu pro zobrazení](./media/entitlement-management-request-access/resubmit-request-select-request-and-view.png)
 
-    Vpravo se otevře podokno s historií požadavků na přístupový balíček.
+    Otevře se podokno napravo s historií žádostí balíčku pro přístup.
     
-    ![Tlačítko Vybrat znovu odeslat](./media/entitlement-management-request-access/resubmit-request-select-resubmit.png)
+    ![Vybrat tlačítko pro opětovné odeslání](./media/entitlement-management-request-access/resubmit-request-select-resubmit.png)
 
-1. Klikněte na tlačítko **Znovu odeslat** v dolní části podokna.
+1. Klikněte na tlačítko **znovu odeslat** v dolní části podokna.
 
-## <a name="cancel-a-request"></a>Zrušení požadavku
+## <a name="cancel-a-request"></a>Zrušení žádosti
 
-Pokud odešlete žádost o přístup a žádost je stále ve stavu čekající na **schválení,** můžete žádost zrušit.
+Pokud odešlete žádost o přístup a žádost zůstane stále ve stavu **čeká na schválení** , můžete žádost zrušit.
 
-**Předpokladová role:** Žadatele
+**Požadovaná role:** Žadatele
 
-1. Na portálu Můj přístup klikněte vlevo na **Požádat o historii** a zozobrazujete seznam vašich požadavků a stavu.
+1. Na portálu pro přístup na levé straně klikněte na **Historie žádostí** , abyste viděli seznam žádostí a stav.
 
-1. Klikněte na odkaz **Zobrazit** pro požadavek, který chcete zrušit.
+1. Klikněte na odkaz **Zobrazit** u žádosti, kterou chcete zrušit.
 
-1. Pokud je požadavek stále ve stavu čekající na **schválení,** můžete požadavek zrušit klepnutím na tlačítko **Storno.**
+1. Pokud je požadavek stále ve stavu **čekání na schválení** , můžete kliknout na **zrušit žádost** o zrušení žádosti.
 
-    ![Můj přístupový portál – zrušit požadavek](./media/entitlement-management-request-access/my-access-cancel-request.png)
+    ![Portál pro přístup – zrušit požadavek](./media/entitlement-management-request-access/my-access-cancel-request.png)
 
-1. Chcete-li potvrdit, že žádost byla zrušena, klepněte na **tlačítko Vyžádat historii.**
+1. Kliknutím na **Historie žádostí** potvrďte, že žádost byla zrušena.
 
 ## <a name="next-steps"></a>Další kroky
 

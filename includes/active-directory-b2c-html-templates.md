@@ -6,28 +6,28 @@ ms.topic: include
 ms.date: 02/12/2020
 ms.author: mimart
 ms.openlocfilehash: d43b879057001d62ea72bd2e011ad52957d47470
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78189007"
 ---
 ## <a name="sample-templates"></a>Ukázkové šablony
-Ukázkové šablony pro přizpůsobení uživatelského rozhraní najdete zde:
+Ukázkové šablony pro přizpůsobení uživatelského rozhraní můžete najít tady:
 
 ```bash
 git clone https://github.com/Azure-Samples/Azure-AD-B2C-page-templates
 ```
 
 Tento projekt obsahuje následující šablony:
-- [Oceán modrá](https://github.com/Azure-Samples/Azure-AD-B2C-page-templates/tree/master/ocean_blue)
-- [Břidlice šedá](https://github.com/Azure-Samples/Azure-AD-B2C-page-templates/tree/master/slate_gray)
+- [Mořská modrá](https://github.com/Azure-Samples/Azure-AD-B2C-page-templates/tree/master/ocean_blue)
+- [Břidlicová šedá](https://github.com/Azure-Samples/Azure-AD-B2C-page-templates/tree/master/slate_gray)
 
-Použití vzorku:
+Postup použití ukázky:
 
-1. Naklonujte repo na místní počítač. Zvolte složku `/ocean_blue` `/slate_gray`šablony nebo .
-1. Nahrajte všechny soubory ve složce šablony a `/assets` do složky blob do úložiště objektů Blob, jak je popsáno v předchozích částech.
-1. Dále otevřete `\*.html` každý soubor v `/ocean_blue` `/slate_gray`kořenovém adresáři buď nebo , nahraďte všechny instance relativních adres URL adresurl souborů css, obrázků a písem, které jste nahráli v kroku 2. Například:
+1. Naklonujte úložiště na místním počítači. Vyberte složku `/ocean_blue` šablony nebo `/slate_gray`.
+1. Nahrajte všechny soubory ve složce šablony a `/assets` složce do úložiště objektů blob, jak je popsáno v předchozích částech.
+1. Potom otevřete každý `\*.html` soubor v kořenovém adresáři `/ocean_blue` nebo `/slate_gray`nahraďte všechny výskyty relativních adres URL adresami URL souborů CSS, obrázků a písem, které jste nahráli v kroku 2. Příklad:
     ```html
     <link href="./css/assets.css" rel="stylesheet" type="text/css" />
     ```
@@ -36,6 +36,6 @@ Použití vzorku:
     ```html
     <link href="https://your-storage-account.blob.core.windows.net/your-container/css/assets.css" rel="stylesheet" type="text/css" />
     ```
-1. Uložte `\*.html` soubory a nahrajte je do úložiště objektů Blob.
-1. Nyní upravte zásadu a přesměrujte na soubor HTML, jak již bylo zmíněno dříve.
-1. Pokud se vám zobrazují chybějící písma, obrázky nebo css, zkontrolujte odkazy v zásadách rozšíření a v souborech \*HTML.
+1. Uložte `\*.html` soubory a nahrajte je do úložiště objektů BLOB.
+1. Nyní upravte zásady tak, aby odkazovaly na soubor HTML, jak bylo uvedeno dříve.
+1. Pokud se zobrazí chybějící písma, obrázky nebo šablony stylů CSS, zkontrolujte odkazy v zásadách rozšíření a v \*souborech. html.

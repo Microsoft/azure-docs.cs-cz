@@ -6,26 +6,26 @@ ms.topic: include
 ms.date: 02/27/2020
 ms.author: mimart
 ms.openlocfilehash: f4944881e6eff3e9a56a74bc997c280f9fff6be8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78186983"
 ---
-## <a name="ropc-flow-notes"></a>Ropc poznámky o toku
-Ve službě Azure Active Directory B2C (Azure AD B2C) jsou podporované následující možnosti:
+## <a name="ropc-flow-notes"></a>Poznámky ke ROPC toku
+V Azure Active Directory B2C (Azure AD B2C) jsou podporovány následující možnosti:
 
-- **Nativní klient**: Interakce uživatele během ověřování se stane, když kód běží na zařízení na straně uživatele. Zařízení může být mobilní aplikace, která běží v nativním operačním systému, jako je android a iOS.
-- **Tok veřejného klienta**: Ve volání rozhraní API jsou odesílána pouze pověření uživatele shromážděná aplikací. Pověření aplikace nejsou odeslány.
-- **Přidat nové deklarace identity**: Obsah tokenu ID lze změnit a přidat nové deklarace identity.
+- **Nativní klient**: během ověřování dojde k interakci uživatele, když se kód spouští na zařízení na straně uživatele. Zařízení může být mobilní aplikace, která běží v nativním operačním systému, jako je Android a iOS.
+- **Veřejný klientský tok**: v volání rozhraní API se odešlou jenom přihlašovací údaje uživatele shromážděné aplikací. Přihlašovací údaje aplikace se neodesílají.
+- **Přidat nové deklarace identity**: obsah TOKENu ID se dá změnit tak, aby se přidaly nové deklarace identity.
 
 Následující toky nejsou podporovány:
 
-- **Server-to-server**: Systém ochrany identity potřebuje spolehlivou IP adresu získanou od volajícího (nativního klienta) jako součást interakce. Při volání rozhraní API na straně serveru se používá pouze ip adresa serveru. Pokud je překročena dynamická prahová hodnota neúspěšných ověřování, může systém ochrany identity identifikovat opakovanou adresu IP jako útočníka.
+- **Server-Server**: systém ochrany identit potřebuje spolehlivou IP adresu získanou od volajícího (nativního klienta) v rámci interakce. V případě volání rozhraní API na straně serveru se používá jenom IP adresa serveru. Pokud dojde k překročení dynamické prahové hodnoty neúspěšných ověření, může systém Identity Protection identifikovat opakovanou IP adresu jako útočníka.
 - **Důvěrný tok klienta**: ID klienta aplikace je ověřeno, ale tajný klíč aplikace není ověřen.
 
-Při použití toku ROPC zvažte následující:
+Při použití toku ROPC Vezměte v úvahu následující skutečnosti:
 
-- ROPC nefunguje, pokud dojde k přerušení toku ověřování, který vyžaduje interakci uživatele. Pokud například vypršela platnost hesla nebo je třeba je změnit, je vyžadováno vícefaktorové ověřování nebo pokud je třeba během přihlášení shromažďovat další informace (například souhlas uživatele).
-- ROPC podporuje pouze místní účty. Uživatelé se nemohou přihlásit pomocí poskytovatelů federovaných identit, jako jsou Microsoft, Google+, Twitter, AD-FS nebo Facebook.
-- Session Management, včetně keep me signed-in (KMSI), se nepoužije.
+- ROPC nefunguje, pokud dojde k přerušení ověřovacího toku, který potřebuje zásah uživatele. Například pokud vypršela platnost hesla nebo je nutné ho změnit, je vyžadováno ověřování Multi-Factor Authentication nebo další informace, které je potřeba shromáždit během přihlašování (například souhlas uživatele).
+- ROPC podporuje pouze místní účty. Uživatelé se nemůžou přihlašovat pomocí federovaných zprostředkovatelů identity, jako je Microsoft, Google +, Twitter, AD-FS nebo Facebook.
+- Správa relací, včetně zůstatku přihlášeného (políčko zůstat přihlášeni), se nedá použít.

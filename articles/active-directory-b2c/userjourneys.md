@@ -1,6 +1,6 @@
 ---
-title: UserJourneys | Dokumenty společnosti Microsoft
-description: Zadejte prvek UserJourneys vlastní zásady ve službě Azure Active Directory B2C.
+title: Userjourney | Microsoft Docs
+description: Zadejte element Userjourney vlastní zásady v Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,100 +11,100 @@ ms.date: 02/04/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d73a1a3ce23817d9d6f742a4a8c730afb58ee0c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78227001"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Cesty uživatele určují explicitní cesty, jejichž prostřednictvím zásada umožňuje aplikaci předávající strany získat požadované deklarace identity pro uživatele. Uživatel je přijata prostřednictvím těchto cest načíst deklarace identity, které mají být předloženy předávající strany. Jinými slovy, cesty uživatelů definují obchodní logiku toho, co koncový uživatel prochází jako rozhraní Azure AD B2C Identity Experience Framework zpracovává požadavek.
+Cesty uživatelů určují explicitní cesty, pomocí kterých zásada umožňuje aplikaci předávající strany získat požadované deklarace identity pro uživatele. Uživatel se převezme prostřednictvím těchto cest, aby načetl deklarace identity, které se mají předložit předávající straně. Jinými slovy, cesty uživatelů definují obchodní logiku toho, co koncový uživatel projde, jako Azure AD B2C architektura pro prostředí identity zpracuje požadavek.
 
-Tyto cesty uživatelů lze považovat za šablony, které jsou k dispozici pro uspokojení základní potřeby různých předávajících stran zájmových skupin. Cesty uživatele usnadňují definici části zásady předávající strany. Zásada může definovat více cest uživatelů. Každá cesta uživatele je posloupnost kroků orchestrace.
+Tyto cesty uživatelů je možné považovat za šablony, které jsou k dispozici pro splnění základních potřeb různých předávající strany komunity zájmu. Cesty uživatelů usnadňují definici části zásady předávající strany. Zásada může definovat několik cest uživatelů. Každá cesta uživatele je posloupnost kroků orchestrace.
 
-Chcete-li definovat cesty uživatele podporované zásadou, je prvek **UserJourneys** přidán pod prvek nejvyšší úrovně souboru zásad.
+Pro definování cest uživatelů podporovaných touto zásadou se do prvku nejvyšší úrovně v souboru zásad přidá element **userjourney** .
 
-Prvek **UserJourneys** obsahuje následující prvek:
+Element **userjourney** obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| Cesta uživatele | 1:n | Cesta uživatele, která definuje všechny konstrukce nezbytné pro úplný tok uživatele. |
+| UserJourney | 1: n | Cesta uživatele definující všechny konstrukce, které jsou nezbytné pro kompletní tok uživatele. |
 
 Element **UserJourney** obsahuje následující atribut:
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| ID | Ano | Identifikátor cesty uživatele, který lze použít k odkazování z jiných prvků v zásadě. Na tento atribut odkazuje prvek **DefaultUserJourney** [zásady předávající strany.](relyingparty.md) |
+| ID | Ano | Identifikátor cesty uživatele, který lze použít k odkazování na jiný prvek v zásadě. Element **DefaultUserJourney** [zásady předávající strany](relyingparty.md) odkazuje na tento atribut. |
 
-**UserJourney** Element obsahuje následující prvky:
+Element **UserJourney** obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| OrchestrationSteps | 1:n | Pořadí orchestrace, které musí být dodrženy prostřednictvím pro úspěšnou transakci. Každá cesta uživatele se skládá z uspořádaného seznamu kroků orchestrace, které jsou spouštěny postupně. Pokud některý krok selže, transakce se nezdaří. |
+| OrchestrationSteps | 1: n | Sekvence orchestrace, která musí následovat po úspěšné transakci. Každá cesta uživatele se skládá z uspořádaného seznamu kroků orchestrace, které se spustí v posloupnosti. Pokud nějaký krok selhává, transakce se nezdařila. |
 
 ## <a name="orchestrationsteps"></a>OrchestrationSteps
 
-Cesta uživatele je reprezentována jako sekvence orchestrace, která musí být dodržena pro úspěšnou transakci. Pokud některý krok selže, transakce se nezdaří. Tyto kroky orchestrace odkazují na stavební bloky a zprostředkovatele deklarací povolené v souboru zásad. Jakýkoli krok orchestrace, který je zodpovědný za zobrazení nebo vykreslení uživatelského prostředí, má také odkaz na odpovídající identifikátor definice obsahu.
+Cesta uživatele je reprezentována jako sekvence orchestrace, která musí následovat po úspěšné transakci. Pokud nějaký krok selhává, transakce se nezdařila. Tyto kroky orchestrace odkazují na stavební bloky i zprostředkovatele deklarací identity povolené v souboru zásad. Libovolný krok orchestrace zodpovědný za zobrazení nebo vykreslení uživatelského prostředí má také odkaz na odpovídající identifikátor definice obsahu.
 
-Kroky orchestrace lze podmíněně provést na základě předpokladů definovaných v prvku kroku orchestrace. Můžete například zkontrolovat, zda chcete provést krok orchestrace pouze v případě, že existuje určitá deklarace identity nebo pokud je deklarace rovná nebo není zadanou hodnotou.
+Kroky orchestrace můžou být podmíněně spouštěny na základě předběžných podmínek definovaných v prvku kroku Orchestration. Například můžete provést krok orchestrace pouze v případě, že existují konkrétní deklarace identity nebo pokud je deklarace identity shodná nebo není zadanou hodnotou.
 
-Chcete-li zadat seřazený seznam kroků orchestrace, **orchestrationsteps** prvek je přidán jako součást zásady. Tento prvek je povinný.
+K určení seřazeného seznamu kroků orchestrace se jako součást zásady Přidá element **OrchestrationSteps** . Tento prvek je povinný.
 
-**OrchestrationSteps** Element obsahuje následující prvek:
+Element **OrchestrationSteps** obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| OrchestrationStep | 1:n | Krok objednané orchestrace. |
+| OrchestrationStep | 1: n | Seřazený krok orchestrace. |
 
-**OrchestrationStep** Element obsahuje následující atributy:
+Element **OrchestrationStep** obsahuje následující atributy:
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | `Order` | Ano | Pořadí kroků orchestrace. |
-| `Type` | Ano | Typ kroku orchestrace. Možné hodnoty: <ul><li>**ClaimsProviderSelection** - Označuje, že krok orchestrace představuje různé zprostředkovatele deklarací identity pro uživatele vybrat jeden.</li><li>**CombinedSignInAndSignUp** - Označuje, že krok orchestrace představuje kombinované sociální zprostředkovatele přihlášení a místní účet zaregistrovat stránku.</li><li>**ClaimsExchange** - Označuje, že krok orchestrace výměny deklarací s poskytovatelem deklarací.</li><li>**GetClaims** - Označuje, že krok orchestrace přečte vstupní deklarace identity.</li><li>**SendClaims** - Označuje, že krok orchestrace odešle deklarace předávající straně s tokenem vydaným vystavitelem deklarací.</li></ul> |
-| ContentDefinitionReferenceId | Ne | Identifikátor definice [obsahu](contentdefinitions.md) přidružené k tomuto kroku orchestrace. Identifikátor odkazu na definici obsahu je obvykle definován v samoobslužném technickém profilu. Ale existují některé případy, kdy Azure AD B2C potřebuje zobrazit něco bez technického profilu. Existují dva příklady – pokud je typ kroku orchestrace `ClaimsProviderSelection` `CombinedSignInAndSignUp`jedním z následujících: nebo , Azure AD B2C potřebuje zobrazit výběr zprostředkovatele identity bez technického profilu. |
-| CpimIssuerTechnicalProfileReferenceId | Ne | Typ kroku orchestrace je `SendClaims`. Tato vlastnost definuje identifikátor technického profilu poskytovatele deklarací identity, který vydává token pro předávající stranu.  Pokud chybí, je vytvořen token předávající strany. |
+| `Type` | Ano | Typ kroku orchestrace Možné hodnoty: <ul><li>**Claimsproviderselection.** – určuje, že krok orchestrace prezentuje různým zprostředkovatelům deklarací identity uživateli možnost výběru jednoho.</li><li>**CombinedSignInAndSignUp** – určuje, že krok orchestrace prezentuje kombinované přihlášení ke zprostředkovateli sociálních sítí a přihlašovací stránku místního účtu.</li><li>**ClaimsExchange** – určuje, že krok orchestrace vyměňuje deklarace identity se zprostředkovatelem deklarací identity.</li><li>**Getclaims** – určuje, že krok orchestrace čte vstupní deklarace identity.</li><li>**SendClaims** – určuje, že krok orchestrace odesílá deklarace identity předávající straně s tokenem vystaveným vystavitelem deklarací identity.</li></ul> |
+| ContentDefinitionReferenceId | Ne | Identifikátor [definice obsahu](contentdefinitions.md) přidruženého k tomuto kroku orchestrace. Identifikátor odkazu definice obsahu je obvykle definován v technickém profilu s vlastním uplatněním. Existují však případy, kdy Azure AD B2C musí zobrazit něco bez technického profilu. Existují dva příklady – Pokud je typ kroku orchestrace jedna z následujících: `ClaimsProviderSelection` nebo `CombinedSignInAndSignUp`Azure AD B2C nutné zobrazit výběr poskytovatele identity bez technického profilu. |
+| CpimIssuerTechnicalProfileReferenceId | Ne | Typ kroku orchestrace je `SendClaims`. Tato vlastnost definuje identifikátor technického profilu zprostředkovatele deklarací, který vydává token pro předávající stranu.  Pokud chybí, není vytvořen token předávající strany. |
 
 
-**OrchestrationStep** Element může obsahovat následující prvky:
+Element **OrchestrationStep** může obsahovat následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| Předpoklady | 0:n | Seznam předpokladů, které musí být splněny pro krok orchestrace ke spuštění. |
-| Výběry zprostředkovatelů deklarací identity | 0:n | Seznam výběrů zprostředkovatele deklarací pro krok orchestrace. |
-| ClaimsExchanges | 0:n | Seznam výměn deklarací identity pro krok orchestrace. |
+| Předběžné podmínky | 0: n | Seznam předpokladů, které musí být splněny, aby bylo možné provést krok orchestrace. |
+| ClaimsProviderSelections | 0: n | Seznam výběrů zprostředkovatele deklarací pro krok orchestrace |
+| ClaimsExchanges | 0: n | Seznam výměn deklarací identity pro krok Orchestration |
 
-### <a name="preconditions"></a>Předpoklady
+### <a name="preconditions"></a>Předběžné podmínky
 
-Prvek **Preconditions** obsahuje následující prvek:
+Element **Conditions** obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| Předběžná podmínka | 1:n | V závislosti na použitém technickém profilu buď přesměruje klienta podle výběru zprostředkovatele deklarací nebo provede volání serveru k výměně deklarací. |
+| Předběžná podmínka | 1: n | V závislosti na použitém technickém profilu přesměruje klienta na základě výběru zprostředkovatele deklarací identity nebo vyvolá volání serveru k výměně deklarací identity. |
 
 
 #### <a name="precondition"></a>Předběžná podmínka
 
-Prvek **Condition obsahuje** následující atributy:
+Prvek **předběžné podmínky** obsahuje následující atributy:
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| `Type` | Ano | Typ kontroly nebo dotazu, který má být pro tuto podmínku nastaven. Hodnota může být **ClaimsExist**, který určuje, že akce by měly být provedeny, pokud zadaný deklarace existují v aktuální sadě deklarací uživatele nebo **ClaimEquals**, který určuje, že akce by měly být provedeny, pokud zadaný deklarace existuje a jeho hodnota se rovná zadané hodnotě. |
-| `ExecuteActionsIf` | Ano | Použijte test true nebo false k rozhodnutí, zda by měly být provedeny akce v rámci podmínky. |
+| `Type` | Ano | Typ kontroly nebo dotazu, který má být proveden pro tuto podmínku. Hodnota může být **ClaimsExist**, která určuje, jestli se mají akce provádět, pokud zadané deklarace identity existují v aktuální sadě deklarací identity nebo **ClaimEquals**, která určuje, jestli se mají akce provádět, pokud existuje zadaná deklarace identity a její hodnota se rovná zadané hodnotě. |
+| `ExecuteActionsIf` | Ano | Použijte test true nebo false a rozhodněte se, zda by měly být provedeny akce v předběžné podmínce. |
 
-Prvky **precondition** obsahuje následující prvky:
+Prvky **předběžné podmínky** obsahují následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| Hodnota | 1:n | A ClaimTypeReferenceId, které mají být dotazován. Jiný prvek hodnoty obsahuje hodnotu, která má být zkontrolována.</li></ul>|
-| Akce | 1:1 | Akce, která by měla být provedena, pokud je splněna kontrola předběžného stavu v rámci kroku orchestrace. Pokud je hodnota `Action` nastavena `SkipThisOrchestrationStep`na `OrchestrationStep` , přidružené by neměly být provedeny. |
+| Hodnota | 1: n | ClaimTypeReferenceId, pro který se má dotazovat. Další element Value obsahuje hodnotu, která se má zkontrolovat.</li></ul>|
+| Akce | 1:1 | Akce, která má být provedena, pokud je splněna kontrolní podmínka v kroku orchestrace. Pokud `Action` je hodnota nastavená na `SkipThisOrchestrationStep`, přidružený `OrchestrationStep` by neměl být proveden. |
 
 #### <a name="preconditions-examples"></a>Příklady předběžných podmínek
 
-Následující předpoklady zkontroluje, zda existuje objekt id uživatele. V cestě uživatele se uživatel přihlásil pomocí místního účtu. Pokud objektId existuje, přeskočte tento krok orchestrace.
+Následující předpoklady kontrolují, zda existuje identifikátor objectId uživatele. Uživatel v cestě uživatele zvolil možnost přihlásit se pomocí místního účtu. Pokud identifikátor objectId existuje, přeskočte tento krok Orchestration.
 
 ```XML
 <OrchestrationStep Order="2" Type="ClaimsExchange">
@@ -121,7 +121,7 @@ Následující předpoklady zkontroluje, zda existuje objekt id uživatele. V ce
 </OrchestrationStep>
 ```
 
-Následující předpoklady zkontroluje, zda se uživatel přihlásil pomocí účtu na sociální síti. Došlo k pokusu o nalezení uživatelského účtu v adresáři. Pokud se uživatel přihlásí nebo zaregistruje pomocí místního účtu, přeskočte tento krok orchestrace.
+Následující předběžné podmínky kontrolují, jestli se uživatel přihlásil pomocí účtu sociální sítě. Byl proveden pokus o vyhledání uživatelského účtu v adresáři. Pokud se uživatel přihlásí nebo zaregistruje pomocí místního účtu, přeskočte tento krok Orchestration.
 
 ```XML
 <OrchestrationStep Order="3" Type="ClaimsExchange">
@@ -138,7 +138,7 @@ Následující předpoklady zkontroluje, zda se uživatel přihlásil pomocí ú
 </OrchestrationStep>
 ```
 
-Předběžné podmínky mohou zkontrolovat více předběžných podmínek. Následující příklad zkontroluje, zda 'objectId' nebo 'e-mail' existuje. Pokud je splněna první podmínka, cesta přeskočí na další krok orchestrace.
+Předběžné podmínky mohou kontrolovat více předběžných podmínek. Následující příklad ověří, zda existuje objectId nebo e-mail. Pokud je první podmínka pravdivá, přeskočí cesta k dalšímu kroku orchestrace.
 
 ```XML
 <OrchestrationStep Order="4" Type="ClaimsExchange">
@@ -158,32 +158,32 @@ Předběžné podmínky mohou zkontrolovat více předběžných podmínek. Nás
 </OrchestrationStep>
 ```
 
-## <a name="claimsproviderselection"></a>Výběr zprostředkovatele pohledávek
+## <a name="claimsproviderselection"></a>Claimsproviderselection.
 
-Krok orchestrace typu `ClaimsProviderSelection` `CombinedSignInAndSignUp` nebo může obsahovat seznam zprostředkovatelů deklarací identity, pomocí kterých se uživatel může přihlásit. Pořadí prvků uvnitř `ClaimsProviderSelections` prvků řídí pořadí zprostředkovatelů identit y prezentovaných uživateli.
+Krok orchestrace typu `ClaimsProviderSelection` nebo `CombinedSignInAndSignUp` může obsahovat seznam zprostředkovatelů deklarací identity, se kterými se uživatel může přihlásit. Pořadí prvků uvnitř `ClaimsProviderSelections` prvků určuje pořadí zprostředkovatelů identity prezentovaných uživateli.
 
-Prvek **ClaimsProviderSelections** obsahuje následující prvek:
+Element **ClaimsProviderSelections** obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| Výběr zprostředkovatele pohledávek | 1:n | Obsahuje seznam zprostředkovatelů deklarací identity, které lze vybrat.|
+| Claimsproviderselection. | 1: n | Poskytuje seznam zprostředkovatelů deklarací identity, které se dají vybrat.|
 
-Prvek **ClaimsProviderSelections** obsahuje následující atributy:
-
-| Atribut | Požaduje se | Popis |
-| --------- | -------- | ----------- |
-| Zobrazit možnost| Ne | Řídí chování případu, kdy je k dispozici výběr jednoho zprostředkovatele deklarací identity. Možné hodnoty: `DoNotShowSingleProvider` (výchozí) , uživatel je okamžitě přesměrován na poskytovatele federované identity. Nebo `ShowSingleProvider` Azure AD B2C představuje přihlašovací stránku s výběrem jednoho zprostředkovatele identity. Chcete-li použít [content definition version](page-layout.md) tento atribut, `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` musí být verze definice obsahu a vyšší.|
-
-Prvek **ClaimsProviderSelection** obsahuje následující atributy:
+Element **ClaimsProviderSelections** obsahuje následující atributy:
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| CílClaimsExchangeId | Ne | Identifikátor výměny deklarací identity, který je proveden v dalším kroku orchestrace výběru zprostředkovatele deklarací. Tento atribut nebo Atribut ValidationClaimsExchangeId musí být zadán, ale ne obojí. |
-| ValidaceClaimsExchangeId | Ne | Identifikátor výměny deklarací identity, který je proveden v aktuálním kroku orchestrace k ověření výběru zprostředkovatele deklarací. Tento atribut nebo TargetClaimsExchangeId atribut musí být zadán, ale ne obojí. |
+| DisplayOption| Ne | Řídí chování případu, kde je k dispozici jeden výběr zprostředkovatele deklarací identity. Možné hodnoty: `DoNotShowSingleProvider` (výchozí) – uživatel je okamžitě přesměrován na federovaného zprostředkovatele identity. Nebo `ShowSingleProvider` Azure AD B2C prezentují přihlašovací stránku s jedním vybraným zprostředkovatelem identity. Chcete-li použít tento atribut, musí být `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` [verze definice obsahu](page-layout.md) a vyšší.|
 
-### <a name="claimsproviderselection-example"></a>Příklad výběru claimsProvider
+Element **claimsproviderselection.** obsahuje následující atributy:
 
-V následujícím kroku orchestrace se uživatel může přihlásit pomocí Facebooku, LinkedInu, Twitteru, Googlu nebo místního účtu. Pokud uživatel vybere jednoho z poskytovatelů sociální identity, druhý krok orchestrace se provede `TargetClaimsExchangeId` s vybranou výměnou deklarací zadanou v atributu. Druhý krok orchestrace přesměruje uživatele na poskytovatele sociální identity k dokončení procesu přihlášení. Pokud se uživatel rozhodne přihlásit pomocí místního účtu, Azure AD B2C zůstane na stejném kroku orchestrace (stejná přihlašovací stránka nebo přihlašovací stránka) a přeskočí druhý krok orchestrace.
+| Atribut | Požaduje se | Popis |
+| --------- | -------- | ----------- |
+| TargetClaimsExchangeId | Ne | Identifikátor výměny deklarací identity, který se spustí v dalším kroku orchestrace výběru zprostředkovatele deklarací. Tento atribut nebo atribut ValidationClaimsExchangeId musí být zadán, ale ne oba. |
+| ValidationClaimsExchangeId | Ne | Identifikátor výměny deklarací identity, který se spustí v aktuálním kroku Orchestration pro ověření výběru zprostředkovatele deklarací identity. Tento atribut nebo atribut TargetClaimsExchangeId musí být zadán, ale ne oba. |
+
+### <a name="claimsproviderselection-example"></a>Příklad Claimsproviderselection.
+
+V následujícím kroku orchestrace se uživatel může přihlásit přes Facebook, LinkedIn, Twitter, Google nebo místní účet. Pokud uživatel vybere jednoho ze zprostředkovatelů sociálních identit, spustí se druhý krok orchestrace s vybraným výměnou deklarací identity zadaným v `TargetClaimsExchangeId` atributu. Druhý krok orchestrace přesměruje uživatele na zprostředkovatele sociální identity, aby dokončil proces přihlášení. Pokud se uživatel rozhodne přihlásit pomocí místního účtu, Azure AD B2C zůstane na stejném kroku orchestrace (stejná přihlašovací stránka nebo přihlašovací stránka) a přeskočí druhý krok Orchestration.
 
 ```XML
 <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
@@ -220,15 +220,15 @@ V následujícím kroku orchestrace se uživatel může přihlásit pomocí Face
 
 ## <a name="claimsexchanges"></a>ClaimsExchanges
 
-**ClaimsExchanges** Prvek obsahuje následující prvek:
+Element **ClaimsExchanges** obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| ClaimsExchange | 1:n | V závislosti na technický profil, který se používá, buď přesměruje klienta podle ClaimsProviderSelection, který byl vybrán, nebo provede volání serveru pro výměnu deklarací. |
+| ClaimsExchange | 1: n | V závislosti na použitém technickém profilu buď přesměrujte klienta podle Claimsproviderselection., který jste vybrali, nebo zavolá serverové volání na výměnu deklarací identity. |
 
-Prvek **ClaimsExchange** obsahuje následující atributy:
+Element **ClaimsExchange** obsahuje následující atributy:
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| ID | Ano | Identifikátor kroku výměny deklarací identity. Identifikátor se používá k odkazování na výměnu deklarací identity z kroku výběru zprostředkovatele deklarací v zásadách. |
-| TechnicalProfileReferenceId | Ano | Identifikátor technického profilu, který má být proveden. |
+| ID | Ano | Identifikátor kroku výměny deklarací identity. Identifikátor se používá k odkazování na výměnu deklarací z kroku výběru zprostředkovatele deklarací v zásadě. |
+| TechnicalProfileReferenceId | Ano | Identifikátor technického profilu, který má být spuštěn. |

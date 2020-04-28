@@ -1,7 +1,7 @@
 ---
-title: Telefonní číslo nároky transformace ve vlastních zásadách
+title: Telefonní číslo – transformace deklarací ve vlastních zásadách
 titleSuffix: Azure AD B2C
-description: Vlastní odkaz na zásady pro transformace deklarací telefonních čísel v Azure AD B2C.
+description: 'Odkaz na vlastní zásady pro telefonní číslo: transformace deklarací identity v Azure AD B2C.'
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,30 +12,30 @@ ms.date: 02/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: bd26b2b475e293a1fda1b007289ba7c3eef35136
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78183923"
 ---
-# <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Definování transformací deklarací telefonního čísla v Azure AD B2C
+# <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Definovat transformace deklarací telefonního čísla v Azure AD B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Tento článek obsahuje odkazy a příklady pro použití telefonníčíslo nároky transformace schématu identity experience framework v Azure Active Directory B2C (Azure AD B2C). Další informace o transformacích deklarací obecně naleznete v tématu [ClaimsTransformations](claimstransformations.md).
+Tento článek poskytuje referenční informace a příklady použití, které využívají k transformaci v rámci schématu rozhraní identity Experience v Azure Active Directory B2C (Azure AD B2C) na telefonním čísle. Další informace o transformacích deklarací obecně naleznete v tématu [ClaimsTransformations](claimstransformations.md).
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="convertphonenumberclaimtostring"></a>PřevéstPhoneNumberClaimToString
+## <a name="convertphonenumberclaimtostring"></a>ConvertPhoneNumberClaimToString
 
-Převede `phoneNumber` datový typ `string` na datový typ.
+Převede `phoneNumber` datový typ na `string` datový typ.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| Vstupní deklarace | Phonenumber | Phonenumber |  ClaimType převést na řetězec. |
-| Výstupní nárok | phoneNumberString | řetězec | ClaimType, který je vytvořen po této deklarace transformace byla vyvolána. |
+| InputClaim | phoneNumber | phoneNumber |  Deklarace ClaimType pro převod na řetězec. |
+| OutputClaim | phoneNumberString | řetězec | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací. |
 
-V tomto příkladu je deklarace cellPhoneNumber s typem hodnoty převedena na `string`deklaraci mobilního `phoneNumber` telefonu s typem hodnoty .
+V tomto příkladu `phoneNumber` je deklarace identity cellPhoneNumber s typem hodnoty převedena na deklaraci cellPhone s hodnotou typu `string`.
 
 ```XML
 <ClaimsTransformation Id="PhoneNumberToString" TransformationMethod="ConvertPhoneNumberClaimToString">
@@ -50,27 +50,27 @@ V tomto příkladu je deklarace cellPhoneNumber s typem hodnoty převedena na `s
 
 ### <a name="example"></a>Příklad
 
-- Vstupní deklarace:
-  - **telefonní číslo**: +11234567890 (phoneNumber)
-- Výstupní nároky:
-  - **phoneNumberString**: +11234567890 (řetězec)
+- Vstupní deklarace identity:
+  - **phoneNumber**: + 11234567890 (PhoneNumber)
+- Deklarace výstupů:
+  - **phoneNumberString**: + 11234567890 (řetězec)
 
 
 ## <a name="convertstringtophonenumberclaim"></a>ConvertStringToPhoneNumberClaim
 
-Tato transformace deklarace aplikace ověří formát telefonního čísla. Pokud je v platném formátu, změňte jej na standardní formát používaný Azure AD B2C. Pokud uvedené telefonní číslo není v platném formátu, je vrácena chybová zpráva.
+Tato transformace deklarace identity ověřuje formát telefonního čísla. Pokud je v platném formátu, změňte ho na standardní formát, který používá Azure AD B2C. Pokud zadané telefonní číslo nemá platný formát, vrátí se chybová zpráva.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| Vstupní deklarace | phoneNumberString | řetězec |  Deklarace řetězce pro telefonní číslo. Telefonní číslo musí být v mezinárodním formátu, kompletní s předním "+" a kódem země. Pokud je `country` zadána vstupní deklarace, telefonní číslo je v místním formátu (bez kódu země). |
-| Vstupní deklarace | country | řetězec | [Nepovinné] Deklarace řetězce pro kód země telefonního čísla ve formátu ISO3166 (dvoupísmenný kód země ISO-3166). |
-| Výstupní nárok | outputClaim | Phonenumber | Výsledek tohoto nároky transformace. |
+| InputClaim | phoneNumberString | řetězec |  Deklarace řetězce pro telefonní číslo Telefonní číslo musí být v mezinárodním formátu a musí obsahovat úvodní znak "+" a země. Pokud je zadaná `country` vstupní deklarace identity, telefonní číslo je v místním formátu (bez kódu země). |
+| InputClaim | country | řetězec | Volitelné Deklarace řetězce pro kód země telefonního čísla ve formátu ISO3166 (dvoumístné číslo země ISO-3166). |
+| OutputClaim | outputClaim | phoneNumber | Výsledek této transformace deklarací identity. |
 
-**ConvertStringToPhoneNumberClaim** nároky transformace je vždy proveden z [ověření technického profilu,](validation-technical-profile.md) který je volán [self-tvrdil technický profil](self-asserted-technical-profile.md) nebo ovládací prvek [zobrazení](display-controls.md). Metadata technického profilu, která se zobrazuje, řídí metadata uživatelského účtu **IfIfClaimsTransformationInvalidPhoneNumber,** která je sama uplatněna, a řídí chybovou zprávu, která je uživateli prezentována.
+Transformace deklarací **ConvertStringToPhoneNumberClaim** je vždy prováděna z [technického profilu ověření](validation-technical-profile.md) , který je volán [vlastním technickým profilem](self-asserted-technical-profile.md) nebo [ovládacím prvkem zobrazení](display-controls.md). Metadata technického profilu **UserMessageIfClaimsTransformationInvalidPhoneNumber** s vlastním uplatněním řídí chybovou zprávu, která se zobrazí uživateli.
 
 ![Diagram cesty spuštění chybové zprávy](./media/phone-authentication/assert-execution.png)
 
-Tuto transformaci deklarací identity můžete použít k zajištění, že zadaný řetězec deklarace identity je platné telefonní číslo. Pokud tomu tak není, je vyvolána chybová zpráva. Následující příklad zkontroluje, zda **phoneString** ClaimType je skutečně platné telefonní číslo a potom vrátí telefonní číslo ve standardním formátu Azure AD B2C. V opačném případě je vyvolána chybová zpráva.
+Tuto transformaci deklarací identity můžete použít k zajištění, že poskytnutá deklarace řetězce je platné telefonní číslo. V takovém případě je vyvolána chybová zpráva. Následující příklad zkontroluje, zda je **phoneString** ClaimType skutečně platné telefonní číslo, a potom vrátí telefonní číslo ve standardním Azure AD B2C formátu. V opačném případě je vyvolána chybová zpráva.
 
 ```XML
 <ClaimsTransformation Id="ConvertStringToPhoneNumber" TransformationMethod="ConvertStringToPhoneNumberClaim">
@@ -84,7 +84,7 @@ Tuto transformaci deklarací identity můžete použít k zajištění, že zada
 </ClaimsTransformation>
 ```
 
-Vlastní uplatněný technický profil, který volá technický profil ověření, který obsahuje tuto transformaci deklarací identity, může definovat chybovou zprávu.
+Technický profil s vlastním uplatněním, který volá technický profil ověření, který obsahuje tuto transformaci deklarací, může definovat chybovou zprávu.
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignup-Phone">
@@ -97,40 +97,40 @@ Vlastní uplatněný technický profil, který volá technický profil ověřen�
 
 ### <a name="example-1"></a>Příklad 1
 
-- Vstupní deklarace:
+- Vstupní deklarace identity:
   - **phoneNumberString**: 033 456-7890
   - **země**: DK
-- Výstupní nároky:
-  - **outputClaim**: +450334567890
+- Deklarace výstupů:
+  - **outputClaim**: + 450334567890
 
 ### <a name="example-2"></a>Příklad 2
 
-- Vstupní deklarace:
-  - **phoneNumberString**: +1 (123) 456-7890
-- Výstupní nároky:
-  - **outputClaim**: +11234567890
+- Vstupní deklarace identity:
+  - **phoneNumberString**: + 1 (123) 456-7890
+- Deklarace výstupů:
+  - **outputClaim**: + 11234567890
 
 
 ## <a name="getnationalnumberandcountrycodefromphonenumberstring"></a>GetNationalNumberAndCountryCodeFromPhoneNumberString
 
-Tím se z vstupní deklarace vyextrahuje kód země a národní číslo a volitelně vyvolá výjimku, pokud zadané telefonní číslo není platné.
+Tím se extrahuje kód země a národní číslo ze vstupní deklarace a volitelně vyvolá výjimku, pokud zadané telefonní číslo není platné.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| Vstupní deklarace | Phonenumber | řetězec | Deklarace řetězce telefonního čísla. Telefonní číslo musí být v mezinárodním formátu, kompletní s předním "+" a kódem země. |
-| Parametr Input | throwExceptionOnFailure | Boolean | [Nepovinné] Parametr označující, zda je vyvolána výjimka, když telefonní číslo není platné. Výchozí hodnota je false. |
-| Parametr Input | zeměKódTyp | řetězec | [Nepovinné] Parametr označující typ kódu země ve výstupní deklaraci. Dostupné hodnoty jsou **CallingCode** (mezinárodní volací kód pro zemi, například +1) nebo **ISO3166** (dvoupísmenný kód země ISO-3166). |
-| Výstupní nárok | národníČíslo | řetězec | Deklarace řetězce pro národní číslo telefonního čísla. |
-| Výstupní nárok | kód země | řetězec | Deklarace řetězce pro kód země telefonního čísla. |
+| InputClaim | phoneNumber | řetězec | Deklarace řetězce telefonního čísla. Telefonní číslo musí být v mezinárodním formátu a musí obsahovat úvodní znak "+" a země. |
+| InputParameter | throwExceptionOnFailure | Boolean | Volitelné Parametr, který označuje, zda je vyvolána výjimka, pokud telefonní číslo není platné. Výchozí hodnota je false. |
+| InputParameter | countryCodeType | řetězec | Volitelné Parametr, který označuje typ kódu země ve výstupní deklaraci. Dostupné hodnoty jsou **CallingCode** (mezinárodní volající kód pro zemi, například + 1) nebo **ISO3166** (se dvěma písmeny kód země ISO-3166). |
+| OutputClaim | nationalNumber | řetězec | Deklarace řetězce pro národní číslo telefonního čísla. |
+| OutputClaim | countryCode | řetězec | Deklarace řetězce pro kód země telefonního čísla. |
 
 
-Pokud **GetNationalNumberAndCountryCodeFromPhoneNumberString** transformace nároky je proveden z [ověření technický profil,](validation-technical-profile.md) který je volán [self-tvrdil technický profil](self-asserted-technical-profile.md) nebo akce [ovládacího prvku zobrazení](display-controls.md#display-control-actions), pak **UserMessageIfPhoneParaseFailure** self-tvrdil, technický profil metadata řídí chybovou zprávu, která je předložena uživateli.
+Pokud se transformace deklarací **GetNationalNumberAndCountryCodeFromPhoneNumberString** spustí z [technického profilu ověření](validation-technical-profile.md) , který je volán pomocí [technického profilu s vlastním uplatněním](self-asserted-technical-profile.md) nebo pomocí [akce ovládacího prvku zobrazení](display-controls.md#display-control-actions), pak **UserMessageIfPhoneNumberParseFailure** metadata technického profilu s vlastním uplatněním řídí chybovou zprávu, která se zobrazí uživateli.
 
 ![Diagram cesty spuštění chybové zprávy](./media/phone-authentication/assert-execution.png)
 
-Pomocí této transformace deklarací můžete rozdělit celé telefonní číslo na kód země a národní číslo. Pokud poskytnuté telefonní číslo není platné, můžete vyvolat chybovou zprávu.
+Tuto transformaci deklarací identity můžete použít k rozdělení celého telefonního čísla na kód země a národní číslo. Pokud telefonní číslo není platné, můžete zvolit, aby se chybová zpráva vyvolala.
 
-Následující příklad se pokusí rozdělit telefonní číslo na národní číslo a kód země. Pokud je telefonní číslo platné, bude telefonní číslo přepsáno národním číslem. Pokud telefonní číslo není platné, výjimka nebude vyvolána a telefonní číslo má stále původní hodnotu.
+Následující příklad se pokusí rozdělit telefonní číslo na národní číslo a kód země. Pokud je telefonní číslo platné, telefonní číslo bude přepsáno národním číslem. Pokud telefonní číslo není platné, výjimka nebude vyvolána a telefonní číslo má nadále původní hodnotu.
 
 ```XML
 <ClaimsTransformation Id="GetNationalNumberAndCountryCodeFromPhoneNumberString" TransformationMethod="GetNationalNumberAndCountryCodeFromPhoneNumberString">
@@ -148,7 +148,7 @@ Následující příklad se pokusí rozdělit telefonní číslo na národní č
 </ClaimsTransformation>
 ```
 
-Vlastní uplatněný technický profil, který volá technický profil ověření, který obsahuje tuto transformaci deklarací identity, může definovat chybovou zprávu.
+Technický profil s vlastním uplatněním, který volá technický profil ověření, který obsahuje tuto transformaci deklarací, může definovat chybovou zprávu.
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignup-Phone">
@@ -161,22 +161,22 @@ Vlastní uplatněný technický profil, který volá technický profil ověřen�
 
 ### <a name="example-1"></a>Příklad 1
 
-- Vstupní deklarace:
-  - **telefonní číslo**: +49 (123) 456-7890
+- Vstupní deklarace identity:
+  - **phoneNumber**: + 49 (123) 456-7890
 - Vstupní parametry:
   - **throwExceptionOnFailure**: false
-  - **zeměTyp kódu**: ISO3166
-- Výstupní nároky:
-  - **národníČíslo**: 1234567890
-  - **zeměKód**: DE
+  - **countryCodeType**: ISO3166
+- Deklarace výstupů:
+  - **nationalNumber**: 1234567890
+  - **countryCode**: de
 
 ### <a name="example-2"></a>Příklad 2
 
-- Vstupní deklarace:
-  - **telefonní číslo**: +49 (123) 456-7890
+- Vstupní deklarace identity:
+  - **phoneNumber**: + 49 (123) 456-7890
 - Vstupní parametry
   - **throwExceptionOnFailure**: false
   - **countryCodeType**: CallingCode
-- Výstupní nároky:
-  - **národníČíslo**: 1234567890
-  - **zeměKód**: +49
+- Deklarace výstupů:
+  - **nationalNumber**: 1234567890
+  - **countryCode**: + 49

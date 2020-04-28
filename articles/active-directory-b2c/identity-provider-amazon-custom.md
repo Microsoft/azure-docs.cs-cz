@@ -1,7 +1,7 @@
 ---
 title: Nastavení přihlášení pomocí účtu Amazon pomocí vlastních zásad
 titleSuffix: Azure AD B2C
-description: Nastavte přihlášení pomocí účtu Amazon ve službě Azure Active Directory B2C pomocí vlastních zásad.
+description: Pomocí vlastních zásad nastavte přihlášení pomocí účtu Amazon v Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,60 +12,60 @@ ms.date: 10/05/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 2de891ee109677f92ff603759701f7732f5951ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78188507"
 ---
-# <a name="set-up-sign-in-with-an-amazon-account-using-custom-policies-in-azure-active-directory-b2c"></a>Nastavení přihlášení pomocí účtu Amazon pomocí vlastních zásad ve službě Azure Active Directory B2C
+# <a name="set-up-sign-in-with-an-amazon-account-using-custom-policies-in-azure-active-directory-b2c"></a>Nastavte přihlášení pomocí účtu Amazon pomocí vlastních zásad v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Tento článek ukazuje, jak povolit přihlášení pro uživatele z účtu Amazon pomocí [vlastních zásad](custom-policy-overview.md) v Azure Active Directory B2C (Azure AD B2C).
+V tomto článku se dozvíte, jak povolit přihlášení uživatelům z účtu Amazon pomocí [vlastních zásad](custom-policy-overview.md) v Azure Active Directory B2C (Azure AD B2C).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Proveďte kroky v [části Začínáme s vlastními zásadami](custom-policy-get-started.md).
-- Pokud ještě nemáte účet Amazon, vytvořte [https://www.amazon.com/](https://www.amazon.com/)si ho na adrese .
+- Proveďte kroky v části Začínáme [s vlastními zásadami](custom-policy-get-started.md).
+- Pokud ještě nemáte účet Amazon, vytvořte ho na adrese [https://www.amazon.com/](https://www.amazon.com/).
 
-## <a name="register-the-application"></a>Registrace přihlášky
+## <a name="register-the-application"></a>Registrace aplikace
 
-Chcete-li povolit přihlášení pro uživatele z účtu Amazon, musíte vytvořit aplikaci Amazon.
+Pokud chcete povolit přihlášení uživatelům z účtu Amazon, musíte vytvořit aplikaci Amazon.
 
-1. Přihlaste se do [Amazon Developer Center](https://login.amazon.com/) s přihlašovacími údaji svého účtu Amazon.
-2. Pokud jste tak ještě neučinili, klikněte na **Zaregistrovat se**, postupujte podle kroků registrace vývojáře a přijměte zásady.
-3. Vyberte **možnost Registrovat novou aplikaci**.
-4. Zadejte **adresu URL název**, **popis**a oznámení **o zásadách ochrany osobních údajů**a klepněte na tlačítko **Uložit**. Oznámení o ochraně osobních údajů je stránka, kterou spravujete a která uživatelům poskytuje informace o ochraně osobních údajů.
-5. V části **Nastavení webu** zkopírujte hodnoty **ID klienta**. Vyberte **Zobrazit tajný klíč,** chcete-li získat tajný klíč klienta a pak jej zkopírovat. Potřebujete oba ke konfiguraci účtu Amazon jako poskytovatele identity ve vašem tenantovi. **Tajný klíč klienta** je důležité pověření zabezpečení.
-6. V části **Nastavení webu** vyberte **Upravit**a zadejte `https://your-tenant-name.b2clogin.com` do pole Povolený původ **JavaScriptu** a `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` v **adresách URL allowed return**. Nahraďte `your-tenant-name` se jménem svého tenanta. Při zadávání názvu klienta použijte všechna malá písmena, i když je klient definován velkými písmeny v Azure AD B2C.
+1. Přihlaste se k [centru pro vývojáře Amazon](https://login.amazon.com/) pomocí svých přihlašovacích údajů k účtu Amazon.
+2. Pokud jste to ještě neudělali, klikněte na **zaregistrovat**, postupujte podle kroků registrace pro vývojáře a přijměte zásadu.
+3. Vyberte **Registrovat novou aplikaci**.
+4. Zadejte **název**, **Popis**a **adresu URL pro oznámení o ochraně osobních údajů**a potom klikněte na **Uložit**. Oznámení o ochraně osobních údajů je stránka, kterou spravujete, která poskytuje uživatelům informace o ochraně osobních údajů.
+5. V části **Nastavení webu** ZKOPÍRUJTE hodnoty **ID klienta**. Pokud chcete získat tajný klíč klienta a pak ho zkopírovat, vyberte **Zobrazit tajný kód** . K nakonfigurování účtu Amazon jako poskytovatele identity ve vašem tenantovi potřebujete obě tyto služby. **Tajný kód klienta** je důležité bezpečnostní pověření.
+6. V části **Nastavení webu** vyberte **Upravit**a potom zadejte `https://your-tenant-name.b2clogin.com` **Povolené zdroje JavaScriptu** a `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` **povolené návratové adresy URL**. Nahraďte `your-tenant-name` názvem vašeho tenanta. Při zadávání názvu tenanta používejte všechna malá písmena, a to i v případě, že je tenant v Azure AD B2C definovaný velkými písmeny.
 7. Klikněte na **Uložit**.
 
 ## <a name="create-a-policy-key"></a>Vytvoření klíče zásad
 
-Musíte uložit tajný klíč klienta, který jste dříve zaznamenali v tenantovi Azure AD B2C.
+Je potřeba uložit tajný klíč klienta, který jste předtím nahráli ve svém tenantovi Azure AD B2C.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
-2. Ujistěte se, že používáte adresář, který obsahuje vašeho klienta Azure AD B2C výběrem directory **+ předplatné** filtr v horní nabídce a výběrem adresáře, který obsahuje vašeho klienta.
-3. V levém horním rohu portálu Azure zvolte **Všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
-4. Na stránce Přehled vyberte **rozhraní Identity Experience Framework**.
-5. Vyberte **klávesy zásad** a pak vyberte **Přidat**.
-6. V části `Manual` **Možnosti**zvolte .
-7. Zadejte **název** klíče zásady. Například, `AmazonSecret`. Předpona `B2C_1A_` se automaticky přidá k názvu klíče.
-8. V **poli Tajné**zadejte tajný klíč klienta, který jste dříve zaznamenali.
-9. V případě použití `Signature` **klíče**vyberte .
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+2. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
+3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
+4. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
+5. Vyberte **klíče zásad** a pak vyberte **Přidat**.
+6. Pro **Možnosti**vyberte `Manual`možnost.
+7. Zadejte **název** klíče zásad. Například, `AmazonSecret`. Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
+8. Do **tajného klíče**zadejte tajný klíč klienta, který jste předtím nahráli.
+9. Pro **použití klíče**vyberte `Signature`.
 10. Klikněte na **Vytvořit**.
 
-## <a name="add-a-claims-provider"></a>Přidání poskytovatele deklarací identity
+## <a name="add-a-claims-provider"></a>Přidat zprostředkovatele deklarací identity
 
-Pokud chcete, aby se uživatelé přihlašovali pomocí účtu Amazon, musíte definovat účet jako poskytovatele deklarací identity, se kterým může Azure AD B2C komunikovat prostřednictvím koncového bodu. Koncový bod poskytuje sadu deklarací, které používá Azure AD B2C k ověření, že konkrétní uživatel byl ověřen.
+Pokud chcete, aby se uživatelé přihlásili pomocí účtu Amazon, musíte účet definovat jako zprostředkovatele deklarací identity, se kterým Azure AD B2C můžou komunikovat prostřednictvím koncového bodu. Koncový bod poskytuje sadu deklarací, které používá Azure AD B2C k ověření, že konkrétní uživatel byl ověřen.
 
-Účet Amazon můžete definovat jako poskytovatele deklarací identity přidáním do prvku **ClaimsProviders** v souboru rozšíření vaší zásady.
+Účet Amazon jako zprostředkovatele deklarací můžete definovat tak, že ho přidáte do prvku **ClaimsProviders** v souboru rozšíření zásady.
 
 
-1. Otevřete *soubor TrustFrameworkExtensions.xml*.
-2. Najít **ClaimsProviders** element. Pokud neexistuje, přidejte jej pod kořenový prvek.
-3. Přidejte nového **Zprostředkovatele deklarací** identity takto:
+1. Otevřete *soubor TrustFrameworkExtensions. XML*.
+2. Vyhledejte element **ClaimsProviders** . Pokud neexistuje, přidejte jej pod kořenový element.
+3. Přidejte nový **ClaimsProvider** následujícím způsobem:
 
     ```xml
     <ClaimsProvider>
@@ -109,41 +109,41 @@ Pokud chcete, aby se uživatelé přihlašovali pomocí účtu Amazon, musíte d
 4. Nastavte **client_id** na ID aplikace z registrace aplikace.
 5. Uložte soubor.
 
-### <a name="upload-the-extension-file-for-verification"></a>Nahrát soubor rozšíření pro ověření
+### <a name="upload-the-extension-file-for-verification"></a>Nahrajte soubor rozšíření pro ověření.
 
-Teď jste nakonfigurovali zásady tak, aby Azure AD B2C ví, jak komunikovat s adresářem Azure AD. Zkuste nahrát soubor rozšíření zásad, abyste potvrdili, že zatím nemá žádné problémy.
+Teď jste nakonfigurovali zásady tak, aby Azure AD B2C vědět, jak komunikovat s adresářem služby Azure AD. Zkuste nahrát soubor s příponou zásady jenom tak, aby se ověřilo, že zatím nemá žádné problémy.
 
-1. Na stránce **Vlastní zásady** v tenantovi Azure AD B2C vyberte **Zásady nahrávání**.
-2. Povolte **Přepište zásadu, pokud existuje**, a potom vyhledejte soubor *TrustFrameworkExtensions.xml* a vyberte jej.
+1. Na stránce **vlastní zásady** ve vašem tenantovi Azure AD B2C vyberte **Odeslat zásadu**.
+2. Pokud existuje, zapněte **zásadu přepsat**a pak vyhledejte a vyberte soubor *TrustFrameworkExtensions. XML* .
 3. Klikněte na **Odeslat**.
 
 ## <a name="register-the-claims-provider"></a>Registrace zprostředkovatele deklarací identity
 
-V tomto okamžiku byl nastaven zprostředkovatel identity, ale není k dispozici v žádné z přihlašovacích a přihlašovacích obrazovek. Chcete-li ji zpřístupnit, vytvořte duplikát existující cesty uživatele šablony a pak ji upravte tak, aby měla také zprostředkovatele identity Amazon.
+V tuto chvíli je poskytovatel identity nastavený, ale není k dispozici na žádném z obrazovek pro registraci a přihlašování. Aby byl k dispozici, vytvořte duplikát existující cesty uživatele šablony a pak ji upravte, aby měl také poskytovatele Amazon identity.
 
-1. Otevřete soubor *TrustFrameworkBase.xml* ze startovního balíčku.
-2. Vyhledejte a zkopírujte celý obsah prvku `Id="SignUpOrSignIn"` **UserJourney,** který obsahuje .
-3. Otevřete soubor *TrustFrameworkExtensions.xml* a vyhledejte element **UserJourneys.** Pokud prvek neexistuje, přidejte jeden.
-4. Vložte celý obsah **UserJourney** prvek, který jste zkopírovali jako podřízený **UserJourneys** element.
-5. Přejmenujte ID cesty uživatele. Například, `SignUpSignInAmazon`.
+1. Otevřete soubor *TrustFrameworkBase. XML* z úvodní sady.
+2. Vyhledejte a zkopírujte celý obsah prvku **UserJourney** , který obsahuje `Id="SignUpOrSignIn"`.
+3. Otevřete *soubor TrustFrameworkExtensions. XML* a vyhledejte element **userjourney** . Pokud element neexistuje, přidejte jej.
+4. Vložte celý obsah elementu **UserJourney** , který jste zkopírovali jako podřízený prvek **userjourney** elementu.
+5. Přejmenujte ID cesty pro uživatele. Například, `SignUpSignInAmazon`.
 
-### <a name="display-the-button"></a>Zobrazení tlačítka
+### <a name="display-the-button"></a>Zobrazit tlačítko
 
-**ClaimsProviderSelection** prvek je obdobou tlačítko zprostředkovatele identity na přihlašovací nebo přihlašovací obrazovce. Pokud přidáte **ClaimsProviderSelection** prvek pro účet Amazon, nové tlačítko se zobrazí, když uživatel přistane na stránce.
+Element **claimsproviderselection.** se podobá tlačítku poskytovatele identity na obrazovce pro registraci a přihlašování. Pokud přidáte pro účet Amazon element **claimsproviderselection.** , zobrazí se nové tlačítko, když se uživatel na stránce zařadí.
 
-1. Najděte **orchestrationstep** prvek, který zahrnuje `Order="1"` v cestě uživatele, které jste vytvořili.
-2. V části **ClaimsProviderSelects**přidejte následující prvek. Nastavte hodnotu **TargetClaimsExchangeId** na příslušnou hodnotu, například `AmazonExchange`:
+1. Vyhledejte element **OrchestrationStep** , který obsahuje `Order="1"` cestu k uživateli, kterou jste vytvořili.
+2. Pod **ClaimsProviderSelects**přidejte následující element. Nastavte hodnotu **TargetClaimsExchangeId** na odpovídající hodnotu, například `AmazonExchange`:
 
     ```XML
     <ClaimsProviderSelection TargetClaimsExchangeId="AmazonExchange" />
     ```
 
-### <a name="link-the-button-to-an-action"></a>Propojení tlačítka s akcí
+### <a name="link-the-button-to-an-action"></a>Propojit tlačítko s akcí
 
-Nyní, když máte tlačítko na místě, musíte jej propojit s akcí. Akce, v tomto případě je pro Azure AD B2C komunikovat s účtem Amazon přijímat token.
+Teď, když máte tlačítko na místě, musíte ho propojit s akcí. Tato akce je v tomto případě určena pro Azure AD B2C ke komunikaci s účtem Amazon pro příjem tokenu.
 
-1. Najít **OrchestrationStep,** `Order="2"` který zahrnuje v cestě uživatele.
-2. Přidejte následující **claimsexchange** prvek ujistěte se, že používáte stejnou hodnotu pro ID, které jste použili pro **TargetClaimsExchangeId**:
+1. Najděte **OrchestrationStep** , který obsahuje `Order="2"` cestu k uživateli.
+2. Přidejte následující prvek **ClaimsExchange** a ujistěte se, že používáte stejnou hodnotu pro ID, které jste použili pro **TargetClaimsExchangeId**:
 
     ```XML
     <ClaimsExchange Id="AmazonExchange" TechnicalProfileReferenceId="Amazon-OAuth" />
@@ -151,11 +151,11 @@ Nyní, když máte tlačítko na místě, musíte jej propojit s akcí. Akce, v 
 
     Aktualizujte hodnotu **TechnicalProfileReferenceId** na ID technického profilu, který jste vytvořili dříve. Například, `Amazon-OAuth`.
 
-3. Uložte soubor *TrustFrameworkExtensions.xml* a znovu jej nahrajte k ověření.
+3. Uložte soubor *TrustFrameworkExtensions. XML* a znovu ho nahrajte k ověření.
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Vytvoření aplikace Azure AD B2C
 
-Komunikace s Azure AD B2C probíhá prostřednictvím aplikace, kterou zaregistrujete ve vašem tenantovi B2C. V této části jsou uvedeny volitelné kroky, které můžete provést a vytvořit testovací aplikaci, pokud jste tak ještě neučinili.
+Komunikace s Azure AD B2C probíhá prostřednictvím aplikace, kterou zaregistrujete v tenantovi B2C. V této části jsou uvedeny volitelné kroky, které můžete provést, chcete-li vytvořit testovací aplikaci, pokud jste tak již neučinili.
 
 [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 
@@ -163,9 +163,9 @@ Komunikace s Azure AD B2C probíhá prostřednictvím aplikace, kterou zaregistr
 
 Aktualizujte soubor předávající strany (RP), který iniciuje cestu uživatele, kterou jste vytvořili.
 
-1. Vytvořte kopii *souboru SignUpOrSignIn.xml* ve svém pracovním adresáři a přejmenujte ji. Můžete jej například přejmenovat na *SignUpSignInAmazon.xml*.
+1. Vytvořte kopii *SignUpOrSignIn. XML* v pracovním adresáři a přejmenujte ji. Přejmenujte ho například na *SignUpSignInAmazon. XML*.
 2. Otevřete nový soubor a aktualizujte hodnotu atributu **PolicyId** pro **TrustFrameworkPolicy** s jedinečnou hodnotou. Například, `SignUpSignInAmazon`.
-3. Aktualizujte hodnotu **PublicPolicyUri** pomocí identifikátoru URI pro zásadu. Například`http://contoso.com/B2C_1A_signup_signin_amazon`
-4. Aktualizujte hodnotu atributu **ReferenceId** v **DefaultUserJourney** tak, aby odpovídalo ID nové cesty uživatele, kterou jste vytvořili (SignUpSignAmazon).
-5. Uložte změny, nahrajte soubor a vyberte novou zásadu v seznamu.
-6. Ujistěte se, že aplikace Azure AD B2C, kterou jste vytvořili, je vybraná v poli **Vybrat aplikaci** a pak ji otestujte kliknutím na **spustit nyní**.
+3. Aktualizujte hodnotu **PUBLICPOLICYURI** identifikátorem URI pro zásadu. Například`http://contoso.com/B2C_1A_signup_signin_amazon`
+4. Aktualizujte hodnotu atributu **ReferenceId** v **DefaultUserJourney** tak, aby odpovídala ID nové cesty uživatele, kterou jste vytvořili (SignUpSignAmazon).
+5. Uložte změny, nahrajte soubor a pak v seznamu vyberte novou zásadu.
+6. Ujistěte se, že je vybrána možnost Azure AD B2C aplikace, kterou jste vytvořili v poli **Vybrat aplikaci** , a poté ji otestujte kliknutím na tlačítko **Spustit nyní**.

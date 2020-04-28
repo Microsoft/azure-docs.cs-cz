@@ -1,6 +1,6 @@
 ---
-title: Povolení automatického zřizování uživatelů pro víceklientské aplikace – Azure AD
-description: Průvodce pro nezávislé dodavatele softwaru pro povolení automatického zřizování
+title: Povolení automatického zřizování uživatelů pro aplikace s více klienty – Azure AD
+description: Průvodce pro nezávislé výrobce softwaru pro povolení automatického zřizování
 services: active-directory
 documentationcenter: azure
 author: BarbaraSelden
@@ -16,107 +16,107 @@ ms.author: baselden
 ms.reviewer: zhchia
 ms.collection: active-directory
 ms.openlocfilehash: 93e1d879f69a95fe7472ce530e0e9f38f3480f39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77522389"
 ---
-# <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Povolení automatického zřizování uživatelů pro víceklientské aplikace
+# <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Povolení automatického zřizování uživatelů pro aplikaci s více klienty
 
-Automatické zřizování uživatelů je proces automatizace vytváření, údržby a odstraňování identit uživatelů v cílových systémech, jako jsou aplikace softwaru jako služby.
+Automatické zřizování uživatelů je proces automatizace vytváření, údržby a odebírání identit uživatelů v cílových systémech, jako jsou aplikace typu software jako služba.
 
-## <a name="why-enable-automatic-user-provisioning"></a>Proč povolit automatické zřizování uživatelů?
+## <a name="why-enable-automatic-user-provisioning"></a>Proč povolit Automatické zřizování uživatelů?
 
-Aplikace, které vyžadují, aby byl v aplikaci přítomen záznam uživatele před prvním přihlášením uživatele, vyžadují zřizování uživatele. Existují výhody pro vás jako poskytovatele služeb a výhody pro vaše zákazníky.
+Aplikace, které vyžadují, aby se v aplikaci nachází záznam uživatele před prvním přihlášením uživatele vyžaduje zřízení uživatele. Pro vás jako poskytovatel služeb a výhody pro vaše zákazníky nabízíme výhody.
 
-### <a name="benefits-to-you-as-the-service-provider"></a>Výhody pro vás jako poskytovatele služeb
+### <a name="benefits-to-you-as-the-service-provider"></a>Výhody jako poskytovatel služeb
 
-* Zvyšte zabezpečení aplikace pomocí platformy microsoft identity.
+* Zvyšte zabezpečení aplikace pomocí platformy Microsoft identity.
 
-* Snižte skutečné a vnímané úsilí zákazníků o přijetí vaší aplikace.
+* Pro přijetí vaší aplikace omezte skutečná a zjištěná úsilí zákazníka.
 
-* Snižte náklady při integraci s více poskytovateli identit (IdPs) pro automatické zřizování uživatelů pomocí system for-domain identity management (SCIM) založené zřizování.
+* Snižte náklady v integraci s více zprostředkovateli identity (zprostředkovatelů identity) pro Automatické zřizování uživatelů pomocí systému pro zřizování založené na SCIM (pro správu identit mezi doménami).
 
-* Snižte náklady na podporu tím, že poskytnete rozšířené protokoly, které zákazníkům pomohou řešit problémy s zřizováním uživatelů.
+* Snižte náklady na podporu poskytováním bohatých protokolů, které zákazníkům pomohou při řešení potíží se zřizováním uživatelů.
 
-* Zvyšte viditelnost vaší aplikace v [galerii aplikací Azure AD](https://azuremarketplace.microsoft.com/marketplace/apps).
+* Zvyšte viditelnost své aplikace v [galerii aplikací Azure AD](https://azuremarketplace.microsoft.com/marketplace/apps).
 
-* Získejte seznam s prioritou na stránce Kurzy aplikací.
+* Seznamte se s určením priorit na stránce kurzy aplikací.
 
 ### <a name="benefits-to-your-customers"></a>Výhody pro vaše zákazníky
 
-* Zvyšte zabezpečení automatickým odebráním přístupu k aplikaci pro uživatele, kteří změní role nebo ponechají organizaci vaší aplikaci.
+* Zvyšte zabezpečení tím, že automaticky odeberete přístup k aplikaci pro uživatele, kteří mění role nebo odejdou organizaci do vaší aplikace.
 
-* Zjednodušte správu uživatelů pro vaši aplikaci tím, že se vyhnete lidské chybě a opakované práci spojené s ručním zřizováním.
+* Zjednodušte správu uživatelů pro svou aplikaci tím, že vyloučíte lidskou chybu a opakující se práci související s ručním zřizováním.
 
-* Snižte náklady na hostování a údržbu vlastních zřizovacích řešení.
+* Snižte náklady na hostování a údržbu řešení pro zřizování s vlastním vývojem.
 
 ## <a name="choose-a-provisioning-method"></a>Výběr metody zřizování
 
-Azure AD poskytuje několik integračních cest, které umožňují automatické zřizování uživatelů pro vaši aplikaci.
+Azure AD poskytuje několik integračních cest, které umožňují Automatické zřizování uživatelů pro vaši aplikaci.
 
-* [Služba zřizování Azure AD](../app-provisioning/user-provisioning.md) spravuje zřizování a zrušení zřizování uživatelů z Azure AD do vaší aplikace (odchozí zřizování) a z vaší aplikace do Azure AD (příchozí zřizování). Služba se připojuje ke koncovým bodům rozhraní API rozhraní API pro správu identit mezi doménami (SCIM), které poskytuje vaše aplikace.
+* [Služba zřizování Azure AD](../app-provisioning/user-provisioning.md) spravuje zřizování a rušení zřizování uživatelů ze služby Azure AD do vaší aplikace (odchozí zřizování) a z vaší aplikace do Azure AD (příchozí zřizování). Služba se připojuje k systému pro koncové body rozhraní API pro správu uživatelů mezi doménami (SCIM), které poskytuje vaše aplikace.
 
-* Při použití [Microsoft Graphu](https://docs.microsoft.com/graph/)spravuje vaše aplikace příchozí a odchozí zřizování uživatelů a skupin z Azure AD do vaší aplikace dotazem na rozhraní Microsoft Graph API.
+* Při použití [Microsoft Graph](https://docs.microsoft.com/graph/)vaše aplikace spravuje příchozí a odchozí zřizování uživatelů a skupin ze služby Azure AD do vaší aplikace pomocí dotazování rozhraní API Microsoft Graph.
 
-* Zřizování uživatele assertion markup language Just in Time (SAML JIT) lze povolit, pokud vaše aplikace používá saml pro federaci. Používá informace o deklaracích odeslané v tokenu SAML pro zřizování uživatelů.
+* Pokud vaše aplikace používá pro federaci federačního rozhraní SAML, může být povoleno zřizování uživatelů v čase (SAML JIT) Security Assertion Markup Language. Pomocí informací o deklaracích odeslaných v tokenu SAML zřídí uživatele.
 
-Chcete-li zjistit, kterou možnost integrace použít pro vaši aplikaci, naleznete v tabulce porovnání vysoké úrovně a pak se podívejte na podrobnější informace o jednotlivých možnostech.
+Pokud chcete zjistit, která možnost integrace se má použít pro vaši aplikaci, přečtěte si referenční tabulku vysoké úrovně a podívejte se na podrobnější informace o jednotlivých možnostech.
 
-| Funkce povolené nebo rozšířené pomocí automatického zřizování| Služba zřizování Azure AD (SCIM 2.0)| Rozhraní Microsoft Graph API (OData v4.0)| SAML JIT |
+| Funkce, které jsou povolené nebo rozšířené pomocí automatického zřizování| Služba zřizování Azure AD (SCIM 2,0)| Rozhraní API pro Microsoft Graph (OData v 4.0)| JIT SAML |
 |---|---|---|---|
 | Správa uživatelů a skupin ve službě Azure AD| √| √| Pouze uživatel |
-| Správa uživatelů a skupin synchronizovaných z místní služby Active Directory| √*| √*| Pouze uživatel* |
-| Přístup k datům mimo uživatele a skupiny během zřizování přístupu k datům O365 (týmy, SharePoint, e-mail, kalendář, dokumenty atd.)| X+| √| × |
+| Správa uživatelů a skupin synchronizovaných z místní služby Active Directory| √*| √*| Jenom uživatel * |
+| Přístup k datům mimo uživatele a skupiny během zřizování přístupu k datům O365 (týmy, SharePoint, E-mail, kalendář, dokumenty atd.)| X +| √| × |
 | Vytváření, čtení a aktualizace uživatelů na základě obchodních pravidel| √| √| √ |
 | Odstranění uživatelů na základě obchodních pravidel| √| √| × |
-| Správa automatického zřizování uživatelů pro všechny aplikace z webu Azure Portal| √| ×| √ |
-| Podpora více poskytovatelů identit| √| ×| √ |
+| Správa automatického zřizování uživatelů pro všechny aplikace z Azure Portal| √| ×| √ |
+| Podpora více zprostředkovatelů identity| √| ×| √ |
 | Podpora účtů hostů (B2B)| √| √| √ |
-| Podpora účtů mimo podniky (B2C)| ×| √| √ |
+| Podpora účtů mimo podnik (B2C)| ×| √| √ |
 
-<sup>*</sup>– Nastavení Azure AD Connect je potřeba k synchronizaci uživatelů ze služby AD do služby Azure AD.  
-<sup>+</sup >– Použití SCIM pro zřizování nebrání integraci vaší aplikace s MIcrosoft Graph pro jiné účely.
+<sup>*</sup>– Azure AD Connect instalační program je nutný k synchronizaci uživatelů ze služby AD do Azure AD.  
+<sup>+</sup >– Použití SCIM pro zřizování vám nevylučuje integraci aplikace do MIcrosoft graphu pro jiné účely.
 
 ## <a name="azure-ad-provisioning-service-scim"></a>Služba zřizování Azure AD (SCIM)
 
-Zřizovací služby Azure AD používá [SCIM](https://aka.ms/SCIMOverview), oborový standard pro zřizování podporované mnoha zprostředkovateli identit (IdPs) a také aplikace (např. Doporučujeme použít službu zřizování Azure AD, pokud chcete podporovat idps kromě Azure AD, jako všechny SCIM kompatibilní IdP můžete připojit k koncovému bodu SCIM. Vytvoření jednoduché /User koncový bod, můžete povolit zřizování bez nutnosti udržovat vlastní synchronizační modul. 
+Služba zřizování Azure AD používá [SCIM](https://aka.ms/SCIMOverview), což je standardní obor pro zřizování podporovaný mnoha zprostředkovateli identity (zprostředkovatelů identity) a také aplikacemi (například časová rezerva, g Suite, Dropbox). Doporučujeme použít službu zřizování Azure AD, pokud chcete kromě služby Azure AD podporovat zprostředkovatelů identity, protože libovolný IdP kompatibilní s SCIM se může připojit ke svému koncovému bodu SCIM. Vytvořením jednoduchého koncového bodu/User můžete povolit zřizování bez nutnosti udržovat vlastní synchronizační modul. 
 
-Další informace o tom, jak uživatelé služby Azure AD Provisioning Service SCIM, najdete v tématu: 
+Další informace o tom, jak se uživatelé služby zřizování Azure AD SCIM, najdete v těchto tématech: 
 
 * [Další informace o standardu SCIM](https://aka.ms/SCIMOverview)
 
-* [Použití systému pro správu identit mezi doménami (SCIM) k automatickému zřizování uživatelů a skupin z Azure Active Directory do aplikací](../app-provisioning/use-scim-to-provision-users-and-groups.md)
+* [Automatické zřizování uživatelů a skupin z Azure Active Directory k aplikacím pomocí systému pro správu identit mezi doménami (SCIM)](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 
-* [Principy implementace Azure AD SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md)
+* [Porozumění implementaci Azure AD SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 
 ## <a name="microsoft-graph-for-provisioning"></a>Microsoft Graph pro zřizování
 
-Při použití Microsoft Graph pro zřizování, máte přístup ke všem bohatým uživatelským datům dostupným v graphu. Kromě podrobností o uživatelích a skupinách můžete také načíst další informace, jako jsou role uživatele, manažerské a přímé sestavy, vlastněná a registrovaná zařízení a stovky dalších datových částí dostupných v [aplikaci Microsoft Graph](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0). 
+Při použití Microsoft Graph ke zřízení máte přístup ke všem uživatelům, kteří jsou k dispozici v grafu. Kromě podrobností o uživatelích a skupinách můžete také načítat Další informace, jako jsou role uživatelů, vedoucí a přímé sestavy, vlastněná a registrovaná zařízení a stovky dalších datových částí, které jsou k dispozici v [Microsoft Graph](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0). 
 
-Více než 15 milionů organizací a 90 % 500 společností s majetkem využívá Azure AD při přihlášení ke cloudovým službám Microsoftu, jako jsou Office 365, Microsoft Azure, Enterprise Mobility Suite nebo Microsoft 365. Pomocí Microsoft Graphu můžete aplikaci integrovat s pracovními postupy pro správu, jako je registrace zaměstnanců (a ukončení), údržba profilu a další. 
+Více než 15 000 000 organizací a 90% Fortune 500 společnosti využívají Azure AD při přihlášení k odběru cloudových služeb Microsoftu, jako je Office 365, Microsoft Azure, Enterprise Mobility Suite nebo Microsoft 365. Pomocí Microsoft Graph můžete integrovat svou aplikaci s pracovními postupy pro správu, jako je například registrace zaměstnanců (a ukončení), údržba profilu a další. 
 
-Další informace o používání Microsoft Graphu pro zřizování:
+Další informace o použití Microsoft Graph pro zřizování:
 
-* [Domovská stránka aplikace Microsoft Graph](https://developer.microsoft.com/graph)
+* [Microsoft Graph domovskou stránku](https://developer.microsoft.com/graph)
 
 * [Přehled Microsoft Graphu](https://docs.microsoft.com/graph/overview)
 
-* [Přehled auth aplikace Microsoft Graph](https://docs.microsoft.com/graph/auth/)
+* [Přehled ověřování Microsoft Graph](https://docs.microsoft.com/graph/auth/)
 
-* [Začínáme s Microsoft Graphem](https://developer.microsoft.com/graph/get-started)
+* [Začínáme s Microsoft Graph](https://developer.microsoft.com/graph/get-started)
 
-## <a name="using-saml-jit-for-provisioning"></a>Použití SAML JIT pro zřizování
+## <a name="using-saml-jit-for-provisioning"></a>Používání JIT pro zřizování pomocí jazyka SAML
 
-Pokud chcete zřídit uživatele pouze při prvním přihlášení k aplikaci a není nutné automaticky odřazování uživatelů, SAML JIT je možnost. Vaše aplikace musí podporovat SAML 2.0 jako federační protokol pro použití SAML JIT.
+Pokud chcete uživatelům zřídit jenom při prvním přihlášení k vaší aplikaci a nemusíte automaticky zrušit zřízení uživatelů, SAML JIT je možnost. Vaše aplikace musí podporovat SAML 2,0 jako federační protokol pro použití JIT SAML.
 
-SAML JIT používá informace o deklaracích identity v tokenu SAML k vytvoření a aktualizaci informací o uživateli v aplikaci. Zákazníci mohou nakonfigurovat tyto požadované deklarace identity v aplikaci Azure AD podle potřeby. Někdy jit zřizování musí být povolena ze strany aplikace tak, aby zákazník můžete použít tuto funkci. SAML JIT je užitečné pro vytváření a aktualizaci uživatelů, ale nelze odstranit nebo deaktivovat uživatele v aplikaci.
+Kompilátor SAML používá informace o deklaracích identity v tokenu SAML k vytvoření a aktualizaci informací o uživateli v aplikaci. Zákazníci můžou podle potřeby nakonfigurovat tyto požadované deklarace identity v aplikaci Azure AD. V některých případech je potřeba zřizování JIT povolit ze strany aplikace, aby zákazník mohl používat tuto funkci. Kompilátor SAML JIT je vhodný pro vytváření a aktualizaci uživatelů, ale nemůže uživatele v aplikaci odstranit ani deaktivovat.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Povolení jednotného přihlášení pro vaši aplikaci](../manage-apps/isv-sso-content.md)
+* [Povolení jednotného přihlašování pro aplikaci](../manage-apps/isv-sso-content.md)
 
-* [Odešlete výpis aplikace](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) a staňte se partnerem společnosti Microsoft a vytvořte dokumentaci na webu společnosti Microsoft.
+* [Odesláním seznamu aplikací](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) a partnera s Microsoftem můžete vytvořit dokumentaci na webu Microsoftu.
 
-* [Připojte se k programu Microsoft Partner Network (zdarma) a vytvořte si plán pro uvedení na trh](https://partner.microsoft.com/en-us/explore/commercial).
+* [Připojte se k Microsoft Partner Network (zdarma) a vytvořte svůj přejít na trh](https://partner.microsoft.com/en-us/explore/commercial).

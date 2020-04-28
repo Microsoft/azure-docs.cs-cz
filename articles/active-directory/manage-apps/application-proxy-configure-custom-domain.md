@@ -1,6 +1,6 @@
 ---
-title: Vlastní domény v proxy aplikací azure ad | Dokumenty společnosti Microsoft
-description: Konfigurace a správa vlastních domén v proxy aplikací azure ad.
+title: Vlastní domény v Azure Proxy aplikací služby AD | Microsoft Docs
+description: Konfigurace a Správa vlastních domén v Azure Proxy aplikací služby AD.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,106 +17,106 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3f35658a75adb4d4c6c279e45087e741b8117e65
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79481377"
 ---
-# <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Konfigurace vlastních domén pomocí proxy aplikace Azure AD
+# <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Konfigurace vlastních domén pomocí Azure Proxy aplikací služby AD
 
-Když publikujete aplikaci prostřednictvím proxy aplikace služby Azure Active Directory, vytvoříte pro uživatele externí adresu URL. Tato adresa URL získá výchozí *yourtenant.msappproxy.net*domény . Pokud například publikujete aplikaci s názvem *Výdaje* ve vašem tenantovi s názvem *Contoso*, externí adresa URL je *\/https: /expenses-contoso.msappproxy.net*. Pokud chcete místo *msappproxy.net*použít vlastní název domény , můžete pro aplikaci nakonfigurovat vlastní doménu. 
+Když publikujete aplikaci prostřednictvím Proxy aplikací služby Azure Active Directory, vytvoříte externí adresu URL pro uživatele. Tato adresa URL získá výchozí *yourtenant.msappproxy.NET*domény. Například pokud publikujete aplikaci s názvem *výdaje* ve vašem tenantovi s názvem *Contoso*, externí adresa URL je *https\/:/Expenses-contoso.msappproxy.NET*. Pokud chcete místo *msappproxy.NET*použít vlastní název domény, můžete pro svou aplikaci nakonfigurovat vlastní doménu. 
 
 ## <a name="benefits-of-custom-domains"></a>Výhody vlastních domén
 
-Je vhodné nastavit vlastní domény pro vaše aplikace, kdykoli je to možné. Mezi důvody použití vlastních domén patří:
+Pokud je to možné, je vhodné nastavit vlastní domény pro aplikace. Mezi důvody pro použití vlastních domén patří:
 
-- Propojení mezi aplikacemi fungují i mimo podnikovou síť. Bez vlastní domény, pokud vaše aplikace má pevně zakódované interní odkazy na cíle mimo proxy aplikace a odkazy nejsou externě řešitelné, budou přerušit. Pokud jsou interní a externí adresy URL stejné, vyhnete se tomuto problému. Pokud nemůžete používat vlastní domény, najdete v článku [Přesměrování pevně zakódovaných odkazů pro aplikace publikované pomocí proxy aplikací Azure AD](../application-proxy-link-translation.md) pro jiné způsoby řešení tohoto problému. 
+- Propojení mezi aplikacemi funguje i mimo podnikovou síť. Pokud vaše aplikace obsahuje pevně zakódované interní odkazy na cíle mimo proxy server aplikace a odkazy se nedají externě přeložit, přestanou být bez vlastní domény. Pokud jsou vaše interní a externí adresy URL stejné, vyhnete se tomuto problému. Pokud nemůžete použít vlastní domény, přečtěte si téma [přesměrování pevně zakódované odkazů pro aplikace publikované pomocí Azure proxy aplikací služby AD](../application-proxy-link-translation.md) , kde najdete další způsoby, jak tento problém vyřešit. 
   
-- Vaši uživatelé budou mít jednodušší prostředí, protože se mohou dostat do aplikace se stejnou adresou URL z evnitř nebo vně sítě. Nemusí se učit různé interní a externí adresy URL ani sledovat jejich aktuální polohu. 
+- Uživatelé budou mít snazší možnosti, protože se můžou dostat do aplikace se stejnou adresou URL, která se nachází uvnitř nebo vně vaší sítě. Nepotřebují se učit různé interní a externí adresy URL nebo sledovat jejich aktuální umístění. 
 
-- Můžete ovládat svou značku a vytvořit požadované adresy URL. Vlastní doména může pomoci vytvořit důvěru uživatelů, protože uživatelé místo *msappproxy.net*zobrazují a používají známé jméno .
+- Můžete ovládat branding a vytvořit požadované adresy URL. Vlastní doména může pomáhat při sestavování důvěry vašich uživatelů, protože uživatelé uvidí a používají známý název místo *msappproxy.NET*.
 
-- Některé konfigurace budou fungovat pouze s vlastními doménami. Například potřebujete vlastní domény pro aplikace, které používají kód Složky zabezpečení Markup Language (SAML), například když používáte službu AD FS (Active Directory Federation Services), ale nemůžete používat službu WS-Federation. Další informace naleznete [v tématu Práce s aplikacemi podporujícími deklarace identity v proxy aplikaci](application-proxy-configure-for-claims-aware-applications.md). 
+- Některé konfigurace budou fungovat jenom s vlastními doménami. Například potřebujete vlastní domény pro aplikace, které používají Security Assertion Markup Language (SAML), například pokud používáte Active Directory Federation Services (AD FS) (AD FS), ale nemůžete použít WS-Federation. Další informace najdete v tématu [práce s aplikacemi pracujícími s deklaracemi v proxy aplikaci](application-proxy-configure-for-claims-aware-applications.md). 
 
-Pokud se interní a externí adresy URL neshodují, není tak důležité používat vlastní domény, ale můžete využít další výhody. 
+Pokud nemůžete, aby se interní a externí adresy URL shodovaly, nemusíte používat vlastní domény, ale můžete využít i další výhody. 
 
 ## <a name="dns-configuration-options"></a>Možnosti konfigurace DNS
 
-V závislosti na požadavcích můžete nastavit konfiguraci DNS několika možnostmi:
+Konfigurace DNS v závislosti na vašich požadavcích je několik možností:
 
-### <a name="same-internal-and-external-url-different-internal-and-external-behavior"></a>Stejná interní a externí adresa URL, odlišné interní a externí chování 
+### <a name="same-internal-and-external-url-different-internal-and-external-behavior"></a>Stejná interní a externí adresa URL, jiné vnitřní a vnější chování 
 
-Pokud nechcete, aby interní uživatelé byli směrováni prostřednictvím proxy aplikace, můžete nastavit *dns s rozděleným mozkem*. Rozdělená infrastruktura DNS směruje interní hostitele na interní server názvů domén a externí hostitele na externí server názvů domén pro překlad názvů. 
+Pokud nechcete, aby interní uživatelé procházeli prostřednictvím proxy aplikace, můžete nastavit *DNS pro dělené mozek*. Rozdělená infrastruktura DNS směruje interní hostitele na interní názvový server domény a externí hostitele na externí názvový server domény, aby bylo možné překlad názvů. 
 
 ![„Schizofrenní“ DNS](./media/application-proxy-configure-custom-domain/split-brain-dns.png)
 
 ### <a name="different-internal-and-external-urls"></a>Různé interní a externí adresy URL 
 
-Pokud se interní a externí adresy URL liší, není nutné konfigurovat chování rozdělených mozků, protože směrování uživatelů je určeno adresou URL. V takovém případě změníte pouze externí DNS a směrovat externí adresu URL do koncového bodu proxy aplikace. 
+Pokud se interní a externí adresy URL liší, nemusíte konfigurovat chování funkce Split-mozek, protože směrování uživatelů je určeno adresou URL. V takovém případě změníte pouze externí DNS a trasu externí adresu URL koncového bodu proxy aplikace. 
 
-Když vyberete vlastní doménu pro externí adresu URL, na informačním panelu se zobrazí položka CNAME, kterou je třeba přidat k externímu poskytovateli DNS. Tyto informace můžete vždy zobrazit tak, že přejdete na stránku **proxy aplikace** aplikace.
+Když pro externí adresu URL vyberete vlastní doménu, zobrazí informační panel záznam CNAME, který potřebujete přidat k externímu poskytovateli DNS. Tyto informace můžete vždy zobrazit na stránce **proxy aplikací** aplikace.
 
-## <a name="set-up-and-use-custom-domains"></a>Nastavení a používání vlastních domén
+## <a name="set-up-and-use-custom-domains"></a>Nastavení a použití vlastních domén
 
-Chcete-li nakonfigurovat místní aplikaci pro použití vlastní domény, potřebujete ověřenou vlastní doménu Služby Azure Active Directory, certifikát PFX pro vlastní doménu a místní aplikaci ke konfiguraci. 
+Pokud chcete nakonfigurovat místní aplikaci tak, aby používala vlastní doménu, budete potřebovat ověřenou Azure Active Directory vlastní doménu, certifikát PFX pro vlastní doménu a místní aplikaci, která se má nakonfigurovat. 
 
 ### <a name="create-and-verify-a-custom-domain"></a>Vytvoření a ověření vlastní domény
 
 Vytvoření a ověření vlastní domény:
 
-1. Ve službě Azure Active Directory vyberte v levé navigaci **vlastní názvy domén** a pak vyberte **Přidat vlastní doménu**. 
-1. Zadejte svůj vlastní název domény a vyberte **Přidat doménu**. 
-1. Na stránce domény zkopírujte informace o záznamu TXT pro vaši doménu. 
-1. Přejděte na svého doménového registrátora a vytvořte nový txt záznam pro vaši doménu na základě zkopírovaných informací DNS.
-1. Po registraci domény vyberte na stránce domény ve službě Azure Active Directory **možnost Ověřit**. Po **ověření**stavu domény můžete doménu použít ve všech konfiguracích Azure AD, včetně proxy aplikace. 
+1. V Azure Active Directory v levém navigačním panelu vyberte **vlastní názvy domén** a pak vyberte **Přidat vlastní doménu**. 
+1. Zadejte vlastní název domény a vyberte **Přidat doménu**. 
+1. Na stránce doména zkopírujte informace o záznamu TXT pro vaši doménu. 
+1. V závislosti na kopírovaných informacích DNS vyhledejte svůj doménový registrátor a vytvořte nový záznam TXT pro vaši doménu.
+1. Po registraci domény na stránce domény v Azure Active Directory vyberte **ověřit**. Po **ověření**stavu domény můžete použít doménu napříč všemi vašimi konfiguracemi služby Azure AD, včetně proxy aplikací. 
 
 Podrobnější pokyny najdete v tématu [Přidání vlastního názvu domény pomocí portálu Azure Active Directory](../fundamentals/add-custom-domain.md).
 
 ### <a name="configure-an-app-to-use-a-custom-domain"></a>Konfigurace aplikace pro použití vlastní domény
 
-Publikování aplikace prostřednictvím proxy aplikace s vlastní doménou:
+Publikování aplikace prostřednictvím proxy aplikací s vlastní doménou:
 
-1. U nové aplikace vyberte ve službě Azure Active Directory v levém navigačním panelu **podnikové aplikace.** Vyberte **Nová aplikace**. V části **Místní aplikace** vyberte Přidat **místní aplikaci**. 
+1. V případě nové aplikace v Azure Active Directory v levém navigačním panelu vyberte **podnikové aplikace** . Vyberte **Nová aplikace**. V části místní **aplikace** vyberte **Přidat místní aplikaci**. 
    
-   U aplikace, která už je v **podnikových aplikacích**, ji vyberte ze seznamu a v levém navigačním panelu vyberte **Proxy aplikace.** 
+   Pro aplikaci, která už je v **podnikových aplikacích**, vyberte ji ze seznamu a potom v levém navigačním panelu vyberte **proxy aplikace** . 
 
-2. Na stránce Nastavení proxy aplikace zadejte **název,** pokud přidáváte vlastní místní aplikaci.
+2. Na stránce nastavení proxy aplikace zadejte **název** , pokud přidáváte vlastní místní aplikaci.
 
-3.  Do pole **Interní adresa URL** zadejte interní adresu URL aplikace.
+3.  Do pole **interní adresa URL** zadejte interní adresu URL pro vaši aplikaci.
    
-4. V poli **Externí adresa URL** rozbalte seznam a vyberte vlastní doménu, kterou chcete použít.
+4. V poli **externí adresa URL** vyřaďte seznam a vyberte vlastní doménu, kterou chcete použít.
    
 5. Vyberte **Přidat**.
    
    ![Vybrat vlastní doménu](./media/application-proxy-configure-custom-domain/application-proxy.png)
    
-6. Pokud doména již certifikát má, zobrazí se v poli **Certifikát** informace o certifikátu. V opačném případě vyberte pole **Certifikát.** 
+6. Pokud již doména obsahuje certifikát, zobrazí se v poli **certifikát** informace o certifikátu. V opačném případě vyberte pole **certifikát** . 
    
-   ![Kliknutím nahrajete certifikát.](./media/application-proxy-configure-custom-domain/certificate.png)
+   ![Kliknutím Nahrajte certifikát.](./media/application-proxy-configure-custom-domain/certificate.png)
    
-7. Na stránce **s certifikátem SSL** vyhledejte a vyberte soubor certifikátu PFX. Zadejte heslo certifikátu a vyberte **možnost Odeslat certifikát**. Další informace o certifikátech naleznete v části [Certifikáty pro vlastní domény.](#certificates-for-custom-domains)
+7. Na stránce **certifikát SSL** vyhledejte a vyberte soubor certifikátu PFX. Zadejte heslo pro certifikát a vyberte **Odeslat certifikát**. Další informace o certifikátech najdete v části [certifikáty pro vlastní domény](#certificates-for-custom-domains) .
    
    ![Nahrát certifikát](./media/application-proxy-configure-custom-domain/ssl-certificate.png)
    
    > [!TIP] 
-   > Vlastní doména potřebuje svůj certifikát nahrát pouze jednou. Poté se nahraný certifikát použije automaticky při použití vlastní domény pro jiné aplikace.
+   > Vlastní doména vyžaduje, aby se certifikát nahrál jenom jednou. Nahraný certifikát se pak použije automaticky, když použijete vlastní doménu pro jiné aplikace.
    
-8. Pokud jste přidali certifikát, na stránce **Proxy aplikace** vyberte **Uložit**. 
+8. Pokud jste přidali certifikát, na stránce **proxy aplikace** vyberte **Uložit**. 
    
-9. Na informačním panelu na stránce **Proxy aplikace** si poznamenejte položku CNAME, kterou potřebujete přidat do zóny DNS. 
+9. Na informačním panelu na stránce **proxy aplikace** si poznamenejte záznam CNAME, který potřebujete přidat do zóny DNS. 
    
-   ![Přidat položku CNAME DNS](./media/application-proxy-configure-custom-domain/dns-info.png)
+   ![Přidat záznam DNS CNAME](./media/application-proxy-configure-custom-domain/dns-info.png)
    
-10. Postupujte podle pokynů na [webu Správa záznamů DNS a sad záznamů pomocí portálu Azure pro](../../dns/dns-operations-recordsets-portal.md) přidání záznamu DNS, který přesměruje novou externí adresu URL do domény *msappproxy.net.*
+10. Postupujte podle pokynů v tématu [Správa záznamů a sad záznamů DNS pomocí Azure Portal](../../dns/dns-operations-recordsets-portal.md) k přidání záznamu DNS, který přesměruje novou externí adresu URL do domény *msappproxy.NET* .
    
-11. Chcete-li zkontrolovat, zda je záznam DNS správně nakonfigurován, ověřte pomocí příkazu [nslookup,](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx) že je externí adresa URL dostupná a *že se msapproxy.net* doména zobrazí jako alias.
+11. Pokud chcete zkontrolovat, jestli je záznam DNS správně nakonfigurovaný, pomocí příkazu [nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx) potvrďte, že je vaše externí adresa URL dostupná, a doména *msapproxy.NET* se zobrazí jako alias.
 
-Aplikace je nyní nastavena na použití vlastní domény. Nezapomeňte přiřadit uživatele k aplikaci před testováním nebo vydáním. 
+Vaše aplikace je teď nastavená tak, aby používala vlastní doménu. Nezapomeňte přiřadit uživatele k aplikaci, než ji otestujete nebo vydáte. 
 
-Pokud chcete změnit doménu aplikace, vyberte jinou doménu z rozevíracího seznamu v **externí adrese URL** na stránce proxy **aplikace.** V případě potřeby nahrajte certifikát pro aktualizovanou doménu a aktualizujte záznam DNS. Pokud v rozevíracím seznamu v **externí adrese URL**nevidíte požadovanou vlastní doménu , nemusí být ověřena.
+Pokud chcete změnit doménu pro aplikaci, vyberte v rozevíracím seznamu **externí adresy URL** na stránce **proxy aplikací** aplikace jinou doménu. V případě potřeby Nahrajte certifikát pro aktualizovanou doménu a aktualizujte záznam DNS. Pokud v rozevíracím seznamu **externí adresy URL**nevidíte požadovanou vlastní doménu, nemusí být ověřena.
 
-Podrobnější pokyny pro proxy aplikace [najdete v tématu Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace ve službě Azure Active Directory](application-proxy-add-on-premises-application.md).
+Podrobnější pokyny pro proxy aplikací najdete v tématu [kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory](application-proxy-add-on-premises-application.md).
 
 ## <a name="certificates-for-custom-domains"></a>Certifikáty pro vlastní domény
 
@@ -124,23 +124,23 @@ Certifikát vytvoří zabezpečené připojení TLS pro vaši vlastní doménu.
 
 ### <a name="certificate-formats"></a>Formáty certifikátů
 
-Musíte použít certifikát PFX, abyste zajistili, že jsou zahrnuty všechny požadované zprostředkující certifikáty. Certifikát musí obsahovat soukromý klíč.
+Abyste měli jistotu, že jsou zahrnuté všechny požadované zprostředkující certifikáty, musíte použít certifikát PFX. Certifikát musí obsahovat privátní klíč.
 
-Neexistuje žádné omezení na metody podpisu certifikátu. Je podporována kryptografie eliptické křivky (ECC), alternativní název předmětu (SAN) a další běžné typy certifikátů. 
+Neexistuje žádné omezení metod podpisu certifikátu. Podporuje se typ ECC (Cryptography Curve Cryptography), alternativní název předmětu (SAN) a další typy běžných certifikátů. 
 
-Certifikáty se zástupnými symboly můžete použít, pokud se zástupný znak shoduje s externí adresou URL. Pro [aplikace se zástupnými symboly](application-proxy-wildcard.md)je nutné použít certifikáty se zástupnými symboly . Pokud chcete certifikát použít také pro přístup k subdoménám, je nutné přidat zástupné znaky subdomény jako alternativní názvy předmětů do stejného certifikátu. Například certifikát pro * \*.adventure-works.com* nebude fungovat pro * \*.apps.adventure-works.com,* pokud nepřidáte * \*.apps.adventure-works.com* jako alternativní název subjektu. 
+Můžete použít certifikáty se zástupnými znaky, pokud se zástupný znak shoduje s externí adresou URL. Pro [aplikace se zástupnými znaky](application-proxy-wildcard.md)musíte použít certifikáty se zástupnými znaky. Chcete-li použít certifikát k přístupu k subdoménám, je nutné přidat zástupné znaky subdomény jako alternativní názvy předmětu do stejného certifikátu. Například certifikát pro * \*. Adventure-Works.com* nebude fungovat pro * \*. Apps.Adventure-Works.com* , pokud nepřidáte * \*. Apps.Adventure-Works.com* jako alternativní název subjektu. 
 
-Certifikáty vydané vlastní infrastrukturou veřejných klíčů (PKI) můžete použít, pokud je řetěz certifikátů nainstalován na vašich klientských zařízeních. Intune může tyto certifikáty nasadit do spravovaných zařízení. U nespravovaných zařízení je nutné tyto certifikáty nainstalovat ručně. 
+Pokud je v klientských zařízeních nainstalovaný řetěz certifikátů, můžete použít certifikáty vydané vlastní infrastrukturou veřejných klíčů (PKI). Intune může tyto certifikáty nasadit na spravovaná zařízení. U nespravovaných zařízení musíte tyto certifikáty nainstalovat ručně. 
 
-Nedoporučujeme používat soukromou kořenovou certifikační autoritu, protože soukromá kořenová certifikační autorita by také musela být zatlačena do klientských počítačů, což může představovat mnoho výzev.
+Nedoporučujeme používat privátní kořenovou certifikační autoritu, protože privátní kořenová certifikační autorita by taky musela být vložená do klientských počítačů, což může vést k mnoha problémům.
 
 ### <a name="certificate-management"></a>Správa certifikátů
 
-Veškerá správa certifikátů probíhá prostřednictvím jednotlivých stránek aplikace. Přejděte na stránku **proxy aplikace aplikace** pro přístup k poli **Certifikát.**
+Správa všech certifikátů probíhá prostřednictvím stránek jednotlivých aplikací. Pro přístup k poli **certifikátu** přejděte na stránku **proxy aplikací** aplikace.
 
-Stejný certifikát můžete použít pro více aplikací. Pokud nahraný certifikát pracuje s jinou aplikací, bude použit automaticky. Při přidání nebo konfiguraci aplikace nebudete vyzváni k jeho znovunahrání. 
+Stejný certifikát můžete použít pro více aplikací. Pokud nahraný certifikát funguje s jinou aplikací, použije se automaticky. Po přidání nebo konfiguraci aplikace se vám nezobrazí výzva k jejímu nahrání. 
 
-Po vypršení platnosti certifikátu se zobrazí upozornění, že máte nahrát jiný certifikát. Pokud je certifikát odvolán, může se uživatelům při přístupu k aplikaci zobrazit upozornění zabezpečení. Chcete-li aktualizovat certifikát pro aplikaci, přejděte na stránku **Proxy aplikace,** vyberte **Certifikát**a nahrajte nový certifikát. Pokud starý certifikát nepoužívá jiné aplikace, automaticky se odstraní. 
+Po vypršení platnosti certifikátu se zobrazí upozornění, abyste si nahráli jiný certifikát. Pokud je certifikát odvolaný, můžou se uživatelům při přístupu k aplikaci zobrazit upozornění zabezpečení. Pokud chcete aktualizovat certifikát pro aplikaci, přejděte na stránku **proxy aplikace** pro aplikaci, vyberte **certifikát**a nahrajte nový certifikát. Pokud starý certifikát nepoužívá jiné aplikace, automaticky se odstraní. 
 
 ## <a name="next-steps"></a>Další kroky
 * [Povolte jednotné přihlašování](application-proxy-configure-single-sign-on-with-kcd.md) k publikovaným aplikacím pomocí ověřování Azure AD.

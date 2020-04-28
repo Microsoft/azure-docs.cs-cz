@@ -1,6 +1,6 @@
 ---
-title: Zřizování uživatelů do aplikace Azure AD Gallery trvá hodiny nebo déle
-description: Jak zjistit, proč zřizování do vaší aplikace může trvat déle, než jste očekávali
+title: Zřizování uživatelů v aplikaci Galerie Azure AD trvá několik hodin.
+description: Jak zjistit, proč zřizování vaší aplikace může trvat déle, než jste očekávali.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,23 +17,23 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bb22d19733fbeb162fba55dd732c10e552879c78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77522641"
 ---
-# <a name="user-provisioning-to-an-azure-ad-gallery-application-is-taking-hours-or-more"></a>Zřizování uživatelů do aplikace Azure AD Gallery trvá hodiny nebo víc
+# <a name="user-provisioning-to-an-azure-ad-gallery-application-is-taking-hours-or-more"></a>Zřizování uživatelů pro aplikaci Galerie Azure AD trvá několik hodin.
 
-Při prvním povolení automatické zřizování pro aplikaci počáteční cyklus může trvat od 20 minut do několika hodin, v závislosti na velikosti adresáře Azure AD a počet uživatelů v oboru pro zřizování. 
+Když poprvé povolíte automatické zřizování pro aplikaci, počáteční cyklus může trvat až 20 minut až několik hodin, a to v závislosti na velikosti adresáře Azure AD a počtu uživatelů v oboru pro zřizování. 
 
-Následné synchronizace po počátečním cyklu být rychlejší, jako zřizovací služba ukládá vodoznaky, které představují stav obou systémů po počátečnícyklus, zlepšení výkonu následné synchronizace.
+Následná synchronizace po počátečním cyklu, protože služba zřizování ukládá meze, které reprezentují stav obou systémů po počátečním cyklu, což zvyšuje výkon následných synchronizací.
 
-## <a name="how-to-improve-provisioning-performance"></a>Jak zlepšit výkon zřizování
+## <a name="how-to-improve-provisioning-performance"></a>Jak vylepšit výkon zřizování
 
-Pokud počáteční cyklus trvá déle než několik hodin, je jedna věc, kterou můžete udělat pro zlepšení výkonu:
+Pokud počáteční cyklus trvá déle než pár hodin, můžete k vylepšení výkonu udělat jednu z těchto věcí:
 
--   **Filtry oborů uživatelů.** Filtry oborů umožňují doladit data, která služba zřizování extrahuje z Azure AD filtrováním uživatelů na základě konkrétních hodnot atributů. Další informace o filtrech oborů naleznete v [tématu Zřizování aplikací založených na atributech pomocí filtrů oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+-   **Filtry oboru uživatele.** Filtry oborů vám umožňují vyladit data, která služba zřizování z Azure AD extrahuje, filtrováním uživatelů na základě konkrétních hodnot atributů. Další informace o filtrech oborů najdete v tématu [zřizování aplikací na základě atributů s filtry oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 ## <a name="next-steps"></a>Další kroky
 [Automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](user-provisioning.md)

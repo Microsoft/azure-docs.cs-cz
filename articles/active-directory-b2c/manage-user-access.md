@@ -1,6 +1,6 @@
 ---
-title: Správa přístupu uživatelů ve službě Azure Active Directory B2C | Dokumenty společnosti Microsoft
-description: Zjistěte, jak identifikovat nezletilé osoby, shromažďovat data narození a data země/oblasti a získat přijetí podmínek použití ve vaší aplikaci pomocí Azure AD B2C.
+title: Správa přístupu uživatele v Azure Active Directory B2C | Microsoft Docs
+description: Naučte se identifikovat nezletilé, shromažďovat data narození a země nebo oblasti a získávat ve své aplikaci přijetí podmínek použití pomocí Azure AD B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,110 +11,110 @@ ms.date: 07/24/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: f04a3fea3801f917a3ae4aced04ef3824d1cfa82
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78184515"
 ---
-# <a name="manage-user-access-in-azure-active-directory-b2c"></a>Správa přístupu uživatelů ve službě Azure Active Directory B2C
+# <a name="manage-user-access-in-azure-active-directory-b2c"></a>Správa přístupu uživatelů v Azure Active Directory B2C
 
-Tento článek popisuje, jak spravovat přístup uživatelů k vašim aplikacím pomocí Služby Azure Active Directory B2C (Azure AD B2C). Správa přístupu ve vaší aplikaci zahrnuje:
+Tento článek popisuje, jak spravovat přístup uživatelů k aplikacím pomocí Azure Active Directory B2C (Azure AD B2C). Správa přístupu v aplikaci zahrnuje:
 
 - Identifikace nezletilých a řízení přístupu uživatelů k vaší aplikaci.
-- Vyžadování souhlasu rodičů pro nezletilé, aby používali vaše žádosti.
-- Shromažďování dat o narození a zemi/oblasti od uživatelů.
-- Zachycení smlouvy o podmínkách použití a gating přístup.
+- Vyžadování souhlasu rodičů pro nezletilé aplikace pro používání vašich aplikací.
+- Shromažďování dat o narození a zemi nebo oblasti od uživatelů
+- Zachytávání smlouvy o používání podmínek a přístupu k nim.
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-## <a name="control-minor-access"></a>Řízení menšího přístupu
+## <a name="control-minor-access"></a>Řízení vedlejšího přístupu
 
-Aplikace a organizace se mohou rozhodnout zablokovat nezletilým osobám používání aplikací a služeb, které nejsou určeny pro tuto cílovou skupinu. Alternativně se aplikace a organizace mohou rozhodnout přijmout nezletilé osoby a následně spravovat souhlas rodičů a poskytovat přípustné zkušenosti pro nezletilé, jak je diktováno obchodními pravidly a povoleno nařízením.
+Aplikace a organizace se můžou rozhodnout, jestli mají v používání aplikací a služeb, které nejsou cílené na tuto cílovou skupinu, zablokovat mladistvé. Případně se můžou aplikace a organizace rozhodnout přijmout nezletilý a následně spravovat souhlas rodičů a poskytovat oprávněná prostředí pro menšiny, jak je stanoví obchodní pravidla a která jsou povolená nařízením.
 
-Pokud je uživatel identifikován jako nezletilá, můžete nastavit tok uživatele v Azure AD B2C na jednu ze tří možností:
+Pokud je uživatel označený jako nepatrný, můžete nastavit tok uživatele v Azure AD B2C na jednu ze tří možností:
 
-- **Odeslat podepsanou id_token JWT zpět do aplikace**: Uživatel je registrován v adresáři a token je vrácen do aplikace. Aplikace pak pokračuje uplatněním obchodních pravidel. Žádost může například pokračovat v procesu souhlasu rodičů. Chcete-li použít tuto metodu, zvolte přijímat **ageGroup** a **consentProvidedForMinor** deklarace z aplikace.
+- **Odeslání podepsaného ID_TOKEN JWT zpět do aplikace**: uživatel je zaregistrován v adresáři a do aplikace se vrátí token. Aplikace pak pokračuje použitím obchodních pravidel. Aplikace může například pokračovat v procesu souhlasu rodičů. Chcete-li použít tuto metodu, vyberte možnost přijímat deklarace identity **ageGroup** a **consentProvidedForMinor** z aplikace.
 
-- **Odeslat nepodepsaný token JSON do aplikace**: Azure AD B2C upozorní aplikaci, že uživatel je nezletilá a poskytuje stav souhlasu uživatele od rodičů. Aplikace pak pokračuje uplatněním obchodních pravidel. Token JSON nedokončí úspěšné ověření s aplikací. Aplikace musí zpracovat neověřeného uživatele podle deklarací obsažených v tokenu JSON, které mohou zahrnovat **název**, **e-mail**, **ageGroup**a **consentProvidedForMinor**.
+- **Odeslání nepodepsaného tokenu JSON do aplikace**: Azure AD B2C upozorní aplikaci, že uživatel je nepatrný, a poskytuje stav souhlasu uživatele rodičů. Aplikace pak pokračuje použitím obchodních pravidel. Token JSON nedokončil úspěšné ověření v aplikaci. Aplikace musí zpracovat neověřeného uživatele v závislosti na deklaracích obsažených v tokenu JSON, což může zahrnovat **název**, **e-mail**, **ageGroup**a **consentProvidedForMinor**.
 
-- **Blokovat uživatele:** Pokud je uživatel nezletilá a nebyl poskytnut souhlas rodičů, může Azure AD B2C upozornit uživatele, že jsou blokováni. Není vydán žádný token, přístup je blokován a uživatelský účet není vytvořen během registrační cesty. Chcete-li implementovat toto oznámení, zadejte vhodnou stránku obsahu HTML/CSS, která informuje uživatele a předloží příslušné možnosti. Žádost o nové registrace nepotřebuje žádné další kroky.
+- **Blokování uživatele**: Pokud je uživatel nezletilý a nebyl zadán souhlas rodičů, Azure AD B2C může uživatele informovat o tom, že jsou zablokované. Není vystaven žádný token, přístup je zablokován a uživatelský účet není vytvořen během registrační cesty. Chcete-li implementovat toto oznámení, poskytněte vhodnou stránku obsahu HTML/CSS, která uživatele informuje a nabídne příslušné možnosti. Aplikace nevyžaduje pro nové registrace žádnou další akci.
 
 ## <a name="get-parental-consent"></a>Získání souhlasu rodičů
 
-V závislosti na regulaci použití může být nutné udělit souhlas rodičů uživatelem, který je ověřen jako dospělý. Azure AD B2C neposkytuje prostředí k ověření věku jednotlivce a pak povolit ověřené dospělé udělit souhlas rodičů nezletilého. Tato zkušenost musí být poskytnuta aplikací nebo jiným poskytovatelem služeb.
+V závislosti na pravidle aplikace může být nutné udělit souhlas rodičů uživateli, který je ověřený jako dospělý. Azure AD B2C neposkytuje prostředí pro kontrolu stáří jednotlivce a pak umožní ověřenému dospělému udělit všem uživatelům souhlas rodičů. Toto prostředí musí poskytnout aplikace nebo jiný poskytovatel služeb.
 
-Následuje příklad toku uživatele pro shromažďování souhlasu rodičů:
+Následuje příklad toku uživatele pro shromáždění souhlasu rodičů:
 
-1. Operace [rozhraní MICROSOFT Graph API](https://docs.microsoft.com/graph/use-the-api) identifikuje uživatele jako nezletilou a vrátí uživatelská data do aplikace ve formě nepodepsaného tokenu JSON.
+1. Operace [Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api) identifikuje uživatele jako nezletilý a vrátí data uživatelů do aplikace ve formě nepodepsaného tokenu JSON.
 
-2. Aplikace zpracuje token JSON a zobrazí obrazovku nezletilému, upozorní je, že je vyžadován souhlas rodičů, a požádá o souhlas rodiče online.
+2. Aplikace zpracovává token JSON a zobrazuje obrazovku jako nezletilou, oznamuje jim, že je vyžadován souhlas rodičů a žádá o souhlas nadřazeného objektu online.
 
-3. Azure AD B2C zobrazuje cestu přihlášení, že uživatel můžete přihlásit normálně a vydá token pro aplikaci, která je nastavena tak, aby **zahrnovala legalAgeGroupClassification = "minorWithParentalConsent"**. Aplikace shromažďuje e-mailovou adresu rodiče a ověřuje, zda je rodič dospělý. K tomu používá důvěryhodný zdroj, například národní id office, ověření licence nebo ověření kreditní karty. Pokud je ověření úspěšné, aplikace vyzve nezletilého k přihlášení pomocí toku uživatele Azure AD B2C. Pokud je odepřen souhlas (například pokud **legalAgeGroupClassification = "minorWithoutParentalConsent"**), Azure AD B2C vrátí token JSON (ne přihlášení) do aplikace k restartování procesu souhlasu. Volitelně je možné přizpůsobit tok uživatele tak, aby nezletilý nebo dospělý mohl znovu získat přístup k účtu nezletilého zasláním registračního kódu na e-mailovou adresu nezletilého nebo e-mailovou adresu dospělé osoby v záznamu.
+3. Azure AD B2C zobrazuje cestu pro přihlášení, ke které se uživatel může přihlásit normálně, a vydá token aplikaci, která je nastavená na include **legalAgeGroupClassification = "minorWithParentalConsent"**. Aplikace shromáždí e-mailovou adresu nadřazeného objektu a ověří, zda je nadřazeným prvkem dospělý. Pokud to chcete udělat, používá důvěryhodný zdroj, jako je státní úřad pro identifikaci, ověření licence nebo důkaz platební karty. Pokud je ověření úspěšné, aplikace vyzve k jejímu přihlášení méně pomocí Azure AD B2C toku uživatele. Pokud je souhlas odepřen (například pokud **legalAgeGroupClassification = "minorWithoutParentalConsent"**), Azure AD B2C vrátí token JSON (nejedná se o přihlášení) do aplikace, aby mohl restartovat proces souhlasu. Je volitelně možné přizpůsobit tok uživatele tak, aby nezletilý nebo dospělý mohl znovu získat přístup k účtu k menšímu účtu odesláním registračního kódu na e-mailovou adresu nezletilé osoby nebo e-mailovou adresu dospělého.
 
-4. Aplikace nabízí nezletilému možnost odvolat souhlas.
+4. Aplikace nabízí možnost podverze k odvolání souhlasu.
 
-5. Pokud nezletilá osoba nebo dospělá osoba odvolá souhlas, rozhraní API aplikace Microsoft Graph API lze použít ke změně **souhlasuProvidedForMinor** na **denied**. Alternativně se žádost může rozhodnout odstranit nezletilou osobu, jejíž souhlas byl odvolán. Volitelně je možné přizpůsobit tok uživatele tak, aby ověřená nezletilá osoba (nebo nadřazená osoba, která používá účet nezletilého) mohla odvolat souhlas. Azure AD B2C záznamy **consentProvidedForMinor** jako **odepřen .**
+5. V případě, že podverze nebo dospělý odvolá souhlas, lze Microsoft Graph rozhraní API použít ke změně **consentProvidedForMinor** na hodnotu **Odepřít**. Alternativně se může aplikace rozhodnout pro odstranění menšího, ale jeho souhlasu bylo odvoláno. Je volitelně možné přizpůsobit tok uživatele tak, aby ověřený vedlejší (nebo nadřazená položka, která používá účet nezletilý), mohla odvolat souhlas. Azure AD B2C zaznamenává **consentProvidedForMinor** jako **odepřené**.
 
-Další informace o **legalAgeGroupClassification**, **consentProvidedForMinor**a **ageGroup**naleznete v [tématech Typ prostředku uživatele](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user). Další informace o vlastních atributech naleznete [v tématu Použití vlastních atributů ke shromažďování informací o uživatelích](user-flow-custom-attributes.md). Při řešení rozšířených atributů pomocí rozhraní Microsoft Graph API je nutné použít dlouhou verzi atributu, například *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth:* *2011-01-01T00:00:00Z*.
+Další informace o **legalAgeGroupClassification**, **consentProvidedForMinor**a **ageGroup**najdete v tématu [typ prostředku uživatele](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user). Další informace o vlastních atributech najdete v tématu [použití vlastních atributů ke shromažďování informací o vašich spotřebitelích](user-flow-custom-attributes.md). Při adresování rozšířených atributů pomocí rozhraní Microsoft Graph API je nutné použít dlouhou verzi atributu, například *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*.
 
-## <a name="gather-date-of-birth-and-countryregion-data"></a>Shromáždit data narození a údaje o zemi/oblasti
+## <a name="gather-date-of-birth-and-countryregion-data"></a>Shromážděte data narození a země/oblasti.
 
-Aplikace mohou spoléhat na Azure AD B2C shromažďovat datum narození (DOB) a země nebo oblast informace od všech uživatelů během registrace. Pokud tyto informace ještě neexistují, aplikace může požádat uživatele během další cesty ověřování (přihlášení). Uživatelé nemohou pokračovat bez poskytnutí informací o své dob a zemi nebo oblasti. Azure AD B2C používá informace k určení, zda je jednotlivec považován za nezletilou podle regulačních standardů této země nebo oblasti.
+Aplikace se můžou spoléhat na Azure AD B2C ke shromáždění data narození (DOB) a informací o zemi nebo oblasti od všech uživatelů během registrace. Pokud tyto informace ještě neexistují, může je aplikace požádat od uživatele při příští cestě k ověřování (přihlášení). Uživatelé nemohou pokračovat, aniž by poskytovali informace o DOB a zemi/oblasti. Azure AD B2C používá informace k určení, zda se jednotlivec považuje za nezletilé podle regulativních standardů této země nebo oblasti.
 
-Přizpůsobený tok uživatelů může shromažďovat informace dob a země nebo oblasti a používat transformace deklarací Azure AD B2C k určení **ageGroup** a zachovat výsledek (nebo zachovat DOB a informace o zemi nebo oblasti) přímo v adresáři.
+Přizpůsobený tok uživatele může shromažďovat informace o DOB a zemi/oblasti a používat Azure AD B2C transformaci deklarací identity k určení **ageGroup** a uchování výsledku (nebo uchování informací o dob a zemi/oblasti přímo) v adresáři.
 
-Následující kroky ukazují logiku, která se používá k výpočtu **ageGroup** od data narození uživatele:
+Následující kroky ukazují logiku, která se používá k výpočtu **ageGroup** z data narození uživatele:
 
-1. Pokuste se najít zemi podle kódu země v seznamu. Pokud země není nalezena, vraťte se do **výchozího nastavení**.
+1. Zkuste v seznamu najít zemi podle kódu země. Pokud se země nenajde, vraťte se k **výchozímu**.
 
-2. Pokud **minorConsent** uzel je k dispozici v elementu země:
+2. Pokud se uzel **MinorConsent** nachází v prvku země:
 
-    a. Vypočítejte datum, ve které se uživatel musel narodit, aby mohl být považován za dospělého. Pokud je například aktuální datum 14. **MinorConsent**
+    a. Vypočítat datum, kdy uživatel musí být ve stavu, aby byl považován za dospělé. Pokud je aktuální datum například 14. března 2015 a **MinorConsent** je 18, datum narození nesmí být pozdější než 14. března 2000.
 
-    b. Porovnejte minimální datum narození se skutečným datem narození. Pokud je minimální datum narození před datem narození uživatele, vrátí výpočet jako výpočet věkové skupiny **menší.**
+    b. Porovnejte minimální datum narození s aktuálním datem narození. Pokud je minimální datum narození před datem narození uživatele, vrátí tento výpočet jako výpočet věkové skupiny **vedlejší** hodnotu.
 
-3. Pokud **minorNoConsentRequired** uzel je k dispozici v elementu země, opakujte kroky 2a a 2b pomocí hodnoty z **MinorNoConsentRequired**. Výstup 2b vrátí **MinorNoConsentRequired,** pokud je minimální datum narození před datem narození uživatele.
+3. Pokud se uzel **MinorNoConsentRequired** nachází v prvku Country, opakujte kroky 2a a 2b pomocí hodnoty z **MinorNoConsentRequired**. Výstupem programu 2b vrátí **MinorNoConsentRequired** , pokud je minimální datum narození před datem narození uživatele.
 
-4. Pokud ani jeden výpočet nevrátí hodnotu true, vrátí výpočet **hodnotu Dospělý**.
+4. Pokud žádný výpočet nevrátí hodnotu true, výpočet vrátí **dospělý**.
 
-Pokud aplikace spolehlivě shromáždila data DOB nebo země nebo oblasti jinými metodami, může aplikace použít rozhraní Graph API k aktualizaci uživatelského záznamu pomocí těchto informací. Například:
+Pokud aplikace spolehlivě shromáždila data DOB nebo země nebo oblasti jinými metodami, aplikace může použít Graph API k aktualizaci záznamu uživatele s těmito informacemi. Příklad:
 
-- Pokud je o uživateli známo, že je dospělý, aktualizujte atribut adresáře **ageGroup** hodnotou **Adult**.
-- Pokud je známo, že uživatel je nezletilá, aktualizujte atribut adresáře **ageGroup** s hodnotou **Minor** a nastavte **consentProvidedForMinor**, podle potřeby.
+- Pokud je uživatel známý jako dospělý, aktualizujte atribut adresáře **ageGroup** hodnotou **dospělé**.
+- Je-li uživatel znám jako nepatrný, aktualizujte atribut adresáře **ageGroup** hodnotou **podverze** a podle potřeby nastavte **consentProvidedForMinor**.
 
-Další informace o shromažďování dat DOB najdete [v tématu použití věkového gatingu v Azure AD B2C](basic-age-gating.md).
+Další informace o shromažďování dat DOB najdete v tématu [použití omezení stáří v Azure AD B2C](basic-age-gating.md).
 
-## <a name="capture-terms-of-use-agreement"></a>Smlouva o podmínkách používání
+## <a name="capture-terms-of-use-agreement"></a>Zachytit smlouvu podmínek použití
 
-Při vývoji aplikace obvykle zachycovat uživatele přijetí podmínek použití v rámci svých aplikací s žádnou nebo jen menší účast z adresáře uživatelů. Je však možné použít tok uživatele Azure AD B2C ke shromáždění přijetí podmínek použití uživatelem, omezení přístupu, pokud přijetí není uděleno, a k vynucení přijetí budoucích změn podmínek použití na základě data posledního přijetí a data nejnovější verzi podmínek použití.
+Při vývoji aplikace obvykle zaznamenáte přijetí podmínek použití v rámci svých aplikací uživateli, a to bez jakýchkoli místních účastí z adresáře uživatele. Je ale možné použít tok uživatele Azure AD B2C ke shromáždění souhlasu uživatele s podmínkami použití, omezení přístupu, pokud není uděleno přijetí, a vynucení přijetí budoucích změn podmínek použití, a to na základě data poslední kolaudace a data nejnovější verze podmínek použití.
 
-**Podmínky použití** mohou také zahrnovat "Souhlas se sdílením dat s třetími stranami". V závislosti na místních předpisech a obchodních pravidlech můžete shromáždit souhlas uživatele s oběma podmínkami v kombinaci nebo můžete uživateli povolit přijmout jednu podmínku, nikoli druhou.
+**Podmínek použití** můžou zahrnovat taky souhlas se sdílením dat s třetími stranami. V závislosti na místních nařízeních a obchodních pravidlech můžete shromáždit obě podmínky přijetí uživatele nebo můžete uživateli dovolit přijmout jednu podmínku a ne druhou.
 
-Následující kroky popisují, jak můžete spravovat podmínky použití:
+Následující kroky popisují, jak můžete spravovat podmínek použití:
 
-1. Zaznamenejte přijetí podmínek použití a data přijetí pomocí rozhraní Graph API a rozšířených atributů. Můžete tak učinit pomocí předdefinované a vlastní toky uživatelů. Doporučujeme vytvořit a používat **atributy extension_termsOfUseConsentDateTime** a **extension_termsOfUseConsentVersion.**
+1. Poznamenejte si přijetí podmínek použití a datum přijetí pomocí Graph API a rozšířených atributů. Můžete to udělat pomocí integrovaných i vlastních uživatelských toků. Doporučujeme vytvořit a použít atributy **extension_termsOfUseConsentDateTime** a **extension_termsOfUseConsentVersion** .
 
-2. Vytvořte povinné zaškrtávací políčko s názvem Přijmout podmínky použití a zaznamenejte výsledek během registrace. Můžete tak učinit pomocí předdefinované a vlastní toky uživatelů.
+2. Vytvořte povinné zaškrtávací políčko s názvem přijmout podmínky použití a zaznamenejte výsledek během registrace. Můžete to udělat pomocí integrovaných i vlastních uživatelských toků.
 
-3. Azure AD B2C ukládá podmínky použití smlouvy a přijetí uživatele. Rozhraní GRAPH API můžete použít k dotazování na stav libovolného uživatele přečtením atributu rozšíření, který se používá k zaznamenání odpovědi (například přečtěte **si termínyOfUseTestUpdateDateTime).** Můžete tak učinit pomocí předdefinované a vlastní toky uživatelů.
+3. Azure AD B2C ukládá podmínek smlouvy o používání a přijetí uživatele. Můžete použít Graph API k dotazování na stav libovolného uživatele načtením atributu Extension, který se používá k zaznamenání odpovědi (například čtení **termsOfUseTestUpdateDateTime**). Můžete to udělat pomocí integrovaných i vlastních uživatelských toků.
 
-4. Vyžadovat přijetí aktualizovaných podmínek použití porovnáním data přijetí s datem nejnovější verze podmínek použití. Data můžete porovnat pouze pomocí vlastního toku uživatele. Použijte rozšířený atribut **extension_termsOfUseConsentDateTime**a porovnejte hodnotu s deklarací **výrazu termsOfUseTextUpdateDateTime**. Pokud je přijetí staré, vynuťte nové přijetí zobrazením obrazovky s vlastním uplatněním. V opačném případě zablokujte přístup pomocí logiky zásad.
+4. Vyžádat přijetí aktualizovaných podmínek použití porovnáním data přijetí s datem poslední verze podmínek použití. Data můžete porovnat jenom pomocí vlastního toku uživatele. Použijte rozšířený atribut **extension_termsOfUseConsentDateTime**a porovnejte hodnotu s deklarací identity **termsOfUseTextUpdateDateTime**. Pokud je přijetí staré, vynutí nové přijetí zobrazením obrazovky s vlastním kontrolním výrazem. V opačném případě Zablokujte přístup pomocí logiky zásad.
 
-5. Vyžadovat přijetí aktualizovaných podmínek použití porovnáním čísla verze přijetí s nejnovějším přijatým číslem verze. Čísla verzí můžete porovnat pouze pomocí vlastního toku uživatele. Použijte rozšířený atribut **extension_termsOfUseConsentDateTime**a porovnejte hodnotu s deklarací **extension_termsOfUseConsentVersion**. Pokud je přijetí staré, vynuťte nové přijetí zobrazením obrazovky s vlastním uplatněním. V opačném případě zablokujte přístup pomocí logiky zásad.
+5. Vyžádat přijetí aktualizovaných podmínek použití porovnáním čísla verze přijetí k nejnovějšímu přijatému číslu verze. Čísla verzí můžete porovnat jenom pomocí vlastního toku uživatele. Použijte rozšířený atribut **extension_termsOfUseConsentDateTime**a porovnejte hodnotu s deklarací **extension_termsOfUseConsentVersion**. Pokud je přijetí staré, vynutí nové přijetí zobrazením obrazovky s vlastním kontrolním výrazem. V opačném případě Zablokujte přístup pomocí logiky zásad.
 
-Podmínky přijetí lze zachytit v následujících scénářích:
+Přijetí podmínek použití můžete zachytit v následujících scénářích:
 
-- Nový uživatel se přihlašuje. Zobrazí se podmínky použití a uloží se výsledek přijetí.
-- Uživatel se přihlašuje, který dříve přijal nejnovější nebo aktivní podmínky použití. Podmínky použití nejsou zobrazeny.
-- Uživatel se přihlašuje, který ještě nepřijal nejnovější nebo aktivní podmínky použití. Zobrazí se podmínky použití a uloží se výsledek přijetí.
-- Uživatel se přihlašuje, který již přijal starší verzi podmínek použití, které jsou nyní aktualizovány na nejnovější verzi. Zobrazí se podmínky použití a uloží se výsledek přijetí.
+- Nový uživatel se registruje. Zobrazí se podmínek použití a výsledek přijetí je uložen.
+- Uživatel se přihlašuje, který dřív přijal nejnovější nebo aktivní podmínek použití. Podmínkami použití se nezobrazí.
+- Uživatel se přihlašuje, kteří ještě nepřijali nejnovější nebo aktivní podmínek použití. Zobrazí se podmínek použití a výsledek přijetí je uložen.
+- Uživatel se přihlašuje, který již přijal starší verzi podmínek použití, který je nyní aktualizován na nejnovější verzi. Zobrazí se podmínek použití a výsledek přijetí je uložen.
 
 Následující obrázek znázorňuje doporučený tok uživatele:
 
-![Diagram vývojového diagramu znázorňující doporučený tok uživatele přijetí](./media/manage-user-access/user-flow.png)
+![Diagram toku grafu znázorňující doporučený tok uživatelů pro přijetí](./media/manage-user-access/user-flow.png)
 
-Následuje příklad souhlasu s podmínkami použití založenými na DateTime v deklaraci:
+Následuje příklad souhlasu s podmínkami použití v deklaraci identity na základě hodnoty DateTime:
 
 ```xml
 <ClaimsTransformations>
@@ -137,7 +137,7 @@ Následuje příklad souhlasu s podmínkami použití založenými na DateTime v
 </ClaimsTransformations>
 ```
 
-Následuje příklad souhlasu s podmínkami použití založenými na verzi v deklaraci:
+Tady je příklad souhlasu s podmínkami použití v deklaraci identity na základě verze:
 
 ```xml
 <ClaimsTransformations>
@@ -175,5 +175,5 @@ Následuje příklad souhlasu s podmínkami použití založenými na verzi v de
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o odstranění a exportu uživatelských dat naleznete v [tématu Správa uživatelských dat](manage-user-data.md).
-- Příklad vlastní zásady, která implementuje podmínky použití výzvu, naleznete [v tématu B2C IEF vlastní zásady – registrace a přihlášení s výzvou "Podmínky použití"](https://github.com/azure-ad-b2c/samples/tree/master/policies/sign-in-sign-up-versioned-tou).
+- Informace o tom, jak odstranit a exportovat uživatelská data, najdete v tématu [Správa uživatelských dat](manage-user-data.md).
+- Příklad vlastních zásad, které implementují podmínku použití, najdete v tématu [vlastní zásady B2C IEF – registrace a přihlášení pomocí výzvy k zadání podmínek použití](https://github.com/azure-ad-b2c/samples/tree/master/policies/sign-in-sign-up-versioned-tou).

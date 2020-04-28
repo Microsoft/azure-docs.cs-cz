@@ -1,6 +1,6 @@
 ---
-title: Zprostředkovatelé deklarací identity – služba Azure Active Directory B2C | Dokumenty společnosti Microsoft
-description: Zadejte claimsprovider prvek vlastní zásady ve službě Azure Active Directory B2C.
+title: ClaimsProviders-Azure Active Directory B2C | Microsoft Docs
+description: Zadejte element ClaimsProvider vlastní zásady v Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,17 +11,17 @@ ms.date: 01/29/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: dfb34085181e0b759d1d77485ff21b5bc59e0de3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78189765"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Zprostředkovatel deklarací identity obsahuje sadu [technických profilů](technicalprofiles.md). Každý zprostředkovatel deklarací identity musí mít jeden nebo více technických profilů, které určují koncové body a protokoly potřebné ke komunikaci s poskytovatelem deklarací identity. Zprostředkovatel deklarací identity může mít více technických profilů. Například může být definováno více technických profilů, protože zprostředkovatel deklarací identity podporuje více protokolů, různé koncové body s různými možnostmi nebo vydává různé deklarace identity na různých úrovních záruky. Může být přijatelné uvolnit citlivé deklarace identity v jedné cestě uživatele, ale ne v jiném.
+Zprostředkovatel deklarací obsahuje sadu [technických profilů](technicalprofiles.md). Každý zprostředkovatel deklarací identity musí mít jeden nebo více technických profilů, které určují koncové body a protokoly potřebné ke komunikaci se zprostředkovatelem deklarací. Zprostředkovatel deklarací může mít více technických profilů. Například může být definováno více technických profilů, protože zprostředkovatel deklarací podporuje více protokolů, různé koncové body s různými možnostmi nebo uvolňuje různé nároky na různé úrovně záruky. Může být přijatelné vydávat citlivé deklarace identity na jednu cestu uživatele, ale ne v jiném.
 
 ```XML
 <ClaimsProviders>
@@ -39,23 +39,23 @@ Zprostředkovatel deklarací identity obsahuje sadu [technických profilů](tech
 </ClaimsProviders>
 ```
 
-**ClaimsProviders** Prvek obsahuje následující prvek:
+Element **ClaimsProviders** obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| Zprostředkovatel pohledávek | 1:n | Akreditovaný poskytovatel deklarací identity, který lze využít v různých cestách uživatelů. |
+| ClaimsProvider | 1: n | Akreditovaný zprostředkovatel deklarací identity, který se dá využít v různých jízdách uživatelů |
 
-## <a name="claimsprovider"></a>Zprostředkovatel pohledávek
+## <a name="claimsprovider"></a>ClaimsProvider
 
-Identity **Identity Prvek** obsahuje následující podřízené prvky:
+Element **ClaimsProvider** obsahuje následující podřízené prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ---------- | ----------- |
-| Domain (Doména) | 0:1 | Řetězec, který obsahuje název domény pro zprostředkovatele deklarací. Pokud například váš poskytovatel deklarací identity zahrnuje technický profil facebooku, název domény se Facebook.com. Tento název domény se používá pro všechny technické profily definované ve zprostředkovateli deklarací identity, pokud není přepsán technickým profilem. Název domény lze také odkazovat v **domain_hint**. Další informace najdete v části **Přesměrování přihlášení k poskytovateli sociálních služeb** v části Nastavení [přímého přihlášení pomocí služby Azure Active Directory B2C](direct-signin.md). |
-| DisplayName | 1:1 | Řetězec, který obsahuje název zprostředkovatele deklarací identity. |
-| [TechnicalProfiles](technicalprofiles.md) | 0:1 | Sada technických profilů podporovaných poskytovatelem deklarací |
+| Domain (Doména) | 0:1 | Řetězec, který obsahuje název domény pro poskytovatele deklarací identity. Například pokud váš zprostředkovatel deklarací zahrnuje technický profil Facebooku, název domény je Facebook.com. Tento název domény se používá pro všechny technické profily definované ve zprostředkovateli deklarací, pokud není přepsán technickým profilem. Na název domény se taky dá odkazovat v **domain_hint**. Další informace najdete v části **přihlášení k přesměrování do poskytovatele sociálních sítí** v tématu [Nastavení přímého přihlašování pomocí Azure Active Directory B2C](direct-signin.md). |
+| DisplayName | 1:1 | Řetězec, který obsahuje název zprostředkovatele deklarací. |
+| [TechnicalProfiles](technicalprofiles.md) | 0:1 | Sada technických profilů podporovaná zprostředkovatelem deklarací identity |
 
-**ClaimsProvider** uspořádá, jak se vaše technické profily vztahují k poskytovateli deklarací identity. Následující příklad ukazuje poskytovatele deklarací identity služby Azure Active Directory s technickými profily služby Azure Active Directory:
+**ClaimsProvider** organizuje, jak se vaše technické profily vztahují k poskytovateli deklarací identity. Následující příklad ukazuje zprostředkovatele deklarací Azure Active Directory s Azure Active Directory technickými profily:
 
 ```XML
 <ClaimsProvider>
@@ -93,7 +93,7 @@ Identity **Identity Prvek** obsahuje následující podřízené prvky:
 </ClaimsProvider>
 ```
 
-Následující příklad ukazuje poskytovatele nároků na Facebooku s technickým profilem **Facebook-OAUTH.**
+Následující příklad ukazuje zprostředkovatele deklarací Facebooku s technickým profilem **Facebooku-OAuth** .
 
 ```XML
 <ClaimsProvider>

@@ -1,34 +1,34 @@
 ---
-title: Registrace a použití uložených procedur, aktivačních událostí a uživatelem definovaných funkcí v sadách Azure Cosmos DB SDK
-description: Zjistěte, jak zaregistrovat a volat uložené procedury, aktivační události a uživatelem definované funkce pomocí sad Azure Cosmos DB SDK
+title: Registrace a použití uložených procedur, triggerů a uživatelsky definovaných funkcí v sadách Azure Cosmos DB SDK
+description: Naučte se registrovat a volat uložené procedury, triggery a uživatelsky definované funkce pomocí sad Azure Cosmos DB SDK.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.author: mjbrown
 ms.openlocfilehash: 00740bc2255962089789682e3227ce414fd0ce64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77582496"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Postup registrace a používání uložených procedur, triggerů a funkcí definovaných uživatelem ve službě Azure Cosmos DB
 
-Rozhraní SQL API ve službě Azure Cosmos DB podporuje registraci a vyvolávání uložených procedur, triggerů a funkcí definovaných uživatelem napsaných v JavaScriptu. K registraci a vyvolání uložených procedur můžete použít sql api [.NET](sql-api-sdk-dotnet.md), [.NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](sql-api-sdk-node.md), [Node.js](sql-api-sdk-node.md)nebo [Python](sql-api-sdk-python.md) SDK. Jakmile definujete jednu nebo více uložených procedur, aktivačních událostí a uživatelem definovaných funkcí, můžete je načíst a zobrazit na [webu Azure Portal](https://portal.azure.com/) pomocí Průzkumníka dat.
+Rozhraní SQL API ve službě Azure Cosmos DB podporuje registraci a vyvolávání uložených procedur, triggerů a funkcí definovaných uživatelem napsaných v JavaScriptu. K registraci a vyvolání uložených procedur můžete použít sady SDK rozhraní API [.NET](sql-api-sdk-dotnet.md), [.NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](sql-api-sdk-node.md), [Node. js](sql-api-sdk-node.md)nebo [Python](sql-api-sdk-python.md) . Po definování jednoho nebo více uložených procedur, triggerů a uživatelsky definovaných funkcí je můžete načíst a zobrazit v [Azure Portal](https://portal.azure.com/) pomocí Průzkumník dat.
 
-## <a name="how-to-run-stored-procedures"></a><a id="stored-procedures"></a>Jak spustit uložené procedury
+## <a name="how-to-run-stored-procedures"></a><a id="stored-procedures"></a>Spuštění uložených procedur
 
-Uložené procedury jsou napsány pomocí JavaScriptu. Můžou vytvářet, aktualizovat, číst, dotazovat a odstraňovat položky v kontejneru Azure Cosmos. Další informace o tom, jak psát uložené procedury v Azure Cosmos DB, najdete v článku [Jak psát uložené procedury v článku Azure Cosmos DB.](how-to-write-stored-procedures-triggers-udfs.md#stored-procedures)
+Uložené procedury jsou zapisovány pomocí JavaScriptu. Můžou vytvářet, aktualizovat, číst, dotazovat a odstraňovat položky v rámci kontejneru Azure Cosmos. Další informace o tom, jak zapisovat uložené procedury v Azure Cosmos DB, najdete v tématu [Postup zápisu uložených procedur v Azure Cosmos DB](how-to-write-stored-procedures-triggers-udfs.md#stored-procedures) článku.
 
-Následující příklady ukazují, jak zaregistrovat a volat uloženou proceduru pomocí sad Azure Cosmos DB SDK. Viz [Vytvořit dokument](how-to-write-stored-procedures-triggers-udfs.md#create-an-item) jako zdroj pro tuto uloženou proceduru je uložen jako `spCreateToDoItem.js`.
+Následující příklady ukazují, jak registrovat a volat uloženou proceduru pomocí sad Azure Cosmos DB SDK. Odkaz na [Vytvoření dokumentu můžete vytvořit](how-to-write-stored-procedures-triggers-udfs.md#create-an-item) jako zdroj pro tuto uloženou proceduru, `spCreateToDoItem.js`která se uloží jako.
 
 > [!NOTE]
-> Pro rozdělené kontejnery při provádění uložené procedury musí být v možnostech požadavku uvedena hodnota klíče oddílu. Uložené procedury jsou vždy vymezeny na klíč oddílu. Položky, které mají jinou hodnotu klíče oddílu nebude viditelná pro uloženou proceduru. To platí i pro aktivační události stejně.
+> U dělených kontejnerů při provádění uložené procedury musí být v možnostech žádosti uvedena hodnota klíče oddílu. Uložené procedury jsou vždy vymezeny na klíč oddílu. Položky, které mají jinou hodnotu klíče oddílu, nebudou viditelné pro uloženou proceduru. To se také aplikuje i na triggery.
 
-### <a name="stored-procedures---net-sdk-v2"></a>Uložené procedury - .NET SDK V2
+### <a name="stored-procedures---net-sdk-v2"></a>Uložené procedury – .NET SDK v2
 
-Následující příklad ukazuje, jak zaregistrovat uloženou proceduru pomocí sady .NET SDK V2:
+Následující příklad ukazuje, jak zaregistrovat uloženou proceduru pomocí sady .NET SDK v2:
 
 ```csharp
 string storedProcedureId = "spCreateToDoItem";
@@ -42,7 +42,7 @@ var response = await client.CreateStoredProcedureAsync(containerUri, newStoredPr
 StoredProcedure createdStoredProcedure = response.Resource;
 ```
 
-Následující kód ukazuje, jak volat uloženou proceduru pomocí sady .NET SDK V2:
+Následující kód ukazuje, jak volat uloženou proceduru pomocí sady .NET SDK v2:
 
 ```csharp
 dynamic newItem = new
@@ -58,7 +58,7 @@ RequestOptions options = new RequestOptions { PartitionKey = new PartitionKey("P
 var result = await client.ExecuteStoredProcedureAsync<string>(uri, options, newItem);
 ```
 
-### <a name="stored-procedures---net-sdk-v3"></a>Uložené procedury - .NET SDK V3
+### <a name="stored-procedures---net-sdk-v3"></a>Uložené procedury – .NET SDK V3
 
 Následující příklad ukazuje, jak zaregistrovat uloženou proceduru pomocí sady .NET SDK V3:
 
@@ -70,7 +70,7 @@ StoredProcedureResponse storedProcedureResponse = await client.GetContainer("dat
 });
 ```
 
-Následující kód ukazuje, jak volat uloženou proceduru pomocí sady .NET SDK V3:
+Následující kód ukazuje, jak zavolat uloženou proceduru pomocí sady .NET SDK V3:
 
 ```csharp
 dynamic[] newItems = new dynamic[]
@@ -86,9 +86,9 @@ dynamic[] newItems = new dynamic[]
 var result = await client.GetContainer("database", "container").Scripts.ExecuteStoredProcedureAsync<string>("spCreateToDoItem", new PartitionKey("Personal"), newItems);
 ```
 
-### <a name="stored-procedures---java-sdk"></a>Uložené procedury - Java SDK
+### <a name="stored-procedures---java-sdk"></a>Uložené procedury – Java SDK
 
-Následující příklad ukazuje, jak zaregistrovat uloženou proceduru pomocí sady Java SDK:
+Následující příklad ukazuje, jak registrovat uloženou proceduru pomocí sady Java SDK:
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
@@ -102,7 +102,7 @@ StoredProcedure createdStoredProcedure = asyncClient.createStoredProcedure(conta
     .toBlocking().single().getResource();
 ```
 
-Následující kód ukazuje, jak volat uloženou proceduru pomocí sady Java SDK:
+Následující kód ukazuje, jak zavolat uloženou proceduru pomocí sady Java SDK:
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
@@ -140,9 +140,9 @@ asyncClient.executeStoredProcedure(sprocLink, requestOptions, storedProcedureArg
 successfulCompletionLatch.await();
 ```
 
-### <a name="stored-procedures---javascript-sdk"></a>Uložené procedury - JavaScript SDK
+### <a name="stored-procedures---javascript-sdk"></a>Uložené procedury – JavaScript SDK
 
-Následující příklad ukazuje, jak zaregistrovat uloženou proceduru pomocí sady JavaScript SDK
+Následující příklad ukazuje, jak registrovat uloženou proceduru pomocí sady JavaScript SDK
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
@@ -153,7 +153,7 @@ await container.scripts.storedProcedures.create({
 });
 ```
 
-Následující kód ukazuje, jak volat uloženou proceduru pomocí sady JavaScript SDK:
+Následující kód ukazuje, jak zavolat uloženou proceduru pomocí sady JavaScript SDK:
 
 ```javascript
 const newItem = [{
@@ -167,9 +167,9 @@ const sprocId = "spCreateToDoItem";
 const {body: result} = await container.scripts.storedProcedure(sprocId).execute(newItem, {partitionKey: newItem[0].category});
 ```
 
-### <a name="stored-procedures---python-sdk"></a>Uložené procedury - Python SDK
+### <a name="stored-procedures---python-sdk"></a>Uložené procedury – Python SDK
 
-Následující příklad ukazuje, jak zaregistrovat uloženou proceduru pomocí sady Python SDK
+Následující příklad ukazuje, jak registrovat uloženou proceduru pomocí sady Python SDK
 
 ```python
 with open('../js/spCreateToDoItem.js') as file:
@@ -195,18 +195,18 @@ new_item = [{
 client.ExecuteStoredProcedure(sproc_link, new_item, {'partitionKey': 'Personal'}
 ```
 
-## <a name="how-to-run-pre-triggers"></a><a id="pre-triggers"></a>Jak spustit předběžné aktivační události
+## <a name="how-to-run-pre-triggers"></a><a id="pre-triggers"></a>Jak spustit předběžné triggery
 
-Následující příklady ukazují, jak zaregistrovat a volat předběžnou aktivační událost pomocí sad Azure Cosmos DB SDK. Odkazovat na [příkladu pre-trigger](how-to-write-stored-procedures-triggers-udfs.md#pre-triggers) jako zdroj pro `trgPreValidateToDoItemTimestamp.js`tento pre-trigger je uložen jako .
+Následující příklady ukazují, jak registrovat a volat předběžnou Trigger pomocí sad Azure Cosmos DB SDK. Podívejte se na [příklad předběžného triggeru](how-to-write-stored-procedures-triggers-udfs.md#pre-triggers) , protože zdroj pro tuto předběžnou aktivační událost `trgPreValidateToDoItemTimestamp.js`je uložen jako.
 
-Při provádění jsou předběžné aktivační události předány v objektu RequestOptions zadáním `PreTriggerInclude` a předáním názvu aktivační události v objektu List.
+Při spuštění jsou předběžné triggery předány do objektu RequestOptions zadáním `PreTriggerInclude` a následným předáním názvu triggeru do objektu list.
 
 > [!NOTE]
-> Přestože je název aktivační události předán jako seznam, stále můžete spustit pouze jednu aktivační událost na operaci.
+> I když se název triggeru předává jako seznam, můžete i tak spustit jenom jednu Trigger na operaci.
 
-### <a name="pre-triggers---net-sdk-v2"></a>Předaktivační události - .NET SDK V2
+### <a name="pre-triggers---net-sdk-v2"></a>Předběžné triggery – .NET SDK v2
 
-Následující kód ukazuje, jak zaregistrovat předběžnou aktivační událost pomocí sady .NET SDK V2:
+Následující kód ukazuje, jak zaregistrovat předběžnou aktivační proceduru pomocí sady .NET SDK v2:
 
 ```csharp
 string triggerId = "trgPreValidateToDoItemTimestamp";
@@ -221,7 +221,7 @@ Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myConta
 await client.CreateTriggerAsync(containerUri, trigger);
 ```
 
-Následující kód ukazuje, jak volat předběžnou aktivační událost pomocí sady .NET SDK V2:
+Následující kód ukazuje, jak zavolat předběžnou aktivační proceduru pomocí sady .NET SDK v2:
 
 ```csharp
 dynamic newItem = new
@@ -237,9 +237,9 @@ RequestOptions requestOptions = new RequestOptions { PreTriggerInclude = new Lis
 await client.CreateDocumentAsync(containerUri, newItem, requestOptions);
 ```
 
-### <a name="pre-triggers---net-sdk-v3"></a>Předaktivační události - .NET SDK V3
+### <a name="pre-triggers---net-sdk-v3"></a>Předběžné triggery – sada .NET SDK V3
 
-Následující kód ukazuje, jak zaregistrovat předběžnou aktivační událost pomocí sady .NET SDK V3:
+Následující kód ukazuje, jak zaregistrovat předběžnou aktivační proceduru pomocí sady .NET SDK V3:
 
 ```csharp
 await client.GetContainer("database", "container").Scripts.CreateTriggerAsync(new TriggerProperties
@@ -251,7 +251,7 @@ await client.GetContainer("database", "container").Scripts.CreateTriggerAsync(ne
 });
 ```
 
-Následující kód ukazuje, jak volat předběžnou aktivační událost pomocí sady .NET SDK V3:
+Následující kód ukazuje, jak zavolat předběžnou aktivační proceduru pomocí sady .NET SDK V3:
 
 ```csharp
 dynamic newItem = new
@@ -265,7 +265,7 @@ dynamic newItem = new
 await client.GetContainer("database", "container").CreateItemAsync(newItem, null, new ItemRequestOptions { PreTriggers = new List<string> { "trgPreValidateToDoItemTimestamp" } });
 ```
 
-### <a name="pre-triggers---java-sdk"></a>Předběžné aktivační události - Java SDK
+### <a name="pre-triggers---java-sdk"></a>Před triggery – Java SDK
 
 Následující kód ukazuje, jak zaregistrovat předběžnou aktivační událost pomocí sady Java SDK:
 
@@ -281,7 +281,7 @@ trigger.setTriggerType(TriggerType.Pre);
 Trigger createdTrigger = asyncClient.createTrigger(containerLink, trigger, new RequestOptions()).toBlocking().single().getResource();
 ```
 
-Následující kód ukazuje, jak volat předběžnou aktivační událost pomocí sady Java SDK:
+Následující kód ukazuje, jak zavolat předběžnou triggerovou sadu pomocí sady Java SDK:
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
@@ -298,9 +298,9 @@ requestOptions.setPreTriggerInclude(Arrays.asList("trgPreValidateToDoItemTimesta
 asyncClient.createDocument(containerLink, item, requestOptions, false).toBlocking();
 ```
 
-### <a name="pre-triggers---javascript-sdk"></a>Předběžné aktivační události - JavaScript SDK
+### <a name="pre-triggers---javascript-sdk"></a>Předběžné triggery – JavaScript SDK
 
-Následující kód ukazuje, jak zaregistrovat předaktivační událost pomocí sady JavaScript SDK:
+Následující kód ukazuje, jak zaregistrovat předběžnou aktivační událost pomocí sady JavaScript SDK:
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
@@ -313,7 +313,7 @@ await container.triggers.create({
 });
 ```
 
-Následující kód ukazuje, jak volat předběžnou aktivační událost pomocí sady JavaScript SDK:
+Následující kód ukazuje, jak zavolat předběžnou aktivační proceduru pomocí sady JavaScript SDK:
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
@@ -326,9 +326,9 @@ await container.items.create({
 }, {preTriggerInclude: [triggerId]});
 ```
 
-### <a name="pre-triggers---python-sdk"></a>Předběžné aktivační události - Python SDK
+### <a name="pre-triggers---python-sdk"></a>Předběžné triggery – Python SDK
 
-Následující kód ukazuje, jak zaregistrovat předběžnou aktivační událost pomocí sady Python SDK:
+Následující kód ukazuje, jak zaregistrovat předběžnou aktivační proceduru pomocí sady Python SDK:
 
 ```python
 with open('../js/trgPreValidateToDoItemTimestamp.js') as file:
@@ -343,7 +343,7 @@ trigger_definition = {
 trigger = client.CreateTrigger(container_link, trigger_definition)
 ```
 
-Následující kód ukazuje, jak volat předběžnou aktivační událost pomocí sady Python SDK:
+Následující kód ukazuje, jak zavolat předběžnou aktivační proceduru pomocí sady Python SDK:
 
 ```python
 container_link = 'dbs/myDatabase/colls/myContainer'
@@ -353,13 +353,13 @@ client.CreateItem(container_link, item, {
                   'preTriggerInclude': 'trgPreValidateToDoItemTimestamp'})
 ```
 
-## <a name="how-to-run-post-triggers"></a><a id="post-triggers"></a>Jak spustit následné aktivační události
+## <a name="how-to-run-post-triggers"></a><a id="post-triggers"></a>Spuštění po triggerech
 
-Následující příklady ukazují, jak zaregistrovat post-trigger pomocí sad Azure Cosmos DB SDK. Odkazovat na [post-trigger příklad](how-to-write-stored-procedures-triggers-udfs.md#post-triggers) jako zdroj pro tento `trgPostUpdateMetadata.js`post-trigger je uložen jako .
+Následující příklady ukazují, jak registrovat aktivační událost pomocí sad Azure Cosmos DB SDK. Podívejte se na [příklad po triggeru](how-to-write-stored-procedures-triggers-udfs.md#post-triggers) , který označuje, že zdroj pro tuto aktivační událost je `trgPostUpdateMetadata.js`uložen jako.
 
-### <a name="post-triggers---net-sdk-v2"></a>Po aktivačních událostech - .NET SDK V2
+### <a name="post-triggers---net-sdk-v2"></a>Post-Triggers – .NET SDK v2
 
-Následující kód ukazuje, jak zaregistrovat post-trigger pomocí .NET SDK V2:
+Následující kód ukazuje, jak zaregistrovat aktivační událost pomocí sady .NET SDK v2:
 
 ```csharp
 string triggerId = "trgPostUpdateMetadata";
@@ -374,7 +374,7 @@ Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myConta
 await client.CreateTriggerAsync(containerUri, trigger);
 ```
 
-Následující kód ukazuje, jak volat post-trigger pomocí .NET SDK V2:
+Následující kód ukazuje, jak zavolat post-Trigger pomocí sady .NET SDK v2:
 
 ```csharp
 var newItem = { 
@@ -388,9 +388,9 @@ Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myConta
 await client.createDocumentAsync(containerUri, newItem, options);
 ```
 
-### <a name="post-triggers---net-sdk-v3"></a>Po aktivačních událostech - .NET SDK V3
+### <a name="post-triggers---net-sdk-v3"></a>Post-Triggers – .NET SDK V3
 
-Následující kód ukazuje, jak zaregistrovat post-trigger pomocí .NET SDK V3:
+Následující kód ukazuje, jak zaregistrovat aktivační událost pomocí sady .NET SDK V3:
 
 ```csharp
 await client.GetContainer("database", "container").Scripts.CreateTriggerAsync(new TriggerProperties
@@ -402,7 +402,7 @@ await client.GetContainer("database", "container").Scripts.CreateTriggerAsync(ne
 });
 ```
 
-Následující kód ukazuje, jak volat post-trigger pomocí .NET SDK V3:
+Následující kód ukazuje, jak zavolat post-Trigger pomocí sady .NET SDK V3:
 
 ```csharp
 var newItem = { 
@@ -414,9 +414,9 @@ var newItem = {
 await client.GetContainer("database", "container").CreateItemAsync(newItem, null, new ItemRequestOptions { PostTriggers = new List<string> { "trgPostUpdateMetadata" } });
 ```
 
-### <a name="post-triggers---java-sdk"></a>Následné spouštěče - Java SDK
+### <a name="post-triggers---java-sdk"></a>Post-Triggers – Java SDK
 
-Následující kód ukazuje, jak zaregistrovat post-trigger pomocí sady Java SDK:
+Následující kód ukazuje, jak registrovat po triggeru pomocí sady Java SDK:
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
@@ -429,7 +429,7 @@ trigger.setTriggerType(TriggerType.Post);
 Trigger createdTrigger = asyncClient.createTrigger(containerLink, trigger, new RequestOptions()).toBlocking().single().getResource();
 ```
 
-Následující kód ukazuje, jak volat post-trigger pomocí Java SDK:
+Následující kód ukazuje, jak zavolat po triggeru pomocí sady Java SDK:
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
@@ -445,9 +445,9 @@ requestOptions.setPostTriggerInclude(Arrays.asList("trgPostUpdateMetadata"));
 asyncClient.createDocument(containerLink, item, requestOptions, false).toBlocking();
 ```
 
-### <a name="post-triggers---javascript-sdk"></a>Post-triggery - JavaScript SDK
+### <a name="post-triggers---javascript-sdk"></a>Post-Triggers – JavaScript SDK
 
-Následující kód ukazuje, jak zaregistrovat post-trigger pomocí sady JavaScript SDK:
+Následující kód ukazuje, jak zaregistrovat aktivační událost pomocí sady JavaScript SDK:
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
@@ -460,7 +460,7 @@ await container.triggers.create({
 });
 ```
 
-Následující kód ukazuje, jak volat post-trigger pomocí sady JavaScript SDK:
+Následující kód ukazuje, jak zavolat post-Trigger pomocí sady JavaScript SDK:
 
 ```javascript
 const item = {
@@ -473,9 +473,9 @@ const triggerId = "trgPostUpdateMetadata";
 await container.items.create(item, {postTriggerInclude: [triggerId]});
 ```
 
-### <a name="post-triggers---python-sdk"></a>Následné aktivační události - Python SDK
+### <a name="post-triggers---python-sdk"></a>Post-Triggers – Python SDK
 
-Následující kód ukazuje, jak zaregistrovat post-trigger pomocí Python SDK:
+Následující kód ukazuje, jak pomocí sady Python SDK zaregistrovat aktivační událost po triggeru:
 
 ```python
 with open('../js/trgPostUpdateMetadata.js') as file:
@@ -490,7 +490,7 @@ trigger_definition = {
 trigger = client.CreateTrigger(container_link, trigger_definition)
 ```
 
-Následující kód ukazuje, jak volat post-trigger pomocí Python SDK:
+Následující kód ukazuje, jak volat po triggeru pomocí sady Python SDK:
 
 ```python
 container_link = 'dbs/myDatabase/colls/myContainer'
@@ -500,13 +500,13 @@ client.CreateItem(container_link, item, {
                   'postTriggerInclude': 'trgPostUpdateMetadata'})
 ```
 
-## <a name="how-to-work-with-user-defined-functions"></a><a id="udfs"></a>Jak pracovat s uživatelem definovanými funkcemi
+## <a name="how-to-work-with-user-defined-functions"></a><a id="udfs"></a>Jak pracovat s uživatelsky definovanými funkcemi
 
-Následující příklady ukazují, jak zaregistrovat uživatelem definovanou funkci pomocí sad Azure Cosmos DB SDK. Viz tento [příklad uživatelem definované funkce](how-to-write-stored-procedures-triggers-udfs.md#udfs) jako zdroj pro `udfTax.js`tento post-trigger je uložen jako .
+Následující příklady ukazují, jak registrovat uživatelsky definovanou funkci pomocí sad Azure Cosmos DB SDK. Podívejte se na tento [příklad uživatelsky definované funkce](how-to-write-stored-procedures-triggers-udfs.md#udfs) , protože zdroj pro tuto aktivační událost je uložen jako `udfTax.js`.
 
-### <a name="user-defined-functions---net-sdk-v2"></a>Uživatelem definované funkce - .NET SDK V2
+### <a name="user-defined-functions---net-sdk-v2"></a>Uživatelsky definované funkce – .NET SDK v2
 
-Následující kód ukazuje, jak zaregistrovat uživatelem definovanou funkci pomocí sady .NET SDK V2:
+Následující kód ukazuje, jak zaregistrovat uživatelsky definovanou funkci pomocí sady .NET SDK v2:
 
 ```csharp
 string udfId = "Tax";
@@ -521,7 +521,7 @@ await client.CreateUserDefinedFunctionAsync(containerUri, udfTax);
 
 ```
 
-Následující kód ukazuje, jak volat uživatelem definovanou funkci pomocí sady .NET SDK V2:
+Následující kód ukazuje, jak volat uživatelsky definovanou funkci pomocí sady .NET SDK v2:
 
 ```csharp
 Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
@@ -533,9 +533,9 @@ foreach (var result in results)
 }
 ```
 
-### <a name="user-defined-functions---net-sdk-v3"></a>Uživatelem definované funkce – sada .NET SDK V3
+### <a name="user-defined-functions---net-sdk-v3"></a>Uživatelsky definované funkce – .NET SDK V3
 
-Následující kód ukazuje, jak zaregistrovat uživatelem definovanou funkci pomocí sady .NET SDK V3:
+Následující kód ukazuje, jak zaregistrovat uživatelsky definovanou funkci pomocí sady .NET SDK V3:
 
 ```csharp
 await client.GetContainer("database", "container").Scripts.CreateUserDefinedFunctionAsync(new UserDefinedFunctionProperties
@@ -545,7 +545,7 @@ await client.GetContainer("database", "container").Scripts.CreateUserDefinedFunc
 });
 ```
 
-Následující kód ukazuje, jak volat uživatelem definovanou funkci pomocí sady .NET SDK V3:
+Následující kód ukazuje, jak volat uživatelsky definovanou funkci pomocí sady .NET SDK V3:
 
 ```csharp
 var iterator = client.GetContainer("database", "container").GetItemQueryIterator<dynamic>("SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000");
@@ -559,9 +559,9 @@ while (iterator.HasMoreResults)
 }
 ```
 
-### <a name="user-defined-functions---java-sdk"></a>Uživatelem definované funkce - Java SDK
+### <a name="user-defined-functions---java-sdk"></a>Uživatelsky definované funkce – Java SDK
 
-Následující kód ukazuje, jak zaregistrovat uživatelem definovanou funkci pomocí sady Java SDK:
+Následující kód ukazuje, jak zaregistrovat uživatelsky definovanou funkci pomocí sady Java SDK:
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
@@ -573,7 +573,7 @@ udf.setBody(new String(Files.readAllBytes(Paths.get(String.format("..\\js\\%s.js
 UserDefinedFunction createdUDF = client.createUserDefinedFunction(containerLink, udf, new RequestOptions()).toBlocking().single().getResource();
 ```
 
-Následující kód ukazuje, jak volat uživatelem definovanou funkci pomocí sady Java SDK:
+Následující kód ukazuje, jak volat uživatelsky definovanou funkci pomocí sady Java SDK:
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
@@ -597,9 +597,9 @@ queryObservable.subscribe(
 completionLatch.await();
 ```
 
-### <a name="user-defined-functions---javascript-sdk"></a>Uživatelem definované funkce - JavaScript SDK
+### <a name="user-defined-functions---javascript-sdk"></a>Uživatelsky definované funkce – sada JavaScript SDK
 
-Následující kód ukazuje, jak zaregistrovat uživatelem definovanou funkci pomocí sady JavaScript SDK:
+Následující kód ukazuje, jak zaregistrovat uživatelsky definovanou funkci pomocí sady JavaScript SDK:
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
@@ -609,7 +609,7 @@ await container.userDefinedFunctions.create({
     body: require(`../js/${udfId}`)
 ```
 
-Následující kód ukazuje, jak volat uživatelem definovanou funkci pomocí sady JavaScript SDK:
+Následující kód ukazuje, jak volat uživatelsky definovanou funkci pomocí sady JavaScript SDK:
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
@@ -617,9 +617,9 @@ const sql = "SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000";
 const {result} = await container.items.query(sql).toArray();
 ```
 
-### <a name="user-defined-functions---python-sdk"></a>Uživatelem definované funkce - Python SDK
+### <a name="user-defined-functions---python-sdk"></a>Uživatelsky definované funkce – Python SDK
 
-Následující kód ukazuje, jak zaregistrovat uživatelem definovanou funkci pomocí sady Python SDK:
+Následující kód ukazuje, jak zaregistrovat uživatelsky definovanou funkci pomocí sady Python SDK:
 
 ```python
 with open('../js/udfTax.js') as file:
@@ -632,7 +632,7 @@ udf_definition = {
 udf = client.CreateUserDefinedFunction(container_link, udf_definition)
 ```
 
-Následující kód ukazuje, jak volat uživatelem definovanou funkci pomocí sady Python SDK:
+Následující kód ukazuje, jak volat uživatelsky definovanou funkci pomocí sady Python SDK:
 
 ```python
 container_link = 'dbs/myDatabase/colls/myContainer'
@@ -642,9 +642,9 @@ results = list(client.QueryItems(
 
 ## <a name="next-steps"></a>Další kroky
 
-Další koncepty a postupy pro zápis nebo použití uložených procedur, aktivačních událostí a uživatelem definovaných funkcí v Azure Cosmos DB:
+Přečtěte si další koncepty a postupy psaní a používání uložených procedur, triggerů a uživatelsky definovaných funkcí v Azure Cosmos DB:
 
-- [Práce s uloženými procedurami, aktivačními událostmi a uživateli definovanými funkcemi Azure Cosmos DB](stored-procedures-triggers-udfs.md)
-- [Práce s rozhraním API pro integrované dotazy jazyka JavaScript v Azure Cosmos DB](javascript-query-api.md)
-- [Jak psát uložené procedury, aktivační události a uživatelem definované funkce v Azure Cosmos DB](how-to-write-stored-procedures-triggers-udfs.md)
-- [Jak psát uložené procedury a aktivační události pomocí rozhraní Javascript Query API v Azure Cosmos DB](how-to-write-javascript-query-api.md)
+- [Práce s Azure Cosmos DB uloženými procedurami, triggery a uživatelsky definovanými funkcemi v Azure Cosmos DB](stored-procedures-triggers-udfs.md)
+- [Práce s integrovaným rozhraním API pro integrované dotazy jazyka JavaScript v Azure Cosmos DB](javascript-query-api.md)
+- [Postup zápisu uložených procedur, triggerů a uživatelsky definovaných funkcí v Azure Cosmos DB](how-to-write-stored-procedures-triggers-udfs.md)
+- [Jak zapisovat uložené procedury a triggery pomocí rozhraní API dotazů jazyka JavaScript v Azure Cosmos DB](how-to-write-javascript-query-api.md)

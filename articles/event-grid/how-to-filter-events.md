@@ -1,6 +1,6 @@
 ---
-title: Jak filtrovat události pro Azure Event Grid
-description: Tento článek ukazuje, jak filtrovat události (podle typu události, podle předmětu, operátorů a dat atd.) při vytváření předplatného event gridu.
+title: Postup filtrování událostí pro Azure Event Grid
+description: Tento článek ukazuje, jak filtrovat události (podle typu události, podle předmětu, podle operátorů a dat atd.) při vytváření předplatného Event Grid.
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: 63a5cdbff79af52d9f96cf410a820c6cfc530066
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79454019"
 ---
-# <a name="filter-events-for-event-grid"></a>Filtrování událostí pro mřížku událostí
+# <a name="filter-events-for-event-grid"></a>Filtrovat události pro Event Grid
 
-Tento článek ukazuje, jak filtrovat události při vytváření předplatného mřížky událostí. Další informace o možnostech filtrování událostí najdete v [tématu Principy filtrování událostí pro odběry služby Event Grid](event-filtering.md).
+Tento článek popisuje, jak filtrovat události při vytváření předplatného Event Grid. Další informace o možnostech pro filtrování událostí najdete v tématu [Principy filtrování událostí pro Event Grid odběry](event-filtering.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="filter-by-event-type"></a>Filtrovat podle typu události
 
-Při vytváření předplatného event gridu můžete určit, [které typy událostí](event-schema.md) mají být odeslány do koncového bodu. Příklady v této části vytvořit odběry událostí pro skupinu prostředků, ale omezit události, které jsou odesílány do `Microsoft.Resources.ResourceWriteFailure` a `Microsoft.Resources.ResourceWriteSuccess`. Pokud potřebujete větší flexibilitu při filtrování událostí podle typů událostí, přečtěte si informace o filtru podle pokročilých operátorů a datových polí.
+Při vytváření předplatného Event Grid můžete určit [typy událostí](event-schema.md) , které se mají odeslat do koncového bodu. Příklady v této části vytvářejí odběry událostí pro skupinu prostředků, ale omezují události, které jsou odesílány `Microsoft.Resources.ResourceWriteFailure` do `Microsoft.Resources.ResourceWriteSuccess`a. Pokud potřebujete větší flexibilitu při filtrování událostí podle typů událostí, přečtěte si téma filtrovat podle pokročilých operátorů a datových polí.
 
-Pro PowerShell použijte `-IncludedEventType` parametr při vytváření předplatného.
+Pro prostředí PowerShell použijte `-IncludedEventType` parametr při vytváření předplatného.
 
 ```powershell
 $includedEventTypes = "Microsoft.Resources.ResourceWriteFailure", "Microsoft.Resources.ResourceWriteSuccess"
@@ -36,7 +36,7 @@ New-AzEventGridSubscription `
   -IncludedEventType $includedEventTypes
 ```
 
-Pro rozhraní příkazového `--included-event-types` řádku Azure použijte parametr. Následující příklad používá Azure CLI v prostředí Bash:
+Pro rozhraní `--included-event-types` příkazového řádku Azure použijte parametr. Následující příklad používá Azure CLI v prostředí bash:
 
 ```azurecli
 includedEventTypes="Microsoft.Resources.ResourceWriteFailure Microsoft.Resources.ResourceWriteSuccess"
@@ -48,7 +48,7 @@ az eventgrid event-subscription create \
   --included-event-types $includedEventTypes
 ```
 
-Pro šablonu Správce prostředků `includedEventTypes` použijte vlastnost.
+Pro šablonu Správce prostředků použijte `includedEventTypes` vlastnost.
 
 ```json
 "resources": [
@@ -79,9 +79,9 @@ Pro šablonu Správce prostředků `includedEventTypes` použijte vlastnost.
 
 ## <a name="filter-by-subject"></a>Filtrovat podle předmětu
 
-Události můžete filtrovat podle předmětu v datech události. Můžete zadat hodnotu, která se bude shodovat s začátkem nebo koncem předmětu. Pokud potřebujete větší flexibilitu při filtrování událostí podle předmětu, přečtěte si téma Filtrovat podle pokročilých operátorů a datových polí.
+Události můžete filtrovat podle předmětu v datech události. Můžete zadat hodnotu, která se má shodovat s počátkem nebo koncem předmětu. Pokud při filtrování událostí podle předmětu potřebujete větší flexibilitu, přečtěte si téma filtrování podle pokročilých operátorů a datových polí.
 
-V následujícím příkladu prostředí PowerShell vytvoříte odběr událostí, který filtruje na začátku předmětu. `-SubjectBeginsWith` Parametr slouží k omezení událostí na události pro konkrétní prostředek. Předáte ID prostředku skupiny zabezpečení sítě.
+V následujícím příkladu PowerShellu vytvoříte odběr událostí, který filtruje na začátku předmětu. Pomocí `-SubjectBeginsWith` parametru můžete omezit události na hodnoty pro konkrétní prostředek. Předáte ID prostředku pro skupinu zabezpečení sítě.
 
 ```powershell
 $resourceId = (Get-AzResource -ResourceName demoSecurityGroup -ResourceGroupName myResourceGroup).ResourceId
@@ -93,7 +93,7 @@ New-AzEventGridSubscription `
   -SubjectBeginsWith $resourceId
 ```
 
-Další příklad Prostředí PowerShell vytvoří předplatné pro úložiště objektů blob. Omezuje události na ty s předmětem, který končí v `.jpg`.
+Následující příklad PowerShellu vytvoří předplatné pro úložiště objektů BLOB. Omezuje události na ty s předmětem, který končí `.jpg`.
 
 ```powershell
 $storageId = (Get-AzStorageAccount -ResourceGroupName myResourceGroup -AccountName $storageName).Id
@@ -105,7 +105,7 @@ New-AzEventGridSubscription `
   -SubjectEndsWith ".jpg"
 ```
 
-V následujícím příkladu Azure CLI vytvoříte odběr událostí, který filtruje na začátku předmětu. `--subject-begins-with` Parametr slouží k omezení událostí na události pro konkrétní prostředek. Předáte ID prostředku skupiny zabezpečení sítě.
+V následujícím příkladu Azure CLI vytvoříte odběr událostí, který filtruje na začátku předmětu. Pomocí `--subject-begins-with` parametru můžete omezit události na hodnoty pro konkrétní prostředek. Předáte ID prostředku pro skupinu zabezpečení sítě.
 
 ```azurecli
 resourceId=$(az resource show --name demoSecurityGroup --resource-group myResourceGroup --resource-type Microsoft.Network/networkSecurityGroups --query id --output tsv)
@@ -117,7 +117,7 @@ az eventgrid event-subscription create \
   --subject-begins-with $resourceId
 ```
 
-Další příklad Azure CLI vytvoří předplatné pro úložiště objektů blob. Omezuje události na ty s předmětem, který končí v `.jpg`.
+Další příklad Azure CLI vytvoří předplatné pro úložiště objektů BLOB. Omezuje události na ty s předmětem, který končí `.jpg`.
 
 ```azurecli
 storageid=$(az storage account show --name $storageName --resource-group myResourceGroup --query id --output tsv)
@@ -129,7 +129,7 @@ az eventgrid event-subscription create \
   --subject-ends-with ".jpg"
 ```
 
-V následujícím příkladu šablony Správce prostředků vytvoříte odběr událostí, který filtruje podle začátku předmětu. `subjectBeginsWith` Vlastnost slouží k omezení událostí na události pro konkrétní prostředek. Předáte ID prostředku skupiny zabezpečení sítě.
+V následujícím příkladu šablony Správce prostředků vytvoříte odběr událostí, který filtruje na začátku předmětu. Pomocí `subjectBeginsWith` vlastnosti můžete omezit události na hodnoty pro konkrétní prostředek. Předáte ID prostředku pro skupinu zabezpečení sítě.
 
 ```json
 "resources": [
@@ -155,7 +155,7 @@ V následujícím příkladu šablony Správce prostředků vytvoříte odběr u
 ]
 ```
 
-Další příklad šablony Správce prostředků vytvoří předplatné pro úložiště objektů blob. Omezuje události na ty s předmětem, který končí v `.jpg`.
+Následující příklad šablony Správce prostředků vytvoří předplatné pro úložiště objektů BLOB. Omezuje události na ty s předmětem, který končí `.jpg`.
 
 ```json
 "resources": [
@@ -181,15 +181,15 @@ Další příklad šablony Správce prostředků vytvoří předplatné pro úlo
 ]
 ```
 
-## <a name="filter-by-operators-and-data"></a>Filtrování podle operátorů a dat
+## <a name="filter-by-operators-and-data"></a>Filtrovat podle operátorů a dat
 
-Pro větší flexibilitu při filtrování můžete k filtrování událostí použít operátory a vlastnosti dat.
+Pro větší flexibilitu při filtrování lze pomocí operátorů a vlastností dat filtrovat události.
 
-### <a name="subscribe-with-advanced-filters"></a>Přihlásit se pomocí pokročilých filtrů
+### <a name="subscribe-with-advanced-filters"></a>Přihlášení k odběru pomocí rozšířených filtrů
 
-Informace o operátorech a klíčích, které lze použít pro pokročilé filtrování, naleznete v [tématu Rozšířené filtrování](event-filtering.md#advanced-filtering).
+Další informace o operátorech a klíčích, které můžete použít pro rozšířené filtrování, najdete v tématu [Rozšířené filtrování](event-filtering.md#advanced-filtering).
 
-Tyto příklady vytvořit vlastní téma. Přihlásí se k odběru vlastního tématu a filtrují podle hodnoty v datovém objektu. Události, které mají vlastnost color nastavenou na modrou, červenou nebo zelenou, jsou odeslány do předplatného.
+Tyto příklady vytvoří vlastní téma. Přihlásí se k odběru vlastního tématu a filtrují podle hodnoty v datovém objektu. Do předplatného se odesílají události, které mají vlastnost Color nastavenou na modrou, červenou nebo zelenou.
 
 Pokud používáte Azure CLI, použijte:
 
@@ -234,9 +234,9 @@ New-AzEventGridSubscription `
   -AdvancedFilter @($AdvFilter1)
 ```
 
-### <a name="test-filter"></a>Testovací filtr
+### <a name="test-filter"></a>Filtr testů
 
-Chcete-li filtr otestovat, odešlete událost s barevným polem nastaveným na zelenou. Vzhledem k tomu, že zelená je jednou z hodnot ve filtru, událost je doručena do koncového bodu.
+Chcete-li filtr otestovat, odešlete událost s polem Color nastavenou na zelenou. Vzhledem k tomu, že zelená je jedna z hodnot ve filtru, je událost doručena do koncového bodu.
 
 Pokud používáte Azure CLI, použijte:
 
@@ -275,7 +275,7 @@ $body = "["+(ConvertTo-Json $htbody)+"]"
 Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-key" = $keys.Key1}
 ```
 
-Chcete-li otestovat scénář, ve kterém není událost odeslána, odešlete událost s barevným polem nastaveným na žlutou. Žlutá není jednou z hodnot zadaných v předplatném, takže událost se do vašeho předplatného nedoručuje.
+Chcete-li otestovat situaci, kdy událost není odeslána, odešlete událost s polem Color nastavenou na žlutou. Žlutá není jednou z hodnot uvedených v předplatném, takže se událost nedodá vašemu předplatnému.
 
 Pokud používáte Azure CLI, použijte:
 
@@ -306,6 +306,6 @@ Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-ke
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o dodávkách událostí monitorování naleznete v [tématu Sledování doručování zpráv v programu Event Grid](monitor-event-delivery.md).
-* Další informace o ověřovacím klíči naleznete v tématu [Zabezpečení a ověřování mřížky událostí](security-authentication.md).
-* Další informace o vytvoření předplatného Služby Azure Event Grid najdete v [tématu schéma předplatného služby Event Grid](subscription-creation-schema.md).
+* Informace o sledování doručení událostí najdete v tématu [monitorování Event Grid doručování zpráv](monitor-event-delivery.md).
+* Další informace o ověřovacím klíči najdete v tématu [Event Grid Security and Authentication](security-authentication.md).
+* Další informace o vytváření předplatného Azure Event Grid najdete v tématu [schéma předplatného Event Grid](subscription-creation-schema.md).

@@ -1,7 +1,7 @@
 ---
-title: Ověření deklarací pomocí ovládacích prvků zobrazení
+title: Ověření deklarací identity s ovládacími prvky zobrazení
 titleSuffix: Azure AD B2C
-description: Zjistěte, jak pomocí ovládacích prvků zobrazení Azure AD B2C ověřit deklarace identity v cestách uživatelů poskytovaných vlastními zásadami.
+description: Naučte se používat ovládací prvky zobrazení Azure AD B2C k ověření deklarací identity uživatelů poskytovaných vašimi vlastními zásadami.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,46 +12,46 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ff2a8ad05e26ea31fc8100d4000171313881f4e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78188779"
 ---
-# <a name="verification-display-control"></a>Ovládací prvek ověření zobrazení
+# <a name="verification-display-control"></a>Ovládací prvek zobrazení ověřování
 
-Pomocí [ovládacího prvku](display-controls.md) zobrazení ověření ověřte deklaraci, například e-mailovou adresu nebo telefonní číslo, s ověřovacím kódem odeslaným uživateli.
+Pomocí ověřovacího [ovládacího prvku pro zobrazení](display-controls.md) ověřte deklaraci identity, například e-mailovou adresu nebo telefonní číslo s ověřovacím kódem odesílaným uživateli.
 
-## <a name="verificationcontrol-actions"></a>Ověřovacířídicí akce
+## <a name="verificationcontrol-actions"></a>Akce VerificationControl
 
-Ovládací prvek ověřovacího zobrazení se skládá ze dvou kroků (akcí):
+Ovládací prvek zobrazení ověřování se skládá ze dvou kroků (akce):
 
-1. Vyžádejte si od uživatele cíl, například e-mailovou adresu nebo telefonní číslo, na které má být ověřovací kód odeslán. Když uživatel vybere tlačítko **Odeslat kód,** spustí se **akce SendCode** ovládacího prvku ověřovacího zobrazení. **Akce SendCode** vygeneruje kód, vytvoří obsah, který má být odeslán, a odešle jej uživateli. Hodnota adresy může být předem vyplněna a sloužit jako ověřování druhého faktoru.
+1. Vyžádejte od uživatele cíl, jako je e-mailová adresa nebo telefonní číslo, na které se má ověřovací kód odeslat. Když uživatel vybere tlačítko pro **odeslání kódu** , spustí se **Akce SendCode** ovládacího prvku pro zobrazení ověření. **Akce SendCode** vygeneruje kód, sestaví obsah, který se má odeslat, a pošle ho uživateli. Hodnota adresy může být předem vyplněná a sloužit jako druhá-Factor Authentication.
 
     ![Příklad stránky pro akci odeslat kód](media/display-control-verification/display-control-verification-email-action-01.png)
 
-1. Po odeslání kódu uživatel přečte zprávu, zadá ověřovací kód do ovládacího prvku poskytovaného ovládacím prvkem zobrazení a vybere **možnost Ověřit kód**. Výběrem **možnosti Ověřit kód**se provede **akce VerifyCode** za účelem ověření kódu přidruženého k adrese. Pokud uživatel vybere **odeslat nový kód**, první akce se provede znovu.
+1. Po odeslání kódu uživatel přečte zprávu, zadá ověřovací kód do ovládacího prvku, který je zobrazen ovládacím prvkem zobrazení, a vybere příkaz **ověřit kód**. Výběrem možnosti **ověřit kód**se spustí **Akce VerifyCode** , která ověří kód přidružený k adrese. Pokud uživatel vybere **Odeslat nový kód**, první akce se provede znovu.
 
-    ![Ukázková stránka pro ověření akce kódu](media/display-control-verification/display-control-verification-email-action-02.png)
+    ![Příklad stránky pro ověření akce kódu](media/display-control-verification/display-control-verification-email-action-02.png)
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="verificationcontrol-required-elements"></a>OvěřovacíKontrolní požadované prvky
+## <a name="verificationcontrol-required-elements"></a>VerificationControl vyžadované prvky
 
-**Kontrola ověření** musí obsahovat následující prvky:
+**VerificationControl** musí obsahovat následující prvky:
 
 - Typ `DisplayControl` je `VerificationControl`.
 - `DisplayClaims`
-  - **Odeslat do** - Jeden nebo více deklarací, které specifikují, kam se má ověřovací kód odeslat. Například *e-mail* nebo *kód země* a *telefonní číslo*.
-  - **Ověřovací kód** – tvrzení ověřovacího kódu, které uživatel zadává po odeslání kódu. Tato deklarace musí být nastavena `ControlClaimType` podle `VerificationCode`potřeby a musí být nastavena na .
-- Výstupní deklarace (nepovinné), která má být vrácena na stránku se dekobovaným uživatelem po dokončení procesu ověření uživatelem. Například *e-mail* nebo *kód země* a *telefonní číslo*. Vlastní uplatněný technický profil používá deklarace identity k zachování dat nebo bublině do výstupních deklarací až do dalšího kroku orchestrace.
-- Dva `Action`s s následujícími názvy:
-  - **SendCode** - Odešle kód uživateli. Tato akce obvykle obsahuje dva ověření technický profil, generovat kód a odeslat jej.
-  - **VerifyCode** - Ověří kód. Tato akce obvykle obsahuje jeden technický profil ověření.
+  - **Odeslat do** -jednu nebo více deklarací, které určují, kam má být ověřovací kód odeslán. Například *e-mail* nebo *kód země* a *telefonní číslo*.
+  - **Ověřovací kód** – deklarace ověřovacího kódu, kterou uživatel poskytne po odeslání kódu. Tato deklarace identity musí být nastavená na hodnotu požadováno `ControlClaimType` a musí být nastavená na `VerificationCode`.
+- Výstupní deklarace identity (volitelné), která se má vrátit na samoobslužnou stránku, až uživatel dokončí proces ověření. Například *e-mail* nebo *kód země* a *telefonní číslo*. Technický profil s vlastním uplatněním používá deklarace identity k uchování dat nebo k bublinám výstupních deklarací do dalšího kroku orchestrace.
+- Dvě `Action`s s následujícími názvy:
+  - **SendCode** – pošle uživateli kód. Tato akce obvykle obsahuje dva technické profily ověření, vygeneruje kód a pošle ho.
+  - **VerifyCode** – ověřuje kód. Tato akce obvykle obsahuje jeden technický profil ověření.
 
-V níže uvedeném příkladu se na stránce zobrazí textové pole **e-mailu.** Když uživatel zadá svou e-mailovou adresu a vybere **SendCode**, akce **SendCode** se aktivuje v back-endu Azure AD B2C.
+V následujícím příkladu se na stránce zobrazí textové pole **e-mailu** . Když uživatel zadá svou e-mailovou adresu a vybere **SendCode**, aktivuje se akce **SendCode** v back-endu Azure AD B2C.
 
-Potom uživatel zadá **ověřovací kód** a vybere **VerifyCode** pro aktivaci akce **VerifyCode** v back-endu. Pokud všechna ověření projít, **VerificationControl** je považován za dokončený a uživatel může pokračovat k dalšímu kroku.
+Pak uživatel zadá **verificationCode** a vybere **VerifyCode** , který aktivuje akci **VerifyCode** v back-endu. Pokud jsou všechna ověření splněná, **VerificationControl** se považuje za kompletní a uživatel může pokračovat k dalšímu kroku.
 
 ```XML
 <DisplayControl Id="emailVerificationControl" UserInterfaceControlType="VerificationControl">

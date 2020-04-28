@@ -1,6 +1,6 @@
 ---
-title: Podpora služby Azure Active Directory B2C | Dokumenty společnosti Microsoft
-description: Jak podat žádost o podporu pro Azure Active Directory B2C.
+title: Podpora pro Azure Active Directory B2C | Microsoft Docs
+description: Jak zaAzure Active Directory B2Covat požadavky na podporu pro.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,58 +11,58 @@ ms.date: 12/06/2016
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5195241003b1ce4ea505002e2cc3c10410e6cde1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78183716"
 ---
-# <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C: Žádosti o podporu souborů
-Žádosti o podporu pro Azure Active Directory B2C (Azure AD B2C) můžete podat pomocí následujících kroků:
+# <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C: žádosti o podporu souborů
+Žádosti o podporu pro Azure Active Directory B2C (Azure AD B2C) na Azure Portal můžete vymezit pomocí následujících kroků:
 
-1. Přepněte z vašeho klienta B2C na jiného klienta, ke kterému je přidruženo předplatné Azure. Obvykle je to váš zaměstnanecký tenant nebo výchozí tenant vytvořený pro vás, když jste se zaregistrovali k předplatnému Azure. Další informace najdete [v tématu, jak předplatné Azure souvisí s Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+1. Přepněte ze svého tenanta B2C do jiného tenanta, ke kterému je přidružené předplatné Azure. Obvykle se jedná o vašeho tenanta zaměstnance nebo výchozího tenanta vytvořeného při registraci předplatného Azure. Další informace najdete v tématu [jak předplatné Azure souvisí se službou Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
-    ![Portál Azure se zvýrazněným výběrem klienta](./media/support-options/support-switch-dir.png)
+    ![Azure Portal se zvýrazněným výběrem tenanta](./media/support-options/support-switch-dir.png)
 
-1. Po přepnutí klientů klikněte na **nápověda + podpora**.
+1. Po přepnutí klientů klikněte na tlačítko **help + podpora**.
 
-    ![Dlaždice Nápověda + podpora zvýrazněná na webu Azure Portal](./media/support-options/support-support.png)
+    ![Dlaždice pomoc a podpora zvýrazněná v Azure Portal](./media/support-options/support-support.png)
 
-1. Klepněte na tlačítko **Nová žádost o podporu**.
+1. Klikněte na **Nová žádost o podporu**.
 
-    ![Na webu Azure Portal je zvýrazněná dlaždice nové žádosti o podporu](./media/support-options/support-new.png)
+    ![V Azure Portal se zvýrazní nová dlaždice žádosti o podporu.](./media/support-options/support-new.png)
 
-1. V okně **Základy** použijte tyto podrobnosti a klepněte na tlačítko **Další**.
+1. V okně **základy** použijte tyto podrobnosti a klikněte na **Další**.
 
     * **Typ problému** je **technický**.
-    * Zvolte příslušné **předplatné**.
-    * **Služba** je **služba Active Directory**.
-    * Zvolte příslušný **plán podpory**. Pokud nemáte, můžete se zaregistrovat na jeden [zde](https://azure.microsoft.com/support/plans/).
+    * Vyberte odpovídající **předplatné**.
+    * **Služba** je **Active Directory**.
+    * Vyberte příslušný **plán podpory**. Pokud ho ještě nemáte, můžete si ho zaregistrovat [tady](https://azure.microsoft.com/support/plans/).
 
-     ![Stránka Základy se zvýrazněným tlačítkem Další na webu Azure Portal](./media/support-options/support-basics.png)
+     ![Stránka základy s zvýrazněným tlačítkem Další v Azure Portal](./media/support-options/support-basics.png)
 
-1. V okně **Problém** použijte tyto podrobnosti a klepněte na tlačítko **Další**.
+1. V okně **problém** použijte tyto podrobnosti a klikněte na **Další**.
 
-    * Zvolte příslušnou úroveň **závažnosti.**
+    * Vyberte příslušnou úroveň **závažnosti** .
     * **Typ problému** je **B2C**.
-    * Zvolte příslušnou **kategorii**.
-    * Popište svůj problém v poli **Podrobnosti.** Zadejte podrobnosti, jako je název klienta B2C, popis problému, chybové zprávy, ID korelace (pokud jsou k dispozici) a tak dále.
-    * V poli **Časový rámec** zadejte datum a čas (včetně časového pásma), ke kterému k problému došlo.
-    * V části **Nahrání souboru**nahrajte všechny snímky obrazovky a soubory, o kterých si myslíte, že by pomohly problém vyřešit.
+    * Vyberte příslušnou **kategorii**.
+    * Popište svůj problém v poli **podrobností** . Zadejte podrobnosti, jako je název tenanta B2C, popis problému, chybové zprávy, ID korelace (Pokud je k dispozici) a tak dále.
+    * V poli **časový rámec** zadejte datum a čas (včetně časového pásma), k němuž došlo k problému.
+    * V části **nahrávání souborů**Nahrajte všechny snímky obrazovky a soubory, které vám pomohou při řešení problému.
 
-     ![Stránka problém se zvýrazněným tlačítkem Další na webu Azure Portal](./media/support-options/support-problem.png)
+     ![Stránka s problémem s zvýrazněným tlačítkem Další v Azure Portal](./media/support-options/support-problem.png)
 
-1. Do okna **Kontaktní informace** přidejte kontaktní informace. Klikněte na **Vytvořit**.
+1. V okně **kontaktní informace** přidejte své kontaktní informace. Klikněte na **Vytvořit**.
 
-    ![Stránka Kontaktní informace s tlačítkem Vytvořit zvýrazněným na portálu](./media/support-options/support-contact.png)
+    ![Stránka kontaktní informace s zvýrazněným tlačítkem vytvořit na portálu](./media/support-options/support-contact.png)
 
-1. Po odeslání žádosti o podporu ji můžete sledovat kliknutím na **nápovědu + podporu** na úvodním můstku a potom **na Spravovat žádosti o podporu**.
+1. Po odeslání žádosti o podporu ji můžete monitorovat kliknutím na tlačítko **help + podpora** na úvodní panel a potom **Spravovat žádosti o podporu**.
 
-## <a name="known-issue-filing-a-support-request-in-the-context-of-a-b2c-tenant"></a>Známý problém: Podání žádosti o podporu v kontextu klienta B2C
+## <a name="known-issue-filing-a-support-request-in-the-context-of-a-b2c-tenant"></a>Známý problém: podání žádosti o podporu v kontextu tenanta B2C
 
-Pokud jste vynechal krok 2 uvedené výše a pokusit se vytvořit žádost o podporu v kontextu vašeho klienta B2C, zobrazí se následující chyba.
+Pokud jste si vynechali krok 2 popsaný výše a pokusíte se vytvořit žádost o podporu v kontextu vašeho tenanta B2C, zobrazí se následující chyba.
 
 > [!IMPORTANT]
-> Nepokoušejte se zaregistrovat nové předplatné Azure ve vašem tenantovi B2C.
+> Nepokoušejte se zaregistrovat nové předplatné Azure v tenantovi B2C.
 
-![Na webu Azure Portal se nezobrazuje chyba předplatného](./media/support-options/support-no-sub.png)
+![V Azure Portal není zobrazená chyba předplatného.](./media/support-options/support-no-sub.png)

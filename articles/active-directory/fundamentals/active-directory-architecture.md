@@ -1,6 +1,6 @@
 ---
-title: Přehled architektury – Azure Active Directory | Dokumenty společnosti Microsoft
-description: Zjistěte, co je tenant Azure Active Directory a jak spravovat Azure pomocí Azure Active Directory.
+title: Přehled architektury – Azure Active Directory | Microsoft Docs
+description: Přečtěte si, co je tenant Azure Active Directory a jak spravovat Azure pomocí Azure Active Directory.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -14,13 +14,13 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 854fb4649f8c1113f20abe5807dd0ce473ba6ee3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77368064"
 ---
-# <a name="what-is-the-azure-active-directory-architecture"></a>Co je architektura Služby Azure Active Directory?
+# <a name="what-is-the-azure-active-directory-architecture"></a>Co je architektura Azure Active Directory?
 
 Azure Active Directory (Azure AD) umožňuje zabezpečeně spravovat přístup k prostředkům a službám Azure pro vaše uživatele. Součástí Azure AD je kompletní sada funkcí pro správu identit. Informace o funkcích služby Azure AD najdete v tématu [Co je Azure Active Directory?](active-directory-whatis.md)
 
@@ -28,7 +28,7 @@ Pomocí Azure AD můžete vytvářet a spravovat uživatele a skupiny a použív
 
 ## <a name="azure-ad-architecture"></a>Architektura Azure AD
 
-Geograficky distribuovaná architektura Azure AD kombinuje rozsáhlé monitorování, automatické přesměrování, převzetí služeb při selhání a možnosti obnovení, které zákazníkům poskytují dostupnost a výkon v rámci celé společnosti.
+Geograficky distribuovaná architektura Azure AD kombinuje rozsáhlé možnosti monitorování, automatizovaného přesměrování, převzetí služeb při selhání a obnovení, které zákazníkům zajišťuje dostupnost a výkon v celé společnosti.
 
 Tento článek se zabývá následujícími prvky návrhu:
 
@@ -39,9 +39,9 @@ Tento článek se zabývá následujícími prvky návrhu:
 
 ### <a name="service-architecture-design"></a>Návrh architektury služeb
 
-Nejběžnější způsob, jak vytvořit přístupný a použitelný systém bohatý na data, je prostřednictvím nezávislých stavebních bloků nebo škálovacích jednotek. Pro datovou vrstvu Azure AD se jednotky škálování nazývají *oddíly*.
+Nejběžnější způsob, jak vytvořit přístupný a použitelný systém bohatý na data, je prostřednictvím nezávislých stavebních bloků nebo jednotek škálování. Pro datovou vrstvu Azure AD se jednotky škálování označují jako *oddíly*.
 
-Datová vrstva obsahuje několik front-endových služeb, které poskytují funkce pro čtení a zápis. Následující diagram ukazuje, jak jsou součásti oddílu s jedním adresářem doručovány v geograficky distribuovaných datových centrech.
+Datová vrstva obsahuje několik front-endových služeb, které poskytují funkce pro čtení a zápis. Následující diagram znázorňuje, jak se součásti oddílu s jedním adresářem dodávají v rámci geograficky distribuovaných datových center.
 
   ![Diagram oddílů s jedním adresářem](./media/active-directory-architecture/active-directory-architecture.png)
 
@@ -53,21 +53,21 @@ Komponenty architektury služby Azure AD zahrnují primární repliku a sekundá
 
 #### <a name="secondary-replicas"></a>Sekundární repliky
 
-Všechna *čtení* adresářů jsou obsluhována ze *sekundárních replik*, které jsou v datových centrech, které jsou fyzicky umístěny v různých zeměpisných oblastech. Protože data se replikují asynchronně, existuje mnoho sekundárních replik. Čtení adresářů, jako jsou požadavky na ověření, jsou obsluhovány z datových center, které jsou blízko zákazníkům. Sekundární repliky zodpovídají za škálovatelnost čtení.
+Všechny *čtení* adresáře se obsluhují ze *sekundárních replik*, které se nacházejí v datových centrech, které jsou fyzicky umístěné v různých geografických oblastech. Protože data se replikují asynchronně, existuje mnoho sekundárních replik. Čtení adresáře, například žádosti o ověření, jsou obsluhovaná z datových center, která se blíží zákazníkům. Sekundární repliky zodpovídají za škálovatelnost čtení.
 
 ### <a name="scalability"></a>Škálovatelnost
 
 Škálovatelnost je schopnost služby rozšířit se a plnit rostoucí požadavky na výkon. Škálovatelnosti zápisu se dosahuje dělením dat. Škálovatelnost čtení se zajišťuje replikací dat z jednoho oddílu do několika sekundárních replik distribuovaných po celém světě.
 
-Požadavky z adresářových aplikací jsou směrovány do datového centra, ke kterému jsou fyzicky nejblíže. Zápisy se transparentně přesměrují na primární repliku, aby se zajistila konzistence čtení a zápisu. Sekundární repliky výrazně rozšiřují rozsah oddílů, protože adresáře obvykle většinu doby obsluhují čtení.
+Požadavky z adresářových aplikací jsou směrovány do datového centra, které jsou fyzicky nejblíže. Zápisy se transparentně přesměrují na primární repliku, aby se zajistila konzistence čtení a zápisu. Sekundární repliky výrazně rozšiřují rozsah oddílů, protože adresáře obvykle většinu doby obsluhují čtení.
 
-Aplikace adresáře se připojují k nejbližším datovým centrům. Toto připojení zlepšuje výkon, a proto je možné horizontální navýšení kapacity. Vzhledem k tomu, že oddíl adresáře může mít mnoho sekundárních replik, sekundární repliky mohou být umístěné blíž ke klientům adresáře. Jenom interní komponenty služby adresáře, které jsou náročné na zápis, přímo cílí na aktivní primární repliku.
+Aplikace adresáře se připojují k nejbližším datovým centrům. Toto připojení zvyšuje výkon, a proto je možné horizontální navýšení kapacity. Vzhledem k tomu, že oddíl adresáře může mít mnoho sekundárních replik, sekundární repliky mohou být umístěné blíž ke klientům adresáře. Jenom interní komponenty služby adresáře, které jsou náročné na zápis, přímo cílí na aktivní primární repliku.
 
 ### <a name="continuous-availability"></a>Nepřetržitá dostupnost
 
-Dostupnost (nebo doba provozuschopnosti) definuje schopnost systému pracovat bez přerušení. Klíčem k vysoké dostupnosti Azure AD je, že služby můžete rychle přesunout provoz přes více geograficky distribuovaných datových center. Každé datové centrum je nezávislé, což umožňuje režimy selhání s odkondoluje. Díky tomuto návrhu vysoké dostupnosti azure ad nevyžaduje žádné prostoje pro aktivity údržby.
+Dostupnost (nebo doba provozuschopnosti) definuje schopnost systému pracovat bez přerušení. Klíčem k zajištění vysoké dostupnosti služby Azure AD je, že služby můžou rychle posunout provoz napříč několika geograficky rozloženými datacentry. Každé datové centrum je nezávislé, což umožňuje nerelační režimy selhání. V rámci tohoto návrhu vysoké dostupnosti služba Azure AD nevyžaduje žádné výpadky aktivit údržby.
 
-Návrh oddílu Azure AD je zjednodušený ve srovnání s návrhem podnikové služby AD pomocí návrhu jednoho hlavního serveru, který zahrnuje pečlivě řízený a deterministický proces převzetí služeb při selhání primární repliky.
+Návrh oddílů Azure AD se v porovnání s návrhem podnikové sítě zjednodušuje pomocí návrhu s jedním hlavním serverem, který zahrnuje pečlivě Orchestrované a deterministické procesy převzetí služeb při selhání primární repliky.
 
 #### <a name="fault-tolerance"></a>Odolnost proti chybám
 
@@ -77,49 +77,49 @@ Operace čtení (jejichž počet mnohonásobně převyšuje počet zápisů) jdo
 
 #### <a name="data-durability"></a>Odolnost dat
 
-Zápis je trvale potvrzena alespoň dvě datová centra před tím, než je potvrzena. K tomu dochází tak, že nejprve popotvrzení zápisu na primární a okamžitě replikovat zápis alespoň do jednoho dalšího datového centra. Tato akce zápisu zajišťuje, že potenciální katastrofická ztráta datového centra hostujícího primární nemá za následek ztrátu dat.
+Zápis se trvale před potvrzením do alespoň dvou datových center. K tomu dochází, když nejdřív potvrdíte zápis na primárním počítači a pak hned znovu replikujte zápis do aspoň jednoho jiného datového centra. Tato akce zápisu zajišťuje, že potenciální závažná ztráta datacentra hostujícího primární službu nevede ke ztrátě dat.
 
-Azure AD udržuje cíl nulové [doby obnovení (RTO)](https://en.wikipedia.org/wiki/Recovery_time_objective) neztratit data o převzetí služeb při selhání. To zahrnuje:
+Azure AD udržuje [objektivní čas obnovení (RTO)](https://en.wikipedia.org/wiki/Recovery_time_objective) , který neztratí data při převzetí služeb při selhání. To zahrnuje:
 
 * Vystavení tokenu a čtení adresáře
-* Povolení pouze asi 5 minut RTO pro zápisy adresáře
+* Povoluje se jenom asi 5 minut RTO pro zápisy adresářů.
 
 ### <a name="datacenters"></a>Datová centra
 
-Repliky Azure AD jsou uložené v datových centrech rozmístěných po celém světě. Další informace najdete v [tématu Azure global infrastructure](https://azure.microsoft.com/global-infrastructure/).
+Repliky Azure AD jsou uložené v datových centrech rozmístěných po celém světě. Další informace najdete v tématu [globální infrastruktura Azure](https://azure.microsoft.com/global-infrastructure/).
 
-Azure AD funguje napříč datovými centry s následujícími charakteristikami:
+Azure AD funguje v datových centrech s následujícími charakteristikami:
 
-* Ověřování, graf a další služby služby AD jsou umístěny za službou Gateway. Gateway spravuje vyrovnávání zatížení těchto služeb. Automaticky převezme služby při selhání, pokud jsou zjištěny všechny servery není v pořádku pomocí sond transakčního stavu. Na základě těchto sond stavu brána dynamicky směruje provoz do datových center v pořádku.
-* Pro *čtení*má adresář sekundární repliky a odpovídající front-endové služby v konfiguraci aktivní a aktivní pracující ve více datových centrech. V případě selhání celého datového centra bude provoz automaticky směrován do jiného datového centra.
- *U *zápisů*bude adresář přepojit primární (hlavní) repliku napříč datovými centry prostřednictvím plánovaných (nové primární je synchronizováno se starými primárními) nebo nouzovými postupy převzetí služeb při selhání. Odolnosti dat je dosaženo replikací jakékoli potvrzení alespoň dvě datová centra.
+* Ověřování, grafy a další služby AD jsou umístěné za službou brány. Gateway spravuje vyrovnávání zatížení těchto služeb. Dojde k automatickému převzetí služeb při selhání, pokud se zjistí případné nestavové servery pomocí transakčních sond stavu. Na základě těchto sond stavu brána dynamicky směruje provoz na datová centra v pořádku.
+* V případě *čtení*má adresář sekundární repliky a odpovídající front-endové služby v konfiguraci aktivní-aktivní v několika datových centrech. V případě selhání celého datového centra se provoz automaticky směruje na jiné datové centrum.
+ * V případě *zápisů*se adresář převezme primární (hlavní) replika napříč datovými centry prostřednictvím plánu (nová primární databáze je synchronizovaná se starými primárními) nebo postupy nouzového převzetí služeb při selhání. Odolnost dat se dosahuje replikací všech potvrzení do aspoň dvou datových center.
 
 #### <a name="data-consistency"></a>Konzistence dat
 
-Model adresáře je jedním z případných konzistence. Typický problém s distribuovanými asynchronně replikujícími systémy je, že data vrácená z "určité" repliky nemusí být aktuální. 
+Adresářový model je jedním z případných konečného výsledku. Jedním z typických problémů s distribuovanými asynchronně replikovanými systémy je to, že data vrácená z konkrétní repliky nemusí být aktuální. 
 
 Azure AD poskytuje konzistenci čtení a zápisu pro aplikace cílením na sekundární repliku. Směřuje svoje zápisy do primární repliky a synchronně stahuje zápisy zpátky do sekundární repliky.
 
-Zápisy aplikací pomocí rozhraní Microsoft Graph API Azure AD jsou abstrahovány z udržování spřažení s replikou adresáře pro konzistenci čtení a zápisu. Služba rozhraní MICROSOFT Graph API udržuje logickou relaci, která má spřažení se sekundární replikou používanou pro čtení. spřažení je zachycena v "tokenu repliky", který služba ukládá pomocí distribuované mezipaměti v sekundárním datovém centru repliky. Tento token se potom využívá pro následné operace ve stejné logické relaci. Chcete-li pokračovat v používání stejné logické relace, následné požadavky musí být směrovány do stejného datového centra Azure AD. Není možné pokračovat v logické relaci, pokud jsou požadavky klienta adresáře směrovány do více datových center Azure AD; Pokud k tomu dojde, klient má více logických relací, které mají nezávislé konzistence pro čtení a zápis.
+Zápisy aplikací pomocí rozhraní Microsoft Graph API služby Azure AD jsou abstrakcí z udržování spřažení s replikou adresáře pro zajištění konzistence čtení a zápisu. Služba Microsoft Graph API udržuje logickou relaci, která má spřažení se sekundární replikou používanou pro čtení. spřažení je zachyceno v "tokenu repliky", který služba ukládá do mezipaměti pomocí distribuované mezipaměti v datacentru sekundárního repliky. Tento token se potom využívá pro následné operace ve stejné logické relaci. Aby bylo možné dál používat stejnou logickou relaci, následné požadavky musí být směrovány do stejného datacentra Azure AD. Pokud se požadavky na klienta adresáře směrují do více datových center Azure AD, není možné pokračovat v logické relaci. Pokud k tomu dojde, bude mít klient několik logických relací, které mají nezávislou konečného výsledku pro čtení a zápis.
 
  >[!NOTE]
  >Zápisy se okamžitě replikují do sekundární repliky, pro kterou byla provedena čtení logické relace.
 
 #### <a name="backup-protection"></a>Ochrana záloh
 
-Adresář místo trvalého odstranění implementuje obnovitelné odstranění. Uživatelům a tenantům to umožňuje snadné obnovení v případě náhodných odstranění ze strany zákazníka. Pokud správce klienta omylem odstraní uživatele, mohou odstraněné uživatele snadno vrátit a obnovit.
+Adresář místo trvalého odstranění implementuje obnovitelné odstranění. Uživatelům a tenantům to umožňuje snadné obnovení v případě náhodných odstranění ze strany zákazníka. Pokud správce tenanta omylem odstraní uživatele, může snadno zrušit a obnovit odstraněné uživatele.
 
-Azure AD implementuje denní zálohy všech dat, a proto může autoritativně obnovit data v případě jakýchkoli logických odstranění nebo poškození. Datová vrstva využívá kódy pro opravu chyb, takže může kontrolovat chyby a automaticky opravovat konkrétní typy chyb disku.
+Azure AD implementuje denní zálohy všech dat, a proto může autoritativně obnovit data v případě jakýchkoli logických odstranění nebo poškození. Datová vrstva využívá chyby oprav kódů, takže může kontrolovat chyby a automaticky opravovat konkrétní typy chyb na disku.
 
 #### <a name="metrics-and-monitors"></a>Metriky a monitorování
 
-Spouštění služby s vysokou dostupností vyžaduje špičkové metriky a možnosti monitorování. Azure AD průběžně analyzuje a reportuje metriky stavu klíčových služeb a kritéria úspěchu pro každou ze svých služeb. K dispozici je také nepřetržitý vývoj a ladění metrik a monitorování a upozorňování pro každý scénář, v rámci každé služby Azure AD a napříč všemi službami.
+Spouštění služby s vysokou dostupností vyžaduje špičkové metriky a možnosti monitorování. Azure AD průběžně analyzuje a reportuje metriky stavu klíčových služeb a kritéria úspěchu pro každou ze svých služeb. Mezi jednotlivými službami Azure AD a všemi službami je také průběžný vývoj a ladění metrik a monitorování a upozorňování pro každý scénář.
 
-Pokud žádná služba Azure AD nefunguje podle očekávání, okamžitě se akce k obnovení funkčnosti co nejrychleji. Nejdůležitější metrika Azure AD sleduje, jak rychle živé problémy s webem lze zjistit a zmírnit pro zákazníky. Intenzivně investujeme do monitorování a výstrah, abychom minimalizovali dobu detekce (cílová hodnota TTD: < 5 minut) a provozní připravenosti s cílem minimalizovat dobu zmírnění problému (cílová hodnota TTM: < 30 minut).
+Pokud některá služba Azure AD nefunguje podle očekávání, okamžitě se spustí funkce pro obnovení funkcí co nejrychleji. Nejdůležitější metrikami služby Azure AD je, jak rychle zjistit a zmírnit problémy s živým webem pro zákazníky. Intenzivně investujeme do monitorování a výstrah, abychom minimalizovali dobu detekce (cílová hodnota TTD: < 5 minut) a provozní připravenosti s cílem minimalizovat dobu zmírnění problému (cílová hodnota TTM: < 30 minut).
 
 #### <a name="secure-operations"></a>Bezpečný provoz
 
-Použití provozních ovládacích prvků, jako je vícefaktorové ověřování (MFA) pro všechny operace, stejně jako auditování všech operací. Kromě toho, pomocí just-in-time zvýšení systému udělit nezbytný dočasný přístup pro všechny provozní úkol na vyžádání průběžně. Další informace najdete v tématu [Důvěryhodný cloud](https://azure.microsoft.com/support/trust-center).
+Použití operačních ovládacích prvků, jako je Multi-Factor Authentication (MFA) pro jakoukoli operaci, a také auditování všech operací. Kromě toho je možné pomocí systému řízení přihlašování za běhu udělit nezbytný dočasný přístup pro všechny operační úkoly na vyžádání průběžně. Další informace najdete v tématu [Důvěryhodný cloud](https://azure.microsoft.com/support/trust-center).
 
 ## <a name="next-steps"></a>Další kroky
 

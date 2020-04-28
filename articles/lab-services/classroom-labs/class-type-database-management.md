@@ -1,6 +1,6 @@
 ---
-title: Nastavení testovacího prostředí pro výuku správy databází pro relační databáze | Dokumenty společnosti Microsoft
-description: Naučte se, jak nastavit testovací prostředí pro výuku správy relačních databází.
+title: Nastavení testovacího prostředí pro učení správy databází pro relační databáze | Microsoft Docs
+description: Naučte se, jak nastavit testovací prostředí pro učení správy relačních databází.
 services: lab-services
 documentationcenter: na
 author: emaher
@@ -14,65 +14,65 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
 ms.openlocfilehash: 4c375487b30595251753021033c98cf0ca1e8dd7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77469914"
 ---
-# <a name="set-up-a-lab-to-teach-database-management-for-relational-databases"></a>Nastavení testovacího prostředí pro výuku správy databází pro relační databáze
+# <a name="set-up-a-lab-to-teach-database-management-for-relational-databases"></a>Nastavení testovacího prostředí pro správu databází pro relační databáze
 
-Tento článek popisuje, jak nastavit testovací prostředí pro třídu správy základních databází ve službě Azure Lab Services. Databáze pojmy jsou jedním z úvodních kurzů vyučovaných ve většině oddělení informatiky na vysoké škole. Strukturovaný dotazovací jazyk (SQL) je mezinárodní standard. SQL je standardní jazyk pro správu relačnídatabáze včetně přidávání, přístupu a správy obsahu v databázi.  To je nejvíce známý pro jeho rychlé zpracování, osvědčená spolehlivost, snadnost, a flexibilitu použití.
+Tento článek popisuje, jak nastavit testovací prostředí pro třídu správy základních databází v Azure Lab Services. Koncepty databází jsou jedním z úvodních kurzů, které jsou v rámci vysokoškolského ministerstva v oblasti počítačové vědy. Jazyk SQL (Structured Query Language) (SQL) je mezinárodní standard. SQL je standardním jazykem pro relaci správy databází, včetně přidávání, přístupu a správy obsahu v databázi.  Je nejužitečnější pro své rychlé zpracování, prověřenou spolehlivost, jednoduchost a flexibilitu použití.
 
-V tomto článku ukážeme, jak nastavit šablonu virtuálního počítače v testovacím prostředí se serverem MySQL Database Server a serverem SQL Server 2019.  [MySQL](https://www.mysql.com/) je volně dostupný open source Relační databázový management (RDBMS).  [SQL Server 2019](https://www.microsoft.com/sql-server/sql-server-2019) je nejnovější verze rdbms společnosti Microsoft.
+V tomto článku ukážeme, jak nastavit šablonu virtuálního počítače v testovacím prostředí s databázovým serverem MySQL i serverem SQL Server 2019.  [MySQL](https://www.mysql.com/) je volně dostupný open source systém pro správu relačních databází (RDBMS).  [SQL Server 2019](https://www.microsoft.com/sql-server/sql-server-2019) je nejnovější verze RDBMS Microsoftu.
 
-## <a name="lab-configuration"></a>Konfigurace laboratoře
+## <a name="lab-configuration"></a>Konfigurace testovacího prostředí
 
-Chcete-li nastavit toto testovací prostředí, budete potřebovat předplatné Azure a účet testovacího prostředí, abyste mohli začít. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/) než začnete. Jakmile získáte předplatné Azure, můžete si vytvořit nový účet testovacího prostředí ve službách Azure Lab Services. Další informace o vytvoření nového účtu testovacího prostředí naleznete [v tématu Výuka nastavení účtu testovacího prostředí](tutorial-setup-lab-account.md).  Můžete také použít existující účet testovacího prostředí.
+K nastavení tohoto testovacího prostředí potřebujete předplatné Azure a účet testovacího prostředí, abyste mohli začít. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete. Po získání předplatného Azure můžete vytvořit nový účet testovacího prostředí v Azure Lab Services. Další informace o vytvoření nového účtu testovacího prostředí najdete v [kurzu nastavení účtu testovacího prostředí](tutorial-setup-lab-account.md).  Můžete použít i existující účet testovacího prostředí.
 
-### <a name="lab-account-settings"></a>Nastavení účtu laboratoře
+### <a name="lab-account-settings"></a>Nastavení účtu testovacího prostředí
 
-Povolte nastavení popsaná v následující tabulce pro účet testovacího prostředí. Další informace o povolení bitových kopií marketplace najdete [v tématu Určení bitových kopií marketplace dostupných tvůrcům testovacího prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images).
+Pro účet testovacího prostředí povolte nastavení popsaná v následující tabulce. Další informace o tom, jak povolit image Marketplace, najdete v tématu [určení imagí z Marketplace dostupných pro tvůrce testovacích prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images).
 
-| Nastavení účtu laboratoře | Pokyny |
+| Nastavení účtu testovacího prostředí | Pokyny |
 | ------------------- | ------------ |
-|Obrázek tržiště| Povolte bitovou kopii SQL Server 2019 Standard v systému Windows Server 2019 pro použití v rámci účtu testovacího prostředí.|
+|Obrázek Marketplace| Pro použití v rámci vašeho účtu testovacího prostředí povolte image SQL Server 2019 Standard na Windows serveru 2019.|
 
-### <a name="lab-settings"></a>Nastavení laboratoře
+### <a name="lab-settings"></a>Nastavení testovacího prostředí
 
-Při nastavování učební laboratoře použijte nastavení v následující tabulce.  Další informace o vytvoření učebny naleznete v [tématu nastavení výukového programu pro testovací prostředí ve třídě](tutorial-setup-classroom-lab.md).
+Při nastavování testovacího prostředí učebny použijte nastavení v následující tabulce.  Další informace o tom, jak vytvořit prostředí učebny, najdete v tématu [Nastavení kurzu pro prostředí učebny](tutorial-setup-classroom-lab.md).
 
-| Nastavení laboratoře | Hodnota/instrukce |
+| Nastavení testovacího prostředí | Hodnota/pokyny |
 | ------------ | ------------------ |
-|Velikost virtuálního počítače| Střední. Tato velikost je nejvhodnější pro relační databáze, ukládání do mezipaměti v paměti a analýzy.|
-|Image virtuálního počítače| SQL Server 2019 Standard na Windows Serveru 2019|
+|Velikost virtuálního počítače| Střední. Tato velikost se nejlépe hodí pro relační databáze, ukládání do mezipaměti v paměti a analýzy.|
+|Image virtuálního počítače| SQL Server 2019 standard v systému Windows Server 2019|
 
 ## <a name="template-machine-configuration"></a>Konfigurace počítače šablony
 
-Chcete-li nainstalovat MySQL na Windows Server 2019, můžete postupovat podle kroků uvedených v [části Instalace a spuštění komunitního serveru MySQL na virtuálním počítači](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fclassic%2Ftoc.json#install-and-run-mysql-community-server-on-the-virtual-machine).
+Pokud chcete nainstalovat MySQL na Windows Server 2019, můžete postupovat podle kroků uvedených v části [instalace a spuštění MySQL Community serveru na virtuálním počítači](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fclassic%2Ftoc.json#install-and-run-mysql-community-server-on-the-virtual-machine).
 
-SQL Server 2019 je předinstalovaný v bitové kopii virtuálního počítače, kterou jsme zvolili při vytváření nové laboratoře.
+V imagi virtuálního počítače, kterou jsme při vytváření nového testovacího prostředí zvolili, je předinstalovaná SQL Server 2019.
 
 ## <a name="cost-estimate"></a>Odhad nákladů
 
-Pokryjme možný odhad nákladů pro tuto třídu.  Použijeme třídu 25 studentů.  K dispozici je 20 hodin plánovaného času ve třídě.  Každý student také získá kvótu 10 hodin pro domácí úkoly nebo úkoly mimo plánovaný čas kurzu.  Velikost virtuálního počítače, kterou jsme zvolili, byla střední, což je 42 laboratorních jednotek.
+Pojďme pro tuto třídu pokrýt možné náklady.  Použijeme třídu 25 studentů.  Naplánovaný čas třídy je 20 hodin.  Každý student navíc získá kvótu 10 hodin pro domácí nebo přiřazení mimo plánovanou dobu třídy.  Velikost virtuálního počítače, kterou jsme zvolili, byla střední, což je 42 jednotek testovacího prostředí.
 
 Zde je příklad možného odhadu nákladů pro tuto třídu:
 
-25 \* studentů (20 plánovaných hodin + \* 10 hodin kvóty) 0.42 USD za hodinu = 315.00 USD
+25 studentů \* (20 naplánovaných hodin + 10 hodin \* kvóty) 0,42 usd za hodinu = 315,00 USD
 
-Další podrobnosti o cenách najdete v tématu [Ceny služeb Azure Lab](https://azure.microsoft.com/pricing/details/lab-services/).
+Další podrobnosti o cenách najdete v článku [Azure Lab Services ceny](https://azure.microsoft.com/pricing/details/lab-services/).
 
 ## <a name="conclusion"></a>Závěr
 
-Tento článek vás provede kroky nezbytné k vytvoření testovacího prostředí pro základní koncepty správy databáze pomocí MySQL a SQL Server. Podobné nastavení můžete použít pro jiné třídy databází.
+Tento článek vás vás provedl kroky potřebnými k vytvoření testovacího prostředí pro základní koncepty správy databází pomocí MySQL i SQL Server. Podobné nastavení můžete použít pro jiné třídy databází.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další kroky jsou společné pro nastavení libovolného testovacího prostředí.
+Další kroky jsou běžné pro nastavení testovacího prostředí.
 
-- [Vytvoření a správa šablony](how-to-create-manage-template.md)
+- [Vytvoření a Správa šablony](how-to-create-manage-template.md)
 - [Přidávání uživatelů](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
 - [Nastavit kvótu](how-to-configure-student-usage.md#set-quotas-for-users)
-- [Nastavení plánu](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
-- [E-mailové registrační odkazy pro studenty](how-to-configure-student-usage.md#send-invitations-to-users)
+- [Nastavit plán](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
+- [Odkazy na registraci e-mailu studentům](how-to-configure-student-usage.md#send-invitations-to-users)

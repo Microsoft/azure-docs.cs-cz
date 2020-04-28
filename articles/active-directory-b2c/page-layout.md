@@ -1,7 +1,7 @@
 ---
 title: Verze rozložení stránky
 titleSuffix: Azure AD B2C
-description: Historie verzí rozložení stránky pro vlastní zásady uživatelského rozhraní.
+description: Historie verzí rozložení stránky pro přizpůsobení uživatelského rozhraní v uživatelských zásadách.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,56 +12,56 @@ ms.date: 02/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 3d0cb06f84fdd96d099e05f55ba62c37cb1192c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78183971"
 ---
 # <a name="page-layout-versions"></a>Verze rozložení stránky
 
-Balíčky rozložení stránky jsou pravidelně aktualizovány tak, aby obsahovaly opravy a vylepšení v jejich prvcích stránky. Následující protokol změn určuje změny zavedené v každé verzi.
+Balíčky rozložení stránky se pravidelně aktualizují, aby zahrnovaly opravy a vylepšení jejich prvků stránky. Následující protokol změn určuje změny zavedené v každé verzi.
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="200"></a>2.0.0
 
-- Sebe-tvrdil stránky`selfasserted`( )
-  - Byla přidána podpora [pro ovládací prvky zobrazení](display-controls.md) ve vlastních zásadách.
+- Stránka s vlastním kontrolním výrazem (`selfasserted`)
+  - Přidali jsme podporu pro [ovládací prvky zobrazení](display-controls.md) ve vlastních zásadách.
 
 ## <a name="120"></a>1.2.0
 
 - Všechny stránky
-  - Opravy usnadnění přístupu
-  - Nyní můžete přidat `data-preload="true"` atribut [ve značkách HTML](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) a řídit pořadí načítání pro CSS a JavaScript.
-    - Načíst propojené CSS soubory ve stejnou dobu jako vaše HTML šablony, takže to není 'blikání' mezi načítání souborů.
-    - Před načtením `script` stránky můžete řídit pořadí načítání a spouštění značek.
-  - Pole e-mailu je nyní `type=email` a mobilní klávesnice budou poskytovat správné návrhy
-  - Podpora překladu prohlížeče Chrome
-- Sjednocené a sebestředné stránky
-  - Pole uživatelského jména a e-mailu a hesla nyní používají element `form` HTML k tomu, aby edge a internet explorer (IE) mohly tyto informace správně uložit.
+  - Opravy usnadnění
+  - Nyní můžete přidat `data-preload="true"` atribut [do značek HTML](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) pro řízení pořadí načítání pro šablony stylů CSS a JavaScript.
+    - Načtěte propojené soubory CSS současně s vaší šablonou HTML tak, aby neblikat mezi načítáním souborů.
+    - Určuje pořadí, ve kterém jsou `script` značky načteny a provedeny před načtením stránky.
+  - Pole e-mail je teď `type=email` a mobilní klávesnice budou poskytovat správné návrhy.
+  - Podpora překladu pro Chrome
+- Sjednocené a samoobslužné stránky
+  - Pole uživatelské jméno, e-mail a heslo nyní pomocí elementu `form` HTML povolí Edge a Internet Explorer (IE) pro správné uložení těchto informací.
 
 ## <a name="110"></a>1.1.0
 
-- Stránka výjimky (globální výjimka)
+- Stránka výjimky (globalexception)
   - Oprava přístupnosti
-  - Byla odebrána výchozí zpráva, pokud ze zásady není žádný kontakt.
-  - Výchozí CSS odebrán
-- Stránka Vícefaktorové (vícefaktorové)
-  - Tlačítko Potvrdit kód bylo odstraněno
-  - Vstupní pole pro kód nyní trvá pouze zadá až šest (6) znaků
-  - Stránka se automaticky pokusí ověřit kód zadaný při zadání šestimístného kódu, aniž by bylo nutné klepnout na tlačítko
-  - Pokud je kód chybný, vstupní pole se automaticky vymaže
-  - Po třech (3) pokusech s nesprávným kódem odešle B2C chybu zpět předávající straně
-  - Opravy usnadnění přístupu
-  - Výchozí CSS odebrán
-- Sebe-tvrdil stránky (selfasserted)
-  - Odstraněná výstraha zrušení
+  - Pokud není žádný kontakt ze zásad, odebrala se výchozí zpráva.
+  - Bylo odebráno výchozí CSS.
+- Stránka MFA (více faktů)
+  - Odebralo se tlačítko Potvrdit kód.
+  - Vstupní pole pro kód nyní bere pouze vstup až šest (6) znaků.
+  - Stránka se automaticky pokusí ověřit kód zadaný při zadání čtyřmístného kódu, aniž by bylo nutné kliknout na tlačítko.
+  - Pokud je kód nesprávný, je vstupní pole automaticky vymazáno.
+  - Po třech (3) pokusům o zadání nesprávného kódu pošle B2C chybu zpět předávající straně.
+  - Opravy usnadnění
+  - Bylo odebráno výchozí CSS.
+- Stránka s vlastním kontrolním výrazem (selfasserted)
+  - Odebrání výstrahy zrušení
   - Třída CSS pro chybové prvky
-  - Zobrazit/skrýt logiku chyb
-  - Výchozí CSS odebrán
-- Jednotné ssp (unifiedssp)
-  - Přidáno keep mě přihlášen (KMSI) kontrolu
+  - Zobrazit/skrýt vylepšenou logiku chyb
+  - Bylo odebráno výchozí CSS.
+- Sjednocení SSP (unifiedssp)
+  - Přidání ovládacího prvku zůstat přihlášeni (políčko zůstat přihlášeni)
 
 ## <a name="100"></a>1.0.0
 
@@ -69,4 +69,4 @@ Balíčky rozložení stránky jsou pravidelně aktualizovány tak, aby obsahova
 
 ## <a name="next-steps"></a>Další kroky
 
-Podrobnosti o přizpůsobení uživatelského rozhraní aplikací ve vlastních zásadách naleznete v [tématu Přizpůsobení uživatelského rozhraní aplikace pomocí vlastních zásad](custom-policy-ui-customization.md).
+Podrobnosti o tom, jak přizpůsobit uživatelské rozhraní vašich aplikací ve vlastních zásadách, najdete v tématu [přizpůsobení uživatelského rozhraní aplikace pomocí vlastní zásady](custom-policy-ui-customization.md).

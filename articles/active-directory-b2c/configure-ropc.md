@@ -1,7 +1,7 @@
 ---
-title: Konfigurace toku přihlašovacích údajů vlastníka prostředku
+title: Konfigurace toku přihlašovacích údajů pro heslo vlastníka prostředku
 titleSuffix: Azure AD B2C
-description: Zjistěte, jak nakonfigurovat tok ROPC v Azure AD B2C.
+description: Naučte se konfigurovat ROPC tok v Azure AD B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,15 +12,15 @@ ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 70cd4f2ca3a4ac37bdf1d1e465d1f1a7d06ef9e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78189697"
 ---
-# <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Konfigurace toku přihlašovacích údajů vlastníka prostředku ve službě Azure AD B2C
+# <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Konfigurace toku přihlašovacích údajů pro heslo vlastníka prostředku v Azure AD B2C
 
-Tok pověření hesla vlastníka prostředku (ROPC) je standardní tok ověřování OAuth, kde aplikace, označovaná také jako předávající strana, vyměňuje platná pověření, jako je userid a heslo pro token ID, přístupový token a obnovovací token.
+Tok přihlašovacích údajů pro heslo vlastníka prostředku (ROPC) je standardní tok ověřování OAuth, kde aplikace, označovaná také jako předávající strana, vyměňuje platné přihlašovací údaje, jako je třeba ID a heslo pro token ID, přístupový token a obnovovací token.
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
@@ -29,16 +29,16 @@ Tok pověření hesla vlastníka prostředku (ROPC) je standardní tok ověřov�
 ##  <a name="create-a-resource-owner-user-flow"></a>Vytvoření toku uživatele vlastníka prostředku
 
 1. Přihlaste se k webu Azure Portal jako globální správce vašeho tenanta Azure AD B2C.
-2. Pokud chcete přepnout do klienta Azure AD B2C, vyberte adresář B2C v pravém horním rohu portálu.
-3. Klikněte na **Toky uživatelů**a vyberte **Nový tok uživatelů**.
-4. Klikněte na kartu **Vše** a **vyberte Přihlásit se pomocí ROPC**.
+2. Pokud chcete přepnout na svého tenanta Azure AD B2C, vyberte v pravém horním rohu portálu adresář B2C.
+3. Klikněte na **toky uživatelů**a vyberte **Nový tok uživatele**.
+4. Klikněte na kartu **vše** a vyberte **Přihlásit se pomocí ROPC**.
 5. Zadejte název toku uživatele, například *ROPC_Auth*.
-6. V části **Deklarace aplikace**klepněte na tlačítko **Zobrazit další**.
-7. Vyberte deklarace aplikace, které potřebujete pro vaši aplikaci, například zobrazované jméno, e-mailovou adresu a zprostředkovatele identity.
+6. V části **deklarace aplikací**klikněte na **Zobrazit více**.
+7. Vyberte deklarace identity aplikace, které potřebujete pro vaši aplikaci, například zobrazované jméno, e-mailovou adresu a poskytovatele identity.
 8. Vyberte **OK** a potom vyberte **Vytvořit**.
-9. Klepněte na **tlačítko Spustit tok uživatele**.
+9. Klikněte na **Spustit tok uživatele**.
 
-   Pak se zobrazí koncový bod, jako je například tento příklad:
+   Pak uvidíte koncový bod, jako je například tento příklad:
 
    `https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_ROPC_Auth`
 
@@ -49,23 +49,23 @@ Tok pověření hesla vlastníka prostředku (ROPC) je standardní tok ověřov�
 
 ## <a name="test-the-user-flow"></a>Testování toku uživatele
 
-Pomocí oblíbené aplikace pro vývoj rozhraní API vygenerujte volání rozhraní API a zkontrolujte odpověď na ladění toku uživatelů. Vytvořte volání, jako je tento, s informacemi v následující tabulce jako tělo požadavku POST:
-- Nahraďte * \<yourtenant.onmicrosoft.com>* názvem vašeho klienta B2C.
-- Nahraďte * \<B2C_1A_ROPC_Auth>* úplným názvem zásad y přihlašovacích údajů vlastníka prostředku.
-- Nahraďte * \<bef2222d56-552f-4a5b-b90a-1988a7d634c3>* s ID přihlášky z vaší registrace.
+Použijte svou oblíbenou aplikaci pro vývoj rozhraní API k vygenerování volání rozhraní API a Projděte si odpověď pro ladění toku uživatele. Sestavte podobné volání s informacemi v následující tabulce jako text požadavku POST:
+- * \<Yourtenant.onmicrosoft.com>* nahraďte názvem vašeho tenanta B2C.
+- * \<>B2C_1A_ROPC_Auth* nahraďte úplným názvem zásady pro přihlašovací údaje hesla vlastníka prostředku.
+- Nahraďte * \<bef2222d56-552f-4a5b-b90a-1988a7d634c3>* s ID aplikace z vaší registrace.
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Klíč | Hodnota |
+| Key | Hodnota |
 | --- | ----- |
 | uživatelské jméno | leadiocl@outlook.com |
-| heslo | Heslo1 |
+| heslo | Passxword1 |
 | grant_type | heslo |
-| scope | openid \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |
+| scope | OpenID \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | response_type | id_token tokenu |
 
-*Client_id* je hodnota, kterou jste dříve označili jako ID aplikace. *Offline_access* je volitelné, pokud chcete obdržet obnovovací token. Uživatelské jméno a heslo, které používáte, musí být pověření od existujícího uživatele v tenantovi Azure AD B2C.
+*Client_id* je hodnota, kterou jste dříve poznamenali jako ID aplikace. *Offline_access* je volitelné, pokud chcete získat obnovovací token. Uživatelské jméno a heslo, které použijete, musí být přihlašovací údaje od stávajícího uživatele v Azure AD B2C tenantovi.
 
 Skutečný požadavek POST vypadá takto:
 
@@ -78,7 +78,7 @@ username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=o
 ```
 
 
-Úspěšná odpověď s offline přístupem vypadá jako následující příklad:
+Úspěšná odpověď s offline přístupem vypadá jako v následujícím příkladu:
 
 ```json
 {
@@ -92,11 +92,11 @@ username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=o
 
 ## <a name="redeem-a-refresh-token"></a>Uplatnění obnovovacího tokenu
 
-Vytvořte volání POST, jako je uvedeno zde s informacemi v následující tabulce jako tělo požadavku:
+Sestavte následné volání jako tu, která se tady zobrazuje s informacemi v následující tabulce jako text požadavku:
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Klíč | Hodnota |
+| Key | Hodnota |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
@@ -104,9 +104,9 @@ Vytvořte volání POST, jako je uvedeno zde s informacemi v následující tabu
 | prostředek | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | refresh_token | eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3... |
 
-*Client_id* a *prostředky* jsou hodnoty, které jste dříve označili jako ID aplikace. *Refresh_token* je token, který jste obdrželi v ověřování volání je uvedeno dříve.
+*Client_id* a *prostředku* jsou hodnoty, které jste dříve poznamenali jako ID aplikace. *Refresh_token* je token, který jste dostali do výše uvedeného ověřovacího hovoru.
 
-Úspěšná odpověď vypadá takto:
+Úspěšná odpověď vypadá jako v následujícím příkladu:
 
 ```json
 {
@@ -124,13 +124,13 @@ Vytvořte volání POST, jako je uvedeno zde s informacemi v následující tabu
 }
 ```
 > [!NOTE]
-> Při vytváření uživatelů prostřednictvím rozhraní Graph API musí mít aplikace oprávnění "openid", "offline_access" a "profile" z microsoft graphu.
+> Při vytváření uživatelů prostřednictvím Graph API musí aplikace mít oprávnění "OpenID", "offline_access" a "profil" z Microsoft Graph.
 
-## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>Implementujte pomocí upřednostňované nativní sady SDK nebo použijte app-auth
+## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>Implementace s upřednostňovanou nativní sadou SDK nebo použití ověřování aplikací
 
-Implementace Azure AD B2C splňuje standardy OAuth 2.0 pro přihlašovací údaje vlastníka prostředků veřejného klienta a měla by být kompatibilní s většinou sad SDK klienta. Testovali jsme tento tok značně, ve výrobě, s AppAuth pro iOS a AppAuth pro Android. Nejnovější informace naleznete v [tématu Native App SDK for OAuth 2.0 and OpenID Connect implementující modernitá doporučené postupy](https://appauth.io/).
+Implementace Azure AD B2C splňuje předpisy OAuth 2,0 pro přihlašovací údaje k heslu veřejného klienta a měly by být kompatibilní s většinou klientských sad SDK. Tento tok jsme v produkčním prostředí důkladně otestovali s AppAuth pro iOS a AppAuth pro Android. Nejnovější informace najdete v tématu [nativní sada App SDK pro OAuth 2,0 a OpenID Connect implementující moderní osvědčené postupy](https://appauth.io/).
 
-Stáhněte si pracovní ukázky, které byly nakonfigurované pro použití s Azure AD B2C z [GitHubu, pro Android](https://aka.ms/aadb2cappauthropc) a [pro iOS](https://aka.ms/aadb2ciosappauthropc).
+Stáhněte si pracovní ukázky, které jsou nakonfigurované pro použití s Azure AD B2C z GitHubu, [pro Android](https://aka.ms/aadb2cappauthropc) a [iOS](https://aka.ms/aadb2ciosappauthropc).
 
 
 

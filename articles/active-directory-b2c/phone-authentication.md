@@ -1,7 +1,7 @@
 ---
-title: Registrace telefonu a přihlášení pomocí vlastních zásad (náhled)
+title: Registrace a přihlášení k telefonnímu programu s vlastními zásadami (Preview)
 titleSuffix: Azure AD B2C
-description: Posílejte jednorázová hesla (OTP) v textových zprávách do telefonů uživatelů aplikace s vlastními zásadami ve službě Azure Active Directory B2C.
+description: Odesílat jednorázová hesla (JEDNORÁZOVé heslo) v textových zprávách telefonům uživatelů vaší aplikace s vlastními zásadami v Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,81 +12,81 @@ ms.date: 02/25/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: eadac0e973b361b1fdee63dcc9cfa848a0b2bacb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78183954"
 ---
-# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>Nastavení registrace a přihlášení pomocí vlastních zásad ve službě Azure AD B2C (Preview)
+# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>Nastavení registrace a přihlášení k telefonu pomocí vlastních zásad v Azure AD B2C (Preview)
 
-Registrace a přihlášení k telefonu ve službě Azure Active Directory B2C (Azure AD B2C) umožňuje uživatelům zaregistrovat se a přihlásit se k vašim aplikacím pomocí jednorázového hesla (OTP) odeslané v textové zprávě do svého telefonu. Jednorázová hesla mohou pomoci minimalizovat riziko, že uživatelé zamýšlejí nebo mají svá hesla ohrožena.
+Registrace a přihlášení k telefonnímu programu v Azure Active Directory B2C (Azure AD B2C) umožňuje vašim uživatelům se zaregistrovat a přihlásit k vašim aplikacím pomocí JEDNORÁZOVého hesla, které se v textové zprávě pošle na telefon. Jednorázová hesla můžou přispět k minimalizaci rizika vašich uživatelů forgetting nebo k ohrožení zabezpečení vašich hesel.
 
-Podle kroků v tomto článku pomocí vlastních zásad, které zákazníkům umožní zaregistrovat se a přihlásit se k aplikacím pomocí jednorázového hesla odeslaného do jejich telefonu.
+Postupujte podle kroků v tomto článku a použijte vlastní zásady, které zákazníkům umožňují registraci a přihlášení k vašim aplikacím pomocí jednorázového hesla odeslaného na telefon.
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="pricing"></a>Ceny
 
-Jednorázová hesla jsou uživatelům odesílána pomocí textových zpráv SMS a za každou odeslanou zprávu vám mohou být účtovány poplatky. Informace o cenách najdete v části **Samostatné poplatky** [v cenách Služby Azure Active Directory B2C](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
+Jednorázová hesla se uživatelům odesílají pomocí textových zpráv SMS a můžete se vám účtovat každou odeslanou zprávu. Informace o cenách naleznete v části **samostatné poplatky** [Azure Active Directory B2C ceny](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před nastavením otp potřebujete následující prostředky.
+Před nastavením jednorázového hesla budete potřebovat následující prostředky.
 
-* [Klient Azure AD B2C](tutorial-create-tenant.md)
-* [Webová aplikace registrovaná](tutorial-register-applications.md) ve vašem tenantovi
-* [Vlastní zásady](custom-policy-get-started.md) nahrané do vašeho tenanta
+* [Tenant Azure AD B2C](tutorial-create-tenant.md)
+* [Webová aplikace zaregistrovaná](tutorial-register-applications.md) ve vašem tenantovi
+* [Vlastní zásady](custom-policy-get-started.md) odeslané do vašeho tenanta
 
-## <a name="get-the-phone-sign-up--sign-in-starter-pack"></a>Získejte & startovací balíček pro registraci v telefonu
+## <a name="get-the-phone-sign-up--sign-in-starter-pack"></a>Získání registračního a registračního balíčku & přihlášení k telefonu
 
-Začněte aktualizací souborů vlastních zásad pro registraci a přihlášení telefonu tak, aby fungovaly s klientem Azure AD B2C.
+Začněte tím, že aktualizujete soubory vlastních zásad registrace a přihlášení telefon pro práci s vaším klientem Azure AD B2C.
 
-Následující kroky předpokládají, že jste dokončili [požadavky](#prerequisites) a již jste naklonovali úložiště [vlastních sad startovacíbalíček][starter-pack] do místního počítače.
+V následujících krocích se předpokládá, že jste splnili [požadavky](#prerequisites) a již jste naklonoval úložiště [Úvodní sady Custom Policy Pack][starter-pack] do místního počítače.
 
-1. Najděte [vlastní soubory zásad registrace a přihlášení telefonu][starter-pack-phone] v místním klonu repo startovacísady nebo si je stáhněte přímo. Soubory zásad XML jsou umístěny v následujícím adresáři:
+1. V místním klonu úložiště počátečního balíčku Najděte [vlastní soubory zásad pro registraci a přihlašování telefonem][starter-pack-phone] nebo si je Stáhněte přímo. Soubory zásad XML jsou umístěné v následujícím adresáři:
 
     `active-directory-b2c-custom-policy-starterpack/scenarios/`**`phone-number-passwordless`**
 
-1. V každém souboru `yourtenant` nahraďte řetězec názvem vašeho klienta Azure AD B2C. Například pokud název klienta B2C je *contosob2c*, `yourtenant.onmicrosoft.com` `contosob2c.onmicrosoft.com`všechny instance become .
+1. V každém souboru nahraďte řetězec `yourtenant` názvem vašeho tenanta Azure AD B2C. Například pokud je název vašeho tenanta B2C *contosob2c*, všechny instance `yourtenant.onmicrosoft.com` se stanou. `contosob2c.onmicrosoft.com`
 
-1. Dokončete kroky v [části Přidání ID aplikací do](custom-policy-get-started.md#add-application-ids-to-the-custom-policy) oddílu Vlastní zásady [Začínáme s vlastními zásadami ve službě Azure Active Directory B2C](custom-policy-get-started.md). V takovém případě `/phone-number-passwordless/` **`Phone_Email_Base.xml`** aktualizujte **pomocí ID aplikace (klienta)** dvou aplikací, které jste zaregistrovali při vyplňování požadavků, *IdentityExperienceFramework* a *ProxyIdentityExperienceFramework*.
+1. Dokončete kroky v části [Přidání ID aplikací do vlastní zásady](custom-policy-get-started.md#add-application-ids-to-the-custom-policy) [v tématu Začínáme s vlastními zásadami v Azure Active Directory B2C](custom-policy-get-started.md). V tomto případě aktualizujte `/phone-number-passwordless/` **`Phone_Email_Base.xml`** **ID aplikace (klienta)** dvou aplikací, které jste zaregistrovali při dokončování požadavků, *IdentityExperienceFramework* a *ProxyIdentityExperienceFramework*.
 
 ## <a name="upload-the-policy-files"></a>Nahrání souborů zásad
 
-1. Přihlaste se k [portálu Azure a](https://portal.azure.com) přejděte na svého klienta Azure AD B2C.
-1. V části **Zásady**vyberte **rozhraní Identity Experience Framework**.
-1. Vyberte **Nahrát vlastní zásady**.
-1. Nahrajte soubory zásad v následujícím pořadí:
-    1. *Phone_Email_Base.xml*
-    1. *SignUpOrSignInWithPhone.xml*
-    1. *SignUpOrSignInWithPhoneNeboEmail.xml*
-    1. *ProfilEditovatPhoneOnly.xml*
-    1. *ProfilEditovatPhoneEmail.xml*
-    1. *ChangePhoneNumber.xml*
-    1. *PasswordResetEmail.xml*
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte do svého tenanta Azure AD B2C.
+1. V části **zásady**vyberte **Architektura prostředí identity**.
+1. Vyberte **Odeslat vlastní zásadu**.
+1. Soubory zásad nahrajte v následujícím pořadí:
+    1. *Phone_Email_Base. XML*
+    1. *SignUpOrSignInWithPhone. XML*
+    1. *SignUpOrSignInWithPhoneOrEmail. XML*
+    1. *ProfileEditPhoneOnly. XML*
+    1. *ProfileEditPhoneEmail. XML*
+    1. *ChangePhoneNumber. XML*
+    1. *PasswordResetEmail. XML*
 
-Při nahrávání jednotlivých souborů azure `B2C_1A_`přidá předponu .
+Při nahrávání každého souboru Azure přidá předponu `B2C_1A_`.
 
 ## <a name="test-the-custom-policy"></a>Testování vlastních zásad
 
-1. V části **Vlastní zásady**vyberte **B2C_1A_SignUpOrSignInWithPhone**.
-1. V části **Select application**vyberte aplikaci *webapp1,* kterou jste zaregistrovali při vyplňování požadavků.
-1. V **popřípadě Vybrat adresu url odpovědi**zvolte `https://jwt.ms`.
-1. Vyberte **Spustit a** zaregistrujte se pomocí e-mailové adresy nebo telefonního čísla.
-1. Vyberte Spustit **nyní** znovu a přihlaste se pomocí stejného účtu, abyste potvrdili, že máte správnou konfiguraci.
+1. V části **vlastní zásady**vyberte **B2C_1A_SignUpOrSignInWithPhone**.
+1. V části **Vybrat aplikaci**vyberte aplikaci *WebApp1* , kterou jste zaregistrovali při dokončování požadavků.
+1. V **možnosti vybrat adresu URL odpovědi**zvolte `https://jwt.ms`.
+1. Vyberte **Spustit nyní** a zaregistrujte se pomocí e-mailové adresy nebo telefonního čísla.
+1. Vyberte znovu **Spustit** znovu a přihlaste se pomocí stejného účtu, abyste měli jistotu, že máte správnou konfiguraci.
 
-## <a name="get-user-account-by-phone-number"></a>Získání uživatelského účtu podle telefonního čísla
+## <a name="get-user-account-by-phone-number"></a>Získat uživatelský účet podle telefonního čísla
 
-Uživatel, který se zaregistruje pomocí telefonního čísla, ale neposkytne e-mailovou adresu pro obnovení, se zaznamená do adresáře Azure AD B2C s jejich telefonním číslem jako svým přihlašovacím jménem. Pokud si pak uživatel přeje změnit své telefonní číslo, musí váš tým technické podpory nejprve najít svůj účet a poté aktualizovat své telefonní číslo.
+Uživatel, který se přihlásí pomocí telefonního čísla, ale neposkytne e-mailovou adresu pro obnovení, se ve vašem Azure AD B2C adresáři zaznamená jejich telefonní číslo jako přihlašovací jméno. Pokud si uživatel přeje změnit své telefonní číslo, musí nejprve najít svůj účet Helpdesk nebo tým podpory a pak aktualizovat jejich telefonní číslo.
 
-Uživatele můžete najít podle jeho telefonního čísla (přihlašovací jméno) pomocí [aplikace Microsoft Graph](manage-user-accounts-graph-api.md):
+Pomocí [Microsoft Graph](manage-user-accounts-graph-api.md)můžete najít uživatele podle jejich telefonního čísla (přihlašovací jméno):
 
 ```http
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+{phone number}' and c/issuer eq '{tenant name}.onmicrosoft.com')
 ```
 
-Například:
+Příklad:
 
 ```http
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+450334567890' and c/issuer eq 'contosob2c.onmicrosoft.com')
@@ -94,14 +94,14 @@ GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssi
 
 ## <a name="next-steps"></a>Další kroky
 
-Na GitHubu najdete balíček pro registraci a přihlášení k vlastním zásadám (a další startovací balíčky):
+Můžete najít registrační sadu vlastních zásad pro registraci a přihlašování pro vlastní zásady (a další úvodní balíčky) na GitHubu:
 
-[Azure-Samples/active-directory-b2c-custom-policy-starterpack/scenarios/phone-number-passwordless][starter-pack-phone]
+[Azure-Samples/Active-Directory-B2C-Custom-Policy-starterpack/scénáře/telefonní číslo – nejenom hesla][starter-pack-phone]
 
-Soubory zásad starter pack používají vícefaktorové ověřování technické profily a telefonní číslo nároky transformace:
+Soubory zásad počátečního sady používají technické profily Multi-Factor Authentication a transformace deklarací v telefonním čísle:
 
-* [Definování technického profilu Azure S vícefaktorovým ověřováním](multi-factor-auth-technical-profile.md)
-* [Definování transformací deklarací telefonního čísla](phone-number-claims-transformations.md)
+* [Definování technického profilu Azure Multi-Factor Authentication](multi-factor-auth-technical-profile.md)
+* [Definovat transformace deklarací telefonního čísla](phone-number-claims-transformations.md)
 
 <!-- LINKS - External -->
 [starter-pack]: https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack

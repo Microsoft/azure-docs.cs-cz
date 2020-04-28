@@ -1,7 +1,7 @@
 ---
-title: Správa hrozeb pro zdroje a data
+title: Správa hrozeb pro prostředky a data
 titleSuffix: Azure AD B2C
-description: Další informace o technikách zjišťování a zmírňování útoků typu denial-of-service a útoků hesel ve službě Azure Active Directory B2C.
+description: Seznamte se s technikami zjišťování a zmírnění útoků při odepření služby a útokech na heslo v Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,45 +12,45 @@ ms.date: 09/26/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: a438363b054361420222804dffac7973470e82e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78183597"
 ---
-# <a name="manage-threats-to-resources-and-data-in-azure-active-directory-b2c"></a>Správa hrozeb pro prostředky a data ve službě Azure Active Directory B2C
+# <a name="manage-threats-to-resources-and-data-in-azure-active-directory-b2c"></a>Správa hrozeb pro prostředky a data v Azure Active Directory B2C
 
-Azure Active Directory B2C (Azure AD B2C) má integrované funkce, které vám pomůžou chránit před ohrožením vašich prostředků a dat. Mezi tyto hrozby patří útoky typu denial of service a útoky heslem. Útoky s cílem dosazovat službu mohou znepřístupnit prostředky zamýšleným uživatelům. Útoky heslem vedou k neoprávněnému přístupu k prostředkům.
+Azure Active Directory B2C (Azure AD B2C) obsahuje integrované funkce, které vám pomůžou chránit před hrozbami vašich prostředků a dat. Mezi tyto hrozby patří útoky DoS (Denial-of-Service) a útoky na hesla. Útoky DoS (Denial-of-Service) mohou způsobit nedostupnost prostředků určeným uživatelům. Útoky na heslo mají za následek neoprávněný přístup k prostředkům.
 
-## <a name="denial-of-service-attacks"></a>Útoky s cílem odepření služby
+## <a name="denial-of-service-attacks"></a>Útoky DoS (Denial-of-Service)
 
-Azure AD B2C brání proti útokům syn povodňové pomocí souboru cookie SYN. Azure AD B2C také chrání před útoky odmítnutí služby pomocí omezení pro sazby a připojení.
+Azure AD B2C bránit útokům na zaplavení SYN pomocí souborů cookie SYN. Azure AD B2C také chrání před útoky DoS (Denial of-Service) pomocí limitů pro sazby a připojení.
 
-## <a name="password-attacks"></a>Útoky heslem
+## <a name="password-attacks"></a>Útoky prostřednictvím hesla
 
-Hesla, která jsou nastavena uživateli, musí být přiměřeně složitá. Azure AD B2C má zmírnění techniky na místě pro útoky heslem. Zmírnění zahrnuje detekci útoků hrubou silou hesla a slovníkových hesel útoků. Pomocí různých signálů Azure AD B2C analyzuje integritu požadavků. Azure AD B2C je navržený tak, aby inteligentně odlišit zamýšlené uživatele od hackerů a botnetů.
+Hesla nastavená uživateli musí být rozumně složitá. Azure AD B2C jsou pro útoky na hesla zavedeny techniky zmírnění. Zmírnění rizik zahrnuje detekci útoků na heslo hrubou silou a hesla slovníku. Azure AD B2C analyzuje integritu požadavků pomocí různých signálů. Azure AD B2C je navržená tak, aby inteligentně rozlišila zamýšlené uživatele od hackerů a botnety.
 
-Azure AD B2C používá propracovanou strategii pro uzamčení účtů. Účty jsou uzamčeny na základě IP adresy požadavku a zadaných hesel. Doba trvání uzamčení se také zvyšuje na základě pravděpodobnosti, že se jedná o útok. Po pokusu o heslo 10 krát neúspěšně (výchozí prahová hodnota pokusu) dojde k jednominutovéuzamčení. Při příštím přihlášení je neúspěšný po odemknutí účtu (to znamená, že poté, co byl účet automaticky odemknut službou po vypršení doby uzamčení), dojde k dalšímu jednominutovému uzamčení a pokračuje pro každé neúspěšné přihlášení. Opakované zadání stejného hesla se nepočítá jako více neúspěšných přihlášení.
+Azure AD B2C používá k uzamčení účtů sofistikovanou strategii. Účty jsou uzamčené na základě IP adresy žádosti a hesla, která jste zadali. Doba trvání uzamčení se také zvyšuje na základě pravděpodobnosti, že se jedná o útok. Po neúspěšném pokusu o zadání hesla (výchozí prahová hodnota pro pokusy o výchozí hodnotě) dojde k uzamčení po dobu jednoho minuty. Až se příště po odemčení účtu neúspěšně přihlásí (tj. po vypršení platnosti účtu ho služba automaticky odemkne), dojde k dalšímu uzamčení a bude pokračovat pro každé neúspěšné přihlášení. Opakované zadání hesla se nepočítá jako vícenásobná neúspěšná přihlášení.
 
-Prvních 10 výlukových období je dlouhá jedna minuta. Dalších 10 období uzamčení je o něco delší chod a po každých 10 obdobích uzamčení se jejich trvání zvětšuje. Počítadlo uzamčení se po úspěšném přihlášení resetuje na nulu, když účet není uzamčen. Výluka může trvat až pět hodin.
+Prvních 10 intervalů uzamčení je jedna minuta. Příštích 10 období uzamčení je trochu delší a prodlouží se v době trvání po každých 10 intervalech uzamčení. Čítač uzamčení se po úspěšném přihlášení vynuluje, když účet není zamknutý. Doba uzamčení může trvat až pět hodin.
 
 ## <a name="manage-password-protection-settings"></a>Správa nastavení ochrany heslem
 
 Správa nastavení ochrany heslem, včetně prahové hodnoty uzamčení:
 
-1. Přihlášení k [portálu Azure](https://portal.azure.com)
-1. Pomocí filtru **Directory + odběr** v horní nabídce vyberte adresář, který obsahuje vašeho klienta Azure AD B2C.
-1. V levé nabídce vyberte **Azure AD B2C**. Nebo vyberte **Všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
-1. V části **Zabezpečení**vyberte **Metody ověřování (Preview)** a pak vyberte **Ochrana heslem**.
-1. Zadejte požadované nastavení ochrany heslem a pak vyberte **Uložit**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com)
+1. Pomocí filtru **adresář a odběr** v horní nabídce vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
+1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
+1. V části **zabezpečení**vyberte **metody ověřování (Preview)** a pak vyberte **ochrana heslem**.
+1. Zadejte požadovaná nastavení ochrany heslem a pak vyberte **Uložit**.
 
-    ![Stránka ochrany heslem na portálu Azure v nastavení Azure AD](./media/threat-management/portal-02-password-protection.png)
-    <br />*Nastavení prahové hodnoty uzamčení na hodnotu 5 v nastavení **ochrany heslem** *.
+    ![Stránka Azure Portal ochrana heslem v nastavení Azure AD](./media/threat-management/portal-02-password-protection.png)
+    <br />*Nastavení prahové hodnoty pro uzamčení na 5 v nastavení **ochrany heslem** *.
 
-## <a name="view-locked-out-accounts"></a>Zobrazení uzamčených účtů
+## <a name="view-locked-out-accounts"></a>Zobrazit uzamčené účty
 
-Chcete-li získat informace o uzamčených účtech, můžete zkontrolovat [sestavu aktivit přihlášení](../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)služby Active Directory . V části **Stav**vyberte **Možnost Selhání**. Neúspěšné pokusy o přihlášení s **kódem chyby** `50053` přihlášení označující uzamčený účet:
+Chcete-li získat informace o uzamčených účtech, můžete zaškrtnout [sestavu aktivita přihlášení](../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)služby Active Directory. V části **stav**vyberte **selhání**. Neúspěšné pokusy o přihlášení pomocí **kódu chyby přihlášení** `50053` indikující uzamčený účet:
 
-![Část sestavy přihlášení Azure AD zobrazující uzamčený účet](./media/threat-management/portal-01-locked-account.png)
+![Část sestavy přihlášení ke službě Azure AD zobrazující účet uzamčeného účtu](./media/threat-management/portal-01-locked-account.png)
 
-Informace o zobrazení sestavy přihlašovacích aktivit ve službě Azure Active Directory najdete v [tématu Chybové kódy sestavy přihlašovacích aktivit](../active-directory/reports-monitoring/reference-sign-ins-error-codes.md).
+Další informace o zobrazení sestavy aktivit přihlašování v Azure Active Directory najdete v tématu [kódy chyb sestav aktivit přihlašování](../active-directory/reports-monitoring/reference-sign-ins-error-codes.md).

@@ -9,13 +9,13 @@ ms.date: 02/14/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 3417bf0bd4ae1e0aa670f9fbfcc1fbbfeb372972
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77471497"
 ---
-Pokud chcete, aby se uživatelům před udělením přístupu zobrazila výzva k zadání druhého faktoru ověřování, můžete nakonfigurovat azure multifaktorové ověřování (MFA). Vícefaktorové ověřování můžete konfigurovat pro jednotlivé uživatele nebo můžete využít vícefaktorové ověřování pomocí [podmíněného přístupu](../articles/active-directory/conditional-access/overview.md).
+Pokud chcete, aby se uživatelé před udělením přístupu zobrazovali pro druhý faktor ověřování, můžete nakonfigurovat Azure Multi-Factor Authentication (MFA). Vícefaktorové ověřování můžete nakonfigurovat na základě jednotlivých uživatelů nebo můžete využít MFA prostřednictvím [podmíněného přístupu](../articles/active-directory/conditional-access/overview.md).
 
-* MFA na uživatele lze povolit bez dodatečných nákladů. Při povolení MFA na uživatele, uživatel bude vyzván k ověření druhého faktoru proti všechny aplikace vázané na tenanta Azure AD. Postup najdete [v tématu Možnost 1.](#peruser)
-* Podmíněný přístup umožňuje podrobnější kontrolu nad tím, jak by měl být podporován druhý faktor. Může povolit přiřazení Vícefaktorové ověřování pouze na síť VPN a vyloučit další aplikace vázané na klienta Azure AD. Postup najdete [v tématu Možnost 2.](#conditional)
+* Vícefaktorové ověřování na uživatele se dá povolit bez dalších poplatků. Při povolování MFA na uživatele se uživateli zobrazí výzva k zadání druhého faktoru ověřování proti všem aplikacím, které jsou vázané na tenanta Azure AD. Postup najdete v části s [možností 1](#peruser) .
+* Podmíněný přístup umožňuje přesnější kontrolu nad tím, jak by měl být povýšen druhý faktor. Může umožňovat přiřazení MFA jenom k síti VPN a vyloučení dalších aplikací, které jsou vázané na tenanta Azure AD. Postup najdete v části [možnost 2](#conditional) .
