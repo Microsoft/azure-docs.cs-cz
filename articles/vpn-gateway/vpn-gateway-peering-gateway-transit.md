@@ -10,10 +10,10 @@ ms.tgt_pltfrm: na
 ms.date: 03/25/2018
 ms.author: yushwang
 ms.openlocfilehash: 3917101ee7ac151cf624e5be0f51ccf01c8cb1cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77161881"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>Konfigurace průchodu bránou VPN pro partnerský vztah virtuální sítě
@@ -55,7 +55,7 @@ Pokyny najdete v následujících dokumentech, které se týkají:
 |Virtuální síť|Model nasazení|Role|Oprávnění|
 |---|---|---|---|
 |Hub-RM|Resource Manager|[Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
-| |Classic|[Přispěvatel klasických sítí](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Není dostupné.|
+| |Classic|[Přispěvatel klasických sítí](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|–|
 |Spoke-Classic|Resource Manager|[Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
 ||Classic|[Přispěvatel klasických sítí](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Microsoft.ClassicNetwork/virtualNetworks/peer|
 

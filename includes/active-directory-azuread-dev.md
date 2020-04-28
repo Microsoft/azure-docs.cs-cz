@@ -15,12 +15,12 @@ ms.date: 081/24/2020
 ms.author: ryanwi
 ms.custom: include file
 ms.openlocfilehash: 3f4c413178206dcd9e6aca38ffd5c6490e12bd65
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77163873"
 ---
 > [!IMPORTANT]
-> [Platforma identit Microsoftu (v2.0)](/azure/active-directory/develop/v2-overview) je vývoj vývojářské platformy Azure Active Directory (Azure AD) (v1.0). Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získávají tokeny pro volání rozhraní API od Microsoftu, jako jsou Microsoft Graph nebo rozhraní API, která vytvořili vývojáři.
-> Tento obsah je pro starší koncový bod Azure AD v1.0. Doporučujeme použít koncový bod v2.0 pro nové projekty. Další informace najdete v článek [Proč aktualizovat platformu microsoftidentit (v2.0)?](/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison) stejně jako [omezení platformy identit společnosti Microsoft](/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison#limitations).
+> [Microsoft Identity Platform (v 2.0)](/azure/active-directory/develop/v2-overview) představuje vývoj platformy pro vývojáře Azure Active Directory (Azure AD) (verze 1.0). Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získávají tokeny pro volání rozhraní API od Microsoftu, jako jsou Microsoft Graph nebo rozhraní API, která vytvořili vývojáři.
+> Tento obsah je pro starší koncový bod Azure AD v 1.0. Pro nové projekty doporučujeme použít koncový bod v 2.0. Další informace najdete v tématu [Proč aktualizace pro Microsoft Identity Platform (v 2.0)?](/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison) i [omezení platformy Microsoft Identity](/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison#limitations).
