@@ -1,6 +1,6 @@
 ---
 title: Ukázka prostředí PowerShell – seznam všech skupin konektorů proxy aplikací
-description: PowerShell příklad, který obsahuje seznam všech skupin konektorů proxy aplikací Azure Active Directory (Azure AD) a konektorů ve vašem adresáři.
+description: Příklad prostředí PowerShell, ve kterém jsou uvedeny všechny skupiny konektorů a konektorů proxy aplikací aplikace Azure Active Directory (Azure AD) ve vašem adresáři.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -13,15 +13,15 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 53af7f3f9049edc23ed4226f43e7fe67398c29f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75482111"
 ---
-# <a name="get-all-connector-groups-and-connectors-in-the-directory"></a>Získání všech skupin konektorů a konektorů v adresáři
+# <a name="get-all-connector-groups-and-connectors-in-the-directory"></a>Získat všechny skupiny konektorů a konektory v adresáři
 
-Tento příklad skriptu Prostředí PowerShell obsahuje seznam všech skupin konektorů proxy aplikací služby Azure Active Directory (Azure AD) a konektorů ve vašem adresáři.
+Tento ukázkový skript PowerShellu obsahuje seznam všech skupin a konektorů proxy aplikací aplikace Azure Active Directory (Azure AD) ve vašem adresáři.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -29,7 +29,7 @@ Tento příklad skriptu Prostředí PowerShell obsahuje seznam všech skupin kon
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Tato ukázka vyžaduje [modul AzureAD V2 PowerShell pro graf](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) (AzureAD) nebo verzi preview [modulu AzureAD V2 PowerShell pro graf](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview).
+Tato ukázka vyžaduje [prostředí PowerShell AzureAD v2 pro modul Graph](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) (AzureAD) nebo [prostředí AzureAD v2 PowerShell pro verzi Preview modulu grafu](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview).
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -39,11 +39,11 @@ Tato ukázka vyžaduje [modul AzureAD V2 PowerShell pro graf](https://docs.micro
 
 | Příkaz | Poznámky |
 |---|---|
-| [Get-AzureADApplicationProxyConnectorGroup](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplicationproxyconnectorgroup?view=azureadps-2.0) | Načte seznam všech skupin konektorů nebo pokud je zadán, podrobnosti o zadané skupiny spojnic. |
-| [Get-AzureadApplicationProxyConnectorGroupMembers](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplicationproxyconnectorgroupmembers?view=azureadps-2.0) | Získá všechny konektory proxy aplikace přidružené ke každé skupině konektorů.|
+| [Get-AzureADApplicationProxyConnectorGroup](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplicationproxyconnectorgroup?view=azureadps-2.0) | Načte seznam všech skupin konektorů, nebo je-li tento parametr zadán, zobrazí podrobnosti o zadané skupině konektorů. |
+| [Get-AzureADApplicationProxyConnectorGroupMembers](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplicationproxyconnectorgroupmembers?view=azureadps-2.0) | Načte všechny konektory proxy aplikací přidružené ke každé skupině konektorů.|
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o modulu Azure AD PowerShell najdete v [tématu Přehled modulu Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0).
+Další informace o modulu Azure AD PowerShell najdete v tématu [Přehled modulu Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0).
 
-Další příklady PowerShellu pro proxy aplikace najdete [v tématu příklady Azure AD PowerShellu pro proxy aplikace Azure AD](../application-proxy-powershell-samples.md).
+Další příklady PowerShellu pro proxy aplikací najdete v tématu [Azure AD PowerShell – příklady pro azure proxy aplikací služby AD](../application-proxy-powershell-samples.md).

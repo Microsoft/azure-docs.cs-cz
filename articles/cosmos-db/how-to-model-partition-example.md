@@ -1,80 +1,80 @@
 ---
-title: Modelujte a rozdělujte data v Azure Cosmos DB s reálným příkladem
-description: Naučte se modelovat a rozdělovat reálný příklad pomocí rozhraní Azure Cosmos DB Core API
+title: Model a rozdělení dat na Azure Cosmos DB s příkladem reálného světa
+description: Naučte se modelovat a dělit příklad reálného světa pomocí rozhraní Azure Cosmos DB Core API.
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.openlocfilehash: 10f8ffd90215a21ca03e112aea463d444c623d06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75445379"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Modelování a dělení dat ve službě Azure Cosmos DB s využitím příkladu z reálného světa
 
-Tento článek vychází z několika konceptů Azure Cosmos DB, jako je [modelování dat](modeling-data.md), [dělení](partitioning-overview.md)a [zřízená propustnost,](request-units.md) aby se ukázalo, jak řešit cvičení návrhu reálných dat.
+Tento článek se sestavuje na několika Azure Cosmos DB konceptech, jako jsou [modelování dat](modeling-data.md), [vytváření oddílů](partitioning-overview.md)a [zajištěná propustnost](request-units.md) , která ukazují, jak se vypořádat s návrhem dat reálného světa.
 
-Pokud obvykle pracujete s relačními databázemi, pravděpodobně jste vytvořili návyky a intuice o tom, jak navrhnout datový model. Vzhledem k konkrétní omezení, ale také jedinečné silné stránky Azure Cosmos DB, většina z těchto osvědčených postupů nepřekládá dobře a může přetáhnout do neoptimální řešení. Cílem tohoto článku je vás provede celý proces modelování reálného případu použití v Azure Cosmos DB, od modelování položek na entity společné umístění a dělení kontejnerů.
+Pokud obvykle pracujete s relačními databázemi, pravděpodobně jste vytvořili zvyky a intuitionsi, jak navrhnout datový model. Vzhledem k konkrétním omezením, ale i k jedinečným síluem Azure Cosmos DB se většina těchto osvědčených postupů neprojeví dobře a může vás přetáhnout do podoptimálních řešení. Cílem tohoto článku je projít si kompletní proces modelování reálného případu použití na Azure Cosmos DB, z modelování položek až po společné umístění entit a vytváření oddílů kontejnerů.
 
 ## <a name="the-scenario"></a>Scénář
 
-Pro toto cvičení budeme zvažovat doménu blogovací platformy, kde *mohou uživatelé* vytvářet *příspěvky*. Uživatelé mohou také *jako* a přidat *komentáře* k těmto příspěvkům.
+Pro toto cvičení bereme v úvahu doménu blogovací platformy, kde můžou *Uživatelé* vytvářet *příspěvky*. Uživatelé můžou také *jako* příspěvky přidávat *Komentáře* .
 
 > [!TIP]
-> Některá slova jsme *zvýraznili kurzívou*; tato slova identifikují druh "věcí", s nimiž bude muset náš model manipulovat.
+> Některá slova byla v *kurzívě*zvýrazněna. Tato slova identifikují druh "věcí" Náš model bude muset manipulovat.
 
 Přidání dalších požadavků do naší specifikace:
 
-- Na titulní stránce se zobrazí informační kanál nedávno vytvořených příspěvků,
-- Můžeme načíst všechny příspěvky pro uživatele, všechny komentáře k příspěvku a všechny lajky pro příspěvek,
-- Příspěvky jsou vráceny s uživatelským jménem svých autorů a počítat, kolik komentářů a rád, že mají,
-- Komentáře a lajky jsou také vráceny s uživatelským jménem uživatelů, kteří je vytvořili,
-- Při zobrazení jako seznamy musí příspěvky pouze prezentovat zkrácený souhrn jejich obsahu.
+- Na úvodní stránce se zobrazuje informační kanál nedávno vytvořených příspěvků.
+- Můžeme načíst všechny příspěvky pro uživatele, všechny komentáře k příspěvku a všechny, podobně jako u příspěvku,
+- Příspěvky se vrátí s uživatelským jménem svých autorů a počtem, kolik komentářů a jako mají.
+- Komentáře a podobné věci se také vrátí s uživatelským jménem uživatelů, kteří je vytvořili.
+- Při zobrazení jako seznamů musí příspěvky obsahovat jenom zkrácený souhrn jejich obsahu.
 
-## <a name="identify-the-main-access-patterns"></a>Identifikace hlavních vzorů přístupu
+## <a name="identify-the-main-access-patterns"></a>Identifikujte hlavní vzory přístupu.
 
-Chcete-li začít, dáváme určitou strukturu naší počáteční specifikace tím, že identifikujeme přístupové vzory našeho řešení. Při navrhování datového modelu pro Azure Cosmos DB, je důležité pochopit, které požadavky náš model bude muset sloužit k ujistěte se, že model bude obsluhovat tyto požadavky efektivně.
+Abychom mohli začít, poskytujeme určitou strukturu pro naši počáteční specifikaci tím, že identifikujeme vzory přístupu našich řešení. Když navrhujete datový model pro Azure Cosmos DB, je důležité pochopit, které požadavky má náš model sloužit k tomu, aby se zajistilo, že model bude tyto požadavky efektivně obsluhovat.
 
-Chcete-li usnadnit sledování celého procesu, kategorizujeme tyto různé požadavky jako příkazy nebo dotazy, vypůjčíme si nějakou slovní zásobu z [CQRS,](https://en.wikipedia.org/wiki/Command%E2%80%93query_separation#Command_query_responsibility_segregation) kde příkazy jsou požadavky na zápis (to znamená záměry aktualizace systému) a dotazy jsou požadavky jen pro čtení.
+Aby bylo možné celkový postup sledovat, kategorizujte tyto různé požadavky jako příkazy nebo dotazy, přičemž jste si vypůjčili některé slovníky z [CQRS](https://en.wikipedia.org/wiki/Command%E2%80%93query_separation#Command_query_responsibility_segregation) , kde příkazy jsou požadavky na zápis (tj. záměry aktualizovat systém) a dotazy jsou požadavky jen pro čtení.
 
-Zde je seznam požadavků, které naše platforma bude muset vystavit:
+Tady je seznam požadavků, které bude tato platforma muset vystavit:
 
-- **[C1]** Vytvoření/úprava uživatele
-- **[Č. 1]** Načtení uživatele
-- **[C2]** Vytvoření/úprava příspěvku
-- **[Č. 2]** Načíst příspěvek
-- **[Č. 3]** Seznam příspěvků uživatele v krátké podobě
+- **[C1]** Vytvořit/upravit uživatele
+- **[Q1]** Načtení uživatele
+- **[C2]** Vytvořit nebo upravit příspěvek
+- **[Q2]** Načtení příspěvku
+- **[Q3]** Seznam příspěvků uživatele v krátké podobě
 - **[C3]** Vytvoření komentáře
-- **[Č. 4]** Seznam komentářů k příspěvku
-- **[C4]** To se mi líbí příspěvek
-- **[Č. 5]** Vypsat to se mi líbí příspěvku
-- **[Č. 6]** Seznam *x* nejnovější příspěvky vytvořené v krátké podobě (feed)
+- **[4. čtvrtletí]** Výpis komentáře příspěvku
+- **[C4]** Jako příspěvek
+- **[Q5]** Seznam podobných příspěvků
+- **[Q6]** Seznam naposledy *vytvořených* příspěvků v krátké formě (informační kanál)
 
-V této fázi jsme nepřemýšleli o podrobnostech o tom, co bude každá entita (uživatel, příspěvek atd.) obsahovat. Tento krok je obvykle mezi prvními, které je třeba řešit při navrhování proti relačnímu obchodu, protože musíme zjistit, jak se tyto entity budou překládat z hlediska tabulek, sloupců, cizích klíčů atd. Je mnohem méně obavy s databází dokumentů, která nevynucuje žádné schéma při zápisu.
+V této fázi jsme si nemysleli, jaké informace o tom, co jednotlivé entity (uživatelé, příspěvky atd.) budou obsahovat. Tento krok je obvykle mezi prvními, aby se provedl při navrhování na relačním úložišti, protože je nutné zjistit, jak budou tyto entity překládat z hlediska tabulek, sloupců, cizích klíčů atd. Je mnohem méně obav s databází dokumentů, která neuplatňuje žádné schéma při zápisu.
 
-Hlavním důvodem, proč je důležité identifikovat naše přístupové vzory od začátku, je to, že tento seznam požadavků bude naší testovací sadou. Pokaždé, když iterujeme náš datový model, projdeme každý z požadavků a zkontrolujeme jejich výkon a škálovatelnost.
+Hlavním důvodem, proč je důležité identifikovat naše vzory přístupu od začátku, je to, že tento seznam žádostí bude naší sadou testů. Pokaždé, když procházíme přes náš datový model, projdeme jednotlivé požadavky a zkontrolujeme výkon a škálovatelnost.
 
-## <a name="v1-a-first-version"></a>V1: První verze
+## <a name="v1-a-first-version"></a>V1: první verze
 
-Začneme se dvěma `users` `posts`kontejnery: a .
+Začneme se dvěma kontejnery: `users` a `posts`.
 
 ### <a name="users-container"></a>Kontejner uživatelů
 
-Tento kontejner ukládá pouze uživatelské položky:
+Tento kontejner ukládá pouze položky uživatele:
 
     {
       "id": "<user-id>",
       "username": "<username>"
     }
 
-Tento kontejner rozdělíme podle `id`, což znamená, že každý logický oddíl v rámci tohoto kontejneru bude obsahovat pouze jednu položku.
+Tento kontejner nastavíme `id`na oddíly, což znamená, že každý logický oddíl v tomto kontejneru bude obsahovat jenom jednu položku.
 
 ### <a name="posts-container"></a>Kontejner příspěvků
 
-Tento kontejner hostí příspěvky, komentáře a to se mi líbí:
+Tento kontejner hostuje příspěvky, komentáře a podobné věci:
 
     {
       "id": "<post-id>",
@@ -103,146 +103,146 @@ Tento kontejner hostí příspěvky, komentáře a to se mi líbí:
       "creationDate": "<like-creation-date>"
     }
 
-Dělíme tento `postId`kontejner podle , což znamená, že každý logický oddíl v rámci tohoto kontejneru bude obsahovat jeden příspěvek, všechny komentáře k tomuto příspěvku a všechny lajky pro tento příspěvek.
+Tento kontejner nastavíme `postId`na oddíly, což znamená, že každý logický oddíl v tomto kontejneru bude obsahovat jeden příspěvek, všechny komentáře pro daný příspěvek a všechny podobné položky pro daný příspěvek.
 
-Všimněte si, že `type` jsme zavedli vlastnost v položkách uložených v tomto kontejneru rozlišovat mezi tři typy entit, které tento kontejner hostuje.
+Všimněte si, že jsme v `type` položkách uložených v tomto kontejneru zavedli vlastnost, která rozlišuje tři typy entit, které tento kontejner hostuje.
 
-Také jsme se rozhodli odkazovat na související data namísto jejich vložení (podrobnosti o těchto konceptech naleznete v [této části),](modeling-data.md) protože:
+Také jsme se rozhodli odkázat na související data, aniž byste je vložili (podrobnosti o těchto konceptech najdete v [této části](modeling-data.md) ):
 
-- neexistuje žádný horní limit na to, kolik příspěvků může uživatel vytvořit,
-- příspěvky mohou být libovolně dlouhé,
-- neexistuje žádný horní limit na to, kolik komentářů a to se mi líbí příspěvek může mít,
-- chceme mít možnost přidat komentář nebo líbí se na post, aniž by museli aktualizovat post sám.
+- neexistuje horní limit počtu příspěvků, které může uživatel vytvořit.
+- příspěvky můžou být svévolně dlouhé,
+- není k dispozici horní limit počtu komentářů a podobně jako u příspěvku může být.
+- Chceme být schopni přidat komentář nebo podobně jako příspěvek bez nutnosti aktualizovat příspěvek samotného příspěvku.
 
-## <a name="how-well-does-our-model-perform"></a>Jak dobře si náš model vede?
+## <a name="how-well-does-our-model-perform"></a>Jak to náš model funguje?
 
-Nyní je čas posoudit výkon a škálovatelnost naší první verze. Pro každý z dříve identifikovaných požadavků měříme jeho latenci a počet jednotek požadavků, které spotřebovává. Toto měření se provádí na fiktivní datové sadě obsahující 100 000 uživatelů s 5 až 50 příspěvky na uživatele a až 25 komentářů a 100 lajků na příspěvek.
+Teď je čas vyhodnotit výkon a škálovatelnost naší první verze. Pro všechny dříve identifikované požadavky měříme latenci a počet jednotek požadavků, které spotřebovává. Toto měření se provádí na základě zástupné datové sady obsahující 100 000 uživatelů s 5 až 50 příspěvky na uživatele a až 25 komentářů a 100 jako na příspěvek.
 
-### <a name="c1-createedit-a-user"></a>[C1] Vytvoření/úprava uživatele
+### <a name="c1-createedit-a-user"></a>C1 Vytvořit/upravit uživatele
 
-Tento požadavek je jednoduché implementovat, jak jsme `users` právě vytvořit nebo aktualizovat položku v kontejneru. Požadavky budou pěkně rozloženy do všech oddílů díky klíči oddílu. `id`
+Tuto žádost je jednoduché implementovat, protože právě vytvoříme nebo aktualizujeme položku v `users` kontejneru. Požadavky budou v rámci všech oddílů v tomto případě bez ohledu `id` na klíč oddílu v tomto případě úhledně rozloženy.
 
-![Zápis jedné položky do kontejneru uživatelů](./media/how-to-model-partition-example/V1-C1.png)
+![Zápis jedné položky do kontejneru Users](./media/how-to-model-partition-example/V1-C1.png)
 
-| **Latence** | **ŽP poplatek** | **Výkon** |
+| **Latence** | **Poplatek za RU** | **Výkon** |
 | --- | --- | --- |
-| 7 ms | 5.71 ŽP | ✅ |
+| 7 MS | 5,71 RU | ✅ |
 
-### <a name="q1-retrieve-a-user"></a>[Č. 1] Načtení uživatele
+### <a name="q1-retrieve-a-user"></a>Dotazu Načtení uživatele
 
-Načítání uživatele se provádí čtením odpovídající `users` položky z kontejneru.
+Načítání uživatele se provádí čtením odpovídající položky z `users` kontejneru.
 
-![Načítání jedné položky z kontejneru uživatelů](./media/how-to-model-partition-example/V1-Q1.png)
+![Načtení jedné položky z kontejneru uživatelů](./media/how-to-model-partition-example/V1-Q1.png)
 
-| **Latence** | **ŽP poplatek** | **Výkon** |
+| **Latence** | **Poplatek za RU** | **Výkon** |
 | --- | --- | --- |
-| 2 ms | 1 ŽP | ✅ |
+| 2 MS | 1 RU | ✅ |
 
-### <a name="c2-createedit-a-post"></a>[C2] Vytvoření/úprava příspěvku
+### <a name="c2-createedit-a-post"></a>Řidičské Vytvořit nebo upravit příspěvek
 
-Podobně jako **[C1]**, stačí napsat `posts` do kontejneru.
+Podobně jako **[C1]** musíme pouze zapisovat do `posts` kontejneru.
 
-![Zápis jedné položky do kontejneru příspěvků](./media/how-to-model-partition-example/V1-C2.png)
+![Zápis jedné položky do kontejneru příspěvky](./media/how-to-model-partition-example/V1-C2.png)
 
-| **Latence** | **ŽP poplatek** | **Výkon** |
+| **Latence** | **Poplatek za RU** | **Výkon** |
 | --- | --- | --- |
-| 9 ms | 8.76 ŽP | ✅ |
+| 9 MS | 8,76 RU | ✅ |
 
-### <a name="q2-retrieve-a-post"></a>[Č. 2] Načíst příspěvek
+### <a name="q2-retrieve-a-post"></a>F2 Načtení příspěvku
 
-Začneme načtením odpovídajícího dokumentu `posts` z kontejneru. Ale to nestačí, podle naší specifikace musíme také agregovat uživatelské jméno autora příspěvku a počty, kolik komentářů a kolik má tento příspěvek rád, což vyžaduje, aby byly vydány další dotazy SQL.
+Začneme načtením odpovídajícího dokumentu z `posts` kontejneru. Ale to není dostatečné, podle našich specifikací také musí být agregované uživatelské jméno autora příspěvku a počty komentářů a kolika má tento příspěvek obsahovat 3 další dotazy SQL, které mají být vydány.
 
-![Načítání příspěvku a agregace dalších dat](./media/how-to-model-partition-example/V1-Q2.png)
+![Načtení příspěvku a agregace dalších dat](./media/how-to-model-partition-example/V1-Q2.png)
 
-Každý z dalších dotazů filtruje klíč oddílu příslušného kontejneru, což je přesně to, co chceme maximalizovat výkon a škálovatelnost. Ale nakonec musíme provést čtyři operace, abychom vrátili jeden příspěvek, takže to v příští iteraci zlepšíme.
+Každý z dalších dotazů filtruje klíč oddílu příslušného kontejneru, který přesně odpovídá tomu, co chceme maximalizovat výkon a škálovatelnost. Ale nakonec musíme provést čtyři operace, aby vracely jediný příspěvek, takže ho v další iteraci Vylepšete.
 
-| **Latence** | **ŽP poplatek** | **Výkon** |
+| **Latence** | **Poplatek za RU** | **Výkon** |
 | --- | --- | --- |
-| 9 ms | 19.54 ŽP | ⚠ |
+| 9 MS | 19,54 RU | ⚠ |
 
-### <a name="q3-list-a-users-posts-in-short-form"></a>[Č. 3] Seznam příspěvků uživatele v krátké podobě
+### <a name="q3-list-a-users-posts-in-short-form"></a>Q3 Seznam příspěvků uživatele v krátké podobě
 
-Za prvé, musíme načíst požadované příspěvky s dotazem SQL, který načte příspěvky odpovídající tomuto konkrétnímu uživateli. Ale musíme také vydat další dotazy pro agregaci uživatelského jména autora a počty komentářů a lajků.
+Nejdřív musíme načíst požadované příspěvky s dotazem SQL, který načte příspěvky odpovídající tomuto konkrétnímu uživateli. Je ale také nutné vystavit další dotazy pro agregaci uživatelského jména autora a počty komentářů a jako je.
 
 ![Načítání všech příspěvků pro uživatele a agregace jejich dalších dat](./media/how-to-model-partition-example/V1-Q3.png)
 
 Tato implementace představuje mnoho nevýhod:
 
-- dotazy, které agregují počty komentářů a lajků, musí být vydány pro každý příspěvek vrácený prvním dotazem,
-- hlavní dotaz nefiltruje klíč oddílu `posts` kontejneru, což vede k fan-out a prohledávání oddílu v kontejneru.
+- dotazy, které agreguje počty komentářů a jako je třeba vydat pro každý příspěvek vrácený prvním dotazem,
+- hlavní dotaz nefiltruje klíč oddílu `posts` kontejneru, což vede k vyzkoušení ventilátoru a kontrole oddílů v rámci kontejneru.
 
-| **Latence** | **ŽP poplatek** | **Výkon** |
+| **Latence** | **Poplatek za RU** | **Výkon** |
 | --- | --- | --- |
-| 130 ms | 619.41 ŽP | ⚠ |
+| 130 MS | 619,41 RU | ⚠ |
 
-### <a name="c3-create-a-comment"></a>[C3] Vytvoření komentáře
+### <a name="c3-create-a-comment"></a>C3 Vytvoření komentáře
 
-Komentář je vytvořen zápisem odpovídající `posts` položky v kontejneru.
+Komentář je vytvořen zápisem odpovídající položky do `posts` kontejneru.
 
-![Zápis jedné položky do kontejneru příspěvků](./media/how-to-model-partition-example/V1-C2.png)
+![Zápis jedné položky do kontejneru příspěvky](./media/how-to-model-partition-example/V1-C2.png)
 
-| **Latence** | **ŽP poplatek** | **Výkon** |
+| **Latence** | **Poplatek za RU** | **Výkon** |
 | --- | --- | --- |
-| 7 ms | 8.57 ŽP | ✅ |
+| 7 MS | 8,57 RU | ✅ |
 
-### <a name="q4-list-a-posts-comments"></a>[Č. 4] Seznam komentářů k příspěvku
+### <a name="q4-list-a-posts-comments"></a>Dotaz Výpis komentáře příspěvku
 
-Začneme s dotazem, který načte všechny komentáře k tomuto příspěvku a opět musíme také agregovat uživatelská jména zvlášť pro každý komentář.
+Začneme s dotazem, který načte všechny komentáře k tomuto příspěvku a znovu je také potřeba agregovat pro každý komentář samostatně.
 
 ![Načítání všech komentářů k příspěvku a agregace jejich dalších dat](./media/how-to-model-partition-example/V1-Q4.png)
 
-Přestože hlavní dotaz filtruje klíč oddílu kontejneru, agregace uživatelských jmen samostatně penalizuje celkový výkon. Později to vylepšíme.
+I když hlavní dotaz filtruje klíč oddílu kontejneru, agreguje uživatelská jména, a to bez ohledu na celkový výkon. Vylepšete ho později.
 
-| **Latence** | **ŽP poplatek** | **Výkon** |
+| **Latence** | **Poplatek za RU** | **Výkon** |
 | --- | --- | --- |
-| 23 ms | 27.72 ŽP | ⚠ |
+| 23 MS | 27,72 RU | ⚠ |
 
-### <a name="c4-like-a-post"></a>[C4] To se mi líbí příspěvek
+### <a name="c4-like-a-post"></a>C4 Jako příspěvek
 
-Stejně jako **[C3]** vytvoříme odpovídající `posts` položku v kontejneru.
+Stejně jako **[C3]** vytvoříme odpovídající položku v `posts` kontejneru.
 
-![Zápis jedné položky do kontejneru příspěvků](./media/how-to-model-partition-example/V1-C2.png)
+![Zápis jedné položky do kontejneru příspěvky](./media/how-to-model-partition-example/V1-C2.png)
 
-| **Latence** | **ŽP poplatek** | **Výkon** |
+| **Latence** | **Poplatek za RU** | **Výkon** |
 | --- | --- | --- |
-| 6 ms | 7.05 ŽP | ✅ |
+| 6 MS | 7,05 RU | ✅ |
 
-### <a name="q5-list-a-posts-likes"></a>[Č. 5] Vypsat to se mi líbí příspěvku
+### <a name="q5-list-a-posts-likes"></a>[Q5] Seznam podobných příspěvků
 
-Stejně jako **[Q4]**, jsme dotaz rád, že post, pak agregovat jejich uživatelská jména.
+Stejně jako u tohoto příspěvku se jako **[Q4]** dotazuje jako pro tento příspěvek a pak agreguje svá uživatelská jména.
 
-![Načítání všech lajků pro příspěvek a agregace jejich dalších dat](./media/how-to-model-partition-example/V1-Q5.png)
+![Načtení všech podobně jako u příspěvku a agregace jejich dalších dat](./media/how-to-model-partition-example/V1-Q5.png)
 
-| **Latence** | **ŽP poplatek** | **Výkon** |
+| **Latence** | **Poplatek za RU** | **Výkon** |
 | --- | --- | --- |
-| 59 ms | 58.92 ŽP | ⚠ |
+| 59 MS | 58,92 RU | ⚠ |
 
-### <a name="q6-list-the-x-most-recent-posts-created-in-short-form-feed"></a>[Č. 6] Seznam x nejnovější příspěvky vytvořené v krátké podobě (feed)
+### <a name="q6-list-the-x-most-recent-posts-created-in-short-form-feed"></a>[Q6] Seznam naposledy vytvořených příspěvků v krátké formě (informační kanál)
 
-Nejnovější příspěvky načítáme dotazem na `posts` kontejner seřazený podle sestupného data vytvoření, poté agregujeme uživatelská jména a počty komentářů a lajků pro každý z příspěvků.
+Nejnovější příspěvky načítáme dotazem na `posts` kontejner seřazený podle data sestupného vytváření a pak agregovaná uživatelská jména a počty komentářů a podobně jako u jednotlivých příspěvků.
 
-![Načítání nejnovějších příspěvků a agregace jejich dodatečných údajů](./media/how-to-model-partition-example/V1-Q6.png)
+![Načítání nejnovějších příspěvků a agregace jejich dalších dat](./media/how-to-model-partition-example/V1-Q6.png)
 
-Náš počáteční dotaz opět nefiltruje klíč oddílu `posts` kontejneru, což spouští nákladný ventilátor. Tenje ještě horší, protože se zaměřujeme na mnohem `ORDER BY` větší sadu výsledků a řadíme výsledky s klauzulí, což je dražší, pokud jde o jednotky požadavků.
+Po opětovném spuštění náš počáteční dotaz nefiltruje klíč oddílu `posts` kontejneru, který aktivuje nákladný ventilátor. Tato jedna je ještě horší, protože cílíme na mnohem větší sadu výsledků a seřadíme výsledky `ORDER BY` s klauzulí, což snižuje náklady na jednotky požadavků.
 
-| **Latence** | **ŽP poplatek** | **Výkon** |
+| **Latence** | **Poplatek za RU** | **Výkon** |
 | --- | --- | --- |
-| 306 ms | 2063.54 ŽP | ⚠ |
+| 306 MS | 2063,54 RU | ⚠ |
 
-## <a name="reflecting-on-the-performance-of-v1"></a>Úvahy o výkonu V1
+## <a name="reflecting-on-the-performance-of-v1"></a>Reflektování na výkon v1
 
-Podíváme-li se na problémy s výkonem, kterým jsme čelili v předchozí části, můžeme identifikovat dvě hlavní třídy problémů:
+V případě problémů s výkonem, které jsme provedli v předchozí části, můžeme identifikovat dvě hlavní třídy problémů:
 
-- některé žádosti vyžadují, aby bylo vydáno více dotazů, aby bylo možné shromáždit všechny údaje, které potřebujeme vrátit,
-- některé dotazy nefiltrují klíč oddílu kontejnerů, na které cílí, což vede k fan-outu, který brání naší škálovatelnosti.
+- některé požadavky vyžadují, aby bylo možné vystavit více dotazů za účelem shromáždění všech dat, která potřebujeme vrátit.
+- Některé dotazy nefiltrují klíč oddílu kontejnerů, které cílí, což vede k zablokování, které brání naší škálovatelnosti.
 
-Pojďme vyřešit každý z těchto problémů, počínaje prvním.
+Pojďme vyhodnotit každý z těchto problémů, počínaje prvním z nich.
 
-## <a name="v2-introducing-denormalization-to-optimize-read-queries"></a>V2: Zavedení denormalizace pro optimalizaci čtení dotazů
+## <a name="v2-introducing-denormalization-to-optimize-read-queries"></a>V2: představení denormalizace pro optimalizaci čtení dotazů
 
-Důvod, proč musíme v některých případech vydat další požadavky, je ten, že výsledky původní žádosti neobsahují všechny údaje, které potřebujeme vrátit. Při práci s nerelačníúložiště dat, jako je Azure Cosmos DB, tento druh problému se běžně řeší denormalizing dat v celé naší datové sady.
+Důvodem, proč musíme vydávat další žádosti v některých případech, je, že výsledky počátečního požadavku neobsahují všechna data, která potřebujeme vrátit. Když pracujete s nerelačním úložištěm dat, jako je Azure Cosmos DB, tento druh problému se často vyřeší tím, že se denormalizace dat v naší datové sadě vyřeší.
 
-V našem příkladu upravujeme položky příspěvku tak, aby přidávaly uživatelské jméno autora příspěvku, počet komentářů a počet označení To se mi líbí:
+V našem příkladu upravujeme položky post za účelem přidání uživatelského jména autora příspěvku, počtu komentářů a počtu podobných:
 
     {
       "id": "<post-id>",
@@ -257,7 +257,7 @@ V našem příkladu upravujeme položky příspěvku tak, aby přidávaly uživa
       "creationDate": "<post-creation-date>"
     }
 
-Upravujeme také komentáře a podobné položky, abychom přidali uživatelské jméno uživatele, který je vytvořil:
+Také upravujeme komentáře a podobné položky pro přidání uživatelského jména uživatele, který je vytvořil:
 
     {
       "id": "<comment-id>",
@@ -278,11 +278,11 @@ Upravujeme také komentáře a podobné položky, abychom přidali uživatelské
       "creationDate": "<like-creation-date>"
     }
 
-### <a name="denormalizing-comment-and-like-counts"></a>Denormalizing komentář a to se počte
+### <a name="denormalizing-comment-and-like-counts"></a>Denormalizace komentářů a podobných počtů
 
-Co chceme dosáhnout, je, že pokaždé, když přidáme komentář nebo `commentCount` podobně, také zvýšíme nebo v příslušném příspěvku. `likeCount` Vzhledem `posts` k tomu, `postId`náš kontejner je rozdělen a , nová položka (komentář nebo líbí) a jeho odpovídající post sedět ve stejném logickém oddílu. V důsledku toho můžeme použít [uloženou proceduru](stored-procedures-triggers-udfs.md) k provedení této operace.
+To, co chceme dosáhnout, je to, že při každém přidání komentáře nebo podobného příspěvku také zvýšíme `commentCount` nebo `likeCount` v odpovídajícím příspěvku. Jak je `posts` náš kontejner rozdělený na oddíly `postId`, nová položka (komentář nebo jako) a její odpovídající příspěvek do stejného logického oddílu. V důsledku toho můžeme tuto operaci provést pomocí [uložené procedury](stored-procedures-triggers-udfs.md) .
 
-Nyní při vytváření komentáře (**[C3]**), namísto `posts` pouhého přidání nové položky v kontejneru nazýváme následující uloženou proceduru v tomto kontejneru:
+Nyní při vytváření komentáře (**[C3]**) místo pouhého přidávání nové položky do `posts` kontejneru zavoláme následující uloženou proceduru v tomto kontejneru:
 
 ```javascript
 function createComment(postId, comment) {
@@ -311,24 +311,24 @@ function createComment(postId, comment) {
 }
 ```
 
-Tato uložená procedura přebírá ID příspěvku a tělo nového komentáře jako parametry, pak:
+Tato uložená procedura vezme ID příspěvku a tělo nového komentáře jako parametry a pak:
 
-- načte příspěvek
-- přírůstky`commentCount`
-- nahrazuje příspěvek
-- přidá nový komentář
+- Načte příspěvek.
+- zvýší`commentCount`
+- nahradí příspěvek.
+- Přidá nový komentář.
 
-Jako uložené procedury jsou prováděny jako atomické transakce, je zaručeno, že hodnota `commentCount` a skutečný počet komentářů zůstane vždy synchronizován.
+Vzhledem k tomu, že uložené procedury jsou spouštěny jako atomické transakce, je `commentCount` zaručeno, že hodnota a skutečný počet komentářů zůstane trvale synchronizovaný.
 
-Samozřejmě voláme podobný uložený postup při přidávání `likeCount`nových lajků do zvýšení .
+Zjevně můžeme zavolat podobnou uloženou proceduru, když přidáváme `likeCount`nové, podobně jako k zvýšení.
 
 ### <a name="denormalizing-usernames"></a>Denormalizace uživatelských jmen
 
-Uživatelská jména vyžadují jiný přístup jako uživatelé nejen sedět v různých oddílech, ale v jiném kontejneru. Když máme denormalizovat data mezi oddíly a kontejnery, můžeme použít zdroj kontejneru [změny krmiva](change-feed.md).
+Uživatelské jméno vyžaduje jiný přístup, protože uživatelé nesedí pouze v různých oddílech, ale v jiném kontejneru. Když musíme denormalizovat data napříč oddíly a kontejnery, můžeme použít [kanál změn](change-feed.md)zdrojového kontejneru.
 
-V našem příkladu používáme kanál `users` změn kontejneru reagovat vždy, když uživatelé aktualizovat svá uživatelská jména. Když se to stane, rozšíříme změnu voláním `posts` jiné uložené procedury v kontejneru:
+V našem příkladu používáme kanál změn `users` kontejneru, který reaguje vždycky, když uživatelé aktualizují své uživatelské jméno. V takovém případě jsme změnu rozšířili voláním jiné uložené procedury na `posts` kontejneru:
 
-![Denormalizace uživatelských jmen do kontejneru příspěvků](./media/how-to-model-partition-example/denormalization-1.png)
+![Denormalizace uživatelských jmen do kontejneru příspěvky](./media/how-to-model-partition-example/denormalization-1.png)
 
 ```javascript
 function updateUsernames(userId, username) {
@@ -352,70 +352,70 @@ function updateUsernames(userId, username) {
 }
 ```
 
-Tato uložená procedura přebírá ID uživatele a nové uživatelské jméno uživatele jako parametry, pak:
+Tato uložená procedura vezme ID uživatele a nového uživatelského jména uživatele jako parametry a potom:
 
-- načte všechny položky odpovídající `userId` (což mohou být příspěvky, komentáře nebo to se mi líbí)
+- Načte všechny položky, `userId` které odpovídají (které mohou být příspěvky, komentáře nebo podobné položky).
 - pro každou z těchto položek
   - nahrazuje`userUsername`
-  - nahradí položku
+  - nahradí položku.
 
 > [!IMPORTANT]
-> Tato operace je nákladné, protože vyžaduje tuto uloženou proceduru, která má být provedena na každém oddílu kontejneru. `posts` Předpokládáme, že většina uživatelů si během registrace zvolí vhodné uživatelské jméno a nikdy ho nezmění, takže tato aktualizace poběží velmi zřídka.
+> Tato operace je náročná, protože vyžaduje, aby se tato uložená procedura spustila na všech oddílech `posts` kontejneru. Předpokládáme, že většina uživatelů při registraci zvolí vhodné uživatelské jméno a nemění ho, takže se tato aktualizace spustí jenom zřídka.
 
-## <a name="what-are-the-performance-gains-of-v2"></a>Jaké jsou výkonzisky V2?
+## <a name="what-are-the-performance-gains-of-v2"></a>Jaké jsou přínosy pro zvýšení výkonu v2?
 
-### <a name="q2-retrieve-a-post"></a>[Č. 2] Načíst příspěvek
+### <a name="q2-retrieve-a-post"></a>F2 Načtení příspěvku
 
-Teď, když je naše denormalizace na místě, musíme načíst pouze jednu položku, abychom tuto žádost zpracovali.
+Teď, když je naše denormalizace na svém místě, musíme jenom načíst jednu položku, která tento požadavek zpracuje.
 
-![Načítání jedné položky z kontejneru příspěvků](./media/how-to-model-partition-example/V2-Q2.png)
+![Načtení jedné položky z kontejneru příspěvky](./media/how-to-model-partition-example/V2-Q2.png)
 
-| **Latence** | **ŽP poplatek** | **Výkon** |
+| **Latence** | **Poplatek za RU** | **Výkon** |
 | --- | --- | --- |
-| 2 ms | 1 ŽP | ✅ |
+| 2 MS | 1 RU | ✅ |
 
-### <a name="q4-list-a-posts-comments"></a>[Č. 4] Seznam komentářů k příspěvku
+### <a name="q4-list-a-posts-comments"></a>Dotaz Výpis komentáře příspěvku
 
-Zde opět můžeme ušetřit další požadavky, které načíst uživatelská jména a skončit s jedním dotazem, který filtruje na klíč oddílu.
+Tady můžeme vyprázdnit žádosti o další požadavky, které načítají uživatelská jména a končí jediným dotazem, který filtruje klíč oddílu.
 
 ![Načítání všech komentářů k příspěvku](./media/how-to-model-partition-example/V2-Q4.png)
 
-| **Latence** | **ŽP poplatek** | **Výkon** |
+| **Latence** | **Poplatek za RU** | **Výkon** |
 | --- | --- | --- |
-| 4 ms | 7.72 ŽP | ✅ |
+| 4 MS | 7,72 RU | ✅ |
 
-### <a name="q5-list-a-posts-likes"></a>[Č. 5] Vypsat to se mi líbí příspěvku
+### <a name="q5-list-a-posts-likes"></a>[Q5] Seznam podobných příspěvků
 
-Přesně stejná situace, když seznam likes.
+Přesná stejná situace při výpisu podobných.
 
-![Načítání všech lajků pro příspěvek](./media/how-to-model-partition-example/V2-Q5.png)
+![Načtení všech podobně jako u příspěvku](./media/how-to-model-partition-example/V2-Q5.png)
 
-| **Latence** | **ŽP poplatek** | **Výkon** |
+| **Latence** | **Poplatek za RU** | **Výkon** |
 | --- | --- | --- |
-| 4 ms | 8.92 ŽP | ✅ |
+| 4 MS | 8,92 RU | ✅ |
 
-## <a name="v3-making-sure-all-requests-are-scalable"></a>V3: Ujistěte se, že všechny požadavky jsou škálovatelné
+## <a name="v3-making-sure-all-requests-are-scalable"></a>V3: zajištění škálovatelnosti všech požadavků
 
-Podíváme-li se na naše celkové zlepšení výkonu, stále existují dva požadavky, které jsme plně neoptimalizovali: **[Q3]** a **[Q6]**. Jedná se o požadavky zahrnující dotazy, které nejsou filtrovat na klíč oddílu kontejnerů, na které cílí.
+V našich celkových vylepšeních výkonu stále existují dvě požadavky, které jsme nedokončili plně optimalizované: **[Q3]** a **[Q6]**. Jedná se o požadavky zahrnující dotazy, které nemají filtr na klíč oddílu kontejnerů, na které cílí.
 
-### <a name="q3-list-a-users-posts-in-short-form"></a>[Č. 3] Seznam příspěvků uživatele v krátké podobě
+### <a name="q3-list-a-users-posts-in-short-form"></a>Q3 Seznam příspěvků uživatele v krátké podobě
 
-Tento požadavek již těží z vylepšení zavedených ve V2, který šetří další dotazy.
+Tato žádost už přináší výhody vylepšení zavedených ve verzi v2, která vyprázdní další dotazy.
 
 ![Načítání všech příspěvků pro uživatele](./media/how-to-model-partition-example/V2-Q3.png)
 
-Ale zbývající dotaz stále není filtrování na klíč `posts` oddílu kontejneru.
+Ale zbývající dotaz se stále nefiltruje na klíč oddílu `posts` kontejneru.
 
-Způsob, jak přemýšlet o této situaci, je ve skutečnosti jednoduchý:
+Způsob, jak si představit tuto situaci, je ve skutečnosti jednoduchá:
 
-1. Tento požadavek *musí* `userId` filtrovat, protože chceme načíst všechny příspěvky pro konkrétního uživatele
-1. Nefunguje dobře, protože je spuštěn proti `posts` kontejneru, který není rozdělen a to`userId`
-1. S uvedením zřejmé, bychom vyřešit náš problém s výkonem spuštěním tohoto požadavku proti kontejneru, který *je* rozdělen do`userId`
-1. Ukazuje se, že již máme takový `users` kontejner: kontejner!
+1. Tento požadavek *musí* vyfiltrovat, `userId` protože chceme načíst všechny příspěvky pro konkrétního uživatele.
+1. Nefunguje dobře, protože se provádí na kontejneru, `posts` který není rozdělený na oddíly`userId`
+1. V takovém případě by byl problém s výkonem vyřešen provedením tohoto požadavku na kontejneru, který *je* rozdělen do oddílů.`userId`
+1. Tím se zapíná, že tento kontejner `users` již máme.
 
-Takže zavádíme druhou úroveň denormalizace duplikací celých sloupků do kontejneru. `users` Tím, že jsme účinně získat kopii našich příspěvků, pouze rozdělena podél různých rozměrů, `userId`což je tak efektivnější získat jejich .
+Proto zavádíme druhou úroveň denormalizace tím, že duplikujete celé příspěvky do `users` kontejneru. Díky tomu máme efektivně kopii našich příspěvků, které jsou rozdělené jenom na oddíly v různých dimenzích. díky tomu je jejich `userId`využívání efektivnější.
 
-Kontejner `users` nyní obsahuje 2 druhy položek:
+`users` Kontejner teď obsahuje 2 druhy položek:
 
     {
       "id": "<user-id>",
@@ -439,30 +439,30 @@ Kontejner `users` nyní obsahuje 2 druhy položek:
 
 Poznámky:
 
-- zavedli jsme `type` pole v uživatelské položce odlišit uživatele od příspěvků,
-- přidali jsme `userId` také pole v položce uživatele, `id` které je redundantní s polem, ale je vyžadováno, protože `users` kontejner je nyní rozdělen `userId` (a ne `id` jako dříve)
+- zavedli jsme `type` do položky uživatele pole pro odlišení uživatelů od příspěvků.
+- do položky uživatele jsme také `userId` přidali pole, které je redundantní `id` s polem, ale je potřeba, protože `users` kontejner je teď rozdělený na oddíly `userId` (a ne `id` jako dříve).
 
-K dosažení této denormalizace, jsme opět použít změnu krmiva. Tentokrát reagujeme na změnu kanálu `posts` kontejneru k odeslání nového `users` nebo aktualizovaného příspěvku do kontejneru. A protože výpis příspěvky nevyžaduje vrátit svůj plný obsah, můžeme zkrátit je v tomto procesu.
+Pro dosažení této denormalizace znovu použijeme kanál změn. Tentokrát reagujeme na kanál změn `posts` kontejneru, který odesílá nové nebo aktualizované příspěvky do `users` kontejneru. A vzhledem k tomu, že výpis příspěvků nevyžaduje vrácení celého obsahu, můžeme je v procesu zkrátit.
 
 ![Denormalizace příspěvků do kontejneru uživatelů](./media/how-to-model-partition-example/denormalization-2.png)
 
-Nyní můžeme směrovat náš `users` dotaz do kontejneru, filtrování na klíč oddílu kontejneru.
+Nyní můžeme směrovat dotaz do `users` kontejneru a filtrovat klíč oddílu kontejneru.
 
 ![Načítání všech příspěvků pro uživatele](./media/how-to-model-partition-example/V3-Q3.png)
 
-| **Latence** | **ŽP poplatek** | **Výkon** |
+| **Latence** | **Poplatek za RU** | **Výkon** |
 | --- | --- | --- |
-| 4 ms | 6.46 ŽP | ✅ |
+| 4 MS | 6,46 RU | ✅ |
 
-### <a name="q6-list-the-x-most-recent-posts-created-in-short-form-feed"></a>[Č. 6] Seznam x nejnovější příspěvky vytvořené v krátké podobě (feed)
+### <a name="q6-list-the-x-most-recent-posts-created-in-short-form-feed"></a>[Q6] Seznam naposledy vytvořených příspěvků v krátké formě (informační kanál)
 
-Musíme se vypořádat s podobnou situací zde: i po zachování dalšídotazy vlevo zbytečné denormalizace zavedené v V2, zbývající dotaz není filtrna klíč oddílu kontejneru:
+Budeme se muset vypořádat s podobným případem: i po tom, co povede k odstranění dalších dotazů, které byly nepotřebné denormalizací představené v v2, zbývající dotaz nefiltruje na klíč oddílu kontejneru:
 
-![Načítání nejnovějších příspěvků](./media/how-to-model-partition-example/V2-Q6.png)
+![Načítají se nejnovější příspěvky.](./media/how-to-model-partition-example/V2-Q6.png)
 
-Podle stejného přístupu, maximalizace výkonu tohoto požadavku a škálovatelnost vyžaduje, aby přístupů pouze jeden oddíl. To je myslitelné, protože musíme vrátit pouze omezený počet položek; abychom naplnili domovskou stránku naší blogovací platformy, stačí získat 100 nejnovějších příspěvků, aniž bychom museli stránkovat celou datovou sadu.
+Po stejném přístupu vyžaduje maximalizaci výkonu a škálovatelnosti této žádosti, aby se narazí jenom na jeden oddíl. To je možné, protože potřebujeme vracet jenom omezený počet položek; abychom mohli naplnit domovskou stránku vaší domovské platformy, stačí získat nejnovější příspěvky 100, aniž byste museli stránkovat celou datovou sadu.
 
-Takže pro optimalizaci tohoto posledního požadavku představujeme třetí kontejner do našeho návrhu, který je zcela věnován službě této žádosti. Denormalizujeme naše příspěvky k tomuto novému `feed` kontejneru:
+Takže pro optimalizaci této poslední žádosti zavádíme třetí kontejner pro náš návrh, který je zcela vyhrazený pro obsluhu této žádosti. Naši příspěvky jsme denormalizují na tento nový `feed` kontejner:
 
     {
       "id": "<post-id>",
@@ -477,13 +477,13 @@ Takže pro optimalizaci tohoto posledního požadavku představujeme třetí kon
       "creationDate": "<post-creation-date>"
     }
 
-Tento kontejner je `type`rozdělen na , `post` který bude vždy v našich položkách. Tím zajistíte, že všechny položky v tomto kontejneru bude sedět ve stejném oddílu.
+Tento kontejner je rozdělen do oddílů `type`, což bude vždy `post` v našich položkách. Tím se zajistí, že všechny položky v tomto kontejneru budou zasedat do stejného oddílu.
 
-Chcete-li dosáhnout denormalizace, musíme jen připojit kanál kanálu změn, který jsme dříve zavedli k odeslání příspěvků do tohoto nového kontejneru. Jedna důležitá věc, kterou je třeba mít na paměti, je, že musíme zajistit, že uchováme pouze 100 nejnovějších pracovních míst; v opačném případě může obsah kontejneru růst nad maximální velikost oddílu. To se provádí voláním [post-trigger](stored-procedures-triggers-udfs.md#triggers) pokaždé, když je dokument přidán do kontejneru:
+Abychom dosáhli denormalizace, musíme jenom připojit se k kanálu změny kanálu, který jsme předtím zavedli k odeslání příspěvků do tohoto nového kontejneru. Je důležité, abyste měli jistotu, že ukládáme jenom 100 nejnovějších příspěvků. v opačném případě může obsah kontejneru přesáhnout maximální velikost oddílu. To se provádí voláním [post-triggeru](stored-procedures-triggers-udfs.md#triggers) pokaždé, když se do kontejneru přidá dokument:
 
-![Denormalizační sloupky do nádoby na krmivo](./media/how-to-model-partition-example/denormalization-3.png)
+![Denormalizace příspěvků do kontejneru informačního kanálu](./media/how-to-model-partition-example/denormalization-3.png)
 
-Zde je tělo post-trigger, který zkrátí kolekce:
+Tady je text aktivační události, která tuto kolekci zkrátí:
 
 ```javascript
 function truncateFeed() {
@@ -530,49 +530,49 @@ function truncateFeed() {
 }
 ```
 
-Posledním krokem je přesměrování našeho dotazu do našeho nového `feed` kontejneru:
+Posledním krokem je přesměrování našeho dotazu na náš nový `feed` kontejner:
 
-![Načítání nejnovějších příspěvků](./media/how-to-model-partition-example/V3-Q6.png)
+![Načítají se nejnovější příspěvky.](./media/how-to-model-partition-example/V3-Q6.png)
 
-| **Latence** | **ŽP poplatek** | **Výkon** |
+| **Latence** | **Poplatek za RU** | **Výkon** |
 | --- | --- | --- |
-| 9 ms | 16.97 ŽP | ✅ |
+| 9 MS | 16,97 RU | ✅ |
 
 ## <a name="conclusion"></a>Závěr
 
-Podívejme se na celkové vylepšení výkonu a škálovatelnosti, které jsme zavedli v různých verzích našeho návrhu.
+Pojďme se podívat na celkové vylepšení výkonu a škálovatelnosti, které jsme zavedli v různých verzích našeho návrhu.
 
-| | V1 | V2 | V3 |
+| | V1 | V2 | Technologie |
 | --- | --- | --- | --- |
-| **[C1]** | 7 ms / 5,71 ŽP | 7 ms / 5,71 ŽP | 7 ms / 5,71 ŽP |
-| **[Č. 1]** | 2 ms / 1 ŽP | 2 ms / 1 ŽP | 2 ms / 1 ŽP |
-| **[C2]** | 9 ms / 8,76 ŽP | 9 ms / 8,76 ŽP | 9 ms / 8,76 ŽP |
-| **[Č. 2]** | 9 ms / 19,54 ŽP | 2 ms / 1 ŽP | 2 ms / 1 ŽP |
-| **[Č. 3]** | 130 ms / 619.41 ŽP | 28 ms / 201,54 ŽP | 4 ms / 6,46 ŽP |
-| **[C3]** | 7 ms / 8,57 ŽP | 7 ms / 15,27 ŽP | 7 ms / 15,27 ŽP |
-| **[Č. 4]** | 23 ms / 27,72 ŽP | 4 ms / 7,72 ŽP | 4 ms / 7,72 ŽP |
-| **[C4]** | 6 ms / 7,05 ŽP | 7 ms / 14,67 ŽP | 7 ms / 14,67 ŽP |
-| **[Č. 5]** | 59 ms / 58,92 ŽP | 4 ms / 8,92 ŽP | 4 ms / 8,92 ŽP |
-| **[Č. 6]** | 306 ms / 2063.54 ŽP | 83 ms / 532.33 ŽP | 9 ms / 16,97 ŽP |
+| **C1** | 7 MS/5,71 RU | 7 MS/5,71 RU | 7 MS/5,71 RU |
+| **Dotazu** | 2 MS/1 RU | 2 MS/1 RU | 2 MS/1 RU |
+| **Řidičské** | 9 MS/8,76 RU | 9 MS/8,76 RU | 9 MS/8,76 RU |
+| **F2** | 9 MS/19,54 RU | 2 MS/1 RU | 2 MS/1 RU |
+| **Q3** | 130 MS/619,41 RU | 28 MS/201,54 RU | 4 MS/6,46 RU |
+| **C3** | 7 MS/8,57 RU | 7 MS/15,27 RU | 7 MS/15,27 RU |
+| **Dotaz** | 23 MS/27,72 RU | 4 MS/7,72 RU | 4 MS/7,72 RU |
+| **C4** | 6 MS/7,05 RU | 7 MS/14,67 RU | 7 MS/14,67 RU |
+| **[Q5]** | 59 MS/58,92 RU | 4 MS/8,92 RU | 4 MS/8,92 RU |
+| **[Q6]** | 306 MS/2063,54 RU | 83 MS/532,33 RU | 9 MS/16,97 RU |
 
-### <a name="we-have-optimized-a-read-heavy-scenario"></a>Optimalizovali jsme scénář s vysokým i pro čtení
+### <a name="we-have-optimized-a-read-heavy-scenario"></a>Vyoptimalizovali jsme scénář pro čtení a těžký přístup.
 
-Možná jste si všimli, že jsme soustředili naše úsilí na zlepšení výkonu požadavků na čtení (dotazy) na úkor požadavků na zápis (příkazy). V mnoha případech operace zápisu nyní aktivují následnou denormalizaci prostřednictvím kanálu změn, což je činí více výpočtově nákladnými a delšími.
+Možná jste si všimli, že jsme provedli soustředěné úsilí na zlepšení výkonu žádostí o čtení (dotazů) na úkor požadavků na zápis (příkazy). V mnoha případech teď operace zápisu aktivují následnou denormalizaci prostřednictvím změnových kanálů. díky tomu jsou výpočty mnohem levnější a delší než vyhodnotit.
 
-To je odůvodněno skutečností, že blogovací platforma (stejně jako většina sociálních aplikací) je čitelná, což znamená, že množství žádostí o čtení, které musí sloužit, je obvykle řádově vyšší než množství žádostí o zápis. Takže má smysl, aby požadavky na zápis byly dražší, aby bylo možné číst požadavky levnější a výkonnější.
+To je odůvodněné tím, že platforma blogů (podobně jako většina sociálních aplikací) je čitelná, což znamená, že množství požadavků na čtení, které musí zpracovat, je obvykle pořadí, které je vyšší než množství požadavků na zápis. Proto je vhodné zajistit, aby se žádosti o zápis dražší, aby bylo možné zpracovávat žádosti o čtení levnější a lepší výkon.
 
-Podíváme-li se na nejextrémnější optimalizaci, kterou jsme provedli, **[Q6]** přešla z 2000+ ru na pouhých 17 RU; toho jsme dosáhli denormalizací příspěvků za cenu přibližně 10 ru na položku. Vzhledem k tomu, že bychom sloužili mnohem více žádostí o krmivo než vytváření nebo aktualizace pracovních míst, náklady na tuto denormalizaci jsou zanedbatelné vzhledem k celkovým úsporám.
+Pokud se podíváme na nejvíce extrémní optimalizaci, **[Q6]** se z 2000 + ru na pouhých 17 ru; dosáhli jsme, že denormalizace příspěvků za cenu kolem 10 ru na položku. Vzhledem k tomu, že jsme pomohli spoustu dalších žádostí o informační kanál než vytváření nebo aktualizace příspěvků, jsou náklady na tuto denormalizaci zanedbatelné z hlediska celkové úspory.
 
-### <a name="denormalization-can-be-applied-incrementally"></a>Denormalizaci lze aplikovat postupně
+### <a name="denormalization-can-be-applied-incrementally"></a>Denormalizace se dá použít přírůstkově.
 
-Vylepšení škálovatelnosti, která jsme prozkoumali v tomto článku, zahrnují denormalizaci a duplikaci dat v celé sadě dat. Je třeba poznamenat, že tyto optimalizace nemusí být zavedeny v den 1. Dotazy, které filtrují klíče oddílů, fungují lépe ve velkém měřítku, ale dotazy mezi oddíly mohou být zcela přijatelné, pokud jsou volány zřídka nebo proti omezené datové sadě. Pokud právě vytváříte prototyp nebo uvádíte na trh produkt s malou a řízenou uživatelskou základnou, můžete tato vylepšení pravděpodobně ušetřit na později; Co je důležité pak je [sledovat](use-metrics.md) výkon vašeho modelu, takže se můžete rozhodnout, zda a kdy je čas, aby je v.
+Vylepšení škálovatelnosti, která jsme prozkoumali v tomto článku, zahrnují denormalizaci a duplikaci dat napříč datovou sadou. Je potřeba poznamenat, že tyto optimalizace nemusíte zařadit do 1. dne. Dotazy, které filtrují klíče oddílů, fungují lépe při škálování, ale dotazy napříč oddíly mohou být zcela přijatelné, pokud jsou volány zřídka nebo proti omezené sadě dat. Pokud vytváříte prototyp nebo spouštíte produkt s malou a řízenou uživatelskou základnou, můžete tato vylepšení vylepšit později. důležité je, abyste mohli [monitorovat](use-metrics.md) výkon svého modelu, abyste se mohli rozhodnout, jestli a kdy je čas je uvést do.
 
-Kanál změn, který používáme k distribuci aktualizací do jiných kontejnerů, ukládají všechny tyto aktualizace trvale. To umožňuje požadovat všechny aktualizace od vytvoření kontejneru a bootstrapde denormalized zobrazení jako jednorázová operace catch-up i v případě, že váš systém již obsahuje velké množství dat.
+Kanál změn, který používáme k distribuci aktualizací do jiných kontejnerů, ukládá všechny aktualizace trvale. Díky tomu je možné vyžádat všechny aktualizace od vytvoření kontejneru a spustit Denormalizovaná zobrazení jako jednorázovou operaci zachytávání i v případě, že váš systém již obsahuje velké množství dat.
 
 ## <a name="next-steps"></a>Další kroky
 
-Po tomto úvodu k praktickému modelování dat a dělení, možná budete chtít zkontrolovat následující články, abyste si prohlédli koncepty, které jsme pokryli:
+Po tomto úvodu do modelování praktických a segmentace dat můžete v následujících článcích zkontrolovat koncepty, které jsme pokryli:
 
 - [Práce s databázemi, kontejnery a položkami](databases-containers-items.md)
 - [Dělení ve službě Azure Cosmos DB](partitioning-overview.md)
-- [Změna informačního kanálu v Azure Cosmos DB](change-feed.md)
+- [Změnit informační kanál v Azure Cosmos DB](change-feed.md)

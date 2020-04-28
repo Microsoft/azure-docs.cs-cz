@@ -1,70 +1,70 @@
 ---
-title: Upgrade verze azure service fabric clusteru
-description: Inovujte kód service fabric nebo konfiguraci, která spouští cluster Service Fabric, včetně nastavení režimu aktualizace clusteru, upgradu certifikátů, přidání portů aplikace, oprav operačního systému a tak dále. Co můžete očekávat při provádění upgradů?
+title: Upgrade verze Azure Service Fabric v clusteru
+description: Upgradujte Service Fabric kód nebo konfiguraci, která spouští Cluster Service Fabric, včetně nastavení režimu aktualizace clusteru, upgradu certifikátů, přidávání portů aplikací, provádění oprav operačního systému a tak dále. Co můžete očekávat při provádění upgradů?
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.openlocfilehash: c3ffcbd4296385623ff5e2c1ee001c27598ff3fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75451805"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>Upgrade verze Service Fabric v clusteru
 
-Pro každý moderní systém je návrh upgradability klíčem k dosažení dlouhodobého úspěchu vašeho produktu. Cluster Azure Service Fabric je prostředek, který vlastníte, ale částečně spravuje Microsoft. Tento článek popisuje, jak upgradovat verzi Service Fabric spuštěné v clusteru Azure.
+Pro jakýkoliv moderní systém je pro zajištění dlouhodobé úspěšnosti produktu navržený návrh pro zajištění náročnosti. Cluster Azure Service Fabric je prostředek, který vlastníte, ale částečně ho spravuje Microsoft. Tento článek popisuje, jak upgradovat verzi Service Fabric spuštěného v clusteru Azure.
 
-Můžete nastavit cluster přijímat automatické upgrady prostředků infrastruktury, jak jsou vydány společností Microsoft nebo můžete vybrat podporovanou verzi prostředků infrastruktury, kterou chcete, aby byl cluster zapnutý.
+Cluster můžete nastavit tak, aby přijímal automatické upgrady prostředků infrastruktury, když jsou vydané společností Microsoft, nebo můžete vybrat podporovanou verzi prostředků infrastruktury, na které má být cluster zapnutý.
 
-To provést nastavením konfigurace clusteru "upgradeMode" na portálu nebo pomocí Správce prostředků v době vytvoření nebo později v živém clusteru 
+Provedete to tak, že nastavíte konfiguraci clusteru "upgradeMode" na portálu nebo pomocí Správce prostředků v době vytváření nebo později v živém clusteru. 
 
 > [!NOTE]
-> Ujistěte se, že váš cluster běží podporovaná verze infrastruktury vždy. Jak a když oznamujeme vydání nové verze service fabric, předchozí verze je označena pro ukončení podpory po minimálně 60 dnů od tohoto data. Nové verze jsou oznámeny [na blogu týmu service fabric](https://blogs.msdn.microsoft.com/azureservicefabric/). Nová verze je k dispozici na výběr pak. 
+> Zajistěte, aby cluster používal podporovanou verzi prostředků infrastruktury vždycky. Jak a když oznamujeme vydání nové verze Service fabricu, bude předchozí verze označená pro konec podpory po dobu minimálně 60 dní od tohoto data. Nové verze jsou oznámeny [na blogu týmu Service Fabric](https://blogs.msdn.microsoft.com/azureservicefabric/). K dispozici je nová verze, kterou si můžete vybrat. 
 > 
 > 
 
-14 dní před vypršením platnosti verze clusteru je spuštěna událost stavu, která umístí cluster do stavu upozornění. Cluster zůstane ve stavu upozornění, dokud neupgradujete na podporovanou verzi infrastruktury.
+14 dnů před vypršením platnosti vydaných verzí clusteru se vygeneruje událost stavu, která převede váš cluster do stavu s varováním. Cluster zůstane ve stavu varování, dokud neprovedete upgrade na podporovanou verzi prostředků infrastruktury.
 
-## <a name="set-the-upgrade-mode-in-the-azure-portal"></a>Nastavení režimu upgradu na webu Azure Portal
-Při vytváření clusteru můžete nastavit cluster na automatický nebo ruční.
+## <a name="set-the-upgrade-mode-in-the-azure-portal"></a>Nastavte režim upgradu v Azure Portal
+Při vytváření clusteru můžete cluster nastavit na automatické nebo ruční.
 
 ![Create_Manualmode][Create_Manualmode]
 
-Cluster můžete nastavit na automatické nebo ruční, když na živém clusteru, pomocí prostředí pro správu. 
+Cluster můžete nastavit na automatické nebo ruční, pokud používáte živý cluster, a to pomocí prostředí pro správu. 
 
 ### <a name="upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-portal"></a>Upgrade na novou verzi v clusteru, který je nastaven na ruční režim prostřednictvím portálu.
-Chcete-li upgradovat na novou verzi, stačí vybrat dostupnou verzi z rozbalovacího souboru a uložit. Fabric upgrade se spustí automaticky. Zásady stavu clusteru (kombinace stavu uzlu a stavu všechny aplikace spuštěné v clusteru) jsou dodržovány během upgradu.
+Pokud chcete upgradovat na novou verzi, stačí, když vyberete dostupnou verzi z rozevíracího seznamu a uložíte ji. Upgrade prostředků infrastruktury se spustí automaticky. Zásady stavu clusteru (kombinace stavu uzlu a stavu všech aplikací spuštěných v clusteru) jsou v průběhu upgradu dodrženy.
 
-Pokud nejsou splněny zásady stavu clusteru, upgrade je vrácena zpět. Posuňte se dolů v tomto dokumentu a přečtěte si další informace o tom, jak nastavit tyto vlastní zásady stavu. 
+Pokud nejsou splněny zásady stavu clusteru, upgrade se vrátí zpět. Posuňte se dolů na tento dokument a přečtěte si další informace o tom, jak tyto vlastní zásady stavu nastavit. 
 
-Jakmile jste opravili problémy, které vedly k vrácení zpět, je třeba zahájit upgrade znovu, podle stejných kroků jako dříve.
+Po odstranění problémů, které vedly k vrácení zpět, je nutné znovu zahájit upgrade, a to pomocí stejných kroků jako v tomto postupu.
 
 ![Manage_Automaticmode][Manage_Automaticmode]
 
 ## <a name="set-the-upgrade-mode-using-a-resource-manager-template"></a>Nastavení režimu upgradu pomocí šablony Správce prostředků
-Přidejte konfiguraci "upgradeMode" do definice prostředku Microsoft.ServiceFabric/clusters a nastavte "clusterCodeVersion" na jednu z podporovaných verzí prostředků infrastruktury, jak je znázorněno níže, a potom nasadit šablonu. Platné hodnoty pro "upgradeMode" jsou "Ruční" nebo "Automatické"
+Přidejte konfiguraci "upgradeMode" do definice prostředku Microsoft. ServiceFabric/Clusters a nastavte "clusterCodeVersion" na jednu z podporovaných verzí prostředků infrastruktury, jak je znázorněno níže, a pak šablonu nasaďte. Platné hodnoty "upgradeMode" jsou "ruční" nebo "automatické".
 
-![REŽIM ARMUpgrade][ARMUpgradeMode]
+![ARMUpgradeMode][ARMUpgradeMode]
 
-### <a name="upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-a-resource-manager-template"></a>Upgrade na novou verzi v clusteru, který je nastaven na ruční režim prostřednictvím šablony Správce prostředků.
-Pokud je cluster v ručním režimu, chcete-li upgradovat na novou verzi, změňte "clusterCodeVersion" na podporovanou verzi a nasaďte ji. Nasazení šablony, kopy fabric upgrade se spustí automaticky. Zásady stavu clusteru (kombinace stavu uzlu a stavu všechny aplikace spuštěné v clusteru) jsou dodržovány během upgradu.
+### <a name="upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-a-resource-manager-template"></a>Upgrade na novou verzi v clusteru, který je nastaven na ruční režim pomocí šablony Správce prostředků.
+Pokud je cluster v ručním režimu, pokud chcete upgradovat na novou verzi, změňte "clusterCodeVersion" na podporovanou verzi a nasaďte ji. Nasazení šablony se aktivuje při automatickém vypnutí upgradu prostředků infrastruktury. Zásady stavu clusteru (kombinace stavu uzlu a stavu všech aplikací spuštěných v clusteru) jsou v průběhu upgradu dodrženy.
 
-Pokud nejsou splněny zásady stavu clusteru, upgrade je vrácena zpět.  
+Pokud nejsou splněny zásady stavu clusteru, upgrade se vrátí zpět.  
 
-Jakmile jste opravili problémy, které vedly k vrácení zpět, je třeba zahájit upgrade znovu, podle stejných kroků jako dříve.
+Po odstranění problémů, které vedly k vrácení zpět, je nutné znovu zahájit upgrade, a to pomocí stejných kroků jako v tomto postupu.
 
-## <a name="set-custom-health-polices-for-upgrades"></a>Nastavení vlastních zdravotních hlídek pro upgrady
-Můžete zadat vlastní zdravotní police pro upgrade tkaniny. Pokud jste nastavili cluster na automatické upgrady prostředků infrastruktury, pak tyto zásady získat použít [pro fáze 1 automatické upgrady prostředků infrastruktury](service-fabric-cluster-upgrade.md#fabric-upgrade-behavior-during-automatic-upgrades).
-Pokud jste nastavili cluster pro ruční upgrady prostředků infrastruktury, pak tyto zásady získat použít pokaždé, když vyberete novou verzi spouštění systému k zahájení upgradu prostředků infrastruktury v clusteru. Pokud nepřepíšete zásady, budou použity výchozí hodnoty.
+## <a name="set-custom-health-polices-for-upgrades"></a>Nastavení vlastních zásad stavu pro upgrady
+Pro upgrade prostředků infrastruktury můžete zadat vlastní zásady stavu. Pokud jste cluster nastavili na automatické upgrady prostředků infrastruktury, pak se tyto zásady uplatní na [fázi 1 pro automatické upgrady prostředků infrastruktury](service-fabric-cluster-upgrade.md#fabric-upgrade-behavior-during-automatic-upgrades).
+Pokud jste cluster nastavili pro ruční upgrady prostředků infrastruktury, pak se tyto zásady uplatní pokaždé, když vyberete novou verzi, která aktivuje upgrade prostředků infrastruktury ve vašem clusteru. Pokud zásady nepřepisujete, použijí se výchozí hodnoty.
 
-Můžete určit vlastní zásady stavu nebo zkontrolovat aktuální nastavení v okně "upgrade prostředků infrastruktury" výběrem rozšířeného nastavení upgradu. Přečtěte si následující obrázek o tom, jak. 
+Můžete zadat vlastní zásady stavu nebo zkontrolovat aktuální nastavení v okně "upgrade prostředků infrastruktury" výběrem možnosti Upřesnit nastavení upgradu. Přečtěte si následující obrázek o postupu. 
 
 ![Správa vlastních zásad stavu][HealthPolices]
 
-## <a name="list-all-available-versions-for-all-environments-for-a-given-subscription"></a>Seznam všech dostupných verzí pro všechna prostředí pro dané předplatné
+## <a name="list-all-available-versions-for-all-environments-for-a-given-subscription"></a>Vypíše všechny dostupné verze pro všechna prostředí pro dané předplatné.
 Spusťte následující příkaz a měli byste získat výstup podobný tomuto.
 
-"supportExpiryUtc" vám řekne, kdy platnost dané verze vyprší nebo vypršela jeho platnost. Nejnovější verze nemá platné datum - má hodnotu "9999-12-31T23:59:59.9999999", což jen znamená, že datum vypršení platnosti ještě není nastaveno.
+"supportExpiryUtc" oznamuje, kdy platnost dané vydané verze vypršela nebo vypršela její platnost. Nejnovější vydaná verze nemá platné datum – má hodnotu "9999-12-31T23:59:59.9999999", která pouze znamená, že datum vypršení platnosti ještě není nastavené.
 
 ```REST
 GET https://<endpoint>/subscriptions/{{subscriptionId}}/providers/Microsoft.ServiceFabric/locations/{{location}}/clusterVersions?api-version=2016-09-01
@@ -109,9 +109,9 @@ Output:
 ```
 
 ## <a name="next-steps"></a>Další kroky
-* Zjistěte, jak přizpůsobit některá [nastavení clusteru prostředků infrastruktury prostředků služby](service-fabric-cluster-fabric-settings.md)
-* Přečtěte si, jak [škálovat cluster y a zmenšování](service-fabric-cluster-scale-up-down.md)
-* Informace o [upgradech aplikací](service-fabric-application-upgrade.md)
+* Informace o tom, jak přizpůsobit některá [nastavení prostředků infrastruktury Service Fabric pro clustery](service-fabric-cluster-fabric-settings.md)
+* Přečtěte si, jak [škálovat cluster na úrovni a ven](service-fabric-cluster-scale-up-down.md) .
+* Další informace o [upgradech aplikací](service-fabric-application-upgrade.md)
 
 <!--Image references-->
 [CertificateUpgrade]: ./media/service-fabric-cluster-upgrade/CertificateUpgrade2.png

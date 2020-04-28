@@ -1,96 +1,96 @@
 ---
-title: Generovat půdní vlhkost Heatmap
-description: Popisuje, jak generovat půdní vlhkost Heatmap v Azure FarmBeats
+title: Generovat heatmapu vlhkosti půdy
+description: Popisuje, jak ve službě Azure FarmBeats generovat heatmapu vlhkosti v půdě.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: a2115e9c1601c86cce8857c10baf12b91cc2b997
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75482566"
 ---
-# <a name="generate-soil-moisture-heatmap"></a>Generovat půdní vlhkost Heatmap
+# <a name="generate-soil-moisture-heatmap"></a>Generovat heatmapu vlhkosti půdy
 
-Půdní vlhkost je voda, která se drží v prostoru mezi částicemi půdy.Půdní vlhkost Heatmap vám pomůže pochopit data vlhkosti v jakékoli hloubce a ve vysokém rozlišení ve vašich farmách. Pro vytvoření přesné a použitelné tepelné mapy vlhkosti půdy je vyžadováno jednotné nasazení senzorů od stejného poskytovatele. Různí poskytovatelé budou mít rozdíly ve způsobu měření vlhkosti půdy spolu s rozdíly v kalibraci. Heatmap je generován pro určitou hloubku pomocí senzorů nasazených v této hloubce.
+Vlhkost v půdě je voda, která je držena v prostorech mezi částicemi v půdě.Heatmapu vlhkosti v půdě vám pomůže pochopit údaje o vlhkosti v libovolné hloubce a ve velkém rozlišení v rámci vašich farem. K vygenerování přesné a použitelné heatmapu vlhkosti v půdě je nutné použít jednotné nasazení snímačů od stejného poskytovatele. Různí poskytovatelé budou mít rozdíly ve způsobu měření vlhkosti půdy spolu s rozdíly v kalibraci. Heatmapu se generuje pro konkrétní hloubku pomocí senzorů nasazených v této hloubce.
 
-Tento článek popisuje proces generování heatmap půdní vlhkosti pro vaši farmu pomocí akcelerátoru Azure FarmBeats. V tomto článku se dozvíte, jak:
+Tento článek popisuje proces generování heatmapu vlhkosti v půdě pro vaši farmu pomocí akcelerátoru služby Azure FarmBeats. V tomto článku se dozvíte, jak:
 
-- [Vytvořit farmy](#create-a-farm)
-- [Přiřazení senzorů farmám](#get-soil-moisture-sensor-data-from-partner)
-- [Generovat půdní vlhkost Heatmap](#generate-soil-moisture-heatmap)
+- [Vytváření farem](#create-a-farm)
+- [Přiřazení senzorů ke farmám](#get-soil-moisture-sensor-data-from-partner)
+- [Generovat heatmapu vlhkosti půdy](#generate-soil-moisture-heatmap)
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Zajistěte, aby:  
 
 - Předplatné Azure.
 - Spuštěná instance Azure FarmBeats.
-- Pro farmu jsou k dispozici minimálně tři senzory vlhkosti půdy.
+- Pro farmu jsou k dispozici minimálně tři senzory vlhkosti v půdě.
 
-## <a name="create-a-farm"></a>Vytvoření farmy
+## <a name="create-a-farm"></a>Vytvořit farmu
 
-Farma je geografická oblast zájmu, pro kterou chcete vytvořit tepelnou mapu vlhkosti půdy. Farmu můžete vytvořit pomocí [rozhraní FARMAPI](https://aka.ms/FarmBeatsDatahubSwagger) nebo v [uzu akcelerátoru FarmsBeats](manage-farms-in-azure-farmbeats.md#create-farms)
+Farma je geografickou oblastí zájmu, pro kterou chcete vytvořit heatmapu vlhkosti půdy. Můžete vytvořit farmu pomocí [rozhraní API farmy](https://aka.ms/FarmBeatsDatahubSwagger) nebo v [uživatelském rozhraní akcelerátoru FarmsBeats](manage-farms-in-azure-farmbeats.md#create-farms) .
 
-## <a name="deploy-sensors"></a>Nasazení senzorů
+## <a name="deploy-sensors"></a>Nasadit senzory
 
-Měli byste fyzicky nasadit senzory vlhkosti půdy na farmě. Senzory vlhkosti půdy si můžete zakoupit od některého z našich schválených partnerů - [Davis Instruments](https://www.davisinstruments.com/product/enviromonitor-gateway/) a [Teralytic](https://teralytic.com/). Měli byste koordinovat se svým poskytovatelem senzoru dělat fyzické nastavení na farmě.
+Měli byste fyzicky nasadit senzory vlhkosti v půdě na farmu. Můžete zakoupit senzory vlhkosti v půdě od kteréhokoli z našich schválených partnerů – [Přidavisové nástroje](https://www.davisinstruments.com/product/enviromonitor-gateway/) a [Teralytic](https://teralytic.com/). Měli byste se zamluvit se svým poskytovatelem senzorů a provést na farmě fyzické nastavení.
 
-## <a name="get-soil-moisture-sensor-data-from-partner"></a>Získejte data senzorů vlhkosti půdy od partnera
+## <a name="get-soil-moisture-sensor-data-from-partner"></a>Získat data ze senzorů vlhkosti půdy od partnera
 
-Když senzory začnou streamovat data do řídicího panelu dat partnera, umožňují data do Azure FarmBeats. To lze provést z partnerské aplikace.
+Vzhledem k tomu, že senzory spouštějí streamování, data na řídicím panelu dat umožňují data do Azure FarmBeats. To se dá udělat z partnerské aplikace.
 
-Pokud jste například zakoupili daviské senzory, přihlásíte se ke svému účtu s odkazem na počasí a poskytnete požadovaná pověření, která umožní streamování dat do Azure FarmBeats. Chcete-li získat požadovaná pověření, postupujte podle pokynů [z získat data ze senzoru](get-sensor-data-from-sensor-partner.md#get-sensor-data-from-sensor-partners).
+Pokud jste například zakoupili Davisové senzory, přihlásíte se ke svému účtu počasí s odkazem a poskytnete požadovaná pověření pro povolení streamování dat do Azure FarmBeats. Pokud chcete získat požadované přihlašovací údaje, postupujte podle pokynů v článku [získání dat ze senzorů](get-sensor-data-from-sensor-partner.md#get-sensor-data-from-sensor-partners).
 
-Jakmile zadáte přihlašovací údaje a v partnerské aplikaci vyberete **Odeslat,** můžete mít data tok do Azure FarmBeats.
+Po zadání přihlašovacích údajů a výběru **Odeslat** na partnerských aplikacích můžete nasměrovat data do služby Azure FarmBeats.
 
-### <a name="assign-soil-moisture-sensors-to-the-farm"></a>Přiřazení snímačů vlhkosti půdy do farmy
+### <a name="assign-soil-moisture-sensors-to-the-farm"></a>Přiřazení senzorů vlhkosti v půdě pro farmu
 
-Jakmile propojíte svůj účet senzorů do Azure FarmBeats, musíte přiřadit senzory vlhkosti půdy k farmě, která vás zajímá.
+Po propojení účtu snímače se službou Azure FarmBeats je potřeba přiřadit senzory vlhkosti v půdě do farmy zájmu.
 
-1.  Na domovské stránce vyberte **farmy** z nabídky, zobrazí se stránka se seznamem **Farmy.**
-2.  Vyberte možnost Přidat**zařízení** **MyFarm** > .
-3.  Zobrazí se okno **Přidat zařízení.** Vyberte libovolné zařízení, které je spojeno se senzory vlhkosti půdy pro vaši farmu.
+1.  Na stránce domů v nabídce vyberte možnost **farmy** a zobrazí se stránka seznam **farmy** .
+2.  Vyberte **MyFarm** > **Přidat zařízení**.
+3.  Zobrazí se okno **Přidat zařízení** . Vyberte jakékoli zařízení, které je propojené s senzory vlhkosti v půdě pro vaši farmu.
 
-    ![Projekt Farm Beats](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
+    ![Beats farmy projektu](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
 
 4. Vyberte **Přidat zařízení**.     
 
-## <a name="generate-soil-moisture-heatmap"></a>Generovat půdní vlhkost Heatmap
+## <a name="generate-soil-moisture-heatmap"></a>Generovat heatmapu vlhkosti půdy
 
-Tento krok je vytvořit práci nebo dlouhou provozní operaci, která bude generovat půdní vlhkost Heatmap pro vaši farmu.
+V tomto kroku se vytvoří úloha nebo dlouhodobá operace, která bude generovat heatmapu vlhkosti v půdě pro vaši farmu.
 
-1.  Na domovské stránce přejděte na **Položku Farmy** z levé navigační nabídky a zobrazte stránku farmy.
-2.  Vyberte **možnost MyFarm**.
-3.  Na stránce **Podrobnosti farmy** vyberte **Generovat přesnost mapy**.
-4.  V rozbalovací nabídce vyberte **položku Půdní vlhkost**.
-5.  V okně **Půdní vlhkost** vyberte **tento týden**.
-6.  Do části Vybrat **měření čidla půdní** **vlhkosti** zadejte míru, kterou chcete pro mapu použít.
-    Chcete-li najít měření senzoru, **vyberte**v části Senzory libovolný snímač vlhkosti půdy. Ve **vlastnostech senzoru**použijte hodnotu **Změřit název.**
+1.  Na domovské stránce přejděte do části **farmy** v levém navigačním panelu a zobrazte stránku farmy.
+2.  Vyberte **MyFarm**.
+3.  Na stránce **Podrobnosti o farmě** vyberte možnost **Generovat mapu přesnosti**.
+4.  V rozevírací nabídce vyberte **vlhkost půdy**.
+5.  V okně **vlhkosti půdy** vyberte **Tento týden**.
+6.  V části **Vybrat míru vlhkosti půdního** **senzoru**zadejte míru, kterou chcete pro mapu použít.
+    Pokud chcete zjistit míru snímače, vyberte v **senzorech**jakýkoliv senzor vlhkosti půdy. Ve **vlastnostech senzoru**použijte hodnotu **Název míry** .
 
-    ![Projekt Farm Beats](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
+    ![Beats farmy projektu](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
 
 
 7.  Vyberte **Generovat mapy**.
-    Zobrazí se potvrzovací zpráva s podrobnostmi o úloze. Další informace naleznete v tématu Stav úlohy v úlohách.
+    Zobrazí se potvrzovací zpráva s podrobnostmi o úloze. Další informace najdete v tématu stav úlohy v úlohách.
 
     >[!NOTE]
-    > Práce trvá přibližně tři až čtyři hodiny.
+    > Dokončení úlohy trvá přibližně tři až čtyři hodiny.
 
-### <a name="download-the-soil-moisture-heatmap"></a>Stáhněte si heatmapu vlhkosti půdy
+### <a name="download-the-soil-moisture-heatmap"></a>Stáhnout heatmapu vlhkosti půdy
 
 Použijte k tomu následující postup:
 
-1. Na stránce **Úlohy** zkontrolujte **stav úlohy,** kterou jste vytvořili v posledním postupu.
-2. Když se zobrazí stav úlohy **Proběhlúspěšně**, vyberte v nabídce **možnost Mapy.**
-3. Vyhledejte mapu v den, kdy byla vytvořena ve formátu <půda-moisture_MyFarm_YYYY-MM-DD>.
-4. Vyberte mapu ve sloupci **Název,** zobrazí se vyskakovací okno s náhledem vybrané mapy.
-5. Vyberte **Download** (Stáhnout). Mapa je stažena a uložena do místní složky počítače.
+1. Na stránce **úlohy** ověřte **stav úlohy** pro úlohu, kterou jste vytvořili v posledním postupu.
+2. Po **úspěšném**zobrazení stavu úlohy vyberte v nabídce možnost **mapy** .
+3. Vyhledejte mapu podle dne vytvoření ve formátu <půdní-moisture_MyFarm_YYYY-MM-DD>.
+4. Vyberte mapu ve sloupci **název** , zobrazí se automaticky otevírané okno s náhledem vybrané mapy.
+5. Vyberte **Download** (Stáhnout). Mapa se stáhne a uloží do místní složky vašeho počítače.
 
-    ![Projekt Farm Beats](./media/get-sensor-data-from-sensor-partner/download-soil-moisture-map-1.png)
+    ![Beats farmy projektu](./media/get-sensor-data-from-sensor-partner/download-soil-moisture-map-1.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní, když jste úspěšně vygenerovali heatmapu půdní vlhkosti, zjistěte, jak [generovat umístění senzorů](generate-maps-in-azure-farmbeats.md#sensor-placement-map) a [ingestovat historická telemetrická data](ingest-historical-telemetry-data-in-azure-farmbeats.md). 
+Teď, když jste úspěšně vygenerovali heatmapu vlhkosti půdy, se naučíte, jak [vygenerovat senzory umístění](generate-maps-in-azure-farmbeats.md#sensor-placement-map) a ingestovat [historická data telemetrie](ingest-historical-telemetry-data-in-azure-farmbeats.md). 

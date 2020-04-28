@@ -1,49 +1,49 @@
 ---
 title: Konfigurace pravidel a správa upozornění
-description: Popisuje, jak konfigurovat pravidla a spravovat výstrahy v FarmBeats
+description: Popisuje, jak nakonfigurovat pravidla a spravovat výstrahy v FarmBeats.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 02373da114b6dc4663cd3ffc9a0780ac6a7a9e23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75482982"
 ---
 # <a name="configure-rules-and-manage-alerts"></a>Konfigurace pravidel a správa upozornění
 
-Azure FarmBeats umožňuje vytvářet pravidla založená na obchodní logice, kromě dat senzorů, která proudí ze senzorů a zařízení nasazených ve vaší farmě. Pravidla aktivují výstrahy v systému vždy, když hodnoty senzoru překročí prahovou hodnotu. Zobrazením a analýzou výstrah vytvořených po prahových hodnotách můžete rychle pracovat s případnými problémy a získat požadovaná řešení.
+Azure FarmBeats umožňuje vytvářet pravidla založená na obchodní logice kromě dat senzorů, která se předávají ze senzorů a zařízení nasazených ve vaší farmě. Pravidla aktivují výstrahy v systému, kdykoli hodnoty snímačů překračují prahovou hodnotu. Zobrazením a analýzou výstrah vytvořených po prahových hodnotách můžete rychle působit na jakékoli problémy a získat požadovaná řešení.
 
 ## <a name="create-rule"></a>Vytvořit pravidlo
 
-1. Na domovské stránce přejděte na **Pravidla**.
-2. Vyberte **nové pravidlo**. Zobrazí se okno Nové pravidlo.
+1. Na domovské stránce přejít na **pravidla**.
+2. Vyberte **nové pravidlo**. Zobrazí se okno nové pravidlo.
 
-    ![Projekt Farm Beats](./media/configure-rules-and-alerts-in-azure-farmbeats/new-rule-1.png)
+    ![Beats farmy projektu](./media/configure-rules-and-alerts-in-azure-farmbeats/new-rule-1.png)
 
-3. Zadejte **název pravidla** a popis **pravidla** a pak vyberte farmu z rozevírací nabídky **Vybrat farmu.**
-4. Zadejte název farmy a vyberte oddíl Farma a ve stejném okně se zobrazí oddíl **Podmínky.**  
+3. Zadejte **název pravidla** a **Popis pravidla** a potom vyberte farmu z rozevírací nabídky **Vybrat farmu** .
+4. Zadáním názvu farmy vyberte oddíl farmy a **podmínky** , který se zobrazí ve stejném okně.  
 
-    ![Projekt Farm Beats](./media/configure-rules-and-alerts-in-azure-farmbeats/new-rule-condition-1.png)
+    ![Beats farmy projektu](./media/configure-rules-and-alerts-in-azure-farmbeats/new-rule-condition-1.png)
 
-5. Do **pole Podmínky**zadejte hodnoty pro **Měření**, **Operátor** a **Hodnota**.
-6. Do rozevírací nabídky **Míra** zadejte název míry.
-7. Výběrem **možnosti +Přidat podmínku** přidáte do pravidla další podmínky.
+5. V části **podmínky**zadejte hodnoty pro **míry**, **operátor** a **hodnotu**.
+6. Do rozevírací nabídky **míra** zadejte název míry.
+7. Vyberte **+ Přidat podmínku** a přidejte do pravidla další podmínky.
 8. Vyberte **úroveň závažnosti**.
-9. V **akci**zapněte přepínač **E-mail,** který povolí e-mailová upozornění.
+9. V **akci**přepněte na přepínací tlačítko s **povoleným e** -mailem a povolte e-mailová upozornění.
 
-    ![Projekt Farm Beats](./media/configure-rules-and-alerts-in-azure-farmbeats/new-rule-email-1.png)
+    ![Beats farmy projektu](./media/configure-rules-and-alerts-in-azure-farmbeats/new-rule-email-1.png)
 
-10. Zadejte **e-mailové adresy,** na které chcete e-mailovou výstrahu odeslat, spolu s **předmětem e-mailu** a **dalšími poznámkami**.  
-11. Ve **stavu pravidla**zapněte přepínač **povoleno,** abyste pravidlo povolili nebo zakázali.
-    Můžete zobrazit počet zařízení, která budou mít vliv na pravidlo.
-12. Chcete-li vytvořit pravidlo, vyberte **Použít.**
+10. Zadejte e-mailové **adresy** , na které chcete e-mailové upozornění poslat, a také **Předmět e-mailu** a **Další poznámky**.  
+11. V poli **stav pravidla**přepněte na přepínací tlačítko **povoleno** a povolte nebo zakažte pravidlo.
+    Můžete zobrazit počet zařízení, na která bude pravidlo ovlivněno.
+12. Pro vytvoření pravidla vyberte **použít** .
 
 ## <a name="view-rule"></a>Zobrazit pravidlo
 
-Na stránce **Farm** a zobrazí se seznam dostupných pravidel. Vyberte **název pravidla**. V okně se zobrazí následující podrobnosti, které jsou použitelné pro vybrané pravidlo:
+Na stránce **farma** se zobrazí seznam dostupných pravidel. Vyberte **název pravidla**. V okně se zobrazí následující podrobnosti, které se vztahují k vybranému pravidlu:
  - Název pravidla
  - Odkaz na farmu, ke které je pravidlo přidruženo
  - Datum vytvoření
@@ -53,65 +53,65 @@ Na stránce **Farm** a zobrazí se seznam dostupných pravidel. Vyberte **název
  - Seznam podmínek  
  - Počet zařízení ovlivněných pravidlem
 
-    ![Projekt Farm Beats](./media/configure-rules-and-alerts-in-azure-farmbeats/view-rule-1.png)
+    ![Beats farmy projektu](./media/configure-rules-and-alerts-in-azure-farmbeats/view-rule-1.png)
 
 ## <a name="edit-rule"></a>Úprava pravidla
 
-Chcete-li pravidlo upravit, postupujte takto:
+Pravidlo upravíte pomocí následujících kroků:
 
-1. Na domovské stránce vyberte **Pravidla** v levé navigační nabídce.
-   Zobrazí se okno pravidel.
+1. Na domovské stránce vyberte **pravidla** z levé navigační nabídky.
+   Zobrazí se okno pravidla.
 2. Vyberte pravidlo, pro které chcete upravit.
 
-    ![Projekt Farm Beats](./media/configure-rules-and-alerts-in-azure-farmbeats/edit-rule-action-bar-1.png)
+    ![Beats farmy projektu](./media/configure-rules-and-alerts-in-azure-farmbeats/edit-rule-action-bar-1.png)
 
-3. Z panelu akcí vyberte **Upravit,** zobrazí se okno **Upravit pravidlo.**
+3. Na panelu akcí vyberte **Upravit** . otevře se okno **Upravit pravidlo** .
 
-    ![Projekt Farm Beats](./media/configure-rules-and-alerts-in-azure-farmbeats/edit-rule-one-1.png)
+    ![Beats farmy projektu](./media/configure-rules-and-alerts-in-azure-farmbeats/edit-rule-one-1.png)
 
-4. Změňte **název pravidla**a popis **pravidla** a vyberte farmu z rozevírací nabídky **Vybrat farmu.**
-5. Zadejte název farmy a vyberte farmu a **podmínky** se zobrazí ve stejném okně.  
-6. V **podmínkách**upravte **measure**, **Operator** a **Value**.
-7. Do rozevírací nabídky **Míra** zadejte název míry.
-8. Vyberte **+Přidat podmínku,** chcete-li do pravidel přidat nebo upravit podmínky.
+4. Změňte **název pravidla**a **Popis pravidla** a potom vyberte farmu z rozevírací nabídky **Vybrat farmu** .
+5. Zadáním názvu farmy vyberte farmu a **podmínky** se zobrazí ve stejném okně.  
+6. V **podmínkách**upravte **míru**, **operátor** a **hodnotu**.
+7. Do rozevírací nabídky **míra** zadejte název míry.
+8. Vyberte **+ Přidat podmínku** a přidejte nebo upravte podmínky pravidel.
 
-    ![Projekt Farm Beats](./media/configure-rules-and-alerts-in-azure-farmbeats/edit-rule-two-1.png)
+    ![Beats farmy projektu](./media/configure-rules-and-alerts-in-azure-farmbeats/edit-rule-two-1.png)
 
 9.  Vyberte **úroveň závažnosti**.  
-10. V **akci**zapněte přepínač **E-mail,** který povolí e-mailová upozornění.
-11. Upravte **e-mailové adresy,** které chcete odeslat e-mailové upozornění, spolu s **předmětem e-mailu** a **dalšími poznámkami**.  
-12. Ve **stavu pravidla**zapněte přepínač **povoleno,** abyste pravidlo povolili nebo zakázali.
-Můžete zobrazit počet zařízení, která budou tímto pravidlem ovlivněna.
-13. Vyberte **Použít,** chcete-li pravidlo upravit.
+10. V **akci**přepněte na přepínací tlačítko s **povoleným e** -mailem a povolte e-mailová upozornění.
+11. Upravte e-mailové **adresy** , které chcete odeslat e-mailové upozornění, spolu s **subjektem E-mail** a **dalšími poznámkami**.  
+12. V poli **stav pravidla**přepněte na přepínací tlačítko **povoleno** a povolte nebo zakažte pravidlo.
+Můžete zobrazit počet zařízení, u kterých bude toto pravidlo ovlivněno.
+13. Pokud chcete pravidlo upravit, vyberte **použít** .
 
 ## <a name="change-rule-status"></a>Změnit stav pravidla
 
-Chcete-li změnit stav pravidla, postupujte takto:
+Chcete-li změnit stav pravidla, použijte následující postup:
 
-1. Na domovské stránce vyberte **Pravidla** v levé navigační nabídce. Zobrazí se okno pravidel.
-2. Vyberte pravidlo, u kterého chcete změnit stav.
+1. Na domovské stránce vyberte **pravidla** z levé navigační nabídky. Zobrazí se okno pravidla.
+2. Vyberte pravidlo, pro které chcete změnit stav.
 
-    ![Projekt Farm Beats](./media/configure-rules-and-alerts-in-azure-farmbeats/change-status-rule-action-bar-1.png)
+    ![Beats farmy projektu](./media/configure-rules-and-alerts-in-azure-farmbeats/change-status-rule-action-bar-1.png)
 
-3. Na panelu akcí vyberte **Změnit stav.** Zobrazí se okno **Změnit stav.**
+3. Na panelu akcí vyberte **změnit stav** . Zobrazí se okno **stav změny** .
 
-    ![Projekt Farm Beats](./media/configure-rules-and-alerts-in-azure-farmbeats/rule-change-status-1.png)
+    ![Beats farmy projektu](./media/configure-rules-and-alerts-in-azure-farmbeats/rule-change-status-1.png)
 
-3. Změňte stav pravidla pomocí přepínače **Změnit stav.**
-   Můžete zobrazit počet zařízení, která budou ovlivněny pravidlo.
-4. Vyberte **Použít,** chcete-li změnit stav pravidla.
+3. Změňte stav pravidla pomocí přepínacího tlačítka **změnit stav** .
+   Můžete zobrazit počet zařízení, na která bude pravidlo ovlivněno.
+4. Chcete-li změnit stav pravidla, vyberte možnost **použít** .
 
 ## <a name="delete-rule"></a>Odstranění pravidla
 
-Chcete-li pravidlo odstranit, postupujte takto:
+Pravidlo odstraníte pomocí následujících kroků:
 
-1. Na domovské stránce vyberte **Pravidla** v levé navigační nabídce. Zobrazí se okno pravidel.
+1. Na domovské stránce vyberte **pravidla** z levé navigační nabídky. Zobrazí se okno pravidla.
 2. Vyberte pravidlo, pro které chcete odstranit.
 
-    ![Projekt Farm Beats](./media/configure-rules-and-alerts-in-azure-farmbeats/delete-rule-action-bar-1.png)
+    ![Beats farmy projektu](./media/configure-rules-and-alerts-in-azure-farmbeats/delete-rule-action-bar-1.png)
 
-3. Na panelu akcí vyberte **Odstranit.**
+3. Na panelu akcí vyberte **Odstranit** .
 
-    ![Projekt Farm Beats](./media/configure-rules-and-alerts-in-azure-farmbeats/delete-rule-1.png)
+    ![Beats farmy projektu](./media/configure-rules-and-alerts-in-azure-farmbeats/delete-rule-1.png)
 
-4. Zobrazí se dialogové okno **Odstranit pravidlo.** Vyberte **Odstranit**.
+4. Zobrazí se dialogové okno **Odstranit pravidlo** . Vyberte **Odstranit**.

@@ -1,7 +1,7 @@
 ---
-title: Vzorové zásady správy rozhraní API – požadavek na směrování na základě velikosti textu zprávy
+title: Vzorová zásada API Management – požadavek na směrování na základě velikosti textu zprávy
 titleSuffix: Azure API Management
-description: Ukázka zásad správy rozhraní Azure API – ukazuje, jak směrovat požadavky na základě velikosti jejich těl.
+description: Ukázka zásad Azure API Management – ukazuje, jak směrovat požadavky na základě velikosti jejich orgánů.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: 8cee2c13386a076f0321619754468cfc1e9fb31c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75442432"
 ---
 # <a name="route-the-request-based-on-the-size-of-its-body"></a>Směrování požadavku na základě velikosti jeho obsahu
 
-Tento článek ukazuje ukázku zásad správy rozhraní Azure API, která ukazuje, jak směrovat požadavky na základě velikosti jejich těl. Chcete-li nastavit nebo upravit kód zásad, postupujte podle kroků popsaných v části [Nastavení nebo úpravu zásady](../set-edit-policies.md). Další příklady naleznete v [tématu ukázky zásad](../policy-samples.md).
+Tento článek ukazuje ukázku zásad služby Azure API Management, která ukazuje, jak směrovat požadavky na základě velikosti jejich orgánů. Pokud chcete nastavit nebo upravit kód zásady, postupujte podle kroků popsaných v tématu [nastavení nebo úprava zásad](../set-edit-policies.md). Další příklady najdete v tématu [ukázky zásad](../policy-samples.md).
 
 ## <a name="policy"></a>Zásada
 
-Vložte kód do **příchozího** bloku.
+Vložte kód do **vstupního** bloku.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Route requests based on size.policy.xml)]
 

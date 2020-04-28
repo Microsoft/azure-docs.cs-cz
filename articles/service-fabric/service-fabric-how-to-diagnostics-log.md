@@ -1,30 +1,30 @@
 ---
-title: Generovat události protokolu z aplikace .NET
-description: Přečtěte si, jak přidat protokolování do aplikace .NET Service Fabric hostované v clusteru Azure nebo v samostatném clusteru.
+title: Generování událostí protokolu z aplikace .NET
+description: Přečtěte si, jak přidat protokolování do aplikace .NET Service Fabric hostované v clusteru Azure nebo samostatném clusteru.
 author: srrengar
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: srrengar
 ms.openlocfilehash: 8c4721584e74bd7f7111c516f2d16bd190392bb5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75614362"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>Přidání protokolování do aplikace Service Fabric
 
-Aplikace musí poskytnout dostatek informací k forenzní ladění, když vzniknou problémy. Protokolování je jednou z nejdůležitějších věcí, které můžete přidat do aplikace Service Fabric. Dojde-li k selhání, dobré protokolování může poskytnout způsob, jak prozkoumat selhání. Analýzou vzory protokolu, můžete najít způsoby, jak zlepšit výkon nebo návrh aplikace. Tento dokument ukazuje několik různých možností protokolování.
+Vaše aplikace musí poskytnout dostatek informací, aby je Forensically při vzniku problémů. Protokolování je jedním z nejdůležitějších věcí, které můžete přidat do aplikace Service Fabric. Když dojde k selhání, můžete dobrým protokolováním poskytnout způsob, jak prozkoumat selhání. Analýzou vzorů protokolů můžete najít způsoby, jak vylepšit výkon nebo návrh aplikace. Tento dokument ukazuje několik různých možností protokolování.
 
-## <a name="eventflow"></a>EventFlow
+## <a name="eventflow"></a>Využitím eventflow
 
-Sada [knihovny EventFlow](https://github.com/Azure/diagnostics-eventflow) umožňuje aplikacím definovat, jaká diagnostická data mají být shromažďována a kam by měla být výstupována. Diagnostická data mohou být cokoli od čítačů výkonu až po trasování aplikací. Běží ve stejném procesu jako aplikace, takže režie komunikace je minimalizována. Další informace o EventFlow a Service Fabric, najdete [v tématu Azure Service Fabric event agregace s EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md).
+Sada [knihoven využitím eventflow](https://github.com/Azure/diagnostics-eventflow) umožňuje aplikacím definovat diagnostická data, která se mají shromažďovat, a kde by se měla nacházet. Diagnostická data mohou být cokoli z čítačů výkonu až po trasování aplikací. Spouští se v rámci stejného procesu jako aplikace, takže dojde k minimalizaci komunikační režie. Další informace o využitím eventflow a Service Fabric najdete v tématu [agregace událostí Azure Service Fabric pomocí využitím eventflow](service-fabric-diagnostics-event-aggregation-eventflow.md).
 
 ### <a name="using-structured-eventsource-events"></a>Použití strukturovaných událostí EventSource
 
-Definování událostí zprávy podle případu použití umožňuje zabalit data o události v kontextu události. Můžete snadněji vyhledávat a filtrovat na základě názvů nebo hodnot zadaných vlastností události. Strukturování výstupu instrumentace usnadňuje čtení, ale vyžaduje více myšlení a čas k definování události pro každý případ použití. 
+Definování událostí zprávy pomocí případu použití umožňuje zabalit data o události v kontextu události. Můžete snadněji Hledat a filtrovat podle názvů nebo hodnot zadaných vlastností události. Strukturování výstupu instrumentace usnadňuje čtení, ale vyžaduje přesnější a časové definování události pro každý případ použití. 
 
-Některé definice událostí lze sdílet v celé aplikaci. Například metoda start nebo stop událost by být znovu použity v mnoha službách v rámci aplikace. Služba specifická pro doménu, jako je systém objednávek, může mít událost **CreateOrder,** která má vlastní jedinečnou událost. Tento přístup může generovat mnoho událostí a potenciálně vyžadovat koordinaci identifikátorů mezi projektovými týmy. 
+Některé definice událostí lze sdílet v celé aplikaci. Například metoda spustit nebo zastavit událost by se v rámci aplikace znovu použila v celé řadě služeb. Služba specifická pro doménu, jako je například systém objednávek, může mít událost **CreateOrder** , která má svou vlastní jedinečnou událost. Tento přístup může generovat mnoho událostí a potenciálně vyžadovat koordinaci identifikátorů napříč projektovými týmy. 
 
 ```csharp
 [EventSource(Name = "MyCompany-VotingState-VotingStateService")]
@@ -57,9 +57,9 @@ internal sealed class ServiceEventSource : EventSource
 
 ```
 
-### <a name="using-eventsource-generically"></a>Použití zdroje událostí obecně
+### <a name="using-eventsource-generically"></a>Obecné použití EventSource
 
-Vzhledem k tomu, že definování konkrétních událostí může být obtížné, mnoho lidí definuje několik událostí se společnou sadou parametrů, které obecně vyvozují své informace jako řetězec. Velká část strukturovaného aspektu je ztracena a je obtížnější vyhledávat a filtrovat výsledky. V tomto přístupu je definováno několik událostí, které obvykle odpovídají úrovním protokolování. Následující výstřižek definuje ladicí a chybovou zprávu:
+Vzhledem k tomu, že definování konkrétních událostí může být obtížné, mnoho lidí definuje několik událostí se společnou sadou parametrů, které obvykle mají výstup své informace jako řetězec. Většina strukturovaného aspektu se ztratí a je obtížnější Hledat a filtrovat výsledky. V tomto přístupu jsou definované jenom některé události, které obvykle odpovídají úrovním protokolování. Následující fragment kódu definuje ladění a chybovou zprávu:
 
 ```csharp
 [EventSource(Name = "MyCompany-VotingState-VotingStateService")]
@@ -90,15 +90,15 @@ internal sealed class ServiceEventSource : EventSource
 
 ```
 
-Použití hybridstrukturované a obecné instrumentace také může fungovat dobře. Strukturované instrumentace se používá pro hlášení chyb a metriky. Obecné události lze použít pro podrobné protokolování, které je spotřebováno inženýry pro řešení potíží.
+Použití hybridní struktury strukturovaných a obecných instrumentací také může fungovat dobře. Strukturovaná instrumentace se používá pro hlášení chyb a metrik. Obecné události lze použít pro podrobné protokolování, které technici spotřebují při řešení potíží.
 
-## <a name="microsoftextensionslogging"></a>Microsoft.Extensions.Protokolování
+## <a name="microsoftextensionslogging"></a>Microsoft. Extensions. Logging
 
-Protokolování ASP.NET Core ([Microsoft.Extensions.Logging NuGet package](https://www.nuget.org/packages/Microsoft.Extensions.Logging)) je architektura protokolování, která poskytuje standardní rozhraní API pro protokolování pro vaši aplikaci. Podporu pro další protokolování back-endů lze zapojit do ASP.NET protokolování Core. To vám dává širokou škálu podpory pro protokolování v aplikaci je zpracována, aniž by bylo třeba měnit mnoho kódu.
+Protokolování ASP.NET Core ([balíček NuGet Microsoft. Extensions. Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging)) je protokolovací rozhraní, které pro vaši aplikaci poskytuje standardní protokolovací rozhraní API. Podpora pro jiné back-endy protokolování se dá připojit k ASP.NET Core protokolování. Získáte tak širokou škálu podpory pro protokolování ve vaší aplikaci, aniž byste museli měnit mnohem více kódu.
 
-1. Přidejte balíček **Microsoft.Extensions.Logging** NuGet do projektu, který chcete instrumentovat. Také přidejte všechny balíčky zprostředkovatele. Další informace naleznete [v tématu Protokolování ASP.NET jádra](https://docs.microsoft.com/aspnet/core/fundamentals/logging).
-2. Přidejte **do** souboru **služby direktivu using pro Microsoft.Extensions.Logging.**
-3. Definujte soukromou proměnnou v rámci třídy služeb.
+1. Přidejte balíček NuGet **Microsoft. Extensions. Logging** do projektu, který chcete instrumentovat. Přidejte také všechny balíčky poskytovatele. Další informace najdete v tématu věnovaném [přihlášení ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging).
+2. Přidejte direktivu **using** pro **Microsoft. Extensions. Logging** do souboru služby.
+3. Definujte soukromou proměnnou v rámci vaší třídy služby.
 
    ```csharp
    private ILogger _logger = null;
@@ -110,7 +110,7 @@ Protokolování ASP.NET Core ([Microsoft.Extensions.Logging NuGet package](https
    _logger = new LoggerFactory().CreateLogger<Stateless>();
    ```
 
-5. Začněte instrumentovat kód ve svých metodách. Zde je několik vzorků:
+5. Začněte instrumentovat svůj kód v metodách. Tady je několik ukázek:
 
    ```csharp
    _logger.LogDebug("Debug-level event from Microsoft.Logging");
@@ -121,24 +121,24 @@ Protokolování ASP.NET Core ([Microsoft.Extensions.Logging NuGet package](https
    _logger.LogInformation("{RequestName} {Duration}", "MyRequest", requestDuration);
    ```
 
-### <a name="using-other-logging-providers"></a>Použití jiných poskytovatelů protokolování
+### <a name="using-other-logging-providers"></a>Používání jiných zprostředkovatelů protokolování
 
-Někteří poskytovatelé třetích stran používají přístup popsaný v předchozí části, včetně [Serilog](https://serilog.net/), [NLog](https://nlog-project.org/)a [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging). Můžete připojit každý z nich do ASP.NET core protokolování, nebo je můžete použít samostatně. Serilog má funkci, která obohacuje všechny zprávy odeslané z úhozu. Tato funkce může být užitečná pro výstup názvu služby, typu a informací o oddílu. Chcete-li tuto funkci použít v ASP.NET základní infrastruktury, postupujte takto:
+Někteří poskytovatelé třetích stran používají přístup popsaný v předchozí části, včetně [Serilog](https://serilog.net/), [nLOG](https://nlog-project.org/)a [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging). Každé z nich můžete připojit k ASP.NET Core protokolování, nebo je můžete použít samostatně. Serilog má funkci, která rozšiřuje všechny zprávy odesílané z protokolovacího nástroje. Tato funkce může být užitečná pro výstup názvu služby, typu a informací o oddílu. Pokud chcete tuto funkci použít v infrastruktuře ASP.NET Core, proveďte tyto kroky:
 
-1. Přidejte balíčky **Serilog**, **Serilog.Extensions.Logging**, **Serilog.Sinks.Literate**a **Serilog.Sinks.Observable** NuGet do projektu. 
-2. Vytvořte `LoggerConfiguration` a a logger instance.
+1. Přidejte rozhraní **Serilog**, **Serilog. Extensions. Logging**, **Serilog. umyvadla. přepisy**a **Serilog. sinks. pozorovatelované** balíčky NuGet do projektu. 
+2. Vytvořte instanci `LoggerConfiguration` protokolovacího nástroje a.
 
    ```csharp
    Log.Logger = new LoggerConfiguration().WriteTo.LiterateConsole().CreateLogger();
    ```
 
-3. Přidejte `Serilog.ILogger` argument do konstruktoru služby a předat nově vytvořené protokolovací protokol.
+3. Přidejte `Serilog.ILogger` argument do konstruktoru služby a předejte nově vytvořený protokolovací nástroj.
 
    ```csharp
    ServiceRuntime.RegisterServiceAsync("StatelessType", context => new Stateless(context, Log.Logger)).GetAwaiter().GetResult();
    ```
 
-4. V konstruktoru služby vytvoří obohacovače vlastností pro **ServiceTypeName**, **ServiceName**, **PartitionId**a **InstanceId**.
+4. V konstruktoru služby vytvoří rozšíření vlastností pro **ServiceType**, **ServiceName**, **PartitionID**a **InstanceId**.
 
    ```csharp
    public Stateless(StatelessServiceContext context, Serilog.ILogger serilog)
@@ -158,15 +158,15 @@ Někteří poskytovatelé třetích stran používají přístup popsaný v pře
    }
    ```
 
-5. Instrumentovat kód stejně, jako kdybyste používali ASP.NET Core bez Serilogu.
+5. Instrumentujte kód stejně, jako kdybyste používali ASP.NET Core bez Serilog.
 
    >[!NOTE]
-   >Doporučujeme *nepoužívat* statické `Log.Logger` s předchozím příkladem. Service Fabric může hostit více instancí stejného typu služby v rámci jednoho procesu. Pokud použijete `Log.Logger`statické , poslední zapisovač vlastnosti enrichers zobrazí hodnoty pro všechny instance, které jsou spuštěny. To je jeden z důvodů, proč _logger proměnná je proměnná soukromého člena třídy služby. Také je nutné `_logger` zpřístupnit společný kód, který může být použit napříč službami.
+   >Doporučujeme, abyste v předchozím příkladu *nepoužívali* static `Log.Logger` . Service Fabric může hostovat více instancí stejného typu služby v rámci jednoho procesu. Použijete-li statickou `Log.Logger`, bude poslední zapisovač rozšíření vlastností zobrazovat hodnoty pro všechny instance, které jsou spuštěny. Toto je jeden z důvodů, proč je proměnná _logger privátní členskou proměnnou třídy služby. Také je nutné zpřístupnit `_logger` běžný kód, který může být použit napříč službami.
 
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o [monitorování aplikací v Service Fabric](service-fabric-diagnostics-event-generation-app.md).
-- Přečtěte si o protokolování pomocí [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) a [Diagnostiky Windows Azure](service-fabric-diagnostics-event-aggregation-wad.md).
+- Přečtěte si o protokolování pomocí [využitím eventflow](service-fabric-diagnostics-event-aggregation-eventflow.md) a [Windows Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md).
 
 
 

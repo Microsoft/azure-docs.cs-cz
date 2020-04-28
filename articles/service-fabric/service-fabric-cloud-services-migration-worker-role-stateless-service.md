@@ -1,51 +1,51 @@
 ---
-title: Převod aplikací Cloudových služeb Azure na Service Fabric
-description: Tato příručka porovnává cloudové služby webové a pracovní role a service fabric bezstavové služby pomoci migrovat z cloudových služeb do service fabric.
+title: Převod aplikací Cloud Services Azure na Service Fabric
+description: Tato příručka porovnává Cloud Services webové a pracovní role a Service Fabric bezstavových služeb, které vám pomůžou migrovat z Cloud Services na Service Fabric.
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: caf067f793ca2086bc068907e86a82266627d128
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75463338"
 ---
-# <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Průvodce převodem rolí webu a pracovního procesu na bezstavové služby Service Fabric
-Tento článek popisuje, jak migrovat webové a pracovní role cloudových služeb do bezstavových služeb Service Fabric. Toto je nejjednodušší cesta migrace z cloudových služeb do service fabric pro aplikace, jejichž celková architektura zůstane zhruba stejná.
+# <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Průvodce převodem webových rolí a rolí pracovních procesů na Service Fabric bezstavových služeb
+Tento článek popisuje, jak migrovat Cloud Services webové a pracovní role do Service Fabric bezstavových služeb. Jedná se o nejjednodušší cestu migrace z Cloud Services do Service Fabric pro aplikace, jejichž celková architektura bude přibližně stejná.
 
-## <a name="cloud-service-project-to-service-fabric-application-project"></a>Projekt cloudové služby do projektu aplikace Service Fabric
- Projekt cloudové služby a projekt aplikace Service Fabric mají podobnou strukturu a obě představují jednotku nasazení pro vaši aplikaci – to znamená, že každý definuje kompletní balíček, který je nasazen ke spuštění aplikace. Projekt cloudové služby obsahuje jednu nebo více rolí webu nebo pracovního procesu. Podobně projekt aplikace Service Fabric obsahuje jednu nebo více služeb. 
+## <a name="cloud-service-project-to-service-fabric-application-project"></a>Projekt cloudové služby do Service Fabric projektu aplikace
+ Projekt cloudové služby a projekt Service Fabric aplikace mají podobnou strukturu a obě představují jednotku nasazení pro vaši aplikaci – to znamená, že každý z nich definuje kompletní balíček, který je nasazen pro spuštění vaší aplikace. Projekt cloudové služby obsahuje jednu nebo více webových nebo pracovních rolí. Podobně projekt aplikace Service Fabric obsahuje jednu nebo více služeb. 
 
-Rozdíl je v tom, že projekt cloudové služby spojuje nasazení aplikace s nasazením virtuálního počítače a proto obsahuje nastavení konfigurace virtuálního počítače, zatímco projekt aplikace Service Fabric definuje jenom aplikaci, která bude nasazená do sady existující virtuální chody v clusteru Service Fabric. Samotný cluster Service Fabric se nasadí jenom jednou, buď prostřednictvím šablony Správce prostředků, nebo prostřednictvím portálu Azure, a na něj se dá nasadit více aplikací Service Fabric.
+Rozdílem je to, že projekt cloudové služby Couples nasazení aplikace s nasazením virtuálního počítače, a v něm obsahuje nastavení konfigurace virtuálního počítače, zatímco projekt Service Fabric aplikace definuje jenom aplikaci, která se nasadí do sady existujících virtuálních počítačů v clusteru Service Fabric. Samotný cluster Service Fabric se nasazuje jenom jednou, a to buď prostřednictvím šablony Správce prostředků, nebo prostřednictvím Azure Portal, a do ní můžete nasadit několik Service Fabric aplikací.
 
-![Porovnání projektů Service Fabric a Cloud Services][3]
+![Porovnání projektu Service Fabric a Cloud Services][3]
 
-## <a name="worker-role-to-stateless-service"></a>Role pracovního procesu pro bezstavové služby
-Koncepčně role pracovního procesu představuje bezstavové zatížení, což znamená, že každá instance úlohy je identická a požadavky mohou být kdykoli směrovány do libovolné instance. Neočekává se, že by si každá instance pamatovala předchozí požadavek. Stav, na kterém pracovní vytížení funguje, je spravován externím úložištěm stavu, jako je Azure Table Storage nebo Azure Cosmos DB. V Service Fabric tento typ úlohy je reprezentován bezstavové služby. Nejjednodušší přístup k migraci role pracovního procesu na service fabric lze provést převodem kódu role pracovníka na bezstavovou službu.
+## <a name="worker-role-to-stateless-service"></a>Role pracovního procesu do bezstavové služby
+V koncepčním případě role pracovního procesu představuje bezstavové úlohy, což znamená, že každá instance úlohy je shodná a požadavky lze kdykoli směrovat do libovolné instance. U každé instance se neočekává zapamatovat si předchozí požadavek. Stav, na kterém zatížení funguje, je spravováno externím úložištěm stavů, jako je například Azure Table Storage nebo Azure Cosmos DB. V Service Fabric tento typ úlohy představuje bezstavovou službu. Nejjednodušší přístup k migraci role pracovního procesu na Service Fabric lze provést převodem kódu role pracovního procesu na bezstavovou službu.
 
-![Role pracovního procesu ke službě bez stavové služby][4]
+![Role pracovního procesu do bezstavové služby][4]
 
-## <a name="web-role-to-stateless-service"></a>Webová role pro bezstavovou službu
-Podobně jako role pracovního procesu, webová role také představuje bezstavové úlohy, a tak koncepčně příliš lze mapovat na službu Service Fabric bezstavové. Na rozdíl od webových rolí však service fabric nepodporuje službu IIS. Migrace webové aplikace z webové role do bezstavové služby vyžaduje první přesunutí do webového rámce, který může být hostovaný samostatně a nezávisí na službě IIS nebo System.Web, například ASP.NET jádrem 1.
+## <a name="web-role-to-stateless-service"></a>Webová role do bezstavové služby
+Podobně jako role pracovního procesu představuje webová role také nestavové úlohy, takže je možné, že ji lze namapovat na nestavovou službu Service Fabric. Na rozdíl od webových rolí ale Service Fabric nepodporuje službu IIS. Migrace webové aplikace z webové role do bezstavové služby vyžaduje nejprve přesun na webovou architekturu, která může být v místním prostředí a nezávisí na službě IIS nebo System. Web, jako je například ASP.NET Core 1.
 
-| **Aplikace** | **Podporovány** | **Cesta migrace** |
+| **Aplikace** | **Doložen** | **Cesta migrace** |
 | --- | --- | --- |
-| ASP.NET – webové formuláře |Ne |Převést na ASP.NET Jádra 1 MVC |
+| ASP.NET – webové formuláře |Ne |Převést na ASP.NET Core 1 MVC |
 | ASP.NET MVC |S migrací |Upgrade na ASP.NET Core 1 MVC |
-| Webové rozhraní API ASP.NET |S migrací |Použití serveru s vlastním hostitelem nebo ASP.NET jádra 1 |
-| ASP.NET jádro 1 |Ano |Není dostupné. |
+| Webové rozhraní API ASP.NET |S migrací |Použití samoobslužného serveru nebo ASP.NET Core 1 |
+| ASP.NET Core 1 |Ano |– |
 
-## <a name="entry-point-api-and-lifecycle"></a>Vstupní bod API a životní cyklus
-Nastavení API služby Role pracovního procesu a service fabric nabízejí podobné vstupní body: 
+## <a name="entry-point-api-and-lifecycle"></a>Rozhraní API a životní cyklus vstupního bodu
+Role pracovního procesu a rozhraní API služby Service Fabric nabízejí podobné vstupní body: 
 
 | **Vstupní bod** | **Role pracovního procesu** | **Služba Service Fabric** |
 | --- | --- | --- |
 | Zpracování |`Run()` |`RunAsync()` |
-| Spuštění virtuálního virtuálního montovna |`OnStart()` |Není dostupné. |
-| Zastavení virtuálního virtuálního montova |`OnStop()` |Není dostupné. |
-| Otevřít naslouchací proces pro požadavky klientů |Není dostupné. |<ul><li> `CreateServiceInstanceListener()`pro bezstátní</li><li>`CreateServiceReplicaListener()`pro stavové</li></ul> |
+| Spuštění virtuálního počítače |`OnStart()` |– |
+| Zastavení virtuálního počítače |`OnStop()` |– |
+| Otevřít naslouchací proces pro požadavky klientů |– |<ul><li> `CreateServiceInstanceListener()`pro bezstavové</li><li>`CreateServiceReplicaListener()`pro stav</li></ul> |
 
 ### <a name="worker-role"></a>Role pracovního procesu
 ```csharp
@@ -72,7 +72,7 @@ namespace WorkerRole1
 
 ```
 
-### <a name="service-fabric-stateless-service"></a>Služba Service Fabric bezstavová služba
+### <a name="service-fabric-stateless-service"></a>Bezstavová služba Service Fabric
 ```csharp
 
 using System.Collections.Generic;
@@ -97,38 +97,38 @@ namespace Stateless1
 
 ```
 
-Oba mají primární "Spustit" přepsat, ve kterém chcete zahájit zpracování. Služby Service `Run` `Start`Fabric `Stop` kombinují , a `RunAsync`do jednoho vstupního bodu . Vaše služba by `RunAsync` měla začít pracovat při `RunAsync` spuštění a měla by přestat fungovat, když je signalizována metoda CancellationToken. 
+Obě mají při zahájení zpracování primární přepsání "spustit". Služby Service Fabric Services `Run`kombinují `Start`, a `Stop` do jediného vstupního bodu `RunAsync`. Vaše služba by měla začít pracovat `RunAsync` , když se spustí, a měla by `RunAsync` přestat fungovat, když je CancellationToken metoda signalizována. 
 
-Existuje několik klíčových rozdílů mezi životním cyklem a životností pracovních rolí a služeb Service Fabric:
+Existuje několik klíčových rozdílů mezi životním cyklem a životností rolí pracovních procesů a Service Fabricch služeb:
 
-* **Životní cyklus:** Největší rozdíl je, že role pracovního procesu je virtuální hod, a proto jeho životní cyklus je vázaný na virtuální hod, který zahrnuje události při spuštění a zastavení virtuálního aplikace. Služba Service Fabric má životní cyklus, který je oddělený od životního cyklu virtuálního počítače, takže nezahrnuje události při spuštění a zastavení hostitelského virtuálního počítače nebo počítače, protože spolu nesouvisí.
-* **Životnost:** Instance role pracovního procesu se zrecykluje, pokud se `Run` metoda ukončí. Metoda `RunAsync` ve službě Service Fabric však může spustit až do dokončení a instance služby zůstane nahoru. 
+* **Životní cyklus:** Největší rozdíl spočívá v tom, že role pracovního procesu je virtuální počítač, a proto je jeho životní cyklus svázán s virtuálním počítačem, což zahrnuje události při spuštění a zastavení virtuálního počítače. Služba Service Fabric má životní cyklus, který je oddělený od životního cyklu virtuálního počítače, takže nezahrnuje události pro dobu, kdy se virtuální počítač hostitele nebo počítač spouští a zastavuje, protože nesouvisí.
+* **Doba života:** Instance role pracovního procesu se recykluje, `Run` Pokud se metoda ukončí. `RunAsync` Metoda ve službě Service Fabric může ale běžet až po dokončení a instance služby zůstane v provozu. 
 
-Service Fabric poskytuje volitelný vstupní bod nastavení komunikace pro služby, které naslouchá požadavkům klientů. Vstupní bod RunAsync i komunikace jsou volitelné přepsání ve službách Service Fabric - vaše služba se může rozhodnout pouze naslouchat požadavkům klientů nebo spustit pouze smyčku zpracování nebo obojí - což je důvod, proč je metoda RunAsync povolena ukončení bez restartování instance služby, protože může nadále naslouchat požadavkům klientů.
+Service Fabric poskytuje volitelnou vstupní bod nastavení komunikace pro služby, které naslouchají požadavkům klientů. Vstupní bod RunAsync i komunikace jsou volitelné přepsání ve službě Service Fabric Services – vaše služba se může rozhodnout, že bude naslouchat pouze na požadavky klientů, nebo spustit pouze výpočetní smyčku, nebo oboje, což znamená, že metoda RunAsync je povolena, aniž by bylo nutné restartovat instanci služby, protože může nadále naslouchat žádostem klienta.
 
-## <a name="application-api-and-environment"></a>Aplikační ROZHRANÍ API a prostředí
-Rozhraní API prostředí cloudových služeb poskytuje informace a funkce pro aktuální instanci virtuálního aplikace a také informace o dalších instancích rolí virtuálních virtuálních mích. Service Fabric poskytuje informace týkající se jeho runtime a některé informace o uzlu služby je aktuálně spuštěna na. 
+## <a name="application-api-and-environment"></a>Rozhraní API a prostředí aplikace
+Rozhraní Cloud Services API prostředí poskytuje informace a funkce pro aktuální instanci virtuálního počítače a také informace o ostatních instancích rolí virtuálních počítačů. Service Fabric poskytuje informace související s modulem runtime a některé informace o uzlu, na kterém je služba aktuálně spuštěná. 
 
 | **Úloha prostředí** | **Cloudové služby** | **Service Fabric** |
 | --- | --- | --- |
-| Nastavení konfigurace a změna oznámení |`RoleEnvironment` |`CodePackageActivationContext` |
+| Nastavení konfigurace a oznámení o změně |`RoleEnvironment` |`CodePackageActivationContext` |
 | Místní úložiště |`RoleEnvironment` |`CodePackageActivationContext` |
-| Informace o koncovém bodu |`RoleInstance` <ul><li>Aktuální instance:`RoleEnvironment.CurrentRoleInstance`</li><li>Další role a instance:`RoleEnvironment.Roles`</li> |<ul><li>`NodeContext`pro aktuální adresu uzlu</li><li>`FabricClient`a `ServicePartitionResolver` pro zjišťování koncového bodu služby</li> |
-| Emulace prostředí |`RoleEnvironment.IsEmulated` |Není dostupné. |
-| Souběžná událost změny |`RoleEnvironment` |Není dostupné. |
+| Informace o koncovém bodu |`RoleInstance` <ul><li>Aktuální instance:`RoleEnvironment.CurrentRoleInstance`</li><li>Další role a instance:`RoleEnvironment.Roles`</li> |<ul><li>`NodeContext`pro aktuální adresu uzlu</li><li>`FabricClient`a `ServicePartitionResolver` pro zjišťování koncových bodů služby</li> |
+| Emulace prostředí |`RoleEnvironment.IsEmulated` |– |
+| Současná událost změny |`RoleEnvironment` |– |
 
 ## <a name="configuration-settings"></a>Nastavení konfigurace
-Nastavení konfigurace v cloudových službách jsou nastavené pro roli virtuálního počítače a platí pro všechny instance této role virtuálního počítače. Tato nastavení jsou dvojice klíč-hodnota nastavena v ServiceConfiguration.*.cscfg soubory a lze přistupovat přímo prostřednictvím RoleEnvironment. V Service Fabric nastavení platí jednotlivě pro každou službu a pro každou aplikaci, nikoli na virtuální počítač, protože virtuální počítač může hostovat více služeb a aplikací. Služba se skládá ze tří balíčků:
+Nastavení konfigurace v Cloud Services jsou nastavena pro roli virtuálního počítače a platí pro všechny instance této role virtuálního počítače. Tato nastavení jsou páry klíč-hodnota nastavené v souborech ServiceConfiguration. *. cscfg a dají se získat přímo prostřednictvím RoleEnvironment. V Service Fabric se nastavení aplikují jednotlivě na každou službu a na každou aplikaci, nikoli na virtuální počítač, protože virtuální počítač může hostovat několik služeb a aplikací. Služba se skládá ze tří balíčků:
 
 * **Kód:** obsahuje spustitelné soubory služby, binární soubory, knihovny DLL a všechny další soubory, které musí služba spustit.
 * **Config:** všechny konfigurační soubory a nastavení pro službu.
 * **Data:** statické datové soubory přidružené ke službě.
 
-Každý z těchto balíčků lze nezávisle verzí a upgrade. Podobně jako cloudové služby, konfigurační balíček lze přistupovat programově prostřednictvím rozhraní API a události jsou k dispozici upozornit službu na změnu balíčku konfigurace. Soubor Settings.xml lze použít pro konfiguraci klíč-hodnota a programový přístup podobný části nastavení aplikace souboru App.config. Na rozdíl od cloudových služeb však konfigurační balíček Service Fabric může obsahovat libovolné konfigurační soubory v libovolném formátu, ať už se jedná o XML, JSON, YAML nebo vlastní binární formát. 
+Každý z těchto balíčků může být nezávisle a upgradován. Podobně jako u Cloud Services se k konfiguračnímu balíčku dá získat přístup prostřednictvím rozhraní API a události, které upozorní službu změny konfiguračního balíčku. Soubor Settings. XML lze použít pro konfiguraci klíč-hodnota a programový přístup podobně jako oddíl nastavení aplikace v souboru App. config. Na rozdíl od Cloud Services konfigurační balíček Service Fabric může obsahovat libovolné konfigurační soubory v libovolném formátu, ať už se jedná o soubor XML, JSON, YAML nebo vlastní binární formát. 
 
 ### <a name="accessing-configuration"></a>Přístup ke konfiguraci
 #### <a name="cloud-services"></a>Cloud Services
-Nastavení konfigurace z ServiceConfiguration.*.cscfg lze `RoleEnvironment`přistupovat prostřednictvím . Tato nastavení jsou globálně dostupná pro všechny instance rolí ve stejném nasazení cloudové služby.
+K nastavení konfigurace z ServiceConfiguration. *. cscfg se dá dostat `RoleEnvironment`prostřednictvím. Tato nastavení jsou globálně dostupná pro všechny instance rolí ve stejném nasazení cloudové služby.
 
 ```csharp
 
@@ -137,9 +137,9 @@ string value = RoleEnvironment.GetConfigurationSettingValue("Key");
 ```
 
 #### <a name="service-fabric"></a>Service Fabric
-Každá služba má svůj vlastní individuální konfigurační balíček. Neexistuje žádný vestavěný mechanismus pro globální nastavení konfigurace přístupné všechny aplikace v clusteru. Při použití speciálního konfiguračního souboru Settings.xml služby Service Fabric v konfiguračním balíčku lze hodnoty v souboru Settings.xml přepsat na úrovni aplikace, což umožňuje nastavení konfigurace na úrovni aplikace.
+Každá služba má vlastní jednotlivé konfigurační balíčky. Neexistuje žádný integrovaný mechanismus pro nastavení globálních konfigurací, který je přístupný pro všechny aplikace v clusteru. Při použití speciálního konfiguračního souboru. XML Service Fabric v rámci konfiguračního balíčku můžou být hodnoty v Settings. XML přepsány na úrovni aplikace, což umožňuje nastavení konfigurace na úrovni aplikace.
 
-Nastavení konfigurace jsou přístupy v rámci každé `CodePackageActivationContext`instance služby prostřednictvím služby .
+Konfigurační nastavení jsou přístupná v rámci jednotlivých instancí služby prostřednictvím služby `CodePackageActivationContext`.
 
 ```csharp
 
@@ -160,7 +160,7 @@ using (StreamReader reader = new StreamReader(Path.Combine(configPackage.Path, "
 
 ### <a name="configuration-update-events"></a>Události aktualizace konfigurace
 #### <a name="cloud-services"></a>Cloud Services
-Událost `RoleEnvironment.Changed` se používá k upozornění všech instancí role, když dojde ke změně v prostředí, jako je například změna konfigurace. Používá se ke spotřebě aktualizací konfigurace bez recyklace role instance nebo restartování pracovního procesu.
+`RoleEnvironment.Changed` Událost se používá k oznamování všech instancí rolí, když dojde ke změně v prostředí, jako je například změna konfigurace. Tato funkce se používá ke zpracování aktualizací konfigurace bez recyklace instancí rolí nebo restartování pracovního procesu.
 
 ```csharp
 
@@ -179,9 +179,9 @@ foreach (var settingChange in settingChanges)
 ```
 
 #### <a name="service-fabric"></a>Service Fabric
-Každý ze tří typů balíčků ve službě – Kód, Konfigurace a Data – má události, které upozorňují instanci služby při aktualizaci, přidání nebo odebrání balíčku. Služba může obsahovat více balíčků každého typu. Služba může mít například více balíčků konfigurace, z nichž každý je jednotlivě verzí a rozšiřitelný. 
+Každý ze tří typů balíčků v kódu služby, konfiguraci a dat – obsahuje události, které upozorňují na instance služby při aktualizaci, přidání nebo odebrání balíčku. Služba může obsahovat více balíčků každého typu. Například služba může mít více konfiguračních balíčků, každou samostatnou verzi a upgrade. 
 
-Tyto události jsou k dispozici pro využití změn v balíčcích služeb bez restartování instance služby.
+Tyto události jsou k dispozici pro využívání změn v balíčcích služeb bez restartování instance služby.
 
 ```csharp
 
@@ -196,17 +196,17 @@ private void CodePackageActivationContext_ConfigurationPackageModifiedEvent(obje
 
 ```
 
-## <a name="startup-tasks"></a>Úlohy při spuštění
-Úlohy při spuštění jsou akce, které jsou prováděny před spuštěním aplikace. Úloha při spuštění se obvykle používá ke spuštění instalačních skriptů se zvýšenými oprávněními. Cloudové služby i Service Fabric podporují úlohy spuštění. Hlavní rozdíl je, že v cloudových službách je úloha při spuštění svázaná s virtuálním uživatelem, protože je součástí instance role, zatímco v Service Fabric je úloha při spuštění svázaná se službou, která není svázaná s žádným konkrétním virtuálním uživatelem.
+## <a name="startup-tasks"></a>Úlohy po spuštění
+Úlohy po spuštění jsou akce, které se provádí před spuštěním aplikace. Spouštěcí úloha se obvykle používá ke spouštění skriptů pro instalaci pomocí zvýšených oprávnění. Cloud Services i Service Fabric podporují spouštění úloh. Hlavním rozdílem je to, že v Cloud Services je úloha po spuštění vázaná na virtuální počítač, protože je součástí instance role, zatímco v Service Fabric úloha po spuštění je vázaná na službu, která není vázaná na žádný konkrétní virtuální počítač.
 
 | Service Fabric | Cloud Services |
 | --- | --- |
-| Umístění konfigurace |ServiceDefinition.csdef |
-| Oprávnění |"omezená" nebo "zvýšená" |
+| Umístění konfigurace |ServiceDefinition. csdef |
+| Oprávnění |"omezené" nebo "zvýšené" |
 | Sekvencování |"jednoduché", "pozadí", "popředí" |
 
 ### <a name="cloud-services"></a>Cloud Services
-V cloudových službách je v souboru ServiceDefinition.csdef konfigurován spouštěcí bod pro všechny role. 
+V Cloud Services je pro každou roli v ServiceDefinition. csdef nakonfigurovaný vstupní bod spouštění. 
 
 ```xml
 
@@ -224,7 +224,7 @@ V cloudových službách je v souboru ServiceDefinition.csdef konfigurován spou
 ```
 
 ### <a name="service-fabric"></a>Service Fabric
-V service fabric je v servicemanifestu.xml konfigurován pospuštění pro všechny služby:
+V Service Fabric je v ServiceManifest. XML nakonfigurovaný vstupní bod spouštění na jednu službu:
 
 ```xml
 
@@ -240,14 +240,14 @@ V service fabric je v servicemanifestu.xml konfigurován pospuštění pro všec
 
 ``` 
 
-## <a name="a-note-about-development-environment"></a>Poznámka o vývojovém prostředí
-Cloudové služby i Service Fabric jsou integrované s Visual Studio se šablonami projektů a podporou ladění, konfigurace a nasazení místně i do Azure. Cloudové služby i Service Fabric také poskytují prostředí runtime místního vývoje. Rozdíl je v tom, že zatímco runtime vývoje cloudové služby emuluje prostředí Azure, ve kterém běží, Service Fabric nepoužívá emulátor – používá kompletní service fabric runtime. Prostředí Service Fabric, které spustíte v místním vývojovém počítači, je stejné prostředí, které běží v produkčním prostředí.
+## <a name="a-note-about-development-environment"></a>Poznámka k vývojovému prostředí
+Cloud Services i Service Fabric jsou integrovány se sadou Visual Studio se šablonami projektů a podporují ladění, konfiguraci a nasazení jak místně, tak i do Azure. Cloud Services i Service Fabric také poskytují prostředí místního prostředí pro vývoj. Rozdílem je to, že zatímco modul runtime vývoje cloudové služby emuluje prostředí Azure, na kterém běží, Service Fabric nepoužívá emulátor – používá kompletní Service Fabric runtime. Prostředí Service Fabric, které spustíte na místním vývojovém počítači, je stejné jako prostředí, které běží v produkčním prostředí.
 
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si další informace o spolehlivých službách Service Fabric a zásadních rozdílech mezi architekturou cloudových služeb a aplikací Service Fabric, abyste pochopili, jak využít celou sadu funkcí Service Fabric.
+Přečtěte si další informace o Service Fabric Reliable Services a základních rozdílech mezi Cloud Services a Service Fabric aplikační architekturou, abyste pochopili, jak využít kompletní sadu Service Fabric funkcí.
 
-* [Začínáme se spolehlivými službami Service Fabric](service-fabric-reliable-services-quick-start.md)
-* [Koncepční průvodce rozdíly mezi cloudovými službami a service fabric](service-fabric-cloud-services-migration-differences.md)
+* [Začínáme s Service Fabric Reliable Services](service-fabric-reliable-services-quick-start.md)
+* [Koncepční příručka k rozdílům mezi Cloud Services a Service Fabric](service-fabric-cloud-services-migration-differences.md)
 
 <!--Image references-->
 [3]: ./media/service-fabric-cloud-services-migration-worker-role-stateless-service/service-fabric-cloud-service-projects.png

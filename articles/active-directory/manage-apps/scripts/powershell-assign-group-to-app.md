@@ -1,5 +1,5 @@
 ---
-title: Ukázka Prostředí PowerShell – přiřazení skupiny k aplikaci proxy aplikace
+title: Ukázka prostředí PowerShell – přiřazení skupiny k aplikaci proxy aplikací
 description: Příklad prostředí PowerShell, který přiřadí skupinu k aplikaci proxy aplikace Azure Active Directory (Azure AD).
 services: active-directory
 author: msmimart
@@ -13,15 +13,15 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 540453e5de3eed97b1207ca16443b46dffd5f8e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75483346"
 ---
-# <a name="assign-a-group-to-a-specific-azure-ad-application-proxy-application"></a>Přiřazení skupiny ke konkrétní aplikaci proxy aplikace Azure AD
+# <a name="assign-a-group-to-a-specific-azure-ad-application-proxy-application"></a>Přiřazení skupiny ke konkrétní aplikaci Azure Proxy aplikací služby AD
 
-Tento příklad skriptu Prostředí PowerShell umožňuje přiřadit konkrétní skupinu k aplikaci proxy aplikace Azure Active Directory (Azure AD).
+Tento ukázkový skript PowerShellu vám umožní přiřadit konkrétní skupinu k aplikaci proxy aplikace Azure Active Directory (Azure AD).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -29,7 +29,7 @@ Tento příklad skriptu Prostředí PowerShell umožňuje přiřadit konkrétní
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Tato ukázka vyžaduje [modul AzureAD V2 PowerShell pro graf](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) (AzureAD) nebo verzi preview [modulu AzureAD V2 PowerShell pro graf](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview).
+Tato ukázka vyžaduje [prostředí PowerShell AzureAD v2 pro modul Graph](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) (AzureAD) nebo [prostředí AzureAD v2 PowerShell pro verzi Preview modulu grafu](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview).
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -39,10 +39,10 @@ Tato ukázka vyžaduje [modul AzureAD V2 PowerShell pro graf](https://docs.micro
 
 | Příkaz | Poznámky |
 |---|---|
-| [New-AzureADGroupAppRoleAssignment](https://docs.microsoft.com/powershell/module/AzureAD/New-azureadgroupapproleassignment?view=azureadps-2.0) | Přiřadí skupinu k roli aplikace. |
+| [New-AzureADGroupAppRoleAssignment](https://docs.microsoft.com/powershell/module/AzureAD/New-azureadgroupapproleassignment?view=azureadps-2.0) | Přiřadí skupinu k aplikační roli. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o modulu Azure AD PowerShell najdete v [tématu Přehled modulu Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0).
+Další informace o modulu Azure AD PowerShell najdete v tématu [Přehled modulu Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0).
 
-Další příklady PowerShellu pro proxy aplikace najdete [v tématu příklady Azure AD PowerShellu pro proxy aplikace Azure AD](../application-proxy-powershell-samples.md).
+Další příklady PowerShellu pro proxy aplikací najdete v tématu [Azure AD PowerShell – příklady pro azure proxy aplikací služby AD](../application-proxy-powershell-samples.md).

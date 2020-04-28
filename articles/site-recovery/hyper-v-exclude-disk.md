@@ -1,5 +1,5 @@
 ---
-title: Vyloučení disků virtuálních počítačů Hyper-V z obnovy po havárii do Azure pomocí Azure Site Recovery
+title: Vyloučení disků virtuálních počítačů Hyper-V z zotavení po havárii do Azure pomocí Azure Site Recovery
 description: Jak vyloučit disky virtuálních počítačů Hyper-V z replikace do Azure pomocí Azure Site Recovery.
 author: mayurigupta13
 manager: rochakm
@@ -7,42 +7,42 @@ ms.topic: conceptual
 ms.author: mayg
 ms.date: 11/12/2019
 ms.openlocfilehash: 50fb6da2905b2ae27547f25cce3d7a76ca7976b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75498133"
 ---
 # <a name="exclude-disks-from-replication"></a>Vyloučení disků z replikace
 
-Tento článek popisuje, jak vyloučit disky při replikaci virtuálních počítačů Hyper-V do Azure. Disky můžete z replikace vyloučit z několika důvodů:
+Tento článek popisuje, jak vyloučit disky při replikaci virtuálních počítačů Hyper-V do Azure. Disky můžete chtít z replikace vyloučit z několika důvodů:
 
-- Ujistěte se, že nedůležitá data na vyloučeném disku nebudou replikována.
-- Optimalizujte spotřebovanou šířku pásma replikace nebo prostředky na straně cíle vyloučením disků, které není nutné replikovat.
-- Ušetřete úložiště a síťové prostředky tím, že nebudete replikovat data, která nepotřebujete.
+- Ujistěte se, že se nereplikují neimportovaná data na vyloučeném disku.
+- Optimalizujte spotřebované šířky pásma replikace nebo prostředky na cílové straně vyloučením disků, které nepotřebujete replikovat.
+- Uložte úložiště a síťové prostředky tím, že se nereplikují data, která nepotřebujete.
 
-Před vyloučením disků z replikace:
+Než vyloučíte disky z replikace:
 
 - [Přečtěte si další informace](exclude-disks-replication.md) o vyloučení disků.
-- Zkontrolujte [typické scénáře](exclude-disks-replication.md#typical-scenarios) vyloučení a [příklady,](exclude-disks-replication.md#example-1-exclude-the-sql-server-tempdb-disk) které ukazují, jak vyloučení disku ovlivňuje replikaci, převzetí služeb při selhání a navrácení služeb po selhání.
+- Přečtěte si o [typických scénářích vyloučení](exclude-disks-replication.md#typical-scenarios) a [Příklady](exclude-disks-replication.md#example-1-exclude-the-sql-server-tempdb-disk) , které ukazují, jak disk vylučuje replikaci, převzetí služeb při selhání a obnovení
 
 ## <a name="before-you-start"></a>Než začnete
 
-Než začnete, poznamenejte si následující:
+Než začnete, vezměte na vědomí následující:
 
-- **Replikace**: Ve výchozím nastavení jsou replikovány všechny disky v počítači.
+- **Replikace**: ve výchozím nastavení se replikují všechny disky na počítači.
 - **Typ disku**:
     - Z replikace můžete vyloučit základní disky.
     - Nemůžete vyloučit disky operačního systému.
-    - Doporučujeme, abyste nevylučovali dynamické disky. Site Recovery nemůže určit, který virtuální pevný disk je základní nebo dynamický ve virtuálním virtuálním virtuálním ms hosta.  Pokud nevyloučíte všechny závislé disky dynamického svazku, stane se chráněný dynamický disk neúspěšným diskem na neúspěšném virtuálním počítači a data na tomto disku nebudou přístupná.
-- **Přidat/odebrat/vyloučit disky**: Po povolení replikace nelze přidat/odebrat/vyloučit disky pro replikaci. Pokud chcete přidat nebo odebrat nebo vyloučit disk, je třeba zakázat ochranu virtuálního počítače a pak ji znovu povolit.
-- **Převzetí služeb při selhání**: Po převzetí služeb při selhání, pokud převzetí služeb při selhání přes aplikace je nutné vyloučit disky, aby fungovaly, je třeba vytvořit tyto disky ručně. Případně můžete integrovat automatizaci Azure do plánu obnovení a vytvořit disk během převzetí služeb při selhání počítače.
-- **Navrácení služeb po službě 14:** Při navrácení služeb po selhání na místní web po převzetí služeb při selhání, disky, které jste vytvořili ručně v Azure se nezdaří zpět. Například pokud převzetí služeb při selhání přes tři disky a vytvořit dva disky přímo na virtuálním počítači Azure, pouze tři disky, které byly převzetí služeb při selhání se pak nezdaří zpět. Nelze zahrnout disky, které byly vytvořeny ručně v navrácení služeb po selhání nebo v obrácené replikaci virtuálních počítačů.
+    - Doporučujeme, abyste nevylučovali dynamické disky. Site Recovery nemůže zjistit, který virtuální pevný disk je na virtuálním počítači hosta základní nebo dynamický.  Pokud neodeberete všechny závislé disky s dynamickými svazky, bude chráněný dynamický disk na virtuálním počítači, u kterého došlo k převzetí služeb při selhání, a data na tomto disku nebudou přístupná.
+- **Přidat/odebrat/vyloučit disky**: po povolení replikace nemůžete přidat/odebrat/vyloučit disky pro replikaci. Pokud chcete přidat nebo odebrat nebo vyloučit disk, budete muset zakázat ochranu virtuálního počítače a pak ho znovu povolit.
+- **Převzetí služeb při**selhání: Pokud aplikace po převzetí služeb při selhání v aplikaci potřebují vyloučit disky, musíte tyto disky vytvořit ručně. Případně můžete integrovat Azure Automation do plánu obnovení a vytvořit disk během převzetí služeb při selhání počítače.
+- **Navrácení služeb po obnovení**: po navrácení služeb po obnovení do místní lokality po převzetí služeb při selhání se nezdařilo navrátit disky, které jste vytvořili ručně v Azure. Pokud například při selhání převezmete tři disky a vytvoříte dva disky přímo na virtuálním počítači Azure, navrátí se po obnovení jenom tři disky, u kterých došlo k převzetí služeb při selhání. Ručně vytvořené disky nemůžete zahrnout do navrácení služeb po obnovení ani do reverzní replikace virtuálních počítačů.
 
 ## <a name="exclude-disks"></a>Vyloučení disků
 
-1. Pokud chcete vyloučit disky, když [povolíte replikaci](site-recovery-hyper-v-site-to-azure.md) pro virtuální hod Hyper-V, zkontrolujte po výběru virtuálních počítačů, které chcete replikovat, na stránce Povolit**vlastnosti vlastností vlastností vlastností vlastností vlastností vlastností vlastností vlastností vlastností možnosti** >  **replikace,** > zkontrolujte sloupec **Disky k replikaci.** **Configure properties** Ve výchozím nastavení jsou pro replikaci vybrány všechny disky.
-2. Pokud nechcete replikovat konkrétní disk, v **části Disky vymažte** výběr všech disků, které chcete vyloučit. 
+1. Pokud chcete vyloučit disky při [Povolení replikace](site-recovery-hyper-v-site-to-azure.md) pro virtuální počítač Hyper-V, pak po výběru virtuálních počítačů, které chcete replikovat, na stránce **Povolit** > **vlastnosti** > replikace**Konfigurovat vlastnosti** zkontrolujte sloupec **disky, které chcete replikovat** . Ve výchozím nastavení jsou pro replikaci vybrány všechny disky.
+2. Pokud nechcete replikovat určitý disk, na **discích pro replikaci** zrušte výběr pro všechny disky, které chcete vyloučit. 
 
     ![Vyloučení disků z replikace](./media/hyper-v-exclude-disk/enable-replication6-with-exclude-disk.png)
 

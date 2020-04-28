@@ -1,24 +1,24 @@
 ---
-title: Zabezpečení clusteru v systému Windows pomocí certifikátů
-description: Zabezpečená komunikace v rámci samostatného nebo místního clusteru Azure Service Fabric, stejně jako mezi klienty a clusterem.
+title: Zabezpečení clusteru ve Windows pomocí certifikátů
+description: Zabezpečená komunikace v rámci samostatného nebo místního clusteru Azure Service Fabric a také mezi klienty a clusterem.
 author: dkkapur
 ms.topic: conceptual
 ms.date: 10/15/2017
 ms.author: dekapur
 ms.openlocfilehash: 5a18f957dfb7143f403d5ac30ea184023021f12c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75613920"
 ---
-# <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Zabezpečení samostatného clusteru v systému Windows pomocí certifikátů X.509
-Tento článek popisuje, jak zabezpečit komunikaci mezi různými uzly samostatného clusteru Windows. Popisuje také, jak ověřit klienty, kteří se připojují k tomuto clusteru pomocí certifikátů X.509. Ověřování zajišťuje, že ke clusteru a nasazeným aplikacím mají přístup pouze oprávnění uživatelé a provádějí úlohy správy. Zabezpečení certifikátů by mělo být v clusteru povoleno při vytvoření clusteru.  
+# <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Zabezpečení samostatného clusteru ve Windows pomocí certifikátů X. 509
+Tento článek popisuje, jak zabezpečit komunikaci mezi různými uzly samostatného clusteru se systémem Windows. Popisuje také způsob ověřování klientů, kteří se připojují k tomuto clusteru pomocí certifikátů X. 509. Ověřování zajišťuje, že přístup ke clusteru a nasazeným aplikacím a provádění úloh správy bude mít jenom autorizovaní uživatelé. V případě vytvoření clusteru by mělo být v clusteru povoleno zabezpečení certifikátů.  
 
-Další informace o zabezpečení clusteru, jako je například zabezpečení mezi uzly, zabezpečení klient-uzel a řízení přístupu založené na rolích, naleznete [v tématu Scénáře zabezpečení clusteru](service-fabric-cluster-security.md).
+Další informace o zabezpečení clusterů, jako je zabezpečení mezi uzly, zabezpečení mezi klienty a uzly a řízení přístupu na základě rolí, najdete v tématu [scénáře zabezpečení clusteru](service-fabric-cluster-security.md).
 
-## <a name="which-certificates-do-you-need"></a>Jaké certifikáty potřebujete?
-Chcete-li začít s, [stáhněte service fabric pro Windows Server balíček](service-fabric-cluster-creation-for-windows-server.md#download-the-service-fabric-for-windows-server-package) do jednoho z uzlů v clusteru. Ve staženém balíčku najdete soubor ClusterConfig.X509.MultiMachine.json. Otevřete soubor a zkontrolujte část zabezpečení v části vlastnosti:
+## <a name="which-certificates-do-you-need"></a>Které certifikáty potřebujete?
+Pokud chcete začít, [Stáhněte si balíček Service Fabric pro Windows Server](service-fabric-cluster-creation-for-windows-server.md#download-the-service-fabric-for-windows-server-package) do jednoho z uzlů v clusteru. Ve staženém balíčku najdete soubor ClusterConfig. X509. Machine. JSON. Otevřete soubor a podívejte se na téma zabezpečení v části vlastnosti:
 
 ```JSON
 "security": {
@@ -106,31 +106,31 @@ Chcete-li začít s, [stáhněte service fabric pro Windows Server balíček](se
 },
 ```
 
-Tato část popisuje certifikáty, které potřebujete k zabezpečení samostatného clusteru Windows. Pokud zadáte certifikát clusteru, nastavte hodnotu Typu ClusterCredentialType na _X509_. Pokud zadáte certifikát serveru pro vnější připojení, nastavte typ serverových pověření na _X509_. I když není povinné, doporučujeme mít oba tyto certifikáty pro správně zabezpečený cluster. Pokud nastavíte tyto hodnoty *X509*, musíte také zadat odpovídající certifikáty nebo Service Fabric vyvolá výjimku. V některých případech můžete chtít zadat pouze _ClientCertificateThumbprints_ nebo _ReverseProxyCertificate_. V těchto scénářích není nutné nastavit _Typ clusteruCredentialType_ nebo _ServerCredentialType_ na _X509_.
+Tato část popisuje certifikáty, které potřebujete k zabezpečení samostatného clusteru Windows. Pokud zadáte certifikát clusteru, nastavte hodnotu ClusterCredentialType na _x509_. Pokud zadáte certifikát serveru pro vnější připojení, nastavte ServerCredentialType na _x509_. I když to není povinné, doporučujeme, abyste oba tyto certifikáty nastavili pro správný zabezpečený cluster. Pokud nastavíte tyto hodnoty na hodnotu *x509*, musíte také zadat odpovídající certifikáty nebo Service Fabric vyvolá výjimku. V některých scénářích může být vhodné zadat pouze _ClientCertificateThumbprints_ nebo _ReverseProxyCertificate_. V těchto scénářích není nutné nastavovat _ClusterCredentialType_ ani _ServerCredentialType_ na hodnotu _x509_.
 
 
 > [!NOTE]
-> [Kryptografický otisk](https://en.wikipedia.org/wiki/Public_key_fingerprint) je primární identita certifikátu. Chcete-li zjistit kryptografický otisk certifikátů, které vytvoříte, naleznete [v tématu Načtení kryptografického otisku certifikátu](https://msdn.microsoft.com/library/ms734695.aspx).
+> [Kryptografický otisk](https://en.wikipedia.org/wiki/Public_key_fingerprint) je primární identita certifikátu. Kryptografický otisk certifikátů, které vytvoříte, najdete v tématu [Načtení kryptografického otisku certifikátu](https://msdn.microsoft.com/library/ms734695.aspx).
 > 
 > 
 
-V následující tabulce jsou uvedeny certifikáty, které potřebujete v nastavení clusteru:
+V následující tabulce jsou uvedené certifikáty, které v instalaci clusteru potřebujete:
 
-| **Nastavení Informace o certifikátech** | **Popis** |
+| **Nastavení CertificateInformation** | **Popis** |
 | --- | --- |
-| ClusterCertificate |Doporučeno pro testovací prostředí. Tento certifikát je nutný k zabezpečení komunikace mezi uzly v clusteru. Pro upgrade můžete použít dva různé certifikáty, primární a sekundární. Nastavte kryptografický otisk primárního certifikátu v části Kryptografický otisk a sekundární v thumbprintsekundární proměnné. |
-| ClusterCertificateCommonNames |Doporučeno pro produkční prostředí. Tento certifikát je nutný k zabezpečení komunikace mezi uzly v clusteru. Můžete použít jeden nebo dva běžné názvy certifikátů clusteru. CertificateIssuerThumbprint odpovídá kryptografickému otisku vystavittele tohoto certifikátu. Pokud je použit více než jeden certifikát se stejným běžným názvem, můžete zadat více vystavitelkryvné otisky.|
-| ClusterCertificateIssuerStores |Doporučeno pro produkční prostředí. Tento certifikát odpovídá vystavitteru certifikátu clusteru. Můžete zadat obecný název vystavittele a odpovídající název obchodu v této části namísto zadání kryptografického otisku v části ClusterCertificateCommonNames.  To usnadňuje převrácení certifikátů vystavitetele clusteru. Pokud je použito více certifikátů clusteru, lze zadat více vystavitelů. Prázdný VydavatelCommonName whitelists všechny certifikáty v odpovídajících úložištích zadaných v části X509StoreNames.|
-| Serverový certifikát |Doporučeno pro testovací prostředí. Tento certifikát je klientovi předložen při pokusu o připojení k tomuto clusteru. Pro větší pohodlí můžete použít stejný certifikát pro ClusterCertificate a ServerCertificate. Pro upgrade můžete použít dva různé serverové certifikáty, primární a sekundární. Nastavte kryptografický otisk primárního certifikátu v části Kryptografický otisk a sekundární v thumbprintsekundární proměnné. |
-| Název ServerCertificateCommonNames |Doporučeno pro produkční prostředí. Tento certifikát je klientovi předložen při pokusu o připojení k tomuto clusteru. CertificateIssuerThumbprint odpovídá kryptografickému otisku vystavittele tohoto certifikátu. Pokud je použit více než jeden certifikát se stejným běžným názvem, můžete zadat více vystavitelkryvné otisky. Pro větší pohodlí můžete použít stejný certifikát pro ClusterCertificateCommonNames a ServerCertificateCommonNames. Můžete použít jeden nebo dva běžné názvy certifikátů serveru. |
-| ServerCertificateIssuerStores |Doporučeno pro produkční prostředí. Tento certifikát odpovídá vystavitteru certifikátu serveru. Můžete zadat obecný název vystavittele a odpovídající název obchodu v této části namísto zadání kryptografického otisku v části ServerCertificateCommonNames.  To usnadňuje převrácení certifikáty vystavitele serveru. Více vystavitelů lze zadat, pokud je použito více než jeden certifikát serveru. Prázdný VydavatelCommonName whitelists všechny certifikáty v odpovídajících úložištích zadaných v části X509StoreNames.|
-| ClientCertificateThumbprints |Nainstalujte tuto sadu certifikátů na ověřené klienty. V počítačích můžete mít nainstalováno několik různých klientských certifikátů, které chcete povolit přístup ke clusteru. Nastavte kryptografický otisk každého certifikátu v proměnné CertificateThumbprint. Pokud nastavíte isadmin na *hodnotu true*, může klient s tímto certifikátem nainstalovaným v něm provést aktivity správy správce v clusteru. Pokud je isadmin *false*, klient s tímto certifikátem můžete provádět akce povolené pouze pro práva přístupu uživatele, obvykle jen pro čtení. Další informace o rolích naleznete v [tématu Řízení přístupu na základě rolí (RBAC).](service-fabric-cluster-security.md#role-based-access-control-rbac) |
-| ClientCertificateCommonNames |Nastavte běžný název prvního klientského certifikátu pro název CertificateCommonName. CertificateIssuerThumbprint je kryptografický otisk pro vystavittele tohoto certifikátu. Další informace o běžných názvech a vystaviteli najdete v tématu [Práce s certifikáty](https://msdn.microsoft.com/library/ms731899.aspx). |
-| Úložiště KlientCertificateIssuerStores |Doporučeno pro produkční prostředí. Tento certifikát odpovídá vystavitelovi klientského certifikátu (role správce i role bez správce). Můžete zadat obecný název vystavitele a odpovídající název obchodu v této části namísto zadání kryptografického otisku v části ClientCertificateCommonNames.  To usnadňuje převrácení certifikáty vystavitele klienta. Více vystavitelů lze zadat, pokud je použito více než jeden klientský certifikát. Prázdný VydavatelCommonName whitelists všechny certifikáty v odpovídajících úložištích zadaných v části X509StoreNames.|
-| Reverzníproxycertificate |Doporučeno pro testovací prostředí. Tento volitelný certifikát lze zadat, pokud chcete zabezpečit [reverzní proxy](service-fabric-reverseproxy.md)server . Ujistěte se, že reverseProxyEndpointPort je nastavena v nodeTypes, pokud používáte tento certifikát. |
-| Název ReverseProxyCertificateCommon |Doporučeno pro produkční prostředí. Tento volitelný certifikát lze zadat, pokud chcete zabezpečit [reverzní proxy](service-fabric-reverseproxy.md)server . Ujistěte se, že reverseProxyEndpointPort je nastavena v nodeTypes, pokud používáte tento certifikát. |
+| ClusterCertificate |Doporučuje se pro testovací prostředí. Tento certifikát je nutný k zabezpečení komunikace mezi uzly v clusteru. Pro upgrade můžete použít dva různé certifikáty, primární a sekundární. Nastavte kryptografický otisk primárního certifikátu v části kryptografický otisk a na sekundárním v proměnné ThumbprintSecondary. |
+| ClusterCertificateCommonNames |Doporučuje se pro produkční prostředí. Tento certifikát je nutný k zabezpečení komunikace mezi uzly v clusteru. Můžete použít jeden nebo dva běžné názvy certifikátů clusteru. CertificateIssuerThumbprint odpovídá kryptografický otisk vystavitele tohoto certifikátu. Pokud se používá víc než jeden certifikát se stejným běžným názvem, můžete zadat víc kryptografických otisků vystavitele.|
+| ClusterCertificateIssuerStores |Doporučuje se pro produkční prostředí. Tento certifikát odpovídá vystaviteli certifikátu clusteru. V této části můžete zadat běžný název vystavitele a odpovídající název úložiště místo určení kryptografického otisku vystavitele v ClusterCertificateCommonNames.  To usnadňuje výměnu certifikátů vystavitelů clusteru. Pokud je použit více než jeden certifikát clusteru, lze zadat více vystavitelů. Prázdná IssuerCommonName seznam povolených všech certifikátů v odpovídajících úložištích uvedených v X509StoreNames.|
+| ServerCertificate |Doporučuje se pro testovací prostředí. Tento certifikát se zobrazí klientovi, když se pokusí připojit k tomuto clusteru. Pro usnadnění práce se můžete rozhodnout použít stejný certifikát pro ClusterCertificate a ServerCertificate. Pro upgrade můžete použít dva různé certifikáty serveru, primární a sekundární. Nastavte kryptografický otisk primárního certifikátu v části kryptografický otisk a na sekundárním v proměnné ThumbprintSecondary. |
+| ServerCertificateCommonNames |Doporučuje se pro produkční prostředí. Tento certifikát se zobrazí klientovi, když se pokusí připojit k tomuto clusteru. CertificateIssuerThumbprint odpovídá kryptografický otisk vystavitele tohoto certifikátu. Pokud se používá víc než jeden certifikát se stejným běžným názvem, můžete zadat víc kryptografických otisků vystavitele. Pro usnadnění práce se můžete rozhodnout použít stejný certifikát pro ClusterCertificateCommonNames a ServerCertificateCommonNames. Můžete použít jeden nebo dva běžné názvy certifikátů serveru. |
+| ServerCertificateIssuerStores |Doporučuje se pro produkční prostředí. Tento certifikát odpovídá vystaviteli certifikátu serveru. V této části můžete zadat běžný název vystavitele a odpovídající název úložiště místo určení kryptografického otisku vystavitele v ServerCertificateCommonNames.  Díky tomu je možné snadno vyměnit certifikáty vystavitelů serverů. Pokud je použit více než jeden certifikát serveru, lze zadat více vystavitelů. Prázdná IssuerCommonName seznam povolených všech certifikátů v odpovídajících úložištích uvedených v X509StoreNames.|
+| ClientCertificateThumbprints |Nainstalujte tuto sadu certifikátů na ověřené klienty. V počítačích, ve kterých chcete povolený přístup ke clusteru, můžete mít nainstalovanou řadu různých klientských certifikátů. Nastavte kryptografický otisk každého certifikátu v proměnné CertificateThumbprint. Pokud nastavíte možnost Správce na *hodnotu true*, může klient s tímto certifikátem nainstalovaným v tomto clusteru provádět aktivity správy správců. Pokud je hodnota správce *false*, může klient s tímto certifikátem provádět akce, které jsou povoleny pouze pro uživatelská práva, obvykle jen pro čtení. Další informace o rolích najdete v tématu [Access Control na základě rolí (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac). |
+| ClientCertificateCommonNames |Nastavte běžný název prvního klientského certifikátu pro CertificateCommonName. CertificateIssuerThumbprint je kryptografický otisk pro vystavitele tohoto certifikátu. Další informace o běžných názvech a vystaviteli najdete v tématu [práce s certifikáty](https://msdn.microsoft.com/library/ms731899.aspx). |
+| ClientCertificateIssuerStores |Doporučuje se pro produkční prostředí. Tento certifikát odpovídá vystaviteli klientského certifikátu (role správce i bez role správce). V této části můžete zadat běžný název vystavitele a odpovídající název úložiště místo určení kryptografického otisku vystavitele v ClientCertificateCommonNames.  To usnadňuje výměnu certifikátů vystavitelů klientů. Pokud je použit více než jeden certifikát klienta, lze zadat více vystavitelů. Prázdná IssuerCommonName seznam povolených všech certifikátů v odpovídajících úložištích uvedených v X509StoreNames.|
+| ReverseProxyCertificate |Doporučuje se pro testovací prostředí. Tento volitelný certifikát může být zadán, pokud chcete zabezpečení [reverzního proxy serveru](service-fabric-reverseproxy.md). Pokud použijete tento certifikát, ujistěte se, že je reverseProxyEndpointPort nastavené v uzlu nodeType. |
+| ReverseProxyCertificateCommonNames |Doporučuje se pro produkční prostředí. Tento volitelný certifikát může být zadán, pokud chcete zabezpečení [reverzního proxy serveru](service-fabric-reverseproxy.md). Pokud použijete tento certifikát, ujistěte se, že je reverseProxyEndpointPort nastavené v uzlu nodeType. |
 
-Zde je příklad konfigurace clusteru, kde byly poskytnuty certifikáty clusteru, serveru a klienta. U certifikátů cluster/server/reverseProxy nelze kryptografický otisk a běžný název společně nakonfigurovat pro stejný typ certifikátu.
+Tady je příklad konfigurace clusteru, kde jsou k dispozici cluster, server a klientské certifikáty. Pro certifikáty Cluster/Server/reverseProxy nejde kryptografický otisk a běžný název nakonfigurovat společně pro stejný typ certifikátu.
 
  ```JSON
  {
@@ -241,30 +241,30 @@ Zde je příklad konfigurace clusteru, kde byly poskytnuty certifikáty clusteru
 }
  ```
 
-## <a name="certificate-rollover"></a>Převrácení certifikátu
-Při použití běžného názvu certifikátu namísto kryptografického otisku nevyžaduje přechod certifikátu upgrade konfigurace clusteru. Pro upgrade kryptografický otisk vystavitho na vystavit, ujistěte se, že nový seznam kryptografický otisk protíná se starým seznamem. Nejprve je třeba provést upgrade konfigurace pomocí nových kryptografických otisků vystavittela a potom nainstalovat nové certifikáty (certifikáty clusteru/serveru i certifikáty vystavitenek) do úložiště. Ponechat starý certifikát vystavittele v úložišti certifikátů po dobu nejméně dvou hodin po instalaci nového certifikátu vystavittele.
-Pokud používáte úložiště vystavite, není třeba provádět upgrade konfigurace pro přechod na certifikát vystavitho certifikátu. Nainstalujte nový certifikát vystavittele s datem vypršení platnosti do odpovídajícího úložiště certifikátů a po několika hodinách odeberte starý certifikát vystavittele.
+## <a name="certificate-rollover"></a>Změna certifikátu
+Pokud místo kryptografického otisku použijete běžný název certifikátu, změna certifikátu nevyžaduje upgrade konfigurace clusteru. Pro upgrady kryptografických otisků vystavitele se ujistěte, že se nový seznam kryptografických otisků protíná se starým seznamem. Nejdřív musíte provést upgrade konfigurace s novými kryptografickými otisky vystavitele a potom do úložiště nainstalovat nové certifikáty (certifikát clusteru/serveru a certifikáty vystavitele). Ponechte původní certifikát vystavitele v úložišti certifikátů aspoň dvě hodiny po instalaci nového certifikátu vystavitele.
+Pokud používáte úložiště vystavitelů, není třeba provést upgrade konfigurace pro výměnu certifikátu vystavitele. Nainstalujte nový certifikát vystavitele s pozdějším datem vypršení platnosti v příslušném úložišti certifikátů a odeberte starý certifikát vystavitele po několika hodinách.
 
-## <a name="acquire-the-x509-certificates"></a>Získání certifikátů X.509
-Chcete-li zabezpečit komunikaci v rámci clusteru, musíte nejprve získat certifikáty X.509 pro uzly clusteru. Chcete-li omezit připojení k tomuto clusteru na autorizované počítače/uživatele, je třeba získat a nainstalovat certifikáty pro klientské počítače.
+## <a name="acquire-the-x509-certificates"></a>Získání certifikátů X. 509
+Aby bylo možné zabezpečit komunikaci v rámci clusteru, musíte nejprve získat certifikáty X. 509 pro uzly clusteru. Chcete-li kromě toho omezit připojení k tomuto clusteru na autorizované počítače nebo uživatele, je třeba získat a nainstalovat certifikáty pro klientské počítače.
 
-Pro clustery, ve kterých jsou spuštěny produkční úlohy, použijte k zabezpečení clusteru certifikát X.509 podepsaný [certifikační autoritou.](https://en.wikipedia.org/wiki/Certificate_authority) Další informace o získání těchto certifikátů naleznete [v tématu Jak získat certifikát](https://msdn.microsoft.com/library/aa702761.aspx).
+Pro clustery, na kterých běží produkční úlohy, použijte k zabezpečení clusteru certifikát X. 509 podepsaný certifikační [autoritou (CA)](https://en.wikipedia.org/wiki/Certificate_authority). Další informace o tom, jak tyto certifikáty získat, najdete v tématu [Jak získat certifikát](https://msdn.microsoft.com/library/aa702761.aspx).
 
-Pro clustery, které používáte pro testovací účely, můžete použít certifikát podepsaný svým držitelem.
+Pro clustery, které používáte pro účely testování, můžete použít certifikát podepsaný svým držitelem.
 
-## <a name="optional-create-a-self-signed-certificate"></a>Volitelné: Vytvoření certifikátu podepsaného svým držitelem
-Jedním ze způsobů, jak vytvořit certifikát podepsaný svým držitelem, který lze správně zabezpečit, je použití skriptu CertSetup.ps1 ve složce Service Fabric SDK v adresáři C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure. Chcete-li změnit výchozí název certifikátu, upravte tento soubor. (Vyhledejte hodnotu CN=ServiceFabricDevClusterCert.) Spusťte `.\CertSetup.ps1 -Install`tento skript jako .
+## <a name="optional-create-a-self-signed-certificate"></a>Volitelné: vytvoření certifikátu podepsaného svým držitelem
+Jedním ze způsobů, jak vytvořit certifikát podepsaný svým držitelem, který se dá správně zabezpečit, je použít skript CertSetup. ps1 ve složce sady SDK pro Service Fabric v adresáři C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure.. Úpravou tohoto souboru můžete změnit výchozí název certifikátu. (Podívejte se na hodnotu CN = ServiceFabricDevClusterCert.) Spusťte tento skript jako `.\CertSetup.ps1 -Install`.
 
-Nyní exportujte certifikát do souboru .pfx s chráněným heslem. Nejprve získat kryptografický otisk certifikátu. 
-1. V nabídce **Start** spusťte **spravovat certifikáty počítače**. 
+Nyní exportujte certifikát do souboru. pfx s chráněným heslem. Nejprve Získejte kryptografický otisk certifikátu. 
+1. Z nabídky **Start** spusťte **spravovat certifikáty počítače**. 
 
-2. Přejděte do složky **Místní počítač\Osobní** a vyhledejte certifikát, který jste vytvořili. 
+2. Přejdete do **místní složky počítač \ osobní** a vyhledáte certifikát, který jste vytvořili. 
 
-3. Poklepáním na certifikát otevřete, vyberte kartu **Podrobnosti** a posuňte se dolů do pole **Kryptografický otisk.** 
+3. Poklikejte na certifikát pro otevření, vyberte kartu **Podrobnosti** a přejděte dolů k poli **kryptografický otisk** . 
 
-4. Odeberte mezery a zkopírujte hodnotu kryptografického otisku do následujícího příkazu Prostředí PowerShell. 
+4. Odeberte mezery a zkopírujte hodnotu kryptografického otisku do následujícího příkazu PowerShellu. 
 
-5. Změňte `String` hodnotu na vhodné zabezpečené heslo k jeho ochraně a v Prostředí PowerShell spusťte následující:
+5. Změňte `String` hodnotu na vhodné zabezpečené heslo pro ochranu a spusťte následující příkaz v PowerShellu:
 
    ```powershell   
    $pswd = ConvertTo-SecureString -String "1234" -Force –AsPlainText
@@ -278,21 +278,21 @@ Nyní exportujte certifikát do souboru .pfx s chráněným heslem. Nejprve zís
    Write-Host $cert.ToString($true)
    ```
 
-Případně pokud máte předplatné Azure, postupujte podle pokynů v [části Vytvoření clusteru Service Fabric pomocí Správce prostředků Azure](service-fabric-cluster-creation-via-arm.md).
+Případně, pokud máte předplatné Azure, postupujte podle kroků v části [Vytvoření clusteru Service Fabric pomocí Azure Resource Manager](service-fabric-cluster-creation-via-arm.md).
 
 ## <a name="install-the-certificates"></a>Instalace certifikátů
-Po vytvoření certifikátů je můžete nainstalovat do uzlů clusteru. Uzly musí mít nainstalovaný nejnovější systém Windows PowerShell 3.x. Opakujte tyto kroky na každém uzlu pro clusterové i serverové certifikáty a všechny sekundární certifikáty.
+Po nainstalování certifikátů je můžete nainstalovat na uzly clusteru. Uzly musí mít na počítačích nainstalované nejnovější prostředí Windows PowerShell 3. x. Tento postup opakujte na každém uzlu pro certifikáty clusteru i serveru a všechny sekundární certifikáty.
 
-1. Zkopírujte soubor pfx nebo soubory do uzlu.
+1. Zkopírujte soubor. pfx nebo soubory do uzlu.
 
-2. Otevřete okno PowerShellu jako správce a zadejte následující příkazy. Nahraďte *$pswd* heslem, které jste použili k vytvoření tohoto certifikátu. Nahraďte *$PfxFilePath* úplnou cestou .pfx zkopírovanou do tohoto uzlu.
+2. Otevřete okno PowerShellu jako správce a zadejte následující příkazy. Nahraďte *$PSWD* heslem, které jste použili k vytvoření tohoto certifikátu. Nahraďte *$PfxFilePath* úplnou cestou k souboru. pfx zkopírovaného do tohoto uzlu.
    
     ```powershell
     $pswd = "1234"
     $PfxFilePath ="C:\mypfx.pfx"
     Import-PfxCertificate -Exportable -CertStoreLocation Cert:\LocalMachine\My -FilePath $PfxFilePath -Password (ConvertTo-SecureString -String $pswd -AsPlainText -Force)
     ```
-3. Nyní nastavte řízení přístupu k tomuto certifikátu tak, aby proces Service Fabric, který běží pod účtem síťové služby, jej mohl použít spuštěním následujícího skriptu. Zadejte kryptografický otisk certifikátu a **síťové služby** pro účet služby. Seznamy ACL na certifikátu jsou správné, pokud otevřete certifikát v seznamu > **Spouštět spravovat certifikáty počítače** a podíváte se na všechny **úkoly** > **spravovat soukromé klíče**. **Start**
+3. Teď pro tento certifikát nastavte řízení přístupu, aby proces Service Fabric, který se spouští pod účtem síťové služby, mohl použít tento skript spuštěním následujícího skriptu. Zadejte kryptografický otisk certifikátu a **síťové služby** pro účet služby. Seznam ACL na certifikátu můžete ověřit tak, že otevřete certifikát v **nabídce Start** > **spravovat certifikáty počítače** a vyhledáte **všechny úlohy** > **Správa privátních klíčů**.
    
     ```powershell
     param
@@ -329,33 +329,33 @@ Po vytvoření certifikátů je můžete nainstalovat do uzlů clusteru. Uzly mu
     # Observe the access rights currently assigned to this certificate
     get-acl $keyFullPath| fl
     ```
-4. Opakujte předchozí kroky pro každý certifikát serveru. Pomocí těchto kroků můžete také nainstalovat klientské certifikáty do počítačů, které chcete povolit přístup ke clusteru.
+4. Opakujte předchozí kroky pro každý certifikát serveru. Pomocí těchto kroků můžete také nainstalovat klientské certifikáty do počítačů, u kterých chcete zpřístupnit přístup ke clusteru.
 
 ## <a name="create-the-secure-cluster"></a>Vytvoření zabezpečeného clusteru
-Po konfiguraci části zabezpečení souboru ClusterConfig.X509.MultiMachine.json můžete přejít k části [Vytvořit cluster](service-fabric-cluster-creation-for-windows-server.md#create-the-cluster) a nakonfigurovat uzly a vytvořit samostatný cluster. Nezapomeňte při vytváření clusteru použít soubor ClusterConfig.X509.MultiMachine.json. Váš příkaz může vypadat například takto:
+Až nakonfigurujete oddíl zabezpečení v souboru ClusterConfig. X509. s více počítači, můžete přejít k části [Vytvoření clusteru](service-fabric-cluster-creation-for-windows-server.md#create-the-cluster) a nakonfigurovat uzly a vytvořit samostatný cluster. Nezapomeňte při vytváření clusteru použít soubor ClusterConfig. X509. s více počítači. JSON. Například váš příkaz může vypadat takto:
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json
 ```
 
-Po úspěšném spuštění zabezpečeného samostatného clusteru Windows a nastavení ověřených klientů pro připojení k němu postupujte podle pokynů v části [Připojení ke clusteru pomocí prostředí PowerShell.](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-powershell) Například:
+Po úspěšném spuštění zabezpečeného samostatného clusteru Windows a nastavování ověřených klientů pro připojení použijte postup v části [připojení ke clusteru pomocí PowerShellu](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-powershell) , který se k němu připojí. Příklad:
 
 ```powershell
 $ConnectArgs = @{  ConnectionEndpoint = '10.7.0.5:19000';  X509Credential = $True;  StoreLocation = 'LocalMachine';  StoreName = "MY";  ServerCertThumbprint = "057b9544a6f2733e0c8d3a60013a58948213f551";  FindType = 'FindByThumbprint';  FindValue = "057b9544a6f2733e0c8d3a60013a58948213f551"   }
 Connect-ServiceFabricCluster $ConnectArgs
 ```
 
-Pro práci s tímto clusterem pak můžete spustit další příkazy prostředí PowerShell. Můžete například spustit [Get-ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) a zobrazit seznam uzlů v tomto zabezpečeném clusteru.
+Pak můžete spustit další příkazy PowerShellu pro práci s tímto clusterem. Pomocí rutiny [Get-ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) můžete například zobrazit seznam uzlů v tomto zabezpečeném clusteru.
 
 
-Chcete-li cluster odebrat, připojte se k uzlu v clusteru, do kterého jste stáhli balíček Service Fabric, otevřete příkazový řádek a přejděte do složky balíčku. Nyní spusťte následující příkaz:
+Pokud chcete cluster odebrat, připojte se k uzlu v clusteru, do kterého jste stáhli balíček Service Fabric, otevřete příkazový řádek a potom do složky Package (balíček). Nyní spusťte následující příkaz:
 
 ```powershell
 .\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json
 ```
 
 > [!NOTE]
-> Nesprávná konfigurace certifikátu může zabránit vzniku clusteru během nasazení. Chcete-li problémy se zabezpečením diagnostikovat sami, podívejte se do skupiny Prohlížeč událostí **Aplikace a protokoly** > služeb**Microsoft-Service Fabric**.
+> Nesprávná konfigurace certifikátu může zabránit tomu, aby se cluster během nasazení dostal. Chcete-li provést samočinnou diagnostiku problémů se zabezpečením, podívejte se do části Prohlížeč událostí **aplikace a služby** > **společnosti Microsoft-Service Fabric**.
 > 
 > 
 

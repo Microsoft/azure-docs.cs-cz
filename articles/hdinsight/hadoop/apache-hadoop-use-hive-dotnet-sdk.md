@@ -1,6 +1,6 @@
 ---
-title: Spouštění dotazů Apache Hive pomocí hdinsight .NET SDK – Azure
-description: Naučte se odesílat úlohy Apache Hadoop do Azure HDInsight Apache Hadoop pomocí HDInsight .NET SDK.
+title: Spouštění dotazů Apache Hive pomocí rozhraní HDInsight .NET SDK – Azure
+description: Naučte se odesílat Apache Hadoop úlohy do Azure HDInsight Apache Hadoop pomocí sady HDInsight .NET SDK.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,43 +9,43 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
 ms.openlocfilehash: a9d71c8aebb9cc4a0adbd461aead6e2612bd13bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75552487"
 ---
-# <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>Spuštění dotazů Apache Hive pomocí sady HDInsight .NET SDK
+# <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>Spouštění dotazů Apache Hive pomocí sady HDInsight .NET SDK
 
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Přečtěte si, jak odesílat dotazy Apache Hive pomocí sady HDInsight .NET SDK. Napíšete c# program pro odeslání dotazu Hive pro výpis Hive tabulek a zobrazit výsledky.
+Naučte se odesílat Apache Hive dotazy pomocí sady HDInsight .NET SDK. Napíšete program v jazyce C#, který odešle dotaz na podregistr pro výpis tabulek podregistru a zobrazí výsledky.
 
 > [!NOTE]  
-> Kroky v tomto článku musí být provedeny z klienta systému Windows. Informace o používání klienta Linuxu, OS X nebo Unixu pro práci s Hive použijte volič karet zobrazený v horní části článku.
+> Kroky v tomto článku je třeba provést z klienta systému Windows. Informace o použití klienta se systémem Linux, OS X nebo UNIX pro práci s podregistrem získáte pomocí voliče karet zobrazeného v horní části článku.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete tento článek, musíte mít následující položky:
 
-* Cluster Apache Hadoop v HDInsightu. Viz [Začínáme používat Hadoop založený na Linuxu v HDInsightu](apache-hadoop-linux-tutorial-get-started.md).
+* Cluster Apache Hadoop v HDInsight. Přečtěte si téma Začínáme [používat Hadoop se systémem Linux ve službě HDInsight](apache-hadoop-linux-tutorial-get-started.md).
 
     > [!IMPORTANT]  
-    > září 15, 2017 HDInsight .NET SDK podporuje jenom vracející se výsledky dotazu Hive z účtů Azure Storage. Pokud tento příklad použijete s clusterem HDInsight, který používá Azure Data Lake Storage jako primární úložiště, nemůžete načíst výsledky hledání pomocí sady .NET SDK.
+    > Od 15. září 2017 podporuje sada HDInsight .NET SDK jenom vracení výsledků dotazů na podregistr z účtů Azure Storage. Pokud použijete tento příklad s clusterem HDInsight, který používá Azure Data Lake Storage jako primární úložiště, nemůžete načíst výsledky hledání pomocí sady .NET SDK.
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/community/) 2013 a dále. Měl by být nainstalován alespoň **vývoj pracovního vytížení .NET.**
+* [Visual Studio](https://visualstudio.microsoft.com/vs/community/) 2013 a novější. Je potřeba nainstalovat minimálně úlohu **vývoj pro desktopy .NET** .
 
-## <a name="run-a-hive-query"></a>Spuštění dotazu hive
+## <a name="run-a-hive-query"></a>Spustit dotaz na podregistr
 
-Sada HDInsight .NET SDK poskytuje klientské knihovny ROZHRANÍ .NET, což usnadňuje práci s clustery HDInsight z rozhraní .NET.
+Sada HDInsight .NET SDK poskytuje klientské knihovny .NET, které usnadňují práci s clustery HDInsight z .NET.
 
-1. Vytvořte konzolovou aplikaci Jazyka C# v sadě Visual Studio.
+1. Vytvořte konzolovou aplikaci v jazyce C# v aplikaci Visual Studio.
 
-1. V konzole Správce balíčků Nuget spusťte následující příkaz:
+1. Z konzoly Správce balíčků NuGet spusťte následující příkaz:
 
         Install-Package Microsoft.Azure.Management.HDInsight.Job
 
-1. Chcete-li inicializovat hodnoty proměnných, `ExistingClusterName, ExistingClusterUsername, ExistingClusterPassword,DefaultStorageAccountName,DefaultStorageAccountKey,DefaultStorageContainerName`upravte níže uvedený kód: . Potom použijte revidovaný kód jako celý obsah **Program.cs** v sadě Visual Studio.
+1. Upravte kód níže pro inicializaci hodnot proměnných: `ExistingClusterName, ExistingClusterUsername, ExistingClusterPassword,DefaultStorageAccountName,DefaultStorageAccountKey,DefaultStorageContainerName`. Pak použijte revidovaný kód jako celý obsah **program.cs** v aplikaci Visual Studio.
 
     ```csharp
     using System.Collections.Generic;
@@ -132,18 +132,18 @@ Sada HDInsight .NET SDK poskytuje klientské knihovny ROZHRANÍ .NET, což usnad
     }
     ```
 
-1. Stisknutím **klávesy F5** spusťte aplikaci.
+1. Stisknutím klávesy **F5** spusťte aplikaci.
 
-Výstup aplikace by měl být podobný:
+Výstup aplikace by měl vypadat přibližně takto:
 
-![Výstup úlohy HDInsight Hadoop Hive](./media/apache-hadoop-use-hive-dotnet-sdk/hdinsight-hadoop-use-hive-net-sdk-output.png)
+![Výstup úlohy podregistru HDInsight Hadoop](./media/apache-hadoop-use-hive-dotnet-sdk/hdinsight-hadoop-use-hive-net-sdk-output.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli, jak odeslat dotazy Apache Hive pomocí HDInsight .NET SDK. Další informace naleznete v následujících článcích:
+V tomto článku jste zjistili, jak odesílat Apache Hive dotazy pomocí sady HDInsight .NET SDK. Další informace najdete v následujících článcích:
 
 * [Začínáme se službou Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md)
-* [Vytvoření clusterů Apache Hadoop v HDInsightu](../hdinsight-hadoop-provision-linux-clusters.md)
-* [Odkaz na hdinsight .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
-* [Použití Apache Sqoop s HDInsight](apache-hadoop-use-sqoop-mac-linux.md)
+* [Vytváření clusterů Apache Hadoop ve službě HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)
+* [Referenční informace k sadě HDInsight .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
+* [Použití Apache Sqoop se službou HDInsight](apache-hadoop-use-sqoop-mac-linux.md)
 * [Vytváření aplikací .NET HDInsight pro neinteraktivní ověřování](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)

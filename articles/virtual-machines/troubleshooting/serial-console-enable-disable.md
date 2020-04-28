@@ -1,5 +1,5 @@
 ---
-title: Povolení a zakázání konzoly Azure Serial Console | Dokumenty společnosti Microsoft
+title: Povolení a zakázání služby Azure Serial Console | Microsoft Docs
 description: Jak povolit a zakázat službu Azure Serial Console
 services: virtual-machines
 documentationcenter: ''
@@ -15,46 +15,46 @@ ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
 ms.openlocfilehash: e09e08f8ba36cf576bc27551254225adee3bb0fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75451304"
 ---
-# <a name="enable-and-disable-the-azure-serial-console"></a>Povolení a zakázání konzoly Azure Serial Console
+# <a name="enable-and-disable-the-azure-serial-console"></a>Povolení a zakázání konzole sériového úložiště Azure
 
-Stejně jako jakýkoli jiný prostředek, azure serial console může být povolena a zakázána. Serial Console je ve výchozím nastavení povolená pro všechna předplatná v globálním Azure. V současné době zakázání min. konzole Serial Console zakáže službu pro celé předplatné. Zakázání nebo opětovné povolení konzoly Serial Console pro předplatné vyžaduje přístup na úrovni přispěvatele nebo vyšší v předplatném.
+Stejně jako u jakéhokoli jiného prostředku je možné povolit a zakázat službu sériového portu Azure. Sériová konzola je ve výchozím nastavení povolená pro všechna předplatná v globálním Azure. V současné době zakázání sériové konzoly zakáže službu pro celé předplatné. Zakázání nebo opětovné povolení sériové konzoly pro předplatné vyžaduje přístup na úrovni přispěvatele nebo vyšší úrovně v rámci předplatného.
 
-Sériovou konzolu můžete zakázat také pro jednotlivé instance škálovací sady virtuálních počítačů nebo virtuálních strojů zakázáním diagnostiky spouštění. Budete vyžadovat přístup na úrovni přispěvatele nebo vyšší na škálovací sadě virtuálních zařízení nebo virtuálních počítačů i v účtu úložiště pro diagnostiku spouštění.
+Službu sériového portu pro jednotlivé virtuální počítače nebo instance sady škálování virtuálních počítačů můžete také zakázat zakázáním diagnostiky spouštění. Budete vyžadovat přístup na úrovni přispěvatele nebo vyšší úrovně jak na virtuálním počítači, tak i v účtu úložiště pro diagnostiku spouštění.
 
-## <a name="vm-level-disable"></a>Zakázání na úrovni virtuálního virtuálního montova
-Sériovou konzolu lze zakázat pro konkrétní virtuální počítač nebo škálovací sadu virtuálních počítačů zakázáním nastavení diagnostiky spouštění. Vypnutím diagnostiky spouštění z portálu Azure zakažte sériovou konzolu pro virtuální počítač nebo škálovací sadu virtuálních strojů. Pokud používáte konzolu sériového počítače ve škálovací sadě virtuálních strojů, ujistěte se, že upgradujete instance škálovací sady virtuálních strojů na nejnovější model.
+## <a name="vm-level-disable"></a>Zakázat na úrovni virtuálního počítače
+Sériová konzola se dá zakázat pro konkrétní virtuální počítač nebo sadu škálování virtuálního počítače zakázáním nastavení diagnostiky spouštění. Vypnutím diagnostiky spouštění z Azure Portal zakážete sériovou konzoli pro virtuální počítač nebo sadu škálování virtuálního počítače. Pokud v sadě škálování virtuálního počítače používáte sériovou konzolu, ujistěte se, že upgradujete instance sady škálování virtuálních počítačů na nejnovější model.
 
 
-## <a name="subscription-level-enabledisable"></a>Povolení/zakázání na úrovni předplatného
+## <a name="subscription-level-enabledisable"></a>Povolit/zakázat na úrovni předplatného
 
 > [!NOTE]
-> Ujistěte se, že jste ve správném cloudu (Azure Public Cloud, Azure US Government Cloud) před spuštěním tohoto příkazu. Můžete zkontrolovat `az cloud list` a nastavit svůj `az cloud set -n <Name of cloud>`cloud s .
+> Před spuštěním tohoto příkazu se ujistěte, že jste v pravém cloudu (veřejný cloud Azure, Azure USA). Můžete se `az cloud list` podívat na a nastavit Cloud pomocí `az cloud set -n <Name of cloud>`.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Sériovou konzolu lze zakázat a znovu povolit pro celé předplatné pomocí následujících příkazů v rozhraní příkazového příkazu Azure (pomocí tlačítka "Try it" můžete spustit instanci prostředí Azure Cloud Shell, ve které můžete příkazy spustit):
+Sériová konzola se dá zakázat a znovu povolit pro celé předplatné pomocí následujících příkazů v Azure CLI (můžete použít tlačítko vyzkoušet a spustit instanci Azure Cloud Shell, ve které můžete příkazy spustit):
 
-Chcete-li zakázat konzolu sériového zařízení pro odběr, použijte následující příkazy:
+Pokud chcete zakázat sériovou konzoli pro předplatné, použijte následující příkazy:
 ```azurecli-interactive
 subscriptionId=$(az account show --output=json | jq -r .id)
 
 az resource invoke-action --action disableConsole --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" --api-version="2018-05-01"
 ```
 
-Chcete-li povolit sériovou konzolu pro odběr, použijte následující příkazy:
+Pokud chcete pro odběr povolit sériovou konzolu, použijte následující příkazy:
 ```azurecli-interactive
 subscriptionId=$(az account show --output=json | jq -r .id)
 
 az resource invoke-action --action enableConsole --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" --api-version="2018-05-01"
 ```
 
-Chcete-li získat aktuální povolený nebo zakázaný stav sériové konzoly pro odběr, použijte následující příkazy:
+Chcete-li získat aktuální stav povoleného a zakázaného sériového portu pro odběr, použijte následující příkazy:
 ```azurecli-interactive
 subscriptionId=$(az account show --output=json | jq -r .id)
 
@@ -63,16 +63,16 @@ az resource show --ids "/subscriptions/$subscriptionId/providers/Microsoft.Seria
 
 ### <a name="powershell"></a>PowerShell
 
-Sériovou konzolu lze také povolit a zakázat pomocí prostředí PowerShell.
+Sériová konzola taky můžete povolit a zakázat pomocí PowerShellu.
 
-Chcete-li zakázat konzolu sériového zařízení pro odběr, použijte následující příkazy:
+Pokud chcete zakázat sériovou konzoli pro předplatné, použijte následující příkazy:
 ```azurepowershell-interactive
 $subscription=(Get-AzContext).Subscription.Id
 
 Invoke-AzResourceAction -Action disableConsole -ResourceId /subscriptions/$subscription/providers/Microsoft.SerialConsole/consoleServices/default -ApiVersion 2018-05-01
 ```
 
-Chcete-li povolit sériovou konzolu pro odběr, použijte následující příkazy:
+Pokud chcete pro odběr povolit sériovou konzolu, použijte následující příkazy:
 ```azurepowershell-interactive
 $subscription=(Get-AzContext).Subscription.Id
 
@@ -80,6 +80,6 @@ Invoke-AzResourceAction -Action enableConsole -ResourceId /subscriptions/$subscr
 ```
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o virtuálních [počítačích Azure Serial Console pro Linux](./serial-console-linux.md)
-* Další informace o [službě Azure Serial Console pro virtuální počítače s Windows](./serial-console-windows.md)
-* Informace o [možnostech řízení spotřeby v rámci konzoly Azure Serial Console](./serial-console-power-options.md)
+* Další informace o [konzole sériového rozhraní Azure pro virtuální počítače se systémem Linux](./serial-console-linux.md)
+* Další informace o [konzole sériového rozhraní Azure pro virtuální počítače s Windows](./serial-console-windows.md)
+* Další informace o [možnostech řízení spotřeby v rámci konzoly Azure Serial Console](./serial-console-power-options.md)

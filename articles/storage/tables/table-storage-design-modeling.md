@@ -1,6 +1,6 @@
 ---
-title: Modelování vztahů v návrhu úložiště Azure Table | Dokumenty společnosti Microsoft
-description: Seznamte se s procesem modelování při navrhování řešení úložiště tabulek.
+title: Vztahy modelování v Azure Table Storage – návrh | Microsoft Docs
+description: Pochopení procesu modelování při navrhování řešení úložiště tabulek.
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -9,36 +9,36 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: 25082c107fbc0feeb533aa2b4fc56cff960e778d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75457561"
 ---
 # <a name="modeling-relationships"></a>Modelování relací
-Tento článek popisuje proces modelování, který vám pomůže navrhnout řešení úložiště Azure Table.
+Tento článek popisuje proces modelování, který vám může pomáhat navrhovat řešení úložiště tabulek v Azure.
 
-Vytváření doménových modelů je klíčovým krokem při návrhu složitých systémů. Proces modelování se obvykle používá k identifikaci entit a vztahů mezi nimi jako způsob, jak porozumět obchodní doméně a informovat o návrhu systému. Tato část se zaměřuje na to, jak můžete přeložit některé běžné typy vztahů, které se nacházejí v modelech domény, do návrhů pro službu Table Service. Proces mapování z logického datového modelu na fyzický datový model založený na NoSQL se liší od procesu používaného při navrhování relační databáze. Návrh relačních databází obvykle předpokládá proces normalizace dat optimalizovaný pro minimalizaci redundance – a deklarativní dotazování schopnost, která abstrahuje, jak implementace databáze funguje.  
+Vytváření doménových modelů je klíčový krok v rámci navrhování složitých systémů. Obvykle se používá proces modelování k identifikaci entit a vztahů mezi nimi jako způsob pochopení obchodní domény a informování o návrhu systému. Tato část se zaměřuje na to, jak můžete přeložit některé běžné typy vztahů nalezené v doménových modelech na návrhy pro Table service. Proces mapování z logického datového modelu na fyzický datový model založený na fyzickém NoSQL se liší od toho, který se používá při navrhování relační databáze. Návrh relačních databází obvykle předpokládá proces normalizace dat, který je optimalizován pro minimalizaci redundance – a deklarativní možnosti dotazování, které jsou abstraktní, jak implementace databáze funguje.  
 
-## <a name="one-to-many-relationships"></a>Vztahy 1:N
-Vztahy 1:N mezi objekty obchodní domény se vyskytují často: například jedno oddělení má mnoho zaměstnanců. Existuje několik způsobů, jak implementovat relace 1:N ve službě Table service s klady a zápory, které mohou být relevantní pro konkrétní scénář.  
+## <a name="one-to-many-relationships"></a>Relace 1: n
+Relace 1: n mezi objekty obchodní domény se často vyskytují: například jedno oddělení má mnoho zaměstnanců. Existuje několik způsobů, jak v Table service implementovat relace 1: n, a to s využitím specialistů a nevýhody, které mohou být relevantní pro konkrétní scénář.  
 
-Vezměme si příklad velké nadnárodní korporace s desítkami tisíc oddělení a zaměstnaneckých subjektů, kde každé oddělení má mnoho zaměstnanců a každý zaměstnanec je spojen s jedním konkrétním oddělením. Jedním z přístupů je ukládání samostatných oddělení a zaměstnaneckých entit, jako jsou tyto:  
+Vezměte v úvahu příklad velkého víceúrovňového podniku s desítkami tisíc států a entit zaměstnanců, kde každé oddělení má mnoho zaměstnanců a každého zaměstnance, který je přidružený k jednomu konkrétnímu oddělení. Jedním z možností je ukládat samostatné entity oddělení a zaměstnanců, jako jsou tyto:  
 
 
-![Uložení samostatných oddělení a zaměstnaneckých entit](media/storage-table-design-guide/storage-table-design-IMAGE01.png)
+![Ukládat samostatné entity oddělení a zaměstnanců](media/storage-table-design-guide/storage-table-design-IMAGE01.png)
 
-Tento příklad ukazuje implicitní vztah 1:N mezi typy založenými na hodnotě **PartitionKey.** Každé oddělení může mít mnoho zaměstnanců.  
+Tento příklad ukazuje implicitní relaci 1:1 mezi typy na základě hodnoty **PartitionKey** . Každé oddělení může mít mnoho zaměstnanců.  
 
-Tento příklad také zobrazuje entitu oddělení a její související entity zaměstnanců ve stejném oddílu. Můžete použít různé oddíly, tabulky nebo dokonce účty úložiště pro různé typy entit.  
+Tento příklad také ukazuje entitu oddělení a její související entity zaměstnanců ve stejném oddílu. Pro různé typy entit se můžete rozhodnout pro použití různých oddílů, tabulek nebo dokonce účtů úložiště.  
 
-Alternativním přístupem je denormalizovat data a ukládat pouze entity zaměstnanců s nenormalizovanými daty oddělení, jak je znázorněno v následujícím příkladu. V tomto konkrétním scénáři tento nenormalizovaný přístup nemusí být nejlepší, pokud máte požadavek, aby bylo možné změnit podrobnosti vedoucího oddělení, protože k tomu je třeba aktualizovat každého zaměstnance v oddělení.  
+Alternativním řešením je denormalizovat data a ukládat pouze entity zaměstnanců s denormalizovanými daty oddělení, jak je znázorněno v následujícím příkladu. V tomto konkrétním scénáři nemusí být tento denormalizovaný přístup nejlepší, pokud budete vyžadovat, abyste mohli změnit podrobnosti o manažerovi oddělení, protože to provedete tak, že budete muset aktualizovat každého zaměstnance v oddělení.  
 
-![Zaměstnanecká entita](media/storage-table-design-guide/storage-table-design-IMAGE02.png)
+![Entita zaměstnance](media/storage-table-design-guide/storage-table-design-IMAGE02.png)
 
-Další informace naleznete v [tématu Denormalization vzor](table-storage-design-patterns.md#denormalization-pattern) dále v této příručce.  
+Další informace naleznete v části [vzory denormalizace](table-storage-design-patterns.md#denormalization-pattern) dále v této příručce.  
 
-Následující tabulka shrnuje výhody a nevýhody každého z výše uvedených přístupů pro ukládání entit zaměstnanců a oddělení, které mají vztah 1:N. Měli byste také zvážit, jak často očekáváte provádět různé operace: může být přijatelné mít návrh, který zahrnuje nákladnou operaci, pokud tato operace probíhá pouze zřídka.  
+Následující tabulka shrnuje odborníky a nevýhody jednotlivých přístupů uvedených výše pro ukládání entit zaměstnanců a oddělení, které mají vztah 1: n. Měli byste taky zvážit, jak často očekáváte provádění různých operací: může být přijatelné vytvořit návrh, který zahrnuje náročnou operaci, pokud tato operace proběhne jenom zřídka.  
 
 <table>
 <tr>
@@ -50,15 +50,15 @@ Následující tabulka shrnuje výhody a nevýhody každého z výše uvedených
 <td>Samostatné typy entit, stejný oddíl, stejná tabulka</td>
 <td>
 <ul>
-<li>Entitu oddělení můžete aktualizovat pomocí jedné operace.</li>
-<li>EGT můžete použít k udržení konzistence, pokud máte požadavek na úpravu entity oddělení při každé aktualizaci/vložení/odstranění entity zaměstnance. Pokud například udržujete počet zaměstnanců oddělení pro každé oddělení.</li>
+<li>Entitu oddělení můžete aktualizovat jedinou operací.</li>
+<li>EGT můžete použít k udržení konzistence v případě, že máte požadavek na změnu entity oddělení vždy, když aktualizujete/vložíte/odstraníte entitu zaměstnance. Pokud například udržujete počet zaměstnanců oddělení pro každé oddělení.</li>
 </ul>
 </td>
 <td>
 <ul>
-<li>Možná budete muset načíst zaměstnance i entity oddělení pro některé aktivity klienta.</li>
-<li>Operace úložiště dojít ve stejném oddílu. Při vysokých objemech transakcí to může mít za následek hotspot.</li>
-<li>Zaměstnance nelze přesunout do nového oddělení pomocí EGT.</li>
+<li>Možná budete muset pro některé aktivity klienta načíst jak zaměstnance, tak i entitu oddělení.</li>
+<li>K operacím úložiště dochází ve stejném oddílu. Ve velkém objemu transakcí může to mít za následek hotspot.</li>
+<li>Zaměstnance nemůžete přesunout do nového oddělení pomocí EGT.</li>
 </ul>
 </td>
 </tr>
@@ -66,63 +66,63 @@ Následující tabulka shrnuje výhody a nevýhody každého z výše uvedených
 <td>Samostatné typy entit, různé oddíly nebo tabulky nebo účty úložiště</td>
 <td>
 <ul>
-<li>Entitu oddělení nebo entitu zaměstnance můžete aktualizovat pomocí jedné operace.</li>
-<li>Při vysokých objemech transakcí to může pomoci rozložit zatížení na více oddílů.</li>
+<li>Můžete aktualizovat entitu oddělení nebo entitu zaměstnanci jedinou operací.</li>
+<li>U vysoce transakčních svazků to může přispět k rozšíření zatížení napříč více oddíly.</li>
 </ul>
 </td>
 <td>
 <ul>
-<li>Možná budete muset načíst zaměstnance i entity oddělení pro některé aktivity klienta.</li>
-<li>Egts nelze použít k udržení konzistence při aktualizaci/vložení/odstranění zaměstnance a aktualizaci oddělení. Například aktualizace počtu zaměstnanců v entitě oddělení.</li>
-<li>Zaměstnance nelze přesunout do nového oddělení pomocí EGT.</li>
+<li>Možná budete muset pro některé aktivity klienta načíst jak zaměstnance, tak i entitu oddělení.</li>
+<li>EGTs se nedá použít k zachování konzistence při aktualizaci, vložení nebo odstranění zaměstnance a aktualizaci oddělení. Například aktualizace počtu zaměstnanců v entitě oddělení.</li>
+<li>Zaměstnance nemůžete přesunout do nového oddělení pomocí EGT.</li>
 </ul>
 </td>
 </tr>
 <tr>
-<td>Denormalizovat do typu jedné entity</td>
+<td>Odnormalizovat do jedné entity typu</td>
 <td>
 <ul>
-<li>Pomocí jediného požadavku můžete načíst všechny potřebné informace.</li>
+<li>Všechny potřebné informace můžete načíst pomocí jediného požadavku.</li>
 </ul>
 </td>
 <td>
 <ul>
-<li>Zachování konzistence může být nákladné, pokud potřebujete aktualizovat informace o oddělení (to by vyžadovalo aktualizaci všech zaměstnanců v oddělení).</li>
+<li>Pokud potřebujete aktualizovat informace o odděleních, může být náročné zajistit konzistenci (to by vyžadovalo, abyste aktualizovali všechny zaměstnance v oddělení).</li>
 </ul>
 </td>
 </tr>
 </table>
 
-Způsob výběru mezi těmito možnostmi a které výhody a nevýhody jsou nejvýznamnější, závisí na konkrétní scénáře aplikace. Například jak často upravujete entity oddělení; všechny dotazy zaměstnanců potřebují další informace o oddělení; jak blízko jste k omezení škálovatelnosti na oddíly nebo váš účet úložiště?  
+Jak si zvolíte mezi těmito možnostmi, které jsou nejdůležitější pro odborníky a nevýhody, závisí na konkrétních scénářích aplikací. Například jak často měníte entity oddělení. všechny dotazy zaměstnanců potřebují další informace oddělení; Jak blízko máte omezení škálovatelnosti pro vaše oddíly nebo účet úložiště?  
 
-## <a name="one-to-one-relationships"></a>Vztahy 1:1
-Modely domény mohou zahrnovat vztahy 1:1 mezi entitami. Pokud potřebujete implementovat relaci 1:1 ve službě Tabulka, musíte také zvolit, jak propojit dvě související entity, když je potřebujete načíst oba. Toto propojení může být implicitní, založené na konvenci v klíčových hodnotách nebo explicitní uložením odkazu ve formě hodnot **PartitionKey** a **RowKey** v každé entitě do související entity. Diskuse o tom, zda byste měli uložit související entity ve stejném oddílu, naleznete v části [Relace 1:N](#one-to-many-relationships).  
+## <a name="one-to-one-relationships"></a>Relace 1:1
+Doménové modely můžou zahrnovat relace 1:1 mezi entitami. Pokud potřebujete v Table service implementovat relaci 1:1, musíte také zvolit způsob propojení těchto dvou souvisejících entit, pokud je potřebujete načítat. Tento odkaz může být buď implicitní, na základě konvence v hodnotách klíče, nebo explicitní uložením odkazu ve formě hodnot **PartitionKey** a **RowKey** v každé entitě ke své související entitě. Diskuzi o tom, jestli byste měli související entity ukládat do stejného oddílu, najdete v části [relace 1: n](#one-to-many-relationships).  
 
-Existují také důležité informace o implementaci, které by mohly vést k implementaci relací 1:1 ve službě Table Service:  
+K dispozici jsou také pokyny k implementaci, které by vám mohly vést k implementaci vztahů 1:1 v Table service:  
 
-* Zpracování velkých entit (další informace naleznete v tématu [Vzor velkých entit).](table-storage-design-patterns.md#large-entities-pattern)  
-* Implementace ovládacích prvků přístupu (další informace naleznete v tématu Řízení přístupu pomocí sdílených přístupových podpisů).  
+* Zpracování velkých entit (Další informace najdete v tématu [vzor velkých entit](table-storage-design-patterns.md#large-entities-pattern)).  
+* Implementace ovládacích prvků přístupu (Další informace najdete v tématu řízení přístupu pomocí sdílených přístupových podpisů).  
 
-## <a name="join-in-the-client"></a>Připojte se ke klientovi
-Přestože existují způsoby, jak modelovat vztahy ve službě Tabulka, neměli byste zapomínat, že dva hlavní důvody pro použití table service jsou škálovatelnost a výkon. Pokud zjistíte, že modelujete mnoho relací, které ohrožují výkon a škálovatelnost vašeho řešení, měli byste se zeptat sami sebe, zda je nutné vytvořit všechny datové relace do návrhu tabulky. Pokud umožníte klientské aplikaci provádět potřebná spojení, můžete zjednodušit návrh a zlepšit škálovatelnost a výkon vašeho řešení.  
+## <a name="join-in-the-client"></a>Připojit se v klientovi
+I když existují způsoby modelování vztahů v Table service, neměli byste si pamatovat, že dva hlavní důvody pro použití Table service jsou škálovatelnost a výkon. Pokud zjistíte, že pracujete s modelem mnoha vztahů, které ohrožují výkon a škálovatelnost vašeho řešení, měli byste se sami zeptat, pokud je nutné sestavit všechny relace dat do návrhu tabulky. Je možné zjednodušit návrh a zlepšit škálovatelnost a výkon vašeho řešení, pokud povolíte, aby klientská aplikace prováděla potřebná spojení.  
 
-Například pokud máte malé tabulky, které obsahují data, která se nemění často, pak můžete načíst tato data jednou a ukládat do mezipaměti na straně klienta. To může zabránit opakované zpáteční lety načíst stejná data. V příkladech, které jsme zkoumali v této příručce, je pravděpodobné, že sada oddělení v malé organizaci bude malá a zřídka se změní, což z ní činí vhodného kandidáta pro data, která může klientská aplikace stáhnout jednou a uložit do mezipaměti při vyhledávání dat.  
+Například pokud máte malé tabulky, které obsahují data, která se nemění často, pak můžete tato data načíst jednou a uložit je do mezipaměti v klientovi. To se může vyhnout opakovaným zpětným vrácením, aby se načetla stejná data. V příkladech, které jsme prohlédli v tomto průvodci, se sada oddělení v malé organizaci pravděpodobně stane malou a v případě, že je to pro data, která může klientská aplikace Stáhnout jednou, je vhodné je změnit.  
 
 ## <a name="inheritance-relationships"></a>Vztahy dědičnosti
-Pokud vaše klientská aplikace používá sadu tříd, které jsou součástí vztahu dědičnosti k reprezentaci obchodních entit, můžete tyto entity snadno zachovat ve službě Tabulka. Můžete mít například následující sadu tříd definovaných v klientské aplikaci, kde **Person** je abstraktní třída.
+Pokud vaše klientská aplikace používá sadu tříd, které tvoří část vztahu dědičnosti k reprezentaci obchodních entit, můžete tyto entity snadno uchovat v Table service. Například můžete mít následující sadu tříd definované v klientské aplikaci, kde **Person** je abstraktní třída.
 
-![Třída Abstraktní osoba](media/storage-table-design-guide/storage-table-design-IMAGE03.png)
+![Abstraktní třída person](media/storage-table-design-guide/storage-table-design-IMAGE03.png)
 
-Můžete zachovat instance dvou konkrétních tříd ve službě Tabulka pomocí jedné tabulky osoba pomocí entit v tom, které vypadají takto:  
+Můžete zachovat instance dvou konkrétních tříd v Table service pomocí jedné tabulky Person pomocí entit, které vypadají takto:  
 
-![Tabulka osob](media/storage-table-design-guide/storage-table-design-IMAGE04.png)
+![Tabulka Person](media/storage-table-design-guide/storage-table-design-IMAGE04.png)
 
-Další informace o práci s více typy entit ve stejné tabulce v kódu klienta naleznete v části Práce s heterogenními typy entit dále v této příručce. To poskytuje příklady, jak rozpoznat typ entity v kódu klienta.  
+Další informace o práci s více typy entit ve stejné tabulce v kódu klienta najdete v části práce s heterogenními typy entit dále v této příručce. V této části najdete příklady, jak rozpoznat typ entity v kódu klienta.  
 
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Způsoby návrhu tabulek](table-storage-design-patterns.md)
 - [Návrh pro dotazování](table-storage-design-for-query.md)
-- [Šifrování dat tabulky](table-storage-design-encrypt-data.md)
+- [Šifrovat data tabulky](table-storage-design-encrypt-data.md)
 - [Návrh pro úpravu dat](table-storage-design-for-modification.md)

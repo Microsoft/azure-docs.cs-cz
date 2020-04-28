@@ -1,13 +1,13 @@
 ---
-title: Vytvoření aplikace kontejneru Azure Service Fabric na Linuxu
+title: Vytvoření aplikace Azure Service Fabric Container v systému Linux
 description: Vytvoříte svou první aplikaci typu kontejner pro Linux na platformě Azure Service Fabric. Sestavíte image Dockeru s vaší aplikací, nahrajete image do registru kontejneru a sestavíte a nasadíte aplikaci Service Fabric typu kontejner.
 ms.topic: conceptual
 ms.date: 1/4/2019
 ms.openlocfilehash: f2f8c7884323667f843382b02c73a570e58617f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75457971"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Vytvoření první aplikace Service Fabric typu kontejner v Linuxu
@@ -18,11 +18,11 @@ ms.locfileid: "75457971"
 Spuštění existující aplikace v kontejneru Linux v clusteru Service Fabric nevyžaduje žádné změny aplikace. Tento článek vás provede vytvořením image Dockeru obsahující webovou aplikaci Python [Flask](http://flask.pocoo.org/) a jejím nasazením do clusteru Service Fabric. Kontejnerizovanou aplikaci budete také sdílet prostřednictvím služby [Azure Container Registry](/azure/container-registry/). Tento článek předpokládá základní znalost Dockeru. Informace o Dockeru najdete v článku [Docker Overview](https://docs.docker.com/engine/understanding-docker/) (Přehled Dockeru).
 
 > [!NOTE]
-> Tento článek se vztahuje na vývojové prostředí Linuxu.  Za běhu clusteru Service Fabric a dockeru musí být spuštěnve stejném os.  Kontejnery Linuxu nelze spustit v clusteru windows.
+> Tento článek se týká prostředí pro vývoj pro Linux.  Modul runtime clusteru Service Fabric a modul runtime Docker musí být spuštěný ve stejném operačním systému.  V clusteru Windows nemůžete spouštět kontejnery Linux.
 
 ## <a name="prerequisites"></a>Požadavky
 * Vývojový počítač s:
-  * [Service Fabric SDK a nástroje](service-fabric-get-started-linux.md).
+  * [Service Fabric SDK a nástroje](service-fabric-get-started-linux.md)
   * [Docker CE pro Linux](https://docs.docker.com/engine/installation/#prior-releases). 
   * [Service Fabric CLI](service-fabric-cli.md)
 
@@ -113,7 +113,7 @@ docker run -d -p 4000:80 --name my-web-site helloworldapp
 
 Parametr *name* udává název spuštěného kontejneru (namísto ID kontejneru).
 
-Připojte se ke spuštěnému kontejneru. Otevřete webový prohlížeč směřující na IP adresu vrácenou na portu\/4000, například "http: /localhost:4000". V prohlížeči by se měl zobrazit nadpis „Hello World!“.
+Připojte se ke spuštěnému kontejneru. Otevřete webový prohlížeč, který odkazuje na IP adresu vrácenou na portu 4000, například http:\//localhost: 4000. V prohlížeči by se měl zobrazit nadpis „Hello World!“.
 
 ![Hello World!][hello-world]
 
@@ -132,7 +132,7 @@ docker rm my-web-site
 ## <a name="push-the-image-to-the-container-registry"></a>Nahrání image do registru kontejneru
 Po ověření, že se aplikace spustí v Dockeru, nahrajte image do vašeho registru ve službě Azure Container Registry.
 
-Spusťte `docker login` přihlášení k registru kontejneru pomocí [pověření registru](../container-registry/container-registry-authentication.md).
+Spusťte `docker login` , abyste se k registru kontejneru přihlásili pomocí [přihlašovacích údajů registru](../container-registry/container-registry-authentication.md).
 
 Následující příklad předá ID a heslo [instančního objektu](../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory. Instanční objekt jste k registru mohli přiřadit například pro účely scénáře automatizace. Nebo se můžete přihlásit pomocí uživatelského jména a hesla registru.
 
@@ -165,16 +165,16 @@ Vzhledem k tomu, že tato image má definovaný vstupní bod úloh, není potře
 
 Jako počet instancí zadejte 1.
 
-Zadejte mapování portů v příslušném formátu. Pro tento článek je ```80:4000``` třeba zadat jako mapování portu. Tímto způsobem jste nakonfigurovali, že všechny příchozí požadavky přicházející na port 4000 na hostitelském počítači jsou přesměrovány na port 80 v kontejneru.
+Zadejte mapování portů v příslušném formátu. V tomto článku je třeba zadat ```80:4000``` mapování portů. Díky tomu jste nakonfigurovali, aby všechny příchozí požadavky přicházející na port 4000 na hostitelském počítači byly přesměrované na port 80 na kontejneru.
 
 ![Generátor Service Fabric Yeoman pro kontejnery][sf-yeoman]
 
 ## <a name="configure-container-repository-authentication"></a>Konfigurace ověřování úložiště kontejnerů
 
-Informace o [konfiguraci](configure-container-repository-credentials.md)různých typů ověřování pro stahování bitových obrázků kontejneru najdete v tématu Ověřování úložiště kontejnerů.
+V tématu [ověřování úložiště kontejnerů](configure-container-repository-credentials.md)se dozvíte, jak nakonfigurovat různé typy ověřování pro stahování imagí kontejneru.
 
 ## <a name="configure-isolation-mode"></a>Konfigurace režimu izolace
-S 6.3 runtime verze, izolace virtuálních počítačích je podporována pro linuxové kontejnery, a tím podporuje dva režimy izolace pro kontejnery: proces a Hyper-V. V režimu izolace Hyper-V jsou jádra izolována mezi jednotlivými kontejnery a hostitelem kontejneru. Izolace Hyper-V je implementována pomocí [clear containers](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker). Režim izolace je určen pro `ServicePackageContainerPolicy` clustery Linuxu v elementu v souboru manifestu aplikace. Je možné zadat tyto režimy izolace: `process`, `hyperv` a `default`. Výchozí je režim izolace procesu. Následující fragment kódu ukazuje, jakým způsobem je režim izolace určený v souboru manifestu aplikace.
+V případě běhové verze 6,3 je pro kontejnery Linux podporovaná izolace virtuálních počítačů, což pro kontejnery podporuje dva režimy izolace: proces a Hyper-V. V režimu izolace technologie Hyper-V jsou jádra izolovaná mezi jednotlivými kontejnery a hostitelem kontejneru. Izolace Hyper-V se implementuje pomocí prázdných [kontejnerů](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker). Režim izolace je určen pro clustery systému Linux v `ServicePackageContainerPolicy` elementu v souboru manifestu aplikace. Je možné zadat tyto režimy izolace: `process`, `hyperv` a `default`. Výchozím nastavením je režim izolace procesu. Následující fragment kódu ukazuje, jakým způsobem je režim izolace určený v souboru manifestu aplikace.
 
 ```xml
 <ServiceManifestImport>
@@ -208,9 +208,9 @@ S 6.3 runtime verze, izolace virtuálních počítačích je podporována pro li
 
 Počínaje v6.1 Service Fabric automaticky integruje události [dockeru HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) do sestavy stavu systému. To znamená, že pokud váš kontejner má **HEALTHCHECK** povolený, Service Fabric oznámí stav vždy, když se změní stav kontejneru (nahlášený Dockerem). Pokud *health_status* je *healthy*, v [Service Fabric Exploreru](service-fabric-visualizing-your-cluster.md) se zobrazí sestava stavu **OK**. Pokud *health_status* je *unhealthy*, zobrazí se **UPOZORNĚNÍ**. 
 
-Počínaje nejnovější aktualizací verze verze v6.4, máte možnost určit, že docker HEALTHCHECK hodnocení by měly být hlášeny jako chyba. Pokud je tato možnost povolena, zobrazí se sestava stavu **OK,** když je *health_status* *v pořádku* a chyba se **zobrazí,** když *health_status* není *v pořádku*.
+Počínaje nejnovější verzí aktualizace v 6.4 máte možnost určit, že se mají tato hodnocení Docker HEALTHCHECK hlásit jako chyba. Pokud je tato možnost povolená, zobrazí se zpráva o stavu **OK** , když *health_status* je *v pořádku* a zobrazí se **Chyba** , když *health_status* není v *pořádku*.
 
-**Instrukce HEALTHCHECK** ukazující na skutečnou kontrolu, která se provádí pro sledování stavu kontejneru musí být k dispozici v Dockerfile používá při generování image kontejneru.
+Instrukce **HEALTHCHECK** ukazující na skutečnou kontrolu prováděnou pro monitorování stavu kontejneru musí být přítomna v souboru Dockerfile použitém při generování image kontejneru.
 
 ![HealthCheckHealthy][1]
 
@@ -232,11 +232,11 @@ Chování **HEALTHCHECK** pro jednotlivé kontejnery můžete nakonfigurovat zad
     </Policies>
 </ServiceManifestImport>
 ```
-Ve výchozím nastavení je *includeDockerHealthStatusInSystemHealthReport* nastaven na **hodnotu true**, *funkce RestartContainerOnUnhealthDockerHealthStatus* je nastavena na **hodnotu false**a hodnota *TreatContainerUnhealthyStatusAsError* je nastavena na **hodnotu false**. 
+Ve výchozím nastavení je *IncludeDockerHealthStatusInSystemHealthReport* nastaveno na **hodnotu true**, hodnota *RestartContainerOnUnhealthyDockerHealthStatus* je nastavena na **hodnotu false**a vlastnost *TreatContainerUnhealthyStatusAsError* je nastavena na **hodnotu false**. 
 
 Pokud je pro *RestartContainerOnUnhealthyDockerHealthStatus* nastavená hodnota **true**, kontejner, který je opakovaně nahlášený ve špatném stavu, se restartuje (potenciálně na jiných uzlech).
 
-Pokud *je chyba,* health_status kontejneru *není v pořádku*, je nastavena na **hodnotu true**, zobrazí se zprávy o stavu **CHYBy.** *health_status*
+Pokud je *TreatContainerUnhealthyStatusAsError* nastavené na **true**, zobrazí se **chybové** zprávy o stavu, když *health_status* kontejneru není v *pořádku*.
 
 Pokud chcete zakázat integraci **HEALTHCHECK** pro celý cluster Service Fabric, musíte nastavit [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) na **false**.
 
@@ -249,16 +249,16 @@ Připojte se k místnímu clusteru služby Service Fabric.
 sfctl cluster select --endpoint http://localhost:19080
 ```
 
-Pomocí instalačního skriptu uvedeného https://github.com/Azure-Samples/service-fabric-containers/ v šablonách na webu zkopírujte balíček aplikace do úložiště bitových kopií clusteru, zaregistrujte typ aplikace a vytvořte instanci aplikace.
+Pomocí instalačního skriptu, který je součástí šablon https://github.com/Azure-Samples/service-fabric-containers/ v části, zkopírujte balíček aplikace do úložiště imagí clusteru, zaregistrujte typ aplikace a vytvořte instanci aplikace.
 
 
 ```bash
 ./install.sh
 ```
 
-Otevřete prohlížeč a přejděte do\/aplikace Service Fabric Explorer na adrese http: /localhost:19080/Explorer (nahraďte localhost privátní IP adresou virtuálního počítače, pokud používáte Vagrant v systému Mac OS X). Rozbalte uzel Aplikace a všimněte si, že už obsahuje položku pro váš typ aplikace a další položku pro první instanci tohoto typu.
+Otevřete prohlížeč a přejděte na adresu Service Fabric Explorer na adrese http\/:/localhost: 19080/Explorer (Pokud používáte Vagrant v Mac OS X, nahraďte localhost privátní IP adresou virtuálního počítače. Rozbalte uzel Aplikace a všimněte si, že už obsahuje položku pro váš typ aplikace a další položku pro první instanci tohoto typu.
 
-Připojte se ke spuštěnému kontejneru. Otevřete webový prohlížeč směřující na IP adresu vrácenou na portu\/4000, například "http: /localhost:4000". V prohlížeči by se měl zobrazit nadpis „Hello World!“.
+Připojte se ke spuštěnému kontejneru. Otevřete webový prohlížeč, který odkazuje na IP adresu vrácenou na portu 4000, například http:\//localhost: 4000. V prohlížeči by se měl zobrazit nadpis „Hello World!“.
 
 ![Hello World!][hello-world]
 

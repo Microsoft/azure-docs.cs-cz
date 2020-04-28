@@ -1,54 +1,54 @@
 ---
-title: Azure Service Fabric sledování výkonu
-description: Další informace o čítačí výkonu pro monitorování a diagnostiku clusterů Azure Service Fabric.
+title: Monitorování výkonu služby Azure Service Fabric
+description: Seznamte se s čítači výkonu pro monitorování a diagnostiku clusterů Azure Service Fabric.
 author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 30b9b8393007033a7c2e6798cd57d9cf0128820d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75464699"
 ---
 # <a name="performance-metrics"></a>Metriky výkonu
 
-Metriky by měly být shromažďovány pochopit výkon clusteru, stejně jako aplikace spuštěné v něm. Pro clustery Service Fabric doporučujeme shromažďovat následující čítače výkonu.
+Metriky by měly být shromažďovány, aby bylo možné pochopit výkon clusteru i aplikace, které jsou v něm spuštěné. U Service Fabricch clusterů doporučujeme shromažďovat následující čítače výkonu.
 
 ## <a name="nodes"></a>Uzly
 
-Pro počítače ve vašem clusteru zvažte shromažďování následujících čítačů výkonu, abyste lépe porozuměli zatížení každého počítače a učinili příslušná rozhodnutí o škálování clusteru.
+Pro počítače ve vašem clusteru zvažte shromáždění následujících čítačů výkonu, abyste lépe pochopili zatížení jednotlivých počítačů a zajistili vhodná rozhodnutí o škálování clusteru.
 
 | Kategorie čítače | Název čítače |
 | --- | --- |
 | Logický disk | Volné místo na logickém disku |
-| Fyzický disk (na disk) | Avg. Délka fronty čtení disku |
-| Fyzický disk (na disk) | Délka fronty zápisu vpichu |
-| Fyzický disk (na disk) | Vně disku sec/čtení |
-| Fyzický disk (na disk) | Vg. Disk sec/Zápis |
-| Fyzický disk (na disk) | Čtení disku/s |
-| Fyzický disk (na disk) | Čtení bajtů disku/s |
+| Fyzický disk (na disk) | Průměrná délka fronty čtení z disku |
+| Fyzický disk (na disk) | Průměrná délka fronty zápisu na disk |
+| Fyzický disk (na disk) | Střední doba disku/čtení |
+| Fyzický disk (na disk) | Střední doba disku/zápis |
+| Fyzický disk (na disk) | Čtení z disku/s |
+| Fyzický disk (na disk) | Bajty čtení z disku/s |
 | Fyzický disk (na disk) | Zápisy na disk/s |
-| Fyzický disk (na disk) | Bajty zápisu disku/s |
-| Memory (Paměť) | Dostupné mbajty |
-| Stránkovací soubor | % využití |
+| Fyzický disk (na disk) | Bajty zápisu na disk/s |
+| Memory (Paměť) | Dostupné MB |
+| PagingFile | % Využití |
 | Procesor (celkem) | Procesorový čas v % |
-| Proces (na službu) | Procesorový čas v % |
-| Proces (na službu) | Proces ID |
-| Proces (na službu) | Soukromé bajty |
-| Proces (na službu) | Počet vláken |
-| Proces (na službu) | Virtuální bajty |
-| Proces (na službu) | Pracovní sada |
-| Proces (na službu) | Pracovní sada - soukromá |
-| Síťové rozhraní (všechny instance) | Rektované bajty |
+| Proces (za službu) | Procesorový čas v % |
+| Proces (za službu) | ID procesu |
+| Proces (za službu) | Soukromé bajty |
+| Proces (za službu) | Počet vláken |
+| Proces (za službu) | Virtuální bajty |
+| Proces (za službu) | Pracovní sada |
+| Proces (za službu) | Pracovní sada – soukromá |
+| Síťové rozhraní (všechny instance) | Bajty recd |
 | Síťové rozhraní (všechny instance) | Odeslané bajty |
-| Síťové rozhraní (všechny instance) | Celkem bajty |
-| Síťové rozhraní (všechny instance) | Délka výstupní fronty |
-| Síťové rozhraní (všechny instance) | Zahozené odchozí pakety |
-| Síťové rozhraní (všechny instance) | Přijaté přijaté pakety byly zahozeny |
-| Síťové rozhraní (všechny instance) | Chyby odchozích paketů |
-| Síťové rozhraní (všechny instance) | Chyby přijatých paketů |
+| Síťové rozhraní (všechny instance) | Bajty celkem |
+| Síťové rozhraní (všechny instance) | Délka fronty výstupu |
+| Síťové rozhraní (všechny instance) | Zrušené odchozí pakety |
+| Síťové rozhraní (všechny instance) | Zrušené přijaté pakety |
+| Síťové rozhraní (všechny instance) | Odchozí chyby paketů |
+| Síťové rozhraní (všechny instance) | Přijaté pakety – chyby |
 
 ## <a name="net-applications-and-services"></a>Aplikace a služby .NET
 
@@ -56,29 +56,29 @@ Pokud nasazujete služby .NET do clusteru, shromážděte následující číta�
 
 | Kategorie čítače | Název čítače |
 | --- | --- |
-| Paměť CLR .NET (na službu) | ID procesu |
-| Paměť CLR .NET (na službu) | # Celkem potvrzených bajtů |
-| Paměť CLR .NET (na službu) | # Celkem rezervované bajty |
-| Paměť CLR .NET (na službu) | # Bytes ve všech hromadách |
-| Paměť CLR .NET (na službu) | Velikost haldy velkých objektů |
-| Paměť CLR .NET (na službu) | # Gc úchyty |
-| Paměť CLR .NET (na službu) | # Gen 0 Sbírky |
-| Paměť CLR .NET (na službu) | # Gen 1 Sbírky |
-| Paměť CLR .NET (na službu) | # Gen 2 Sbírky |
-| Paměť CLR .NET (na službu) | % času v GC |
+| Paměť .NET CLR (na službu) | ID procesu |
+| Paměť .NET CLR (na službu) | Celkový počet potvrzených bajtů |
+| Paměť .NET CLR (na službu) | Celkový počet rezervovaných bajtů |
+| Paměť .NET CLR (na službu) | Počet bajtů ve všech haldách |
+| Paměť .NET CLR (na službu) | Velikost haldy Large Object |
+| Paměť .NET CLR (na službu) | Počet popisovačů GC |
+| Paměť .NET CLR (na službu) | Počet kolekcí 0. generace |
+| Paměť .NET CLR (na službu) | Počet kolekcí 1. generace |
+| Paměť .NET CLR (na službu) | Počet kolekcí generace 2 |
+| Paměť .NET CLR (na službu) | % Času v GC |
 
-### <a name="service-fabrics-custom-performance-counters"></a>Vlastní čítače výkonu service fabric
+### <a name="service-fabrics-custom-performance-counters"></a>Vlastní čítače výkonu Service Fabric
 
-Service Fabric generuje značné množství vlastníčí výkon čítače. Pokud máte nainstalovanou sadu SDK, zobrazí se úplný seznam v počítači se systémem Windows v aplikaci Sledování výkonu (Start > Sledování výkonu). 
+Service Fabric generuje podstatné množství vlastních čítačů výkonu. Pokud sadu SDK máte nainstalovanou, můžete na počítači s Windows v aplikaci sledování výkonu Zobrazit úplný seznam (spustit > sledování výkonu). 
 
-V aplikacích, které nasazujete do clusteru, pokud `Service Fabric Actor` používáte spolehlivé objekty actor, přidejte čítače z kategorií a `Service Fabric Actor Method` kategorie (viz [Diagnostika důvěryhodných aktérů service fabric).](service-fabric-reliable-actors-diagnostics.md)
+Pokud používáte Reliable Actors v aplikacích, které nasazujete do vašeho clusteru, přidejte čítače z `Service Fabric Actor` kategorie a `Service Fabric Actor Method` (viz [Diagnostika Service Fabric Reliable Actors](service-fabric-reliable-actors-diagnostics.md)).
 
-Pokud používáte spolehlivé služby nebo vzdálené komunikace `Service Fabric Service` `Service Fabric Service Method` služeb, máme podobně a čítače kategorií, které byste měli shromažďovat čítače z, viz [monitorování s vzdálené komunikace služby](service-fabric-reliable-serviceremoting-diagnostics.md) a spolehlivé [služby čítače výkonu](service-fabric-reliable-services-diagnostics.md#performance-counters). 
+Pokud používáte službu Reliable Services nebo vzdálenou komunikaci služby, máme `Service Fabric Service` podobně `Service Fabric Service Method` kategorie čítače, ze kterých byste měli shromažďovat čítače, a to v tématu monitorování s [čítači výkonu](service-fabric-reliable-services-diagnostics.md#performance-counters) [vzdálené komunikace služeb](service-fabric-reliable-serviceremoting-diagnostics.md) a spolehlivé služby. 
 
-Pokud používáte spolehlivé kolekce, doporučujeme přidat `Avg. Transaction ms/Commit` z `Service Fabric Transactional Replicator` shromažďovat průměrnou latenci potvrzení na metriku transakce.
+Pokud používáte spolehlivé kolekce, doporučujeme přidat `Avg. Transaction ms/Commit` z `Service Fabric Transactional Replicator` ke shromáždění průměrné latence potvrzení na transakci metriky.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o [generování událostí na úrovni platformy](service-fabric-diagnostics-event-generation-infra.md) v Service Fabric
-* Shromažďování metrik výkonu prostřednictvím [agenta Log Analytics](service-fabric-diagnostics-oms-agent.md)
+* Další informace o [generování událostí najdete na úrovni platformy](service-fabric-diagnostics-event-generation-infra.md) v Service Fabric
+* Shromažďovat metriky výkonu prostřednictvím [agenta Log Analytics](service-fabric-diagnostics-oms-agent.md)

@@ -1,5 +1,5 @@
 ---
-title: Ukázka prostředí PowerShell – přiřazení uživatele k aplikaci Proxy aplikace
+title: Ukázka prostředí PowerShell – přiřazení uživatele k aplikaci proxy aplikace
 description: Příklad prostředí PowerShell, který přiřadí uživatele k aplikaci proxy aplikace Azure Active Directory (Azure AD).
 services: active-directory
 author: msmimart
@@ -13,15 +13,15 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 42667ebdfc37b679d56421e3a82d4a6aaaed8fdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75483333"
 ---
-# <a name="assign-a-user-to-a-specific-azure-ad-application-proxy-application"></a>Přiřazení uživatele ke konkrétní aplikaci proxy aplikace Azure AD
+# <a name="assign-a-user-to-a-specific-azure-ad-application-proxy-application"></a>Přiřazení uživatele ke konkrétní aplikaci Azure Proxy aplikací služby AD
 
-Tento příklad skriptu Prostředí PowerShell umožňuje přiřadit uživatele ke konkrétní aplikaci proxy aplikace Azure AD.
+Tento ukázkový skript PowerShellu vám umožní přiřadit uživatele ke konkrétní aplikaci Azure Proxy aplikací služby AD.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -29,7 +29,7 @@ Tento příklad skriptu Prostředí PowerShell umožňuje přiřadit uživatele 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Tato ukázka vyžaduje [modul AzureAD V2 PowerShell pro graf](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) (AzureAD) nebo verzi preview [modulu AzureAD V2 PowerShell pro graf](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview).
+Tato ukázka vyžaduje [prostředí PowerShell AzureAD v2 pro modul Graph](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) (AzureAD) nebo [prostředí AzureAD v2 PowerShell pro verzi Preview modulu grafu](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview).
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -43,6 +43,6 @@ Tato ukázka vyžaduje [modul AzureAD V2 PowerShell pro graf](https://docs.micro
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o modulu Azure AD PowerShell najdete v [tématu Přehled modulu Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0).
+Další informace o modulu Azure AD PowerShell najdete v tématu [Přehled modulu Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0).
 
-Další příklady PowerShellu pro proxy aplikace najdete [v tématu příklady Azure AD PowerShellu pro proxy aplikace Azure AD](../application-proxy-powershell-samples.md).
+Další příklady PowerShellu pro proxy aplikací najdete v tématu [Azure AD PowerShell – příklady pro azure proxy aplikací služby AD](../application-proxy-powershell-samples.md).

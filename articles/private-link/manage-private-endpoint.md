@@ -1,6 +1,6 @@
 ---
 title: Správa připojení privátního koncového bodu v Azure
-description: Zjistěte, jak spravovat privátní připojení koncových bodů v Azure
+description: Naučte se spravovat připojení privátních koncových bodů v Azure.
 services: private-link
 author: malopMSFT
 ms.service: private-link
@@ -8,78 +8,78 @@ ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: 62b24b3e2f5c1b89fa7db581ac34cf58381db2a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75452965"
 ---
 # <a name="manage-a-private-endpoint-connection"></a>Správa připojení privátního koncového bodu
-Azure Private Link funguje na modelu toku volání schválení, kde příjemce služby Private Link může požádat o připojení k poskytovateli služeb pro využívání služby. Poskytovatel služeb se pak může rozhodnout, zda povolí spotřebiteli připojení či nikoli. Azure Private Link umožňuje poskytovatelům služeb spravovat připojení privátního koncového bodu na jejich prostředky. Tento článek obsahuje pokyny, jak spravovat připojení private endpoint.
+Privátní propojení Azure pracuje na modelu toku volání schválení, kde příjemce služby privátního propojení může požádat o připojení k poskytovateli služeb za účelem využívání služby. Poskytovatel služeb se pak může rozhodnout, jestli chcete, aby se příjemce mohl připojit nebo ne. Privátní propojení Azure umožňuje poskytovatelům služeb spravovat připojení privátního koncového bodu na svých prostředcích. Tento článek poskytuje informace o tom, jak spravovat připojení privátního koncového bodu.
 
-![Správa soukromých koncových bodů](media/manage-private-endpoint/manage-private-endpoint.png)
+![Správa privátních koncových bodů](media/manage-private-endpoint/manage-private-endpoint.png)
 
-Existují dvě metody schvalování připojení, ze kterých si může spotřebitel služby Private Link vybrat:
-- **Automaticky**: Pokud má příjemce služby oprávnění RBAC pro prostředek poskytovatele služeb, může zvolit metodu automatického schvalování. V takovém případě, když se požadavek dostane k prostředku poskytovatele služeb, není od poskytovatele služeb vyžadována žádná akce a připojení je automaticky schváleno. 
-- **Příručka**: Naopak, pokud příjemce služby nemá oprávnění RBAC pro prostředek poskytovatele služeb, může spotřebitel zvolit metodu ručního schválení. V takovém případě se požadavek na připojení zobrazí na prostředky služby jako **čekající na vyřízení**. Poskytovatel služeb musí žádost před navázáním připojení ručně schválit. V ručních případech může příjemce služby také zadat zprávu s požadavkem, který poskytuje poskytovateli služeb více kontextu. Poskytovatel služeb má následující možnosti, ze kterých si může vybrat pro všechna připojení Privátní koncový bod: **Schváleno**, **Odmítnout**, **Odebrat**.
+Existují dvě metody schvalování připojení, ze kterých může příjemce služby privátního propojení vybírat:
+- **Automaticky**: Pokud má příjemce služby oprávnění RBAC u prostředku poskytovatele služeb, může vybrat metodu automatického schvalování. V takovém případě, když požadavek dosáhne prostředku poskytovatele služeb, není od poskytovatele služeb vyžadována žádná akce a připojení je automaticky schváleno. 
+- **Ruční**: v opačném případě, pokud nemá příjemce služby oprávnění RBAC u prostředku poskytovatele služeb, může příjemce zvolit metodu ručního schválení. V takovém případě se žádost o připojení zobrazí v části prostředky služby jako **nevyřízená**. Aby bylo možné navázat spojení, musí poskytovatel služeb požadavek ručně schválit. V manuálních případech může příjemce služby také určit zprávu s žádostí o poskytnutí kontextu poskytovateli služeb. Poskytovatel služeb nabízí následující možnosti, ze kterých si můžete vybrat pro všechna připojení privátních koncových bodů: **schválení**, **zamítnutí**, **Odebrání**.
 
-Níže uvedená tabulka ukazuje různé akce poskytovatele služeb a výsledné stavy připojení pro soukromé koncové body.  Poskytovatel služeb může také změnit stav připojení připojení privátní koncový bod připojení později bez zásahu spotřebitele. Akce aktualizuje stav koncového bodu na straně příjemce. 
+V níže uvedené tabulce jsou uvedeny různé akce poskytovatele služeb a výsledné stavy připojení pro soukromé koncové body.  Poskytovatel služeb může také později změnit stav připojení privátního koncového bodu bez zásahu uživatele. Akce aktualizuje stav koncového bodu na straně spotřebitele. 
 
 
-|Akce poskytovatele služeb   |Stav soukromého koncového bodu příjemce služby   |Popis   |
+|Akce poskytovatele služeb   |Stav privátního koncového bodu příjemce služby   |Popis   |
 |---------|---------|---------|
-|Žádný    |    Čekající na vyřízení     |    Připojení je vytvořeno ručně a čeká na schválení vlastníkem prostředku private link.       |
+|Žádná    |    Čekající na vyřízení     |    Připojení je vytvořeno ručně a čeká na schválení vlastníkem prostředku privátního odkazu.       |
 |Schválení    |  Schválené       |  Připojení bylo automaticky nebo ručně schváleno a je připraveno k použití.     |
-|Odmítnout     | Rejected        | Připojení bylo odmítnuto vlastníkem prostředku soukromého propojení.        |
-|Odebrat    |  Odpojen       | Připojení bylo odebráno vlastníkem prostředku soukromého propojení, soukromý koncový bod se stane informativní a měl by být odstraněn pro vyčištění.        |
+|Odmítnout     | Rejected        | Připojení bylo odmítnuto vlastníkem prostředku privátního odkazu.        |
+|Odebrat    |  Propojení       | Připojení bylo odebráno vlastníkem prostředku privátního propojení, soukromý koncový bod bude informativní a měl by být odstraněn pro vyčištění.        |
 |   |         |         |
    
 ## <a name="manage-private-endpoint-connections-on-azure-paas-resources"></a>Správa připojení privátních koncových bodů v prostředcích Azure PaaS
-Portál je upřednostňovaná metoda pro správu privátní připojení koncového bodu na prostředky Azure PaaS. V současné době nemáme podporu PowerShell/CLI pro správu připojení na prostředky Azure PaaS.
+Portál je upřednostňovanou metodou správy připojení privátních koncových bodů v prostředcích Azure PaaS. V současné době neposkytujeme podporu PowerShellu/CLI pro správu připojení k prostředkům Azure PaaS.
 1. Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
-2. Přejděte do Centra soukromých spojnic.
-3. V části **Zdroje**vyberte typ prostředku, který chcete spravovat připojení privátního koncového bodu.
-4. Pro každý typ prostředku můžete zobrazit počet připojení soukromého koncového bodu, která jsou k němu přidružena. Podle potřeby můžete filtrovat prostředky.
-5. Vyberte připojení privátního koncového bodu.  Pod uvedenými připojeními vyberte připojení, které chcete spravovat. 
+2. Přejděte do centra privátních odkazů.
+3. V části **prostředky**vyberte typ prostředku, pro který chcete spravovat připojení privátního koncového bodu.
+4. Pro každý typ prostředku můžete zobrazit počet připojení privátního koncového bodu, která jsou k němu přidružená. Prostředky můžete podle potřeby filtrovat.
+5. Vyberte připojení privátního koncového bodu.  V seznamu připojení vyberte připojení, které chcete spravovat. 
 6. Stav připojení můžete změnit výběrem z možností v horní části.
 
-## <a name="manage-private-endpoint-connections-on-a-customerpartner-owned-private-link-service"></a>Správa připojení privátního koncového bodu ve službě Private Link vlastněné zákazníkem/partnerem
+## <a name="manage-private-endpoint-connections-on-a-customerpartner-owned-private-link-service"></a>Správa připojení privátního koncového bodu u zákazníka nebo partnera, který je vlastníkem privátního propojení
 
-Azure PowerShell a Azure CLI jsou upřednostňované metody pro správu privátního koncového bodu připojení na Microsoft Partner Services nebo služeb vlastněných zákazníky. V současné době nemáme žádnou podporu portálu pro správu připojení ve službě Private Link.  
+Azure PowerShell a Azure CLI jsou preferované metody pro správu připojení privátních koncových bodů k partnerským službám Microsoftu nebo službám vlastněných zákazníky. V současné době nemáme žádná podpora portálu pro správu připojení ve službě privátních odkazů.  
  
 ### <a name="powershell"></a>PowerShell 
   
-Ke správě připojení privátního koncového bodu použijte následující příkazy prostředí PowerShell.  
-#### <a name="get-private-link-connection-states"></a>Získat stavy připojení private link 
-Pomocí `Get-AzPrivateLinkService` rutiny získat připojení private endpoint a jejich stavy.  
+Ke správě připojení privátních koncových bodů použijte následující příkazy PowerShellu.  
+#### <a name="get-private-link-connection-states"></a>Získat stavy připojení privátního propojení 
+Pomocí `Get-AzPrivateLinkService` rutiny můžete získat připojení privátního koncového bodu a jejich stavy.  
 ```azurepowershell
 Get-AzPrivateLinkService -Name myPrivateLinkService -ResourceGroupName myResourceGroup 
  ```
  
 #### <a name="approve-a-private-endpoint-connection"></a>Schválení připojení privátního koncového bodu 
  
-Pomocí `Approve-AzPrivateEndpointConnection` rutiny schvalte připojení Private Endpoint. 
+Pomocí `Approve-AzPrivateEndpointConnection` rutiny schválíte připojení privátního koncového bodu. 
  
 ```azurepowershell
 Approve-AzPrivateEndpointConnection -Name myPrivateEndpointConnection -ResourceGroupName myResourceGroup -ServiceName myPrivateLinkService
 ```
  
-#### <a name="deny-private-endpoint-connection"></a>Odepřít připojení soukromého koncového bodu 
+#### <a name="deny-private-endpoint-connection"></a>Odepřít připojení privátního koncového bodu 
  
-Pomocí `Deny-AzPrivateEndpointConnection` rutiny odmítnout připojení Private Endpoint. 
+Pomocí `Deny-AzPrivateEndpointConnection` rutiny odmítnete připojení privátního koncového bodu. 
 ```azurepowershell
 Deny-AzPrivateEndpointConnection -Name myPrivateEndpointConnection -ResourceGroupName myResourceGroup -ServiceName myPrivateLinkService 
 ```
-#### <a name="remove-private-endpoint-connection"></a>Odebrat připojení soukromého koncového bodu 
+#### <a name="remove-private-endpoint-connection"></a>Odebrat připojení privátního koncového bodu 
  
-Pomocí `Remove-AzPrivateEndpointConnection` rutiny odeberte připojení Private Endpoint. 
+Pomocí `Remove-AzPrivateEndpointConnection` rutiny odeberte připojení privátního koncového bodu. 
 ```azurepowershell
 Remove-AzPrivateEndpointConnection -Name myPrivateEndpointConnection1 -ResourceGroupName myResourceGroup -ServiceName myPrivateLinkServiceName 
 ```
  
 ### <a name="azure-cli"></a>Azure CLI 
  
-Slouží `az network private-link-service update` ke správě připojení private endpoint. Stav připojení je určen ```azurecli connection-status``` v parametru. 
+Používá `az network private-link-service update` se ke správě připojení privátního koncového bodu. Stav připojení je zadán v ```azurecli connection-status``` parametru. 
 ```azurecli
 az network private-link-service connection update -g myResourceGroup -n myPrivateEndpointConnection1 --service-name myPLS --connection-status Approved 
 ```
@@ -87,5 +87,5 @@ az network private-link-service connection update -g myResourceGroup -n myPrivat
    
 
 ## <a name="next-steps"></a>Další kroky
-- [Další informace o privátním koncových bodech](private-endpoint-overview.md)
+- [Informace o privátních koncových bodech](private-endpoint-overview.md)
  

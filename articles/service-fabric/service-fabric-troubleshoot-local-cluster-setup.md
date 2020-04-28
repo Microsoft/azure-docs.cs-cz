@@ -1,22 +1,22 @@
 ---
-title: Poradce při potížích s nastavením místního clusteru Azure Service Fabric
-description: Tento článek popisuje sadu návrhů pro řešení potíží s místním vývojovým clusterem
+title: Řešení potíží s místním nastavením clusteru Azure Service Fabric
+description: Tento článek se zabývá sadou návrhů pro řešení potíží s místním vývojovým clusterem.
 author: mikkelhegn
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: mikhegn
 ms.openlocfilehash: ea313adb43f8d91ec9e57dd1d0b8d3447a8075f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75465500"
 ---
 # <a name="troubleshoot-your-local-development-cluster-setup"></a>Řešení potíží s místním nastavením clusteru pro vývoj
-Pokud narazíte na problém při interakci s místním clusterem vývoje Azure Service Fabric, přečtěte si následující návrhy pro potenciální řešení.
+Pokud narazíte na problém při interakci s místním vývojovým clusterem Azure Service Fabric, přečtěte si následující návrhy pro potenciální řešení.
 
 ## <a name="cluster-setup-failures"></a>Selhání instalace clusteru
-### <a name="cannot-clean-up-service-fabric-logs"></a>Nelze vyčistit protokoly service fabric
+### <a name="cannot-clean-up-service-fabric-logs"></a>Protokoly Service Fabric nejde vyčistit.
 #### <a name="problem"></a>Problém
 Při spuštění skriptu DevClusterSetup se zobrazí následující chyba:
 
@@ -28,20 +28,20 @@ Při spuštění skriptu DevClusterSetup se zobrazí následující chyba:
 
 
 #### <a name="solution"></a>Řešení
-Zavřete aktuální okno PowerShellu a otevřete nové okno PowerShellu jako správce. Nyní můžete úspěšně spustit skript.
+Zavřete aktuální okno PowerShellu a otevřete nové okno PowerShellu jako správce. Teď můžete skript úspěšně spustit.
 
 ## <a name="cluster-connection-failures"></a>Selhání připojení clusteru
 
 ### <a name="type-initialization-exception"></a>Výjimka inicializace typu
 #### <a name="problem"></a>Problém
-Při připojování ke clusteru v prostředí PowerShell se zobrazí chyba TypeInitializationException for System.Fabric.Common.AppTrace.
+Když se připojujete ke clusteru v PowerShellu, zobrazí se chyba TypeInitializationException pro System. Fabric. Common. AppTrace.
 
 #### <a name="solution"></a>Řešení
-Proměnná cesty nebyla během instalace správně nastavena. Odhlaste se z Windows a přihlaste se zpět. Tím se aktualizuje vaše cesta.
+Vaše Proměnná cesty nebyla při instalaci správně nastavena. Odhlaste se z Windows a znovu se přihlaste. Tím se aktualizuje vaše cesta.
 
-### <a name="cluster-connection-fails-with-object-is-closed"></a>Připojení clusteru se nezdaří s "Objekt je uzavřen"
+### <a name="cluster-connection-fails-with-object-is-closed"></a>Připojení clusteru se nepovede a dojde k chybě typu "objekt je uzavřen".
 #### <a name="problem"></a>Problém
-Volání Connect-ServiceFabricCluster se nezdaří s chybou, jako je tato:
+Volání Connect-ServiceFabricCluster se nezdařilo s chybou, například:
 
     Connect-ServiceFabricCluster : The object is closed.
     At line:1 char:1
@@ -53,21 +53,21 @@ Volání Connect-ServiceFabricCluster se nezdaří s chybou, jako je tato:
 #### <a name="solution"></a>Řešení
 Zavřete aktuální okno PowerShellu a otevřete nové okno PowerShellu jako správce.
 
-### <a name="fabric-connection-denied-exception"></a>Výjimka Připojení prostředků infrastruktury byla odepřena.
+### <a name="fabric-connection-denied-exception"></a>Výjimka zamítnutí připojení prostředků infrastruktury
 #### <a name="problem"></a>Problém
-Při ladění z Visual Studio se zobrazí fabricConnectionDeniedException chyba.
+Při ladění ze sady Visual Studio se zobrazí chyba FabricConnectionDeniedException.
 
 #### <a name="solution"></a>Řešení
 K této chybě obvykle dochází při pokusu o ruční spuštění procesu hostitele služby.
 
-Ujistěte se, že nemáte žádné projekty služeb nastaveny jako projekty při spuštění ve vašem řešení. Pouze projekty aplikace Service Fabric by měly být nastaveny jako projekty spuštění.
+Ujistěte se, že ve vašem řešení nemáte nastavené žádné projekty služeb jako spouštěné projekty. Pouze projekty aplikace Service Fabric by měly být nastaveny jako spouštěné projekty.
 
 > [!TIP]
-> Pokud se po instalaci místní cluster začne chovat abnormálně, můžete jej obnovit pomocí aplikace místního správce clusteru. Tím odeberete existující cluster a nastavíte nový. Všimněte si, že všechny nasazené aplikace a přidružená data jsou odebrány.
+> Pokud se Váš místní cluster po instalaci začne chovat neobvykle, můžete ho resetovat pomocí aplikace místní Správce clusterů v hlavním panelu systému. Tím se odebere existující cluster a nastaví se nový. Všimněte si, že se odeberou všechny nasazené aplikace a přidružená data.
 > 
 > 
 
 ## <a name="next-steps"></a>Další kroky
-* [Principy clusteru a řešení potíží se sestavami stavu systému](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
+* [Pochopení a řešení potíží s clusterem pomocí sestav stavu systému](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 * [Vizualizace clusteru pomocí nástroje Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)
 

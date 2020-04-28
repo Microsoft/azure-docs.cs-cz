@@ -1,64 +1,64 @@
 ---
-title: Defragmentace metrik ve službě Azure Fabric
-description: Další informace o použití defragmentace nebo balení jako strategie pro metriky v Service Fabric. Tato technika je užitečná pro velmi velké služby.
+title: Defragmentace metrik v Azure Service Fabric
+description: Naučte se používat defragmentaci nebo balení jako strategii pro metriky v Service Fabric. Tato technika je užitečná pro velmi velké služby.
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: bba459be4408f4a4bc438bb33b0570a91e84f2cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75563356"
 ---
-# <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Defragmentace metrik a zatížení v service fabric
-Výchozí strategie Správce prostředků clusteru Service Fabric pro správu metrik zatížení v clusteru je distribuce zatížení. Zajištění, že uzly jsou rovnoměrně využívány vyhýbá horké a studené skvrny, které vedou k tvrzení a plýtvání prostředky. Distribuce úloh v clusteru je také nejbezpečnější z hlediska selhání, protože zajišťuje, že selhání nezabere velké procento daného pracovního vytížení. 
+# <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Defragmentace metrik a načítání v Service Fabric
+Služba Service Fabric clusteru Správce prostředků výchozí strategii pro správu metrik zatížení v clusteru slouží k distribuci zátěže. Zajištění toho, aby se uzly rovnoměrně využily, nemusíte používat horké a studené body, které vedou k kolizí i k nevyužitým prostředkům. Distribuce úloh v clusteru je také nejbezpečnější z důvodu nedodržení selhání, protože zajišťuje, že selhání netrvá vysoké procento dané úlohy. 
 
-Správce prostředků clusteru Service Fabric podporuje jinou strategii pro správu zatížení, což je defragmentace. Defragmentace znamená, že místo pokusu o distribuci využití metriky v rámci clusteru je konsolidované. Konsolidace je pouze inverze výchozí strategie vyrovnávání – namísto minimalizace průměrné směrodatné odchylky zatížení metriky se správce prostředků clusteru pokusí zvýšit.
+Správce prostředků Service Fabric clusteru podporuje jinou strategii pro správu zátěže, což je defragmentace. Defragmentace znamená, že se místo pokusu o distribuci využití metriky v clusteru konsoliduje. Konsolidace je jenom inverze výchozí strategie vyrovnávání – místo minimalizace průměrné směrodatné odchylky zatížení se cluster Správce prostředků pokusí ho zvýšit.
 
 ## <a name="when-to-use-defragmentation"></a>Kdy použít defragmentaci
-Distribuce zatížení v clusteru spotřebovává některé prostředky na každém uzlu. Některé úlohy vytvářejí služby, které jsou mimořádně velké a spotřebovávají většinu nebo všechny uzly. V těchto případech je možné, že při vytváření velkých úloh není dostatek místa na žádném uzlu pro jejich spuštění. Velké úlohy nejsou problém v Service Fabric; V těchto případech Správce prostředků clusteru určí, že potřebuje reorganizovat cluster utvoří místo pro toto velké zatížení. Však do té doby, že zatížení musí čekat na plánované v clusteru.
+Distribuce zatížení v clusteru využívá některé prostředky na jednotlivých uzlech. Některé úlohy vytvářejí služby, které jsou mimořádně velké a využívají většinu nebo všechny uzly. V těchto případech je možné, že když dojde k vytvoření velkých úloh, že na žádném uzlu není dost místa pro jejich spuštění. U velkých úloh se nejedná o problém v Service Fabric. v těchto případech cluster Správce prostředků zjistí, že je potřeba reorganizovat cluster, aby uvolnil prostor pro tuto velkou úlohu. Mezitím ale musí zatížení čekat na naplánování v clusteru.
 
-Pokud existuje mnoho služeb a stavu se pohybovat, pak může trvat dlouhou dobu pro velké zatížení, které mají být umístěny v clusteru. To je pravděpodobnější, pokud ostatní úlohy v clusteru jsou také velké a tak trvat déle reorganizovat. Tým Service Fabric měří časy vytvoření v simulacích tohoto scénáře. Zjistili jsme, že vytváření velkých služeb trvalo mnohem déle, jakmile se využití clusteru dostalo nad 30% až 50%. Chcete-li zpracovat tento scénář, jsme zavedli defragmentace jako vyvažovací strategie. Zjistili jsme, že pro velké úlohy, zejména ty, kde byl důležitý čas vytvoření, defragmentace opravdu pomohla těmto novým úlohám naplánovat v clusteru.
+Pokud existuje mnoho služeb a stavů, které je třeba přesunout, může trvat dlouhou dobu, než se velké zatížení umístí do clusteru. Pravděpodobnou příčinou je, že další úlohy v clusteru jsou také velké a jejich uspořádání trvá déle. Service Fabric tým měřené časy vytváření v simulacích tohoto scénáře. Zjistili jsme, že vytváření velkých služeb trvalo mnohem déle, protože využití clusteru je výše v rozsahu 30 až 50%. Pro zpracování tohoto scénáře jsme zavedli defragmentaci jako vyrovnávání strategie. Zjistili jsme, že pro velké úlohy, zejména v případě, kdy čas vytvoření je důležité, Defragmentace skutečně pomohlo, aby tyto nové úlohy naplánovaly v clusteru.
 
-Můžete nakonfigurovat defragmentace metriky mít Správce prostředků clusteru proaktivně pokusit zkondenzovat zatížení služeb do méně uzlů. To pomáhá zajistit, že je téměř vždy prostor pro velké služby bez reorganizace clusteru. Není třeba reorganizovat clusteru umožňuje vytvářet velké úlohy rychle.
+Metriky defragmentace můžete nakonfigurovat tak, aby se cluster Správce prostředků proaktivně pokoušet o zúžení zatížení služeb do menšího počtu uzlů. To pomáhá zajistit, aby pro velké služby bylo skoro vždy místo, aniž by bylo nutné znovu organizovat cluster. Nemusíte reorganizovat cluster, což umožňuje rychlé vytváření velkých úloh.
 
-Většina lidí nepotřebuje defragmentaci. Služby jsou obvykle malé, takže není těžké najít prostor pro ně v clusteru. Když je reorganizace možná, jde to rychle, opět proto, že většina služeb je malá a lze je přesunout rychle a paralelně. Nicméně, pokud máte velké služby a potřebujete je rychle vytvořit, pak defragmentace strategie je pro vás. Budeme diskutovat o kompromisy použití defragmentace další. 
+Většina lidí nepotřebuje defragmentaci. Služby jsou obvykle malé, takže není obtížné najít pro ně místo v clusteru. V případě, že je reorganizace možná, bude rychle a znovu fungovat, protože většina služeb je malá a je možné ji rychle a paralelně přesunout. Pokud ale máte velké služby a potřebujete je rychle vytvořit, vytvoří se vám strategie defragmentace. Budeme se zabývat kompromisy používání defragmentace v další části. 
 
-## <a name="defragmentation-tradeoffs"></a>Kompromisy defragmentace
-Defragmentace může zvýšit dopad selhání, protože další služby jsou spuštěny na uzlech, které se nezdaří. Defragmentace může také zvýšit náklady, protože prostředky v clusteru musí být drženy v rezervě a čeká se na vytvoření velkých úloh.
+## <a name="defragmentation-tradeoffs"></a>Nevýhody defragmentace
+Defragmentace může zvýšit impactfulness selhání, protože na uzlech, které selžou, jsou spuštěné další služby. Defragmentace může také zvýšit náklady, protože prostředky v clusteru musí být uchovávány v rezervě a čekají na vytvoření velkých úloh.
 
-Následující diagram poskytuje vizuální reprezentaci dvou clusterů, jeden, který je defragmentován a jeden, který není. 
+Následující diagram poskytuje vizuální znázornění dvou clusterů, z nichž jeden je defragmentované a druhý. 
 
 <center>
 
-![Porovnání vyvážených a defragmentovaných clusterů][Image1]
+![Porovnání vyrovnaných a defragmentovaných clusterů][Image1]
 </center>
 
-Ve vyváženém případě zvažte počet pohybů, které by byly nezbytné k umístění jednoho z největších objektů služby. V defragmentovaném clusteru může být velké zatížení umístěno na uzlech čtyři nebo pět, aniž by bylo třeba čekat na další služby přesunout.
+V případě vyrovnaného případu zvažte počet přesunů potřebných k umístění jednoho z největších objektů služby. V defragmentovaných clusterech může být velké zatížení umístěno na uzlech čtyř nebo 5 bez nutnosti čekat na přesun žádné jiné služby.
 
-## <a name="defragmentation-pros-and-cons"></a>Defragmentace klady a zápory
-Takže to, co jsou tyto další koncepční kompromisy? Zde je rychlý přehled věcí, o kterých je třeba přemýšlet:
+## <a name="defragmentation-pros-and-cons"></a>Defragmentace – specialisté a nevýhody
+Co jsou to ostatní koncepční kompromisy? Tady je Stručná tabulka věcí, které je třeba zvážit:
 
-| Defragmentace Klady | Defragmentace Nevýhody |
+| Specialisté na defragmentaci | Nevýhody defragmentace |
 | --- | --- |
-| Umožňuje rychlejší tvorbu velkých služeb |Soustřeďe zatížení na méně uzlů, což zvyšuje sváry |
-| Umožňuje nižší pohyb dat při vytváření |Selhání může mít vliv na více služeb a způsobit více změn |
-| Umožňuje bohatý popis požadavků a rekultivaci prostoru |Složitější celková konfigurace správy prostředků |
+| Umožňuje rychlejší vytváření velkých služeb. |Soustřeďuje zatížení na méně uzlů a zvyšuje kolize obsahu. |
+| Umožňuje snížení přesunu dat během vytváření. |Selhání může mít dopad na další služby a způsobit více změn. |
+| Umožňuje bohatě popis požadavků a recyklaci místa. |Složitější konfigurace celkového řízení prostředků |
 
-Defragmentované a normální metriky můžete kombinovat ve stejném clusteru. Správce prostředků clusteru se pokusí co nejvíce konsolidovat metriky defragmentace při rozprostření ostatních. Výsledky míchání defragmentace a vyvažování strategie závisí na několika faktorech, včetně:
-  - počet vyrovnávacích metrik vs. počet metrik defragmentace
-  - Zda nějaká služba používá oba typy metrik 
-  - metrické váhy
-  - aktuální metrický zatížení
+Ve stejném clusteru můžete kombinovat defragmentované a normální metriky. Cluster Správce prostředků se snaží sloučit metriky defragmentace co nejvíc, a to při rozšiřování dalších. Výsledky kombinování defragmentace a vyrovnávání strategií závisí na několika faktorech, včetně těchto:
+  - počet metrik vyrovnávání vs. počet metrik defragmentace
+  - Zda kterákoli služba používá oba typy metrik 
+  - váhy metriky
+  - aktuální zatížení metriky
   
-K určení přesné potřebné konfigurace je nutné experimentovat. Před povolením metrik defragmentace v produkčním prostředí doporučujeme důkladné měření vašich úloh. To platí zejména při míchání defragmentace a vyvážené metriky v rámci stejné služby. 
+K určení přesné konfigurace je nutné experimentovat. Než povolíte metriky defragmentace v produkčním prostředí, doporučujeme důkladné měření vašich úloh. To platí hlavně při kombinování defragmentace a vyvážených metrik v rámci stejné služby. 
 
 ## <a name="configuring-defragmentation-metrics"></a>Konfigurace metrik defragmentace
-Konfigurace metrik defragmentace je globální rozhodnutí v clusteru a jednotlivé metriky lze vybrat pro defragmentaci. Následující fragmenty konfigurace ukazují, jak nakonfigurovat metriky pro defragmentaci. V tomto případě "Metric1" je nakonfigurován jako metrika defragmentace, zatímco "Metric2" bude i nadále vyváženy normálně. 
+Konfigurace metrik defragmentace je globální rozhodnutí v clusteru a jednotlivé metriky je možné vybrat k defragmentaci. Následující fragmenty kódu konfigurace ukazují, jak nakonfigurovat metriky pro defragmentaci. V tomto případě je "Metric1" nakonfigurovaný jako metrika defragmentace, zatímco "Metric2" bude i nadále vyvážené normálně. 
 
-ClusterManifest.xml:
+Manifestem clusteru. XML:
 
 ```xml
 <Section Name="DefragmentationMetrics">
@@ -67,7 +67,7 @@ ClusterManifest.xml:
 </Section>
 ```
 
-prostřednictvím souboru ClusterConfig.json pro samostatná nasazení nebo Template.json pro hostované clustery Azure:
+přes ClusterConfig. JSON pro samostatná nasazení nebo šablonu Template. JSON pro hostované clustery Azure:
 
 ```json
 "fabricSettings": [
@@ -89,7 +89,7 @@ prostřednictvím souboru ClusterConfig.json pro samostatná nasazení nebo Temp
 
 
 ## <a name="next-steps"></a>Další kroky
-- Správce prostředků clusteru má možnosti man pro popis clusteru. Další informace o nich naleznete v tomto článku [popisujícím cluster Service Fabric](service-fabric-cluster-resource-manager-cluster-description.md)
-- Metriky jsou způsob, jakým je manger prostředků clusteru Service Fabric spravuje spotřebu a kapacitu v clusteru. Další informace o metrikách a jejich konfiguraci najdete v [tomto článku](service-fabric-cluster-resource-manager-metrics.md)
+- Správce prostředků clusteru obsahuje možnosti člověka pro popis clusteru. Pokud se o nich chcete dozvědět víc, přečtěte si článek [popisující Service Fabric cluster](service-fabric-cluster-resource-manager-cluster-description.md) .
+- Metriky představují způsob, jakým Správce prostředků clusteru Service Fabric spravuje spotřebu a kapacitu v clusteru. Další informace o metrikách a jejich konfiguraci najdete v [tomto článku](service-fabric-cluster-resource-manager-metrics.md) .
 
 [Image1]:./media/service-fabric-cluster-resource-manager-defragmentation-metrics/balancing-defrag-compared.png

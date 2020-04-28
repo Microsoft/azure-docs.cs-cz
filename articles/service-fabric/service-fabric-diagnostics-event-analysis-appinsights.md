@@ -1,48 +1,48 @@
 ---
-title: Analýza událostí azure service fabric s přehledy aplikací
-description: Další informace o vizualizaci a analýze událostí pomocí Application Insights pro monitorování a diagnostiku clusterů Azure Service Fabric.
+title: Analýza událostí v Azure Service Fabric s využitím Application Insights
+description: Seznamte se s vizualizací a analýzou událostí pomocí Application Insights pro monitorování a diagnostiku clusterů Azure Service Fabric.
 author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 5c80dc9f350fec30469a9bce2ed836c276ef3a7f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75464750"
 ---
-# <a name="event-analysis-and-visualization-with-application-insights"></a>Analýza událostí a vizualizace pomocí Application Insights
+# <a name="event-analysis-and-visualization-with-application-insights"></a>Analýza a vizualizace událostí pomocí Application Insights
 
-Součást Azure Monitor, Application Insights je rozšiřitelná platforma pro monitorování aplikací a diagnostiku. Obsahuje výkonný analytický a dotazovací nástroj, přizpůsobitelný řídicí panel a vizualizace a další možnosti včetně automatického upozorňování. Integrace Application Insights s Service Fabric zahrnuje nástroje pro Visual Studio a portál Azure, stejně jako metriky specifické pro service fabric, které poskytují komplexní prostředí protokolování out-of-the-box. Přestože mnoho protokolů jsou automaticky vytvořeny a shromažďovány pro vás pomocí Application Insights, doporučujeme přidat další vlastní protokolování do aplikací vytvořit bohatší diagnostické prostředí.
+Součást Azure Monitor, Application Insights je rozšiřitelná platforma pro monitorování a diagnostiku aplikací. Zahrnuje výkonné nástroje pro analýzu a dotazování, přizpůsobitelné řídicí panely a vizualizace a další možnosti, včetně automatizovaného upozorňování. Application Insights integrace s Service Fabric zahrnuje nástroje pro sadu Visual Studio a Azure Portal a také Service Fabric specifické metriky, které poskytují ucelené možnosti protokolování. I když se pro vás Application Insights bude automaticky vytvářet a shromažďovat spousty protokolů, doporučujeme, abyste do svých aplikací přidali další vlastní protokolování, abyste mohli vytvořit bohatší prostředí diagnostiky.
 
 Tento článek pomáhá řešit následující běžné otázky:
 
-* Jak poznám, co se děje v mé aplikaci a službách a sbírám telemetrii?
-* Jak lze vyřešit potíže s aplikací, zejména službami, které spolu komunikují?
-* Jak získám metriky o tom, jak si moje služby vedou, například čas načítání stránky, požadavky HTTP?
+* Návody o tom, co se v mých aplikacích a službách prochází a jak shromažďovat telemetrii?
+* Návody řešit problémy s aplikací, zejména o službách, které vzájemně komunikují?
+* Návody získat metriky, jak fungují moje služby, například čas načítání stránky, požadavky HTTP?
 
-Účelem tohoto článku je ukázat, jak získat přehledy a řešení potíží z aplikace Přehledy. Pokud se chcete dozvědět, jak nastavit a nakonfigurovat Application Insights pomocí Service Fabric, podívejte se na tento [kurz](service-fabric-tutorial-monitoring-aspnet.md).
+Účelem tohoto článku je Ukázat, jak získat přehledy a řešit potíže v rámci Application Insights. Pokud se chcete dozvědět, jak nastavit a nakonfigurovat Application Insights pomocí Service Fabric, přečtěte si tento [kurz](service-fabric-tutorial-monitoring-aspnet.md).
 
-## <a name="monitoring-in-application-insights"></a>Monitorování v přehledech aplikací
+## <a name="monitoring-in-application-insights"></a>Monitorování v Application Insights
 
-Application Insights má bohaté prostředí po vybalení z krabice při používání Service Fabric. Na stránce s přehledem application insights poskytuje klíčové informace o vaší službě, jako je doba odezvy a počet zpracovaných požadavků. Kliknutím na tlačítko "Hledat" nahoře se ve vaší aplikaci zobrazí seznam posledních požadavků. Navíc byste mohli zobrazit neúspěšné požadavky zde a diagnostikovat, jaké chyby mohou nastat.
+Application Insights při použití Service Fabric nabízí bohatě funkční prostředí. Na stránce Přehled Application Insights poskytuje klíčové informace o vaší službě, například dobu odezvy a počet zpracovaných požadavků. Kliknutím na tlačítko Hledat v horní části uvidíte seznam posledních požadavků v aplikaci. Kromě toho by bylo možné zobrazit neúspěšné požadavky a diagnostikovat, k jakým chybám mohlo dojít.
 
-![Přehledy aplikací – přehled](media/service-fabric-diagnostics-event-analysis-appinsights/ai-overview.png)
+![Přehled Application Insights](media/service-fabric-diagnostics-event-analysis-appinsights/ai-overview.png)
 
-Na pravém panelu v předchozím obrázku jsou v seznamu dva hlavní typy položek: požadavky a události. Požadavky jsou volání rozhraní API aplikace prostřednictvím požadavků HTTP v tomto případě a události jsou vlastní události, které fungují jako telemetrie, kterou můžete přidat kdekoli ve vašem kódu. Můžete dále prozkoumat instrumentaci aplikací v [application insights API pro vlastní události a metriky](../azure-monitor/app/api-custom-events-metrics.md). Kliknutím na požadavek by se zobrazí další podrobnosti, jak je znázorněno na následujícím obrázku, včetně dat specifických pro Service Fabric, který je shromážděn v balíčku nuget služby Application Insights Service Fabric. Tyto informace jsou užitečné pro řešení potíží a vědět, jaký je stav vaší aplikace, a všechny tyto informace lze prohledávat v rámci přehledů aplikací.
+Na pravém panelu na předchozím obrázku existují dva hlavní typy záznamů v seznamu: žádosti a události. Požadavky jsou volání rozhraní API aplikace prostřednictvím požadavků HTTP v tomto případě a události jsou vlastní události, které fungují jako telemetrie, které můžete přidat kdekoli v kódu. Můžete dále prozkoumat instrumentaci aplikací v [rozhraní Application Insights API pro vlastní události a metriky](../azure-monitor/app/api-custom-events-metrics.md). Kliknutím na žádost se zobrazí další podrobnosti, jak je znázorněno na následujícím obrázku, včetně dat specifických pro Service Fabric, která se shromažďují v balíčku NuGet Application Insights Service Fabric. Tyto informace jsou užitečné při řešení potíží a znalosti toho, co je stav aplikace, a všechny tyto informace jsou prohledávatelné v rámci Application Insights
 
-![Podrobnosti o požadavku na přehledy aplikací](media/service-fabric-diagnostics-event-analysis-appinsights/ai-request-details.png)
+![Podrobnosti o Application Insights žádosti](media/service-fabric-diagnostics-event-analysis-appinsights/ai-request-details.png)
 
-Application Insights má určené zobrazení pro dotazování proti všechna data, která přichází. Kliknutím na "Průzkumník metrik" v horní části stránky Přehled přejděte na portál Application Insights. Zde můžete spouštět dotazy na dříve uvedené vlastní události, požadavky, výjimky, čítače výkonu a další metriky pomocí dotazovacího jazyka Kusto. Následující příklad ukazuje všechny požadavky za poslední 1 hodinu.
+Application Insights má určené zobrazení pro dotazování na všechna data, která jsou součástí. Kliknutím na "Průzkumník metrik" v horní části stránky přehled přejdete na portál Application Insights. Tady můžete spouštět dotazy proti vlastním událostem, které jsou uvedené před, požadavky, výjimky, čítače výkonu a další metriky pomocí dotazovacího jazyka Kusto. Následující příklad zobrazuje všechny žádosti za poslední 1 hodinu.
 
-![Podrobnosti o požadavku na přehledy aplikací](media/service-fabric-diagnostics-event-analysis-appinsights/ai-metrics-explorer.png)
+![Podrobnosti o Application Insights žádosti](media/service-fabric-diagnostics-event-analysis-appinsights/ai-metrics-explorer.png)
 
-Chcete-li dále prozkoumat možnosti portálu Application Insights, přejděte do [dokumentace k portálu Application Insights](../azure-monitor/app/app-insights-dashboards.md).
+Chcete-li dále prozkoumat možnosti portálu Application Insights, přečtěte si dokumentaci k [portálu Application Insights Portal](../azure-monitor/app/app-insights-dashboards.md).
 
-### <a name="configuring-application-insights-with-eventflow"></a>Konfigurace přehledů aplikací pomocí EventFlow
+### <a name="configuring-application-insights-with-eventflow"></a>Konfigurace Application Insights pomocí využitím eventflow
 
-Pokud používáte EventFlow k agregaci `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights`událostí, nezapomeňte importovat balíček NuGet. Následující kód je vyžadován v části *výstupy* *eventFlowConfig.json*:
+Pokud k agregaci událostí používáte využitím eventflow, nezapomeňte importovat balíček `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights`NuGet. Následující kód je vyžadován v části *výstupy* v *eventFlowConfig. JSON*:
 
 ```json
 "outputs": [
@@ -53,25 +53,25 @@ Pokud používáte EventFlow k agregaci `Microsoft.Diagnostics.EventFlow.Outputs
 ]
 ```
 
-Ujistěte se, že provést požadované změny ve filtrech, stejně jako zahrnout všechny ostatní vstupy (spolu s jejich příslušné balíčky NuGet).
+Ujistěte se, že ve svých filtrech provedete požadované změny, a taky Zahrňte všechny další vstupy (spolu s příslušnými balíčky NuGet).
 
-## <a name="application-insights-sdk"></a>Aplikace Přehledy SDK
+## <a name="application-insights-sdk"></a>Sada Application Insights SDK
 
-Doporučuje se používat EventFlow a WAD jako agregační řešení, protože umožňují modulárnější přístup k diagnostice a monitorování, tj. jednoduché úpravy konfiguračního souboru. Pokud se však rozhodnete investovat do používání Application Insights a není pravděpodobné, že se změníte na jinou platformu, měli byste se podívat na použití nové sady SDK application insights pro agregaci událostí a jejich odeslání do Application Insights. To znamená, že již nebudete muset nakonfigurovat EventFlow pro odesílání dat do Application Insights, ale místo toho nainstaluje balíček ApplicationInsight Service Fabric NuGet. Podrobnosti o balíčku naleznete [zde](https://github.com/Microsoft/ApplicationInsights-ServiceFabric).
+Doporučuje se používat využitím eventflow a WAD jako řešení agregace, protože umožňují obecnější přístup k diagnostice a monitorování, to znamená, že pokud chcete změnit výstupy z využitím eventflow, nemusíte mít žádnou změnu na skutečnou instrumentaci, a to pouze jednoduchou úpravou konfiguračního souboru. Pokud se ale rozhodnete investovat do používání Application Insights a nebudete se pravděpodobně měnit na jinou platformu, měli byste se podívat na použití Application Insights nové sady SDK pro agregaci událostí a jejich posílání do Application Insights. To znamená, že už nebudete muset konfigurovat využitím eventflow, aby se vaše data odesílala Application Insights, ale místo toho se nainstaluje balíček NuGet pro Service Fabric ApplicationInsight. Podrobnosti o balíčku najdete [tady](https://github.com/Microsoft/ApplicationInsights-ServiceFabric).
 
-[Podpora Application Insights pro mikroslužby a kontejnery](https://azure.microsoft.com/blog/app-insights-microservices/) zobrazuje některé nové funkce, na kterých se pracuje (aktuálně stále v beta verzi), které umožňují mít bohatší možnosti monitorování inasvit ázidu s Application Insights. Patří mezi ně sledování závislostí (používá se při vytváření AppMap všech vašich služeb a aplikací v clusteru a komunikace mezi nimi) a lepší korelace trasování pocházejících z vašich služeb (pomáhá lépe určit problém v pracovním postupu aplikace nebo služby).
+[Application Insights podpora mikroslužeb a kontejnerů](https://azure.microsoft.com/blog/app-insights-microservices/) zobrazuje některé nové funkce, které jsou právě zpracovávány (aktuálně stále ve verzi beta), což vám umožní mít širší možnosti monitorování s Application Insights. Mezi ně patří sledování závislostí (používá se při vytváření AppMap všech služeb a aplikací v clusteru a komunikace mezi nimi) a lepší korelace trasování přicházejících z vašich služeb (pomáhá lépe určit problém v pracovním postupu aplikace nebo služby).
 
-Pokud vyvíjíte v rozhraní .NET a pravděpodobně budete používat některé programovací modely Service Fabric a jste ochotni použít Application Insights jako platformu pro vizualizaci a analýzu dat událostí a protokolu, doporučujeme přejít přes Application Insights SDK jako pracovní postup monitorování a diagnostiky. Přečtěte si [to](../azure-monitor/app/asp-net-more.md) a [to,](../azure-monitor/app/asp-net-trace-logs.md) abyste mohli začít pomocí Application Insights ke shromažďování a zobrazování protokolů.
+Pokud vyvíjíte v rozhraní .NET a pravděpodobně použijete některé z programovacích modelů Service Fabric a máte ochotni používat Application Insights jako platformu pro vizualizaci a analýzu dat událostí a protokolů, pak doporučujeme, abyste provedli jako pracovní postup monitorování a diagnostiky trasu Application Insights SDK. Přečtěte si [Tento](../azure-monitor/app/asp-net-more.md) [článek a začněte](../azure-monitor/app/asp-net-trace-logs.md) s používáním Application Insights ke shromáždění a zobrazení protokolů.
 
-## <a name="navigating-the-application-insights-resource-in-azure-portal"></a>Navigace v prostředku Application Insights na webu Azure Portal
+## <a name="navigating-the-application-insights-resource-in-azure-portal"></a>Navigace prostředku Application Insights v Azure Portal
 
-Jakmile nakonfigurujete Application Insights jako výstup pro vaše události a protokoly, informace by se měly začít zobrazovat ve vašem prostředku Application Insights během několika minut. Přejděte na prostředek Application Insights, který vás přenese na řídicí panel prostředků Application Insights. Kliknutím na **Hledat** na hlavním panelu Přehledy aplikací zobrazíte nejnovější trasování, které obdržel, a budete je moci procházet.
+Jakmile nakonfigurujete Application Insights jako výstup pro události a protokoly, měly by se informace během několika minut zobrazovat v prostředku Application Insights. Přejděte na prostředek Application Insights, který vás převezme na řídicí panel prostředků Application Insights. Kliknutím na **Hledat** na hlavním panelu Application Insights zobrazíte nejnovější trasování, která přijala, a budete je moct přes ně filtrovat.
 
-*Průzkumník metrik* je užitečný nástroj pro vytváření vlastních řídicích panelů na základě metrik, které vaše aplikace, služby a cluster mohou vykazovat. Podívejte [se na tématu Zkoumání metrik v Application Insights](../azure-monitor/app/metrics-explorer.md) a nastavte si několik grafů na základě dat, která shromažďujete.
+*Průzkumník metrik* je užitečný nástroj pro vytváření vlastních řídicích panelů na základě metrik, které mohou hlásit aplikace, služby a cluster. V tématu [prozkoumávání metrik v Application Insights](../azure-monitor/app/metrics-explorer.md) můžete nastavit několik grafů pro sebe na základě shromažďovaných dat.
 
-Kliknutím na **Analytics** přejdete na portál Application Insights Analytics, kde můžete dotazovat události a trasování s větším rozsahem a volitelnostmi. Další informace najdete v [analytice v application insights](../azure-monitor/app/analytics.md).
+Kliknutím na **Analýza** přejdete na portál Application Insights Analytics, kde můžete zadávat dotazy na události a trasování s větším rozsahem a volitelnosti. Přečtěte si další informace o [analýze v Application Insights](../azure-monitor/app/analytics.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Nastavení upozornění v umělou a inici,](../azure-monitor/app/alerts.md) která mají být upozorňována na změny výkonu nebo využití
-* [Inteligentní detekce v Application Insights](../azure-monitor/app/proactive-diagnostics.md) provádí proaktivní analýzu telemetrie odesílané do Application Insights, aby vás upozornila na potenciální problémy s výkonem
+* [V AI nastavte výstrahy](../azure-monitor/app/alerts.md) na změny výkonu nebo využití.
+* [Inteligentní zjišťování v Application Insights](../azure-monitor/app/proactive-diagnostics.md) provádí proaktivní analýzu telemetrie, která se posílá do Application Insights upozorňující na potenciální problémy s výkonem.

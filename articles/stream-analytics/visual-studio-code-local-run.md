@@ -1,86 +1,86 @@
 ---
-title: Testování úlohy Azure Stream Analytics místně s ukázkovými daty pomocí kódu Visual Studia
-description: Tento článek popisuje, jak testovat dotazy místně s ukázkovými daty pomocí nástrojů Azure Stream Analytics pro kód Visual Studia.
+title: Místní otestování Azure Stream Analytics úlohy pomocí ukázkových dat s využitím Visual Studio Code
+description: Tento článek popisuje, jak testovat dotazy místně s použitím ukázkových dat pomocí Azure Stream Analyticsch nástrojů pro Visual Studio Code.
 ms.service: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.date: 11/10/2019
 ms.topic: conceptual
 ms.openlocfilehash: c29d0d9ecd856ee9611df21d23b1b2b763e24652
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75486466"
 ---
-# <a name="test-stream-analytics-queries-locally-with-sample-data-using-visual-studio-code"></a>Test Stream Analytics dotazy místně s ukázkovými daty pomocí kódu Sady Visual Studio
+# <a name="test-stream-analytics-queries-locally-with-sample-data-using-visual-studio-code"></a>Test Stream Analytics dotazy místně s použitím ukázkových dat pomocí Visual Studio Code
 
-Pomocí nástrojů Azure Stream Analytics pro kód Visual Studia můžete své úlohy Stream Analytics testovat místně s ukázkovými daty. Výsledky dotazu můžete najít v souborech JSON ve složce **LocalRunOutputs** vašeho projektu.
+Pomocí Azure Stream Analytics nástrojů pro Visual Studio Code můžete testovat úlohy Stream Analytics lokálně pomocí ukázkových dat. Dotaz bude mít za následek soubory JSON ve složce **LocalRunOutputs** projektu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Nainstalujte [základní sadu SDK rozhraní .NET](https://dotnet.microsoft.com/download) a restartujte kód sady Visual Studio.
+* Nainstalujte [sadu .NET Core SDK](https://dotnet.microsoft.com/download) a restartujte Visual Studio Code.
 
-* Pomocí tohoto [rychlého startu](quick-create-vs-code.md) se dozvíte, jak vytvořit úlohu Stream Analytics pomocí kódu Sady Visual Studio.
+* V tomto [rychlém](quick-create-vs-code.md) startu se dozvíte, jak pomocí Visual Studio Code vytvořit úlohu Stream Analytics.
 
 ## <a name="prepare-sample-data"></a>Příprava ukázkových dat
 
-Nejprve je třeba připravit ukázkové vstupní datové soubory. Pokud již máte v počítači nějaké ukázkové datové soubory, můžete tento krok přeskočit a přejít k dalšímu.
+Nejprve musíte připravit ukázkové vstupní datové soubory. Pokud již máte v počítači nějaké soubory ukázkových dat, můžete tento krok přeskočit a přejít k následujícímu.
 
-1. Z horního řádku klikněte na **Náhled dat** ve vstupním konfiguračním souboru. Některá vstupní data budou načtena ze aplikace IoT Hub a zobrazena v okně náhledu. Všimněte si, že to může chvíli trvat.
+1. V horním řádku klikněte na **Náhled dat** ve vstupním konfiguračním souboru. Některá vstupní data budou načtena z IoT Hub a zobrazená v okně náhledu. Všimněte si, že může to chvíli trvat.
 
-2. Po zobrazení dat klikněte na **Uložit jako** a uložte je do místního souboru.
+2. Po zobrazení dat klikněte na **Uložit jako** a uložte data do místního souboru.
 
  ![Náhled živého vstupu](./media/quick-create-vs-code/preview-live-input.png)
 
 ## <a name="define-a-local-input"></a>Definování místního vstupu
 
-1. Klikněte na **input.json** v části Vstupy ve složce Stream Analytics v projektu Stream Analytics. Pak vyberte **Přidat místní vstup** z horního řádku.
+1. V Stream Analytics projektu klikněte na **input. JSON** ve složce Inputs. Pak na horním řádku vyberte **Přidat místní vstup** .
 
-    ![Přidání místního vstupu z projektu](./media/quick-create-vs-code/add-input-from-project.png)
+    ![Přidat místní vstup z projektu](./media/quick-create-vs-code/add-input-from-project.png)
 
-    Můžete také použít **Ctrl +Shift+P** otevřít paletu příkazů a zadat **ASA: Přidat vstup**.
+    K otevření palety příkazů můžete použít také **kombinaci kláves CTRL + SHIFT + P** a zadat **ASA: přidat vstup**.
 
-   ![Přidání vstupu Stream Analytics v kódu VS](./media/quick-create-vs-code/add-input.png)
+   ![Přidat vstup Stream Analytics v VS Code](./media/quick-create-vs-code/add-input.png)
 
 2. Vyberte **místní vstup**.
 
-    ![Přidání místního vstupu ASA v kódu sady Visual Studio](./media/vscode-local-run/add-local-input.png)
+    ![Přidání místního vstupu do programu ASA v nástroji Visual Studio Code](./media/vscode-local-run/add-local-input.png)
 
-3. Vyberte **+ Nový místní vstup**.
+3. Vyberte **+ nový místní vstup**.
 
-    ![Přidání nového místního vstupu ASA v kódu sady Visual Studio](./media/vscode-local-run/add-new-local-input.png)
+    ![Přidání nového místního vstupu do programu ASA v nástroji Visual Studio Code](./media/vscode-local-run/add-new-local-input.png)
 
-4. Zadejte stejný vstupní alias, který jste použili v dotazu.
+4. Zadejte stejný alias vstupu, který jste použili v dotazu.
 
-    ![Přidání nového místního vstupního aliasu ASA](./media/vscode-local-run/new-local-input-alias.png)
+    ![Přidat nový alias místního vstupu pro ASA](./media/vscode-local-run/new-local-input-alias.png)
 
-5. V nově generovaném souboru **LocalInput_Input.json** zadejte cestu k souboru, kde je umístěn místní datový soubor.
+5. V nově vygenerovaném souboru **LocalInput_Input. JSON** zadejte cestu k souboru, kde se nachází váš místní datový soubor.
 
-    ![Zadání cesty k místnímu souboru v sadě Visual Studio](./media/vscode-local-run/local-file-path.png)
+    ![Zadejte cestu k místnímu souboru v aplikaci Visual Studio](./media/vscode-local-run/local-file-path.png)
 
-6. Vyberte **Náhled dat,** chcete-li zobrazit náhled vstupních dat. Typ serializace pro vaše data je automaticky rozpoznán, pokud jeho JSON nebo CSV. Pomocí voliče můžete zobrazit data ve formátu **Tabulka** nebo **Nezpracovaný.** Následující tabulka je příkladem dat ve **formátu tabulka**:
+6. Vyberte možnost **Náhled dat** , abyste zobrazili náhled vstupních dat. Typ serializace pro vaše data se automaticky rozpozná, pokud je jeho JSON nebo CSV. Pomocí selektoru můžete zobrazit data v **tabulce** nebo v **nezpracovaném** formátu. Následující tabulka je příkladem dat ve **formátu tabulky**:
 
      ![Náhled místních dat ve formátu tabulky](./media/vscode-local-run/local-file-preview-table.png)
 
-    Následující tabulka je příkladem dat ve **formátu Raw**:
+    V následující tabulce je příklad dat v **nezpracovaném formátu**:
 
     ![Náhled místních dat v nezpracovaném formátu](./media/vscode-local-run/local-file-preview-raw.png)
 
-## <a name="run-queries-locally"></a>Spouštět dotazy místně
+## <a name="run-queries-locally"></a>Spustit dotazy místně
 
-Vraťte se do editoru dotazů a **vyberte Spustit místně**. Pak vyberte **Použít místní vstup** z rozevíracího seznamu.
+Vraťte se do editoru dotazů a vyberte **spustit místně**. Pak v rozevíracím seznamu vyberte **použít místní vstup** .
 
-![Vybrat spustit místně v editoru dotazů](./media/vscode-local-run/run-locally.png)
+![V editoru dotazů vyberte spustit místně.](./media/vscode-local-run/run-locally.png)
 
 ![Použít místní vstup](./media/vscode-local-run/run-locally-use-local-input.png)
 
-Výsledek se zobrazí v pravém okně. Chcete-li znovu otestovat, můžete klepnout na tlačítko **Spustit.** Můžete také vybrat **Otevřít ve složce,** abyste viděli soubory výsledků v průzkumníku souborů a dále je otevřeli pomocí jiných nástrojů. Všimněte si, že soubory výsledků jsou k dispozici pouze ve formátu JSON.
+Výsledek je zobrazen v pravém okně. Můžete znovu spustit test kliknutím na tlačítko **Spustit** . Můžete také vybrat **otevřít ve složce** a zobrazit soubory výsledků v Průzkumníkovi souborů a dále je otevřít pomocí jiných nástrojů. Všimněte si, že soubory výsledků jsou k dispozici pouze ve formátu JSON.
 
-![Zobrazit výsledek místního spuštění](./media/vscode-local-run/run-locally-result.png)
+![Zobrazit výsledky místního spuštění](./media/vscode-local-run/run-locally-result.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Testování úloh Azure Stream Analytics místně pomocí živého vstupu pomocí kódu Visual Studia](visual-studio-code-local-run-live-input.md)
+* [Testování Azure Stream Analytics úloh místně pomocí živého vstupu pomocí Visual Studio Code](visual-studio-code-local-run-live-input.md)
 
-* [Prozkoumejte úlohy Azure Stream Analytics pomocí kódu Visual Studia (Preview)](visual-studio-code-explore-jobs.md)
+* [Prozkoumejte Azure Stream Analytics úlohy pomocí Visual Studio Code (Preview).](visual-studio-code-explore-jobs.md)

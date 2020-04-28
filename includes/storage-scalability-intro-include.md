@@ -9,14 +9,14 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 8c5c0c8f649e7cbab2c16688717de1aaabfb93c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "75477145"
 ---
-Tento odkaz podrobně popisuje škálovatelnost a výkonnostní cíle pro Azure Storage. Škálovatelnost a výkonnostní cíle uvedené zde jsou high-end cíle, ale jsou dosažitelné. Ve všech případech závisí rychlost požadavků a šířka pásma dosažená vaším účtem úložiště na velikosti uložených objektů, využitých vzorcích přístupu a typu úlohy, kterou vaše aplikace provádí.
+Tento odkaz podrobně popisuje škálovatelnost a výkonnostní cíle pro Azure Storage. Zde uvedené cíle škálovatelnosti a výkonu jsou špičkové cíle, ale lze je dosažitelný. Frekvence požadavků a šířka pásma dosažené vaším účtem úložiště závisí ve všech případech na velikosti uložených objektů, využívaných vzorech přístupu a typu zatížení, které vaše aplikace provádí.
 
-Ujistěte se, že otestujete službu a zjistěte, zda její výkon splňuje vaše požadavky. Pokud je to možné, vyhněte se náhlým špičkám v rychlosti provozu a ujistěte se, že provoz je dobře distribuován mezi oddíly.
+Ujistěte se, že jste službu otestovali, abyste zjistili, jestli její výkon vyhovuje vašim požadavkům. Pokud je to možné, vyhněte se náhlým špičkám v oblasti provozu a zajistěte, aby byl provoz v různých oddílech dobře rozložený.
 
-Když vaše aplikace dosáhne limitu toho, co oddíl zvládne pro vaše úlohy, Azure Storage začne vracet kód chyby 503 (Server Busy) nebo kód chyby 500 (Operace časový limit) odpovědi. Pokud dochází k chybám 503, zvažte úpravu aplikace tak, aby používala exponenciální zásady backoff pro opakované pokusy. Exponenciální backoff umožňuje zatížení oddílu snížit a zmírnit špičky v provozu do tohoto oddílu.
+Když vaše aplikace dosáhne limitu toho, co může oddíl zpracovat pro vaše zatížení, Azure Storage začne vracet kód chyby 503 (zaneprázdněný serverem) nebo s kódem chyby 500 (časový limit operace). Pokud dojde k chybám 503, zvažte úpravu aplikace tak, aby pro opakované pokusy používala exponenciální omezení rychlosti zásady. Exponenciální omezení rychlosti umožňuje snížit zatížení oddílu a rozsvítit špičky v provozu do tohoto oddílu.

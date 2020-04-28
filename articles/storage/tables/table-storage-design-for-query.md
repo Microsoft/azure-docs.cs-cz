@@ -1,6 +1,6 @@
 ---
-title: Návrh úložiště tabulek Azure pro dotazy | Dokumenty společnosti Microsoft
-description: Návrh tabulek pro dotazy v úložišti Azure Table.
+title: Návrh Azure Table Storage pro dotazy | Microsoft Docs
+description: Navrhněte tabulky pro dotazy v úložišti tabulek Azure.
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -9,96 +9,96 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: 41a588ddc0c1be8014a84d8fe181013d8566f68d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75457643"
 ---
 # <a name="design-for-querying"></a>Návrh pro dotazování
-Řešení stolních služeb mohou být intenzivní pro čtení, psaní intenzivní nebo jejich kombinace. Tento článek se zaměřuje na věci, které je třeba mít na paměti při navrhování služby Table pro efektivní podporu operací čtení. Návrh, který efektivně podporuje operace čtení, je obvykle také efektivní pro operace zápisu. Existují však další aspekty, které je třeba mít na paměti při navrhování pro podporu operací zápisu, popsané v článku [Návrh pro úpravu dat](table-storage-design-for-modification.md).
+Table service řešení mohou být náročná na čtení, náročné na zápis nebo kombinace těchto dvou. Tento článek se zaměřuje na postupy, které je potřeba mít na paměti při navrhování Table service, aby bylo možné efektivně podporovat operace čtení. Obecně platí, že návrh, který podporuje operace čtení efektivně, je také účinný pro operace zápisu. Existují však i další okolnosti, které byste měli mít na paměti při navrhování pro podporu operací zápisu popsaných v článku [Návrh pro úpravu dat](table-storage-design-for-modification.md).
 
-Dobrým výchozím bodem pro návrh řešení služby Table service, které vám umožní efektivně číst data, je dotaz "Jaké dotazy bude aplikace muset provést, aby načetla data, která potřebuje ze služby Table Service?"  
+Dobrým výchozím bodem pro návrh řešení Table service, aby bylo možné efektivně číst data, je požádat o to, jaké dotazy bude aplikace muset spustit, aby se načetla data, která potřebuje z Table service? "  
 
 > [!NOTE]
-> Se službou Table service je důležité, aby byl návrh správně uveden dopředu, protože později je obtížné a nákladné jej změnit. Například v relační databázi je často možné řešit problémy s výkonem jednoduše přidáním indexů do existující databáze: to není možnost se službou Table.  
+> S Table service je důležité, abyste si před návrhem nastavili správné nastavení, protože je obtížné ho později změnit. Například v relační databázi je často možné vyřešit problémy s výkonem pouhým přidáním indexů do existující databáze: to není možnost s Table service.  
 > 
 > 
 
-Tato část se zaměřuje na klíčové problémy, které je třeba řešit při navrhování tabulek pro dotazování. Témata uvedená v této části zahrnují:
+Tato část se zaměřuje na klíčové problémy, které je potřeba řešit při návrhu tabulek pro dotazování. Témata, která jsou popsaná v tomto oddílu, zahrnují:
 
-* [Jak vaše volba PartitionKey a RowKey ovlivňuje výkon dotazu](#how-your-choice-of-partitionkey-and-rowkey-impacts-query-performance)
-* [Výběr vhodného klíče PartitionKey](#choosing-an-appropriate-partitionkey)
-* [Optimalizace dotazů pro službu Table](#optimizing-queries-for-the-table-service)
-* [Řazení dat ve službě Tabulka](#sorting-data-in-the-table-service)
+* [Jak vaše volba PartitionKey a RowKey ovlivňuje výkon dotazů](#how-your-choice-of-partitionkey-and-rowkey-impacts-query-performance)
+* [Výběr vhodné PartitionKey](#choosing-an-appropriate-partitionkey)
+* [Optimalizace dotazů pro Table service](#optimizing-queries-for-the-table-service)
+* [Řazení dat v Table service](#sorting-data-in-the-table-service)
 
-## <a name="how-your-choice-of-partitionkey-and-rowkey-impacts-query-performance"></a>Jak vaše volba PartitionKey a RowKey ovlivňuje výkon dotazu
-Následující příklady předpokládají, že služba tabulky ukládá entity zaměstnanců s následující strukturou (většina příkladů vyneche vlastnost **Časové razítko** pro přehlednost):  
+## <a name="how-your-choice-of-partitionkey-and-rowkey-impacts-query-performance"></a>Jak vaše volba PartitionKey a RowKey ovlivňuje výkon dotazů
+V následujících příkladech se předpokládá, že služba Table Service ukládá entity zaměstnanců s následující strukturou (většina příkladů vynechává vlastnost **timestamp** pro přehlednost):  
 
 | *Název sloupce* | *Datový typ* |
 | --- | --- |
 | **PartitionKey** (název oddělení) |Řetězec |
 | **RowKey** (ID zaměstnance) |Řetězec |
-| **Jméno** |Řetězec |
-| **Lastname** |Řetězec |
+| **FirstName** |Řetězec |
+| **Polím** |Řetězec |
 | **Věk** |Integer |
-| **Emailaddress** |Řetězec |
+| **EmailAddress** |Řetězec |
 
-Článek [Přehled úložiště tabulky Azure](table-storage-overview.md) popisuje některé klíčové funkce služby Azure Table, které mají přímý vliv na návrh dotazu. Výsledkem jsou následující obecné pokyny pro navrhování dotazů služby Table Service. Všimněte si, že syntaxe filtru použitá v následujících příkladech je z rozhraní REST API služby Table Service, další informace naleznete v [tématu Entity dotazu](https://docs.microsoft.com/rest/api/storageservices/Query-Entities).  
+Článek [Přehled služby Azure Table Storage](table-storage-overview.md) popisuje některé klíčové funkce Table Service Azure, které mají přímý vliv na návrh pro dotazy. Výsledkem jsou následující obecné pokyny pro navrhování Table service dotazů. Všimněte si, že syntaxe filtru použitá v níže uvedených příkladech pochází z REST API Table service, další informace najdete v tématu věnovaném [dotazům v entitě](https://docs.microsoft.com/rest/api/storageservices/Query-Entities).  
 
-* ***Bodový dotaz*** je nejúčinnější vyhledávání k použití a doporučuje se použít pro vyhledávání ve vysokém objemu nebo vyhledávání, které vyžadují nejnižší latenci. Takový dotaz můžete použít indexy k vyhledání jednotlivé entity velmi efektivně zadáním **PartitionKey** a **RowKey** hodnoty. Příklad: $filter=(PartitionKey eq 'Sales') a (RowKey eq '2')  
-* Druhým nejlepším je ***dotaz rozsahu,*** který používá **PartitionKey** a filtruje na rozsah **RowKey** hodnoty vrátit více než jednu entitu. Hodnota **PartitionKey** identifikuje konkrétní oddíl a hodnoty **RowKey** identifikují podmnožinu entit v tomto oddílu. Příklad: $filter=PartitionKey eq 'Sales' a RowKey ge 'S' a RowKey lt 'T'  
-* Třetí nejlepší je ***prohledávač oddílů,*** který používá **PartitionKey** a filtruje na jinou vlastnost, která není klíčem, a která může vrátit více než jednu entitu. Hodnota **PartitionKey** identifikuje konkrétní oddíl a hodnoty vlastností vyberte pro podmnožinu entit v tomto oddílu. Příklad: $filter=PartitionKey eq 'Sales' a LastName eq 'Smith'  
-* ***Prohledávač tabulky*** neobsahuje **partitionkey** a je velmi neefektivní, protože prohledává všechny oddíly, které tvoří tabulku zase pro všechny odpovídající entity. Provede prohledávač tabulky bez ohledu na to, zda filtr používá **řádek .** Příklad: $filter=LastName eq 'Jones'  
-* Dotazy, které vracejí více entit vrátit je seřazeny v **PartitionKey** a **RowKey** pořadí. Chcete-li se vyhnout uchýlení entity v klientovi, zvolte **RowKey,** který definuje nejběžnější pořadí řazení.  
+* ***Dotaz na bod*** je nejúčinnější vyhledávání, které se má použít, se doporučuje použít pro vyhledávání ve velkém objemech nebo vyhledávání vyžadující nejnižší latenci. Takový dotaz může použít indexy k velmi efektivnímu vyhledání jednotlivých entit zadáním hodnot **PartitionKey** a **RowKey** . Například: $filter = (PartitionKey EQ ' Sales ') a (RowKey EQ ' 2 ')  
+* Druhým nejlepším je ***dotaz na rozsah*** , který používá **PartitionKey** a filtry na rozsah hodnot **RowKey** pro vrácení více než jedné entity. Hodnota **PartitionKey** identifikuje konkrétní oddíl a hodnoty **RowKey** identifikují podmnožinu entit v tomto oddílu. Například: $filter = PartitionKey EQ "Sales" and RowKey GE 'S "and RowKey lt t"  
+* Třetí nejlepší je ***skenování oddílů*** , které používá **PartitionKey** a filtry pro jinou neklíčovou vlastnost a která může vracet více než jednu entitu. Hodnota **PartitionKey** identifikuje konkrétní oddíl a hodnoty vlastností se vyberou pro podmnožinu entit v tomto oddílu. Například: $filter = PartitionKey EQ ' Sales ' a LastName EQ ' Smith '  
+* ***Hledání v tabulce*** neobsahuje **PartitionKey** a je velmi neefektivní, protože prohledává všechny oddíly, které tvoří tabulku, a naopak všechny odpovídající entity. Provede kontrolu tabulky bez ohledu na to, zda filtr používá **RowKey**. Příklad: $filter = příjmení EQ ' Novák '  
+* Dotazy, které vracejí více entit, je vrátí seřazené v pořadí **PartitionKey** a **RowKey** . Chcete-li se vyhnout vyřazování entit v klientovi, vyberte **RowKey** , který definuje nejběžnější pořadí řazení.  
 
-Všimněte si, že použití "**nebo**" k určení filtru založeného na hodnotách **RowKey** vede k prohledání oddílu a není považováno za dotaz na oblast. Proto byste se měli vyhnout dotazům, které používají filtry, jako jsou: $filter=PartitionKey eq 'Sales' a (RowKey eq '121' nebo RowKey eq '322')  
+Všimněte si, že použití "**nebo**" k určení filtru založeného na hodnotách **RowKey** má za následek kontrolu oddílu a nepovažuje se za dotaz na rozsah. Proto byste se měli vyhnout dotazům, které používají filtry jako: $filter = PartitionKey EQ ' Sales ' a (RowKey EQ ' 121 ' nebo RowKey EQ ' 322 ')  
 
-Příklady kódu na straně klienta, které používají knihovnu klienta úložiště ke spuštění efektivních dotazů, naleznete v tématu:  
+Příklady kódu na straně klienta, který používá klientskou knihovnu pro úložiště ke spouštění efektivních dotazů, najdete v těchto tématech:  
 
-* [Spuštění bodového dotazu pomocí klientské knihovny úložiště](table-storage-design-patterns.md#executing-a-point-query-using-the-storage-client-library)
+* [Provedení dotazu na bod pomocí klientské knihovny pro úložiště](table-storage-design-patterns.md#executing-a-point-query-using-the-storage-client-library)
 * [Načtení více entit pomocí LINQ](table-storage-design-patterns.md#retrieving-multiple-entities-using-linq)
 * [Projekce na straně serveru](table-storage-design-patterns.md#server-side-projection)  
 
-Příklady kódu na straně klienta, který dokáže zpracovat více typů entit uložených ve stejné tabulce, najdete v tématu:  
+Příklady kódu na straně klienta, který může zpracovávat více typů entit uložených ve stejné tabulce, naleznete zde:  
 
 * [Práce s heterogenními typy entit](table-storage-design-patterns.md#working-with-heterogeneous-entity-types)  
 
-## <a name="choosing-an-appropriate-partitionkey"></a>Výběr vhodného klíče PartitionKey
-Vaše volba **PartitionKey** by měla vyvážit potřebu povolit použití EGTs (pro zajištění konzistence) proti požadavku na distribuci entit mezi více oddílů (pro zajištění škálovatelné řešení).  
+## <a name="choosing-an-appropriate-partitionkey"></a>Výběr vhodné PartitionKey
+Vaše volba **PartitionKey** by měla vyvážit nutnost povolit použití EGTs (k zajištění konzistence) s požadavkem na distribuci entit napříč více oddíly (aby se zajistilo škálovatelné řešení).  
 
-V jednom extrému můžete uložit všechny entity v jednom oddílu, ale to může omezit škálovatelnost vašeho řešení a zabrání službě table service možnost požadavky na vyrovnávání zatížení. Na druhé straně extrémní můžete uložit jednu entitu na oddíl, který by byl vysoce škálovatelný a který umožňuje službu table service požadavky na vyrovnávání zatížení, ale které by vám zabránily v použití transakcí skupiny entit.  
+V jednom krajním případě byste mohli uložit všechny své entity do jednoho oddílu, ale může to omezit škálovatelnost vašeho řešení a zabránit tomu, aby služba Table Service mohla vyrovnávat zatížení požadavků. V ostatních extrémních případech byste mohli ukládat jednu entitu na oddíl, která bude vysoce škálovatelná a která službě Table Service umožňuje vyrovnávat zatížení požadavků, ale to by zabránilo použití transakcí skupin entit.  
 
-Ideální **PartitionKey** je ten, který umožňuje používat efektivní dotazy a který má dostatek oddílů k zajištění škálovatelnosti vašeho řešení. Obvykle zjistíte, že vaše entity budou mít vhodnou vlastnost, která distribuuje entity přes dostatečné oddíly.
+Ideální **PartitionKey** je ten, který umožňuje používat efektivní dotazy a má dostatečné oddíly pro zajištění škálovatelnosti vašeho řešení. Obvykle zjistíte, že vaše entity budou mít vhodnou vlastnost, která distribuuje vaše entity mezi dostatečné oddíly.
 
 > [!NOTE]
-> Například v systému, který ukládá informace o uživatelích nebo zaměstnancích, může být UživatelID dobrým partitionkey. Můžete mít několik entit, které používají dané Uživatelské ID jako klíč oddílu. Každá entita, která ukládá data o uživateli, je seskupena do jednoho oddílu, takže tyto entity jsou přístupné prostřednictvím transakcí skupiny entit, zatímco jsou stále vysoce škálovatelné.
+> Například v systému, který ukládá informace o uživatelích nebo zaměstnaních, může být ID uživatele vhodné PartitionKey. Je možné, že máte několik entit, které používají daný identifikátor UserID jako klíč oddílu. Každá entita, která ukládá data o uživateli, je seskupena do jednoho oddílu, takže tyto entity budou přístupné prostřednictvím transakcí skupin entit, i když jsou pořád vysoce škálovatelné.
 > 
 > 
 
-Existují další důležité informace ve vašem výběru **PartitionKey,** které se vztahují k způsobu vložení, aktualizace a odstranění entit. Další informace naleznete v [tématu Návrh tabulek pro úpravy dat](table-storage-design-for-modification.md).  
+Existují další okolnosti, které si zvolíte v **PartitionKey** , které se týkají způsobu vkládání, aktualizace a odstraňování entit. Další informace najdete v tématu [navrhování tabulek pro úpravu dat](table-storage-design-for-modification.md).  
 
-## <a name="optimizing-queries-for-the-table-service"></a>Optimalizace dotazů pro službu Table
-Služba Table Service automaticky indexuje entity pomocí hodnot **PartitionKey** a **RowKey** v jednom seskupeném indexu, proto je důvod, proč jsou dotazy bodů nejúčinnější. Neexistují však žádné indexy než v clusterovaném indexu na **PartitionKey** a **RowKey**.
+## <a name="optimizing-queries-for-the-table-service"></a>Optimalizace dotazů pro Table service
+Table service automaticky indexuje vaše entity pomocí hodnot **PartitionKey** a **RowKey** v jednom seskupeném indexu, a to proto, proč jsou dotazy na Point nejúčinnější, aby je bylo možné použít. Neexistují však žádné indexy jiné než v clusterovaných indexech na **PartitionKey** a **RowKey**.
 
-Mnoho návrhů musí splňovat požadavky, aby bylo možné vyhledat entity na základě více kritérií. Například vyhledání entit zaměstnanců na základě e-mailu, id zaměstnance nebo příjmení. Vzory popsané v [vzorcích návrhu tabulky](table-storage-design-patterns.md) řeší tyto typy požadavků a popisují způsoby práce kolem skutečnosti, že služba Table neposkytuje sekundární indexy:  
+Mnoho návrhů musí splňovat požadavky na povolení vyhledávání entit na základě více kritérií. Například vyhledání entit zaměstnanců na základě e-mailu, ID zaměstnance nebo příjmení. Vzory popsané v [vzorcích návrhu tabulky](table-storage-design-patterns.md) řeší tyto typy požadavků a popisují způsoby, jak se na skutečnost, že Table Service neposkytují sekundární indexy:  
 
-* [Vzor sekundárního indexu uvnitř oddílu](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) – uložte více kopií každé entity pomocí různých hodnot **RowKey** (ve stejném oddílu), abyste povolili rychlé a efektivní vyhledávání a alternativní pořadí řazení pomocí různých hodnot **RowKey.**  
-* [Vzor sekundárního indexu mezi oddíly](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) – uložte více kopií každé entity pomocí různých hodnot **RowKey** v samostatných oddílech nebo v samostatných tabulkách, abyste povolili rychlé a efektivní vyhledávání a alternativní pořadí řazení pomocí různých hodnot **RowKey.**  
-* [Vzorek entit indexu](table-storage-design-patterns.md#index-entities-pattern) – udržovat entity indexu, aby bylo možné povolit efektivní vyhledávání, které vrací seznamy entit.  
+* [Vzor sekundárního indexu v rámci oddílu](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) – pomocí různých hodnot **RowKey** můžete pomocí různých hodnot **RowKey** (ve stejném oddílu) ukládat víc kopií každé entity, aby se povolily rychlé a efektivní vyhledávání a alternativní objednávky řazení.  
+* [Vzor sekundárního indexu mezi oddíly](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) – pomocí různých hodnot **RowKey** můžete ukládat několik kopií každé entity s použitím různých hodnot **RowKey** v samostatných oddílech nebo v samostatných tabulkách, abyste mohli rychle a efektivně vyhledávat a alternativní objednávky řazení.  
+* [Index entity vzor](table-storage-design-patterns.md#index-entities-pattern) – Udržujte entity indexu, které umožňují efektivní hledání, které vrací seznam entit.  
 
-## <a name="sorting-data-in-the-table-service"></a>Řazení dat ve službě Tabulka
-Služba Table vrátí entity seřazené ve vzestupném pořadí na základě **partitionkey** a potom podle **řádku.** Tyto klávesy jsou řetězcové hodnoty a aby bylo zajištěno, že číselné hodnoty se řadí správně, měli byste je převést na pevnou délku a umístit je nulami. Například pokud id zaměstnance hodnota, kterou používáte jako **RowKey** je celá hodnota, měli byste převést id zaměstnance **123** na **00000123**.  
+## <a name="sorting-data-in-the-table-service"></a>Řazení dat v Table service
+Table service vrátí entity seřazené ve vzestupném pořadí podle **PartitionKey** a pak podle **RowKey**. Tyto klíče jsou řetězcové hodnoty a k zajištění správného seřazení číselných hodnot byste je měli převést na pevnou délku a doplnit je nulami. Pokud například hodnota ID zaměstnance, kterou použijete jako **RowKey** , je celočíselná hodnota, měli byste převést id zaměstnance **123** na **00000123**.  
 
-Mnoho aplikací má požadavky na použití dat seřazených v různých objednávkách: například řazení zaměstnanců podle jména nebo podle data spojení. Následující vzory se týkají alternativního řazení objednávek pro entity:  
+Mnoho aplikací má požadavky na použití dat seřazených v různých objednávkách: například řazení zaměstnanců podle názvu nebo připojení k datu. Následující vzory řeší alternativní pořadí řazení pro vaše entity:  
 
-* [Vzor sekundárního indexu uvnitř oddílu](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) – uložte více kopií každé entity pomocí různých hodnot RowKey (ve stejném oddílu), abyste povolili rychlé a efektivní vyhledávání a alternativní pořadí řazení pomocí různých hodnot RowKey.  
-* [Vzor sekundárního indexu mezi oddíly](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) – uložte více kopií každé entity pomocí různých hodnot RowKey v samostatných oddílech v samostatných tabulkách, abyste povolili rychlé a efektivní vyhledávání a alternativní pořadí řazení pomocí různých hodnot RowKey.
-* [Vzor ocasu protokolu](table-storage-design-patterns.md#log-tail-pattern) - načíst *n* entity naposledy přidané do oddílu pomocí **RowKey** hodnotu, která seřadí v obráceném pořadí data a času.  
+* [Vzor sekundárního indexu v rámci oddílu](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) – pomocí různých hodnot RowKey můžete pomocí různých hodnot RowKey (ve stejném oddílu) ukládat víc kopií každé entity, aby se povolily rychlé a efektivní vyhledávání a alternativní objednávky řazení.  
+* [Vzorek sekundárního indexu mezi oddíly](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) – uložte několik kopií každé entity pomocí různých hodnot RowKey v samostatných oddílech v samostatných tabulkách, abyste mohli rychle a efektivně vyhledávat a alternativní objednávky řazení pomocí různých hodnot RowKey.
+* [Vzor funkce log Tail](table-storage-design-patterns.md#log-tail-pattern) – načte entity *n* naposledy přidané do oddílu pomocí hodnoty **RowKey** , která se seřadí v pořadí podle data a času.  
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Způsoby návrhu tabulek](table-storage-design-patterns.md)
 - [Modelování relací](table-storage-design-modeling.md)
-- [Šifrování dat tabulky](table-storage-design-encrypt-data.md)
+- [Šifrovat data tabulky](table-storage-design-encrypt-data.md)
 - [Návrh pro úpravu dat](table-storage-design-for-modification.md)
