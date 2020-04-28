@@ -1,7 +1,7 @@
 ---
-title: Upgrade verzí rozhraní REST API
+title: Upgradovat REST API verze
 titleSuffix: Azure Cognitive Search
-description: Zkontrolujte rozdíly ve verzích rozhraní API a zjistěte, které akce jsou nutné k migraci existujícího kódu do nejnovější verze rozhraní REST API služby Azure Cognitive Search.
+description: Projděte si rozdíly ve verzích rozhraní API a zjistěte, které akce jsou potřeba k migraci stávajícího kódu na nejnovější REST API verzi služby Azure Kognitivní hledání.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -9,92 +9,92 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: edb45eebc2c4eacc2f30d13988943f097a7190fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74112172"
 ---
-# <a name="upgrade-to-the-latest-azure-cognitive-search-service-rest-api-version"></a>Upgrade na nejnovější verzi rozhraní REST API služby Azure Cognitive Search
+# <a name="upgrade-to-the-latest-azure-cognitive-search-service-rest-api-version"></a>Upgradovat na nejnovější verzi služby Azure Kognitivní hledání REST API
 
-Pokud používáte předchozí verzi [rozhraní REST API vyhledávání](https://docs.microsoft.com/rest/api/searchservice/), tento článek vám pomůže upgradovat aplikaci tak, aby používala nejnovější obecně dostupnou verzi rozhraní API 2019-05-06.
+Pokud používáte předchozí verzi [vyhledávacího REST API](https://docs.microsoft.com/rest/api/searchservice/), Tento článek vám pomůže při upgradu vaší aplikace tak, aby používala nejnovější všeobecně dostupnou verzi rozhraní API 2019-05-06.
 
-Verze 2019-05-06 rozhraní REST API obsahuje některé změny z předchozích verzí. Ty jsou většinou zpětně kompatibilní, takže změna kódu by měla vyžadovat pouze minimální úsilí, v závislosti na verzi, kterou jste používali dříve. [Postup upgradu](#UpgradeSteps) popisuje změny kódu potřebné pro používání nových funkcí.
+Verze 2019-05-06 REST API obsahuje některé změny z dřívějších verzí. Jsou to většinou zpětně kompatibilní, takže změna kódu by měla vyžadovat jenom minimální úsilí v závislosti na verzi, kterou jste předtím používali. [Postup upgradu](#UpgradeSteps) popisuje změny kódu, které jsou potřebné pro použití nových funkcí.
 
 > [!NOTE]
-> Instance služby Azure Cognitive Search podporuje řadu verzí rozhraní REST API, včetně dřívějších verzí. Můžete pokračovat v používání těchto verzí rozhraní API, ale doporučujeme migraci kódu na nejnovější verzi, abyste měli přístup k novým funkcím.
+> Instance služby Azure Kognitivní hledání podporuje rozsah REST API verzí, včetně předchozích. Tyto verze rozhraní API můžete dál používat, ale doporučujeme migrovat kód na nejnovější verzi, abyste měli přístup k novým funkcím.
 
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-2019-05-06"></a>Co je nového ve verzi 2019-05-06
-Verze 2019-05-06 je nejnovější obecně dostupná verze rozhraní REST API. Mezi funkce, které byly převedeny na obecně dostupný stav v této verzi rozhraní API, patří:
+Verze 2019-05-06 je nejnovější všeobecně dostupná verze REST API. Funkce, které přešly na všeobecně dostupný stav této verze rozhraní API, zahrnují:
 
-* [Automatické dokončování](index-add-suggesters.md) je funkce dopředného psaní, která doplňuje částečně zadaný vstup termínu.
+* [Automatické dokončování](index-add-suggesters.md) je funkce typeahead, která dokončí částečně zadaný pojem vstupu.
 
 * [Komplexní typy](search-howto-complex-data-types.md) poskytují nativní podporu pro data strukturovaných objektů v indexu vyhledávání.
 
-* [Režimy analýzy JsonLines](search-howto-index-json-blobs.md), součást indexování objektů Blob Azure, vytvoří jeden vyhledávací dokument na entitu JSON, která je oddělena novým řádkem.
+* [Režimy analýzy JsonLines](search-howto-index-json-blobs.md), součást indexování objektů BLOB v Azure, vytvoří jeden vyhledávací dokument pro každou entitu JSON, která je oddělená novým řádkem.
 
-* [Obohacení umělou a i.](cognitive-search-concept-intro.md) poskytuje indexování, které využívá moduly obohacení ai cognitive services.
+* [Rozšíření AI](cognitive-search-concept-intro.md) poskytuje indexování, která využívá moduly obohacení AI Cognitive Services.
 
-S touto obecně dostupnou aktualizací se shoduje několik verzí funkcí preview. Seznam nových funkcí náhledu najdete v [tématu Hledání rozhraní API REST verze 2019-05-06-Preview](search-api-preview.md).
+Tato všeobecně dostupná aktualizace se shoduje s několika verzemi funkcí verze Preview. Seznam nových funkcí ve verzi Preview najdete v tématu věnovaném [hledání rozhraní REST API verze 2019-05-06-Preview](search-api-preview.md).
 
 ## <a name="breaking-changes"></a>Změny způsobující chyby
 
-Existující kód obsahující následující funkce se přeruší na api-version=2019-05-06.
+Existující kód, který obsahuje následující funkce, bude přerušit rozhraní API-Version = 2019-05-06.
 
-### <a name="indexer-for-azure-cosmos-db---datasource-is-now-type-cosmosdb"></a>Indexer pro Azure Cosmos DB – zdroj dat je teď "typ": "cosmosdb"
+### <a name="indexer-for-azure-cosmos-db---datasource-is-now-type-cosmosdb"></a>Indexer pro Azure Cosmos DB-DataSource je nyní "Type": "cosmosdb"
 
-Pokud používáte [indexer Cosmos DB](search-howto-index-cosmosdb.md ), `"type": "documentdb"` `"type": "cosmosdb"`musíte změnit na .
+Pokud používáte [Cosmos DB indexer](search-howto-index-cosmosdb.md ), musíte změnit `"type": "documentdb"` na `"type": "cosmosdb"`.
 
-### <a name="indexer-execution-result-errors-no-longer-have-status"></a>Chyby výsledků spuštění indexeru již nemají stav
+### <a name="indexer-execution-result-errors-no-longer-have-status"></a>Chyby výsledků spuštění indexeru už nejsou ve stavu.
 
-Struktura chyb pro provádění indexeru `status` dříve měl prvek. Tento prvek byl odebrán, protože neposkytoval užitečné informace.
+Struktura chyb pro provádění indexeru dříve měla `status` element. Tento prvek byl odebrán, protože neposkytl užitečné informace.
 
-### <a name="indexer-data-source-api-no-longer-returns-connection-strings"></a>Rozhraní API zdroje dat indexeru již nevrací připojovací řetězce.
+### <a name="indexer-data-source-api-no-longer-returns-connection-strings"></a>Rozhraní API zdroje dat indexeru už nevrací připojovací řetězce.
 
-Z verze rozhraní API 2019-05-06 a 2019-05-06-Preview dále, rozhraní API zdroje dat již vrací připojovací řetězce v odpovědi na všechny operace REST. V předchozích verzích rozhraní API pro zdroje dat vytvořené pomocí POST Azure Cognitive Search vrátil **201** následovaný odpovědí OData, která obsahovala připojovací řetězec ve formátu prostého textu.
+V rozhraní API verze 2019-05-06 a 2019-05-06-Preview a vyšší, rozhraní API zdroje dat už v reakci na operaci REST nevrací připojovací řetězce. V předchozích verzích rozhraní API byly pro zdroje dat vytvořené pomocí POST Kognitivní hledání Azure vrátil **201** a odpověď OData, která obsahovala připojovací řetězec v prostém textu.
 
-### <a name="named-entity-recognition-cognitive-skill-is-now-discontinued"></a>Kognitivní schopnost i kognitivní schopnosti rozpoznávání pojmenovaných entit je nyní ukončena.
+### <a name="named-entity-recognition-cognitive-skill-is-now-discontinued"></a>Již je ukončeno rozpoznávání pojmenovaných entit.
 
-Pokud zavoláte [schopnost Rozpoznávání entity názvu](cognitive-search-skill-named-entity-recognition.md) ve vašem kódu, volání se nezdaří. Funkce nahrazení je [rozpoznávání entit](cognitive-search-skill-entity-recognition.md). Měli byste být schopni nahradit odkaz na dovednosti žádnými dalšími změnami. Podpis rozhraní API je stejný pro obě verze. 
+Pokud ve svém kódu voláte dovednost [rozpoznávání entit název](cognitive-search-skill-named-entity-recognition.md) , volání se nezdaří. Nahrazování funkcí je [rozpoznávání entit](cognitive-search-skill-entity-recognition.md). Měli byste být schopni nahradit odkaz na dovednosti bez dalších změn. Podpis rozhraní API je pro obě verze stejný. 
 
 <a name="UpgradeSteps"></a>
 
 ## <a name="steps-to-upgrade"></a>Postup upgradu
-Pokud upgradujete z předchozí verze GA 2017-11-11 nebo 2016-09-01, pravděpodobně nebudete muset provádět žádné změny kódu, než změnit číslo verze. Jediné situace, ve kterých budete muset změnit kód, jsou, když:
+Pokud provádíte upgrade z předchozí verze GA, 2017-11-11 nebo 2016-09-01, pravděpodobně nebudete muset provádět žádné změny v kódu, a to i v případě, že změníte číslo verze. Jedinými situacemi, ve kterých může být nutné změnit kód, jsou:
 
-* Váš kód se nezdaří, pokud jsou vráceny nerozpoznané vlastnosti v odpovědi rozhraní API. Ve výchozím nastavení aplikace by měla ignorovat vlastnosti, které nerozumí.
+* Pokud se v odpovědi rozhraní API vrátí nerozpoznané vlastnosti, váš kód se nezdařil. Ve výchozím nastavení by vaše aplikace měla ignorovat vlastnosti, které nerozumí.
 
-* Váš kód zachová požadavky rozhraní API a pokusí se je znovu odeslat do nové verze rozhraní API. Například k tomu může dojít, pokud vaše aplikace přetrvává tokeny pokračování vrácené z rozhraní API vyhledávání (další informace vyhledejte `@search.nextPageParameters` v odkazu rozhraní API [vyhledávání).](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+* Váš kód uchovává požadavky rozhraní API a pokusí se je znovu odeslat do nové verze rozhraní API. K tomu může dojít například `@search.nextPageParameters` v případě, že vaše aplikace udržuje tokeny pokračování vracené z rozhraní API pro hledání (Další informace najdete v referenčních informacích [rozhraní API hledání](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)).
 
-Pokud se vás týká některá z těchto situací, bude pravděpodobně nutné odpovídajícím způsobem změnit kód. V opačném případě by neměly být nutné žádné změny, pokud nechcete začít používat [nové funkce](#WhatsNew) verze 2019-05-06.
+Pokud se vám některé z těchto situací vztahují, možná budete muset změnit kód odpovídajícím způsobem. V opačném případě by neměly být potřebné žádné změny, pokud nechcete začít používat [nové funkce](#WhatsNew) verze 2019-05-06.
 
-Pokud upgradujete z verze rozhraní PREVIEW, platí také výše uvedené, ale musíte si také uvědomit, že některé funkce náhledu nejsou k dispozici ve verzi 2019-05-06:
+Pokud provádíte upgrade z verze Preview rozhraní API, platí i výše, ale je také nutné si uvědomit, že některé funkce verze Preview nejsou k dispozici ve verzi 2019-05-06:
 
-* ["Více jako tento" dotazy](search-more-like-this.md)
+* ["Podobně jako tento" dotazy](search-more-like-this.md)
 * [Indexování objektů blob CSV](search-howto-index-csv-blobs.md)
-* [Podpora rozhraní API MongoDB pro indexery Cosmos DB](search-howto-index-cosmosdb.md)
+* [Podpora MongoDB API pro indexery Cosmos DB](search-howto-index-cosmosdb.md)
 
-Pokud váš kód používá tyto funkce, nebudete moci upgradovat na rozhraní API verze 2019-05-06 bez odebrání jejich použití.
+Pokud váš kód používá tyto funkce, nebudete moct upgradovat na rozhraní API verze 2019-05-06 bez odebrání jejich použití.
 
 > [!IMPORTANT]
-> Preview API jsou určeny pro testování a hodnocení a neměly by být používány v produkčním prostředí.
+> Rozhraní API ve verzi Preview jsou určená pro testování a vyhodnocení a neměla by se používat v produkčních prostředích.
 > 
 
-### <a name="upgrading-complex-types"></a>Inovace složitých typů
+### <a name="upgrading-complex-types"></a>Upgrade složitých typů
 
-Pokud váš kód používá složité typy se staršími verzemi rozhraní PREVIEW Preview 2017-11-11-Preview nebo 2016-09-01-Preview, existují některé nové a změněné limity ve verzi 2019-05-06, které si musíte být vědomi:
+Pokud váš kód používá komplexní typy s verzí starší verze Preview 2017-11-11-Preview nebo 2016-09-01-Preview, existuje několik nových a změněných omezení verze 2019-05-06, o kterých potřebujete vědět:
 
-+ Byly sníženy limity hloubky dílčích polí a počet komplexních kolekcí na index. Pokud jste vytvořili indexy, které překračují tato omezení pomocí verze rozhraní API náhledu, jakýkoli pokus o jejich aktualizaci nebo znovu vytvořit pomocí rozhraní API verze 2019-05-06 se nezdaří. Pokud se vás to týká, budete muset přepracovat schéma tak, aby se vešel do nových limitů, a pak obnovit index.
++ Omezení hloubky dílčích polí a počtu složitých kolekcí na index byly sníženy. Pokud jste vytvořili indexy, které překračují tato omezení pomocí verze Preview rozhraní API, všechny pokusy o jejich aktualizaci nebo jejich opětovné vytvoření pomocí rozhraní API verze 2019-05-06 selžou. Pokud to platí pro vás, budete muset změnit návrh schématu tak, aby odpovídal novému omezení, a pak index znovu sestavit.
 
-+ V rozhraní api verze 2019-05-06 je nový limit na počet prvků komplexních kolekcí na dokument. Pokud jste vytvořili indexy s dokumenty, které překračují tyto limity pomocí verze rozhraní API náhledu, jakýkoli pokus o přeindexování dat pomocí rozhraní API verze 2019-05-06 se nezdaří. Pokud se vás to týká, budete muset před přeindexováním dat snížit počet složitých prvků kolekce na dokument.
++ Rozhraní API-Version 2019-05-06 obsahuje nový limit počtu prvků komplexních kolekcí na dokument. Pokud jste vytvořili indexy s dokumenty, které překračují tato omezení pomocí verze Preview rozhraní API, všechny pokus o Reindexování těchto dat pomocí rozhraní API-Version 2019-05-06 se nezdaří. Pokud to platí pro vás, budete muset před změnou indexu dat snížit počet komplexních prvků kolekce na dokument.
 
-Další informace najdete v [tématu Omezení služeb pro Azure Cognitive Search](search-limits-quotas-capacity.md).
+Další informace najdete v tématu [omezení služby pro Azure kognitivní hledání](search-limits-quotas-capacity.md).
 
-### <a name="how-to-upgrade-an-old-complex-type-structure"></a>Jak upgradovat starou strukturu složitého typu
+### <a name="how-to-upgrade-an-old-complex-type-structure"></a>Postup upgradu staré struktury komplexního typu
 
-Pokud váš kód používá složité typy s jednou ze starších verzí rozhraní PREVIEW API, je možné, že používáte formát definice indexu, který vypadá takto:
+Pokud váš kód používá komplexní typy s jednou ze starších verzí rozhraní API verze Preview, možná použijete formát definice indexu, který vypadá takto:
 
 ```json
 {
@@ -129,23 +129,23 @@ Pokud váš kód používá složité typy s jednou ze starších verzí rozhran
 }  
 ```
 
-Ve verzi rozhraní API 2017-11-11-Preview byl zaveden novější formát podobný stromu pro definování polí indexu. V novém formátu má každé komplexní pole kolekci polí, kde jsou definována jeho dílčí pole. V rozhraní API verze 2019-05-06 tento nový formát se používá výhradně a pokus o vytvoření nebo aktualizaci indexu pomocí starého formátu se nezdaří. Pokud máte indexy vytvořené pomocí starého formátu, budete muset použít rozhraní API verze 2017-11-11-Preview k jejich aktualizaci do nového formátu, než je bude možné spravovat pomocí rozhraní API verze 2019-05-06.
+Novější formát stromu pro definování indexovaných polí byl představený v rozhraní API verze 2017-11-11-Preview. V novém formátu má každé komplexní pole kolekci pole, kde jsou definována jeho dílčí pole. V rozhraní API verze 2019-05-06 se tento nový formát používá výhradně a pokus o vytvoření nebo aktualizaci indexu pomocí starého formátu selže. Pokud máte indexy vytvořené pomocí starého formátu, budete muset použít rozhraní API verze 2017-11-11-Preview, abyste je aktualizovali do nového formátu předtím, než je můžete spravovat pomocí rozhraní API verze 2019-05-06.
 
-Indexy "plochý" můžete aktualizovat do nového formátu pomocí následujících kroků pomocí rozhraní API verze 2017-11-11-Preview:
+Pomocí následujících kroků můžete pomocí rozhraní API verze 2017-11-11-Preview aktualizovat v novém formátu "ploché" indexy:
 
-1. Proveďte požadavek GET k načtení indexu. Pokud je již v novém formátu, je hotovo.
+1. Proveďte požadavek GET k načtení indexu. Pokud už je v novém formátu, jste hotovi.
 
-2. Přeložte index z "ploché" formát do nového formátu. Budete muset napsat kód pro to, protože není k dispozici žádný ukázkový kód k dispozici v době psaní tohoto článku.
+2. Převede index z formátu "Flate" do nového formátu. Pro tuto operaci budete muset napsat kód, protože v době psaní tohoto zápisu není k dispozici žádný vzorový kód.
 
-3. Proveďte požadavek PUT a aktualizujte index na nový formát. Ujistěte se, že nezměníte žádné další podrobnosti indexu, jako je například prohledávatelnost/filtrovatelnost polí, protože to není povoleno rozhraním API indexu aktualizace.
+3. Proveďte požadavek PUT a aktualizujte index na nový formát. Ujistěte se, že nechcete měnit žádné další podrobnosti o indexu, jako je například možnost Prohledat nebo filtrovat pole, protože to není povoleno rozhraním API aktualizace indexu.
 
 > [!NOTE]
-> Není možné spravovat indexy vytvořené pomocí starého "plochého" formátu z portálu Azure. Upgradujte indexy z "ploché" reprezentace na reprezentaci "stromu" co nejdříve.
+> Není možné spravovat indexy vytvořené se starým formátem "plochý" z Azure Portal. Upgradujte prosím své indexy z "ploché" reprezentace na "strom", a to nejdřívějším pohodlím.
 
 ## <a name="next-steps"></a>Další kroky
 
-Projděte si referenční dokumentaci rozhraní REST API. Pokud narazíte na problémy, požádejte nás o pomoc na [StackOverflow](https://stackoverflow.com/) nebo [kontaktujte podporu](https://azure.microsoft.com/support/community/?product=search).
+Projděte si referenční dokumentaci REST API hledání. Pokud narazíte na problémy, požádejte nás o pomoc na [StackOverflow](https://stackoverflow.com/) nebo [kontaktujte podporu](https://azure.microsoft.com/support/community/?product=search).
 
 > [!div class="nextstepaction"]
-> [Vyhledávací služba REST API Reference](https://docs.microsoft.com/rest/api/searchservice/)
+> [Odkaz na REST API služby Search](https://docs.microsoft.com/rest/api/searchservice/)
 

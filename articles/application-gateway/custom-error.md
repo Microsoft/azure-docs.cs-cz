@@ -1,6 +1,6 @@
 ---
-title: Vytvoření vlastních chybových stránek Brány aplikace Azure
-description: Tento článek ukazuje, jak vytvořit vlastní chybové stránky brány aplikace. U vlastní chybové stránky můžete použít vlastní značky a rozložení.
+title: Vytvořit vlastní chybové stránky pro Azure Application Gateway
+description: V tomto článku se dozvíte, jak vytvořit Application Gateway vlastní chybové stránky. U vlastní chybové stránky můžete použít vlastní značky a rozložení.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,71 +8,71 @@ ms.topic: article
 ms.date: 11/16/2019
 ms.author: victorh
 ms.openlocfilehash: ff11f686287498fe12b31d15a630178bb12035ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74129863"
 ---
-# <a name="create-application-gateway-custom-error-pages"></a>Vytvořit vlastní chybové stránky brány aplikace
+# <a name="create-application-gateway-custom-error-pages"></a>Vytvořit Application Gateway vlastní chybové stránky
 
 Služba Application Gateway vám umožní vytvořit vlastní chybové stránky místo zobrazení výchozích chybových stránek. U vlastní chybové stránky můžete použít vlastní značky a rozložení.
 
-Můžete například definovat vlastní stránku údržby, pokud vaše webová aplikace není dostupná. Nebo můžete vytvořit stránku neoprávněného přístupu, pokud je do webové aplikace odeslán škodlivý požadavek.
+Můžete například definovat vlastní stránku údržby, pokud vaše webová aplikace není dostupná. Nebo můžete vytvořit neoprávněnou stránku přístupu, pokud se do webové aplikace pošle škodlivá žádost.
 
 Vlastní chybové stránky jsou podporovány v následujících dvou scénářích:
 
-- **Stránka údržby** – tato vlastní chybová stránka je odeslána namísto stránky chybné brány 502. Je zobrazena, když aplikační brána nemá žádný back-end pro směrování provozu. Například když je naplánovaná údržba nebo když nepředvídaný problém ovlivňuje přístup k back-endového fondu.
-- **Neoprávněný přístupová stránka** – Tato vlastní chybová stránka je odeslána namísto stránky 403 neoprávněných přístupů. Zobrazuje se, když WAF aplikační brány detekuje škodlivý provoz a blokuje jej.
+- **Stránka údržby** – Tato vlastní chybová stránka se odesílá místo stránky 502 špatné brány. Zobrazuje se, když Application Gateway nemá žádný back-end ke směrování provozu do. Například při plánované údržbě nebo v případě nepředvídatelného problému, který má vliv na přístup k back-endu fondu.
+- **Stránka neautorizovaný přístup** – Tato vlastní chybová stránka se odesílá místo neautorizovaného přístupového stránky 403. Zobrazuje se, když Application Gateway WAF detekuje škodlivý provoz a zablokuje ho.
 
-Pokud chyba pochází z back-endových serverů, pak je předána spolu nezměněné zpět volajícímu. Vlastní chybová stránka se nezobrazí. Aplikační brána může zobrazit vlastní chybovou stránku, když požadavek nemůže dosáhnout back-endu.
+Pokud dojde k chybě ze serverů back-end, pak je předána beze změny zpět volajícímu. Nezobrazuje se vlastní chybová stránka. Application Gateway může zobrazit vlastní chybovou stránku, pokud se žádost nemůže připojit k back-endu.
 
-Vlastní chybové stránky lze definovat na globální úrovni a na úrovni posluchače:
+Vlastní chybové stránky lze definovat na globální úrovni a na úrovni naslouchacího procesu:
 
-- **Globální úroveň** – chybová stránka se vztahuje na provoz pro všechny webové aplikace nasazené v této aplikační bráně.
-- **Úroveň naslouchací procesu** - chybová stránka je použita pro přenosy přijaté na tomto naslouchací proces.
-- **Oba** - vlastní chybová stránka definovaná na úrovni posluchače přepíše jednu sadu na globální úrovni.
+- **Globální úroveň** – chybová stránka se vztahuje na provoz všech webových aplikací nasazených v této aplikační bráně.
+- **Úroveň naslouchacího procesu** – chybová stránka se aplikuje na provoz přijatý v tomto naslouchacího procesu.
+- **Obojí** – vlastní chybová stránka definovaná na úrovni naslouchacího procesu přepíše jednu sadu na globální úrovni.
 
-Chcete-li vytvořit vlastní chybovou stránku, musíte mít:
+Pokud chcete vytvořit vlastní chybovou stránku, musíte mít:
 
-- stavový kód odpovědi HTTP.
-- umístění chybové stránky. 
-- veřejně přístupný objekt blob úložiště Azure pro umístění.
-- typu rozšíření *.htm nebo *.html. 
+- Stavový kód odpovědi HTTP.
+- příslušné umístění chybové stránky 
+- veřejně přístupný objekt BLOB služby Azure Storage pro dané umístění.
+- typ rozšíření *. htm nebo *. html. 
 
-Velikost chybové stránky musí být menší než 1 MB. Pokud jsou na chybové stránce propojeny obrázky, musí se jednat o veřejně přístupné absolutní adresy URL nebo vložená zakódovaná bitová kopie base64 na vlastní stránce chyby. Relativní odkazy s obrázky ve stejném umístění objektu blob nejsou aktuálně podporovány. 
+Velikost chybové stránky musí být menší než 1 MB. Pokud jsou na chybové stránce připojené obrázky, musí být na vlastní chybové stránce buď veřejně přístupné absolutní adresy URL nebo obrázky kódované v kódování Base64. Relativní odkazy s obrázky ve stejném umístění objektu BLOB se v tuto chvíli nepodporují. 
 
-Po zadání chybové stránky ji aplikační brána stáhne z umístění objektu blob úložiště a uloží ji do mezipaměti místní brány aplikace. Pak se chybová stránka zobrazí přímo z aplikační brány. Chcete-li upravit existující vlastní chybovou stránku, musíte v konfiguraci aplikační brány přejděte na jiné umístění objektů blob. Aplikační brána pravidelně nekontroluje umístění objektů blob, aby načítala nové verze.
+Po zadání chybové stránky ji služba Application Gateway stáhne z umístění objektu BLOB úložiště a uloží ji do mezipaměti místní služby Application Gateway. Chybová stránka se pak obsluhuje přímo z aplikační brány. Pokud chcete upravit existující vlastní chybovou stránku, musíte v konfiguraci služby Application Gateway nasměrovat na jiné umístění objektu BLOB. Aplikační brána pravidelně nekontroluje umístění objektu blob, aby načetla nové verze.
 
 ## <a name="portal-configuration"></a>Konfigurace portálu
 
-1. Přejděte na portálu do brány aplikace a zvolte aplikační bránu.
+1. Na portálu přejděte na Application Gateway a vyberte Application Gateway.
 
-    ![ag-přehled](media/custom-error/ag-overview.png)
-2. Klikněte na **Naslouchací procesy** a přejděte na konkrétní naslouchací proces, kde chcete zadat chybovou stránku.
+    ![AG – přehled](media/custom-error/ag-overview.png)
+2. Klikněte na **naslouchací procesy** a přejděte na konkrétní naslouchací proces, kde chcete zadat chybovou stránku.
 
-    ![Naslouchací procesy aplikační brány](media/custom-error/ag-listener.png)
-3. Nakonfigurujte vlastní chybovou stránku pro chybu 403 WAF nebo stránku údržby 502 na úrovni posluchače.
+    ![Naslouchací procesy Application Gateway](media/custom-error/ag-listener.png)
+3. Nakonfigurujte vlastní chybovou stránku pro chybu 403 WAF nebo stránku údržby 502 na úrovni naslouchacího procesu.
 
     > [!NOTE]
-    > Vytváření vlastních chybových stránek globální úrovně z portálu Azure momentálně není podporované.
+    > Vytváření vlastních chybových stránek na globální úrovni z Azure Portal aktuálně není podporováno.
 
-4. Zadejte veřejně přístupnou adresu URL objektu blob pro daný stavový kód chyby a klepněte na tlačítko **Uložit**. Aplikační brána je nyní nakonfigurována s vlastní chybovou stránkou.
+4. Zadejte veřejně dostupnou adresu URL objektu BLOB pro daný stavový kód chyby a klikněte na **Uložit**. Application Gateway je teď nakonfigurovaný s vlastní chybovou stránkou.
 
-   ![Chybové kódy brány aplikace](media/custom-error/ag-error-codes.png)
+   ![Kódy chyb Application Gateway](media/custom-error/ag-error-codes.png)
 
 ## <a name="azure-powershell-configuration"></a>Konfigurace Azure PowerShellu
 
-Azure PowerShell můžete použít ke konfiguraci vlastní chybové stránky. Například globální vlastní chybová stránka:
+Pomocí Azure PowerShell můžete nakonfigurovat vlastní chybovou stránku. Například globální vlastní chybová stránka:
 
 `$updatedgateway = Add-AzApplicationGatewayCustomError -ApplicationGateway $appgw -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url`
 
-Nebo chybová stránka na úrovni posluchače:
+Nebo na stránce s chybou úrovně naslouchacího procesu:
 
 `$updatedlistener = Add-AzApplicationGatewayHttpListenerCustomError -HttpListener $listener01 -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url`
 
-Další informace naleznete v [tématech Add-AzApplicationGatewayCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewaycustomerror?view=azps-1.2.0) a [Add-AzApplicationGatewayHttpListenerCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewayhttplistenercustomerror?view=azps-1.3.0).
+Další informace najdete v tématech [Add-AzApplicationGatewayCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewaycustomerror?view=azps-1.2.0) a [Add-AzApplicationGatewayHttpListenerCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewayhttplistenercustomerror?view=azps-1.3.0).
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o diagnostice brány aplikace naleznete v [tématu Back-end health, diagnostic kázně a metriky pro aplikační bránu](application-gateway-diagnostics.md).
+Informace o diagnostice Application Gateway najdete v tématu [stav back-endu, diagnostické protokoly a metriky pro Application Gateway](application-gateway-diagnostics.md).

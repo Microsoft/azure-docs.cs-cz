@@ -1,6 +1,6 @@
 ---
-title: Python UDF s Apache Hive a Apache Pig - Azure HDInsight
-description: Naučte se používat uživatelem definované funkce Pythonu (UDF) od Apache Hive a Apache Pig v HDInsightu, zásobníku technologie Apache Hadoop v Azure.
+title: Python UDF s Apache Hive a Apache prasete – Azure HDInsight
+description: Naučte se používat uživatelsky definované funkce jazyka Python (UDF) z Apache Hive a Apache prasete v HDInsight, Apache Hadoop technologie v Azure.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,52 +9,52 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.openlocfilehash: 201bb40e5024442587f5508886da7e844f35be40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74148403"
 ---
-# <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Použití uživatelem definovaných funkcí Pythonu (UDF) s Apache Hive a Apache Pig v HDInsightu
+# <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Použití uživatelem definovaných funkcí Pythonu (UDF) s Apache Hive a Apache prasetem v HDInsight
 
-Naučte se používat uživatelem definované funkce Pythonu (UDF) s Apache Hive a Apache Pig v Apache Hadoop na Azure HDInsight.
+Naučte se používat uživatelsky definované funkce Pythonu (UDF) s Apache Hive a Apache prasetem v Apache Hadoop ve službě Azure HDInsight.
 
-## <a name="python-on-hdinsight"></a><a name="python"></a>Python na HDInsight
+## <a name="python-on-hdinsight"></a><a name="python"></a>Python v HDInsight
 
-Python2.7 je ve výchozím nastavení nainstalován na HDInsight 3.0 a novější. Apache Hive lze použít s touto verzí Pythonu pro zpracování datového proudu. Zpracování datového proudu používá STDOUT a STDIN k přenosu dat mezi Hive a UDF.
+Python 2.7 se ve výchozím nastavení instaluje v HDInsight 3,0 a novějších verzích. Apache Hive lze použít s touto verzí Pythonu pro zpracování datových proudů. Zpracování streamu používá STDOUT a STDIN k předávání dat mezi podregistru a systémem souborů UDF.
 
-HDInsight také zahrnuje Jython, což je implementace Pythonu napsaná v Javě. Jython běží přímo na Java Virtual Machine a nepoužívá streamování. Jython je doporučený překladač Pythonu při použití Pythonu s prasetem.
+HDInsight také zahrnuje Jython, což je implementace Pythonu napsaná v jazyce Java. Jython běží přímo na prostředí Java Virtual Machine a nepoužívá streamování. Jython je doporučený interpret Pythonu při použití Pythonu s prasetem.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Cluster Hadoop na HDInsight**. Viz [Začínáme s HDInsight na Linuxu](apache-hadoop-linux-tutorial-get-started.md).
-* **Klient SSH**. Další informace naleznete [v tématu Připojení k HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
-* [Schéma URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) pro primární úložiště clusterů. To by `wasb://` bylo pro `abfs://` Azure Storage, pro Azure Data Lake Storage Gen2 nebo adl:// pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage povolený zabezpečený přenos, identifikátor URI bude wasbs://.  Viz také [bezpečný přenos](../../storage/common/storage-require-secure-transfer.md).
-* **Možná změna konfigurace úložiště.**  Viz [Konfigurace úložiště,](#storage-configuration) pokud `BlobStorage`používáte druh účtu úložiště .
-* Nepovinný parametr.  Pokud plánujete používat PowerShell, budete potřebovat nainstalovaný [modul AZ.](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)
+* **Cluster Hadoop ve službě HDInsight**. Viz Začínáme [se službou HDInsight v systému Linux](apache-hadoop-linux-tutorial-get-started.md).
+* **Klient SSH**. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* [Schéma identifikátoru URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) pro primární úložiště clusterů. `wasb://` To Azure Storage `abfs://` pro Azure Data Lake Storage Gen1 Azure Data Lake Storage Gen2 nebo ADL://. Pokud je pro Azure Storage povolený zabezpečený přenos, identifikátor URI by byl wasbs://.  Viz také [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md).
+* **Možná změna konfigurace úložiště.**  Pokud používáte druh `BlobStorage`účtu úložiště, podívejte se na téma [Konfigurace úložiště](#storage-configuration) .
+* Nepovinný parametr.  Pokud plánujete používat PowerShell, budete potřebovat nainstalovaný [modul AZ Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) .
 
 > [!NOTE]  
-> Účet úložiště použitý v tomto článku byl Azure `wasbs` Storage s [povoleným zabezpečeným přenosem](../../storage/common/storage-require-secure-transfer.md) a proto se používá v celém článku.
+> Účet úložiště použitý v tomto článku byl Azure Storage s povoleným [zabezpečeným přenosem](../../storage/common/storage-require-secure-transfer.md) , a proto `wasbs` se používá v celém článku.
 
 ## <a name="storage-configuration"></a>Konfigurace úložiště
 
-Žádná akce je vyžadována, pokud `Storage (general purpose v1)` je `StorageV2 (general purpose v2)`použitý účet úložiště druhu nebo .  Proces v tomto článku bude produkovat `/tezstaging`výstup alespoň .  Výchozí konfigurace hadoopu `/tezstaging` bude `fs.azure.page.blob.dir` obsahovat `core-site.xml` v `HDFS`konfigurační proměnné v pro službu .  Tato konfigurace způsobí, že výstup do adresáře bude objekty BLOB `BlobStorage`stránky, které nejsou podporovány pro druh účtu úložiště .  Chcete-li použít `BlobStorage` pro `/tezstaging` tento `fs.azure.page.blob.dir` článek, odeberte z proměnné konfigurace.  Konfigurace je přístupná z [ui Ambari](../hdinsight-hadoop-manage-ambari.md).  V opačném případě se zobrazí chybová zpráva:`Page blob is not supported for this account type.`
+Pokud je účet úložiště použitý jako typ `Storage (general purpose v1)` nebo `StorageV2 (general purpose v2)`, není nutná žádná akce.  Proces v tomto článku bude mít výstup alespoň `/tezstaging`do.  Výchozí konfigurace Hadoop bude obsažena `/tezstaging` v `fs.azure.page.blob.dir` konfigurační proměnné v `core-site.xml` nástroji for Service `HDFS`.  Tato konfigurace způsobí, že se výstup do adresáře načte do objektů blob stránky, které se nepodporují pro `BlobStorage`druh účtu úložiště.  Chcete- `BlobStorage` li použít tento článek, `/tezstaging` odeberte z `fs.azure.page.blob.dir` konfigurační proměnné.  Ke konfiguraci je možné přistupovat z [uživatelského rozhraní Ambari](../hdinsight-hadoop-manage-ambari.md).  V opačném případě se zobrazí chybová zpráva:`Page blob is not supported for this account type.`
 
 > [!WARNING]  
-> Kroky v tomto dokumentu provést následující předpoklady:  
+> Kroky v tomto dokumentu provedou následující předpoklady:  
 >
-> * Skripty Pythonu můžete vytvořit v místním vývojovém prostředí.
-> * Skripty nahrajete do služby `scp` HDInsight pomocí příkazu nebo poskytnutého skriptu prostředí PowerShell.
+> * Ve svém místním vývojovém prostředí vytvoříte skripty v Pythonu.
+> * Skripty se nahrávají do HDInsight pomocí `scp` příkazu nebo zadaného skriptu PowerShellu.
 >
-> Pokud chcete používat [Azure Cloud Shell (bash)](https://docs.microsoft.com/azure/cloud-shell/overview) pro práci s HDInsight, pak musíte:
+> Pokud chcete použít [Azure Cloud Shell (bash)](https://docs.microsoft.com/azure/cloud-shell/overview) pro práci s HDInsight, musíte:
 >
-> * Vytvořte skripty uvnitř prostředí cloudshellu.
-> * Slouží `scp` k nahrání souborů z prostředí cloudu do HDInsightu.
-> * Použijte `ssh` z prostředí cloudu pro připojení k HDInsight a spusťte příklady.
+> * Vytvořte skripty uvnitř prostředí cloud Shell.
+> * Slouží `scp` k nahrání souborů z Cloud shellu do HDInsight.
+> * Pomocí `ssh` služby Cloud Shell se připojte ke službě HDInsight a spusťte příklady.
 
 ## <a name="apache-hive-udf"></a><a name="hivepython"></a>Apache Hive UDF
 
-Python lze použít jako UDF z Hive prostřednictvím příkazu HiveQL. `TRANSFORM` Například následující HiveQL vyvolá `hiveudf.py` soubor uložený ve výchozím účtu úložiště Azure pro cluster.
+Python se dá použít jako UDF z podregistru prostřednictvím příkazu HiveQL `TRANSFORM` . Následující HiveQL například vyvolá `hiveudf.py` soubor uložený ve výchozím účtu Azure Storage pro daný cluster.
 
 ```hiveql
 add file wasbs:///hiveudf.py;
@@ -66,17 +66,17 @@ FROM hivesampletable
 ORDER BY clientid LIMIT 50;
 ```
 
-Zde je to, co tento příklad dělá:
+Tady je příklad:
 
-1. Příkaz `add file` na začátku souboru `hiveudf.py` přidá soubor do distribuované mezipaměti, takže je přístupný všem uzlům v clusteru.
-2. Příkaz `SELECT TRANSFORM ... USING` vybere data z `hivesampletable`. Také předá clientid, devicemake a devicemodel `hiveudf.py` hodnoty skriptu.
-3. Klauzule `AS` popisuje pole vrácená z `hiveudf.py`.
+1. `add file` Příkaz na začátku souboru přidá `hiveudf.py` soubor do distribuované mezipaměti, takže bude přístupný pro všechny uzly v clusteru.
+2. `SELECT TRANSFORM ... USING` Příkaz vybere data z `hivesampletable`. Také předá do `hiveudf.py` skriptu hodnoty ClientID, devicemake a devicemodel.
+3. `AS` Klauzule popisuje pole vrácená z `hiveudf.py`.
 
 <a name="streamingpy"></a>
 
 ### <a name="create-file"></a>Vytvořit soubor
 
-Ve vývojovém prostředí vytvořte `hiveudf.py`textový soubor s názvem . Jako obsah souboru použijte následující kód:
+Ve vývojovém prostředí vytvořte textový soubor s názvem `hiveudf.py`. Jako obsah souboru použijte následující kód:
 
 ```python
 #!/usr/bin/env python
@@ -95,41 +95,41 @@ while True:
     print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])
 ```
 
-Tento skript provádí následující akce:
+Tento skript provede následující akce:
 
-1. Přečte řádek dat z STDIN.
-2. Koncový znak nového řádku `string.strip(line, "\n ")`je odebrán pomocí .
-3. Při zpracování datového proudu obsahuje jeden řádek všechny hodnoty se znakem tabulátoru mezi jednotlivými hodnotami. Takže `string.split(line, "\t")` lze použít k rozdělení vstupu na každé kartě, vrací pouze pole.
-4. Po dokončení zpracování musí být výstup zapsán do STDOUT jako jeden řádek s tabulátorem mezi jednotlivými poli. Například, `print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])`.
-5. Smyčka `while` se opakuje, `line` dokud se nečte.
+1. Přečte řádek dat ze standardního vstupu.
+2. Koncový znak nového řádku se odebere pomocí `string.strip(line, "\n ")`.
+3. Při zpracování datového proudu obsahuje jeden řádek všechny hodnoty se znakem tabulátoru mezi každou hodnotou. Takže `string.split(line, "\t")` se dá použít k rozdělení vstupu na jednotlivých kartách a vrácení pouze polí.
+4. Po dokončení zpracování musí být výstup zapsán do STDOUT jako jeden řádek, přičemž karta mezi jednotlivými poli. Například, `print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])`.
+5. Smyčka se `while` opakuje, `line` dokud není přečtena žádná.
 
-Výstup skriptu je zřetězení vstupních hodnot pro `devicemake` a `devicemodel`a hash zřetězené hodnoty.
+Výstup skriptu je zřetězení vstupních hodnot pro `devicemake` a `devicemodel`a hodnotu hash zřetězené hodnoty.
 
-### <a name="upload-file-shell"></a>Nahrát soubor (shell)
+### <a name="upload-file-shell"></a>Nahrát soubor (prostředí)
 
-V níže uvedených `sshuser` příkazech nahraďte skutečným uživatelským jménem, pokud se liší.  Nahraďte `mycluster` skutečným názvem clusteru.  Ujistěte se, že váš pracovní adresář je tam, kde je soubor umístěn.
+V následujících příkazech nahraďte `sshuser` skutečným uživatelským jménem, pokud se liší.  Nahraďte `mycluster` skutečným názvem clusteru.  Ujistěte se, že je soubor umístěný v pracovním adresáři.
 
-1. Slouží `scp` ke kopírování souborů do clusteru HDInsight. Upravit a zadat příkaz níže:
+1. Použijte `scp` ke zkopírování souborů do clusteru HDInsight. Upravte a zadejte následující příkaz:
 
     ```cmd
     scp hiveudf.py sshuser@mycluster-ssh.azurehdinsight.net:
     ```
 
-2. Připojení ke clusteru pomocí SSH.  Upravit a zadat příkaz níže:
+2. Pomocí SSH se připojte ke clusteru.  Upravte a zadejte následující příkaz:
 
     ```cmd
     ssh sshuser@mycluster-ssh.azurehdinsight.net
     ```
 
-3. Z relace SSH přidejte soubory pythonu nahrané dříve do úložiště pro cluster.
+3. Z relace SSH přidejte do úložiště pro cluster soubory Pythonu, které jste předtím nahráli.
 
     ```bash
     hdfs dfs -put hiveudf.py /hiveudf.py
     ```
 
-### <a name="use-hive-udf-shell"></a>Použití hive UDF (skořepina)
+### <a name="use-hive-udf-shell"></a>Použití podregistru UDF (Shell)
 
-1. Chcete-li se připojit k Hive, použijte následující příkaz z otevřené relace SSH:
+1. Pokud se chcete připojit k podregistru, použijte následující příkaz z otevřené relace SSH:
 
     ```bash
     beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
@@ -137,7 +137,7 @@ V níže uvedených `sshuser` příkazech nahraďte skutečným uživatelským j
 
     Tento příkaz spustí klienta Beeline.
 
-2. Na `0: jdbc:hive2://headnodehost:10001/>` výzvu zadejte následující dotaz:
+2. Do `0: jdbc:hive2://headnodehost:10001/>` příkazového řádku zadejte následující dotaz:
 
    ```hive
    add file wasbs:///hiveudf.py;
@@ -148,7 +148,7 @@ V níže uvedených `sshuser` příkazech nahraďte skutečným uživatelským j
    ORDER BY clientid LIMIT 50;
    ```
 
-3. Po zadání posledního řádku by měla být úloha zahájena. Po dokončení úlohy vrátí výstup podobný následujícímu příkladu:
+3. Po zadání posledního řádku by se měla úloha spustit. Po dokončení úlohy vrátí výstup podobný následujícímu příkladu:
 
         100041    RIM 9650    d476f3687700442549a83fac4560c51c
         100041    RIM 9650    d476f3687700442549a83fac4560c51c
@@ -156,7 +156,7 @@ V níže uvedených `sshuser` příkazech nahraďte skutečným uživatelským j
         100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
         100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
 
-4. Chcete-li ukončit linku Beeline, zadejte následující příkaz:
+4. Pokud chcete ukončit Beeline, zadejte následující příkaz:
 
     ```hive
     !q
@@ -164,7 +164,7 @@ V níže uvedených `sshuser` příkazech nahraďte skutečným uživatelským j
 
 ### <a name="upload-file-powershell"></a>Nahrát soubor (PowerShell)
 
-Prostředí PowerShell lze také použít ke vzdálenému spuštění dotazů Hive. Ujistěte se, `hiveudf.py` že váš pracovní adresář je tam, kde se nachází.  Ke spuštění dotazu Hive, který `hiveudf.py` skript používá, použijte následující skript prostředí PowerShell:
+PowerShell se dá použít taky ke vzdálenému spuštění dotazů na podregistr. Ujistěte se, kde `hiveudf.py` je umístěn pracovní adresář.  Pomocí následujícího skriptu prostředí PowerShell spusťte dotaz na podregistr, který používá `hiveudf.py` skript:
 
 ```PowerShell
 # Login to your Azure subscription
@@ -205,9 +205,9 @@ Set-AzStorageBlobContent `
 ```
 
 > [!NOTE]  
-> Další informace o nahrávání souborů najdete v [tématu Nahrávání dat pro úlohy Apache Hadoop v dokumentu HDInsight.](../hdinsight-upload-data.md)
+> Další informace o nahrávání souborů najdete v tématu [nahrávání dat pro úlohy Apache Hadoop v dokumentu HDInsight](../hdinsight-upload-data.md) .
 
-#### <a name="use-hive-udf"></a>Použití hive UDF
+#### <a name="use-hive-udf"></a>Použití podregistru UDF
 
 ```PowerShell
 # Script should stop on failures
@@ -279,7 +279,7 @@ Get-AzHDInsightJobOutput `
     -HttpCredential $creds
 ```
 
-Výstup úlohy **Hive** by měl vypadat podobně jako v následujícím příkladu:
+Výstup úlohy **podregistru** by měl vypadat podobně jako v následujícím příkladu:
 
     100041    RIM 9650    d476f3687700442549a83fac4560c51c
     100041    RIM 9650    d476f3687700442549a83fac4560c51c
@@ -287,22 +287,22 @@ Výstup úlohy **Hive** by měl vypadat podobně jako v následujícím příkla
     100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
     100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
 
-## <a name="apache-pig-udf"></a><a name="pigpython"></a>Apache Prase UDF
+## <a name="apache-pig-udf"></a><a name="pigpython"></a>Apache prasete UDF
 
-Skript Pythonu lze použít jako UDF `GENERATE` z Pig prostřednictvím příkazu. Skript můžete spustit pomocí Jython nebo C Python.
+Skript Pythonu se dá použít jako UDF z prasete prostřednictvím `GENERATE` příkazu. Skript můžete spustit buď pomocí Jython, nebo C Pythonu.
 
-* Jython běží na JVM, a může být nativně volána z Prase.
-* C Python je externí proces, takže data z Pig na JVM jsou odesílána do skriptu spuštěného v procesu Pythonu. Výstup skriptu Pythonu je odeslán zpět do Pig.
+* Jython běží na JVM a dá se nativně volat z prasete.
+* C Python je externí proces, takže data z prasete v JVM se odesílají do skriptu spuštěného v rámci procesu Pythonu. Výstup skriptu Pythonu se pošle zpátky do prasete.
 
-Chcete-li určit interpret `register` Pythonu, použijte při odkazování na skript Pythonu. Následující příklady registrují skripty `myfuncs`s Pig jako :
+K určení interpretu Pythonu použijte `register` při odkazování na skript Pythonu. V následujících příkladech jsou registrovány skripty `myfuncs`pomocí prasete jako:
 
-* **Chcete-li použít Jython**:`register '/path/to/pigudf.py' using jython as myfuncs;`
-* **Chcete-li použít C Python**:`register '/path/to/pigudf.py' using streaming_python as myfuncs;`
+* **Použití Jython**:`register '/path/to/pigudf.py' using jython as myfuncs;`
+* **Použití jazyka C Python**:`register '/path/to/pigudf.py' using streaming_python as myfuncs;`
 
 > [!IMPORTANT]  
-> Při použití Jython, cesta k souboru pig_jython může být buď místní cestu nebo WASBS:// cestu. Však při použití C Python, musíte odkazovat na soubor v místním systému souborů uzlu, který používáte k odeslání pig úlohy.
+> Při použití Jython může být cesta k souboru pig_jython buď místní cesta, nebo cesta WASBS://. Při použití jazyka C Python však musíte odkazovat na soubor v místním systému souborů uzlu, který používáte k odeslání úlohy prasete.
 
-Po předchozí registraci je prasečí latinka pro tento příklad stejná pro oba:
+Po registraci v minulosti je latinku pro tento příklad stejný jako u obou:
 
 ```pig
 LOGS = LOAD 'wasbs:///example/data/sample.log' as (LINE:chararray);
@@ -311,16 +311,16 @@ DETAILS = FOREACH LOG GENERATE myfuncs.create_structure(LINE);
 DUMP DETAILS;
 ```
 
-Zde je to, co tento příklad dělá:
+Tady je příklad:
 
-1. První řádek načte ukázkový `sample.log` `LOGS`datový soubor do . Definuje také každý záznam `chararray`jako .
-2. Další řádek filtruje všechny hodnoty null a ukládá výsledek `LOG`operace do .
-3. Dále itetuje přes `LOG` záznamy `GENERATE` v a `create_structure` používá k vyvolání metody obsažené ve `myfuncs`skriptu Python/Jython načtenjako . `LINE`slouží k předání aktuálního záznamu funkci.
-4. Nakonec výstupy jsou vypovězeny `DUMP` do STDOUT pomocí příkazu. Tento příkaz zobrazí výsledky po dokončení operace.
+1. První řádek načte Ukázkový datový soubor `sample.log` do. `LOGS` Také definuje každý záznam jako `chararray`.
+2. Další řádek filtruje všechny hodnoty null a ukládá výsledek operace do `LOG`.
+3. `LOG` Dále provede iteraci záznamů v a používá `GENERATE` k vyvolání `create_structure` metody obsažené v skriptu Python/Jython, který byl načten jako. `myfuncs` `LINE`slouží k předání aktuálního záznamu do funkce.
+4. Nakonec jsou výstupy do STDOUT pomocí `DUMP` příkazu. Tento příkaz zobrazí výsledky po dokončení operace.
 
 ### <a name="create-file"></a>Vytvořit soubor
 
-Ve vývojovém prostředí vytvořte `pigudf.py`textový soubor s názvem . Jako obsah souboru použijte následující kód:
+Ve vývojovém prostředí vytvořte textový soubor s názvem `pigudf.py`. Jako obsah souboru použijte následující kód:
 
 <a name="streamingpy"></a>
 
@@ -337,57 +337,57 @@ def create_structure(input):
     return date, time, classname, level, detail
 ```
 
-V příkladu Pig `LINE` Latin je vstup definován jako chararray, protože neexistuje žádné konzistentní schéma pro vstup. Skript Pythonu transformuje data do konzistentní schéma pro výstup.
+V latinském příkladu pro vepřové `LINE` písmo je vstup definovaný jako CharArray, protože pro vstup neexistuje žádné konzistentní schéma. Skript Pythonu transformuje data do konzistentního schématu pro výstup.
 
-1. Příkaz `@outputSchema` definuje formát dat, která jsou vrácena pig. V tomto případě se jedná o **datový vak**, což je datový typ Pig. Taška obsahuje následující pole, z nichž všechny jsou chararray (řetězce):
+1. `@outputSchema` Příkaz definuje formát dat vrácených do prasete. V tomto případě je to **datový kontejner**, což je datový typ prasete. Penalta obsahuje následující pole, z nichž všechny jsou CharArray (řetězce):
 
-   * datum - datum vytvoření položky protokolu
-   * time - čas vytvoření položky protokolu
-   * název třídy - název třídy, pro který byla položka vytvořena
-   * úroveň - úroveň protokolu
-   * detail - podrobné údaje pro záznam protokolu
+   * Datum – datum vytvoření položky protokolu
+   * čas – čas vytvoření položky protokolu
+   * ClassName – název třídy, pro kterou byla položka vytvořena
+   * úroveň – úroveň protokolu
+   * Podrobnosti – podrobné informace o položce protokolu
 
-2. Dále `def create_structure(input)` definuje funkci, které Pig předává řádkové položky.
+2. Dále `def create_structure(input)` definuje funkci, do které prase předá položky řádku.
 
-3. Příkladová data `sample.log`, , většinou odpovídá schématu data, času, názvu třídy, úrovně a podrobností. Obsahuje však několik řádků, `*java.lang.Exception*`které začínají . Tyto řádky musí být upraveny tak, aby odpovídaly schématu. Příkaz `if` zkontroluje pro ty, pak masíruje vstupní data přesunout `*java.lang.Exception*` řetězec na konec, čímž data v souladu s očekávané výstupní schéma.
+3. Tato ukázková data `sample.log`většinou odpovídají schématu data, čas, ClassName, Level a detail. Obsahuje však několik řádků, které začínají na `*java.lang.Exception*`. Tyto řádky musí být upraveny tak, aby odpovídaly schématu. `if` Příkaz tyto prvky vyhledá a pak zprávy vstupní data, aby se `*java.lang.Exception*` řetězec přesunul na konec, a tak přinese data do očekávaného výstupního schématu.
 
-4. V dalším `split` případě se příkaz používá k rozdělení dat na první čtyři znaky mezery. Výstup je přiřazen `date` `time`do `classname` `level`, `detail`, , a .
+4. V dalším kroku `split` se pomocí příkazu rozdělí data na první čtyři znaky mezery. Výstup je `date`přiřazen do, `time`, `classname` `level`, a. `detail`
 
-5. Nakonec jsou hodnoty vráceny pig.
+5. Nakonec se hodnoty vrátí do prasete.
 
-Když jsou data vrácena pig, má konzistentní schéma, jak `@outputSchema` je definováno v příkazu.
+Když se vrátí data do prasete, má konzistentní schéma, jak je definováno v `@outputSchema` příkazu.
 
-### <a name="upload-file-shell"></a>Nahrát soubor (shell)
+### <a name="upload-file-shell"></a>Nahrát soubor (prostředí)
 
-V níže uvedených `sshuser` příkazech nahraďte skutečným uživatelským jménem, pokud se liší.  Nahraďte `mycluster` skutečným názvem clusteru.  Ujistěte se, že váš pracovní adresář je tam, kde je soubor umístěn.
+V následujících příkazech nahraďte `sshuser` skutečným uživatelským jménem, pokud se liší.  Nahraďte `mycluster` skutečným názvem clusteru.  Ujistěte se, že je soubor umístěný v pracovním adresáři.
 
-1. Slouží `scp` ke kopírování souborů do clusteru HDInsight. Upravit a zadat příkaz níže:
+1. Použijte `scp` ke zkopírování souborů do clusteru HDInsight. Upravte a zadejte následující příkaz:
 
     ```cmd
     scp pigudf.py sshuser@mycluster-ssh.azurehdinsight.net:
     ```
 
-2. Připojení ke clusteru pomocí SSH.  Upravit a zadat příkaz níže:
+2. Pomocí SSH se připojte ke clusteru.  Upravte a zadejte následující příkaz:
 
     ```cmd
     ssh sshuser@mycluster-ssh.azurehdinsight.net
     ```
 
-3. Z relace SSH přidejte soubory pythonu nahrané dříve do úložiště pro cluster.
+3. Z relace SSH přidejte do úložiště pro cluster soubory Pythonu, které jste předtím nahráli.
 
     ```bash
     hdfs dfs -put pigudf.py /pigudf.py
     ```
 
-### <a name="use-pig-udf-shell"></a>Použití Pig UDF (shell)
+### <a name="use-pig-udf-shell"></a>Použití systému souborů prasete (Shell)
 
-1. Chcete-li se připojit k praseti, použijte následující příkaz z otevřené relace SSH:
+1. Pokud se chcete připojit k prase, použijte následující příkaz z otevřené relace SSH:
 
     ```bash
     pig
     ```
 
-2. Na výzvu zadejte následující příkazy: `grunt>`
+2. Na `grunt>` příkazovém řádku zadejte následující příkazy:
 
    ```pig
    Register wasbs:///pigudf.py using jython as myfuncs;
@@ -397,7 +397,7 @@ V níže uvedených `sshuser` příkazech nahraďte skutečným uživatelským j
    DUMP DETAILS;
    ```
 
-3. Po zadání následujícího řádku by měla být úloha zahájena. Po dokončení úlohy vrátí výstup podobný následujícím datům:
+3. Po zadání následujícího řádku by se měla úloha spustit. Po dokončení úlohy vrátí výstup podobný následujícímu datům:
 
         ((2012-02-03,20:11:56,SampleClass5,[TRACE],verbose detail for id 990982084))
         ((2012-02-03,20:11:56,SampleClass7,[TRACE],verbose detail for id 1560323914))
@@ -405,21 +405,21 @@ V níže uvedených `sshuser` příkazech nahraďte skutečným uživatelským j
         ((2012-02-03,20:11:56,SampleClass3,[TRACE],verbose detail for id 1718828806))
         ((2012-02-03,20:11:56,SampleClass3,[INFO],everything normal for id 530537821))
 
-4. Slouží `quit` k ukončení prostředí Grunt a následné úpravě souboru pigudf.py v místním systému souborů:
+4. Použijte `quit` k ukončení prostředí grunt a pak použijte následující pro úpravu souboru pigudf.py v místním systému souborů:
 
     ```bash
     nano pigudf.py
     ```
 
-5. Poté, co v editoru, odkomentujte následující řádek odebráním `#` znaku ze začátku řádku:
+5. V editoru odkomentujte následující řádek odebráním `#` znaku z začátku řádku:
 
     ```bash
     #from pig_util import outputSchema
     ```
 
-    Tento řádek upravuje skript Pythonu pro práci s C Python místo Jython. Po provedení změny ukončete editor pomocí **kombinace kláves Ctrl+X.** Vyberte **Y**a pak **Enter** uložte změny.
+    Tento řádek upraví skript Pythonu pro práci s C Python místo Jython. Po provedení změny můžete Editor ukončit **stisknutím kombinace kláves CTRL + X** . Vyberte **Y**a pak **zadáním** uložte změny.
 
-6. Pomocí `pig` příkazu znovu spusťte prostředí. Jakmile jste na `grunt>` výzvu, použijte následující spuštění skriptu Pythonu pomocí interpretu C Pythonu.
+6. Pomocí `pig` příkazu znovu spusťte prostředí. Po `grunt>` zobrazení výzvy použijte následující příkaz ke spuštění skriptu Pythonu s použitím interpretu jazyka C Python.
 
    ```pig
    Register 'pigudf.py' using streaming_python as myfuncs;
@@ -429,11 +429,11 @@ V níže uvedených `sshuser` příkazech nahraďte skutečným uživatelským j
    DUMP DETAILS;
    ```
 
-    Po dokončení této úlohy byste měli vidět stejný výstup, jako když jste dříve spustili skript pomocí Jythonu.
+    Po dokončení této úlohy byste měli vidět stejný výstup jako při předchozím spuštění skriptu pomocí Jython.
 
 ### <a name="upload-file-powershell"></a>Nahrát soubor (PowerShell)
 
-Prostředí PowerShell lze také použít ke vzdálenému spuštění dotazů Hive. Ujistěte se, `pigudf.py` že váš pracovní adresář je tam, kde se nachází.  Ke spuštění dotazu Hive, který `pigudf.py` skript používá, použijte následující skript prostředí PowerShell:
+PowerShell se dá použít taky ke vzdálenému spuštění dotazů na podregistr. Ujistěte se, kde `pigudf.py` je umístěn pracovní adresář.  Pomocí následujícího skriptu prostředí PowerShell spusťte dotaz na podregistr, který používá `pigudf.py` skript:
 
 ```PowerShell
 # Login to your Azure subscription
@@ -474,12 +474,12 @@ Set-AzStorageBlobContent `
     -Context $context
 ```
 
-### <a name="use-pig-udf-powershell"></a>Použití Pig UDF (PowerShell)
+### <a name="use-pig-udf-powershell"></a>Použití systému souborů prasete (PowerShell)
 
 > [!NOTE]  
-> Při vzdáleném odesílání úlohy pomocí prostředí PowerShell není možné použít C Python jako interpret.
+> Při vzdáleném odesílání úlohy pomocí PowerShellu není možné jako interpret použít jazyk C Python.
 
-Prostředí PowerShell lze také použít ke spuštění úlohy Pig Latin. Chcete-li spustit úlohu `pigudf.py` Pig Latin, která používá skript, použijte následující skript prostředí PowerShell:
+PowerShell můžete také použít ke spouštění úloh v latince pro vepřové prostředí. Chcete-li spustit úlohu s latinkou prasete `pigudf.py` , která používá skript, použijte následující skript prostředí PowerShell:
 
 ```PowerShell
 # Script should stop on failures
@@ -547,7 +547,7 @@ Get-AzHDInsightJobOutput `
     -HttpCredential $creds
 ```
 
-Výstup pro úlohu **Pig** by měl vypadat podobně jako následující data:
+Výstup pro úlohu **vepřového chovu** by měl vypadat podobně jako u následujících dat:
 
     ((2012-02-03,20:11:56,SampleClass5,[TRACE],verbose detail for id 990982084))
     ((2012-02-03,20:11:56,SampleClass7,[TRACE],verbose detail for id 1560323914))
@@ -559,34 +559,34 @@ Výstup pro úlohu **Pig** by měl vypadat podobně jako následující data:
 
 ### <a name="errors-when-running-jobs"></a>Chyby při spouštění úloh
 
-Při spuštění úlohy podregistru může dojít k chybě podobné následujícímu textu:
+Při spuštění úlohy podregistru se může zobrazit chyba podobná následujícímu textu:
 
     Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An error occurred while reading or writing to your custom script. It may have crashed with an error.
 
-Tento problém může být způsoben zakončení řádků v souboru Pythonu. Mnoho editorů systému Windows výchozí použití CRLF jako konec řádku, ale linuxové aplikace obvykle očekávají LF.
+Tento problém může být způsoben koncem řádku v souboru Python. Mnoho editorů Windows ve výchozím nastavení používá klávesu CRLF jako zakončení řádku, ale aplikace pro Linux obvykle očekávají LF.
 
-Před nahráním souboru do HDInsightu můžete odebrat následující příkazy prostředí PowerShell:
+Před nahráním souboru do HDInsight můžete pomocí následujících příkazů PowerShellu odebrat znaky CR:
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/run-python-udf/run-python-udf.ps1?range=148-150)]
 
 ### <a name="powershell-scripts"></a>Skripty prostředí PowerShell
 
-Oba ukázkové skripty prostředí PowerShell použité ke spuštění příkladů obsahují řádek s poznámkami, který zobrazuje výstup chyby pro úlohu. Pokud nevidíte očekávaný výstup pro úlohu, odkomentujte následující řádek a zjistěte, zda informace o chybě označují problém.
+Oba příklady skriptů PowerShellu, které se používají ke spuštění příkladů, obsahují řádek s komentářem, který zobrazuje chybový výstup úlohy. Pokud nevidíte očekávaný výstup pro úlohu, zrušte komentář následujícího řádku a zkontrolujte, zda informace o chybě signalizuje problém.
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/run-python-udf/run-python-udf.ps1?range=135-139)]
 
-Informace o chybě (STDERR) a výsledek úlohy (STDOUT) jsou také zaznamenány do úložiště HDInsight.
+Informace o chybě (STDERR) a výsledek úlohy (STDOUT) jsou také protokolovány do úložiště HDInsight.
 
-| Pro tuhle práci... | Podívejte se na tyto soubory v kontejneru objektů blob |
+| Pro tuto úlohu... | Podívejte se na tyto soubory v kontejneru objektů BLOB. |
 | --- | --- |
 | Hive |/HivePython/stderr<p>/HivePython/stdout |
 | Pig |/PigPython/stderr<p>/PigPython/stdout |
 
 ## <a name="next-steps"></a><a name="next"></a>Další kroky
 
-Pokud potřebujete načíst moduly Pythonu, které nejsou k dispozici ve výchozím nastavení, přečtěte [si, jak nasadit modul do Azure HDInsight](https://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx).
+Pokud potřebujete načíst moduly Pythonu, které nejsou k dispozici ve výchozím nastavení, přečtěte si téma [nasazení modulu do Azure HDInsight](https://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx).
 
-Další způsoby použití pigu, úlu a informace o používání MapReduce najdete v následujících dokumentech:
+Další způsoby použití prasete, podregistru a informací o použití MapReduce najdete v následujících dokumentech:
 
-* [Použití Apache Hive s HDInsight](hdinsight-use-hive.md)
-* [Použití mapreduce s HDInsight](hdinsight-use-mapreduce.md)
+* [Použití Apache Hive se službou HDInsight](hdinsight-use-hive.md)
+* [Použití MapReduce se službou HDInsight](hdinsight-use-mapreduce.md)

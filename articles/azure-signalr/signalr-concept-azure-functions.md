@@ -1,28 +1,28 @@
 ---
-title: Vytváření aplikací v reálném čase – služba Azure Functions & Azure SignalR
-description: Zjistěte, jak vyvíjet webovou aplikaci bez serveru v reálném čase pomocí služby Azure SignalR podle následujících příkladů.
+title: Sestavování aplikací v reálném čase Azure Functions & službě Azure Signal
+description: V tomto příkladu se naučíte vyvíjet webovou aplikaci bez serveru v reálném čase pomocí služby Azure Signal.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: cbb1fcf320a78f11045bf9627ffcc438af3e388a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74157621"
 ---
-# <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>Vytvářejte aplikace v reálném čase pomocí funkcí Azure a služby Azure SignalR
+# <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>Sestavování aplikací v reálném čase pomocí Azure Functions a služby Azure Signal
 
 Vzhledem k tomu, že služba Azure SignalR a Azure Functions jsou obě plně spravované a vysoce škálovatelné služby, které vám umožňují soustředit se místo správy infrastruktury na vytváření aplikací, je běžné obě tyto služby používat společně, abyste v [bezserverovém](https://azure.microsoft.com/solutions/serverless/) prostředí získali komunikaci v reálném čase.
 
 > [!NOTE]
-> Naučte se používat SignalR a Azure Functions společně v interaktivním kurzu [Povolit automatické aktualizace ve webové aplikaci pomocí Azure Functions a SignalR Service](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr).
+> Naučte se používat signalizaci a Azure Functions společně v interaktivním kurzu [Povolení automatických aktualizací ve webové aplikaci pomocí Azure functions a služby signalizace](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr).
 
 ## <a name="integrate-real-time-communications-with-azure-services"></a>Integrace komunikace v reálném čase do služeb Azure
 
-Funkce Azure umožňují psát kód v [několika jazycích](../azure-functions/supported-languages.md), včetně JavaScriptu, Pythonu, C# a Javy, které se aktivují vždy, když dojde k událostem v cloudu. Příklady těchto událostí:
+Azure Functions vám umožní psát kód v [několika jazycích](../azure-functions/supported-languages.md), včetně jazyků JavaScript, Python, C# a Java, které aktivují při každém výskytu událostí v cloudu. Příklady těchto událostí:
 
 * HTTP a webhookové požadavky
 * Pravidelné časovače
@@ -66,9 +66,9 @@ Služba SignalR vám umožňuje vysílat zprávy do všech klientů nebo jenom d
 
 V tomto článku jste získali přehled o použití Azure Functions se službou SignalR, abyste mohli povolit širokou škálu scénářů týkajících se bezserverového zasílání zpráv v reálném čase.
 
-Podrobné informace o tom, jak používat funkce Azure a službu SignalR společně, najdete v následujících zdrojích:
+Úplné informace o tom, jak používat Azure Functions a službu Signaler, najdete v následujících zdrojích:
 
-* [Vývoj a konfigurace funkcí Azure se službou SignalR](signalr-concept-serverless-development-config.md)
+* [Azure Functions vývoj a konfigurace pomocí služby Signal](signalr-concept-serverless-development-config.md)
 * [Umožnění automatických aktualizací webové aplikace pomocí Azure Functions a služby SignalR](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr)
 
 Pokud chcete zjistit víc, postupujte podle jednoho z těchto rychlých startů.

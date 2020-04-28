@@ -1,6 +1,6 @@
 ---
-title: 'Brána VPN: Poradce při potížích s klientem VPN – ověřování Azure AD'
-description: Poradce při potížích s ověřovacími klienty služby Azure AD brány VPN P2S
+title: 'VPN Gateway: řešení potíží s klientem VPN – ověřování Azure AD'
+description: Řešení potíží s VPN Gateway P2S klienty ověřování Azure AD
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,64 +8,64 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.openlocfilehash: 8871e92f0911c4d3cbcc1772bef1daeb5c70b5d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74151968"
 ---
-# <a name="troubleshoot-an-azure-ad-authentication-vpn-client"></a>Poradce při potížích s klientem VPN ověřování Azure AD
+# <a name="troubleshoot-an-azure-ad-authentication-vpn-client"></a>Řešení potíží s klientem sítě VPN pro ověřování Azure AD
 
-Tento článek vám pomůže vyřešit potíže s klientem VPN pro připojení k virtuální síti pomocí ověřování VPN bodu na místo a ověřování Azure Active Directory.
+Tento článek vám pomůže při řešení potíží s klientem VPN pro připojení k virtuální síti pomocí sítě VPN typu Point-to-site a ověřování Azure Active Directory.
 
 ## <a name="view-status-log"></a><a name="status"></a>Zobrazit protokol stavu
 
-Zobrazení protokolu stavu chybových zpráv.
+Zobrazení chybových zpráv v protokolu stavu.
 
 ![Protokoly](./media/troubleshoot-ad-vpn-client/1.png)
 
-1. Klepnutím na ikonu šipek v pravém dolním rohu okna klienta zobrazte **protokoly stavu**.
-2. Zkontrolujte, zda protokoly chyby, které mohou znamenat problém.
-3. Chybové zprávy jsou zobrazeny červeně.
+1. Kliknutím na ikonu se šipkami v pravém dolním rohu okna klienta zobrazíte **protokoly stavu**.
+2. V protokolech vyhledejte chyby, které mohou problém indikovat.
+3. Chybové zprávy se zobrazují červeně.
 
-## <a name="clear-sign-in-information"></a><a name="clear"></a>Vymazat přihlašovací informace
+## <a name="clear-sign-in-information"></a><a name="clear"></a>Vymazat přihlašovací údaje
 
-Vymažte přihlašovací informace.
+Vymažte přihlašovací údaje.
 
 ![přihlášení](./media/troubleshoot-ad-vpn-client/2.png)
 
-1. Vyberte ... vedle profilu, který chcete řešit. Vyberte **konfigurovat -> vymazat uložený účet**.
+1. Vyberte... vedle profilu, který chcete řešit. Vyberte **Konfigurovat-> vymazat uložený účet**.
 2. Vyberte **Uložit**.
 3. Pokuste se připojit.
-4. Pokud se připojení stále nezdaří, pokračujte k další části.
+4. Pokud se připojení stále nedaří, pokračujte k další části.
 
 ## <a name="run-diagnostics"></a><a name="diagnostics"></a>Spuštění diagnostiky
 
-Spusťte diagnostiku v klientovi VPN.
+Spusťte diagnostiku na klientovi VPN.
 
 ![Diagnostika](./media/troubleshoot-ad-vpn-client/3.png)
 
-1. Klikněte na **...** vedle profilu, na kterém chcete spustit diagnostiku. Vyberte **diagnostikovat -> spustit diagnózu**.
-2. Klient spustí řadu testů a zobrazí výsledek testu
+1. Klikněte na **...** vedle profilu, na kterém chcete spustit diagnostiku. Vyberte **Diagnostika-> spustit diagnostiku**.
+2. Klient spustí sérii testů a zobrazí výsledek testu.
 
-   * Přístup k Internetu – zkontroluje, zda má klient připojení k Internetu.
-   * Pověření klienta – zkontrolujte, jestli je dostupný koncový bod ověřování služby Azure Active Directory.
-   * Server Resolvable – kontaktuje DNS server, aby přelože IP adresu nakonfigurovaného serveru VPN
-   * Server Dosažitelný – Zkontroluje, zda server VPN reaguje nebo ne
-3. Pokud některý z testů selže, obraťte se na správce sítě a problém vyřešte.
-4. V další části se zobrazí, jak shromažďovat protokoly, v případě potřeby.
+   * Přístup k Internetu – zkontroluje, jestli má klient připojení k Internetu.
+   * Pověření klienta – zkontrolujte, zda je koncový bod ověřování Azure Active Directory dosažitelný.
+   * Přeložitelný Server – kontaktuje server DNS, aby přeložil IP adresu nakonfigurovaného serveru VPN.
+   * Dostupný server – kontroluje, zda server VPN neodpovídá nebo není.
+3. Pokud některý z testů selže, požádejte správce sítě, aby problém vyřešil.
+4. V další části se dozvíte, jak shromažďovat protokoly v případě potřeby.
 
-## <a name="collect-client-log-files"></a><a name="logfiles"></a>Shromažďování souborů protokolu klienta
+## <a name="collect-client-log-files"></a><a name="logfiles"></a>Shromáždit soubory protokolu klienta
 
-Shromážděte soubory protokolu klienta VPN. Soubory protokolu mohou být zaslány na podporu / správce metodou podle vašeho výběru. Například e-mail.
+Shromáždění souborů protokolu klienta VPN. Soubory protokolů lze odeslat pro podporu nebo správce pomocí metody, kterou si zvolíte. Například e-mail.
 
-1. Klikněte na "..." vedle profilu, na kterém chcete spustit diagnostiku. Vyberte **možnost Diagnostikovat -> Zobrazit adresář protokolů**.
+1. Klikněte na "..." vedle profilu, na kterém chcete spustit diagnostiku. Vyberte **Diagnostika-> Zobrazit adresář protokolů**.
 
-   ![zobrazit protokoly](./media/troubleshoot-ad-vpn-client/4.png)
-2. Průzkumník Windows se otevře do složky, která obsahuje soubory protokolu.
+   ![Zobrazit protokoly](./media/troubleshoot-ad-vpn-client/4.png)
+2. Spustí se Průzkumník Windows do složky, která obsahuje soubory protokolu.
 
-   ![zobrazit soubor](./media/troubleshoot-ad-vpn-client/5.png)
+   ![Zobrazit soubor](./media/troubleshoot-ad-vpn-client/5.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete [v tématu Vytvoření klienta Služby Azure Active Directory pro připojení P2S Open VPN, která používají ověřování Azure AD](openvpn-azure-ad-tenant.md).
+Další informace najdete v tématu [Vytvoření klienta Azure Active Directory pro P2S otevřená připojení VPN, která používají ověřování Azure AD](openvpn-azure-ad-tenant.md).

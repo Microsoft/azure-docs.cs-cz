@@ -1,89 +1,89 @@
 ---
 title: Převzetí služeb při selhání a opravy – Azure Cache for Redis
-description: Přečtěte si o převzetí služeb při selhání, oprava a proces aktualizace pro Azure Cache pro Redis.
+description: Přečtěte si o převzetí služeb při selhání, opravování a procesu aktualizace pro Azure cache pro Redis.
 author: asasine
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: adsasine
 ms.openlocfilehash: 6ff33bd594181aabc4fd7d55ce33f780a0d06086
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74122186"
 ---
-# <a name="failover-and-patching-for-azure-cache-for-redis"></a>Převzetí služeb při selhání a opravy pro Azure Cache pro Redis
+# <a name="failover-and-patching-for-azure-cache-for-redis"></a>Převzetí služeb při selhání a opravy pro Azure cache pro Redis
 
-Chcete-li vytvářet odolné a úspěšné klientské aplikace, je důležité pochopit převzetí služeb při selhání v kontextu služby Azure Cache for Redis. Převzetí služeb při selhání může být součástí plánovaných operací správy nebo může být způsobeno neplánovanými selháními hardwaru nebo sítě. Běžné použití převzetí služeb při selhání mezipaměti nastane, když služba pro správu opravuje binární soubory Azure Cache for Redis. Tento článek popisuje, co je převzetí služeb při selhání, jak k němu dochází během opravy a jak vytvořit odolné klientské aplikace.
+Aby bylo možné vytvářet odolné a úspěšné klientské aplikace, je důležité pochopit převzetí služeb při selhání v kontextu služby Azure cache pro Redis. Převzetí služeb při selhání může být součástí plánovaných operací správy nebo může být způsobeno neplánovaným hardwarem nebo selháním sítě. Běžné použití převzetí služeb při selhání mezipaměti přichází, když služba pro správu opraví mezipaměť Azure pro binární soubory Redis. Tento článek popisuje, co je převzetí služeb při selhání, jak probíhá při opravách a jak vytvořit odolnou klientskou aplikaci.
 
 ## <a name="what-is-a-failover"></a>Co je převzetí služeb při selhání?
 
-Začněme s přehledem převzetí služeb při selhání pro Azure Cache pro Redis.
+Pojďme začít s přehledem převzetí služeb při selhání pro Azure cache pro Redis.
 
-### <a name="a-quick-summary-of-cache-architecture"></a>Stručný přehled architektury mezipaměti
+### <a name="a-quick-summary-of-cache-architecture"></a>Rychlý souhrn architektury mezipaměti
 
-Mezipaměť je vytvořena z více virtuálních počítačů se samostatnými privátními IP adresami. Každý virtuální počítač, označovaný také jako uzel, je připojený ke sdílenému nástrojovi pro vyrovnávání zatížení s jedinou virtuální IP adresou. Každý uzel spouští proces serveru Redis a je přístupný pomocí názvu hostitele a portů Redis. Každý uzel je považován za hlavní nebo replika uzlu. Když se klientská aplikace připojí ke mezipaměti, její provoz prochází tímto vyvyčovávatelem zatížení a je automaticky směrován do hlavního uzlu.
+Mezipaměť je tvořena několika virtuálními počítači s oddělenými privátními IP adresami. Každý virtuální počítač, označovaný také jako uzel, je připojen ke sdílenému nástroji pro vyrovnávání zatížení s jednou virtuální IP adresou. Každý uzel spouští proces serveru Redis a je přístupný prostřednictvím názvu hostitele a portů Redis. Každý uzel je považován za hlavní uzel nebo uzel repliky. Když se klientská aplikace připojí k mezipaměti, provoz projde tímto nástrojem pro vyrovnávání zatížení a automaticky se směruje do hlavního uzlu.
 
-V mezipaměti Basic je jeden uzel vždy předloha. V mezipaměti Standard nebo Premium existují dva uzly: jeden je vybrán jako hlavní a druhý je replika. Vzhledem k tomu, že mezipaměti Standard a Premium mají více uzlů, může být jeden uzel nedostupný, zatímco druhý pokračuje ve zpracování požadavků. Clusterované mezipaměti jsou tvořeny mnoha úlomky, každý s odlišnými uzly předlohy a repliky. Jeden úlomek může být dole, zatímco ostatní zůstávají k dispozici.
+V mezipaměti Basic je jeden uzel vždy hlavní. V mezipaměti Standard nebo Premium existují dva uzly: jedna je zvolena jako hlavní a druhá je replika. Vzhledem k tomu, že mezipaměti úrovně Standard a Premium mají více uzlů, může být jeden uzel nedostupný, zatímco druhý nadále zpracovává požadavky. Clusterované mezipaměti se skládají z mnoha horizontálních oddílů, z nichž každá má odlišné hlavní uzly a uzly repliky. Jeden horizontálních oddílů může být mimo provoz, zatímco ostatní zůstávají k dispozici.
 
 > [!NOTE]
-> Základní mezipaměť nemá více uzlů a nenabízí smlouvu o úrovni služeb (SLA) pro její dostupnost. Základní mezipaměti se doporučují pouze pro účely vývoje a testování. Chcete-li zvýšit dostupnost, použijte mezipaměť Standard nebo Premium pro nasazení s více uzny.
+> Základní mezipaměť nemá více uzlů a nenabízí smlouvu o úrovni služeb (SLA) pro její dostupnost. Základní mezipaměti jsou doporučeny pouze pro účely vývoje a testování. Pro zvýšení dostupnosti použijte mezipaměť Standard nebo Premium pro nasazení s více uzly.
 
 ### <a name="explanation-of-a-failover"></a>Vysvětlení převzetí služeb při selhání
 
-Převzetí služeb při selhání nastane, když uzel repliky povýhá sám sebe, aby se stal hlavním uzlem a starý hlavní uzel zavře existující připojení. Po hlavní uzel vrátí nahoru, si všimne změny v rolích a sníží úrovně sebe, aby se stal replikou. Poté se připojí k nové předloze a synchronizuje data. Převzetí služeb při selhání může být plánované nebo neplánované.
+K převzetí služeb při selhání dojde, když uzel repliky propaguje sám sebe, aby se stal hlavním uzlem, a starý hlavní uzel ukončí existující připojení. Jakmile se hlavní uzel vrátí zpět, vystaví změnu v rolích a úroveň samotné se odvede na repliku. Pak se připojí k novému hlavnímu serveru a synchronizuje data. Převzetí služeb při selhání může být plánované nebo neplánované.
 
-*Plánované převzetí služeb při selhání* probíhá během aktualizací systému, jako jsou opravy Redis nebo upgrady operačního systému a operace správy, jako je například škálování a restartování. Vzhledem k tomu, že uzly obdrží předem oznámení o aktualizaci, mohou kooperativně zaměnit role a rychle aktualizovat vyrovnávání zatížení změny. Plánované převzetí služeb při selhání obvykle skončí za méně než 1 sekundu.
+*Plánované převzetí služeb při selhání* proběhne během aktualizací systému, jako jsou třeba opravy Redis nebo upgrady operačního systému a operace správy, jako je například škálování a restartování. Vzhledem k tomu, že uzly dostanou předběžné oznámení o aktualizaci, můžou snadno měnit role a rychle aktualizovat Nástroj pro vyrovnávání zatížení změny. Plánované převzetí služeb při selhání obvykle skončí za méně než 1 sekundu.
 
-*K neplánovanému převzetí služeb při selhání* může dojít z důvodu selhání hardwaru, selhání sítě nebo jiných neočekávaných výpadků hlavního uzlu. Uzel repliky se povyšuje na hlavní server, ale proces trvá déle. Uzel repliky musí nejprve zjistit, že jeho hlavní uzel není k dispozici, než může zahájit proces převzetí služeb při selhání. Uzel repliky musí také ověřit, že tato neplánovaná chyba není přechodná nebo místní, aby se zabránilo zbytečnému převzetí služeb při selhání. Toto zpoždění při zjišťování znamená, že neplánované převzetí služeb při selhání obvykle skončí během 10 až 15 sekund.
+*Neplánované převzetí služeb při selhání* může nastat kvůli selhání hardwaru, selhání sítě nebo jiným neočekávaným výpadkům hlavního uzlu. Uzel repliky propaguje sám sebe na hlavní, ale proces trvá déle. Uzel repliky musí nejprve zjistit, že jeho hlavní uzel není k dispozici předtím, než může zahájit proces převzetí služeb při selhání. Uzel repliky musí také ověřit, že tato neplánovaná chyba není přechodná nebo místní, aby nedocházelo k nepotřebnému převzetí služeb při selhání. Tato prodleva při detekci znamená, že neplánované převzetí služeb při selhání se obvykle dokončí do 10 až 15 sekund.
 
-## <a name="how-does-patching-occur"></a>Jak dochází k záplatování?
+## <a name="how-does-patching-occur"></a>Jak dochází k opravám?
 
-Služba Azure Cache for Redis pravidelně aktualizuje vaši mezipaměť pomocí nejnovějších funkcí a oprav platformy. Chcete-li opravit mezipaměť, služba provede následující kroky:
+Služba Azure cache for Redis pravidelně aktualizuje mezipaměť o nejnovější funkce a opravy platformy. Chcete-li opravit mezipaměť, služba bude postupovat podle těchto kroků:
 
-1. Služba pro správu vybere jeden uzel, který má být opraven.
-1. Pokud je vybraný uzel hlavní uzel, odpovídající uzel repliky se kooperativně povyšuje. Tato propagační akce se považuje za plánované převzetí služeb při selhání.
-1. Vybraný uzel se restartuje, aby převzal nové změny a vrátí se zpět jako uzel repliky.
-1. Uzel repliky se připojí k hlavnímu uzlu a synchronizuje data.
-1. Po dokončení synchronizace dat se proces opravy opakuje pro zbývající uzly.
+1. Služba správy vybere jeden uzel, který má být opraven.
+1. Pokud je vybraný uzel hlavním uzlem, odpovídající uzel repliky se družstvem samostatně propaguje. Tato propagační akce je považována za plánované převzetí služeb při selhání.
+1. Vybraný uzel se restartuje, aby se nové změny projevily, a jako uzel repliky se vrátí.
+1. Uzel replika se připojí k hlavnímu uzlu a synchronizuje data.
+1. Po dokončení synchronizace dat se proces opravy opakuje u zbývajících uzlů.
 
-Vzhledem k tomu, že oprava je plánované převzetí služeb při selhání, uzel repliky se rychle povyšuje, aby se stal hlavním serverem, a zahájí obsluhu požadavků a nových připojení. Základní mezipaměti nemají uzel repliky a nejsou k dispozici, dokud nebude aktualizace dokončena. Každý oddíl clusterované mezipaměti je opraven samostatně a nezavře připojení k jinému oddílu.
+Vzhledem k tomu, že jsou opravy plánovaného převzetí služeb při selhání, uzel repliky rychle propaguje sám sebe, aby se stal hlavním serverem, a zahájí požadavky na údržbu Základní mezipaměti nemají uzel repliky a nejsou k dispozici, dokud se aktualizace nedokončí. Každý horizontálních oddílů clusterované mezipaměti se samostatně opraví a neukončí připojení k jinému horizontálních oddílů.
 
 > [!IMPORTANT]
-> Uzly jsou opraveny jeden po druhém, aby se zabránilo ztrátě dat. Základní mezipaměti budou mít ztrátu dat. Clusterované mezipaměti jsou opraveny jeden úlomek najednou.
+> Uzly jsou postupně opraveny, aby nedošlo ke ztrátě dat. U základních mezipamětí dojde ke ztrátě dat. Clusterované mezipaměti se v jednom okamžiku odhorizontálních oddílů.
 
-Více mezipamětí ve stejné skupině prostředků a oblasti jsou také oprava jeden po druhém.  Mezipaměti, které jsou v různých skupinách prostředků nebo v různých oblastech, mohou být současně opraveny.
+Několik mezipamětí ve stejné skupině prostředků a oblasti se také postupně opraví.  Mezipaměti, které jsou v různých skupinách prostředků nebo různých oblastech, se můžou opravovat současně.
 
-Vzhledem k tomu, že úplné synchronizace dat probíhá před opakováním procesu, je nepravděpodobné, že dojde ke ztrátě dat při použití standardní nebo premium mezipaměti. Před ztrátou dat můžete dále chránit [exportem](cache-how-to-import-export-data.md#export) dat a povolením [trvalosti](cache-how-to-premium-persistence.md).
+Vzhledem k tomu, že se Úplná synchronizace dat stane, než se proces opakuje, může dojít ke ztrátě dat, když použijete mezipaměť Standard nebo Premium. Můžete se chránit před ztrátou dat [exportem](cache-how-to-import-export-data.md#export) dat a povolením [trvalosti](cache-how-to-premium-persistence.md).
 
 ## <a name="additional-cache-load"></a>Další zatížení mezipaměti
 
-Kdykoli dojde k převzetí služeb při selhání, standardní a premium mezipaměti je třeba replikovat data z jednoho uzlu do druhého. Tato replikace způsobí určité zvýšení zatížení v paměti serveru i procesoru. Pokud je instance mezipaměti již silně načtena, klientské aplikace mohou zaznamenat zvýšenou latenci. V extrémních případech klientské aplikace mohou obdržet výjimky časového výpadku. Chcete-li zmírnit dopad tohoto dodatečného zatížení, [nakonfigurujte](cache-configure.md#memory-policies) `maxmemory-reserved` nastavení mezipaměti.
+Vždy, když dojde k převzetí služeb při selhání, musí mezipaměť Standard a Premium replikovat data z jednoho uzlu na druhý. Tato replikace způsobí zvýšení zátěže v paměti serveru i procesoru. Pokud je instance mezipaměti již silně načtena, může se u klientských aplikací vyskytnout větší latence. V extrémních případech můžou klientské aplikace obdržet výjimky časového limitu. Chcete-li snížit dopad tohoto dodatečného zatížení, [nakonfigurujte](cache-configure.md#memory-policies) `maxmemory-reserved` nastavení mezipaměti.
 
-## <a name="how-does-a-failover-affect-my-client-application"></a>Jak převzetí služeb při selhání ovlivní klientskou aplikaci?
+## <a name="how-does-a-failover-affect-my-client-application"></a>Vliv převzetí služeb při selhání na klientskou aplikaci
 
-Počet chyb zaznamenaných klientskou aplikací závisí na tom, kolik operací bylo čekající na toto připojení v době převzetí služeb při selhání. Jakékoli připojení, které je směrováno přes uzel, který uzavřel jeho připojení se zobrazí chyby. Mnoho klientských knihoven může vyvolat různé typy chyb při přerušení připojení, včetně výjimek časového limitu, výjimek připojení nebo výjimek soketu. Počet a typ výjimek závisí na tom, kde v cestě kódu je požadavek, když mezipaměť zavře svá připojení. Například operace, která odešle požadavek, ale neobdržela odpověď, když dojde k převzetí služeb při selhání, může získat výjimku časového odčasového času. Nové požadavky na objekt uzavřeného připojení přijímat výjimky připojení, dokud dojde úspěšně k opětovnému připojení.
+Počet chyb, které klientská aplikace zobrazuje, závisí na tom, kolik operací čekalo na tomto připojení v době převzetí služeb při selhání. Všechna připojení, která jsou směrována přes uzel, který zavřel připojení, uvidí chyby. Mnoho klientských knihoven může při přerušení připojení vyvolat různé typy chyb, včetně výjimek vypršení platnosti, výjimek připojení nebo výjimek soketu. Počet a typ výjimek závisí na tom, kde v cestě kódu je požadavek v případě, že mezipaměť ukončí své připojení. Například operace, která odesílá požadavek, ale neobdržela odpověď, když dojde k převzetí služeb při selhání, může obdržet výjimku časového limitu. Nové požadavky na uzavřený objekt připojení obdrží výjimky připojení, dokud se znovu neproběhne opětovné připojení.
 
-Většina klientských knihoven se pokusí znovu připojit ke mezipaměti, pokud jsou k tomu nakonfigurovány. Nepředvídané chyby však mohou příležitostně umístit objekty knihovny do neopravitelného stavu. Pokud chyby přetrvávají déle než předem nakonfigurované množství času, objekt připojení by měl být znovu vytvořen. V Microsoft.NET a dalších objektově orientovaných jazycích lze znovu vytvořit připojení bez restartování aplikace pomocí [vzoru Lazy\<T\> ](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#reconnecting-with-lazyt-pattern).
+Většina klientských knihoven se pokusí o opětovné připojení k mezipaměti, pokud jsou nakonfigurované. Avšak nepředvídatelné chyby mohou občas umístit objekty knihovny do neobnovitelné stavu. Pokud jsou chyby trvalé po dobu delší, než je předem nakonfigurované množství času, je nutné znovu vytvořit objekt připojení. V Microsoft.NET a dalších objektově orientovaných jazycích je možné znovu vytvořit připojení bez restartování aplikace, a to pomocí [vzoru opožděného\<T\> ](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#reconnecting-with-lazyt-pattern).
 
-### <a name="how-do-i-make-my-application-resilient"></a>Jak lze učinit aplikaci odolnou?
+### <a name="how-do-i-make-my-application-resilient"></a>Návody nastavit moji aplikaci jako odolnou?
 
-Vzhledem k tomu, že se nemůžete zcela vyhnout převzetí služeb při selhání, napište klientské aplikace pro odolnost proti chybám k přerušení připojení a neúspěšným požadavkům. Přestože se většina klientských knihoven automaticky znovu připojí ke koncovému bodu mezipaměti, několik z nich se pokusí opakovat neúspěšné požadavky. V závislosti na scénáři aplikace může mít smysl použít logiku opakování s backoff.
+Vzhledem k tomu, že se nedaří převzetí služeb při selhání úplně zabránit, napište klientské aplikace tak, aby odolné proti chybám připojení a neúspěšné I když se většina klientských knihoven automaticky znovu připojí ke koncovému bodu mezipaměti, několik z nich se pokusí opakovat neúspěšné požadavky. V závislosti na scénáři aplikace může být vhodné použít logiku opakování v omezení rychlosti.
 
-Chcete-li otestovat odolnost klientské aplikace, použijte [restartování](cache-administration.md#reboot) jako ruční aktivační událost pro přerušení připojení. Dále doporučujeme [naplánovat aktualizace](cache-administration.md#schedule-updates) mezipaměti. Informujte službu správy, aby použila opravy runtime Redis během zadaných týdenních oken. Tato okna jsou obvykle období, kdy je nízký provoz klientských aplikací, aby se zabránilo potenciálním incidentům.
+Chcete-li otestovat odolnost klientské aplikace, použijte [restart](cache-administration.md#reboot) jako ruční Trigger pro přerušení připojení. Kromě toho doporučujeme [naplánovat aktualizace](cache-administration.md#schedule-updates) v mezipaměti. Sdělte službě správy pokyn, aby během určených týdenních oken použili opravy modulu runtime Redis. Tato okna jsou obvykle období, kdy jsou přenosy klientských aplikací nízké, aby nedocházelo k potenciálním incidentům.
 
-### <a name="client-network-configuration-changes"></a>Změny konfigurace klientské sítě
+### <a name="client-network-configuration-changes"></a>Klientská síť – změny konfigurace
 
-Některé změny konfigurace sítě na straně klienta mohou vyvolat chyby "Není k dispozici žádné připojení". Tyto změny mohou zahrnovat:
+Určitá síť na straně klienta – změny konfigurace můžou aktivovat chyby "bez připojení k dispozici". Tyto změny mohou zahrnovat:
 
-- Výměna virtuální IP adresy klientské aplikace mezi pracovní a produkční sloty.
-- Změna velikosti nebo počtu instancí aplikace.
+- Výměna virtuální IP adresy klientské aplikace mezi pracovními a provozními sloty
+- Změna velikosti nebo počtu instancí aplikace
 
-Tyto změny mohou způsobit problém s připojením, který trvá méně než jednu minutu. Vaše klientská aplikace pravděpodobně ztratí připojení k jiným externím síťovým prostředkům kromě služby Azure Cache for Redis.
+Tyto změny můžou způsobit problémy s připojením, které trvají méně než jednu minutu. Klientská aplikace bude pravděpodobně přijít o připojení k jiným externím síťovým prostředkům kromě služby Azure cache for Redis.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Naplánujte aktualizace](cache-administration.md#schedule-updates) mezipaměti.
+- [Naplánujte aktualizace](cache-administration.md#schedule-updates) pro mezipaměť.
 - Otestujte odolnost aplikace pomocí [restartování](cache-administration.md#reboot).
-- [Nakonfigurujte](cache-configure.md#memory-policies) rezervace paměti a zásady.
+- [Konfigurace](cache-configure.md#memory-policies) rezervací paměti a zásad.

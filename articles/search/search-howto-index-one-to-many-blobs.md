@@ -1,7 +1,7 @@
 ---
 title: Indexování objektů BLOB obsahujících více dokumentů
 titleSuffix: Azure Cognitive Search
-description: Procházení objektů BLOB Azure pro textový obsah pomocí Azure Congitive Search Blob indexer, kde každý objekt blob může přinést jeden nebo více dokumentů indexu vyhledávání.
+description: Procházejte objekty blob Azure pro textový obsah pomocí indexeru objektů BLOB služby Azure Cognitive Search, kde každý objekt BLOB může mít jeden nebo více dokumentů indexu vyhledávání.
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
@@ -10,26 +10,26 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 1840bda0ecc9462a5d8f796b616d728d0bb412f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74112261"
 ---
-# <a name="indexing-blobs-to-produce-multiple-search-documents"></a>Indexování objektů BLOB za účelem vytvoření více vyhledávacích dokumentů
-Ve výchozím nastavení bude indexer objektů blob považovat obsah objektu blob za jeden vyhledávací dokument. Některé **hodnoty parsingMode** podporují scénáře, kde může mít jednotlivý objekt blob za následek více vyhledávacích dokumentů. Různé typy **analýzyMode,** které umožňují indexer extrahovat více než jeden vyhledávací dokument z objektu blob jsou:
+# <a name="indexing-blobs-to-produce-multiple-search-documents"></a>Indexování objektů BLOB pro vytváření více dokumentů hledání
+Ve výchozím nastavení bude indexer objektů BLOB zacházet s obsahem objektu BLOB jako s jedním vyhledávacím dokumentem. Některé hodnoty **parsingMode** podporují scénáře, kdy jednotlivý objekt BLOB může mít za následek více dokumentů pro hledání. Různé typy **parsingMode** , které umožňují indexeru extrahovat více než jeden dokument hledání z objektu BLOB:
 + `delimitedText`
 + `jsonArray`
 + `jsonLines`
 
-## <a name="one-to-many-document-key"></a>Klíč dokumentu 1:N
-Každý dokument, který se zobrazí v indexu Azure Cognitive Search, je jednoznačně identifikován klíčem dokumentu. 
+## <a name="one-to-many-document-key"></a>Klíč dokumentu 1: n
+Každý dokument, který se zobrazuje v indexu služby Azure Kognitivní hledání, je jednoznačně identifikovaný klíčem dokumentu. 
 
-Pokud není zadán žádný režim analýzy a pokud neexistuje žádné explicitní mapování pro klíčové `metadata_storage_path` pole v indexu Azure Cognitive Search automaticky [mapuje](search-indexer-field-mappings.md) vlastnost jako klíč. Toto mapování zajišťuje, že každý objekt blob se zobrazí jako samostatný vyhledávací dokument.
+Pokud není zadaný žádný režim analýzy a pokud pro klíčové pole v indexu není k dispozici žádné explicitní mapování, Kognitivní hledání se `metadata_storage_path` vlastnost automaticky [mapuje](search-indexer-field-mappings.md) jako klíč. Toto mapování zajišťuje, že se každý objekt BLOB zobrazí jako odlišný vyhledávací dokument.
 
-Při použití některého z výše uvedených režimů analýzy se jeden objekt blob mapuje na "mnoho" vyhledávacích dokumentů, takže klíč dokumentu je výhradně založený na metadatech objektu blob nevhodný. K překonání tohoto omezení Azure Cognitive Search je schopen generovat klíč dokumentu "1:N" pro každou jednotlivou entitu extrahované z objektu blob. Tato vlastnost `AzureSearch_DocumentKey` je pojmenována a je přidána do každé jednotlivé entity extrahované z objektu blob. Hodnota této vlastnosti je zaručena jedinečný pro každou jednotlivou entitu _napříč objekty BLOB_ a entity se zobrazí jako samostatné vyhledávací dokumenty.
+Při použití některého z výše uvedených režimů analýzy jeden objekt BLOB namapuje na "mnoho" vyhledávacích dokumentů, takže klíč dokumentu je výhradně založený na metadatech objektu BLOB nevhodný. K překonání tohoto omezení Azure Kognitivní hledání umožňuje vygenerovat klíč dokumentu "1: n" pro každou jednotlivou entitu extrahovanou z objektu BLOB. Tato vlastnost je pojmenována `AzureSearch_DocumentKey` a přidána do každé z nich vyjmuté z objektu BLOB. Hodnota této vlastnosti zaručuje, že pro každou jednotlivou entitu _napříč objekty blob_ je jedinečná a entity se zobrazí jako samostatné dokumenty hledání.
 
-Ve výchozím nastavení, pokud nejsou zadána žádná explicitní `AzureSearch_DocumentKey` mapování polí pro pole `base64Encode` indexu klíče, je na něj mapována pomocí funkce mapování polí.
+Ve výchozím nastavení, pokud nejsou zadána explicitní mapování polí pro pole index klíče, `AzureSearch_DocumentKey` je k němu namapováno pomocí funkce mapování `base64Encode` pole.
 
 ## <a name="example"></a>Příklad
 Předpokládejme, že máte definici indexu s následujícími poli:
@@ -38,19 +38,19 @@ Předpokládejme, že máte definici indexu s následujícími poli:
 + `pressure`
 + `timestamp`
 
-A kontejner objektů blob má objekty BLOB s následující strukturou:
+A váš kontejner objektů BLOB obsahuje objekty BLOB s následující strukturou:
 
-_Objekt Blob1.json_
+_Blob1. JSON_
 
     { "temperature": 100, "pressure": 100, "timestamp": "2019-02-13T00:00:00Z" }
     { "temperature" : 33, "pressure" : 30, "timestamp": "2019-02-14T00:00:00Z" }
 
-_Objekt Blob2.json_
+_Blob2. JSON_
 
     { "temperature": 1, "pressure": 1, "timestamp": "2018-01-12T00:00:00Z" }
     { "temperature" : 120, "pressure" : 3, "timestamp": "2013-05-11T00:00:00Z" }
 
-Když vytvoříte indexer a nastavíte `jsonLines` **režim analýzy** na – bez zadání explicitního mapování polí pro klíčové pole bude implicitně použito následující mapování.
+Když vytvoříte indexer a nastavíte **parsingMode** na `jsonLines` -bez zadání explicitních mapování polí pro klíčové pole, použije se implicitně následující mapování.
     
     {
         "sourceFieldName" : "AzureSearch_DocumentKey",
@@ -58,7 +58,7 @@ Když vytvoříte indexer a nastavíte `jsonLines` **režim analýzy** na – be
         "mappingFunction": { "name" : "base64Encode" }
     }
 
-Toto nastavení bude mít za následek index Azure Cognitive Search obsahující následující informace (base64 kódované id zkráceno pro stručnost)
+Výsledkem tohoto nastavení je index služby Azure Kognitivní hledání obsahující následující informace (pro zkrácení se zkrátilo ID kódované v kódování Base64).
 
 | id | teplota | tlak | časové razítko |
 |----|-------------|----------|-----------|
@@ -67,40 +67,40 @@ Toto nastavení bude mít za následek index Azure Cognitive Search obsahující
 | aHR0 ... YjIuanNvbjsx | 1 | 1 | 2018-01-12T00:00:00Z |
 | aHR0 ... YjIuanNvbjsy | 120 | 3 | 2013-05-11T00:00:00Z |
 
-## <a name="custom-field-mapping-for-index-key-field"></a>Vlastní mapování polí pro pole klíče indexu
+## <a name="custom-field-mapping-for-index-key-field"></a>Mapování vlastních polí pro pole indexového klíče
 
-Za předpokladu, že stejné definice indexu jako v předchozím příkladu, řekněme, že kontejner objektů blob má objekty BLOB s následující strukturou:
+Za předpokladu, že v předchozím příkladu je stejná definice indexu, řekněme, že váš kontejner objektů BLOB obsahuje objekty BLOB s následující strukturou:
 
-_Objekt Blob1.json_
+_Blob1. JSON_
 
     recordid, temperature, pressure, timestamp
     1, 100, 100,"2019-02-13T00:00:00Z" 
     2, 33, 30,"2019-02-14T00:00:00Z" 
 
-_Objekt Blob2.json_
+_Blob2. JSON_
 
     recordid, temperature, pressure, timestamp
     1, 1, 1,"2018-01-12T00:00:00Z" 
     2, 120, 3,"2013-05-11T00:00:00Z" 
 
-Když vytvoříte indexer `delimitedText` s **režimem analýzy**, může být přirozené nastavit funkci mapování polí na klíčové pole následujícím způsobem:
+Při vytváření indexeru pomocí `delimitedText` **parsingMode**může být přirozené nastavit funkci mapování polí na klíčové pole následujícím způsobem:
 
     {
         "sourceFieldName" : "recordid",
         "targetFieldName": "id"
     }
 
-Toto mapování však _nebude_ mít za následek 4 `recordid` dokumenty zobrazeny v indexu, protože pole není jedinečný _napříč objekty BLOB_. Proto doporučujeme použít implicitní mapování polí aplikované z `AzureSearch_DocumentKey` vlastnosti na pole indexu klíče pro režimy analýzy 1:N.
+Toto mapování ale _nevede k tomu,_ aby se v indexu zobrazovaly 4 dokumenty, protože `recordid` pole není v objektech _BLOB_jedinečné. Proto doporučujeme použít implicitní mapování polí použité z `AzureSearch_DocumentKey` vlastnosti na pole index klíče pro režimy analýzy "1: n".
 
-Pokud chcete nastavit explicitní mapování polí, ujistěte se, že _sourceField_ je odlišný pro každou jednotlivou entitu **ve všech objektech BLOB**.
+Pokud chcete nastavit explicitní mapování polí, ujistěte se, že je _sourceField_ jedinečný pro každou jednotlivou entitu **napříč všemi objekty blob**.
 
 > [!NOTE]
-> Přístup používaný `AzureSearch_DocumentKey` zajištění jedinečnosti na extrahované entity se může změnit, a proto byste neměli spoléhat na jeho hodnotu pro potřeby vaší aplikace.
+> Přístup, který se `AzureSearch_DocumentKey` používá při zajištění jedinečnosti na extrahovanou entitu, se může změnit, a proto byste neměli spoléhat na jeho hodnotu pro potřeby vaší aplikace.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud ještě nejste obeznámeni se základní strukturou a pracovním postupem indexování objektů blob, měli byste nejprve zkontrolovat [indexování azure blob storage pomocí Azure Cognitive Search.](search-howto-index-json-blobs.md) Další informace o režimech analýzy pro různé typy obsahu objektů blob najděte v následujících článcích.
+Pokud jste už neznáte základní strukturu a pracovní postup indexování objektů blob, měli byste nejdřív projít téma [indexování azure BLOB Storage s azure kognitivní hledání](search-howto-index-json-blobs.md) . Další informace o režimech analýzy pro různé typy obsahu objektů BLOB najdete v následujících článcích.
 
 > [!div class="nextstepaction"]
-> [Indexování objektů BLOB](search-howto-index-csv-blobs.md)
-> CSV[indexování objektů BLOB JSON](search-howto-index-json-blobs.md)
+> [Indexování](search-howto-index-csv-blobs.md)
+> [objektů BLOB JSON indexování](search-howto-index-json-blobs.md) objektů BLOB ve formátu CSV

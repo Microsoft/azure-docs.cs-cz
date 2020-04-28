@@ -1,7 +1,7 @@
 ---
-title: Analýza živého přenosu pomocí video indexeru
+title: Analýza živého datového proudu pomocí Video Indexer
 titleSuffix: Azure Media Services
-description: Tento článek ukazuje, jak provést analýzu živého datového proudu pomocí video indexeru.
+description: Tento článek ukazuje, jak provést analýzu živého datového proudu pomocí Video Indexer.
 services: media-services
 author: Juliako
 manager: femila
@@ -11,35 +11,35 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
 ms.openlocfilehash: 89d0254fc758834c437f347e6ecb7bcafc1fe467
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74186001"
 ---
-# <a name="live-stream-analysis-with-video-indexer"></a>Analýza živého přenosu pomocí videoindexeru
+# <a name="live-stream-analysis-with-video-indexer"></a>Analýza živého datového proudu pomocí Video Indexer
 
-Azure Media Services Video Indexer je služba Azure navržená k extrahování podrobných informací z video a zvukových souborů offline. To je analyzovat daný mediální soubor již vytvořený předem. V některých případech použití je však důležité získat přehledy médií z živého kanálu co nejrychleji odemknout provozní a jiné případy použití stisknuté v čase. Například tato bohatá metadata v živém streamu mohou producenti obsahu používat k automatizaci televizní produkce.
+Azure Media Services Video Indexer je služba Azure, která je určená k extrakci podrobného přehledu z video a zvukových souborů v režimu offline. Toto je analýza daného mediálního souboru již vytvořeného předem. Nicméně v některých případech je důležité získat z živého informačního kanálu mediální přehledy, abyste mohli rychle uvolnit provozní a jiné případy použití v čase. Například taková rozsáhlá metadata živého streamu můžou použít výrobci obsahu k automatizaci produkčního prostředí.
 
-Řešení popsané v tomto článku umožňuje zákazníkům používat Video Indexer v téměř reálném čase rozlišení na živé kanály. Zpoždění v indexování může být tak nízké, jak čtyři minuty pomocí tohoto řešení, v závislosti na bloky dat indexovaných, vstupní rozlišení, typ obsahu a výpočetní napájený používá pro tento proces.
+Řešení popsané v tomto článku umožňuje zákazníkům používat Video Indexer řešení téměř v reálném čase pro živé kanály. Zpoždění při indexování může být pomocí tohoto řešení menší než čtyři minuty, v závislosti na datových blocích indexovaných dat, rozlišení vstupu, typu obsahu a výpočetním prostředí, které se používá pro tento proces.
 
-![Metadata video indexeru v živém streamu](./media/live-stream-analysis/live-stream-analysis01.png)
+![Metadata Video Indexer v živém streamu](./media/live-stream-analysis/live-stream-analysis01.png)
 
-*Obrázek 1 – Ukázkový přehrávač zobrazující metadata videoindexeru v živém streamu*
+*Obrázek 1 – vzorový přehrávač zobrazující metadata Video Indexer v živém streamu*
 
-[Řešení analýzy datového proudu](https://aka.ms/livestreamanalysis) po ruce, používá Azure Functions a dvě logic apps ke zpracování živého programu z živého kanálu ve službě Azure Media Services pomocí Video Indexer a zobrazí výsledek s Azure Media Player zobrazující téměř v reálném čase výsledkem datového proudu.
+[Řešení pro analýzu streamování](https://aka.ms/livestreamanalysis) používá Azure functions a dvě Logic Apps ke zpracování živého programu z živého kanálu v Azure Media Services s video indexer a výsledek zobrazuje Azure Media Player, který zobrazuje výsledný stream téměř v reálném čase.
 
-Na vysoké úrovni se skládá ze dvou hlavních kroků. První krok běží každých 60 sekund a trvá podklip posledních 60 sekund přehrávaných, vytvoří z něj datový zdroj a indexuje jej prostřednictvím video indexeru. Pak druhý krok se nazývá po dokončení indexování. Zachycené přehledy jsou zpracovány, odeslány do Azure Cosmos DB a indexovaný dílčí klip se odstraní.
+Na vysoké úrovni se skládá ze dvou hlavních kroků. První krok se spustí každých 60 sekund a provede dílčí klip za posledních 60 sekund, vytvoří z něho Asset a indexuje ho pomocí Video Indexer. Druhý krok se pak volá po dokončení indexování. Zachycené přehledy jsou zpracovávány, odesílány do Azure Cosmos DB a dílčí klip indexovaný se odstraní.
 
-Ukázkový přehrávač přehrává živý přenos a získává přehledy z Azure Cosmos DB pomocí vyhrazené funkce Azure. Zobrazuje metadata a miniatury synchronizované s živým videem.
+Ukázkový přehrávač hraje živý datový proud a získá přehledy z Azure Cosmos DB pomocí vyhrazené funkce Azure Functions. Zobrazuje metadata a miniatury synchronizované s živým videem.
 
-![Dvě aplikace logiky, které každou minutu zpracovávají živý přenos v cloudu](./media/live-stream-analysis/live-stream-analysis02.png)
+![Dvě aplikace logiky zpracovávají proud živého vysílání každou minutu v cloudu.](./media/live-stream-analysis/live-stream-analysis02.png)
 
-*Obrázek 2 – dvě aplikace logiky zpracování živého přenosu každou minutu v cloudu.*
+*Obrázek 2 – tyto dvě aplikace logiky zpracovávají proud živého vysílání každou minutu v cloudu.*
 
 ## <a name="step-by-step-guide"></a>Podrobný průvodce 
 
-Úplný kód a podrobný návod k nasazení výsledků najdete v [projektu GitHub pro analýzu živých médií s Video Indexerem](https://aka.ms/livestreamanalysis). 
+Úplný kód a podrobný průvodce nasazením výsledků najdete v [projektu GitHubu pro analýzu živých médií pomocí video indexer](https://aka.ms/livestreamanalysis). 
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,6 +1,6 @@
 ---
-title: Nastavení testovacího prostředí etického hackingu se službami Azure Lab Services | Dokumenty společnosti Microsoft
-description: Zjistěte, jak nastavit testovací prostředí pomocí Služby Azure Lab services k výuce etického hackingu.
+title: Nastavení etických laboratoří pro hackery s Azure Lab Services | Microsoft Docs
+description: Naučte se, jak nastavit testovací prostředí pomocí Azure Lab Services pro učení etických útoků.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,21 +14,21 @@ ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
 ms.openlocfilehash: 2b600edc4c360a2b2990be34e44bb8fbd1c8f721
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74133180"
 ---
-# <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Zřídit laboratoř pro výuku etické hacking třídy 
-Tento článek vám ukáže, jak nastavit třídu, která se zaměřuje na forenzní stránku etického hackingu. Penetrační testování, což je praxe používaná komunitou etických hackerů, nastává, když se někdo pokusí získat přístup k systému nebo síti, aby prokázal chyby zabezpečení, které může útočník se zlými úmysly zneužít. 
+# <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Nastavení testovacího prostředí pro výuku etických tříd hackerů 
+V tomto článku se dozvíte, jak nastavit třídu, která se zaměřuje na forenzníou stranu etických útoků. Testování průniku, praxe používané etickým komunitou pro hackery, nastává, když se někdo pokusí získat přístup k systému nebo síti a Ukázat tak ohrožení zabezpečení, která by škodlivý útočník mohl zneužít. 
 
-V etické hacking třídy, studenti se mohou naučit moderní techniky pro obranu proti zranitelnosti. Každý student dostane virtuální počítač hostitele Windows Serveru, který má dva vnořené virtuální počítače – jeden virtuální stroj s obrazem [Metasploitable3](https://github.com/rapid7/metasploitable3) a další počítač s obrazem [Kali Linux.](https://www.kali.org/) Metasploitable virtuální stroj se používá pro využití účelů a Kali virtuální stroj poskytuje přístup k nástrojům potřebným k provádění forenzních úkolů.
+V etických třídách útoku Students se můžou seznámit s moderními technikami, které chrání před ohrožením zabezpečení. Každý Student získá virtuální počítač hostitele Windows serveru, který má dva vnořené virtuální počítače – jeden virtuální počítač s imagí [Metasploitable3](https://github.com/rapid7/metasploitable3) a další počítač s imagí [Kali Linux](https://www.kali.org/) . Virtuální počítač Metasploitable se používá pro zneužití účely a virtuální počítač Kali poskytuje přístup k nástrojům potřebným ke spouštění úloh forenzní.
 
-Tento článek má dvě hlavní části. První část popisuje, jak vytvořit učebnu laboratoře. Druhá část popisuje, jak vytvořit počítač šablony s povolenou vnořenou virtualizací a potřebnými nástroji a obrázky. V tomto případě obraz Metasploitable a kali Linux obraz na počítači, který má Hyper-V povoleno hostit obrázky.
+Tento článek obsahuje dvě hlavní části. První část obsahuje informace o tom, jak vytvořit prostředí učebny. Druhá část obsahuje informace o tom, jak vytvořit počítač šablony s povolenou vnořenou virtualizací a s potřebnými nástroji a bitovými kopiemi. V tomto případě bitová kopie Metasploitable a image Kali Linux na počítači, který má povolenou technologii Hyper-V pro hostování imagí.
 
-## <a name="lab-configuration"></a>Konfigurace laboratoře
-Chcete-li nastavit toto testovací prostředí, budete potřebovat předplatné Azure, abyste mohli začít. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/) než začnete. Jakmile získáte předplatné Azure, můžete buď vytvořit nový účet testovacího prostředí ve službě Azure Lab Services, nebo použít existující účet. Podívejte se na následující kurz pro vytvoření nového účtu testovacího prostředí: [Kurz pro nastavení účtu testovacího prostředí](tutorial-setup-lab-account.md).
+## <a name="lab-configuration"></a>Konfigurace testovacího prostředí
+K nastavení tohoto testovacího prostředí potřebujete předplatné Azure, abyste mohli začít. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete. Jakmile získáte předplatné Azure, můžete buď vytvořit nový účet testovacího prostředí v Azure Lab Services nebo použít existující účet. V následujícím kurzu najdete postup vytvoření nového účtu testovacího prostředí: [kurz nastavení účtu testovacího prostředí](tutorial-setup-lab-account.md).
 
 Podle [tohoto kurzu](tutorial-setup-classroom-lab.md) vytvořte nové testovací prostředí a pak použijte následující nastavení:
 
@@ -36,114 +36,114 @@ Podle [tohoto kurzu](tutorial-setup-classroom-lab.md) vytvořte nové testovací
 | -------------------- | ----- | 
 | Střední (vnořená virtualizace) | Windows Server 2019 Datacenter |
 
-## <a name="template-machine"></a>Šablona stroj 
+## <a name="template-machine"></a>Počítač šablony 
 
-Po vytvoření šablony počítače spusťte počítač a připojte se k němu, abyste dokončili následující tři hlavní úkoly. 
+Po vytvoření počítače s šablonou spusťte počítač a připojte se k němu, abyste mohli dokončit následující tři hlavní úlohy. 
  
-1. Nastavte počítač pro vnořenou virtualizaci. Umožňuje všechny příslušné funkce systému Windows, jako je Technologie Hyper-V, a nastavuje síť pro obrázky Hyper-V, aby mohly komunikovat mezi sebou navzájem a s internetem.
-2. Nastavte obrázek [Kali](https://www.kali.org/) Linux. Kali je linuxová distribuce, která obsahuje nástroje pro penetrační testování a bezpečnostní audit.
-3. Nastavte metasploitelný obraz. V tomto příkladu [metasploitable3](https://github.com/rapid7/metasploitable3) obraz bude použit. Tato bitová kopie je vytvořena tak, aby záměrně měla slabá místa zabezpečení.
+1. Nastavte počítač pro vnořenou virtualizaci. Povoluje všechny příslušné funkce systému Windows, jako je například technologie Hyper-V, a nastavuje síť pro Image Hyper-V, aby bylo možné komunikovat mezi sebou a internetem.
+2. Nastavte Image [Kali](https://www.kali.org/) Linux. Kali je distribuce systému Linux, která obsahuje nástroje pro testování průniku a audit zabezpečení.
+3. Nastavte bitovou kopii Metasploitable. V tomto příkladu se použije obrázek [Metasploitable3](https://github.com/rapid7/metasploitable3) . Tato bitová kopie se vytvoří pro účely ohrožení zabezpečení.
 
-Skript, který automatizuje výše uvedené úkoly, je k dispozici na [lab services etické hacking skripty](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/EthicalHacking).
+Skript, který automatizuje úkoly popsané výše, je k dispozici v části [laboratorní služby – skripty pro hackery](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/EthicalHacking).
 
 ### <a name="prepare-template-machine-for-nested-virtualization"></a>Připravit počítač šablony pro vnořenou virtualizaci
-Postupujte podle pokynů v [tomto článku](how-to-enable-nested-virtualization-template-vm.md) připravit virtuální počítač šablony pro vnořené virtualizace. 
+Postupujte podle pokynů v [tomto článku](how-to-enable-nested-virtualization-template-vm.md) a připravte svůj virtuální počítač šablony pro vnořenou virtualizaci. 
 
-### <a name="set-up-a-nested-virtual-machine-with-kali-linux-image"></a>Nastavení vnořeného virtuálního počítače s Kali Linux Image
-Kali je linuxová distribuce, která obsahuje nástroje pro penetrační testování a bezpečnostní audit.
+### <a name="set-up-a-nested-virtual-machine-with-kali-linux-image"></a>Nastavení vnořeného virtuálního počítače s imagí Kali Linux
+Kali je distribuce systému Linux, která obsahuje nástroje pro testování průniku a audit zabezpečení.
 
-1. Stáhnout obrázek z . [https://www.offensive-security.com/kali-linux-vm-vmware-virtualbox-image-download/](https://www.offensive-security.com/kali-linux-vm-vmware-virtualbox-image-download/)  
-    1. Stáhněte si **Kali Linux Hyper-V 64 Bit** pro Hyper-V.
-    1. Extrahujte soubor .7z.  Pokud ještě nemáte 7 zip, stáhněte [https://www.7-zip.org/download.html](https://www.7-zip.org/download.html)si jej z . Zapamatujte si umístění extrahované složky, protože ji budete později potřebovat.
-2. Otevřete **Správce technologie Hyper-V** z nástroje pro správu.
-1. Vyberte **Akce**a pak **vyberte Importovat virtuální počítač**. 
-1. Na stránce **Vyhledat složku** průvodce **importem virtuálního počítače** zvolte umístění extrahované složky, která obsahuje bitovou kopii Kali Linux.
+1. Stáhnout obrázek z [https://www.offensive-security.com/kali-linux-vm-vmware-virtualbox-image-download/](https://www.offensive-security.com/kali-linux-vm-vmware-virtualbox-image-download/).  
+    1. Stáhněte si **bit Kali Linux Hyper-v 64** pro Hyper-v.
+    1. Extrahujte soubor. 7z.  Pokud ještě nemáte 7 zip, Stáhněte si ho z [https://www.7-zip.org/download.html](https://www.7-zip.org/download.html). Zapamatujte si umístění extrahované složky, protože ji budete potřebovat později.
+2. Otevřete **Správce technologie Hyper-V** z nástrojů pro správu.
+1. Vyberte **akci**a pak vyberte **importovat virtuální počítač**. 
+1. Na stránce **najít složku** v průvodci **importem virtuálního počítače** vyberte umístění extrahované složky, která obsahuje image Kali Linux.
 
-    ![Dialogové okno Najít složku](../media/class-type-ethical-hacking/locate-folder.png)
-1. Na stránce **Vybrat virtuální stroj** vyberte obrázek Kali Linux.  V tomto případě je obraz **kali-linux-2019.3-hyperv**.
+    ![Dialogové okno najít složku](../media/class-type-ethical-hacking/locate-folder.png)
+1. Na stránce **Vybrat virtuální počítač** vyberte Image Kali Linux.  V takovém případě je bitová kopie **Kali-Linux-2019,3-HyperV**.
 
-    ![Vyberte obrázek Kali](../media/class-type-ethical-hacking/select-kali-image.png)
-1.  Na stránce **Zvolit typ importu** vyberte **Kopírovat virtuální počítač (vytvořit nové jedinečné ID).**
+    ![Vybrat Kali obrázek](../media/class-type-ethical-hacking/select-kali-image.png)
+1.  Na stránce **Vybrat typ importu** vyberte možnost **zkopírovat virtuální počítač (vytvořit nové jedinečné ID)**.
 
-    ![Zvolte typ importu](../media/class-type-ethical-hacking/choose-import-type.png)
-1. Přijměte výchozí nastavení v části **Zvolit složky pro soubory virtuálního počítače** a Zvolit složky k uložení stránek **virtuálních pevných disků** a pak vyberte **Další**.
-1. Na stránce **Připojit síť** zvolte **LabServicesSwitch** vytvořený dříve v části **Připravit šablonu pro vnořenou virtualizaci** v tomto článku a pak vyberte **Další**.
+    ![Zvolit typ importu](../media/class-type-ethical-hacking/choose-import-type.png)
+1. Přijměte výchozí nastavení pro **možnost vybrat složky pro soubory virtuálního počítače** a **Zvolte složky pro uložení stránek virtuálních pevných disků** a pak vyberte **Další**.
+1. Na stránce **připojit síť** zvolte **LabServicesSwitch** vytvořené dříve v části **připravit šablonu pro vnořenou virtualizaci** tohoto článku a pak vyberte **Další**.
 
-    ![Připojit síťovou stránku](../media/class-type-ethical-hacking/connect-network.png)
-1. Na stránce **Souhrn** vyberte **Dokončit.** Počkejte, dokud nebudou dokončeny operace kopírování a importu. Virtuální stroj Kali Linux bude nyní k dispozici v Hyper-V.
-1. Ve **Správci technologie Hyper-V**zvolte**Zahájení** **akce** -> a pak zvolte **Action** -> **Connect** pro připojení k virtuálnímu počítači.  
-12. Výchozí uživatelské jméno `root` je a `toor`heslo je . 
+    ![Stránka připojit síť](../media/class-type-ethical-hacking/connect-network.png)
+1. Na stránce **Souhrn** vyberte **Dokončit** . Počkejte, dokud nebudou dokončeny operace kopírování a importu. Virtuální počítač se systémem Kali Linux bude nyní k dispozici v Hyper-V.
+1. Ve **Správci technologie Hyper-V**zvolte **Akce** -> **Spustit**a pak pro připojení k virtuálnímu počítači zvolte **Akce** -> **připojit** .  
+12. Výchozí uživatelské jméno je `root` a heslo `toor`. 
 
     > [!NOTE]
-    > Pokud potřebujete obrázek odemknout, stiskněte klávesu CTRL a přetáhněte myš nahoru.
+    > Pokud potřebujete odemknout obrázek, stiskněte klávesu CTRL a přetáhněte ukazatel myši nahoru.
 
-## <a name="set-up-a-nested-vm-with-metasploitable-image"></a>Nastavení vnořeného virtuálního virtuálního movitého virtuálního movitého virtuálního min s metasploitelným obrazem  
-Rapid7 Metasploitable image je obraz záměrně nakonfigurován s bezpečnostními chybami. Tento obrázek použijete k testování a hledání problémů. Následující pokyny ukazují, jak používat předem vytvořený obraz Metasploitable. Pokud je však zapotřebí novější verze metasploitelného obrazu, viz [https://github.com/rapid7/metasploitable3](https://github.com/rapid7/metasploitable3).
+## <a name="set-up-a-nested-vm-with-metasploitable-image"></a>Nastavení vnořeného virtuálního počítače s imagí Metasploitable  
+Obrázek Metasploitable Rapid7 je záměrně nakonfigurovaný jako obrázek s chybami zabezpečení. Tento obrázek použijete k otestování a hledání problémů. Následující pokyny ukazují, jak používat předem vytvořenou image Metasploitable. Pokud je však potřeba novější verze image Metasploitable, přečtěte si téma [https://github.com/rapid7/metasploitable3](https://github.com/rapid7/metasploitable3).
 
-1. Přejděte [https://information.rapid7.com/download-metasploitable-2017.html](https://information.rapid7.com/download-metasploitable-2017.html)na . Vyplňte formulář pro stažení obrázku a vyberte tlačítko **Odeslat.**
-1. Vyberte tlačítko **Stáhnout metasploitable nyní.**
-1. Po stažení souboru zip extrahujte soubor zip a zapamatujte si umístění.
-1. Převeďte extrahovaný soubor vmdk na soubor vhdx, abyste jej mohli použít s technologieí Hyper-V. Chcete-li tak učinit, otevřete prostředí PowerShell s oprávněními správce a přejděte do složky, ve které se soubor vmdk nachází, a postupujte podle následujících pokynů:
-    1. Stáhněte si [microsoft virtual machine converter](https://www.microsoft.com/download/details.aspx?id=42497)a po zobrazení výzvy spusťte soubor mvmc_setup.msi.
-    1. Naimportujte modul PowerShellu.  Výchozí umístění, ve kterém je modul nainstalován, je C:\Program Files\Microsoft Virtual Machine Converter\
+1. Přejděte na [https://information.rapid7.com/download-metasploitable-2017.html](https://information.rapid7.com/download-metasploitable-2017.html). Vyplňte formulář pro stažení obrázku a vyberte tlačítko **Odeslat** .
+1. Klikněte na tlačítko **Stáhnout Metasploitable nyní** .
+1. Po stažení souboru ZIP rozbalte soubor zip a zapamatujte si umístění.
+1. Převeďte extrahovaný soubor VMDK na soubor VHDX, abyste mohli používat technologii Hyper-V. Provedete to tak, že otevřete PowerShell s oprávněními správce a přejdete do složky, kde se nachází soubor VMDK, a pak postupujte podle těchto pokynů:
+    1. Stáhněte si [Microsoft Virtual Machine Converter](https://www.microsoft.com/download/details.aspx?id=42497)a po zobrazení výzvy spusťte soubor mvmc_setup. msi.
+    1. Naimportujte modul PowerShellu.  Výchozí umístění, ve kterém je modul nainstalovaný, je C:\Program Files\Microsoft Virtual Machine Converter.
 
         ```powershell
         Import-Module 'C:\Program Files\Microsoft Virtual Machine Converter\MvmcCmdlet.psd1'
         ```
-    1. Převeďte vmdk na soubor vhd, který může být použit Hyper-V. Tato operace může trvat několik minut.
+    1. Převeďte VMDK na soubor VHD, který může používat technologie Hyper-V. Tato operace může trvat několik minut.
     
         ```powershell
         ConvertTo-MvmcVirtualHardDisk -SourceLiteralPath .\Metasploitable.vmdk -DestinationLiteralPath .\Metasploitable.vhdx -VhdType DynamicHardDisk -VhdFormat vhdx
         ```
-    1. Zkopírujte nově vytvořené metasploitable.vhdx do c:\Users\Public\Documents\Hyper-V\Virtual Hard Disks\. 
-1. Vytvořte nový virtuální počítač Hyper-V.
+    1. Zkopírujte nově vytvořený soubor metasploitable. vhdx do C:\Users\Public\Documents\Hyper-V\Virtual pevného Disks\. 
+1. Vytvořte nový virtuální počítač s technologií Hyper-V.
     1. Otevřete **Správce technologie Hyper-V**.
-    1. Zvolte **Akce** -> **Nový** -> **virtuální počítač**.
-    1. Na stránce **Před zahájením** **Průvodce novým virtuálním počítačem**klepněte na tlačítko **Další**.
-    1. Na stránce **Zadat název a umístění** zadejte **metasploitable** pro **název**a vyberte **Další**.
+    1. Vyberte **Akce** -> **Nový** -> **virtuální počítač**.
+    1. Na stránce **než začnete** v **Průvodci novým virtuálním počítačem**klikněte na **Další**.
+    1. Na stránce **zadat název a umístění** zadejte **Metasploitable** pro **název**a vyberte **Další**.
 
-        ![Průvodce novou image virtuálního virtuálního rozhraní](../media/class-type-ethical-hacking/new-vm-wizard-1.png)
-    1. Na stránce **Zadat generování** přijměte výchozí hodnoty a vyberte **Další**.
-    1. Na stránce **Přiřadit paměť** zadejte **512 MB** pro spouštěcí **paměť**a vyberte **další**. 
+        ![Průvodce vytvořením bitové kopie virtuálního počítače](../media/class-type-ethical-hacking/new-vm-wizard-1.png)
+    1. Na stránce **zadat generaci** přijměte výchozí hodnoty a vyberte **Další**.
+    1. Na stránce **přiřadit paměť** zadejte **512 MB** pro **Spouštěcí paměť**a vyberte **Další**. 
 
-        ![Přiřadit stránku paměti](../media/class-type-ethical-hacking/assign-memory-page.png)
-    1. Na stránce **Konfigurovat síť** ponechejte připojení jako **Nepřipojené**. Síťový adaptér nastavíte později.
-    1. Na stránce **Připojit virtuální pevný disk** vyberte Použít existující virtuální pevný **disk**. Přejděte do umístění souboru **metasploitable.vhdx** vytvořeného v předchozím kroku a vyberte **další**. 
+        ![Stránka přiřazení paměti](../media/class-type-ethical-hacking/assign-memory-page.png)
+    1. Na stránce **Konfigurovat síť** nechejte připojení **nepřipojené**. Síťový adaptér budete muset nastavit později.
+    1. Na stránce **připojit virtuální pevný disk** vyberte **použít existující virtuální pevný disk**. Přejděte do umístění souboru **metasploitable. vhdx** , který jste vytvořili v předchozím kroku, a vyberte **Další**. 
 
-        ![Připojení stránky virtuálního síťového disku](../media/class-type-ethical-hacking/connect-virtual-network-disk.png)
-    1. Na stránce **Průvodce dokončením nového virtuálního počítače** vyberte **Dokončit**.
-    1. Po vytvoření virtuálního počítače ho vyberte ve Správci technologie Hyper-V. Ještě nezapínejte stroj.  
-    1. Zvolte**Nastavení** **akce** -> .
-    1. V dialogovém **okně Nastavení pro metasploitelné** pro vyberte **přidat hardware**. 
-    1. Vyberte **starší síťový adaptér**a vyberte **přidat**.
+        ![Stránka připojit virtuální síťový disk](../media/class-type-ethical-hacking/connect-virtual-network-disk.png)
+    1. Na stránce **dokončení Průvodce novým virtuálním počítačem** vyberte **Dokončit**.
+    1. Po vytvoření virtuálního počítače ho vyberte ve Správci technologie Hyper-V. Tento počítač ještě nezapínejte.  
+    1. Vyberte **Action** -> **Nastavení**akce.
+    1. V dialogovém okně **nastavení pro Metasploitable** pro vyberte možnost **Přidat hardware**. 
+    1. Vyberte možnost **starší síťový adaptér**a vyberte **Přidat**.
 
         ![Stránka síťového adaptéru](../media/class-type-ethical-hacking/network-adapter-page.png)
-    1. Na stránce **Starší síťový adaptér** vyberte **labservicesswitch** pro nastavení **virtuální přepínač** a vyberte **OK**. LabServicesSwitch byl vytvořen při přípravě počítače šablony pro Hyper-V v **části Připravit šablonu pro vnořenou virtualizaci.**
+    1. Na stránce **starší síťový adaptér** vyberte pro nastavení **virtuálního přepínače** **LabServicesSwitch** a vyberte **OK**. LabServicesSwitch byl vytvořen při přípravě počítače šablony pro technologii Hyper-V v části **připravit šablonu pro vnořenou virtualizaci** .
 
         ![Stránka staršího síťového adaptéru](../media/class-type-ethical-hacking/legacy-network-adapter-page.png)
-    1. Metasploitable obraz je nyní připraven k použití. Ve **Správci technologie Hyper-V**zvolte**Zahájení** **akce** -> a pak zvolte **Action** -> **Connect** pro připojení k virtuálnímu počítači.  Výchozí uživatelské jméno je **msfadmin** a heslo je **msfadmin**. 
+    1. Image Metasploitable je teď připravená k použití. Ve **Správci technologie Hyper-V**zvolte **Akce** -> **Spustit**a pak pro připojení k virtuálnímu počítači zvolte **Akce** -> **připojit** .  Výchozí uživatelské jméno je **msfadmin** a heslo je **msfadmin**. 
 
 
-Šablona je nyní aktualizována a má obrázky potřebné pro etické hacking penetrace testování třídy, obraz s nástroji pro testování penetrování a další obrázek s bezpečnostními zranitelnostmi objevit. Obrázek šablony lze nyní publikovat do třídy. Chcete-li šablonu publikovat v testovacím prostředí, vyberte tlačítko **Publikovat** na stránce šablony.
+Šablona se teď aktualizovala a obsahuje image pro etický testovací třídu průniku hackerů, image s nástroji pro testování průniku a další image s chybami zabezpečení ke zjišťování. Image šablony se teď dají publikovat do třídy. Vyberte tlačítko **publikovat** na stránce šablony a publikujte šablonu do testovacího prostředí.
   
 
 ## <a name="cost"></a>Náklady  
-Pokud chcete odhadnout náklady na tuto testovací prostředí, můžete použít následující příklad: 
+Pokud byste chtěli odhadnout náklady na toto testovací prostředí, můžete použít následující příklad: 
  
-Pro třídu 25 studentů s 20 hodinami plánovaného času ve třídě a 10 hodinami kvóty pro domácí úkoly nebo úkoly by cena za laboratoř byla: 
+Pro třídu 25 studentů s 20 hodinami plánovaného času třídy a 10 hodin pro domácí úlohy nebo přiřazení by cena za testovací prostředí byla: 
 
-25 studentů * (20 + 10) hodin * 55 laboratorních jednotek * 0.01 USD za hodinu = 412.50 USD. 
+25 Students * (20 + 10) hod. × 55 jednotek testovacího prostředí × 0,01 USD za hodinu = 412,50 USD. 
 
-Další informace o cenách najdete v tématu [Ceny služeb Azure Lab](https://azure.microsoft.com/pricing/details/lab-services/).
+Další informace o cenách najdete v tématu [Azure Lab Services ceny](https://azure.microsoft.com/pricing/details/lab-services/).
 
 ## <a name="conclusion"></a>Závěr
-Tento článek vás provede kroky k vytvoření laboratoře pro etické hacking třídy. Obsahuje kroky k nastavení vnořené virtualizace pro vytvoření dvou virtuálních počítačů uvnitř hostitelského virtuálního počítače pro pronikání testování.
+Tento článek vás vás provedl postupem, jak vytvořit testovací prostředí pro etický třídu hackerů. Obsahuje postup pro nastavení vnořené virtualizace pro vytváření dvou virtuálních počítačů uvnitř hostitelského virtuálního počítače pro pronikání testování.
 
 ## <a name="next-steps"></a>Další kroky
-Další kroky jsou společné pro nastavení libovolného testovacího prostředí:
+Další kroky jsou běžné pro nastavení testovacího prostředí:
 
 - [Přidávání uživatelů](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
 - [Nastavit kvótu](how-to-configure-student-usage.md#set-quotas-for-users)
-- [Nastavení plánu](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab) 
-- [E-mailové registrační odkazy na studenty](how-to-configure-student-usage.md#send-invitations-to-users). 
+- [Nastavit plán](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab) 
+- [Odkazy na registraci e-mailu studentům](how-to-configure-student-usage.md#send-invitations-to-users). 
 

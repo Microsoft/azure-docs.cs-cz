@@ -1,6 +1,6 @@
 ---
-title: Víceklientský kurz SaaS
-description: Zřízení a katalog nových klientů pomocí samostatného vzoru aplikace
+title: Kurz pro více tenantů SaaS
+description: Zřizování a katalog nových tenantů pomocí samostatného modelu aplikace
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
@@ -12,147 +12,147 @@ ms.author: sstein
 ms.reviewer: billgib
 ms.date: 09/24/2018
 ms.openlocfilehash: 02682a18f14e7ecbf5b42783ab84a1b55a4bb77b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74133123"
 ---
-# <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Zřízení a katalog nových klientů pomocí aplikace na vzor SaaS klienta
+# <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Zřízení a zařazení nových tenantů pomocí aplikace na SaaS vzor pro každého tenanta
 
-Tento článek popisuje zřizování a katalogizaci nových klientů pomocí samostatné aplikace na vzor SaaS klienta.
-Tento článek má dvě hlavní části:
-* Koncepční diskuse o zřizování a katalogizaci nových klientů
-* Kurz, který zvýrazní ukázkový kód Prostředí PowerShell, který provádí zřizování a katalogizaci
-    * Kurz používá wingtip vstupenky ukázkové aplikace SaaS, přizpůsobené samostatné aplikace na vzorek klienta.
+Tento článek se zabývá zřizováním a katalogem nových klientů pomocí samostatné aplikace na vzor SaaS pro tenanta.
+Tento článek obsahuje dvě hlavní části:
+* Koncepční diskuze o zřizování a vytváření katalogu nových tenantů
+* Kurz, ve kterém se zvýrazňuje ukázkový kód PowerShellu, který provádí zřizování a katalogizaci
+    * V tomto kurzu se používá ukázková SaaS aplikace Wingtip Tickets, která je přizpůsobená samostatné aplikaci na vzor klienta.
 
-## <a name="standalone-application-per-tenant-pattern"></a>Samostatná aplikace podle vzoru klienta
+## <a name="standalone-application-per-tenant-pattern"></a>Vzor samostatné aplikace na tenanta
 
-Samostatná aplikace na vzor klienta je jedním z několika vzorů pro víceklientské aplikace SaaS.  V tomto vzoru se zřaží samostatná aplikace pro každého klienta. Aplikace obsahuje součásti na úrovni aplikace a databázi SQL.  Každá aplikace klienta se dá nasadit v předplatném dodavatele.  Alternativně Azure nabízí [program spravovaných aplikací,](https://docs.microsoft.com/azure/managed-applications/overview) ve kterém lze aplikaci nasadit v předplatném klienta a spravovat dodavatelem jménem klienta.
+Samostatná aplikace na model tenanta je jedním z několika vzorů pro víceklientské aplikace SaaS.  V tomto modelu se pro každého tenanta zřídí samostatná aplikace. Aplikace zahrnuje komponenty na úrovni aplikace a databázi SQL.  Každá klientská aplikace se dá nasadit v předplatném dodavatele.  Alternativně nabízí Azure [program spravovaných aplikací](https://docs.microsoft.com/azure/managed-applications/overview) , ve kterém můžete aplikaci nasadit v předplatném tenanta a spravovat ji dodavatel jménem tenanta.
 
-   ![vzor aplikace pro jednotlivé klienty](media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern.png)
+   ![vzor aplikace na tenanta](media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern.png)
 
-Při nasazování aplikace pro klienta se aplikace a databáze zřaží v nové skupině prostředků vytvořené pro klienta.  Použití samostatných skupin prostředků izoluje prostředky aplikace každého klienta a umožňuje jejich správou nezávisle. V rámci každé skupiny prostředků je každá instance aplikace nakonfigurována pro přímý přístup k odpovídající databázi.  Tento model připojení kontrastuje s jinými vzory, které používají katalog pro zprostředkovatele připojení mezi aplikací a databází.  A jako neexistuje žádné sdílení prostředků, každá databáze klienta musí být zřízené s dostatečnými prostředky pro zpracování jeho zatížení ve špičce. Tento vzor inklinuje k použití pro aplikace SaaS s menším počtem klientů, kde je silný důraz na izolaci klienta a menší důraz na náklady na prostředky.
+Při nasazování aplikace pro tenanta se aplikace a databáze zřídí v nové skupině prostředků vytvořené pro tenanta.  Použití samostatných skupin prostředků izoluje prostředky aplikací jednotlivých klientů a umožňuje je spravovat nezávisle. V rámci každé skupiny prostředků je každá instance aplikace nakonfigurovaná tak, aby k ní měla přímo přístup odpovídající databáze.  Tento model připojení se liší od dalších vzorů, které používají Katalog ke zprostředkovateli připojení mezi aplikací a databází.  A protože neexistuje sdílení prostředků, musí být každá databáze tenanta zřízena s dostatečnými prostředky pro zpracování zatížení ve špičce. Tento model je využíván pro SaaS aplikace s menším počtem tenantů, kde existuje silný důraz na izolaci tenanta a méně důraz na náklady na prostředky.
 
-## <a name="using-a-tenant-catalog-with-the-application-per-tenant-pattern"></a>Použití katalogu klienta s aplikací na vzor klienta
+## <a name="using-a-tenant-catalog-with-the-application-per-tenant-pattern"></a>Použití katalogu tenantů s aplikací na model klienta
 
-Zatímco aplikace a databáze každého klienta jsou plně izolované, různé scénáře správy a analýzy mohou fungovat napříč tenanty.  Například použití změny schématu pro novou verzi aplikace vyžaduje změny schématu každé databáze klienta. Scénáře vytváření sestav a analýzy mohou také vyžadovat přístup ke všem databázím klienta bez ohledu na to, kde jsou nasazeny.
+I když jsou aplikace a databáze jednotlivých tenantů plně izolované, můžou různé scénáře správy a analýzy fungovat napříč klienty.  Například použití změny schématu pro novou verzi aplikace vyžaduje změny schématu v každé databázi tenanta. Scénáře vytváření sestav a analýzy mohou také vyžadovat přístup ke všem databázím tenanta bez ohledu na to, kde jsou nasazeny.
 
-   ![vzor aplikace pro jednotlivé klienty](media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern-with-catalog.png)
+   ![vzor aplikace na tenanta](media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern-with-catalog.png)
 
-Katalog klienta obsahuje mapování mezi identifikátorem klienta a databází klienta, což umožňuje přeložit identifikátor na název serveru a databáze.  V aplikaci Wingtip SaaS se identifikátor klienta vypočítá jako hodnotu hash názvu klienta, i když se dá použít jiná schémata.  Zatímco samostatné aplikace nepotřebují katalog pro správu připojení, katalog lze použít k oboru jiné akce na sadu databází klientů. Elastický dotaz můžete například použít katalog k určení sady databází, přes které jsou distribuovány dotazy pro vytváření sestav mezi klienty.
+Katalog tenanta obsahuje mapování mezi identifikátorem tenanta a databází tenanta, takže se identifikátor dá přeložit na název serveru a databáze.  V aplikaci Wingtip SaaS je identifikátor tenanta vypočítaný jako hodnota hash názvu tenanta, i když se dají použít jiné systémy.  I když samostatné aplikace nepotřebují ke správě připojení katalog, katalog se dá použít k určení rozsahu dalších akcí pro sadu databází tenantů. Elastický dotaz může například použít katalog k určení sady databází, napříč kterými jsou dotazy distribuované pro vytváření sestav napříč klienty.
 
-## <a name="elastic-database-client-library"></a>Klientská knihovna elastické databáze
+## <a name="elastic-database-client-library"></a>Klientská knihovna Elastic Database
 
-V ukázkové aplikaci Wingtip je katalog implementován funkcemi správy střepu [klientské knihovny elastické databáze](sql-database-elastic-database-client-library.md) (EDCL).  Knihovna umožňuje aplikaci vytvářet, spravovat a používat mapu střepů, která je uložena v databázi. V wingtip tickets ukázka katalogu je uložen v databázi *katalogu klienta.*  Úlomek mapuje klíč klienta na oddíl (databázi), ve kterém jsou uložena data tohoto klienta.  Edcl funkce spravovat *globální mapy střepů* uložené v tabulkách v databázi *katalogu klienta* a *místní mapy střepů* uložené v každém úlovku.
+V ukázkové aplikaci Wingtip se katalog implementuje pomocí funkcí správy horizontálních oddílů [klientské knihovny nástroje elastic Database](sql-database-elastic-database-client-library.md) (EDCL).  Knihovna umožňuje aplikaci vytvořit, spravovat a použít mapu horizontálních oddílů, která je uložená v databázi. V ukázce lístku Wingtip je katalog uložen v databázi *katalogu tenanta* .  Horizontálních oddílů mapuje klíč tenanta na horizontálních oddílů (databáze), ve kterém jsou uložená data tenanta.  Funkce EDCL spravují *globální mapu horizontálních oddílů* uloženou v tabulkách v databázi *katalogu tenanta* a *místní mapu horizontálních oddílů* uloženou v každém horizontálních oddílů.
 
-Funkce EDCL lze volat z aplikací nebo skriptů prostředí PowerShell k vytvoření a správě položek v mapě střepů. Jiné funkce EDCL lze načíst sadu štíl nebo připojit ke správné databázi pro daný klíč klienta.
+Funkce EDCL se dají volat z aplikací nebo skriptů PowerShellu pro vytváření a správu položek v mapě horizontálních oddílů. Další funkce EDCL lze použít k načtení sady horizontálních oddílů nebo ke správné databázi pro daný klíč tenanta.
 
 > [!IMPORTANT]
-> Neupravujte data v databázi katalogu nebo místní mapy střepů v databázích klienta přímo. Přímé aktualizace nejsou podporovány z důvodu vysokého rizika poškození dat. Místo toho upravte data mapování pouze pomocí portů EDCL.
+> Neupravujte data v databázi katalogu ani místní mapu horizontálních oddílů v databázích klienta přímo. Přímé aktualizace nejsou podporovány z důvodu vysokého rizika poškození dat. Místo toho upravte mapování dat pouze pomocí rozhraní EDCL API.
 
-## <a name="tenant-provisioning"></a>Zřizování klientů
+## <a name="tenant-provisioning"></a>Zřizování tenanta
 
-Každý klient vyžaduje novou skupinu prostředků Azure, která musí být vytvořena, než v ní bude možné zřídit prostředky. Jakmile existuje skupina prostředků, šablonu Azure Resource Management lze použít k nasazení součástí aplikace a databáze a potom nakonfigurovat připojení k databázi. Chcete-li inicializovat schéma databáze, šablona můžete importovat soubor bacpac.  Alternativně databáze může být vytvořena jako kopie databáze šablony.  Databáze je pak dále aktualizována počátečními údaji o místě konání a registrována v katalogu.
+Každý tenant vyžaduje novou skupinu prostředků Azure, která se musí vytvořit předtím, než bude možné v ní zřídit prostředky. Jakmile skupina prostředků existuje, můžete použít šablonu Azure Resource Management k nasazení součástí aplikace a databáze a pak nakonfigurovat připojení k databázi. Pro inicializaci schématu databáze může šablona importovat soubor BacPac.  Případně je možné databázi vytvořit jako kopii databáze šablony.  Databáze se pak dále aktualizuje s počátečními daty místa a zaregistrovanými v katalogu.
 
-## <a name="tutorial"></a>Kurz
+## <a name="tutorial"></a>Tutoriál
 
 Co se v tomto kurzu naučíte:
 
 * Zřízení katalogu
-* Registrace ukázkových databází klienta, které jste nasadili dříve v katalogu
-* Zřízení dalšího klienta a jeho registrace v katalogu
+* Registrace ukázkových databází tenantů, které jste nasadili dříve v katalogu
+* Zřídit dalšího tenanta a zaregistrovat ho v katalogu
 
-Šablona Azure Resource Manager se používá k nasazení a konfiguraci aplikace, vytvoření databáze klienta a importovat soubor bacpac pro její inicializaci. Požadavek na import může být zařazen do fronty několik minut před tím, než je napaden.
+Šablona Azure Resource Manager slouží k nasazení a konfiguraci aplikace, vytvoření databáze tenanta a následnému importu souboru BacPac pro inicializaci. Žádost o import může být před provedením akce zařazena do fronty několik minut.
 
-Na konci tohoto kurzu máte sadu samostatných aplikací klienta, s každou databázi registrovanou v katalogu.
+Na konci tohoto kurzu máte sadu samostatných klientských aplikací s každou databází zaregistrovanou v katalogu.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Předpokladem dokončení tohoto kurzu je splnění následujících požadavků:
 
 * Je nainstalované prostředí Azure PowerShell. Podrobnosti najdete v článku [Začínáme s prostředím Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
-* Tři ukázkové aplikace klienta se nasazují. Informace o nasazení těchto aplikací za méně než pět minut najdete v [tématu Nasazení a prozkoumání vzoru samostatné aplikace Wingtip Tickets SaaS](saas-standaloneapp-get-started-deploy.md).
+* Nasadí se tři ukázkové klientské aplikace. Pokud chcete tyto aplikace nasadit za méně než pět minut, přečtěte si téma [nasazení a prozkoumání samostatného vzoru aplikace SaaS lístky](saas-standaloneapp-get-started-deploy.md).
 
 ## <a name="provision-the-catalog"></a>Zřízení katalogu
 
-V této úloze se dozvíte, jak zřídit katalog slouží k registraci všech databází klienta. Vaším úkolem je:
+V této úloze se dozvíte, jak zřídit katalog používaný k registraci všech databází tenanta. Vaším úkolem je:
 
-* **Zřídit databázi katalogu** pomocí šablony správy prostředků Azure. Databáze je inicializována importem souboru bacpac.
-* **Zaregistrujte ukázkové aplikace klienta,** které jste nasadili dříve.  Každý klient je registrován pomocí klíče vytvořeného z hash názvu klienta.  Název klienta je také uložen v tabulce rozšíření v katalogu.
+* **Zřízení databáze katalogu** pomocí šablony Azure Resource Management. Databáze je inicializovaná importem souboru BacPac.
+* **Zaregistrujte ukázkové klientské aplikace** , které jste nasadili dříve.  Každý tenant je zaregistrován pomocí klíče vytvořeného z hodnoty hash názvu tenanta.  Název tenanta je také uložen v tabulce rozšíření v katalogu.
 
-1. V prostředí PowerShell ISE otevřete *...\Learning Modules\UserConfig.psm* a aktualizujte ** \<\> uživatelskou** hodnotu na hodnotu, kterou jste použili při nasazování tří ukázkových aplikací.  **Uložte soubor**.
-1. V prostředí PowerShell ISE otevřete *...\Výukové moduly\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* a nastavte **$Scenario = 1**. Nasaďte katalog klienta a zaregistrujte předdefinované klienty.
+1. V PowerShellu ISE otevřete *. ..\Learning Modules\UserConfig.PSM* a aktualizujte ** \<hodnotu\> uživatele** na hodnotu, kterou jste použili při nasazování tří ukázkových aplikací.  **Uložte soubor**.
+1. V PowerShellu ISE otevřete *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* a nastavte **$Scenario = 1**. Nasaďte katalog tenanta a zaregistrujte předem definované klienty.
 
-1. Přidejte zarážku tak, že kurzor `& $PSScriptRoot\New-Catalog.ps1`na libovolné místo na řádku, který říká , a stiskněte **klávesu F9**.
+1. Přidejte zarážku tak, že umístíte kurzor na libovolné místo na řádku, `& $PSScriptRoot\New-Catalog.ps1`který říká, a pak stiskněte **F9**.
 
-    ![nastavení zarážky pro trasování](media/saas-standaloneapp-provision-and-catalog/breakpoint.png)
+    ![Nastavení zarážky pro trasování](media/saas-standaloneapp-provision-and-catalog/breakpoint.png)
 
-1. Spusťte skript stisknutím **klávesy F5**.
-1.  Po spuštění skriptu se zastaví na zarážky, stisknutím **klávesy F11** krok do skriptu New-Catalog.ps1.
-1.  Trasujte spuštění skriptu pomocí možností nabídky Ladění F10 a F11 krokovat nebo do volaných funkcí.
-    *   Další informace o ladění skriptů prostředí PowerShell naleznete [v tématu Tipy pro práci se skripty prostředí PowerShell a ladění](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise).
+1. Spusťte skript stisknutím klávesy **F5**.
+1.  Po zastavení spuštění skriptu na zarážce stiskněte klávesu **F11** ke kroku do skriptu New-Catalog. ps1.
+1.  Sledujte provádění skriptu pomocí možností nabídky ladění, F10 a F11, abyste mohli přenášet nebo nazývat na volané funkce.
+    *   Další informace o ladění skriptů PowerShellu najdete v tématu [o práci se skripty PowerShellu a jejich ladění](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise).
 
-Po dokončení skriptu bude existovat katalog a všichni ukázkové klienti budou registrováni.
+Po dokončení skriptu bude katalog existovat a budou zaregistrováni všichni ukázkový tenant.
 
-Nyní se podívejte na zdroje, které jste vytvořili.
+Teď se podívejte na prostředky, které jste vytvořili.
 
-1. Otevřete [portál Azure](https://portal.azure.com/) a procházejte skupiny prostředků.  Otevřete skupinu prostředků **uživatele\> \<wingtip-sa-catalog-** a poznamenejte si server katalogu a databázi.
-1. Otevřete databázi na portálu a v levé nabídce vyberte *Průzkumník dat.*  Klepněte na příkaz Přihlásit se a zadejte heslo = **P\@ssword1**.
-
-
-1. Prozkoumejte schéma databáze *katalogu klientů.*
-   * Všechny objekty `__ShardManagement` ve schématu jsou poskytovány klientskou knihovnou elastické databáze.
-   * Tabulka `Tenants` a `TenantsExtended` zobrazení jsou rozšíření přidané v ukázce, které ukazují, jak můžete rozšířit katalog poskytnout další hodnotu.
-1. Spusťte `SELECT * FROM dbo.TenantsExtended`dotaz, .
-
-   ![průzkumník dat](media/saas-standaloneapp-provision-and-catalog/data-explorer-tenantsextended.png)
-
-    Jako alternativu k použití Průzkumníka dat se můžete připojit k databázi z SQL Server Management Studio. Chcete-li to provést, připojte se k serveru
+1. Otevřete [Azure Portal](https://portal.azure.com/) a procházejte skupinami prostředků.  Otevřete skupinu prostředků **Wingtip-SA-Catalog\<-\> User** a poznamenejte si Server katalogu a databázi.
+1. Otevřete databázi na portálu a v nabídce na levé straně vyberte *Průzkumník dat* .  Klikněte na příkaz Login (přihlášení) a zadejte heslo **=\@P ssword1**.
 
 
-    Všimněte si, že byste neměli upravovat data přímo v katalogu - vždy používejte rozhraní API pro správu svižných bitových žpě.
+1. Prozkoumejte schéma databáze *tenantcatalog* .
+   * Objekty ve `__ShardManagement` schématu jsou k dispozici v klientské knihovně elastic Database.
+   * `Tenants` Tabulka a `TenantsExtended` zobrazení jsou rozšíření přidaná v ukázce, která demonstrují způsob rozšíření katalogu, aby bylo možné poskytnout další hodnotu.
+1. Spusťte dotaz, `SELECT * FROM dbo.TenantsExtended`.
 
-## <a name="provision-a-new-tenant-application"></a>Zřízení nové aplikace klienta
+   ![Průzkumník dat](media/saas-standaloneapp-provision-and-catalog/data-explorer-tenantsextended.png)
 
-V této úloze se dozvíte, jak zřídit jednu klienta aplikace. Vaším úkolem je:
+    Jako alternativu k používání Průzkumník dat se můžete připojit k databázi z SQL Server Management Studio. Provedete to tak, že se připojíte k serveru Wingtip-
 
-* **Vytvořte novou skupinu prostředků** pro klienta.
-* **Zřizování aplikace a databáze** do nové skupiny prostředků pomocí šablony správy prostředků Azure.  Tato akce zahrnuje inicializaci databáze s běžnými daty schématu a odkazů importem souboru bacpac.
-* **Inicializovat databázi se základními informacemi o klientovi**. Tato akce zahrnuje určení typu místa konání, které určuje fotografii použitou jako pozadí na webu událostí.
+
+    Všimněte si, že byste neměli upravovat data přímo v katalogu – vždycky používejte rozhraní API pro správu horizontálních oddílů.
+
+## <a name="provision-a-new-tenant-application"></a>Zřízení nové klientské aplikace
+
+V této úloze se dozvíte, jak zřídit jednu klientskou aplikaci. Vaším úkolem je:
+
+* **Vytvořte pro tenanta novou skupinu prostředků** .
+* **Aplikaci a databázi zřiďte** do nové skupiny prostředků pomocí šablony Azure Resource Management.  Tato akce zahrnuje inicializaci databáze pomocí společného schématu a referenčních dat importováním souboru BacPac.
+* **Inicializujte databázi se základními informacemi o tenantovi**. Tato akce zahrnuje určení typu místa, který určuje fotografii použitou jako pozadí na webu s událostmi.
 * **Zaregistrujte databázi v databázi katalogu**.
 
-1. V prostředí PowerShell ISE otevřete *...\Výukové moduly\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* a nastavte **$Scenario = 2**. Nasazení katalogu klientů a registrace předdefinovaných klientů
+1. V PowerShellu ISE otevřete *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* a nastavte **$Scenario = 2**. Nasazení katalogu tenanta a registrace předem definovaných tenantů
 
-1. Přidejte zarážku do skriptu umístěním kurzoru `& $PSScriptRoot\New-TenantApp.ps1`na řádek 49, který říká , a stiskněte **klávesu F9**.
-1. Spusťte skript stisknutím **klávesy F5**.
-1.  Po spuštění skriptu se zastaví na zarážky, stisknutím **klávesy F11** krok do skriptu New-Catalog.ps1.
-1.  Trasujte spuštění skriptu pomocí možností nabídky Ladění F10 a F11 krokovat nebo do volaných funkcí.
+1. Vložte zarážku do skriptu tak, že umístíte kurzor na libovolné místo na řádku 49, `& $PSScriptRoot\New-TenantApp.ps1`který uvádí, a pak stiskněte **F9**.
+1. Spusťte skript stisknutím klávesy **F5**.
+1.  Po zastavení spuštění skriptu na zarážce stiskněte klávesu **F11** ke kroku do skriptu New-Catalog. ps1.
+1.  Sledujte provádění skriptu pomocí možností nabídky ladění, F10 a F11, abyste mohli přenášet nebo nazývat na volané funkce.
 
-Po zřízení klienta se otevře web událostí nového klienta.
+Po zřízení tenanta se otevře web s událostmi nového tenanta.
 
-   ![červený javor závodní](media/saas-standaloneapp-provision-and-catalog/redmapleracing.png)
+   ![červená Javorová dostiha](media/saas-standaloneapp-provision-and-catalog/redmapleracing.png)
 
-Potom můžete zkontrolovat nové prostředky vytvořené na webu Azure Portal.
+Pak můžete zkontrolovat nové prostředky vytvořené v Azure Portal.
 
-   ![červený javor závodní zdroje](media/saas-standaloneapp-provision-and-catalog/redmapleracing-resources.png)
+   ![zdroje červené javorové dostihy](media/saas-standaloneapp-provision-and-catalog/redmapleracing-resources.png)
 
 
-## <a name="to-stop-billing-delete-resource-groups"></a>Ukončení fakturace odstraněním skupin prostředků
+## <a name="to-stop-billing-delete-resource-groups"></a>Pokud chcete zastavit fakturaci, odstraňte skupiny prostředků.
 
-Po dokončení zkoumání ukázky odstraňte všechny skupiny prostředků, které jste vytvořili, abyste zastavili přidruženou fakturaci.
+Po dokončení průzkumu ukázky odstraňte všechny skupiny prostředků, které jste vytvořili, abyste zastavili související fakturaci.
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- Další informace o víceklientských databázových aplikacích SaaS najdete [v tématu Návrhové vzory pro víceklientské aplikace SaaS](saas-tenancy-app-design-patterns.md).
+- Další informace o aplikacích pro více tenantů SaaS Database najdete v tématu [vzory návrhu pro víceklientské aplikace SaaS](saas-tenancy-app-design-patterns.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se dozvěděli:
 
 > [!div class="checklist"]
-> * Jak nasadit wingtip vstupenky SaaS samostatná aplikace.
+> * Postup nasazení samostatné aplikace SaaS lístky Wingtip Tickets
 > * O serverech a databázích, které tvoří aplikaci.
-> * Jak odstranit ukázkové prostředky k zastavení související fakturace.
+> * Jak odstranit ukázkové prostředky pro zastavení související fakturace
 
-Můžete prozkoumat, jak se katalog používá k podpoře různých scénářů mezi klienty pomocí verze aplikace [Wingtip Tickets SaaS](saas-dbpertenant-wingtip-app-overview.md).
+Můžete prozkoumat, jak se katalog používá k podpoře různých scénářů pro více tenantů, a to pomocí verze databáze na straně klienta [aplikace Wingtip lístky SaaS](saas-dbpertenant-wingtip-app-overview.md).

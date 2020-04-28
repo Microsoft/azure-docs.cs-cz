@@ -1,70 +1,70 @@
 ---
-title: Doporučené postupy hodnocení v azure migrate server assessment
-description: Tipy pro vytváření hodnocení pomocí Azure Migrate Server Assessment.
+title: Osvědčené postupy hodnocení v Azure Migrate posouzení serveru
+description: Tipy pro vytváření hodnocení pomocí Azure Migrate posouzení serveru.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
 ms.openlocfilehash: de6953b6648613595bc9975b17941b3a453a6d60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74185984"
 ---
 # <a name="best-practices-for-creating-assessments"></a>Osvědčené postupy pro vytváření hodnocení
 
-[Azure Migrate](migrate-overview.md) poskytuje centrum nástrojů, které vám pomůžou objevovat, vyhodnocovat a migrovat aplikace, infrastrukturu a úlohy do Microsoft Azure. Centrum obsahuje nástroje pro migraci Azure a nabídky nezávislého dodavatele softwaru (ISV) od jiných výrobců.
+[Azure Migrate](migrate-overview.md) poskytuje centrum nástrojů, které vám pomůžou zjišťovat, vyhodnocovat a migrovat aplikace, infrastrukturu a úlohy do Microsoft Azure. Centrum zahrnuje nástroje pro Azure Migrate a nabídky nezávislého výrobce softwaru (ISV) od jiných výrobců.
 
-Tento článek shrnuje osvědčené postupy při vytváření hodnocení pomocí nástroje Azure Migrate Server Assessment.
+Tento článek shrnuje osvědčené postupy při vytváření posouzení pomocí nástroje Azure Migrate Server Assessment Tool.
 
-## <a name="about-assessments"></a>O hodnoceních
+## <a name="about-assessments"></a>O posouzení
 
-Hodnocení, která vytvoříte pomocí Azure Migrate Server Assessment, jsou snímek dat v čase. Existují dva typy hodnocení v Azure Migrate.
+Posouzení, které vytvoříte pomocí Azure Migrate posouzení serveru, jsou snímkem dat v určitém časovém okamžiku. Existují dva typy hodnocení v Azure Migrate.
 
-**Typ posouzení** | **Podrobnosti** | **Data**
+**Typ posouzení** | **Zobrazí** | **Data**
 --- | --- | ---
-**Na základě výkonu** | Hodnocení, která doporučení vyhovují na základě shromážděných údajů o výkonnosti | Doporučení velikosti virtuálního počítače je založené na datech využití procesoru a paměti.<br/><br/> Doporučení typu disku (standardní disky HDD/SSD nebo disky spravované s prémií) je založeno na iOPS a propustnosti místních disků.
-**As-je v místním prostředí** | Hodnocení, která nepoužívají údaje o výkonu k doporučení. | Doporučení velikosti virtuálního počítače je založené na velikosti místního virtuálního počítače<br/><br> Doporučený typ disku je založen na tom, co vyberete v nastavení typu úložiště pro posouzení.
+**Na základě výkonu** | Posouzení, která vytvářejí doporučení na základě shromážděných údajů o výkonu | Doporučení na velikost virtuálního počítače vychází z dat využití procesoru a paměti.<br/><br/> Doporučení pro typ disku (standardní disková jednotka/SSD nebo Premium – spravované disky) vychází z IOPS a propustnosti místních disků.
+**V místním prostředí** | Posouzení, které nepoužívají údaje o výkonu k vytváření doporučení. | Doporučení velikosti virtuálního počítače je založené na velikosti místního virtuálního počítače.<br/><br> Doporučený typ disku je založený na tom, co jste vybrali v nastavení typ úložiště pro posouzení.
 
 ### <a name="example"></a>Příklad
-Například pokud máte místní virtuální počítač se čtyřmi jádry při využití 20 % a pamětí 8 GB s 10 % využitím, budou hodnocení následující:
+Pokud máte například místní virtuální počítač se čtyřmi jádry na 20% využití a paměť 8 GB s 10% využitím, posouzení bude následující:
 
-- **Hodnocení založené na výkonnosti**:
-    - Identifikuje efektivní jádra a paměť na základě jádra (4 x 0,20 = 0,8) a využití paměti (8 GB x 0,10 = 0,8).
-    - Použije faktor pohodlí specifikovaný ve vlastnostech posouzení (řekněme 1,3x) k získání hodnot, které mají být použity pro velikost. 
-    - Doporučuje nejbližší velikost virtuálního počítače v Azure, která podporuje ~1.04 jader (0.8 x 1.3) a ~1.04 GB (0.8 x 1.3) paměti.
+- **Posouzení na základě výkonu**:
+    - Identifikuje efektivní jádra a paměť na základě jádra (4 x 0,20 = 0,8) a paměti (8 GB × 0,10 = 0,8).
+    - Použije faktor pohodlí určený ve vlastnostech posouzení (řekněme 1,3 x) a získá hodnoty, které se použijí pro určení velikosti. 
+    - Doporučuje nejbližší velikost virtuálního počítače v Azure, která může podporovat ~ 1,04 jader (0,8 × 1,3) a ~ 1,04 GB (0,8 x 1,3).
 
-- **Jak je (jako místní) hodnocení**:
-    -  Doporučuje virtuální ho virtuálního zařízení se čtyřmi jádry; 8 GB paměti.
+- **Vyhodnocení, jak je (jako místní) posouzení**:
+    -  Doporučuje virtuální počítač se čtyřmi jádry. 8 GB paměti.
 
 ## <a name="best-practices-for-creating-assessments"></a>Osvědčené postupy pro vytváření hodnocení
 
-Zařízení Migrace Azure průběžně profiluje vaše místní prostředí a odesílá do Azure metadata a data o výkonu. Při hodnocení serverů zjištěných pomocí zařízení postupujte podle těchto doporučených postupů:
+Zařízení Azure Migrate průběžně profiluje vaše místní prostředí a odesílá data o metadatech a výkonu do Azure. Dodržujte tyto osvědčené postupy pro posouzení serverů zjištěných pomocí zařízení:
 
-- **Vytvořit hodnocení podle**toho: Hodnocení podle toho můžete vytvořit okamžitě, jakmile se vaše počítače zobrazí na portálu Migrace Azure.
-- **Vytvoření hodnocení založeného na výkonu**: Po nastavení zjišťování doporučujeme počkat alespoň jeden den před spuštěním hodnocení založeného na výkonu:
-    - Shromažďování údajů o výkonu vyžaduje čas. Čekání alespoň jeden den zajišťuje, že existuje dostatek bodů dat výkonu před spuštěním hodnocení.
-    - Když spouštěte hodnocení založená na výkonu, ujistěte se, že profilujte své prostředí po dobu trvání hodnocení. Pokud například vytvoříte hodnocení s dobou trvání výkonu nastavenou na jeden týden, budete muset počkat alespoň týden po zahájení zjišťování, aby byly shromážděny všechny datové body. Pokud tak nechcete, hodnocení nedostane pětihvězdičkové hodnocení.
-- **Přepočítat hodnocení**: Vzhledem k tomu, že hodnocení jsou snímky v čase, nejsou automaticky aktualizovány nejnovějšími daty. Chcete-li aktualizovat hodnocení s nejnovějšími daty, je třeba jej přepočítat.
+- **Vytváření hodnocení,** která jsou vyhodnocena jako – jsou vyhodnocena ihned po zobrazení počítačů na portálu Azure Migrate.
+- **Vytvořit vyhodnocení na základě výkonu**: po nastavení zjišťování doporučujeme, abyste před spuštěním posouzení na základě výkonu čekali aspoň jeden den:
+    - Shromažďování dat o výkonu trvá déle. Čekání alespoň na den zajistí dostatek datových bodů výkonu před spuštěním posouzení.
+    - Pokud používáte posouzení na základě výkonu, ujistěte se, že jste profilaci prostředí pro dobu hodnocení. Pokud například vytvoříte posouzení s dobou trvání výkonu nastavenou na jeden týden, budete muset po zahájení zjišťování počkat aspoň týden, aby se všechny datové body shromáždily. Pokud to neuděláte, hodnocení nebude mít hodnocení s pěti hvězdičkami.
+- **Přepočítat vyhodnocení**: vzhledem k tomu, že posouzení jsou snímky v čase, nejsou automaticky aktualizovány pomocí nejnovějších dat. Chcete-li aktualizovat posouzení s nejnovějšími daty, je nutné jej přepočítat.
 
-Postupujte podle těchto doporučených postupů pro hodnocení serverů importovaných do Azure Migrate přes . Soubor CSV:
+Dodržujte tyto osvědčené postupy pro posouzení serverů importovaných do Azure Migrate prostřednictvím. Soubor CSV:
 
-- **Vytvořit hodnocení podle**toho: Hodnocení podle toho můžete vytvořit okamžitě, jakmile se vaše počítače zobrazí na portálu Migrace Azure.
-- **Vytvořit hodnocení založené na výkonu**: To pomáhá získat lepší odhad nákladů, zejména pokud máte nadměrně zřízenou kapacitu serveru v místním prostředí. Přesnost hodnocení na základě výkonu však závisí na údaje o výkonu, které jste určili pro servery. 
-- **Přepočítat hodnocení**: Vzhledem k tomu, že hodnocení jsou snímky v čase, nejsou automaticky aktualizovány nejnovějšími daty. Chcete-li aktualizovat hodnocení nejnovějšími importovanými daty, je třeba je přepočítat.
+- **Vytváření hodnocení,** která jsou vyhodnocena jako – jsou vyhodnocena ihned po zobrazení počítačů na portálu Azure Migrate.
+- **Vytvoření vyhodnocení na základě výkonu**: pomáhá získat lepší odhad nákladů, zejména pokud máte nadřízenou kapacitu serveru v místním prostředí. Přesnost posouzení na základě výkonu však závisí na datech výkonu určených pro tyto servery. 
+- **Přepočítat vyhodnocení**: vzhledem k tomu, že posouzení jsou snímky v čase, nejsou automaticky aktualizovány pomocí nejnovějších dat. Chcete-li aktualizovat posouzení s nejnovějšími importovanými daty, je nutné je přepočítat.
 
-## <a name="best-practices-for-confidence-ratings"></a>Doporučené postupy pro hodnocení spolehlivosti
+## <a name="best-practices-for-confidence-ratings"></a>Osvědčené postupy pro hodnocení spolehlivosti
 
-Při spuštění hodnocení založeného na výkonu se hodnocení uděluje hodnocení spolehlivosti od 1 hvězdičky (nejnižší) do 5 hvězdiček (nejvyšší). Efektivní využití hodnocení spolehlivosti:
-- Azure Migrate Server Assessment potřebuje data využití procesoru/paměti virtuálního počítače.
-- Pro každý disk připojený k místnímu virtuálnímu počítači potřebuje data pro čtení a zápis vstupně-tops/propustnost.
-- Pro každý síťový adaptér připojený k virtuálnímu virtuálnímu připojení potřebuje data připojení a vykreslování sítě.
+Když spustíte posouzení na základě výkonu, hodnocení se od 1 hvězdičky (nejnižší) až 5 hvězdiček (nejvyšší) přiřadí k posouzení. Efektivní použití hodnocení spolehlivosti:
+- Azure Migrate posouzení serveru potřebuje data o využití pro procesor nebo paměť virtuálních počítačů.
+- Pro každý disk připojený k místnímu virtuálnímu počítači potřebuje data pro čtení a zápis IOPS/propustnost.
+- Pro každý síťový adaptér připojený k virtuálnímu počítači potřebuje data v/v síti.
 
-V závislosti na procentním podílu dostupných datových bodů pro vybranou dobu trvání je hodnocení spolehlivosti pro hodnocení uvedeno shrnuté v následující tabulce.
+V závislosti na procentu datových bodů dostupných pro vybranou dobu trvání je hodnocení spolehlivosti pro posouzení uvedené shrnuté v následující tabulce.
 
-   **Dostupnost datových bodů** | **Hodnocení spolehlivosti**
+   **Dostupnost datového bodu** | **Hodnocení spolehlivosti**
    --- | ---
    0 až 20 % | 1 hvězdička
    21 až 40 % | 2 hvězdičky
@@ -73,23 +73,23 @@ V závislosti na procentním podílu dostupných datových bodů pro vybranou do
    81 až 100 % | 5 hvězdiček
 
 
-## <a name="common-assessment-issues"></a>Společné otázky hodnocení
+## <a name="common-assessment-issues"></a>Běžné problémy s posouzením
 
-Zde je návod, jak řešit některé běžné problémy prostředí, které ovlivňují hodnocení.
+Tady je postup, jak řešit některé běžné problémy s prostředím, které mají vliv na posouzení.
 
-###  <a name="out-of-sync-assessments"></a>Nesynchronizovaná hodnocení
+###  <a name="out-of-sync-assessments"></a>Posouzení nesynchronizovaných
 
-Pokud po vytvoření hodnocení přidáte nebo odeberete počítače ze skupiny, bude vytvořené hodnocení označeno jako **nesynchronizované**. Spusťte hodnocení znovu (**Přepočítat**), aby odrážely změny ve skupině.
+Pokud po vytvoření posouzení přidáte nebo odeberete počítače ze skupiny, bude hodnocení, které jste vytvořili, označeno jako **nesynchronizované**. Spusťte posouzení znovu (**Přepočítat**), aby odráželo změny skupiny.
 
-### <a name="outdated-assessments"></a>Zastaralá hodnocení
+### <a name="outdated-assessments"></a>Zastaralá posouzení
 
-Pokud existují místní změny virtuálních počítačů, které jsou ve skupině, která byla posouzena, hodnocení je označeno **zastaralé**. Chcete-li tyto změny zohlednit, spusťte hodnocení znovu.
+Pokud existují místní změny virtuálních počítačů, které jsou ve skupině, která je vyhodnocena, je posouzení označeno jako **zastaralé**. Aby se změny projevily, spusťte posouzení znovu.
 
-### <a name="low-confidence-rating"></a>Nízké hodnocení spolehlivosti
+### <a name="low-confidence-rating"></a>Hodnocení nízké spolehlivosti
 
 Posouzení nemusí mít všechny datové body z několika důvodů:
 
-- Neprofilovali jste své prostředí po dobu trvání, pro kterou vytváříte interní hodnocení. Například pokud vytváříte *hodnocení založené na výkonu* s dobou trvání výkonu nastavena na jeden týden, budete muset počkat alespoň týden po spuštění zjišťování pro všechny datové body získat shromážděny. Vždy můžete kliknout na **Přepočítat** a zobrazit nejnovější příslušné hodnocení spolehlivosti. Hodnocení spolehlivosti je použitelné pouze v případě, že vytvoříte hodnocení *založené na výkonu.*
+- Neprofilovali jste své prostředí po dobu trvání, pro kterou vytváříte interní hodnocení. Pokud například vytváříte *hodnocení založené na výkonu* s dobou trvání trvání nastavenou na jeden týden, budete muset po zahájení zjišťování všech datových bodů, které se mají shromáždit, počkat aspoň na týden. Kdykoli můžete kliknout na **Přepočítat** a zobrazit nejnovější použitelné hodnocení spolehlivosti. Hodnocení spolehlivosti se dá použít jenom v případě, že vytvoříte hodnocení *založené na výkonu* .
 
 - Během období, pro které se posouzení počítá, se několik virtuálních počítačů vypnulo. Pokud po nějakou dobu byly některé virtuální počítače vypnuté, nástroj Hodnocení serverů nebude schopen za toto období shromáždit data o výkonu.
 
@@ -98,5 +98,5 @@ Posouzení nemusí mít všechny datové body z několika důvodů:
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přečtěte si,](concepts-assessment-calculation.md) jak se hodnocení počítají.
-- [Přečtěte si,](how-to-modify-assessment.md) jak přizpůsobit hodnocení.
+- [Přečtěte si](concepts-assessment-calculation.md) , jak se počítají vyhodnocení.
+- [Přečtěte si](how-to-modify-assessment.md) , jak přizpůsobit posouzení.

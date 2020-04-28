@@ -1,187 +1,187 @@
 ---
-title: Jak nastavit geografickou replikaci pro Azure Cache for Redis | Dokumenty společnosti Microsoft
-description: Zjistěte, jak replikovat instance Azure Cache for Redis napříč geografickými oblastmi.
+title: Jak nastavit geografickou replikaci pro Azure cache pro Redis | Microsoft Docs
+description: Naučte se replikovat mezipaměť Azure pro instance Redis napříč geografickými oblastmi.
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
 ms.openlocfilehash: ce50c665fa79c361f638fda4ec373d5215c407f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74129430"
 ---
-# <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Jak nastavit geografickou replikaci pro Azure Cache pro Redis
+# <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Jak nastavit geografickou replikaci pro Azure cache pro Redis
 
-Geografická replikace poskytuje mechanismus pro propojení dvou premium tier Azure Cache pro instance Redis. Jedna mezipaměť je vybrána jako primární propojená mezipaměť a druhá jako sekundární propojená mezipaměť. Sekundární propojená mezipaměť se stane jen pro čtení a data zapsaná do primární mezipaměti jsou replikována do sekundární propojené mezipaměti. Tuto funkci lze použít k replikaci mezipaměti napříč oblastmi Azure. Tento článek obsahuje návod na konfiguraci geografické replikace pro vaše premium vrstvy Azure Cache pro instance Redis.
+Geografická replikace poskytuje mechanismus pro propojení dvě mezipaměti Azure úrovně Premium pro instance Redis. Jedna mezipaměť je zvolena jako primární propojená mezipaměť a druhá jako sekundární propojená mezipaměť. Sekundární propojená mezipaměť se bude jen pro čtení a data zapsaná do primární mezipaměti se replikují do sekundární propojené mezipaměti. Tato funkce se dá použít k replikaci mezipaměti napříč oblastmi Azure. Tento článek poskytuje návod ke konfiguraci geografické replikace pro Azure cache úrovně Premium pro instance Redis.
 
-## <a name="geo-replication-prerequisites"></a>Požadavky geografické replikace
+## <a name="geo-replication-prerequisites"></a>Předpoklady geografické replikace
 
-Chcete-li nakonfigurovat geografickou replikaci mezi dvěma mezipamětmi, musí být splněny následující požadavky:
+Chcete-li konfigurovat geografickou replikaci mezi dvěma mezipamětmi, musí být splněny následující předpoklady:
 
-- Obě mezipaměti jsou mezipaměti [úrovně Premium.](cache-premium-tier-intro.md)
+- Obě mezipaměti jsou mezipaměti [úrovně Premium](cache-premium-tier-intro.md) .
 - Obě mezipaměti jsou ve stejném předplatném Azure.
-- Sekundární propojená mezipaměť má stejnou velikost mezipaměti nebo větší velikost mezipaměti než primární propojená mezipaměť.
-- Obě mezipaměti jsou vytvořeny a ve spuštěném stavu.
+- Sekundární propojená mezipaměť má buď stejnou velikost mezipaměti, nebo větší velikost mezipaměti než primární propojená mezipaměť.
+- Obě mezipaměti jsou vytvořeny a ve stavu spuštěno.
 
-Některé funkce nejsou podporovány pomocí geografické replikace:
+U geografické replikace nejsou podporované některé funkce:
 
-- Trvalost není podporována geografickou replikací.
-- Clustering je podporován, pokud mají obě mezipaměti povoleno clustering a mají stejný počet šmejdů.
-- Mezipaměti ve stejné virtuální síti jsou podporovány.
-- Mezipaměti v různých virtuálních doutcích jsou podporovány s upozorněními. Další informace najdete [v tématu Můžu použít geografickou replikaci s mezipamětí ve virtuální síti?](#can-i-use-geo-replication-with-my-caches-in-a-vnet)
+- Trvalost není u geografické replikace podporovaná.
+- Clustering se podporuje, pokud jsou povolené clustery v obou mezipamětech a mají stejný počet horizontálních oddílů.
+- Jsou podporovány mezipamětí ve stejné virtuální síti.
+- Mezipaměti v různých virtuální sítě jsou podporovány s upozorněními. Další informace najdete v tématu [použití geografické replikace s mezipamětí ve virtuální síti?](#can-i-use-geo-replication-with-my-caches-in-a-vnet) .
 
-Po konfiguraci geografické replikace platí pro dvojici propojených mezipamětí následující omezení:
+Po nakonfigurování geografické replikace platí následující omezení pro váš pár propojených mezipamětí:
 
-- Sekundární propojená mezipaměť je jen pro čtení. můžete z něj číst, ale nemůžete do něj zapisovat žádná data. 
-- Všechna data, která byla v sekundární propojené mezipaměti před přidáním propojení, budou odebrána. Pokud je však geografická replikace později odebrána, replikovaná data zůstanou v sekundární propojené mezipaměti.
-- Nelze [škálovat](cache-how-to-scale.md) buď mezipaměti, zatímco mezipaměti jsou propojeny.
-- [Počet úlomků](cache-how-to-premium-clustering.md) nelze změnit, pokud je povoleno clustering v mezipaměti.
-- Nelze povolit trvalost na obou mezipaměti.
+- Sekundární propojená mezipaměť je jen pro čtení; můžete z něj číst, ale do něj nemůžete zapisovat žádná data. 
+- Všechna data, která byla v sekundární odkazované mezipaměti před přidáním odkazu, budou odebrána. Pokud je geografická replikace později odebrána, replikovaná data zůstanou v sekundární odkazované mezipaměti.
+- Při propojení mezipamětí nelze [škálovat](cache-how-to-scale.md) buď mezipaměť.
+- Pokud je povolená podpora clusteringu, nemůžete [změnit počet horizontálních oddílů](cache-how-to-premium-clustering.md) .
+- U obou mezipamětí nemůžete povolit trvalost.
 - [Exportovat](cache-how-to-import-export-data.md#export) můžete z obou mezipamětí.
-- Do sekundární propojené mezipaměti nelze [importovat.](cache-how-to-import-export-data.md#import)
-- Nelze odstranit propojenou mezipaměť ani skupinu prostředků, která je obsahuje, dokud neodpojíte mezipaměti. Další informace naleznete [v tématu Proč se operace při pokusu o odstranění propojené mezipaměti nepodařilo odstranit?](#why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache)
-- Pokud jsou mezipaměti v různých oblastech, náklady na odchozí síťový přenos se vztahují na data přesunutá napříč oblastmi. Další informace najdete [v tématu Kolik stojí replikace dat v rámci oblastí Azure?](#how-much-does-it-cost-to-replicate-my-data-across-azure-regions)
-- Automatické převzetí služeb při selhání nedochází mezi primární a sekundární propojené mezipaměti. Další informace a informace o tom, jak převzetí služeb při selhání klientské aplikace, naleznete v tématu [Jak funguje převzetí služeb při selhání do sekundární propojené mezipaměti?](#how-does-failing-over-to-the-secondary-linked-cache-work)
+- Nemůžete [importovat](cache-how-to-import-export-data.md#import) do sekundární propojené mezipaměti.
+- Nemůžete odstranit buď propojenou mezipaměť, nebo skupinu prostředků, která je obsahuje, dokud zrušíte propojení mezipamětí. Další informace najdete v tématu [proč došlo k chybě operace při pokusu odstranit propojenou mezipaměť?](#why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache)
+- Pokud jsou mezipaměti v různých oblastech, účtují se náklady na výstup ze sítě na data přesunutá mezi oblasti. Další informace najdete v tématu [Kolik stojí za replikaci dat napříč oblastmi Azure?](#how-much-does-it-cost-to-replicate-my-data-across-azure-regions)
+- K automatickému převzetí služeb při selhání nedochází mezi primární a sekundární propojenou mezipamětí. Další informace a informace o tom, jak převzít služby při selhání u klientské aplikace, najdete v tématu Jak funguje převzetí služeb při selhání [sekundární propojenou mezipamětí?](#how-does-failing-over-to-the-secondary-linked-cache-work)
 
-## <a name="add-a-geo-replication-link"></a>Přidání geografického replikačního propojení
+## <a name="add-a-geo-replication-link"></a>Přidání odkazu na geografickou replikaci
 
-1. Chcete-li propojit dvě mezipaměti pro geografickou replikaci, klepněte z nabídky Prostředky mezipaměti, kterou chcete zacházet jako primární propojená mezipaměť, klepněte na položku **Geografická replikace.** Dále klikněte na **přidat odkaz replikace mezipaměti** z okna **geografické replikace.**
+1. Pokud chcete propojit dvě mezipamětí pro geografickou replikaci, Fist klikněte na **geografickou replikaci** z nabídky prostředků v mezipaměti, kterou chcete použít jako primární propojenou mezipaměť. Potom v okně **geografická replikace** klikněte na **Přidat odkaz replikace mezipaměti** .
 
     ![Přidat odkaz](./media/cache-how-to-geo-replication/cache-geo-location-menu.png)
 
-2. V seznamu Kompatibilní mezipaměti klepněte na název zamýšlené sekundární **mezipaměti.** Pokud sekundární mezipaměť není zobrazena v seznamu, ověřte, zda jsou [splněny požadavky geografické replikace](#geo-replication-prerequisites) pro sekundární mezipaměť. Chcete-li filtrovat mezipaměti podle oblasti, klepněte na oblast v mapě a zobrazte pouze ty mezipaměti v seznamu **Kompatibilní mezipaměti.**
+2. Klikněte na název zamýšlené sekundární mezipaměti ze seznamu **kompatibilních mezipamětí** . Pokud se v seznamu nezobrazí vaše sekundární mezipaměť, ověřte, že jsou splněné [předpoklady geografické replikace](#geo-replication-prerequisites) pro sekundární mezipaměť. Pokud chcete filtrovat mezipaměti podle oblasti, klikněte na oblast v mapě, aby se zobrazily jenom mezipaměti v seznamu **kompatibilních mezipaměti** .
 
-    ![Mezipaměti kompatibilní se georeplikací](./media/cache-how-to-geo-replication/cache-geo-location-select-link.png)
+    ![Mezipaměti kompatibilní geografické replikace](./media/cache-how-to-geo-replication/cache-geo-location-select-link.png)
     
-    Můžete také spustit proces propojení nebo zobrazit podrobnosti o sekundární mezipaměti pomocí kontextové nabídky.
+    Můžete také spustit proces propojení nebo zobrazit podrobnosti o sekundární mezipaměti pomocí místní nabídky.
 
-    ![Kontextová nabídka geografické replikace](./media/cache-how-to-geo-replication/cache-geo-location-select-link-context-menu.png)
+    ![Místní nabídka geografické replikace](./media/cache-how-to-geo-replication/cache-geo-location-select-link-context-menu.png)
 
-3. Kliknutím na **Propojit** propojte obě mezipaměti a začněte proces replikace.
+3. Kliknutím na **odkaz** propojíte dvě mezipaměti společně a zahajte proces replikace.
 
     ![Propojení mezipamětí](./media/cache-how-to-geo-replication/cache-geo-location-confirm-link.png)
 
-4. Průběh procesu replikace můžete zobrazit v okně **geografické replikace.**
+4. Průběh procesu replikace můžete zobrazit v okně **geografické replikace** .
 
     ![Stav propojení](./media/cache-how-to-geo-replication/cache-geo-location-linking.png)
 
-    Můžete také zobrazit stav propojení v okně **Přehled** pro primární i sekundární mezipaměti.
+    Můžete také zobrazit stav propojení v okně **Přehled** pro primární i sekundární mezipaměť.
 
     ![Stav mezipaměti](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
 
-    Po dokončení procesu replikace se **stav propojení** změní na **Succeeded**.
+    Po dokončení procesu replikace se **stav odkazu** změní na **úspěch**.
 
     ![Stav mezipaměti](./media/cache-how-to-geo-replication/cache-geo-location-link-successful.png)
 
-    Primární propojená mezipaměť zůstane k dispozici pro použití během procesu propojení. Sekundární propojená mezipaměť není k dispozici, dokud není proces propojení dokončen.
+    Primární propojená mezipaměť zůstává k dispozici pro použití během procesu propojování. Sekundární propojená mezipaměť není k dispozici, dokud proces propojení nedokončí.
 
-## <a name="remove-a-geo-replication-link"></a>Odebrání propojení geografické replikace
+## <a name="remove-a-geo-replication-link"></a>Odebrat odkaz na geografickou replikaci
 
-1. Chcete-li odebrat propojení mezi dvěma mezipamětmi a zastavit geografickou replikaci, klepněte na tlačítko **Zrušit propojení mezipamětí** z okna **geografické replikace.**
+1. Pokud chcete odebrat propojení mezi dvěma mezipamětmi a zastavit geografickou replikaci, klikněte na **Zrušit propojení mezipamětí** z okna **geografické replikace** .
     
-    ![Zrušení propojení mezipamětí](./media/cache-how-to-geo-replication/cache-geo-location-unlink.png)
+    ![Zrušit propojení mezipamětí](./media/cache-how-to-geo-replication/cache-geo-location-unlink.png)
 
-    Po dokončení procesu odpojení je k dispozici sekundární mezipaměť pro čtení i zápisy.
+    Po dokončení procesu odpojování je sekundární mezipaměť k dispozici pro čtení i zápis.
 
 >[!NOTE]
->Po odebrání propojení geografické replikace zůstanou replikovaná data z primární propojené mezipaměti v sekundární mezipaměti.
+>Po odebrání odkazu geografické replikace zůstanou replikovaná data z primární propojené mezipaměti v sekundární mezipaměti.
 >
 >
 
-## <a name="geo-replication-faq"></a>Nejčastější dotazy ke geografické replikaci
+## <a name="geo-replication-faq"></a>Nejčastější dotazy k geografické replikaci
 
-- [Můžu použít geografickou replikaci s mezipaměť úrovně Standard nebo Basic?](#can-i-use-geo-replication-with-a-standard-or-basic-tier-cache)
-- [Je moje mezipaměť dostupná pro použití během procesu propojování nebo odpojování?](#is-my-cache-available-for-use-during-the-linking-or-unlinking-process)
-- [Mohu propojit více než dvě mezipaměti dohromady?](#can-i-link-more-than-two-caches-together)
+- [Můžu geografickou replikaci použít s mezipamětí úrovně Standard nebo Basic?](#can-i-use-geo-replication-with-a-standard-or-basic-tier-cache)
+- [Je moje mezipaměť k dispozici pro použití během připojování nebo odpojování procesu?](#is-my-cache-available-for-use-during-the-linking-or-unlinking-process)
+- [Můžu propojit více než dvě mezipaměti společně?](#can-i-link-more-than-two-caches-together)
 - [Můžu propojit dvě mezipaměti z různých předplatných Azure?](#can-i-link-two-caches-from-different-azure-subscriptions)
-- [Mohu propojit dvě mezipaměti s různými velikostmi?](#can-i-link-two-caches-with-different-sizes)
-- [Je možné použít geografickou replikaci s povoleným clusterováním?](#can-i-use-geo-replication-with-clustering-enabled)
-- [Můžu použít geografickou replikaci s mezipamětí ve Virtuální síti?](#can-i-use-geo-replication-with-my-caches-in-a-vnet)
-- [Jaký je plán replikace pro geografickou replikaci Redisu?](#what-is-the-replication-schedule-for-redis-geo-replication)
-- [Jak dlouho trvá geografická replikace replikace?](#how-long-does-geo-replication-replication-take)
-- [Je bod obnovení replikace zaručen?](#is-the-replication-recovery-point-guaranteed)
-- [Můžu ke správě geografické replikace použít PowerShell nebo Azure CLI?](#can-i-use-powershell-or-azure-cli-to-manage-geo-replication)
-- [Kolik stojí replikace mých dat v rámci oblastí Azure?](#how-much-does-it-cost-to-replicate-my-data-across-azure-regions)
-- [Proč se operace nepodařilo, když jsem se pokusil odstranit propojenou mezipaměť?](#why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache)
-- [Jakou oblast mám použít pro sekundární propojenou mezipaměť?](#what-region-should-i-use-for-my-secondary-linked-cache)
-- [Jak funguje převzetí selhání do sekundární propojené mezipaměti?](#how-does-failing-over-to-the-secondary-linked-cache-work)
+- [Můžu propojit dvě mezipaměti s různými velikostmi?](#can-i-link-two-caches-with-different-sizes)
+- [Můžu použít geografickou replikaci s povoleným clusteringem?](#can-i-use-geo-replication-with-clustering-enabled)
+- [Můžu v síti VNET použít geografickou replikaci s mezipamětí?](#can-i-use-geo-replication-with-my-caches-in-a-vnet)
+- [Jaký je plán replikace pro geografickou replikaci Redis?](#what-is-the-replication-schedule-for-redis-geo-replication)
+- [Jak dlouho trvá replikace geografické replikace?](#how-long-does-geo-replication-replication-take)
+- [Garantuje se bod obnovení replikace?](#is-the-replication-recovery-point-guaranteed)
+- [Můžu pomocí PowerShellu nebo Azure CLI spravovat geografickou replikaci?](#can-i-use-powershell-or-azure-cli-to-manage-geo-replication)
+- [Kolik stojí za replikaci dat napříč oblastmi Azure?](#how-much-does-it-cost-to-replicate-my-data-across-azure-regions)
+- [Proč při pokusu o odstranění propojené mezipaměti došlo k chybě operace?](#why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache)
+- [Jakou oblast mám použít pro moji sekundární propojenou mezipaměť?](#what-region-should-i-use-for-my-secondary-linked-cache)
+- [Jak převzetí služeb při selhání sekundární propojenou mezipamětí funguje?](#how-does-failing-over-to-the-secondary-linked-cache-work)
 
-### <a name="can-i-use-geo-replication-with-a-standard-or-basic-tier-cache"></a>Můžu použít geografickou replikaci s mezipaměť úrovně Standard nebo Basic?
+### <a name="can-i-use-geo-replication-with-a-standard-or-basic-tier-cache"></a>Můžu geografickou replikaci použít s mezipamětí úrovně Standard nebo Basic?
 
-Ne, geografická replikace je k dispozici pouze pro mezipaměti úrovně Premium.
+Ne, geografická replikace je dostupná jenom pro mezipaměti úrovně Premium.
 
-### <a name="is-my-cache-available-for-use-during-the-linking-or-unlinking-process"></a>Je moje mezipaměť dostupná pro použití během procesu propojování nebo odpojování?
+### <a name="is-my-cache-available-for-use-during-the-linking-or-unlinking-process"></a>Je moje mezipaměť k dispozici pro použití během připojování nebo odpojování procesu?
 
-- Při propojení zůstane primární propojená mezipaměť k dispozici i po dokončení procesu propojení.
-- Při propojení není sekundární propojená mezipaměť k dispozici, dokud není proces propojení dokončen.
-- Při odpojení zůstávají obě mezipaměti k dispozici i po dokončení procesu odpojení.
+- Při propojování zůstane primární propojená mezipaměť k dispozici, zatímco se proces propojení dokončí.
+- Při propojování není sekundární propojená mezipaměť k dispozici, dokud proces propojení nedokončí.
+- Při odpojování zůstanou v době, kdy se proces odpojování dokončí, pořád dostupná mezipaměť.
 
-### <a name="can-i-link-more-than-two-caches-together"></a>Mohu propojit více než dvě mezipaměti dohromady?
+### <a name="can-i-link-more-than-two-caches-together"></a>Můžu propojit více než dvě mezipaměti společně?
 
-Ne, můžete propojit pouze dvě mezipaměti dohromady.
+Ne, propojení dvou mezipamětí lze propojit pouze dohromady.
 
 ### <a name="can-i-link-two-caches-from-different-azure-subscriptions"></a>Můžu propojit dvě mezipaměti z různých předplatných Azure?
 
-Ne, obě mezipaměti musí být ve stejném předplatném Azure.
+Ne, mezipamětí musí být ve stejném předplatném Azure.
 
-### <a name="can-i-link-two-caches-with-different-sizes"></a>Mohu propojit dvě mezipaměti s různými velikostmi?
+### <a name="can-i-link-two-caches-with-different-sizes"></a>Můžu propojit dvě mezipaměti s různými velikostmi?
 
 Ano, pokud je sekundární propojená mezipaměť větší než primární propojená mezipaměť.
 
-### <a name="can-i-use-geo-replication-with-clustering-enabled"></a>Je možné použít geografickou replikaci s povoleným clusterováním?
+### <a name="can-i-use-geo-replication-with-clustering-enabled"></a>Můžu použít geografickou replikaci s povoleným clusteringem?
 
-Ano, pokud obě mezipaměti mají stejný počet štřepů.
+Ano, pokud obě mezipaměti mají stejný počet horizontálních oddílů.
 
-### <a name="can-i-use-geo-replication-with-my-caches-in-a-vnet"></a>Můžu použít geografickou replikaci s mezipamětí ve Virtuální síti?
+### <a name="can-i-use-geo-replication-with-my-caches-in-a-vnet"></a>Můžu v síti VNET použít geografickou replikaci s mezipamětí?
 
-Ano, geografická replikace mezipamětí v virtuálních sítích je podporována upozorněními:
+Ano, geografická replikace mezipamětí v virtuální sítě se podporuje s upozorněními:
 
-- Geografická replikace mezi mezipaměti ve stejné virtuální síti je podporována.
-- Geo-replikace mezi mezipaměti v různých virtuálních sítích je také podporována.
-  - Pokud virtuální sítě jsou ve stejné oblasti, můžete je připojit pomocí [partnerského vztahu virtuální sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) nebo [připojení virtuální sítě vpn brány v síti](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways#V2V).
-  - Pokud virtuální sítě jsou v různých oblastech, geografická replikace pomocí partnerského vztahu virtuální sítě není podporována z důvodu omezení se základními interními vynakladači zatížení. Další informace o omezenípartnerského vztahu virtuální sítě naleznete [v tématu Virtuální síť – partnerský vztah – požadavky a omezení](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints). Doporučeným řešením je použití připojení virtuální sítě VPN Gateway k virtuální síti.
+- Geografická replikace mezi mezipamětí ve stejné virtuální síti je podporovaná.
+- Je také podporována geografická replikace mezi mezipamětí v různých virtuální sítě.
+  - Pokud se virtuální sítě nacházejí ve stejné oblasti, můžete je propojit pomocí [partnerského vztahu](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) virtuálních sítí nebo [VPN Gateway připojení typu VNet-to-VNet](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways#V2V).
+  - Pokud se virtuální sítě nacházejí v různých oblastech, geografická replikace pomocí partnerského vztahu virtuálních sítí není podporována z důvodu omezení se základními interními nástroji pro vyrovnávání zatížení. Další informace o omezeních partnerských vztahů virtuálních sítí najdete v tématu [Virtual Network-peer-to-požadavky a omezení](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints). Doporučené řešení je použití VPN Gateway připojení typu VNET-to-VNET.
 
-Pomocí [této šablony Azure](https://azure.microsoft.com/resources/templates/201-redis-vnet-geo-replication/)můžete rychle nasadit dvě geograficky replikované mezipaměti do virtuální sítě připojené k připojení virtuální sítě vpn gateway.
+Pomocí [této šablony Azure](https://azure.microsoft.com/resources/templates/201-redis-vnet-geo-replication/)můžete rychle nasadit dvě geograficky replikované mezipaměti do virtuální sítě připojené s VPN Gateway připojení typu VNet-to-VNet.
 
-### <a name="what-is-the-replication-schedule-for-redis-geo-replication"></a>Jaký je plán replikace pro geografickou replikaci Redisu?
+### <a name="what-is-the-replication-schedule-for-redis-geo-replication"></a>Jaký je plán replikace pro geografickou replikaci Redis?
 
-Replikace je nepřetržitá a asynchronní a nedochází k ní podle určitého plánu. Všechny zápisy provedené na primární jsou okamžitě a asynchronně replikovány na sekundární.
+Replikace je nepřetržitá a asynchronní a neprovádí se podle konkrétního plánu. Všechny zápisy provedené na primárním počítači jsou okamžitě a asynchronně replikovány na sekundární.
 
-### <a name="how-long-does-geo-replication-replication-take"></a>Jak dlouho trvá geografická replikace replikace?
+### <a name="how-long-does-geo-replication-replication-take"></a>Jak dlouho trvá replikace geografické replikace?
 
-Replikace je přírůstková, asynchronní a souvislá a doba, která se neliší od latence napříč oblastmi. Za určitých okolností může být požadováno, aby sekundární mezipaměť provedla úplnou synchronizaci dat z primární. Doba replikace v tomto případě závisí na počtu faktorů, jako je: zatížení primární mezipaměti, dostupná šířka pásma sítě a latence mezi oblastmi. Zjistili jsme, že doba replikace pro celý 53GB geo-replikovaný pár může být kdekoli mezi 5 až 10 minut.
+Replikace je přírůstková, asynchronní a nepřetržitá a doba trvání se neliší od latence napříč oblastmi. Za určitých okolností může být k provedení úplné synchronizace dat z primární mezipaměti nutná sekundární mezipaměť. Doba replikace v tomto případě závisí na počtu faktorů, jako je například zatížení primární mezipaměti, dostupná šířka pásma sítě a latence mezi oblastmi. Našli jsme čas replikace pro úplný pár geograficky replikovaný na 53 GB, který může být v rozmezí 5 až 10 minut.
 
-### <a name="is-the-replication-recovery-point-guaranteed"></a>Je bod obnovení replikace zaručen?
+### <a name="is-the-replication-recovery-point-guaranteed"></a>Garantuje se bod obnovení replikace?
 
-U mezipamětí v geograficky replikovaném režimu je trvalosti zakázána. Pokud je geograficky replikovaná dvojice odpojena, například převzetí služeb při selhání iniciované zákazníkem, sekundární propojená mezipaměť uchovává synchronizovaná data až do tohoto okamžiku. V takových situacích není zaručen žádný bod obnovení.
+V případě mezipamětí v režimu geograficky replikovaných je trvalost zakázaná. Pokud je v geograficky replikovaném páru odpojování, jako je třeba převzetí služeb při selhání iniciované zákazníkem, sekundární propojená mezipaměť uchovává data synchronizovaná v daném časovém okamžiku. V takových situacích není zaručen žádný bod obnovení.
 
-Chcete-li získat bod obnovení, [Export](cache-how-to-import-export-data.md#export) z obou mezipamětí. Později můžete [importovat](cache-how-to-import-export-data.md#import) do primární propojené mezipaměti.
+Chcete-li získat bod obnovení, [exportujte](cache-how-to-import-export-data.md#export) z obou mezipamětí. Později můžete [importovat](cache-how-to-import-export-data.md#import) do primární propojené mezipaměti.
 
-### <a name="can-i-use-powershell-or-azure-cli-to-manage-geo-replication"></a>Můžu ke správě geografické replikace použít PowerShell nebo Azure CLI?
+### <a name="can-i-use-powershell-or-azure-cli-to-manage-geo-replication"></a>Můžu pomocí PowerShellu nebo Azure CLI spravovat geografickou replikaci?
 
-Ano, geografickou replikaci se dá spravovat pomocí portálu Azure, PowerShellu nebo Azure CLI. Další informace najdete v [tématu Dokumenty PowerShellu](https://docs.microsoft.com/powershell/module/az.rediscache/?view=azps-1.4.0#redis_cache) nebo [Dokumenty příkazového příkazu k onomu Azure](https://docs.microsoft.com/cli/azure/redis/server-link?view=azure-cli-latest).
+Ano, geografickou replikaci je možné spravovat pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure. Další informace najdete v dokumentaci k [prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.rediscache/?view=azps-1.4.0#redis_cache) nebo v dokumentaci k rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/redis/server-link?view=azure-cli-latest).
 
-### <a name="how-much-does-it-cost-to-replicate-my-data-across-azure-regions"></a>Kolik stojí replikace mých dat v rámci oblastí Azure?
+### <a name="how-much-does-it-cost-to-replicate-my-data-across-azure-regions"></a>Kolik stojí za replikaci dat napříč oblastmi Azure?
 
-Při použití geografické replikace jsou data z primární propojené mezipaměti replikována do sekundární propojené mezipaměti. Pokud jsou dvě propojené mezipaměti ve stejné oblasti, neplatí se za přenos dat žádný poplatek. Pokud jsou dvě propojené mezipaměti v různých oblastech, poplatek za přenos dat je náklady na odchozí přenos dat v síti, které se přesouvají v obou oblastech. Další informace naleznete v [tématu Podrobnosti o cenách šířky pásma](https://azure.microsoft.com/pricing/details/bandwidth/).
+Při použití geografické replikace se data z primární propojené mezipaměti replikují do sekundární propojené mezipaměti. Přenosy dat se neúčtují, pokud jsou dvě propojené mezipaměti ve stejné oblasti. Pokud jsou dvě propojené mezipaměti v různých oblastech, poplatky za přenos dat jsou náklady na výstup v síti, které se pohybují v obou oblastech. Další informace najdete v tématu [Podrobnosti o cenách šířky pásma](https://azure.microsoft.com/pricing/details/bandwidth/).
 
-### <a name="why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache"></a>Proč se operace nepodařilo, když jsem se pokusil odstranit propojenou mezipaměť?
+### <a name="why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache"></a>Proč při pokusu o odstranění propojené mezipaměti došlo k chybě operace?
 
-Geograficky replikované mezipaměti a jejich skupiny prostředků nelze odstranit během propojení, dokud neodeberete propojení geografické replikace. Pokud se pokusíte odstranit skupinu prostředků, která obsahuje jednu nebo obě propojené mezipaměti, ostatní prostředky `deleting` ve skupině prostředků budou odstraněny, ale `running` skupina prostředků zůstane ve stavu a všechny propojené mezipaměti ve skupině prostředků zůstanou ve stavu. Chcete-li skupinu prostředků a propojené mezipaměti v ní zcela odstranit, zrušte propojení mezipamětí, jak je popsáno v části [Odebrat propojení geografické replikace](#remove-a-geo-replication-link).
+Geograficky replikované mezipaměti a jejich skupiny prostředků nejde odstranit, dokud neodeberete odkaz geografické replikace. Pokud se pokusíte odstranit skupinu prostředků, která obsahuje jednu nebo obě propojené mezipaměti, odstraní se ostatní prostředky ve skupině prostředků, ale skupina prostředků zůstane ve `deleting` stavu a všechny propojené mezipaměti ve skupině prostředků zůstanou ve `running` stavu. Pokud chcete úplně odstranit skupinu prostředků a propojenou mezipaměť, zrušte propojení mezipamětí, jak je popsáno v tématu [Odebrání odkazu na geografickou replikaci](#remove-a-geo-replication-link).
 
-### <a name="what-region-should-i-use-for-my-secondary-linked-cache"></a>Jakou oblast mám použít pro sekundární propojenou mezipaměť?
+### <a name="what-region-should-i-use-for-my-secondary-linked-cache"></a>Jakou oblast mám použít pro moji sekundární propojenou mezipaměť?
 
-Obecně se doporučuje, aby vaše mezipaměť existovala ve stejné oblasti Azure jako aplikace, která k ní přistupuje. Pro aplikace se samostatnými primárními a záložními oblastmi se doporučuje, aby primární a sekundární mezipaměti existovaly ve stejných oblastech. Další informace o spárovaných oblastech najdete [v tématu Doporučené postupy – Spárované oblasti Azure](../best-practices-availability-paired-regions.md).
+Obecně se doporučuje, aby vaše mezipaměť existovala ve stejné oblasti Azure jako aplikace, která k ní přistupuje. Pro aplikace s oddělenými primárními a záložními oblastmi doporučujeme, aby vaše primární a sekundární mezipaměť existovaly v těchto oblastech. Další informace o spárovaných oblastech najdete v tématu [osvědčené postupy – spárované oblasti Azure](../best-practices-availability-paired-regions.md).
 
-### <a name="how-does-failing-over-to-the-secondary-linked-cache-work"></a>Jak funguje převzetí selhání do sekundární propojené mezipaměti?
+### <a name="how-does-failing-over-to-the-secondary-linked-cache-work"></a>Jak převzetí služeb při selhání sekundární propojenou mezipamětí funguje?
 
-Automatické převzetí služeb při selhání v rámci oblastí Azure není podporováno pro geograficky replikované mezipaměti. Ve scénáři zotavení po havárii by zákazníci měli koordinovaně vyvolat celý zásobník aplikací v oblasti zálohování. Nechat jednotlivé součásti aplikace rozhodnout, kdy přepnout na jejich zálohy na vlastní pěst může negativně ovlivnit výkon. Jednou z klíčových výhod Redis je, že je to úložiště s velmi nízkou latencí. Pokud se hlavní aplikace zákazníka nachází v jiné oblasti než jeho mezipaměti, by přidaná doba odezvy měla znatelný dopad na výkon. Z tohoto důvodu se vyhneme převzetí automaticky převzetím služby při selhání z důvodu přechodných problémů s dostupností.
+Automatické převzetí služeb při selhání napříč oblastmi Azure se u geograficky replikovaných mezipamětí nepodporuje. Ve scénáři zotavení po havárii by zákazníci měli v oblasti zálohování zařadit celý zásobník aplikace koordinovaným způsobem. Pokud chcete, aby se jednotlivé součásti aplikace rozhodly, kdy přepnout na vlastní zálohy, můžou mít negativní vliv na výkon. Jednou z klíčových výhod Redis je, že se jedná o velmi nízkou latenci. Pokud je hlavní aplikace zákazníka v jiné oblasti než její mezipaměť, přidaná doba odezvy bude mít znatelný dopad na výkon. Z tohoto důvodu se vyhnete převzetí služeb při selhání automaticky kvůli problémům s přechodnou dostupností.
 
-Chcete-li spustit převzetí služeb při selhání iniciované zákazníkem, nejprve odpojte mezipaměti. Potom změňte klienta Redis tak, aby používal koncový bod připojení (dříve propojené) sekundární mezipaměti. Když jsou dvě mezipaměti odpojeny, sekundární mezipaměť se znovu stane běžnou mezipamětí pro čtení a zápis a přijímá požadavky přímo od klientů Redis.
+Pokud chcete zahájit převzetí služeb při selhání iniciované zákazníkem, nejdřív odpojte mezipaměti. Pak změňte svého klienta Redis na použití koncového bodu připojení (dříve propojené) sekundární mezipaměti. Pokud jsou dvě mezipaměti odpojování, sekundární mezipaměť se znovu vytvoří do běžné mezipaměti pro čtení a zápis a přijímá požadavky přímo od klientů Redis.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o [úrovni Azure Cache for Redis Premium](cache-premium-tier-intro.md).
+Přečtěte si další informace o [Azure cache pro Redis úrovně Premium](cache-premium-tier-intro.md).

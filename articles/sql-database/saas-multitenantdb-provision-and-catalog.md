@@ -1,6 +1,6 @@
 ---
-title: Poskytování víceklientských služeb SaaS
-description: Zjistěte, jak zřídit a katalogizovat nové klienty v aplikaci SaaS s více klienty Azure SQL Database
+title: Zřízení ve více tenantůch SaaS
+description: Naučte se zřizovat a zařadit nové klienty do Azure SQL Database aplikace SaaS multi-tenant.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
@@ -12,115 +12,115 @@ ms.author: genemi
 ms.reviewer: billgib,andrela,stein
 ms.date: 09/24/2018
 ms.openlocfilehash: 4ea18ee23d845b2d16209b23de14dc3cd70aaa59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74133145"
 ---
-# <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Zřizování a katalogkatalogování nových klientů v aplikaci SaaS pomocí vrstvené víceklientské databáze Azure SQL pro více klientů
+# <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Zřízení a zakatalogu nových tenantů v aplikaci SaaS s využitím Azure SQL Database horizontálně dělené pro více tenantů
 
-Tento článek popisuje zřizování a katalogizaci nových klientů, ve *víceklientské oborové databázi* modelu nebo vzoru.
+Tento článek se zabývá zřizováním a katalogem nových tenantů v modelu *horizontálně dělené Database nebo modelu databáze pro více tenantů* .
 
-Tento článek má dvě hlavní části:
+Tento článek obsahuje dvě hlavní části:
 
-- [Koncepční diskuse](#goto_2_conceptual) o zřizování a katalogizaci nových klientů.
+- [Koncepční diskuze](#goto_2_conceptual) o zřizování a katalogu nových tenantů.
 
-- [Kurz,](#goto_1_tutorial) který zvýrazní kód skriptu Prostředí PowerShell, který provádí zřizování a katalogizaci.
-  - Kurz používá wingtip vstupenky SaaS aplikace, přizpůsobené víceklientské oborové databáze vzor.
+- [Kurz](#goto_1_tutorial) , který zvýrazní kód skriptu PowerShellu, který provádí zřizování a vytváření katalogu.
+  - V tomto kurzu se používá aplikace Wingtip Tickets SaaS, která je přizpůsobená ke vzoru databáze pro více tenantů horizontálně dělené.
 
 <a name="goto_2_conceptual"/>
 
 ## <a name="database-pattern"></a>Vzor databáze
 
-Tato část a několik dalších, které následují, diskutovat o koncepty víceklientské oborové databázi vzor.
+V této části se podíváme na koncepty modelu horizontálně dělené Database pro více tenantů.
 
-V tomto víceklientské oborové množiny modelu schémata tabulky uvnitř každé databáze zahrnují klíč klienta v primárním klíči tabulek, které ukládají data klienta. Klíč klienta umožňuje každé jednotlivé databáze pro uložení 0, 1 nebo mnoho klientů. Použití databáze s oddíly usnadňuje aplikačnímu systému podporu velmi velkého počtu klientů. Všechna data pro jednoho klienta je uložena v jedné databázi. Velký počet klientů jsou distribuovány v mnoha rozdělených databází. Databáze katalogu ukládá mapování každého klienta do své databáze.
+V tomto horizontálně dělené modelu pro více tenantů zahrnuje schémata tabulek uvnitř každé databáze klíč tenanta v primárním klíči tabulek, které ukládají data tenanta. Klíč tenanta umožňuje, aby každá jednotlivé databáze ukládala 0, 1 nebo mnoho klientů. Použití databází horizontálně dělené usnadňuje systému aplikace podporu velmi velkého počtu klientů. Všechna data pro jednoho tenanta jsou uložená v jedné databázi. Velký počet klientů se distribuuje napříč mnoha horizontálně dělené databázemi. Databáze katalogu ukládá mapování každého tenanta do své databáze.
 
-#### <a name="isolation-versus-lower-cost"></a>Izolace versus nižší náklady
+#### <a name="isolation-versus-lower-cost"></a>Izolace oproti nižším nákladům
 
-Klient, který má databázi pro sebe, využívá výhod izolace. Klient může mít databázi obnovena na dřívější datum, aniž by byl omezen dopadem na ostatní klienty. Výkon databáze lze naladit optimalizovat pro jednoho klienta, znovu bez nutnosti kompromisu s ostatními klienty. Problém je, že izolace stojí více než náklady na sdílení databáze s ostatními klienty.
+Tenant, který má databázi samu sobě, má přednost před výhodami izolace. V tenantovi může být databáze obnovená na dřívější datum bez omezení dopadu na jiné klienty. Výkon databáze se dá vyladit tak, aby se optimalizoval jenom pro jednoho tenanta, a to bez nutnosti napadnout s ostatními klienty. Problémem je, že při sdílení databáze s jinými klienty se náklady na více než náklady na oddělení IT.
 
-Když je zřízena nového klienta, může sdílet databázi s jinými klienty, nebo jej lze umístit do své vlastní nové databáze. Později si můžete změnit názor a přesunout databázi do jiné situace.
+Když je zřízen nový tenant, může sdílet databázi s ostatními klienty nebo může být umístěn do své vlastní nové databáze. Později můžete změnit svůj názor a přesunout databázi do jiné situace.
 
-Databáze s více klienty a jedním tenantem jsou smíchány ve stejné aplikaci SaaS, aby se optimalizovaly náklady nebo izolace pro každého klienta.
+Databáze s více klienty a jedenmi klienty se míchají ve stejné aplikaci SaaS a optimalizují náklady nebo izolaci pro každého tenanta.
 
-   ![Databázová aplikace s více klienty s katalogem klienta s oborovými obory](media/saas-multitenantdb-provision-and-catalog/MultiTenantCatalog.png)
+   ![Aplikace pro více tenantů horizontálně dělené Database s katalogem tenantů](media/saas-multitenantdb-provision-and-catalog/MultiTenantCatalog.png)
 
-## <a name="tenant-catalog-pattern"></a>Vzor katalogu klienta
+## <a name="tenant-catalog-pattern"></a>Vzor katalogu tenanta
 
-Pokud máte dvě nebo více databází, z nichž každá obsahuje alespoň jednoho klienta, aplikace musí mít způsob, jak zjistit, která databáze ukládá klienta aktuálního zájmu. Databáze katalogu ukládá toto mapování.
+Pokud máte dvě nebo více databází, které obsahují alespoň jeden tenant, aplikace musí mít způsob, jak zjistit, která databáze ukládá tenanta aktuálního zájmu. Databáze katalogu toto mapování ukládá.
 
-#### <a name="tenant-key"></a>Klíč klienta
+#### <a name="tenant-key"></a>Klíč tenanta
 
-Pro každého klienta wingtip aplikace může odvodit jedinečný klíč, který je klíč klienta. Aplikace extrahuje název klienta z adresy URL webové stránky. Aplikace zapisuje název k získání klíče. Aplikace používá klíč pro přístup ke katalogu. Katalog křížové odkazy informace o databázi, ve kterém je uložen klienta. Aplikace používá informace o databázi pro připojení. Lze také použít další schémata klíče klienta.
+Pro každého tenanta může aplikace Wingtip odvodit jedinečný klíč, což je klíč tenanta. Aplikace extrahuje název tenanta z adresy URL webové stránky. Aplikace vyhodnotí název, aby získala klíč. Aplikace používá klíč pro přístup ke katalogu. Katalog křížových odkazů na informace o databázi, ve které je klient uložený. Aplikace použije informace databáze k připojení. Lze také použít jiná schémata klíčů tenanta.
 
-Použití katalogu umožňuje změnit název nebo umístění databáze klienta po zřizování bez narušení aplikace. V modelu databáze s více klienty katalog umisťuje přesunutí klienta mezi databázemi.
+Použití katalogu umožňuje po zřízení změnit název nebo umístění databáze tenanta, aniž by došlo k přerušení aplikace. V modelu databáze s více klienty se katalog vejde na přesun tenanta mezi databázemi.
 
-#### <a name="tenant-metadata-beyond-location"></a>Metadata klienta mimo umístění
+#### <a name="tenant-metadata-beyond-location"></a>Metadata tenanta za rámec umístění
 
-Katalog může také určit, zda je klient offline pro údržbu nebo jiné akce. A katalog lze rozšířit do uložení dalších metadat klienta nebo databáze, například následující položky:
-- Úroveň služby nebo edice databáze.
-- Verze schématu databáze.
-- Název klienta a jeho Smlouva SLA (smlouva o úrovni služeb).
-- Informace umožňující správu aplikací, zákaznickou podporu nebo devops procesy.
+Katalog také může označovat, zda je klient v režimu offline kvůli údržbě nebo jiným akcím. A katalog můžete rozšířit tak, aby ukládal další metadata tenanta nebo databáze, například následující položky:
+- Vrstva služby nebo edice databáze.
+- Verze schématu databáze
+- Název tenanta a jeho SLA (smlouva o úrovni služeb).
+- Informace, které umožňují správu aplikací, zákaznickou podporu nebo DevOps procesy.
 
-Katalog lze také povolit vytváření sestav mezi klienty, správu schématu a výpis dat pro analytické účely.
+Katalog je také možné použít k povolení generování sestav mezi klienty, správy schématu a extrakce dat pro účely analýzy.
 
-### <a name="elastic-database-client-library"></a>Klientská knihovna elastické databáze
+### <a name="elastic-database-client-library"></a>Klientská knihovna Elastic Database
 
-V Wingtip katalog je implementována v databázi *katalogu tenantcatalog.* *Katalog tenantů* je vytvořen pomocí funkcí správy střepů [klientské knihovny elastické databáze (EDCL).](sql-database-elastic-database-client-library.md) Knihovna umožňuje aplikaci vytvářet, spravovat a používat *mapu střepů,* která je uložena v databázi. Mapa střepů křížově odkazuje na klíč klienta s jeho úlomkem, což znamená jeho oborovou databázi.
+V Wingtip se katalog implementuje v databázi *tenantcatalog* . *Tenantcatalog* se vytvoří pomocí funkcí správy horizontálních oddílů [klientské knihovny nástroje elastic Database (EDCL)](sql-database-elastic-database-client-library.md). Knihovna umožňuje aplikaci vytvořit, spravovat a použít *mapu horizontálních oddílů* , která je uložená v databázi. Mapa horizontálních oddílů křížově odkazuje na klíč tenanta s jeho horizontálních oddílů, což znamená jeho databázi horizontálně dělené.
 
-Během zřizování klienta edcl funkce lze použít z aplikací nebo skripty Prostředí PowerShell k vytvoření položek v mapě střepů. Později edcl funkce lze použít pro připojení ke správné databázi. Edcl ukládá informace o připojení, aby se minimalizoval provoz v databázi katalogu a urychlil proces připojení.
+Během zřizování tenanta je možné pomocí aplikací nebo skriptů PowerShellu vytvořit v mapě horizontálních oddílů funkce EDCL. Později lze funkce EDCL použít pro připojení ke správné databázi. EDCL ukládá informace o připojení do mezipaměti pro minimalizaci provozu databáze katalogu a urychlení procesu připojování.
 
 > [!IMPORTANT]
-> *Neupravujte* data v databázi katalogu prostřednictvím přímého přístupu! Přímé aktualizace nejsou podporovány z důvodu vysokého rizika poškození dat. Místo toho upravte data mapování pouze pomocí portů EDCL.
+> *Neupravujte* data v databázi katalogu pomocí přímého přístupu. Přímé aktualizace nejsou podporovány z důvodu vysokého rizika poškození dat. Místo toho upravte mapování dat pouze pomocí rozhraní EDCL API.
 
-## <a name="tenant-provisioning-pattern"></a>Vzor zřizování klienta
+## <a name="tenant-provisioning-pattern"></a>Model zřizování tenanta
 
 #### <a name="checklist"></a>Kontrolní seznam
 
-Pokud chcete zřídit nového klienta do existující sdílené databáze, sdílené databáze, musíte se zeptat na následující otázky:
-- Zbývá mu dost místa pro nového nájemníka?
-- Obsahuje tabulky s potřebnými referenčními daty pro nového klienta, nebo je lze přidat?
-- Má odpovídající variantu základního schématu pro nového klienta?
-- Je v příslušné zeměpisné poloze v blízkosti nového klienta?
-- Je na správné úrovni služby pro nového klienta?
+Pokud chcete zřídit nového tenanta do existující sdílené databáze sdílené databáze, musíte požádat o následující otázky:
+- Je pro nového tenanta k dispozici dostatek místa?
+- Obsahuje tabulka s nezbytnými referenčními daty pro nového tenanta nebo je možné přidat data?
+- Má odpovídající variace základního schématu pro nového tenanta?
+- Je v příslušném geografickém umístění blízko nového tenanta?
+- Je to u správné úrovně služby pro nového tenanta?
 
-Pokud chcete, aby byl nový tenant izolován ve své vlastní databázi, můžete ho vytvořit tak, aby splňoval specifikace pro klienta.
+Pokud chcete, aby byl nový tenant izolovaný ve vlastní databázi, můžete ho vytvořit tak, aby splňoval specifikace pro tenanta.
 
-Po dokončení zřizování je nutné zaregistrovat klienta v katalogu. Nakonec mapování klienta lze přidat k odkazování na příslušný oddíl.
+Po dokončení zřizování musíte klienta zaregistrovat v katalogu. Nakonec můžete přidat mapování tenanta pro odkazování na příslušné horizontálních oddílů.
 
 #### <a name="template-database"></a>Databáze šablon
 
-Zřízení databáze spuštěním skriptů SQL, nasazení bacpac nebo zkopírováním databáze šablony. Aplikace Wingtip zkopírují databázi šablon a vytvoří nové databáze klientů.
+Databázi zřiďte spuštěním skriptů SQL, nasazením BacPac nebo zkopírováním databáze šablony. Aplikace Wingtip Apps kopírují šablonu databáze pro vytvoření nových databází tenanta.
 
-Jako každá aplikace, Wingtip se bude vyvíjet v průběhu času. V době, Wingtip bude vyžadovat změny v databázi. Změny mohou zahrnovat následující položky:
+Podobně jako u jakékoli aplikace se společnost Wingtip v průběhu času vyvíjí. V případě potřeby bude společnost Wingtip vyžadovat změny v databázi. Změny mohou zahrnovat následující položky:
 - Nové nebo změněné schéma.
 - Nová nebo změněná referenční data.
-- Rutinní úlohy údržby databáze pro zajištění optimálního výkonu aplikace.
+- Rutinní úlohy údržby databáze k zajištění optimálního výkonu aplikace.
 
-U SaaS aplikace musí být tyto změny nasazeny koordinovaně u potenciálně velkého počtu klientských databází. Pro tyto změny být v budoucích databázích tenanta, je třeba začlenit do procesu zřizování. Tato výzva je dále prozkoumána v [kurzu pro správu schématu](saas-tenancy-schema-management.md).
+U SaaS aplikace musí být tyto změny nasazeny koordinovaně u potenciálně velkého počtu klientských databází. Aby se tyto změny projevily v budoucích databázích tenanta, musí být začleněny do procesu zřizování. Tato výzva se podrobněji prozkoumá v [kurzu správy schématu](saas-tenancy-schema-management.md).
 
 #### <a name="scripts"></a>Scripts
 
-Zřizování skriptů klienta v tomto kurzu podporují oba následující scénáře:
-- Zřizování klienta do existující databáze sdílené s ostatními klienty.
-- Zřizování klienta do vlastní databáze.
+Skripty zřizování klientů v tomto kurzu podporují oba tyto scénáře:
+- Zřizování tenanta do existující databáze sdílené s ostatními klienty.
+- Zřizování tenanta ve vlastní databázi.
 
-Data klienta je pak inicializována a registrována v mapě oddílu oddílu katalogu. V ukázkové aplikaci databáze, které obsahují více klientů jsou uvedeny obecný název, jako jsou *tenants1* nebo *tenants2*. Databáze, které obsahují jednoho klienta jsou uvedeny název klienta. Konkrétní konvence pojmenování použité v ukázce nejsou důležitou součástí vzoru, protože použití katalogu umožňuje přiřadit databázi libovolný název.
+Data tenanta se pak inicializují a zaregistrují v mapě horizontálních oddílů katalogu. V ukázkové aplikaci se k databázím, které obsahují více tenantů, přidává obecný název, jako je například *tenants1* nebo *tenants2*. K databázím, které obsahují jednoho tenanta, se přidává název tenanta. Konkrétní konvence pojmenování používané v ukázce nejsou důležitou součástí vzoru, protože použití katalogu umožňuje přiřadit k databázi libovolný název.
 
 <a name="goto_1_tutorial"/>
 
-## <a name="tutorial-begins"></a>Začíná kurz
+## <a name="tutorial-begins"></a>Začátek kurzu
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Zřízení klienta do databáze s více klienty
-> * Zřízení klienta do databáze s jedním tenantem
-> * Zřízení dávky klientů do databází s více klienty i do databází s jedním tenantem
-> * Registrace mapování databáze a klienta v katalogu
+> * Zřízení tenanta v databázi s více klienty
+> * Zřízení tenanta v databázi s jedním klientem
+> * Zřízení dávky tenantů do databází s více klienty a s jedním tenantům
+> * Registrace databáze a mapování tenanta v katalogu
 
 #### <a name="prerequisites"></a>Požadavky
 
@@ -128,123 +128,123 @@ Předpokladem dokončení tohoto kurzu je splnění následujících požadavků
 
 - Je nainstalované prostředí Azure PowerShell. Podrobnosti najdete v článku [Začínáme s prostředím Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
-- Wingtip Vstupenky SaaS Víceklientdatabáze aplikace je nasazena. Informace o nasazení za méně než pět minut najdete v [tématu Nasazení a prozkoumání aplikace Wingtip Tickets SaaS Multi-tenant Database](saas-multitenantdb-get-started-deploy.md)
+- Nasadí se aplikace SaaS pro víceklientské klienty. Nasazení za méně než pět minut najdete v tématu [nasazení a prozkoumání SaaS aplikace pro více tenantů](saas-multitenantdb-get-started-deploy.md) .
 
-- Získejte wingtip skripty a zdrojový kód:
-    - Wingtip Tickets SaaS Multi-tenant databázové skripty a zdrojový kód aplikace jsou k dispozici v [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) Úložiště GitHub.
-    - Podívejte se na [obecné pokyny](saas-tenancy-wingtip-app-guidance-tips.md) pro kroky ke stažení a odblokování wingtip skriptů.
+- Získejte skripty a zdrojový kód pro společnost Wingtip:
+    - V úložišti GitHubu [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) jsou k dispozici skripty SaaS s více klienty a zdrojový kód aplikace.
+    - Pokyny ke stažení a odblokování skriptů Wingtip najdete v části [Obecné pokyny](saas-tenancy-wingtip-app-guidance-tips.md) .
 
-## <a name="provision-a-tenant-into-a-database-shared-with-other-tenants"></a>Zřízení klienta do databáze *sdílené* s ostatními klienty
+## <a name="provision-a-tenant-into-a-database-shared-with-other-tenants"></a>Zřízení tenanta v databázi *sdílené* s ostatními klienty
 
-V této části se zobrazí seznam hlavních akcí pro zřizování, které jsou prováděny skripty prostředí PowerShell. Potom pomocí ladicího programu Prostředí PowerShell ISE krokovat skripty zobrazit akce v kódu.
+V této části se zobrazí seznam hlavních akcí pro zřizování, které provádí skripty PowerShellu. Pak použijete ladicí program PowerShellu ISE ke krokování skriptů pro zobrazení akcí v kódu.
 
-#### <a name="major-actions-of-provisioning"></a>Hlavní opatření v oblasti zřizování
+#### <a name="major-actions-of-provisioning"></a>Hlavní akce zřizování
 
-Níže jsou uvedeny klíčové prvky pracovního postupu zřizování krokování:
+Níže jsou uvedené klíčové prvky pracovního postupu zřizování, který provedete následujícím postupem:
 
-- **Vypočítat nový klíč klienta**: Funkce hash se používá k vytvoření klíče klienta z názvu klienta.
-- **Zkontrolujte, zda klíč klienta již existuje**: Katalog je zkontrolován, aby se zajistilo, že klíč ještě nebyl zaregistrován.
-- **Inicializovat klienta ve výchozí databázi klienta**: Databáze klienta se aktualizuje a přidá nové informace o klientovi.
-- **Registrace klienta v katalogu**: Mapování mezi novým klíčem klienta a existující databází tenantů1 je přidáno do katalogu.
-- **Přidejte název klienta do tabulky rozšíření katalogu**: Název místa je přidán do tabulky Klienti v katalogu.  Toto přidání ukazuje, jak lze rozšířit databázi katalogu pro podporu dalších dat specifických pro aplikaci.
-- **Otevřít události stránku pro nového klienta**: *Bushwillow Blues* události stránka je otevřena v prohlížeči.
+- **Vypočítat nový klíč tenanta**: funkce hash se používá k vytvoření klíče tenanta z názvu tenanta.
+- **Zkontrolujte, jestli klíč tenanta už existuje**: katalog se zkontroluje, aby se zajistilo, že klíč ještě není zaregistrovaný.
+- **Inicializace tenanta ve výchozí databázi tenanta**: databáze tenanta se aktualizuje, aby se přidaly nové informace o tenantovi.
+- **Registrovat tenanta v katalogu**: mapování mezi novým klíčem tenanta a stávající databází tenants1 se přidá do katalogu.
+- **Přidejte název tenanta do tabulky přípon katalogu**: název místa se přidá do tabulky tenantů v katalogu.  V tomto dodatku se dozvíte, jak se dá databáze katalogu rozšířit, aby podporovala další data specifická pro danou aplikaci.
+- **Otevřít stránku události pro nového tenanta**: stránka události *Blues Bushwillow* se otevře v prohlížeči.
 
    ![stránka events](media/saas-multitenantdb-provision-and-catalog/bushwillow.png)
 
 #### <a name="debugger-steps"></a>Kroky ladicího programu
 
-Chcete-li pochopit, jak aplikace Wingtip implementuje nové zřizování klienta ve sdílené databázi, přidejte zarážku a krokovat pracovní postup:
+Chcete-li pochopit, jak aplikace Wingtip implementuje nové zřizování tenanta ve sdílené databázi, přidejte zarážku a krok do pracovního postupu:
 
-1. V *prostředí PowerShell ISE*otevřete ... \\Learning Modules\\ProvisionTenants\\*Demo-ProvisionTenants.ps1* a nastavte následující parametry:
-   - **$TenantName** = **Bushwillow Blues**, název nového místa konání.
-   - **$VenueType** = **blues**, jeden z předem definovaných typů míst konání: blues, klasická hudba, tanec, jazz, judo, motorracing, víceúčelový, opera, rockmusic, fotbal (malá písmena, žádné mezery).
-   - **$DemoScenario** = **1**, zřídit klienta ve sdílené databázi s ostatními klienty.
+1. V *prostředí POWERSHELL ISE*otevřete... \\Výukové\\moduly\\ProvisionTenants*demo-ProvisionTenants. ps1* a nastavte následující parametry:
+   - **$TenantName** = **Bushwillow Blues**, název nového místa.
+   - **$VenueType** = **Blues**, jeden z předdefinovaných typů místa: blues, ClassicalMusic, roztancoval, jazz, Judo, motorracing, Multipurpose, Opera, rockmusic, fotbal (malá písmena, bez mezer).
+   - **$DemoScenario** = **1**, pokud chcete zřídit tenanta ve sdílené databázi s ostatními klienty.
 
-2. Přidejte zarážku tak, že kurzor na libovolné místo na řádku 38, řádek, který říká: *Nový tenant '* a stiskněte **klávesu F9**.
+2. Přidejte zarážku tak, že umístíte kurzor kamkoli na řádek 38, řádek, který uvádí: *New-tenant*, a pak stiskněte **F9**.
 
    ![přerušení](media/saas-multitenantdb-provision-and-catalog/breakpoint.png)
 
-3. Spusťte skript stisknutím **klávesy F5**.
+3. Spusťte skript stisknutím klávesy **F5**.
 
-4. Po spuštění skriptu zastaví na zarážky, stisknutím **klávesy F11** krok do kódu.
+4. Po zastavení spuštění skriptu na zarážce stiskněte klávesu **F11** pro krok do kódu.
 
    ![ladit](media/saas-multitenantdb-provision-and-catalog/debug.png)
 
-5. Trasujte spuštění skriptu pomocí možností nabídky **Ladění** **F10** a **F11**, abyste přešli nebo do volaných funkcí.
+5. Sledujte provádění skriptu pomocí možností nabídky **ladění** , **F10** a **F11**, abyste mohli přenášet nebo nazývat na volané funkce.
 
-Další informace o ladění skriptů prostředí PowerShell naleznete [v tématu Tipy pro práci se skripty prostředí PowerShell a ladění](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise).
+Další informace o ladění skriptů PowerShellu najdete v tématu [o práci se skripty PowerShellu a jejich ladění](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise).
 
-## <a name="provision-a-tenant-in-its-own-database"></a>Zřízení klienta ve *vlastní* databázi
+## <a name="provision-a-tenant-in-its-own-database"></a>Zřízení tenanta ve *vlastní* databázi
 
-#### <a name="major-actions-of-provisioning"></a>Hlavní opatření v oblasti zřizování
+#### <a name="major-actions-of-provisioning"></a>Hlavní akce zřizování
 
-Níže jsou uvedeny klíčové prvky pracovního postupu, kterým procházíte při trasování skriptu:
+Níže jsou uvedené klíčové prvky pracovního postupu, který jste procházeli během trasování skriptu:
 
-- **Vypočítat nový klíč klienta**: Funkce hash se používá k vytvoření klíče klienta z názvu klienta.
-- **Zkontrolujte, zda klíč klienta již existuje**: Katalog je zkontrolován, aby se zajistilo, že klíč ještě nebyl zaregistrován.
-- **Vytvořit novou databázi klienta**: Databáze se vytvoří zkopírováním databáze *basetenantdb* pomocí šablony Správce prostředků.  Nový název databáze je založen na názvu klienta.
-- **Přidat databázi do katalogu**: Nová databáze klienta je registrována jako oddíl oddílu v katalogu.
-- **Inicializovat klienta ve výchozí databázi klienta**: Databáze klienta se aktualizuje a přidá nové informace o klientovi.
-- **Registrace klienta v katalogu**: Mapování mezi novým klíčem klienta a *sequoiasoccer* databáze je přidán do katalogu.
-- **Název klienta je přidán do katalogu**: Název místa je přidán do tabulky rozšíření Klienti v katalogu.
-- **Otevřít stránku Události pro nového klienta**: Stránka *Sequoia Soccer* Events se otevře v prohlížeči.
+- **Vypočítat nový klíč tenanta**: funkce hash se používá k vytvoření klíče tenanta z názvu tenanta.
+- **Zkontrolujte, jestli klíč tenanta už existuje**: katalog se zkontroluje, aby se zajistilo, že klíč ještě není zaregistrovaný.
+- **Vytvoření nové databáze tenanta**: databáze je vytvořena zkopírováním databáze *basetenantdb* pomocí šablony Správce prostředků.  Název nové databáze je založen na názvu tenanta.
+- **Přidat databázi do katalogu**: Nová databáze tenanta je registrovaná jako horizontálních oddílů v katalogu.
+- **Inicializace tenanta ve výchozí databázi tenanta**: databáze tenanta se aktualizuje, aby se přidaly nové informace o tenantovi.
+- **Registrovat tenanta v katalogu**: mapování mezi novým klíčem tenanta a databází *sequoiasoccer* se přidá do katalogu.
+- **Do katalogu se přidá název tenanta**: místo, do kterého se přidá název místa, se přidá do tabulky rozšíření tenantů v katalogu.
+- **Otevřít stránku události pro nového tenanta**: stránka události *Sequoia fotbal* se otevře v prohlížeči.
 
    ![stránka events](media/saas-multitenantdb-provision-and-catalog/sequoiasoccer.png)
 
 #### <a name="debugger-steps"></a>Kroky ladicího programu
 
-Nyní projděte proces skriptu při vytváření klienta ve své vlastní databázi:
+Nyní projdete procesem skriptu při vytváření tenanta ve vlastní databázi:
 
-1. Stále v ... \\Learning Modules\\ProvisionTenants\\*Demo-ProvisionTenants.ps1* nastavit následující parametry:
-   - **$TenantName** = **Sequoia Soccer**, název nového místa konání.
-   - **$VenueType** = **fotbal**, jeden z předem definovaných typů míst konání: blues, klasická hudba, tanec, jazz, judo, motorracing, víceúčelový, opera, rockmusic, fotbal (malá písmena, žádné prostory).
-   - **$DemoScenario** = **2**, zřídit klienta do své vlastní databáze.
+1. Pořád v... \\Výukové\\moduly\\ProvisionTenants*demo-ProvisionTenants. ps1* nastavte následující parametry:
+   - **$TenantName** = **Sequoia fotbal**, název nového místa.
+   - **$VenueType** = **fotbalový**, jeden z předdefinovaných typů místa: blues, ClassicalMusic, roztancoval, jazz, Judo, motorracing, Multipurpose, Opera, rockmusic, fotbalový (malý případ, bez mezer).
+   - **$DemoScenario** = **2**, pokud chcete zřídit tenanta do své vlastní databáze.
 
-2. Přidejte novou zarážku umístěním kurzoru na libovolné místo na řádku 57, na řádek s nápisem: * & &nbsp;$PSScriptRoot\New-TenantAndDatabase "* a stiskněte **klávesu F9**.
+2. Přidejte novou zarážku tak, že umístíte kurzor kamkoli na řádek 57, řádek, který uvádí: * & &nbsp;$PSScriptRoot \new-tenantanddatabase '*, a stiskněte **F9**.
 
    ![přerušení](media/saas-multitenantdb-provision-and-catalog/breakpoint2.png)
 
-3. Spusťte skript stisknutím **klávesy F5**.
+3. Spusťte skript stisknutím klávesy **F5**.
 
-4. Po spuštění skriptu zastaví na zarážky, stisknutím **klávesy F11** krok do kódu.  Pomocí **F10** a **F11** krokovat a krok ovat funkce pro sledování provádění.
+4. Po zastavení spuštění skriptu na zarážce stiskněte klávesu **F11** ke kroku do kódu.  Pomocí nástroje **F10** a **klávesy F11** proveďte krokování a zajděte do funkce a sledujte spuštění.
 
-## <a name="provision-a-batch-of-tenants"></a>Zřízení dávky klientů
+## <a name="provision-a-batch-of-tenants"></a>Zřízení dávky tenantů
 
-Toto cvičení stanoví dávku 17 nájemníků. Doporučujeme zřídit tuto dávku klientů před zahájením jiných kurzů wingtip tickets, aby bylo více databází, se kterými můžete pracovat.
+Toto cvičení zřídí dávku o 17 klientech. Než začnete používat jiné kurzy pro lístky Wingtip, doporučujeme zřídit tuto dávku tenantů, aby bylo možné pracovat s více databázemi.
 
-1. V *prostředí PowerShell ISE*otevřete ... \\\\Learning Modules\\ProvisionTenants*Demo-ProvisionTenants.ps1* a změňte parametr *$DemoScenario* na 4:
-   - **$DemoScenario** = **4**, zřídit dávku klientů do sdílené databáze.
+1. V *prostředí POWERSHELL ISE*otevřete... \\Výukové\\moduly\\ProvisionTenants*demo-ProvisionTenants. ps1* a změňte parametr *$DemoScenario* na 4:
+   - **$DemoScenario** = **4**pro zřízení dávky tenantů do sdílené databáze.
 
 2. Stiskněte **F5** a spusťte skript.
 
-### <a name="verify-the-deployed-set-of-tenants"></a>Ověření nasazené sady klientů
+### <a name="verify-the-deployed-set-of-tenants"></a>Ověření nasazené sady tenantů
 
-V této fázi máte kombinaci klientů nasazených do sdílené databáze a tenantů nasazených do vlastních databází. Portál Azure slouží ke kontrole vytvořených databází. Na [webu Azure Portal](https://portal.azure.com)otevřete **server tenants1-mt-\<USER\> ** procházením seznamu serverů SQL.  Seznam **databází SQL** by měl obsahovat sdílenou **databázi tenantů1** a databáze pro klienty, které jsou ve vlastní databázi:
+V této fázi máte kombinaci klientů nasazených do sdílené databáze a klientů nasazených do jejich vlastních databází. Azure Portal lze použít ke kontrole databází, které byly vytvořeny. V [Azure Portal](https://portal.azure.com)otevřete Server **tenants1-\<MT-User\> ** tak, že přejdete na seznam serverů SQL.  Seznam **databází SQL** by měl zahrnovat sdílenou databázi **tenants1** a databáze pro klienty, kteří jsou ve své vlastní databázi:
 
    ![seznam databází](media/saas-multitenantdb-provision-and-catalog/Databases.png)
 
-Zatímco portál Azure zobrazuje databáze klientů, neumožňuje zobrazit klienty *uvnitř* sdílené databáze. Úplný seznam klientů lze vidět na webové stránce **Centra událostí** wingtip a procházením katalogu.
+I když Azure Portal zobrazuje databáze tenantů, neumožňuje zobrazit klienty *ve* sdílené databázi. Úplný seznam tenantů najdete na webové stránce **centra událostí** pro společnost Wingtip a procházením katalogu.
 
-#### <a name="using-wingtip-tickets-events-hub-page"></a>Použití stránky centra událostí Wingtip Tickets
+#### <a name="using-wingtip-tickets-events-hub-page"></a>Použití stránky centra událostí Wingtip lístky
 
-Otevřete stránku Centrum událostí v prohlížeči (http:events.wingtip-mt.\<USER\>.trafficmanager.net)
+Otevřete stránku centra událostí v prohlížeči (http: Events. Wingtip-Mt.\<USER\>. trafficmanager.NET).
 
-#### <a name="using-catalog-database"></a>Použití databáze katalogu
+#### <a name="using-catalog-database"></a>Používání databáze katalogu
 
-Úplný seznam klientů a odpovídající databáze pro každého je k dispozici v katalogu. Je k dispozici zobrazení SQL, které spojuje název klienta s názvem databáze. Zobrazení pěkně ukazuje hodnotu rozšíření metadata, která je uložena v katalogu.
-- Zobrazení SQL je k dispozici v databázi katalogu klientů.
-- Název klienta je uložen v tabulce Klienti.
-- Název databáze je uložen v tabulkách Správy skládek.
+Úplný seznam tenantů a odpovídající databáze pro každou z nich jsou k dispozici v katalogu. Je k dispozici zobrazení SQL, které spojuje název tenanta s názvem databáze. Přehledně ukazuje hodnotu rozšíření metadat, která jsou uložena v katalogu.
+- Zobrazení SQL je k dispozici v databázi tenantcatalog.
+- Název tenanta je uložený v tabulce tenantů.
+- Název databáze je uložený v tabulkách pro správu horizontálních oddílů.
 
-1. V SQL Server Management Studio (SSMS), připojte se k serveru klientů na **catalog-mt USER\<\>.database.windows.net**, s Login = **developer**, a Heslo = P **\@smemeč1**
+1. V SQL Server Management Studio (SSMS) se připojte k serveru tenantů v **katalogu – Mt.\<User\>. Database.Windows.NET**s přihlašovacími údaji = **Developer**a Password = **P ssword1\@**
 
     ![Dialogové okno připojení SSMS](media/saas-multitenantdb-provision-and-catalog/SSMSConnection.png)
 
-2. V Průzkumníku objektů SSMS přejděte zobrazení v databázi *katalogu klientů.*
+2. V Průzkumník objektů SSMS přejděte do zobrazení v databázi *tenantcatalog* .
 
-3. Klikněte pravým tlačítkem myši na zobrazení *TenantsExtended* a zvolte **Vybrat prvních 1000 řádků**. Všimněte si mapování mezi názvem klienta a databáze pro různé klienty.
+3. Klikněte pravým tlačítkem na *TenantsExtended* zobrazení a zvolte **Vybrat prvních 1000 řádků**. Všimněte si mapování mezi názvem klienta a databází pro různé klienty.
 
-    ![RozšířenéTenants zobrazení v SSMS](media/saas-multitenantdb-provision-and-catalog/extendedtenantsview.png)
+    ![Zobrazení ExtendedTenants v SSMS](media/saas-multitenantdb-provision-and-catalog/extendedtenantsview.png)
 
 ## <a name="other-provisioning-patterns"></a>Další způsoby zřizování
 
@@ -252,19 +252,19 @@ Tato část popisuje další zajímavé vzory zřizování.
 
 #### <a name="pre-provisioning-databases-in-elastic-pools"></a>Předběžné zřizování databází v elastických fondech
 
-Vzor předběžnézřivací využití skutečnosti, že při použití elastických fondů fakturace je pro fond není databází. Databáze tedy mohou být přidány do elastického fondu dříve, než jsou potřeba bez dodatečných nákladů. Toto předběžné zobrazení výrazně zkracuje dobu, která je čas emitována do databáze. Počet předem zřízených databází lze upravit podle potřeby zachovat vyrovnávací paměť vhodnou pro předpokládanou míru zřizování.
+Vzor předběžného zřizování zneužije skutečnost, že při použití elastických fondů je faktura pro fond nikoli databáze. Proto je možné databáze přidat do elastického fondu, aby byly potřeba, aniž by to mělo za sebou dodatečné náklady. Tato předběžná revize významně zkracuje čas potřebný k zřízení tenanta v databázi. Počet databází, které jsou předem zřízené, se dá upravit podle potřeby, aby se zajistila vyrovnávací paměť vhodná pro předpokládanou rychlost zřizování.
 
 #### <a name="auto-provisioning"></a>Automatické zřizování
 
-Ve vzoru automatického zřizování se vyhrazená zřizovací služba používá k automatickému zřizování serverů, fondů a databází podle potřeby. Tato automatizace zahrnuje předběžné zřizování databází v elastických fondech. A pokud databáze jsou vyřazeny z provozu a odstraněny, mezery, které vytvoří v elastických fondech může být vyplněna zřizovací služby podle potřeby.
+Ve vzorech automatického zřizování se vyhrazená služba zřizování používá ke zřízení serverů, fondů a databází automaticky podle potřeby. Tato automatizace zahrnuje předběžné zřizování databází v elastických fondech. A pokud jsou databáze vyřazeny z provozu a odstraněny, mezery vytvořené v elastických fondech mohou být podle potřeby vyplněny službou zřizování.
 
-Tento typ automatizované služby může být jednoduchý nebo složitý. Automatizace může například zpracovat zřizování napříč více zeměpisnými oblastmi a může nastavit geografickou replikaci pro zotavení po havárii. Se vzorem automatického zřizování by klientská aplikace nebo skript odeslaly požadavek na zřizování do fronty, která má být zpracována zřizovací službou. Skript by pak dotazování zjistit dokončení. Pokud se používá předběžné zřizování, požadavky by byly zpracovány rychle, zatímco služba na pozadí by spravovala zřizování náhradní databáze.
+Tento typ automatizované služby může být jednoduchý nebo složitý. Automatizace může například zvládnout zřizování napříč několika geografickými oblastmi a může nastavit geografickou replikaci pro zotavení po havárii. Pomocí vzoru automatického zřizování odešle klientská aplikace nebo skript požadavek na zřízení do fronty, kterou má zpracovat služba zřizování. Skript by se pak mohl dotázat, aby se zjistilo dokončení. Při použití předběžného zřizování se požadavky budou zpracovávat rychle, zatímco služba na pozadí by spravovala zřizování náhradní databáze.
 
 ## <a name="additional-resources"></a>Další zdroje
 
 <!-- - Additional [tutorials that build upon the Wingtip SaaS application](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)-->
 - [Klientská knihovna Elastic Database](sql-database-elastic-database-client-library.md)
-- [Ladění skriptů v prostředí Windows PowerShell ISE](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)
+- [Postup ladění skriptů v Integrované skriptovací prostředí (ISE) v prostředí Windows PowerShell](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)
 
 
 ## <a name="next-steps"></a>Další kroky
@@ -272,9 +272,9 @@ Tento typ automatizované služby může být jednoduchý nebo složitý. Automa
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Zřízení jednoho nového klienta do sdílené databáze s více klienty a vlastní databáze
+> * Zřízení jednoho nového tenanta do sdílené databáze s více klienty a její vlastní databáze
 > * Zřídit dávku dalších tenantů.
-> * Krokovat podrobnosti zřizování klientů a jejich registraci do katalogu
+> * Projděte si podrobné informace o zřizování klientů a jejich registraci do katalogu.
 
-Vyzkoušejte [kurz sledování výkonu](saas-multitenantdb-performance-monitoring.md).
+Vyzkoušejte si [kurz k monitorování výkonu](saas-multitenantdb-performance-monitoring.md).
 
