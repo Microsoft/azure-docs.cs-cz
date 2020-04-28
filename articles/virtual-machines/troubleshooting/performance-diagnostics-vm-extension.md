@@ -1,6 +1,6 @@
 ---
-title: Rozšíření virtuálního počítače Azure Performance Diagnostics pro Windows| Dokumenty společnosti Microsoft
-description: Představuje rozšíření virtuálního počítače Azure Performance Diagnostics pro Windows.
+title: Rozšíření virtuálního počítače Azure Performance Diagnostics pro Windows | Microsoft Docs
+description: Zavádí rozšíření virtuálního počítače Azure Performance Diagnostics pro Windows.
 services: virtual-machines-windows'
 documentationcenter: ''
 author: genlin
@@ -14,25 +14,25 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 6f104fc6513874bfef5f4bf9fe7f536c3e3d69cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71057542"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Rozšíření virtuálních počítačů pro Windows pro diagnostiku výkonu Azure
 
-Rozšíření virtuálních aplikací Azure Performance Diagnostics pomáhá shromažďovat diagnostická data výkonu z virtuálních počítačů s Windows. Rozšíření provádí analýzu a poskytuje zprávu o zjištění a doporučení k identifikaci a řešení problémů s výkonem na virtuálním počítači. Toto rozšíření nainstaluje nástroj pro odstraňování potíží s názvem [PerfInsights](https://aka.ms/perfinsights).
+Rozšíření virtuálních počítačů Azure Performance Diagnostics pomáhá shromažďovat diagnostická data o výkonu z virtuálních počítačů s Windows. Rozšíření provádí analýzu a poskytuje zprávu o zjištěních a doporučeních pro identifikaci a řešení problémů s výkonem na virtuálním počítači. Toto rozšíření nainstaluje nástroj pro řešení potíží s názvem [PerfInsights](https://aka.ms/perfinsights).
 
 > [!NOTE]
-> Pokud chcete spustit diagnostiku na vašem virtuálním počítači z portálu Azure pro neklasické virtuální počítače, doporučujeme použít nové prostředí. Další informace najdete [v tématu Diagnostika výkonu pro virtuální počítače Azure.](performance-diagnostics.md) 
+> Pokud chcete na svém VIRTUÁLNÍm počítači spustit diagnostiku z Azure Portal pro jiné než klasické virtuální počítače, doporučujeme použít nové prostředí. Další informace najdete v tématu [Diagnostika výkonu pro virtuální počítače Azure](performance-diagnostics.md) . 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Toto rozšíření lze nainstalovat do systému Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 a Windows Server 2016. Může být také nainstalován na Windows 8.1 a Windows 10.
+Toto rozšíření se dá nainstalovat na Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 a Windows Server 2016. Dá se taky nainstalovat na Windows 8.1 a Windows 10.
 
 ## <a name="extension-schema"></a>Schéma rozšíření
-Následující JSON zobrazuje schéma pro rozšíření virtuálního počítače diagnostiky výkonu Azure. Toto rozšíření vyžaduje název a klíč pro účet úložiště pro uložení výstupu diagnostiky a sestavy. Tyto hodnoty jsou citlivé. Klíč účtu úložiště by měl být uložen uvnitř konfigurace chráněného nastavení. Data nastavení chráněné rozšířením virtuálního počítače Azure jsou šifrovaná a dešifrují se jenom na cílovém virtuálním počítači. Všimněte si, že **storageAccountName** a **storageAccountKey** rozlišují malá a velká písmena. Další požadované parametry jsou uvedeny v následující části.
+Následující JSON ukazuje schéma pro rozšíření virtuálního počítače Azure Performance Diagnostics. Toto rozšíření vyžaduje název a klíč účtu úložiště pro uložení výstupu a sestavy diagnostiky. Tyto hodnoty jsou citlivé. Klíč účtu úložiště by měl být uložený v konfiguraci chráněného nastavení. Data nastavení chráněná rozšířením virtuálního počítače Azure jsou šifrovaná a v cílovém virtuálním počítači se dešifrují jenom. Všimněte si, že **storageAccountName** a **storageAccountKey** rozlišují velká a malá písmena. Další požadované parametry jsou uvedeny v následující části.
 
 ```JSON
     {
@@ -66,61 +66,61 @@ Následující JSON zobrazuje schéma pro rozšíření virtuálního počítač
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-|   **Název**   |**Hodnota / Příklad**|       **Popis**      |
+|   **Název**   |**Hodnota/příklad**|       **Popis**      |
 |--------------|-------------------|----------------------------|
 |apiVersion|2015-06-15|Verze rozhraní API.
-|vydavatel|Diagnostika Microsoft.Azure.Performance.Diagnostics|Obor názvů vydavatele pro rozšíření.
-|type|AzurePerformanceDiagnostics|Typ rozšíření virtuálního soudu.
+|vydavatel|Microsoft. Azure. Performance. Diagnostics|Obor názvů vydavatele pro rozšíření.
+|type|AzurePerformanceDiagnostics|Typ rozšíření virtuálního počítače
 |typeHandlerVersion|1.0|Verze obslužné rutiny rozšíření.
-|performanceScenario|Základní|Scénář výkonu, pro který chcete zachytit data. Platné hodnoty jsou: **základní**, **vmslow**, **azurefiles**a **vlastní**.
-|traceDurationInSeconds|300|Doba trvání trasování, pokud jsou vybrány některé z možností trasování.
-|perfCounterTrace|p|Možnost povolit trasování čítače výkonu. Platné hodnoty jsou **p** nebo prázdná hodnota. Pokud nechcete zachytit toto trasování, ponechte hodnotu jako prázdnou.
-|networkTrace|n|Možnost povolit trasování v síti. Platné hodnoty jsou **n** nebo prázdná hodnota. Pokud nechcete zachytit toto trasování, ponechte hodnotu jako prázdnou.
-|xperfTrace|x|Možnost povolit trasování XPerf. Platné hodnoty jsou **x** nebo prázdná hodnota. Pokud nechcete zachytit toto trasování, ponechte hodnotu jako prázdnou.
-|trasování storPort|s|Možnost povolit trasování StorPort. Platné hodnoty jsou **s** nebo prázdná hodnota. Pokud nechcete zachytit toto trasování, ponechte hodnotu jako prázdnou.
-|srČíslo|123452016365929|Číslo lístku podpory, pokud je k dispozici. Pokud ji nemáte, ponechejte hodnotu prázdnou.
-|requestTimeUtc|2017-09-28T22:08:53.736Z|Aktuální čas data v utc. Pokud používáte portál k instalaci tohoto rozšíření, není nutné zadat tuto hodnotu.
-|resourceId|/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}|Jedinečný identifikátor virtuálního soudu.
-|storageAccountName|mystorageaccount|Název účtu úložiště pro uložení protokolů diagnostiky a výsledků.
-|storageAccountKey|lDuVvxuZB28NNP... hAiRF3voADxLBTcc==|Klíč pro účet úložiště.
+|performanceScenario|Basic|Scénář výkonu, pro který mají být zachycena data. Platné hodnoty jsou: **Basic**, **vmslow**, **azurefiles**a **Custom**.
+|traceDurationInSeconds|300|Doba trvání trasování, pokud je vybrána kterákoli z možností trasování.
+|perfCounterTrace|p|Možnost pro povolení trasování čítače výkonu. Platné hodnoty jsou hodnota **p** nebo prázdná. Pokud toto trasování nechcete zachytit, ponechte hodnotu prázdnou.
+|networkTrace|n|Možnost pro povolení trasování sítě. Platné hodnoty jsou **n** nebo prázdná hodnota. Pokud toto trasování nechcete zachytit, ponechte hodnotu prázdnou.
+|xperfTrace|x|Možnost, která povolí trasování XPerf. Platné hodnoty jsou **x** nebo prázdná hodnota. Pokud toto trasování nechcete zachytit, ponechte hodnotu prázdnou.
+|storPortTrace|s|Možnost pro povolení trasování StorPort. Platné hodnoty mají hodnotu **s** nebo je prázdná. Pokud toto trasování nechcete zachytit, ponechte hodnotu prázdnou.
+|srNumber|123452016365929|Číslo lístku podpory, pokud je k dispozici. Pokud ho nemáte, nechte tuto hodnotu prázdnou.
+|requestTimeUtc|2017-09-28T22:08:53.736 Z|Aktuální datum a čas ve standardu UTC. Pokud používáte portál k instalaci tohoto rozšíření, nemusíte tuto hodnotu zadávat.
+|resourceId|/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}|Jedinečný identifikátor virtuálního počítače
+|storageAccountName|mystorageaccount|Název účtu úložiště, do kterého se mají ukládat diagnostické protokoly a výsledky.
+|storageAccountKey|lDuVvxuZB28NNP... hAiRF3voADxLBTcc = =|Klíč pro účet úložiště
 
 ## <a name="install-the-extension"></a>Instalace rozšíření
 
-Podle následujících pokynů nainstalujte rozšíření na virtuální počítače s Windows:
+Pokud chcete nainstalovat rozšíření na virtuální počítače s Windows, postupujte podle těchto pokynů:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
-2. Vyberte virtuální počítač, do kterého chcete toto rozšíření nainstalovat.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+2. Vyberte virtuální počítač, na který chcete nainstalovat toto rozšíření.
 
-    ![Snímek obrazovky s portálem Azure se zvýrazněnou možností Virtuální počítače](media/performance-diagnostics-vm-extension/select-the-virtual-machine.png)
-3. Vyberte okno **Rozšíření** a vyberte **Přidat**.
+    ![Snímek obrazovky Azure Portal s zvýrazněnými virtuálními počítači](media/performance-diagnostics-vm-extension/select-the-virtual-machine.png)
+3. Vyberte okno **rozšíření** a vyberte **Přidat**.
 
-    ![Snímek obrazovky s možností rozšíření se zvýrazněnou možností Přidat](media/performance-diagnostics-vm-extension/select-extensions.png)
-4. Vyberte **Diagnostika výkonu Azure**, zkontrolujte podmínky a vyberte **Vytvořit**.
+    ![Snímek obrazovky s oknem rozšíření se zvýrazněným příoknom přidat](media/performance-diagnostics-vm-extension/select-extensions.png)
+4. Vyberte **Azure Performance Diagnostics**, zkontrolujte podmínky a ujednání a vyberte **vytvořit**.
 
-    ![Snímek obrazovky Nový prostředek se zvýrazněnou možností Diagnostika výkonu Azure](media/performance-diagnostics-vm-extension/create-azure-performance-diagnostics-extension.png)
-5. Zadejte hodnoty parametrů pro instalaci a kliknutím na **ok** nainstalujte rozšíření. Další informace o podporovaných scénářích naleznete v [tématu Použití perfinsights](how-to-use-perfinsights.md#supported-troubleshooting-scenarios). 
+    ![Snímek obrazovky s novým prostředkem s zvýrazněnou diagnostikou výkonu Azure](media/performance-diagnostics-vm-extension/create-azure-performance-diagnostics-extension.png)
+5. Zadejte hodnoty parametrů pro instalaci a pro instalaci rozšíření vyberte **OK** . Další informace o podporovaných scénářích najdete v tématu [Jak používat PerfInsights](how-to-use-perfinsights.md#supported-troubleshooting-scenarios). 
 
-    ![Snímek obrazovky s dialogovým oknem Instalovat rozšíření](media/performance-diagnostics-vm-extension/install-the-extension.png)
-6. Po úspěšné instalaci se zobrazí zpráva otomto stavu.
+    ![Snímek obrazovky dialogového okna Instalace rozšíření](media/performance-diagnostics-vm-extension/install-the-extension.png)
+6. Po úspěšném dokončení instalace se zobrazí zpráva s informacemi o tomto stavu.
 
-    ![Snímek obrazovky s oznámením o zřizování proběhlo úspěšně](media/performance-diagnostics-vm-extension/provisioning-succeeded-message.png)
+    ![Snímek obrazovky se zprávou o úspěšném zřízení](media/performance-diagnostics-vm-extension/provisioning-succeeded-message.png)
 
     > [!NOTE]
-    > Rozšíření se spustí, když zřizování proběhlo úspěšně. Trvá dvě minuty nebo méně pro základní scénář. Pro jiné scénáře prochází dobu trvání zadanou během instalace.
+    > Rozšíření se spustí po úspěšném zřízení. Pro základní scénář trvá více než dvě minuty. V ostatních scénářích se spouští během doby určené během instalace.
 
 ## <a name="remove-the-extension"></a>Odebrání rozšíření
-Pokud chcete rozšíření odebrat z virtuálního počítače, postupujte takto:
+K odebrání rozšíření z virtuálního počítače použijte tento postup:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com), vyberte virtuální počítač, ze kterého chcete odebrat toto rozšíření a pak vyberte okno **Rozšíření.** 
-2. Vyberte položku (**...**) pro položku rozšíření diagnostiky výkonu ze seznamu a vyberte **odinstalovat**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com), vyberte virtuální počítač, ze kterého chcete odebrat toto rozšíření, a pak vyberte okno **rozšíření** . 
+2. V seznamu vyberte (**...**) pro položku rozšíření pro diagnostiku výkonu a vyberte **odinstalovat**.
 
-    ![Snímek obrazovky s možností rozšíření se zvýrazněnou možností Odinstalovat](media/performance-diagnostics-vm-extension/uninstall-the-extension.png)
+    ![Snímek obrazovky s oknem rozšíření se zvýrazněnou možností odinstalovat](media/performance-diagnostics-vm-extension/uninstall-the-extension.png)
 
     > [!NOTE]
-    > Můžete také vybrat položku rozšíření a vybrat možnost **Odinstalovat.**
+    > Můžete také vybrat položku rozšíření a vybrat možnost **odinstalovat** .
 
 ## <a name="template-deployment"></a>Nasazení šablon
-Rozšíření virtuálních automatů Azure se dá nasadit pomocí šablon Azure Resource Manager. Schéma JSON popsané v předchozí části lze použít v šabloně Azure Resource Manager. To spustí rozšíření virtuálního počítače Diagnostika výkonu Azure během nasazení šablony Azure Resource Manager. Zde je ukázková šablona:
+Rozšíření virtuálních počítačů Azure je možné nasadit pomocí šablon Azure Resource Manager. Schéma JSON popsané v předchozí části se dá použít v šabloně Azure Resource Manager. Tím se během nasazování šablony Azure Resource Manager spustí rozšíření virtuálního počítače Azure Performance Diagnostics. Tady je Ukázková šablona:
 
 ```
 {
@@ -208,8 +208,8 @@ Rozšíření virtuálních automatů Azure se dá nasadit pomocí šablon Azure
 }
 ```
 
-## <a name="powershell-deployment"></a>Nasazení PowerShellu
-Příkaz `Set-AzVMExtension` se dá použít k nasazení rozšíření virtuálního počítače Azure Performance Diagnostics do existujícího virtuálního počítače.
+## <a name="powershell-deployment"></a>Nasazení prostředí PowerShell
+`Set-AzVMExtension` Příkaz se dá použít k nasazení rozšíření virtuálního počítače Azure Performance Diagnostics do existujícího virtuálního počítače.
 
 PowerShell
 
@@ -228,31 +228,31 @@ Set-AzVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
     -Location WestUS
 ```
 
-## <a name="information-on-the-data-captured"></a>Informace o zachycených údajích
-Nástroj PerfInsights shromažďuje různé protokoly, konfigurace a diagnostická data, v závislosti na vybraném scénáři. Další informace naleznete v [dokumentaci perfInsights](https://aka.ms/perfinsights).
+## <a name="information-on-the-data-captured"></a>Informace o zachycených datech
+Nástroj PerfInsights shromažďuje různé protokoly, konfiguraci a diagnostická data v závislosti na vybraném scénáři. Další informace najdete v [dokumentaci k PerfInsights](https://aka.ms/perfinsights).
 
 ## <a name="view-and-share-the-results"></a>Zobrazení a sdílení výsledků
 
-Výstup z rozšíření lze nalézt v souboru ZIP, který byl odeslán do účtu úložiště určeného během instalace a je sdílen po dobu 30 dnů pomocí [sdílených přístupových podpisů (SAS).](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) Tento soubor zip obsahuje diagnostické protokoly a zprávu s nálezy a doporučeními. Odkaz SAS na výstupní soubor ZIP lze nalézt uvnitř textového souboru s názvem *zipfilename*_saslink.txt pod složkou **C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics.AzurePerformanceDiagnostics\\\<verze>**. Každý, kdo má tento odkaz je schopen stáhnout soubor zip.
+Výstup z rozšíření najdete v souboru zip, který jste nahráli do účtu úložiště zadaného během instalace a který se sdílí po dobu 30 dnů pomocí [sdílených přístupových podpisů (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md). Tento soubor zip obsahuje diagnostické protokoly a sestavu s výsledky a doporučeními. Odkaz SAS na výstupní soubor zip najdete v textovém souboru s názvem *zipfilename*_saslink. txt ve složce **\\\<C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics verze>**. Kdokoli, kdo má tento odkaz, může stáhnout soubor zip.
 
-Chcete-li pomoci pracovníka podpory při práci na lístku podpory, může společnost Microsoft použít tento odkaz SAS ke stažení diagnostických dat.
+Aby mohl pracovník podpory při práci na lístku podpory pracovat, mohl vám toto propojení SAS využít ke stažení diagnostických dat.
 
-Chcete-li sestavu zobrazit, extrahujte soubor zip a otevřete soubor **PerfInsights Report.html.**
+Chcete-li zobrazit sestavu, rozbalte soubor zip a otevřete soubor **PerfInsights Report. html** .
 
-Měli byste být také schopni stáhnout soubor zip přímo z portálu výběrem rozšíření.
+Soubor zip byste si měli také stáhnout přímo z portálu tak, že vyberete rozšíření.
 
-![Snímek obrazovky s podrobným stavem Diagnostiky výkonu](media/performance-diagnostics-vm-extension/view-detailed-status.png)
+![Snímek obrazovky s podrobným stavem diagnostiky výkonu](media/performance-diagnostics-vm-extension/view-detailed-status.png)
 
 > [!NOTE]
-> Odkaz SAS zobrazený na portálu nemusí někdy fungovat. To může být způsobeno poškozeným url během operací kódování a dekódování. Místo toho můžete získat odkaz přímo ze souboru *_saslink.txt z virtuálního soudu.
+> Odkaz SAS zobrazený na portálu nemusí někdy fungovat. To může být způsobeno chybnou adresou URL během operací kódování a dekódování. Místo toho můžete z virtuálního počítače získat odkaz přímo ze souboru * _saslink. txt.
 
-## <a name="troubleshoot-and-support"></a>Poradce při potížích a podpora
+## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-- Stav nasazení rozšíření (v oznamovací oblasti) může zobrazit "Nasazení probíhá" i v případě, že rozšíření je úspěšně zřídit.
+- Stav nasazení rozšíření (v oznamovací oblasti) může ukazovat "probíhá nasazení", i když je rozšíření úspěšně zřízené.
 
-    Tento problém lze bezpečně ignorovat, tak dlouho, dokud stav rozšíření označuje, že rozšíření je úspěšně zřízena.
-- Některé problémy můžete vyřešit během instalace pomocí protokolů rozšíření. Výstup spuštění rozšíření je zaznamenán do souborů nalezených v následujícím adresáři:
+    Tento problém se dá bezpečně ignorovat, pokud stav rozšíření indikuje, že se rozšíření úspěšně zřídilo.
+- Během instalace můžete vyřešit některé problémy pomocí protokolů rozšíření. Výstup spuštění rozšíření se protokoluje do souborů, které se nacházejí v následujícím adresáři:
 
         C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\<version>
 
-Pokud potřebujete další pomoc v libovolném bodě v tomto článku, můžete kontaktovat odborníky Azure na [Fóra MSDN Azure a přetečení zásobníku](https://azure.microsoft.com/support/forums/). Případně můžete soubor incidentu podpory Azure. Přejděte na [web podpory Azure](https://azure.microsoft.com/support/options/)a vyberte Získat **podporu**. Informace o používání podpory Azure načtete v [nejčastějších dotazech k podpoře Microsoft Azure](https://azure.microsoft.com/support/faq/).
+Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete kontaktovat odborníky na Azure na [webu MSDN Azure a Stack Overflow fóra](https://azure.microsoft.com/support/forums/). Případně můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/)a vyberte **získat podporu**. Informace o použití podpory Azure najdete v tématu [Nejčastější dotazy k podpoře pro Microsoft Azure](https://azure.microsoft.com/support/faq/).

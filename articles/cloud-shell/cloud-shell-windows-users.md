@@ -1,5 +1,5 @@
 ---
-title: Azure Cloud Shell pro uživatele Windows | Dokumenty společnosti Microsoft
+title: Azure Cloud Shell pro uživatele Windows | Microsoft Docs
 description: Příručka pro uživatele bez znalostí systémů Linux
 services: azure
 documentationcenter: ''
@@ -15,29 +15,29 @@ ms.topic: article
 ms.date: 08/03/2018
 ms.author: damaerte
 ms.openlocfilehash: 4fc4f6523eb19294cabdf6b5b910dd346a877502
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67204143"
 ---
 # <a name="powershell-in-azure-cloud-shell-for-windows-users"></a>PowerShell ve službě Azure Cloud Shell pro uživatele Windows
 
-V květnu 2018 byly v Prostředí PowerShell v Azure Cloud [Shellu oznámeny](https://azure.microsoft.com/blog/pscloudshellrefresh/) změny.
-Prostředí PowerShellu ve službě Azure Cloud Shell teď spouští [PowerShell Core 6](https://github.com/powershell/powershell) v prostředí Linuxu.
-S touto změnou může být některé rozdíly v prostředí PowerShell v prostředí Cloud ve srovnání s tím, co se očekává v prostředí Windows PowerShell.
+V květnu 2018 byly změny [oznámeny](https://azure.microsoft.com/blog/pscloudshellrefresh/) prostředí PowerShell v Azure Cloud Shell.
+Prostředí PowerShell v Azure Cloud Shell teď spouští [PowerShell Core 6](https://github.com/powershell/powershell) v prostředí Linux.
+V důsledku této změny můžou v prostředí PowerShell v Cloud Shell v porovnání s tím, co se očekává v prostředí Windows PowerShell, několik rozdílů.
 
-## <a name="file-system-case-sensitivity"></a>Rozlišování malých a velkých písmen systému souborů
+## <a name="file-system-case-sensitivity"></a>Rozlišování velkých a malých písmen v systému souborů
 
-Systém souborů je v systému Windows nerozlišována malá a velká písmena, zatímco v systému Linux je systém souborů rozlišován malá a velká písmena.
-Dříve `file.txt` `FILE.txt` a byly považovány za stejný soubor, ale nyní jsou považovány za různé soubory.
-V systému souborů `tab-completing` musí být použito správné pouzdro.
-Prostředí PowerShell specifické, `tab-completing` jako jsou názvy rutin, parametry a hodnoty, nejsou malá a velká písmena.
+Systém souborů rozlišuje velká a malá písmena v systému Windows, zatímco v systému Linux systém souborů rozlišuje velká a malá písmena.
+Dříve `file.txt` a `FILE.txt` byly považovány za stejný soubor, ale nyní jsou považovány za jiné soubory.
+V systému souborů musí být použita `tab-completing` vhodná velká a malá písmena.
+Prostředí specifická pro prostředí PowerShell, `tab-completing` jako jsou názvy rutin, parametry a hodnoty, nerozlišují velká a malá písmena.
 
-## <a name="windows-powershell-aliases-vs-linux-utilities"></a>Aliasy prostředí Windows PowerShell vs linuxové nástroje
+## <a name="windows-powershell-aliases-vs-linux-utilities"></a>Aliasy Windows PowerShellu vs nástroje pro Linux
 
-Některé existující aliasy prostředí PowerShell mají stejné názvy jako `cat``ls`předdefinované příkazy Linuxu, například , , `sort`, `sleep`atd. V PowerShell Core 6 aliasy, které se srazí s vestavěnými příkazy Linuxu byly odebrány.
-Níže jsou uvedeny běžné aliasy, které byly odstraněny, stejně jako jejich ekvivalentní příkazy:  
+Některé existující aliasy PowerShellu mají stejné názvy jako integrované příkazy pro Linux, `cat`například,`ls`, `sort`, `sleep`atd. V PowerShellu Core 6 se odebraly aliasy, které jsou v konfliktu s integrovanými příkazy pro Linux.
+Níže jsou uvedeny běžné aliasy, které byly odebrány, a také jejich ekvivalentní příkazy:  
 
 |Odstraněný alias   |Ekvivalentní příkaz   |
 |---|---|
@@ -51,22 +51,22 @@ Níže jsou uvedeny běžné aliasy, které byly odstraněny, stejně jako jejic
 |`sort`   | `Sort-Object` |
 |`wget`   | `Invoke-WebRequest` |
 
-## <a name="persisting-home"></a>Přetrvávající $HOME
+## <a name="persisting-home"></a>Trvalé $HOME
 
-Dřívější uživatelé mohli zachovat pouze skripty a další soubory v jejich Cloud Drive.
-Nyní je $HOME adresář uživatele také trvalý napříč relacemi.
+Starší uživatelé mohli zachovat jenom skripty a jiné soubory ve své cloudové jednotce.
+Nyní je $HOME adresář uživatele také trvale v rámci relací.
 
-## <a name="powershell-profile"></a>Profil prostředí PowerShell
+## <a name="powershell-profile"></a>Profil PowerShellu
 
-Ve výchozím nastavení není vytvořen profil prostředí PowerShell uživatele.
-Chcete-li vytvořit profil, `PowerShell` `$HOME/.config`vytvořte v části .
+Ve výchozím nastavení se profil PowerShell uživatele nevytvoří.
+Chcete-li vytvořit profil, vytvořte `PowerShell` v `$HOME/.config`adresáři.
 
 ```azurepowershell-interactive
 mkdir (Split-Path $profile.CurrentUserAllHosts)
 ```
 
-V `$HOME/.config/PowerShell`části můžete vytvářet `profile.ps1` soubory profilu `Microsoft.PowerShell_profile.ps1`- a/nebo .
+V `$HOME/.config/PowerShell`části můžete vytvořit své soubory profilu – `profile.ps1` a/nebo. `Microsoft.PowerShell_profile.ps1`
 
-## <a name="whats-new-in-powershell-core-6"></a>Co je nového v PowerShellcore 6
+## <a name="whats-new-in-powershell-core-6"></a>Co je nového v PowerShellu Core 6
 
-Další informace o tom, co je nového v PowerShellu Core 6, nalezni na [dokumenty powershellu](https://docs.microsoft.com/powershell/scripting/whats-new/what-s-new-in-powershell-core-60?view=powershell-6) a na blogový příspěvek [Začínáme s PowerShellem Core.](https://blogs.msdn.microsoft.com/powershell/2017/06/09/getting-started-with-powershell-core-on-windows-mac-and-linux/)
+Další informace o tom, co je v prostředí PowerShell Core 6 novinkou, najdete v blogovém příspěvku [PowerShellu](https://docs.microsoft.com/powershell/scripting/whats-new/what-s-new-in-powershell-core-60?view=powershell-6) a [Začínáme s jádrem prostředí PowerShell](https://blogs.msdn.microsoft.com/powershell/2017/06/09/getting-started-with-powershell-core-on-windows-mac-and-linux/) .

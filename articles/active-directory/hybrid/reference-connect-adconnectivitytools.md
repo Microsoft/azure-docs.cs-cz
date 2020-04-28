@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: AdconnectivityTools PowerShell Reference | Dokumenty společnosti Microsoft'
-description: Tento dokument obsahuje referenční informace pro modul PowerShell ADConnectivityTools.psm1.
+title: 'Azure AD Connect: Reference prostředí PowerShell ADConnectivityTools | Microsoft Docs'
+description: Tento dokument poskytuje referenční informace pro modul prostředí PowerShell ADConnectivityTools. psm1.
 author: billmath
 manager: daveba
 ms.service: active-directory
@@ -11,21 +11,21 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6b90ff82601acca1249c7d8c353944e39e89f95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "66473784"
 ---
-# <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect: ADConnectivityTools PowerShell Reference
+# <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect: Reference prostředí PowerShell ADConnectivityTools
 
-Následující dokumentace obsahuje referenční informace pro modul PowerShell ADConnectivityTools.psm1, který je součástí služby Azure AD Connect.
+Následující dokumentace obsahuje referenční informace pro modul ADConnectivityTools. psm1 PowerShell, který je součástí nástroje Azure AD Connect.
 
-## <a name="confirm-dnsconnectivity"></a>Potvrdit připojení dns
+## <a name="confirm-dnsconnectivity"></a>Potvrdit – DnsConnectivity
 
 ### <a name="synopsis"></a>SYNOPSE
 
-Detekuje místní problémy se službou Dns.
+Zjistí místní problémy DNS.
 
 ### <a name="syntax"></a>SYNTAXE
 
@@ -35,8 +35,8 @@ Confirm-DnsConnectivity [-Forest] <String> [-DCs] <Array> [-ReturnResultAsPSObje
 
 ### <a name="description"></a>POPIS
 
-Spustí místní testy připojení DNS.
-Aby bylo možné konfigurovat konektor služby Active Directory, musí mít uživatel překlad názvů pro doménovou strukturu, ke které se pokouší připojit, i v řadičích domény přidružených k této doménové struktuře.
+Spustí testy místních připojení DNS.
+Aby bylo možné konfigurovat konektor služby Active Directory, musí mít uživatel název ResolutionThe pro doménovou strukturu, ke které se pokouší připojit, a také v řadičích domény přidružených k této doménové struktuře.
 
 ### <a name="examples"></a>PŘÍKLADY
 
@@ -54,7 +54,7 @@ Confirm-DnsConnectivity -Forest "TEST.CONTOSO.COM"
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-forest"></a>-Les
+#### <a name="-forest"></a>– Doménová struktura
 
 Určuje název doménové struktury, proti které se má testovat.
 
@@ -70,9 +70,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-dcs"></a>-DC
+#### <a name="-dcs"></a>– Řadiče domény
 
-Zadejte řadiče domény, proti kterými se má testovat.
+Zadejte řadiče domény, pro které chcete testovat.
 
 ```yml
 Type: Array
@@ -88,8 +88,8 @@ Accept wildcard characters: False
 
 #### <a name="-returnresultaspsobject"></a>-ReturnResultAsPSObject
 
-Vrátí výsledek této diagnózy ve formě objektu PSObject.
-Není nutné při ruční interakci s tímto nástrojem.
+Vrátí výsledek této diagnostiky ve formě PSObject.
+Není nutné během ruční interakce s tímto nástrojem.
 
 ```yml
 Type: SwitchParameter
@@ -106,13 +106,13 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
-Další informace naleznete vhttps://go.microsoft.com/fwlink/?LinkID=113216)tématu about_CommonParameters ( .
+Další informace najdete v tématu about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="confirm-forestexists"></a>Potvrdit-ForestExists
+## <a name="confirm-forestexists"></a>Potvrdit – ForestExists
 
 ### <a name="synopsis"></a>SYNOPSE
 
-Určuje, zda existuje zadaná doménová struktura.
+Určuje, zda zadaná doménová struktura existuje.
 
 ### <a name="syntax"></a>SYNTAXE
 
@@ -122,7 +122,7 @@ Confirm-ForestExists [-Forest] <String> [<CommonParameters>]
 
 ### <a name="description"></a>POPIS
 
-Dotazuje se serveru DNS na adresy IP přidružené k doménové struktuře.
+Zadá dotaz na server DNS pro IP adresy přidružené k doménové struktuře.
 
 ### <a name="examples"></a>PŘÍKLADY
 
@@ -134,7 +134,7 @@ Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM"
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-forest"></a>-Les
+#### <a name="-forest"></a>– Doménová struktura
 
 Určuje název doménové struktury, proti které se má testovat.
 
@@ -153,17 +153,17 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
-Další informace naleznete vhttps://go.microsoft.com/fwlink/?LinkID=113216)tématu about_CommonParameters ( .
+Další informace najdete v tématu about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="confirm-functionallevel"></a>Potvrdit-funkčníúroveň
+## <a name="confirm-functionallevel"></a>Potvrdit – FunctionalLevel
 
 ### <a name="synopsis"></a>SYNOPSE
 
-Ověří úroveň funkčnosti doménové struktury služby AD.
+Ověří funkční úroveň doménové struktury AD.
 
 ### <a name="syntax"></a>SYNTAXE
 
-#### <a name="samaccount"></a>SamÚčet
+#### <a name="samaccount"></a>SamAccount
 
 ```
 Confirm-FunctionalLevel -Forest <String> [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
@@ -177,8 +177,8 @@ Confirm-FunctionalLevel -ForestFQDN <Forest> [-RunWithCurrentlyLoggedInUserCrede
 
 ### <a name="description"></a>POPIS
 
-Ověří, zda úroveň funkčnosti doménové struktury služby AD je stejná nebo větší než daná verze MinAdForestVersion (WindowsServer2003).
-Může být požadován účet (doména\uživatelské jméno) a heslo.
+Ověřuje, jestli je funkční úroveň doménové struktury služby AD stejná nebo větší než daná MinAdForestVersion (WindowsServer2003).
+Může být požadován účet (doména \ uživatelské_jméno) a heslo.
 
 ### <a name="examples"></a>PŘÍKLADY
 
@@ -202,9 +202,9 @@ Confirm-FunctionalLevel -ForestFQDN $ForestFQDN -RunWithCurrentlyLoggedInUserCre
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-forest"></a>-Les
+#### <a name="-forest"></a>– Doménová struktura
 
-Cílový les.
+Cílová doménová struktura.
 Výchozí hodnota je doménová struktura aktuálně přihlášeného uživatele.
 
 ```yml
@@ -219,9 +219,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-forestfqdn"></a>-ForestFQDN
+#### <a name="-forestfqdn"></a>– ForestFQDN
 
-Cílový objekt ForestFQDN.
+Cílový objekt ForestFQDN
 
 ```yml
 Type: Forest
@@ -237,7 +237,7 @@ Accept wildcard characters: False
 
 #### <a name="-runwithcurrentlyloggedinusercredentials"></a>-RunWithCurrentlyLoggedInUserCredentials
 
-Funkce bude používat pověření uživatele, který je aktuálně přihlášen v počítači, spíše než požadovat vlastní pověření od uživatele.
+Funkce použije přihlašovací údaje uživatele, který je aktuálně přihlášený k počítači, místo vyžádání vlastních přihlašovacích údajů od uživatele.
 
 ```yml
 Type: SwitchParameter
@@ -254,9 +254,9 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
-Další informace naleznete vhttps://go.microsoft.com/fwlink/?LinkID=113216)tématu about_CommonParameters ( .
+Další informace najdete v tématu about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="confirm-networkconnectivity"></a>Potvrdit připojení k síti
+## <a name="confirm-networkconnectivity"></a>Potvrdit – NetworkConnectivity
 
 ### <a name="synopsis"></a>SYNOPSE
 
@@ -272,8 +272,8 @@ Confirm-NetworkConnectivity [-DCs] <Array> [-SkipDnsPort] [-ReturnResultAsPSObje
 
 Spustí testy připojení k místní síti.
 
-Pro testy místní sítě musí být služba AAD Connect schopna komunikovat s pojmenovanými řadiči domény na portech 53 (DNS), 88 (Kerberos) a 389 (LDAP) Většina organizací spouštějí služby DNS na svých řadičích domény, což je důvod, proč je tento test aktuálně integrován.
-Port 53 by měl být přeskočen, pokud byl zadán jiný server DNS.
+V případě testů místních sítí musí být AAD Connect schopná komunikovat s pojmenovanými řadiči domény na portech 53 (DNS), 88 (Kerberos) a 389 (LDAP) Většina organizací spouští DNS na svých řadičích domény, což je důvod, proč je tento test aktuálně integrovaný.
+Pokud je zadaný jiný server DNS, měl by se přeskočit port 53.
 
 ### <a name="examples"></a>PŘÍKLADY
 
@@ -291,9 +291,9 @@ Confirm-NetworkConnectivity -DCs "MYDC1.CONTOSO.COM","MYDC2.CONTOSO.COM" -Verbos
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-dcs"></a>-DC
+#### <a name="-dcs"></a>– Řadiče domény
 
-Zadejte řadiče domény, proti kterými se má testovat.
+Zadejte řadiče domény, pro které chcete testovat.
 
 ```yml
 Type: Array
@@ -309,8 +309,8 @@ Accept wildcard characters: False
 
 #### <a name="-skipdnsport"></a>-SkipDnsPort
 
-Pokud uživatel nepoužívá služby DNS poskytované webem služby AD / řadičem domény přihlášení, může chtít přeskočit kontrolní port 53.
-Uživatel musí být stále schopen vyřešit _.ldap._tcp. \<forestfqdn,\> aby byla konfigurace konektoru služby Active Directory úspěšná.
+Pokud uživatel nepoužívá služby DNS poskytované lokalitou nebo přihlašovacím řadičem domény služby Active Directory, může chtít přeskočit kontrolu portu 53.
+Uživatel musí být stále schopný přeložit _. LDAP. _tcp. \<forestFqdn\> , aby se konfigurace konektoru služby Active Directory úspěšně zdařila.
 
 ```yml
 Type: SwitchParameter
@@ -326,8 +326,8 @@ Accept wildcard characters: False
 
 #### <a name="-returnresultaspsobject"></a>-ReturnResultAsPSObject
 
-Vrátí výsledek této diagnózy ve formě objektu PSObject.
-Není nutné při ruční interakci s tímto nástrojem.
+Vrátí výsledek této diagnostiky ve formě PSObject.
+Není nutné během ruční interakce s tímto nástrojem.
 
 ```yml
 Type: SwitchParameter
@@ -344,13 +344,13 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
-Další informace naleznete vhttps://go.microsoft.com/fwlink/?LinkID=113216)tématu about_CommonParameters ( .
+Další informace najdete v tématu about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="confirm-targetsarereachable"></a>Potvrdit-CíleJsou dosažitelné
+## <a name="confirm-targetsarereachable"></a>Potvrdit – TargetsAreReachable
 
 ### <a name="synopsis"></a>SYNOPSE
 
-Určuje, zda je daná doménová struktura a přidružené řadiče domény dosažitelné.
+Určuje, jestli je dostupná zadaná doménová struktura a její přidružené řadiče domény.
 
 ### <a name="syntax"></a>SYNTAXE
 
@@ -360,7 +360,7 @@ Confirm-TargetsAreReachable [-Forest] <String> [-DCs] <Array> [<CommonParameters
 
 ### <a name="description"></a>POPIS
 
-Spustí testy ping (zda počítač může dosáhnout cílového počítače prostřednictvím sítě a / nebo internetu)
+Spustí testy příkazu "testovat" (jestli se počítač může připojit k cílovému počítači přes síť nebo Internet).
 
 ### <a name="examples"></a>PŘÍKLADY
 
@@ -378,7 +378,7 @@ Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM"
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-forest"></a>-Les
+#### <a name="-forest"></a>– Doménová struktura
 
 Určuje název doménové struktury, proti které se má testovat.
 
@@ -394,9 +394,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-dcs"></a>-DC
+#### <a name="-dcs"></a>– Řadiče domény
 
-Zadejte řadiče domény, proti kterými se má testovat.
+Zadejte řadiče domény, pro které chcete testovat.
 
 ```yml
 Type: Array
@@ -413,17 +413,17 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
-Další informace naleznete vhttps://go.microsoft.com/fwlink/?LinkID=113216)tématu about_CommonParameters ( .
+Další informace najdete v tématu about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="confirm-validdomains"></a>Potvrdit-platné domény
+## <a name="confirm-validdomains"></a>Potvrdit – ValidDomains
 
 ### <a name="synopsis"></a>SYNOPSE
 
-Ověřte, zda jsou domény ve získaném doménovém právu domény doménové struktury domény dosažitelné
+Ověřte, jestli jsou domény v získaném plně kvalifikovaném názvu domény doménové struktury dostupné.
 
 ### <a name="syntax"></a>SYNTAXE
 
-#### <a name="samaccount"></a>SamÚčet
+#### <a name="samaccount"></a>SamAccount
 
 ```
 Confirm-ValidDomains [-Forest <String>] [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
@@ -437,8 +437,8 @@ Confirm-ValidDomains -ForestFQDN <Forest> [-RunWithCurrentlyLoggedInUserCredenti
 
 ### <a name="description"></a>POPIS
 
-Ověřte, zda jsou všechny domény ve získaném doménovém souboru Forest FQDN dosažitelné pokusem o načtení doménových guid ů a domaindn.
-Může být požadován účet (doména\uživatelské jméno) a heslo.
+Ověřte, že všechny domény v získaném plně kvalifikovaném názvu domény doménové struktury jsou dosažitelné při pokusu o načtení DomainGuid a DomainDN.
+Může být požadován účet (doména \ uživatelské_jméno) a heslo.
 
 ### <a name="examples"></a>PŘÍKLADY
 
@@ -462,9 +462,9 @@ Confirm-ValidDomains -ForestFQDN $ForestFQDN -RunWithCurrentlyLoggedInUserCreden
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-forest"></a>-Les
+#### <a name="-forest"></a>– Doménová struktura
 
-Cílový les.
+Cílová doménová struktura.
 
 ```yml
 Type: String
@@ -478,9 +478,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-forestfqdn"></a>-ForestFQDN
+#### <a name="-forestfqdn"></a>– ForestFQDN
 
-Cílový objekt ForestFQDN.
+Cílový objekt ForestFQDN
 
 ```yml
 Type: Forest
@@ -496,7 +496,7 @@ Accept wildcard characters: False
 
 #### <a name="-runwithcurrentlyloggedinusercredentials"></a>-RunWithCurrentlyLoggedInUserCredentials
 
-Funkce bude používat pověření uživatele, který je aktuálně přihlášen v počítači, spíše než požadovat vlastní pověření od uživatele.
+Funkce použije přihlašovací údaje uživatele, který je aktuálně přihlášený k počítači, místo vyžádání vlastních přihlašovacích údajů od uživatele.
 
 ```yml
 Type: SwitchParameter
@@ -513,13 +513,13 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
-Další informace naleznete vhttps://go.microsoft.com/fwlink/?LinkID=113216)tématu about_CommonParameters ( .
+Další informace najdete v tématu about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="confirm-validenterpriseadmincredentials"></a>Potvrdit validaptoznamenání podnik
+## <a name="confirm-validenterpriseadmincredentials"></a>Potvrdit – ValidEnterpriseAdminCredentials
 
 ### <a name="synopsis"></a>SYNOPSE
 
-Ověří, zda má uživatel pověření enterprise admin.
+Ověří, jestli má uživatel přihlašovací údaje podnikového správce.
 
 ### <a name="syntax"></a>SYNTAXE
 
@@ -529,8 +529,8 @@ Confirm-ValidEnterpriseAdminCredentials [-RunWithCurrentlyLoggedInUserCredential
 
 ### <a name="description"></a>POPIS
 
-Vyhledávání, pokud má zadaný uživatel pověření enterprise admin.
-Může být požadován účet (doména\uživatelské jméno) a heslo.
+Vyhledá, jestli má zadaný uživatel přihlašovací údaje podnikového správce.
+Může být požadován účet (doména \ uživatelské_jméno) a heslo.
 
 ### <a name="examples"></a>PŘÍKLADY
 
@@ -550,7 +550,7 @@ Confirm-ValidEnterpriseAdminCredentials -RunWithCurrentlyLoggedInUserCredentials
 
 #### <a name="-runwithcurrentlyloggedinusercredentials"></a>-RunWithCurrentlyLoggedInUserCredentials
 
-Funkce bude používat pověření uživatele, který je aktuálně přihlášen v počítači, spíše než požadovat vlastní pověření od uživatele.
+Funkce použije přihlašovací údaje uživatele, který je aktuálně přihlášený k počítači, místo vyžádání vlastních přihlašovacích údajů od uživatele.
 
 ```yml
 Type: SwitchParameter
@@ -567,7 +567,7 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
-Další informace naleznete vhttps://go.microsoft.com/fwlink/?LinkID=113216)tématu about_CommonParameters ( .
+Další informace najdete v tématu about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="get-domainfqdndata"></a>Get-DomainFQDNData
 
@@ -584,9 +584,9 @@ Get-DomainFQDNData [[-DomainFQDNDataType] <String>] [-RunWithCurrentlyLoggedInUs
 
 ### <a name="description"></a>POPIS
 
-Pokusí se získat objekt domainFQDN z poskytnutých pověření.
-Pokud domainFQDN je platný, DomainFQDNName nebo RootDomainName bude vrácena, v závislosti na volbě uživatele.
-Může být požadován účet (doména\uživatelské jméno) a heslo.
+Pokusí se získat objekt domainFQDN z poskytnutých přihlašovacích údajů.
+Pokud je domainFQDN platný, vrátí se DomainFQDNName nebo RootDomainName v závislosti na volbě uživatele.
+Může být požadován účet (doména \ uživatelské_jméno) a heslo.
 
 ### <a name="examples"></a>PŘÍKLADY
 
@@ -604,10 +604,10 @@ Get-DomainFQDNData -DomainFQDNDataType RootDomainName -RunWithCurrentlyLoggedInU
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-domainfqdndatatype"></a>-DomainFQDNTyp dat
+#### <a name="-domainfqdndatatype"></a>-DomainFQDNDataType
 
 Požadovaný druh dat, která budou načtena.
-V současné době omezena na "DomainFQDNName" nebo "RootDomainName".
+V současné době omezené na "DomainFQDNName" nebo "RootDomainName".
 
 ```yml
 Type: String
@@ -623,7 +623,7 @@ Accept wildcard characters: False
 
 #### <a name="-runwithcurrentlyloggedinusercredentials"></a>-RunWithCurrentlyLoggedInUserCredentials
 
-Funkce bude používat pověření uživatele, který je aktuálně přihlášen v počítači, spíše než požadovat vlastní pověření od uživatele.
+Funkce použije přihlašovací údaje uživatele, který je aktuálně přihlášený k počítači, místo vyžádání vlastních přihlašovacích údajů od uživatele.
 
 ```yml
 Type: SwitchParameter
@@ -637,7 +637,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-returnexceptiononerror"></a>-ReturnExceptionOnError ._-returnExceptionOnError .-returnExceptionOn
+#### <a name="-returnexceptiononerror"></a>-ReturnExceptionOnError
 
 Pomocný parametr používaný funkcí Start-NetworkConnectivityDiagnosisTools
 
@@ -656,9 +656,9 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
-Další informace naleznete vhttps://go.microsoft.com/fwlink/?LinkID=113216)tématu about_CommonParameters ( .
+Další informace najdete v tématu about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="get-forestfqdn"></a>Získat-ForestFQDN
+## <a name="get-forestfqdn"></a>Get-ForestFQDN
 
 ### <a name="synopsis"></a>SYNOPSE
 
@@ -672,8 +672,8 @@ Get-ForestFQDN [-Forest] <String> [-RunWithCurrentlyLoggedInUserCredentials] [<C
 
 ### <a name="description"></a>POPIS
 
-Pokusí se získat ForestFQDN z zadaných pověření.
-Může být požadován účet (doména\uživatelské jméno) a heslo.
+Pokusí se získat ForestFQDN ze zadaných přihlašovacích údajů.
+Může být požadován účet (doména \ uživatelské_jméno) a heslo.
 
 ### <a name="examples"></a>PŘÍKLADY
 
@@ -691,9 +691,9 @@ Get-ForestFQDN -Forest CONTOSO.MICROSOFT.COM -RunWithCurrentlyLoggedInUserCreden
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-forest"></a>-Les
+#### <a name="-forest"></a>– Doménová struktura
 
-Cílový les. Výchozí hodnota je doména aktuálně přihlášeného uživatele.
+Cílová doménová struktura. Výchozí hodnota je doména aktuálně přihlášeného uživatele.
 
 ```yml
 Type: String
@@ -709,7 +709,7 @@ Accept wildcard characters: False
 
 #### <a name="-runwithcurrentlyloggedinusercredentials"></a>-RunWithCurrentlyLoggedInUserCredentials
 
-Funkce bude používat pověření uživatele, který je aktuálně přihlášen v počítači, spíše než požadovat vlastní pověření od uživatele.
+Funkce použije přihlašovací údaje uživatele, který je aktuálně přihlášený k počítači, místo vyžádání vlastních přihlašovacích údajů od uživatele.
 
 ```yml
 Type: SwitchParameter
@@ -726,13 +726,13 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
-Další informace naleznete vhttps://go.microsoft.com/fwlink/?LinkID=113216)tématu about_CommonParameters ( .
+Další informace najdete v tématu about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="start-connectivityvalidation"></a>Ověřování start-connectivityValidation
+## <a name="start-connectivityvalidation"></a>Spustit – ConnectivityValidation
 
 ### <a name="synopsis"></a>SYNOPSE
 
-Hlavní funkce.
+Main – funkce
 
 ### <a name="syntax"></a>SYNTAXE
 
@@ -743,7 +743,7 @@ Start-ConnectivityValidation [-Forest] <String> [-AutoCreateConnectorAccount] <B
 
 ### <a name="description"></a>POPIS
 
-Spustí všechny dostupné mechanismy, které ověřují pověření služby AD, jsou platné.
+Spustí všechny dostupné mechanismy, které ověřují přihlašovací údaje služby AD.
 
 ### <a name="examples"></a>PŘÍKLADY
 
@@ -755,9 +755,9 @@ Start-ConnectivityValidation -Forest "test.contoso.com" -AutoCreateConnectorAcco
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-forest"></a>-Les
+#### <a name="-forest"></a>– Doménová struktura
 
-Cílový les.
+Cílová doménová struktura.
 
 ```yml
 Type: String
@@ -773,9 +773,9 @@ Accept wildcard characters: False
 
 #### <a name="-autocreateconnectoraccount"></a>-AutoCreateConnectorAccount
 
-Pro vlastní instalace: Příznak, který je $True, pokud uživatel zvolil "Vytvořit nový účet služby AD" v okně účtu doménové struktury služby AADConnect průvodce aadconnect.
-$False, pokud uživatel zvolil "Použít existující účet ad".
-Pro expresní instalace: Hodnota této proměnné musí být $True pro expresní instalace.
+Pro vlastní instalace: příznak, který se $True, pokud uživatel zvolil možnost "vytvořit nový účet služby AD" v průvodci účtem doménové struktury služby Active Directory v okně AADConnect.
+$False, jestli se uživatel rozhodl použít existující účet služby AD.
+Pro Expresní instalace: hodnota této proměnné musí být $True pro Expresní instalace.
 
 ```yml
 Type: Boolean
@@ -791,7 +791,7 @@ Accept wildcard characters: False
 
 #### <a name="-username"></a>-UserName
 
-Parametr, který předem vyplní pole Uživatelské jméno, když jsou požadována pověření uživatele.
+Parametr, který předem vyplní pole username při vyžádání přihlašovacích údajů uživatele.
 
 ```yml
 Type: String
@@ -808,13 +808,13 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
-Další informace naleznete vhttps://go.microsoft.com/fwlink/?LinkID=113216)tématu about_CommonParameters ( .
+Další informace najdete v tématu about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="start-networkconnectivitydiagnosistools"></a>Start-NetworkConnectivityDiagnosisTools
+## <a name="start-networkconnectivitydiagnosistools"></a>Spustit – NetworkConnectivityDiagnosisTools
 
 ### <a name="synopsis"></a>SYNOPSE
 
-Hlavní funkce pro testy připojení k síti.
+Hlavní funkce pro testy síťového připojení.
 
 ### <a name="syntax"></a>SYNTAXE
 
@@ -844,9 +844,9 @@ Start-NetworkConnectivityDiagnosisTools -Forest "TEST.CONTOSO.COM" -DCs "DC1.TES
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-forest"></a>-Les
+#### <a name="-forest"></a>– Doménová struktura
 
-Určuje název doménové struktury, proti které se má testovat.
+Určuje název doménové struktury, pro kterou se má testovat.
 
 ```yml
 Type: String
@@ -860,10 +860,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-credentials"></a>-Pověření
+#### <a name="-credentials"></a>– Pověření
 
-Uživatelské jméno a heslo uživatele, který je spuštěn test.
-Vyžaduje stejnou úroveň oprávnění, která je vyžadována ke spuštění Průvodce připojením Azure AD.
+Uživatelské jméno a heslo uživatele, který spouští test.
+Vyžaduje stejnou úroveň oprávnění, jaká je nutná ke spuštění Průvodce Azure AD Connect.
 
 ```yml
 Type: PSCredential
@@ -877,7 +877,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-logfilelocation"></a>-LogFile Umístění
+#### <a name="-logfilelocation"></a>-LogFileLocation
 
 Určuje umístění souboru protokolu, který bude obsahovat výstup této funkce.
 
@@ -893,9 +893,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-dcs"></a>-DC
+#### <a name="-dcs"></a>– Řadiče domény
 
-Zadejte řadiče domény, proti kterými se má testovat.
+Zadejte řadiče domény, pro které chcete testovat.
 
 ```yml
 Type: Array
@@ -909,9 +909,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-displayinformativemessage"></a>-DisplayInformativníZpráva
+#### <a name="-displayinformativemessage"></a>-DisplayInformativeMessage
 
-Příznak, který umožňuje zobrazení zprávy o účelu této funkce.
+Příznak, který umožňuje zobrazit zprávu o účelu této funkce.
 
 ```yml
 Type: SwitchParameter
@@ -927,8 +927,8 @@ Accept wildcard characters: False
 
 #### <a name="-returnresultaspsobject"></a>-ReturnResultAsPSObject
 
-Vrátí výsledek této diagnózy ve formě objektu PSObject.
-Není nutné specifikovat během ruční interakce s tímto nástrojem.
+Vrátí výsledek této diagnostiky ve formě PSObject.
+Není nutné zadávat během ruční interakce s tímto nástrojem.
 
 ```yml
 Type: SwitchParameter
@@ -944,8 +944,8 @@ Accept wildcard characters: False
 
 #### <a name="-validcredentials"></a>-ValidCredentials
 
-Označuje, zda jsou pověření, která uživatel zadali, platná.
-Není nutné specifikovat během ruční interakce s tímto nástrojem.
+Určuje, zda jsou pověření zadaná uživatelem platná.
+Není nutné zadávat během ruční interakce s tímto nástrojem.
 
 ```yml
 Type: SwitchParameter
@@ -962,4 +962,4 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
-Další informace naleznete vhttps://go.microsoft.com/fwlink/?LinkID=113216)tématu about_CommonParameters ( .
+Další informace najdete v tématu about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).

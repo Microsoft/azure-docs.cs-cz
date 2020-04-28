@@ -1,6 +1,6 @@
 ---
-title: Výměna šasi na zařízení řady StorSimple 8000 | Dokumenty společnosti Microsoft
-description: Popisuje, jak odebrat a vyměnit šasi pro primární skříň StorSimple nebo skříň EBOD.
+title: Výměna skříně na zařízení řady StorSimple 8000 | Microsoft Docs
+description: Popisuje, jak odebrat a nahradit skříň pro StorSimple primární skříň nebo skříň EBOD.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,47 +15,47 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 7dfc39f4d08c8a49d1564a0a5bd7e3ef4156e3fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61312441"
 ---
-# <a name="replace-the-chassis-on-your-storsimple-device"></a>Výměna šasi na zařízení StorSimple
+# <a name="replace-the-chassis-on-your-storsimple-device"></a>Výměna skříně na zařízení StorSimple
 ## <a name="overview"></a>Přehled
-Tento kurz vysvětluje, jak odebrat a nahradit šasi v zařízení řady StorSimple 8000. Model StorSimple 8100 je jedno skříňové zařízení (jeden podvozek), zatímco 8600 je zařízení s duálnískříní (dva podvozky). U modelu 8600 existují potenciálně dva podvozky, které by mohly selhat v zařízení: podvozek pro primární skříň nebo podvozek pro skříň EBOD.
+V tomto kurzu se dozvíte, jak odebrat a nahradit skříň v zařízení řady StorSimple 8000. Model StorSimple 8100 je jedno skříňové zařízení (jeden skříň), zatímco 8600 je zařízení se dvěma skříněmi (dva skříně). V případě modelu 8600 existuje potenciálně dva skříně, které by mohly selhat v zařízení: skříň pro primární skříň nebo skříň pro EBOD skříň.
 
-V obou případech je náhradní šasi dodávané společností Microsoft prázdné. Nebudou zahrnuty žádné napájecí a chladicí moduly (PCM), moduly řadiče, jednotky SSD, pevné disky (HDD) nebo moduly EBOD.
+Náhradní skříň, která je dodávána společností Microsoft, je v obou případech prázdná. Pro PCMs nejsou k dispozici žádné moduly napájení, moduly ovladačů, diskové jednotky Solid State (SSD), jednotky pevného disku (HDD) nebo moduly EBOD.
 
 > [!IMPORTANT]
-> Před vyjmutím a výměnou šasi si přečtěte bezpečnostní informace v [části Výměna hardwarové součásti StorSimple](storsimple-8000-hardware-component-replacement.md).
+> Než odeberete a nahradíte skříň, přečtěte si bezpečnostní informace v části [StorSimple hardwarové součásti výměna](storsimple-8000-hardware-component-replacement.md).
 
 
-## <a name="remove-the-chassis"></a>Vyjměte podvozek
-Chcete-li odebrat šasi na zařízení StorSimple, postupujte podle následujících kroků.
+## <a name="remove-the-chassis"></a>Odebrat skříň
+Pomocí následujících kroků odeberte skříň na zařízení StorSimple.
 
-#### <a name="to-remove-a-chassis"></a>Odebrání šasi
-1. Ujistěte se, že zařízení StorSimple je vypnuto a odpojeno od všech zdrojů napájení.
-2. Pokud je k dispozici, odeberte všechny síťové kabely a kabely SAS.
-3. Vyjměte jednotku ze stojanu.
-4. Odstraňte všechny jednotky a poznamenejte si sloty, ze kterých jsou odstraněny. Další informace naleznete [v tématu Remove the disk drive](storsimple-8000-disk-drive-replacement.md#remove-the-disk-drive).
-5. Ve skříni EBOD (pokud se jedná o šasi, které selhalo), odeberte moduly řadiče EBOD. Další informace naleznete [v tématu Remove an EBOD controller](storsimple-8000-ebod-controller-replacement.md#remove-an-ebod-controller).
+#### <a name="to-remove-a-chassis"></a>Odebrání skříně
+1. Ujistěte se, že je zařízení StorSimple vypnuté a odpojené ze všech zdrojů napájení.
+2. Odeberte všechny kabely sítě a SAS, pokud jsou k dispozici.
+3. Odeberte jednotku ze stojanu.
+4. Odeberte jednotlivé jednotky a poznamenejte si sloty, ze kterých byly odebrány. Další informace najdete v tématu [Odebrání diskové jednotky](storsimple-8000-disk-drive-replacement.md#remove-the-disk-drive).
+5. V EBOD skříni (Pokud se jedná o skříň, která selhala) odeberte moduly řadiče EBOD. Další informace najdete v tématu [Odebrání eBOD kontroleru](storsimple-8000-ebod-controller-replacement.md#remove-an-ebod-controller).
    
-    V primární skříni (pokud se jedná o šasi, která selhala), odstraňte ovladače a poznamenejte si sloty, ze kterých jsou odstraněny. Další informace naleznete [v tématu Odebrání ovladače](storsimple-8000-controller-replacement.md#remove-a-controller).
+    V primární skříni (Pokud se jedná o skříň, která selhala), odeberte řadiče a poznamenejte si sloty, ze kterých jsou odebrané. Další informace najdete v tématu [Odebrání kontroleru](storsimple-8000-controller-replacement.md#remove-a-controller).
 
-## <a name="install-the-chassis"></a>Instalace šasi
-Provedením následujících kroků nainstalujte šasi do zařízení StorSimple.
+## <a name="install-the-chassis"></a>Nainstalovat skříň
+Pomocí následujících kroků nainstalujte skříň na zařízení StorSimple.
 
-#### <a name="to-install-a-chassis"></a>Instalace šasi
-1. Namontujte podvozek do stojanu. Další informace naleznete v [tématu Rack-mount zařízení StorSimple 8100](storsimple-8100-hardware-installation.md#rack-mount-your-storsimple-8100-device) nebo [Rack-mount zařízení StorSimple 8600](storsimple-8600-hardware-installation.md#rack-mount-your-storsimple-8600-device).
-2. Po montáži šasi do stojanu nainstalujte moduly regulátoru ve stejných polohách, ve kterých byly dříve nainstalovány.
-3. Nainstalujte jednotky ve stejných pozicích a slotech, ve kterých byly dříve nainstalovány.
+#### <a name="to-install-a-chassis"></a>Instalace skříně
+1. Připojte skříň k stojanu. Další informace najdete v části [rack – připojení zařízení StorSimple 8100](storsimple-8100-hardware-installation.md#rack-mount-your-storsimple-8100-device) nebo [racku připojit zařízení StorSimple 8600](storsimple-8600-hardware-installation.md#rack-mount-your-storsimple-8600-device).
+2. Až se skříň připojí k stojanu, nainstalujte moduly kontroléru do stejných umístění, v nichž byly dříve nainstalovány.
+3. Nainstalujte jednotky na stejné pozice a sloty, v nichž byly dříve nainstalovány.
    
    > [!NOTE]
-   > Doporučujeme nejprve nainstalovat disky SSD do slotů a potom nainstalovat pevné disky.
+   > Doporučujeme nejdřív nainstalovat SSD do slotů a pak nainstalovat HDD.
   
-4. Pokud je zařízení namontováno ve stojanu a jsou nainstalovány součásti, připojte zařízení k příslušným zdrojům napájení a zařízení zapněte. Podrobnosti viz [Kabel zařízení StorSimple 8100](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device) nebo [Kabel zařízení StorSimple 8600](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device).
+4. Když je zařízení připojené k racku a nainstalované komponenty, připojte zařízení k příslušným zdrojům napájení a zapněte ho. Podrobnosti najdete v článku [kabel zařízení s StorSimple 8100](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device) nebo [kabelem zařízení StorSimple 8600](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device).
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o [výměně hardwarových komponent StorSimple](storsimple-8000-hardware-component-replacement.md).
+Přečtěte si další informace o [nahrazení StorSimple hardwarové součásti](storsimple-8000-hardware-component-replacement.md).
 

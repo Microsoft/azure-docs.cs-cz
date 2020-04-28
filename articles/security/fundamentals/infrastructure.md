@@ -1,6 +1,6 @@
 ---
-title: Zabezpečení infrastruktury Azure | Dokumenty společnosti Microsoft
-description: Článek popisuje, jak Microsoft pracuje na zabezpečení našich datových center Azure.
+title: Zabezpečení infrastruktury Azure | Microsoft Docs
+description: Tento článek popisuje, jak Microsoft pracuje na zabezpečení našich DataCentre Azure.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,31 +16,31 @@ ms.workload: na
 ms.date: 10/18/2019
 ms.author: terrylan
 ms.openlocfilehash: 10aecff797effb5abebea16a18dd4e02f40de326
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72595411"
 ---
 # <a name="azure-infrastructure-security"></a>Zabezpečení infrastruktury Azure
-Microsoft Azure běží v datových centrech spravovaných a provozovaných Microsoftem. Tato geograficky rozptýlená datová centra splňují klíčové oborové standardy, jako jsou ISO/IEC 27001:2013 a NIST SP 800-53, pro zabezpečení a spolehlivost. Datová centra jsou spravována, monitorována a spravována provozními pracovníky společnosti Microsoft. Provozní personál má dlouholeté zkušenosti s poskytováním největších online služeb na světě s nepřetržitou kontinuitou 24 x 7.
+Microsoft Azure běží v datových centrech spravovaných a provozovaných společností Microsoft. Tato geograficky rozptýlená datacentra vyhovují klíčovým oborovým standardům, jako jsou ISO/IEC 27001:2013 a NIST SP 800-53, kvůli zabezpečení a spolehlivosti. Datová centra jsou spravovaná, monitorovaná a spravovaná provozními pracovníky Microsoftu. Provozní pracovníci mají po dobu let zkušeností s poskytováním největších online službyů na světě s nepřetržitou kontinuitou (24 × 7).
 
 ## <a name="securing-the-azure-infrastructure"></a>Zabezpečení infrastruktury Azure
-Tato řada článků obsahuje informace o tom, co Microsoft dělá pro zabezpečení infrastruktury Azure. Články adresu:
+Tato série článků poskytuje informace o tom, co Microsoft dělá k zabezpečení infrastruktury Azure. Adresa článků:
 
 - [Fyzické zabezpečení](physical-security.md)
 - [Dostupnost](infrastructure-availability.md)
 - [Komponenty a hranice](infrastructure-components.md)
 - [Architektura sítě](infrastructure-network.md)
 - [Produkční síť](production-network.md)
-- [Databáze SQL](infrastructure-sql.md)
+- [SQL Database](infrastructure-sql.md)
 - [Provoz](infrastructure-operations.md)
-- [Sledování](infrastructure-monitoring.md)
+- [Monitorování](infrastructure-monitoring.md)
 - [Integrita](infrastructure-integrity.md)
 - [Ochrana dat](protection-customer-data.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-- Seznamte se se svou [sdílenou odpovědností v cloudu](shared-responsibility.md).
+- Pochopte svou [sdílenou odpovědnost v cloudu](shared-responsibility.md).
 
-- Zjistěte, jak vám [Azure Security Center](https://azure.microsoft.com/services/security-center/) pomůže předcházet hrozbám, zjišťovat je a reagovat na ně díky zvýšené viditelnosti a kontrole zabezpečení vašich prostředků Azure.
+- Přečtěte si, jak [Azure Security Center](https://azure.microsoft.com/services/security-center/) vám pomůžou zabránit hrozbám, detekovat je a reagovat na ně se zvýšenou viditelností a kontrolou zabezpečení vašich prostředků Azure.

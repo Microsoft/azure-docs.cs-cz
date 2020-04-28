@@ -1,6 +1,6 @@
 ---
-title: Principy zasílání zpráv služby Azure IoT Hub | Dokumenty společnosti Microsoft
-description: Průvodce pro vývojáře – zasílání zpráv mezi zařízeními a cloud-to-zařízení pomocí služby IoT Hub. Obsahuje informace o formátech zpráv a podporovaných komunikačních protokolech.
+title: Vysvětlení zasílání zpráv služby Azure IoT Hub | Microsoft Docs
+description: Příručka pro vývojáře – zasílání zpráv ze zařízení do cloudu a z cloudu do zařízení pomocí IoT Hub. Obsahuje informace o formátech zpráv a podporovaných komunikačních protokolech.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -9,40 +9,40 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.openlocfilehash: f56332fa7f53c729ffaa28ea375f043d1b4a3678
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60626243"
 ---
-# <a name="send-device-to-cloud-and-cloud-to-device-messages-with-iot-hub"></a>Odesílání zpráv mezi zařízeními a cloudem a zařízeními pomocí služby IoT Hub
+# <a name="send-device-to-cloud-and-cloud-to-device-messages-with-iot-hub"></a>Posílání zpráv ze zařízení do cloudu a z cloudu na zařízení pomocí IoT Hub
 
-IoT Hub umožňuje obousměrnou komunikaci s vašimi zařízeními. Pomocí zasílání zpráv služby IoT Hub komunikujte se svými zařízeními odesíláním zpráv ze zařízení do back-endu řešení a odesíláním příkazů z back-endu řešení IoT do vašich zařízení. Přečtěte si další informace o [formátu zpráv služby IoT Hub](iot-hub-devguide-messages-construct.md).
+IoT Hub povoluje obousměrnou komunikaci s vašimi zařízeními. Pomocí IoT Hub zasílání zpráv pro komunikaci se zařízeními můžete posílat zprávy ze svých zařízení do back-endu řešení a odesílat příkazy z back-endu vašich řešení IoT do vašich zařízení. Přečtěte si další informace o [formátu IoT Hub zpráv](iot-hub-devguide-messages-construct.md).
 
-## <a name="sending-device-to-cloud-messages-to-iot-hub"></a>Odesílání zpráv mezi zařízeními a cloudy do služby IoT Hub
+## <a name="sending-device-to-cloud-messages-to-iot-hub"></a>Posílání zpráv ze zařízení do cloudu pro IoT Hub
 
-Služba IoT Hub má integrovaný koncový bod služby, který můžou používat back-endové služby ke čtení telemetrických zpráv z vašich zařízení. Tento koncový bod je kompatibilní s [event huby](https://docs.microsoft.com/azure/event-hubs/) a můžete použít standardní sady SDK služby IoT Hub ke [čtení z tohoto předdefinovaného koncového bodu](iot-hub-devguide-messages-read-builtin.md).
+IoT Hub má integrovaný koncový bod služby, který můžou používat back-end služby ke čtení zpráv telemetrie z vašich zařízení. Tento koncový bod je kompatibilní s [Event Hubs](https://docs.microsoft.com/azure/event-hubs/) a ke [čtení z tohoto integrovaného koncového bodu](iot-hub-devguide-messages-read-builtin.md)můžete použít standardní sady IoT Hub SDK.
 
-IoT Hub také podporuje [vlastní koncové body,](iot-hub-devguide-endpoints.md#custom-endpoints) které mohou uživatelé definovat k odesílání telemetrických dat zařízení a událostí do služeb Azure pomocí [směrování zpráv](iot-hub-devguide-messages-d2c.md).
+IoT Hub také podporuje [vlastní koncové body](iot-hub-devguide-endpoints.md#custom-endpoints) , které mohou definovat uživatelé pro posílání dat telemetrie a událostí zařízení do služeb Azure pomocí [směrování zpráv](iot-hub-devguide-messages-d2c.md).
 
-## <a name="sending-cloud-to-device-messages-from-iot-hub"></a>Odesílání zpráv z cloudu na zařízení ze služby IoT Hub
+## <a name="sending-cloud-to-device-messages-from-iot-hub"></a>Posílání zpráv z cloudu na zařízení z IoT Hub
 
-Do zařízení můžete odesílat zprávy [z cloudu na zařízení](iot-hub-devguide-messages-c2d.md) z back-endu řešení.
+Můžete posílat zprávy z [cloudu na zařízení](iot-hub-devguide-messages-c2d.md) z back-endu řešení do zařízení.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Základní vlastnosti funkcí zasílání zpráv služby IoT Hub jsou spolehlivost a odolnost zpráv. Tyto vlastnosti umožňují odolnost vůči přerušovanému připojení na straně zařízení a načítají špičky při zpracování událostí na straně cloudu. Služba IoT Hub implementuje *alespoň jednou* záruky doručení pro zasílání zpráv mezi zařízeními a cloudem.
+Základní vlastnosti funkce zasílání zpráv IoT Hub jsou spolehlivosti a odolnosti zpráv. Tyto vlastnosti umožňují přerušované připojení na straně zařízení a načítají se špičky ve zpracování událostí na straně cloudu. Pro zasílání zpráv ze zařízení do cloudu i z cloudu do zařízení IoT Hub implementuje *alespoň* jednu záruku doručení.
 
-## <a name="choosing-the-right-type-of-iot-hub-messaging"></a>Výběr správného typu zasílání zpráv služby IoT Hub
+## <a name="choosing-the-right-type-of-iot-hub-messaging"></a>Výběr správného typu IoT Hub zasílání zpráv
 
-Zprávy mezi zařízeními a cloudem slouží k odesílání telemetrických časových řad a upozornění z aplikace zařízení a zpráv z cloudu na zařízení pro jednosměrná oznámení do aplikace zařízení.
+Zprávy ze zařízení do cloudu slouží k posílání telemetrie a výstrah časových řad z aplikace pro zařízení a zpráv z cloudu na zařízení pro jednosměrná oznámení do vaší aplikace zařízení.
 
-* Informace o tom, že si můžete vybrat mezi zprávami mezi zařízeními a cloudy, ohlášenými vlastnostmi nebo nahráváním souborů, najdete v [pokynech pro komunikaci](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-d2c-guidance) mezi zařízeními a cloudy.
+* V tématu [Průvodce komunikací ze zařízení na Cloud](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-d2c-guidance) si můžete vybrat mezi zprávami ze zařízení do cloudu, hlášenými vlastnostmi nebo nahráváním souborů.
 
-* V pokynech [ke komunikaci mezi cloudovými zařízeními](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-c2d-guidance) si můžete vybrat mezi zprávami mezi cloudy, požadovanými vlastnostmi nebo přímými metodami.
+* V tématu [doprovodné materiály k komunikaci z cloudu na zařízení](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-c2d-guidance) si můžete vybrat mezi zprávami z cloudu na zařízení, požadovanými vlastnostmi nebo přímými metodami.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o směrování [zpráv](iot-hub-devguide-messages-d2c.md)služby IoT Hub .
+* Přečtěte si o IoT Hub [směrování zpráv](iot-hub-devguide-messages-d2c.md).
 
-* Přečtěte si o [zasílání zpráv mezi cloudy a zařízeními služby](iot-hub-devguide-messages-c2d.md)IoT Hub .
+* Přečtěte si o IoT Hub [zasílání zpráv z cloudu na zařízení](iot-hub-devguide-messages-c2d.md).

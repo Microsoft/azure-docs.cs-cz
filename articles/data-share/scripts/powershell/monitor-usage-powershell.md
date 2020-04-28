@@ -1,6 +1,6 @@
 ---
-title: 'Skript PowerShellu: Monitorování využití sdílené složky dat Azure | Dokumenty společnosti Microsoft'
-description: Tento skript prostředí PowerShell načte metriky využití odeslané sdílené složky dat.
+title: 'PowerShellový skript: sledování využití sdílené složky Azure | Microsoft Docs'
+description: Tento skript PowerShellu načte metriky využití odeslaného sdíleného data.
 services: data-share
 author: joannapea
 ms.service: data-share
@@ -10,15 +10,15 @@ ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
 ms.openlocfilehash: 0a4084d309dd0160970f1c03540705b310eb8e75
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70307192"
 ---
-# <a name="use-powershell-to-monitor-the-usage-of-a-sent-data-share"></a>Použití Prostředí PowerShell ke sledování využití odeslané sdílené složky dat
+# <a name="use-powershell-to-monitor-the-usage-of-a-sent-data-share"></a>Použití PowerShellu k monitorování využití odeslané sdílené datové složky
 
-Tento skript prostředí PowerShell monitoruje využití dat tím, že uvádí synchronizace odeslané sdílené složky dat a získává podrobnosti o konkrétní synchronizaci.
+Tento skript PowerShellu monitoruje využití dat seznamem synchronizací odeslaných datových sdílených složek a získáním podrobností o konkrétní synchronizaci.
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -44,12 +44,12 @@ Tento skript používá následující příkazy:
 
 | Příkaz | Poznámky |
 |---|---|
-| [Synchronizace Get-AzDataShare](/powershell/module/az.datashare/get-azdatasharesynchronization?view=azps-2.6.0) | Seznam synchronizací ve sdílené složce. |
-| [Get-AzDataShareSynchronizationPodrobnosti](/powershell/module/az.datashare/get-azdatasharesynchronizationdetail?view=azps-2.6.0) | Získá podrobnosti synchronizace synchronizace synchronizace. |
+| [Get-AzDataShareSynchronization](/powershell/module/az.datashare/get-azdatasharesynchronization?view=azps-2.6.0) | Vypíše synchronizace pro sdílenou složku. |
+| [Get-AzDataShareSynchronizationDetails](/powershell/module/az.datashare/get-azdatasharesynchronizationdetail?view=azps-2.6.0) | Získá podrobnosti o synchronizaci sdílené synchronizace. |
 |||
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 
-Další ukázky skriptu Azure Data Share PowerShellu najdete ve [ukázkách Prostředí PowerShell Azure Data Share](../../samples-powershell.md).
+Další ukázkové skripty PowerShellu pro sdílení dat Azure najdete v [ukázkách Azure Data Share PowerShell](../../samples-powershell.md).

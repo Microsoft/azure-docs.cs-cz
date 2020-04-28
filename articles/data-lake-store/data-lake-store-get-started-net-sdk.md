@@ -1,6 +1,6 @@
 ---
-title: '.NET SDK: Operace správy účtů na Azure Data Lake Storage Gen1 | Dokumenty společnosti Microsoft'
-description: Použití azure data lake storage gen1 .NET SDK k provádění operací správy účtů v data lake storage gen1
+title: '.NET SDK: operace správy účtů v Azure Data Lake Storage Gen1 | Microsoft Docs'
+description: Použití sady Azure Data Lake Storage Gen1 .NET SDK k provádění operací správy účtů v Data Lake Storage Gen1
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -13,23 +13,23 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 8da40aa04381542c8c750c8d7e33c9a29879371d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65900878"
 ---
-# <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Operace správy účtů v Azure Data Lake Storage Gen1 pomocí .NET SDK
+# <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Operace správy účtů při Azure Data Lake Storage Gen1 pomocí sady .NET SDK
 > [!div class="op_single_selector"]
-> * [Sada SDK rozhraní .NET](data-lake-store-get-started-net-sdk.md)
-> * [ROZHRANÍ API PRO ODPOČINEK](data-lake-store-get-started-rest-api.md)
+> * [.NET SDK](data-lake-store-get-started-net-sdk.md)
+> * [REST API](data-lake-store-get-started-rest-api.md)
 > * [Python](data-lake-store-get-started-python.md)
 >
 >
 
-V tomto článku se dozvíte, jak provádět operace správy účtů na Azure Data Lake Storage Gen1 pomocí .NET SDK. Operace správy účtů zahrnují vytvoření účtu Data Lake Storage Gen1, výpis účtů v předplatném Azure, odstranění účtů atd.
+V tomto článku se dozvíte, jak provádět operace správy účtů na Azure Data Lake Storage Gen1 pomocí sady .NET SDK. Mezi operace správy účtů patří vytvoření účtu Data Lake Storage Gen1, výpis účtů v předplatném Azure, odstranění účtů atd.
 
-Pokyny k provádění operací správy dat v souboru .NET SDK úložiště Data Lake Storage 1 naleznete v tématu [Operace souborového systému v souborovém úložišti Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-data-operations-net-sdk.md).
+Pokyny k provádění operací správy dat pro Data Lake Storage Gen1 pomocí sady .NET SDK najdete v tématu [operace systému souborů na data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-data-operations-net-sdk.md).
 
 ## <a name="prerequisites"></a>Požadavky
 * **Visual Studio 2013 nebo vyšší**. Níže uvedené pokyny používají Visual Studio 2019.
@@ -37,9 +37,9 @@ Pokyny k provádění operací správy dat v souboru .NET SDK úložiště Data 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="create-a-net-application"></a>Vytvoření aplikace .NET
-1. V sadě Visual Studio vyberte nabídku **Soubor,** **Nový**a potom **aplikaci Project**.
+1. V aplikaci Visual Studio vyberte nabídku **soubor** , **Nový**a poté **projekt**.
 2. Zvolte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
-3. V **názvu**projektu `CreateADLApplication`zadejte a vyberte **Vytvořit**.
+3. Do **název projektu**zadejte `CreateADLApplication`a pak vyberte **vytvořit**.
 
 4. Přidejte do projektu balíčky NuGet.
 
@@ -50,7 +50,7 @@ Pokyny k provádění operací správy dat v souboru .NET SDK úložiště Data 
       * `Microsoft.Azure.Management.DataLake.Store` – Tento kurz používá verzi v2.1.3-preview.
       * `Microsoft.Rest.ClientRuntime.Azure.Authentication` – Tento kurz používá verzi v2.2.12.
 
-        ![Přidání zdroje NuGet](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "Vytvoření nového účtu Azure Data Lake")
+        ![Přidání zdroje NuGet](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "Vytvořit nový účet Azure Data Lake")
    4. Zavřete **Správce balíčků NuGet**.
 5. Otevřete soubor **Program.cs**, odstraňte stávající kód a potom vložte následující příkazy, čímž přidáte odkazy na obory názvů.
 
@@ -93,26 +93,26 @@ Pokyny k provádění operací správy dat v souboru .NET SDK úložiště Data 
 
 Ve zbývajících oddílech tohoto článku uvidíte, jak používat dostupné metody rozhraní .NET k provádění operací, jako je ověřování, nahrávání souborů atd.
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
-* Informace o ověřování koncových uživatelů pro vaši aplikaci najdete [v tématu Ověřování koncových uživatelů pomocí data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md).
-* Informace o ověřování mezi službami pro vaši aplikaci najdete v [tématu Ověřování mezi službami pomocí služby Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-service-to-service-authenticate-net-sdk.md).
+* Pro ověřování koncového uživatele pro vaši aplikaci, přečtěte si téma [ověřování koncových uživatelů s Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md).
+* Pro ověřování služby pro vaši aplikaci, přečtěte si téma [ověřování služba-služba s Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-service-to-service-authenticate-net-sdk.md).
 
 ## <a name="create-client-object"></a>Vytvoření objektu klienta
-Následující fragment vytvoří objekt klienta účtu účtu Data Lake Storage Gen1, který se používá k vydávání požadavků na správu účtu službě, jako je například vytvoření účtu, odstranění účtu atd.
+Následující fragment kódu vytvoří objekt klienta Data Lake Storage Gen1 účtu, který slouží k vystavování požadavků na správu účtu na službu, jako je například vytvoření účtu, odstranění účtu atd.
 
     // Create client objects and set the subscription ID
     _adlsClient = new DataLakeStoreAccountManagementClient(armCreds) { SubscriptionId = _subId };
     
 ## <a name="create-a-data-lake-storage-gen1-account"></a>Vytvoření účtu Data Lake Storage Gen1
-Následující fragment vytvoří účet Data Lake Storage Gen1 v předplatném Azure, které jste zadali při vytváření objektu klienta účtu účtu Data Lake Storage Gen1.
+Následující fragment kódu vytvoří účet Data Lake Storage Gen1 v předplatném Azure, které jste zadali při vytváření objektu klienta Data Lake Storage Gen1 účtu.
 
     // Create Data Lake Storage Gen1 account
     var adlsParameters = new DataLakeStoreAccount(location: _location);
     _adlsClient.Account.Create(_resourceGroupName, _adlsAccountName, adlsParameters);
 
-## <a name="list-all-data-lake-storage-gen1-accounts-within-a-subscription"></a>Seznam všech účtů Data Lake Storage Gen1 v rámci předplatného
-Přidejte následující metodu do vaší definice třídy. Následující fragment obsahuje seznam všech účtů Data Lake Storage Gen1 v rámci daného předplatného Azure.
+## <a name="list-all-data-lake-storage-gen1-accounts-within-a-subscription"></a>Výpis všech Data Lake Storage Gen1 účtů v rámci předplatného
+Přidejte následující metodu do vaší definice třídy. Následující fragment kódu uvádí všechny účty Data Lake Storage Gen1 v rámci daného předplatného Azure.
 
     // List all Data Lake Storage Gen1 accounts within the subscription
     public static List<DataLakeStoreAccountBasic> ListAdlStoreAccounts()
@@ -129,15 +129,15 @@ Přidejte následující metodu do vaší definice třídy. Následující fragm
         return accounts;
     }
 
-## <a name="delete-a-data-lake-storage-gen1-account"></a>Odstranění účtu Gen1 úložiště datového jezera
-Následující úryvek odstraní účet Data Lake Storage Gen1, který jste vytvořili dříve.
+## <a name="delete-a-data-lake-storage-gen1-account"></a>Odstranit účet Data Lake Storage Gen1
+Následující fragment kódu odstraní účet Data Lake Storage Gen1, který jste vytvořili dříve.
 
     // Delete Data Lake Storage Gen1 account
     _adlsClient.Account.Delete(_resourceGroupName, _adlsAccountName);
 
 ## <a name="see-also"></a>Viz také
-* [Operace souborového systému na úložišti Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-data-operations-net-sdk.md)
-* [Odkaz na úložiště datových jezer Gen1 .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
+* [Operace systému souborů při Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-data-operations-net-sdk.md)
+* [Referenční informace k sadě Data Lake Storage Gen1 .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 
 ## <a name="next-steps"></a>Další kroky
 * [Zabezpečení dat ve službě Data Lake Storage Gen1](data-lake-store-secure-data.md)

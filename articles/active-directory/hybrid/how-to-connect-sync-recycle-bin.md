@@ -1,8 +1,8 @@
 ---
-title: 'Synchronizace služby Azure AD Connect: Povolení koše služby AD | Dokumenty společnosti Microsoft'
-description: Toto téma doporučuje použití funkce koše služby AD s Azure AD Connect.
+title: 'Azure AD Connect synchronizace: Povolit odpadkový koš služby Active Directory | Microsoft Docs'
+description: Toto téma doporučuje použití funkce Koš služby AD s Azure AD Connect.
 services: active-directory
-keywords: Koš ve shodě, náhodné odstranění, zdrojová kotva
+keywords: Odpadkový koš služby Active Directory, náhodné odstranění, zdrojové ukotvení
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -18,32 +18,32 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5fe7d3ea7d4f6d648438efc1a484d5909ade2f23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60382891"
 ---
-# <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Synchronizace služby Azure AD Connect: Povolení koše služby AD
-Doporučujeme povolit funkci koše služby AD pro místní aktivní adresáře, které jsou synchronizovány se službou Azure AD. 
+# <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Azure AD Connect Sync: Povolit odpadkový koš služby AD
+Doporučuje se povolit funkci Koš služby Active Directory pro místní aktivní adresáře, které jsou synchronizované s Azure AD. 
 
-Pokud jste omylem odstranili objekt místního uživatele služby AD a obnovili ho pomocí této funkce, Azure AD obnoví odpovídající objekt uživatele Azure AD.  Informace o funkci Koš služby AD naleznete v článku [Přehled scénářů pro obnovení odstraněných objektů služby Active Directory](https://technet.microsoft.com/library/dd379542.aspx).
+Pokud omylem odstraníte objekt místního uživatele služby AD a obnovíte ho pomocí této funkce, Azure AD obnoví odpovídající objekt uživatele Azure AD.  Informace o funkci Koš služby AD najdete v článku [Přehled scénářů pro obnovení odstraněných objektů služby Active Directory](https://technet.microsoft.com/library/dd379542.aspx).
 
-## <a name="benefits-of-enabling-the-ad-recycle-bin"></a>Výhody povolení koše ad
-Tato funkce pomáhá s obnovením objektů uživatelů Azure AD tím, že provádí tenásledující:
+## <a name="benefits-of-enabling-the-ad-recycle-bin"></a>Výhody aktivace odpadkového koše služby AD
+Tato funkce pomáhá při obnovování objektů uživatelů Azure AD pomocí následujícího postupu:
 
-* Pokud jste omylem odstranili objekt místního uživatele služby AD, odpovídající objekt uživatele Azure AD se odstraní v dalším cyklu synchronizace. Ve výchozím nastavení Azure AD udržuje odstraněný objekt uživatele Azure AD ve stavu obnovitelnéodstranění po dobu 30 dnů.
+* Pokud jste omylem odstranili místní objekt uživatele služby AD, v dalším synchronizačním cyklu se odstraní odpovídající objekt uživatele Azure AD. Ve výchozím nastavení služba Azure AD udržuje odstraněný objekt uživatele Azure AD ve stavu tichého odstranění po dobu 30 dnů.
 
-* Pokud máte povolenou místní funkci koše služby AD, můžete odstraněný objekt místního uživatele služby AD obnovit bez evidenční hodnoty ukotvení zdroje. Když se obnovený objekt místního uživatele Služby AD synchronizuje se službou Azure AD, Azure AD obnoví odpovídající objekt uživatele Azure AD s obnovitelným odstraněním. Informace o atributu Source Anchor naleznete v článku [Azure AD Connect: Design concepts](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#sourceanchor).
+* Pokud máte zapnutou funkci koš místní služby Active Directory, můžete obnovit odstraněný objekt místního uživatele služby AD beze změny jeho zdrojové hodnoty kotvy. Když se obnovený objekt místního uživatele služby AD synchronizuje do Azure AD, Azure AD obnoví příslušný objekt uživatele Azure AD, který se místně odstranil. Informace o atributech zdrojového ukotvení najdete v článku [Azure AD Connect: koncepty návrhu](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#sourceanchor).
 
-* Pokud nemáte povolenou funkci koše služby AD, může být nutné vytvořit objekt uživatele služby AD, který odstraněný objekt nahradí. Pokud je služba synchronizace připojení Azure AD nakonfigurována tak, aby pro atribut Source Anchor používala atribut AD generovaný systémem (například ObjectGuid), nově vytvořený objekt uživatele služby AD nebude mít stejnou hodnotu ukotvení zdroje jako odstraněný objekt uživatele služby AD. Když je nově vytvořený objekt uživatele služby AD synchronizován s Azure AD, Azure AD vytvoří nový objekt uživatele Azure AD namísto obnovení objektu uživatele Azure AD s obnovitelným odstraněním.
+* Pokud nemáte zapnutou funkci Koš služby Active Directory, může být potřeba vytvořit objekt uživatele AD, který nahradí odstraněný objekt. Pokud je služba Azure AD Connect Synchronization nakonfigurovaná tak, aby pro atribut zdrojového ukotvení používala systémový atribut AD (například ObjectGuid), nově vytvořený objekt uživatele služby AD nebude mít stejnou hodnotu zdrojového ukotvení jako odstraněný objekt uživatele služby AD. Když se nově vytvořený objekt uživatele služby AD synchronizuje do Azure AD, Azure AD vytvoří nový objekt uživatele Azure AD, místo aby obnovil místně odstraněný objekt uživatele Azure AD.
 
 > [!NOTE]
-> Ve výchozím nastavení Azure AD udržuje odstraněné objekty uživatelů Azure AD ve stavu obnovitelné odstranění po dobu 30 dnů před jejich trvalým odstraněním. Správci však mohou urychlit odstranění těchto objektů. Jakmile jsou objekty trvale odstraněny, již je nelze obnovit, a to ani v případě, že je povolena místní funkce koše služby AD.
+> Ve výchozím nastavení služba Azure AD udržuje po dobu 30 dnů odstraněné objekty uživatelů Azure AD v tichém odstraněné stavu, než se trvale odstraní. Správci však mohou zrychlit odstranění takových objektů. Jakmile se objekty trvale odstraní, už se nedají obnovit, i když je povolená funkce Koš pro místní službu AD.
 
 ## <a name="next-steps"></a>Další kroky
-**Přehledná témata**
+**Témata s přehledem**
 
-* [Synchronizace služby Azure AD Connect: Principy a přizpůsobení synchronizace](how-to-connect-sync-whatis.md)
+* [Azure AD Connect synchronizace: pochopení a přizpůsobení synchronizace](how-to-connect-sync-whatis.md)
 
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)

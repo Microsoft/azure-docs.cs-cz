@@ -1,6 +1,6 @@
 ---
-title: Rozšíření laboratoří Azure DevTest pomocí funkcí Azure | Dokumenty společnosti Microsoft
-description: Zjistěte, jak rozšířit Azure DevTest Labs pomocí Azure Functions.
+title: Rozšíří Azure DevTest Labs pomocí Azure Functions | Microsoft Docs
+description: Naučte se, jak můžete Azure DevTest Labs pomocí Azure Functions roztáhnout.
 services: devtest-lab,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,110 +12,110 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: spelluru
 ms.openlocfilehash: dd1fc4c1076d89c12b25837db9fa6a0ac3e1f3a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70014357"
 ---
 # <a name="use-azure-functions-to-extend-devtest-labs"></a>Rozšíření DevTest Labs s využitím služby Azure Functions
-Funkce Azure můžete použít k podpoře dalších scénářů nad rámec ty, které jsou již podporovány DevTest Labs. Funkce Azure lze použít k rozšíření integrované funkce služby tak, aby vyhovovaly vašim specifickým potřebám. Následující seznam obsahuje některé z možných scénářů. Tento článek ukazuje, jak implementovat jeden z těchto ukázkových scénářů.
+Azure Functions můžete použít k podpoře dalších scénářů nad rámec těch, které už podporuje DevTest Labs. Azure Functions můžete použít k rozšiřování integrovaných funkcí služby, aby splňovaly potřeby vaší firmy. Následující seznam uvádí některé z možných scénářů. V tomto článku se dozvíte, jak implementovat jeden z těchto ukázkových scénářů.
 
-- Poskytněte souhrn virtuálních počítačů (VM) nejvyšší úrovně v testovacím prostředí
+- Zadejte souhrn virtuálních počítačů v testovacím prostředí na nejvyšší úrovni.
 - [Konfigurace testovacího prostředí pro použití brány vzdálené plochy](configure-lab-remote-desktop-gateway.md)
-- Hlášení o dodržování předpisů na stránce interní podpory
+- Vytváření sestav dodržování předpisů na stránce interní podpory
 - Umožněte uživatelům dokončit operace, které vyžadují zvýšená oprávnění v předplatném.
-- [Spuštění pracovních postupů na základě událostí DevTest Labs](https://github.com/RogerBestMsft/DTL-SecureArtifactData)
+- [Spouštění pracovních postupů na základě událostí DevTest Labs](https://github.com/RogerBestMsft/DTL-SecureArtifactData)
 
 ## <a name="overview"></a>Přehled
-[Azure Functions](../azure-functions/functions-overview.md) je výpočetní platforma bez serveru v Azure. Použití funkce Azure v řešení s DevTest Labs nám umožňuje rozšířit stávající funkce s naší vlastní kód. Další informace o funkcích Azure najdete v [dokumentaci k funkcím Azure](../azure-functions/functions-overview.md). Chcete-li ilustrovat, jak funkce Azure může pomoci splnit vaše požadavky nebo dokončit scénáře v DevTest Labs, tento článek používá příklad poskytování nejvyšší úrovně souhrn virtuálních počítačů v testovacím prostředí takto:
+[Azure Functions](../azure-functions/functions-overview.md) je platforma pro výpočetní prostředí bez serveru v Azure. Použití Azure Functions v řešení s DevTest Labs nám umožňuje rozšířit stávající funkce vlastním kódem. Další informace o Azure Functions najdete v [dokumentaci k Azure Functions](../azure-functions/functions-overview.md). V tomto článku se dozvíte, jak Azure Functions může pomáhat s splněním požadavků nebo kompletních scénářů v DevTest Labs. Tento článek obsahuje příklad poskytnutí souhrnu virtuálních počítačů v testovacím prostředí na nejvyšší úrovni, jak je znázorněno níže:
 
-**Příklad požadavku/scénáře:** Uživatelé mohou zobrazit podrobnosti o všech virtuálních počítačů v testovacím prostředí, včetně operačního systému, vlastníka a všechny použité artefakty.  Kromě toho pokud **artefakt Apply Windows Updates** nebyl nedávno použit, existuje snadný způsob, jak ho použít.
+**Příklad požadavku/scénáře**: uživatelé můžou zobrazit podrobnosti o všech virtuálních počítačích v testovacím prostředí, včetně operačního systému, vlastníka a všech použitých artefaktů.  Pokud se navíc v poslední době nepoužil artefakt **Apply Updates** , existuje jednoduchý způsob, jak ho použít.
 
-K dokončení scénáře použijete dvě funkce popsané v následujícím diagramu:  
+K dokončení tohoto scénáře budete používat dvě funkce, jak je popsáno v následujícím diagramu:  
 
-![Celkový průtok](./media/extend-devtest-labs-azure-functions/flow.png)
+![Celkový tok](./media/extend-devtest-labs-azure-functions/flow.png)
 
-Zdrojový kód pro tyto ukázkové funkce je umístěn v [úložišti GitHub DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/AzureFunctions) (implementace C# i PowerShell jsou k dispozici).
+Zdrojový kód těchto ukázkových funkcí se nachází v [úložišti GitHub DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/AzureFunctions) (jsou k dispozici obě implementace C# i PowerShellu).
 
-- **UpdateInternalSupportPage**: Tato funkce dotazuje DevTest Labs a aktualizuje interní stránku podpory přímo s podrobnostmi o virtuálních počítačích.
-- **ApplyWindowsUpdateArtifact**: Pro virtuální ho virtuálního mě v testovacím prostředí tato funkce použije artefakt **aktualizace systému Windows.**
+- **UpdateInternalSupportPage**: Tato funkce se dotazuje na DevTest Labs a aktualizuje stránku interní podpory přímo s podrobnostmi o virtuálních počítačích.
+- **ApplyWindowsUpdateArtifact**: pro virtuální počítač v testovacím prostředí Tato funkce používá artefakt služby **Windows Update** .
 
 ## <a name="how-it-works"></a>Jak to funguje
-Když uživatelé vyberte stránku **Interní podpora** v DevTest Labs, mají předem vyplněnou stránku s informacemi o virtuálních počítačůch, majitelích testovacího prostředí a kontaktech podpory.  
+Když uživatelé na DevTest Labs vyberou stránku **interní podpory** , mají předem vyplněnou stránku s informacemi o virtuálních počítačích, vlastníkech testovacího prostředí a kontaktech podpory.  
 
-Když vyberete tlačítko **Vybrat zde k aktualizaci,** stránka zavolá první funkci Azure: **UpdateInternalSupportPage**. Funkce dotazuje DevTest Labs pro informace a potom přepíše **vnitřní podporu** stránku s novými informacemi.
+Když vyberete tlačítko **Vybrat zde k aktualizaci** , stránka volá první funkci Azure: **UpdateInternalSupportPage**. Funkce se dotazuje na DevTest Labs na informace a potom přepíše stránku **interní podpory** novými informacemi.
 
-Existuje další akce, kterou lze podniknout, pro všechny virtuální servery, na kterých nebyly nedávno použity artefakty služby Windows Update, bude k dispozici tlačítko pro použití aktualizací systému Windows pro virtuální počítač. Když vyberete * Spustit tlačítko**aktualizace systému Windows** pro virtuální počítač, stránka volá druhou funkci Azure: **ApplyWindowsUpdateArtifact**. Tato funkce zkontroluje, zda je virtuální počítač spuštěn, a pokud ano, použije artefakt [služby Windows Update](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-install-windows-updates) přímo.
+K dispozici je další akce, kterou je možné provést pro všechny virtuální počítače, na kterých se v poslední době nepoužily web Windows Update artefakty. na virtuálním počítači se pak zobrazí tlačítko pro použití aktualizací Windows. Když vyberete pro virtuální počítač tlačítko ***spustit Windows Update** , stránka volá druhou funkci Azure: **ApplyWindowsUpdateArtifact**. Tato funkce zkontroluje, jestli je virtuální počítač spuštěný, a pokud ano, aplikuje artefakt [web Windows Update](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-install-windows-updates) přímo.
 
 ## <a name="step-by-step-walkthrough"></a>Podrobný návod
-Tato část obsahuje podrobné pokyny pro nastavení prostředků Azure potřebných k aktualizaci stránky **interní podpory.** Tento návod poskytuje jeden příklad rozšíření DevTest Labs. Tento vzor můžete použít pro jiné scénáře.
+V této části najdete podrobné pokyny k nastavení prostředků Azure potřebných k aktualizaci stránky **interní podpory** . Tento návod poskytuje jeden příklad rozšíření DevTest Labs. Tento model můžete použít pro jiné scénáře.
 
 ### <a name="step-1-create-a-service-principal"></a>Krok 1: Vytvoření instančního objektu 
-Prvním krokem je získat instanční objekt s oprávněním k předplatnému, které obsahuje testovací prostředí. Instanční objekt musí používat ověřování založené na heslech. Dá se to udělat pomocí [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest), [Azure PowerShellu](/powershell/azure/create-azure-service-principal-azureps?view=azps-2.5.0)nebo [portálu Azure](../active-directory/develop/howto-create-service-principal-portal.md). Pokud již máte instanční objekt, který chcete použít, můžete tento krok přeskočit.
+Prvním krokem je získání instančního objektu s oprávněním k předplatnému, které obsahuje testovací prostředí. Instanční objekt musí používat ověřování na základě hesla. Můžete to udělat pomocí [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest), [Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps?view=azps-2.5.0)nebo [Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md). Pokud již používáte instanční objekt, můžete tento krok přeskočit.
 
-Poznamenejte si **ID aplikace**, **klíč**a **ID klienta** pro instanční objekt. Budete je potřebovat později v tomto návodu. 
+Poznamenejte si **ID aplikace**, **klíč**a **ID tenanta** objektu služby. Budete je potřebovat později v tomto návodu. 
 
-### <a name="step-2-download-the-sample-and-open-in-visual-studio-2019"></a>Krok 2: Stažení ukázky a otevření v Visual Studiu 2019
-Stáhněte si kopii [ukázky C# Azure Functions](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/AzureFunctions/CSharp) místně (buď klonováním úložiště nebo stažením úložiště [odtud).](https://github.com/Azure/azure-devtestlab/archive/master.zip)  
+### <a name="step-2-download-the-sample-and-open-in-visual-studio-2019"></a>Krok 2: Stáhněte si ukázku a otevřete ji v aplikaci Visual Studio 2019
+Stáhněte si kopii [ukázky Azure Functions v C#](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/AzureFunctions/CSharp) místně (buď klonováním úložiště, nebo stažením úložiště z [tohoto místa](https://github.com/Azure/azure-devtestlab/archive/master.zip)).  
 
-1. Otevřete ukázkové řešení s Visual Studio 2019.  
-1. Nainstalujte **úlohu vývoje Azure** pro Visual Studio, pokud ho ještě nemáte nainstalované. To může být instalován přes **Nástroje** -> **Získat nástroje a funkce** položky menu).
+1. Otevřete ukázkové řešení pomocí sady Visual Studio 2019.  
+1. Nainstalujte úlohu **vývoj pro Azure** pro Visual Studio, pokud ji ještě nemáte nainstalovanou. Dá se nainstalovat prostřednictvím **nástrojů** -> **získat nástroje a** položku nabídky funkce).
 
-    ![Pracovní vytížení pro vývoj Azure](./media/extend-devtest-labs-azure-functions/azure-development-workload-vs.png)
-1. Sestavte řešení. Vyberte **Sestavit** a pak **vytvořit položku** nabídky řešení.
+    ![Úlohy vývoje Azure](./media/extend-devtest-labs-azure-functions/azure-development-workload-vs.png)
+1. Sestavte řešení. Vyberte **sestavení** a pak položku nabídky **řešení** .
 
-### <a name="step-3-deploy-the-sample-to-azure"></a>Krok 3: Nasazení ukázky do Azure
-V Visual Studiu v **okně Průzkumník řešení** klikněte pravým tlačítkem myši na projekt **AzureFunctions** a potom vyberte **Publikovat**. Podle průvodce dokončete publikování na novou nebo existující aplikaci Azure Function App. Podrobné informace o vývoji a nasazování funkcí Azure pomocí Visual Studia najdete v [tématu Vývoj funkcí Azure pomocí Sady Visual Studio](../azure-functions/functions-develop-vs.md).
+### <a name="step-3-deploy-the-sample-to-azure"></a>Krok 3: nasazení ukázky do Azure
+V aplikaci Visual Studio v okně **Průzkumník řešení** klikněte pravým tlačítkem na projekt **AzureFunctions** a vyberte **publikovat**. Postupujte podle pokynů průvodce a dokončete publikování do nového nebo stávajícího Function App Azure. Podrobné informace o vývoji a nasazení služby Azure Functions pomocí sady Visual Studio naleznete v tématu [vývoj Azure Functions pomocí sady Visual Studio](../azure-functions/functions-develop-vs.md).
 
-![Dialogové okno Publikovat](./media/extend-devtest-labs-azure-functions/publish-dialog.png)
+![Dialog publikovat](./media/extend-devtest-labs-azure-functions/publish-dialog.png)
 
 
-### <a name="step-4--gather-application-settings"></a>Krok 4: Shromáždění nastavení aplikace
-Po publikování funkcí je potřeba získat adresy URL pro tyto funkce z webu Azure Portal. 
+### <a name="step-4--gather-application-settings"></a>Krok 4: shromáždění nastavení aplikace
+Po publikování funkcí je třeba získat adresy URL pro tyto funkce z Azure Portal. 
 
 1. Přejděte na [Azure Portal](https://portal.azure.com). 
-1. Najděte aplikaci funkcí.
-1. Na stránce **Aplikace funkcí** vyberte funkci. 
-1. Vyberte **Získat adresu URL funkce,** jak je znázorněno na následujícím obrázku. 
+1. Najděte aplikaci Function App.
+1. Na stránce **aplikace Function** App vyberte funkci. 
+1. Vyberte **získat adresu URL funkce** , jak je znázorněno na následujícím obrázku. 
 
-    ![Adresy URL funkcí Azure](./media/extend-devtest-labs-azure-functions/function-url.png)
-4. Zkopírujte a uložte adresu URL. Opakujte tyto kroky pro ostatní funkce Azure. 
+    ![Adresy URL služby Azure Functions](./media/extend-devtest-labs-azure-functions/function-url.png)
+4. Zkopírujte a uložte adresu URL. Opakujte tyto kroky pro druhou funkci Azure Functions. 
 
-Budete také potřebovat další informace o instančníobjekt, jako je ID aplikace, klíč a ID klienta.
+Také budete potřebovat další informace o instančním objektu, jako je ID aplikace, klíč a ID tenanta.
 
 
-### <a name="step-5--update-application-settings"></a>Krok 5: Aktualizace nastavení aplikace
-Ve Visual Studiu po publikování funkce Azure vyberte **upravit nastavení služby Azure App Service** v části **Akce**. Aktualizace následujících nastavení aplikace (vzdálená):
+### <a name="step-5--update-application-settings"></a>Krok 5: aktualizace nastavení aplikace
+V aplikaci Visual Studio po publikování funkce Azure vyberte v části **Akce**možnost **Upravit Azure App Service nastavení** . Aktualizujte následující nastavení aplikace (vzdálené):
 
 - AzureFunctionUrl_ApplyUpdates
 - AzureFunctionUrl_UpdateSupportPage
-- WindowsUpdateAllowedDays (výchozí 7)
+- WindowsUpdateAllowedDays (výchozí až 7)
 - ServicePrincipal_AppId
 - ServicePrincipal_Key
 - ServicePrincipal_Tenant
 
     ![Nastavení aplikace](./media/extend-devtest-labs-azure-functions/application-settings.png)
 
-### <a name="step-6-test-the-azure-function"></a>Krok 6: Testování funkce Azure
-Posledním krokem v tomto návodu je otestovat funkci Azure.  
+### <a name="step-6-test-the-azure-function"></a>Krok 6: testování funkce Azure Functions
+Posledním krokem v tomto návodu je testování funkce Azure Functions.  
 
-1. Přejděte na funkci **UpdateInternalSupportPage** v aplikaci funkce vytvořené v kroku 3. 
-1. Na pravé straně stránky vyberte **Testovat.** 
-1. Zadejte vlastnosti postupu (LABNAME, RESOURCEGROUPNAME a SUBSCRIPTIONID).
-1. Chcete-li spustit funkci, vyberte možnost **Spustit.**  
+1. V aplikaci Function App vytvořené v kroku 3 přejděte na funkci **UpdateInternalSupportPage** . 
+1. Na pravé straně stránky vyberte **test** . 
+1. Zadejte ve vlastnostech trasy (LABNAME, RESOURCEGROUPNAME a SUBSCRIPTIONID).
+1. Pokud chcete funkci spustit, vyberte **Spustit** .  
 
-    Tato funkce aktualizuje interní stránku podpory zadaného testovacího prostředí. Obsahuje také tlačítko pro uživatele, aby přímo volat funkci příště
+    Tato funkce aktualizuje stránku interní podpory v zadaném testovacím prostředí. Obsahuje také tlačítko pro uživatele, kteří můžou funkci příště volat hned.
 
-    ![Testovací funkce](./media/extend-devtest-labs-azure-functions/test-function.png)
+    ![Test – funkce](./media/extend-devtest-labs-azure-functions/test-function.png)
 
 ## <a name="next-steps"></a>Další kroky
-Funkce Azure můžou pomoct rozšířit funkce DevTest Labs nad rámec toho, co už je integrované, a pomoct zákazníkům splnit jejich jedinečné požadavky pro jejich týmy. Tento vzor lze rozšířit & dále rozšířit tak, aby pokrýval ještě více.  Další informace o devTest Labs najdete v následujících článcích: 
+Azure Functions může přispět k rozšiřování funkcí DevTest Labs nad rámec toho, co už je integrované, a pomáhat zákazníkům, aby si vyplnili své jedinečné požadavky na své týmy. Tento model se dá rozšířit & další, aby se kryl ještě víc.  Další informace o DevTest Labs najdete v následujících článcích: 
 
-- [DevTest Labs Enterprise Referenční architektura](devtest-lab-reference-architecture.md)
+- [Referenční architektura DevTest Labs Enterprise](devtest-lab-reference-architecture.md)
 - [Nejčastější dotazy](devtest-lab-faq.md)
-- [Škálování devTest Labs](devtest-lab-guidance-scale.md)
-- [Automatizace testovacích prostředí DevTest pomocí prostředí PowerShell](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library/Tests)
+- [Škálování DevTest Labs](devtest-lab-guidance-scale.md)
+- [Automatizace DevTest Labs pomocí PowerShellu](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library/Tests)
 
 
 

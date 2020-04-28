@@ -1,64 +1,64 @@
 ---
 title: Odstranění projektu Azure Migrate
-description: Popisuje, jak vytvořit projekt Migrace Azure a přidat nástroj pro hodnocení a migraci.
+description: Popisuje, jak vytvořit projekt Azure Migrate a přidat nástroj pro vyhodnocení/migraci.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: raynew
 ms.openlocfilehash: 55842d36cddb2a7851ff5bd7002c20e9873158f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73512727"
 ---
 # <a name="delete-an-azure-migrate-project"></a>Odstranění projektu Azure Migrate
 
-Tento článek popisuje, jak odstranit projekt [Migrace Azure.](migrate-overview.md)
+Tento článek popisuje, jak odstranit [Azure Migrate](migrate-overview.md) projekt.
 
 
 ## <a name="before-you-start"></a>Než začnete
 
 Před odstraněním projektu:
 
-- Při odstranění projektu, projekt a zjištěné počítače metadata jsou odstraněny.
-- Pokud jste k nástroji pro vyhodnocení serveru pro analýzu závislostí připojili pracovní prostor Analýzy protokolů, rozhodněte se, zda chcete pracovní prostor odstranit. 
-    - Pracovní prostor se automaticky neodstraní. Odstraňte jej ručně.
-    - Před odstraněním ověřte, k čemu se pracovní prostor používá. Stejný pracovní prostor Log Analytics lze použít pro více scénářů.
-    - Před odstraněním projektu najdete odkaz na pracovní prostor v **Azure Migrate – Servery** > **Azure Migrate - Servery Assessment serveru**v části Pracovní prostor **OMS**.
-    - Chcete-li po odstranění projektu odstranit pracovní prostor, vyhledejte pracovní prostor v příslušné skupině zdrojů a postupujte [podle těchto pokynů](../azure-monitor/platform/delete-workspace.md).
+- Po odstranění projektu se odstraní projekt a zjištěná metadata počítače.
+- Pokud jste připojili Log Analytics pracovní prostor k nástroji pro vyhodnocení závislostí, rozhodněte se, zda chcete odstranit pracovní prostor. 
+    - Pracovní prostor se automaticky neodstraní. Odstraňte ji ručně.
+    - Ověřte, že se pracovní prostor používá pro předtím, než ho odstraníte. Stejný pracovní prostor Log Analytics lze použít pro více scénářů.
+    - Před odstraněním projektu můžete v části **pracovní prostor OMS**najít odkaz na pracovní prostor v **Azure Migrate-servery** > **Azure Migrate – posouzení serveru**.
+    - Pokud chcete odstranit pracovní prostor po odstranění projektu, najděte pracovní prostor v příslušné skupině prostředků a postupujte podle [těchto pokynů](../azure-monitor/platform/delete-workspace.md).
 
 
-## <a name="delete-a-project"></a>Odstranění projektu
+## <a name="delete-a-project"></a>Odstranit projekt
 
 
-1. Na webu Azure Portal otevřete skupinu prostředků, ve které byl projekt vytvořen.
-2. Na stránce skupiny prostředků vyberte **Zobrazit skryté typy**.
-3. Vyberte projekt a přidružené zdroje, které chcete odstranit.
-    - Typ prostředku pro projekty Migrace Azure je **Microsoft.Migrate/migrateprojects**.
-    - V další části zkontrolujte prostředky vytvořené pro zjišťování, hodnocení a migraci v projektu Migrace Azure.
-    - Pokud skupina prostředků obsahuje jenom projekt Migrace Azure, můžete odstranit celou skupinu prostředků.
-    - Pokud chcete odstranit projekt z předchozí verze Azure Migrate, kroky jsou stejné. Typ zdroje pro tyto projekty je **Projekt migrace**.
+1. V Azure Portal otevřete skupinu prostředků, ve které byl projekt vytvořen.
+2. Na stránce skupina prostředků vyberte **Zobrazit skryté typy**.
+3. Vyberte projekt a související prostředky, které chcete odstranit.
+    - Typ prostředku pro Azure Migrate projekty je **Microsoft. migruje/migrateprojects**.
+    - V další části si projděte informace o prostředcích vytvořených pro zjišťování, posouzení a migraci v projektu Azure Migrate.
+    - Pokud skupina prostředků obsahuje pouze projekt Azure Migrate, můžete odstranit celou skupinu prostředků.
+    - Pokud chcete odstranit projekt z předchozí verze Azure Migrate, jsou tyto kroky stejné. Typ prostředku pro tyto projekty je **projekt migrace**.
 
 
-## <a name="created-resources"></a>Vytvořené zdroje
+## <a name="created-resources"></a>Vytvořené prostředky
 
-Tyto tabulky shrnují prostředky vytvořené pro zjišťování, hodnocení a migraci v projektu Migrace Azure.
+Tyto tabulky shrnují prostředky vytvořené pro zjišťování, posuzování a migraci v projektu Azure Migrate.
 
 > [!NOTE]
-> Trezor klíčů odstraňujte opatrně, protože může obsahovat bezpečnostní klíče.
+> Odstraňte Trezor klíčů opatrně, protože může obsahovat bezpečnostní klíče.
 
 ### <a name="vmwarephysical-server"></a>VMware / fyzický server
 
-**Zdrojů** | **Typ**
+**Prostředek** | **Typ**
 --- | ---
-"Appliancename"kv | Trezor klíčů
-"Appliancename"site | Weby Microsoft.OffAzure/VMware
-"Název projektu" | Microsoft.Migrate/migrateprojects
-Projekt "Název_projektu" | Microsoft.Migrate/assessmentProjects
-"Název projektu"rsvault | Trezor služby Recovery Services
-"Název_projektu"-MigrateVault-* | Trezor služby Recovery Services
+"Zařízení" KV | Trezor klíčů
+Web "zařízení" | Microsoft. OffAzure/VMwareSites
+Názevprojektu | Microsoft. migruje/migrateprojects
+Projekt ProjectName | Microsoft. migruje/assessmentProjects
+"ProjectName" rsvault | Trezor služby Recovery Services
+"ProjectName"-MigrateVault-* | Trezor služby Recovery Services
 migrateappligwsa* | Účet úložiště
 migrateapplilsa* | Účet úložiště
 migrateapplicsa* | Účet úložiště
@@ -67,15 +67,15 @@ migrateapplisbns16041 | Service Bus Namespace
 
 ### <a name="hyper-v-vm"></a>Virtuální počítač s technologií Hyper-V 
 
-**Zdrojů** | **Typ**
+**Prostředek** | **Typ**
 --- | ---
-"Název projektu" | Microsoft.Migrate/migrateprojects
-Projekt "Název_projektu" | Microsoft.Migrate/assessmentProjects
-HyperV*kv | Trezor klíčů
-HyperV*Lokalita | Microsoft.OffAzure/HypervSites
-"Název_projektu"-MigrateVault-* | Trezor služby Recovery Services
+Názevprojektu | Microsoft. migruje/migrateprojects
+Projekt ProjectName | Microsoft. migruje/assessmentProjects
+HyperV * KV | Trezor klíčů
+Hyper-v Web | Microsoft. OffAzure/HyperVSites
+"ProjectName"-MigrateVault-* | Trezor služby Recovery Services
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si, jak přidat další nástroje pro [hodnocení](how-to-assess.md) a [migraci.](how-to-migrate.md) 
+Přečtěte si, jak přidat další nástroje pro [posouzení](how-to-assess.md) a [migraci](how-to-migrate.md) . 

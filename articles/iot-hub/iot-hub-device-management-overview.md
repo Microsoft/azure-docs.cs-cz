@@ -1,6 +1,6 @@
 ---
-title: Přehled správy zařízení pomocí Azure IoT Hub | Dokumenty společnosti Microsoft
-description: Přehled správy zařízení v Azure IoT Hu – životní cyklus podnikových zařízení a vzorcích správy zařízení, jako je restartování, obnovení továrního nastavení, aktualizace firmwaru, konfigurace, dvojčata zařízení, dotazy, úlohy.
+title: Přehled správy zařízení pomocí Azure IoT Hub | Microsoft Docs
+description: Přehled správy zařízení v Azure IoT hu – životní cyklus zařízení a vzory správy zařízení, jako je restartování, obnovení továrního nastavení, aktualizace firmwaru, konfigurace, vlákna zařízení, dotazy a úlohy.
 author: bzurcher
 ms.service: iot-hub
 services: iot-hub
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: briz
 ms.openlocfilehash: bdc55af23568b5785a831e81f352400c728c902e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60400922"
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>Přehled správy zařízení ve službě IoT Hub
@@ -58,60 +58,60 @@ V každé z těchto pěti fází existuje několik požadavků souvisejících s
     *Další čtení*: 
     * [Začínáme s dvojčaty zařízení](iot-hub-node-node-twin-getstarted.md)
     * [Principy dvojčat zařízení](iot-hub-devguide-device-twins.md)
-    * [Jak používat vlastnosti dvojčete zařízení](tutorial-device-twins.md)
-    * [Doporučené postupy pro konfiguraci zařízení v rámci řešení IoT](iot-hub-configuration-best-practices.md)
+    * [Jak používat zdvojené vlastnosti zařízení](tutorial-device-twins.md)
+    * [Osvědčené postupy pro konfiguraci zařízení v rámci řešení IoT](iot-hub-configuration-best-practices.md)
 
 * **Zřízení:** Bezpečné zřízení nových zařízení pro IoT Hub a umožnění okamžitého zjištění možností zařízení pro operátory.  Pomocí registru identit ve službě IoT Hub můžete vytvářet flexibilní identity a přihlašovací údaje zařízení a provádět tuto operaci hromadně pomocí úlohy. Zařízení sestavujte tak, aby hlásila své možnosti a stav prostřednictvím svých vlastností v dvojčeti zařízení.
   
     *Další čtení*: 
     * [Správa identit zařízení](iot-hub-devguide-identity-registry.md)
-    * [Hromadná správa identit zařízení](iot-hub-bulk-identity-mgmt.md)
-    * [Jak používat vlastnosti dvojčete zařízení](tutorial-device-twins.md)
-    * [Doporučené postupy pro konfiguraci zařízení v rámci řešení IoT](iot-hub-configuration-best-practices.md)
+    * [Hromadná Správa identit zařízení](iot-hub-bulk-identity-mgmt.md)
+    * [Jak používat zdvojené vlastnosti zařízení](tutorial-device-twins.md)
+    * [Osvědčené postupy pro konfiguraci zařízení v rámci řešení IoT](iot-hub-configuration-best-practices.md)
     * [Služba Azure IoT Hub Device Provisioning](https://azure.microsoft.com/documentation/services/iot-dps)
 
 * **Konfigurace:** Provádění hromadných změn konfigurace a aktualizací firmwaru v zařízeních při zachování stavu i zabezpečení. Tyto operace správy zařízení provádějte hromadně pomocí požadovaných vlastností nebo pomocí přímých metod a vysílacích úloh.
   
     *Další čtení*:
-    * [Jak používat vlastnosti dvojčete zařízení](tutorial-device-twins.md)
-    * [Konfigurace a monitorování zařízení IoT ve velkém měřítku](iot-hub-auto-device-config.md)
-    * [Doporučené postupy pro konfiguraci zařízení v rámci řešení IoT](iot-hub-configuration-best-practices.md)
+    * [Jak používat zdvojené vlastnosti zařízení](tutorial-device-twins.md)
+    * [Konfigurace a monitorování škálování zařízení IoT](iot-hub-auto-device-config.md)
+    * [Osvědčené postupy pro konfiguraci zařízení v rámci řešení IoT](iot-hub-configuration-best-practices.md)
 
 * **Monitorování:** Monitorování celkového stavu kolekce zařízení a stavu probíhajících operací, přičemž operátoři dostávají upozornění na problémy, které mohou vyžadovat jejich pozornost.  Dvojče zařízení umožní zařízením hlásit jejich provozní podmínky a stav aktualizačních operací v reálném čase. Vytvořte efektivní sestavy řídicího panelu, které budou bezprostředně informovat o problémech na základě dotazů na dvojčata zařízení.
   
     *Další čtení*: 
-    * [Jak používat vlastnosti dvojčete zařízení](tutorial-device-twins.md)
-    * [Dotazovací jazyk služby IoT Hub pro dvojčata zařízení, úlohy a směrování zpráv](iot-hub-devguide-query-language.md)
-    * [Konfigurace a monitorování zařízení IoT ve velkém měřítku](iot-hub-auto-device-config.md)
-    * [Doporučené postupy pro konfiguraci zařízení v rámci řešení IoT](iot-hub-configuration-best-practices.md)
+    * [Jak používat zdvojené vlastnosti zařízení](tutorial-device-twins.md)
+    * [IoT Hub dotazovací jazyk pro vlákna, úlohy a směrování zpráv v zařízeních](iot-hub-devguide-query-language.md)
+    * [Konfigurace a monitorování škálování zařízení IoT](iot-hub-auto-device-config.md)
+    * [Osvědčené postupy pro konfiguraci zařízení v rámci řešení IoT](iot-hub-configuration-best-practices.md)
 
-* **Vyřazení**: Vyměňte nebo vyřaďte zařízení z provozu po selhání, cyklu upgradu nebo na konci doby životnosti.  Pomocí dvojčete zařízení můžete provést údržbu informací o zařízení, když se nahrazuje fyzické zařízení, nebo jejich archivaci při jeho vyřazení. Pro zabezpečené odvolávání identit zařízení a přihlašovacích údajů používejte registr identit ve službě IoT Hub.
+* **Vyřazení**: výměna nebo vyřazení zařízení z provozu po selhání, cyklus upgradu nebo na konci životnosti služby.  Pomocí dvojčete zařízení můžete provést údržbu informací o zařízení, když se nahrazuje fyzické zařízení, nebo jejich archivaci při jeho vyřazení. Pro zabezpečené odvolávání identit zařízení a přihlašovacích údajů používejte registr identit ve službě IoT Hub.
   
     *Další čtení*: 
-    * [Jak používat vlastnosti dvojčete zařízení](tutorial-device-twins.md)
+    * [Jak používat zdvojené vlastnosti zařízení](tutorial-device-twins.md)
     * [Správa identit zařízení](iot-hub-devguide-identity-registry.md)
 
 ## <a name="device-management-patterns"></a>Schémata správy zařízení
 
 IoT Hub umožňuje využívat následující schémata správy zařízení. V [kurzech ke správě zařízení](iot-hub-node-node-device-management-get-started.md) se podrobněji dozvíte, jak tato schémata rozšířit tak, aby vyhovovala vašemu konkrétnímu scénáři, a jak na základě těchto základních šablon navrhnout nová schémata.
 
-* **Restart :** Back-endová aplikace informuje zařízení přímou metodou, že iniciovala restartování.  Zařízení využívá ohlášené vlastnosti k aktualizaci stavu restartování příslušného zařízení.
+* **Restart**: aplikace back-end informuje zařízení prostřednictvím přímé metody, že zahájil restart.  Zařízení využívá ohlášené vlastnosti k aktualizaci stavu restartování příslušného zařízení.
   
     ![Grafické znázornění schématu restartování ve správě zařízení](./media/iot-hub-device-management-overview/reboot-pattern.png)
 
-* **Obnovení továrního nastavení**: Back-endová aplikace informuje zařízení přímou metodou, že iniciovalo obnovení továrního nastavení. Zařízení využívá ohlášené vlastnosti k aktualizaci stavu obnovování výrobního nastavení příslušného zařízení.
+* **Obnovení továrního nastavení**: aplikace back-end informuje zařízení prostřednictvím přímé metody, že zahájilo obnovení továrního nastavení. Zařízení využívá ohlášené vlastnosti k aktualizaci stavu obnovování výrobního nastavení příslušného zařízení.
   
     ![Grafické znázornění schématu obnovení výrobního nastavení](./media/iot-hub-device-management-overview/facreset-pattern.png)
 
-* **Konfigurace**: Back-endová aplikace používá požadované vlastnosti ke konfiguraci softwaru spuštěného v zařízení. Zařízení využívá ohlášené vlastnosti k aktualizaci stavu konfigurace příslušného zařízení.
+* **Konfigurace**: aplikace back-end používá požadované vlastnosti ke konfiguraci softwaru spuštěného v zařízení. Zařízení využívá ohlášené vlastnosti k aktualizaci stavu konfigurace příslušného zařízení.
   
     ![Grafické znázornění schématu konfigurace ve správě zařízení](./media/iot-hub-device-management-overview/configuration-pattern.png)
 
-* **Aktualizace firmwaru**: Back-endová aplikace používá automatickou konfiguraci správy zařízení k výběru zařízení pro příjem aktualizace, k tomu, aby zařízení sdělovala, kde aktualizaci najít, a ke sledování procesu aktualizace. Zařízení zahájí vícekrokový proces stahování, ověřování a použití bitové kopie firmwaru a před opětovným připojením ke službě IoT Hub zařízení restartuje. Během tohoto vícefázového procesu zařízení využívá ohlášené vlastnosti k aktualizaci informací o průběhu zpracování a stavu zařízení.
+* **Aktualizace firmwaru**: back-end aplikace používá automatickou konfiguraci správy zařízení k výběru zařízení, která mají být aktualizace k dismailu, k oznámení zařízení, ve kterých se má aktualizace Hledat, a k monitorování procesu aktualizace. Zařízení zahájí proces s více kroky ke stažení, ověření a instalaci image firmwaru a následné restartování zařízení před opětovným připojením ke službě IoT Hub. Během tohoto vícefázového procesu zařízení využívá ohlášené vlastnosti k aktualizaci informací o průběhu zpracování a stavu zařízení.
   
     ![Grafické znázornění schématu aktualizace firmwaru ve správě zařízení](media/iot-hub-device-management-overview/fwupdate-pattern.png)
 
-* **Hlášení průběhu a stavu**: Back-end řešení spustí dotazy na dvojče zařízení v celé sadě zařízení, které mají podávat zprávy o stavu a průběhu akcí spuštěných na zařízeních.
+* **Vytváření sestav o průběhu a stavu**: back-end řešení spouští v rámci sady zařízení zdvojené dotazy na zařízení, aby hlásil stav a průběh akcí spuštěných v zařízeních.
   
     ![Grafické znázornění schématu informování o průběhu a stavu ve správě zařízení](./media/iot-hub-device-management-overview/report-progress-pattern.png)
 

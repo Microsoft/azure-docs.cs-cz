@@ -1,6 +1,6 @@
 ---
-title: Správa záznamů řízení přístupu v aplikaci StorSimple | Dokumenty společnosti Microsoft
-description: Popisuje, jak pomocí záznamů řízení přístupu (AVR) určit, kteří hostitelé se mohou připojit ke svazku na zařízení StorSimple.
+title: Správa záznamů řízení přístupu v StorSimple | Microsoft Docs
+description: Popisuje, jak pomocí záznamů řízení přístupu (záznamů ACR) určit, kteří hostitelé se mohou připojit ke svazku na zařízení StorSimple.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,119 +15,119 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: alkohli
 ms.openlocfilehash: ade7da25d2307a382c17e7a3cbb26b601c34ef78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "64693239"
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>Správa záznamů řízení přístupu pomocí služby StorSimple Manager
 
 ## <a name="overview"></a>Přehled
-Záznamy řízení přístupu (ARS) umožňují určit, kteří hostitelé se mohou připojit ke svazku na zařízení StorSimple. ACC jsou nastaveny na určitý svazek a obsahují kvalifikované názvy iSCSI (IQN) hostitelů. Když se hostitel pokusí připojit ke svazku, zařízení zkontroluje ACR přidružené k tomuto svazku pro název IQN a pokud je shoda, pak je připojení navázáno. Záznamy řízení přístupu v části **Konfigurace** okna služby Správce zařízení StorSimple zobrazí všechny záznamy řízení přístupu s odpovídajícími sítěmi IQN hostitelů.
+Záznamy řízení přístupu (záznamů ACR) umožňují určit hostitele, kteří se mohou připojit ke svazku na zařízení StorSimple. Záznamů ACR jsou nastavené na konkrétní svazek a obsahují kvalifikované názvy iSCSI (IQNs) hostitelů. Když se hostitel pokusí připojit ke svazku, zařízení zkontroluje ACR přidružené k tomuto svazku pro název IQN a pokud existuje shoda, naváže se připojení. V okně StorSimple Device Manager služby se v části **Konfigurace** řízení přístupu zobrazí všechny záznamy řízení přístupu s odpovídajícími IQNs hostitelů.
 
-Tento kurz vysvětluje následující běžné úkoly související s ACR:
+V tomto kurzu se dozvíte o následujících běžných úkolech souvisejících s ACR:
 
-* Přidání záznamu řízení přístupu
-* Úprava záznamu řízení přístupu
+* Přidat záznam řízení přístupu
+* Upravit záznam řízení přístupu
 * Odstranění záznamu řízení přístupu
 
 > [!IMPORTANT]
-> * Při přiřazování ACR ke svazku dbát na to, aby ke svazku současně nepřistupovalo více než jeden neclusterovaný hostitel, protože by to mohlo svazek poškodit.
-> * Při odstraňování ACR ze svazku se ujistěte, že odpovídající hostitel nemá přístup ke svazku, protože odstranění může vést k přerušení čtení a zápisu.
+> * Při přiřazování ACR ke svazku se ujistěte, že se ke svazku nepoužívá souběžně více než jeden neclusterovaný hostitel, protože by to mohlo poškodit svazek.
+> * Při odstraňování ACR ze svazku se ujistěte, že příslušný hostitel nepřistupuje ke svazku, protože odstranění může způsobit přerušení čtení a zápisu.
 
-## <a name="get-the-iqn"></a>Získejte IQN
+## <a name="get-the-iqn"></a>Získání názvu IQN
 
-Chcete-li získat iqn hostitele systému Windows se systémem Windows Server 2012, postupujte podle následujících kroků.
+Pomocí následujících kroků získejte identifikátor IQN hostitele systému Windows, na kterém běží systém Windows Server 2012.
 
 [!INCLUDE [storsimple-get-iqn](../../includes/storsimple-get-iqn.md)]
 
 
-## <a name="add-an-access-control-record"></a>Přidání záznamu řízení přístupu
-Část **Konfigurace** v okně služby Správce zařízení StorSimple slouží k přidání acrů. Obvykle přidružíte jeden ACR k jednomu svazku.
+## <a name="add-an-access-control-record"></a>Přidat záznam řízení přístupu
+Pomocí oddílu **Konfigurace** v okně StorSimple Device Manager služby můžete přidat záznamů ACR. Obvykle přiřadíte jeden ACR s jedním svazkem.
 
-Chcete-li přidat acr, proveďte následující kroky.
+Chcete-li přidat ACR, proveďte následující kroky.
 
 #### <a name="to-add-an-acr"></a>Přidání ACR
 
-1. Přejděte na službu Správce zařízení StorSimple, poklepejte na název služby a v části **Konfigurace** klepněte na **položku Záznamy řízení přístupu**.
-2. V okně **Záznamy řízení přístupu** klepněte na tlačítko **+ Přidat acr**.
+1. Přejděte na službu StorSimple Device Manager, dvakrát klikněte na název služby a potom v části **Konfigurace** klikněte na možnost **záznamy řízení přístupu**.
+2. V okně **záznamy řízení přístupu** klikněte na **+ Přidat ACR**.
 
     ![Klikněte na Přidat ACR](./media/storsimple-8000-manage-acrs/createacr1.png)
 
-3. V okně **Přidat acr** proveďte následující kroky:
+3. V okně **Přidat ACR** proveďte následující kroky:
 
-    1. Zadejte název acr.
+    1. Zadejte název svého ACR.
     
-    2. Pod **názvem iniciátoru iSCSI (IQN)** zadejte název IQN.
+    2. Zadejte název IQN hostitele Windows serveru v části **název iniciátoru iSCSI (IQN)**.
 
-    3. Chcete-li vytvořit acr, klepněte na **tlačítko Přidat.**
+    3. Kliknutím na **Přidat** vytvořte ACR.
 
         ![Klikněte na Přidat ACR](./media/storsimple-8000-manage-acrs/createacr2.png)
 
-4.  Nově přidaný ACR se zobrazí v tabulkovém výpisu ACR.
+4.  Nově přidané ACR se zobrazí v tabulkovém výpisu záznamů ACR.
 
     ![Klikněte na Přidat ACR](./media/storsimple-8000-manage-acrs/createacr5.png)
 
 
-## <a name="edit-an-access-control-record"></a>Úprava záznamu řízení přístupu
-Část **Konfigurace** v okně služby Správce zařízení StorSimple slouží k úpravám akrony.
+## <a name="edit-an-access-control-record"></a>Upravit záznam řízení přístupu
+V okně StorSimple Device Manager Service můžete použít **konfigurační** oddíl k úpravám záznamů ACR.
 
 > [!NOTE]
-> Doporučujeme upravit pouze ty akrové, které se aktuálně nepoužívají. Chcete-li upravit acr přidružený ke svazku, který je právě používán, je nutné jej nejprve převést do funkce offline.
+> Doporučujeme, abyste změnili pouze ty záznamů ACR, které se momentálně nepoužívají. Pokud chcete upravit ACR přidružené ke svazku, který se právě používá, musíte nejdřív svazek převést do režimu offline.
 
-Chcete-li upravit acr, proveďte následující kroky.
+Chcete-li upravit ACR, proveďte následující kroky.
 
-#### <a name="to-edit-an-access-control-record"></a>Úprava záznamu řízení přístupu
-1.  Přejděte na službu Správce zařízení StorSimple, poklepejte na název služby a v části **Konfigurace** klepněte na **položku Záznamy řízení přístupu**.
+#### <a name="to-edit-an-access-control-record"></a>Postup úpravy záznamu řízení přístupu
+1.  Přejděte na službu StorSimple Device Manager, dvakrát klikněte na název služby a potom v části **Konfigurace** klikněte na možnost **záznamy řízení přístupu**.
 
     ![Přejít na záznamy řízení přístupu](./media/storsimple-8000-manage-acrs/createacr1.png)
 
-2. V tabulkovém výpisu záznamů řízení přístupu klikněte a vyberte aCR, který chcete upravit.
+2. V tabulkovém výpisu záznamů řízení přístupu klikněte a vyberte ACR, který chcete upravit.
 
-    ![Úprava záznamů řízení přístupu](./media/storsimple-8000-manage-acrs/editacr1.png)
+    ![Upravit záznamy řízení přístupu](./media/storsimple-8000-manage-acrs/editacr1.png)
 
-3. V okně **Upravit záznam řízení přístupu** zadejte jiný IQN odpovídající jinému hostiteli.
+3. V okně **Upravit záznam řízení přístupu** zadejte jiný identifikátor IQN odpovídající jinému hostiteli.
 
-    ![Úprava záznamů řízení přístupu](./media/storsimple-8000-manage-acrs/editacr2.png)
+    ![Upravit záznamy řízení přístupu](./media/storsimple-8000-manage-acrs/editacr2.png)
 
 4. Klikněte na **Uložit**. Po zobrazení výzvy k potvrzení klikněte na **Ano**. 
 
-    ![Úprava záznamů řízení přístupu](./media/storsimple-8000-manage-acrs/editacr3.png)
+    ![Upravit záznamy řízení přístupu](./media/storsimple-8000-manage-acrs/editacr3.png)
 
-5. Budete upozorněni při aktualizaci ACR. Tabulkový výpis se také aktualizuje tak, aby odrážel změnu.
+5. Po aktualizaci ACR se zobrazí oznámení. V tabulkovém výpisu se také aktualizuje, aby odrážela změnu.
 
    
 ## <a name="delete-an-access-control-record"></a>Odstranění záznamu řízení přístupu
-Část **Konfigurace** v okně služby Správce zařízení StorSimple slouží k odstranění akrony.
+Pomocí oddílu **Konfigurace** v okně StorSimple Device Manager služby odstraníte záznamů ACR.
 
 > [!NOTE]
-> Můžete odstranit pouze ty akrové, které nejsou aktuálně používány. Chcete-li odstranit acr přidružený ke svazku, který je právě používán, je nutné nejprve převést svazek do offline.
+> Odstranit můžete jenom ty záznamů ACR, které se v tuto chvíli nepoužívají. Pokud chcete odstranit ACR přidružené ke svazku, který se právě používá, musíte nejdřív svazek převést do režimu offline.
 
 Chcete-li odstranit záznam řízení přístupu, proveďte následující kroky.
 
-#### <a name="to-delete-an-access-control-record"></a>Odstranění záznamu řízení přístupu
-1.  Přejděte na službu Správce zařízení StorSimple, poklepejte na název služby a v části **Konfigurace** klepněte na **položku Záznamy řízení přístupu**.
+#### <a name="to-delete-an-access-control-record"></a>Postup odstranění záznamu řízení přístupu
+1.  Přejděte na službu StorSimple Device Manager, dvakrát klikněte na název služby a potom v části **Konfigurace** klikněte na možnost **záznamy řízení přístupu**.
 
     ![Přejít na záznamy řízení přístupu](./media/storsimple-8000-manage-acrs/createacr1.png)
 
-2. V tabulkovém výpisu záznamů řízení přístupu klikněte a vyberte aCR, který chcete odstranit.
+2. V tabulkovém výpisu záznamů řízení přístupu klikněte a vyberte ACR, který chcete odstranit.
 
     ![Přejít na záznamy řízení přístupu](./media/storsimple-8000-manage-acrs/deleteacr1.png)
 
-3. Klepnutím pravým tlačítkem myši vyvoláte místní nabídku a vyberte **příkaz Odstranit**.
+3. Kliknutím pravým tlačítkem myši zavolejte kontextovou nabídku a vyberte možnost **Odstranit**.
 
     ![Přejít na záznamy řízení přístupu](./media/storsimple-8000-manage-acrs/deleteacr2.png)
 
-4. Po zobrazení výzvy k potvrzení zkontrolujte informace a klepněte na tlačítko **Odstranit**.
+4. Po zobrazení výzvy k potvrzení zkontrolujte informace a klikněte na **Odstranit**.
 
     ![Přejít na záznamy řízení přístupu](./media/storsimple-8000-manage-acrs/deleteacr3.png)
 
-5. Po dokončení odstranění budete upozorněni. Tabulkový výpis je aktualizován tak, aby odrážel odstranění.
+5. Po dokončení odstranění budete upozorněni. Tabulkový výpis je aktualizován, aby odrážel odstranění.
 
     ![Přejít na záznamy řízení přístupu](./media/storsimple-8000-manage-acrs/deleteacr5.png)
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o [správě svazků StorSimple](storsimple-8000-manage-volumes-u2.md).
-* Další informace o [použití služby StorSimple Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Přečtěte si další informace o [správě svazků StorSimple](storsimple-8000-manage-volumes-u2.md).
+* Přečtěte si další informace o [používání služby StorSimple Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

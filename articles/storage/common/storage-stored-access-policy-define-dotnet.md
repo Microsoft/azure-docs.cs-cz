@@ -1,6 +1,6 @@
 ---
-title: Definování zásad uloženého přístupu pomocí rozhraní .NET – Azure Storage
-description: Zjistěte, jak definovat uložené zásady přístupu pomocí knihovny klienta .NET.
+title: Definování zásad uloženého přístupu pomocí .NET – Azure Storage
+description: Naučte se definovat uložené zásady přístupu pomocí klientské knihovny .NET.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,31 +10,31 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 272d676d0a5a55262b1c68d0bae9a9ab229df72c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "68990738"
 ---
-# <a name="define-a-stored-access-policy-with-net"></a>Definování zásad uloženého přístupu pomocí rozhraní .NET
+# <a name="define-a-stored-access-policy-with-net"></a>Definování uložených zásad přístupu pomocí .NET
 
-Uložené zásady přístupu poskytuje další úroveň kontroly nad podpisy sdíleného přístupu (SAS) na úrovni služby na straně serveru. Definování zásad y uloženého přístupu slouží k seskupení sdílených přístupových podpisů a k poskytnutí dalších omezení pro podpisy sdíleného přístupu, které jsou zásadami vázány. Uložené zásady přístupu můžete použít ke změně času zahájení, času vypršení platnosti nebo oprávnění pro SAS nebo k jeho odvolání po jeho vydání.
+Zásady uloženého přístupu poskytují další úroveň kontroly nad škálováním na straně serveru na úrovni služby (SAS) na straně serveru. Definováním uložených zásad přístupu můžete seskupit signatury sdíleného přístupu a poskytnout dodatečná omezení pro sdílené přístupové podpisy, které jsou vázány zásadou. Pomocí uložených zásad přístupu můžete změnit čas spuštění, čas vypršení platnosti nebo oprávnění pro SAS nebo ho odvolat po jeho vydání.
   
- Následující prostředky úložiště podporují uložené zásady přístupu:  
+ Uložené zásady přístupu podporují následující prostředky úložiště:  
   
-- Kontejnery s objekty blob  
+- Kontejnery objektů BLOB  
 - Sdílené složky  
 - Fronty  
 - Tabulky  
   
 > [!NOTE]
-> Uložené zásady přístupu v kontejneru lze přidružit ke sdílenému přístupu podpis udělující oprávnění ke samotnému kontejneru nebo objekty BLOB, které obsahuje. Podobně uložené zásady přístupu ke sdílené složce mohou být přidruženy ke sdílenému přístupovému podpisu udělujícímu oprávnění samotné sdílené složce nebo souborům, které obsahuje.  
+> Uložené zásady přístupu na kontejneru mohou být přidruženy ke sdílenému přístupovému podpisu, který uděluje oprávnění samotnému kontejneru nebo objektům blob, které obsahuje. Podobně platí, že uložené zásady přístupu ve sdílené složce je možné přidružit ke sdílenému přístupovému podpisu, který uděluje oprávnění ke sdílené složce nebo k souborům, které obsahuje.  
 >
-> Uložené zásady přístupu jsou podporovány pouze pro službu SAS. Uložené zásady přístupu nejsou podporovány pro účet SAS nebo uživatelské delegování SAS.  
+> Uložené zásady přístupu se podporují jenom pro SAS služby. Uložené zásady přístupu se pro SAS účtu nebo delegování uživatelů nepodporují.  
 
-## <a name="create-a-stored-access-policy"></a>Vytvoření uložených zásad přístupu
+## <a name="create-a-stored-access-policy"></a>Vytvoření uložené zásady přístupu
 
-Následující kód vytvoří uložené zásady přístupu v kontejneru. Pomocí zásad přístupu můžete určit omezení pro službu SAS v kontejneru nebo jeho objekty BLOB.
+Následující kód vytvoří uloženou zásadu přístupu na kontejneru. Zásady přístupu můžete použít k určení omezení pro SAS služby na kontejneru nebo v jeho objektech blob.
 
 ```csharp
 private static async Task CreateStoredAccessPolicyAsync(CloudBlobContainer container, string policyName)
@@ -60,6 +60,6 @@ private static async Task CreateStoredAccessPolicyAsync(CloudBlobContainer conta
 
 ## <a name="see-also"></a>Viz také
 
-- [Udělit omezený přístup k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)](storage-sas-overview.md)
+- [Udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)](storage-sas-overview.md)
 - [Definování uložených zásad přístupu](/rest/api/storageservices/define-stored-access-policy)
 

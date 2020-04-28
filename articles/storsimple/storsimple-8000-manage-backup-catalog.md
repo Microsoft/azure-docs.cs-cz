@@ -1,6 +1,6 @@
 ---
-title: Správa katalogu zálohování StorSimple | Dokumenty společnosti Microsoft
-description: Vysvětluje, jak používat stránku katalogu zálohování služby Správce zařízení StorSimple pro zobrazení, výběr a odstranění zálohovacích sad.
+title: Správa katalogu zálohování StorSimple | Microsoft Docs
+description: Vysvětluje způsob použití stránky katalogu zálohování služby StorSimple Device Manager k vypsání, výběru a odstranění zálohovacích skladů.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,101 +15,101 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 07d9e03f1631ebce88a7a7c2e33be62f21dda522
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60319619"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-manage-your-backup-catalog"></a>Ke správě katalogu záloh použijte službu StorSimple Device Manager.
+# <a name="use-the-storsimple-device-manager-service-to-manage-your-backup-catalog"></a>Správa katalogu záloh pomocí služby StorSimple Device Manager
 ## <a name="overview"></a>Přehled
-Okno **Katalog zálohování** služby StorSimple Device Manager zobrazuje všechny zálohovací sady, které jsou vytvořeny při ručním nebo naplánovaném zálohování. Na této stránce můžete vypsat všechny zálohy pro zásady zálohování nebo svazek, vybrat nebo odstranit zálohy nebo použít zálohu k obnovení nebo klonování svazku.
+V okně StorSimple Device Manager Service **Backup Catalog** se zobrazí všechny zálohovací sklady, které se vytvoří při ručním nebo plánovaném zálohování. Pomocí této stránky můžete zobrazit seznam všech záloh pro zásady zálohování nebo svazek, vybrat nebo odstranit zálohy nebo použít zálohu k obnovení nebo klonování svazku.
 
-Tento kurz vysvětluje, jak vypsat, vybrat a odstranit zálohovací sadu. Chcete-li se dozvědět, jak obnovit zařízení ze zálohy, přejděte na [obnovit zařízení ze zálohovací sady](storsimple-8000-restore-from-backup-set-u2.md). Chcete-li se dozvědět, jak klonovat svazek, přejděte na [Clone a StorSimple svazek](storsimple-8000-clone-volume-u2.md).
+Tento kurz vysvětluje, jak vytvořit seznam, vybrat a odstranit zálohovací sklad. Informace o tom, jak obnovit zařízení ze zálohy, najdete [v tématu Obnovení zařízení ze zálohovacího skladu](storsimple-8000-restore-from-backup-set-u2.md). Informace o tom, jak klonovat svazek, najdete v tématu [klonování svazku StorSimple](storsimple-8000-clone-volume-u2.md).
 
 ![Katalog záloh](./media/storsimple-8000-manage-backup-catalog/bucatalog.png) 
 
-Okno **Katalog zálohování** poskytuje dotaz na zúžení výběru zálohovací sady. Načtení zálohovacích sad můžete filtrovat na základě následujících parametrů:
+Okno **katalog záloh** poskytuje dotaz pro zúžení výběru zálohovacích skladů. Načtené zálohovací sady můžete filtrovat na základě následujících parametrů:
 
-* **Zařízení** – zařízení, na kterém byla vytvořena zálohovací sada.
-* **Zásady zálohování nebo svazek** – zásady zálohování nebo svazek přidružené k této zálohovací sadě.
-* **Od a Do** – datum a časový rozsah, kdy byla vytvořena zálohovací sada.
+* **Zařízení** – zařízení, na kterém se vytvořil zálohovací sklad.
+* **Zásady zálohování nebo svazek** – zásady zálohování nebo svazek přidružené k tomuto zálohovacímu skladu.
+* **Od a do** – rozsah data a času, kdy byl zálohovací sklad vytvořen.
 
-Filtrované zálohovací sady jsou pak tabulkovány na základě následujících atributů:
+Filtrované zálohovací sklady jsou pak na základě těchto atributů:
 
-* **Název** – název zásady zálohování nebo svazku přidruženého k zálohovací sadě.
-* **Velikost** – skutečná velikost zálohovací sady.
-* **Vytvořeno –** datum a čas, kdy byly vytvořeny zálohy. 
-* **Typ** – zálohovací sady mohou být místní snímky nebo cloudové snímky. Místní snímek je záloha všech dat svazku uložených místně v zařízení, zatímco snímek cloudu odkazuje na zálohování dat svazku s bydlištěm v cloudu. Místní snímky poskytují rychlejší přístup, zatímco cloudové snímky jsou vybrány pro odolnost proti chybám dat.
-* **Iniciováno –** zálohy mohou být automaticky inicializovány podle plánu nebo ručně uživatelem. Zásady zálohování můžete použít k plánování zálohování. Alternativně můžete použít možnost **Převzít zálohu** k ručnímu zálohování.
+* **Název** – název zásady zálohování nebo svazku přidruženého k zálohovacímu skladu.
+* **Size** – skutečná velikost zálohovacího skladu.
+* **Vytvořeno** – datum a čas vytvoření zálohy. 
+* **Typ** – zálohovací sklady můžou být místní snímky nebo cloudové snímky. Místní snímek je záloha všech dat svazků uložených místně na zařízení, zatímco cloudový snímek odkazuje na zálohování dat svazků umístěných v cloudu. Místní snímky poskytují rychlejší přístup, zatímco se pro zajištění odolnosti dat volí cloudové snímky.
+* **Iniciováno** – zálohy je možné iniciovat automaticky podle plánu nebo ručně uživatelem. K naplánování záloh můžete použít zásady zálohování. Alternativně můžete použít možnost **provést zálohování** a provést ruční zálohování.
 
-## <a name="list-backup-sets-for-a-backup-policy"></a>Seznam zálohovacích sad pro zásady zálohování
-Pomocí následujících kroků zobrazíte seznam všech záloh pro zásady zálohování.
+## <a name="list-backup-sets-for-a-backup-policy"></a>Seznam zálohovacích skladů pro zásady zálohování
+Provedením následujících kroků zobrazíte seznam všech záloh pro zásady zálohování.
 
 #### <a name="to-list-backup-sets"></a>Seznam zálohovacích sad
-1. Přejděte na službu Správce zařízení StorSimple a klepněte na tlačítko **Zálohovat katalog**.
+1. Přejděte do služby StorSimple Device Manager a klikněte na **katalog záloh**.
 
-2. Výběry můžete filtrovat následujícím způsobem:
+2. Filtrovat výběry následujícím způsobem:
    
    1. Zadejte časový rozsah.
    2. Vyberte příslušné zařízení.
-   3. Filtrovat **podle zásady zálohování** zobrazíte odpovídající zálohy.
-   3. V rozevíracím seznamu zásad zálohování zvolte **Vše,** chcete-li zobrazit všechny zálohy na vybraném zařízení.
-   4. Chcete-li spustit tento dotaz, klepněte na **tlačítko Použít.**
+   3. Filtrovat podle **zásad zálohování** , aby se zobrazily odpovídající zálohy.
+   3. V rozevíracím seznamu zásady zálohování vyberte možnost **vše** , pokud chcete zobrazit všechny zálohy na vybraném zařízení.
+   4. Kliknutím na **použít** spusťte tento dotaz.
       
-      Zálohy přidružené k vybrané zásadě zálohování by se měly objevit v seznamu zálohovacích sad.
+      Zálohy přidružené k vybraným zásadám zálohování by se měly zobrazit v seznamu zálohovacích skladů.
 
-      ![Přejít do katalogu záloh](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
+      ![Přejít na katalog záloh](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
 
-## <a name="select-a-backup-set"></a>Výběr zálohovací sady
-Chcete-li vybrat zálohovací sadu pro zásady svazku nebo zálohování, proveďte následující kroky.
+## <a name="select-a-backup-set"></a>Vybrat zálohovací sklad
+Provedením následujících kroků vyberte zálohovací sklad pro svazek nebo zásady zálohování.
 
-#### <a name="to-select-a-backup-set"></a>Výběr zálohovací sady
-1. Přejděte na službu Správce zařízení StorSimple a klepněte na tlačítko **Zálohovat katalog**.
-2. Výběry můžete filtrovat následujícím způsobem:
+#### <a name="to-select-a-backup-set"></a>Výběr zálohovacího sady
+1. Přejděte do služby StorSimple Device Manager a klikněte na **katalog záloh**.
+2. Filtrovat výběry následujícím způsobem:
    
    1. Zadejte časový rozsah. 
    2. Vyberte příslušné zařízení. 
-   3. Umožňuje vytvořit možnost Filtrovat podle svazku nebo zásady zálohování pro zálohu, kterou chcete vybrat.
-   4. Chcete-li spustit tento dotaz, klepněte na **tlačítko Použít.**
+   3. Vyfiltrujte podle svazku nebo zásad zálohování pro zálohu, kterou chcete vybrat.
+   4. Kliknutím na **použít** spusťte tento dotaz.
       
-      Zálohy přidružené k vybranému svazku nebo zásady zálohování by se měly objevit v seznamu zálohovacích sad.
+      Zálohy přidružené k vybranému svazku nebo zásadám zálohování by se měly zobrazit v seznamu zálohovacích skladů.
 
-      ![Přejít do katalogu záloh](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
+      ![Přejít na katalog záloh](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
 
-3. Vyberte a rozbalte zálohovací sklad. Nyní můžete zobrazit zálohovací sady rozdělené podle svazků, které obsahuje. Možnosti **Obnovit** a **odstranit** jsou k dispozici prostřednictvím kontextové nabídky (klepnutí pravým tlačítkem myši) pro zálohovací sadu. Některou z těchto akcí můžete provést ve vybrané zálohovací sadě.
+3. Vyberte a rozbalte zálohovací sklad. Teď vidíte zálohovací sklady, které jsou rozdělené podle svazků, které obsahuje. Možnosti **obnovení** a **odstranění** jsou k dispozici prostřednictvím místní nabídky (klikněte pravým tlačítkem myši) pro zálohovací sklad. Můžete provést jednu z těchto akcí pro zálohovací sklad, který jste vybrali.
 
-    ![Přejít do katalogu záloh](./media/storsimple-8000-manage-backup-catalog/bucatalog2.png)
+    ![Přejít na katalog záloh](./media/storsimple-8000-manage-backup-catalog/bucatalog2.png)
 
-## <a name="delete-a-backup-set"></a>Odstranění zálohovací sady
-Pokud již nechcete zachovat data, která jsou k ní přidružena, odstraňte zálohu. Chcete-li odstranit zálohovací sklad, proveďte následující kroky.
+## <a name="delete-a-backup-set"></a>Odstraní zálohovací sklad.
+Pokud už nechcete uchovávat data, která jsou k němu přidružená, odstraňte zálohu. Chcete-li odstranit zálohovací sklad, proveďte následující kroky.
 
-#### <a name="to-delete-a-backup-set"></a>Odstranění zálohovací sady
- Přejděte na službu Správce zařízení StorSimple a klepněte na tlačítko **Zálohovat katalog**.
-1. Výběry můžete filtrovat následujícím způsobem:
+#### <a name="to-delete-a-backup-set"></a>Odstranění zálohovacího skladu
+ Přejděte do služby StorSimple Device Manager a klikněte na **katalog záloh**.
+1. Filtrovat výběry následujícím způsobem:
    
    1. Zadejte časový rozsah. 
    2. Vyberte příslušné zařízení. 
-   3. Umožňuje vytvořit možnost Filtrovat podle svazku nebo zásady zálohování pro zálohu, kterou chcete vybrat.
-   4. Chcete-li spustit tento dotaz, klepněte na **tlačítko Použít.**
+   3. Vyfiltrujte podle svazku nebo zásad zálohování pro zálohu, kterou chcete vybrat.
+   4. Kliknutím na **použít** spusťte tento dotaz.
       
-      Zálohy přidružené k vybranému svazku nebo zásady zálohování by se měly objevit v seznamu zálohovacích sad.
+      Zálohy přidružené k vybranému svazku nebo zásadám zálohování by se měly zobrazit v seznamu zálohovacích skladů.
 
-      ![Přejít do katalogu záloh](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
+      ![Přejít na katalog záloh](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
 
-1. Vyberte a rozbalte zálohovací sklad. Nyní můžete zobrazit zálohovací sady rozdělené podle svazků, které obsahuje. Možnosti **Obnovit** a **odstranit** jsou k dispozici prostřednictvím kontextové nabídky (klepnutí pravým tlačítkem myši) pro zálohovací sadu. Klepněte pravým tlačítkem myši na vybranou zálohovací sadu a v místní nabídce vyberte **příkaz Odstranit**.
+1. Vyberte a rozbalte zálohovací sklad. Teď vidíte zálohovací sklady, které jsou rozdělené podle svazků, které obsahuje. Možnosti **obnovení** a **odstranění** jsou k dispozici prostřednictvím místní nabídky (klikněte pravým tlačítkem myši) pro zálohovací sklad. Klikněte pravým tlačítkem na vybraný zálohovací sklad a v místní nabídce vyberte **Odstranit**.
 
-    ![Přejít do katalogu záloh](./media/storsimple-8000-manage-backup-catalog/bucatalog3.png)
+    ![Přejít na katalog záloh](./media/storsimple-8000-manage-backup-catalog/bucatalog3.png)
 
-1. Po zobrazení výzvy k potvrzení zkontrolujte zobrazené informace a klepněte na tlačítko **Odstranit**. Vybraná záloha bude trvale odstraněna.
+1. Po zobrazení výzvy k potvrzení Zkontrolujte zobrazené informace a klikněte na **Odstranit**. Vybraná záloha se trvale odstraní.
 
-    ![Přejít do katalogu záloh](./media/storsimple-8000-manage-backup-catalog/bucatalog4.png)  
+    ![Přejít na katalog záloh](./media/storsimple-8000-manage-backup-catalog/bucatalog4.png)  
 
-1. Budete upozorněni, když probíhá odstranění a kdy bylo úspěšně dokončeno. Po dokončení odstranění aktualizujte dotaz na této stránce. Odstraněná zálohovací sada se již nebude zobrazovat v seznamu zálohovacích sad.
+1. Když Probíhá odstraňování a když se úspěšně dokončí, zobrazí se oznámení. Po dokončení odstranění aktualizujte dotaz na této stránce. Odstraněný zálohovací sklad se už nebude zobrazovat v seznamu zálohovacích skladů.
 
-    ![Přejít do katalogu záloh](./media/storsimple-8000-manage-backup-catalog/bucatalog7.png)
+    ![Přejít na katalog záloh](./media/storsimple-8000-manage-backup-catalog/bucatalog7.png)
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si, jak [pomocí katalogu záloh obnovit zařízení ze zálohovací sady](storsimple-8000-restore-from-backup-set-u2.md).
-* Přečtěte si, jak [používat službu StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Naučte se [používat katalog záloh k obnovení zařízení ze zálohovacího skladu](storsimple-8000-restore-from-backup-set-u2.md).
+* Naučte se [používat službu StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

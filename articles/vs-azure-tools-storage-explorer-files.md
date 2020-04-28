@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
 ms.openlocfilehash: fe3a8ab5b43c41b7e9f79f92de674515377fa9ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60456607"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>Použití Storage Exploreru se službou Azure File Storage
@@ -31,7 +31,7 @@ K dokončení kroků v tomto článku budete potřebovat následující:
 
 - [Stažení a instalace Průzkumníka služby Storage](https://www.storageexplorer.com/)
 
-- [Připojení k účtu úložiště nebo službě Azure](https://docs.microsoft.com//azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
+- [Připojení k účtu nebo službě Azure Storage](https://docs.microsoft.com//azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-file-share"></a>Vytvoření sdílené složky
 
@@ -89,7 +89,7 @@ Následující postup ukazuje odstranění sdílené složky v Průzkumníkovi s
 
 1. Klikněte pravým tlačítkem na sdílenou složku, kterou chcete odstranit, a v místní nabídce vyberte **Odstranit**. Můžete také stisknout klávesu **Delete** a odstranit tak aktuálně vybranou sdílenou složku.
 
-    ![Odstranění](media/vs-azure-tools-storage-explorer-files/image6.png)
+    ![Odstranit](media/vs-azure-tools-storage-explorer-files/image6.png)
 
 1. V potvrzovacím dialogovém okně klikněte na **Ano**.
     
@@ -207,7 +207,7 @@ Následující postup ukazuje, jak spravovat soubory (a složky) v rámci sdíle
 
         ![Přidání souborů](media/vs-azure-tools-storage-explorer-files/image19.png)
 
-        c. Vyberte **Nahrát**.
+        c. Vyberte **nahrát**.
 
     - **Nahrání složky do sdílené složky**
         
@@ -219,7 +219,7 @@ Následující postup ukazuje, jak spravovat soubory (a složky) v rámci sdíle
 
         c. Volitelně můžete zadat cílovou složku, do které se obsah vybrané složky nahraje. Pokud cílová složka neexistuje, vytvoří se.
 
-        d. Vyberte **Nahrát**.
+        d. Vyberte **nahrát**.
 
     - **Stažení souboru na místní počítač**
         

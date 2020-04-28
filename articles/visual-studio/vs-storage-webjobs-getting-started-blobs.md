@@ -1,6 +1,6 @@
 ---
-title: Začínáme s úložištěm objektů blob pomocí sady Visual Studio (projekty WebJob)
-description: Jak začít používat úložiště objektů Blob v projektu WebJob po připojení k úložišti Azure pomocí připojených služeb Visual Studia.
+title: Začínáme s úložištěm objektů BLOB pomocí sady Visual Studio (projekty WebJob)
+description: Jak začít používat úložiště objektů BLOB v projektu webové úlohy po připojení ke službě Azure Storage pomocí připojených služeb sady Visual Studio.
 services: storage
 author: ghogen
 manager: jillfra
@@ -14,25 +14,25 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 90aa824b7df575eb2783ece5bd88322f0b55f0a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72299981"
 ---
-# <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>Začínáme s úložištěm objektů blob Azure a připojenými službami Visual Studia (projekty WebJob)
+# <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>Začínáme s Azure Blob Storage a připojenými službami sady Visual Studio (projekty WebJob)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>Přehled
-Tento článek obsahuje ukázky kódu jazyka C#, které ukazují, jak spustit proces při vytvoření nebo aktualizaci objektu blob Azure. Ukázky kódu používají [webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) verze 1.x. Když přidáte účet úložiště do projektu WebJob pomocí dialogového okna **Přidat připojené služby** sady Visual Studio, nahraje se příslušný balíček Azure Storage NuGet, do projektu se přidají příslušné odkazy .NET a v souboru App.config se aktualizují připojovací řetězce pro účet úložiště.
+Tento článek obsahuje ukázky kódu C#, které ukazují, jak aktivovat proces při vytvoření nebo aktualizaci objektu BLOB v Azure. Ukázky kódu používají [sadu WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) verze 1. x. Když přidáte účet úložiště do projektu webové úlohy pomocí dialogu **Přidat připojené služby** sady Visual Studio, nainstaluje se příslušný balíček NuGet Azure Storage, do projektu se přidají příslušné odkazy .NET a v souboru App. config se aktualizují připojovací řetězce pro účet úložiště.
 
-## <a name="how-to-trigger-a-function-when-a-blob-is-created-or-updated"></a>Jak spustit funkci při vytvoření nebo aktualizaci objektu blob
-Tato část ukazuje, jak používat atribut **BlobTrigger.**
+## <a name="how-to-trigger-a-function-when-a-blob-is-created-or-updated"></a>Jak aktivovat funkci při vytvoření nebo aktualizaci objektu BLOB
+V této části se dozvíte, jak použít atribut **BlobTrigger** .
 
- **Poznámka:** Sada WebJobs SDK prohledá soubory protokolu a sleduje nové nebo změněné objekty BLOB. Tento proces je ze své podstaty pomalý; funkce nemusí získat spuštěna až několik minut nebo déle po vytvoření objektu blob.  Pokud vaše aplikace potřebuje okamžitě zpracovat objekty BLOB, doporučuje se vytvořit zprávu fronty při vytváření objektu blob a použít atribut **QueueTrigger** namísto atributu **BlobTrigger** na funkci, která objekt blob zpracovává.
+ **Poznámka:** Sada WebJobs SDK prohledává soubory protokolů, které se mají sledovat pro nové nebo změněné objekty blob. Tento proces je z jeho podstaty pomalý. funkce se nemusí aktivovat, dokud neproběhne několik minut nebo déle po vytvoření objektu BLOB.  Pokud vaše aplikace potřebuje zpracovat objekty blob okamžitě, doporučuje se při vytváření objektu BLOB vytvořit zprávu fronty a použít atribut **QueueTrigger** namísto atributu **BlobTrigger** ve funkci, která objekt BLOB zpracovává.
 
-### <a name="single-placeholder-for-blob-name-with-extension"></a>Jediný zástupný symbol pro název objektu blob s příponou
-Následující ukázkový kód zkopíruje objekty BLOB textu, které se zobrazují ve *vstupním* kontejneru, do *výstupního* kontejneru:
+### <a name="single-placeholder-for-blob-name-with-extension"></a>Jeden zástupný symbol pro název objektu BLOB s příponou
+Následující ukázka kódu kopíruje textové objekty blob, které se zobrazí ve *vstupním* kontejneru do *výstupního* kontejneru:
 
         public static void CopyBlob([BlobTrigger("input/{name}")] TextReader input,
             [Blob("output/{name}")] out string output)
@@ -40,9 +40,9 @@ Následující ukázkový kód zkopíruje objekty BLOB textu, které se zobrazuj
             output = input.ReadToEnd();
         }
 
-Konstruktor atributu přebírá parametr řetězce, který určuje název kontejneru a zástupný symbol pro název objektu blob. V tomto příkladu pokud je ve *vstupním* kontejneru vytvořen objekt blob s názvem *Blob1.txt,* funkce vytvoří objekt blob s názvem *Blob1.txt* ve *výstupním* kontejneru.
+Konstruktor atributu přebírá řetězcový parametr, který určuje název kontejneru a zástupný symbol pro název objektu BLOB. Pokud je v tomto příkladu vytvořený objekt BLOB s názvem *Blob1. txt* ve *vstupním* kontejneru, funkce vytvoří ve *výstupním* kontejneru objekt BLOB s názvem *Blob1. txt* .
 
-Můžete určit vzor názvu se zástupným symbolem názvu objektu blob, jak je znázorněno v následující ukázce kódu:
+Můžete zadat vzor názvu se zástupným symbolem názvu objektu blob, jak je znázorněno v následujícím příkladu kódu:
 
         public static void CopyBlob([BlobTrigger("input/original-{name}")] TextReader input,
             [Blob("output/copy-{name}")] out string output)
@@ -50,20 +50,20 @@ Můžete určit vzor názvu se zástupným symbolem názvu objektu blob, jak je 
             output = input.ReadToEnd();
         }
 
-Tento kód zkopíruje pouze objekty BLOB, které mají názvy začínající na "original-". Například *original-Blob1.txt* ve *vstupním* kontejneru je zkopírován do *copy-Blob1.txt* ve *výstupním* kontejneru.
+Tento kód zkopíruje pouze objekty blob, jejichž názvy začínají řetězcem "původní –". Například *Original-Blob1. txt* ve *vstupním* kontejneru je zkopírován do *copy-Blob1. txt* ve *výstupním* kontejneru.
 
-Pokud potřebujete zadat vzor názvu pro názvy objektů blob, které mají složené závorky v názvu, zdvojnásobte složené závorky. Například pokud chcete najít objekty BLOB v kontejneru *obrázků,* které mají názvy, jako je tento:
+Pokud potřebujete zadat vzor názvu pro názvy objektů blob, které mají složené závorky v názvu, poklikejte na složené závorky. Například pokud chcete najít objekty BLOB v kontejneru *images* , které mají název takto:
 
         {20140101}-soundfile.mp3
 
-použijte pro váš vzor:
+Použijte tento vzor:
 
         images/{{20140101}}-{name}
 
-V příkladu by zástupná hodnota *názvu* byla *soundfile.mp3*.
+V příkladu je hodnota zástupný symbol *názvu* *soundfile. mp3*.
 
-### <a name="separate-blob-name-and-extension-placeholders"></a>Samostatné zástupné symboly názvů objektů blob a rozšíření
-Následující ukázka kódu změní příponu souboru, protože kopíruje objekty BLOB, které se zobrazují ve *vstupním* kontejneru, do *výstupního* kontejneru. Kód protokoluje rozšíření *vstupního* objektu blob a nastaví rozšíření *výstupního* objektu blob na *.txt*.
+### <a name="separate-blob-name-and-extension-placeholders"></a>Oddělitelné zástupné symboly pro název a rozšíření objektu BLOB
+Následující ukázka kódu změní příponu souboru při kopírování objektů blob, které se zobrazí ve *vstupním* kontejneru do *výstupního* kontejneru. Kód protokoluje rozšíření *vstupního* objektu BLOB a nastaví rozšíření *výstupního* objektu BLOB na *. txt*.
 
         public static void CopyBlobToTxtFile([BlobTrigger("input/{name}.{ext}")] TextReader input,
             [Blob("output/{name}.txt")] out string output,
@@ -76,21 +76,21 @@ Následující ukázka kódu změní příponu souboru, protože kopíruje objek
             output = input.ReadToEnd();
         }
 
-## <a name="types-that-you-can-bind-to-blobs"></a>Typy, které lze svázat s objekty BLOB
-Atribut **BlobTrigger** můžete použít u následujících typů:
+## <a name="types-that-you-can-bind-to-blobs"></a>Typy, které můžete navazovat na objekty blob
+Atribut **BlobTrigger** lze použít pro následující typy:
 
-* **Řetězec**
-* **Textreader**
+* **řetězec**
+* **Elementu**
 * **Datový proud**
 * **ICloudBlob**
 * **CloudBlockBlob**
 * **CloudPageBlob**
-* Jiné typy rekonstruované pomocí [ICloudBlobStreamBinder](#getting-serialized-blob-content-by-using-icloudblobstreambinder)
+* Jiné typy deserializovatelné pomocí [ICloudBlobStreamBinder](#getting-serialized-blob-content-by-using-icloudblobstreambinder)
 
-Pokud chcete pracovat přímo s účtem úložiště Azure, můžete také přidat parametr **CloudStorageAccount** k podpisu metody.
+Pokud chcete pracovat přímo s účtem služby Azure Storage, můžete do signatury metody přidat také parametr **CloudStorageAccount** .
 
-## <a name="getting-text-blob-content-by-binding-to-string"></a>Získání obsahu textového objektu blob vazbou na řetězec
-Pokud jsou očekávány objekty BLOB textu, **blobTrigger** lze použít na parametr **řetězce.** Následující ukázka kódu sváže textový objekt blob s parametrem **řetězce** s názvem **logMessage**. Funkce používá tento parametr k zápisu obsahu objektu blob na řídicí panel WebJobs SDK.
+## <a name="getting-text-blob-content-by-binding-to-string"></a>Získání obsahu objektu BLOB s textem vazbou na řetězec
+Pokud je očekáváno textové objekty blob, lze **BlobTrigger** použít na **řetězcový** parametr. Následující ukázka kódu váže objekt BLOB objektu na **řetězcový** parametr s názvem **LogMessage –**. Funkce používá tento parametr k zápisu obsahu objektu blob do řídicího panelu sady WebJobs SDK.
 
         public static void WriteLog([BlobTrigger("input/{name}")] string logMessage,
             string name,
@@ -101,8 +101,8 @@ Pokud jsou očekávány objekty BLOB textu, **blobTrigger** lze použít na para
              logger.WriteLine(logMessage);
         }
 
-## <a name="getting-serialized-blob-content-by-using-icloudblobstreambinder"></a>Získání serializovaného obsahu objektů blob pomocí iCloudBlobStreamBinder
-Následující ukázka kódu používá třídu, která implementuje **ICloudBlobStreamBinder** k povolení atributu **BlobTrigger** k vytvoření svázání objektu blob s typem **WebImage.**
+## <a name="getting-serialized-blob-content-by-using-icloudblobstreambinder"></a>Získání serializovaného obsahu objektů BLOB pomocí ICloudBlobStreamBinder
+Následující ukázka kódu používá třídu, která implementuje **ICloudBlobStreamBinder** , aby atribut **BlobTrigger** mohl vytvořit vazby objektu BLOB k typu **webimage** .
 
         public static void WaterMark(
             [BlobTrigger("images3/{name}")] WebImage input,
@@ -121,7 +121,7 @@ Následující ukázka kódu používá třídu, která implementuje **ICloudBlo
             output = input.Resize(width, height);
         }
 
-Kód vazby **WebImage** je k dispozici ve třídě **WebImageBinder,** která je odvozena od **iCloudBlobStreamBinder**.
+Kód vazby **webimage** je k dispozici ve třídě **WebImageBinder** , která je odvozena od **ICloudBlobStreamBinder**.
 
         public class WebImageBinder : ICloudBlobStreamBinder<WebImage>
         {
@@ -138,20 +138,20 @@ Kód vazby **WebImage** je k dispozici ve třídě **WebImageBinder,** která je
             }
         }
 
-## <a name="how-to-handle-poison-blobs"></a>Jak zacházet s jedovatými kuličky
-Pokud funkce **BlobTrigger** selže, sada SDK ji znovu zavolá v případě, že selhání bylo způsobeno přechodnou chybou. Pokud je selhání způsobeno obsahem objektu blob, funkce se nezdaří pokaždé, když se pokusí zpracovat objekt blob. Ve výchozím nastavení sada SDK volá funkci až pětkrát pro daný objekt blob. Pokud pátý pokus selže, sada SDK přidá zprávu do fronty s názvem *webjobs-blobtrigger-poison*.
+## <a name="how-to-handle-poison-blobs"></a>Postup zpracování poškozených objektů BLOB
+Pokud dojde k selhání funkce **BlobTrigger** , sada SDK ji znovu volá, pokud by selhání způsobila přechodná chyba. Pokud je selhání způsobeno obsahem objektu blob, funkce selže při každém pokusu o zpracování objektu BLOB. Sada SDK ve výchozím nastavení volá funkci pro daný objekt BLOB až pětkrát. Pokud se pátý pokus nezdařil, sada SDK přidá zprávu do fronty s názvem *WebJobs-blobtrigger-otrav*.
 
-Maximální počet opakování je konfigurovatelný. Stejné nastavení **MaxDequeueCount** se používá pro zpracování objektu blob poison a zpracování zpráv fronty poison.
+Maximální počet opakovaných pokusů lze konfigurovat. Stejné nastavení **MaxDequeueCount** se používá pro zpracování poškozeného objektu BLOB a zpracování zpráv z fronty otrav.
 
-Zpráva fronty pro poškozená objekty BLOB je objekt JSON, který obsahuje následující vlastnosti:
+Zpráva fronty pro poškozené objekty BLOB je objekt JSON, který obsahuje následující vlastnosti:
 
-* FunctionId (ve formátu *{WebJob name}*. Funkce. *{Název funkce}*, například WebJob1.Functions.CopyBlob)
+* FunctionId (ve formátu *{název webové úlohy}*. POZVYHLEDAT. *{Function Name}* například: WebJob1. Functions. CopyBlob)
 * BlobType ("BlockBlob" nebo "PageBlob")
 * ContainerName
-* Název objektu BlobName
-* ETag (identifikátor verze objektu blob, například "0x8D1DC6E70A277EF")
+* BlobName
+* ETag (identifikátor verze objektu blob, například: "0x8D1DC6E70A277EF")
 
-V následující ukázce kódu **copyblob** funkce má kód, který způsobí, že se nezdaří pokaždé, když je volána. Poté, co sada SDK volá pro maximální počet opakování, je vytvořena zpráva ve frontě poškozená objektová báze a tato zpráva je zpracována funkcí **LogPoisonBlob.**
+V následující ukázce kódu má funkce **CopyBlob** kód, který způsobí, že se chyba pokaždé, když je volána. Po volání sady SDK k maximálnímu počtu opakovaných pokusů se vytvoří zpráva ve frontě objektů BLOB v nepoškozeném systému a tato zpráva se zpracuje funkcí **LogPoisonBlob** .
 
         public static void CopyBlob([BlobTrigger("input/{name}")] TextReader input,
             [Blob("textblobs/output-{name}")] out string output)
@@ -171,7 +171,7 @@ V následující ukázce kódu **copyblob** funkce má kód, který způsobí, �
             logger.WriteLine("ETag: {0}", message.ETag);
         }
 
-Sada SDK automaticky rekonstruuje zprávu JSON. Zde je **Třída PoisonBlobMessage:**
+Sada SDK automaticky rekonstruuje zprávu JSON. Tady je třída **PoisonBlobMessage** :
 
         public class PoisonBlobMessage
         {
@@ -182,41 +182,41 @@ Sada SDK automaticky rekonstruuje zprávu JSON. Zde je **Třída PoisonBlobMessa
             public string ETag { get; set; }
         }
 
-### <a name="blob-polling-algorithm"></a>Algoritmus dotazování objektů blob
-Sada WebJobs SDK prohledá všechny kontejnery určené atributy **blobTrigger** při spuštění aplikace. Ve velkém účtu úložiště toto skenování může nějakou dobu trvat, takže může chvíli trvat, než se najdou nové objekty BLOB a spustí se funkce **blobTrigger.**
+### <a name="blob-polling-algorithm"></a>Algoritmus cyklického dotazování objektů BLOB
+Sada WebJobs SDK prohledává všechny kontejnery určené atributy **BlobTrigger** při spuštění aplikace. V případě velkého účtu úložiště může tato kontrola nějakou dobu trvat, takže se může stát, že předtím, než budou nalezeny nové objekty blob, a **BlobTrigger** funkce se spustí.
 
-Chcete-li zjistit nové nebo změněné objekty BLOB po spuštění aplikace, sada SDK pravidelně čte z protokolů úložiště objektů blob. Protokoly objektů blob jsou uloženy do vyrovnávací paměti a pouze získat fyzicky zapsány každých 10 minut nebo tak, takže může být významné zpoždění po vytvoření nebo aktualizaci objektu blob před spuštěním odpovídající funkce **BlobTrigger.**
+Pro detekci nových nebo změněných objektů BLOB po spuštění aplikace SDK pravidelně čte z protokolů služby Blob Storage. Protokoly objektů BLOB se ukládají do vyrovnávací paměti a můžou se fyzicky zapisovat jenom každých 10 minut, takže může po vytvoření nebo aktualizaci objektu BLOB způsobit značnou prodlevu, než se spustí odpovídající funkce **BlobTrigger** .
 
-Existuje výjimka pro objekty BLOB, které vytvoříte pomocí atributu **Objekt blob.** Když webjobs SDK vytvoří nový objekt blob, okamžitě předá nový objekt blob všechny odpovídající funkce **BlobTrigger.** Proto pokud máte řetězec vstupu objektů blob a výstupy, sada SDK je můžete efektivně zpracovat. Ale pokud chcete s nízkou latencí spuštění funkce zpracování objektů blob pro objekty BLOB, které jsou vytvořeny nebo aktualizovány jinými prostředky, doporučujeme použít **QueueTrigger** spíše než **BlobTrigger**.
+Pro objekty blob, které vytvoříte pomocí atributu **BLOB** , existuje výjimka. Když Sada WebJobs SDK vytvoří nový objekt blob, předává nový objekt BLOB hned všem vyhovujícím funkcím **BlobTrigger** . Proto, pokud máte řetězové vstupy a výstupy objektů blob, sada SDK je může efektivně zpracovat. Pokud ale chcete, aby u objektů blob, které jsou vytvořené nebo aktualizované jinými prostředky, běžela nízká latence, doporučujeme místo **BlobTrigger**používat **QueueTrigger** .
 
-### <a name="blob-receipts"></a>Příjmy objektu blob
-Sada WebJobs SDK zajišťuje, že žádná funkce **BlobTrigger** se nenazývá více než jednou pro stejný nový nebo aktualizovaný objekt blob. Je to tím, že udržuje *blob příjmy* s cílem zjistit, zda byla zpracována daná verze objektu blob.
+### <a name="blob-receipts"></a>Příjem objektů BLOB
+Sada WebJobs SDK zajistí, že se žádná funkce **BlobTrigger** nevolá více než jednou pro stejný nový nebo aktualizovaný objekt BLOB. Díky tomu udržují *příjmy objektů BLOB* , aby bylo možné zjistit, zda byla daná verze objektu BLOB zpracována.
 
-Účtenky s objektem blob jsou uložené v kontejneru s názvem *azure-webjobs-hosts* v účtu úložiště Azure určeném připojovacím řetězcem AzureWebJobsStorage. Příjem k blob má následující informace:
+Příjmy objektů BLOB se ukládají do kontejneru s názvem *Azure-WebJobs – hostitelé* v účtu služby Azure Storage, který je určený připojovacím řetězcem AzureWebJobsStorage. Příjem objektů BLOB obsahuje následující informace:
 
-* Funkce, která byla volána pro objekt blob *("název_webjob}*. Funkce. *{Název funkce}*", například WebJob1.Functions.CopyBlob")
+* Funkce, která byla volána pro objekt BLOB ("*{název webové úlohy}*. POZVYHLEDAT. *{Function Name}*, například: "WebJob1. Functions. CopyBlob")
 * Název kontejneru
-* Typ objektu blob ("BlockBlob" nebo "PageBlob")
-* Název objektu blob
+* Typ objektu BLOB ("BlockBlob" nebo "PageBlob")
+* Název objektu BLOB
 * ETag (identifikátor verze objektu blob, například: "0x8D1DC6E70A277EF")
 
-Pokud chcete vynutit opětovné zpracování objektu blob, můžete ručně odstranit příjemka objektu blob pro tento objekt blob z kontejneru *azure-webjobs-hosts.*
+Pokud chcete vynutit opětovné zpracování objektu blob, můžete ručně odstranit příjem objektů BLOB pro tento objekt BLOB z kontejneru *Azure-WebJobs-Hosts* .
 
-## <a name="related-topics-covered-by-the-queues-article"></a>Související témata, na která se vztahuje fronty článku
-Informace o tom, jak zpracovat zpracování objektů blob spuštěné zprávou fronty nebo pro scénáře sady WebJobs SDK, které nejsou specifické pro zpracování objektů blob, naleznete v [tématu Jak používat úložiště front Azure s sadou WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).
+## <a name="related-topics-covered-by-the-queues-article"></a>Související témata, která jsou popsaná v článku fronty
+Informace o tom, jak zpracovat zpracování objektů BLOB aktivované zprávami ve frontě nebo ve scénářích služby WebJobs SDK, které nejsou specifické pro zpracování objektů blob, najdete v tématu [Jak používat Azure Queue Storage se sadou WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).
 
-Mezi související témata uvedená v tomto článku patří následující:
+Mezi související témata zahrnutá v tomto článku patří následující:
 
 * Asynchronní funkce
 * Několik instancí
-* Bezproblémové vypnutí
+* Řádné vypnutí
 * Použití atributů sady WebJobs SDK v těle funkce
 * Nastavte připojovací řetězce sady SDK v kódu.
-* Nastavení hodnot parametrů konstruktoru sady WebJobs SDK v kódu
-* Konfigurace **MaxDequeueCount** pro zpracování objektu blob poison.
-* Ruční spuštění funkce
+* Nastavení hodnot pro parametry konstruktoru sady WebJobs SDK v kódu
+* Nakonfigurujte **MaxDequeueCount** pro zpracování poškození objektů BLOB.
+* Ruční aktivace funkce
 * Zápis protokolů
 
 ## <a name="next-steps"></a>Další kroky
-Tento článek poskytl ukázky kódu, které ukazují, jak zpracovat běžné scénáře pro práci s objekty BLOB Azure. Další informace o tom, jak používat Azure WebJobs a WebJobs SDK, najdete v [tématu Materiály pro dokumentaci Azure WebJobs](https://go.microsoft.com/fwlink/?linkid=390226).
+V tomto článku jsou uvedené ukázky kódu, které ukazují, jak zpracovávat běžné scénáře pro práci s objekty blob Azure. Další informace o tom, jak používat Azure WebJobs a sadu WebJobs SDK, najdete v [dokumentaci k prostředkům Azure WebJobs](https://go.microsoft.com/fwlink/?linkid=390226).
 

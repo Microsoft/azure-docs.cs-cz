@@ -1,7 +1,7 @@
 ---
 title: Odeslání pracovní postupu pomocí vstupního souboru FASTQ
 titleSuffix: Microsoft Genomics
-description: Tento článek ukazuje, jak odeslat pracovní postup do služby Microsoft Genomics, pokud vaše vstupní soubory jsou jeden pár souborů FASTQ.
+description: Tento článek ukazuje, jak odeslat pracovní postup službě Microsoft Genomics, pokud jsou vstupní soubory jedním párem souborů fastq souborů.
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -10,15 +10,15 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.openlocfilehash: 3806b165e5abb661e53c6a315650d025fd42e17f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72248547"
 ---
 # <a name="submit-a-workflow-using-fastq-file-inputs-in-microsoft-genomics"></a>Odeslání pracovního postupu ve vstupních souborech FASTQ v Microsoft Genomics
 
-Tento článek ukazuje, jak odeslat pracovní postup do služby Microsoft Genomics, pokud vaše vstupní soubory jsou jeden pár souborů FASTQ. Toto téma předpokládá, že jste už nainstalovali a spustili klienta `msgen` a že víte, jak používat úložiště Azure Storage. Pokud jste úspěšně odeslali pracovní postup pomocí zadaných ukázkových dat, jste připraveni pokračovat v tomto článku. 
+Tento článek ukazuje, jak odeslat pracovní postup službě Microsoft Genomics, pokud jsou vstupní soubory jedním párem souborů fastq souborů. Toto téma předpokládá, že jste už nainstalovali a spustili klienta `msgen` a že víte, jak používat úložiště Azure Storage. Pokud jste úspěšně odeslali pracovní postup pomocí poskytnutých ukázkových dat, budete připraveni pokračovat v tomto článku. 
 
 ## <a name="set-up-upload-your-fastq-files-to-azure-storage"></a>Příprava: Odeslání souborů FASTQ do úložiště Azure
 Předpokládejme, že máte dva soubory *reads_1.fq.gz* a *reads_2.fq.gz*, a že jste je nahráli do svého účtu úložiště *myaccount* v Azure jako **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/inputs/reads_1<span></span>.fq<span></span>.gz<span></span>** a **https://<span></span>myaccount.blob.core.<span></span>windows<span></span>.net/<span></span>inputs/<span></span>reads_2.fq<span></span>.gz<span></span>**. Máte adresu URL rozhraní API a přístupový klíč. Chcete mít výstupy v **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>**.
@@ -82,4 +82,4 @@ output_storage_account_container: outputs
 Odešlete soubor `config.txt` tímto voláním: `msgen submit -f config.txt`
 
 ## <a name="next-steps"></a>Další kroky
-V tomto článku jste nahráli dvojici souborů FASTQ do úložiště Azure Storage a odeslali jste pracovní postup do služby Microsoft Genomics pomocí pythonového klienta `msgen`. Další informace o odesílání pracovních postupů a dalších příkazech, které můžete použít se službou Microsoft Genomics, najdete v [nejčastějších dotazech](frequently-asked-questions-genomics.md). 
+V tomto článku jste nahráli dvojici souborů FASTQ do úložiště Azure Storage a odeslali jste pracovní postup do služby Microsoft Genomics pomocí pythonového klienta `msgen`. Další informace o odesílání pracovních postupů a dalších příkazech, které můžete použít se službou Microsoft Genomics, najdete v části [Nejčastější dotazy](frequently-asked-questions-genomics.md). 

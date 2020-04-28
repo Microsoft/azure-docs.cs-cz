@@ -1,6 +1,6 @@
 ---
-title: Fyzické zabezpečení modulu hardwarového zabezpečení modulu hardwarového zabezpečení modulu hardwarového zabezpečení služby Azure | Dokumenty společnosti Microsoft
-description: Informace o fyzickém zabezpečení zařízení Azure Dedicated HSM v datových centrech
+title: Fyzické zabezpečení HSM – vyhrazený modul HSM v Azure | Microsoft Docs
+description: Informace o fyzickém zabezpečení zařízení s vyhrazeným HSM v Azure v datových centrech
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -13,50 +13,50 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: mbaldwin
 ms.openlocfilehash: ede1af4625d06af4e280eda86d09ae1db3dfdfd1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "70881025"
 ---
-# <a name="azure-dedicated-hsm-physical-security"></a>Fyzické zabezpečení vyhrazeného modulu hardwarového zabezpečení Azure
+# <a name="azure-dedicated-hsm-physical-security"></a>Vyhrazené fyzické zabezpečení HSM Azure
 
-Vyhrazený modul hardwarového zabezpečení Azure vám pomůže splnit pokročilé požadavky na zabezpečení pro úložiště klíčů. Je spravován a řídí se přísnými postupy zabezpečení po celou dobu svého životního cyklu, aby uspokojil potřeby zákazníků.
+Vyhrazený modul HARDWAROVÉho zabezpečení Azure vám pomůže splnit pokročilé požadavky na zabezpečení pro úložiště klíčů. Spravuje se po celém životním cyklu přísné postupy zabezpečení, které vyhovují potřebám zákazníků.
 
-## <a name="security-through-procurement"></a>Bezpečnost prostřednictvím zadávání veřejných zakázek
+## <a name="security-through-procurement"></a>Zabezpečení prostřednictvím nákupů
 
-Společnost Microsoft sleduje proces bezpečného zásobování. Řídíme řetězec úschovy a zajišťujeme, aby konkrétní objednané a odeslané zařízení bylo zařízením přicházejícím do našich datových center. Zařízení jsou v plastových zádech. Jsou uloženy v zabezpečeném úložišti, dokud nejsou uvedeny do provozu v datové galerii datového centra.  Regály obsahující zařízení HSM jsou považovány za vysoce obchodní dopad (HBI). Zařízení jsou uzamčena a pod kamerovým dohledem po celou dobu přední a zadní.
+Microsoft se řídí zabezpečeným procesem zadávání. Spravujeme řetěz úschovy a zajišťují, že konkrétní zařízení, které obchází a dodává, je zařízení přicházející v našich datových centrech. Zařízení jsou v případě neoprávněných plastů. Jsou uloženy v zabezpečené oblasti úložiště, dokud neproběhne v galerii dat v datovém centru.  Stojany, které obsahují zařízení HSM, se považují za vysoký dopad na firmu (HBI). Zařízení jsou zamčená a v rámci kontroly videa jsou neustále vpřed a zpět.
 
 ## <a name="security-through-deployment"></a>Zabezpečení prostřednictvím nasazení
 
-Soubory hesel jsou instalovány v rackech společně s přidruženými síťovými součástmi. Po instalaci musí být nakonfigurovány před jejich zpřístupnění jako součást služby Azure Dedicated HSM. Tuto konfigurační aktivitu provádějí zaměstnanci společnosti Microsoft, kteří prošli ověřením spolehlivosti. Správa "Just In Time" (JIT) se používá k omezení přístupu pouze správným zaměstnancům a pouze po dobu, po kterou je přístup potřebný. Použité postupy a systémy také zajišťují, že jsou protokolovány všechny aktivity související se zařízením s hsm.
+HSM se instalují do racků společně s přidruženými síťovými součástmi. Po instalaci je potřeba nakonfigurovat, aby byly dostupné v rámci vyhrazené služby HSM Azure. Tuto aktivitu konfigurace provádí zaměstnanci Microsoftu, kteří prošli kontrolou na pozadí. Správa "just in time" (JIT) slouží k omezení přístupu jenom na ty správné zaměstnance a jenom na dobu, kdy je potřeba přístup. Používané postupy a systémy také zajistí, že se protokolují všechny aktivity související se zařízeními HSM.
 
-## <a name="security-in-operations"></a>Bezpečnost v provozu
+## <a name="security-in-operations"></a>Zabezpečení v provozu
 
-Moduly hardwarového systému jsou hardwarová zařízení (skutečný modul hardwarového systému je karta PCI v rámci zařízení), takže je možné, že mohou vzniknout problémy na úrovni komponent. Potenciální problémy zahrnují, ale nejsou omezeny na poruchy ventilátoru a napájení. Tento typ události bude vyžadovat údržbu nebo přerušení/opravu aktivity nahradit všechny vyměnitelné součásti.
+HSM jsou hardwarová zařízení (skutečný modul HARDWAROVÉho zabezpečení v rámci zařízení), aby mohlo dojít k problémům na úrovni součástí. K potenciálním problémům patří mimo jiné ventilátory a chyby napájení. Tento typ události bude vyžadovat, aby aktivity údržby nebo přerušení/opravy nahradily jakékoli odkládací součásti.
 
 ### <a name="component-replacement"></a>Výměna součásti
 
-Po zřízení zařízení a pod správou zákazníka je napájení vyměnitelné za provozu jedinými součástmi, které by byly vyměněny. Tato součást je mimo hranice zabezpečení a nezpůsobí událost tamper. Systém prodeje jízdenek se používá k autorizaci inženýra společnosti Microsoft pro přístup k zadní části racku HBI. Při zpracování lístku je vydán dočasný fyzický klíč. Tento klíč poskytuje inženýrovi přístup k zařízení a umožňuje mu vyměnit postiženou součást. Jakýkoli jiný přístup (to znamená, že způsobuje nefalšující událost) by byl proveden, pokud zařízení není přiděleno zákazníkovi, čímž se minimalizuje riziko zabezpečení a dostupnosti.  
+Po zřízení zařízení a v části Správa zákazníků jsou jediné součásti, které by se nahradily zdrojem napájení Hot-swap. Tato součást je mimo hranice zabezpečení a nezpůsobuje událost manipulace. Systém lístků se používá k autorizaci Microsoft inženýra za účelem přístupu k zadnímu stojanu HBI. Při zpracování lístku se vydá dočasný fyzický klíč. Tento klíč dává inženýrovi přístup k zařízení a umožňuje přepínat ovlivněné součásti. Pokud se zařízení nepřiřazuje zákazníkovi a tím se minimalizuje riziko zabezpečení a dostupnosti, bude se provádět jakýkoli jiný přístup (tj. způsobila neoprávněná událost).  
 
-### <a name="device-replacement"></a>Výměna zařízení
+### <a name="device-replacement"></a>Nahrazení zařízení
 
-V případě úplného selhání zařízení je dodržen proces podobný procesu použitému při selhání součásti. Pokud zákazník není schopen zařízení vynulovat nebo je zařízení v neznámém stavu, budou datová ložisková zařízení odebrána a umístěna do kontejneru pro zničení v racku. Zařízení umístěná v koši budou řízena a bezpečně zničena. Žádná data ložiska zařízení z racku HBI opustí datové centrum společnosti Microsoft.
+V případě celkového selhání zařízení je následován proces podobný tomu, který se používá při selhání komponenty. Pokud zákazník nemůže zařízení zeroizeovat, nebo je v neznámém stavu, data zařízení se odeberou a umístí do přihrádky zničení v racku. Zařízení umístěná v přihrádce budou zničena řízeným a zabezpečeným způsobem. Žádná data, která zařízení nenesou z racku HBI, ponechají v datacentru Microsoftu.
 
-### <a name="other-rack-access-activities"></a>Další aktivity přístupu do racku
+### <a name="other-rack-access-activities"></a>Jiné aktivity přístupu do racku
 
-Pokud musí technik společnosti Microsoft přistupovat k racku používanému zařízeními hsm (například údržbou síťových zařízení), budou k získání přístupu k zabezpečenému racku HBI použity standardní postupy zabezpečení. Veškerý přístup bude pod kamerovým dohledem. Zařízení HSM jsou ověřena na [FIPS 140-2 Level 3,](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf) takže jakýkoli neoprávněný přístup k zařízením HSM bude signalizován zákazníkovi a data budou vynulována.
+Pokud má inženýr Microsoftu přístup k stojanu, který používají zařízení HSM (například údržba síťových zařízení), budou se standardní bezpečnostní postupy používat k získání přístupu k HBI zabezpečenému stojanu. Veškerý přístup bude pod dohledem videí. Zařízení HSM se ověřují na [úrovni FIPS 140-2 úrovně 3](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf) , takže případný neoprávněný přístup k zařízením HSM se uživateli pošle jako signál a data se odeberou.
 
-## <a name="logical-level-security-considerations"></a>Důležité informace o zabezpečení na logické úrovni
+## <a name="logical-level-security-considerations"></a>Požadavky na zabezpečení logické úrovně
 
-Soubory hestely jsou zřízeny do virtuální sítě vytvořené zákazníkem. Toto je soukromý adresní prostor IUP zákazníka.  Tato konfigurace poskytuje cennou logickou izolaci na úrovni sítě a zajišťuje přístup pouze zákazníkem. To znamená, že všechny ovládací prvky zabezpečení logické úrovně jsou odpovědností zákazníka.
+HSM se zřídí pro virtuální síť vytvořenou zákazníkem. Toto je soukromý adresní prostor IUP zákazníka.  Tato konfigurace poskytuje cennou izolaci na úrovni logické sítě a zajišťuje přístup pouze pro zákazníka. To znamená, že všechny ovládací prvky zabezpečení logické úrovně jsou zodpovědností zákazníka.
 
 ## <a name="next-steps"></a>Další kroky
 
-Doporučuje se, aby všechny klíčové koncepty služby, jako je vysoká dostupnost a zabezpečení a supportability například dobře chápat před zřizování zařízení, návrh aplikace nebo nasazení.
+Doporučuje se, aby všechny klíčové koncepty služby, jako je například vysoká dostupnost a zabezpečení a podpora, byly dobře pochopitelné před zřizováním zařízení, návrhem aplikací nebo nasazením.
 
 * [Vysoká dostupnost](high-availability.md)
-* [Síťové služby](networking.md)
+* [Sítě](networking.md)
 * [Možnosti podpory](supportability.md)
-* [Sledování](monitoring.md)
+* [Monitorování](monitoring.md)
 * [Architektura nasazení](deployment-architecture.md)

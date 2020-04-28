@@ -1,6 +1,6 @@
 ---
-title: Jak přizpůsobit pravidlo synchronizace ve službě Azure AD Connect | Dokumenty společnosti Microsoft
-description: Toto téma obsahuje postup řešení problémů s instalací služby Azure AD Connect.
+title: Postup přizpůsobení synchronizačního pravidla v Azure AD Connect | Microsoft Docs
+description: V tomto tématu najdete postup řešení potíží při instalaci Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,41 +16,41 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a65d4c477d0e3aa9d5feea53e3e667ece651c83f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60351038"
 ---
 # <a name="how-to-customize-a-synchronization-rule"></a>Přizpůsobení synchronizačního pravidla
 
 ## <a name="recommended-steps"></a>**Doporučené kroky**
 
-Pomocí editoru pravidel synchronizace můžete upravit nebo vytvořit nové pravidlo synchronizace. Chcete-li provést změny pravidel synchronizace, musíte být pokročilým uživatelem. Jakékoli nesprávné změny mohou mít za následek odstranění objektů z cílového adresáře. Přečtěte si [prosím doporučené dokumenty](#recommended-documents) a získejte odborné znalosti v pravidlech synchronizace. Chcete-li upravit pravidlo synchronizace, postupujte takto:
+K úpravám nebo vytváření nového pravidla synchronizace můžete použít Editor synchronizačního pravidla. Musíte být pokročilým uživatelem, aby bylo možné provádět změny pravidel synchronizace. Jakékoli špatné změny mohou způsobit odstranění objektů z cílového adresáře. Přečtěte si [Doporučené dokumenty](#recommended-documents) , které vám pomůžou získat zkušenosti s pravidly synchronizace. Pokud chcete upravit synchronizační pravidlo, Projděte následující kroky:
 
-* Spusťte editor synchronizace z nabídky aplikace na ploše, jak je znázorněno níže:
+* Spusťte Editor synchronizace v nabídce aplikace na ploše, jak je znázorněno níže:
 
-    ![Nabídka Editoru pravidel synchronizace](media/how-to-connect-create-custom-sync-rule/how-to-connect-create-custom-sync-rule/syncruleeditormenu.png)
+    ![Nabídka editoru synchronizačního pravidla](media/how-to-connect-create-custom-sync-rule/how-to-connect-create-custom-sync-rule/syncruleeditormenu.png)
 
-* Chcete-li přizpůsobit výchozí pravidlo synchronizace, naklonujte existující pravidlo klepnutím na tlačítko Upravit v Editoru pravidel synchronizace, které vytvoří kopii standardního výchozího pravidla a zakáže ho. Uložte klonované pravidlo s prioritou menší než 100.  Priorita určuje, jaké pravidlo wins (nižší číselná hodnota) řešení konfliktů, pokud je konflikt toku atributu.
+* Chcete-li upravit výchozí pravidlo synchronizace, naklonujte stávající pravidlo kliknutím na tlačítko Upravit v editoru pravidel synchronizace, čímž se vytvoří kopie standardního výchozího pravidla a zakažte ho. Uložte naklonované pravidlo s prioritou menší než 100.  Priorita určuje, jaké pravidlo služba WINS (nižší číselná hodnota) je řešení konfliktů, pokud dojde ke konfliktu toku atributů.
 
     ![Editor pravidel synchronizace](media/how-to-connect-create-custom-sync-rule/how-to-connect-create-custom-sync-rule/clonerule.png)
 
-* Při úpravě určitého atributu byste v ideálním případě měli zachovat pouze modifikující atribut v klonovaném pravidle.  Potom povolte výchozí pravidlo tak, aby upravený atribut pochází z klonovaného pravidla a další atributy jsou vybrány z výchozího standardního pravidla. 
+* Při úpravách konkrétního atributu byste v ideálním případě měli zachovat pouze úpravu atributu v klonovaném pravidle.  Pak povolte výchozí pravidlo, aby byl upravený atribut z klonovaného pravidla a další atributy převzaté z výchozího standardního pravidla. 
 
-* Vezměte prosím na vědomí, že v případě, kdy vypočtená hodnota změněného atributu je null v klonované pravidlo a není NULL ve výchozím standardním pravidle pak, ne NULL hodnota vyhraje a nahradí hodnotu NULL. Pokud nechcete, aby hodnota NULL byla nahrazena hodnotou not NULL, přiřaďte autoritativní hodnotu Null v klonovaném pravidle.
+* Počítejte s tím, že v případě, že je Počítaná hodnota upraveného atributu v naklonovaném pravidle NULL a není NULL ve výchozím standardním pravidle, hodnota NOT NULL se načte a nahradí hodnotu NULL. Pokud nechcete, aby se hodnota NULL nahradila hodnotou, která není NULL, přiřaďte AuthoritativeNull do svého klonovaného pravidla.
 
-* Chcete-li upravit **odchozí** pravidlo, změňte filtr z editoru pravidel synchronizace.
+* Chcete-li upravit **odchozí** pravidlo, změňte filtr z editoru synchronizačního pravidla.
 
 ## <a name="recommended-documents"></a>**Doporučené dokumenty**
-* [Synchronizace služby Azure AD Connect: Technické koncepty](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-technical-concepts)
-* [Synchronizace Azure AD Connect: Principy architektury](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)
-* [Synchronizace Azure AD Connect: Principy deklarativního zřizování](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning)
-* [Synchronizace azure a připojení služby Azure AD: principy výrazů deklarativního zřizování](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning-expressions)
+* [Azure AD Connect synchronizace: technické koncepty](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-technical-concepts)
+* [Azure AD Connect synchronizace: Principy architektury](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)
+* [Azure AD Connect synchronizace: principy deklarativního zřizování](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning)
+* [Azure AD Connect synchronizace: principy deklarativních zřizovacích výrazů](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning-expressions)
 * [Synchronizace služby Azure AD Connect: Principy výchozí konfigurace](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-default-configuration)
-* [Synchronizace azure ad připojení: principy uživatelů, skupin a kontaktů](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-user-and-contacts)
-* [Synchronizace služby Azure AD Connect: Atributy Stín](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-syncservice-shadow-attributes)
+* [Azure AD Connect synchronizace: principy uživatelů, skupin a kontaktů](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-user-and-contacts)
+* [Azure AD Connect Sync: atributy stínů](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-syncservice-shadow-attributes)
 
 ## <a name="next-steps"></a>Další kroky
-- [Synchronizace služby Azure AD Connect](how-to-connect-sync-whatis.md).
+- [Azure AD Connect synchronizace](how-to-connect-sync-whatis.md).
 - [Co je hybridní identita?](whatis-hybrid-identity.md).

@@ -1,6 +1,6 @@
 ---
-title: Konfigurace a ověření připojení virtuální sítě nebo sítě VPN
-description: Podrobné pokyny ke konfiguraci a ověření různých nasazení Azure VPN a virtuálních sítí
+title: Konfigurace a ověření připojení k virtuální síti nebo k síti VPN
+description: Podrobné pokyny pro konfiguraci a ověření různých nasazení Azure VPN a virtuálních sítí
 services: virtual-network
 documentationcenter: na
 author: v-miegge
@@ -15,56 +15,56 @@ ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
 ms.openlocfilehash: dddf402455292e19bf0fcda3c50d9ce10d5888d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71099061"
 ---
-# <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>Konfigurace a ověření připojení virtuální sítě nebo sítě VPN
+# <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>Konfigurace a ověření připojení k virtuální síti nebo k síti VPN
 
-Tento návod obsahuje podrobné pokyny ke konfiguraci a ověření různých nasazení Azure VPN a virtuálních sítí. Scénáře zahrnují tranzitní směrování, připojení mezi sítěmi, protokol BGP (Border Gateway Protocol), připojení pro více sítí a připojení mezi koncovými místy.
+Tento návod poskytuje podrobné pokyny ke konfiguraci a ověření různých nasazení Azure VPN a virtuálních sítí. Mezi scénáře patří směrování přenosu, připojení k síti, Border Gateway Protocol (BGP), připojení k více lokalitám a připojení Point-to-site.
 
-Brány Azure VPN umožňují flexibilitu při uspořádání téměř jakéhokoli druhu topologie připojené virtuální sítě v Azure. Můžete například připojit virtuální sítě:
+Azure VPN Gateway umožňují flexibilitu při uspořádávání téměř jakéhokoli druhu připojené virtuální síťové topologie v Azure. Můžete například propojit virtuální sítě:
 
-- Napříč regiony.
-- Mezi typy virtuálních sítí (Azure Resource Manager versus klasické).
-- V rámci Azure nebo v místním hybridním prostředí.
+- Napříč oblastmi.
+- Mezi typy virtuální sítě (Azure Resource Manager vs Classic).
+- V Azure nebo v místním hybridním prostředí.
 - V různých předplatných. 
 
-## <a name="network-to-network-vpn-connection"></a>Připojení VPN mezi sítěmi
+## <a name="network-to-network-vpn-connection"></a>Připojení VPN typu síť-síť
 
-Připojení virtuální sítě k jiné virtuální síti (síť-síť) prostřednictvím sítě VPN je podobné připojení virtuální sítě k umístění v místním webu. Oba typy připojení používají bránu VPN k zajištění zabezpečeného tunelového propojení přes protokoly IPsec a Protokol IKE. Virtuální sítě se můžou nacházet ve stejné oblasti nebo v různých oblastech a můžou patřit do stejného předplatného nebo do různých předplatných.
+Připojení virtuální sítě k jiné virtuální síti přes síť VPN je podobné jako připojení virtuální sítě k místnímu umístění lokality. Oba typy připojení využívají bránu VPN k poskytnutí zabezpečeného tunelového propojení prostřednictvím protokolu IPsec a IKE. Virtuální sítě se můžou nacházet ve stejné oblasti nebo v různých oblastech a můžou patřit do stejného předplatného nebo do různých předplatných.
 
-![Připojení k síti k síti s iPsec](./media/virtual-network-configure-vnet-connections/4034386_en_2.png)
+![Připojení k síti pomocí protokolu IPsec](./media/virtual-network-configure-vnet-connections/4034386_en_2.png)
  
-Pokud vaše virtuální sítě jsou ve stejné oblasti, můžete zvážit jejich připojení pomocí partnerského vztahu virtuální sítě. Partnerský vztah virtuální sítě nepoužívá bránu VPN. Zvyšuje propustnost a snižuje latenci. Pokud chcete nakonfigurovat připojení partnerského vztahu virtuální sítě, vyberte **Konfigurovat a ověřte partnerský vztah virtuální sítě**.
+Pokud jsou vaše virtuální sítě ve stejné oblasti, možná budete chtít zvážit jejich připojení pomocí partnerského vztahu virtuálních sítí. Partnerské vztahy virtuálních sítí nepoužívají bránu VPN. Zvyšuje propustnost a snižuje latenci. Pokud chcete nakonfigurovat připojení partnerského vztahu virtuální sítě, vyberte **Konfigurovat a ověřit partnerský vztah VNet**.
 
-Pokud vaše virtuální sítě byly vytvořeny prostřednictvím modelu nasazení Azure Resource Manger, vyberte **Konfigurovat a ověřit virtuální síť Správce prostředků na připojení virtuální sítě Správce prostředků** pro konfiguraci připojení VPN.
+Pokud se vaše virtuální sítě vytvořily prostřednictvím modelu nasazení Azure Resource Manageru, vyberte **Konfigurovat a ověřit správce prostředků virtuální síť pro připojení správce prostředků VNet** ke konfiguraci připojení VPN.
 
-Pokud jedna z virtuálních sítí byla vytvořena prostřednictvím modelu klasického nasazení Azure a druhá byla vytvořena prostřednictvím Správce prostředků, vyberte **Konfigurovat a ověřit klasickou virtuální síť na připojení virtuální sítě Správce prostředků** pro konfiguraci připojení VPN.
+Pokud se jedna z virtuálních sítí vytvořila prostřednictvím modelu nasazení Azure Classic a druhá se vytvořila prostřednictvím Správce prostředků, vyberte **Konfigurovat a ověřit klasickou virtuální síť pro připojení správce prostředků VNet** , abyste mohli nakonfigurovat připojení k síti VPN.
 
-### <a name="configure-virtual-network-peering-for-two-virtual-networks-in-the-same-region"></a>Konfigurace partnerského vztahu virtuální sítě pro dvě virtuální sítě ve stejné oblasti
+### <a name="configure-virtual-network-peering-for-two-virtual-networks-in-the-same-region"></a>Konfigurace partnerského vztahu virtuálních sítí pro dvě virtuální sítě ve stejné oblasti
 
-Než začnete implementovat a konfigurovat partnerský vztah virtuální sítě Azure, ujistěte se, že splňujete následující požadavky:
+Než začnete s implementací a konfigurací partnerského vztahu virtuálních sítí Azure, ujistěte se, že splňujete následující požadavky:
 
 * Partnerské virtuální sítě musí existovat ve stejné oblasti Azure.
-* Partnerské virtuální sítě musí mít IP adresní prostory, které se nepřekrývají.
-* Partnerský vztah virtuálních sítí se navazuje mezi dvěma virtuálními sítěmi. Neexistuje žádný odvozený přenositý vztah mezi partnerskými vztahy. Například pokud vneta je partnerský vztah s VNetB a VNetB je peered s VNetC, VNetA *není* peered s VNetC.
+* Virtuální sítě s partnerským vztahem musí mít adresní prostory IP adres, které se nepřekrývají.
+* Partnerský vztah virtuálních sítí se navazuje mezi dvěma virtuálními sítěmi. V rámci partnerských vztahů neexistuje žádný odvozený přenosový vztah. Například pokud má partnerském partnerský vztah s VNetB a VNetB má partnerský vztah s sítí vnetc, partnerském *není partnerským vztahem* s sítí vnetc.
 
-Když splníte požadavky, můžete postupovat podle [kurzu: Připojení virtuálních sítí s partnerským vztahem virtuální sítě pomocí portálu Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-create-peering) k vytvoření a konfiguraci partnerského vztahu.
+Pokud splňujete požadavky, můžete postupovat podle [kurzu: propojení virtuálních sítí s virtuálními partnerskými vztahy virtuálních sítí pomocí Azure Portal](https://docs.microsoft.com/azure/virtual-network/virtual-network-create-peering) k vytvoření a konfiguraci partnerského vztahu.
 
-Chcete-li zkontrolovat konfiguraci partnerského vztahu, použijte následující metodu:
+Chcete-li ověřit konfiguraci partnerského vztahu, použijte následující metodu:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/) pomocí účtu, který má potřebné [role a oprávnění](virtual-network-manage-peering.md#permissions).
-2. Do pole, které obsahuje text **Hledat prostředky** v horní části portálu, zadejte **virtuální sítě**. Když se ve výsledcích hledání zobrazí **virtuální sítě,** vyberte je.
-3. V okně **Virtuální sítě,** které se zobrazí, vyberte virtuální síť, pro kterou chcete vytvořit partnerský vztah.
-4. V podokně, které se zobrazí pro virtuální síť, vyberte **partnerské partnerské partnerské partnery** v části **Nastavení.**
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí účtu, který má potřebné [role a oprávnění](virtual-network-manage-peering.md#permissions).
+2. Do pole, které obsahuje **prostředky vyhledávání** textu v horní části portálu, zadejte **virtuální sítě**. Pokud se ve výsledcích hledání zobrazí **virtuální sítě** , vyberte ji.
+3. V okně **virtuální sítě** , které se zobrazí, vyberte virtuální síť, pro kterou chcete vytvořit partnerský vztah.
+4. V podokně, které se zobrazí pro virtuální síť, vyberte **partnerské vztahy** v části **Nastavení** .
 5. Vyberte partnerský vztah a zobrazte výsledky konfigurace.
 
-![Výběry pro kontrolu konfigurace partnerského vztahu virtuální sítě](./media/virtual-network-configure-vnet-connections/4034496_en_1.png)
+![Výběry pro kontrolu konfigurace partnerského vztahu virtuálních sítí](./media/virtual-network-configure-vnet-connections/4034496_en_1.png)
  
-Pro Azure PowerShell spusťte příkaz [Get-AzureRmVirtualNetworkPeering,](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering?view=azurermps-4.1.0) abyste získali partnerský vztah virtuální sítě. Tady je příklad:
+Pro Azure PowerShell spuštěním příkazu [Get-AzureRmVirtualNetworkPeering](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering?view=azurermps-4.1.0) Získejte partnerský vztah virtuální sítě. Tady je příklad:
 
 ```
 PS C:\Users\User1> Get-AzureRmVirtualNetworkPeering -VirtualNetworkName Vnet10-01 -ResourceGroupName dev-vnets
@@ -87,178 +87,178 @@ RemoteGateways                   : null
 RemoteVirtualNetworkAddressSpace : null
 ```
 
-### <a name="connect-a-resource-manager-virtual-network-to-another-resource-manager-virtual-network"></a>Připojení virtuální sítě Resource Manager k jiné virtuální síti Resource Manageru
+### <a name="connect-a-resource-manager-virtual-network-to-another-resource-manager-virtual-network"></a>Připojení virtuální sítě Správce prostředků k jiné virtuální síti Správce prostředků
 
-Můžete nakonfigurovat připojení z jedné virtuální sítě Resource Manager u jiné virtuální sítě Resource Manager přímo. Nebo můžete nakonfigurovat připojení pomocí protokolu IPsec.
+Připojení z jedné Správce prostředků virtuální sítě k jiné virtuální síti Správce prostředků můžete nakonfigurovat přímo. Můžete také nakonfigurovat připojení pomocí protokolu IPsec.
 
-### <a name="configure-a-vpn-connection-between-resource-manager-virtual-networks"></a>Konfigurace připojení VPN mezi virtuálními sítěmi Resource Manageru
+### <a name="configure-a-vpn-connection-between-resource-manager-virtual-networks"></a>Konfigurace připojení VPN mezi Správce prostředkůmi virtuálními sítěmi
 
-Pokud chcete nakonfigurovat připojení mezi virtuálními sítěmi Resource Manageru bez protokolu IPsec, přečtěte si informace [o konfiguraci připojení brány VPN mezi sítěmi pomocí portálu Azure](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal).
+Pokud chcete nakonfigurovat připojení mezi Správce prostředkůmi virtuálními sítěmi bez protokolu IPsec, přečtěte si téma [Konfigurace připojení brány sítě VPN typu síť-síť pomocí Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal).
 
-Pokud chcete nakonfigurovat připojení s Protokolem IPsec mezi dvěma virtuálními sítěmi Správce prostředků, postupujte podle kroků 1 až 5 v [části Vytvoření připojení k webu na webu na portálu Azure](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal) pro každou virtuální síť.
+Pokud chcete nakonfigurovat připojení pomocí protokolu IPsec mezi dvěma Správce prostředkůmi virtuálními sítěmi, postupujte podle kroků 1 až 5 v [části Vytvoření připojení typu Site-to-site v Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal) pro každou virtuální síť.
 
 > [!Note]
-> Tyto kroky fungují pouze pro virtuální sítě ve stejném předplatném. Pokud vaše virtuální sítě jsou v různých předplatných, musíte použít PowerShell k připojení. Podrobnosti najdete v článku o [PowerShellu](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps).
+> Tyto kroky fungují jenom pro virtuální sítě ve stejném předplatném. Pokud jsou vaše virtuální sítě v různých předplatných, musíte k vytvoření připojení použít PowerShell. Podrobnosti najdete v článku o [PowerShellu](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps).
 
-### <a name="validate-the-vpn-connection-between-resource-manager-virtual-networks"></a>Ověření připojení VPN mezi virtuálními sítěmi Resource Manageru
+### <a name="validate-the-vpn-connection-between-resource-manager-virtual-networks"></a>Ověření připojení VPN mezi Správce prostředkůmi virtuálními sítěmi
 
-![Klasické připojení virtuální sítě k virtuální síti Azure Resource Manager](./media/virtual-network-configure-vnet-connections/4034493_en_2.png)
+![Připojení k virtuální síti s Azure Resource Managerm Classic](./media/virtual-network-configure-vnet-connections/4034493_en_2.png)
 
-Chcete-li zkontrolovat, zda je připojení VPN správně nakonfigurováno, postupujte podle těchto pokynů.
-
-> [!Note] 
-> Čísla za součástmi virtuální sítě v těchto krocích odpovídají číslům v předchozím diagramu.
-
-1. Ujistěte se, že v připojených virtuálních sítích nejsou žádné překrývající se adresní prostory.
-2. Ověřte, že rozsah adres pro virtuální síť Azure Resource Manager (1) je přesně definován v instanci **objektu Připojení** (4).
-3. Ověřte, že rozsah adres pro virtuální síť Azure Resource Manager (6) je přesně definován v instanci **objektu Připojení** (3).
-4. Ověřte, zda se předsdílené klíče shodují s objekty připojení.
-5. Ověřte, že virtuální síťová brána Azure Resource Manager VIP (2) je přesně definovaná v instanci **objektu Připojení** (4).
-6. Ověřte, že virtuální síťová brána Azure Resource Manager VIP (5) je přesně definovaná v instanci **objektu Připojení** (3).
-
-### <a name="connect-a-classic-virtual-network-to-a-resource-manager-virtual-network"></a>Připojení klasické virtuální sítě k virtuální síti Správce prostředků
-
-Můžete vytvořit připojení mezi virtuálními sítěmi, které jsou v různých předplatných a v různých oblastech. Můžete také připojit virtuální sítě, které již mají připojení k místním sítím, pokud jste nakonfigurovali typ brány jako na základě trasy.
-
-Pokud chcete nakonfigurovat připojení mezi klasickou virtuální sítí a virtuální sítí Resource Manager, přečtěte si informace [o připojení virtuálních sítí z různých modelů nasazení pomocí portálu Azure](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-connect-different-deployment-models-portal).
-
-![Klasické připojení virtuální sítě k virtuální síti Azure Resource Manager](./media/virtual-network-configure-vnet-connections/4034389_en_2.png)
-
-Pokud chcete zkontrolovat konfiguraci při připojení klasické virtuální sítě k virtuální síti Azure Resource Manager, postupujte podle těchto pokynů.
+Pokud chcete ověřit, že je připojení k síti VPN správně nakonfigurované, postupujte podle těchto pokynů.
 
 > [!Note] 
-> Čísla za součástmi virtuální sítě v těchto krocích odpovídají číslům v předchozím diagramu. 
+> Čísla po součástech virtuální sítě v těchto krocích odpovídají číslům v předchozím diagramu.
 
-1. Ujistěte se, že v připojených virtuálních sítích nejsou žádné překrývající se adresní prostory.
-2. Ověřte, že rozsah adres pro virtuální síť Azure Resource Manager (6) je přesně definován v klasické definici místní sítě (3).
-3. Ověřte, že rozsah adres pro klasickou virtuální síť (1) je přesně definován v instanci **objektu připojení** Azure Resource Manager (4).
-4. Ověřte, že virtuální virtuální síť brána VIP (2) je přesně definována v instanci **objektu připojení** Azure Resource Manager (4).
-5. Ověřte, že brána virtuální sítě Azure Resource Manager (5) je přesně definovaná v klasické instanci **Definice místní sítě** (3).
-6. Ověřte, zda se předsdílené klíče shodují v obou připojených virtuálních sítích:
-   - Klasická virtuální síť: **Definice místní sítě** (3)
-   - Virtuální síť Azure Resource Manager: **Objekt připojení** (4)
+1. Ujistěte se, že v propojených virtuálních sítích nejsou žádné překrývající se adresní prostory.
+2. Ověřte, zda je rozsah adres pro Azure Resource Manager virtuální síť (1) přesně definován v instanci **objektu připojení** (4).
+3. Ověřte, zda je rozsah adres pro Azure Resource Manager virtuální síť (6) přesně definován v instanci **objektu připojení** (3).
+4. Ověřte, zda jsou předsdílené klíče spárovány s objekty připojení.
+5. Ověřte, že virtuální IP adresa brány Azure Resource Manager virtuální sítě (2) je přesně definovaná v instanci **objektu připojení** (4).
+6. Ověřte, že virtuální IP adresa brány Azure Resource Manager virtuální sítě (5) je přesně definovaná v instanci **objektu připojení** (3).
 
-## <a name="create-a-point-to-site-vpn-connection"></a>Vytvoření připojení VPN z bodu na místo
+### <a name="connect-a-classic-virtual-network-to-a-resource-manager-virtual-network"></a>Připojení klasické virtuální sítě k Správce prostředků virtuální síti
 
-Konfigurace point-to-site *(P2S* v následujícím diagramu) umožňuje vytvořit zabezpečené připojení z jednotlivých klientských počítačů do virtuální sítě. Připojení bodu k webu jsou užitečná, pokud se chcete připojit k virtuální síti ze vzdáleného umístění, například z domova nebo z konference. Jsou také užitečné, když máte jen několik klientů, kteří se potřebují připojit k virtuální síti. 
+Můžete vytvořit propojení mezi virtuálními sítěmi, které jsou v různých předplatných a v různých oblastech. Můžete také propojit virtuální sítě, které již mají připojení k místním sítím, pokud jste nakonfigurovali typ brány jako založený na trasách.
 
-Připojení VPN point-to-site je zahájeno z klientského počítače prostřednictvím nativního klienta SÍTĚ WINDOWS. Připojovaní klienti používají certifikáty k ověření.
+Pokud chcete nakonfigurovat připojení mezi klasickými virtuálními sítěmi a Správce prostředků virtuální sítí, přečtěte si téma [propojení virtuálních sítí z různých modelů nasazení pomocí Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-connect-different-deployment-models-portal).
+
+![Připojení k virtuální síti s Azure Resource Managerm Classic](./media/virtual-network-configure-vnet-connections/4034389_en_2.png)
+
+Pokud chcete ověřit konfiguraci při připojení klasické virtuální sítě k virtuální síti Azure Resource Manager, postupujte podle těchto pokynů.
+
+> [!Note] 
+> Čísla po součástech virtuální sítě v těchto krocích odpovídají číslům v předchozím diagramu. 
+
+1. Ujistěte se, že v propojených virtuálních sítích nejsou žádné překrývající se adresní prostory.
+2. Ověřte, zda je rozsah adres pro Azure Resource Manager virtuální síť (6) přesně definován v definici klasické místní sítě (3).
+3. Ověřte, zda je rozsah adres pro klasickou virtuální síť (1) přesně definován v instanci **objektu Azure Resource Manager Connection** instance (4).
+4. Ověřte, že virtuální IP adresa brány Classic Virtual Network (2) je přesně definovaná v instanci **objektu Azure Resource Manager Connection** instance (4).
+5. Ověřte, jestli je brána virtuální sítě Azure Resource Manager (5) přesně definovaná v instanci **definice klasické místní sítě** (3).
+6. Ověřte, jestli jsou předsdílené klíče v obou připojených virtuálních sítích stejné:
+   - Klasická virtuální síť: **definice místní sítě** (3)
+   - Azure Resource Manager Virtual Network: **objekt Connection** (4)
+
+## <a name="create-a-point-to-site-vpn-connection"></a>Vytvoření připojení VPN typu Point-to-site
+
+Konfigurace Point-to-Site (*P2S* v následujícím diagramu) umožňuje vytvořit zabezpečené připojení z jednotlivého klientského počítače k virtuální síti. Připojení typu Point-to-site jsou užitečná, když se chcete připojit k virtuální síti ze vzdáleného umístění, například z domova nebo z konference. Jsou také užitečné, pokud máte pouze několik klientů, kteří se potřebují připojit k virtuální síti. 
+
+Připojení VPN typu Point-to-site se spouští z klientského počítače pomocí nativního klienta VPN systému Windows. Připojovaní klienti používají certifikáty k ověření.
 
 ![Připojení typu Point-to-Site](./media/virtual-network-configure-vnet-connections/4034387_en_3.png)
 
-Připojení z bodu na místo nevyžadují zařízení VPN. Vytvářejí připojení VPN přes protokol SSTP (SSTP) (Secure Socket Tunneling Protocol). Připojení bodu k síti můžete připojit k virtuální síti pomocí různých nástrojů pro nasazení a modelů nasazení:
+Připojení typu Point-to-site nevyžadují zařízení VPN. Vytvářejí připojení VPN prostřednictvím protokolu SSTP (Secure Socket Tunneling Protocol). Připojení typu Point-to-site k virtuální síti můžete propojit pomocí různých nástrojů nasazení a modelů nasazení:
 
-* [Konfigurace připojení z bodu na místo k virtuální síti pomocí portálu Azure](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal)
-* [Konfigurace připojení z bodu na místo k virtuální síti pomocí portálu Azure (klasický)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal)
-* [Konfigurace připojení z bodu na místo k virtuální síti pomocí prostředí PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
+* [Konfigurace připojení typu Point-to-site k virtuální síti pomocí Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal)
+* [Konfigurace připojení typu Point-to-site k virtuální síti pomocí Azure Portal (Classic)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal)
+* [Konfigurace připojení typu Point-to-site k virtuální síti pomocí PowerShellu](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
 
-### <a name="validate-your-point-to-site-connection"></a>Ověření připojení z bodu na pracoviště
+### <a name="validate-your-point-to-site-connection"></a>Ověření připojení Point-to-site
 
-Článek [Řešení potíží: Problémy s připojením z bodu na místo Azure](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems) procházejí běžnými problémy s připojením bodu k webu.
+[Řešení potíží s řešením: problémy s připojením Point-to-site](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems) se týkají běžných problémů s připojením Point-to-site.
 
-## <a name="create-a-multisite-vpn-connection"></a>Vytvoření připojení VPN pro více pracmísti
+## <a name="create-a-multisite-vpn-connection"></a>Vytvoření připojení VPN ve víc lokalitách
 
-Připojení site-to-site *(S2S* v následujícím diagramu) můžete přidat do virtuální sítě, která již má připojení site-to-site, připojení z bodu do sítě nebo připojení k síti do sítě. Tento druh připojení se často nazývá konfigurace *více pracovitých sítí.* 
+Můžete přidat připojení typu Site-to-Site (*S2S* v následujícím diagramu) k virtuální síti, která již má připojení typu Site-to-site, připojení typu Point-to-site nebo připojení typu síť-síť. Tento druh připojení se často označuje jako konfigurace ve *více lokalitách* . 
 
-![Připojení pro více pracmísti](./media/virtual-network-configure-vnet-connections/4034497_en_2.png)
+![Připojení ve více lokalitách](./media/virtual-network-configure-vnet-connections/4034497_en_2.png)
 
-Azure v současné době používá dva modely nasazení: Resource Manager a Classic. Tyto dva modely nejsou zcela kompatibilní s sebou. Chcete-li nakonfigurovat připojení k více sítím s různými modely, přečtěte si následující články:
+Azure v současné době používá dva modely nasazení: Resource Manager a Classic. Tyto dva modely nejsou navzájem zcela kompatibilní. Pokud chcete nakonfigurovat připojení ve více lokalitách s různými modely, přečtěte si následující články:
 
-* [Přidání připojení mezi lokalitami do virtuální sítě s existujícím připojením brány VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal)
-* [Přidání připojení site-to-site do virtuální sítě s existujícím připojením brány VPN (klasické)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site)
+* [Přidání připojení typu Site-to-site k virtuální síti s existujícím připojením služby VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal)
+* [Přidání připojení typu Site-to-site k virtuální síti s existujícím připojením brány VPN (Classic)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site)
 
 > [!Note]
-> Kroky v těchto článcích se nevztahují na Azure ExpressRoute a konfigurace koexistující připojení site-to-site. Další informace naleznete v tématu [ExpressRoute a koexistující připojení mezi lokalitami](https://docs.microsoft.com/azure/expressroute/expressroute-howto-coexist-resource-manager).
+> Kroky v těchto článcích se nevztahují na služby Azure ExpressRoute a souběžně existující konfigurace připojení mezi lokalitami. Další informace najdete v tématu [ExpressRoute a společně existující připojení mezi lokalitami](https://docs.microsoft.com/azure/expressroute/expressroute-howto-coexist-resource-manager).
 
-## <a name="configure-transit-routing"></a>Konfigurace směrování tranzitu
+## <a name="configure-transit-routing"></a>Konfigurace směrování přenosu
 
-Tranzitní směrování je specifický scénář směrování, ve kterém připojíte více sítí v topologii daisy-chain. Toto směrování umožňuje prostředkům ve virtuálních sítích na obou koncích řetězce vzájemnou komunikaci prostřednictvím virtuálních sítí mezi nimi. Bez směrování tranzitu se sítě nebo zařízení, která jsou partnerem prostřednictvím rozbočovače, nemohou vzájemně oslovit.
+Směrování provozu je konkrétní scénář směrování, ve kterém propojíte více sítí ve vysoce řetězové topologii. Díky tomuto směrování mohou prostředky ve virtuálních sítích na obou koncích řetězce komunikovat mezi sebou mezi virtuálními sítěmi. Bez průjezdního směrování se nedokáže navázat sítě nebo zařízení, která jsou v partnerském vztahu přes rozbočovač.
 
-### <a name="configure-transit-routing-in-a-point-to-site-connection"></a>Konfigurace tranzitního směrování v připojení bodu k síti
+### <a name="configure-transit-routing-in-a-point-to-site-connection"></a>Konfigurace směrování přenosu v připojení typu Point-to-site
 
-Představte si scénář, ve kterém chcete nakonfigurovat připojení VPN mezi sítí site-to-site mezi VNetA a VNetB. Chcete také nakonfigurovat vpn bodu na lokalitu pro klienta pro připojení k bráně VNetA. Potom chcete povolit směrování tranzitu pro klienty point-to-site pro připojení k Virtuální síti, která prochází VNetA. 
+Představte si scénář, ve kterém chcete nakonfigurovat připojení VPN typu Site-to-site mezi partnerském a VNetB. Také chcete nakonfigurovat síť VPN typu Point-to-site, aby se klient mohl připojit k bráně partnerském. Pak budete chtít povolit směrování přenosu pro klienty Point-to-site pro připojení k VNetB, které projde prostřednictvím partnerském. 
 
-Tento scénář je podporován, když je povoleno bgp na síti VPN mezi vneta a virtuální sítě. Další informace naleznete v [tématu O směrování vpn z bodu na pracoviště](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-point-to-site-routing).
+Tento scénář je podporován, je-li na síti VPN typu Site-to-site mezi partnerském a VNetB povolen protokol BGP. Další informace najdete v tématu [Směrování sítě VPN typu Point-to-site](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-point-to-site-routing).
 
-### <a name="configure-transit-routing-in-an-expressroute-connection"></a>Konfigurace tranzitního směrování v připojení ExpressRoute
+### <a name="configure-transit-routing-in-an-expressroute-connection"></a>Konfigurace směrování přenosu v připojení ExpressRoute
 
 Azure ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes vyhrazené soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute může vytvořit připojení ke cloudovým službám Microsoftu, jako je například Microsoft Azure, Office 365 nebo Dynamics 365. Další informace najdete v článku [Přehled ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction).
 
-![Připojení soukromého partnerského vztahu ExpressRoute k virtuálním sítím Azure](./media/virtual-network-configure-vnet-connections/4034395_en_1.png)
+![ExpressRoute připojení privátního partnerského vztahu k virtuálním sítím Azure](./media/virtual-network-configure-vnet-connections/4034395_en_1.png)
 
 > [!Note]
-> Doporučujeme, aby, pokud VNetA a VNetB jsou ve stejné geopolitické oblasti, [propojit obě virtuální sítě na okruh ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-arm) namísto konfigurace směrování tranzitu. Pokud se vaše virtuální sítě nacházejí v různých geopolitických oblastech, můžete je také propojit přímo s okruhem, pokud máte [ExpressRoute Premium](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium). 
+> Doporučujeme, aby v případě, že jsou partnerském a VNetB ve stejné geopolitické oblasti, [propojíte oba virtuální sítě s okruhem ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-arm) , nikoli konfigurací směrování přenosu. Pokud jsou vaše virtuální sítě v různých geopolitických oblastech, můžete je také propojit se svým okruhem přímo, pokud máte [ExpressRoute Premium](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium). 
 
-Pokud máte ExpressRoute a koexistenci mezi lokalitami, tranzitní směrování není podporováno. Další informace naleznete [v tématu Konfigurace expressroute a webu k webu pomocí prostředí PowerShell](https://docs.microsoft.com/azure/expressroute/expressroute-howto-coexist-resource-manager).
+Pokud máte ExpressRoute a koexistence mezi lokalitami, směrování přenosu se nepodporuje. Další informace najdete v tématu [Konfigurace ExpressRoute a Site-to-site pomocí prostředí PowerShell](https://docs.microsoft.com/azure/expressroute/expressroute-howto-coexist-resource-manager).
 
-Pokud jste povolili ExpressRoute pro připojení místních sítí k virtuální síti Azure, můžete povolit partnerský vztah mezi virtuálními sítěmi, kde chcete mít tranzitní směrování. Chcete-li místním sítím povolit připojení ke vzdálené virtuální síti, je nutné nakonfigurovat [partnerský vztah virtuální sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#gateways-and-on-premises-connectivity). 
-
-> [!Note]
-> Partnerský vztah virtuální sítě je k dispozici pouze pro virtuální sítě ve stejné oblasti.
-
-Chcete-li zkontrolovat, zda jste nakonfigurovali směrování tranzitu pro partnerský vztah virtuální sítě, postupujte podle následujících pokynů:
-
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/) pomocí účtu, který má potřebné [role a oprávnění](virtual-network-manage-peering.md#permissions).
-2. [Vytvořte partnerský vztah mezi Virtuální maa a Virtuální sítí,](https://docs.microsoft.com/azure/virtual-network/virtual-network-create-peering) jak je znázorněno v předchozím diagramu. 
-3. V podokně, které se zobrazí pro virtuální síť, vyberte **partnerské partnerské partnerské partnery** v části **Nastavení.**
-4. Vyberte partnerský vztah, který chcete zobrazit. Potom vyberte **Konfigurace,** chcete-li ověřit, že jste povolili **povolení přenosu brány** v síti VNetA připojené k okruhu ExpressRoute, a použít **vzdálenou bránu** ve vzdálené síti VNetB, která není připojena k okruhu ExpressRoute.
-
-### <a name="configure-transit-routing-in-a-virtual-network-peering-connection"></a>Konfigurace směrování tranzitu v připojení partnerského vztahu virtuální sítě
-
-Když je mezi virtuálními sítěmi navázán partnerský vztah, můžete také v partnerské virtuální síti nakonfigurovat bránu, která bude sloužit jako tranzitní bod pro místní síť. Informace o konfiguraci tranzitní trasy v partnerské síti virtuální sítě naleznete v tématu [Připojení mezi sítěmi](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps?toc=/azure/virtual-network/toc.json).
+Pokud jste povolili ExpressRoute připojit své místní sítě k virtuální síti Azure, můžete povolit partnerský vztah mezi virtuálními sítěmi, ve kterých chcete směrovat směrování. Pokud chcete, aby se vaše místní sítě připojovaly k vzdálené virtuální síti, musíte nakonfigurovat [partnerský vztah virtuálních sítí](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#gateways-and-on-premises-connectivity). 
 
 > [!Note]
-> Přenos brány není podporován ve vztahu partnerského vztahu mezi virtuálními sítěmi vytvořenými prostřednictvím různých modelů nasazení. Obě virtuální sítě ve vztahu partnerského vztahu musí být vytvořeny prostřednictvím Správce prostředků pro přechod brány do práce.
+> Partnerský vztah virtuálních sítí je dostupný jenom pro virtuální sítě ve stejné oblasti.
 
-Chcete-li zkontrolovat, zda jste nakonfigurovali tranzitní trasu pro partnerský vztah virtuální sítě, postupujte podle následujících pokynů:
+Pokud chcete ověřit, jestli jste nakonfigurovali směrování přenosu pro partnerský vztah virtuálních sítí, postupujte podle těchto pokynů:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/) pomocí účtu, který má potřebné [role a oprávnění](virtual-network-manage-peering.md#permissions).
-2. Do pole, které obsahuje text **Hledat prostředky** v horní části portálu, zadejte **virtuální sítě**. Když se ve výsledcích hledání zobrazí **virtuální sítě,** vyberte je.
-3. V okně **Virtuální sítě,** které se zobrazí, vyberte virtuální síť, pro kterou chcete zkontrolovat nastavení partnerského vztahu.
-4. V podokně, které se zobrazí pro vybranou virtuální síť, vyberte **partnerské partnerské partnery** v části **Nastavení.**
-5. Vyberte partnerský vztah, který chcete zobrazit. Ověřte, zda jste povolili **povolit přenos brány** a **použít vzdálené brány** v části **Konfigurace**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí účtu, který má potřebné [role a oprávnění](virtual-network-manage-peering.md#permissions).
+2. [Vytvořte partnerský vztah mezi partnerském a VNetB](https://docs.microsoft.com/azure/virtual-network/virtual-network-create-peering) , jak je znázorněno na dřívějším diagramu. 
+3. V podokně, které se zobrazí pro virtuální síť, vyberte **partnerské vztahy** v části **Nastavení** .
+4. Vyberte partnerský vztah, který chcete zobrazit. Pak vyberte **Konfigurace** a ověřte, že jste povolili **přenos brány** v partnerském síti připojené k okruhu ExpressRoute a **použijte vzdálenou bránu** ve vzdálené VNetB síti, která není připojená k okruhu ExpressRoute.
 
-![Výběrpro kontrolu, že jste nakonfigurovali tranzitní trasu pro partnerský vztah virtuální sítě](./media/virtual-network-configure-vnet-connections/4035414_en_1.png)
+### <a name="configure-transit-routing-in-a-virtual-network-peering-connection"></a>Konfigurace směrování přenosu v připojeních partnerského vztahu virtuální sítě
 
-### <a name="configure-transit-routing-in-a-network-to-network-connection"></a>Konfigurace směrování tranzitu v připojení mezi sítěmi
-
-Chcete-li nakonfigurovat směrování přenosu mezi virtuálními sítěmi, musíte povolit protokol BGP ve všech zprostředkujících připojeních mezi sítěmi pomocí modelu nasazení Resource Manager a prostředí PowerShell. Pokyny najdete v tématu [Jak nakonfigurovat protokol BGP v branách Azure VPN pomocí PowerShellu](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-resource-manager-ps).
-
-Přenos ový provoz přes brány Azure VPN je možný prostřednictvím klasického modelu nasazení, ale to závisí na staticky definovaných adresových prostorech v konfiguračním souboru sítě. BGP ještě není podporována s virtuálními sítěmi Azure a bránami VPN prostřednictvím klasického modelu nasazení. Bez protokolu BGP je ruční definování tranzitních adresových prostorů náchylné k chybám a nedoporučujeme je.
+Když je mezi virtuálními sítěmi navázán partnerský vztah, můžete také v partnerské virtuální síti nakonfigurovat bránu, která bude sloužit jako tranzitní bod pro místní síť. Postup konfigurace přenosové trasy v partnerském vztahu virtuálních sítí najdete v tématu [připojení typu síť-síť](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps?toc=/azure/virtual-network/toc.json).
 
 > [!Note]
-> Klasická připojení mezi sítěmi nakonfigurujete pomocí klasického portálu Azure nebo pomocí konfiguračního souboru sítě na klasickém portálu. Klasickou virtuální síť nelze vytvořit ani upravit prostřednictvím modelu nasazení Azure Resource Manageru nebo portálu Azure. Další informace o tranzitním směrování pro klasické virtuální sítě naleznete v [blogu microsoft developer](https://blogs.msdn.microsoft.com/igorpag/2015/10/01/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-using-vpn-v1/).
+> Přenos brány se nepodporuje v relaci partnerských vztahů mezi virtuálními sítěmi vytvořenými prostřednictvím různých modelů nasazení. Obě virtuální sítě ve vztahu partnerských vztahů se musí vytvořit prostřednictvím Správce prostředků, aby bylo možné pracovat s přenosem brány.
 
-### <a name="configure-transit-routing-in-a-site-to-site-connection"></a>Konfigurace směrování tranzitu v připojení mezi lokalitami
+Pokud chcete ověřit, jestli jste nakonfigurovali přenosovou trasu pro partnerský vztah virtuálních sítí, postupujte podle těchto pokynů:
 
-Chcete-li nakonfigurovat směrování tranzitu mezi místní sítí a virtuální sítí s připojením mezi lokalitami, musíte povolit protokol BGP ve všech zprostředkujících připojeních mezi lokalitami pomocí modelu nasazení Resource Manageru a prostředí PowerShell. Pokyny [najdete v tématu Jak nakonfigurovat protokol BGP v branách Azure VPN pomocí PowerShellu.](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-resource-manager-ps)
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí účtu, který má potřebné [role a oprávnění](virtual-network-manage-peering.md#permissions).
+2. Do pole, které obsahuje **prostředky vyhledávání** textu v horní části portálu, zadejte **virtuální sítě**. Pokud se ve výsledcích hledání zobrazí **virtuální sítě** , vyberte ji.
+3. V okně **virtuální sítě** , které se zobrazí, vyberte virtuální síť, pro kterou chcete zjistit nastavení partnerského vztahu.
+4. V podokně, které se zobrazí u vybrané virtuální sítě, vyberte v části **Nastavení** možnost **partnerské vztahy** .
+5. Vyberte partnerský vztah, který chcete zobrazit. Ověřte, že jste povolili možnost **Povolit přenos brány** a **používat vzdálené brány** v části **Konfigurace**.
 
-Přenos ový provoz přes brány Azure VPN je možný prostřednictvím klasického modelu nasazení, ale to závisí na staticky definovaných adresových prostorech v konfiguračním souboru sítě. BGP ještě není podporována s virtuálními sítěmi Azure a bránami VPN prostřednictvím klasického modelu nasazení. Bez protokolu BGP je ruční definování tranzitních adresových prostorů náchylné k chybám a nedoporučujeme je.
+![Výběry pro kontrolu, že jste nakonfigurovali přenosovou trasu pro partnerský vztah virtuálních sítí](./media/virtual-network-configure-vnet-connections/4035414_en_1.png)
+
+### <a name="configure-transit-routing-in-a-network-to-network-connection"></a>Konfigurace směrování přenosu v síťovém připojení
+
+Pokud chcete nakonfigurovat směrování provozu mezi virtuálními sítěmi, musíte povolit protokol BGP u všech zprostředkujících připojení k síti přes síť pomocí modelu nasazení Správce prostředků a PowerShellu. Pokyny najdete v tématu [Postup konfigurace protokolu BGP u bran Azure VPN Gateway pomocí PowerShellu](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-resource-manager-ps).
+
+Přenos provozu prostřednictvím bran Azure VPN je možný prostřednictvím modelu nasazení Classic, ale spoléhá se na staticky definované adresní prostory v souboru konfigurace sítě. Protokol BGP se zatím nepodporuje u virtuálních sítí Azure a bran sítě VPN prostřednictvím modelu nasazení Classic. Bez protokolu BGP je ruční definování adresních prostorů pro přenos dat náchylné k chybám a nedoporučujeme ji.
 
 > [!Note]
-> Klasická připojení mezi lokalitami nakonfigurujete pomocí klasického portálu Azure nebo pomocí konfiguračního souboru sítě na klasickém portálu. Klasickou virtuální síť nelze vytvořit ani upravit prostřednictvím modelu nasazení Azure Resource Manageru nebo portálu Azure. Další informace o tranzitním směrování pro klasické virtuální sítě naleznete v [blogu microsoft developer](https://blogs.msdn.microsoft.com/igorpag/2015/10/01/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-using-vpn-v1/).
+> Klasická připojení typu síť k síti můžete nakonfigurovat pomocí portálu Azure Classic nebo pomocí konfiguračního souboru sítě na portálu Classic. Klasickou virtuální síť nelze vytvořit ani upravit pomocí modelu nasazení Azure Resource Manager ani Azure Portal. Další informace o přenosu směrování pro klasické virtuální sítě najdete na [blogu Microsoftu pro vývojáře](https://blogs.msdn.microsoft.com/igorpag/2015/10/01/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-using-vpn-v1/).
+
+### <a name="configure-transit-routing-in-a-site-to-site-connection"></a>Konfigurace směrování přenosu v rámci připojení typu Site-to-site
+
+Pokud chcete nakonfigurovat směrování provozu mezi vaší místní sítí a virtuální sítí s připojením typu Site-to-site, musíte povolit protokol BGP u všech zprostředkujících připojení typu Site-to-site pomocí modelu nasazení Správce prostředků a PowerShellu. Pokyny najdete v tématu [Postup konfigurace protokolu BGP u bran Azure VPN Gateway pomocí PowerShellu](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-resource-manager-ps) .
+
+Přenos provozu prostřednictvím bran Azure VPN je možný prostřednictvím modelu nasazení Classic, ale spoléhá se na staticky definované adresní prostory v souboru konfigurace sítě. Protokol BGP se zatím nepodporuje u virtuálních sítí Azure a bran sítě VPN prostřednictvím modelu nasazení Classic. Bez protokolu BGP je ruční definování adresních prostorů pro přenos dat náchylné k chybám a nedoporučujeme ji.
+
+> [!Note]
+> Klasické připojení typu Site-to-site můžete nakonfigurovat pomocí portálu Azure Classic nebo pomocí konfiguračního souboru sítě na portálu Classic. Klasickou virtuální síť nelze vytvořit ani upravit pomocí modelu nasazení Azure Resource Manager ani Azure Portal. Další informace o přenosu směrování pro klasické virtuální sítě najdete na [blogu Microsoftu pro vývojáře](https://blogs.msdn.microsoft.com/igorpag/2015/10/01/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-using-vpn-v1/).
 
 ## <a name="configure-bgp-for-a-vpn-gateway"></a>Konfigurace BGP pro bránu VPN
 
-Protokol BGP je standardní směrovací protokol používaný v Síti Internet k výměně informací o směrování a dosažitelnosti mezi dvěma nebo více sítěmi. Při použití protokolu BGP v kontextu virtuálních sítí Azure, umožňuje brány Azure VPN a místní zařízení VPN, známé jako partnery Protokolu BGP nebo sousedy. Vyměňují si "trasy", které budou informovat obě brány o dostupnosti a dosažitelnosti pro tyto předpony, aby procházely branami nebo směrovači. 
+BGP je standardní směrovací protokol používaný na internetu k výměně informací o směrování a dostupnosti mezi dvěma nebo více sítěmi. Když se protokol BGP používá v kontextu Azure Virtual Networks, umožňuje brány Azure VPN a místní zařízení VPN, která se označují jako partneři protokolu BGP nebo sousední partneři. Vyměňují "trasy", které budou informovat obě brány o dostupnosti a dosažitelnosti těchto předpon, aby procházeli branami nebo směrovači. 
 
-Protokol BGP může také povolit směrování tranzitu mezi více sítěmi šířením tras, které se brána Protokolu BGP učí z jednoho partnera Protokolu BGP do všech ostatních partnerů protokolu BGP. Další informace najdete [v tématu Přehled protokolu BGP s bránou Azure VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-overview).
+Protokol BGP může také povolit směrování přenosu mezi více sítěmi tím, že šíří trasy, které brána BGP zjišťuje z jednoho partnerského uzlu protokolu BGP až po všechny ostatní partnerské uzly protokolu BGP. Další informace najdete v tématu [Přehled protokolu BGP s Azure VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-overview).
 
 ### <a name="configure-bgp-for-a-vpn-connection"></a>Konfigurace protokolu BGP pro připojení VPN
 
-Pokud chcete nakonfigurovat připojení VPN, které používá protokol BGP, přečtěte si informace o [konfiguraci protokolu BGP v branách Azure VPN pomocí prostředí PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-resource-manager-ps).
+Pokud chcete nakonfigurovat připojení VPN, které používá protokol BGP, přečtěte si téma [Postup konfigurace protokolu BGP u bran Azure VPN pomocí PowerShellu](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-resource-manager-ps).
 
-Povolte protokol BGP na bráně virtuální sítě vytvořením čísla autonomního systému (AS). Základní brány nepodporují protokol BGP. Pokud chcete zkontrolovat skladovou položku brány, přejděte do části **Přehled** okna **brány VPN** na webu Azure Portal. Pokud je vaše skladová položka **základní**, budete muset změnit skladovou položku (viz [Změna velikosti brány](https://docs.microsoft.com/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway?view=azurermps-4.1.0&viewFallbackFrom=azurermps-4.0.0)) na **VpnGw1**. 
+Povolte protokol BGP v bráně virtuální sítě vytvořením autonomního systému (AS) pro něj. Základní brány nepodporují protokol BGP. Chcete-li zjistit SKLADOVOU položku brány, v Azure Portal v okně **VPN Gateway** v části **Přehled** . Pokud je vaše SKU **základní**, musíte změnit skladovou položku (viz [Změna velikosti brány](https://docs.microsoft.com/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway?view=azurermps-4.1.0&viewFallbackFrom=azurermps-4.0.0)) na **VpnGw1**. 
 
-Kontrola skladové položky způsobí 20 až 30 minut prostojů. Jakmile má brána správnou skladovou položku, můžete přidat číslo AS pomocí příkazu Nastavení [AzureRmVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway?view=azurermps-3.8.0) PowerShell. Po konfiguraci čísla AS bude automaticky poskytnuta ip adresa druhé strany Protokolu BGP pro bránu.
+Kontrola SKU bude trvat 20 až 30 minut výpadků. Jakmile brána obsahuje správnou SKLADOVOU položku, můžete přidat jako číslo pomocí rutiny [set-AzureRmVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway?view=azurermps-3.8.0) prostředí PowerShell rutiny. Po nakonfigurování AS Number bude pro bránu automaticky poskytována IP adresa partnerského uzlu protokolu BGP.
 
-Je nutné ručně `LocalNetworkGateway` zadat číslo AS a druhou adresu protokolu BGP. Hodnoty `ASN` a `-BgpPeeringAddress` můžete nastavit pomocí příkazu [New-AzureRmLocalNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermlocalnetworkgateway?view=azurermps-4.1.0) nebo [Set-AzureRmLocalNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermlocalnetworkgateway?view=azurermps-4.1.0) PowerShell. Některá čísla AS jsou vyhrazena pro Azure a nemůžete je použít, jak je popsáno v [části O Protokolu BGP s azure vpn gateway](../vpn-gateway/vpn-gateway-bgp-overview.md#faq).
+Musíte ručně zadat `LocalNetworkGateway` číslo as a partnerská adresa BGP. Hodnoty `ASN` a `-BgpPeeringAddress` můžete nastavit pomocí rutiny [New-AzureRmLocalNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermlocalnetworkgateway?view=azurermps-4.1.0) nebo [set-AzureRmLocalNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermlocalnetworkgateway?view=azurermps-4.1.0) prostředí PowerShell rutiny. Některá čísla AS jsou vyhrazena pro Azure a nelze je použít, jak je popsáno v [tématu o protokolu BGP s Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md#faq).
 
-Objekt připojení musí mít povoleno protokol BGP. Hodnotu `-EnableBGP` můžete nastavit `$True` na [new-AzureRmVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0) nebo [Set-AzureRmVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0).
+Objekt připojení musí mít povolený protokol BGP. `-EnableBGP` Hodnotu můžete nastavit na `$True` pomocí [New-AzureRmVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0) nebo [set-AzureRmVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0).
 
 ### <a name="validate-the-bgp-configuration"></a>Ověření konfigurace protokolu BGP
 
-Chcete-li zkontrolovat, zda je protokol `get-AzureRmVirtualNetworkGateway` BGP správně nakonfigurován, můžete spustit příkazy a `get-AzureRmLocalNetworkGateway` příkazy. Pak si všimnete, BGP-související `BgpSettingsText` výstup v části. Například:
+Pokud chcete zjistit, jestli je protokol BGP správně nakonfigurovaný, můžete `get-AzureRmVirtualNetworkGateway` spustit `get-AzureRmLocalNetworkGateway` rutinu a rutin. Pak si všimnete výstupu souvisejícího s protokolem BGP `BgpSettingsText` v části. Příklad:
 
 ```
 {
@@ -272,34 +272,34 @@ Chcete-li zkontrolovat, zda je protokol `get-AzureRmVirtualNetworkGateway` BGP s
 }
 ```
 
-## <a name="create-a-highly-available-activeactive-vpn-connection"></a>Vytvoření vysoce dostupného aktivního/aktivního připojení VPN
+## <a name="create-a-highly-available-activeactive-vpn-connection"></a>Vytvoření vysoce dostupného připojení VPN typu aktivní/aktivní
 
-Hlavní rozdíly mezi aktivní/aktivní a aktivní/pohotovostní brány jsou:
+Mezi hlavní rozdíly mezi branami aktivní/aktivní a aktivní/pohotovostní patří:
 
-* Je nutné vytvořit dvě konfigurace IP brány se dvěma veřejnými IP adresami.
-* Je nutné nastavit **příznak EnableActiveActiveFeature.**
-* Skladová položka brány musí být **VpnGw1**, **VpnGw2**nebo **VpnGw3**.
+* Musíte vytvořit dvě konfigurace protokolu IP brány se dvěma veřejnými IP adresami.
+* Je nutné nastavit příznak **EnableActiveActiveFeature** .
+* SKU brány musí být **VpnGw1**, **VpnGw2**nebo **VpnGw3**.
 
-Chcete-li dosáhnout vysoké dostupnosti pro připojení mezi místními a síťovými připojeními, měli byste nasadit více bran VPN a vytvořit více paralelních připojení mezi vašimi sítěmi a Azure. Přehled možností připojení a topologie naleznete [v tématu Vysoce dostupné připojení mezi místními a síťovými připojeními .](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-highlyavailable)
+Abyste dosáhli vysoké dostupnosti pro připojení mezi různými místy a mezi lokalitami, měli byste nasadit víc bran VPN a navázat víc paralelních připojení mezi vašimi sítěmi a Azure. Přehled možností připojení a topologie najdete v tématu s [vysokou dostupností mezi místy a připojením k](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-highlyavailable)síti.
 
-Chcete-li vytvořit aktivní/aktivní připojení mezi místními a síťovými sítěmi, postupujte podle pokynů v části [Konfigurace aktivních/aktivních připojení S2S VPN s branami Azure VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-activeactive-rm-powershell) a nakonfigurujte bránu Azure VPN v aktivním/aktivním režimu.
+Pokud chcete vytvořit připojení typu aktivní/aktivní pro více míst a síťovou síť, postupujte podle pokynů v tématu [Konfigurace připojení VPN typu aktivní/aktivní pro S2S pomocí brány VPN Azure](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-activeactive-rm-powershell) a nakonfigurujte bránu Azure VPN v režimu aktivní/aktivní.
 
 > [!Note]  
-> * Přidáte-li adresy do brány místní sítě pro aktivní/aktivní režim s podporou protokolu BGP, *přidejte pouze adresy /32 partnerů protokolu BGP*. Pokud přidáte další adresy, budou považovány za statické trasy a mají přednost před trasami Protokolu BGP.
-> * Musíte použít různá čísla AS protokolu BGP pro místní sítě, které se připojují k Azure. (Pokud jsou stejné, budete muset změnit číslo AS virtuální sítě, pokud vaše místní zařízení VPN již používá ASN k partnerovi s jinými sousedy Protokolu BGP.)
+> * Když přidáváte adresy do brány místní sítě pro režim aktivní/aktivní s povoleným protokolem BGP, *přidejte pouze adresy/32 partnerských uzlů protokolu BGP*. Pokud přidáte více adres, budou považovány za statické trasy a budou mít přednost před trasami protokolu BGP.
+> * Pro místní sítě, které se připojují k Azure, musíte použít jinou službu BGP jako čísla. (Pokud jsou stejné, musíte změnit svou virtuální síť jako číslo, pokud vaše místní zařízení VPN už používá ASN k partnerským uzlům s jinými sousedními uzly protokolu BGP.)
 
-## <a name="change-an-azure-vpn-gateway-type-after-deployment"></a>Změna typu brány Azure VPN po nasazení
+## <a name="change-an-azure-vpn-gateway-type-after-deployment"></a>Změna typu brány VPN Azure po nasazení
 
-Typ brány virtuální sítě Azure nelze změnit z webu založeného na zásadách na přímo založený na směrování nebo přímo jiným způsobem. Nejprve musíte odstranit bránu. Poté nebude ip adresa a předsdílený klíč zachovány. Pak můžete vytvořit novou bránu požadovaného typu. 
+Nemůžete změnit typ brány virtuální sítě Azure ze zásad na základě založené na směrování nebo jiným způsobem přímo. Nejdřív musíte bránu odstranit. Pak se zachová IP adresa a předsdílený klíč. Pak můžete vytvořit novou bránu požadovaného typu. 
 
-Chcete-li bránu odstranit a vytvořit, postupujte takto:
+Pokud chcete odstranit a vytvořit bránu, použijte následující postup:
 
 1. Odstraňte všechna připojení přidružená k původní bráně.
-2. Odstraňte bránu pomocí portálu Azure, PowerShellu nebo klasického PowerShellu: 
-   * [Odstranění brány virtuální sítě pomocí portálu Azure](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-delete-vnet-gateway-portal)
+2. Odstraňte bránu pomocí Azure Portal, PowerShellu nebo klasického prostředí PowerShell: 
+   * [Odstranění brány virtuální sítě pomocí Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-delete-vnet-gateway-portal)
    * [Odstranění brány virtuální sítě pomocí PowerShellu](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-delete-vnet-gateway-powershell)
-   * [Odstranění brány virtuální sítě pomocí PowerShellu (klasické)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-delete-vnet-gateway-classic-powershell)
-3. Podle pokynů v [části Vytvoření brány VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway) vytvořte novou bránu požadovaného typu a dokončete nastavení SÍTĚ VPN.
+   * [Odstranění brány virtuální sítě pomocí PowerShellu (Classic)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-delete-vnet-gateway-classic-powershell)
+3. Postupujte podle kroků v části [Vytvoření brány VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway) a vytvořte novou bránu požadovaného typu a dokončete nastavení sítě VPN.
 
 > [!Note]
 > Tento proces bude trvat přibližně 60 minut.

@@ -1,6 +1,6 @@
 ---
-title: Řešení problémů s RDP pro virtuální počítače s Windows v Azure | Dokumenty společnosti Microsoft
-description: Řešení problémů s RDP v Azure pro virtuální počítače s Windows.
+title: Řešení potíží s protokolem RDP pro virtuální počítače s Windows v Azure | Microsoft Docs
+description: Řešení potíží s protokolem RDP v Azure pro virtuální počítače s Windows
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
@@ -15,15 +15,15 @@ ms.topic: troubleshooting
 ms.date: 12/13/2018
 ms.author: genli
 ms.openlocfilehash: 2fd2efa9de3deff1fcf983ac0fa45e412357d312
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71057275"
 ---
-# <a name="troubleshoot-rdp-issues"></a>Poradce při potížích s rdp
+# <a name="troubleshoot-rdp-issues"></a>Řešení potíží s protokolem RDP
 
-Následující problémy s vytvořením RDP k připojení k virtuálnímu virtuálnímu serveru jsou popsány v této části:
+V této části jsou uvedené následující problémy při vytváření připojení RDP k VIRTUÁLNÍm počítačům.
 
 - [Resetování protokolu RDP](reset-rdp.md)
 - [Řešení potíží s protokolem RDP](troubleshoot-rdp-connection.md)

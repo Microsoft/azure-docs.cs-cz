@@ -1,7 +1,7 @@
 ---
-title: Odeslání pracovního postupu pomocí vstupu do souboru BAM
+title: Odeslání pracovního postupu pomocí vstupu souboru BAM
 titleSuffix: Microsoft Genomics
-description: Tento článek ukazuje, jak odeslat pracovní postup do služby Microsoft Genomics, pokud je vstupní soubor jeden soubor BAM.
+description: Tento článek ukazuje, jak odeslat pracovní postup službě Microsoft Genomics, pokud je vstupním souborem jeden soubor BAM.
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -10,15 +10,15 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.openlocfilehash: 5145aa0ffdc4095f178a214f63433e5bcece83b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72249167"
 ---
 # <a name="submit-a-workflow-using-a-bam-file-input"></a>Odeslání pracovní postupu pomocí vstupního souboru BAM
 
-Tento článek ukazuje, jak odeslat pracovní postup do služby Microsoft Genomics, pokud je vstupní soubor jeden soubor BAM. Toto téma předpokládá, že jste už nainstalovali a spustili klienta `msgen` a že víte, jak používat úložiště Azure Storage. Pokud jste úspěšně odeslali pracovní postup pomocí zadaných ukázkových dat, jste připraveni pokračovat v tomto článku. 
+Tento článek ukazuje, jak odeslat pracovní postup službě Microsoft Genomics, pokud je vstupním souborem jeden soubor BAM. Toto téma předpokládá, že jste už nainstalovali a spustili klienta `msgen` a že víte, jak používat úložiště Azure Storage. Pokud jste úspěšně odeslali pracovní postup pomocí poskytnutých ukázkových dat, budete připraveni pokračovat v tomto článku. 
 
 ## <a name="set-up-upload-your-bam-file-to-azure-storage"></a>Příprava: Odeslání souboru BAM do úložiště Azure
 Předpokládejme, že máte jeden soubor BAM, *reads.bam*, a že jste ho nahráli do svého účtu úložiště *myaccount* v Azure jako **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/inputs/reads<span></span>.bam<span></span>**. Máte adresu URL rozhraní API a přístupový klíč. Chcete mít výstupy v **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>**.

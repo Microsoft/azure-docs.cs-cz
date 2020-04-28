@@ -1,5 +1,5 @@
 ---
-title: Azure Data Box Disk řešení problémů s odemknutím disku | Dokumenty společnosti Microsoft
+title: Azure Data Box Disk řešení potíží s odemknutím disku | Microsoft Docs
 description: Popisuje, jak řešit potíže s Azure Data Box Diskem.
 services: databox
 author: alkohli
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 06/14/2019
 ms.author: alkohli
 ms.openlocfilehash: 02cbf64261bbfbf50561e1b7466b46b27b688e0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67148280"
 ---
-# <a name="troubleshoot-disk-unlocking-issues-in-azure-data-box-disk"></a>Poradce při potížích s odemknutím disku na disku Azure Data Box
+# <a name="troubleshoot-disk-unlocking-issues-in-azure-data-box-disk"></a>Řešení potíží při odemykání disků v Azure Data Box Disk
 
-Tento článek se vztahuje na disk datové schránky Microsoft Azure a popisuje pracovní postupy používané k řešení problémů při použití nástroje pro odemknutí. 
+Tento článek se týká Microsoft Azure Data Box Disk a popisuje pracovní postupy, které se používají k odstraňování potíží při použití nástroje odemknout. 
 
 
 <!--## Query activity logs
@@ -38,39 +38,39 @@ To figure out who accessed the **Device credentials** blade, you can query the A
 | Nepodařilo se odemknout nebo ověřit žádné svazky. Obraťte se na podporu Microsoftu.  <br><br>Nástroji se nepodařilo odemknout nebo ověřit žádnou uzamčenou jednotku. | Nástroji se s použitím zadaného klíče nepodařilo odemknout žádnou ze zamčených jednotek. O dalších krocích se poraďte s podporou Microsoftu.                                                |
 | Následující svazky jsou odemčené a ověřené. <br>Písmena jednotek: E:<br>Nepodařilo se odemknout žádné svazky s použitím následujících klíčů: werwerqomnf, qwerwerqwdfda <br><br>Nástroj odemkl některé jednotky a zobrazil písmena úspěšných a neúspěšných jednotek.| Částečný úspěch. Nástroji se s použitím zadaného klíče nepodařilo odemknout některé ze zamčených jednotek. O dalších krocích se poraďte s podporou Microsoftu. |
 | Nepovedlo se najít zamčené svazky. Zkontrolujte, že je disk od Microsoftu správně připojený a zamčený.          | Nástroji se nepodařilo najít žádné zamčené jednotky. Buď jsou jednotky už odemčené, nebo nebyly nalezeny. Zkontrolujte, že jsou jednotky připojené a zamčené.                                                           |
-| Závažná chyba: Neplatný parametr<br>Název parametru: invalid_arg<br>POUŽITÍ:<br>DataBoxDiskUnlock /PassKeys:<seznam_klíčů_oddělený_středníky><br><br>Příklad: DataBoxDiskUnlock /PassKeys:klíč1;klíč2;klíč3<br>Příklad: DataBoxDiskUnlock /SystemCheck<br>Příklad: DataBoxDiskUnlock /Help<br><br>/PassKeys:       Tento klíč najdete v objednávce služby Azure Data Box Disk. Klíč vaše disky odemkne.<br>/Help:           Tato možnost poskytuje nápovědu k použití rutiny a příklady.<br>/SystemCheck:    Tato možnost zkontroluje, jestli váš systém splňuje požadavky na spuštění nástroje.<br><br>Nástroj ukončíte stisknutím libovolné klávesy. | Byl zadán neplatný parametr. Pouze povolené parametry jsou /SystemCheck, /PassKey a /Help.|
+| Závažná chyba: Neplatný parametr<br>Název parametru: invalid_arg<br>POUŽITÍ:<br>DataBoxDiskUnlock /PassKeys:<seznam_klíčů_oddělený_středníky><br><br>Příklad: DataBoxDiskUnlock /PassKeys:klíč1;klíč2;klíč3<br>Příklad: DataBoxDiskUnlock /SystemCheck<br>Příklad: DataBoxDiskUnlock /Help<br><br>/PassKeys:       Tento klíč najdete v objednávce služby Azure Data Box Disk. Klíč vaše disky odemkne.<br>/Help:           Tato možnost poskytuje nápovědu k použití rutiny a příklady.<br>/SystemCheck:    Tato možnost zkontroluje, jestli váš systém splňuje požadavky na spuštění nástroje.<br><br>Nástroj ukončíte stisknutím libovolné klávesy. | Byl zadán neplatný parametr. Jediné povolené parametry jsou/SystemCheck,/PassKey a/help..|
 
 
-## <a name="unlock-issues-for-disks-when-using-a-windows-client"></a>Problémy s odemknutím disků při použití klienta systému Windows
+## <a name="unlock-issues-for-disks-when-using-a-windows-client"></a>Odemknout problémy s disky při použití klienta Windows
 
-Tato část podrobně popisuje některé z hlavních problémů, kterým čelí při nasazení disku datové schránky při použití klienta systému Windows pro kopírování dat.
+Tato část podrobně popisuje některé hlavní problémy, na které čelí během nasazování Data Box Disk při použití klienta Windows pro kopírování dat.
 
-### <a name="issue-could-not-unlock-drive-from-bitlocker"></a>Problém: Nelze odemknout jednotku z nástroje BitLocker.
+### <a name="issue-could-not-unlock-drive-from-bitlocker"></a>Problém: jednotku nejde odemknout pomocí BitLockeru.
  
 **Příčina** 
 
-Použili jste heslo v dialogovém okně Nástrojem bitlocker a pokoušíte se odemknout disk pomocí dialogového okna Odemknutí jednotek nástroje BitLocker. Tohle by nefungovalo.
+Heslo jste použili v dialogovém okně BitLocker a pokusíte se odemknout disk přes dialogové okno jednotky odemčení BitLockerem. Tato činnost nebude fungovat.
 
 **Rozlišení**
 
-Chcete-li odemknout disky datové schránky, musíte použít nástroj pro odemknutí disku datové schránky a zadat heslo z webu Azure Portal. Další informace najdete [v kurzu: Rozbalit, připojit a odemknout disk Azure Data Box](data-box-disk-deploy-set-up.md#connect-to-disks-and-get-the-passkey).
+Chcete-li odemknout Data Box disky, je nutné použít nástroj Data Box Disk Unlock a zadat heslo z Azure Portal. Další informace najdete v [kurzu: rozbalení, připojení a odemčení Azure Data box disk](data-box-disk-deploy-set-up.md#connect-to-disks-and-get-the-passkey).
  
-### <a name="issue-could-not-unlock-or-verify-some-volumes-contact-microsoft-support"></a>Problém: Některé svazky nelze odemknout ani ověřit. Obraťte se na podporu Microsoftu.
+### <a name="issue-could-not-unlock-or-verify-some-volumes-contact-microsoft-support"></a>Problém: nepovedlo se odemknout nebo ověřit některé svazky. Obraťte se na podporu Microsoftu.
  
 **Příčina**
 
-V protokolu chyb se může zobrazit následující chyba a některé svazky nelze odemknout ani ověřit.
+V protokolu chyb se může zobrazit následující chyba a není možné odemknout nebo ověřit některé svazky.
 
 `Exception System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Management.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The system cannot find the file specified.`
  
-To znamená, že pravděpodobně chybí příslušná verze prostředí Windows PowerShell v klientovi systému Windows.
+To znamená, že na vašem klientovi Windows pravděpodobně chybí odpovídající verze Windows PowerShellu.
 
 **Rozlišení**
 
-Můžete nainstalovat [prostředí Windows PowerShell v 5.0](https://www.microsoft.com/download/details.aspx?id=54616) a operaci zopakovat.
+Můžete nainstalovat [prostředí Windows PowerShell v 5,0](https://www.microsoft.com/download/details.aspx?id=54616) a operaci zopakovat.
  
-Pokud stále nemůžete odemknout svazky, zkopírujte protokoly ze složky, která obsahuje nástroj pro odemknutí disku datové schránky, a [obraťte se na podporu společnosti Microsoft](data-box-disk-contact-microsoft-support.md).
+Pokud stále nemůžete odemknout svazky, zkopírujte protokoly ze složky, ve které je nástroj Data Box Disk Unlock, a obraťte se na [Podpora Microsoftu](data-box-disk-contact-microsoft-support.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si, jak [řešit problémy s ověřením](data-box-disk-troubleshoot.md).
+- Naučte se [řešit problémy s ověřením](data-box-disk-troubleshoot.md).

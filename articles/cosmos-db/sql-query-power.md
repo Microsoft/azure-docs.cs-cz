@@ -1,6 +1,6 @@
 ---
-title: POWER v dotazovacím jazyce Azure Cosmos DB
-description: Přečtěte si o funkci systému SQL POWER v Azure Cosmos DB.
+title: VÝKON v Azure Cosmos DB dotazovací jazyk
+description: Přečtěte si o výkonu funkcí systému SQL v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 683c53c369f136ad4b917b93e9a92a71072d05e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71349636"
 ---
-# <a name="power-azure-cosmos-db"></a>POWER (Azure Cosmos DB)
- Vrátí hodnotu zadaného výrazu na zadaný výkon.  
+# <a name="power-azure-cosmos-db"></a>NAPÁJENÍ (Azure Cosmos DB)
+ Vrátí hodnotu zadaného výrazu zadané mocniny.  
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -26,10 +26,10 @@ POWER (<numeric_expr1>, <numeric_expr2>)
 ## <a name="arguments"></a>Argumenty
   
 *numeric_expr1*  
-   Je číselný výraz.  
+   Je numerický výraz.  
   
 *numeric_expr2*  
-   Je moc, na kterou zvýšit *numeric_expr1*.  
+   Je mocninou, kterou chcete vyvolat *numeric_expr1*.  
   
 ## <a name="return-types"></a>Návratové typy
   
@@ -37,7 +37,7 @@ POWER (<numeric_expr1>, <numeric_expr2>)
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad ukazuje zvýšení číslo na mocninu 3 (krychle číslo).  
+  Následující příklad ukazuje vyvolání čísla mocninou čísla 3 (datová krychle čísla).  
   
 ```sql
 SELECT POWER(2, 3) AS pow1, POWER(2.5, 3) AS pow2  

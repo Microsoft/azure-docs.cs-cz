@@ -1,6 +1,6 @@
 ---
 title: Povolení jednotného přihlašování pro aplikaci s více tenanty
-description: Pokyny pro nezávislé dodavatele softwaru pro integraci s Azure active Directory
+description: Pokyny pro nezávislé výrobce softwaru při integraci s Azure Active Directory
 services: active-directory
 author: barbaraselden
 manager: CelesteDG
@@ -13,52 +13,52 @@ ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4c89a83ade6305579e700afb86f0b9e3aca2695e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67795184"
 ---
-# <a name="enable-single-sign-on-for-your-multi-tenant-application"></a>Povolení jednotného přihlášení pro víceklientské aplikace  
+# <a name="enable-single-sign-on-for-your-multi-tenant-application"></a>Povolení jednotného přihlašování pro aplikaci s více klienty  
 
-Když nabízíte aplikaci pro použití jinými společnostmi prostřednictvím nákupu nebo předplatného, zpřístupníte svou aplikaci zákazníkům v rámci jejich vlastních tenantů Azure. To se označuje jako vytvoření víceklientské aplikace. Přehled tohoto konceptu najdete [v tématu Víceklientské aplikace v Azure](https://docs.microsoft.com/azure/dotnet-develop-multitenant-applications) a [nájmy ve službě Azure Active Directory](../develop/single-and-multi-tenant-apps.md).
+Když nabídnete aplikaci pro použití jinými společnostmi prostřednictvím nákupu nebo předplatného, zpřístupníte ji zákazníkům v jejich vlastních klientech Azure. To se označuje jako vytvoření víceklientské aplikace. Přehled tohoto konceptu najdete v tématu víceklientské [aplikace v Azure](https://docs.microsoft.com/azure/dotnet-develop-multitenant-applications) a [tenantů v Azure Active Directory](../develop/single-and-multi-tenant-apps.md).
 
 ## <a name="what-is-single-sign-on"></a>Co je jednotné přihlašování
 
-Jednotné přihlašování (SSO) přidává zabezpečení a pohodlí, když se uživatelé přihlašují k aplikacím pomocí služby Azure Active Directory a dalších identit. Pokud je aplikace povolená, uživatelé nemusí zadávat samostatná pověření pro přístup k této aplikaci. Pro úplné vysvětlení jednotného přihlášení. [Viz Jednotné přihlašování k aplikacím ve službě Azure Active Directory](what-is-single-sign-on.md).
+Jednotné přihlašování (SSO) zvyšuje zabezpečení a pohodlí, když se uživatelé přihlásí k aplikacím pomocí Azure Active Directory a dalších identit. Když je aplikace povolená jednotného přihlašování, uživatelé nemusí zadávat samostatné přihlašovací údaje pro přístup k této aplikaci. Úplné vysvětlení jednotného přihlašování. [Viz jednotné přihlašování k aplikacím v Azure Active Directory](what-is-single-sign-on.md).
 
-## <a name="why-enable-single-sign-on-in-your-application"></a>Proč povolit jednotné přihlašování ve vaší aplikaci?
+## <a name="why-enable-single-sign-on-in-your-application"></a>Proč v aplikaci povolit jednotné přihlašování?
 
-Povolení přihlašování ve víceklientské aplikaci má mnoho výhod. Když povolíte přihlašovat k vlastní nastavení pro vaši aplikaci:
+K povolení jednotného přihlašování v aplikaci pro více tenantů máte spoustu výhod. Pokud pro svou aplikaci povolíte jednotné přihlašování:
 
-* Vaše aplikace může být uvedená na Azure Marketplace, kde je vaše aplikace zjistitelná miliony organizací používajících Azure Active Directory.
-  * Umožňuje zákazníkům rychle nakonfigurovat aplikaci pomocí služby Azure AD.
+* Vaše aplikace může být uvedená v Azure Marketplace, kde je vaše aplikace zjistitelná miliony organizací pomocí Azure Active Directory.
+  * Umožňuje zákazníkům rychlou konfiguraci aplikace pomocí Azure AD.
 
-* Vaše aplikace může být zjistitelná v Galerii aplikací Office 365, Spouštěči aplikací Office 365 a v Microsoft Search na Office.com
+* Vaše aplikace může být zjistitelná v galerii aplikací Office 365, ve Spouštěči aplikací Office 365 a v rámci služby Microsoft Search na Office.com.
 
-* Vaše aplikace můžete použít rozhraní API Microsoft Graph REST pro přístup k datům, která řídí produktivitu uživatelů, která je k dispozici v aplikaci Microsoft Graph.
+* Vaše aplikace může používat REST API Microsoft Graph pro přístup k datům, která řídí produktivitu uživatelů, která je k dispozici z Microsoft Graph.
 
-* Snížíte náklady na podporu tím, že to usnadníte vašim zákazníkům.
-  * Dokumentace specifická pro konkrétní aplikaci koprodukovaná s týmem Azure AD pro naše vzájemné zákazníky usnadňuje přijetí.
-  * Pokud je povoleno s přihlašování pomocí vlastního zabezpečení jedním kliknutím, správci IT vašich zákazníků se nemusí učit, jak nakonfigurovat vaši aplikaci pro použití v jejich organizaci.
+* Snížit náklady na podporu tím, že zákazníkům usnadníte práci.
+  * Dokumentace specifická pro aplikaci vytvořená s týmem Azure AD pro naše vzájemné zákazníky usnadňuje přijímání.
+  * Pokud je jednotné přihlašování jedním kliknutím povolené, správci IT nemusí vědět, jak konfigurovat aplikaci pro použití ve své organizaci.
 
-* Svým zákazníkům umožňujete zcela spravovat ověřování a autorizaci identit svých zaměstnanců a hostů.
+* Zákazníkům poskytnete možnost plně spravovat ověřování a autorizaci identity svých zaměstnanců a hostů.
 
-  * Umístění veškeré odpovědnosti za správu účtu a dodržování předpisů na vlastníka těchto identit zákazníkem.
+  * Zadáváme zodpovědnost za správu účtů a dodržování předpisů s vlastníkem zákazníka těchto identit.
 
-  * Poskytování možnosti povolit nebo zakázat automatické přiznávaní pro konkrétní poskytovatele identit, skupiny nebo uživatele, aby vyhovovaly jejich obchodním potřebám.
+  * Poskytování možnosti povolit nebo zakázat jednotné přihlašování pro konkrétní poskytovatele identity, skupiny nebo uživatele, aby splnili své obchodní potřeby.
 
-* Zvýšíte svou prodejnost a přijatelnost. Mnoho velkých organizací vyžaduje, aby (nebo aspirovat na) jejich zaměstnanci mají bezproblémové prostředí jednotného přihlašování ve všech aplikacích. Snadné vytváření sazí je důležité.
+* Zvýšíte svou obchodovatelnost a účinnost. Mnoho velkých organizací vyžaduje, aby jejich zaměstnanci (nebo snažíme) měli bezproblémové prostředí jednotného přihlašování napříč všemi aplikacemi. Zjednodušení jednotného přihlašování je důležité.
 
-* Můžete snížit tření koncových uživatelů, což může zvýšit využití koncových uživatelů a zvýšit vaše příjmy.
+* Omezíte tření koncového uživatele, což může zvýšit využití koncovými uživateli a zvýšit vaši tržby.
 
-## <a name="how-to-enable-single-sign-on-in-your-published-application"></a>Jak povolit jednotné přihlašování v publikované aplikaci
+## <a name="how-to-enable-single-sign-on-in-your-published-application"></a>Jak ve vaší publikované aplikaci povolit jednotné přihlašování
 
-1. [Zvolte správný federační protokol pro víceklientské aplikace](isv-choose-multi-tenant-federation.md).
-1. Implementace nastavení sazby ve vaší aplikaci
-   - Viz [pokyny k autentizačním vzorcům](../develop/v2-app-types.md)
-   - Viz [Ukázky kódu služby Azure active Directory](../develop/sample-v2-code.md) pro protokoly OIDC a OAuth
-1. [Vytvořte si klienta Azure](isv-tenant-multi-tenant-app.md) a otestujte svou aplikaci
-1. [Vytvořte a publikujte dokumentaci k vlastnímu přikazujme na svém webu](isv-create-sso-documentation.md).
-1. [Odešlete výpis aplikace](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) a staňte se partnerem společnosti Microsoft a vytvořte dokumentaci na webu společnosti Microsoft.
-1. [Připojte se k programu Microsoft Partner Network (zdarma) a vytvořte si plán pro uvedení na trh](https://partner.microsoft.com/en-us/explore/commercial#gtm).
+1. [Vyberte správný federační protokol pro vaši víceklientské aplikaci](isv-choose-multi-tenant-federation.md).
+1. Implementace jednotného přihlašování v aplikaci
+   - Zobrazit [pokyny k vzorům ověřování](../develop/v2-app-types.md)
+   - Viz [ukázky kódu Azure Active Directory](../develop/sample-v2-code.md) pro OIDC a protokoly OAuth.
+1. [Vytvoření tenanta Azure](isv-tenant-multi-tenant-app.md) a testování aplikace
+1. [Vytvořte a publikujte na svém webu dokumentaci jednotného přihlašování](isv-create-sso-documentation.md).
+1. [Odesláním seznamu aplikací](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) a partnera s Microsoftem můžete vytvořit dokumentaci na webu Microsoftu.
+1. [Připojte se k Microsoft Partner Network (zdarma) a vytvořte svůj přejít na trh](https://partner.microsoft.com/en-us/explore/commercial#gtm).

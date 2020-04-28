@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Konfigurace oprávnění účtu konektoru služby AD DS | Dokumenty společnosti Microsoft'
-description: Tento dokument podrobně popisuje konfiguraci účtu konektoru služby AD DS pomocí nového modulu Prostředí PowerShell ADSyncConfig
+title: 'Azure AD Connect: Konfigurace oprávnění účtu konektoru služba AD DS | Microsoft Docs'
+description: Tento dokument popisuje, jak nakonfigurovat účet konektoru služba AD DS pomocí nového modulu PowerShellu pro ADSyncConfig.
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,38 +12,38 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eeb80c3a94e63a886e4a16c0b8fa445b2a8a34e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72515817"
 ---
-# <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Konfigurace oprávnění účtu konektoru služby AD DS 
+# <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Konfigurace oprávnění účtu konektoru služba AD DS 
 
-Modul prostředí PowerShell s názvem [ADSyncConfig.psm1](reference-connect-adsyncconfig.md) byl představen s sestavením 1.1.880.0 (vydaném v srpnu 2018), který obsahuje kolekci rutin, které vám pomohou nakonfigurovat správná oprávnění služby Active Directory pro nasazení služby Azure AD Connect. 
+Modul PowerShell s názvem [ADSyncConfig. psm1](reference-connect-adsyncconfig.md) byl představený pomocí buildu 1.1.880.0 (vydaný v srpnu 2018), který obsahuje kolekci rutin, které vám pomůžou nakonfigurovat správná oprávnění služby Active Directory pro nasazení Azure AD Connect. 
 
 ## <a name="overview"></a>Přehled 
-Následující rutiny prostředí PowerShell lze použít k nastavení oprávnění služby Active Directory pro účet konektoru služby AD DS pro každou funkci, kterou vyberete, abyste ji povolili v Azure AD Connect. Chcete-li zabránit problémům, měli byste předem připravit oprávnění služby Active Directory, kdykoli budete chtít nainstalovat službu Azure AD Connect pomocí vlastního účtu domény pro připojení k doménové struktuře. Tento modul ADSyncConfig lze také použít ke konfiguraci oprávnění po nasazení služby Azure AD Connect.
+Následující rutiny PowerShellu se dají použít k nastavení oprávnění služby Active Directory pro účet konektoru služba AD DS pro každou funkci, kterou vyberete, aby se povolila v Azure AD Connect. Aby nedošlo k potížím, měli byste předem připravit oprávnění služby Active Directory, kdykoli budete chtít nainstalovat Azure AD Connect pomocí vlastního doménového účtu pro připojení k doménové struktuře. Tento modul ADSyncConfig lze také použít ke konfiguraci oprávnění po nasazení Azure AD Connect.
 
-![přehled účtu ad ds](media/how-to-connect-configure-ad-ds-connector-account/configure1.png)
+![Přehled účtu služby AD DS](media/how-to-connect-configure-ad-ds-connector-account/configure1.png)
 
-Pro instalaci služby Azure AD Connect Express se ve službě Active Directory vytvoří automaticky generovaný účet (MSOL_nnnnnnnnnn) se všemi potřebnými oprávněními, takže není nutné používat tento modul ADSyncConfig, pokud jste nezablokovali oprávnění dědičnost na organizační jednotky nebo na konkrétní objekty služby Active Directory, které chcete synchronizovat s Azure AD. 
+Pro Azure AD Connect expresní instalaci se automaticky generovaný účet (MSOL_nnnnnnnnnn) vytvoří ve službě Active Directory se všemi potřebnými oprávněními, takže nemusíte používat tento modul ADSyncConfig, pokud jste neblokovali dědění oprávnění na organizační jednotky nebo na konkrétní objekty služby Active Directory, které chcete synchronizovat do Azure AD. 
  
 ### <a name="permissions-summary"></a>Souhrn oprávnění 
-V následující tabulce je uveden souhrn oprávnění požadovaných pro objekty ad: 
+Následující tabulka poskytuje souhrn oprávnění vyžadovaných pro objekty služby Active Directory: 
 
 | Funkce | Oprávnění |
 | --- | --- |
-| funkce ms-DS-ConsistencyGuid |Oprávnění ke čtení a zápisu atributu ms-DS-ConsistencyGuid dokumentovaného v [konceptech návrhu – použití ms-DS-ConsistencyGuid jako sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). | 
-| Synchronizace hash hesla |<li>Replikovat změny adresáře</li>  <li>Replikovat všechny změny adresáře |
-| Hybridní nasazení Exchange |Oprávnění ke čtení a zápisu k atributům dokumentovaným v [hybridním zpětném zápisu exchange](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) pro uživatele, skupiny a kontakty. |
-| Veřejná složka exchange mailu |Oprávnění ke čtení atributů zdokumentovaných ve [veřejné složce Pošty Exchange](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) pro veřejné složky. | 
-| Zpětný zápis hesla |Oprávnění ke čtení a zápisu k atributům zdokumentovaným v [článku Začínáme se správou hesel](../authentication/howto-sspr-writeback.md) pro uživatele. |
-| Zpětný zápis zařízení |Oprávnění ke čtení a zápisu objektům zařízení a kontejnerům dokumentovaným v [zpětném zápisu zařízení](how-to-connect-device-writeback.md). |
-| Zpětný zápis skupin |Číst, vytvářet, aktualizovat a odstraňovat objekty skupinpro synchronizované **skupiny Office 365**.  Další informace naleznete v [tématu Skupinový zpětný zápis](how-to-connect-preview.md#group-writeback).|
+| funkce MS-DS-ConsistencyGuid |Oprávnění ke čtení a zápisu do atributu ms-DS-ConsistencyGuid dokumentovaného v tématu [Koncepty návrhu – použití MS-DS-ConsistencyGuid jako sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). | 
+| Synchronizace hodnot hash hesel |<li>Replikovat změny adresáře</li>  <li>Replikovat všechny změny adresáře |
+| Hybridní nasazení Exchange |Oprávnění ke čtení a zápisu k atributům popsaným v tématu [Exchange Hybrid zpětný zápis](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) pro uživatele, skupiny a kontakty. |
+| Veřejná složka pošty Exchange |Oprávnění ke čtení pro atributy dokumentované ve [veřejné složce Exchange mail](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) pro veřejné složky. | 
+| Zpětný zápis hesla |Oprávnění ke čtení a zápisu k atributům popsaným v tématu [Začínáme se správou hesel](../authentication/howto-sspr-writeback.md) pro uživatele. |
+| Zpětný zápis zařízení |Oprávnění ke čtení a zápisu pro objekty zařízení a kontejnery dokumentované ve [zpětném zápisu zařízení](how-to-connect-device-writeback.md). |
+| Zpětný zápis skupin |Čtení, vytváření, aktualizace a odstraňování objektů skupin pro synchronizované **skupiny sady Office 365**.  Další informace najdete v tématu [zpětný zápis skupin](how-to-connect-preview.md#group-writeback).|
 
-## <a name="using-the-adsyncconfig-powershell-module"></a>Použití modulu PowerShell ADSyncConfig 
-Modul ADSyncConfig vyžaduje [nástroje pro vzdálenou správu serveru (RSAT) pro službu AD DS,](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools) protože závisí na modulu a nástrojích prostředí AD DS PowerShell. Chcete-li nainstalovat službu RSAT pro službu AD DS, otevřete okno prostředí Windows PowerShell s příkazem Spustit jako správce a spusťte: 
+## <a name="using-the-adsyncconfig-powershell-module"></a>Použití modulu PowerShellu pro ADSyncConfig 
+Modul ADSyncConfig vyžaduje [pro služba AD DS nástroje pro vzdálenou správu serveru (RSAT)](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools) , protože závisí na modulu a nástrojích prostředí PowerShell pro služba AD DS. Pokud chcete nainstalovat RSAT pro služba AD DS, otevřete okno Windows PowerShellu s názvem spustit jako správce a proveďte následující: 
 
 ``` powershell
 Install-WindowsFeature RSAT-AD-Tools 
@@ -51,15 +51,15 @@ Install-WindowsFeature RSAT-AD-Tools
 ![Konfigurace](media/how-to-connect-configure-ad-ds-connector-account/configure2.png)
 
 >[!NOTE]
->Soubor **C:\Program Files\Microsoft Azure Active Directory Connect\AdSyncConfig\ADSyncConfig.psm1** můžete také zkopírovat do řadiče domény, který již má nainstalovanou službu RSAT pro službu AD DS, a použít odtud tento modul prostředí PowerShell.
+>Můžete také zkopírovat soubor **C:\Program Files\Microsoft Azure Active Directory Connect\AdSyncConfig\ADSyncConfig.psm1** na řadič domény, který už má nainstalované nástroje pro vzdálenou správu pro služba AD DS a použít tento modul PowerShellu.
 
-Chcete-li začít používat nástroj ADSyncConfig, musíte modul načíst v okně prostředí Windows PowerShell: 
+Pokud chcete začít používat ADSyncConfig, musíte načíst modul v okně Windows PowerShellu: 
 
 ``` powershell
 Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\AdSyncConfig\AdSyncConfig.psm1" 
 ```
 
-Chcete-li zkontrolovat všechny rutiny obsažené v tomto modulu, můžete zadat:  
+Pokud chcete kontrolovat všechny rutiny zahrnuté v tomto modulu, můžete zadat:  
 
 ``` powershell
 Get-Command -Module AdSyncConfig  
@@ -67,7 +67,7 @@ Get-Command -Module AdSyncConfig
 
 ![Zaškrtnout](media/how-to-connect-configure-ad-ds-connector-account/configure3.png)
 
-Každá rutina má stejné parametry pro zadání účtu konektoru služby AD DS a přepínače AdminSDHolder. Chcete-li zadat účet konektoru služby AD DS, můžete zadat název účtu a doménu nebo pouze rozlišující název účtu (DN),
+Každá rutina má stejné parametry pro zadání účtu konektoru služba AD DS a přepínače AdminSDHolder. Pokud chcete zadat účet konektoru služba AD DS, můžete zadat název účtu a doménu nebo jenom rozlišující název účtu (DN).
 
 třeba
 
@@ -75,42 +75,42 @@ třeba
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName <ADAccountName> -ADConnectorAccountDomain <ADDomainName>
 ```
 
-Nebo;
+Ani
 
 ```powershell
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <ADAccountDN>
 ```
 
-Ujistěte se, `<ADDomainName>` `<ADAccountDN>` že nahradit `<ADAccountName>`, a správné hodnoty pro vaše prostředí.
+Ujistěte se, `<ADAccountName>` `<ADDomainName>` že jste nahradili a `<ADAccountDN>` se správnými hodnotami pro vaše prostředí.
 
-V případě, že nechcete měnit oprávnění v kontejneru AdminSDHolder, použijte přepínač `-SkipAdminSdHolders`. 
+V případě, že nechcete měnit oprávnění pro kontejner AdminSDHolder, použijte přepínač `-SkipAdminSdHolders`. 
 
-Ve výchozím nastavení se všechny rutiny nastavených oprávnění pokusí nastavit oprávnění služby AD DS v kořenovém adresáři každé domény v doménové struktuře, což znamená, že uživatel, který používá relaci prostředí PowerShell, vyžaduje práva správce domény pro každou doménu v doménové struktuře.  Z důvodu tohoto požadavku se doporučuje použít správce rozlehlé sítě z kořenového adresáře doménové struktury. Pokud vaše nasazení Služby Azure AD Connect obsahuje více konektorů služby AD DS, bude nutné spustit stejnou rutinu v každé doménové struktuře, která má konektor služby AD DS. 
+Ve výchozím nastavení se všechny rutiny Set permissions pokusí nastavit služba AD DS oprávnění v kořenu každé domény v doménové struktuře, což znamená, že uživatel, který spouští relaci PowerShellu, vyžaduje v každé doméně v doménové struktuře práva správce domény.  Z důvodu tohoto požadavku se doporučuje použít Správce podnikové sítě z kořenového adresáře doménové struktury. Pokud má nasazení Azure AD Connect více konektorů služba AD DS, bude nutné spustit stejnou rutinu v každé doménové struktuře, která má konektor služba AD DS. 
 
-Můžete také nastavit oprávnění pro konkrétní objekt ou nebo AD DS pomocí parametru `-ADobjectDN` následovaného DN cílového objektu, kde chcete nastavit oprávnění. Při použití cílového adobjectdn, rutina nastaví oprávnění pouze pro tento objekt a nikoli na kořenové domény nebo AdminSDHolder kontejneru. Tento parametr může být užitečný, pokud máte určité objekty ounebo objektů AD DS, které mají zakázáno dědičnost oprávnění (viz Vyhledání objektů ad DS se zakázaným dědičností oprávnění) 
+Můžete také nastavit oprávnění pro konkrétní organizační jednotku nebo služba AD DS objekt pomocí parametru `-ADobjectDN` NÁSLEDOVANého rozlišujícím názvem cílového objektu, kde chcete nastavit oprávnění. Při použití cílového ADobjectDN bude rutina nastavovat oprávnění pouze pro tento objekt, nikoli pro kořen domény nebo kontejner AdminSDHolder. Tento parametr může být užitečný, když máte určité organizační jednotky nebo služba AD DS objekty, u kterých je dědičnost oprávnění zakázaná (viz téma Vyhledání služba AD DS objektů s děděním oprávnění zakázané). 
 
-Výjimky z těchto běžných `Set-ADSyncRestrictedPermissions` parametrů jsou rutina, která slouží k nastavení oprávnění pro samotný `Set-ADSyncPasswordHashSyncPermissions` účet konektoru služby AD DS, a rutina, protože oprávnění požadovaná `-ObjectDN` pro `-SkipAdminSdHolders` synchronizaci hash hesel jsou nastavena pouze v kořenovém adresáři domény, proto tato rutina neobsahuje parametry nebo.
+Výjimkou těchto běžných parametrů `Set-ADSyncRestrictedPermissions` je rutina, která se používá k nastavení oprávnění pro účet služba AD DSového konektoru a `Set-ADSyncPasswordHashSyncPermissions` rutina, protože oprávnění požadovaná pro synchronizaci hodnoty hash hesla se nastavují jenom v kořenu domény, takže tato rutina nezahrnuje parametry `-ObjectDN` nebo. `-SkipAdminSdHolders`
 
-### <a name="determine-your-ad-ds-connector-account"></a>Určení účtu konektoru ad DS 
-V případě, že je azure ad connect už nainstalovaný a chcete zkontrolovat, co je účet konektoru služby AD DS, který se aktuálně používá ve službě Azure AD Connect, můžete rutinu spustit: 
+### <a name="determine-your-ad-ds-connector-account"></a>Určení účtu konektoru služba AD DS 
+V případě, že je již Azure AD Connect nainstalován a chcete zjistit, co je účet služba AD DS Connector, který je aktuálně používán Azure AD Connect, můžete spustit rutinu: 
 
 ``` powershell
 Get-ADSyncADConnectorAccount 
 ```
-### <a name="locate-ad-ds-objects-with-permission-inheritance-disabled"></a>Vyhledání objektů ve snaze ad DS se zakázaným dědičností oprávnění 
-V případě, že chcete zkontrolovat, zda existuje nějaký objekt ad DS se zakázaným dědičností oprávnění, můžete spustit: 
+### <a name="locate-ad-ds-objects-with-permission-inheritance-disabled"></a>Vyhledání objektů služba AD DS s děděním oprávnění zakázáno 
+V případě, že chcete zjistit, zda služba AD DS objekt s děděním oprávnění zakázán, můžete spustit: 
 
 ``` powershell
 Get-ADSyncObjectsWithInheritanceDisabled -SearchBase '<DistinguishedName>' 
 ```
-Ve výchozím nastavení bude tato rutina hledat pouze vou s zakázanou dědičností, `-ObjectClass` ale můžete zadat další třídy objektů AD DS v parametru nebo použít '*' pro všechny třídy objektů, a to následovně: 
+Ve výchozím nastavení tato rutina bude hledat pouze organizační jednotky s zakázanou dědičností, ale můžete zadat jiné třídy služba AD DS `-ObjectClass` objektů v parametru nebo použít * pro všechny třídy objektů následujícím způsobem: 
 
 ``` powershell
 Get-ADSyncObjectsWithInheritanceDisabled -SearchBase '<DistinguishedName>' -ObjectClass * 
 ```
  
-### <a name="view-ad-ds-permissions-of-an-object"></a>Zobrazení oprávnění objektu ve službě AD DS 
-Pomocí níže uvedené rutiny můžete zobrazit seznam oprávnění aktuálně nastavených u objektu služby Active Directory poskytnutím funkce Rozlišit: 
+### <a name="view-ad-ds-permissions-of-an-object"></a>Zobrazení služba AD DS oprávnění objektu 
+Pomocí níže uvedené rutiny můžete zobrazit seznam oprávnění aktuálně nastavených pro objekt služby Active Directory zadáním jeho rozlišujícího typu: 
 
 ``` powershell
 Show-ADSyncADObjectPermissions -ADobjectDN '<DistinguishedName>' 
@@ -119,14 +119,14 @@ Show-ADSyncADObjectPermissions -ADobjectDN '<DistinguishedName>'
 ## <a name="configure-ad-ds-connector-account-permissions"></a>Konfigurace oprávnění účtu konektoru služby AD DS 
  
 ### <a name="configure-basic-read-only-permissions"></a>Konfigurace základních oprávnění jen pro čtení 
-Chcete-li nastavit základní oprávnění jen pro čtení pro účet konektoru služby AD DS, když nepoužíváte žádnou funkci Azure AD Connect, spusťte: 
+Chcete-li nastavit základní oprávnění jen pro čtení pro účet služba AD DSho konektoru, když nepoužíváte žádnou Azure AD Connect funkci, spusťte příkaz: 
 
 ``` powershell
 Set-ADSyncBasicReadPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
 
 
-nebo; 
+ani 
 
 ``` powershell
 Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
@@ -136,25 +136,25 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
 Tato rutina nastaví následující oprávnění: 
  
 
-|Typ |Name (Název) |Access |Platí pro| 
+|Typ |Název |Access |Platí pro| 
 |-----|-----|-----|-----|
-|Povolit |Účet konektoru ad ds |Čtení všech vlastností |Objekty podřízeného zařízení| 
-|Povolit |Účet konektoru ad ds|Čtení všech vlastností |Potomek InetOrgPerson objekty| 
-|Povolit |Účet konektoru ad ds |Čtení všech vlastností |Objekty potomka počítače| 
-|Povolit |Účet konektoru ad ds |Čtení všech vlastností |Potomek cizích objektů SecurityPrincipal| 
-|Povolit |Účet konektoru ad ds |Čtení všech vlastností |Objekty skupiny potomků| 
-|Povolit |Účet konektoru ad ds |Čtení všech vlastností |Objekty uživatele potomků| 
-|Povolit |Účet konektoru ad ds |Čtení všech vlastností |Objekty kontaktů potomků| 
+|Povolit |Účet konektoru služba AD DS |Číst všechny vlastnosti |Podřízené objekty zařízení| 
+|Povolit |Účet konektoru služba AD DS|Číst všechny vlastnosti |Odvozené objekty InetOrgPerson| 
+|Povolit |Účet konektoru služba AD DS |Číst všechny vlastnosti |Objekty potomkového počítače| 
+|Povolit |Účet konektoru služba AD DS |Číst všechny vlastnosti |Odvozené objekty foreignSecurityPrincipal| 
+|Povolit |Účet konektoru služba AD DS |Číst všechny vlastnosti |Podřízené objekty skupiny| 
+|Povolit |Účet konektoru služba AD DS |Číst všechny vlastnosti |Podřízené objekty uživatele| 
+|Povolit |Účet konektoru služba AD DS |Číst všechny vlastnosti |Podřízené objekty kontaktu| 
 
  
-### <a name="configure-ms-ds-consistency-guid-permissions"></a>Konfigurace oprávnění ms-DS-konzistence-guid 
-Chcete-li nastavit oprávnění pro účet konektoru služby AD DS při použití atributu ms-Ds-Consistency-Guid jako zdrojové kotvy (aka možnost "Let Azure manage the source anchor for me" – spusťte: 
+### <a name="configure-ms-ds-consistency-guid-permissions"></a>Konfigurace služby MS-DS-Consistency-GUID oprávnění 
+Pokud chcete nastavit oprávnění pro účet konektoru služba AD DS při použití atributu ms-DS-Consistency-GUID jako zdrojového ukotvení (neboli možnosti "nechat Azure spravovat zdrojovou kotvu pro mě"), spusťte: 
 
 ``` powershell
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
 
-nebo; 
+ani 
 
 ``` powershell
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
@@ -162,19 +162,19 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobje
 
 Tato rutina nastaví následující oprávnění: 
 
-|Typ |Name (Název) |Access |Platí pro|
+|Typ |Název |Access |Platí pro|
 |-----|-----|-----|-----| 
-|Povolit|Účet konektoru ad ds|Čtení a zápis, vlastnost|Objekty uživatele potomků|
+|Povolit|Účet konektoru služba AD DS|Vlastnost čtení/zápisu|Podřízené objekty uživatele|
 
 ### <a name="permissions-for-password-hash-synchronization"></a>Oprávnění pro synchronizaci hodnot hash hesel 
-Chcete-li nastavit oprávnění pro účet konektoru služby AD DS při použití synchronizace hodnot hash hesel, spusťte: 
+Pokud chcete nastavit oprávnění pro účet konektoru služba AD DS při synchronizaci hodnot hash hesel, spusťte: 
 
 ``` powershell
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [<CommonParameters>] 
 ```
 
 
-nebo; 
+ani 
 
 ``` powershell
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [<CommonParameters>] 
@@ -182,39 +182,39 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [<CommonPar
 
 Tato rutina nastaví následující oprávnění: 
 
-|Typ |Name (Název) |Access |Platí pro|
+|Typ |Název |Access |Platí pro|
 |-----|-----|-----|-----| 
-|Povolit |Účet konektoru ad ds |Replikace změn adresáře |Pouze tento objekt (kořenový adresář domény)| 
-|Povolit |Účet konektoru ad ds |Replikace adresáře změní vše |Pouze tento objekt (kořenový adresář domény)| 
+|Povolit |Účet konektoru služba AD DS |Replikují se změny adresáře. |Pouze tento objekt (doménový kořen)| 
+|Povolit |Účet konektoru služba AD DS |Replikují se všechny změny adresáře. |Pouze tento objekt (doménový kořen)| 
   
-### <a name="permissions-for-password-writeback"></a>Oprávnění pro zpětný zápis hesla 
-Chcete-li nastavit oprávnění pro účet konektoru služby AD DS při použití zpětného zápisu hesla, spusťte: 
+### <a name="permissions-for-password-writeback"></a>Oprávnění ke zpětnému zápisu hesla 
+Pokud chcete nastavit oprávnění pro účet služba AD DSového konektoru při použití zpětného zápisu hesla, spusťte příkaz: 
 
 ``` powershell
 Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
 
 
-nebo;
+ani
 
 ``` powershell
 Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
 ```
 Tato rutina nastaví následující oprávnění: 
 
-|Typ |Name (Název) |Access |Platí pro|
+|Typ |Název |Access |Platí pro|
 |-----|-----|-----|-----| 
-|Povolit |Účet konektoru ad ds |Resetování hesla |Objekty uživatele potomků| 
-|Povolit |Účet konektoru ad ds |Zapsat vlastnost lockoutTime |Objekty uživatele potomků| 
-|Povolit |Účet konektoru ad ds |Vlastnost zápisu pwdLastSet |Objekty uživatele potomků| 
+|Povolit |Účet konektoru služba AD DS |Resetování hesla |Podřízené objekty uživatele| 
+|Povolit |Účet konektoru služba AD DS |Zápis vlastnosti lockoutTime |Podřízené objekty uživatele| 
+|Povolit |Účet konektoru služba AD DS |Zápis vlastnosti pwdLastSet |Podřízené objekty uživatele| 
 
-### <a name="permissions-for-group-writeback"></a>Oprávnění pro skupinový zpětný zápis 
-Chcete-li nastavit oprávnění pro účet konektoru služby AD DS při použití zpětného zápisu skupiny, spusťte: 
+### <a name="permissions-for-group-writeback"></a>Oprávnění pro zpětný zápis skupin 
+Pokud chcete nastavit oprávnění pro účet služba AD DSového konektoru při použití zpětného zápisu skupiny, spusťte příkaz: 
 
 ``` powershell
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
-nebo; 
+ani 
 
 ``` powershell
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>]
@@ -222,21 +222,21 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
  
 Tato rutina nastaví následující oprávnění: 
 
-|Typ |Name (Název) |Access |Platí pro|
+|Typ |Název |Access |Platí pro|
 |-----|-----|-----|-----| 
-|Povolit |Účet konektoru ad ds |Obecný čtení a zápis |Všechny atributy skupiny typů objektů a podobjektů| 
-|Povolit |Účet konektoru ad ds |Vytvořit nebo odstranit podřízený objekt |Všechny atributy skupiny typů objektů a podobjektů| 
-|Povolit |Účet konektoru ad ds |Odstranit nebo odstranit objekty stromu|Všechny atributy skupiny typů objektů a podobjektů|
+|Povolit |Účet konektoru služba AD DS |Obecný čtení a zápis |Všechny atributy skupiny a podobjektů typu objektu| 
+|Povolit |Účet konektoru služba AD DS |Vytvořit nebo odstranit podřízený objekt |Všechny atributy skupiny a podobjektů typu objektu| 
+|Povolit |Účet konektoru služba AD DS |Odstranit nebo odstranit objekty stromu|Všechny atributy skupiny a podobjektů typu objektu|
 
-### <a name="permissions-for-exchange-hybrid-deployment"></a>Oprávnění pro hybridní nasazení Exchange 
-Chcete-li nastavit oprávnění pro účet konektoru služby AD DS při použití hybridního nasazení Exchange, spusťte: 
+### <a name="permissions-for-exchange-hybrid-deployment"></a>Oprávnění pro hybridní nasazení systému Exchange 
+Pokud chcete nastavit oprávnění pro účet služba AD DSového konektoru při použití hybridního nasazení Exchange, spusťte: 
 
 ``` powershell
 Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
 
 
-nebo; 
+ani 
 
 ``` powershell
 Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
@@ -245,39 +245,39 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN 
 Tato rutina nastaví následující oprávnění:  
  
 
-|Typ |Name (Název) |Access |Platí pro|
+|Typ |Název |Access |Platí pro|
 |-----|-----|-----|-----| 
-|Povolit |Účet konektoru ad ds |Čtení a zápis všech vlastností |Objekty uživatele potomků| 
-|Povolit |Účet konektoru ad ds |Čtení a zápis všech vlastností |Potomek InetOrgPerson objekty| 
-|Povolit |Účet konektoru ad ds |Čtení a zápis všech vlastností |Objekty skupiny potomků| 
-|Povolit |Účet konektoru ad ds |Čtení a zápis všech vlastností |Objekty kontaktů potomků| 
+|Povolit |Účet konektoru služba AD DS |Čtení a zápis všech vlastností |Podřízené objekty uživatele| 
+|Povolit |Účet konektoru služba AD DS |Čtení a zápis všech vlastností |Odvozené objekty InetOrgPerson| 
+|Povolit |Účet konektoru služba AD DS |Čtení a zápis všech vlastností |Podřízené objekty skupiny| 
+|Povolit |Účet konektoru služba AD DS |Čtení a zápis všech vlastností |Podřízené objekty kontaktu| 
 
-### <a name="permissions-for-exchange-mail-public-folders-preview"></a>Oprávnění pro veřejné složky pošty Exchange (preview) 
-Chcete-li nastavit oprávnění pro účet konektoru služby AD DS při použití funkce Exchange Mail Public Folders, spusťte: 
+### <a name="permissions-for-exchange-mail-public-folders-preview"></a>Oprávnění pro veřejné složky pošty Exchange (Preview) 
+Pokud chcete nastavit oprávnění pro účet služba AD DSového konektoru při používání funkce veřejné složky Exchange mail, spusťte: 
 
 ``` powershell
 Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
 
 
-nebo; 
+ani 
 
 ``` powershell
 Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
 ```
 Tato rutina nastaví následující oprávnění: 
 
-|Typ |Name (Název) |Access |Platí pro|
+|Typ |Název |Access |Platí pro|
 |-----|-----|-----|-----| 
-|Povolit |Účet konektoru ad ds |Čtení všech vlastností |Objekty Descendant PublicFolder| 
+|Povolit |Účet konektoru služba AD DS |Číst všechny vlastnosti |Odvozené objekty PublicFolder| 
 
-### <a name="restrict-permissions-on-the-ad-ds-connector-account"></a>Omezení oprávnění pro účet konektoru ad ds 
-Tento skript prostředí PowerShell zpřísní oprávnění pro účet konektoru služby AD, který je k dispozici jako parametr. Oprávnění k dotažení zahrnují následující kroky: 
+### <a name="restrict-permissions-on-the-ad-ds-connector-account"></a>Omezení oprávnění pro účet konektoru služba AD DS 
+Tento skript PowerShellu bude zpřísnit oprávnění pro účet konektoru služby AD, který jste zadali jako parametr. Oprávnění k zpřísnění zahrnuje následující kroky: 
 
-- Zakázat dědičnost zadaného objektu 
-- Odebrat všechny ACE na konkrétní objekt, s výjimkou ACE specifické pro SELF, jak chceme zachovat výchozí oprávnění beze změny, pokud jde o SELF. 
+- Zakázat dědění pro zadaný objekt 
+- Odeberte všechny položky ACE u konkrétního objektu, s výjimkou ACE specifických pro sebe jako pro sebe, aby výchozí oprávnění zůstala beze změny. 
  
-  Parametr -ADConnectorAccountDN je účet AD, jehož oprávnění je třeba zpřísnit. Obvykle se jedná o účet domény MSOL_nnnnnnnnnnnn, který je nakonfigurován v konektoru služby AD DS (viz Určení účtu konektoru služby AD DS). Parametr -Credential je nezbytný k určení účtu správce, který má potřebná oprávnění k omezení oprávnění služby Active Directory pro cílový objekt Služby AD. Obvykle se jedná o správce rozlehlé sítě nebo domény.  
+  Parametr-ADConnectorAccountDN je účet služby AD, jehož oprávnění je potřeba zpřísnit. Obvykle se jedná o účet domény MSOL_nnnnnnnnnnnn, který je nakonfigurovaný v konektoru služba AD DS (viz určení účtu konektoru služby služba AD DS). Parametr-Credential je nutný k určení účtu správce, který má potřebná oprávnění k omezení oprávnění služby Active Directory pro cílový objekt AD. Většinou se jedná o podnik nebo správce domény.  
 
 ``` powershell
 Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <PSCredential> [-DisableCredentialValidation] [-WhatIf] [-Confirm] [<CommonParameters>] 
@@ -292,16 +292,16 @@ Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=U
 
 Tato rutina nastaví následující oprávnění: 
 
-|Typ |Name (Název) |Access |Platí pro|
+|Typ |Název |Access |Platí pro|
 |-----|-----|-----|-----| 
 |Povolit |SYSTEM |Úplné řízení |Tento objekt 
 |Povolit |Enterprise Admins |Úplné řízení |Tento objekt 
 |Povolit |Domain Admins |Úplné řízení |Tento objekt 
 |Povolit |Správci |Úplné řízení |Tento objekt 
-|Povolit |Podnikové řadiče domény |Obsah seznamu |Tento objekt 
+|Povolit |Podnikové řadiče domény |Vypsat obsah |Tento objekt 
 |Povolit |Podnikové řadiče domény |Číst všechny vlastnosti |Tento objekt 
 |Povolit |Podnikové řadiče domény |Oprávnění ke čtení |Tento objekt 
-|Povolit |Authenticated Users |Obsah seznamu |Tento objekt 
+|Povolit |Authenticated Users |Vypsat obsah |Tento objekt 
 |Povolit |Authenticated Users |Číst všechny vlastnosti |Tento objekt 
 |Povolit |Authenticated Users |Oprávnění ke čtení |Tento objekt 
 

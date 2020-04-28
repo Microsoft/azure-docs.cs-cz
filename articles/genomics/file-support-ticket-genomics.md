@@ -1,8 +1,8 @@
 ---
-title: Jak podat žádost o podporu
+title: Postup při započetí žádosti o podporu
 titleSuffix: Microsoft Genomics
-description: Tento článek popisuje, jak podat žádost o podporu kontaktovat Microsoft Genomics, pokud se vám nepodařilo vyřešit problém s průvodcem pro řešení potíží nebo nejčastějšídotazy.
-keywords: řešení problémů, chyba, ladění, podpora
+description: Tento článek popisuje, jak zaslat žádost o podporu pro kontaktování Microsoft Genomics, pokud nemůžete vyřešit problém pomocí Průvodce odstraňováním potíží nebo nejčastějších dotazů.
+keywords: řešení potíží, chyba, ladění, podpora
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -11,39 +11,39 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.openlocfilehash: ddfe8b6010ddc241364ccf7b2d4f5f648bd3ce0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72248599"
 ---
-# <a name="how-to-contact-microsoft-genomics-for-support"></a>Jak kontaktovat Microsoft Genomics pro podporu
-Tento přehled popisuje, jak podat žádost o podporu kontaktovat Microsoft Genomics. To může být užitečné, pokud se vám nedaří vyřešit problém pomocí [průvodce odstraňováním potíží](troubleshooting-guide-genomics.md) nebo [nejčastějších dotazů](frequently-asked-questions-genomics.md). 
+# <a name="how-to-contact-microsoft-genomics-for-support"></a>Kontaktování Microsoft Genomics pro podporu
+Tento přehled popisuje, jak zažádat žádost o podporu pro kontaktování Microsoft Genomics. To může být užitečné, pokud nemůžete vyřešit problém pomocí [Průvodce odstraňováním potíží](troubleshooting-guide-genomics.md) nebo [nejčastějších dotazů](frequently-asked-questions-genomics.md). 
 
 
-## <a name="file-a-support-ticket-through-the-azure-portal"></a>Soubor lístek podpory prostřednictvím portálu Azure
-Nejprve se přihlaste ke svému účtu Azure na webu Azure Portal. Klikněte na otazník v pravém `Help + support`horním rohu a vyberte .
+## <a name="file-a-support-ticket-through-the-azure-portal"></a>Vytvoření lístku podpory pomocí Azure Portal
+Nejdřív se přihlaste k účtu Azure v Azure Portal. Klikněte na otazník v pravém horním rohu a vyberte `Help + support`.
 
-![Kontaktování podpory na webu Azure Portal](./media/file-support-ticket/genomics-contact-support.png "Kontaktování podpory na webu Azure Portal") 
+![Kontaktujte podporu na Azure Portal](./media/file-support-ticket/genomics-contact-support.png "Kontaktujte podporu na Azure Portal") 
 
 
 
-Potom vyberte . `New support request` 
+Pak vyberte `New support request`. 
 
 ![Nová žádost o podporu](./media/file-support-ticket/new-support-request.png "Nová žádost o podporu") 
 
-Vyplňte `Basics`, `Issue type` včetně `Subscription`a vaše . Vyberte nejrelevantnější `Issue type` problém. jako příklad na obrázku `Technical` níže, byla vybrána. Nezapomeňte vybrat `Microsoft Genomics` jako příslušnou službu.  `Microsoft Genomics`budou uvedeny `Intelligence and Analytics` v rámci této kategorie.   Po výběru `Microsoft Genomics`budete také požádáni `Support plan` o zadání vašeho typu.
+Vyplňte `Basics`, včetně `Issue type` a. `Subscription` Vyberte, co je `Issue type` pro váš problém relevantní; například `Technical` byl vybrán příklad na obrázku níže. Nezapomeňte vybrat `Microsoft Genomics` jako příslušnou službu.  `Microsoft Genomics`bude uvedeno v `Intelligence and Analytics` kategorii.   Po výběru `Microsoft Genomics`budete také požádáni o zadání `Support plan` typu.
 
-![Základy žádosti o podporu](./media/file-support-ticket/support-request-basics.png "Základy žádosti o podporu")
+![Základy Support request](./media/file-support-ticket/support-request-basics.png "Základy Support request")
 
 
-Dále přidejte podrobnosti o problému. Nástroj pro vyžádání bude také odkaz na existující dokumentaci, která může být užitečné, které vám pomohou. V tomto příkladu problém `Genomics keys`souvisí s , ale několik dalších možností jsou také k dispozici.
+Dále přidejte podrobnosti o vašem problému. Nástroj pro žádosti se také připojí k existující dokumentaci, která vám může pomoct. V tomto příkladu se problém týká `Genomics keys`, ale k dispozici je také několik dalších možností.
 
-![Problém s žádostí o podporu](./media/file-support-ticket/support-request-problem.png "Problém s žádostí o podporu")
+![Support request problém](./media/file-support-ticket/support-request-problem.png "Support request problém")
 
-Nakonec přidejte své kontaktní `Create` údaje a vyberte v dolní části obrazovky, abyste mohli odeslat žádost o podporu.
+Nakonec přidejte své kontaktní informace a vyberte `Create` v dolní části obrazovky, aby bylo možné odeslat žádost o podporu.
 
-![Kontakt na žádost o podporu](./media/file-support-ticket/support-request-contact.png "Kontakt na žádost o podporu")
+![Support request kontakt](./media/file-support-ticket/support-request-contact.png "Support request kontakt")
 
 ## <a name="next-steps"></a>Další kroky
-V tomto článku jste se dozvěděli, jak odeslat žádost o podporu. Běžné problémy můžete také vyřešit pomocí nejčastějších [dotazů](frequently-asked-questions-genomics.md) a [našeho průvodce odstraňováním problémů](troubleshooting-guide-genomics.md). 
+V tomto článku jste zjistili, jak odeslat žádost o podporu. Můžete také vyřešit běžné problémy pomocí našich [nejčastějších dotazů](frequently-asked-questions-genomics.md) a [Průvodce řešením potíží](troubleshooting-guide-genomics.md). 

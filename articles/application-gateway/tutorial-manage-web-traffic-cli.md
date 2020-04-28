@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 07/20/2019
 ms.author: victorh
 ms.openlocfilehash: 3064def2eac0aaee5c04f7ab736cf539ae372cb4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "68359900"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-the-azure-cli"></a>Správa webového provozu pomocí aplikační brány a Azure CLI
 
-Aplikační brána se používá ke správě a zabezpečení webového provozu spravovaných serverů. Azure CLI můžete použít k vytvoření [aplikační brány,](overview.md) která používá [škálovací sadu virtuálních strojů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro back-endové servery. V tomto příkladu škálovací sada obsahuje dvě instance virtuálního počítače. Škálovací sada je přidána do výchozího back-endového fondu aplikační brány.
+Aplikační brána se používá ke správě a zabezpečení webového provozu spravovaných serverů. Pomocí rozhraní příkazového řádku Azure můžete vytvořit [Aplikační bránu](overview.md) , která používá [sadu škálování virtuálního počítače](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro back-end servery. V tomto příkladu sada škálování obsahuje dvě instance virtuálních počítačů. Sada škálování se přidá do výchozího back-endu fondu služby Application Gateway.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -25,13 +25,13 @@ V tomto článku získáte informace o těchto tématech:
 > * Vytvoření služby Application Gateway
 > * Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
 
-Pokud chcete, můžete tento postup dokončit pomocí [Azure PowerShellu](tutorial-manage-web-traffic-powershell.md).
+Pokud budete chtít, můžete tento postup dokončit pomocí [Azure PowerShell](tutorial-manage-web-traffic-powershell.md).
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat příkaz cli místně, tento rychlý start vyžaduje spuštění azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte spustit Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -71,7 +71,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
-K vytvoření aplikační brány s názvem *myAppGateway* použijte příkaz [az network application-gateway create](/cli/azure/network/application-gateway). Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. Aplikační brána je *přiřazena myAGSubnet* a *myPublicIPAddress,* které jste dříve vytvořili. 
+K vytvoření aplikační brány s názvem *myAppGateway* použijte příkaz [az network application-gateway create](/cli/azure/network/application-gateway). Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. Aplikační brána je přiřazena k *myAGSubnet* a *myPublicIPAddress* , které jste vytvořili dříve. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -89,7 +89,7 @@ az network application-gateway create \
   --public-ip-address myAGPublicIPAddress
 ```
 
- Vytvoření aplikační brány může trvat několik minut. Po vytvoření brány aplikace se zobrazí tyto nové funkce:
+ Vytvoření aplikační brány může trvat několik minut. Po vytvoření služby Application Gateway se zobrazí tyto nové funkce:
 
 - *appGatewayBackendPool* – aplikační brána musí mít aspoň jeden back-endový fond adres.
 - *appGatewayBackendHttpSettings* – určuje, že se ke komunikaci používá port 80 a protokol HTTP.

@@ -1,26 +1,26 @@
 ---
-title: Migrace do databáze Azure pro PostgreSQL – jeden server s minimálníprostožností
-description: Tento článek popisuje, jak provést migraci databáze PostgreSQL s minimálními prostoji do databáze Azure pro PostgreSQL – jeden server pomocí služby migrace databáze Azure.
+title: Migrace s minimálními výpadky na Azure Database for PostgreSQL – jeden server
+description: Tento článek popisuje, jak pomocí Azure Database Migration Service provést migraci databáze PostgreSQL s minimálním výpadkem do provozu, aby Azure Database for PostgreSQL jeden server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 93cd390889c023adf1c30a8470e1c2298598439e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65067516"
 ---
-# <a name="minimal-downtime-migration-to-azure-database-for-postgresql---single-server"></a>Migrace do databáze Azure pro PostgreSQL – jeden server s minimálníprostožností
-Migrace PostgreSQL do Databáze Azure pro PostgreSQL můžete provádět s minimálními prostoji pomocí nově zavedené **funkce průběžné synchronizace** pro [službu Migrace databáze Azure](https://aka.ms/get-dms) (DMS). Tato funkce omezuje množství prostojů, které vznikly aplikaci.
+# <a name="minimal-downtime-migration-to-azure-database-for-postgresql---single-server"></a>Migrace s minimálními výpadky na Azure Database for PostgreSQL – jeden server
+PostgreSQL Azure Database for PostgreSQL migrace můžete provádět s minimálními výpadky pomocí nově zavedené **Možnosti nepřetržité synchronizace** pro [Azure Database Migration Service](https://aka.ms/get-dms) (DMS). Tato funkce omezuje množství výpadku, které aplikace účtuje.
 
 ## <a name="overview"></a>Přehled
-Azure DMS provádí počáteční zatížení vašeho místního do databáze Azure pro PostgreSQL a pak průběžně synchronizuje všechny nové transakce do Azure, zatímco aplikace zůstane spuštěná. Poté, co data dožene na cílové straně Azure, zastavíte aplikaci na krátkou chvíli (minimální prostoje), počkejte na poslední dávku dat (od okamžiku, kdy zastavíte aplikaci, dokud aplikace není prakticky nedostupná, aby přijala jakýkoli nový provoz) k zachycení nahoru v cíli a pak aktualizujte připojovací řetězec tak, aby přecštoupal na Azure. Po dokončení bude vaše aplikace v Azure aktivní!
+Azure DMS provádí počáteční zatížení vaší místní aplikace a Azure Database for PostgreSQL a potom průběžně synchronizuje všechny nové transakce do Azure, zatímco aplikace zůstane spuštěná. Po navýšení dat na cílovou stranu Azure zastavíte aplikaci za účelem krátkého chvilky (minimální prostoje), počkáte na poslední dávku dat (od okamžiku, kdy aplikaci zastavíte, dokud nebude aplikace prakticky nedostupná, aby nedošlo k žádnému novému přenosu) a pak jste aktualizovali připojovací řetězec tak, aby odkazoval na Azure. Až budete hotovi, vaše aplikace bude v Azure živá!
 
-![Průběžná synchronizace se službou migrace databáze Azure](./media/howto-migrate-online/ContinuousSync.png)
+![Průběžná synchronizace s Azure Database Migration Service](./media/howto-migrate-online/ContinuousSync.png)
 
 ## <a name="next-steps"></a>Další kroky
-- Podívejte se na [modernizaci video aplikací s Microsoft Azure](https://medius.studios.ms/Embed/Video/BRK2102?sid=BRK2102), která obsahuje ukázku, která ukazuje, jak migrovat aplikace PostgreSQL do Azure Database for PostgreSQL.
-- Podívejte se na kurz [Migrace PostgreSQL do databáze Azure pro PostgreSQL online pomocí DMS](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online).
+- Podívejte se na [modernizaci aplikace video pomocí Microsoft Azure](https://medius.studios.ms/Embed/Video/BRK2102?sid=BRK2102), která obsahuje ukázku ukazující postup migrace aplikací PostgreSQL na Azure Database for PostgreSQL.
+- Podívejte se na kurz [migrace PostgreSQL a Azure Database for PostgreSQL online pomocí DMS](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online).

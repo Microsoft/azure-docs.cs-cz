@@ -1,6 +1,6 @@
 ---
-title: Práce s moduly Node.js
-description: Zjistěte, jak pracovat s moduly Node.js při používání azure app služby nebo cloudových služeb.
+title: Práce s moduly node. js
+description: Naučte se pracovat s moduly node. js při použití Azure App Service nebo Cloud Services.
 services: ''
 documentationcenter: nodejs
 author: rloutlaw
@@ -15,77 +15,77 @@ ms.topic: article
 ms.date: 08/17/2016
 ms.author: routlaw
 ms.openlocfilehash: 61be6bcd957a4e81147d5ef472b8f850e5605e41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70309277"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>Používání modulů Node.js s aplikacemi Azure
-Tento dokument obsahuje pokyny k používání modulů Node.js s aplikacemi hostovanými v Azure. Poskytuje pokyny k zajištění, že vaše aplikace používá konkrétní verzi modulu, stejně jako pomocí nativní moduly s Azure.
+Tento dokument poskytuje pokyny k používání modulů Node. js s aplikacemi hostovanými v Azure. Poskytuje pokyny, jak zajistit, aby vaše aplikace používala konkrétní verzi modulu a aby používala nativní moduly s Azure.
 
-Pokud jste již obeznámeni s použitím modulů Node.js, **package.json** a **npm-shrinkwrap.json,** následující informace poskytují stručný přehled toho, co je popsáno v tomto článku:
+Pokud jste již obeznámeni s používáním modulů Node. js, soubory **Package. JSON** a **npm-shrinkwrap. JSON** , poskytují následující informace rychlý přehled toho, co je popsáno v tomto článku:
 
-* Azure App Service rozumí **package.json** a **npm-shrinkwrap.json** soubory a můžete nainstalovat moduly na základě položek v těchto souborech.
+* Azure App Service rozumí souborům **Package. JSON** a **npm-shrinkwrap. JSON** a může instalovat moduly založené na položkách v těchto souborech.
 
-* Azure Cloud Services očekává, že všechny moduly, které mají být nainstalovány ve vývojovém prostředí a adresář **modulů uzlů,\_** které mají být zahrnuty jako součást balíčku nasazení. Je možné povolit podporu pro instalaci modulů pomocí **package.json** nebo **npm-shrinkwrap.json** soubory na cloudservices; tato konfigurace však vyžaduje přizpůsobení výchozích skriptů používaných projekty cloudové služby. Příklad konfigurace tohoto prostředí najdete v [tématu Úloha po spuštění Azure pro spuštění instalace npm, abyste se vyhnuli nasazení modulů uzlů.](https://github.com/woloski/nodeonazure-blog/blob/master/articles/startup-task-to-run-npm-in-azure.markdown)
+* Azure Cloud Services očekává, že se všechny moduly nainstalují do vývojového prostředí, a adresáře **modulů uzlů\_** , které se mají zahrnout jako součást balíčku pro nasazení. Je možné povolit podporu pro instalaci modulů pomocí souborů **Package. JSON** nebo **npm-shrinkwrap. JSON** na Cloud Services; Tato konfigurace ale vyžaduje přizpůsobení výchozích skriptů používaných projekty cloudových služeb. Příklad toho, jak nakonfigurovat toto prostředí, najdete v tématu [úloha po spuštění Azure pro spuštění instalace NPM, aby nedocházelo k nasazení modulů uzlů](https://github.com/woloski/nodeonazure-blog/blob/master/articles/startup-task-to-run-npm-in-azure.markdown) .
 
 > [!NOTE]
-> Virtuální počítače Azure nejsou popsané v tomto článku, protože prostředí nasazení ve virtuálním počítači závisí na operačním systému hostovaném virtuálním počítačem.
+> V tomto článku se nezabývá Azure Virtual Machines, protože prostředí pro nasazení na VIRTUÁLNÍm počítači závisí na operačním systému hostovaném virtuálním počítačem.
 > 
 > 
 
-## <a name="nodejs-modules"></a>Moduly Node.js
-Moduly jsou načítatelné balíčky JavaScriptu, které poskytují specifické funkce pro vaši aplikaci. Moduly jsou obvykle instalovány pomocí nástroje příkazového řádku **npm,** ale některé moduly (například modul http) jsou k dispozici jako součást balíčku Core Node.js.
+## <a name="nodejs-modules"></a>Moduly node. js
+Moduly jsou spustitelný balíčky JavaScriptu, které poskytují konkrétní funkce pro vaši aplikaci. Moduly se obvykle instalují pomocí nástroje příkazového řádku **npm** , ale některé moduly (například modul HTTP) jsou k dispozici jako součást základního balíčku Node. js.
 
-Při instalaci modulů jsou uloženy v adresáři **modulů uzlů\_** v kořenovém adresáři adresáře aplikace. Každý modul v adresáři **modulů uzlů\_** udržuje svůj vlastní adresář, který obsahuje všechny moduly, na kterých závisí, a toto chování se opakuje pro každý modul úplně dolů v řetězci závislostí. Toto prostředí umožňuje každému nainstalovanému modulu mít vlastní požadavky na verzi modulů, na kterých závisí, může však mít za následek poměrně rozsáhlou adresářovou strukturu.
+Když jsou moduly nainstalované, ukládají se do adresáře **modulů uzlů\_** v kořenové složce adresářové struktury vaší aplikace. Každý modul v adresáři **modulů\_uzlů** udržuje svůj vlastní adresář, který obsahuje všechny moduly, na kterých závisí, a toto chování se opakuje u každého modulu v závislosti na tom, jak se nachází v řetězu závislostí. Toto prostředí umožňuje, aby každý modul měl nainstalované vlastní požadavky na verzi pro moduly, na kterých závisí, ale může mít za následek velkou rozsáhlou adresářovou strukturu.
 
-Nasazení adresáře **modulů\_uzlů** jako součást aplikace zvyšuje velikost nasazení ve srovnání s použitím souboru **package.json** nebo **npm-shrinkwrap.json;** zaručuje však, že verze modulů používaných ve výrobě jsou stejné jako moduly používané ve vývoji.
+Nasazení adresáře **modulů\_uzlů** v rámci aplikace zvyšuje velikost nasazení v porovnání s použitím souboru **Package. JSON** nebo **npm-shrinkwrap. JSON** . zaručuje však, že verze modulů používaných v produkčním prostředí jsou stejné jako moduly používané při vývoji.
 
 ### <a name="native-modules"></a>Nativní moduly
-Zatímco většina modulů jsou jednoduše soubory JavaScript ve formátu prostého textu, některé moduly jsou binární obrázky specifické pro platformu. Tyto moduly jsou kompilovány v době instalace, obvykle pomocí Pythonu a node-gyp. Vzhledem k tomu, že Azure Cloud Services spoléhají na složku **modulů uzlů,\_** která se nasazuje jako součást aplikace, měl by jakýkoli nativní modul zahrnutý jako součást nainstalovaných modulů fungovat v cloudové službě, pokud byla nainstalována a zkompilována ve vývojovém systému Windows.
+I když většina modulů je jednoduše prostým textem souborů JavaScriptu, některé moduly jsou binární obrázky specifické pro platformu. Tyto moduly jsou kompilovány v době instalace, obvykle pomocí Pythonu a Node-gyp. Vzhledem k tomu, že Azure Cloud Services spoléhá na nasazování složky **modulů uzlů\_** v rámci aplikace, všechny nativní moduly, které jsou součástí instalovaných modulů, by měly fungovat v cloudové službě, pokud byla nainstalována a kompilována v systému Windows Development.
 
-Azure App Service nepodporuje všechny nativní moduly a může selhat při kompilaci modulů s konkrétní mise. Zatímco některé populární moduly, jako je MongoDB, mají volitelné nativní závislosti a fungují bez nich dobře, dvě řešení se ukázala jako úspěšná s téměř všemi nativními moduly, které jsou dnes k dispozici:
+Azure App Service nepodporuje všechny nativní moduly a může selhat při kompilování modulů s konkrétními požadavky. I když některé oblíbené moduly, jako je MongoDB, mají volitelné nativní závislosti a fungují bez nich, dvě alternativní řešení se ukázala úspěšně s téměř všemi dostupnými nativními moduly, které jsou dnes dostupné:
 
-* Spusťte **instalaci npm** na počítači se systémem Windows, který má nainstalovány všechny požadavky nativního modulu. Potom nasadit vytvořené **moduly uzlů\_** složky jako součást aplikace do služby Azure App Service.
+* Spusťte **instalaci npm** na počítači s Windows, na kterém jsou nainstalované všechny požadované součásti nativního modulu. Pak nasaďte složku vytvořených **modulů\_uzlů** jako součást aplikace na Azure App Service.
 
-  * Před kompilací zkontrolujte, zda má místní instalace Node.js odpovídající architekturu a verze je co nejblíže té, která se používá v Azure (aktuální hodnoty lze zkontrolovat za běhu z vlastností **process.arch** a **process.version**).
+  * Před kompilací ověřte, že vaše místní instalace Node. js má odpovídající architekturu a verze je co nejblíže k verzi používané v Azure (aktuální hodnoty je možné zkontrolovat za běhu z vlastností **Process. arch** a **Process. Version**).
 
-* Azure App Service lze nakonfigurovat tak, aby spouštět vlastní bash nebo shell skripty během nasazení, což vám dává možnost spouštět vlastní příkazy a přesně nakonfigurovat způsob, jakým se spouští **instalace npm.** Video, které ukazuje, jak toto prostředí konfigurovat, najdete v [tématu Vlastní skripty pro nasazení webu s kudu](https://azure.microsoft.com/resources/videos/custom-web-site-deployment-scripts-with-kudu/).
+* Azure App Service je možné nakonfigurovat tak, aby během nasazení prováděla vlastní skripty pro bash nebo prostředí. díky němu máte možnost provádět vlastní příkazy a přesně nakonfigurovat způsob, jakým se spouští **instalace npm** . Video, které ukazuje, jak nakonfigurovat toto prostředí, najdete v tématu [vlastní skripty pro nasazení webu pomocí Kudu](https://azure.microsoft.com/resources/videos/custom-web-site-deployment-scripts-with-kudu/).
 
-### <a name="using-a-packagejson-file"></a>Použití souboru package.json
+### <a name="using-a-packagejson-file"></a>Použití souboru Package. JSON
 
-Soubor **package.json** je způsob, jak určit nejvyšší úroveň závislostí, které vaše aplikace vyžaduje, aby hostitelská platforma mohla nainstalovat závislosti, spíše než vyžadovat, abyste jako součást nasazení zahrnuli složku **modulů uzlů.\_** Po nasazení aplikace se příkaz **npm install** použije k analýzě souboru **package.json** a k instalaci všech uvedených závislostí.
+Soubor **Package. JSON** je způsob, jak určit závislosti nejvyšší úrovně, které vaše aplikace vyžaduje, aby hostující platforma mohla instalovat závislosti, a ne vyžadovat, abyste jako součást nasazení zahrnuli složku **modules node\_** . Po nasazení aplikace se k analýze souboru **Package. JSON** a instalaci všech uvedených závislostí použije příkaz **npm Install** .
 
-Během vývoje můžete při instalaci modulů použít parametry **--save**, **--save-dev**nebo **--save-save-optional** pro automatické přidání položky modulu do souboru **package.json.** Další informace naleznete v [tématu npm-install](https://docs.npmjs.com/cli/install).
+Během vývoje můžete při instalaci modulů použít parametry **--Save**, **--Save-dev**, nebo **--Save-Option** , abyste mohli přidat položku pro modul do souboru **Package. JSON** automaticky. Další informace najdete v tématu [npm-Install](https://docs.npmjs.com/cli/install).
 
-Jeden potenciální problém se souborem **package.json** je, že určuje pouze verzi pro závislosti nejvyšší úrovně. Každý nainstalovaný modul může nebo nemusí určit verzi modulů, na kterých závisí, a proto je možné, že můžete skončit s jiným řetězcem závislostí, než který se používá ve vývoji.
-
-> [!NOTE]
-> Při nasazování do služby Azure App Service, pokud váš soubor <b>package.json</b> odkazuje na nativní modul, může se při publikování aplikace pomocí Gitu zobrazit chyba podobná následujícímu příkladu:
-> 
-> npm ERR! module-name@0.6.0instalace: 'node-gyp konfigurovat sestavení'
-> 
-> npm ERR! 'cmd "/c" "node-gyp configure build" se nezdařilo s 1
-> 
-> 
-
-### <a name="using-a-npm-shrinkwrapjson-file"></a>Použití souboru npm-shrinkwrap.json
-Soubor **npm-shrinkwrap.json** je pokus o řešení omezení správy verzí modulu souboru **package.json.** Zatímco soubor **package.json** obsahuje pouze verze pro moduly nejvyšší úrovně, soubor **npm-shrinkwrap.json** obsahuje požadavky na verzi pro celý řetězec závislostí modulu.
-
-Když je vaše aplikace připravena k produkčnímu prostředí, můžete uzamknout požadavky na verzi a vytvořit soubor **npm-shrinkwrap.json** pomocí příkazu **npm shrinkwrap.** Tento příkaz použije verze aktuálně nainstalované ve složce **modulů uzlů\_** a zaznamená tyto verze do souboru **npm-shrinkwrap.json.** Po nasazení aplikace do hostitelského prostředí se příkaz **instalace npm** používá k analýzě souboru **npm-shrinkwrap.json** a k instalaci všech uvedených závislostí. Další informace naleznete v tématu [npm-shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap).
+Jedním z možných problémů se souborem **Package. JSON** je, že určuje pouze verzi pro závislosti nejvyšší úrovně. Každý instalovaný modul může nebo nemusí určovat verzi modulů, na kterých závisí, a proto je možné, že můžete končit jiným řetězem závislostí, než který se používá při vývoji.
 
 > [!NOTE]
-> Při nasazování do služby Azure App Service, pokud váš soubor <b>npm-shrinkwrap.json</b> odkazuje na nativní modul, může se při publikování aplikace pomocí Gitu zobrazit chyba podobná následujícímu příkladu:
+> Pokud soubor <b>Package. JSON</b> odkazuje na nativní modul, při nasazení do Azure App Service se může při publikování aplikace pomocí Gitu zobrazit chybová zpráva podobná následujícímu příkladu:
 > 
-> npm ERR! module-name@0.6.0instalace: 'node-gyp konfigurovat sestavení'
+> NPM ERR! module-name@0.6.0instalace: node-gyp Configure Build
 > 
-> npm ERR! 'cmd "/c" "node-gyp configure build" se nezdařilo s 1
+> NPM ERR! příkaz "cmd"/c "Node-gyp Configure Build" se nezdařil. 1
+> 
+> 
+
+### <a name="using-a-npm-shrinkwrapjson-file"></a>Použití souboru npm-shrinkwrap. JSON
+Soubor **npm-shrinkwrap. JSON** je pokus o řešení omezení verzí modulu souboru **Package. JSON** . I když soubor **Package. JSON** obsahuje jenom verze modulů nejvyšší úrovně, soubor **npm-shrinkwrap. JSON** obsahuje požadavky na verzi pro úplný řetěz závislostí modulu.
+
+Když je vaše aplikace připravená na produkční prostředí, můžete uzamknout požadavky na verzi a vytvořit soubor **npm-shrinkwrap. JSON** pomocí příkazu **npm shrinkwrap** . Tento příkaz použije verze, které jsou aktuálně nainstalované ve **složce\_modulů uzlů** , a zaznamená tyto verze do souboru **npm-shrinkwrap. JSON** . Po nasazení aplikace do hostitelského prostředí se k analýze souboru **npm-shrinkwrap. JSON** a instalaci všech uvedených závislostí použije příkaz **npm Install** . Další informace najdete v tématu [npm-shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap).
+
+> [!NOTE]
+> Pokud soubor <b>npm-shrinkwrap. JSON</b> odkazuje na nativní modul, při jeho nasazování do Azure App Service se může při publikování aplikace pomocí Gitu zobrazit chybová zpráva podobná následujícímu příkladu:
+> 
+> NPM ERR! module-name@0.6.0instalace: node-gyp Configure Build
+> 
+> NPM ERR! příkaz "cmd"/c "Node-gyp Configure Build" se nezdařil. 1
 > 
 > 
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když rozumíte tomu, jak používat moduly Node.js s Azure, se dozvíte, jak [určit verzi Node.js](https://github.com/squillace/staging/blob/master/articles/nodejs-specify-node-version-azure-apps.md), [sestavit a nasadit webovou aplikaci Node.js](app-service/app-service-web-get-started-nodejs.md)a [jak používat rozhraní Příkazového řádku Azure pro Mac a Linux](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/).
+Teď, když jste se seznámili s používáním modulů Node. js s Azure, se naučíte, jak [určit verzi Node. js](https://github.com/squillace/staging/blob/master/articles/nodejs-specify-node-version-azure-apps.md), [Sestavit a nasadit webovou aplikaci Node. js](app-service/app-service-web-get-started-nodejs.md)a [Jak používat rozhraní příkazového řádku Azure pro Mac a Linux](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/).
 
 Další informace najdete ve [Středisku pro vývojáře Node.js](/azure/javascript/).
 

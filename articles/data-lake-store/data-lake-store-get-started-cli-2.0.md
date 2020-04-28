@@ -1,6 +1,6 @@
 ---
-title: Využijte azure cli a můžete začít s Azure Data Lake Storage Gen1 | Dokumenty společnosti Microsoft
-description: Použití nastavení příkazu Konstat Azure k vytvoření účtu Data Lake Storage Gen1 a provedení základních operací
+title: Začněte s Azure Data Lake Storage Gen1 pomocí Azure CLI | Microsoft Docs
+description: Použití rozhraní příkazového řádku Azure k vytvoření účtu Data Lake Storage Gen1 a provádění základních operací
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 9431cc7fa12b86371ce6b2325aca8e13d264442e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60885342"
 ---
 # <a name="get-started-with-azure-data-lake-store-using-azure-cli"></a>Začínáme s Azure Data Lake Store pomocí Azure CLI
@@ -28,9 +28,9 @@ ms.locfileid: "60885342"
 >
 > 
 
-Naučte se používat rozhraní příkazového příkazového nastavení Azure k vytvoření účtu Azure Data Lake Storage Gen1 a provádět základní operace, jako je vytváření složek, nahrávání a stahování datových souborů, odstranění účtu atd. Další informace o úložišti datových jezer Gen1 najdete v [tématu Přehled úložiště datových jezer Gen1](data-lake-store-overview.md).
+Naučte se používat Azure CLI k vytvoření účtu Azure Data Lake Storage Gen1 a provádění základních operací, jako je vytváření složek, nahrávání a stahování datových souborů, odstranění účtu atd. Další informace o Data Lake Storage Gen1 najdete v tématu [přehled Data Lake Storage Gen1](data-lake-store-overview.md).
 
-Azure CLI je prostředí příkazového řádku Azure pro správu prostředků Azure. Je možné používat ho v systémech macOS, Linux a Windows. Další informace najdete [v tématu Přehled azure cli](https://docs.microsoft.com/cli/azure). Můžete se také podívat na [odkaz Azure Data Lake Storage Gen1 CLI](https://docs.microsoft.com/cli/azure/dls) pro úplný seznam příkazů a syntaxe.
+Azure CLI je prostředí příkazového řádku Azure pro správu prostředků Azure. Je možné používat ho v systémech macOS, Linux a Windows. Další informace najdete v tématu [Přehled Azure CLI](https://docs.microsoft.com/cli/azure). Úplný seznam příkazů a syntaxe můžete zobrazit také v [referenčních informacích](https://docs.microsoft.com/cli/azure/dls) k rozhraní příkazového řádku Azure Data Lake Storage Gen1.
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -38,11 +38,11 @@ Je nutné, abyste před zahájením tohoto článku měli tyto položky:
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Azure CLI** – pokyny najdete [v tématu Instalace příkazového příkazového příkazu k Azure.](https://docs.microsoft.com/cli/azure/install-azure-cli)
+* **Azure CLI** – pokyny najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) .
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
-Tento článek používá jednodušší přístup ověřování s Data Lake Storage Gen1, kde se přihlásíte jako koncový uživatel. Úroveň přístupu k účtu Data Lake Storage Gen1 a systému souborů se pak řídí úrovní přístupu přihlášeného uživatele. Existují však i jiné přístupy k ověření pomocí data lake storage gen1, které jsou **ověřování koncovým uživatelem** nebo **ověřování služby služby**. Pokyny a další informace o ověřování najdete v tématu [Ověřování koncových uživatelů](data-lake-store-end-user-authenticate-using-active-directory.md) nebo [Ověřování služba-služba](data-lake-store-authenticate-using-active-directory.md).
+Tento článek používá jednodušší přístup k ověřování s Data Lake Storage Gen1, ke kterému se přihlašujete jako uživatel s koncovým uživatelem. Úroveň přístupu k účtu Data Lake Storage Gen1 a systému souborů se pak řídí úrovní přístupu přihlášeného uživatele. Existují však i další přístupy k ověřování pomocí Data Lake Storage Gen1, což jsou **ověřování koncového uživatele** nebo **ověřování služba-služba**. Pokyny a další informace o ověřování najdete v tématu [Ověřování koncových uživatelů](data-lake-store-end-user-authenticate-using-active-directory.md) nebo [Ověřování služba-služba](data-lake-store-authenticate-using-active-directory.md).
 
 
 ## <a name="log-in-to-your-azure-subscription"></a>Přihlášení k předplatnému Azure
@@ -75,22 +75,22 @@ Tento článek používá jednodušší přístup ověřování s Data Lake Stor
     az dls account create --account mydatalakestoragegen1 --resource-group myresourcegroup
     ```
 
-## <a name="create-folders-in-a-data-lake-storage-gen1-account"></a>Vytvoření složek v účtu Data Lake Storage Gen1
+## <a name="create-folders-in-a-data-lake-storage-gen1-account"></a>Vytváření složek v účtu Data Lake Storage Gen1
 
-Můžete vytvořit složky pod účtem Azure Data Lake Storage Gen1 pro správu a ukládání dat. Pomocí následujícího příkazu vytvořte složku s názvem **mynewfolder** v kořenovém adresáři účtu Data Lake Storage Gen1.
+Můžete vytvořit složky pod účtem Azure Data Lake Storage Gen1, abyste mohli spravovat a ukládat data. Pomocí následujícího příkazu vytvořte složku s názvem **mynewfolder** v kořenovém adresáři Data Lake Storage Gen1 účtu.
 
 ```azurecli
 az dls fs create --account mydatalakestoragegen1 --path /mynewfolder --folder
 ```
 
 > [!NOTE]
-> Parametr `--folder` zajistí, že příkaz vytvoří složku. Pokud tento parametr není k dispozici, příkaz vytvoří prázdný soubor s názvem mynewfolder v kořenovém adresáři účtu Data Lake Storage Gen1.
+> Parametr `--folder` zajistí, že příkaz vytvoří složku. Pokud tento parametr není k dispozici, příkaz vytvoří prázdný soubor s názvem mynewfolder v kořenovém adresáři Data Lake Storage Gen1 účtu.
 > 
 >
 
-## <a name="upload-data-to-a-data-lake-storage-gen1-account"></a>Nahrání dat do účtu Data Lake Storage Gen1
+## <a name="upload-data-to-a-data-lake-storage-gen1-account"></a>Nahrajte data na účet Data Lake Storage Gen1.
 
-Data můžete nahrát do data Lake Storage Gen1 přímo na kořenové úrovni nebo do složky, kterou jste vytvořili v rámci účtu. Níže zobrazené fragmenty kódu ukazují, jak nahrát ukázková data do složky (**mynewfolder**), kterou jste vytvořili v předchozí části.
+Data můžete do Data Lake Storage Gen1 nahrát přímo na úrovni kořenového adresáře nebo do složky, kterou jste v rámci účtu vytvořili. Níže zobrazené fragmenty kódu ukazují, jak nahrát ukázková data do složky (**mynewfolder**), kterou jste vytvořili v předchozí části.
 
 Pokud hledáte ukázková data, která byste mohli nahrát, můžete použít složku **Ambulance Data** z [úložiště Git Azure Data Lake](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData). Stáhněte si tento soubor a uložte ho do místního adresáře v počítači, například C:\sampledata\.
 
@@ -104,9 +104,9 @@ az dls fs upload --account mydatalakestoragegen1 --source-path "C:\SampleData\Am
 >
 
 
-## <a name="list-files-in-a-data-lake-storage-gen1-account"></a>Seznam souborů v účtu Data Lake Storage Gen1
+## <a name="list-files-in-a-data-lake-storage-gen1-account"></a>Výpis souborů v Data Lake Storage Gen1 účtu
 
-Pomocí následujícího příkazu můžete vypsat soubory v účtu Data Lake Storage Gen1.
+Pomocí následujícího příkazu můžete zobrazit seznam souborů v účtu Data Lake Storage Gen1.
 
 ```azurecli
 az dls fs list --account mydatalakestoragegen1 --path /mynewfolder
@@ -132,15 +132,15 @@ Výstup by měl vypadat přibližně takto:
         }
     ]
 
-## <a name="rename-download-and-delete-data-from-a-data-lake-storage-gen1-account"></a>Přejmenování, stažení a odstranění dat z účtu Data Lake Storage Gen1 
+## <a name="rename-download-and-delete-data-from-a-data-lake-storage-gen1-account"></a>Přejmenování, stažení a odstranění dat z Data Lake Storage Gen1 účtu 
 
-* **Chcete-li soubor přejmenovat**, použijte následující příkaz:
+* Pokud **chcete přejmenovat soubor**, použijte následující příkaz:
   
     ```azurecli
     az dls fs move --account mydatalakestoragegen1 --source-path /mynewfolder/vehicle1_09142014.csv --destination-path /mynewfolder/vehicle1_09142014_copy.csv
     ```
 
-* **Chcete-li stáhnout soubor**, použijte následující příkaz. Ujistěte se, že zadaná cílová cesta už existuje.
+* **K stažení souboru**použijte následující příkaz. Ujistěte se, že zadaná cílová cesta už existuje.
   
     ```azurecli     
     az dls fs download --account mydatalakestoragegen1 --source-path /mynewfolder/vehicle1_09142014_copy.csv --destination-path "C:\mysampledata\vehicle1_09142014_copy.csv"
@@ -151,7 +151,7 @@ Výstup by měl vypadat přibližně takto:
     > 
     >
 
-* **Chcete-li soubor odstranit**, použijte následující příkaz:
+* **Chcete-li odstranit soubor**, použijte následující příkaz:
   
     ```azurecli
     az dls fs delete --account mydatalakestoragegen1 --path /mynewfolder/vehicle1_09142014_copy.csv
@@ -163,9 +163,9 @@ Výstup by měl vypadat přibližně takto:
     az dls fs delete --account mydatalakestoragegen1 --path /mynewfolder --recurse
     ```
 
-## <a name="work-with-permissions-and-acls-for-a-data-lake-storage-gen1-account"></a>Práce s oprávněními a akly pro účet Data Lake Storage Gen1
+## <a name="work-with-permissions-and-acls-for-a-data-lake-storage-gen1-account"></a>Práce s oprávněními a seznamy ACL pro účet Data Lake Storage Gen1
 
-V této části se dozvíte, jak spravovat seznamy ACL a oprávnění pomocí azure CLI. Podrobná diskuse o tom, jak se implementují seznamy ACL v Azure Data Lake Storage Gen1, najdete [v tématu Řízení přístupu v Azure Data Lake Storage Gen1](data-lake-store-access-control.md).
+V této části se dozvíte, jak spravovat seznamy ACL a oprávnění pomocí Azure CLI. Podrobné informace o způsobu implementace seznamů ACL v Azure Data Lake Storage Gen1 najdete v tématu [řízení přístupu v Azure Data Lake Storage Gen1](data-lake-store-access-control.md).
 
 * **Chcete-li aktualizovat vlastníka souboru nebo složky**, použijte následující příkaz:
 
@@ -223,7 +223,7 @@ V této části se dozvíte, jak spravovat seznamy ACL a oprávnění pomocí az
     az dls fs access remove-all --account mydatalakestoragegen1 --path /mynewfolder
     ```
     
-## <a name="delete-a-data-lake-storage-gen1-account"></a>Odstranění účtu Gen1 úložiště datového jezera
+## <a name="delete-a-data-lake-storage-gen1-account"></a>Odstranit účet Data Lake Storage Gen1
 Pomocí následujícího příkazu odstraňte účet Data Lake Storage Gen1.
 
 ```azurecli
@@ -235,5 +235,5 @@ Po zobrazení výzvy zadejte **Y**, a účet tak odstraňte.
 ## <a name="next-steps"></a>Další kroky
 * [Použití Azure Data Lake Storage Gen1 pro požadavky na velké objemy dat](data-lake-store-data-scenarios.md) 
 * [Zabezpečení dat ve službě Data Lake Storage Gen1](data-lake-store-secure-data.md)
-* [Použití Azure Data Lake Analytics s datelake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Použití Azure HDInsight s úložištěm datových jezer Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Použití Azure Data Lake Analytics s Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Použití Azure HDInsight s Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)

@@ -1,6 +1,6 @@
 ---
-title: Výchozí velikost složky TEMP je pro roli příliš malá | Dokumenty společnosti Microsoft
-description: Role cloudové služby má omezené množství místa pro složku TEMP. Tento článek obsahuje některé návrhy, jak se vyhnout vyčerpání místa.
+title: Výchozí velikost složky TEMP je pro roli příliš malá. Microsoft Docs
+description: Role cloudové služby má omezené množství místa pro dočasnou složku. Tento článek poskytuje některé návrhy, jak zabránit nedostatku místa.
 services: cloud-services
 documentationcenter: ''
 author: simonxjx
@@ -15,27 +15,27 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: 0b869b73a79872d9263058bedfead018e18721c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71154988"
 ---
-# <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-webworker-role"></a>Výchozí velikost složky TEMP je příliš malá na webové roli/pracovního procesu cloudové služby.
-Výchozí dočasný adresář pracovníka cloudové služby nebo webové role má maximální velikost 100 MB, která může být v určitém okamžiku plná. Tento článek popisuje, jak se vyhnout vyčerpání místa pro dočasný adresář.
+# <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-webworker-role"></a>Výchozí velikost složky TEMP je pro web nebo roli pracovního procesu cloudové služby moc malá.
+Výchozí dočasný adresář pracovního procesu cloudové služby nebo webové role má maximální velikost 100 MB, která může být v určitém okamžiku plná. Tento článek popisuje, jak se vyhnout nedostatku místa pro dočasný adresář.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="why-do-i-run-out-of-space"></a>Proč mi dojdou místa?
-Standardní proměnné prostředí systému Windows TEMP a TMP jsou k dispozici pro kód, který je spuštěn ve vaší aplikaci. Temp i TMP odkazují na jeden adresář, který má maximální velikost 100 MB. Všechna data uložená v tomto adresáři nejsou v průběhu celého životního cyklu cloudové služby zachována. Pokud jsou instance rolí v cloudové službě recyklovány, adresář se vyčistí.
+## <a name="why-do-i-run-out-of-space"></a>Proč mám dostatek místa?
+Standardní proměnné prostředí Windows TEMP a TMP jsou k dispozici pro kód, který běží ve vaší aplikaci. Dočasná i TMP ukazují na jeden adresář, který má maximální velikost 100 MB. Data, která jsou uložená v tomto adresáři, se neukládají v životním cyklu cloudové služby. Pokud dojde k recyklování instancí rolí v cloudové službě, vyčistí se adresář.
 
-## <a name="suggestion-to-fix-the-problem"></a>Návrh na vyřešení problému
-Implementujte jednu z následujících alternativ:
+## <a name="suggestion-to-fix-the-problem"></a>Návrh k vyřešení problému
+Implementujte jednu z následujících možností:
 
-* Nakonfigurujte prostředek místního úložiště a získejte k němu přímý přístup namísto použití TEMP nebo TMP. Chcete-li získat přístup k prostředku místního úložiště z kódu, který je spuštěn v rámci vaší aplikace, volejte metodu [RoleEnvironment.GetLocalResource.](/previous-versions/azure/reference/ee772845(v=azure.100))
-* Nakonfigurujte prostředek místního úložiště a namiřte adresáře TEMP a TMP tak, aby ukazovaly na cestu k prostředku místního úložiště. Tato změna by měla být provedena v rámci [Metody RoleEntryPoint.OnStart.](/previous-versions/azure/reference/ee772851(v=azure.100))
+* Nakonfigurujte místní prostředek úložiště a k němu přistoupit přímo místo pomocí TEMP nebo TMP. Pro přístup k místnímu prostředku úložiště z kódu, který běží v rámci aplikace, zavolejte metodu [RoleEnvironment. GetLocalResource](/previous-versions/azure/reference/ee772845(v=azure.100)) .
+* Nakonfigurujte prostředek místního úložiště a nasměrujte adresáře TEMP a TMP tak, aby odkazovaly na cestu k místnímu prostředku úložiště. Tato úprava by se měla provádět v rámci metody [RoleEntryPoint. OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) .
 
-Následující příklad kódu ukazuje, jak upravit cílové adresáře pro TEMP a TMP z metody OnStart:
+Následující příklad kódu ukazuje, jak v rámci metody OnStart upravit cílové adresáře pro dočasné a TMP:
 
 ```csharp
 using System;
@@ -70,8 +70,8 @@ namespace WorkerRole1
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si blog, který [popisuje, jak zvětšit velikost role webu Azure ASP.NET dočasná složka](https://blogs.msdn.com/b/kwill/archive/2011/07/18/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder.aspx).
+Přečtěte si blog, který popisuje, [jak zvýšit velikost ASP.NET dočasné složky webové role Azure](https://blogs.msdn.com/b/kwill/archive/2011/07/18/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder.aspx).
 
-Zobrazit další [články o řešení potíží](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/vs-azure-tools-debugging-cloud-services-overview.md) pro cloudové služby.
+Podívejte se na další články týkající se [řešení potíží](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/vs-azure-tools-debugging-cloud-services-overview.md) pro Cloud Services.
 
-Chcete-li se dozvědět, jak řešit problémy s rolí cloudové služby pomocí dat diagnostiky počítače Azure PaaS, podívejte se na [řadu blogů Kevina Williamsona](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
+Pokud se chcete dozvědět, jak řešit problémy s rolí cloudové služby pomocí dat diagnostiky počítačů Azure PaaS, podívejte se na [blogovou řadu Kevin Williamson](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).

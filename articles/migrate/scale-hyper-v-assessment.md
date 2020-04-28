@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: raynew
 ms.openlocfilehash: c1ae3a9ed8a775161aaf85ab2c91b1e43113d2e2
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70279441"
 ---
 # <a name="assess-large-numbers-of-hyper-v-vms-for-migration-to-azure"></a>Vyhodnocení velkého počtu virtuálních počítačů Hyper-V pro migraci do Azure
@@ -37,7 +37,7 @@ V tomto článku získáte informace o těchto tématech:
 Při plánování posouzení velkého počtu virtuálních počítačů s technologií Hyper-V existuje několik věcí, které je třeba vzít v úvahu:
 
 - **Plánování Azure Migrate projektů**: Zjistěte, jak nasadit Azure Migrate projekty. Například pokud jsou datová centra v různých geografických oblastech nebo potřebujete ukládat metadata pro zjišťování, hodnocení nebo migraci v různých zeměpisných oblastech, možná budete potřebovat více projektů.
-- **Zařízení pro plánování**: Azure Migrate používá místní zařízení Azure Migrate nasazené jako virtuální počítač Hyper-V pro průběžné zjišťování virtuálních počítačů pro účely posouzení a migrace. Zařízení monitoruje změny prostředí, jako je například přidání virtuálních počítačů, disků nebo síťových adaptérů. Do Azure taky odesílají metadata a data o výkonu. Potřebujete zjistit, kolik zařízení se má nasadit.
+- **Zařízení pro plánování**: Azure Migrate používá místní zařízení Azure Migrate nasazené jako virtuální počítač s technologií Hyper-V pro průběžné zjišťování virtuálních počítačů pro účely posouzení a migrace. Zařízení monitoruje změny prostředí, jako je například přidání virtuálních počítačů, disků nebo síťových adaptérů. Do Azure taky odesílají metadata a data o výkonu. Potřebujete zjistit, kolik zařízení se má nasadit.
 
 
 ## <a name="planning-limits"></a>Omezení plánování
@@ -48,7 +48,7 @@ Pro plánování použijte omezení shrnutá v této tabulce.
 --- | --- 
 **Azure Migrate projekty** | Vyhodnoťte až 35 000 virtuálních počítačů v projektu.
 **Zařízení Azure Migrate** | Zařízení může zjistit až 5000 virtuálních počítačů.<br/> Zařízení se může připojit k až 300 hostitelům Hyper-V.<br/> Zařízení může být přidruženo pouze k jednomu Azure Migrate projektu.<br/> K jednomu Azure Migrate projektu může být přidružen libovolný počet zařízení. <br/><br/> 
-**Skupina** | Do jedné skupiny můžete přidat až 35 000 virtuálních počítačů.
+**Skupiny** | Do jedné skupiny můžete přidat až 35 000 virtuálních počítačů.
 **Posouzení Azure Migrate** | V jednom posouzení můžete vyhodnotit až 35 000 virtuálních počítačů.
 
 
@@ -75,7 +75,7 @@ V souladu s požadavky na plánování udělejte toto:
 1. Vytvořte Azure Migrate projekty.
 2. Přidejte do projektů Nástroj pro vyhodnocení Azure Migrate serveru.
 
-[Víc se uč](how-to-add-tool-first-time.md)
+[Další informace](how-to-add-tool-first-time.md)
 
 ## <a name="create-and-review-an-assessment"></a>Vytvoření a kontrola posouzení
 
@@ -85,7 +85,7 @@ V souladu s požadavky na plánování udělejte toto:
 [Přečtěte si další informace](tutorial-assess-hyper-v.md) o vytváření a kontrole hodnocení.
     
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku:
  

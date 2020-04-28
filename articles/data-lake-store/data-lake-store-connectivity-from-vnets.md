@@ -1,6 +1,6 @@
 ---
-title: Připojení k Azure Data Lake Storage Gen1 z virtuálních vnet | Dokumenty společnosti Microsoft
-description: Připojení k Azure Data Lake Storage Gen1 z virtuálních disekonů Azure
+title: Připojení k Azure Data Lake Storage Gen1 z virtuální sítě | Microsoft Docs
+description: Připojení k Azure Data Lake Storage Gen1 z Azure virtuální sítě
 services: data-lake-store,data-catalog
 documentationcenter: ''
 author: esung22
@@ -13,27 +13,27 @@ ms.topic: article
 ms.date: 01/31/2018
 ms.author: elsung
 ms.openlocfilehash: c8d028a981d7811ed2c864db5750afc83ab93b2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60878864"
 ---
 # <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>Přístup k Azure Data Lake Storage Gen1 z virtuálních počítačů v rámci virtuální sítě Azure
-Azure Data Lake Storage Gen1 je služba PaaS, která běží na veřejných internetových IP adresách. Každý server, který se může připojit k veřejnému Internetu, se obvykle může připojit také ke koncovým bodům Azure Data Lake Storage Gen1. Ve výchozím nastavení mohou všechny virtuální počítače, které jsou v virtuálních počítačích Azure, přistupovat k internetu, a proto mají přístup k Azure Data Lake Storage Gen1. Je však možné nakonfigurovat virtuální počítače ve virtuální síti tak, aby neměly přístup k Internetu. Pro takové virtuální počítače je omezen také přístup k Azure Data Lake Storage Gen1. Blokování veřejného přístupu k Internetu pro virtuální počítače v virtuálních počítačích Azure lze provést pomocí některého z následujících přístupů:
+Azure Data Lake Storage Gen1 je služba PaaS, která běží na veřejných internetových IP adresách. Libovolný server, který se může připojit k veřejnému Internetu, se obvykle může připojit k Azure Data Lake Storage Gen1 koncovým bodům. Ve výchozím nastavení mají všechny virtuální počítače v Azure virtuální sítě přístup k Internetu, takže mají přístup k Azure Data Lake Storage Gen1. Je ale možné nakonfigurovat virtuální počítače ve virtuální síti, které nemají přístup k Internetu. Pro tyto virtuální počítače je také omezen přístup k Azure Data Lake Storage Gen1. Blokování veřejného přístupu k Internetu pro virtuální počítače v Azure virtuální sítě se dá udělat pomocí některého z následujících přístupů:
 
 * Konfigurací skupin zabezpečení sítě (NSG)
 * Konfigurací uživatelem definovaných tras (UDR)
-* Výměnou tras prostřednictvím protokolu BGP (standardní dynamický směrovací protokol), pokud je použit ExpressRoute, které blokují přístup k Internetu
+* Když vyměňujete trasy prostřednictvím protokolu BGP (standardní protokol dynamického směrování), bude se při použití ExpressRoute blokovat přístup k Internetu.
 
-V tomto článku se dozvíte, jak povolit přístup k Azure Data Lake Storage Gen1 z virtuálních počítačů Azure, které byly omezeny na přístup k prostředkům pomocí jedné ze tří metod uvedených dříve.
+V tomto článku se dozvíte, jak povolit přístup k Azure Data Lake Storage Gen1 z virtuálních počítačů Azure, které jsou omezené pro přístup k prostředkům pomocí jedné ze tří výše uvedených metod.
 
 ## <a name="enabling-connectivity-to-azure-data-lake-storage-gen1-from-vms-with-restricted-connectivity"></a>Povolení připojení k Azure Data Lake Storage Gen1 z virtuálních počítačů s omezeným připojením
-Chcete-li získat přístup k Azure Data Lake Storage Gen1 z těchto virtuálních počítačů, musíte je nakonfigurovat pro přístup k IP adrese pro oblast, kde je k dispozici účet Azure Data Lake Storage Gen1. Ip adresy pro oblasti účtu Data Lake Storage Gen1 můžete identifikovat překladem`<account>.azuredatalakestore.net`názvů DNS svých účtů ( . Chcete-li přeložit názvy DNS svých účtů, můžete použít nástroje, jako je **například nslookup**. Otevřete v počítači příkazový řádek a spusťte následující příkaz:
+Pokud chcete získat přístup k Azure Data Lake Storage Gen1 z takových virtuálních počítačů, musíte je nakonfigurovat pro přístup k IP adrese pro oblast, ve které je účet Azure Data Lake Storage Gen1 dostupný. IP adresy pro oblasti vašeho účtu Data Lake Storage Gen1 můžete určit tak, že vyřešíte názvy DNS vašich účtů (`<account>.azuredatalakestore.net`). K překladu názvů DNS vašich účtů můžete použít nástroje, jako je například **nslookup**. V počítači otevřete příkazový řádek a spusťte následující příkaz:
 
     nslookup mydatastore.azuredatalakestore.net
 
-Výstup se podobá následující. Hodnota oproti vlastnosti **Address** je IP adresa přidružená k vašemu účtu Data Lake Storage Gen1.
+Výstup se podobá následujícímu. Hodnota proti vlastnosti **adresa** je IP adresa přidružená k vašemu Data Lake Storage Gen1 účtu.
 
     Non-authoritative answer:
     Name:    1434ceb1-3a4b-4bc0-9c69-a0823fd69bba-mydatastore.projectcabostore.net
@@ -41,14 +41,14 @@ Výstup se podobá následující. Hodnota oproti vlastnosti **Address** je IP a
     Aliases:  mydatastore.azuredatalakestore.net
 
 
-### <a name="enabling-connectivity-from-vms-restricted-by-using-nsg"></a>Povolení připojení z virtuálních zařízení omezené pomocí služby NSG
-Pokud se k blokování přístupu k Internetu používá pravidlo nsg, můžete vytvořit jiný soubor zabezpečení sítě, který umožňuje přístup k IP adrese Data Lake Storage Gen1. Další informace o pravidlech skupiny zabezpečení sítě naleznete v [tématu Přehled skupin zabezpečení sítě](../virtual-network/security-overview.md). Pokyny k vytvoření skupin nsg naleznete [v tématu Vytvoření skupiny zabezpečení sítě](../virtual-network/tutorial-filter-network-traffic.md).
+### <a name="enabling-connectivity-from-vms-restricted-by-using-nsg"></a>Povolení připojení z virtuálních počítačů, které jsou omezené pomocí NSG
+Pokud se k zablokování přístupu k Internetu použije pravidlo NSG, můžete vytvořit další NSG, které umožní přístup k Data Lake Storage Gen1 IP adrese. Další informace o pravidlech NSG najdete v tématu [Přehled skupin zabezpečení sítě](../virtual-network/security-overview.md). Pokyny, jak vytvořit skupin zabezpečení sítě, najdete v tématu [jak vytvořit skupinu zabezpečení sítě](../virtual-network/tutorial-filter-network-traffic.md).
 
-### <a name="enabling-connectivity-from-vms-restricted-by-using-udr-or-expressroute"></a>Povolení připojení z virtuálních zařízení omezené pomocí UDR nebo ExpressRoute
-Při trasy, buď UDR nebo BGP-vyměnili trasy, se používají k zablokování přístupu k Internetu, speciální trasa musí být nakonfigurovántak, aby virtuální počítače v těchto podsítí přístup data Lake Storage Gen1 koncové body. Další informace naleznete v [tématu Přehled tras definovaných uživatelem](../virtual-network/virtual-networks-udr-overview.md). Pokyny k vytváření záznamů UDR naleznete [v tématu Vytvoření záznamů UDR ve Správci prostředků](../virtual-network/tutorial-create-route-table-powershell.md).
+### <a name="enabling-connectivity-from-vms-restricted-by-using-udr-or-expressroute"></a>Povolení připojení z virtuálních počítačů, které jsou omezené pomocí UDR nebo ExpressRoute
+Když se k zablokování přístupu k Internetu používají trasy udr nebo protokolu BGP, je nutné nakonfigurovat speciální trasu, aby virtuální počítače v těchto podsítích měly přístup k Data Lake Storage Gen1 koncovým bodům. Další informace najdete v tématu [Přehled uživatelsky definovaných tras](../virtual-network/virtual-networks-udr-overview.md). Pokyny k vytváření udr najdete v tématu [vytvoření udr v Správce prostředků](../virtual-network/tutorial-create-route-table-powershell.md).
 
-### <a name="enabling-connectivity-from-vms-restricted-by-using-expressroute"></a>Povolení připojení z virtuálních zařízení omezené pomocí ExpressRoute
-Když je nakonfigurován okruh ExpressRoute, místní servery mohou přistupovat k datovému úložišti Data Lake Storage Gen1 prostřednictvím veřejného partnerského vztahu. Další podrobnosti o konfiguraci ExpressRoute pro veřejný partnerský vztah jsou k dispozici na [dotazech ExpressRoute FAQ](../expressroute/expressroute-faqs.md).
+### <a name="enabling-connectivity-from-vms-restricted-by-using-expressroute"></a>Povolení připojení z virtuálních počítačů, které jsou omezené pomocí ExpressRoute
+Když je nakonfigurovaný okruh ExpressRoute, můžou místní servery získat přístup k Data Lake Storage Gen1 prostřednictvím veřejného partnerského vztahu. Další podrobnosti o konfiguraci ExpressRoute pro veřejný partnerský vztah najdete v tématu [Nejčastější dotazy k ExpressRoute](../expressroute/expressroute-faqs.md).
 
 ## <a name="see-also"></a>Viz také
 * [Přehled Azure Data Lake Storage Gen1](data-lake-store-overview.md)

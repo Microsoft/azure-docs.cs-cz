@@ -1,6 +1,6 @@
 ---
-title: Upgrade služby Azure IoT Hub | Dokumenty společnosti Microsoft
-description: Změňte úroveň cen a škálování pro Službu IoT Hub, abyste získali další možnosti správy zpráv a zařízení.
+title: Upgradovat Azure IoT Hub | Microsoft Docs
+description: Změnou úrovně cen a škálování IoT Hub získáte další možnosti správy zpráv a zařízení.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,50 +9,50 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: robinsh
 ms.openlocfilehash: 96c3a7b2cfda23f173f4caeff4fb7a92b1ddc438
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "61440203"
 ---
 # <a name="how-to-upgrade-your-iot-hub"></a>Postup upgradu služby IoT Hub
 
-Jak vaše řešení IoT roste, Azure IoT Hub je připraven vám pomůže vertikálně navýšit kapacitu. Azure IoT Hub nabízí dvě úrovně, základní (B) a standardní (S), aby vyhovovaly zákazníkům, kteří chtějí používat různé funkce. V rámci každé vrstvy jsou tři velikosti (1, 2 a 3), které určují počet zpráv, které mohou být odeslány každý den.
+Jak vaše řešení IoT roste, je Azure IoT Hub připraven, abychom vám pomohli škálovat. Azure IoT Hub nabízí dvě úrovně Basic (B) a Standard (y), které budou vyhovovat zákazníkům, kteří chtějí používat různé funkce. V rámci každé úrovně jsou tři velikosti (1, 2 a 3), které určují počet zpráv, které se dají každý den odeslat.
 
-Pokud máte víc zařízení a potřebujete víc možností, existují tři způsoby, jak upravit centrum IoT tak, aby vyhovovalo vašim potřebám:
+Pokud máte více zařízení a potřebujete více možností, můžete Centrum IoT upravit tak, aby vyhovovalo vašim potřebám:
 
-* Přidejte jednotky v rámci centra IoT. Například každá další jednotka v centru B1 IoT umožňuje dalších 400 000 zpráv za den.
+* Přidejte jednotky ve službě IoT Hub. Například každá další jednotka v centru IoT Hub umožňuje další zprávy 400 000 za den.
 
-* Změňte velikost centra IoT hub. Například migrujte z úrovně B1 na úroveň B2, abyste zvýšili počet zpráv, které může každá jednotka podporovat za den.
+* Změňte velikost centra IoT. Například migrujete z vrstvy B1 na úroveň B2 a zvyšte počet zpráv, které mohou jednotlivé jednotky podporovat za den.
 
-* Upgradujte na vyšší úroveň. Například upgrade z úrovně B1 na úroveň S1 pro přístup k pokročilým funkcím se stejnou kapacitou zasílání zpráv.
+* Upgradujte na vyšší úroveň. Například upgrade z vrstvy B1 na úroveň S1 pro přístup k pokročilým funkcím se stejnou kapacitou pro zasílání zpráv.
 
-Všechny tyto změny mohou nastat bez přerušení existujících operací.
+K těmto změnám může dojít, aniž by došlo k přerušení stávajících operací.
 
-Pokud chcete snížit úroveň vašeho centra IoT hub, můžete odebrat jednotky a zmenšit velikost centra IoT hub, ale nemůžete přejít na nižší úroveň. Můžete například přejít z úrovně S2 na úroveň S1, ale ne z úrovně S2 na úroveň B1. Pro centrum IoT Hub lze vybrat jenom jeden typ [edice Iot Hub](https://azure.microsoft.com/pricing/details/iot-hub/) v rámci úrovně. Můžete například vytvořit ioT hub s více jednotkami S1, ale ne se kombinací jednotek z různých edic, jako jsou S1 a B3 nebo S1 a S2.
+Pokud chcete downgrade ve službě IoT Hub, můžete odebrat jednotky a zmenšit velikost služby IoT Hub, ale nemůžete downgradovat na nižší úroveň. Můžete například přesunout z vrstvy S2 do vrstvy S1, ale ne z vrstvy S2 do vrstvy B1. Pro jednu IoT Hub lze vybrat pouze jeden typ [edice služby IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/) v rámci jedné úrovně. Můžete například vytvořit IoT Hub s více jednotkami S1, ale ne se směsí jednotek z různých edic, například S1 a B3 nebo S1 a S2.
 
-Tyto příklady jsou určeny k vám pomůže pochopit, jak upravit centrum IoT při změně vašeho řešení. Konkrétní informace o možnostech jednotlivých úrovní byste měli vždy odkazovat na [ceny služby Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
+Tyto příklady jsou určené k tomu, aby vám pomohly pochopit, jak vaše řešení mění vaše centrum IoT. Konkrétní informace o možnostech jednotlivých úrovní najdete v tématu [ceny služby Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
 
-## <a name="upgrade-your-existing-iot-hub"></a>Upgrade stávajícího centra IoT hub
+## <a name="upgrade-your-existing-iot-hub"></a>Upgrade stávajícího centra IoT Hub
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/) a přejděte do svého centra IoT hub.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) a přejděte do služby IoT Hub.
 
-2. Vyberte **Ceny a měřítko**.
+2. Vyberte **ceny a škálování**.
 
    ![Ceny a škálování](./media/iot-hub-upgrade/pricing-scale.png)
 
-3. Pokud chcete změnit úroveň svého centra, vyberte **Ceny a škálovat úroveň**. Vyberte novou úroveň a klikněte na **vybrat**.
+3. Pokud chcete změnit úroveň svého centra, vyberte **ceny a úroveň škálování**. Zvolte novou vrstvu a pak klikněte na **Vybrat**.
 
    ![Cenová úroveň a úroveň škálování](./media/iot-hub-upgrade/select-tier.png)
 
-4. Chcete-li změnit počet jednotek v rozbočovači, zadejte novou hodnotu do **jednotek služby IoT Hub**.
+4. Pokud chcete změnit počet jednotek ve vašem centru, zadejte novou hodnotu pod **IoT Hub jednotky**.
 
 5. Vyberte **Uložit** a uložte tak provedené změny.
 
-Váš ioT hub je teď upravený a vaše konfigurace se nezmění.
+Vaše centrum IoT se teď upraví a vaše konfigurace se nezměnily.
 
-Maximální limit oddílu pro základní úroveň IoT Hub a standardní úroveň IoT Hub je 32. Většina ioT hubů potřebuje jenom 4 oddíly. Limit oddílu je vybrán při vytvoření služby IoT Hub a týká se zpráv zařízení cloud s počtem současných čtenářů těchto zpráv. Tato hodnota zůstane beze změny při migraci ze základní vrstvy na úroveň standard.
+Maximální omezení oddílu IoT Hub úrovně Basic a úrovně Standard IoT Hub je 32. Většina rozbočovačů IoT potřebuje jenom 4 oddíly. Limit oddílu se volí při vytvoření IoT Hub a týká se zpráv typu zařízení-Cloud s počtem souběžných čtenářů těchto zpráv. Tato hodnota zůstává beze změny při migraci z úrovně Basic na úroveň Standard.
 
 ## <a name="next-steps"></a>Další kroky
 
-Získejte další podrobnosti o [tom, jak vybrat správnou úroveň IoT Hub](iot-hub-scaling.md).
+Získejte další informace o [tom, jak zvolit správnou IoT Hub vrstvu](iot-hub-scaling.md).

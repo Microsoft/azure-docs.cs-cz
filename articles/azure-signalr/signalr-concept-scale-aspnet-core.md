@@ -1,5 +1,5 @@
 ---
-title: Škálování ASP.NET core signalr s Azure SignalR
+title: Škálování signálu ASP.NET Core pomocí služby Azure Signal
 description: Přehled používání služby Azure SignalR ke škálování aplikací ASP.NET Core SignalR.
 author: sffamily
 ms.service: signalr
@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: 8a4012d204b6dafa1233e4ce3d878590120be47d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60640221"
 ---
 # <a name="scale-aspnet-core-signalr-applications-with-azure-signalr-service"></a>Škálování aplikací ASP.NET Core SignalR pomocí služby Azure SignalR
 
 ## <a name="developing-signalr-apps"></a>Vývoj aplikací SignalR
 
-V současné době existují [dvě verze](https://docs.microsoft.com/aspnet/core/signalr/version-differences) SignalR můžete použít s webovými aplikacemi: SignalR pro ASP.NET a ASP.NET Core SignalR, což je nejnovější verze. Služba Azure SignalR je služba spravovaná v Azure a založená na SignalR pro ASP.NET Core.
+V současné době existují [dvě verze](https://docs.microsoft.com/aspnet/core/signalr/version-differences) nástroje Signal, které můžete používat s vašimi webovými aplikacemi: signaler pro ASP.NET a signál ASP.NET Core, což je nejnovější verze. Služba Azure SignalR je služba spravovaná v Azure a založená na SignalR pro ASP.NET Core.
 
 SignalR pro ASP.NET Core je přepsaná předchozí verze. To znamená, že SignalR pro ASP.NET Core není zpětně kompatibilní se starší verzí SignalR. Rozhraní API a chování se liší. Sada SDK služby SignalR pro ASP.NET Core cílí na .NET Standard, takže ji stále můžete používat s rozhraním .NET Framework. Místo starých rozhraní API však musíte použít nová rozhraní API. Pokud používáte SignalR a chcete přejít na SignalR pro ASP.NET Core neboli službu Azure SignalR, budete muset změnit svůj kód s ohledem na rozdíly v rozhraních API.
 
@@ -37,7 +37,7 @@ Dalším důvodem může být, že webovou aplikaci vlastně vůbec nepotřebuje
 
 ## <a name="how-does-it-scale"></a>Jak se škáluje?
 
-Je běžné škálování SignalR s SQL Server, Azure Service Bus nebo Azure Cache pro Redis. Služba Azure SignalR se stará o postup škálování za vás. Výkon a náklady jsou srovnatelné s těmito postupy, ale bez složité správy těchto dalších služeb. Stačí pouze aktualizovat počet jednotek pro vaši službu. Každá jednotka podporuje až 1000 klientských připojení.
+Je běžné škálovat signál pomocí SQL Server, Azure Service Bus nebo Azure cache pro Redis. Služba Azure SignalR se stará o postup škálování za vás. Výkon a náklady jsou srovnatelné s těmito postupy, ale bez složité správy těchto dalších služeb. Stačí pouze aktualizovat počet jednotek pro vaši službu. Každá jednotka podporuje až 1000 klientských připojení.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,6 +1,6 @@
 ---
-title: Usnadnění v Průzkumníku azure (preview) | Dokumenty společnosti Microsoft
-description: Usnadnění v Průzkumníku úložiště Azure (preview)
+title: Přístupnost Průzkumník služby Azure Storage (Preview) | Microsoft Docs
+description: Přístupnost Průzkumník služby Azure Storage (Preview)
 services: storage
 documentationcenter: na
 author: MrayermannMSFT
@@ -15,41 +15,41 @@ ms.workload: na
 ms.date: 02/20/2018
 ms.author: marayerm
 ms.openlocfilehash: aa42d6b898a3cc474575f6c8dae65ff420fc8e30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60457246"
 ---
 # <a name="storage-explorer-accessibility"></a>Přístupnost Průzkumníka služby Storage
 
-## <a name="screen-readers"></a>Obrazovky
+## <a name="screen-readers"></a>Čtečky obrazovky
 
-Průzkumník úložiště podporuje použití čtečky obrazovky ve Windows a Macu. Pro každou platformu se doporučují následující programy pro čtení z obrazovky:
+Průzkumník služby Storage podporuje použití čtečky obrazovky v systémech Windows a Mac. Pro každou platformu se doporučují následující čtečky obrazovky:
 
-Platforma | Obrazovky
+Platforma | Čtečka obrazovky
 ---------|--------------
-Windows  | Nvda
+Windows  | NVDA
 Mac      | Voice Over
-Linux    | (čtečky obrazovky nejsou podporovány na Linuxu)
+Linux    | (čtečky obrazovky se v systému Linux nepodporují.)
 
-Pokud při používání Průzkumníka úložiště narazíte na problém s usnadněním [přístupu, otevřete problém na GitHubu](https://github.com/Microsoft/AzureStorageExplorer/issues).
+Pokud při použití Průzkumník služby Storage narazíte na problém s přístupností, [otevřete prosím problém na GitHubu](https://github.com/Microsoft/AzureStorageExplorer/issues).
 
 ## <a name="zoom"></a>Zoom
 
-Text v Průzkumníku úložiště můžete zvětšit přiblížením. Chcete-li zobrazení přiblížit, klikněte v nabídce Nápověda na **přibližte** zobrazení. Pomocí nabídky Nápověda můžete také oddálit a obnovit úroveň přiblížení zpět na výchozí úroveň.
+Text v Průzkumník služby Storage může být zvětšený pomocí přiblížení. Přiblížení zobrazíte kliknutím na tlačítko **přiblížit** v nabídce Help (Lupa). K zmenšení a obnovení úrovně přiblížení zpět na výchozí úroveň můžete použít také nabídku Help.
 
-![Možnosti zvětšení v nabídce nápovědy][0]
+![Možnosti přiblížení v nabídce Help][0]
 
-Nastavení zvětšení zvětší velikost většiny prvků uživatelského rozhraní. Doporučujeme také povolit nastavení velkého textu a přiblížení pro operační systém, abyste zajistili správné měřítko všech prvků uživatelského rozhraní.
+Nastavení přiblížení zvyšuje velikost většiny prvků uživatelského rozhraní. Doporučuje se také povolit nastavení velkých textů a přiblížení pro váš operační systém, aby se zajistilo správné škálování všech prvků uživatelského rozhraní.
 
-## <a name="high-contrast-themes"></a>Motivy s vysokým kontrastem
+## <a name="high-contrast-themes"></a>Vysoký kontrast motivů
 
-Průzkumník úložiště má dva motivy s vysokým kontrastem, **světlo s vysokým kontrastem** a **tmavý vysoký kontrast**. Motiv můžete změnit výběrem z nabídky Nápověda > motivy.
+Průzkumník služby Storage má dva motivy s vysokým kontrastem, **vysoký kontrast světlo** a **vysoký kontrast tmavé**. Svůj motiv můžete změnit tak, že v nabídce motivy > Help vyberete v.
 
-![Dílčí nabídka Motivy][1]
+![Dílčí nabídka motivů][1]
 
-Nastavení motivu změní barvu většiny prvků uživatelského rozhraní. Doporučujeme také povolit odpovídající motiv vysokého kontrastu operačního systému, abyste zajistili, že všechny prvky uživatelského rozhraní jsou správně zbarveny.
+Nastavení motivu mění barvu většiny prvků uživatelského rozhraní. Doporučuje se také povolit motiv odpovídající vašemu operačnímu systému, aby bylo zajištěno, že všechny prvky uživatelského rozhraní jsou správně barevné.
 
 ## <a name="shortcut-keys"></a>Klávesové zkratky
 
@@ -57,33 +57,33 @@ Nastavení motivu změní barvu většiny prvků uživatelského rozhraní. Dopo
 
 Příkaz       | Klávesová zkratka
 --------------|--------------------
-Nové okno    | **Ctrl+Shift+N**
-Zavřít editor  | **Ovládání+F4**
-Quit          | **Ctrl+Shift+W**
+Nové okno    | **Ctrl + Shift + N**
+Zavřít editor  | **Ctrl + F4**
+Quit          | **CTRL + SHIFT + W**
 
 ### <a name="navigation-commands"></a>Navigační příkazy
 
 Příkaz                | Klávesová zkratka
 -----------------------|----------------------
-Fokus na další panel       | **F6**
-Fokus předchozího panelu   | **Shift+F6**
-Průzkumník               | **Ctrl+Shift+E**
-Správa účtů     | **Ctrl+Shift+A**
-Přepnout boční panel        | **Ovládací prvek+B**
-Protokol aktivit           | **Ctrl+Shift+L**
-Akce a vlastnosti | **Ctrl+Shift+P**
-Aktuální editor         | **Ovládání+domů**
-Další editor            | **Ctrl+Page Down**
-Předchozí editor        | **Ctrl+Page Up**
+Další panel – fokus       | **F6**
+Fokus na předchozí panel   | **Shift+F6**
+Průzkumník               | **CTRL + SHIFT + E**
+Správa účtů     | **Ctrl + Shift + A**
+Přepnout postranní panel        | **CTRL + B**
+Protokol aktivit           | **CTRL + SHIFT + L**
+Akce a vlastnosti | **CTRL + SHIFT + P**
+Aktuální editor         | **Ovládací prvek + domů**
+Další Editor            | **Ctrl + PageDown**
+Předchozí Editor        | **Ctrl + Page Up**
 
 ### <a name="zoom-commands"></a>Příkazy lupy
 
 Příkaz  | Klávesová zkratka
 ---------|------------------
-Přiblížit  | **Řízení+=**
-Oddálit | **Řízení+-**
+Přiblížit  | **CTRL + =**
+Oddálit | **Ovládací prvek + –**
 
-### <a name="blob-and-file-share-editor-commands"></a>Příkazy Editoru sdílení objektů blob a sdílení souborů
+### <a name="blob-and-file-share-editor-commands"></a>Příkazy editoru objektů BLOB a sdílení souborů
 
 Příkaz | Klávesová zkratka
 --------|--------------------
@@ -95,17 +95,17 @@ Nahoru      | **Alt + šipka nahoru**
 
 Příkaz | Klávesová zkratka
 --------|------------------
-Kopírovat    | **Ovládací prvek+C**
-Vyjmout     | **Ovládací prvek+X**
-Vložit   | **Ovládací prvek+V**
-Obnovení  | **Ovládací prvek+R**
+Kopírovat    | **CTRL + C**
+Vyjmout     | **CTRL + X**
+Vložit   | **Control + V**
+Obnovení  | **CTRL + R**
 
 ### <a name="other-commands"></a>Další příkazy
 
 Příkaz                | Klávesová zkratka
 -----------------------|------------------
-Přepnout nástroje pro vývojáře | **F12**
-Načíst znovu                 | **Alt+Ctrl+R**
+Přepnout Vývojářské nástroje | **F12**
+Načíst znovu                 | **Alt + Ctrl + R**
 
 [0]: ./media/vs-azure-tools-storage-explorer-accessibility/Zoom.png
 [1]: ./media/vs-azure-tools-storage-explorer-accessibility/HighContrast.png

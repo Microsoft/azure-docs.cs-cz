@@ -1,6 +1,6 @@
 ---
-title: Atributy stínové služby synchronizace služby Azure AD Connect | Dokumenty společnosti Microsoft
-description: Popisuje, jak stínové atributy fungují ve službě synchronizace Azure AD Connect.
+title: Azure AD Connect atributů stínové služby synchronizace | Microsoft Docs
+description: Popisuje, jak atributy stínů fungují ve službě Azure AD Connect Sync Service.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,26 +17,26 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 10a4078f49abbdf431f42c6cde7cf882112e5848
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60384697"
 ---
-# <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Atributy stínů synchronizační služby Azure AD Connect
-Většina atributů jsou reprezentovány stejným způsobem ve službě Azure AD jako ve vaší místní službě Active Directory. Ale některé atributy mají některé speciální zpracování a hodnota atributu ve službě Azure AD se může lišit od toho, co azure ad connect synchronizuje.
+# <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Azure AD Connect atributy stínové služby synchronizace
+Většina atributů je ve službě Azure AD reprezentována stejným způsobem jako v místní službě Active Directory. Některé atributy ale mají nějaké speciální zpracování a hodnota atributu ve službě Azure AD se může lišit od toho, co se Azure AD Connect synchronizuje.
 
-## <a name="introducing-shadow-attributes"></a>Zavedení stínových atributů
-Některé atributy mají dvě reprezentace ve službě Azure AD. Místní hodnota a vypočtená hodnota jsou uloženy. Tyto další atributy se nazývají stínové atributy. Dva nejběžnější atributy, kde se zobrazí toto chování jsou **userPrincipalName** a **proxyAddress**. Ke změně hodnot atributů dojde, když jsou v těchto atributech hodnoty představující neověřené domény. Ale synchronizační modul v Connect přečte hodnotu v atributu stín, takže z jeho pohledu byl atribut potvrzen službou Azure AD.
+## <a name="introducing-shadow-attributes"></a>Představení atributů stínů
+Některé atributy mají ve službě Azure AD dvě reprezentace. Místní hodnota i Počítaná hodnota jsou uloženy. Tyto dodatečné atributy se nazývají stínové atributy. Dva nejběžnější atributy, kde vidíte toto chování, jsou **userPrincipalName** a **ProxyAddress**. Změna hodnot atributů se projeví, pokud jsou v těchto atributech hodnoty, které představují neověřené domény. Synchronizační modul v Connect ale přečte hodnotu v atributu Shadow z pohledu své perspektivy a atribut byl potvrzen službou Azure AD.
 
-Nelze zobrazit stínové atributy pomocí portálu Azure nebo s PowerShell. Ale pochopení konceptu vám pomůže řešit určité scénáře, kde atribut má různé hodnoty v místním prostředí a v cloudu.
+Pomocí Azure Portal nebo prostředí PowerShell nemůžete zobrazit atributy stínů. Ale porozumění konceptu vám pomůže vyřešit některé scénáře, kde má atribut odlišné hodnoty v místním prostředí i v cloudu.
 
-Chcete-li lépe porozumět chování, podívejte se na tento příklad z Fabrikam:  
+Chcete-li lépe pochopit chování, podívejte se na tento příklad ze společnosti Fabrikam:  
 ![Domény](./media/how-to-connect-syncservice-shadow-attributes/domains.png)  
-Mají více přípon UPN v místní službě Active Directory, ale ověřili pouze jednu.
+Mají několik přípon UPN v místní službě Active Directory, ale ověřili jsme je jenom jednou.
 
 ### <a name="userprincipalname"></a>userPrincipalName (Hlavní název uživatele)
-Uživatel má v neověřené doméně následující hodnoty atributů:
+Uživatel má následující hodnoty atributu v neověřené doméně:
 
 | Atribut | Hodnota |
 | --- | --- |
@@ -46,34 +46,34 @@ Uživatel má v neověřené doméně následující hodnoty atributů:
 
 Atribut userPrincipalName je hodnota, která se zobrazí při použití prostředí PowerShell.
 
-Vzhledem k tomu, že skutečná hodnota místního atributu je uložena ve službě Azure AD, při ověření fabrikam.com domény, Azure AD aktualizuje atribut userPrincipalName s hodnotou z shadowUserPrincipalName. Není třeba synchronizovat žádné změny z Azure AD Connect pro tyto hodnoty, které mají být aktualizovány.
+Vzhledem k tomu, že hodnota reálného místního atributu je uložená v Azure AD, při ověřování domény fabrikam.com aktualizuje Azure AD atribut userPrincipalName hodnotou z shadowUserPrincipalName. Pro aktualizace těchto hodnot není nutné synchronizovat žádné změny z Azure AD Connect.
 
 ### <a name="proxyaddresses"></a>proxyAddresses
-Stejný proces pouze pro ověřené domény také dochází pro proxyAdresy, ale s některé další logiku. Kontrola ověřených domén se děje pouze pro uživatele poštovní schránky. Uživatel nebo kontakt s povolenou poštou představují uživatele v jiné organizaci serveru Exchange a k těmto objektům můžete přidat libovolné hodnoty v proxyAddresses.
+Stejný postup, který zahrnuje jenom ověřené domény, se taky vyskytuje pro proxyAddresses, ale s nějakou další logikou. Kontroler ověřených domén se stane pouze pro uživatele poštovních schránek. Uživatel nebo kontakt s povoleným e-mailem představuje uživatele v jiné organizaci Exchange a v proxyAddresses můžete do těchto objektů přidat libovolné hodnoty.
 
-Pro uživatele poštovní schránky, a to buď místně nebo v Exchange Online, se zobrazí pouze hodnoty pro ověřené domény. Mohlo by to vypadat takto:
+Pro uživatele poštovní schránky, ať už místně nebo v Exchangi Online, se zobrazí jenom hodnoty pro ověřené domény. Může to vypadat takto:
 
 | Atribut | Hodnota |
 | --- | --- |
-| místní proxyAdresy | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie.spencer@fabrikam.com</br>smtp:abbie@fabrikamonline.com |
-| Proxy Adresy Exchange Online | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie@fabrikamonline.com</br>SIP:abbie.spencer@fabrikamonline.com |
+| místní proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie.spencer@fabrikam.com</br>smtp:abbie@fabrikamonline.com |
+| Exchange Online proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie@fabrikamonline.com</br>SIP:abbie.spencer@fabrikamonline.com |
 
-V tomto případě **smtp:abbie.spencer\@fabrikam.com** byl odebrán, protože tato doména nebyla ověřena. Ale Exchange také přidal **SIP:abbie.spencer\@fabrikamonline.com**. Společnost Fabrikam nepoužívá lync/skype místně, ale Azure AD a Exchange Online se na to připravují.
+V tomto případě bylo odebráno **SMTP:\@abbie. Spencer Fabrikam.com** , protože tato doména nebyla ověřena. Ale Exchange Přidal také protokol **SIP: Abbie.\@Spencer fabrikamonline.com**. Společnost Fabrikam nepoužívala službu Lync/Skype v místním prostředí, ale připravuje ji pro Azure AD a Exchange Online.
 
-Tato logika pro proxyAddresses se označuje jako **ProxyCalc**. ProxyCalc je vyvolána s každou změnou na uživatele, když:
+Tato logika pro proxyAddresses je označována jako **ProxyCalc**. ProxyCalc se vyvolá při každé změně uživatele v těchto případech:
 
-- Uživateli byl přiřazen plán služeb, který zahrnuje Exchange Online i v případě, že uživatel nebyl licencován pro Exchange. Pokud je například uživateli přiřazena skladová položka Office E3, ale byla mu přiřazena jenom SharePoint Online. To platí i v případě, že vaše poštovní schránka je stále místní.
+- Uživateli byl přiřazen plán služeb, který zahrnuje Exchange online i v případě, že uživatel nemá licenci pro Exchange. Například pokud je uživateli přiřazena SKU Office E3, ale byl mu přiřazen pouze SharePoint Online. To platí i v případě, že je vaše poštovní schránka pořád místní.
 - Atribut msExchRecipientTypeDetails má hodnotu.
-- Provedete změnu proxyAddresses nebo userPrincipalName.
+- Provedete změnu na proxyAddresses nebo userPrincipalName.
 
-ProxyCalc může nějakou dobu trvat, než zpracuje změnu u uživatele a není synchronní s procesem exportu Azure AD Connect.
+ProxyCalc může nějakou dobu trvat, než se změny uživatele zpracuje a není synchronní při Azure AD Connect procesu exportu.
 
 > [!NOTE]
-> Logika ProxyCalc má některé další chování pro pokročilé scénáře, které nejsou popsány v tomto tématu. Toto téma je k dispozici pro pochopení chování a není dokument ovat všechny vnitřní logiku.
+> Logika ProxyCalc má několik dalších chování pro pokročilé scénáře, které nejsou popsány v tomto tématu. Toto téma je k dispozici, abyste porozuměli chování a nezdokumentují všechny interní logiky.
 
-### <a name="quarantined-attribute-values"></a>Hodnoty atributů v karanténě
-Atributy stínů se používají také v případě, že existují duplicitní hodnoty atributů. Další informace naleznete [v tématu duplicitní odolnost atributu .](how-to-connect-syncservice-duplicate-attribute-resiliency.md)
+### <a name="quarantined-attribute-values"></a>Hodnoty atributu v karanténě
+Pokud existují duplicitní hodnoty atributů, používají se také atributy stínové kopie. Další informace najdete v tématu [odolnost duplicitních atributů](how-to-connect-syncservice-duplicate-attribute-resiliency.md).
 
 ## <a name="see-also"></a>Viz také
-* [Synchronizace Azure AD Connect](how-to-connect-sync-whatis.md)
+* [Azure AD Connect synchronizace](how-to-connect-sync-whatis.md)
 * [Integrace místních identit s Azure Active Directory](whatis-hybrid-identity.md).

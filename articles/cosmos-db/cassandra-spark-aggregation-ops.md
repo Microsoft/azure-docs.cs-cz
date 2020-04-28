@@ -1,6 +1,6 @@
 ---
 title: Agregační operace s tabulkami rozhraní API Cassandra služby Azure Cosmos DB ze Sparku
-description: Tento článek popisuje základní operace agregace proti tabulky rozhraní API Azure Cosmos DB Cassandra ze Sparku
+description: Tento článek popisuje základní operace agregace proti Azure Cosmos DB rozhraní API Cassandra tabulek ze Sparku.
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 4fbb86f4fbda9b8e521f7465bb8bb3d18602ca13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60894182"
 ---
 # <a name="aggregate-operations-on-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Agregační operace s tabulkami rozhraní API Cassandra služby Azure Cosmos DB ze Sparku 
@@ -20,7 +20,7 @@ ms.locfileid: "60894182"
 Tento článek popisuje provádění základních agregačních operací s tabulkami rozhraní API Cassandra služby Azure Cosmos DB ze Sparku. 
 
 > [!NOTE]
-> Filtrování na straně serveru a agregace na straně serveru není aktuálně podporována v rozhraní API Azure Cosmos DB Cassandra.
+> Filtrování na straně serveru a agregace na straně serveru se v Azure Cosmos DB rozhraní API Cassandra aktuálně nepodporuje.
 
 ## <a name="cassandra-api-configuration"></a>Konfigurace rozhraní API Cassandra
 
@@ -67,39 +67,39 @@ booksDF.write
   .save()
 ```
 
-## <a name="count-operation"></a>Operace počítání
+## <a name="count-operation"></a>Operace Count
 
 
-### <a name="rdd-api"></a>RDD API
+### <a name="rdd-api"></a>ROZHRANÍ API PRO RDD
 
 ```scala
 sc.cassandraTable("books_ks", "books").count
 ```
 
-**Výstup:**
+**Výkonem**
 ```
 res48: Long = 5
 ```
 
-### <a name="dataframe-api"></a>Rozhraní API datového rámce
+### <a name="dataframe-api"></a>Rozhraní API pro dataframe
 
-Počet datových rámců není aktuálně podporován.  Ukázka níže ukazuje, jak spustit počet datových snímků po zachování datového rámce do paměti jako řešení.
+Počet pro datový rámec není v současné době podporován.  Následující ukázka ukazuje, jak spustit počet datového rámce po trvalém uložení datového rámce do paměti jako alternativní řešení.
 
-Zvolte [možnost úložiště]( https://spark.apache.org/docs/2.2.0/rdd-programming-guide.html#which-storage-level-to-choose) z následujících dostupných možností, abyste se vyhnuli problémům s "nedostatekpaměti":
+Z následujících dostupných možností vyberte [možnost úložiště]( https://spark.apache.org/docs/2.2.0/rdd-programming-guide.html#which-storage-level-to-choose) , aby nedocházelo k problémům s nedostatkem paměti:
 
-* MEMORY_ONLY: Toto je výchozí možnost úložiště. Ukládá RDD jako deserializované objekty Jazyka Java v JVM. Pokud rdd nevejde do paměti, některé oddíly nebudou uloženy do mezipaměti a jsou přepočítány za běhu pokaždé, když jsou potřeba.
+* MEMORY_ONLY: Toto je výchozí možnost úložiště. Ukládá RDD jako deserializovatelné objekty Java v JVM. Pokud se RDD nevejde do paměti, některé oddíly nebudou ukládány do mezipaměti a při každém jejich vypočítávání se budou přepočítat průběžně.
 
-* MEMORY_AND_DISK: Ukládá RDD jako rekonstruované objekty Jazyka Java v JVM. Pokud rdd nevejde do paměti, uložte oddíly, které se nevejdou na disk a kdykoli je to nutné, přečtěte si je z umístění, které jsou uloženy.
+* MEMORY_AND_DISK: ukládá RDD jako deserializovatelné objekty Java v JVM. Pokud se RDD nevejde do paměti, ukládejte oddíly, které se na disk nevejdou, a kdykoli je to potřeba, přečtěte si je z umístění, které jsou uložené.
 
-* MEMORY_ONLY_SER (Java/Scala): Ukládá RDD jako serializované objekty Java - jednobajtové pole na oddíl. Tato možnost je prostorově efektivní ve srovnání s rekonstruované objekty, zejména při použití rychlé serializátoru, ale více náročné na procesor ke čtení.
+* MEMORY_ONLY_SER (Java/Scala): ukládá RDD jako serializovaných objektů Java – jedno bajtové pole na oddíl. Tato možnost je při porovnání s deserializovanými objekty velmi efektivní, zejména při použití rychlého serializátoru, ale čtení je náročné na procesor.
 
-* MEMORY_AND_DISK_SER (Java/Scala): Tato možnost úložiště je jako MEMORY_ONLY_SER, jediný rozdíl je, že rozlije oddíly, které se nevejdou do paměti disku namísto jejich recomputingu, když jsou potřeba.
+* MEMORY_AND_DISK_SER (Java/Scala): Tato možnost úložiště je jako MEMORY_ONLY_SER, jediným rozdílem je to, že při jejich nutnosti přechází oddíly, které se nevejdou do paměti disku, místo jejich zpracování.
 
-* DISK_ONLY: Uloží oddíly RDD pouze na disk.
+* DISK_ONLY: ukládá oddíly RDD jenom na disku.
 
-* MEMORY_ONLY_2, MEMORY_AND_DISK_2...: Stejné jako výše uvedené úrovně, ale replikuje každý oddíl ve dvou uzlech clusteru.
+* MEMORY_ONLY_2, MEMORY_AND_DISK_2...: stejné jako úrovně výše, ale replikuje každý oddíl na dva uzly clusteru.
 
-* OFF_HEAP (experimentální): Podobně jako MEMORY_ONLY_SER, ale ukládá data do paměti mimo haldu a vyžaduje, aby byla předem povolena paměť off-haldy. 
+* OFF_HEAP (experimentální): podobná MEMORY_ONLY_SER, ale ukládá data do paměti mimo haldu a vyžaduje, aby byla paměť mimo haldu povolená před časem. 
 
 ```scala
 //Workaround
@@ -136,18 +136,18 @@ select count(*) from books_vw;
 
 ## <a name="average-operation"></a>Průměrná operace
 
-### <a name="rdd-api"></a>RDD API
+### <a name="rdd-api"></a>ROZHRANÍ API PRO RDD
 
 ```scala
 sc.cassandraTable("books_ks", "books").select("book_price").as((c: Double) => c).mean
 ```
 
-**Výstup:**
+**Výkonem**
 ```
 res24: Double = 16.016000175476073
 ```
 
-### <a name="dataframe-api"></a>Rozhraní API datového rámce
+### <a name="dataframe-api"></a>Rozhraní API pro dataframe
 
 ```scala
 spark
@@ -159,7 +159,7 @@ spark
   .show
 ```
 
-**Výstup:**
+**Výkonem**
 ```
 +------------------+
 |   avg(book_price)|
@@ -173,25 +173,25 @@ spark
 ```sql
 select avg(book_price) from books_vw;
 ```
-**Výstup:**
+**Výkonem**
 ```
 16.016000175476073
 ```
 
-## <a name="min-operation"></a>Min provoz
+## <a name="min-operation"></a>Minimální operace
 
-### <a name="rdd-api"></a>RDD API
+### <a name="rdd-api"></a>ROZHRANÍ API PRO RDD
 
 ```scala
 sc.cassandraTable("books_ks", "books").select("book_price").as((c: Float) => c).min
 ```
 
-**Výstup:**
+**Výkonem**
 ```
 res31: Float = 11.33
 ```
 
-### <a name="dataframe-api"></a>Rozhraní API datového rámce
+### <a name="dataframe-api"></a>Rozhraní API pro dataframe
 
 ```scala
 spark
@@ -203,7 +203,7 @@ spark
   .show
 ```
 
-**Výstup:**
+**Výkonem**
 ```
 +---------------+
 |min(book_price)|
@@ -218,20 +218,20 @@ spark
 select min(book_price) from books_vw;
 ```
 
-**Výstup:**
+**Výkonem**
 ```
 11.33
 ```
 
-## <a name="max-operation"></a>Maximální provoz
+## <a name="max-operation"></a>Maximální operace
 
-### <a name="rdd-api"></a>RDD API
+### <a name="rdd-api"></a>ROZHRANÍ API PRO RDD
 
 ```scala
 sc.cassandraTable("books_ks", "books").select("book_price").as((c: Float) => c).max
 ```
 
-### <a name="dataframe-api"></a>Rozhraní API datového rámce
+### <a name="dataframe-api"></a>Rozhraní API pro dataframe
 
 ```scala 
 spark
@@ -243,7 +243,7 @@ spark
   .show
 ```
 
-**Výstup:**
+**Výkonem**
 ```
 +---------------+
 |max(book_price)|
@@ -257,25 +257,25 @@ spark
 ```sql
 select max(book_price) from books_vw;
 ```
-**Výstup:**
+**Výkonem**
 ```
 22.45
 ```
 
-## <a name="sum-operation"></a>Operace součtu
+## <a name="sum-operation"></a>Operace Sum
 
-### <a name="rdd-api"></a>RDD API
+### <a name="rdd-api"></a>ROZHRANÍ API PRO RDD
 
 ```scala
 sc.cassandraTable("books_ks", "books").select("book_price").as((c: Float) => c).sum
 ```
 
-**Výstup:**
+**Výkonem**
 ```
 res46: Double = 80.08000087738037
 ```
 
-### <a name="dataframe-api"></a>Rozhraní API datového rámce
+### <a name="dataframe-api"></a>Rozhraní API pro dataframe
 
 ```scala
 spark
@@ -286,7 +286,7 @@ spark
   .agg(sum("book_price"))
   .show
 ```
-**Výstup:**
+**Výkonem**
 ```
 +-----------------+
 |  sum(book_price)|
@@ -301,28 +301,28 @@ spark
 select sum(book_price) from books_vw;
 ```
 
-**Výstup:**
+**Výkonem**
 ```
 80.08000087738037
 ```
 
-## <a name="top-or-comparable-operation"></a>Horní nebo srovnatelný provoz
+## <a name="top-or-comparable-operation"></a>Horní nebo porovnatelné operace
 
-### <a name="rdd-api"></a>RDD API
+### <a name="rdd-api"></a>ROZHRANÍ API PRO RDD
 
 ```scala
 val readCalcTopRDD = sc.cassandraTable("books_ks", "books").select("book_name","book_price").sortBy(_.getFloat(1), false)
 readCalcTopRDD.zipWithIndex.filter(_._2 < 3).collect.foreach(println)
 //delivers the first top n items without collecting the rdd to the driver.
 ```
-**Výstup:**
+**Výkonem**
 ```
 (CassandraRow{book_name: A sign of four, book_price: 22.45},0)
 (CassandraRow{book_name: The adventures of Sherlock Holmes, book_price: 19.83},1)
 (CassandraRow{book_name: The memoirs of Sherlock Holmes, book_price: 14.22},2)
 readCalcTopRDD: org.apache.spark.rdd.RDD[com.datastax.spark.connector.CassandraRow] = MapPartitionsRDD[430] at sortBy at command-2371828989676374:1
 ```
-### <a name="dataframe-api"></a>Rozhraní API datového rámce
+### <a name="dataframe-api"></a>Rozhraní API pro dataframe
 
 ```scala
 import org.apache.spark.sql.functions._
@@ -341,7 +341,7 @@ readBooksDF.explain
 readBooksDF.show
 ```
 
-**Výstup:**
+**Výkonem**
 ```
 == Physical Plan ==
 TakeOrderedAndProject(limit=3, orderBy=[book_price#1840 DESC NULLS LAST], output=[book_name#1839,book_price#1840])
@@ -366,6 +366,6 @@ select book_name,book_price from books_vw order by book_price desc limit 3;
 
 ## <a name="next-steps"></a>Další kroky
 
-Chcete-li provádět operace kopírování tabulky, přečtěte si následující informace:
+Chcete-li provést operace kopírování tabulky, přečtěte si:
 
 * [Operace kopírování tabulky](cassandra-spark-table-copy-ops.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect Synchronizační služba Správce operací | Dokumenty společnosti Microsoft
-description: Seznamte se s kartou Operace ve Správci synchronizačních služeb pro Azure AD Connect.
+title: Operace Synchronization Service Manager Azure AD Connect | Microsoft Docs
+description: Pochopte kartu operace v Synchronization Service Manager pro Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,36 +18,36 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 474000d1d4d7e1358682d1421125d482e3782049
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60381388"
 ---
-# <a name="using-the-sync-service-manager-operations-tab"></a>Použití karty Synchronizační správce provozu Operations
+# <a name="using-the-sync-service-manager-operations-tab"></a>Použití karty synchronizace Service Manager operací
 
-![Správce synchronizačních služeb](./media/how-to-connect-sync-service-manager-ui-operations/operations.png)
+![Synchronizovat Service Manager](./media/how-to-connect-sync-service-manager-ui-operations/operations.png)
 
-Karta Operace zobrazuje výsledky nejnovějších operací. Tato karta je klíčem k pochopení a řešení problémů.
+Na kartě operace se zobrazují výsledky z posledních operací. Tato karta je klíčem pro pochopení a řešení problémů.
 
-## <a name="understand-the-information-visible-in-the-operations-tab"></a>Vysvětlení informací viditelných na kartě Operace
-Horní polovina zobrazuje všechny běží v chronologickém pořadí. Ve výchozím nastavení protokol operací uchovává informace o posledních sedmi dnech, ale toto nastavení lze změnit pomocí [plánovače](how-to-connect-sync-feature-scheduler.md). Chcete vyhledat jakýkoli běh, který nezobrazuje stav úspěchu. Řazení můžete změnit kliknutím na záhlaví.
+## <a name="understand-the-information-visible-in-the-operations-tab"></a>Pochopení informací zobrazených na kartě operace
+Horní polovina zobrazuje všechna spuštění v chronologickém pořadí. Ve výchozím nastavení protokol operací uchovává informace o posledních sedmi dnech, ale toto nastavení lze změnit pomocí [plánovače](how-to-connect-sync-feature-scheduler.md). Chcete vyhledat jakékoli spuštění, které nezobrazuje stav úspěch. Řazení můžete změnit kliknutím na záhlaví.
 
-Sloupec **Stav** je nejdůležitější informace a zobrazuje nejzávažnější problém pro spuštění. Zde je stručný přehled nejběžnějších stavů v pořadí podle priority prozkoumat (kde * uveďte několik možných chybových řetězců).
+Sloupec **Status (stav** ) obsahuje nejdůležitější informace a zobrazuje nejzávažnější problém pro běh. Tady je stručný přehled nejběžnějších stavů v pořadí podle priority k prozkoumání (kde * značí několik možných chybových řetězců).
 
 | Status | Poznámka |
 | --- | --- |
-| zastaveno-\* |Spuštění nelze dokončit. Například pokud je vzdálený systém vypnutý a nelze jej kontaktovat. |
-| limit zastavené chyby |Existuje více než 5 000 chyb. Spuštění bylo automaticky zastaveno z důvodu velkého počtu chyb. |
-| dokončeno-\*-chyby |Spuštění bylo dokončeno, ale existují chyby (méně než 5 000), které by měly být prošetřeny. |
-| dokončeno-\*-varování |Spuštění bylo dokončeno, ale některá data nejsou v očekávaném stavu. Pokud máte chyby, pak tato zpráva je obvykle pouze příznakem. Dokud nevyřešíte chyby, neměli byste prošetřovávat upozornění. |
+| ukončen\* |Spuštění se nepovedlo dokončit. Například pokud je vzdálený systém mimo provoz a nelze ho kontaktovat. |
+| zastaveno – limit chyby |Došlo k více než 5 000 chybám. Běh se automaticky zastavil kvůli velkému počtu chyb. |
+| dokončeno –\*chyby |Běh se dokončil, ale vyskytly se chyby (méně než 5 000), které by se měly prozkoumat. |
+| dokončeno –\*upozornění |Běh se dokončil, ale některá data nejsou v očekávaném stavu. Pokud máte chyby, pak je tato zpráva obvykle jenom příznakem. Dokud nebudete řešit chyby, neměli byste prozkoumat upozornění. |
 | úspěch |Žádné problémy. |
 
-Když vyberete řádek, dolní aktualizace zobrazí podrobnosti o tomto spuštění. Úplně vlevo od dolní části, můžete mít seznam říká **Krok #**. Tento seznam se zobrazí pouze v případě, že máte v doménové struktuře více domén, kde je každá doména reprezentována krokem. Název domény naleznete pod nadpisem **Oddíl**. V části **Statistika synchronizace**najdete další informace o počtu zpracovaných změn. Kliknutím na odkazy získáte seznam změněných objektů. Pokud máte objekty s chybami, tyto chyby se zobrazí v části **Chyby synchronizace**.
+Když vyberete řádek, v dolní části aktualizace zobrazíte podrobnosti o daném spuštění. Vlevo od dolního okraje může být seznam, který říká **Krok #**. Tento seznam se zobrazí pouze v případě, že máte více domén v doménové struktuře, kde je každá doména reprezentována krokem. Název domény najdete pod **oddílem**nadpisu. V části **Statistika synchronizace**můžete najít další informace o počtu zpracovaných změn. Můžete kliknout na odkazy a získat tak seznam změněných objektů. Pokud máte objekty s chybami, zobrazí se tyto chyby v části **chyby synchronizace**.
 
-Další informace naleznete [v tématu poradce při potížích s objektem, který není synchronizován.](tshoot-connect-object-not-syncing.md)
+Další informace najdete v tématu [řešení potíží s objektem, který se nesynchronizuje](tshoot-connect-object-not-syncing.md) .
 
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si další informace o konfiguraci [synchronizace Azure AD Connect.](how-to-connect-sync-whatis.md)
+Přečtěte si další informace o konfiguraci [Azure AD Connect synchronizace](how-to-connect-sync-whatis.md) .
 
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).

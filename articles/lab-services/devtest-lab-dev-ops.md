@@ -1,6 +1,6 @@
 ---
-title: Integrace laboratoří Azure DevTest Labs a DevOps | Dokumenty společnosti Microsoft
-description: Zjistěte, jak používat testovací prostředí Azure DevTest Labs v rámci kanály průběžné integrace (CI)/ průběžné hodování (CD) v podnikovém prostředí.
+title: Integrace Azure DevTest Labs a DevOps | Microsoft Docs
+description: Naučte se používat cvičení Azure DevTest Labs v rámci kanálů průběžné integrace (CI)/průběžného doručování (CD) v podnikovém prostředí.
 services: devtest-lab
 documentationcenter: na
 author: spelluru
@@ -14,47 +14,47 @@ ms.topic: article
 ms.date: 06/10/2019
 ms.author: spelluru
 ms.openlocfilehash: 62c44bfea28d47d7c32aa7ef440a40d45c314683
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67078921"
 ---
-# <a name="integration-of-azure-devtest-labs-and-azure-devops"></a>Integrace laboratoří Azure DevTest Labs a Azure DevOps
-DevOps je metodika vývoje softwaru, která integruje vývoj softwaru (Dev) s operacemi (Ops) pro systém. Tento systém může poskytovat nové funkce, aktualizace a opravy v souladu s obchodními cíli. Tato metodika zahrnuje vše od navrhování nových funkcí na základě cílů, vzorců využití a zpětné vazby od zákazníků. k upevnění, obnovení a kalení systému, když nastanou problémy. Snadno identifikovanou součástí této metodiky je potrubí průběžné integrace (CI)/ průběžného dodávek (CD). Kanál CI/CD přebírá informace, kód a prostředky z potvrzení prostřednictvím řady kroků, které zahrnují vytváření, testování a nasazení k vytvoření systému. Tento článek se zaměřuje na různé způsoby efektivní využití testovacích prostředí v rámci kanálu v podnikovém prostředí. 
+# <a name="integration-of-azure-devtest-labs-and-azure-devops"></a>Integrace Azure DevTest Labs a Azure DevOps
+DevOps je metodologie vývoje softwaru, která integruje vývoj softwaru (dev) s operacemi (OPS) pro systém. Tento systém může poskytovat nové funkce, aktualizace a opravy v rámci sbližování s obchodními záměry. Tato metodika zahrnuje vše od navrhování nových funkcí na základě cílů, způsobů využití a zpětné vazby od zákazníků. pro opravu, obnovování a posílení zabezpečení systému, když dojde k problémům. Snadno identifikovaná součást této metodologie je kanál kontinuální integrace (CI)/průběžné doručování (CD). Kanál CI/CD přebírá informace, kód a prostředky z potvrzení prostřednictvím série kroků, které zahrnují sestavování, testování a nasazování, k vytvoření systému. Tento článek se zaměřuje na různé způsoby efektivního využití cvičení v rámci kanálu v podnikovém prostředí. 
 
-## <a name="benefits-of-using-labs-in-devops-workflow"></a>Výhody použití testovacích prostředí v pracovním postupu DevOps 
+## <a name="benefits-of-using-labs-in-devops-workflow"></a>Výhody používání cvičení v DevOps pracovním postupu 
 
-### <a name="focused-access"></a>Cílený přístup 
-Použití testovacího prostředí jako součásti umožňuje konkrétnímu ekosystému přidružit se k omezené skupině lidí. Tým nebo skupina, která pracuje ve společné oblasti nebo v určité funkci, jim obvykle bude přiřazeno testovací prostředí.   
+### <a name="focused-access"></a>Prioritní přístup 
+Použití testovacího prostředí jako komponenty umožňuje konkrétnímu ekosystému přidružit k omezené skupině lidí. Tým nebo skupina, které pracují v běžné oblasti nebo konkrétní funkci, mají obvykle přiřazený testovací prostředí.   
 
 ### <a name="infrastructure-replication-in-the-cloud"></a>Replikace infrastruktury v cloudu 
-Vývojář může rychle nastavit vývojový ekosystém, který obsahuje vývojové pole se zdrojovým kódem a nástroji. Vývojář může také vytvořit prostředí, které je téměř totožné s konfigurací produkčního prostředí. Pomáhá s rychlejším vývojem vnitřní smyčky. 
+Vývojář může rychle nastavit vývojový ekosystém, který obsahuje vývojové pole se zdrojovým kódem a nástroji. Vývojář může také vytvořit prostředí, které je téměř shodné s produkční konfigurací. Pomáhá s rychlejším vývojem vnitřních smyček. 
 
 ### <a name="pre-production"></a>Předprodukce 
-S testovací ho v kanálu CI/CD usnadňuje mít více různých předprodukčních prostředí nebo počítačů spuštěných současně pro asynchronní testování. Různé infrastruktury podpory, jako jsou agenti sestavení lze nasadit a spravovat v rámci testovacího prostředí. 
+Použití testovacího prostředí v kanálu CI/CD usnadňuje více různých předprodukčních prostředí nebo počítačů, které jsou spuštěny ve stejnou dobu pro asynchronní testování. V testovacím prostředí lze nasadit a spravovat různé infrastruktury podpory, například agenty sestavení. 
 
 ## <a name="devops-with-devtest-labs"></a>DevOps s DevTest Labs 
 
-### <a name="development--operation"></a>Vývoj / Provoz 
-Testovací prostředí by se mělo zaměřit na tým, který pracuje v oblasti funkcí. Toto společné fokus umožňuje sdílení prostředků specifických pro danou oblast, jako jsou nástroje, skripty nebo šablony Správce prostředků. Umožňuje rychlejší změny a zároveň omezuje negativní účinky na menší skupinu. Tyto sdílené prostředky umožňují vývojáři vytvářet vývojové virtuální počítače se všemi potřebnými kódy, nástroji a konfigurací. Mohou být vytvořeny buď dynamicky, nebo mají systém, který vytváří základní bitové kopie s přizpůsobením. Vývojář může nejen vytvářet virtuální počítače, ale taky můžou vytvářet prostředí DevTest Labs na základě nezbytných šablon k vytvoření příslušných prostředků Azure v testovacím prostředí. Jakékoli změny nebo destruktivní práce lze provést proti laboratornímu prostředí, aniž by to ovlivnilo někoho jiného. Zvažte scénář, kdy je produkt samostatný systém nainstalovaný v počítači zákazníka. V tomto scénáři DevTest Labs vylepšila vytvoření virtuálních počítačů, která zahrnuje instalaci dalšího softwaru pomocí artefaktů a konfigurace zákazníků před sestavením pro rychlejší testování kódu vnitřní smyčkou. 
+### <a name="development--operation"></a>Vývoj/operace 
+Testovací prostředí by se mělo zaměřit na tým, který pracuje v oblasti funkcí. Tento běžný fokus umožňuje sdílení prostředků specifických pro oblast, jako jsou nástroje, skripty nebo šablony Správce prostředků. Umožňuje rychlejší změny a zároveň omezuje negativní vliv na menší skupinu. Tyto sdílené prostředky umožňují vývojářům vytvářet vývojové virtuální počítače se všemi potřebnými kódy, nástroji a konfigurací. Je možné je vytvořit dynamicky nebo mít systém, který vytváří základní image s vlastními nastaveními. Jenom vývojáři můžou vytvářet virtuální počítače, ale také můžou vytvářet prostředí DevTest Labs na základě potřebných šablon k vytvoření vhodných prostředků Azure v testovacím prostředí. Jakékoli změny nebo destruktivní práci lze provést v testovacím prostředí, aniž by to mělo vliv na někoho jiného. Vezměte v úvahu scénář, ve kterém je produkt samostatný systém nainstalovaný na počítači zákazníka. V tomto scénáři DevTest Labs vylepšili vytváření virtuálních počítačů, včetně instalace dalšího softwaru pomocí artefaktů a konfigurací zákazníků předběžného sestavení pro rychlejší testování vnitřních smyček kódu. 
   
-## <a name="cicd-pipeline"></a>Ci/CD potrubí 
-Kanál CI/CD je jednou z důležitých součástí v DevOps, které přesunoukód z požadavku na přijetí změny dat vývojáře, integruje jej s existujícím kódem a nasazuje jej do produkčního ekosystému. Všechny zdroje nemusí být v laboratoři. Například hostitele Jenkins es a mimo testovací prostředí jako trvalejší prostředek. Tady jsou některé konkrétní příklady integrace testovacích prostředí do kanálu. 
+## <a name="cicd-pipeline"></a>Kanál CI/CD 
+Kanál CI/CD je jednou z důležitých součástí v DevOps, které přesouvají kód z žádosti o přijetí změn od vývojáře, integruje ho s existujícím kódem a nasadí ho do produkčního ekosystému. Všechny prostředky nemusejí být v testovacím prostředí. Například hostitel Jenkinse může být nastaven mimo testovací prostředí jako trvalý prostředek. Tady jsou některé konkrétní příklady integrace Labs do kanálu. 
 
 ### <a name="build"></a>Sestavení 
-Kanál sestavení je zaměřen na vytvoření balíčku součástí, které budou testovány společně, které mají být předány do kanálu vydání. Testovací prostředí může být součástí kanálu sestavení jako umístění pro agenty sestavení a další prostředky podpory. Schopnost dynamicky budovat infrastrukturu umožňuje větší kontrolu. Díky možnosti mít více prostředí v testovacím prostředí, každé sestavení lze spustit asynchronně při použití ID sestavení jako součást informací o prostředí jednoznačně identifikovat prostředky pro konkrétní sestavení.   
+Kanál sestavení se zaměřuje na vytvoření balíčku součástí, které se budou testovat společně s kanálem pro vydávání verzí. Laboratoře můžou být součástí kanálu sestavení jako umístění pro agenty sestavení a další prostředky podpory. Možnost dynamického sestavování infrastruktury umožňuje lepší kontrolu. S možností mít více prostředí v testovacím prostředí, každé sestavení lze spustit asynchronně při použití ID sestavení jako součást informací o prostředí k jednoznačné identifikaci prostředků na konkrétní sestavení.   
 
-U agentů sestavení zvyšuje možnost testovacího prostředí omezit přístup zabezpečení a snižuje možnost náhodného poškození.  
+Pro agenty sestavení je schopnost testovacího prostředí omezit přístup a snižuje se možnost náhodného poškození.  
 
 ### <a name="test"></a>Test 
-DevTest Labs umožňuje kanálu CI/CD automatizovat vytváření prostředků Azure (Virtuální počítače, prostředí), které lze použít pro automatizované a ruční testování. Virtuální počítače by být vytvořeny pomocí artefakty nebo vzorce, které používají informace z procesu sestavení k vytvoření různých vlastníkonfigurace nezbytné pro testování.   
+DevTest Labs umožňuje kanálu CI/CD automatizovat vytváření prostředků Azure (virtuálních počítačů, prostředí), které se dají použít k automatizovanému a ručnímu testování. Virtuální počítače by se vytvořily pomocí artefaktů nebo vzorců, které používají informace z procesu sestavení k vytvoření různých vlastních konfigurací nezbytných pro testování.   
 
 ### <a name="release"></a>Vydat 
-DevTest Labs se běžně používá pro ověření v části vydání před nasazením kódu. Je to podobné testování v části Sestavení. Produkční prostředky by neměly být nasazeny v rámci devTest Labs. 
+DevTest Labs se běžně používá pro ověření v oddílu Release před nasazením kódu. Je podobný testování v části sestavení. Produkční prostředky by se neměly nasazovat v rámci DevTest Labs. 
 
 ### <a name="customization"></a>Přizpůsobení 
-V Azure DevOps existují existující úkoly, které umožňují manipulaci s virtuálními počítači a prostředí v rámci konkrétních testovacích prostředí. Zatímco Služby Azure DevOps jsou jedním ze způsobů správy kanálu CI/CD, můžete integrovat testovací prostředí do libovolného systému, který podporuje možnost volat api REST, spouštět skripty PowerShellu nebo používat Azure CLI. 
+V Azure DevOps existují úkoly, které umožňují manipulaci s virtuálními počítači a prostředími v rámci konkrétní laboratoře. I když Azure DevOps Services máte jeden ze způsobů správy kanálu CI/CD, můžete testovací prostředí integrovat do libovolného systému, který podporuje možnost volání rozhraní REST API, spouštění skriptů PowerShellu nebo použití rozhraní příkazového řádku Azure CLI. 
 
-Zatímco někteří správci kanálu CI/CD mají existující moduly plug-in s otevřeným zdrojovým kódem, které můžou spravovat prostředky v rámci Azure a DevTest Labs. Možná budete muset použít některé vlastní skriptování, aby vyhovovaly konkrétním potřebám kanálu.  S ohledem na to při provádění úlohy instanční objekt se používá s příslušnou roli získat přístup k testovacímu prostředí. Instanční objekt obvykle potřebuje přístup role přispěvatele do testovacího prostředí. Další informace najdete [v tématu Integrace Azure DevTests Labs do vašeho Azure DevOps průběžné integrace a doručování kanálu](devtest-lab-integrate-ci-cd-vsts.md). 
+I když někteří manažeři kanálu CI/CD mají existující Open Source moduly plug-in, které mohou spravovat prostředky v rámci Azure a DevTest Labs. K přizpůsobení konkrétních potřeb kanálu budete možná muset použít některé vlastní skriptování.  V takovém případě se při provádění úlohy používá instanční objekt s odpovídající rolí k získání přístupu k testovacímu prostředí. Instanční objekt obvykle potřebuje přístup k testovacímu prostředí role přispěvatele. Další informace najdete v tématu [Integrace Azure DevTests Labs do služby Azure DevOps Continuous Integration a Delivery Pipeline](devtest-lab-integrate-ci-cd-vsts.md). 
  

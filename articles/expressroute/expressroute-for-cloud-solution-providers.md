@@ -1,6 +1,6 @@
 ---
-title: ExpressRoute pro poskytovatele cloudových řešení – Azure | Dokumenty společnosti Microsoft
-description: Tento článek obsahuje informace pro poskytovatele cloudových řešení, kteří chtějí začlenit služby Azure a ExpressRoute do svých nabídek.
+title: ExpressRoute pro poskytovatele Cloud Solution Provider – Azure | Microsoft Docs
+description: Tento článek poskytuje informace pro poskytovatele cloudových řešení, které chtějí začlenit služby Azure a ExpressRoute do jejich nabídek.
 services: expressroute
 author: richcar
 ms.service: expressroute
@@ -9,10 +9,10 @@ ms.date: 10/10/2016
 ms.author: ricarlse
 ms.custom: seodec18
 ms.openlocfilehash: a3bd48f32dfcee1a666ff842cfcab2384a5459ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67849266"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>Azure ExpressRoute pro poskytovatele Cloud Solution Provider

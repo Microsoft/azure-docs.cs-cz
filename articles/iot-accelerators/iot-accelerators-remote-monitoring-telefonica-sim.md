@@ -1,6 +1,6 @@
 ---
-title: Integrace dat SIM do řešení vzdáleného monitorování – Azure| Dokumenty společnosti Microsoft
-description: Tento článek popisuje, jak integrovat data telefónica SIM do řešení vzdáleného monitorování.
+title: Integrace dat SIM do řešení vzdáleného monitorování – Azure | Microsoft Docs
+description: Tento článek popisuje, jak integrovat data Telefónica SIM do řešení vzdáleného monitorování.
 author: hegate
 manager: ''
 ms.author: hegate
@@ -9,17 +9,17 @@ services: iot-accelerators
 ms.date: 05/15/2018
 ms.topic: conceptual
 ms.openlocfilehash: b07e21131d9560a49d99644525835ac5ee3bac9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "61442209"
 ---
 # <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>Integrace dat SIM do řešení vzdáleného monitorování
 
-Zařízení IoT se často připojují ke cloudu pomocí SIM karty, která jim umožňuje odesílat datové toky odkudkoli. Řešení vzdáleného monitorování Azure IoT umožňuje integraci dat spravovaného připojení IoT, takže operátoři můžou také sledovat stav zařízení prostřednictvím dat poskytovaných SIM kartou IoT.
+Zařízení IoT se často připojují ke cloudu pomocí SIM karty, která umožňuje odesílat datové proudy odkudkoli. Řešení vzdáleného monitorování Azure IoT umožňuje integrovat data o připojení spravovaná službou IoT, takže operátoři můžou sledovat stav zařízení i prostřednictvím dat poskytovaných SIM kartou IoT.
 
-Vzdálené monitorování poskytuje imforaci integrace s telefónica IoT connectivity, což umožňuje zákazníkům pomocí platformy IoT Connectivity Platform synchronizovat data připojení zařízení SI s jejich řešeními. Toto řešení lze rozšířit na podporu dalších poskytovatelů připojení IoT prostřednictvím [úložiště](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)GitHub .
+Vzdálené monitorování zajišťuje integraci s připojením Telefónica IoT a umožňuje zákazníkům, kteří využívají svou platformu pro připojení IoT, synchronizovat data SIMs připojení zařízení k jejich řešení. Toto řešení se dá rozšířit tak, aby podporovalo jiné poskytovatele připojení IoT prostřednictvím [úložiště](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)GitHub.
 
 V tomto kurzu se naučíte:
 
@@ -27,48 +27,48 @@ V tomto kurzu se naučíte:
 * Zobrazení telemetrie v reálném čase
 * Zobrazit data SIM
 
-## <a name="telefnica-iot-integration-setup"></a>Nastavení integrace Telefónica IoT
+## <a name="telefnica-iot-integration-setup"></a>Nastavení integrace IoT Telefónica
 
 ### <a name="prerequisites"></a>Požadavky
 
-Tato další funkce vzdáleného monitorování je aktuálně ve verzi Preview. Chcete-li synchronizovat data o připojení do řešení vzdáleného monitorování Azure, postupujte takto:
+Tato další funkce vzdáleného monitorování je momentálně ve verzi Preview. K synchronizaci dat připojení do řešení vzdáleného monitorování Azure použijte tento postup:
 
-1. Vyplňte požadavek na [webu společnosti Telefónica](https://iot.telefonica.com/contact), vyberte možnost **Vzdálené monitorování Azure**, včetně vašich kontaktních údajů.
+1. Vyplňte žádost na [webu Telefónica's](https://iot.telefonica.com/contact), vyberte možnost **vzdálené monitorování Azure**, včetně vašich kontaktních dat.
 2. Telefónica aktivuje váš účet.
-3. Pokud ještě nejste klientem společnosti Telefónica a chcete si vychutnat tuto nebo jinou službu IoT Connectivity Cloud Ready, navštivte [stránky společnosti Telefónica](https://iot.telefonica.com/) a vyberte možnost **Připojení**.
+3. Pokud ještě nejste klientem Telefónica a chcete využívat tuto službu nebo jiné služby pro cloudové připojení IoT, přejděte na [Web Telefónica's](https://iot.telefonica.com/) a vyberte možnost **připojení**.
 
-### <a name="telefnica-sim-setup"></a>Telefónica NASTAVENÍ SIM karty
-Telefónica SIM & přidružení ID zařízení Azure Twin je založeno na vlastnosti "alias" aplikace Telefónica IoT SIM. 
+### <a name="telefnica-sim-setup"></a>Nastavení SIM Telefónica
+Telefónica SIM & přidružení ID zařízení v Azure je založené na vlastnosti "alias" Telefónica IoT SIM. 
 
-Přejděte na [portál Platformy pro připojení IoT Telefónica](https://m2m-movistar-es.telefonica.com/) > > inventář sim vyberte si SIM kartu a aktualizujte každou SIM "alias" pomocí požadovaného id zařízení Twin. Tento úkol lze provést také v hromadném režimu (viz uživatelské příručky platformy Telefónica IoT Connectivity Platform).
+Přejděte na [portál Telefónica IoT Connectivity Platform](https://m2m-movistar-es.telefonica.com/) > inventáře SIM > vyberte svou SIM kartu a aktualizujte jednotlivé SIM "alias" s požadovaným příznakem. Tato úloha se dá udělat taky v hromadném režimu (najdete v Telefónica uživatelských příručkách pro konektivitu IoT).
 
-Tento úkol lze provést také v hromadném režimu (viz uživatelské příručky platformy Telefónica IoT Connectivity Platform)
+Tato úloha se dá udělat taky v hromadném režimu (najdete v tématu uživatelské příručky k Telefónica IoT Connectivity Platform).
 
-![Telefónica Aktualizace](./media/iot-accelerators-remote-monitoring-telefonica-sim/telefonica_site.png)
+![Telefónica aktualizace](./media/iot-accelerators-remote-monitoring-telefonica-sim/telefonica_site.png)
 
-Chcete-li připojit zařízení ke vzdálenému monitorování, můžete sledovat tyto kurzy pomocí [c](iot-accelerators-connecting-devices-linux.md) nebo [uzlu](iot-accelerators-connecting-devices-node.md). 
+Pokud chcete zařízení připojit ke vzdálenému monitorování, můžete postupovat podle těchto kurzů pomocí [jazyka C](iot-accelerators-connecting-devices-linux.md) nebo [uzlu](iot-accelerators-connecting-devices-node.md). 
 
-## <a name="view-device-telemetry-and-sim-properties"></a>Zobrazení telemetrie zařízení a vlastností SIM karty
+## <a name="view-device-telemetry-and-sim-properties"></a>Zobrazení telemetrie zařízení a vlastností SIM
 
-Jakmile je váš účet Telefónica správně nakonfigurován a vaše zařízení je připojeno, můžete zobrazit podrobnosti o zařízení a data SIM karty.
+Jakmile je účet Telefónica správně nakonfigurovaný a vaše zařízení je připojené, můžete zobrazit podrobnosti o zařízení a data SIM.
 
-Jsou publikovány následující parametry připojení:
+Publikují se následující parametry připojení:
 
 * ICCID
 * IP adresa
-* Přítomnost v síti
-* Stav SIM karty
-* Umístění v síti
-* Spotřebovaný datový provoz
+* Přítomnost sítě
+* Stav SIM
+* Síťové umístění
+* Spotřebovaný přenos dat
 
 ![Řídicí panel](./media/iot-accelerators-remote-monitoring-telefonica-sim/dashboard.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když máte přehled o tom, jak integrovat data SIM do vzdáleného monitorování Azure IoT, tady jsou navrhované další kroky pro akcelerátory řešení:
+Teď, když máte přehled o tom, jak integrovat data z SIM do Azure IoT Remote Monitoring, je tady navržený další postup pro akcelerátory řešení:
 
-* [Správa řešení vzdáleného monitorování Azure IoT](quickstart-remote-monitoring-deploy.md)
+* [Provozování řešení vzdáleného monitorování Azure IoT](quickstart-remote-monitoring-deploy.md)
 * [Realizace pokročilého monitorování](iot-accelerators-remote-monitoring-monitor.md)
-* [Správa zařízení](iot-accelerators-remote-monitoring-manage.md)
+* [správu zařízení](iot-accelerators-remote-monitoring-manage.md)
 * [Řešení problémů se zařízeními](iot-accelerators-remote-monitoring-maintain.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Poradce při potížích s chybami při spuštění ve virtuálních počítačích Azure | Dokumenty společnosti Microsoft
-description: Tento článek pomáhá propojit s články k řešení chyb při spuštění ve virtuálních počítačích Azure.
+title: Řešení chyb při spuštění v Azure Virtual Machines | Microsoft Docs
+description: Tento článek vám pomůže s odkazy na články, které vám pomůžou vyřešit chyby při spuštění v Azure Virtual Machines.
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,17 +13,17 @@ ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: genli
 ms.openlocfilehash: 660c7fa0051654fd9b0012740ce7ed3ee1e91531
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71059169"
 ---
-# <a name="troubleshoot-azure-virtual-machines-boot-errors"></a>Poradce při potížích s chybami při spuštění virtuálních počítačů Azure
+# <a name="troubleshoot-azure-virtual-machines-boot-errors"></a>Řešení potíží s chybami při spuštění Azure Virtual Machines
 
-Tento článek uvádí běžné chyby při spuštění virtuálního počítače (VM) Windows v Microsoft Azure. Další informace o chybách naleznete v článcích v části **Chyby a řešení spouštění.**
+V tomto článku jsou uvedené běžné chyby při spuštění, které se můžou zobrazit při spuštění virtuálního počítače s Windows v Microsoft Azure. Další informace o chybách najdete v článcích v části **chyby spuštění a řešení** .
 
-## <a name="boot-errors-and-solutions"></a>Chyby a řešení zaváděcích systémů
+## <a name="boot-errors-and-solutions"></a>Chyby a řešení spouštění
 
 * [Chyby spuštění nástroje BitLocker](troubleshoot-bitlocker-boot-error.md) 
 * [Ve Windows se při spouštění zobrazuje Kontrola systému souborů](troubleshoot-check-disk-boot-error.md)
@@ -36,5 +36,5 @@ Tento článek uvádí běžné chyby při spuštění virtuálního počítače
 ## <a name="next-steps"></a>Další kroky
 
 - [Diagnostika spouštění](boot-diagnostics.md)
-- [Konzola sériového portu virtuálního zařízení](../windows/serial-console.md)
-- [Poradce při potížích s virtuálním počítačem se systémem Windows připojením disku operačního systému k virtuálnímu virtuálnímu počítače pro obnovení](../windows/troubleshoot-recovery-disks.md)
+- [Sériová konzola virtuálních počítačů](../windows/serial-console.md)
+- [Řešení potíží s virtuálním počítačem s Windows připojením disku s operačním systémem k virtuálnímu počítači pro obnovení](../windows/troubleshoot-recovery-disks.md)

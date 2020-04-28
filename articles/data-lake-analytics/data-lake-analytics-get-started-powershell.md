@@ -1,5 +1,5 @@
 ---
-title: Vytvoření & dotazu Azure Data Lake Analytics – PowerShell
+title: Vytvoření Azure Data Lake Analytics dotazů & – PowerShell
 description: Vytvořte pomocí Azure PowerShellu účet služby Azure Data Lake Analytics a odešlete úlohu U-SQL.
 ms.service: data-lake-analytics
 author: saveenr
@@ -9,17 +9,17 @@ ms.assetid: 8a4e901e-9656-4a60-90d0-d78ff2f00656
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.openlocfilehash: 8b176434ce450382cc6463e7d21d341a74581ed8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71316614"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>Začínáme s Azure Data Lake Analytics s využitím Azure PowerShellu
 
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Naučíte se, jak pomocí Azure PowerShellu vytvořit účty Azure Data Lake Analytics a následně odeslat a spustit úlohy U-SQL. Další informace o službě Data Lake Analytics najdete v [tématu Přehled Azure Data Lake Analytics](data-lake-analytics-overview.md).
+Naučíte se, jak pomocí Azure PowerShellu vytvořit účty Azure Data Lake Analytics a následně odeslat a spustit úlohy U-SQL. Další informace o Data Lake Analytics najdete v tématu [Azure Data Lake Analytics Overview](data-lake-analytics-overview.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -130,4 +130,4 @@ Export-AdlStoreItem -Account $adls -Path "/data.csv" -Destination "C:\data.csv"
 
 * Pokud chcete použít jiné podporované nástroje a zobrazit stejný kurz, klikněte na selektory karet v horní části stránky.
 * Pokud se chcete naučit jazyk U-SQL, informace najdete v tématu [Začínáme s jazykem U-SQL Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md).
-* Úkoly správy najdete v [tématu Správa Azure Data Lake Analytics pomocí portálu Azure](data-lake-analytics-manage-use-portal.md).
+* Informace o úlohách správy najdete v tématu [správa Azure Data Lake Analytics pomocí Azure Portal](data-lake-analytics-manage-use-portal.md).

@@ -1,6 +1,6 @@
 ---
-title: 'Ověřování koncových uživatelů: Rozhraní REST API s Azure Data Lake Storage Gen1 pomocí Azure Active Directory | Dokumenty společnosti Microsoft'
-description: Zjistěte, jak dosáhnout ověřování koncových uživatelů pomocí Azure Data Lake Storage Gen1 pomocí Azure Active Directory pomocí rozhraní REST API
+title: 'Ověřování koncových uživatelů: REST API s Azure Data Lake Storage Gen1 pomocí Azure Active Directory | Microsoft Docs'
+description: Naučte se, jak dosáhnout ověřování koncovými uživateli pomocí Azure Data Lake Storage Gen1 pomocí Azure Active Directory pomocí REST API
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 0ef65c23ee1bf4f064695779b71c8616427da204
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60877818"
 ---
-# <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Ověřování koncových uživatelů pomocí Azure Data Lake Storage Gen1 pomocí rozhraní REST API
+# <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Ověřování koncových uživatelů s Azure Data Lake Storage Gen1 pomocí REST API
 > [!div class="op_single_selector"]
 > * [Pomocí Javy](data-lake-store-end-user-authenticate-java-sdk.md)
 > * [Pomocí sady .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md)
@@ -27,20 +27,20 @@ ms.locfileid: "60877818"
 > 
 >  
 
-V tomto článku se dozvíte, jak pomocí rozhraní REST API provést ověřování koncových uživatelů s Azure Data Lake Storage Gen1. Ověřování mezi službami pomocí rozhraní Data Lake Storage Gen1 pomocí rozhraní REST API najdete v [tématu Ověřování mezi službami pomocí rozhraní AP úložiště datových jezer 1 pomocí rozhraní REST API](data-lake-store-service-to-service-authenticate-rest-api.md).
+V tomto článku se dozvíte, jak používat REST API k ověřování koncových uživatelů pomocí Azure Data Lake Storage Gen1. Informace o ověřování služby-služba pomocí Data Lake Storage Gen1 pomocí REST API najdete v tématu [ověřování služba-služba s Data Lake Storage Gen1 pomocí REST API](data-lake-store-service-to-service-authenticate-rest-api.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Vytvořte nativní aplikaci služby Azure Active Directory**. Kroky ověřování koncových uživatelů musíte provést [pomocí služby Data Lake Storage Gen1 pomocí služby Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md).
+* **Vytvořte Azure Active Directory "nativní" aplikaci**. Musíte dokončit kroky v části [ověřování koncového uživatele s Data Lake Storage Gen1 pomocí Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md).
 
-* **[cURL](https://curl.haxx.se/)**. Tento článek používá cURL k předvedení, jak provádět volání rozhraní REST API proti účtu Gen1 úložiště datového jezera.
+* **[kudrlinkou](https://curl.haxx.se/)**. V tomto článku se pomocí oblé předvádí způsob, jak REST API volání na účet Data Lake Storage Gen1.
 
 ## <a name="end-user-authentication"></a>Ověřování koncových uživatelů
-Ověřování koncových uživatelů je doporučený přístup, pokud chcete, aby se uživatel přihlásit k vaší aplikaci pomocí Azure AD. Vaše aplikace je schopna přistupovat k prostředkům Azure se stejnou úrovní přístupu jako přihlášený uživatel. Uživatel musí pravidelně zajišťovat svá pověření, aby vaše aplikace mohla udržovat přístup.
+Ověřování koncových uživatelů je doporučený postup, pokud chcete, aby se uživatel přihlásil k aplikaci pomocí Azure AD. Vaše aplikace bude mít přístup k prostředkům Azure se stejnou úrovní přístupu jako přihlášený uživatel. Uživatel musí zadat své přihlašovací údaje pravidelně, aby mohla vaše aplikace zachovat přístup.
 
-Výsledkem přihlášení koncového uživatele je, že vaše aplikace je uveden přístupový token a obnovovací token. Přístupový token získá připojené ke každému požadavku na Data Lake Storage Gen1 nebo Data Lake Analytics a je platný po dobu jedné hodiny ve výchozím nastavení. Obnovovací token lze použít k získání nového přístupového tokenu a je platný ve výchozím nastavení až dva týdny, pokud se používá pravidelně. Pro přihlášení koncového uživatele můžete použít dva různé přístupy.
+Výsledkem přihlášení koncového uživatele je, že aplikace má přístup k přístupovému tokenu a obnovovacímu tokenu. Přístupový token se připojí ke všem žádostem provedeným na Data Lake Storage Gen1 nebo Data Lake Analytics a ve výchozím nastavení platí pro jednu hodinu. Aktualizační token se dá použít k získání nového přístupového tokenu a ve výchozím nastavení je platný až pro dva týdny, pokud se pravidelně používá. Pro přihlášení koncového uživatele můžete použít dva různé přístupy.
 
 V tomto scénáři aplikace vyzve uživatele k přihlášení a všechny operace se provádějí v kontextu uživatele. Proveďte následující kroky:
 
@@ -49,13 +49,13 @@ V tomto scénáři aplikace vyzve uživatele k přihlášení a všechny operace
         https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<APPLICATION-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
 
    > [!NOTE]
-   > \<REDIRECT-URI&gt; musí být zakódovaný, aby se dal použít jako adresa URL. Takže pro https://localhost, `https%3A%2F%2Flocalhost`použití )
+   > \<REDIRECT-URI&gt; musí být zakódovaný, aby se dal použít jako adresa URL. Takže pro https://localhost, použití `https%3A%2F%2Flocalhost`)
 
     Pro účely tohoto kurzu můžete ve výše zobrazené adrese URL nahradit zástupné hodnoty a vložit ji do adresního řádku webového prohlížeče. Budete přesměrováni na ověření pomocí přihlášení Azure. Po úspěšném přihlášení se zobrazí v adresním řádku prohlížeče odpověď. Odpověď bude mít tento formát:
 
         http://localhost/?code=<AUTHORIZATION-CODE>&session_state=<GUID>
 
-2. Zaznamenejte autorizační kód z odpovědi. V tomto kurzu můžete zkopírovat autorizační kód z adresního řádku webového prohlížeče a předat jej v požadavku POST koncovému bodu tokenu, jak je znázorněno v následujícím fragmentu:
+2. Zaznamenejte autorizační kód z odpovědi. Pro účely tohoto kurzu můžete zkopírovat autorizační kód z panelu Adresa ve webovém prohlížeči a předat ho do koncového bodu tokenu v požadavku POST, jak je znázorněno v následujícím fragmentu kódu:
 
         curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token \
         -F redirect_uri=<REDIRECT-URI> \
@@ -69,11 +69,11 @@ V tomto scénáři aplikace vyzve uživatele k přihlášení a všechny operace
    > 
    > 
 
-3. Odpověď je objekt JSON, `"access_token": "<ACCESS_TOKEN>"`který obsahuje přístupový token (například) a `"refresh_token": "<REFRESH_TOKEN>"`obnovovací token (například). Vaše aplikace používá přístupový token při přístupu k Azure Data Lake Storage Gen1 a obnovovací token získat jiný přístupový token při vypršení platnosti přístupového tokenu.
+3. Odpověď je objekt JSON, který obsahuje přístupový token (například `"access_token": "<ACCESS_TOKEN>"`) a obnovovací token (například `"refresh_token": "<REFRESH_TOKEN>"`). Vaše aplikace používá přístupový token při přístupu k Azure Data Lake Storage Gen1 a aktualizačnímu tokenu k získání dalšího přístupového tokenu, když vyprší platnost přístupového tokenu.
 
         {"token_type":"Bearer","scope":"user_impersonation","expires_in":"3599","expires_on":"1461865782","not_before":    "1461861882","resource":"https://management.core.windows.net/","access_token":"<REDACTED>","refresh_token":"<REDACTED>","id_token":"<REDACTED>"}
 
-4. Po vypršení platnosti přístupového tokenu můžete požádat o nový přístupový token pomocí obnovovacího tokenu, jak je znázorněno v následujícím fragmentu:
+4. Po vypršení přístupového tokenu můžete požádat o nový přístupový token pomocí obnovovacího tokenu, jak je znázorněno v následujícím fragmentu kódu:
 
         curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
              -F grant_type=refresh_token \
@@ -84,8 +84,8 @@ V tomto scénáři aplikace vyzve uživatele k přihlášení a všechny operace
 Další informace o interaktivním ověřování uživatelů najdete v tématu [Tok poskytování autorizačních kódů](https://msdn.microsoft.com/library/azure/dn645542.aspx).
 
 ## <a name="next-steps"></a>Další kroky
-V tomto článku jste se dozvěděli, jak používat ověřování mezi službami k ověření pomocí Azure Data Lake Storage Gen1 pomocí rozhraní REST API. Teď se můžete podívat na následující články, které popisují, jak používat rozhraní REST API pro práci s Azure Data Lake Storage Gen1.
+V tomto článku jste zjistili, jak používat ověřování služby pro službu k ověřování pomocí Azure Data Lake Storage Gen1 pomocí REST API. Nyní se můžete podívat na následující články, které vás seznámí s postupem použití REST API k práci s Azure Data Lake Storage Gen1.
 
-* [Operace správy účtů v zařízení Data Lake Storage Gen1 pomocí rozhraní REST API](data-lake-store-get-started-rest-api.md)
-* [Datové operace na Data Lake Storage Gen1 pomocí rozhraní REST API](data-lake-store-data-operations-rest-api.md)
+* [Operace správy účtů u Data Lake Storage Gen1 pomocí REST API](data-lake-store-get-started-rest-api.md)
+* [Operace s daty při Data Lake Storage Gen1 pomocí REST API](data-lake-store-data-operations-rest-api.md)
 

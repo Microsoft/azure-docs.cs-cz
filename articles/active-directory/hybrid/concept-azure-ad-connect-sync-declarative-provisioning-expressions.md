@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Deklarativní výrazy zřizování | Dokumenty společnosti Microsoft'
-description: Vysvětluje deklarativní zřizování výrazy.
+title: 'Azure AD Connect: výrazy deklarativního zřizování | Microsoft Docs'
+description: Vysvětluje deklarativní zřizovací výrazy.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,87 +17,87 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdc7c9dba49bf37db1f039d43b0450c65884c74b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60245504"
 ---
-# <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Synchronizace azure a připojení služby Azure AD: principy výrazů deklarativního zřizování
-Synchronizace Azure AD Connect vychází z deklarativního zřizování, které bylo poprvé zavedeno ve Správci identit forefront 2010. Umožňuje implementovat obchodní logiku integrace úplné identity bez nutnosti psát kompilovaný kód.
+# <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect synchronizace: principy deklarativních zřizovacích výrazů
+Azure AD Connect synchronizovat buildy na deklarativní zřizování poprvé představené v Forefront Identity Manageru 2010. Umožňuje implementovat kompletní obchodní logiku pro integraci identit bez nutnosti psaní zkompilovaného kódu.
 
-Podstatnou součástí deklarativního zřizování je jazyk výrazu používaný v tocích atributů. Použitý jazyk je podmnožinou microsoft® Visual Basic® pro aplikace (VBA). Tento jazyk se používá v sadě Microsoft Office a uživatelé se zkušenostmi s VBScript emituje také. Deklarativní zřizování výraz jazyka používá pouze funkce a není strukturovaný jazyk. Neexistují žádné metody nebo příkazy. Funkce jsou místo toho vnořeny pro expresiní toku programu.
+Důležitou součástí deklarativního zřizování je jazyk výrazů, který se používá v tocích atributů. Použitý jazyk je podmnožinou sady Microsoft® Visual Basic® for Applications (VBA). Tento jazyk se používá v systém Microsoft Office a uživatelé, kteří mají zkušenosti s jazykem VBScript, ho také rozpoznají. Jazyk deklarativního zřizování výrazů používá pouze funkce a není strukturovaným jazykem. Neexistují žádné metody ani příkazy. Funkce jsou místo toho vnořené do programu Express Flow.
 
-Další podrobnosti [najdete v tématu Vítá vás odkaz na jazyk jazyka Visual Basic for Applications pro Office 2013](https://msdn.microsoft.com/library/gg264383.aspx).
+Další podrobnosti najdete v tématu [Vítá vás jazyk Visual Basic for Application Reference k jazyku pro Office 2013](https://msdn.microsoft.com/library/gg264383.aspx).
 
-Atributy jsou silně zadali. Funkce přijímá pouze atributy správného typu. To je také malá a velká písmena. Názvy funkcí i názvy atributů musí mít vlastní velikost písmen nebo je vyvolána chyba.
+Atributy jsou silného typu. Funkce přijímá pouze atributy správného typu. Rozlišuje také velká a malá písmena. Názvy funkcí i názvy atributů musí mít správné velikosti písmen nebo je vyvolána chyba.
 
-## <a name="language-definitions-and-identifiers"></a>Definice a identifikátory jazyků
-* Funkce mají název následovaný argumenty v závorkách: FunctionName(argument 1, argument N).
-* Atributy jsou označeny hranami: [attributeName]
-* Parametry jsou označeny znaménky procent: %ParameterName%
-* Řetězcové konstanty jsou obklopeny uvozovkami: Například "Contoso" (Poznámka: musí používat rovné uvozovky "" a ne inteligentní uvozovky "")
-* Číselné hodnoty jsou vyjádřeny bez uvozovek a očekává se, že budou desítkové. Šestnáctkové hodnoty jsou předponou &H. Například 98052, &HFF
-* Logické hodnoty jsou vyjádřeny konstantami: True, False.
-* Vestavěné konstanty a literály jsou vyjádřeny pouze jejich názvem: NULL, CRLF, IgnoreThisFlow
+## <a name="language-definitions-and-identifiers"></a>Jazykové definice a identifikátory
+* Funkce mají název následovaný argumenty v závorkách: název funkce (argument 1, argument N).
+* Atributy jsou označeny hranatými závorkami: [attributeName]
+* Parametry jsou identifikovány pomocí znaků procenta:% ParameterName%
+* Řetězcové konstanty jsou obklopené uvozovkami: například "contoso" (Poznámka: musí používat rovné uvozovky "" a ne typografické uvozovky "")
+* Číselné hodnoty se vyjadřují bez uvozovek a očekávají se jako desetinné číslo. Šestnáctkové hodnoty mají předponu &H. Například 98052 &HFF
+* Logické hodnoty jsou vyjádřeny konstantami: true, false.
+* Předdefinované konstanty a literály jsou vyjádřeny pouze pomocí jejich názvu: NULL, CRLF, IgnoreThisFlow
 
-### <a name="functions"></a>Funkce
-Deklarativní zřizování používá mnoho funkcí k povolení možnosti transformace hodnot atributů. Tyto funkce mohou být vnořeny tak, aby výsledek z jedné funkce byl předán do jiné funkce.
+### <a name="functions"></a>Functions
+Deklarativní zřizování používá mnoho funkcí k umožnění možnosti transformace hodnot atributů. Tyto funkce mohou být vnořené, takže výsledek z jedné funkce je předán do jiné funkce.
 
 `Function1(Function2(Function3()))`
 
-Kompletní seznam funkcí naleznete v [odkazu na funkci](reference-connect-sync-functions-reference.md).
+Úplný seznam funkcí najdete v [odkazu na funkci](reference-connect-sync-functions-reference.md).
 
 ### <a name="parameters"></a>Parametry
-Parametr je definován konektorem nebo správcem používajícím prostředí PowerShell. Parametry obvykle obsahují hodnoty, které se liší od systému k systému, například název domény, ve které se uživatel nachází. Tyto parametry lze použít v tocích atributů.
+Parametr je definován buď pomocí konektoru, nebo správcem pomocí prostředí PowerShell. Parametry obvykle obsahují hodnoty, které se liší od systému k systému, například název domény, ve které je uživatel umístěný. Tyto parametry lze použít v tocích atributů.
 
-Konektor služby Active Directory poskytl následující parametry pro pravidla příchozí synchronizace:
+Konektor služby Active Directory, který poskytuje následující parametry pro pravidla příchozí synchronizace:
 
 | Název parametru | Poznámka |
 | --- | --- |
-| Doména.Netbios |Netbios formát domény, která je právě importována, například FABRIKAMSALES |
-| doména.FQDN |Formát FQDN importované domény, například sales.fabrikam.com |
-| Doména.LDAP |Formát LDAP importované domény, například DC=sales,DC=fabrikam,DC=com |
-| Forest.Netbios |Netbios formát názvu doménové struktury, který je právě importován, například FABRIKAMCORP |
-| Doménové struktury.FQDN |Formát FQDN aktuálně importovaného názvu doménové struktury, například fabrikam.com |
-| Doménová struktura.LDAP |Formát LDAP aktuálně importovaného názvu doménové struktury, například DC=fabrikam,DC=com |
+| Doména. NetBIOS |Formát rozhraní NetBIOS aktuálně importované domény, například FABRIKAMSALES |
+| Doména. FQDN |Plně kvalifikovaný název domény aktuálně importované domény, například sales.fabrikam.com |
+| Doména. LDAP |Formát LDAP aktuálně importované domény, například DC = Sales, DC = Fabrikam, DC = com |
+| Doménová struktura. NetBIOS |Formát NetBIOS názvu doménové struktury, který se právě importuje, například FABRIKAMCORP |
+| Doménová struktura. plně kvalifikovaný název domény |Formát plně kvalifikovaného názvu domény, který se právě importuje, například fabrikam.com |
+| Doménová struktura. LDAP |Formát LDAP pro aktuálně importovaný název doménové struktury, například DC = Fabrikam, DC = com |
 
-Systém poskytuje následující parametr, který se používá k získání identifikátoru aktuálně spuštěného konektoru:  
+Systém poskytuje následující parametr, který slouží k získání identifikátoru aktuálně běžícího konektoru:  
 `Connector.ID`
 
-Zde je příklad, který naplní doménu atributu metaverse názvem netbios domény, ve které je uživatel umístěn:  
+Tady je příklad, který naplní doménu atributu Metaverse názvem domény pro rozhraní NetBIOS, kde se nachází uživatel:  
 `domain` <- `%Domain.Netbios%`
 
 ### <a name="operators"></a>Operátory
-Lze použít následující operátory:
+Můžete použít následující operátory:
 
-* **Porovnání**: <, <=, <>, =, >, >=
-* **Matematika**: +, \*-, , -
-* **Řetězec**: & (zřetězit)
-* **Logické**: && (a), || (nebo)
-* **Pořadí hodnocení**: ( )
+* **Porovnání**: <, <=,  <>, =, >, >=
+* **Matematické**: +,-, \*,-
+* **Řetězec**: & (zřetězení)
+* **Logický**:  &&  (a), | | ani
+* **Pořadí vyhodnocování**: ()
 
-Operátory jsou hodnoceny zleva doprava a mají stejnou prioritu hodnocení. To znamená, \* že (multiplikátor) není vyhodnocen před - (odčítání). 2\*(5+3) není stejný\*jako 2 5+3. Závorky ( ) se používají ke změně pořadí hodnocení, když pořadí hodnocení zleva doprava není vhodné.
+Operátory jsou vyhodnoceny zleva doprava a mají stejnou prioritu hodnocení. To znamená, že \* (násobitel) není vyhodnocen před-(odčítání). 2\*(5 + 3) není totéž jako 2\*5 + 3. Hranaté závorky () se používají ke změně pořadí vyhodnocování v případě, že levé a pravé pořadí vyhodnocení není vhodné.
 
-## <a name="multi-valued-attributes"></a>Atributy s více hodnotami
-Funkce mohou pracovat s atributy s jednou i s více hodnotami. Pro atributy s více hodnotami funkce pracuje přes každou hodnotu a použije stejnou funkci pro každou hodnotu.
+## <a name="multi-valued-attributes"></a>Vícehodnotových atributů
+Funkce mohou fungovat jak v atributu s jednou hodnotou, tak i s více hodnotami. U vícehodnotových atributů funkce funguje v každé hodnotě a použije stejnou funkci na každou hodnotu.
 
-Například:  
-`Trim([proxyAddresses])`Proveďte Trim každé hodnoty v proxyAddress atribut.  
-`Word([proxyAddresses],1,"@") & "@contoso.com"`Pro každou hodnotu @-signs , @contoso.comnahraďte doménu .  
-`IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])`Vyhledejte SIP-adresu a odeberte ji z hodnot.
+Příklad:  
+`Trim([proxyAddresses])`Proveďte oříznutí všech hodnot v atributu proxyAddress.  
+`Word([proxyAddresses],1,"@") & "@contoso.com"`U každé hodnoty s @-signhodnotou nahraďte doménu hodnotou. @contoso.com  
+`IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])`Vyhledejte adresu SIP a odeberte ji z hodnot.
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si další informace o modelu konfigurace v [principu deklarativní zřizování](concept-azure-ad-connect-sync-declarative-provisioning.md).
-* Podívejte se, jak se používá deklarativní zřizování out-of-box v [principu výchozí konfigurace](concept-azure-ad-connect-sync-default-configuration.md).
-* Podívejte se, jak provést praktickou změnu pomocí deklarativnízři v [jak provést změnu výchozí konfigurace](how-to-connect-sync-change-the-configuration.md).
+* Přečtěte si další informace o modelu konfigurace v tématu [Principy deklarativního zřizování](concept-azure-ad-connect-sync-declarative-provisioning.md).
+* Podívejte se, jak se v tématu [Principy výchozí konfigurace](concept-azure-ad-connect-sync-default-configuration.md)používá deklarativní zřizování.
+* Informace o tom, jak provést praktickou změnu pomocí deklarativního zajišťování, najdete v tématu [Postup provedení změny ve výchozí konfiguraci](how-to-connect-sync-change-the-configuration.md).
 
-**Přehledná témata**
+**Témata s přehledem**
 
-* [Synchronizace služby Azure AD Connect: Principy a přizpůsobení synchronizace](how-to-connect-sync-whatis.md)
+* [Azure AD Connect synchronizace: pochopení a přizpůsobení synchronizace](how-to-connect-sync-whatis.md)
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)
 
 **Referenční témata**
 
-* [Synchronizace azure apřipojení: odkaz na funkce](reference-connect-sync-functions-reference.md)
+* [Azure AD Connect Sync: Reference k funkcím](reference-connect-sync-functions-reference.md)
 

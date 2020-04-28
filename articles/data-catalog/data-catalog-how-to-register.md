@@ -1,81 +1,81 @@
 ---
-title: Registrace zdrojů dat v katalogu dat Azure
-description: Tento článek upozorňuje, jak zaregistrovat zdroje dat v Katalogu dat Azure, včetně polí metadat extrahovaných během registrace.
+title: Registrace zdrojů dat v Azure Data Catalog
+description: Tento článek popisuje, jak registrovat zdroje dat v Azure Data Catalog včetně polí metadat extrahovaných během registrace.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 0c5fdac7df41fec3a6206dbd78af74b7f1b58c7f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68736327"
 ---
-# <a name="register-data-sources-in-azure-data-catalog"></a>Registrace zdrojů dat v katalogu dat Azure
+# <a name="register-data-sources-in-azure-data-catalog"></a>Registrace zdrojů dat v Azure Data Catalog
 ## <a name="introduction"></a>Úvod
-Azure Data Catalog je plně spravovaná cloudová služba, která slouží jako systém registrace a zjišťování pro zdroje podnikových dat. Jinými slovy, katalog dat pomáhá lidem zjišťovat, chápat a používat zdroje dat a pomáhá organizacím získat větší hodnotu ze svých stávajících dat. Prvním krokem k tomu, aby byl zdroj dat zjistitelný prostřednictvím katalogu dat, je registrace tohoto zdroje dat.
+Azure Data Catalog je plně spravovaná cloudová služba, která slouží jako systém registrace a zjišťování pro podnikové zdroje dat. Jinými slovy Data Catalog pomáhá lidem zjišťovat, pochopit a používat zdroje dat a pomáhá organizacím získat větší hodnotu z jejich stávajících dat. Prvním krokem k provedení zjistitelnosti zdroje dat prostřednictvím Data Catalog je registrace zdroje dat.
 
 ## <a name="register-data-sources"></a>Registrace zdrojů dat
-Registrace je proces extrahování metadat ze zdroje dat a kopírování těchto dat do služby katalogu dat. Data zůstanou uložena tam, kde v současnosti jsou, a zůstávají pod kontrolou správců a zásad aktuálního systému.
+Registrace je proces extrakce metadat ze zdroje dat a zkopírování těchto dat do služby Data Catalog. Data zůstanou uložena tam, kde v současnosti jsou, a zůstávají pod kontrolou správců a zásad aktuálního systému.
 
-Chcete-li zaregistrovat zdroj dat, postupujte takto:
-1. Na portálu Katalogu dat Azure spusťte nástroj pro registraci zdroje dat v katalogu dat. 
-2. Přihlaste se pomocí pracovního nebo školního účtu pomocí stejných přihlašovacích údajů služby Azure Active Directory, které používáte k přihlášení k portálu.
+Chcete-li zaregistrovat zdroj dat, postupujte následovně:
+1. Na portálu Azure Data Catalog spusťte nástroj pro registraci zdroje dat Data Catalog. 
+2. Přihlaste se přes svůj pracovní nebo školní účet. se stejnými přihlašovacími údaji Azure Active Directory, které používáte k přihlášení na portál.
 3. Vyberte zdroj dat, který chcete zaregistrovat.
 
-Další podrobné informace najdete v tématu [Začínáme s](data-catalog-get-started.md) azure katalog dat kurzu.
+Další podrobné informace najdete v kurzu [Začínáme s Azure Data Catalog](data-catalog-get-started.md) .
 
-Po registraci zdroje dat katalog sleduje jeho umístění a indexuje jeho metadata. Uživatelé mohou prohledávat, procházet a zjišťovat zdroj dat a potom použít jeho umístění k jeho připojení pomocí aplikace nebo nástroje podle vlastního výběru.
+Po zaregistrování zdroje dat katalog sleduje jeho umístění a indexuje jeho metadata. Uživatelé mohou hledat, Procházet a zjišťovat zdroj dat a potom použít jeho umístění k připojení pomocí aplikace nebo nástroje podle svého výběru.
 
 ## <a name="supported-data-sources"></a>Podporované zdroje dat
-Seznam aktuálně podporovaných zdrojů dat naleznete v [tématu Data Catalog DSR](data-catalog-dsr.md).
+Seznam aktuálně podporovaných zdrojů dat najdete v tématu [Data Catalog DSR](data-catalog-dsr.md).
 
-## <a name="structural-metadata"></a>Strukturální metadata
-Při registraci zdroje dat nástroj pro registraci extrahuje informace o struktuře vybraných objektů. Tyto informace se označují jako strukturální metadata.
+## <a name="structural-metadata"></a>Strukturovaná metadata
+Při registraci zdroje dat extrahuje nástroj registrace informace o struktuře objektů, které vyberete. Tyto informace se označují jako strukturovaná metadata.
 
-Pro všechny objekty tato strukturální metadata zahrnuje umístění objektu, takže uživatelé, kteří zjišťují data, mohou tyto informace použít k připojení k objektu v klientských nástrojích podle vlastního výběru. Další strukturální metadata zahrnují název a typ objektu a název atributu/sloupce a datový typ.
+Pro všechny objekty tato strukturální metadata obsahují umístění objektu, aby uživatelé, kteří data zjišťují, mohli tyto informace použít pro připojení k objektu v nástrojích klienta podle svého výběru. Další strukturální metadata obsahují název a typ objektu a název a název sloupce nebo sloupce a datový typ.
 
 ## <a name="descriptive-metadata"></a>Popisná metadata
-Kromě základních strukturálních metadat, která jsou extrahována ze zdroje dat, nástroj pro registraci zdroje dat extrahuje popisná metadata. Pro SQL Server Analysis Services a SQL Server Reporting Services tato metadata je převzata z Description vlastnosti vystavené tyto služby. Pro SQL Server jsou extrahovány\_hodnoty poskytované pomocí rozšířené vlastnosti ms description. V databázi Oracle Database extrahuje nástroj pro registraci zdroje dat sloupec KOMENTÁŘE ze zobrazení KOMENTÁŘE VŠECHNY\_TAB.\_
+Kromě základních strukturálních metadat, která jsou extrahována ze zdroje dat, nástroj pro registraci zdroje dat extrahuje popisné metadata. Pro SQL Server Analysis Services a SQL Server Reporting Services se tato metadata odebírají z vlastností popisu zveřejněných těmito službami. Pro SQL Server jsou extrahovány hodnoty zadané pomocí\_rozšířené vlastnosti Popis MS. Pro Oracle Database Nástroj pro registraci zdroje dat extrahuje sloupec komentáře ze zobrazení komentáře na kartě\_\_všechny.
 
-Kromě popisných metadat extrahovaných ze zdroje dat mohou uživatelé zadávat popisná metadata pomocí nástroje pro registraci zdroje dat. Uživatelé mohou přidávat značky a mohou identifikovat odborníky pro registrované objekty. Všechna tato popisná metadata se zkopírují do služby Katalog dat spolu se strukturálními metadaty.
+Kromě popisných metadat, která jsou extrahována ze zdroje dat, mohou uživatelé zadat popisná metadata pomocí nástroje pro registraci zdroje dat. Uživatelé můžou přidávat značky a můžou identifikovat odborníky na registrované objekty. Všechna tato popisné metadata se zkopírují do služby Data Catalog spolu se strukturálními metadaty.
 
 ## <a name="include-previews"></a>Zahrnout náhledy
-Ve výchozím nastavení jsou ze zdrojů dat extrahována pouze metadata a zkopírována do služby Katalog dat, ale pochopení zdroje dat je často usnadněno, když můžete zobrazit ukázku dat, která obsahuje.
+Ve výchozím nastavení se ze zdrojů dat extrahují jenom metadata a zkopírují se do služby Data Catalog, ale porozumění zdroji dat se často usnadňuje, když si můžete prohlédnout ukázku dat, která obsahuje.
 
-Pomocí nástroje registrace zdroje dat katalogu dat můžete zahrnout náhled snímku dat v každé tabulce a zobrazení, které je registrováno. Pokud se rozhodnete zahrnout náhledy během registrace, registrační nástroj obsahuje až 20 záznamů z každé tabulky a zobrazení. Tento snímek je pak zkopírován do katalogu spolu se strukturálními a popisnými metadaty.
+Když použijete nástroj pro registraci zdroje dat Data Catalog, můžete zahrnout náhled snímku dat do každé tabulky a zobrazení, které je zaregistrované. Pokud se rozhodnete zahrnout náhledy během registrace, nástroj pro registraci zahrnuje až 20 záznamů z každé tabulky a zobrazení. Tento snímek se pak zkopíruje do katalogu společně se strukturálními a popisnými metadaty.
 
 > [!NOTE]
-> Široké tabulky s velkým počtem sloupců mohou mít v náhledu méně než 20 záznamů.
+> Široké tabulky s velkým počtem sloupců můžou mít ve verzi Preview méně než 20 záznamů.
 >
 >
 
-## <a name="include-data-profiles"></a>Zahrnout datové profily
-Stejně jako zahrnutí náhledů může poskytnout cenný kontext pro uživatele, kteří vyhledávají zdroje dat v katalogu dat, včetně datového profilu může usnadnit pochopení zjištěných zdrojů dat.
+## <a name="include-data-profiles"></a>Zahrnout profily dat
+Stejně jako zahrnutí verzí Preview může poskytovat hodnotný kontext pro uživatele, kteří hledají zdroje dat v Data Catalog, včetně datového profilu, může usnadnit pochopení zjištěných zdrojů dat.
 
-Pomocí nástroje registrace zdroje dat katalogu dat můžete zahrnout profil dat pro každou tabulku a zobrazení, které je registrováno. Pokud se rozhodnete zahrnout datový profil během registrace, registrační nástroj obsahuje souhrnné statistiky o datech v každé tabulce a zobrazení, včetně:
+Když použijete nástroj pro registraci zdroje dat Data Catalog, můžete zahrnout profil dat pro každou tabulku a zobrazení, které je zaregistrované. Pokud se rozhodnete zahrnout profil dat během registrace, nástroj pro registraci zahrnuje agregované statistiky o datech v jednotlivých tabulkách a zobrazeních, včetně těchto:
 
 * Počet řádků a velikost dat v objektu.
 * Datum poslední aktualizace dat a schématu objektu.
-* Počet nulových záznamů a odlišné hodnoty pro sloupce.
-* Minimální, maximální, průměrné a směrodatné odchylky pro sloupce.
+* Počet záznamů s hodnotou null a jedinečné hodnoty pro sloupce.
+* Minimální, maximální, průměrné a standardní hodnoty odchylky pro sloupce.
 
-Tyto statistiky jsou pak zkopírovány do katalogu spolu se strukturálními a popisnými metadaty.
+Tyto statistiky se pak zkopírují do katalogu společně se strukturálními a popisnými metadaty.
 
 > [!NOTE]
-> Sloupce textu a data nezahrnují ve svém datovém profilu statistiky průměrné nebo směrodatné odchylky.
+> Sloupce text a datum nezahrnují statistiku průměrných nebo standardních odchylek ve svém datovém profilu.
 >
 >
 
-## <a name="update-registrations"></a>Aktualizovat registrace
-Registrace zdroje dat umožňuje zjistitelné v katalogu dat při použití metadat a volitelný náhled extrahované během registrace. Pokud je třeba aktualizovat zdroj dat v katalogu (například pokud došlo ke změně schématu objektu, měly by být zahrnuty původně vyloučené tabulky nebo chcete aktualizovat data, která jsou zahrnuta v náhledech), lze nástroj pro registraci zdroje dat znovu spustit.
+## <a name="update-registrations"></a>Aktualizace registrací
+Registrace zdroje dat umožňuje zjistitelnost v Data Catalog při použití metadat a volitelné verze Preview, která byla extrahována během registrace. Pokud je potřeba aktualizovat zdroj dat v katalogu (například pokud se změnilo schéma objektu, měly by být zahrnuté tabulky, které se původně vyloučily, nebo chcete aktualizovat data, která jsou obsažená v náhledech), můžete nástroj pro registraci zdroje dat spustit znovu.
 
-Opětovná registrace již registrovaného zdroje dat provede operaci sloučení "upsert": existující objekty jsou aktualizovány a jsou vytvořeny nové objekty. Všechna metadata poskytnutá uživateli prostřednictvím portálu katalogu dat jsou zachována.
+Když se znovu zaregistrujete už registrovaný zdroj dat, provede se sloučení operace Upsert: stávající objekty se aktualizují a vytvoří se nové objekty. Všechna metadata, která poskytuje uživatelé prostřednictvím portálu Data Catalog, jsou zachována.
 
 ## <a name="summary"></a>Souhrn
-Vzhledem k tomu, že kopíruje strukturální a popisná metadata ze zdroje dat do služby katalogu, registrace zdroje dat v katalogu dat usnadňuje zjišťování a pochopení dat. Po registraci zdroje dat jej můžete oznamovat, spravovat a zjišťovat pomocí portálu katalogu dat.
+Vzhledem k tomu, že kopíruje strukturální a popisné metadata ze zdroje dat do služby katalogu, registruje zdroj dat v Data Catalog usnadňuje zjišťování a pochopení dat. Po zaregistrování zdroje dat ho můžete opatřit poznámkami, spravovat a zjišťovat pomocí portálu Data Catalog.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o registraci zdrojů dat najdete v tématu [Začínáme s](data-catalog-get-started.md) Azure Katalog dat kurzu.
+Další informace o registraci zdrojů dat najdete v kurzu [Začínáme s Azure Data Catalog](data-catalog-get-started.md) .

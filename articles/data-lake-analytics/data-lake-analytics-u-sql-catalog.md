@@ -1,6 +1,6 @@
 ---
 title: Použití katalogu U-SQL v Azure Data Lake Analytics
-description: Přečtěte si, jak pomocí katalogu U-SQL sdílet kód a data. Vytvářejte funkce s hodnotou tabulky, vytvářejte zobrazení, vytvářejte tabulky a dotazujte se na ně.
+description: Naučte se používat katalog U-SQL ke sdílení kódu a dat. Vytvořte funkce vracející tabulku, vytvořte zobrazení, vytvořte tabulky a Dotazujte je.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
@@ -10,19 +10,19 @@ ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.topic: conceptual
 ms.date: 05/09/2017
 ms.openlocfilehash: f3b9f14be4422373fb30f8c3d4909fd9c9546fdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71672848"
 ---
 # <a name="get-started-with-the-u-sql-catalog-in-azure-data-lake-analytics"></a>Začínáme s katalogem U-SQL v Azure Data Lake Analytics
 
 ## <a name="create-a-tvf"></a>Vytvoření TVF
 
-V předchozím skriptu U-SQL jste zopakovali použití aplikace EXTRACT ke čtení ze stejného zdrojového souboru. Pomocí funkce u-SQL s hodnotou tabulky (TVF) můžete zapouzdřit data pro budoucí opakované použití.  
+V předchozím skriptu U-SQL se pokusíte použít EXTRAKCi pro čtení ze stejného zdrojového souboru. Funkce vracející tabulku U-SQL (TVF) umožňuje zapouzdřit data pro budoucí opakované použití.  
 
-Následující skript vytvoří TVF `Searchlog()` volané ve výchozí databázi a schématu:
+Následující skript vytvoří TVF s názvem `Searchlog()` ve výchozí databázi a schématu:
 
 ```
 DROP FUNCTION IF EXISTS Searchlog;
@@ -53,7 +53,7 @@ RETURN;
 END;
 ```
 
-Následující skript ukazuje, jak používat TVF, který byl definován v předchozím skriptu:
+Následující skript vám ukáže, jak používat TVF, které jste definovali v předchozím skriptu:
 
 ```
 @res =
@@ -72,9 +72,9 @@ OUTPUT @res
 
 ## <a name="create-views"></a>Vytváření zobrazení
 
-Pokud máte jeden dotaz výraz, namísto TVF můžete použít U-SQL VIEW zapouzdřit tento výraz.
+Pokud máte jeden výraz dotazu místo TVF, můžete k zapouzdření tohoto výrazu použít zobrazení U-SQL.
 
-Následující skript vytvoří zobrazení `SearchlogView` volané ve výchozí databázi a schématu:
+Následující skript vytvoří zobrazení nazvané `SearchlogView` ve výchozí databázi a schématu:
 
 ```
 DROP VIEW IF EXISTS SearchlogView;
@@ -91,7 +91,7 @@ CREATE VIEW SearchlogView AS
 USING Extractors.Tsv();
 ```
 
-Následující skript ukazuje použití definovaného zobrazení:
+Následující skript demonstruje použití definovaného zobrazení:
 
 ```
 @res =
@@ -109,9 +109,9 @@ OUTPUT @res
 ```
 
 ## <a name="create-tables"></a>Vytvoření tabulek
-Stejně jako u relačních databázových tabulek můžete pomocí u-SQL vytvořit tabulku s předdefinovaným schématem nebo vytvořit tabulku, která odvodí schéma z dotazu, který vyplní tabulku (také známou jako CREATE TABLE AS SELECT nebo CTAS).
+Stejně jako u tabulek relačních databází můžete pomocí U-SQL vytvořit tabulku s předdefinovaným schématem nebo vytvořit tabulku, která bude toto schéma odvodit z dotazu, který tuto tabulku naplní (označovaný také jako CREATE TABLE jako SELECT nebo CTAS).
 
-Vytvořte databázi a dvě tabulky pomocí následujícího skriptu:
+Pomocí následujícího skriptu vytvořte databázi a dvě tabulky:
 
 ```
 DROP DATABASE IF EXISTS SearchLogDb;
@@ -143,9 +143,9 @@ CREATE TABLE SearchLog2(
 ```
 
 ## <a name="query-tables"></a>Dotazy na tabulky
-Tabulky můžete dotazovat, například tabulky vytvořené v předchozím skriptu, stejným způsobem jako datové soubory. Místo vytváření sady řádků pomocí aplikace EXTRACT můžete nyní odkazovat na název tabulky.
+Můžete zadávat dotazy na tabulky, například ty, které byly vytvořeny v předchozím skriptu, stejně jako datové soubory. Místo vytvoření sady řádků pomocí EXTRAKCe teď můžete odkazovat na název tabulky.
 
-Chcete-li číst z tabulek, upravte dříve použitý transformační skript:
+Chcete-li číst z tabulek, upravte transformační skript, který jste použili dříve:
 
 ```
 @rs1 =
@@ -168,7 +168,7 @@ OUTPUT @res
 ```
 
  >[!NOTE]
- >V současné době nelze spustit SELECT v tabulce ve stejném skriptu jako ten, kde jste tabulku vytvořili.
+ >V současné době nemůžete spustit příkaz SELECT na tabulce ve stejném skriptu jako ten, ve kterém jste tabulku vytvořili.
 
 ## <a name="next-steps"></a>Další kroky
 * [Přehled služby Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)

@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
 ms.openlocfilehash: 35c81f023726803fb2346d68ae783fdfe124143f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72177709"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Sada Azure Cosmos DB .NET Core SDK pro rozhraní SQL API: Poznámky k verzi a zdroje informací
@@ -35,12 +35,12 @@ ms.locfileid: "72177709"
 |---|---|
 |**Stažení sady SDK**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)|
 |**Dokumentace k rozhraní API**|[Referenční dokumentace rozhraní .NET API](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
-|**Ukázky**|[Ukázky kódu .NET](sql-api-dotnet-samples.md)|
+|**ukázky**|[Ukázky kódu .NET](sql-api-dotnet-samples.md)|
 |**Začínáme**|[Začínáme s rozhraním Azure Cosmos DB .NET](sql-api-sdk-dotnet.md)|
 |**Kurz webové aplikace**|[Vývoj webových aplikací pomocí Azure Cosmos DB](sql-api-dotnet-application.md)|
 |**Aktuální podporovaná architektura**|[.NET Standard 1,6 a .NET Standard 1,5](https://www.nuget.org/packages/NETStandard.Library)|
 
-## <a name="release-notes"></a>Zpráva k vydání verze
+## <a name="release-notes"></a>Poznámky k verzi
 
 > [!NOTE]
 > Pokud používáte .NET Core, přečtěte si prosím nejnovější verzi 3. x sady [.NET SDK](sql-api-sdk-dotnet-standard.md), která cílí na .NET Standard. 

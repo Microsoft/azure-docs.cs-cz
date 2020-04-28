@@ -1,5 +1,5 @@
 ---
-title: Federace více Azure AD s jedním AD FS - Azure
+title: Federování více Azure AD s jedním AD FS – Azure
 description: V tomto dokumentu se naučíte vytvořit federaci několik služeb Azure AD s jednou službou AD FS.
 keywords: vytvoření federace, ADFS, AD FS, více klientů, jedna služba AD FS, jedna služba ADFS, federace s více klienty, ADFS s více doménovými strukturami, připojení AAD, federace, federace mezi klienty
 services: active-directory
@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9122e3a7af2230dc0f68e72b28891d488b01a80a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65137836"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>Vytvoření federace několika instancí Azure AD s jednou instancí AD FS
@@ -46,13 +46,13 @@ Aby služba AD FS v doméně contoso.com mohla ověřovat uživatele v doméně 
  
 ## <a name="step-2-modify-contosocom-federation-settings"></a>Krok 2: Úprava nastavení federace contoso.com 
  
-Výchozí vystavitel nastavený pro jednu doménu federován do služby AD FS je například "http\: `http://fs.contoso.com/adfs/services/trust`//ADFSServiceFQDN/adfs/services/trust". Azure Active Directory vyžaduje jedinečného vystavitele pro každou federovanou doménu. Vzhledem k tomu, že stejná služba AD FS bude federovat dvě domény, hodnota vystavitele musí být upravena, aby byla jedinečná pro každou doménu, kterou služba AD FS federuje s Azure Active Directory. 
+Výchozí Vystavitel nastavený pro jednu doménu federované na AD FS je http\://ADFSServiceFQDN/ADFS/Services/Trust, například. `http://fs.contoso.com/adfs/services/trust` Azure Active Directory vyžaduje jedinečného vystavitele pro každou federovanou doménu. Vzhledem k tomu, že stejná služba AD FS bude federovat dvě domény, hodnota vystavitele musí být upravena, aby byla jedinečná pro každou doménu, kterou služba AD FS federuje s Azure Active Directory. 
  
-Na serveru služby AD FS otevřete prostředí Azure AD PowerShell (ujistěte se, že je nainstalovaný modul MSOnline) a proveďte následující kroky:
+Na serveru AD FS otevřete Azure AD PowerShell (Ujistěte se, že je nainstalovaný modul MSOnline), a proveďte následující kroky:
  
 Připojte se ke službě Azure Active Directory obsahující doménu contoso.com: Connect-MsolService Aktualizujte nastavení federace pro doménu contoso.com: Update-MsolFederatedDomain -DomainName contoso.com –SupportMultipleDomain
  
-Vystavitel v nastavení federation domain se\:změní na "http //contoso.com/adfs/services/trust" a pravidlo deklarace vystavování bude přidáno pro azure ad předávající strany trust vydat správnou hodnotu issuerId na základě přípony UPN.
+Vystavitel v nastavení federace domény se změní na http\://contoso.com/ADFS/Services/Trust a přidá se pravidlo deklarace identity vystavování pro vztah důvěryhodnosti předávající strany Azure AD, aby se vydávala správná hodnota issuerId na základě přípony UPN.
  
 ## <a name="step-3-federate-fabrikamcom-with-ad-fs"></a>Krok 3: Vytvoření federace domény fabrikam.com se službou AD FS
  
@@ -66,4 +66,4 @@ Převeďte spravovanou doménu fabrikam.com na federovanou:
 Uvedená operace vytvoří federaci domény fabrikam.com se stejnou službou AD FS. Nastavení domény můžete ověřit pomocí příkazu Get-MsolDomainFederationSettings pro obě domény.
 
 ## <a name="next-steps"></a>Další kroky
-[Připojení služby Active Directory ke službě Azure Active Directory](whatis-hybrid-identity.md)
+[Připojení služby Active Directory pomocí Azure Active Directory](whatis-hybrid-identity.md)

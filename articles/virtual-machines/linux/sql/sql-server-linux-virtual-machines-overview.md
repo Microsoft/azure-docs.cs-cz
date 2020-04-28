@@ -13,10 +13,10 @@ ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: d376672336845958fb6434a78177f42aca938229
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70081958"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Přehled SQL Serveru na virtuálních počítačích Azure (Linux)
@@ -29,7 +29,7 @@ SQL Server na virtuálních počítačích Azure umožňuje používat plné ver
 
 Virtuální počítače Azure běží v mnoha různých [geografických oblastech](https://azure.microsoft.com/regions/) po celém světě. Také nabízejí celou řadu [velikostí počítačů](../sizes.md). Galerie imagí virtuálních počítačů umožňuje vytvoření virtuálního počítače s SQL Serverem, který má správnou verzi, vydání i operační systém. Díky tomu jsou virtuální počítače vhodné pro mnoho různých úloh SQL Serveru.
 
-## <a name="get-started-with-sql-vms"></a><a id="create"></a>Začínáme s virtuálními aplikacemi SQL
+## <a name="get-started-with-sql-vms"></a><a id="create"></a>Začínáme s virtuálními počítači SQL
 
 Chcete-li začít, zvolte image virtuálního počítače s SQL Serverem s požadovanou verzí, vydáním a operačním systémem. Následující oddíly poskytují přímé odkazy na image v galerii virtuálních počítačů s SQL Serverem na webu Azure Portal.
 
@@ -61,11 +61,11 @@ Při konfiguraci SQL Serveru v Linuxu nainstalujete balíček databázového str
 
 * [Přehled služby Virtual Machines](../overview.md)
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 
 * [Úvod do Microsoft Azure Storage](../../../storage/common/storage-introduction.md)
 
-### <a name="networking"></a>Síťové služby
+### <a name="networking"></a>Sítě
 
 * [Přehled služby Virtual Network](../../../virtual-network/virtual-networks-overview.md)
 * [IP adresy v Azure](../../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
@@ -73,7 +73,7 @@ Při konfiguraci SQL Serveru v Linuxu nainstalujete balíček databázového str
 
 ### <a name="sql"></a>SQL
 
-* [Sql Server v dokumentaci k Linuxu](https://docs.microsoft.com/sql/linux)
+* [Dokumentace k SQL Server on Linux](https://docs.microsoft.com/sql/linux)
 * [Porovnání Azure SQL Database](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md)
 
 ## <a name="next-steps"></a>Další kroky

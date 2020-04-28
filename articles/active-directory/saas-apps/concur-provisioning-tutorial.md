@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace concur pro automatické zřizování uživatelů pomocí služby Azure Active Directory| Dokumenty společnosti Microsoft'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a Concur.
+title: 'Kurz: Konfigurace Concur pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Concur.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,110 +16,110 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 441aa9805f2a453e22f207238315125d2a281838
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60280409"
 ---
-# <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Kurz: Konfigurace concur pro automatické zřizování uživatelů
+# <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Kurz: Konfigurace Concur pro Automatické zřizování uživatelů
 
-Cílem tohoto kurzu je ukázat kroky, které je potřeba provést v Concur a Azure AD automaticky zřídit a de-zřizování uživatelských účtů z Azure AD do Concur.
+Cílem tohoto kurzu je Ukázat kroky, které musíte v Concur a Azure AD použít k automatickému zřízení a zrušení zřízení uživatelských účtů z Azure AD až Concur.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že již máte následující položky:
+Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
 
-*   Tenant advitus azure active directory.
-*   Předplatné s povolenou jedním přihlášením.
+*   Tenant Azure Active Directory.
+*   Předplatné s povoleným Concurm jednotným přihlašováním.
 *   Uživatelský účet v Concur s oprávněními správce týmu.
 
-## <a name="assigning-users-to-concur"></a>Přiřazení uživatelů ke společnosti Concur
+## <a name="assigning-users-to-concur"></a>Přiřazování uživatelů k Concur
 
-Azure Active Directory používá koncept s názvem "přiřazení" k určení, kteří uživatelé by měli získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelských účtů jsou synchronizováni pouze uživatelé a skupiny, které byly "přiřazeny" k aplikaci ve službě Azure AD.
+Azure Active Directory používá koncept nazvaný "přiřazení" k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelských účtů se synchronizují jenom uživatelé a skupiny přiřazené k aplikaci v Azure AD.
 
-Před konfigurací a povolením zřizovací služby se musíte rozhodnout, kteří uživatelé nebo skupiny ve službě Azure AD představují uživatele, kteří potřebují přístup k vaší aplikaci Concur. Jakmile se rozhodnete, můžete tyto uživatele přiřadit k aplikaci Concur podle pokynů zde:
+Než nakonfigurujete a povolíte službu zřizování, musíte se rozhodnout, co uživatelé a skupiny ve službě Azure AD reprezentují uživatelé, kteří potřebují přístup k aplikaci Concur. Po rozhodnutí můžete tyto uživatele přiřadit do aplikace Concur podle pokynů uvedených tady:
 
 [Přiřazení uživatele nebo skupiny k podnikové aplikaci](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-concur"></a>Důležité tipy pro přiřazení uživatelů do Concur
+### <a name="important-tips-for-assigning-users-to-concur"></a>Důležité tipy pro přiřazení uživatelů k Concur
 
-*   Doporučuje se, aby jeden uživatel Azure AD přiřazena Concur k testování konfigurace zřizování. Další uživatelé a/nebo skupiny mohou být přiřazeny později.
+*   Doporučuje se, aby se k otestování konfigurace zřizování přiřadil jeden uživatel Azure AD Concur. Další uživatele a skupiny můžete přiřadit později.
 
-*   Při přiřazování uživatele společnosti Concur je nutné vybrat platnou roli uživatele. Role "Výchozí přístup" nefunguje pro zřizování.
+*   Při přiřazování uživatele k Concur je nutné vybrat platnou roli uživatele. Role výchozí přístup nefunguje pro zřizování.
 
-## <a name="enable-user-provisioning"></a>Povolení zřizování uživatelů
+## <a name="enable-user-provisioning"></a>Povolit zřizování uživatelů
 
-Tato část vás provede propojením azure ad s rozhraním API pro zřizování uživatelských účtů společnosti Concur a konfigurací služby zřizování tak, aby vytvářela, aktualizovala a zakazovala přiřazené uživatelské účty v Concur na základě přiřazení uživatelů a skupin ve službě Azure AD.
+V této části se seznámíte s připojením k rozhraní API pro zřizování uživatelských účtů ve službě Azure AD a konfigurací služby zřizování k vytváření, aktualizaci a zakázání přiřazených uživatelských účtů v Concur na základě přiřazení uživatelů a skupin ve službě Azure AD.
 
 > [!Tip] 
-> Můžete se také rozhodnout povolit jednotné přihlašování na saml pro Concur podle pokynů uvedených na [webu Azure Portal](https://portal.azure.com). Jednotné přihlašování lze nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce kompliment navzájem.
+> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro Concur, a to podle pokynů uvedených v tématu [Azure Portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování, i když se tyto dvě funkce navzájem doplňují.
 
 ### <a name="to-configure-user-account-provisioning"></a>Konfigurace zřizování uživatelských účtů:
 
-Cílem této části je nastínit, jak povolit zřizování uživatelských účtů služby Active Directory společnosti Concur.
+Cílem této části je pořídit, jak povolit zřizování uživatelských účtů služby Active Directory pro Concur.
 
-Chcete-li povolit aplikace v výdajové službě, musí být správné nastavení a použití profilu správce webové služby. Nepřidávejte roli správce WS do stávajícího profilu správce, který používáte pro funkce správy T&E.
+Aby bylo možné povolit aplikace ve službě výdaje, je nutné mít správné nastavení a použití profilu správce webové služby. Nepřidávejte roli WS admin do stávajícího profilu správce, který používáte pro funkce správy T&E.
 
-Konzultanti concur nebo správce klienta musí vytvořit odlišný profil správce webové služby a správce klienta musí tento profil použít pro funkce správce webových služeb (například povolení aplikací). Tyto profily musí být odděleny od denního profilu správce klienta T&E (profil správce T&E by neměl být přiřazen roli WSAdmin).
+Concur konzultanti nebo Správci klienta musí vytvořit odlišný profil správce webové služby a správce klienta musí použít tento profil pro funkce správce webových služeb (například povolení aplikací). Tyto profily musí být oddělené od správce klienta denní T&E (profil pro správu T&E by neměl mít přiřazenou roli WSAdmin).
 
-Když vytvoříte profil, který se bude používat pro povolení aplikace, zadejte název správce klienta do polí profilu uživatele. Tím přiřadíte vlastnictví profilu. Po vytvoření jednoho nebo více profilů se klient musí přihlásit pomocí tohoto profilu a kliknout na tlačítko *"Povolit*" pro partnerskou aplikaci v nabídce Webové služby.
+Když vytvoříte profil, který se má použít k povolení aplikace, zadejte do polí profil uživatele název správce klienta. Tím se přiřadí vlastnictví profilu. Po vytvoření jednoho nebo více profilů se musí klient přihlásit pomocí tohoto profilu a kliknout na tlačítko*Povolit*u Partnerské aplikace v nabídce webové služby.
 
-Z následujících důvodů by tato akce neměla být prováděna s profilem, který používají pro normální podávání T&E.
+Z následujících důvodů by se tato akce neměla provádět s profilem, který používají pro správu normální T&E.
 
-* Klient musí být ten, který klikne na tlačítko *"Ano*" v dialogovém okně, které se zobrazí po povolení aplikace. Toto kliknutí potvrzuje, že klient je ochoten pro partnerskou aplikaci získat přístup ke svým datům, takže vy nebo partner nemůžete klepnout na tlačítko Ano.
+* Klient musí být ten, který klikne na*Ano*v dialogovém okně, které se zobrazí po povolení aplikace. Kliknutím na toto tlačítko potvrdí, že má Partnerská aplikace přístup k datům, takže vy nebo partner nemůže kliknout na tlačítko Ano.
 
-* Pokud správce klienta, který povolil aplikaci pomocí profilu správce T&E, opustí společnost (výsledkem je deaktivace profilu), všechny aplikace povolené pomocí tohoto profilu nefungují, dokud není aplikace povolena s jiným aktivním profilem správce WS. To je důvod, proč jste měl vytvořit odlišné WS Admin profily.
+* Pokud správce klienta, který povolil aplikaci pomocí profilu pro správu T&E odejde ze společnosti (výsledkem deaktivace profilu), nebudou všechny aplikace s tímto profilem fungovat, dokud se aplikace nepovolí s jiným aktivním profilem WS admin. Důvodem je, že byste měli vytvořit odlišné profily WS admin.
 
-* Pokud správce opustí společnost, název přidružený k profilu správce WS lze v případě potřeby změnit na náhradního správce, aniž by to mělo vliv na povolenou aplikaci, protože tento profil není nutné inaktivovat.
+* Pokud správce odejde ze společnosti, název přidružený k profilu WS admin se dá změnit na správce nahrazení, pokud je to potřeba, aniž by to mělo vliv na povolenou aplikaci, protože tento profil nepotřebuje deaktivovaný.
 
-**Chcete-li konfigurovat zřizování uživatelů, proveďte následující kroky:**
+**Při konfiguraci zřizování uživatelů proveďte následující kroky:**
 
-1. Přihlaste se ke svému tenantovi **Concur.**
+1. Přihlaste se ke svému tenantovi **Concur** .
 
-2. V nabídce **Správa** vyberte **možnost Webové služby**.
+2. V nabídce **Správa** vyberte možnost **webové služby**.
    
-    ![Concur tenant](./media/concur-provisioning-tutorial/IC721729.png "Concur tenant")
+    ![Tenant Concur](./media/concur-provisioning-tutorial/IC721729.png "Tenant Concur")
 
-3. Na levé straně vyberte v podokně **Webové služby** **možnost Povolit partnerskou aplikaci**.
+3. Na levé straně v podokně **webové služby** vyberte **Povolit partnerských aplikací**.
    
-    ![Povolit partnerskou aplikaci](./media/concur-provisioning-tutorial/ic721730.png "Povolit partnerskou aplikaci")
+    ![Povolit partnerských aplikací](./media/concur-provisioning-tutorial/ic721730.png "Povolit partnerských aplikací")
 
-4. V seznamu **Povolit aplikaci** vyberte **Azure Active Directory**a klikněte na **Povolit**.
+4. V seznamu **Povolit aplikaci** vyberte možnost **Azure Active Directory**a potom klikněte na tlačítko **Povolit**.
    
     ![Microsoft Azure Active Directory](./media/concur-provisioning-tutorial/ic721731.png "Microsoft Azure Active Directory")
 
-5. Klepnutím na tlačítko **Ano** zavřete dialogové okno **Potvrdit akci.**
+5. Kliknutím na tlačítko **Ano** zavřete dialog **potvrdit akci** .
    
     ![Potvrdit akci](./media/concur-provisioning-tutorial/ic721732.png "Potvrdit akci")
 
-6. Na [webu Azure Portal](https://portal.azure.com)přejděte do části **Azure Active Directory > Podnikové aplikace > všechny aplikace.**
+6. V [Azure Portal](https://portal.azure.com)přejděte do části **Azure Active Directory > Enterprise Apps > všechny aplikace** .
 
-7. Pokud jste již nakonfigurovali Concur pro jednotné přihlašování, vyhledejte svou instanci Concur pomocí vyhledávacího pole. V opačném případě vyberte **Přidat** a vyhledejte **Concur** v galerii aplikací. Ve výsledcích hledání vyberte Concur a přidejte je do seznamu aplikací.
+7. Pokud jste už nakonfigurovali Concur pro jednotné přihlašování, vyhledejte vaši instanci Concur pomocí vyhledávacího pole. V opačném případě vyberte **Přidat** a vyhledejte **Concur** v galerii aplikací. Ve výsledcích hledání vyberte Concur a přidejte je do seznamu aplikací.
 
-8. Vyberte svou instanci Concur a pak vyberte kartu **Zřizování.**
+8. Vyberte svou instanci Concur a pak vyberte kartu **zřizování** .
 
-9. Nastavte **režim zřizování** na **automatické**. 
+9. Nastavte **režim zřizování** na **automaticky**. 
  
-    ![Zajišťování](./media/concur-provisioning-tutorial/provisioning.png)
+    ![zřizování](./media/concur-provisioning-tutorial/provisioning.png)
 
-10. V části **Pověření správce** zadejte **uživatelské jméno** a **heslo** správce concur.
+10. V části **přihlašovací údaje správce** zadejte **uživatelské jméno** a **heslo** správce Concur.
 
-11. Na webu Azure Portal klikněte na **Test Connection** a ujistěte se, že se Azure AD může připojit k vaší aplikaci Concur. Pokud se připojení nezdaří, ujistěte se, že váš účet Concur má oprávnění správce týmu.
+11. V Azure Portal klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k vaší aplikaci Concur. Pokud se připojení nepovede, ujistěte se, že váš účet Concur má oprávnění správce týmu.
 
-12. Do pole **E-mail** s oznámením zadejte e-mailovou adresu osoby nebo skupiny, která by měla dostávat oznámení o chybách zřizování, a zaškrtněte políčko.
+12. Zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování v poli **e-mail s oznámením** , a zaškrtněte políčko.
 
 13. Klikněte na **Uložit.**
 
-14. V části Mapování vyberte **Synchronizovat uživatele služby Azure Active Directory na Concur.**
+14. V části mapování vyberte **synchronizovat Azure Active Directory uživatelé Concur.**
 
-15. V části **Mapování atributů** zkontrolujte atributy uživatele, které jsou synchronizovány z Azure AD do Concur. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelským účtům v aplikaci Concur pro operace aktualizace. Chcete-li potvrdit všechny změny, vyberte tlačítko Uložit.
+15. V části **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do Concur. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Concur pro operace aktualizace. Kliknutím na tlačítko Uložit potvrďte změny.
 
-16. Chcete-li povolit službu zřizování Azure AD pro Concur, změňte **stav zřizování** **na Zapnuto** v části **Nastavení**
+16. Pokud chcete povolit službu Azure AD Provisioning pro Concur, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
 17. Klikněte na **Uložit.**
 
-Nyní můžete vytvořit testovací účet. Počkejte až 20 minut a ověřte, zda byl účet synchronizován se společností Concur.
+Nyní můžete vytvořit testovací účet. Počkejte až 20 minut, než ověříte, že byl účet synchronizovaný do Concur.
 
 ## <a name="additional-resources"></a>Další zdroje
 

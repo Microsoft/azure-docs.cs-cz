@@ -1,5 +1,5 @@
 ---
-title: Použití webu Azure IoT Solutions – Azure | Dokumenty společnosti Microsoft
+title: Použití webu řešení Azure IoT – Azure | Microsoft Docs
 description: Popisuje, jak používat web AzureIoTSolutions.com k nasazení akcelerátoru řešení.
 author: dominicbetts
 manager: philmea
@@ -9,58 +9,58 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
 ms.openlocfilehash: 87f6b9cef50e4b8c388be835b2aa7bed8177ac4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "61447424"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>Nasazení akcelerátoru řešení pomocí webu azureiotsolutions.com
 
-Akcelerátory řešení Azure IoT můžete nasadit do předplatného Azure z [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators). AzureIoTSolutions.com hostuje akcelerátory řešení s otevřeným zdrojovým kódem i partnerské řešení společnosti Microsoft. Tyto akcelerátory řešení zarovnávají s [referenční architekturou Azure IoT](https://aka.ms/iotrefarchitecture). Lokalitu můžete použít k rychlému nasazení akcelerátoru řešení jako ukázkového nebo produkčního prostředí.
+Akcelerátory řešení Azure IoT můžete nasadit do předplatného Azure z [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators). AzureIoTSolutions.com je hostitelem akcelerátorů řešení Microsoft Open Source i partner. Tyto akcelerátory řešení se zarovnají s [referenční architekturou Azure IoT](https://aka.ms/iotrefarchitecture). Web můžete použít k rychlému nasazení akcelerátoru řešení jako ukázkové nebo produkční prostředí.
 
 ![AzureIoTSolutions.com](media/iot-accelerators-permissions/iotsolutionscom.png)
 
 > [!TIP]
-> Pokud potřebujete větší kontrolu nad procesem nasazení, můžete použít [cli k nasazení akcelerátoru řešení](iot-accelerators-remote-monitoring-deploy-cli.md).
+> Pokud potřebujete větší kontrolu nad procesem nasazení, můžete použít rozhraní příkazového [řádku k nasazení akcelerátoru řešení](iot-accelerators-remote-monitoring-deploy-cli.md).
 
 Akcelerátory řešení můžete nasadit v následujících konfiguracích:
 
-* **Standard**: Rozšířené nasazení infrastruktury pro vývoj produkčního prostředí. Služba Azure Container Service nasazuje mikroslužby do několika virtuálních počítačů Azure. Kubernetes orchestruje kontejnery Dockeru, které jsou hostiteli jednotlivých mikroslužeb.
-* **Základní**: Verze se sníženými náklady pro ukázku nebo testování nasazení. Všechny mikroslužby se nasazují do jednoho virtuálního počítače Azure.
-* **Místní**: Nasazení místního počítače pro testování a vývoj. Tento přístup nasazuje mikroslužby do místního kontejneru Dockeru a připojuje se k iot hubu, Azure Cosmos DB a službám úložiště Azure v cloudu.
+* **Standard**: rozšířené nasazení infrastruktury pro vývoj produkčního prostředí. Azure Container Service nasadí mikroslužby na několik virtuálních počítačů Azure. Kubernetes orchestruje kontejnery Dockeru, které jsou hostiteli jednotlivých mikroslužeb.
+* **Basic**: nižší verze nákladů pro ukázku nebo testování nasazení. Všechny mikroslužby se nasazují do jednoho virtuálního počítače Azure.
+* **Místní**: nasazení místního počítače pro testování a vývoj. Tento přístup nasadí mikroslužby do místního kontejneru Docker a připojí se ke službám IoT Hub, Azure Cosmos DB a Azure Storage v cloudu.
 
-Každý akcelerátory řešení používá jinou kombinaci služeb Azure, jako je IoT Hub, Azure Stream Analytics a Cosmos DB. Další informace naleznete [na AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators) a vyberte akcelerátor řešení.
+Každá z akcelerátorů řešení používá jinou kombinaci služeb Azure, jako jsou IoT Hub, Azure Stream Analytics a Cosmos DB. Další informace najdete na [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators) a vyberte akcelerátor řešení.
 
-## <a name="sign-in-at-azureiotsolutionscom"></a>Přihlaste se na azureiotsolutions.com
+## <a name="sign-in-at-azureiotsolutionscom"></a>Přihlášení na azureiotsolutions.com
 
-Než nasadíte akcelerátor řešení, musíte se přihlásit AzureIoTSolutions.com pomocí přihlašovacích údajů přidružených k předplatnému Azure. Pokud je váš účet přidružený k více než jednomu tenantovi služby Microsoft Azure Active Directory (AD), můžete pomocí **rozevíracího seznamu Výběr účtu** zvolit adresář, který chcete použít.
+Než budete moct nasadit akcelerátor řešení, musíte se přihlásit na AzureIoTSolutions.com pomocí přihlašovacích údajů přidružených k předplatnému Azure. Pokud je váš účet spojený s více Microsoft Azure Active Directory (AD), můžete pomocí **rozevírací nabídky Výběr účtu** vybrat adresář, který chcete použít.
 
-Vaše oprávnění k nasazení akcelerátorů řešení, správě uživatelů a správě služeb Azure závisí na vaší roli ve vybraném adresáři. Mezi běžné role Azure AD přidružené k akcelerátorům řešení patří:
+Vaše oprávnění nasadit akcelerátory řešení, spravovat uživatele a spravovat služby Azure závisí na vaší roli ve vybraném adresáři. Mezi běžné role Azure AD přidružené k akcelerátorům řešení patří:
 
-* **Globální správce**: Na klienta Azure AD může existovat mnoho [globálních správců:](../active-directory/users-groups-roles/directory-assign-admin-roles.md)
+* **Globální správce**: může existovat mnoho [globálních správců](../active-directory/users-groups-roles/directory-assign-admin-roles.md) na tenanta Azure AD:
 
-  * Když vytvoříte klienta Azure AD, jste ve výchozím nastavení globálním správcem tohoto klienta.
-  * Globální správce může nasadit základní a standardní akcelerátory řešení.
+  * Při vytváření tenanta Azure AD jste ve výchozím nastavení globálním správcem tohoto tenanta.
+  * Globální správce může nasazovat základní a standardní akcelerátory řešení.
 
-* **Uživatel domény**: Může existovat mnoho uživatelů domény na klienta Azure AD. Uživatel domény může nasadit základní akcelerátor řešení.
+* **Uživatel domény**: může existovat mnoho uživatelů domény na TENANTA Azure AD. Uživatel domény může nasadit základní akcelerátor řešení.
 
-* **Uživatel typu Host:** Může existovat mnoho uživatelů typu Host na klienta Azure AD. Uživatelé typu Host nemohou nasadit akcelerátor řešení v tenantovi Azure AD.
+* **Uživatel typu Host**: může existovat mnoho uživatelů typu host na TENANTA Azure AD. Uživatelé typu Host nemůžou nasadit akcelerátor řešení v tenantovi Azure AD.
 
 Další informace o uživatelích a rolích ve službě Azure AD najdete v následujících zdrojích informací:
 
-* [Vytváření uživatelů ve službě Azure Active Directory](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
+* [Vytváření uživatelů v Azure Active Directory](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
 * [Přiřazení uživatelů k aplikacím](../active-directory/manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="choose-your-device"></a>Vyberte si zařízení
+## <a name="choose-your-device"></a>Zvolit zařízení
 
-Web AzureIoTSolutions.com odkazuje na [katalog zařízení Azure Certified for IoT](https://catalog.azureiotsolutions.com/).
+Lokalita AzureIoTSolutions.com odkazuje na [katalog zařízení Azure Certified for IoT](https://catalog.azureiotsolutions.com/).
 
-Katalog obsahuje stovky certifikovaných hardwarových zařízení IoT, které můžete připojit k akcelerátorům řešení a začít vytvářet řešení IoT.
+V katalogu je uveden seznam stovek certifikovaných hardwarových zařízení IoT, se kterými se můžete připojit k vašim akcelerátorům řešení a začít sestavovat řešení IoT.
 
 ![Katalog zařízení](media/iot-accelerators-permissions/devicecatalog.png)
 
-Pokud jste výrobce hardwaru, klikněte na **Stát se partnerem** a získejte informace o partnerství se společností Microsoft v programu Certified for IoT.
+Pokud jste výrobce hardwaru, klikněte na **stát se partnerem** , kde se dozvíte o partnerství s Microsoftem v programu Certified for IoT.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace služby Azure Active Directory s remixem E Sales Manager | Dokumenty společnosti Microsoft'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a remixem E Sales Manager.
+title: 'Kurz: Azure Active Directory Integration with E Sales Manager Remix | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a E Sales Managerem Remix.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,120 +17,120 @@ ms.date: 06/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 895fb0d83e383618818325263ac80c5919a0ee7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65406955"
 ---
-# <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Integrace služby Azure Active Directory s remixem E Sales Manager
+# <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Integrace Azure Active Directory s E-Remix manažerem E Sales
 
-V tomto kurzu se dozvíte, jak integrovat Azure Active Directory (Azure AD) s E Sales Manager Remix.
+V tomto kurzu se naučíte, jak integrovat Azure Active Directory (Azure AD) s E Sales Managerem Remix.
 
-Integrací Azure AD s E Sales Manager Remix, získáte následující výhody:
+Integrací služby Azure AD s E-Remix Sales Managerem získáte následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k Remix E Sales Manager.
-- Uživatelům můžete povolit automatické přihlášení k Remixu E Sales Manager (jednotné přihlašování nebo jednotnépřihlašování) pomocí svých účtů Azure AD.
-- Účty můžete spravovat v jednom centrálním umístění, na webu Azure Portal.
+- Můžete kontrolovat v Azure AD, kteří mají přístup k E Sales manažerům Remix.
+- Uživatelům můžete povolit, aby se k E Sales Manageru Remix (jednotné přihlašování nebo SSO) přihlásili automaticky pomocí svých účtů Azure AD.
+- Účty můžete spravovat v jednom centrálním umístění, Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li nakonfigurovat integraci Azure AD s E Sales Manager Remix, budete potřebovat následující položky:
+Pokud chcete nakonfigurovat integraci Azure AD s E-Remix Sales managerem, potřebujete následující položky:
 
 - Předplatné Azure AD
-- Předplatné s podporou SSO s podporou E Sales Manager
+- Předplatné E Sales Manageru Remix SSO – s podporou jednotného přihlašování
 
 > [!NOTE]
-> Při testování kroků v tomto kurzu doporučujeme *nepoužívat* produkční prostředí.
+> Když testujete kroky v tomto kurzu, doporučujeme *Nepoužívat produkční* prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle následujících doporučení:
+K otestování kroků v tomto kurzu použijte tato doporučení:
 
-- Nepoužívejte produkční prostředí, pokud to není nutné.
+- Nepoužívejte své provozní prostředí, pokud není nutné.
 - Pokud nemáte zkušební prostředí Azure AD, můžete [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
 V tomto kurzu otestujete jednotné přihlašování Azure AD v testovacím prostředí. 
 
-Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+Scénář, který je popsaný v tomto kurzu, se skládá ze dvou hlavních stavebních bloků:
 
-* Přidání E Sales Manager Remix z galerie
-* Konfigurace a testování jednotného přihlašování azure ad
+* Přidání E-Remix Sales Manageru z Galerie
+* Konfigurace a testování jednotného přihlašování Azure AD
 
-## <a name="add-e-sales-manager-remix-from-the-gallery"></a>Přidat E Sales Manager Remix z galerie
-Pokud chcete nakonfigurovat integraci Azure AD s Remixem E Sales Manager, přidejte Remix E Sales Manager remix z galerie do seznamu spravovaných aplikací SaaS následujícím způsobem:
+## <a name="add-e-sales-manager-remix-from-the-gallery"></a>Přidat Remix E Sales Manageru z Galerie
+Pokud chcete nakonfigurovat integraci Azure AD s E-Remix Sales managerem, přidejte E Sales Manager Remix z Galerie do svého seznamu spravovaných aplikací pro SaaS pomocí následujícího postupu:
 
-1. Na [webu Azure Portal](https://portal.azure.com)v levém podokně vyberte **Azure Active Directory**. 
+1. V [Azure Portal](https://portal.azure.com)v levém podokně vyberte možnost **Azure Active Directory**. 
 
     ![Tlačítko Azure Active Directory][1]
 
-1. Vyberte **podnikové aplikace** > **Všechny aplikace**.
+1. Vyberte **podnikové aplikace** > **všechny aplikace**.
 
-    ![Okno "Podnikové aplikace"][2]
+    ![Okno podnikové aplikace][2]
     
-1. Chcete-li přidat novou aplikaci, vyberte v horní části okna možnost **Nová aplikace.**
+1. Chcete-li přidat novou aplikaci, vyberte v horní části okna možnost **Nová aplikace** .
 
     ![Tlačítko Nová aplikace][3]
 
-1. Do vyhledávacího pole zadejte **E Sales Manager Remix**, vyberte v seznamu výsledků **položku E Sales Manager Remix** a pak vyberte **Přidat**.
+1. Do vyhledávacího pole zadejte **e Sales Manager Remix**, v seznamu výsledků vyberte **e Sales Manager Remix** a pak vyberte **Přidat**.
 
-    ![E Sales Manager Remix v seznamu výsledků](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_addfromgallery.png)
+    ![Remix E Sales Manageru v seznamu výsledků](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí remixu E Sales Manager, který je založen na testovacím uživateli s názvem "Britta Simon".
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí E Sales Manageru Remix, a to na základě testovacího uživatele s názvem "Britta Simon".
 
-Aby jednotné přihlašování fungovalo, azure ad potřebuje identifikovat uživatele Remix E Sales Manager a jeho protějšek ve službě Azure AD. Jinými slovy vztah propojení mezi uživatelem Azure AD a stejným uživatelem v Remix e Sales Manager musí být vytvořen.
+Aby bylo jednotné přihlašování fungovat, musí Azure AD identifikovat uživatele Remix E Sales Manageru a jeho protějšek ve službě Azure AD. Jinými slovy se musí zřídit vztah propojení mezi uživatelem služby Azure AD a stejným uživatelem v E-Remix.
 
-Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí remixu E Sales Manager, vyplňte stavební bloky v následujících pěti částech:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí E Sales Manageru Remix, dokončete stavební bloky v následujících pěti částech:
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-Povolte jednotné přihlašování Azure AD na webu Azure Portal a nakonfigurujte jednotné přihlašování v aplikaci E Sales Manager Remix následujícím způsobem:
+Povolte jednotné přihlašování Azure AD v Azure Portal a nakonfigurujte jednotné přihlašování v aplikaci E Sales Manager Remix pomocí následujícího postupu:
 
-1. Na portálu Azure na stránce integrace aplikací **Remix e Sales Manager** vyberte **Jednotné přihlašování**.
+1. V Azure Portal na stránce E- **Remix aplikace Insales Manageru** pro integraci aplikací vyberte **jednotné přihlašování**.
 
-    ![Odkaz "Jednotné přihlašování"][4]
+    ![Odkaz jednotného přihlašování][4]
 
-1. V okně **Jednotné přihlašování** vyberte v poli **Režim jednotného přihlašování** **přihlašování možnost Přihlašování na saml**.
+1. V okně **jednotného přihlašování** vyberte v poli **režim jednotného přihlašování** možnost **přihlašování založené na SAML**.
  
-    ![Okno "Jednotné přihlašování"](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_samlbase.png)
+    ![Okno jednotné přihlašování](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_samlbase.png)
 
-1. V části **E Sales Manager Remix Domain and URL**postupujte takto:
+1. V části **E Sales Manager Remix doména a adresy URL**proveďte tyto kroky:
 
-    ![E Sales Manager Remix Domény a adresy URL jednotné přihlašovací informace](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_url.png)
+    ![E Sales Manager Remix informace o jednotném přihlašování v doméně a adresách URL](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_url.png)
 
-    a. Do pole **Přihlašovací adresa URL** zadejte adresu URL v následujícím formátu: https:// *\<> na serveru/>/esales-pc\<*.
+    a. Do pole **přihlašovací adresa** URL zadejte adresu URL v následujícím formátu: *https://\<server-URL-based-URL>/\<subdomain>/eSales-PC*.
 
-    b. Do pole **Identifikátor** zadejte adresu URL v následujícím formátu: *\<https://\<>/ subdoménu https:// serverová adresa URL>/ subdoména*.
+    b. Do pole **identifikátor** zadejte adresu URL v následujícím formátu: *\<https://Server-\<URL-Based-URL>/subdomain>/*.
 
-    c. Všimněte si hodnoty **Identifikátor** pro pozdější použití v tomto kurzu.
+    c. Poznamenejte si hodnotu **identifikátoru** pro pozdější použití v tomto kurzu.
     
     > [!NOTE] 
-    > Předchozí hodnoty nejsou skutečné. Aktualizujte je skutečnou přihlašovací adresou URL a identifikátorem. Chcete-li získat hodnoty, obraťte se na [E Sales Manager Remix týmu podpory klienta](mailto:esupport@softbrain.co.jp).
+    > Předchozí hodnoty nejsou reálné. Aktualizujte je pomocí skutečné přihlašovací adresy URL a identifikátoru. Chcete-li získat hodnoty, obraťte se na [tým podpory E Sales Manager Remix Client support](mailto:esupport@softbrain.co.jp).
 
-1. V části **PODPISOVÝ Certifikát SAML**vyberte **certifikát (Base64)** a uložte soubor certifikátu do počítače.
+1. V části **podpisový certifikát SAML**vyberte **certifikát (Base64)** a pak soubor certifikátu uložte do počítače.
 
-    ![Odkaz ke stažení certifikátu (Base64)](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_certificate.png) 
+    ![Odkaz na stažení certifikátu (Base64)](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_certificate.png) 
 
-1. Zaškrtněte políčko **Zobrazit a upravte všechny ostatní atributy uživatele** a vyberte atribut **e-mailové adresy.**
+1. Zaškrtněte políčko **Zobrazit a upravit všechny ostatní atributy uživatele** a pak vyberte atribut **EmailAddress** .
     
-    ![Okno Uživatelské atributy](./media/esalesmanagerremix-tutorial/configure1.png)
+    ![Okno atributů uživatele](./media/esalesmanagerremix-tutorial/configure1.png)
 
-    Otevře se okno **Upravit atribut.**
+    Otevře se okno **Upravit atribut** .
 
-1. Zkopírujte hodnoty **Obor názvů** **a Název.** Vygenerujte hodnotu ve vzoru * \<Obor názvů>/\<Název>* a uložte ji pro pozdější použití v tomto kurzu.
+1. Zkopírujte **obor názvů** a hodnoty **názvu** . Vygenerujte hodnotu v * \<oboru názvů vzoru>/\<název>* a uložte ji pro pozdější použití v tomto kurzu.
 
     ![Okno Upravit atribut](./media/esalesmanagerremix-tutorial/configure2.png)
 
-1. V části **E Sales Manager Remix Configuration**vyberte Konfigurovat **remix E Sales Manager .**
+1. V části **E-Remix konfigurace aplikace Sales Manager**vyberte **Konfigurovat E Sales Manager Remix**.
 
-    ![Konfigurace remixu e manažera prodeje](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_configure.png) 
+    ![Remix konfigurace E Sales Manageru](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_configure.png) 
 
-    Otevře se okno **Konfigurovat přihlášení.**
+    Otevře se okno **Konfigurovat přihlašování** .
 
-1. V části **Stručný odkaz** zkopírujte adresu URL pro odhlášení a adresu URL služby jednotného přihlášení SAML.
+1. V části **rychlý odkaz** zkopírujte adresu URL pro odhlášení a adresu URL služby jednotného přihlašování SAML.
 
 1. Vyberte **Uložit**.
 
@@ -138,141 +138,141 @@ Povolte jednotné přihlašování Azure AD na webu Azure Portal a nakonfigurujt
 
 1. Přihlaste se k aplikaci E Sales Manager Remix jako správce.
 
-1. Vpravo nahoře vyberte **Nabídku Správce**.
+1. V pravém horním rohu vyberte **do nabídky Správce**.
 
-    ![Příkaz "Nabídka správce"](./media/esalesmanagerremix-tutorial/configure4.png)
+    ![Příkaz "do nabídky Správce"](./media/esalesmanagerremix-tutorial/configure4.png)
 
-1. V levém podokně vyberte **Nastavení** > systému Spolupráce s**externím systémem**.
+1. V levém podokně vyberte možnost **Nastavení** > systému**spolupráce s externím systémem**.
 
-    ![Odkazy "Nastavení systému" a "Spolupráce s externím systémem"](./media/esalesmanagerremix-tutorial/configure5.png)
+    ![Odkazy "Systémová nastavení" a "spolupráce s externím systémem"](./media/esalesmanagerremix-tutorial/configure5.png)
     
-1. V okně **Spolupráce s externím systémem** vyberte možnost **SAML**.
+1. V okně **spolupráce s externím systémem** vyberte **SAML**.
 
-    ![Okno "Spolupráce s externím systémem"](./media/esalesmanagerremix-tutorial/configure6.png)
+    ![Okno spolupráce s externím systémem](./media/esalesmanagerremix-tutorial/configure6.png)
 
-1. V části **nastavení ověřování SAML**postupujte takto:
+1. V části **nastavení ověřování SAML**udělejte toto:
 
-    ![Oddíl Nastavení ověřování SAML](./media/esalesmanagerremix-tutorial/configure3.png)
+    ![Oddíl nastavení ověřování SAML](./media/esalesmanagerremix-tutorial/configure3.png)
     
-    a. Zaškrtněte políčko **Verze počítače.**
+    a. Zaškrtněte políčko **verze počítače** .
     
-    b. V části **Položka Spolupráce** vyberte v rozevíracím seznamu **e-mail**.
+    b. V části **položka pro spolupráci** vyberte v rozevíracím seznamu možnost **e-mail**.
 
-    c. V poli **Položka Spolupráce** vložte hodnotu deklarace, kterou jste zkopírovali dříve z portálu Azure **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**(tj.
+    c. Do pole **položka pro spolupráci** vložte hodnotu deklarace identity, kterou jste zkopírovali dříve z Azure Portal (tj. **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**).
 
-    d. Do pole **Vydavatel (ID entity)** vložte hodnotu identifikátoru, kterou jste zkopírovali dříve z části **E Sales Manager Remix Domain and URL** na webu Azure Portal.
+    d. Do pole **Vystavitel (ID entity)** vložte hodnotu identifikátoru, kterou jste zkopírovali dříve z části **E Sales Manager Remix doména a adresy URL** v Azure Portal.
 
-    e. Pokud chcete stažený certifikát nahrát z webu Azure Portal, vyberte **Výběr souborů**.
+    e. Pokud chcete nahrát stažený certifikát z Azure Portal, vyberte **Výběr souboru**.
 
-    f. Do pole **přihlašovací adresa URL zprostředkovatele ID** vložte adresu URL služby jednotného přihlašování SAML, kterou jste zkopírovali dříve na webu Azure Portal.
+    f. Do pole **Adresa URL pro přihlášení poskytovatele ID** vložte adresu URL služby jednotného přihlašování SAML, kterou jste zkopírovali dříve v Azure Portal.
 
-    g. V poli **Adresa URL odhlášení zprostředkovatele identity** vložte hodnotu adresy URL odhlášení, kterou jste zkopírovali dříve na webu Azure Portal.
+    g. V poli **Adresa URL pro odhlášení zprostředkovatele identity** vložte hodnotu URL pro odhlášení, kterou jste zkopírovali dříve v Azure Portal.
 
-    h. Vyberte **Možnost Nastavení dokončeno**.
+    h. Vyberte **nastavení dokončeno**.
 
 > [!TIP]
-> Při nastavování aplikace si můžete přečíst stručnou verzi předchozích pokynů na [webu Azure Portal](https://portal.azure.com). Po přidání aplikace do části **Aplikace Active Directory** > **Enterprise Applications** vyberte kartu Jednotné **přihlašování** a pak získejte přístup k vložené dokumentaci v části **Konfigurace** v dolní části. Další informace o funkci vložené dokumentace naleznete v [tématu Integrovaná dokumentace služby Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Při nastavování aplikace si můžete přečíst stručnou verzi předchozích pokynů v [Azure Portal](https://portal.azure.com). Po přidání aplikace v části **Active Directory** > **Enterprise Applications** vyberte kartu **jednotné přihlašování** a pak přejděte do vložené dokumentace v části **Konfigurace** v dolní části. Další informace o funkci integrované dokumentace najdete v [dokumentaci k Azure AD Embedded]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-V této části vytvoříte testovací uživatele Britta Simon na webu Azure portal následujícím způsobem:
+V této části vytvoříte testovacího uživatele Britta Simon v Azure Portal následujícím způsobem:
 
 ![Vytvoření testovacího uživatele Azure AD][100]
 
-1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**.
 
-    ![Propojení služby Azure Active Directory](./media/paloaltoadmin-tutorial/create_aaduser_01.png)
+    ![Odkaz na Azure Active Directory](./media/paloaltoadmin-tutorial/create_aaduser_01.png)
 
-1. Chcete-li zobrazit seznam aktuálních uživatelů, vyberte **možnost Uživatelé a skupiny** > **Všichni uživatelé**.
+1. Chcete-li zobrazit seznam aktuálních uživatelů, vyberte možnost **Uživatelé a skupiny** > **Všichni uživatelé**.
 
-    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](./media/paloaltoadmin-tutorial/create_aaduser_02.png)
+    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](./media/paloaltoadmin-tutorial/create_aaduser_02.png)
 
 1. V horní části okna **Všichni uživatelé** vyberte **Přidat**.
 
     ![Tlačítko Přidat](./media/paloaltoadmin-tutorial/create_aaduser_03.png)
     
-    Otevře se okno **Uživatel.**
+    Otevře se okno **uživatel** .
 
-1. V okně **Uživatel** postupujte takto:
+1. V okně **uživatel** proveďte následující akce:
 
-    ![Okno Uživatel](./media/paloaltoadmin-tutorial/create_aaduser_04.png)
+    ![Okno uživatele](./media/paloaltoadmin-tutorial/create_aaduser_04.png)
 
-    a. Do pole **Název** zadejte **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon**.
 
-    b. Do pole **Uživatelské jméno** zadejte e-mailovou adresu uživatele Britty Simonové.
+    b. Do pole **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
 
-    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli **Heslo.**
+    c. Zaškrtněte políčko **Zobrazit heslo** a potom si poznamenejte hodnotu zobrazenou v poli **heslo** .
 
     d. Vyberte **Vytvořit**.
  
-### <a name="create-an-e-sales-manager-remix-test-user"></a>Vytvoření testovacího uživatele Remixu e Sales Managera
+### <a name="create-an-e-sales-manager-remix-test-user"></a>Vytvoření testovacího uživatele Remix E Sales Manageru
 
 1. Přihlaste se k aplikaci E Sales Manager Remix jako správce.
 
-1. V nabídce vpravo nahoře vyberte **Nabídku Správce.**
+1. V nabídce vpravo nahoře vyberte **nabídku správce** .
 
-    ![Konfigurace remixu e manažera prodeje](./media/esalesmanagerremix-tutorial/configure4.png)
+    ![Remix konfigurace E Sales Manageru](./media/esalesmanagerremix-tutorial/configure4.png)
 
-1. Vyberte **nastavení** > společnosti**Údržba oddělení a zaměstnanců**a pak vyberte **Zaměstnanci registrovaní**.
+1.  > Vyberte **nastavení vaší společnosti****Údržba oddělení a zaměstnanci**a pak vyberte **zaregistrované zaměstnance**.
 
-    ![Karta "Registrovaní zaměstnanci"](./media/esalesmanagerremix-tutorial/user1.png)
+    ![Karta registrované zaměstnanci](./media/esalesmanagerremix-tutorial/user1.png)
 
-1. V části **Registrace nového zaměstnance** postupujte takto:
+1. V části **Nová registrace zaměstnanců** proveďte následující kroky:
     
-    ![Oddíl "Registrace nového zaměstnance"](./media/esalesmanagerremix-tutorial/user2.png)
+    ![Oddíl "nové registrace zaměstnanců"](./media/esalesmanagerremix-tutorial/user2.png)
 
-    a. Do pole **Jméno zaměstnance** zadejte jméno uživatele (například **Britta**).
+    a. Do pole **název zaměstnance** zadejte jméno uživatele (například **Britta**).
 
-    b. Vyplňte zbývající povinná pole.
+    b. Vyplňte zbývající požadovaná pole.
     
-    c. Pokud povolíte SAML, správce se nemůže přihlásit ze přihlašovací stránky. Udělte uživateli oprávnění k přihlášení správce zaškrtnutím políčka **Přihlášení správce.**
+    c. Pokud povolíte SAML, správce se nemůže přihlásit na přihlašovací stránce. Udělte uživateli oprávnění k přihlášení, a to tak, že zaškrtne políčko **přihlášení správce** .
 
-    d. Vyberte **možnost Registrace**.
+    d. Vyberte možnost **registrace**.
 
-1. V budoucnu se chcete přihlásit jako správce, přihlásit se jako uživatel, který má oprávnění správce, a pak v pravém horním rohu vybrat **nabídku Správce**.
+1. V budoucnu se přihlaste jako správce a přihlaste se jako uživatel, který má oprávnění správce, a pak v pravém horním rohu vyberte **nabídku správce**.
 
-    ![Příkaz "Nabídka správce"](./media/esalesmanagerremix-tutorial/configure4.png)
+    ![Příkaz "do nabídky Správce"](./media/esalesmanagerremix-tutorial/configure4.png)
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte uživateli Britta Simon používat Azure jednotné přihlášení udělením přístupu k E Sales Manager Remix. Chcete-li tak učinit, postupujte takto: 
+V této části povolíte, aby uživatel Britta Simon pomocí jednotného přihlašování Azure udělil přístup k E-Remix k E Sales manažerovi. Uděláte to takto: 
 
 ![Přiřazení role uživatele][200] 
 
-1. Na webu Azure Portal otevřete zobrazení **Aplikace,** přejděte do zobrazení **Adresář** a vyberte **podnikové aplikace** > **Všechny aplikace**.
+1. V Azure Portal otevřete zobrazení **aplikace** , do zobrazení **adresář** a pak vyberte možnost **podnikové aplikace** > **všechny aplikace**.
 
-    ![Odkazy "Podnikové aplikace" a "Všechny aplikace"][201] 
+    ![Odkazy "podnikové aplikace" a "všechny aplikace"][201] 
 
-1. V seznamu **Aplikace** vyberte **možnost E Sales Manager Remix**.
+1. V seznamu **aplikace** vyberte **E Sales Manager Remix**.
 
-    ![Odkaz Remix manažera prodeje E](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_app.png)  
+    ![Remix odkaz E Sales Manageru](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_app.png)  
 
-1. V levém podokně vyberte **Možnost Uživatelé a skupiny**.
+1. V levém podokně vyberte **Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatelé a skupiny"][202]
+    ![Odkaz uživatelé a skupiny][202]
 
-1. Vyberte **Přidat** a potom v podokně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
+1. Vyberte **Přidat** a pak v podokně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
 
-    ![Podokno Přidat přiřazení][203]
+    ![Podokno přidat přiřazení][203]
 
-1. V okně **Uživatelé a skupiny** vyberte v seznamu **Uživatelé** **Brittu Simonovou**.
+1. V okně **Uživatelé a skupiny** vyberte v seznamu **Uživatelé** možnost **Britta Simon**.
 
-1. Vyberte tlačítko **Vybrat.**
+1. Vyberte tlačítko **Vybrat** .
 
-1. V okně **Přidat přiřazení** vyberte **Přiřadit**.
+1. V okně **Přidat přiřazení** vyberte **přiřadit**.
     
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu vyberete dlaždici Remix e Sales Manager, měli byste být automaticky přihlášeni k aplikaci E Sales Manager Remix.
+Po výběru dlaždice E Sales Manager Remix na přístupovém panelu byste měli být přihlášeni automaticky k aplikaci E Sales Manager Remix.
 
-Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
+Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

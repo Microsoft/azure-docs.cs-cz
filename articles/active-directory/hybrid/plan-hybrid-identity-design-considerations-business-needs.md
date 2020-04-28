@@ -1,6 +1,6 @@
 ---
-title: Požadavky na identitu pro návrh hybridní chod identity cloudu Azure | Dokumenty společnosti Microsoft
-description: Identifikujte obchodní potřeby společnosti, které vás povedou k definování požadavků na návrh hybridní identity.
+title: Požadavky na identitu pro návrh hybridní identity cloudu Azure | Microsoft Docs
+description: Identifikujte obchodní potřeby společnosti, které vám povedou k definování požadavků pro návrh hybridní identity.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,92 +18,92 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9ecc90e13f49c231d8d3ab0cff1de91443b80f21
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65950893"
 ---
-# <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>Určení požadavků na identitu pro řešení hybridní identity
-Prvním krokem při navrhování řešení hybridní identity je určení požadavků pro obchodní organizaci, která bude využívat toto řešení.  Hybridní identita začíná jako podpůrná role (podporuje všechna ostatní cloudová řešení poskytováním ověřování) a dále poskytuje nové a zajímavé funkce, které odemknou nové úlohy pro uživatele.  Tyto úlohy nebo služby, které chcete přijmout pro uživatele bude diktovat požadavky na návrh hybridní identity.  Tyto služby a úlohy je potřeba využít hybridní identity v místním prostředí i v cloudu.  
+# <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>Určení požadavků na identitu pro vaše řešení hybridní identity
+Prvním krokem při návrhu řešení hybridní identity je určení požadavků pro obchodní organizaci, které budou využívat toto řešení.  Hybridní identita se spouští jako podpůrná role (podporuje všechna ostatní cloudová řešení tím, že poskytuje ověřování) a přejde k poskytování nových a zajímavých možností, které pro uživatele odemknou nové úlohy.  Tyto úlohy nebo služby, které chcete pro uživatele přijmout, budou určovat požadavky na návrh hybridní identity.  Tyto služby a úlohy potřebují využívat hybridní identitu místně i v cloudu.  
 
-Musíte projít tyto klíčové aspekty podnikání pochopit, co je požadavek nyní a co společnost plánuje do budoucna. Pokud nemáte viditelnost dlouhodobé strategie pro návrh hybridní identity, je pravděpodobné, že vaše řešení nebude škálovatelné, protože obchodní potřeby rostou a mění se. Následující diagram ukazuje příklad architektury hybridní identity a úlohy, které jsou odemknuté pro uživatele. To je jen příklad všech nových možností, které lze odemknout a dodat s pevnou hybridní identitou strategie. 
+Abyste se seznámili s tím, co je teď požadavkem a co se v budoucnu plánuje společnost, musíte projít tyto klíčové aspekty firmy. Pokud nevidíte dlouhodobou strategii pro návrh hybridních identit, je pravděpodobné, že vaše řešení nebude škálovatelné podle toho, jak se budou obchodní potřeby růst a měnit. Následující diagram ukazuje příklad architektury hybridní identity a úloh, které jsou pro uživatele odemknuté. Toto je jenom příklad všech nových možností, které se dají odemknout a doručovat pomocí plné strategie hybridních identit. 
 
-Některé součásti, které jsou součástí ![hybridní architektury identity hybridní identity architektura identity](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png)
+Některé součásti, které jsou součástí architektury hybridní identity architektury ![hybridní identity](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png)
 
 ## <a name="determine-business-needs"></a>Určení obchodních potřeb
-Každá společnost bude mít různé požadavky, i když jsou tyto společnosti součástí stejného odvětví, skutečné obchodní požadavky se mohou lišit. Stále můžete využít osvědčené postupy z odvětví, ale nakonec je to obchodní potřeby společnosti, které vás povedou k definování požadavků na návrh hybridní identity. 
+Každá společnost bude mít různé požadavky, i když jsou tyto společnosti součástí stejného odvětví, skutečné obchodní požadavky se mohou lišit. Můžete i nadále využívat osvědčené postupy z odvětví, ale v konečném případě se jedná o obchodní potřeby společnosti, které vám pomohou určit požadavky pro návrh hybridní identity. 
 
-Ujistěte se, že jste odpověděli na následující otázky, abyste zjistili vaše obchodní potřeby:
+Nezapomeňte zodpovědět následující otázky, abyste identifikovali vaše obchodní potřeby:
 
-* Chce vaše společnost snížit provozní náklady na IT?
-* Hledá vaše společnost zabezpečení cloudových prostředků (aplikace SaaS, infrastruktura)?
-* Chce vaše společnost modernizovat vaše IT?
-  * Jsou vaši uživatelé mobilnější a požadují, aby IT vytvořilo výjimky do vašeho DMZ, aby umožnily přístup k různým zdrojům různého typu provozu?
-  * Má vaše společnost starší aplikace, které je třeba publikovat pro tyto moderní uživatele, ale není snadné je přepsat?
-  * Musí vaše společnost splnit všechny tyto úkoly a zároveň je dostat pod kontrolu?
-* Snaží se vaše společnost zabezpečit identitu uživatelů a snížit riziko tím, že přinese nové nástroje, které využívají odborné znalosti Microsoftu v oblasti zabezpečení Azure v místním prostředí?
-* Snaží se vaše společnost zbavit obávaných "externích" účtů v místním prostředí a přesunout je do cloudu, kde už nejsou spící hrozbou ve vašem místním prostředí?
+* Má vaše společnost vyjímat provozní náklady?
+* Hledají vaše společnost zabezpečení cloudových prostředků (aplikace SaaS, infrastruktura)?
+* Vyhledává vaše společnost modernizovat?
+  * Jsou vaši uživatelé větší mobilní a náročné na to, aby v DMZ vytvářeli výjimky, aby pro přístup k různým prostředkům mohl jiný typ provozu?
+  * Má vaše společnost starší verze aplikací, které je potřeba publikovat u těchto moderních uživatelů, ale nemůžete je snadno přepsat?
+  * Potřebuje vaše společnost plnit všechny tyto úlohy a přivést ji pod kontrolu ve stejnou dobu?
+* Je vaše společnost, která se pokouší zabezpečit identity uživatelů, a snižuje riziko tím, že přináší nové nástroje, které využijí odbornosti odbornosti zabezpečení Azure v místním prostředí?
+* Snaží se vaše společnost zbavit účty Dreaded "externí" v místním prostředí a přemístit je do cloudu, ve kterém už nepředstavuje neklidovou hrozbu v místním prostředí?
 
 ## <a name="analyze-on-premises-identity-infrastructure"></a>Analýza místní infrastruktury identit
-Teď, když máte představu o vašich obchodních požadavcích, musíte vyhodnotit místní infrastrukturu identit. Toto hodnocení je důležité pro definování technických požadavků na integraci aktuálního řešení identity do systému správy cloudových identit. Ujistěte se, že jste odpověděli na následující otázky:
+Teď, když máte představu o podnikových požadavcích vaší společnosti, musíte vyhodnotit svou místní infrastrukturu identity. Toto hodnocení je důležité pro definování technických požadavků pro integraci aktuálního řešení identity do systému správy cloudových identit. Nezapomeňte odpovědět na následující otázky:
 
-* Jaké řešení ověřování a autorizace používá vaše společnost místně? 
-* Má vaše společnost aktuálně nějaké místní synchronizační služby?
-* Používá vaše společnost nějaké poskytovatele identit (IdP) třetích stran?
+* Jaké řešení ověřování a autorizace vaše společnost používá místně? 
+* Má vaše společnost nyní nějaké místní synchronizační služby?
+* Používá vaše společnost poskytovatele identity třetích stran (IdP)?
 
-Musíte si také být vědomi cloudových služeb, které vaše společnost může mít. Provedení hodnocení pochopit aktuální integraci s Modely SaaS, IaaS nebo PaaS ve vašem prostředí je velmi důležité. Během tohoto hodnocení nezapomeňte odpovědět na následující otázky:
+Musíte být také vědomi cloudových služeb, které vaše společnost může mít. V rámci posouzení je důležité pochopit aktuální integraci s SaaS, IaaS nebo PaaS modely ve vašem prostředí. Během tohoto posouzení nezapomeňte odpovědět na tyto otázky:
 
 * Má vaše společnost nějakou integraci s poskytovatelem cloudových služeb?
-* Pokud ano, které služby jsou používány?
-* Je tato integrace v současné době ve výrobě, nebo je to pilot?
+* Pokud ano, jaké služby se používají?
+* Je tato integrace aktuálně v produkčním prostředí, nebo se jedná o pilotní nasazení?
 
 > [!NOTE]
-> Cloud Discovery analyzuje vaše záznamy o provozu podle katalogu cloudových aplikací microsoft cloudapp security více než 16 000 cloudových aplikací, které jsou hodnoceny a hodnoceny na základě více než 70 rizikových faktorů, aby vám poskytly průběžný přehled o používání cloudu, stínovém IT a riziku, které stínové IT představuje ve vaší organizaci. Další informace najdete v [tématu Nastavení zjišťování cloudu](/cloud-app-security/set-up-cloud-discovery).
+> Cloud Discovery analyzuje protokoly přenosů s využitím katalogu cloudových aplikací Microsoft Cloud App Security více než 16 000 cloudových aplikací, které jsou seřazené a vyhodnoceny na základě více než 70 rizikových faktorů, aby vám poskytovaly průběžné přehledy o používání cloudu, stínovém IT a rizikovém stínu, které do vaší organizace působí. Informace o tom, jak začít, najdete v tématu [nastavení Cloud Discovery](/cloud-app-security/set-up-cloud-discovery).
 > 
 > 
 
-## <a name="evaluate-identity-integration-requirements"></a>Vyhodnocení požadavků na integraci identity
-Dále je třeba vyhodnotit požadavky na integraci identity. Toto hodnocení je důležité definovat technické požadavky pro ověřování uživatelů, jak bude vypadat přítomnost organizace v cloudu, jak organizace umožní autorizaci a jaké bude uživatelské prostředí. Ujistěte se, že jste odpověděli na následující otázky:
+## <a name="evaluate-identity-integration-requirements"></a>Vyhodnotit požadavky na integraci identity
+Dále je nutné vyhodnotit požadavky na integraci identity. Toto vyhodnocení je důležité pro definování technických požadavků na to, jak se budou uživatelé ověřovat, jak bude činnost vaší organizace Hledat v cloudu, jak bude organizace umožňovat autorizaci a co bude činnost koncového uživatele. Nezapomeňte odpovědět na následující otázky:
 
 * Bude vaše organizace používat federaci, standardní ověřování nebo obojí?
-* Je federace požadavek?  Z následujících důvodu:
+* Je federace požadavek?  Z následujícího důvodu:
   * Jednotné přihlašování založené na protokolu Kerberos
-  * Vaše společnost má místní aplikace (buď integrované interní nebo třetí strany), které používají saml nebo podobné federační funkce.
-  * Vícefaktorové finanční karty prostřednictvím čipových karet. RSA SecurID, atd.
-  * Pravidla přístupu klienta, která řeší následující otázky:
-    1. Můžu zablokovat veškerý externí přístup k Office 365 na základě IP adresy klienta?
-    2. Můžu blokovat veškerý externí přístup k Office 365 kromě Exchange ActiveSync?
-    3. Můžu zablokovat veškerý externí přístup k Office 365, s výjimkou aplikací založených na prohlížeči (OWA, SPO)
-    4. Můžu zablokovat veškerý externí přístup k Office 365 pro členy určených skupin AD
-* Obavy týkající se bezpečnosti/auditu
+  * Vaše společnost má místní aplikace (buď integrované, nebo třetí strany), které využívají funkce SAML nebo podobné federace.
+  * MFA prostřednictvím čipových karet. RSA SecurID atd.
+  * Pravidla přístupu klienta, která řeší otázky níže:
+    1. Můžu všem externím přístupům k Office 365 blokovat přístup na základě IP adresy klienta?
+    2. Můžu zablokovat veškerý externí přístup k Office 365 s výjimkou Exchange ActiveSync?
+    3. Můžu zablokovat veškerý externí přístup k Office 365 s výjimkou aplikací založených na prohlížeči (OWA, SPO).
+    4. Můžu zablokovat veškerý externí přístup k Office 365 pro členy určených skupin AD.
+* Otázky zabezpečení/auditování
 * Již existující investice do federovaného ověřování
 * Jaký název bude naše organizace používat pro naši doménu v cloudu?
 * Má organizace vlastní doménu?
-  1. Je tato doména veřejná a snadno ověřitelná prostřednictvím SLUŽBY DNS?
-  2. Pokud tomu tak není, máte veřejnou doménu, kterou lze použít k registraci alternativního hlavního názvu domény ve službách AD?
-* Jsou identifikátory uživatelů konzistentní pro reprezentaci cloudu? 
-* Má organizace aplikace, které vyžadují integraci s cloudovými službami?
-* Má organizace více domén a budou všechny používat standardní nebo federované ověřování?
+  1. Je doména veřejná a snadno ověřitelná přes DNS?
+  2. Pokud ne, máte k dispozici veřejnou doménu, kterou je možné použít k registraci alternativního názvu UPN ve službě AD?
+* Jsou identifikátory uživatelů konzistentní pro cloudové vyjádření? 
+* Má organizace aplikace, které vyžadují integraci s Cloud Services?
+* Má organizace více domén a bude používat standardní nebo federované ověřování?
 
-## <a name="evaluate-applications-that-run-in-your-environment"></a>Vyhodnocení aplikací spuštěné ve vašem prostředí
-Teď, když máte představu o vaší místní a cloudové infrastruktuře, musíte vyhodnotit aplikace, které běží v těchto prostředích. Toto hodnocení je důležité definovat technické požadavky na integraci těchto aplikací do systému správy cloudových identit. Ujistěte se, že jste odpověděli na následující otázky:
+## <a name="evaluate-applications-that-run-in-your-environment"></a>Vyhodnotit aplikace, které běží ve vašem prostředí
+Teď, když máte představu o vaší místní i cloudové infrastruktuře, potřebujete vyhodnotit aplikace, které běží v těchto prostředích. Toto vyhodnocení je důležité pro definování technických požadavků pro integraci těchto aplikací do systému správy cloudových identit. Nezapomeňte odpovědět na následující otázky:
 
-* Kde budou naše přihlášky žít?
+* Kde budou naše aplikace živé?
 * Budou uživatelé přistupovat k místním aplikacím?  V cloudu? Nebo obojí?
-* Plánujete převzít existující úlohy aplikace a přesunout je do cloudu?
-* Existují plány na vývoj nových aplikací, které budou umístěny místně nebo v cloudu, který bude používat cloudové ověřování?
+* Existují nějaké plány, jak existující aplikační úlohy převzít a přesunout do cloudu?
+* Existují plány pro vývoj nových aplikací, které se budou nacházet v místním prostředí nebo v cloudu, které budou používat cloudové ověřování?
 
-## <a name="evaluate-user-requirements"></a>Vyhodnocení požadavků uživatelů
-Musíte také vyhodnotit požadavky uživatelů. Toto hodnocení je důležité definovat kroky, které budou potřebné pro on-boarding a pomoc uživatelům při přechodu do cloudu. Ujistěte se, že jste odpověděli na následující otázky:
+## <a name="evaluate-user-requirements"></a>Zhodnotit požadavky uživatelů
+Je také nutné vyhodnotit požadavky uživatele. Toto vyhodnocení je důležité pro definování kroků, které budou potřeba k tomu, aby se daly při přechodu do cloudu pomáhat uživatelům. Nezapomeňte odpovědět na následující otázky:
 
-* Budou uživatelé přistupovat k místním aplikacím?
+* Budou uživatelé přistupují k aplikacím v místním prostředí?
 * Budou uživatelé přistupovat k aplikacím v cloudu?
-* Jak se uživatelé obvykle přihlašují do svého místního prostředí?
-* Jak se uživatelé přihlásí do cloudu?
+* Jak se uživatelé obvykle přihlašují k místnímu prostředí?
+* Jak se uživatelé budou přihlašovat ke cloudu?
 
 > [!NOTE]
-> Každou odpověď si poznamenejte a ujistěte se, že dobře chápete důvody, které vás k ní vedly. [Určit požadavky na reakci na incidenty](plan-hybrid-identity-design-considerations-incident-response-requirements.md) půjde přes možnosti k dispozici a klady / zápory každé možnosti.  Tím, že odpověděl na tyto otázky, budete vybírat, která možnost nejlépe vyhovuje vašim obchodním potřebám.
+> Každou odpověď si poznamenejte a ujistěte se, že dobře chápete důvody, které vás k ní vedly. [Určení požadavků na reakci na incidenty](plan-hybrid-identity-design-considerations-incident-response-requirements.md) přejdou možnosti, které jsou k dispozici, a pro jednotlivé možnosti vyberte možnost odborníci/nevýhody.  Po zodpovězení těchto otázek si vyberete, která možnost nejlépe vyhovuje vašim obchodním potřebám.
 > 
 > 
 
@@ -111,5 +111,5 @@ Musíte také vyhodnotit požadavky uživatelů. Toto hodnocení je důležité 
 [Určení požadavků na synchronizaci adresářů](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)
 
 ## <a name="see-also"></a>Viz také
-[Přehled aspekty návrhu](plan-hybrid-identity-design-considerations-overview.md)
+[Přehled otázek návrhu](plan-hybrid-identity-design-considerations-overview.md)
 

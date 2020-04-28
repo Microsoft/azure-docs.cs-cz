@@ -1,6 +1,6 @@
 ---
-title: Problém s přihlášením na web přístupového panelu | Dokumenty společnosti Microsoft
-description: Pokyny k řešení problémů, se kterými se můžete setkat při pokusu o přihlášení k použití přístupového panelu
+title: Potíže s přihlášením k webu přístupového panelu | Microsoft Docs
+description: Pokyny k řešení problémů, se kterými se můžete setkat při pokusu o přihlášení k používání přístupového panelu
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,279 +17,279 @@ ms.author: mimart
 ms.reviwer: japere,asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a7c6a9c3f26c8939176197a2ecf2fcd6026e9928
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "65784311"
 ---
-# <a name="problem-signing-in-to-the-access-panel-website"></a>Problém s přihlášením na web přístupového panelu
+# <a name="problem-signing-in-to-the-access-panel-website"></a>Potíže s přihlašováním k webu přístupového panelu
 
-Přístupový panel je webový portál, který umožňuje uživateli, který má pracovní nebo školní účet ve službě Azure Active Directory (Azure AD) zobrazit a spustit cloudové aplikace, které jim správce Azure AD udělil přístup. Uživatel, který má edice Azure AD, může také používat samoobslužné možnosti správy skupin a aplikací prostřednictvím přístupového panelu. Přístupový panel je oddělený od portálu Azure a nevyžaduje, aby uživatelé měli předplatné Azure.
+Přístupový panel je webový portál, který umožňuje uživateli, který má pracovní nebo školní účet ve službě Azure Active Directory (Azure AD) zobrazovat a spouštět cloudové aplikace, ke kterým správce Azure AD udělil přístup. Uživatel, který má edice Azure AD, může pomocí přístupového panelu použít taky samoobslužnou skupinu a možnosti správy aplikací. Přístupový panel je oddělený od Azure Portal a nevyžaduje, aby uživatelé měli předplatné Azure.
 
-Uživatelé se můžou přihlásit k přístupovému panelu, pokud mají pracovní nebo školní účet ve službě Azure AD.
+Uživatelé se můžou přihlásit k přístupovému panelu, pokud mají ve službě Azure AD pracovní nebo školní účet.
 
--   Uživatelé mohou být ověřeni přímo službou Azure AD.
+-   Uživatele je možné ověřit přímo pomocí Azure AD.
 
--   Uživatelé mohou být ověřováni pomocí služby AD FS (AD FS).
+-   Uživatele lze ověřit pomocí Active Directory Federation Services (AD FS) (AD FS).
 
--   Uživatelé mohou být ověřeni službou Active Directory systému Windows Server.
+-   Uživatele lze ověřit pomocí služby Windows Server Active Directory.
 
-Pokud má uživatel předplatné pro Azure nebo Office 365 a používá portál Azure nebo aplikaci Office 365, bude moct přístupový panel používat bez problémů, aniž by se musel znovu přihlašovat. Uživatelé, kteří nejsou ověřeni, jsou vyzváni k přihlášení pomocí uživatelského jména a hesla pro svůj účet ve službě Azure AD. Pokud organizace nakonfigurovala federaci, stačí zadat uživatelské jméno.
+Pokud má uživatel předplatné pro Azure nebo Office 365 a používá Azure Portal nebo aplikaci Office 365, bude moct přístupovou panel snadno používat, aniž by se musel znovu přihlašovat. Uživatelům, kteří nejsou ověřeni, se zobrazí výzva, abyste se přihlásili pomocí uživatelského jména a hesla pro svůj účet ve službě Azure AD. Pokud má organizace nakonfigurovanou federaci, stačí zadat uživatelské jméno.
 
-## <a name="general-issues-to-check-first"></a>Obecné problémy, které je třeba nejprve zkontrolovat 
+## <a name="general-issues-to-check-first"></a>Obecné problémy k první kontrole 
 
 -   Ujistěte se, že se uživatel přihlašuje ke **správné adrese URL**:<https://myapps.microsoft.com>
 
--   Zkontrolujte, zda prohlížeč uživatele přidal adresu URL na **důvěryhodné servery.**
+-   Ujistěte se, že prohlížeč uživatele přidal adresu URL ke svým **důvěryhodným webům** .
 
--   Ujistěte se, že uživatelský účet je **povolen** pro přihlášení.
+-   Ujistěte se, že je **povolený** účet uživatele pro přihlášení.
 
--   Ujistěte se, že uživatelský účet **není uzamčen.**
+-   Ujistěte se, že účet uživatele není **uzamčený.**
 
--   Ujistěte se, že vypršela platnost hesla uživatele nebo zda **není zapomenuto.**
+-   Ujistěte se, že **heslo uživatele není prošlé nebo zapomenuté.**
 
--   Ujistěte se, že **vícefaktorové ověřování** neblokuje přístup uživatelů.
+-   Ujistěte se, že **Multi-Factor Authentication** neblokuje přístup uživatelů.
 
--   Ujistěte se, že **zásady podmíněného přístupu** nebo **zásady ochrany identity** neblokují přístup uživatelů.
+-   Zajistěte, aby **zásady podmíněného přístupu** nebo zásady **ochrany identit** neblokovaly přístup uživatelů.
 
--   Ujistěte se, že **kontaktní údaje** uživatele ověřování jsou aktuální, aby bylo možné vynucovat zásady vícefaktorového ověřování nebo podmíněného přístupu.
+-   Ujistěte se, že **kontaktní údaje pro ověření** uživatele jsou aktuální, aby bylo možné vyhovět Multi-Factor Authentication nebo zásadám podmíněného přístupu.
 
--   Zkuste také vymazat soubory cookie prohlížeče a znovu se přihlásit.
+-   Nezapomeňte taky vymazat soubory cookie v prohlížeči a zkusit se znovu přihlásit.
 
-## <a name="meeting-browser-requirements-for-the-access-panel"></a>Splnění požadavků prohlížeče na přístupovém panelu
+## <a name="meeting-browser-requirements-for-the-access-panel"></a>Požadavky prohlížeče schůzky na přístupový panel
 
-Přístupový panel vyžaduje prohlížeč, který podporuje JavaScript a má povoleno CSS. Chcete-li na přístupovém panelu používat jednotné přihlašování založené na heslech (SSO), musí být rozšíření přístupového panelu nainstalováno v prohlížeči uživatele. Toto rozšíření se stáhne automaticky, když uživatel vybere aplikaci, která je nakonfigurována pro zabezpečení založené na heslech.
+Přístupový panel vyžaduje prohlížeč, který podporuje jazyk JavaScript a je povolený pomocí šablon stylů CSS. Pokud chcete na přístupovém panelu použít jednotné přihlašování založené na heslech (SSO), musí se v prohlížeči uživatele nainstalovat rozšíření přístupového panelu. Toto rozšíření se stáhne automaticky, když uživatel vybere aplikaci, která je nakonfigurovaná pro jednotné přihlašování založené na heslech.
 
-Pro heslo založené na přisazože, prohlížeče koncového uživatele může být:
+V případě jednotného přihlašování založeného na heslech můžou být prohlížeče koncového uživatele:
 
--   Internet Explorer 8, 9, 10, 11 -- ve Windows 7 nebo novějším
+-   Internet Explorer 8, 9, 10, 11 – v systému Windows 7 nebo novějším
 
--   Microsoft Edge ve Windows 10 Anniversary Edition nebo novějším 
+-   Microsoft Edge ve Windows 10 výročí Edition nebo novějších verzích 
 
--   Chrome – ve Windows 7 nebo novějším a v MacOS X nebo novějším
+-   Chrome – v systému Windows 7 nebo novějším a na MacOS X nebo novějším
 
--   Firefox 26.0 nebo novější – v systému Windows XP SP2 nebo novějším a v systému Mac OS X 10.6 nebo novějším
+-   Firefox 26,0 nebo novější – v systému Windows XP SP2 nebo novějším a v Mac OS X 10,6 nebo novějším
 
 
 ## <a name="problems-with-the-users-account"></a>Problémy s uživatelským účtem
 
-Přístup k přístupovému panelu může být zablokován kvůli problému s uživatelským účtem. Níže jsou uvedeny některé způsoby, jak můžete řešit a řešit problémy s uživateli a jejich nastavení účtu:
+Přístup k přístupovému panelu může být zablokován z důvodu problému s uživatelským účtem. Níže jsou uvedeny některé způsoby, jak můžete řešit problémy s uživateli a jejich nastavení účtu:
 
--   [Kontrola, zda ve službě Azure Active Directory existuje uživatelský účet](#check-if-a-user-account-exists-in-azure-active-directory)
+-   [Ověřte, zda uživatelský účet existuje v Azure Active Directory](#check-if-a-user-account-exists-in-azure-active-directory)
 
--   [Kontrola stavu účtu uživatele](#check-a-users-account-status)
+-   [Zkontroluje stav účtu uživatele.](#check-a-users-account-status)
 
 -   [Resetování hesla uživatele](#reset-a-users-password)
 
--   [Povolení samoobslužného resetování hesla](#enable-self-service-password-reset)
+-   [Povolení samoobslužného resetování hesel](#enable-self-service-password-reset)
 
--   [Kontrola stavu vícefaktorového ověřování uživatele](#check-a-users-multi-factor-authentication-status)
+-   [Zkontroluje stav vícefaktorového ověřování uživatele.](#check-a-users-multi-factor-authentication-status)
 
--   [Kontrola kontaktních údajů uživatele pro ověřování](#check-a-users-authentication-contact-info)
+-   [Ověřit kontaktní údaje pro ověření uživatele](#check-a-users-authentication-contact-info)
 
--   [Kontrola členství uživatele ve skupinách](#check-a-users-group-memberships)
+-   [Ověřit členství uživatele ve skupinách](#check-a-users-group-memberships)
 
--   [Kontrola přiřazených licencí uživatele](#check-a-users-assigned-licenses)
+-   [Ověření licencí přiřazených uživateli](#check-a-users-assigned-licenses)
 
 -   [Přiřazení licence uživateli](#assign-a-user-a-license)
 
-### <a name="check-if-a-user-account-exists-in-azure-active-directory"></a>Kontrola, zda ve službě Azure Active Directory existuje uživatelský účet
+### <a name="check-if-a-user-account-exists-in-azure-active-directory"></a>Ověřte, zda uživatelský účet existuje v Azure Active Directory
 
-Chcete-li zkontrolovat, zda je k dispozici uživatelský účet, postupujte takto:
+Pokud chcete zjistit, jestli je uživatelský účet přítomen, postupujte takto:
 
-1.  Otevřete [**portál Azure**](https://portal.azure.com/) a přihlaste se jako globální **správce.**
+1.  Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím na Všechny **služby** v horní části hlavní nabídky navigace vlevo.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
-3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory"** a vyberte položku **Služby Azure Active Directory.**
+3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 
-4.  V navigační nabídce klikněte na **Uživatelé a skupiny.**
+4.  v navigační nabídce klikněte na **Uživatelé a skupiny** .
 
-5.  klepněte na položku **Všichni uživatelé**.
+5.  klikněte na **Všichni uživatelé**.
 
-6.  **Vyhledejte** uživatele, který vás zajímá, a **klikněte na řádek,** který chcete vybrat.
+6.  **Vyhledejte** uživatele, kterého vás zajímá, a **klikněte na řádek** , který chcete vybrat.
 
-7.  Zkontrolujte vlastnosti objektu uživatele a ujistěte se, že vypadají podle očekávání a chybí žádná data.
+7.  Zkontrolujte vlastnosti objektu uživatele, abyste měli jistotu, že vypadají podle očekávání a že nechybí žádná data.
 
-### <a name="check-a-users-account-status"></a>Kontrola stavu účtu uživatele
+### <a name="check-a-users-account-status"></a>Zkontroluje stav účtu uživatele.
 
-Chcete-li zkontrolovat stav účtu uživatele, postupujte takto:
+Chcete-li zjistit stav účtu uživatele, postupujte podle následujících kroků:
 
-1.  Otevřete [**portál Azure**](https://portal.azure.com/) a přihlaste se jako globální **správce.**
+1.  Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím na Všechny **služby** v horní části hlavní nabídky navigace vlevo.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
-3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory"** a vyberte položku **Služby Azure Active Directory.**
+3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 
-4.  V navigační nabídce klikněte na **Uživatelé a skupiny.**
+4.  v navigační nabídce klikněte na **Uživatelé a skupiny** .
 
-5.  klepněte na položku **Všichni uživatelé**.
+5.  klikněte na **Všichni uživatelé**.
 
-6.  **Vyhledejte** uživatele, který vás zajímá, a **klikněte na řádek,** který chcete vybrat.
+6.  **Vyhledejte** uživatele, kterého vás zajímá, a **klikněte na řádek** , který chcete vybrat.
 
-7.  klepněte na **položku Profil**.
+7.  klikněte na **profil**.
 
-8.  V části **Nastavení** zkontrolujte, zda je **přihlášení bloku** nastaveno na **ne**.
+8.  V části **Nastavení** zajistěte, aby se **blokování přihlášení** nastavilo na **ne**.
 
 ### <a name="reset-a-users-password"></a>Resetování hesla uživatele
 
-Chcete-li obnovit heslo uživatele, postupujte takto:
+Pokud chcete resetovat heslo uživatele, postupujte podle těchto kroků:
 
-1.  Otevřete [**portál Azure**](https://portal.azure.com/) a přihlaste se jako globální **správce.**
+1.  Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím na Všechny **služby** v horní části hlavní nabídky navigace vlevo.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
-3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory"** a vyberte položku **Služby Azure Active Directory.**
+3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 
-4.  V navigační nabídce klikněte na **Uživatelé a skupiny.**
+4.  v navigační nabídce klikněte na **Uživatelé a skupiny** .
 
-5.  klepněte na položku **Všichni uživatelé**.
+5.  klikněte na **Všichni uživatelé**.
 
-6.  **Vyhledejte** uživatele, který vás zajímá, a **klikněte na řádek,** který chcete vybrat.
+6.  **Vyhledejte** uživatele, kterého vás zajímá, a **klikněte na řádek** , který chcete vybrat.
 
-7.  klikněte na tlačítko **Obnovit heslo** v horní části podokna uživatele.
+7.  klikněte na tlačítko **resetovat heslo** v horní části podokna uživatele.
 
-8.  Klepněte na tlačítko **Obnovit heslo** v podokně **Obnovit heslo,** které se zobrazí.
+8.  klikněte na tlačítko **resetovat heslo** v podokně pro **resetování hesla** , které se zobrazí.
 
-9.  Zkopírujte **dočasné heslo** nebo **zadejte nové heslo** pro uživatele.
+9.  Zkopírujte **dočasné heslo** nebo **Zadejte nové heslo** pro uživatele.
 
-10. Sdělte toto nové heslo uživateli, bude nutné změnit toto heslo během jejich dalšího přihlášení do služby Azure Active Directory.
+10. Sdělte tomuto uživateli nové heslo. při příštím přihlášení do Azure Active Directory je nutné toto heslo změnit.
 
 ### <a name="enable-self-service-password-reset"></a>Povolení samoobslužného resetování hesel
 
-Chcete-li povolit samoobslužné resetování hesla, postupujte takto:
+Pokud chcete povolit samoobslužné resetování hesla, postupujte podle těchto kroků nasazení:
 
--   [Povolení uživatelům resetovat hesla služby Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
+-   [Povolit uživatelům resetovat hesla Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
--   [Povolení uživatelům resetovat nebo změnit místní hesla služby Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
+-   [Povolit uživatelům resetovat nebo změnit místní hesla služby Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
-### <a name="check-a-users-multi-factor-authentication-status"></a>Kontrola stavu vícefaktorového ověřování uživatele
+### <a name="check-a-users-multi-factor-authentication-status"></a>Zkontroluje stav vícefaktorového ověřování uživatele.
 
-Chcete-li zkontrolovat stav vícefaktorového ověřování uživatele, postupujte takto:
+Chcete-li zjistit stav vícefaktorového ověřování uživatele, postupujte takto:
 
-1. Otevřete [**portál Azure**](https://portal.azure.com/) a přihlaste se jako globální **správce.**
+1. Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 
-2. Otevřete **rozšíření Azure Active Directory** kliknutím na Všechny **služby** v horní části hlavní nabídky navigace vlevo.
+2. Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
-3. Do vyhledávacího pole filtru zadejte **"Azure Active Directory"** a vyberte položku **Služby Azure Active Directory.**
+3. Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 
-4. V navigační nabídce klikněte na **Uživatelé a skupiny.**
+4. v navigační nabídce klikněte na **Uživatelé a skupiny** .
 
-5. klepněte na položku **Všichni uživatelé**.
+5. klikněte na **Všichni uživatelé**.
 
-6. klikněte na tlačítko **Vícefaktorové ověřování** v horní části podokna.
+6. v horní části podokna klikněte na tlačítko **Multi-Factor Authentication** .
 
-7. Jakmile se **portál pro správu vícefaktorového ověřování** načte, ujistěte se, že jste na kartě **Uživatelé.**
+7. Po načtení **portálu pro správu Multi-Factor Authentication** se ujistěte, že jste na kartě **Uživatelé** .
 
-8. Vyhledejte uživatele v seznamu uživatelů vyhledáváním, filtrováním nebo řazením.
+8. Vyhledejte uživatele v seznamu uživatelů hledáním, filtrováním nebo řazením.
 
-9. Vyberte uživatele ze seznamu uživatelů a **povolit**, **zakázat**nebo **vynutit** vícefaktorové ověřování podle potřeby.
+9. Vyberte uživatele ze seznamu uživatelů a podle potřeby povolte, **zakažte** **nebo** **vypněte**službu Multi-Factor Authentication.
 
    >[!NOTE]
-   >Pokud je uživatel v **vynuceném** stavu, můžete jej nastavit na **zakázáno** dočasně, aby se vrátil do svého účtu. Jakmile jsou zpět, pak můžete změnit jejich stav **povoleno** znovu požadovat, aby znovu zaregistrovat své kontaktní informace během jejich další přihlášení. Případně můžete podle kroků v části [Kontrola ověřovacích kontaktních údajů uživatele](#check-a-users-authentication-contact-info) ověřit nebo nastavit tato data pro ně.
+   >Pokud je uživatel v **vykonatelném** stavu, můžete ho nastavit tak, aby se dočasně **zakázal** , aby se mohl vrátit ke svému účtu. Až budou zpátky, můžete změnit jejich stav na **povoleno** , aby bylo možné znovu zaregistrovat své kontaktní údaje při příštím přihlášení. Případně můžete postupovat podle pokynů v [kontaktních informacích k ověření uživatele](#check-a-users-authentication-contact-info) a ověřit nebo nastavit tato data.
    >
    >
 
-### <a name="check-a-users-authentication-contact-info"></a>Kontrola kontaktních údajů uživatele pro ověřování
+### <a name="check-a-users-authentication-contact-info"></a>Ověřit kontaktní údaje pro ověření uživatele
 
-Chcete-li zkontrolovat kontaktní údaje uživatele pro ověřování pomocí vícefaktorového ověřování, podmíněného přístupu, ochrany identity a resetování hesla, postupujte takto:
+Pokud chcete zjistit kontaktní údaje pro ověření uživatele, které se používají pro službu Multi-Factor Authentication, podmíněný přístup, ochranu identity a resetování hesel, postupujte podle těchto kroků:
 
-1.  Otevřete [**portál Azure**](https://portal.azure.com/) a přihlaste se jako globální **správce.**
+1.  Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím na Všechny **služby** v horní části hlavní nabídky navigace vlevo.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
-3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory"** a vyberte položku **Služby Azure Active Directory.**
+3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 
-4.  V navigační nabídce klikněte na **Uživatelé a skupiny.**
+4.  v navigační nabídce klikněte na **Uživatelé a skupiny** .
 
-5.  klepněte na položku **Všichni uživatelé**.
+5.  klikněte na **Všichni uživatelé**.
 
-6.  **Vyhledejte** uživatele, který vás zajímá, a **klikněte na řádek,** který chcete vybrat.
+6.  **Vyhledejte** uživatele, kterého vás zajímá, a **klikněte na řádek** , který chcete vybrat.
 
-7.  klepněte na **položku Profil**.
+7.  klikněte na **profil**.
 
-8.  Posuňte se dolů na **Informace o autentizaci**.
+8.  Přejděte dolů na **kontaktní údaje pro ověření**.
 
-9.  **Zkontrolujte** data registrovaná pro uživatele a podle potřeby aktualizujte.
+9.  **Zkontrolujte** data zaregistrovaná pro uživatele a podle potřeby je aktualizujte.
 
-### <a name="check-a-users-group-memberships"></a>Kontrola členství uživatele ve skupinách
+### <a name="check-a-users-group-memberships"></a>Ověřit členství uživatele ve skupinách
 
-Chcete-li zkontrolovat členství uživatele ve skupinách, postupujte takto:
+Pokud chcete ověřit členství uživatele ve skupině, postupujte podle těchto kroků:
 
-1.  Otevřete [**portál Azure**](https://portal.azure.com/) a přihlaste se jako globální **správce.**
+1.  Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím na Všechny **služby** v horní části hlavní nabídky navigace vlevo.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
-3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory"** a vyberte položku **Služby Azure Active Directory.**
+3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 
-4.  V navigační nabídce klikněte na **Uživatelé a skupiny.**
+4.  v navigační nabídce klikněte na **Uživatelé a skupiny** .
 
-5.  klepněte na položku **Všichni uživatelé**.
+5.  klikněte na **Všichni uživatelé**.
 
-6.  **Vyhledejte** uživatele, který vás zajímá, a **klikněte na řádek,** který chcete vybrat.
+6.  **Vyhledejte** uživatele, kterého vás zajímá, a **klikněte na řádek** , který chcete vybrat.
 
-7.  Kliknutím na **Skupiny** zobrazíte, ve kterých skupinách je uživatel členem.
+7.  Kliknutím na **skupiny** zobrazíte skupiny, kterých je uživatel členem.
 
-### <a name="check-a-users-assigned-licenses"></a>Kontrola přiřazených licencí uživatele
+### <a name="check-a-users-assigned-licenses"></a>Ověření licencí přiřazených uživateli
 
-Chcete-li zkontrolovat přiřazené licence uživatele, postupujte takto:
+Pokud chcete ověřit přiřazené licence uživatele, postupujte podle těchto kroků:
 
-1.  Otevřete [**portál Azure**](https://portal.azure.com/) a přihlaste se jako globální **správce.**
+1.  Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím na Všechny **služby** v horní části hlavní nabídky navigace vlevo.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
-3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory"** a vyberte položku **Služby Azure Active Directory.**
+3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 
-4.  V navigační nabídce klikněte na **Uživatelé a skupiny.**
+4.  v navigační nabídce klikněte na **Uživatelé a skupiny** .
 
-5.  klepněte na položku **Všichni uživatelé**.
+5.  klikněte na **Všichni uživatelé**.
 
-6.  **Vyhledejte** uživatele, který vás zajímá, a **klikněte na řádek,** který chcete vybrat.
+6.  **Vyhledejte** uživatele, kterého vás zajímá, a **klikněte na řádek** , který chcete vybrat.
 
-7.  Chcete-li zjistit, které licence uživatel aktuálně přiřadil, klepněte na **položku Licence.**
+7.  Kliknutím na **licence** zobrazíte licence, které uživatel aktuálně přiřadil.
 
 ### <a name="assign-a-user-a-license"></a>Přiřazení licence uživateli 
 
-Chcete-li uživateli přiřadit licenci, postupujte takto:
+K přiřazení licence uživateli použijte následující postup:
 
-1.  Otevřete [**portál Azure**](https://portal.azure.com/) a přihlaste se jako globální **správce.**
+1.  Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím na Všechny **služby** v horní části hlavní nabídky navigace vlevo.
+2.  Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
-3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory"** a vyberte položku **Služby Azure Active Directory.**
+3.  Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 
-4.  V navigační nabídce klikněte na **Uživatelé a skupiny.**
+4.  v navigační nabídce klikněte na **Uživatelé a skupiny** .
 
-5.  klepněte na položku **Všichni uživatelé**.
+5.  klikněte na **Všichni uživatelé**.
 
-6.  **Vyhledejte** uživatele, který vás zajímá, a **klikněte na řádek,** který chcete vybrat.
+6.  **Vyhledejte** uživatele, kterého vás zajímá, a **klikněte na řádek** , který chcete vybrat.
 
-7.  Chcete-li zjistit, které licence uživatel aktuálně přiřadil, klepněte na **položku Licence.**
+7.  Kliknutím na **licence** zobrazíte licence, které uživatel aktuálně přiřadil.
 
-8.  klikněte na tlačítko **Přiřadit.**
+8.  klikněte na tlačítko **přiřadit** .
 
 9.  Vyberte **jeden nebo více produktů** ze seznamu dostupných produktů.
 
-10. **Volitelně** klepněte na položku **možností přiřazení,** chcete-li granularly přiřadit produkty. Po dokončení klepněte na **tlačítko Ok.**
+10. **Volitelné** kliknutím na položku **možnosti přiřazení** podrobně přiřaďte produkty. Po dokončení klikněte na **OK** .
 
-11. Klepnutím na tlačítko **Přiřadit** přiřadíte tyto licence tomuto uživateli.
+11. Pro přiřazení těchto licencí tomuto uživateli klikněte na tlačítko **přiřadit** .
 
-## <a name="if-these-troubleshooting-steps-do-not-resolve-the-issue"></a>Pokud tyto kroky řešení potíží problém nevyřeší
+## <a name="if-these-troubleshooting-steps-do-not-resolve-the-issue"></a>Pokud tyto kroky pro řešení potíží problém nevyřeší
 
-otevřete lístek podpory s následujícími informacemi, pokud jsou k dispozici:
+Otevřete lístek podpory s následujícími informacemi, pokud jsou k dispozici:
 
 -   ID chyby korelace
 
--   UPN (e-mailová adresa uživatele)
+-   UPN (uživatelská e-mailová adresa)
 
 -   ID tenanta
 
 -   Typ prohlížeče
 
--   Časové pásmo a časový rámec během chyby
+-   Časové pásmo a čas/časový rámec při výskytu chyby
 
--   Fiddler stopy
+-   Fiddler trasování
 
 ## <a name="next-steps"></a>Další kroky
-[Poskytněte svým aplikacím jednotné přihlašování pomocí proxy aplikace](application-proxy-configure-single-sign-on-with-kcd.md)
+[Zajištění jednotného přihlašování k aplikacím pomocí proxy aplikací](application-proxy-configure-single-sign-on-with-kcd.md)

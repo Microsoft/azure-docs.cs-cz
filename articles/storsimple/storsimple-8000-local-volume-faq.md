@@ -1,6 +1,6 @@
 ---
-title: StorSimple místně vázaných svazků NEJČASTĚJŠÍ Dotazy| Dokumenty společnosti Microsoft
-description: Poskytuje odpovědi na často kladené otázky týkající se místně vázaných svazků StorSimple.
+title: Nejčastější dotazy k místně připnutém svazkům StorSimple | Microsoft Docs
+description: Obsahuje odpovědi na nejčastější dotazy týkající se StorSimple místně připnuté svazků.
 services: storsimple
 documentationcenter: NA
 author: manuaery
@@ -15,38 +15,38 @@ ms.workload: NA
 ms.date: 06/26/2017
 ms.author: manuaery
 ms.openlocfilehash: aa69d8b07d31b5cf0386e34c113475cbf4191891
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60319543"
 ---
-# <a name="storsimple-locally-pinned-volumes-frequently-asked-questions-faq"></a>StorSimple místně vázaných svazků: nejčastější dotazy (FAQ)
+# <a name="storsimple-locally-pinned-volumes-frequently-asked-questions-faq"></a>StorSimple místně připnuté svazky: nejčastější dotazy
 ## <a name="overview"></a>Přehled
-Následují otázky a odpovědi, které můžete mít při vytváření místně vázaný svazek StorSimple, převést vrstvený svazek na místně vázaný svazek (a naopak) nebo zálohovat a obnovit místně vázaný svazek.
+Tady jsou otázky a odpovědi, které byste mohli mít při vytváření StorSimple místně připnutého svazku, převedení vrstveného svazku na místně připojený svazek (a naopak) nebo zálohování a obnovení místně připojeného svazku.
 
-Otázky a odpovědi jsou uspořádány do následujících kategorií
+Otázky a odpovědi jsou uspořádané do následujících kategorií:
 
-* Vytvoření místně vázanýho svazku
+* Vytvoření místně připojeného svazku
 * Zálohování místně připnutého
-* Převod vrstveného svazku na místně vázaný svazek
-* Obnovení místně vázanýho svazku
-* Převzetí selhání nad místně vázaným svazkem
+* Převod vrstveného svazku na místně připojený svazek
+* Obnovení místně připojeného svazku
+* Převzetí služeb při selhání prostřednictvím místně připojeného svazku
 
-## <a name="questions-about-creating-a-locally-pinned-volume"></a>Otázky týkající se vytvoření místně připojeného svazku
-**Otázka:** Jaká je maximální velikost místně vázaných svazků, které lze vytvořit na zařízeních řady 8000?
+## <a name="questions-about-creating-a-locally-pinned-volume"></a>Otázky týkající se vytvoření místně připnutého svazku
+**Č.** Jaká je maximální velikost místně připojeného svazku, kterou můžu na zařízeních řady 8000 vytvořit?
 
-**A** Na zařízeních se systémem StorSimple 8000 Series Update 3.0 můžete zřídit místně vázaných svazků až 8,5 TB nebo vrstvené svazky až 200 TB na zařízení 8100. Větší zařízení 8600 umožňuje zřizovat místně vázané svazky o velikosti až 22.5 TB a vrstvené svazky o velikosti až 500 TB.
+**Na zařízeních** s StorSimple 8000 Series Update 3,0 můžete zřídit místně připojené svazky až do 8,5 TB nebo vrstvené svazky až do 200 TB na zařízení 8100. Větší zařízení 8600 umožňuje zřizovat místně vázané svazky o velikosti až 22.5 TB a vrstvené svazky o velikosti až 500 TB.
 
-**Otázka:** Nedávno jsem upgradoval své zařízení 8100 na aktualizaci 3.0 a když se snažím vytvořit místně vázaný svazek, maximální dostupná velikost je pouze 6 TB a ne 8.5 TB. Proč nelze vytvořit svazek 8,5 TB?
+**Č.** Nedávno jsme zařízení 8100 upgradovali na aktualizaci 3,0 a při pokusu o vytvoření místně připnutého svazku je maximální dostupná velikost jenom 6 TB a ne 8,5 TB. Proč nemůžu vytvořit svazek 8,5 TB?
 
-**A** Pokud je v zařízení spuštěna aktualizace 3.0, můžete na zařízení 8100 zřídit místně vázaných svazků až 8,5 TB nebo vrstvené svazky až 200 TB. Pokud vaše zařízení již má vrstvené svazky, bude místo, které je k dispozici pro vytvoření místně vázanýsvazek proporcionálně nižší než tento maximální limit. Pokud například na vašem zařízení 8100 (což je polovina vrstvené kapacity) již bylo zřízeno přibližně 106 TB vrstvených svazků, bude maximální velikost místního svazku, který můžete vytvořit na zařízení 8100, odpovídajícím způsobem snížena na 4 TB (zhruba maximální místně připnuté kapacity objemu).
+**Pokud je v zařízení** spuštěná aktualizace 3,0, můžete na zařízení s 8100 zřídit místně připojené svazky až do 8,5 TB nebo vrstvené svazky až do 200 TB. Pokud už vaše zařízení má vrstvené svazky, pak je dostupné místo pro vytvoření místně připnutého svazku, které je poměrně nižší než tento maximální limit. Pokud se třeba na zařízení 8100 zřídilo přibližně 106 TB vrstvených svazků (což je polovina vrstvené kapacity), pak se maximální velikost místního svazku, kterou můžete vytvořit v zařízení 8100, bude odpovídajícím způsobem snižovat na 4 TB (přibližně polovina maximální místně připnuté kapacity svazku).
 
-Vzhledem k tomu, že některé místní místo v zařízení se používá k hostování pracovní sady vrstvených svazků, dostupné místo pro vytvoření místně vázaný svazek se sníží, pokud má zařízení vrstvené svazky. Naopak vytvoření místně vázaný svazek úměrně snižuje dostupné místo pro vrstvené svazky. Následující tabulky shrnují dostupnou vrstvenou kapacitu na zařízeních 8100 a 8600 při vytvoření místně vázaných svazků.
+Vzhledem k tomu, že se k hostování pracovní sady vrstvených svazků používá jiné místo na zařízení, je dostupné místo pro vytvoření místně připnutého svazku, pokud má zařízení vrstvené svazky. Naopak při vytváření místně připnutého svazku se zmenší dostupný prostor pro vrstvené svazky. Následující tabulka shrnuje dostupnou vrstvenou kapacitu na zařízeních 8100 a 8600 při vytváření místně připnutého svazku.
 
-#### <a name="update-30"></a>Aktualizace 3.0 
+#### <a name="update-30"></a>Aktualizace 3,0 
 
-| Místně vázaných svazků zřízená kapacita | Dostupná kapacita pro vrstvené svazky – 8100 | Dostupná kapacita pro vrstvené objemy – 8600 |
+| Místně připojené svazky zřízené na kapacitu | Dostupná kapacita, která se zřídí pro vrstvené svazky – 8100 | Dostupná kapacita, která se zřídí pro vrstvené svazky – 8600 |
 | --- | --- | --- |
 | 0 |200 TB |500 TB |
 | 1 TB |176,5 TB |477,8 TB |
@@ -56,150 +56,150 @@ Vzhledem k tomu, že některé místní místo v zařízení se používá k hos
 | 15 TB |Není k dispozici |166,7 TB |
 | 22,5 TB |Není k dispozici |0 TB |
 
-**Otázka:** Proč je vytvoření místně vázaných svazků dlouho běžící operací?
+**Č.** Proč je místně připnuté vytvoření svazku dlouhodobě běžící operace?
 
-**A.** Místně vázaných svazků jsou hustě zřízené. Chcete-li vytvořit místo na místní vrstvy zařízení, některá data z existujícívrstvované svazky může být posunuta do cloudu během procesu zřizování. A protože to závisí na velikosti zřizovaného svazku, existujících datech v zařízení a dostupné šířce pásma do cloudu, může být doba potřebná k vytvoření místního svazku několik hodin.
+**Určitého.** Místně připnuté svazky jsou silným zajišťovány. Pokud chcete vytvořit místo na místních úrovních zařízení, můžou být během procesu zřizování do cloudu vložená nějaká data z existujících vrstvených svazků. A vzhledem k tomu, že to závisí na velikosti zřízeného svazku, o stávajících datech na vašem zařízení a dostupné šířce pásma v cloudu, čas potřebný k vytvoření místního svazku může trvat několik hodin.
 
-**Otázka:** Jak dlouho trvá vytvoření místně vázaný svazek?
+**Č.** Jak dlouho trvá vytvoření místně připojeného svazku?
 
-**A.** Vzhledem k tomu, že místně vázaných svazků jsou hustě zřízené, některá existující data z vrstvené svazky může být posunuta do cloudu během procesu zřizování. Doba potřebná k vytvoření místně vázanýsvazek proto závisí na několika faktorech, včetně velikosti svazku, dat v zařízení a dostupné šířky pásma. Na čerstvě nainstalovaném zařízení, které nemá žádné svazky, je čas vytvoření místně vázaný svazek přibližně 10 minut na terabajt dat. Vytvoření místních svazků však může trvat několik hodin na základě výše uvedených faktorů na zařízení, které je používáno.
+**Určitého.** Vzhledem k tomu, že místně připnuté svazky jsou silným zřizováním, můžou být během procesu zřizování do cloudu vložená nějaká existující data z vrstvených svazků. Čas potřebný k vytvoření místně připnutého svazku závisí na několika faktorech, včetně velikosti svazku, dat v zařízení a dostupné šířky pásma. Na zařízení, které nemá žádné svazky, je čas na vytvoření místně připnutého svazku asi 10 minut na terabajt dat. Vytváření místních svazků ale může trvat několik hodin, a to na základě výše popsaných faktorů na zařízení, které se používá.
 
-**Otázka:** Chcete vytvořit místně vázaný svazek. Existují nějaké osvědčené postupy, které musím znát?
+**Č.** Chci vytvořit místně připojený svazek. Existují nějaké osvědčené postupy, o kterých je potřeba vědět?
 
-**A.** Místně vázaných svazků jsou vhodné pro úlohy, které vyžadují místní záruky dat za všech okolností a jsou citlivé na latence cloudu. Při zvažování využití místních svazků pro některou z vašich úloh, mějte na paměti následující:
+**Určitého.** Místně připnuté svazky jsou vhodné pro úlohy, které vyžadují místní záruky dat a jsou citlivé na latence v cloudu. Při zvažování využití místních svazků pro jakékoli vaše úlohy mějte na paměti následující:
 
-* Místně vázaných svazků jsou hustě zřízené a vytváření místních svazků má vliv na dostupné místo pro vrstvené svazky. Proto doporučujeme začít s menšími svazky a vertikálně navýšit kapacitu, jak se zvýší váš požadavek na úložiště.
-* Zřizování místních svazků je dlouhotrvající operace, která může zahrnovat odesílání existujících dat z vrstvených svazků do cloudu. V důsledku toho může dojít ke snížení výkonu na těchto svazcích.
-* Zřizování místních svazků je časově náročná operace. Skutečný čas závisí na několika faktorech: velikosti zřizovaného svazku, datech v zařízení a dostupné šířce pásma. Pokud jste nezálohovali stávající svazky do cloudu, je vytváření svazku pomalejší. Doporučujeme, abyste před zřízením místního svazku pořizovali cloudové snímky stávajících svazků.
-* Existující vrstvené svazky můžete převést na místně vázaných svazků a tento převod zahrnuje zřizování místa na zařízení pro výsledný místně vázaný svazek (kromě snížení vrstvených dat, pokud existují, z cloudu). Opět se jedná o dlouho běžící operaci, která závisí na faktorech, které jsme diskutovali výše. Doporučujeme zálohovat stávající svazky před konverzí, protože proces bude ještě pomalejší, pokud stávající svazky nejsou zálohovány. Během tohoto procesu může dojít ke snížení výkonu zařízení.
+* Místně připnuté svazky se silným zřizováním a vytváření místních svazků ovlivňuje dostupný prostor pro vrstvené svazky. Proto doporučujeme začít s menším objemem svazků a navýšení kapacity v případě zvýšení požadavků na úložiště.
+* Zřizování místních svazků je dlouhodobá operace, která může zahrnovat vložení stávajících dat z vrstvených svazků do cloudu. V důsledku toho může dojít ke snížení výkonu na těchto svazcích.
+* Zřizování místních svazků je časově náročná operace. Skutečný čas, který je součástí, závisí na několika faktorech: na zřízeném svazku, na datech v zařízení a na dostupné šířce pásma. Pokud jste svoje stávající svazky nezálohovali do cloudu, je vytvoření svazku pomalejší. Před zřízením místního svazku doporučujeme, abyste provedli cloudové snímky stávajících svazků.
+* Existující vrstvené svazky můžete převést na místně připnuté svazky a tento převod zahrnuje zřizování místa na zařízení pro výsledný místně připojený svazek (navíc k tomu, že se z cloudu odnášejí vrstvená data). Znovu se jedná o dlouhodobou provozní operaci, která závisí na faktorech, které jsme probrali výše. Doporučujeme, abyste před převodem zálohovali existující svazky, protože proces bude ještě pomalejší, pokud se existující svazky nezálohují. Během tohoto procesu může dojít i ke snížení výkonu vašeho zařízení.
 
-Další informace o [vytvoření místně vázanýsvazek](storsimple-8000-manage-volumes-u2.md#add-a-volume)
+Další informace o tom, jak [vytvořit místně připojený svazek](storsimple-8000-manage-volumes-u2.md#add-a-volume)
 
-**Otázka:** Mohu vytvořit více místně vázaných svazků současně?
+**Č.** Můžu současně vytvořit několik místně připojených svazků?
 
-**A.** Ano, ale všechny místně vázaný svazek vytváření a rozšíření úlohy jsou zpracovávány postupně.
+**Určitého.** Ano, ale všechny místně připojené úlohy vytváření a expanze jsou zpracovávány postupně.
 
-Místně vázaných svazků jsou hustě zřízené a to vyžaduje vytvoření místního prostoru na zařízení (což může mít za následek existující data z vrstvené svazky, které mají být nabízeny do cloudu během procesu zřizování). Proto pokud probíhá úloha zřizování, ostatní úlohy vytváření místního svazku budou zařazeny do fronty, dokud nebude tato úloha dokončena.
+Místně připnuté svazky jsou silné a to vyžaduje vytvoření místního prostoru na zařízení (což může způsobit, že se do cloudu během procesu zřizování odešlou stávající data z vrstveného svazku). Proto pokud probíhá úloha zřizování, ostatní úlohy vytváření místních svazků budou zařazeny do fronty až do dokončení této úlohy.
 
-Podobně pokud se rozbaluje existující místní svazek nebo vrstvený svazek je převáděn na místně vázaný svazek, bude vytvoření nového místně vázanýho svazku zařazeno do fronty, dokud nebude dokončena předchozí úloha. Rozšíření velikosti místně vázaný svazek zahrnuje rozšíření existujícího místního prostoru pro tento svazek. Převod z vrstveného na místně vázaný svazek také zahrnuje vytvoření místního prostoru pro výsledný místně vázaný svazek. V obou těchto operacích je vytvoření nebo rozšíření místního prostoru dlouho běžící úlohou.
+Podobně platí, že pokud se rozbalí existující místní svazek nebo se vrstvený svazek převede na místně připojený svazek, vytvoří se nový místně připojený svazek do fronty, dokud se nedokončí předchozí úloha. Rozšiřování velikosti místně připnutého svazku zahrnuje rozšíření stávajícího místního prostoru pro daný svazek. Převod z vrstveného na místně připnutý svazek zahrnuje také vytvoření místního prostoru pro výsledný místně připojený svazek. V obou těchto operacích je vytvoření nebo rozšíření místního prostoru dlouhodobě spuštěná úloha.
 
-Tyto úlohy můžete zobrazit v okně **Úlohy** služby StorSimple Device Manager. Úloha, která je aktivně zpracovávána, je průběžně aktualizována tak, aby odrážela průběh zřizování prostoru. Zbývající místně vázaný svazek úlohy jsou označeny jako spuštěné, ale jejich průběh je zastaven a jsou vyskladněny v pořadí, ve kterých byly zařazeny do fronty.
+Tyto úlohy můžete zobrazit v okně **úlohy** služby StorSimple Device Manager. Úloha, která se aktivně zpracovává, se průběžně aktualizuje, aby odrážela průběh zřizování prostorů. Zbývající místně připojené svazky jsou označeny jako spuštěné, ale jejich průběh je zastavený a vybírají se v pořadí, ve kterém byly zařazeny do fronty.
 
-**Otázka:** Odstranil jsem místně vázaný svazek Proč se při pokusu o vytvoření nového svazku nezobrazí rekultivovaný prostor, který se odráží v dostupném prostoru?
+**Č.** Odstranil (a) jsem místně připojený svazek. Proč se mi při pokusu o vytvoření nového svazku nezobrazuje volné místo, které se odráží v dostupném prostoru?
 
-**A.** Pokud odstraníte místně vázaný svazek, místo, které je k dispozici pro nové svazky, nemusí být okamžitě aktualizováno. Služba StorSimple Device Manager aktualizuje místní prostor, který je k dispozici přibližně každou hodinu. Doporučujeme počkat hodinu, než se pokusíte vytvořit nový svazek.
+**Určitého.** Odstraníte-li místně připojený svazek, nebude možné okamžitě aktualizovat místo dostupné pro nové svazky. Služba StorSimple Device Manager aktualizuje místní prostor, který je k dispozici přibližně každou hodinu. Doporučujeme počkat na hodinu, než se pokusíte vytvořit nový svazek.
 
-**Otázka:** Jsou místně vázaných svazků podporovány na cloudovém zařízení?
+**Č.** Jsou místně připojené svazky podporované na cloudovém zařízení?
 
-**A.** Místně vázaných svazků nejsou podporovány na cloudovém zařízení (8010 a 8020 zařízení dříve označované jako virtuální zařízení StorSimple).
+**Určitého.** Místně připnuté svazky nejsou u cloudového zařízení podporované (8010 a 8020 zařízení dřív označovaná jako virtuální zařízení StorSimple).
 
-**Otázka:** Můžu pomocí rutin Azure PowerShellu vytvářet a spravovat místně připnuté svazky?
+**Č.** Můžu k vytváření a správě místně připnuté svazků použít rutiny Azure PowerShell?
 
-**A.** Ne, nemůžete vytvářet místně připnuté svazky prostřednictvím rutin Azure PowerShellu (jakýkoli svazek, který vytvoříte prostřednictvím Azure PowerShellu, je vrstvený). Doporučujeme také nepoužívat rutiny Prostředí Azure PowerShell k úpravám vlastností místně vázaný svazek, protože bude mít nežádoucí účinek úpravy typu svazku na vrstvený.
+**Určitého.** Ne, místně připojené svazky nemůžete vytvářet pomocí rutin Azure PowerShell (každý svazek, který vytvoříte přes Azure PowerShell, je vrstvený). Doporučujeme také, abyste rutiny Azure PowerShell nepoužívali k úpravě jakýchkoli vlastností místně připnutého svazku, protože bude mít neočekávaný účinek na změnu typu svazku na vrstvený.
 
-## <a name="questions-about-backing-up-a-locally-pinned-volume"></a>Otázky týkající se zálohování místně připojeného svazku
-**Otázka:** Jsou podporovány místní snímky místně vázaných svazků?
+## <a name="questions-about-backing-up-a-locally-pinned-volume"></a>Dotazy týkající se zálohování místně připojeného svazku
+**Č.** Podporují se místní snímky místně připnutého svazku?
 
-**A.** Ano, můžete pořizovat místní snímky místně vázaných svazků. Důrazně však doporučujeme, abyste pravidelně zálohovali místně připojené svazky pomocí cloudových snímků, abyste zajistili, že vaše data budou v případě havárie chráněna.
+**Určitého.** Ano, můžete převzít místní snímky místně připnuté svazků. Důrazně ale doporučujeme, abyste pravidelně zálohovali místně připojené svazky se síťovými snímky a zajistili, že jsou vaše data chráněná v případné havárii.
 
-Všimněte si, že místní snímky místně vázaných svazků můžete také vrstvy do cloudu a není zaručeno, že zůstane v místní vrstvě zařízení.
+Mějte na paměti, že místní snímky místně vázaných svazků můžou být také vrstveny na Cloud a nejsou zaručené zůstat v místní úrovni zařízení.
 
-**Otázka:** Existují nějaké pokyny pro správu místních snímků pro místně vázaných svazků?
+**Č.** Existují nějaké pokyny pro správu místních snímků pro místně připnuté svazky?
 
-**A.** Časté místní snímky spolu s vysokou rychlostí změn dat v místně vázaným svazku může způsobit rychlé spotřebování místního místa v zařízení a způsobit, že data z vrstvených svazků budou nabízena do cloudu. Proto doporučujeme minimalizovat počet místních snímků.
+**Určitého.** Časté místní snímky spolu s vysokou mírou četnosti změn dat na místně připojeném svazku můžou způsobit, že se místní prostor na zařízení rychle spotřebovává a vytvoří se data z vrstvených svazků, které se odešlou do cloudu. Proto navrhneme minimalizaci počtu místních snímků.
 
-**Otázka:** Zobrazila se upozornění, že místní snímky místně vázaných svazků mohou být zrušeny. Kdy se to může stát?
+**Č.** Zobrazila se mi výstraha oznamující, že je možné zrušit platnost místních snímků místně připojených svazků. Kdy k tomu může dojít?
 
-**A.** Časté místní snímky spolu s vysokou rychlostí změn dat v místně vázaný svazek může způsobit, že místní místo v zařízení rychle spotřebovávat. Pokud jsou místní vrstvy zařízení silně používány, může dojít k výpadku rozšířeného cloudu, že se zařízení zaplní a příchozí zápisy do svazku mohou mít za následek zneplatnění snímků (protože neexistuje žádné místo pro aktualizaci snímků tak, aby odkazovaly na starší bloky přepsána). V takové situaci zápisy do svazku bude nadále obsluhována, ale místní snímky může být neplatný. Neexistuje žádný vliv na vaše stávající snímky cloudu.
+**Určitého.** Časté místní snímky spolu s vysokou mírou četnosti změn dat na místně připojeném svazku můžou způsobit, že se místní prostor na zařízení bude spotřebovávat rychle. Pokud jsou místní vrstvy zařízení intenzivně využívány, může dojít k úplnému výpadku cloudu, protože se zařízení stane plným a příchozí zápisy do tohoto svazku mohou způsobit neplatnost snímků (vzhledem k tomu, že žádné místo neexistují k aktualizaci snímků, aby odkazovaly na starší bloky dat, které byly přepsány). V takové situaci se budou i nadále obsluhovat zápisy do svazku, ale místní snímky můžou být neplatné. Váš existující cloudový snímek nemá žádný vliv.
 
-Upozornění je upozornit, že taková situace může nastat a ujistěte se, že řešit stejné včas kontrolou místní snímky plány pořizovat méně časté místní snímky nebo odstranění starší místní snímky, které již nejsou vyžadovány.
+Upozornění výstrahy vás upozorní na to, že tato situace může nastat, a ujistěte se, že si provedete kontrolu vašich místních snímků, abyste měli méně časté místní snímky nebo odstranili starší místní snímky, které už nepotřebujete.
 
-Pokud jsou místní snímky zneplatněny, obdržíte informační výstrahu s upozorněním, že místní snímky pro konkrétní zásady zálohování byly zrušeny spolu se seznamem časových razítek místních snímků, které byly zrušeny. Tyto snímky se automaticky odstraní a už je nebudete moct zobrazit v okně **Katalogy zálohování** na webu Azure Portal.
+Pokud jsou místní snímky neověřené, obdržíte upozornění s informacemi o tom, že místní snímky pro konkrétní zásady zálohování byly neověřené vedle seznamu časových razítek místních snímků, jejichž platnost byla zrušena. Tyto snímky budou automaticky odstraněny a již je nebudete moci zobrazit v okně **katalogy zálohování** v Azure Portal.
 
-## <a name="questions-about-converting-a-tiered-volume-to-a-locally-pinned-volume"></a>Otázky týkající se převodu vrstveného svazku na místně vázaný svazek
-**Otázka:** Pozoruji určitou pomalost na zařízení při převodu vrstveného svazku na místně vázaný svazek. Proč se to děje?
+## <a name="questions-about-converting-a-tiered-volume-to-a-locally-pinned-volume"></a>Dotazy týkající se převedení vrstveného svazku na místně připojený svazek
+**Č.** V zařízení se zobrazuje zpomalení při převodu vrstveného svazku na místně připojený svazek. Proč se to děje?
 
-**A.** Proces převodu zahrnuje dva kroky:
+**Určitého.** Proces převodu zahrnuje dva kroky:
 
-1. Zřízení místa na zařízení pro brzy převedený místně vázaný svazek.
-2. Stahování všech vrstvených dat z cloudu, abyste zajistili místní záruky.
+1. Zřizování místa na zařízení pro místně připojený svazek, který je k disměněný
+2. Stažení všech vrstvených dat z cloudu za účelem zajištění místních záruk.
 
-Oba tyto kroky jsou dlouho běžící operace, které jsou závislé na velikosti převáděného svazku, data v zařízení a dostupné šířky pásma. Vzhledem k tomu, že některá data z existujících vrstvených svazků se mohou v rámci procesu zřizování vylít do cloudu, může během této doby dojít ke snížení výkonu zařízení. Kromě toho může být proces převodu pomalejší, pokud:
+Oba tyto kroky jsou dlouhodobě běžící operace, které jsou závislé na velikosti převáděného svazku, datech v zařízení a dostupné šířce pásma. Vzhledem k tomu, že některá data z existujících vrstvených svazků můžou být v rámci procesu zřizování přecházet do cloudu, může během této doby dojít v zařízení k nižšímu výkonu. Kromě toho může být proces převodu pomalejší, pokud:
 
-* Existující svazky nebyly zálohovány do cloudu; proto doporučujeme zálohovat svazky před zahájením konverze.
-* Byly použity zásady omezení šířky pásma, které mohou omezit dostupnou šířku pásma pro cloud; Proto doporučujeme mít vyhrazené připojení 40 Mb/s nebo více ke cloudu.
-* Proces převodu může trvat několik hodin kvůli více faktorům vysvětleným výše; Proto doporučujeme provést tuto operaci v době bez špičky nebo o víkendu, abyste se vyhnuli dopadu na koncové spotřebitele.
+* Existující svazky se nezálohují do cloudu. Proto doporučujeme zálohovat svazky před zahájením převodu.
+* Zásady omezování šířky pásma se používaly, což může omezit dostupnou šířku pásma na Cloud; Proto doporučujeme, abyste měli ke cloudu vyhrazené 40 MB/s nebo více připojení.
+* Proces převodu může trvat několik hodin, než je více faktorů vysvětleno výše. Proto doporučujeme, abyste tuto operaci provedli během nešpičky nebo po dobu víkendu, abyste se vyhnuli dopadu na koncové příjemce.
 
-Další informace o [převodu vrstveného svazku na místně vázaný svazek](storsimple-8000-manage-volumes-u2.md#change-the-volume-type)
+Další informace o tom, jak [převést vrstvený svazek na místně připojený svazek](storsimple-8000-manage-volumes-u2.md#change-the-volume-type)
 
-**Otázka:** Mohu operaci převodu svazku zrušit?
+**Č.** Můžu zrušit operaci převodu svazků?
 
-**A.** Ne, operaci převodu nelze zrušit po zahájení. Jak je popsáno v předchozí otázce, mějte prosím na paměti potenciální problémy s výkonem, se kterými se můžete během procesu setkat, a při plánování konverze postupujte podle výše uvedených doporučených postupů.
+**Určitého.** Ne, operaci převodu po zahájení nelze zrušit. Jak je popsáno v předchozí otázce, mějte na paměti potenciální problémy s výkonem, ke kterým může dojít během procesu, a při plánování konverze postupujte podle výše uvedených osvědčených postupů.
 
-**Otázka:** Co se stane s mým svazkem, pokud se operace převodu nezdaří?
+**Č.** Co se stane se svazkem v případě, že operace převodu selhává?
 
-**A.** Převod svazku může selhat z důvodu problémů s připojením ke cloudu. Zařízení může nakonec zastavit proces převodu po sérii neúspěšných pokusů o smělé množství dat z cloudu. V takovém případě bude typ svazku i nadále typ zdrojového svazku před převodem a:
+**Určitého.** Převod svazku může selhat kvůli problémům s cloudovým připojením. Zařízení může nakonec zastavit proces převodu po řadě neúspěšných pokusů o uvedení vrstvených dat z cloudu. V takovém scénáři bude typ svazku i nadále před převodem zdrojový typ svazku a:
 
-* Bude vyvolána kritická výstraha, která vás upozorní na selhání převodu svazku. Další informace o [výstrahách týkajících se místně vázaných svazků](storsimple-8000-manage-alerts.md#locally-pinned-volume-alerts)
-* Pokud převádíte vrstvené vrstvené na místně vázaný svazek, svazek bude nadále vykazovat vlastnosti vrstveného svazku, protože data mohou být stále umístěna v cloudu. Doporučujeme vyřešit problémy s připojením a potom opakovat operaci převodu.
-* Podobně při převodu z místně vázaný na vrstvený svazek selže, i když svazek bude označen jako místně vázaný svazek, bude fungovat jako vrstvený svazek (protože data mohla být rozlita do cloudu). Bude však i nadále zabírat místo na místních úrovních zařízení. Toto místo nebude k dispozici pro jiné místně vázaných svazků. Doporučujeme, abyste tuto operaci zopakovat, abyste zajistili, že převod svazku je dokončen a místní prostor v zařízení lze uvolnit.
+* Bude vyvolána kritická výstraha upozorňující na selhání převodu svazku. Další informace o [výstrahách souvisejících s místně připnuté svazky](storsimple-8000-manage-alerts.md#locally-pinned-volume-alerts)
+* Pokud převedete vrstvení na místně připojený svazek, svazek bude i nadále vykazovat vlastnosti vrstveného svazku, protože data se stále můžou nacházet v cloudu. Doporučujeme, abyste vyřešili problémy s připojením a pak znovu provedli operaci převodu.
+* Podobně platí, že když se převod z místně připnuté na vrstvený svazek nezdaří, i když bude tento svazek označený jako místně připojený svazek, bude fungovat jako vrstvený svazek (protože data by mohla být v cloudu předaná). Bude se ale dál zabírat místo na místních vrstvách zařízení. Tento prostor nebude k dispozici pro jiné místně připojené svazky. Doporučujeme, abyste tuto operaci provedli znovu, abyste zajistili, že je převod svazku dokončený, a místní prostor v zařízení může být uvolněný.
 
-## <a name="questions-about-restoring-a-locally-pinned-volume"></a>Otázky týkající se obnovení místně připojeného svazku
-**Otázka:** Jsou místně připnuté svazky obnoveny okamžitě?
+## <a name="questions-about-restoring-a-locally-pinned-volume"></a>Dotazy týkající se obnovení místně připnutého svazku
+**Č.** Jsou místně připojené svazky obnoveny hned?
 
-**A.** Ano, místně připnuté svazky jsou obnoveny okamžitě. Jakmile jsou informace o metadatech svazku v rámci operace obnovení vyžádány z cloudu, svazek je přepnut do režimu online a může k němu získat přístup hostitel. Místní záruky pro data svazku však nebudou k dispozici, dokud nebudou všechna data stažena z cloudu, a může dojít ke snížení výkonu těchto svazků po dobu trvání obnovení.
+**Určitého.** Ano, místně připojené svazky se okamžitě obnoví. Jakmile se v rámci operace obnovení z cloudu získávají informace o metadatech, svazek se přepne do online režimu a k němu může získat pøístup hostitel. Místní záruky pro data svazků ale nebudou k dispozici, dokud se všechna data nestáhnou z cloudu, a po dobu jejich obnovení se můžete setkat s nižším výkonem na těchto svazcích.
 
-**Otázka:** Jak dlouho trvá obnovení místně vázaný svazek?
+**Č.** Jak dlouho trvá obnovení místně připojeného svazku?
 
-**A.** Místně vázaných svazků jsou obnoveny okamžitě a přepnuty do režimu online, jakmile jsou informace o metadatech svazku načteny z cloudu, zatímco data svazku se nadále stahují na pozadí. Tato druhá část operace obnovení – získání zpět místní záruky pro data svazku - je dlouhotrvající operace a může trvat několik hodin pro všechna data, která mají být znovu místní. Doba potřebná k dokončení tohoto nástroje závisí na několika faktorech, jako je například velikost obnovovaného svazku a dostupná šířka pásma. Pokud byl původní svazek, který je obnovován, odstraněn, bude v rámci operace obnovení odebrán další čas na vytvoření místního místa v zařízení.
+**Určitého.** Místně připnuté svazky se okamžitě obnovují a přidají se do online režimu, jakmile se z cloudu načtou informace o metadatech svazku, zatímco data svazku se pořád stahují na pozadí. Toto je poslední část operace obnovení – probíhá vracení místních záruk pro data svazků – je dlouhodobá operace, která může trvat několik hodin, než se všechna data znovu připravují. Doba potřebná k dokončení stejného závisí na několika faktorech, například na velikosti obnoveného svazku a dostupné šířce pásma. Pokud je původní svazek, který se má obnovit, odstraněný, v rámci operace obnovení se v zařízení vytvoří další čas.
 
-**Otázka:** Potřebuji obnovit stávající místně vázaný svazek na starší snímek (pořízený při vrstvení svazku). Bude svazek v tomto případě obnoven jako vrstvený?
+**Č.** Potřebuji obnovit stávající místně připojený svazek do staršího snímku (pořízený při vrstvení svazku). Bude svazek obnovený v tomto případě v tomto případě?
 
-**A.** Ne, svazek bude obnoven jako místně vázaný svazek. Přestože snímek pochází z doby, kdy byl svazek vrstvený, při obnovení existujících svazků, StorSimple vždy používá typ svazku na disku tak, jak aktuálně existuje.
+**Určitého.** Ne, svazek se obnoví jako místně připojený svazek. I když jsou data snímku v době, kdy byla vrstva vrstvená, během obnovování stávajících svazků vždycky používá StorSimple typ svazku na disku, protože v tuto chvíli existuje.
 
-**Otázka:** Nedávno jsem rozšířil místně vázaný svazek, ale nyní potřebuji obnovit data do doby, kdy byl svazek menší. Bude obnovena změna velikosti aktuálního svazku a bude nutné po dokončení obnovení rozšířit velikost svazku?
+**Č.** V poslední době jsem přidaný místně připojený svazek, ale teď je potřeba obnovit data v době, kdy byla velikost svazku menší. Obnoví velikost aktuálního svazku a bude potřeba po dokončení obnovení zvětšit velikost svazku?
 
-**A.** Ano, obnovení změní velikost svazku a po dokončení obnovení bude nutné rozšířit velikost svazku.
+**Určitého.** Ano, obnovení změní velikost svazku a po dokončení obnovení bude nutné velikost svazku zvětšit.
 
-**Otázka:** Mohu během obnovení změnit typ svazku?
+**Č.** Můžu během obnovování změnit typ svazku?
 
-**A.** Ne, typ svazku nelze během obnovení změnit.
+**Určitého.** Ne, typ svazku se během obnovování nedá změnit.
 
-* Svazky, které byly odstraněny, jsou obnoveny jako typ uložený ve snímku.
-* Existující svazky jsou obnoveny na základě jejich aktuální typ, bez ohledu na typ uložený ve snímku (viz předchozí dvě otázky).
+* Svazky, které byly odstraněny, se obnoví jako typ uložený ve snímku.
+* Existující svazky jsou obnoveny na základě jejich aktuálního typu bez ohledu na typ uložený ve snímku (viz předchozí dvě otázky).
 
-**Otázka:** Potřebuji obnovit místně vázaný svazek, ale vybral jsem nesprávný bod v časovém snímku. Mohu zrušit aktuální operaci obnovení?
+**Č.** Potřebuji obnovit místně připojený svazek, ale ve snímku času jsem vybral nesprávný bod. Můžu zrušit aktuální operaci obnovení?
 
-**A.** Ano, můžete zrušit probíhající operaci obnovení. Stav svazku bude vrácena zpět do stavu na začátku obnovení. Všechny zápisy, které byly provedeny na svazku, zatímco obnovení probíhá budou ztraceny.
+**Určitého.** Ano, můžete zrušit probíhající operaci obnovení. Stav svazku se vrátí zpět do stavu na začátku obnovy. Všechny zápisy provedené na svazku během obnovování se ale ztratí.
 
-**Otázka:** Spustil jsem operaci obnovení na jednom z místních vázaných svazků a teď se v katalogu nevyřízených položek zobrazí snímek, který si nepamatuji vytváření. K čemu se to používá?
+**Č.** Zahájil (a) jsem operaci obnovení na jednom z místně připojených svazků a teď se zobrazuje snímek v katalogu nevyřízených položek, který se nevytváří znovu. K čemu slouží?
 
-**A.** Toto je dočasný snímek, který je vytvořen před operací obnovení a používá se pro vrácení zpět v případě, že obnovení je zrušeno nebo se nezdaří. Neodstraňujte tento snímek. po dokončení obnovení bude automaticky odstraněn. K tomuto chování může dojít, pokud úloha obnovení má pouze místně vázaných svazků nebo kombinaci místně vázaných a vrstvených svazků. Pokud úloha obnovení obsahuje pouze vrstvené svazky, toto chování nedojde.
+**Určitého.** Jedná se o dočasný snímek, který se vytvoří před operací obnovení a používá se pro vrácení zpět v případě, že se obnovení zruší nebo dojde k chybě. Tento snímek neodstraňujte; až se obnovení dokončí, automaticky se odstraní. K tomuto chování může dojít v případě, že úloha obnovení má jenom místně připnuté svazky nebo kombinaci místně připnutého a vrstveného svazku. Pokud úloha obnovení zahrnuje jenom vrstvené svazky, pak k tomuto chování nedojde.
 
-**Otázka:** Mohu klonovat místně vázaný svazek?
+**Č.** Můžu naklonovat místně připojený svazek?
 
-**A.** Ano, můžete. Místně vázaný svazek však bude ve výchozím nastavení klonován jako vrstvený svazek. Další informace o [klonování místně vázanýsvazek](storsimple-8000-clone-volume-u2.md)
+**Určitého.** Ano, můžete. Místně připojený svazek se ale ve výchozím nastavení naklonuje jako vrstvený svazek. Další informace o [naklonování místně připnutého svazku](storsimple-8000-clone-volume-u2.md)
 
-## <a name="questions-about-failing-over-a-locally-pinned-volume"></a>Otázky týkající se selhání nad místně vázaným svazkem
-**Otázka:** Potřebuji přepojit zařízení na jiné fyzické zařízení. Budou místně připnuté svazky přepojit jako místně připnuté nebo vrstvené?
+## <a name="questions-about-failing-over-a-locally-pinned-volume"></a>Dotazy týkající se převzetí služeb při selhání prostřednictvím místně připojeného svazku
+**Č.** Potřebuji převzít služby zařízení při selhání na jiné fyzické zařízení. Budou místní připojené svazky při převzetí služeb při selhání lokálně připnuté nebo vrstvené?
 
-**A.** Místně vázaných svazků se nezdaří jako místně připnuté, pokud cílové zařízení je spuštěna StorSimple 8000 série aktualizace 3 nebo vyšší.
+**Určitého.** Místně připnuté svazky se při převzetí služeb při selhání připnuté, pokud na cílovém zařízení běží StorSimple 8000 Series Update 3 nebo vyšší.
 
-Další informace o [převzetí služeb při selhání a zotavení po havárii místně vázaných svazků napříč verzemi](storsimple-8000-device-failover-disaster-recovery.md#device-failover-across-software-versions)
+Další informace o [převzetí služeb při selhání a zotavení po havárii na místně připojených svazcích v různých verzích](storsimple-8000-device-failover-disaster-recovery.md#device-failover-across-software-versions)
 
-**Otázka:** Jsou místně připnuté svazky okamžitě obnoveny během zotavení po havárii?
+**Č.** Jsou místně připojené svazky hned obnovené při zotavení po havárii (DR)?
 
-**A.** Ano, místně připnuté svazky se během převzetí služeb při selhání okamžitě obnoví. Jakmile jsou informace o metadatech svazku vrámci operace převzetí služeb při selhání vyžádány z cloudu, svazek se přepne do režimu online na cílovém zařízení a může k němu získat přístup hostitel. Mezitím data svazku bude i nadále stahovat na pozadí a může dojít ke snížení výkonu na těchto svazcích po dobu trvání převzetí služeb při selhání.
+**Určitého.** Ano, místně připnuté svazky se okamžitě obnovují během převzetí služeb při selhání. Jakmile se v rámci operace převzetí služeb při selhání načte z cloudu informace o metadatech, svazek se do cílového zařízení přepne do online režimu a k němu může získat pøístup hostitel. Mezitím se data svazků budou dál stahovat na pozadí a u těchto svazků po dobu jejich převzetí služeb při selhání může dojít ke snížení výkonu.
 
-**Otázka:** Vidím dokončenou úlohu převzetí služeb při selhání, jak lze sledovat průběh místně připnutého svazku, který se obnovuje na cílovém zařízení?
+**Č.** Zobrazuje se dokončená úloha převzetí služeb při selhání, jak můžu sledovat průběh místně připojeného svazku, který se na cílovém zařízení obnovuje?
 
-**A.** Během operace převzetí služeb při selhání je úloha převzetí služeb při selhání označena jako dokončená, jakmile budou všechny svazky v sadě převzetí služeb při selhání okamžitě obnoveny a převedeny do režimu online na cílovém zařízení. To zahrnuje všechny místně vázaných svazků, které mohly být převzetí mísení. Místní záruky dat však budou k dispozici pouze po stažení všech dat pro svazek. Tento průběh můžete sledovat pro každý místně vázaný svazek, který byl převzetí služeb při selhání, sledováním odpovídajících úloh obnovení, které jsou vytvořeny jako součást převzetí služeb při selhání. Tyto jednotlivé úlohy obnovení budou vytvořeny pouze pro místně vázaných svazků.
+**Určitého.** Během operace převzetí služeb při selhání je úloha převzetí služeb při selhání označena jako dokončená, jakmile se všechny svazky v sadě převzetí služeb při selhání okamžitě obnoví a přepne do stavu online na cílovém zařízení. To zahrnuje všechny místně připojené svazky, u kterých mohlo dojít k převzetí služeb při selhání. místní záruky dat ale budou k dispozici až po stažení všech dat pro daný svazek. Tento průběh můžete sledovat u každého místně připojeného svazku, u kterého došlo k převzetí služeb při selhání monitorováním odpovídajících úloh obnovení, které jsou vytvořené jako součást převzetí služeb při selhání. Tyto jednotlivé úlohy obnovení budou vytvořeny pouze pro místně připojené svazky.
 
-**Otázka:** Je možné změnit typ svazku během převzetí služeb při selhání?
+**Č.** Můžu změnit typ svazku během převzetí služeb při selhání?
 
-**A.** Ne, typ svazku nelze během převzetí služeb při selhání změnit. Pokud přejdete k převzetí softwaru do jiného fyzického zařízení, se kterým je spuštěna aktualizace řady StorSimple 8000 3, svazky budou převzetí mísa převzetí mů e-li na základě typu svazku uloženého ve snímku.
+**Určitého.** Ne, typ svazku nelze změnit během převzetí služeb při selhání. Pokud převezmete služby při selhání jiné fyzické zařízení se systémem StorSimple 8000 Series Update 3, převezmou se svazky na základě typu svazku uloženého ve snímku.
 
-**Otázka:** Můžu přepojit kontejner svazku s místně vázanými svazky do cloudového zařízení?
+**Č.** Můžu převzít služby kontejneru svazků s místně připnuté svazky na cloudové zařízení?
 
-**A.** Ano, můžete. Místně vázaných svazků bude převzetí s úspěšnou převzetí jako vrstvené svazky. Další informace o [převzetí služeb při selhání a zotavení po havárii místně vázaných svazků napříč verzemi](storsimple-8000-device-failover-disaster-recovery.md#common-considerations-for-device-failover)
+**Určitého.** Ano, můžete. Místně připnuté svazky se převezmou jako vrstvené svazky. Další informace o [převzetí služeb při selhání a zotavení po havárii na místně připojených svazcích v různých verzích](storsimple-8000-device-failover-disaster-recovery.md#common-considerations-for-device-failover)
 

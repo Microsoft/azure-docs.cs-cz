@@ -1,6 +1,6 @@
 ---
-title: Podporované prohlížeče pro Azure IoT Central | Dokumenty společnosti Microsoft
-description: K Azure IoT Central se dá přistupovat napříč moderními stolními počítači, tablety a prohlížeči. Tento článek popisuje seznam podporovaných prohlížečů.
+title: Podporované prohlížeče pro Azure IoT Central | Microsoft Docs
+description: K Azure IoT Central je možné přistupovat v moderních stolních počítačích, tabletech a prohlížečích. Tento článek popisuje seznam podporovaných prohlížečů.
 author: lmasieri
 ms.author: lmasieri
 ms.date: 04/24/2019
@@ -9,17 +9,17 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 7d9429507e39d975c5534e33052c56d77eeb3eb7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72949505"
 ---
 # <a name="supported-browsers-for-azure-iot-central"></a>Podporované prohlížeče pro Azure IoT Central
 
 *Tento článek je pro operátory, tvůrce a správce.*
 
-K Azure IoT Central se dá přistupovat na většině moderních stolních počítačů, tabletů a prohlížečů. Následující článek popisuje seznam podporovaných prohlížečů a požadované připojení.  
+K Azure IoT Central lze přistupovat v rámci většiny moderních stolních počítačů, tabletů a prohlížečů. Následující článek popisuje seznam podporovaných prohlížečů a požadované připojení.  
 
 ## <a name="supported-browsers"></a>Podporované prohlížeče
 Doporučujeme používat nejnovější prohlížeč, který je kompatibilní s vaším operačním systémem. Podporovány jsou následující prohlížeče:
@@ -29,4 +29,4 @@ Doporučujeme používat nejnovější prohlížeč, který je kompatibilní s v
 - Firefox (nejnovější verze)
 
 ## <a name="required-protocols"></a>Požadované protokoly
-Azure IoT Central vyžaduje, aby vaše síť podporovala protokoly HTTPS i WebSocket pro odchozí připojení.
+Azure IoT Central vyžaduje, aby vaše síť podporovala protokoly HTTPS a WebSocket pro odchozí připojení.

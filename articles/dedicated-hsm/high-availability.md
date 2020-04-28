@@ -1,6 +1,6 @@
 ---
-title: Vysoká dostupnost – Azure Dedicated HSM | Dokumenty společnosti Microsoft
-description: Azure Dedicated HSM příklad vysoké dostupnosti a základní aspekty
+title: Vysoká dostupnost – vyhrazený modul HARDWAROVÉho zabezpečení Azure | Microsoft Docs
+description: Příklad vysoké dostupnosti ve vyhrazeném HSM Azure a základní předpoklady
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -13,33 +13,33 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 536ef62acad900090924598edfa45450b2a8c951
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "70882250"
 ---
-# <a name="azure-dedicated-hsm-high-availability"></a>Azure Dedicated HSM vysoká dostupnost
+# <a name="azure-dedicated-hsm-high-availability"></a>Vysoká dostupnost služby HSM ve vyhrazeném Azure
 
-Azure Dedicated HSM je podpořena vysoce dostupnými datovými centry Microsoftu. Všechny vysoce dostupné datové centrum je však náchylné k lokalizované selhání a v extrémních případech selhání regionální úrovně. Společnost Microsoft nasazuje zařízení hsm v různých datových centrech v rámci oblasti, aby zajistila zřizování více zařízení nevede k tomu, že tato zařízení sdílejí jeden stojan. Další úroveň vysoké dostupnosti lze dosáhnout spárováním těchto souborů zásad zabezpečení v datových centrech v oblasti pomocí funkce Gemalto HA Group. Je také možné spárovat zařízení mezi oblastmi k řešení místní převzetí služeb při selhání v situaci zotavení po havárii. Díky této vícevrstvé konfiguraci s vysokou dostupností bude automaticky vyřešeno jakékoli selhání zařízení, aby aplikace fungovaly. Všechna datová centra mají také náhradní zařízení a komponenty na místě, takže jakékoli neúspěšné zařízení lze vyměnit včas.
+Vyhrazený modul HARDWAROVÉho zabezpečení Azure je nepřipojený k datovým centrům Microsoftu s vysokou dostupností. Jakékoli vysoce dostupné datacentrum je ale zranitelné kvůli lokalizovaným chybám a v extrémních případech při selhání regionální úrovně. Microsoft nasazuje zařízení HSM v různých datacentrech v rámci oblasti, aby se zajistilo, že zřizování více zařízení nevede k těmto zařízením, která sdílejí jeden stojan. Další úroveň vysoké dostupnosti je možné dosáhnout spárováním těchto HSM napříč datacentry v oblasti pomocí funkce skupiny identita Gemalto HA. Je také možné spárovat zařízení v různých oblastech a řešit regionální převzetí služeb při selhání v situacích zotavení po havárii. U této vysoce vrstvené konfigurace vysoké dostupnosti se všechna selhání zařízení budou automaticky adresovat, aby aplikace zůstaly v provozu. Všechna datová centra mají také náhradní zařízení a součásti na pracovišti, aby bylo možné jakékoli vadné zařízení nahradit včas.
 
 ## <a name="high-availability-example"></a>Příklad vysoké dostupnosti
 
-Informace o konfiguraci zařízení pro zabezpečení hsm pro vysokou dostupnost na úrovni softwaru naleznete v příručce "Gemalto Luna Network HSM Administration Guide". Tento dokument je k dispozici na [stránce Gemalto HSM .](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/)
+Informace o tom, jak nakonfigurovat zařízení HSM pro vysokou dostupnost na úrovni softwaru, najdete v příručce pro správu HSM identita Gemalto Luna Network HSM. Tento dokument je k dispozici na [stránce HSM identita Gemalto](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/).
 
-Následující diagram znázorňuje vysoce dostupnou architekturu. Používá více zařízení v oblasti a více zařízení spárovaných v samostatné oblasti. Tato architektura používá minimálně čtyři zařízení hsm a součásti virtuální sítě.
+Následující diagram znázorňuje architekturu s vysokou dostupností. Používá v oblasti více zařízení a několik zařízení se spáruje v samostatné oblasti. Tato architektura používá minimálně čtyři zařízení HSM a součásti virtuální sítě.
 
 ![Diagram vysoké dostupnosti](media/high-availability/high-availability.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Doporučuje se, aby všechny klíčové koncepty služby, jako je vysoká dostupnost a zabezpečení, jsou dobře pochopeny před zřizováním zařízení a návrhem nebo nasazením aplikací.
-Další témata na úrovni konceptu:
+Doporučuje se, abyste všechny klíčové koncepty služby, jako je vysoká dostupnost a zabezpečení, dobře pochopili ještě před zřizováním a navrhováním aplikací a jejich nasazením.
+Další témata o úrovni konceptu:
 
 * [Architektura nasazení](deployment-architecture.md)
 * [Fyzické zabezpečení](physical-security.md)
-* [Síťové služby](networking.md)
+* [Sítě](networking.md)
 * [Možnosti podpory](supportability.md)
-* [Sledování](monitoring.md)
+* [Monitorování](monitoring.md)
 
-Konkrétní podrobnosti o konfiguraci zařízení s pomocí hsm pro vysokou dostupnost naleznete na portálu podpory zákazníků Gemalto pro průvodce správcem a v části 6.
+Konkrétní podrobnosti o konfiguraci zařízení HSM pro vysokou dostupnost najdete na portálu zákaznických služeb identita Gemalto pro správce a v části 6.

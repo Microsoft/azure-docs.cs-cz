@@ -1,6 +1,6 @@
 ---
-title: Aspekty vytváření sítí – azure dedicated hsm | Dokumenty společnosti Microsoft
-description: Přehled aspekty sítě platné pro nasazení azure dedicated hsm
+title: Požadavky na síť – vyhrazený modul HARDWAROVÉho zabezpečení Azure | Microsoft Docs
+description: Přehled důležitých informací o sítích týkajících se vyhrazených nasazení HSM v Azure
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -13,75 +13,75 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
 ms.openlocfilehash: 044930c9df7b54515b9b66426a6b05aa9517a3a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "70881284"
 ---
-# <a name="azure-dedicated-hsm-networking"></a>Azure Vyhrazené sítě hardwarového zabezpečení
+# <a name="azure-dedicated-hsm-networking"></a>Vyhrazené sítě HSM v Azure
 
-Azure Dedicated HSM vyžaduje vysoce zabezpečené síťové prostředí. To platí bez ohledu na to, zda je z cloudu Azure zpět do it prostředí zákazníka (místně), pomocí distribuovaných aplikací nebo pro scénáře s vysokou dostupností. Azure Networking poskytuje to a existují čtyři odlišné oblasti, které je třeba řešit.
+Vyhrazený modul HARDWAROVÉho zabezpečení Azure vyžaduje vysoce zabezpečené síťové prostředí. To platí bez ohledu na to, jestli se z cloudu Azure zpátky do IT prostředí (místní), pomocí distribuovaných aplikací nebo scénářů s vysokou dostupností. Sítě Azure tuto službu nabízí a existují čtyři různé oblasti, které je potřeba řešit.
 
-- Vytváření zařízení hsm uvnitř virtuální sítě (Virtuální síť) v Azure
-- Připojení místních cloudových prostředků pro konfiguraci a správu zařízení hsm
-- Vytváření a propojování virtuálních sítí pro propojení aplikačních prostředků a zařízení hsm
-- Propojení virtuálních sítí napříč regiony pro vzájemnou komunikaci a také umožnění scénářů s vysokou dostupností
+- Vytváření zařízení HSM v rámci vaší Virtual Network (VNet) v Azure
+- Připojení místních prostředků ke cloudovým prostředkům pro konfiguraci a správu zařízení HSM
+- Vytváření a propojení virtuálních sítí pro připojení prostředků aplikací a zařízení HSM
+- Propojení virtuálních sítí v různých oblastech pro vzájemnou komunikaci a také pro zajištění scénářů s vysokou dostupností
 
-## <a name="virtual-network-for-your-dedicated-hsms"></a>Virtuální síť pro vyhrazené moduly hardwarového zabezpečení
+## <a name="virtual-network-for-your-dedicated-hsms"></a>Virtuální síť pro vyhrazené HSM
 
-Vyhrazené moduly hardwarového zabezpečení jsou integrovány do virtuální sítě a umístěny ve vlastní privátní síti zákazníků v Azure. To umožňuje přístup k zařízením z virtuálních počítačů nebo výpočetních prostředků ve virtuální síti.  
-Další informace o integraci služeb Azure do virtuální sítě a funkcí, které poskytuje, najdete v tématu [Dokumentace ke virtuální síti pro služby Azure.](../virtual-network/virtual-network-for-azure-services.md)
+Vyhrazené HSM jsou integrované do Virtual Network a umisťují se do vlastní privátní sítě Customers v Azure. To umožňuje přístup k zařízením z virtuálních počítačů nebo výpočetních prostředků ve virtuální síti.  
+Další informace o integraci služeb Azure do virtuální sítě a funkcí, které poskytuje, najdete v dokumentaci ke [službám Virtual Network pro Azure](../virtual-network/virtual-network-for-azure-services.md) .
 
 ### <a name="virtual-networks"></a>Virtuální sítě
 
-Před zřízením vyhrazené hojné hojného modulu hardwaru zařízení zákazníci budou muset nejprve vytvořit virtuální síť v Azure nebo použít tu, která již existuje v předplatném zákazníků. Virtuální síť definuje obvod zabezpečení pro vyhrazené zařízení hardwarového zabezpečení. Další informace o vytváření virtuálních sítí naleznete v [dokumentaci k virtuální síti](../virtual-network/virtual-networks-overview.md).
+Než zřídíte vyhrazené zařízení HSM, zákazníci nejdřív budou muset vytvořit Virtual Network v Azure nebo použít jiný, který už existuje v předplatném pro zákazníky. Virtuální síť definuje hraniční zabezpečení pro vyhrazené zařízení HSM. Další informace o vytváření virtuálních sítí najdete v tématu [dokumentace k virtuální síti](../virtual-network/virtual-networks-overview.md).
 
 ### <a name="subnets"></a>Podsítě
 
-Podsítě segmentvirtuální síť do samostatných adresprostorů použitelných prostředky Azure, které umístíte v nich. Vyhrazené moduly hardwarového zabezpečení jsou nasazeny do podsítě ve virtuální síti. Každé vyhrazené zařízení hardwarového zabezpečení, které je nasazeno v podsíti zákazníka, obdrží z této podsítě privátní IP adresu. Podsíť, ve které je zařízení hardwarového zabezpečení nasazeno, musí být explicitně delegována na službu: Microsoft.HardwareSecurityModules/dedicatedHSMs. To uděluje určitá oprávnění službě HSM pro nasazení do podsítě. Delegování na vyhrazené moduly hardwarového zabezpečení ukládá určitá omezení zásad pro podsíť. Skupiny zabezpečení sítě (NSG) a uživatelem definované trasy (UDR) nejsou v delegovaných podsítích aktuálně podporovány. V důsledku toho po delegování podsítě na vyhrazené moduly hardwarového zabezpečení, lze použít pouze k nasazení prostředků modulu hardwarového zabezpečení. Nasazení jiných prostředků zákazníka do podsítě se nezdaří.
+Podsítě segmentují virtuální síť do samostatných adresních prostorů použitelných prostředky Azure, které do nich umístíte. Vyhrazené HSM se nasadí do podsítě ve virtuální síti. Každé vyhrazené zařízení HSM, které je nasazeno v podsíti zákazníka, obdrží privátní IP adresu z této podsítě. Podsíť, ve které je nasazené zařízení HSM, musí být explicitně delegovaná na službu: Microsoft. HardwareSecurityModules/dedicatedHSMs. Tím je uděleno určité oprávnění ke službě HSM pro nasazení do podsítě. Delegování na vyhrazené HSM ukládá určitá omezení zásad v podsíti. Skupiny zabezpečení sítě (skupin zabezpečení sítě) a uživatelsky definované trasy (udr) aktuálně nejsou v delegovaných podsítích podporovány. V důsledku toho se po delegování podsítě na vyhrazené HSM dá použít jenom k nasazení prostředků HSM. Nasazení jakýchkoli dalších zákaznických prostředků do podsítě se nezdaří.
 
 
-### <a name="expressroute-gateway"></a>Brána ExpressRoute
+### <a name="expressroute-gateway"></a>ExpressRoute bránu
 
-Požadavkem aktuální architektury je konfigurace brány ER v podsíti zákazníků, kde musí být umístěno zařízení s modulu hesm, aby bylo možné zařízení modulu zabezpečení do Azure. Tuto bránu ER nelze využít pro připojení místních umístění k zákazníkům zařízení hsm zákazníků v Azure.
+Požadavek aktuální architektury je konfigurací brány ER v podsíti zákazníků, kde je nutné umístit zařízení HSM, aby bylo možné povolit integraci zařízení HSM do Azure. Tuto bránu ER nejde využít k připojení místních umístění k zařízením HSM pro zákazníky v Azure.
 
-## <a name="connecting-your-on-premises-it-to-azure"></a>Propojení místního IT s Azure
+## <a name="connecting-your-on-premises-it-to-azure"></a>Připojení místního prostředí k Azure
 
-Při vytváření cloudových prostředků je typickým požadavkem pro privátní připojení zpět k místním it prostředkům. V případě vyhrazeného modulu hardwarového zabezpečení to bude převážně pro klientský software modulu hardwarového zabezpečení pro konfiguraci zařízení hardwarového zabezpečení a také pro činnosti, jako jsou zálohování a vytažení protokolů z modulů hardwarového zabezpečení pro analýzu. Klíčovým bodem rozhodnutí je zde povaha připojení, protože existují možnosti.  Nejflexibilnější možností je síť VPN site-to-site, protože pravděpodobně bude existovat více místních prostředků, které vyžadují zabezpečenou komunikaci s prostředky (včetně modulů zabezpečení) v cloudu Azure. To bude vyžadovat, aby organizace zákazníka měla zařízení VPN pro usnadnění připojení. Připojení VPN z bodu na místní místo lze použít, pokud existuje pouze jeden koncový bod v místním prostředí, například jedna pracovní stanice pro správu.
-Další informace o možnostech připojení naleznete v tématu [možnosti plánování brány VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable).
+Při vytváření cloudových prostředků je obvyklým požadavkem pro privátní připojení zpátky k místním IT prostředkům. V případě vyhrazeného modulu HARDWAROVÉho zabezpečení (HSM) bude mít klientský software HSM konfiguraci zařízení HSM a také aktivity, jako jsou například zálohy a protokoly o přijetí změn z HSM k analýze. Klíčový bod rozhodování je povaha připojení, protože existují možnosti.  Nejpružnější možností je síť VPN typu Site-to-site, protože se bude pravděpodobně jednat o více místních prostředků, které vyžadují zabezpečenou komunikaci s prostředky (včetně HSM) v cloudu Azure. Tato akce vyžaduje, aby organizace zákazníka měla k usnadnění připojení zařízení VPN. Připojení VPN typu Point-to-site lze použít, pokud je k dispozici pouze jeden místní koncový bod, například jedna pracovní stanice pro správu.
+Další informace o možnostech připojení najdete v tématu [VPN Gateway možností plánování](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable).
 
 > [!NOTE]
-> V tuto chvíli ExpressRoute není možnost pro připojení k místním prostředkům. Je třeba také poznamenat, že brána ExpressRoute používaná výše, není pro připojení k místní infrastruktuře.
+> V současné době ExpressRoute není možnost připojení k místním prostředkům. Měla by se také poznamenat, že brána ExpressRoute použitá jak je popsaná výše, není pro připojení k místní infrastruktuře.
 
 ### <a name="point-to-site-vpn"></a>Point-to-site VPN
 
-Virtuální privátní síť point-to-site je nejjednodušší formou zabezpečeného připojení k jedinému koncovému bodu v místním prostředí. To může být relevantní, pokud máte v úmyslu mít jenom jednu pracovní stanici pro správu pro vyhrazené moduly hardwarového zabezpečení založené na Azure.
+Virtuální privátní síť typu Point-to-site je nejjednodušší forma zabezpečeného připojení k jednomu koncovému bodu v místním prostředí. To může být důležité, pokud máte v úmyslu mít pro vyhrazené HSM založené na Azure jenom jednu pracovní stanici pro správu.
 
 ### <a name="site-to-site-vpn"></a>Site-to-site VPN
 
-Virtuální privátní síť site-to-site umožňuje zabezpečenou komunikaci mezi vyhrazenými moduly hardwarového zabezpečení založenými na Azure a místními IT. Důvodem k tomu je mít záložní zařízení pro místní server zabezpečení a potřebují připojení mezi těmito dvěma pro spuštění zálohy.
+Virtuální privátní síť typu Site-to-site umožňuje zabezpečenou komunikaci mezi vyhrazenými HSM založenými na Azure a místním prostředím. Důvodem je, že se jedná o zálohovací zařízení pro místní modul hardwarového zabezpečení (HSM), které vyžaduje připojení mezi dvěma pro spuštění zálohování.
 
 ## <a name="connecting-virtual-networks"></a>Připojení virtuálních sítí
 
-Typická architektura nasazení pro vyhrazený modul hardwarového zabezpečení bude začínat s jedinou virtuální sítí a odpovídající podsítí, ve které jsou vytvořena a zřízena zařízení hardwarového zabezpečení. V rámci stejné oblasti může být další virtuální sítě a podsítě pro součásti aplikace, které by využívaly vyhrazený modul hardwarového zabezpečení. K povolení komunikace v těchto sítích používáme partnerský vztah virtuální sítě.
+Typická architektura nasazení pro vyhrazený modul HARDWAROVÉho zabezpečení spustí jednu virtuální síť a odpovídající podsíť, ve které se vytvoří a zřídí zařízení HSM. V rámci stejné oblasti může být pro součásti aplikací, které by používaly vyhrazený modul HARDWAROVÉho zabezpečení, také další virtuální sítě a podsítě. Pokud chcete povolit komunikaci mezi těmito sítěmi, používáme Virtual Network partnerský vztah.
 
 ### <a name="virtual-network-peering"></a>Partnerské vztahy virtuálních sítí
 
-Pokud existuje více virtuálních sítí v rámci oblasti, které potřebují přístup k navzájem prostředky, partnerský vztah virtuální sítě lze vytvořit zabezpečené komunikační kanály mezi nimi.  Partnerský vztah virtuální sítě poskytuje nejen zabezpečenou komunikaci, ale také zajišťuje připojení s nízkou latencí a vysokou šířkou pásma mezi prostředky v Azure.
+Pokud je v oblasti více virtuálních sítí, které potřebují přístup k prostředkům dalších zdrojů, můžete k vytváření zabezpečených komunikačních kanálů mezi nimi použít Virtual Network partnerský vztah.  Partnerský vztah virtuálních sítí poskytuje nejen zabezpečenou komunikaci, ale taky zajišťuje připojení s nízkou latencí a velkou šířkou pásma mezi prostředky v Azure.
 
-![partnerský vztah v síti](media/networking/peering.png)
+![partnerský vztah k síti](media/networking/peering.png)
 
-## <a name="connecting-across-azure-regions"></a>Připojení napříč oblastmi Azure
+## <a name="connecting-across-azure-regions"></a>Připojení přes oblasti Azure
 
-Zařízení s hsm mají možnost prostřednictvím softwarových knihoven přesměrovat provoz na alternativní hsm. Přesměrování provozu je užitečné v případě, že zařízení selžou nebo dojde ke ztrátě přístupu k zařízení. Scénáře selhání na regionální úrovni lze zmírnit nasazením hsm v jiných oblastech a povolením komunikace mezi virtuálními sítěmi napříč oblastmi.
+Zařízení HSM mají schopnost přes knihovny softwaru přesměrovat provoz do alternativního HSM. Přesměrování provozu je užitečné v případě, že dojde ke ztrátě zařízení nebo k výpadku zařízení. Scénáře selhání na regionální úrovni je možné zmírnit nasazením HSM do jiných oblastí a povolením komunikace mezi virtuálními sítěmi v různých oblastech.
 
-### <a name="cross-region-ha-using-vpn-gateway"></a>Ha pro návlašovou oblast s bránou VPN
+### <a name="cross-region-ha-using-vpn-gateway"></a>HA v různých oblastech pomocí brány VPN
 
-U globálně distribuovaných aplikací nebo pro scénáře převzetí služeb při selhání s vysokou dostupností je nutné připojit virtuální sítě napříč oblastmi. Díky vyhrazenému modulu hardwarového zabezpečení Azure lze dosáhnout vysoké dostupnosti pomocí brány VPN, která poskytuje zabezpečené tunelové propojení mezi dvěma virtuálními sítěmi. Další informace o připojeních v síti Vnet-to-Vnet pomocí brány VPN najdete v článku s názvem [Co je brána VPN?](../vpn-gateway/vpn-gateway-about-vpngateways.md#V2V)
+U globálně distribuovaných aplikací nebo pro regionální scénáře převzetí služeb při selhání s vysokou dostupností je potřeba propojit virtuální sítě napříč různými oblastmi. S vyhrazeným modulem HARDWAROVÉho zabezpečení Azure je možné dosáhnout vysoké dostupnosti pomocí VPN Gateway, která poskytuje zabezpečené tunelové propojení mezi oběma virtuálními sítěmi. Další informace o připojeních VNet-to-VNet pomocí VPN Gateway naleznete v článku s názvem [co je VPN Gateway?](../vpn-gateway/vpn-gateway-about-vpngateways.md#V2V)
 
 > [!NOTE]
-> Globální partnerský vztah virtuální sítě není k dispozici ve scénářích připojení mezi oblastmi s vyhrazenými moduly hardwarového zabezpečení v tuto chvíli a místo toho by měla být použita brána VPN. 
+> Globální partnerské vztahy virtuálních sítí nejsou v současné době k dispozici ve scénářích připojení pro různé oblasti s vyhrazeným HSM a měli byste místo toho použít službu VPN Gateway. 
 
 ![globální virtuální síť](media/networking/global-vnet.png)
 
@@ -91,5 +91,5 @@ U globálně distribuovaných aplikací nebo pro scénáře převzetí služeb p
 - [Možnosti podpory](supportability.md)
 - [Vysoká dostupnost](high-availability.md)
 - [Fyzické zabezpečení](physical-security.md)
-- [Sledování](monitoring.md)
+- [Monitorování](monitoring.md)
 - [Architektura nasazení](deployment-architecture.md)

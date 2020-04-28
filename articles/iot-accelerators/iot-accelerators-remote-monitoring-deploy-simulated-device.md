@@ -1,6 +1,6 @@
 ---
-title: Nasazení vlastních simulovaných zařízení ioT – Azure | Dokumenty společnosti Microsoft
-description: Tento návod vám ukáže, jak nasadit vlastní simulovaná zařízení do akcelerátoru řešení vzdáleného monitorování.
+title: Vlastní simulovaná zařízení ve službě IoT Deploy – Azure | Microsoft Docs
+description: V této příručce se dozvíte, jak nasadit vlastní simulovaná zařízení do akcelerátoru řešení vzdáleného monitorování.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,63 +9,63 @@ services: iot-accelerators
 ms.date: 08/15/2018
 ms.topic: conceptual
 ms.openlocfilehash: 7cbab38db859935c9f4490d79a131d6c9a7e302b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "66427563"
 ---
 # <a name="deploy-a-new-simulated-device"></a>Nasazení nového simulovaného zařízení
 
-Akcelerátory řešení Vzdálené monitorování a Simulace zařízení umožňují definovat vlastní simulovaná zařízení. Tento článek ukazuje, jak nasadit vlastní typ chladicího zařízení a nový typ zařízení žárovky do akcelerátoru řešení vzdáleného monitorování.
+Akcelerátory řešení vzdáleného monitorování a simulace zařízení umožňují definovat vaše vlastní simulovaná zařízení. V tomto článku se dozvíte, jak nasadit přizpůsobený typ chladicího zařízení a nový typ zařízení žárovky do akcelerátoru řešení vzdáleného monitorování.
 
-Kroky v tomto článku předpokládají, že jste dokončili [vytvořit a otestovat nové simulované zařízení](iot-accelerators-remote-monitoring-create-simulated-device.md) návod a mají soubory, které definují vlastní chladič a nové typy zařízení žárovky.
+V krocích v tomto článku se předpokládá, že jste dokončili Průvodce [vytvořením a otestováním nového simulovaného zařízení](iot-accelerators-remote-monitoring-create-simulated-device.md) s postupem a máte soubory definující přizpůsobený chladicí a nové typy zařízení žárovky.
 
-Postup v tomto návodu vám ukáže, jak:
+Postup v tomto průvodci vám ukáže, jak:
 
-1. Pomocí SSH můžete přistupovat k systému souborů virtuálního počítače, který je hostitelem akcelerátoru řešení vzdáleného monitorování.
+1. Použijte SSH pro přístup k systému souborů virtuálního počítače, který je hostitelem akcelerátoru řešení vzdáleného monitorování.
 
-1. Nakonfigurujte Docker k načtení modelů zařízení z umístění mimo kontejner Dockeru.
+1. Nakonfigurujte Docker tak, aby načetl modely zařízení z umístění mimo kontejner Docker.
 
 1. Spusťte akcelerátor řešení vzdáleného monitorování pomocí vlastních souborů modelu zařízení.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-K dokončení kroků v tomto návodu, budete potřebovat aktivní předplatné Azure.
+K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li postupovat podle tohoto návodu, potřebujete:
+Pokud chcete postupovat podle tohoto návodu, budete potřebovat:
 
 - Nasazená instance [akcelerátoru řešení vzdáleného monitorování](https://www.azureiotsolutions.com/Accelerators#solutions/types/RM2).
-- Místní **bash** shell pro `ssh` `scp` spuštění příkazů a. V systému Windows, snadný způsob, jak nainstalovat **bash** je nainstalovat [git](https://git-scm.com/download/win).
-- Vlastní soubory modelu zařízení, například ty, které jsou popsány v [části Vytvoření a testování nového simulovaného zařízení](iot-accelerators-remote-monitoring-create-simulated-device.md).
+- Místní prostředí **bash** pro spuštění příkazů `ssh` a `scp` . V systému Windows je snadný způsob, jak nainstalovat **bash** , je nainstalovat [Git](https://git-scm.com/download/win).
+- Vlastní soubory modelu zařízení, například ty, které jsou popsány v tématu [Vytvoření a otestování nového simulovaného zařízení](iot-accelerators-remote-monitoring-create-simulated-device.md).
 
 [!INCLUDE [iot-solution-accelerators-access-vm](../../includes/iot-solution-accelerators-access-vm.md)]
 
-## <a name="configure-docker"></a>Konfigurace Dockeru
+## <a name="configure-docker"></a>Konfigurovat Docker
 
-V této části nakonfigurujete Docker tak, aby načítat soubory modelu zařízení ze složky **/tmp/devicemodels** ve virtuálním počítači, nikoli z kontejneru Dockeru. Spusťte příkazy v této části v **bash** shellu na místním počítači:
+V této části nakonfigurujete Docker tak, aby načetl soubory modelů zařízení ze složky **/TMP/DeviceModels** ve virtuálním počítači místo zevnitř kontejneru Docker. Spusťte příkazy v této části v **bash** prostředí v místním počítači:
 
-V této části nakonfigurujete Docker tak, aby načítat soubory modelu zařízení ze složky **/tmp/devicemodels** ve virtuálním počítači, nikoli z kontejneru Dockeru. Spusťte příkazy v této části v **bash** shellu na místním počítači:
+V této části nakonfigurujete Docker tak, aby načetl soubory modelů zařízení ze složky **/TMP/DeviceModels** ve virtuálním počítači místo zevnitř kontejneru Docker. Spusťte příkazy v této části v **bash** prostředí v místním počítači:
 
-1. Pomocí SSH se můžete připojit k virtuálnímu počítači v Azure z místního počítače. Následující příkaz předpokládá, že veřejná IP adresa virtuálního počítače **vm-vikxv** je **104.41.128.108** -- nahraďte tuto hodnotu veřejnou IP adresou vašeho virtuálního počítače z předchozí části:
+1. Pomocí SSH se připojte k virtuálnímu počítači v Azure z místního počítače. Následující příkaz předpokládá, že veřejná IP adresa virtuálního počítače **VM-vikxv** je **104.41.128.108** – nahraďte tuto hodnotu veřejnou IP adresou vašeho virtuálního počítače z předchozí části:
 
    ```sh
     ssh azureuser@104.41.128.108
     ```
 
-    Podle pokynů se přihlaste k virtuálnímu počítači pomocí hesla, které jste nastavili v předchozí části.
+    Podle zobrazených výzev se přihlaste k virtuálnímu počítači pomocí hesla, které jste nastavili v předchozí části.
 
-1. Nakonfigurujte simulační službu zařízení tak, aby načítaly modely zařízení mimo kontejner. Nejprve otevřete konfigurační soubor Dockeru:
+1. Nakonfigurujte službu pro simulaci zařízení, aby se načetly modely zařízení mimo kontejner. Nejdřív otevřete konfigurační soubor Docker:
 
     ```sh
     sudo nano /app/docker-compose.yml
     ```
 
-    Vyhledejte nastavení kontejneru **simulace zařízení** a upravte nastavení **svazků,** jak je znázorněno v následujícím fragmentu:
+    Vyhledejte nastavení pro kontejner **devicesimulation** a upravte nastavení **svazků** , jak je znázorněno v následujícím fragmentu kódu:
 
     ```yml
     devicesimulation:
@@ -85,22 +85,22 @@ V této části nakonfigurujete Docker tak, aby načítat soubory modelu zaříz
 
     Uložte změny.
 
-1. Zkopírujte existující soubory modelu zařízení z kontejneru do nového umístění. Nejprve vyhledejte ID kontejneru pro kontejner simulace zařízení:
+1. Zkopírujte existující soubory modelu zařízení z kontejneru do nového umístění. Nejdřív vyhledejte ID kontejneru pro kontejner simulace zařízení:
 
     ```sh
     sudo docker ps
     ```
 
-    Potom zkopírujte soubory modelu zařízení do složky **tmp** ve virtuálním počítači. Následující příkaz předpokládá, že ID kontejneru je c378d6878407 – nahraďte tuto hodnotu ID kontejneru simulace zařízení:
+    Pak zkopírujte soubory modelu zařízení do složky **TMP** ve virtuálním počítači. Následující příkaz předpokládá, že ID kontejneru je c378d6878407 – nahraďte tuto hodnotu ID kontejneru pro simulaci zařízení:
 
     ```sh
     sudo docker cp c378d6878407:/app/webservice/data/devicemodels /tmp
     sudo chown -R azureuser /tmp/devicemodels/
     ```
 
-    Nechte **bash** okno s vaší relace SSH otevřené.
+    Nechte okno **bash** v otevřené relaci SSH.
 
-1. Zkopírujte soubory vlastního modelu zařízení do virtuálního počítače. Spusťte tento příkaz v jiném **bash** shellu v počítači, kde jste vytvořili vlastní modely zařízení. Nejprve přejděte do místní složky, která obsahuje soubory JSON modelu zařízení. Následující příkazy předpokládají, že veřejná IP adresa virtuálního počítače je **104.41.128.108** -- nahraďte tuto hodnotu veřejnou IP adresou vašeho virtuálního počítače. Po zobrazení výzvy zadejte heslo virtuálního počítače:
+1. Zkopírujte vlastní soubory modelu zařízení do virtuálního počítače. Spusťte tento příkaz v jiném prostředí **bash** na počítači, ve kterém jste vytvořili vlastní modely zařízení. Nejprve přejděte do místní složky, která obsahuje soubory JSON modelu zařízení. V následujících příkazech se předpokládá, že veřejná IP adresa virtuálního počítače je **104.41.128.108** – nahraďte tuto hodnotu veřejnou IP adresou vašeho virtuálního počítače. Po zobrazení výzvy zadejte heslo k virtuálnímu počítači:
 
     ```sh
     scp *json azureuser@104.41.128.108:/tmp/devicemodels
@@ -108,19 +108,19 @@ V této části nakonfigurujete Docker tak, aby načítat soubory modelu zaříz
     scp *js azureuser@104.41.128.108:/tmp/devicemodels/scripts
     ```
 
-1. Restartujte kontejner Dockeru simulace zařízení a použijte nové modely zařízení. Spusťte následující příkazy v **bash** shellu s otevřenou relací SSH do virtuálního počítače:
+1. Pokud chcete používat nové modely zařízení, restartujte kontejner Docker pro simulaci zařízení. V prostředí **bash** spusťte následující příkazy s otevřenou relací SSH k virtuálnímu počítači:
 
     ```sh
     sudo /app/start.sh
     ```
 
-    Pokud chcete zobrazit stav spuštěných kontejnerů Dockeru a jejich ID kontejnerů, použijte následující příkaz:
+    Pokud chcete zobrazit stav spuštěných kontejnerů Docker a jejich ID kontejnerů, použijte následující příkaz:
 
     ```sh
     sudo docker ps
     ```
 
-    Pokud chcete zobrazit protokol z kontejneru simulace zařízení, spusťte následující příkaz. Nahraďte ID kontejneru ID id kontejneru simulace zařízení:
+    Pokud chcete zobrazit protokol z kontejneru simulace zařízení, spusťte následující příkaz. Nahraďte ID kontejneru ID kontejneru simulace zařízení:
 
     ```sh
     sudo docker logs -f 5d3f3e78822e
@@ -128,20 +128,20 @@ V této části nakonfigurujete Docker tak, aby načítat soubory modelu zaříz
 
 ## <a name="run-simulation"></a>Spustit simulaci
 
-Nyní můžete použít vlastní modely zařízení v řešení vzdáleného monitorování:
+V řešení vzdáleného monitorování teď můžete používat vlastní modely zařízení:
 
-1. Spusťte řídicí panel vzdáleného monitorování z [akcelerátorů řešení IoT Microsoft Azure](https://www.azureiotsolutions.com/Accelerators#dashboard).
+1. Spusťte řídicí panel vzdáleného monitorování z [Microsoft Azure akcelerátory řešení IoT](https://www.azureiotsolutions.com/Accelerators#dashboard).
 
-1. Pomocí stránky **Zařízení** můžete přidat simulovaná zařízení. Když přidáte nové simulované zařízení, budou k dispozici nové modely zařízení.
+1. Na stránce **zařízení** můžete přidat simulovaná zařízení. Když přidáte nové simulované zařízení, budou dostupné nové modely zařízení, které si můžete vybrat.
 
-1. Řídicí panel můžete použít k zobrazení telemetrie zařízení a metody volání zařízení.
+1. Řídicí panel můžete použít k zobrazení telemetrie zařízení a volání metod zařízení.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud máte v plánu prozkoumat další, ponechte akcelerátor řešení vzdáleného monitorování nasazený.
+Pokud plánujete prozkoumat další, ponechte nasazený akcelerátor řešení vzdáleného monitorování.
 
-Pokud už akcelerátor řešení nepotřebujete, odstraňte ho ze stránky [Zřízená řešení,](https://www.azureiotsolutions.com/Accelerators#dashboard) vyberete ho a kliknete na **Odstranit řešení**.
+Pokud už akcelerátor řešení nepotřebujete, odstraňte ho ze stránky [zřízené řešení](https://www.azureiotsolutions.com/Accelerators#dashboard) , a to tak, že ho vyberete a pak kliknete na **Odstranit řešení**.
 
 ## <a name="next-steps"></a>Další kroky
 
-Tato příručka vám ukázala, jak nasadit vlastní modely zařízení do akcelerátoru řešení vzdáleného monitorování. Dalším navrhovaným krokem je naučit se [připojit skutečné zařízení k řešení vzdáleného monitorování](iot-accelerators-connecting-devices-node.md).
+Tato příručka vám ukázala, jak nasadit vlastní modely zařízení do akcelerátoru řešení vzdáleného monitorování. Navržený další krok se naučíte [připojit reálné zařízení k řešení vzdáleného monitorování](iot-accelerators-connecting-devices-node.md).

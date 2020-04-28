@@ -15,24 +15,24 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 4a947c01d63e3842ead91481e480024a54380144
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "69015058"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>Začínáme s doručováním obsahu na vyžádání pomocí webu Azure Portal
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 
 Tento kurz vás provede jednotlivými kroky implementace základní služby pro doručování video obsahu na vyžádání pomocí aplikace Azure Media Services na webu Azure Portal.
 
 ## <a name="prerequisites"></a>Požadavky
 K dokončení kurzu potřebujete následující položky:
 
-* Účet Azure. Podrobnosti najdete v [tématu bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 
-* Účet Media Services. Chcete-li vytvořit účet mediálních služeb, přečtěte si informace [o vytvoření účtu mediálních služeb](media-services-portal-create-account.md).
+* Účet Azure. Podrobnosti najdete v článku [bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 
+* Účet Media Services. Chcete-li vytvořit účet Media Services, přečtěte si téma [jak vytvořit účet Media Services](media-services-portal-create-account.md).
 
 Tento kurz sestává z následujících úloh:
 
@@ -51,9 +51,9 @@ Jedním z nejběžnějších scénářů při práci se službou Azure Media Ser
 
 Spuštění koncového bodu streamování:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Vyberte **Nastavení** > **koncových bodů streamování**. 
-3. Vyberte výchozí koncový bod streamování. Zobrazí se okno **DEFAULT STREAMING ENDPOINT DETAILS** .
+3. Vyberte výchozí koncový bod streamování. Zobrazí se okno **výchozí koncový bod streamování – podrobnosti** .
 4. Vyberte ikonu **Spustit**.
 5. Vyberte tlačítko **Uložit**.
 
@@ -61,7 +61,7 @@ Spuštění koncového bodu streamování:
 Pokud chcete streamovat videa pomocí služby Media Services, musíte nahrát zdrojová videa, zakódovat je do více přenosových rychlostí a pak publikovat výsledek. První krok pokrývá tato část. 
 
 1. Na webu [Azure Portal](https://portal.azure.com/) zvolte účet Azure Media Services.
-2. Vyberte **Položku Nastavení** > **datových zdrojů**. Pak vyberte tlačítko **Nahrát**.
+2. Vyberte **Nastavení** > **prostředky**. Pak vyberte tlačítko **Nahrát**.
    
     ![Nahrání souborů](./media/media-services-portal-vod-get-started/media-services-upload.png)
    
@@ -84,7 +84,7 @@ Pokud chcete využít výhod dynamického balení, musíte zdrojový soubor zak�
 Kódování obsahu pomocí procesoru Media Encoder Standard na webu Azure Portal:
 
 1. Na webu [Azure Portal](https://portal.azure.com/) zvolte účet Azure Media Services.
-2. Vyberte **Položku Nastavení** > **datových zdrojů**. Vyberte prostředek, který chcete kódovat.
+2. Vyberte **Nastavení** > **prostředky**. Vyberte prostředek, který chcete kódovat.
 3. Vyberte tlačítko **Kódovat**.
 4. V podokně **Kódovat prostředek** vyberte procesor **Media Encoder Standard** a jednu z předvoleb. Informace o předvolbách najdete v tématech [Automatické generování žebříčku přenosových rychlostí](media-services-autogen-bitrate-ladder-with-mes.md) a [Předvolby úloh pro Media Encoder Standard](media-services-mes-presets-overview.md). Je důležité, abyste zvolili předvolbu, která je pro vaše vstupní video nejvhodnější. Pokud například víte, že vaše vstupní video má rozlišení 1920 &#215; 1080 pixelů, můžete zvolit předvolbu **H264 Multiple Bitrate 1080p**. Pokud máte video s nízkým rozlišením (640 &#215; 360), neměli byste používat předvolbu **H264 Multiple Bitrate 1080p**.
    
@@ -104,7 +104,7 @@ Pokud chcete uživatelům poskytnout adresu URL, kterou můžou použít ke stre
 * **Lokátory streamování (OnDemandOrigin)**. Lokátory streamování se používají pro adaptivní streamování. Mezi příklady adaptivního streamování patří HLS, Smooth Streaming a MPEG-DASH. Pokud chcete vytvořit lokátor streamování, váš prostředek musí obsahovat soubor .ism. 
 * **Progresivní lokátory (sdílený přístupový podpis)**. Progresivní lokátory se používají k doručování videa přes progresivní stahování.
 
-Chcete-li vytvořit adresu URL streamování HLS, připojte *ji (format=m3u8-aapl)* k adrese URL:
+Pokud chcete vytvořit adresu URL streamování HLS, přidejte do adresy URL *(Format = M3U8-AAPL)* :
 
     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)
 
@@ -132,7 +132,7 @@ K aktualizaci data vypršení platnosti lokátoru můžete použít rozhraní [R
 
 ### <a name="to-use-the-portal-to-publish-an-asset"></a>Postup publikování assetu pomocí portálu
 1. Na webu [Azure Portal](https://portal.azure.com/) zvolte účet Azure Media Services.
-2. Vyberte **Položku Nastavení** > **datových zdrojů**. Vyberte asset, který chcete publikovat.
+2. Vyberte **Nastavení** > **prostředky**. Vyberte asset, který chcete publikovat.
 3. Vyberte tlačítko **Publikovat**.
 4. Vyberte typ lokátoru.
 5. Vyberte **Přidat**.

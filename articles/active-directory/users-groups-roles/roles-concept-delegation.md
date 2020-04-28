@@ -1,6 +1,6 @@
 ---
-title: Principy delegování rolí správce – Azure Active Directory | Dokumenty společnosti Microsoft
-description: Modely delegování, příklady a zabezpečení rolí ve službě Azure Active Directory
+title: Pochopení delegování role správce – Azure Active Directory | Microsoft Docs
+description: Modely delegování, příklady a zabezpečení rolí v Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -16,91 +16,91 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6fa3c6bf39dbef601fe64e125999f519f725f2e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67083778"
 ---
-# <a name="delegate-administration-in-azure-active-directory"></a>Delegování správy ve službě Azure Active Directory
+# <a name="delegate-administration-in-azure-active-directory"></a>Delegovat správu v Azure Active Directory
 
-S organizačním růstem přichází složitost. Jednou z běžných odpovědí je snížit některé úlohy správy přístupu pomocí rolí správců služby Azure Active Directory (AD). Uživatelům můžete přiřadit co nejmenší oprávnění k přístupu k jejich aplikacím a k provádění jejich úkolů. I v případě, že nepřiřadíte roli globálního správce každému vlastníkovi aplikace, umístíte odpovědnost za správu aplikací na stávající globální správce. Existuje mnoho důvodů pro organizaci, která směřuje k decentralizovanější administrativě. Tento článek vám může pomoci naplánovat delegování ve vaší organizaci.
+Růst organizačního růstu přináší složitost. Jednou z běžných reakcí je omezit některé úlohy správy přístupu pomocí rolí správce služby Azure Active Directory (AD). Uživatelům můžete přiřadit nejnižší možná oprávnění, abyste mohli přistupovat ke svým aplikacím a mohli provádět jejich úkoly. I když nepřiřadíte roli globálního správce ke každému vlastníkovi aplikace, zadáváte odpovědnost za správu aplikací u stávajících globálních správců. Existuje mnoho důvodů, proč se organizace může přesunout k více decentralizované správě. Tento článek vám může pomáhat při plánování delegování ve vaší organizaci.
 
 <!--What about reporting? Who has which role and how do I audit?-->
 
-## <a name="centralized-versus-delegated-permissions"></a>Centralizovaná a delegovaná oprávnění
+## <a name="centralized-versus-delegated-permissions"></a>Centralizované versus delegovaná oprávnění
 
-S růstem organizace může být obtížné sledovat, kteří uživatelé mají konkrétní role správce. Pokud má zaměstnanec práva správce, která by neměl, může být vaše organizace náchylnější k narušení zabezpečení. Obecně platí, kolik správců podporujete a jak podrobné jejich oprávnění jsou závisí na velikosti a složitosti vašeho nasazení.
+V organizaci roste, může být obtížné sledovat, kteří uživatelé mají konkrétní role správce. Pokud má zaměstnanec práva správce, může být vaše organizace náchylná k narušení zabezpečení. Obecně platí, kolik správců podporujete a jak jsou podrobná jejich oprávnění závislá na velikosti a složitosti vašeho nasazení.
 
-* V malých nasazeních nebo otekvaných konceptech jeden nebo několik správců dělá všechno. Není tu žádná delegace. V takovém případě vytvořte každého správce s rolí Globální správce.
-* Ve větších nasazeních s více počítači, aplikacemi a stolními počítači je potřeba více delegování. Několik správců může mít konkrétnější funkční odpovědnosti (role). Někteří mohou být například správci privilegované identity a jiní správci aplikací. Správce může navíc spravovat pouze určité skupiny objektů, jako jsou zařízení.
-* I větší nasazení může vyžadovat ještě podrobnější oprávnění, plus případně správci s nekonvenční nebo hybridní role.
+* V případě nasazení v malém nebo zkušebním prostředí má jeden nebo několik správců vše. neexistuje žádné delegování. V takovém případě vytvořte každého správce s rolí globálního správce.
+* V rozsáhlejších nasazeních s více počítači, aplikacemi a stolními počítači je potřeba víc delegování. Několik správců může mít konkrétnější funkční zodpovědnosti (role). Někteří můžou být například správci privilegovaných identit a jiní můžou být správci aplikací. Kromě toho může správce spravovat pouze určité skupiny objektů, jako jsou například zařízení.
+* I větší nasazení mohou vyžadovat ještě více přesnější oprávnění, a případně i správce s nekonvenčními nebo hybridními rolemi.
 
-Na portálu Azure AD můžete [zobrazit všechny členy libovolné role](directory-manage-roles-portal.md), které vám pomůžou rychle zkontrolovat oprávnění nasazení a delegovat.
+Na portálu Azure AD můžete [Zobrazit všechny členy jakékoli role](directory-manage-roles-portal.md), což vám umožní rychle kontrolovat oprávnění k nasazení a delegování.
 
-Pokud máte zájem o delegování přístupu k prostředkům Azure namísto přístupu pro správu ve službě Azure AD, přečtěte si část [Přiřazení role řízení přístupu (RBAC) na základě rolí](../../role-based-access-control/role-assignments-portal.md).
+Pokud vás zajímá delegování přístupu k prostředkům Azure místo oprávnění správce ve službě Azure AD, přečtěte si téma [přiřazení role řízení přístupu na základě role (RBAC)](../../role-based-access-control/role-assignments-portal.md).
 
-## <a name="delegation-planning"></a>Plánování delegací
+## <a name="delegation-planning"></a>Plánování delegování
 
-Je to práce na vývoji delegování model, který vyhovuje vašim potřebám. Vývoj modelu delegování je iterativní proces návrhu a doporučujeme postupovat takto:
+Pracujete na vývoji modelu delegování, který vyhovuje vašim potřebám. Vývoj modelu delegování je iterativní proces návrhu a doporučujeme vám postupovat podle těchto kroků:
 
-* Definování rolí, které potřebujete
-* Delegování správy aplikací
-* Udělit možnost registrace žádostí
+* Definice potřebných rolí
+* Delegování správy aplikace
+* Udělení možnosti registrovat aplikace
 * Delegování vlastnictví aplikace
-* Vytvoření bezpečnostního plánu
-* Vytvoření nouzových účtů
+* Vývoj plánu zabezpečení
+* Navázání mimořádných účtů
 * Zabezpečení rolí správce
-* Dočasné zvýšení oprávnění
+* Dočasné zvýšení oprávnění zvýšit
 
 ## <a name="define-roles"></a>Definování rolí
 
-Určete úkoly služby Active Directory, které provádějí správci, a způsob jejich mapování na role. Podrobné [popisy rolí](directory-manage-roles-portal.md) můžete zobrazit na webu Azure Portal.
+Určete úlohy služby Active Directory, které jsou prováděny správci a jak se mapují na role. [Podrobné popisy rolí můžete zobrazit](directory-manage-roles-portal.md) v Azure Portal.
 
-Každý úkol by měl být vyhodnocen z hlediska četnosti, důležitosti a obtížnosti. Tato kritéria jsou zásadními aspekty definice úkolu, protože řídí, zda má být oprávnění delegováno:
+Každý úkol by měl být vyhodnocen pro četnost, důležitost a obtížnost. Tato kritéria jsou zásadními aspekty definice úlohy, protože určují, jestli by měla být delegovaná oprávnění:
 
-* Úkoly, které děláte rutinně, mají omezené riziko a jsou triviální dokončit jsou vynikající kandidáty pro delegování.
-* Úkoly, které děláte zřídka, ale mají velký vliv na celou organizaci a vyžadují vysoké úrovně dovedností, by měly být před delegováním velmi pečlivě zváženy. Místo toho můžete [dočasně zvýšit úroveň účtu na požadovanou roli](../active-directory-privileged-identity-management-configure.md) nebo znovu přiřadit úkol.
+* Úlohy, které provedete v rutinách, mají omezené riziko a jsou triviální k dokončení, jsou vynikajícími kandidáty na delegování.
+* Úlohy, které provedete zřídka, ale mají velký dopad na celou organizaci a vyžadují vysokou úroveň dovedností, se před delegováním považují za velmi pečlivě. Místo toho můžete [dočasně zvýšit účet na požadovanou roli](../active-directory-privileged-identity-management-configure.md) nebo znovu přiřadit úlohu.
 
-## <a name="delegate-app-administration"></a>Delegování správy aplikací
+## <a name="delegate-app-administration"></a>Delegování správy aplikace
 
-Šíření aplikací v rámci vaší organizace může zatížit váš model delegování. Pokud umístí zátěž pro správu přístupu k aplikacím na globálního správce, je pravděpodobné, že model zvyšuje jeho režii, jak plyne čas. Pokud jste lidem udělili roli globálního správce pro akce, jako je konfigurace podnikových aplikací, můžete je nyní převést na následující méně privilegované role. To pomáhá zlepšit stav zabezpečení a snižuje potenciál pro nešťastné chyby. Nejvíce privilegované role správce aplikací jsou:
+Navýšení aplikací v rámci vaší organizace může mít za svůj model delegování. Pokud dojde k zatížení pro správu přístupu k aplikacím u globálního správce, je pravděpodobnější, že model zvyšuje režii podle času. Pokud jste uživatelům udělili roli globálního správce pro věci, jako je třeba konfigurace podnikových aplikací, můžete je nyní převzít na následující méně privilegované role. Díky tomu je možné zlepšit stav zabezpečení a omezit potenciál unfortunate chyb. Role Správce aplikací s největším oprávněním jsou:
 
-* Role **Správce aplikace,** která umožňuje spravovat všechny aplikace v adresáři, včetně registrací, nastavení jednotného přihlášení, přiřazení uživatelů a skupin a licencování, nastavení proxy aplikace a souhlasu. Neuděluje možnost spravovat podmíněný přístup.
-* Role **Správce cloudových aplikací,** která uděluje všechny možnosti správce aplikace, s tím rozdílem, že neuděluje přístup k nastavení proxy aplikace (protože nemá žádné místní oprávnění).
+* Role **Správce aplikací** , která uděluje možnost spravovat všechny aplikace v adresáři, včetně registrací, nastavení jednotného přihlašování, přiřazení uživatelů a skupin a licencí, nastavení proxy aplikací a souhlasu. Neuděluje možnost spravovat podmíněný přístup.
+* Role **správce cloudové aplikace** , která uděluje všem schopnostem správce aplikace, s výjimkou toho, že neuděluje přístup k nastavení proxy aplikace (protože nemá žádné místní oprávnění).
 
-## <a name="delegate-app-registration"></a>Delegování registrace aplikace
+## <a name="delegate-app-registration"></a>Registrace aplikace delegování
 
-Ve výchozím nastavení mohou všichni uživatelé vytvářet registrace aplikací. Chcete-li selektivně udělit možnost vytvářet registrace žádostí:
+Ve výchozím nastavení mohou registraci aplikací vytvářet všichni uživatelé. Chcete-li selektivně udělit možnost vytvářet registrace aplikací:
 
-* Nastavit **uživatelé mohou zaregistrovat aplikace** na ne v **uživatelském nastavení**
-* Přiřazení uživatele k roli Vývojář aplikace
+* Nastavení **uživatelů může registrovat aplikace bez použití** **uživatelského nastavení**
+* Přiřazení uživatele k roli vývojáře aplikace
 
-Chcete-li selektivně udělit souhlas s povolením přístupu k údajům pro aplikaci:
+Chcete-li selektivně udělit možnost souhlasu s povolením aplikace získat přístup k datům:
 
-* Nastavit **Uživatelé mohou souhlasit s tím, aby aplikace přistupující k firemním datům jejich jménem** Ne v **nastavení uživatele**
-* Přiřazení uživatele k roli Vývojář aplikace
+* Nastavení **uživatelů můžou udělit souhlas s aplikacemi, které přistupují k firemním datům** , a to bez jakýchkoli **uživatelských nastavení** .
+* Přiřazení uživatele k roli vývojáře aplikace
 
-Když vývojář aplikace vytvoří novou registraci aplikace, jsou automaticky přidány jako první vlastník.
+Když vývojář aplikace vytvoří novou registraci aplikace, automaticky se přidá jako první vlastník.
 
 ## <a name="delegate-app-ownership"></a>Delegování vlastnictví aplikace
 
-Pro ještě jemnější delegování přístupu k aplikacím můžete přiřadit vlastnictví jednotlivým podnikovým aplikacím. To doplňuje stávající podporu pro přiřazení vlastníků registrace aplikace. Vlastnictví je přiřazeno na základě podnikové aplikace v okně Podnikové aplikace. Výhodou je, že vlastníci mohou spravovat pouze podnikové aplikace, které vlastní. Můžete například přiřadit vlastníka pro aplikaci Salesforce a tento vlastník může spravovat přístup a konfiguraci pro Salesforce a žádné jiné aplikace. Podniková aplikace může mít mnoho vlastníků a uživatel může být vlastníkem mnoha podnikových aplikací. Existují dvě role vlastníka aplikace:
+U souběžně podrobnějšího přístupu k aplikacím můžete přiřadit vlastnictví individuálním podnikovým aplikacím. Tím se doplňují stávající podpora pro přiřazování vlastníků registrace aplikací. Vlastnictví je přiřazeno na bázi jednotlivých podnikových aplikací v okně podnikové aplikace. Výhodou je, že vlastníci můžou spravovat jenom podnikové aplikace, které vlastní. Můžete například přiřadit vlastníka aplikace Salesforce a tento vlastník může spravovat přístup ke službě Salesforce a jejich konfiguraci a žádné jiné aplikace. Podniková aplikace může mít mnoho vlastníků a uživatel může být vlastníkem pro mnoho podnikových aplikací. K dispozici jsou dvě role vlastníka aplikace:
 
-* Role **Vlastník podnikových aplikací** uděluje možnost spravovat podnikové aplikace, které uživatel vlastní, včetně nastavení jednotného přihlašování, přiřazení uživatelů a skupin a přidání dalších vlastníků. Neuděluje možnost spravovat nastavení proxy aplikace nebo podmíněný přístup.
-* Role **Vlastník registrace aplikace** uděluje možnost spravovat registrace aplikací pro aplikaci, kterou uživatel vlastní, včetně manifestu aplikace a přidání dalších vlastníků.
+* Role **vlastníka podnikové aplikace** uděluje možnost spravovat podnikové aplikace, které uživatel vlastní, včetně nastavení jednotného přihlašování, přiřazení uživatelů a skupin a přidávání dalších vlastníků. Neuděluje možnost spravovat nastavení proxy aplikací ani podmíněný přístup.
+* Role **vlastníka registrace aplikace** uděluje možnost spravovat registrace aplikací pro aplikaci, které uživatel vlastní, včetně manifestu aplikace a přidání dalších vlastníků.
 
-## <a name="develop-a-security-plan"></a>Vytvoření bezpečnostního plánu
+## <a name="develop-a-security-plan"></a>Vývoj plánu zabezpečení
 
-Azure AD poskytuje rozsáhlý průvodce plánování a provádění plánu zabezpečení na rolích správce Azure AD, [zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení](directory-admin-roles-secure.md).
+Azure AD poskytuje rozsáhlý průvodce plánováním a prováděním plánu zabezpečení v rolích správce Azure AD a [zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení](directory-admin-roles-secure.md).
 
-## <a name="establish-emergency-accounts"></a>Vytvoření nouzových účtů
+## <a name="establish-emergency-accounts"></a>Navázání mimořádných účtů
 
-Chcete-li zachovat přístup k úložišti správy identit v případě problému, připravte účty nouzového přístupu podle [možnosti Vytvořit účty pro správu nouzového přístupu](directory-emergency-access.md).
+Chcete-li zachovat přístup k úložišti správy identit, když vzniká problém, připravte účty pro nouzový přístup v souladu s [vytvářením účtů pro správu pro nouzový přístup](directory-emergency-access.md).
 
 ## <a name="secure-your-administrator-roles"></a>Zabezpečení rolí správce
 
-Útočníci, kteří získají kontrolu nad privilegovanými účty, mohou způsobit obrovské škody, takže tyto účty nejprve ochraňte pomocí [zásady přístupu podle směrného plánu,](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/22/baseline-security-policy-for-azure-ad-admin-accounts-in-public-preview/) která je ve výchozím nastavení dostupná všem klientům Azure AD (ve verzi Public Preview). Zásady vynucují vícefaktorové ověřování na privilegovaných účtech Azure AD. Následující role Azure AD jsou pokryty zásady směrného plánu Azure AD:
+Útočníci, kteří získají kontrolu nad privilegovanými účty, můžou dělat obrovský škodu, proto tyto účty nejdřív ochráníte pomocí [zásad přístupu podle směrného plánu](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/22/baseline-security-policy-for-azure-ad-admin-accounts-in-public-preview/) , které jsou ve výchozím nastavení dostupné pro všechny klienty Azure AD (ve verzi Public Preview). Tato zásada vynutila vícefaktorové ověřování u privilegovaných účtů Azure AD. Následující role Azure AD jsou pokryté zásadami standardních hodnot Azure AD:
 
 * Globální správce
 * Správce SharePointu
@@ -110,8 +110,8 @@ Chcete-li zachovat přístup k úložišti správy identit v případě problém
 
 ## <a name="elevate-privilege-temporarily"></a>Dočasné zvýšení oprávnění
 
-U většiny každodenních aktivit ne všichni uživatelé potřebují globální práva správce a ne všichni by měli být trvale přiřazeni k roli globálního správce. Když uživatelé potřebují oprávnění globálního správce, měli by aktivovat přiřazení role v Azure AD [Privileged Identity Management](../active-directory-privileged-identity-management-configure.md) na vlastní účet nebo alternativní účet pro správu.
+Pro většinu každodenních činností není nutné, aby všichni uživatelé měli oprávnění globálního správce, a ne všechny z nich museli být trvale přiřazeni k roli globálního správce. Když uživatelé potřebují oprávnění globálního správce, měli by aktivovat přiřazení role v Azure AD [Privileged Identity Management](../active-directory-privileged-identity-management-configure.md) na svém vlastním účtu nebo alternativním účtu správce.
 
 ## <a name="next-steps"></a>Další kroky
 
-Odkaz na popisy rolí Azure AD najdete v tématu [Přiřazení rolí správců ve službě Azure AD.](directory-assign-admin-roles.md)
+Odkaz na popis role Azure AD najdete v tématu [přiřazení rolí správce ve službě Azure AD](directory-assign-admin-roles.md) .

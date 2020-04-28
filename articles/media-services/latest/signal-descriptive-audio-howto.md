@@ -1,6 +1,6 @@
 ---
-title: Popisné zvukové stopy signálu pomocí Azure Media Services v3 | Dokumenty společnosti Microsoft
-description: Podle pokynů tohoto kurzu nahrajte soubor, zakódujte video, přidejte popisné zvukové stopy a streamujte obsah pomocí služby Media Services v3.
+title: Signály popisné zvukové stopy s Azure Media Services V3 | Microsoft Docs
+description: Podle kroků v tomto kurzu nahrajte soubor, zakódovat video, přidejte popisné zvukové stopy a Streamujte obsah pomocí Media Services V3.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,58 +13,58 @@ ms.custom: ''
 ms.date: 09/25/2019
 ms.author: juliako
 ms.openlocfilehash: 0d8f88e6c2fe273efa969278146de67ba18eaecf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72392186"
 ---
-# <a name="signal-descriptive-audio-tracks"></a>Popisné zvukové stopy signálu
+# <a name="signal-descriptive-audio-tracks"></a>Signály popisné zvukové stopy
 
-Do videa můžete přidat skladbu mluveného komentáře, která pomůže zrakově postiženým klientům sledovat záznam videa poslechem mluveného komentáře. Ve službě Media Services v3 signalizujete popisné zvukové stopy anotací zvukové stopy v souboru manifestu.
+Do svého videa můžete přidat záznam mluveného komentáře, který umožní vizuálně postiženým klientům sledovat záznam videa tím, že naslouchá mluveným komentářům. V Media Services V3 budete signalizovat popisné zvukové stopy tím, že budete opatřovat zvukovou stopu v souboru manifestu.
 
-Tento článek ukazuje, jak zakódovat video, nahrát soubor MP4 pouze pro zvuk (kodek AAC) obsahující popisný zvuk do výstupního datového zdroje a upravit soubor ISM tak, aby zahrnoval popisný zvuk.
+Tento článek ukazuje, jak zakódovat video, nahrát zvukový soubor MP4 (kodek AAC) obsahující popisný zvuk do výstupního prostředku a upravit soubor. ISM tak, aby obsahoval popisný zvuk.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Vytvořte účet mediálních služeb](create-account-cli-how-to.md).
-- Postupujte podle kroků v [rozhraní Access Azure Media Services API s rozhraním příkazového příkazového příkazu k Síti Azure](access-api-cli-how-to.md) a uložte přihlašovací údaje. Budete je muset použít pro přístup k rozhraní API.
+- [Vytvořte účet Media Services](create-account-cli-how-to.md).
+- Postupujte podle kroků v [části přístup k rozhraní API Azure Media Services pomocí Azure CLI](access-api-cli-how-to.md) a přihlašovací údaje uložte. Budete je muset použít pro přístup k rozhraní API.
 - Zkontrolujte [dynamické balení](dynamic-packaging-overview.md).
-- Projděte si kurz [nahrávání, kódování a streamování videí.](stream-files-tutorial-with-api.md)
+- Projděte si kurz [nahrávání, kódování a streamování videí](stream-files-tutorial-with-api.md) .
 
 ## <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>Vytvoření vstupního prostředku a nahrání místního souboru do tohoto prostředku 
 
-Funkce **CreateInputAsset** vytvoří nový vstupní [datový zdroj](https://docs.microsoft.com/rest/api/media/assets) a nahraje do něj zadaný místní video soubor. Tento **prostředek se** používá jako vstup do úlohy kódování. Ve službě Media Services v3 může být vstupem do **úlohy** **datový zdroj**nebo obsahem, který zpřístupníte účtu Mediálních služeb prostřednictvím adres URL HTTPS. 
+Funkce **CreateInputAsset** vytvoří nový vstupní [Asset](https://docs.microsoft.com/rest/api/media/assets) a nahraje zadaný místní videosoubor do souboru. Tento **prostředek** se používá jako vstup do vaší úlohy kódování. V Media Services V3 může být vstupem do **úlohy** buď **Asset**, nebo může to být obsah, který zpřístupníte pro váš Media Services účet prostřednictvím adres URL protokolu HTTPS. 
 
-Pokud se chcete dozvědět, jak kódovat z adresy URL HTTPS, přečtěte [si tento článek](job-input-from-http-how-to.md) .  
+Pokud se chcete dozvědět, jak kódovat z adresy URL HTTPS, přečtěte si [Tento článek](job-input-from-http-how-to.md) .  
 
 Ve službě Media Services v3 slouží k nahrání souborů rozhraní API služby Azure Storage. Následující fragment kódu .NET vám ukáže, jak na to.
 
 Uvedená funkce provede následující akce:
 
-* Vytvoří **datový zdroj** 
-* Získá zapisovatelnou [adresu URL SAS](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) do kontejneru datového zdroje [v úložišti.](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container)
+* Vytvoří **Asset** . 
+* Získá zapisovatelnou [adresu URL SAS](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) kontejneru assetu [v úložišti](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container) .
 * Přes adresu SAS odešle soubor do kontejneru v úložišti.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
 
-Pokud potřebujete předat název vytvořeného vstupního datového zdroje jiným `Name` metodám, nezapomeňte použít `CreateInputAssetAsync`vlastnost objektu datového zdroje vráceného z , například inputAsset.Name. 
+Pokud potřebujete předat název vytvořeného vstupního prostředku jiným metodám, nezapomeňte použít `Name` vlastnost u objektu assetu vráceného z `CreateInputAssetAsync`, například inputAsset.Name. 
 
-## <a name="create-an-output-asset-to-store-the-result-of-the-encoding-job"></a>Vytvoření výstupního datového zdroje pro uložení výsledku úlohy kódování
+## <a name="create-an-output-asset-to-store-the-result-of-the-encoding-job"></a>Vytvořte výstupní prostředek pro uložení výsledku úlohy kódování.
 
-Výstup [Asset](https://docs.microsoft.com/rest/api/media/assets) ukládá výsledek úlohy kódování. Následující funkce ukazuje, jak vytvořit výstupní datový zdroj.
+Výstupní [Asset](https://docs.microsoft.com/rest/api/media/assets) ukládá výsledek vaší úlohy kódování. Následující funkce ukazuje, jak vytvořit výstupní Asset.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateOutputAsset)]
 
-Pokud potřebujete předat název vytvořeného výstupního majetku jiným metodám, nezapomeňte použít `Name` vlastnost `CreateIOutputAssetAsync`na objektu datového zdroje vráceném z , například outputAsset.Name. 
+Pokud potřebujete předat název vytvořeného výstupního prostředku jiným metodám, nezapomeňte použít `Name` vlastnost u objektu assetu vráceného z `CreateIOutputAssetAsync`, například outputAsset.Name. 
 
-V případě tohoto článku předavěte `SubmitJobAsync` `UploadAudioIntoOutputAsset` hodnotu `outputAsset.Name` funkcím a.
+V případě tohoto článku předejte `outputAsset.Name` hodnotu funkcím `SubmitJobAsync` a. `UploadAudioIntoOutputAsset`
 
-## <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>Vytvoření transformace a úlohy, která zakóduje nahraný soubor
+## <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>Vytvořit transformaci a úlohu, která zakóduje nahraný soubor
 
-Když kódujete nebo zpracováváte obsah v Media Services, kódování se obvykle nastaví jako předpis. Potom stačí odeslat **Úlohu**, která tento předpis použije pro video. Odesláním nových pracovních míst pro každé nové video použijete tento recept na všechna videa v knihovně. V Media Services se pro předpis používá označení **transformace**. Další informace najdete v tématu [Transformace a úlohy](transform-concept.md). Ukázka popsaná v tomto kurzu definuje předpis, který zakóduje video tak, aby se dalo streamovat na nejrůznějších zařízeních s iOSem a Androidem. 
+Když kódujete nebo zpracováváte obsah v Media Services, kódování se obvykle nastaví jako předpis. Potom stačí odeslat **Úlohu**, která tento předpis použije pro video. Odesláním nových úloh pro každé nové video použijete tento recept na všechna videa v knihovně. V Media Services se pro předpis používá označení **transformace**. Další informace najdete v tématu [Transformace a úlohy](transform-concept.md). Ukázka popsaná v tomto kurzu definuje předpis, který zakóduje video tak, aby se dalo streamovat na nejrůznějších zařízeních s iOSem a Androidem. 
 
-Následující příklad vytvoří transformaci (pokud neexistuje).
+Následující příklad vytvoří transformaci (Pokud neexistuje).
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#EnsureTransformExists)]
 
@@ -74,15 +74,15 @@ Následující funkce odešle úlohu.
 
 ## <a name="wait-for-the-job-to-complete"></a>Čekání na dokončení úlohy
 
-Úloze chvíli trvá, než se dokončí, a když k tomu dojde, budete na to pravděpodobně chtít upozornit. Doporučujeme použít Event Grid čekat na dokončení úlohy.
+Úloze chvíli trvá, než se dokončí, a když k tomu dojde, budete na to pravděpodobně chtít upozornit. Pro čekání na dokončení úlohy doporučujeme použít Event Grid.
 
-Úloha obvykle prochází následujícími stavy: **Naplánováno**, **Zařazeno do fronty**, **Zpracování**, **Dokončeno** (konečný stav). Pokud během provádění úlohy dojde k chybě, přejde úloha do stavu **Chyba**. Když úlohu zrušíte, změní se její stav na **Rušení** a potom na **Zrušeno**.
+Úloha obvykle prochází následujícími stavy: **naplánované**, **zařazeno do fronty**, **zpracování**, **dokončeno** (konečný stav). Pokud během provádění úlohy dojde k chybě, přejde úloha do stavu **Chyba**. Když úlohu zrušíte, změní se její stav na **Rušení** a potom na **Zrušeno**.
 
-Další informace naleznete v [tématu Zpracování událostí mřížky událostí](reacting-to-media-services-events.md).
+Další informace najdete v tématu [zpracování událostí Event Grid](reacting-to-media-services-events.md).
 
-## <a name="upload-the-audio-only-mp4-file"></a>Nahrání zvukového souboru MP4
+## <a name="upload-the-audio-only-mp4-file"></a>Nahrání souboru MP4 jenom pro zvuk
 
-Nahrajte do výstupního datového zdroje další zvukový soubor MP4 (kodek AAC) obsahující popisný zvuk.  
+Nahrajte do výstupního prostředku další soubor MP4 jenom pro zvuk (kodek AAC) obsahující popisný zvuk.  
 
 ```csharp
 private static async Task UpoadAudioIntoOutputAsset(
@@ -127,22 +127,22 @@ private static async Task UpoadAudioIntoOutputAsset(
 }
 ```
 
-Zde je příklad volání `UpoadAudioIntoOutputAsset` funkce:
+Tady je příklad volání `UpoadAudioIntoOutputAsset` funkce:
 
 ```csharp
 await UpoadAudioIntoOutputAsset(client, config.ResourceGroup, config.AccountName, outputAsset.Name, "audio_description.m4a");
 ```
 
-## <a name="edit-the-ism-file"></a>Úprava souboru ISM
+## <a name="edit-the-ism-file"></a>Úprava souboru. ISM
 
-Po dokončení úlohy kódování bude výstupní datový zdroj obsahovat soubory generované úlohou kódování. 
+Po dokončení úlohy kódování budou výstupní Asset obsahovat soubory generované úlohou kódování. 
 
-1. Na webu Azure Portal přejděte na účet úložiště přidružený k vašemu účtu Mediálních služeb. 
-1. Najděte kontejner s názvem výstupního datového zdroje. 
-1. V kontejneru najděte soubor .ism a klikněte na **Upravit objekt blob** (v pravém okně). 
-1. Upravte soubor .ism přidáním informací o nahraném souboru MP4 (kodek Pouze AAC) obsahujícím popisný zvuk a stiskněte **tlačítko Uložit** po dokončení.
+1. V Azure Portal přejděte do účtu úložiště přidruženého k vašemu účtu Media Services. 
+1. Najděte kontejner s názvem svého výstupního prostředku. 
+1. V kontejneru Najděte soubor. ISM a klikněte na **Upravit objekt BLOB** (v pravém okně). 
+1. Upravte soubor. ISM přidáním informací o nahraném souboru MP4 jenom pro zvuk (kodek AAC), který obsahuje popisný zvuk, a po dokončení klikněte na **Uložit** .
 
-    Chcete-li signalizovat popisné zvukové stopy, musíte do souboru .ism přidat parametry "usnadnění" a "role". Je vaší odpovědností správně nastavit tyto parametry tak, aby signalizovaly zvukovou stopu jako zvukový popis. Můžete například `<param name="accessibility" value="description" />` `<param name="role" value="alternate" />` přidat a do souboru ISM pro určitou zvukovou stopu, jak je znázorněno v následujícím příkladu.
+    Chcete-li signalizovat popisné zvukové stopy, je třeba do souboru. ISM přidat parametry "usnadnění" a "role". Vaše zodpovědnost za správné nastavení těchto parametrů k signalizaci zvukové stopy jako zvukového popisu. Například přidejte `<param name="accessibility" value="description" />` a `<param name="role" value="alternate" />` do souboru. ISM pro konkrétní zvukovou stopu, jak je znázorněno v následujícím příkladu.
  
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -200,29 +200,29 @@ Po dokončení úlohy kódování bude výstupní datový zdroj obsahovat soubor
 </smil>
 ```
 
-## <a name="get-a-streaming-locator"></a>Získejte vyhledávač datových proudů
+## <a name="get-a-streaming-locator"></a>Získání lokátoru streamování
 
-Po dokončení kódování následuje zpřístupnění videa ve výstupním prostředku, kde je k dispozici klientům pro přehrávání. Toho lze dosáhnout ve dvou krocích: nejprve [vytvořte lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators)a za druhé vytvořte adresy URL streamování, které mohou klienti používat. 
+Po dokončení kódování následuje zpřístupnění videa ve výstupním prostředku, kde je k dispozici klientům pro přehrávání. To můžete provést ve dvou krocích: Nejdřív vytvořte [Lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators)a druhý, sestavte adresy URL streamování, které můžou klienti používat. 
 
-Proces vytváření **lokátoru streamování se** nazývá publikování. Ve výchozím nastavení je **lokátor streamování** platný ihned po volání rozhraní API a trvá, dokud není odstraněn, pokud nenakonfigurujete volitelný počáteční a koncový čas. 
+Proces vytvoření **lokátoru streamování** se nazývá publikování. Ve výchozím nastavení je **Lokátor streamování** platný hned po volání rozhraní API a trvá až do odstranění, pokud nenastavíte volitelné počáteční a koncové časy. 
 
-Když vytváříte [streamovací lokátor](https://docs.microsoft.com/rest/api/media/streaminglocators), je potřeba zadat požadovaný název zásad streamování (**StreamingPolicyName**). V tomto příkladu budete streamovat v jasném (nebo nešifrovaném obsahu), takže se použije předdefinovaná zásada prostého streamování (**PredefinedStreamingPolicy.ClearStreamingOnly).**
+Když vytváříte [streamovací lokátor](https://docs.microsoft.com/rest/api/media/streaminglocators), je potřeba zadat požadovaný název zásad streamování (**StreamingPolicyName**). V tomto příkladu budete zasílat streamování (nebo nešifrovaný obsah), aby se použily předdefinované zásady zrušení streamování (**PredefinedStreamingPolicy. ClearStreamingOnly**).
 
 > [!IMPORTANT]
-> Při použití vlastní [zásady streamování](https://docs.microsoft.com/rest/api/media/streamingpolicies), měli byste navrhnout omezenou sadu těchto zásad pro váš účet Media Service a znovu použít pro streamingLocators vždy, když jsou potřeba stejné možnosti šifrování a protokoly. Váš účet služby Media Service má kvótu pro počet položek zásad streamování. Pro každý lokátor streamování byste neměli vytvářet nové zásady streamování.
+> Pokud používáte vlastní [zásady streamování](https://docs.microsoft.com/rest/api/media/streamingpolicies), měli byste navrhnout určitou sadu takových zásad pro svůj účet Media Service a znovu je použít pro své StreamingLocators, kdykoli budete potřebovat stejné možnosti šifrování a protokoly. Váš účet Media Service má kvótu pro počet položek zásad streamování. Pro každý Lokátor streamování byste neměli vytvářet nové zásady streamování.
 
 Následující kód předpokládá, že funkci voláte s jedinečným názvem lokátoru.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateStreamingLocator)]
 
-Zatímco ukázka v tomto tématu popisuje streamování, můžete použít stejné volání k vytvoření lokátoru streamování pro doručování videa prostřednictvím postupného stahování.
+I když ukázka v tomto tématu popisuje streamování, můžete použít stejné volání k vytvoření lokátoru streamování pro doručování videa prostřednictvím progresivního stahování.
 
 ### <a name="get-streaming-urls"></a>Vytvoření adres URL pro streamování
 
-Nyní, když byl vytvořen [lokátor streamování,](https://docs.microsoft.com/rest/api/media/streaminglocators) můžete získat adresy URL streamování, jak je znázorněno v **adrese GetStreamingURL**. Chcete-li vytvořit adresu URL, musíte zřetězit název hostitele [koncového bodu streamování](https://docs.microsoft.com/rest/api/media/streamingendpoints) a cestu **lokátoru streamování.** V této ukázce se používá *výchozí* **koncový bod streamování.** Při prvním vytvoření účtu služby Media Service bude tento *výchozí* **koncový bod streamování** v zastaveném stavu, takže je třeba zavolat **start**.
+Teď, když se vytvořil [Lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators) , můžete získat adresy URL streamování, jak je znázorněno v **GetStreamingURLs**. Pokud chcete vytvořit adresu URL, musíte zřetězit název hostitele [koncového bodu streamování](https://docs.microsoft.com/rest/api/media/streamingendpoints) a cestu k **lokátoru streamování** . V této ukázce se používá *výchozí* **koncový bod streamování** . Při prvním vytvoření účtu služby Media Service bude tento *výchozí* **koncový bod streamování** v zastaveném stavu, takže je potřeba zavolat **Start**.
 
 > [!NOTE]
-> V této metodě potřebujete locatorName, který byl použit při vytváření **streamování Lokátor** pro výstupní asset.
+> V této metodě budete potřebovat lokátor, který se použil při vytváření **lokátoru streamování** pro výstupní prostředek.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#GetStreamingURLs)]
 
@@ -233,10 +233,10 @@ Tento článek používá k otestování streamu přehrávač Azure Media Player
 > [!NOTE]
 > Pokud se přehrávač hostuje na webu HTTPS, nezapomeňte adresu URL aktualizovat tak, aby obsahovala „https“. 
 
-1. Otevřete webový prohlížeč [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)a přejděte na .
-2. Do pole **URL:** vložte jednu z hodnot adresy URL streamování, které jste získali z aplikace. 
+1. Otevřete webový prohlížeč a přejděte na [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/).
+2. Do pole **Adresa URL:** vložte jednu z hodnot adresy URL streamování, které jste získali z aplikace. 
  
-     Adresu URL můžete vložit ve formátu HLS, Dash nebo Smooth a Azure Media Player se automaticky přepne na příslušný protokol streamování pro automatické přehrávání na vašem zařízení.
+     Můžete vložit adresu URL ve formátu HLS, pomlčka nebo vyhlazení a Azure Media Player přepnout na příslušný protokol pro streamování pro přehrávání na zařízení automaticky.
 3. Stiskněte **Update Player** (Aktualizovat přehrávač).
 
 Azure Media Player můžete použít pro účely testování, nesmí se ale používat v produkčním prostředí. 

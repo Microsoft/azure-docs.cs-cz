@@ -1,6 +1,6 @@
 ---
-title: Jak se aplikace zobrazují na přístupovém panelu | Dokumenty společnosti Microsoft
-description: Poradce při potížích s tím, proč se aplikace zobrazuje na přístupovém panelu
+title: Jak se aplikace zobrazují na přístupovém panelu | Microsoft Docs
+description: Řešení potíží s tím, proč se aplikace zobrazuje na přístupovém panelu
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,141 +17,141 @@ ms.author: mimart
 ms.reviewr: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8fa8ea75cc7fda05326c802c25a91d025b66b5ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65784414"
 ---
 # <a name="how-applications-appear-on-the-access-panel"></a>Jak se aplikace zobrazují na přístupovém panelu
 
-Přístupový panel je webový portál, který umožňuje uživateli s pracovním nebo školním účtem ve službě Azure Active Directory (Azure AD) zobrazit a spustit cloudové aplikace, ke kterým jim správce Azure AD udělil přístup. Tyto aplikace jsou konfigurovány jménem uživatele na portálu Azure AD. Správce může zřídit aplikaci přímo uživateli nebo skupině, jejíž součástí je uživatel, což vede k tomu, že se aplikace zobrazí na přístupovém panelu uživatele.
+Přístupový panel je webový portál, který umožňuje uživateli s pracovním nebo školním účtem ve službě Azure Active Directory (Azure AD) zobrazovat a spouštět cloudové aplikace, kterým správce Azure AD udělil přístup k systému. Tyto aplikace jsou nakonfigurované jménem uživatele na portálu Azure AD. Správce může aplikaci zřídit přímo uživateli nebo skupině, která je součástí výsledného uživatele, v aplikaci, která se zobrazuje na přístupovém panelu uživatele.
 
-## <a name="general-issues-to-check-first"></a>Obecné problémy, které je třeba nejprve zkontrolovat
+## <a name="general-issues-to-check-first"></a>Obecné problémy k první kontrole
 
--   Pokud byla aplikace odebrána uživateli nebo skupině, jejíž je uživatel členem, zkuste se po několika minutách znovu přihlásit a odhlásit na přístupovém panelu uživatele a zjistěte, zda je aplikace odebrána.
+-   Pokud se aplikace odebrala z uživatele nebo skupiny, které je uživatel členem, zkuste se znovu přihlásit a přejít na přístupový panel uživatele a zjistit, jestli je aplikace odebraná.
 
--   Pokud byla odebrána licence uživateli nebo skupině, může to to to trvat dlouho, v závislosti na velikosti a složitosti skupiny pro změny, které mají být provedeny. Před přihlášením na přístupový panel vyčkejte více času.
+-   Pokud byla licence odebrána od uživatele nebo skupiny, které je uživatel členem této služby, může trvat dlouhou dobu v závislosti na velikosti a složitosti skupiny pro změny, které mají být provedeny. Před přihlášením k přístupovému panelu povolte dodatečnou dobu.
 
-## <a name="problems-related-to-assigning-applications-to-users"></a>Problémy související s přiřazování aplikací uživatelům
+## <a name="problems-related-to-assigning-applications-to-users"></a>Problémy související s přiřazováním aplikací uživatelům
 
-Uživatel může být vidět aplikace na jejich přístupový panel, protože byl dříve přiřazen k němu. Níže jsou uvedeny některé způsoby, jak zkontrolovat:
+Uživatel může na svém přístupovém panelu vidět aplikaci, protože k ní dříve byla přiřazena. Níže jsou uvedeny některé způsoby, jak ověřit:
 
--   [Kontrola, zda je uživatel přiřazen k aplikaci](#check-if-a-user-is-assigned-to-the-application)
+-   [Zjistit, jestli je uživatel přiřazený k aplikaci](#check-if-a-user-is-assigned-to-the-application)
 
--   [Zkontrolujte, zda uživatel nemá licenci související s aplikací](#check-if-a-user-is-under-a-license-related-to-the-application)
+-   [Zjistit, jestli se uživatel nachází v licenci týkající se aplikace](#check-if-a-user-is-under-a-license-related-to-the-application)
 
 
-### <a name="check-if-a-user-is-assigned-to-the-application"></a>Kontrola, zda je uživatel přiřazen k aplikaci
+### <a name="check-if-a-user-is-assigned-to-the-application"></a>Zjistit, jestli je uživatel přiřazený k aplikaci
 
-Chcete-li zkontrolovat, zda je uživatel přiřazen k aplikaci, postupujte takto:
+Pokud chcete zjistit, jestli je uživatel přiřazený k aplikaci, postupujte podle těchto kroků:
 
-1. Otevřete [**portál Azure**](https://portal.azure.com/) a přihlaste se jako globální **správce.**
+1. Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 
-2. Otevřete **rozšíření Azure Active Directory** kliknutím na Všechny **služby** v horní části hlavní nabídky navigace vlevo.
+2. Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
-3. Do vyhledávacího pole filtru zadejte **"Azure Active Directory"** a vyberte položku **Služby Azure Active Directory.**
+3. Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 
-4. V levé navigační nabídce Azure Active Directory klikněte na **Podnikové aplikace.**
+4. v navigační nabídce Azure Active Directory vlevo klikněte na **podnikové aplikace** .
 
-5. Kliknutím na **Všechny aplikace** zobrazíte seznam všech aplikací.
+5. Kliknutím na **všechny aplikace** zobrazíte seznam všech aplikací.
 
-6. **Vyhledejte** název dané žádosti.
+6. **Vyhledejte** název příslušné aplikace.
 
 7. klikněte na **Uživatelé a skupiny**.
 
-8. Zkontrolujte, zda je uživatel přiřazen k aplikaci.
+8. Zkontrolujte, jestli je váš uživatel přiřazený k aplikaci.
 
-   * Chcete-li odebrat uživatele z aplikace, **klepněte na řádek** uživatele a vyberte **příkaz Odstranit**.
+   * Chcete-li odebrat uživatele z aplikace, **klikněte na řádek** uživatele a vyberte možnost **Odstranit**.
 
-### <a name="check-if-a-user-is-under-a-license-related-to-the-application"></a>Zkontrolujte, zda uživatel nemá licenci související s aplikací
+### <a name="check-if-a-user-is-under-a-license-related-to-the-application"></a>Zjistit, jestli se uživatel nachází v licenci týkající se aplikace
 
-Chcete-li zkontrolovat přiřazené licence uživatele, postupujte takto:
+Pokud chcete ověřit přiřazené licence uživatele, postupujte podle těchto kroků:
 
-1. Otevřete [**portál Azure**](https://portal.azure.com/) a přihlaste se jako globální **správce.**
+1. Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 
-2. Otevřete **rozšíření Azure Active Directory** kliknutím na Všechny **služby** v horní části hlavní nabídky navigace vlevo.
+2. Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
-3. Do vyhledávacího pole filtru zadejte **"Azure Active Directory"** a vyberte položku **Služby Azure Active Directory.**
+3. Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 
-4. V navigační nabídce klikněte na **Uživatelé a skupiny.**
+4. v navigační nabídce klikněte na **Uživatelé a skupiny** .
 
-5. klepněte na položku **Všichni uživatelé**.
+5. klikněte na **Všichni uživatelé**.
 
-6. **Vyhledejte** uživatele, který vás zajímá, a **klikněte na řádek,** který chcete vybrat.
+6. **Vyhledejte** uživatele, kterého vás zajímá, a **klikněte na řádek** , který chcete vybrat.
 
-7. Chcete-li zjistit, které licence uživatel aktuálně přiřadil, klepněte na **položku Licence.**
+7. Kliknutím na **licence** zobrazíte licence, které uživatel aktuálně přiřadil.
 
-   * Pokud je uživatel přiřazen k licenci sady Office, umožní se aplikace sady Office první strany zobrazit na přístupovém panelu uživatele.
+   * Pokud je uživatel přiřazen k licenci Office, umožní to, aby se na přístupovém panelu uživatele zobrazovaly aplikace Office první strany.
 
-## <a name="problems-related-to-assigning-applications-to-groups"></a>Problémy související s přiřazování žádostí skupinám
+## <a name="problems-related-to-assigning-applications-to-groups"></a>Problémy související s přiřazováním aplikací do skupin
 
-Uživatel může být vidět aplikace na jejich přístupový panel, protože jsou součástí skupiny, která byla přiřazena aplikace. Níže jsou uvedeny některé způsoby, jak zkontrolovat:
+Uživatel může zobrazit aplikaci na svém přístupovém panelu, protože je součástí skupiny, které byla aplikace přiřazena. Níže jsou uvedeny některé způsoby, jak ověřit:
 
--   [Kontrola členství uživatele ve skupinách](#check-a-users-group-memberships)
+-   [Ověřit členství uživatele ve skupinách](#check-a-users-group-memberships)
 
--   [Kontrola, zda je uživatel členem skupiny přiřazené k licenci](#check-if-a-user-is-a-member-of-a-group-assigned-to-a-license)
+-   [Zkontroluje, jestli je uživatel členem skupiny, která je přiřazená k licenci.](#check-if-a-user-is-a-member-of-a-group-assigned-to-a-license)
 
-### <a name="check-a-users-group-memberships"></a>Kontrola členství uživatele ve skupinách
+### <a name="check-a-users-group-memberships"></a>Ověřit členství uživatele ve skupinách
 
-Chcete-li zkontrolovat členství ve skupině, postupujte takto:
+Chcete-li ověřit členství ve skupině, postupujte podle následujících kroků:
 
-1. Otevřete [**portál Azure**](https://portal.azure.com/) a přihlaste se jako globální **správce.**
+1. Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 
-2. Otevřete **rozšíření Azure Active Directory** kliknutím na Všechny **služby** v horní části hlavní nabídky navigace vlevo.
+2. Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
-3. Do vyhledávacího pole filtru zadejte **"Azure Active Directory"** a vyberte položku **Služby Azure Active Directory.**
+3. Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 
-4. V navigační nabídce klikněte na **Uživatelé a skupiny.**
+4. v navigační nabídce klikněte na **Uživatelé a skupiny** .
 
-5. klepněte na položku **Všichni uživatelé**.
+5. klikněte na **Všichni uživatelé**.
 
-6. **Vyhledejte** uživatele, který vás zajímá, a **klikněte na řádek,** který chcete vybrat.
+6. **Vyhledejte** uživatele, kterého vás zajímá, a **klikněte na řádek** , který chcete vybrat.
 
-7. klikněte na **Skupiny.**
+7. klikněte na **skupiny.**
 
-8. Zkontrolujte, zda je uživatel součástí skupiny přiřazené k aplikaci.
+8. Zkontrolujte, jestli je váš uživatel součástí skupiny přiřazené k aplikaci.
 
-   * Pokud chcete odebrat uživatele ze skupiny, **klikněte na řádek** skupiny a vyberte odstranit.
+   * Pokud chcete uživatele odebrat ze skupiny, **klikněte na řádek** skupiny a vyberte Odstranit.
 
-### <a name="check-if-a-user-is-a-member-of-a-group-assigned-to-a-license"></a>Kontrola, zda je uživatel členem skupiny přiřazené k licenci
+### <a name="check-if-a-user-is-a-member-of-a-group-assigned-to-a-license"></a>Zkontroluje, jestli je uživatel členem skupiny, která je přiřazená k licenci.
 
-1. Otevřete [**portál Azure**](https://portal.azure.com/) a přihlaste se jako globální **správce.**
+1. Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 
-2. Otevřete **rozšíření Azure Active Directory** kliknutím na Všechny **služby** v horní části hlavní nabídky navigace vlevo.
+2. Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
 
-3. Do vyhledávacího pole filtru zadejte **"Azure Active Directory"** a vyberte položku **Služby Azure Active Directory.**
+3. Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
 
-4. V navigační nabídce klikněte na **Uživatelé a skupiny.**
+4. v navigační nabídce klikněte na **Uživatelé a skupiny** .
 
-5. klepněte na položku **Všichni uživatelé**.
+5. klikněte na **Všichni uživatelé**.
 
-6. **Vyhledejte** uživatele, který vás zajímá, a **klikněte na řádek,** který chcete vybrat.
+6. **Vyhledejte** uživatele, kterého vás zajímá, a **klikněte na řádek** , který chcete vybrat.
 
-7. klikněte na **Skupiny.**
+7. klikněte na **skupiny.**
 
-8. klikněte na řádek určité skupiny.
+8. klikněte na řádek konkrétní skupiny.
 
-9. Chcete-li zjistit, které licence k ní skupina přiřadila, klepněte na **položku Licence.**
+9. Kliknutím na **licence** zobrazíte licence, ke kterým se skupina přiřadí.
 
-   * Pokud je skupina přiřazena k licenci sady Office, může to umožnit, aby se některé aplikace sady Office první strany zobrazily na přístupovém panelu uživatele.
+   * Pokud je skupina přiřazená k licenci Office, může to povolit, aby se některé aplikace Office, které se na přístupovém panelu zobrazovaly, zobrazily na přístupovém panelu uživatele.
 
 
-## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>Pokud tyto kroky řešení potíží problém nevyřeší
+## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>Pokud tyto kroky pro řešení potíží nevyřešily problém
 
-otevřete lístek podpory s následujícími informacemi, pokud jsou k dispozici:
+Otevřete lístek podpory s následujícími informacemi, pokud jsou k dispozici:
 
 -   ID chyby korelace
 
--   UPN (e-mailová adresa uživatele)
+-   UPN (uživatelská e-mailová adresa)
 
 -   ID tenanta
 
 -   Typ prohlížeče
 
--   Časové pásmo a časový rámec během chyby
+-   Časové pásmo a čas/časový rámec při výskytu chyby
 
--   Fiddler stopy
+-   Fiddler trasování
 
 ## <a name="next-steps"></a>Další kroky
-[Správa aplikací pomocí služby Azure Active Directory](what-is-application-management.md)
+[Správa aplikací pomocí Azure Active Directory](what-is-application-management.md)

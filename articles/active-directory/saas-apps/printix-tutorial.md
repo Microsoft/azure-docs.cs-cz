@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace služby Azure Active Directory s aplikací Printix | Dokumenty společnosti Microsoft'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a Printix.
+title: 'Kurz: Azure Active Directory integrace s Printix | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Printix.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,225 +16,225 @@ ms.date: 06/29/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e883833f7998c073b574c892ed5c7777e01faab4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "62111447"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-printix"></a>Kurz: Integrace služby Azure Active Directory s printixem
+# <a name="tutorial-azure-active-directory-integration-with-printix"></a>Kurz: Azure Active Directory integrace s Printix
 
 V tomto kurzu se dozvíte, jak integrovat Printix s Azure Active Directory (Azure AD).
 
-Integrace Printix u Azure AD poskytuje následující výhody:
+Integrace Printix s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, kdo má přístup k Printix
-- Uživatelům můžete povolit automatické přihlášení k Printix (jednotné přihlašování) pomocí jejich účtů Azure AD.
-- Své účty můžete spravovat na jednom centrálním místě – na portálu Azure
+- Můžete řídit v Azure AD, kteří mají přístup k Printix.
+- Uživatelům můžete povolit, aby se k účtům Azure AD automaticky přihlásili k Printix (jednotné přihlašování).
+- Účty můžete spravovat v jednom centrálním umístění – Azure Portal
 
-Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, podívejte se, [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li nakonfigurovat integraci Azure AD s Printix, budete potřebovat následující položky:
+Ke konfiguraci integrace služby Azure AD s Printix potřebujete následující položky:
 
 - Předplatné Azure AD
-- Předplatné s povoleným jedním přihlášením Printix
+- Předplatné s povoleným Printixm jednotným přihlašováním
 
 > [!NOTE]
-> Chcete-li otestovat kroky v tomto kurzu, nedoporučujeme používat produkční prostředí.
+> K otestování kroků v tomto kurzu nedoporučujeme používat produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle následujících doporučení:
+K otestování kroků v tomto kurzu byste měli postupovat podle těchto doporučení:
 
-- Nepoužívejte produkční prostředí, pokud to není nutné.
-- Pokud nemáte zkušební prostředí Azure AD, můžete získat měsíční zkušební [verzi zde](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte své provozní prostředí, pokud není nutné.
+- Pokud nemáte zkušební prostředí Azure AD, můžete [si ho stáhnout](https://azure.microsoft.com/pricing/free-trial/)na měsíc zdarma.
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu otestujete jednotné přihlašování Azure AD v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu otestujete jednotné přihlašování Azure AD v testovacím prostředí. Scénář, který je popsaný v tomto kurzu, se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání Printix z galerie
-1. Konfigurace a testování jednotného přihlašování azure ad
+1. Přidání Printix z Galerie
+1. Konfigurace a testování jednotného přihlašování Azure AD
 
-## <a name="adding-printix-from-the-gallery"></a>Přidání Printix z galerie
-Chcete-li nakonfigurovat integraci Printix do Azure AD, musíte přidat Printix z galerie do seznamu spravovaných aplikací SaaS.
+## <a name="adding-printix-from-the-gallery"></a>Přidání Printix z Galerie
+Pokud chcete nakonfigurovat integraci Printix do služby Azure AD, musíte přidat Printix z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat printix z galerie, proveďte následující kroky:**
+**Pokud chcete přidat Printix z Galerie, proveďte následující kroky:**
 
-1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.** 
+1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** . 
 
     ![Active Directory][1]
 
-1. Přejděte k **podnikovým aplikacím**. Pak přejděte na **všechny aplikace**.
+1. Přejděte k **podnikovým aplikacím**. Pak přejdete na **všechny aplikace**.
 
     ![Aplikace][2]
     
-1. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
     ![Aplikace][3]
 
-1. Do vyhledávacího pole zadejte **Příkaz Printix**.
+1. Do vyhledávacího pole zadejte **Printix**.
 
     ![Vytvoření testovacího uživatele Azure AD](./media/printix-tutorial/tutorial_printix_search.png)
 
-1. V panelu výsledky vyberte **Printix**a pak klepnutím na **tlačítko Přidat** přidejte aplikaci.
+1. Na panelu výsledků vyberte **Printix**a pak klikněte na **Přidat** tlačítko pro přidání aplikace.
 
     ![Vytvoření testovacího uživatele Azure AD](./media/printix-tutorial/tutorial_printix_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování azure ad
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí printixu na základě testovacího uživatele s názvem "Britta Simon".
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Printix na základě testovacího uživatele s názvem "Britta Simon".
 
-Aby jednotné přihlašování fungovalo, Azure AD potřebuje vědět, co je protějšek uživatele v Printix pro uživatele ve službě Azure AD. Jinými slovy vztah propojení mezi uživatelem Azure AD a související uživatel v Printix musí být vytvořen.
+Aby se jednotné přihlašování fungovalo, musí Azure AD zjistit, co se uživatel partnerského systému v Printix uživateli v Azure AD. Jinými slovy, je třeba zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Printix.
 
-V Printix přiřaďte hodnotu **uživatelského jména** ve službě Azure AD jako hodnotu **uživatelského jména** k vytvoření vztahu propojení.
+V Printix přiřaďte hodnotu **uživatelského jména** ve službě Azure AD jako hodnotu uživatelského **jména** , aby se mohl vytvořit vztah propojení.
 
-Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí služby Printix, je třeba provést následující stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Printix, musíte dokončit tyto stavební bloky:
 
-1. **[Konfigurace jednotného přihlašování Azure AD](#configuring-azure-ad-single-sign-on)** – k tomu, aby uživatelé mohli tuto funkci používat.
-1. **[Vytvoření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)** – k testování jednotného přihlašování Azure AD s Brittou Simonovou.
-1. **[Vytvoření test Printix uživatele](#creating-a-printix-test-user)** – mít protějšek Britta Simon v Printix, který je propojen s reprezentaci Azure AD uživatele.
-1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)** – chcete-li britta Simon používat Azure AD jednotné přihlašování.
-1. **[Testování jednotného přihlášení](#testing-single-sign-on)** - k ověření, zda konfigurace funguje.
+1. **[Konfiguruje se jednotné přihlašování Azure AD](#configuring-azure-ad-single-sign-on)** , které umožní uživatelům používat tuto funkci.
+1. **[Vytvoření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)** – testování jednotného přihlašování Azure AD pomocí Britta Simon
+1. **[Vytvoření testovacího uživatele Printix](#creating-a-printix-test-user)** , který má protějšek Britta Simon v Printix, který je propojený s reprezentací uživatele Azure AD.
+1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)** – povolení Britta Simon pro použití jednotného přihlašování Azure AD
+1. **[Testování jednotného přihlašování](#testing-single-sign-on)** – ověřte, zda konfigurace funguje.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfiguruje se jednotné přihlašování Azure AD.
 
-V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal a nakonfigurujete jednotné přihlašování v aplikaci Printix.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal a nakonfigurujete jednotné přihlašování v aplikaci Printix.
 
-**Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí služby Printix, proveďte následující kroky:**
+**Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Printix, proveďte následující kroky:**
 
-1. Na portálu Azure klikněte na stránce Integrace aplikace **Printix** na **Jedno přihlášení**.
+1. V Azure Portal na stránce integrace aplikací **Printix** klikněte na **jednotné přihlašování**.
 
     ![Konfigurace jednotného přihlašování][4]
 
-1. V **dialogovém okně Jednotné přihlašování** vyberte **Režim** jako **přihlašování na základě SAML,** abyste povolili jednotné přihlašování.
+1. V dialogovém okně **jednotného přihlašování** vyberte **režim** jako **přihlašování založené na SAML** pro povolení jednotného přihlašování.
  
     ![Konfigurace jednotného přihlašování](./media/printix-tutorial/tutorial_printix_samlbase.png)
 
-1. V části **Printix Domain and URL proveďte** následující kroky:
+1. V části **doména a adresy URL Printix** proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/printix-tutorial/tutorial_printix_url.png)
 
-    Do textového pole **Přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<subdomain>.printix.net`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<subdomain>.printix.net`
 
     > [!NOTE] 
-    > Hodnota není skutečná. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Chcete-li získat hodnotu, obraťte se na [tým podpory klienta Printix.](mailto:support@printix.net) 
+    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta Printix](mailto:support@printix.net) . 
  
-1. V části **Podpisový certifikát SAML** klikněte na **Metadata XML** a uložte soubor metadat do počítače.
+1. V části **podpisový certifikát SAML** klikněte na **metadata XML** a uložte soubor metadat do svého počítače.
 
     ![Konfigurace jednotného přihlašování](./media/printix-tutorial/tutorial_printix_certificate.png) 
 
-1. Klikněte na **tlačítko Uložit.**
+1. Klikněte na tlačítko **Uložit** .
 
     ![Konfigurace jednotného přihlašování](./media/printix-tutorial/tutorial_general_400.png)
 
-1. Přihlaste se k tenantovi Printix jako správce.
+1. Přihlaste se ke svému tenantovi Printix jako správce.
 
-1. V nabídce v horní části klikněte na ikonu v pravém horním rohu a vyberte "**Ověřování**".
+1. V nabídce v horní části klikněte na ikonu v pravém horním rohu a vyberte**ověřování**.
    
     ![Konfigurace jednotného přihlašování](./media/printix-tutorial/tutorial_printix_06.png)
 
-1. Na kartě **Setup** vyberte **Povolit ověřování Azure/Office 365.**
+1. Na kartě **Nastavení** vyberte **Povolit ověřování Azure/Office 365** .
    
     ![Konfigurace jednotného přihlašování](./media/printix-tutorial/tutorial_printix_07.png)
 
-1. Na kartě **Azure** zadejte adresu URL metadat federace do textového pole**dokumentu metadat federace.** 
+1. Na kartě **Azure** zadejte adresu URL federačních metadat do textového pole**dokumentu federačních metadat**. 
 
-    Připojte soubor XML metadat, který jste stáhli z Azure AD do [týmu podpory Printix](mailto:support@printix.net). Pak nahrají soubor XML a poskytnou adresu URL metadat federace.
+    Připojte soubor XML s metadaty, který jste stáhli z Azure AD do [Printix týmu podpory](mailto:support@printix.net). Pak nahrajte soubor XML a zadejte adresu URL federačních metadat.
    
     ![Konfigurace jednotného přihlašování](./media/printix-tutorial/tutorial_printix_08.png)
    
-1. Klikněte na tlačítko **"Testovat"** a v případě úspěšného testu klepněte na tlačítko**OK.**
+1. Klikněte na tlačítko**test**a po úspěšném dokončení testu klikněte na tlačítko**OK**.
    
-     Po kliknutí na **testovací** tlačítko se zobrazí stránka adresáře Azure active directory. "Test byl úspěšný" zde znamená, že po zadání přihlašovacích údajů vašeho testovacího účtu Azure se zobrazí zpráva "Nastavení testováno OK". Pak klikněte na tlačítko **OK.**
+     Po kliknutí na tlačítko **test** se zobrazí stránka Azure Active Directory. "Test byl úspěšný, sem znamená po zadání přihlašovacích údajů ke svému účtu Azure test se zobrazí zpráva" nastavení testováno OK ". Pak klikněte na tlačítko **OK** .
    
     ![Konfigurace jednotného přihlašování](./media/printix-tutorial/tutorial_printix_09.png)
 
-1. Klepněte na tlačítko **Uložit** na stránce**Ověřování.**
+1. Klikněte na tlačítko **Uložit** na stránce**ověřování**.
 
 
 > [!TIP]
-> Teď si můžete přečíst stručnou verzi těchto pokynů uvnitř [portálu Azure](https://portal.azure.com), zatímco nastavujete aplikaci!  Po přidání této aplikace z oddílu **Active Directory > Enterprise Applications** jednoduše klikněte na kartu Jednotné **přihlášení** a získejte přístup k vložené dokumentaci prostřednictvím části **Konfigurace** v dolní části. Další informace o funkci vložené dokumentace najdete zde: [Integrovaná dokumentace azure ad]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Při nastavování aplikace si teď můžete přečíst stručnou verzi těchto instrukcí v rámci [Azure Portal](https://portal.azure.com).  Po přidání této aplikace z části **Active Directory > Enterprise** Apps stačí kliknout na kartu **jednotného přihlašování** a získat přístup k integrované dokumentaci v části **Konfigurace** v dolní části. Další informace o funkci integrovaná dokumentace si můžete přečíst tady: [dokumentace k Azure AD Embedded]( https://go.microsoft.com/fwlink/?linkid=845985) .
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
-Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
+Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
 ![Vytvoření uživatele Azure AD][100]
 
 **Chcete-li vytvořit testovacího uživatele ve službě Azure AD, proveďte následující kroky:**
 
-1. Na **webu Azure Portal**klikněte v levém navigačním podokně na ikonu **Služby Azure Active Directory.**
+1. V **Azure Portal**v levém navigačním podokně klikněte na ikonu **Azure Active Directory** .
 
     ![Vytvoření testovacího uživatele Azure AD](./media/printix-tutorial/create_aaduser_01.png) 
 
-1. Chcete-li zobrazit seznam uživatelů, přejděte na **položku Uživatelé a skupiny** a klepněte na tlačítko **Všichni uživatelé**.
+1. Pokud chcete zobrazit seznam uživatelů, přejděte na **Uživatelé a skupiny** a klikněte na **Všichni uživatelé**.
     
     ![Vytvoření testovacího uživatele Azure AD](./media/printix-tutorial/create_aaduser_02.png) 
 
-1. Chcete-li otevřít dialogové **okno Uživatel,** klepněte v horní části dialogového okna na **Přidat.**
+1. Chcete-li otevřít dialogové okno **uživatel** , klikněte na tlačítko **Přidat** v horní části dialogového okna.
  
     ![Vytvoření testovacího uživatele Azure AD](./media/printix-tutorial/create_aaduser_03.png) 
 
-1. Na stránce **uživatelského** dialogového okna proveďte následující kroky:
+1. Na stránce **uživatelský** dialog proveďte následující kroky:
  
     ![Vytvoření testovacího uživatele Azure AD](./media/printix-tutorial/create_aaduser_04.png) 
 
-    a. Do textového pole **Název** zadejte **příkaz BrittaSimon**.
+    a. Do textového pole **název** zadejte **BrittaSimon**.
 
-    b. Do textového pole **Uživatelské jméno** zadejte **e-mailovou adresu** BrittaSimon.
+    b. Do textového pole **uživatelské jméno** zadejte **e-mailovou adresu** BrittaSimon.
 
-    c. Vyberte **Zobrazit heslo** a poznamenejte si hodnotu **hesla**.
+    c. Vyberte možnost **Zobrazit heslo** a zapište hodnotu **hesla**.
 
     d. Klikněte na **Vytvořit**.
  
-### <a name="creating-a-printix-test-user"></a>Vytvoření testovacího uživatele Printix
+### <a name="creating-a-printix-test-user"></a>Vytváření Printix testovacího uživatele
 
-Cílem této části je vytvořit uživatele s názvem Britta Simon v Printix. Printix podporuje zřizování za v čase, které je ve výchozím nastavení povoleno.
+Cílem této části je vytvořit uživatele s názvem Britta Simon v Printix. Printix podporuje zřizování za běhu, které je ve výchozím nastavení povolené.
 
-V této části pro vás není žádná položka akce. Nový uživatel je vytvořen během pokusu o přístup printix, pokud ještě neexistuje. 
+V této části není žádná položka akce. Nový uživatel se vytvoří během pokusu o přístup k Printix, pokud ještě neexistuje. 
 
 > [!NOTE]
-> Pokud potřebujete vytvořit uživatele ručně, musíte kontaktovat [tým podpory Printix](mailto:support@printix.net).
+> Pokud potřebujete ručně vytvořit uživatele, musíte se obrátit na [tým podpory Printix](mailto:support@printix.net).
 > 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name="assigning-the-azure-ad-test-user"></a>Přiřazuje se testovací uživatel Azure AD.
 
-V této části povolíte Britta Simon používat Azure jednotné přihlášení udělením přístupu Printix.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Printix.
 
 ![Přiřadit uživatele][200] 
 
-**Chcete-li brittu Simon přiřadit společnosti Printix, proveďte následující kroky:**
+**Pokud chcete přiřadit Britta Simon k Printix, proveďte následující kroky:**
 
-1. Na webu Azure Portal otevřete zobrazení aplikací a přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** a klikněte na **všechny aplikace**.
+1. V Azure Portal otevřete zobrazení aplikace a pak přejděte do zobrazení adresáře a přejděte do části **podnikové aplikace** a klikněte na **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-1. V seznamu aplikací vyberte **Printix**.
+1. V seznamu aplikace vyberte **Printix**.
 
     ![Konfigurace jednotného přihlašování](./media/printix-tutorial/tutorial_printix_app.png) 
 
-1. V nabídce vlevo klikněte na **Uživatelé a skupiny**.
+1. V nabídce na levé straně klikněte na **Uživatelé a skupiny**.
 
     ![Přiřadit uživatele][202] 
 
-1. Klikněte na **tlačítko Přidat.** V dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
+1. Klikněte na tlačítko **Přidat** . Pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Přiřadit uživatele][203]
 
-1. V dialogovém **okně Uživatelé a skupiny** vyberte **britta Simon** v seznamu Uživatelé.
+1. V dialogu **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** .
 
-1. V dialogovém okně **Uživatelé a skupiny** klikněte na **tlačítko Vybrat.**
+1. Klikněte na tlačítko **Vybrat** v dialogovém okně **Uživatelé a skupiny** .
 
-1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **Přiřadit.**
+1. Klikněte na tlačítko **přiřadit** v dialogovém okně **Přidat přiřazení** .
     
 ### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
-V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po klepnutí na dlaždici Printix na přístupovém panelu byste se měli automaticky přihlásit k aplikaci Printix.
+Když na přístupovém panelu kliknete na dlaždici Printix, měli byste se automaticky přihlásili ke své aplikaci Printix.
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 

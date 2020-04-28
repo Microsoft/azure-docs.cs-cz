@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Automatický upgrade | Dokumenty společnosti Microsoft'
-description: Toto téma popisuje integrovanou funkci automatického upgradu v synchronizaci Azure AD Connect.
+title: 'Azure AD Connect: automatický upgrade | Microsoft Docs'
+description: Toto téma popisuje integrovanou funkci automatického upgradu v Azure AD Connect synchronizaci.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,91 +17,91 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bfd61b78ca3027ade1f2f48dec33e0a8ed508d3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60349814"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Automatický upgrade
-Tato funkce byla představena s sestavením [1.1.105.0 (vydáno v únoru 2016)](reference-connect-version-history.md#111050).  Tato funkce byla aktualizována v [sestavení 1.1.561](reference-connect-version-history.md#115610) a nyní podporuje další scénáře, které dříve nebyly podporovány.
+Tato funkce byla představena s [1.1.105.0EM buildu (vydáno 2016. února)](reference-connect-version-history.md#111050).  Tato funkce se aktualizovala v [Build 1.1.561](reference-connect-version-history.md#115610) a teď podporuje další scénáře, které se dřív nepodporovaly.
 
 ## <a name="overview"></a>Přehled
-Ujistěte se, že vaše instalace Azure AD Connect je vždy aktuální, nebylo nikdy jednodušší s funkcí **automatického upgradu.** Tato funkce je ve výchozím nastavení povolena pro expresní instalace a upgrady DirSync. Po vydání nové verze je instalace automaticky upgradována.
-Automatický upgrade je ve výchozím nastavení povolen pro následující:
+Ujistěte se, že je instalace Azure AD Connect vždycky aktuální, a to díky funkci **automatického upgradu** nikdy jednodušší. Tato funkce je ve výchozím nastavení povolená pro Expresní instalace a upgrady DirSync. Po vydání nové verze se vaše instalace automaticky upgraduje.
+Automatický upgrade je ve výchozím nastavení povolený pro následující:
 
-* Expresní instalace nastavení a inovace DirSync.
-* Použití SQL Express LocalDB, což je to, co Express nastavení vždy používat. DirSync s SQL Express také použít LocalDB.
-* Účet služby AD je výchozí účet MSOL_ vytvořený pomocí nastavení Express a DirSync.
-* Mají méně než 100 000 objektů v metaverse.
+* Instalace expresních nastavení a DirSync upgrady.
+* Pomocí SQL Express LocalDB, což je to, co expresní nastavení vždycky používá. DirSync s SQL Express také používá LocalDB.
+* Účet služby AD je výchozí účet MSOL_ vytvořený pomocí expresního nastavení a DirSync.
+* V úložišti Metaverse musí být méně než 100 000 objektů.
 
-Aktuální stav automatického upgradu lze zobrazit pomocí `Get-ADSyncAutoUpgrade`rutiny prostředí PowerShell . Má následující stavy:
+Aktuální stav automatického upgradu můžete zobrazit pomocí rutiny `Get-ADSyncAutoUpgrade`PowerShellu. Má následující stavy:
 
 | Stav | Poznámka |
 | --- | --- |
 | Povoleno |Automatický upgrade je povolen. |
-| Dočasně blokován. |Nastaveno pouze systémem. Systém **není v současné době** způsobilý pro automatické inovace. |
+| Dočasně blokován. |Nastaveno pouze systémem. Systém nemá v **současné době** nárok na příjem automatických upgradů. |
 | Zakázáno |Automatický upgrade je zakázán. |
 
-Můžete přepínat mezi `Set-ADSyncAutoUpgrade` **povoleno** a **zakázáno** s . Pouze systém by měl nastavit stav **Pozastaveno**.  Před 1.1.750.0 by rutina Set-ADSyncAutoUpgrade zablokovala automatický upgrade, pokud by byl stav automatického upgradu nastaven na Pozastaveno. Tato funkce se nyní změnila, takže neblokuje automatický upgrade.
+Můžete změnit mezi **povolenými** a **zakázanými** pomocí `Set-ADSyncAutoUpgrade`. Pouze systém by měl nastavit stav **pozastaveno**.  Před 1.1.750.0 by rutina Set-ADSyncAutoUpgrade blokovala automatický upgrade, pokud byl stav automatického upgradu nastavený na pozastaveno. Tato funkce se teď změnila, takže neblokuje autoupgrade.
 
-Automatický upgrade používá Azure AD Connect Health pro infrastrukturu upgradu. Chcete-li automatický upgrade fungovat, ujistěte se, že jste otevřeli adresy URL na serveru proxy pro **Azure AD Connect Health,** jak je zdokumentováno v [adresách URL Office 365 a rozsahech IP adres](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).
+Automatický upgrade používá Azure AD Connect Health pro infrastrukturu upgradu. Aby mohl automatický upgrade fungovat, ujistěte se, že jste otevřeli adresy URL v proxy server pro **Azure AD Connect Health** , jak je popsáno v [adresách URL Office 365 a rozsahech IP adres](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).
 
 
-Pokud je na serveru spuštěno **uj.**
+Pokud **Synchronization Service Manager** uživatelské rozhraní běží na serveru, upgrade se pozastaví, dokud se uživatelské rozhraní nezavře.
 
 ## <a name="troubleshooting"></a>Řešení potíží
-Pokud se instalace připojení neupgraduje podle očekávání, postupujte podle následujících kroků a zjistěte, co může být špatně.
+Pokud se vaše instalace připojení neupgraduje podle očekávání, postupujte podle těchto kroků a zjistěte, co by mohlo být chybné.
 
-Nejprve byste neměli očekávat, že se o automatický upgrade pokusí první den, kdy bude vydána nová verze. Před pokusem o upgrade dochází k záměrné náhodnosti, takže se nemusíte znepokojovat, pokud vaše instalace není upgradována okamžitě.
+Za prvé byste neměli očekávat, že se automatický upgrade bude pokoušet o první vydání nové verze. Před pokusem o upgrade došlo k úmyslnému náhodnosti, takže pokud se instalace neupgraduje hned, neprovádějte upozornění.
 
-Pokud si myslíte, že něco `Get-ADSyncAutoUpgrade` není v pořádku, pak nejprve spustit, aby bylo zajištěno automatické upgradování je povolena.
+Pokud si myslíte, že něco není napravo `Get-ADSyncAutoUpgrade` , spusťte nejprve, abyste zajistili, že je povolen automatický upgrade.
 
-Poté se ujistěte, že jste otevřeli požadované adresy URL v proxy nebo firewallu. Automatická aktualizace používá Azure AD Connect Health, jak je popsáno v [přehledu](#overview). Pokud používáte proxy server, ujistěte se, že stav byl nakonfigurován pro použití [proxy serveru](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy). Otestujte [také připojení stavu](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) ke službě Azure AD.
+Pak se ujistěte, že jste na proxy serveru nebo v bráně firewall otevřeli požadované adresy URL. Automatická aktualizace používá Azure AD Connect Health, jak je popsáno v [přehledu](#overview). Pokud používáte proxy server, ujistěte se, že stav byl nakonfigurován tak, aby používal [proxy server](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy). Také otestujte [připojení ke stavu](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) Azure AD.
 
-S připojením k Azure AD ověřena, je čas podívat se do protokolů událostí. Spusťte prohlížeč událostí a podívejte se do protokolu událostí **aplikace.** Přidejte filtr protokolů událostí pro zdrojový **upgrade služby Azure AD Connect** a rozsah id události **300-399**.  
-![Filtr eventlogpro automatický upgrade](./media/how-to-connect-install-automatic-upgrade/eventlogfilter.png)  
+Po ověření připojení k Azure AD je čas na to, abyste se mohli podívat na protokol událostí. Spusťte prohlížeč událostí a podívejte se do protokolu událostí **aplikace** . Přidejte filtr EventLog pro zdroj **Azure AD Connect upgradujte** a rozsah id události **300-399**.  
+![Filtr protokolu událostí pro automatický upgrade](./media/how-to-connect-install-automatic-upgrade/eventlogfilter.png)  
 
-Nyní můžete zobrazit protokoly událostí přidružené ke stavu automatického upgradu.  
-![Filtr eventlogpro automatický upgrade](./media/how-to-connect-install-automatic-upgrade/eventlogresult.png)  
+Teď můžete zobrazit události související se stavem pro automatický upgrade.  
+![Filtr protokolu událostí pro automatický upgrade](./media/how-to-connect-install-automatic-upgrade/eventlogresult.png)  
 
-Kód výsledku má předponu s přehledem stavu.
+Kód výsledku obsahuje předponu s přehledem stavu.
 
 | Předpona kódu výsledku | Popis |
 | --- | --- |
 | Úspěch |Instalace byla úspěšně upgradována. |
-| Upgradebyl přerušen. |Dočasná podmínka zastavila upgrade. Bude znovu zopakován a očekává se, že se později podaří. |
-| Upgrade není podporován. |Systém má konfiguraci, která blokuje automatické inovace systému. Bude opakován, aby zjistil, zda se stav mění, ale očekává se, že systém musí být upgradován ručně. |
+| UpgradeAborted |Upgrade zastavil dočasnou podmínku. Bude znovu opakován a očekává se, že bude později úspěšné. |
+| UpgradeNotSupported |Systém má konfiguraci blokující automatickou aktualizaci systému. Zkusí se znovu zjistit, jestli se stav mění, ale očekává se, že je potřeba upgradovat systém ručně. |
 
-Zde je seznam nejčastějších zpráv, které najdete. Neuvádí všechny, ale zpráva o výsledech by měla být jasná s tím, v čem je problém.
+Tady je seznam nejběžnějších zpráv, které najdete. Neobsahuje žádné výpisy, ale zpráva výsledku by měla být nejasná s obsahem problému.
 
-| Zpráva o výsledech | Popis |
+| Zpráva výsledku | Popis |
 | --- | --- |
-| **Upgradebyl přerušen.** | |
-| UpgradePřerušenoJetoRetoRetoUupgrademarkeru |Nelze zapisovat do registru. |
-| UpgradePřerušenoNedostatečnáoprávněnídatabáze |Předdefinovaná skupina administrators nemá oprávnění k databázi. Ručně upgradujte na nejnovější verzi Služby Azure AD Connect, abyste tento problém vyřešili. |
-| UpgradePřerušenoInsufficientDiskSpace |Pro podporu upgradu není dostatek místa na disku. |
-| UpgradePřerušenoSecurityGroupsNotPresent |Nelze najít a vyřešit všechny skupiny zabezpečení používané synchronizačním strojem. |
-| UpgradeAbortedServiceCanNotNotReStarted |Spuštění služby **Microsoft Azure AD Sync** se nezdařilo. |
-| UpgradeAbortedServiceCanNotNotBeZastaven |Služba **NT Microsoft Azure AD Sync** se nepodařilo zastavit. |
-| UpgradePřerušenoJenem není spuštěno. |Služba **NT Microsoft Azure AD Sync** není spuštěna. |
-| UpgradePřerušenoSynchronIzační cyklus zakázán |Možnost SyncCycle v [plánovači](how-to-connect-sync-feature-scheduler.md) byla zakázána. |
-| UpgradePřerušenoSynchronEInUse |Na serveru je otevřeno [umulovacího modulu správce služeb](how-to-connect-sync-service-manager-ui.md) synchronizace. |
-| UpgradePřerušenoSynchronizaceVprůběhu |Průvodce instalací je spuštěn nebo byla před plánovačem naplánována synchronizace. |
-| **Upgrade není podporován.** | |
-| UpgradeNotSupportedAdfsSignInMethod | Jako metodu přihlášení jste vybrali adfs. |
+| **UpgradeAborted** | |
+| UpgradeAbortedCouldNotSetUpgradeMarker |Do registru nejde zapisovat. |
+| UpgradeAbortedInsufficientDatabasePermissions |Předdefinovaná skupina Administrators nemá oprávnění k databázi. Chcete-li tento problém vyřešit, proveďte ruční upgrade na nejnovější verzi Azure AD Connect. |
+| UpgradeAbortedInsufficientDiskSpace |Není dostatek místa na disku pro podporu upgradu. |
+| UpgradeAbortedSecurityGroupsNotPresent |Nepovedlo se najít a vyřešit všechny skupiny zabezpečení používané synchronizačním modulem. |
+| UpgradeAbortedServiceCanNotBeStarted |Nepovedlo se spustit synchronizaci služby NT **Microsoft Azure AD** . |
+| UpgradeAbortedServiceCanNotBeStopped |Nepodařilo se zastavit službu NT **Microsoft Azure AD Sync** . |
+| UpgradeAbortedServiceIsNotRunning |Služba NT **Microsoft Azure AD Sync** není spuštěná. |
+| UpgradeAbortedSyncCycleDisabled |Možnost SyncCycle je v [plánovači](how-to-connect-sync-feature-scheduler.md) zakázaná. |
+| UpgradeAbortedSyncExeInUse |[Synchronizace uživatelského rozhraní Service Manageru](how-to-connect-sync-service-manager-ui.md) je na serveru otevřená. |
+| UpgradeAbortedSyncOrConfigurationInProgress |Spustí se Průvodce instalací nebo se naplánovala synchronizace mimo Plánovač. |
+| **UpgradeNotSupported** | |
+| UpgradeNotSupportedAdfsSignInMethod | Jako metodu přihlašování jste vybrali službu AD FS. |
 | UpgradeNotSupportedCustomizedSyncRules |Do konfigurace jste přidali vlastní pravidla. |
-| UpgradeNotSupportedDeviceWritebackEnabled |Povolili jste funkci [zpětného zápisu zařízení.](how-to-connect-device-writeback.md) |
-| UpgradeNotSupportedGroupWritebackEnabled |Povolili jste funkci [zpětného zápisu skupiny.](how-to-connect-preview.md#group-writeback) |
-| UpgradeNotSupportedNesutentičně neplatnéhoStavu |Instalace není expresní nastavení nebo upgrade DirSync. |
-| UpgradeNotSupportedMetaverseSizeExceeedededed |Máte více než 100 000 objektů v metaverse. |
-| UpgradeNotSupportedMultiForestSetup |Připojujete se k více než jedné doménové struktuře. Expresní nastavení se připojuje pouze k jedné doménové struktuře. |
+| UpgradeNotSupportedDeviceWritebackEnabled |Povolili jste funkci [zpětného zápisu zařízení](how-to-connect-device-writeback.md) . |
+| UpgradeNotSupportedGroupWritebackEnabled |Povolili jste funkci [zpětného zápisu skupiny](how-to-connect-preview.md#group-writeback) . |
+| UpgradeNotSupportedInvalidPersistedState |Instalace není expresním nastavením nebo DirSyncm upgradem. |
+| UpgradeNotSupportedMetaverseSizeExceeeded |V úložišti Metaverse máte více než 100 000 objektů. |
+| UpgradeNotSupportedMultiForestSetup |Připojujete se k více než jedné doménové struktuře. Expresní instalace se připojuje jenom k jedné doménové struktuře. |
 | UpgradeNotSupportedNonLocalDbInstall |Nepoužíváte databázi SQL Server Express LocalDB. |
-| UpgradeNotSupportedNonMsolAccount |[Účet konektoru ad ds](reference-connect-accounts-permissions.md#ad-ds-connector-account) již není výchozí MSOL_ účet. |
-| UpgradeNotSupportedNotConfiguredSignInMetoda | Při nastavování služby AAD Connect jste při výběru metody přihlášení zvolili *možnost Nekonfigurovat.* |
-| Metoda UpgradeNotSupportedPtaSignIn | Jako metodu přihlášení jste vybrali předávací ověřování. |
-| UpgradenotSupportedStagingModeEnabled |Server je nastaven na [pracovní režim](how-to-connect-sync-staging-server.md). |
-| UpgradeNotSupportedUserWritebackEnabled |Povolili jste funkci [zpětného zápisu uživatele.](how-to-connect-preview.md#user-writeback) |
+| UpgradeNotSupportedNonMsolAccount |[Účet služba AD DS Connector](reference-connect-accounts-permissions.md#ad-ds-connector-account) už není výchozím MSOL_m účtem. |
+| UpgradeNotSupportedNotConfiguredSignInMethod | Při nastavování AAD Connect jste zvolili možnost *Nekonfigurovat* při výběru metody přihlašování. |
+| UpgradeNotSupportedPtaSignInMethod | Jako metodu přihlašování jste vybrali předávací ověřování. |
+| UpgradeNotSupportedStagingModeEnabled |Server je nastavený jako [pracovní režim](how-to-connect-sync-staging-server.md). |
+| UpgradeNotSupportedUserWritebackEnabled |Povolili jste funkci [zpětného zápisu uživatelů](how-to-connect-preview.md#user-writeback) . |
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).

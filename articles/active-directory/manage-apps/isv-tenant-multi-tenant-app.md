@@ -1,6 +1,6 @@
 ---
-title: Vytvoření tenanta Azure pro víceklientské aplikace
-description: Pokyny pro nezávislé dodavatele softwaru pro integraci s Azure Active Directory
+title: Vytvoření tenanta Azure pro aplikaci s více klienty
+description: Pokyny pro nezávislé výrobce softwaru při integraci s Azure Active Directory
 services: active-directory
 author: barbaraselden
 manager: CelesteDG
@@ -13,34 +13,34 @@ ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 637adba89445e6974e83486f0641576225ccd268
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "70812610"
 ---
-# <a name="create-an-azure-tenant-for-a-multi-tenant-application"></a>Vytvoření tenanta Azure pro víceklientské aplikace  
+# <a name="create-an-azure-tenant-for-a-multi-tenant-application"></a>Vytvoření tenanta Azure pro aplikaci s více klienty  
 
-Chcete-li poskytnout přístup k aplikaci s více klienty, musíte vytvořit tenanta služby Azure Active Directory, který aplikaci zaregistruje a povolí federaci identit zákazníka. Viz [Výběr správného federačního protokolu pro víceklientské aplikace](isv-choose-multi-tenant-federation.md). Tento tenant vám umožní otestovat vaši aplikaci a federaci v prostředí, které je podobné vašim zákazníkům prostředí Azure AD.
+Aby bylo možné zajistit přístup k aplikaci s více klienty, je nutné vytvořit klienta Azure Active Directory pro registraci aplikace a povolení federace identit zákazníka. Podívejte [se na téma Volba správného federačního protokolu pro vaši aplikaci s více klienty](isv-choose-multi-tenant-federation.md). Tento tenant vám umožní testovat vaši aplikaci a federaci v prostředí, které je podobné vašim zákazníkům v prostředích Azure AD.
 
-## <a name="costs-of-hosting-a-multi-tenant-application"></a>Náklady na hostování víceklientské aplikace
+## <a name="costs-of-hosting-a-multi-tenant-application"></a>Náklady na hostování aplikace s více klienty
 
-Azure Active Directory je k dispozici ve více edicích. [Podívejte se na podrobné porovnání funkcí](https://azure.microsoft.com/pricing/details/active-directory/).
+Azure Active Directory je k dispozici v několika edicích. [Podrobné porovnání funkcí najdete v tématu](https://azure.microsoft.com/pricing/details/active-directory/).
 
-Můžete si vytvořit předplatné Azure a aktivní adresář Azure zdarma a používat základní funkce.
+Můžete si vytvořit předplatné Azure a službu Azure Active Directory zdarma a používat základní funkce.
 
 ## <a name="create-your-tenant"></a>Vytvoření tenanta
 
-1. Vytvořte klienta. Viz [Nastavení prostředí pro dev](../develop/quickstart-create-new-tenant.md).
+1. Vytvořte svého tenanta. Viz [Nastavení vývojového prostředí](../develop/quickstart-create-new-tenant.md).
 
-2. Povolení a testování jednotného přihlášení k vaší aplikaci,
+2. Povolení a testování přístupu jednotného přihlašování k aplikaci,
 
-   a. **Pro aplikace OIDC nebo Oath** [zaregistrujte aplikaci](../develop/quickstart-register-app.md) jako víceklientské aplikace. V podporovaných typech účtů vyberte možnost Účty v libovolném organizačním adresáři a osobních účtech Microsoft.
+   a. V **případě aplikací OIDC nebo Oath** [Zaregistrujte svoji aplikaci](../develop/quickstart-register-app.md) jako víceklientské aplikace. V části Podporované typy účtů vyberte účty v možnosti organizační adresář a osobní účet Microsoft.
 
-   b. **Pro saml- a WS-Fed-založené aplikace** [, můžete nakonfigurovat SAML založené jednotné přihlašování](configure-single-sign-on-non-gallery-applications.md) aplikace pomocí obecné šablony SAML v Azure AD.
+   b. **Pro aplikace založené na SAML a WS-based**můžete [nakonfigurovat jednotné přihlašování založené na SAML](configure-single-sign-on-non-gallery-applications.md) pomocí obecné šablony SAML v Azure AD.
 
-V případě potřeby můžete také [převést aplikaci s jedním tenantem na více klienta.](../develop/howto-convert-app-to-be-multi-tenant.md)
+V případě potřeby můžete také [převést aplikaci s jedním klientem na více tenantů](../develop/howto-convert-app-to-be-multi-tenant.md) .
 
 ## <a name="next-steps"></a>Další kroky
 
-[Integrace přihlašovat do aplikace](isv-sso-content.md)
+[Integrace jednotného přihlašování do aplikace](isv-sso-content.md)

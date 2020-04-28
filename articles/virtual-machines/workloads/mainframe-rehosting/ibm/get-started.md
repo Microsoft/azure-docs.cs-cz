@@ -1,6 +1,6 @@
 ---
-title: Úlohy IBM v Azure | Dokumenty společnosti Microsoft
-description: Pomocí emulátoru sálového počítače a dalších služeb od partnerů Microsoftu můžete znovu hostovat úlohy IBM z/OS pomocí Microsoft Azure.
+title: Úlohy IBM v Azure | Microsoft Docs
+description: Použijte emulátor sálového počítače a další služby od partnerů Microsoftu k opětovnému hostování úloh IBM z/OS pomocí Microsoft Azure.
 services: virtual-machines-linux
 ms.service: virtual-machines-linux
 documentationcenter: ''
@@ -13,31 +13,31 @@ ms.date: 02/22/2019
 tags: ''
 keywords: ''
 ms.openlocfilehash: 13c83c53cdad719d6a4bed4cc1852b85d62082e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68834580"
 ---
 # <a name="ibm-workloads-on-azure"></a>Úlohy IBM v Azure
 
-Mnoho úloh sálových počítačů IBM založených na z/OS lze replikovat v Azure bez ztráty funkčnosti a bez toho, aby si uživatelé uvědomili změny v jejich základních systémech. Rehostingové aplikace v Azure vám poskytují funkce podobné sálovým počítačům, které potřebujete, a navíc elasticitu, dostupnost a potenciální úspory nákladů v cloudu.
+Spousta úloh na sálových počítačích IBM na základě z/OS se dá replikovat v Azure bez ztráty funkčnosti, aniž by uživatelé dokonce všímáte změny v jejich podkladových systémech. Opětovné hostování aplikací v Azure vám poskytne sálové funkce, které potřebujete, a také flexibilitu, dostupnost a potenciální úsporu nákladů cloudu.
 
-Azure podporuje integraci s existujícími prostředími sálových počítačů IBM, což vám umožní migrovat aplikace, které dávají smysl, v případě potřeby spouštět hybridní řešení a migrovat v průběhu času. I když můžete úplně přepsat existující programy založené na sálových počítačích pro Azure, je běžnější je znovu hostovat. Přepisování zvyšuje náklady, složitost a čas pro projekty migrace. S rehosting, můžete:
+Azure podporuje integraci se stávajícími sálovými prostředími IBM, což vám umožní migrovat applicatesy, které mají smysl, spouštět hybridní řešení v případě potřeby a provádět migraci v průběhu času. I když můžete zcela přepsat existující programy založené na sálovém platformě Azure, je jejich hostování mnohem jednodušší. Přepisování přináší do projektů migrace náklady, složitost a čas. Pomocí opětovného hostování můžete:
 
-- Přesuňte aplikace do cloudového emulátoru.
+- Přesuňte aplikace do emulátoru založeného na cloudu.
 
 - Migrujte databázi do cloudové databáze.
 
-- Nahraďte moduly a kód pomocí modulů transformace kódu.
+- Nahraďte moduly a kód pomocí transformačních modulů kódu.
 
-Kromě toho je nyní software IBM, včetně WebSphere a MQ, na Azure Marketplace. S licencí pro software IBM můžete využít škálování infrastruktury na vyžádání poskytované ho Azure a rychle spustit virtuální počítač.
+Navíc software IBM, včetně WebSphere a MQ, je nyní v Azure Marketplace. S licencí pro software IBM můžete využít výhod škálování infrastruktury na vyžádání, které poskytuje Azure, k rychlému spuštění virtuálního počítače.
 
-K dispozici je rozsáhlý partnerský ekosystém, který vám pomůže migrovat sálové systémy IBM do Azure. Většina z nich se řídí pragmatickým přístupem opakovaného použití, kdykoli je to možné, než se pustí do postupného zavádění přepisovacích nebo výměnných aplikací. Další pokyny a pomoc od partnerů v [Centru migrace sálových počítačů Azure](https://azure.microsoft.com/migration/mainframe/).
+K dispozici je rozsáhlý partnerský ekosystém, který vám umožní migrovat do Azure sálové systémy IBM. Většina podstupuje písemný přístup k opakovanému použití, kdykoli je to možné, před nastupováním do postupného nasazení přepisu nebo nahrazením aplikací. Získejte další doprovodné materiály a pomoc od partnerů v [centru migrace v rámci Azure sálového počítače](https://azure.microsoft.com/migration/mainframe/).
 
 **Další kroky**
 
-- [Migrace sálových počítačů: mýty a fakta](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
-- [Instalace prostředí IBM zD&T pro vývoj a testování v Azure](./install-ibm-z-environment.md)
-- [Nastavení distribuce řízené vývojáři aplikací (ADCD) v IBM zD&T v1](./demo.md)
+- [Migrace sálového počítače: mýty a fakta](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
+- [Instalace IBM zD&T dev/test Environment v Azure](./install-ibm-z-environment.md)
+- [Nastavení vývojářů aplikací řízených distribucí (ADCD) v IBM zD&T V1](./demo.md)
 - [IBM DB2 pureScale v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/ibm-db2-purescale-azure)
