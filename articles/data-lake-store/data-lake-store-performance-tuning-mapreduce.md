@@ -1,133 +1,133 @@
 ---
-title: Optimalizace výkonu Azure Data Lake Storage Gen1 – MapReduce
-description: Azure Data Lake Storage Gen1 MapReduce Performance Tuning Guidelines
+title: Ladění výkonu Azure Data Lake Storage Gen1 – MapReduce
+description: Pokyny k ladění výkonu Azure Data Lake Storage Gen1 MapReduce
 author: stewu
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 12/19/2016
 ms.author: stewu
 ms.openlocfilehash: a645049665bc1d51efa94a879b9d2e4e5529282f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73904590"
 ---
-# <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Pokyny k ladění výkonu pro MapReduce na HDInsight a Azure Data Lake Storage Gen1
+# <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Pokyny k ladění výkonu pro MapReduce ve službě HDInsight a Azure Data Lake Storage Gen1
 
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Účet Azure Data Lake Storage Gen1**. Pokyny k jeho vytvoření najdete v tématu [Začínáme s Azure Data Lake Storage Gen1.](data-lake-store-get-started-portal.md)
-* **Cluster Azure HDInsight** s přístupem k účtu Data Lake Storage Gen1. Viz [Vytvoření clusteru HDInsight s gen1 úložiště datového jezera](data-lake-store-hdinsight-hadoop-use-portal.md). Ujistěte se, že jste pro cluster povolili vzdálenou plochu.
-* **Pomocí MapReduce na HDInsight**. Další informace naleznete v tématu [Use MapReduce in Hadoop on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce)
-* **Projděte si pokyny pro optimalizaci výkonu pro úložiště datových jezer Gen1**. Obecné koncepty výkonu najdete v [tématu Data Lake Storage Gen1 Performance Tuning Guidance](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)
+* **Účet Azure Data Lake Storage Gen1**. Pokyny, jak ho vytvořit, najdete v tématu Začínáme [s Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) .
+* **Cluster Azure HDInsight** s přístupem k účtu Data Lake Storage Gen1. Další informace najdete v tématu [Vytvoření clusteru HDInsight s Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md). Ujistěte se, že jste pro cluster povolili vzdálenou plochu.
+* **Použití MapReduce ve službě HDInsight**. Další informace najdete v tématu [použití MapReduce v Hadoop ve službě HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce) .
+* **Přečtěte si pokyny pro ladění výkonu pro data Lake Storage Gen1**. Obecné koncepty výkonu najdete v tématu [Data Lake Storage Gen1 pokyny k ladění výkonu](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance) .
 
 ## <a name="parameters"></a>Parametry
 
-Při spuštění úloh MapReduce, zde jsou nejdůležitější parametry, které můžete nakonfigurovat pro zvýšení výkonu na data Lake Storage Gen1:
+Při spouštění úloh MapReduce jsou tady nejdůležitější parametry, které můžete nakonfigurovat, aby se zvýšil výkon Data Lake Storage Gen1:
 
 |Parametr      | Popis  |
 |---------|---------|
-|`Mapreduce.map.memory.mb`  |  Velikost paměti, kterou chcete přidělit každému mapovači.  |
+|`Mapreduce.map.memory.mb`  |  Velikost paměti, která se má přidělit každému mapovači.  |
 |`Mapreduce.job.maps`     |  Počet úloh mapy na úlohu.  |
-|`Mapreduce.reduce.memory.mb`     |  Množství paměti přidělit každý reduktor.  |
-|`Mapreduce.job.reduces`    |   Počet snížení úkolů na úlohu.  |
+|`Mapreduce.reduce.memory.mb`     |  Velikost paměti, která se má přidělit každému snížení.  |
+|`Mapreduce.job.reduces`    |   Počet úloh snižujících náklady na úlohu.  |
 
-### <a name="mapreducemapmemory--mapreducereducememory"></a>Mapreduce.map.memory / Mapreduce.reduce.memory
+### <a name="mapreducemapmemory--mapreducereducememory"></a>MapReduce. map. Memory/MapReduce. zmenšení. Memory
 
-Upravte toto číslo na základě toho, kolik paměti je potřeba pro mapu a/nebo snížit úkol. Můžete zobrazit výchozí hodnoty `mapreduce.map.memory` `mapreduce.reduce.memory` a v Ambari pomocí konfigurace příze. V Ambari přejděte na YARN a zobrazte kartu **Configs.** Zobrazí se paměť YARN.
+Upravte toto číslo na základě toho, kolik paměti je potřeba pro mapu nebo zmenšení úlohy. Můžete zobrazit výchozí hodnoty `mapreduce.map.memory` a `mapreduce.reduce.memory` v Ambari prostřednictvím konfigurace příze. V Ambari přejděte do PŘÍZe a zobrazte kartu **Konfigurace** . Zobrazí se paměť PŘÍZe.
 
-### <a name="mapreducejobmaps--mapreducejobreduces"></a>Mapreduce.job.maps / Mapreduce.job.reduces
+### <a name="mapreducejobmaps--mapreducejobreduces"></a>MapReduce. job. map/MapReduce. job. redukuje
 
-To určuje maximální počet mapovačů nebo reduktorů k vytvoření. Počet rozdělení určuje, kolik mapovačů jsou vytvořeny pro úlohu MapReduce. Proto můžete získat méně mapovačů, než jste požadovali, pokud existuje méně rozdělení než požadovaný počet mapovačů.
+Určuje maximální počet mapovačů nebo reduktorůů, které se mají vytvořit. Počet rozdělení určuje, kolik mapovačů se má pro úlohu MapReduce vytvořit. Proto můžete získat méně mapovačů, než kolik jich požadujete, pokud je menší počet rozdělení, než je počet požadovaných mapovačů.
 
 ## <a name="guidance"></a>Doprovodné materiály
 
-### <a name="step-1-determine-number-of-jobs-running"></a>Krok 1: Určení počtu spuštěných úloh
+### <a name="step-1-determine-number-of-jobs-running"></a>Krok 1: určení počtu spuštěných úloh
 
-Ve výchozím nastavení mapreduce bude používat celý cluster pro vaši úlohu. Můžete použít méně clusteru pomocí méně mapovačů, než jsou k dispozici kontejnery. Pokyny v tomto dokumentu předpokládá, že vaše aplikace je jediná aplikace spuštěná v clusteru.
+Ve výchozím nastavení bude MapReduce používat celý cluster pro vaši úlohu. Méně než tento cluster můžete použít k menšímu počtu mapovačů, než je dostupných kontejnerů. Pokyny v tomto dokumentu předpokládají, že vaše aplikace je jediná aplikace spuštěná v clusteru.
 
-### <a name="step-2-set-mapreducemapmemorymapreducereducememory"></a>Krok 2: Nastavení mapreduce.map.memory/mapreduce.reduce.memory
+### <a name="step-2-set-mapreducemapmemorymapreducereducememory"></a>Krok 2: nastavte MapReduce. map. Memory/MapReduce. zmenšení. Memory
 
-Velikost paměti pro mapu a snížení úkolů bude záviset na konkrétní úloze. Velikost paměti můžete zmenšit, pokud chcete zvýšit souběžnost. Počet souběžně spuštěných úloh závisí na počtu kontejnerů. Snížením množství paměti na mapovač nebo reduktor lze vytvořit více kontejnerů, které umožňují souběžné spuštění více mapovačů nebo reduktorů. Snížení množství paměti příliš mnoho může způsobit, že některé procesy dojdou paměti. Pokud se při spuštění úlohy zobrazí chyba haldy, zvětšete paměť na mapovač nebo reduktor. Zvažte, že přidání další kontejnery přidá další režii pro každý další kontejner, což může potenciálně snížit výkon. Další alternativou je získat více paměti pomocí clusteru, který má vyšší množství paměti nebo zvýšení počtu uzlů v clusteru. Více paměti umožní více kontejnerů, které mají být použity, což znamená více souběžnosti.
+Velikost paměti pro mapu a omezení úloh bude závislá na konkrétní úloze. Velikost paměti můžete snížit, pokud chcete zvýšit souběžnost. Počet souběžně spuštěných úloh závisí na počtu kontejnerů. Tím, že se zmenší množství paměti na jedno nebo více kontejnerů, je možné vytvořit více kontejnerů, které umožní souběžně běžet více mapovačů nebo reduktorů. Zmenšení množství paměti může způsobit nedostatek paměti z některých procesů. Pokud při spuštění úlohy dojde k chybě haldy, zvyšte velikost paměti na Mapovač nebo zmenšení. Zvažte, že přidání dalších kontejnerů přináší další režii pro každý další kontejner, což může způsobit snížení výkonu. Další možností je získat více paměti pomocí clusteru s větším množstvím paměti nebo zvýšením počtu uzlů v clusteru. Více paměti umožní použít více kontejnerů, což znamená více souběžnosti.
 
-### <a name="step-3-determine-total-yarn-memory"></a>Krok 3: Určení celkové paměti YARN
+### <a name="step-3-determine-total-yarn-memory"></a>Krok 3: určení celkové paměti PŘÍZe
 
-Chcete-li optimalizovat mapreduce.job.maps/mapreduce.job.reduces, zvažte množství celkové paměti YARN, která je k dispozici pro použití. Tyto informace jsou k dispozici v Ambari. Přejděte na YARN a zobrazte kartu **Configs.** V tomto okně se zobrazí paměť YARN. Vynásobte paměť YARN počtem uzlů v clusteru, abyste získali celkovou paměť YARN.
+Pro účely ladění MapReduce. job. map/MapReduce. job. redukuje zvažte množství celkové dostupné paměti PŘÍZe k použití. Tyto informace jsou k dispozici v Ambari. Přejděte na PŘÍZe a zobrazte kartu **Konfigurace** . V tomto okně se zobrazí paměť PŘÍZe. K získání celkové paměti PŘÍZe vynásobte paměť PŘÍZe počtem uzlů v clusteru.
 
 `Total YARN memory = nodes * YARN memory per node`
 
-Pokud používáte prázdný cluster, může být paměť celkovou pamětí YARN pro váš cluster. Pokud paměť používají jiné aplikace, můžete použít pouze část paměti clusteru snížením počtu mapovačů nebo reduktorů na počet kontejnerů, které chcete použít.
+Pokud používáte prázdný cluster, může být paměť celkovou paměti PŘÍZí pro váš cluster. Pokud jiné aplikace používají paměť, můžete zvolit, že se má použít jenom část paměti clusteru, a to snížením počtu mapovačů nebo reduktorů počtu kontejnerů, které chcete použít.
 
-### <a name="step-4-calculate-number-of-yarn-containers"></a>Krok 4: Výpočet počtu kontejnerů YARN
+### <a name="step-4-calculate-number-of-yarn-containers"></a>Krok 4: výpočet počtu kontejnerů PŘÍZe
 
-Kontejnery YARN určují množství souběžnosti, které jsou k dispozici pro úlohu. Vezměte celkovou paměť YARN a vydělte ji mapreduce.map.memory.
+Kontejnery PŘÍZe určují množství souběžnosti, které je k dispozici pro úlohu. Využijte celkovou paměť PŘÍZe a rozdělte ji pomocí MapReduce. map. Memory.
 
 `# of YARN containers = total YARN memory / mapreduce.map.memory`
 
-### <a name="step-5-set-mapreducejobmapsmapreducejobreduces"></a>Krok 5: Nastavení mapreduce.job.maps/mapreduce.job.reduces
+### <a name="step-5-set-mapreducejobmapsmapreducejobreduces"></a>Krok 5: nastavte MapReduce. job. Maps/MapReduce. job. redukujes
 
-Nastavte mapreduce.job.maps/mapreduce.job.reduzuje alespoň počet dostupných kontejnerů. Můžete dále experimentovat zvýšením počtu mapovačů a reduktorů, abyste zjistili, zda získáte lepší výkon. Mějte na paměti, že další mapovače budou mít další režii, takže příliš mnoho mapovačů může snížit výkon.
+Nastavte MapReduce. job. Maps/MapReduce. job. zmenšuje alespoň na počet dostupných kontejnerů. Můžete ještě experimentovat zvýšením počtu mapovačů a reduktorů, abyste viděli, jestli získáte lepší výkon. Mějte na paměti, že další mapovače budou mít další režii, takže příliš mnoho mapovačů může snížit výkon.
 
-Plánování procesoru a izolace procesoru jsou ve výchozím nastavení vypnuty, takže počet kontejnerů YARN je omezen pamětí.
+Plánování procesoru a izolace procesoru jsou ve výchozím nastavení vypnuté, takže počet kontejnerů PŘÍZ je omezený pamětí.
 
 ## <a name="example-calculation"></a>Příklad výpočtu
 
-Řekněme, že aktuálně máte cluster složený z uzlů 8 D14 a chcete spustit úlohu intenzivní vstupně-operace. Zde jsou výpočty, které byste měli udělat:
+Řekněme, že aktuálně máte cluster tvořený 8 D14 uzly a chcete spustit úlohu náročné na vstupně-výstupní operace. Tady jsou výpočty, které byste měli provést:
 
-### <a name="step-1-determine-number-of-jobs-running"></a>Krok 1: Určení počtu spuštěných úloh
+### <a name="step-1-determine-number-of-jobs-running"></a>Krok 1: určení počtu spuštěných úloh
 
-Pro náš příklad předpokládáme, že naše práce je jediná, která běží.
+V našem příkladu předpokládáme, že naše úloha je právě spuštěná.
 
-### <a name="step-2-set-mapreducemapmemorymapreducereducememory"></a>Krok 2: Nastavení mapreduce.map.memory/mapreduce.reduce.memory
+### <a name="step-2-set-mapreducemapmemorymapreducereducememory"></a>Krok 2: nastavte MapReduce. map. Memory/MapReduce. zmenšení. Memory
 
-V našem příkladu spouštějíte úlohu náročnou vstupně-up a rozhodujete, že 3 GB paměti pro úlohy mapy je dostatečná.
+V našem příkladu máte spuštěnou úlohu náročné na vstupně-výstupní operace a rozhodnete se, že 3 GB paměti pro úlohy mapy jsou dostatečné.
 
 `mapreduce.map.memory = 3GB`
 
-### <a name="step-3-determine-total-yarn-memory"></a>Krok 3: Určení celkové paměti YARN
+### <a name="step-3-determine-total-yarn-memory"></a>Krok 3: určení celkové paměti PŘÍZe
 
 `total memory from the cluster is 8 nodes * 96GB of YARN memory for a D14 = 768GB`
 
-### <a name="step-4-calculate--of-yarn-containers"></a>Krok 4: Výpočet počtu kontejnerů YARN
+### <a name="step-4-calculate--of-yarn-containers"></a>Krok 4: výpočet počtu kontejnerů PŘÍZe
 
 `# of YARN containers = 768 GB of available memory / 3 GB of memory = 256`
 
-### <a name="step-5-set-mapreducejobmapsmapreducejobreduces"></a>Krok 5: Nastavení mapreduce.job.maps/mapreduce.job.reduces
+### <a name="step-5-set-mapreducejobmapsmapreducejobreduces"></a>Krok 5: nastavte MapReduce. job. Maps/MapReduce. job. redukujes
 
 `mapreduce.map.jobs = 256`
 
 ## <a name="limitations"></a>Omezení
 
-**Omezení úložiště datového jezera Gen1**
+**Omezení Data Lake Storage Gen1**
 
-Jako služba pro více klientů nastavuje Data Lake Storage Gen1 limity šířky pásma na úrovni účtu. Pokud dosáhnete těchto limitů, začnete vidět selhání úloh. To lze identifikovat sledováním chyb omezení v protokolech úloh. Pokud potřebujete větší šířku pásma pro svou práci, kontaktujte nás.
+V případě víceklientské služby Data Lake Storage Gen1 nastaví limity šířky pásma na úrovni účtu. Pokud jste dosáhli těchto limitů, začnete zobrazovat selhání úloh. To je možné identifikovat pozorováním chyb omezení v protokolech úloh. Pokud potřebujete pro svoji úlohu větší šířku pásma, kontaktujte nás prosím.
 
-Chcete-li zkontrolovat, zda jste stále omezení, je třeba povolit protokolování ladění na straně klienta. Zde je návod, jak to můžete udělat:
+Chcete-li zjistit, zda se vám omezilo omezení, je nutné povolit protokolování ladění na straně klienta. Můžete to udělat takto:
 
-1. Vložte následující vlastnost do vlastností log4j v Ambari > YARN > Config > Advanced yarn-log4j: log4j.logger.com.microsoft.azure.datalake.store=DEBUG
+1. Do vlastností log4j v Ambari > PŘÍZ > config vložte následující vlastnost > rozšířené příze-log4j: log4j. protokolovací. com. Microsoft. Azure. datalake. Store = DEBUG
 
-2. Restartujte všechny uzly nebo službu, aby se konfigurační konfigurace projevila.
+2. Aby se konfigurace projevila, restartujte všechny uzly/služby.
 
-3. Pokud jste stále omezen, uvidíte kód chyby HTTP 429 v souboru protokolu YARN. Soubor protokolu YARN je v&lt;/tmp/ user&gt;/yarn.log
+3. Pokud se vám omezí omezení, zobrazí se v souboru protokolu PŘÍZ kód chyby HTTP 429. Soubor protokolu PŘÍZe je v/tmp/&lt;User&gt;/YARN.log
 
 ## <a name="examples-to-run"></a>Příklady spuštění
 
-Chcete-li ukázat, jak MapReduce běží na Data Lake Storage Gen1, následuje některé ukázkový kód, který byl spuštěn v clusteru s následujícím nastavením:
+Chcete-li předvést, jak MapReduce běží na Data Lake Storage Gen1, následuje ukázkový kód, který byl spuštěn v clusteru s následujícím nastavením:
 
-* 16 uzlů D14v2
-* Cluster Hadoop se systémem HDI 3.6
+* D14v2 se 16 uzly
+* Cluster Hadoop se systémem HDI 3,6
 
-Pro výchozí bod zde jsou některé příklady příkazů pro spuštění MapReduce Teragen, Terasort a Teravalidate. Tyto příkazy můžete upravit na základě vašich prostředků.
+Tady je několik ukázkových příkazů pro výchozí bod, které spouští MapReduce Teragen, Terasort a Teravalidate. Tyto příkazy můžete upravit v závislosti na svých prostředcích.
 
-### <a name="teragen"></a>Teragen (Teragen)
+### <a name="teragen"></a>Teragen
 
 ```
 yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 10000000000 adl://example/data/1TB-sort-input
 ```
 
-### <a name="terasort"></a>Terasort (Terasort)
+### <a name="terasort"></a>Terasort
 
 ```
 yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 -Dmapreduce.job.reduces=512 -Dmapreduce.reduce.memory.mb=3072 adl://example/data/1TB-sort-input adl://example/data/1TB-sort-output

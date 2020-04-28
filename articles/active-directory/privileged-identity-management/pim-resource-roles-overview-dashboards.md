@@ -1,6 +1,6 @@
 ---
-title: Řídicí panely prostředků pro kontroly přístupu v PIM – Azure AD | Dokumenty společnosti Microsoft
-description: Popisuje, jak pomocí řídicího panelu prostředků provést kontrolu přístupu v Azure AD Privilegované správy identit (PIM).
+title: Řídicí panely prostředků pro recenze přístupu v PIM – Azure AD | Microsoft Docs
+description: Popisuje, jak pomocí řídicího panelu prostředků provádět kontrolu přístupu v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -17,30 +17,30 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6affa2ecc8919dabeb6173622b525280ce96bcfe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73847031"
 ---
-# <a name="use-a-resource-dashboard-to-perform-an-access-review-in-privileged-identity-management"></a>Použití řídicího panelu prostředků k provedení kontroly přístupu v privilegované správě identit
+# <a name="use-a-resource-dashboard-to-perform-an-access-review-in-privileged-identity-management"></a>Pomocí řídicího panelu prostředků proveďte kontrolu přístupu v Privileged Identity Management
 
-Řídicí panel prostředků můžete použít k provedení kontroly přístupu v privilegované správě identit (PIM). Řídicí panel Admin View ve službě Azure Active Directory (Azure AD) má tři primární součásti:
+Pomocí řídicího panelu prostředků můžete provádět kontrolu přístupu v Privileged Identity Management (PIM). Řídicí panel zobrazení správce v Azure Active Directory (Azure AD) má tři primární součásti:
 
-- Grafické znázornění aktivací role prostředku
-- Grafy zobrazující rozdělení přiřazení rolí podle typu přiřazení
-- Datová oblast obsahující informace pro nová přiřazení rolí
+- Grafická reprezentace aktivací rolí prostředků
+- Grafy, které zobrazují distribuci přiřazení rolí podle typu přiřazení
+- Datová oblast obsahující informace o nových přiřazeních rolí
 
-![Snímek obrazovky řídicího panelu Admin View s grafy a grafy](media/pim-resource-roles-overview-dashboards/rbac-overview-top.png)
+![Snímek obrazovky řídicího panelu zobrazení správce, zobrazení grafů a grafů](media/pim-resource-roles-overview-dashboards/rbac-overview-top.png)
 
-![Snímek obrazovky řídicího panelu Admin View se seznamy dat](media/pim-resource-roles-overview-dashboards/role-settings.png)
+![Snímek obrazovky řídicího panelu zobrazení Správce zobrazující seznam dat](media/pim-resource-roles-overview-dashboards/role-settings.png)
 
-Grafické znázornění aktivací role prostředku zahrnuje posledních sedm dní. Tato data jsou vymezena na vybraný prostředek a zobrazují aktivace nejběžnějších rolí (vlastníka, přispěvatele, správce přístupu uživatelů) a všech rolí dohromady.
+Grafické znázornění aktivací rolí prostředků pokrývá posledních sedm dní. Tato data jsou vymezená na vybraný prostředek a zobrazují se aktivace pro nejběžnější role (vlastník, přispěvatel, správce přístupu uživatelů) a pro všechny role v kombinaci.
 
-Na jedné straně grafu aktivace dva grafy zobrazují rozdělení přiřazení rolí podle typu přiřazení pro uživatele i skupiny. Hodnotu můžete změnit na procento (nebo naopak) výběrem výseče grafu.
+Na jedné straně grafu aktivace zobrazuje dva grafy distribuci přiřazení rolí podle typu přiřazení pro uživatele i skupiny. Můžete změnit hodnotu na procento (nebo naopak), a to tak, že vyberete řez grafu.
 
-Pod grafy je uveden počet uživatelů a skupin s novými přiřazeními rolí za posledních 30 dní a role seřazené podle celkového počtu přiřazení v sestupném pořadí.
+Pod grafy jsou uvedeny počty uživatelů a skupin s novými přiřazeními rolí za posledních 30 dní a role seřazené podle celkového počtu přiřazení v sestupném pořadí.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Spuštění kontroly přístupu pro role prostředků Azure ve správě privilegovaných identit](pim-resource-roles-start-access-review.md)
+- [Spuštění kontroly přístupu pro role prostředků Azure v Privileged Identity Management](pim-resource-roles-start-access-review.md)

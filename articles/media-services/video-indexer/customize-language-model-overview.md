@@ -1,7 +1,7 @@
 ---
-title: Přizpůsobení jazykového modelu v video indexeru – Azure
+title: Přizpůsobení jazykového modelu v Video Indexer – Azure
 titleSuffix: Azure Media Services
-description: Tento článek poskytuje přehled o tom, co je jazykový model v Video Indexer a jak jej přizpůsobit.
+description: Tento článek poskytuje přehled toho, co je jazykový model v Video Indexer a jak ho přizpůsobit.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -11,37 +11,37 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
 ms.openlocfilehash: b096b9352be65033f2fb782b118e815dc16b43b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73838315"
 ---
-# <a name="customize-a-language-model-with-video-indexer"></a>Přizpůsobení jazykového modelu pomocí videoindexeru
+# <a name="customize-a-language-model-with-video-indexer"></a>Přizpůsobení jazykového modelu pomocí Video Indexer
 
-Video Indexer podporuje automatické rozpoznávání řeči prostřednictvím integrace se [službou](https://azure.microsoft.com/services/cognitive-services/custom-speech-service/)Microsoft Custom Speech Service . Jazykový model si můžete přizpůsobit nahráním adaptačního textu, konkrétně textu z domény, jehož slovní zásobu chcete přizpůsobit. Jakmile táhnete model, budou rozpoznána nová slova uvedená v textu adaptace za předpokladu výchozí výslovnosti a jazykový model se naučí nové pravděpodobné sekvence slov. Vlastní jazykové modely jsou podporovány pro angličtinu, španělštinu, francouzštinu, němčinu, italštinu, čínštinu (zjednodušenou), japonštinu, ruštinu, brazilskou portugalštinu, hindštinu a korejštinu. 
+Video Indexer podporuje automatické rozpoznávání řeči prostřednictvím integrace s Microsoft [Custom Speech Service](https://azure.microsoft.com/services/cognitive-services/custom-speech-service/). Jazykové modely můžete přizpůsobit nahráním přizpůsobeného textu, konkrétně textu z domény, kde chcete, aby se modul přizpůsobil. Jakmile provedete svůj model, budou se rozpoznat nová slova, která se objeví v textu úpravy. předpokládá se výchozí výslovnost a jazykový model se seznámí s novými pravděpodobnými sekvencemi slov. Vlastní jazykové modely jsou podporovány v angličtině, španělštině, francouzštině, němčině, italštině, čínštině (zjednodušeně), japonštině, ruštině, brazilské portugalštině, hindština a korejštině. 
 
-Vezměme si slovo, které je velmi specifické, jako "Kubernetes" (v kontextu služby Azure Kubernetes), jako příklad. Vzhledem k tomu, slovo je nové Video Indexer, je uznáván jako "komunity". Musíte trénovat model rozpoznat jako "Kubernetes". V ostatních případech slova existují, ale jazykový model neočekává, že se zobrazí v určitém kontextu. Například "kontejnerová služba" není dvouslovná sekvence, kterou by nespecializovaný jazykový model rozpoznal jako určitou sadu slov.
+Podíváme se na velmi konkrétní slovo, jako je například "Kubernetes" (v kontextu služby Azure Kubernetes), jako příklad. Vzhledem k tomu, že je slovo v Video Indexer nové, je rozpoznáno jako "komunity". Chcete-li tento model rozpoznat jako "Kubernetes", je nutné ho vyškolit. V jiných případech existují slova, ale jazykový model je neočekává, že se zobrazí v určitém kontextu. Například "kontejnerová služba" není 2 – sekvence slov, které nespecializované jazykové modely rozpoznávají jako konkrétní sadu slov.
 
-Máte možnost nahrát slova bez kontextu v seznamu v textovém souboru. To se považuje za částečnou adaptaci. Případně můžete nahrát textové soubory dokumentace nebo věty související s vaším obsahem pro lepší přizpůsobení.
+Máte možnost nahrávat slova bez kontextu do seznamu v textovém souboru. To je považováno za částečné přizpůsobení. Alternativně můžete odeslat textové soubory dokumentace nebo věty týkající se vašeho obsahu pro lepší úpravu.
 
-Rozhraní API videoindexeru nebo web můžete použít k vytvoření a úpravám vlastních jazykových modelů, jak je popsáno v tématech v části [Další kroky](#next-steps) tohoto tématu.
+Pomocí rozhraní Video Indexer API nebo webu můžete vytvořit a upravit vlastní jazykové modely, jak je popsáno v tématech v části [Další kroky](#next-steps) v tomto tématu.
 
-## <a name="best-practices-for-custom-language-models"></a>Doporučené postupy pro vlastní jazykové modely
+## <a name="best-practices-for-custom-language-models"></a>Osvědčené postupy pro vlastní jazykové modely
 
-Video Indexer se učí na základě pravděpodobností kombinací slov, takže se nejlépe naučíte:
+Video Indexer se učí na základě pravděpodobnosti kombinací slov, takže se můžete seznámit nejlépe:
 
-* Uveďte dostatek skutečných příkladů vět, jak by se mluvilo.
-* Vložte pouze jednu větu na řádek, ne více. V opačném případě se systém naučí pravděpodobnosti napříč větami.
-* Je v pořádku dát jedno slovo jako větu, která posílí slovo proti ostatním, ale systém se nejlépe učí z celých vět.
-* Při zavádění nových slov nebo zkratky, pokud je to možné, dát co nejvíce příkladů použití v celé větě dát co nejvíce kontextu, jak je to možné do systému.
-* Snažte se dát několik možností přizpůsobení, a uvidíte, jak pracují pro vás.
-* Vyhněte se opakování přesně stejné věty vícekrát. To může vytvořit zaujatost proti zbytku vstupu.
-* Vyhněte se zahrnutí neobvyklých symbolů (~, # @ % &), protože budou zahozeny. Věty, ve kterých se zobrazí, budou také vyřazeny.
-* Vyhněte se uvedení příliš velké vstupy, jako jsou stovky tisíc vět, protože tím se zředí účinek zvýšení.
+* Poskytněte dostatek reálných příkladů vět, které by byly mluvené.
+* Vloží jenom jednu větu na řádek, ne další. V opačném případě se systém bude učit mezi větami.
+* Je možné vložit jedno slovo jako větu, aby bylo možné slovo zvýšit proti ostatním, ale systém se učí nejlépe od plných vět.
+* Pokud je to možné, popište nová slova nebo akronymy, pokud je to možné, a poskytněte tolik příkladů využití v plné větě, aby systém mohl co nejvíc poskytnout co nejvíce kontextu.
+* Zkuste vložit několik možností přizpůsobení a podívejte se, jak to budou fungovat.
+* Vyhněte se opakování přesně stejné věty několikrát. Může vytvořit posun proti zbytku vstupu.
+* Vyhněte se zahrnutí neobvyklých symbolů (~, # @% &), protože budou zahozeny. Věty, ve kterých se zobrazují, budou také zahozeny.
+* Vyhněte se vkládání příliš velkých vstupů, jako jsou stovky tisíc vět, protože by to mělo zvýšit účinek zvýšení.
 
 ## <a name="next-steps"></a>Další kroky
 
 [Přizpůsobení jazykového modelu pomocí rozhraní API](customize-language-model-with-api.md)
 
-[Přizpůsobení jazykového modelu pomocí webu](customize-language-model-with-website.md)
+[Přizpůsobení jazykového modelu s použitím webu](customize-language-model-with-website.md)

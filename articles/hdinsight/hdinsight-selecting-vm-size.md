@@ -1,7 +1,7 @@
 ---
-title: Jak vybrat správnou velikost virtuálního počítače pro váš cluster Azure HDInsight
-description: Přečtěte si, jak vybrat správnou velikost virtuálního počítače pro váš cluster HDInsight.
-keywords: velikosti virtuálních počítačů, velikosti clusteru, konfigurace clusteru
+title: Jak vybrat správnou velikost virtuálního počítače pro cluster Azure HDInsight
+description: Naučte se, jak vybrat správnou velikost virtuálního počítače pro cluster HDInsight.
+keywords: velikosti virtuálních počítačů, velikosti clusterů, konfigurace clusteru
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -10,50 +10,50 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.openlocfilehash: a21e8d6c76c93b3084619c09f6a7664a25c1929c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73682208"
 ---
-# <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>Výběr správné velikosti virtuálního počítače pro váš cluster Azure HDInsight
+# <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>Výběr správné velikosti virtuálního počítače pro cluster Azure HDInsight
 
 Tento článek popisuje, jak vybrat správnou velikost virtuálního počítače pro různé uzly v clusteru HDInsight. 
 
-Začněte tím, že pochopíte, jak vlastnosti virtuálního počítače, jako je zpracování procesoru, velikost paměti RAM a latence sítě, ovlivní zpracování vašich úloh. Dále přemýšlejte o vaší aplikaci a o tom, jak odpovídá různým rodinám virtuálních zařízení, pro které jsou optimalizované. Ujistěte se, že rodina virtuálních počítačů, kterou chcete použít, je kompatibilní s typem clusteru, který chcete nasadit. Seznam všech podporovaných a doporučených velikostí virtuálních počítačů pro každý typ clusteru najdete v tématu [Konfigurace uzlů podporovaných Azure HDInsight](hdinsight-supported-node-configuration.md). Nakonec můžete použít proces srovnávání k testování některých ukázkových úloh a ke kontrole, která skladová položka v rámci této rodiny je pro vás ta pravá.
+Začněte tím, že pochopíte, jak vlastnosti virtuálního počítače, jako je zpracování procesoru, velikost paměti RAM a latence sítě, budou mít vliv na zpracování vašich úloh. V dalším kroku si myslíte, jak vaše aplikace odpovídá a jaké jsou pro ně optimalizované různé rodiny virtuálních počítačů. Ujistěte se, že rodina virtuálních počítačů, kterou chcete použít, je kompatibilní s typem clusteru, který plánujete nasadit. Seznam všech podporovaných a doporučených velikostí virtuálních počítačů pro každý typ clusteru najdete v tématu [podporované konfigurace uzlů pro Azure HDInsight](hdinsight-supported-node-configuration.md). Nakonec můžete použít proces srovnávacích testů k testování některých ukázkových úloh a zkontrolovat, kterou SKU v této rodině je pro vás nejvhodnější.
 
-Další informace o plánování dalších aspektů clusteru, jako je výběr typu úložiště nebo velikosti clusteru, naleznete v [tématu Plánování kapacity pro clustery HDInsight](hdinsight-capacity-planning.md).
+Další informace o plánování dalších aspektů vašeho clusteru, například výběru typu úložiště nebo velikosti clusteru, najdete v tématu [plánování kapacity pro clustery HDInsight](hdinsight-capacity-planning.md).
 
-## <a name="vm-properties-and-big-data-workloads"></a>Vlastnosti virtuálních počítače a úlohy velkých objemů dat
+## <a name="vm-properties-and-big-data-workloads"></a>Vlastnosti virtuálního počítače a úlohy s velkými objemy dat
 
-Velikost a typ virtuálního počítače je určen výkonem procesoru, velikostí paměti RAM a latencí sítě:
+Velikost a typ virtuálního počítače závisí na výkonu procesoru, velikosti paměti RAM a latenci sítě:
 
-- CPU: Velikost virtuálního počítače určuje počet jader. Čím více jader, tím větší je stupeň paralelního výpočtu, které může každý uzel dosáhnout. Některé typy virtuálních počítačů mají také rychlejší jádra.
+- CPU: velikost virtuálního počítače určuje počet jader. Víc jader, tím větší je stupeň paralelního výpočtu, který každý uzel může dosáhnout. Některé typy virtuálních počítačů navíc mají rychlejší jádra.
 
-- RAM: Velikost virtuálního počítače také určuje množství paměti RAM, které jsou k dispozici ve virtuálním počítače. Pro úlohy, které ukládají data v paměti pro zpracování, nikoli čtení z disku, ujistěte se, že pracovní uzly mají dostatek paměti, aby se vešly data.
+- RAM: velikost virtuálního počítače také určí velikost paměti RAM dostupné ve virtuálním počítači. Pro úlohy, které ukládají data do paměti pro zpracování, nikoli čtení z disku, ujistěte se, že vaše pracovní uzly mají dostatek paměti pro přizpůsobení dat.
 
-- Síť: U většiny typů clusterů nejsou data zpracovaná clusterem na místním disku, ale spíše v externí službě úložiště, jako je úložiště datových jezer nebo Azure Storage. Zvažte šířku pásma sítě a propustnost mezi virtuálním virtuálním proudem uzlu a službou úložiště. Šířka pásma sítě, která je k dispozici pro virtuální počítač, se obvykle zvyšuje s většími velikostmi. Podrobnosti najdete v tématu [Přehled velikostí virtuálních počítače](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+- Síť: u většiny typů clusterů data zpracovaná clusterem nejsou na místním disku, ale ne v externí službě úložiště, jako je Data Lake Storage nebo Azure Storage. Vezměte v úvahu šířku pásma a propustnost sítě mezi virtuálním počítačem uzlu a službou úložiště. Šířka pásma sítě, která je k dispozici pro virtuální počítač, se obvykle zvětšuje o větší velikost. Podrobnosti najdete v tématu [Přehled velikostí virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
 
-## <a name="understanding-vm-optimization"></a>Principy optimalizace virtuálních mís
+## <a name="understanding-vm-optimization"></a>Principy optimalizace virtuálních počítačů
 
-Rodiny virtuálních strojů v Azure jsou optimalizované tak, aby vyhovovaly různým případům použití. V následující tabulce najdete některé z nejoblíbenějších případů použití a rodiny virtuálních knih, které se jim shodují.
+Rodiny virtuálních počítačů v Azure jsou optimalizované tak, aby vyhovovaly různým případům použití. V níže uvedené tabulce najdete některé z nejoblíbenějších případů použití a rodin virtuálních počítačů, které se na ně shodují.
 
 | Typ                     | Velikosti           |    Popis       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [Entry-level](../virtual-machines/linux/sizes-general.md)          | A, Av2  | Mějkonfiguraci výkonu procesoru a paměti, která nejlépe vyhovuje úlohám vstupní úrovně, jako je vývoj a testování. Jsou ekonomické a poskytují nízkonákladovou možnost, jak začít s Azure. |
-| [Obecné účely](../virtual-machines/linux/sizes-general.md)          | D, DSv2, Dv2  | Vyvážený poměr procesoru k paměti. Tato možnost je ideální pro testování a vývoj, malé až střední databáze a webové servery s nízkým až středním provozem. |
-| [Optimalizované z hlediska výpočetních služeb](../virtual-machines/linux/sizes-compute.md)        | F           | Vysoký poměr procesoru k paměti. Vhodné pro webové servery se středním provozem, síťová zařízení, dávkové procesy a aplikační servery.        |
+| [Vstupní úroveň](../virtual-machines/linux/sizes-general.md)          | A, Av2  | Pro úlohy vstupní úrovně, jako je vývoj a testování, se nejlépe hodí konfigurace výkonu a paměti procesoru. Je to ekonomicky výhodná možnost, která vám umožní začít s Azure. |
+| [Obecné účely](../virtual-machines/linux/sizes-general.md)          | D, DSv2, Dv2  | Poměr vyrovnaných PROCESORů k paměti. Tato možnost je ideální pro testování a vývoj, malé až střední databáze a webové servery s nízkým až středním provozem. |
+| [Optimalizované z hlediska výpočetních služeb](../virtual-machines/linux/sizes-compute.md)        | F           | Vysoký poměr PROCESORů k paměti. Vhodné pro webové servery se středním provozem, síťová zařízení, dávkové procesy a aplikační servery.        |
 | [Optimalizované z hlediska paměti](../virtual-machines/linux/sizes-memory.md)         | Esv3, Ev3  | Vysoký poměr paměti k procesoru. Jsou velmi vhodné pro servery s relační databází, střední a velké mezipaměti a analýzu v paměti.                 |
 
-- Informace o cenách dostupných instancí virtuálních montovek v podporovaných oblastech HDInsightu najdete v [tématu CENY HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
+- Informace o cenách dostupných instancí virtuálních počítačů napříč oblastmi podporovanými HDInsight najdete v tématu [ceny služby HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-## <a name="cost-saving-vm-types-for-light-workloads"></a>Úsporné typy virtuálních počítačů pro lehké úlohy
+## <a name="cost-saving-vm-types-for-light-workloads"></a>Náklady na úsporu typů virtuálních počítačů pro úlohy s lehkým zatížením
 
-Pokud máte požadavky na lehké zpracování, [řada F](https://azure.microsoft.com/blog/f-series-vm-size/) může být dobrou volbou pro zahájení s HDInsight. Za nižší ceníkové sazby za hodinu nabízí řada F-series nejlepší poměr cena–výkon v portfoliu Azure, pokud jde o množství výpočetních jednotek Azure (ACU) na virtuální procesor.
+Pokud máte požadavky na zpracování světla, může být [Řada F-Series](https://azure.microsoft.com/blog/f-series-vm-size/) vhodnou volbou pro zahájení práce se službou HDInsight. Za nižší ceníkové sazby za hodinu nabízí řada F-series nejlepší poměr cena–výkon v portfoliu Azure, pokud jde o množství výpočetních jednotek Azure (ACU) na virtuální procesor.
 
-Následující tabulka popisuje typy clusterů a typy uzlů, které lze vytvořit pomocí virtuálních počítačů řady Fsv2.
+Následující tabulka popisuje typy clusterů a typy uzlů, které lze vytvořit pomocí virtuálních počítačů Fsv2-Series.
 
-| Typ clusteru | Version | Uzel pracovníka | Hlavní uzel | Zookeeper uzel |
+| Typ clusteru | Version | Pracovní uzel | Hlavní uzel | Uzel Zookeeper |
 |---|---|---|---|---|
 | Spark | Všechny | F4 a vyšší | ne | ne |
 | Hadoop | Všechny | F4 a vyšší | ne | ne |
@@ -61,17 +61,17 @@ Následující tabulka popisuje typy clusterů a typy uzlů, které lze vytvoři
 | HBase | Všechny | F4 a vyšší | ne | ne |
 | LLAP | zakázaný | ne | ne | ne |
 | Storm | zakázaný | ne | ne | ne |
-| Služba ML | POUZE HDI 3.6 | F4 a vyšší | ne | ne |
+| Služba ML | JENOM HDI 3,6 | F4 a vyšší | ne | ne |
 
-Informace o specifikacích jednotlivých skladových míst řady F naleznete v [tématu Velikosti virtuálních počítače řady F](https://azure.microsoft.com/blog/f-series-vm-size/).
+Specifikace jednotlivých SKU F-Series najdete v tématu [velikosti virtuálních počítačů řady f-Series](https://azure.microsoft.com/blog/f-series-vm-size/).
 
-## <a name="benchmarking"></a>Srovnávání
+## <a name="benchmarking"></a>Srovnávací testy
 
-Benchmarking je proces spouštění simulovaných úloh na různých virtuálních počítačích, aby se změřilo, jak dobře budou fungovat pro vaše produkční úlohy. 
+Srovnávací testy je proces spouštění simulovaných úloh na různých virtuálních počítačích, aby bylo možné měřit, jak dobře budou fungovat pro vaše produkční úlohy. 
 
-Další informace o benchmarkingu pro virtuální počítače a velikostclusteru najdete [v tématu Plánování kapacity clusteru v Azure HDInsight ](hdinsight-capacity-planning.md#choose-the-vm-size-and-type).
+Další informace o srovnávacích testech pro SKU virtuálních počítačů a velikosti clusterů najdete v tématu [plánování kapacity clusteru ve službě Azure HDInsight ](hdinsight-capacity-planning.md#choose-the-vm-size-and-type).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Podporované konfigurace uzlů Azure HDInsight](hdinsight-supported-node-configuration.md)
+- [Konfigurace podporovaných uzlů Azure HDInsight](hdinsight-supported-node-configuration.md)
 - [Velikosti virtuálních počítačů s Linuxem v Azure](../virtual-machines/linux/sizes.md)

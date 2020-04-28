@@ -1,7 +1,7 @@
 ---
-title: Kognitivní dovednosti rozdělení textu
+title: Dovednosti při rozpoznávání rozdělení textu
 titleSuffix: Azure Cognitive Search
-description: Rozdělte text na bloky nebo stránky textu na základě délky v kanálu obohacení ai v Azure Cognitive Search.
+description: Přerušit text na bloky dat nebo na stránky textu na základě délky kanálu rozšíření AI v Azure Kognitivní hledání.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,21 +9,21 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 3f80169808b1e6420f04b786d2bb06bde9c96231
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73479667"
 ---
-# <a name="text-split-cognitive-skill"></a>Kognitivní dovednosti rozdělení textu
+# <a name="text-split-cognitive-skill"></a>Dovednosti při rozpoznávání rozdělení textu
 
-Dovednost **Rozdělení textu** rozdělí text na bloky textu. Můžete určit, zda chcete rozdělit text na věty nebo na stránky určité délky. Tato dovednost je užitečná zejména v případě, že existují požadavky na maximální délku textu v jiných dovednostech po proudu. 
+Dovednost **rozdělení textu** rozdělí text na bloky textu. Můžete určit, zda chcete přerušit text na věty nebo na stránky určité délky. Tato dovednost je užitečná hlavně v případě, že jsou k dispozici maximální požadavky na délku textu v jiných dovednostech. 
 
 > [!NOTE]
-> Tato dovednost není vázána na rozhraní API služby Cognitive Services a za jeho použití se vám neúčtují poplatky. Stále byste měli [připojit prostředek služeb Cognitive Services](cognitive-search-attach-cognitive-services.md), abyste však přepsali možnost **Volný** prostředek, který vás omezuje na malý počet denních obohacení za den.
+> Tato dovednost není vázaná na rozhraní Cognitive Services API a neúčtují se za jejich použití. K dispozici byste ale měli i [prostředek Cognitive Services](cognitive-search-attach-cognitive-services.md), abyste mohli přepsat možnost **bezplatného** prostředku, která omezuje na malý počet denních rozšíření za den.
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Text.SplitSkill 
+Microsoft. dovednosti. text. SplitSkill 
 
 ## <a name="skill-parameters"></a>Parametry dovednosti
 
@@ -31,23 +31,23 @@ U parametrů se rozlišují malá a velká písmena.
 
 | Název parametru     | Popis |
 |--------------------|-------------|
-| textSplitMode      | "stránky" nebo "věty" | 
-| maximální délka stránky | Pokud textSplitMode je nastavena na "stránky", to odkazuje `String.Length`na maximální délku stránky měřeno . Minimální hodnota je 100.  Pokud je textSplitMode nastaven na "stránky", algoritmus se pokusí rozdělit text na bloky, které jsou maximálně "maximumPageLength" ve velikosti. V tomto případě algoritmus bude dělat to nejlepší přerušit větu na hranici věty, takže velikost bloku může být o něco menší než "maximumPageLength". | 
-| defaultLanguageCode   | (nepovinné) Jeden z následujících `da, de, en, es, fi, fr, it, ko, pt`kódů jazyka: . Výchozí hodnota je angličtina (en). Jen málo věcí, aby zvážila:<ul><li>Pokud předáte formát languagecode-countrycode, použije se pouze část formátu languagecode.</li><li>Pokud jazyk není v předchozím seznamu, rozdělená dovednost přeruší text na hranicích znaků.</li><li>Poskytnutí kódu jazyka je užitečné, aby se zabránilo řezání slovo na polovinu pro jazyky, které nejsou prázdné znaky, jako je čínština, japonština a korejština.</li><li>Pokud neznáte jazyk (tj. je třeba rozdělit text pro vstup do [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)), výchozí angličtina (en) by měla být dostatečná. </li></ul>  |
+| textSplitMode      | Buď "stránky" nebo "věty" | 
+| maximumPageLength | Pokud je textSplitMode nastavené na "stránky", vztahuje se na maximální délka stránky měřená podle `String.Length`. Minimální hodnota je 100.  Pokud je textSplitMode nastavené na "stránky", algoritmus se pokusí rozdělit text na bloky, které mají velikost nejvíce "maximumPageLength". V takovém případě bude algoritmus nejlépe přerušit větu na hranici věty, takže velikost bloku dat může být mírně menší než "maximumPageLength". | 
+| defaultLanguageCode   | volitelné Jeden z následujících kódů jazyka: `da, de, en, es, fi, fr, it, ko, pt`. Výchozí hodnota je angličtina (EN). Několik věcí, které je potřeba vzít v úvahu:<ul><li>Pokud předáte formát LanguageCode-CountryCode, použije se pouze část formátu LanguageCode.</li><li>Pokud jazyk není v předchozím seznamu, rozdělená dovednost rozdělí text na hranice znaků.</li><li>Poskytnutí kódu jazyka je užitečné, abyste se vyhnuli vyjmutí slova na polovinu pro jiné než prázdné jazyky, jako jsou čínština, japonština a korejština.</li><li>Pokud neznáte jazyk (tj. je třeba rozdělit text na [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)), měla by být stačit výchozí angličtina (EN). </li></ul>  |
 
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
 | Název parametru       | Popis      |
 |----------------------|------------------|
-| text  | Text rozdělit na podřetězec. |
-| languageCode  | (Nepovinné) Kód jazyka pro dokument. Pokud neznáte jazyk (tj. je třeba rozdělit text pro vstup do [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)), je bezpečné odebrat tento vstup.  |
+| text  | Text, který se má rozdělit na dílčí řetězec |
+| languageCode  | Volitelné Kód jazyka pro dokument Pokud neznáte jazyk (například potřebujete rozdělit text na vstup do [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)), je možné tento vstup bezpečně odebrat.  |
 
 ## <a name="skill-outputs"></a>Výstupy dovedností 
 
 | Název parametru     | Popis |
 |--------------------|-------------|
-| textové položky | Pole podřetězců, které byly extrahovány. |
+| textItems | Pole podřetězců, které byly extrahovány. |
 
 
 ##  <a name="sample-definition"></a>Definice vzorku
@@ -128,9 +128,9 @@ U parametrů se rozlišují malá a velká písmena.
 ```
 
 ## <a name="error-cases"></a>Chybové případy
-Pokud jazyk není podporován, je generováno upozornění a text je rozdělen na hranici znaků.
+Pokud jazyk není podporován, je vygenerováno upozornění a text bude rozdělen na hranice znaků.
 
 ## <a name="see-also"></a>Viz také
 
 + [Integrované dovednosti](cognitive-search-predefined-skills.md)
-+ [Jak definovat sadu dovedností](cognitive-search-defining-skillset.md)
++ [Jak definovat dovednosti](cognitive-search-defining-skillset.md)

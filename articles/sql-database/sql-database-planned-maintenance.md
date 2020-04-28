@@ -1,6 +1,6 @@
 ---
 title: Plánování událostí údržby Azure
-description: Zjistěte, jak se připravit na plánované události údržby do databáze Azure SQL Database.
+description: Přečtěte si, jak připravit na plánované události údržby pro Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -12,38 +12,38 @@ ms.author: aamalvea
 ms.reviewer: carlrab
 ms.date: 01/30/2019
 ms.openlocfilehash: ba882176fbe17f7b74c786f421dde8fadd58d9b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73821321"
 ---
 # <a name="planning-for-azure-maintenance-events-in-azure-sql-database"></a>Plánování událostí údržby Azure ve službě Azure SQL Database
 
-Zjistěte, jak se připravit na plánované události údržby v databázi Azure SQL.
+Přečtěte si, jak připravit na plánované události údržby ve službě Azure SQL Database.
 
 ## <a name="what-is-a-planned-maintenance-event"></a>Co je plánovaná událost údržby
 
-Pro každou databázi Udržuje Azure SQL DB kvorum repliky databáze, kde jedna replika je primární. Primární replika musí být vždy online a alespoň jedna sekundární replika musí být v pořádku. Během plánované údržby členové kvora databáze přejde do režimu offline jeden po druhém, s úmyslem, že existuje jedna odpověď primární repliky a alespoň jednu sekundární repliku online, aby bylo zajištěno, že žádný prostoje klienta. Když primární replika musí být uvedena do režimu offline, dojde k procesu změny konfigurace/převzetí služeb při selhání, ve kterém se jedna sekundární replika stane novou primární.  
+Pro každou databázi Azure SQL DB udržuje kvorum replik databáze, kde jedna replika je primární. V každé době musí být primární replika online obsluha a aspoň jedna sekundární replika musí být v pořádku. Během plánované údržby se členové kvora databáze po jednom přejdou do offline režimu, s cílem zajistit, aby existovala jedna primární replika a aspoň jedna sekundární replika online, aby nedocházelo k výpadkům klientů. Když se primární replika musí převést do režimu offline, dojde k rekonfiguraci nebo procesu převzetí služeb při selhání, kdy se jedna sekundární replika stane novou primární.  
 
-## <a name="what-to-expect-during-a-planned-maintenance-event"></a>Co očekávat během plánované akce údržby
+## <a name="what-to-expect-during-a-planned-maintenance-event"></a>Co očekávat během plánované události údržby
 
-Rekonfigurace/převzetí služeb při selhání se obvykle dokončí během 30 sekund – průměr je 8 sekund. Pokud již připojen, aplikace musí znovu připojit k funkční kopie nové primární repliky databáze. Pokud dojde k pokusu o nové připojení, zatímco databáze prochází rekonfigurací před novou primární replikou online, zobrazí se chyba 40613 (Databáze není k dispozici): "Databáze {databasename}' na serveru {název_serveru}' není aktuálně k dispozici. Zopakujte připojení později.". Pokud databáze obsahuje dlouho běžící dotaz, bude tento dotaz během rekonfigurace přerušen a bude nutné je restartovat.
+Rekonfigurace/převzetí služeb při selhání se obvykle dokončuje do 30 sekund – průměr je 8 sekund. Pokud už je vaše aplikace připojená, musí se znovu připojit ke správné kopii nové primární repliky vaší databáze. Pokud dojde k pokusu o nové připojení, zatímco se databáze předá novou primární replikou v online režimu, zobrazí se chyba 40613 (databáze není k dispozici): "databáze {DatabaseName} na serveru {ServerName}" není aktuálně k dispozici. Zkuste prosím připojení znovu později. ". Pokud má databáze dlouho běžící dotaz, bude tento dotaz během opakované konfigurace přerušen a bude nutné jej restartovat.
 
 ## <a name="retry-logic"></a>Logika pro opakování
 
-Každá klientská produkční aplikace, která se připojuje ke službě cloudové databáze, by měla implementovat robustní [logiku opakování](sql-database-connectivity-issues.md#retry-logic-for-transient-errors)připojení . To pomůže zmírnit tyto situace a obecně by měly chyby transparentní pro koncového uživatele.
+Každá provozní aplikace klienta, která se připojuje ke cloudové databázové službě, by měla implementovat robustní [logiku opakování](sql-database-connectivity-issues.md#retry-logic-for-transient-errors)připojení. To vám pomůže zmírnit tyto situace a obvykle by měly být chyby transparentní pro koncového uživatele.
 
 ## <a name="frequency"></a>Frequency
 
-V průměru se každý měsíc uskuteční 1,7 plánovaných událostí údržby.
+V průměru se v každém měsíci vyskytují plánované události údržby 1,7.
 
 ## <a name="resource-health"></a>Resource Health
 
-Pokud vaše databáze SQL dochází k selhání přihlášení, zkontrolujte okno [Stav prostředků](../service-health/resource-health-overview.md#get-started) na webu [Azure portálu](https://portal.azure.com) aktuální stav. Část Historie stavu obsahuje důvod prostoje pro každou událost (je-li k dispozici).
+Pokud v databázi SQL dochází k chybám přihlášení, podívejte se do okna [Resource Health](../service-health/resource-health-overview.md#get-started) v [Azure Portal](https://portal.azure.com) aktuálního stavu. Část historie stavu obsahuje důvod výpadku každé události (Pokud je dostupná).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [stavu prostředků](sql-database-resource-health.md) pro databázi SQL
-- Další informace o logice opakování naleznete v tématu [Logika opakování pro přechodné chyby](sql-database-connectivity-issues.md#retry-logic-for-transient-errors)
+- Další informace o [Resource Health](sql-database-resource-health.md) pro SQL Database
+- Další informace o logice opakování najdete v tématu [logika opakování pro přechodné chyby](sql-database-connectivity-issues.md#retry-logic-for-transient-errors) .

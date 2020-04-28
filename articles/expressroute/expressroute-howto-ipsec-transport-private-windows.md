@@ -1,6 +1,6 @@
 ---
-title: 'Privátní partnerský vztah Azure ExpressRoute: Konfigurace režimu přenosu Protokolu IPsec – hostitelé systému Windows'
-description: Jak povolit režim přenosu IPsec mezi virtuálními počítači Azure windows a místními hostiteli Windows prostřednictvím soukromého partnerského vztahu ExpressRoute pomocí objektů zásad skupiny a ouslužeb.
+title: 'Soukromý partnerský vztah Azure ExpressRoute: konfigurace režimu přenosu IPsec – hostitelé Windows'
+description: Jak povolit transportní režim protokolu IPsec mezi virtuálními počítači Azure a místními hostiteli Windows prostřednictvím privátního partnerského vztahu ExpressRoute pomocí objektů zásad skupiny a organizačních jednotek
 services: expressroute
 author: fabferri
 ms.service: expressroute
@@ -9,273 +9,273 @@ ms.date: 10/17/2018
 ms.author: fabferri
 ms.custom: seodec18
 ms.openlocfilehash: 1bc33047d31262af443cddc418853fbacd88aec1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74022009"
 ---
-# <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>Konfigurace režimu přenosu protokolu IPsec pro soukromý partnerský vztah ExpressRoute
+# <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>Konfigurace režimu přenosu IPsec pro privátní partnerské vztahy ExpressRoute
 
-Tento článek vám pomůže vytvořit tunely IPsec v režimu přenosu přes expressroute privátní partnerský vztah mezi virtuálními počítači Azure se systémem Windows a místními hostiteli Windows. Kroky v tomto článku vytvořit tuto konfiguraci pomocí objektů zásad skupiny. I když je možné vytvořit tuto konfiguraci bez použití organizačníjednotky (OU) a objekty zásad skupiny (GPO), kombinace organizačních jednotek a objektů zásad skupiny pomůže zjednodušit řízení zásad zabezpečení a umožňuje rychle vertikálně navýšit kapacitu. Kroky v tomto článku předpokládají, že již máte konfiguraci služby Active Directory a že jste obeznámeni s použitím ounu a objektů zásad skupiny.
+Tento článek vám pomůže vytvořit tunely IPsec v režimu přenosu přes privátní partnerský vztah ExpressRoute mezi virtuálními počítači Azure s Windows a místními hostiteli Windows. Kroky v tomto článku vytvářejí tuto konfiguraci pomocí objektů zásad skupiny. I když je možné vytvořit tuto konfiguraci bez použití organizačních jednotek (OU) a objektů zásad skupiny (GPO), kombinace organizačních jednotek a objektů zásad skupiny vám pomůže zjednodušit řízení zásad zabezpečení a umožní vám rychlé škálování. V krocích v tomto článku se předpokládá, že už máte konfiguraci služby Active Directory a že máte zkušenosti s používáním organizačních jednotek a objektů zásad skupiny.
 
 ## <a name="about-this-configuration"></a>O této konfiguraci
 
-Konfigurace v následujících krocích používá jednu virtuální síť Azure (VNet) s privátním partnerského vztahu ExpressRoute. Tato konfigurace však může span více virtuálních sítí Azure a místních sítí. Tento článek vám pomůže definovat zásady šifrování IPsec a použít je na skupinu virtuálních počítačích Azure a místních hostitelů, které jsou součástí stejné jednotky. Šifrování mezi virtuálními počítači Azure (vm1 a vm2) a místním hostitelem1 nakonfigurujete pouze pro přenosy HTTP s cílovým portem 8080. Různé typy zásad IPsec lze vytvořit na základě vašich požadavků.
+Konfigurace v následujících krocích používá jednu virtuální síť Azure s privátním partnerským vztahem ExpressRoute. Tato konfigurace ale může zahrnovat víc virtuální sítě a místních sítí Azure. Tento článek vám pomůže definovat zásady šifrování protokolu IPsec a použít ho pro skupinu virtuálních počítačů Azure a hostitele v místním prostředí, které jsou součástí stejné organizační jednotky. Nakonfigurujete šifrování mezi virtuálními počítači Azure (VM1 a VM2) a místním Hostitel1 jenom pro přenosy HTTP s cílovým portem 8080. Na základě vašich požadavků je možné vytvořit různé typy zásad protokolu IPsec.
 
-### <a name="working-with-ous"></a>Práce s vněmi s ous 
+### <a name="working-with-ous"></a>Práce s organizačními jednotkami 
 
-Zásady zabezpečení přidružené k ou ce jsou do počítačů zasínuty prostřednictvím objektu zásad skupiny. Několik výhod použití vou, spíše než použití zásad pro jednoho hostitele, jsou:
+Zásady zabezpečení přidružené k organizační jednotce se odesílají do počítačů prostřednictvím objektu zásad skupiny. Několik výhod používání organizačních jednotek místo toho, aby bylo možné použít zásady na jediného hostitele, jsou tyto:
 
-* Připodonořování zásad y s ou zaručuje, že počítače, které patří do stejné ou, získají stejné zásady.
-* Změna zásad zabezpečení přidružených k hlavní výužné ale souzásadě bude změny uplatňovat u všech hostitelů v hlavní výužce.
+* Přidružení zásady k organizační jednotce zaručuje, že počítače, které patří do stejné organizační jednotky, získají stejné zásady.
+* Změna zásad zabezpečení přidružených k organizační jednotce použije změny na všechny hostitele v organizační jednotce.
 
-### <a name="diagrams"></a>Diagramy
+### <a name="diagrams"></a>Diagram
 
-Následující diagram znázorňuje propojení a přiřazený adresní prostor IP. Virtuální počítače Azure a místní hostitel používají Windows 2016. Virtuální počítače Azure a místní hostitel1 jsou součástí stejné domény. Virtuální počítače Azure a místní hostitelé můžou správně přeložit názvy pomocí DNS.
+Následující diagram znázorňuje propojení a přiřazený adresní prostor IP adres. Virtuální počítače Azure a místní hostitel používají systém Windows 2016. Virtuální počítače Azure a místní Hostitel1 jsou součástí stejné domény. Virtuální počítače Azure a místní hostitelé můžou názvy správně přeložit pomocí DNS.
 
-[![1]][1 1 1 1.]
+[![1]][1]
 
-Tento diagram znázorňuje tunely IPsec při přenosu v soukromém partnerském vztahu ExpressRoute.
+Tento diagram zobrazuje tunely IPsec při přenosu v privátním partnerském vztahu ExpressRoute.
 
-[![4]][4.]
+[![4]][4]
 
 ### <a name="working-with-ipsec-policy"></a>Práce se zásadami IPsec
 
-V systému Windows je šifrování přidruženo k zásadám IPsec. Zásady protokolu IPsec určují, který přenos IP je zabezpečen a mechanismus zabezpečení použitý pro pakety IP.
-**Zásady protokolu IPSec** se skládají z následujících položek: **Seznamy filtrů**, **Akce filtrů**a **Pravidla zabezpečení**.
+V systému Windows je k zásadám IPsec přidruženo šifrování. Zásady protokolu IPsec určují, který provoz IP je zabezpečený, a mechanismus zabezpečení, který se použije pro pakety protokolu IP.
+**Zásady protokolu IPSec** se skládají z následujících položek: **filtrovat seznamy**, **filtrovat akce**a **pravidla zabezpečení**.
 
-Při konfiguraci zásad iPsec je důležité porozumět následující terminologii zásad IPsec:
+Při konfiguraci zásad protokolu IPsec je důležité pochopit následující terminologii zásad IPsec:
 
-* **Zásady iPsec:** Kolekce pravidel. V určitém okamžiku může být aktivní pouze jedna zásada ("přiřazena"). Každá zásada může mít jedno nebo více pravidel, z nichž všechny mohou být aktivní současně. Počítači lze v daném okamžiku přiřadit pouze jednu aktivní zásadu IPsec. V rámci zásad iPsec však můžete definovat více akcí, které mohou být přijata v různých situacích. Každá sada pravidel IPsec je přidružena k seznamu filtrů, který ovlivňuje typ síťového provozu, na který se pravidlo vztahuje.
+* **Zásada protokolu IPSec:** Kolekce pravidel V jednom okamžiku může být aktivní jenom jedna zásada (přiřazená). Každá zásada může mít jedno nebo více pravidel, z nichž každá může být aktivní současně. V daném okamžiku může být počítači přiřazena pouze jedna aktivní zásada protokolu IPsec. V rámci zásad protokolu IPsec však můžete definovat více akcí, které mohou být provedeny v různých situacích. Každá sada pravidel IPsec je přidružená k seznamu filtrů, který má vliv na typ síťového provozu, na který se pravidlo vztahuje.
 
-* **Seznamy filtrů:** Seznamy filtrů jsou součástí jednoho nebo více filtrů. Jeden seznam může obsahovat více filtrů. Filtr definuje, zda je komunikace povolena, zabezpečena nebo blokována podle rozsahů IP adres, protokolů nebo dokonce specifických portů protokolu. Každý filtr odpovídá určité sadě podmínek; například pakety odeslané z určité podsítě do určitého počítače na určitém cílovém portu. Pokud se podmínky sítě shodují s jedním nebo více z těchto filtrů, aktivuje se seznam filtrů. Každý filtr je definován uvnitř určitého seznamu filtrů. Filtry nelze sdílet mezi seznamy filtrů. Daný seznam filtrů však může být začleněn do několika zásad IPsec. 
+* **Seznamy filtru:** Seznamy filtrů jsou sady jednoho nebo více filtrů. Jeden seznam může obsahovat více filtrů. Filtr definuje, jestli je komunikace povolená, zabezpečená nebo blokovaná, podle rozsahů IP adres, protokolů nebo dokonce specifických portů protokolu. Každý filtr odpovídá konkrétní sadě podmínek; například pakety odeslané z konkrétní podsítě do konkrétního počítače na určitém cílovém portu. Pokud se síťové podmínky shodují s jedním nebo více z těchto filtrů, je seznam filtru aktivovaný. Každý filtr je definován v konkrétním seznamu filtrů. Filtry nelze sdílet mezi seznamy filtrů. Daný seznam filtrů však lze začlenit do několika zásad protokolu IPsec. 
 
-* **Akce filtru:** Metoda zabezpečení definuje sadu algoritmů zabezpečení, protokolů a klíče, které počítač nabízí během vyjednávání protokolu IKE. Akce filtru jsou seznamy metod zabezpečení seřazených podle priority.  Pokud počítač vyjedná relaci protokolu IPsec, přijme nebo odešle návrhy na základě nastavení zabezpečení uloženého v seznamu akcí filtru.
+* **Akce filtru:** Metoda zabezpečení definuje sadu algoritmů zabezpečení, protokolů a klíče, které počítač nabízí během vyjednávání IKE. Akce filtru jsou seznamy metod zabezpečení, které jsou seřazené v pořadí podle priority.  Když počítač vyjedná relaci protokolu IPsec, přijme nebo pošle návrhy na základě nastavení zabezpečení uloženého v seznamu akcí filtru.
 
-* **Bezpečnostní pravidla:** Pravidla upravují, jak a kdy zásady IPsec chrání komunikaci. Používá **seznam filtrů** a **akce filtru** k vytvoření pravidla IPsec k vytvoření připojení IPsec. Každá zásada může mít jedno nebo více pravidel, z nichž všechny mohou být aktivní současně. Každé pravidlo obsahuje seznam filtrů IP a kolekci akcí zabezpečení, které se uskuteční při shodě s tímto seznamem filtrů:
+* **Pravidla zabezpečení:** Pravidla určují, jak a kdy zásada IPsec chrání komunikaci. K vytvoření pravidla IPsec pro sestavení připojení IPsec používá **seznam filtrů** a **akce filtru** . Každá zásada může mít jedno nebo více pravidel, z nichž každá může být aktivní současně. Každé pravidlo obsahuje seznam filtrů IP adres a kolekci akcí zabezpečení, které se provádějí při shodě s tímto seznamem filtrů:
   * Akce filtru IP
   * Metody ověřování
-  * Nastavení tunelového propojení IP
+  * Nastavení tunelu IP
   * Typy připojení
 
-[![5]][5 5.]
+[![5]][5]
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Ujistěte se, že splňujete následující požadavky:
 
-* Musíte mít funkční konfiguraci služby Active Directory, kterou lze použít k implementaci nastavení zásad skupiny. Další informace o objektech zásad skupiny naleznete v [tématu Objekty zásad skupiny](https://msdn.microsoft.com/library/windows/desktop/aa374162(v=vs.85).aspx).
+* Musíte mít funkční konfiguraci služby Active Directory, kterou můžete použít k implementaci Zásady skupiny nastavení. Další informace o objektech zásad skupiny najdete v tématu [Zásady skupiny objektů](https://msdn.microsoft.com/library/windows/desktop/aa374162(v=vs.85).aspx).
 
 * Musí mít aktivní okruh ExpressRoute.
-  * Informace o vytvoření okruhu ExpressRoute naleznete v [tématu Vytvoření okruhu ExpressRoute](expressroute-howto-circuit-arm.md). 
-  * Ověřte, zda je okruh povolen poskytovatelem připojení. 
-  * Ověřte, že máte pro okruh nakonfigurovaný privátní partnerský vztah Azure. Pokyny pro směrování naleznete v článku [konfigurace směrování.](expressroute-howto-routing-arm.md) 
-  * Ověřte, že máte vytvořenou a plně zřízené virtuální sítě a bránu virtuální sítě. Podle pokynů [vytvořte bránu virtuální sítě pro ExpressRoute](expressroute-howto-add-gateway-resource-manager.md). Brána virtuální sítě pro ExpressRoute používá GatewayType 'ExpressRoute', ne VPN.
+  * Informace o vytvoření okruhu ExpressRoute najdete v tématu [vytvoření okruhu ExpressRoute](expressroute-howto-circuit-arm.md). 
+  * Ověřte, jestli je okruh povolený vaším poskytovatelem připojení. 
+  * Ověřte, že máte pro váš okruh nakonfigurovaný privátní partnerský vztah Azure. Pokyny k směrování najdete v článku věnovaném [konfiguraci směrování](expressroute-howto-routing-arm.md) . 
+  * Ověřte, že máte virtuální síť a Brána virtuální sítě se vytvořila a kompletně zřídila. Postupujte podle pokynů a [vytvořte bránu virtuální sítě pro ExpressRoute](expressroute-howto-add-gateway-resource-manager.md). Brána virtuální sítě pro ExpressRoute používá GatewayType "ExpressRoute", ne VPN.
 
-* Brána virtuální sítě ExpressRoute musí být připojena k okruhu ExpressRoute. Další informace najdete [v tématu Připojení virtuální sítě k okruhu ExpressRoute](expressroute-howto-linkvnet-arm.md).
+* Brána virtuální sítě ExpressRoute musí být připojená k okruhu ExpressRoute. Další informace najdete v tématu [připojení virtuální sítě k okruhu ExpressRoute](expressroute-howto-linkvnet-arm.md).
 
-* Ověřte, že virtuální počítače Azure windows jsou nasazené do virtuální sítě.
+* Ověřte, že jsou virtuální počítače Azure s Windows nasazené do virtuální sítě.
 
-* Ověřte, že existuje připojení mezi místními hostiteli a virtuálními počítači Azure.
+* Ověřte, jestli existuje připojení mezi místními hostiteli a virtuálními počítači Azure.
 
-* Ověřte, že virtuální počítače Azure windows a místní hostitelé jsou schopni používat DNS správně přeložit názvy.
+* Ověřte, že virtuální počítače Azure a místní hostitelé můžou k správnému překladu názvů použít DNS.
 
 ### <a name="workflow"></a>Pracovní postup
 
-1. Vytvořte soubor gpo a přidružte jej k hlavní výmětonové.
-2. Definujte akci **filtru**IPsec .
-3. Definujte seznam **filtrů**IPsec .
-4. Vytvořte zásadu protokolu IPsec s **pravidly zabezpečení**.
-5. Přiřaďte příkaz gpo IPsec k řídicí mu.
+1. Vytvořte objekt zásad skupiny a přidružte ho k organizační jednotce.
+2. Definujte **akci filtru**protokolu IPSec.
+3. Definujte **seznam filtru**IPSec.
+4. Vytvořte zásadu IPsec s **pravidly zabezpečení**.
+5. Přiřaďte objekt zásad skupiny IPsec k organizační jednotce.
 
 ### <a name="example-values"></a>Příklady hodnot
 
 * **Název domény:** ipsectest.com
 
-* **OU:** IpSecOU
+* **Organizační jednotka:** IPSecOU
 
-* **Místní počítač se systémem Windows:** host1
+* **Místní počítač se systémem Windows:** Hostitel1
 
-* **Virtuální počítače Azure pro Windows:** vm1, vm2
+* **Virtuální počítače Azure s Windows:** VM1, VM2
 
-## <a name="1-create-a-gpo"></a><a name="creategpo"></a>1. Vytvoření gpo
+## <a name="1-create-a-gpo"></a><a name="creategpo"></a>1. vytvoření objektu zásad skupiny
 
-1. Chcete-li vytvořit nový objekt zásad skupiny propojený s ouovou skupinou, otevřete modul snap-in Správa zásad skupiny a vyhledejte objekt, se kterým bude objekt zásad skupiny propojen. V příkladu se ou s názvem **IPSecOU**. 
+1. Chcete-li vytvořit nový objekt zásad skupiny propojený s organizační jednotkou, otevřete modul snap-in Správa Zásady skupiny a vyhledejte organizační jednotku, do které bude objekt zásad skupiny propojený. V příkladu má organizační jednotka název **IPSecOU**. 
 
-   [![9]][9 9]
-2. V modulu snap-in Správa zásad skupiny vyberte hlavní výchop a klikněte pravým tlačítkem myši. V rozevíracím článku klikněte na tlačítko **"Vytvořit v této doméně příkaz GPO" a propojte jej zde...**".
+   [![9]][9]
+2. V modulu snap-in Správa Zásady skupiny vyberte organizační jednotku a klikněte pravým tlačítkem myši. V rozevíracím seznamu klikněte na**vytvořit objekt zásad skupiny v této doméně a připojit ho sem**...
 
    [![10]][10]
-3. Pojmenujte objekt gpo intuitivním názvem, abyste jej později mohli snadno najít. Chcete-li vytvořit a propojit soubor gpo, klepněte na tlačítko **OK.**
+3. Pojmenujte objekt zásad skupiny intuitivním názvem, abyste ho později mohli snadno najít. Kliknutím na tlačítko **OK** vytvořte objekt zásad skupiny a propojte ho.
 
    [![11]][11]
 
-## <a name="2-enable-the-gpo-link"></a><a name="enablelink"></a>2. Povolení propojení gpo
+## <a name="2-enable-the-gpo-link"></a><a name="enablelink"></a>2. povolení odkazu na objekt zásad skupiny
 
-Chcete-li použít gpo pro ou, musí být odkaz na ou, ale také povolen.
+Pokud chcete objekt zásad skupiny použít pro organizační jednotku, nesmí být objekt zásad skupiny propojený jenom s organizační jednotkou, musí ale taky být povolený odkaz.
 
-1. Vyhledejte vytvořený soubor gpo, klikněte pravým tlačítkem myši a v rozevíracím souboru vyberte **Upravit.**
-2. Chcete-li na oupoložku použít příkaz gpo, vyberte **možnost Propojení povoleno**.
+1. Vyhledejte objekt zásad skupiny, který jste vytvořili, klikněte pravým tlačítkem myši a v rozevíracím seznamu vyberte možnost **Upravit** .
+2. Pokud chcete objekt zásad skupiny použít pro organizační jednotku, vyberte **odkaz povoleno**.
 
    [![12]][12]
 
-## <a name="3-define-the-ip-filter-action"></a><a name="filteraction"></a>3. Definujte akci filtru IP
+## <a name="3-define-the-ip-filter-action"></a><a name="filteraction"></a>3. Definujte akci filtru IP.
 
-1. V rozevíracím seznamu klepněte pravým tlačítkem myši **na zásady zabezpečení protokolu IP ve službě Active Directory**a potom klepněte na příkaz Spravovat **seznamy filtrů IP a akce filtrů...**.
+1. V rozevíracím seznamu klikněte pravým tlačítkem na **zásady zabezpečení protokolu IP v Active Directory**a pak klikněte na **Spravovat seznamy filtrů IP adres a filtrovat akce...**.
 
-   [![15]][15.]
+   [![15]][15]
 2. Na kartě**Spravovat akce filtru**klikněte na **Přidat**.
 
-   [![16]][16.]
+   [![16]][16]
 
-3. V **průvodci akcí filtru zabezpečení protokolu IP**klepněte na tlačítko **Další**.
+3. V **Průvodci akcí filtru zabezpečení protokolu IP**klikněte na tlačítko **Další**.
 
-   [![17]][17.]
-4. Pojmenujte akci filtru intuitivním názvem, abyste ji později našli. V tomto příkladu je akce filtru **pojmenována myEncryption**. Můžete také přidat popis. Potom klepněte na tlačítko **Další**.
+   [![17]][17]
+4. Pojmenujte tento filtr intuitivní název, abyste ho mohli najít později. V tomto příkladu má akce filtru název **myEncryption**. Můžete také přidat popis. Pak klikněte na tlačítko **Další**.
 
    [![18]][18]
-5. **Vyjednat zabezpečení** umožňuje definovat chování, pokud nelze vytvořit iPsec s jiným počítačem. Vyberte **Možnost Vyjednat zabezpečení**a klepněte na tlačítko **Další**.
+5. **Vyjednávání zabezpečení** umožňuje definovat chování, pokud nelze protokol IPSec vytvořit s jiným počítačem. Vyberte **Vyjednat zabezpečení**a pak klikněte na **Další**.
 
-   [![19]][19.]
-6. Na stránce **Komunikace s počítači, které nepodporují aplikaci IPsec,** vyberte **možnost Nepovolit nezabezpečenou komunikaci**a klepněte na tlačítko **Další**.
+   [![19]][19]
+6. Na stránce **komunikace s počítači, které nepodporují protokol IPSec** vyberte možnost **Nepovolit nezabezpečenou komunikaci**a pak klikněte na tlačítko **Další**.
 
-   [![20]][20.]
-7. Na stránce **Provoz a zabezpečení protokolu IP** vyberte **Vlastní**a klikněte na **Nastavení...**.
+   [![20]][20]
+7. Na stránce **provoz a zabezpečení protokolu IP** vyberte **vlastní**a pak klikněte na **nastavení...**.
 
-   [![21]][21.]
-8. Na stránce **Vlastní nastavení metody zabezpečení** vyberte **Integrita a šifrování dat (ESP): SHA1, 3DES**. Potom klepněte na tlačítko **OK**.
+   [![21]][21]
+8. Na stránce **vlastní nastavení metody zabezpečení** vyberte možnost **Integrita dat a šifrování (ESP): SHA1, 3DES**. Pak klikněte na **OK**.
 
    [![22]][22]
-9. Na stránce **Spravovat akce filtru** uvidíte, že filtr **myEncryption** byl úspěšně přidán. Klikněte na **Zavřít**.
+9. Na stránce **Správa akcí filtru** vidíte, že byl filtr **myEncryption** úspěšně přidán. Klikněte na **Zavřít**.
 
    [![23]][23]
 
-## <a name="4-define-an-ip-filter-list"></a><a name="filterlist1"></a>4. Definování seznamu filtrů IP
+## <a name="4-define-an-ip-filter-list"></a><a name="filterlist1"></a>4. definování seznamu filtrů IP adres
 
 Vytvořte seznam filtrů, který určuje šifrovaný provoz HTTP s cílovým portem 8080.
 
-1. Chcete-li zařadit typy přenosů, které musí být šifrovány, použijte **seznam filtrů IP**. Na kartě **Spravovat seznamy filtrů IP** klikněte na **Přidat** a přidejte nový seznam filtrů IP.
+1. K získání informací o tom, které typy přenosů musí být šifrované, použijte **seznam filtru IP adres**. Na kartě **Spravovat seznamy filtrů IP** klikněte na **Přidat** a přidejte nový seznam filtrů IP.
 
    [![24]][24]
-2. Do pole **Název:** zadejte název seznamu filtrů IP. Například **azure-onpremises-HTTP8080**. Potom klepněte na tlačítko **Přidat**.
+2. Do pole **Název:** zadejte název vašeho seznamu filtru IP adres. Například **Azure-premises-HTTP8080**. Pak klikněte na tlačítko **Přidat**.
 
    [![25]][25]
-3. Na stránce **Popis filtru IP a Zrcadlené** vyberte **Zrcadlené**. Zrcadlené nastavení odpovídá paketům v obou směrech, což umožňuje obousměrnou komunikaci. Pak klikněte na **Další**.
+3. Na stránce s **popisem filtru IP a zrcadlenou vlastností** vyberte možnost **Zrcadleno**. Zrcadlení nastavení odpovídá paketům v obou směrech, což umožňuje obousměrnou komunikaci. Pak klikněte na **Další**.
 
-   [![26]][26.]
-4. Na stránce **Zdroj přenosu IP** z rozevíracího přehledu **Zdrojová adresa zvolte** **Určitá adresa IP nebo Podsíť**. 
+   [![26]][26]
+4. Na stránce **Zdroj přenosu IP** adres v rozevíracím seznamu **zdrojová adresa:** vyberte **konkrétní IP adresu nebo podsíť**. 
 
-   [![27]][27.]
-5. Zadejte adresu IP zdrojové adresy **nebo podsíť:** přenosy IP a klepněte na tlačítko **Další**.
+   [![27]][27]
+5. Zadejte **IP adresu nebo podsíť** zdrojové adresy IP a potom klikněte na **Další**.
 
    [![28]][28]
-6. Zadejte **cílovou adresu:** IP adresu nebo podsíť. Potom klepněte na tlačítko **Další**.
+6. Zadejte **cílovou adresu:** IP adresa nebo podsíť. Pak klikněte na tlačítko **Další**.
 
-   [![29]][29.]
-7. Na stránce **Typ protokolu IP** vyberte možnost **TCP**. Potom klepněte na tlačítko **Další**.
+   [![29]][29]
+7. Na stránce **typ protokolu IP** vyberte **TCP**. Pak klikněte na tlačítko **Další**.
 
    [![30]][30]
-8. Na stránce **Port protokolu IP** vyberte z **libovolného portu** a **do tohoto portu:**. Do textového pole zadejte **8080.** Tato nastavení určují, že bude šifrován pouze provoz HTTP na cílovém portu 8080. Potom klepněte na tlačítko **Další**.
+8. Na stránce **port protokolu IP** vyberte **libovolný port** a **na tento port:**. Do textového pole zadejte **8080** . Tato nastavení určují pouze přenosy HTTP na cílovém portu 8080 budou zašifrovány. Pak klikněte na tlačítko **Další**.
 
    [![31]][31]
-9. Zobrazení seznamu filtrů IP.  Konfigurace seznamu filtrů IP **azure-onpremises-HTTP8080** aktivuje šifrování pro veškerý provoz, který odpovídá následujícím kritériím:
+9. Zobrazit seznam filtrů IP adres.  Konfigurace seznamu filtru IP adres **Azure-HTTP8080** spustí šifrování pro veškerý provoz, který odpovídá následujícím kritériím:
 
-   * Libovolná zdrojová adresa v 10.0.1.0/24 (Azure Podnet2)
+   * Libovolná zdrojová adresa v 10.0.1.0/24 (Azure podsíť subnet2)
    * Libovolná cílová adresa v 10.2.27.0/25 (místní podsíť)
    * Protokol TCP
    * Cílový port 8080
 
    [![32]][32]
 
-## <a name="5-edit-the-ip-filter-list"></a><a name="filterlist2"></a>5. Úprava seznamu filtrů IP
+## <a name="5-edit-the-ip-filter-list"></a><a name="filterlist2"></a>5. Upravte seznam filtru IP adres.
 
-Chcete-li zašifrovat stejný typ provozu v opačném směru (od místního hostitele k virtuálnímu počítači Azure), potřebujete druhý filtr IP. Proces nastavení nového filtru je stejný proces, který jste použili k nastavení prvního filtru IP. Jedinými rozdíly jsou zdrojová a cílová podsíť.
+Pokud chcete zašifrovat stejný typ provozu v opačném směru (z místního hostitele na virtuální počítač Azure), budete potřebovat druhý filtr IP adres. Proces nastavení nového filtru je stejný jako proces, který jste použili k nastavení prvního filtru IP adres. Jediným rozdílem je zdrojová podsíť a cílová podsíť.
 
-1. Chcete-li přidat nový filtr IP do seznamu filtrů IP, vyberte **možnost Upravit**.
+1. Pokud chcete přidat nový filtr IP adres do seznamu filtru IP adres, vyberte **Upravit**.
 
    [![33]][33]
-2. Na stránce **Seznam filtrů IP** klepněte na tlačítko **Přidat**.
+2. Na stránce **seznam filtrů IP** klikněte na **Přidat**.
 
    [![34]][34]
-3. Vytvořte druhý filtr IP pomocí nastavení v následujícím příkladu:
+3. Vytvořte druhý filtr IP adres pomocí nastavení v následujícím příkladu:
 
    [![35]][35]
-4. Po vytvoření druhého filtru IP bude seznam filtrů IP vypadat takto:
+4. Po vytvoření druhého filtru IP adres bude seznam filtru IP vypadat takto:
 
    [![36]][36]
 
-Pokud je vyžadováno šifrování mezi místním umístěním a podsítí Azure k ochraně aplikace, namísto úpravy existujícího seznamu filtrů IP, můžete místo toho přidat nový seznam filtrů IP. Připojování 2 seznamů filtrů IP k stejné zásadě protokolu IPsec poskytuje lepší flexibilitu, protože konkrétní seznam filtrů IP lze kdykoli upravit nebo odebrat, aniž by to mělo vliv na ostatní seznamy filtrů IP.
+Pokud se vyžaduje šifrování mezi místním umístěním a podsítí Azure k ochraně aplikace, místo úprav stávajícího seznamu filtrů IP adres můžete místo toho přidat nový seznam filtrů IP adres. Přidružení dvou seznamů filtrů IP ke stejné zásadě IPsec poskytuje lepší flexibilitu, protože konkrétní seznam filtrů IP se dá kdykoli upravit nebo odebrat, aniž by to ovlivnilo ostatní seznamy filtrů IP adres.
 
-## <a name="6-create-an-ipsec-security-policy"></a><a name="ipsecpolicy"></a>6. Vytvoření zásad zabezpečení protokolu IPsec 
+## <a name="6-create-an-ipsec-security-policy"></a><a name="ipsecpolicy"></a>6. vytvoření zásady zabezpečení protokolu IPsec 
 
-Vytvořte zásadu protokolu IPsec s pravidly zabezpečení.
+Vytvořte zásadu IPsec s pravidly zabezpečení.
 
-1. Vyberte **zásady zabezpečení protokolu IP ve službě Active Directory,** které jsou přidruženy k hlavní výměře. Klepněte pravým tlačítkem myši a vyberte **příkaz Vytvořit zásady zabezpečení protokolu IP**.
+1. Vyberte **zásady ipSecurity ve službě Active Directory** , která je přidružená k organizační jednotce. Klikněte pravým tlačítkem a vyberte **vytvořit zásadu zabezpečení protokolu IP**.
 
-   [![37]][37.]
-2. Pojmenujte zásady zabezpečení. Například **policy-azure-onpremises**. Potom klepněte na tlačítko **Další**.
+   [![37]][37]
+2. Pojmenujte zásady zabezpečení. Například **zásada – Azure-místní**. Pak klikněte na tlačítko **Další**.
 
    [![38]][38]
-3. Bez zaškrtnutí políčka klikněte na **Další.**
+3. Klikněte na tlačítko **Další** bez zaškrtnutí políčka.
 
    [![39]][39]
-4. Ověřte, zda je zaškrtnuté políčko **Upravit vlastnosti,** a klepněte na tlačítko **Dokončit**.
+4. Ověřte, zda je zaškrtnuto políčko **Upravit vlastnosti** , a potom klikněte na tlačítko **Dokončit**.
 
-   [![40]][40.]
+   [![40]][40]
 
-## <a name="7-edit-the-ipsec-security-policy"></a><a name="editipsec"></a>7. Úprava zásad zabezpečení protokolu IPsec
+## <a name="7-edit-the-ipsec-security-policy"></a><a name="editipsec"></a>7. upravte zásady zabezpečení IPsec.
 
-Přidejte do zásady IPsec **seznam filtrů IP** a **akce filtru,** které jste dříve nakonfigurovali.
+Přidejte do zásady protokolu IPsec **seznam filtrů IP** a **akci filtru** , kterou jste předtím nakonfigurovali.
 
-1. Na kartě **Pravidla** vlastností zásad HTTP klepněte na tlačítko **Přidat**.
+1. Na kartě **pravidla** vlastností zásad protokolu HTTP klikněte na **Přidat**.
 
-   [![41]][41.]
+   [![41]][41]
 2. Na úvodní stránce klikněte na **Další**.
 
-   [![42]][42.]
-3. Pravidlo poskytuje možnost definovat režim IPsec: režim tunelového propojení nebo režim přenosu.
+   [![42]][42]
+3. Pravidlo nabízí možnost definovat režim protokolu IPsec: režim tunelového propojení nebo Přenosový režim.
 
-   * V režimu tunelového propojení je původní paket zapouzdřen sadou hlaviček IP. Režim tunelového propojení chrání interní informace o směrování šifrováním hlavičky PROTOKOLU IP původního paketu. Režim tunelového propojení je široce implementován mezi bránami ve scénářích VPN site-to-site. Režim tunelového propojení se ve většině případů používá pro šifrování mezi hostiteli mezi koncovými body.
+   * V režimu tunelového propojení je původní paket zapouzdřený sadou hlaviček protokolu IP. Režim tunelového propojení chrání interní informace o směrování tím, že šifruje hlavičku protokolu IP původního paketu. Režim tunelového propojení je v rámci scénářů sítě Site-to-Site VPN široce implementován mezi bránami. Režim tunelového propojení je ve většině případů, který se používá pro komplexní šifrování mezi hostiteli.
 
-   * Transportní režim šifruje pouze užitečné zatížení a přívěs ESP; hlavička IP původního paketu není zašifrována. V režimu přenosu se zdroj IP a cíl IP paketů nezmění.
+   * Transportní režim šifruje jenom datovou část a přípojné vozidlo ESP; Hlavička protokolu IP původního paketu není šifrovaná. V transportního režimu se IP adresa a cíl IP paketů nemění.
 
-   Vyberte **Toto pravidlo neurčuje tunelové propojení**a klepněte na tlačítko **Další**.
+   Vyberte **Toto pravidlo neurčuje tunel**a potom klikněte na tlačítko **Další**.
 
-   [![43]][43.]
-4. **Typ sítě definuje,** které síťové připojení je přidruženo k zásadám zabezpečení. Vyberte **Všechna síťová připojení**a klepněte na tlačítko **Další**.
+   [![43]][43]
+4. **Typ sítě** definuje, které síťové připojení přidruží k zásadám zabezpečení. Vyberte **všechna síťová připojení**a pak klikněte na **Další**.
 
-   [![44]][44.]
-5. Vyberte seznam filtrů IP, který jste vytvořili dříve, **azure-onpremises-HTTP8080**a klikněte na **další**.
+   [![44]][44]
+5. Vyberte seznam filtrů IP, který jste předtím vytvořili, **Azure-premises-HTTP8080**, a pak klikněte na **Další**.
 
-   [![45]][45.]
-6. Vyberte existující akci filtru **myEncryption,** kterou jste vytvořili dříve.
+   [![45]][45]
+6. Vyberte existující akci filtru **myEncryption** , kterou jste vytvořili dříve.
 
    [![46]][46]
-7. Systém Windows podporuje čtyři různé typy ověřování: protokol Kerberos, certifikáty, protokol NTLMv2 a předsdílený klíč. Vzhledem k tomu, že spolupracujeme s hostiteli připojenými k doméně, vyberte **výchozí položku služby Active Directory (protokol Kerberos V5)** a klepněte na tlačítko **Další**.
+7. Windows podporuje čtyři různé typy ověřování: Kerberos, certifikáty, NTLMv2 a předsdílený klíč. Vzhledem k tomu, že pracujete s hostiteli připojeným k doméně, vyberte možnost **výchozí nastavení služby Active Directory (protokol Kerberos V5)** a poté klikněte na tlačítko **Další**.
 
-   [![47]][47.]
-8. Nová zásada vytvoří pravidlo zabezpečení: **azure-onpremises-HTTP8080**. Klikněte na tlačítko **OK**.
+   [![47]][47]
+8. Nové zásady vytvoří pravidlo zabezpečení: **Azure-premises-HTTP8080**. Klikněte na tlačítko **OK**.
 
-   [![48]][48.]
+   [![48]][48]
 
-Zásada Protokolu IPsec vyžaduje, aby všechna připojení HTTP na cílovém portu 8080 používala režim přenosu protokolu IPsec. Vzhledem k tomu, že protokol HTTP je protokol s jasným textem, zajištění povolené zásady zabezpečení zajistí, že data budou při přenosu prostřednictvím soukromého partnerského vztahu ExpressRoute šifrována. Konfigurace služby IP Security pro službu Active Directory je složitější než konfigurace brány Windows Firewall s pokročilým zabezpečením, ale umožňuje další přizpůsobení připojení IPsec.
+Zásada IPsec vyžaduje, aby všechna připojení HTTP na cílovém portu 8080 používala režim přenosu IPsec. Vzhledem k tomu, že HTTP je protokol nešifrovaného textu, má povolenou zásadu zabezpečení, která zajišťuje, aby byla data při přenosu prostřednictvím privátního partnerského vztahu ExpressRoute zašifrovaná. Zásady zabezpečení protokolu IP pro službu Active Directory jsou složitější pro konfiguraci než brána Windows Firewall s pokročilým zabezpečením, ale umožňuje další přizpůsobení připojení IPsec.
 
-## <a name="8-assign-the-ipsec-gpo-to-the-ou"></a><a name="assigngpo"></a>8. Přiřazení příkazu gpo IPsec k řídicímu systému
+## <a name="8-assign-the-ipsec-gpo-to-the-ou"></a><a name="assigngpo"></a>8. Přiřaďte objekt zásad skupiny IPsec k organizační jednotce.
 
-1. Zobrazit zásady. Zásady skupiny zabezpečení jsou definovány, ale ještě nejsou přiřazeny.
+1. Podívejte se na zásadu. Zásady skupiny zabezpečení jsou definované, ale ještě nejsou přiřazené.
 
-   [![49]][49.]
-2. Chcete-li přiřadit zásadu skupiny zabezpečení objektu **OU IPSecOU**, klepněte pravým tlačítkem myši na zásady zabezpečení a zvolte **přiřadit**.
-   Každému počítači, který patří do hlavní pracovní skupiny, bude přiřazena zásada skupiny zabezpečení.
+   [![49]][49]
+2. Zásadu skupiny zabezpečení přiřadíte **IPSecOU**organizační jednotce tak, že kliknete pravým tlačítkem na zásadu zabezpečení a zvolíte **přiřadit**.
+   Každý počítač THT patří do organizační jednotky, bude mít přiřazené zásady skupiny zabezpečení.
 
-   [![50]][50.]
+   [![50]][50]
 
-## <a name="check-traffic-encryption"></a><a name="checktraffic"></a>Kontrola šifrování provozu
+## <a name="check-traffic-encryption"></a><a name="checktraffic"></a>Ověřit šifrování provozu
 
-Chcete-li rezervovat zásady zásad zásad šifrování použité na ou, nainstalujte službu IIS na všechny virtuální počítače Azure a v host1. Každá služba IIS je přizpůsobena tak, aby odpovídala na požadavky HTTP na portu 8080.
-Chcete-li ověřit šifrování, můžete nainstalovat síť sniffer (jako Wireshark) ve všech počítačích v ou.
-Skript prostředí PowerShell funguje jako klient HTTP pro generování požadavků HTTP na portu 8080:
+Pokud chcete zjistit objekt zásad skupiny, který je v organizační jednotce použit, nainstalujte službu IIS na všechny virtuální počítače Azure a v Hostitel1. Každá služba IIS je přizpůsobená tak, aby odpovídala požadavkům HTTP na portu 8080.
+Chcete-li ověřit šifrování, můžete na všech počítačích v organizační jednotce nainstalovat síťový Sniffer (například Wireshark).
+Powershellový skript funguje jako klient HTTP, který generuje požadavky HTTP na portu 8080:
 
 ```powershell
 $url = "http://10.0.1.20:8080"
@@ -306,59 +306,59 @@ $req = $null
 }
 
 ```
-Následující síťové zachycení zobrazuje výsledky pro místního hostitele1 s filtrem zobrazení ESP tak, aby odpovídaly pouze šifrovanému provozu:
+Následující záznam v síti zobrazuje výsledky pro místní Hostitel1 s filtrováním protokolu ESP, aby odpovídal pouze zašifrovanému provozu:
 
-[![51]][51.]
+[![51]][51]
 
-Pokud spustíte powershellový skript na premisies (http klient), zachytávání sítě v virtuálním počítači Azure zobrazí podobné trasování.
+Pokud spustíte powershellový skript v místním prostředí (klient HTTP), zachytávání sítě na virtuálním počítači Azure zobrazuje podobné trasování.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o expressroute naleznete v [nejčastějších dotazech k expressroute](expressroute-faqs.md).
+Další informace o ExpressRoute najdete v tématu [ExpressRoute – Nejčastější dotazy](expressroute-faqs.md).
 
 <!--Image References-->
 
-[1]: ./media/expressroute-howto-ipsec-transport-private-windows/network-diagram.png "síťový režim přenosu diagramu IPsec přes ExpressRoute"
-[4]: ./media/expressroute-howto-ipsec-transport-private-windows/ipsec-interesting-traffic.png "IPsec zajímavý provoz"
-[5]: ./media/expressroute-howto-ipsec-transport-private-windows/windows-ipsec.png "Zásady Windows IPsec"
-[9]: ./media/expressroute-howto-ipsec-transport-private-windows/ou.png "Organizační jednotka v zásadách skupiny"
-[10]: ./media/expressroute-howto-ipsec-transport-private-windows/create-gpo-ou.png "vytvořit gpo přidružené k ou"
-[11]: ./media/expressroute-howto-ipsec-transport-private-windows/gpo-name.png "přiřadit název k příkazu gpo přidruženého k ou"
-[12]: ./media/expressroute-howto-ipsec-transport-private-windows/edit-gpo.png "úprava gpo"
-[15]: ./media/expressroute-howto-ipsec-transport-private-windows/manage-ip-filter-list-filter-actions.png "Správa seznamů filtrů IP a akcí filtrů"
-[16]: ./media/expressroute-howto-ipsec-transport-private-windows/add-filter-action.png "přidat akci filtru"
-[17]: ./media/expressroute-howto-ipsec-transport-private-windows/action-wizard.png "Průvodce akcí"
-[18]: ./media/expressroute-howto-ipsec-transport-private-windows/filter-action-name.png "Název akce filtru"
-[19]: ./media/expressroute-howto-ipsec-transport-private-windows/filter-action.png "Akce filtru"
-[20]: ./media/expressroute-howto-ipsec-transport-private-windows/filter-action-no-ipsec.png "určit chování je nezabezpečené připojení je navázán"
-[21]: ./media/expressroute-howto-ipsec-transport-private-windows/security-method.png "bezpečnostní mechanismus"
-[22]: ./media/expressroute-howto-ipsec-transport-private-windows/custom-security-method.png "Vlastní metoda zabezpečení"
+[1]: ./media/expressroute-howto-ipsec-transport-private-windows/network-diagram.png "režim přenosu IPSec v diagramu sítě přes ExpressRoute"
+[4]: ./media/expressroute-howto-ipsec-transport-private-windows/ipsec-interesting-traffic.png "zajímavé přenosy IPSec"
+[5]: ./media/expressroute-howto-ipsec-transport-private-windows/windows-ipsec.png "zásady IPSec systému Windows"
+[9]: ./media/expressroute-howto-ipsec-transport-private-windows/ou.png "organizační jednotky v Zásady skupiny"
+[10]: ./media/expressroute-howto-ipsec-transport-private-windows/create-gpo-ou.png "vytvoření objektu zásad skupiny PŘIDRUŽENÉHO k organizační jednotce"
+[11]: ./media/expressroute-howto-ipsec-transport-private-windows/gpo-name.png "přiřazení názvu k objektu zásad skupiny PŘIDRUŽENÉMU k organizační jednotce"
+[12]: ./media/expressroute-howto-ipsec-transport-private-windows/edit-gpo.png "Úprava objektu zásad skupiny"
+[15]: ./media/expressroute-howto-ipsec-transport-private-windows/manage-ip-filter-list-filter-actions.png "Správa seznamů filtrů IP a akcí filtru"
+[16]: ./media/expressroute-howto-ipsec-transport-private-windows/add-filter-action.png. "akce přidání filtru"
+[17]: ./media/expressroute-howto-ipsec-transport-private-windows/action-wizard.png "Průvodce akcemi" 17
+[18]: ./media/expressroute-howto-ipsec-transport-private-windows/filter-action-name.png "název akce filtru"
+[19]: ./media/expressroute-howto-ipsec-transport-private-windows/filter-action.png "akce filtru"
+[20]: ./media/expressroute-howto-ipsec-transport-private-windows/filter-action-no-ipsec.png "Určení chování je nezabezpečené připojení navázáno" .
+[21]: ./media/expressroute-howto-ipsec-transport-private-windows/security-method.png "mechanismus zabezpečení"
+[22]: ./media/expressroute-howto-ipsec-transport-private-windows/custom-security-method.png "vlastní metoda zabezpečení"
 [23]: ./media/expressroute-howto-ipsec-transport-private-windows/filter-actions-list.png "seznam akcí filtru"
-[24]: ./media/expressroute-howto-ipsec-transport-private-windows/add-new-ip-filter.png "Přidání nového seznamu filtrů IP"
-[25]: ./media/expressroute-howto-ipsec-transport-private-windows/ip-filter-http-traffic.png "Přidání přenosů HTTP do filtru IP"
+[24]: ./media/expressroute-howto-ipsec-transport-private-windows/add-new-ip-filter.png "Přidání nového seznamu filtru IP adres"
+[25]: ./media/expressroute-howto-ipsec-transport-private-windows/ip-filter-http-traffic.png "Přidání provozu http do filtru IP"
 [26]: ./media/expressroute-howto-ipsec-transport-private-windows/match-both-direction.png "paketů v obou směrech"
 [27]: ./media/expressroute-howto-ipsec-transport-private-windows/source-address.png "výběr zdrojové podsítě"
-[28]: ./media/expressroute-howto-ipsec-transport-private-windows/source-network.png "Zdrojová síť"
-[29]: ./media/expressroute-howto-ipsec-transport-private-windows/destination-network.png "Cílová síť"
-[Protokol 30]: ./media/expressroute-howto-ipsec-transport-private-windows/protocol.png "Protocol"
+[28]: ./media/expressroute-howto-ipsec-transport-private-windows/source-network.png "zdrojová síť"
+[29]: ./media/expressroute-howto-ipsec-transport-private-windows/destination-network.png "cílových sítí"
+[30]: ./media/expressroute-howto-ipsec-transport-private-windows/protocol.png "protokol"
 [31]: ./media/expressroute-howto-ipsec-transport-private-windows/source-port-and-destination-port.png "zdrojový port a cílový port"
-[32]: ./media/expressroute-howto-ipsec-transport-private-windows/ip-filter-list.png "seznam filtrů"
-[33]: ./media/expressroute-howto-ipsec-transport-private-windows/ip-filter-for-http.png "Seznam filtrů IP s přenosy HTTP"
-[34]: ./media/expressroute-howto-ipsec-transport-private-windows/ip-filter-add-second-entry.png "Přidání druhého filtru IP"
-[35]: ./media/expressroute-howto-ipsec-transport-private-windows/ip-filter-second-entry.png "Ip Filtr seznam-druhá položka"
-[36]: ./media/expressroute-howto-ipsec-transport-private-windows/ip-filter-list-2entries.png "Ip filtr seznam-druhá položka"
-[37]: ./media/expressroute-howto-ipsec-transport-private-windows/create-ip-security-policy.png "vytvoření zásad zabezpečení protokolu IP"
-[38]: ./media/expressroute-howto-ipsec-transport-private-windows/ipsec-policy-name.png "název zásady IPsec"
-[39]: ./media/expressroute-howto-ipsec-transport-private-windows/security-policy-wizard.png "Průvodce zásadou IPsec"
-[40]: ./media/expressroute-howto-ipsec-transport-private-windows/edit-security-policy.png "úprav zásad y IPsec"
-[41]: ./media/expressroute-howto-ipsec-transport-private-windows/add-new-rule.png "přidání nového pravidla zabezpečení do zásad protokolu IPsec"
+[32]: ./media/expressroute-howto-ipsec-transport-private-windows/ip-filter-list.png "seznam filtru" 32
+[33]: ./media/expressroute-howto-ipsec-transport-private-windows/ip-filter-for-http.png "seznam filtrů IP adres s přenosy HTTP"
+[34]: ./media/expressroute-howto-ipsec-transport-private-windows/ip-filter-add-second-entry.png "Přidání druhého filtru IP adres"
+[35]: ./media/expressroute-howto-ipsec-transport-private-windows/ip-filter-second-entry.png "seznam filtru IP adres 35 – sekundová položka"
+[36]: ./media/expressroute-howto-ipsec-transport-private-windows/ip-filter-list-2entries.png "seznam filtru IP adres 36 – sekundová položka"
+[37]: ./media/expressroute-howto-ipsec-transport-private-windows/create-ip-security-policy.png "Vytvoření zásady zabezpečení protokolu IP"
+[38]: ./media/expressroute-howto-ipsec-transport-private-windows/ipsec-policy-name.png "název zásady protokolu IPSec"
+[39]: ./media/expressroute-howto-ipsec-transport-private-windows/security-policy-wizard.png "Průvodce zásadami protokolu IPSec" 39
+[40]: ./media/expressroute-howto-ipsec-transport-private-windows/edit-security-policy.png "úpravy zásady protokolu IPSec"
+[41]: ./media/expressroute-howto-ipsec-transport-private-windows/add-new-rule.png "Přidání nového pravidla zabezpečení do zásady protokolu IPSec"
 [42]: ./media/expressroute-howto-ipsec-transport-private-windows/create-security-rule.png "vytvořit nové pravidlo zabezpečení"
-[43]: ./media/expressroute-howto-ipsec-transport-private-windows/transport-mode.png "Způsob dopravy"
-[44]: ./media/expressroute-howto-ipsec-transport-private-windows/network-type.png "Typ sítě"
-[45]: ./media/expressroute-howto-ipsec-transport-private-windows/selection-filter-list.png "výběr existujícího seznamu filtrů IP"
-[46]: ./media/expressroute-howto-ipsec-transport-private-windows/selection-filter-action.png "výběr existující akce filtru"
-[47]: ./media/expressroute-howto-ipsec-transport-private-windows/authentication-method.png "výběr metody ověřování"
-[48]: ./media/expressroute-howto-ipsec-transport-private-windows/security-policy-completed.png "ukončení procesu vytváření bezpečnostní politiky"
-[49]: ./media/expressroute-howto-ipsec-transport-private-windows/gpo-not-assigned.png "Zásady iPsec spojené se zásadou zásad zásad hlavního mocen, ale nepřiřazené"
-[50]: ./media/expressroute-howto-ipsec-transport-private-windows/gpo-assigned.png "Zásad y IPsec přiřazených k gpo"
-[51]: ./media/expressroute-howto-ipsec-transport-private-windows/encrypted-traffic.png "Zachycení šifrovaného provozu IPsec"
+[43]: ./media/expressroute-howto-ipsec-transport-private-windows/transport-mode.png "přenosový režim" 43
+[44]: ./media/expressroute-howto-ipsec-transport-private-windows/network-type.png "typ sítě" 44
+[45]: ./media/expressroute-howto-ipsec-transport-private-windows/selection-filter-list.png "Výběr existujícího seznamu filtrů IP adres"
+[46]: ./media/expressroute-howto-ipsec-transport-private-windows/selection-filter-action.png "Výběr stávající akce filtru"
+[47]: ./media/expressroute-howto-ipsec-transport-private-windows/authentication-method.png "Výběr metody ověřování"
+[48]: ./media/expressroute-howto-ipsec-transport-private-windows/security-policy-completed.png "Konec procesu vytváření zásad zabezpečení"
+[49]: ./media/expressroute-howto-ipsec-transport-private-windows/gpo-not-assigned.png "zásada IPSec propojená s objektem zásad skupiny, ale není přiřazeno"
+[50]: ./media/expressroute-howto-ipsec-transport-private-windows/gpo-assigned.png "zásada IPSec přiřazená k objektu zásad skupiny"
+[51]: ./media/expressroute-howto-ipsec-transport-private-windows/encrypted-traffic.png "zachycení přenosu zašifrovaného protokolem IPSec"

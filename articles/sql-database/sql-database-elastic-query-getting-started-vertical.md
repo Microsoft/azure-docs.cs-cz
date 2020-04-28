@@ -1,6 +1,6 @@
 ---
-title: Začínáme s dotazy napříč databázemi
-description: použití elastického databázového dotazu se svisle rozdělenými databázemi
+title: Začínáme s mezidatabázovými dotazy
+description: Jak používat dotaz na elastickou databázi s vertikálně rozdělenými databázemi
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,29 +12,29 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: af93035766eaf1afa12d124b8379ee55c5567260
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73823798"
 ---
-# <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>Začínáme s dotazy mezi databázemi (vertikální dělení) (náhled)
+# <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>Začínáme s mezidatabázovými dotazy (vertikální dělení) (Preview)
 
-Elastický databázový dotaz (preview) pro Azure SQL Database umožňuje spouštět dotazy T-SQL, které pokrývají více databází pomocí jednoho spojovacího bodu. Tento článek se vztahuje na [svisle rozdělené databáze](sql-database-elastic-query-vertical-partitioning.md).  
+Elastický databázový dotaz (Preview) pro Azure SQL Database umožňuje spouštění dotazů T-SQL, které jsou rozloženy na více databází pomocí jediného spojovacího bodu. Tento článek se vztahuje na [vertikálně dělené databáze](sql-database-elastic-query-vertical-partitioning.md).  
 
-Po dokončení se dozvíte, jak nakonfigurovat a používat Azure SQL Database k provádění dotazů, které pokrývají více souvisejících databází.
+Po dokončení se dozvíte, jak nakonfigurovat a použít Azure SQL Database k provádění dotazů, které mají více souvisejících databází.
 
-Další informace o funkci elastického databázového dotazu naleznete v tématu [Přehled elastického databázového dotazu Azure SQL Database](sql-database-elastic-query-overview.md).
+Další informace o funkci dotazování elastické databáze najdete v tématu [Azure SQL Database přehled dotazů elastické databáze](sql-database-elastic-query-overview.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Je vyžadováno změnit oprávnění externího zdroje dat. Toto oprávnění je součástí oprávnění ALTER DATABASE. ZMĚNIT všechna oprávnění externího zdroje dat jsou potřebné k odkazování na základní zdroj dat.
+Změna všech oprávnění k EXTERNÍmu zdroji dat je povinné. Toto oprávnění je součástí oprávnění ALTER DATABASE. Aby bylo možné odkazovat na podkladový zdroj dat, je třeba změnit všechna oprávnění ke zdroji externích dat.
 
 ## <a name="create-the-sample-databases"></a>Vytvoření ukázkových databází
 
-Chcete-li začít s, vytvořte dvě databáze, **Zákazníci** a **Objednávky**, buď ve stejné nebo různé servery DATABÁZE SQL.
+Pokud chcete začít s, vytvořte na stejném nebo jiném serveru SQL Database dvě databáze, **zákazníky** a **objednávky**.
 
-Proveďte následující dotazy v databázi **Orders** k vytvoření tabulky **OrderInformation** a zadání ukázkových dat.
+Spusťte následující dotazy v databázi **Orders** a vytvořte tabulku **OrderInformation** a zadejte vzorová data.
 
     CREATE TABLE [dbo].[OrderInformation](
         [OrderID] [int] NOT NULL,
@@ -46,7 +46,7 @@ Proveďte následující dotazy v databázi **Orders** k vytvoření tabulky **O
     INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (321, 1)
     INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (564, 8)
 
-Nyní spusťte následující dotaz v **databázi Zákazníci** k vytvoření **customerinformation** tabulka a zadejte ukázková data.
+Nyní proveďte následující dotaz na databázi **zákazníků** a vytvořte tabulku **CustomerInformation** a zadejte Ukázková data.
 
     CREATE TABLE [dbo].[CustomerInformation](
         [CustomerID] [int] NOT NULL,
@@ -60,22 +60,22 @@ Nyní spusťte následující dotaz v **databázi Zákazníci** k vytvoření **
 
 ## <a name="create-database-objects"></a>Vytváření databázových objektů
 
-### <a name="database-scoped-master-key-and-credentials"></a>Hlavní klíč a pověření s rozsahem databáze
+### <a name="database-scoped-master-key-and-credentials"></a>Hlavní klíč a přihlašovací údaje v oboru databáze
 
-1. Otevřete sql server management studio nebo SQL Server datové nástroje v sadě Visual Studio.
-2. Připojte se k databázi Orders a proveďte následující příkazy T-SQL:
+1. Otevřete SQL Server Management Studio nebo SQL Server Data Tools v aplikaci Visual Studio.
+2. Připojte se k databázi Orders a spusťte následující příkazy T-SQL:
 
         CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<master_key_password>';
         CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred
         WITH IDENTITY = '<username>',
         SECRET = '<password>';  
 
-    "Uživatelské jméno" a "heslo" by mělo být uživatelské jméno a heslo používané pro přihlášení do databáze Zákazníci.
-    Ověřování pomocí služby Azure Active Directory s elastické dotazy není aktuálně podporováno.
+    Uživatelské jméno a heslo by mělo být uživatelské jméno a heslo, které jste použili k přihlášení do databáze Customers.
+    Ověřování pomocí Azure Active Directory s elastickými dotazy není v současné době podporováno.
 
 ### <a name="external-data-sources"></a>Externí zdroje dat
 
-Chcete-li vytvořit externí zdroj dat, proveďte v databázi Objednávky následující příkaz:
+Chcete-li vytvořit externí zdroj dat, spusťte následující příkaz v databázi Orders:
 
     CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH
         (TYPE = RDBMS,
@@ -86,7 +86,7 @@ Chcete-li vytvořit externí zdroj dat, proveďte v databázi Objednávky násle
 
 ### <a name="external-tables"></a>Externí tabulky
 
-Vytvořte externí tabulku v databázi Objednávky, která odpovídá definici tabulky CustomerInformation:
+Vytvořte externí tabulku v databázi Orders, která odpovídá definici tabulky CustomerInformation:
 
     CREATE EXTERNAL TABLE [dbo].[CustomerInformation]
     ( [CustomerID] [int] NOT NULL,
@@ -95,9 +95,9 @@ Vytvořte externí tabulku v databázi Objednávky, která odpovídá definici t
     WITH
     ( DATA_SOURCE = MyElasticDBQueryDataSrc)
 
-## <a name="execute-a-sample-elastic-database-t-sql-query"></a>Spuštění ukázkového elastického dotazu T-SQL
+## <a name="execute-a-sample-elastic-database-t-sql-query"></a>Spuštění ukázkového dotazu T-SQL pro elastickou databázi
 
-Jakmile definujete externí zdroj dat a externí tabulky, můžete nyní použít T-SQL k dotazování externích tabulek. Spusťte tento dotaz v databázi Objednávky:
+Po definování externího zdroje dat a externích tabulek teď můžete použít T-SQL k dotazování externích tabulek. Spustit tento dotaz v databázi objednávek:
 
     SELECT OrderInformation.CustomerID, OrderInformation.OrderId, CustomerInformation.CustomerName, CustomerInformation.Company
     FROM OrderInformation
@@ -106,14 +106,14 @@ Jakmile definujete externí zdroj dat a externí tabulky, můžete nyní použí
 
 ## <a name="cost"></a>Náklady
 
-V současné době je funkce elastického databázového dotazu zahrnuta do nákladů na databázi Azure SQL Database.  
+V současné době je funkce dotazování elastické databáze zahrnutá do nákladů na vaše Azure SQL Database.  
 
-Informace o cenách naleznete v [tématu SQL Database Pricing](https://azure.microsoft.com/pricing/details/sql-database).
+Informace o cenách najdete v tématu [SQL Database ceny](https://azure.microsoft.com/pricing/details/sql-database).
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přehled elastického dotazu najdete v [tématu Přehled elastického dotazu](sql-database-elastic-query-overview.md).
-* Syntaxe a ukázkové dotazy pro svisle dělená data, najdete [v tématu Dotazování svisle dělených dat)](sql-database-elastic-query-vertical-partitioning.md)
-* Kurz horizontálního dělení (horizontálního dělení) naleznete [v tématu Začínáme s elastickým dotazem pro horizontální dělení (horizontální dělení)](sql-database-elastic-query-getting-started.md).
-* Syntaxe a ukázkové dotazy pro horizontálně dělená data naleznete v [tématu Dotazování horizontálně dělených dat)](sql-database-elastic-query-horizontal-partitioning.md)
-* Viz [\_sp \_spustit vzdálené](https://msdn.microsoft.com/library/mt703714) pro uloženou proceduru, která provede příkaz Transact-SQL na jednom vzdáleném Azure SQL Database nebo sadu databází, které slouží jako horizontální oddíly v horizontálním dělení schéma.
+* Přehled elastického dotazu najdete v tématu [Přehled elastického dotazu](sql-database-elastic-query-overview.md).
+* Syntaxe a ukázkové dotazy pro vertikálně dělená data najdete v tématu [dotazování na vertikálně dělená data](sql-database-elastic-query-vertical-partitioning.md) .
+* Kurz horizontálního dělení na oddíly (horizontálního dělení) najdete v tématu [Začínáme s elastickým dotazem pro horizontální dělení na oddíly (horizontálního dělení)](sql-database-elastic-query-getting-started.md).
+* Syntaxe a ukázkové dotazy pro horizontálně rozdělená data najdete v tématu [dotazování na horizontálně dělená data](sql-database-elastic-query-horizontal-partitioning.md) .
+* V [tématu\_SP \_Execute Remote](https://msdn.microsoft.com/library/mt703714) pro uloženou proceduru, která provádí příkaz Transact-SQL na jednom vzdáleném Azure SQL Database nebo sadě databází, která slouží jako horizontálních oddílů ve vodorovném schématu dělení.

@@ -1,6 +1,6 @@
 ---
-title: Přepsání hlavičky požadavků http a odpovědí na portálu – Azure Application Gateway
-description: Přečtěte si, jak pomocí portálu Azure nakonfigurovat aplikační bránu Azure k přepsání hlaviček HTTP v požadavcích a odpovědích procházejících bránou.
+title: Přepis hlaviček požadavků a odpovědí HTTP na portálu – Azure Application Gateway
+description: Naučte se, jak pomocí Azure Portal nakonfigurovat službu Azure Application Gateway, aby přepsala hlavičky HTTP v žádostech a odpovědích, které procházejí bránou.
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
@@ -9,126 +9,126 @@ ms.date: 11/13/2019
 ms.author: absha
 ms.custom: mvc
 ms.openlocfilehash: b90736b3ed1c1f69488fde4a386cf215d751c362
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74012859"
 ---
-# <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>Přepis ovat hlavičky požadavků http a odpovědí pomocí Azure Application Gateway – portál Azure
+# <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>Přepsání hlaviček požadavků a odpovědí HTTP pomocí Azure Application Gateway-Azure Portal
 
-Tento článek popisuje, jak pomocí portálu Azure nakonfigurovat [instanci sku souaplikací pro aplikační bránu v2](<https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant>) k přepsání hlaviček HTTP v požadavcích a odpovědích.
+Tento článek popisuje, jak pomocí Azure Portal nakonfigurovat instanci [SKU Application Gateway v2](<https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant>) , aby v žádostech a odpovědích přepsala hlavičky HTTP.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-K dokončení kroků v tomto článku musíte mít instanci sku brány aplikace v2. Přepisování záhlaví není podporováno ve skladové jednotce v1. Pokud nemáte skladovou položku v2, vytvořte před zahájením instanci [sku brány aplikace v2.](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps)
+Abyste mohli dokončit kroky v tomto článku, musíte mít instanci SKU Application Gateway v2. Přepisování hlaviček není v SKU v1 podporováno. Pokud nemáte SKU verze 2, vytvořte před zahájením instanci [sku Application Gateway v2](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps) .
 
-## <a name="create-required-objects"></a>Vytvoření požadovaných objektů
+## <a name="create-required-objects"></a>Vytvořit požadované objekty
 
-Chcete-li nakonfigurovat přepsání hlavičky HTTP, je třeba provést tyto kroky.
+Chcete-li nakonfigurovat přepsání hlaviček protokolu HTTP, je nutné provést tyto kroky.
 
-1. Vytvořte objekty, které jsou požadovány pro přepsání hlavičky HTTP:
+1. Vytvořte objekty, které jsou požadovány pro přepsání hlaviček protokolu HTTP:
 
-   - **Akce přepsání**: Slouží k určení polí hlavičky požadavku a požadavku, která chcete přepsat, a nové hodnoty pro záhlaví. K akci přepsání můžete přidružit jednu nebo více podmínek přepsání.
+   - **Akce přepisu**: slouží k zadání polí hlavičky Request a Request, která chcete přepsat, a nové hodnoty hlaviček. K akci přepsání můžete přidružit jednu nebo více podmínek přepsání.
 
-   - **Podmínka přepsání**: Volitelná konfigurace. Podmínky přepsání vyhodnocují obsah požadavků http(S) a odpovědí. Akce přepsání dojde, pokud požadavek HTTP(S) nebo odpověď odpovídá podmínce přepsání.
+   - **Podmínka přepisu**: volitelná konfigurace. Podmínky přepisu vyhodnocují obsah požadavků a odpovědí HTTP (S). Akce přepisu nastane, pokud požadavek nebo odpověď HTTP (S) odpovídá podmínce přepsání.
 
-     Pokud přidružíte více než jednu podmínku k akci, akce nastane pouze v případě, že jsou splněny všechny podmínky. Jinými slovy, operace je logická operace AND.
+     Pokud k akci přiřadíte více než jednu podmínku, bude akce provedena pouze v případě, že jsou splněny všechny podmínky. Jinými slovy, operace je logická a operace.
 
-   - **Pravidlo přepisu**: Obsahuje více kombinací akcí přepsání / přepsání.
+   - **Pravidlo přepisu**: obsahuje více kombinací podmínka pro akci přepisu nebo přepisu.
 
-   - **Pořadí pravidel**: Pomáhá určit pořadí, ve kterém se pravidla přepisu spouští. Tato konfigurace je užitečná, pokud máte více pravidel pro přepsání v sadě přepsání. Pravidlo přepsání, které má nižší hodnotu pořadí pravidel, je spuštěno jako první. Pokud přiřadíte stejnou hodnotu pořadí pravidel dvěma pravidlům pro přepsání, pořadí provádění je nedeterministické.
+   - **Pořadí pravidel**: pomáhá určit pořadí, ve kterém se pravidla přepsání spouštějí. Tato konfigurace je užitečná, když máte více pravidel pro přepsání v sadě přepsání. Jako první se spustí pravidlo pro přepsání s nižší hodnotou pořadí pravidel. Pokud přiřadíte stejnou hodnotu pořadí pravidel pro dvě pravidla přepisu, pořadí spuštění je nedeterministické.
 
-   - **Přepsat sadu**: Obsahuje více pravidel přepsání, která budou přidružena k pravidlu směrování požadavků.
+   - **Sada přepsání**: obsahuje více pravidel pro přepis, která budou přidružena k pravidlu směrování požadavků.
 
-2. Připojte sadu přepisů k pravidlu směrování. Konfigurace přepsání je připojena ke zdrojovému naslouchací procesu prostřednictvím pravidla směrování. Při použití základního pravidla směrování je konfigurace přepsání záhlaví přidružena ke zdrojovému naslouchací procesu a je přepsáním globální hlavičky. Při použití pravidla směrování založeného na cestě je konfigurace přepsání záhlaví definována na mapě cesty URL. V takovém případě se vztahuje pouze na konkrétní oblast cesty lokality.
+2. Připojte sadu přepsání s pravidlem směrování. Konfigurace přepsání je připojena ke zdroji naslouchání prostřednictvím pravidla směrování. Použijete-li pravidlo základního směrování, je konfigurace přepsání hlaviček přidružena ke zdrojovému naslouchacího procesu a je přepsána globální hlavičkou. Když použijete pravidlo směrování na základě cesty, konfigurace opětovného zápisu hlaviček se definuje na mapě cesty URL. V takovém případě platí pouze pro konkrétní oblast cesty lokality.
 
-Můžete vytvořit více sad přepisů hlaviček PROTOKOLU HTTP a použít každou sadu přepsání na více naslouchacích procesech. Ale můžete použít pouze jeden přepsání nastavit na konkrétní naslouchací proces.
+Můžete vytvořit více sad pro přepsání hlaviček protokolu HTTP a použít každou sadu přepsání na více posluchačů. Můžete ale použít jenom jednu sadu přepsaného zápisu na konkrétní naslouchací proces.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí svého účtu Azure.
 
-## <a name="configure-header-rewrite"></a>Konfigurace přepsání záhlaví
+## <a name="configure-header-rewrite"></a>Konfigurace přepsání hlaviček
 
-V tomto příkladu změníme adresu URL přesměrování přepsáním hlavičky umístění v odpovědi HTTP odeslané back-endovou aplikací.
+V tomto příkladu změníme adresu URL pro přesměrování přepsáním hlavičky umístění v odpovědi HTTP odesílané back-endové aplikaci.
 
-1. Vyberte **Všechny prostředky**a pak vyberte bránu aplikace.
+1. Vyberte **všechny prostředky**a pak vyberte svoji Aplikační bránu.
 
-2. V levém podokně vyberte **Přepíše.**
+2. V levém podokně vyberte **přepsat** .
 
-3. Vybrat **sadu přepisů**:
+3. Vyberte **sadu přepsání**:
 
-   ![Přidat sadu přepisů](media/rewrite-http-headers-portal/add-rewrite-set.png)
+   ![Přidat sadu přepsání](media/rewrite-http-headers-portal/add-rewrite-set.png)
 
-4. Zadejte název pro sadu přepisů a přidružte ji k pravidlu směrování:
+4. Zadejte název pro sadu přepsání a přidružte ji k pravidlu směrování:
 
-   - Do pole **Název** zadejte název sady přepsání.
-   - Vyberte jedno nebo více pravidel uvedených v seznamu **přidružených pravidel směrování.** Můžete vybrat pouze pravidla, která nebyla přidružena k jiným sadaem přepisů. Pravidla, která již byla přidružena k jiným množinám přepisů, jsou ztlumena.
-   - Vyberte **další**.
+   - Do pole **název** zadejte název sady přepsaného zápisu.
+   - Vyberte jedno nebo více pravidel uvedených v seznamu **přidružená pravidla směrování** . Můžete vybrat pouze pravidla, která nebyla přidružena k ostatním přepsaným sadám. Pravidla, která již byla přidružena k jiným sadám přepsání, jsou ztlumena.
+   - Vyberte **Další**.
    
-     ![Přidání názvu a přidružení](media/rewrite-http-headers-portal/name-and-association.png)
+     ![Přidat název a přidružení](media/rewrite-http-headers-portal/name-and-association.png)
 
-5. Vytvořte pravidlo přepsání:
+5. Vytvořit pravidlo přepsání:
 
    - Vyberte **Přidat pravidlo přepsání**.
 
-     ![Přidat pravidlo přepisu](media/rewrite-http-headers-portal/add-rewrite-rule.png)
+     ![Přidat pravidlo pro přepsání](media/rewrite-http-headers-portal/add-rewrite-rule.png)
 
-   - Do pole **Přepsat název pravidla** zadejte název pravidla přepsání. Zadejte číslo do pole **Pořadí pravidla.**
+   - Do pole **název pravidla přepsání** zadejte název pravidla pro přepsání. Zadejte číslo do pole **pořadí pravidel** .
 
      ![Přidat název pravidla přepsání](media/rewrite-http-headers-portal/rule-name.png)
 
-6. V tomto příkladu přepíšeme hlavičku umístění pouze v případě, že obsahuje odkaz na azurewebsites.net. Chcete-li to provést, přidejte podmínku k vyhodnocení, zda záhlaví umístění v odpovědi obsahuje azurewebsites.net:
+6. V tomto příkladu přepíšeme hlavičku umístění pouze v případě, že obsahuje odkaz na azurewebsites.net. Chcete-li to provést, přidejte podmínku pro vyhodnocení, zda hlavička umístění v odpovědi obsahuje azurewebsites.net:
 
-   - Vyberte **Přidat podmínku** a pak vyberte pole obsahující pokyny **If,** které chcete rozbalit.
+   - Vyberte **Přidat podmínku** a potom vyberte pole **obsahující pokyny pro jeho rozšíření** .
 
      ![Přidání podmínky](media/rewrite-http-headers-portal/add-condition.png)
 
-   - V seznamu **Typ proměnné ke kontrole** vyberte záhlaví PROTOKOLU **HTTP**.
+   - V seznamu **typ proměnné pro kontrolu** vyberte **záhlaví HTTP**.
 
-   - V seznamu **Typ záhlaví** vyberte **odpověď**.
+   - V seznamu **typ hlavičky** vyberte možnost **odpověď**.
 
-   - Vzhledem k tomu, že v tomto příkladu vyhodnocujeme záhlaví umístění, což je běžné záhlaví, vyberte v části **Název záhlaví** **možnost Společné záhlaví** .
+   - Vzhledem k tomu, že v tomto příkladu vyhodnocujeme hlavičku Location, která je běžnou hlavičkou, vyberte v části **název záhlaví**možnost **společné záhlaví** .
 
-   - V seznamu **Společné záhlaví** vyberte **Umístění**.
+   - V seznamu **Common Header (společné záhlaví** ) vyberte **umístění**.
 
-   - V části **Rozlišování malých a**velkých písmen vyberte **Ne**.
+   - V části rozlišovat **velikost písmen**vyberte možnost **ne**.
 
-   - V seznamu **Operátor** vyberte **equal (=)**.
+   - V seznamu **operátor** vyberte **EQUAL (=)**.
 
-   - Zadejte vzor regulárního výrazu. V tomto příkladu použijeme `(https?):\/\/.*azurewebsites\.net(.*)$`vzor .
+   - Zadejte vzor regulárního výrazu. V tomto příkladu použijeme vzor `(https?):\/\/.*azurewebsites\.net(.*)$`.
 
    - Vyberte **OK**.
 
-     ![Konfigurace podmínky If](media/rewrite-http-headers-portal/condition.png)
+     ![Konfigurace podmínky if](media/rewrite-http-headers-portal/condition.png)
 
-7. Přidejte akci pro přepsání záhlaví umístění:
+7. Přidejte akci pro přepsání hlavičky umístění:
 
-   - V seznamu **Typ akce** vyberte **Nastavit**.
+   - V seznamu **typ akce** vyberte možnost **nastavit**.
 
-   - V seznamu **Typ záhlaví** vyberte **odpověď**.
+   - V seznamu **typ hlavičky** vyberte možnost **odpověď**.
 
-   - V části **Název záhlaví**vyberte **Společné záhlaví**.
+   - V části **název záhlaví**vyberte **společné záhlaví**.
 
-   - V seznamu **Společné záhlaví** vyberte **Umístění**.
+   - V seznamu **Common Header (společné záhlaví** ) vyberte **umístění**.
 
-   - Zadejte hodnotu záhlaví. V tomto příkladu použijeme `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` jako hodnotu záhlaví. Tato hodnota nahradí *azurewebsites.net* *contoso.com* v záhlaví umístění.
+   - Zadejte hodnotu hlavičky. V tomto příkladu použijeme `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` jako hodnotu hlavičky. Tato hodnota nahradí *azurewebsites.NET* hodnotou *contoso.com* v hlavičce umístění.
 
    - Vyberte **OK**.
 
      ![Přidání akce](media/rewrite-http-headers-portal/action.png)
 
-8. Vyberte **Vytvořit,** chcete-li vytvořit sadu přepisů:
+8. Vyberte **vytvořit** a vytvořte sadu přepsání:
 
    ![Výběr možnosti Vytvořit](media/rewrite-http-headers-portal/create.png)
 
-9. Otevře se zobrazení nastavení přepsání. Ověřte, zda je vytvořená sada přepisů v seznamu sad přepisů:
+9. Otevře se zobrazení přepsané sady. Ověřte, že je nastavená sada přepsání, kterou jste vytvořili, v seznamu přepsaných sad:
 
-   ![Přepsání zobrazení sady](media/rewrite-http-headers-portal/rewrite-set-list.png)
+   ![Přepište zobrazení sady](media/rewrite-http-headers-portal/rewrite-set-list.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o nastavení některých běžných případů použití naleznete v [běžných scénářích přepsání záhlaví](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers).
+Další informace o tom, jak nastavit některé běžné případy použití, najdete v tématu [běžné scénáře přepisování hlaviček](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers).

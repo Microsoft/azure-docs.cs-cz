@@ -1,6 +1,6 @@
 ---
-title: Spravovaná instance určuje velikost virtuální sítě nebo podsítě
-description: Toto téma popisuje, jak vypočítat velikost podsítě, kde se nasadí spravované instance azure SQL database.
+title: Spravovaná instance – určení velikosti virtuální sítě a podsítě
+description: Toto téma popisuje, jak vypočítat velikost podsítě, do které se nasadí Azure SQL Database spravované instance.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,41 +12,41 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 02/22/2019
 ms.openlocfilehash: 7f0ef26343284b7b668e71676114586f4bec8b9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73825754"
 ---
-# <a name="determine-vnet-subnet-size-for-azure-sql-database-managed-instance"></a>Určení velikosti podsítě virtuální sítě pro spravovanou instanci Azure SQL Database
+# <a name="determine-vnet-subnet-size-for-azure-sql-database-managed-instance"></a>Určení velikosti podsítě virtuální sítě pro Azure SQL Database spravovanou instanci
 
-Azure SQL Database Managed Instance musí být nasazená v rámci [virtuální sítě Azure .](../virtual-network/virtual-networks-overview.md)
+Azure SQL Database spravovaná instance musí být nasazená v rámci [virtuální sítě Azure (VNET)](../virtual-network/virtual-networks-overview.md).
 
-Počet spravovaných instancí, které lze nasadit v podsíti virtuální sítě, závisí na velikosti podsítě (rozsah podsítí).
+Počet spravovaných instancí, které mohou být nasazeny v podsíti virtuální sítě, závisí na velikosti podsítě (rozsahu podsítě).
 
-Když vytvoříte spravovanou instanci, Azure přidělí počet virtuálních počítačů v závislosti na úrovni, kterou jste vybrali během zřizování. Vzhledem k tomu, že tyto virtuální počítače jsou přidruženy k podsíti, vyžadují IP adresy. Chcete-li zajistit vysokou dostupnost během pravidelného provozu a údržby služeb, Azure může přidělit další virtuální počítače. V důsledku toho je počet požadovaných adres IP v podsíti větší než počet spravovaných instancí v této podsíti.
+Při vytváření spravované instance Azure přiděluje počet virtuálních počítačů v závislosti na vrstvě, kterou jste vybrali během zřizování. Vzhledem k tomu, že tyto virtuální počítače jsou přidruženy k vaší podsíti, vyžadují IP adresy. Pro zajištění vysoké dostupnosti během pravidelných operací a údržby služeb může Azure přidělovat další virtuální počítače. V důsledku toho je počet požadovaných IP adres v podsíti větší než počet spravovaných instancí v této podsíti.
 
-Podle návrhu potřebuje spravovaná instance minimálně 16 IP adres v podsíti a může používat až 256 IP adres. V důsledku toho můžete při definování rozsahů IP podsítě použít masky podsítě mezi /28 a /24. Bit masky sítě /28 (14 hostitelů na síť) je vhodná velikost pro jedno obecné účely nebo důležité nasazení pro firmy. Bit masky /27 (30 hostitelů na síť) je ideální pro více nasazení spravované instance v rámci stejné virtuální sítě. Nastavení bitů masky /26 (62 hostitelů) a /24 (254 hostitelů) umožňuje další škálování z virtuální sítě pro podporu dalších spravovaných instancí.
-
-> [!IMPORTANT]
-> Velikost podsítě s 16 ADRESAMI IP je minimum s omezeným potenciálem, kde není podporována operace škálování, jako je změna velikosti virtuálních jader. Důrazně doporučujeme zvolit podsíť s předponou /27 nebo nejdelší předponou.
-
-## <a name="determine-subnet-size"></a>Určit velikost podsítě
-
-Pokud plánujete nasadit více spravovaných instancí uvnitř podsítě a potřebujete optimalizovat na velikost podsítě, použijte tyto parametry k vytvoření výpočtu:
-
-- Azure používá pět IP adres v podsíti pro své vlastní potřeby
-- Každá instance pro obecné účely potřebuje dvě adresy
-- Každá instance Kritické pro podnikání potřebuje čtyři adresy
-
-**Příklad:** Plánujete mít tři obecné účely a dvě důležité spravované instance podniku. To znamená, že potřebujete 5 + 3 * 2 + 2 * 4 = 19 IP adres. Vzhledem k tomu, že rozsahy IP adres jsou definovány při výkonu 2, potřebujete rozsah IP adres 32 (2^5) IP adres. Proto je třeba rezervovat podsíť s maskou podsítě /27.
+V rámci návrhu vyžaduje spravovaná instance minimálně 16 IP adres v podsíti a může používat až 256 IP adres. V důsledku toho můžete při definování rozsahů IP adres podsítí použít masky podsítě mezi/28 a/24. Bitová maska sítě/28 (14 hostitelů na síť) je vhodná pro jedno obecné účely nebo pro důležité obchodní nasazení. Bitová maska/27 (30 hostitelů na síť) je ideální pro nasazení více spravovaných instancí v rámci stejné virtuální sítě. Bitové nastavení maskování/26 (62 hostitelů) a/24 (254 hostitelů) umožňuje další škálování z virtuální sítě na podporu dalších spravovaných instancí.
 
 > [!IMPORTANT]
-> Výše uvedený výpočet bude zastaralý s dalšími vylepšeními.
+> Velikost podsítě s 16 IP adresami je minimum s omezeným potenciálem, u kterého není podporována operace škálování, jako je vCore Změna velikosti. Důrazně doporučujeme vybrat podsíť s předponou předpony/27 nebo nejdelší.
+
+## <a name="determine-subnet-size"></a>Určení velikosti podsítě
+
+Pokud plánujete nasadit více spravovaných instancí v rámci podsítě a potřebujete optimalizovat velikost podsítě, použijte tyto parametry k vytvoření výpočtu:
+
+- Azure používá v podsíti pět IP adres pro vlastní potřeby.
+- Každá instance Pro obecné účely potřebuje dvě adresy.
+- Každá instance Pro důležité obchodní informace potřebuje čtyři adresy.
+
+**Příklad**: plánujete mít tři pro obecné účely a dvě pro důležité obchodní informace spravované instance. To znamená, že potřebujete 5 + 3 × 2 + 2 × 4 = 19 IP adres. Jelikož jsou rozsahy IP adres definovány v mocnině 2, potřebujete rozsah IP adres 32 (2 ^ 5) IP adres. Proto je nutné rezervovat podsíť s maskou podsítě/27.
+
+> [!IMPORTANT]
+> Výše zobrazené kalkulace se zastaralá s dalšími vylepšeními.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přehled najdete v tématu [Co je spravovaná instance](sql-database-managed-instance.md).
-- Další informace o [architektuře připojení pro spravovanou instanci](sql-database-managed-instance-connectivity-architecture.md).
-- Podívejte se, jak [vytvořit virtuální síť, do které budete nasazovat spravované instance.](sql-database-managed-instance-create-vnet-subnet.md)
-- Problémy se službou DNS naleznete [v tématu Konfigurace vlastního DNS](sql-database-managed-instance-custom-dns.md)
+- Přehled najdete v tématu [co je spravovaná instance](sql-database-managed-instance.md).
+- Přečtěte si další informace o [architektuře připojení pro spravovanou instanci](sql-database-managed-instance-connectivity-architecture.md).
+- Podívejte se, jak [vytvořit virtuální síť, kde nasadíte spravované instance](sql-database-managed-instance-create-vnet-subnet.md) .
+- Problémy se službou DNS najdete v tématu [Konfigurace vlastního serveru DNS](sql-database-managed-instance-custom-dns.md) .

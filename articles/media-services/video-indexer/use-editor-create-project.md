@@ -1,7 +1,7 @@
 ---
 title: Použití editoru Video Indexer k vytváření projektů
 titleSuffix: Azure Media Services
-description: Toto téma ukazuje, jak pomocí editoru Video Indexer k vytvoření projektů.
+description: Toto téma ukazuje, jak použít Editor Video Indexer k vytváření projektů.
 services: media-services
 author: Juliako
 manager: femila
@@ -11,124 +11,124 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: juliako
 ms.openlocfilehash: 9f16ab34dc9b37806f9c58b22a3f02afe839632e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73839172"
 ---
 # <a name="use-the-video-indexer-editor-to-create-projects"></a>Použití editoru Video Indexer k vytváření projektů
 
-Video Indexer webové stránky, umožňuje používat vaše videa 'hluboké přehledy: najít správný mediální obsah, najít části, které vás zajímají, a použít výsledky k vytvoření zcela nového projektu. Po vytvoření může být projekt vykreslen a stažen z video indexeru a použit ve vlastních editačních aplikacích nebo podřízené pracovní postupy.
+Video Indexer web umožňuje používat hloubkové přehledy videí k: vyhledání správného mediálního obsahu, vyhledání částí, které vás zajímají, a použití výsledků k vytvoření zcela nového projektu. Po vytvoření se projekt dá vykreslit a stáhnout z Video Indexer a použije se ve svých vlastních aplikacích pro úpravy nebo v pracovních postupech.
 
-Některé scénáře, kde může být tato funkce užitečná, jsou: 
+Tato funkce může být užitečná v některých případech: 
 
-* Vytváření filmových vrcholů pro upoutávky.
-* Použití starých klipů videa v novinky obsazení.
-* Vytváření kratšího obsahu pro sociální média.
+* Vytváření zvýraznění filmů pro přípojná místa.
+* Použití starých klipů videí v přetypováních zpráv.
+* Vytváření kratšího obsahu pro sociální média
 
 Tento článek ukazuje, jak vytvořit projekt od začátku a také jak vytvořit projekt z videa ve vašem účtu.
 
-## <a name="create-new-project-and-manage-videos"></a>Vytvoření nového projektu a správa videí
+## <a name="create-new-project-and-manage-videos"></a>Vytvoření nového projektu a Správa videí
 
 1. Přejděte na web [Video Indexer](https://www.videoindexer.ai/) a přihlaste se.
-1. Vyberte kartu **Projekty.** Pokud jste projekty vytvořili již dříve, uvidíte zde všechny ostatní projekty.
-1. Klepněte na **tlačítko Vytvořit nový projekt**.  
+1. Vyberte kartu **projekty** . Pokud jste vytvořili projekty dříve, zobrazí se zde všechny ostatní projekty.
+1. Klikněte na **vytvořit nový projekt**.  
 
     ![Nový projekt](./media/video-indexer-view-edit/new-project.png)
-1. Pojmenujte projekt kliknutím na ikonu tužky. Nahraďte text s nápisem "Projekt bez názvu" názvem projektu a klikněte na šek.
+1. Pojmenujte svůj projekt kliknutím na ikonu tužky. Nahraďte text textem "projekt bez názvu" názvem projektu a klikněte na kontrolu.
 
     ![Nový projekt](./media/video-indexer-view-edit/new-project3.png)
     
-### <a name="add-videos-to-the-project"></a>Přidání videí do projektu
+### <a name="add-videos-to-the-project"></a>Přidat videa do projektu
 
 > [!NOTE]
-> V současné době mohou projekty obsahovat pouze videa indexovaná ve stejném jazyce. Jakmile vyberete video v jednom jazyce, nemůžete přidat videa do účtu, která jsou v jiném jazyce.
+> Projekty v současné době můžou obsahovat jenom videa indexovaná ve stejném jazyce. Jakmile vyberete video v jednom jazyce, nebudete moct videa přidat do svého účtu, který je v jiném jazyce.
 
-1. Přidejte videa, se kterými chcete v tomto projektu pracovat, výběrem **možnosti Přidat videa**.
+1. Výběrem možnosti **přidat videa**přidejte videa, se kterými chcete v tomto projektu pracovat.
 
-    Zobrazí se všechna videa ve vašem účtu a vyhledávací pole s nápisem "Hledat text, klíčová slova nebo vizuální obsah". Chcete-li vyhledat videa, která mají v přepisu a rozpoznávání OCR určenou osobu, štítek, značku, klíčové slovo nebo výskyt.
+    Zobrazí se všechna videa ve vašem účtu a vyhledávací pole s textem "hledání textu, klíčových slov nebo vizuálního obsahu". Chcete-li vyhledat videa, která mají určenou osobu, popisek, značku, klíčové slovo nebo výskyt v přepisu a optickém rozpoznávání znaků.
     
-    Například na obrázku níže hledáme videa, která zmiňují "GitHub".
+    Například na následujícím obrázku hledáte videa, která zmiňují GitHub.
     
-    ![GitHub](./media/video-indexer-view-edit/github.png)
+    ![GitHubu](./media/video-indexer-view-edit/github.png)
 
-    Výsledky můžete dále filtrovat výběrem **možnosti Filtrovat výsledky**. Můžete filtrovat a zobrazit videa, která mají určitou osobu, nebo určit, že chcete zobrazit pouze výsledky videa, které jsou v určitém jazyce nebo mají konkrétního vlastníka. <br/> Můžete také určit rozsah dotazu. Pokud například chcete v rozpoznávání OCR hledat "GitHub", vyberte **vizuální text**.
+    Výsledky můžete dál filtrovat tak, že vyberete **výsledky filtrování**. Můžete filtrovat tak, aby zobrazovala videa, která mají určitou osobu, nebo aby bylo možné určit, že chcete zobrazit jenom výsledky videa, které jsou v určitém jazyce, nebo jestli mají konkrétního vlastníka. <br/> Můžete také zadat rozsah dotazu. Pokud například chcete v OCR vyhledat "GitHub", vyberte **vizuální text**.
 
     ![Filtr](./media/video-indexer-view-edit/visual-text.png)
 
-    Do dotazu můžete vrstvit více filtrů. / **-** Pomocí tlačítek můžete přidávat nebo odebírat **+** filtry. K odebrání všech filtrů použijte **vymazat filtry.**
+    Do dotazu můžete převrstvit více filtrů. **+** / Pomocí **-** tlačítek můžete přidat nebo odebrat filtry. Pomocí **Vymazat filtry** odeberte všechny filtry.
 1. Pokud chcete přidat videa, vyberte je a pak vyberte **Přidat**.
-1. Nyní uvidíte všechna videa, která jste si vybrali. Jedná se o videa, ze kterých budete vybírat klipy pro váš projekt.
+1. Teď se zobrazí všechna videa, která jste zvolili. Jedná se o videa, ze kterých se chystáte vybrat klipy pro svůj projekt.
 
-    Pořadí videí můžete změnit přetažením nebo výběrem tlačítka nabídky seznamu a výběrem **možnosti Přesunout dolů** nebo **Přesunout nahoru**. Z nabídky seznamu budete také moci odstranit video z tohoto projektu. 
+    Pořadí videí můžete změnit přetažením nebo vyřazením nebo výběrem tlačítka nabídky seznam a výběrem možnosti **Přesunout dolů** nebo **Přesunout nahoru**. V nabídce seznam bude také možné odebrat video z tohoto projektu. 
 
-    ![Uspořádání](./media/video-indexer-view-edit/rearrange.png)
+    ![Změna uspořádání](./media/video-indexer-view-edit/rearrange.png)
     
-    Máte možnost přidat další videa do tohoto projektu kdykoliv výběrem **Přidat videa**. Do projektu můžete také přidat více výskytů stejného videa. Můžete to udělat, pokud chcete zobrazit klip z jednoho videa a pak klip z jiného a pak další klip z prvního videa. 
+    K tomuto projektu máte možnost kdykoli přidat další videa výběrem možnosti **přidat videa**. Do projektu můžete také přidat více výskytů stejného videa. Tuto akci můžete chtít provést, pokud chcete zobrazit klip z jednoho videa a potom klip z druhého a potom z prvního videa vytvořit jiný klip. 
 
-### <a name="select-clips-to-use-in-your-project"></a>Výběr klipů, které chcete použít v projektu
+### <a name="select-clips-to-use-in-your-project"></a>Vyberte klipy, které chcete použít v projektu.
 
-Pokud kliknete na šipku dolů na pravé straně každého videa, otevřete přehledy ve videu na základě časových razítek (klipů videa). 
+Pokud kliknete na šipku dolů na pravé straně každého videa, otevře se přehledy ve videu na základě časových razítek (klipy videa). 
 
-1. Vyberte **Zobrazit přehledy** a přizpůsobte si, které přehledy chcete zobrazit a které nechcete vidět. 
+1. Vyberte **Zobrazit přehledy** a upravte, které přehledy chcete zobrazit a které nechcete vidět. 
 
     ![Zobrazit přehledy](./media/video-indexer-view-edit/insights.png)
-1. Chcete-li vytvořit dotazy pro konkrétní klipy, použijte vyhledávací pole s textem "Hledat v přepisu, vizuálním textu, lidech a popiscích".
-1. Výběrem **možností filtrů**můžete přidat filtry, které chcete dále specifikovat podrobnosti o tom, jaké scény hledáte .
+1. Pokud chcete vytvářet dotazy pro konkrétní klipy, použijte vyhledávací pole, které říká "hledání v přepisu, vizuální text, lidi a štítky".
+1. Kliknutím na **možnost Možnosti filtru**přidejte filtry, které vám pomohou určit, jaké scény hledáte.
 
     ![Možnosti filtru](./media/video-indexer-view-edit/filter-options.png)
 
-    Můžete například chtít zobrazit klipy, kde je na obrazovce zmíněn GitHub, zatímco donovan brown je na obrazovce. K tomu je třeba přidat filtr "zahrnout", který má jako typ přehledu "Lidé". Poté musíte do vyhledávacího pole pro filtr zadat "Donovan Brown".
+    Například můžete chtít zobrazit klipy, na kterých se zmiňuje GitHub, zatímco na obrazovce Donovan Brown. V takovém případě je třeba přidat filtr "include", který má "lidé" jako typ Insight. Pak musíte do vyhledávacího pole pro filtr zadat text "Donovan Brown".
     
     ![Zařadit členy](./media/video-indexer-view-edit/include.png)
     
-    Pokud chcete klipy, kde je uveden GitHub, zatímco Donovan Brown _není_ na obrazovce, jednoduše byste změnili filtr "zahrnout" na filtr "vyloučit" pomocí rozbalovacího seznamu. 
+    Pokud chcete klipy, na kterých se zmiňuje GitHub, zatímco Donovan Brown _není na obrazovce_ , stačí změnit filtr zahrnout do filtru "vyloučit" pomocí rozevíracího seznamu. 
 
-1. Přidejte klip do projektu výběrem segmentu, který chcete přidat. Tento klip můžete zrušit opětovným kliknutím na segment.
+1. Přidejte do projektu klip tak, že vyberete segment, který chcete přidat. Tento klip můžete zrušit kliknutím na segment znovu.
     
-    Přidejte všechny segmenty videa kliknutím na možnost nabídky seznamu vedle videa a výběrem **možnosti Vybrat všechny segmenty**. 
+    Přidejte všechny segmenty videa kliknutím na možnost rozevírací seznam vedle videa a výběrem možnosti **Vybrat všechny segmenty**. 
 
     ![Přidat vše](./media/video-indexer-view-edit/add-all.png)
 
-    Vymažete celý výběr výběrem možnosti Vymazat výběr.
+    Výběrem možnosti Vymazat výběr můžete zrušit výběr všech položek.
 
 > [!TIP]
 > Při výběru a objednávání klipů můžete zobrazit náhled videa v přehrávači na pravé straně stránky. 
 
 ![Preview](./media/video-indexer-view-edit/preview.png)
 
-Nezapomeňte projekt uložit při provádění změn výběrem **možnosti Uložit projekt**. 
+Nezapomeňte uložit projekt, když provedete změny, a to tak, že vyberete **Uložit projekt**. 
 
-### <a name="render-and-download-the-project"></a>Vykreslení a stažení projektu
+### <a name="render-and-download-the-project"></a>Vykreslit a stáhnout projekt
 
 > [!NOTE]
-> U placených účtů videoindexermá vykreslování projektu náklady na kódování. Video Indexer zkušební účty jsou omezeny na 5 hodin vykreslování.
+> U Video Indexer placených účtů má vykreslování projektu náklady na kódování. Účty Video Indexer zkušební verze jsou omezené na 5 hodin vykreslování.
 
-1. Po dokončení se ujistěte, že byl projekt uložen. Nyní můžete vykreslit tento projekt. Vyberte **Vykreslení a stažení**. 
+1. Až budete hotovi, ujistěte se, že je váš projekt uložený. Tento projekt teď můžete vykreslit. Vyberte **vykreslování a stáhnout**. 
 
     ![Uložit](./media/video-indexer-view-edit/save.png)
 
-    K dispozici bude vyskakovací okno, které vám řekne, že Video indexer vykreslí soubor a pak odkaz ke stažení bude odeslán na váš e-mail. Vyberte Pokračovat. 
+    Zobrazí se automaticky otevírané okno s oznámením, že video indexer vygeneruje soubor a pak se odkaz pro stažení pošle na e-mail. Vyberte pokračovat. 
     
-    Zobrazí se také oznámení, že projekt je vykreslen v horní části stránky. Po dokončení vykreslení se zobrazí nové oznámení, že projekt byl úspěšně vykreslen. Kliknutím na oznámení projekt stáhnete. To bude stahovat projekt ve formátu mp4.
+    Zobrazí se také oznámení o tom, že se projekt vykresluje nad stránku. Po vykreslení se zobrazí nové oznámení, že projekt byl úspěšně vykreslen. Kliknutím na oznámení Stáhněte projekt. Stáhne projekt ve formátu MP4.
 
-    ![Vykreslování provedeno](./media/video-indexer-view-edit/rendering-done.png)
+    ![Vykreslování dokončeno](./media/video-indexer-view-edit/rendering-done.png)
 
-1. K uloženým projektům můžete přistupovat na kartě **Projekty.** 
+1. Na kartě **projekty** lze získat přístup k uloženým projektům. 
 
-    Pokud vyberete tento projekt, zobrazí se všechny přehledy a časová osa tohoto projektu. Pokud vyberete **Editor videa**, můžete pokračovat v úpravě tohoto projektu. Úpravy zahrnují přidání nebo odebrání videí a klipů nebo přejmenování projektu.
+    Pokud vyberete tento projekt, zobrazí se všechny přehledy a časová osa tohoto projektu. Pokud vyberete možnost **Editor videa**, můžete pokračovat v provádění úprav tohoto projektu. Úpravy zahrnují přidávání a odebírání videí a klipů nebo přejmenovávání projektu.
 
-    ![Video editor](./media/video-indexer-view-edit/video-editor.png)
+    ![Editor videí](./media/video-indexer-view-edit/video-editor.png)
      
 ## <a name="create-a-project-from-your-video"></a>Vytvoření projektu z videa
 
 Nový projekt můžete vytvořit přímo z videa ve vašem účtu. 
 
-1. Přejděte na kartě **Knihovna** na webu Video Indexer.
-1. Otevřete video, které chcete použít k vytvoření projektu. Na stránce Přehledy a časové osy vyberte tlačítko **Editor videa.**
+1. Přejít na kartu **Knihovna** na webu video indexer.
+1. Otevřete video, které chcete použít k vytvoření projektu. Na stránce přehledy a časová osa vyberte tlačítko **Editor videa** .
 
-    Tím přejdete na stejnou stránku, kterou jste použili k vytvoření nového projektu. Na rozdíl od nového projektu se zobrazí segmenty přehledů s časovým razítkem videa, které jste dříve začali upravovat.
+    Tím přejdete na stejnou stránku, kterou jste použili k vytvoření nového projektu. Na rozdíl od nového projektu uvidíte segmenty pro přehledy s časovým razítkem videa, které jste dříve začali upravovat.
 
 ## <a name="see-also"></a>Viz také
 

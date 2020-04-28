@@ -1,6 +1,6 @@
 ---
 title: Upgrade na nejnovější klientskou knihovnu elastické databáze
-description: Pomocí aplikace Nuget můžete upgradovat klientskou knihovnu elastické databáze.
+description: Pomocí Nugetu upgradujte klientskou knihovnu elastické databáze.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,49 +12,49 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
 ms.openlocfilehash: a1ab684f13c56698d4359f2bf74826f3dd696c6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73823511"
 ---
-# <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>Upgrade aplikace tak, aby používala nejnovější klientskou knihovnu elastické databáze
+# <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>Upgrade aplikace na použití nejnovější klientské knihovny pro elastickou databázi
 
-Nové verze [klientské knihovny elastická databáze](sql-database-elastic-database-client-library.md) jsou k dispozici prostřednictvím NuGet a rozhraní NuGet Package Manager v sadě Visual Studio. Inovace obsahují opravy chyb a podporu nových funkcí klientské knihovny.
+Nové verze [elastic Database klientské knihovny](sql-database-elastic-database-client-library.md) jsou k dispozici prostřednictvím NuGet a rozhraní Správce balíčků NuGet v aplikaci Visual Studio. Upgrady obsahují opravy chyb a podporu pro nové funkce klientské knihovny.
 
-**Pro nejnovější verzi:** Přejděte na [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).
+**Pro nejnovější verzi:** Přejít na [Microsoft. Azure. SqlDatabase. ElasticScale. Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).
 
-Znovu sestavte aplikaci pomocí nové knihovny a změňte stávající metadata Správce map svižné části uložené v databázích Azure SQL tak, aby podporovala nové funkce.
+Znovu sestavte aplikaci s novou knihovnou a také změňte existující metadata správce map horizontálních oddílů uložené v databázích SQL Azure pro podporu nových funkcí.
 
-Provedení těchto kroků v pořadí zajišťuje, že staré verze klientské knihovny již nejsou k dispozici ve vašem prostředí při aktualizaci objektů metadat, což znamená, že objekty metadat staré verze nebudou vytvořeny po upgradu.
+Provedení těchto kroků v pořadí zajistí, že starší verze klientské knihovny nebudou ve vašem prostředí nadále přítomny, když jsou aktualizovány objekty metadat, což znamená, že objekty metadat staré verze nebudou vytvořeny po upgradu.
 
-## <a name="upgrade-steps"></a>Kroky upgradu
+## <a name="upgrade-steps"></a>Postup upgradu
 
-**1. Inovujte své aplikace.** V sadě Visual Studio stáhněte a odkazujte na nejnovější verzi klientské knihovny do všech vývojových projektů, které knihovnu používají. pak znovu sestavit a nasadit.
+**1. Upgradujte své aplikace.** V aplikaci Visual Studio Stáhněte a odkazujte na nejnovější verzi klientské knihovny do všech vývojových projektů, které knihovnu používají. pak znovu sestavte a nasaďte.
 
-* V řešení Sady Visual Studio vyberte **nástroje, které** --> **spravuje správce** -->  balíčků**NuGet, aby se podařilo spravovat balíčky nugetů pro řešení**.
-* (Visual Studio 2013) V levém panelu vyberte **Aktualizace**a pak vyberte tlačítko **Aktualizovat** v balíčku **Azure SQL Database Elastic Scale client library,** který se zobrazí v okně.
-* (Visual Studio 2015) Nastavte pole Filtr na **upgrade k dispozici**. Vyberte balíček, který chcete aktualizovat, a klepněte na tlačítko **Aktualizovat.**
-* (Visual Studio 2017) V horní části dialogového okna vyberte **Aktualizace**. Vyberte balíček, který chcete aktualizovat, a klepněte na tlačítko **Aktualizovat.**
-* Sestavení a nasazení.
+* V řešení sady Visual Studio vyberte **nástroje** --> **správce** -->  balíčků NuGet**Spravovat balíčky NuGet pro řešení**.
+* (Visual Studio 2013) Na levém panelu vyberte **aktualizace**a potom vyberte tlačítko **aktualizovat** v balíčku **Azure SQL Database klientské knihovny elastického škálování** , které se zobrazí v okně.
+* (Visual Studio 2015) Nastavte pole filtru na **Upgrade k dispozici**. Vyberte balíček, který chcete aktualizovat, a klikněte na tlačítko **aktualizovat** .
+* (Visual Studio 2017) V horní části dialogového okna vyberte **aktualizace**. Vyberte balíček, který chcete aktualizovat, a klikněte na tlačítko **aktualizovat** .
+* Sestavování a nasazování.
 
-**2. Inovujte skripty.** Pokud ke správě štrůdků používáte skripty **prostředí PowerShell,** [stáhněte novou verzi knihovny](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) a zkopírujte ji do adresáře, ze kterého spouštíte skripty.
+**2. upgradujte skripty.** Pokud ke správě horizontálních oddílů používáte skripty **prostředí PowerShell** , [Stáhněte si novou verzi knihovny](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) a zkopírujte ji do adresáře, ze kterého spouštíte skripty.
 
-**3. Inovujte službu rozdělení sloučení.** Pokud použijete nástroj pro sloučení elastické databáze k reorganizaci dělených dat, [stáhněte a nasaďte nejnovější verzi nástroje](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/). Podrobné kroky upgradu služby naleznete [zde](sql-database-elastic-scale-overview-split-and-merge.md).
+**3. upgradujte službu pro dělení a slučování.** Pokud k reorganizaci dat horizontálně dělené používáte nástroj pro dělení elastické databáze, [Stáhněte a nasaďte nejnovější verzi nástroje](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/). Podrobný postup upgradu pro službu najdete [tady](sql-database-elastic-scale-overview-split-and-merge.md).
 
-**4. Inovujte databáze Správce map svižnků**. Upgradujte metadata podporující mapy síní v Azure SQL Database.  Existují dva způsoby, jak toho dosáhnout pomocí Prostředí PowerShell nebo C#. Obě možnosti jsou uvedeny níže.
+**4. upgradujte svoje databáze správce mapy horizontálních oddílů**. Upgradujte metadata podporující mapy horizontálních oddílů v Azure SQL Database.  To můžete provést dvěma způsoby pomocí PowerShellu nebo C#. Níže jsou uvedeny obě možnosti.
 
-***Možnost 1: Upgrade metadat pomocí PowerShellu***
+***Možnost 1: upgrade metadat pomocí PowerShellu***
 
-1. Stáhněte si nejnovější nástroj příkazového řádku pro NuGet [odtud](https://nuget.org/nuget.exe) a uložte do složky.
-2. Otevřete příkazový řádek, přejděte do stejné složky a vyjezte příkaz:`nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Client`
-3. Přejděte do podsložky obsahující novou klientskou verzi dll, kterou jste právě stáhli, například:`cd .\Microsoft.Azure.SqlDatabase.ElasticScale.Client.1.0.0\lib\net45`
-4. Stáhněte si skript pro upgrade klienta elastické databáze z [Centra skriptů](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-Elastic-6442e6a9)a uložte jej do stejné složky obsahující dll.
-5. Z této složky spusťte z příkazového řádku prostředí PowerShell .\upgrade.ps1 a postupujte podle pokynů.
+1. Stáhněte si nejnovější nástroj příkazového řádku pro NuGet z [tohoto místa](https://nuget.org/nuget.exe) a uložte ho do složky.
+2. Otevřete příkazový řádek, přejděte do stejné složky a vydejte příkaz:`nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Client`
+3. Přejděte do podsložky obsahující novou verzi klientské knihovny DLL, kterou jste právě stáhli, například:`cd .\Microsoft.Azure.SqlDatabase.ElasticScale.Client.1.0.0\lib\net45`
+4. Stáhněte si skript upgradu klienta elastické databáze z [centra skriptů](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-Elastic-6442e6a9)a uložte ho do stejné složky, která obsahuje knihovnu DLL.
+5. Z této složky spusťte z příkazového řádku PowerShell .\upgrade.ps1 a postupujte podle zobrazených výzev.
 
-***Možnost 2: Upgrade metadat pomocí jazyka C #***
+***Možnost 2: upgrade metadat pomocí jazyka C #***
 
-Případně vytvořte aplikaci Sady Visual Studio, která otevře shardMapManager, itetuje přes všechny oddíly a provede upgrade metadat voláním metody [UpgradeLocalStore](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradelocalstore) a [UpgradeGlobalStore](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradeglobalstore) jako v tomto příkladu:
+Případně můžete vytvořit aplikaci Visual Studio, která otevře vaši ShardMapManager, iterovat všechny horizontálních oddílů a provede upgrade metadat voláním metod [UpgradeLocalStore](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradelocalstore) a [UpgradeGlobalStore](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradeglobalstore) jako v tomto příkladu:
 
     ShardMapManager smm =
        ShardMapManagerFactory.GetSqlShardMapManager
@@ -67,13 +67,13 @@ Případně vytvořte aplikaci Sady Visual Studio, která otevře shardMapManage
        smm.UpgradeLocalStore(loc);
     }
 
-Tyto techniky pro upgrady metadat lze použít vícekrát bez poškození. Například pokud starší verze klienta neúmyslně vytvoří šiřík po již aktualizovány, můžete spustit upgrade znovu přes všechny oddíly a zajistit, že nejnovější verze metadat je k dispozici v celé infrastruktuře.
+Tyto techniky pro upgrady metadat lze použít několikrát bez poškození. Pokud například starší verze klienta neúmyslně vytvoří horizontálních oddílů po aktualizaci, můžete znovu spustit upgrade napříč všemi horizontálních oddílů a zajistit, aby byla v celé infrastruktuře k dispozici nejnovější verze metadat.
 
-**Poznámka:**  Nové verze klientské knihovny publikované k dnešnímu dni nadále pracují s předchozími verzemi metadat Správce map svižných bitových částí v Azure SQL DB a naopak.   Chcete-li však využít některé nové funkce v nejnovějším klientovi, je třeba upgradovat metadata.   Všimněte si, že upgrady metadat nebude mít vliv na všechna data uživatele nebo data specifická pro aplikaci, pouze objekty vytvořené a používané Správce map střepů.  A aplikace nadále pracovat prostřednictvím sekvence upgradu popsané výše.
+**Poznámka:**  Nové verze klientských knihoven, které jsou publikovány k datu, fungují s předchozími verzemi metadat správce map horizontálních oddílů ve službě Azure SQL DB a naopak.   Pokud ale chcete využít výhod některých nových funkcí v nejnovějším klientovi, je potřeba upgradovat metadata.   Aktualizace metadat nebudou mít vliv na data týkající se dat uživatelů nebo aplikací, pouze objekty vytvořené a používané správcem mapy horizontálních oddílů.  A aplikace pokračují v provozu prostřednictvím pořadí upgradu popsaného výše.
 
 ## <a name="elastic-database-client-version-history"></a>Historie verzí klienta elastické databáze
 
-Pokud jde o historii verzí, přejděte na [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)
+Pro historii verzí použijte [Microsoft. Azure. SqlDatabase. ElasticScale. Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) .
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

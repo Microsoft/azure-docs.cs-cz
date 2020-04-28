@@ -1,6 +1,6 @@
 ---
-title: Zjištění koncového bodu správy spravovaných instancí
-description: Zjistěte, jak získat veřejnou IP adresu koncového bodu služby Endpoint spravované instance Azure SQL Database spravované a ověřit její integrovanou ochranu brány firewall.
+title: Zjistit koncový bod správy spravované instance
+description: Přečtěte si, jak získat veřejnou IP adresu koncového bodu správy spravované instance Azure SQL Database a ověřit jeho integrovanou ochranu brány firewall.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,23 +12,23 @@ ms.author: srbozovi
 ms.reviewer: sstein, carlrab
 ms.date: 12/04/2018
 ms.openlocfilehash: 03cd89084c2bae3339311f2f684a0d5e7bac1f68
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73825720"
 ---
-# <a name="determine-the-management-endpoint-ip-address"></a>Určení ip adresy koncového bodu pro správu
+# <a name="determine-the-management-endpoint-ip-address"></a>Určení IP adresy koncového bodu správy
 
-Virtuální cluster spravované instance Azure SQL Database obsahuje koncový bod pro správu, který Microsoft používá pro operace správy. Koncový bod správy je chráněn vestavěnou bránou firewall na úrovni sítě a vzájemným ověřováním certifikátů na úrovni aplikace. Můžete určit IP adresu koncového bodu správy, ale nemůžete získat přístup k tomuto koncovému bodu.
+Virtuální cluster Azure SQL Database Managed instance obsahuje koncový bod správy, který Microsoft používá pro operace správy. Koncový bod správy je chráněný integrovanou bránou firewall na úrovni sítě a vzájemného ověřování certifikátů na úrovni aplikace. Můžete určit IP adresu koncového bodu správy, ale nemůžete získat přístup k tomuto koncovému bodu.
 
-Chcete-li zjistit adresu IP pro správu, proveďte vyhledávání `mi-name.zone_id.database.windows.net`DNS ve spravované instanci FQDN spravované instance: . Tím se vrátí položka DNS, `trx.region-a.worker.vnet.database.windows.net`která je jako . Potom můžete provést vyhledávání DNS na tomto fQDN s ".vnet" odebrána. Tím se vrátí ip adresa správy. 
+IP adresu pro správu určíte tak, že provedete vyhledávání DNS v plně kvalifikovaném názvu domény spravované instance: `mi-name.zone_id.database.windows.net`. Tato akce vrátí položku DNS, jako `trx.region-a.worker.vnet.database.windows.net`je. Potom můžete provést vyhledání DNS v tomto plně kvalifikovaném názvu domény s odebraným ". VNet". Tím se vrátí IP adresa pro správu. 
 
-Toto prostředí PowerShell udělá vše \<za vás,\> pokud nahradíte MI FQDN položkou DNS spravované instance: `mi-name.zone_id.database.windows.net`:
+Tento PowerShell to vše udělá za vás, pokud nahradíte \<plně kvalifikovaný\> název domény názvem mi pomocí položky DNS vaší spravované `mi-name.zone_id.database.windows.net`instance:
   
 ``` powershell
   $MIFQDN = "<MI FQDN>"
   resolve-dnsname $MIFQDN | select -first 1  | %{ resolve-dnsname $_.NameHost.Replace(".vnet","")}
 ```
 
-Další informace o spravovaných instancích a připojení najdete v [tématu Architektura připojení spravované instance Azure SQL Database .](sql-database-managed-instance-connectivity-architecture.md)
+Další informace o spravovaných instancích a připojeních najdete v tématu [Azure SQL Database architektura připojení spravované instance](sql-database-managed-instance-connectivity-architecture.md).

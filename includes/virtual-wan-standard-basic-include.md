@@ -9,17 +9,17 @@ ms.date: 10/20/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 732c08a1d97735ef1df04abbed548fd4af4e3411
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73491663"
 ---
-| **Virtuální typ WAN** | **Typ rozbočovače** | **Dostupné konfigurace** |
+| **Typ virtuální sítě WAN** | **Typ centra** | **Dostupné konfigurace** |
 |---|---|---|
-|Basic | Basic | Pouze síť VPN site-to-site |
-| Standard | Standard | ExpressRoute<br>Uživatel VPN (P2S)<br>VPN (site-to-site)<br> Inter-hub a virtuální síť-k virtuální síti tranzitu přes virtuální rozbočovač |
+|Základní | Základní | Jenom síť Site-to-Site VPN |
+| Standard | Standard | ExpressRoute<br>SÍŤ VPN uživatele (P2S)<br>SÍŤ VPN (site-to-site)<br> Přenos mezi rozbočovači a propojení VNet-to-VNet přes virtuální rozbočovač |
 
 >[!NOTE]
->Můžete upgradovat ze základní na standardní, ale nelze vrátit ze standardní zpět na základní.
+>Můžete upgradovat z úrovně Basic na standard, ale nepůjde se vrátit zpět na základní verzi.
 >

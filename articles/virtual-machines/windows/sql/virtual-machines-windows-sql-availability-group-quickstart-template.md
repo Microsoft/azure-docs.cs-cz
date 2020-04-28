@@ -1,6 +1,6 @@
 ---
-title: Konfigurace skupiny dostupnosti (šablona rychlého startu Azure)
-description: Pomocí šablon rychlého startu Azure vytvořte cluster s podporou převzetí služeb při selhání Windows, připojte virtuální počítače SQL Serveru ke clusteru, vytvořte naslouchací proces a nakonfigurujte interní nástroje pro vyrovnávání zatížení v Azure.
+title: Konfigurace skupiny dostupnosti (šablona Azure pro rychlý Start)
+description: Pomocí šablon Azure pro rychlý Start můžete vytvořit cluster s podporou převzetí služeb při selhání Windows, připojit SQL Server virtuální počítače ke clusteru, vytvořit naslouchací proces a nakonfigurovat interní nástroj pro vyrovnávání zatížení v Azure.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -16,154 +16,154 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: edf810dfc975eebaf261eac7b89106c9e29c759c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74022382"
 ---
-# <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-an-azure-vm"></a>Konfigurace skupiny dostupnosti pro SQL Server na virtuálním počítači Azure pomocí šablon Azure quickstart
-Tento článek popisuje, jak pomocí šablon rychlého startu Azure částečně automatizovat nasazení konfigurace skupiny dostupnosti vždy na pro virtuální počítače SQL Server v Azure. V tomto procesu se používají dvě šablony rychlého startu Azure: 
+# <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-an-azure-vm"></a>Použití šablon pro rychlý Start Azure ke konfiguraci skupiny dostupnosti pro SQL Server na virtuálním počítači Azure
+Tento článek popisuje, jak pomocí šablon Azure pro rychlý Start částečně automatizovat nasazení konfigurace skupiny dostupnosti Always On pro SQL Server virtuálních počítačů v Azure. V tomto procesu se používají dvě šablony pro rychlý Start Azure: 
 
    | Šablona | Popis |
    | --- | --- |
-   | [101-sql-vm-ag-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-ag-setup) | Vytvoří cluster windows převzetí služeb při selhání a připojí virtuální chody SQL Server k němu. |
-   | [101-sql-vm-aglistener-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-aglistener-setup) | Vytvoří naslouchací proces skupiny dostupnosti a nakonfiguruje interní vyrovnávání zatížení. Tuto šablonu lze použít pouze v případě, že cluster windows převzetí služeb při selhání byl vytvořen pomocí šablony **101-sql-vm-ag-setup.** |
+   | [101-SQL-VM-AG-Setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-ag-setup) | Vytvoří cluster s podporou převzetí služeb při selhání Windows a připojí k němu SQL Server virtuální počítače. |
+   | [101-SQL-VM-aglistener-Setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-aglistener-setup) | Vytvoří naslouchací proces skupiny dostupnosti a nakonfiguruje interní nástroj pro vyrovnávání zatížení. Tuto šablonu lze použít pouze v případě, že byl vytvořen cluster s podporou převzetí služeb při selhání systému Windows pomocí šablony **101-SQL-VM-AG-Setup** . |
    | &nbsp; | &nbsp; |
 
-Ostatní části konfigurace skupiny dostupnosti musí být provedeny ručně, například vytvoření skupiny dostupnosti a vytvoření interního nástroje pro vyrovnávání zatížení. Tento článek obsahuje posloupnost automatizovaných a ruční kroky.
+Ostatní části Konfigurace skupiny dostupnosti se musí provádět ručně, například vytvoření skupiny dostupnosti a vytvoření interního nástroje pro vyrovnávání zatížení. Tento článek poskytuje posloupnost automatizovaných a ručních kroků.
  
 
 ## <a name="prerequisites"></a>Požadavky 
-Chcete-li automatizovat nastavení skupiny dostupnosti vždy zapnuté pomocí šablon rychlého startu, musíte mít následující požadavky: 
-- Předplatné [Azure](https://azure.microsoft.com/free/).
+K automatizaci nastavení skupiny dostupnosti Always On pomocí šablon pro rychlý Start musíte mít následující požadavky: 
+- [Předplatné Azure](https://azure.microsoft.com/free/).
 - Skupina prostředků s řadičem domény. 
-- Jeden nebo více virtuálních počítačů spojených s doménou [v Azure se spuštěnou edicí SQL Server 2016 (nebo novější) Enterprise,](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) které jsou ve stejné skupině dostupnosti nebo v zóně dostupnosti a které byly [zaregistrovány u poskytovatele prostředků virtuálního počítače SQL](virtual-machines-windows-sql-register-with-resource-provider.md).  
-- Dvě dostupné (nepoužívané žádnou entitou) IP adresy: jedna pro interní vyrovnávání zatížení a jedna pro naslouchací proces skupiny dostupnosti v rámci stejné podsítě jako skupina dostupnosti. Pokud se používá existující správce zatížení, potřebujete pouze jednu dostupnou adresu IP.  
+- Jeden nebo víc virtuálních počítačů připojených k doméně [v Azure se spuštěným SQL Server 2016 (nebo novější) Enterprise Edition](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) , které jsou ve stejné skupině dostupnosti nebo v zóně dostupnosti a které jsou [zaregistrované u poskytovatele prostředků SQL VM](virtual-machines-windows-sql-register-with-resource-provider.md).  
+- Dvě dostupné (nepoužívají se v žádné entitě) IP adresy: jeden pro interní nástroj pro vyrovnávání zatížení a jeden pro naslouchací proces skupiny dostupnosti ve stejné podsíti jako skupina dostupnosti. Pokud se používá existující Nástroj pro vyrovnávání zatížení, budete potřebovat jenom jednu dostupnou IP adresu.  
 
 ## <a name="permissions"></a>Oprávnění
-Následující oprávnění jsou nezbytná ke konfiguraci skupiny dostupnosti vždy zapnuté pomocí šablon rychlého startu Azure: 
+Následující oprávnění jsou nutná ke konfiguraci skupiny dostupnosti Always On pomocí šablon Azure pro rychlý Start: 
 
-- Existující uživatelský účet domény, který má oprávnění **Vytvořit objekt počítače** v doméně.  Například účet správce domény má obvykle dostatečná account@domain.comoprávnění (například: ). _Tento účet by měl být také součástí skupiny místního správce na každém virtuálním počítači k vytvoření clusteru._
-- Uživatelský účet domény, který řídí službu SQL Server. 
+- Existující účet uživatele domény, který má v doméně oprávnění **vytvořit objekt počítače** .  Například účet správce domény má obvykle dostatečná oprávnění (například: account@domain.com). _Tento účet by měl být taky součástí místní skupiny správců na každém virtuálním počítači, aby se vytvořil cluster._
+- Účet uživatele domény, který řídí službu SQL Server. 
 
 
-## <a name="step-1-create-the-failover-cluster-and-join-sql-server-vms-to-the-cluster-by-using-a-quickstart-template"></a>Krok 1: Vytvoření clusteru s podporou převzetí služeb při selhání a připojení virtuálních počítače SQL Server ke clusteru pomocí šablony rychlého startu 
-Po registraci virtuálních počítačů SQL Server u poskytovatele prostředků virtuálního počítače SQL Se můžete připojit k virtuálním počítačům SQL Server ke *skupinám SqlVirtualMachineGroups*. Tento prostředek definuje metadata clusteru windows převzetí služeb při selhání. Metadata zahrnují verzi, edici, plně kvalifikovaný název domény, účty služby Active Directory pro správu clusteru i služby SQL Server a účet úložiště jako cloudový důkaz. 
+## <a name="step-1-create-the-failover-cluster-and-join-sql-server-vms-to-the-cluster-by-using-a-quickstart-template"></a>Krok 1: Vytvoření clusteru s podporou převzetí služeb při selhání a připojení SQL Server virtuálních počítačů ke clusteru pomocí šablony pro rychlý Start 
+Po registraci SQL Server virtuálních počítačů u poskytovatele prostředků virtuálního počítače SQL můžete připojit své virtuální počítače SQL Server k *SqlVirtualMachineGroups*. Tento prostředek definuje metadata clusteru s podporou převzetí služeb při selhání systému Windows. Metadata obsahují verze, edice, plně kvalifikovaný název domény, účty služby Active Directory pro správu clusteru i služby SQL Server a účet úložiště jako disk s kopií cloudu. 
 
-Přidání virtuálních počítačů SQL Server do skupiny prostředků *SQLVirtualMachineGroups* spustí zasuňte clusterovou službu S podporou převzetí služeb při selhání systému Windows a vytvoří cluster a připojí tyto virtuální počítače SQL Server k tomuto clusteru. Tento krok je automatizován pomocí šablony rychlého startu **101-sql-vm-ag-setup.** Můžete ji implementovat pomocí následujících kroků:
+Přidáním SQL Server virtuálních počítačů do skupiny prostředků *SqlVirtualMachineGroups* se služba Cluster s podporou převzetí služeb při selhání systému Windows pokusí vytvořit cluster a pak tyto SQL Server virtuální počítače připojí do tohoto clusteru. Tento krok je automatizovaný pomocí šablony rychlého startu **101-SQL-VM-AG-Setup** . Můžete ji implementovat pomocí následujících kroků:
 
-1. Přejděte na šablonu rychlého startu [**101-sql-vm-ag-setup.**](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-ag-setup) Pak vyberte **Nasazení do Azure** a otevřete šablonu rychlého startu na webu Azure Portal.
-1. Vyplňte požadovaná pole pro konfiguraci metadat pro cluster windows převzetí služeb při selhání. Volitelná pole můžete ponechat prázdná.
+1. Otevřete šablonu pro rychlý Start [**101-SQL-VM-AG-Setup**](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-ag-setup) . Pak vyberte **nasadit do Azure** a otevřete šablonu pro rychlý start v Azure Portal.
+1. Vyplňte požadovaná pole a nakonfigurujte metadata pro cluster s podporou převzetí služeb při selhání systému Windows. Volitelná pole můžete nechat prázdná.
 
-   V následující tabulce jsou uvedeny potřebné hodnoty pro šablonu: 
+   V následující tabulce jsou uvedeny nezbytné hodnoty pro šablonu: 
 
    | **Pole** | Hodnota |
    | --- | --- |
-   | **Předplatné** |  Předplatné, kde existují virtuální počítače SQL Server. |
-   |**Skupina prostředků** | Skupina prostředků, ve které jsou virtuální počítače SQL Server umístěny. | 
-   |**Název clusteru s podporou převzetí služeb při selhání** | Název, který chcete pro nový cluster windows převzetí služeb při selhání. |
-   | **Existující seznam virtuálních mís** | Virtuální servery SQL Server, které se chcete účastnit skupiny dostupnosti a být součástí tohoto nového clusteru. Oddělte tyto hodnoty čárkou a mezerou (například *SQLVM1, SQLVM2).* |
-   | **Verze serveru SQL Server** | Verze sql serveru virtuálních počítačích SQL Server. Vyberte ji z rozevíracího seznamu. V současné době jsou podporovány pouze sql server 2016 a SQL Server 2017 bitové kopie. |
-   | **Existující plně kvalifikovaný název domény** | Existující hlavní název domény pro doménu, ve které jsou virtuální počítače SQL Server umístěny. |
-   | **Existující účet domény** | Existující uživatelský účet domény, který má **oprávnění Vytvořit objekt počítače** v doméně jako [CNO](/windows-server/failover-clustering/prestage-cluster-adds) je vytvořen během nasazení šablony. Například účet správce domény má obvykle dostatečná account@domain.comoprávnění (například: ). *Tento účet by měl být také součástí skupiny místního správce na každém virtuálním počítači k vytvoření clusteru.*| 
-   | **Heslo účtu domény** | Heslo pro dříve uvedený uživatelský účet domény. | 
-   | **Existující účet služby SQL** | Uživatelský účet domény, který řídí [službu SQL Server](/sql/database-engine/configure-windows/configure-windows-service-accounts-and-permissions) account@domain.comběhem nasazení skupiny dostupnosti (například: ). |
-   | **Heslo služby SQL** | Heslo používané uživatelským účtem domény, který řídí službu SQL Server. |
-   | **Název cloudového svědka** | Nový účet úložiště Azure, který se bude vytvářet a používat pro cloud svědka. Tento název můžete upravit. |
-   | **\_artefakty Umístění** | Toto pole je nastaveno ve výchozím nastavení a nemělo by být měněno. |
-   | **\_artefakty Umístění Sas Token** | Toto pole je záměrně ponecháno prázdné. |
+   | **Předplatné** |  Předplatné, ve kterém SQL Server virtuální počítače existují. |
+   |**Skupina prostředků** | Skupina prostředků, ve které se nacházejí SQL Server virtuálních počítačů. | 
+   |**Název clusteru převzetí služeb při selhání** | Název, který chcete pro nový cluster s podporou převzetí služeb při selhání systému Windows. |
+   | **Existující seznam virtuálních počítačů** | SQL Server virtuální počítače, které chcete zapojit do skupiny dostupnosti a které jsou součástí tohoto nového clusteru. Oddělte tyto hodnoty čárkou a mezerou (například: *SQLVM1, SQLVM2*). |
+   | **Verze SQL Server** | SQL Server verze vašich SQL Serverch virtuálních počítačů. Vyberte ho z rozevíracího seznamu. V současné době jsou podporovány pouze SQL Server 2016 a SQL Server 2017 bitové kopie. |
+   | **Existující plně kvalifikovaný název domény** | Stávající plně kvalifikovaný název domény pro doménu, ve které se nachází vaše virtuální počítače s SQL Server. |
+   | **Existující doménový účet** | Existující účet uživatele domény, který má v doméně oprávnění **vytvořit objekt počítače** jako [objekt CNO](/windows-server/failover-clustering/prestage-cluster-adds) , se vytvoří během nasazování šablony. Například účet správce domény má obvykle dostatečná oprávnění (například: account@domain.com). *Tento účet by měl být taky součástí místní skupiny správců na každém virtuálním počítači, aby se vytvořil cluster.*| 
+   | **Heslo účtu domény** | Heslo pro dříve uvedený účet uživatele domény. | 
+   | **Existující účet služby SQL** | Uživatelský účet domény, který řídí [službu SQL Server](/sql/database-engine/configure-windows/configure-windows-service-accounts-and-permissions) během nasazování skupiny dostupnosti (například: account@domain.com). |
+   | **Heslo služby SQL** | Heslo, které používá účet uživatele domény, který řídí službu SQL Server. |
+   | **Název sdílené složky v cloudu** | Vytvoří se nový účet Azure Storage, který se vytvoří a použije pro disk s kopií cloudu. Tento název můžete změnit. |
+   | **\_Umístění artefaktů** | Toto pole je nastavené ve výchozím nastavení a nemělo by se měnit. |
+   | **\_Token SAS umístění artefaktů** | Toto pole je úmyslně ponecháno prázdné. |
    | &nbsp; | &nbsp; |
 
-1. Pokud souhlasíte s podmínkami, zaškrtněte **políčko Souhlasím s výše uvedenými podmínkami.** Pak vyberte **Koupit a** dokončete nasazení šablony rychlého startu. 
-1. Chcete-li sledovat nasazení, vyberte nasazení z ikony **zvonek oznámení** v horní navigační banner nebo přejděte na **skupinu prostředků** na webu Azure Portal. V části **Nastavení**vyberte **Nasazení** a zvolte nasazení **Microsoft.Template.** 
+1. Pokud souhlasíte s podmínkami a ujednáními, zaškrtněte políčko Souhlasím **s podmínkami a ujednáními uvedenými nahoře** . Pak výběrem **koupit** dokončíte nasazení šablony pro rychlý Start. 
+1. Pokud chcete monitorovat vaše nasazení, buď vyberte nasazení z ikony zvonku **oznámení** v horním navigačním panelu nebo v Azure Portal přejít na **skupinu prostředků** . V části **Nastavení**vyberte **nasazení** a zvolte nasazení **Microsoft. template** . 
 
 >[!NOTE]
-> Pověření poskytnutá během nasazení šablony jsou uložena pouze po dobu trvání nasazení. Po dokončení nasazení jsou tato hesla odebrána. Budete vyzváni k jejich poskytnutí znovu, pokud přidáte další virtuální chod sql serveru do clusteru. 
+> Přihlašovací údaje zadané během nasazování šablony se ukládají jenom pro délku nasazení. Po dokončení nasazení se tato hesla odeberou. Po přidání dalších SQL Server virtuálních počítačů do clusteru budete požádáni o jejich opětovné zadání. 
 
 
 ## <a name="step-2-manually-create-the-availability-group"></a>Krok 2: Ruční vytvoření skupiny dostupnosti 
-Ručně vytvořte skupinu dostupnosti obvyklým způsobem pomocí [sql server management studio](/sql/database-engine/availability-groups/windows/use-the-availability-group-wizard-sql-server-management-studio), [PowerShell](/sql/database-engine/availability-groups/windows/create-an-availability-group-sql-server-powershell)nebo [Transact-SQL](/sql/database-engine/availability-groups/windows/create-an-availability-group-transact-sql). 
+Ručně vytvořte skupinu dostupnosti obvyklým způsobem, a to pomocí [SQL Server Management Studio](/sql/database-engine/availability-groups/windows/use-the-availability-group-wizard-sql-server-management-studio), [PowerShellu](/sql/database-engine/availability-groups/windows/create-an-availability-group-sql-server-powershell)nebo [Transact-SQL](/sql/database-engine/availability-groups/windows/create-an-availability-group-transact-sql). 
 
 >[!IMPORTANT]
-> *Nevytvářejte* naslouchací proces v tomto okamžiku, protože **101-sql-vm-aglistener-setup** úvodní šablona to automaticky v kroku 4. 
+> V tuto chvíli *nevytvářejte naslouchací* proces, protože šablona pro rychlý Start **101-SQL-VM-aglistener-Setup** je automaticky v kroku 4. 
 
-## <a name="step-3-manually-create-the-internal-load-balancer"></a>Krok 3: Ruční vytvoření interního systému vyrovnávání zatížení
-Naslouchací proces skupiny dostupnosti always on vyžaduje interní instanci Azure Load Balancer. Interní vykladač zatížení poskytuje "plovoucí" IP adresu pro naslouchací proces skupiny dostupnosti, který umožňuje rychlejší převzetí služeb při selhání a opětovné připojení. Pokud jsou virtuální servery SQL Server ve skupině dostupnosti součástí stejné skupiny dostupnosti, můžete použít základní nástroje pro vyrovnávání zatížení. V opačném případě je třeba použít standardní vyrovnávání zatížení. 
+## <a name="step-3-manually-create-the-internal-load-balancer"></a>Krok 3: Ruční vytvoření interního nástroje pro vyrovnávání zatížení
+Naslouchací proces skupiny dostupnosti Always On vyžaduje interní instanci Azure Load Balancer. Interní nástroj pro vyrovnávání zatížení poskytuje "plovoucí" IP adresu pro naslouchací proces skupiny dostupnosti, který umožňuje rychlejší převzetí služeb při selhání a opětovné připojení. Pokud jsou virtuální počítače s SQL Server ve skupině dostupnosti součástí stejné sady dostupnosti, můžete použít základní nástroj pro vyrovnávání zatížení. V opačném případě je nutné použít standardní nástroj pro vyrovnávání zatížení. 
 
 > [!IMPORTANT]
-> Interní nástroj pro vyrovnávání zatížení by měl být ve stejné virtuální síti jako instance virtuálního počítače SQL Server. 
+> Interní nástroj pro vyrovnávání zatížení by měl být ve stejné virtuální síti jako instance virtuálních počítačů SQL Server. 
 
-Stačí vytvořit interní systém vyrovnávání zatížení. V kroku 4, **101-sql-vm-aglistener-setup** šablony zpracovává zbytek konfigurace (například back-endového fondu, sondy stavu a pravidla vyrovnávání zatížení). 
+Stačí vytvořit interní nástroj pro vyrovnávání zatížení. V kroku 4 šablona pro rychlý Start **101-SQL-VM-aglistener-Setup** zpracovává zbytek konfigurace (například fond back-endu, sondu stavu a pravidla vyrovnávání zatížení). 
 
-1. Na webu Azure Portal otevřete skupinu prostředků, která obsahuje virtuální počítače SQL Serveru. 
+1. V Azure Portal otevřete skupinu prostředků, která obsahuje SQL Server virtuálních počítačů. 
 2. Ve skupině prostředků vyberte **Přidat**.
-3. Vyhledejte **vyvažovače zatížení**. Ve výsledcích hledání vyberte **vykladač zatížení**, který je publikován společností **Microsoft**.
-4. V noži **Balancer zatížení** vyberte **Vytvořit**.
-5. V dialogovém okně **Vytvořit balancer** nakonfigurujte vyvažovač zatížení následujícím způsobem:
+3. Vyhledejte **Nástroj pro vyrovnávání zatížení**. Ve výsledcích hledání vyberte položku **Load Balancer**, která je publikována společností **Microsoft**.
+4. V okně **Load Balancer** vyberte **vytvořit**.
+5. V dialogovém okně **vytvořit nástroj pro vyrovnávání zatížení** nakonfigurujte nástroj pro vyrovnávání zatížení následujícím způsobem:
 
    | Nastavení | Hodnota |
    | --- | --- |
-   | **Název** |Zadejte textový název, který představuje vyrovnávání zatížení. Zadejte například **sqlLB**. |
-   | **Typ** |**Interní**: Většina implementací používá interní nástroj pro vyrovnávání zatížení, který umožňuje aplikacím v rámci stejné virtuální sítě připojit se ke skupině dostupnosti.  </br> **Externí**: Umožňuje aplikacím připojit se ke skupině dostupnosti prostřednictvím veřejného připojení k internetu. |
-   | **Virtuální síť** | Vyberte virtuální síť, ve které se nacházejí instance serveru SQL Server. |
-   | **Podsíť** | Vyberte podsíť, ve které se nacházejí instance serveru SQL Server. |
-   | **Přiřazení IP adresy** |**Statické** |
-   | **Privátní IP adresa** | Zadejte dostupnou adresu IP z podsítě. |
-   | **Předplatné** |Pokud máte více předplatných, může se toto pole zobrazit. Vyberte předplatné, které chcete přidružit k tomuto prostředku. Obvykle se jedná o stejné předplatné jako všechny prostředky pro skupinu dostupnosti. |
-   | **Skupina prostředků** |Vyberte skupinu prostředků, ve které se nacházejí instance serveru SQL Server. |
-   | **Umístění** |Vyberte umístění Azure, ve kterých se nacházejí instance SQL Serveru. |
+   | **Název** |Zadejte textový název, který představuje nástroj pro vyrovnávání zatížení. Zadejte například **sqlLB**. |
+   | **Typ** |**Interní**: většina implementací používá interní nástroj pro vyrovnávání zatížení, který umožňuje aplikacím v rámci stejné virtuální sítě připojit se ke skupině dostupnosti.  </br> **Externí**: umožňuje aplikacím připojit se ke skupině dostupnosti prostřednictvím veřejného internetového připojení. |
+   | **Virtuální síť** | Vyberte virtuální síť, ve které se nacházejí instance SQL Server. |
+   | **Podsíť** | Vyberte podsíť, ve které jsou instance SQL Server. |
+   | **Přiřazení IP adresy** |**Tras** |
+   | **Privátní IP adresa** | Zadejte dostupnou IP adresu z podsítě. |
+   | **Předplatné** |Pokud máte více předplatných, může se toto pole zobrazit. Vyberte předplatné, které chcete k tomuto prostředku přidružit. Obvykle se jedná o stejné předplatné, jako všechny prostředky pro skupinu dostupnosti. |
+   | **Skupina prostředků** |Vyberte skupinu prostředků, ve které jsou instance SQL Server. |
+   | **Umístění** |Vyberte umístění Azure, ve kterém jsou instance SQL Server. |
    | &nbsp; | &nbsp; |
 
 6. Vyberte **Vytvořit**. 
 
 
 >[!IMPORTANT]
-> Veřejný prostředek IP pro každý virtuální počítač SQL Server by měl mít standardní skladovou položku, která by byla kompatibilní se standardním nástroji pro vyrovnávání zatížení. Pokud chcete určit skladovou položku veřejného prostředku IP virtuálního počítače, přejděte na **Skupinu prostředků**, vyberte prostředek **veřejné IP adresy** pro virtuální počítač SQL Server a vyhledejte hodnotu pod **skladovou položkou** v podokně **Přehled.** 
+> Prostředek veřejné IP adresy pro každý virtuální počítač SQL Server by měl mít standardní SKU, aby byl kompatibilní s nástrojem Load Balancer úrovně Standard. Pokud chcete zjistit SKU prostředku veřejné IP adresy vašeho virtuálního počítače, přejděte do **skupiny prostředků**, vyberte prostředek **veřejné IP adresy** pro virtuální počítač SQL Server a vyhledejte hodnotu v části **SKU** v podokně **Přehled** . 
 
-## <a name="step-4-create-the-availability-group-listener-and-configure-the-internal-load-balancer-by-using-the-quickstart-template"></a>Krok 4: Vytvoření naslouchací proces skupiny dostupnosti a konfigurace interního nástrojů pro vyrovnávání zatížení pomocí šablony rychlého startu
+## <a name="step-4-create-the-availability-group-listener-and-configure-the-internal-load-balancer-by-using-the-quickstart-template"></a>Krok 4: vytvoření naslouchacího procesu skupiny dostupnosti a konfigurace interního nástroje pro vyrovnávání zatížení pomocí šablony pro rychlý Start
 
-Vytvořte naslouchací proces skupiny dostupnosti a nakonfigurujte interní nástroje pro vyrovnávání zatížení automaticky pomocí šablony rychlého spuštění **101-sql-vm-aglistener-setup.** Šablona zřdí prostředek Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups/AvailabilityGroupListener. Šablona rychlého startu **101-sql-vm-aglistener-setup** prostřednictvím zprostředkovatele prostředků virtuálního počítače SQL provádí následující akce:
+Vytvořte naslouchací proces skupiny dostupnosti a automaticky nakonfigurujte interní nástroj pro vyrovnávání zatížení pomocí šablony pro rychlý Start **101-SQL-VM-aglistener-Setup** . Šablona zřídí prostředek Microsoft. SqlVirtualMachine/SqlVirtualMachineGroups/AvailabilityGroupListener. Šablona pro rychlý Start **101-SQL-VM-aglistener-Setup** prostřednictvím poskytovatele prostředků virtuálního počítače SQL provádí tyto akce:
 
-- Vytvoří nový front-end IP prostředek (na základě hodnoty IP adresy zapředpokladu během nasazení) pro naslouchací proces. 
-- Konfiguruje nastavení sítě pro cluster a interní systém vyrovnávání zatížení. 
-- Konfiguruje back-endový fond pro interní vyrovnávání zatížení, sondu stavu a pravidla vyrovnávání zatížení.
-- Vytvoří naslouchací proces skupiny dostupnosti s danou adresou IP a názvem.
+- Vytvoří nový prostředek IP adresy front-endu (na základě hodnoty IP adresy uvedené během nasazení) pro naslouchací proces. 
+- Konfiguruje nastavení sítě pro cluster a interní nástroj pro vyrovnávání zatížení. 
+- Konfiguruje fond back-end pro interní nástroj pro vyrovnávání zatížení, sondu stavu a pravidla vyrovnávání zatížení.
+- Vytvoří naslouchací proces skupiny dostupnosti s danou IP adresou a názvem.
  
 >[!NOTE]
-> **Nastavení 101-sql-vm-aglistener** můžete použít pouze v případě, že cluster s podporou převzetí služeb při selhání systému Windows byl vytvořen pomocí šablony **101-sql-vm-ag-setup.**
+> V případě, že byl vytvořen cluster s podporou převzetí služeb při selhání systému Windows pomocí šablony **101-SQL-VM-AG-Setup** , můžete použít možnost **101-SQL-VM-aglistener-Setup** .
    
    
-Chcete-li nakonfigurovat interní systém vyrovnávání zatížení a vytvořit naslouchací proces skupiny dostupnosti, postupujte takto:
-1. Přejděte na šablonu rychlého startu [101-sql-vm-aglistener-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-aglistener-setup) a vyberte **Nasazení do Azure** a spusťte šablonu rychlého startu na webu Azure Portal.
-1. Vyplňte požadovaná pole pro konfiguraci interního systému vyrovnávání zatížení a vytvořte naslouchací proces skupiny dostupnosti. Volitelná pole můžete ponechat prázdná. 
+Pokud chcete nakonfigurovat interní nástroj pro vyrovnávání zatížení a vytvořit naslouchací proces skupiny dostupnosti, udělejte toto:
+1. Otevřete šablonu pro rychlý Start [101-SQL-VM-aglistener-Setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-aglistener-setup) a vyberte **nasadit do Azure** a začněte šablonu pro rychlé zprovoznění v Azure Portal.
+1. Vyplňte požadovaná pole pro konfiguraci interního nástroje pro vyrovnávání zatížení a vytvořte naslouchací proces skupiny dostupnosti. Volitelná pole můžete nechat prázdná. 
 
-   V následující tabulce jsou uvedeny potřebné hodnoty pro šablonu: 
+   V následující tabulce jsou uvedeny nezbytné hodnoty pro šablonu: 
 
    | **Pole** | Hodnota |
    | --- | --- |
-   |**Skupina prostředků** | Skupina prostředků, kde existují virtuální počítače SQL Server a skupiny dostupnosti. | 
-   |**Existující název clusteru s podporou převzetí služeb při selhání** | Název clusteru, ke kterému jsou připojeny virtuální počítače SQL Server. |
-   | **Existující skupina dostupnosti sql**| Název skupiny dostupnosti, které jsou součástí virtuálních počítačích SQL Server. |
-   | **Existující seznam virtuálních mís** | Názvy virtuálních počítačů SQL Server, které jsou součástí výše uvedené skupiny dostupnosti. Oddělte názvy čárkou a mezerou (například *SQLVM1, SQLVM2).* |
-   | **Naslouchací proces** | Název DNS, který chcete přiřadit naslouchací proces. Ve výchozím nastavení tato šablona určuje název "aglistener", ale můžete jej změnit. Název by neměl přesáhnout 15 znaků. |
-   | **Port posluchače** | Port, který má naslouchací proces použít. Obvykle tento port by měl být výchozí 1433. Toto je číslo portu, které určuje šablona. Ale pokud výchozí port byl změněn, naslouchací proces port by měl použít tuto hodnotu místo. | 
-   | **Adresa IP posluchače** | IP adresa, kterou má naslouchací proces používat. Tato adresa bude vytvořena během nasazení šablony, takže zadejte takovou, která se ještě nepoužívá.  |
-   | **Existující podsíť** | Název interní podsítě virtuálních počítačích SQL Server (například: *výchozí).* Tuto hodnotu můžete určit tak, že přejdete do **skupiny prostředků**, vyberete virtuální síť, vyberete **podsítě** v podokně **Nastavení** a zkopírujte hodnotu v části **Název**. |
-   | **Stávající interní systém vyrovnávání zatížení** | Název interního systému vyrovnávání zatížení, který jste vytvořili v kroku 3. |
-   | **Port sondy** | Port sondy, který chcete použít interní horečnatou systému vyrovnávání zatížení. Šablona používá 59999 ve výchozím nastavení, ale tuto hodnotu můžete změnit. |
+   |**Skupina prostředků** | Skupina prostředků, ve které existuje SQL Server virtuálních počítačů a skupin dostupnosti. | 
+   |**Existující název clusteru s podporou převzetí služeb při selhání** | Název clusteru, ke kterému jsou připojené vaše virtuální počítače s SQL Server. |
+   | **Existující skupina dostupnosti SQL**| Název skupiny dostupnosti, do které jsou vaše virtuální počítače s SQL Server součástí. |
+   | **Existující seznam virtuálních počítačů** | Názvy SQL Serverch virtuálních počítačů, které jsou součástí dříve zmíněné skupiny dostupnosti. Názvy oddělte čárkou a mezerou (například: *SQLVM1, SQLVM2*). |
+   | **Naslouchací proces** | Název DNS, který chcete přiřadit k naslouchacího procesu. Ve výchozím nastavení tato šablona určuje název "aglistener", ale můžete jej změnit. Název nesmí být delší než 15 znaků. |
+   | **Port naslouchacího procesu** | Port, který má naslouchací proces používat. Tento port by měl být obvykle výchozí hodnota 1433. Toto je číslo portu, které šablona určuje. Pokud se ale změnil váš výchozí port, port naslouchacího procesu by měl místo toho použít tuto hodnotu. | 
+   | **IP adresa naslouchacího procesu** | IP adresa, kterou má naslouchací proces používat. Tato adresa se vytvoří během nasazování šablony, takže ji zajistěte, aby se už nepoužívala.  |
+   | **Existující podsíť** | Název interní podsítě vašich SQL Server virtuálních počítačů (například: *výchozí*). Tuto hodnotu můžete zjistit tak, že do **skupiny prostředků**vyberete virtuální síť, vybíráte **podsítě** v podokně **Nastavení** a zkopírujete hodnotu pod **názvem**. |
+   | **Stávající interní Load Balancer** | Název interního nástroje pro vyrovnávání zatížení, který jste vytvořili v kroku 3. |
+   | **Port testu paměti** | Port testu, který má používat interní nástroj pro vyrovnávání zatížení. Šablona používá standardně 59999, ale tuto hodnotu můžete změnit. |
    | &nbsp; | &nbsp; |
 
-1. Pokud souhlasíte s podmínkami, zaškrtněte **políčko Souhlasím s výše uvedenými podmínkami.** Vyberte **Nákup,** chcete-li dokončit nasazení šablony rychlého startu. 
-1. Chcete-li sledovat nasazení, vyberte nasazení z ikony **zvonek oznámení** v horní navigační banner nebo přejděte na **skupinu prostředků** na webu Azure Portal. V části **Nastavení**vyberte **Nasazení** a zvolte nasazení **Microsoft.Template.** 
+1. Pokud souhlasíte s podmínkami a ujednáními, zaškrtněte políčko Souhlasím **s podmínkami a ujednáními uvedenými nahoře** . Výběrem **koupit** dokončíte nasazení šablony pro rychlý Start. 
+1. Pokud chcete monitorovat vaše nasazení, buď vyberte nasazení z ikony zvonku **oznámení** v horním navigačním panelu nebo v Azure Portal přejít na **skupinu prostředků** . V části **Nastavení**vyberte **nasazení** a zvolte nasazení **Microsoft. template** . 
 
 >[!NOTE]
->Pokud se vaše nasazení nezdaří v polovině, budete muset ručně [odebrat nově vytvořený naslouchací proces](#remove-the-availability-group-listener) pomocí prostředí PowerShell před opětovným nasazením šablony rychlého startu **101-sql-vm-aglistener-setup.** 
+>Pokud vaše nasazení neprojde uprostřed, budete muset ručně [odebrat nově vytvořený naslouchací proces](#remove-the-availability-group-listener) pomocí prostředí PowerShell, než znovu nasadíte šablonu pro rychlý Start **101-SQL-VM-aglistener-Setup** . 
 
-## <a name="remove-the-availability-group-listener"></a>Odebrání naslouchací proces skupiny dostupnosti
-Pokud později potřebujete odebrat naslouchací proces skupiny dostupnosti, který šablona nakonfigurovala, musíte projít poskytovatelem prostředků virtuálního počítače SQL. Vzhledem k tomu, že naslouchací proces je registrován prostřednictvím zprostředkovatele prostředků virtuálního virtuálního provozu SQL, stačí jej odstranění prostřednictvím SQL Server Management Studio je nedostatečná. 
+## <a name="remove-the-availability-group-listener"></a>Odebrání naslouchacího procesu skupiny dostupnosti
+Pokud budete později potřebovat odstranit naslouchací proces skupiny dostupnosti, který je konfigurován šablonou, je nutné projít poskytovatelem prostředků SQL VM. Vzhledem k tomu, že naslouchací proces je zaregistrován prostřednictvím poskytovatele prostředků virtuálního počítače SQL, stačí ho odstranit přes SQL Server Management Studio nedostatečné. 
 
-Nejlepší metodou je odstranit prostřednictvím zprostředkovatele prostředků virtuálního virtuálního připojení SQL pomocí následujícího fragmentu kódu v prostředí PowerShell. Tím odeberete metadata posluchače skupiny dostupnosti z poskytovatele prostředků virtuálního virtuálního připojení SQL. Také fyzicky odstraní naslouchací proces ze skupiny dostupnosti. 
+Nejlepším způsobem je odstranit ho přes poskytovatele prostředků SQL VM pomocí následujícího fragmentu kódu v PowerShellu. Tím se odebere metadata naslouchacího procesu skupiny dostupnosti z poskytovatele prostředků virtuálního počítače SQL. Také fyzicky odstraní naslouchací proces ze skupiny dostupnosti. 
 
 ```PowerShell
 # Remove the availability group listener
@@ -172,35 +172,35 @@ Remove-AzResource -ResourceId '/subscriptions/<SubscriptionID>/resourceGroups/<r
 ```
  
 ## <a name="common-errors"></a>Běžné chyby
-Tato část popisuje některé známé problémy a jejich možné řešení. 
+Tato část pojednává o některých známých problémech a jejich možných řešeních. 
 
-### <a name="availability-group-listener-for-availability-group-ag-name-already-exists"></a>Naslouchací\<proces skupiny dostupnosti pro skupinu dostupnosti " AG-Name>' již existuje.
-Vybraná skupina dostupnosti použitá v šabloně rychlého startu Azure pro naslouchací proces skupiny dostupnosti již obsahuje naslouchací proces. Buď je fyzicky v rámci skupiny dostupnosti, nebo jeho metadata zůstanou v rámci zprostředkovatele prostředků virtuálního virtuálního připojení SQL. Před opětovným nasazením šablony rychlého spuštění **101-sql-vm-aglistener-setup** odeberte naslouchací proces pomocí [prostředí PowerShell.](#remove-the-availability-group-listener) 
+### <a name="availability-group-listener-for-availability-group-ag-name-already-exists"></a>Naslouchací proces skupiny dostupnosti pro skupinu dostupnosti\<AG-Name> už existuje.
+Vybraná skupina dostupnosti použitá v šabloně Azure pro rychlý Start pro naslouchací proces skupiny dostupnosti už obsahuje naslouchací proces. Buď je fyzicky v rámci skupiny dostupnosti, nebo jeho metadata zůstávají v rámci poskytovatele prostředků virtuálního počítače SQL. Před opětovným nasazením šablony pro rychlý Start **101-SQL-VM-aglistener-Setup** odeberte naslouchací proces pomocí [prostředí PowerShell](#remove-the-availability-group-listener) . 
 
-### <a name="connection-only-works-from-primary-replica"></a>Připojení funguje pouze z primární repliky
-Toto chování je pravděpodobně z neúspěšného nasazení šablony **101-sql-vm-aglistener-setup,** které ponechalo konfiguraci interního nástroje pro vyrovnávání zatížení v nekonzistentním stavu. Ověřte, zda back-endový fond obsahuje seznam skupindostupnosti a že existují pravidla pro sondu stavu a pro pravidla vyrovnávání zatížení. Pokud něco chybí, konfigurace vnitřního nástroje pro vyrovnávání zatížení je nekonzistentní stav. 
+### <a name="connection-only-works-from-primary-replica"></a>Připojení funguje jenom z primární repliky.
+Toto chování je nejspíš z neúspěšného nasazení šablony **instalace 101-SQL-VM-aglistener-Setup** , které opustilo konfiguraci interního nástroje pro vyrovnávání zatížení v nekonzistentním stavu. Ověřte, že back-end fond uvádí skupinu dostupnosti a že tato pravidla existují pro sondu stavu a pro pravidla vyrovnávání zatížení. Pokud cokoli chybí, konfigurace interního nástroje pro vyrovnávání zatížení je nekonzistentní stav. 
 
-Chcete-li toto chování vyřešit, odeberte naslouchací proces pomocí [prostředí PowerShell](#remove-the-availability-group-listener), odstraňte interní vyvyřič zatížení prostřednictvím portálu Azure a začněte znovu v kroku 3. 
+Pokud chcete toto chování vyřešit, odeberte naslouchací proces pomocí [PowerShellu](#remove-the-availability-group-listener), odstraňte interní nástroj pro vyrovnávání zatížení prostřednictvím Azure Portal a znovu ho spusťte v kroku 3. 
 
-### <a name="badrequest---only-sql-virtual-machine-list-can-be-updated"></a>BadRequest - lze aktualizovat pouze seznam virtuálních strojů SQL
-K této chybě může dojít při nasazování šablony **nastavení 101-sql-vm-aglistener-setup,** pokud byl posluchač odstraněn prostřednictvím sql server management studio (SSMS), ale nebyl odstraněn z poskytovatele prostředků virtuálního počítače SQL. Odstranění naslouchací proces prostřednictvím SSMS neodebere metadata naslouchací proces z poskytovatele prostředků virtuálního virtuálního připojení SQL. Naslouchací proces musí být odstraněn z poskytovatele prostředků prostřednictvím [prostředí PowerShell](#remove-the-availability-group-listener). 
+### <a name="badrequest---only-sql-virtual-machine-list-can-be-updated"></a>Důvodu chybného požadavku se dá aktualizovat jenom seznam virtuálních počítačů SQL.
+K této chybě může dojít, pokud nasazujete šablonu **101-SQL-VM-aglistener-Setup** , pokud byl naslouchací proces odstraněn prostřednictvím SQL Server Management Studio (SSMS), ale nebyl odstraněn z poskytovatele prostředků virtuálního počítače SQL. Odstraněním naslouchacího procesu prostřednictvím SSMS se neodstraní metadata naslouchacího procesu z poskytovatele prostředků virtuálního počítače SQL. Naslouchací proces musí být odstraněn z poskytovatele prostředků prostřednictvím [PowerShellu](#remove-the-availability-group-listener). 
 
-### <a name="domain-account-does-not-exist"></a>Účet domény neexistuje.
-Tato chyba může mít dvě příčiny. Buď zadaný účet domény neexistuje, nebo mu chybí data [hlavního uživatelského jména (UPN).](/windows/desktop/ad/naming-properties#userprincipalname) Šablona **101-sql-vm-ag-setup** očekává, že účet domény ve formuláři UPN (to znamená ), *user@domain.com*ale některé účty domény mohou chybět. K tomu obvykle dochází, když byl místní uživatel migrován jako první účet správce domény, když byl server povýšen na řadič domény, nebo když byl uživatel vytvořen prostřednictvím prostředí PowerShell. 
+### <a name="domain-account-does-not-exist"></a>Doménový účet neexistuje.
+Tato chyba může mít dvě příčiny. Buď zadaný doménový účet neexistuje, nebo chybí data [hlavního názvu uživatele (UPN)](/windows/desktop/ad/naming-properties#userprincipalname) . Šablona **101-SQL-VM-AG-Setup** očekává účet domény ve formátu hlavního názvu uživatele (tj. *user@domain.com*), ale některé účty domény ho můžou chybět. K tomu obvykle dochází, když je místní uživatel migrován jako první účet správce domény, když byl server povýšen na řadič domény, nebo když byl uživatel vytvořen prostřednictvím PowerShellu. 
 
-Ověřte, zda účet existuje. Pokud ano, můžete se narazit na druhou situaci. Chcete-li jej vyřešit, postupujte takto:
+Ověřte, že účet existuje. Pokud k tomu dochází, možná budete pracovat v druhé situaci. Pokud ho chcete vyřešit, udělejte toto:
 
-1. V řadiči domény otevřete okno **Uživatelé a počítače služby Active Directory** z možnosti **Nástroje** ve **Správci serveru**. 
-2. Přejděte na účet výběrem **možnosti Uživatelé** v levém podokně.
-3. Klepněte pravým tlačítkem myši na účet a vyberte **příkaz Vlastnosti**.
-4. Vyberte kartu **Účet.** Pokud je pole **přihlašovací jméno uživatele** prázdné, je příčinou chyby. 
+1. V řadiči domény otevřete okno **Uživatelé a počítače služby Active Directory** z možnosti **nástroje** v **Správce serveru**. 
+2. Pokud chcete přejít na účet, vyberte **Uživatelé** v levém podokně.
+3. Klikněte pravým tlačítkem na účet a vyberte **vlastnosti**.
+4. Vyberte kartu **účet** . Pokud je pole **přihlašovací jméno uživatele** prázdné, jedná se o příčinu chyby. 
 
-    ![Prázdný uživatelský účet označuje chybějící upn](media/virtual-machines-windows-sql-availability-group-quickstart-template/account-missing-upn.png)
+    ![Prázdný uživatelský účet indikuje chybějící hlavní název uživatele (UPN).](media/virtual-machines-windows-sql-availability-group-quickstart-template/account-missing-upn.png)
 
-5. Vyplňte pole **přihlašovací jméno uživatele** tak, aby odpovídalo jménu uživatele, a v rozevíracím seznamu vyberte správnou doménu. 
-6. Vyberte **Použít,** chcete-li uložit změny, a zavřete dialogové okno tak, že vyberete **OK**. 
+5. Do pole **přihlašovací jméno uživatele** zadejte název uživatele a v rozevíracím seznamu vyberte správnou doménu. 
+6. Výběrem možnosti **použít** uložíte změny a zavřete dialogové okno tak, že vyberete **OK**. 
 
-Po provedení těchto změn zkuste znovu nasadit šablonu rychlého startu Azure. 
+Po provedení těchto změn zkuste šablonu pro rychlý Start Azure nasadit ještě jednou. 
 
 
 
@@ -208,11 +208,11 @@ Po provedení těchto změn zkuste znovu nasadit šablonu rychlého startu Azure
 
 Další informace najdete v těchto článcích: 
 
-* [Přehled virtuálních měn SQL Server](virtual-machines-windows-sql-server-iaas-overview.md)
-* [Nejčastější dotazy pro virtuální servery SQL Server](virtual-machines-windows-sql-server-iaas-faq.md)
-* [Pokyny k cenovým informacím pro virtuální servery SQL Server](virtual-machines-windows-sql-server-pricing-guidance.md)
-* [Poznámky k verzi pro virtuální servery SQL Server](virtual-machines-windows-sql-server-iaas-release-notes.md)
-* [Přepínání licenčních modelů pro virtuální modul SQL Server](virtual-machines-windows-sql-ahb.md)
+* [Přehled SQL Server virtuálních počítačů](virtual-machines-windows-sql-server-iaas-overview.md)
+* [Nejčastější dotazy týkající se SQL Server virtuálních počítačů](virtual-machines-windows-sql-server-iaas-faq.md)
+* [Doprovodné materiály k ceníkům pro SQL Server virtuální počítače](virtual-machines-windows-sql-server-pricing-guidance.md)
+* [Poznámky k verzi pro virtuální počítače s SQL Server](virtual-machines-windows-sql-server-iaas-release-notes.md)
+* [Přepínání modelů licencování pro SQL Server virtuální počítač](virtual-machines-windows-sql-ahb.md)
 
 
 

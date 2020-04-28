@@ -1,6 +1,6 @@
 ---
-title: Upgrade virtuální sítě AZURE wan ze základní na standardní – portál Azure | Dokumenty společnosti Microsoft
-description: Pro lepší funkčnost můžete upgradovat virtuální typ sítě WAN.
+title: Upgrade virtuální sítě Azure z úrovně Basic na standardní-Azure Portal | Microsoft Docs
+description: Pro větší funkčnost můžete upgradovat typ virtuální sítě WAN.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,32 +8,32 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.openlocfilehash: 83fd5bafb5496908403c50dc0e000fd33a836c95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73515808"
 ---
-# <a name="upgrade-a-virtual-wan-from-basic-to-standard"></a>Upgrade virtuální sítě WAN ze základní na standardní
+# <a name="upgrade-a-virtual-wan-from-basic-to-standard"></a>Upgrade virtuální sítě WAN z úrovně Basic na standard
 
-Tento článek vám pomůže upgradovat základní wan na standardní WAN. Typ Wan Basic vytvoří všechny rozbočovače uvnitř jako základní rozbočovače sku. V centru Basic jste omezeni pouze na funkce VPN site-to-site. Typ WAN standardu vytvoří všechny rozbočovače uvnitř jako standardní rozbočovače SKU. Když používáte standardní rozbočovače, můžete povolit ExpressRoute, User (Point-to-site) VPN, úplné síťové centrum a tranzit virtuální sítě na virtuální síť přes centra Azure.
+Tento článek vám pomůže upgradovat základní síť WAN na standardní síť WAN. Typ "základní" síť WAN vytvoří všechna centra uvnitř IT jako základní centra SKU. V základním centru je jenom funkcí VPN typu Site-to-site. Typ standard sítě WAN vytvoří všechna rozbočovače v rámci IT jako standardní skladové centra SKU. Pokud používáte standardní centra, můžete povolit ExpressRoute, uživatele (Point-to-site) VPN, celou síť rozbočovač a průjezd VNet-to-VNet prostřednictvím Center Azure.
 
-V následující tabulce jsou uvedeny konfigurace, které jsou k dispozici pro každý typ sítě WAN:
+Následující tabulka uvádí dostupné konfigurace pro každý typ sítě WAN:
 
 [!INCLUDE [Basic and Standard SKUs](../../includes/virtual-wan-standard-basic-include.md)]
 
 ## <a name="to-change-the-virtual-wan-type"></a>Změna typu virtuální sítě WAN
 
-1. Na stránce virtuální sítě WAN otevřete stránku Konfigurace kliknutím na **konfiguraci.**
+1. Na stránce pro virtuální síť WAN vyberte **Konfigurace** a otevřete stránku konfigurace.
 
    ![Diagram virtuální sítě WAN](./media/upgrade-virtual-wan/1.png)
-2. Pro typ Virtuální WAN vyberte v rozevíracím seznamu **standardní.**
+2. V rozevíracím seznamu typ virtuální sítě WAN vyberte možnost **Standard** .
 
    ![Diagram virtuální sítě WAN](./media/upgrade-virtual-wan/2.png)
-3. Uvědomte si, že pokud upgradujete na standardní virtuální wan, nelze vrátit zpět do základní virtuální sítě WAN. Vyberte **Potvrdit,** jestli chcete upgradovat.
+3. Pochopte, že pokud upgradujete na standardní virtuální síť WAN, nebudete se moct vrátit zpátky na základní virtuální síť WAN. Vyberte **Potvrdit** , pokud chcete provést upgrade.
 
    ![Diagram virtuální sítě WAN](./media/upgrade-virtual-wan/4.png)
-4. Po uložení změny vypadá virtuální stránka WAN podobně jako v tomto příkladu.
+4. Po uložení změn bude stránka Virtual WAN vypadat podobně jako v tomto příkladu.
 
    ![Diagram virtuální sítě WAN](./media/upgrade-virtual-wan/5.png)
 

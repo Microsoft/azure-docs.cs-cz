@@ -1,66 +1,66 @@
 ---
 title: Terminologie služby Azure Data Share
-description: Další informace o běžných termínech používaných k popisu prostředků používaných ve službě Azure Data Share (poskytovatel dat, příjemce dat, sdílení dat, sdílení předplatného, snímek, pozvánka, příjemce.)
+description: Přečtěte si o běžných pojmech, které se používají k popisu prostředků používaných v Azure Data Share (poskytovatel dat, příjemce dat, sdílení dat, sdílení předplatného, snímek, pozvánka, příjemce).
 ms.service: data-share
 author: joannapea
 ms.author: joanpo
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.openlocfilehash: 33532380d8f98df44029eeea998130d1da5fdafd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73468553"
 ---
-# <a name="azure-data-share-concepts"></a>Koncepty sdílení dat Azure 
+# <a name="azure-data-share-concepts"></a>Koncepty Azure Data Share 
 
-Azure Data Share zavádí některé nové terminologie související se sdílením dat. Tento článek vysvětluje některé často používané termíny, které se mohou zobrazit v celé službě. 
+Azure Data Share zavádí určitou novou terminologii související se sdílením dat. Tento článek vysvětluje některé často používané výrazy, které se můžou zobrazit v rámci služby. 
 
 ## <a name="data-provider"></a>Poskytovatel dat
 
-Zprostředkovatel dat je organizace, která sdílí data se svými spotřebiteli. Obvykle může být vlastníkem nebo správcem dat. Zprostředkovatelé dat chtějí sdílet data různých typů. Mezi data, která může zprostředkovatel dat chtít sdílet, patří nezpracovaná data, například data prodejního místa nebo časových řad. Poskytovatel dat může také chtít sdílet předem zpracovaná, kurátorská data, která již obsahují analýzy a přehledy. 
+Poskytovatel dat je organizace, která sdílí data se svými spotřebiteli. Obvykle může být poskytovatel dat vlastníkem nebo kurátor dat. Poskytovatelé dat chtějí sdílet data různých typů. Některé příklady dat, která může zprostředkovatel dat sdílet, zahrnují nezpracovaná data, jako např. data z prodejních nebo časových řad. Poskytovatel dat může také chtít sdílet předem zpracovaná a pořízená data, která už obsahují analýzy a přehledy. 
 
 ## <a name="data-consumer"></a>Příjemce dat 
 
-Příjemce dat je organizace, která přijímá data od poskytovatele dat. Příjemce dat může chtít připojit sdílená data s vlastními daty k odvození přehledů. V některých případech může příjemce dat přijímat data, která již byla zpracována. 
+Příjemce dat je organizace, která přijímá data od poskytovatele dat. Příjemce dat může chtít připojit sdílená data s vlastními daty a odvodit přehledy. V některých případech může příjemce dat přijímat data, která již byla zpracována. 
 
 ## <a name="data-share"></a>Data Share
 
-Sdílená datová skupina je skupina datových sad, které jsou sdíleny jako jedna entita. Datové sady mohou pomíjet z několika zdrojů dat Azure, které jsou podporované službou Azure Data Share. Azure Data Share v současné době podporuje Azure Blob Storage a Azure Data Lake Store. 
+Sdílená složka je skupina datových sad, které jsou sdíleny jako jediná entita. Datové sady mohou být z řady zdrojů dat Azure, které podporuje sdílená složka Azure. V současné době Azure Data Share podporuje Azure Blob Storage a Azure Data Lake Store. 
 
 ## <a name="share-subscription"></a>Sdílet předplatné 
 
-Sdílené předplatné se vytvoří, když příjemce dat přijme pozvánku ke sdílení dat od poskytovatele dat. Poskytovatelé dat můžou zobrazit předplatná aktivních sdílení tak, že přejdete na **Odeslané sdílené složky** v účtu Azure Data Share a vyberete **předplatná sdílení**.
+Předplatné sdílení se vytvoří, když příjemce dat přijme pozvánku ke sdílení dat od poskytovatele dat. Poskytovatelé dat můžou zobrazit aktivní sdílení předplatných tak, že přejdete na **odeslané sdílené složky** v účtu Azure Data Share a vyberete **sdílet odběry**.
 
-Příjemce dat může zkontrolovat, zda mají aktivní sdílení předplatného přechodem na **přijaté sdílené složky** a zobrazení stavu jejich přijaté sdílené složky. 
+Příjemce dat může zjistit, jestli mají aktivní předplatné sdílení, a to tak, že přejde na **přijaté sdílené složky** a zobrazí stav svých přijatých sdílených složek. 
 
 ## <a name="snapshot"></a>Snímek
 
-Snímek může vytvořit příjemce dat, když přijme pozvánku ke sdílené složce dat. Když přijmou pozvánku, mohou aktivovat úplný snímek dat, která s nimi budou sdílena. Snímek je kopie dat v okamžiku, kdy příjemce dat vygeneroval snímek. 
+Snímek může vytvořit příjemce dat, když přijme pozvánku ke sdílení dat. Po přijetí pozvánky můžou aktivovat úplný snímek dat, která s nimi sdílíte. Snímek je kopie dat v okamžiku, kdy příjemce dat vygeneroval snímek. 
 
-Existují dva typy snímků - úplné a přírůstkové. Úplný snímek obsahuje všechna data v rámci sdílené složky dat. Přírůstkový snímek obsahuje všechna data, která byla aktualizována nebo přidána od spuštění posledního snímku. 
+Existují dva typy snímků – úplné a přírůstkové. Úplný snímek obsahuje všechna data v rámci sdílené složky dat. Přírůstkový snímek obsahuje všechna data, která byla aktualizována nebo přidána od spuštění posledního snímku. 
 
-## <a name="snapshot-settings-in-azure-data-share"></a>Nastavení snímků ve službě Azure Data Share
+## <a name="snapshot-settings-in-azure-data-share"></a>Nastavení snímků v Azure Data Share
  
-Zprostředkovatel dat může povolit nastavení snímku pro sdílenou složku dat. Toto nastavení umožňuje spotřebitelům dat přijímat přírůstkové aktualizace v takovém stavu. Toto nastavení by mělo být povoleno, pokud by poskytovatel dat chtěl, aby jejich spotřebitelé dat dostávali aktualizace sdílených dat. 
+Poskytovatel dat může povolit nastavení snímku pro sdílenou složku dat. Toto nastavení umožňuje příjemcům dat přijímat přírůstkové aktualizace, když k nim dojde. Toto nastavení by mělo být povoleno v případě, že zprostředkovatel dat bude chtít, aby příjemci dat dostávali aktualizace dat, která byla sdílena. 
 
-Pokud poskytovatel dat toto nastavení povolí, lze vybrat interval opakování. Interval opakování může být hodinový nebo denní. 
+Pokud zprostředkovatel dat povolí toto nastavení, je možné vybrat interval opakování. Interval opakování může být hodinu nebo každý den. 
 
-Příjemce dat má možnost přihlásit se k tomuto plánu snímek přijímat přírůstkové aktualizace, která zahrnuje všechna data, která se změnila od prvního generování nového snímku. 
+Příjemce dat má možnost se přihlásit k tomuto plánu snímků a získat tak přírůstkové aktualizace, což zahrnuje všechna data, která se změnila od prvního vygenerování nového snímku. 
 
-## <a name="invitation"></a>Pozvání
+## <a name="invitation"></a>Uživateli
 
-Poskytovatel dat může pozvat více příjemců do sdílené složky dat. Mohou tak učinit přidáním příjemců do sdílené složky dat. Pozvánky lze také přidat po vytvoření sdílené složky dat. 
+Poskytovatel dat může pozvat více příjemců ke sdílení dat. Můžou to udělat tak, že přidáte příjemce do sdílené složky dat. Pozvánky je také možné přidat po vytvoření sdílené složky dat. 
 
-Poskytovatel dat může odstranit pozvánku po odeslání, pokud nebyla přijata. Pokud poskytovatel dat pozvánku odstraní a pozvánka ještě nebyla přijata, příjemce dat ji nebude moci přijmout. 
+Poskytovatel dat může odstranit pozvánku poté, co byla odeslána, pokud nebyla přijata. Pokud poskytovatel dat odstraní pozvánku a ještě nebyla přijata, příjemce dat je nebude moci přijmout. 
 
-Pozvánky mohou být nesnášeny až pětkrát denně. 
+Pozvánky je možné znovu odeslat až pětkrát denně. 
 
 ## <a name="recipient"></a>Příjemce
 
-Příjemce je uživatel, který obdrží pozvánku ke sdílené složce dat. Poskytovatel dat obvykle přidá příjemce do sdílené složky dat, kterou vytvoří. Jakmile příjemce pozvánky pozvánku přijme, stane se příjemcem dat.  
+Příjemce je osoba, která obdrží pozvánku ke sdílení dat. Poskytovatel dat obvykle přidá příjemce do sdílené složky dat, kterou vytvoří. Jakmile příjemce pozvánky pozvánku přijme, stane se příjemcem dat.  
 
 ## <a name="next-steps"></a>Další kroky
 
-Chcete-li se dozvědět, jak začít sdílet data, [pokračujte ve sdílení dat](share-your-data.md) kurzu.
+Pokud se chcete dozvědět, jak začít sdílet data, pokračujte do kurzu [sdílení vašich dat](share-your-data.md) .

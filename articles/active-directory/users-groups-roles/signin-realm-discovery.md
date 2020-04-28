@@ -1,6 +1,6 @@
 ---
-title: Vyhledávání uživatelského jména během přihlášení – Služba Azure Active Directory | Dokumenty společnosti Microsoft
-description: Jak zasílání zpráv na obrazovce odráží vyhledávání uživatelského jména během přihlašování ve službě Azure Active Directory
+title: Vyhledávání uživatelského jména během přihlašování Azure Active Directory | Microsoft Docs
+description: Jak zasílání zpráv na obrazovce odráží vyhledávání uživatelského jména během přihlašování v Azure Active Directory
 services: active-directory
 author: curtand
 manager: daveba
@@ -14,47 +14,47 @@ ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c8b6a65a964016f702fcf75aa4cbdab33a952e3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74024256"
 ---
-# <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>Zjišťování domovské sféry pro přihlašovací stránky služby Azure Active Directory
+# <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>Zjišťování domovské sféry pro Azure Active Directory přihlašovací stránky
 
-Měníme naše chování přihlašování služby Azure Active Directory (Azure AD), abychom uvolnili místo pro nové metody ověřování a zlepšili použitelnost. Během přihlašování Azure AD určuje, kde uživatel potřebuje k ověření. Azure AD dělá inteligentní rozhodnutí čtením organizace a uživatelské nastavení pro uživatelské jméno zadané na přihlašovací stránce. Jedná se o krok směrem k budoucnosti bez hesla, která umožňuje další pověření, jako je FIDO 2.0.
+Měníme naše chování při přihlašování Azure Active Directory (Azure AD), abychom uvolnili místo pro nové metody ověřování a vylepšili použitelnost. Během přihlašování Azure AD určuje, kde se uživatel musí ověřit. Azure AD umožňuje inteligentní rozhodnutí načtením organizace a uživatelského nastavení pro uživatelské jméno zadané na přihlašovací stránce. Toto je krok do budoucna bez hesla, která umožňuje další přihlašovací údaje, jako je FIDO 2,0.
 
 ## <a name="home-realm-discovery-behavior"></a>Chování zjišťování domovské sféry
 
-V minulosti se zjišťování domovské sféry řídilo doménou, která je k dispozici při přihlášení nebo zásadami zjišťování domovské sféry pro některé starší aplikace. Například v našem chování zjišťování může uživatel služby Azure Active Directory zadat své uživatelské jméno, ale přesto by se dostal na obrazovku shromažďování přihlašovacích údajů své organizace. K tomu dochází, když uživatel správně zadává název domény organizace "contoso.com". Toto chování neumožňuje rozlišovací schopnost přizpůsobit prostředí pro jednotlivé uživatele.
+Historicky se zjišťování domovské sféry řídí doménou, která je poskytována při přihlášení, nebo zásadou zjišťování domovské sféry pro některé starší aplikace. Například v našem chování zjišťování mohl uživatel Azure Active Directory zadat své uživatelské jméno, ale pořád přijde na obrazovku pro shromažďování přihlašovacích údajů organizace. K tomu dojde, když uživatel správně zadá název domény organizace "contoso.com". Toto chování neumožňuje přizpůsobení prostředí pro jednotlivé uživatele.
 
-Pro podporu širší škály přihlašovacích údajů a zvýšení použitelnosti, Azure Active Directory uživatelské jméno vyhledávání chování během procesu přihlášení je nyní aktualizován. Nové chování provádí inteligentní rozhodnutí čtením nastavení na úrovni klienta a uživatele na základě uživatelského jména zadaného na přihlašovací stránce. Aby to bylo možné, služba Azure Active Directory zkontroluje, zda uživatelské jméno zadané na přihlašovací stránce existuje v zadané doméně, nebo přesměruje uživatele na zadání pověření.
+Pro podporu širší škály přihlašovacích údajů a zvýšení použitelnosti se teď v průběhu procesu přihlašování aktualizuje Azure Active Directory chování vyhledávání uživatelského jména. Nové chování usnadňuje inteligentní rozhodnutí čtením nastavení na úrovni tenanta a uživatele na základě uživatelského jména zadaného na přihlašovací stránce. Aby to bylo možné, Azure Active Directory zkontroluje, jestli uživatelské jméno, které je zadáno na přihlašovací stránce, existuje v zadané doméně, nebo přesměruje uživatele na zadání přihlašovacích údajů.
 
-Další výhodou této práce je lepší zasílání chybových zpráv. Tady je několik příkladů vylepšeného zasílání chyb při přihlašování k aplikaci, která podporuje jenom uživatele služby Azure Active Directory.
+Další výhodou této práce je vylepšené zasílání zpráv o chybách. Tady jsou některé příklady vylepšeného zasílání zpráv o chybách při přihlašování k aplikaci, která podporuje jenom Azure Active Directory uživatele.
 
-- Uživatelské jméno je chybně zadané nebo uživatelské jméno ještě nebylo synchronizováno se službou Azure AD:
+- Uživatelské jméno není typu nebo se uživatelské jméno ještě nesynchronizoval do služby Azure AD:
   
-    ![uživatelské jméno je chybně zadáno nebo nebylo nalezeno](./media/signin-realm-discovery/typo-username.png)
+    ![uživatelské jméno je netypové nebo se nenašlo.](./media/signin-realm-discovery/typo-username.png)
   
-- Název domény je chybně zadán:
+- Název domény je netypového typu:
   
-    ![název domény je chybně zadán nebo nebyl nalezen](./media/signin-realm-discovery/typo-domain.png)
+    ![název domény je Netypový nebo se nenašel.](./media/signin-realm-discovery/typo-domain.png)
   
-- Uživatel se pokusí přihlásit pomocí známé domény příjemce:
+- Uživatel se pokusí přihlásit se známou doménou příjemce:
   
     ![přihlášení se známou doménou příjemce](./media/signin-realm-discovery/consumer-domain.png)
   
-- Heslo je chybně zadáno, ale uživatelské jméno je přesné:  
+- Heslo je nesprávně typové, ale uživatelské jméno je přesné:  
   
-    ![heslo je chybně zadáno s dobrým uživatelským jménem](./media/signin-realm-discovery/incorrect-password.png)
+    ![heslo je chybně typu s dobrým uživatelským jménem.](./media/signin-realm-discovery/incorrect-password.png)
   
 > [!IMPORTANT]
-> Tato funkce může mít vliv na federované domény spoléhající na staré zjišťování domovské sféry na úrovni domény, které vynucuje federaci. Aktuální informace o tom, kdy bude přidána podpora federované domény, najdete [v tématu zjišťování domovské sféry během přihlašování ke službám Microsoft 365](https://azure.microsoft.com/updates/signin-hrd/). Do té doby některé organizace vyškolili své zaměstnance k přihlášení pomocí uživatelského jména, které ve službě Azure Active Directory neexistuje, ale obsahuje správný název domény, protože názvy domén směrují uživatele aktuálně do koncového bodu domény jejich organizace. Nové chování přihlášení to neumožňuje. Uživatel je upozorněn na opravu uživatelského jména a není povoleno přihlásit se pomocí uživatelského jména, které ve službě Azure Active Directory neexistuje.
+> Tato funkce může mít dopad na federované domény spoléhající se na staré zjišťování domovské sféry na úrovni domény, aby vynutila federace. Aktualizace, když se přidá podpora federovaných domén, najdete v tématu [zjištění domovské sféry během přihlašování pro Microsoft 365 služby](https://azure.microsoft.com/updates/signin-hrd/). Mezitím si některé organizace vyškole své zaměstnance, aby se přihlásili pomocí uživatelského jména, které v Azure Active Directory neexistuje, ale obsahuje správný název domény, protože názvy domén směrují uživatele v současnosti do koncového bodu domény organizace. Nové chování přihlášení to nepovoluje. Uživateli se upozorní, že má uživatelské jméno opravit a že se jim nemůžou přihlásit pomocí uživatelského jména, které v Azure Active Directory neexistuje.
 >
-> Pokud vy nebo vaše organizace máte postupy, které závisí na starém chování, je důležité, aby správci organizace aktualizovali dokumentaci k přihlášení a ověřování zaměstnanců a školili zaměstnance tak, aby k přihlášení používali své uživatelské jméno služby Azure Active Directory.
+> Pokud vy nebo vaše organizace máte postupy, které jsou závislé na starém chování, je důležité, aby správci organizace aktualizovali dokumentaci pro přihlášení a ověřování zaměstnanců a mohli se přihlašovat zaměstnancům, aby používali své Azure Active Directory uživatelské jméno.
   
-Pokud máte obavy z nového chování, zanechte své poznámky v části **Zpětná vazba** tohoto článku.  
+Pokud máte obavy s novým chováním, ponechte své poznámky v tomto článku v části **názory na zpětnou vazbu** .  
 
 ## <a name="next-steps"></a>Další kroky
 
-[Přizpůsobení přihlašovací značky](../fundamentals/add-custom-domain.md)
+[Přizpůsobení brandingu přihlašování](../fundamentals/add-custom-domain.md)

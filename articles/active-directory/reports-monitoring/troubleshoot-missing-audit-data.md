@@ -1,5 +1,5 @@
 ---
-title: Poradce při potížích s chybějícími daty v protokolech aktivit | Dokumenty společnosti Microsoft
+title: Řešení potíží s chybějícími daty v protokolech aktivit | Microsoft Docs
 description: Nabízí řešení pro chybějící data v protokolech aktivit Azure Active Directory.
 services: active-directory
 documentationcenter: ''
@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c335a4d30846f7c1b4dbd6b6aedc4d100a9b43a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74014292"
 ---
 # <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>Řešení potíží: Chybějící data v protokolech aktivit Azure Active Directory 
@@ -32,7 +32,7 @@ ms.locfileid: "74014292"
 
 Provedl jsem nějaké akce na webu Azure Portal a očekával jsem pro tyto akce zobrazení protokolu auditu v okně `Activity logs > Audit Logs`, ale nemůžu je najít.
 
- ![Vytváření sestav](./media/troubleshoot-missing-audit-data/01.png)
+ ![Generování sestav](./media/troubleshoot-missing-audit-data/01.png)
  
 ### <a name="cause"></a>Příčina
 
@@ -53,7 +53,7 @@ Počkejte 15 minut až dvě hodiny a pak se podívejte, jestli se akce v protoko
 
 Nedávno jsem se přihlásil/a k webu Azure Portal a očekával/a jsem, že se pro tyto akce zobrazí protokoly přihlášení v okně `Activity logs > Sign-ins`, ale nemůžu je najít.
 
- ![Vytváření sestav](./media/troubleshoot-missing-audit-data/02.png)
+ ![Generování sestav](./media/troubleshoot-missing-audit-data/02.png)
  
 ### <a name="cause"></a>Příčina
 
@@ -74,7 +74,7 @@ Počkejte 15 minut až dvě hodiny a pak se podívejte, jestli se akce v protoko
 
 Na webu Azure Portal nemůžu zobrazit data přihlášení a auditu za více než 30 dnů. Proč? 
 
- ![Vytváření sestav](./media/troubleshoot-missing-audit-data/03.png)
+ ![Generování sestav](./media/troubleshoot-missing-audit-data/03.png)
 
 ### <a name="cause"></a>Příčina
 
@@ -94,6 +94,6 @@ Pokud chcete data uchovávat déle než 30 dnů, máte dvě možnosti. Pomocí [
 ## <a name="next-steps"></a>Další kroky
 
 * [Uchovávání sestav v Azure AD](reference-reports-data-retention.md)
-* [Latence vytváření sestav služby Azure Active Directory](reference-reports-latencies.md).
+* [Azure Active Directory latencí hlášení](reference-reports-latencies.md).
 * [Nejčastější dotazy ke generování sestav v Azure Active Directory](reports-faq.md)
 

@@ -1,6 +1,6 @@
 ---
 title: Postupné upgrady aplikací
-description: Zjistěte, jak pomocí geografické replikace Azure SQL Database podporovat online upgrady vaší cloudové aplikace.
+description: Naučte se používat Azure SQL Database geografickou replikaci k podpoře online upgradu vaší cloudové aplikace.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -12,96 +12,96 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
 ms.openlocfilehash: 9c627c3e597fdcd3859ce02ea208fc7a8b5d612b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73822859"
 ---
-# <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>Správa postupných upgradů cloudových aplikací pomocí aktivní geografické replikace databáze SQL Database
+# <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>Správa postupného upgradu cloudových aplikací pomocí SQL Database aktivní geografická replikace
 
-Zjistěte, jak používat [aktivní geografickou replikaci](sql-database-auto-failover-group.md) v Azure SQL Database k povolení postupných upgradů vaší cloudové aplikace. Vzhledem k tomu, že upgrady jsou rušivé operace, měly by být součástí plánování a návrhu kontinuity provozu. V tomto článku se podíváme na dvě různé metody orchestrace procesu upgradu a diskutovat o výhodách a kompromisy každé možnosti. Pro účely tohoto článku odkazujeme na aplikaci, která se skládá z webu, který je připojen k jedné databázi jako jeho datové vrstvy. Naším cílem je upgradovat verzi 1 (V1) aplikace na verzi 2 (V2) bez významného dopadu na uživatelské prostředí.
+Naučte se používat [aktivní geografickou replikaci](sql-database-auto-failover-group.md) v Azure SQL Database k zajištění postupného upgradu vaší cloudové aplikace. Vzhledem k tomu, že upgrady jsou rušivé operace, měly by být součástí plánování a návrhu kontinuity vaší firmy. V tomto článku se podíváme na dvě různé metody orchestrace procesu upgradu a podíváme se na výhody a nevýhody jednotlivých možností. Pro účely tohoto článku odkazujeme na aplikaci, která se skládá z webu, který je připojený k izolované databázi jako jeho Datová vrstva. Naším cílem je upgradovat verzi 1 (V1) aplikace na verzi 2 (v2), aniž by to mělo žádný významný dopad na činnost koncového uživatele.
 
-Při hodnocení možností upgradu zvažte tyto faktory:
+Při vyhodnocování možností upgradu Vezměte v úvahu tyto faktory:
 
-* Dopad na dostupnost aplikací během upgradů, například jak dlouho mohou být funkce aplikace omezeny nebo sníženy.
-* Možnost vrátit zpět, pokud upgrade selže.
-* Chyba zabezpečení aplikace, pokud během inovace dojde k nesouvisejícímu katastrofickému selhání.
-* Celkové náklady na dolar. Tento faktor zahrnuje další redundanci databáze a přírůstkové náklady na dočasné součásti používané procesem upgradu.
+* Dopad na dostupnost aplikace během upgradů, například na to, jak dlouho můžou být funkce aplikací omezené nebo omezené.
+* Možnost vrátit zpět, pokud se upgrade nezdařil.
+* Ohrožení zabezpečení aplikace v případě, že během upgradu dojde k nesouvisejícímu selhání.
+* Celkové náklady na dolary Tento faktor zahrnuje další redundanci databáze a přírůstkové náklady na dočasné komponenty, které používá proces upgradu.
 
-## <a name="upgrade-applications-that-rely-on-database-backups-for-disaster-recovery"></a>Upgrade aplikací, které spoléhají na zálohování databáze pro zotavení po havárii
+## <a name="upgrade-applications-that-rely-on-database-backups-for-disaster-recovery"></a>Upgradujte aplikace, které spoléhají na zálohování databáze pro zotavení po havárii.
 
-Pokud vaše aplikace závisí na automatické zálohování databáze a používá geografické obnovení pro zotavení po havárii, je nasazená do jedné oblasti Azure. Chcete-li minimalizovat narušení uživatele, vytvořte pracovní prostředí v této oblasti se všemi součástmi aplikace zapojenými do upgradu. První diagram znázorňuje provozní prostředí před procesem upgradu. Koncový bod `contoso.azurewebsites.net` představuje produkční prostředí webové aplikace. Chcete-li vrátit zpět upgrade, musíte vytvořit pracovní prostředí s plně synchronizovanou kopii databáze. Chcete-li vytvořit pracovní prostředí pro upgrade, postupujte takto:
+Pokud vaše aplikace spoléhá na automatické zálohování databáze a používá geografickou obnovu pro zotavení po havárii, nasadí se do jedné oblasti Azure. Chcete-li minimalizovat přerušení uživatele, vytvořte v této oblasti přípravné prostředí se všemi komponentami aplikace zapojenými do upgradu. První diagram znázorňuje provozní prostředí před procesem upgradu. Koncový bod `contoso.azurewebsites.net` představuje provozní prostředí webové aplikace. Aby bylo možné vrátit zpět upgrade, je nutné vytvořit přípravné prostředí s plně synchronizovanou kopií databáze. Pomocí těchto kroků vytvořte přípravné prostředí pro upgrade:
 
-1. Vytvořte sekundární databázi ve stejné oblasti Azure. Sledujte sekundární, abyste zjistili, zda je proces výsevu dokončen (1).
-2. Vytvořte nové prostředí pro webovou aplikaci a nazvěte ji "Staging". Bude zaregistrován v Azure DNS `contoso-staging.azurewebsites.net` s adresou URL (2).
-
-> [!NOTE]
-> Tyto kroky přípravy nebudou mít vliv na produkční prostředí, které může fungovat v režimu úplného přístupu.
-
-![Konfigurace geografické replikace sql database pro cloudové zotavení po havárii.](media/sql-database-manage-application-rolling-upgrade/option1-1.png)
-
-Po dokončení přípravných kroků je aplikace připravena pro vlastní upgrade. Následující diagram znázorňuje kroky související s procesem upgradu:
-
-1. Nastavte primární databázi do režimu jen pro čtení (3). Tento režim zaručuje, že produkční prostředí webové aplikace (V1) zůstane jen pro čtení během upgradu, čímž se zabrání rozdílům dat mezi instancemi databáze V1 a V2.
-2. Odpojte sekundární databázi pomocí režimu plánovaného ukončení (4). Tato akce vytvoří plně synchronizované, nezávislé kopie primární databáze. Tato databáze bude inovována.
-3. Přepněte sekundární databázi do režimu čtení a zápisu a spusťte skript upgradu (5).
-
-![Konfigurace geografické replikace sql database pro cloudové zotavení po havárii.](media/sql-database-manage-application-rolling-upgrade/option1-2.png)
-
-Pokud upgrade úspěšně dokončí, jste nyní připraveni přepnout uživatele na inovované kopírování aplikace, která se stane produkčním prostředím. Přepínání zahrnuje několik dalších kroků, jak je znázorněno v následujícím diagramu:
-
-1. Aktivujte operaci odkládacího režimu mezi produkčním a testovacím prostředím webové aplikace (6). Tato operace přepne adresy URL obou prostředí. Nyní `contoso.azurewebsites.net` odkazuje na verzi V2 webu a na databázi (produkční prostředí). 
-2. Pokud již nepotřebujete verzi V1, která se stala pracovní kopií po odkládání, můžete vyřazeno z provozu pracovní prostředí (7).
-
-![Konfigurace geografické replikace sql database pro cloudové zotavení po havárii.](media/sql-database-manage-application-rolling-upgrade/option1-3.png)
-
-Pokud je proces upgradu neúspěšný (například z důvodu chyby ve skriptu upgradu), zvažte ohrožení pracovního prostředí. Chcete-li vrátit zpět aplikaci do stavu před upgradem, vraťte aplikaci v provozním prostředí k plnému přístupu. Následující diagram znázorňuje kroky reverze:
-
-1. Nastavte kopii databáze do režimu čtení a zápisu (8). Tato akce obnoví plnou funkci V1 produkční kopie.
-2. Proveďte analýzu hlavní příčiny a vyřazte pracovní prostředí z provozu (9).
-
-V tomto okamžiku aplikace je plně funkční a můžete opakovat kroky upgradu.
+1. Vytvořte sekundární databázi ve stejné oblasti Azure. Sledujte sekundární a zjistěte, jestli je proces osazenní dokončený (1).
+2. Vytvořte nové prostředí pro vaši webovou aplikaci a zavolejte ho "fázování". Bude zaregistrována v Azure DNS s adresou URL `contoso-staging.azurewebsites.net` (2).
 
 > [!NOTE]
-> Vrácení zpět nevyžaduje změny DNS, protože jste ještě neprovedli operaci prohození.
+> Tyto přípravné kroky nebudou mít vliv na produkční prostředí, které může fungovat v režimu úplného přístupu.
 
-![Konfigurace geografické replikace sql database pro cloudové zotavení po havárii.](media/sql-database-manage-application-rolling-upgrade/option1-4.png)
+![SQL Database konfiguraci geografické replikace pro zotavení po havárii v cloudu.](media/sql-database-manage-application-rolling-upgrade/option1-1.png)
 
-Hlavní výhodou této možnosti je, že můžete upgradovat aplikaci v jedné oblasti pomocí sady jednoduchých kroků. Dolarové náklady na upgrade jsou relativně nízké. 
+Po dokončení přípravných kroků je aplikace připravená na vlastní upgrade. Další diagram znázorňuje kroky, které jsou součástí procesu upgradu:
 
-Hlavní kompromis je, že pokud dojde k závažné selhání během upgradu, obnovení stavu před upgradem zahrnuje opětovné nasazení aplikace v jiné oblasti a obnovení databáze ze zálohy pomocí geografické obnovení. Tento proces má za následek významné prostoje.
+1. Nastavte primární databázi na režim jen pro čtení (3). Tento režim zaručuje, že produkční prostředí webové aplikace (V1) zůstane během upgradu jen pro čtení, což zabrání rozdílům v datech mezi instancemi databáze V1 a v2.
+2. Odpojte sekundární databázi pomocí režimu plánovaného ukončení (4). Tato akce vytvoří plně synchronizovanou nezávislou kopii primární databáze. Tato databáze bude upgradována.
+3. Převeďte sekundární databázi do režimu pro čtení i zápis a spusťte skript upgradu (5).
 
-## <a name="upgrade-applications-that-rely-on-database-geo-replication-for-disaster-recovery"></a>Upgrade aplikací, které jsou závislé na geografické replikaci databáze pro zotavení po havárii
+![SQL Database konfiguraci geografické replikace pro zotavení po havárii v cloudu.](media/sql-database-manage-application-rolling-upgrade/option1-2.png)
 
-Pokud vaše aplikace používá aktivní geografickou replikaci nebo skupiny s automatickou podporou převzetí služeb při selhání pro kontinuitu podnikání, nasadí se alespoň do dvou různých oblastí. V primární oblasti je aktivní primární databáze a sekundární databáze jen pro čtení v oblasti zálohování. Spolu s faktory uvedenými na začátku tohoto článku musí proces upgradu také zaručit, že:
+Pokud se upgrade úspěšně dokončí, teď jste připraveni přepnout uživatele na upgradovanou kopii aplikace, která se stane provozním prostředím. Přepínání zahrnuje několik dalších kroků, jak je znázorněno v následujícím diagramu:
 
-* Aplikace zůstává chráněna před katastrofickými chybami po celou dobu během procesu upgradu.
-* Geograficky redundantní součásti aplikace jsou upgradovány paralelně s aktivními součástmi.
+1. Aktivujte operaci prohození mezi produkčním a přípravným prostředím webové aplikace (6). Tato operace přepne adresy URL obou prostředí. Nyní `contoso.azurewebsites.net` odkazuje na verzi v2 webu a databáze (produkční prostředí). 
+2. Pokud již nepotřebujete verzi V1, která se po prohození stala přípravnou kopií, můžete pracovní prostředí vyřadit z provozu (7).
 
-K dosažení těchto cílů, kromě použití prostředí webových aplikací, budete využívat Výhod Azure Traffic Manager pomocí profilu převzetí služeb při selhání s jedním aktivním koncovým bodem a jeden koncový bod zálohování. Následující diagram znázorňuje provozní prostředí před procesem upgradu. Webové stránky `contoso-1.azurewebsites.net` `contoso-dr.azurewebsites.net` a představují produkční prostředí aplikace s úplnou geografickou redundancí. Produkční prostředí zahrnuje následující součásti:
+![SQL Database konfiguraci geografické replikace pro zotavení po havárii v cloudu.](media/sql-database-manage-application-rolling-upgrade/option1-3.png)
 
-* Produkční prostředí webové aplikace `contoso-1.azurewebsites.net` v primární oblasti (1)
+Pokud je proces upgradu neúspěšný (například kvůli chybě v skriptu pro upgrade), zvažte, jestli má být ohrožené pracovní prostředí. Chcete-li vrátit aplikaci do stavu před upgradem, vraťte aplikaci v provozním prostředí na úplný přístup. Následující diagram znázorňuje kroky převerze:
+
+1. Nastavte kopii databáze do režimu čtení i zápisu (8). Tato akce obnoví plnou funkčnost verze V1 produkční kopie.
+2. Proveďte analýzu původní příčiny a vyřaďte z provozu pracovní prostředí (9).
+
+V tuto chvíli je aplikace plně funkční a můžete postup upgradu zopakovat.
+
+> [!NOTE]
+> Vrácení zpět nevyžaduje změny DNS, protože jste ještě neprováděli operaci prohození.
+
+![SQL Database konfiguraci geografické replikace pro zotavení po havárii v cloudu.](media/sql-database-manage-application-rolling-upgrade/option1-4.png)
+
+Klíčovou výhodou této možnosti je, že aplikaci v jedné oblasti můžete upgradovat pomocí sady jednoduchých kroků. Cena za dolar za upgrade je poměrně nízká. 
+
+Hlavním kompromisem je to, že pokud během upgradu dojde k závažné chybě, obnovení do stavu před upgradem zahrnuje opětovné nasazení aplikace v jiné oblasti a obnovení databáze ze zálohy pomocí geografického obnovení. Výsledkem tohoto procesu je výrazné výpadky.
+
+## <a name="upgrade-applications-that-rely-on-database-geo-replication-for-disaster-recovery"></a>Upgradovat aplikace, které spoléhají na geografickou replikaci databáze pro zotavení po havárii
+
+Pokud vaše aplikace používá aktivní geografickou replikaci nebo skupiny s automatickým převzetím služeb při selhání pro zajištění provozní kontinuity, nasadí se do aspoň dvou různých oblastí. V oblasti zálohování je aktivní primární databáze v primární oblasti a sekundární databáze jen pro čtení. Spolu s faktory uvedenými na začátku tohoto článku musí proces upgradu také zaručit, že:
+
+* Aplikace zůstane během procesu upgradu v každé době chráněná před závažnými chybami.
+* Geografické redundantní komponenty aplikace jsou upgradovány paralelně s aktivními komponentami.
+
+K dosažení těchto cílů Kromě použití Web Apps prostředí můžete využít výhod Azure Traffic Manager pomocí profilu převzetí služeb při selhání s jedním aktivním koncovým bodem a jedním záložním koncovým bodem. Další diagram znázorňuje provozní prostředí před procesem upgradu. Webové stránky `contoso-1.azurewebsites.net` a `contoso-dr.azurewebsites.net` reprezentují produkční prostředí aplikace s plnou geografickou redundancí. Provozní prostředí obsahuje následující komponenty:
+
+* Provozní prostředí webové aplikace `contoso-1.azurewebsites.net` v primární oblasti (1)
 * Primární databáze v primární oblasti (2)
 * Pohotovostní instance webové aplikace v oblasti zálohování (3)
 * Geograficky replikovaná sekundární databáze v oblasti zálohování (4)
-* Profil výkonu Traffic Manageru s `contoso-1.azurewebsites.net` volaným online koncovým bodem a offline koncovým bodem nazývaným`contoso-dr.azurewebsites.net`
+* Traffic Manager profil výkonu s názvem `contoso-1.azurewebsites.net` online koncový bod a s názvem offline koncový bod`contoso-dr.azurewebsites.net`
 
-Chcete-li, aby bylo možné vrátit zpět upgrade, je nutné vytvořit pracovní prostředí s plně synchronizovanou kopii aplikace. Vzhledem k tomu, že je třeba zajistit, že aplikace může rychle obnovit v případě, že dojde ke katastrofickému selhání během procesu upgradu, pracovní prostředí musí být také geograficky redundantní. K vytvoření pracovního prostředí pro upgrade jsou nutné následující kroky:
+Aby bylo možné vrátit zpět upgrade, je nutné vytvořit přípravné prostředí s plně synchronizovanou kopií aplikace. Vzhledem k tomu, že je potřeba zajistit, aby se aplikace mohla rychle obnovit v případě, že během procesu upgradu dojde k závažným chybám, musí být pracovní prostředí také geograficky redundantní. Pro vytvoření přípravného prostředí pro upgrade je potřeba provést tyto kroky:
 
-1. Nasazení pracovního prostředí webové aplikace v primární oblasti (6).
-2. Vytvořte sekundární databázi v primární oblasti Azure (7). Nakonfigurujte pracovní prostředí webové aplikace tak, aby se k ní připojilo. 
-3. Vytvořte další geograficky redundantní sekundární databázi v oblasti zálohování replikací sekundární databáze v primární oblasti. (Tato metoda se nazývá *zřetězená geografická replikace*.) (8).
-4. Nasaďte pracovní prostředí instance webové aplikace v oblasti zálohování (9) a nakonfigurujte ji tak, aby se připojila k geograficky redundantní sekundární databázi vytvořené v bodě (8).
+1. Nasaďte přípravné prostředí webové aplikace v primární oblasti (6).
+2. Vytvořte sekundární databázi v primární oblasti Azure (7). Konfigurace přípravného prostředí webové aplikace pro připojení. 
+3. Pomocí replikace sekundární databáze v primární oblasti vytvořte v oblasti zálohování jinou geograficky redundantní sekundární databázi. (Tato metoda se nazývá *zřetězená geografická replikace*.) (8).
+4. Nasaďte přípravné prostředí instance webové aplikace v oblasti zálohování (9) a nakonfigurujte ji tak, aby se připojila geograficky redundantní sekundární databáze vytvořená v (8).
 
 > [!NOTE]
-> Tyto kroky přípravy nebude mít vliv na aplikaci v produkčním prostředí. Zůstane plně funkční v režimu čtení a zápisu.
+> Tyto přípravné kroky nebudou mít vliv na aplikaci v produkčním prostředí. Zůstane plně funkční v režimu pro čtení i zápis.
 
-![Konfigurace geografické replikace sql database pro cloudové zotavení po havárii.](media/sql-database-manage-application-rolling-upgrade/option2-1.png)
+![SQL Database konfiguraci geografické replikace pro zotavení po havárii v cloudu.](media/sql-database-manage-application-rolling-upgrade/option2-1.png)
 
 Po dokončení přípravných kroků je pracovní prostředí připraveno k upgradu. Následující diagram znázorňuje tyto kroky upgradu:
 
-1. Nastavte primární databázi v provozním prostředí do režimu jen pro čtení (10). Tento režim zaručuje, že produkční databáze (V1) se během upgradu nezmění, čímž zabrání rozdílům dat mezi instancemi databáze V1 a V2.
+1. Nastavte primární databázi v provozním prostředí na režim jen pro čtení (10). Tento režim zaručuje, že se během upgradu nedojde ke změně provozní databáze (V1), což zabrání rozdílům v datech mezi instancemi databáze V1 a v2.
 
 ```sql
 -- Set the production database to read-only mode
@@ -109,7 +109,7 @@ ALTER DATABASE <Prod_DB>
 SET (ALLOW_CONNECTIONS = NO)
 ```
 
-2. Ukončit geografickou replikaci odpojením sekundární (11). Tato akce vytvoří nezávislou, ale plně synchronizovanou kopii produkční databáze. Tato databáze bude inovována. Následující příklad používá Transact-SQL, ale [PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary?view=azps-1.5.0) je také k dispozici. 
+2. Dokončí geografickou replikaci odpojením sekundárního (11). Tato akce vytvoří nezávislou, plně synchronizovanou kopii provozní databáze. Tato databáze bude upgradována. Následující příklad používá jazyk Transact-SQL, ale je k dispozici také [prostředí PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary?view=azps-1.5.0) . 
 
 ```sql
 -- Disconnect the secondary, terminating geo-replication
@@ -117,41 +117,41 @@ ALTER DATABASE <Prod_DB>
 REMOVE SECONDARY ON SERVER <Partner-Server>
 ```
 
-3. Spusťte skript `contoso-1-staging.azurewebsites.net` `contoso-dr-staging.azurewebsites.net`upgradu proti , a pracovní primární databázi (12). Změny databáze budou automaticky replikovány do pracovní sekundární.
+3. Spusťte skript upgradu proti `contoso-1-staging.azurewebsites.net`, `contoso-dr-staging.azurewebsites.net`a pracovní primární databázi (12). Změny databáze budou automaticky replikovány do pracovního sekundárního prostředí.
 
-![Konfigurace geografické replikace sql database pro cloudové zotavení po havárii.](media/sql-database-manage-application-rolling-upgrade/option2-2.png)
+![SQL Database konfiguraci geografické replikace pro zotavení po havárii v cloudu.](media/sql-database-manage-application-rolling-upgrade/option2-2.png)
 
-Pokud upgrade úspěšně skončí, jste nyní připraveni přepnout uživatele na verzi V2 aplikace. Následující diagram znázorňuje související kroky:
+Pokud se upgrade úspěšně dokončí, teď jste připraveni přepnout uživatele na verzi v2 aplikace. Následující diagram znázorňuje postup, který je součástí:
 
-1. Aktivujte operaci odkládacího režimu mezi produkčním a testovacím prostředím webové aplikace v primární oblasti (13) a v oblasti zálohování (14). V2 aplikace se nyní stává produkčním prostředím s redundantní kopií v oblasti zálohování.
-2. Pokud už aplikaci V1 (15 a 16) nepotřebujete, můžete vyřazeno z provozu pracovní prostředí.
+1. Aktivujte operaci prohození mezi produkčním a přípravným prostředím webové aplikace v primární oblasti (13) a v oblasti zálohování (14). V2 aplikace se teď staly produkčním prostředím, s redundantní kopií v oblasti zálohování.
+2. Pokud už nepotřebujete aplikaci V1 (15 a 16), můžete pracovní prostředí vyřadit z provozu.
 
-![Konfigurace geografické replikace sql database pro cloudové zotavení po havárii.](media/sql-database-manage-application-rolling-upgrade/option2-3.png)
+![SQL Database konfiguraci geografické replikace pro zotavení po havárii v cloudu.](media/sql-database-manage-application-rolling-upgrade/option2-3.png)
 
-Pokud je proces upgradu neúspěšný (například z důvodu chyby ve skriptu upgradu), zvažte pracovní prostředí v nekonzistentním stavu. Chcete-li vrátit zpět aplikace do stavu před upgradem, vraťte se k použití V1 aplikace v provozním prostředí. Požadované kroky jsou uvedeny na následujícím diagramu:
+Pokud je proces upgradu neúspěšný (například kvůli chybě v skriptu pro upgrade), zvažte, jestli je pracovní prostředí v nekonzistentním stavu. Chcete-li vrátit aplikaci zpět do stavu před upgradem, vraťte se na použití v1 aplikace v provozním prostředí. Požadované kroky se zobrazí v dalším diagramu:
 
-1. Nastavte kopii primární databáze v produkčním prostředí do režimu čtení a zápisu (17). Tato akce obnoví plnou funkci V1 v provozním prostředí.
-2. Proveďte analýzu hlavní příčiny a opravou nebo odeberte pracovní prostředí (18 a 19).
+1. Nastavte primární databázovou kopii v produkčním prostředí do režimu pro čtení i zápis (17). Tato akce obnoví plná funkčnost v1 v produkčním prostředí.
+2. Proveďte analýzu původní příčiny a opravte nebo odeberte pracovní prostředí (18 a 19).
 
-V tomto okamžiku aplikace je plně funkční a můžete opakovat kroky upgradu.
+V tuto chvíli je aplikace plně funkční a můžete postup upgradu zopakovat.
 
 > [!NOTE]
-> Vrácení zpět nevyžaduje změny DNS, protože jste neprovedli operaci prohození.
+> Vrácení zpět nevyžaduje změny DNS, protože jste neprováděli operaci swap.
 
-![Konfigurace geografické replikace sql database pro cloudové zotavení po havárii.](media/sql-database-manage-application-rolling-upgrade/option2-4.png)
+![SQL Database konfiguraci geografické replikace pro zotavení po havárii v cloudu.](media/sql-database-manage-application-rolling-upgrade/option2-4.png)
 
-Hlavní výhodou této možnosti je, že můžete upgradovat aplikaci i její geograficky redundantní kopii paralelně, aniž by byla ohrožena kontinuita provozu během upgradu.
+Klíčovou výhodou této možnosti je, že můžete upgradovat aplikaci i její geograficky redundantní kopii paralelně bez toho, aby během upgradu došlo k narušení vaší provozní kontinuity.
 
-Hlavní kompromis je, že vyžaduje dvojí redundance každé součásti aplikace, a proto vzniknou vyšší náklady dolaru. Zahrnuje také složitější pracovní postup.
+Hlavním kompromisem je to, že vyžaduje dvojí redundanci každé součásti aplikace, a proto se zvýší náklady na dolar. Zahrnuje taky složitější pracovní postup.
 
 ## <a name="summary"></a>Souhrn
 
-Dvě metody upgradu popsané v článku se liší složitostí a náklady v dolarech, ale obě se zaměřují na minimalizaci, jak dlouho je uživatel omezen na operace jen pro čtení. Tato doba je přímo definována dobou trvání skriptu upgradu. Nezávisí na velikosti databáze, vybrané úrovni služby, konfiguraci webu nebo jiných faktorech, které nelze snadno řídit. Všechny kroky přípravy jsou odděleny od kroků upgradu a nemají vliv na produkční aplikaci. Efektivita skriptu upgradu je klíčovým faktorem, který určuje uživatelské prostředí během upgradu. Takže nejlepší způsob, jak zlepšit tuto zkušenost, je zaměřit své úsilí na to, aby byl skript upgradu co nejúčinnější.
+Tyto dvě metody upgradu popsané v článku se liší od nákladů na složitost a dolar, ale obě se zaměřují na minimalizaci toho, jak dlouho je uživatel omezený na operace jen pro čtení. Tato doba je přímo definovaná po dobu trvání skriptu upgradu. Nezávisí na velikosti databáze, zvolené úrovni služby, konfiguraci webu nebo jiných faktorech, které nemůžete snadno ovládat. Všechny kroky přípravy jsou oddělené od kroků upgradu a neovlivňují produkční aplikaci. Efektivita skriptu upgradu je klíčovým faktorem, který určuje prostředí uživatele během upgradů. Nejlepším způsobem, jak toto prostředí zlepšit, je zaměřit se na to, co je potřeba k tomu, aby byl skript upgradu co nejefektivnější.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přehled kontinuity provozu a scénáře najdete v tématu [Přehled kontinuity provozu](sql-database-business-continuity.md).
-* Další informace o aktivní geografické replikaci azure SQL Database najdete v tématu [Vytváření čitelných sekundárních databází pomocí aktivní geografické replikace](sql-database-active-geo-replication.md).
-* Další informace o skupinách automatického převzetí služeb při selhání azure SQL Database najdete v [tématu Použití skupin s možností převzetí služeb při selhání pomocí možností povolit transparentní a koordinované převzetí služeb při selhání z více databází](sql-database-auto-failover-group.md).
-* Další informace o pracovních prostředích ve službě Azure App Service najdete v [tématu Nastavení pracovních prostředí ve službě Azure App Service](../app-service/deploy-staging-slots.md).
-* Další informace o profilech Azure Traffic Manageru najdete [v tématu Správa profilu Azure Traffic Manageru](../traffic-manager/traffic-manager-manage-profiles.md).
+* Přehled provozní kontinuity a scénáře najdete v tématu [Přehled provozní kontinuity](sql-database-business-continuity.md).
+* Další informace o tom, jak Azure SQL Database aktivní geografickou replikaci, najdete v tématu [Vytvoření čitelných sekundárních databází pomocí aktivní geografické replikace](sql-database-active-geo-replication.md).
+* Další informace o Azure SQL Database skupin automatického převzetí služeb při selhání najdete v tématu [použití skupin s automatickým převzetím služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb](sql-database-auto-failover-group.md)
+* Další informace o přípravném prostředí v Azure App Service najdete v tématu [Nastavení přípravných prostředí v Azure App Service](../app-service/deploy-staging-slots.md).
+* Další informace o profilech Azure Traffic Manager najdete v tématu [Správa profilu azure Traffic Manager](../traffic-manager/traffic-manager-manage-profiles.md).

@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat mezi data mezi Data Lake Storage Gen1 a Azure SQL - Sqoop | Dokumenty společnosti Microsoft
-description: Kopírování dat mezi Azure SQL Database a Azure Data Lake Storage Gen1 pomocí Sqoop
+title: Kopírování dat mezi Data Lake Storage Gen1 a Azure SQL-Sqoop | Microsoft Docs
+description: Kopírování dat mezi Azure SQL Database pomocí Sqoop a Azure Data Lake Storage Gen1
 services: data-lake-store
 author: twooley
 ms.service: data-lake-store
@@ -8,36 +8,36 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: twooley
 ms.openlocfilehash: cf3893706afcb4c4cc5b90dd3d2431ecedc71d0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73839063"
 ---
-# <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Kopírování dat mezi data mezi Data Lake Storage Gen1 a Azure SQL Database pomocí Sqoop
+# <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Kopírování dat mezi Data Lake Storage Gen1 a Azure SQL Database pomocí Sqoop
 
-Zjistěte, jak pomocí Apache Sqoop importovat a exportovat data mezi Azure SQL Database a Azure Data Lake Storage Gen1.
+Naučte se používat Apache Sqoop k importu a exportu dat mezi Azure SQL Database a Azure Data Lake Storage Gen1.
 
 ## <a name="what-is-sqoop"></a>Co je Sqoop?
 
-Aplikace pro velké objemy dat jsou přirozenou volbou pro zpracování nestrukturovaných a částečně strukturovaných dat, jako jsou protokoly a soubory. Však může mít také potřeba zpracovat strukturovaná data, která jsou uložena v relačních databázích.
+Aplikace pro velké objemy dat jsou přirozenou volbou pro zpracování nestrukturovaných a částečně strukturovaných dat, jako jsou protokoly a soubory. Je ale možné, že budete potřebovat zpracovat strukturovaná data uložená v relačních databázích.
 
-[Apache Sqoop](https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html) je nástroj určený k přenosu dat mezi relačními databázemi a úložištěm velkých objemů dat, jako je Například Data Lake Storage Gen1. Můžete ji použít k importu dat ze systému správy relační databáze (RDBMS), jako je Azure SQL Database do Data Lake Storage Gen1. Potom můžete transformovat a analyzovat data pomocí úloh velkých objemů dat a potom exportovat data zpět do RDBMS. V tomto článku použijete databázi Azure SQL jako relační databázi k importu nebo exportu.
+[Apache Sqoop](https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html) je nástroj určený k přenosu dat mezi relačními databázemi a úložištěm s velkými objemy dat, jako je například Data Lake Storage Gen1. Můžete ji použít k importu dat ze systému pro správu relačních databází (RDBMS), jako je například Azure SQL Database do Data Lake Storage Gen1. Data pak můžete transformovat a analyzovat pomocí úloh s velkými objemy dat a pak je exportovat zpátky do RDBMS. V tomto článku použijete jako relační databázi Azure SQL Database k importu/exportu z.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete, musíte mít následující:
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Účet Azure Data Lake Storage Gen1**. Pokyny k vytvoření účtu najdete v tématu [Začínáme s Azure Data Lake Storage Gen1.](data-lake-store-get-started-portal.md)
-* **Cluster Azure HDInsight** s přístupem k účtu Data Lake Storage Gen1. Viz [Vytvoření clusteru HDInsight s gen1 úložiště datového jezera](data-lake-store-hdinsight-hadoop-use-portal.md). Tento článek předpokládá, že máte cluster HDInsight Linux s přístupem Data Lake Storage Gen1.
-* **Azure SQL Database**. Pokyny k vytvoření najdete v [tématu Vytvoření databáze Azure SQL.](../sql-database/sql-database-get-started.md)
+* **Účet Azure Data Lake Storage Gen1**. Pokyny k vytvoření účtu najdete v tématu Začínáme [s Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) .
+* **Cluster Azure HDInsight** s přístupem k účtu Data Lake Storage Gen1. Další informace najdete v tématu [Vytvoření clusteru HDInsight s Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md). V tomto článku se předpokládá, že máte cluster HDInsight Linux s přístupem Data Lake Storage Gen1.
+* **Azure SQL Database**. Pokyny k jeho vytvoření najdete v tématu [Vytvoření databáze SQL Azure](../sql-database/sql-database-get-started.md) .
 
-## <a name="create-sample-tables-in-the-azure-sql-database"></a>Vytvoření ukázkových tabulek v databázi Azure SQL
+## <a name="create-sample-tables-in-the-azure-sql-database"></a>Vytvoření ukázkových tabulek ve službě Azure SQL Database
 
-1. Chcete-li začít, vytvořte dvě ukázkové tabulky v databázi Azure SQL. Pomocí [aplikace SQL Server Management Studio](../sql-database/sql-database-connect-query-ssms.md) nebo Visual Studio se připojte k databázi a spusťte následující dotazy.
+1. Začněte tím, že vytvoříte dvě ukázkové tabulky ve službě Azure SQL Database. Pomocí [SQL Server Management Studio](../sql-database/sql-database-connect-query-ssms.md) nebo sady Visual Studio se připojte k databázi a spusťte následující dotazy.
 
-    **Vytvořit tabulku1**
+    **Vytvořit Tabulka1**
 
        CREATE TABLE [dbo].[Table1](
        [ID] [int] NOT NULL,
@@ -50,7 +50,7 @@ Než začnete, musíte mít následující:
        ) ON [PRIMARY]
        GO
 
-    **Vytvořit tabulku2**
+    **Vytvořit Tabulka2**
 
        CREATE TABLE [dbo].[Table2](
        [ID] [int] NOT NULL,
@@ -63,37 +63,37 @@ Než začnete, musíte mít následující:
        ) ON [PRIMARY]
        GO
 
-1. Spuštěním následujícího příkazu přidejte do **tabulky1**ukázková data . Ponechejte **tabulku2** prázdnou. Později importujete data z **tabulky 1** do data Lake Storage Gen1. Potom budete exportovat data z Data Lake Storage Gen1 do **tabulky2**.
+1. Spusťte následující příkaz, který přidá ukázková data do **Tabulka1**. Nechejte **Tabulka2** prázdné. Později naimportujete data ze **Tabulka1** do data Lake Storage Gen1. Potom budete exportovat data z Data Lake Storage Gen1 do **Tabulka2**.
 
        INSERT INTO [dbo].[Table1] VALUES (1,'Neal','Kell'), (2,'Lila','Fulton'), (3, 'Erna','Myers'), (4,'Annette','Simpson');
 
-## <a name="use-sqoop-from-an-hdinsight-cluster-with-access-to-data-lake-storage-gen1"></a>Použití Sqoop z clusteru HDInsight s přístupem k úložišti Data Lake Storage Gen1
+## <a name="use-sqoop-from-an-hdinsight-cluster-with-access-to-data-lake-storage-gen1"></a>Použití Sqoop z clusteru HDInsight s přístupem k Data Lake Storage Gen1
 
-Cluster HDInsight již má balíčky Sqoop k dispozici. Pokud jste nakonfigurovali cluster HDInsight tak, aby používal data Lake Storage Gen1 jako další úložiště, můžete použít Sqoop (bez jakýchkoli změn konfigurace) k importu nebo exportu dat mezi relační databází, jako je Azure SQL Database, a účtem Data Lake Storage Gen1.
+Pro An HDInsight cluster již jsou k dispozici balíčky Sqoop. Pokud jste nakonfigurovali cluster HDInsight, aby používal Data Lake Storage Gen1 jako další úložiště, můžete k importu a exportu dat mezi relační databází, jako je například Azure SQL Database, použít Sqoop (bez jakýchkoli změn konfigurace) a účet Data Lake Storage Gen1.
 
-1. Pro tento článek předpokládáme, že jste vytvořili cluster Linux, takže byste měli použít SSH pro připojení ke clusteru. Viz [Připojení k linuxovému clusteru HDInsight](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+1. Pro účely tohoto článku předpokládáme, že jste vytvořili cluster pro Linux, abyste se mohli připojit ke clusteru pomocí SSH. Viz [připojení ke clusteru HDInsight se systémem Linux](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
-1. Ověřte, zda máte přístup k účtu Data Lake Storage Gen1 z clusteru. Z výzvy SSH spusťte následující příkaz:
+1. Ověřte, zda máte přístup k účtu Data Lake Storage Gen1 z clusteru. Z příkazového řádku SSH spusťte následující příkaz:
 
        hdfs dfs -ls adl://<data_lake_storage_gen1_account>.azuredatalakestore.net/
 
-   Tento příkaz poskytuje seznam souborů nebo složek v účtu Data Lake Storage Gen1.
+   Tento příkaz zobrazí seznam souborů nebo složek v účtu Data Lake Storage Gen1.
 
-### <a name="import-data-from-azure-sql-database-into-data-lake-storage-gen1"></a>Import dat z Azure SQL Database do modulu Gen1 úložiště datového jezera
+### <a name="import-data-from-azure-sql-database-into-data-lake-storage-gen1"></a>Import dat z Azure SQL Database do Data Lake Storage Gen1
 
-1. Přejděte do adresáře, kde jsou k dispozici balíčky Sqoop. Toto umístění je `/usr/hdp/<version>/sqoop/bin`obvykle .
+1. Přejděte do adresáře, kde jsou k dispozici balíčky Sqoop. Obvykle toto umístění je `/usr/hdp/<version>/sqoop/bin`.
 
-1. Importujte data z **tabulky 1** do účtu Data Lake Storage Gen1. Použijte následující syntaxi:
+1. Importujte data ze služby **Tabulka1** do účtu Data Lake Storage Gen1. Použijte následující syntaxi:
 
        sqoop-import --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table1 --target-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1
 
-   Zástupný symbol **název SQL-database-server** představuje název serveru, na kterém je spuštěna databáze Azure SQL. zástupný symbol **název sql-database** představuje skutečný název databáze.
+   Zástupný symbol **SQL-Database-Server-Name** představuje název serveru, na kterém běží databáze SQL Azure. zástupný symbol **SQL-Database-Name** představuje skutečný název databáze.
 
    Například:
 
        sqoop-import --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table1 --target-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1
 
-1. Ověřte, zda byla data přenesena do účtu Data Lake Storage Gen1. Spusťte následující příkaz:
+1. Ověřte, zda byla data přenesena na účet Data Lake Storage Gen1. Spusťte následující příkaz:
 
        hdfs dfs -ls adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/
 
@@ -105,11 +105,11 @@ Cluster HDInsight již má balíčky Sqoop k dispozici. Pokud jste nakonfigurova
        -rwxrwxrwx   0 sshuser hdfs         13 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00002
        -rwxrwxrwx   0 sshuser hdfs         18 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00003
 
-   Každý soubor **part-m-*** odpovídá řádku ve zdrojové tabulce **Table1**. Můžete zobrazit obsah souborů part-m-* k ověření.
+   Každý soubor **s částí m-*** odpovídá řádku ve zdrojové tabulce ( **Tabulka1**). Můžete zobrazit obsah souborů částí m-*, které chcete ověřit.
 
-### <a name="export-data-from-data-lake-storage-gen1-into-azure-sql-database"></a>Export dat z data Lake Storage Gen1 do Azure SQL Database
+### <a name="export-data-from-data-lake-storage-gen1-into-azure-sql-database"></a>Export dat z Data Lake Storage Gen1 do Azure SQL Database
 
-1. Exportujte data z účtu Data Lake Storage Gen1 do prázdné tabulky **Tabulka2**v azure sql databázi. Použijte následující syntaxi.
+1. Exportujte data z účtu Data Lake Storage Gen1 do prázdné tabulky **Tabulka2**v Azure SQL Database. Použijte následující syntaxi.
 
        sqoop-export --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table2 --export-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
 
@@ -117,7 +117,7 @@ Cluster HDInsight již má balíčky Sqoop k dispozici. Pokud jste nakonfigurova
 
        sqoop-export --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table2 --export-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
 
-1. Ověřte, zda byla data odeslána do tabulky Databáze SQL. Pomocí [sql server management studio](../sql-database/sql-database-connect-query-ssms.md) nebo Visual Studio se připojit k azure sql database a pak spustit následující dotaz.
+1. Ověřte, že se data nahrála do SQL Database tabulky. Pomocí [SQL Server Management Studio](../sql-database/sql-database-connect-query-ssms.md) nebo sady Visual Studio se připojte k Azure SQL Database a pak spusťte následující dotaz.
 
        SELECT * FROM TABLE2
 
@@ -130,13 +130,13 @@ Cluster HDInsight již má balíčky Sqoop k dispozici. Pokud jste nakonfigurova
        3    Erna     Myers
        4    Annette  Simpson
 
-## <a name="performance-considerations-while-using-sqoop"></a>Aspekty výkonu při používání sqoop
+## <a name="performance-considerations-while-using-sqoop"></a>Požadavky na výkon při použití Sqoop
 
-Informace o optimalizaci výkonu úlohy Sqoop pro kopírování dat do data Lake Storage Gen1 najdete v [příspěvku na blogu výkonu Sqoop](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/).
+Informace o optimalizaci výkonu úlohy Sqoop pro kopírování dat do Data Lake Storage Gen1 najdete v [příspěvku na blogu o výkonu Sqoop](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Kopírování dat z objektů BLOB úložiště Azure do data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
+* [Kopírování dat z objektů blob Azure Storage do Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
 * [Zabezpečení dat ve službě Data Lake Storage Gen1](data-lake-store-secure-data.md)
-* [Použití Azure Data Lake Analytics s datelake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Použití Azure HDInsight s úložištěm datových jezer Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Použití Azure Data Lake Analytics s Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Použití Azure HDInsight s Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)

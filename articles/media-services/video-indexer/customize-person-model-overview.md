@@ -1,7 +1,7 @@
 ---
-title: Přizpůsobení modelu osoby v video indexeru – Azure
+title: Přizpůsobení modelu osoby v Video Indexer – Azure
 titleSuffix: Azure Media Services
-description: Tento článek poskytuje přehled o tom, co je model osoby v Video Indexer a jak jej přizpůsobit.
+description: Tento článek poskytuje přehled toho, co je model osoby v Video Indexer a jak ho přizpůsobit.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -11,23 +11,23 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
 ms.openlocfilehash: 3fabba98cb137975da749411ca9accb5a951742d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73838299"
 ---
-# <a name="customize-a-person-model-in-video-indexer"></a>Přizpůsobení modelu osoby v videoindexeru
+# <a name="customize-a-person-model-in-video-indexer"></a>Přizpůsobení modelu osoby v Video Indexer
 
-Video Indexer podporuje rozpoznávání celebrit ve vašich videích. Funkce rozpoznávání celebrit pokrývá přibližně jeden milion tváří založených na běžně požadovaném zdroji dat, jako je IMDB, Wikipedia a top LinkedIn influencers. Plochy, které nejsou rozpoznány video indexerem, jsou stále detekovány, ale zůstanou nepojmenované. Zákazníci mohou vytvářet vlastní modely osob a povolit video indexeru rozpoznat tváře, které nejsou ve výchozím nastavení rozpoznány. Zákazníci mohou vytvořit tyto modely osob spárováním jména osoby s obrazovými soubory obličeje osoby.  
+Video Indexer podporuje rozpoznávání celebrit ve vašich videích. Funkce rozpoznávání celebrit se zabývá přibližně 1 000 000 obličejemi na základě běžně vyžádaného zdroje dat, jako jsou IMDB, Wikipedii a nejvyšší vlivy na LinkedIn. Jsou pořád zjištěné plošky, které Video Indexer nerozpoznaly, ale nejsou pojmenované. Zákazníci mohou vytvořit vlastní modely osob a povolit Video Indexer rozpoznávání ploch, které nejsou ve výchozím nastavení rozpoznány. Zákazníci můžou tyto modely uživatelů sestavovat spárováním názvu osoby s obrázkovým obrázkem plochy osoby.  
 
-Pokud váš účet vyhovuje různým případům použití, můžete využít možnosti vytvořit více modelů osob na účet. Pokud má být například obsah ve vašem účtu seřazen do různých kanálů, můžete pro každý kanál vytvořit samostatný model osob. 
+Pokud váš účet využívá různé případy použití, můžete využít možnost vytvořit pro každý účet více modelů osob. Například pokud je obsah ve vašem účtu navržený tak, aby se seřadil do různých kanálů, možná budete chtít pro každý kanál vytvořit samostatný model osoby. 
 
 > [!NOTE]
-> Každý model osoby podporuje až 1 milion lidí a každý účet má limit 50 modelů osob. 
+> Každý model Persone podporuje až 1 000 000 lidí a každý účet má limit 50ch modelů osob. 
 
-Po vytvoření modelu jej můžete použít poskytnutím ID modelu konkrétního modelu osoby při nahrávání/indexování nebo přeindexování videa. Trénování nové tváře pro video aktualizuje konkrétní vlastní model, ke kterému bylo video přidruženo. 
+Po vytvoření modelu je můžete použít k poskytnutí ID modelu konkrétního modelu osoby při nahrávání/indexování nebo přeindexování videa. Školení nové plochy pro video aktualizuje konkrétní vlastní model, ke kterému byl video přidruženo. 
 
-Pokud nepotřebujete podporu modelu více osob, nepřiřazujte id modelu osoby k videu při nahrávání nebo indexování nebo přeindexování. V takovém případě bude video indexer používat ve vašem účtu výchozí model osoby. 
+Pokud nepotřebujete podporu modelu více osob, při nahrávání/indexování nebo přeindexování nepřiřazujte své video ID modelu osoby. V takovém případě Video Indexer použije ve svém účtu výchozí model Person. 
 
-Pomocí webu Video Indexer můžete upravit tváře, které byly zjištěny ve videu, a spravovat ve svém účtu více vlastních modelů osob, jak je popsáno v [tématu Přizpůsobení osoby pomocí webu.](customize-person-model-with-website.md) Rozhraní API můžete také použít, jak je popsáno v [části Přizpůsobení modelu osoby pomocí rozhraní API](customize-person-model-with-api.md).
+Web Video Indexer můžete použít k úpravě ploch zjištěných ve videu a ke správě více vlastních uživatelských modelů v účtu, jak je popsáno v tématu [Přizpůsobení modelu osoby pomocí webu](customize-person-model-with-website.md) . Můžete také použít rozhraní API, jak je popsáno v tématu [Přizpůsobení modelu osoby pomocí rozhraní API](customize-person-model-with-api.md).
