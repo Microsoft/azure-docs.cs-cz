@@ -5,18 +5,18 @@ author: KarlErickson
 ms.author: karler
 ms.topic: quickstart
 ms.date: 02/26/2020
-ms.openlocfilehash: fbb6f4633ef6e984746a4fb4516380f4b2e3a9da
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: fa64ec526ab85e412b407da8566ac6f802ca2d20
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116770"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195277"
 ---
 # <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>Rychlý Start: sestavení a vložení imagí kontejnerů Java do Azure Container Registry
 
 V tomto rychlém startu se dozvíte, jak vytvořit kontejnerovou aplikaci Java a vložit ji do Azure Container Registry pomocí modulu plug-in Maven. Jedním z příkladů použití nástrojů pro vývojáře k interakci se službou Azure Container Registry je použití Maven a výložníku.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud zatím předplatné Azure nemáte, můžete si aktivovat [výhody předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) nebo si zaregistrovat [bezplatný účet Azure](https://azure.microsoft.com/pricing/free-trial).
 * [Rozhraní příkazového řádku Azure (CLI)](/cli/azure/overview)
@@ -108,13 +108,13 @@ Nakonec aktualizujete konfiguraci projektu a pomocí příkazového řádku sest
 
 1. Přejděte do adresáře dokončeného projektu pro aplikaci Spring Boot (například "*C:\SpringBoot\gs-spring-boot-docker\complete*" nebo "*/users/robert/SpringBoot/gs-spring-boot-docker/complete*") a v textovém editoru otevřete soubor *pom.xml*.
 
-1. Aktualizujte `<properties>` kolekci v souboru *pom. XML* pomocí následujícího kódu XML. Zástupný text nahraďte názvem registru a přidejte `<jib-maven-plugin.version>` vlastnost s hodnotou `2.1.0`nebo novější verzí [Maven-plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin).
+1. Aktualizujte `<properties>` kolekci v souboru *pom. XML* pomocí následujícího kódu XML. Zástupný text nahraďte názvem registru a přidejte `<jib-maven-plugin.version>` vlastnost s hodnotou `2.2.0`nebo novější verzí [Maven-plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin).
 
    ```xml
    <properties>
       <docker.image.prefix><your registry name>.azurecr.io</docker.image.prefix>
       <java.version>1.8</java.version>
-      <jib-maven-plugin.version>2.1.0</jib-maven-plugin.version>
+      <jib-maven-plugin.version>2.2.0</jib-maven-plugin.version>
    </properties>
    ```
 
@@ -139,7 +139,7 @@ Nakonec aktualizujete konfiguraci projektu a pomocí příkazového řádku sest
 1. Přejděte do adresáře dokončeného projektu pro aplikaci Spring Boot a spuštěním následujícího příkazu sestavte image a předejte ji do registru:
 
    ```bash
-   mvn compile jib:build
+   az acr login && mvn compile jib:build
    ```
 
 > [!NOTE]

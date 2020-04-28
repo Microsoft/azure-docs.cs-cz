@@ -4,14 +4,14 @@ description: Vytvoření instance mezipaměti prostředí Azure HPC
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 04/15/2020
+ms.date: 04/23/2020
 ms.author: v-erkel
-ms.openlocfilehash: efa9037b345cdfc5f165e9c5e0c1831ea97b52ed
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: 4ff31ca6a171beece1672802367f08768676efbc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106487"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195005"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Vytvoření mezipaměti prostředí Azure HPC
 
@@ -29,7 +29,7 @@ V části **Podrobnosti o službě**nastavte název mezipaměti a tyto ostatní 
 
 * Umístění – vyberte jednu z [podporovaných oblastí](hpc-cache-overview.md#region-availability).
 * Virtuální síť – můžete vybrat existující virtuální síť nebo vytvořit novou.
-* Podsíť – vyberte nebo vytvořte podsíť s aspoň 64 IP adresami (/24), která se použije jenom pro tuto instanci mezipaměti Azure HPC.
+* Podsíť – vyberte nebo vytvořte podsíť s aspoň 64 IP adresami (/24). Tato podsíť se musí použít jenom pro tuto instanci mezipaměti Azure HPC.
 
 ## <a name="set-cache-capacity"></a>Nastavit kapacitu mezipaměti
 <!-- referenced from GUI - update aka.ms link if you change this header text -->
@@ -47,7 +47,7 @@ Vyberte jednu z dostupných hodnot propustnosti a velikosti úložiště mezipam
 
 Pamatujte, že skutečná rychlost přenosu dat závisí na zatížení, rychlosti sítě a typu cílů úložiště. Hodnoty, které zvolíte, nastaví maximální propustnost pro celý systém mezipaměti, ale některé z nich se použijí pro úlohy s režijními náklady. Pokud třeba klient požaduje soubor, který už není uložený v mezipaměti, nebo pokud je soubor označený jako zastaralý, mezipaměť použije určitou propustnost k načtení z back-endu úložiště.
 
-Azure HPC cache spravuje, které soubory jsou uložené do mezipaměti a předem se načítají, aby se maximalizovala míra přístupů do mezipaměti. Obsah mezipaměti se průběžně vyhodnocuje a soubory se přesunou do dlouhodobého úložiště, když se k nim méně často přistupuje. Vyberte velikost úložiště mezipaměti, která může pohodlně uchovávat aktivní sadu pracovních souborů a další místo pro metadata a další režii.
+Azure HPC cache spravuje, které soubory jsou uložené do mezipaměti a předem se načítají, aby se maximalizovala míra přístupů do mezipaměti. Obsah mezipaměti se průběžně vyhodnocuje a soubory se přesunou do dlouhodobého úložiště, když se k nim nepoužívá méně často. Vyberte velikost úložiště mezipaměti, která může pohodlně uchovávat aktivní sadu pracovních souborů a navíc další místo pro metadata a další režii.
 
 ![snímek stránky s nastavením velikosti mezipaměti](media/hpc-cache-create-capacity.png)
 

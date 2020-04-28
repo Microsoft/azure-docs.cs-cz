@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 10c66ba175484d8b95f26ef9330753151a92969b
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: 631c9b37cf1fec0d39c3c362c6bc303a576d6b7c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106028"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187326"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Spuštění/zastavení virtuálních počítačů v řešení mimo špičku v Azure Automation
 

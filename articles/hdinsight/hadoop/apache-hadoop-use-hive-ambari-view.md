@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: a230d4f775207afc37172dae9f0709d66a6d1aa1
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 832caaed0816e3dd7d177f634209dea42e5312c7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116617"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192676"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Použití zobrazení Ambari Hive Apache s Apache Hadoopem v HDInsight
 
@@ -21,7 +21,7 @@ ms.locfileid: "82116617"
 
 Naučte se spouštět dotazy na podregistry pomocí zobrazení podregistru Apache Ambari. Zobrazení podregistru umožňuje vytvářet, optimalizovat a spouštět dotazy na podregistr z webového prohlížeče.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Cluster Hadoop ve službě HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](./apache-hadoop-linux-tutorial-get-started.md).
 
@@ -119,7 +119,7 @@ Na kartě **dotaz** můžete volitelně ukládat dotazy. Po uložení se dotaz d
 >
 > Pokud cluster odstraníte, ale zachováte ho, můžete k načtení dotazů použít nástroj, jako je [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) nebo data Lake Storage Explorer (na webu [Azure Portal](https://portal.azure.com)).
 
-## <a name="user-defined-functions"></a>Uživatelsky definované funkce
+## <a name="user-defined-functions"></a>Uživatelem definované funkce
 
 Podregistr můžete roztáhnout prostřednictvím uživatelsky definovaných funkcí (UDF). Použijte systém souborů UDF k implementaci funkcí nebo logiky, která není snadno modelována v HiveQL.
 

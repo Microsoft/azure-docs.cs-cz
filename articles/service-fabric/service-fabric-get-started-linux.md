@@ -1,14 +1,14 @@
 ---
-title: Nastavení vývojového prostředí na Linuxu
+title: Nastavení vývojového prostředí v systému Linux
 description: Nainstalujte modul runtime a sadu SDK a vytvořte místní vývojový cluster v Linuxu. Po dokončení této instalace a nastavení budete moci sestavovat aplikace.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 6cedd97144a3fd32d9af8582e24ad5c12914e575
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 000d615d779ed14eb1698cf297075480a07c71ef
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81682628"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193407"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Příprava vývojového prostředí v Linuxu
 > [!div class="op_single_selector"]
@@ -92,7 +92,7 @@ Pokud chcete nainstalovat sadu SDK a přidružený balíček modulu runtime pomo
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     ```
 
-7. Přidejte klíč Azul JDK do klíčenky APT a nastavte jeho úložiště.
+7. Přidejte klíč JDK Azul do svého správce klíčů APT a nastavte jeho úložiště.
 
     ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
@@ -179,7 +179,7 @@ Po dokončení instalace spusťte místní cluster.
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
 
-2. Otevřete webový prohlížeč a přejděte`http://localhost:19080/Explorer`do aplikace Service Fabric [Explorer](http://localhost:19080/Explorer) ( ). Po spuštění clusteru by se měl zobrazit řídicí panel Service Fabric Exploreru. Úplné nastavení clusteru může trvat několik minut. Pokud se v prohlížeči nepodaří otevřít adresu URL nebo pokud se v Service Fabric Exploreru nezobrazí připravený systém, počkejte několik minut a zkuste to znovu.
+2. Otevřete webový prohlížeč a přejdete na **Service Fabric Explorer** (`http://localhost:19080/Explorer`). Po spuštění clusteru by se měl zobrazit řídicí panel Service Fabric Exploreru. Úplné nastavení clusteru může trvat několik minut. Pokud se v prohlížeči nepodaří otevřít adresu URL nebo pokud se v Service Fabric Exploreru nezobrazí připravený systém, počkejte několik minut a zkuste to znovu.
 
     ![Service Fabric Explorer v Linuxu][sfx-linux]
 
@@ -228,7 +228,7 @@ Pokud chcete začít [vytvářet aplikace Service Fabric v jazyce C#](service-fa
 
 ## <a name="set-up-java-development"></a>Nastavení pro vývoj v Javě
 
-Chcete-li vytvořit služby Service Fabric pomocí javy, nainstalujte Gradle pro spuštění úloh sestavení. Spusťte níže uvedený příkaz pro instalaci Gradle. Knihovny Service Fabric Java se berou z Mavenu.
+Chcete-li vytvořit služby Service Fabric pomocí jazyka Java, nainstalujte Gradle a spusťte úlohy sestavení. Spusťte následující příkaz pro instalaci Gradle. Knihovny Service Fabric Java se berou z Mavenu.
 
 
 * Ubuntu
@@ -261,11 +261,11 @@ Modul plug-in Eclipse pro Service Fabric můžete nainstalovat z integrovaného 
 > 
 > V Ubuntu doporučujeme provést instalaci přímo z webu Eclipse, a nepoužívat instalační program balíčků (`apt` nebo `apt-get`). Tím zajistíte, že budete mít nejnovější verzi Eclipse. Můžete nainstalovat integrované vývojové prostředí Eclipse pro vývojáře v Javě nebo v Javě EE.
 
-1. V Eclipse se ujistěte, že máte nainstalovanou verzi Eclipse Neon nebo novější a Buildship verze 2.2.1 nebo novější. Zkontrolujte verze nainstalovaných součástí výběrem **nápovědy k** > **podrobnostem instalace****eclipse** > . Buildship můžete aktualizovat pomocí pokynů v článku [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: Moduly plug-in Eclipse pro Gradle).
+1. V Eclipse se ujistěte, že máte nainstalovanou verzi Eclipse Neon nebo novější a Buildship verze 2.2.1 nebo novější. Verze nainstalovaných komponent zkontrolujete tak, že vyberete **nápovědu** > **o** > **podrobnostech instalace**na zatmění. Buildship můžete aktualizovat pomocí pokynů v článku [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: Moduly plug-in Eclipse pro Gradle).
 
-2. Chcete-li nainstalovat modul plug-in Service Fabric, vyberte **možnost Nápověda** > **k instalaci nového softwaru**.
+2. Pokud chcete nainstalovat modul plug-in Service Fabric, vyberte **help** > **instalovat nový software**.
 
-3. Do pole **Práce s** zadejte **https:\//dl.microsoft.com/eclipse**.
+3. Do pole **work with (pracovat s** ) zadejte **https:\//dl.Microsoft.com/Eclipse**.
 
 4. Vyberte **Přidat**.
 
@@ -275,7 +275,7 @@ Modul plug-in Eclipse pro Service Fabric můžete nainstalovat z integrovaného 
 
 6. Proveďte kroky instalace. Potom přijměte licenční smlouvu s koncovým uživatelem.
 
-Pokud už máte modul plug-in Service Fabric Eclipse nainstalovaný, ověřte, že používáte nejnovější verzi. Zaškrtněte to tak, že vyberete **nápovědu** > **k** > **podrobnostem instalace eclipse .** Pak vyhledejte Service Fabric v seznamu nainstalovaných modulů plug-in. Vyberte **aktualizovat,** pokud je k dispozici novější verze.
+Pokud už máte modul plug-in Service Fabric Eclipse nainstalovaný, ověřte, že používáte nejnovější verzi. Vyberte **nápovědu** > **o** > **podrobnostech instalace**zatmění. Pak vyhledejte Service Fabric v seznamu nainstalovaných modulů plug-in. Pokud je k dispozici novější verze, vyberte **aktualizovat** .
 
 Další informace najdete v tématu [Modul plug-in Service Fabric pro vývoj aplikací v Eclipse Javě](service-fabric-get-started-eclipse.md).
 

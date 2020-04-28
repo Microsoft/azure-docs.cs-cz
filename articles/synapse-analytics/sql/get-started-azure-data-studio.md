@@ -1,6 +1,6 @@
 ---
-title: 'Azure Data Studio (preview): Připojení a dotaz synapse SQL'
-description: Pomocí Azure Data Studio (preview) se můžete připojit k Synapse SQL a dotazovat se na něj v Azure Synapse Analytics.
+title: 'Azure Data Studio (Preview): připojení a dotazování SQL synapse'
+description: Pomocí Azure Data Studio (Preview) se můžete připojit k SQL Azure synapse Analytics a dotazovat se na něj synapse.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: edf5a6a6a0f17c21abb818a0d41d0d0b1c39949c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 561ea1a4f3577e037708c3b090188c59bd3c4aad
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81423800"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187541"
 ---
-# <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>Připojení k Synapse SQL pomocí Azure Data Studio (preview)
+# <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>Připojení k synapse SQL pomocí Azure Data Studio (Preview)
 
 > [!div class="op_single_selector"]
 >
@@ -26,58 +26,58 @@ ms.locfileid: "81423800"
 > * [Sqlcmd](get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-K připojení a dotazování Synapse SQL v Azure Synapse Analytics se můžete připojit k Řešení [dat(preview) a](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) zadat dotaz na Synapse SQL. 
+K připojení a dotazování SQL synapse v Azure synapse Analytics můžete použít [Azure Data Studio (Preview)](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) . 
 
 ## <a name="connect"></a>Připojit
 
-Chcete-li se připojit k Synapse SQL, otevřete Azure Data Studio a vyberte **Nové připojení**.
+Pokud se chcete připojit k synapse SQL, otevřete Azure Data Studio a vyberte **nové připojení**.
 
-![Otevření Datového studia Azure](./media/get-started-azure-data-studio/1-start.png)
+![Otevřít Azure Data Studio](./media/get-started-azure-data-studio/1-start.png)
 
-Jako **typ připojení**zvolte Microsoft **SQL Server** .
+Jako **Typ připojení**vyberte **Microsoft SQL Server** .
 
 Připojení vyžaduje následující parametry:
 
-* **Server:** Server ve `<Azure Synapse workspace name>`formě -ondemand.sql.azuresynapse.net
+* **Server:** Server ve formě `<Azure Synapse workspace name>`– OnDemand.SQL.azuresynapse.NET
 * **Databáze:** Název databáze
 
 > [!NOTE]
-> Pokud chcete použít **SQL na vyžádání (náhled),** adresa URL by měla vypadat takto:
+> Pokud chcete použít **SQL na vyžádání (Preview)** , adresa URL by měla vypadat takto:
 >
 > - `<Azure Synapse workspace name>`-ondemand.sql.azuresynapse.net.
 >
-> Pokud chcete použít **fond SQL,** měla by adresa URL vypadat takto:
+> Pokud byste chtěli použít **fond SQL** , adresa URL by měla vypadat takto:
 >
-> - `<Azure Synapse workspace name>`.sql.azuresynapse.net
+> - `<Azure Synapse workspace name>`. sql.azuresynapse.net
 
-Jako **typ ověřování**zvolte **Ověřování systému Windows**, **Službu Azure Active Directory**nebo Přihlášení **SQL** .
+Jako **typ ověřování**vyberte možnost **ověřování systému Windows**, **Azure Active Directory**nebo **přihlášení SQL** .
 
-Chcete-li jako typ ověřování použít **službu SQL Login,** přidejte parametry uživatelského jména a hesla:
+Pokud chcete jako typ ověřování použít **přihlášení SQL** , přidejte parametry uživatelského jména a hesla:
 
 * **Uživatel:** Uživatel serveru ve formuláři`<User>`
 * **Heslo:** Heslo přidružené k uživateli
 
-Chcete-li používat službu Azure Active Directory, musíte zvolit potřebný typ ověřování.
+Chcete-li použít Azure Active Directory, je nutné vybrat požadovaný typ ověřování.
 
 ![Ověřování AAD](./media/get-started-azure-data-studio/3-aad-auth.png)
 
-Tento snímek obrazovky zobrazuje **podrobnosti o připojení** pro **ověřování systému Windows**:
+Následující snímek obrazovky ukazuje **Podrobnosti o připojení** pro **ověřování systému Windows**:
 
 ![Ověřování systému Windows](./media/get-started-azure-data-studio/3-windows-auth.png)
 
-Tento snímek obrazovky zobrazuje **podrobnosti o připojení** pomocí **přihlášení SQL**:
+Následující snímek obrazovky ukazuje **Podrobnosti připojení** pomocí **přihlášení SQL**:
 
 ![Přihlášení k SQL serveru](./media/get-started-azure-data-studio/2-database-details.png)
 
-Po úspěšném přihlášení byste měli vidět ![řídicí panel, jako je tento: Řídicí panel](./media/get-started-azure-data-studio/4-dashboard.png)
+Po úspěšném přihlášení byste měli vidět řídicí panel podobný tomuto: ![řídicí panel](./media/get-started-azure-data-studio/4-dashboard.png)
 
 ## <a name="query"></a>Dotaz
 
-Po připojení můžete dotaz Synapse SQL pomocí podporovaných příkazů [Transact-SQL (T-SQL)](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) proti instanci. Chcete-li začít, vyberte **Nový dotaz** ze zobrazení řídicího panelu.
+Po připojení můžete dotazovat synapse SQL pomocí podporovaných příkazů [jazyka Transact-SQL (T-SQL)](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) na instanci. Začněte tím, že vyberete **Nový dotaz** v zobrazení řídicího panelu.
 
 ![Nový dotaz](./media/get-started-azure-data-studio/5-new-query.png)
 
-Můžete například použít následující příkaz Transact-SQL k [dotazování parketových souborů](query-parquet-files.md) pomocí SQL na vyžádání:
+Například můžete použít následující příkaz Transact-SQL k [dotazování souborů Parquet](query-parquet-files.md) pomocí SQL na vyžádání:
 
 ```sql
 SELECT COUNT(*)
@@ -88,7 +88,7 @@ OPENROWSET(
 )
 ```
 ## <a name="next-steps"></a>Další kroky 
-Prozkoumejte další způsoby připojení k Synapse SQL: 
+Prozkoumejte další způsoby, jak se připojit k synapse SQL: 
 
 - [SSMS](get-started-ssms.md)
 - [Power BI](get-started-power-bi-professional.md)

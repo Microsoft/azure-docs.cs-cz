@@ -1,60 +1,61 @@
 ---
-title: Podpora softwaru s otevřeným zdrojovým kódem v Azure HDInsight
-description: Microsoft Azure poskytuje obecnou úroveň podpory pro technologie s otevřeným zdrojovým kódem.
+title: Podpora open source softwaru ve službě Azure HDInsight
+description: Microsoft Azure poskytuje obecnou úroveň podpory pro open source technologie.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
+ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: f93be73af4bbbd159ffc01804617892251d96347
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 65f21450f194175af37c6c198468978392cee462
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81772168"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195158"
 ---
-# <a name="open-source-software-support-in-azure-hdinsight"></a>Podpora softwaru s otevřeným zdrojovým kódem v Azure HDInsight
+# <a name="open-source-software-support-in-azure-hdinsight"></a>Podpora open source softwaru ve službě Azure HDInsight
 
-Služba Microsoft Azure HDInsight využívá prostředí open source technologií vytvořených kolem Apache Hadoop. Microsoft Azure poskytuje obecnou úroveň podpory pro technologie s otevřeným zdrojovým kódem. Další informace najdete v části **Obor podpory** v [nejčastějších dotazech k podpoře Azure](https://azure.microsoft.com/support/faq/). Služba HDInsight poskytuje další úroveň podpory pro vestavěné součásti.
+Služba Microsoft Azure HDInsight používá prostředí Open Source technologií vytvořených v Apache Hadoop. Microsoft Azure poskytuje obecnou úroveň podpory pro open source technologie. Další informace najdete v části věnované **oboru podpory** v tématu [Nejčastější dotazy týkající se podpory Azure](https://azure.microsoft.com/support/faq/). Služba HDInsight poskytuje další úroveň podpory pro integrované součásti.
 
 ## <a name="components"></a>Komponenty
 
-Ve službě HDInsight jsou k dispozici dva typy komponent s otevřeným zdrojovým kódem:
+Ve službě HDInsight jsou k dispozici dva typy open source komponent:
 
-### <a name="built-in-components"></a>Vestavěné komponenty
+### <a name="built-in-components"></a>Předdefinované komponenty
 
-Tyto součásti jsou předinstalovány v clusterech HDInsight a poskytují základní funkce clusteru. Do této kategorie patří následující součásti:
+Tyto součásti jsou předem nainstalovány v clusterech HDInsight a poskytují základní funkce clusteru. Do této kategorie patří tyto komponenty:
 
-* [Apache Hadoop příze](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) Správce zdrojů.
-* Dotazovací jazyk [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual).
-* [Apache Mahout](https://mahout.apache.org/).
+* [Apache HADOOP nitě](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) Správce prostředků.
+* Dotazovací jazyk podregistru [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual).
+* [Apache Mahout](https://mahout.apache.org/)
 
-Úplný seznam součástí clusteru je k dispozici v [části Jaké jsou komponenty apache hadoop a verze dostupné s HDInsight?](hdinsight-component-versioning.md)
+Úplný seznam součástí clusteru je k dispozici v části [Jaké jsou Apache Hadoop komponenty a verze, které jsou k dispozici v HDInsight?](hdinsight-component-versioning.md)
 
 ### <a name="custom-components"></a>Vlastní součásti
 
-Jako uživatel clusteru můžete nainstalovat nebo použít ve své pracovní zátěži libovolnou komponentu, která je dostupná v komunitě nebo kterou jste vytvořili.
+Jako uživatel clusteru můžete v rámci své úlohy nainstalovat nebo použít všechny součásti dostupné ve komunitě nebo vytvořené vámi.
 
 > [!WARNING]  
-> Součásti dodávané s clusterem HDInsight jsou plně podporovány. Podpora společnosti Microsoft pomáhá izolovat a vyřešit problémy související s těmito součástmi.
+> Součásti dodávané s clusterem HDInsight jsou plně podporované. Podpora Microsoftu pomáhá izolovat a řešit problémy související s těmito součástmi.
 >
-> Vlastní součásti obdrží komerčně přiměřenou podporu, která vám pomůže dále řešit problém. Problém se může vyřešit podpora společnosti Microsoft. Nebo vás mohou požádat, abyste zapojili dostupné kanály pro technologie s otevřeným zdrojovým kódem, kde se nacházejí hluboké odborné znalosti pro tuto technologii. Lze použít mnoho komunitních webů. Příkladem je [fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) a [Přetečení zásobníku](https://stackoverflow.com).
+> Vlastní komponenty získají komerčně přiměřenou podporu, která vám může pomoct s dalším řešením tohoto problému. Je možné, že podpora Microsoftu problém vyřešit. Případně vás můžou požádat, abyste provedli dostupné kanály pro technologie Open Source, kde se nachází hlubokou odbornost této technologie. Je možné použít mnoho webů komunity. Příklady jsou [Fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) a [Stack Overflow](https://stackoverflow.com).
 >
-> Projekty Apache mají také projektové stránky na [webových stránkách Apache](https://apache.org). Příkladem je [Hadoop](https://hadoop.apache.org/).
+> Projekty Apache také obsahují projektové weby na [webu Apache](https://apache.org). Příkladem je [Hadoop](https://hadoop.apache.org/).
 
-## <a name="component-usage"></a>Použití komponent
+## <a name="component-usage"></a>Použití komponenty
 
-Služba HDInsight poskytuje několik způsobů použití vlastních součástí. Platí stejná úroveň podpory bez ohledu na to, jak je komponenta používána nebo nainstalována v clusteru. Následující tabulka popisuje nejběžnější způsoby použití vlastních součástí v clusterech HDInsight:
+Služba HDInsight nabízí několik způsobů použití vlastních komponent. Stejná úroveň podpory platí bez ohledu na to, jak se součást používá nebo je v clusteru nainstalovaná. Následující tabulka popisuje nejběžnější způsoby použití vlastních komponent v clusterech HDInsight:
 
 |Využití |Popis |
 |---|---|
-|Odeslání úlohy|Hadoop nebo jiné typy úloh, které spouštějí nebo používají vlastní součásti, lze odeslat do clusteru.|
-|Přizpůsobení clusteru|Během vytváření clusteru můžete zadat další nastavení a vlastní součásti, které jsou nainstalovány v uzlech clusteru.|
-|Ukázky|U oblíbených vlastních součástí může společnost Microsoft a další uživatelé poskytnout ukázky toho, jak lze tyto součásti použít v clusterech HDInsight. Tyto vzorky jsou poskytovány bez podpory.|
+|Odeslání úlohy|Cluster Hadoop nebo jiné typy úloh, které spouštějí nebo používají vlastní komponenty, lze odeslat do clusteru.|
+|Přizpůsobení clusteru|Během vytváření clusteru můžete zadat další nastavení a vlastní součásti, které jsou nainstalované na uzlech clusteru.|
+|ukázky|V případě oblíbených vlastních komponent mohou společnosti Microsoft a jiné poskytnout ukázky, jak lze tyto komponenty použít v clusterech HDInsight. Tyto ukázky jsou k dispozici bez podpory.|
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Přizpůsobení clusterů Azure HDInsight pomocí akcí skriptů](./hdinsight-hadoop-customize-cluster-linux.md)
-* [Vývoj skriptovacích akčních skriptů pro HDInsight](hdinsight-hadoop-script-actions-linux.md)
+* [Vývoj skriptů akcí skriptu pro HDInsight](hdinsight-hadoop-script-actions-linux.md)
 * [Zabezpečená správa prostředí Pythonu v Azure HDInsightu s využitím akce skriptu](./spark/apache-spark-python-package-installation.md)

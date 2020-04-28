@@ -1,19 +1,19 @@
 ---
-title: Vytvoření spolehlivé aplikace Azure Service Fabric pro virtuální počítače s Javem na Linuxu
+title: Vytvoření aplikace Azure Service Fabric Reliable Actors v jazyce Java v systému Linux
 description: Zjistěte, jak za pět minut vytvořit a nasadit aplikaci Service Fabric Reliable Actors v Javě.
 ms.topic: conceptual
 ms.date: 06/18/2018
-ms.openlocfilehash: 82d4446d76254657adfe64ed41386c06a0a873eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d09666bad7b4e03b8598191d99a9db717c277d4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75458161"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193560"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Vytvoření první aplikace Service Fabric Reliable Actors v Javě v Linuxu
 > [!div class="op_single_selector"]
 > * [Java – Linux](service-fabric-create-your-first-linux-application-with-java.md)
-> * [C# - Linux](service-fabric-create-your-first-linux-application-with-csharp.md)
+> * [C# – Linux](service-fabric-create-your-first-linux-application-with-csharp.md)
 >
 >
 
@@ -204,22 +204,22 @@ Nasazení sestavené aplikace je stejné jako u všech ostatních aplikací Serv
 
 Parametry těchto příkazů najdete v generovaných manifestech uvnitř balíčku aplikace.
 
-Jakmile je aplikace nasazená, otevřete prohlížeč a přejděte k nástroji [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) na adrese [http://localhost:19080/Explorer](http://localhost:19080/Explorer).
+Jakmile je aplikace nasazená, otevřete prohlížeč a přejděte k nástroji [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) na adrese `http://localhost:19080/Explorer`.
 Pak rozbalte uzel **Aplikace** a všimněte si, že už obsahuje položku pro váš typ aplikace a další položku pro první instanci tohoto typu.
 
 > [!IMPORTANT]
-> Chcete-li nasadit aplikaci do zabezpečeného clusteru Linux v Azure, musíte nakonfigurovat certifikát pro ověření aplikace pomocí runtime Service Fabric. To umožňuje služby Reliable Actors komunikovat s podkladovými prostředími runtime Service Fabric. Další informace najdete [v tématu Konfigurace aplikace Spolehlivé služby pro spuštění v clusterech Linux](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
+> Pokud chcete nasadit aplikaci do clusteru zabezpečeného Linux v Azure, musíte nakonfigurovat certifikát pro ověření aplikace pomocí modulu runtime Service Fabric. To umožňuje, aby vaše služby Reliable Actors komunikovaly se základními rozhraními API Service Fabric runtime. Další informace najdete v tématu [Konfigurace aplikace Reliable Services pro spouštění v clusterech se systémem Linux](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
 >
 
 ## <a name="start-the-test-client-and-perform-a-failover"></a>Spuštění klienta testování a převzetí služeb při selhání
 Samotné objekty actor nic nedělají – vyžadují, aby jim jiná služba nebo klient posílali zprávy. Šablona actor zahrnuje jednoduchý testovací skript, který můžete použít k interakci se službou actor.
 
 > [!Note]
-> Testovací klient používá třídu ActorProxy ke komunikaci s objekty actor, které musí být spuštěny ve stejném clusteru jako služba actor nebo sdílet stejný adresní prostor IP.  Testovacího klienta můžete spustit ve stejném počítači jako cluster místního vývoje.  Chcete-li však komunikovat s aktéry ve vzdáleném clusteru, musíte v clusteru nasadit bránu, která zpracovává externí komunikaci s aktéry.
+> Testovací klient používá ke komunikaci s objekty actor třídu ActorProxy, která musí běžet v rámci stejného clusteru jako služba actor nebo sdílet stejný adresní prostor IP adres.  Testovacího klienta můžete spustit na stejném počítači jako místní vývojový cluster.  Aby bylo možné komunikovat s objekty actor ve vzdáleném clusteru, je však nutné nasadit bránu do clusteru, který zpracovává externí komunikaci s objekty Actors.
 
 1. Spusťte skript pomocí pomocného sledovacího programu a prohlédněte si výstup služby actor.  Testovací skript volá metodu `setCountAsync()` objektu actor pro zvýšení čítače a metodu `getCountAsync()` objektu actor pro získání nové hodnoty čítače, kterou zobrazí v konzole.
 
-   V případě MAC OS X, je třeba zkopírovat HelloWorldTestClient složku do některého umístění uvnitř kontejneru spuštěním následující chod další chod.    
+   V případě systému MAC OS X je nutné zkopírovat složku HelloWorldTestClient do umístění v rámci kontejneru spuštěním následujících dalších příkazů.    
     
     ```bash
      docker cp HelloWorldTestClient [first-four-digits-of-container-ID]:/home
@@ -232,7 +232,7 @@ Samotné objekty actor nic nedělají – vyžadují, aby jim jiná služba nebo
     watch -n 1 ./testclient.sh
     ```
 
-2. V nástroji Service Fabric Explorer vyhledejte uzel, který je hostitelem primární repliky pro službu objektu actor. Na snímku níže je to uzel 3. Primární replika služby zpracovává operace čtení a zápisu.  Změny ve stavu služby jsou pak replikovány do sekundárních replik, spuštěné na uzlech 0 a 1 na následujícím snímku obrazovky.
+2. V nástroji Service Fabric Explorer vyhledejte uzel, který je hostitelem primární repliky pro službu objektu actor. Na snímku níže je to uzel 3. Primární replika služby zpracovává operace čtení a zápisu.  Změny stavu služby se pak replikují do sekundárních replik, které běží na uzlech 0 a 1 na snímku obrazovky níže.
 
     ![Vyhledání primární repliky v Service Fabric Exploreru][sfx-primary]
 

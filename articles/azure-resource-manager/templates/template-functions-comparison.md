@@ -1,18 +1,18 @@
 ---
-title: Funkce šablony - porovnání
-description: Popisuje funkce, které se mají použít v šabloně Azure Resource Manager k porovnání hodnot.
+title: Funkce šablon – porovnání
+description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager k porovnání hodnot.
 ms.topic: conceptual
-ms.date: 09/05/2017
-ms.openlocfilehash: 42009e8543e307f2d3e4643ddaa79f492f9bdfee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: MT
+ms.date: 04/27/2020
+ms.openlocfilehash: a9b7b32475695e5222b87c8fe75e8982f34ebb21
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156357"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192327"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>Funkce porovnání pro šablony ARM
 
-Správce prostředků poskytuje několik funkcí pro porovnávání v šablonách Azure Resource Manager (ARM).
+Správce prostředků poskytuje několik funkcí pro porovnávání šablon Azure Resource Manager (ARM).
 
 * [equals](#equals)
 * [greater](#greater)
@@ -20,27 +20,26 @@ Správce prostředků poskytuje několik funkcí pro porovnávání v šablonác
 * [less](#less)
 * [lessOrEquals](#lessorequals)
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
 ## <a name="equals"></a>equals
+
 `equals(arg1, arg2)`
 
-Zkontroluje, zda se dvě hodnoty vzájemně rovnají.
+Kontroluje, zda jsou dvě hodnoty vzájemně stejné.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |int, řetězec, pole nebo objekt |První hodnota pro kontrolu rovnosti. |
-| arg2 |Ano |int, řetězec, pole nebo objekt |Druhá hodnota pro kontrolu rovnosti. |
+| arg1 |Ano |int, String, Array nebo Object |První hodnota pro kontrolu rovnosti. |
+| arg2 |Ano |int, String, Array nebo Object |Druhá hodnota pro kontrolu rovnosti. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Vrátí **hodnotu True,** pokud jsou hodnoty stejné; jinak **False**.
+Vrátí **hodnotu true** , pokud jsou hodnoty stejné; v opačném případě **false**.
 
 ### <a name="remarks"></a>Poznámky
 
-Equals funkce se často `condition` používá s elementem k testování, zda je nasazen prostředek.
+Funkce Equals se často používá s `condition` prvkem k otestování, jestli je prostředek nasazený.
 
 ```json
 {
@@ -59,7 +58,7 @@ Equals funkce se často `condition` používá s elementem k testování, zda je
 
 ### <a name="example"></a>Příklad
 
-Následující [ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/equals.json) kontroluje různé typy hodnot rovnosti. Všechny výchozí hodnoty vrátí hodnotu True.
+Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/equals.json) kontroluje různé typy hodnot pro rovnost. Všechny výchozí hodnoty vrátí hodnotu true.
 
 ```json
 {
@@ -124,26 +123,14 @@ Následující [ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | checkInts | Logická hodnota | True |
-| kontrolní řetězce | Logická hodnota | True |
+| checkStrings | Logická hodnota | True |
 | checkArrays | Logická hodnota | True |
 | checkObjects | Logická hodnota | True |
 
-Chcete-li nasadit tuto ukázkovou šablonu pomocí příkazového příkazového příkazu k řešení Azure, použijte:
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/equals.json
-```
-
-Chcete-li nasadit tuto ukázkovou šablonu pomocí PowerShellu, použijte:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/equals.json
-```
-
-Následující [ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) [nepoužívá](template-functions-logical.md#not) **rovná se**.
+Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) používá znaménko [Not](template-functions-logical.md#not) a **Equals**.
 
 ```json
 {
@@ -160,43 +147,32 @@ Následující [ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-Výstup z předchozího příkladu je:
+Výstup z předchozího příkladu:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | checkNotEquals | Logická hodnota | True |
 
-Chcete-li nasadit tuto ukázkovou šablonu pomocí příkazového příkazového příkazu k řešení Azure, použijte:
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json
-```
-
-Chcete-li nasadit tuto ukázkovou šablonu pomocí PowerShellu, použijte:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json
-```
-
 ## <a name="greater"></a>greater
+
 `greater(arg1, arg2)`
 
-Zkontroluje, zda je první hodnota větší než druhá hodnota.
+Kontroluje, zda je první hodnota větší než druhá hodnota.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |int nebo řetězec |První hodnota pro větší porovnání. |
-| arg2 |Ano |int nebo řetězec |Druhá hodnota pro větší porovnání. |
+| arg1 |Ano |int nebo String |První hodnota pro lepší porovnání. |
+| arg2 |Ano |int nebo String |Druhá hodnota pro lepší porovnání. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Vrátí **hodnotu True,** pokud je první hodnota větší než druhá hodnota. jinak **False**.
+Vrátí **hodnotu true** , pokud je první hodnota větší než druhá hodnota. v opačném případě **false**.
 
 ### <a name="example"></a>Příklad
 
-Následující [ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/greater.json) kontroluje, zda je jedna hodnota větší než druhá.
+Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/greater.json) kontroluje, zda je jedna hodnota větší než druhá.
 
 ```json
 {
@@ -237,42 +213,31 @@ Následující [ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | checkInts | Logická hodnota | False |
-| kontrolní řetězce | Logická hodnota | True |
-
-Chcete-li nasadit tuto ukázkovou šablonu pomocí příkazového příkazového příkazu k řešení Azure, použijte:
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greater.json
-```
-
-Chcete-li nasadit tuto ukázkovou šablonu pomocí PowerShellu, použijte:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greater.json
-```
+| checkStrings | Logická hodnota | True |
 
 ## <a name="greaterorequals"></a>greaterOrEquals
+
 `greaterOrEquals(arg1, arg2)`
 
-Zkontroluje, zda je první hodnota větší nebo rovna druhé hodnotě.
+Kontroluje, zda je první hodnota větší než nebo rovna druhé hodnotě.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |int nebo řetězec |První hodnota pro větší nebo rovno porovnání. |
-| arg2 |Ano |int nebo řetězec |Druhá hodnota pro porovnání větší nebo rovna. |
+| arg1 |Ano |int nebo String |První hodnota pro porovnání větší nebo rovno. |
+| arg2 |Ano |int nebo String |Druhá hodnota pro vyšší nebo stejné porovnání. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Vrátí **hodnotu True,** pokud je první hodnota větší nebo rovna druhé hodnotě. jinak **False**.
+Vrátí **hodnotu true** , pokud je první hodnota větší než nebo rovna druhé hodnotě; v opačném případě **false**.
 
 ### <a name="example"></a>Příklad
 
-Následující [ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/greaterorequals.json) kontroluje, zda je jedna hodnota větší nebo rovna druhé.
+Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/greaterorequals.json) kontroluje, zda je jedna hodnota větší než nebo rovna druhému.
 
 ```json
 {
@@ -313,42 +278,31 @@ Následující [ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | checkInts | Logická hodnota | False |
-| kontrolní řetězce | Logická hodnota | True |
-
-Chcete-li nasadit tuto ukázkovou šablonu pomocí příkazového příkazového příkazu k řešení Azure, použijte:
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greaterorequals.json
-```
-
-Chcete-li nasadit tuto ukázkovou šablonu pomocí PowerShellu, použijte:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greaterorequals.json
-```
+| checkStrings | Logická hodnota | True |
 
 ## <a name="less"></a>less
+
 `less(arg1, arg2)`
 
-Zkontroluje, zda je první hodnota menší než druhá hodnota.
+Kontroluje, zda je první hodnota menší než druhá hodnota.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |int nebo řetězec |První hodnota pro méně porovnání. |
-| arg2 |Ano |int nebo řetězec |Druhá hodnota pro méně porovnání. |
+| arg1 |Ano |int nebo String |První hodnota pro méně porovnání. |
+| arg2 |Ano |int nebo String |Druhá hodnota pro méně porovnání. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Vrátí **hodnotu True,** pokud je první hodnota menší než druhá hodnota. jinak **False**.
+Vrátí **hodnotu true** , pokud je první hodnota menší než druhá hodnota. v opačném případě **false**.
 
 ### <a name="example"></a>Příklad
 
-Následující [ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/less.json) kontroluje, zda je jedna hodnota menší než druhá.
+Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/less.json) kontroluje, zda je jedna hodnota menší než druhá.
 
 ```json
 {
@@ -389,42 +343,31 @@ Následující [ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | checkInts | Logická hodnota | True |
-| kontrolní řetězce | Logická hodnota | False |
-
-Chcete-li nasadit tuto ukázkovou šablonu pomocí příkazového příkazového příkazu k řešení Azure, použijte:
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/less.json
-```
-
-Chcete-li nasadit tuto ukázkovou šablonu pomocí PowerShellu, použijte:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/less.json
-```
+| checkStrings | Logická hodnota | False |
 
 ## <a name="lessorequals"></a>lessOrEquals
+
 `lessOrEquals(arg1, arg2)`
 
-Zkontroluje, zda je první hodnota menší nebo rovna druhé hodnotě.
+Kontroluje, zda je první hodnota menší nebo rovna druhé hodnotě.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |int nebo řetězec |První hodnota pro porovnání menší nebo rovná se. |
-| arg2 |Ano |int nebo řetězec |Druhá hodnota pro porovnání menší nebo rovná se. |
+| arg1 |Ano |int nebo String |První hodnota pro porovnání menší nebo rovno. |
+| arg2 |Ano |int nebo String |Druhá hodnota pro porovnání menší nebo rovno. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Vrátí **hodnotu True,** pokud je první hodnota menší nebo rovna druhé hodnotě. jinak **False**.
+Vrátí **hodnotu true** , pokud je první hodnota menší nebo rovna druhé hodnotě; v opačném případě **false**.
 
 ### <a name="example"></a>Příklad
 
-Následující [ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/lessorequals.json) kontroluje, zda je jedna hodnota menší nebo rovna druhé.
+Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/lessorequals.json) kontroluje, zda je jedna hodnota menší nebo rovna druhému.
 
 ```json
 {
@@ -465,26 +408,11 @@ Následující [ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | checkInts | Logická hodnota | True |
-| kontrolní řetězce | Logická hodnota | False |
-
-Chcete-li nasadit tuto ukázkovou šablonu pomocí příkazového příkazového příkazu k řešení Azure, použijte:
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/lessorequals.json
-```
-
-Chcete-li nasadit tuto ukázkovou šablonu pomocí PowerShellu, použijte:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/lessorequals.json
-```
+| checkStrings | Logická hodnota | False |
 
 ## <a name="next-steps"></a>Další kroky
-* Popis oddílů v šabloně Azure Resource Manager u najdete v tématu [Vytváření šablon Azure Resource Manageru](template-syntax.md).
-* Pokud chcete sloučit víc šablon, přečtěte si informace [o použití propojených šablon ve Správci prostředků Azure](linked-templates.md).
-* Chcete-li itrerate zadaný počet časů při vytváření typu prostředku, najdete v [tématu vytvoření více instancí prostředků ve Správci prostředků Azure](copy-resources.md).
-* Informace o tom, jak nasadit vytvořenou šablonu, najdete [v tématu Nasazení aplikace pomocí šablony Azure Resource Manageru](deploy-powershell.md).
 
+* Popis sekcí v šabloně Azure Resource Manager najdete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).

@@ -5,14 +5,14 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 10/30/2019
+ms.date: 04/24/2020
 ms.author: cynthn
-ms.openlocfilehash: aaecfbd14289840e795c6323737877e267586e16
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 6a14e2bd7385430c3d0fbec06259a876af556e38
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82098641"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82190397"
 ---
 # <a name="create-a-proximity-placement-group-using-the-portal"></a>Vytvoření skupiny umístění blízkosti pomocí portálu
 
@@ -20,6 +20,11 @@ Pokud chcete co nejblíže získat virtuální počítače a dosáhnout nejniž�
 
 Skupina umístění blízkosti je logické seskupení, které se používá k zajištění, že výpočetní prostředky Azure jsou fyzicky umístěné blízko sebe. Skupiny umístění blízkosti jsou užitečné pro úlohy, u kterých je minimální latence požadavek.
 
+> [!NOTE]
+> Skupiny umístění blízkosti nelze použít se vyhrazenými hostiteli.
+>
+> Pokud chcete používat zóny dostupnosti spolu se skupinami umístění, musíte se ujistit, že virtuální počítače ve skupině umístění jsou také všechny ve stejné zóně dostupnosti.
+>
 
 ## <a name="create-the-proximity-placement-group"></a>Vytvořit skupinu umístění blízkosti
 
@@ -27,7 +32,7 @@ Skupina umístění blízkosti je logické seskupení, které se používá k za
 1. V části **služby** ve výsledcích hledání vyberte možnost **skupiny umístění pro Proximity**.
 1. Na stránce **skupiny umístění pro blízkosti** vyberte **Přidat**.
 1. Na kartě **základy** v části **Project Details (podrobnosti projektu**) Zkontrolujte, že je vybrané správné předplatné.
-1. V části **Skupina prostředků** vyberte **vytvořit novou** a vytvořte novou skupinu, nebo v rozevíracím seznamu vyberte existující skupinu prostředků.
+1. V části **Skupina prostředků** vyberte **vytvořit novou** a vytvořte novou skupinu, nebo vyberte prázdnou skupinu prostředků, která už existuje, z rozevíracího seznamu. 
 1. V **oblasti** vyberte umístění, kde chcete vytvořit skupinu umístění blízkosti.
 1. Do **skupiny umístění blízkosti** zadejte název a potom vyberte **zkontrolovat + vytvořit**.
 1. Po úspěšném ověření vyberte **vytvořit** a vytvořte skupinu umístění blízkosti.
@@ -46,7 +51,28 @@ Skupina umístění blízkosti je logické seskupení, které se používá k za
 1. Po úspěšném ověření vyberte **vytvořit** a NASAĎTE virtuální počítač do skupiny umístění.
 
 
+## <a name="add-vms-in-an-availability-set-to-a-proximity-placement-group"></a>Přidání virtuálních počítačů v sadě dostupnosti do skupiny umístění s blízkými událostmi
 
+Pokud je virtuální počítač součástí skupiny dostupnosti, musíte před přidáním virtuálních počítačů přidat skupinu dostupnosti do skupiny umístění.
+
+1. Na [portálu](https://portal.azure.com) vyhledejte *skupiny dostupnosti* a z výsledků vyberte svou skupinu dostupnosti.
+1. Stop\deallocate každý virtuální počítač ve skupině dostupnosti tak, že vyberete virtuální počítač a potom na stránce pro virtuální počítač vyberete **zastavit** a pak vyberete **OK** , aby se virtuální počítač zastavil.
+1. Na stránce skupiny dostupnosti zajistěte, aby všechny virtuální počítače měly **stav** uvedený jako **Zastaveno (přidělení zrušeno)**.
+1. V nabídce vlevo vyberte **Konfigurace**.
+1. V části **Skupina umístění blízkosti**vyberte skupinu umístění z rozevíracího seznamu a pak vyberte **Uložit**.
+1. V nabídce vlevo vyberte **Přehled** , abyste mohli znovu zobrazit seznam virtuálních počítačů. 
+1. Vyberte každý virtuální počítač ve skupině dostupnosti a pak na stránce pro každý virtuální počítač vyberte **Spustit** . 
+
+
+## <a name="add-existing-vm-to-placement-group"></a>Přidat existující virtuální počítač do skupiny umístění 
+
+
+1. Na stránce pro virtuální počítač vyberte **zastavit**.
+1. Jakmile je stav virtuálního počítače uvedený jako **Zastaveno (přidělení zrušeno)**, v levé nabídce vyberte **Konfigurace** .
+1. V části **Skupina umístění blízkosti**vyberte skupinu umístění z rozevíracího seznamu a pak vyberte **Uložit**.
+1. V nabídce vlevo vyberte **Přehled** a pak vyberte **Spustit** , aby se virtuální počítač restartoval.
+
+ 
 
 ## <a name="next-steps"></a>Další kroky
 

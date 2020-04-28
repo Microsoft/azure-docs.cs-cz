@@ -1,6 +1,6 @@
 ---
-title: Microsoft Teams na Virtuální desktopu Windows – Azure
-description: Jak používat Microsoft Teams na virtuální ploše Windows.
+title: Microsoft Teams na virtuálním počítači s Windows – Azure
+description: Jak používat Microsoft Teams na virtuálním počítači s Windows
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,34 +8,34 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 15a4c9b16b102310fd02f8db3a4fb93cff84882b
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: a860b005457c6e02187423a3ffbbc63fe7c758b1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314074"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187524"
 ---
-# <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Použití Microsoft Teams na virtuální ploše Windows
+# <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Použití Microsoft Teams na virtuálním počítači s Windows
 
 > Platí pro: Windows 10 a Windows 10 IoT Enterprise
 
-Virtualizovaná prostředí představují jedinečnou sadu výzev pro aplikace pro spolupráci, jako je Microsoft Teams, včetně zvýšené latence, vysokého využití hostitelského procesoru a nízkého celkového výkonu zvuku a videa. Další informace o používání Microsoft Teams v prostředích VDI najdete v [teams for Virtualized Desktop Infrastructure](https://docs.microsoft.com/microsoftteams/teams-for-vdi).
+Virtualizovaná prostředí představují jedinečnou sadu výzev pro aplikace pro spolupráci, jako jsou Microsoft teams, včetně zvýšené latence, vysokého využití procesoru hostitele a špatného celkového výkonu zvuku a videa. Pokud se chcete dozvědět víc o používání Microsoft Teams v prostředích VDI, Projděte si [týmy pro infrastrukturu virtualizované plochy](https://docs.microsoft.com/microsoftteams/teams-for-vdi).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než budete moci používat Microsoft Teams na Virtuální ploše Windows, budete muset udělat tyto věci:
+Než budete moct používat Microsoft Teams na virtuálním počítači s Windows, musíte provést tyto akce:
 
-- Nainstalujte [klienta Windows Desktop](connect-windows-7-and-10.md) na zařízení s Windows 10, které splňuje [hardwarové požadavky](https://docs.microsoft.com/microsoftteams/hardware-requirements-for-the-teams-app)Microsoft Teams .
-- Připojte se k virtuálnímu počítači s Windows 10 s více relacemi nebo s Windows 10 Enterprise.
+- Nainstalujte [desktopový klient Windows](connect-windows-7-and-10.md) na zařízení s Windows 10, které splňuje [hardwarové požadavky](https://docs.microsoft.com/microsoftteams/hardware-requirements-for-the-teams-app)Microsoft Teams.
+- Připojte se k virtuálnímu počítači s Windows 10 nebo Windows 10 Enterprise (VM).
 - [Připravte síť](https://docs.microsoft.com/microsoftteams/prepare-network) pro Microsoft Teams.
 
-## <a name="use-unoptimized-microsoft-teams"></a>Použití neoptimalizovaných microsoftových teams
+## <a name="use-unoptimized-microsoft-teams"></a>Použití neoptimalizovaných Microsoft Teams
 
-Pomocí neoptimalizovaných microsoftových teams v prostředívirtuální chodnících Windows Virtual Desktop můžete využít funkce úplného chatu a spolupráce Microsoft Teams i zvukové hovory. Kvalita zvuku při hovorech se bude lišit v závislosti na konfiguraci hostitele, protože neoptimalizovaná volání využívají více hostitelského procesoru.
+Pomocí Microsoft Teams v prostředích virtuálních počítačů s Windows můžete využívat funkce chatu a spolupráce v Microsoft Teams. Virtuální počítač s Windows nepodporuje týmy na optimalizaci audio/video (AV) infrastruktury VDI. Volání a schůzky nejsou podporovány. Pokud umožňují zásady vaší organizace, můžete pořád dělat zvukové hovory a připojovat se ke schůzkám, ale neoptimalizovaná kvalita zvuku v voláních se bude lišit v závislosti na konfiguraci hostitele a nemusí být spolehlivá. Pokud se chcete dozvědět víc, podívejte se [na tým o výkonu infrastruktury virtuálních klientských](https://docs.microsoft.com/microsoftteams/teams-for-vdi#teams-on-vdi-performance-considerations)počítačů.
 
 ### <a name="prepare-your-image-for-teams"></a>Příprava image pro týmy
 
-Chcete-li povolit teams per-machine instalace, nastavte následující klíč registru na hostiteli:
+Pokud chcete povolit týmy pro instalaci na počítač, nastavte na hostiteli následující klíč registru:
 
 ```shell
   [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Teams\IsWVDEnvironment]
@@ -45,29 +45,29 @@ Chcete-li povolit teams per-machine instalace, nastavte následující klíč re
 
 ### <a name="install-microsoft-teams"></a>Instalace Microsoft Teams
 
-Desktopovou aplikaci Teams můžete nasadit pomocí instalace pro celé počítače. Instalace Microsoft Teams do prostředí Windows Virtual Desktop:
+Aplikaci Teams Desktop můžete nasadit pomocí instalace pro jednotlivé počítače. Instalace Microsoft Teams do prostředí virtuálních počítačů s Windows:
 
-1. Stáhněte si [balíček Teams MSI,](https://docs.microsoft.com/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm) který odpovídá vašemu prostředí. Doporučujeme používat 64bitový instalační program v 64bitovém operačním systému.
-2. Spusťte tento příkaz a nainstalujte MSI do hostitelského virtuálního soudu.
+1. Stáhněte [balíček MSI Teams](https://docs.microsoft.com/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm) , který odpovídá vašemu prostředí. Doporučujeme použít 64 instalačního programu na 64 operačním systému.
+2. Spuštěním tohoto příkazu nainstalujete MSI na hostitelský virtuální počítač.
 
       ```shell
       msiexec /i <msi_name> /l*v < install_logfile_name> ALLUSER=1
       ```
 
-      Tím nainstalujete Teams do programových souborů nebo programových souborů (x86). Při příštím přihlášení a spuštění teams vás aplikace požádá o vaše přihlašovací údaje.
+      Tím se budou instalovat týmy buď do programových souborů, nebo do programových souborů (x86). Při příštím přihlášení a zahájení týmů aplikace požádá o vaše přihlašovací údaje.
 
       > [!NOTE]
-      > Uživatelé a správci nemohou zakázat automatické spuštění teams během přihlášení v tuto chvíli.
+      > Uživatelé a správci nemůžou v současné době přihlášení zakázat automatické spuštění pro týmy.
 
-      Chcete-li odinstalovat MSI z hostitelského virtuálního aplikace, spusťte tento příkaz:
+      Pokud chcete odinstalovat MSI z hostitelského virtuálního počítače, spusťte tento příkaz:
 
       ```shell
       msiexec /passive /x <msi_name> /l*v <uninstall_logfile_name>
       ```
 
       > [!NOTE]
-      > Pokud nainstalujete Teams s nastavením MSI ALLUSER=1, automatické aktualizace budou zakázány. Doporučujeme, abyste týmy aktualizovali alespoň jednou měsíčně.
-      
-### <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Přizpůsobení vlastností protokolu Vzdálené plochy pro fond hostitelů
-Přizpůsobení vlastností protokolu RDP (RdP) hostitelského fondu, jako je například možnosti více monitorů, povolení přesměrování mikrofonu a zvuku, umožňuje uživatelům poskytovat optimální prostředí na základě jejich potřeb. Vlastnosti protokolu RDP ve virtuální ploše systému Windows můžete přizpůsobit pomocí parametru **-CustomRdpProperty** v rutině **Set-RdsHostPool.**
-Úplný seznam podporovaných vlastností a jejich výchozích hodnot naleznete v [části Podporovaná nastavení souborů PROTOKOLU RDP.](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context)
+      > Pokud instalujete týmy s nastavením MSI ALLUSER = 1, budou automatické aktualizace zakázané. Doporučujeme, abyste týmy aktualizovali aspoň jednou měsíčně. Další informace o nasazení desktopové aplikace Teams získáte v části [nasazení desktopové aplikace Teams do virtuálního počítače](https://docs.microsoft.com/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm).
+
+## <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) pro fond hostitelů
+Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) (RDP) fondu hostitelů, jako je například prostředí pro více monitorů, umožňující přesměrování mikrofonu a zvuku, vám umožní zajistit optimální prostředí pro uživatele podle svých potřeb. Vlastnosti protokolu RDP můžete přizpůsobit ve virtuální ploše Windows pomocí parametru **-CustomRdpProperty** v rutině **set-RdsHostPool** .
+Úplný seznam podporovaných vlastností a jejich výchozích hodnot najdete v tématu [podporované nastavení souboru RDP](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context) .

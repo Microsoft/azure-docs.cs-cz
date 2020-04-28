@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 11/08/2019
+ms.date: 04/21/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1f0708f0674633ddfee8b84388a2d96f2a04636
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: bfb0cc61b61328df86c27498a1007f2372fb9548
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74899963"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867452"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Co je Azure AD Privileged Identity Management?
 
@@ -50,9 +50,7 @@ Po nastavení správy privilegovaných identit se v levé navigační nabídce z
 
 ## <a name="who-can-do-what"></a>Kdo může co dělat?
 
-Pokud jste první osoba, která používá správu privilegovaných identit, budou vám v adresáři automaticky přiřazeny role [Správce zabezpečení](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) a [Správce privilegovaných rolí.](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
-
-Pro role Azure AD ve správě privilegovaných identit může přiřazení pro ostatní správce spravovat pouze uživatel, který je v roli Správce privilegovaných rolí. Můžete [udělit přístup ostatním správcům ke správě privilegovaných identit](pim-how-to-give-access-to-pim.md). Globální správci, správci zabezpečení, globální čtenáři a čtenáři zabezpečení mohou také zobrazit přiřazení k rolím Azure AD ve správě privilegovaných identit.
+Pro role Azure AD ve správě privilegovaných identit může přiřazení pro ostatní správce spravovat pouze uživatel, který je ve správci privilegovaných rolí nebo v roli globálního správce. Můžete [udělit přístup ostatním správcům ke správě privilegovaných identit](pim-how-to-give-access-to-pim.md). Globální správci, správci zabezpečení, globální čtenáři a čtenáři zabezpečení mohou také zobrazit přiřazení k rolím Azure AD ve správě privilegovaných identit.
 
 U rolí prostředků Azure ve správě privilegovaných identit může přiřazení pro ostatní správce spravovat pouze správce předplatného, vlastník prostředků nebo správce přístupu uživatelů k prostředkům. Uživatelé, kteří jsou správci privilegovaných rolí, správci zabezpečení nebo čtenáři zabezpečení, nemají ve výchozím nastavení přístup k zobrazení přiřazení rolí prostředků Azure v privilegované správě identit.
 

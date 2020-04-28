@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: 2bd9430fc6f48d72faa2c1850af0bb8432a7c5f5
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: e9cb691ef60f612672078a9ef84db904c79cbc87
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82149499"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189441"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Nejčastější dotazy týkající se důvěrného výpočetního prostředí Azure
 
@@ -47,7 +47,7 @@ Pokud váš problém s Azure není v tomto článku řešen, navštivte fóra Az
 
 1. **Jaký je rozdíl mezi virtuálními počítači řady DCsv2-Series a DC-Series?**
 
-   Virtuální počítače DC-Series běží na starších 6 procesorech Intel s SGX. Mají méně celkovou paměť, méně paměti EPC (enklávy Page klec) a jsou dostupné v méně oblastech. Tyto virtuální počítače jsou dostupné jenom v USA – východ a Evropa – západ jsou k dispozici ve dvou velikostech: Standard_DC2s a Standard_DC4s. Nebudou jít o GA a dají se nasadit jenom v instanci Marketplace [Cloud COMPUTE DC-Series VM [Preview]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) .
+   Virtuální počítače DC-Series běží na starších 6 procesorech Intel s Intel SGX. Mají méně celkovou paměť, méně paměti EPC (enklávy Page klec) a jsou dostupné v méně oblastech. Tyto virtuální počítače jsou dostupné jenom v USA – východ a Evropa – západ jsou k dispozici ve dvou velikostech: Standard_DC2s a Standard_DC4s. Nebudou jít o GA a dají se nasadit jenom v instanci Marketplace [Cloud COMPUTE DC-Series VM [Preview]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) .
 
 1. **Jsou virtuální počítače DCsv2 k dispozici globálně?**
 

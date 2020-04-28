@@ -1,35 +1,35 @@
 ---
 title: Nastavení clusteru Azure Service Fabric Linux ve Windows
-description: Tento článek popisuje, jak nastavit clustery Service Fabric Linux spuštěné na vývojových počítačích systému Windows. To je užitečné zejména pro vývoj napříč platformami.
+description: Tento článek popisuje, jak nastavit clustery Service Fabric Linux spuštěné ve vývojových počítačích s Windows. To je užitečné hlavně při vývoji pro různé platformy.
 author: suhuruli
 ms.topic: conceptual
 ms.date: 11/20/2017
 ms.author: suhuruli
-ms.openlocfilehash: 9f60b9d9b919a72250038ede2a2bd53278df79cb
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 1798d57f9fc4004fd2c7d1f1901fcddf850626c2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309001"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193322"
 ---
-# <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Nastavení clusteru Linux Service Fabric v počítači s vývojáři windows
+# <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Nastavení clusteru se systémem Linux Service Fabric ve vašem počítači s Windows Developer
 
-Tento dokument popisuje, jak nastavit místní Linux Service Fabric na vývojových počítačích windows. Nastavení místního clusteru Linux je užitečné pro rychlé testování aplikací určených pro clustery Linux, ale jsou vyvíjeny na počítači se systémem Windows.
+Tento dokument popisuje, jak nastavit místní Service Fabric pro Linux ve vývojových počítačích s Windows. Nastavení místního clusteru se systémem Linux je užitečné pro rychlé testování aplikací určených pro clustery se systémem Linux, které jsou vyvíjeny na počítači s Windows.
 
 ## <a name="prerequisites"></a>Požadavky
-Clustery Service Fabric založené na Linuxu neběží nativně v systému Windows. Chcete-li spustit místní cluster Service Fabric, je k dispozici předem nakonfigurovaná image kontejneru Dockeru. Než začnete, budete potřebovat:
+Clustery Service Fabric se systémem Linux neběží nativně ve Windows. Pro spuštění místního clusteru Service Fabric je k dispozici předem nakonfigurovaná image kontejneru Docker. Než začnete, budete potřebovat:
 
 * Minimálně 4 GB RAM
 * Nejnovější verzi [Dockeru](https://store.docker.com/editions/community/docker-ce-desktop-windows)
-* Docker musí běžet v režimu Linuxu.
+* Docker musí běžet v režimu Linux.
 
 >[!TIP]
-> * Můžete postupovat podle kroků uvedených v oficiální [dokumentaci Dockeru](https://store.docker.com/editions/community/docker-ce-desktop-windows/plans/docker-ce-desktop-windows-tier?tab=instructions) k instalaci Dockeru do windows. 
+> * Můžete postupovat podle kroků uvedených v oficiální [dokumentaci](https://store.docker.com/editions/community/docker-ce-desktop-windows/plans/docker-ce-desktop-windows-tier?tab=instructions) k Docker a nainstalovat Docker ve Windows. 
 > * Po dokončení instalace ověřte, že proběhla úspěšně, podle postupu uvedeného [tady](https://docs.docker.com/docker-for-windows/#check-versions-of-docker-engine-compose-and-machine).
 
 
 ## <a name="create-a-local-container-and-setup-service-fabric"></a>Vytvoření místního kontejneru a nastavení Service Fabric
-Chcete-li nastavit místní kontejner Dockeru a mít v něm spuštěný cluster prostředků infrastruktury služeb, proveďte v Prostředí PowerShell následující kroky:
+Pokud chcete nastavit místní kontejner Docker a mít v něm spuštěný Cluster Service Fabric, proveďte v PowerShellu následující kroky:
 
 
 1. Následujícím způsobem aktualizujte konfiguraci démona Dockeru na hostiteli a potom démon Dockeru restartujte: 
@@ -40,7 +40,7 @@ Chcete-li nastavit místní kontejner Dockeru a mít v něm spuštěný cluster 
       "fixed-cidr-v6": "2001:db8:1::/64"
     }
     ```
-    Doporučený způsob aktualizace je - přejděte na ikonu Dockeru > Nastavení > Daemon > Upřesnit a aktualizujte jej tam. Dále restartujte daemon Dockeru, aby se změny projevily. 
+    Povýšený způsob aktualizace: Přejít na ikonu Docker > nastavení > démona > Upřesnit a aktualizovat tam. Pak restartujte démona Docker, aby se změny projevily. 
 
 2. V novém adresáři vytvořte soubor `Dockerfile` pro sestavení vaší image Service Fabric:
 
@@ -64,7 +64,7 @@ Chcete-li nastavit místní kontejner Dockeru a mít v něm spuštěný cluster 
     >Například přidáním `RUN apt-get install nodejs -y` se povolí podpora aplikací `nodejs` jako spustitelných souborů typu Host.
     
     >[!TIP]
-    > Ve výchozím nastavení se tím přetáhne image s nejnovější verzí Service Fabric. Konkrétní revize najdete na stránce [Docker Hub.](https://hub.docker.com/r/microsoft/service-fabric-onebox/)
+    > Ve výchozím nastavení se tím přetáhne image s nejnovější verzí Service Fabric. Konkrétní revize najdete na stránce [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) .
 
 3. Pokud ze souboru `Dockerfile` chcete sestavit opakovatelně použitelnou image, otevřete terminál, pomocí příkazu `cd` přejděte přímo do adresáře s vaším souborem `Dockerfile` a pak spusťte:
 
@@ -89,18 +89,18 @@ Chcete-li nastavit místní kontejner Dockeru a mít v něm spuštěný cluster 
     >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest`
     >
 
-5. Spuštění clusteru bude trvat krátkou dobu, můžete zobrazit protokoly pomocí následujícího příkazu nebo [http://localhost:19080](http://localhost:19080)přejít na řídicí panel a zobrazit stav clusterů :
+5. Spuštění clusteru bude chvíli trvat. Pomocí následujícího příkazu můžete zobrazit protokoly nebo můžete přejít na řídicí panel na adrese `http://localhost:19080` a zobrazit stav clusteru:
 
     ```powershell 
     docker logs sftestcluster
     ```
 
-6. Po úspěšném dokončení kroku 5 můžete ``http://localhost:19080`` přejít z windows a budete moci zobrazit průzkumník service fabric. V tomto okamžiku se můžete připojit k tomuto clusteru pomocí libovolných nástrojů z vašeho vývojářského počítače se systémem Windows a nasadit aplikace určené pro clustery Linux Service Fabric. 
+6. Po úspěšném dokončení kroku 5 můžete přejít ``http://localhost:19080`` z okna z okna a zobrazit Průzkumníka Service Fabric. V tuto chvíli se můžete připojit k tomuto clusteru pomocí libovolných nástrojů ze svého počítače s Windows Developer a nasadit aplikaci cílené na Service Fabric clustery pro Linux. 
 
     > [!NOTE]
     > Modul plug-in Eclipse se v systému Windows aktuálně nepodporuje. 
 
-7. Po dokončení zastavte a vyčistěte kontejner pomocí tohoto příkazu:
+7. Až skončíte, zastavte a vyčistěte kontejner pomocí tohoto příkazu:
 
     ```powershell 
     docker rm -f sftestcluster
@@ -113,8 +113,8 @@ Chcete-li nastavit místní kontejner Dockeru a mít v něm spuštěný cluster 
  * Služba DNS neběží a není podporovaná [Problém č. 132](https://github.com/Microsoft/service-fabric/issues/132)
 
 ## <a name="next-steps"></a>Další kroky
-* Začínáme s [Eclipse](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-eclipse)
-* Podívejte se na další [ukázky Javy](https://github.com/Azure-Samples/service-fabric-java-getting-started)
+* Začínáme s [zatmění](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-eclipse)
+* Podívejte se na další [ukázky Java](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 
 <!-- Image references -->

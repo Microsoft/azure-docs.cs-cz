@@ -8,12 +8,12 @@ ms.subservice: workloads
 ms.topic: overview
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: b52af8f41f32c224fd7c4fa0f5c539b23d231f49
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: ae98325d98df1ac8a06e0c0bc950d89cc6b77eda
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82149302"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192259"
 ---
 # <a name="confidential-computing-on-azure"></a>Důvěrné výpočetní prostředí v Azure
 
@@ -28,7 +28,8 @@ Důvěrné výpočetní prostředí Azure umožňuje izolovat citlivá data při
 ## <a name="overview"></a>Přehled
 <p><p>
 
-> [!VIDEO https://www.youtube.com/embed/Qu6sP0XDMU8]
+
+> [!VIDEO https://www.youtube.com/embed/rT6zMOoLEqI]
 
 Víme, že zabezpečení dat v cloudu je důležité. Slyšeli jsme vaše obavy. Tady je jen pár otázek, které můžou mít naši zákazníci při přesunu citlivých úloh do cloudu: 
 
@@ -76,7 +77,7 @@ V případě důvěrných výpočetních virtuálních počítačů Azure je sou
 
 ![Model virtuálního počítače](media/overview/hardware-backed-enclave.png)
 
-Infrastruktura důvěrného výpočetního prostředí Azure se v současné době skládá ze speciální SKU virtuálních počítačů (VM). Tyto virtuální počítače běží na procesorech Intel s ochranou rozšíření softwaru (Intel SGX). [Intel SGX](https://intel.com/sgx) je komponenta, která umožňuje zvýšenou ochranu, kterou jsme zjistili v tajných výpočetních prostředích. 
+Infrastruktura důvěrného výpočetního prostředí Azure se v současné době skládá ze speciální SKU virtuálních počítačů (VM). Tyto virtuální počítače běží na procesorech Intel s rozšířením software Guard (Intel SGX). [Intel SGX](https://intel.com/sgx) je komponenta, která umožňuje zvýšenou ochranu, kterou jsme zjistili v tajných výpočetních prostředích. 
 
 V dnešní době Azure nabízí [řadu DCsv2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series) založenou na technologii Intel SGX pro vytváření hardwarových enklávy. Můžete vytvářet zabezpečené aplikace založené na enklávy pro spouštění v DCsv2 virtuálních počítačích pro ochranu dat aplikací a používaného kódu. 
 

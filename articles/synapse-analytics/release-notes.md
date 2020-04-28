@@ -1,6 +1,6 @@
 ---
 title: Poznámky k verzi
-description: Poznámky k vydání pro Azure Synapse Analytics (pracovní prostory)
+description: Poznámky k verzi pro Azure synapse Analytics (pracovní prostory)
 services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
@@ -9,34 +9,35 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: c1b5b9ac5d7c3f04dd3ae2e843425a5ead0d4c07
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 059e77c063d00ef850a171507ca2e06422ade426
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81423856"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82191766"
 ---
-# <a name="azure-synapse-analytics-preview-release-notes"></a>Poznámky k verzi Azure Synapse Analytics (preview)
+# <a name="azure-synapse-analytics-preview-release-notes"></a>Poznámky k verzi Azure synapse Analytics (Preview)
 
-Tento článek popisuje omezení a problémy s Azure Synapse Analytics (pracovní prostory). Související informace najdete v tématu [Co je Azure Synapse Analytics (pracovní prostory)](overview-what-is.md)
+Tento článek popisuje omezení a problémy s Azure synapse Analytics (pracovní prostory). Související informace najdete v tématu [co je Azure synapse Analytics (pracovní prostory)](overview-what-is.md) .
 
 [!INCLUDE [preview](includes/note-preview.md)]
 
-## <a name="azure-synapse-workspaces"></a>Azure Synapse (pracovní prostory) 
+## <a name="azure-synapse-workspaces"></a>Azure synapse (pracovní prostory) 
 
-### <a name="azure-synapse-cli"></a>Azure Synapse CLI
+### <a name="azure-synapse-cli"></a>Rozhraní příkazového řádku Azure synapse
 
-- Problém a dopad na zákazníka: Pracovní prostory vytvořené sadou SDK nemohou spustit Synapse Studio
+- Problém a dopad na zákazníky: pracovní prostory vytvořené sadou SDK nemůžou spustit synapse Studio.
 
-- Řešení: Proveďte následující kroky: 
-  1.    Vytvořte pracovní `az synapse workspace create`prostor spuštěním 2.    Extrahování id spravované identity spuštěním`$identity=$(az synapse workspace show --name {workspace name}  --resource-group {resource group name} --query "identity.principalId")`
-  3.    Přidání pracovního prostoru jako role do účtu úložiště spuštěním` az role assignment create --role "Storage Blob Data Contributor" --assignee-object-id {identity } --scope {storage account resource id}`
-  4.    Přidání pravidla brány firewall spuštěním` az synapse firewall-rule create --name allowAll --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255 `
+- Alternativní řešení: proveďte následující kroky: 
+  1.    Vytvořte pracovní prostor spuštěním `az synapse workspace create`.
+  2.    Extrahujte spravované ID identity spuštěním `$identity=$(az synapse workspace show --name {workspace name}  --resource-group {resource group name} --query "identity.principalId")`.
+  3.    Přidejte pracovní prostor jako roli do účtu úložiště spuštěním ` az role assignment create --role "Storage Blob Data Contributor" --assignee-object-id {identity } --scope {storage account resource id}`.
+  4.    Přidejte pravidlo brány firewall spuštěním ` az synapse firewall-rule create --name allowAll --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255 `.
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření pracovního prostoru](quickstart-create-workspace.md)
-* [Použití Synapse Studio](quickstart-synapse-studio.md)
+* [Použití synapse studia](quickstart-synapse-studio.md)
 * [Vytvoření fondu SQL](quickstart-create-sql-pool.md)
-* [Použití sql na vyžádání](quickstart-sql-on-demand.md)
+* [Používání SQL na vyžádání](quickstart-sql-on-demand.md)
 * [Vytvoření fondu Apache Spark](quickstart-create-apache-spark-pool.md)

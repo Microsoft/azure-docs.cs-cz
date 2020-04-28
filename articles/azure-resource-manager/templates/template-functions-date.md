@@ -1,18 +1,18 @@
 ---
-title: Funkce šablony - datum
-description: Popisuje funkce, které se mají použít v šabloně Azure Resource Manager pro práci s daty.
+title: Šablony – funkce – datum
+description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager pro práci s daty.
 ms.topic: conceptual
-ms.date: 04/22/2020
-ms.openlocfilehash: 364b41e9e92cb248a7bd2fac5a41eb535adbf440
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.date: 04/27/2020
+ms.openlocfilehash: 0c31b26361a262a502b2a9e0fb068391846cab4b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82084783"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192293"
 ---
 # <a name="date-functions-for-arm-templates"></a>Funkce data pro šablony ARM
 
-Správce prostředků poskytuje následující funkce pro práci s daty v šablonách Správce prostředků Azure (ARM):
+Správce prostředků poskytuje následující funkce pro práci s daty v šablonách Azure Resource Manager (ARM):
 
 * [dateTimeAdd](#datetimeadd)
 * [utcNow](#utcnow)
@@ -21,23 +21,23 @@ Správce prostředků poskytuje následující funkce pro práci s daty v šablo
 
 `dateTimeAdd(base, duration, [format])`
 
-Přidá dobu trvání času k základní hodnotě. Očekává se formát ISO 8601.
+Přidá do základní hodnoty časový interval. Očekává se formát ISO 8601.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| base | Ano | řetězec | Počáteční datetime hodnota pro přidání. Použijte [formát časového razítka ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). |
-| doba trvání | Ano | řetězec | Hodnota času, která má být přidejte do základny. Může to být záporná hodnota. Použijte [formát doby trvání ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
-| formát | Ne | řetězec | Výstupní formát pro výsledek data času. Pokud není k dispozici, použije se formát základní hodnoty. Použijte standardní [formátovací řetězce](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formátovací řetězce](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| base | Ano | řetězec | Počáteční hodnota DateTime pro sčítání. Použijte [Formát časového razítka ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). |
+| doba trvání | Ano | řetězec | Hodnota času, která se má přidat do základu Může se jednat o zápornou hodnotu. Použijte [Formát doby trvání ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
+| formát | Ne | řetězec | Formát výstupu pro výsledek data a času. Pokud není zadaný, použije se formát základní hodnoty. Použijte buď [standardní formátovací řetězce](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [Vlastní řetězce formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Hodnota datetime, která je výsledkem přidání hodnoty doby trvání k základní hodnotě.
+Hodnota DateTime, která je výsledkem přidání hodnoty Duration k základní hodnotě.
 
 ### <a name="examples"></a>Příklady
 
-Následující ukázková šablona ukazuje různé způsoby přidávání časových hodnot.
+Následující příklad šablony ukazuje různé způsoby přidávání časových hodnot.
 
 ```json
 {
@@ -72,15 +72,15 @@ Následující ukázková šablona ukazuje různé způsoby přidávání časov
 }
 ```
 
-Při nasazení předchozí šablony se základním časem `2020-04-07 14:53:14Z`, výstup je:
+Je-li předchozí šablona nasazena se základním časem `2020-04-07 14:53:14Z`, je výstup:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| add3Roky | Řetězec | 4/7/2023 14:53:14 |
-| odečíst9Days | Řetězec | 3/29/2020 14:53:14 |
-| add1Hodin | Řetězec | 4/7/2020 15:53:14 |
+| add3Years | Řetězec | 4/7/2023 2:53:14 ODP. |
+| subtract9Days | Řetězec | 3/29/2020 2:53:14 ODP. |
+| add1Hour | Řetězec | 4/7/2020 3:53:14 ODP. |
 
-Další ukázková šablona ukazuje, jak nastavit čas zahájení pro plán automatizace.
+Následující příklad šablony ukazuje, jak nastavit počáteční čas pro plán automatizace.
 
 ```json
 {
@@ -138,29 +138,29 @@ Další ukázková šablona ukazuje, jak nastavit čas zahájení pro plán auto
 
 `utcNow(format)`
 
-Vrátí aktuální hodnotu datatime (UTC) v zadaném formátu. Pokud není k dispozici žádný formát, použije se formát ISO 8601 (yyyMMddTHHmmmssZ). **Tuto funkci lze použít pouze ve výchozí hodnotě parametru.**
+Vrátí aktuální hodnotu DateTime (UTC) v zadaném formátu. Pokud není zadán žádný formát, bude použit formát ISO 8601 (yyyyMMddTHHmmssZ). **Tato funkce se dá použít jenom ve výchozí hodnotě pro parametr.**
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| formát |Ne |řetězec |Hodnota kódovaná identifikátorem URI, který chcete převést na řetězec. Použijte standardní [formátovací řetězce](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formátovací řetězce](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| formát |Ne |řetězec |Hodnota zakódovaná identifikátorem URI, která má být převedena na řetězec. Použijte buď [standardní formátovací řetězce](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [Vlastní řetězce formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
 ### <a name="remarks"></a>Poznámky
 
-Tuto funkci lze použít pouze ve výrazu pro výchozí hodnotu parametru. Použití této funkce kdekoli jinde v šabloně vrátí chybu. Funkce není povolena v jiných částech šablony, protože při každém volání vrátí jinou hodnotu. Nasazení stejné šablony se stejnými parametry by spolehlivě nepřineslo stejné výsledky.
+Tuto funkci lze použít pouze v rámci výrazu pro výchozí hodnotu parametru. Použití této funkce kdekoli jinde v šabloně vrátí chybu. Funkce není povolena v ostatních částech šablony, protože vrací jinou hodnotu pokaždé, když je volána. Nasazení stejné šablony se stejnými parametry by nespolehlivě přineslo stejné výsledky.
 
-Pokud použijete [možnost znovu nasadit dřívější úspěšné nasazení](rollback-on-error.md)a dřívější nasazení obsahuje parametr, který používá utcNow, parametr není znovu vyhodnocen. Místo toho hodnota parametru z předchozího nasazení je automaticky znovu použita v nasazení vrácení zpět.
+Použijete-li [možnost pro opětovné nasazení dřívějšího úspěšného nasazení](rollback-on-error.md)a předchozí nasazení zahrnuje parametr, který používá UtcNow, parametr není znovu vyhodnocen. Místo toho je hodnota parametru z dřívějšího nasazení automaticky znovu použita při nasazení zpět.
 
-Buďte opatrní opětovné nasazení šablony, která závisí na funkci utcNow pro výchozí hodnotu. Při opětovném nasazení a neposkytují hodnotu parametru, funkce je přehodnocena. Pokud chcete aktualizovat existující prostředek spíše než vytvořit nový, předat hodnotu parametru z předchozího nasazení.
+Buďte opatrní při opětovném nasazení šablony, která spoléhá na funkci utcNow, na výchozí hodnotu. Když znovu nasadíte a nezadáte hodnotu parametru, funkce se znovu vyhodnotí. Pokud chcete aktualizovat existující prostředek místo vytvoření nového prostředku, předejte hodnotu parametru z dřívějšího nasazení.
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Aktuální hodnota datačasu uTC.
+Aktuální hodnota DateTime UTC.
 
 ### <a name="examples"></a>Příklady
 
-Následující ukázková šablona zobrazuje různé formáty pro hodnotu datetime.
+Následující příklad šablony ukazuje různé formáty hodnoty data a času.
 
 ```json
 {
@@ -199,7 +199,7 @@ Následující ukázková šablona zobrazuje různé formáty pro hodnotu dateti
 }
 ```
 
-Výstup z předchozího příkladu se liší pro každé nasazení, ale bude podobný:
+Výstup z výše uvedeného příkladu se u každého nasazení liší, ale bude vypadat přibližně takto:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
@@ -207,7 +207,7 @@ Výstup z předchozího příkladu se liší pro každé nasazení, ale bude pod
 | utcShortOutput | řetězec | 03/05/2019 |
 | utcCustomOutput | řetězec | 3 5 |
 
-Následující příklad ukazuje, jak použít hodnotu z funkce při nastavování hodnoty značky.
+Další příklad ukazuje, jak použít hodnotu z funkce při nastavení hodnoty značky.
 
 ```json
 {
@@ -242,3 +242,7 @@ Následující příklad ukazuje, jak použít hodnotu z funkce při nastavován
     }
 }
 ```
+
+## <a name="next-steps"></a>Další kroky
+
+* Popis sekcí v šabloně Azure Resource Manager najdete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).

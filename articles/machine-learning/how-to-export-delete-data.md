@@ -1,7 +1,7 @@
 ---
-title: Export nebo odstranění dat pracovního prostoru
+title: Exportovat nebo odstranit data pracovního prostoru
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak exportovat nebo odstranit pracovní prostor pomocí azure machine learningstudio, CLI, SDK a ověřených rest api.
+description: Naučte se exportovat nebo odstranit svůj pracovní prostor pomocí rozhraní API pro Azure Machine Learning Studio, CLI, SDK a ověřovaného rozhraní REST API.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,50 +9,50 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: lobrien
 ms.author: laobri
-ms.date: 03/06/2020
+ms.date: 04/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4abef0146b4bf0cfaa254d196b0ca68f0d8ac883
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 50234eb356314039b8023f0442207ae0b762676e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218292"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82191630"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Export nebo odstranění dat pracovního prostoru služby Machine Learning
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V Azure Machine Learning můžete exportovat nebo odstranit data pracovního prostoru pomocí ověřeného rozhraní REST API. Tento článek vám řekne, jak na to.
+V Azure Machine Learning můžete data pracovního prostoru exportovat nebo odstranit pomocí ověřeného REST API. V tomto článku se dozvíte, jak.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="control-your-workspace-data"></a>Ovládání dat pracovního prostoru
+## <a name="control-your-workspace-data"></a>Řízení dat pracovního prostoru
 
-Data v produktu uložená službou Azure Machine Learning jsou k dispozici pro export a odstranění prostřednictvím azure machine learningového studia, rozhraní CLI, sady SDK a ověřených rozhraní REST API. K telemetrickým datům se dá přistupovat prostřednictvím portálu ochrany osobních údajů Azure. 
+Data v produktu uložená pomocí Azure Machine Learning jsou dostupná pro export a odstranění prostřednictvím Azure Machine Learning studia, CLI, sady SDK a ověřovaných rozhraní REST API. K datům telemetrie se dá dostat prostřednictvím portálu ochrany osobních údajů Azure. 
 
-V Azure Machine Learning se osobní data skládají z informací o uživateli v dokumentech historie spuštění a telemetrických záznamů některých interakcí uživatelů se službou.
+V Azure Machine Learning osobní údaje sestávají z informací o uživatelích v historii spouštění a záznamů telemetrie některých interakcí uživatelů se službou.
 
-## <a name="delete-workspace-data-with-the-rest-api"></a>Odstranění dat pracovního prostoru pomocí rozhraní REST API
+## <a name="delete-workspace-data-with-the-rest-api"></a>Odstranit data pracovního prostoru pomocí REST API
 
-Chcete-li odstranit data, lze pomocí slovesa HTTP DELETE provést následující volání rozhraní API. Ty jsou autorizovány tím, `Authorization: Bearer <arm-token>` že `<arm-token>` záhlaví v požadavku, kde `https://management.core.windows.net/` je přístupový token AAD pro koncový bod.  
+Aby bylo možné odstranit data, lze pomocí příkazu HTTP DELETE provést následující volání rozhraní API. Jedná se o autorizaci pomocí `Authorization: Bearer <arm-token>` hlavičky v žádosti, kde `<arm-token>` je přístupový token AAD pro `https://management.core.windows.net/` koncový bod.  
 
-Informace o tom, jak získat tento token a volat koncové body Azure, najdete [v tématu použití REST ke správě prostředků ML](how-to-manage-rest.md) a dokumentace rozhraní AZURE REST [API](https://docs.microsoft.com/rest/api/azure/).  
+Informace o tom, jak tento token získat a zavolat koncovým bodům Azure, najdete v tématu [použití REST ke správě prostředků ml](how-to-manage-rest.md) a [dokumentace k Azure REST API](https://docs.microsoft.com/rest/api/azure/).  
 
-V následujících příkladech nahraďte text názvy {} instancí, které určují přidružený prostředek.
+V níže uvedených příkladech nahraďte text v {} názvech instancí, které určují přidružený prostředek.
 
-### <a name="delete-an-entire-workspace"></a>Odstranění celého pracovního prostoru
+### <a name="delete-an-entire-workspace"></a>Odstranit celý pracovní prostor
 
-Toto volání slouží k odstranění celého pracovního prostoru.  
+Pomocí tohoto volání můžete odstranit celý pracovní prostor.  
 > [!WARNING]
-> Všechny informace budou odstraněny a pracovní prostor již nebude použitelný.
+> Všechny informace se odstraní a pracovní prostor už nebude možné použít.
 
     https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}?api-version=2019-11-01
 
-### <a name="delete-models"></a>Odstranění modelů
+### <a name="delete-models"></a>Odstranit modely
 
-Pomocí tohoto hovoru můžete získat seznam modelů a jejich ID:
+Pomocí tohoto volání získáte seznam modelů a jejich ID:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/models?api-version=2019-11-01
 
@@ -60,135 +60,135 @@ Jednotlivé modely lze odstranit pomocí:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/models/{id}?api-version=2019-11-01
 
-### <a name="delete-assets"></a>Odstranění datových zdrojů
+### <a name="delete-assets"></a>Odstranit prostředky
 
-Pomocí tohoto hovoru můžete získat seznam datových zdrojů a jejich ID:
+Pomocí tohoto volání získat seznam assetů a jejich ID:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets?api-version=2019-11-01
 
-Jednotlivé datové zdroje lze odstranit pomocí:
+Jednotlivé prostředky lze odstranit pomocí:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets/{id}?api-version=2019-11-01
 
 ### <a name="delete-images"></a>Odstranění imagí
 
-Pomocí tohoto hovoru můžete získat seznam obrázků a jejich ID:
+Pomocí tohoto volání získat seznam imagí a jejich ID:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/images?api-version=2019-11-01
 
-Jednotlivé obrázky lze odstranit pomocí:
+Jednotlivé Image je možné odstranit pomocí:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/images/{id}?api-version=2019-11-01
 
 ### <a name="delete-services"></a>Odstranit služby
 
-Pomocí tohoto hovoru můžete získat seznam služeb a jejich ID:
+Pomocí tohoto volání získáte seznam služeb a jejich ID:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/services?api-version=2019-11-01
 
-Jednotlivé služby lze odstranit pomocí:
+Jednotlivé služby je možné odstranit pomocí:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/services/{id}?api-version=2019-11-01
 
-## <a name="export-service-data-with-the-rest-api"></a>Export dat služby pomocí rozhraní REST API
+## <a name="export-service-data-with-the-rest-api"></a>Export dat služby pomocí REST API
 
-Chcete-li exportovat data, lze pomocí slovesa HTTP GET provést následující volání rozhraní API. Ty jsou autorizovány tím, `Authorization: Bearer <arm-token>` že `<arm-token>` záhlaví v požadavku, kde je přístupový token AAD pro koncový bod`https://management.core.windows.net/`  
+Aby bylo možné exportovat data, lze pomocí příkazu HTTP GET provést následující volání rozhraní API. Jedná se o autorizaci pomocí `Authorization: Bearer <arm-token>` hlavičky v žádosti, kde `<arm-token>` je přístupový token AAD pro koncový bod.`https://management.core.windows.net/`  
 
-Informace o tom, jak získat tento token a volat koncové body Azure, najdete [v tématu použití REST ke správě prostředků ML](how-to-manage-rest.md) a dokumentace rozhraní AZURE REST [API](https://docs.microsoft.com/rest/api/azure/)..   
+Informace o tom, jak tento token získat a zavolat koncovým bodům Azure, najdete v tématu [použití REST ke správě prostředků ml](how-to-manage-rest.md) a [dokumentace k Azure REST API](https://docs.microsoft.com/rest/api/azure/)..   
 
-V následujících příkladech nahraďte text názvy {} instancí, které určují přidružený prostředek.
+V níže uvedených příkladech nahraďte text v {} názvech instancí, které určují přidružený prostředek.
 
-### <a name="export-workspace-information"></a>Export informací o pracovním prostoru
+### <a name="export-workspace-information"></a>Exportovat informace o pracovním prostoru
 
-Pomocí tohoto volání můžete získat seznam všech pracovních prostorů:
+Pomocí tohoto volání získáte seznam všech pracovních prostorů:
 
     https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces?api-version=2019-11-01
 
-Informace o jednotlivém pracovním prostoru lze získat pomocí:
+Informace o jednotlivých pracovních prostorech lze získat pomocí:
 
     https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}?api-version=2019-11-01
 
-### <a name="export-compute-information"></a>Exportovat informace o výpočetních výkonech
+### <a name="export-compute-information"></a>Exportovat výpočetní informace
 
-Všechny výpočetní cíle připojené k pracovnímu prostoru lze získat pomocí:
+Všechny výpočetní cíle připojené k pracovnímu prostoru lze získat:
 
     https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes?api-version=2019-11-01
 
-Informace o jednom výpočetním cíli lze získat pomocí:
+Informace o jednom cílovém výpočetním prostředí lze získat:
 
     https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}?api-version=2019-11-01
 
-### <a name="export-run-history-data"></a>Exportovat data historie běhu
+### <a name="export-run-history-data"></a>Exportovat data historie spuštění
 
-Pomocí tohoto hovoru získáte seznam všech experimentů a jejich informací:
+Pomocí tohoto volání získáte seznam všech experimentů a jejich informace:
 
     https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/experiments 
 
-Všechny běhy pro konkrétní experiment lze získat pomocí:
+Všechna spuštění pro konkrétní experiment lze získat pomocí:
 
     https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/experiments/{experimentName}/runs 
 
-Položky historie spuštění lze získat pomocí:
+Položky historie spuštění lze získat:
 
     https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/experiments/{experimentName}/runs/{runId} 
 
-Všechny metriky spuštění experimentu lze získat pomocí:
+Všechny metriky spuštění pro experiment lze získat:
 
     https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/experiments/{experimentName}/metrics 
 
-Metriku jednoho spuštění lze získat pomocí:
+Jednu metriku spuštění může získat:
 
     https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/experiments/{experimentName}/metrics/{metricId}
 
-### <a name="export-artifacts"></a>Export artefaktů
+### <a name="export-artifacts"></a>Exportovat artefakty
 
-Pomocí tohoto volání získat seznam artefaktů a jejich cesty:
+Pomocí tohoto volání získáte seznam artefaktů a jejich cest:
 
     https://{location}.experiments.azureml.net/artifact/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/artifacts/origins/ExperimentRun/containers/{runId}
 
-### <a name="export-notifications"></a>Oznámení o vývozu
+### <a name="export-notifications"></a>Exportovat oznámení
 
-Pomocí tohoto volání můžete získat seznam uložených úloh:
+Pomocí tohoto volání získáte seznam uložených úloh:
 
     https://{location}.experiments.azureml.net/notification/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/tasks
 
-Oznámení pro jeden úkol lze získat pomocí:
+Oznámení pro jeden úkol může získat:
 
     https://{location}.experiments.azureml.net/notification/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}tasks/{taskId}
 
-### <a name="export-data-stores"></a>Export úložišť dat
+### <a name="export-data-stores"></a>Exportovat úložiště dat
 
-Toto volání slouží k získání seznamu úložišť dat:
+Pomocí tohoto volání získáte seznam úložišť dat:
 
     https://{location}.experiments.azureml.net/datastore/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/datastores
 
-Jednotlivá úložiště dat lze získat pomocí:
+Jednotlivá úložiště dat lze získat:
 
     https://{location}.experiments.azureml.net/datastore/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/datastores/{name}
 
 ### <a name="export-models"></a>Export modelů
 
-Pomocí tohoto hovoru můžete získat seznam modelů a jejich ID:
+Pomocí tohoto volání získáte seznam modelů a jejich ID:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/models?api-version=2019-11-01
 
-Jednotlivé modely lze získat:
+Jednotlivé modely lze získat pomocí:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/models/{id}?api-version=2019-11-01
 
-### <a name="export-assets"></a>Exportovat majetek
+### <a name="export-assets"></a>Exportovat prostředky
 
-Pomocí tohoto hovoru můžete získat seznam datových zdrojů a jejich ID:
+Pomocí tohoto volání získat seznam assetů a jejich ID:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets?api-version=2019-11-01
 
-Jednotlivá aktiva lze získat:
+Jednotlivé prostředky lze získat:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets/{id}?api-version=2019-11-01
 
-### <a name="export-images"></a>Export obrazů
+### <a name="export-images"></a>Exportovat obrázky
 
-Pomocí tohoto hovoru můžete získat seznam obrázků a jejich ID:
+Pomocí tohoto volání získat seznam imagí a jejich ID:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/images?api-version=2019-11-01
 
@@ -196,68 +196,59 @@ Jednotlivé obrázky lze získat:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/images/{id}?api-version=2019-11-01
 
-### <a name="export-services"></a>Exportní služby
+### <a name="export-services"></a>Exportovat služby
 
-Pomocí tohoto hovoru můžete získat seznam služeb a jejich ID:
+Pomocí tohoto volání získáte seznam služeb a jejich ID:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/services?api-version=2019-11-01
 
-Jednotlivé služby lze získat prostřednictvím:
+Jednotlivé služby může získat:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/services/{id}?api-version=2019-11-01
 
-### <a name="export-pipeline-experiments"></a>Exportovat experimenty s potrubím
+### <a name="export-pipeline-experiments"></a>Exportovat experimenty kanálu
 
 Jednotlivé experimenty lze získat:
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/Experiments/{experimentId}
 
-### <a name="export-pipeline-graphs"></a>Grafy exportu potrubí
+### <a name="export-pipeline-graphs"></a>Exportovat grafy kanálu
 
-Jednotlivé grafy lze získat na základě:
+Jednotlivé grafy lze získat pomocí:
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/Graphs/{graphId}
 
-### <a name="export-pipeline-modules"></a>Exportovat potrubní moduly
+### <a name="export-pipeline-modules"></a>Exportovat moduly kanálu
 
-Moduly lze získat:
+Moduly lze získat pomocí:
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/Modules/{id}
 
-### <a name="export-pipeline-templates"></a>Exportovat šablony kanálu
+### <a name="export-pipeline-templates"></a>Export šablon kanálu
 
 Šablony lze získat pomocí:
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/Templates/{templateId}
 
-### <a name="export-pipeline-data-sources"></a>Exportovat zdroje dat kanálu
+### <a name="export-pipeline-data-sources"></a>Export datových zdrojů kanálu
 
 Zdroje dat lze získat pomocí:
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/DataSources/{id}
 
-## <a name="delete-assets-in-the-designer"></a>Odstranění datových zdrojů v návrháři
+## <a name="delete-assets-in-the-designer"></a>Odstranit prostředky v Návrháři
 
-V návrháři, ve kterém jste experiment vytvořili, odstraňte jednotlivé datové zdroje:
+V návrháři, kde jste vytvořili experiment, odstraňte jednotlivé prostředky:
 
-1. Přejít na návrháře
+1. Přejít k Návrháři
 
-    ![Odstranění datových zdrojů](./media/how-to-export-delete-data/delete-experiment.png)
+    ![Odstranit prostředky](./media/how-to-export-delete-data/delete-experiment.png)
 
-1. V seznamu vyberte jednotlivé pracovní verze kanálu, kterou chcete odstranit.
+1. V seznamu vyberte koncept jednotlivého kanálu, který chcete odstranit.
 
 1. Vyberte **Odstranit**.
 
-### <a name="delete-datasets-in-the-designer"></a>Odstranění datových sad v návrháři
+### <a name="delete-datasets-in-the-designer"></a>Odstranění datových sad v Návrháři
 
-Pokud chcete odstranit datové sady v návrháři, přejděte na připojené účty úložiště pomocí portálu Azure nebo Průzkumníka úložiště a odstraňte tam datové sady. Zrušení registrace datových sad v návrháři pouze odebere referenční bod v úložišti.
+Pokud chcete v Návrháři odstranit datové sady, pomocí Azure Portal nebo Průzkumník služby Storage přejděte na propojené účty úložiště a odstraňte datové sady. Zrušení registrace datových sad v Návrháři odebere pouze referenční bod v úložišti.
 
-## <a name="export-data-in-the-designer"></a>Export dat v návrháři
-
-V návrháři, ve kterém jste experiment vytvořili, exportujte data, která jste přidali:
-
-1. Vlevo vyberte **Datové sady**.
-
-1. V seznamu vyberte datovou sadu, kterou chcete exportovat.
-
-    ![Stahování souborů](./media/how-to-export-delete-data/unregister-dataset.png)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
 ms.author: terrylan
-ms.openlocfilehash: 58deae64bdde27580b85b00a1c87ba115e24478a
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 5b04bbbbe5425e65f3ed4ff82d9700dec6dd2c39
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159894"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188323"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>Vývoj zabezpečené aplikace pro aplikaci Azure AD
 ## <a name="overview"></a>Přehled
@@ -35,7 +35,7 @@ Při vývoji a nasazení této aplikace se naučíte, jak
 - Nasaďte webovou aplikaci Azure, která je vyhrazená izolovaně s přístupem front-end k bráně firewall. 
 - Vytvořte a nakonfigurujte instanci Azure Application Gateway s bránou firewall, která používá OWASP prvních 10 RuleSet. 
 - Povolí šifrování dat při přenosu a v klidovém provozu pomocí služeb Azure. 
-- Nastavte službu Azure Policy a Security Center k vyhodnocení compliancies. 
+- Nastavte Azure Policy a Security Center k vyhodnocení dodržování předpisů. 
 
 Po vývoji a nasazení této aplikace budete mít k dispozici následující ukázkovou webovou aplikaci spolu s popsanými opatřeními konfigurace a zabezpečení.
 

@@ -1,6 +1,6 @@
 ---
-title: Technické specifikace a dodržování předpisů v oblasti Microsoft Azure Data Box Edge| Dokumenty společnosti Microsoft
-description: Informace o technických specifikacích a dodržování předpisů pro azure data box edge
+title: Microsoft Azure Data Box Edge technické specifikace a dodržování předpisů | Microsoft Docs
+description: Seznamte se s technickými specifikacemi a dodržováním předpisů pro Azure Data Box Edge
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,46 +8,46 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: b646ee9b727d5adf4ec1c8b5c769b3d8f5c0fc1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a82ca2b8e0a2da594d14b525bf5fabbf5f74eb53
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252033"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188990"
 ---
-# <a name="azure-data-box-edge-technical-specifications"></a>Technické specifikace Azure Data Box Edge
+# <a name="azure-data-box-edge-technical-specifications"></a>Azure Data Box Edge technické specifikace
 
-Hardwarové součásti vašeho zařízení Microsoft Azure Data Box Edge odpovídají technickým specifikacím a regulačním normám popsaným v tomto článku. Technické specifikace popisují napájecí zdroje (PSU), úložnou kapacitu, skříně a ekologické normy. 
+Hardwarové součásti Microsoft Azure Data Box Edge zařízení vyhovují technickým specifikacím a regulativním normám, které jsou uvedené v tomto článku. Technické specifikace popisují jednotky zdroje napájení (PSUs), kapacitu úložiště, skříně a environmentální standardy. 
 
-## <a name="compute-memory-specifications"></a>Výpočetní výkon, specifikace paměti
+## <a name="compute-memory-specifications"></a>Výpočetní prostředí, specifikace paměti
 
-Zařízení Data Box Edge má následující specifikace pro výpočetní prostředky a paměť:
+Data Box Edge zařízení má následující specifikace pro výpočetní výkon a paměť:
 
 | Specifikace           | Hodnota                  |
 |-------------------------|----------------------------|
-| Procesor    | 2 x 10 jádrový procesor                     |
+| Procesor    | PROCESOR 2 X 10 Core                     |
 | Memory (Paměť)              | 128 GB RAM                  |
 
 
 ## <a name="fpga-specifications"></a>Specifikace FPGA
 
-Pole Programovatelné Gate Array (FPGA) je součástí každého zařízení Data Box Edge, který umožňuje scénáře strojového učení (ML). 
+Pole programovatelné brány (FPGA) je součástí každé Data Box Edge zařízení, které umožňuje použití scénářů Machine Learning (ML). 
 
 | Specifikace           | Hodnota                  |
 |-------------------------|----------------------------|
-| Fpga   | Intel Arria 10 <br> Dostupné modely Deep Neural Network (DNN) jsou stejné jako modely [podporované instancemi FPGA v cloudu](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure).| 
+| FPGA   | Intel Arria 10 <br> Dostupné modely neuronové sítě (DNN) jsou stejné jako ty, které [podporuje instance cloudu FPGA](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure).| 
 
 
-## <a name="power-supply-unit-specifications"></a>Specifikace napájecího zdroje
+## <a name="power-supply-unit-specifications"></a>Specifikace jednotek napájení
 
-Zařízení Data Box Edge má dva napájecí zdroje 100-240 V (PSU) s vysoce výkonnými ventilátory. Tyto dva napájecí zdroje poskytují redundantní konfiguraci napájení. Pokud psu selže, zařízení pokračuje v normálním provozu na druhém napájecím počítači, dokud není vadný modul vyměněn. V následující tabulce jsou uvedeny technické specifikace služeb pro používání služeb.
+Zařízení Data Box Edge má dvě 100-240 V jednotkách napájení (PSUs) s ventilátory s vysokým výkonem. Tato dvě PSUsa poskytují redundantní konfiguraci napájení. Pokud dojde k selhání PSU, zařízení bude nadále fungovat normálně na ostatních PSU, dokud se neúspěšně nenahradí modul. V následující tabulce jsou uvedeny technické specifikace PSUs.
 
-| Specifikace           | 750 W napájecího dechu                  |
+| Specifikace           | 750 W PSU                  |
 |-------------------------|----------------------------|
 | Maximální výstupní výkon    | 750 W                     |
 | Frequency               | 50/60 Hz                   |
-| Výběr rozsahu napětí | Auto v rozmezí: 100-240 V AC |
-| Připojitelný za provozu           | Ano                        |
+| Výběr rozsahu napětí | Automatické rozsahy: 100-240 V AC |
+| Horká, připojitelná           | Ano                        |
 
 <!--## Power consumption statistics
 
@@ -55,55 +55,55 @@ The following table lists the typical power consumption data (actual values may 
 
 ## <a name="network-interface-specifications"></a>Specifikace síťového rozhraní
 
-Zařízení You Data Box Edge má 6 síťových rozhraní, PORT1- PORT6.
+Data Box Edge zařízení má 6 síťových rozhraní PORT1-PORT6.
 
 | Specifikace           | Popis                 |
 |-------------------------|----------------------------|
-|  Síťová rozhraní    | 2× rozhraní 1 GbE, z nichž jedno slouží pro správu, uživatelé ho nemohou konfigurovat a používá se pro počáteční instalaci. Druhé rozhraní je uživatelsky konfigurovatelné, lze jej použít pro přenos dat a ve výchozím nastavení je DHCP. <br>2× rozhraní 25 GbE – mohou fungovat také jako rozhraní 10 GbE. Tato datová rozhraní mohou uživatelé konfigurovat jako DHCP (výchozí) nebo statická. <br> 2× rozhraní 25 GbE – tato datová rozhraní mohou uživatelé konfigurovat jako DHCP (výchozí) nebo statická.                  |
+|  Síťová rozhraní    | 2× rozhraní 1 GbE, z nichž jedno slouží pro správu, uživatelé ho nemohou konfigurovat a používá se pro počáteční instalaci. Druhé rozhraní je uživatelsky konfigurovatelné, dá se použít k přenosu dat a je ve výchozím nastavení DHCP. <br>2× rozhraní 25 GbE – mohou fungovat také jako rozhraní 10 GbE. Tato datová rozhraní mohou uživatelé konfigurovat jako DHCP (výchozí) nebo statická. <br> 2× rozhraní 25 GbE – tato datová rozhraní mohou uživatelé konfigurovat jako DHCP (výchozí) nebo statická.                  |
 
 ## <a name="storage-specifications"></a>Specifikace úložiště
 
-Zařízení Data Box Edge mají 9 x 2,5" NVMe SSD, z nichž každá má kapacitu 1,6 TB. Z těchto SSD disků je 1 disk operačního systému a dalších 8 jsou datové disky. Celková využitelná kapacita zařízení je zhruba 12,5 TB. V následující tabulce jsou uvedeny podrobnosti o úložné kapacitě zařízení.
+Zařízení Data Box Edge mají 9 X 2,5 "NVMe SSD, každé s kapacitou 1,6 TB. Z těchto SSD je 1 disk operačního systému a ostatní 8 jsou datové disky. Celková použitelná kapacita pro zařízení je zhruba 12,5 TB. Následující tabulka obsahuje podrobné informace o kapacitě úložiště zařízení.
 
 |     Specifikace                          |     Hodnota             |
 |--------------------------------------------|-----------------------|
-|    Počet ssd jednotek (SSD)     |    8                  |
-|    Kapacita ssd s jedním ssd                     |    1,6 TB             |
+|    Počet jednotek SSD (Solid-State Drive) (SSD)     |    8                  |
+|    Jedna kapacita SSD                     |    1,6 TB             |
 |    Celková kapacita                          |    12,8 TB            |
-|    Celková využitelná kapacita*                  |    ~ 12,5 TB            |
+|    Celková použitelná kapacita *                  |    ~ 12,5 TB            |
 
-**Některé místo je vyhrazeno pro vnitřní použití.*
+**Místo pro interní použití je rezervované.*
 
-## <a name="enclosure-dimensions-and-weight-specifications"></a>Rozměry skříně a specifikace hmotnosti
+## <a name="enclosure-dimensions-and-weight-specifications"></a>Rozměry skříně a specifikace váhy
 
-V následujících tabulkách jsou uvedeny různé specifikace skříně pro rozměry a hmotnost.
+V následujících tabulkách jsou uvedeny různé specifikace velikosti skříně pro rozměry a váhu.
 
 ### <a name="enclosure-dimensions"></a>Rozměry skříně
 
 V následující tabulce jsou uvedeny rozměry skříně v milimetrech a palcích.
 
-|     Kabiny     |     Milimetrů     |     Palců     |
+|     Skříně     |     Milimetrech     |     Cm     |
 |-------------------|---------------------|----------------|
-|    Vlastnost Height         |    44.45            |    1.75"          |
-|    impulzu          |    434.1           |    17.09"          |
-|    Délka          |    740.4           |    29.15"          |
+|    Vlastnost Height         |    44,45            |    1,75 "          |
+|    impulzu          |    434,1           |    17,09 "          |
+|    Délka          |    740,4           |    29,15 "          |
 
-V následující tabulce jsou uvedeny rozměry přepravního balíku v milimetrech a palcích.
+V následující tabulce jsou uvedeny rozměry balíčku pro expedici v milimetrech a palcích.
 
-|     Balíček     |     Milimetrů     |     Palců     |
+|     Balíček     |     Milimetrech     |     Cm     |
 |-------------------|---------------------|----------------|
-|    Vlastnost Height         |    311.2            |    12.25"          |
-|    impulzu          |    642.8          |    25.31"          |
-|    Délka          |   1,051.1          |    41.38"          |
+|    Vlastnost Height         |    311,2            |    12,25 "          |
+|    impulzu          |    642,8          |    25,31 "          |
+|    Délka          |   1 051,1          |    41,38 "          |
 
-### <a name="enclosure-weight"></a>Hmotnost krytu
+### <a name="enclosure-weight"></a>Váha skříně
 
-Balíček zařízení váží 66 liber. a vyžaduje dvě osoby, aby se s ním vypořádaly. Hmotnost zařízení závisí na konfiguraci skříně.
+Balíček zařízení má hmotnost 61 kg. a ke zpracování vyžaduje dvě osoby. Váha zařízení závisí na konfiguraci skříně.
 
-|     Kabiny                                 |     Hmotnost          |
+|     Skříně                                 |     Hmotnost          |
 |-----------------------------------------------|---------------------|
-|    Celková hmotnost včetně obalu       |    61 liber.          |
-|    Hmotnost zařízení                       |    35 liber.          |
+|    Celková váha včetně balení       |    61 kg          |
+|    Váha zařízení                       |    35 kg          |
 
 ## <a name="enclosure-environment-specifications"></a>Specifikace prostředí skříně
 
@@ -111,38 +111,38 @@ V této části jsou uvedeny specifikace týkající se prostředí skříně, j
 
 ### <a name="temperature-and-humidity"></a>Teplota a vlhkost
 
-|     Kabiny         |     Rozsah okolníteploty     |     Okolní relativní vlhkost     |     Maximální rosné místo     |
+|     Skříně         |     Rozsah okolních teplot     |     Relativní vlhkost okolí     |     Maximální bod Dew     |
 |-----------------------|--------------------------------------|--------------------------------------|---------------------------|
-|    Operační        |    10°C - 35°C (50°F - 86°F)         |    10% - 80% nekondenzující.         |    29 °C (84 °F)            |
-|    Neprovozní    |    -40 °C až 65 °C (-40°F - 149°F)     |    5% - 95% nekondenzující.          |    33 °C (91 °F)            |
+|    Funkční        |    10 °C-35 OC (50 °F-86 °F)         |    10% až 80% nekondenzující.         |    29 °C (84 °F)            |
+|    Není funkční    |    -40 oC až 65 oC (-40 °F-149 °F)     |    5% až 95% nekondenzující.          |    33 OC (91 °F)            |
 
-### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Proudění vzduchu, nadmořská výška, nárazy, vibrace, orientace, bezpečnost a EMC
+### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Provozní flow, nadmořská, náraz, vibrace, orientace, bezpečnost a EMC
 
-|     Kabiny                           |     Provozní specifikace                                                                                                                                                                                         |
+|     Skříně                           |     Provozní specifikace                                                                                                                                                                                         |
 |-----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|    Proudění vzduchu                              |    Proudění vzduchu systému je zepředu dozadu. Systém musí být provozován s nízkotlakou instalací zadního výfuku. <!--Back pressure created by rack doors and obstacles should not exceed 5 pascals (0.5 mm water gauge).-->    |
-|    Maximální nadmořská výška, provozní        |    3048 metrů (10 000 stop) s maximální provozní teplotou, která je dejmenovitá, stanovená [specifikacemi pro odměření provozní teploty](#operating-temperature-de-rating-specifications).                                                                                |
-|    Maximální nadmořská výška, neprovozní    |    12 000 metrů                                                                                                                                                                                         |
-|    Šok, provozní                   |    6 G po dobu 11 milisekund v 6 orientacích                                                                                                                                                                         |
-|    Nárazový, nefunkční               |    71 G po dobu 2 milisekund v 6 orientacích                                                                                                                                                                           |
-|    Vibrace, provozní               |    0,26 G<sub>RMS</sub> 5 Hz až 350 Hz náhodné                                                                                                                                                                                     |
-|    Vibrace, neprovozní           |    1,88 G<sub>RMS</sub> 10 Hz až 500 Hz po dobu 15 minut (všech šest testovaných stran).)                                                                                                                                                  |
-|    Orientace a montáž             |    19" držák do racku                                                                                                                                                                                        |
-|    Bezpečnost a schválení                 |    EN 60950-1:2006 +A1:2010 +A2:2013 +A11:2009 +A12:2011/IEC 60950-1:2005 ed2 +A1:2009 +A2:2013 EN 62311:2008                                                                                                                                                                       |
-|    Emc                                  |    FCC A, ICES-003 <br>EN 55032:2012/CISPR 32:2012  <br>EN 55032:2015/CISPR 32:2015  <br>EN 55024:2010 +A1:2015/CISPR 24:2010 +A1:2015  <br>EN 61000-3-2:2014/IEC 61000-3-2:2014 (třída D)   <br>EN 61000-3-3:2013/IEC 61000-3-3:2013                                                                                                                                                                                         |
-|    Energetický sektor             |    Nařízení Komise (EU) č. 617/2013                                                                                                                                                                                        |
-|    Rohs           |    EN 50581:2012                                                                                                                                                                                        |
+|    Tok dat                              |    Tok systému je zepředu zezadu. Systém musí být provozován s nízkým tlakem na zadní výfukovou instalaci. <!--Back pressure created by rack doors and obstacles should not exceed 5 pascals (0.5 mm water gauge).-->    |
+|    Maximální výška, provozní        |    3048 měřičů (10 000 metrů) s maximální provozní teplotou rozhodnocenou [specifikací pro stanovení provozní teploty](#operating-temperature-de-rating-specifications).                                                                                |
+|    Maximální nadlimitní hodnota, která není funkční    |    12 000 měřičů (39 370 metrů)                                                                                                                                                                                         |
+|    Úraz, provozní                   |    6 G až 11 milisekund v 6 orientaci                                                                                                                                                                         |
+|    Úraz, jiný než provozní               |    71 G na 2 milisekundy v 6 orientaci                                                                                                                                                                           |
+|    Vibrace, provozní               |    0,26 G<sub>RMS</sub> 5 Hz až 350 Hz náhodně                                                                                                                                                                                     |
+|    Vibrace, jiné než provozní           |    1,88 G<sub>RMS</sub> 10 Hz až 500 Hz po dobu 15 minut (všech šest stran testováno.)                                                                                                                                                  |
+|    Orientace a připojení             |    19 připojení stojanu                                                                                                                                                                                        |
+|    Bezpečnost a schválení                 |    EN 60950-1:2006 + a1:2010 + a2:2013 + A11:2009 + A12:2011/IEC 60950-1:2005 ED2 + a1:2009 + a2:2013 EN 62311:2008                                                                                                                                                                       |
+|    SOFTWARE                                  |    FCC A, ICES – 003 <br>EN 55032:2012/CISPR 32:2012  <br>EN 55032:2015/CISPR 32:2015  <br>EN 55024:2010 + A1:2015/CISPR 24:2010 + A1:2015  <br>EN 61000-3-2:2014/IEC 61000-3-2:2014 (třída D)   <br>EN 61000-3-3:2013/IEC 61000-3-3:2013                                                                                                                                                                                         |
+|    Energetický sektor             |    Nařízení Komise (EU) – ne. 617/2013                                                                                                                                                                                        |
+|    RoHS           |    EN 50581:2012                                                                                                                                                                                        |
 
 
-### <a name="operating-temperature-de-rating-specifications"></a>Specifikace deratingní hodnoty provozní teploty
+### <a name="operating-temperature-de-rating-specifications"></a>Specifikace pro dehodnocení provozní teploty
 
-|     Odměření provozní teploty     |     Rozsah okolníteploty                                                         |
+|     Dehodnocení provozní teploty     |     Rozsah okolních teplot                                                         |
 |--------------------------------------------|------------------------------------------------------------------------------------------|
-|    Až 35 °C (95 °F)                       |    Maximální teplota je snížena o 1°C/300 m (1°F/547 ft) nad 950 m (3,117 ft).    |
-|    35 °C až 40 °C (95 až 104 °F)            |    Maximální teplota je snížena o 1°C/175 m (1°F/319 ft) nad 950 m (3,117 ft).    |
-|    40°C až 45°C (104°F až 113°F)           |    Maximální teplota je snížena o 1°C/125 m (1°F/228 ft) nad 950 m (3,117 ft).    |
+|    Až 35 oC (95 °F)                       |    Maximální teplota se sníží o 1 °C/300 m (1 °F/547 ft) nad 950 m (3 117 ft).    |
+|    35 oC až 40 oC (95 °F až 104 °F)            |    Maximální teplota se zmenší o 1 °C/175 m (1 °F/319 ft) nad 950 m (3 117 ft).    |
+|    40 oC až 45 °C (104 °F až 113 °F)           |    Maximální teplota se sníží o 1 °C/125 m (1 °F/228 ft) nad 950 m (3 117 ft).    |
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Nasazení azure data boxu Edge](data-box-edge-deploy-prep.md)
+- [Nasazení Azure Data Box Edge](data-box-edge-deploy-prep.md)

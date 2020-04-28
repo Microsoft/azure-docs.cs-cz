@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/23/2020
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 298c99d44328dc79db1722b450ad74c3929d0c12
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
-ms.translationtype: MT
+ms.openlocfilehash: 6a816f2235fa5356f2300255ec9d2fb2b315acf7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82114415"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82190312"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace pracovního dne pro Automatické zřizování uživatelů
 
@@ -87,13 +87,13 @@ Než začnete s integrací do pracovního dne, Projděte si níže uvedené pož
 
 Tato část se zabývá následujícími aspekty plánování:
 
-* [Požadované součásti](#prerequisites)
+* [Požadavky](#prerequisites)
 * [Výběr aplikací zřizovacích konektorů k nasazení](#selecting-provisioning-connector-apps-to-deploy)
 * [Plánování nasazení agenta zřizování Azure AD Connect](#planning-deployment-of-azure-ad-connect-provisioning-agent)
 * [Integrace s více doménami služby Active Directory](#integrating-with-multiple-active-directory-domains)
 * [Plánování mapování a transformací atributů uživatele z Workday na službu Active Directory](#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)
 
-### <a name="prerequisites"></a>Požadované součásti
+### <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
 
@@ -562,7 +562,7 @@ V této části nakonfigurujete způsob, jakým budou data uživatelů z Workday
 | **WorkerID**  |  EmployeeID | **Ano** | Zapsáno pouze při vytvoření |
 | **PreferredNameData**    |  CN    |   |   Zapsáno pouze při vytvoření |
 | **SelectUniqueValue (Join ("\@"; Join (".", \[FirstName\], \[LastName\]), "contoso.com"), Join ("\@", Join (".", Mid (\[FirstName\], 1, 1), \[LastName\]), "contoso.com"), Join ("\@", Join ("", Mid\[(FirstName\], 1, 2), \[LastName\]), "contoso.com"))**   | userPrincipalName (Hlavní název uživatele)     |     | Zapsáno pouze při vytvoření 
-| **Replace\[(Mid (Replace\](UserID;;\[\\\\/\\\\\\\\\\\\\[\\"\\(\\\\ :\]\\\\\\ \\\|\\\\=\\\\,\\\\+\\\\\*\\\\? \\\\\\) ",,",,), 1, 20),, "([.) \\ &lt; \\ \\ &gt; \] \*File:///\\ \$.) *$)", , "", , )**      |    sAMAccountName            |     |         Zapsáno pouze při vytvoření |
+| `Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )`      |    sAMAccountName            |     |         Zapsáno pouze při vytvoření |
 | **Switch (\[Active\];; "0"; "true"; "1"; "false")** |  accountDisabled      |     | Vytvořit a aktualizovat |
 | **FirstName**   | givenName       |     |    Vytvořit a aktualizovat |
 | **Polím**   |   sn   |     |  Vytvořit a aktualizovat |

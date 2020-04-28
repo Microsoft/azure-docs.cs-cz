@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: c03487b100ddb066416072c6c06773890db86e0a
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 82d268eedd73b8de670da93ad3a601b5e75e6444
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82115308"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188531"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Úvod k obslužné rutině rozšíření Azure Desired State Configuration
 
@@ -36,7 +36,7 @@ Ve virtuálním počítači není k dispozici žádné Průběžné vytváření
 
 Tento článek poskytuje informace o obou scénářích: použití rozšíření DSC pro službu Automation pro automatizaci a používání rozšíření DSC jako nástroje pro přiřazení konfigurací k virtuálním počítačům pomocí sady Azure SDK.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 - **Místní počítač**: Pokud chcete pracovat s rozšířením virtuálního počítače Azure, musíte použít Azure Portal nebo sadu Azure PowerShell SDK.
 - **Agent hosta**: virtuální počítač Azure NAKONFIGUROVANÝ konfigurací DSC musí být operační systém, který podporuje Windows Management Framework (WMF) 4,0 nebo novější. Úplný seznam podporovaných verzí operačních systémů najdete v části [Historie verzí rozšíření DSC](../../automation/automation-dsc-extension-history.md).
@@ -188,7 +188,7 @@ Portál shromažďuje následující vstup:
 
 - **Argumenty konfigurace**: Pokud funkce konfigurace přebírá argumenty, zadejte je tady ve formátu **argumentName1 = Hodnota1, argumentName2 = hodnota2**. Tento formát je jiný formát, ve kterém jsou konfigurační argumenty přijaty v rutinách PowerShellu nebo šablonách Správce prostředků.
 
-- **Soubor psd1 konfiguračních dat**: Toto pole je volitelné. Pokud vaše konfigurace vyžaduje soubor konfiguračních dat v souboru. psd1, pomocí tohoto pole vyberte datové pole a nahrajte ho do úložiště objektů BLOB uživatele. Soubor konfiguračních dat je zabezpečený tokenem SAS v úložišti objektů BLOB.
+- **Soubor konfiguračních dat psd1**: vaše konfigurace vyžaduje soubor konfiguračních dat v souboru. psd1, pomocí tohoto pole můžete vybrat datový soubor a nahrát ho do úložiště objektů BLOB uživatele. Soubor konfiguračních dat je zabezpečený tokenem SAS v úložišti objektů BLOB.
 
 - **Verze WMF**: Určuje verzi rozhraní Windows Management Framework (WMF), která má být na vašem virtuálním počítači nainstalovaná. Nastavení této vlastnosti na nejnovější nainstaluje nejnovější verzi WMF. V současné době jsou jedinou možnou hodnotou této vlastnosti 4,0, 5,0, 5,1 a nejnovější. Tyto možné hodnoty se vztahují na aktualizace. Výchozí hodnota je **nejnovější**.
 

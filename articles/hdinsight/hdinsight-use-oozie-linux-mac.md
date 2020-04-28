@@ -6,13 +6,14 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
+ms.custom: seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 3c4f6afe56f592c99a8d8fc4949bdfb9aab3d336
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
-ms.translationtype: MT
+ms.openlocfilehash: 93eddcd8ed0dae6ac6f010dce2e138fc018a06fa
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106657"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82190652"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Použití Apache Oozie s Apache Haddopem k definování a spuštění pracovního procesu v linuxové službě Azure HDInsight
 
@@ -28,7 +29,7 @@ Oozie můžete použít také k plánování úloh, které jsou specifické pro 
 > [!NOTE]  
 > Další možností definování pracovních postupů pomocí HDInsight je použití Azure Data Factory. Další informace o Data Factory najdete v tématu [použití nástroje Apache prasete a Apache Hive s Data Factory](../data-factory/transform-data.md). Pokud chcete používat Oozie v clusterech s Balíček zabezpečení podniku, přečtěte si téma [spuštění Apache Oozie v clusterech HDInsight Hadoop s balíček zabezpečení podniku](domain-joined/hdinsight-use-oozie-domain-joined-clusters.md).
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 * **Cluster Hadoop ve službě HDInsight**. Viz Začínáme [se službou HDInsight v systému Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
@@ -643,7 +644,7 @@ Koordinátora můžete použít k určení začátku, konce a frekvence výskytu
 
     ![Karta informace o úloze webové konzoly OOzie](./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png)
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pomocí uživatelského rozhraní Oozie můžete zobrazit protokoly Oozie. Uživatelské rozhraní Oozie obsahuje také odkazy na protokoly JobTracker pro úlohy MapReduce, které spustila pracovní postup. Vzor pro řešení potíží by měl být následující:
 

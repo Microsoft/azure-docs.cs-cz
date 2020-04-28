@@ -1,162 +1,161 @@
 ---
-title: Zálohování počítačů se systémem Windows pomocí agenta MARS
-description: K zálohování počítačů s Windows použijte agenta služby Microsoft Azure Recovery Services (MARS).
+title: Zálohování počítačů s Windows pomocí agenta MARS
+description: K zálohování počítačů s Windows použijte agenta Microsoft Azure Recovery Services (MARS).
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 12463f33a6fa97b33e70b77fb2fcf6b0a27b5790
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 002f4cd2e0582fb87af622f721f286bd78920350
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79408908"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193288"
 ---
 # <a name="back-up-windows-machines-by-using-the-azure-backup-mars-agent"></a>Zálohování počítačů s Windows pomocí agenta Azure Backup MARS
 
-Tento článek vysvětluje, jak zálohovat počítače s Windows pomocí služby [Azure Backup](backup-overview.md) a agenta služby Microsoft Azure Recovery Services (MARS). MARS se také označuje jako agent azure backup.
+Tento článek vysvětluje, jak zálohovat počítače s Windows pomocí služby [Azure Backup](backup-overview.md) a agenta Microsoft Azure Recovery Services (MARS). MARS se také označuje jako agent Azure Backup.
 
 V tomto článku se dozvíte, jak:
 
 > [!div class="checklist"]
 >
 > * Ověření předpokladů
-> * Vytvořte zásadu a plán zálohování.
-> * Proveďte zálohu na vyžádání.
+> * Vytvořte zásady zálohování a plán.
+> * Proveďte zálohování na vyžádání.
 
 ## <a name="before-you-start"></a>Než začnete
 
-* Zjistěte, jak [Azure Backup používá agenta MARS k zálohování počítačů s Windows](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders).
-* Informace o [záložní architektuře,](backup-architecture.md#architecture-back-up-to-dpmmabs) která spouští agenta MARS na sekundárním serveru MABS nebo Data Protection Manager.
-* [Zkontrolujte, co je podporováno a co můžete zálohovat](backup-support-matrix-mars-agent.md) agentem MARS.
-* [Ověřte přístup k internetu](install-mars-agent.md#verify-internet-access) na počítačích, které chcete zálohovat.
-* Pokud agent MARS není nainstalován, přečtěte si, jak jej nainstalovat [zde](install-mars-agent.md).
+* Přečtěte si, jak [Azure Backup používá agenta Mars k zálohování počítačů s Windows](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders).
+* Seznamte se s [architekturou zálohování](backup-architecture.md#architecture-back-up-to-dpmmabs) , která spouští agenta Mars na sekundárním serveru MABS nebo data Protection Manager.
+* Přečtěte si [, co je podporováno a co můžete zálohovat](backup-support-matrix-mars-agent.md) pomocí agenta Mars.
+* [Ověřte přístup k Internetu](install-mars-agent.md#verify-internet-access) na počítačích, které chcete zálohovat.
+* Pokud není nainstalovaný agent MARS, zjistěte, jak ho nainstalovat [tady](install-mars-agent.md).
 
-## <a name="create-a-backup-policy"></a>Vytvoření zásad zálohování
+## <a name="create-a-backup-policy"></a>Vytvoření zásady zálohování
 
-Zásady zálohování určuje, kdy má být pořizovat snímky dat k vytvoření bodů obnovení. Také určuje, jak dlouho zachovat body obnovení. Agent MARS slouží ke konfiguraci zásad zálohování.
+Zásady zálohování určují, kdy pořizovat snímky dat k vytvoření bodů obnovení. Také určuje, jak dlouho mají být body obnovení uchovávány. Pomocí agenta MARS nakonfigurujete zásady zálohování.
 
-Azure Backup nebere automaticky letní čas (DST) v úvahu. Toto výchozí nastavení může způsobit určité nesrovnalosti mezi skutečným časem a plánovaným časem zálohování.
+Azure Backup automaticky nebere v úvahu letní čas (letní čas). Toto výchozí nastavení může způsobit nesoulad mezi skutečným časem a plánovaným časem zálohování.
 
-Vytvoření zásadzálohování:
+Vytvoření zásady zálohování:
 
 1. Po stažení a registraci agenta MARS otevřete konzolu agenta. Najdete ho vyhledáním **Microsoft Azure Backup** ve svém počítači.  
 
-1. V části **Akce**vyberte **Naplánovat zálohování**.
+1. V části **Akce**vyberte **naplánovat zálohování**.
 
     ![Naplánování zálohování Windows Serveru](./media/backup-configure-vault/schedule-first-backup.png)
-1. V Průvodci plánováním zálohování vyberte **Možnost Začínáme** > **další**.
-1. V části **Vybrat položky k zálohování**vyberte Přidat **položky**.
+1. V Průvodci plánováním **zálohování vyberte** > začít**dál**.
+1. V části **Vybrat položky k zálohování**vyberte **Přidat položky**.
 
-    ![Přidání položek pro zálohování](./media/backup-azure-manage-mars/select-item-to-backup.png)
+    ![Přidat položky k zálohování](./media/backup-azure-manage-mars/select-item-to-backup.png)
 
 1. V poli **Vybrat položky** vyberte položky, které chcete zálohovat, a pak vyberte **OK**.
 
-    ![Výběr položek, které chcete zálohovat](./media/backup-azure-manage-mars/selected-items-to-backup.png)
+    ![Vyberte položky, které chcete zálohovat.](./media/backup-azure-manage-mars/selected-items-to-backup.png)
 
-1. Na stránce **Vybrat položky k zálohování** vyberte **Další**.
-1. Na stránce **Zadat plán zálohování** určete, kdy se mají pobírají denní nebo týdenní zálohy. Pak vyberte **Další**.
+1. Na stránce **Vyberte položky, které chcete zálohovat** vyberte **Další**.
+1. Na stránce **zadání plánu zálohování** určete, kdy se mají provést denní nebo týdenní zálohování. Pak vyberte **Další**.
 
-    * Bod obnovení je vytvořen při zálohování.
+    * Bod obnovení se vytvoří při vytvoření zálohy.
     * Počet bodů obnovení vytvořených ve vašem prostředí závisí na plánu zálohování.
-    * Můžete naplánovat až tři denní zálohy denně. V následujícím příkladu dojde ke dvěma dennízálohy, jeden o půlnoci a jeden v 6:00 PM.
+    * Můžete naplánovat až tři denní zálohy za den. V následujícím příkladu se ke dvěma denním zálohám objevuje jedna o půlnoci a druhá v 6:00./odp..
 
         ![Nastavení denního plánu zálohování](./media/backup-configure-vault/day-schedule.png)
 
-    * Můžete také spouštět týdenní zálohování. V následujícím příkladu zálohy jsou převzaty každou alternativní neděli a středu v 9:30 a 1:00 AM.
+    * Můžete spustit i týdenní zálohování. V následujícím příkladu jsou zálohy pořízeny každou jinou neděli a středu v rozmezí od 9:30 do 1:00 dop.
 
         ![Nastavení týdenního plánu zálohování](./media/backup-configure-vault/week-schedule.png)
 
-1. Na stránce **Vybrat zásady uchovávání informací** určete způsob ukládání historických kopií dat. Pak vyberte **Další**.
+1. Na stránce **Vybrat zásady uchovávání informací** určete, jak se mají ukládat historické kopie vašich dat. Pak vyberte **Další**.
 
-    * Nastavení uchovávání informací určují, které body obnovení mají být ukládány a jak dlouho se mají ukládat.
-    * Pro nastavení denní uchovávání informací udáváte, že v době určené pro denní uchovávání informací bude poslední bod obnovení zachován po zadaný počet dní. Nebo můžete zadat měsíční zásady uchovávání informací označující, že bod obnovení vytvořený 30.
-    * Uchovávání denních a týdenních bodů obnovení se obvykle shoduje s plánem zálohování. Takže když plán aktivuje zálohu, bod obnovení, který vytvoří záloha je uložen po dobu, kterou určuje denní nebo týdenní zásady uchovávání informací.
+    * Nastavení uchovávání určují, které body obnovení se mají ukládat a jak dlouho se mají ukládat.
+    * V případě denního nastavení uchování značíte, že v době určené pro denní uchovávání se bude za zadaný počet dnů uchovávat nejnovější bod obnovení. Případně můžete zadat měsíční zásady uchovávání informací, které označují, že bod obnovení vytvořený na 30. den v měsíci by měl být uložen po dobu 12 měsíců.
+    * Uchovávání denních a týdenních bodů obnovení se obvykle shoduje s plánem zálohování. Takže když plán aktivuje zálohování, bude bod obnovení, který záloha vytvoří, uložený po dobu, po kterou určuje denní nebo týdenní zásady uchovávání informací.
     * V následujícím příkladu:
 
-        * Denní zálohy o půlnoci a 18:00 jsou uchovávány po dobu sedmi dnů.
-        * Zálohy pořízené v sobotu o půlnoci a 18:00 jsou uchovávány po dobu čtyř týdnů.
-        * Zálohy pořízené poslední sobotu v měsíci o půlnoci a 18:00 jsou uchovávány po dobu 12 měsíců.
-        * Zálohy přijaté poslední sobotu v březnu jsou uchovávány po dobu 10 let.
+        * Denní zálohy s půlnocí a 6:00 PM se uchovávají po dobu sedmi dnů.
+        * Zálohy provedené v sobotu s půlnocí a 6:00 PM se uchovávají po dobu čtyř týdnů.
+        * Zálohy provedené na poslední sobotu v měsíci s půlnocí a 6:00 PM se uchovávají po dobu 12 měsíců.
+        * Zálohy provedené na poslední sobotu v březnu se uchovávají po dobu 10 let.
 
-        ![Příklad zásad uchovávání informací](./media/backup-configure-vault/retention-example.png)
+        ![Příklad zásady uchovávání informací](./media/backup-configure-vault/retention-example.png)
 
-1. Na stránce **Zvolit typ počátečnízálohy** se rozhodněte, zda chcete provést počáteční zálohu v síti nebo použít zálohování offline. Chcete-li provést počáteční zálohu v síti, vyberte **možnost Automaticky v síti** > **Další**.
+1. Na stránce **zvolit typ prvotní zálohy** rozhodněte, jestli chcete provést prvotní zálohování přes síť, nebo použijte offline zálohování. Chcete-li provést prvotní zálohování sítě, vyberte možnost **automaticky v síti** > **Další**.
 
-    Další informace o zálohování offline najdete [v tématu Použití datovéschránky Azure pro zálohování offline](offline-backup-azure-data-box.md).
+    Další informace o offline zálohování najdete v tématu [použití Azure Data box pro zálohování offline](offline-backup-azure-data-box.md).
 
-    ![Výběr počátečního typu zálohy](./media/backup-azure-manage-mars/choose-initial-backup-type.png)
+    ![Zvolit typ prvotní zálohy](./media/backup-azure-manage-mars/choose-initial-backup-type.png)
 
-1. Na stránce **Potvrzení** zkontrolujte informace a pak vyberte **Dokončit**.
+1. Na stránce **potvrzení** zkontrolujte informace a pak vyberte **Dokončit**.
 
-    ![Potvrzení typu zálohy](./media/backup-azure-manage-mars/confirm-backup-type.png)
+    ![Potvrďte typ zálohování.](./media/backup-azure-manage-mars/confirm-backup-type.png)
 
-1. Po dokončení průvodce vytvořením plánu zálohování vyberte **zavřít**.
+1. Až průvodce dokončí vytváření plánu zálohování, vyberte **Zavřít**.
 
-    ![Zobrazení průběhu plánu zálohování](./media/backup-azure-manage-mars/confirm-modify-backup-process.png)
+    ![Zobrazit průběh plánu zálohování](./media/backup-azure-manage-mars/confirm-modify-backup-process.png)
 
-Vytvořte zásady pro každý počítač, ve kterém je agent nainstalován.
+Vytvořte zásadu na každém počítači, kde je nainstalován agent.
 
-### <a name="do-the-initial-backup-offline"></a>Do počáteční zálohování offline
+### <a name="do-the-initial-backup-offline"></a>Proveďte počáteční zálohování offline
 
-Počáteční zálohu můžete spustit automaticky v síti nebo můžete zálohovat offline. Offline výsev pro počáteční zálohu je užitečné, pokud máte velké množství dat, která budou vyžadovat velké šířky pásma sítě k přenosu.
+Počáteční zálohu můžete spustit automaticky přes síť, nebo můžete provést zálohování offline. Dosazení offline pro prvotní zálohování je užitečné, pokud máte velké množství dat, které bude vyžadovat přenos větší šířky pásma sítě.
 
-Jak provést offline přenos:
+Postup při offline přenosu:
 
-1. Zapište záložní data do pracovního umístění.
+1. Zápis zálohovaných dat do pracovního umístění.
 1. Pomocí nástroje AzureOfflineBackupDiskPrep zkopírujte data z pracovního umístění na jeden nebo více disků SATA.
 
-    Nástroj vytvoří úlohu importu Azure. Další informace najdete [v tématu Co je služba Import a export Azure](https://docs.microsoft.com/azure/storage/common/storage-import-export-service).
-1. Odešlete disky SATA do datového centra Azure.
+    Nástroj vytvoří úlohu importu Azure. Další informace najdete v tématu [co je služba Azure import/export](https://docs.microsoft.com/azure/storage/common/storage-import-export-service).
+1. Odešlete disky SATA do datacentra Azure.
 
-    V datovém centru se data disku zkopírují do účtu úložiště Azure. Azure Backup zkopíruje data z účtu úložiště do trezoru a jsou naplánovány přírůstkové zálohy.
+    V datacentru se data disku zkopírují do účtu služby Azure Storage. Azure Backup zkopíruje data z účtu úložiště do trezoru a naplánují se přírůstkové zálohy.
 
-Další informace o offline osevění najdete [v tématu Použití Azure Data Box pro zálohování offline](offline-backup-azure-data-box.md).
+Další informace o tom, jak [používat Azure Data box pro offline zálohování](offline-backup-azure-data-box.md), najdete v tématu použití.
 
-### <a name="enable-network-throttling"></a>Povolení omezení sítě
+### <a name="enable-network-throttling"></a>Povolit omezení sítě
 
-Povolením omezení sítě můžete řídit, jak agent MARS využívá šířku pásma sítě. Omezení je užitečné, pokud potřebujete zálohovat data během pracovní doby, ale chcete řídit, jakou šířku pásma používá aktivita zálohování a obnovení.
+To, jak agent MARS používá šířku pásma sítě, můžete řídit povolením omezení sítě. Omezování je užitečné, pokud potřebujete zálohovat data během pracovní doby, ale chcete určit, jak velkou šířku pásma používá aktivita zálohování a obnovení.
 
-Omezení sítě v Azure Backup používá [quality of Service (QoS)](https://docs.microsoft.com/windows-server/networking/technologies/qos/qos-policy-top) v místním operačním systému.
+Omezování sítě v Azure Backup používá [technologii QoS (Quality of Service)](https://docs.microsoft.com/windows-server/networking/technologies/qos/qos-policy-top) v místním operačním systému.
 
-Omezení zálohování v síti je dostupné v systému Windows Server 2012 a novějším a v systému Windows 8 a novějším. Operační systémy by měly být spuštěny nejnovější aktualizace Service Pack.
+Omezení sítě pro zálohy je k dispozici v systémech Windows Server 2012 a novějších a ve Windows 8 a novějších verzích. Operační systémy by měly používat nejnovější aktualizace Service Pack.
 
-Povolení omezení sítě:
+Postup při povolení omezení sítě:
 
-1. V agentovi MARS vyberte **Změnit vlastnosti**.
-1. Na kartě **Omezení** vyberte **Povolit omezení využití šířky pásma internetu pro operace zálohování**.
+1. V části agent MARS vyberte **změnit vlastnosti**.
+1. Na kartě **omezování** vyberte **Povolit omezování šířky pásma internetu u operací zálohování**.
 
     ![Nastavení omezení sítě pro operace zálohování](./media/backup-configure-vault/throttling-dialog.png)
-1. Určete povolenou šířku pásma během pracovní doby a mimo pracovní dobu. Hodnoty šířky pásma začínají rychlostí 512 kb/s a srychlostí 1 023 MB/s. Pak vyberte **OK**.
+1. Určete povolenou šířku pásma během pracovní doby a nepracovních hodin. Hodnoty šířky pásma začínají v 512 kbps a jdou až 1 023 MB/s. Pak vyberte **OK**.
 
-## <a name="run-an-on-demand-backup"></a>Spuštění zálohy na vyžádání
+## <a name="run-an-on-demand-backup"></a>Spuštění zálohování na vyžádání
 
-1. V agentovi MARS vyberte **Zálohovat .**
+1. V části agent MARS vyberte **Zálohovat nyní**.
 
-    ![Zálohování v systému Windows Server](./media/backup-configure-vault/backup-now.png)
+    ![Zálohovat nyní ve Windows serveru](./media/backup-configure-vault/backup-now.png)
 
-1. Pokud je verze agenta MARS 2.0.9169.0 nebo novější, můžete nastavit vlastní datum uchování. V části **Retain Backup Till** zvolte datum z kalendáře.
+1. Pokud je verze agenta MARS 2.0.9169.0 nebo novější, můžete nastavit vlastní datum uchovávání. V části **uchování zálohy** vyberte datum z kalendáře.
 
-   ![Přizpůsobení data uchovávání pomocí kalendáře](./media/backup-configure-vault/mars-ondemand.png)
+   ![Přizpůsobení data uchování pomocí kalendáře](./media/backup-configure-vault/mars-ondemand.png)
 
-1. Na stránce **Potvrzení** zkontrolujte nastavení a vyberte **Zálohovat**.
-1. Chcete-li průvodce zavřít, vyberte **zavřít.** Pokud průvodce zavřete před dokončením zálohování, bude průvodce nadále spuštěn na pozadí.
+1. Na stránce **potvrzení** zkontrolujte nastavení a vyberte **zálohovat**.
+1. Kliknutím na **Zavřít** zavřete průvodce. Pokud průvodce zavřete před dokončením zálohování, průvodce bude nadále běžet na pozadí.
 
-Po dokončení počáteční zálohy se v konzole zálohování zobrazí stav **Dokončená úloha.**
+Po dokončení prvotní zálohy se v konzole zálohování zobrazí stav **Dokončená úloha** .
 
 ## <a name="set-up-on-demand-backup-policy-retention-behavior"></a>Nastavení chování uchovávání zásad zálohování na vyžádání
 
 > [!NOTE]
-> Tyto informace platí pouze pro verze agenta MARS, které jsou starší než 2.0.9169.0.
+> Tyto informace se vztahují jenom na verze agenta MARS, které jsou starší než 2.0.9169.0.
 >
 
-| Možnost plánu zálohování | Doba uchovávání údajů
+| Možnost zálohování – plán | Doba uchovávání dat
 | -- | --
-| Den | **Výchozí uchovávání:** Ekvivalentní "uchovávání ve dnech pro denní zálohy." <br/><br/> **Výjimka**: Pokud se nezdaří denní naplánované zálohování nastavené pro dlouhodobé uchovávání (týdny, měsíce nebo roky), záloha na vyžádání, která se aktivuje hned po selhání, je zvažována pro dlouhodobé uchovávání. V opačném případě je další naplánované zálohování považováno za dlouhodobé uchovávání.<br/><br/> **Příklad scénáře**: Plánované zálohování ve čtvrtek v 8:00 se nezdařilo. Tato záloha měla být zvážena pro týdenní, měsíční nebo roční uchovávání. Takže první záloha na vyžádání spuštěná před dalším plánovaným zálohováním v pátek v 8:00 je automaticky označena pro týdenní, měsíční nebo roční uchovávání. Tato záloha nahrazuje zálohu ve čtvrtek 8:00.
-| Týden | **Výchozí uchovávání :** Jeden den. Zálohy na vyžádání, které jsou převzaty pro zdroj dat, který má zásady týdenní zálohování jsou odstraněny následující den. Odstraní se i v případě, že se nepředstavují nejnovější zálohy pro zdroj dat. <br/><br/> **Výjimka**: Pokud týdenní naplánované zálohování, které je nastaveno pro dlouhodobé uchovávání (týdny, měsíce nebo roky), selže, záloha na vyžádání, která se aktivuje hned po selhání, je zvažována pro dlouhodobé uchovávání. V opačném případě je další naplánované zálohování považováno za dlouhodobé uchovávání. <br/><br/> **Příklad scénáře**: Plánované zálohování ve čtvrtek v 8:00 se nezdařilo. Tato záloha měla být zvážena pro měsíční nebo roční uchovávání. Takže první záloha na vyžádání, která se spustí před dalším plánovaným zálohováním ve čtvrtek v 8:00, je automaticky označena pro měsíční nebo roční uchovávání. Tato záloha nahrazuje zálohu ve čtvrtek 8:00.
+| Den | **Výchozí uchování**: odpovídá "uchování ve dnech pro denní zálohy". <br/><br/> **Výjimka**: Pokud dojde k selhání denního zálohování naplánovaného pro dlouhodobé uchování (týdny, měsíce nebo roky), zálohování na vyžádání, které se aktivuje hned po selhání, se považuje za dlouhodobé uchovávání. V opačném případě se další naplánované zálohování považuje za dlouhodobou dobu uchovávání.<br/><br/> **Ukázkový scénář**: naplánované zálohování ve čtvrtek v 8:00 se nezdařilo. Tato záloha se bude považovat za týdenní, měsíční nebo roční uchování. Takže první zálohování na vyžádání aktivované před dalším plánovaným zálohováním v pátek ve 8:00 se automaticky označilo pro týdenní, měsíční nebo roční uchování. Tato záloha nahrazuje zálohu 8:00.
+| Týden | **Výchozí doba uchování**: jeden den. Zálohy na vyžádání, které jsou pořízeny pro zdroj dat s týdenními zásadami zálohování, se odstraní v příštím dni. Odstraní se i v případě, že se jedná o nejaktuálnější zálohy pro zdroj dat. <br/><br/> **Výjimka**: Pokud se týdenní plánované zálohování nastavilo pro dlouhodobé uchovávání dat (týdny, měsíce nebo roky), zálohování na vyžádání, které se aktivuje hned po selhání, se považuje za dlouhodobé uchovávání. V opačném případě se další naplánované zálohování považuje za dlouhodobou dobu uchovávání. <br/><br/> **Ukázkový scénář**: naplánované zálohování ve čtvrtek v 8:00 se nezdařilo. Tato záloha se bude považovat za měsíční nebo roční uchování. Takže první záloha na vyžádání, která se aktivovala před dalším plánovaným zálohováním ve čtvrtek v 8:00, je automaticky označená pro měsíční nebo roční uchování. Tato záloha nahrazuje zálohu 8:00.
 
-Další informace naleznete [v tématu Vytvoření zásad zálohování](#create-a-backup-policy).
+Další informace najdete v tématu [Vytvoření zásady zálohování](#create-a-backup-policy).
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si, jak [obnovit soubory v Azure](backup-azure-restore-windows-server.md).
-* [Vyhledání nejčastějších dotazů týkajících se zálohování souborů a složek](backup-azure-file-folder-backup-faq.md)
-
+* Naučte se, jak [obnovit soubory v Azure](backup-azure-restore-windows-server.md).
+* Vyhledání [běžných dotazů týkajících se zálohování souborů a složek](backup-azure-file-folder-backup-faq.md)

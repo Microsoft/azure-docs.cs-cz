@@ -1,16 +1,16 @@
 ---
-title: Nastavení devprostředí v macOS
-description: Nainstalujte modul runtime, sadu SDK a nástroje a vytvořte místní vývojový cluster. Po dokončení tohoto nastavení budete připraveni vytvářet aplikace v systému macOS.
+title: Nastavení vývojového prostředí v macOS
+description: Nainstalujte modul runtime, sadu SDK a nástroje a vytvořte místní vývojový cluster. Po dokončení tohoto nastavení budete připraveni k sestavování aplikací v macOS.
 author: suhuruli
 ms.topic: conceptual
 ms.date: 11/17/2017
 ms.author: suhuruli
-ms.openlocfilehash: e278bcedc48226a59f258ad7d7064fa224737496
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: c7e2d556c4fb8bebc0b75bdf9d4c209c27f86971
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81308991"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193390"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Nastavení vývojového prostředí v Mac OS X
 > [!div class="op_single_selector"]
@@ -44,11 +44,11 @@ Pokud chcete nastavit místní kontejner Dockeru a mít v něm spuštěný clust
         "fixed-cidr-v6": "fd00::/64"
     }
     ```
-    Toto nastavení můžete aktualizovat přímo v souboru daemon.json v instalační cestě Dockeru. Nastavení konfigurace daemonu můžete přímo upravit v Dockeru. Vyberte **ikonu Docker** a potom vyberte **Předvolby** > **Démon** > **Upřesnit**.
+    Toto nastavení můžete aktualizovat přímo v souboru daemon.json v instalační cestě Dockeru. Nastavení konfigurace démona můžete přímo upravit v Docker. Vyberte **ikonu Docker** a potom vyberte **Předvolby** > **Démon** > **Upřesnit**.
     
     >[!NOTE]
     >
-    >Úprava daemon přímo v Dockeru se doporučuje, protože umístění souboru daemon.json se může lišit od počítače k počítači. Například ~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json.
+    >Změna démona přímo v Docker se doporučuje, protože umístění souboru daemon. JSON se může v počítači lišit. Například ~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json.
     >
 
     >[!TIP]
@@ -76,7 +76,7 @@ Pokud chcete nastavit místní kontejner Dockeru a mít v něm spuštěný clust
     >Například přidáním `RUN apt-get install nodejs -y` se povolí podpora aplikací `nodejs` jako spustitelných souborů typu Host.
     
     >[!TIP]
-    > Ve výchozím nastavení se tím přetáhne image s nejnovější verzí Service Fabric. Konkrétní revize najdete na stránce [Docker Hub.](https://hub.docker.com/r/microsoft/service-fabric-onebox/)
+    > Ve výchozím nastavení se tím přetáhne image s nejnovější verzí Service Fabric. Konkrétní revize najdete na stránce [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) .
 
 3. Pokud ze souboru `Dockerfile` chcete sestavit opakovatelně použitelnou image, otevřete terminál, pomocí příkazu `cd` přejděte přímo do adresáře s vaším souborem `Dockerfile` a pak spusťte:
 
@@ -101,7 +101,7 @@ Pokud chcete nastavit místní kontejner Dockeru a mít v něm spuštěný clust
     >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest`
     >
 
-5. Spuštění clusteru bude chvíli trvat. Když je spuštěn, můžete zobrazit protokoly pomocí následujícího příkazu nebo přejít na řídicí panel a zobrazit stav [http://localhost:19080](http://localhost:19080)clusterů :
+5. Spuštění clusteru bude chvíli trvat. Když je spuštěný, můžete zobrazit protokoly pomocí následujícího příkazu nebo přejít na řídicí panel a zobrazit stav `http://localhost:19080`clusterů:
 
     ```bash 
     docker logs sftestcluster
@@ -109,7 +109,7 @@ Pokud chcete nastavit místní kontejner Dockeru a mít v něm spuštěný clust
 
 
 
-6. Chcete-li kontejner zastavit a vyčistit, použijte následující příkaz. Tento kontejner však budeme používat v dalším kroku.
+6. Chcete-li zastavit a vyčistit kontejner, použijte následující příkaz. Tento kontejner ale použijeme v dalším kroku.
 
     ```bash 
     docker rm -f sftestcluster
@@ -166,8 +166,8 @@ Service Fabric nabízí nástroje pro generování uživatelského rozhraní, kt
     ```
 
     > [!IMPORTANT]
-    > Aktuální verze `brew cask install java` programu mohou nainstalovat novější verzi sady JDK.
-    > Ujistěte se, že nainstalovat JDK 8.
+    > Aktuální verze nástroje `brew cask install java` mohou instalovat novější verzi JDK.
+    > Nezapomeňte nainstalovat JDK 8.
 
 ## <a name="deploy-your-application-on-your-mac-from-the-terminal"></a>Nasazení aplikace na počítači Mac z terminálu
 

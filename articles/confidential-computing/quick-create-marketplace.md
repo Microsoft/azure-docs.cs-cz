@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 50752dfefae1aab28e0b7e51d8c94cf5f04a5099
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: 90e8aa4da88542648bec612553282ffe11b09eda
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82149309"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192276"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-marketplace"></a>Rychlý Start: nasazení virtuálního počítače s důvěrnými výpočetními prostředími Azure na webu Marketplace
 
@@ -21,7 +21,7 @@ Seznamte se s důvěrnými výpočetními prostředími Azure pomocí Azure Mark
 
 Tento kurz se doporučuje, pokud chcete rychle začít nasazovat důvěrný výpočetní virtuální počítač. Virtuální počítače jsou spuštěné na základě specializovaného hardwaru a vyžadují, aby konkrétní vstupy konfigurace běžely tak, jak mají. Nabídka Marketplace popsaná v tomto rychlém startu usnadňuje nasazení tím, že omezuje vstup uživatele.
 
-Pokud vás zajímá nasazení důvěrného výpočetního virtuálního počítače s více vlastními konfiguracemi, postupujte podle [kroků pro nasazení virtuálního počítače Azure Portal důvěrného Compute.](quick-create-portal.md)
+Pokud vás zajímá nasazení důvěrného výpočetního virtuálního počítače s více vlastními konfiguracemi, postupujte podle [kroků pro nasazení virtuálního počítače Azure Portal důvěrného COMPUTE](quick-create-portal.md).
 
 ## <a name="prerequisites"></a>Požadavky
 

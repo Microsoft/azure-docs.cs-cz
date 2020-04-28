@@ -3,12 +3,12 @@ title: Použití PowerShellu k zálohování Windows serveru do Azure
 description: V tomto článku se naučíte, jak pomocí PowerShellu nastavit Azure Backup pro Windows Server nebo klienta Windows a spravovat zálohování a obnovení.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: efe0b93fe1e37990422ffbd2256e38c12401dca5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3b9bcf8e777244cec11383619d145e3a99ff46d2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78673197"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193016"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Nasazení a správa zálohování do Azure pro servery Windows / klienty Windows pomocí PowerShellu
 
@@ -78,7 +78,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 
 ## <a name="installing-the-azure-backup-agent"></a>Instalace agenta Azure Backup
 
-Před instalací agenta Azure Backup musíte mít Instalační program stažený a přítomen na Windows serveru. Nejnovější verzi instalačního programu můžete získat z webu [Microsoft Download Center](https://aka.ms/azurebackup_agent) nebo ze stránky řídicího panelu Recovery Servicesového trezoru. Uložte instalační program do snadno přístupného umístění, jako je\** C:\downloads.
+Před instalací agenta Azure Backup musíte mít Instalační program stažený a přítomen na Windows serveru. Nejnovější verzi instalačního programu můžete získat z webu [Microsoft Download Center](https://aka.ms/azurebackup_agent) nebo ze stránky řídicího panelu Recovery Servicesového trezoru. Uložte instalační program do snadno přístupného umístění, `C:\Downloads\*`jako je.
 
 K získání tohoto stahovacího prostředí použijte taky PowerShell:
 

@@ -6,20 +6,20 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: e97ac14c91ec9fb05b25d422680d788b4498725f
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 931114a56d774c506b0b33fe4f4fc39e564c06c7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116719"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195090"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark ve službě Azure HDInsight
 
 Clustery HDInsight Spark obsahují poznámkové bloky [Apache Zeppelin](https://zeppelin.apache.org/) . Pomocí poznámkových bloků spusťte Apache Spark úlohy. V tomto článku se dozvíte, jak používat Poznámkový blok Zeppelin v clusteru HDInsight.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 * Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 * Schéma identifikátoru URI pro primární úložiště clusterů. Schéma bude `wasb://` pro Azure Blob Storage `abfs://` pro Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud je pro Blob Storage povolený zabezpečený přenos, identifikátor URI `wasbs://`by byl.  Další informace najdete v tématu [vyžadování zabezpečeného přenosu v Azure Storage](../../storage/common/storage-require-secure-transfer.md) .
