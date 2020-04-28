@@ -1,32 +1,34 @@
 ---
-title: Jak povolit Azure Monitor pro kontejnery | Dokumenty společnosti Microsoft
-description: Tento článek popisuje, jak povolit a nakonfigurovat Azure Monitor pro kontejnery, takže můžete pochopit, jak si váš kontejner vede a jaké problémy související s výkonem byly identifikovány.
+title: Postup povolení Azure Monitor pro kontejnery | Microsoft Docs
+description: Tento článek popisuje, jak povolíte a nakonfigurujete Azure Monitor pro kontejnery, abyste porozuměli tomu, jak váš kontejner vykonává a jaké byly zjištěny problémy související s výkonem.
 ms.topic: conceptual
-ms.date: 11/18/2019
-ms.openlocfilehash: 7aad7e7dd5ec2569377f9276c2e4793c7afd631a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/21/2020
+ms.openlocfilehash: 284668dfe2aec809ce9a94e15f7c83cf0f2025b3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275305"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185927"
 ---
-# <a name="how-to-enable-azure-monitor-for-containers"></a>Jak povolit Azure Monitor pro kontejnery
+# <a name="how-to-enable-azure-monitor-for-containers"></a>Postup povolení Azure Monitor pro kontejnery
 
-Tento článek obsahuje přehled možností, které jsou k dispozici pro nastavení Azure Monitor pro kontejnery pro sledování výkonu úloh, které jsou nasazeny do prostředí Kubernetes a hostované na:
+Tento článek poskytuje přehled možností, které jsou k dispozici pro nastavení Azure Monitor pro kontejnery pro monitorování výkonu úloh nasazených do prostředí Kubernetes a hostovaných na:
 
 - [Služba Azure Kubernetes](https://docs.microsoft.com/azure/aks/) (AKS)
 
-- Samoobslužné clustery Kubernetes hostované v Azure pomocí [AKS Engine](https://github.com/Azure/aks-engine).
+- Samostatné spravované clustery Kubernetes hostované v Azure pomocí [stroje AKS](https://github.com/Azure/aks-engine).
 
-- Clustery Kubernetes s vlastním spravovaným pomocí Služby AKS Engine hostované v [Azure Stacku](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) nebo v místním prostředí.
+- Samostatné spravované clustery Kubernetes hostované na [Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) nebo místně pomocí AKS Engine.
 
-- [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)
+- [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) verze 3. x a 4. x
 
-Azure Monitor pro kontejnery můžete povolit pro nové nebo jedno nebo více existujících nasazení Kubernetes pomocí následujících podporovaných metod:
+- [Red Hat OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) verze 4. x
 
-- Z webu Azure Portal, Azure PowerShellu nebo pomocí azure cli
+Azure Monitor pro kontejnery lze povolit pro nové nebo jedno nebo více existujících nasazení Kubernetes pomocí následujících podporovaných metod:
 
-- Použití [Terraform a AKS](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md)
+- Z Azure Portal, Azure PowerShell nebo pomocí Azure CLI
+
+- Použití [terraformu a AKS](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -36,90 +38,87 @@ Než začnete, ujistěte se, že máte následující:
 
 - **Pracovní prostor služby Log Analytics.**
 
-    Azure Monitor pro kontejnery podporuje pracovní prostor Analýzy protokolů v oblastech uvedených v [Azure Products podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor).
+    Azure Monitor for Containers podporuje pracovní prostor Log Analytics v oblastech uvedených v [produktech Azure podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor).
 
-    Pracovní prostor můžete vytvořit, když povolíte monitorování nového clusteru AKS nebo necháte možnost i připojení vytvořit výchozí pracovní prostor ve výchozí skupině prostředků předplatného clusteru AKS. Pokud jste se rozhodli vytvořit sami, můžete ji vytvořit prostřednictvím [Azure Resource Manager](../platform/template-workspace-configuration.md), prostřednictvím [PowerShellu](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)nebo na [webu Azure Portal](../learn/quick-create-workspace.md). Seznam podporovaných dvojic mapování použitých pro výchozí pracovní prostor najdete v tématu [Mapování oblasti pro Azure Monitor pro kontejnery](container-insights-region-mapping.md).
+    Pracovní prostor můžete vytvořit, když povolíte monitorování nového clusteru AKS nebo necháte prostředí pro připojování vytvořit výchozí pracovní prostor ve výchozí skupině prostředků v rámci předplatného clusteru AKS. Pokud se rozhodnete ho vytvořit sami, můžete ho vytvořit prostřednictvím [Azure Resource Manager](../platform/template-workspace-configuration.md), prostřednictvím [PowerShellu](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)nebo v [Azure Portal](../learn/quick-create-workspace.md). Seznam podporovaných dvojic mapování použitých pro výchozí pracovní prostor najdete v tématu [mapování oblastí pro Azure monitor kontejnerů](container-insights-region-mapping.md).
 
-- Jste členem role **přispěvatele Log Analytics** povolit monitorování kontejnerů. Další informace o řízení přístupu k pracovnímu prostoru Log Analytics naleznete v [tématu Správa pracovních prostorů](../platform/manage-access.md).
+- Jste členem **role přispěvatel Log Analytics** , abyste povolili monitorování kontejnerů. Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analytics, najdete v tématu [Správa pracovních prostorů](../platform/manage-access.md).
 
-- Jste členem role **[Vlastník](../../role-based-access-control/built-in-roles.md#owner)** prostředku clusteru AKS.
+- Jste členem role **[vlastníka](../../role-based-access-control/built-in-roles.md#owner)** v prostředku clusteru AKS.
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-* Metriky Prometheus se ve výchozím nastavení neshromažďují. Před [konfigurací agenta](container-insights-prometheus-integration.md) pro jejich shromažďování je důležité, abyste si [přečetli dokumentaci](https://prometheus.io/) společnosti Prometheus, abyste pochopili, co lze oškrábat a podporované metody.
+* Metriky Prometheus nejsou ve výchozím nastavení shromažďovány. Před [konfigurací agenta](container-insights-prometheus-integration.md) pro jejich shromáždění je důležité si projít [dokumentaci](https://prometheus.io/) k Prometheus, abyste zjistili, co je možné vyřadit a které metody jsou podporované.
 
 ## <a name="supported-configurations"></a>Podporované konfigurace
 
-Následující je oficiálně podporována pomocí Azure Monitor pro kontejnery.
+Následující je oficiálně podporovaná s Azure Monitor pro kontejnery.
 
-- Prostředí: Azure Red Hat OpenShift, Kubernetes místní a AKS Engine v Azure a Azure Stack. Další informace najdete v tématu [AKS Engine na Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908).
-- Verze Kubernetes a zásady podpory jsou stejné jako verze [podporovaných AKS](../../aks/supported-kubernetes-versions.md). 
+- Prostředí: Azure Red Hat OpenShift, Kubernetes on-premises a AKS Engine v Azure a Azure Stack. Další informace najdete v tématu [AKS Engine on Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908).
+- Verze Kubernetes a zásad podpory jsou stejné jako verze [podporovaných AKS](../../aks/supported-kubernetes-versions.md). 
 
-## <a name="network-firewall-requirements"></a>Požadavky na síťovou bránu firewall
+## <a name="network-firewall-requirements"></a>Požadavky na bránu firewall sítě
 
-Informace v následující tabulce uvádí proxy server a brány firewall informace o konfiguraci potřebné pro kontejnerizovaného agenta ke komunikaci s Azure Monitor pro kontejnery. Veškerý síťový provoz od agenta je odchozí na Azure Monitor.
+Informace v následující tabulce uvádí informace o konfiguraci proxy serveru a brány firewall vyžadované pro kontejnerový Agent ke komunikaci s Azure Monitor for Containers. Veškerý síťový provoz z agenta je odchozí na Azure Monitor.
 
 |Prostředek agenta|Porty |
 |--------------|------|
 | *.ods.opinsights.azure.com | 443 |  
-| *.oms.opinsights.azure.com | 443 | 
-| *.blob.core.windows.net | 443 |
+| *.oms.opinsights.azure.com | 443 |
 | dc.services.visualstudio.com | 443 |
 | *.microsoftonline.com | 443 |
-| *.monitoring.azure.com | 443 |
+| *. monitoring.azure.com | 443 |
 | login.microsoftonline.com | 443 |
 
-Informace v následující tabulce uvádí proxy server a informace o konfiguraci brány firewall pro Azure China.
+Informace v následující tabulce uvádí informace o konfiguraci proxy serveru a brány firewall pro Azure Čína.
 
 |Prostředek agenta|Porty |Popis | 
 |--------------|------|-------------|
-| *.ods.opinsights.azure.cn | 443 | Přijímání dat |
-| *.oms.opinsights.azure.cn | 443 | Registrace OMS |
-| *.blob.core.windows.net | 443 | Používá se pro sledování odchozího připojení. |
-| microsoft.com | 80 | Používá se pro připojení k síti. To je vyžadováno pouze v případě, že verze image agenta je ciprod09262019 nebo starší. |
-| dc.services.visualstudio.com | 443 | Pro telemetrická data agenta pomocí Přehledy veřejných cloudových aplikací Azure. |
+| *. ods.opinsights.azure.cn | 443 | Přijímání dat |
+| *. oms.opinsights.azure.cn | 443 | Připojování OMS |
+| microsoft.com | 80 | Používá se pro připojení k síti. To se vyžaduje jenom v případě, že verze image agenta je ciprod09262019 nebo starší. |
+| dc.services.visualstudio.com | 443 | Pro telemetrii agenta pomocí Application Insights veřejného cloudu Azure. |
 
-Informace v následující tabulce uvádí proxy server a informace o konfiguraci brány firewall pro Azure US Government.
+Informace v následující tabulce uvádí informace o konfiguraci proxy serveru a brány firewall pro vládu Azure USA.
 
 |Prostředek agenta|Porty |Popis | 
 |--------------|------|-------------|
-| *.ods.opinsights.azure.us | 443 | Přijímání dat |
-| *.oms.opinsights.azure.us | 443 | Registrace OMS |
-| *.blob.core.windows.net | 443 | Používá se pro sledování odchozího připojení. |
-| microsoft.com | 80 | Používá se pro připojení k síti. To je vyžadováno pouze v případě, že verze image agenta je ciprod09262019 nebo starší. |
-| dc.services.visualstudio.com | 443 | Pro telemetrická data agenta pomocí Azure Public Cloud Application Insights. |
+| *. ods.opinsights.azure.us | 443 | Přijímání dat |
+| *. oms.opinsights.azure.us | 443 | Připojování OMS |
+| microsoft.com | 80 | Používá se pro připojení k síti. To se vyžaduje jenom v případě, že verze image agenta je ciprod09262019 nebo starší. |
+| dc.services.visualstudio.com | 443 | Pro telemetrii agenta pomocí Application Insights veřejného cloudu Azure. |
 
 ## <a name="components"></a>Komponenty
 
-Vaše schopnost monitorovat výkon závisí na kontejnerizovaném agentovi Log Analytics pro Linux speciálně vyvinutém pro Azure Monitor pro kontejnery. Tento specializovaný agent shromažďuje data o výkonu a událostech ze všech uzlů v clusteru a agent se automaticky nasadí a zaregistruje v zadaném pracovním prostoru Log Analytics během nasazení. Verze agenta je microsoft/oms:ciprod04202018 nebo novější a je reprezentována datem v následujícím formátu: *mmddyyyy .*
+Vaše schopnost monitorovat výkon se spoléhá na Log Analyticsho agenta kontejnerů pro Linux speciálně vyvinutých pro Azure Monitor pro kontejnery. Tento specializovaný agent shromažďuje data o výkonu a událostech ze všech uzlů v clusteru a Agent je automaticky nasazen a zaregistrován v zadaném Log Analytics pracovním prostoru během nasazování. Verze agenta je Microsoft/OMS: ciprod04202018 nebo novější a představuje datum v následujícím formátu: *MMDDYYYY*.
 
 >[!NOTE]
->Díky předběžné verzi podpory Windows Serveru pro AKS nemá cluster AKS s uzly Windows Serveru nainstalovaného agenta, který by shromažďoval data a přesměrovává do Azure Monitoru. Místo toho uzel Linuxu automaticky nasazený v clusteru jako součást standardního nasazení shromažďuje a předává data do Azure Monitoru jménem všech uzlů Windows v clusteru.  
+>V rámci verze Preview podpory Windows serveru pro AKS má cluster AKS s uzly Windows serveru nainstalovaný Agent pro shromažďování dat a předávání do Azure Monitor. Místo toho se uzel Linux automaticky nasadí do clusteru jako součást standardního nasazení a přepošle data Azure Monitor jménem všech uzlů Windows v clusteru.  
 >
 
-Když je vydána nová verze agenta, je automaticky upgradována na spravovaných clusterech Kubernetes hostovaných ve službě Azure Kubernetes Service (AKS). Chcete-li sledovat vydané verze, [přečtěte si informace o vydání agenta](https://github.com/microsoft/docker-provider/tree/ci_feature_prod).
+Po vydání nové verze agenta se automaticky upgraduje na spravovaných clusterech Kubernetes hostovaných ve službě Azure Kubernetes Service (AKS). Pokud chcete postupovat podle vydaných verzí, přečtěte si téma [oznámení o vydáních](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)
 
 >[!NOTE]
->Pokud jste již nasadili cluster AKS, povolíte monitorování pomocí azure cli nebo poskytnuté šablony Azure Resource Manager, jak je znázorněno dále v tomto článku. Agenta `kubectl` nelze použít k upgradu, odstranění, opětovnému nasazení nebo nasazení agenta.
->Šablonu je třeba nasadit ve stejné skupině prostředků jako cluster.
+>Pokud jste už nasadili cluster AKS, povolíte monitorování pomocí Azure CLI nebo poskytované Azure Resource Manager šablony, jak je znázorněno dále v tomto článku. Nemůžete `kubectl` použít k upgradu, odstranění, opětovnému nasazení nebo nasazení agenta.
+>Šablona musí být nasazená ve stejné skupině prostředků jako cluster.
 
 Azure Monitor pro kontejnery povolíte pomocí jedné z následujících metod popsaných v následující tabulce.
 
 | Stav nasazení | Metoda | Popis |
 |------------------|--------|-------------|
-| Nový cluster AKS Kubernetes | [Vytvoření clusteru AKS pomocí azure cli](../../aks/kubernetes-walkthrough.md#create-aks-cluster)| Můžete povolit monitorování nového clusteru AKS, který vytvoříte pomocí azure CLI. |
-| | [Vytvoření clusteru AKS pomocí Terraform](container-insights-enable-new-cluster.md#enable-using-terraform)| Můžete povolit monitorování nového clusteru AKS, který vytvoříte pomocí open source nástroje Terraform. |
-| | [Vytvoření clusteru OpenShift pomocí šablony Správce prostředků Azure](container-insights-azure-redhat-setup.md#enable-for-a-new-cluster-using-an-azure-resource-manager-template) | Monitorování nového clusteru OpenShift, který vytvoříte, můžete povolit pomocí předkonfigurované šablony Správce prostředků Azure. |
-| | [Vytvoření clusteru OpenShift pomocí azure cli](https://docs.microsoft.com/cli/azure/openshift?view=azure-cli-latest#az-openshift-create) | Monitorování můžete povolit při nasazování nového clusteru OpenShift pomocí azure cli. |
-| Existující cluster AKS Kubernetes | [Povolení clusteru AKS pomocí azure cli](container-insights-enable-existing-clusters.md#enable-using-azure-cli) | Můžete povolit monitorování clusteru AKS, který je už nasazený pomocí azure cli. |
-| |[Povolit cluster AKS pomocí Terraform](container-insights-enable-existing-clusters.md#enable-using-terraform) | Můžete povolit monitorování clusteru AKS, který je již nasazen pomocí open source nástroje Terraform. |
-| | [Povolení clusteru AKS z Azure Monitoru](container-insights-enable-existing-clusters.md#enable-from-azure-monitor-in-the-portal)| Můžete povolit monitorování jednoho nebo více clusterů AKS, které jsou už nasazené ze stránky více clusterů v Azure Monitoru. |
-| | [Povolení z clusteru AKS](container-insights-enable-existing-clusters.md#enable-directly-from-aks-cluster-in-the-portal)| Monitorování můžete povolit přímo z clusteru AKS na webu Azure Portal. |
-| | [Povolení pro cluster AKS pomocí šablony Azure Resource Manager](container-insights-enable-existing-clusters.md#enable-using-an-azure-resource-manager-template)| Monitorování clusteru AKS můžete povolit pomocí předem nakonfigurované šablony Správce prostředků Azure. |
-| | [Povolit pro hybridní cluster Kubernetes](container-insights-hybrid-setup.md) | Můžete povolit monitorování AKS Engine hostované v Azure Stack nebo pro Kubernetes hostované místně. |
-| | [Povolení pro cluster OpenShift pomocí šablony Správce prostředků Azure](container-insights-azure-redhat-setup.md#enable-using-an-azure-resource-manager-template) | Monitorování existujícího clusteru OpenShift můžete povolit pomocí předem nakonfigurované šablony Správce prostředků Azure. |
-| | [Povolení pro cluster OpenShift z Azure Monitoru](container-insights-azure-redhat-setup.md#from-the-azure-portal) | Můžete povolit monitorování jednoho nebo více clusterů OpenShift, které jsou již nasazeny ze stránky více clusterů v Azure Monitoru. |
+| Nový cluster AKS Kubernetes | [Vytvoření clusteru AKS pomocí Azure CLI](../../aks/kubernetes-walkthrough.md#create-aks-cluster)| Můžete povolit monitorování nového clusteru AKS, který vytvoříte pomocí Azure CLI. |
+| | [Vytvoření clusteru AKS pomocí Terraformu](container-insights-enable-new-cluster.md#enable-using-terraform)| Můžete povolit monitorování nového clusteru AKS, který vytvoříte pomocí nástroje Open Source Tool Terraformu. |
+| | [Vytvoření clusteru OpenShift pomocí šablony Azure Resource Manager](container-insights-azure-redhat-setup.md#enable-for-a-new-cluster-using-an-azure-resource-manager-template) | Můžete povolit monitorování nového clusteru OpenShift, který vytvoříte s předem nakonfigurovanou šablonou Azure Resource Manager. |
+| | [Vytvoření clusteru OpenShift pomocí Azure CLI](https://docs.microsoft.com/cli/azure/openshift?view=azure-cli-latest#az-openshift-create) | Monitorování můžete povolit během nasazování nového clusteru OpenShift pomocí Azure CLI. |
+| Existující cluster AKS Kubernetes | [Povolení pro cluster AKS pomocí Azure CLI](container-insights-enable-existing-clusters.md#enable-using-azure-cli) | Můžete povolit monitorování clusteru AKS již nasazeného pomocí Azure CLI. |
+| |[Povolení pro cluster AKS pomocí Terraformu](container-insights-enable-existing-clusters.md#enable-using-terraform) | Monitorování clusteru AKS, který je už nasazený, můžete povolit pomocí Open Source nástroje Terraformu. |
+| | [Povolit pro AKS cluster z Azure Monitor](container-insights-enable-existing-clusters.md#enable-from-azure-monitor-in-the-portal)| Monitorování jednoho nebo více clusterů AKS již nasazených na stránce s více clustery můžete povolit v Azure Monitor. |
+| | [Povolit z clusteru AKS](container-insights-enable-existing-clusters.md#enable-directly-from-aks-cluster-in-the-portal)| Monitorování můžete povolit přímo z clusteru AKS v Azure Portal. |
+| | [Povolení pro AKS cluster pomocí šablony Azure Resource Manager](container-insights-enable-existing-clusters.md#enable-using-an-azure-resource-manager-template)| Můžete povolit monitorování clusteru AKS s předem nakonfigurovanou šablonou Azure Resource Manager. |
+| | [Povolit pro hybridní cluster Kubernetes](container-insights-hybrid-setup.md) | Můžete povolit monitorování AKS modulu hostovaného v Azure Stack nebo pro Kubernetes hostované místně. |
+| | [Povolení pro OpenShift cluster pomocí šablony Azure Resource Manager](container-insights-azure-redhat-setup.md#enable-using-an-azure-resource-manager-template) | Můžete povolit monitorování stávajícího clusteru OpenShift s předem nakonfigurovanou šablonou Azure Resource Manager. |
+| | [Povolit pro OpenShift cluster z Azure Monitor](container-insights-azure-redhat-setup.md#from-the-azure-portal) | Monitorování jednoho nebo více clusterů OpenShift již nasazených na stránce s více clustery můžete povolit v Azure Monitor. |
 
 ## <a name="next-steps"></a>Další kroky
 
-- S povoleným monitorováním můžete začít analyzovat výkon clusterů Kubernetes hostovaných ve službě Azure Kubernetes Service (AKS), Azure Stack nebo v jiném prostředí. Informace o tom, jak používat Azure Monitor pro kontejnery, najdete [v tématu Zobrazení výkonu clusteru Kubernetes](container-insights-analyze.md).
+- S povoleným monitorováním můžete začít s analýzou výkonu clusterů Kubernetes hostovaných ve službě Azure Kubernetes Service (AKS), Azure Stack nebo jiném prostředí. Informace o tom, jak používat Azure Monitor pro kontejnery, najdete v tématu [zobrazení výkonu clusteru Kubernetes](container-insights-analyze.md).

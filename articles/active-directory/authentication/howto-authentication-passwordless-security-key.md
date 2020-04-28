@@ -1,6 +1,6 @@
 ---
-title: Přihlášení pomocí bezpečnostního klíče bez hesla (preview) – Azure Active Directory
-description: Povolení přihlašování pomocí klíčů zabezpečení FIDO2 bez hesla (preview)
+title: Přihlášení k bezpečnostnímu klíči s nehesly (Preview) – Azure Active Directory
+description: Povolení nezabezpečeného přihlášení klíče zabezpečení do Azure AD pomocí klíčů zabezpečení FIDO2 (Preview)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,99 +12,99 @@ manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 066ab7892bed6e7505e7ee114ff37a7850ef5c9b
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81450917"
 ---
-# <a name="enable-passwordless-security-key-sign-in-preview"></a>Povolení přihlášení pomocí bezpečnostního klíče bez hesla (náhled)
+# <a name="enable-passwordless-security-key-sign-in-preview"></a>Povolit přihlašování k bezpečnostnímu klíči s nezabezpečenými hesly (Preview)
 
-Pro podniky, které dnes používají hesla a mají sdílené prostředí počítače, poskytují bezpečnostní klíče pracovníkům bezproblémový způsob ověřování bez zadání uživatelského jména nebo hesla. Bezpečnostní klíče poskytují pracovníkům vyšší produktivitu a mají lepší zabezpečení.
+Pro podniky, které používají hesla dnes a mají prostředí pro sdílené počítače, poskytují bezpečnostní klíče bezproblémové možnosti, jak se pracovníkům ověřovat bez zadání uživatelského jména nebo hesla. Klíče zabezpečení poskytují lepší produktivitu pro pracovníky a mají lepší zabezpečení.
 
-Tento dokument se zaměřuje na povolení ověřování bez hesla pomocí bezpečnostních klíčů. Na konci tohoto článku se budete moct přihlásit k webovým aplikacím pomocí účtu Azure AD pomocí klíče zabezpečení FIDO2.
+Tento dokument se zaměřuje na povolení ověřování pomocí hesla založeného na klíčích zabezpečení. Na konci tohoto článku se budete moci přihlásit k webovým aplikacím pomocí účtu Azure AD pomocí bezpečnostního klíče FIDO2.
 
 |     |
 | --- |
-| Klíče zabezpečení FIDO2 jsou veřejnou funkcí preview služby Azure Active Directory. Další informace o náhledech najdete v [tématu Doplňkové podmínky použití pro Microsoft Azure Previews.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| Bezpečnostní klíče FIDO2 jsou funkcí veřejné verze Preview Azure Active Directory. Další informace o verzích Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) verze Preview.|
 |     |
 
 ## <a name="requirements"></a>Požadavky
 
 - [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
-- [Kombinovaný náhled registrace bezpečnostních informací](concept-registration-mfa-sspr-combined.md)
-- Kompatibilní [bezpečnostní klíče FIDO2](concept-authentication-passwordless.md#fido2-security-keys)
-- WebAuthN vyžaduje Windows 10 verze 1809 nebo vyšší**
+- [Souhrnná registrace informací o zabezpečení ve verzi Preview](concept-registration-mfa-sspr-combined.md)
+- Kompatibilní [klíče zabezpečení FIDO2](concept-authentication-passwordless.md#fido2-security-keys)
+- Operace WebAuthN vyžaduje Windows 10 verze 1809 nebo vyšší * *
 
-Chcete-li pro přihlášení k webovým aplikacím a službám používat bezpečnostní klíče, musíte mít prohlížeč, který podporuje protokol WebAuthN. Patří mezi ně Microsoft Edge, Chrome, Firefox a Safari.
+Chcete-li použít klíče zabezpečení pro přihlášení k webovým aplikacím a službám, je nutné mít prohlížeč, který podporuje protokol WebAuthN. Mezi ně patří Microsoft Edge, Chrome, Firefox a Safari.
 
-## <a name="prepare-devices-for-preview"></a>Příprava zařízení pro náhled
+## <a name="prepare-devices-for-preview"></a>Příprava zařízení pro verzi Preview
 
-Azure AD připojen zařízení, které pilotní s musí spustit Windows 10 verze 1809 nebo vyšší. Nejlepší zážitek je v systému Windows 10 verze 1903 nebo vyšší.
+Zařízení připojená k Azure AD, na kterých máte pilotní nasazení, musí používat Windows 10 verze 1809 nebo vyšší. Nejlepší prostředí je ve Windows 10 verze 1903 nebo vyšší.
 
-Hybridní zařízení připojená k Azure AD musí spouštět Windows 10 Insider Build 18945 nebo novější.
+Zařízení připojená k hybridní službě Azure AD musí používat Windows 10 Insider Build 18945 nebo novější.
 
-## <a name="enable-passwordless-authentication-method"></a>Povolit metodu ověřování bez hesla
+## <a name="enable-passwordless-authentication-method"></a>Povolit metodu ověřování nejenom pro hesla
 
-### <a name="enable-the-combined-registration-experience"></a>Povolení kombinovaného registračního prostředí
+### <a name="enable-the-combined-registration-experience"></a>Povolit kombinované možnosti registrace
 
-Registrační funkce pro metody ověřování bez hesla spoléhají na kombinovanou registrační funkci. Postupujte podle kroků v článku [Povolit kombinovanou registraci informací o zabezpečení (náhled)](howto-registration-mfa-sspr-combined.md), chcete-li povolit kombinovanou registraci.
+Funkce registrace pro metody ověřování nevyužívající hesla se spoléhají na funkci kombinované registrace. Pokud chcete povolit kombinovanou registraci, postupujte podle kroků v článku [Povolení registrace kombinovaných informací o zabezpečení (Preview)](howto-registration-mfa-sspr-combined.md).
 
 ### <a name="enable-fido2-security-key-method"></a>Povolit metodu klíče zabezpečení FIDO2
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Přejděte na**zásadu metody ověřování** > **zabezpečení** >  **služby Azure Active Directory** > **(Preview).**
-1. V metodě **FIDO2 Security Key**zvolte následující možnosti:
-   1. **Povolit** – ano nebo ne
-   1. **Cíl** – všichni uživatelé nebo vybraní uživatelé
+1. Přejděte na **Azure Active Directory** > **Security** > zásady ověřování**metody** > ověřování **(Preview)**.
+1. V části **klíč zabezpečení FIDO2**metody vyberte následující možnosti:
+   1. **Povolit** – Ano nebo ne
+   1. **Cíl** – všichni uživatelé nebo vybrat uživatele
 1. **Uložte** konfiguraci.
 
-## <a name="user-registration-and-management-of-fido2-security-keys"></a>Registrace a správa bezpečnostních klíčů FIDO2 uživatelem
+## <a name="user-registration-and-management-of-fido2-security-keys"></a>Registrace uživatelů a Správa klíčů zabezpečení FIDO2
 
-1. Přejděte [https://myprofile.microsoft.com](https://myprofile.microsoft.com)na .
-1. Pokud již ne, přihlaste se.
-1. Klepněte na **položku Bezpečnostní údaje**.
-   1. Pokud uživatel již má alespoň jednu metodu Azure Multi-Factor Authentication registrovanou, může okamžitě zaregistrovat klíč zabezpečení FIDO2.
-   1. Pokud nemají zaregistrovanou alespoň jednu metodu Azure Multi-Factor Authentication, musí ji přidat.
-1. Přidejte klíč zabezpečení FIDO2 klepnutím na tlačítko **Přidat metodu** a výběrem **příkazu Bezpečnostní klíč**.
-1. Zvolte **zařízení USB** nebo **zařízení NFC**.
-1. Připravte si klíč a zvolte **Další**.
-1. Zobrazí se pole a požádá ho, aby vytvořil/zadá PIN kód bezpečnostního klíče a poté provede požadované gesto pro klíč, a to buď biometrické, nebo dotykové.
-1. Uživatel bude vrácen do kombinované registrace prostředí a požádán, aby zadejte smysluplné jméno pro klíč, takže uživatel může určit, který z nich, pokud mají více. Klikněte na **Další**.
-1. Chcete-li proces dokončit, klepněte na **tlačítko Hotovo.**
+1. Přejděte na [https://myprofile.microsoft.com](https://myprofile.microsoft.com).
+1. Přihlaste se, pokud ještě není.
+1. Klikněte na **informace o zabezpečení**.
+   1. Pokud má uživatel již alespoň jednu zaregistrovanou metodu Azure Multi-Factor Authentication, může ihned zaregistrovat klíč zabezpečení FIDO2.
+   1. Pokud nemají zaregistrovanou alespoň jednu metodu služby Azure Multi-Factor Authentication, musí ji přidat.
+1. Přidejte klíč zabezpečení FIDO2, a to tak, že kliknete na **Přidat metodu** a zvolíte **klíč zabezpečení**.
+1. Vyberte **zařízení USB** nebo **zařízení NFC**.
+1. Připravte si klíč a klikněte na tlačítko **Další**.
+1. Zobrazí se pole a požádá uživatele o vytvoření nebo zadání kódu PIN pro klíč zabezpečení a pak pro tento klíč provede požadované gesto, ať už je to biometrika nebo dotykové ovládání.
+1. Uživatel bude vrácen do kombinovaného prostředí pro registraci a požádán o poskytnutí smysluplného názvu pro klíč, aby uživatel mohl zjistit, který z nich je v případě, že má více. Klikněte na **Další**.
+1. Kliknutím na **Hotovo** proces dokončete.
 
 ## <a name="sign-in-with-passwordless-credential"></a>Přihlášení pomocí přihlašovacích údajů bez hesla
 
-V níže uvedeném příkladu uživatel již zřídit svůj klíč zabezpečení FIDO2. Uživatel se může přihlásit na webu pomocí svého bezpečnostního klíče FIDO2 v podporovaném prohlížeči v systému Windows 10 verze 1809 nebo vyšším.
+V následujícím příkladu už uživatel zřídil svůj bezpečnostní klíč FIDO2. Uživatel se může přihlásit na webu pomocí klíče zabezpečení FIDO2 v podporovaném prohlížeči ve Windows 10 verze 1809 nebo vyšší.
 
-![Přihlášení pomocí bezpečnostního klíče Microsoft Edge](./media/howto-authentication-passwordless-security-key/fido2-windows-10-1903-edge-sign-in.png)
+![Přihlášení k bezpečnostnímu klíči Microsoft Edge](./media/howto-authentication-passwordless-security-key/fido2-windows-10-1903-edge-sign-in.png)
 
-## <a name="troubleshooting-and-feedback"></a>Poradce při potížích a zpětná vazba
+## <a name="troubleshooting-and-feedback"></a>Řešení potíží a zpětná vazba
 
-Pokud chcete při náhledu této funkce sdílet zpětnou vazbu nebo se s nimi setkat, sdílejte je prostřednictvím aplikace Windows Feedback Hub pomocí následujících kroků:
+Pokud byste chtěli sdílet zpětnou vazbu nebo narazit na problémy při zobrazení náhledu této funkce, sdílejte ji přes aplikaci Windows Feedback Center pomocí následujících kroků:
 
-1. Spusťte **Centrum Feedback hub** a ujistěte se, že jste přihlášeni.
-1. Odeslat zpětnou vazbu v rámci následující kategorizace:
-   - Kategorie: Bezpečnost a ochrana osobních údajů
-   - Podkategorie: FIDO
-1. Chcete-li zachytit protokoly, použijte možnost **znovu vytvořit můj problém**
+1. Spusťte **Centrum zpětné vazby** a ujistěte se, že jste přihlášení.
+1. Odeslat názor v rámci následující kategorizace:
+   - Kategorie: zabezpečení a ochrana osobních údajů
+   - Subcategory: FIDO
+1. Pokud chcete zaznamenávat protokoly, použijte možnost pro **opětovné vytvoření problému** .
 
 ## <a name="known-issues"></a>Známé problémy
 
-### <a name="security-key-provisioning"></a>Zřizování bezpečnostních klíčů
+### <a name="security-key-provisioning"></a>Zřizování klíče zabezpečení
 
-Zřizování a zrušení zřizování klíčů zabezpečení správcem není ve verzi Public Preview k dispozici.
+Ve verzi Public Preview není k dispozici zřízení a zrušení zřizování správců klíčů zabezpečení.
 
 ### <a name="upn-changes"></a>Změny hlavního názvu uživatele (UPN)
 
-Pracujeme na podpoře funkce, která umožňuje změnu UPN na hybridních zařízeních Azure AD spojených a zařízeních Azure AD. Pokud se změní hlavní uživatel, již nelze upravit klíče zabezpečení FIDO2 tak, aby byly změny zohledňovány. Rozlišení je resetovat zařízení a uživatel musí znovu zaregistrovat.
+Pracujeme na podpoře funkce, která umožňuje změnu UPN na hybridních připojených zařízeních Azure AD a na zařízeních připojených k Azure AD. Pokud se změní hlavní název uživatele (UPN), nemůžete už upravovat bezpečnostní klíče FIDO2, aby se změna projevila. Řešením je resetování zařízení a uživatel se musí znovu zaregistrovat.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Přihlašování pomocí bezpečnostního klíče FIDO2 windows 10](howto-authentication-passwordless-security-key-windows.md)
+[FIDO2 bezpečnostní klíč Windows 10 – přihlášení](howto-authentication-passwordless-security-key-windows.md)
 
-[Povolení ověřování FIDO2 k místním prostředkům](howto-authentication-passwordless-security-key-on-premises.md)
+[Povolit ověřování FIDO2 pro místní prostředky](howto-authentication-passwordless-security-key-on-premises.md)
 
 [Další informace o registraci zařízení](../devices/overview.md)
 
-[Další informace o vícefaktorovém ověřování Azure](../authentication/howto-mfa-getstarted.md)
+[Další informace o Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)

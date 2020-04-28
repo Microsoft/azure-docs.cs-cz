@@ -17,7 +17,7 @@
       items:
         - name: Hromadné pozvání prostřednictvím PowerShellu
           href: bulk-invite-powershell.md
-        - name: Hromadné pozvání prostřednictvím portálu (Preview)
+        - name: Hromadné pozvání prostřednictvím portálu
           href: tutorial-bulk-invite.md
         - name: Vynucení vícefaktorového ověřování
           href: b2b-tutorial-require-mfa.md

@@ -1,6 +1,6 @@
 ---
-title: Principy manifestu aplikace Azure Active Directory
-description: Podrobné pokrytí manifestu aplikace Azure Active Directory, který představuje konfiguraci identity aplikace v tenantovi Azure AD a používá se k usnadnění autorizace OAuth, prostředí souhlasu a další.
+title: Princip Azure Active Directory manifestu aplikace
+description: Podrobné pokrytí manifestu Azure Active Directory aplikace, který představuje konfiguraci identity aplikace v tenantovi Azure AD a používá se k usnadnění autorizace OAuth, používání souhlasu a dalších.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,41 +13,41 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
 ms.openlocfilehash: 9f2ed6ea8cc75e2ee72f15c14f3de7bb8bf8cef6
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81450873"
 ---
-# <a name="azure-active-directory-app-manifest"></a>Manifest aplikace Azure Active Directory
+# <a name="azure-active-directory-app-manifest"></a>Azure Active Directory manifest aplikace
 
-Manifest aplikace obsahuje definici všech atributů aplikačního objektu v platformě identit microsoftu. Slouží také jako mechanismus pro aktualizaci aplikačního objektu. Další informace o entitě Aplikace a jejím schématu naleznete v [dokumentaci k entitě entity rozhraní API grafu](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity).
+Manifest aplikace obsahuje definici všech atributů objektu aplikace na platformě Microsoft identity. Slouží také jako mechanismus pro aktualizaci objektu aplikace. Další informace o entitě aplikace a jejím schématu naleznete v dokumentaci k [entitě aplikace Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity).
 
-Atributy aplikace můžete nakonfigurovat prostřednictvím portálu Azure nebo programově pomocí [rozhraní REST API](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity) nebo [PowerShellu](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#applications). Existují však některé scénáře, kde budete muset upravit manifest aplikace pro konfiguraci atributu aplikace. Mezi tyto scénáře patří:
+Atributy aplikace můžete nakonfigurovat pomocí Azure Portal nebo programově pomocí [REST API](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity) nebo [PowerShellu](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#applications). Existují však situace, kdy budete muset upravit manifest aplikace a nakonfigurovat atribut aplikace. Mezi tyto scénáře patří:
 
-* Pokud jste aplikaci zaregistrovali jako víceklientské a osobní účty Microsoft Azure AD, nemůžete v uživatelském rozhraní změnit podporované účty Microsoft. Místo toho je nutné použít editor manifestu aplikace ke změně typu podporovaného účtu.
-* Pokud potřebujete definovat oprávnění a role, které vaše aplikace podporuje, musíte upravit manifest aplikace.
+* Pokud jste aplikaci zaregistrovali jako víceklientské a osobní účty Microsoft Azure AD, nemůžete v uživatelském rozhraní měnit podporované účty Microsoft. Místo toho je nutné použít editor manifestu aplikace ke změně podporovaného typu účtu.
+* Pokud potřebujete definovat oprávnění a role, které vaše aplikace podporuje, je nutné změnit manifest aplikace.
 
 ## <a name="configure-the-app-manifest"></a>Konfigurace manifestu aplikace
 
-Postup konfigurace manifestu aplikace:
+Konfigurace manifestu aplikace:
 
-1. Přejděte na [portál Azure](https://portal.azure.com). Vyhledejte a vyberte službu **Azure Active Directory.**
+1. Přejít na [Azure Portal](https://portal.azure.com). Vyhledejte a vyberte službu **Azure Active Directory** .
 1. Vyberte **Registrace aplikací**.
-1. Vyberte aplikaci, kterou chcete konfigurovat.
-1. Na stránce **Přehled** aplikace vyberte část **Manifest**. Otevře se webový editor manifestu, který umožňuje upravovat manifest v rámci portálu. Volitelně můžete vybrat **Stáhnout** a upravit manifest místně a pak ho použít **pomocí funkce Odeslat** znovu použít ve vaší aplikaci.
+1. Vyberte aplikaci, kterou chcete nakonfigurovat.
+1. Na stránce **Přehled** aplikace vyberte část **Manifest**. Otevře se webový editor manifestu, který umožňuje upravovat manifest v rámci portálu. Volitelně můžete vybrat **Stáhnout** a upravit manifest místně a potom použít **nahrávání** pro jeho opakované použití do aplikace.
 
 ## <a name="manifest-reference"></a>Odkaz na manifest
 
 Tato část popisuje atributy nalezené v manifestu aplikace.
 
-### <a name="id-attribute"></a>id, atribut
+### <a name="id-attribute"></a>atribut ID
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
 | id | Řetězec |
 
-Jedinečný identifikátor aplikace v adresáři. Toto ID není identifikátor používaný k identifikaci aplikace v jakékoli transakci protokolu. Používá se pro odkazování na objekt v adresářových dotazech.
+Jedinečný identifikátor aplikace v adresáři Toto ID není identifikátor používaný k identifikaci aplikace v jakékoli transakci protokolu. Používá se pro odkazování na objekt v dotazech adresářů.
 
 Příklad:
 
@@ -55,19 +55,19 @@ Příklad:
     "id": "f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd",
 ```
 
-### <a name="accesstokenacceptedversion-attribute"></a>atribut accessTokenAcceptedVersion
+### <a name="accesstokenacceptedversion-attribute"></a>accessTokenAcceptedVersion – atribut
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
-| accessTokenAcceptedVersion | Int32, který lze zrušit |
+| accessTokenAcceptedVersion | Hodnota Int32 s možnou hodnotou null |
 
-Určuje verzi přístupového tokenu očekávanou u prostředku. Tento parametr změní verzi a formát JWT vyrobené nezávisle na koncovém bodu nebo klienta použitém k vyžádání přístupového tokenu.
+Určuje verzi přístupového tokenu, kterou prostředek očekával. Tento parametr změní verzi a formát tokenu JWT vyprodukovaného nezávisle na koncovém bodu nebo klientovi, který se použil k vyžádání přístupového tokenu.
 
-Použitý koncový bod, v1.0 nebo v2.0, je vybrán klientem a má vliv pouze na verzi id_tokens. Prostředky je třeba `accesstokenAcceptedVersion` explicitně nakonfigurovat k označení podporovaného formátu tokenu přístupu.
+Koncový bod použitý v 1.0 nebo v 2.0 je vybraný klientem a má vliv jenom na verzi id_tokens. Prostředky musí být explicitně nakonfigurovány `accesstokenAcceptedVersion` tak, aby označovaly formát podporovaného přístupového tokenu.
 
-Možné hodnoty `accesstokenAcceptedVersion` pro jsou 1, 2 nebo null. Pokud je hodnota null, tento parametr výchozí 1, který odpovídá v1.0 koncový bod.
+Možné hodnoty pro `accesstokenAcceptedVersion` jsou 1, 2 nebo null. Pokud je hodnota null, tento parametr se nastaví na hodnotu 1, která odpovídá koncovému bodu v 1.0.
 
-Pokud `signInAudience` `AzureADandPersonalMicrosoftAccount`je , hodnota `2`musí být .
+Pokud `signInAudience` má `AzureADandPersonalMicrosoftAccount`hodnotu, musí být `2`hodnota.
 
 Příklad:
 
@@ -75,13 +75,13 @@ Příklad:
     "accessTokenAcceptedVersion": 2,
 ```
 
-### <a name="addins-attribute"></a>addIns, atribut
+### <a name="addins-attribute"></a>addIns – atribut
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
-| Doplňky | Kolekce |
+| addIns | Kolekce |
 
-Definuje vlastní chování, které může spotřebitelská služba použít k volání aplikace v konkrétních kontextech. Například aplikace, které mohou vykreslit `addIns` datové proudy souborů, mohou nastavit vlastnost pro svou funkci "FileHandler". Tento parametr umožní službám, jako je Office 365, volat aplikaci v kontextu dokumentu, na kterém uživatel pracuje.
+Definuje vlastní chování, které může přijímající služba použít k volání aplikace v konkrétních kontextech. Například aplikace, které mohou vykreslovat datové proudy souborů, `addIns` mohou nastavit vlastnost pro její funkci "handlerer". Tento parametr umožní službám, jako je Office 365, volat aplikaci v kontextu dokumentu, na kterém uživatel pracuje.
 
 Příklad:
 
@@ -100,13 +100,13 @@ Příklad:
     ],
 ```
 
-### <a name="allowpublicclient-attribute"></a>atribut allowPublicClient
+### <a name="allowpublicclient-attribute"></a>allowPublicClient – atribut
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
 | allowPublicClient | Logická hodnota |
 
-Určuje typ záložní aplikace. Azure AD odvodí typ aplikace z replyUrlsWithType ve výchozím nastavení. Existují určité scénáře, kde Azure AD nelze určit typ klientské aplikace. Například jeden takový scénář je [tok ROPC,](https://tools.ietf.org/html/rfc6749#section-4.3) kde http požadavek se stane bez přesměrování adresy URL). V těchto případech Azure AD bude interpretovat typ aplikace na základě hodnoty této vlastnosti. Pokud je tato hodnota nastavena na hodnotu true, je typ záložní aplikace nastaven jako veřejný klient, například nainstalovaná aplikace spuštěná na mobilním zařízení. Výchozí hodnota je false, což znamená, že typ záložní aplikace je důvěrný klient, jako je například webová aplikace.
+Určuje typ záložní aplikace. Služba Azure AD ve výchozím nastavení odvodí typ aplikace z replyUrlsWithType. Existují některé scénáře, kdy služba Azure AD nemůže určit typ klientské aplikace. Například jedním z takových scénářů je [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) tok, ve kterém se požadavek HTTP stane bez přesměrování adresy URL). V těchto případech služba Azure AD bude interpretovat typ aplikace na základě hodnoty této vlastnosti. Pokud je tato hodnota nastavená na true, typ záložní aplikace se nastaví jako veřejný klient, jako je například nainstalovaná aplikace spuštěná v mobilním zařízení. Výchozí hodnota je false, což znamená, že typ záložní aplikace je důvěrný klient, jako je například webová aplikace.
 
 Příklad:
 
@@ -114,24 +114,24 @@ Příklad:
     "allowPublicClient": false,
 ```
 
-### <a name="availabletoothertenants-attribute"></a>atribut availableToOtherTenants
+### <a name="availabletoothertenants-attribute"></a>availableToOtherTenants – atribut
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
 | availableToOtherTenants | Logická hodnota |
 
-Nastavte hodnotu true, pokud je aplikace sdílena s ostatními klienty; jinak false.
+Nastavte na hodnotu true, pokud je aplikace sdílená s ostatními klienty. v opačném případě false.
 
 > [!NOTE]
-> Tento atribut je k dispozici pouze v **prostředí registrace aplikací (Starší verze).** Nahrazeno `signInAudience` v prostředí [registrace aplikací.](https://go.microsoft.com/fwlink/?linkid=2083908)
+> Tento atribut je k dispozici pouze v prostředí **Registrace aplikací (zastaralé)** . Nahradili `signInAudience` v prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
 
 ### <a name="appid-attribute"></a>atribut appId
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
 | appId | Řetězec |
 
-Určuje jedinečný identifikátor aplikace, která je přiřazena k aplikaci azure ad.
+Určuje jedinečný identifikátor pro aplikaci, která je přiřazená aplikaci pomocí Azure AD.
 
 Příklad:
 
@@ -139,13 +139,13 @@ Příklad:
     "appId": "601790de-b632-4f57-9523-ee7cb6ceba95",
 ```
 
-### <a name="approles-attribute"></a>atribut appRoles
+### <a name="approles-attribute"></a>appRoles – atribut
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
 | appRoles | Kolekce |
 
-Určuje kolekci rolí, které může aplikace deklarovat. Tyto role lze přiřadit uživatelům, skupinám nebo instančním objektům. Další příklady a informace najdete [v tématu Přidání rolí aplikace v aplikaci a jejich přijetí v tokenu](howto-add-app-roles-in-azure-ad-apps.md).
+Určuje kolekci rolí, které může aplikace deklarovat. Tyto role se dají přiřadit uživatelům, skupinám nebo objektům služby. Další příklady a informace najdete v tématu [Přidání rolí aplikace v aplikaci a jejich přijetí v tokenu](howto-add-app-roles-in-azure-ad-apps.md).
 
 Příklad:
 
@@ -164,36 +164,36 @@ Příklad:
     ],
 ```
 
-### <a name="displayname-attribute"></a>displayName, atribut
+### <a name="displayname-attribute"></a>DisplayName – atribut
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
 | displayName | Řetězec |
 
-Zobrazovaný název aplikace.
+Zobrazovaný název aplikace
 
 > [!NOTE]
-> Tento atribut je k dispozici pouze v **prostředí registrace aplikací (Starší verze).** Nahrazeno `name` v prostředí [registrace aplikací.](https://go.microsoft.com/fwlink/?linkid=2083908)
+> Tento atribut je k dispozici pouze v prostředí **Registrace aplikací (zastaralé)** . Nahradili `name` v prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
 
-### <a name="errorurl-attribute"></a>errorUrl, atribut
+### <a name="errorurl-attribute"></a>errorUrl – atribut
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
 | errorUrl | Řetězec |
 
-Nepodporovaný.
+Neplatné.
 
-### <a name="groupmembershipclaims-attribute"></a>groupMembershipClaims, atribut
+### <a name="groupmembershipclaims-attribute"></a>groupMembershipClaims – atribut
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
 |groupMembershipClaims | Řetězec |
 
-Konfiguruje `groups` deklaraci vydanou v uživatelském nebo přístupovém tokenu OAuth 2.0, který aplikace očekává. Chcete-li nastavit tento atribut, použijte jednu z následujících platných hodnot řetězce:
+Nakonfiguruje `groups` deklaraci identity vydanou v uživatelském nebo přístupovém tokenu OAuth 2,0, který očekává aplikace. Chcete-li nastavit tento atribut, použijte jednu z následujících platných řetězcových hodnot:
 
 - `"None"`
 - `"SecurityGroup"`(pro skupiny zabezpečení a role Azure AD)
-- `"All"`(tím získáte všechny skupiny zabezpečení, distribuční skupiny a role adresáře Azure AD, kterých je přihlášený uživatel členem.
+- `"All"`(zobrazí se všechny skupiny zabezpečení, distribuční skupiny a role adresáře Azure AD, kterých je přihlášený uživatel členem.
 
 Příklad:
 
@@ -201,26 +201,26 @@ Příklad:
     "groupMembershipClaims": "SecurityGroup",
 ```
 
-### <a name="homepage-attribute"></a>atribut domovskou stránku
+### <a name="homepage-attribute"></a>atribut domovské stránky
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
-| Domovskou stránku |Řetězec |
+| domovské stránky |Řetězec |
 
-Adresa URL domovské stránky aplikace.
+Adresa URL domovské stránky aplikace
 
 > [!NOTE]
-> Tento atribut je k dispozici pouze v **prostředí registrace aplikací (Starší verze).** Nahrazeno `signInUrl` v prostředí [registrace aplikací.](https://go.microsoft.com/fwlink/?linkid=2083908)
+> Tento atribut je k dispozici pouze v prostředí **Registrace aplikací (zastaralé)** . Nahradili `signInUrl` v prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
 
-### <a name="objectid-attribute"></a>atribut objectId
+### <a name="objectid-attribute"></a>objectId – atribut
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
-|Objectid | Řetězec |
+|Objektu | Řetězec |
 
-Jedinečný identifikátor aplikace v adresáři.
+Jedinečný identifikátor aplikace v adresáři
 
-To je k dispozici pouze v **prostředí registrace aplikací (Starší verze).** Nahrazeno `id` v prostředí [registrace aplikací.](https://go.microsoft.com/fwlink/?linkid=2083908)
+Tato možnost je k dispozici pouze v prostředí **Registrace aplikací (starší verze)** . Nahradili `id` v prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
 
 Příklad:
 
@@ -228,15 +228,15 @@ Příklad:
     "objectId": "f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd",
 ```
 
-### <a name="optionalclaims-attribute"></a>optionalClaims atribut optionalClaims atribut optionalClaims atribut optionalClaims
+### <a name="optionalclaims-attribute"></a>optionalClaims – atribut
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
-| volitelnéNároky | Řetězec |
+| optionalClaims | Řetězec |
 
 Volitelné deklarace identity vrácené v tokenu službou tokenu zabezpečení pro tuto konkrétní aplikaci.
 
-V tuto chvíli aplikace, které podporují osobní účty a Azure AD (registrované prostřednictvím portálu pro registraci aplikací) nelze použít volitelné deklarace identity. Aplikace registrované pouze pro Azure AD pomocí koncového bodu v2.0 však můžete získat volitelné deklarace identity, které požadovali v manifestu. Další informace naleznete v [tématu Volitelné deklarace identity](active-directory-optional-claims.md).
+V tuto chvíli aplikace, které podporují osobní účty i službu Azure AD (zaregistrované prostřednictvím portálu pro registraci aplikací), nemůžou používat volitelné deklarace identity. Aplikace zaregistrované pro jenom Azure AD pomocí koncového bodu v 2.0 ale můžou získat volitelné deklarace identity, které požadoval v manifestu. Další informace najdete v tématu [volitelné deklarace identity](active-directory-optional-claims.md).
 
 Příklad:
 
@@ -246,13 +246,13 @@ Příklad:
 
 
 
-### <a name="identifieruris-attribute"></a>atribut identifierUris
+### <a name="identifieruris-attribute"></a>identifierUris – atribut
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
-| identifikátorUris | Pole řetězců |
+| identifierUris | Pole řetězců |
 
-Uživatelem definované identifikátory URI, které jednoznačně identifikují webovou aplikaci v rámci svého klienta Azure AD nebo v rámci ověřené vlastní domény, pokud je aplikace víceklientská.
+Uživatelsky definované identifikátory URI, které jedinečně identifikují webovou aplikaci v rámci jejího tenanta Azure AD, nebo v ověřené vlastní doméně, pokud je aplikace více tenantů.
 
 Příklad:
 
@@ -260,13 +260,13 @@ Příklad:
     "identifierUris": "https://MyRegisteredApp",
 ```
 
-### <a name="informationalurls-attribute"></a>informationalUrls, atribut
+### <a name="informationalurls-attribute"></a>informationalUrls – atribut
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
 | informationalUrls | Řetězec |
 
-Určuje odkazy na smluvní podmínky aplikace a prohlášení o zásadách ochrany osobních údajů. Podmínky služby a prohlášení o zásadách ochrany osobních údajů jsou uživatelům k dispozici prostřednictvím uživatelského souhlasu. Další informace najdete v [tématu Postup: Přidání smluvních podmínek a prohlášení o zásadách ochrany osobních údajů pro registrované aplikace Azure AD](howto-add-terms-of-service-privacy-statement.md).
+Určuje odkazy na podmínku služby a prohlášení o zásadách ochrany osobních údajů aplikace. Podmínky služby a prohlášení o zásadách ochrany osobních údajů jsou v souladu s uživatelským prostředím týkajícím se souhlasu uživatele. Další informace najdete v tématu [Postup: Přidání podmínek služby a prohlášení o zásadách ochrany osobních údajů pro registrované aplikace služby Azure AD](howto-add-terms-of-service-privacy-statement.md).
 
 Příklad:
 
@@ -279,13 +279,13 @@ Příklad:
     },
 ```
 
-### <a name="keycredentials-attribute"></a>keyCredentials, atribut
+### <a name="keycredentials-attribute"></a>Přihlašovací údaje atributu
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
 | keyCredentials | Kolekce |
 
-Obsahuje odkazy na přihlašovací údaje přiřazené k aplikaci, sdílené tajné klíče založené na řetězecích a certifikáty X.509. Tato pověření se používají při požadování přístupových tokenů (když aplikace funguje jako klient spíše jako prostředek).
+Obsahuje odkazy na přihlašovací údaje přiřazené aplikacím, sdílené tajné klíče založené na řetězci a certifikáty X. 509. Tyto přihlašovací údaje se používají při požadování přístupových tokenů (když aplikace funguje jako klient, ale jako prostředek).
 
 Příklad:
 
@@ -303,13 +303,13 @@ Příklad:
     ],
 ```
 
-### <a name="knownclientapplications-attribute"></a>atribut knownClientApplications
+### <a name="knownclientapplications-attribute"></a>knownClientApplications – atribut
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
-| známé klientské aplikace | Pole řetězců |
+| knownClientApplications | Pole řetězců |
 
-Používá se pro sdružování souhlasu, pokud máte řešení, které obsahuje dvě části: klientskou aplikaci a vlastní webAPI aplikaci. Pokud do této hodnoty zadáte id aplikace klienta, uživatel bude muset souhlasit pouze jednou s klientskou aplikací. Azure AD bude vědět, že souhlas s klientem znamená implicitně souhlas s webovým rozhraním API. Automaticky zřdá instanční objekty pro klienta i webové rozhraní API současně. Klient i webová aplikace rozhraní API musí být registrovány ve stejném klientovi.
+Používá se ke sdružování souhlasu, pokud máte řešení, které obsahuje dvě části: klientská aplikace a vlastní aplikace webového rozhraní API. Pokud zadáte appID klientské aplikace do této hodnoty, bude uživatel muset pro klientskou aplikaci pouze odsouhlasit. Služba Azure AD bude mít za to, že se souhlasem s klientem znamená, že implicitně souhlasí s webovým rozhraním API. Budou automaticky zřizovat instanční objekty pro klientské i webové rozhraní API současně. Klient i aplikace webového rozhraní API musí být zaregistrované ve stejném tenantovi.
 
 Příklad:
 
@@ -317,13 +317,13 @@ Příklad:
     "knownClientApplications": ["f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd"],
 ```
 
-### <a name="logourl-attribute"></a>logoUrl, atribut
+### <a name="logourl-attribute"></a>logoUrl – atribut
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
 | logoUrl | Řetězec |
 
-Hodnota pouze pro čtení, která odkazuje na adresu URL CDN na logo, které bylo nahráno na portálu.
+Hodnota jen pro čtení, která odkazuje na adresu URL CDN na logo, které se nahrálo na portálu.
 
 Příklad:
 
@@ -331,13 +331,13 @@ Příklad:
     "logoUrl": "https://MyRegisteredAppLogo",
 ```
 
-### <a name="logouturl-attribute"></a>atribut logoutUrl
+### <a name="logouturl-attribute"></a>logoutUrl – atribut
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
-| adresa url odhlášení | Řetězec |
+| logoutUrl | Řetězec |
 
-Adresa URL pro odhlášení z aplikace.
+Adresa URL pro odhlášení z aplikace
 
 Příklad:
 
@@ -345,13 +345,13 @@ Příklad:
     "logoutUrl": "https://MyRegisteredAppLogout",
 ```
 
-### <a name="name-attribute"></a>atribut name
+### <a name="name-attribute"></a>atribut Name
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
 | jméno | Řetězec |
 
-Zobrazovaný název aplikace.
+Zobrazovaný název aplikace
 
 Příklad:
 
@@ -359,13 +359,13 @@ Příklad:
     "name": "MyRegisteredApp",
 ```
 
-### <a name="oauth2allowimplicitflow-attribute"></a>oauth2AllowImplicitflow, atribut
+### <a name="oauth2allowimplicitflow-attribute"></a>oauth2AllowImplicitFlow – atribut
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
-| oauth2AllowImplicitflow | Logická hodnota |
+| oauth2AllowImplicitFlow | Logická hodnota |
 
-Určuje, zda tato webová aplikace může požadovat tokeny přístupu k toku OAuth2.0 implicitní. Výchozí hodnotou je hodnota false. Tento příznak se používá pro aplikace založené na prohlížeči, jako jsou jednostránkové aplikace JavaScriptu. Další informace zadejte do `OAuth 2.0 implicit grant flow` obsahu a přečtěte si témata o implicitním toku.
+Určuje, jestli tato webová aplikace může vyžádat tokeny přístupu implicitního toku OAuth 2.0. Výchozí hodnotou je hodnota false. Tento příznak se používá pro aplikace založené na prohlížeči, jako jsou například jednostránkové aplikace JavaScriptu. Pokud se chcete dozvědět víc `OAuth 2.0 implicit grant flow` , zadejte do obsahu obsah a podívejte se na témata popisující implicitní tok.
 
 Příklad:
 
@@ -373,13 +373,13 @@ Příklad:
     "oauth2AllowImplicitFlow": false,
 ```
 
-### <a name="oauth2allowidtokenimplicitflow-attribute"></a>oauth2AllowIdTokenImplicitFlow, atribut
+### <a name="oauth2allowidtokenimplicitflow-attribute"></a>oauth2AllowIdTokenImplicitFlow – atribut
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
-| oauth2AllowIdTokenImplicitflow | Logická hodnota |
+| oauth2AllowIdTokenImplicitFlow | Logická hodnota |
 
-Určuje, zda tato webová aplikace může požadovat tokeny Implicitní tok OAuth2.0. Výchozí hodnotou je hodnota false. Tento příznak se používá pro aplikace založené na prohlížeči, jako jsou jednostránkové aplikace JavaScriptu.
+Určuje, jestli tato webová aplikace může vyžádat tokeny pro implicitní ID toku OAuth 2.0. Výchozí hodnotou je hodnota false. Tento příznak se používá pro aplikace založené na prohlížeči, jako jsou například jednostránkové aplikace JavaScriptu.
 
 Příklad:
 
@@ -387,13 +387,13 @@ Příklad:
     "oauth2AllowIdTokenImplicitFlow": false,
 ```
 
-### <a name="oauth2permissions-attribute"></a>oauth2Permissions, atribut
+### <a name="oauth2permissions-attribute"></a>oauth2Permissions – atribut
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
-| oauth2Oprávnění | Kolekce |
+| oauth2Permissions | Kolekce |
 
-Určuje kolekci oborů oprávnění OAuth 2.0, které aplikace webového rozhraní API (prostředek) zpřístupňuje klientským aplikacím. Tyto obory oprávnění mohou být uděleny klientským aplikacím během souhlasu.
+Určuje kolekci oborů oprávnění OAuth 2,0, které aplikace webového rozhraní API (Resource) zpřístupňuje klientským aplikacím. Tyto obory oprávnění se můžou klientským aplikacím udělit během souhlasu.
 
 Příklad:
 
@@ -412,13 +412,13 @@ Příklad:
     ],
 ```
 
-### <a name="oauth2requiredpostresponse-attribute"></a>oauth2RequiredPostResponse, atribut
+### <a name="oauth2requiredpostresponse-attribute"></a>oauth2RequiredPostResponse – atribut
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
 | oauth2RequiredPostResponse | Logická hodnota |
 
-Určuje, zda jako součást oauth 2.0 požadavky na token Azure AD povolí požadavky POST, na rozdíl od get požadavky. Výchozí hodnota je false, která určuje, že budou povoleny pouze požadavky GET.
+Určuje, jestli v rámci požadavků na token OAuth 2,0 Azure AD umožní žádosti POST, a to na rozdíl od získání požadavků. Výchozí hodnota je false (NEPRAVDA), která určuje, že budou povoleny pouze požadavky GET.
 
 Příklad:
 
@@ -426,14 +426,14 @@ Příklad:
     "oauth2RequirePostResponse": false,
 ```
 
-### <a name="parentalcontrolsettings-attribute"></a>parentalControlSettings, atribut
+### <a name="parentalcontrolsettings-attribute"></a>parentalControlSettings – atribut
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
 | parentalControlSettings | Řetězec |
 
-- `countriesBlockedForMinors`určuje země, ve kterých je aplikace blokována pro nezletilé.
-- `legalAgeGroupRule`určuje pravidlo zákonné věkové skupiny, které se vztahuje na uživatele aplikace. Lze nastavit `Allow`na `RequireConsentForPrivacyServices` `RequireConsentForMinors`, `RequireConsentForKids`, `BlockMinors`, , nebo .  
+- `countriesBlockedForMinors`Určuje země, ve kterých je aplikace blokovaná pro nezletilé.
+- `legalAgeGroupRule`Určuje pravidlo pro věkovou skupinu platné pro uživatele aplikace. Lze nastavit na `Allow`, `RequireConsentForPrivacyServices`, `RequireConsentForMinors` `RequireConsentForKids`, nebo. `BlockMinors`  
 
 Příklad:
 
@@ -444,13 +444,13 @@ Příklad:
     },
 ```
 
-### <a name="passwordcredentials-attribute"></a>passwordCredentials, atribut
+### <a name="passwordcredentials-attribute"></a>passwordCredentials – atribut
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
-| hesloPověření | Kolekce |
+| passwordCredentials | Kolekce |
 
-Podívejte se na `keyCredentials` popis vlastnosti.
+Podívejte se na popis `keyCredentials` vlastnosti.
 
 Příklad:
 
@@ -466,13 +466,13 @@ Příklad:
     ],
 ```
 
-### <a name="preauthorizedapplications-attribute"></a>atribut preAuthorizedApplications
+### <a name="preauthorizedapplications-attribute"></a>preAuthorizedApplications – atribut
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
-| aplikace preAuthorized | Kolekce |
+| preAuthorizedApplications | Kolekce |
 
-Zobrazí seznam aplikací a požadovaných oprávnění pro implicitní souhlas. Vyžaduje, aby správce poskytl souhlas s aplikací. preAuthorizedApplications nevyžadují, aby uživatel souhlasil s požadovanými oprávněními. Oprávnění uvedená v preAuthorizedApplications nevyžadují souhlas uživatele. Všechna další požadovaná oprávnění, která nejsou uvedena v preAuthorizedApplications však vyžadují souhlas uživatele.
+Vypíše aplikace a požadovaná oprávnění pro implicitní souhlas. Vyžaduje, aby správce poskytl souhlas s aplikací. preAuthorizedApplications nevyžaduje, aby uživatel mohl udělit souhlas s požadovanými oprávněními. Oprávnění uvedená v preAuthorizedApplications nevyžadují souhlas uživatele. Nicméně jakákoli další požadovaná oprávnění, která nejsou uvedená v preAuthorizedApplications, vyžadují souhlas uživatele.
 
 Příklad:
 
@@ -487,21 +487,21 @@ Příklad:
     ],
 ```
 
-### <a name="publicclient-attribute"></a>atribut publicClient
+### <a name="publicclient-attribute"></a>publicClient – atribut
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
 | publicClient | Logická hodnota|
 
-Určuje, zda je tato aplikace veřejným klientem (například nainstalovanou aplikací spuštěnou na mobilním zařízení). 
+Určuje, jestli je tato aplikace veřejným klientem (například nainstalovaná aplikace spuštěná v mobilním zařízení). 
 
-Tato vlastnost je k dispozici pouze v **prostředí registrace aplikací (Starší verze).** Nahrazeno `allowPublicClient` v prostředí [registrace aplikací.](https://go.microsoft.com/fwlink/?linkid=2083908)
+Tato vlastnost je k dispozici pouze v prostředí **Registrace aplikací (starší verze)** . Nahradili `allowPublicClient` v prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
 
-### <a name="publisherdomain-attribute"></a>atribut publisherDomain
+### <a name="publisherdomain-attribute"></a>publisherDomain – atribut
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
-| vydavatelDoména | Řetězec |
+| publisherDomain | Řetězec |
 
 Ověřená doména vydavatele pro aplikaci. Jen pro čtení.
 
@@ -511,28 +511,28 @@ Příklad:
     "publisherDomain": "https://www.contoso.com",
 ````
 
-### <a name="replyurls-attribute"></a>atribut replyUrls
+### <a name="replyurls-attribute"></a>replyUrls – atribut
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
 | replyUrls | Pole řetězců |
 
-Tato vlastnost s více hodnotami obsahuje seznam registrovaných hodnot redirect_uri, které služba Azure AD přijme jako cíle při vracení tokenů.
+Tato vlastnost s více hodnotami obsahuje seznam registrovaných redirect_uri hodnot, které služba Azure AD přijme jako cílová umístění při vracení tokenů.
 
-Tato vlastnost je k dispozici pouze v **prostředí registrace aplikací (Starší verze).** Nahrazeno `replyUrlsWithType` v prostředí [registrace aplikací.](https://go.microsoft.com/fwlink/?linkid=2083908)
+Tato vlastnost je k dispozici pouze v prostředí **Registrace aplikací (starší verze)** . Nahradili `replyUrlsWithType` v prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
 
-### <a name="replyurlswithtype-attribute"></a>replyUrlsWithType, atribut
+### <a name="replyurlswithtype-attribute"></a>replyUrlsWithType – atribut
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
 | replyUrlsWithType | Kolekce |
 
-Tato vlastnost s více hodnotami obsahuje seznam registrovaných hodnot redirect_uri, které služba Azure AD přijme jako cíle při vracení tokenů. Každá hodnota identifikátoru URI by měla obsahovat přidruženou hodnotu typu aplikace. Podporované hodnoty typu jsou:
+Tato vlastnost s více hodnotami obsahuje seznam registrovaných redirect_uri hodnot, které služba Azure AD přijme jako cílová umístění při vracení tokenů. Každá hodnota identifikátoru URI by měla obsahovat přidruženou hodnotu typu aplikace. Podporované hodnoty typu jsou:
 
 - `Web`
 - `InstalledClient`
 
-Další informace naleznete v [tématu replyUrl omezení a omezení](https://docs.microsoft.com/azure/active-directory/develop/reply-url).
+Další informace najdete v tématu [omezení a omezení replyUrl](https://docs.microsoft.com/azure/active-directory/develop/reply-url).
 
 Příklad:
 
@@ -545,16 +545,16 @@ Příklad:
     ],
 ```
 
-### <a name="requiredresourceaccess-attribute"></a>atribut requiredResourceAccess
+### <a name="requiredresourceaccess-attribute"></a>requiredResourceAccess – atribut
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
 | requiredResourceAccess | Kolekce |
 
-S dynamickým `requiredResourceAccess` souhlasem řídí prostředí souhlasu správce a uživatelské prostředí pro uživatele, kteří používají statický souhlas. Tento parametr však neřídí uživatelské ho souhlasu pro obecný případ.
+S dynamickým souhlasem se pro uživatele, kteří používají statický souhlas, `requiredResourceAccess` řídí prostředí pro vyjádření souhlasu správce a uživatelské prostředí pro vyjádření souhlasu uživatele. Tento parametr ale neřídí uživatelské prostředí pro vyjádření souhlasu uživatele pro obecný případ.
 
-- `resourceAppId`je jedinečný identifikátor prostředku, ke kterému aplikace vyžaduje přístup. Tato hodnota by měla být rovna appId deklarované v cílové množiny prostředků.
-- `resourceAccess`je pole, které obsahuje seznam oborů oprávnění OAuth2.0 a rolí aplikací, které aplikace vyžaduje od zadaného prostředku. Obsahuje `id` hodnoty `type` a zadané prostředky.
+- `resourceAppId`je jedinečný identifikátor pro prostředek, ke kterému aplikace vyžaduje přístup. Tato hodnota by měla být stejná jako appId deklarované v cílové aplikaci prostředků.
+- `resourceAccess`je pole, ve kterém jsou uvedené obory oprávnění OAuth 2.0 a aplikační role, které aplikace vyžaduje ze zadaného prostředku. Obsahuje hodnoty `id` a `type` pro zadané prostředky.
 
 Příklad:
 
@@ -572,13 +572,13 @@ Příklad:
     ],
 ```
 
-### <a name="samlmetadataurl-attribute"></a>atribut samlMetadataUrl
+### <a name="samlmetadataurl-attribute"></a>samlMetadataUrl – atribut
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
 | samlMetadataUrl | Řetězec |
 
-Adresa URL metadat SAML pro aplikaci.
+Adresa URL metadat SAML pro aplikaci
 
 Příklad:
 
@@ -586,9 +586,9 @@ Příklad:
     "samlMetadataUrl": "https://MyRegisteredAppSAMLMetadata",
 ```
 
-### <a name="signinurl-attribute"></a>signInUrl, atribut
+### <a name="signinurl-attribute"></a>signInUrl – atribut
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
 | signInUrl | Řetězec |
 
@@ -600,17 +600,17 @@ Příklad:
     "signInUrl": "https://MyRegisteredApp",
 ```
 
-### <a name="signinaudience-attribute"></a>signInAudience, atribut
+### <a name="signinaudience-attribute"></a>signInAudience – atribut
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
 | signInAudience | Řetězec |
 
-Určuje, jaké účty Microsoft jsou podporovány pro aktuální aplikaci. Podporované hodnoty jsou:
-- `AzureADMyOrg`- Uživatelé s pracovním nebo školním účtem Microsoftu v tenantovi Azure AD v mé organizaci (například jeden tenant)
-- `AzureADMultipleOrgs`- Uživatelé s pracovním nebo školním účtem Microsoftu v tenantovi Azure AD libovolné organizace (například s více klienty).
-- `AzureADandPersonalMicrosoftAccount`- Uživatelé s osobním účtem Microsoft nebo pracovním nebo školním účtem v tenantovi Azure AD jakékoli organizace
-- `PersonalMicrosoftAccount`- Osobní účty, které se používají k přihlášení ke službám, jako je Xbox a Skype.
+Určuje, jaké účty Microsoft se pro aktuální aplikaci podporují. Podporované hodnoty jsou:
+- `AzureADMyOrg`– Uživatelé s pracovním nebo školním účtem Microsoft v tenantovi Azure AD ve vaší organizaci (například jeden tenant)
+- `AzureADMultipleOrgs`– Uživatelé s pracovním nebo školním účtem Microsoft v tenantovi Azure AD ve vaší organizaci (například víceklientská tenant)
+- `AzureADandPersonalMicrosoftAccount`– Uživatelé s osobní účet Microsoft nebo pracovní nebo školní účet v tenantovi Azure AD ve vaší organizaci
+- `PersonalMicrosoftAccount`– Osobní účty používané pro přihlášení ke službám, jako jsou Xbox a Skype.
 
 Příklad:
 
@@ -618,9 +618,9 @@ Příklad:
     "signInAudience": "AzureADandPersonalMicrosoftAccount",
 ```
 
-### <a name="tags-attribute"></a>atribut tagy
+### <a name="tags-attribute"></a>atribut Tags
 
-| Klíč | Typ hodnoty |
+| Key | Typ hodnoty |
 | :--- | :--- |
 | tags | Pole řetězců  |
 
@@ -636,16 +636,16 @@ Příklad:
 
 ## <a name="common-issues"></a>Běžné problémy
 
-### <a name="manifest-limits"></a>Limity manifestu
+### <a name="manifest-limits"></a>Omezení manifestu
 
-Manifest aplikace má více atributů, které jsou označovány jako kolekce; například appRoles, keyCredentials, knownClientApplications, identifierUris, redirectUris, requiredResourceAccess a oauth2Permissions. V rámci úplného manifestu žádosti pro každou přihlášku byl celkový počet položek ve všech kombinovaných sbírkách omezen na 1200. Pokud jste dříve zadat 100 přesměrování IDENTIFIKÁTORŮ URI v manifestu aplikace, pak jste jen odešel s 1100 zbývajícípoložky pro použití ve všech ostatních kolekcí v kombinaci, které tvoří manifest.
+Manifest aplikace má více atributů, které jsou označovány jako kolekce; například appRoles, přihlašovací údaje, knownClientApplications, identifierUris, redirectUris, requiredResourceAccess a oauth2Permissions. V rámci kompletního manifestu aplikace pro libovolnou aplikaci byl celkový počet položek ve všech kolekcích kombinovaný v kombinaci s omezené v 1200. Pokud jste v manifestu aplikace dříve zadali 100 identifikátorů URI pro přesměrování, budete mít k pouze 1100 zbývajících záznamů pro použití ve všech ostatních kolekcích, které dohromady tvoří manifest.
 
 > [!NOTE]
-> V případě, že se pokusíte přidat více než 1200 položek v manifestu aplikace, může se zobrazit chyba **"Nepodařilo se aktualizovat aplikaci xxxxxx. Podrobnosti o chybě: Velikost manifestu překročila jeho limit. Snižte počet hodnot a opakujte požadavek."**
+> V případě, že se pokusíte přidat více než 1200 záznamů v manifestu aplikace, může se zobrazit chyba **"Nepodařilo se aktualizovat aplikaci xxxxxx. Podrobnosti o chybě: Velikost manifestu překročila svůj limit. Snižte počet hodnot a opakujte požadavek. "**
 
 ### <a name="unsupported-attributes"></a>Nepodporované atributy
 
-Manifest aplikace představuje schéma základního aplikačního modelu ve službě Azure AD. Jak se vyvíjí základní schéma, editor manifestu bude čas od času aktualizován tak, aby odrážel nové schéma. V důsledku toho můžete zaznamenat nové atributy, které se zobrazují v manifestu aplikace. Ve výjimečných případech můžete zaznamenat syntaktické nebo sémantické změny v existující atributy nebo můžete najít atribut, který existoval dříve nejsou podporovány již. Například se zobrazí nové atributy v [registracích aplikací](https://go.microsoft.com/fwlink/?linkid=2083908), které jsou známé s jiným názvem v prostředí registrace aplikací (Starší verze).
+Manifest aplikace představuje schéma základního aplikačního modelu ve službě Azure AD. V rámci vývoje základního schématu se editor manifestu aktualizuje tak, aby odrážel nové schéma od času až po čas. V důsledku toho můžete všimnout, že se nové atributy zobrazí v manifestu aplikace. Ve výjimečných případech si můžete všimnout syntaktické nebo sémantické změny v existujících atributech. můžete ale najít již dříve nepodporovaný atribut. V [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908)se například zobrazí nové atributy, které se v prostředí registrace aplikací (starší verze) označují jiným názvem.
 
 | Registrace aplikací (starší verze)| Registrace aplikací           |
 |---------------------------|-----------------------------|
@@ -657,27 +657,27 @@ Manifest aplikace představuje schéma základního aplikačního modelu ve slu�
 | `publicClient`            | `allowPublicClient`         |
 | `replyUrls`               | `replyUrlsWithType`         |
 
-Popisy těchto atributů naleznete v [části s odkazem](#manifest-reference) na manifest.
+Popisy těchto atributů naleznete v části Reference k [manifestu](#manifest-reference) .
 
-Při pokusu o nahrání dříve staženého manifestu se může zobrazit jedna z následujících chyb. Tato chyba je pravděpodobně, protože editor manifestu nyní podporuje novější verzi schématu, která se neshoduje s verzí, kterou se pokoušíte nahrát.
+Při pokusu o nahrání dříve staženého manifestu se může zobrazit jedna z následujících chyb. Tato chyba je pravděpodobně způsobena tím, že editor manifestu teď podporuje novější verzi schématu, která neodpovídá tomu, který se pokoušíte nahrát.
 
-* "Aktualizace aplikace xxxxxx se nezdařila. Podrobnosti o chybě: Neplatný identifikátor objektu "undefined". []."
-* "Aktualizace aplikace xxxxxx se nezdařila. Podrobnosti o chybě: Jedna nebo více zadaných hodnot vlastností je neplatných. []."
-* "Aktualizace aplikace xxxxxx se nezdařila. Podrobnosti o chybě: Není povoleno nastavit k dispoziciOtherTenants v této verzi rozhraní API pro aktualizaci. []."
-* "Aktualizace aplikace xxxxxx se nezdařila. Podrobnosti o chybě: Aktualizace vlastnosti 'replyUrls' není pro tuto aplikaci povolena. Místo toho použijte vlastnost 'replyUrlsWithType'. []."
-* "Aktualizace aplikace xxxxxx se nezdařila. Podrobnosti o chybě: Byla nalezena hodnota bez názvu typu a není k dispozici žádný očekávaný typ. Pokud je zadán model, každá hodnota v datové části musí mít typ, který může být zadán v datové části, explicitně volajícím nebo implicitně odvozen z nadřazené hodnoty. []"
+* Nepovedlo se aktualizovat aplikaci xxxxxx. Podrobnosti o chybě: neplatný identifikátor objektu undefined. []."
+* Nepovedlo se aktualizovat aplikaci xxxxxx. Podrobnosti o chybě: jedna nebo více zadaných hodnot vlastností je neplatných. []."
+* Nepovedlo se aktualizovat aplikaci xxxxxx. Podrobnosti o chybě: nepovoluje se nastavit availableToOtherTenants v této verzi rozhraní API pro aktualizaci. []."
+* Nepovedlo se aktualizovat aplikaci xxxxxx. Podrobnosti o chybě: aktualizace vlastnosti ' replyUrls ' není pro tuto aplikaci povolena. Místo toho použijte vlastnost ' replyUrlsWithType '. []."
+* Nepovedlo se aktualizovat aplikaci xxxxxx. Podrobnosti o chybě: byla nalezena hodnota bez názvu typu a není k dispozici žádný očekávaný typ. Při zadání modelu musí mít každá hodnota v datové části typ, který může být buď zadán v datové části, explicitně volajícím nebo implicitně odvozený z nadřazené hodnoty. []"
 
-Pokud se zobrazí jedna z těchto chyb, doporučujeme následující akce:
+Když se zobrazí jedna z těchto chyb, doporučujeme, abyste provedli následující akce:
 
-1. Upravte atributy jednotlivě v editoru manifestu namísto nahrání dříve staženého manifestu. Pomocí tabulky [odkazů manifestu](#manifest-reference) můžete porozumět syntaxi a sémantice starých a nových atributů, abyste mohli úspěšně upravit atributy, které vás zajímají. 
-1. Pokud váš pracovní postup vyžaduje, abyste uložili manifesty do zdrojového úložiště pro pozdější použití, doporučujeme přepnutí uložených manifestů ve vašem úložišti s tím, které se zobrazí v prostředí **registrace aplikací.**
+1. Upravte atributy jednotlivě v editoru manifestu namísto nahrávání dříve staženého manifestu. Použijte [referenční tabulku manifestu](#manifest-reference) k pochopení syntaxe a sémantiky starých a nových atributů, abyste mohli úspěšně upravit atributy, které vás zajímají. 
+1. Pokud váš pracovní postup vyžaduje, abyste uložili manifesty ve zdrojovém úložišti pro pozdější použití, doporučujeme, abyste uložili manifesty v úložišti, které jste viděli v prostředí **Registrace aplikací** .
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o vztahu mezi objekty aplikačního a instančního objektu aplikace a objekty instančního objektu najdete [v tématu Objekty hlavního nastavení aplikací a služeb ve službě Azure AD](app-objects-and-service-principals.md).
-* Definice některých základních konceptů vývojáře platformy microsoftových identit najdete v [glosáři vývojářů platformy Microsoft pro](developer-glossary.md) vývojáře identit.
+* Další informace o vztahu mezi aplikací aplikace a objekty instančních objektů najdete v tématu [aplikace a instanční objekty služby v Azure AD](app-objects-and-service-principals.md).
+* V tématu [Microsoft Identity Platform Developer Glosář](developer-glossary.md) najdete definice některých základních konceptů vývojářů platformy Microsoft Identity Platform.
 
-V následující části s komentáři můžete poskytnout zpětnou vazbu, která pomůže upřesnit a utvářet náš obsah.
+Následující komentáře vám poskytnou zpětnou vazbu, která pomáhá Upřesnit a natvarovat obsah.
 
 <!--article references -->
 [AAD-APP-OBJECTS]:app-objects-and-service-principals.md

@@ -1,23 +1,23 @@
 ---
-title: Podpora pro Azure Cosmos DB Gremlin
+title: Podpora Azure Cosmos DB Gremlin
 description: Přečtěte si o jazyce Gremlin od společnosti Apache TinkerPop. Dozvíte se, které funkce a kroky jsou dostupné ve službě Azure Cosmos DB.
 author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 06/24/2019
+ms.date: 04/23/2020
 ms.author: lbosq
-ms.openlocfilehash: 59c45497ea6d9fcb216c83060a858ee6c96f1151
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: ba3b20f263f37d85389bb11c0674584408a0c223
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81449965"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82161635"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Podpora grafu Gremlin ve službě Azure Cosmos DB
-Azure Cosmos DB podporuje jazyk procházení grafu [Apache Tinkerpop,](https://tinkerpop.apache.org) známý jako [Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps). Pomocí jazyka Gremlin můžete vytvářet grafové entity (vrcholy a okraje), upravovat vlastnosti v rámci těchto entit, provádět dotazy a přechody a odstraňovat entity. 
+Azure Cosmos DB podporuje jazyk procházení grafů [Apache Tinkerpop](https://tinkerpop.apache.org) , který se označuje jako [Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps). Pomocí jazyka Gremlin můžete vytvářet grafové entity (vrcholy a okraje), upravovat vlastnosti v rámci těchto entit, provádět dotazy a přechody a odstraňovat entity. 
 
-V tomto článku poskytujeme rychlý návod Gremlin a výčet gremlin funkce, které jsou podporovány gremlin rozhraní API.
+V tomto článku poskytujeme rychlý názor na Gremlin a výčet funkcí Gremlin podporovaných rozhraním API Gremlin.
 
 ## <a name="compatible-client-libraries"></a>Kompatibilní klientské knihovny
 
@@ -27,7 +27,7 @@ Následující tabulka ukazuje oblíbené ovladače Gremlin, které můžete pou
 | --- | --- | --- | --- |
 | [.NET](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-DotNet) | [Gremlin.NET na GitHubu](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [Vytvoření grafu pomocí jazyka .NET](create-graph-dotnet.md) | 3.4.0-RC2 |
 | [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](https://tinkerpop.apache.org/javadocs/current/full/) | [Vytvoření grafu pomocí jazyka Java](create-graph-java.md) | 3.2.0 nebo novější |
-| [Node.js](https://www.npmjs.com/package/gremlin) | [Gremlin-JavaScript na GitHubu](https://github.com/apache/tinkerpop/tree/master/gremlin-javascript) | [Vytvoření grafu pomocí jazyka Node.js](create-graph-nodejs.md) | 3.3.4+ |
+| [Node.js](https://www.npmjs.com/package/gremlin) | [Gremlin-JavaScript na GitHubu](https://github.com/apache/tinkerpop/tree/master/gremlin-javascript) | [Vytvoření grafu pomocí jazyka Node.js](create-graph-nodejs.md) | 3.3.4 + |
 | [Python](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [Gremlin-Python na GitHubu](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [Vytvoření grafu pomocí jazyka Python](create-graph-python.md) | 3.2.7 |
 | [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [Gremlin-PHP na GitHubu](https://github.com/PommeVerte/gremlin-php) | [Vytvoření grafu pomocí jazyka PHP](create-graph-php.md) | 3.1.0 |
 | [Konzola Gremlin](https://tinkerpop.apache.org/downloads.html) | [Dokumentace k TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Vytvoření grafu pomocí konzoly Gremlin](create-graph-gremlin-console.md) | 3.2.0 nebo novější |
@@ -46,9 +46,9 @@ V následující tabulce najdete přehled funkcí TinkerPop, které Azure Cosmos
 | Funkce okrajů | AddEdges, RemoveEdges, StringIds, UserSuppliedIds, AddProperty, RemoveProperty | Podporuje vytváření, úpravy a odstraňování okrajů. |
 | Funkce vlastností okrajů | Properties, BooleanValues, ByteValues, DoubleValues, FloatValues, IntegerValues, LongValues, StringValues | Podporuje vytváření, úpravy a odstraňování vlastností okrajů. |
 
-## <a name="gremlin-wire-format"></a>Gremlin drát formát
+## <a name="gremlin-wire-format"></a>Formát drátěného Gremlin
 
-Azure Cosmos DB používá formát JSON při vracení výsledků z operací Gremlin. Azure Cosmos DB aktuálně podporuje formát JSON. Například následující úryvek zobrazuje reprezentaci JSON vrcholu *vráceného klientovi* z Azure Cosmos DB:
+Při vracení výsledků z Gremlin operací používá Azure Cosmos DB formát JSON. Azure Cosmos DB aktuálně podporuje formát JSON. Například následující fragment kódu ukazuje reprezentaci kódu vrcholu *vrácenou klientovi* z Azure Cosmos DB:
 
 ```json
   {
@@ -91,8 +91,8 @@ Vlastnosti používané ve formátu JSON pro vrcholy jsou popsány níže:
 
 | Vlastnost | Popis | 
 | --- | --- | --- |
-| `id` | ID vrcholu. Musí být jedinečný (v kombinaci s hodnotou, `_partition` pokud je k dispozici). Pokud není zadána žádná hodnota, bude automaticky dodána s identifikátorem GUID | 
-| `label` | Popisek vrcholu. Tato vlastnost se používá k popisu typu entity. |
+| `id` | ID vrcholu. Musí být jedinečný (v kombinaci s hodnotou `_partition` Pokud je to možné). Pokud není zadána žádná hodnota, bude automaticky doplněna identifikátorem GUID. | 
+| `label` | Popisek vrcholu. Tato vlastnost slouží k popisu typu entity. |
 | `type` | Slouží k odlišení vrcholů od jiných než grafových dokumentů. |
 | `properties` | Sada uživatelem definovaných vlastností přidružených k vrcholu. Každá vlastnost může mít více hodnot. |
 | `_partition` | Klíč oddílu vrcholu. Používá se pro [dělení grafů](graph-partitioning.md). |
@@ -102,9 +102,9 @@ Hrana obsahuje následující informace, které usnadňují navigaci do ostatní
 
 | Vlastnost | Popis |
 | --- | --- |
-| `id` | ID okraje. Musí být jedinečný (v kombinaci s hodnotou, `_partition` pokud je k dispozici) |
+| `id` | ID okraje. Musí být jedinečné (v kombinaci s hodnotou `_partition` Pokud je to možné). |
 | `label` | Popisek okraje. Tato vlastnost je volitelná a slouží k popisu typu vztahu. |
-| `inV` | Tato vlastnost obsahuje seznam v vrcholech pro hranu. Ukládání informací o sousedství spolu s okraj umožňuje rychlé procházení. Vrcholy jsou seskupeny podle svých popisků. |
+| `inV` | Tato vlastnost obsahuje seznam vrcholů pro hranici. Ukládání informací o sousedství spolu s okraj umožňuje rychlé procházení. Vrcholy jsou seskupeny podle svých popisků. |
 | `properties` | Sada uživatelem definovaných vlastností přidružených k okraji. Každá vlastnost může mít více hodnot. |
 
 Každá vlastnost může ukládat více hodnot v rámci pole. 
@@ -128,7 +128,7 @@ Nyní se podívejme na kroky v jazyce Gremlin, které Azure Cosmos DB podporuje.
 | `count` | Vrátí počet procházení. | [count step](https://tinkerpop.apache.org/docs/3.3.2/reference/#count-step) |
 | `dedup` | Vrátí hodnoty s odebranými duplicitními objekty. | [dedup step](https://tinkerpop.apache.org/docs/3.3.2/reference/#dedup-step) |
 | `drop` | Zahodí hodnoty (vrchol/hrana). | [drop step](https://tinkerpop.apache.org/docs/3.3.2/reference/#drop-step) |
-| `executionProfile` | Vytvoří popis všech operací generovaných provedeným Gremlinem. | [executionProfil krok](graph-execution-profile.md) |
+| `executionProfile` | Vytvoří popis všech operací generovaných spuštěným Gremlin krokem. | [Krok executionProfile](graph-execution-profile.md) |
 | `fold` | Slouží jako bariéra, která vypočítá agregaci výsledků.| [fold step](https://tinkerpop.apache.org/docs/3.3.2/reference/#fold-step) |
 | `group` | Seskupí hodnoty na základě zadaných popisků.| [group step](https://tinkerpop.apache.org/docs/3.3.2/reference/#group-step) |
 | `has` | Slouží k filtrování vlastností, vrcholů a okrajů. Podporuje varianty `hasLabel`, `hasId`, `hasNot` a `has`. | [has step](https://tinkerpop.apache.org/docs/3.3.2/reference/#has-step) |
@@ -148,12 +148,12 @@ Nyní se podívejme na kroky v jazyce Gremlin, které Azure Cosmos DB podporuje.
 | `sample` | Slouží k zobrazení ukázkových výsledků z procházení. | [sample step](https://tinkerpop.apache.org/docs/3.3.2/reference/#sample-step) |
 | `select` | Slouží k zobrazení výsledků z procházení. |  [select step](https://tinkerpop.apache.org/docs/3.3.2/reference/#select-step) |
 | `store` | Slouží k zobrazení neblokujících agregací z procházení. | [store step](https://tinkerpop.apache.org/docs/3.3.2/reference/#store-step) |
-| `TextP.startingWith(string)` | Funkce filtrování řetězců. Tato funkce se používá jako predikát pro `has()` krok tak, aby odpovídal vlastnosti se začátkem daného řetězce | [Predikáty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.endingWith(string)` |  Funkce filtrování řetězců. Tato funkce se používá jako predikát pro `has()` krok tak, aby odpovídal vlastnosti s koncem daného řetězce | [Predikáty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.containing(string)` | Funkce filtrování řetězců. Tato funkce se používá jako predikát pro `has()` krok tak, aby odpovídal vlastnosti s obsahem daného řetězce | [Predikáty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.notStartingWith(string)` | Funkce filtrování řetězců. Tato funkce se používá jako predikát pro `has()` krok tak, aby odpovídal vlastnosti, která nezačíná daným řetězcem | [Predikáty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.notEndingWith(string)` | Funkce filtrování řetězců. Tato funkce se používá jako predikát pro `has()` krok tak, aby odpovídal vlastnosti, která nekončí daným řetězcem. | [Predikáty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.notContaining(string)` | Funkce filtrování řetězců. Tato funkce se používá jako predikát pro `has()` krok tak, aby odpovídal vlastnosti, která neobsahuje daný řetězec | [Predikáty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.startingWith(string)` | Funkce filtrování řetězců. Tato funkce se používá jako predikát pro `has()` krok, který odpovídá vlastnosti začínající na začátku daného řetězce. | [TextP predikáty](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.endingWith(string)` |  Funkce filtrování řetězců. Tato funkce se používá jako predikát pro `has()` krok, který odpovídá vlastnosti s koncem daného řetězce. | [TextP predikáty](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.containing(string)` | Funkce filtrování řetězců. Tato funkce se používá jako predikát pro `has()` krok, který odpovídá vlastnosti s obsahem daného řetězce. | [TextP predikáty](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.notStartingWith(string)` | Funkce filtrování řetězců. Tato funkce se používá jako predikát pro `has()` krok, který odpovídá vlastnosti, která nezačíná zadaným řetězcem. | [TextP predikáty](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.notEndingWith(string)` | Funkce filtrování řetězců. Tato funkce se používá jako predikát pro `has()` krok, který odpovídá vlastnosti, která nekončí daným řetězcem. | [TextP predikáty](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.notContaining(string)` | Funkce filtrování řetězců. Tato funkce se používá jako predikát pro `has()` krok, který odpovídá vlastnosti, která neobsahuje daný řetězec. | [TextP predikáty](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
 | `tree` | Agreguje cesty z vrcholu do stromu. | [tree step](https://tinkerpop.apache.org/docs/3.3.2/reference/#tree-step) |
 | `unfold` | Rozbalí iterátor jako krok.| [unfold step](https://tinkerpop.apache.org/docs/3.3.2/reference/#unfold-step) |
 | `union` | Sloučí výsledky z více procházení.| [union step](https://tinkerpop.apache.org/docs/3.3.2/reference/#union-step) |

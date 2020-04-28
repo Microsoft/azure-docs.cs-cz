@@ -1,75 +1,68 @@
 ---
 title: Správa konzistence v Azure Cosmos DB
-description: Zjistěte, jak konfigurovat a spravovat úrovně konzistence v Azure Cosmos DB pomocí portálu Azure Portal, .Net SDK, Java SDK a různých dalších sad SDK
+description: Naučte se konfigurovat a spravovat úrovně konzistence v Azure Cosmos DB pomocí Azure Portal, sady .NET SDK, Java SDK a různých dalších sad SDK.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 04/24/2020
 ms.author: mjbrown
-ms.openlocfilehash: 651daa0af8188b386220d97390e7a61615f94120
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e18abf5d8e26dba7a48bd1deb7d53102b9971690
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79369399"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184278"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Správa úrovní konzistence ve službě Azure Cosmos DB
 
-Tento článek vysvětluje, jak spravovat úrovně konzistence v Azure Cosmos DB. Dozvíte se, jak nakonfigurovat výchozí úroveň konzistence, přepsat výchozí konzistenci, ručně spravovat tokeny relace a pochopit metriku Probabilistically Bounded Staleness (PBS).
+Tento článek vysvětluje, jak spravovat úrovně konzistence v Azure Cosmos DB. Naučíte se, jak nakonfigurovat výchozí úroveň konzistence, přepsat výchozí konzistenci, ručně spravovat tokeny relací a pochopit metriku služby PBS (probabilistically Bounded).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="configure-the-default-consistency-level"></a>Konfigurace výchozí úrovně konzistence
 
-[Výchozí úroveň konzistence](consistency-levels.md) je úroveň konzistence, kterou klienti používají ve výchozím nastavení. Klienti jej mohou vždy přepsat.
+[Výchozí úroveň konzistence](consistency-levels.md) je úroveň konzistence, kterou klienti používají ve výchozím nastavení.
 
-### <a name="cli"></a>Rozhraní příkazového řádku
+### <a name="cli"></a>CLI
+
+Vytvořte účet Cosmos s konzistencí relací a pak aktualizujte výchozí konzistenci.
 
 ```azurecli
-# create with a default consistency
-az cosmosdb create --name <name of Cosmos DB Account> --resource-group <resource group name> --default-consistency-level Session
+# Create a new account with Session consistency
+az cosmosdb create --name $accountName --resource-group $resourceGroupName --default-consistency-level Session
 
 # update an existing account's default consistency
-az cosmosdb update --name <name of Cosmos DB Account> --resource-group <resource group name> --default-consistency-level Eventual
+az cosmosdb update --name $accountName --resource-group $resourceGroupName --default-consistency-level Strong
 ```
 
 ### <a name="powershell"></a>PowerShell
 
-Tento příklad vytvoří nový účet Azure Cosmos s více povolenými oblastmi zápisu v oblastech USA – východ a západ. Výchozí úroveň konzistence je nastavena na *konzistenci relace.*
+Vytvořte účet Cosmos s konzistencí relací a pak aktualizujte výchozí konzistenci.
 
 ```azurepowershell-interactive
-$locations = @(@{"locationName"="East US"; "failoverPriority"=0},
-             @{"locationName"="West US"; "failoverPriority"=1})
+# Create a new account with Session consistency
+New-AzCosmosDBAccount -ResourceGroupName $resourceGroupName `
+  -Location $locations -Name $accountName -DefaultConsistencyLevel "Session"
 
-$iprangefilter = ""
-
-$consistencyPolicy = @{"defaultConsistencyLevel"="Session"}
-
-$CosmosDBProperties = @{"databaseAccountOfferType"="Standard";
-                        "locations"=$locations;
-                        "consistencyPolicy"=$consistencyPolicy;
-                        "ipRangeFilter"=$iprangefilter;
-                        "enableMultipleWriteLocations"="true"}
-
-New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
-  -ApiVersion "2015-04-08" `
-  -ResourceGroupName "myResourceGroup" `
-  -Location "East US" `
-  -Name "myCosmosDbAccount" `
-  -Properties $CosmosDBProperties
+# Update an existing account's default consistency
+Update-AzCosmosDBAccount -ResourceGroupName $resourceGroupName `
+  -Name $accountName -DefaultConsistencyLevel "Strong"
 ```
 
 ### <a name="azure-portal"></a>portál Azure
 
-Pokud chcete zobrazit nebo upravit výchozí úroveň konzistence, přihlaste se k portálu Azure. Najděte svůj účet Azure Cosmos a otevřete **podokno Výchozí konzistence.** Jako nové výchozí vyberte požadovanou úroveň konzistence a pak vyberte **Uložit**. Portál Azure také poskytuje vizualizaci různých úrovní konzistence s hudebními poznámkami. 
+Pokud chcete zobrazit nebo upravit výchozí úroveň konzistence, přihlaste se k Azure Portal. Vyhledejte účet Azure Cosmos a otevřete **výchozí podokno konzistence** . Vyberte požadovanou úroveň konzistence jako novou výchozí hodnotu a pak vyberte **Uložit**. Azure Portal také nabízí vizualizaci různých úrovní konzistence s hudebními poznámkami. 
 
-![Nabídka Konzistence na portálu Azure](./media/how-to-manage-consistency/consistency-settings.png)
+![Nabídka konzistence v Azure Portal](./media/how-to-manage-consistency/consistency-settings.png)
 
 ## <a name="override-the-default-consistency-level"></a>Přepsání výchozí úrovně konzistence
 
-Klienti můžou přepsat výchozí úroveň konzistence nastavenou službou. Úroveň konzistence lze nastavit u požadavku na jeden požadavek, který přepíše výchozí úroveň konzistence nastavenou na úrovni účtu.
+Klienti můžou přepsat výchozí úroveň konzistence nastavenou službou. Úroveň konzistence se dá nastavit pro každý požadavek, který přepíše výchozí úroveň konzistence nastavenou na úrovni účtu.
 
-### <a name="net-sdk-v2"></a><a id="override-default-consistency-dotnet"></a>Sada .NET SDK V2
+> [!TIP]
+> Konzistenci je možné **zmírnit** jenom na úrovni žádosti. Pokud chcete přejít ze slabé na silnější konzistenci, aktualizujte výchozí konzistenci účtu Cosmos.
+
+### <a name="net-sdk-v2"></a><a id="override-default-consistency-dotnet"></a>.NET SDK V2
 
 ```csharp
 // Override consistency at the client level
@@ -81,7 +74,7 @@ RequestOptions requestOptions = new RequestOptions { ConsistencyLevel = Consiste
 var response = await client.CreateDocumentAsync(collectionUri, document, requestOptions);
 ```
 
-### <a name="net-sdk-v3"></a><a id="override-default-consistency-dotnet-v3"></a>Sada .NET SDK V3
+### <a name="net-sdk-v3"></a><a id="override-default-consistency-dotnet-v3"></a>.NET SDK V3
 
 ```csharp
 // Override consistency at the request level via request options
@@ -89,8 +82,8 @@ ItemRequestOptions requestOptions = new ItemRequestOptions { ConsistencyLevel = 
 
 var response = await client.GetContainer(databaseName, containerName)
     .CreateItemAsync(
-        item, 
-        new PartitionKey(itemPartitionKey), 
+        item,
+        new PartitionKey(itemPartitionKey),
         requestOptions);
 ```
 
@@ -140,11 +133,11 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {
 
 ## <a name="utilize-session-tokens"></a>Využití tokenů relace
 
-Jednou z úrovní konzistence v Azure Cosmos DB je *konzistence relace.* Toto je výchozí úroveň použitá pro účty Cosmos ve výchozím nastavení. Při práci s *konzistence relace* klient bude používat token relace interně s každým požadavek na čtení nebo dotaz k zajištění, že nastavená úroveň konzistence je zachována.
+Jednou z úrovní konzistence v Azure Cosmos DB je konzistence *relace* . Toto je výchozí úroveň, která se ve výchozím nastavení používá pro účty Cosmos. Při práci s konzistencí *relace* bude klient používat token relace interně s každou žádostí pro čtení/dotaz, aby bylo zajištěno, že se zachová nastavená úroveň konzistence.
 
-Chcete-li spravovat tokeny relace ručně, získejte token relace z odpovědi a nastavte je na požadavek. Pokud nepotřebujete spravovat tokeny relace ručně, nemusíte používat tyto ukázky. Sada SDK automaticky sleduje tokeny relace. Pokud token relace nenastavíte ručně, sada SDK ve výchozím nastavení použije nejnovější token relace.
+Chcete-li spravovat tokeny relace ručně, Získejte token relace z odpovědi a nastavte je na požadavek. Pokud nepotřebujete spravovat tokeny relací ručně, nemusíte tyto ukázky používat. Sada SDK automaticky sleduje tokeny relací. Pokud nenastavíte token relace ručně, použije sada SDK nejnovější token relace.
 
-### <a name="net-sdk-v2"></a><a id="utilize-session-tokens-dotnet"></a>Sada .NET SDK V2
+### <a name="net-sdk-v2"></a><a id="utilize-session-tokens-dotnet"></a>.NET SDK V2
 
 ```csharp
 var response = await client.ReadDocumentAsync(
@@ -157,7 +150,7 @@ var response = await client.ReadDocumentAsync(
                 UriFactory.CreateDocumentUri(databaseName, collectionName, "SalesOrder1"), options);
 ```
 
-### <a name="net-sdk-v3"></a><a id="utilize-session-tokens-dotnet-v3"></a>Sada .NET SDK V3
+### <a name="net-sdk-v3"></a><a id="utilize-session-tokens-dotnet-v3"></a>.NET SDK V3
 
 ```csharp
 Container container = client.GetContainer(databaseName, collectionName);
@@ -231,18 +224,17 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>Monitorování metriky Pravděpodobnostně omezená neaktuálnost (PBS)
 
-Jak konečná je konečná konzistence? Pro průměrný případ můžeme nabídnout neaktuálnost hranice s ohledem na historii verzí a čas. [**Probabilistically ohraničené staleness (PBS)**](https://pbs.cs.berkeley.edu/) metrika se snaží kvantifikovat pravděpodobnost neaktuálnosti a zobrazí se jako metrika. Pokud chcete zobrazit metriku PBS, přejděte na svůj účet Azure Cosmos na webu Azure Portal. Otevřete podokno **Metriky** a vyberte kartu **Konzistence.** Podívejte se na graf s názvem **Pravděpodobnost silně konzistentníčtení na základě vašeho pracovního vytížení (viz PBS).**
+Jak co má být konečná konzistence? V případě průměrného případu můžeme nabídnout neplatnost hranic s ohledem na historii a čas verzí. Metrika služby [**PBS (probabilistically Bounded)**](https://pbs.cs.berkeley.edu/) se pokusí vyčíslit pravděpodobnost neaktuálnosti a zobrazí ji jako metriku. Metriku služby PBS zobrazíte tak, že v Azure Portal přejdete na svůj účet Azure Cosmos. Otevřete podokno **metriky** a vyberte kartu **konzistence** . Podívejte se do grafu s názvem **pravděpodobnost silně konzistentních čtení na základě vašich úloh (viz PBS)**.
 
-![Graf PBS na webu Azure Portal](./media/how-to-manage-consistency/pbs-metric.png)
-
+![Graf PBS v Azure Portal](./media/how-to-manage-consistency/pbs-metric.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o tom, jak spravovat konflikty dat, nebo přejít na další klíčový koncept v Azure Cosmos DB. Viz následující články:
+Přečtěte si další informace o tom, jak spravovat konflikty dat, nebo přejděte k dalšímu klíčovému konceptu v Azure Cosmos DB. Viz následující články:
 
 * [Úrovně konzistence v Azure Cosmos DB](consistency-levels.md)
 * [Správa konfliktů mezi oblastmi](how-to-manage-conflicts.md)
 * [Dělení a distribuce dat](partition-data.md)
-* [Kompromisy konzistence v moderním návrhu distribuovaných databázových systémů](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
+* [Návrh moderních systémů distribuovaných databází – kompromisy v konzistenci](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 * [Vysoká dostupnost](high-availability.md)
 * [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

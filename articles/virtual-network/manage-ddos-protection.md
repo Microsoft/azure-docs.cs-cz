@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: 454278f0f45a73ec99f52d3f7e9e0c5ce95ecf7a
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: f208119ce80d6b728030ea96f13d6c3d0375e74a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82133291"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82182935"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Správa Azure DDoS Protection Standard pomocí Azure Portal
 
@@ -241,4 +241,4 @@ Aby bylo možné povolit DDoS ochranu pro virtuální síť, musí mít váš ú
 
 ## <a name="next-steps"></a>Další kroky
 
-- Vytvoření a použití [zásad Azure](policy-samples.md) pro virtuální sítě
+- Vytvoření a přiřazení [Azure Policy definice](policy-samples.md) pro virtuální sítě

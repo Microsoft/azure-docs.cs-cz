@@ -2,17 +2,37 @@
 title: Konfigurace Hybrid Kubernetes clusterů pomocí Azure Monitor pro kontejnery | Microsoft Docs
 description: Tento článek popisuje, jak můžete nakonfigurovat Azure Monitor pro kontejnery, abyste mohli monitorovat clustery Kubernetes hostované v Azure Stack nebo jiném prostředí.
 ms.topic: conceptual
-ms.date: 01/24/2020
-ms.openlocfilehash: c0dbbf9f65aa96db1ebcd0b03552bba8d1f91863
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.date: 04/22/2020
+ms.openlocfilehash: a0008f7a2d6b808a8ff55d85330801305361d7c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82143177"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185961"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Konfigurace Hybrid Kubernetes clusterů pomocí Azure Monitor pro kontejnery
 
 Azure Monitor for Containers poskytuje bohatou monitorovací prostředí pro Azure Kubernetes Service (AKS) a [AKS Engine v Azure](https://github.com/Azure/aks-engine), což je samoobslužný cluster Kubernetes hostovaný v Azure. Tento článek popisuje, jak povolit monitorování clusterů Kubernetes hostovaných mimo Azure a dosáhnout podobných možností monitorování.
+
+## <a name="supported-configurations"></a>Podporované konfigurace
+
+Následující je oficiálně podporovaná s Azure Monitor pro kontejnery.
+
+* Environment 
+
+    * Místní Kubernetes
+    
+    * AKS Engine v Azure a Azure Stack. Další informace najdete v tématu [AKS Engine on Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)
+    
+    * [OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) verze 4 a vyšší, místní nebo jiná cloudová prostředí.
+
+* Verze Kubernetes a zásad podpory jsou stejné jako verze [podporovaných AKS](../../aks/supported-kubernetes-versions.md).
+
+* Modul runtime kontejneru: moduly runtime kompatibilní s Docker, Moby a CRI, jako jsou CRI-O a kontejnery.
+
+* Verze operačního systému Linux pro hlavní a zpracovávané uzly: Ubuntu (18,04 LTS a 16,04 LTS) a Red Hat Enterprise Linux CoreOS 43,81.
+
+* Podpora řízení přístupu: Kubernetes RBAC a non-RBAC
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -33,10 +53,9 @@ Než začnete, ujistěte se, že máte následující:
 * Následující informace o konfiguraci proxy serveru a brány firewall jsou vyžadovány pro kontejnerové verze Log Analytics agenta pro Linux pro komunikaci s Azure Monitor:
 
     |Prostředek agenta|Porty |
-    |------|---------|   
-    |*.ods.opinsights.azure.com |Port 443 |  
-    |*.oms.opinsights.azure.com |Port 443 |  
-    |*.blob.core.windows.net |Port 443 |  
+    |------|---------|
+    |*.ods.opinsights.azure.com |Port 443 |
+    |*.oms.opinsights.azure.com |Port 443 |
     |*. dc.services.visualstudio.com |Port 443 |
 
 * Kontejner s označením vyžaduje, aby `cAdvisor secure port: 10250` se `unsecure port :10255` Kubelet nebo otevřel na všech uzlech v clusteru za účelem shromažďování metrik výkonu. Doporučujeme, abyste nakonfigurovali `secure port: 10250` na CAdvisor pro Kubelet, pokud už není nakonfigurovaná.
@@ -45,16 +64,6 @@ Než začnete, ujistěte se, že máte následující:
 
 >[!IMPORTANT]
 >Minimální verze agenta podporovaná pro monitorování clusterů Hybrid Kubernetes je ciprod10182019 nebo novější.
-
-## <a name="supported-configurations"></a>Podporované konfigurace
-
-Následující je oficiálně podporovaná s Azure Monitor pro kontejnery.
-
-- Prostředí: Kubernetes místně, AKS Engine v Azure a Azure Stack. Další informace najdete v tématu [AKS Engine on Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908).
-- Verze Kubernetes a zásad podpory jsou stejné jako verze [podporovaných AKS](../../aks/supported-kubernetes-versions.md).
-- Modul runtime kontejneru: Docker a Moby
-- Verze operačního systému Linux pro hlavní a zpracovávané uzly: Ubuntu (18,04 LTS a 16,04 LTS)
-- Podpora řízení přístupu: Kubernetes RBAC a non-RBAC
 
 ## <a name="enable-monitoring"></a>Povolení monitorování
 
@@ -242,7 +251,7 @@ Abyste nejdřív identifikovali úplné ID prostředku pracovního prostoru Log 
 ## <a name="install-the-chart"></a>Instalace grafu
 
 >[!NOTE]
->Následující příkazy jsou použitelné pouze pro Helm verze 2. Použití parametru--name není použitelné pro Helm verze 3.
+>Následující příkazy jsou použitelné pouze pro Helm verze 2. Použití `--name` parametru není použitelné pro Helm verze 3.
 
 Chcete-li povolit graf HELM, postupujte takto:
 
@@ -272,6 +281,28 @@ Chcete-li povolit graf HELM, postupujte takto:
     $ helm install --name myrelease-1 \
     --set omsagent.domain=opinsights.azure.us,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
     ```
+
+### <a name="enable-the-helm-chart-using-the-api-model"></a>Povolení grafu Helm pomocí modelu rozhraní API
+
+Doplněk můžete zadat v souboru JSON specifikace clusteru AKS Engine, označovaný také jako model rozhraní API. V tomto doplňku zadejte verzi kódovaného kódu base64 `WorkspaceGUID` a `WorkspaceKey` Log Analytics pracovní prostor, ve kterém jsou shromážděná data monitorování uložená.
+
+Podporované definice rozhraní API pro cluster centra Azure Stack najdete v tomto příkladu – [Kubernetes-Container-monitoring_existing_workspace_id_and_key. JSON](https://github.com/Azure/aks-engine/blob/master/examples/addons/container-monitoring/kubernetes-container-monitoring_existing_workspace_id_and_key.json). Konkrétně Najděte vlastnost **Doplňky** v **kubernetesConfig**:
+
+```json
+"orchestratorType": "Kubernetes",
+       "kubernetesConfig": {
+         "addons": [
+           {
+             "name": "container-monitoring",
+             "enabled": true,
+             "config": {
+               "workspaceGuid": "<Azure Log Analytics Workspace Guid in Base-64 encoded>",
+               "workspaceKey": "<Azure Log Analytics Workspace Key in Base-64 encoded>"
+             }
+           }
+         ]
+       }
+```
 
 ## <a name="configure-agent-data-collection"></a>Konfigurace shromažďování dat agenta
 
