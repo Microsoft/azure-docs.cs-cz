@@ -1,7 +1,7 @@
 ---
-title: Konfigurace ukončení protokolu TLS pomocí certifikátů trezoru klíčů – PowerShell
+title: Konfigurace ukončení TLS pomocí certifikátů Key Vault – PowerShell
 titleSuffix: Azure Application Gateway
-description: Zjistěte, jak můžete integrovat Azure Application Gateway s Trezorem klíčů pro serverové certifikáty, které jsou připojené k naslouchacím líným a https povoleno.
+description: Přečtěte si, jak můžete integrovat Azure Application Gateway s Key Vault pro certifikáty serveru, které jsou připojené k posluchačům s povoleným protokolem HTTPS.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,23 +9,23 @@ ms.topic: article
 ms.date: 02/27/2020
 ms.author: victorh
 ms.openlocfilehash: ffda4b41497a9fd84db5fcee36202eb1c1dca2c0
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81457837"
 ---
-# <a name="configure-tls-termination-with-key-vault-certificates-by-using-azure-powershell"></a>Konfigurace ukončení protokolu TLS pomocí certifikátů trezoru klíčů pomocí Azure PowerShellu
+# <a name="configure-tls-termination-with-key-vault-certificates-by-using-azure-powershell"></a>Konfigurace ukončení TLS pomocí Key Vault certifikátů pomocí Azure PowerShell
 
-[Azure Key Vault](../key-vault/general/overview.md) je úložiště tajných klíčů spravované platformou, které můžete použít k zabezpečení tajných kódů, klíčů a certifikátů TLS/SSL. Azure Application Gateway podporuje integraci s trezorem klíčů pro serverové certifikáty, které jsou připojené k naslouchací procesy s podporou PROTOKOLU HTTPS. Tato podpora je omezena na sku sku aplikace v2.
+[Azure Key Vault](../key-vault/general/overview.md) je úložiště tajné databáze spravované platformou, které můžete použít k ochraně tajných klíčů, klíčů a certifikátů TLS/SSL. Azure Application Gateway podporuje integraci s Key Vault pro certifikáty serveru, které jsou připojené k naslouchacím procesům s povoleným protokolem HTTPS. Tato podpora je omezená na SKU Application Gateway v2.
 
-Další informace naleznete [v tématu Ukončení TLS s certifikáty trezoru klíčů](key-vault-certs.md).
+Další informace najdete v tématu [ukončení protokolu TLS s certifikáty Key Vault](key-vault-certs.md).
 
-Tento článek ukazuje, jak pomocí skriptu Azure PowerShell integrovat trezor klíčů s vaší aplikační bránou pro koncové certifikáty TLS/SSL.
+V tomto článku se dozvíte, jak pomocí skriptu Azure PowerShell integrovat Trezor klíčů s aplikační bránou pro certifikáty ukončení protokolu TLS/SSL.
 
-Tento článek vyžaduje modul Azure PowerShell verze 1.0.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Chcete-li spustit příkazy v tomto článku, musíte také `Connect-AzAccount`vytvořit připojení s Azure spuštěním .
+Tento článek vyžaduje modul Azure PowerShell verze 1.0.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud chcete spustit příkazy v tomto článku, musíte taky vytvořit připojení k Azure spuštěním `Connect-AzAccount`.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -48,7 +48,7 @@ $kv = "TestKeyVaultAppGw"
 $appgwName = "AppGwKVIntegration"
 ```
 
-### <a name="create-a-resource-group-and-a-user-managed-identity"></a>Vytvoření skupiny prostředků a identity spravované uživatelem
+### <a name="create-a-resource-group-and-a-user-managed-identity"></a>Vytvoření skupiny prostředků a uživatelsky spravované identity
 
 ```azurepowershell
 $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
@@ -56,7 +56,7 @@ $identity = New-AzUserAssignedIdentity -Name "appgwKeyVaultIdentity" `
   -Location $location -ResourceGroupName $rgname
 ```
 
-### <a name="create-a-key-vault-policy-and-certificate-to-be-used-by-the-application-gateway"></a>Vytvoření trezoru klíčů, zásad a certifikátu, které bude používat aplikační brána
+### <a name="create-a-key-vault-policy-and-certificate-to-be-used-by-the-application-gateway"></a>Vytvoření trezoru klíčů, zásady a certifikátu, který bude používat aplikační brána
 
 ```azurepowershell
 $keyVault = New-AzKeyVault -Name $kv -ResourceGroupName $rgname -Location $location -EnableSoftDelete 
@@ -71,7 +71,7 @@ $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
 ```
 > [!NOTE]
-> Příznak -EnableSoftDelete musí být použit pro ukončení TLS správně fungovat. Pokud konfigurujete [obnovitelné odstranění trezoru klíčů prostřednictvím portálu](../key-vault/general/overview-soft-delete.md#soft-delete-behavior), musí být doba uchování zachována na 90 dnech, což je výchozí hodnota. Aplikační brána ještě nepodporuje jiné období uchovávání informací. 
+> Aby ukončení protokolu TLS fungovalo správně, musí být použit příznak-EnableSoftDelete. Pokud konfigurujete [Key Vault obnovitelného odstranění prostřednictvím portálu](../key-vault/general/overview-soft-delete.md#soft-delete-behavior), musí se doba uchování uchovávat v 90 dnech, což je výchozí hodnota. Application Gateway ještě nepodporuje jiné období uchování. 
 
 ### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
@@ -89,7 +89,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name "AppGwIP" `
   -location $location -AllocationMethod Static -Sku Standard
 ```
 
-### <a name="create-pool-and-front-end-ports"></a>Vytvoření bazénových a front-endových portů
+### <a name="create-pool-and-front-end-ports"></a>Vytvořit fond a front-endové porty
 
 ```azurepowershell
 $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name "appgwSubnet" -VirtualNetwork $vnet
@@ -102,13 +102,13 @@ $fp01 = New-AzApplicationGatewayFrontendPort -Name "port1" -Port 443
 $fp02 = New-AzApplicationGatewayFrontendPort -Name "port2" -Port 80
 ```
 
-### <a name="point-the-tlsssl-certificate-to-your-key-vault"></a>Najeďte certifikát TLS/SSL do trezoru klíčů
+### <a name="point-the-tlsssl-certificate-to-your-key-vault"></a>Nasměrujte certifikát TLS/SSL na Trezor klíčů.
 
 ```azurepowershell
 $sslCert01 = New-AzApplicationGatewaySslCertificate -Name "SSLCert1" -KeyVaultSecretId $secretId
 ```
 
-### <a name="create-listeners-rules-and-autoscale"></a>Vytvoření posluchačů, pravidel a automatického škálování
+### <a name="create-listeners-rules-and-autoscale"></a>Vytváření naslouchacího procesu, pravidel a automatického škálování
 
 ```azurepowershell
 $listener01 = New-AzApplicationGatewayHttpListener -Name "listener1" -Protocol Https `
@@ -125,7 +125,7 @@ $autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 3
 $sku = New-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2
 ```
 
-### <a name="assign-the-user-managed-identity-to-the-application-gateway"></a>Přiřazení identity spravované uživatelem k bráně aplikace
+### <a name="assign-the-user-managed-identity-to-the-application-gateway"></a>Přiřazení identity spravované uživatelem k aplikační bráně
 
 ```azurepowershell
 $appgwIdentity = New-AzApplicationGatewayIdentity -UserAssignedIdentityId $identity.Id
@@ -144,4 +144,4 @@ $appgw = New-AzApplicationGateway -Name $appgwName -Identity $appgwIdentity -Res
 
 ## <a name="next-steps"></a>Další kroky
 
-[Další informace o ukončení TLS](ssl-overview.md)
+[Další informace o ukončení protokolu TLS](ssl-overview.md)

@@ -1,6 +1,6 @@
 ---
-title: Komunikační protokoly a porty služby Azure IoT Hub | Dokumenty společnosti Microsoft
-description: Průvodce pro vývojáře – popisuje podporované komunikační protokoly pro komunikaci mezi zařízeními a cloud-zařízení a čísla portů, která musí být otevřená.
+title: Komunikační protokoly a porty služby Azure IoT Hub | Microsoft Docs
+description: Příručka pro vývojáře – popisuje podporované komunikační protokoly pro komunikaci mezi zařízeními a cloudem a čísla portů, která musí být otevřená.
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -12,13 +12,13 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 3e7f31371a0582a6f4941efbfa0087119278d2d1
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81729112"
 ---
-# <a name="reference---choose-a-communication-protocol"></a>Reference - výběr komunikačního protokolu
+# <a name="reference---choose-a-communication-protocol"></a>Referenční informace – volba komunikačního protokolu
 
 IoT Hub umožňuje zařízením používat ke komunikaci ze strany zařízení následující protokoly:
 
@@ -28,34 +28,34 @@ IoT Hub umožňuje zařízením používat ke komunikaci ze strany zařízení n
 * AMQP přes WebSockets
 * HTTPS
 
-Informace o tom, jak tyto protokoly podporují konkrétní funkce služby IoT Hub, naleznete v [tématu Pokyny pro komunikaci mezi zařízeními](iot-hub-devguide-d2c-guidance.md) a [pokyny pro komunikaci mezi cloudy](iot-hub-devguide-c2d-guidance.md).
+Informace o tom, jak tyto protokoly podporují konkrétní funkce IoT Hub, najdete v tématu [pokyny pro komunikaci mezi zařízeními a cloudem](iot-hub-devguide-d2c-guidance.md) a [pokyny pro komunikaci z cloudu na zařízení](iot-hub-devguide-c2d-guidance.md).
 
-V následující tabulce jsou uvedeny doporučení na vysoké úrovni pro výběr protokolu:
+Následující tabulka uvádí doporučení nejvyšší úrovně pro výběr protokolu:
 
-| Protocol (Protokol) | Kdy byste měli zvolit tento protokol |
+| Protocol (Protokol) | Pokud byste měli zvolit tento protokol |
 | --- | --- |
-| MQTT <br> MQTT přes WebSocket |Používejte na všech zařízeních, která nevyžadují připojení více zařízení (každé s vlastními přihlašovacími údaji pro zařízení) přes stejné připojení TLS. |
-| AMQP <br> AMQP přes websocket |Využijte výhod multiplexování připojení mezi zařízeními pomocí na polích a cloudových branách. |
+| MQTT <br> MQTT přes WebSocket |Použijte na všech zařízeních, která nevyžadují připojení více zařízení (s vlastními přihlašovacími údaji pro jednotlivá zařízení) přes stejné připojení TLS. |
+| AMQP <br> AMQP přes WebSocket |Používejte pro pole a cloudové brány, abyste mohli využít výhod multiplexování připojení mezi zařízeními. |
 | HTTPS |Používá se pro zařízení, která nepodporují jiné protokoly. |
 
-Při výběru protokolu pro komunikaci na straně zařízení zvažte následující body:
+Při volbě protokolu pro komunikaci na straně zařízení Vezměte v úvahu následující body:
 
-* **Vzor cloud-to-device**. Protokol HTTPS nemá efektivní způsob, jak implementovat nabízenou nabídku serveru. V důsledku toho, když používáte protokol HTTPS, zařízení dotazování IoT Hub pro zprávy z cloudu na zařízení. Tento přístup je neefektivní pro zařízení i IoT Hub. Podle aktuálních pokynů HTTPS by každé zařízení mělo dotazovat na zprávy každých 25 minut nebo více. MQTT a AMQP server podpory push při příjmu zpráv z cloudu na zařízení. Umožňují okamžité nabízení zpráv z ioT hubu do zařízení. Pokud je problém latence doručení, MQTT nebo AMQP jsou nejlepší protokoly použít. Pro zřídka připojená zařízení funguje také protokol HTTPS.
+* **Vzor typu cloud-zařízení**. Protokol HTTPS nemá účinný způsob implementace nabízených oznámení serveru. Pokud například používáte protokol HTTPS, zařízení se IoT Hub dotazování na zprávy typu cloud-zařízení. Tento přístup je neefektivní pro zařízení i IoT Hub. V rámci aktuálních pokynů protokolu HTTPS by se každé zařízení mělo dotazovat na zprávy každých 25 minut nebo i déle. MQTT a AMQP nabízená oznámení serveru podporují při přijímání zpráv z cloudu na zařízení. Umožňují okamžité vložení zpráv z IoT Hub do zařízení. Pokud je latence doručení obavou, MQTT nebo AMQP jsou nejlepší protokoly, které se mají použít. Pro zřídka připojená zařízení funguje i HTTPS.
 
-* **Polní brány**. MQTT a HTTPS podporují pouze jednu identitu zařízení (ID zařízení plus pověření) na připojení TLS. Z tohoto důvodu tyto protokoly nejsou podporovány pro [scénáře brány pole,](iot-hub-devguide-endpoints.md#field-gateways) které vyžadují multiplexní zprávy pomocí více identit zařízení přes jeden nebo fond upstream připojení k centru IoT Hub. Tyto brány mohou používat protokol, který podporuje více identit zařízení na připojení, jako je AMQP, pro jejich upstream provozu.
+* **Brány polí**. MQTT a HTTPS podporují jenom jednu identitu zařízení (ID zařízení plus přihlašovací údaje) na připojení TLS. Z tohoto důvodu se tyto protokoly nepodporují u [scénářů pro pole brány](iot-hub-devguide-endpoints.md#field-gateways) , které vyžadují multiplexování zpráv pomocí více identit zařízení v rámci jednoho nebo více fondů nadřazených připojení k IoT Hub. Takové brány můžou používat protokol, který podporuje více identit zařízení na připojení, jako je AMQP, pro jejich nadřazený provoz.
 
-* **Zařízení s nízkými zdroji**. Knihovny MQTT a HTTPS mají menší nároky než knihovny AMQP. V důsledku toho, pokud zařízení má omezené prostředky (například méně než 1 MB paměti RAM), tyto protokoly mohou být pouze implementace protokolu k dispozici.
+* **Zařízení s nízkou úrovní prostředků**. Knihovny MQTT a HTTPS mají menší nároky než knihovny AMQP. Pokud má zařízení omezené prostředky (například méně než 1 MB paměti RAM), může se jednat o jedinou dostupnou implementaci protokolu.
 
-* **Průchod sítě**. Standardní protokol AMQP používá port 5671 a MQTT naslouchá na portu 8883. USe těchto portů může způsobit problémy v sítích, které jsou uzavřeny pro protokoly bez protokolu HTTPS. V tomto scénáři použijte MQTT přes websockets, AMQP přes WebSockets nebo HTTPS.
+* **Procházení sítě**. Standardní protokol AMQP používá port 5671 a MQTT naslouchá na portu 8883. Použití těchto portů může způsobit problémy v sítích, které jsou zavřené do jiných protokolů než HTTPS. V tomto scénáři použijte MQTT přes WebSockets, AMQP přes WebSockets nebo HTTPS.
 
-* **Velikost datové části**. MQTT a AMQP jsou binární protokoly, jejichž výsledkem je kompaktnější datové části než HTTPS.
+* **Velikost datové části**. MQTT a AMQP jsou binární protokoly, jejichž výsledkem jsou kompaktnější datové části, než HTTPS.
 
 > [!WARNING]
-> Při použití protokolu HTTPS by každé zařízení mělo dotazování na zprávy z cloudu na zařízení maximálně jednou za 25 minut. Ve vývoji může každé zařízení v případě potřeby častěji dotazovat.
+> Při použití protokolu HTTPS by se každé zařízení mělo dotazovat na zprávy z cloudu na zařízení, a to více než jednou za 25 minut. V případě vývoje se každé zařízení může dotazovat častěji, pokud je to potřeba.
 
 ## <a name="port-numbers"></a>Čísla portů
 
-Zařízení můžou komunikovat s IoT Hubem v Azure pomocí různých protokolů. Volba protokolu je obvykle řízena specifickými požadavky řešení. V následující tabulce jsou uvedeny odchozí porty, které musí být otevřené, aby zařízení bylo možné používat určitý protokol:
+Zařízení můžou komunikovat s IoT Hub v Azure pomocí různých protokolů. Volba protokolu se obvykle řídí konkrétními požadavky řešení. V následující tabulce jsou uvedeny Odchozí porty, které musí být otevřené, aby bylo možné používat konkrétní protokol pro zařízení:
 
 | Protocol (Protokol) | Port |
 | --- | --- |
@@ -65,8 +65,8 @@ Zařízení můžou komunikovat s IoT Hubem v Azure pomocí různých protokolů
 | AMQP přes WebSockets |443 |
 | HTTPS |443 |
 
-Po vytvoření centra IoT v oblasti Azure, ioT hub udržuje stejnou IP adresu po dobu životnosti tohoto centra IoT. Pokud však Microsoft přesune službu IoT hub do jiné jednotky škálování, aby byla zachována kvalita služeb, bude mu přiřazena nová IP adresa.
+Po vytvoření centra IoT v oblasti Azure udržuje IoT Hub stejnou IP adresu pro celou dobu životnosti služby IoT Hub. Pokud však společnost Microsoft přesune službu IoT Hub do jiné jednotky škálování za účelem zachování kvality služby, je jim přiřazena nová IP adresa.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o implementaci služby IoT Hub protokol MQTT najdete v tématu [Komunikace s centrem IoT pomocí protokolu MQTT](iot-hub-mqtt-support.md).
+Další informace o tom, jak IoT Hub implementuje protokol MQTT, najdete v tématu [komunikace se službou IoT Hub pomocí protokolu MQTT](iot-hub-mqtt-support.md).

@@ -1,15 +1,15 @@
 ---
-title: Nastavení vývojového prostředí systému Windows
+title: Nastavení vývojového prostředí pro Windows
 description: Nainstalujte modul runtime, sadu SDK a nástroje a vytvořte místní vývojový cluster. Po dokončení této instalace a nastavení budete moci sestavovat aplikace ve Windows.
 author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.custom: sfrev
 ms.openlocfilehash: 1b43c838537e46ffbaf6c4adcfb117f6718bd046
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81731758"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Příprava vývojového prostředí ve Windows
@@ -37,19 +37,19 @@ Pro vývoj jsou podporovány tyto verze operačních systémů:
 
 > [!NOTE]
 > Podpora Windows 7:
-> - Windows 7 ve výchozím nastavení obsahuje jenom prostředí Windows PowerShell 2.0 Rutiny prostředí PowerShell pro Service Fabric vyžadují PowerShell 3.0 nebo novější. Systém [Windows PowerShell 5.1 5.1 si][powershell5-download] můžete stáhnout ze služby Stažení softwaru.
+> - Windows 7 ve výchozím nastavení obsahuje jenom prostředí Windows PowerShell 2.0 Rutiny prostředí PowerShell pro Service Fabric vyžadují PowerShell 3.0 nebo novější. [Windows PowerShell 5,1][powershell5-download] si můžete stáhnout z webu Stažení softwaru.
 > - Reverzní proxy Service Fabric není ve Windows 7 k dispozici.
 
 ## <a name="install-the-sdk-and-tools"></a>Instalace sady SDK a nástrojů
 
-Instalační služba webové platformy (WebPI) je doporučený způsob instalace sady SDK a nástrojů. Pokud se zobrazí chyby za běhu pomocí webpi, můžete také najít přímé odkazy na instalační programy v poznámkách k verzi pro konkrétní verzi Service Fabric. Poznámky k verzi lze nalézt v různých oznámeních o verzi na [blogu týmu Service Fabric](https://blogs.msdn.microsoft.com/azureservicefabric/).
+Instalační program webové platformy (WebPI) je doporučeným způsobem, jak nainstalovat sadu SDK a nástroje. Pokud obdržíte chyby za běhu pomocí WebPI, můžete také najít přímé odkazy na instalační programy v poznámkách k verzi pro konkrétní verzi Service Fabric. Poznámky k verzi najdete v různých oznámeních k vydaným verzím na [blogu týmu Service Fabric](https://blogs.msdn.microsoft.com/azureservicefabric/).
 
 > [!NOTE]
-> Upgrady vývojového clusteru infrastruktury místních služeb nejsou podporovány.
+> Upgrade místních Service Fabric vývoje clusteru se nepodporuje.
 
-### <a name="to-use-visual-studio-2017-or-2019"></a>Použití Visual Studia 2017 nebo 2019
+### <a name="to-use-visual-studio-2017-or-2019"></a>Použití sady Visual Studio 2017 nebo 2019
 
-Nástroje Service Fabric jsou součástí úlohy vývoje Azure ve Visual Studiu 2017 a 2019. Povolte tuto úlohu jako součást instalace sady Visual Studio.
+Nástroje Service Fabric jsou součástí úlohy vývoje Azure v prostředí Visual Studio 2017 a 2019. Povolte tuto úlohu jako součást instalace sady Visual Studio.
 Kromě toho budete muset pomocí Instalace webové platformy nainstalovat sadu Microsoft Azure Service Fabric SDK a modul runtime.
 
 * [Instalace sady Microsoft Azure Service Fabric SDK][core-sdk]
@@ -58,7 +58,7 @@ Kromě toho budete muset pomocí Instalace webové platformy nainstalovat sadu M
 
 Pro sadu Visual Studio 2015 se nástroje Service Fabric nainstalují společně se sadou SDK a modulem runtime pomocí Instalace webové platformy:
 
-* [Instalace sady Microsoft Azure Service Fabric SDK a nástrojů][full-bundle-vs2015]
+* [Instalace Microsoft Azure Service Fabric SDK a nástrojů][full-bundle-vs2015]
 
 ### <a name="sdk-installation-only"></a>Jenom instalace sady SDK
 
@@ -68,13 +68,13 @@ Pokud potřebujete jenom sadu SDK, můžete nainstalovat tento balíček:
 
 Aktuální verze jsou:
 
-* Service Fabric SDK a nástroje 4.1.409
-* Provozní doba service fabric 7.1.409
+* 4.1.409 SDK a nástroje pro Service Fabric
+* Service Fabric modulu runtime 7.1.409
 
-Seznam podporovaných verzí naleznete v tématu [Service Fabric verze](service-fabric-versions.md)
+Seznam podporovaných verzí najdete v tématu [Service Fabric verze](service-fabric-versions.md) .
 
 > [!NOTE]
-> Clustery jednoho počítače (OneBox) nejsou podporovány pro inovace aplikací nebo clusterů; Odstraňte cluster OneBox a znovu jej vytvořte, pokud potřebujete provést upgrade clusteru nebo máte nějaké problémy s upgradem aplikace. 
+> Clustery s jedním počítačem (OneBox) nejsou pro upgrady aplikací nebo clusterů podporovány; Odstraňte cluster OneBox a znovu ho vytvořte, pokud potřebujete provést upgrade clusteru nebo máte problémy s upgradem aplikace. 
 
 ## <a name="enable-powershell-script-execution"></a>Povolení spouštění skriptů prostředí PowerShell
 
@@ -84,15 +84,15 @@ Platforma Service Fabric používá skripty prostředí Windows PowerShell k vyt
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 ```
 
-## <a name="install-docker-optional"></a>Instalace Dockeru (volitelné)
+## <a name="install-docker-optional"></a>Nainstalovat Docker (volitelné)
 
-[Service Fabric je kontejner orchestrator](service-fabric-containers-overview.md) pro nasazení mikroslužeb v clusteru počítačů. Chcete-li spustit aplikace kontejnerů systému Windows v místním vývojovém clusteru, musíte nejprve nainstalovat Docker pro Windows. Získejte [Docker CE pro Windows (stabilní)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Po nainstalování a spuštění Dockeru klikněte pravým tlačítkem myši na ikonu na hlavním panelu a vyberte **Switch to Windows containers** (Přepnout na kontejnery Windows). Tento krok se vyžaduje pro spuštění imagí Dockeru založených na Windows.
+[Service Fabric je kontejner Orchestrator](service-fabric-containers-overview.md) pro nasazení mikroslužeb napříč clusterem počítačů. Chcete-li spustit aplikace služby Windows Container v místním vývojovém clusteru, je nutné nejprve nainstalovat Docker for Windows. Získat [Docker CE for Windows (stabilní)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description) Po nainstalování a spuštění Dockeru klikněte pravým tlačítkem myši na ikonu na hlavním panelu a vyberte **Switch to Windows containers** (Přepnout na kontejnery Windows). Tento krok se vyžaduje pro spuštění imagí Dockeru založených na Windows.
 
 ## <a name="next-steps"></a>Další kroky
 
 Teď, když jste dokončili nastavení vývojového prostředí, můžete začít sestavovat a spouštět aplikace.
 
-* [Naučte se vytvářet, nasazovat a spravovat aplikace](service-fabric-tutorial-create-dotnet-app.md)
+* [Naučte se vytvářet, nasazovat a spravovat aplikace.](service-fabric-tutorial-create-dotnet-app.md)
 * [Seznamte se s programovacími modely: Reliable Services a Reliable Actors](service-fabric-choose-framework.md)
 * [Prohlédněte si ukázky kódu Service Fabric na GitHubu](https://aka.ms/servicefabricsamples)
 * [Vizualizujte cluster pomocí Service Fabric Exploreru](service-fabric-visualizing-your-cluster.md)

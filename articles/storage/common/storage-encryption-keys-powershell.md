@@ -1,7 +1,7 @@
 ---
-title: Konfigurace klíčů spravovaných zákazníkem pomocí PowerShellu
+title: Použití PowerShellu ke konfiguraci klíčů spravovaných zákazníkem
 titleSuffix: Azure Storage
-description: Přečtěte si, jak pomocí PowerShellu nakonfigurovat klíče spravované zákazníky pro šifrování Azure Storage.
+description: Naučte se používat PowerShell ke konfiguraci klíčů spravovaných zákazníkem pro Azure Storage šifrování.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,23 +11,23 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: bfc2e256396904456a7ee0fd8b6173c00a5f53d7
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81456392"
 ---
-# <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-powershell"></a>Konfigurace klíčů spravovaných zákazníkem pomocí služby Azure Key Vault pomocí PowerShellu
+# <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-powershell"></a>Konfigurace klíčů spravovaných zákazníkem pomocí Azure Key Vault s využitím PowerShellu
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-Tento článek ukazuje, jak nakonfigurovat Azure Key Vault s klíči spravované zákazníky pomocí PowerShellu. Informace o tom, jak vytvořit trezor klíčů pomocí příkazového příkazu k řešení Azure, najdete v [tématu Úvodní příručka: Nastavení a načtení tajného klíče z azure key vaultu pomocí PowerShellu](../../key-vault/secrets/quick-create-powershell.md).
+V tomto článku se dozvíte, jak nakonfigurovat Azure Key Vault s použitím klíčů spravovaných zákazníkem pomocí PowerShellu. Informace o tom, jak vytvořit Trezor klíčů pomocí Azure CLI, najdete v tématu [rychlý Start: nastavení a načtení tajného klíče z Azure Key Vault pomocí prostředí PowerShell](../../key-vault/secrets/quick-create-powershell.md).
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>Přiřazení identity k účtu úložiště
 
-Chcete-li povolit klíče spravované zákazníkem pro váš účet úložiště, nejprve přiřaďte účtu úložiště spravovanou spravanou identitu přiřazenou systémem. Tuto spravovanou identitu použijete k udělení oprávnění účtu úložiště pro přístup k trezoru klíčů.
+Pokud chcete pro svůj účet úložiště povolit klíče spravované zákazníkem, nejdřív přiřaďte k účtu úložiště spravovanou identitu přiřazenou systémem. Pomocí této spravované identity udělíte účtu úložiště oprávnění k přístupu k trezoru klíčů.
 
-Chcete-li přiřadit spravovanou identitu pomocí prostředí PowerShell, zavolejte [set-azstorageaccount](/powershell/module/az.storage/set-azstorageaccount). Nezapomeňte nahradit zástupné hodnoty v závorkách vlastními hodnotami.
+Chcete-li přiřadit spravovanou identitu pomocí prostředí PowerShell, zavolejte rutinu [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount). Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami.
 
 ```powershell
 $storageAccount = Set-AzStorageAccount -ResourceGroupName <resource_group> `
@@ -35,13 +35,13 @@ $storageAccount = Set-AzStorageAccount -ResourceGroupName <resource_group> `
     -AssignIdentity
 ```
 
-Další informace o konfiguraci spravovaných identit přiřazených systémem pomocí PowerShellu najdete [v tématu Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí PowerShellu](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md).
+Další informace o konfiguraci spravovaných identit přiřazených systémem pomocí PowerShellu najdete v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí PowerShellu](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md).
 
-## <a name="create-a-new-key-vault"></a>Vytvoření nového trezoru klíčů
+## <a name="create-a-new-key-vault"></a>Vytvořit nový trezor klíčů
 
-Chcete-li vytvořit nový trezor klíčů pomocí prostředí PowerShell, zavolejte [new-azkeyvault](/powershell/module/az.keyvault/new-azkeyvault). Trezor klíčů, který používáte k ukládání klíčů spravovaných zákazníky pro šifrování Azure Storage, musí mít povolená dvě nastavení ochrany klíčů, **obnovitelné odstranění** a **neodstraňovat**.
+Pokud chcete vytvořit nový trezor klíčů pomocí PowerShellu, volejte rutinu [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault). Trezor klíčů, který použijete k uložení klíčů spravovaných zákazníkem pro Azure Storage šifrování, musí mít povolené dvě nastavení ochrany klíčů, **obnovitelné odstranění** a **nemazatelné**.
 
-Nezapomeňte nahradit zástupné hodnoty v závorkách vlastními hodnotami.
+Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami.
 
 ```powershell
 $keyVault = New-AzKeyVault -Name <key-vault> `
@@ -51,13 +51,13 @@ $keyVault = New-AzKeyVault -Name <key-vault> `
     -EnablePurgeProtection
 ```
 
-Informace o povolení **funkce Obnovitelné odstranění** a **nečistit** v existujícím trezoru klíčů pomocí prostředí PowerShell naleznete v částech s názvem **Povolení obnovitelného odstranění** a Povolení ochrany proti **vymazání** v [tématu Použití obnovitelného odstranění s prostředím PowerShell](../../key-vault/general/soft-delete-powershell.md).
+Informace o tom, jak povolit **obnovitelné odstranění** a **Nemazat** existující Trezor klíčů pomocí PowerShellu, najdete v částech s názvem **Povolení obnovitelného odstranění** a **Povolení ochrany vyprázdnit** v tématu [Použití obnovitelného odstranění pomocí prostředí PowerShell](../../key-vault/general/soft-delete-powershell.md).
 
-## <a name="configure-the-key-vault-access-policy"></a>Konfigurace zásad přístupu k trezoru klíčů
+## <a name="configure-the-key-vault-access-policy"></a>Konfigurace zásad přístupu trezoru klíčů
 
-Dále nakonfigurujte zásady přístupu pro trezor klíčů tak, aby účet úložiště měl oprávnění k přístupu k němu. V tomto kroku použijete spravovanou identitu, kterou jste dříve přiřadili k účtu úložiště.
+Dále nakonfigurujte zásady přístupu pro Trezor klíčů, aby měl účet úložiště oprávnění k přístupu. V tomto kroku použijete spravovanou identitu, kterou jste dříve přiřadili k účtu úložiště.
 
-Chcete-li nastavit zásady přístupu pro trezor klíčů, zavolejte [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy). Nezapomeňte nahradit zástupné hodnoty v závorkách vlastními hodnotami a použít proměnné definované v předchozích příkladech.
+Pro nastavení zásad přístupu pro Trezor klíčů volejte [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy). Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami a použít proměnné definované v předchozích příkladech.
 
 ```powershell
 Set-AzKeyVaultAccessPolicy `
@@ -66,21 +66,21 @@ Set-AzKeyVaultAccessPolicy `
     -PermissionsToKeys wrapkey,unwrapkey,get
 ```
 
-## <a name="create-a-new-key"></a>Vytvoření nového klíče
+## <a name="create-a-new-key"></a>Vytvořit nový klíč
 
-Dále vytvořte nový klíč v trezoru klíčů. Chcete-li vytvořit nový klíč, zavolejte [add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey). Nezapomeňte nahradit zástupné hodnoty v závorkách vlastními hodnotami a použít proměnné definované v předchozích příkladech.
+V dalším kroku vytvořte nový klíč v trezoru klíčů. Chcete-li vytvořit nový klíč, zavolejte [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey). Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami a použít proměnné definované v předchozích příkladech.
 
 ```powershell
 $key = Add-AzKeyVaultKey -VaultName $keyVault.VaultName -Name <key> -Destination 'Software'
 ```
 
-Šifrováním azure storage jsou podporované jenom 2048bitové klíče RSA a RSA-HSM. Další informace o klíčích najdete v **tématu Klíče trezoru klíčů** v [tématu O klíčích, tajných klíčích a certifikátech trezoru klíčů Azure](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
+Azure Storage šifrování podporují jenom 2048 klíčů RSA a RSA-HSM. Další informace o klíčích najdete v tématu **Key Vault Keys** v tématu [informace o Azure Key Vaultch klíčích, tajných klíčích a certifikátech](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
 
 ## <a name="configure-encryption-with-customer-managed-keys"></a>Konfigurace šifrování pomocí klíčů spravovaných zákazníkem
 
-Ve výchozím nastavení používá šifrování Azure Storage klíče spravované microsoftem. V tomto kroku nakonfigurujte účet Úložiště Azure tak, aby používal klíče spravované zákazníkem, a zadejte klíč, který chcete přidružit k účtu úložiště.
+Ve výchozím nastavení používá Azure Storage šifrování klíče spravované společností Microsoft. V tomto kroku nakonfigurujte Azure Storage účet pro použití klíčů spravovaných zákazníkem a zadejte klíč, který chcete přidružit k účtu úložiště.
 
-Volání [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) aktualizovat nastavení šifrování účtu úložiště, jak je znázorněno v následujícím příkladu. Zahrnout **-KeyvaultEncryption** možnost povolit klientem spravované klíče pro účet úložiště. Nezapomeňte nahradit zástupné hodnoty v závorkách vlastními hodnotami a použít proměnné definované v předchozích příkladech.
+Voláním [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) aktualizujte nastavení šifrování účtu úložiště, jak je znázorněno v následujícím příkladu. Zahrňte možnost **-KeyvaultEncryption** , která povolí klíče spravované zákazníkem pro účet úložiště. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami a použít proměnné definované v předchozích příkladech.
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
@@ -93,24 +93,24 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
 
 ## <a name="update-the-key-version"></a>Aktualizace verze klíče
 
-Když vytvoříte novou verzi klíče, budete muset aktualizovat účet úložiště, aby se používala nová verze. Nejprve zavolejte [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey) získat nejnovější verzi klíče. Potom volání [MA-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) aktualizovat nastavení šifrování účtu úložiště použít novou verzi klíče, jak je znázorněno v předchozí části.
+Když vytváříte novou verzi klíče, budete muset aktualizovat účet úložiště, aby používal novou verzi. Nejdřív zavolejte [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey) , abyste získali nejnovější verzi klíče. Pak zavolejte [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) a aktualizujte nastavení šifrování účtu úložiště tak, aby používala novou verzi klíče, jak je znázorněno v předchozí části.
 
-## <a name="use-a-different-key"></a>Použití jiného klíče
+## <a name="use-a-different-key"></a>Použít jiný klíč
 
-Chcete-li změnit klíč používaný pro šifrování úložiště Azure, zavolejte [Set-AzStorageAccount,](/powershell/module/az.storage/set-azstorageaccount) jak je znázorněno v [tématu Konfigurace šifrování pomocí klíčů spravovaných zákazníkem,](#configure-encryption-with-customer-managed-keys) a zadejte nový název a verzi klíče. Pokud je nový klíč v jiném trezoru klíčů, aktualizujte také identifikátor URI trezoru klíčů.
+Pokud chcete změnit klíč, který se používá pro Azure Storage šifrování, zavolejte [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) , jak je znázorněno v části [Konfigurace šifrování pomocí klíčů spravovaných zákazníkem](#configure-encryption-with-customer-managed-keys) , a zadejte nový název a verzi klíče. Pokud je nový klíč v jiném trezoru klíčů, aktualizujte také identifikátor URI trezoru klíčů.
 
-## <a name="revoke-customer-managed-keys"></a>Odvolat klíče spravované zákazníkem
+## <a name="revoke-customer-managed-keys"></a>Odvolání klíčů spravovaných zákazníkem
 
-Pokud se domníváte, že klíč mohl být ohrožen, můžete odvolat klíče spravované zákazníkem odebráním zásad přístupu k trezoru klíčů. Chcete-li odvolat klíč spravovaný zákazníkem, zavolejte příkaz [Remove-AzKeyVaultAccessPolicy,](/powershell/module/az.keyvault/remove-azkeyvaultaccesspolicy) jak je znázorněno v následujícím příkladu. Nezapomeňte nahradit zástupné hodnoty v závorkách vlastními hodnotami a použít proměnné definované v předchozích příkladech.
+Pokud se domníváte, že došlo k ohrožení bezpečnosti klíče, můžete odvolat klíče spravované zákazníkem odebráním zásad přístupu trezoru klíčů. Chcete-li odvolat klíč spravovaný zákazníkem, zavolejte příkaz [Remove-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/remove-azkeyvaultaccesspolicy) , jak je znázorněno v následujícím příkladu. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami a použít proměnné definované v předchozích příkladech.
 
 ```powershell
 Remove-AzKeyVaultAccessPolicy -VaultName $keyVault.VaultName `
     -ObjectId $storageAccount.Identity.PrincipalId `
 ```
 
-## <a name="disable-customer-managed-keys"></a>Zakázání klíčů spravovaných zákazníkem
+## <a name="disable-customer-managed-keys"></a>Zakázat klíče spravované zákazníkem
 
-Když zakážete klíče spravované zákazníky, váš účet úložiště se opět zašifruje pomocí klíčů spravovaných společností Microsoft. Chcete-li zakázat klíče spravované zákazníkem, zavolejte [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) s `-StorageEncryption` možností, jak je znázorněno v následujícím příkladu. Nezapomeňte nahradit zástupné hodnoty v závorkách vlastními hodnotami a použít proměnné definované v předchozích příkladech.
+Když zakážete klíče spravované zákazníkem, váš účet úložiště se znovu zašifruje pomocí klíčů spravovaných Microsoftem. Chcete-li zakázat klíče spravované zákazníkem, zavolejte [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) s `-StorageEncryption` možností, jak je znázorněno v následujícím příkladu. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami a použít proměnné definované v předchozích příkladech.
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
@@ -120,5 +120,5 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Šifrování Azure Storage pro data v klidovém stavu](storage-service-encryption.md)
-- [Co je Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+- [Azure Storage šifrování dat v klidovém umístění](storage-service-encryption.md)
+- [Co je Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

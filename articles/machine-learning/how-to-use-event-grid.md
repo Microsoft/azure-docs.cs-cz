@@ -11,10 +11,10 @@ author: shivp950
 ms.reviewer: larryfr
 ms.date: 03/11/2020
 ms.openlocfilehash: 2a1440dcda27a487c89be4ac63e624a2bb6b393a
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82111874"
 ---
 # <a name="create-event-driven-machine-learning-workflows-preview"></a>Vytváření pracovních postupů strojového učení řízených událostmi (Preview)
@@ -34,7 +34,7 @@ Pomocí Event Grid můžete povolit běžné scénáře, jako například:
 > V současné době se události runStatusChanged aktivují jenom v případě, že se stav spuštění **nezdařil** .
 >
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 * Přístup přispěvatele nebo vlastníka k pracovnímu prostoru Azure Machine Learning, pro který budete vytvářet události.
 
 ### <a name="configure-eventgrid-using-the-azure-portal"></a>Konfigurace EventGrid pomocí Azure Portal

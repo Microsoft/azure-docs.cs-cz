@@ -10,18 +10,18 @@ ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
 ms.openlocfilehash: 100be6a4376883a4f2a91b1efd172242c1d19e19
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878387"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Koncepty, terminologie a entity ve službě Azure Scheduler
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje Azure Scheduler, který [je vyřazen .](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) Pokud chcete pokračovat v práci s úlohami, které jste nastavili v Plánovači, [migrujte co](../scheduler/migrate-from-scheduler-to-logic-apps.md) nejdříve do Azure Logic Apps. 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje [vyřazení](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)Azure Scheduleru. Pokud chcete pokračovat v práci s úlohami, které jste nastavili v plánovači, [migrujte prosím na Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) co nejdříve. 
 >
-> Plánovač už není k dispozici na webu Azure Portal, ale rutiny [ROZHRANÍ REST API](/rest/api/scheduler) a Azure [Scheduler PowerShell](scheduler-powershell-reference.md) zůstávají k dispozici v tuto chvíli, takže můžete spravovat své úlohy a kolekce úloh.
+> Plánovač již není v Azure Portal k dispozici, ale [rutiny prostředí PowerShell](scheduler-powershell-reference.md) [REST API](/rest/api/scheduler) a Azure Scheduler jsou v tuto chvíli dostupné, abyste mohli spravovat úlohy a kolekce úloh.
 
 ## <a name="entity-hierarchy"></a>Hierarchie entit
 
@@ -40,7 +40,7 @@ Na nejvyšší úrovni rozhraní REST API služby Scheduler zpřístupňuje tyto
 
 ### <a name="job-management"></a>Správa úloh
 
-Podporuje operace vytváření a úpravy úloh. Všechny úlohy musí patřit do existující kolekce, aby se implicitně nevytvářely další kolekce. Další informace najdete v tématu [Rozhraní REST API služby Scheduler – Úlohy](https://docs.microsoft.com/rest/api/scheduler/jobs). Tady je adresa URI pro tyto operace:
+Podporuje operace vytváření a úpravy úloh. Všechny úlohy musí patřit do existující kolekce, aby se implicitně nevytvářely další kolekce. Další informace najdete v tématu [Rozhraní REST API služby Scheduler – Úlohy](https://docs.microsoft.com/rest/api/scheduler/jobs). Zde je adresa identifikátoru URI pro tyto operace:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}
@@ -48,7 +48,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 ### <a name="job-collection-management"></a>Správa kolekce úloh
 
-Podporuje operace vytváření a úpravy úloh a kolekce úloh, které se mapují na kvóty a sdílená nastavení. Kvóty určují například maximální počet úloh nebo nejmenší interval opakování. Další informace najdete v tématu [Rozhraní REST API služby Scheduler – Kolekce úloh](https://docs.microsoft.com/rest/api/scheduler/jobcollections). Tady je adresa URI pro tyto operace:
+Podporuje operace vytváření a úpravy úloh a kolekce úloh, které se mapují na kvóty a sdílená nastavení. Kvóty určují například maximální počet úloh nebo nejmenší interval opakování. Další informace najdete v tématu [Rozhraní REST API služby Scheduler – Kolekce úloh](https://docs.microsoft.com/rest/api/scheduler/jobcollections). Zde je adresa identifikátoru URI pro tyto operace:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}
@@ -56,7 +56,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 ### <a name="job-history-management"></a>Správa historie úloh
 
-Podporuje operaci GET pro načtení historie provádění úloh, jako je uplynulá doba úlohy a výsledky provedení úlohy, za posledních 60 dní. Zahrnuje podporu parametru řetězce dotazu pro filtrování podle stavu a statusu. Další informace najdete v tématu [Rozhraní REST API služby Scheduler – Úlohy – Výpis historie úloh](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory). Zde je adresa URI pro tuto operaci:
+Podporuje operaci GET pro načtení historie provádění úloh, jako je uplynulá doba úlohy a výsledky provedení úlohy, za posledních 60 dní. Zahrnuje podporu parametru řetězce dotazu pro filtrování podle stavu a statusu. Další informace najdete v tématu [Rozhraní REST API služby Scheduler – Úlohy – Výpis historie úloh](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory). Zde je adresa identifikátoru URI pro tuto operaci:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history
@@ -66,7 +66,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 Azure Scheduler podporuje několik typů úloh: 
 
-* Úlohy HTTP, včetně úloh HTTPS, které podporují TLS, pokud máte koncový bod pro existující službu nebo pracovní vytížení
+* Úlohy HTTP, včetně úloh HTTPS, které podporují protokol TLS, pokud máte koncový bod pro existující službu nebo úlohu
 * Úlohy fronty úložiště pro úlohy využívající fronty úložiště, jako je odesílání zpráv do front úložiště
 * Úlohy fronty služby Service Bus pro úlohy využívající fronty služby Service Bus
 * Úlohy tématu služby Service Bus pro úlohy využívající témata služby Service Bus
@@ -82,15 +82,15 @@ Azure Scheduler podporuje několik typů úloh:
 
 Úloha obsahuje také data poskytnutá systémem, jako je například čas dalšího plánovaného spuštění úlohy. Definice kódu úlohy je objekt ve formátu JSON (JavaScript Object Notation), který obsahuje tyto elementy:
 
-| Element | Požaduje se | Popis | 
+| Prvek | Požaduje se | Popis | 
 |---------|----------|-------------| 
-| [**Starttime**](#start-time) | Ne | Čas spuštění úlohy s posunem časového pásma ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) | 
-| [**Akce**](#action) | Ano | Podrobnosti pro primární akci, které můžou zahrnovat objekt **errorAction** | 
+| [**Spuštění**](#start-time) | Ne | Čas spuštění úlohy s posunem časového pásma ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) | 
+| [**kroky**](#action) | Ano | Podrobnosti pro primární akci, které můžou zahrnovat objekt **errorAction** | 
 | [**errorAction**](#error-action) | Ne | Podrobnosti pro sekundární akci, která se spustí, pokud primární akce selže |
-| [**Opakování**](#recurrence) | Ne | Podrobnosti pro opakující se úlohu, například frekvence a interval opakování | 
+| [**vzorec**](#recurrence) | Ne | Podrobnosti pro opakující se úlohu, například frekvence a interval opakování | 
 | [**retryPolicy**](#retry-policy) | Ne | Podrobnosti o tom, jak často se má akce opakovat | 
-| [**Státu**](#state) | Ano | Podrobnosti o aktuálním stavu úlohy |
-| [**Stav**](#status) | Ano | Podrobnosti o aktuálním statusu úlohy, který řídí služba |
+| [**státech**](#state) | Ano | Podrobnosti o aktuálním stavu úlohy |
+| [**stav**](#status) | Ano | Podrobnosti o aktuálním statusu úlohy, který řídí služba |
 ||||
 
 Tady je příklad, který ukazuje komplexní definici úlohy pro akci HTTP (podrobnější popis elementů najdete v dalších částech): 
@@ -248,16 +248,16 @@ Pokud definice JSON úlohy zahrnuje objekt **recurrence**, úloha se bude opakov
 
 | Vlastnost | Požaduje se | Hodnota | Popis | 
 |----------|----------|-------|-------------| 
-| **Frekvence** | Ano, pokud se používá **opakování** | Minute (minuta), Hour (hodina), Day (den), Week (týden), Month (měsíc), Year (rok) | Časová jednotka intervalu mezi opakováními | 
+| **opakování** | Ano, pokud se používá **opakování** | Minute (minuta), Hour (hodina), Day (den), Week (týden), Month (měsíc), Year (rok) | Časová jednotka intervalu mezi opakováními | 
 | **interval** | Ne | 1 až 1000 (včetně) | Kladné číslo, které určuje počet časových jednotek mezi jednotlivými opakováními na základě vlastnosti **frequency** | 
-| **Plán** | Ne | Různé | Podrobnosti pro složitější a pokročilejší plány. Viz **hours**, **minutes**, **weekDays**, **months** a **monthDays**. | 
-| **Hodin** | Ne | 1 až 60 | Pole s hodinami, kdy se má úloha spustit | 
-| **minutes** | Ne | 0 až 59 | Pole s minutami, kdy se má úloha spustit | 
+| **CXL** | Ne | Různé | Podrobnosti pro složitější a pokročilejší plány. Viz **hours**, **minutes**, **weekDays**, **months** a **monthDays**. | 
+| **hodin** | Ne | 1 až 60 | Pole s hodinami, kdy se má úloha spustit | 
+| **minuty** | Ne | 0 až 59 | Pole s minutami, kdy se má úloha spustit | 
 | **months** | Ne | 1 až 12 | Pole s měsíci, kdy se má úloha spustit | 
 | **monthDays** | Ne | Různé | Pole se dny v měsíci, kdy se má úloha spustit | 
 | **weekDays** | Ne | Monday (pondělí), Tuesday (úterý), Wednesday (středa), Thursday (čtvrtek), Friday (pátek), Saturday (sobota), Sunday (neděle) | Pole se dny v týdnu, kdy se má úloha spustit | 
-| **count** | Ne | <*Žádný*> | Počet opakování. Ve výchozím nastavení se opakování bude provádět donekonečna. Není možné použít vlastnost **count** a zároveň **endTime** – přednost bude mít pravidlo, které se dokončí jako první. | 
-| **endTime** | Ne | <*Žádný*> | Datum a čas, kdy se má opakování zastavit. Ve výchozím nastavení se opakování bude provádět donekonečna. Není možné použít vlastnost **count** a zároveň **endTime** – přednost bude mít pravidlo, které se dokončí jako první. | 
+| **výpočtu** | Ne | <*nTato*> | Počet opakování. Ve výchozím nastavení se opakování bude provádět donekonečna. Není možné použít vlastnost **count** a zároveň **endTime** – přednost bude mít pravidlo, které se dokončí jako první. | 
+| **endTime** | Ne | <*nTato*> | Datum a čas, kdy se má opakování zastavit. Ve výchozím nastavení se opakování bude provádět donekonečna. Není možné použít vlastnost **count** a zároveň **endTime** – přednost bude mít pravidlo, které se dokončí jako první. | 
 ||||
 
 Další informace o těchto elementech najdete v tématu [Vytváření složitých plánů a pokročilých opakování](../scheduler/scheduler-advanced-complexity.md).

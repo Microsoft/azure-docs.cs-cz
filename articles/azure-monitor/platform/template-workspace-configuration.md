@@ -1,67 +1,67 @@
 ---
 title: Šablona Azure Resource Manager pro pracovní prostor Log Analytics
-description: Šablony Azure Resource Manageru můžete použít k vytvoření a konfiguraci pracovních prostorů Log Analytics.
+description: Šablony Azure Resource Manager můžete použít k vytvoření a konfiguraci Log Analytics pracovních prostorů.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
 ms.openlocfilehash: dbeaa58da109c5afceb03a560e69e0c8bf63ad42
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81768130"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Správa pracovního prostoru Log Analytics pomocí šablon Azure Resource Manager
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-[Šablony Azure Resource Manageru](../../azure-resource-manager/templates/template-syntax.md) můžete použít k vytvoření a konfiguraci pracovních prostorů Log Analytics v Azure Monitoru. Příklady úkolů, které můžete provádět se šablonami:
+[Šablony Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) můžete použít k vytvoření a konfiguraci Log Analytics pracovních prostorů v Azure monitor. Mezi úlohy, které můžete provádět pomocí šablon, patří:
 
 * Vytvoření pracovního prostoru včetně nastavení cenové úrovně a rezervace kapacity
 * Přidání řešení
-* Vytvoření uložených hledání
+* Vytvořit uložená hledání
 * Vytvoření skupiny počítačů
-* Povolení shromažďování protokolů služby IIS z počítačů s nainstalovaným agentem systému Windows
-* Sběr čítačů výkonu z počítačů S Linuxem a Windows
-* Shromažďování událostí ze syslogu na počítačích s Linuxem 
-* Shromažďování událostí z protokolů událostí systému Windows
+* Povolit shromažďování protokolů IIS z počítačů s nainstalovaným agentem Windows
+* Shromažďování čítačů výkonu z počítačů se systémy Linux a Windows
+* Shromažďování událostí z protokolu syslog v počítačích se systémem Linux 
+* Shromažďovat události z protokolů událostí systému Windows
 * Shromažďování vlastních protokolů z počítače se systémem Windows
-* Přidání agenta analýzy protokolů do virtuálního počítače Azure
-* Konfigurace analýzy protokolů pro indexování dat shromážděných pomocí diagnostiky Azure
+* Přidání agenta Log Analytics do virtuálního počítače Azure
+* Konfigurace Log Analytics na indexovaná data shromážděná pomocí diagnostiky Azure
 
-Tento článek obsahuje ukázky šablon, které ilustrují některé konfigurace, které lze provést se šablonami.
+Tento článek poskytuje ukázky šablon, které ilustrují některé konfigurace, které můžete s šablonami provádět.
 
 ## <a name="api-versions"></a>Verze rozhraní API
 
-V následující tabulce je uvedena verze rozhraní API pro prostředky použité v tomto příkladu.
+Následující tabulka uvádí verzi rozhraní API pro prostředky použité v tomto příkladu.
 
 | Prostředek | Typ prostředku | Verze rozhraní API |
 |:---|:---|:---|
-| Pracovní prostor   | pracovní prostory    | 2017-03-15-náhled |
-| Search      | uloženoVyhledávání | 2015-03-20 |
-| Zdroj dat | Datasources   | 2015-11-01-náhled |
-| Řešení    | Řešení     | 2015-11-01-náhled |
+| Pracovní prostor   | pracovní prostory    | 2017-03-15 – Preview |
+| Search      | savedSearches | 2015-03-20 |
+| Zdroj dat | zdroje dat   | 2015-11-01 – Preview |
+| Řešení    | Řešení     | 2015-11-01 – Preview |
 
 ## <a name="create-a-log-analytics-workspace"></a>Vytvoření pracovního prostoru služby Log Analytics
 
-Následující příklad vytvoří pracovní prostor pomocí šablony z místního počítače. Šablona JSON je nakonfigurována tak, aby vyžadovala pouze název a umístění nového pracovního prostoru. Používá hodnoty zadané pro jiné parametry pracovního prostoru, jako je [například režim řízení přístupu](design-logs-deployment.md#access-control-mode), cenová úroveň, uchovávání informací a úroveň rezervace kapacity.
+Následující příklad vytvoří pracovní prostor pomocí šablony z místního počítače. Šablona JSON je nakonfigurována tak, aby vyžadovala pouze název a umístění nového pracovního prostoru. Používá hodnoty zadané pro jiné parametry pracovního prostoru, jako je [režim řízení přístupu](design-logs-deployment.md#access-control-mode), cenová úroveň, uchování a úroveň rezervace kapacity.
 
 > [!WARNING]
-> Následující šablona vytvoří pracovní prostor Analýzy protokolů a konfiguruje shromažďování dat. To může změnit nastavení fakturace. Zkontrolujte [Správa využití a nákladů pomocí protokolů monitorování Azure,](manage-cost-storage.md) abyste porozuměli fakturaci dat shromážděných v pracovním prostoru Log Analytics před jejich použitím ve vašem prostředí Azure.
+> Následující šablona vytvoří pracovní prostor Log Analytics a nakonfiguruje shromažďování dat. To může změnit nastavení fakturace. Přečtěte si téma [Správa využití a nákladů pomocí protokolů Azure monitor](manage-cost-storage.md) , abyste porozuměli fakturaci na data shromážděná v pracovním prostoru Log Analytics a teprve potom je použijete v prostředí Azure.
 
-Pro rezervaci kapacity definujete vybranou rezervaci kapacity pro `CapacityReservation` ingestování dat zadáním skladové položky a hodnoty v GB pro vlastnost `capacityReservationLevel`. Následující seznam podrobně popisuje podporované hodnoty a chování při konfiguraci.
+Pro rezervaci kapacity definujte vybranou rezervaci kapacity pro ingestování dat zadáním SKU `CapacityReservation` a hodnoty v GB pro vlastnost. `capacityReservationLevel` Následující seznam podrobně popisuje podporované hodnoty a chování při jejich konfiguraci.
 
-- Jakmile nastavíte limit rezervace, nemůžete změnit na jinou skladovou položku do 31 dnů.
+- Po nastavení limitu rezervace se nemůžete změnit na jinou skladovou jednotku během 31 dnů.
 
-- Jakmile nastavíte hodnotu rezervace, můžete ji zvýšit pouze do 31 dnů.
+- Jakmile nastavíte hodnotu rezervace, můžete ji zvětšit pouze do 31 dnů.
 
-- Hodnotu lze nastavit `capacityReservationLevel` pouze v násobcích 100 s maximální hodnotou 50000.
+- Hodnotu lze nastavit pouze `capacityReservationLevel` v násobcích hodnot 100 s maximální hodnotou 50000.
 
-- Pokud zvýšíte úroveň rezervace, časovač se resetuje a od této aktualizace jej nelze změnit dalších 31 dní.  
+- Pokud zvýšíte úroveň rezervace, časovač se resetuje a dokud ho nebudete moct změnit na další 31 dní z této aktualizace.  
 
-- Pokud změníte jakoukoli jinou vlastnost pracovního prostoru, ale zachováte limit rezervace na stejnou úroveň, časovač se neresetuje. 
+- Pokud upravíte jakoukoli jinou vlastnost pracovního prostoru, ale zachováte limit rezervace na stejnou úroveň, časovač se neresetuje. 
 
 ### <a name="create-and-deploy-template"></a>Vytvoření šablony nasazení
 
@@ -149,23 +149,23 @@ Pro rezervaci kapacity definujete vybranou rezervaci kapacity pro `CapacityReser
     ```
 
    >[!NOTE]
-   >Pro nastavení rezervace kapacity použijte tyto vlastnosti v části "sku":
-   >* "jméno": "CapacityReservation",
+   >Pro nastavení rezervace kapacity použijte tyto vlastnosti v části SKU:
+   >* "Name": "CapacityReservation",
    >* "capacityReservationLevel": 100
 
-2. Upravte šablonu tak, aby vyhovovala vašim požadavkům. Zvažte vytvoření [souboru parametrů Správce prostředků](../../azure-resource-manager/templates/parameter-files.md) namísto předávání parametrů jako vsazených hodnot. Projděte si odkaz na [šablonu microsoft.operationalinsights/pracovní prostory,](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces) abyste zjistili, jaké vlastnosti a hodnoty jsou podporovány. 
+2. Upravte šablonu tak, aby splňovala vaše požadavky. Místo předání parametrů jako vložené hodnoty zvažte vytvoření [souboru parametrů správce prostředků](../../azure-resource-manager/templates/parameter-files.md) . Informace o podporovaných vlastnostech a hodnotách najdete v referenčních informacích k [šabloně Microsoft. OperationalInsights/Workspaces](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces) . 
 
-3. Uložte tento soubor jako **deploylaworkspacetemplate.json** do místní složky.
+3. Uložte tento soubor jako **deploylaworkspacetemplate. JSON** do místní složky.
 
-4. Jste připraveni k nasazení této šablony. K vytvoření pracovního prostoru se používá prostředí PowerShell nebo příkazový řádek a jako součást příkazu zadáte název a umístění pracovního prostoru. Název pracovního prostoru musí být globálně jedinečný ve všech předplatných Azure.
+4. Jste připraveni k nasazení této šablony. K vytvoření pracovního prostoru pomocí PowerShellu nebo příkazového řádku zadejte název pracovního prostoru a umístění jako součást příkazu. Název pracovního prostoru musí být globálně jedinečný v rámci všech předplatných Azure.
 
-   * Pro Prostředí PowerShell použijte následující příkazy ze složky obsahující šablonu:
+   * Pro PowerShell použijte následující příkazy ze složky, která obsahuje tuto šablonu:
    
         ```powershell
         New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json -workspaceName <workspace-name> -location <location>
         ```
 
-   * Pro příkazový řádek použijte následující příkazy ze složky obsahující šablonu:
+   * Pro příkazový řádek použijte následující příkazy ze složky, která obsahuje tuto šablonu:
 
         ```cmd
         azure config mode arm
@@ -174,20 +174,20 @@ Pro rezervaci kapacity definujete vybranou rezervaci kapacity pro `CapacityReser
 
 Dokončení nasazení může trvat několik minut. Po dokončení se zobrazí zpráva podobná následující, která obsahuje výsledek:<br><br> ![Příklad výsledku po dokončení nasazení](./media/template-workspace-configuration/template-output-01.png)
 
-## <a name="configure-a-log-analytics-workspace"></a>Konfigurace pracovního prostoru Analýzy protokolů
+## <a name="configure-a-log-analytics-workspace"></a>Konfigurace pracovního prostoru Log Analytics
 
 Následující ukázka šablony ukazuje, jak:
 
 1. Přidání řešení do pracovního prostoru
-2. Vytvořte uložená hledání. Chcete-li zajistit, aby nasazení nepřepsala uložená hledání náhodně, měla by být do prostředku "savedSearches" přidána vlastnost eTag, která by přepsala a zachovala idempotenci uložených vyhledávání.
-3. Vytvořte uloženou funkci. ETag by měl být přidán k přepsání funkce a udržovat idempotence.
+2. Vytváření uložených hledání. Aby se zajistilo, že nasazení nepřepisují uložené výsledky hledání omylem, je třeba přidat do prostředku "savedSearches" vlastnost eTag pro přepsání a udržování idempotence uložených hledání.
+3. Vytvoří uloženou funkci. Značka eTag by měla být přidána k přepsání funkce a udržování idempotence.
 4. Vytvoření skupiny počítačů
-5. Povolení shromažďování protokolů služby IIS z počítačů s nainstalovaným agentem systému Windows
-6. Sbírat čítače perf logického disku z počítačů se systémem Linux (% použité inody; Megabajty zdarma; % využitémísto; Přenosy disků/s; Čtení disku/s; Zápisy na disk/s)
-7. Shromažďování událostí syslogu z počítačů s Linuxem
+5. Povolit shromažďování protokolů IIS z počítačů s nainstalovaným agentem Windows
+6. Shromáždit čítače výkonu logických disků z počítačů se systémem Linux (% využitých uzlů inode; Volné megabajty; % Využitého místa; Přenosy disku/s; Čtení z disku/s; Zápisy na disk/s)
+7. Shromažďovat události syslogu z počítačů se systémem Linux
 8. Shromažďování událostí chyb a upozornění z protokolu událostí aplikace z počítačů se systémem Windows
-9. Čítač výkonu Shromáždit dostupné paměti Mbytes z počítačů se systémem Windows
-10. Shromažďování protokolů služby IIS a protokolů událostí systému Windows napsaných diagnostikou Azure do účtu úložiště
+9. Shromažďovat čítač výkonu MB dostupné paměti z počítačů s Windows
+10. Shromažďování protokolů IIS a protokolů událostí Windows zapsaných diagnostikou Azure do účtu úložiště
 11. Shromažďování vlastních protokolů z počítače se systémem Windows
 
 ```json
@@ -651,10 +651,10 @@ Následující ukázka šablony ukazuje, jak:
 
 ### <a name="deploying-the-sample-template"></a>Nasazení ukázkové šablony
 
-Nasazení ukázkové šablony:
+Postup nasazení ukázkové šablony:
 
-1. Uložení připojené ukázky do souboru, například`azuredeploy.json` 
-2. Úprava šablony tak, aby měla požadovanou konfiguraci
+1. Uložte si připojenou ukázku do souboru, například`azuredeploy.json` 
+2. Upravte šablonu na požadovanou konfiguraci.
 3. Nasazení šablony pomocí PowerShellu nebo příkazového řádku
 
 #### <a name="powershell"></a>PowerShell
@@ -670,18 +670,18 @@ azure config mode arm
 azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile azuredeploy.json
 ```
 
-## <a name="example-resource-manager-templates"></a>Příklad šablon Správce prostředků
+## <a name="example-resource-manager-templates"></a>Příklady šablon Správce prostředků
 
-Galerie šablon rychlého startu Azure obsahuje několik šablon pro analýzu protokolů, včetně:
+Galerie šablon pro rychlý Start Azure obsahuje několik šablon pro Log Analytics, včetně:
 
-* [Nasazení virtuálního počítače se systémem Windows s rozšířením virtuálního počítače Log Analytics](https://azure.microsoft.com/documentation/templates/201-oms-extension-windows-vm/)
-* [Nasazení virtuálního počítače se systémem Linux s rozšířením virtuálního počítače Log Analytics](https://azure.microsoft.com/documentation/templates/201-oms-extension-ubuntu-vm/)
-* [Monitorování Azure Site Recovery pomocí existujícího pracovního prostoru Log Analytics](https://azure.microsoft.com/documentation/templates/asr-oms-monitoring/)
-* [Monitorování webových aplikací Azure pomocí existujícího pracovního prostoru Log Analytics](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
-* [Přidání existujícího účtu úložiště do služby Log Analytics](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
+* [Nasazení virtuálního počítače s Windows s rozšířením virtuálního počítače s Log Analytics](https://azure.microsoft.com/documentation/templates/201-oms-extension-windows-vm/)
+* [Nasazení virtuálního počítače se systémem Linux s rozšířením virtuálního počítače s Log Analytics](https://azure.microsoft.com/documentation/templates/201-oms-extension-ubuntu-vm/)
+* [Monitorování Azure Site Recovery pomocí stávajícího pracovního prostoru Log Analytics](https://azure.microsoft.com/documentation/templates/asr-oms-monitoring/)
+* [Monitorování Web Apps Azure pomocí existujícího pracovního prostoru Log Analytics](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
+* [Přidat existující účet úložiště do Log Analytics](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Nasazení agenta Windows do virtuálních počítačů Azure pomocí šablony Správce prostředků](../../virtual-machines/extensions/oms-windows.md).
+* [Nasaďte agenta Windows do virtuálních počítačů Azure pomocí šablony Správce prostředků](../../virtual-machines/extensions/oms-windows.md).
 
-* [Nasazení agenta Linuxu do virtuálních počítačů Azure pomocí šablony Správce prostředků](../../virtual-machines/extensions/oms-linux.md).
+* [Nasaďte agenta pro Linux do virtuálních počítačů Azure pomocí šablony Správce prostředků](../../virtual-machines/extensions/oms-linux.md).

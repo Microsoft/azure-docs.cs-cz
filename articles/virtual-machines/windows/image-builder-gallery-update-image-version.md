@@ -1,42 +1,42 @@
 ---
-title: Vytvoření nové verze image z existující verze image pomocí Azure Image Builder (preview)
-description: Vytvořte novou verzi image virtuálního počítače z existující verze image pomocí Azure Image Builder.
+title: Vytvoří novou verzi image z existující verze Image pomocí Azure image Builder (Preview).
+description: Vytvoří novou verzi image virtuálního počítače z existující verze Image pomocí Azure image Builder.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.openlocfilehash: 766e7d5c4151000a582bcf07d80b89af3b7d8a65
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869544"
 ---
-# <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder"></a>Náhled: Vytvoření nové verze image virtuálního počítače z existující verze image pomocí Azure Image Builder
+# <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder"></a>Preview: vytvoření nové verze image virtuálního počítače z existující verze Image pomocí Azure image Builder
 
-Tento článek ukazuje, jak vzít existující verzi obrázku v [galerii sdílených obrázků](shared-image-galleries.md), aktualizovat ji a publikovat ji jako novou verzi obrázku do galerie.
+V tomto článku se dozvíte, jak v [galerii sdílených imagí](shared-image-galleries.md)získat existující verzi image, aktualizovat ji a publikovat jako novou verzi image do galerie.
 
-Ke konfiguraci bitové kopie použijeme ukázkovou šablonu JSON. Soubor JSON, který používáme, je zde: [helloImageTemplateforSIGfromWinSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Win_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromWinSIG.json). 
+K nakonfigurování image budeme používat šablonu Sample. JSON. Soubor. JSON, který používáme, je tady: [helloImageTemplateforSIGfromWinSIG. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Win_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromWinSIG.json). 
 
 > [!IMPORTANT]
-> Azure Image Builder je momentálně ve verzi Public Preview.
+> Azure image Builder je momentálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="register-the-features"></a>Registrace funkcí
-Chcete-li během náhledu používat Azure Image Builder, musíte zaregistrovat novou funkci.
+Chcete-li používat Azure image Builder v rámci verze Preview, je nutné zaregistrovat novou funkci.
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
 ```
 
-Zkontrolujte stav registrace funkce.
+Ověřte stav registrace funkce.
 
 ```azurecli-interactive
 az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
 ```
 
-Zkontrolujte svou registraci.
+Ověřte vaši registraci.
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
@@ -44,7 +44,7 @@ az provider show -n Microsoft.Storage | grep registrationState
 az provider show -n Microsoft.Compute | grep registrationState
 ```
 
-Pokud neříkají registrované, spusťte následující:
+Pokud nevyžadují registraci, spusťte tento příkaz:
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
@@ -55,9 +55,9 @@ az provider register -n Microsoft.Compute
 
 ## <a name="set-variables-and-permissions"></a>Nastavení proměnných a oprávnění
 
-Pokud jste k vytvoření Galerie sdílených obrázků použili [možnost Vytvořit obrázek a distribuovat](image-builder-gallery.md) je do galerie sdílených obrázků, už jste vytvořili proměnné, které potřebujeme. Pokud ne, nastavte některé proměnné, které mají být použity pro tento příklad.
+Pokud jste k vytvoření galerie sdílených imagí použili [vytvořit image a distribuovat ji do galerie sdílených imagí](image-builder-gallery.md) , už máte vytvořené proměnné, které potřebujeme. V takovém případě nastavte některé proměnné, které se mají použít v tomto příkladu.
 
-Pro náhled bude tvůrce obrázků podporovat pouze vytváření vlastních irek ve stejné skupině prostředků jako zdrojová spravovaná bitová kopie. Aktualizujte název skupiny prostředků v tomto příkladu tak, aby byl ve stejné skupině prostředků jako zdrojová spravovaná bitová kopie.
+Pro verzi Preview podporuje tvůrce imagí jenom vytváření vlastních imagí ve stejné skupině prostředků jako spravovaná zdrojová image. Aktualizujte název skupiny prostředků v tomto příkladu tak, aby byla stejnou skupinou prostředků jako spravovaná zdrojová image.
 
 ```azurecli-interactive
 # Resource group name - we are using ibsigRG in this example
@@ -77,13 +77,13 @@ username="user name for the VM"
 vmpassword="password for the VM"
 ```
 
-Vytvořte proměnnou pro ID předplatného. Můžete si to `az account show | grep id`pomocí .
+Vytvořte proměnnou pro ID předplatného. Můžete to získat pomocí `az account show | grep id`.
 
 ```azurecli-interactive
 subscriptionID=<Subscription ID>
 ```
 
-Získejte verzi obrázku, kterou chcete aktualizovat.
+Získejte verzi image, kterou chcete aktualizovat.
 
 ```azurecli-interactive
 sigDefImgVersionId=$(az sig image-version list \
@@ -94,7 +94,7 @@ sigDefImgVersionId=$(az sig image-version list \
 ```
 
 
-Pokud již máte vlastní galerii sdílených obrázků a neřídili jste se předchozím příkladem, budete muset přiřazovat oprávnění pro tvůrce obrázků pro přístup ke skupině prostředků, aby měl přístup k galerii.
+Pokud už máte vlastní galerii sdílených imagí a nepoužili jste předchozí příklad, budete muset pro tvůrce imagí přiřadit oprávnění pro přístup ke skupině prostředků, aby měl přístup k této galerii.
 
 
 ```azurecli-interactive
@@ -105,11 +105,11 @@ az role assignment create \
 ```
 
 
-## <a name="modify-helloimage-example"></a>Změnit helloImage příklad
-Můžete si prohlédnout příklad, který se chystáme použít otevřením souboru .json zde: [helloImageTemplateforSIGfromSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) spolu s [odkazem na šablonu image builder .](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 
+## <a name="modify-helloimage-example"></a>Příklad úpravy helloImage
+Můžete si prohlédnout příklad, který se chystáme použít otevřením souboru. JSON tady: [helloImageTemplateforSIGfromSIG. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) spolu s [odkazem na šablonu image Builder](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
 
-Stáhněte si příklad json a nakonfigurujte jej pomocí proměnných. 
+Stáhněte si příklad. JSON a nakonfigurujte ho pomocí proměnných. 
 
 ```azurecli-interactive
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/8_Creating_a_Custom_Win_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromWinSIG.json -o helloImageTemplateforSIGfromWinSIG.json
@@ -125,7 +125,7 @@ sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateforSIGfromWinSI
 
 ## <a name="create-the-image"></a>Vytvoření image
 
-Odešlete konfiguraci image do služby Tvůrce obrázků virtuálních počítačů.
+Odešlete konfiguraci image do služby tvůrce imagí virtuálních počítačů.
 
 ```azurecli-interactive
 az resource create \
@@ -136,7 +136,7 @@ az resource create \
     -n imageTemplateforSIGfromWinSIG01
 ```
 
-Spusťte sestavení bitové kopie.
+Spusťte sestavení image.
 
 ```azurecli-interactive
 az resource invoke-action \
@@ -146,7 +146,7 @@ az resource invoke-action \
      --action Run 
 ```
 
-Před přechodem k dalšímu kroku počkejte, dokud nebude bitová kopie vytvořena, a replikaci.
+Před přechodem k dalšímu kroku počkejte, než se obrázek sestaví a provede replikace.
 
 
 ## <a name="create-the-vm"></a>Vytvořte virtuální počítač.
@@ -161,18 +161,18 @@ az vm create \
   --location $location
 ```
 
-## <a name="verify-the-customization"></a>Ověření vlastního nastavení
-Vytvořte připojení ke vzdálené ploše k virtuálnímu počítači pomocí uživatelského jména a hesla, které jste nastavili při vytváření virtuálního počítače. Uvnitř virtuálního provozu otevřete výzvu cmd a zadejte:
+## <a name="verify-the-customization"></a>Ověření přizpůsobení
+Vytvořte připojení ke vzdálené ploše virtuálního počítače pomocí uživatelského jména a hesla, které jste nastavili při vytváření virtuálního počítače. Uvnitř virtuálního počítače otevřete příkazový řádek a zadejte příkaz:
 
 ```console
 dir c:\
 ```
 
 Nyní byste měli vidět dva adresáře:
-- `buildActions`který byl vytvořen v první verzi obrázku.
-- `buildActions2`který byl vytvořen jako součást aktualizace první verze bitové kopie k vytvoření druhé verze bitové kopie.
+- `buildActions`který byl vytvořen v první verzi bitové kopie.
+- `buildActions2`který byl vytvořen jako součást aktualizace první verze image, aby se vytvořila druhá verze image.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o součástech souboru JSON použitého v tomto článku naleznete v [tématu Odkaz na šablonu tvůrce obrázků](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Další informace o součástech souboru. JSON používaných v tomto článku najdete v tématu Referenční dokumentace k [šablonám tvůrce imagí](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

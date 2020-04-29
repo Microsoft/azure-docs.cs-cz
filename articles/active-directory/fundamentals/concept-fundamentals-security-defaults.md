@@ -1,6 +1,6 @@
 ---
-title: Výchozí nastavení zabezpečení služby Azure Active Directory
-description: Výchozí zásady zabezpečení, které pomáhají chránit organizace před běžnými útoky
+title: Výchozí nastavení zabezpečení Azure Active Directory
+description: Výchozí zásady zabezpečení, které vám pomůžou chránit organizace před běžnými útoky
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,149 +12,149 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f307553a97973d03b0699248373e53e4845aa39a
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869902"
 ---
-# <a name="what-are-security-defaults"></a>Co jsou výchozí hodnoty zabezpečení?
+# <a name="what-are-security-defaults"></a>Co jsou výchozí nastavení zabezpečení?
 
-Správa zabezpečení může být obtížná, když jsou stále populárnější běžné útoky související s identitou. Mezi tyto útoky patří rozprašování hesel, přehrání a phishing.
+Správa zabezpečení může být obtížné, pokud se běžné útoky související s identitou stanou více a mnohem populární. Mezi tyto útoky patří sprej, přehrávání a útoky prostřednictvím hesla.
 
-Výchozí nastavení zabezpečení ve službě Azure Active Directory (Azure AD) usnadňují zabezpečení a pomáhají chránit vaši organizaci. Výchozí hodnoty zabezpečení obsahují předem nakonfigurovaná nastavení zabezpečení pro běžné útoky. 
+Výchozí nastavení zabezpečení v Azure Active Directory (Azure AD) usnadňuje zabezpečení a lepší ochranu vaší organizace. Výchozí nastavení zabezpečení obsahují předem nakonfigurovaná nastavení zabezpečení pro běžné útoky. 
 
-Společnost Microsoft zpřístupňuje výchozí nastavení zabezpečení všem uživatelům. Cílem je zajistit, aby všechny organizace měly základní úroveň zabezpečení povolenou bez dodatečných nákladů. Výchozí nastavení zabezpečení zapnete na webu Azure Portal.
+Microsoft zpřístupňuje výchozí nastavení zabezpečení všem uživatelům. Cílem je zajistit, aby měly všechny organizace základní úroveň zabezpečení povoleno bez dalších poplatků. Výchozí nastavení zabezpečení můžete zapnout v Azure Portal.
 
-![Snímek obrazovky s portálem Azure s přepínačem pro povolení výchozích nastavení zabezpečení](./media/concept-fundamentals-security-defaults/security-defaults-azure-ad-portal.png)
+![Snímek obrazovky Azure Portal s přepínačem pro povolení výchozích hodnot zabezpečení](./media/concept-fundamentals-security-defaults/security-defaults-azure-ad-portal.png)
  
 > [!TIP]
-> Pokud váš tenant byl vytvořen na nebo po 22.října 2019, je možné, že dochází k nové chování zabezpečené ve výchozím nastavení a již mají výchozí nastavení zabezpečení povolené ve vašem tenantovi. Ve snaze chránit všechny naše uživatele, výchozí zabezpečení se zavádí do všech nových klientů vytvořených.
+> Pokud se tenant vytvořil v nebo po 22. října 2019, je možné, že máte nové zabezpečené chování ve výchozím nastavení a ve vašem tenantovi už jsou povolené výchozí hodnoty zabezpečení. V zájmu ochrany všech našich uživatelů se ve všech nově vytvořených tenantůch zavádějí výchozí hodnoty zabezpečení.
 
-Další podrobnosti o tom, proč jsou k dispozici výchozí hodnoty zabezpečení, naleznete v příspěvku na blogu Alexe Weinerta [Představujeme výchozí nastavení zabezpečení](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/introducing-security-defaults/ba-p/1061414).
+Další podrobnosti o tom, proč jsou k dispozici výchozí hodnoty zabezpečení, najdete v blogovém příspěvku Alex Weinert, [představení výchozích hodnot zabezpečení](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/introducing-security-defaults/ba-p/1061414).
 
-## <a name="unified-multi-factor-authentication-registration"></a>Jednotná registrace vícefaktorového ověřování
+## <a name="unified-multi-factor-authentication-registration"></a>Registrace sjednocené Multi-Factor Authentication
 
-Všichni uživatelé ve vašem tenantovi se musí zaregistrovat pro vícefaktorové ověřování (MFA) ve formě služby Azure Multi-Factor Authentication. Uživatelé mají 14 dní na registraci vícefaktorového ověřování pomocí aplikace Microsoft Authenticator. Po uplynutí 14 dnů se uživatel nebude moci přihlásit, dokud nebude dokončena registrace vícefaktorového ověřování.
+Všichni uživatelé ve vašem tenantovi musí zaregistrovat službu Multi-Factor Authentication (MFA) ve formě služby Azure Multi-Factor Authentication. K registraci Multi-Factor Authentication pomocí aplikace Microsoft Authenticator mají uživatelé 14 dní. Po uplynutí 14 dnů se uživatel nebude moct přihlásit, dokud se nedokončí Multi-Factor Authentication registrace.
 
-Chápeme, že někteří uživatelé mohou být mimo kancelář nebo se nepřihlásí během 14 dnů bezprostředně po povolení výchozího zabezpečení. Chcete-li zajistit, aby každý uživatel má dostatek času na registraci pro vícefaktorové ověřování, 14denní období je jedinečný pro každého uživatele. 14denní období uživatele začíná po prvním úspěšném interaktivním přihlášení po povolení výchozích nastavení zabezpečení.
+Chápeme, že někteří uživatelé můžou být mimo kancelář nebo se nebudou přihlašovat během 14 dnů hned po povolení výchozích hodnot zabezpečení. Aby bylo zajištěno, že každý uživatel má dostatek času na registraci Multi-Factor Authentication, je období 14 dní pro každého uživatele jedinečné. Po povolení výchozích hodnot zabezpečení začíná období 14 dní uživatele od prvního úspěšného interaktivního přihlášení.
 
-## <a name="multi-factor-authentication-enforcement"></a>Vynucení vícefaktorového ověřování
+## <a name="multi-factor-authentication-enforcement"></a>Multi-Factor Authentication vynucení
 
 ### <a name="protecting-administrators"></a>Ochrana správců
 
-Uživatelé s přístupem k privilegovaným účtům mají lepší přístup k vašemu prostředí. Vzhledem k moci, kterou tyto účty mají, byste s nimi měli zacházet se zvláštní péčí. Jednou z běžných metod, jak zlepšit ochranu privilegovaných účtů, je vyžadovat silnější formu ověření účtu pro přihlášení. Ve službě Azure AD můžete získat silnější ověření účtu vyžadováním vícefaktorového ověřování.
+Uživatelé s přístupem k privilegovaným účtům mají zvýšený přístup k vašemu prostředí. Vzhledem k napájení těchto účtů byste je měli považovat za zvláštní péči. Jednou z běžných metod, jak zlepšit ochranu privilegovaných účtů, je vyžadovat pro přihlášení silnější formu ověření účtu. V Azure AD můžete získat silnější ověření účtu tím, že budete vyžadovat Multi-Factor Authentication.
 
-Po dokončení registrace pomocí vícefaktorového ověřování bude při každém přihlášení vyžadováno následujících devět rolí správce azure ad, které budou vyžadovat další ověřování:
+Po dokončení registrace u Multi-Factor Authentication se při každém přihlášení budou vyžadovat následující devět rolí správce Azure AD:
 
 - Globální správce
 - Správce SharePointu
 - Správce Exchange
 - Správce podmíněného přístupu
 - Správce zabezpečení
-- Správce technické podpory nebo správce hesel
+- Správce helpdesku nebo správce hesel
 - Správce fakturace
 - Správce uživatele
 - Správce ověřování
 
 ### <a name="protecting-all-users"></a>Ochrana všech uživatelů
 
-Máme tendenci si myslet, že účty správce jsou pouze účty, které potřebují další vrstvy ověřování. Správci mají široký přístup k citlivým informacím a mohou provádět změny nastavení celého předplatného. Útočníci však mají tendenci cílit na koncové uživatele. 
+Doporučujeme, abyste si myslíte, že účty správců jsou jedinými účty, které vyžadují další vrstvy ověřování. Správci mají rozsáhlý přístup k citlivým informacím a můžou provádět změny nastavení pro celé předplatné. Ale útočníci se zaměřují na koncové uživatele. 
 
-Poté, co tito útočníci získají přístup, mohou požádat o přístup k privilegovaným informacím jménem původního držitele účtu. Mohou dokonce stáhnout celý adresář a provést phishingový útok na celou organizaci. 
+Po získání přístupu pro tyto útočníky můžou požádat o přístup k privilegovaným informacím jménem původního držitele účtu. Můžou si dokonce stáhnout celý adresář a udělat tak útok útoku phishing na celou organizaci. 
 
-Jednou z běžných metod pro zlepšení ochrany pro všechny uživatele je vyžadovat silnější formu ověření účtu, jako je například vícefaktorové ověřování, pro každého. Jakmile uživatelé dokončí registraci vícefaktorového ověřování, budou kdykoli vyzváni k dalšímu ověření.
+Jednou z běžných metod pro zlepšení ochrany pro všechny uživatele je vyžadovat silnější formu ověření účtu, například Multi-Factor Authentication pro každého. Jakmile se uživatelé dokončí Multi-Factor Authentication registraci, budou vyzváni k dalšímu ověřování, kdykoli to bude nutné.
 
-### <a name="blocking-legacy-authentication"></a>Blokování staršíverze ověřování
+### <a name="blocking-legacy-authentication"></a>Blokování starších verzí ověřování
 
-Aby měli uživatelé snadný přístup k vašim cloudovým aplikacím, Azure AD podporuje celou řadu ověřovacích protokolů, včetně starších verzí ověřování. *Starší verze ověřování* je termín, který odkazuje na požadavek na ověření ze strany:
+Aby měli uživatelé snadný přístup k vašim cloudovým aplikacím, Azure AD podporuje nejrůznější ověřovací protokoly, včetně starší verze ověřování. *Starší verze ověřování* je termín, který odkazuje na žádost o ověření, kterou provedla:
 
-- Klienti, kteří nepoužívají moderní ověřování (například klient Office 2010).
-- Každý klient, který používá starší poštovní protokoly, například IMAP, SMTP nebo POP3.
+- Klienti, kteří nepoužívají moderní ověřování (například klienta Office 2010).
+- Každý klient používající starší e-mailové protokoly, jako jsou IMAP, SMTP nebo POP3.
 
-Dnes většina kompromitující chvatných pokusů o přihlášení pochází ze staršíverze ověřování. Starší verze ověřování nepodporuje vícefaktorové ověřování. I v případě, že máte v adresáři povolenou zásadu vícefaktorového ověřování, může se útočník ověřit pomocí staršího protokolu a obejít vícefaktorové ověřování. 
+V současné době většina neúspěšných pokusů o přihlášení pocházela ze staršího ověřování. Starší verze ověřování nepodporuje Multi-Factor Authentication. I v případě, že máte ve svém adresáři povolené zásady Multi-Factor Authentication, útočník se může ověřit pomocí staršího protokolu a Multi-Factor Authentication obcházení. 
 
-Po povolení výchozích hodnot zabezpečení ve vašem tenantovi budou blokovány všechny požadavky na ověření provedené starším protokolem. Výchozí nastavení zabezpečení blokuje základní ověřování exchange active sync.
+Po povolení výchozích hodnot zabezpečení ve vašem tenantovi budou všechny požadavky na ověření provedené starším protokolem blokované. Výchozí hodnoty zabezpečení blokují Exchange Active Sync základní ověřování.
 
 > [!WARNING]
-> Před povolením výchozích hodnot zabezpečení se ujistěte, že správci nepoužívají starší ověřovací protokoly. Další informace naleznete v tématu [Jak přejít od starší verze ověřování](concept-fundamentals-block-legacy-authentication.md).
+> Než povolíte výchozí nastavení zabezpečení, zajistěte, aby vaši správci nepoužívali starší ověřovací protokoly. Další informace najdete v tématu [Jak přejít pryč ze starší verze ověřování](concept-fundamentals-block-legacy-authentication.md).
 
 ### <a name="protecting-privileged-actions"></a>Ochrana privilegovaných akcí
 
-Organizace používají celou řadu služeb Azure spravovaných prostřednictvím rozhraní AZURE Resource Manager API, včetně:
+Organizace používají různé služby Azure spravované prostřednictvím rozhraní Azure Resource Manager API, včetně:
 
 - portál Azure 
 - Azure PowerShell 
 - Azure CLI
 
-Použití Azure Resource Manager ke správě služeb je vysoce privilegovaná akce. Azure Resource Manager může změnit konfigurace pro celý klient, jako je nastavení služby a fakturace předplatného. Jednofaktorové ověřování je zranitelné vůči různým útokům, jako je phishing a sprej s heslem. 
+Použití Azure Resource Manager ke správě služeb je vysoce privilegovaná akce. Azure Resource Manager může měnit konfigurace v rámci tenanta, jako je například nastavení služby a fakturace předplatného. Jednotné vícefaktorové ověřování je zranitelné vůči nejrůznějším útokům, jako je útok phishing a heslo. 
 
-Je důležité ověřit identitu uživatelů, kteří chtějí získat přístup ke Správci prostředků Azure a aktualizovat konfigurace. Před povolením přístupu ověřte jejich identitu vyžadováním dalšího ověřování.
+Je důležité ověřit identitu uživatelů, kteří chtějí získat přístup k Azure Resource Manager a aktualizovat konfigurace. Než povolíte přístup, ověříte jejich identitu tím, že budete vyžadovat další ověřování.
 
-Po povolení výchozízabezpečení ve vašem tenantovi, každý uživatel, který je přístup k portálu Azure, Azure PowerShell, nebo Azure CLI bude muset dokončit další ověřování. Tato zásada platí pro všechny uživatele, kteří přistupují ke Správci prostředků Azure, ať už jsou to správci nebo uživateli. 
-
-> [!NOTE]
-> Před2017 Tenanti Exchange Online mají ve výchozím nastavení zakázáno moderní ověřování. Chcete-li se vyhnout možnosti přihlašovací smyčky při ověřování prostřednictvím těchto klientů, musíte [povolit moderní ověřování](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online).
+Po povolení výchozích hodnot zabezpečení ve vašem tenantovi bude nutné, aby každý uživatel, který přistupuje k Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure CLI, dokončil další ověřování. Tato zásada platí pro všechny uživatele, kteří přistupují k Azure Resource Manager, ať už se jedná o správce nebo uživatele. 
 
 > [!NOTE]
-> Účet synchronizace služby Azure AD Connect je vyloučen z výchozích hodnot zabezpečení a nebude vyzván k registraci nebo provedení vícefaktorového ověřování. Organizace by neměly používat tento účet pro jiné účely.
+> Ve výchozím nastavení je ve výchozím nastavení zakázáno moderní ověřování klientů služby Exchange Online ve více než 2017. Abyste se vyhnuli možnosti přihlašovací smyčky při ověřování prostřednictvím těchto tenantů, musíte [Povolit moderní ověřování](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online).
+
+> [!NOTE]
+> Účet synchronizace Azure AD Connect je vyloučený z výchozích hodnot zabezpečení a nebude vyzván k registraci nebo provedení vícefaktorového ověřování. Organizace by tento účet neměli používat pro jiné účely.
 
 ## <a name="deployment-considerations"></a>Aspekty nasazování
 
-Následující další důležité informace souvisejí s nasazením výchozích zabezpečení pro vašeho tenanta.
+K nasazení výchozích hodnot zabezpečení pro vašeho tenanta se vztahují následující další požadavky.
 
 ### <a name="authentication-methods"></a>Metody ověřování
 
-Výchozí nastavení zabezpečení umožňují registraci a používání azure vícefaktorového ověřování **pomocí jenom aplikace Microsoft Authenticator s využitím oznámení**. Podmíněný přístup umožňuje použití libovolné metody ověřování, kterou správce zvolí k povolení.
+Výchozí nastavení zabezpečení umožňuje registraci a používání služby Azure Multi-Factor Authentication **jenom pomocí Microsoft Authenticator aplikace s oznámeními**. Podmíněný přístup umožňuje použití libovolné metody ověřování, kterou správce zvolí k povolení.
 
 |   | Výchozí nastavení zabezpečení | Podmíněný přístup |
 | --- | --- | --- |
 | Oznámení prostřednictvím mobilní aplikace | × | × |
 | Ověřovací kód z mobilní aplikace nebo hardwarového tokenu |   | × |
-| Textová zpráva do telefonu |   | × |
-| Volání na telefon |   | × |
-| Hesla aplikací |   | X** |
+| Textová zpráva na telefon |   | × |
+| Zavolat na telefon |   | × |
+| Hesla aplikací |   | × * * |
 
-** Hesla aplikací jsou k dispozici pouze v ověřování pomocí vlastního počítače pro jednotlivé uživatele se staršími scénáři ověřování pouze v případě, že je povolit správci.
+* * Hesla aplikací jsou k dispozici pouze v případě MFA pro jednotlivé uživatele se staršími scénáři ověřování, pokud jsou povolena správci.
 
 ### <a name="conditional-access"></a>Podmíněný přístup
 
-Podmíněný přístup můžete použít ke konfiguraci zásad podobných výchozím hodnotám zabezpečení, ale s větší rozlišovací schopností včetně vyloučení uživatelů, které nejsou k dispozici ve výchozích hodnotách zabezpečení. Pokud používáte podmíněný přístup a máte ve svém prostředí povolené zásady podmíněného přístupu, výchozí nastavení zabezpečení nebudete k dispozici. Pokud máte licenci, která poskytuje podmíněný přístup, ale nemáte žádné zásady podmíněného přístupu povolené ve vašem prostředí, můžete použít výchozí nastavení zabezpečení, dokud nepovolíte zásady podmíněného přístupu. Další informace o licencování Azure AD najdete na [stránce s cenami Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
+Podmíněný přístup můžete použít ke konfiguraci zásad, které se podobají výchozím hodnotám zabezpečení, ale s větší členitosti včetně vylučování uživatelů, které nejsou dostupné ve výchozím nastavení zabezpečení. Pokud používáte podmíněný přístup a ve vašem prostředí máte povolené zásady podmíněného přístupu, výchozí nastavení zabezpečení nebude k dispozici. Pokud máte licenci, která poskytuje podmíněný přístup, ale nemáte ve svém prostředí povolené žádné zásady podmíněného přístupu, budete mít k dispozici výchozí nastavení zabezpečení, dokud nepovolíte Zásady podmíněného přístupu. Další informace o licencování Azure AD najdete na stránce s [cenami služby Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
 
-![Varovná zpráva, že můžete mít výchozí nastavení zabezpečení nebo podmíněný přístup není obojí](./media/concept-fundamentals-security-defaults/security-defaults-conditional-access.png)
+![Zpráva s upozorněním, že je možné použít výchozí nastavení zabezpečení nebo podmíněný přístup ne obojí](./media/concept-fundamentals-security-defaults/security-defaults-conditional-access.png)
 
-Tady jsou podrobné pokyny ke konfiguraci ekvivalentních zásad pomocí podmíněného přístupu:
+Tady jsou podrobné návody, jak můžete pomocí podmíněného přístupu nakonfigurovat ekvivalentní zásady:
 
 - [Vyžadování MFA pro správce](../conditional-access/howto-conditional-access-policy-admin-mfa.md)
 - [Vyžadování MFA pro správu Azure](../conditional-access/howto-conditional-access-policy-azure-management.md)
 - [Blokování starší verze ověřování](../conditional-access/howto-conditional-access-policy-block-legacy.md)
 - [Vyžadování MFA pro všechny uživatele](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)
-- [Vyžadovat registraci Azure MFA](../identity-protection/howto-identity-protection-configure-mfa-policy.md) – vyžaduje ochranu identity Azure AD
+- [Vyžadovat registraci Azure MFA](../identity-protection/howto-identity-protection-configure-mfa-policy.md) – vyžaduje Azure AD Identity Protection
 
 ## <a name="enabling-security-defaults"></a>Povolení výchozích hodnot zabezpečení
 
 Povolení výchozích hodnot zabezpečení v adresáři:
 
-1. Přihlaste se k [portálu](https://portal.azure.com) Azure jako správce zabezpečení, správce podmíněného přístupu nebo globální správce.
-1. Přejděte na **službu Vlastnosti služby** **Azure Active Directory** >.
-1. Vyberte **možnost Spravovat výchozí hodnoty zabezpečení**.
-1. Nastavte přepínač **Povolit výchozí hodnoty zabezpečení** na **Hodnotu Ano**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce zabezpečení, správce podmíněného přístupu nebo globální správce.
+1. Přejděte na **Azure Active Directory** > **vlastnosti**.
+1. Vyberte **Spravovat výchozí nastavení zabezpečení**.
+1. Nastavte přepínač **Povolit výchozí hodnoty zabezpečení** na **Ano**.
 1. Vyberte **Uložit**.
 
-## <a name="disabling-security-defaults"></a>Zakázání výchozích hodnot zabezpečení
+## <a name="disabling-security-defaults"></a>Zakazování výchozích hodnot zabezpečení
 
-Organizace, které se rozhodnou implementovat zásady podmíněného přístupu, které nahrazují výchozí hodnoty zabezpečení, musí zakázat výchozí hodnoty zabezpečení. 
+Organizace, které se rozhodnou implementovat zásady podmíněného přístupu, které nahrazují výchozí hodnoty zabezpečení, musí zakázat výchozí nastavení zabezpečení. 
 
-![Varovná zpráva zakázat výchozí nastavení zabezpečení pro povolení podmíněného přístupu](./media/concept-fundamentals-security-defaults/security-defaults-disable-before-conditional-access.png)
+![Zpráva upozornění zakázat výchozí nastavení zabezpečení pro povolení podmíněného přístupu](./media/concept-fundamentals-security-defaults/security-defaults-disable-before-conditional-access.png)
 
 Zakázání výchozích hodnot zabezpečení v adresáři:
 
-1. Přihlaste se k [portálu](https://portal.azure.com) Azure jako správce zabezpečení, správce podmíněného přístupu nebo globální správce.
-1. Přejděte na **službu Vlastnosti služby** **Azure Active Directory** >.
-1. Vyberte **možnost Spravovat výchozí hodnoty zabezpečení**.
-1. Nastavte přepínač **Povolit výchozí hodnoty zabezpečení** na **Ne**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce zabezpečení, správce podmíněného přístupu nebo globální správce.
+1. Přejděte na **Azure Active Directory** > **vlastnosti**.
+1. Vyberte **Spravovat výchozí nastavení zabezpečení**.
+1. Nastavte přepínač **Povolit výchozí hodnoty zabezpečení** na **ne**.
 1. Vyberte **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Běžné zásady podmíněného přístupu](../conditional-access/concept-conditional-access-policy-common.md)
+[Společné zásady podmíněného přístupu](../conditional-access/concept-conditional-access-policy-common.md)

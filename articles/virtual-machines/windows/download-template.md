@@ -1,6 +1,6 @@
 ---
 title: Stažení šablony pro virtuální počítač Azure
-description: Stáhněte si šablonu pro virtuální počítače pomocí portálu nebo PowerShellu.
+description: Stáhněte si šablonu pro virtuální počítač pomocí portálu nebo PowerShellu.
 author: cynthn
 manager: gwallace
 ms.service: virtual-machines
@@ -9,35 +9,35 @@ ms.topic: article
 ms.date: 11/17/2017
 ms.author: cynthn
 ms.openlocfilehash: af6905f0ba62a9053e44134348721312ade6b9d7
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82085378"
 ---
 # <a name="download-the-template-for-a-vm"></a>Stažení šablony pro virtuální počítač
-Když vytvoříte virtuální počítač v Azure pomocí portálu nebo PowerShellu, automaticky se za vás vytvoří šablona Správce prostředků. Pomocí této šablony můžete rychle duplikovat nasazení. Šablona obsahuje informace o všech prostředcích ve skupině prostředků. Pro virtuální počítač to znamená, že šablona obsahuje vše, co se vytvoří na podporu virtuálního počítače v této skupině prostředků, včetně síťových prostředků.
+Když vytvoříte virtuální počítač v Azure pomocí portálu nebo PowerShellu, automaticky se vytvoří šablona Správce prostředků. Tuto šablonu můžete použít k rychlému duplikování nasazení. Šablona obsahuje informace o všech prostředcích ve skupině prostředků. V případě virtuálního počítače to znamená, že šablona obsahuje vše, co je vytvořeno v rámci podpory virtuálního počítače v dané skupině prostředků, včetně síťových prostředků.
 
 ## <a name="download-the-template-using-the-portal"></a>Stažení šablony pomocí portálu
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
-2. Jedna z levé nabídky, vyberte **Virtuální počítače**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
+2. V nabídce vlevo vyberte **Virtual Machines**.
 3. Ze seznamu vyberte virtuální počítač.
 4. Vyberte **Exportovat šablonu**.
-5. V horní části nabídky vyberte **Stáhnout** a soubor ZIP uložte do místního počítače.
-6. Otevřete soubor ZIP a extrahujte soubory do složky. Soubor ZIP obsahuje:
+5. V nabídce v horní části vyberte **Stáhnout** a uložte soubor. zip do svého místního počítače.
+6. Otevřete soubor. zip a extrahujte soubory do složky. Soubor. zip obsahuje:
    
-   * parameters.json
-   * šablona.json
+   * Parameters. JSON
+   * Template. JSON
 
-Soubor template.json je šablona.
+Soubor Template. JSON je šablona.
 
 ## <a name="download-the-template-using-powershell"></a>Stažení šablony pomocí PowerShellu
-Soubor šablony JSON můžete také stáhnout pomocí rutiny [Export-AzResourceGroup.](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup) `-path` Parametr můžete použít k zadání názvu souboru a cesty pro soubor JSON. Tento příklad ukazuje, jak stáhnout šablonu pro skupinu prostředků s názvem **myResourceGroup** do složky **C:\users\public\downloads** v místním počítači.
+Soubor šablony. JSON můžete také stáhnout pomocí rutiny [Export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup) . Pomocí `-path` parametru můžete zadat název souboru a cestu k souboru. JSON. Tento příklad ukazuje, jak stáhnout šablonu pro skupinu prostředků s názvem **myResourceGroup** do složky **C:\users\public\downloads** na místním počítači.
 
 ```powershell
     Export-AzResourceGroup -ResourceGroupName "myResourceGroup" -Path "C:\users\public\downloads"
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o nasazení prostředků pomocí šablon najdete v [tématu Návod k šabloně Správce prostředků](../../azure-resource-manager/resource-manager-template-walkthrough.md).
+Další informace o nasazení prostředků pomocí šablon naleznete v tématu [Správce prostředků návodu k šablonám](../../azure-resource-manager/resource-manager-template-walkthrough.md).
 

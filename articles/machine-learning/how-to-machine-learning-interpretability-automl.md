@@ -1,7 +1,7 @@
 ---
-title: Vysvětlitelnost v automatizovaném ML
+title: Vysvětlení v automatizovaném ML
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak získat vysvětlení, jak váš automatizovaný model ML určuje důležitost funkce a dělá předpovědi při použití sady Azure Machine Learning SDK.
+description: Naučte se, jak získat vysvětlení toho, jak model automatizovaného ML určuje důležitost funkcí a že při použití Azure Machine Learning SDK je předpovědi.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,38 +10,38 @@ ms.author: mesameki
 author: mesameki
 ms.date: 03/11/2020
 ms.openlocfilehash: e9155104905ae3e686a01b90cbcad2610b6f4c91
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82086415"
 ---
-# <a name="interpretability-model-explanations-in-automated-machine-learning"></a>Interpretovatelnost: modelová vysvětlení v automatizovaném strojovém učení
+# <a name="interpretability-model-explanations-in-automated-machine-learning"></a>Výklad: vysvětlení modelů v automatizovaném strojovém učení
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto článku se dozvíte, jak získat vysvětlení pro automatizované strojové učení (ML) v Azure Machine Learning. Automatizovaná funkce ML vám pomůže porozumět důležitosti navržených funkcí. 
+V tomto článku se dozvíte, jak získat vysvětlení automatického strojového učení (ML) v Azure Machine Learning. Automatizovaná ML vám pomůže pochopit důležitost navržených funkcí. 
 
-Všechny verze sady SDK po 1.0.85 nastavené `model_explainability=True` ve výchozím nastavení. V sadě SDK verze 1.0.85 a `model_explainability=True` starších `AutoMLConfig` verzích musí uživatelé nastavit objekt, aby mohli používat interpretabilitu modelu. 
+Všechny verze sady SDK po 1.0.85 `model_explainability=True` výchozím nastavení. V sadě SDK verze 1.0.85 a starších verzích je potřeba nastavit `model_explainability=True` v `AutoMLConfig` objektu, aby bylo možné použít interpretaci modelu. 
 
 V tomto článku získáte informace o těchto tématech:
 
-- Proveďte interpretabilitu během trénování pro nejlepší model nebo jakýkoli model.
-- Povolte vizualizace, které vám pomohou zobrazit vzory v datech a vysvětleních.
-- Implementujte interpretabilitu během odvození nebo vyhodnocování.
+- Během školení proveďte výklad pro nejlepší model nebo model.
+- Povolit vizualizace, které vám pomůžou zobrazit vzory v datech a vysvětlení.
+- Implementujte výklad při odvozování nebo bodování.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
-- Funkce interpretace. Spuštěním `pip install azureml-interpret azureml-contrib-interpret` získáte potřebné balíčky.
-- Znalost vytváření automatizovaných experimentů ML. Další informace o tom, jak používat Azure Machine Learning SDK, dokončete tento [regresní model kurzu](tutorial-auto-train-models.md) nebo se podívejte, jak [nakonfigurovat automatizované experimenty ML](how-to-configure-auto-train.md).
+- Funkce pro vyhodnocení. Pro `pip install azureml-interpret azureml-contrib-interpret` získání potřebných balíčků spusťte.
+- Znalosti o sestavování automatizovaných experimentů ML. Další informace o tom, jak používat sadu Azure Machine Learning SDK, získáte v tomto [kurzu regresní model](tutorial-auto-train-models.md) nebo v tématu Jak [Konfigurovat automatizované experimenty ml](how-to-configure-auto-train.md).
 
-## <a name="interpretability-during-training-for-the-best-model"></a>Interpretovatelnost během tréninku pro nejlepší model
+## <a name="interpretability-during-training-for-the-best-model"></a>Možnost interpretace během školení pro nejlepší model
 
-Načíst vysvětlení `best_run`z , který obsahuje vysvětlení pro inženýrské funkce.
+Načtěte vysvětlení z `best_run`, který obsahuje vysvětlení pro inženýrské funkce.
 
-### <a name="download-engineered-feature-importance-from-artifact-store"></a>Stažení důležitosti navržených funkcí z úložiště artefaktů
+### <a name="download-engineered-feature-importance-from-artifact-store"></a>Stažení důležitosti funkcí z úložiště artefaktů
 
-Můžete použít `ExplanationClient` ke stažení inženýrství funkce vysvětlení z úložiště `best_run`artefaktů . 
+Můžete použít `ExplanationClient` ke stažení vysvětlivek k funkcím z úložiště artefaktů `best_run`. 
 
 ```python
 from azureml.explain.model._internal.explanation_client import ExplanationClient
@@ -51,11 +51,11 @@ engineered_explanations = client.download_model_explanation(raw=False)
 print(engineered_explanations.get_feature_importance_dict())
 ```
 
-## <a name="interpretability-during-training-for-any-model"></a>Interpretovatelnost během tréninku pro jakýkoli model 
+## <a name="interpretability-during-training-for-any-model"></a>Výklad během školení pro libovolný model 
 
-Když vypočítáte vysvětlení modelu a vizualizujete je, nejste omezeni na existující vysvětlení modelu pro automatizovaný model ML. Můžete také získat vysvětlení pro váš model s různými testovacími daty. Kroky v této části ukazují, jak vypočítat a vizualizovat důležitost navržených funkcí na základě testovacích dat.
+Při výpočtu vysvětlení modelu a jejich vizualizaci nebudete omezeni na existující vysvětlení modelu pro automatizovaný model ML. Můžete také získat vysvětlení pro váš model s různými testovacími daty. Postup v této části ukazuje, jak vypočítat a vizualizovat důležitost navržených funkcí na základě vašich testovacích dat.
 
-### <a name="retrieve-any-other-automl-model-from-training"></a>Načtení jakéhokoli jiného modelu Automatického praní z trénování
+### <a name="retrieve-any-other-automl-model-from-training"></a>Načíst jakýkoli jiný AutoML model z školení
 
 ```python
 automl_run, fitted_model = local_run.get_output(metric='accuracy')
@@ -63,13 +63,13 @@ automl_run, fitted_model = local_run.get_output(metric='accuracy')
 
 ### <a name="set-up-the-model-explanations"></a>Nastavení vysvětlení modelu
 
-Slouží `automl_setup_model_explanations` k získání navržených vysvětlení. Můžete `fitted_model` generovat následující položky:
+Použijte `automl_setup_model_explanations` k získání vysvětlivek s technickými poznámkou. `fitted_model` Může generovat následující položky:
 
-- Doporučené údaje z vyškolených nebo zkušebních vzorků
-- Seznamy názvů inženýrské funkce
-- Vyhledatelné třídy ve sloupci označeném popiskem ve scénářích klasifikace
+- Doporučená data z výukových nebo testovacích ukázek
+- Seznamy názvů zpracovaných funkcí
+- Najítelné třídy v popisku sloupce ve scénářích klasifikace
 
-Obsahuje `automl_explainer_setup_obj` všechny struktury z výše uvedeného seznamu.
+`automl_explainer_setup_obj` Obsahuje všechny struktury ze seznamu výše.
 
 ```python
 from azureml.train.automl.runtime.automl_explain_utilities import automl_setup_model_explanations
@@ -79,15 +79,15 @@ automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_t
                                                              task='classification')
 ```
 
-### <a name="initialize-the-mimic-explainer-for-feature-importance"></a>Inicializovat mimincovní vysvětlující funkci pro důležitost funkce
+### <a name="initialize-the-mimic-explainer-for-feature-importance"></a>Inicializovat vysvětlující podobnou funkci pro důležitost funkcí
 
-Chcete-li generovat vysvětlení pro modely `MimicWrapper` AutoML, použijte třídu. Mimimicwrapper můžete inicializovat pomocí těchto parametrů:
+K vygenerování vysvětlení pro modely AutoML použijte `MimicWrapper` třídu. MimicWrapper můžete inicializovat pomocí těchto parametrů:
 
-- Vysvětlující objekt nastavení
+- Objekt nastavení pro vysvětlení
 - Váš pracovní prostor
-- Model LightGBM, který slouží jako `fitted_model` náhrada automatizovaného modelu ML
+- Model LightGBM, který slouží jako náhrada za model `fitted_model` AUTOMATIZOVANÉho ml
 
-MimicWrapper také trvá `automl_run` objekt, kde bude nahrán anavržený vysvětlení.
+MimicWrapper také převezme `automl_run` objekt, do kterého se nahrají inženýrská vysvětlení.
 
 ```python
 from azureml.explain.model.mimic.models.lightgbm_model import LGBMExplainableModel
@@ -101,24 +101,24 @@ explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator, LGBMEx
                          classes=automl_explainer_setup_obj.classes)
 ```
 
-### <a name="use-mimicexplainer-for-computing-and-visualizing-engineered-feature-importance"></a>Použití MimicExplainer pro výpočet a vizualizaci inženýrské funkce význam
+### <a name="use-mimicexplainer-for-computing-and-visualizing-engineered-feature-importance"></a>Použití MimicExplainer pro výpočet a vizualizaci důležitosti funkcí navržených pro inženýry
 
-Můžete volat `explain()` metodu v MimicWrapper s transformované zkušební vzorky získat důležitost funkce pro generované konstrukční funkce. Můžete také `ExplanationDashboard` zobrazit vizualizaci řídicího panelu hodnoty důležitosti funkce generovaných inženýrských funkcí pomocí automatizovaných ml featurizers.
+Můžete zavolat `explain()` metodu v MimicWrapper pomocí transformovaných ukázek testů, abyste získali důležitost funkce pro vygenerované funkce v vygenerovaných analýzách. Můžete také použít `ExplanationDashboard` k zobrazení vizualizace řídicích panelů pro hodnoty důležitosti funkcí vygenerovaných pomocí automatizované ml featurizers.
 
 ```python
 engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
 print(engineered_explanations.get_feature_importance_dict())
 ```
 
-### <a name="interpretability-during-inference"></a>Interpretovatelnost během odvození
+### <a name="interpretability-during-inference"></a>Výklad při odvozování
 
-V této části se dozvíte, jak zprovoznit automatizovaný model ML s vysvětlující, který byl použit k výpočtu vysvětlení v předchozí části.
+V této části se dozvíte, jak zprovoznění model automatizovaného ML s vysvětlením, který se použil k výpočtu vysvětlení v předchozí části.
 
-### <a name="register-the-model-and-the-scoring-explainer"></a>Registrace modelu a vysvětlivače bodování
+### <a name="register-the-model-and-the-scoring-explainer"></a>Zaregistrujte model a vysvětlující hodnocení.
 
-Pomocí `TreeScoringExplainer` můžete vytvořit vysvětlující vysvětlivku hodnocení, který vypočítá hodnoty důležitosti navržených funkcí v době odvození. Inicializovat vysvětlivku bodování `feature_map` s, která byla vypočítána dříve. 
+Pomocí nástroje `TreeScoringExplainer` můžete vytvořit vysvětlující bodování, který bude počítat hodnoty důležitosti funkcí v čase odvození. Můžete inicializovat vysvětlující bodování s `feature_map` dříve vypočítaným vypočítaným. 
 
-Uložte vysvětlivku bodování a pak zaregistrujte model a vysvětlivku hodnocení pomocí služby správy modelu. Spusťte následující kód:
+Uložte vysvětlující hodnocení a pak zaregistrujte model a hodnocení bodování pomocí služby Správa modelů. Spusťte následující kód:
 
 ```python
 from azureml.interpret.scoring.scoring_explainer import TreeScoringExplainer, save
@@ -140,7 +140,7 @@ scoring_explainer_model = automl_run.register_model(model_name='scoring_explaine
 
 ### <a name="create-the-conda-dependencies-for-setting-up-the-service"></a>Vytvoření závislostí conda pro nastavení služby
 
-Dále vytvořte potřebné závislosti prostředí v kontejneru pro nasazený model. Vezměte prosím na vědomí, že azureml výchozí s verzí >= 1.0.45 musí být uvedeny jako pip závislost, protože obsahuje funkce potřebné k hostování modelu jako webové služby.
+Dále vytvořte nezbytné závislosti prostředí v kontejneru pro nasazený model. Upozorňujeme, že služba AzureML-Defaults s verzí >= 1.0.45 musí být uvedená jako závislost PIP, protože obsahuje funkce potřebné k hostování modelu jako webové služby.
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies
@@ -163,7 +163,7 @@ with open("myenv.yml","r") as f:
 
 ### <a name="deploy-the-service"></a>Nasazení služby
 
-Nasadit službu pomocí conda souboru a bodovací soubor z předchozích kroků.
+Nasaďte službu pomocí souboru conda a souboru bodování z předchozích kroků.
 
 ```python
 from azureml.core.webservice import Webservice
@@ -190,7 +190,7 @@ service.wait_for_deployment(show_output=True)
 
 ### <a name="inference-with-test-data"></a>Odvození s testovacími daty
 
-Odvození s některými testovacími daty zobrazíte předpovídanou hodnotu z automatizovaného modelu ML. Zobrazení důležitosti navržené funkce pro předpokládanou hodnotu.
+Odvození s některými testovacími daty pro zobrazení předpovězené hodnoty z automatizovaného modelu ML. Podívejte se na důležitost navržených funkcí pro předpokládanou hodnotu.
 
 ```python
 if service.state == 'Healthy':
@@ -205,12 +205,12 @@ if service.state == 'Healthy':
     print(output['engineered_local_importance_values'])
 ```
 
-### <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>Vizualizujte pro zjišťování vzorů v datech a vysvětlení v době školení
+### <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>Vizualizace pro zjišťování vzorů v datech a vysvětlení v době školení
 
-Graf důležitosti funkcí můžete vizualizovat ve vašem pracovním prostoru ve [studiu Azure Machine Learning](https://ml.azure.com). Po dokončení automatického spuštění ml vyberte **Zobrazit podrobnosti modelu,** chcete-li zobrazit konkrétní spuštění. Výběrem karty **Vysvětlení** zobrazíte řídicí panel vizualizace vysvětlení.
+Graf důležitost funkcí můžete vizualizovat v pracovním prostoru v [Azure Machine Learning Studiu](https://ml.azure.com). Po dokončení automatizovaného běhu ML vyberte **Zobrazit podrobnosti o modelu** pro zobrazení konkrétního běhu. Vyberte kartu **vysvětlení** a zobrazte řídicí panel vizualizace vysvětlení.
 
-[![Architektura interpretace strojového učení](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png)](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png#lightbox)
+[![Machine Learning architektura pro interpretaci](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png)](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png#lightbox)
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jak můžete povolit vysvětlení modelu a důležitost funkcí v oblastech sady Azure Machine Learning SDK než automatizované strojové učení, najdete v [článku konceptu o interpretaci](how-to-machine-learning-interpretability.md).
+Další informace o tom, jak můžete povolit vysvětlení modelu a důležitost funkcí v oblastech Azure Machine Learning sady SDK kromě automatizovaného strojového učení, najdete v [článku koncept o výkladu](how-to-machine-learning-interpretability.md).

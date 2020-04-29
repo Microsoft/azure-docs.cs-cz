@@ -1,6 +1,6 @@
 ---
-title: Přidání řádkové vrstvy do mapy | Mapy Microsoft Azure
-description: V tomto článku se dozvíte, jak přidat vrstvu čar do mapy pomocí sady Microsoft Azure Maps Web SDK.
+title: Přidat řádkovou vrstvu do mapy | Mapy Microsoft Azure
+description: V tomto článku se dozvíte, jak přidat vrstvu čáry k mapě pomocí webové sady SDK Microsoft Azure Maps.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/08/2019
@@ -10,20 +10,20 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: c473be25907eb3a761fbccd598bb9b732e5be5b9
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80802344"
 ---
-# <a name="add-a-line-layer-to-the-map"></a>Přidání čárové vrstvy do mapy
+# <a name="add-a-line-layer-to-the-map"></a>Přidat řádkovou vrstvu do mapy
 
-Liniovou vrstvu lze `LineString` použít `MultiLineString` k vykreslení a prvky jako cesty nebo trasy na mapě. Liniovou vrstvu lze také použít `Polygon` k `MultiPolygon` vykreslení obrysu a prvků. Zdroj dat je připojen k liniové vrstvě, aby mu poskytla data k vykreslení. 
+Spojnicová vrstva se dá použít k vykreslování `LineString` a `MultiLineString` zobrazování funkcí jako cest nebo tras na mapě. Řádkovou vrstvu lze také použít k vykreslení osnovy `Polygon` a `MultiPolygon` funkcí. Zdroj dat je připojen ke spojnici čáry, aby byl zajištěn pro vykreslování dat. 
 
 > [!TIP]
-> Vrstvy čar ve výchozím nastavení vykreslí souřadnice polygonů i čáry ve zdroji dat. Chcete-li omezit vrstvu tak, že pouze `filter` vykreslí `['==', ['geometry-type'], 'LineString']` Funkce `['any', ['==', ['geometry-type'], 'LineString'], ['==', ['geometry-type'], 'MultiLineString']]` LineString nastavit vlastnost vrstvy nebo pokud chcete zahrnout MultiLineString funkce také.
+> Vrstvy čar ve výchozím nastavení vykreslí souřadnice mnohoúhelníků a také čáry ve zdroji dat. Chcete-li omezit vrstvu tak, aby vykresluje pouze funkce LineString, `filter` nastavte vlastnost vrstvy na `['==', ['geometry-type'], 'LineString']` nebo `['any', ['==', ['geometry-type'], 'LineString'], ['==', ['geometry-type'], 'MultiLineString']]` , pokud chcete zahrnout také funkce MultiLineString.
 
-Následující kód ukazuje, jak vytvořit řádek. Přidejte čáru do zdroje dat a pak ji vykreslete čárovou vrstvou pomocí třídy [LineLayer.](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest)
+Následující kód ukazuje, jak vytvořit řádek. Přidejte čáru ke zdroji dat a potom ji vykreslete s vrstvou čáry pomocí třídy [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) .
 
 ```javascript
 //Create a data source and add it to the map.
@@ -40,60 +40,60 @@ map.layers.add(new atlas.layer.LineLayer(dataSource, null, {
 }));
 ```
 
-Níže je kompletní ukázka spuštěného kódu výše uvedených funkcí.
+Níže je uvedená ukázka kompletního spuštění kódu výše uvedené funkce.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Přidání čáry do mapy' src='//codepen.io/azuremaps/embed/qomaKv/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na pero Přidat řádek<a href='https://codepen.io/azuremaps'>@azuremaps</a>na <a href='https://codepen.io/azuremaps/pen/qomaKv/'>mapu</a> pomocí Azure Maps ( ) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Přidat čáru k mapě' src='//codepen.io/azuremaps/embed/qomaKv/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na pero a <a href='https://codepen.io/azuremaps/pen/qomaKv/'>přidejte čáru na mapu</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Vrstvy čar lze stylovat pomocí [linelayeroptions](/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest) a [použít výrazy stylu řízené daty](data-driven-style-expressions-web-sdk.md).
+Čáry vrstev lze stylovat pomocí [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest) a [používat výrazy stylu řízené daty](data-driven-style-expressions-web-sdk.md).
 
-## <a name="add-symbols-along-a-line"></a>Přidání symbolů podél čáry
+## <a name="add-symbols-along-a-line"></a>Přidat symboly podél čáry
 
-Tato ukázka ukazuje, jak přidat ikony šipek podél čáry na mapě. Při použití vrstvy symbolů nastavte volbu "umístění" na "čáru". Tato volba vykreslí symboly podél čáry a otočí ikony (0 stupňů = vpravo).
+Tento příklad ukazuje, jak přidat ikony šipek podél čáry na mapě. Při použití vrstvy symbolů nastavte možnost umístění na řádek. Tato možnost vykreslí symboly podél čáry a otočí ikony (0 stupňů = vpravo).
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Zobrazit šipku podél čáry" src="//codepen.io/azuremaps/embed/drBJwX/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Podívejte se na <a href='https://codepen.io/azuremaps/pen/drBJwX/'>šipku</a> Pero<a href='https://codepen.io/azuremaps'>@azuremaps</a>zobrazit podél řádku podle Azure Maps ( ) na <a href='https://codepen.io'>CodePen</a>.
+Podívejte se na <a href='https://codepen.io/azuremaps/pen/drBJwX/'>šipku zobrazení pera podél čáry</a> po Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 > [!TIP]
-> Webová sada Azure Maps SDK poskytuje několik přizpůsobitelných šablon obrázků, které můžete použít s vrstvou symbolů. Další informace naleznete v dokumentu [Jak používat šablony obrázků.](how-to-use-image-templates-web-sdk.md)
+> Sada Azure Maps Web SDK poskytuje několik přizpůsobitelných šablon obrázků, které lze použít s vrstvou symbolů. Další informace najdete v dokumentu [použití šablon obrázků](how-to-use-image-templates-web-sdk.md) .
 
 <a name="line-stroke-gradient"></a>
 
-## <a name="add-a-stroke-gradient-to-a-line"></a>Přidání přechodu tahu k čáře
+## <a name="add-a-stroke-gradient-to-a-line"></a>Přidání přechodu mezi tahy na čáru
 
-Na čáru můžete aplikovat jednu barvu tahu. Můžete také vyplnit čáru s přechodem barev a zobrazit tak přechod z jednoho segmentu čáry na další segment čáry. Například přechody čar lze použít k reprezentaci změn v čase a vzdálenosti nebo různých teplot v rámci připojené čáry objektů. Chcete-li použít tuto funkci na řádek, musí `lineMetrics` mít zdroj dat nastavenou možnost na hodnotu `strokeColor` true a poté může být výraz barevného přechodu předán možnosti řádku. Výraz přechodu tahu musí `['line-progress']` odkazovat na datový výraz, který výrazu zpřístupňuje vypočtené čárové metriky.
+Pro čáru můžete použít jednu barvu tahu. Můžete také vyplnit řádek s přechodem barev pro zobrazení přechodu z jednoho segmentu čáry do dalšího segmentu čáry. Například barevné přechody lze použít k reprezentaci změn v průběhu času a vzdálenosti nebo různých teplot v rámci připojeného řádku objektů. Aby bylo možné tuto funkci použít na řádek, musí mít zdroj dat `lineMetrics` možnost nastavenou na hodnotu true a následně může být výraz barevného přechodu předána `strokeColor` možnosti řádku. Výraz přechodu na tah musí odkazovat na `['line-progress']` datový výraz, který zpřístupňuje metriku počítaného řádku k výrazu.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Čára s přechodem tahu" src="//codepen.io/azuremaps/embed/wZwWJZ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Podívejte se na řádek pera <a href='https://codepen.io/azuremaps/pen/wZwWJZ/'>s přechodem tahu podle</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Čára s přechodem mezi tahy" src="//codepen.io/azuremaps/embed/wZwWJZ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Podívejte se na <a href='https://codepen.io/azuremaps/pen/wZwWJZ/'>čáru pera s přechodem</a> mezi Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="customize-a-line-layer"></a>Přizpůsobení vrstvy čáry
 
-Vrstva Čára má několik možností stylingu. Zde je nástroj, jak je vyzkoušet.
+Spojnicová vrstva má několik možností stylů. Tady je nástroj pro jejich vyzkoušení.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Volby vrstvy čáry' src='//codepen.io/azuremaps/embed/GwLrgb/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/GwLrgb/'>možnosti vrstvy linky</a> pera podle Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Možnosti vrstvy čáry' src='//codepen.io/azuremaps/embed/GwLrgb/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/GwLrgb/'>Možnosti vrstvy čáry</a> pera od Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o třídách a metodách použitých v tomto článku:
+Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Vrstva čáry](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) 
+> [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) 
 
 > [!div class="nextstepaction"]
-> [Možnosti linelayeru](/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest)
+> [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest)
 
-Další ukázky kódu, které chcete přidat do map, naleznete v následujících článcích:
+Další ukázky kódu pro přidání do vašich map najdete v následujících článcích:
 
 > [!div class="nextstepaction"]
 > [Vytvoření zdroje dat](create-data-source-web-sdk.md)

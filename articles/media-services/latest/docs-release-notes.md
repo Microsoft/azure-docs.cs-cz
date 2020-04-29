@@ -1,6 +1,6 @@
 ---
-title: Aktualizace dokumentace Azure Media Services v3
-description: Chcete-li mít aktuální informace o nejnovějších aktualizacích dokumentace služby Media Services v3.
+title: Aktualizace dokumentace k Azure Media Services V3
+description: Abyste měli přehled o nejnovějších aktualizacích dokumentace k Media Services V3.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,28 +12,28 @@ ms.topic: article
 ms.date: 04/20/2020
 ms.author: juliako
 ms.openlocfilehash: b0f01f5f044fd096704683fe67d2068e4ab4c3f4
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81772142"
 ---
-# <a name="azure-media-services-v3-documentation-updates"></a>Aktualizace dokumentace Azure Media Services v3
+# <a name="azure-media-services-v3-documentation-updates"></a>Aktualizace dokumentace k Azure Media Services V3
 
->Získejte upozornění, kdy se má tato stránka znovu aktualizovat zkopírováním a vložením této adresy URL: `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+documentation+updates%22&locale=en-us` do čtečky informačních kanálů RSS.
+>Přečtěte si informace o tom, kdy se má tato stránka na aktualizace znovu navštívit kopírováním `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+documentation+updates%22&locale=en-us` a vložením této adresy URL: do čtečky kanálů RSS.
 
-Tento článek popisuje nejnovější aktualizace dokumentace služby Media Services v3.
+Tento článek pojednává o nejnovějších aktualizacích dokumentace k Media Services V3.
 
 ## <a name="april-2020"></a>Duben 2020
 
-* Dokumenty azure media playeru byly migrovány do [dokumentace k Azure](../azure-media-player/azure-media-player-overview.md).
-* Byl přidán rychlý start [Živé vysílání s open broadcasting studio (OBS).](live-events-obs-quickstart.md) Ukazuje, jak vytvořit živý přenos mediálních služeb pomocí portálu Azure a OBS.
+* Do [dokumentace k Azure](../azure-media-player/azure-media-player-overview.md)byly migrovány Azure Media Player docs.
+* Bylo přidáno rychlé zprovoznění [živého streamování s otevřeným OBSm studiu](live-events-obs-quickstart.md) . Ukazuje, jak vytvořit Media Services živý datový proud pomocí Azure Portal a OBS.
 
 ## <a name="march-2020"></a>Březen 2020
 
-Byl přidán rychlý start [Živé vysílání pomocí funkce Telestream Wirecast.](live-events-wirecast-quickstart.md) Ukazuje, jak vytvořit živý přenos Mediálních služeb Azure pomocí portálu Azure a Telestream Wirecast.
+Bylo přidáno [živé streamování s Wirecast](live-events-wirecast-quickstart.md) rychlým startem pro streamování. Ukazuje, jak vytvořit Azure Media Services živý datový proud pomocí Azure Portal a Wirecastu.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Přehled](media-services-overview.md)
-- [Poznámky k verzi Media Services v3](release-notes.md)
+- [Zpráva k vydání verze Media Services V3](release-notes.md)

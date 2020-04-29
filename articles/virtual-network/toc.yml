@@ -223,16 +223,6 @@
               href: virtual-network-network-interface-addresses.md
     - name: Zabezpečení
       items:
-        - name: Omezení přístupu s využitím skupin zabezpečení sítě
-          items:
-            - name: portál Azure
-              href: tutorial-restrict-network-access-to-resources.md
-            - name: Azure PowerShell
-              href: tutorial-restrict-network-access-to-resources-powershell.md
-            - name: Azure CLI
-              href: tutorial-restrict-network-access-to-resources-cli.md
-            - name: Správa skupin zabezpečení sítě
-              href: manage-network-security-group.md
         - name: Filtrování provozu sítě
           items:
             - name: portál Azure
@@ -271,6 +261,8 @@
           href: manage-ddos-protection.md
         - name: Onboarding partnerů pro DDoS Protection úrovně Standard
           href: ddos-protection-partner-onboarding.md
+        - name: Správa skupin zabezpečení sítě
+          href: manage-network-security-group.md
         - name: Scénáře zabezpečení
           items:
             - name: Zabezpečení sítí pomocí virtuálních zařízení

@@ -1,6 +1,6 @@
 ---
-title: Automatická správa zařízení ve velkém měřítku pomocí Azure IoT Hub | Dokumenty společnosti Microsoft
-description: Automatické konfigurace Služby Azure IoT Hub slouží ke správě více zařízení a modulů IoT
+title: Automatická správa zařízení ve velkém měřítku s využitím Azure IoT Hub | Microsoft Docs
+description: Použití automatických konfigurací Azure IoT Hub ke správě více zařízení a modulů IoT
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,39 +8,39 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: robinsh
 ms.openlocfilehash: 276f115f579fbd1ab077722b220a4a0c6c571850
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82025063"
 ---
-# <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>Automatická správa zařízení a modulů IoT pomocí portálu Azure
+# <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>Automatická správa zařízení a modulů IoT pomocí Azure Portal
 
 [!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-hub-auto-device-config-selector.md)]
 
-Automatická správa zařízení v Azure IoT Hub automatizuje mnoho opakujících se a složitých úloh správy velkých vozových parků zařízení. Díky automatické správě zařízení můžete cílit na sadu zařízení na základě jejich vlastností, definovat požadovanou konfiguraci a pak nechat IoT Hub aktualizovat zařízení, když se dostanou do oboru. Tato aktualizace se provádí pomocí _automatické konfigurace zařízení_ nebo konfigurace _automatického modulu_, která umožňuje shrnout dokončení a dodržování předpisů, zpracování slučování a konfliktů a zavádění konfigurací v postupném přístupu.
+Automatická správa zařízení v Azure IoT Hub automatizuje mnoho opakujících se a složitých úloh při správě rozsáhlých loďstva zařízení. Díky automatické správě zařízení můžete cílit na sadu zařízení na základě jejich vlastností, definovat požadovanou konfiguraci a potom nechat zařízení IoT Hub aktualizovat, když vstoupí do rozsahu. Tato aktualizace se provádí pomocí _automatické konfigurace zařízení_ nebo _automatické konfigurace modulu_, která umožňuje shrnout dokončování a dodržování předpisů, zpracovávat sloučení a konflikty a nastavovat konfigurace v rámci postupného přístupu.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Automatická správa zařízení funguje tak, že aktualizuje sadu dvojčat zařízení nebo dvojčata modulu s požadovanými vlastnostmi a hlásí souhrn, který je založen na vlastnostech ohlášených dvojčat.  Zavádí novou třídu a dokument JSON s názvem *Konfigurace,* která má tři části:
+Automatická správa zařízení funguje tak, že aktualizuje sadu dvojitých vláken zařízení nebo nevláken modulu s požadovanými vlastnostmi a ohlásí souhrn, který vychází z nefunkčních hlášených vlastností.  Zavádí nový dokument třídy a JSON s názvem *Konfigurace* , která má tři části:
 
-* **Cílová podmínka** definuje obor dvojčata zařízení nebo dvojčata modulu, které mají být aktualizovány. Cílová podmínka je určena jako dotaz na značky dvojčat nebo ohlášené vlastnosti.
+* **Podmínka cíle** definuje rozsah vláken zařízení nebo nepodmíněných vláken modulu, které se mají aktualizovat. Cílová podmínka je určena jako dotaz na zdvojených značkách nebo hlášených vlastnostech.
 
-* **Cílový obsah** definuje požadované vlastnosti, které mají být přidány nebo aktualizovány v cílových dvojčatzařízení nebo dvojčata modulu. Obsah obsahuje cestu k části požadované vlastnosti, které mají být změněny.
+* **Cílový obsah** definuje požadované vlastnosti, které se mají přidat nebo aktualizovat v cílovém zařízení vlákna nebo vlákna v modulu. Obsah zahrnuje cestu k oddílu požadovaných vlastností, které mají být změněny.
 
-* **Metriky** definují souhrnný počet různých stavů konfigurace, jako je **úspěch**, **probíhá**a **chyba**. Vlastní metriky jsou určeny jako dotazy na dvojče hlášené vlastnosti.  Systémové metriky jsou výchozí metriky, které měří stav aktualizace dvojčete, jako je například počet dvojčat, která jsou cílená a počet dvojčat, která byla úspěšně aktualizována.
+* **Metriky** definují Souhrnné počty různých stavů **konfigurace, například** **úspěch**, probíhá a **Chyba**. Vlastní metriky jsou zadány jako dotazy na nedokončené hlášené vlastnosti.  Systémové metriky jsou výchozí metriky, které měří stav s dvojitou aktualizací, jako je třeba počet nezpracovaných vláken a počet úspěšně aktualizovaných vláken.
 
-Automatické konfigurace spustit poprvé krátce po vytvoření konfigurace a pak v pětiminutových intervalech. Metriky dotazy spustit při každém spuštění automatické konfigurace.
+Automatické konfigurace se spouští poprvé po vytvoření konfigurace a pak v intervalu pěti minut. Dotazy na metriky se spouštějí při každém spuštění automatické konfigurace.
 
-## <a name="implement-twins"></a>Implementovat dvojčata
+## <a name="implement-twins"></a>Implementovat vlákna
 
-Automatické konfigurace zařízení vyžadují použití dvojčat zařízení k synchronizaci stavu mezi cloudem a zařízeními.  Další informace najdete v tématu [Principy a použití dvojčat zařízení ve službě IoT Hub](iot-hub-devguide-device-twins.md).
+Automatická konfigurace zařízení vyžaduje, aby se při synchronizaci stavu mezi cloudem a zařízeními použily vlákna zařízení.  Další informace najdete v tématu [Principy a použití dvojčat zařízení ve službě IoT Hub](iot-hub-devguide-device-twins.md).
 
-Konfigurace automatických modulů vyžadují použití dvojčat modulu k synchronizaci stavu mezi cloudem a moduly. Další informace najdete [v tématu Principy a použití dvojčat modulů v centru IoT Hub](iot-hub-devguide-module-twins.md).
+Automatická konfigurace modulů vyžaduje použití vláken modulu k synchronizaci stavu mezi cloudem a moduly. Další informace najdete v tématu [pochopení a použití vláken v modulu v IoT Hub](iot-hub-devguide-module-twins.md).
 
-## <a name="use-tags-to-target-twins"></a>Použití značek k cílení dvojčat
+## <a name="use-tags-to-target-twins"></a>Použití značek k cílení na vlákna
 
-Před vytvořením konfigurace je nutné určit, která zařízení nebo moduly chcete ovlivnit. Azure IoT Hub identifikuje zařízení a pomocí značek v dvojčeti zařízení a identifikuje moduly pomocí značek v dvojčeti modulu. Každé zařízení nebo moduly mohou mít více značek a můžete je definovat jakýmkoli způsobem, který dává smysl pro vaše řešení. Pokud například spravujete zařízení na různých místech, přidejte do dvojčete zařízení následující značky:
+Před vytvořením konfigurace musíte určit, která zařízení nebo moduly mají mít vliv. Azure IoT Hub identifikuje zařízení a používá značky v zařízení, které jsou v práci, a identifikuje moduly pomocí značek v modulu s dvojitou signalizací. Každé zařízení nebo moduly může mít více značek a můžete je definovat jakýmkoli způsobem, který dává smysl pro vaše řešení. Pokud například spravujete zařízení v různých umístěních, přidejte do vlákna zařízení následující značky:
 
 ```json
 "tags": {
@@ -51,31 +51,31 @@ Před vytvořením konfigurace je nutné určit, která zařízení nebo moduly 
 },
 ```
 
-## <a name="create-a-configuration"></a>Vytvoření konfigurace
+## <a name="create-a-configuration"></a>Vytvořit konfiguraci
 
-1. Na [webu Azure Portal](https://portal.azure.com)přejděte do centra IoT hub. 
+1. V [Azure Portal](https://portal.azure.com)přejdete do služby IoT Hub. 
 
-2. Vyberte **konfiguraci zařízení IoT**.
+2. Vyberte **Konfigurace zařízení IoT**.
 
 3. Vyberte **Přidat konfiguraci zařízení** nebo **Přidat konfiguraci modulu**.
 
-   ![Přidání konfigurace zařízení nebo modulu](./media/iot-hub-automatic-device-management/create-automatic-configuration.png)
+   ![Přidat konfiguraci zařízení nebo konfiguraci modulu](./media/iot-hub-automatic-device-management/create-automatic-configuration.png)
 
-Existuje pět kroků k vytvoření konfigurace. Následující části procházejí každou z nich. 
+Existuje pět kroků pro vytvoření konfigurace. V následujících částech si projdete každé z nich. 
 
 ### <a name="name-and-label"></a>Název a popisek
 
-1. Pojmenujte konfiguraci jedinečným názvem, který má až 128 malých písmen. Vyhněte se mezerám `& ^ [ ] { } \ | " < > /`a následujícím neplatným znakům: .
+1. Poskytněte konfiguraci jedinečný název, který bude obsahovat až 128 malých písmen. Vyhněte se mezerám a následujícími neplatnými znaky: `& ^ [ ] { } \ | " < > /`.
 
-2. Přidejte štítky, které vám pomohou sledovat konfigurace. Popisky jsou **název** **, dvojice hodnot,** které popisují konfiguraci. Příkladem je `HostPlatform, Linux` nebo `Version, 3.0.1`.
+2. Přidejte popisky, které vám pomůžou sledovat vaše konfigurace. Popisky jsou **názvy**, páry **hodnot** , které popisují vaši konfiguraci. Příkladem je `HostPlatform, Linux` nebo `Version, 3.0.1`.
 
-3. Výběrem **možnosti Další** přejděte k dalšímu kroku. 
+3. Kliknutím na tlačítko **Další** přejděte k dalšímu kroku. 
 
 ### <a name="specify-settings"></a>Zadat nastavení
 
-Tato část definuje obsah, který má být nastaven v cílových dvojčatech zařízení nebo modulu. Pro každou sadu nastavení existují dva vstupy. První je dvojče cesty, což je cesta k oddílu JSON v rámci twin požadované vlastnosti, které budou nastaveny.  Druhý je obsah JSON, které mají být vloženy v této části. 
+Tato část definuje obsah, který se má nastavit v nezpracovaných vlákenách zařízení nebo modulu. Pro každou sadu nastavení existují dva vstupy. První je dvojitá cesta, což je cesta k oddílu JSON v rámci vláken požadovaných vlastností, které budou nastaveny.  Druhá je obsah JSON, který se má vložit do této části. 
 
-Můžete například nastavit cestu dvojčete k `properties.desired.chiller-water` následujícímu obsahu JSON a zadat jej: 
+Můžete například nastavit dvojitou cestu k `properties.desired.chiller-water` a pak zadat následující obsah JSON: 
 
 ```json
 {
@@ -84,26 +84,26 @@ Můžete například nastavit cestu dvojčete k `properties.desired.chiller-wate
 }
 ```
 
-![Nastavení cesty dvojčete a obsahu](./media/iot-hub-automatic-device-management/module-config-twin-settings.png)
+![Nastavení zdvojené cesty a obsahu](./media/iot-hub-automatic-device-management/module-config-twin-settings.png)
 
 
-Můžete také nastavit jednotlivá nastavení zadáním celé cesty dvojčete a poskytnutím hodnoty bez závorek. Například s dvojitou `properties.desired.chiller-water.temperature`cestou nastavte `66`obsah na . Pak vytvořte nové nastavení dvojčete pro vlastnost tlaku. 
+Jednotlivá nastavení můžete nastavit také zadáním celé cesty a zadáním hodnoty bez závorek. Například s nazdvojenou cestou `properties.desired.chiller-water.temperature`nastavte obsah na. `66` Pak vytvořte nové nastavení s dvojím nastavením pro vlastnost tlak. 
 
-Pokud dvě nebo více konfigurací cílí na stejnou cestu dvojčete, použije se obsah z konfigurace s nejvyšší prioritou (priorita je definována v kroku 4).
+Pokud dvě nebo více konfigurací cílí na stejnou cestu, bude platit obsah z konfigurace s nejvyšší prioritou (Priorita je definována v kroku 4).
 
-Chcete-li odebrat existující vlastnost, zadejte `null`hodnotu vlastnosti .
+Chcete-li odebrat existující vlastnost, zadejte hodnotu vlastnosti `null`.
 
-Další nastavení můžete přidat výběrem možnosti **Přidat nastavení dvojčete zařízení** nebo Přidat nastavení **dvojčete modulu**.
+Další nastavení můžete přidat tak, že vyberete možnost **Přidat zdvojené zařízení** nebo **Přidat nastavení s dvojitým modulem**.
 
-### <a name="specify-metrics-optional"></a>Určit metriky (volitelné)
+### <a name="specify-metrics-optional"></a>Zadat metriky (volitelné)
 
-Metriky poskytují souhrnpočty různých stavů, které zařízení nebo modul může hlásit zpět po použití obsahu konfigurace. Můžete například vytvořit metriku pro čekající změny nastavení, metriku chyb a metriku pro úspěšné změny nastavení.
+Metriky poskytují souhrnné počty různých stavů, které může zařízení nebo modul nahlásit zpět po použití konfiguračního obsahu. Můžete například vytvořit metriku pro změny nastavení čekání, metriky pro chyby a metriky pro úspěšné změny nastavení.
 
 Každá konfigurace může mít až pět vlastních metrik. 
 
-1. Zadejte název pro **Název metriky**.
+1. Zadejte název **metriky**.
 
-2. Zadejte dotaz na **kritéria metriky**.  Dotaz je založen na vlastnostech ohlášených dvojčete zařízení.  Metrika představuje počet řádků vrácených dotazem.
+2. Zadejte dotaz na **kritéria metriky**.  Dotaz vychází z nezaznamenaných vlastností zařízení.  Metrika představuje počet řádků vrácených dotazem.
 
 Příklad:
 
@@ -112,7 +112,7 @@ SELECT deviceId FROM devices
   WHERE properties.reported.chillerWaterSettings.status='pending'
 ```
 
-Můžete zahrnout klauzuli, že konfigurace byla použita, například: 
+Můžete zahrnout klauzuli, kterou konfigurace použila, například: 
 
 ```sql
 /* Include the double brackets. */
@@ -120,7 +120,7 @@ SELECT deviceId FROM devices
   WHERE configurations.[[yourconfigname]].status='Applied'
 ```
 
-Pokud vytváříte metriku pro vytváření přehledů `moduleId` na `devices.modules`konfigurovaných modulech, vyberte z . Příklad:
+Pokud vytváříte metriku pro vytváření sestav v konfigurovaných modulech `moduleId` , `devices.modules`vyberte z. Příklad:
 
 ```sql
 SELECT deviceId, moduleId FROM devices.modules
@@ -129,77 +129,77 @@ SELECT deviceId, moduleId FROM devices.modules
 
 ### <a name="target-devices"></a>Cílová zařízení
 
-Pomocí vlastnosti značky z dvojčat cílí na konkrétní zařízení nebo moduly, které by měly přijímat tuto konfiguraci. Můžete také cílit na vlastnosti ohlášené dvojčetem.
+Pomocí vlastnosti značky z vašich vláken můžete cílit na konkrétní zařízení nebo moduly, které by měly tuto konfiguraci přijmout. Můžete také cílit na nedokončené hlášené vlastnosti.
 
-Automatické konfigurace zařízení mohou cílit pouze na značky dvojčete zařízení a konfigurace automatických modulů mohou cílit pouze na značky dvojčat modulu. 
+Automatické konfigurace zařízení můžou směrovat jenom nepřesné značky zařízení a konfigurace automatických modulů můžou být jenom cílové moduly s dvojitými značkami. 
 
-Vzhledem k tomu, že více konfigurací může cílit na stejné zařízení nebo modul, každá konfigurace potřebuje číslo priority. Pokud dojde ke konfliktu, konfigurace s nejvyšší prioritou vyhrává. 
+Vzhledem k tomu, že více konfigurací může cílit na stejné zařízení nebo modul, každá konfigurace potřebuje číslo priority. Pokud dojde ke konfliktu, konfigurace s nejvyšší prioritou je služba WINS. 
 
-1. Zadejte kladné celé číslo pro **prioritu**konfigurace . Nejvyšší číselná hodnota je považována za nejvyšší prioritu. Pokud dvě konfigurace mají stejné číslo priority, vyhrává ta, která byla vytvořena naposledy. 
+1. Jako **prioritu**konfigurace zadejte kladné celé číslo. Nejvyšší číselná hodnota je považována za nejvyšší prioritu. Pokud mají dvě konfigurace stejné číslo priority, ten, který byl vytvořen naposledy službou WINS. 
 
-2. Zadejte **cílovou podmínku,** která určí, která zařízení nebo moduly budou s touto konfigurací zacílena. Podmínka je založena na značkách dvojčat nebo na vlastnostech oznámených dvojčat a měla by odpovídat formátu výrazu. 
+2. Zadejte **cílovou podmínku** pro určení, která zařízení nebo moduly budou cílem této konfigurace. Podmínka je založena na nepodmíněných značkách nebo ve dvojitě hlášených vlastnostech a měla by odpovídat formátu výrazu. 
 
-   Pro automatickou konfiguraci zařízení můžete zadat pouze značku nebo ohlášenou vlastnost, na kterou chcete cílit. Příkladem je `tags.environment='test'` nebo `properties.reported.chillerProperties.model='4000x'`. Můžete určit `*` cílit na všechna zařízení. 
+   Pro automatickou konfiguraci zařízení můžete určit, že chcete cílit jenom na značku, nebo na vlastnost hlášeno. Příkladem je `tags.environment='test'` nebo `properties.reported.chillerProperties.model='4000x'`. Můžete nastavit `*` cílení na všechna zařízení. 
    
-   Pro automatickou konfiguraci modulu použijte dotaz k určení značek nebo ohlášených vlastností z modulů registrovaných v centru IoT. Příkladem je `from devices.modules where tags.environment='test'` nebo `from devices.modules where properties.reported.chillerProperties.model='4000x'`. Zástupný znak nelze použít k cílení na všechny moduly. 
+   Pro automatickou konfiguraci modulu použijte dotaz k zadání značek nebo hlášených vlastností z modulů registrovaných ve službě IoT Hub. Příkladem je `from devices.modules where tags.environment='test'` nebo `from devices.modules where properties.reported.chillerProperties.model='4000x'`. Zástupný znak nelze použít pro cílení na všechny moduly. 
 
-3. Výběrem **možnosti Další** přejděte k poslednímu kroku.
+3. Kliknutím na tlačítko **Další** přejdete k poslednímu kroku.
 
-### <a name="review-configuration"></a>Zkontrolovat konfiguraci
+### <a name="review-configuration"></a>Kontrola konfigurace
 
-Zkontrolujte informace o konfiguraci a vyberte **Odeslat**.
+Zkontrolujte informace o konfiguraci a pak vyberte **Odeslat**.
 
-## <a name="monitor-a-configuration"></a>Sledování konfigurace
+## <a name="monitor-a-configuration"></a>Monitorování konfigurace
 
-Chcete-li zobrazit podrobnosti o konfiguraci a sledovat zařízení, která ji spouštějí, postupujte takto:
+Pokud chcete zobrazit podrobnosti o konfiguraci a monitorovat zařízení, která ho používají, použijte následující postup:
 
-1. Na [webu Azure Portal](https://portal.azure.com)přejděte do centra IoT hub. 
+1. V [Azure Portal](https://portal.azure.com)přejdete do služby IoT Hub. 
 
-2. Vyberte **konfiguraci zařízení IoT**.
+2. Vyberte **Konfigurace zařízení IoT**.
 
-3. Zkontrolujte konfigurační seznam. Pro každou konfiguraci můžete zobrazit následující podrobnosti:
+3. Zkontrolujte seznam konfigurací. Pro každou konfiguraci můžete zobrazit následující podrobnosti:
 
-   * **ID** - název konfigurace.
+   * **ID** – název konfigurace.
 
-   * **Cílová podmínka** - dotaz použitý k definování cílových zařízení nebo modulů.
+   * **Podmínka cíle** – dotaz, který slouží k definování cílových zařízení nebo modulů.
 
-   * **Priorita** - číslo priority přiřazené konfiguraci.
+   * **Priorita** – číslo priority přiřazené ke konfiguraci.
 
-   * **Čas vytvoření** - časové razítko od okamžiku, kdy byla konfigurace vytvořena. Toto časové razítko se používá k přerušení vazeb, pokud dvě konfigurace mají stejnou prioritu. 
+   * **Čas vytvoření** – časové razítko z doby, kdy byla konfigurace vytvořena. Toto časové razítko se používá k přerušení vztahů, pokud mají dvě konfigurace stejnou prioritu. 
 
-   * **Systémové metriky** – metriky, které jsou vypočteny službou IoT Hub a vývojáři je nemohou přizpůsobit. Cílová určuje počet dvojčat zařízení, které odpovídají cílové podmínce. Platí zadaný počet dvojčat zařízení, které byly změněny konfigurací, které mohou zahrnovat částečné změny v případě, že samostatná konfigurace s vyšší prioritou také provedla změny. 
+   * **Systémové metriky** – metriky, které jsou vypočítány IoT Hub a nemohou být upravovány vývojáři. Cíl Určuje počet vláken zařízení, která odpovídají cílové podmínce. Použije zadaný počet nevláken zařízení, která byla upravena konfigurací, což může zahrnovat částečné změny v případě, že se změnila samostatná konfigurace s vyšší prioritou. 
 
-   * **Vlastní metriky** – metriky, které byly vývojářem určeny jako dotazy na vlastnosti nahlášené dvojčetem.  Pro konfiguraci lze definovat až pět vlastních metrik. 
+   * **Vlastní metriky** – metriky, které vývojář zadal jako dotazy pro nedokončené hlášené vlastnosti.  Pro každou konfiguraci lze definovat až pět vlastních metrik. 
    
-4. Vyberte konfiguraci, kterou chcete sledovat.  
+4. Vyberte konfiguraci, kterou chcete monitorovat.  
 
-5. Zkontrolujte podrobnosti konfigurace. Pomocí karet můžete zobrazit konkrétní podrobnosti o zařízeních, která obdržela konfiguraci.
+5. Zkontrolujte podrobnosti o konfiguraci. Pomocí karet můžete zobrazit konkrétní podrobnosti o zařízeních, která konfiguraci přijala.
 
-   * **Cílová podmínka** - zařízení nebo moduly, které odpovídají cílové podmínce. 
+   * **Podmínka cíle** – zařízení nebo moduly, které se shodují s cílovou podmínkou. 
 
-   * **Metriky** – seznam systémových metrik a vlastních metrik.  Seznam zařízení nebo modulů, které se počítají pro každou metriku, můžete zobrazit tak, že vyberete metriku v rozevíracím seznamu a pak vyberete **zobrazit zařízení** nebo **zobrazit moduly**.
+   * **Metriky** – seznam systémových metrik a vlastní metriky.  Seznam zařízení nebo modulů, které se počítají pro jednotlivé metriky, můžete zobrazit tak, že vyberete metriku v rozevíracím seznamu a pak vyberete **Zobrazit zařízení** nebo **Zobrazit moduly**.
 
-   * **Nastavení dvojčete zařízení** nebo **nastavení dvojčete modulu** - nastavení dvojčat, která jsou nastavena konfigurací. 
+   * Nastavení s dvojitou podmnožinou **zařízení** nebo **modulu** – nastavení s dvojitou čárkou – nastavení, které je nastavené konfigurací. 
 
-   * **Popisky konfigurace** - dvojice klíč-hodnota slouží k popisu konfigurace.  Popisky nemají žádný vliv na funkčnost. 
+   * **Popisky konfigurace** – páry klíč-hodnota používané k popisu konfigurace.  Popisky nemají žádný vliv na funkčnost. 
 
-## <a name="modify-a-configuration"></a>Změna konfigurace
+## <a name="modify-a-configuration"></a>Úprava konfigurace
 
-Při úpravě konfigurace se změny okamžitě replikují do všech cílených zařízení nebo modulů. 
+Když upravíte konfiguraci, změny se okamžitě replikují na všechna cílová zařízení nebo moduly. 
 
 Pokud aktualizujete cílovou podmínku, dojde k následujícím aktualizacím:
 
-* Pokud dvojče nesplnilo starou cílovou podmínku, ale splňuje novou cílovou podmínku a tato konfigurace je pro toto dvojče nejvyšší prioritou, použije se tato konfigurace. 
+* Pokud se nepodmíněný objekt neshoduje se starou cílovou podmínkou, ale splňuje novou cílovou podmínku a tato konfigurace je nejvyšší prioritou pro tuto akci, pak se tato konfigurace použije. 
 
-* Pokud dvojče aktuálně spuštěné v této konfiguraci již nesplňuje cílovou podmínku, nastavení z konfigurace bude odebráno a dvojče bude změněno další konfigurací s nejvyšší prioritou. 
+* Pokud aktuálně spuštěná Tato konfigurace už nesplňuje cílovou podmínku, nastavení z konfigurace se odeberou a tato akce se upraví podle další konfigurace s nejvyšší prioritou. 
 
-* Pokud dvojče aktuálně spuštěné v této konfiguraci již nesplňuje cílovou podmínku a nesplňuje cílovou podmínku jiných konfigurací, budou nastavení z konfigurace odebrána a nebudou provedeny žádné další změny na dvojčeti. 
+* Pokud aktuálně spuštěná Tato konfigurace již nesplňuje cílovou podmínku a nesplňuje cílovou podmínku žádné jiné konfigurace, bude nastavení z konfigurace odebráno a žádné další změny nebudou provedeny na tomto vlákna. 
 
-Chcete-li upravit konfiguraci, postupujte takto: 
+Chcete-li upravit konfiguraci, použijte následující postup: 
 
-1. Na [webu Azure Portal](https://portal.azure.com)přejděte do centra IoT hub. 
+1. V [Azure Portal](https://portal.azure.com)přejdete do služby IoT Hub. 
 
-2. Vyberte **konfiguraci zařízení IoT**. 
+2. Vyberte **Konfigurace zařízení IoT**. 
 
 3. Vyberte konfiguraci, kterou chcete upravit. 
 
@@ -212,15 +212,15 @@ Chcete-li upravit konfiguraci, postupujte takto:
 
 4. Vyberte **Uložit**.
 
-5. Postupujte podle pokynů v [monitoru konfigurace](#monitor-a-configuration) sledovat změny zavádět. 
+5. Pokud chcete sledovat změny, postupujte podle kroků v části [monitorování konfigurace](#monitor-a-configuration) . 
 
-## <a name="delete-a-configuration"></a>Odstranění konfigurace
+## <a name="delete-a-configuration"></a>Odstraní konfiguraci.
 
-Když odstraníte konfiguraci, všechna dvojčata zařízení převezmou další konfiguraci s nejvyšší prioritou. Pokud dvojčata zařízení nesplňují cílovou podmínku jiné konfigurace, pak se nepoužijí žádná další nastavení. 
+Když konfiguraci odstraníte, všechna vlákna zařízení převezmou svou další konfiguraci s nejvyšší prioritou. Pokud zařízení nesplňuje cílovou podmínku jakékoli jiné konfigurace, nebudou použita žádná další nastavení. 
 
-1. Na [webu Azure Portal](https://portal.azure.com)přejděte do centra IoT hub. 
+1. V [Azure Portal](https://portal.azure.com)přejdete do služby IoT Hub. 
 
-2. Vyberte **konfiguraci zařízení IoT**. 
+2. Vyberte **Konfigurace zařízení IoT**. 
 
 3. Pomocí zaškrtávacího políčka vyberte konfiguraci, kterou chcete odstranit. 
 
@@ -230,17 +230,17 @@ Když odstraníte konfiguraci, všechna dvojčata zařízení převezmou další
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli, jak konfigurovat a monitorovat zařízení IoT ve velkém měřítku. Další informace o správě služby Azure IoT Hub najdete na těchto odkazech:
+V tomto článku jste zjistili, jak nakonfigurovat a monitorovat zařízení IoT ve velkém měřítku. Pokud chcete získat další informace o správě IoT Hub Azure, postupujte podle těchto odkazů:
 
 * [Hromadná správa identit zařízení služby IoT Hub](iot-hub-bulk-identity-mgmt.md)
-* [Metriky IoT Hubu](iot-hub-metrics.md)
+* [IoT Hub metriky](iot-hub-metrics.md)
 * [Monitorování operací](iot-hub-operations-monitoring.md)
 
-Další informace o možnostech IoT Hubu najdete v následujících tématech:
+Chcete-li dále prozkoumat možnosti IoT Hub, přečtěte si:
 
-* [Průvodce vývojáři ioT Hubu](iot-hub-devguide.md)
+* [IoT Hub příručka pro vývojáře](iot-hub-devguide.md)
 * [Nasazení AI do hraničních zařízení s použitím Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
 
-Chcete-li prozkoumat pomocí služby zřizování zařízení služby IoT Hub a povolit zřizování s nulovým dotykem a just-in-time, přečtěte si následující: 
+Pokud chcete prozkoumat použití IoT Hub Device Provisioning Service k povolení nulového dotykového zřizování za běhu, přečtěte si téma: 
 
 * [Služba Azure IoT Hub Device Provisioning](/azure/iot-dps)

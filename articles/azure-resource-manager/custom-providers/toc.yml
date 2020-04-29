@@ -2,9 +2,9 @@
   href: index.yml
 - name: Přehled
   items:
-    - name: Co je služba Azure Custom Providers?
+    - name: Co jsou vlastní poskytovatelé Azure?
       href: overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření vlastního poskytovatele prostředků
@@ -23,7 +23,7 @@
       href: tutorial-resource-onboarding.md
 - name: Koncepty
   items:
-    - name: Zásady Azure pro přidružení
+    - name: Azure Policy pro přidružení
       href: concepts-built-in-policy.md
     - name: Onboarding prostředků
       href: concepts-resource-onboarding.md

@@ -14,10 +14,10 @@ ms.date: 01/24/2020
 ms.author: spelluru
 ms.custom: mvc
 ms.openlocfilehash: 075b5dc06c59682b33c20b182e0dc585b2727027
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82097842"
 ---
 # <a name="azure-cli-samples-for-azure-lab-services"></a>Ukázky v Azure CLI pro Azure Lab Services

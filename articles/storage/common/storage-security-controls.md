@@ -10,10 +10,10 @@ ms.subservice: common
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: 96fde15eb5071e157fedcff6154e6b0635a34721
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82128019"
 ---
 # <a name="security-controls-for-azure-storage"></a>Ovládací prvky zabezpečení pro Azure Storage
@@ -54,7 +54,7 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Sto
 
 | Řízení zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Ověřování| Ano | Azure Active Directory, sdílený klíč, sdílený přístupový token. |
+| Authentication| Ano | Azure Active Directory, sdílený klíč, sdílený přístupový token. |
 | Autorizace| Ano | Podpora autorizace přes RBAC, seznamy ACL v POSIX a tokeny SAS |
 
 ## <a name="configuration-management"></a>Správa konfigurace

@@ -1,217 +1,217 @@
 ---
-title: Povolení Azure Monitoru pro virtuální počítače pomocí zásad Azure
-description: Tento článek popisuje, jak povolíte Azure Monitor pro virtuální počítače pro více virtuálních počítačů Azure nebo škálovací sady virtuálních počítačů pomocí Zásad y Azure.
+title: Povolení Azure Monitor pro virtuální počítače pomocí Azure Policy
+description: Tento článek popisuje, jak povolit Azure Monitor pro virtuální počítače pro více virtuálních počítačů Azure nebo služby Virtual Machine Scale Sets pomocí Azure Policy.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
 ms.openlocfilehash: 73c18d45136eea90ad29dc1bd40c4539dddc0ee6
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81767256"
 ---
-# <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>Povolení Azure Monitoru pro virtuální počítače pomocí zásad Azure
+# <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>Povolení Azure Monitor pro virtuální počítače pomocí Azure Policy
 
-Tento článek vysvětluje, jak povolit Azure Monitor pro virtuální počítače pro virtuální počítače Azure nebo škálovací sady virtuálních počítačů pomocí Zásad y Azure. Na konci tohoto procesu budete úspěšně nakonfigurovánpovolení log Analytics a závislostí agentů a identifikované virtuální počítače, které nejsou kompatibilní.
+Tento článek vysvětluje, jak povolit Azure Monitor pro virtuální počítače pro virtuální počítače Azure nebo sady škálování virtuálních počítačů pomocí Azure Policy. Na konci tohoto procesu se úspěšně nakonfigurují povolení agentů Log Analytics a závislostí a identifikovaných virtuálních počítačů, které nedodržují předpisy.
 
-Pokud chcete zjistit, spravovat a povolit Azure Monitor pro virtuální počítače pro všechny vaše virtuální počítače Azure nebo škálovací sady virtuálních počítačů, můžete použít azure policy nebo Azure PowerShell. Azure Policy je metoda, kterou doporučujeme, protože můžete spravovat definice zásad efektivně řídit vaše předplatná, abyste zajistili konzistentní dodržování předpisů a automatické povolení nově zřízených virtuálních počítačů. Tyto definice zásad:
+Pokud chcete zjistit, spravovat a povolit Azure Monitor pro virtuální počítače pro všechny virtuální počítače Azure nebo sady škálování virtuálních počítačů, můžete použít buď Azure Policy, nebo Azure PowerShell. Azure Policy je metoda, kterou doporučujeme, protože můžete spravovat definice zásad a efektivně tak řídit vaše předplatná, aby se zajistilo konzistentní dodržování předpisů a automatické povolování nově zřízených virtuálních počítačů. Tyto definice zásad:
 
-* Nasaďte agenta analýzy protokolů a agenta závislostí.
-* Zpráva o výsledcích dodržování předpisů.
-* Náprava pro nekompatibilní virtuální chod.
+* Nasaďte agenta Log Analytics a agenta závislostí.
+* Sestava výsledků dodržování předpisů.
+* Opravit pro virtuální počítače, které nedodržují předpisy
 
-Pokud máte zájem o provádění těchto úkolů pomocí Azure PowerShellu nebo šablony Azure Resource Manageru, přečtěte si část [Povolení Azure Monitoru pro virtuální počítače pomocí azure powershellu nebo šablon Azure Resource Manageru](vminsights-enable-at-scale-powershell.md).
+Pokud vás zajímá splnění těchto úkolů s Azure PowerShell nebo šablonou Azure Resource Manager, přečtěte si téma [povolení Azure monitor pro virtuální počítače pomocí šablon Azure PowerShell nebo Azure Resource Manager](vminsights-enable-at-scale-powershell.md).
 
 ## <a name="prerequisites"></a>Požadavky
-Před použitím zásad k připojení virtuálních počítačů Azure a škálovacích sad virtuálních počítačů do Azure Monitoring pro virtuální počítače musíte povolit řešení VMInsights v pracovním prostoru, který použijete k ukládání dat monitorování. Tuto úlohu lze dokončit na stránce **Začínáme** v Azure Monitoru na kartě **Ostatní možnosti registrace.**  Vyberte **Konfigurovat pracovní prostor**, který vás vyzve k výběru pracovního prostoru, který má být nakonfigurován.
+Před použitím zásad pro připojení virtuálních počítačů a virtuálních počítačů Azure do monitorování Azure pro virtuální počítače musíte v pracovním prostoru povolit řešení VMInsights, které použijete k uložení dat monitorování. Tato úloha se dá dokončit **ze stránky Začínáme** v Azure monitor na kartě **Další možnosti** připojování.  Vyberte **Konfigurovat pracovní prostor**, ve kterém se zobrazí výzva k výběru pracovního prostoru, který se má nakonfigurovat.
 
 ![Konfigurace pracovního prostoru](media/vminsights-enable-at-scale-policy/configure-workspace.png)
 
-Pracovní prostor můžete také nakonfigurovat tak, že zvolíte **Povolit pomocí zásad** a pak vyberete tlačítko Konfigurovat panel nástrojů **pracovního prostoru.**  Tím nainstalujete řešení VMInsights do vybraného pracovního prostoru, které umožní pracovnímu prostoru ukládat data monitorování odeslaná virtuálními počítači a škálovací sady virtuálních strojů, které povolíte pomocí zásad. 
+Pracovní prostor můžete také nakonfigurovat tak, že vyberete **Povolit pomocí zásad** a pak kliknete na tlačítko **Konfigurovat pracovní prostor** na panelu nástrojů.  Tím se na vybraný pracovní prostor nainstaluje řešení VMInsights, které umožní pracovnímu prostoru ukládat data monitorování odesílaná virtuálními počítači a sadami škálování virtuálních počítačů, které povolíte pomocí zásad. 
 
-![Povolit pomocí zásad](media/vminsights-enable-at-scale-policy/enable-using-policy.png)
+![Povolit používání zásad](media/vminsights-enable-at-scale-policy/enable-using-policy.png)
 
-## <a name="manage-policy-coverage-feature-overview"></a>Spravovat přehled funkcí Pokrytí zásad
+## <a name="manage-policy-coverage-feature-overview"></a>Přehled funkcí spravovat pokrytí zásad
 
-Pokrytí zásad Azure Monitor pro virtuální počítače zjednodušuje zjišťování, správu a povolení ve velkém měřítku iniciativu **Povolit Azure Monitor pro virtuální počítače,** která zahrnuje definice zásad uvedené výše. Chcete-li získat přístup k této funkci, vyberte **další možnosti registrace** na kartě **Začínáme** v Azure Monitor u virtuálních počítačů. Výběrem **možnosti Spravovat pokrytí zásad** otevřete stránku **Pokrytí zásad Azure Monitor pro virtuální počítače.**
+Azure Monitor pro virtuální počítače pokrytí zásad zjednodušuje zjišťování, správu a povolování škálování v rámci **povolení Azure monitor pro virtuální počítače** iniciativy, která zahrnuje výše zmíněné definice zásad. Přístup k této funkci získáte tak **, že na kartě Začínáme v** Azure monitor pro virtuální počítače vyberete **Další možnosti připojování** . Výběrem **možnosti spravovat pokrytí zásad** otevřete stránku **Azure monitor pro virtuální počítače pokrytí zásad** .
 
-![Azure Monitor z karty Začínáme virtuálních počítačích](./media/vminsights-enable-at-scale-policy/get-started-page.png)
+![Karta Začínáme s Azure Monitor z virtuálních počítačů](./media/vminsights-enable-at-scale-policy/get-started-page.png)
 
-Tady můžete kontrolovat a spravovat pokrytí iniciativy napříč skupinami pro správu a předplatnými. Můžete pochopit, kolik virtuálních uživatelů existuje v každé skupině pro správu a předplatná a jejich stav dodržování předpisů.
+Odsud můžete v rámci svých skupin a předplatných pro správu kontrolovat a spravovat pokrytí iniciativ. Můžete pochopit, kolik virtuálních počítačů existuje v každé ze skupin a předplatných pro správu a jejich stav dodržování předpisů.
 
-![Stránka Spravovat zásady Azure Monitor pro virtuální počítače](media/vminsights-enable-at-scale-policy/manage-policy-page-01.png)
+![Stránka Azure Monitor pro virtuální počítače Správa zásad](media/vminsights-enable-at-scale-policy/manage-policy-page-01.png)
 
-Tyto informace jsou užitečné, které vám pomůžou naplánovat a spustit scénář zásad správného řízení pro Azure Monitor pro virtuální počítače z jednoho centrálního umístění. Zatímco Azure Policy poskytuje zobrazení dodržování předpisů, když je zásada nebo iniciativa přiřazena k oboru, s touto novou stránkou můžete zjistit, kde není zásada nebo iniciativa přiřazena, a přiřadit ji na místě. Všechny akce, jako je přiřazení, zobrazení a úpravy přesměrování na Azure Policy přímo. Stránka **Pokrytí zásad Azure Monitor pro virtuální počítače** je rozšířené a integrované prostředí pro jenom iniciativu **Povolit Azure Monitor pro virtuální počítače**.
+Tyto informace vám pomůžou naplánovat a spustit scénář zásad správného řízení pro Azure Monitor pro virtuální počítače z jednoho centrálního umístění. I když Azure Policy poskytuje zobrazení dodržování předpisů v případě, že se k oboru přiřadí zásada nebo iniciativa s touto novou stránkou, můžete zjistit, kde zásada nebo iniciativa není přiřazená, a přiřadit ji na místo. Všechny akce, jako je přiřazení, zobrazení a úpravy přesměrování, Azure Policy přímo. Stránka **pokrytí zásad Azure monitor pro virtuální počítače** je rozšířené a integrované prostředí, které **umožňuje Azure monitor pro virtuální počítače povolit**jenom iniciativu.
 
-Na této stránce můžete také nakonfigurovat pracovní prostor Analýzy protokolů pro Azure Monitor pro virtuální počítače, který:
+Na této stránce můžete také nakonfigurovat pracovní prostor Log Analytics pro Azure Monitor pro virtuální počítače, který:
 
-- Nainstaluje řešení mapy služeb.
-- Umožňuje čítače výkonu operačního systému používané grafy výkonu, sešity a vlastní dotazy protokolu a výstrahy.
+- Nainstaluje řešení Service Map.
+- Povolí čítače výkonu operačního systému používané grafy výkonu, sešity a vlastními dotazy a výstrahami protokolu.
 
-![Azure Monitor pro virtuální počítače konfigurace pracovního prostoru](media/vminsights-enable-at-scale-policy/manage-policy-page-02.png)
+![Azure Monitor pro virtuální počítače nakonfigurovat pracovní prostor](media/vminsights-enable-at-scale-policy/manage-policy-page-02.png)
 
-Tato možnost nesouvisí s žádnými akcemi zásad. Je k dispozici pro poskytování snadný způsob, jak splnit [požadavky](vminsights-enable-overview.md) potřebné pro povolení Azure Monitor pro virtuální počítače.  
+Tato možnost není v relaci s žádnými akcemi zásad. Je k dispozici pro zajištění snadného způsobu, jak splnit [požadavky](vminsights-enable-overview.md) potřebné k povolení Azure monitor pro virtuální počítače.  
 
-### <a name="what-information-is-available-on-this-page"></a>Jaké informace jsou k dispozici na této stránce?
+### <a name="what-information-is-available-on-this-page"></a>Jaké informace jsou na této stránce k dispozici?
 
-V následující tabulce je uveden rozpis informací, které jsou uvedeny na stránce pokrytí zásad a jak je interpretovat.
+Následující tabulka uvádí rozpis informací, které jsou uvedeny na stránce pokrytí zásad a jejich interpretaci.
 
 | Funkce | Popis | 
 |----------|-------------| 
-| **Rozsah** | Skupina pro správu a předplatná, ke kterým máte nebo ke kterým jste zdědili přístup, se schopností přejít k podrobnostem v hierarchii skupinpro správu.|
-| **Role** | Vaše role k oboru, který může být čtenář, vlastník nebo přispěvatel. V některých případech se může zdát prázdné označuje, že můžete mít přístup k předplatnému, ale ne do skupiny pro správu, do které patří. Informace v jiných sloupcích se liší v závislosti na vaší roli. Role je klíčová při určování toho, jaká data můžete zobrazit, a akce, které můžete provádět, pokud jde o přiřazování zásad nebo iniciativ (vlastníka), jejich úpravy nebo zobrazení dodržování předpisů. |
-| **Celkem virtuálních můek** | Počet virtuálních discích v rámci tohoto oboru. Pro skupinu pro správu je to součet virtuálních aplikací vnořených pod předplatnými nebo skupinou pro správu podřízených. |
-| **Pokrytí přiřazení** | Procento virtuálních společností, které jsou zahrnuty do zásady nebo iniciativy. |
-| **Stav přiřazení** | Informace o stavu přiřazení zásad nebo iniciativy. |
-| **Kompatibilní virtuální ms** | Počet virtuálních disponovačů, které jsou kompatibilní v rámci zásady nebo iniciativy. Pro iniciativu **Povolit Azure Monitor pro virtuální počítače**, to je počet virtuálních počítače, které mají agenta Log Analytics a závislost agenta. V některých případech se může zobrazit prázdné z důvodu žádné přiřazení, žádné virtuální chodů nebo nedostatek oprávnění. Informace jsou poskytovány v rámci **stavu dodržování předpisů**. |
-| **Dodržování předpisů** | Celkové číslo dodržování předpisů je součet různých prostředků, které jsou kompatibilní děleno součtem všech různých prostředků. |
-| **Stav dodržování předpisů** | Informace o stavu dodržování předpisů pro přiřazení zásad nebo iniciativy.|
+| **Rozsah** | Skupina pro správu a předplatná, ke kterým máte nebo zdědili přístup, mají schopnost přejít k podrobnostem prostřednictvím hierarchie skupiny pro správu.|
+| **Role** | Vaše role v oboru, což může být čtenář, vlastník nebo Přispěvatel. V některých případech se může zdát, že je prázdná, aby označoval, že máte přístup k předplatnému, ale ne ke skupině pro správu, ke které patří. Informace v dalších sloupcích se liší v závislosti na vaší roli. Role je klíč, který určuje, jaká data můžete zobrazit, a akce, které můžete provádět v souvislosti s přiřazováním zásad nebo iniciativ (Vlastník), jejich úprav nebo dodržování předpisů. |
+| **Celkový počet virtuálních počítačů** | Počet virtuálních počítačů v daném oboru. Pro skupinu pro správu se jedná o součet virtuálních počítačů vnořených v rámci předplatných nebo podřízených skupin pro správu. |
+| **Pokrytí přiřazení** | Procento virtuálních počítačů, na které se vztahuje zásada nebo podnět. |
+| **Stav přiřazení** | Informace o stavu přiřazení zásady nebo iniciativy |
+| **Vyhovující virtuální počítače** | Počet virtuálních počítačů, které vyhovují zásadám nebo iniciativám. Pro účely iniciativy **Azure monitor pro virtuální počítače**je toto počet virtuálních počítačů, které mají agenta Log Analytics a agenta závislostí. V některých případech se může zdát, že je prázdný, protože není k dispozici žádné přiřazení, žádné virtuální počítače nebo nemáte dostatečná oprávnění. Informace jsou k dispozici v části **stav dodržování předpisů**. |
+| **Dodržování předpisů** | Celkové číslo dodržování předpisů je součet různých prostředků, které jsou v souladu s hodnotou součet všech různých prostředků. |
+| **Stav dodržování předpisů** | Informace o stavu dodržování předpisů pro přiřazení zásady nebo iniciativy.|
 
-Při přiřazení zásady nebo iniciativy může být oborem vybraným v přiřazení uvedený obor nebo jeho podmnožinou. Například jste pravděpodobně vytvořili přiřazení pro předplatné (obor zásady) a ne skupinu pro správu (obor pokrytí). V tomto případě hodnota **pokrytí přiřazení** označuje virtuální chody v oboru zásad nebo iniciativy děleno virtuálními virtuálními sítěmi v oboru disponibility. V jiném případě jste pravděpodobně vyloučili některé virtuální uživatele, skupiny prostředků nebo předplatné z oboru zásad. Pokud je hodnota prázdná, znamená to, že zásada nebo iniciativa neexistuje nebo nemáte oprávnění. Informace jsou uvedeny v části **Stav přiřazení**.
+Když přiřadíte zásadu nebo iniciativu, může být obor vybraný v přiřazení oborem uvedeným v poli nebo jeho podmnožinou. Například jste mohli vytvořit přiřazení pro předplatné (obor zásad), nikoli skupinu pro správu (rozsah pokrytí). V takovém případě hodnota **pokrytí přiřazení** označuje virtuální počítače v oboru zásad nebo iniciativy dělené virtuálními počítači v oboru pokrytí. V jiném případě jste možná vyloučili některé virtuální počítače, skupiny prostředků nebo předplatné z oboru zásad. Pokud je hodnota prázdná, znamená to, že buď zásada nebo podnět neexistuje, nebo nemáte příslušná oprávnění. Informace jsou k dispozici v části **stav přiřazení**.
 
-## <a name="enable-by-using-azure-policy"></a>Povolit pomocí zásad Azure
+## <a name="enable-by-using-azure-policy"></a>Povolit pomocí Azure Policy
 
-Povolení Azure Monitoru pro virtuální počítače pomocí Azure Policy ve vašem tenantovi:
+Povolení Azure Monitor pro virtuální počítače pomocí Azure Policy ve vašem tenantovi:
 
-- Přiřaďte iniciativu k oboru: skupině pro správu, předplatnému nebo skupině prostředků.
-- Zkontrolujte a najakte výsledky dodržování předpisů.
+- Přiřaďte iniciativu k oboru: skupina pro správu, předplatné nebo skupinu prostředků.
+- Kontrola a náprava výsledků dodržování předpisů.
 
-Další informace o přiřazování zásad Azure najdete v [tématu Přehled zásad Azure](../../governance/policy/overview.md#assignments) a zkontrolujte [přehled skupin pro správu,](../../governance/management-groups/overview.md) než budete pokračovat.
+Další informace o přiřazování Azure Policy naleznete v tématu [Azure Policy Overview](../../governance/policy/overview.md#assignments) a Projděte si [Přehled skupin pro správu](../../governance/management-groups/overview.md) , než budete pokračovat.
 
 ### <a name="policies-for-azure-vms"></a>Zásady pro virtuální počítače Azure
 
-Definice zásad pro virtuální počítač Azure jsou uvedeny v následující tabulce.
+Definice zásad pro virtuální počítač Azure jsou uvedené v následující tabulce.
 
 |Název |Popis |Typ |
 |-----|------------|-----|
-|Povolení Azure Monitoru pro virtuální počítače |Povolte Azure Monitor pro virtuální počítače v zadaném oboru (skupina pro správu, předplatné nebo skupina prostředků). Jako parametr převezme pracovní prostor Log Analytics. |Iniciativy |
-|Nasazení agenta závislostí auditu – image virtuálního počítače (OS) není uvedena |Hlásí virtuální chod jako nekompatibilní, pokud image virtuálního zařízení (OS) není definována v seznamu a agent není nainstalovaný. |Zásada |
-|Nasazení agenta analýzy protokolů auditu – image virtuálního počítače (OS) není uveden |Hlásí virtuální chod jako nekompatibilní, pokud image virtuálního zařízení (OS) není definována v seznamu a agent není nainstalovaný. |Zásada |
-|Nasazení agenta závislostí pro virtuální počítače s Linuxem |Nasazení agenta závislostí pro virtuální počítače s Linuxem, pokud je image virtuálního počítače (OS) definována v seznamu a agent není nainstalovaný. |Zásada |
-|Nasazení agenta závislostí pro virtuální servery Windows |Nasazení agenta závislostí pro virtuální servery Windows, pokud je image virtuálního zařízení (OS) definována v seznamu a agent není nainstalovaný. |Zásada |
-|Nasazení agenta Log Analytics pro virtuální počítače s Linuxem |Nasazení agenta Log Analytics pro virtuální počítače s Linuxem, pokud je image virtuálního počítače (OS) definována v seznamu a agent není nainstalovaný. |Zásada |
-|Nasazení agenta Analýzy protokolů pro virtuální servery Windows |Nasazení agenta Log Analytics pro virtuální uživatele windows, pokud je image virtuálního zařízení (OS) definována v seznamu a agent není nainstalovaný. |Zásada |
+|Povolit Azure Monitor pro virtuální počítače |Povolí Azure Monitor pro virtuální počítače v zadaném oboru (skupina pro správu, předplatné nebo skupina prostředků). Jako parametr převezme Log Analytics pracovní prostor. |Dávat |
+|Nasazení agenta závislostí auditu – image virtuálního počítače (OS) není v seznamu |Hlásí virtuální počítače jako nedodržující předpisy, pokud image virtuálního počítače (OS) není v seznamu definovaná a Agent není nainstalovaný. |Zásada |
+|Audit – nasazení agenta Log Analytics – image virtuálního počítače (OS) není v seznamu |Hlásí virtuální počítače jako nedodržující předpisy, pokud image virtuálního počítače (OS) není v seznamu definovaná a Agent není nainstalovaný. |Zásada |
+|Nasazení agenta závislostí pro virtuální počítače se systémem Linux |Nasaďte agenta závislostí pro virtuální počítače se systémem Linux, pokud je image virtuálního počítače definovaná v seznamu a Agent není nainstalovaný. |Zásada |
+|Nasazení agenta závislostí pro virtuální počítače s Windows |Nasaďte agenta závislostí pro virtuální počítače s Windows, pokud je image virtuálního počítače definovaná v seznamu a Agent není nainstalovaný. |Zásada |
+|Nasazení agenta Log Analytics pro virtuální počítače se systémem Linux |Nasaďte agenta Log Analytics pro virtuální počítače se systémem Linux, pokud je image virtuálního počítače definovaná v seznamu a Agent není nainstalovaný. |Zásada |
+|Nasazení agenta Log Analytics pro virtuální počítače s Windows |Nasaďte agenta Log Analytics pro virtuální počítače s Windows, pokud je image virtuálního počítače definovaná v seznamu a Agent není nainstalovaný. |Zásada |
 
-### <a name="policies-for-azure-virtual-machine-scale-sets"></a>Zásady pro škálovací sady virtuálních strojů Azure
+### <a name="policies-for-azure-virtual-machine-scale-sets"></a>Zásady pro Azure Virtual Machine Scale Sets
 
-Definice zásad pro škálovací sadu virtuálních strojů Azure jsou uvedeny v následující tabulce.
-
-|Název |Popis |Typ |
-|-----|------------|-----|
-|Povolení Azure Monitoru pro škálovací sady virtuálních strojů |Povolte Azure Monitor pro škálovací sady virtuálních strojů v zadaném oboru (skupina pro správu, předplatné nebo skupina prostředků). Jako parametr převezme pracovní prostor Log Analytics. Poznámka: Pokud je zásada upgradu škálovací sady nastavená na ruční, použijte rozšíření na všechny virtuální počítače v sadě voláním upgrade na ně. V zapisování/li střižové míchaná, klitova. `az vmss update-instances` |Iniciativy |
-|Nasazení agenta závislostí auditu ve škálovacích sadách virtuálních strojů – image virtuálního počítače (OS) není uveden |Sestavy škálování virtuálního počítače jako nekompatibilní, pokud image virtuálního počítače (OS) není definována v seznamu a agent není nainstalován. |Zásada |
-|Nasazení agenta analýzy protokolů auditu ve škálovacích sadách virtuálních strojů – image virtuálního počítače (OS) není uveden |Sestavy škálování virtuálního počítače jako nekompatibilní, pokud image virtuálního počítače (OS) není definována v seznamu a agent není nainstalován. |Zásada |
-|Nasazení agenta závislostí pro škálovací sady virtuálních strojů pro Linux |Nasazení agenta závislostí pro škálovací sady virtuálních strojů v Linuxu, pokud je image virtuálního počítače (OS) definována v seznamu a agent není nainstalovaný. |Zásada |
-|Nasazení agenta závislostí pro škálovací sady virtuálních strojů windows |Nasazení agenta závislostí pro škálovací sady virtuálních strojů systému Windows, pokud je bitová kopie virtuálního počítače (OS) definována v seznamu a agent není nainstalovaný. |Zásada |
-|Nasazení agenta Log Analytics pro škálovací sady virtuálních strojů pro Linux |Nasazení agenta Log Analytics pro škálovací sady virtuálních strojů v Linuxu, pokud je image virtuálního počítače (OS) definována v seznamu a agent není nainstalovaný. |Zásada |
-|Nasazení agenta Log Analytics pro škálovací sady virtuálních strojů windows |Nasazení agenta Log Analytics pro škálovací sady virtuálních strojů windows, pokud je bitová kopie virtuálního počítače (OS) definována v seznamu a agent není nainstalovaný. |Zásada |
-
-Samostatné zásady (nejsou součástí iniciativy) jsou popsány zde:
+Definice zásad pro sadu škálování virtuálního počítače Azure jsou uvedené v následující tabulce.
 
 |Název |Popis |Typ |
 |-----|------------|-----|
-|Pracovní prostor analýzy protokolu auditu pro virtuální hosti – neshoda sestavy |Sestavy virtuálních stránek jako nedodržující předpisy, pokud nejsou protokolování do pracovního prostoru Log Analytics zadané v zásadách nebo přiřazení iniciativy. |Zásada |
+|Povolit Azure Monitor pro Virtual Machine Scale Sets |Povolte Azure Monitor pro sadu škálování virtuálního počítače v zadaném oboru (skupina pro správu, předplatné nebo skupinu prostředků). Jako parametr převezme Log Analytics pracovní prostor. Poznámka: Pokud je vaše zásada upgradu sady škálování nastavená na ruční, použijte rozšíření na všechny virtuální počítače v sadě voláním upgradu. V rozhraní příkazového řádku je `az vmss update-instances`to. |Dávat |
+|Auditování nasazení agenta závislostí ve virtuálních počítačích Virtual Machine Scale Sets – image virtuálního počítače (OS) není v seznamu |Hlásí sadu virtuálních počítačů s měřítkem jako nedodržující předpisy, pokud image virtuálního počítače není v seznamu definovaná a Agent není nainstalovaný. |Zásada |
+|Audit Log Analyticsho nasazení agenta ve Virtual Machine Scale Sets – image virtuálního počítače (OS) není v seznamu |Hlásí sadu virtuálních počítačů s měřítkem jako nedodržující předpisy, pokud image virtuálního počítače není v seznamu definovaná a Agent není nainstalovaný. |Zásada |
+|Nasazení agenta závislostí pro virtuální počítače se systémem Linux Scale Sets |Nasaďte agenta závislostí pro sadu virtuálních počítačů se systémem Linux, pokud je image virtuálního počítače definovaná v seznamu a Agent není nainstalovaný. |Zásada |
+|Nasazení agenta závislostí pro sadu škálování virtuálních počítačů s Windows |Nasaďte agenta závislostí pro sadu Windows Virtual Machine Scale Sets, pokud je v seznamu definovaná image virtuálního počítače a Agent není nainstalovaný. |Zásada |
+|Nasazení agenta Log Analytics pro Linux Virtual Machine Scale Sets |Nasazení agenta Log Analytics pro Linux Virtual Machine Scale Sets, pokud je image virtuálního počítače definovaná v seznamu a Agent není nainstalovaný. |Zásada |
+|Nasazení agenta Log Analytics pro Windows Virtual Machine Scale Sets |Nasaďte agenta Log Analytics pro Virtual Machine Scale Sets, pokud je image virtuálního počítače definovaná v seznamu a Agent není nainstalovaný. |Zásada |
 
-### <a name="assign-the-azure-monitor-initiative"></a>Přiřazení iniciativy Azure Monitor
+Samostatné zásady (nezahrnuté v iniciativě) jsou popsané tady:
 
-Pokud chcete vytvořit přiřazení zásad ze stránky **Pokrytí zásad Azure Monitor pro virtuální počítače,** postupujte takto. Informace o tom, jak tyto kroky provést, najdete [v tématu Vytvoření přiřazení zásad z webu Azure Portal](../../governance/policy/assign-policy-portal.md).
+|Název |Popis |Typ |
+|-----|------------|-----|
+|Audit Log Analytics pracovní prostor pro virtuální počítač – neshoda sestavy |Vykázat virtuální počítače jako nedodržující předpisy, pokud se neprotokolují do Log Analyticsho pracovního prostoru zadaného v přiřazení zásady nebo iniciativy. |Zásada |
 
-Při přiřazení zásady nebo iniciativy může být oborem vybraným v přiřazení zde uvedený obor nebo jeho podmnožinou. Například jste pravděpodobně vytvořili přiřazení pro předplatné (obor zásady) a ne pro skupinu pro správu (obor pokrytí). V takovém případě procento pokrytí by znamenalo virtuální chody v oblasti zásad nebo iniciativy vydělené virtuálními sítěmi v rozsahu disponibility. V jiném případě jste pravděpodobně vyloučili některé virtuální uživatele nebo skupiny prostředků nebo předplatné z oboru zásad. Pokud je prázdná, znamená to, že zásada nebo iniciativa neexistuje nebo nemáte oprávnění. Informace jsou uvedeny v části **Stav přiřazení**.
+### <a name="assign-the-azure-monitor-initiative"></a>Přiřazení Azure Monitor iniciativy
+
+Pokud chcete vytvořit přiřazení zásad na stránce **Azure monitor pro virtuální počítače pokrytí zásad** , postupujte podle těchto kroků. Pokud chcete zjistit, jak tento postup provést, přečtěte si téma [vytvoření přiřazení zásady z Azure Portal](../../governance/policy/assign-policy-portal.md).
+
+Když přiřadíte zásadu nebo iniciativu, může být obor vybraný v přiřazení oborem uvedeným zde nebo podmnožinou. Například jste mohli vytvořit přiřazení pro předplatné (rozsah zásad), nikoli skupinu pro správu (rozsah pokrytí). V takovém případě procento pokrytí by znamenalo, že virtuální počítače v oboru zásad nebo iniciativy jsou dělené virtuálními počítači v oboru pokrytí. V jiném případě jste možná vyloučili některé virtuální počítače nebo skupiny prostředků nebo předplatné z oboru zásad. Pokud je prázdný, znamená to, že buď zásada nebo podnět neexistuje, nebo nemáte oprávnění. Informace jsou k dispozici v části **stav přiřazení**.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Na webu Azure Portal vyberte **Monitor**. 
+2. V Azure Portal vyberte **monitorovat**. 
 
-3. V části **Přehledy** zvolte **Virtuální počítače.**
+3. V části **přehledy** vyberte **Virtual Machines** .
  
-4. Vyberte kartu **Začínáme.** Na stránce vyberte **Spravovat pokrytí zásad**.
+4. Vyberte kartu **Začínáme** . Na stránce vyberte **Spravovat pokrytí zásad**.
 
-5. V tabulce vyberte skupinu pro správu nebo předplatné. **Výběrem** tři tečky (...). V příkladu obor omezuje přiřazení zásad na seskupení virtuálních počítačů pro vynucení.
+5. V tabulce vyberte buď skupinu pro správu, nebo předplatné. Vyberte **Rozsah** výběrem tři tečky (...). V tomto příkladu obor omezuje přiřazení zásad na seskupení virtuálních počítačů pro vynucení.
 
-6. Na stránce **přiřazení zásad Azure** je předem vyplněná iniciativou **Povolit Azure Monitor pro virtuální počítače**. 
-    Pole **Název přiřazení** je automaticky vyplněno názvem iniciativy, ale můžete jej změnit. Můžete také přidat volitelný popis. Pole **Přiřazeno podle** je automaticky vyplněno podle toho, kdo je přihlášen. Tato hodnota je nepovinná.
+6. Na stránce **přiřazení Azure Policy** je předem vyplněný s iniciativou **Enable Azure monitor pro virtuální počítače**. 
+    Pole **název přiřazení** se automaticky vyplní názvem iniciativy, ale můžete ho změnit. Můžete také přidat volitelný popis. Pole **přiřazeno podle** je automaticky vyplněno na základě toho, kdo je přihlášen. Tato hodnota je volitelná.
 
-7. (Nepovinné) Chcete-li z oboru odebrat jeden nebo více prostředků, vyberte **možnost Vyloučení**.
+7. Volitelné Chcete-li odebrat jeden nebo více prostředků z oboru, vyberte možnost **vyloučení**.
 
-8. V rozevíracím **seznamu pracovního prostoru Log Analytics** pro podporovanou oblast vyberte pracovní prostor.
+8. V rozevíracím seznamu **Log Analytics pracovní prostor** pro podporovanou oblast vyberte pracovní prostor.
 
    > [!NOTE]
-   > Pokud je pracovní prostor nad rámec přiřazení, udělte *přispěvateli analýzy protokolů* oprávnění k ID jistiny přiřazení zásad. Pokud tak neučiníte, může se zobrazit `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ...` selhání nasazení, jako je Udělení přístupu, přečtěte si, [jak ručně nakonfigurovat spravovanou identitu](../../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity).
+   > Pokud je tento pracovní prostor nad rámec přiřazení, udělte Log Analytics oprávnění *Přispěvatel* k ID objektu zabezpečení přiřazení zásad. Pokud to neuděláte, může se zobrazit chyba nasazení, třeba `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ...` udělení přístupu, přečtěte si, [Jak ručně nakonfigurovat spravovanou identitu](../../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity).
    > 
-   >  Zaškrtávací políčko **Spravovaná identita** je zaškrtnuto, protože přiřazená iniciativa obsahuje zásadu s efektem *deployIfNotExists.*
+   >  Je zaškrtnuto políčko **spravovaná identita** , protože přiřazená iniciativa zahrnuje zásadu s *deployIfNotExists* účinkem.
     
-9. V rozevíracím seznamu **Spravovat umístění identity** vyberte příslušnou oblast.
+9. V rozevíracím seznamu **spravovat umístění identity** vyberte příslušnou oblast.
 
 10. Vyberte **Přiřadit**.
 
-Po vytvoření přiřazení aktualizuje stránka **Azure Monitor for VMs Policy Coverage** pokrytí pokrytí pokrytí **přiřazení**, **stav přiřazení**, kompatibilní virtuální **počítače**a stav **dodržování předpisů** tak, aby odrážely změny. 
+Po vytvoření přiřazení aktualizuje stránka **pokrytí zásad Azure monitor pro virtuální počítače** aktualizace **rozsahu přiřazení**, **stavu přiřazení**, **odpovídajících virtuálních počítačů**a **stavu dodržování předpisů** , aby odrážely změny. 
 
-Následující matice mapuje každý možný stav dodržování předpisů pro iniciativu.  
+Následující matice mapuje všechny možné stavy dodržování předpisů pro iniciativu.  
 
 | Stav dodržování předpisů | Popis | 
 |------------------|-------------|
-| **Odpovídající** | Všechny virtuální společnosti v oboru mají agenty analýzy protokolů a závislostí nasazené.|
-| **Není kompatibilní** | Ne všechny virtuální společnosti v oboru mají agenty analýzy protokolů a závislostí nasazené do nich a může vyžadovat nápravu.|
-| **Nespuštěno** | Bylo přidáno nové přiřazení. |
-| **Zámek** | Nemáte dostatečná oprávnění pro skupinu pro správu. <sup>1.</sup> | 
-| **Prázdné** | Není přiřazena žádná zásada. | 
+| **Odpovídající** | Na všechny virtuální počítače v oboru jsou nasazeni Log Analytics a agenti závislostí.|
+| **Nedodržující předpisy** | Ne všechny virtuální počítače v oboru nemají Log Analytics a v nich jsou nasazeni agenti závislostí a mohou vyžadovat nápravu.|
+| **Nezahájeno** | Bylo přidáno nové přiřazení. |
+| **Získáte** | Nemáte dostatečná oprávnění ke skupině pro správu. <sup>1</sup> | 
+| **Prázdné** | Nepřiřadily se žádné zásady. | 
 
-<sup>1</sup> Pokud nemáte přístup ke skupině pro správu, požádejte vlastníka o poskytnutí přístupu. Nebo můžete zobrazit dodržování předpisů a spravovat přiřazení prostřednictvím podřízených skupin pro správu nebo předplatných. 
+<sup>1</sup> Pokud ke skupině pro správu nemáte přístup, požádejte vlastníka o poskytnutí přístupu. Nebo si prohlédněte dodržování předpisů a spravujte přiřazení prostřednictvím podřízených skupin nebo předplatných pro správu. 
 
-Následující tabulka mapuje každý možný stav přiřazení pro iniciativu.
+Následující tabulka namapuje všechny možné stavy přiřazení pro iniciativu.
 
 | Stav přiřazení | Popis | 
 |------------------|-------------|
-| **Úspěch** | Všechny virtuální společnosti v oboru mají agenty analýzy protokolů a závislostí nasazené.|
-| **Upozornění** | Předplatné není pod skupinou pro správu.|
-| **Nespuštěno** | Bylo přidáno nové přiřazení. |
-| **Zámek** | Nemáte dostatečná oprávnění pro skupinu pro správu. <sup>1.</sup> | 
-| **Prázdné** | Neexistují žádné virtuální společnosti nebo není přiřazena zásada. | 
+| **Úspěch** | Na všechny virtuální počítače v oboru jsou nasazeni Log Analytics a agenti závislostí.|
+| **Upozornění** | Předplatné není ve skupině pro správu.|
+| **Nezahájeno** | Bylo přidáno nové přiřazení. |
+| **Získáte** | Nemáte dostatečná oprávnění ke skupině pro správu. <sup>1</sup> | 
+| **Prázdné** | Neexistují žádné virtuální počítače, nebo není zásada přiřazena. | 
 | **Akce** | Přiřaďte zásadu nebo upravte přiřazení. | 
 
-<sup>1</sup> Pokud nemáte přístup ke skupině pro správu, požádejte vlastníka o poskytnutí přístupu. Nebo můžete zobrazit dodržování předpisů a spravovat přiřazení prostřednictvím podřízených skupin pro správu nebo předplatných.
+<sup>1</sup> Pokud ke skupině pro správu nemáte přístup, požádejte vlastníka o poskytnutí přístupu. Nebo si prohlédněte dodržování předpisů a spravujte přiřazení prostřednictvím podřízených skupin nebo předplatných pro správu.
 
 ## <a name="review-and-remediate-the-compliance-results"></a>Kontrola a náprava výsledků dodržování předpisů
 
-Následující příklad je pro virtuální počítač Azure, ale platí také pro škálovací sady virtuálních strojů. Informace o kontrole výsledků dodržování předpisů naleznete v [tématu Identifikace výsledků nedodržování předpisů](../../governance/policy/assign-policy-portal.md#identify-non-compliant-resources). Na stránce **Azure Monitor for VMs Policy Coverage** vyberte skupinu pro správu nebo předplatné z tabulky. **Výběrem** tři tečky (...).   
+Následující příklad je pro virtuální počítač Azure, ale vztahuje se také na službu Virtual Machine Scale Sets. Informace o tom, jak zkontrolovat výsledky dodržování předpisů, najdete v tématu [určení výsledků nedodržování předpisů](../../governance/policy/assign-policy-portal.md#identify-non-compliant-resources). Na stránce **Azure monitor pro virtuální počítače pokrytí zásad** vyberte buď skupinu pro správu, nebo předplatné z tabulky. Kliknutím na tlačítko se třemi tečkami (...) vyberte **Zobrazit dodržování předpisů** .   
 
 ![Dodržování zásad pro virtuální počítače Azure](./media/vminsights-enable-at-scale-policy/policy-view-compliance.png)
 
-Na základě výsledků zásad zahrnutých do iniciativy jsou virtuální počítači v následujících scénářích vykázány jako nevyhovující:
+Na základě výsledků zásad, které jsou součástí iniciativy, se virtuální počítače hlásí jako nedodržující předpisy v následujících scénářích:
 
-* Agent analýzy protokolů nebo agent závislostí není nasazený.  
-    Tento scénář je typický pro obor s existujícími virtuálními počítačemi. Chcete-li ji zmírnit, nasaďte požadované agenty [vytvořením nápravných úloh](../../governance/policy/how-to/remediate-resources.md) v zásadách, které nedodržují předpisy.  
-    - Nasazení agenta závislostí pro virtuální počítače s Linuxem
-    - Nasazení agenta závislostí pro virtuální servery Windows
-    - Nasazení agenta Log Analytics pro virtuální počítače s Linuxem
-    - Nasazení agenta Analýzy protokolů pro virtuální servery Windows
+* Agent Log Analytics nebo agent závislostí není nasazený.  
+    Tento scénář je typický pro obor se stávajícími virtuálními počítači. Pokud ho chcete zmírnit, nasaďte požadované agenty tím, že se [vytvoří úlohy oprav](../../governance/policy/how-to/remediate-resources.md) při nekompatibilních zásadách.  
+    - Nasazení agenta závislostí pro virtuální počítače se systémem Linux
+    - Nasazení agenta závislostí pro virtuální počítače s Windows
+    - Nasazení agenta Log Analytics pro virtuální počítače se systémem Linux
+    - Nasazení agenta Log Analytics pro virtuální počítače s Windows
 
-* Image virtuálního zařízení (OS) není v definici zásad y identifikována.  
-    Kritéria zásad nasazení zahrnují jenom virtuální počítače, které jsou nasazené z dobře známých ibi virtuálních počítačích Azure. Zkontrolujte dokumentaci a zjistěte, jestli je operační systém v om podporován. Pokud není podporována, duplikujte zásady nasazení a aktualizujte je nebo upravte tak, aby byla bitová kopie kompatibilní.  
-    - Nasazení agenta závislostí auditu – image virtuálního počítače (OS) není uvedena
-    - Nasazení agenta analýzy protokolů auditu – image virtuálního počítače (OS) není uveden
+* Image virtuálního počítače (operační systém) není v definici zásad identifikovaná.  
+    Kritéria zásad nasazení zahrnují jenom virtuální počítače, které jsou nasazené z dobře známých imagí virtuálních počítačů Azure. Podívejte se do dokumentace a zjistěte, jestli je operační systém virtuálního počítače podporovaný. Pokud tato zásada není podporována, duplikujte zásadu nasazení a aktualizujte ji, aby odpovídala image.  
+    - Nasazení agenta závislostí auditu – image virtuálního počítače (OS) není v seznamu
+    - Audit – nasazení agenta Log Analytics – image virtuálního počítače (OS) není v seznamu
 
-* Virtuální hotely se nepřihlašují k určenému pracovnímu prostoru Log Analytics.  
-    Je možné, že některé virtuální společnosti v oboru iniciativy se přihlašují k jinému pracovnímu prostoru Log Analytics, než který je zadán v přiřazení zásad. Tato zásada je nástroj k identifikaci, které virtuální chody jsou vykazování do pracovního prostoru nesplňující požadavky.  
-    - Pracovní prostor analýzy protokolu auditu pro virtuální hosti – neshoda sestavy
+* Virtuální počítače se nepřihlašují k určenému pracovnímu prostoru Log Analytics.  
+    Je možné, že se některé virtuální počítače v oboru iniciativy přihlásí k Log Analytics jinému pracovnímu prostoru, než který je zadaný v přiřazení zásady. Tyto zásady představují nástroj, který určuje, které virtuální počítače se hlásí do pracovního prostoru nedodržující předpisy.  
+    - Audit Log Analytics pracovní prostor pro virtuální počítač – neshoda sestavy
 
-## <a name="edit-an-initiative-assignment"></a>Úprava přiřazení iniciativy
+## <a name="edit-an-initiative-assignment"></a>Upravit přiřazení iniciativy
 
-Kdykoli po přiřazení iniciativy skupině pro správu nebo předplatnému ji můžete upravit a upravit tak následující vlastnosti:
+Kdykoli poté, co přiřadíte iniciativu ke skupině nebo předplatnému pro správu, můžete ji upravit a upravit následující vlastnosti:
 
 - Název přiřazení
 - Popis
-- Přiřazeno
+- Přiřadil
 - Pracovní prostor služby Log Analytics
 - Výjimky
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když je monitorování povolené pro vaše virtuální počítače, jsou tyto informace dostupné pro analýzu pomocí Azure Monitoru pro virtuální počítače. 
+Teď, když je monitorování povolené pro vaše virtuální počítače, jsou tyto informace k dispozici pro analýzu pomocí Azure Monitor pro virtuální počítače. 
 
-- Informace o zjištěných závislostech aplikací najdete [v tématu Zobrazení programu Azure Monitor for VMS .](vminsights-maps.md) 
+- Pokud chcete zobrazit zjištěné závislosti aplikací, přečtěte si téma [zobrazení Azure monitor pro virtuální počítače mapa](vminsights-maps.md). 
 
-- Informace o problémových místech a celkovém využití s výkonem virtuálního počítače najdete v [tématu Zobrazení výkonu virtuálních počítačích Azure](vminsights-performance.md). 
+- Pokud chcete zjistit kritické body a celkové využití výkonu vašeho virtuálního počítače, přečtěte si téma [zobrazení výkonu virtuálních počítačů Azure](vminsights-performance.md). 

@@ -1,6 +1,6 @@
 ---
-title: Použití úložiště objektů blob jako úložiště kontrolních bodů v centru Azure Stack Hub (preview)
-description: Tento článek popisuje, jak používat úložiště objektů blob jako úložiště kontrolních bodů v rozbočovačích událostí v centru Azure Stack Hub (preview).
+title: Použití Blob Storage jako úložiště kontrolních bodů v centru Azure Stack (Preview)
+description: Tento článek popisuje, jak používat Blob Storage jako úložiště kontrolního bodu v Event Hubs v centru Azure Stack (Preview).
 services: event-hubs
 documentationcenter: na
 author: spelluru
@@ -9,24 +9,24 @@ ms.topic: how-to
 ms.date: 03/18/2020
 ms.author: spelluru
 ms.openlocfilehash: 2938099383c32eac493e4b4bb620f03c76ca5c44
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82023646"
 ---
-# <a name="use-blob-storage-as-checkpoint-store---event-hubs-on-azure-stack-hub-preview"></a>Použití úložiště objektů blob jako úložiště kontrolních bodů – centra událostí v centru Azure Stack Hub (preview)
-Pokud používáte Azure Blob Storage jako úložiště kontrolních bodů v prostředí, které podporuje jinou verzi sady Storage Blob SDK než ty, které jsou obvykle dostupné v Azure, budete muset použít kód ke změně verze rozhraní API služby úložiště na konkrétní verzi podporovanou tímto prostředím. Například pokud používáte [Centra událostí na Azure Stack Hub verze 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview), nejvyšší dostupná verze pro službu Storage je verze 2017-11-09. V takovém případě musíte použít kód k cílení verze rozhraní API služby úložiště na 2017-11-09. Příklad, jak cílit na konkrétní verzi rozhraní API úložiště, najdete v těchto ukázkách na GitHubu: 
+# <a name="use-blob-storage-as-checkpoint-store---event-hubs-on-azure-stack-hub-preview"></a>Použití Blob Storage jako kontrolní bod úložiště – Event Hubs v Azure Stackm centru (Preview)
+Pokud používáte Azure Blob Storage jako úložiště kontrolního bodu v prostředí, které podporuje jinou verzi sady SDK pro úložiště objektů blob, než jsou ta, která jsou obvykle k dispozici v Azure, budete muset použít kód ke změně verze rozhraní API služby úložiště na konkrétní verzi podporovanou tímto prostředím. Pokud například používáte [Event Hubs v centru Azure Stack, verze 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview), nejvyšší dostupná verze služby úložiště je verze 2017-11-09. V takovém případě je nutné použít kód pro cílení na verzi rozhraní API služby úložiště na 2017-11-09. Příklad cílení na konkrétní verzi rozhraní API úložiště najdete v těchto ukázkách na GitHubu: 
 
 - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)
 - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java). 
 - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) nebo [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts) 
-- Python - [synchronní](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py), [asynchronní](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)
+- Python – [synchronní](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py), [asynchronní](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)
 
 > [!IMPORTANT]
-> Centra událostí v centru Azure Stack Hub je momentálně ve [verzi preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) a je zdarma. 
+> Event Hubs v centru Azure Stack je momentálně ve [verzi Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) a je zdarma. 
 
-Pokud spustíte přijímač centra událostí, který používá úložiště objektů Blob jako úložiště kontrolních bodů bez cílení na verzi, kterou azure zásobníku podporuje, zobrazí se následující chybová zpráva:
+Pokud spustíte Event Hubs přijímač, který jako úložiště kontrolního bodu používá Blob Storage, aniž by se cílí na verzi, kterou centrum Azure Stack podporuje, zobrazí se tato chybová zpráva:
 
 ```
 The value for one of the HTTP headers is not in the correct format
@@ -34,7 +34,7 @@ The value for one of the HTTP headers is not in the correct format
 
 
 ## <a name="sample-error-message-in-python"></a>Ukázková chybová zpráva v Pythonu
-V Pythonu `azure.core.exceptions.HttpResponseError` je chyba předána `on_error(partition_context, error)` obslužné rutině chyby aplikace `EventHubConsumerClient.receive()`. Ale metoda `receive()` nevyvolá výjimku. `print(error)`vytiskne následující informace o výjimce:
+V případě Pythonu `azure.core.exceptions.HttpResponseError` je chyba předána obslužné rutině `on_error(partition_context, error)` chyby pro `EventHubConsumerClient.receive()`. Metoda `receive()` ale nevyvolává výjimku. `print(error)`vytisknou se následující informace o výjimce:
 
 ```bash
 The value for one of the HTTP headers is not in the correct format.
@@ -47,7 +47,7 @@ HeaderName:x-ms-version
 HeaderValue:2019-07-07
 ```
 
-Protokolování bude protokolovat dvě upozornění, jako jsou následující:
+Protokolovací nástroj bude protokolovat dvě upozornění, jako jsou následující:
 
 ```bash
 WARNING:azure.eventhub.extensions.checkpointstoreblobaio._blobstoragecsaio: 
@@ -64,4 +64,4 @@ The exception is HttpResponseError('The value for one of the HTTP headers is not
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o dělení a vytváření kontrolních bodů: [Vyvážení zatížení oddílů mezi více instancemi aplikace](event-processor-balance-partition-load.md)
+V následujícím článku se dozvíte o dělení a vytváření kontrolních bodů: [vyvážení zátěže oddílu napříč několika instancemi vaší aplikace](event-processor-balance-partition-load.md)

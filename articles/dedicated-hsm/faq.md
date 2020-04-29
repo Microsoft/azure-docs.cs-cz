@@ -1,6 +1,6 @@
 ---
-title: Nejčastější dotazy – Azure Dedicated HSM | Dokumenty společnosti Microsoft
-description: Nejčastější dotazy týkající se různých témat v azure dedicated hsm
+title: Nejčastější dotazy – vyhrazený modul HARDWAROVÉho zabezpečení Azure | Microsoft Docs
+description: Nejčastější dotazy týkající se různých témat o vyhrazeném modulu HSM Azure
 services: dedicated-hsm
 author: johncdawson
 manager: rkarlin
@@ -14,57 +14,57 @@ ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 8f9e759372f01d2a1b48562aef2bace1e8435a67
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683315"
 ---
 # <a name="frequently-asked-questions-faq"></a>Nejčastější dotazy
 
-Najděte odpovědi na časté otázky týkající se vyhrazeného modulu hardwarového zabezpečení Microsoft Azure.
+Získejte odpovědi na běžné otázky týkající se Microsoft Azure vyhrazeného modulu HSM.
 
 ## <a name="the-basics"></a>Základy
 
-### <a name="q-what-is-a-hardware-security-module-hsm"></a>Otázka: Co je modul hardwarového zabezpečení (HSM)?
+### <a name="q-what-is-a-hardware-security-module-hsm"></a>Otázka: co je modul hardwarového zabezpečení (HSM)?
 
-Modul hardwarového zabezpečení (HSM) je fyzické výpočetní zařízení používané k ochraně a správě kryptografických klíčů. Klíče uložené v souborech hesm lze použít pro kryptografické operace. Klíčový materiál zůstává bezpečně v hardwarových modulech odolných proti neoprávněné manipulaci. HSM umožňuje pouze ověřené a autorizované aplikace používat klíče. Klíčový materiál nikdy neopouští hranici ochrany hsm.
+Modul hardwarového zabezpečení (HSM) je fyzické výpočetní zařízení, které slouží k ochraně a správě kryptografických klíčů. Klíče uložené v HSM lze použít pro kryptografické operace. Klíčový materiál zůstane bezpečně v neoprávněně odolném hardwarovém modulu. Modul hardwarového zabezpečení (HSM) povoluje použití klíčů pouze ověřeným a autorizovaným aplikacím. Materiál klíče nikdy neopouští hranici ochrany HSM.
 
-### <a name="q-what-is-the-azure-dedicated-hsm-offering"></a>Otázka: Co je nabídka azure dedicated hsm?
+### <a name="q-what-is-the-azure-dedicated-hsm-offering"></a>Otázka: co je to vyhrazená nabídka HSM služby Azure?
 
-Azure Dedicated HSM je cloudová služba, která poskytuje moduly hardwarového zabezpečení hostované v datových centrech Azure, které jsou přímo připojené k virtuální síti zákazníka. Tyto moduly hardwarového zabezpečení jsou vyhrazená síťová zařízení (Síť SafeNet HSM 7 Model A790 společnosti Gemalto). Jsou nasazeny přímo do privátního adresního prostoru zákazníků a společnost Microsoft nemá žádný přístup ke kryptografickým funkcím vzdálených připojení uživatelů. Pouze zákazník má plnou administrativní a kryptografickou kontrolu nad těmito zařízeními. Zákazníci jsou zodpovědní za správu zařízení a mohou získat úplné protokoly aktivit přímo ze svých zařízení. Vyhrazené moduly hardwarového zabezpečení pomáhají zákazníkům splnit požadavky na dodržování předpisů, jako jsou FIPS 140-2 Level 3, HIPAA, PCI-DSS a eIDAS a mnoho dalších.
+Vyhrazený modul HARDWAROVÉho zabezpečení Azure je cloudová služba, která poskytuje HSM, která je hostovaná v datacentrech Azure, která jsou přímo připojená k virtuální síti zákazníka. Tato HSM jsou vyhrazená síťová zařízení (identita Gemalto SafeNet Network HSM model A790). Nasazují se přímo do privátního adresního prostoru IP adres zákazníků a Microsoft nemá žádný přístup k kryptografické funkci HSM. Jenom zákazník má tato zařízení plnou správu a řízení kryptografie. Zákazníci zodpovídají za správu zařízení a můžou z jejich zařízení získat protokoly o všech činnostech. Vyhrazená HSM zákazníkům pomůžou splnit požadavky na dodržování předpisů, jako jsou FIPS 140-2 úrovně 3, HIPAA, PCI-DSS a eIDAS a spousta dalších.
 
-### <a name="q-what-hardware-is-used-for-dedicated-hsm"></a>Otázka: Jaký hardware se používá pro vyhrazený modul hardwarového zabezpečení?
+### <a name="q-what-hardware-is-used-for-dedicated-hsm"></a>Otázka: Jaký hardware se používá pro vyhrazený modul HSM?
 
-Společnost Microsoft spolupracuje se společností Gemalto na poskytování služby Azure Dedicated HSM. Konkrétním použitým zařízením je [SafeNet Luna Network HSM 7 Model A790](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/). Toto zařízení poskytuje nejen fips 140-2 Level 3 ověřený firmware, ale také nabízí nízkou latenci, vysoký výkon a vysokou kapacitu prostřednictvím 10 oddílů. 
+Microsoft spolupracuje se službou identita Gemalto, aby mohla doručovat službu HSM vyhrazenou pro Azure. Konkrétní zařízení, které se používá, je [Safenet Luna modelu sítě HSM 7 A790](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/). Toto zařízení neposkytuje pouze ověřený firmware FIPS 140-2 úrovně 3, ale také nabízí nízkou latenci, vysoký výkon a vysokou kapacitu prostřednictvím 10 oddílů. 
 
-### <a name="q-what-is-an-hsm-used-for"></a>Otázka: K čemu se používá objekt hsm?
+### <a name="q-what-is-an-hsm-used-for"></a>Otázka: co je modul HARDWAROVÉho zabezpečení, který se používá pro?
 
-Soubory hesm slouží k ukládání kryptografických klíčů, které se používají pro kryptografické funkce, jako je tls (zabezpečení transportní vrstvy), šifrování dat, infrastruktura infrastruktury veřejných klíčů (infrastruktura veřejných klíčů), DRM (správa digitálních práv) a podepisování dokumentů.
+HSM se používají k ukládání kryptografických klíčů, které se používají pro kryptografické funkce, jako je TLS (Transport Layer Security), šifrování dat, PKI (infrastruktura veřejných klíčů), DRM (Správa digitálních práv) a podepisování dokumentů.
 
-### <a name="q-how-does-dedicated-hsm-work"></a>Otázka: Jak funguje vyhrazený modul hardwarového zabezpečení?
+### <a name="q-how-does-dedicated-hsm-work"></a>Otázka: jak vyhrazený modul HSM funguje?
 
-Zákazníci mohou zřazovat moduly zabezpečení v určitých oblastech pomocí prostředí PowerShell nebo rozhraní příkazového řádku. Zákazník určí, k jaké virtuální síti budou servery hsm připojeny, a po zřízení budou servery hsm k dispozici v určené podsíti na přiřazených ADRESÁCH IP v privátním adresním prostoru zákazníka. Zákazníci se pak mohou připojit k hsm s pomocí SSH pro správu a správu zařízení, nastavit připojení klientů hsm, inicializovat soubory hesmatele, vytvářet oddíly, definovat a přiřazovat role, jako je například úředník pro oddíly, kontrolor kryptografických zařízení a uživatel kryptografických zařízení. Pak zákazník bude používat Gemalto za předpokladu, HSM klientské nástroje / SDK / software provádět kryptografické operace ze svých aplikací.
+Zákazníci mohou zřídit HSM v konkrétních oblastech pomocí prostředí PowerShell nebo rozhraní příkazového řádku. Zákazník určuje, ke které virtuální síti bude HSM připojen a jakmile bude HSM, bude k dispozici v určené podsíti v přiřazených IP adresách v adresním prostoru privátních IP adres zákazníka. Pak se zákazníci mohou připojit k HSM pomocí SSH pro správu a správu zařízení, nastavit připojení klientů HSM, inicializovat HSM, vytvářet oddíly, definovat a přiřazovat role, jako je například úředník oddělení, kryptografický pracovník a kryptografický uživatel. Zákazník pak bude k provádění kryptografických operací ze svých aplikací používat identita Gemalto klientské nástroje/sada SDK/software modulu HSM.
 
-### <a name="q-what-software-is-provided-with-the-dedicated-hsm-service"></a>Otázka: Jaký software je dodáván se službou Vyhrazené moduly hardwarového zabezpečení?
+### <a name="q-what-software-is-provided-with-the-dedicated-hsm-service"></a>Otázka: Jaký software je součástí vyhrazené služby HSM?
 
-Gemalto dodává veškerý software pro zařízení HSM po zřízení společností Microsoft. Software je k dispozici na [portálu zákaznické podpory Gemalto](https://supportportal.gemalto.com/csm/). Zákazníci, kteří používají vyhrazenou službu hardwarového zabezpečení, musí být zaregistrováni pro podporu Gemalto a mít ID zákazníka, které umožňuje přístup a stahování příslušného softwaru. Podporovaný klientský software je verze 7.2, která je kompatibilní s fips 140-2 Level 3 ověřený firmware verze 7.0.3. 
+Identita Gemalto poskytuje veškerý software pro zařízení HSM po zřízení Microsoftu. Software je k dispozici na [portálu zákaznické podpory identita Gemalto](https://supportportal.gemalto.com/csm/). Zákazníci, kteří používají vyhrazenou službu HSM, se musí zaregistrovat pro podporu identita Gemalto a mít ID zákazníka, které umožňuje přístup a stažení relevantního softwaru. Podporovaný klientský software je verze 7,2, která je kompatibilní se ověřeným firmwarem verze 7.0.3 standardu FIPS 140-2 úrovně 3. 
 
-### <a name="q-does-azure-dedicated-hsm-offer-password-based-and-ped-based-authentication"></a>Otázka: Nabízí vyhrazený modul hardwarového zabezpečení Azure ověřování založené na heslech a ped?
+### <a name="q-does-azure-dedicated-hsm-offer-password-based-and-ped-based-authentication"></a>Otázka: nabízí vyhrazený modul HSM založený na heslech a ověřování založené na PED?
 
-V tuto chvíli azure dedicated hsm poskytuje pouze moduly hardwarového zabezpečení s ověřováním na základě hesla.
+V současnosti poskytuje Azure vyhrazené HSM jenom HSM s ověřováním pomocí hesla.
 
-### <a name="q-will-azure-dedicated-hsm-host-my-hsms-for-me"></a>Otázka: Bude Azure Vyhrazené Modul hardwarového zabezpečení hostitele mými moduly hardwarového zabezpečení pro mě?
+### <a name="q-will-azure-dedicated-hsm-host-my-hsms-for-me"></a>Otázka: bude pro mě HSM vyhrazený hostitel modulu HSM pro Azure?
 
-Společnost Microsoft nabízí modul hardwarového zabezpečení gemalto SafeNet Luna network pouze prostřednictvím vyhrazené služby hardwarového zabezpečení a nemůže hostovat žádná zařízení poskytnutá zákazníkem.
+Microsoft nabízí jenom modul HARDWAROVÉho zabezpečení identita Gemalto SafeNet Luna jenom pomocí vyhrazené služby HSM a nemůže hostovat žádná zařízení poskytovaná zákazníky.
 
-### <a name="q-does-azure-dedicated-hsm-support-payment-pineft-features"></a>Otázka: Podporuje azure dedicated hsm funkce platby (PIN/EFT)?
+### <a name="q-does-azure-dedicated-hsm-support-payment-pineft-features"></a>Otázka: podporuje funkce služby pro platby ve službě HSM vyhrazené modulem pro zabezpečení (PIN/EFT) Azure.
 
-Služba Azure Dedicated HSM používá zařízení SafeNet Luna Network HSM 7 (model A790). Tato zařízení nepodporují platební funkce specifické pro hsm (například PIN nebo EFT) nebo certifikace. Pokud chcete, aby služba Azure Dedicated HSM v budoucnu podporovala moduly hardwarového zabezpečení pro platby, předejte zpětnou vazbu zástupci účtu Microsoft.
+Vyhrazená služba HSM Azure používá SafeNet Luna Network HSM 7 (model A790). Tato zařízení nepodporují funkce pro platební modul HSM specifické pro modul HSM (například PIN nebo EFT) nebo certifikace. Pokud chcete, aby služba HSM vyhrazená službou Azure podporovala platební HSM v budoucnu, předejte zpětnou vazbu vašemu zástupci účtu Microsoft.
 
-### <a name="q-which-azure-regions-is-dedicated-hsm-available-in"></a>Otázka: Ve kterých oblastech Azure je vyhrazený modul hardwarového zabezpečení k dispozici?
+### <a name="q-which-azure-regions-is-dedicated-hsm-available-in"></a>Otázka: u kterých oblastí Azure je dostupný vyhrazený modul HARDWAROVÉho zabezpečení?
 
-Od konce března 2019 je vyhrazený modul hardwarového zabezpečení k dispozici ve 14 regionech uvedených níže. Další oblasti jsou plánovány a lze je projednat prostřednictvím zástupce účtu Microsoft.
+Od 13. března 2019 je vyhrazený modul HSM dostupný ve 14 oblastech uvedených níže. Další oblasti jsou plánovány a mohou být popsány prostřednictvím zástupce účtu společnosti Microsoft.
 
 * USA – východ
 * USA – východ 2
@@ -85,226 +85,226 @@ Od konce března 2019 je vyhrazený modul hardwarového zabezpečení k dispozic
 * Kanada – východ
 * Austrálie – východ
 * Austrálie – jihovýchod
-* Švýcarsko Sever
-* Švýcarsko Západ
+* Švýcarsko – sever
+* Švýcarsko – západ
 * USA (Gov) – Virginia
 * USA (Gov) – Texas
 
 ## <a name="interoperability"></a>Interoperabilita
 
-### <a name="q-how-does-my-application-connect-to-a-dedicated-hsm"></a>Otázka: Jak se aplikace připojuje k vyhrazenému modulu hardwarového zabezpečení?
+### <a name="q-how-does-my-application-connect-to-a-dedicated-hsm"></a>Otázka: jak se moje aplikace připojí k vyhrazené HSM?
 
-Ke provádění kryptografických operací z vašich aplikací používáte klientské nástroje Gemalto za předpokladu, že je k dispozici pomocí sady HSM.You use Gemalto provided HSM client tools/SDK/software to perform cryptographic operations from your applications. Software je k dispozici na [portálu zákaznické podpory Gemalto](https://supportportal.gemalto.com/csm/). Zákazníci, kteří používají vyhrazenou službu hardwarového zabezpečení, musí být zaregistrováni pro podporu Gemalto a mít ID zákazníka, které umožňuje přístup a stahování příslušného softwaru.
+K provádění kryptografických operací z vašich aplikací se používají identita Gemalto klientské nástroje/sada SDK/software modulu HSM. Software je k dispozici na [portálu zákaznické podpory identita Gemalto](https://supportportal.gemalto.com/csm/). Zákazníci, kteří používají vyhrazenou službu HSM, se musí zaregistrovat pro podporu identita Gemalto a mít ID zákazníka, které umožňuje přístup a stažení relevantního softwaru.
 
-### <a name="q-can-an-application-connect-to-dedicated-hsm-from-a-different-vnet-in-or-across-regions"></a>Otázka: Může se aplikace připojit k vyhrazenému modulu hardwarového zabezpečení z jiné virtuální sítě v oblastech nebo napříč oblastmi?
+### <a name="q-can-an-application-connect-to-dedicated-hsm-from-a-different-vnet-in-or-across-regions"></a>Otázka: může se aplikace připojit k vyhrazenému HSM z jiné virtuální sítě v rámci nebo napříč oblastmi?
 
-Ano, budete muset použít [partnerský vztah virtuální sítě](../virtual-network/virtual-network-peering-overview.md) v rámci oblasti k navázání připojení mezi virtuálními sítěmi. Pro připojení mezi oblastmi je nutné použít [bránu VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md).
+Ano, budete muset v rámci jedné oblasti použít [partnerský vztah](../virtual-network/virtual-network-peering-overview.md) virtuálních sítí, aby bylo možné navázat připojení mezi virtuálními sítěmi. Pro připojení mezi jednotlivými oblastmi je nutné použít [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
-### <a name="q-can-i-synchronize-dedicated-hsm-with-on-premises-hsms"></a>Otázka: Lze synchronizovat vyhrazený modul hardwarového zabezpečení s místními moduly hardwarového zabezpečení?
+### <a name="q-can-i-synchronize-dedicated-hsm-with-on-premises-hsms"></a>Otázka: mohu synchronizovat vyhrazený modul HARDWAROVÉho zabezpečení s místními HSM?
 
-Ano, můžete synchronizovat místní moduly hardwarového zabezpečení pomocí vyhrazeného modulu hardwarového zabezpečení. [Připojení k síti POINT-TO-point vpn nebo připojení bodu k síti](../vpn-gateway/vpn-gateway-about-vpngateways.md) lze použít k navázání připojení k místní síti.
+Ano, místní HSM můžete synchronizovat s vyhrazeným HSM. Připojení [typu Point-to-Point VPN nebo Point-to-site](../vpn-gateway/vpn-gateway-about-vpngateways.md) lze použít k navázání připojení k místní síti.
 
-### <a name="q-can-i-encrypt-data-used-by-other-azure-services-using-keys-stored-in-dedicated-hsm"></a>Otázka: Můžu šifrovat data používaná jinými službami Azure pomocí klíčů uložených v vyhrazeném modulu hardwarového zabezpečení?
+### <a name="q-can-i-encrypt-data-used-by-other-azure-services-using-keys-stored-in-dedicated-hsm"></a>Otázka: můžu šifrovat data používaná jinými službami Azure pomocí klíčů uložených v vyhrazeném modulu HSM?
 
-Ne. Azure Dedicated HSMs jsou přístupné jenom z uvnitř vaší virtuální sítě.
+Ne. Vyhrazené HSM Azure jsou dostupné jenom v rámci vaší virtuální sítě.
 
-### <a name="q-can-i-import-keys-from-an-existing-on-premises-hsm-to-dedicated-hsm"></a>Otázka: Lze importovat klíče z existujícího místního modulu hardwarového zabezpečení do vyhrazeného modulu hardwarového zabezpečení?
+### <a name="q-can-i-import-keys-from-an-existing-on-premises-hsm-to-dedicated-hsm"></a>Otázka: mohu importovat klíče z existujícího místního modulu HARDWAROVÉho zabezpečení do vyhrazeného modulu HSM?
 
-Ano, pokud máte místní skryté servery hesmazívky Gemalto SafeNet. Existuje několik metod. Viz dokumentace Gemalto HSM.
+Ano, pokud máte místní identita Gemalto SafeNet HSM. Existuje více metod. Informace najdete v dokumentaci modulu HSM pro identita Gemalto.
 
-### <a name="q-what-operating-systems-are-supported-by-dedicated-hsm-client-software"></a>Otázka: Jaké operační systémy jsou podporovány vyhrazeným klientským softwarem modulu hardwarového zabezpečení?
+### <a name="q-what-operating-systems-are-supported-by-dedicated-hsm-client-software"></a>Otázka: Jaké operační systémy podporuje vyhrazený klientský software HSM?
 
 * Windows, Linux, Solaris, AIX, HP-UX, FreeBSD
-* Virtuální: VMware, hyperv, Xen, KVM
+* Virtuální: VMware, HyperV, Xen, KVM
 
-### <a name="q-how-do-i-configure-my-client-application-to-create-a-high-availability-configuration-with-multiple-partitions-from-multiple-hsms"></a>Otázka: Jak nakonfiguruji klientskou aplikaci tak, aby vytvořila konfiguraci s vysokou dostupností s více oddíly z více objektových počítačů s připojením k selhání?
+### <a name="q-how-do-i-configure-my-client-application-to-create-a-high-availability-configuration-with-multiple-partitions-from-multiple-hsms"></a>Otázka: Návody nakonfigurovat klientskou aplikaci, aby vytvořila konfiguraci s vysokou dostupností s více oddíly z více HSM?
 
-Chcete-li mít vysokou dostupnost, je třeba nastavit konfiguraci klientské aplikace hsm pro použití oddílů z každého serveru zabezpečení zabezpečení. Podívejte se na dokumentaci ke klientnímu softwaru Gemalto HSM.
+Pokud chcete mít vysokou dostupnost, musíte nastavit konfiguraci klientské aplikace HSM tak, aby používala oddíly z každého HSM. Informace najdete v dokumentaci k klientskému softwaru identita Gemalto HSM.
 
-### <a name="q-what-authentication-mechanisms-are-supported-by-dedicated-hsm"></a>Otázka: Jaké mechanismy ověřování jsou podporovány vyhrazeným modulu hardwarového zabezpečení?
+### <a name="q-what-authentication-mechanisms-are-supported-by-dedicated-hsm"></a>Otázka: Jaké mechanismy ověřování podporuje vyhrazený modul HSM?
 
-Azure Dedicated HSM používá safenet sítě HSM 7 zařízení (model A790) a podporují ověřování na základě hesla.
+Vyhrazený modul HARDWAROVÉho zabezpečení Azure používá zařízení SafeNet Network HSM 7 (model A790) a podporuje ověřování na základě hesla.
 
-### <a name="q-what-sdks-apis-client-software-is-available-to-use-with-dedicated-hsm"></a>Otázka: Jaké sady SDK, rozhraní API, klientský software je k dispozici pro použití s vyhrazeným modulem hardwarového zabezpečení?
+### <a name="q-what-sdks-apis-client-software-is-available-to-use-with-dedicated-hsm"></a>Otázka: Jaké sady SDK, rozhraní API a klientský software jsou k dispozici pro použití s vyhrazeným modulem HSM?
 
-PKCS#11, Java (JCA/JCE), Microsoft CAPI a CNG, OpenSSL
+PKCS # 11, Java (JCA/JCE), Microsoft CAPI a CNG, OpenSSL
 
-### <a name="q-can-i-importmigrate-keys-from-luna-56-hsms-to-azure-dedicated-hsms"></a>Otázka: Můžu importovat nebo migrovat klíče z modulů hardwarového zabezpečení Luna 5/6 do modulů hardwarového zabezpečení Azure?
+### <a name="q-can-i-importmigrate-keys-from-luna-56-hsms-to-azure-dedicated-hsms"></a>Otázka: mohu importovat/migrovat klíče z Luna 5/6 HSM do Azure vyhrazené HSM?
 
-Ano. Podívejte se na průvodce migrací Gemalto. 
+Ano. Přečtěte si příručku k migraci identita Gemalto. 
 
-## <a name="using-your-hsm"></a>Používání hsm
+## <a name="using-your-hsm"></a>Použití modulu HARDWAROVÉho zabezpečení
 
-### <a name="q-how-do-i-decide-whether-to-use-azure-key-vault-or-azure-dedicated-hsm"></a>Otázka: Jak se rozhodnu, jestli použít Azure Key Vault nebo Azure Dedicated HSM?
+### <a name="q-how-do-i-decide-whether-to-use-azure-key-vault-or-azure-dedicated-hsm"></a>Otázka: Návody rozhodnout, jestli chcete používat Azure Key Vault nebo vyhrazený modul HSM pro Azure?
 
-Azure Dedicated HSM je vhodnou volbou pro podniky, které migrují do místních aplikací Azure, které používají moduly hardwarového zabezpečení. Vyhrazené moduly hardwarového zabezpečení představují možnost migrovat aplikaci s minimálními změnami. Pokud se kryptografické operace provádějí v kódu aplikace spuštěném ve virtuálním počítači Azure nebo webové aplikaci, můžou používat vyhrazený modul hardwarového zabezpečení. Obecně platí, že software zabalený do smršťování běžící v modelech IaaS (infrastruktura jako služba), které podporují moduly hardwarového zabezpečení jako úložiště klíčů, můžete použít modul y DEdicate HSM, například bránu aplikace nebo správce provozu pro bezklíčové technologie TLS, ADCS (Active Directory Certificate Services) nebo podobné nástroje Infrastruktury veřejných klíčů, nástroje nebo aplikace používané pro podepisování dokumentů, podepisování kódu nebo SQL Server (IaaS) nakonfigurovaný pomocí tde (transparentní šifrování databáze) s hlavním klíčem v modulu hardwarového zabezpečení pomocí zprostředkovatele EKM (rozšiřitelného klíče). Azure Key Vault je vhodný pro aplikace "born-in-cloud" nebo pro šifrování v klidovém stavu, kde zákaznická data zpracovávají scénáře PaaS (platforma jako služba) nebo SaaS (Software jako služba), jako je klíč zákazníka Office 365, Ochrana informací Azure, Šifrování disku Azure, šifrování Azure Data Lake Store s klíčem spravovaným zákazníkem, šifrování úložiště Azure se spravovaným klíčem zákazníkem a Azure SQL s klíčem spravovaným zákazníkem.
+Vyhrazený modul HARDWAROVÉho zabezpečení Azure je vhodný volbou pro podniky, které migrují na místní aplikace Azure, které používají HSM. Vyhrazená HSM prezentují možnost Migrace aplikace s minimálními změnami. Pokud se kryptografické operace provádějí v kódu aplikace běžícím na virtuálním počítači Azure nebo ve webové aplikaci, můžou použít vyhrazený HSM. Obecně zúžený software, který běží v modelech IaaS (infrastruktura jako služba), který podporuje HSM jako úložiště klíčů, může použít vyhradit modul hardwarového zabezpečení (HSM), například služba Application Gateway nebo Traffic Manager pro bez klíčů TLS, ASSD (Active Directory Certificate Services) nebo podobné nástroje PKI, nástroje/aplikace používané k podepisování dokumentů, podepisování kódu nebo SQL Server (IaaS) nakonfigurovaná s TDE (transparentní šifrování databáze) pomocí hlavního klíče v modulu HARDWAROVÉho zabezpečení s použitím poskytovatele EKM (Extensible Key Management). Azure Key Vault je vhodný pro aplikace typu "v rámci cloudu" nebo pro šifrování ve scénářích REST, kde jsou zákaznická data zpracovávána scénáři PaaS (platforma jako služba) nebo SaaS (software jako služba), jako je například klíč zákazníka Office 365, Azure Information Protection, Azure Disk Encryption, Azure Data Lake Store šifrování pomocí klíče spravovaného zákazníkem, Azure Storage šifrování pomocí spravovaného klíče zákazníka a Azure SQL se spravovaným klíčem zákazníka.
 
-### <a name="q-what-usage-scenarios-best-suit-azure-dedicated-hsm"></a>Otázka: Jaké scénáře použití nejlépe vyhovují vyhrazenému modulu hardwarového zabezpečení Azure?
+### <a name="q-what-usage-scenarios-best-suit-azure-dedicated-hsm"></a>Otázka: Jaké scénáře použití nejlépe vyhovují vyhrazenému modulu HSM Azure?
 
-Azure Dedicated HSM je nejvhodnější pro scénáře migrace. To znamená, že pokud migrujete místní aplikace do Azure, které už používají servery zabezpečení zabezpečení. To poskytuje možnost nízké tření pro migraci do Azure s minimálními změnami v aplikaci. Pokud se kryptografické operace provádějí v kódu aplikace spuštěném ve virtuálním počítači Azure nebo webové aplikaci, lze použít vyhrazený modul hardwarového zabezpečení. Obecně platí, že software zabalený do zmenšení spuštěný v modelech IaaS (infrastruktura jako služba), který podporuje servery hsm jako úložiště klíčů, může používat vyskladnění hsm, například:
+Vyhrazený modul HARDWAROVÉho zabezpečení Azure je vhodný pro scénáře migrace. To znamená, že pokud migrujete místní aplikace do Azure, které už používají HSM. Díky tomu je k dispozici bezproblémová možnost migrace do Azure s minimálními změnami aplikace. Pokud se kryptografické operace provádějí v kódu aplikace běžícím na virtuálním počítači Azure nebo ve webové aplikaci, může se použít vyhrazený modul HSM. Obecně zúžený software běžící v IaaS (infrastruktura jako služba), který podporuje HSM jako úložiště klíčů, může použít vyhradit modul hardwarového zabezpečení (HSM), například:
 
-* Aplikační brána nebo správce provozu pro bezklíčové TLS
-* ADCS (služba ADCCertificate Services)
+* Application Gateway nebo Traffic Manager pro bez klíčů TLS
+* ASSD (Active Directory Certificate Services)
 * Podobné nástroje PKI
 * Nástroje/aplikace používané pro podepisování dokumentů
 * Podepisování kódu
-* SQL Server (IaaS) nakonfigurovaný s TDE (transparentní šifrování databáze) s hlavním klíčem v modulu hardwarového zabezpečení pomocí zprostředkovatele EKM (rozšiřitelné správy klíčů)
+* SQL Server (IaaS) nakonfigurované s TDE (transparentní šifrování databáze) pomocí hlavního klíče v modulu HARDWAROVÉho zabezpečení s použitím poskytovatele EKM (Extensible Key Management)
 
-### <a name="q-can-dedicated-hsm-be-used-with-office-365-customer-key-azure-information-protection-azure-data-lake-store-disk-encryption-azure-storage-encryption-azure-sql-tde"></a>Otázka: Lze vyhrazený modul hardwarového zabezpečení používat s klíčem zákazníků Office 365, ochranou informací Azure, úložištěm datových jezer Azure, šifrováním disku, šifrováním úložiště Azure, Azure SQL TDE?
+### <a name="q-can-dedicated-hsm-be-used-with-office-365-customer-key-azure-information-protection-azure-data-lake-store-disk-encryption-azure-storage-encryption-azure-sql-tde"></a>Otázka: je možné použít vyhrazený modul HARDWAROVÉho zabezpečení s klíčem zákazníka Office 365, Azure Information Protection, Azure Data Lake Store, šifrování disku, Azure Storage šifrování, Azure SQL TDE?
 
-Ne. Vyhrazený modul hardwarového zabezpečení se zřápává přímo do privátního ip adresového prostoru zákazníka, takže není přístupný jiným službám Azure nebo Microsoftu.
+Ne. Vyhrazený modul HARDWAROVÉho zabezpečení se zřizuje přímo v adresním prostoru privátních IP adres zákazníka, takže není přístupný pro jiné služby Azure nebo Microsoft.
 
 ## <a name="administration-access-and-control"></a>Správa, přístup a řízení
 
-### <a name="q-does-the-customer-get-full-exclusive-control-over-the-hsms-with-dedicated-hsms"></a>Otázka: Má zákazník získat plnou výhradní kontrolu nad moduly hardwarového zabezpečení s vyhrazené moduly hardwarového zabezpečení?
+### <a name="q-does-the-customer-get-full-exclusive-control-over-the-hsms-with-dedicated-hsms"></a>Otázka: provede zákazníka úplnou kontrolu nad HSM pomocí vyhrazeného HSM?
 
-Ano. Každé zařízení modulu hardwarového zabezpečení je plně vyhrazeno pro jednoho zákazníka a nikdo jiný nemá administrativní kontrolu po zřízení a změně hesla správce.
+Ano. Každé zařízení HSM je plně vyhrazené jednomu zákazníkovi a nikdo jiný nemá administrativní řízení, když se zřídí a heslo správce se změnilo.
 
-### <a name="q-what-level-of-access-does-microsoft-have-to-my-hsm"></a>Otázka: Jakou úroveň přístupu má společnost Microsoft k mému hsm?
+### <a name="q-what-level-of-access-does-microsoft-have-to-my-hsm"></a>Otázka: jakou úroveň přístupu Microsoft potřebuje k mému HARDWAROVÉmu zabezpečení?
 
-Společnost Microsoft nemá žádnou administrativní nebo kryptografickou kontrolu nad hsm. Společnost Microsoft má přístup na úrovni monitorování prostřednictvím připojení sériového portu k načtení základní telemetrie, jako je teplota a stav komponent. To společnosti Microsoft umožňuje poskytovat proaktivní oznámení o zdravotních problémech. V případě potřeby může zákazník tento účet deaktivovat.
+Společnost Microsoft nemá žádné administrativní ani kryptografické kontroly nad modulem HSM. K načtení základní telemetrie, jako je třeba teplota a stav komponenty, má společnost Microsoft přístup na úrovni monitoru prostřednictvím připojení sériového portu. Díky tomu může společnost Microsoft poskytovat proaktivní oznámení o problémech se stavem. V případě potřeby může zákazník tento účet zakázat.
 
-### <a name="q-what-is-the-tenantadmin-account-microsoft-uses-i-am-used-to-the-admin-user-being-admin-on-safenet-hsms"></a>Otázka: Co je účet "tenantadmin" Microsoft používá, jsem zvyklý na to, že uživatel správce je "správce" na programových serverech hsm SafeNet?
+### <a name="q-what-is-the-tenantadmin-account-microsoft-uses-i-am-used-to-the-admin-user-being-admin-on-safenet-hsms"></a>Otázka: Jaký je účet "tenantAdmin", který Microsoft používá, používám uživatele s oprávněními správce na SafeNet HSM?
 
-Zařízení HSM je dodáváno s výchozím uživatelem správce s obvyklým výchozím heslem. Společnost Microsoft nechtěla mít výchozí hesla v provozu, zatímco jakékoli zařízení je ve fondu čeká na zřízení zákazníky. To by nesplňovalo naše přísné bezpečnostní požadavky. Z tohoto důvodu jsme nastavili silné heslo, které je zahozeno v době zřizování. Také v době zřizování vytvoříme nového uživatele v roli správce s názvem "tenantadmin". Tento uživatel má výchozí heslo a zákazníci to změnit jako první akce při prvním přihlášení do nově zřízeného zařízení. Tento proces zajišťuje vysoký stupeň bezpečnosti a zachovává náš slib výhradní administrativní kontroly pro naše zákazníky. Je třeba poznamenat, že "tenantadmin" uživatel lze použít k resetování hesla uživatele správce, pokud zákazník dává přednost použití tohoto účtu. 
+Zařízení HSM se dodává s výchozím uživatelem správce s obvyklým výchozím heslem. Microsoft nechce používat výchozí hesla, protože jakékoli zařízení je ve fondu, který čeká na zřízení zákazníky. To by nesplňovalo naše striktní požadavky na zabezpečení. Z tohoto důvodu jsme nastavili silné heslo, které se v době zřizování zahodí. V době zřizování vytvoříme také nového uživatele v roli správce s názvem "tenantAdmin". Tento uživatel má výchozí heslo a zákazníci ho při prvním přihlášení k nově zřízenému zařízení změní jako první akci. Tento proces zajišťuje vysoké stupně zabezpečení a udržuje pro naše zákazníky náš příslib pro správu s jediným řízením. Je třeba poznamenat, že uživatel "tenantAdmin" lze použít k resetování hesla uživatele správce, pokud zákazník upřednostňuje používání tohoto účtu. 
 
-### <a name="q-can-microsoft-or-anyone-at-microsoft-access-keys-in-my-dedicated-hsm"></a>Otázka: Může Microsoft nebo kdokoli na přístupové klíče společnosti Microsoft v mém vyhrazené msm?
+### <a name="q-can-microsoft-or-anyone-at-microsoft-access-keys-in-my-dedicated-hsm"></a>Otázka: v mém vyhrazeném modulu HSM může společnost Microsoft nebo kdokoli na klíčích Microsoft Access.
 
-Ne. Společnost Microsoft nemá žádný přístup ke klíčům uloženým v vyhrazeném modulu hardwarového zabezpečení přiděleném zákazníkem.
+Ne. Společnost Microsoft nemá žádný přístup k klíčům uloženým ve vyhrazeném modulu HARDWAROVÉho zabezpečení přiděleného zákazníky.
 
-### <a name="q-can-i-upgrade-softwarefirmware-on-hsms-allocated-to-me"></a>Otázka: Mohu upgradovat software/firmware na softwarových softwarových omezeních?
+### <a name="q-can-i-upgrade-softwarefirmware-on-hsms-allocated-to-me"></a>Otázka: můžu upgradovat software/firmware na HSM přidělený mně?
 
-Chcete-li získat nejlepší podporu, Společnost Microsoft důrazně doporučuje, aby upgrade softwaru nebo firmwaru na HSM. Zákazník však má plnou administrativní kontrolu včetně upgradu softwaru / firmwaru, pokud jsou vyžadovány specifické funkce z různých verzí firmwaru. Před provedením změn je třeba chápat důsledky, protože by to mohlo například ovlivnit stav potvrzený FIPS. 
+Microsoft důrazně doporučuje, abyste neinovovali software/firmware v modulu HSM. Zákazník ale má úplný ovládací prvek pro správu včetně upgradu softwaru nebo firmwaru, pokud se vyžadují konkrétní funkce z různých verzí firmwaru. Před provedením změn je potřeba pochopit, jak by to mohlo mít vliv na stav ověřený standardem FIPS. 
 
-### <a name="q-how-do-i-manage-dedicated-hsm"></a>Otázka: Jak mohu spravovat vyhrazený modul hardwarového zabezpečení?
+### <a name="q-how-do-i-manage-dedicated-hsm"></a>Otázka: Návody Správa vyhrazeného modulu HARDWAROVÉho zabezpečení?
 
-Vyhrazené moduly hardwarového zabezpečení můžete spravovat tak, že k nim budete přistupovat pomocí ssh.
+Vyhrazenou HSM můžete spravovat tak, že k nim přistupujete pomocí SSH.
 
-### <a name="q-how-do-i-manage-partitions-on-the-dedicated-hsm"></a>Otázka: Jak lze spravovat oddíly na vyhrazeném modulu hardwarového zabezpečení?
+### <a name="q-how-do-i-manage-partitions-on-the-dedicated-hsm"></a>Otázka: Návody Správa oddílů ve vyhrazeném modulu HSM?
 
-Klientský software Gemalto HSM se používá ke správě hmenea a oddílů.
+Klientský software identita Gemalto HSM se používá ke správě HSM a oddílů.
 
-### <a name="q-how-do-i-monitor-my-hsm"></a>Otázka: Jak lze sledovat svůj hsm?
+### <a name="q-how-do-i-monitor-my-hsm"></a>Otázka: Návody monitorování modulu HARDWAROVÉho zabezpečení?
 
-Zákazník má plný přístup k protokolům aktivit hsm prostřednictvím syslog a SNMP. Zákazník bude muset nastavit server syslog nebo Server SNMP pro příjem protokolů nebo událostí z hsm.
+Zákazník má úplný přístup k protokolům aktivit HSM prostřednictvím protokolu syslog a SNMP. Zákazník bude muset nastavit server syslog nebo server SNMP pro příjem protokolů nebo událostí z HSM.
 
-### <a name="q-can-i-get-full-access-log-of-all-hsm-operations-from-dedicated-hsm"></a>Otázka: Lze získat úplný protokol přístupu všech operací modulu hardwarového zabezpečení z vyhrazeného modulu hardwarového zabezpečení?
+### <a name="q-can-i-get-full-access-log-of-all-hsm-operations-from-dedicated-hsm"></a>Otázka: mohu získat úplný přístup ke všem operacím HSM z vyhrazeného modulu HSM?
 
-Ano. Protokoly ze zařízení HSM můžete odesílat na server syslogu
+Ano. Protokoly ze zařízení HSM můžete odeslat na server syslog.
 
 ## <a name="high-availability"></a>Vysoká dostupnost
 
-### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>Otázka: Je možné nakonfigurovat vysokou dostupnost ve stejné oblasti nebo ve více oblastech?
+### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>Otázka: je možné nakonfigurovat vysokou dostupnost ve stejné oblasti nebo ve více oblastech?
 
-Ano. Konfigurace a nastavení s vysokou dostupností jsou prováděny v klientském softwaru HSM poskytovaném společností Gemalto. Moduly zabezpečení zabezpečení ze stejné virtuální sítě nebo jiných virtuálních počítačů ve stejné oblasti nebo napříč oblastmi nebo v místních moduly zabezpečení připojení k síti připojení k virtuální síti pomocí sítě VPN nebo vpn z bodu do bodu lze přidat do stejné konfigurace s vysokou dostupností. Je třeba poznamenat, že to synchronizuje pouze materiál klíče a ne konkrétní položky konfigurace, jako jsou role.
+Ano. Konfigurace a nastavení vysoké dostupnosti se provádí v klientském softwaru HSM, který poskytuje identita Gemalto. HSM ze stejné virtuální sítě nebo jiného virtuální sítě ve stejné oblasti nebo v různých oblastech nebo místní HSM připojená k virtuální síti pomocí VPN typu Site-to-site nebo Point-to-Point VPN je možné přidat do stejné konfigurace vysoké dostupnosti. Je potřeba poznamenat, že tato funkce synchronizuje jenom materiál klíče, a ne konkrétní položky konfigurace, jako třeba role.
 
-### <a name="q-can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>Otázka: Můžu přidat moduly hardwarového zabezpečení z místní sítě do skupiny s vysokou dostupností pomocí vyhrazeného modulu hardwarového zabezpečení Azure?
+### <a name="q-can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>Otázka: mohu přidat HSM z místní sítě do skupiny vysoké dostupnosti pomocí vyhrazeného modulu HARDWAROVÉho zabezpečení Azure?
 
-Ano. Musí splňovat vysoké požadavky na dostupnost pro SafeNet Luna Network HSM 7.
+Ano. Musí splňovat požadavky vysoké dostupnosti pro SafeNet Luna Network HSM 7.
 
-### <a name="q-can-i-add-luna-56-hsms-from-on-premises-networks-to-a-high-availability-group-with-azure-dedicated-hsm"></a>Otázka: Můžu přidat moduly hardwarového zabezpečení Luna 5/6 z místních sítí do skupiny s vysokou dostupností pomocí vyhrazeného modulu hardwarového zabezpečení Azure?
+### <a name="q-can-i-add-luna-56-hsms-from-on-premises-networks-to-a-high-availability-group-with-azure-dedicated-hsm"></a>Otázka: mohu přidat Luna 5/6 HSM z místních sítí do skupiny vysoké dostupnosti pomocí vyhrazeného modulu HARDWAROVÉho zabezpečení Azure?
 
 Ne.
 
-### <a name="q-how-many-hsms-can-i-add-to-the-same-high-availability-configuration-from-one-single-application"></a>Otázka: Kolik objekty zabezpečení lze přidat do stejné konfigurace s vysokou dostupností z jedné aplikace?
+### <a name="q-how-many-hsms-can-i-add-to-the-same-high-availability-configuration-from-one-single-application"></a>Otázka: kolik HSM můžu přidat ke stejné konfiguraci vysoké dostupnosti z jedné aplikace?
 
-16 členů skupiny HA má nedostatečně pryč, full-throttle testování s vynikajícími výsledky.
+16 členů skupiny HA má zcela neomezený test s vynikajícími výsledky.
 
 ## <a name="support"></a>Podpora
 
-### <a name="q-what-is-the-sla-for-dedicated-hsm-service"></a>Otázka: Co je sla pro vyhrazené služby modulu hardwarového zabezpečení?
+### <a name="q-what-is-the-sla-for-dedicated-hsm-service"></a>Otázka: jaká je smlouva SLA pro vyhrazenou službu HSM?
 
-Pro vyhrazené služby hardwarového zabezpečení není k dispozici žádná zvláštní záruka provozu. Společnost Microsoft zajistí přístup k zařízení na úrovni sítě, a proto platí standardní síťové licence Azure.
+Pro vyhrazenou službu HSM není poskytnuta žádná konkrétní záruka na provozní čas. Microsoft zajistí přístup k zařízení na úrovni sítě, a proto se použijí standardní síťové Slay Azure.
 
-### <a name="q-how-are-the-hsms-used-in-azure-dedicated-hsm-protected"></a>Otázka: Jak se moduly hardwarového zabezpečení používané v azure dedicated hsm chráněné?
+### <a name="q-how-are-the-hsms-used-in-azure-dedicated-hsm-protected"></a>Otázka: jak se HSM používá ve vyhrazeném modulu HSM chráněným v Azure?
 
-Datová centra Azure mají rozsáhlé fyzické a procedurální ovládací prvky zabezpečení. Kromě toho vyhrazené moduly hardwarového zabezpečení jsou hostovány v oblasti s přístupem k dalšímu omezenému přístupu v datovém centru. Tyto oblasti mají další fyzické kontroly přístupu a kamerový dohled pro větší bezpečnost.
+Datacentra Azure mají rozsáhlou fyzickou a procedurální kontrolu zabezpečení. Kromě toho, že vyhrazené HSM jsou hostované v oblasti s omezeným přístupem v datacentru. Tyto oblasti mají další ovládací prvky fyzického přístupu a monitorování videokamery pro zvýšení zabezpečení.
 
-### <a name="q-what-happens-if-there-is-a-security-breach-or-hardware-tampering-event"></a>Otázka: Co se stane, pokud dojde k narušení zabezpečení nebo události manipulace s hardwarem?
+### <a name="q-what-happens-if-there-is-a-security-breach-or-hardware-tampering-event"></a>Otázka: co se stane, pokud dojde k narušení zabezpečení nebo události manipulace s hardwarem?
 
-Vyhrazená služba hardwarového zabezpečení používá zařízení SafeNet Network HSM 7. Tato zařízení podporují fyzickou a logickou detekci manipulace. Pokud je někdy tamper událost hsm s automaticky nulovány.
+Vyhrazená služba HSM používá zařízení SafeNet Network HSM 7. Tato zařízení podporují detekci fyzických a logických zásahů. Pokud dojde k nějaké neoprávněné události, HSM se automaticky vyhodnotí jako nuly.
 
-### <a name="q-how-do-i-ensure-that-keys-in-my-dedicated-hsms-are-not-lost-due-to-error-or-a-malicious-insider-attack"></a>Otázka: Jak zajistím, aby klíče v vyhrazených modulech hardwarového zabezpečení nebyly ztraceny kvůli chybě nebo škodlivému útoku zasvěcených osob?
+### <a name="q-how-do-i-ensure-that-keys-in-my-dedicated-hsms-are-not-lost-due-to-error-or-a-malicious-insider-attack"></a>Otázka: Návody zajistěte, aby se klíče v mých vyhrazených HSM ztratily kvůli chybě nebo škodlivému útoku Insider?
 
-Důrazně doporučujeme používat místní zařízení pro zálohování hsm k provádění pravidelné pravidelné zálohování hsm pro zotavení po havárii. Budete muset použít připojení VPN typu peer-to-peer nebo site-to-site k místní pracovní stanici připojené k zálohovacímu zařízení modulu hesm.
+Pro účely pravidelného periodického zálohování HSM pro zotavení po havárii se důrazně doporučuje použít místní zálohovací zařízení HSM. K místní pracovní stanici připojené k zálohovacímu zařízení HSM budete muset použít připojení VPN typu peer-to-peer nebo site-to-site.
 
-### <a name="q-how-do-i-get-support-for-dedicated-hsm"></a>Otázka: Jak získám podporu pro vyhrazený modul hardwarového zabezpečení?
+### <a name="q-how-do-i-get-support-for-dedicated-hsm"></a>Otázka: Návody získat podporu pro vyhrazený modul HSM?
 
-Podporu poskytuje společnost Microsoft i Společnost Gemalto.  Pokud máte problém s přístupem k hardwaru nebo síti, vznesete žádost o podporu u společnosti Microsoft a pokud máte problém s konfigurací modulu hardwarového zabezpečení, software mandatorní software a vývoj aplikací vyvoláte žádost o podporu s Gemalto. Pokud máte neurčený problém, požádejte o podporu společnost Microsoft a gemalto pak může být zapojeno podle potřeby. 
+Podpora je poskytována společností Microsoft i identita Gemalto.  Pokud máte problém s hardwarem nebo přístupem k síti, vyvolejte žádost o podporu od Microsoftu a pokud máte problém s konfigurací HSM, softwarem a vývojem aplikací, vyvolejte žádost o podporu s identita Gemalto. Pokud máte neurčený problém, vyvolejte žádost o podporu od Microsoftu a pak identita Gemalto můžete podle potřeby. 
 
-### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-safenet-luna-7-hsm"></a>Otázka: Jak získám klientský software, dokumentaci a přístup k integračním pokynům pro bezpečnostní zdroj SafeNet Luna 7?
+### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-safenet-luna-7-hsm"></a>Otázka: Návody získat klientský software, dokumentaci a přístup k pokynům k integraci pro modul HSM pro SafeNet Luna 7?
 
-Po registraci ke službě bude poskytnuto zákaznické id Společnosti Gemalto, které umožňuje registraci na portálu zákaznické podpory Gemalto. To umožní přístup ke všem softwarem a dokumentaci, stejně jako povolení požadavků na podporu přímo s Gemalto.
+Po registraci služby se poskytne ID zákazníka identita Gemalto, které umožňuje registraci na portálu zákaznické podpory identita Gemalto. Tím povolíte přístup ke všem softwareům a dokumentaci a zároveň povolíte žádosti o podporu přímo v identita Gemalto.
 
-### <a name="q-if-there-is-a-security-vulnerability-found-and-a-patch-is-released-by-gemalto-who-is-responsible-for-upgradingpatching-osfirmware"></a>Otázka: Pokud byla nalezena chyba zabezpečení a společnost Gemalto vydala opravu, kdo je zodpovědný za upgrade/opravu operačního systému/firmwaru?
+### <a name="q-if-there-is-a-security-vulnerability-found-and-a-patch-is-released-by-gemalto-who-is-responsible-for-upgradingpatching-osfirmware"></a>Otázka: v případě, že dojde k chybě zabezpečení a byla vydána oprava identita Gemalto, která zodpovídá za upgrade/opravy operačního systému/firmwaru?
 
-Společnost Microsoft nemá možnost připojit se k hmerám ům, které jsou zákazníkům přiděleny. Zákazníci musí upgradovat a opravovat své soubory hesm.
+Microsoft není schopen se připojit k HSM přidělenému zákazníkům. Zákazníci musí upgradovat a opravovat své HSM.
 
-### <a name="q-what-if-i-need-to-reboot-my-hsm"></a>Otázka: Co když potřebuji restartovat svůj hsm?
+### <a name="q-what-if-i-need-to-reboot-my-hsm"></a>Otázka: Co když potřebuji restartovat modul HARDWAROVÉho zabezpečení?
 
-HSM má možnost restartování příkazového řádku, nicméně dochází k problémům s restartováním a z tohoto důvodu se doporučuje pro nejbezpečnější restartování, které vyvolá žádost o podporu se společností Microsoft, aby zařízení bylo fyzicky restartováno. 
+Modul hardwarového zabezpečení (HSM) obsahuje možnost restartování z příkazového řádku, ale v takovém případě dochází k potížím s chybou při zablokování. 
 
 ## <a name="cryptography-and-standards"></a>Kryptografie a standardy
 
-### <a name="q-is-it-safe-to-store-encryption-keys-for-my-most-important-data-in-dedicated-hsm"></a>Otázka: Je bezpečné ukládat šifrovací klíče pro nejdůležitější data ve vyhrazeném modulu hardwarového zabezpečení?
+### <a name="q-is-it-safe-to-store-encryption-keys-for-my-most-important-data-in-dedicated-hsm"></a>Otázka: je bezpečné ukládat šifrovací klíče pro moje nejdůležitější data do vyhrazeného modulu HSM?
 
-Ano, vyhrazená ustanovení modulu hardwarového zabezpečení zařízení SafeNet Network HSM 7, která používají moduly hardwarového zabezpečení fips 140-2 úrovně 3. 
+Ano, vyhrazený modul HSM zřídí SafeNet síťová zařízení HSM 7, která používají ověřený HSM FIPS 140-2 Level 3. 
 
-### <a name="q-what-cryptographic-keys-and-algorithms-are-supported-by-dedicated-hsm"></a>Otázka: Jaké kryptografické klíče a algoritmy jsou podporovány vyhrazeným modulem hardwarového zabezpečení?
+### <a name="q-what-cryptographic-keys-and-algorithms-are-supported-by-dedicated-hsm"></a>Otázka: Jaké kryptografické klíče a algoritmy podporuje vyhrazený modul HSM?
 
-Vyhrazená služba hardwarového zabezpečení zřazená zařízení SafeNet Network HSM 7. Podporují širokou škálu typů kryptografických klíčů a algoritmů, včetně: Full Suite B podpora
+Vyhrazená služba HSM zřídí zařízení SafeNet Network HSM 7. Podporují celou škálu typů kryptografických klíčů a algoritmy, mezi které patří: plná podpora Suite B.
 
-* Asymetrické:
+* Symetrick
   * RSA
-  * Dsa
+  * DSA
   * Diffie-Hellman
   * Eliptická křivka
-  * Kryptografie (ECDSA, ECDH, Ed25519, ECIES) s pojmenovanými, uživatelem definovanými a brainpoolovými křivkami, KCDSA
-* Symetrický:
-  * AES-GCM
-  * Trojitý DES
+  * Kryptografie (ECDSA, ECDH, Ed25519, ECIES) s pojmenovanými, uživatelsky definovanými a Brainpoolmi křivkami, KCDSA
+* Pás
+  * AES – GCM
+  * Triple DES
   * DES
-  * ÁRIE, SEMENO
+  * ARIA, SEMENA
   * RC2
-  * RC4
+  * ŠIFR
   * RC5
   * CAST
   * Hash/Message Digest/HMAC: SHA-1, SHA-2, SM3
-  * Derivace kláves: Režim čítače SP800-108
+  * Odvození klíče: SP800-108 – režim čítače
   * Zabalení klíče: SP800-38F
-  * Generování náhodných čísel: FIPS 140-2 schválený DRBG (režim CTR SP 800-90), vyhovující BSI DRG.4
+  * Generování náhodného čísla: DRBG schválené pro FIPS 140-2 (SP 800-90. režim), vyhovuje dokument BSI O DRG. 4
 
-### <a name="q-is-dedicated-hsm-fips-140-2-level-3-validated"></a>Otázka: Je vyhrazený HSM FIPS 140-2 Úroveň 3 ověřen?
+### <a name="q-is-dedicated-hsm-fips-140-2-level-3-validated"></a>Otázka: je ověřena rezervovaná úroveň Standard HSM FIPS 140-2 úrovně 3?
 
-Ano. Vyhrazená služba hardwarového zabezpečení zřazená zařízení SafeNet Network HSM 7, která používají moduly hardwarového zabezpečení fips 140-2 úrovně 3.
+Ano. Vyhrazená služba HSM zřídí zařízení SafeNet Network HSM 7, která používají ověřená HSM Standard FIPS 140-2 úrovně 3.
 
-### <a name="q-what-do-i-need-to-do-to-make-sure-i-operate-dedicated-hsm-in-fips-140-2-level-3-validated-mode"></a>Otázka: Co musím udělat, abych se ujistil, že ovládám vyhrazené moduly hardwarového zabezpečení v ověřeném režimu FIPS 140-2 level 3?
+### <a name="q-what-do-i-need-to-do-to-make-sure-i-operate-dedicated-hsm-in-fips-140-2-level-3-validated-mode"></a>Otázka: co potřebuji k tomu, abyste se ujistili, že provozovat vyhrazený HSM v režimu ověřování FIPS 140-2 Level 3?
 
-Vyhrazené služby HSM zřazují zařízení SafeNet Luna Network HSM 7. Tato zařízení používají rsm s validovanými 140-2 úrovní 3. Výchozí nasazená konfigurace, operační systém a firmware jsou také ověřeny FIPS. Není nutné provádět žádné akce pro fips 140-2 úroveň 3 dodržování.
+Vyhrazená služba HSM zřídí zařízení SafeNet Luna Network HSM 7. Tato zařízení používají ověřený HSM úrovně 3 Standard FIPS 140-2. Výchozí nasazená konfigurace, operační systém a firmware jsou taky ověřené standardem FIPS. Pro dodržování předpisů FIPS 140-2 úrovně 3 není nutné provádět žádnou akci.
 
-### <a name="q-how-does-a-customer-ensure-that-when-an-hsm-is-deprovisioned-all-the-key-material-is-wiped-out"></a>Otázka: Jak zákazník zajistí, že při zrušení zřízení objektu zabezpečení je vymazán veškerý materiál klíče?
+### <a name="q-how-does-a-customer-ensure-that-when-an-hsm-is-deprovisioned-all-the-key-material-is-wiped-out"></a>Otázka: jak zákazník zaručí, že když dojde ke zrušení zřízení modulu HARDWAROVÉho zabezpečení, dojde k vymazání všech klíčových materiálů?
 
-Před vyžádáním zrušení zřízení musí mít zákazník vynulování hsm pomocí Gemalto za předpokladu, že nástroje klienta HSM.
+Než si vyžádáte zrušení zřízení, zákazník musí vyhodnotit modul HARDWAROVÉho zabezpečení s použitím identita Gemalto poskytovaných klientskými nástroji HSM.
 
 ## <a name="performance-and-scale"></a>Výkon a škálování
 
-### <a name="q-how-many-cryptographic-operations-are-supported-per-second-with-dedicated-hsm"></a>Otázka: Kolik kryptografických operací je podporováno za sekundu pomocí vyhrazeného modulu hardwarového zabezpečení?
+### <a name="q-how-many-cryptographic-operations-are-supported-per-second-with-dedicated-hsm"></a>Otázka: kolik kryptografických operací se podporuje za sekundu pomocí vyhrazeného modulu HSM?
 
-Vyhrazená ustanovení modulu hardwarového zabezpečení zařízení SafeNet Network HSM 7 (model A790). Zde je přehled maximálního výkonu pro některé operace: 
+Vyhrazená ustanovení modulu HARDWAROVÉho zabezpečení SafeNet Network HSM 7 (model A790). Zde je souhrn maximálního výkonu pro některé operace: 
 
-* RSA-2048: 10 000 transakcí za sekundu
-* ECC P256: 20 000 transakcí za sekundu
+* RSA-2048:10 000 transakcí za sekundu
+* ECC P256:20 000 transakcí za sekundu
 * AES-GCM: 17 000 transakcí za sekundu
 
-### <a name="q-how-many-partitions-can-be-created-in-dedicated-hsm"></a>Otázka: Kolik oddílů lze vytvořit v vyhrazeném modulu hardwarového zabezpečení?
+### <a name="q-how-many-partitions-can-be-created-in-dedicated-hsm"></a>Otázka: kolik oddílů lze vytvořit v vyhrazeném modulu HSM?
 
-Použitý model A790 SafeNet Luna HSM 7 obsahuje licenci na 10 oddílů v ceně služby. Zařízení má limit 100 oddílů a přidání oddílů až do tohoto limitu by mělo za následek dodatečné licenční náklady a vyžadovalo instalaci nového licenčního souboru v zařízení.
+SafeNet Luna HSM 7 model A790 zahrnuje licenci na 10 oddílů za cenu služby. Zařízení má omezení 100 oddílů a přidávání oddílů do tohoto limitu by znamenalo dodatečné licenční náklady a vyžadovalo instalaci nového licenčního souboru na zařízení.
 
-### <a name="q-how-many-keys-can-be-supported-in-dedicated-hsm"></a>Otázka: Kolik klíčů může být podporováno v vyhrazeném modulu hardwarového zabezpečení?
+### <a name="q-how-many-keys-can-be-supported-in-dedicated-hsm"></a>Otázka: kolik klíčů je možné podporovat v vyhrazeném modulu HSM?
 
-Maximální počet tlačítek je funkce dostupné paměti. SafeNet Luna 7 model A790 v provozu má 32MB paměti. Následující čísla jsou také použitelná pro dvojice klíčů, pokud používáte asymetrické klíče.
+Maximální počet klíčů je funkce dostupné paměti. SafeNet Luna 7 modelu A790 používá má 32MB paměti. Následující čísla se vztahují také na páry klíčů, pokud používáte asymetrické klíče.
 
-* RSA-2048 - 19 000
-* ECC-P256 - 91 000
+* RSA-2048 – 19 000
+* ECC-P256-91 000
 
-Kapacita se bude lišit v závislosti na konkrétní chod klíčových atributů nastavených v šabloně generování klíče a počtu oddílů.
+Kapacita se bude lišit v závislosti na konkrétních atributech klíče nastavených v šabloně generování klíčů a na počtu oddílů.

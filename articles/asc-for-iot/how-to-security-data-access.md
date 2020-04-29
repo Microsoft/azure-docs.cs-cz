@@ -1,6 +1,6 @@
 ---
-title: Přístup k datům doporučení & zabezpečení
-description: Přečtěte si, jak získat přístup k datům upozornění zabezpečení a doporučení při používání Azure Security Center pro IoT.
+title: Přístup k datům o doporučeních & zabezpečení
+description: Přečtěte si, jak získat přístup k údajům o výstrahách zabezpečení a doporučeních při použití Azure Security Center pro IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,40 +16,40 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: bbea0accc79cafb6fea3f1438a71250dc02f4d62
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311008"
 ---
-# <a name="access-your-security-data"></a>Přístup k bezpečnostním datům
+# <a name="access-your-security-data"></a>Přístup k datům zabezpečení
 
-Azure Security Center pro IoT ukládá výstrahy zabezpečení, doporučení a nezpracovaná data zabezpečení (pokud se rozhodnete uložit) v pracovním prostoru Log Analytics.
+Azure Security Center pro IoT ukládá výstrahy zabezpečení, doporučení a nezpracovaná data zabezpečení (Pokud se v pracovním prostoru Log Analytics rozhodnete ji uložit).
 
 ## <a name="log-analytics"></a>Log Analytics
 
-Postup konfigurace používaného pracovního prostoru Log Analytics:
+Postup při konfiguraci používaného pracovního prostoru Log Analytics:
 
-1. Otevřete centrum IoT.
-1. Klikněte na okno **Přehled** v části **Zabezpečení.**
-1. Klikněte na **Nastavení**a změňte konfiguraci pracovního prostoru Analýzy protokolů.
+1. Otevřete Centrum IoT.
+1. Klikněte na okno **Přehled** v části **zabezpečení** .
+1. Klikněte na **Nastavení**a změňte konfiguraci Log Analytics pracovního prostoru.
 
-Přístup k upozorněním a doporučením v pracovním prostoru Log Analytics po konfiguraci:
+Přístup k výstrahám a doporučením v pracovním prostoru Log Analytics po konfiguraci:
 
-1. V Azure Security Center pro IoT zvolte upozornění nebo doporučení.
-1. Klikněte na **další šetření**, potom klikněte **na Chcete-li zjistit, která zařízení mají tuto výstrahu, klikněte zde a zobrazte sloupec DeviceId**.
+1. Vyberte výstrahu nebo doporučení v Azure Security Center pro IoT.
+1. Klikněte na **Další šetření**a potom kliknutím na zobrazit, **která zařízení mají tato upozornění, klikněte sem a zobrazte sloupec DeviceID**.
 
-Podrobnosti o dotazování dat z Log Analytics najdete [v tématu Začínáme s dotazy v Log Analytics](https://docs.microsoft.com//azure/log-analytics/query-language/get-started-queries).
+Podrobnosti o dotazování na data z Log Analytics najdete v tématu Začínáme [s dotazy v Log Analytics](https://docs.microsoft.com//azure/log-analytics/query-language/get-started-queries).
 
 ## <a name="security-alerts"></a>Výstrahy zabezpečení
 
-Výstrahy zabezpečení jsou uložené v tabulce _AzureSecurityOfThings.SecurityAlert_ v pracovním prostoru Log Analytics nakonfigurovaném pro řešení Azure Security Center for IoT.
+Výstrahy zabezpečení jsou uloženy v tabulce _AzureSecurityOfThings. SecurityAlert_ v pracovním prostoru Log Analytics nakonfigurovaném pro řešení Azure Security Center for IoT.
 
-Poskytli jsme řadu užitečných dotazů, které vám pomohou začít zkoumat výstrahy zabezpečení.
+Nabízíme řadu užitečných dotazů, které vám pomůžou začít zkoumat výstrahy zabezpečení.
 
 ### <a name="sample-records"></a>Ukázkové záznamy
 
-Výběr několika náhodných záznamů
+Vyberte několik náhodných záznamů.
 
 ```
 // Select a few random records
@@ -66,15 +66,15 @@ SecurityAlert
 | take 3
 ```
 
-| TimeGenerated           | IoTHubId                                                                                                       | DeviceId      | Závažnost výstrahy | DisplayName                           | Popis                                             | ExtendedProperties                                                                                                                                                             |
+| TimeGenerated           | IoTHubId                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | Popis                                             | ExtendedProperties                                                                                                                                                             |
 |-------------------------|----------------------------------------------------------------------------------------------------------------|---------------|---------------|---------------------------------------|---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 2018-11-18T18:10:29.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name device_name device_name> | Vysoká          | Útok hrubou silou byl úspěšný           | Útok hrubou silou na zařízení byl úspěšný.        |    \"{ "Full Source Address": "[ 10.165.12.18:\"]",\"\""Uživatelská jména": "[ ]", "DeviceId": "IoT-Device-Linux" }                                                                       |
-| 2018-11-19T12:40:31.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name device_name device_name> | Vysoká          | Úspěšné místní přihlášení na zařízení      | Bylo zjištěno úspěšné místní přihlášení k zařízení.     | { "Vzdálená adresa": "?", "Vzdálený port": "", "Místní port": "", "Přihlašovací prostředí": "/bin/su", "Id přihlášení": "28207", "Uživatelské jméno": "útočník", "DeviceId": "IoT-Device-Linux" } |
-| 2018-11-19T12:40:31.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name device_name device_name> | Vysoká          | Neúspěšný pokus o místní přihlášení v zařízení  | Byl zjištěn neúspěšný pokus o místní přihlášení k zařízení. |    { "Vzdálená adresa": "?", "Vzdálený port": "", "Místní port": "", "Přihlašovací prostředí": "/bin/su", "Id přihlášení": "22644", "Uživatelské jméno": "útočník", "DeviceId": "IoT-Device-Linux" } |
+| 2018-11-18T18:10:29.000 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Vysoká          | Útok hrubou silou uspěl           | Útok hrubou silou na zařízení byl úspěšný.        |    {"Úplná zdrojová adresa": "[\"10.165.12.18:\"]", "uživatelská jména": "[\"\"]", "DeviceID": "IoT-Device-Linux"}                                                                       |
+| 2018-11-19T12:40:31.000 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Vysoká          | Místní přihlášení na zařízení bylo úspěšné.      | Zjistilo se úspěšné místní přihlášení k zařízení.     | {"Vzdálená adresa": "?", "vzdálený port": "", "místní port": "", "přihlašovací prostředí": "/bin/su", "ID procesu přihlášení": "28207", "uživatelské jméno": "útočník", "DeviceId": "IoT-Device-Linux"} |
+| 2018-11-19T12:40:31.000 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Vysoká          | Neúspěšný pokus o přihlášení k místnímu zařízení  | Zjistil se neúspěšný místní pokus o přihlášení do zařízení. |    {"Vzdálená adresa": "?", "vzdálený port": "", "místní port": "", "přihlašovací prostředí": "/bin/su", "ID procesu přihlášení": "22644", "uživatelské jméno": "útočník", "DeviceId": "IoT-Device-Linux"} |
 
 ### <a name="device-summary"></a>Souhrn zařízení
 
-Získejte počet různých výstrah zabezpečení zjištěných v posledním týdnu, seskupených podle IoT Hub, zařízení, závažnost výstrahy, typu výstrahy.
+Získejte počet jedinečných výstrah zabezpečení zjištěných za poslední týden seskupený podle IoT Hub, zařízení, závažnosti výstrahy, typu výstrahy.
 
 ```
 // Get the number of distinct security alerts detected in the last week, grouped by
@@ -89,16 +89,16 @@ SecurityAlert
     DisplayName
 ```
 
-| IoTHubId                                                                                                       | DeviceId      | Závažnost výstrahy | DisplayName                           | Počet |
+| IoTHubId                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | Počet |
 |----------------------------------------------------------------------------------------------------------------|---------------|---------------|---------------------------------------|-----|
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name device_name device_name> | Vysoká          | Útok hrubou silou byl úspěšný           | 9   |
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name device_name device_name> | Střednědobé používání        | Neúspěšný pokus o místní přihlášení v zařízení  | 242 |
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name device_name device_name> | Vysoká          | Úspěšné místní přihlášení na zařízení      | 31  |
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name device_name device_name> | Střednědobé používání        | Crypto mince Miner                     | 4   |
+| /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Vysoká          | Útok hrubou silou uspěl           | 9   |
+| /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Střednědobé používání        | Neúspěšný pokus o přihlášení k místnímu zařízení  | 242 |
+| /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Vysoká          | Místní přihlášení na zařízení bylo úspěšné.      | 31  |
+| /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Střednědobé používání        | Kryptografická mince – Miner                     | 4   |
 
-### <a name="iot-hub-summary"></a>Souhrn centra IoT hub
+### <a name="iot-hub-summary"></a>Shrnutí centra IoT
 
-Vyberte řadu různých zařízení, která měla výstrahy v posledním týdnu, pomocí IoT Hub, závažnost výstrahy, typ výstrahy
+Vyberte počet různých zařízení, která v minulém týdnu obsahovala výstrahy, IoT Hub, závažnost výstrahy, typ výstrahy.
 
 ```
 // Select number of distinct devices which had alerts in the last week, by
@@ -113,22 +113,22 @@ SecurityAlert
     DisplayName
 ```
 
-| IoTHubId                                                                                                       | Závažnost výstrahy | DisplayName                           | CntDevices |
+| IoTHubId                                                                                                       | AlertSeverity | DisplayName                           | CntDevices |
 |----------------------------------------------------------------------------------------------------------------|---------------|---------------------------------------|------------|
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Vysoká          | Útok hrubou silou byl úspěšný           | 1          |
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Střednědobé používání        | Neúspěšný pokus o místní přihlášení v zařízení  | 1          |
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Vysoká          | Úspěšné místní přihlášení na zařízení      | 1          |
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Střednědobé používání        | Crypto mince Miner                     | 1          |
+| /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Vysoká          | Útok hrubou silou uspěl           | 1          |
+| /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Střednědobé používání        | Neúspěšný pokus o přihlášení k místnímu zařízení  | 1          |
+| /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Vysoká          | Místní přihlášení na zařízení bylo úspěšné.      | 1          |
+| /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | Střednědobé používání        | Kryptografická mince – Miner                     | 1          |
 
 ## <a name="security-recommendations"></a>Doporučení zabezpečení
 
-Doporučení zabezpečení jsou uložená v tabulce _AzureSecurityOfThings.SecurityRecommendation_ v pracovním prostoru Log Analytics nakonfigurovaném pro řešení Azure Security Center for IoT.
+Doporučení zabezpečení jsou uložená v tabulce _AzureSecurityOfThings. SecurityRecommendation_ v pracovním prostoru Log Analytics nakonfigurovaném pro řešení Azure Security Center for IoT.
 
-Poskytli jsme řadu užitečných dotazů, které vám pomohou začít zkoumat doporučení zabezpečení.
+Nabízíme řadu užitečných dotazů, které vám pomůžou začít zkoumat doporučení týkající se zabezpečení.
 
 ### <a name="sample-records"></a>Ukázkové záznamy
 
-Výběr několika náhodných záznamů
+Vyberte několik náhodných záznamů.
 
 ```
 // Select a few random records
@@ -146,14 +146,14 @@ SecurityRecommendation
 | take 2
 ```
 
-| TimeGenerated | IoTHubId | DeviceId | DoporučeníZávažnost | RecommendationState | RecommendationDisplayName | Popis | DoporučeníDalší údaje |
+| TimeGenerated | IoTHubId | DeviceId | RecommendationSeverity | RecommendationState | RecommendationDisplayName | Popis | RecommendationAdditionalData |
 |---------------|----------|----------|------------------------|---------------------|---------------------------|-------------|------------------------------|
-| 2019-03-22T10:21:06.060 |    /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name device_name device_name> | Střednědobé používání | Aktivní | Bylo nalezeno pravidlo permisivní brány firewall ve vstupním řetězci. | Bylo nalezeno pravidlo brány firewall, které obsahuje tolerantní vzor pro širokou škálu adres IP nebo portů. | {"Rules":"[{\"\"SourceAddress\"\"\":\",\"\"\"SourcePort\"\"\":\",\"\"DestinationAddress :\", DestinationPort : 1337 }]"} |
-| 2019-03-22T10:50:27.237 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name device_name device_name> | Střednědobé používání | Aktivní | Bylo nalezeno pravidlo permisivní brány firewall ve vstupním řetězci. | Bylo nalezeno pravidlo brány firewall, které obsahuje tolerantní vzor pro širokou škálu adres IP nebo portů. | {"Rules":"[{\"\"SourceAddress\"\"\":\",\"\"\"SourcePort\"\"\":\",\"\"DestinationAddress :\", DestinationPort : 1337 }]"} |
+| 2019-03-22T10:21:06.060 |    /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Střednědobé používání | Aktivní | Bylo nalezeno opravňující pravidlo brány firewall ve vstupním řetězci. | Bylo zjištěno pravidlo brány firewall, které obsahuje povolující vzor pro široké spektrum IP adres nebo portů. | {"Rules": "[\"{\"SourceAddress\"\":\",\"SourcePort\"\":\",\"DestinationAddress\"\":\",\"DestinationPort\":\"1337}]"} |
+| 2019-03-22T10:50:27.237 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Střednědobé používání | Aktivní | Bylo nalezeno opravňující pravidlo brány firewall ve vstupním řetězci. | Bylo zjištěno pravidlo brány firewall, které obsahuje povolující vzor pro široké spektrum IP adres nebo portů. | {"Rules": "[\"{\"SourceAddress\"\":\",\"SourcePort\"\":\",\"DestinationAddress\"\":\",\"DestinationPort\":\"1337}]"} |
 
 ### <a name="device-summary"></a>Souhrn zařízení
 
-Získejte počet různých aktivních doporučení zabezpečení seskupených podle služby IoT Hub, zařízení, závažnosti doporučení a typu.
+Získejte počet různých aktivních doporučení pro zabezpečení, které jsou seskupené podle IoT Hub, zařízení, závažnosti doporučení a typu.
 
 ```
 // Get the number of distinct active security recommendations, grouped by by
@@ -166,16 +166,16 @@ SecurityRecommendation
 | summarize Cnt=count() by IoTHubId, DeviceId, RecommendationSeverity
 ```
 
-| IoTHubId                                                                                                       | DeviceId      | DoporučeníZávažnost | Počet |
+| IoTHubId                                                                                                       | DeviceId      | RecommendationSeverity | Počet |
 |----------------------------------------------------------------------------------------------------------------|---------------|------------------------|-----|
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name device_name device_name> | Vysoká          | 2   |
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name device_name device_name> | Střednědobé používání        | 1 |
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name device_name device_name> | Vysoká          | 1  |
-| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name device_name device_name> | Střednědobé používání        | 4   |
+| /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Vysoká          | 2   |
+| /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Střednědobé používání        | 1 |
+| /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Vysoká          | 1  |
+| /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Střednědobé používání        | 4   |
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si [přehled](overview.md) Centra zabezpečení Azure pro IoT
-- Další informace o Azure Security Center pro [architekturu](architecture.md) IoT
-- Pochopení a prozkoumání [výstrah Centra zabezpečení Azure pro IoT](concept-security-alerts.md)
-- Pochopení a prozkoumání [doporučení Centra zabezpečení Azure pro IoT](concept-recommendations.md)
+- Přečtěte si [přehled](overview.md) Azure Security Center pro IoT.
+- Informace o [architektuře](architecture.md) Azure Security Center pro IoT
+- Pochopení a zkoumání [Azure Security Center výstrah IoT](concept-security-alerts.md)
+- Pochopení a prozkoumání [Azure Security Center pro doporučení IoT](concept-recommendations.md)

@@ -1,6 +1,6 @@
 ---
-title: Jak spravovat neaktivní uživatelské účty ve službě Azure AD | Dokumenty společnosti Microsoft
-description: Informace o tom, jak zjistit a zpracovat uživatelské účty ve službě Azure AD, které jsou zastaralé
+title: Správa neaktivních uživatelských účtů v Azure AD | Microsoft Docs
+description: Přečtěte si, jak zjistit a zpracovat uživatelské účty ve službě Azure AD, které se staly zastaralými.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,34 +18,34 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 56e44059268037cfd839fc7c877c5d6c972dead8
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80886037"
 ---
-# <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>Postup: Správa neaktivních uživatelských účtů ve službě Azure AD
+# <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>Postupy: Správa neaktivních uživatelských účtů v Azure AD
 
-Ve velkých prostředích nejsou uživatelské účty vždy odstraněny, když zaměstnanci opustí organizaci. Jako správce IT chcete tyto zastaralé uživatelské účty rozpoznat a zpracovat, protože představují bezpečnostní riziko.
+Ve velkých prostředích nebudou uživatelské účty vždycky odstraněny, když zaměstnanci odejdou z organizace. Jako správce IT chcete zjistit a zpracovat tyto zastaralé uživatelské účty, protože představují bezpečnostní riziko.
 
-Tento článek vysvětluje metodu zpracování zastaralých uživatelských účtů ve službě Azure AD. 
+Tento článek vysvětluje způsob zpracování zastaralých uživatelských účtů ve službě Azure AD. 
 
 ## <a name="what-are-inactive-user-accounts"></a>Co jsou neaktivní uživatelské účty?
 
-Neaktivní účty jsou uživatelské účty, které již členové vaší organizace nepotřebují k získání přístupu k vašim prostředkům. Jeden identifikátor klíče pro neaktivní účty je, že nebyly *použity na chvíli* k přihlášení do vašeho prostředí. Vzhledem k tomu, že neaktivní účty jsou vázány na aktivitu přihlášení, můžete použít časové razítko poslednípřihlášení, které bylo úspěšné k jejich zjištění. 
+Neaktivní účty jsou uživatelské účty, které už členové vaší organizace nevyžadují k získání přístupu k vašim prostředkům. Jeden identifikátor klíče pro neaktivní účty znamená, že se *při* přihlášení k vašemu prostředí zatím nepoužívaly. Vzhledem k tomu, že neaktivní účty jsou svázané s aktivitou přihlašování, můžete použít časové razítko posledního přihlášení, které bylo úspěšně rozpoznáno. 
 
-Výzvou této metody je definovat, co *na chvíli* znamená v případě vašeho prostředí. Uživatelé se například nemusí nějakou *dobu*přihlašovat k prostředí , protože jsou na dovolené. Při definování, co je vaše delta pro neaktivní uživatelské účty, je třeba faktor ve všech legitimních důvodů pro nepřihlášení do vašeho prostředí. V mnoha organizacích je rozdíl pro neaktivní uživatelské účty mezi 90 a 180 dny. 
+Výzvou k této metodě je definování toho, co *pro chvíli* znamená v případě vašeho prostředí. Například uživatelé se nemusí k prostředí *během chvilky*přihlašovat, protože jsou na dovolené. Při definování rozdílů pro neaktivní uživatelské účty musíte zvážit všechny oprávněné důvody, proč se přihlašujete k vašemu prostředí. V mnoha organizacích je rozdíl mezi neaktivními uživatelskými účty mezi 90 a 180 dny. 
 
-Poslední úspěšné přihlášení poskytuje potenciální přehled o trvalé potřebě uživatele přístup k prostředkům.  Může pomoci určit, jestli je členství ve skupině nebo přístup k aplikacím stále potřeba nebo jestli by je mohl být odebrán. Pro externí správu uživatelů můžete pochopit, pokud externí uživatel je stále aktivní v rámci klienta nebo by měl být vyčištěn. 
+Poslední úspěšné přihlášení nabízí potenciálním přehledům, které uživatel potřebuje k přístupu k prostředkům.  Může pomáhat s určením, jestli je členství ve skupině nebo aplikace stále potřeba, nebo odebrat. Pro správu externích uživatelů můžete pochopit, jestli je externí uživatel pořád aktivní v rámci tenanta, nebo by se měl vyčistit. 
 
     
-## <a name="how-to-detect-inactive-user-accounts"></a>Jak zjistit neaktivní uživatelské účty
+## <a name="how-to-detect-inactive-user-accounts"></a>Zjišťování neaktivních uživatelských účtů
 
-Neaktivní účty zjistíte vyhodnocením vlastnosti **lastSignInDateTime** vystavené typem prostředku **signInActivity** rozhraní **Microsoft Graph** API. Pomocí této vlastnosti můžete implementovat řešení pro následující scénáře:
+Neaktivní účty zjistíte tak, že vyhodnocujete vlastnost **lastSignInDateTime** zveřejněnou typem prostředku **signInActivity** rozhraní API pro **Microsoft Graph** . Pomocí této vlastnosti můžete implementovat řešení pro následující scénáře:
 
-- **Uživatelé podle názvu**: V tomto scénáři hledáte konkrétního uživatele podle názvu, který umožňuje vyhodnotit lastSignInDate:`https://graph.microsoft.com/beta/users?$filter=startswith(displayName,'markvi')&$select=displayName,signInActivity`
+- **Uživatelé podle jména**: v tomto scénáři vyhledáte konkrétního uživatele podle názvu, který vám umožní vyhodnotit lastSignInDate:`https://graph.microsoft.com/beta/users?$filter=startswith(displayName,'markvi')&$select=displayName,signInActivity`
 
-- **Uživatelé podle data**: V tomto scénáři požadujete seznam uživatelů s lastSignInDateTime před zadaným datem:`https://graph.microsoft.com/beta/users?filter=signInActivity/lastSignInDateTime le 2019-06-01T00:00:00Z`
+- **Uživatelé podle data**: v tomto scénáři si vyžádáte seznam uživatelů s lastSignInDateTime před zadaným datem:`https://graph.microsoft.com/beta/users?filter=signInActivity/lastSignInDateTime le 2019-06-01T00:00:00Z`
 
 
 
@@ -54,42 +54,42 @@ Neaktivní účty zjistíte vyhodnocením vlastnosti **lastSignInDateTime** vyst
 
 ## <a name="what-you-need-to-know"></a>Co je potřeba vědět
 
-V této části je uvedeno, co potřebujete vědět o vlastnosti lastSignInDateTime.
+V této části jsou uvedeny informace o tom, co potřebujete znát o vlastnosti lastSignInDateTime.
 
-### <a name="how-can-i-access-this-property"></a>Jak se dostanu k této nemovitosti?
+### <a name="how-can-i-access-this-property"></a>Jak se dá získat přístup k této vlastnosti?
 
-Vlastnost **lastSignInDateTime** je vystavena [typem prostředku signInActivity rozhraní](https://docs.microsoft.com/graph/api/resources/signinactivity?view=graph-rest-beta) [MICROSOFT Graph REST API](https://docs.microsoft.com/graph/overview?view=graph-rest-beta#whats-in-microsoft-graph).   
+Vlastnost **lastSignInDateTime** je vystavena [typem prostředku signInActivity](https://docs.microsoft.com/graph/api/resources/signinactivity?view=graph-rest-beta) [REST API Microsoft Graph](https://docs.microsoft.com/graph/overview?view=graph-rest-beta#whats-in-microsoft-graph).   
 
-### <a name="is-the-lastsignindatetime-property-available-through-the-get-azureaduser-cmdlet"></a>Je vlastnost lastSignInDateTime dostupná prostřednictvím rutiny Get-AzureAdUser?
+### <a name="is-the-lastsignindatetime-property-available-through-the-get-azureaduser-cmdlet"></a>Je k dispozici vlastnost lastSignInDateTime prostřednictvím rutiny Get-AzureAdUser?
 
 Ne.
 
-### <a name="what-edition-of-azure-ad-do-i-need-to-access-the-property"></a>Jakou edici Azure AD potřebuji pro přístup k vlastnosti?
+### <a name="what-edition-of-azure-ad-do-i-need-to-access-the-property"></a>Jakou edici služby Azure AD potřebuji pro přístup k této vlastnosti?
 
-K této vlastnosti můžete přistupovat ve všech edicích Azure AD.
+K této vlastnosti můžete přistupovat ve všech edicích služby Azure AD.
 
-### <a name="what-permission-do-i-need-to-read-the-property"></a>Jaké oprávnění potřebuji ke čtení vlastnosti?
+### <a name="what-permission-do-i-need-to-read-the-property"></a>Jaká oprávnění potřebuji ke čtení vlastnosti?
 
-Chcete-li si přečíst tuto vlastnost, musíte udělit následující práva: 
+Chcete-li tuto vlastnost číst, je třeba udělit následující oprávnění: 
 
-- AuditLogs.Read.All
-- Organizace.Read.All  
+- AuditLogs. Read. All
+- Organizace. Read. All  
 
 
-### <a name="when-does-azure-ad-update-the-property"></a>Kdy Azure AD aktualizuje vlastnost?
+### <a name="when-does-azure-ad-update-the-property"></a>Kdy služba Azure AD aktualizuje vlastnost?
 
-Každé interaktivní přihlášení, které bylo úspěšné, má za následek aktualizaci podkladového úložiště dat. Úspěšné přihlášení se obvykle zobrazí v související sestavě přihlášení během 10 minut.
+Každé interaktivní přihlášení, které bylo úspěšné, má za následek aktualizaci základního úložiště dat. Úspěšná přihlášení se obvykle zobrazují v související sestavě přihlášení do 10 minut.
  
 
 ### <a name="what-does-a-blank-property-value-mean"></a>Co znamená prázdná hodnota vlastnosti?
 
-Chcete-li generovat časové razítko lastSignInDateTime, potřebujete úspěšné přihlášení. Vzhledem k tomu, že vlastnost lastSignInDateTime je nová funkce, hodnota vlastnosti lastSignInDateTime může být prázdná, pokud:
+Pokud chcete vygenerovat lastSignInDateTime časové razítko, budete potřebovat úspěšné přihlášení. Vzhledem k tomu, že vlastnost lastSignInDateTime je nová funkce, hodnota vlastnosti lastSignInDateTime může být prázdná, pokud:
 
 - Poslední úspěšné přihlášení uživatele proběhlo před vydáním této funkce (1. prosince 2019).
-- Ovlivněný uživatelský účet nebyl nikdy použit pro úspěšné přihlášení.
+- Ovlivněný uživatelský účet nebyl nikdy použit k úspěšnému přihlášení.
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Získání dat pomocí rozhraní API pro generování sestav Azure Active Directory s certifikáty](tutorial-access-api-with-certificates.md)
-* [Odkaz na rozhraní API auditu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
-* [Odkaz na rozhraní API sestavy přihlašovacích aktivit](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+* [Reference k rozhraní API auditu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
+* [Reference k rozhraní API sestav aktivit přihlašování](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)

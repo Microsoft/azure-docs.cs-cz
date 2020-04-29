@@ -1,110 +1,110 @@
 ---
-title: Sledování výkonu služeb azure aplikací | Dokumenty společnosti Microsoft
-description: Monitorování výkonu aplikací pro služby aplikací Azure. Doba načítání a odezvy grafu, informace o závislostech a nastavení výstrah na výkon.
+title: Monitorování výkonu Azure App Services | Microsoft Docs
+description: Sledování výkonu aplikací pro Azure App Services. Zatížení grafu a doba odezvy, informace o závislostech a nastavení výstrah pro výkon.
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: dd0d3be6ed7e5185183618cc2bdeff5ee8d749f3
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81729796"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorování výkonu služby Azure App Service
 
-Povolení monitorování vašich webových aplikací založených na ASP.NET a ASP.NET jádra, které běží ve [službě Azure App Services,](https://docs.microsoft.com/azure/app-service/) je teď jednodušší než kdy dřív. Vzhledem k tomu, že dříve jste potřebovali ručně nainstalovat rozšíření webu, nejnovější rozšíření /agent je nyní integrován do image služby aplikace ve výchozím nastavení. Tento článek vás provede povolením monitorování přehledů aplikací a poskytne předběžné pokyny pro automatizaci procesu pro rozsáhlá nasazení.
+Povolení monitorování webových aplikací založených na ASP.NET a ASP.NET Core běžících na [Azure App Services](https://docs.microsoft.com/azure/app-service/) je teď jednodušší než kdy dřív. Vzhledem k tomu, že jste předtím museli ručně nainstalovat rozšíření lokality, je ve výchozím nastavení do image služby App Service standardně integrováno nejnovější rozšíření nebo agent. Tento článek vás provede povolením Application Insights monitorování a poskytuje předběžné pokyny pro automatizaci procesu pro rozsáhlá nasazení.
 
 > [!NOTE]
-> Ruční přidání rozšíření webu Application Insights prostřednictvím**rozšíření** **nástrojů** > pro vývoj se zastaralá. Tato metoda instalace rozšíření byla závislá na ručních aktualizacích pro každou novou verzi. Nejnovější stabilní verze rozšíření je nyní [předinstalována](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) jako součást bitové kopie služby App Service. Soubory jsou umístěny v `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` a jsou automaticky aktualizovány s každou stabilní verzi. Pokud budete postupovat podle pokynů založených na agentovi povolit monitorování níže, automaticky odebere zastaralé rozšíření pro vás.
+> Ruční přidání rozšíření Application Insights webu prostřednictvím rozšíření **nástrojů** > **Extensions** pro vývoj je zastaralé. Tato metoda instalace rozšíření byla závislá na ruční aktualizaci pro každou novou verzi. Nejnovější stabilní verze rozšíření je teď [předinstalována](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) jako součást image App Service. Soubory jsou umístěny v `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` a jsou automaticky aktualizovány s každou stabilní verzí. Pokud budete postupovat podle pokynů na základě agentů a zapnout monitorování níže, automaticky se odebere zastaralé rozšíření za vás.
 
 ## <a name="enable-application-insights"></a>Povolení Application Insights
 
-Monitorování aplikací pro hostované aplikace Azure App Services můžete povolit dvěma způsoby:
+Existují dva způsoby, jak povolit monitorování aplikací pro hostované aplikace Azure App Services:
 
-* **Monitorování aplikací na základě agenta** (ApplicationInsightsAgent).  
-    * Tato metoda je nejjednodušší povolit a není vyžadována žádná pokročilá konfigurace. Často se označuje jako "runtime" monitorování. Pro Azure App Services doporučujeme minimálně povolení této úrovně monitorování a pak na základě konkrétního scénáře můžete vyhodnotit, zda je potřeba pokročilejší monitorování prostřednictvím ruční instrumentace.
+* **Monitorování aplikací založené na agentech** (ApplicationInsightsAgent).  
+    * Tato metoda je nejjednodušší pro povolení a není nutná žádná pokročilá konfigurace. Často se označuje jako monitorování za běhu. V případě Azure App Services doporučujeme, abyste aspoň povolili tuto úroveň monitorování a pak na základě vašeho konkrétního scénáře mohli vyhodnotit, jestli je potřeba rozšířené monitorování prostřednictvím ruční instrumentace.
 
-* **Ruční instrumentace aplikace prostřednictvím kódu** instalací Application Insights SDK.
+* **Ruční instrumentace aplikace pomocí kódu** instalací sady Application Insights SDK.
 
-    * Tento přístup je mnohem více přizpůsobitelné, ale vyžaduje [přidání závislosti na balíčcích Application Insights SDK NuGet](https://docs.microsoft.com/azure/azure-monitor/app/asp-net). Tato metoda také znamená, že budete muset spravovat aktualizace nejnovější verze balíčků sami.
+    * Tento přístup je mnohem přizpůsobitelnější, ale vyžaduje [Přidání závislosti na balíčky NuGet sady Application Insights SDK](https://docs.microsoft.com/azure/azure-monitor/app/asp-net). Tato metoda také znamená, že je nutné spravovat aktualizace na nejnovější verzi balíčků sami.
 
-    * Pokud potřebujete provést vlastní volání rozhraní API ke sledování událostí nebo závislostí, které nejsou ve výchozím nastavení zachyceny pomocí monitorování založeného na agentovi, budete muset použít tuto metodu. Další informace najdete v [článku api pro vlastní události a metriky.](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics) Toto je také v současné době jedinou podporovanou možností pro úlohy založené na Linuxu.
+    * Pokud potřebujete vlastní volání rozhraní API ke sledování událostí nebo závislostí, které se ve výchozím nastavení nezachycují pomocí monitorování založeného na agentech, musíte použít tuto metodu. Další informace najdete v [článku rozhraní API pro vlastní události a metriky](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics) . Tato možnost je také momentálně jedinou podporovanou možností pro úlohy založené na systému Linux.
 
 > [!NOTE]
-> Pokud je detekováno monitorování založené na agentech a ruční instrumentace založené na sadě SDK, bude dodrženo pouze ruční nastavení instrumentace. Tím zabráníte odeslání duplicitních dat. Další informace naleznete v [části řešení potíží](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting) níže.
+> Pokud je detekováno monitorování založené na agentech i ruční instrumentaci založené na sadě SDK, bude dodrženo pouze nastavení ručního instrumentace. K tomu je potřeba zabránit odesílání duplicitních dat. Další informace najdete v [části řešení potíží](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting) níže.
 
-## <a name="enable-agent-based-monitoring"></a>Povolit monitorování založené na agentovi
+## <a name="enable-agent-based-monitoring"></a>Povolit monitorování na základě agentů
 
 # <a name="net"></a>[.NET](#tab/net)
 
 > [!NOTE]
-> Kombinace APPINSIGHTS_JAVASCRIPT_ENABLED a urlCompression není podporována. Další informace naleznete v vysvětlení v [části řešení potíží](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting).
+> Kombinace APPINSIGHTS_JAVASCRIPT_ENABLED a urlCompression není podporována. Další informace najdete v tématu Vysvětlení v [části Poradce při potížích](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting).
 
 
-1. V ovládacím panelu Azure pro vaši aplikační službu **vyberte Přehledy aplikací.**
+1. **Vyberte Application Insights** v Ovládacích panelech Azure pro vaši službu App Service.
 
-    ![V části Nastavení zvolte Application Insights.](./media/azure-web-apps/settings-app-insights-01.png)
+    ![V části nastavení vyberte Application Insights](./media/azure-web-apps/settings-app-insights-01.png)
 
-   * Zvolte vytvoření nového prostředku, pokud jste pro tuto aplikaci již nenastavili prostředek Application Insights. 
+   * Pokud jste ještě nevytvořili prostředek Application Insights pro tuto aplikaci, vyberte možnost vytvořit nový prostředek. 
 
      > [!NOTE]
-     > Po klepnutí na tlačítko **OK** vytvoříte nový prostředek, budete vyzváni k **použití nastavení monitorování**. Když vyberete **Pokračovat,** propojíte váš nový prostředek Application Insights se službou aplikace, takže to **také spustí restartování vaší služby aplikace**. 
+     > Když kliknete na **OK** , vytvoří se nový prostředek, zobrazí se výzva k **použití nastavení monitorování**. Když vyberete **pokračovat** , připojí se k vaší službě App service nový Application Insights prostředek. tím se taky **aktivuje restartování služby App Service**. 
 
      ![Používejte webovou aplikaci.](./media/azure-web-apps/create-resource-01.png)
 
-2. Po určení, který prostředek použít, můžete zvolit, jak chcete, aby přehledy aplikací shromažďovaly data podle platformy pro vaši aplikaci. ASP.NET monitorování aplikací je ve výchozím nastavení se dvěma různými úrovněmi kolekce.
+2. Jakmile určíte, který prostředek se má použít, můžete zvolit, jak má Application Insights shromažďovat data na platformu pro vaši aplikaci. Monitorování aplikací ASP.NET se používá ve výchozím nastavení se dvěma různými úrovněmi shromažďování.
 
-    ![Výběr možností podle platformy](./media/azure-web-apps/choose-options-new.png)
+    ![Zvolit možnosti na platformu](./media/azure-web-apps/choose-options-new.png)
  
- Níže je uveden souhrn údajů shromážděných pro každou trasu:
+ Níže je uveden souhrn dat shromažďovaných pro každou trasu:
         
-|  | Základní kolekce rozhraní .NET | Doporučená kolekce .NET |
+|  | Kolekce .NET úrovně Basic | .NET – doporučená kolekce |
 | --- | --- | --- |
 | Přidání trendů využití procesoru, paměti a vstupně-výstupních operací |Ano |Ano |
 | Shromažďování trendů využití a povolení korelace mezi výsledky dostupnosti a transakcemi | Ano |Ano |
 | Shromažďování výjimek nezpracovaných hostitelským procesem | Ano |Ano |
 | Zlepšení přesnosti metrik APM v případě zatížení při použití vzorkování | Ano |Ano |
-| Korelace mikroslužeb napříč požadavky a závislostmi | Ne (pouze možnosti APM s jednou instancí) |Ano |
+| Korelace mikroslužeb napříč požadavky a závislostmi | Ne (jenom možnosti APM s jednou instancí) |Ano |
 
-3. Chcete-li nakonfigurovat nastavení, jako je vzorkování, které jste mohli dříve ovládat prostřednictvím souboru applicationinsights.config, můžete nyní pracovat se stejnými nastaveními prostřednictvím nastavení aplikace s odpovídající předponou. 
+3. Chcete-li nakonfigurovat nastavení jako vzorkování, které byste mohli dříve řídit prostřednictvím souboru ApplicationInsights. config, můžete nyní s těmito nastaveními pracovat pomocí nastavení aplikace s odpovídající předponou. 
 
-    * Chcete-li například změnit počáteční procento vzorkování, můžete `MicrosoftAppInsights_AdaptiveSamplingTelemetryProcessor_InitialSamplingPercentage` vytvořit nastavení `100`aplikace: a hodnotu .
+    * Chcete-li například změnit procento počátečního vzorkování, můžete vytvořit nastavení aplikace pro: `MicrosoftAppInsights_AdaptiveSamplingTelemetryProcessor_InitialSamplingPercentage` a hodnotu. `100`
 
-    * Seznam podporovaných nastavení procesoru adaptivní vzorkování telemetrie můžete konzultovat [kód](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/master/src/ServerTelemetryChannel/AdaptiveSamplingTelemetryProcessor.cs) a [související dokumentaci](https://docs.microsoft.com/azure/azure-monitor/app/sampling).
+    * Seznam podporovaných nastavení procesoru telemetrie pro adaptivní vzorkování můžete zobrazit v [kódu](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/master/src/ServerTelemetryChannel/AdaptiveSamplingTelemetryProcessor.cs) a v [související dokumentaci](https://docs.microsoft.com/azure/azure-monitor/app/sampling).
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-Podporovány jsou následující verze rozhraní .NET Core: ASP.NET Core 2.0, ASP.NET Core 2.1, ASP.NET Core 2.2, ASP.NET Core 3.0
+Podporovány jsou následující verze rozhraní .NET Core: ASP.NET Core 2,0, ASP.NET Core 2,1, ASP.NET Core 2,2, ASP.NET Core 3,0
 
-Cílení na úplnou architekturu z .NET Core, samostatné nasazení a linuxové aplikace nejsou aktuálně **podporovány** pomocí monitorování založeného na agentu nebo rozšíření. ([Ruční instrumentace](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) prostřednictvím kódu bude fungovat ve všech předchozích scénářích.)
+Použití cílení na úplné rozhraní z rozhraní .NET Core, samostatného nasazení a aplikací založených na systému Linux není v současné době **podporováno** monitorováním na základě agentů nebo rozšíření. ([Ruční instrumentace](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) přes kód bude fungovat ve všech předchozích scénářích.)
 
-1. V ovládacím panelu Azure pro vaši aplikační službu **vyberte Přehledy aplikací.**
+1. **Vyberte Application Insights** v Ovládacích panelech Azure pro vaši službu App Service.
 
-    ![V části Nastavení zvolte Application Insights.](./media/azure-web-apps/settings-app-insights-01.png)
+    ![V části nastavení vyberte Application Insights](./media/azure-web-apps/settings-app-insights-01.png)
 
-   * Zvolte vytvoření nového prostředku, pokud jste pro tuto aplikaci již nenastavili prostředek Application Insights. 
+   * Pokud jste ještě nevytvořili prostředek Application Insights pro tuto aplikaci, vyberte možnost vytvořit nový prostředek. 
 
      > [!NOTE]
-     > Po klepnutí na tlačítko **OK** vytvoříte nový prostředek, budete vyzváni k **použití nastavení monitorování**. Když vyberete **Pokračovat,** propojíte váš nový prostředek Application Insights se službou aplikace, takže to **také spustí restartování vaší služby aplikace**. 
+     > Když kliknete na **OK** , vytvoří se nový prostředek, zobrazí se výzva k **použití nastavení monitorování**. Když vyberete **pokračovat** , připojí se k vaší službě App service nový Application Insights prostředek. tím se taky **aktivuje restartování služby App Service**. 
 
      ![Používejte webovou aplikaci.](./media/azure-web-apps/create-resource-01.png)
 
-2. Po určení, který prostředek použít, můžete zvolit, jak chcete Application Insights shromažďovat data pro platformu pro vaši aplikaci. .NET Core nabízí **doporučenou kolekci** nebo **zakázáno** pro .NET Core 2.0, 2.1, 2.2 a 3.0.
+2. Jakmile určíte, který prostředek se má použít, můžete zvolit způsob, jakým má Application Insights shromažďovat data na platformu pro vaši aplikaci. .NET Core nabízí **doporučenou kolekci** nebo **zakázanou** pro .net Core 2,0, 2,1, 2,2 a 3,0.
 
-    ![Výběr možností podle platformy](./media/azure-web-apps/choose-options-new-net-core.png)
+    ![Zvolit možnosti na platformu](./media/azure-web-apps/choose-options-new-net-core.png)
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-Ve webové aplikaci App Service v části **Nastavení** > **vyberte Povolit přehledy** > **Enable**aplikací . Monitorování založené na agentovi Node.js je aktuálně ve verzi preview.
+V App Service webové aplikace v části **Nastavení** > **Vyberte Application Insights** > **Povolit**. Monitorování založené na agentech Node. js je aktuálně ve verzi Preview.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Webové aplikace založené na službě Java App Service v současné době nepodporují automatické monitorování založené na agentech a rozšířeních. Chcete-li povolit monitorování aplikace Java, musíte [ručně instrumentovat aplikaci](https://docs.microsoft.com/azure/azure-monitor/app/java-get-started).
+Webové aplikace založené na jazyce Java App Service aktuálně nepodporují monitorování na základě automatického agenta nebo rozšíření. Chcete-li povolit monitorování aplikace v jazyce Java, je nutné [aplikaci ručně instrumentovat](https://docs.microsoft.com/azure/azure-monitor/app/java-get-started).
 
 # <a name="python"></a>[Python](#tab/python)
 
-Webové aplikace založené na službě Python App Service v současné době nepodporují automatické monitorování založené na agentech nebo příponech. Chcete-li povolit monitorování aplikace Pythonu, musíte [ručně instrumentovat aplikaci](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python).
+Webové aplikace založené na Pythonu App Service v současné době nepodporují monitorování na základě automatického agenta nebo rozšíření. Pokud chcete povolit monitorování pro aplikaci v Pythonu, musíte [aplikaci ručně instrumentovat](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python).
 
 ---
 
@@ -112,10 +112,10 @@ Webové aplikace založené na službě Python App Service v současné době ne
 
 # <a name="net"></a>[.NET](#tab/net)
 
-Monitorování na straně klienta je opt-in pro ASP.NET. Povolení monitorování na straně klienta:
+Monitorování na straně klienta je výslovný souhlas pro ASP.NET. Postup při povolování monitorování na straně klienta:
 
-* Vyberte **nastavení** >** **Nastavení aplikace****
-   * V části Nastavení aplikace přidejte nový název a **hodnotu** **nastavení aplikace** :
+* Vyberte **nastavení** > * * * * nastavení aplikace * * * *.
+   * V části nastavení aplikace přidejte název a **hodnotu** **Nastavení nové aplikace** :
 
      Jméno:`APPINSIGHTS_JAVASCRIPT_ENABLED`
 
@@ -123,18 +123,18 @@ Monitorování na straně klienta je opt-in pro ASP.NET. Povolení monitorován�
 
    * Kliknutím na **Uložit** uložte nastavení a kliknutím na **Restartovat** restartujte aplikaci.
 
-![Snímek obrazovky s rozhraním nastavení aplikace](./media/azure-web-apps/appinsights-javascript-enabled.png)
+![Snímek obrazovky uživatelského rozhraní nastavení aplikace](./media/azure-web-apps/appinsights-javascript-enabled.png)
 
-Chcete-li zakázat monitorování na straně klienta, odeberte přidružený pár hodnot klíče z nastavení aplikace nebo nastavte hodnotu na hodnotu false.
+Chcete-li zakázat monitorování na straně klienta, buď z nastavení aplikace odeberte dvojici hodnoty klíče, nebo hodnotu nastavte na hodnotu NEPRAVDA.
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-Monitorování na straně klienta je **ve výchozím nastavení povoleno** pro aplikace .NET Core s **doporučenou kolekcí**bez ohledu na to, zda je k dispozici nastavení aplikace APPINSIGHTS_JAVASCRIPT_ENABLED.
+Monitorování na straně klienta je **ve výchozím nastavení povolené** pro aplikace .NET Core s **doporučovanou kolekcí**bez ohledu na to, jestli je přítomné nastavení aplikace APPINSIGHTS_JAVASCRIPT_ENABLED.
 
-Pokud z nějakého důvodu chcete zakázat monitorování na straně klienta:
+Pokud z nějakého důvodu chcete vypnout monitorování na straně klienta:
 
-* Vybrat **nastavení** > **nastavení aplikace**
-   * V části Nastavení aplikace přidejte nový název a **hodnotu** **nastavení aplikace** :
+* Vybrat **Nastavení** > **aplikace**
+   * V části nastavení aplikace přidejte název a **hodnotu** **Nastavení nové aplikace** :
 
      Jméno:`APPINSIGHTS_JAVASCRIPT_ENABLED`
 
@@ -142,42 +142,42 @@ Pokud z nějakého důvodu chcete zakázat monitorování na straně klienta:
 
    * Kliknutím na **Uložit** uložte nastavení a kliknutím na **Restartovat** restartujte aplikaci.
 
-![Snímek obrazovky s rozhraním nastavení aplikace](./media/azure-web-apps/appinsights-javascript-disabled.png)
+![Snímek obrazovky uživatelského rozhraní nastavení aplikace](./media/azure-web-apps/appinsights-javascript-disabled.png)
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-Chcete-li povolit monitorování na straně klienta pro aplikaci Node.js, je třeba ručně přidat do [aplikace sadu JavaScript na straně klienta](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
+Chcete-li povolit monitorování na straně klienta pro aplikaci Node. js, je nutné [do aplikace ručně přidat sadu JavaScript SDK na straně klienta](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
 
 # <a name="java"></a>[Java](#tab/java)
 
-Chcete-li povolit monitorování na straně klienta pro vaši aplikaci Java, je třeba [ručně přidat do aplikace sadu JavaScript na straně klienta](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
+Chcete-li povolit monitorování na straně klienta pro aplikaci Java, je nutné [do aplikace ručně přidat sadu JavaScript SDK na straně klienta](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
 
 # <a name="python"></a>[Python](#tab/python)
 
-Chcete-li povolit monitorování na straně klienta pro vaši aplikaci Pythonu, musíte ručně [přidat do aplikace sadu JavaScript Na straně klienta](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
+Pokud chcete povolit monitorování na straně klienta pro vaši aplikaci v Pythonu, musíte [do své aplikace přidat ručně sadu JavaScript SDK na straně klienta](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
 
 ---
 
 ## <a name="automate-monitoring"></a>Automatizace monitorování
 
-Chcete-li povolit shromažďování telemetrie s Application Insights, je třeba nastavit pouze nastavení aplikace:
+Aby bylo možné povolit shromažďování telemetrie s Application Insights, je třeba nastavit pouze nastavení aplikace:
 
-   ![Nastavení aplikací služby App Service s dostupným nastavením Přehledů aplikací](./media/azure-web-apps/application-settings.png)
+   ![App Service nastavení aplikace s dostupnými nastaveními Application Insights](./media/azure-web-apps/application-settings.png)
 
 ### <a name="application-settings-definitions"></a>Definice nastavení aplikace
 
 |Název nastavení aplikace |  Definice | Hodnota |
 |-----------------|:------------|-------------:|
 |ApplicationInsightsAgent_EXTENSION_VERSION | Hlavní rozšíření, které řídí monitorování za běhu. | `~2` |
-|XDT_MicrosoftApplicationInsights_Mode |  Pouze ve výchozím režimu jsou povoleny základní funkce, které zajistí optimální výkon. | `default` nebo `recommended`. |
-|InstrumentationEngine_EXTENSION_VERSION | Určuje, zda bude modul `InstrumentationEngine` pro přepis binárního přepisu zapnutý. Toto nastavení má vliv na výkon a ovlivňuje čas studeného spuštění/spuštění. | `~1` |
-|XDT_MicrosoftApplicationInsights_BaseExtensions | Určuje, pokud sql & azure text tabulky se zachytí spolu s volání závislostí. Upozornění na výkon: doba studeného spuštění aplikace bude ovlivněna. Toto nastavení `InstrumentationEngine`vyžaduje . | `~1` |
+|XDT_MicrosoftApplicationInsights_Mode |  Jenom ve výchozím režimu jsou k dispozici základní funkce, aby se zajistil optimální výkon. | `default` nebo `recommended`. |
+|InstrumentationEngine_EXTENSION_VERSION | Určuje, zda bude modul `InstrumentationEngine` binárního zápisu zapnutý. Toto nastavení má vliv na výkon a má vliv na čas spuštění a spuštění. | `~1` |
+|XDT_MicrosoftApplicationInsights_BaseExtensions | Ovládací prvky, pokud se v SQL & text tabulky Azure bude zachytávat spolu s voláními závislostí. Upozornění na výkon: bude to mít vliv na počáteční čas spuštění aplikace. Toto nastavení vyžaduje `InstrumentationEngine`. | `~1` |
 
-### <a name="app-service-application-settings-with-azure-resource-manager"></a>Nastavení aplikací služby App Service pomocí Správce prostředků Azure
+### <a name="app-service-application-settings-with-azure-resource-manager"></a>App Service nastavení aplikace s Azure Resource Manager
 
-Nastavení aplikací pro služby App Services lze spravovat a konfigurovat pomocí [šablon Azure Resource Manager .](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) Tuto metodu lze použít při nasazování nových prostředků služby App Service s automatizací Azure Resource Manager nebo pro úpravu nastavení stávajících prostředků.
+Nastavení aplikace pro App Services lze spravovat a konfigurovat pomocí [šablon Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates). Tuto metodu lze použít při nasazování nových App Servicech prostředků pomocí Automatizace Azure Resource Manager nebo pro úpravu nastavení existujících prostředků.
 
-Základní struktura nastavení aplikace JSON pro službu aplikace je níže:
+Základní struktura JSON nastavení aplikace pro službu App Service je následující:
 
 ```JSON
       "resources": [
@@ -199,21 +199,21 @@ Základní struktura nastavení aplikace JSON pro službu aplikace je níže:
       ]
 ```
 
-Příklad šablony Azure Resource Manager s nastavením aplikací nakonfigurovaným pro Application Insights může být tato [šablona](https://github.com/Andrew-MSFT/BasicImageGallery) užitečná, konkrétně v části začínající na [řádku 238](https://github.com/Andrew-MSFT/BasicImageGallery/blob/c55ada54519e13ce2559823c16ca4f97ddc5c7a4/CoreImageGallery/Deploy/CoreImageGalleryARM/azuredeploy.json#L238).
+Příklad šablony Azure Resource Manager s nastavením aplikace nakonfigurovaným pro Application Insights může být tato [Šablona](https://github.com/Andrew-MSFT/BasicImageGallery) užitečná, konkrétně část od [řádku 238](https://github.com/Andrew-MSFT/BasicImageGallery/blob/c55ada54519e13ce2559823c16ca4f97ddc5c7a4/CoreImageGallery/Deploy/CoreImageGalleryARM/azuredeploy.json#L238).
 
-### <a name="automate-the-creation-of-an-application-insights-resource-and-link-to-your-newly-created-app-service"></a>Automatizujte vytvoření prostředku Application Insights a odkaz na nově vytvořenou službu App Service.
+### <a name="automate-the-creation-of-an-application-insights-resource-and-link-to-your-newly-created-app-service"></a>Automatizujte vytváření prostředků Application Insights a odkaz na nově vytvořenou App Service.
 
-Chcete-li vytvořit šablonu Správce prostředků Azure se všemi nakonfigurovanými výchozími nastaveními application insights, zahajte proces, jako byste chtěli vytvořit novou webovou aplikaci s povolenými přehledy aplikací.
+Pokud chcete vytvořit šablonu Azure Resource Manager se všemi nakonfigurovanými výchozími nastaveními Application Insights, spusťte proces jako kdybyste vytvořili novou webovou aplikaci s povoleným Application Insights.
 
-Vybrat **možnosti automatizace**
+Vybrat **Možnosti automatizace**
 
-   ![Nabídka pro vytváření webových aplikací služby App Service](./media/azure-web-apps/create-web-app.png)
+   ![Nabídka pro vytvoření webové aplikace v App Service](./media/azure-web-apps/create-web-app.png)
 
-Tato možnost generuje nejnovější šablonu Azure Resource Manager se všemi nakonfigurovanými požadovanými nastaveními.
+Tato možnost generuje nejnovější šablonu Azure Resource Manager se všemi požadovanými nakonfigurovanými nastaveními.
 
-  ![Šablona webové aplikace Služby Aplikace](./media/azure-web-apps/arm-template.png)
+  ![Šablona webové aplikace App Service](./media/azure-web-apps/arm-template.png)
 
-Níže je ukázka, nahraďte všechny instance `AppMonitoredSite` s názvem webu:
+Níže je ukázka, nahraďte všechny instance `AppMonitoredSite` s názvem vašeho webu:
 
 ```json
 {
@@ -310,9 +310,9 @@ Níže je ukázka, nahraďte všechny instance `AppMonitoredSite` s názvem webu
 }
 ```
 
-### <a name="enabling-through-powershell"></a>Povolení prostřednictvím PowerShellu
+### <a name="enabling-through-powershell"></a>Povolení přes PowerShell
 
-Chcete-li povolit monitorování aplikací prostřednictvím prostředí PowerShell, je třeba změnit pouze základní nastavení aplikace. Níže je ukázka, která umožňuje monitorování aplikací pro webové stránky s názvem "AppMonitoredSite" ve skupině prostředků "AppMonitoredRG", a nakonfiguruje data, která mají být odeslána do klíče instrumentace "012345678-abcd-ef01-2345-6789abcd".
+Aby bylo možné povolit monitorování aplikací prostřednictvím prostředí PowerShell, je nutné změnit pouze nastavení základní aplikace. Níže je ukázka, která umožňuje monitorování aplikací pro web s názvem "AppMonitoredSite" ve skupině prostředků "AppMonitoredRG" a konfiguruje data, která se mají odeslat do klíče instrumentace "012345678-abcd-ef01-2345-6789abcd".
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -326,80 +326,80 @@ $newAppSettings["ApplicationInsightsAgent_EXTENSION_VERSION"] = "~2"; # enable t
 $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.ResourceGroup -Name $app.Name -ErrorAction Stop
 ```
 
-## <a name="upgrade-monitoring-extensionagent"></a>Rozšíření/agent monitorování upgradu
+## <a name="upgrade-monitoring-extensionagent"></a>Upgradovat rozšíření nebo agenta monitorování
 
-### <a name="upgrading-from-versions-289-and-up"></a>Upgrade z verzí 2.8.9 a novějších
+### <a name="upgrading-from-versions-289-and-up"></a>Upgrade z verzí 2.8.9 a up
 
-Upgrade z verze 2.8.9 probíhá automaticky, bez dalších akcí. Nové monitorovací bity jsou dodávány na pozadí do cílové služby aplikace a při restartování aplikace budou vyzvednuty.
+Upgrade z verze 2.8.9 proběhne automaticky bez dalších akcí. Nové bity monitorování se doručí na pozadí cílové službě App Service a při restartování aplikace se budou vyzvednout.
 
-Chcete-li zkontrolovat, kterou verzi rozšíření používáte, navštivte`http://yoursitename.scm.azurewebsites.net/ApplicationInsights`
+Pokud chcete zjistit, kterou verzi rozšíření používáte, přejděte na`http://yoursitename.scm.azurewebsites.net/ApplicationInsights`
 
-![Snímek obrazovky s adresou URLhttp://yoursitename.scm.azurewebsites.net/ApplicationInsights](./media/azure-web-apps/extension-version.png)
+![Snímek obrazovky s cestou URLhttp://yoursitename.scm.azurewebsites.net/ApplicationInsights](./media/azure-web-apps/extension-version.png)
 
-### <a name="upgrade-from-versions-100---265"></a>Upgrade z verzí 1.0.0 - 2.6.5
+### <a name="upgrade-from-versions-100---265"></a>Upgrade z verzí 1.0.0-2.6.5
 
-Počínaje verzí 2.8.9 se používá předinstalované rozšíření lokality. Pokud jste starší verze, můžete aktualizovat jedním ze dvou způsobů:
+Počínaje verzí 2.8.9 se používá předem nainstalovaná rozšíření webu. Pokud používáte starší verzi, můžete aktualizovat prostřednictvím jednoho ze dvou způsobů:
 
-* [Upgrade povolením prostřednictvím portálu](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enable-application-insights). (I když máte nainstalované rozšíření Application Insights pro službu Azure App Service, ui zobrazí pouze **povolit** tlačítko. V zákulisí bude odebráno staré rozšíření soukromého webu.)
+* [Upgrade povolíte prostřednictvím portálu](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enable-application-insights). (I v případě, že máte rozšíření Application Insights pro Azure App Service nainstalované, uživatelské rozhraní zobrazí jenom tlačítko **Povolit** . Po pozadí bude staré rozšíření privátního webu odebráno.)
 
-* [Upgrade přes Prostředí PowerShell](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enabling-through-powershell):
+* [Upgrade prostřednictvím PowerShellu](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enabling-through-powershell):
 
-    1. Nastavte nastavení aplikace tak, aby bylo možné povolit předinstalované rozšíření lokality ApplicationInsightsAgent. Viz [Povolení prostřednictvím powershellu](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enabling-through-powershell).
-    2. Ručně odeberte privátní rozšíření webu s názvem Rozšíření Application Insights pro Azure App Service.
+    1. Nastavte nastavení aplikace tak, aby povolovalo předinstalované rozšíření webu ApplicationInsightsAgent. Viz [povolení prostřednictvím PowerShellu](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enabling-through-powershell).
+    2. Ručně odeberte rozšíření privátního webu s názvem Application Insights příponu pro Azure App Service.
 
-Pokud je upgrade proveden z verze před verzí 2.5.1, zkontrolujte, zda jsou dll applicationInsigths odebrány ze složky přihrádky [aplikace, viz postup řešení potíží](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting).
+Pokud je upgrade proveden z verze před aplikací 2.5.1, zkontrolujte, zda jsou knihovny DLL ApplicationInsigths odebrány ze složky bin aplikace, [v tématu Postup řešení potíží](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting).
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
-Níže je náš podrobný průvodce odstraňováním potíží pro monitorování založené na rozšíření/agentovi pro aplikace založené na rozhraní .NET a .NET Core spuštěné ve službě Azure App Services.
+Níže najdete naše podrobné pokyny k odstraňování potíží pro monitorování rozšíření/na základě agentů pro aplikace založené na platformě .NET a .NET Core běžící na Azure App Services.
 
 > [!NOTE]
-> Aplikace java jsou podporované jenom ve službě Azure App Services prostřednictvím ruční instrumentace založené na sadě SDK, a proto se na tyto scénáře nevztahují následující kroky.
+> Aplikace Java se podporují jenom v Azure App Services prostřednictvím ruční instrumentace založené na sadě SDK, a proto se tyto kroky nevztahují na tyto scénáře.
 
-1. Zkontrolujte, zda je `ApplicationInsightsAgent`aplikace monitorována prostřednictvím aplikace .
-    * Zkontrolujte, zda `ApplicationInsightsAgent_EXTENSION_VERSION` je nastavení aplikace nastaveno na hodnotu "~2".
-2. Ujistěte se, že aplikace splňuje požadavky, které mají být sledovány.
+1. Ověřte, že je aplikace monitorována `ApplicationInsightsAgent`prostřednictvím.
+    * Ověřte, `ApplicationInsightsAgent_EXTENSION_VERSION` že nastavení aplikace je nastavené na hodnotu ~ 2.
+2. Ujistěte se, že aplikace splňuje požadavky, které se mají monitorovat.
     * Přejít na`https://yoursitename.scm.azurewebsites.net/ApplicationInsights`
 
-    ![Snímek https://yoursitename.scm.azurewebsites/applicationinsights obrazovky se stránkou s výsledky](./media/azure-web-apps/app-insights-sdk-status.png)
+    ![Snímek stránky https://yoursitename.scm.azurewebsites/applicationinsights výsledků](./media/azure-web-apps/app-insights-sdk-status.png)
 
-    * Zkontrolujte, `Application Insights Extension Status` zda je`Pre-Installed Site Extension, version 2.8.12.1527, is running.`
-        * Pokud není spuštěn, postupujte podle [pokynů pro monitorování povolit přehledy aplikací.](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enable-application-insights)
+    * Potvrďte, `Application Insights Extension Status` že je`Pre-Installed Site Extension, version 2.8.12.1527, is running.`
+        * Pokud není spuštěný, postupujte podle [pokynů pro monitorování povolení Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enable-application-insights) .
 
-    * Zkontrolujte, zda zdroj stavu existuje a vypadá takto:`Status source D:\home\LogFiles\ApplicationInsights\status\status_RD0003FF0317B6_4248_1.json`
-        * Pokud podobná hodnota není k dispozici, znamená to, že aplikace není aktuálně spuštěna nebo není podporována. Chcete-li zajistit, aby aplikace byla spuštěna, zkuste ručně navštívit koncové body adresy URL nebo aplikace aplikace, což umožní, aby byly k dispozici informace o běhu.
+    * Potvrďte, že zdroj stavu existuje a vypadá takto:`Status source D:\home\LogFiles\ApplicationInsights\status\status_RD0003FF0317B6_4248_1.json`
+        * Pokud není k dispozici podobná hodnota, znamená to, že aplikace momentálně není spuštěná nebo není podporovaná. Chcete-li zajistit, aby aplikace běžela, zkuste ručně navštívit koncové body adresy URL nebo aplikace, čímž umožníte zpřístupnění běhových informací.
 
-    * Potvrďte, že `IKeyExists` je`true`
-        * Pokud ano `false`, `APPINSIGHTS_INSTRUMENTATIONKEY` `APPLICATIONINSIGHTS_CONNECTION_STRING` přidejte a s ikey guid do nastavení aplikace.
+    * Potvrďte `IKeyExists` , že je`true`
+        * Pokud je `false`, přidejte `APPINSIGHTS_INSTRUMENTATIONKEY` a `APPLICATIONINSIGHTS_CONNECTION_STRING` s identifikátorem GUID ikey do nastavení aplikace.
 
-    * Zkontrolujte, zda neexistují `AppAlreadyInstrumented` `AppContainsDiagnosticSourceAssembly`žádné `AppContainsAspNetTelemetryCorrelationAssembly`položky pro , a .
-        * Pokud některá z těchto položek existuje, odeberte z přihlášky následující balíčky: `Microsoft.ApplicationInsights`, `System.Diagnostics.DiagnosticSource`, a `Microsoft.AspNet.TelemetryCorrelation`.
+    * Potvrďte, že nejsou k dispozici `AppContainsDiagnosticSourceAssembly`žádné položky `AppContainsAspNetTelemetryCorrelationAssembly`pro `AppAlreadyInstrumented`, a.
+        * Pokud existuje kterákoli z těchto položek, odeberte z aplikace následující balíčky: `Microsoft.ApplicationInsights`, `System.Diagnostics.DiagnosticSource`a. `Microsoft.AspNet.TelemetryCorrelation`
 
-Níže uvedená tabulka obsahuje podrobnější vysvětlení toho, co tyto hodnoty znamenají, jejich základní příčiny a doporučené opravy:
+Následující tabulka obsahuje podrobnější vysvětlení toho, co tyto hodnoty znamenají, jejich základní příčiny a Doporučené opravy:
 
 |Hodnota problému|Vysvětlení|Oprava
 |---- |----|---|
-| `AppAlreadyInstrumented:true` | Tato hodnota označuje, že rozšíření zjištěno, že některé aspekty sady SDK je již k dispozici v aplikaci a bude back-off. Může to být způsobeno `System.Diagnostics.DiagnosticSource`odkazem na , `Microsoft.AspNet.TelemetryCorrelation`nebo`Microsoft.ApplicationInsights`  | Odstraňte odkazy. Některé z těchto odkazů jsou přidány ve výchozím nastavení z některých šablon sady Visual `Microsoft.ApplicationInsights`Studio a starší verze sady Visual Studio mohou přidávat odkazy na .
-|`AppAlreadyInstrumented:true` | Pokud aplikace cílí na rozhraní .NET Core 2.1 nebo 2.2 a odkazuje na metabalíček [Microsoft.AspNetCore.All,](https://www.nuget.org/packages/Microsoft.AspNetCore.All) pak přináší application insights a rozšíření bude back-off. | Zákazníkům na rozhraní .NET Core 2.1,2.2 se [doporučuje](https://github.com/aspnet/Announcements/issues/287) použít metabalíček Microsoft.AspNetCore.App.|
-|`AppAlreadyInstrumented:true` | Tato hodnota může být také způsobena přítomností výše uvedených dlls ve složce aplikace z předchozího nasazení. | Vyčistěte složku aplikace, abyste zajistili, že budou tyto dll odstraněny. Zkontrolujte adresář bin místní aplikace i adresář wwwroot ve službě App Service. (Chcete-li zkontrolovat adresář wwwroot webové aplikace App Service: Pokročilé nástroje (Kudu) > ladicí konzoly > CMD > home\site\wwwroot).
-|`AppContainsAspNetTelemetryCorrelationAssembly: true` | Tato hodnota označuje, že `Microsoft.AspNet.TelemetryCorrelation` rozšíření zjištěny odkazy v aplikaci a bude back-off. | Odeberte odkaz.
-|`AppContainsDiagnosticSourceAssembly**:true`|Tato hodnota označuje, že `System.Diagnostics.DiagnosticSource` rozšíření zjištěny odkazy v aplikaci a bude back-off.| Odeberte odkaz.
-|`IKeyExists:false`|Tato hodnota označuje, že instrumentace klíč není `APPINSIGHTS_INSTRUMENTATIONKEY`k dispozici v AppSetting, . Možné příčiny: Hodnoty mohly být omylem odebrány, zapomněli jste nastavit hodnoty ve skriptu automatizace atd. | Ujistěte se, že nastavení je k dispozici v nastavení aplikace App Service.
+| `AppAlreadyInstrumented:true` | Tato hodnota označuje, že rozšíření zjistilo, že některé aspekty sady SDK už v aplikaci existují a že se bude zálohovat. Důvodem může být odkaz na `System.Diagnostics.DiagnosticSource`, `Microsoft.AspNet.TelemetryCorrelation`, nebo`Microsoft.ApplicationInsights`  | Odeberte odkazy. Některé z těchto odkazů jsou ve výchozím nastavení přidány z určitých šablon sady Visual Studio a starší verze sady Visual Studio mohou přidat odkazy `Microsoft.ApplicationInsights`na.
+|`AppAlreadyInstrumented:true` | Pokud je aplikace cílena na rozhraní .NET Core 2,1 nebo 2,2 a odkazuje na soubor [Microsoft. AspNetCore. All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) meta-package, pak Application Insights a rozšíření bude zase vypnuto. | Pro zákazníky s .NET Core 2.1, 2.2 se místo toho [doporučuje](https://github.com/aspnet/Announcements/issues/287) použít meta-package Microsoft. AspNetCore. app.|
+|`AppAlreadyInstrumented:true` | Tato hodnota může být také způsobena přítomností výše uvedených knihoven DLL ve složce aplikace z předchozího nasazení. | Vyčistěte složku aplikace, abyste měli jistotu, že se odeberou tyto knihovny DLL. Ověřte adresář Bin místní aplikace a adresář wwwroot na App Service. (Pokud chcete kontrolovat adresář wwwroot vaší App Service webové aplikace: Rozšířené nástroje (Kudu) > ladit konzolu > CMD > home\site\wwwroot).
+|`AppContainsAspNetTelemetryCorrelationAssembly: true` | Tato hodnota označuje, že rozšíření zjistilo `Microsoft.AspNet.TelemetryCorrelation` odkazy na v aplikaci a bude se přepínat. | Odeberte odkaz.
+|`AppContainsDiagnosticSourceAssembly**:true`|Tato hodnota označuje, že rozšíření zjistilo `System.Diagnostics.DiagnosticSource` odkazy na v aplikaci a bude se přepínat.| Odeberte odkaz.
+|`IKeyExists:false`|Tato hodnota označuje, že klíč instrumentace není přítomen v AppSetting, `APPINSIGHTS_INSTRUMENTATIONKEY`. Možné příčiny: tyto hodnoty se možná omylem odeberou, zapomněli jste nastavit hodnoty v automatizačním skriptu atd. | Ujistěte se, že se nastavení nachází v nastavení aplikace App Service.
 
-### <a name="appinsights_javascript_enabled-and-urlcompression-is-not-supported"></a>APPINSIGHTS_JAVASCRIPT_ENABLED a urlCompression není podporována
+### <a name="appinsights_javascript_enabled-and-urlcompression-is-not-supported"></a>APPINSIGHTS_JAVASCRIPT_ENABLED a urlCompression se nepodporují.
 
-Pokud používáte APPINSIGHTS_JAVASCRIPT_ENABLED=true v případech, kdy je obsah kódován, může se stát, že se vám nabudou chyby, jako jsou: 
+Pokud používáte APPINSIGHTS_JAVASCRIPT_ENABLED = true v případech, kdy je obsah kódovaný, může dojít k chybám jako: 
 
-- Chyba přepisu adresy URL 500
-- 500.53 Chyba modulu přepisování adres URL se zprávou Pravidla odchozího přepisu nelze použít, pokud je zakódován obsah odpovědi HTTP ("gzip"). 
+- 500 Chyba při zápisu adresy URL
+- Chyba modulu pro přepis adresy URL 500,53 s pravidly pro přepsání odchozího zápisu zprávy nelze použít, je-li obsah odpovědi HTTP kódován (' gzip '). 
 
-To je způsobeno APPINSIGHTS_JAVASCRIPT_ENABLED nastavení aplikace je nastavena na true a kódování obsahu jsou k dispozici ve stejnou dobu. Tento scénář ještě není podporován. Chcete-li odebrat APPINSIGHTS_JAVASCRIPT_ENABLED z nastavení aplikace, je to toto řešení. Bohužel to znamená, že pokud je javascriptová instrumentace na straně klienta/prohlížeče stále vyžadována, jsou pro vaše webové stránky zapotřebí ruční odkazy sady SDK. Postupujte [podle pokynů](https://github.com/Microsoft/ApplicationInsights-JS#snippet-setup-ignore-if-using-npm-setup) pro ruční instrumentaci pomocí sady JavaScript SDK.
+Důvodem je, že nastavení aplikace APPINSIGHTS_JAVASCRIPT_ENABLED nastavené na hodnotu true a kódování obsahu je současně přítomno. Tento scénář se ještě nepodporuje. Alternativním řešením je odebrat APPINSIGHTS_JAVASCRIPT_ENABLED z nastavení aplikace. To bohužel znamená, že pokud se pořád vyžaduje instrumentace JavaScriptu na straně klienta nebo prohlížeče, pro vaše webové stránky jsou nutné ruční odkazy na sadu SDK. Postupujte prosím podle [pokynů](https://github.com/Microsoft/ApplicationInsights-JS#snippet-setup-ignore-if-using-npm-setup) pro ruční instrumentaci pomocí sady JavaScript SDK.
 
-Nejnovější informace o agentovi/rozšíření Application Insights najdete v [poznámkách k verzi](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-web-app-extensions-releasenotes.md).
+Nejnovější informace o Application Insights agenta nebo rozšíření najdete v [poznámkách k verzi](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-web-app-extensions-releasenotes.md).
 
-### <a name="php-and-wordpress-are-not-supported"></a>PHP a WordPress nejsou podporovány
+### <a name="php-and-wordpress-are-not-supported"></a>PHP a WordPress nejsou podporované.
 
-PHP a WordPress stránky nejsou podporovány. V současné době neexistuje žádná oficiálně podporovaná sada SDK/agent pro monitorování těchto úloh na straně serveru. Nicméně, ručně instrumentace client-side transakce na PHP nebo WordPress stránky přidáním client-side javascript na vaše webové stránky lze provést pomocí [JavaScript SDK](https://docs.microsoft.com/azure/azure-monitor/app/javascript). 
+Weby PHP a WordPress nejsou podporovány. V současnosti není k dispozici žádná oficiálně podporovaná sada SDK/Agent pro monitorování těchto úloh na straně serveru. Ruční instrumentování transakcí na straně klienta na webu PHP nebo WordPress je však možné provést přidáním JavaScriptu na straně klienta na webové stránky pomocí [sady JavaScript SDK](https://docs.microsoft.com/azure/azure-monitor/app/javascript). 
 
 ## <a name="next-steps"></a>Další kroky
 * [Spusťte profiler v živé aplikaci](../app/profiler.md).

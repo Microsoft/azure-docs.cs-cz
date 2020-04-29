@@ -9,10 +9,10 @@ ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 81ee07eb41df6d8d663510913572b829feffd995
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82133779"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>Seznámení se základními Azure Storage službami
@@ -91,7 +91,7 @@ Služba front Azure se využívá k ukládání a načítání zpráv. Fronty zp
 
 Další informace o službě Fronty Azure najdete v tématu o [seznámení s Frontami](../queues/storage-queues-introduction.md).
 
-## <a name="table-storage"></a>Úložiště Table
+## <a name="table-storage"></a>Table Storage
 
 Azure Table Storage je teď součástí služby Azure Cosmos DB. Dokumentaci ke službě Azure Table Storage najdete v tématu [Přehled služby Azure Table Storage](../tables/table-storage-overview.md). Kromě existující služby Azure Table Storage je k dispozici také nabídka nového rozhraní API tabulky Azure Cosmos DB, které poskytuje tabulky s optimalizovanou propustností, globální distribuci a automatické sekundární indexy. Pokud se chcete dozvědět víc a vyzkoušet nové prostředí Premium, přečtěte si téma [Azure Cosmos DB rozhraní API pro tabulky](https://aka.ms/premiumtables).
 

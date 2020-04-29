@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: mimckitt
 ms.openlocfilehash: 105279940546c8e5b40d1d8378b35f85af1ea98b
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82099542"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Scheduled Events pro virtuální počítače s Windows
@@ -56,7 +56,7 @@ Pokud se virtuální počítač nevytvoří v Virtual Network, výchozí přípa
 ### <a name="version-and-region-availability"></a>Dostupnost verze a oblasti
 Služba Scheduled Events má verzi. Verze jsou povinné a aktuální verze je `2019-01-01`.
 
-| Version | Typ verze | Oblasti | Zpráva k vydání verze | 
+| Version | Typ verze | Oblasti | Poznámky k verzi | 
 | - | - | - | - |
 | 2019-01-01 | Obecná dostupnost | Všechny | <li> Přidaná podpora pro virtuální počítač Scale Sets EventType ' ukončit ' |
 | 2017-11-01 | Obecná dostupnost | Všechny | <li> Přidání podpory pro vyřazení virtuálních počítačů s názvem EventType<br> | 

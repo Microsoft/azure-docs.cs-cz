@@ -4,10 +4,10 @@ description: Vytvořte fond služby Batch z prostředku spravovaného obrazu a z
 ms.topic: article
 ms.date: 09/16/2019
 ms.openlocfilehash: 10e3932bc6006e1d91fbc7e4cf58a5d98c043520
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82117314"
 ---
 # <a name="use-a-managed-image-to-create-a-pool-of-virtual-machines"></a>Vytvoření fondu virtuálních počítačů pomocí spravované image
@@ -17,7 +17,7 @@ Pokud chcete vytvořit vlastní image pro virtuální počítače (VM) fondu slu
 > [!TIP]
 > Ve většině případů byste měli vytvořit vlastní image pomocí Galerie sdílených imagí. Pomocí Galerie sdílených imagí můžete vytvořit fondy rychleji, škálovat větší množství virtuálních počítačů a zvýšit spolehlivost při zřizování virtuálních počítačů. Další informace najdete v tématu [použití Galerie sdílených imagí k vytvoření vlastního fondu](batch-sig-images.md).
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 - **Prostředek spravované image** Pokud chcete vytvořit fond virtuálních počítačů s použitím vlastní image, musíte mít nebo vytvořit prostředek spravované image ve stejném předplatném Azure a oblasti jako účet Batch. Image by se měla vytvořit ze snímků disku s operačním systémem virtuálního počítače a volitelně z připojených datových disků. Další informace a kroky pro přípravu spravované image najdete v následující části.
   - Pro každý vytvořený fond použijte jedinečnou vlastní image.

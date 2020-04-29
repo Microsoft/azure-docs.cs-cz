@@ -1,65 +1,65 @@
 ---
 title: Konfigurace CI/CD s akcemi GitHubu
-description: Zjistěte, jak nasadit kód do služby Azure App Service z kanálu CI/CD pomocí akcí GitHubu. Přizpůsobte úlohy sestavení a spusťte komplexní nasazení.
+description: Naučte se, jak nasadit kód pro Azure App Service z kanálu CI/CD s akcemi GitHubu. Přizpůsobte úkoly sestavení a proveďte složitá nasazení.
 ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.openlocfilehash: 57ca5b0880d4b027e33bc0d01fc6225eb886029b
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82084987"
 ---
-# <a name="deploy-to-app-service-using-github-actions"></a>Nasazení do služby App Service pomocí akcí GitHubu
+# <a name="deploy-to-app-service-using-github-actions"></a>Nasazení do App Service pomocí akcí GitHubu
 
-[Akce GitHubu](https://help.github.com/en/articles/about-github-actions) vám poskytují flexibilitu při vytváření automatizovaného pracovního cyklu životního cyklu vývoje softwaru. S akcemi služby Azure App Service pro GitHub můžete automatizovat svůj pracovní postup a nasadit se do [služby Azure App Service](overview.md) pomocí akcí GitHub.
+[Akce GitHubu](https://help.github.com/en/articles/about-github-actions) vám nabízí flexibilitu při vytváření automatizovaného pracovního postupu životního cyklu vývoje softwaru. Díky akcím Azure App Service pro GitHub můžete automatizovat svůj pracovní postup nasazení do [Azure App Service](overview.md) pomocí akcí GitHubu.
 
 > [!IMPORTANT]
-> Akce GitHubu jsou v současné době v beta verzi. Musíte [se nejprve zaregistrovat a připojit se k náhledu](https://github.com/features/actions) pomocí svého účtu GitHub.
+> Akce GitHubu jsou momentálně ve verzi beta. [Abyste se mohli připojit ke službě Preview](https://github.com/features/actions) pomocí svého účtu GitHubu, musíte se nejdřív zaregistrovat.
 > 
 
-Pracovní postup je definován souborem YAML (.yml) v `/.github/workflows/` cestě v úložišti. Tato definice obsahuje různé kroky a parametry, které tvoří pracovní postup.
+Pracovní postup je definovaný souborem YAML (. yml) v `/.github/workflows/` cestě v úložišti. Tato definice obsahuje různé kroky a parametry, které tvoří pracovní postup.
 
-Pro pracovní postup služby Azure App Service má soubor tři části:
+V případě pracovního postupu Azure App Service má soubor tři části:
 
 |Sekce  |Úlohy  |
 |---------|---------|
-|**Authentication** | 1. Definovat instanční objekt <br /> 2. Vytvoření tajného klíče GitHubu |
-|**Sestavení** | 1. Nastavení životního prostředí <br /> 2. Vytvoření webové aplikace |
-|**Nasadit** | 1. Nasazení webové aplikace |
+|**Authentication** | 1. definování instančního objektu <br /> 2. vytvoření tajného kódu GitHubu |
+|**Sestavení** | 1. nastavení prostředí <br /> 2. sestavení webové aplikace |
+|**Nasadit** | 1. nasazení webové aplikace |
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
-[Instanční objekt](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) můžete vytvořit pomocí příkazu [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) v [příkazovém příkazu Azure CLI](https://docs.microsoft.com/cli/azure/). Tento příkaz můžete spustit pomocí [Azure Cloud Shell](https://shell.azure.com/) na webu Azure Portal nebo výběrem tlačítka Try **It.**
+[Instanční objekt](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) můžete vytvořit pomocí příkazu [AZ AD SP Create-for-RBAC](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) v rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/). Tento příkaz můžete spustit pomocí [Azure Cloud Shell](https://shell.azure.com/) v Azure Portal nebo tak, že vyberete tlačítko **vyzkoušet** .
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<subscription-id>/resourceGroups/<group-name>/providers/Microsoft.Web/sites/<app-name> --sdk-auth
 ```
 
-V tomto příkladu nahraďte zástupné symboly v prostředku ID předplatného, názvem skupiny prostředků a názvem aplikace. Výstup je pověření přiřazení role, které poskytují přístup k aplikaci App Service. Zkopírujte tento objekt JSON, který můžete použít k ověření z GitHubu.
+V tomto příkladu Nahraďte zástupné symboly v prostředku ID vašeho předplatného, název skupiny prostředků a název aplikace. Výstupem jsou přihlašovací údaje přiřazení role, které poskytují přístup k vaší aplikaci App Service. Zkopírujte tento objekt JSON, který můžete použít k ověření z GitHubu.
 
 > [!NOTE]
-> Pokud se rozhodnete použít profil publikování pro ověřování, není nutné vytvářet instanční objekt.
+> Pokud se rozhodnete použít profil publikování pro ověřování, nemusíte vytvářet instanční objekt.
 
 > [!IMPORTANT]
-> Je vždy dobrým zvykem udělit minimální přístup. To je důvod, proč obor v předchozím příkladu je omezena na konkrétní aplikaci služby App Service a ne celou skupinu prostředků.
+> Je vždy dobrým zvykem udělit minimální přístup. To je důvod, proč je obor v předchozím příkladu omezený na konkrétní App Service aplikaci, a ne na celou skupinu prostředků.
 
-## <a name="configure-the-github-secret"></a>Konfigurace tajného klíče GitHubu
+## <a name="configure-the-github-secret"></a>Konfigurace tajného kódu GitHubu
 
-Můžete také použít přihlašovací údaje na úrovni aplikace, tj. Postupujte podle pokynů pro konfiguraci tajného klíče:
+Můžete také použít přihlašovací údaje na úrovni aplikace, tj. profil publikování pro nasazení. Použijte postup konfigurace tajného klíče:
 
-1. Stáhněte si profil publikování aplikace App Service z portálu pomocí možnosti **Získat profil publikování.**
+1. Stáhněte si profil publikování pro aplikaci App Service z portálu pomocí možnosti **získat profil publikování** .
 
-2. V [GitHubu](https://github.com/), procházejte úložiště, vyberte **Nastavení > Tajemství > Přidat nový tajný klíč**
+2. V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení > tajných klíčů > přidat nový tajný kód** .
 
-    ![Tajemství](media/app-service-github-actions/secrets.png)
+    ![záleží](media/app-service-github-actions/secrets.png)
 
-3. Vložte obsah staženého souboru profilu publikování do pole hodnoty tajného klíče.
+3. Do pole hodnota tajného klíče vložte obsah pro stažený soubor publikačního profilu.
 
-4. Nyní v souboru pracovního `.github/workflows/workflow.yml` postupu ve vaší `publish-profile` větvi: nahraďte tajný klíč pro vstup akce nasazení Azure Web Appu.
+4. Nyní v souboru pracovního postupu ve větvi: `.github/workflows/workflow.yml` nahraďte tajný klíč pro vstup `publish-profile` akce nasazení webové aplikace Azure.
     
     ```yaml
         - uses: azure/webapps-deploy@v2
@@ -67,22 +67,22 @@ Můžete také použít přihlašovací údaje na úrovni aplikace, tj. Postupuj
             creds: ${{ secrets.azureWebAppPublishProfile }}
     ```
 
-5. Vidíte tajemství, jak je uvedeno níže, jakmile je definováno.
+5. Po definování se zobrazí tajný klíč, jak je znázorněno níže.
 
-    ![Tajemství](media/app-service-github-actions/app-service-secrets.png)
+    ![záleží](media/app-service-github-actions/app-service-secrets.png)
 
 ## <a name="set-up-the-environment"></a>Nastavení prostředí
 
-Nastavení prostředí lze provést pomocí jedné z akcí nastavení.
+Nastavení prostředí je možné provést pomocí jedné z akcí nastavení.
 
-|**Jazyk**  |**Akce instalace**  |
+|**Jazyk**  |**Akce nastavení**  |
 |---------|---------|
 |**.NET**     | `actions/setup-dotnet` |
 |**Java**     | `actions/setup-java` |
 |**JavaScript** | `actions/setup-node` |
 |**Python**     | `actions/setup-python` |
 
-Následující příklady ukazují část pracovního postupu, která nastavuje prostředí pro různé podporované jazyky:
+Následující příklady znázorňují část pracovního postupu, která nastavuje prostředí pro různé podporované jazyky:
 
 **JavaScript**
 
@@ -121,11 +121,11 @@ Následující příklady ukazují část pracovního postupu, která nastavuje 
         java-version: '1.8.x'
 ```
 
-## <a name="build-the-web-app"></a>Vytvoření webové aplikace
+## <a name="build-the-web-app"></a>Sestavení webové aplikace
 
-To závisí na jazyku a pro jazyky podporované službou Azure App Service, tato část by měla být standardní kroky sestavení každého jazyka.
+To závisí na jazyku a jazycích podporovaných nástrojem Azure App Service, Tato část by měla být standardním postupem sestavení každého jazyka.
 
-Následující příklady ukazují část pracovního postupu, který vytváří webovou aplikaci v různých podporovaných jazycích.
+Následující příklady znázorňují část pracovního postupu, který vytváří webovou aplikaci v různých podporovaných jazycích.
 
 **JavaScript**
 
@@ -182,18 +182,18 @@ Následující příklady ukazují část pracovního postupu, který vytváří
 ```
 ## <a name="deploy-to-app-service"></a>Nasazení do App Service
 
-Pokud chcete nasadit kód do aplikace `azure/webapps-deploy@v2` App Service, použijte akci. Tato akce má čtyři parametry:
+K nasazení kódu do aplikace App Service použijte `azure/webapps-deploy@v2` akci. Tato akce má čtyři parametry:
 
-| **Parametr**  | **Vysvětlení**  |
+| **Ukazatele**  | **Vysvětlení**  |
 |---------|---------|
-| **název aplikace** | (Povinné) Název aplikace App Service | 
-| **profil publikování** | (Nepovinné) Publikování obsahu souboru profilu pomocí tajných klíčů nasazení webu |
-| **Balíček** | (Nepovinné) Cesta k balíčku nebo složce. *.zip, *.war, *.jar nebo složku k nasazení |
-| **název slotu** | (Nepovinné) Zadejte existující slot jiný než produkční slot |
+| **název aplikace** | Požadovanou Název aplikace App Service | 
+| **publikování – profil** | Volitelné Publikování obsahu souboru profilu pomocí Nasazení webu tajných klíčů |
+| **balíček** | Volitelné Cesta k balíčku nebo složce *. zip, *. War, *. jar nebo složka, která se má nasadit |
+| **název slotu** | Volitelné Zadejte jinou existující patici, než je produkční slot. |
 
-### <a name="deploy-using-publish-profile"></a>Nasazení pomocí profilu publikování
+### <a name="deploy-using-publish-profile"></a>Nasadit pomocí profilu publikování
 
-Níže je ukázkový pracovní postup pro sestavení a nasazení aplikace Node.js do Azure pomocí profilu publikování.
+Níže je ukázkový pracovní postup pro sestavení a nasazení aplikace Node. js do Azure pomocí publikačního profilu.
 
 ```yaml
 # File: .github/workflows/workflow.yml
@@ -225,9 +225,9 @@ jobs:
             publish-profile: ${{ secrets.azureWebAppPublishProfile }}
 ```
 
-### <a name="deploy-using-azure-service-principal"></a>Nasazení pomocí instančního objektu služby Azure
+### <a name="deploy-using-azure-service-principal"></a>Nasazení s použitím instančního objektu Azure
 
-Níže je ukázkový pracovní postup pro sestavení a nasazení aplikace Node.js do Azure pomocí hlavního povinného kontu Azure.
+Níže je ukázkový pracovní postup pro sestavení a nasazení aplikace Node. js do Azure pomocí instančního objektu Azure.
 
 ```yaml
 on: [push]
@@ -270,20 +270,20 @@ jobs:
 
 ## <a name="next-steps"></a>Další kroky
 
-Můžete najít naši sadu akcí seskupených do různých úložišť na GitHubu, z nichž každá obsahuje dokumentaci a příklady, které vám pomohou používat GitHub pro CI/CD a nasadit aplikace do Azure.
+Můžete najít naši sadu akcí seskupených do různých úložišť na GitHubu. Každá z nich obsahuje dokumentaci a příklady, které vám pomůžou používat GitHub pro CI/CD a nasazovat aplikace do Azure.
 
-- [Pracovní postup akcí pro nasazení do Azure](https://github.com/Azure/actions-workflow-samples)
+- [Pracovní postup akcí k nasazení do Azure](https://github.com/Azure/actions-workflow-samples)
 
 - [Přihlášení k Azure](https://github.com/Azure/login)
 
-- [Azure WebApp](https://github.com/Azure/webapps-deploy)
+- [WebApp Azure](https://github.com/Azure/webapps-deploy)
 
 - [Azure WebApp pro kontejnery](https://github.com/Azure/webapps-container-deploy)
 
-- [Přihlášení/odhlášení dockeru](https://github.com/Azure/docker-login)
+- [Přihlášení nebo odhlášení Docker](https://github.com/Azure/docker-login)
 
-- [Události, které aktivují pracovní postupy](https://help.github.com/en/articles/events-that-trigger-workflows)
+- [Události, které spouštějí pracovní postupy](https://help.github.com/en/articles/events-that-trigger-workflows)
 
-- [K8s nasadit](https://github.com/Azure/k8s-deploy)
+- [Nasazení K8s](https://github.com/Azure/k8s-deploy)
 
-- [Počáteční pracovní postupy](https://github.com/actions/starter-workflows)
+- [Úvodní pracovní postupy](https://github.com/actions/starter-workflows)

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: allensu
-ms.openlocfilehash: 46ecf1bf2f5bd7900677cd115f8571ec3551a874
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: 477a5ffa971120d1a98c09ac4ae8ebda1c82b770
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134270"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82209022"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Konfigurace DNS privátního koncového bodu Azure
 
@@ -55,7 +55,7 @@ Pro služby Azure použijte doporučené názvy zón, jak je popsáno v následu
 |Azure Database for MySQL (Microsoft. DBforMySQL/servery)|mysqlServer|privatelink.mysql.database.azure.com|
 |Azure Database for MariaDB (Microsoft. DBforMariaDB/servery)|mariadbServer|privatelink.mariadb.database.azure.com|
 |Azure Key Vault (trezor a trezory Microsoft.|Trezor|privatelink.vaultcore.azure.net|
-|Azure Kubernetes Service – rozhraní Kubernetes API (Microsoft. ContainerService/managedClusters)    | managedCluster | {GUID}. privatelink. <region>. azmk8s.IO|
+|Azure Kubernetes Service – rozhraní Kubernetes API (Microsoft. ContainerService/managedClusters)    | managedCluster | {GUID}. privatelink. {region}. azmk8s. IO|
 |Azure Search (Microsoft. Search/searchServices)|searchService|privatelink.search.windows.net|   
 |Azure Container Registry (Microsoft. ContainerRegistry/Registry) | registry | privatelink.azurecr.io |
 |Konfigurace aplikace Azure (Microsoft. Appconfiguration/configurationStores)| configurationStore | privatelink.azconfig.io|

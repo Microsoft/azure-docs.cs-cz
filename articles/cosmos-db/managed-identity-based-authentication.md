@@ -1,6 +1,6 @@
 ---
-title: Jak používat systémem přiřazenou spravovanou identitu pro přístup k datům Azure Cosmos DB
-description: Zjistěte, jak nakonfigurovat spravovanou identitu přiřazenou k Azure Active Directory (Azure AD) (identitu spravované služby) pro přístup ke klíčům z Azure Cosmos DB.
+title: Použití spravované identity přiřazené systémem pro přístup k Azure Cosmos DB datům
+description: Přečtěte si, jak nakonfigurovat spravovanou identitu přiřazenou systémem Azure Active Directory (Azure AD) pro přístup k klíčům z Azure Cosmos DB.
 author: j-patrick
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,79 +8,79 @@ ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
 ms.openlocfilehash: 8136ad7a1fe29bc3394e959c10aafc52988c0a23
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81641249"
 ---
-# <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Použití spravovaných identit přiřazených systémem pro přístup k datům Azure Cosmos DB
+# <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Použití spravovaných identit přiřazených systémem pro přístup k Azure Cosmos DB datům
 
-V tomto článku nastavíte *robustní, střídání klíčů agnostik* řešení pro přístup ke klíčům Azure Cosmos DB pomocí [spravovaných identit](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md). Příklad v tomto článku používá Funkce Azure, ale můžete použít libovolnou službu, která podporuje spravované identity. 
+V tomto článku nastavíte robustní řešení nezávislá pro *střídání klíčů* pro přístup k Azure Cosmos DB klíčům pomocí [spravovaných identit](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md). Příklad v tomto článku používá Azure Functions, ale můžete použít libovolnou službu, která podporuje spravované identity. 
 
-Dozvíte se, jak vytvořit aplikaci funkcí, která má přístup k datům Azure Cosmos DB bez nutnosti zkopírovat klíče Azure Cosmos DB. Aplikace funkce se probudí každou minutu a zaznamená aktuální teplotu akvária akvária. Informace o tom, jak nastavit aplikaci spouštěných časovačem, najdete v tématu Vytvoření funkce v Azure, která se aktivuje v článku [časovače.](../azure-functions/functions-create-scheduled-function.md)
+Naučíte se, jak vytvořit aplikaci Function App, která bude mít přístup k Azure Cosmos DB dat, aniž byste museli kopírovat žádné Azure Cosmos DB klíče. Aplikace Function App se probudí každou minutu a zaznamená aktuální teplotu aquariumy rybí nádrže. Informace o tom, jak nastavit aplikaci funkcí aktivované časovačem, najdete v tématu [Vytvoření funkce v Azure, která se aktivuje článkem časovače](../azure-functions/functions-create-scheduled-function.md) .
 
-Pro zjednodušení scénáře je nastavení [Time To Live](./time-to-live.md) již nakonfigurováno tak, aby vyčistilo starší teplotní dokumenty. 
+Aby se tento scénář zjednodušil, je nastavení [Time to Live](./time-to-live.md) už nakonfigurované pro vyčištění starších dokumentů s teplotou. 
 
-## <a name="assign-a-system-assigned-managed-identity-to-a-function-app"></a>Přiřazení spravované identity přiřazené systému k aplikaci funkce
+## <a name="assign-a-system-assigned-managed-identity-to-a-function-app"></a>Přiřazení spravované identity přiřazené systémem do aplikace Function App
 
-V tomto kroku přiřadíte spravovanou identitu přiřazenou systémem vaší aplikaci funkcí.
+V tomto kroku přiřadíte aplikaci Function App spravovanou identitu přiřazenou systémem.
 
-1. Na [webu Azure Portal](https://portal.azure.com/)otevřete podokno **Funkce Azure** a přejděte do aplikace funkce. 
+1. V [Azure Portal](https://portal.azure.com/)otevřete podokno **funkce Azure** a přejdete do aplikace Function App. 
 
-1. Otevřete kartu Identita **funkcí** > **platformy:** 
+1. Otevřete kartu > **Identita** **funkcí platformy**: 
 
-   ![Snímek obrazovky s funkcemi platformy a možnostmi identity pro aplikaci funkcí](./media/managed-identity-based-authentication/identity-tab-selection.png)
+   ![Snímek obrazovky znázorňující funkce platformy a možnosti identity pro aplikaci Function App](./media/managed-identity-based-authentication/identity-tab-selection.png)
 
-1. Na kartě **Identita** **zapněte** **stav** systémové identity a vyberte **Uložit**. Podokno **Identita** by mělo vypadat takto:  
+1. Na kartě **Identita** **zapněte** **stav** identity systému a vyberte **Uložit**. Podokno **Identita** by mělo vypadat takto:  
 
-   ![Snímek obrazovky se stavem systémové identity nastavený na Zapnuto](./media/managed-identity-based-authentication/identity-tab-system-managed-on.png)
+   ![Snímek obrazovky zobrazující stav identity systému nastaven na zapnuto](./media/managed-identity-based-authentication/identity-tab-system-managed-on.png)
 
 ## <a name="grant-access-to-your-azure-cosmos-account"></a>Udělení přístupu k účtu Azure Cosmos
 
-V tomto kroku přiřadíte roli systémové spravované identitě aplikace funkce. Azure Cosmos DB má několik předdefinovaných rolí, které můžete přiřadit ke spravované identitě. Pro toto řešení použijete následující dvě role:
+V tomto kroku přiřadíte roli spravované identitě přiřazené k systému aplikace Function App. Azure Cosmos DB má několik předdefinovaných rolí, které můžete přiřadit ke spravované identitě. Pro toto řešení použijete tyto dvě role:
 
-|Vestavěná role  |Popis  |
+|Předdefinovaná role  |Popis  |
 |---------|---------|
-|[Přispěvatel účtu DocumentDB](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Můžete spravovat účty Azure Cosmos DB. Umožňuje načítání klíčů pro čtení a zápis. |
-|[Čtečka účtů Cosmos DB](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Umí číst data účtu Azure Cosmos DB. Umožňuje načítání čtecích klíčů. |
+|[Přispěvatel účtu DocumentDB](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Může spravovat účty Azure Cosmos DB. Umožňuje načtení klíčů pro čtení i zápis. |
+|[Čtečka účtů Cosmos DB](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Může číst data Azure Cosmos DB účtu. Umožňuje načtení klíčů pro čtení. |
 
 > [!IMPORTANT]
-> Podpora řízení přístupu na základě rolí v Azure Cosmos DB platí pouze pro operace roviny řízení. Operace roviny dat jsou zabezpečeny prostřednictvím hlavních klíčů nebo tokenů prostředků. Další informace najdete v článku [Zabezpečený přístup k datům.](secure-access-to-data.md)
+> Podpora řízení přístupu založeného na rolích v Azure Cosmos DB platí jenom pro řízení operací roviny. Operace roviny dat jsou zabezpečeny prostřednictvím hlavních klíčů nebo tokenů prostředků. Další informace najdete v článku [zabezpečený přístup k datům](secure-access-to-data.md) .
 
 > [!TIP] 
-> Při přiřazování rolí přiřaďte pouze potřebný přístup. Pokud vaše služba vyžaduje pouze čtení dat, přiřaďte roli **Čtečky účtů Cosmos DB** spravované identitě. Další informace o důležitosti přístupu k nejnižším oprávněním naleznete v článku [Nižší expozice privilegovaných účtů.](../security/fundamentals/identity-management-best-practices.md#lower-exposure-of-privileged-accounts)
+> Přiřadíte-li role, přiřaďte pouze potřebný přístup. Pokud vaše služba vyžaduje jenom čtení dat, přiřaďte k spravované identitě roli **Čtenář účtu Cosmos DB** . Další informace o významu minimálního přístupu k oprávnění najdete v článku o [nižší expozici privilegovaných účtů](../security/fundamentals/identity-management-best-practices.md#lower-exposure-of-privileged-accounts) .
 
-V tomto scénáři aplikace funkce bude číst teplotu akvária a pak zapíše zpět tato data do kontejneru v Azure Cosmos DB. Vzhledem k tomu, že aplikace funkce musí zapisovat data, budete muset přiřadit roli **přispěvatele účtu DocumentDB.** 
+V tomto scénáři načte aplikace Functions teplotu Aquarium a pak tato data zapíše zpátky do kontejneru v Azure Cosmos DB. Vzhledem k tomu, že aplikace Function App musí data zapisovat, je nutné přiřadit roli **Přispěvatel účtu DocumentDB** . 
 
-1. Přihlaste se k portálu Azure a přejděte na svůj účet Azure Cosmos DB. Otevřete podokno **Řízení přístupu (IAM)** a potom kartu **Přiřazení rolí:**
+1. Přihlaste se k Azure Portal a přejít na účet Azure Cosmos DB. Otevřete podokno **řízení přístupu (IAM)** a pak kartu **přiřazení rolí** :
 
-   ![Snímek obrazovky s ovládacím podoknem Access a kartou Přiřazení rolí](./media/managed-identity-based-authentication/cosmos-db-iam-tab.png)
+   ![Snímek obrazovky znázorňující podokno řízení přístupu a kartu přiřazení rolí](./media/managed-identity-based-authentication/cosmos-db-iam-tab.png)
 
-1. Vyberte **+ Přidat** > **přiřazení role**.
+1. Vyberte **+ Přidat** > **Přidání přiřazení role**.
 
-1. Panel **Přidat přiřazení role** se otevře vpravo:
+1. Otevře se panel **přiřazení role přidat** napravo:
 
-   ![Snímek obrazovky s podoknem Přidat přiřazení role](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png)
+   ![Snímek obrazovky s podoknem přiřazení role přidání](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png)
 
-   * **Role**: Vybrat **přispěvatele účtu DocumentDB**
-   * **Přiřazení přístupu**k : V podčásti **Vybrat systémově přiřazenou spravovanou identitu** vyberte **možnost Aplikace funkce**.
-   * **Vyberte:** Podokno bude naplněno všemi aplikacemi funkcí ve vašem předplatném, které mají **identitu spravovaného systému**. V takovém případě vyberte aplikaci funkce **FishTankTemperatureService:** 
+   * **Role**: vyberte **Přispěvatel účtu DocumentDB** .
+   * **Přiřadit přístup k**: v podčásti **Vybrat spravovanou identitu přiřazenou systémem** vyberte **Function App**.
+   * **Vyberte**: v předplatném se naplní všechny aplikace Function App, které mají **identitu spravovaného systému**. V takovém případě vyberte aplikaci funkcí **FishTankTemperatureService** : 
 
-      ![Snímek obrazovky s podoknem Přidat přiřazení role vyplněným příklady](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png)
+      ![Snímek obrazovky s podoknem přiřazení role přidání, které se naplní příklady](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png)
 
-1. Po výběru aplikace funkce vyberte **Uložit**.
+1. Po výběru aplikace Function App vyberte **Save (Uložit**).
 
-## <a name="programmatically-access-the-azure-cosmos-db-keys"></a>Programově přístup ke klíčům Azure Cosmos DB
+## <a name="programmatically-access-the-azure-cosmos-db-keys"></a>Programový přístup k klíčům Azure Cosmos DB
 
-Teď máme aplikaci funkcí, která má systémem přiřazenou spravovanou identitu s rolí **přispěvatele účtu DocumentDB** v oprávněních Azure Cosmos DB. Následující kód aplikace funkce získá klíče Azure Cosmos DB, vytvoří objekt CosmosClient, získá teplotu akvária a pak ji uloží do Azure Cosmos DB.
+Teď máme aplikaci Function App, která má spravovanou identitu přiřazenou systémem pomocí role **Přispěvatel účtu DocumentDB** v oprávněních Azure Cosmos DB. Následující kód aplikace Function App získá Azure Cosmos DB klíčů, vytvoří objekt CosmosClient, získá teplotu Aquarium a pak ho uložte do Azure Cosmos DB.
 
-Tato ukázka používá [rozhraní API seznam klíčů](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListKeys) pro přístup ke klíčům účtu Azure Cosmos DB.
+V této ukázce se k přístupu k klíčům účtu Azure Cosmos DB používá [rozhraní API pro klíče seznamu](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListKeys) .
 
 > [!IMPORTANT] 
-> Pokud chcete přiřadit roli [Čtečka účtů Cosmos DB,](#grant-access-to-your-azure-cosmos-account) budete muset použít [rozhraní API pro čtení v seznamu](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListReadOnlyKeys). Tím se naplní pouze klíče jen pro čtení.
+> Pokud chcete přiřadit roli [čtenáře účtu Cosmos DB](#grant-access-to-your-azure-cosmos-account) , budete muset použít [seznam rozhraní API klíče jen pro čtení](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListReadOnlyKeys). Tím se naplní jenom klíče jen pro čtení.
 
-Rozhraní API klíčů `DatabaseAccountListKeysResult` seznamu vrátí objekt. Tento typ není definován v knihovnách Jazyka C#. Následující kód ukazuje implementaci této třídy:  
+Rozhraní API seznam klíčů vrátí `DatabaseAccountListKeysResult` objekt. Tento typ není definován v knihovnách jazyka C#. Následující kód ukazuje implementaci této třídy:  
 
 ```csharp 
 namespace Monitor 
@@ -95,7 +95,7 @@ namespace Monitor
 }
 ```
 
-Příklad také používá jednoduchý dokument s názvem "TemperatureRecord", který je definován takto:
+Příklad také používá jednoduchý dokument nazvaný "TemperatureRecord", který je definován následujícím způsobem:
 
 ```csharp
 using System;
@@ -112,7 +112,7 @@ namespace Monitor
 }
 ```
 
-Ke získání systémově přiřazeného tokenu spravované identity použijete knihovnu [Microsoft.Azure.Services.AppAuthentication.](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) Další způsoby získání tokenu a další informace `Microsoft.Azure.Service.AppAuthentication` o knihovně naleznete v článku [ověřování mezi službami.](../key-vault/general/service-to-service-authentication.md)
+Pomocí knihovny [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) získáte spravovaný token identity přiřazený systémem. Další informace o tom, jak získat token a zjistit další informace o `Microsoft.Azure.Service.AppAuthentication` knihovně, najdete v článku o [ověřování služby pro službu](../key-vault/general/service-to-service-authentication.md) .
 
 
 ```csharp
@@ -196,10 +196,10 @@ namespace Monitor
 }
 ```
 
-Nyní jste připraveni [nasadit aplikaci funkce](../azure-functions/functions-create-first-function-vs-code.md).
+Teď jste připraveni [nasadit aplikaci Function App](../azure-functions/functions-create-first-function-vs-code.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Ověřování založené na certifikátech pomocí Azure Cosmos DB a Azure Active Directory](certificate-based-authentication.md)
-* [Zabezpečení klíčů Azure Cosmos DB pomocí azure key vaultu](access-secrets-from-keyvault.md)
-* [Základní plán zabezpečení pro Azure Cosmos DB](security-baseline.md)
+* [Ověřování na základě certifikátů pomocí Azure Cosmos DB a Azure Active Directory](certificate-based-authentication.md)
+* [Zabezpečené Azure Cosmos DB klíčů pomocí Azure Key Vault](access-secrets-from-keyvault.md)
+* [Základní hodnoty zabezpečení pro Azure Cosmos DB](security-baseline.md)

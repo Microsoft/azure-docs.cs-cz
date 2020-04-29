@@ -6,25 +6,25 @@ ms.author: jumeder
 ms.date: 04/09/2020
 ms.topic: article
 ms.openlocfilehash: f10c736cad9322752d5d552d29ef0c63635628a5
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81868158"
 ---
 # <a name="debug-rendering"></a>Ladění vykreslování
 
-Rozhraní API pro vykreslování ladicích barev poskytuje řadu globálních možností pro změnu vykreslování na straně serveru s různými efekty ladění.
+Rozhraní API pro vykreslování ladění poskytuje řadu globálních možností pro změnu vykreslování na straně serveru s různými efekty ladění.
 
-## <a name="available-debug-rendering-effects"></a>Dostupné efekty ladění vykreslování
+## <a name="available-debug-rendering-effects"></a>Dostupné efekty vykreslování ladění
 
 |Nastavení                          | Účinek                               |
 |---------------------------------|:-------------------------------------|
-|Čítač rámů                    | Vykreslí překrytí textu do levého horního rohu rámečku. Text zobrazuje aktuální ID rámečku na straně serveru, které se průběžně zintáčete při vykreslování. |
-|Počet polygonů                    | Vykreslí překrytí textu do levého horního rohu rámečku. Text zobrazuje aktuálně vykreslené množství polygonů, stejnou hodnotu, jakou [dotazovaly dotazy na straně serveru.](performance-queries.md)| 
-|Skeletové                        | Pokud je tato možnost povolena, bude veškerá geometrie objektu načtená na serveru vykreslena v režimu drátového modelu. V tomto režimu budou rastrovány pouze hrany polygonů. |
+|Čítač rámců                    | Vykreslí překryv textu do levého horního rohu rámečku. Text zobrazuje aktuální ID rámce na straně serveru, které se průběžně zvětšuje podle toho, jak vykreslování pokračuje. |
+|Počet mnohoúhelníků                    | Vykreslí překryv textu do levého horního rohu rámečku. Text zobrazuje aktuálně vykreslené množství mnohoúhelníků, stejnou hodnotu jako dotazování dotazů na výkon na [straně serveru](performance-queries.md) .| 
+|Drátový                        | Pokud je povoleno, všechny geometrie objektů načtené na serveru budou vykresleny v režimu drátěného modelu. V tomto režimu budou rastry pouze hrany mnohoúhelníků. |
 
-Následující kód umožňuje tyto efekty ladění:
+Následující kód povoluje tyto efekty ladění:
 
 ``` cs
 void EnableDebugRenderingEffects(AzureSession session, bool highlight)
@@ -45,18 +45,18 @@ void EnableDebugRenderingEffects(AzureSession session, bool highlight)
 ![Ladění vykreslování](./media/debug-rendering.png)
 
 > [!NOTE]
-> Všechny efekty vykreslení ladění jsou globální nastavení, která ovlivňují celý snímek.
+> Všechny efekty vykreslování ladění jsou globální nastavení, která mají vliv na celý rámec.
 
 ## <a name="use-cases"></a>Případy použití
 
-Rozhraní API pro vykreslování ladivých dat je určeno pro jednoduché úlohy ladění, jako je ověření, že připojení služby je ve skutečnosti správně spuštěno. Volby vykreslování textu přímo ovlivňují snímky videa vysílané dolů. Povolením ověříte, zda jsou přijaty nové snímky a video dekódováno správně.
+Rozhraní API pro vykreslování ladění je určené pro jednoduché úlohy ladění, jako je ověření, že připojení služby je skutečně spuštěné a funguje správně. Možnosti vykreslování textu mají přímý vliv na video snímky v datovém proudu. Když je povolíte, ověří se, jestli se přijímají nové rámce a správně dekóduje video.
 
-Nicméně, poskytnuté účinky nedávají žádné podrobné introspekce do stavu služby. Pro tento případ použití se doporučují [dotazy na výkon na straně serveru.](performance-queries.md)
+Poskytnuté účinky však neposkytují žádné podrobné introspekce stavu služby. Pro tento případ použití se doporučují [dotazy na výkon na straně serveru](performance-queries.md) .
 
 ## <a name="performance-considerations"></a>Otázky výkonu
 
-* Povolení překrytí textu vznikne jen málo nebo žádné režie výkonu.
-* Povolení režimu drátového modelu způsobuje netriviální výkon režie, i když se může lišit v závislosti na scéně. U složitých scén může tento režim způsobit pokles kmitočet snímků pod cíl 60 Hz.
+* Povolení překryvných textů se mírně nezvyšuje bez režie výkonu.
+* Povolení režimu drátěného modelu má za následek netriviální výkon, i když se může lišit v závislosti na scéně. U složitých scén může tento režim způsobit pokles frekvence snímků pod cílovou 60 až Hz.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,6 +1,6 @@
 ---
-title: Registr kontejnerů Azure jako zdroj mřížky událostí
-description: Popisuje vlastnosti, které jsou k dispozici pro události registru kontejneru s Azure Event Grid
+title: Azure Container Registry jako zdroj Event Grid
+description: Popisuje vlastnosti, které jsou k dispozici pro Container Registry události s Azure Event Grid
 services: event-grid
 author: spelluru
 manager: timlt
@@ -9,32 +9,32 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: 7e33feb04edf42f1e2a32b9b8c8e2fd214692f31
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393367"
 ---
-# <a name="azure-container-registry-as-an-event-grid-source"></a>Azure Container Registry jako zdroj mřížky událostí
+# <a name="azure-container-registry-as-an-event-grid-source"></a>Azure Container Registry jako zdroj Event Grid
 
-Tento článek obsahuje vlastnosti a schéma pro události registru kontejnerů.Úvod do schémat událostí najdete v [tématu schéma událostí služby Azure Event Grid](event-schema.md).
+Tento článek poskytuje vlastnosti a schéma pro události Container Registry.Úvod do schémat událostí najdete v tématu [Azure Event Grid schéma událostí](event-schema.md).
 
-## <a name="event-grid-event-schema"></a>Schéma události Mřížka událostí
+## <a name="event-grid-event-schema"></a>Schéma událostí služby Event Grid
 
 ### <a name="available-event-types"></a>Dostupné typy událostí
 
-Azure Container Registry vydává následující typy událostí:
+Azure Container Registry emituje následující typy událostí:
 
 | Typ události | Popis |
 | ---------- | ----------- |
-| Microsoft.ContainerRegistry.ImagePushed | Je aktivována při stisknutí obrázku. |
-| Microsoft.ContainerRegistry.ImageDeleted | Je aktivována při odstranění obrázku. |
-| Microsoft.ContainerRegistry.ChartPushed | Je aktivována při stisknutí grafu Helm. |
-| Microsoft.ContainerRegistry.ChartDeleted | Je aktivována při odstranění grafu Helm. |
+| Microsoft. ContainerRegistry. ImagePushed | Je aktivována, když je vložen obrázek. |
+| Microsoft. ContainerRegistry. ImageDeleted | Je aktivována, když dojde k odstranění obrázku. |
+| Microsoft. ContainerRegistry. ChartPushed | Je aktivována, když je vložena tabulka Helm. |
+| Microsoft. ContainerRegistry. ChartDeleted | Vyvolá se při odstranění grafu Helm. |
 
 ### <a name="example-event"></a>Příklad události
 
-Následující příklad ukazuje schéma události posunuté obrázkem: 
+Následující příklad ukazuje schéma události vloženého obrázku: 
 
 ```json
 [{
@@ -67,7 +67,7 @@ Následující příklad ukazuje schéma události posunuté obrázkem:
 }]
 ```
 
-Schéma události odstraněného obrázku je podobné:
+Schéma pro událost odstraněné obrázek je podobné:
 
 ```json
 [{
@@ -97,7 +97,7 @@ Schéma události odstraněného obrázku je podobné:
 }]
 ```
 
-Schéma události push grafu je podobné schématu pro událost s obrázkovou posunutou, ale neobsahuje objekt požadavku:
+Schéma pro událost nabízeného grafu se podobá schématu pro událost vložení s obrázkem, ale neobsahuje objekt žádosti:
 
 ```json
 [{
@@ -125,7 +125,7 @@ Schéma události push grafu je podobné schématu pro událost s obrázkovou po
 }]
 ```
 
-Schéma pro událost odstraněné grafem je podobné schématu pro odstraněnou událost s obrázkem, ale neobsahuje objekt požadavku:
+Schéma pro událost odstranění grafu se podobá schématu pro odstraněnou událost, která se odstranila, ale neobsahuje objekt žádosti:
 
 ```json
 [{
@@ -159,12 +159,12 @@ Událost má následující data nejvyšší úrovně:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| téma | řetězec | Úplná cesta k prostředku ke zdroji události. Toto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
-| Předmět | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
-| Eventtype | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
-| eventTime | řetězec | Čas, kdy je událost generována na základě času UTC zprostředkovatele. |
+| téma | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
+| závislosti | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
+| Typ | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
+| eventTime | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor události |
-| data | objekt | Data událostí úložiště objektů blob. |
+| data | objekt | Data události služby Blob Storage. |
 | dataVersion | řetězec | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
 | metadataVersion | řetězec | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
 
@@ -172,42 +172,42 @@ Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| id | řetězec | ID události. |
-| časové razítko | řetězec | Čas, kdy k události došlo. |
-| action | řetězec | Akce, která zahrnuje zapředpokladu událost. |
-| Cíl | objekt | Cíl události. |
-| Požadavek | objekt | Požadavek, který vygeneroval událost. |
+| id | řetězec | ID události |
+| časové razítko | řetězec | Čas, kdy došlo k události. |
+| action | řetězec | Akce, která zahrnuje poskytnutou událost. |
+| cílové | objekt | Cíl události. |
+| Request | objekt | Požadavek, který vygeneroval událost. |
 
 Cílový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| Mediatype | řetězec | Typ MIME odkazovaného objektu. |
-| velikost | celé číslo | Počet bajtů obsahu. Stejné jako pole Length. |
-| digest | řetězec | Digest obsahu, jak je definováno v registru V2 HTTP API specifikace. |
-| length | celé číslo | Počet bajtů obsahu. Stejné jako pole Velikost. |
-| úložiště | řetězec | Název úložiště. |
-| značka | řetězec | Název značky. |
-| jméno | řetězec | Název grafu. |
-| version | řetězec | Verze grafu. |
+| Média | řetězec | Typ MIME odkazovaného objektu |
+| velikost | celé číslo | Počet bajtů obsahu. Stejné jako pole length. |
+| digest | řetězec | Výtah obsahu definovaný specifikací registru v2 HTTP API. |
+| length | celé číslo | Počet bajtů obsahu. Stejné jako velikost pole. |
+| úložiště | řetězec | Název úložiště |
+| značka | řetězec | Název značky |
+| jméno | řetězec | Název grafu |
+| version | řetězec | Verze grafu |
 
-Objekt požadavku má následující vlastnosti:
+Objekt Request má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| id | řetězec | ID požadavku, který inicioval událost. |
-| Addr | řetězec | Název IP nebo hostitele a případně port připojení klienta, který událost inicioval. Tato hodnota je RemoteAddr ze standardního požadavku http. |
-| host | řetězec | Externě přístupný název hostitele instance registru, jak je určeno hlavičkou hostitele http na příchozí požadavky. |
-| method | řetězec | Metoda požadavku, která vygenerovala událost. |
-| Useragent | řetězec | Hlavička uživatelského agenta požadavku. |
+| id | řetězec | ID žádosti, která iniciovala událost. |
+| Adresa | řetězec | IP adresa nebo název hostitele a pravděpodobně port připojení klienta, které spustilo událost. Tato hodnota je RemoteAddr ze standardního požadavku HTTP. |
+| host | řetězec | Externě přístupný název hostitele instance registru, jak je určen hlavičkou hostitele HTTP na příchozích požadavcích. |
+| method | řetězec | Metoda žádosti, která vygenerovala událost. |
+| UserAgent | řetězec | Záhlaví uživatelského agenta požadavku. |
 
 ## <a name="tutorials-and-how-tos"></a>Kurzy a postupy
 |Nadpis |Popis  |
 |---------|---------|
-| [Úvodní příručka: Odeslání událostí registru kontejneru](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Ukazuje, jak používat Azure CLI k odesílání událostí registru kontejnerů. |
+| [Rychlý Start: odeslání událostí registru kontejneru](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Ukazuje, jak používat Azure CLI k posílání Container Registrych událostí. |
 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úvod do Služby Azure Event Grid najdete v tématu [Co je event grid?](overview.md)
-* Další informace o vytvoření předplatného Služby Azure Event Grid najdete v [tématu schéma předplatného služby Event Grid](subscription-creation-schema.md).
+* Úvod do Azure Event Grid najdete v tématu [co je Event Grid?](overview.md)
+* Další informace o vytváření předplatného Azure Event Grid najdete v tématu [schéma předplatného Event Grid](subscription-creation-schema.md).

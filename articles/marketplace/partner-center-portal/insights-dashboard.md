@@ -1,6 +1,6 @@
 ---
-title: Řídicí panel Marketplace Insights v analýze komerčního tržiště v Partnerském centru
-description: Získejte přístup ke souhrnu webové analýzy marketplace, která vydavatelům umožňuje měřit zapojení zákazníků v obchodech AppSource a Azure Marketplace.
+title: Řídicí panel Marketplace Insights v komerčních prostředcích Marketplace na partnerském centru
+description: Získejte přístup ke shrnutí Web Analytics pro Marketplace, který umožňuje vydavatelům měřit zapojení zákazníka v AppSource a Azure Marketplace prodejní místa.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,137 +8,137 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.openlocfilehash: 05389f0aea7e2637dd28281236e7fd7ec2b412fd
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81251703"
 ---
-# <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel Marketplace Insights v analýzách komerčního tržiště
+# <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel Marketplace Insights v komerčních obchodech Marketplace
 
-Tento článek obsahuje informace na řídicím panelu Marketplace Insights v Centru partnerů. Tento řídicí panel zobrazuje souhrn webové analýzy marketplace, která vydavatelům umožňuje měřit zájem zákazníků o příslušné stránky s podrobnostmi o produktu uvedené na výloze marketplace: AppSource a Azure Marketplace.
+Tento článek poskytuje informace o řídicím panelu přehledů Marketplace v partnerském centru. Tento řídicí panel zobrazuje souhrn Web Analytics pro Marketplace, který umožňuje vydavatelům měřit zapojení zákazníků na příslušné stránky s podrobnostmi o produktu, které jsou uvedené na webu Marketplace prodejní místa: AppSource a Azure Marketplace.
 
 ## <a name="marketplace-insights-dashboard"></a>Řídicí panel přehledů Marketplace
 
-Pokud chcete získat přístup k **řídicímu panelu Marketplace Insights** v Centru partnerů, otevřete **[kartu Analyzovat](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** v části Komerční tržiště.
+Pokud chcete získat přístup k **řídicímu panelu přehledů Marketplace** v partnerském centru, otevřete **[kartu analyzovat](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** v části komerční web Marketplace.
 
-Můžete zobrazit grafické znázornění následujících položek:  
+Můžete zobrazit grafické reprezentace následujících položek:  
 
-- [Souhrn přehledů Marketplace](#marketplace-insights-summary)
-- [Návštěvy stránek podle zeměpisné polohy](#page-visits-by-geography)  
-- [Trend návštěv stránek versus jedinečných návštěvníků](#page-visits-versus-unique-visitors-trend)
-- [Výzva k akci versus unikátní návštěvníci s CTA](#call-to-action-versus-unique-visitors-with-ctas)
-- [Návštěvy stránek a výzva k akci podle nabídek](#page-visits-and-calls-to-action-by-offers)
-- [Trend procenta výzvy k akci](#call-to-action-percentage-trend)
-- [Návštěvy stránek a výzvy k akci podle doporučujících domén](#page-visits-and-calls-to-action-by-referral-domains)
-- [Tabulka podrobností přehledů marketplace](#marketplace-insights-details-table)
+- [Shrnutí webu Marketplace Insights](#marketplace-insights-summary)
+- [Návštěvy stránky podle geografického umístění](#page-visits-by-geography)  
+- [Návštěvy stránky versus trend jedinečných návštěvníků](#page-visits-versus-unique-visitors-trend)
+- [Volání akce versus jedinečné návštěvníky pomocí CTAs](#call-to-action-versus-unique-visitors-with-ctas)
+- [Návštěvy stránky a volání akce pomocí nabídek](#page-visits-and-calls-to-action-by-offers)
+- [Volání procenta trendu akce](#call-to-action-percentage-trend)
+- [Návštěvy stránky a volání akce podle domén odkazů](#page-visits-and-calls-to-action-by-referral-domains)
+- [Tabulka podrobností webu Marketplace Insights](#marketplace-insights-details-table)
 
 >[!NOTE]
-> Podrobné definice terminologie analýzy naleznete [v tématu Nejčastější dotazy a terminologie pro analýzu komerčního trhu](./faq-terminology.md).
+> Podrobné definice terminologie analýz najdete v tématu [Nejčastější dotazy a terminologie pro komerční analýzy na webu Marketplace](./faq-terminology.md).
 
-### <a name="insights-dashboard-layout"></a>Rozložení řídicího panelu Přehledy
+### <a name="insights-dashboard-layout"></a>Rozložení řídicího panelu Insights
 
-Metriky marketplace můžete zobrazit různými způsoby:
+Metriky Marketplace si můžete zobrazit různými způsoby:
 
-- Karty výlohy
-- Filtry stránek
+- Karty prezentace
+- Filtry stránky
 - Filtry data
 
-**Karty u obchodu**: Metriky nabídek můžete zobrazit samostatně na kartách AppSource & Azure Marketplace. Vyberte nabídky z rozevíracího seznamu nabídek vpravo, abyste viděli vizualizaci metrik pro vybrané nabídky. Ve výchozím nastavení jsou vybrány všechny nabídky.
+**Karty prezentace**: můžete zobrazit metriky svých nabídek samostatně prostřednictvím karet AppSource & Azure Marketplace. Vyberte nabídky (nabídky) z rozevíracího seznamu nabídky vpravo a zobrazte vizualizaci metriky pro vybrané nabídky (y). Ve výchozím nastavení jsou vybrány všechny nabídky.
 
-![Rozevírací seznam nabídek přehledů přehledů Služby Přehledy centra partnerů](./media/insights-offer-dropdown.png)
+![Rozevírací seznam nabídky na řídicím panelu služby partner Center Insights](./media/insights-offer-dropdown.png)
 
-**Filtry stránek Přehledy**: Tyto filtry se použijí na úrovni nabídky (stránka podrobností o produktu). Pro kritéria, která chcete zobrazit, můžete vybrat více filtrů. Tento filtr se vztahuje na celou část Marketplace Insights včetně grafů a podrobností.
+**Filtry stránky Insights**: Tyto filtry se aplikují na úrovni nabídky (Stránka s podrobnostmi o produktu). Můžete vybrat více filtrů pro kritéria, která chcete zobrazit. Tento filtr platí pro celý oddíl Marketplace Insights, včetně grafů a podrobností.
 
-![Filtry stránek panelu Přehledy Centra partnerů](./media/insights-page-filter.png)
+![Filtry stránky řídicího panelu Insights v partnerském centru](./media/insights-page-filter.png)
 
-- Názvy nabídek jsou uvedeny pouze pro nabídky, které mají návštěvy stránek ve vybraném období.  
-- Výchozí výběr je "Vše" pro každou z možností filtru.
-- Použité filtry zobrazují počet výběrů pro provedené volby. Použité filtry se nezobrazí pro výchozí výběr Vše.
+- Názvy nabídek jsou uvedeny pouze pro nabídky, které mají návštěvy stránky ve vybraném časovém rozsahu.  
+- Výchozí výběr pro každou z možností filtru je ALL.
+- Použité filtry zobrazují počet výběrů pro provedené volby. Použité filtry se nezobrazí pro výchozí výběr vše.
 
-![Použité filtry Přehledy Centra partnerů](./media/insights-page-filter-two.png)
+![Aplikované filtry služby partner Center Insights](./media/insights-page-filter-two.png)
 
-**Filtry data přehledů**: Tento filtr se vztahuje na celou část Marketplace Insights. Filtry mohou obsahovat předem určená období nebo vlastní rozsah dat.
+**Filtry data Insights**: Tento filtr platí pro celý oddíl Marketplace Insights. Filtry můžou zahrnovat předem určené rozsahy dat nebo vlastní rozsah dat.
 
-![Filtry dat přehledů Centra partnerů](./media/insights-date-range.png)
+![Filtry data z partnerského centra přehledy](./media/insights-date-range.png)
 
-## <a name="marketplace-insights-summary"></a>Souhrn přehledů Marketplace
+## <a name="marketplace-insights-summary"></a>Shrnutí webu Marketplace Insights
 
-Souhrnpřehled marketplace zobrazuje počet **návštěv stránky**, **výzvy k akci**a Unikátní **návštěvníky** pro vybrané období.
+Část Souhrn Marketplace Insights zobrazuje počet **návštěv stránek**, **volání akce**a **jedinečné návštěvníky** pro vybraný rozsah kalendářních dat.
 
-### <a name="page-visits"></a>Návštěvy stránek
+### <a name="page-visits"></a>Návštěvy stránky
 
-Toto číslo představuje počet různých uživatelských relací na stránce nabídky (stránka s podrobnostmi o produktu) pro vybrané období. Ukazatel červené/zelené procentní sazby představuje nárůst % návštěv stránek. Graf trendů představuje počet návštěv stránek meziměsíčně.
+Toto číslo představuje počet odlišných uživatelských relací na stránce nabídky (Stránka s podrobnostmi o produktu) pro vybraný rozsah kalendářních dat. Indikátor procenta červené/zelené představuje nárůst počtu návštěv stránky. Graf trendu představuje počet návštěv stránek v měsíci na měsíc.
 
-### <a name="unique-visitors"></a>Unikátní návštěvníci
+### <a name="unique-visitors"></a>Jedineční návštěvníci
 
-Toto číslo představuje odlišný počet návštěvníků během vybraného rozsahu dat pro nabídky vybrané ve filtru stránek. Návštěvník, který navštívil jednu nebo více stránek s podrobnostmi o produktu, bude považován za jednoho jedinečného návštěvníka.
+Toto číslo představuje jedinečný počet návštěvníků během vybraného rozsahu dat pro nabídky vybrané ve filtru stránky. Návštěvník, který navštívil jednu nebo více stránek s podrobnostmi o produktu, bude počítat jako jeden jedinečný návštěvník.
 
-### <a name="call-to-action"></a>Výzva k akci
+### <a name="call-to-action"></a>Zavolat na akci
 
-Toto číslo představuje počet kliknutí na tlačítko **Výzva k akci** dokončených na stránce nabídky (stránka s podrobnostmi o produktu). **Výzvy k akci se** počítají, když jsou vybrána tlačítka **Získat nyní**, **Bezplatná zkušební verze**, **Kontaktujte mě**a Testovat **disk.**
+Toto číslo představuje počet volání tlačítka **Akce** na stránce nabídky (Stránka s podrobnostmi o produktu). **Volání akce** se počítá při výběru tlačítek **načíst nyní**, **bezplatná zkušební verze**, **Kontaktní osoba**a **testovací jednotka** .
 
-![Souhrn výzvy k akci Přehledy Centra partnerů](./media/insights-summary.png)
+![Souhrn akcí v partnerském centru pro přehled](./media/insights-summary.png)
 
-## <a name="page-visits-by-geography"></a>Návštěvy stránek podle zeměpisné polohy
+## <a name="page-visits-by-geography"></a>Návštěvy stránky podle geografického umístění
 
-Heatmap níže zobrazuje počet **návštěv stránky**, **výzvy k akci**a Unikátní návštěvníci podle země **zákazníka**. Vyšší návštěvy stránek jsou reprezentovány tmavšími barvami mapy a nižší návštěvy stránek jsou reprezentovány světlejšími barvami mapy.
+Heatmapu dole zobrazuje počet **návštěv stránek**, **volání akce**a **jedinečné návštěvníky v závislosti na zemi zákazníka**. Větší návštěvy stránky jsou reprezentovány tmavšími barvami mapy a dolními návštěvami stránky jsou reprezentovány světlejšími barvami mapy.
 
-![Geografické rozložení Statistiky partnerského centra](./media/insights-geography.png)
+![Geografická dvojstránka partnerského centra – přehled](./media/insights-geography.png)
 
-Heatmap obsahuje následující funkce:
+Heatmapu obsahuje následující funkce:
 
-- Heatmap má doplňkovou mřížku pro zobrazení podrobností o **návštěvách stránky**, **volání k akci** a **jedinečných návštěvnících** v určitém místě; můžete přiblížit konkrétní místo, pokud je to preferováno.  
-- **Rozložení zemí** je počet všech zemí, ze kterých zákazníci hlásili návštěvy stránek během vybraného období.
-- Můžete vyhledat a vybrat zemi v mřížce pro přiblížení místa v mapě. Vraťte se k původnímu zobrazení výběrem **možnosti Domů** na mapě.
+- Heatmapu má doplňkovou mřížku pro zobrazení podrobností o **návštěvě stránky**, **volání akce** a **jedinečných návštěvníků** v určitém umístění. Pokud upřednostňujete, můžete zvětšit konkrétní umístění.  
+- Počet **zemí** , ze kterých si vaši zákazníci nahlásili stránky, v průběhu vybraného rozsahu kalendářních dat.
+- Můžete vyhledat a vybrat zemi v mřížce pro přiblížení do umístění v mapě. Vraťte se k původnímu zobrazení výběrem možnosti **Domů** na mapě.
 
-## <a name="page-visits-versus-unique-visitors-trend"></a>Trend návštěv stránek versus jedinečných návštěvníků
+## <a name="page-visits-versus-unique-visitors-trend"></a>Návštěvy stránky versus trend jedinečných návštěvníků
 
-Níže uvedené sloupce představují počet měsíčních návštěv stránek, které jsou zobrazeny na ose Y (osa na levé straně grafu). Spojnice trendu představuje měsíční trend jedinečných návštěvníků, který se zobrazuje na sekundární ose Y (osa na pravé straně grafu) pro vaše nabídky publikované v obchodech: Azure Marketplace a AppSource.
+Níže uvedené sloupce představují počet návštěv na stránce, které se zobrazují na ose Y (osy na levé straně grafu). Trendová čára představuje měsíční trend jedinečných návštěvníků, který se zobrazí na sekundární ose Y (na pravé straně grafu) pro vaše nabídky publikované v prodejní místa: Azure Marketplace a AppSource.
 
-![Trend návštěv stránky Přehledy centra partnerů versus trend jedinečných návštěvníků](./media/insights-page-vists-unique-visitors.png)
+![Návštěvy stránky Datacenter Center Insights versus trend jedinečných návštěvníků](./media/insights-page-vists-unique-visitors.png)
 
-## <a name="call-to-action-versus-unique-visitors-with-ctas"></a>Výzva k akci versus unikátní návštěvníci s CTA
+## <a name="call-to-action-versus-unique-visitors-with-ctas"></a>Volání akce versus jedinečné návštěvníky pomocí CTAs
 
-Skládané sloupce představují měsíční výzvy k akci (CTA), které jsou rozděleny podle typů CTA **(Get it now**, **Kontaktujte mě**a **bezplatnou zkušební verzi)** a vykresleny na ose Y (osa na levé straně stránky). Spojnice trendu představuje měsíční trend jedinečných návštěvníků s CTA, který se zobrazuje na vedlejší ose Y (osa na pravé straně grafu) pro vaše nabídky publikované na Azure Marketplace a AppSource.
+Skládané sloupce představují měsíční volání akce (výzva), které jsou rozděleny podle typů výzva (**získat je nyní**, **kontaktovat mě**a **bezplatnou zkušební verzi**) a vykresleny na ose Y (na levé straně stránky). Trendová čára představuje měsíční trend jedinečných návštěvníků s CTAs, který se zobrazí na sekundární ose Y (na pravé straně grafu) pro vaše nabídky publikované v Azure Marketplace a AppSource.
 
-![Výzva k akci v Centru partnerů versus jedineční návštěvníci s CTA](./media/insights-call-to-action-unique-visitors.png)
+![Volání služby partner Center Insights k akci versus jedinečné návštěvníky pomocí CTAs](./media/insights-call-to-action-unique-visitors.png)
 
-## <a name="page-visits-and-calls-to-action-by-offers"></a>Návštěvy stránek a výzvy k akci podle nabídek
+## <a name="page-visits-and-calls-to-action-by-offers"></a>Návštěvy stránky a volání akcí na základě nabídek
 
-Vnější výsečový graf představuje rozpis **návštěv stránky** na základě nabídek, které jste publikovali na trhu a které byly vybrány ve filtru. Vnitřní graf představuje **volání k akci** členění pro stejné nabídky.
+Vnější výsečový graf představuje rozpis **návštěv stránek** na základě nabídek, které jste publikovali na webu Marketplace a vybrali je ve filtru. Vnitřní graf představuje volání rozčlenění **akcí** pro stejné nabídky.
 
-![Návštěvy a výzvy k akci pomocí nabídek na stránce Přehledy centra partnerů](./media/insights-page-visits-and-cta-by-offer.png)
+![Návštěvy a volání stránky v partnerském centru – nabídky](./media/insights-page-visits-and-cta-by-offer.png)
 
-## <a name="call-to-action-percentage-trend"></a>Trend procenta výzvy k akci
+## <a name="call-to-action-percentage-trend"></a>Volání procenta trendu akce
 
-**Trend procenta výzvy k akci** představuje procento CTA pro nabídky zveřejněné na trhu. CTA % = (CTA/návštěvy stránek) * 100.
+Výsledkem **volání procentuální hodnoty trendu** je výzva procento pro nabídky publikované na webu Marketplace. VÝZVA% = (návštěvy CTAs/stránky) * 100.
 
-![Trend výzvy k akci přehledů Centra partnerů](./media/insights-call-to-action-percentage-trend.png)
+![Trend procenta volání partnerského centra pro akce](./media/insights-call-to-action-percentage-trend.png)
 
-## <a name="page-visits-and-calls-to-action-by-referral-domains"></a>Návštěvy stránek a výzvy k akci podle doporučujících domén
+## <a name="page-visits-and-calls-to-action-by-referral-domains"></a>Návštěvy stránky a volání akce podle domén odkazů
 
-Níže uvedený graf představuje 50 nejlepších referenčních domén. Výběr konkrétní domény odkazů zobrazuje měsíční trend návštěv stránek a výzev k akci v grafu vpravo.
+Následující graf obsahuje hlavní referenční domény 50. Když vyberete konkrétní referenční doménu, zobrazí se měsíční trend návštěv stránky a volání do akce v grafu napravo.
 
-![Návštěvy a výzvy k akci pomocí domén a kampaní, které se nazývají odkazy, a návštěvy přehledů centra partnerů](./media/insights-page-visits-call-to-actions.png)
+![Návštěvy a volání na stránce v partnerském centru – odkazy na akce podle domén odkazů a kampaní](./media/insights-page-visits-call-to-actions.png)
 
-## <a name="marketplace-insights-details-table"></a>Tabulka podrobností přehledů marketplace
+## <a name="marketplace-insights-details-table"></a>Tabulka podrobností webu Marketplace Insights
 
-Tato tabulka obsahuje zobrazení seznamu návštěv stránek a výzvy k akci vybraných nabídek seřazené podle data.
+Tato tabulka obsahuje zobrazení seznamu návštěv stránky a volání akcí pro vybrané nabídky seřazené podle data.
 
-![Tabulka podrobností centra partnerů](./media/insights-details-page.png)
+![Tabulka podrobností partnerského centra pro přehledy](./media/insights-details-page.png)
 
-- Data lze extrahovat do souboru CSV, pokud je počet záznamů menší než 1000.
-- Pokud je počet záznamů vyšší než 1000, exportovaná data budou asynchronně umístěna na stránce stahování po dobu následujících 30 dnů.
-- Filtry lze použít k zobrazení dat, která vás zajímají. Data lze filtrovat podle názvů nabídek a názvů kampaní.  
+- Data je možné extrahovat do souboru CSV, pokud je počet záznamů menší než 1000.
+- Pokud je počet záznamů vyšší než 1000, exportovaná data budou asynchronně umístěna na stránku ke stažení po dobu příštích 30 dnů.
+- Filtry lze použít k zobrazení dat, která vás zajímají. Data je možné filtrovat podle názvů nabídek a názvů kampaní.  
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přehled analytických přehledů dostupných na komerčním trhu Partnerského centra najdete v [článku Analýza pro komerční tržiště v Centru partnerů](./analytics.md).
-- Grafy, trendy a hodnoty souhrnných dat, které shrnují aktivitu na marketplace pro vaši nabídku, najdete [v tématu Souhrnný řídicí panel v analýze komerčního tržiště](./summary-dashboard.md).
-- Informace o vašich objednávkách v grafickém formátu a formátu ke stažení najdete [v tématu Řídicí panel objednávek v analýze komerčního tržiště](./orders-dashboard.md).
-- Pro virtuální počítač (VM) nabízí využití a účtované metriky účtované podle objemu dat, najdete [v tématu Využití Řídicí panel v komerčním tržišti analýzy](./usage-dashboard.md).
-- Podrobné informace o zákaznících, včetně trendů růstu, najdete [v tématu Řídicí panel zákazníků v analýzách komerčního tržiště](./customer-dashboard.md).
-- Seznam žádostí o stažení za posledních 30 dní najdete [v tématu Řídicí panel ke stažení v analýze komerčního tržiště](./downloads-dashboard.md).
-- Konsolidované zobrazení zpětné vazby od zákazníků u nabídek na Azure Marketplace a AppSource najdete [v tématu Hodnocení a recenze v analýze komerčního webu](./ratings-reviews.md).
-- Nejčastější dotazy týkající se analýzy komerčního tržiště a komplexní slovník termínů pro data naleznete [v tématu Nejčastější dotazy a terminologie pro analýzu komerčního tržiště](./faq-terminology.md).
+- Přehled analytických sestav dostupných na obchodním tržišti partnerského centra najdete v tématu [analýzy pro komerční tržiště v partnerském centru](./analytics.md).
+- Grafy, trendy a hodnoty agregovaných dat, která shrnují aktivity Marketplace pro vaši nabídku, najdete v tématu [souhrnný řídicí panel v části komerční analýza na webu Marketplace](./summary-dashboard.md).
+- Informace o vašich objednávkách v grafickém formátu a ve formátu ke stažení najdete v tématu věnovaném [řídicímu panelu objednávky v rámci komerčních tržišť](./orders-dashboard.md).
+- U virtuálních počítačů nabízí metriky využití a měření fakturace, viz [řídicí panel využití v komerčních obchodech na webu Marketplace](./usage-dashboard.md).
+- Podrobné informace o vašich zákaznících, včetně trendů růstu, najdete [v tématu řídicí panel zákazníka v analytickém obchodě na komerčním webu](./customer-dashboard.md).
+- Seznam vašich žádostí o stažení za posledních 30 dní najdete [v tématu řídicí panel ke stažení v komerčních obchodech na webu Marketplace](./downloads-dashboard.md).
+- Chcete-li zobrazit konsolidované zobrazení zpětné vazby od zákazníků pro nabídky Azure Marketplace a AppSource, přečtěte si téma [hodnocení a recenze řídicího panelu na komerčních analýzách na webu Marketplace](./ratings-reviews.md).
+- Nejčastější dotazy týkající se komerčních analýz na webu Marketplace a ucelený slovník datových podmínek najdete v tématu [Nejčastější dotazy a terminologie pro komerční analýzy na webu Marketplace](./faq-terminology.md).

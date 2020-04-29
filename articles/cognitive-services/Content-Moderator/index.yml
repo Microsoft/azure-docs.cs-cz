@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 10/24/2019
-  ms.openlocfilehash: 8d49e2c455bdd27917bb33cbf428b3a6b52facd3
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 92648f5b1720cd8274817d289dae1f4631e8b7e7
+  ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "74132723"
+  ms.lasthandoff: 04/28/2020
+  ms.locfileid: "82195948"
 landingContent:
 - title: Informace o Content Moderatoru
   linkLists:
@@ -37,11 +37,11 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: S využitím .NET SDK
-      url: dotnet-sdk-quickstart.md
+      url: client-libraries.md?pivots=programming-language-csharp
     - text: Používání sady Python SDK
-      url: python-sdk-quickstart.md
+      url: client-libraries.md?pivots=programming-language-python
     - text: Používání sady Java SDK
-      url: java-sdk-quickstart.md
+      url: client-libraries.md?pivots=programming-language-java
   - linkListType: how-to-guide
     links:
     - text: Použití konzoly API
@@ -140,7 +140,7 @@ landingContent:
       url: https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-contentmoderator
     - text: Go SDK
       url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/contentmoderator
-    - text: Azure Powershell
+    - text: Azure PowerShell
       url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
     - text: Rozhraní příkazového řádku Azure (CLI)
       url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest

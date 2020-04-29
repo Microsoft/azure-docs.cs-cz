@@ -1,5 +1,5 @@
 ---
-title: Schéma zařízení v řešení vzdáleného monitorování – Azure | Dokumenty společnosti Microsoft
+title: Schéma zařízení v řešení vzdáleného monitorování – Azure | Microsoft Docs
 description: Tento článek popisuje schéma JSON, které definuje simulované zařízení v řešení vzdáleného monitorování.
 author: dominicbetts
 manager: philmea
@@ -12,37 +12,37 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: ac681bb13ccea49c7a2f566a6fcdb6adb8cec5bb
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683749"
 ---
 # <a name="understand-the-device-model-schema"></a>Pochopení schématu modelu zařízení
 
-K testování jeho chování můžete použít simulovaná zařízení v řešení vzdáleného monitorování. Řešení vzdáleného monitorování zahrnuje simulační službu zařízení pro spuštění simulovaných zařízení. Při nasazení řešení vzdáleného monitorování se automaticky zřídí kolekce simulovaných zařízení. Můžete přizpůsobit stávající simulovaná zařízení nebo vytvořit vlastní.
+K otestování jeho chování můžete použít simulovaná zařízení v řešení vzdáleného monitorování. Řešení vzdáleného monitorování zahrnuje službu pro simulaci zařízení ke spouštění simulovaných zařízení. Když nasadíte řešení vzdáleného monitorování, kolekce simulovaných zařízení se zřídí automaticky. Můžete přizpůsobit existující simulovaná zařízení nebo vytvořit vlastní.
 
-Tento článek popisuje schéma modelu zařízení, které určuje možnosti a chování simulovaného zařízení. Model zařízení je uložen v souboru JSON.
+Tento článek popisuje schéma modelu zařízení, které určuje možnosti a chování simulovaného zařízení. Model zařízení je uložený v souboru JSON.
 
 > [!NOTE]
-> Toto schéma modelu zařízení je pouze pro simulovaná zařízení hostovaná ve službě simulace zařízení. Pokud chcete vytvořit skutečné zařízení, přečtěte si informace [o připojení zařízení k akcelerátoru řešení vzdáleného monitorování](iot-accelerators-connecting-devices.md).
+> Toto schéma modelu zařízení je pouze pro simulovaná zařízení hostovaná ve službě simulace zařízení. Pokud chcete vytvořit reálné zařízení, přečtěte si téma [připojení zařízení k akcelerátoru řešení vzdáleného monitorování](iot-accelerators-connecting-devices.md).
 
-Následující články se vztahují k aktuálnímu článku:
+Následující články souvisejí s aktuálním článkem:
 
-* [Implementujte chování modelu zařízení](iot-accelerators-remote-monitoring-device-behavior.md) popisuje soubory JavaScriptu, které používáte k implementaci chování simulovaného zařízení.
-* [Vytvořte nové simulované zařízení,](iot-accelerators-remote-monitoring-create-simulated-device.md) které to všechno dohromady dá dohromady a ukáže vám, jak nasadit nový typ simulovaného zařízení do vašeho řešení.
+* [Implementací chování modelu zařízení](iot-accelerators-remote-monitoring-device-behavior.md) popisuje soubory JavaScriptu, které slouží k implementaci chování simulovaného zařízení.
+* [Vytvořením nového simulovaného zařízení](iot-accelerators-remote-monitoring-create-simulated-device.md) spojíte dohromady a dozvíte se, jak do vašeho řešení nasadit nový simulovaný typ zařízení.
 
 V tomto článku získáte informace o těchto tématech:
 
 >[!div class="checklist"]
-> * Definování simulovaného modelu zařízení pomocí souboru JSON
-> * Určení vlastností simulovaného zařízení
-> * Určete telemetrii, kterou simulované zařízení odesílá
-> * Určete metody typu cloud-to-device, na které zařízení reaguje
+> * Použití souboru JSON k definování simulovaného modelu zařízení
+> * Zadat vlastnosti simulovaného zařízení
+> * Určení telemetrie, kterou simulované zařízení odesílá
+> * Zadejte metody Cloud-zařízení, na které zařízení reaguje
 
 ## <a name="the-parts-of-the-device-model-schema"></a>Části schématu modelu zařízení
 
-Každý model zařízení, například chladič nebo nákladní automobil, definuje typ zařízení, které může simulační služba simulovat. Každý model zařízení je uložen v souboru JSON s následujícím schématem nejvyšší úrovně:
+Každý model zařízení, jako je například chladicí zařízení nebo automobil, definuje typ zařízení, které může simulace simulovat. Každý model zařízení je uložený v souboru JSON s následujícím schématem nejvyšší úrovně:
 
 ```json
 {
@@ -67,7 +67,7 @@ Každý model zařízení, například chladič nebo nákladní automobil, defin
 }
 ```
 
-Můžete zobrazit soubory schématu pro výchozí simulovaná zařízení ve [složce devicemodels](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels) na GitHubu.
+Soubory schématu pro výchozí simulovaná zařízení můžete zobrazit ve [složce DeviceModels](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels) na GitHubu.
 
 Následující tabulka popisuje položky schématu nejvyšší úrovně:
 
@@ -75,25 +75,25 @@ Následující tabulka popisuje položky schématu nejvyšší úrovně:
 | -- | --- |
 | `SchemaVersion` | Verze schématu je vždy `1.0.0` a je specifická pro formát tohoto souboru. |
 | `Id` | Jedinečné ID pro tento model zařízení. |
-| `Version` | Identifikuje verzi modelu zařízení. |
+| `Version` | Určuje verzi modelu zařízení. |
 | `Name` | Popisný název modelu zařízení. |
 | `Description` | Popis modelu zařízení. |
-| `Protocol` | Protokol připojení, který zařízení používá. Může být `AMQP`jedním `MQTT`z `HTTP`, a . |
+| `Protocol` | Protokol připojení, který zařízení používá Může to být jedna `AMQP`z `MQTT`, a `HTTP`. |
 
-Následující části popisují další části schématu JSON:
+Následující části popisují ostatní oddíly ve schématu JSON:
 
 ## <a name="simulation"></a>Simulace
 
-V `Simulation` části definujete vnitřní stav simulovaného zařízení. Všechny hodnoty telemetrie odeslané zařízením musí být součástí tohoto stavu zařízení.
+V `Simulation` části definujete vnitřní stav simulovaného zařízení. Všechny hodnoty telemetrie odesílané zařízením musí být součástí stavu tohoto zařízení.
 
 Definice stavu zařízení má dva prvky:
 
-* `InitialState`definuje počáteční hodnoty pro všechny vlastnosti objektu stavu zařízení.
-* `Script`identifikuje soubor JavaScriptu, který běží podle plánu pro aktualizaci stavu zařízení. Tento soubor skriptu můžete použít k randomizaci hodnot telemetrie odeslaných zařízením.
+* `InitialState`Definuje počáteční hodnoty pro všechny vlastnosti objektu stavu zařízení.
+* `Script`Identifikuje soubor JavaScriptu, který se spouští podle plánu, aby se aktualizoval stav zařízení. Tento soubor skriptu můžete použít k náhodnému vynechání hodnot telemetrie odesílaných zařízením.
 
-Další informace o souboru JavaScript, který aktualizuje objekt stavu zařízení, [najdete v tématu Principy chování modelu zařízení](../../articles/iot-accelerators/iot-accelerators-device-simulation-advanced-device.md).
+Další informace o souboru JavaScriptu, který aktualizuje objekt stavu zařízení, najdete v tématu [pochopení chování modelu zařízení](../../articles/iot-accelerators/iot-accelerators-device-simulation-advanced-device.md).
 
-Následující příklad ukazuje definici objektu stavu zařízení pro simulované zařízení chladiče:
+Následující příklad ukazuje definici objektu stavu zařízení pro simulované chladicí zařízení:
 
 ```json
 "Simulation": {
@@ -115,11 +115,11 @@ Následující příklad ukazuje definici objektu stavu zařízení pro simulova
 }
 ```
 
-Simulační služba spouští každých pět sekund soubor **chiller-01-state.js,** aby aktualizovala stav zařízení. Soubory JavaScriptu pro výchozí simulovaná zařízení můžete vidět ve [složce skriptů](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels/scripts) na GitHubu. Podle konvence mají tyto soubory JavaScriptu příponu **-state,** která je odlišuje od souborů, které implementují chování metody.
+Služba simulace spouští soubor **Chiller-01-State. js** každých pět sekund, aby bylo možné aktualizovat stav zařízení. Soubory JavaScriptu pro výchozí simulovaná zařízení můžete zobrazit ve [složce Scripts](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels/scripts) na GitHubu. Podle konvence mají tyto soubory JavaScriptu **stav** přípony, aby je bylo možné odlišit od souborů, které implementují chování metody.
 
 ## <a name="properties"></a>Vlastnosti
 
-Část `Properties` schématu definuje hodnoty vlastností, které zařízení hlásí řešení. Příklad:
+`Properties` Oddíl schématu definuje hodnoty vlastností, které zařízení hlásí do řešení. Příklad:
 
 ```json
 "Properties": {
@@ -130,13 +130,13 @@ Simulační služba spouští každých pět sekund soubor **chiller-01-state.js
 }
 ```
 
-Když se řešení spustí, dotazuje se všech simulovaných zařízení k sestavení seznamu `Type` hodnot, které se mají použít v unovém ui. Řešení používá `Latitude` vlastnosti a `Longitude` k přidání umístění zařízení do mapy na řídicím panelu.
+Po spuštění řešení se dotazuje na všechna simulovaná zařízení a vytvoří seznam `Type` hodnot, které se použijí v uživatelském rozhraní. Řešení používá vlastnosti `Latitude` a `Longitude` k přidání umístění zařízení do mapy na řídicím panelu.
 
 ## <a name="telemetry"></a>Telemetrie
 
-Pole `Telemetry` obsahuje seznam všech typů telemetrie, které simulované zařízení odesílá do řešení.
+`Telemetry` Pole uvádí všechny typy telemetrie, které simulované zařízení odesílá do řešení.
 
-Následující příklad odešle telemetrickou zprávu JSON `floor` `vibration`každých `temperature` 10 sekund s , a data ze snímačů výtahu:
+Následující příklad pošle zprávu telemetrie JSON každých 10 sekund s `floor`, `vibration`a `temperature` daty ze senzorů výtahu:
 
 ```json
 "Telemetry": [
@@ -158,21 +158,21 @@ Následující příklad odešle telemetrickou zprávu JSON `floor` `vibration`k
 ]
 ```
 
-`MessageTemplate`definuje strukturu zprávy JSON odeslané simulovaným zařízením. Zástupné symboly `MessageTemplate` používají `${NAME}` `NAME` syntaxi, kde je klíč z [objektu stavu zařízení](#simulation). Řetězce by měly být citovány, čísla by neměla.
+`MessageTemplate`definuje strukturu zprávy JSON odesílané simulovaným zařízením. Zástupné symboly `MessageTemplate` v nástroji používají `${NAME}` syntaxi `NAME` , kde je klíč z [objektu stavu zařízení](#simulation). Řetězce by měly být v uvozovkách, čísla by neměla.
 
-`MessageSchema`definuje schéma zprávy odeslané simulovaným zařízením. Schéma zprávy je také publikováno do služby IoT Hub, aby mohly back-endové aplikace znovu použít informace k interpretaci příchozí telemetrie.
+`MessageSchema`definuje schéma zprávy odesílané simulovaným zařízením. Schéma zprávy je také Publikováno do IoT Hub, aby back-end aplikace mohly znovu použít informace k interpretaci příchozí telemetrie.
 
-V současné době můžete použít pouze schémata zpráv JSON. Pole uvedená ve schématu mohou být následujících typů:
+V současné době můžete použít pouze schémata zpráv JSON. Pole uvedená ve schématu mohou mít následující typy:
 
-* Objekt - serializován pomocí JSON
-* Binární - serializovánpomocí base64
+* Objekt – serializovaný pomocí JSON
+* Binární – serializovaný pomocí Base64
 * Text
 * Logická hodnota
 * Integer
 * Double
 * DateTime
 
-Chcete-li odesílat telemetrické zprávy v různých intervalech, přidejte do `Telemetry` pole více typů telemetrie. Následující příklad odesílá údaje o teplotě a vlhkosti každých 10 sekund a stav světla každou minutu:
+Chcete-li odesílat zprávy telemetrie v různých intervalech, přidejte k `Telemetry` poli více typů telemetrie. Následující příklad odesílá data o teplotě a vlhkosti každých 10 sekund a stav světla každou minutu:
 
 ```json
 "Telemetry": [
@@ -204,18 +204,18 @@ Chcete-li odesílat telemetrické zprávy v různých intervalech, přidejte do 
 ],
 ```
 
-## <a name="cloudtodevicemethods"></a>CloudToDeviceMetody
+## <a name="cloudtodevicemethods"></a>CloudToDeviceMethods
 
-Simulované zařízení může reagovat na metody cloud-to-device volané z centra IoT. Oddíl `CloudToDeviceMethods` v souboru schématu modelu zařízení:
+Simulované zařízení může reagovat na metody typu cloud-zařízení volané ze služby IoT Hub. `CloudToDeviceMethods` Oddíl v souboru schématu modelu zařízení:
 
-* Definuje metody, na které může simulované zařízení reagovat.
-* Identifikuje soubor JavaScript, který obsahuje logiku, kterou chcete spustit.
+* Definuje metody, na které simulované zařízení může reagovat.
+* Identifikuje soubor JavaScriptu, který obsahuje logiku, která se má provést.
 
-Simulované zařízení odešle seznam metod, které podporuje, do centra IoT, ke které je připojeno.
+Simulované zařízení odesílá seznam metod, které podporuje, do centra IoT, ke kterému je připojený.
 
-Další informace o souboru JavaScript, který implementuje chování zařízení, [najdete v tématu Principy chování modelu zařízení](../../articles/iot-accelerators/iot-accelerators-device-simulation-advanced-device.md).
+Další informace o souboru JavaScriptu, který implementuje chování zařízení, najdete v tématu [pochopení chování modelu zařízení](../../articles/iot-accelerators/iot-accelerators-device-simulation-advanced-device.md).
 
-Následující příklad určuje tři podporované metody a soubory JavaScriptu, které tyto metody implementují:
+Následující příklad určuje tři podporované metody a soubory jazyka JavaScript, které implementují tyto metody:
 
 ```json
 "CloudToDeviceMethods": {
@@ -234,22 +234,22 @@ Následující příklad určuje tři podporované metody a soubory JavaScriptu,
 }
 ```
 
-Soubory JavaScriptu pro výchozí simulovaná zařízení můžete vidět ve [složce skriptů](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels/scripts) na GitHubu. Podle konvence mají tyto soubory JavaScriptu příponu **-method,** která je odlišuje od souborů, které implementují chování stavu.
+Soubory JavaScriptu pro výchozí simulovaná zařízení můžete zobrazit ve [složce Scripts](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels/scripts) na GitHubu. Podle konvence mají tyto soubory JavaScriptu příponu **– způsob** , jak je odlišit od souborů, které implementují chování stavu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento článek popisuje, jak vytvořit vlastní simulované zařízení modelu. Tento článek vám ukázal, jak:
+Tento článek popisuje, jak vytvořit vlastní model simulovaného zařízení. Tento článek vám ukázal, jak:
 
 <!-- Repeat task list from intro -->
 >[!div class="checklist"]
-> * Definování simulovaného modelu zařízení pomocí souboru JSON
-> * Určení vlastností simulovaného zařízení
-> * Určete telemetrii, kterou simulované zařízení odesílá
-> * Určete metody typu cloud-to-device, na které zařízení reaguje
+> * Použití souboru JSON k definování simulovaného modelu zařízení
+> * Zadat vlastnosti simulovaného zařízení
+> * Určení telemetrie, kterou simulované zařízení odesílá
+> * Zadejte metody Cloud-zařízení, na které zařízení reaguje
 
-Nyní, když jste se dozvěděli o schématu JSON, je navrhovaným dalším krokem naučit se [implementovat chování simulovaného zařízení](iot-accelerators-remote-monitoring-device-behavior.md).
+Teď, když jste se naučili o schématu JSON, je navržený další krok, kde se dozvíte, jak [implementovat chování simulovaného zařízení](iot-accelerators-remote-monitoring-device-behavior.md).
 
-Další informace pro vývojáře o řešení vzdáleného monitorování naleznete v následujících tématech:
+Další informace o vývojářích řešení vzdáleného monitorování najdete v těchto tématech:
 
 * [Referenční příručka pro vývojáře](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
-* [Průvodce odstraňováním potíží s vývojáři](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)
+* [Příručka pro řešení potíží pro vývojáře](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)

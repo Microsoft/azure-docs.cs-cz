@@ -1,6 +1,6 @@
 ---
-title: Služba metadat instance Azure
-description: RESTful rozhraní získat informace o výpočetních virtuálních počítačích, sítě a nadcházející události údržby.
+title: Instance Metadata Service Azure
+description: Rozhraní RESTful pro získání informací o výpočetních, síťových a nadcházejících událostech týkajících se virtuálních počítačů.
 author: KumariSupriya
 manager: paulmey
 ms.service: virtual-machines
@@ -11,63 +11,63 @@ ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
 ms.openlocfilehash: cb9453e1a25f4042c45d4e89229b555c996d4c8b
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81870087"
 ---
 # <a name="azure-instance-metadata-service"></a>Služba metadat instance Azure
 
-Služba Metadat instance Azure (IMDS) poskytuje informace o aktuálně spuštěných instancích virtuálních počítačů a dá se použít ke správě a konfiguraci virtuálních počítačů.
-Poskytnuté informace zahrnují skladovou položku, konfiguraci sítě a nadcházející události údržby. Úplný seznam dat, která je k dispozici, naleznete v tématu [metadata rozhraní API](#metadata-apis).
+Služba Azure Instance Metadata Service (IMDS) poskytuje informace o aktuálně spuštěných instancích virtuálních počítačů a dá se použít ke správě a konfiguraci virtuálních počítačů.
+K dispozici jsou informace o SKU, konfiguraci sítě a nadcházejících událostech údržby. Úplný seznam dat, která jsou k dispozici, najdete v tématu [rozhraní API pro metadata](#metadata-apis).
 
-Služba metadat instance Azure je koncový bod REST přístupný všem virtuálním mům IaaS vytvořeným prostřednictvím [Správce prostředků Azure](https://docs.microsoft.com/rest/api/resources/).
-Koncový bod je k dispozici na známé nesměrovatelné`169.254.169.254`IP adrese ( ), ke které lze přistupovat pouze z virtuálního počítačů.
+Instance Metadata Service Azure je koncový bod REST dostupný všem virtuálním počítačům s IaaS vytvořeným prostřednictvím [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/).
+Koncový bod je k dispozici na dobře známé IP adrese, která není směrovatelný`169.254.169.254`(), ke které se dá získat přístup jenom z virtuálního počítače.
 
 > [!IMPORTANT]
-> Tato služba je **obecně dostupná** ve všech oblastech Azure.  Pravidelně přijímá aktualizace, aby zpřístupnit nové informace o instancích virtuálních strojů. Tato stránka odráží aktuální rozhraní [API metadat, která jsou](#metadata-apis) k dispozici.
+> Tato služba je **všeobecně dostupná** ve všech oblastech Azure.  Pravidelně přijímá aktualizace k vystavování nových informací o instancích virtuálních počítačů. Tato stránka odráží aktuální dostupné [rozhraní API metadat](#metadata-apis) .
 
-## <a name="service-availability"></a>Dostupnost služeb
+## <a name="service-availability"></a>Dostupnost služby
 
-Služba je dostupná v obecně dostupných oblastech Azure. Ne všechny verze rozhraní API může být k dispozici ve všech oblastech Azure.
+Služba je dostupná v všeobecně dostupných oblastech Azure. Ne všechny verze rozhraní API můžou být dostupné ve všech oblastech Azure.
 
-Oblasti                                        | Dostupnost?                                 | Podporované verze
+Oblasti                                        | Dostupnosti?                                 | Podporované verze
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Všechny obecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/)     | Obecně dostupné | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Obecně dostupné | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
-[Azure China 21Vianet](https://www.azure.cn/)                                            | Obecně dostupné | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
-[Azure (Německo)](https://azure.microsoft.com/overview/clouds/germany/)                    | Obecně dostupné | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+[Všechny všeobecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/)     | Všeobecně dostupné | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Všeobecně dostupné | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+[Azure China 21Vianet](https://www.azure.cn/)                                            | Všeobecně dostupné | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+[Azure (Německo)](https://azure.microsoft.com/overview/clouds/germany/)                    | Všeobecně dostupné | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
 
-Verze 2019-11-01 je aktuálně nasazena a nemusí být k dispozici ve všech oblastech.
+Verze 2019-11-01 je nyní nasazena a nemusí být k dispozici ve všech oblastech.
 
-Tato tabulka je aktualizována, pokud jsou k dispozici aktualizace služeb nebo jsou k dispozici nové podporované verze.
+Tato tabulka je aktualizována, pokud jsou k dispozici aktualizace služby nebo nové podporované verze.
 
-Chcete-li vyzkoušet službu metadat instance, vytvořte virtuální počítač ze [Správce prostředků Azure](https://docs.microsoft.com/rest/api/resources/) nebo na [portálu Azure](https://portal.azure.com) ve výše uvedených oblastech a postupujte podle níže uvedených příkladů.
-Další příklady dotazování IMDS lze nalézt na [ukázkách metadat instance Azure](https://github.com/microsoft/azureimds)
+Pokud chcete vyzkoušet Instance Metadata Service, vytvořte virtuální počítač z [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) nebo [Azure Portal](https://portal.azure.com) ve výše uvedených oblastech a použijte následující příklady.
+Další příklady dotazů na IMDS najdete v tématu [ukázky metadat instance Azure](https://github.com/microsoft/azureimds) .
 
 ## <a name="usage"></a>Využití
 
 ### <a name="versioning"></a>Správa verzí
 
-Služba metadat instance je verzí a zadání verze rozhraní API v požadavku HTTP je povinné.
+U Instance Metadata Service se používá verze a určení verze rozhraní API v požadavku HTTP je povinné.
 
-Nejnovější verze jsou uvedeny v této [tabulce dostupnosti](#service-availability).
+Můžete zobrazit nejnovější verze uvedené v této [tabulce dostupnosti](#service-availability).
 
-Při přidávání novějších verzí lze stále přistupovat k starším verzím z důvodu kompatibility, pokud vaše skripty mají závislosti na konkrétních formátech dat.
+Při přidávání novějších verzí je k zajištění kompatibility stále k dispozici starší verze, pokud vaše skripty mají závislosti na konkrétních formátech dat.
 
 Pokud není zadána žádná verze, je vrácena chyba se seznamem nejnovějších podporovaných verzí.
 
 > [!NOTE]
-> Odpověď je řetězec JSON. Následující příklad odpovědi je docela vytištěno pro čitelnost.
+> Odpověď je řetězec JSON. Následující příklad odpovědi je poměrně vytištěn z důvodu čitelnosti.
 
-**Žádost**
+**Request**
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance"
 ```
 
-**Reakce**
+**Základě**
 
 ```json
 {
@@ -80,77 +80,77 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance"
 }
 ```
 
-### <a name="using-headers"></a>Použití záhlaví
+### <a name="using-headers"></a>Používání hlaviček
 
-Při dotazování služby metadat instance je `Metadata: true` nutné zadat záhlaví, abyste zajistili, že požadavek nebyl neúmyslně přesměrován.
+Při dotazování na Instance Metadata Service musíte zadat hlavičku `Metadata: true` , abyste zajistili, že se žádost neúmyslně přesměrovala.
 
 ### <a name="retrieving-metadata"></a>Načítání metadat
 
-Metadata instance jsou dostupná pro spouštění virtuálních počítačů vytvořených a spravovaných pomocí [Správce prostředků Azure](https://docs.microsoft.com/rest/api/resources/). Přístup ke všem kategoriím dat pro instanci virtuálního počítače pomocí následujícího požadavku:
+Metadata instance jsou k dispozici pro spuštění virtuálních počítačů vytvořených nebo spravovaných pomocí [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/). Přístup ke všem kategoriím dat pro instanci virtuálního počítače pomocí tohoto požadavku:
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01"
 ```
 
 > [!NOTE]
-> Všechny dotazy metadat instance jsou malá a velká písmena.
+> U všech dotazů na metadata instance se rozlišují velká a malá písmena.
 
 ### <a name="data-output"></a>Výstup dat
 
-Ve výchozím nastavení služba metadat instance vrací data`Content-Type: application/json`ve formátu JSON ( ). Různá úložiště API však vrátit data v různých formátech, pokud je požadováno.
-Následující tabulka je odkazem na jiné formáty dat, které mohou podporovat úložiště API.
+Ve výchozím nastavení Instance Metadata Service vrátí data ve formátu JSON (`Content-Type: application/json`). V případě potřeby ale jiná rozhraní API vrací data v různých formátech.
+Následující tabulka je odkazem na jiné rozhraní API datových formátů, které může podporovat.
 
 Rozhraní API | Výchozí formát dat | Jiné formáty
 --------|---------------------|--------------
 /instance | json | text
-/naplánované události | json | Žádná
-/ověřeno | json | Žádná
+/scheduledevents | json | Žádná
+/attested | json | Žádná
 
-Chcete-li získat přístup k nevýchozímu formátu odpovědi, zadejte požadovaný formát jako parametr řetězce dotazu v požadavku. Příklad:
+Pokud chcete získat přístup k nevýchozímu formátu odpovědi, v žádosti určete požadovaný formát jako parametr řetězce dotazu. Příklad:
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
 ```
 
 > [!NOTE]
-> Pro listové `format=json` uzly nefunguje. Pro tyto `format=text` dotazy je třeba explicitně zadat, pokud je výchozí formát json.
+> U uzlů `format=json` typu list nefunguje. Pro tyto dotazy `format=text` je nutné explicitně zadat, pokud je výchozí formát JSON.
 
 ### <a name="security"></a>Zabezpečení
 
-Koncový bod služby Metadata instance je přístupný pouze z instance spuštěného virtuálního počítače na nesměrovatelné IP adrese. Kromě toho je služba `X-Forwarded-For` odmítnuta jako požadavek s hlavičkou.
-Požadavky musí také `Metadata: true` obsahovat záhlaví zajistit, že skutečný požadavek byl přímo určen a není součástí neúmyslné přesměrování.
+Koncový bod Instance Metadata Service je přístupný jenom v rámci spuštěné instance virtuálního počítače na IP adrese, která není směrovatelný. Kromě toho bude služba odmítla všechny `X-Forwarded-For` žádosti s hlavičkou.
+Žádosti musí také obsahovat `Metadata: true` hlavičku, aby bylo zajištěno, že skutečný požadavek byl přímo určen a není součástí neúmyslného přesměrování.
 
 ### <a name="error"></a>Chyba
 
-Pokud není nalezen datový prvek nebo poškozený požadavek, služba metadat instance vrátí standardní chyby HTTP. Příklad:
+Pokud se nenašel datový prvek nebo dojde k chybnému požadavku, Instance Metadata Service vrátí standardní chyby protokolu HTTP. Příklad:
 
 Stavový kód HTTP | Důvod
 ----------------|-------
 200 OK |
-400 Chybný požadavek | Při `Metadata: true` dotazování na listový uzel chybí záhlaví nebo formát
-404 Nenalezeno | Požadovaný prvek neexistuje.
-Metoda 405 není povolena. | Podporovány jsou pouze `GET` požadavky.
-410 Pryč | Opakujte po určité době po dobu maximálně 70 sekund
-429 – Příliš mnoho požadavků | Rozhraní API v současné době podporuje maximálně 5 dotazů za sekundu
-Chyba služby 500     | Po určité době opakujte akci
+400 Chybný požadavek | Chybějící `Metadata: true` záhlaví nebo chybějící formát při dotazování na uzel typu list
+404 Nenalezeno | Požadovaný element neexistuje.
+Metoda 405 není povolená. | Jsou `GET` podporovány pouze požadavky.
+410 pryč | Opakovat po uplynutí určité doby na maximum 70 sekund
+429 – Příliš mnoho požadavků | Rozhraní API aktuálně podporuje maximálně 5 dotazů za sekundu.
+Chyba služby 500     | Zkusit znovu za chvíli
 
 ### <a name="examples"></a>Příklady
 
 > [!NOTE]
-> Všechny odpovědi rozhraní API jsou řetězce JSON. Všechny následující příklad odpovědi jsou docela-tištěné pro čitelnost.
+> Všechny odpovědi rozhraní API jsou řetězce JSON. Všechny následující příklady odpovědí jsou poměrně vytištěny pro čitelnost.
 
 #### <a name="retrieving-network-information"></a>Načítání informací o síti
 
-**Žádost**
+**Request**
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01"
 ```
 
-**Reakce**
+**Základě**
 
 > [!NOTE]
-> Odpověď je řetězec JSON. Následující příklad odpovědi je docela vytištěno pro čitelnost.
+> Odpověď je řetězec JSON. Následující příklad odpovědi je poměrně vytištěn z důvodu čitelnosti.
 
 ```json
 {
@@ -188,16 +188,16 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network/interfac
 
 #### <a name="retrieving-all-metadata-for-an-instance"></a>Načítání všech metadat pro instanci
 
-**Žádost**
+**Request**
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019-06-01"
 ```
 
-**Reakce**
+**Základě**
 
 > [!NOTE]
-> Odpověď je řetězec JSON. Následující příklad odpovědi je docela vytištěno pro čitelnost.
+> Odpověď je řetězec JSON. Následující příklad odpovědi je poměrně vytištěn z důvodu čitelnosti.
 
 ```json
 {
@@ -310,27 +310,27 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019
 }
 ```
 
-#### <a name="retrieving-metadata-in-windows-virtual-machine"></a>Načítání metadat ve virtuálním počítači windows
+#### <a name="retrieving-metadata-in-windows-virtual-machine"></a>Načítají se metadata na virtuálním počítači s Windows.
 
-**Žádost**
+**Request**
 
-Metadata instance lze načíst v `curl` systému Windows prostřednictvím programu:
+Metadata instance lze v systému Windows načíst prostřednictvím `curl` programu:
 
 ```powershell
 curl -H @{'Metadata'='true'} http://169.254.169.254/metadata/instance?api-version=2019-06-01 | select -ExpandProperty Content
 ```
 
-Nebo prostřednictvím rutiny `Invoke-RestMethod` prostředí PowerShell:
+Nebo prostřednictvím rutiny `Invoke-RestMethod` PowerShellu:
 
 ```powershell
 
 Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/metadata/instance?api-version=2019-06-01 -Method get
 ```
 
-**Reakce**
+**Základě**
 
 > [!NOTE]
-> Odpověď je řetězec JSON. Následující příklad odpovědi je docela vytištěno pro čitelnost.
+> Odpověď je řetězec JSON. Následující příklad odpovědi je poměrně vytištěn z důvodu čitelnosti.
 
 ```json
 {
@@ -443,89 +443,89 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 }
 ```
 
-## <a name="metadata-apis"></a>Metadata API
+## <a name="metadata-apis"></a>Rozhraní API pro metadata
 
-Následující rozhraní API jsou k dispozici prostřednictvím koncového bodu metadat:
+Prostřednictvím koncového bodu metadat jsou k dispozici následující rozhraní API:
 
-Data | Popis | Zavedená verze
+Data | Popis | Představená verze
 -----|-------------|-----------------------
-ověřeno | Viz [Ověřená data](#attested-data) | 2018-10-01
-identity | Spravované identity pro prostředky Azure. Viz [získání přístupového tokenu](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
-Instance | Viz [Rozhraní API instance](#instance-api) | 2017-04-02
-plánované události | Viz [Plánované události](scheduled-events.md) | 2017-08-01
+ověřuje přítomnost | Viz [Attestation data](#attested-data) | 2018-10-01
+identity | Spravované identity pro prostředky Azure. Viz [získání přístupového tokenu](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) . | 2018-02-01
+případě | Viz [rozhraní API instance](#instance-api) | 2017-04-02
+scheduledevents | Viz [Scheduled Events](scheduled-events.md) | 2017-08-01
 
-### <a name="instance-api"></a>Instance API
+### <a name="instance-api"></a>Rozhraní API instance
 
-Prostřednictvím rozhraní API instance jsou k dispozici následující kategorie výpočetních prostředků:
+V rozhraní API instance jsou k dispozici následující výpočetní kategorie:
 
 > [!NOTE]
-> Prostřednictvím koncového bodu metadat jsou následující kategorie přístupné prostřednictvím instance/výpočetní
+> Prostřednictvím koncového bodu metadat jsou k dispozici následující kategorie prostřednictvím instance/Compute.
 
-Data | Popis | Zavedená verze
+Data | Popis | Představená verze
 -----|-------------|-----------------------
-azŽivotní prostředí | Prostředí Azure, ve kterém běží virtuální počítač | 2018-10-01
-Customdata | Tato funkce je v současné době zakázána a tuto dokumentaci aktualizujeme, jakmile bude k dispozici. | 2019-02-01
-location | Oblast Azure, ve které virtuální počítač běží | 2017-04-02
-jméno | Název virtuálního_ | 2017-04-02
-offer | Informace o nabídce image virtuálního počítače a je k dispozici jenom pro image nasazené z galerie obrázků Azure | 2017-04-02
-osTyp | Linux nebo Windows | 2017-04-02
-umístěníGroupId | [Skupina umístění](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) škálovací sady virtuálních strojů | 2017-08-01
-Plán | [Plán](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) obsahující název, produkt a vydavatel pro virtuální počítač, pokud se jedná o image Azure Marketplace | 2018-04-02
-platformaUpdateDomain |  [Aktualizace domény,](manage-availability.md) ve které virtuální hotel běží | 2017-04-02
-platformAFaultDomain | [Doména selhání,](manage-availability.md) ve které je virtuální mísa spuštěná | 2017-04-02
-Zprostředkovatel | Poskytovatel virtuálního virtuálního vztahu | 2018-10-01
-publicKeys | [Kolekce veřejných klíčů](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) přiřazených k virtuálnímu virtuálnímu jemu a cestám | 2018-04-02
-vydavatel | Vydavatel image virtuálního aplikace | 2017-04-02
-resourceGroupName | [Skupina prostředků](../../azure-resource-manager/management/overview.md) pro váš virtuální počítač | 2017-08-01
-resourceId | [Plně kvalifikované](https://docs.microsoft.com/rest/api/resources/resources/getbyid) ID zdroje | 2019-03-11
-Sku | Konkrétní skladová položka pro image virtuálního mísa | 2017-04-02
-storageProfile | Viz [Profil úložiště](#storage-profile) | 2019-06-01
+azEnvironment | Prostředí Azure, ve kterém je spuštěný virtuální počítač | 2018-10-01
+customData | Tato funkce je teď zakázaná a my tuto dokumentaci aktualizujeme, až bude dostupná. | 2019-02-01
+location | Oblast Azure, ve které je spuštěný virtuální počítač | 2017-04-02
+jméno | Název virtuálního počítače | 2017-04-02
+offer | Informace o nabídce pro image virtuálního počítače a jsou k dispozici jenom pro Image nasazené z Galerie imagí Azure | 2017-04-02
+osType | Linux nebo Windows | 2017-04-02
+placementGroupId | [Skupina umístění](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) vaší sady škálování virtuálních počítačů | 2017-08-01
+rozhraní | [Plánování](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) obsahující název, produkt a vydavatele pro virtuální počítač, pokud se jedná o Azure Marketplace image | 2018-04-02
+platformUpdateDomain |  [Aktualizujte doménu](manage-availability.md) , ve které je spuštěný virtuální počítač. | 2017-04-02
+platformFaultDomain | [Doména selhání](manage-availability.md) , ve kterém je spuštěný virtuální počítač | 2017-04-02
+Zprostředkovatel | Poskytovatel virtuálního počítače | 2018-10-01
+publicKeys | [Kolekce veřejných klíčů](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) přiřazených k virtuálnímu počítači a cestám | 2018-04-02
+vydavatel | Vydavatel image virtuálního počítače | 2017-04-02
+resourceGroupName | [Skupina prostředků](../../azure-resource-manager/management/overview.md) pro virtuální počítač | 2017-08-01
+resourceId | [Plně kvalifikované](https://docs.microsoft.com/rest/api/resources/resources/getbyid) ID prostředku | 2019-03-11
+skladové | Konkrétní SKU pro bitovou kopii virtuálního počítače | 2017-04-02
+storageProfile | Viz [profil úložiště](#storage-profile) | 2019-06-01
 subscriptionId | Předplatné Azure pro virtuální počítač | 2017-08-01
-tags | [Značky](../../azure-resource-manager/management/tag-resources.md) pro váš virtuální počítač  | 2017-08-01
-tagySeznam | Značky formátované jako pole JSON pro snadnější programovou analýzu  | 2019-06-04
-version | Verze image virtuálního aplikace | 2017-04-02
-vmId | [Jedinečný identifikátor](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) virtuálního virtuálního soudu | 2017-04-02
-vmScaleSetName | [Škálovací sada virtuálních strojů Název](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) škálovací sady virtuálních strojů | 2017-12-01
+tags | [Značky](../../azure-resource-manager/management/tag-resources.md) pro virtuální počítač  | 2017-08-01
+tagsList | Značky formátované jako pole JSON pro snazší programovou analýzu  | 2019-06-04
+version | Verze image virtuálního počítače | 2017-04-02
+vmId | [Jedinečný identifikátor](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) pro virtuální počítač | 2017-04-02
+vmScaleSetName | [Název sady škálování virtuálního počítače](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro sadu škálování virtuálního počítače | 2017-12-01
 vmSize | [Velikost virtuálního počítače](sizes.md) | 2017-04-02
 zóna | [Zóna dostupnosti](../../availability-zones/az-overview.md) virtuálního počítače | 2017-12-01
 
-Prostřednictvím rozhraní API instance jsou k dispozici následující kategorie sítě:
+V rozhraní API instance jsou k dispozici následující kategorie sítě:
 
 > [!NOTE]
-> Prostřednictvím koncového bodu metadat jsou prostřednictvím instance/sítě/rozhraní přístupné následující kategorie
+> Prostřednictvím koncového bodu metadat jsou k dispozici následující kategorie prostřednictvím instance/sítě/rozhraní.
 
-Data | Popis | Zavedená verze
+Data | Popis | Představená verze
 -----|-------------|-----------------------
-ipv4/privateIpAdresa | Místní adresa IPv4 virtuálního soudu | 2017-04-02
-ipv4/publicIpAdresa | Veřejná adresa IPv4 virtuálního virtuálního mísy | 2017-04-02
-podsíť/adresa | Adresa podsítě virtuálního soudu | 2017-04-02
+IPv4/privateIpAddress | Místní IPv4 adresa virtuálního počítače | 2017-04-02
+IPv4/publicIpAddress | Veřejná IPv4 adresa virtuálního počítače | 2017-04-02
+podsíť/adresa | Adresa podsítě virtuálního počítače | 2017-04-02
 podsíť/předpona | Předpona podsítě, příklad 24 | 2017-04-02
-adresa ipv6/ipAdresa | Místní adresa IPv6 virtuálního soudu | 2017-04-02
-macAddress | Adresa virtuálního počítače mac | 2017-04-02
+IPv6/ipAddress | Místní IPv6 adresa virtuálního počítače | 2017-04-02
+macAddress | Adresa MAC virtuálního počítače | 2017-04-02
 
 ## <a name="attested-data"></a>Ověřená data
 
-Součástí scénáře obsluhovanéslužbou metadat instance je poskytnutí záruk, že poskytnutá data pocházejí z Azure. Část těchto informací podepisujeme, aby si image marketplace mohly být jistí, že se v Azure nachází jejich image.
+Součástí scénáře, který obsluhuje Instance Metadata Service, je poskytnout záruky, že poskytnutá data přicházejí z Azure. Tyto informace podepisujeme, aby image na webu Marketplace mohly mít jistotu, že se jedná o image běžící v Azure.
 
-### <a name="example-attested-data"></a>Příklad Ověřená data
+### <a name="example-attested-data"></a>Příklad ověřených dat
 
 > [!NOTE]
-> Všechny odpovědi rozhraní API jsou řetězce JSON. Následující příklad odpovědi jsou docela vytištěny pro čitelnost.
+> Všechny odpovědi rozhraní API jsou řetězce JSON. Následující příklad odpovědí je poměrně vytištěn z důvodu čitelnosti.
 
- **Žádost**
+ **Request**
 
  ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890"
 
 ```
 
-Api-verze je povinné pole. V [části dostupnosti služby](#service-availability) naleznete podporované verze rozhraní API.
-Nonce je volitelný desetimístný řetězec. Pokud není k dispozici, IMDS vrátí aktuální časové razítko UTC na jeho místě. Z důvodu mechanismu ukládání do mezipaměti iMDS dříve uložené hodnoty nonce v mezipaměti může být vrácena.
+Verze API-Version je povinné pole. Podporované verze rozhraní API najdete v [části dostupnost služby](#service-availability) .
+Hodnota nonce je nepovinný řetězec s deseti číslicemi. Pokud není zadán, vrátí IMDS aktuální časové razítko UTC na svém místě. Z důvodu mechanismu ukládání do mezipaměti IMDS může být vrácena hodnota náhodně v mezipaměti.
 
- **Reakce**
+ **Základě**
 
 > [!NOTE]
-> Odpověď je řetězec JSON. Následující příklad odpovědi je docela vytištěno pro čitelnost.
+> Odpověď je řetězec JSON. Následující příklad odpovědi je poměrně vytištěn z důvodu čitelnosti.
 
  ```json
 {
@@ -533,31 +533,31 @@ Nonce je volitelný desetimístný řetězec. Pokud není k dispozici, IMDS vrá
 }
 ```
 
-Objekt blob podpisu je podepsaná verze dokumentu [pkcs7.](https://aka.ms/pkcs7) Obsahuje certifikát používaný pro podepisování spolu s podrobnostmi o virtuálním ms, jako je vmId, sku, nonce, subscriptionId, timeStamp pro vytvoření a vypršení platnosti dokumentu a informace o plánu o bitové kopii. Informace o plánu se vyplňují jenom pro image místa Azure Market. Certifikát lze extrahovat z odpovědi a použít k ověření, že odpověď je platná a pochází z Azure.
+Objekt BLOB podpisu je verze dokumentu s podpisem [PKCS7](https://aka.ms/pkcs7) . Obsahuje certifikát použitý k podepsání spolu s podrobnostmi o virtuálním počítači, jako je například vmId, SKU, nonce, subscriptionId, časové razítko pro vytvoření a vypršení platnosti dokumentu a informace o plánu obrázku. Informace o plánu se naplní jenom pro image na místě na trhu Azure. Certifikát se dá extrahovat z odpovědi a použít k ověření, že odpověď je platná a přichází z Azure.
 
-#### <a name="retrieving-attested-metadata-in-windows-virtual-machine"></a>Načítání ověřených metadat ve virtuálním počítači windows
+#### <a name="retrieving-attested-metadata-in-windows-virtual-machine"></a>Načítají se ověřená metadata ve virtuálním počítači s Windows.
 
- **Žádost**
+ **Request**
 
-Metadata instance lze načíst v systému `curl`Windows pomocí nástroje PowerShell :
+Metadata instance lze v systému Windows načíst prostřednictvím nástroje `curl`PowerShell:
 
  ```powershell
 curl -H @{'Metadata'='true'} "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890" | select -ExpandProperty Content
 ```
 
- Nebo přes `Invoke-RestMethod` rutinu:
+ Nebo prostřednictvím `Invoke-RestMethod` rutiny:
 
  ```powershell
 Invoke-RestMethod -Headers @{"Metadata"="true"} -URI "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890" -Method get
 ```
 
-Api-verze je povinné pole. V části dostupnosti služby naleznete podporované verze rozhraní API.
-Nonce je volitelný desetimístný řetězec. Pokud není k dispozici, IMDS vrátí aktuální časové razítko UTC na jeho místě. Z důvodu mechanismu ukládání do mezipaměti iMDS dříve uložené hodnoty nonce v mezipaměti může být vrácena.
+Verze API-Version je povinné pole. Podporované verze rozhraní API najdete v části dostupnost služby.
+Hodnota nonce je nepovinný řetězec s deseti číslicemi. Pokud není zadán, vrátí IMDS aktuální časové razítko UTC na svém místě. Z důvodu mechanismu ukládání do mezipaměti IMDS může být vrácena hodnota náhodně v mezipaměti.
 
- **Reakce**
+ **Základě**
 
 > [!NOTE]
-> Odpověď je řetězec JSON. Následující příklad odpovědi je docela vytištěno pro čitelnost.
+> Odpověď je řetězec JSON. Následující příklad odpovědi je poměrně vytištěn z důvodu čitelnosti.
 
  ```json
 {
@@ -565,21 +565,21 @@ Nonce je volitelný desetimístný řetězec. Pokud není k dispozici, IMDS vrá
 }
 ```
 
-Objekt blob podpisu je podepsaná verze dokumentu [pkcs7.](https://aka.ms/pkcs7) Obsahuje certifikát používaný pro podepisování spolu s podrobnostmi o virtuálním ms, jako je vmId, sku, nonce, subscriptionId, timeStamp pro vytvoření a vypršení platnosti dokumentu a informace o plánu o bitové kopii. Informace o plánu se vyplňují jenom pro image místa Azure Market. Certifikát lze extrahovat z odpovědi a použít k ověření, že odpověď je platná a pochází z Azure.
+Objekt BLOB podpisu je verze dokumentu s podpisem [PKCS7](https://aka.ms/pkcs7) . Obsahuje certifikát použitý k podepsání spolu s podrobnostmi o virtuálním počítači, jako je například vmId, SKU, nonce, subscriptionId, časové razítko pro vytvoření a vypršení platnosti dokumentu a informace o plánu obrázku. Informace o plánu se naplní jenom pro image na místě na trhu Azure. Certifikát se dá extrahovat z odpovědi a použít k ověření, že odpověď je platná a přichází z Azure.
 
 ## <a name="example-scenarios-for-usage"></a>Ukázkové scénáře pro využití  
 
 ### <a name="tracking-vm-running-on-azure"></a>Sledování virtuálního počítače spuštěného v Azure
 
-Jako poskytovatel služeb můžete vyžadovat sledování počtu virtuálních počítačů se spuštěným softwarem nebo máte agenty, kteří potřebují sledovat jedinečnost virtuálního počítače. Chcete-li získat jedinečné ID pro virtuální hod, použijte `vmId` pole ze služby metadat instance.
+Jako poskytovatel služeb budete možná potřebovat sledovat počet virtuálních počítačů, na kterých běží váš software, nebo mít agenty, kteří potřebují ke sledování jedinečnosti virtuálního počítače. Aby bylo možné získat jedinečné ID pro virtuální počítač, použijte `vmId` pole z instance metadata Service.
 
-**Žádost**
+**Request**
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
 ```
 
-**Reakce**
+**Základě**
 
 ```text
 5c08b38e-4d57-4c23-ac45-aca61037f084
@@ -587,17 +587,17 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api
 
 ### <a name="placement-of-containers-data-partitions-based-faultupdate-domain"></a>Umístění kontejnerů do domény selhání nebo aktualizační domény založené na datových oddílech
 
-Pro určité scénáře je umístění různých replik dat prvořadé. Například [umístění replikhdfs](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps) nebo umístění kontejneru prostřednictvím [orchestrátoru](https://kubernetes.io/docs/user-guide/node-selection/) můžete potřebovat znát `platformFaultDomain` a `platformUpdateDomain` virtuální počítač běží na.
-Můžete také použít [zóny dostupnosti](../../availability-zones/az-overview.md) pro instance, aby se tato rozhodnutí.
-Tato data můžete zadat přímo prostřednictvím služby metadat instance.
+V některých scénářích je umístění různých replik dat primárním významem. Například [umístění repliky HDFS](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps) nebo umístění kontejneru přes [Orchestrator](https://kubernetes.io/docs/user-guide/node-selection/) vám může vyžadovat, abyste věděli `platformFaultDomain` `platformUpdateDomain` , na kterém virtuální počítač běží.
+K provedení těchto rozhodnutí můžete použít také [zóny dostupnosti](../../availability-zones/az-overview.md) pro instance.
+Tato data můžete zadávat přímo prostřednictvím Instance Metadata Service.
 
-**Žádost**
+**Request**
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
 ```
 
-**Reakce**
+**Základě**
 
 ```text
 0
@@ -605,18 +605,18 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platform
 
 ### <a name="getting-more-information-about-the-vm-during-support-case"></a>Získání dalších informací o virtuálním počítači pro případ podpory
 
-Jako poskytovatel služeb můžete získat volání podpory, kde byste se chtěli dozvědět více informací o virtuálním virtuálním vztahu. Požádat zákazníka o sdílení výpočetních metadat můžete poskytnout základní informace pro pracovníky podpory vědět o druhu virtuálního počítače v Azure.
+Jako poskytovatel služeb můžete obdržet volání podpory, kde byste chtěli získat další informace o virtuálním počítači. Dotazování zákazníků na sdílení výpočetních metadat může poskytnout základní informace o tom, že profesionální pracovník podpory ví o typu virtuálního počítače v Azure.
 
-**Žádost**
+**Request**
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-version=2019-06-01"
 ```
 
-**Reakce**
+**Základě**
 
 > [!NOTE]
-> Odpověď je řetězec JSON. Následující příklad odpovědi je docela vytištěno pro čitelnost.
+> Odpověď je řetězec JSON. Následující příklad odpovědi je poměrně vytištěn z důvodu čitelnosti.
 
 ```json
 {
@@ -705,52 +705,52 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 
 ### <a name="getting-azure-environment-where-the-vm-is-running"></a>Získání prostředí Azure, ve kterém je virtuální počítač spuštěný
 
-Azure má různé suverénní cloudy, jako je [Azure Government](https://azure.microsoft.com/overview/clouds/government/). Někdy potřebujete prostředí Azure, abyste se rozhodli za běhu. Následující ukázka ukazuje, jak lze dosáhnout tohoto chování.
+Azure má různé cloudy svrchovan jako [Azure Government](https://azure.microsoft.com/overview/clouds/government/). Někdy potřebujete prostředí Azure, abyste mohli provádět určitá rozhodnutí za běhu. Následující příklad ukazuje, jak lze dosáhnout tohoto chování.
 
-**Žádost**
+**Request**
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
 ```
 
-**Reakce**
+**Základě**
 ```bash
 AzurePublicCloud
 ```
 
-Oblasti a hodnoty prostředí Azure jsou uvedeny níže.
+Níže jsou uvedené oblasti a hodnoty prostředí Azure.
 
  Oblasti | Prostředí Azure
 ---------|-----------------
-[Všechny obecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/)     | AzurePublicCloud
+[Všechny všeobecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/)     | AzurePublicCloud
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
 [Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china)          | AzureChinaCloud
 [Azure (Německo)](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
 
-### <a name="getting-the-tags-for-the-vm"></a>Získání značek pro virtuální hod
+### <a name="getting-the-tags-for-the-vm"></a>Získávání značek pro virtuální počítač
 
-Značky mohou být použity pro váš virtuální počítač Azure logicky uspořádat do taxonomie. Značky přiřazené k virtuálnímu virtuálnímu jemu se načítají pomocí níže uvedeného požadavku.
+Na VIRTUÁLNÍm počítači Azure možná byly aplikovány značky, aby je bylo možné logicky uspořádat do taxonomie. Značky přiřazené k virtuálnímu počítači se dají načíst pomocí níže uvedeného požadavku.
 
-**Žádost**
+**Request**
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tags?api-version=2018-10-01&format=text"
 ```
 
-**Reakce**
+**Základě**
 
 ```text
 Department:IT;Environment:Test;Role:WebRole
 ```
 
-Pole `tags` je řetězec se značkami oddělenými středníky. To může být problém, pokud středníky jsou použity v samotných značkách. Pokud analyzátor je zapsán programově extrahovat značky, `tagsList` měli byste se spolehnout na pole, které je pole JSON bez oddělovačů a následně snadněji analyzovat.
+`tags` Pole je řetězec, jehož značky jsou odděleny středníky. To může být problém, pokud se v samotných značkách používají středníky. Pokud je analyzátor napsán pro programové extrakci značek, měli byste spoléhat na `tagsList` pole, které je polem JSON bez oddělovačů, a následně snadněji analyzovat.
 
-**Žádost**
+**Request**
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04&format=JSON"
 ```
 
-**Reakce**
+**Základě**
 
 ```json
 [
@@ -771,12 +771,12 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList
 
 ### <a name="validating-that-the-vm-is-running-in-azure"></a>Ověření spuštění virtuálního počítače v Azure
 
-Dodavatelé marketplace chtějí zajistit, aby jejich software byl licencován ke spuštění jenom v Azure. Pokud někdo zkopíruje virtuální pevný disk do místního prostředí, měl by mít možnost to zjistit. Voláním do služby metadat instance mohou dodavatelé marketplace získat podepsaná data, která zaručí odezvu jenom z Azure.
+Dodavatelé na webu Marketplace chtějí zajistit, aby byl software licencován pro spouštění pouze v Azure. Pokud někdo zkopíruje virtuální pevný disk do místního prostředí, pak by měl mít možnost ho detekovat. Voláním do Instance Metadata Service můžou dodavatelé na webu Marketplace získat podepsaná data, která garantuje odpověď jenom z Azure.
 
 > [!NOTE]
-> Vyžaduje instalaci jq.
+> Vyžaduje instalaci JQ.
 
-**Žádost**
+**Request**
 
  ```bash
   # Get the signature
@@ -794,7 +794,7 @@ Dodavatelé marketplace chtějí zajistit, aby jejich software byl licencován k
   openssl smime -verify -in sign.pk7 -inform pem -noverify
  ```
 
- **Reakce**
+ **Základě**
 
 ```json
 Verification successful
@@ -818,29 +818,29 @@ Verification successful
 
 Data | Popis
 -----|------------
-Nonce | Uživatel zadaný volitelný řetězec s požadavkem. Pokud v požadavku nebylo zadáno žádné nonce, je vráceno aktuální časové razítko UTC.
-Plán | [Plánování](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) virtuálního počítače v něm je image Azure Marketplace, obsahuje název, produkt a vydavatele
-časové razítko/createdOn | Časové razítko UTC, při kterém byl vytvořen první podepsaný dokument
-timestamp/expiresOn | Časové razítko UTC, při kterém vyprší platnost podepsaného dokumentu
-vmId |  [Jedinečný identifikátor](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) virtuálního virtuálního soudu
-subscriptionId | Předplatné Azure pro virtuální počítač, které bylo zavedeno`2019-04-30`
-Sku | Konkrétní skladová položka pro image virtuálního virtuálního montova, zavedená`2019-11-01`
+generované | Uživatel zadal nepovinný řetězec s požadavkem. Pokud se v požadavku nezadala hodnota nonce, vrátí se aktuální časové razítko UTC.
+rozhraní | [Naplánování](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) virtuálního počítače v tomto Azure Marketplace imagi obsahuje název, produkt a vydavatele.
+časové razítko/createdOn | Časové razítko UTC, na kterém byl vytvořen první podepsaný dokument
+časové razítko/expiresOn | Časové razítko UTC, na kterém vyprší platnost podepsaného dokumentu
+vmId |  [Jedinečný identifikátor](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) pro virtuální počítač
+subscriptionId | Předplatné Azure pro virtuální počítač představené v`2019-04-30`
+skladové | Konkrétní SKU pro bitovou kopii virtuálního počítače, představená v`2019-11-01`
 
 #### <a name="verifying-the-signature"></a>Ověření podpisu
 
-Jakmile získáte výše uvedený podpis, můžete ověřit, zda je podpis od společnosti Microsoft. Můžete také ověřit zprostředkující certifikát a řetěz certifikátů. Nakonec můžete ověřit, zda je ID předplatného správné.
+Jakmile získáte podpis výše, můžete ověřit, že signatura pochází od Microsoftu. Můžete také ověřit zprostředkující certifikát a řetěz certifikátů. Nakonec můžete ověřit, jestli je ID předplatného správné.
 
 > [!NOTE]
-> Certifikát pro veřejný cloud a suverénní cloud se bude lišit.
+> Certifikát pro veřejný cloud a Cloud z svrchovaného cloudu se liší.
 
  Cloud | Certifikát
 ---------|-----------------
-[Všechny obecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/)     | *.metadata.azure.com
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | *.metadata.azure.us
-[Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | *.metadata.azure.cn
-[Azure (Německo)](https://azure.microsoft.com/overview/clouds/germany/)                    | *.metadata.microsoftazure.de
+[Všechny všeobecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/)     | *. metadata.azure.com
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | *. metadata.azure.us
+[Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | *. metadata.azure.cn
+[Azure (Německo)](https://azure.microsoft.com/overview/clouds/germany/)                    | *. metadata.microsoftazure.de
 
-Existuje známý problém kolem certifikátu používaného k podepisování. Certifikáty nemusí mít přesnou `metadata.azure.com` shodu pro veřejný cloud. Proto by ověření certifikace mělo `.metadata.azure.com` umožnit běžný název z libovolné subdomény.
+Došlo k známému problému kolem certifikátu použitého k podepsání. Certifikáty nemusí mít přesnou shodu `metadata.azure.com` pro veřejný cloud. Ověřování certifikace by proto mělo umožňovat běžný název z jakékoli `.metadata.azure.com` subdomény.
 
 ```bash
 
@@ -856,26 +856,26 @@ openssl x509 -noout -issuer -in intermediate.pem
 openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -untrusted intermediate.pem signer.pem
 ```
 
-V případech, kdy zprostředkující certifikát nelze stáhnout z důvodu síťových omezení během ověřování, lze zprostředkující certifikát připnout. Azure však převede certifikáty podle standardního výkonu pki praxe. Připnuté certifikáty by musely být aktualizovány, když dojde k přechodu. Kdykoli se plánuje změna aktualizace zprostředkujícího certifikátu, blog Azure se aktualizuje a zákazníci Azure budou upozorněni. Zprostředkující certifikáty naleznete [zde](https://www.microsoft.com/pki/mscorp/cps/default.htm). Zprostředkující certifikáty pro každou oblast se mohou lišit.
+V případech, kdy se zprostředkující certifikát nedá stáhnout kvůli omezením sítě během ověřování, jde zprostředkující certifikát připnout. Azure ale převezme certifikáty podle standardních postupů PKI. Připnuté certifikáty by se musely aktualizovat, když dojde k přechodu. Pokaždé, když se naplánuje změna aktualizace zprostředkujícího certifikátu, bude se aktualizovat blog Azure a budou se zákazníkům Azure informovat. Zprostředkující certifikáty najdete [tady](https://www.microsoft.com/pki/mscorp/cps/default.htm). Zprostředkující certifikáty pro jednotlivé oblasti se můžou lišit.
 
 > [!NOTE]
-> Zprostředkující certifikát pro Azure China 21Vianet bude od společnosti DigiCert Global Root CA místo z Baltimoru.
-Také pokud jste připnulzí certifikáty pro Azure China jako součást změny kořenového řetězce, zprostředkující certifikáty bude muset být aktualizován.
+> Zprostředkující certifikát pro Azure Čína 21Vianet bude z globální kořenové certifikační autority DigiCert místo Baltimore.
+I když jste připnuli zprostředkující certifikáty pro Azure Čína jako součást změny kořenového certifikační autority, bude nutné aktualizovat zprostředkující certifikáty.
 
-### <a name="failover-clustering-in-windows-server"></a>Clustering s podporou převzetí služeb při selhání v systému Windows Server
+### <a name="failover-clustering-in-windows-server"></a>Clustering s podporou převzetí služeb při selhání ve Windows serveru
 
-Pro určité scénáře je při dotazování služby metadat instance pomocí clusteringu s podporou převzetí služeb při selhání nutné přidat trasu do směrovací tabulky.
+V některých scénářích při dotazování na Instance Metadata Service s clusteringem s podporou převzetí služeb při selhání je nutné přidat trasu do směrovací tabulky.
 
 1. Otevřete příkazový řádek s oprávněními správce.
 
-2. Spusťte následující příkaz a poznamenejte`0.0.0.0`si adresu rozhraní pro cíl sítě ( ) v tabulce směrování IPv4.
+2. Spusťte následující příkaz a poznamenejte si adresu rozhraní pro cílovou síť (`0.0.0.0`) v tabulce směrování IPv4.
 
 ```bat
 route print
 ```
 
 > [!NOTE]
-> Následující příklad výstupu z virtuálního zařízení windows server s povoleným clusterem s podporou převzetí služeb při selhání obsahuje pouze směrovací tabulku IPv4 pro jednoduchost.
+> Následující příklad výstupu z virtuálního počítače s Windows serverem a s povoleným clusterem s podporou převzetí služeb při selhání obsahuje jenom tabulku směrování IPv4 pro jednoduchost.
 
 ```bat
 IPv4 Route Table
@@ -901,7 +901,7 @@ Network Destination        Netmask          Gateway       Interface  Metric
   255.255.255.255  255.255.255.255         On-link         10.0.1.10    266
 ```
 
-1. Spusťte následující příkaz a v tomto příkladu použijte adresu rozhraní pro cíl sítě (`0.0.0.0`), která je (`10.0.1.10`).
+1. Spusťte následující příkaz a použijte adresu rozhraní pro cíl sítě (`0.0.0.0`), který je (`10.0.1.10`) v tomto příkladu.
 
 ```bat
 route add 169.254.169.254/32 10.0.1.10 metric 1 -p
@@ -909,63 +909,63 @@ route add 169.254.169.254/32 10.0.1.10 metric 1 -p
 
 ### <a name="storage-profile"></a>Profil úložiště
 
-Služba metadat instance může poskytnout podrobnosti o disky úložiště přidružené k virtuálnímu počítače. Tato data lze nalézt na instanci/compute/storageProfile koncového bodu.
+Instance Metadata Service může poskytnout podrobnosti o discích úložiště přidružených k virtuálnímu počítači. Tato data najdete na koncovém bodu instance/výpočty/storageProfile.
 
-Profil úložiště virtuálního počítače je rozdělen do tří kategorií – odkaz na image, disk operačního systému a datové disky.
+Profil úložiště virtuálního počítače se dělí na tři kategorie – odkaz na image, disk s operačním systémem a datové disky.
 
-Referenční objekt obrázku obsahuje následující informace o obrázku operačního systému:
+Objekt odkazu na bitovou kopii obsahuje následující informace o imagi operačního systému:
 
 Data    | Popis
 --------|-----------------
 id      | ID prostředku
-offer   | Nabídka platformy nebo image tržiště
-vydavatel | Vydavatel obrázků
-Sku     | Obrázek sku
-version | Verze platformy nebo image tržiště
+offer   | Nabídka platformy nebo Image Marketplace
+vydavatel | Vydavatel obrázku
+skladové     | SKU image
+version | Verze image platformy nebo webu Marketplace
 
-Objekt disku operačního systému obsahuje následující informace o disku operačního systému používaném virtuálním počítačem:
-
-Data    | Popis
---------|-----------------
-Mezipaměti | Požadavky na ukládání do mezipaměti
-createOption | Informace o tom, jak byl virtuální virtuální mísa vytvořen
-diffDiskSettings | Nastavení dočasného disku
-diskVelikostGB | Velikost disku v GB
-image   | Zdrojový uživatelský obraz virtuální pevný disk
-Lun     | Číslo logické jednotky disku
-managedDisk | Parametry spravovaného disku
-jméno    | Název disku
-Vhd     | Virtuální pevný disk
-writeAcceleratorEnabled | Zda je na disku povolen program writeAccelerator
-
-Pole datových disků obsahuje seznam datových disků připojených k virtuálnímu počítače. Každý objekt datového disku obsahuje následující informace:
+Objekt disku operačního systému obsahuje následující informace o disku s operačním systémem, který používá virtuální počítač:
 
 Data    | Popis
 --------|-----------------
-Mezipaměti | Požadavky na ukládání do mezipaměti
-createOption | Informace o tom, jak byl virtuální virtuální mísa vytvořen
+vyrovnávací | Požadavky na ukládání do mezipaměti
+createOption | Informace o tom, jak byl virtuální počítač vytvořen
 diffDiskSettings | Nastavení dočasného disku
-diskVelikostGB | Velikost disku v GB
-nastavení šifrování | Nastavení šifrování disku
-image   | Zdrojový uživatelský obraz virtuální pevný disk
+diskSizeGB | Velikost disku v GB
+image   | Virtuální pevný disk zdrojové image uživatele
+(     | Logické číslo jednotky disku
 managedDisk | Parametry spravovaného disku
 jméno    | Název disku
-osTyp  | Typ operačního systému zahrnutého na disku
-Vhd     | Virtuální pevný disk
-writeAcceleratorEnabled | Zda je na disku povolen program writeAccelerator
+virtuálního     | Virtuální pevný disk
+writeAcceleratorEnabled | Bez ohledu na to, jestli je na disku povolená writeAccelerator
 
-Následuje příklad, jak se dotazovat na informace o úložišti virtuálního zařízení.
+Pole datových disků obsahuje seznam datových disků připojených k virtuálnímu počítači. Každý objekt datového disku obsahuje následující informace:
 
-**Žádost**
+Data    | Popis
+--------|-----------------
+vyrovnávací | Požadavky na ukládání do mezipaměti
+createOption | Informace o tom, jak byl virtuální počítač vytvořen
+diffDiskSettings | Nastavení dočasného disku
+diskSizeGB | Velikost disku v GB
+encryptionSettings | Nastavení šifrování disku
+image   | Virtuální pevný disk zdrojové image uživatele
+managedDisk | Parametry spravovaného disku
+jméno    | Název disku
+osType  | Typ operačního systému zahrnutý na disku
+virtuálního     | Virtuální pevný disk
+writeAcceleratorEnabled | Bez ohledu na to, jestli je na disku povolená writeAccelerator
+
+Následuje příklad, jak zadat dotaz na informace o úložišti virtuálního počítače.
+
+**Request**
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/storageProfile?api-version=2019-06-01"
 ```
 
-**Reakce**
+**Základě**
 
 > [!NOTE]
-> Odpověď je řetězec JSON. Následující příklad odpovědi je docela vytištěno pro čitelnost.
+> Odpověď je řetězec JSON. Následující příklad odpovědi je poměrně vytištěn z důvodu čitelnosti.
 
 ```json
 {
@@ -1023,7 +1023,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/storageP
 }
 ```
 
-### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>Příklady volání služby metadat pomocí různých jazyků uvnitř virtuálního mísa 
+### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>Příklady volání služby metadat pomocí různých jazyků v rámci virtuálního počítače 
 
 Jazyk | Příklad
 ---------|----------------
@@ -1042,29 +1042,29 @@ Puppet | https://github.com/keirans/azuremetadata
 
 ## <a name="faq"></a>Nejčastější dotazy
 
-1. Dostávám chybu `400 Bad Request, Required metadata header not specified`. Co to znamená?
-   * Služba metadat instance vyžaduje, `Metadata: true` aby byla hlavička předána v požadavku. Předání této hlavičky ve volání REST umožňuje přístup ke službě metadat instance.
-2. Proč nezískávám informace o výpočtu pro svůj virtuální počítač?
-   * Služba metadat instance v současné době podporuje jenom instance vytvořené pomocí Správce prostředků Azure. V budoucnu může být přidána podpora virtuálních virtuálních měn cloudových služeb.
-3. Virtuální počítač jsem vytvořil přes Azure Resource Manager před nějakou dobu zpět. Proč se mi nezobrazují informace o výpočetních metadatech?
-   * Pro všechny virtuální počítače vytvořené po září 2016 přidejte [značku,](../../azure-resource-manager/management/tag-resources.md) která začne vidět výpočetní metadata. Pro starší virtuální počítače (vytvořené před zářím 2016) přidejte nebo odeberte rozšíření nebo datové disky do virtuálního počítače, abyste aktualizovali metadata.
-4. Nevidím všechna data naplněná pro novou verzi
-   * Pro všechny virtuální počítače vytvořené po září 2016 přidejte [značku,](../../azure-resource-manager/management/tag-resources.md) která začne vidět výpočetní metadata. Pro starší virtuální počítače (vytvořené před zářím 2016) přidejte nebo odeberte rozšíření nebo datové disky do virtuálního počítače, abyste aktualizovali metadata.
-5. Proč se zobrazuje chyba? `500 Internal Server Error`
-   * Opakujte svůj požadavek na základě exponenciálního vypnutí systému. Pokud problém přetrvává, obraťte se na podporu Azure.
-6. Kde mohu sdílet další otázky/ komentáře?
-   * Pošlete své https://feedback.azure.compřipomínky k aplikaci .
-7. Fungovalo by to pro instanci škálovací sady virtuálních strojů?
-   * Služba Metadata yes je k dispozici pro instance škálovací sady.
-8. Jak získám podporu pro službu?
-   * Chcete-li získat podporu pro službu, vytvořte problém podpory na portálu Azure pro virtuální počítač, kde po dlouhých opakovaných pokusech nemůžete získat odpověď metadat.
-9. Dostal jsem žádost načasovaný na můj hovor na službu?
-   * Metadata volání musí být z primární IP adresy přiřazené k primární síťové karty virtuálního počítače, navíc v případě, že jste změnili trasy musí být trasa pro 169.254.0.0/16 adresu ze síťové karty.
-10. Aktualizoval i značky ve škálovací sadě virtuálních strojů, ale nezobrazují se v instancích na rozdíl od virtuálních počítačů?
-    * V současné době pro ScaleSets značky zobrazit pouze na virtuální počítač při restartování/reimage/nebo změny disku instance.
+1. Zobrazuje se chyba `400 Bad Request, Required metadata header not specified`. Co to znamená?
+   * Instance Metadata Service vyžaduje, aby se `Metadata: true` hlavička předala v žádosti. Předání této hlavičky v volání REST umožňuje přístup k Instance Metadata Service.
+2. Proč mi nezískávám výpočetní informace pro svůj virtuální počítač?
+   * V současné době Instance Metadata Service podporuje jenom instance vytvořené pomocí Azure Resource Manager. V budoucnu se může přidat podpora virtuálních počítačů cloudových služeb.
+3. Tento virtuální počítač jsem vytvořil přes Azure Resource Manager a během zálohování. Proč se mi nezobrazuje informace o metadatech COMPUTE?
+   * Pro všechny virtuální počítače vytvořené po SEP 2016 přidejte [značku](../../azure-resource-manager/management/tag-resources.md) , která začne zobrazovat metadata Compute. Pro starší virtuální počítače (vytvořené před SEP 2016) přidejte nebo odeberte rozšíření nebo datové disky k virtuálnímu počítači, aby se metadata aktualizovala.
+4. Nezobrazuje se všechna data naplněná pro novou verzi
+   * Pro všechny virtuální počítače vytvořené po SEP 2016 přidejte [značku](../../azure-resource-manager/management/tag-resources.md) , která začne zobrazovat metadata Compute. Pro starší virtuální počítače (vytvořené před SEP 2016) přidejte nebo odeberte rozšíření nebo datové disky k virtuálnímu počítači, aby se metadata aktualizovala.
+5. Proč se mi zobrazuje chyba `500 Internal Server Error`?
+   * Opakujte požadavek na základě exponenciálního systému. Pokud se problém nevyřeší, obraťte se na podporu Azure.
+6. Kde můžu sdílet další otázky a komentáře?
+   * Pošlete své komentáře https://feedback.azure.com.
+7. Bude tato práce fungovat pro instanci sady škálování virtuálních počítačů?
+   * Služba metadat pro instance sady škálování je k dispozici.
+8. Návody získat podporu pro službu?
+   * Pokud chcete získat podporu pro službu, vytvořte problém podpory v Azure Portal pro virtuální počítač, ke kterému nemůžete po dlouhou dobu pokusů získat odpověď na metadata.
+9. Vypršel časový limit žádosti o mé volání služby?
+   * Volání metadat se musí nacházet z primární IP adresy přiřazené k primární síťové kartě virtuálního počítače. pro případ, že jste změnili své trasy, musí být ve vaší síťové kartě trasa pro adresu 169.254.0.0/16.
+10. Aktualizoval (a) jsem moje značky v sadě škálování virtuálního počítače, ale nezobrazují se v instancích na rozdíl od virtuálních počítačů?
+    * V současné době se pro značky ScaleSets zobrazují jenom virtuální počítače na restartování/obnovení Image/nebo se změní na disk.
 
     ![Podpora metadat instance](./media/instance-metadata-service/InstanceMetadata-support.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [plánovaných událostech](scheduled-events.md)
+- Další informace o [Scheduled Events](scheduled-events.md)

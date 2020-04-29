@@ -1,6 +1,6 @@
 ---
 title: Přehled vyhrazených hostitelů Azure pro virtuální počítače
-description: Přečtěte si další informace o tom, jak lze vyhrazené hostitele Azure použít k nasazení virtuálních počítačů.
+description: Přečtěte si další informace o tom, jak se můžou používat vyhrazené hostitele Azure pro nasazení virtuálních počítačů.
 author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: article
@@ -9,23 +9,23 @@ ms.date: 01/09/2020
 ms.author: cynthn
 ms.reviewer: zivr
 ms.openlocfilehash: 9709408f006cbcc5786a4e5a854abcd20affd693
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82082828"
 ---
 # <a name="azure-dedicated-hosts"></a>Vyhrazení hostitelé Azure
 
-Azure Dedicated Host je služba, která poskytuje fyzické servery – schopné hostovat jeden nebo více virtuálních počítačů – vyhrazené pro jedno předplatné Azure. Vyhrazení hostitelé jsou stejné fyzické servery používané v našich datových centrech, které jsou poskytovány jako zdroj. V rámci oblasti, zóny dostupnosti a domény selhání můžete zřídit vyhrazená hostitelé. Potom můžete virtuální počítače umístit přímo do zřízených hostitelů v jakékoli konfiguraci, která nejlépe vyhovuje vašim potřebám.
+Vyhrazený hostitel Azure je služba, která poskytuje fyzické servery – schopné hostovat jeden nebo víc virtuálních počítačů, které jsou vyhrazené pro jedno předplatné Azure. Vyhrazení hostitelé jsou stejné fyzické servery, které se používají v našich datových centrech, které jsou poskytované jako prostředek. Můžete zřídit vyhrazené hostitele v rámci oblasti, zóny dostupnosti a domény selhání. Pak můžete virtuální počítače umístit přímo do zřízených hostitelů, v libovolné konfiguraci nejlépe vyhovuje vašim potřebám.
 
 
 [!INCLUDE [virtual-machines-common-dedicated-hosts](../../../includes/virtual-machines-common-dedicated-hosts.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-- Vyhrazeného hostitele můžete nasadit pomocí [Azure PowerShellu](dedicated-hosts-powershell.md), [portálu](dedicated-hosts-portal.md)a [azure CLI](../linux/dedicated-hosts-cli.md).
+- Vyhrazeného hostitele můžete nasadit pomocí [Azure PowerShell](dedicated-hosts-powershell.md), [portálu](dedicated-hosts-portal.md)a [Azure CLI](../linux/dedicated-hosts-cli.md).
 
-- Zde je [nalezena](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)ukázková šablona , která používá zóny i domény selhání pro maximální odolnost proti chybám v oblasti.
+- [Zde](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)najdete ukázkovou šablonu, která pro maximální odolnost v oblasti používá zóny i domény selhání.
 
-- Můžete také ušetřit na nákladech s [rezervovanou instanci vyhrazených hostitelů Azure](../prepay-dedicated-hosts-reserved-instances.md).
+- Můžete také ušetřit náklady pomocí [rezervované instance vyhrazených hostitelů Azure](../prepay-dedicated-hosts-reserved-instances.md).

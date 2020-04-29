@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s problémy s agentem aktualizace systému Windows ve správě aktualizací Azure Automation
-description: Zjistěte, jak řešit a řešit problémy s agentem aktualizací systému Windows pomocí řešení správy aktualizací.
+title: Řešení potíží s agentem Windows Update v Azure Automation Update Management
+description: Naučte se řešit problémy s Windows Update agentem pomocí Update Management řešení.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -10,103 +10,103 @@ ms.service: automation
 ms.subservice: update-management
 manager: carmonm
 ms.openlocfilehash: 6983a2ac7ab5fafcb00aee0b72221a8540ea1668
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678977"
 ---
-# <a name="troubleshoot-windows-update-agent-issues"></a>Poradce při potížích s agentem aktualizace systému Windows
+# <a name="troubleshoot-windows-update-agent-issues"></a>Řešení potíží s agentem Windows Update
 
-Může existovat mnoho důvodů, proč se váš počítač nezobrazuje jako připravený (v pořádku) ve správě aktualizací. Ve správě aktualizací můžete zkontrolovat stav agenta pracovníka hybridní sady Runbook a určit základní problém. Tento článek popisuje, jak spustit poradce při potížích pro počítače Azure z webu Azure Portal a počítačů, které nejsou Azure, ve [scénáři offline](#troubleshoot-offline).
+Může to mít spoustu důvodů, proč se Váš počítač v Update Management nezobrazuje jako připravený (v pořádku). V Update Management můžete zjistit příčinu problému tím, že zkontrolujete stav agenta Hybrid Runbook Worker. Tento článek popisuje, jak spustit Poradce při potížích pro počítače Azure z Azure Portal a počítačů mimo Azure v [offline scénáři](#troubleshoot-offline).
 
-Níže jsou uvedeny tři stavy připravenosti pro stroj:
+Níže jsou uvedené tři stavy připravenosti pro počítač:
 
-* Připraveno – hybridní runbook worker je nasazen a naposledy byl viděn před méně než 1 hodinou.
-* Odpojeno - Hybridní runbook worker je nasazen a byl naposledy viděn před více než 1 hodinou.
-* Není nakonfigurováno – Hybridní pracovník runbooku nebyl nalezen nebo nedokončil registrace.
-
-> [!NOTE]
-> Může být mírné zpoždění mezi co se zobrazí portál Azure a aktuální stav počítače.
-
-## <a name="start-the-troubleshooter"></a>Spuštění poradce při potížích
-
-U počítačů Azure kliknutím na odkaz **Poradce při potížích** ve sloupci **Připravenost na agenta aktualizace** na portálu se spustí stránka Agent pro řešení potíží s aktualizací. Pro počítače než Azure odkaz přejdete na tento článek. Podívejte se na [offline pokyny](#troubleshoot-offline) k řešení potíží s počítačem, který není Azure.
-
-![Aktualizovat seznam správy virtuálních počítačů](../media/update-agent-issues/vm-list.png)
+* Připraveno – Hybrid Runbook Worker je nasazená a naposledy se zobrazila před méně než 1 hodinou.
+* Odpojeno – Hybrid Runbook Worker je nasazená a naposledy se zobrazila před 1 hodinou.
+* Nenakonfigurováno – Hybrid Runbook Worker se nenašlo nebo nedokončilo registraci.
 
 > [!NOTE]
-> Chcete-li zkontrolovat stav hybridního pracovníka runbooku, musí být spuštěný virtuální ho diář. Pokud virtuální počítače není spuštěn, zobrazí **se tlačítko Spustit virtuální ho.**
+> Mezi zobrazením Azure Portal a aktuálním stavem počítače může být mírné zpoždění.
 
-Na stránce Poradce při potížích s agentem aktualizace vyberte **spustit kontroly** a spusťte poradce při potížích. Poradce při potížích používá [spustit příkaz](../../virtual-machines/windows/run-command.md) ke spuštění skriptu v počítači k ověření závislostí. Po dokončení poradce při potížích vrátí výsledek kontroly.
+## <a name="start-the-troubleshooter"></a>Spustit Poradce při potížích
 
-![Stránka Poradce při potížích s agentem aktualizace](../media/update-agent-issues/troubleshoot-page.png)
+V případě počítačů Azure se kliknutím na odkaz **Poradce při potížích** ve sloupci **připravenost agenta aktualizace** na portálu spustí stránka Poradce při potížích s agentem aktualizace. V případě počítačů mimo Azure se v tomto článku zobrazí odkaz. Přečtěte si [pokyny offline](#troubleshoot-offline) k řešení potíží s počítačem mimo Azure.
 
-Výsledky se zobrazí na stránce, když jsou připraveny. V kontrolních částech jsou uvedeny, co je součástí každé kontroly.
+![Aktualizovat seznam virtuálních počítačů pro správu](../media/update-agent-issues/vm-list.png)
 
-![Poradce při potížích s kontrolami agenta aktualizace](../media/update-agent-issues/update-agent-checks.png)
+> [!NOTE]
+> Pokud chcete zjistit stav Hybrid Runbook Worker, musí být virtuální počítač spuštěný. Pokud virtuální počítač není spuštěný, zobrazí se tlačítko **Spustit virtuální počítač** .
+
+Na stránce Poradce při potížích s agentem aktualizace vyberte **Spustit kontroly** a spusťte Poradce při potížích. Poradce při potížích používá [příkaz run](../../virtual-machines/windows/run-command.md) ke spuštění skriptu na počítači za účelem ověření závislostí. Po dokončení Poradce při potížích vrátí výsledek kontrol.
+
+![Řešení potíží s aktualizací stránky agenta](../media/update-agent-issues/troubleshoot-page.png)
+
+Po dokončení se na stránce zobrazí výsledky. V sekcích kontroly se zobrazují informace o tom, co je zahrnuté v každé kontrole.
+
+![Řešení potíží s aktualizacemi kontrol agenta](../media/update-agent-issues/update-agent-checks.png)
 
 ## <a name="prerequisite-checks"></a>Kontroly požadovaných součástí
 
 ### <a name="operating-system"></a>Operační systém
 
-Kontrola operačního systému ověřuje, zda hybridní pracovník runbooku používá jeden z následujících operačních systémů:
+Při kontrole operačního systému se ověří, zda Hybrid Runbook Worker používá jeden z následujících operačních systémů:
 
 |Operační systém  |Poznámky  |
 |---------|---------|
-|Windows Server 2012 a novější |Rozhraní .NET Framework 4.6 nebo novější je povinné. ([Stáhněte si rozhraní .NET Framework](/dotnet/framework/install/guide-for-developers))<br/> Je vyžadováno prostředí Windows PowerShell 5.1.  ([Stáhnout rozhraní Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|Windows Server 2012 a novější |Vyžaduje se .NET Framework 4,6 nebo novější. ([Stáhnout .NET Framework](/dotnet/framework/install/guide-for-developers))<br/> Je vyžadován Windows PowerShell 5,1.  ([Stáhnout Windows Management Framework 5,1](https://www.microsoft.com/download/details.aspx?id=54616))        |
 
 ### <a name="net-462"></a>.NET 4.6.2
 
-Kontrola rozhraní .NET Framework ověří, zda má systém nainstalován minimálně [rozhraní .NET Framework 4.6.2.](https://www.microsoft.com/en-us/download/details.aspx?id=53345)
+.NET Framework zkontroluje, jestli je v systému minimálně nainstalovaná [.NET Framework 4.6.2](https://www.microsoft.com/en-us/download/details.aspx?id=53345) .
 
 ### <a name="wmf-51"></a>WMF 5.1
 
-Kontrola WMF ověří, zda má systém požadovanou verzi rozhraní WMF (Windows Management Framework) – [Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616).
+Po kontrole WMF se ověří, že systém má požadovanou verzi rozhraní Windows Management Framework (WMF) – [Windows Management framework 5,1](https://www.microsoft.com/download/details.aspx?id=54616).
 
 ### <a name="tls-12"></a>TLS 1.2
 
-Tato kontrola určuje, zda k šifrování komunikace používáte tls 1.2. TLS 1.0 již není podporován platformou. Doporučujeme klientům používat TLS 1.2 ke komunikaci se správou aktualizací.
+Tato kontrolu určuje, jestli k šifrování komunikace používáte protokol TLS 1,2. Tato platforma už nepodporuje protokol TLS 1,0. Doporučujeme, aby klienti používali protokol TLS 1,2 ke komunikaci s Update Management.
 
 ## <a name="connectivity-checks"></a>Kontroly připojení
 
-### <a name="registration-endpoint"></a>Koncový bod registrace
+### <a name="registration-endpoint"></a>Registrační koncový bod
 
-Tato kontrola určuje, zda agent může správně komunikovat se službou agenta.
+Tato kontrolu určuje, zda může agent správně komunikovat se službou agenta.
 
-Konfigurace proxy a brány firewall musí agentovi hybrid runbook worker umožnit komunikaci s koncovým bodem registrace. Seznam adres a portů, které chcete otevřít, naleznete v [tématu Plánování sítě pro hybridní pracovníky](../automation-hybrid-runbook-worker.md#network-planning).
+Konfigurace proxy serveru a brány firewall musí umožňovat, aby agent Hybrid Runbook Worker komunikoval s koncovým bodem registrace. Seznam adres a portů, které se mají otevřít, najdete v tématu [Plánování sítě pro hybridní pracovní procesy](../automation-hybrid-runbook-worker.md#network-planning).
 
 ### <a name="operations-endpoint"></a>Koncový bod operací
 
-Tato kontrola určuje, zda agent může správně komunikovat se službou Job Runtime Data Service.
+Tato kontrolu určuje, zda může agent správně komunikovat se službou data runtime úlohy.
 
-Konfigurace proxy a brány firewall musí agentovi hybrid runbook worker umožnit komunikaci se službou Job Runtime Data Service. Seznam adres a portů, které chcete otevřít, naleznete v [tématu Plánování sítě pro hybridní pracovníky](../automation-hybrid-runbook-worker.md#network-planning).
+Konfigurace proxy serveru a brány firewall musí umožňovat, aby agent Hybrid Runbook Worker komunikoval se službou data runtime úlohy. Seznam adres a portů, které se mají otevřít, najdete v tématu [Plánování sítě pro hybridní pracovní procesy](../automation-hybrid-runbook-worker.md#network-planning).
 
-## <a name="vm-service-health-checks"></a>Kontroly stavu služby virtuálních montovna
+## <a name="vm-service-health-checks"></a>Kontroly stavu služby virtuálních počítačů
 
 ### <a name="monitoring-agent-service-status"></a>Stav služby agenta monitorování
 
-Tato kontrola určuje, zda je v`healthservice`počítači spuštěn agent Analýzy protokolů pro systém Windows ( ). Další informace o řešení potíží se službou najdete v [tématu Agent analýzy protokolů pro Systém Windows není spuštěn](hybrid-runbook-worker.md#mma-not-running).
+Tato kontrolu určuje, zda je na počítači spuštěn Agent`healthservice`Log Analytics pro systém Windows (). Další informace o řešení potíží se službou najdete v tématu [agent Log Analytics pro Windows není spuštěný](hybrid-runbook-worker.md#mma-not-running).
 
-Informace o přeinstalaci agenta Log Analytics pro Systém Windows naleznete v [tématu Instalace a konfigurace agenta Log Analytics pro systém Windows](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows).
+Chcete-li přeinstalovat agenta Log Analytics pro systém Windows, přečtěte si téma [instalace a konfigurace agenta Log Analytics pro systém Windows](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows).
 
-### <a name="monitoring-agent-service-events"></a>Události služby agenta monitorování
+### <a name="monitoring-agent-service-events"></a>Události služby Monitoring Agent
 
-Tato kontrola určuje, zda se v protokolu Nástroje pro provoz služby Azure Operations Manager v posledních 24 hodinách zobrazí všechny události 4502.
+Tato kontrolu určuje, jestli se v protokolu Azure Operations Manager v počítači během posledních 24 hodin objevily nějaké události 4502.
 
-Další informace o této události naleznete v [průvodci řešením potíží](hybrid-runbook-worker.md#event-4502) pro tuto událost.
+Další informace o této události najdete v [Průvodci odstraňováním potíží](hybrid-runbook-worker.md#event-4502) pro tuto událost.
 
 ## <a name="access-permissions-checks"></a>Kontroly přístupových oprávnění
 
 ### <a name="machinekeys-folder-access"></a>Přístup ke složce MachineKeys
 
-Kontrola přístupu ke složce Crypto určuje, zda má místní systémový účet přístup k c:\ProgramData\Microsoft\Crypto\RSA.
+Při kontrole přístupu ke složce kryptografických souborů se určuje, jestli má účet místního systému přístup k C:\ProgramData\Microsoft\Crypto\RSA..
 
-## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>Poradce při potížích s offline
+## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>Řešení potíží offline
 
-Poradce při potížích s hybridním pracovníkem runbooku můžete použít v offline spuštěním skriptu místně. Skript [Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration)můžete získat v Galerii prostředí PowerShell. Chcete-li spustit skript, musíte mít nainstalován soubor WMF 4.0 nebo vyšší. Pokud chcete stáhnout nejnovější verzi PowerShellu, [přečtěte si informace o instalaci různých verzí PowerShellu](https://docs.microsoft.com/powershell/scripting/install/installing-powershell).
+Poradce při potížích s Hybrid Runbook Worker můžete použít offline spuštěním skriptu místně. Skript můžete získat na stránce Galerie prostředí PowerShell [řešení potíží – WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration). Pro spuštění skriptu musíte mít nainstalované WMF 4,0 nebo novější. Pokud si chcete stáhnout nejnovější verzi PowerShellu, přečtěte si téma [instalace různých verzí PowerShellu](https://docs.microsoft.com/powershell/scripting/install/installing-powershell).
 
-Výstup tohoto skriptu vypadá jako následující příklad:
+Výstup tohoto skriptu vypadá jako v následujícím příkladu:
 
 ```output
 RuleId                      : OperatingSystemCheck
@@ -202,4 +202,4 @@ CheckResultMessageArguments : {}
 
 ## <a name="next-steps"></a>Další kroky
 
-Další problémy s hybridními pracovníky runbooku najdete [v tématu Poradce při potížích s hybridními pracovníky runbooku](hybrid-runbook-worker.md).
+Pokud chcete řešit více problémů s procesy Hybrid Runbook Worker, přečtěte si téma [řešení potíží s Hybrid Runbook Worker](hybrid-runbook-worker.md).

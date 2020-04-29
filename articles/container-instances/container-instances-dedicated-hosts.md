@@ -1,46 +1,46 @@
 ---
-title: Nasazení na vyhrazeném hostiteli
-description: Použití vyhrazeného hostitele k dosažení skutečné izolace na úrovni hostitele pro úlohy azure kontejnerů
+title: Nasadit na vyhrazeném hostiteli
+description: Použití vyhrazeného hostitele k dosažení skutečné izolace na úrovni hostitele pro vaše Azure Container Instances úlohy
 ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
 ms.openlocfilehash: a614d6b5d0cf5c6c1df5ffcb90e56960d6b8a2a9
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82025029"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>Nasazování na vyhrazené hostitele
 
-"Vyhrazené" je sku instance kontejnerů Azure (ACI), která poskytuje izolované a vyhrazené výpočetní prostředí pro bezpečně spuštěné kontejnery. Pomocí vyhrazené sku výsledky v každé skupině kontejnerů, které mají vyhrazený fyzický server v datovém centru Azure, zajištění úplné izolace pracovního vytížení, které vám pomohou splnit požadavky vaší organizace na zabezpečení a dodržování předpisů. 
+"Vyhrazeným" je SKU Azure Container Instances (ACI), které poskytuje izolované a vyhrazené výpočetní prostředí pro bezpečné spouštění kontejnerů. Výsledkem použití vyhrazené skladové položky v každé skupině kontejnerů je vyhrazený fyzický server v datovém centru Azure, které zajišťuje úplnou izolaci úloh, aby bylo možné lépe vyhovovat požadavkům vaší organizace na zabezpečení a dodržování předpisů. 
 
-Vyhrazená sku je vhodná pro úlohy kontejneru, které vyžadují izolaci pracovního vytížení z hlediska fyzického serveru.
+Vyhrazená SKU je vhodná pro úlohy kontejneru, které vyžadují izolaci úloh z pohledu fyzického serveru.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
-* Výchozí limit pro jakékoli předplatné používat vyhrazené sku je 0. Pokud chcete použít tuto sku pro nasazení produkčního kontejneru, vytvořte [žádost o podporu Azure][azure-support] pro zvýšení limitu.
+* Výchozí omezení pro všechna předplatná, která používají vyhrazené SKU, je 0. Pokud chcete tuto sku použít pro nasazení produkčního kontejneru, vytvořte [support Request Azure][azure-support] pro zvýšení limitu.
 
-## <a name="use-the-dedicated-sku"></a>Použijte vyhrazenou sku
+## <a name="use-the-dedicated-sku"></a>Použití vyhrazené SKU
 
 > [!IMPORTANT]
-> Použití vyhrazené sku je k dispozici pouze v nejnovější verzi rozhraní API (2019-12-01), která je aktuálně zaváděcí. Tuto verzi rozhraní API zadejte v šabloně nasazení.
+> Použití vyhrazené SKU je dostupné jenom v nejnovější verzi rozhraní API (2019-12-01), která se v tuto chvíli zavádí. Tuto verzi rozhraní API zadejte v šabloně nasazení.
 >
 
-Počínaje verzí rozhraní API 2019-12-01 `sku` je vlastnost v části vlastnosti skupiny kontejnerů šablony nasazení, která je vyžadována pro nasazení ACI. V současné době můžete tuto vlastnost použít jako součást šablony nasazení Azure Resource Manager pro ACI. Další informace o nasazení prostředků ACI se šablonou v [kurzu: Nasazení skupiny s více kontejnery pomocí šablony Správce prostředků](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+Počínaje rozhraním API verze 2019-12-01 je v části `sku` vlastnosti skupiny kontejnerů v šabloně nasazení požadovaná vlastnost, která se vyžaduje pro nasazení ACI. V současné době můžete tuto vlastnost použít jako součást šablony nasazení Azure Resource Manager pro ACI. Další informace o nasazení prostředků ACI pomocí šablony v tomto [kurzu: nasazení skupiny s více kontejnery pomocí šablony Správce prostředků](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
 
-Vlastnost `sku` může mít jednu z následujících hodnot:
-* `Standard`- standardní volba nasazení ACI, která stále zaručuje bezpečnost na úrovni hypervisoru 
-* `Dedicated`- používá se pro izolaci na úrovni pracovního vytížení s vyhrazenými fyzickými hostiteli pro skupinu kontejnerů
+`sku` Vlastnost může mít jednu z následujících hodnot:
+* `Standard`– standardní volba nasazení ACI, která stále garantuje zabezpečení na úrovni hypervisoru 
+* `Dedicated`– používá se pro izolaci na úrovni pracovního vytížení s vyhrazenými fyzickými hostiteli pro skupinu kontejnerů.
 
 ## <a name="modify-your-json-deployment-template"></a>Úprava šablony nasazení JSON
 
 V šabloně nasazení upravte nebo přidejte následující vlastnosti:
-* V `resources`části `apiVersion` `2019-12-01`najetna na .
-* Pod vlastnostmi skupiny `sku` kontejnerů `Dedicated`přidejte vlastnost s hodnotou .
+* V `resources`části nastavte `apiVersion` na `2019-12-01`.
+* V části vlastnosti skupiny kontejnerů přidejte `sku` vlastnost s hodnotou. `Dedicated`
 
-Tady je ukázkový úryvek pro část prostředků šablony nasazení skupiny kontejnerů, která používá vyhrazenou sku:
+Tady je příklad fragmentu pro oddíl Resources v šabloně nasazení skupiny kontejnerů, která používá vyhrazenou SKU:
 
 ```json
 [...]
@@ -60,7 +60,7 @@ Tady je ukázkový úryvek pro část prostředků šablony nasazení skupiny ko
 ]
 ```
 
-Následuje úplná šablona, která nasazuje skupinu ukázkových kontejnerů, která používá jednu instanci kontejneru:
+Následuje úplná šablona, která nasadí ukázkovou skupinu kontejnerů se spuštěnou instancí jedné instance kontejneru:
 
 ```json
 {
@@ -137,13 +137,13 @@ Vytvořte skupinu prostředků pomocí příkazu [az group create][az-group-crea
 az group create --name myResourceGroup --location eastus
 ```
 
-Nasaďte šablonu pomocí příkazu [vytvořit nasazení skupiny az.][az-group-deployment-create]
+Šablonu nasaďte pomocí příkazu [AZ Group Deployment Create][az-group-deployment-create] .
 
 ```azurecli-interactive
 az group deployment create --resource-group myResourceGroup --template-file deployment-template.json
 ```
 
-Během několika sekund by se měla zobrazit první odezva z Azure. Úspěšné nasazení probíhá na vyhrazeném hostiteli.
+Během několika sekund by se měla zobrazit první odezva z Azure. Úspěšné nasazení se provádí na vyhrazeném hostiteli.
 
 <!-- LINKS - Internal -->
 [az-group-create]: /cli/azure/group#az-group-create

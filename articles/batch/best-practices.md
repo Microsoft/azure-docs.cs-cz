@@ -4,10 +4,10 @@ description: Naučte se osvědčené postupy a užitečné tipy pro vývoj řeš
 ms.date: 04/03/2020
 ms.topic: article
 ms.openlocfilehash: 43a0020953ea44593cf38298a78547194751fc72
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82117501"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch osvědčené postupy

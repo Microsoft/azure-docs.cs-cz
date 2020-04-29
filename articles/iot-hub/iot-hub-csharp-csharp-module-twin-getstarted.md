@@ -1,5 +1,5 @@
 ---
-title: Začínáme s identitou identity modulu Azure IoT Hub & dvojče modulu (.NET)
+title: Začínáme s modulem identity IoT Hub identit modulu & modulu (.NET)
 description: Zjistěte, jak vytvořit identitu modulu a aktualizovat dvojče modulu pomocí sad IoT SDK pro .NET.
 author: chrissie926
 ms.service: iot-hub
@@ -10,24 +10,24 @@ ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: amqp
 ms.openlocfilehash: 919d1e37e6066c78e83d58be4fe4667ec67e45ad
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733389"
 ---
-# <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>Začínáme s identitou modulu IoT Hub a dvojčetem modulu (.NET)
+# <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>Začínáme s identitou modulu IoT Hub a modulem s dvojitou identitou (.NET)
 
 [!INCLUDE [iot-hub-selector-module-twin-getstarted](../../includes/iot-hub-selector-module-twin-getstarted.md)]
 
 > [!NOTE]
-> [Identity modulů a dvojčata modulů](iot-hub-devguide-module-twins.md) se podobají identitě zařízení a dvojčeti zařízení služby Azure IoT Hub, ale poskytují větší úroveň členitosti. Zatímco identita zařízení Azure IoT Hub a dvojče zařízení umožňují back-endové aplikaci konfigurovat zařízení a poskytovat viditelnost podmínek zařízení, identita modulu a dvojče modulu poskytují tyto funkce pro jednotlivé součásti zařízení. Na schopných zařízeních s více komponentami, jako jsou zařízení založená na operačním systému nebo zařízení firmwaru, umožňují identity modulů a dvojčata modulů izolovanou konfiguraci a podmínky pro každou komponentu.
+> [Identity modulů a dvojčata modulů](iot-hub-devguide-module-twins.md) se podobají identitě zařízení a dvojčeti zařízení služby Azure IoT Hub, ale poskytují větší úroveň členitosti. I když se v Azure IoT Hub identita zařízení a zařízení dokončí v back-endové aplikaci pro konfiguraci zařízení a zajištění viditelnosti podmínek zařízení, identita modulu a funkční vlákna poskytují tyto možnosti pro jednotlivé součásti zařízení. V zařízeních s více součástmi, jako jsou zařízení s operačním systémem nebo zařízení firmwaru, identity modulů a vlákna modulu, umožňují pro jednotlivé komponenty izolovanou konfiguraci a podmínky.
 
 Na konci tohoto kurzu budete mít dvě konzolové aplikace .NET:
 
-* **CreateIdentities**. Tato aplikace vytvoří identitu zařízení, identitu modulu a přidružený bezpečnostní klíč pro připojení klientů zařízení a modulů.
+* **CreateIdentities**. Tato aplikace vytvoří identitu zařízení, identitu modulu a přiřazený bezpečnostní klíč pro připojení klientů zařízení a modulů.
 
-* **UpdateModuleTwinReportedProperties**. Tato aplikace odesílá aktualizované dvojče modulu hlášené vlastnosti do služby IoT hub.
+* **UpdateModuleTwinReportedProperties**. Tato aplikace pošle do služby IoT Hub aktualizované nahlášené vlastnosti nedokončeného modulu.
 
 > [!NOTE]
 > Informace o sadách SDK služby Azure IoT Hub, s jejichž pomocí můžete sestavit aplikace, které poběží v zařízení, i back-end vašeho řešení, najdete v tématu [Sady SDK služby IoT Hub](iot-hub-devguide-sdks.md).
@@ -42,7 +42,7 @@ Na konci tohoto kurzu budete mít dvě konzolové aplikace .NET:
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="get-the-iot-hub-connection-string"></a>Získání připojovacího řetězce centra IoT hub
+## <a name="get-the-iot-hub-connection-string"></a>Získání připojovacího řetězce centra IoT Hub
 
 [!INCLUDE [iot-hub-howto-module-twin-shared-access-policy-text](../../includes/iot-hub-howto-module-twin-shared-access-policy-text.md)]
 
@@ -54,23 +54,23 @@ Na konci tohoto kurzu budete mít dvě konzolové aplikace .NET:
 
 V této části vytvoříte na simulovaném zařízení konzolovou aplikaci .NET, která aktualizuje hlášené vlastnosti dvojčete modulu.
 
-Než začnete, získejte připojovací řetězec modulu. Přihlaste se k webu [Azure Portal](https://portal.azure.com/). Přejděte do svého centra a vyberte **zařízení IoT**. Najít **myFirstDevice**. Vyberte **myFirstDevice** otevřít a pak vyberte **myFirstModule** otevřít. V **části Podrobnosti identity modulu**zkopírujte **připojovací řetězec (primární klíč)** v případě potřeby v následujícím postupu.
+Než začnete, Získejte připojovací řetězec modulu. Přihlaste se k webu [Azure Portal](https://portal.azure.com/). Přejděte do svého centra a vyberte **zařízení IoT**. Vyhledejte **myFirstDevice**. Vyberte **myFirstDevice** a otevřete ho tak, že vyberete **myFirstModule** . V **podrobnostech o identitě modulu**zkopírujte **připojovací řetězec (primární klíč)** , pokud je to potřeba v následujícím postupu.
 
    ![Podrobnosti o modulu na webu Azure Portal](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-identity-detail.png)
 
-1. V sadě Visual Studio přidejte do řešení nový projekt výběrem **možnosti Nový** > **New** > **projekt souboru**. V okně Vytvořit nový projekt vyberte **Console App (.NET Framework)** a vyberte **Další**.
+1. V aplikaci Visual Studio přidejte do svého řešení nový projekt tak, že vyberete **soubor** > **Nový** > **projekt**. V v vytvořit nový projekt vyberte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
 
-1. Pojmenujte projekt *UpdateModuleTwinReportedProperties*. V **řešení**vyberte **Přidat do řešení**. Ujistěte se, že máte .NET Framework verze 4.6.1 nebo novější.
+1. Pojmenujte projekt *UpdateModuleTwinReportedProperties*. V případě **řešení**vyberte možnost **Přidat do řešení**. Ujistěte se, že máte .NET Framework verze 4.6.1 nebo novější.
 
     ![Vytvoření projektu ve Visual Studiu](./media/iot-hub-csharp-csharp-module-twin-getstarted/configure-update-twins-csharp1.png)
 
-1. Chcete-li vytvořit projekt, vyberte **vytvořit.**
+1. Vyberte **vytvořit** a vytvořte tak projekt.
 
-1. V sadě Visual Studio otevřete **nástroje, který** > **spravuje balíčky** > **NuGet pro řešení**. Vyberte kartu **Procházet**.
+1. V > aplikaci Visual Studio otevřete **nástroje** > **Správce balíčků NuGet****Spravovat balíčky NuGet pro řešení**. Vyberte kartu **Procházet**.
 
-1. Vyhledejte a vyberte **Microsoft.Azure.Devices.Client**a pak vyberte **Instalovat**.
+1. Vyhledejte a vyberte **Microsoft. Azure. Devices. Client**a pak vyberte **nainstalovat**.
 
-    ![Instalace aktuální verze sady Azure IoT Hub .NET service SDK](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-client-sdk.png)
+    ![Instalace aktuální verze sady Azure IoT Hub .NET Service SDK](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-client-sdk.png)
 
 1. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
 
@@ -112,7 +112,7 @@ Než začnete, získejte připojovací řetězec modulu. Přihlaste se k webu [A
         }
     ```
 
-1. Do **hlavní** metody přidejte následující řádky:
+1. Do metody **Main** přidejte následující řádky:
 
     ```csharp
     static void Main(string[] args)
@@ -152,7 +152,7 @@ Než začnete, získejte připojovací řetězec modulu. Přihlaste se k webu [A
 
     Tento vzorový kód ukazuje, jak načíst dvojče modulu a aktualizovat hlášené vlastnosti pomocí protokolu AMQP. Ve verzi Public Preview podporujeme operace s dvojčetem modulu pouze pomocí protokolu AMQP.
 
-1. Volitelně můžete přidat tyto **příkazy** main metoda odeslat událost do služby IoT Hub z modulu. Umístěte tyto řádky `try catch` pod blok.
+1. Volitelně můžete přidat tyto příkazy do metody **Main** k odeslání události IoT Hub z vašeho modulu. Umístěte tyto řádky pod `try catch` blok.
 
     ```csharp
     Byte[] bytes = new Byte[2];
@@ -165,15 +165,15 @@ Než začnete, získejte připojovací řetězec modulu. Přihlaste se k webu [A
 
 ## <a name="run-the-apps"></a>Spouštění aplikací
 
-Nyní můžete spouštět aplikace.
+Nyní můžete aplikace spouštět.
 
-1. V sadě Visual Studio klikněte v **Průzkumníku řešení**pravým tlačítkem myši na vaše řešení a potom vyberte **nastavit projekty spuštění**.
+1. V sadě Visual Studio v **Průzkumník řešení**klikněte pravým tlačítkem na své řešení a pak vyberte **nastavit projekty po spuštění**.
 
-1. V části **Společné vlastnosti**vyberte **Projekt po spuštění.**
+1. V části **společné vlastnosti**vyberte možnost **projekt po spuštění.**
 
-1. Vyberte **Více projektů při spuštění**a pak vyberte **Spustit** jako akci pro aplikace a **OK,** abyste přijali změny.
+1. Vyberte **více projektů po spuštění**a pak vyberte **Spustit** jako akci pro aplikace a **kliknutím na OK** potvrďte provedené změny.
 
-1. Stisknutím **klávesy F5** spusťte aplikace.
+1. Aplikace spustíte stisknutím klávesy **F5** .
 
 ## <a name="next-steps"></a>Další kroky
 

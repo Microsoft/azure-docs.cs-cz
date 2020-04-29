@@ -1,6 +1,6 @@
 ---
-title: Vytvoření kontejneru profilu FSLogix, služba Azure Files Active Directory Domain Services – Azure
-description: Tento článek popisuje, jak vytvořit kontejner profilu FSLogix pomocí souborů Azure a služby Azure Active Directory Domain Services.
+title: Vytvoření Active Directory Domain Services kontejnerů profilů FSLogix Azure Files – Azure
+description: Tento článek popisuje, jak vytvořit kontejner profilu FSLogix se soubory Azure a Azure Active Directory Domain Services.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,93 +9,93 @@ ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: dd01b950435fadb96a961b6bb1c6b28ff436907a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81265769"
 ---
-# <a name="create-an-fslogix-profile-container-with-azure-files"></a>Vytvoření kontejneru profilu FSLogix pomocí souborů Azure
+# <a name="create-an-fslogix-profile-container-with-azure-files"></a>Vytvoření kontejneru profilu FSLogix se soubory Azure
 
-V tomto článku se zobrazí informace o tom, jak vytvořit kontejner profilu FSLogix pomocí souborů Azure a služby Azure Active Directory Domain Services (AD DS).
+Tento článek vám ukáže, jak vytvořit kontejner profilu FSLogix pomocí souborů Azure a Azure Active Directory Domain Services (služba AD DS).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento článek předpokládá, že jste už nastavili instanci Služby Azure AD DS. Pokud ji ještě nemáte, postupujte podle pokynů v části [Nejprve vytvořit základní spravovanou doménu](../active-directory-domain-services/tutorial-create-instance.md) a pak se vraťte sem.
+V tomto článku se předpokládá, že jste už nastavili instanci služby Azure služba AD DS. Pokud ho ještě nemáte, postupujte podle pokynů v části [Vytvoření základní spravované domény](../active-directory-domain-services/tutorial-create-instance.md) a potom se vraťte sem.
 
-## <a name="add-azure-ad-ds-admins"></a>Přidání správců Azure AD DS
+## <a name="add-azure-ad-ds-admins"></a>Přidat správce Azure služba AD DS
 
-Chcete-li přidat další správce, vytvořte nového uživatele a udělte jim oprávnění.
+Pokud chcete přidat další správce, vytvořte nového uživatele a udělte mu oprávnění.
 
 Přidání správce:
 
-1. Na postranním panelu vyberte **Azure Active Directory,** pak vyberte **Všichni uživatelé**a pak vyberte **Nový uživatel**.
+1. Na bočním panelu vyberte **Azure Active Directory** a pak vyberte **Všichni uživatelé**a pak vyberte **Nový uživatel**.
 
-2.  Zadejte podrobnosti o uživateli do polí.
+2.  Zadejte do polí Podrobnosti o uživateli.
 
-3. V podokně Služby Azure Active Directory na levé straně obrazovky vyberte **Skupiny**.
+3. V podokně Azure Active Directory na levé straně obrazovky vyberte **skupiny**.
 
-4. Vyberte skupinu **Správci řadiče domény aadud.**
+4. Vyberte skupinu **AAD DC Administrators** .
 
-5. V levém podokně vyberte **Členové**a v hlavním podokně vyberte **Přidat členy.** Zobrazí se seznam všech uživatelů dostupných ve službě Azure AD. Vyberte název uživatelského profilu, který jste právě vytvořili.
+5. V levém podokně vyberte **členy**a potom v hlavním podokně vyberte **přidat členy** . Zobrazí se seznam všech uživatelů dostupných ve službě Azure AD. Vyberte název profilu uživatele, který jste právě vytvořili.
 
-## <a name="set-up-an-azure-storage-account"></a>Nastavení účtu Úložiště Azure
+## <a name="set-up-an-azure-storage-account"></a>Nastavení účtu Azure Storage
 
-Teď je čas povolit ověřování Azure AD DS přes blok zpráv serveru (SMB). 
+Teď je čas povolit ověřování Azure služba AD DS přes protokol SMB (Server Message Block). 
 
 Povolení ověřování:
 
-1. Pokud jste to ještě neudělali, nastavte a nasaďte účet úložiště Azure pro obecné účely v2 podle pokynů v [části Vytvoření účtu úložiště Azure](../storage/common/storage-account-create.md).
+1. Pokud jste to ještě neudělali, nastavte a nasaďte účet pro obecné účely v2 Azure Storage podle pokynů uvedených v části [Vytvoření účtu Azure Storage](../storage/common/storage-account-create.md).
 
-2. Po dokončení nastavení účtu vyberte **Přejít na zdroj**.
+2. Až dokončíte nastavování účtu, vyberte **Přejít k prostředku**.
 
-3. V yberte **Konfigurace** z podokna na levé straně obrazovky a pak povolte **ověřování Azure Active Directory pro soubory Azure** v hlavním podokně. Jakmile budete mít hotovo, vyberte **Uložit**.
+3. V podokně na levé straně obrazovky vyberte **Konfigurace** a potom povolte **Azure Active Directory ověřování pro soubory Azure** v hlavním podokně. Jakmile budete mít hotovo, vyberte **Uložit**.
 
-4. V podokně na levé straně obrazovky vyberte **Přehled** a v hlavním podokně vyberte **Soubory.**
+4. V podokně na levé straně obrazovky vyberte **Přehled** a pak v hlavním podokně vyberte **soubory** .
 
-5. Vyberte **Sdílená složka souboru** a do polí, která se zobrazí na pravé straně obrazovky, zadejte **název** a **kvótu.**
+5. Vyberte **sdílení souborů** a zadejte **název** a **kvótu** do polí, která se zobrazí na pravé straně obrazovky.
 
 ## <a name="assign-access-permissions-to-an-identity"></a>Přiřazení přístupových oprávnění k identitě
 
-Ostatní uživatelé budou potřebovat přístupová oprávnění pro přístup ke sdílené složce. Chcete-li to provést, budete muset přiřadit každému uživateli roli s příslušnými přístupovými oprávněními.
+Jiní uživatelé budou potřebovat přístupová oprávnění pro přístup ke sdílené složce souborů. K tomu je potřeba přiřadit každému uživateli roli s příslušnými přístupovými oprávněními.
 
 Přiřazení přístupových oprávnění uživatelům:
 
-1. Na webu Azure Portal otevřete sdílenou složku, kterou jste vytvořili v [části Nastavení účtu Úložiště Azure](#set-up-an-azure-storage-account).
+1. V Azure Portal otevřete sdílenou složku, kterou jste vytvořili v části [Nastavení účtu Azure Storage](#set-up-an-azure-storage-account).
 
-2. Vyberte **řízení přístupu (IAM).**
+2. Vyberte **Access Control (IAM)**.
 
 3. Vyberte **Přidat přiřazení role**.
 
-4. Na kartě **Přidat přiřazení role** vyberte příslušnou předdefinovanou roli ze seznamu rolí. Chcete-li získat správná oprávnění, musíte pro účet alespoň vybrat **přispěvatele sdílení smb souboru úložiště.**
+4. Na kartě **Přidat přiřazení role** vyberte v seznamu role příslušnou integrovanou roli. Abyste získali správná oprávnění, musíte aspoň vybrat **soubor úložiště datový Přispěvatel SMB** pro tento účet.
 
-5. **Chcete-li přiřadit přístup k aplikaci**, vyberte **položku Uživatel, skupina nebo instanční objekt služby Azure Active Directory**.
+5. Pro **přiřazení přístupu k**vyberte **Azure Active Directory uživatel, skupina nebo instanční objekt**.
 
-6. Vyberte jméno nebo e-mailovou adresu pro cílovou identitu služby Azure Active Directory.
+6. Vyberte jméno nebo e-mailovou adresu pro cílovou Azure Active Directory identitu.
 
 7. Vyberte **Uložit**.
 
 ## <a name="get-the-storage-account-access-key"></a>Získání přístupového klíče účtu úložiště
 
-Dále budete muset získat přístupový klíč pro svůj účet úložiště.
+V dalším kroku budete muset získat přístupový klíč pro váš účet úložiště.
 
-Jak získat přístupový klíč účtu úložiště:
+Získání přístupového klíče účtu úložiště:
 
-1. Na postranním panelu portálu Azure vyberte **Účty úložiště**.
+1. Na bočním panelu Azure Portal vyberte **účty úložiště**.
 
-2. Ze seznamu účtů úložiště vyberte účet, pro který jste povolili Azure AD DS a vytvořili vlastní role v krocích výše.
+2. V seznamu účtů úložiště vyberte účet, pro který jste povolili Azure služba AD DS a ve výše uvedených krocích jste vytvořili vlastní role.
 
-3. V části **Nastavení**vyberte **přístupové klávesy** a zkopírujte klíč z **klávesy 1**.
+3. V části **Nastavení**vyberte **přístupové klíče** a zkopírujte klíč z **klíč1**.
 
-4. Přejděte na kartu **Virtuální počítače** a vyhledejte libovolný virtuální počítač, který se stane součástí fondu hostitelů.
+4. Přejděte na kartu **Virtual Machines** a vyhledejte libovolný virtuální počítač, který se stane součástí fondu hostitelů.
 
-5. Vyberte název virtuálního počítače (VM) v části **Virtuální počítače (adVM)** a vyberte **Připojit**
+5. Vyberte název virtuálního počítače (VM) v části **Virtual Machines (adVM)** a vyberte **připojit** .
 
-    Tím stáhnete soubor RDP, který vám umožní přihlásit se k virtuálnímu virtuálnímu virtuálnímu serveru s vlastními přihlašovacími údaji.
+    Tím se stáhne soubor RDP, který vám umožní přihlásit se k virtuálnímu počítači pomocí vlastních přihlašovacích údajů.
 
-    ![Snímek obrazovky s kartou RDP okna Připojit k virtuálnímu počítači](media/rdp-tab.png)
+    ![Snímek obrazovky karty RDP okna připojit k virtuálnímu počítači](media/rdp-tab.png)
 
-6. Až se přihlásíte k virtuálnímu virtuálnímu provozu, spusťte příkazový řádek jako správce.
+6. Až se přihlásíte k virtuálnímu počítači, spusťte příkazový řádek jako správce.
 
 7. Spusťte následující příkaz:
 
@@ -103,9 +103,9 @@ Jak získat přístupový klíč účtu úložiště:
      net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
      ```
 
-    - Nahraďte `<desired-drive-letter>` písmenem jednotky podle vašeho `y:`výběru (například).
-    - Nahraďte všechny `<storage-account-name>` instance s názvem účtu úložiště, který jste zadali dříve.
-    - Nahraďte `<share-name>` název sdílené složky, kterou jste vytvořili dříve.
+    - Nahraďte `<desired-drive-letter>` zvoleným písmenem jednotky (například `y:`).
+    - Nahraďte všechny výskyty `<storage-account-name>` názvem účtu úložiště, který jste zadali dříve.
+    - Nahraďte `<share-name>` názvem sdílené složky, kterou jste vytvořili dříve.
     - Nahraďte `<storage-account-key>` klíčem účtu úložiště z Azure.
 
     Příklad:  
@@ -114,14 +114,14 @@ Jak získat přístupový klíč účtu úložiště:
      net use y: \\fsprofile.file.core.windows.net\share HDZQRoFP2BBmoYQ=(truncated)= /user:Azure\fsprofile)
      ```
 
-8. Spusťte následující příkaz a udělte uživateli úplný přístup ke sdílené složce Azure Files.
+8. Spuštěním následujícího příkazu Udělte uživateli úplný přístup ke sdílené složce služby soubory Azure.
 
      ```cmd
      icacls <mounted-drive-letter>: /grant <user-email>:(f)
      ```
 
-    - Nahraďte `<mounted-drive-letter>` písmenem jednotky, kterou má uživatel použít.
-    - Nahraďte `<user-email>` hlavní název uživatele, který bude používat tento profil pro přístup k hostitelským virtuálním uživatelům relace.
+    - Nahraďte `<mounted-drive-letter>` písmenem jednotky, kterou má uživatel používat.
+    - Nahraďte `<user-email>` hlavní název uživatele (UPN), který bude používat tento profil pro přístup k virtuálním počítačům hostitele relace.
 
     Příklad:
      
@@ -135,40 +135,40 @@ Teď, když jsou vaše profily připravené k použití, vytvoříme kontejner p
 
 Postup konfigurace kontejneru profilu FSLogix:
 
-1. Přihlaste se k virtuálnímu virtuálnímu směrovači hostitele relace, který jste nakonfigurovali na začátku tohoto článku, [a potom stáhněte a nainstalujte agenta FSLogix](/fslogix/install-ht/).
+1. Přihlaste se k virtuálnímu počítači hostitele relace, který jste nakonfigurovali na začátku tohoto článku, [a pak stáhněte a nainstalujte agenta FSLogix](/fslogix/install-ht/).
 
-2. Rozbalte stažený soubor agenta FSLogix a přejděte na verzi **x64** > **Releases**a spusťte soubor **FSLogixAppsSetup.exe**.
+2. Rozbalte soubor agenta FSLogix, který jste stáhli, klikněte na **x64** > **releases**a pak otevřete **FSLogixAppsSetup. exe**.
 
-3. Jakmile se instalátor spustí, vyberte **Souhlasím s licenčními podmínkami.** Pokud je to možné, zadejte nový klíč.
+3. Jakmile se instalační program spustí, vyberte Souhlasím **s licenčními podmínkami a ujednáními.** V případě potřeby zadejte nový klíč.
 
 4. Vyberte **Install** (Nainstalovat).
 
-5. Otevřete **jednotku C**a pak přejděte na **programfiles** > **FSLogix** > **Apps** a ujistěte se, že byl agent FSLogix správně nainstalován.
+5. Otevřete **jednotku C**a pak vyhledejte **soubory Program Files** > **FSLogix** > **a ujistěte se,** že je agent FSLogix správně nainstalovaný.
 
      >[!NOTE]
-     > Pokud je ve fondu hostitelů více virtuálních počítačích, budete muset opakovat kroky 1 až 5 pro každý virtuální počítač.
+     > Pokud je ve fondu hostitelů víc virtuálních počítačů, budete muset pro každý virtuální počítač zopakovat kroky 1 až 5.
 
-6. Spusťte **Editor registru** (RegEdit) jako správce.
+6. Spusťte **Editor registru** (Regedit) jako správce.
 
-7. Přejděte na **položku** > **Počítačová HKEY_LOCAL_MACHINE** > **software** > **FSLogix**, klepněte pravým tlačítkem myši na **položku FSLogix**, vyberte možnost **Nový**a potom vyberte možnost **Klíč**.
+7. Přejděte na **počítač** > **HKEY_LOCAL_MACHINE** > **software** > **FSLogix**, klikněte pravým tlačítkem na **FSLogix**, vyberte **Nový**a pak vyberte **klíč**.
 
-8. Vytvořte nový klíč s názvem **Profily**.
+8. Vytvořte nový klíč s názvem **Profiles**.
 
-9.  Klikněte pravým tlačítkem myši na **Profily**, vyberte **Nový**a pak vyberte **Hodnotu DWORD (32bitová).** Pojmenujte hodnotu **Enabled** a nastavte hodnotu **Data** na **hodnotu 1**.
+9.  Klikněte pravým tlačítkem na **profily**, vyberte **Nový**a pak vyberte **hodnotu DWORD (32-bit).** Pojmenujte hodnotu **Enabled** a nastavte hodnotu **data** na **1**.
 
-    ![Snímek obrazovky s klíčem Profily. Soubor REG_DWORD je zvýrazněn a jeho hodnota Data je nastavena na hodnotu 1.](media/dword-value.png)
+    ![Snímek obrazovky s klíčem Profile REG_DWORD soubor je zvýrazněný a jeho datová hodnota je nastavená na 1.](media/dword-value.png)
 
-10. Klepněte pravým tlačítkem myši na **položku Profily**, vyberte **nový**a pak vyberte **hodnotu více řetězců**. Pojmenujte hodnotu **VHDLocations** a nastavte zadejte identifikátor URI pro sdílenou složku `\\fsprofile.file.core.windows.net\share` Souborů Azure jako hodnotu Data.
+10. Klikněte pravým tlačítkem na **profily**, vyberte **Nový**a potom vyberte **hodnotu s více řetězci**. Pojmenujte hodnotu **VHDLocations** a jako datovou hodnotu zadejte identifikátor URI pro `\\fsprofile.file.core.windows.net\share` sdílenou složku souborů Azure.
 
-    ![Snímek obrazovky s klávesou Profily zobrazující soubor VHDLocations. Jeho hodnota Data zobrazuje identifikátor URI pro sdílenou složku Souborů Azure.](media/multi-string-value.png)
+    ![Snímek obrazovky s klíčem Profiles, který ukazuje soubor VHDLocations Jeho hodnota dat zobrazuje identifikátor URI pro sdílenou složku služby soubory Azure.](media/multi-string-value.png)
 
 ## <a name="assign-users-to-a-session-host"></a>Přiřazení uživatelů k hostiteli relace
 
-Nyní budete muset přiřadit uživatele k hostiteli relace.
+Teď budete muset přiřadit uživatele k hostiteli relace.
 
 Přiřazení uživatelů:
 
-1. Spusťte prostředí Windows PowerShell jako správce a pak spusťte následující rutinu pro přihlášení k prostředí Windows Virtual Desktop pomocí prostředí PowerShell:
+1. Spusťte Windows PowerShell jako správce a pak spuštěním následující rutiny se přihlaste k virtuálnímu počítači s Windows pomocí PowerShellu:
 
    ```powershell
    Import-Module Microsoft.RdInfra.RdPowershell
@@ -181,9 +181,9 @@ Přiřazení uživatelů:
    Add-RdsAccount -DeploymentUrl $brokerurl
    ```
 
-   Po zobrazení výzvy k zadání pověření zadejte stejného uživatele, kterému byla udělena role TenantCreator, RdS Owner nebo RdS Contributor v tenantovi virtuální plochy Windows.
+   Po zobrazení výzvy k zadání přihlašovacích údajů zadejte stejného uživatele, kterému byla udělena role TenantCreator, RDS Owner nebo RDS Přispěvatel v tenantovi virtuálních klientů Windows.
 
-2. Spusťte následující rutiny a přiřaďte uživatele ke skupině vzdálené plochy:
+2. Spuštěním následujících rutin přiřaďte uživatele ke skupině Vzdálená plocha:
 
      ```powershell
      $tenant = "<your-wvd-tenant>"
@@ -197,7 +197,7 @@ Přiřazení uživatelů:
      Add-RdsAppGroupUser $tenant $pool1 $appgroup $user1
      ```
 
-    Stejně jako předchozí rutiny, ujistěte se, že nahradit `<your-wvd-tenant>`, `<wvd-pool>`a `<user-principal>` s příslušnými hodnotami.
+    Stejně jako v předchozích rutinách Nezapomeňte nahradit `<your-wvd-tenant>`, `<wvd-pool>`a `<user-principal>` s odpovídajícími hodnotami.
 
     Příklad:
 
@@ -215,29 +215,29 @@ Přiřazení uživatelů:
 
 ## <a name="make-sure-your-profile-works"></a>Ujistěte se, že váš profil funguje
 
-Nyní vše, co musíte udělat, je ujistit se, že profil, který jste vytvořili, existuje a funguje tak, jak má.
+Nyní stačí, abyste se ujistili, že profil, který jste vytvořili, existuje a funguje tak, jak má.
 
 Ověření profilu:
 
-1. Otevřete prohlížeč a přejděte do [webového klienta Windows Virtual Desktop](https://rdweb.wvd.microsoft.com/webclient/index.html).
+1. Otevřete prohlížeč a navštivte [webového klienta pro virtuální počítače s Windows](https://rdweb.wvd.microsoft.com/webclient/index.html).
 
 2. Přihlaste se pomocí uživatelského účtu přiřazeného ke skupině Vzdálená plocha.
 
-3. Po navázání relace uživatele otevřete portál Azure a přihlaste se pomocí účtu pro správu.
+3. Jakmile je uživatelská relace navázána, otevřete Azure Portal a přihlaste se pomocí účtu správce.
 
-4. Na postranním panelu vyberte **Účty úložiště**.
+4. Na bočním panelu vyberte **účty úložiště**.
 
-5. Vyberte účet úložiště, který jste nakonfigurovali jako sdílenou složku pro fond hostitelů relací a povolili ho pomocí služby Azure AD DS.
+5. Vyberte účet úložiště, který jste nakonfigurovali jako sdílenou složku pro fond hostitelů relací a povolili v Azure služba AD DS.
 
-6. Vyberte ikonu **Soubory** a rozbalte sdílenou složku.
+6. Vyberte ikonu **soubory** a potom rozbalte sdílenou složku.
 
-    Pokud je vše nastaveno správně, měli byste vidět **adresář** s názvem, `<user SID>-<username>`který je formátován takto: .
+    Pokud je všechno správně nastavené, měl by se zobrazit **adresář** s názvem, který se naformátoval takto `<user SID>-<username>`:.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud hledáte alternativní způsoby, jak vytvořit kontejnery profilu FSLogix, podívejte se na následující články:
+Pokud hledáte alternativní způsoby vytváření kontejnerů profilů FSLogix, přečtěte si následující články:
 
-- [Vytvořte kontejner profilu pro fond hostitelů pomocí sdílené složky](create-host-pools-user-profile.md).
-- [Vytvoření kontejneru profilu FSLogix pro fond hostitelů pomocí souborů Azure NetApp](create-fslogix-profile-container.md)
+- [Vytvořte kontejner profilu pro fond hostitelů s použitím sdílené složky](create-host-pools-user-profile.md).
+- [Vytvoření kontejneru profilu FSLogix pro fond hostitelů pomocí Azure NetApp Files](create-fslogix-profile-container.md)
 
-Podrobnější informace o konceptech souvisejících s kontejnery FSlogix pro soubory Azure najdete v [kontejnerech profilů FSLogix a souborech Azure](fslogix-containers-azure-files.md).
+Podrobnější informace o konceptech týkajících se FSlogix kontejnerů pro soubory Azure najdete v [kontejnerech profilů FSlogix a souborech Azure](fslogix-containers-azure-files.md).

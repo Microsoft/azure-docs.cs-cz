@@ -1,6 +1,6 @@
 ---
-title: Ověření spravované identity pomocí Služby Azure Active Directory
-description: Tento článek obsahuje informace o ověřování spravované identity pomocí Služby Azure Active Directory pro přístup k prostředkům Centra událostí Azure
+title: Ověřování spravované identity pomocí Azure Active Directory
+description: Tento článek poskytuje informace o ověřování spravované identity pomocí Azure Active Directory pro přístup k prostředkům Azure Event Hubs.
 services: event-hubs
 ms.service: event-hubs
 documentationcenter: ''
@@ -10,82 +10,82 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
 ms.openlocfilehash: dfc60fbc03021e72dccc0f60a7ac34d204ef6df9
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82025182"
 ---
-# <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Ověření spravované identity pomocí Služby Azure Active Directory pro přístup k prostředkům centra událostí
-Azure Event Hubs podporuje ověřování Azure Active Directory (Azure AD) se [spravovanými identitami pro prostředky Azure.](../active-directory/managed-identities-azure-resources/overview.md) Spravované identity pro prostředky Azure můžou autorizovat přístup k prostředkům Centra událostí pomocí přihlašovacích údajů Azure AD z aplikací spuštěných ve virtuálních počítačích Azure, aplikacích funkcí, škálovacích sadách virtuálních počítačů a dalších službách. Pomocí spravovaných identit pro prostředky Azure společně s ověřováním Azure AD se můžete vyhnout ukládání přihlašovacích údajů s vašimi aplikacemi, které běží v cloudu.
+# <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Ověření spravované identity pomocí Azure Active Directory pro přístup k prostředkům Event Hubs
+Azure Event Hubs podporuje ověřování Azure Active Directory (Azure AD) se [spravovanými identitami pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md). Spravované identity pro prostředky Azure můžou autorizovat přístup k Event Hubs prostředkům pomocí přihlašovacích údajů Azure AD z aplikací běžících ve službě Azure Virtual Machines (VM), aplikací Function App, Virtual Machine Scale Sets a dalších služeb. Pomocí spravovaných identit pro prostředky Azure spolu s ověřováním Azure AD se můžete vyhnout ukládání přihlašovacích údajů k vašim aplikacím, které běží v cloudu.
 
-Tento článek ukazuje, jak autorizovat přístup k centru událostí pomocí spravované identity z virtuálního počítače Azure.
+Tento článek popisuje, jak autorizovat přístup k centru událostí pomocí spravované identity z virtuálního počítače Azure.
 
 ## <a name="enable-managed-identities-on-a-vm"></a>Povolení spravovaných identit na virtuálním počítači
-Než budete moct použít spravované identity pro prostředky Azure k autorizaci prostředků Centra událostí z vašeho virtuálního počítače, musíte nejdřív povolit spravované identity pro prostředky Azure na virtuálním počítači. Informace o povolení spravovaných identit pro prostředky Azure najdete v jednom z těchto článků:
+Než budete moct použít spravované identity pro prostředky Azure k autorizaci Event Hubs prostředků z virtuálního počítače, musíte nejdřív na VIRTUÁLNÍm počítači povolit spravované identity pro prostředky Azure. Informace o tom, jak povolit spravované identity pro prostředky Azure, najdete v jednom z těchto článků:
 
 - [portál Azure](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
-- [Šablona Azure Resource Manageru](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
-- [Klientské knihovny Azure Resource Manageru](../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
+- [Šablona Azure Resource Manager](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+- [Klientské knihovny Azure Resource Manager](../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
-## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>Udělení oprávnění spravované identitě ve službě Azure AD
-Chcete-li autorizovat požadavek na službu Event Hubs ze spravované identity ve vaší aplikaci, nejprve nakonfigurujte nastavení řízení přístupu na základě rolí (RBAC) pro tuto spravovanou identitu. Azure Event Hubs definuje role RBAC, které zahrnují oprávnění pro odesílání a čtení z event hubů. Když je role RBAC přiřazena spravované identitě, spravované identitě je udělen přístup k datům centra událostí v příslušném oboru.
+## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>Udělení oprávnění spravované identitě v Azure AD
+Pro autorizaci žádosti o Event Hubs služby ze spravované identity ve vaší aplikaci nejdřív nakonfigurujte nastavení řízení přístupu na základě role (RBAC) pro tuto spravovanou identitu. Azure Event Hubs definuje role RBAC, které zahrnují oprávnění k posílání a čtení z Event Hubs. Když je role RBAC přiřazená ke spravované identitě, má spravovaná identita udělený přístup k Event Hubs datům v příslušném oboru.
 
-Další informace o přiřazování rolí RBAC najdete [v tématu Ověření pomocí služby Azure Active Directory, kde najdete přístup k prostředkům centra událostí](authorize-access-azure-active-directory.md).
+Další informace o přiřazování rolí RBAC najdete v tématu [ověřování pomocí Azure Active Directory pro přístup k prostředkům Event Hubs](authorize-access-azure-active-directory.md).
 
 ## <a name="use-event-hubs-with-managed-identities"></a>Použití služby Event Hubs pomocí spravovaných identit
-Chcete-li používat centra událostí se spravovanými identitami, musíte přiřadit identitu roli a příslušný obor. Postup v této části používá jednoduchou aplikaci, která běží pod spravovanou identitou a přistupuje k prostředkům Event Hubs.
+Chcete-li použít Event Hubs se spravovanými identitami, je nutné přiřadit identitu roli a příslušnému oboru. Postup v této části používá jednoduchou aplikaci, která běží pod spravovanou identitou a přistupuje k prostředkům Event Hubs.
 
-Tady používáme ukázkovou webovou aplikaci hostovohouji ve [službě Azure App Service](https://azure.microsoft.com/services/app-service/). Podrobné pokyny k vytvoření webové aplikace najdete v [tématu Vytvoření webové aplikace ASP.NET Core v Azure.](../app-service/app-service-web-get-started-dotnet.md)
+Tady používáme ukázkovou webovou aplikaci hostovanou v [Azure App Service](https://azure.microsoft.com/services/app-service/). Podrobné pokyny pro vytvoření webové aplikace najdete v tématu [Vytvoření webové aplikace v ASP.NET Core v Azure](../app-service/app-service-web-get-started-dotnet.md) .
 
-Po vytvoření aplikace postupujte takto: 
+Po vytvoření aplikace proveďte tyto kroky: 
 
-1. Přejděte do **nastavení** a vyberte **Identita**. 
-1. Vyberte **stav,** na který chcete být **zapnuti**. 
+1. Přejít na **Nastavení** a vybrat **identitu**. 
+1. Vyberte **stav** , který má být **zapnut**. 
 1. Vyberte **Uložit** a nastavení se uloží. 
 
-    ![Spravovaná identita webové aplikace](./media/authenticate-managed-identity/identity-web-app.png)
+    ![Spravovaná identita pro webovou aplikaci](./media/authenticate-managed-identity/identity-web-app.png)
 
-Po povolení tohoto nastavení se ve vaší službě Azure Active Directory (Azure AD) vytvoří nová identita služby a nakonfiguruje se do hostitele služby App Service.
+Po povolení tohoto nastavení se v Azure Active Directory (Azure AD) vytvoří nová identita služby a nakonfiguruje se na hostitele App Service.
 
-Nyní přiřaďte tuto identitu služby roli v požadovaném oboru ve vašich prostředcích Centra událostí.
+Teď tuto identitu služby přiřaďte roli v požadovaném oboru ve vašich Event Hubsch prostředcích.
 
-### <a name="to-assign-rbac-roles-using-the-azure-portal"></a>Přiřazení rolí RBAC pomocí portálu Azure
-Pokud chcete přiřadit roli prostředkům Centra událostí, přejděte na tento prostředek na webu Azure Portal. Zobrazte nastavení řízení přístupu (IAM) pro prostředek a podle následujících pokynů spravujte přiřazení rolí:
+### <a name="to-assign-rbac-roles-using-the-azure-portal"></a>Přiřazení rolí RBAC pomocí Azure Portal
+Chcete-li přiřadit roli k Event Hubs prostředkům, přejděte k tomuto prostředku v Azure Portal. Zobrazit nastavení Access Control (IAM) prostředku a podle těchto pokynů můžete spravovat přiřazení rolí:
 
 > [!NOTE]
-> Následující kroky přiřadí roli identity služby do oborů názvů Event Hubs. Stejným postupem můžete přiřadit roli vymezenou jakémukoli prostředku centra událostí. 
+> Následující kroky přiřadí roli identity služby vašim oborům názvů Event Hubs. Stejný postup můžete provést, chcete-li přiřadit role s rozsahem Event Hubs prostředku. 
 
-1. Na webu Azure Portal přejděte do oboru názvů Centra událostí a zobrazte **přehled** oboru názvů. 
-1. V levém menu vyberte **Řízení přístupu (IAM),** chcete-li zobrazit nastavení řízení přístupu pro centrum událostí.
-1.  Výběrem karty **Přiřazení rolí** zobrazíte seznam přiřazení rolí.
-3.  Výběrem **možnosti Přidat** přidáte novou roli.
-4.  Na stránce **Přidat přiřazení role** vyberte role Centra událostí, které chcete přiřadit. Potom vyhledejte identitu služby, kterou jste zaregistrovali, abyste roli přiřadili.
+1. V Azure Portal přejděte na svůj obor názvů Event Hubs a zobrazte **Přehled** oboru názvů. 
+1. V nabídce vlevo vyberte **Access Control (IAM)** a zobrazte nastavení řízení přístupu pro centrum událostí.
+1.  Vyberte kartu **přiřazení rolí** a zobrazte seznam přiřazení rolí.
+3.  Pokud chcete přidat novou roli, vyberte **Přidat** .
+4.  Na stránce **Přidat přiřazení role** vyberte role Event Hubs, které chcete přiřadit. Pak vyhledejte identitu služby, kterou jste zaregistrovali pro přiřazení role.
     
-    ![Stránka přiřazení role Přidat](./media/authenticate-managed-identity/add-role-assignment-page.png)
-5.  Vyberte **Uložit**. Identita, které jste roli přiřadili, se zobrazí v seznamu v této roli. Například následující obrázek ukazuje, že identita služby má vlastníka dat centra událostí.
+    ![Přidat stránku přiřazení role](./media/authenticate-managed-identity/add-role-assignment-page.png)
+5.  Vyberte **Uložit**. Identita, ke které jste přiřadili roli, se zobrazí v seznamu v rámci této role. Například následující obrázek ukazuje, že identita služby má Event Hubs vlastníka dat.
     
     ![Identita přiřazená k roli](./media/authenticate-managed-identity/role-assigned.png)
 
-Po přiřazení role bude mít webová aplikace přístup k prostředkům Centra událostí v rámci definovaného oboru. 
+Po přiřazení role bude mít webová aplikace přístup k prostředkům Event Hubs v rámci definovaného oboru. 
 
 ### <a name="test-the-web-application"></a>Test webové aplikace
-1. Vytvořte obor názvů Event Hubs a centrum událostí. 
+1. Vytvoří obor názvů Event Hubs a centrum událostí. 
 2. Nasaďte webovou aplikaci do Azure. Odkazy na webovou aplikaci na GitHubu najdete v následující části s kartami. 
-3. Ujistěte se, že SendReceive.aspx je nastaven jako výchozí dokument pro webovou aplikaci. 
+3. Ujistěte se, že SendReceive. aspx je nastaven jako výchozí dokument pro webovou aplikaci. 
 3. Povolte **identitu** webové aplikace. 
-4. Přiřaďte tuto identitu roli **Vlastníka dat centra událostí** na úrovni oboru názvů nebo na úrovni centra událostí. 
-5. Spusťte webovou aplikaci, zadejte název oboru názvů a název centra událostí, zprávu a vyberte **Odeslat**. Chcete-li událost přijmout, vyberte **možnost Přijmout**. 
+4. Přiřaďte tuto identitu k roli **Event Hubs data Owner** na úrovni oboru názvů nebo centra událostí. 
+5. Spusťte webovou aplikaci, zadejte název oboru názvů a název centra událostí, zprávu a vyberte **Odeslat**. Pokud chcete událost přijmout, vyberte **přijmout**. 
 
-#### <a name="azuremessagingeventhubs-latest"></a>[Azure.Messaging.EventHubs (nejnovější)](#tab/latest)
-Nyní můžete spustit webovou aplikaci a nasměrovat prohlížeč na ukázkovou stránku aspx. Ukázkovou webovou aplikaci, která odesílá a přijímá data z prostředků Event Hubs, najdete v [úložišti GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp).
+#### <a name="azuremessagingeventhubs-latest"></a>[Azure. Messaging. EventHubs (nejnovější)](#tab/latest)
+Nyní můžete spustit webovou aplikaci a nasměrovat prohlížeč na vzorovou stránku ASPX. Můžete najít ukázkovou webovou aplikaci, která odesílá a přijímá data z Event Hubsch prostředků v [úložišti GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp).
 
-Nainstalujte nejnovější balíček z [NuGet](https://www.nuget.org/packages/Azure.Messaging.EventHubs/)a začněte odesílat události do center událostí pomocí **eventhubproducerclienta** a přijímat události pomocí **EventHubConsumerClient**. 
+Nainstalujte si nejnovější balíček ze sady [NuGet](https://www.nuget.org/packages/Azure.Messaging.EventHubs/)a začněte odesílat události pro Event Hubs pomocí **EventHubProducerClient** a příjem událostí pomocí **EventHubConsumerClient**. 
 
 > [!NOTE]
-> Ukázka jazyka Java, která používá spravovanou identitu k publikování událostí do centra událostí, najdete v tématu [Publikování událostí s ukázkou identity Azure na GitHubu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs).
+> Vzorek Java, který používá spravovanou identitu k publikování událostí do centra událostí, najdete v tématu věnovaném [publikování událostí s Azure identity Sample na GitHubu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs).
 
 ```csharp
 protected async void btnSend_Click(object sender, EventArgs e)
@@ -131,9 +131,9 @@ protected async void btnReceive_Click(object sender, EventArgs e)
 ```
 
 #### <a name="microsoftazureeventhubs-legacy"></a>[Microsoft.Azure.EventHubs (starší verze)](#tab/old)
-Nyní můžete spustit webovou aplikaci a nasměrovat prohlížeč na ukázkovou stránku aspx. Ukázkovou webovou aplikaci, která odesílá a přijímá data z prostředků Event Hubs, najdete v [úložišti GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/ManagedIdentityWebApp).
+Nyní můžete spustit webovou aplikaci a nasměrovat prohlížeč na vzorovou stránku ASPX. Můžete najít ukázkovou webovou aplikaci, která odesílá a přijímá data z Event Hubsch prostředků v [úložišti GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/ManagedIdentityWebApp).
 
-Nainstalujte nejnovější balíček z [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)a začněte odesílat a přijímat data z center událostí pomocí klienta EventHubClient, jak je znázorněno v následujícím kódu: 
+Nainstalujte si nejnovější balíček z [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)a začněte odesílat a přijímat data z Center událostí pomocí EventHubClient, jak je znázorněno v následujícím kódu: 
 
 ```csharp
 var ehClient = EventHubClient.CreateWithManagedIdentity(new Uri($"sb://{EventHubNamespace}/"), EventHubName);
@@ -141,23 +141,23 @@ var ehClient = EventHubClient.CreateWithManagedIdentity(new Uri($"sb://{EventHub
 ---
 
 ## <a name="event-hubs-for-kafka"></a>Event Hubs pro Kafka
-Aplikace Apache Kafka můžete použít k odesílání zpráv do a přijímání zpráv z Azure Event Hubs pomocí spravované identity OAuth. Podívejte se na následující ukázku na [GitHubu: Event Hubs for Kafka - odesílání a přijímání zpráv pomocí spravované identity OAuth](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/managedidentity).
+Pomocí Apache Kafka aplikací můžete odesílat a přijímat zprávy z Azure Event Hubs pomocí spravované identity OAuth. Podívejte se na následující ukázku na GitHubu: [Event Hubs pro posílání a přijímání zpráv pomocí spravované identity OAuth](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/managedidentity).
 
 ## <a name="samples"></a>ukázky
-- **Ukázky Azure.Messaging.EventHubs**
+- Ukázky pro **Azure. Messaging. EventHubs**
     - [.NET](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
     - [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs)
-- [Ukázky Microsoft.Azure.EventHubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac). 
+- [Ukázky Microsoft. Azure. EventHubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac) 
     
-    Tyto ukázky používají starou knihovnu **Microsoft.Azure.EventHubs,** ale můžete ji snadno aktualizovat na použití nejnovější **knihovny Azure.Messaging.EventHubs.** Pokud chcete vzorek přesunout z používání staré knihovny do nové, přečtěte si [příručku pro migraci z Microsoft.Azure.EventHubs na Azure.Messaging.EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md).
-    Tato ukázka byla aktualizována tak, aby používala nejnovější knihovnu **Azure.Messaging.EventHubs.**
-- [Event Hubs pro Kafka - odesílání a přijímání zpráv pomocí spravované identity OAuth](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/managedidentity)
+    Tyto ukázky používají starou knihovnu **Microsoft. Azure. EventHubs** , ale můžete ji snadno aktualizovat tak, aby používala nejnovější knihovnu **Azure. Messaging. EventHubs** . Postup přesunutí ukázky z použití staré knihovny do nové verze najdete v [Průvodci migrací z Microsoft. Azure. EventHubs do Azure. Messaging. EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md).
+    Tato ukázka se aktualizovala tak, aby používala nejnovější knihovnu **Azure. Messaging. EventHubs** .
+- [Event Hubs pro Kafka – posílání a přijímání zpráv pomocí spravované identity OAuth](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/managedidentity)
 
 
 ## <a name="next-steps"></a>Další kroky
-- V následujícím článku se dozvíte o spravovaných identitách pro prostředky Azure: [Co je spravované identity pro prostředky Azure?](../active-directory/managed-identities-azure-resources/overview.md)
+- V následujícím článku se dozvíte o spravovaných identitách prostředků Azure: [co jsou spravované identity pro prostředky Azure?](../active-directory/managed-identities-azure-resources/overview.md)
 - Podívejte se na následující související články:
-    - [Ověřování požadavků na Centra událostí Azure z aplikace pomocí Služby Azure Active Directory](authenticate-application.md)
-    - [Ověřování požadavků na Centra událostí Azure pomocí sdílených přístupových podpisů](authenticate-shared-access-signature.md)
-    - [Autorizace přístupu k prostředkům Centra událostí pomocí Služby Azure Active Directory](authorize-access-azure-active-directory.md)
-    - [Autorizace přístupu k prostředkům Centra událostí pomocí sdílených přístupových podpisů](authorize-access-shared-access-signature.md)
+    - [Ověřování požadavků do Azure Event Hubs z aplikace pomocí Azure Active Directory](authenticate-application.md)
+    - [Ověřování požadavků na Azure Event Hubs pomocí sdílených přístupových podpisů](authenticate-shared-access-signature.md)
+    - [Autorizace přístupu k prostředkům Event Hubs pomocí Azure Active Directory](authorize-access-azure-active-directory.md)
+    - [Autorizace přístupu k prostředkům Event Hubs pomocí sdílených přístupových podpisů](authorize-access-shared-access-signature.md)

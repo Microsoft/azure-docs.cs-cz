@@ -1,6 +1,6 @@
 ---
-title: Konfigurace sentinelu (náhled)
-description: Vysvětluje, jak nakonfigurovat Azure Sentinel tak, aby přijímala data z vašeho řešení Azure Security Center for IoT.
+title: Konfigurace Sentinel (Preview)
+description: Vysvětluje, jak nakonfigurovat Azure Sentinel pro příjem dat z Azure Security Center pro řešení IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -14,68 +14,68 @@ ms.workload: na
 ms.date: 02/18/2020
 ms.author: mlottner
 ms.openlocfilehash: fe8e4c1b08f96e5f6b2fc7649f7a4361616b7c87
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311305"
 ---
-# <a name="connect-your-data-from-azure-security-center-for-iot-to-azure-sentinel-preview"></a>Připojení dat z Azure Security Center pro IoT k Azure Sentinelu (preview)
+# <a name="connect-your-data-from-azure-security-center-for-iot-to-azure-sentinel-preview"></a>Připojení dat z Azure Security Center pro IoT do Azure Sentinel (Preview)
 
 > [!IMPORTANT]
-> Datový konektor Azure Security Center for IoT v Azure Sentinelu je momentálně ve verzi Public Preview.
-> Tato funkce je k dispozici bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
+> Azure Security Center pro datový konektor IoT v Azure Sentinel je aktuálně ve verzi Public Preview.
+> Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-V této příručce se dozvíte, jak připojit data Azure Security Center pro IoT k Azure Sentinelu.
+V této příručce se dozvíte, jak připojit Azure Security Center pro data IoT do Azure Sentinel.
 
 > [!div class="checklist"]
 > * Požadavky
 > * Nastavení připojení
-> * Zobrazení výstrahy Log Analytics
+> * Zobrazení výstrah Log Analytics
 
-Připojte výstrahy z Azure Security Center pro IoT a streamujte je přímo do Azure Sentinelu.
+Připojte výstrahy z Azure Security Center pro IoT a Streamujte je přímo do Azure Sentinel.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Musíte mít oprávnění **ke čtení** a **zápisu** v pracovním prostoru.
-- **Azure Security Center pro IoT** musí být **povolené** na příslušných službách Služby IoT Hub.
-- Musíte mít oprávnění **ke čtení** i **zápisu** v centru **Azure IoT Hub,** které chcete připojit.
-- Musíte mít také oprávnění **ke čtení** a **zápisu** ve **skupině prostředků Služby Azure IoT Hub**.
+- **Azure Security Center pro IoT** musí být **povolené** na vašich relevantních IoT Hub.
+- Musíte mít oprávnění **ke čtení** i **zápisu** na **IoT Hub Azure** , ke kterým se chcete připojit.
+- Musíte mít také oprávnění **ke čtení** a **zápisu** ve **skupině prostředků Azure IoT Hub**.
 
 > [!NOTE]
-> Abyste mohli odesílat obecné výstrahy prostředků Azure, musíte mít ve vašem předplatném spuštěné licencování úrovně Azure Security Center Standard. S bezplatnými licencemi úrovně, které jsou vyžadovány pro Azure Security Center pro IoT, budou do Azure Sentinelu předávány jenom výstrahy související s Azure Security Center pro IoT.
+> Aby bylo možné odesílat obecné výstrahy týkající se prostředků Azure, musíte mít ve svém předplatném spuštěnou licenci na úrovni Standard Azure Security Center. U Azure Security Center pro IoT se vyžaduje licencování na úrovni Free, do Azure Sentinel se předají jenom Azure Security Center pro výstrahy související s IoT.
 
-## <a name="connect-to-azure-security-center-for-iot"></a>Připojení k Centru zabezpečení Azure pro IoT
+## <a name="connect-to-azure-security-center-for-iot"></a>Připojení k Azure Security Center pro IoT
 
-1. V Azure Sentinelu vyberte **datové konektory** a klikněte na dlaždici **Azure Security Center for IoT.**
-1. V dolní části pravého podokna klikněte na **Otevřít stránku konektoru**.
-1. Vedle každého předplatného služby IoT Hub, jehož výstrahy a upozornění na zařízení, které chcete streamovat do Azure Sentinelu, klikněte na **Připojit**.
-    - Pokud Azure Security Center pro IoT není povolena v tomto centru, zobrazí se upozornění Povolit. Klepnutím na odkaz **Povolit** spusťte a povolte službu.
-1. Můžete se rozhodnout, jestli chcete, aby výstrahy z Azure Security Center pro IoT automaticky generovat incidenty v Azure Sentinelu. V části **Vytvořit incidenty**vyberte **Povolit,** chcete-li pravidlo povolit automatické vytváření incidentů z generovaných výstrah.  Toto pravidlo lze změnit nebo upravit v části Pravidla **služby Analytics** > **Active.**
+1. V Azure Sentinel vyberte **datové konektory** a potom klikněte na dlaždici **Azure Security Center pro IoT** .
+1. V dolní části pravého podokna klikněte na tlačítko **otevřít stránku konektoru**.
+1. Klikněte na **připojit**a vedle každého předplatného IoT Hub, jejichž výstrahy a výstrahy zařízení chcete streamovat do Azure Sentinel.
+    - Pokud Azure Security Center pro IoT v tomto centru není povolená, zobrazí se zpráva s upozorněním na povolení. Kliknutím na odkaz **Povolit** spusťte službu a povolte ji.
+1. Můžete rozhodnout, jestli chcete, aby upozornění z Azure Security Center pro IoT automaticky generovala incidenty v Azure Sentinel. V části **vytvořit incidenty**vyberte **Povolit** , pokud chcete, aby pravidlo automaticky vytvořilo incidenty z generovaných výstrah.  Toto pravidlo se dá změnit nebo upravit v části **Analýza** > **aktivní** pravidla.
 
 > [!NOTE]
->Aktualizace seznamu rozbočovačů po provedení změn připojení může trvat 10 sekund nebo déle.
+>Po provedení změn připojení může aktualizace seznamu centra trvat 10 sekund nebo déle.
 
 ## <a name="log-analytics-alert-display"></a>Zobrazení výstrahy Log Analytics
 
-Použití příslušného schématu v Log Analytics k zobrazení výstrah Azure Security Center for IoT:
+Chcete-li použít příslušné schéma v Log Analytics k zobrazení Azure Security Center pro výstrahy IoT:
 
-1. **Scházejte protokoly** > **SecurityInsights** > **SecurityAlert**nebo vyhledejte **službu SecurityAlert**.
-1. Filtrem zobrazíte jenom Azure Security Center for IoT generované výstrahy pomocí následujícího filtru kql:
+1. Otevřete **protokoly** > **SecurityInsights** > **SecurityAlert**, nebo vyhledejte **SecurityAlert**.
+1. Filtr, aby se zobrazily pouze Azure Security Center upozornění vygenerovaných IoT pomocí následujícího filtru KQL:
 
 ```kusto
 SecurityAlert | where ProductName == "Azure Security Center for IoT"
 ```
 
-### <a name="service-notes"></a>Servisní poznámky
+### <a name="service-notes"></a>Poznámky ke službě
 
-Po připojení služby IoT Hub jsou data centra dostupná v Azure Sentinelu přibližně o 15 minut později.
+Po připojení IoT Hub jsou data centra k dispozici v Azure Sentinel přibližně 15 minut později.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto dokumentu jste se dozvěděli, jak připojit Azure Security Center pro IoT k Azure Sentinelu. Další informace o zjišťování hrozeb a přístupu k bezpečnostním datům naleznete v následujících článcích:
+V tomto dokumentu jste zjistili, jak připojit Azure Security Center pro IoT do Azure Sentinel. Další informace o detekci hrozeb a přístupu k datům zabezpečení najdete v následujících článcích:
 
-- Přečtěte si, jak pomocí Azure Sentinelu [získat přehled o vašich datech a potenciálních hrozbách](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility).
+- Naučte se, jak pomocí funkce Azure Sentinel [získat přehled o vašich datech a potenciálních hrozbách](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility).
 
-- Přečtěte si, jak získat přístup k [datům zabezpečení IoT](how-to-security-data-access.md)
+- Informace o [přístupu k datům zabezpečení IoT](how-to-security-data-access.md)

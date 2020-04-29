@@ -1,6 +1,6 @@
 ---
 title: Integrace Azure Stream Analytics s Azure Machine Learning
-description: Tento článek popisuje, jak integrovat úlohu Azure Stream Analytics s modely Azure Machine Learning.
+description: Tento článek popisuje, jak integrovat Azure Stream Analytics úlohu s modelem Azure Machine Learning.
 author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
@@ -8,40 +8,40 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.openlocfilehash: 07fa72f086b676723279ee4b8efd927beb2692f0
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81481968"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Integrace Azure Stream Analytics s Azure Machine Learning (Preview)
 
-Modely strojového učení můžete implementovat jako uživatelem definovanou funkci (UDF) ve svých úlohách Azure Stream Analytics, abyste mohli provádět vyhodnocování v reálném čase a předpovědi na vstupních datech streamování. [Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md) umožňuje používat jakýkoli populární open source nástroj, jako je Tensorflow, scikit-learn nebo PyTorch, k přípravě, trénování a nasazování modelů.
+Modely strojového učení můžete implementovat jako uživatelsky definovanou funkci (UDF) ve svých úlohách Azure Stream Analytics, abyste v reálném čase provedli bodování a předpovědi se na vašich vstupních datech streamování. [Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md) vám umožňuje používat libovolný oblíbený open source nástroj, jako je Tensorflow, scikit-učení nebo PyTorch, pro přípravu, výuku a nasazení modelů.
 
 > [!NOTE]
-> Tato funkce je ve verzi Public Preview. K této funkci můžete přistupovat na webu Azure Portal pouze pomocí [odkazu náhledu portálu Stream Analytics](https://aka.ms/asaportalpreview). Tato funkce je k dispozici také v nejnovější verzi [nástrojů Stream Analytics pro Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install).
+> Tato funkce je ve verzi Public Preview. K této funkci můžete přistupovat jenom na Azure Portal pomocí [odkazu Stream Analytics Portal Preview](https://aka.ms/asaportalpreview). Tato funkce je také k dispozici v nejnovější verzi [Stream Analytics nástrojů pro sadu Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před přidáním modelu strojového učení jako funkce do úlohy Stream Analytics proveďte následující kroky:
+Před přidáním modelu Machine Learning jako funkce do Stream Analytics úlohy proveďte následující kroky:
 
-1. Azure Machine Learning slouží k [nasazení modelu jako webové služby](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where).
+1. K [nasazení modelu jako webové služby](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)použijte Azure Machine Learning.
 
-2. Váš bodovací skript by měl mít [ukázkové vstupy a výstupy,](../machine-learning/how-to-deploy-and-where.md#example-entry-script) které používá Azure Machine Learning ke generování specifikace schématu. Stream Analytics používá schéma k pochopení podpisu funkce vaší webové služby.
+2. Váš skript bodování by měl mít [ukázkové vstupy a výstupy](../machine-learning/how-to-deploy-and-where.md#example-entry-script) , které Azure Machine Learning používá ke generování specifikace schématu. Stream Analytics používá schéma pro pochopení signatury funkce webové služby.
 
-3. Ujistěte se, že vaše webová služba přijímá a vrací serializovaná data JSON.
+3. Ujistěte se, že webová služba přijímá a vrací Serializovaná data JSON.
 
-4. Nasaďte svůj model ve [službě Azure Kubernetes](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) pro nasazení ve velkém měřítku. Pokud webová služba není schopna zpracovat počet požadavků přicházejících z vaší úlohy, výkon úlohy Stream Analytics se sníží, což má vliv na latenci. Modely nasazené v instanci kontejnerů Azure nejsou dnes podporované, ale budou k dispozici v nadcházejících měsících.
+4. Nasazení modelu ve [službě Azure Kubernetes](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) pro vysoce škálovatelná produkční nasazení. Pokud webová služba nemůže zpracovat počet požadavků přicházejících z vaší úlohy, výkon vaší Stream Analytics úlohy se sníží, což má vliv na latenci. Modely nasazené v Azure Container Instances se dnes nepodporují, ale budou k dispozici v nadcházejících měsících.
 
-## <a name="add-a-machine-learning-model-to-your-job"></a>Přidání modelu strojového učení do své úlohy
+## <a name="add-a-machine-learning-model-to-your-job"></a>Přidání modelu Machine Learning do úlohy
 
-Funkce Azure Machine Learning můžete přidat do úlohy Stream Analytics přímo z portálu Azure.
+Do úlohy Stream Analytics můžete přidat funkce Azure Machine Learning přímo z Azure Portal.
 
-1. Přejděte na úlohu Stream Analytics na webu Azure Portal a v části **Topologie úloh**vyberte **Funkce** . Potom vyberte **službu Azure ML** v rozevírací nabídce **+ Přidat.**
+1. V Azure Portal přejděte na svou Stream Analytics úlohu a v části **topologie úlohy**vyberte **funkce** . Pak vyberte **Azure ml Service** z rozevírací nabídky **+ Přidat** .
 
-   ![Přidání Azure ML UDF](./media/machine-learning-udf/add-azureml-udf.png)
+   ![Přidat Azure ML UDF](./media/machine-learning-udf/add-azureml-udf.png)
 
-2. Vyplňte formulář **funkce Služby Strojového učení Azure** s následujícími hodnotami vlastností:
+2. Do formuláře **funkce služby Azure Machine Learning** zadejte následující hodnoty vlastností:
 
    ![Konfigurace Azure ML UDF](./media/machine-learning-udf/configure-azureml-udf.png)
 
@@ -51,17 +51,17 @@ Následující tabulka popisuje každou vlastnost funkcí služby Azure ML v Str
 |--------|-----------|
 |Alias funkce|Zadejte název pro vyvolání funkce v dotazu.|
 |Předplatné|Vaše předplatné Azure..|
-|Pracovní prostor Azure ML|Pracovní prostor Azure Machine Learning, který jste použili k nasazení modelu jako webové služby.|
+|Pracovní prostor Azure ML|Azure Machine Learning pracovní prostor, který jste použili k nasazení modelu jako webové služby.|
 |Nasazení|Webová služba hostující váš model.|
-|Podpis funkce|Podpis webové služby odvozený ze specifikace schématu rozhraní API. Pokud se váš podpis nenačte, zkontrolujte, zda jste ve skriptu pro vyhošťování zadali ukázkový vstup a výstup, abyste automaticky vygenerovali schéma.|
-|Počet paralelních požadavků na oddíl|Jedná se o pokročilou konfiguraci pro optimalizaci vysoké propustnost. Toto číslo představuje souběžné požadavky odeslané z každého oddílu úlohy webové službě. Úlohy se šesti streamovacími jednotkami (SU) a nižšími mají jeden oddíl. Úlohy s 12 SU mají dva oddíly, 18 SU mají tři oddíly a tak dále.<br><br> Pokud má například vaše úloha dva oddíly a tento parametr nastavíte na čtyři, bude osm souběžných požadavků z úlohy do webové služby. V tomto okamžiku public preview tato hodnota výchozí 20 a nelze aktualizovat.|
-|Maximální počet dávek|Toto je pokročilá konfigurace pro optimalizaci propustnost ve vysokém měřítku. Toto číslo představuje maximální počet událostí, které budou dávkovány společně v jednom požadavku odeslaném webové službě.|
+|Signatura funkce|Signatura webové služby odvozená ze specifikace schématu rozhraní API. Pokud se Váš podpis nepovede načíst, ověřte, že jste ve svém skriptu pro hodnocení zadali vzorový vstup a výstup pro automatické generování schématu.|
+|Počet paralelních požadavků na oddíl|Toto je pokročilá konfigurace pro optimalizaci propustnosti ve velkém měřítku. Toto číslo představuje souběžné požadavky odeslané z každého oddílu vaší úlohy do webové služby. Úlohy s šesti jednotkami streamování (SU) a nižší mají jeden oddíl. Úlohy s 12 službami SUs mají dva oddíly, 18 SUs mají tři oddíly a tak dále.<br><br> Pokud má vaše úloha například dva oddíly a nastavíte tento parametr na čtyři, bude z vaší úlohy pro vaši webovou službu osm souběžných požadavků. V současnosti ve verzi Public Preview je tato hodnota standardně 20 a nelze ji aktualizovat.|
+|Maximální počet dávek|Toto je pokročilá konfigurace pro optimalizaci vysoce škálovatelné propustnosti. Toto číslo představuje maximální počet událostí dávkování v jedné žádosti odeslané webové službě.|
 
 ## <a name="supported-input-parameters"></a>Podporované vstupní parametry
 
-Když váš dotaz Stream Analytics vyvolá UDF Azure Machine Learning, úloha vytvoří serializovaný požadavek JSON na webovou službu. Požadavek je založen na schématu specifické pro model. Musíte zadat ukázkový vstup a výstup ve skriptu hodnocení, abyste [automaticky vygenerovali schéma](../machine-learning/how-to-deploy-and-where.md). Schéma umožňuje Stream Analytics vytvořit serializovaný požadavek JSON pro některý z podporovaných datových typů, jako je numpy, pandas a PySpark. Více vstupních událostí lze dávkově sestavit v jednom požadavku.
+Když váš Stream Analytics dotaz vyvolá Azure Machine Learning UDF, úloha vytvoří pro webovou službu serializovanou žádost JSON. Požadavek je založen na schématu specifickém pro model. Pro [Automatické generování schématu](../machine-learning/how-to-deploy-and-where.md)musíte zadat vzorový vstup a výstup do skriptu hodnocení. Schéma umožňuje Stream Analytics vytvořit serializovanou žádost JSON pro jakýkoli z podporovaných datových typů, jako je například numpy, PANDAS a PySpark. V jednom požadavku lze dávkovat více vstupních událostí.
 
-Následující dotaz Stream Analytics je příkladem, jak vyvolat UDF Azure Machine Learning:
+Následující Stream Analytics dotaz představuje příklad, jak vyvolat Azure Machine Learning systému souborů UDF:
 
 ```SQL
 SELECT udf.score(<model-specific-data-structure>)
@@ -69,15 +69,15 @@ INTO output
 FROM input
 ```
 
-Stream Analytics podporuje jenom předávání jednoho parametru pro funkce Azure Machine Learning. Možná budete muset připravit data před předáním jako vstup do strojového učení UDF.
+Stream Analytics podporuje pouze předávání jednoho parametru pro funkce Azure Machine Learning. Možná budete muset připravit vaše data, než je předáte do strojového učení UDF.
 
-## <a name="pass-multiple-input-parameters-to-the-udf"></a>Předání více vstupních parametrů do UDF
+## <a name="pass-multiple-input-parameters-to-the-udf"></a>Předání více vstupních parametrů do systému souborů UDF
 
-Nejběžnější příklady vstupů do modelů strojového učení jsou numpy pole a DataFrames. Můžete vytvořit pole pomocí JavaScript UDF a vytvořit JSON serializované `WITH` DataFrame pomocí klauzule.
+Nejběžnějšími příklady vstupů do modelů strojového učení jsou numpy pole a dataframes. Můžete vytvořit pole pomocí jazyka JavaScript UDF a vytvořit pomocí `WITH` klauzule datový rámec serializovaný ve formátu JSON.
 
 ### <a name="create-an-input-array"></a>Vytvoření vstupního pole
 
-Můžete vytvořit UDF JavaScript, který přijímá *N* počet vstupů a vytvoří pole, které lze použít jako vstup do Azure Machine Learning UDF.
+Můžete vytvořit jazyk JavaScript UDF, který přijímá *N* počet vstupů, a vytvoří pole, které lze použít jako vstup do Azure Machine Learning UDF.
 
 ```javascript
 function createArray(vendorid, weekday, pickuphour, passenger, distance) {
@@ -87,7 +87,7 @@ function createArray(vendorid, weekday, pickuphour, passenger, distance) {
 }
 ```
 
-Po přidání JavaScript UDF do úlohy můžete vyvolat Azure Machine Learning UDF pomocí následujícího dotazu:
+Po přidání JavaScriptu pro systém souborů UDF do úlohy můžete Azure Machine Learning UDF vyvolat pomocí následujícího dotazu:
 
 ```SQL
 SELECT udf.score(
@@ -97,7 +97,7 @@ INTO output
 FROM input
 ```
 
-Následující JSON je příklad požadavku:
+Následující kód JSON je příkladem požadavku:
 
 ```JSON
 {
@@ -108,11 +108,11 @@ Následující JSON je příklad požadavku:
 }
 ```
 
-### <a name="create-a-pandas-or-pyspark-dataframe"></a>Vytvoření datového rámce Pand nebo PySpark
+### <a name="create-a-pandas-or-pyspark-dataframe"></a>Vytvoření datového rámce PANDAS nebo PySpark
 
-`WITH` Klauzuli můžete použít k vytvoření json serializované DataFrame, který může být předán jako vstup do Azure Machine Learning UDF, jak je znázorněno níže.
+Pomocí `WITH` klauzule můžete vytvořit serializovaný datový rámec JSON, který lze předat jako vstup do Azure Machine Learning UDF, jak je znázorněno níže.
 
-Následující dotaz vytvoří DataFrame výběrem polí potřebné a používá DataFrame jako vstup do Azure Machine Learning UDF.
+Následující dotaz vytvoří datový rámec výběrem nezbytných polí a použitím datového rámce jako vstupu do Azure Machine Learning UDF.
 
 ```SQL
 WITH 
@@ -126,7 +126,7 @@ INTO output
 FROM input
 ```
 
-Následující JSON je příklad požadavku z předchozího dotazu:
+Následující kód JSON je příkladem požadavku z předchozího dotazu:
 
 ```JSON
 {
@@ -147,27 +147,27 @@ Následující JSON je příklad požadavku z předchozího dotazu:
 }
 ```
 
-## <a name="optimize-the-performance-for-azure-machine-learning-udfs"></a>Optimalizace výkonu pro UDF Azure Machine Learning
+## <a name="optimize-the-performance-for-azure-machine-learning-udfs"></a>Optimalizujte výkon pro Azure Machine Learning UDF
 
-Když nasadíte model do služby Azure Kubernetes, můžete [profilovat model k určení využití prostředků](../machine-learning/how-to-deploy-and-where.md#profilemodel). Můžete také [povolit App Insights pro vaše nasazení](../machine-learning/how-to-enable-app-insights.md) pochopit rychlost požadavků, doby odezvy a míry selhání.
+Při nasazení modelu do služby Azure Kubernetes můžete [profilovat model, abyste zjistili využití prostředků](../machine-learning/how-to-deploy-and-where.md#profilemodel). Službu [Application Insights pro vaše nasazení](../machine-learning/how-to-enable-app-insights.md) taky můžete povolit pro pochopení sazeb požadavků, dob odezvy a sazeb selhání.
 
-Pokud máte scénář s vysokou propustností událostí, možná budete muset v Stream Analytics změnit následující parametry, abyste dosáhli optimálního výkonu s nízkými latencemi od konce ke konci:
+Pokud máte scénář s vysokou propustností událostí, možná budete muset změnit následující parametry v Stream Analytics, abyste dosáhli optimálního výkonu s nižšími koncovými latencemi:
 
-1. Maximální počet dávek.
-2. Počet paralelních požadavků na oddíl.
+1. Maximální počet dávek
+2. Počet paralelních požadavků na oddíl
 
-### <a name="determine-the-right-batch-size"></a>Určení správné velikosti dávky
+### <a name="determine-the-right-batch-size"></a>Určení velikosti správné dávky
 
-Po nasazení webové služby odešlete ukázkový požadavek s různými velikostmi dávek od 50 a zvýšíte ji v pořadí stovek. Například 200, 500, 1000, 2000 a tak dále. Všimněte si, že po určité velikosti dávky se zvyšuje latence odpovědi. Bod, po kterém latence zvýšení odezvy by měla být maximální počet dávek pro vaši úlohu.
+Po nasazení webové služby odešlete vzorový požadavek s proměnlivými velikostmi dávek od 50 a zvýšíte ho v řádu stovky. Například 200, 500, 1000, 2000 a tak dále. Všimnete si, že po určité velikosti dávky se zvyšuje latence odezvy. Bod, po kterém se zvýší latence odezvy, by měl být maximálním počtem dávek pro vaši úlohu.
 
 ### <a name="determine-the-number-of-parallel-requests-per-partition"></a>Určení počtu paralelních požadavků na oddíl
 
-Při optimálním škálování by vaše úloha Stream Analytics měla být schopna odesílat více paralelních požadavků webové službě a získat odpověď během několika milisekund. Latence odpovědi webové služby může mít přímý vliv na latenci a výkon úlohy Stream Analytics. Pokud volání z vaší úlohy do webové služby trvá dlouhou dobu, pravděpodobně uvidíte zvýšení zpoždění vodoznaku a může také vidět zvýšení počtu nevyřízených vstupních událostí.
+U optimálního škálování by vaše Stream Analytics úloha měla být schopná odesílat více paralelních požadavků webové službě a získat odpověď během několika milisekund. Latence odpovědi webové služby může mít přímý vliv na latenci a výkon vaší Stream Analytics úlohy. Pokud volání z vaší úlohy do webové služby trvá dlouhou dobu, pravděpodobně se zobrazí zvýšení prodlevy vodoznaku a může se zobrazit také zvýšení počtu nevyřízených událostí vstupu.
 
-Chcete-li zabránit takové latence, ujistěte se, že váš cluster Azure Kubernetes Service (AKS) byl zřízen se [správným počtem uzlů a replik](../machine-learning/how-to-deploy-azure-kubernetes-service.md#using-the-cli). Je důležité, aby vaše webová služba byla vysoce dostupná a vrátila úspěšné odpovědi. Pokud vaše úloha obdrží nedostupnou odpověď služby (503) z webové služby, bude průběžně opakovat s exponenciálním zpět. Jakákoli jiná odpověď než úspěch (200) a služba není k dispozici (503) způsobí, že vaše úloha přejde do neúspěšného stavu.
+Aby se zabránilo takové latenci, ujistěte se, že se cluster služby Azure Kubernetes (AKS) zřídil se [správným počtem uzlů a replik](../machine-learning/how-to-deploy-azure-kubernetes-service.md#using-the-cli). Je důležité, aby byla vaše webová služba vysoce dostupná a vracela úspěšné odpovědi. Pokud vaše úloha obdrží z webové služby odpověď nedostupnou od služby (503), bude se průběžně opakovat s exponenciálním přechodem. Jakákoli jiná odpověď než úspěch (200) a nedostupná služba (503) způsobí, že vaše úloha přejde do stavu selhání.
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Kurz: Uživatelem definované funkce jazyka JavaScript v Azure Stream Analytics](stream-analytics-javascript-user-defined-functions.md)
-* [Škálování úlohy Stream Analytics pomocí funkce Azure Machine Learning Studio (klasické)](stream-analytics-scale-with-machine-learning-functions.md)
+* [Škálování Stream Analytics úlohy pomocí funkce Azure Machine Learning Studio (Classic)](stream-analytics-scale-with-machine-learning-functions.md)
 

@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 01/03/2019
 ms.openlocfilehash: 504d6a5216f3345f22a601c4ae084488aeb97c8d
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82128954"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Povolení a kontrola protokolů hlavních uzlů Kubernetes ve službě Azure Kubernetes Service (AKS)
@@ -19,7 +19,7 @@ Pomocí služby Azure Kubernetes Service (AKS) jsou hlavní součásti, jako je 
 
 Tento článek vyžaduje existující cluster AKS spuštěný ve vašem účtu Azure. Pokud ještě nemáte cluster AKS, vytvořte ho pomocí [Azure CLI][cli-quickstart] nebo [Azure Portal][portal-quickstart]. Protokoly Azure Monitor fungují s clustery AKS s povolenou RBAC i bez RBAC.
 
-## <a name="enable-resource-logs"></a>Povolit protokoly prostředků
+## <a name="enable-resource-logs"></a>Povolení protokolů prostředků
 
 Aby bylo možné získat a zkontrolovat data z více zdrojů, Azure Monitor protokolů poskytuje dotazovací jazyk a analytický modul, který poskytuje přehledy pro vaše prostředí. Pracovní prostor se používá k kompletování a analýze dat a může se integrovat s dalšími službami Azure, jako jsou Application Insights a Security Center. Pokud chcete k analýze protokolů použít jinou platformu, můžete místo toho Odeslat protokoly prostředků do účtu služby Azure Storage nebo centra událostí. Další informace najdete v tématu [co je Azure monitor protokolů?][log-analytics-overview].
 

@@ -1,6 +1,6 @@
 ---
-title: Integrace aplikace s virtuální sítí Azure
-description: Integrujte aplikaci ve službě Azure App Service s virtuálními sítěmi Azure.
+title: Integrace aplikace s využitím Azure Virtual Network
+description: Integrujte aplikaci v Azure App Service s virtuálními sítěmi Azure.
 author: ccompy
 ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.topic: article
@@ -8,152 +8,152 @@ ms.date: 04/16/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 78b49b8b7e17f12d49825390a302e28a61e10d16
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770843"
 ---
-# <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrace aplikace s virtuální sítí Azure
+# <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrace aplikace do služby Azure Virtual Network
 
-Tento článek popisuje funkci integrace virtuální sítě Služby Azure App Service a jak ji nastavit pomocí aplikací ve [službě Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). S [Virtuální sítí Azure][VNETOverview] (Virtuální sítě) můžete umístit mnoho prostředků Azure do sítě, která není přístupná internetu.
+Tento článek popisuje funkci Integrace virtuální sítě Azure App Service a její nastavení s využitím aplikací v [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Pomocí služby [azure Virtual Network][VNETOverview] (virtuální sítě) můžete mnoho vašich prostředků Azure umístit do sítě, která není směrovatelný z Internetu.
 
-Služba Azure App Service má dvě varianty:
+Azure App Service má dvě varianty:
 
 [!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-types.md)]
 
-## <a name="enable-vnet-integration"></a>Povolení integrace virtuální sítě
+## <a name="enable-vnet-integration"></a>Povolit integraci virtuální sítě
 
 > [!NOTE]
-> Pokud je okno "Networking" v nabídce pro aplikace pro Linux zakázáno (zašedlé), znamená to, že funkce není momentálně k dispozici.
+> Pokud je okno síť v nabídce pro aplikace pro Linux zakázané (zobrazené šedě), znamená to, že tato funkce není momentálně k dispozici.
 >
 
-1. Přejděte na portál **u síťového** uznatí. V části **Integrace virtuální sítě**vyberte Klepnutím **sem nakonfigurujete**.
+1. Přejít na uživatelské rozhraní **sítě** na portálu App Service. V části **Integrace virtuální**sítě vyberte **Konfigurovat kliknutím sem**.
 
 1. Vyberte **Přidat virtuální síť**.
 
    ![Vybrat integraci virtuální sítě][1]
 
-1. Rozevírací seznam obsahuje všechny virtuální sítě Azure Resource Manager ve vašem předplatném ve stejné oblasti. Pod tím je seznam virtuálních sítí Resource Manager ve všech ostatních oblastech. Vyberte virtuální síť, se kterou chcete integrovat.
+1. Rozevírací seznam obsahuje všechny Azure Resource Manager virtuální sítě ve vašem předplatném ve stejné oblasti. Pod seznamem je seznam virtuálních sítí Správce prostředků ve všech ostatních oblastech. Vyberte virtuální síť, se kterou chcete integrovat.
 
-   ![Výběr virtuální sítě][2]
+   ![Vyberte virtuální síť.][2]
 
-   * Pokud je virtuální síť ve stejné oblasti, vytvořte novou podsíť nebo vyberte prázdnou již existující podsíť.
-   * Chcete-li vybrat virtuální síť v jiné oblasti, musíte mít bránu virtuální sítě zřízenou s povoleným bodem na web.
-   * Pokud se chcete integrovat s klasickou virtuální sítí, místo výběru rozevíracího seznamu **Virtuální síť** vyberte **Kliknutím sem se připojíte ke klasické virtuální síti**. Vyberte klasickou virtuální síť, kterou chcete. Cílová virtuální síť už musí mít bránu virtuální sítě zřízenou s povoleným bodem na web.
+   * Pokud je virtuální síť ve stejné oblasti, buď vytvořte novou podsíť, nebo vyberte prázdnou existující podsíť.
+   * Pokud chcete vybrat virtuální síť v jiné oblasti, musíte mít zřízenou bránu virtuální sítě s povoleným odkazem na lokalitu.
+   * Pokud chcete integrovat s klasickou virtuální sítí, místo výběru **Virtual Network** rozevíracího seznamu vyberte **kliknutím sem se připojte k klasické virtuální**síti. Vyberte klasickou virtuální síť, kterou chcete. Cílová virtuální síť musí mít již zřízenou bránu Virtual Network s povoleným Point-to-site.
 
     ![Vybrat klasickou virtuální síť][3]
 
-Během integrace se aplikace restartuje. Po dokončení integrace uvidíte podrobnosti o virtuální síti, do které jste integrovaní.
+Během integrace se aplikace restartuje. Po dokončení integrace se zobrazí podrobnosti o virtuální síti, do které jste integraci.
 
-## <a name="regional-vnet-integration"></a>Regionální integrace virtuální sítě
+## <a name="regional-vnet-integration"></a>Místní integrace virtuální sítě
 
 [!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-regional.md)]
 
-### <a name="how-regional-vnet-integration-works"></a>Jak funguje regionální integrace virtuální sítě
+### <a name="how-regional-vnet-integration-works"></a>Jak funguje místní integrace virtuální sítě
 
-Aplikace ve službě App Service jsou hostované na rolích pracovních rolí. Základní a vyšší cenové plány jsou vyhrazené hostingové plány, kde neexistují žádné úlohy jiných zákazníků běžící na stejných pracovnících. Regionální integrace virtuální sítě funguje tak, že připojuje te virtuální rozhraní s adresami v delegované podsíti. Vzhledem k tomu, že adresa od je ve vaší virtuální síti, může přistupovat k většině věcí ve vaší virtuální síti nebo prostřednictvím ní, jako by to udělal virtuální počítač ve vaší virtuální síti. Implementace sítě se liší od spuštění virtuálního počítače ve vaší virtuální síti. Proto některé síťové funkce ještě nejsou pro tuto funkci k dispozici.
+Aplikace v App Service jsou hostované na rolích pracovního procesu. Cenové tarify Basic a vyšší jsou vyhrazené plány hostování, kde na stejných pracovních procesech neběží žádné úlohy ostatních zákazníků. Regionální integrace virtuální sítě funguje připojením virtuálních rozhraní k adresám v delegované podsíti. Vzhledem k tomu, že adresa z je ve vaší virtuální síti, má přístup k většině věcí ve vaší virtuální síti, jako je třeba virtuální počítač ve vaší virtuální síti. Implementace sítě se liší od spuštění virtuálního počítače ve vaší virtuální síti. Proto některé síťové funkce nejsou pro tuto funkci ještě dostupné.
 
-![Jak funguje regionální integrace virtuální sítě][5]
+![Jak funguje místní integrace virtuální sítě][5]
 
-Když je povolená regionální integrace virtuální sítě, vaše aplikace provádí odchozí volání na internet prostřednictvím stejných kanálů jako obvykle. Odchozí adresy, které jsou uvedeny na portálu vlastností aplikace, jsou adresy, které vaše aplikace stále používá. Jaké změny pro vaši aplikaci jsou volání služby koncový bod zabezpečené služby nebo RFC 1918 adresy přejít do vaší virtuální sítě. Pokud WEBSITE_VNET_ROUTE_ALL je nastavena na 1, všechny odchozí provoz y lze odeslat do virtuální sítě.
+Pokud je povolená místní integrace virtuální sítě, vaše aplikace provede odchozí volání na Internet přes stejné kanály jako normální. Odchozí adresy, které jsou uvedeny na portálu vlastností aplikace, jsou adresy, které vaše aplikace ještě používá. Jaké změny vaší aplikace jsou voláním služeb zabezpečeného koncovým bodem služby, nebo adresy RFC 1918 přecházejí do vaší virtuální sítě. Pokud je WEBSITE_VNET_ROUTE_ALL nastavené na 1, všechny odchozí přenosy se můžou poslat do vaší virtuální sítě.
 
-Tato funkce podporuje pouze jedno virtuální rozhraní na pracovníka. Jedno virtuální rozhraní na pracovníka znamená jednu regionální integraci virtuální sítě na plán služby App Service. Všechny aplikace ve stejném plánu služby App Service můžou používat stejnou integraci virtuální sítě. Pokud potřebujete aplikaci pro připojení k další virtuální síti, musíte vytvořit jiný plán služby App Service. Použité virtuální rozhraní není prostředek, ke kterému mají zákazníci přímý přístup.
+Funkce podporuje pouze jedno virtuální rozhraní na pracovní proces. Jedno virtuální rozhraní na pracovní proces znamená jednu místní integraci virtuální sítě podle plánu App Service. Všechny aplikace ve stejném plánu App Service můžou používat stejnou integraci virtuální sítě. Pokud potřebujete aplikaci pro připojení k další virtuální síti, je potřeba vytvořit jiný plán App Service. Použité virtuální rozhraní není prostředkem, ke kterému mají zákazníci přímý přístup.
 
-Vzhledem k povaze fungování této technologie se provoz, který se používá s integrací virtuální sítě, nezobrazuje v azure network watcheru nebo protokolech toku NSG.
+Vzhledem k tomu, jak tato technologie funguje, se provoz, který se používá při integraci virtuální sítě, nezobrazuje v protokolech Azure Network Watcher ani NSG Flow.
 
-## <a name="gateway-required-vnet-integration"></a>Integrace virtuální sítě požadovaná v bráně
+## <a name="gateway-required-vnet-integration"></a>Brána – požadovaná integrace virtuální sítě
 
-Integrace virtuální sítě požadovaná bránou podporuje připojení k virtuální síti v jiné oblasti nebo ke klasické virtuální síti. Integrace virtuální sítě vyžadované bránou:
+Brána – požadovaná integrace virtuální sítě podporuje připojení k virtuální síti v jiné oblasti nebo v klasické virtuální síti. Brána – požadovaná integrace virtuální sítě:
 
-* Umožňuje aplikaci připojit se k jenom k jedné virtuální síti najednou.
-* Umožňuje integrovat až pět virtuálních sítí v rámci plánu služby App Service.
-* Umožňuje, aby stejnou virtuální síť používalo více aplikací v plánu služby App Service, aniž by to ovlivnilo celkový počet, který může použít plán služby App Service. Pokud máte šest aplikací, které používají stejnou virtuální síť ve stejném plánu služby App Service, počítá se to jako jedna virtuální síť, která se používá.
-* Podporuje 99,9% SLA kvůli sla na bráně.
-* Umožňuje aplikacím používat DNS, se kterým je virtuální síť nakonfigurovaná.
-* Před připojením k aplikaci vyžaduje bránu založenou na směrování virtuální sítě nakonfigurovanou pomocí sítě VPN s bodem na lokalitu SSTP.
+* Umožňuje aplikaci, aby se připojovala pouze k jedné virtuální síti v jednom okamžiku.
+* Umožňuje integrovat až pět virtuální sítě v rámci plánu App Service.
+* Umožňuje, aby stejná virtuální síť byla používána více aplikacemi v plánu App Service bez vlivu na celkový počet, který může App Service plán použít. Pokud máte šest aplikací využívajících stejnou virtuální síť v rámci stejného App Serviceho plánu, která se počítá jako jedna virtuální síť, která se používá.
+* V důsledku smlouvy SLA pro bránu podporuje smlouvu SLA o úrovni 99,9%.
+* Umožňuje aplikacím používat službu DNS, se kterou je nakonfigurovaná virtuální síť.
+* Předtím, než bude možné připojit se k aplikaci, je nutné, aby byla nakonfigurovaná Virtual Network brána založená na trasách s VPN Point-to-site s protokolem SSTP.
 
-Nelze použít integraci virtuální sítě požadovanou bránou:
+Nemůžete použít integraci virtuální sítě požadovaná bránou:
 
-* S linuxovými aplikacemi.
-* S virtuální sítí připojenou k Azure ExpressRoute.
-* Přístup ke zabezpečeným prostředkům koncového bodu služby.
-* S bránou koexistence, která podporuje sítě SÍTĚ ExpressRoute i sítě VIRTUÁLNÍ SÍTĚ z bodu na web nebo sítě site-to-site.
+* S aplikacemi pro Linux.
+* S virtuální sítí připojenou ke službě Azure ExpressRoute.
+* Pro přístup k prostředkům zabezpečeného koncového bodu služby.
+* S bránou koexistence, která podporuje ExpressRoute i sítě VPN typu Point-to-site nebo site-to-site.
 
-### <a name="set-up-a-gateway-in-your-azure-virtual-network"></a>Nastavení brány ve virtuální síti Azure ###
+### <a name="set-up-a-gateway-in-your-azure-virtual-network"></a>Nastavení brány ve službě Azure Virtual Network ###
 
-Vytvoření brány:
+Postup vytvoření brány:
 
-1. [Vytvořte podsíť brány][creategatewaysubnet] ve virtuální síti.  
+1. Vytvořte ve virtuální síti [podsíť brány][creategatewaysubnet] .  
 
-1. [Vytvořte bránu VPN][creategateway]. Vyberte typ VPN založený na trase.
+1. [Vytvořte bránu VPN][creategateway]. Vyberte typ sítě VPN založený na trasách.
 
-1. [Nastavte adresy bodu k webu][setp2saddresses]. Pokud brána není v základní skladové jednotce, musí být IKEV2 zakázána v konfiguraci bodu k lokalitě a musí být vybránsstp. Adresní prostor point-to-site musí být v adresním blocích RFC 1918 10.0.0.0/8, 172.16.0.0/12 a 192.168.0.0/16.
+1. [Nastavte adresy Point-to-site][setp2saddresses]. Pokud brána není v skladové jednotce Basic, musí být IKEV2 v konfiguraci Point-to-site zakázaná a musí se vybrat protokol SSTP. Adresní prostor Point-to-site musí být v umístění RFC 1918 bloků adres 10.0.0.0/8, 172.16.0.0/12 a 192.168.0.0/16.
 
-Pokud vytvoříte bránu pro použití s integrací virtuální sítě služby App Service, nemusíte nahrát certifikát. Vytvoření brány může trvat 30 minut. Dokud se brána nezřídí, nebudete moct integrovat svou aplikaci s virtuální sítí.
+Pokud vytvoříte bránu pro použití s App Service Integration VNet, nemusíte nahrávat certifikát. Vytvoření brány může trvat až 30 minut. Dokud bránu nezřídíte, nebudete moct svoji aplikaci integrovat s vaší virtuální sítí.
 
-### <a name="how-gateway-required-vnet-integration-works"></a>Jak funguje integrace virtuální sítě vyžadované bránou
+### <a name="how-gateway-required-vnet-integration-works"></a>Jak brána vyžaduje integraci virtuální sítě
 
-Integrace virtuální sítě vyžadované bránou je postavená na technologii VPN od bodu do lokality. Sítě VIRTUÁLNÍ SÍTĚ point-to-site omezují přístup k síti k virtuálnímu počítači, který je hostitelem aplikace. Aplikace jsou omezeny na odesílání provozu na internet jenom prostřednictvím hybridních připojení nebo prostřednictvím integrace virtuální sítě. Když je vaše aplikace nakonfigurovaná s portálem tak, aby používala integraci virtuální sítě požadovanou bránou, je vaším jménem spravováno složité vyjednávání za účelem vytvoření a přiřazení certifikátů na straně brány a aplikace. Výsledkem je, že pracovníci, kteří slouží k hostování vašich aplikací, se můžou přímo připojit k bráně virtuální sítě ve vybrané virtuální síti.
+Brána – požadovaná integrace virtuální sítě je postavená na technologii VPN typu Point-to-site. Sítě VPN typu Point-to-site omezují síťový přístup k virtuálnímu počítači, který hostuje aplikaci. Aplikace jsou omezené tak, aby odesílaly přenosy na Internet jenom prostřednictvím Hybrid Connections nebo prostřednictvím integrace virtuální sítě. Když je vaše aplikace nakonfigurovaná s portálem, aby používala integraci virtuální sítě požadovaná bránou, je složité vyjednávání spravovaná vaším jménem k vytváření a přiřazování certifikátů v bráně a na straně aplikace. Výsledkem je, že se pracovní procesy používané k hostování vašich aplikací můžou přímo připojit k bráně virtuální sítě ve vybrané virtuální síti.
 
-![Jak funguje integrace virtuální sítě vyžadované bránou][6]
+![Jak brána vyžaduje integraci virtuální sítě][6]
 
 ### <a name="access-on-premises-resources"></a>Přístup k místním prostředkům
 
-Aplikace mohou přistupovat k místním prostředkům integrací s virtuálními sítěmi, které mají připojení k webu. Pokud používáte integraci virtuální sítě požadovanou bránou, aktualizujte místní trasy brány VPN pomocí bloků adres point-to-site. Při prvním nastavení sítě VPN mezi lokalitami by měly skripty použité ke konfiguraci správně nastavit trasy. Pokud po vytvoření sítě VPN mezi lokalitami přidáte adresy point-to-site, je třeba trasy aktualizovat ručně. Podrobnosti o tom, jak to udělat, se liší podle brány a nejsou zde popsány. Protokol BGP nelze nakonfigurovat pomocí připojení VPN mezi lokalitami.
+Aplikace mají přístup k místním prostředkům integrací s virtuální sítě, které mají připojení Site-to-site. Pokud používáte integraci virtuální sítě požadovaná bránou, aktualizujte své místní trasy brány VPN pomocí bloků adres typu Point-to-site. Při prvním nastavení sítě VPN typu Site-to-site musí být skripty používané ke konfiguraci správně nastaveny. Pokud přidáte adresy typu Point-to-site po vytvoření sítě VPN typu Site-to-site, je nutné trasy aktualizovat ručně. Podrobnosti o tom, jak to udělat, se liší podle brány a nejsou popsány zde. Nejde nakonfigurovat protokol BGP s připojením VPN typu Site-to-site.
 
-Žádná další konfigurace je vyžadována pro místní funkci integrace virtuální sítě dosáhnout prostřednictvím virtuální sítě do místních prostředků. Jednoduše potřebujete připojit virtuální síť k místním prostředkům pomocí ExpressRoute nebo sítě VPN mezi lokalitami.
+Žádná další konfigurace není nutná, aby funkce Místní integrace virtuální sítě dosáhla vaší virtuální sítě k místním prostředkům. Stačí připojit virtuální síť k místním prostředkům pomocí ExpressRoute nebo VPN typu Site-to-site.
 
 > [!NOTE]
-> Funkce integrace virtuální sítě požadovaná bránou neintegruje aplikaci s virtuální sítí, která má bránu ExpressRoute. I v případě, že brána ExpressRoute je nakonfigurovaná v [režimu koexistence][VPNERCoex], integrace virtuální sítě nefunguje. Pokud potřebujete přístup k prostředkům prostřednictvím připojení ExpressRoute, použijte funkci integrace místní virtuální sítě nebo [prostředí služby App Service][ASE], které běží ve vaší virtuální síti.
+> Funkce integrace virtuální sítě požadovaná bránou Neintegruje aplikaci s virtuální sítí, která má bránu ExpressRoute. I v případě, že je brána ExpressRoute nakonfigurovaná v [režimu koexistence][VPNERCoex], integrace virtuální sítě nefunguje. Pokud potřebujete přístup k prostředkům prostřednictvím připojení ExpressRoute, použijte funkci regionální integrace virtuální sítě nebo [App Service Environment][ASE], která běží ve vaší virtuální síti.
 > 
 > 
 
 ### <a name="peering"></a>Partnerské vztahy
 
-Pokud používáte partnerský vztah s místní integrací virtuální sítě, nemusíte provádět žádnou další konfiguraci.
+Pokud používáte partnerské vztahy s místní integrací virtuální sítě, nemusíte provádět žádnou další konfiguraci.
 
-Pokud používáte integraci virtuální sítě vyžadované bránou s partnerským vztahem, musíte nakonfigurovat několik dalších položek. Konfigurace partnerského vztahu pro práci s vaší aplikací:
+Pokud používáte integraci virtuální sítě požadovaná bránou s partnerským vztahem, budete muset nakonfigurovat několik dalších položek. Konfigurace partnerského vztahu pro práci s vaší aplikací:
 
-1. Přidejte připojení partnerského vztahu na virtuální síť, ke které se vaše aplikace připojí. Když přidáte připojení partnerského vztahu, povolte **povolit přístup k virtuální síti** a vyberte **Povolit předávaný provoz** a **Povolit přenos brány**.
-1. Přidejte připojení partnerského vztahu na virtuální síť, která je plychová na virtuální síti, ke které jste připojeni. Když přidáte připojení partnerského vztahu na cílovou virtuální síť, povolte **povolit přístup k virtuální síti** a vyberte **Povolit předávaný provoz** a **Povolit vzdálené brány**.
-1. Přejděte na portálu**VNet Integration** na **plán** > Služby pro vytváření**sítí.** >  Vyberte virtuální síť, ke které se vaše aplikace připojuje. V části směrování přidejte rozsah adres virtuální sítě, která je propojená s virtuální sítí, ke které je vaše aplikace připojená.
+1. Přidejte připojení partnerského vztahu do virtuální sítě, ke které se aplikace připojuje. Když přidáte připojení partnerského vztahu, povolte **Povolit přístup k virtuální síti** a vyberte **Povolit přesměrovaný přenos** a **Povolit přenos brány**.
+1. Přidejte připojení partnerského vztahu ve virtuální síti, která je v partnerském vztahu k virtuální síti, ke které jste se připojili. Pokud přidáte připojení partnerského vztahu do cílové virtuální sítě, povolte možnost **Povolit přístup k virtuální síti** a vyberte **Povolit předaný přenos** a **Povolit vzdálené brány**.
+1. V portálu **App Service Naplánujte** > **síťové** > rozhraní**Integrace virtuální** sítě. Vyberte virtuální síť, ke které se aplikace připojuje. V části směrování přidejte rozsah adres virtuální sítě, která má partnerský vztah s virtuální sítí, ke které je vaše aplikace připojená.
 
 ## <a name="manage-vnet-integration"></a>Správa integrace virtuální sítě
 
-Připojení a odpojení pomocí virtuální sítě je na úrovni aplikace. Operace, které můžou ovlivnit integraci virtuální sítě napříč více aplikacemi, jsou na úrovni plánu služby App Service. Z aplikace > **portálu** > **integrace virtuální sítě** sítě můžete získat podrobnosti o vaší virtuální síti. Podobné informace se zobrazí na úrovni plánu služby App Service na portálu**pro integraci** **síťové** > virtuální sítě plán **služby App Service.** > 
+Připojení a odpojení pomocí virtuální sítě se nachází na úrovni aplikace. Operace, které mohou ovlivnit integraci virtuální sítě napříč více aplikacemi, jsou na úrovni plánu App Service. Na portálu**Integration** **Networking služby** > App > Networking můžete získat podrobnosti o vaší virtuální síti. Podobné informace najdete na úrovni plánu App Service na portálu pro**integraci** **síťových virtuálních sítí** > v **App Service** > .
 
-Jedinou operací, kterou můžete provést v zobrazení aplikace instanci integrace virtuální sítě, je odpojit vaši aplikaci od virtuální sítě, ke které je aktuálně připojená. Pokud chcete aplikaci odpojit od virtuální sítě, vyberte **Odpojit**. Vaše aplikace se restartuje, když se odpojíte od virtuální sítě. Odpojení mne nezmění virtuální síť. Podsíť nebo brána se neodebere. Pokud pak chcete odstranit virtuální síť, nejprve odpojte aplikaci od virtuální sítě a odstraňte prostředky v ní, jako jsou brány.
+Jedinou operací, kterou můžete provést v zobrazení aplikace vaší instance integrace virtuální sítě, je odpojení vaší aplikace od virtuální sítě, ke které je aktuálně připojeno. Pokud chcete aplikaci odpojit od virtuální sítě, vyberte **Odpojit**. Vaše aplikace se po odpojení od virtuální sítě restartuje. Odpojením se nemění vaše virtuální síť. Podsíť nebo brána se neodeberou. Pokud budete chtít virtuální síť odstranit, nejdřív odpojte aplikaci od virtuální sítě a odstraňte v ní prostředky, jako jsou brány.
 
-U rozhraní pro integraci virtuální sítě service služby App Service zobrazuje všechny integrace virtuální sítě používané aplikacemi v plánu služby App Service. Pokud chcete zobrazit podrobnosti o jednotlivých virtuálních sítích, vyberte virtuální síť, která vás zajímá. Existují dvě akce, které můžete provést zde pro integraci virtuální sítě požadovanou bránou:
+Rozhraní App Service plánování virtuální sítě Integration UI zobrazuje všechny integrace virtuální sítě používané aplikacemi ve vašem plánu App Service. Pokud si chcete zobrazit podrobnosti o každé virtuální síti, vyberte virtuální síť, na kterou vás zajímáte. K dispozici jsou dvě akce, které můžete provést pro bránu. integrace virtuální sítě vyžaduje:
 
-* **Synchronizační síť**: Operace synchronizační sítě se používá jenom pro funkci integrace virtuální sítě závislou na bráně. Provedení operace synchronizační sítě zajišťuje synchronizaci certifikátů a informací o síti. Pokud přidáte nebo změníte DNS virtuální sítě, proveďte operaci synchronizační sítě. Tato operace restartuje všechny aplikace, které používají tuto virtuální síť.
-* **Přidání tras:** Přidání tras řídí odchozí provoz do virtuální sítě.
+* **Synchronizace sítě**: Síťová operace synchronizace se používá jenom pro funkci Integrace virtuální sítě závislé na bráně. Při provádění synchronizace sítě se zajistí, že budou synchronizovány i certifikáty a informace o síti. Pokud přidáte nebo změníte DNS vaší virtuální sítě, proveďte synchronizaci síťové operace. Tato operace restartuje všechny aplikace, které používají tuto virtuální síť.
+* **Přidání tras**: přidání tras k odchozímu provozu do vaší virtuální sítě.
 
-### <a name="gateway-required-vnet-integration-routing"></a>Směrování integrace virtuální sítě požadované bránou
-Trasy, které jsou definované ve vaší virtuální síti se používají k přímému provozu do virtuální sítě z vaší aplikace. Chcete-li odeslat další odchozí provoz do virtuální sítě, přidejte tyto bloky adres zde. Tato funkce funguje jenom s integrací virtuální sítě požadované bránou. Tabulky tras nemají vliv na provoz aplikací, když používáte integraci virtuální sítě požadovanou bránou tak, jak to dělají s regionální integrací virtuální sítě.
+### <a name="gateway-required-vnet-integration-routing"></a>Brána – požadované směrování integrace virtuální sítě
+Trasy, které jsou definované ve vaší virtuální síti, se používají k přímému směrování provozu do vaší virtuální sítě z vaší aplikace. Pokud chcete do virtuální sítě odeslat další odchozí provoz, přidejte sem tyto bloky adres. Tato možnost funguje jenom s integrací virtuální sítě požadovaná bránou. Směrovací tabulky nemají vliv na provoz vaší aplikace při použití integrace virtuální sítě vyžadované bránou způsobem, který provádí s regionální integrací virtuální sítě.
 
-### <a name="gateway-required-vnet-integration-certificates"></a>Certifikáty integrace virtuální sítě požadované bránou
-Pokud je povolena integrace virtuální sítě požadovaná bránou, je vyžadována výměna certifikátů, aby bylo zajištěno zabezpečení připojení. Spolu s certifikáty jsou konfigurace DNS, trasy a další podobné věci, které popisují síť.
+### <a name="gateway-required-vnet-integration-certificates"></a>Brána – vyžadované certifikáty pro integraci virtuální sítě
+Pokud je povolená integrace virtuální sítě požadovaná bránou, k zajištění zabezpečení připojení je nutný certifikát Exchange. Společně s certifikáty jsou to konfigurace DNS, trasy a další podobné věci, které popisují síť.
 
-Pokud dojde ke změně certifikátů nebo informací o síti, vyberte **možnost Synchronizovat síť**. Když vyberete **Synchronizovat síť**, způsobíte krátký výpadek v připojení mezi vaší aplikací a virtuální sítí. I když vaše aplikace není restartována, ztráta připojení může způsobit, že váš web nebude fungovat správně.
+Pokud se změní certifikáty nebo informace o síti, vyberte **synchronizovat síť**. Když vyberete **synchronizovat síť**, dojde k krátkému výpadku připojení mezi vaší aplikací a vaší virtuální sítí. I když se vaše aplikace nerestartuje, ztráta připojení by mohla způsobit, že vaše lokalita nebude správně fungovat.
 
 ## <a name="pricing-details"></a>Podrobnosti o cenách
-Funkce integrace místní virtuální sítě nemá žádné další poplatky za použití nad rámec poplatků za cenovou úroveň plánu služby App Service.
+Funkce regionální integrace virtuální sítě nemá žádné další poplatky za použití nad rámec sazeb za cenové úrovně v plánu App Service.
 
-Tři poplatky souvisejí s použitím funkce integrace virtuální sítě pobráně:
+Tři poplatky souvisejí s používáním funkce integrace virtuální sítě vyžadované bránou:
 
-* **Poplatky za cenovou úroveň plánu služby App Service**: Vaše aplikace musí být v tarifu Standard, Premium nebo PremiumV2 App Service. Další informace o těchto nákladech najdete v [tématu Ceny služby App Service][ASPricing].
-* **Náklady na přenos dat**: Za odchozí data se účtuje poplatek, i když je virtuální síť ve stejném datovém centru. Tyto poplatky jsou popsány v [podrobnostech o cenách přenosu dat][DataPricing].
-* **Náklady na bránu VPN:** Brána virtuální sítě je vyžadována pro vpn bodu na místo. Další informace naleznete v tématu [ceny brány VPN][VNETPricing].
+* **Poplatky za cenové úrovně v App Service plánu**: vaše aplikace musí být v plánu Standard, Premium nebo PremiumV2 App Service. Další informace o těchto nákladech najdete v tématu [App Service ceny][ASPricing].
+* **Náklady na přenos dat**: za výstup dat se účtuje i v případě, že virtuální síť je ve stejném datacentru. Tyto poplatky jsou popsané v [podrobnostech o cenách přenos dat][DataPricing].
+* **Náklady na bránu VPN**: pro bránu virtuální sítě, která je potřeba pro síť VPN typu Point-to-site, se účtuje náklady. Další informace najdete v tématu [ceny služby VPN Gateway][VNETPricing].
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 [!INCLUDE [app-service-web-vnet-troubleshooting](../../includes/app-service-web-vnet-troubleshooting.md)]
 
 ## <a name="automation"></a>Automation
 
-Podpora rozhraní příkazového příkazu je k dispozici pro regionální integraci virtuální sítě. Chcete-li získat přístup k následujícím příkazům, [nainstalujte příkazové příkazové příkazy Azure][installCLI].
+Podpora rozhraní příkazového řádku je k dispozici pro místní integraci virtuální sítě. Pokud chcete získat přístup k následujícím příkazům, [nainstalujte rozhraní příkazového řádku Azure][installCLI].
 
         az webapp vnet-integration --help
 
@@ -175,7 +175,7 @@ Podpora rozhraní příkazového příkazu je k dispozici pro regionální integ
         Commands:
             list : List the virtual network integrations used in an appservice plan.
 
-Pro integraci virtuální sítě požadovanou bránou můžete integrovat službu App Service s virtuální sítí Azure pomocí PowerShellu. Skript připravený ke spuštění najdete [v tématu Připojení aplikace ve službě Azure App Service k virtuální síti Azure](https://gallery.technet.microsoft.com/scriptcenter/Connect-an-app-in-Azure-ab7527e3).
+U brány – požadovaná integrace virtuální sítě můžete App Service integrovat s Azure Virtual Network pomocí PowerShellu. Skript připravený ke spuštění najdete v tématu [připojení aplikace v Azure App Service k virtuální síti Azure](https://gallery.technet.microsoft.com/scriptcenter/Connect-an-app-in-Azure-ab7527e3).
 
 
 <!--Image references-->

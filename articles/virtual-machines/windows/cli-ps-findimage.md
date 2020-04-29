@@ -1,6 +1,6 @@
 ---
-title: Výběr ibi virtuálních počítačů s Windows v Azure
-description: Azure PowerShell použijte k určení vydavatele, nabídky, skladové položky a verze pro image virtuálních virtuálních her Marketplace.
+title: Výběr imagí virtuálních počítačů s Windows v Azure
+description: K určení vydavatele, nabídky, SKU a verze imagí virtuálních počítačů Marketplace použijte Azure PowerShell.
 author: cynthn
 ms.service: virtual-machines-windows
 ms.subservice: imaging
@@ -10,49 +10,49 @@ ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
 ms.openlocfilehash: 46a2badbbe957f6a8a6af7f5a40633ea24cadcd4
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82083361"
 ---
 # <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Vyhledání imagí virtuálních počítačů s Windows na Azure Marketplace pomocí Azure PowerShellu
 
-Tento článek popisuje, jak pomocí Azure PowerShellu najít image virtuálních počítače na Azure Marketplace. Obrázek Marketplace pak můžete zadat při programovém vytváření virtuálního počítače pomocí prostředí PowerShell, šablony Správce prostředků nebo jiných nástrojů.
+Tento článek popisuje, jak použít Azure PowerShell k nalezení imagí virtuálních počítačů v Azure Marketplace. Pak můžete zadat image Marketplace, když vytvoříte virtuální počítač pomocí programu PowerShell, Správce prostředků šablon nebo jiných nástrojů.
 
-Dostupné image a nabídky můžete taky procházet pomocí výlohy [Azure Marketplace,](https://azuremarketplace.microsoft.com/) [portálu Azure](https://portal.azure.com)nebo [rozhraní příkazového příkazu Konfrontací s azure](../linux/cli-ps-findimage.md). 
+K dispozici je také možnost procházení dostupných imagí a nabídek pomocí [Azure Marketplace](https://azuremarketplace.microsoft.com/) prezentace, [Azure Portal](https://portal.azure.com)nebo rozhraní příkazového [řádku Azure](../linux/cli-ps-findimage.md). 
 
  
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
-## <a name="table-of-commonly-used-windows-images"></a>Tabulka běžně používaných bitových kopií systému Windows
+## <a name="table-of-commonly-used-windows-images"></a>Tabulka běžně používaných imagí Windows
 
-V této tabulce je uvedena podmnožina dostupné aplikace Skus pro uvedené vydavatele a nabídky.
+Tato tabulka zobrazuje podmnožinu dostupných SKU pro označené vydavatele a nabídky.
 
 | Vydavatel | Nabídka | Skladová jednotka (SKU) |
 |:--- |:--- |:--- |
-| MicrosoftWindowsServer |WindowsServer |2019-Datové centrum |
-| MicrosoftWindowsServer |WindowsServer |2019-Datové centrum-Core |
-| MicrosoftWindowsServer |WindowsServer |2019-Datové centrum s kontejnery |
-| MicrosoftWindowsServer |WindowsServer |2016-Datové centrum |
-| MicrosoftWindowsServer |WindowsServer |2016-Datacenter-Server-Core |
-| MicrosoftWindowsServer |WindowsServer |2016-Datacenter-s-kontejnery |
+| MicrosoftWindowsServer |WindowsServer |2019 – Datacenter |
+| MicrosoftWindowsServer |WindowsServer |2019 – Datacenter – jádro |
+| MicrosoftWindowsServer |WindowsServer |2019 – Datacenter-with-Containers |
+| MicrosoftWindowsServer |WindowsServer |2016 – Datacenter |
+| MicrosoftWindowsServer |WindowsServer |2016 – Datacenter – Server – jádro |
+| MicrosoftWindowsServer |WindowsServer |2016 – Datacenter-with-Containers |
 | MicrosoftWindowsServer |WindowsServer |2012-R2-Datacenter |
 | MicrosoftWindowsServer |WindowsServer |2012-Datacenter |
-| MicrosoftSharePoint |MicrosoftSharePointServer |aktualizace sp2019 |
-| MicrosoftSQLServer |SQL2019-WS2016 |Enterprise |
-| Server MicrosoftRServer |RServer-WS2016 |Enterprise |
+| MicrosoftSharePoint |MicrosoftSharePointServer |sp2019 |
+| MicrosoftSQLServer |SQL2019 – WS2016 |Enterprise |
+| MicrosoftRServer |RServer – WS2016 |Enterprise |
 
-## <a name="navigate-the-images"></a>Navigace v obrazech
+## <a name="navigate-the-images"></a>Navigace v obrázcích
 
-Jedním ze způsobů, jak najít obrázek v umístění, je spustit rutiny [Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher), [Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer)a [Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) v pořadí:
+Jedním ze způsobů, jak najít obrázek v umístění, je spustit rutiny [Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher), [Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer)a [Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) v uvedeném pořadí:
 
 1. Vypsat vydavatele imagí.
 2. Pro daného vydavatele vypsat jeho nabídky.
 3. Pro danou nabídku vypsat její skladovou jednotku (SKU).
 
-Potom pro vybrané skladové položky, [spusťte Get-AzVMImage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimage) seznam verzí k nasazení.
+Potom pro vybranou SKU spusťte příkaz [Get-AzVMImage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimage) , který zobrazí seznam verzí k nasazení.
 
 1. Seznam vydavatelů:
 
@@ -61,30 +61,30 @@ Potom pro vybrané skladové položky, [spusťte Get-AzVMImage](https://docs.mic
     Get-AzVMImagePublisher -Location $locName | Select PublisherName
     ```
 
-2. Vyplňte zvolené jméno majitele stránek a uveďte nabídky:
+2. Zadejte název zvoleného vydavatele a seznam nabídek:
 
     ```powershell
     $pubName="<publisher>"
     Get-AzVMImageOffer -Location $locName -PublisherName $pubName | Select Offer
     ```
 
-3. Vyplňte zvolené jméno nabídky a uveďte seznam SKU:
+3. Zadejte název zvolené nabídky a seznam SKU:
 
     ```powershell
     $offerName="<offer>"
     Get-AzVMImageSku -Location $locName -PublisherName $pubName -Offer $offerName | Select Skus
     ```
 
-4. Vyplňte zvolené jméno Skladové položky a získejte verzi obrázku:
+4. Vyplňte svůj zvolený název SKU a získejte verzi Image:
 
     ```powershell
     $skuName="<SKU>"
     Get-AzVMImage -Location $locName -PublisherName $pubName -Offer $offerName -Sku $skuName | Select Version
     ```
     
-Z výstupu příkazu `Get-AzVMImage` můžete vybrat bitovou kopii verze pro nasazení nového virtuálního počítače.
+Z výstupu `Get-AzVMImage` příkazu můžete vybrat bitovou kopii verze k nasazení nového virtuálního počítače.
 
-Následující příklad ukazuje úplnou sekvenci příkazů a jejich výstupů:
+Následující příklad ukazuje úplnou sekvenci příkazů a jejich výstupy:
 
 ```powershell
 $locName="West US"
@@ -115,7 +115,7 @@ advantys
 ...
 ```
 
-Pro vydavatele *microsoftwindowsserveru:*
+Pro vydavatele *MicrosoftWindowsServer* :
 
 ```powershell
 $pubName="MicrosoftWindowsServer"
@@ -132,7 +132,7 @@ WindowsServer
 WindowsServerSemiAnnual
 ```
 
-Pro nabídku *WindowsServer:*
+Pro nabídku *windowsserver* :
 
 ```powershell
 $offerName="WindowsServer"
@@ -163,24 +163,24 @@ Skus
 ...
 ```
 
-Potom pro sku *datového centra 2019:*
+Potom pro SKU *2019 – Datacenter* :
 
 ```powershell
 $skuName="2019-Datacenter"
 Get-AzVMImage -Location $locName -PublisherName $pubName -Offer $offerName -Sku $skuName | Select Version
 ```
 
-Nyní můžete kombinovat vybraného vydavatele, nabídku, skladovou položku a verzi do urnu (hodnoty oddělené :). Předajte `--image` tento URN s parametrem při vytváření virtuálního virtuálního trhu s rutinou [New-AzVM.](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) Volitelně můžete nahradit číslo verze v URN s "nejnovější" získat nejnovější verzi bitové kopie.
+Nyní můžete zkombinovat vybraného vydavatele, nabídky, SKU a verzi do názvu URN (hodnoty oddělené:). Pokud vytvoříte virtuální počítač pomocí `--image` rutiny [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) , předejte tento název URN k parametru. Pokud chcete získat nejnovější verzi image, můžete volitelně nahradit číslo verze v názvu URN řetězcem "poslední".
 
-Pokud nasadíte virtuální ho s šablonou Správce prostředků, pak nastavíte parametry image jednotlivě ve vlastnostech. `imageReference` Viz [referenční informace k šablonám](/azure/templates/microsoft.compute/virtualmachines).
+Pokud nasadíte virtuální počítač s Správce prostředků šablonou, nastavte parametry obrázku jednotlivě ve `imageReference` vlastnostech. Viz [referenční informace k šablonám](/azure/templates/microsoft.compute/virtualmachines).
 
 [!INCLUDE [virtual-machines-common-marketplace-plan](../../../includes/virtual-machines-common-marketplace-plan.md)]
 
 ### <a name="view-plan-properties"></a>Zobrazit vlastnosti plánu
 
-Chcete-li zobrazit informace o plánu `Get-AzVMImage` nákupu obrázku, spusťte rutinu. Pokud `PurchasePlan` vlastnost ve výstupu `null`není , bitová kopie má podmínky, které je třeba přijmout před programovým nasazením.  
+Chcete-li zobrazit informace o plánu nákupu obrázku, spusťte `Get-AzVMImage` rutinu. Pokud `PurchasePlan` vlastnost ve výstupu není `null`, obrázek obsahuje podmínky, které je třeba přijmout před programovým nasazením.  
 
-Například bitová kopie *datového centra Windows Serveru 2016* `PurchasePlan` nemá `null`další termíny, takže informace jsou:
+Například bitová kopie *Windows serveru 2016 Datacenter* neobsahuje další informace, takže tyto `PurchasePlan` informace: `null`
 
 ```powershell
 $version = "2016.127.20170406"
@@ -206,7 +206,7 @@ DataDiskImages   : []
 
 ```
 
-Následující příklad ukazuje podobný příkaz pro virtuální počítač pro datové vědy – bitovou `name` `product`kopii `publisher` *systému Windows 2016,* která má následující `PurchasePlan` vlastnosti: , a . Některé obrázky `promotion code` mají také vlastnost. Chcete-li nasadit tuto bitovou kopii, naleznete v následujících částech přijmout podmínky a povolit programové nasazení.
+Níže uvedený příklad ukazuje podobný příkaz pro bitovou *kopii data Science Virtual Machine-Windows 2016* , `PurchasePlan` která má následující vlastnosti: `name`, `product`, a. `publisher` Některé obrázky také obsahují `promotion code` vlastnost. Chcete-li nasadit tuto bitovou kopii, v následujících částech přijměte podmínky a povolte programové nasazení.
 
 ```powershell
 Get-AzVMImage -Location "westus" -PublisherName "microsoft-ads" -Offer "windows-data-science-vm" -Skus "windows2016" -Version "0.2.02"
@@ -237,7 +237,7 @@ DataDiskImages   : []
 
 ### <a name="accept-the-terms"></a>Přijetí podmínek použití
 
-Chcete-li zobrazit licenční podmínky, použijte rutinu [Get-AzMarketplaceterms](https://docs.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceterms) a předat parametry plánu nákupu. Výstup obsahuje odkaz na podmínky pro obrázek Marketplace a ukazuje, zda jste dříve přijali podmínky. Ujistěte se, že v hodnotách parametrů používáte všechna malá písmena.
+Pokud si chcete zobrazit licenční smlouvy, použijte rutinu [Get-AzMarketplaceterms](https://docs.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceterms) a předejte ji do parametrů plánu nákupu. Výstup poskytuje odkaz na požadavky na image na webu Marketplace a ukazuje, jestli jste už tyto výrazy přijali. Nezapomeňte v hodnotách parametrů používat všechna malá písmena.
 
 ```powershell
 Get-AzMarketplaceterms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
@@ -256,7 +256,7 @@ Accepted          : False
 Signdate          : 1/25/2019 7:43:00 PM
 ```
 
-Pomocí rutiny [Set-AzMarketplaceterms](https://docs.microsoft.com/powershell/module/az.marketplaceordering/set-azmarketplaceterms) můžete podmínky přijmout nebo odmítnout. Podmínky pro bitovou kopii je třeba přijmout pouze jednou za předplatné. Ujistěte se, že v hodnotách parametrů používáte všechna malá písmena. 
+Podmínky přijměte nebo odmítněte pomocí rutiny [set-AzMarketplaceterms](https://docs.microsoft.com/powershell/module/az.marketplaceordering/set-azmarketplaceterms) . Pro bitovou kopii musíte pro Image přijmout jenom jednou za odběr. Nezapomeňte v hodnotách parametrů používat všechna malá písmena. 
 
 ```powershell
 $agreementTerms=Get-AzMarketplaceterms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
@@ -280,7 +280,7 @@ Signdate          : 2/23/2018 7:49:31 PM
 
 ### <a name="deploy-using-purchase-plan-parameters"></a>Nasazení pomocí parametrů plánu nákupu
 
-Po přijetí podmínek pro image, můžete nasadit virtuální ho v tomto předplatném. Jak je znázorněno v následujícím fragmentu, použijte rutinu [Set-AzVMPlan](https://docs.microsoft.com/powershell/module/az.compute/set-azvmplan) k nastavení informací o plánu Marketplace pro objekt virtuálního stavitele. Úplný skript pro vytvoření nastavení sítě pro virtuální počítače a dokončení nasazení najdete v [příkladech skriptů prostředí PowerShell](powershell-samples.md).
+Po přijetí podmínek pro obrázek můžete nasadit virtuální počítač v tomto předplatném. Jak je znázorněno v následujícím fragmentu kódu, použijte rutinu [set-AzVMPlan](https://docs.microsoft.com/powershell/module/az.compute/set-azvmplan) pro nastavení informací o plánu Marketplace pro objekt virtuálního počítače. Úplný skript pro vytvoření nastavení sítě pro virtuální počítač a dokončení nasazení najdete v tématu [Příklady skriptu PowerShellu](powershell-samples.md).
 
 ```powershell
 ...
@@ -312,13 +312,13 @@ $version = "19.01.14"
 $vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $publisherName -Offer $offerName -Skus $skuName -Version $version
 ...
 ```
-Pak předáte konfiguraci virtuálního počítače spolu `New-AzVM` s objekty konfigurace sítě do rutiny.
+Pak předáte konfiguraci virtuálních počítačů spolu s objekty konfigurace sítě do `New-AzVM` rutiny.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete pomocí `New-AzVM` rutiny rychle vytvořit virtuální počítač pomocí základních informací o obrázku, přečtěte si informace o vytvoření [virtuálního počítače s Windows pomocí prostředí PowerShell](quick-create-powershell.md).
+Informace o tom, jak rychle vytvořit virtuální `New-AzVM` počítač pomocí rutiny pomocí základních informací o imagi, najdete v tématu [Vytvoření virtuálního počítače s Windows pomocí PowerShellu](quick-create-powershell.md).
 
 
-Chcete-li [vytvořit plně nakonfigurovaný virtuální počítač ,](../scripts/virtual-machines-windows-powershell-sample-create-vm.md)podívejte se na příklad skriptu prostředí PowerShell .
+Pokud chcete [vytvořit plně nakonfigurovaný virtuální počítač](../scripts/virtual-machines-windows-powershell-sample-create-vm.md), podívejte se na příklad skriptu PowerShellu.
 
 

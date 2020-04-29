@@ -1,6 +1,6 @@
 ---
 title: Soukromé nabídky | Azure Marketplace
-description: Privátní nabídky na Azure Marketplace pro vydavatele aplikací a služeb.
+description: Soukromé nabídky v Azure Marketplace pro vydavatele aplikací a služeb.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,59 +8,59 @@ ms.topic: conceptual
 ms.date: 04/19/2020
 ms.author: dsindona
 ms.openlocfilehash: efda9fb66a65f1f2cd40de8bf32a8a3fa99aea7f
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81681435"
 ---
 # <a name="private-offers"></a>Soukromé nabídky
 
-Privátní nabídky na [webu Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/) umožňují vydavatelům vytvářet skumy, které jsou viditelné pouze pro cílové zákazníky.
+Soukromé nabídky [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/) umožňují vydavatelům vytvářet skladové jednotky, které jsou viditelné pouze cílovým zákazníkům.
 
-## <a name="unlock-enterprise-deals-with-private-offers"></a>Odemkněte podnikové obchody se soukromými nabídkami
+## <a name="unlock-enterprise-deals-with-private-offers"></a>Odemknutí podnikových obchodů pomocí soukromých nabídek
 
-Podnikoví zákazníci stále více používají online tržiště k hledání, vyzkoušení a nákupu cloudových řešení. Nyní mohou vydavatelé se soukromými nabídkami využívat marketplace k soukromému sdílení přizpůsobených řešení s cílenými zákazníky s funkcemi, které podniky vyžadují:
+Podnikoví zákazníci budou k hledání, zkoušení a nákupu cloudových řešení stále používat online tržiště. Díky soukromým nabídkám můžou vydavatelé využít Marketplace k soukromému sdílení přizpůsobených řešení s cílovými zákazníky s možnostmi, které podniky potřebují:
 
-- *Sjednané ceny* umožňují vydavatelům rozšířit slevy a mimo seznam cen z veřejně dostupných nabídek.
-- *Soukromé smluvní podmínky* umožňují vydavatelům přizpůsobit podmínky konkrétnímu zákazníkovi.
-- *Specializované konfigurace* umožňují vydavatelům přizpůsobit své virtuální počítače, aplikace Azure a aplikace SaaS nabízejí potřebám jednotlivých zákazníků. Tato možnost také umožňuje majitelům stránek poskytovat náhled přístup k novým funkcím produktu před zahájením více široce všem zákazníkům.
+- *Vysjednané ceny* umožňují vydavatelům rozšířené slevy a ceny mimo seznam z veřejně dostupných nabídek.
+- *Soukromé podmínky a ujednání* umožňují vydavatelům přizpůsobit podmínky a ujednání na konkrétního zákazníka.
+- *Specializované konfigurace* umožňují vydavatelům přizpůsobit své Virtual Machines, aplikace Azure a aplikace SaaS nabídky potřebám jednotlivých zákazníků. Tato možnost také umožňuje vydavatelům poskytovat přístup k novým funkcím produktu před širším spouštěním pro všechny zákazníky.
 
-Soukromé nabídky umožňují vydavatelům využívat výhod rozsahu a globální dostupnosti veřejného trhu s flexibilitou a kontrolou potřebnou k vyjednávání a poskytování vlastních obchodů a konfigurací. Tyto funkce společně otevírají dveře silnému podnikovému přijetí cloudových tržišť. Podniky nyní mohou nakupovat a prodávat způsobem, který očekávají a požadují.
+Soukromé nabídky umožňují vydavatelům využít výhod škálování a globální dostupnosti veřejného webu Marketplace s flexibilitou a kontrolou potřebnou k vyjednání a doručování vlastních obchodů a konfigurací. Tyto funkce společně otevřou dvířka pro silné podnikové přijetí cloudových tržišť. Podniky si teď můžou koupit a prodávat způsobem, který očekávají a požadují.
 
-Privátní nabídky jsou teď dostupné pro Virtual Machine, Azure Application (implementované jako šablony řešení nebo spravované aplikace) a nabídky Aplikací SaaS. 
+Pro virtuální počítač jsou nyní k dispozici soukromé nabídky, aplikace Azure (implementované jako šablony řešení nebo spravované aplikace) a nabídky aplikací SaaS. 
 
 <!--- Like public offers, private offers can be created and managed via the [Cloud Partner Portal](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md).  Customers can be granted or revoked access to private offers in minutes.
 --->
 
-## <a name="creating-private-offers-using-skus-and-plans"></a>Vytváření soukromých nabídek pomocí slok a plánů
+## <a name="creating-private-offers-using-skus-and-plans"></a>Vytváření privátních nabídek pomocí SKU a plánů
 
-U *nových nebo stávajících nabídek s veřejnými skum nebo plány*mohou vydavatelé snadno vytvářet nové soukromé varianty vytvořením nových skutnic nebo plánů a jejich označením jako soukromých.  
+Pro *nové nebo stávající nabídky s veřejnými SKU nebo plány*můžou vydavatelé snadno vytvořit nové a soukromé odchylky vytvořením nových SKU nebo plánů a jejich označením jako soukromé.  
 
 <!--- [Private SKUs](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) ---> 
 
-Soukromé skuanové a plány jsou součástí nabídky a jsou viditelné a lze je zakoupit pouze pro cílové zákazníky. Soukromé skladové položky a plány můžete znovu použít základní bitové kopie nebo nabídnout metadata již publikována pro veřejné skladové položky nebo plán. Tato možnost umožňuje vydavatelům vytvořit více soukromých variant veřejné nabídky, aniž by museli publikovat více verzí stejné základní bitové kopie a nabízet metadata. Pro virtuální počítač a Azure nabízí pouze v případě, že soukromá skladová položka sdílí základní bitovou kopii s veřejnou skladovou položkou, všechny změny základní image nabídky se rozšíří napříč všemi veřejnými a soukromými skladovými objekty s využitím této základní bitové kopie.
+Soukromé SKU a plány jsou komponenty nabídky a jsou viditelné pouze cílovými zákazníky. Soukromé SKU a plány můžou znovu použít základní Image nebo metadata nabídky, která už jsou publikovaná pro veřejnou SKU nebo plán. Tato možnost umožňuje vydavatelům vytvořit několik soukromých variant veřejné nabídky bez nutnosti publikování více verzí stejné základní image a metadat nabídky. Pro virtuální počítače a aplikace Azure nabízí, když soukromá SKU sdílí základní image s veřejnou SKU, všechny změny základní image nabídky se šíří napříč všemi veřejnými a soukromými SKU pomocí této základní image.
 
-U *nových nabídek, které zahrnují pouze soukromé skutnice nebo plány*, mohou vydavatelé vytvářet své nabídky jako jakoukoli jinou nabídku a označovat je jako soukromé. Nabídky, které mají pouze soukromé skum nebo plány, nebudou zjistitelné nebo přístupné prostřednictvím komerčního tržiště Microsoftu nebo [portálu Azure](https://azure.microsoft.com/features/azure-portal/) zákazníky, kteří nejsou přidruženi k nabídce.
+Pro *nové nabídky, které zahrnují jenom soukromé SKU nebo plány*, můžou vydavatelé vytvořit své nabídky jako jakoukoli jinou nabídku a pak označit SKU nebo plány jako soukromé. Nabídky, které mají pouze soukromé SKU nebo plány, nebudou zjistitelné ani přístupné prostřednictvím komerčního tržiště Microsoftu nebo [Azure Portal](https://azure.microsoft.com/features/azure-portal/) zákazníky, kteří nejsou přidruženi k této nabídce.
 
 ## <a name="targeting-customers-with-private-offers"></a>Cílení na zákazníky pomocí soukromých nabídek
 
-U nových i stávajících privátních nabídek mohou vydavatelé cílit na zákazníky pomocí identifikátorů předplatného. Vydavatelé používající virtuální počítač nebo nabídku aplikací Azure můžou omezit dostupnost privátní skladové položky na individuální ID předplatného Azure nebo nahrát CSV s až 20 000 ID předplatného Azure. Při použití soukromé nabídky aplikace SaaS mohou vydavatelé přidružit id klienta, aby omezili dostupnost soukromého plánu, a to buď pomocí ručního nebo csv uploadového přístupu.
+Pro nové i stávající soukromé nabídky můžou vydavatelé cílit na zákazníky pomocí identifikátorů předplatného. Vydavatelé, kteří používají virtuální počítač nebo nabídku aplikací Azure, můžou omezit dostupnost privátní SKU na individuální ID předplatného Azure nebo nahrát CSV s až 20 000 ID předplatných Azure. Při použití soukromé nabídky aplikace SaaS můžou vydavatelé přidružit buď ID tenanta, aby se omezila dostupnost privátního plánu, a to buď pomocí manuálního, nebo přístupu pro nahrávání ve formátu CSV.
 
-Jakmile je nabídka certifikována a publikována, zákazníci mohou být aktualizováni nebo odebráni ze skladové položky nebo plánu během několika minut pomocí funkce Synchronizovat soukromé předplatná. Tato funkce umožňuje vydavatelům rychle a snadno aktualizovat seznam zákazníků, kterým je soukromá skladová položka nebo plán prezentován, aniž by znovu certifikovali nebo publikovali nabídku.
+Jakmile je nabídka certifikovaná a publikovaná, můžou se zákazníci aktualizovat nebo odebrat z SKU nebo plánu během několika minut pomocí funkce synchronizace privátních předplatných. Tato možnost umožňuje vydavatelům rychle a snadno aktualizovat seznam zákazníků, na které se soukromá SKU nebo plán prezentuje, a to bez certifikace nebo opětovného publikování této nabídky.
 
-## <a name="deploying-private-offers"></a>Nasazení soukromých nabídek
+## <a name="deploying-private-offers"></a>Nasazení privátních nabídek
 
-Privátní nabídky jsou zjistitelné jenom přes [portál Azure](https://azure.microsoft.com/features/azure-portal/) a nezobrazují se na [Microsoft AppSource](https://appsource.microsoft.com/) nebo [Azure Marketplace](https://azuremarketplace.microsoft.com). Další informace o publikování v různých obchodních výlohách na trhu s potravinami najdete v [tématu Určení možnosti publikování](./determine-your-listing-type.md).
+Soukromé nabídky jsou pouze zjistitelné prostřednictvím [Azure Portal](https://azure.microsoft.com/features/azure-portal/) a nejsou uvedeny v [Microsoft AppSource](https://appsource.microsoft.com/) nebo [Azure Marketplace](https://azuremarketplace.microsoft.com). Další informace o publikování do různých komerčních prodejní místa na webu Marketplace najdete v tématu [Určení možnosti publikování](./determine-your-listing-type.md).
 
-Po přihlášení k portálu Azure si zákazníci můžou vybrat navigační prvek Marketplace, aby měli přístup ke svým soukromým nabídkám. Soukromé nabídky se také zobrazí ve výsledcích hledání a lze je nasadit pomocí příkazového řádku a šablon Azure Resource Manageru jako všechny ostatní nabídky.
+Po přihlášení k Azure Portal můžou zákazníci vybrat navigační prvek Marketplace pro přístup ke svým soukromým nabídkám. Soukromé nabídky se také zobrazí ve výsledcích hledání a dají se nasadit prostřednictvím příkazového řádku a šablony Azure Resource Manager jako jakékoli jiné nabídky.
 
 ![[Soukromé nabídky]](./media/marketplace-publishers-guide/private-offer.png)
 
-Ve výsledcích vyhledávání se také zobrazí soukromé nabídky. Jen se podívejte po odznaku "Vojín".
+Ve výsledcích hledání se zobrazí také soukromé nabídky. Stačí vyhledat "soukromou" BADGE.
 
 >[!Note]
->Privátní nabídky nejsou podporovány s předplatnými vytvořenými prostřednictvím prodejce programu Zprostředkovatel e-cloudových řešení (CSP).
+>Soukromé nabídky nejsou podporovány u předplatných vytvořených prostřednictvím prodejce programu Cloud Solution Provider (CSP).
 
 <!---
 ## Next steps

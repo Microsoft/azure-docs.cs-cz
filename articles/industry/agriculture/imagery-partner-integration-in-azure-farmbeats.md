@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 52d817d1029e75837e55c1b942525661ace33f87
-ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82136936"
 ---
 # <a name="imagery-partner-integration"></a>Integrace partnerských řešení pro snímky
@@ -40,7 +40,7 @@ K propojení FarmBeats musíte použít následující přihlašovací údaje v 
 
 Rozhraní API obsahují technickou dokumentaci k Swagger. Informace o rozhraních API a odpovídajících požadavcích nebo odpovědích naleznete v části [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 FarmBeats používá Microsoft Azure [Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) (Azure AD). Azure App Service poskytuje integrovanou podporu ověřování a autorizace. 
 

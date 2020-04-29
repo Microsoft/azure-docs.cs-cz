@@ -1,7 +1,7 @@
 ---
-title: Jak zacházet se změnami souborů cookie SameSite v prohlížeči Chrome | Azure
+title: Postup zpracování změn souborů cookie SameSite v prohlížeči Chrome | Azure
 titleSuffix: Microsoft identity platform
-description: Přečtěte si, jak v prohlížeči Chrome zacházet se změnami souborů cookie SameSite.
+description: Naučte se zpracovávat změny souborů cookie SameSite v prohlížeči Chrome.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -14,78 +14,78 @@ ms.author: jmprieur
 ms.reviewer: kkrishna
 ms.custom: aaddev
 ms.openlocfilehash: f28d3722d56582bd925d31b43b4a0219bca2ae30
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81534597"
 ---
 # <a name="handle-samesite-cookie-changes-in-chrome-browser"></a>Zpracování změn souborů cookie SameSite v prohlížeči Chrome
 
 ## <a name="what-is-samesite"></a>Co je SameSite?
 
-`SameSite`je vlastnost, kterou lze nastavit v souborech cookie HTTP, aby se zabránilo útokům na křížové weby (CSRF) ve webových aplikacích:
+`SameSite`je vlastnost, kterou je možné nastavit v souborech cookie protokolu HTTP, aby se zabránilo útokům na CSRF (mezi lokalitami) ve webových aplikacích:
 
-- Když `SameSite` je nastavena na **Lax**, cookie je odeslána v žádostech v rámci stejného webu a get požadavky z jiných stránek. Není odeslána v požadavcích GET, které jsou mezi doménami.
-- Hodnota **Strict** zajišťuje, že soubor cookie je odeslán v žádostech pouze v rámci stejného webu.
+- Když `SameSite` je nastavená na **LAX**, soubor cookie se pošle v žádostech v rámci stejné lokality a v žádosti o získání požadavků z jiných lokalit. Není odesílána v požadavcích GET, které jsou mezi doménami.
+- Hodnota **Strict** zajistí, že se soubor cookie pošle v žádostech jenom v rámci stejné lokality.
 
-Ve výchozím `SameSite` nastavení není hodnota nastavena v prohlížečích, a proto neexistují žádná omezení pro soubory cookie odesílané v žádostech. Aplikace by se musela přihlásit k ochraně CSRF nastavením **laxní** nebo **přísné** podle jejich požadavků.
+Ve výchozím nastavení není `SameSite` hodnota nastavena v prohlížečích a proto neexistují žádná omezení odesílaných souborů cookie v požadavcích. Aplikace by musela souhlasit s ochranou CSRF nastavením **LAX** nebo **Strict** na jejich požadavky.
 
 ## <a name="samesite-changes-and-impact-on-authentication"></a>SameSite změny a dopad na ověřování
 
-Nedávné [aktualizace standardů na SameSite](https://tools.ietf.org/html/draft-west-cookie-incrementalism-00) navrhnout ochranu `SameSite` aplikací tím, že výchozí chování, když žádná hodnota je nastavena na Lax. Toto zmírnění znamená, že soubory cookie budou omezeny na požadavky HTTP s výjimkou GET z jiných webů. Kromě toho je zavedena hodnota **None,** která odstraňuje omezení odesílaných souborů cookie. Tyto aktualizace budou brzy vydány v nadcházející verzi prohlížeče Chrome.
+Nedávné [aktualizace standardů na SameSite](https://tools.ietf.org/html/draft-west-cookie-incrementalism-00) navrhují ochranu aplikací tím, že se nastaví výchozí chování `SameSite` , když není hodnota nastavená na LAX. Toto zmírnění znamená, že soubory cookie budou omezeny na požadavky HTTP s výjimkou toho, že jsou vytvořeny z jiných lokalit. Kromě toho není k dispozici **žádná hodnota žádného** z důvodů odebrání omezení odesílaných souborů cookie. Tyto aktualizace budou brzy vydány v nadcházející verzi prohlížeče Chrome.
 
-Při ověřování webových aplikací pomocí platformy Microsoft Identity pomocí režimu odezvy "form_post", přihlašovací server reaguje na aplikaci pomocí HTTP POST k odeslání tokenů nebo kód ověření. Vzhledem k tomu, že tento `login.microsoftonline.com` požadavek je `https://contoso.com/auth`požadavek napříč doménami (například z vaší domény), soubory cookie, které byly nastaveny vaší aplikací, nyní spadají pod nová pravidla v Chromu. Soubory cookie, které je třeba použít ve scénářích pro více webů, jsou soubory cookie, které uchovávají hodnoty *stavu* a *nonce,* které jsou také odeslány v žádosti o přihlášení. Existují další soubory cookie vynechány Azure AD pro pořádání relace.
+Když se webové aplikace ověřují s platformou Microsoft identity pomocí režimu odpovědi form_post, přihlašovací server odpoví na aplikaci pomocí HTTP POST a pošle tokeny nebo ověřovací kód. Vzhledem k tomu, že se jedná o požadavek mezi doménami (od `login.microsoftonline.com` do vaší domény `https://contoso.com/auth`), soubory cookie, které byly nastaveny vaší aplikací, teď spadají do nových pravidel v Chrome. Soubory cookie, které je potřeba použít při scénářích mezi lokalitami, jsou soubory cookie, které obsahují hodnoty *stavu* a hodnoty *nonce* , které se také odesílají v žádosti o přihlášení. Služba Azure AD zahodila jiné soubory cookie, aby se relace mohla uchovávat.
 
-Pokud neaktualizujete webové aplikace, toto nové chování bude mít za následek selhání ověřování.
+Pokud vaše webové aplikace neaktualizujete, výsledkem tohoto nového chování bude selhání ověřování.
 
-## <a name="mitigation-and-samples"></a>Zmírnění a vzorky
+## <a name="mitigation-and-samples"></a>Zmírnění a ukázky
 
-Chcete-li překonat selhání ověřování, webové aplikace ověřování s platformou `SameSite` identit `None` microsoftu můžete nastavit vlastnost pro soubory cookie, které se používají ve scénářích mezi doménami při spuštění v prohlížeči Chrome.
-Ostatní prohlížeče (viz [zde](https://www.chromium.org/updates/same-site/incompatible-clients) úplný seznam) sledují `SameSite` předchozí chování a nebudou `SameSite=None` obsahovat soubory cookie, pokud jsou nastaveny.
-To je důvod, proč pro podporu ověřování na více `SameSite` prohlížečích `None` webové aplikace budou muset nastavit hodnotu pouze v prohlížeči Chrome a ponechat hodnotu prázdnou v jiných prohlížečích.
+Webové aplikace, které se ověřují s platformou Microsoft identity, můžou překonat selhání ověřování nastavením `SameSite` vlastnosti `None` pro soubory cookie, které se používají ve scénářích mezi doménami při spuštění v prohlížeči Chrome.
+Další prohlížeče (kompletní seznam najdete [tady](https://www.chromium.org/updates/same-site/incompatible-clients) ) `SameSite` a neobsahují soubory cookie, pokud `SameSite=None` je nastavený.
+Proto je nutné, aby se podpora ověřování na více webových aplikacích v prohlížečích nastavila `SameSite` `None` jenom na Chrome a v ostatních prohlížečích ponechali hodnotu prázdnou.
 
-Tento přístup je demonstrován v ukázkách kódu níže.
+Tento přístup je znázorněn v našich ukázkách kódu níže.
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-V následující tabulce jsou uvedeny žádosti o přijetí změn, které fungovaly kolem změny stejného webu v našich ASP.NET a ASP.NET základní ukázky.
+V následující tabulce jsou uvedeny žádosti o přijetí změn, které pracovaly s SameSitemi změnami v našich ASP.NET a ukázek ASP.NET Core.
 
 | Ukázka | Žádost o přijetí změn |
 | ------ | ------------ |
-|  [Přírůstkový kurz ASP.NET webové aplikace Core](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2)  |  [Stejné soubory cookie webu opravit #261](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/pull/261)  |
-|  [ukázka ASP.NET webové aplikace MVC](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect)  |  [Stejný #35 opravy souborů cookie webu](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/pull/35)  |
-|  [active-directory-dotnet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2)  |  [Stejné #28 opravy souborů cookie webu](https://github.com/Azure-Samples/active-directory-dotnet-admin-restricted-scopes-v2/pull/28)  |
+|  [Přírůstkový kurz pro ASP.NET Core webovou aplikaci](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2)  |  [#261 stejné opravy souborů cookie webu](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/pull/261)  |
+|  [Ukázka webové aplikace ASP.NET MVC](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect)  |  [#35 stejné opravy souborů cookie webu](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/pull/35)  |
+|  [Active-Directory-dotnet-admin-Restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2)  |  [#28 stejné opravy souborů cookie webu](https://github.com/Azure-Samples/active-directory-dotnet-admin-restricted-scopes-v2/pull/28)  |
 
-podrobnosti o tom, jak zacházet se soubory cookie SameSite v ASP.NET a ASP.NET Core, naleznete také:
+Podrobnosti o tom, jak zpracovávat soubory cookie SameSite v ASP.NET a ASP.NET Core, najdete v tématu také:
 
-- [Pracujte se soubory cookie SameSite v ASP.NET Core](https://docs.microsoft.com/aspnet/core/security/samesite) .
-- [ASP.NET Blog na SameSite vydání](https://devblogs.microsoft.com/aspnet/upcoming-samesite-cookie-changes-in-asp-net-and-asp-net-core/)
+- [Práce s SameSite soubory cookie v ASP.NET Core](https://docs.microsoft.com/aspnet/core/security/samesite) .
+- [ASP.NET blog na SameSite problém](https://devblogs.microsoft.com/aspnet/upcoming-samesite-cookie-changes-in-asp-net-and-asp-net-core/)
 
 # <a name="python"></a>[Python](#tab/python)
 
 | Ukázka |
 | ------ |
-|  [ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp)  |
+|  [MS-identity – Python – WebApp](https://github.com/Azure-Samples/ms-identity-python-webapp)  |
 
 # <a name="java"></a>[Java](#tab/java)
 
 | Ukázka | Žádost o přijetí změn |
 | ------ | ------------ |
-|  [ms-identity-java-webapp](https://github.com/Azure-Samples/ms-identity-java-webapp)  | [Stejné #24 opravy souborů cookie webu](https://github.com/Azure-Samples/ms-identity-java-webapp/pull/24)
-|  [ms-identity-java-webapi](https://github.com/Azure-Samples/ms-identity-java-webapi)  | [Stejné #4 opravy souborů cookie webu](https://github.com/Azure-Samples/ms-identity-java-webapi/pull/4)
+|  [MS-identity – Java – WebApp](https://github.com/Azure-Samples/ms-identity-java-webapp)  | [#24 stejné opravy souborů cookie webu](https://github.com/Azure-Samples/ms-identity-java-webapp/pull/24)
+|  [MS-identity – Java – WebApi](https://github.com/Azure-Samples/ms-identity-java-webapi)  | [#4 stejné opravy souborů cookie webu](https://github.com/Azure-Samples/ms-identity-java-webapi/pull/4)
 
 ---
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o samesite a scénář webové aplikace:
+Další informace o SameSite a scénáři webové aplikace:
 
 > [!div class="nextstepaction"]
-> [Nejčastější dotazy prohlížeče Google Chrome na webu SameSite](https://www.chromium.org/updates/same-site/faq)
+> [Nejčastější dotazy k Google Chrome na SameSite](https://www.chromium.org/updates/same-site/faq)
 
 > [!div class="nextstepaction"]
-> [Stránka Chromium SameSite](https://www.chromium.org/updates/same-site)
+> [Stránka Chróm SameSite](https://www.chromium.org/updates/same-site)
 
 > [!div class="nextstepaction"]
-> [Scénář: Webová aplikace, která se připisuje k uživatelům](scenario-web-app-sign-user-overview.md)
+> [Scénář: webová aplikace, která se přihlásí uživatelům](scenario-web-app-sign-user-overview.md)

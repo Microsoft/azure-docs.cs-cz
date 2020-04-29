@@ -1,6 +1,6 @@
 ---
-title: Správa hesel a telefonních čísel pomocí funkce Moji zaměstnanci (preview) – Azure AD | Dokumenty společnosti Microsoft
-description: Správa hesel a telefonních čísel pro uživatele pomocí funkce Moje zaměstnanci
+title: Správa hesel a telefonních čísel pomocí mých zaměstnanců (Preview) – Azure AD | Microsoft Docs
+description: Spravovat hesla a telefonní čísla uživatelů pomocí mých zaměstnanců
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,103 +14,103 @@ ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
 ms.openlocfilehash: 29c27c876e90bce6a38226f68adf44a26465cfea
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770855"
 ---
-# <a name="delegate-user-management-with-my-staff-preview"></a>Delegování správy uživatelů s mým personálem (preview)
+# <a name="delegate-user-management-with-my-staff-preview"></a>Delegování správy uživatelů pomocí mých zaměstnanců (Preview)
 
-Vaše organizace může pomocí **funkce Moje zaměstnanci** delegovat úlohy správy uživatelů na autority, například na vedoucího obchodu nebo vedoucího týmu, aby svým zaměstnancům pomohla získat přístup k aplikacím, které potřebují. Pokud váš člen týmu nemá přístup k aplikaci, protože zapomene heslo, produktivita se ztratí. To také zvyšuje náklady na podporu a způsobuje problémové místo ve vašich administrativních procesech.  Díky aplikaci My Staff může člen týmu, který nemá přístup ke svému účtu, znovu získat přístup pouhými několika kliknutími bez nutnosti pomoci správce.
+Vaše organizace může pomocí **mých zaměstnanců** delegovat úkoly správy uživatelů na číselné údaje, jako je Správce úložiště nebo vedoucí týmu, aby pomohli svým pracovníkům přístup k aplikacím, které potřebují. Pokud váš člen týmu nemá přístup k aplikaci, protože zapomene heslo, dojde ke ztrátě produktivity. Tím se také zařídí náklady na podporu a v procesech správy dojde k kritickým bodům.  Členové týmu, kteří nemají přístup ke svému účtu, můžou při práci s pracovníky získat přístup jenom v několika kliknutích, a to bez nutnosti pomáhat s správcem.
 
-## <a name="manage-your-staff-in-my-staff"></a>Správa zaměstnanců v aplikaci Můj personál
+## <a name="manage-your-staff-in-my-staff"></a>Správa zaměstnanců v mém zaměstnanci
 
-Správa členů týmu v aplikaci Můj personál je jednoduchá. Chcete-li začít, [přejděte na můj zaměstnanec](https://aka.ms/mystaff), vyberte tým nebo umístění a pak vyberte uživatele. Umístění a členy týmu v lokalitě určuje správce IT a nemůžete je změnit.
+Správa členů týmu v mých zaměstnanců je jednoduchá. Začněte tím, že [přejdete na Moji zaměstnanci](https://aka.ms/mystaff), vyberete tým nebo umístění a pak vyberete uživatele. Umístění a členové týmu v umístění jsou určeny správcem IT a nelze je změnit.
 
-Pokud spravujete více než jedno místo, musíte při přectěkání do služby Můj personál vybrat umístění, abyste viděli člena týmu, který je k umístění přiřazen.
+Pokud spravujete více než jedno umístění, musíte při přechodu na pracovníky vybrat umístění pro zobrazení člena týmu, který je přiřazen k danému umístění.
 
-Pokud ještě nemáte dostatečná oprávnění k přístupu ke službě Moje zaměstnanci, zobrazí se následující zpráva "Jejda, zdá se, že v tuto chvíli nemáte oprávnění vidět mé zaměstnance. Další informace získáte od správce."
+Pokud ještě nemáte dostatečná oprávnění pro přístup k mým pracovníkům, zobrazí se následující zpráva: ne. zdá se, že nemáte oprávnění k zobrazení mých zaměstnanců v tuto chvíli. Pro další informace se obraťte na správce. "
 
-### <a name="find-a-staff-member-in-my-staff"></a>Najít zaměstnance v my staff
+### <a name="find-a-staff-member-in-my-staff"></a>Najít zaměstnance v mém zaměstnanci
 
-Před zahájením správy je nutné otevřít profil zaměstnance.
+Než budete moct začít spravovat, musíte otevřít profil zaměstnance.
 
-1. [Otevřete můj personál](https://aka.ms/mystaff) a v případě potřeby vyberte umístění.
+1. [Otevřete Moji zaměstnanci](https://aka.ms/mystaff) a v případě potřeby vyberte umístění.
 
-    ![Výběr místa pro člena týmu v mém týmu](media/my-staff-team-manager/allaus.png)
+    ![Vybrat umístění člena týmu ve složce Moji zaměstnanci](media/my-staff-team-manager/allaus.png)
 
 1. Otevřete profil člena týmu.
 
-    ![Výběr jednoho z uživatelů v umístění v části Moje zaměstnanci](media/my-staff-team-manager/aupage.png)
+    ![Vyberte jednoho z uživatelů v umístění v části Moji zaměstnanci.](media/my-staff-team-manager/aupage.png)
 
 ## <a name="reset-a-user-password"></a>Resetování hesla uživatele
 
-Pokud vám vaše organizace udělila oprávnění, můžete resetovat hesla pro zaměstnance.
+Pokud vám vaše organizace udělila oprávnění, můžete resetovat hesla pro vaše pedagogické členy.
 
-1. [Otevřít můj personál](https://aka.ms/mystaff).
-1. Otevřete profil zaměstnance.
-1. Vyberte **možnost Obnovit heslo**.
+1. [Otevřete Moji zaměstnanci](https://aka.ms/mystaff).
+1. Otevřete profil člena pedagogů.
+1. Vyberte **resetovat heslo**.
 
-    ![Resetování uživatelského hesla v části Moje zaměstnanci](media/my-staff-team-manager/resetpassword1.png)
+    ![Resetování hesla uživatele v mém zaměstnanci](media/my-staff-team-manager/resetpassword1.png)
 
-1. Vygenerujte nebo zadejte nové heslo. Může se zobrazit automaticky generované dočasné heslo nebo můžete být požádáni o zadání dočasného hesla pro uživatele.
+1. Vygenerujte nebo zadejte nové heslo. Může se zobrazit automaticky generované dočasné heslo, nebo může být požádáno o zadání dočasného hesla pro uživatele.
 
-    ![Kopírování dočasného uživatelského hesla po resetování v části Moje zaměstnanci](media/my-staff-team-manager/resetpassword2.png)
+    ![Kopírování dočasného hesla uživatele po resetování u zaměstnanců](media/my-staff-team-manager/resetpassword2.png)
 
-Po resetování hesla uživatele zadejte uživateli dočasné heslo. Když se uživatel přihlásí pomocí svého dočasného hesla, je nutné jej změnit.
+Po resetování hesla uživatele dejte uživateli dočasné heslo. Když se uživatel přihlásí pomocí jejich dočasného hesla, je nutné ho změnit.
 
-## <a name="manage-a-users-phone-number"></a>Správa telefonního čísla uživatele
+## <a name="manage-a-users-phone-number"></a>Spravovat telefonní číslo uživatele
 
-Pokud vám vaše organizace udělila oprávnění, můžete spravovat telefonní čísla zaměstnanců.
+Pokud vám vaše organizace udělila vaše oprávnění, můžete spravovat telefonní čísla pro vaše pedagogické členy.
 
-### <a name="add-a-phone-number"></a>Přidání telefonního čísla
+### <a name="add-a-phone-number"></a>Přidat telefonní číslo
 
-1. [Otevřít můj personál](https://aka.ms/mystaff).
-1. Otevřete profil zaměstnance.
+1. [Otevřete Moji zaměstnanci](https://aka.ms/mystaff).
+1. Otevřete profil člena pedagogů.
 1. Vyberte **Přidat telefonní číslo**.
 
-    ![Přidání uživatelského telefonního čísla do smí s pedagogy](media/my-staff-team-manager/addphone1.png)
+    ![Přidat telefonní číslo uživatele do mých zaměstnanců](media/my-staff-team-manager/addphone1.png)
 
 1. Přidejte telefonní číslo a vyberte **Uložit**.
 
-    ![Uložení přidaného uživatelského telefonního čísla do smí s pedagogy](media/my-staff-team-manager/addphone2.png)
+    ![Uložit telefonní číslo přidaného uživatele do mých zaměstnanců](media/my-staff-team-manager/addphone2.png)
 
-Po registraci telefonního čísla pro uživatele, může použít k přihlášení pomocí SMS, provést dvoustupňové ověření nebo obnovit své heslo na vlastní pěst, v závislosti na nastavení vaší organizace.
+Po registraci telefonního čísla pro uživatele ho můžou použít k přihlášení pomocí SMS, provádění dvoustupňového ověřování nebo resetování hesla vlastním jménem v závislosti na nastaveních vaší organizace.
 
-![Nové telefonní číslo registrované u společnosti My Staff](media/my-staff-team-manager/addphone3.png)
+![Nové telefonní číslo registrované u mých zaměstnanců](media/my-staff-team-manager/addphone3.png)
 
-### <a name="edit-a-phone-number"></a>Úprava telefonního čísla
+### <a name="edit-a-phone-number"></a>Upravit telefonní číslo
 
-1. [Otevřít můj personál](https://aka.ms/mystaff).
-1. Otevřete profil zaměstnance.
+1. [Otevřete Moji zaměstnanci](https://aka.ms/mystaff).
+1. Otevřete profil člena pedagogů.
 1. Vyberte **Upravit telefonní číslo**.
 
-    ![Vyberte Upravit z profilu uživatele v části Moje hůlky.](media/my-staff-team-manager/editphone2.png)
+    ![Výběr upravit z profilu uživatele v části Moji zaměstnanci](media/my-staff-team-manager/editphone2.png)
 
 1. Zadejte nové telefonní číslo a vyberte **Uložit**.
 
-    ![Úprava telefonního čísla zaměstnance v smýšlení](media/my-staff-team-manager/editphone1.png)
+    ![Úprava telefonního čísla pro pedagogy v mých zaměstnancích](media/my-staff-team-manager/editphone1.png)
 
 ### <a name="enable-phone-number-sign-in-for-a-user"></a>Povolení přihlášení k telefonnímu číslu pro uživatele
 
-Pokud je ve vaší organizaci povoleno přihlášení pomocí telefonního čísla jako uživatelského jména (přihlášení pomocí SMS), můžete toto ověřování přidat k existujícímu uživatelskému telefonnímu číslu.
+Pokud je přihlášení pomocí telefonního čísla jako uživatelské jméno (přihlášení SMS) ve vaší organizaci povolené, můžete toto ověřování přidat k existujícímu telefonnímu číslu uživatele.
 
-1. [Otevřít můj personál](https://aka.ms/mystaff).
-1. Otevřete profil zaměstnance.
-1. Pokud je v dolní části obrazovky zpráva, že přihlášení pomocí telefonního čísla jako uživatelského jména je pro vás dostupné, vyberte **Povolit** a začněte proces. Tato zpráva se zobrazí, pokud se uživatel mohl přihlásit pomocí svého telefonního čísla.
+1. [Otevřete Moji zaměstnanci](https://aka.ms/mystaff).
+1. Otevřete profil člena pedagogů.
+1. Pokud se v dolní části obrazovky zobrazí zpráva s přihlašováním pomocí telefonního čísla, které je pro vás k dispozici, vyberte **Povolit** , aby se proces zahájil. Tato zpráva se zobrazí, pokud uživatel povolil přihlášení pomocí jejich telefonního čísla.
 
-    ![Zobrazení zprávy, když je podporováno přihlášení telefonu v umístění v části Moje zaměstnanci](media/my-staff-team-manager/enableforms1.png)
+    ![Zobrazit zprávu, když se telefonické přihlášení podporuje v umístění v části Moji zaměstnanci](media/my-staff-team-manager/enableforms1.png)
 
-1. Až budete hotovi, vyberte **OK.**
+1. Až budete hotovi, vyberte **OK** .
 
-    ![Odebrání telefonního čísla zaměstnance v smýšlení](media/my-staff-team-manager/enableforms2.png)
+    ![Odebrání telefonního čísla pro pedagogy v mých zaměstnancích](media/my-staff-team-manager/enableforms2.png)
 
-### <a name="remove-a-phone-number"></a>Odebrání telefonního čísla
+### <a name="remove-a-phone-number"></a>Odebrat telefonní číslo
 
-1. [Otevřít můj personál](https://aka.ms/mystaff).
-1. Otevřete profil zaměstnance.
-1. Vyberte **Odebrat telefonní číslo**.
-1. Až budete hotovi, vyberte **Odstranit.**
+1. [Otevřete Moji zaměstnanci](https://aka.ms/mystaff).
+1. Otevřete profil člena pedagogů.
+1. Vyberte **odebrat telefonní číslo**.
+1. Až budete hotovi, vyberte **Odstranit** .
 
-    ![Odebrání telefonního čísla zaměstnance v smýšlení](media/my-staff-team-manager/deletephone1.png)
+    ![Odebrání telefonního čísla pro pedagogy v mých zaměstnancích](media/my-staff-team-manager/deletephone1.png)

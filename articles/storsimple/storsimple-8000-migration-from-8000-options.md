@@ -1,6 +1,6 @@
 ---
-title: Možnosti migrace dat ze zařízení řady StorSimple 8000
-description: Obsahuje přehled možností migrace dat z řady StorSimple 8000.
+title: Možnosti migrace dat ze zařízení StorSimple 8000 series
+description: Poskytuje přehled možností migrace dat z řady StorSimple 8000.
 services: storsimple
 author: priestlg
 ms.service: storsimple
@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 03/25/2020
 ms.author: v-grpr
 ms.openlocfilehash: 974bcc657b811a10e28b41150439e83d26a208d2
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81767049"
 ---
 # <a name="options-to-migrate-data-from-storsimple-8000-series"></a>Možnosti migrace dat z řady StorSimple 8000
 
 > [!IMPORTANT]
-> 31. prosince 2022 dosáhne řada StorSimple 8000 stavu ukončení podpory (EOS). Doporučujeme, aby zákazníci řady StorSimple 8000 migrovali na jednu z alternativ popsaných v dokumentu.
+> 31. prosince 2022 bude StorSimple série 8000 získat stav EOS (konec podpory). Zákazníkům řady StorSimple 8000 doporučujeme migrovat na jednu z alternativ popsaných v dokumentu.
 
-Řada StorSimple 8000 se blíží [ke konci podpory](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series) v prosinci 2022. Zákazníci, kteří používají řadu StorSimple 8000, mají možnost upgradovat na jiné hybridní služby Azure první strany. Tento článek popisuje hybridní možnosti Azure, které jsou k dispozici pro migraci dat.
+Série StorSimple 8000 se blíží [konci podpory](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series) v prosinci 2022. Zákazníci, kteří používají sadu StorSimple 8000, mají možnost upgradovat na jiné hybridní služby Azure First stran. Tento článek popisuje možnosti hybridního Azure, které jsou k dispozici pro migraci dat.
 
 ## <a name="migration-options"></a>Možnosti migrace
 
@@ -29,17 +29,17 @@ Zákazníci, kteří používají řadu StorSimple 8000, mají možnosti Azure n
 
 #### <a name="migrate-to-azure-file-sync"></a>Migrace do Synchronizace souborů Azure
 
-Tato zcela nová možnost migrace umožňuje zákazníkům ukládat sdílené složky jejich organizace do souborů Azure. Tyto sdílené složky jsou pak centralizované pro místní přístup pomocí Azure File Sync (AFS). Systém AFS lze nasadit na hostitele systému Windows Server. Skutečná migrace dat se pak provádí jako kopie hostitele nebo pomocí nástroje pro migraci.
+Tato značka nové možnosti migrace umožňuje zákazníkům ukládat sdílené složky ve své organizaci do souborů Azure. Tyto sdílené soubory jsou potom centralizované pro místní přístup pomocí Azure File Sync (AFS). AFS se dá nasadit na hostitele Windows serveru. Skutečná migrace dat se pak provede jako kopie hostitele nebo pomocí nástroje pro migraci.
 
-Další informace o tom, jak migrovat data do Azure File Sync, přejděte na [StorSimple 8100 a 8600 migrace do Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-files-migration-storsimple-8000).
+Další informace o tom, jak migrovat data na Azure File Sync, najdete v článku [migrace StorSimple 8100 a 8600 do Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-files-migration-storsimple-8000).
 
 ### <a name="third-party-options"></a>Možnosti třetích stran
 
-#### <a name="migrate-to-panzura-freedom-nas"></a>Migrace na Panzura Svoboda NAS
+#### <a name="migrate-to-panzura-freedom-nas"></a>Migrace na server Panzura svobody
 
-Zákazníci řady StorSimple 5000-7000 a StorSimple 8000 se mohou rozhodnout migrovat do nas Panzura Freedom, aby uchovávali svá data v Azure. Řešení Panzura Freedom poskytuje řešení NAS, které zahrnuje datová centra, kanceláře, veřejné i soukromé cloudy. Toto řešení umožňuje místní, hybridní a cloudové datové pracovní postupy pro klienty nfs, smb a mobilní klienty.
+Zákazníci řady StorSimple 5000-7000 a StorSimple 8000 Series se můžou rozhodnout migrovat na server Panzura svobody, aby si zachovali jejich data v Azure. Řešení Panzura svobodu poskytuje řešení pro NAS, které pokrývá datová centra, pobočky, veřejné a privátní cloudy. Řešení umožňuje místní, hybridní a cloudové pracovní postupy dat pro NFS, SMB a mobilní klienty.
 
-Tuto migraci podporuje panzura a zákazníci mohou začít tím, že požádá o podporu migrace z [webových stránek Panzura](https://panzura.com/migrate-storsimple-panzura/).
+Tato migrace je podporovaná Panzura a zákazníci můžou začít tím, že požádají o podporu migrace z [webu Panzura](https://panzura.com/migrate-storsimple-panzura/).
 
 <!-- 04/09/2020 v-grpr (priestlg) - As per request, commenting out this section because the information that will go into this section is forthcoming
 #### Migrate to Cohesity
@@ -61,48 +61,48 @@ Talon makes it easy for StorSimple 5000-7000 customers to continue to leverage t
 Learn more about how to evolve to a cloud-consolidated enterprise at https://www.talonstorage.com/alliances/microsoft-storsimple.
 -->
 
-## <a name="migration---frequently-asked-questions"></a>Migrace – nejčastější dotazy
+## <a name="migration---frequently-asked-questions"></a>Migrace – Nejčastější dotazy
 
-### <a name="q-when-do-the-storsimple-8000-series-devices-reach-end-of-service"></a>Otázka: Kdy se zařízení řady StorSimple 8000 dostanou do konce služby?
+### <a name="q-when-do-the-storsimple-8000-series-devices-reach-end-of-service"></a>Otázka: Když zařízení řady StorSimple 8000 dosáhnou konce služby?
 
-A. Řada StorSimple 8000 [dosáhla konce podpory](https://support.microsoft.com/[lifecycle/search?alpha=Azure%20StorSimple%208000%20Series) v prosinci 2022. Ukončení podpory znamená, že společnost Microsoft již nebude moci poskytovat podporu hardwaru i softwaru těchto zařízení po prosinci 2022. Důrazně doporučujeme, abyste nyní začali formulovat plán migrace dat ze svých zařízení.
+A. StorSimple 8000 řady dorazí na [konec podpory](https://support.microsoft.com/[lifecycle/search?alpha=Azure%20StorSimple%208000%20Series) v prosinci 2022. Konec podpory znamená, že společnost Microsoft už nebude moct po uplynutí prosince 2022 poskytovat podporu pro hardware i software těchto zařízení. Důrazně doporučujeme začít formulovat plán pro migraci dat ze svých zařízení.
 
-### <a name="q-what-happens-to-the-data-i-have-stored-in-azure"></a>Otázka: Co se stane s daty, která jsem uložil v Azure?  
+### <a name="q-what-happens-to-the-data-i-have-stored-in-azure"></a>Otázka: Co se stane s daty uloženými v Azure?  
 
-A. Data v Azure můžete dál používat, jakmile je migrujete do novější služby.
+A. Data v Azure můžete po migraci do novější služby nadále používat.
 
 ### <a name="q-what-happens-to-the-data-i-have-stored-locally-on-my-storsimple-device"></a>Otázka: Co se stane s daty uloženými místně na zařízení StorSimple?
 
-A. Data, která je na místním zařízení lze zkopírovat do novější služby, jak je popsáno v dokumentech migrace.
+A. Data umístěná na místním zařízení je možné zkopírovat do novější služby, jak je popsáno v dokumentu migrace.
 
-### <a name="q-what-happens-if-i-want-to-keep-my-storsimple-8000-series-appliance"></a>Otázka: Co se stane, když si chci ponechat svůj přístroj řady StorSimple 8000?
+### <a name="q-what-happens-if-i-want-to-keep-my-storsimple-8000-series-appliance"></a>Otázka: Co se stane, když si přeji zachovat zařízení řady StorSimple 8000?
 
-A. Zatímco služby mohou nadále fungovat, společnost Microsoft již nebude moci poskytovat hardwarovou a softwarovou podporu. Migrace se důrazně doporučuje pro kontinuitu provozu.
+A. I když mohou služby fungovat i nadále, společnost Microsoft již nebude moci poskytovat hardwarovou a softwarovou podporu. Migrace se důrazně doporučuje pro provozní kontinuitu.
 
 ### <a name="q-what-options-are-available-to-migrate-data-from-storsimple-8000-series-devices"></a>Otázka: Jaké možnosti jsou k dispozici pro migraci dat ze zařízení řady StorSimple 8000?
 
 A. V závislosti na jejich scénáři mají uživatelé řady StorSimple 8000 následující možnosti migrace:
 
-* **Migrace do Azure File Sync:** Tuto možnost použijte, když chcete přepnout do nativního formátu Azure. Azure File Sync můžete použít pro centralizovanou správu sdílených složek.
+* **Migrace na Azure File Sync**: tuto možnost použijte, pokud chcete přepnout do nativního formátu Azure. Azure File Sync můžete použít pro centralizovanou správu sdílených složek.
 
-* **Další možnosti**: Můžete se obrátit na podporu společnosti Microsoft a projednat zde uvedené možnosti migrace.
+* **Další možnosti**: můžete kontaktovat podpora Microsoftu a diskutovat na možnosti migrace, které tady nejsou uvedené.
 
-### <a name="q-is-migration-to-other-storage-solutions-supported"></a>Otázka: Je migrace na jiná řešení úložiště podporována?
+### <a name="q-is-migration-to-other-storage-solutions-supported"></a>Otázka: Je migrace na jiná řešení úložiště podporovaná?
 
-A. Ano. Migrace do jiných řešení úložiště pomocí hostitelské kopie dat je podporována.
+A. Ano. Migrace na jiná řešení úložiště pomocí hostitelské kopie dat je podporovaná.
 
-### <a name="q-is-migration-supported-by-microsoft"></a>Otázka: Je migrace podporována společností Microsoft?
+### <a name="q-is-migration-supported-by-microsoft"></a>Otázka: Je migrace podporovaná Microsoftem?
 
-A. Migrace ze série 8000 je plně podporovaná operace. Společnost Microsoft ve skutečnosti doporučuje před zahájením migrace kontaktovat podporu. Migrace je v současné době asistovaná operace. Pokud máte v úmyslu migrovat data ze zařízení řady StorSimple 8000, [obraťte se na podporu StorSimple](mailto:storsimp@microsoft.com).
+A. Migrace z 8000 Series je plně podporovaná operace. Společnost Microsoft ve skutečnosti doporučuje, abyste si před zahájením migrace vydosáhli podpory. Migrace je aktuálně pomocná operace. Pokud máte v úmyslu migrovat data ze zařízení řady StorSimple 8000, [obraťte se na podporu StorSimple](mailto:storsimp@microsoft.com).
 
 ### <a name="q-what-is-the-pricing-model-for-migration-to-azure-file-sync"></a>Otázka: Jaký je cenový model pro migraci do Azure File Sync?
 
-A. Při použití Azure File Sync, může platit poplatky za předplatné pro službu. Zákazníci budou také muset platit průběžné náklady na skladování. Podívejte se na [afs ceny]( https://azure.microsoft.com/pricing/details/storage/files/) pro odhad.
+A. Při použití Azure File Sync může platit poplatky za předplatné služby. Zákazníci budou muset platit i průběžné náklady na úložiště. Odhad najdete v tématu [ceny pro AFS]( https://azure.microsoft.com/pricing/details/storage/files/) .
 
 ### <a name="q-how-long-does-it-take-to-complete-a-migration"></a>Otázka: Jak dlouho trvá dokončení migrace?
 
-A. Doba migrace dat závisí na množství dat a vybrané možnosti upgradu.
+A. Čas k migraci dat závisí na množství dat a vybrané možnosti upgradu.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Migrace dat z řady StorSimple 8000 do Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-files-migration-storsimple-8000)
+* [Migrace dat z řady StorSimple 8000 na Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-files-migration-storsimple-8000)

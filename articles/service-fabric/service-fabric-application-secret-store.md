@@ -1,20 +1,20 @@
 ---
-title: Úložiště centrálních tajných klíčů azure service fabric
-description: Tento článek popisuje, jak používat centrální úložiště tajných klíčů ve službě Azure Fabric.
+title: Úložiště centrálních tajných kódů Azure Service Fabric
+description: Tento článek popisuje, jak používat úložiště centrálních tajných kódů v Azure Service Fabric.
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.openlocfilehash: 4087e7ccdcb2281c4a08af155d35a10c66147a85
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770410"
 ---
-# <a name="central-secrets-store-in-azure-service-fabric"></a>Centrální úložiště tajných klíčů ve službě Azure Fabric 
-Tento článek popisuje, jak používat centrální úložiště tajných klíčů (CSS) v Azure Service Fabric k vytvoření tajných kódů v aplikacích Service Fabric. CSS je místní mezipaměť tajného úložiště, která uchovává citlivá data, jako je heslo, tokeny a klíče, šifrovaná v paměti.
+# <a name="central-secrets-store-in-azure-service-fabric"></a>Úložiště centrálních tajných kódů v Azure Service Fabric 
+Tento článek popisuje, jak v Azure Service Fabric použít centrální úložiště tajných kódů (CSS) k vytváření tajných kódů v Service Fabricch aplikacích. CSS je místní mezipaměť úložiště tajných klíčů, která uchovává citlivá data, například heslo, tokeny a klíče, zašifrované v paměti.
 
-## <a name="enable-central-secrets-store"></a>Povolit centrální úložiště tajných klíčů
-Chcete-li povolit css, přidejte do konfigurace `fabricSettings` clusteru následující skript. Doporučujeme použít jiný certifikát než certifikát clusteru pro CSS. Ujistěte se, že šifrovací `NetworkService` certifikát je nainstalován na všech uzlech a že má oprávnění ke čtení soukromého klíče certifikátu.
+## <a name="enable-central-secrets-store"></a>Povolit úložiště centrálních tajných kódů
+Přidejte následující skript do konfigurace clusteru v části `fabricSettings` pro povolení šablon stylů CSS. Pro šablony stylů CSS doporučujeme použít jiný certifikát než certifikát clusteru. Ujistěte se, že je šifrovací certifikát nainstalovaný na všech uzlech `NetworkService` a má oprávnění ke čtení pro privátní klíč certifikátu.
   ```json
     "fabricSettings": 
     [
@@ -46,34 +46,34 @@ Chcete-li povolit css, přidejte do konfigurace `fabricSettings` clusteru násle
         ...
      ]
 ```
-## <a name="declare-a-secret-resource"></a>Deklarovat tajný zdroj
-Tajný prostředek můžete vytvořit pomocí rozhraní REST API.
+## <a name="declare-a-secret-resource"></a>Deklarace tajného prostředku
+Tajný prostředek můžete vytvořit pomocí REST API.
   > [!NOTE] 
-  > Pokud cluster používá ověřování systému Windows, je požadavek REST odeslán prostřednictvím nezabezpečeného kanálu HTTP. Doporučujeme použít cluster založený na X509 se zabezpečenými koncovými body.
+  > Pokud cluster používá ověřování systému Windows, je žádost REST odeslána přes nezabezpečený kanál HTTP. Doporučujeme použít cluster se systémem x509 se zabezpečenými koncovými body.
 
-Chcete-li `supersecret` vytvořit tajný prostředek pomocí rozhraní REST `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview`API, vytvořte požadavek PUT na program . K vytvoření tajného prostředku potřebujete certifikát clusteru nebo klientský certifikát správce.
+Pokud chcete vytvořit `supersecret` prostředek tajného kódu pomocí REST API, udělejte požadavek PUT na `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview`. K vytvoření tajného prostředku potřebujete certifikát clusteru nebo klientský certifikát správce.
 
 ```powershell
 $json = '{"properties": {"kind": "inlinedValue", "contentType": "text/plain", "description": "supersecret"}}'
 Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview -Method PUT -CertificateThumbprint <CertThumbprint> -Body $json
 ```
 
-## <a name="set-the-secret-value"></a>Nastavení tajné hodnoty
+## <a name="set-the-secret-value"></a>Nastavte tajnou hodnotu.
 
-Pomocí následujícího skriptu můžete použít rozhraní REST API k nastavení tajné hodnoty.
+Pomocí následujícího REST API skriptu nastavte tajnou hodnotu.
 ```powershell
 $Params = '{"properties": {"value": "mysecretpassword"}}'
 Invoke-WebRequest -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret/values/ver1?api-version=6.4-preview -Method PUT -Body $Params -CertificateThumbprint <ClusterCertThumbprint>
 ```
-### <a name="examine-the-secret-value"></a>Zkontrolujte tajnou hodnotu
+### <a name="examine-the-secret-value"></a>Prověřte tajnou hodnotu.
 ```powershell
 Invoke-WebRequest -CertificateThumbprint <ClusterCertThumbprint> -Method POST -Uri "https:<clusterfqdn>/Resources/Secrets/supersecret/values/ver1/list_value?api-version=6.4-preview"
 ```
 ## <a name="use-the-secret-in-your-application"></a>Použití tajného klíče v aplikaci
 
-Chcete-li použít tajný klíč v aplikaci Service Fabric, postupujte takto.
+Při použití tajného klíče ve vaší aplikaci Service Fabric postupujte podle těchto kroků.
 
-1. Přidejte oddíl do souboru **settings.xml** s následujícím fragmentem. Zde si všimněte, že`secretname:version`hodnota je ve formátu { }.
+1. Přidejte do souboru **Settings. XML** část s následujícím fragmentem kódu. Všimněte si, že hodnota je ve formátu {`secretname:version`}.
 
    ```xml
      <Section Name="testsecrets">
@@ -81,7 +81,7 @@ Chcete-li použít tajný klíč v aplikaci Service Fabric, postupujte takto.
      </Section>
    ```
 
-1. Importujte oddíl v **applicationManifest.xml**.
+1. Importujte oddíl v **souboru souboru ApplicationManifest. XML**.
    ```xml
      <ServiceManifestImport>
        <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
@@ -94,12 +94,12 @@ Chcete-li použít tajný klíč v aplikaci Service Fabric, postupujte takto.
      </ServiceManifestImport>
    ```
 
-   Proměnná `SecretPath` prostředí bude přeukazovat na adresář, kde jsou uloženy všechny tajné klíče. Každý parametr uvedený `testsecrets` v sekci je uložen v samostatném souboru. Aplikace nyní může použít tajný klíč takto:
+   Proměnná `SecretPath` prostředí bude ukazovat na adresář, ve kterém jsou uloženy všechny tajné kódy. Každý parametr uvedený v `testsecrets` oddílu je uložen v samostatném souboru. Aplikace teď může tajný klíč použít následujícím způsobem:
    ```C#
    secretValue = IO.ReadFile(Path.Join(Environment.GetEnvironmentVariable("SecretPath"),  "TopSecret"))
    ```
-1. Připojte tajemství do kontejneru. Jedinou změnou, která je nutná k `specify` zpřístupnění `<ConfigPackage>`tajných kódů uvnitř kontejneru, je přípojný bod v .
-Následující úryvek je upravený **applicationManifest.xml**.  
+1. Připojte tajné klíče ke kontejneru. Jediná změna nutná k zpřístupnění tajných kódů uvnitř kontejneru je `specify` bod připojení v. `<ConfigPackage>`
+Následující fragment kódu je upravený **souboru ApplicationManifest. XML**.  
 
    ```xml
    <ServiceManifestImport>
@@ -115,9 +115,9 @@ Následující úryvek je upravený **applicationManifest.xml**.
        </Policies>
      </ServiceManifestImport>
    ```
-   Tajné klíče jsou k dispozici pod přípojnou bodem uvnitř kontejneru.
+   Tajné kódy jsou k dispozici pod přípojným bodem v kontejneru.
 
-1. Tajný klíč můžete svázat s proměnnou `Type='SecretsStoreRef`prostředí procesu zadáním . Následující úryvek je příkladem svázání `supersecret` verze `ver1` s proměnnou prostředí v `MySuperSecret` **souboru ServiceManifest.xml**.
+1. Můžete vytvořit vazby tajného kódu k proměnné prostředí procesu zadáním `Type='SecretsStoreRef`. Následující fragment kódu je příkladem vytvoření `supersecret` vazby verze `ver1` k proměnné `MySuperSecret` prostředí v **souboru ServiceManifest. XML**.
 
    ```xml
    <EnvironmentVariables>
@@ -126,4 +126,4 @@ Následující úryvek je upravený **applicationManifest.xml**.
    ```
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o [zabezpečení aplikací a služeb](service-fabric-application-and-service-security.md).
+Přečtěte si další informace o [zabezpečení aplikací a služeb](service-fabric-application-and-service-security.md).

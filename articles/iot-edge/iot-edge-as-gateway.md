@@ -1,6 +1,6 @@
 ---
-title: Brány pro zařízení pro příjem dat – Azure IoT Edge | Dokumenty společnosti Microsoft
-description: Azure IoT Edge slouží k vytvoření průhledného, neprůhledného zařízení brány nebo zařízení brány proxy, které odesílá data z více podřazených zařízení do cloudu nebo je zpracovává místně.
+title: Brány pro zařízení pro příjem dat – Azure IoT Edge | Microsoft Docs
+description: Pomocí Azure IoT Edge můžete vytvořit transparentní, neprůhledné nebo proxy zařízení brány proxy, které odesílá data z více podřízených zařízení do cloudu nebo je místně zpracuje.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -12,52 +12,52 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 916eeaa60bc054301af039164ce1c14e77ceb91a
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733519"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>Jak se dá zařízení IoT Edge využít jako brána
 
-Brány v řešeních IoT Edge poskytují připojení zařízení a analýzu výhod pro zařízení IoT, která by jinak tyto funkce neměla. Azure IoT Edge se dá použít k uspokojení všech potřeb brány IoT, ať už souvisí s připojením, identitou nebo analýzou na okraji. Vzory brány v tomto článku odkazují pouze na charakteristiky připojení k datům po proudu a identity zařízení, nikoli na způsob zpracování dat zařízení v bráně.
+Brány v IoT Edge řešení poskytují připojení zařízení a hraniční analýzy pro zařízení IoT, která by jinak neposkytovala tyto možnosti. Azure IoT Edge můžete použít k uspokojení jakékoli potřeby brány IoT, ať už se jedná o připojení, identitu nebo Edge Analytics. Vzorce brány v tomto článku odkazují jenom na vlastnosti připojení zařízení a identity zařízení, a ne na to, jak se data zařízení zpracovávají v bráně.
 
 ## <a name="patterns"></a>Vzory
 
-Existují tři vzory pro použití zařízení IoT Edge jako brány: transparentní, překlad protokolu a překlad identity:
+Existují tři způsoby použití IoT Edge zařízení jako brány: transparentní, překlad protokolu a překlad identity:
 
-* **Transparentní** – zařízení, která se teoreticky můžou připojit k IoT Hubu, se můžou místo toho připojit k zařízení brány. Zařízení pro příjem dat mají vlastní identity služby IoT Hub a používají libovolný protokol YQTT, AMQP nebo HTTP. Brána jednoduše předává komunikaci mezi zařízeními a službou IoT Hub. Zařízení i uživatelé, kteří s nimi komunikují prostřednictvím služby IoT Hub, nevědí, že brána zprostředkuje jejich komunikaci. Tento nedostatek povědomí znamená, že brána je považována za *transparentní*. Viz [Vytvoření transparentní brány](how-to-create-transparent-gateway.md) pro specifika o použití zařízení IoT Edge jako transparentní brány.
-* **Překlad protokolu** – označované také jako vzor neprůhledné brány, zařízení, která nepodporují MQTT, AMQP nebo HTTP můžete použít zařízení brány k odesílání dat do služby IoT Hub jejich jménem. Brána rozumí protokolu používanému zařízením pro příjem dat a je jediným zařízením, které má identitu v centru IoT Hub. Všechny informace vypadají, jako by přicházely z jednoho zařízení, brány. Zařízení pro příjem dat musí do svých zpráv vložit další identifikační informace, pokud cloudové aplikace chtějí analyzovat data na základě pro zařízení. Kromě toho ioT Hub primitiv, jako jsou dvojčata a metody jsou k dispozici pouze pro zařízení brány, nikoli pro příjem dat zařízení.
-* **Překlad identity** – zařízení, která se nemohou připojit k službě IoT Hub, se místo toho můžou připojit k zařízení brány. Brána poskytuje identitu ioT hubu a překlad protokolu jménem zařízení pro příjem dat. Brána je dostatečně chytrá, aby pochopila protokol používaný navazujícími zařízeními, poskytla jim identitu a překlápěla primitiva služby IoT Hub. Zařízení pro příjem dat se v centru IoT Hub zobrazují jako prvotřídní zařízení s dvojčaty a metodami. Uživatel může komunikovat se zařízeními v centru IoT Hub a neví o zařízení zprostředkující brány.
+* **Transparentní** – zařízení, která se teoreticky můžou připojit k IoT Hub se můžou místo toho připojit k zařízení brány. Zařízení pro příjem dat mají vlastní IoT Hub identity a používají některé protokoly MQTT, AMQP a HTTP. Brána jednoduše předává komunikaci mezi zařízeními a IoT Hub. Zařízení i uživatelé, kteří s nimi pracují prostřednictvím IoT Hub, nevědí, že brána Mediating jejich komunikaci. Nedostatečné povědomí znamená, že brána je považována za *transparentní*. V tématu [Vytvoření transparentní brány](how-to-create-transparent-gateway.md) najdete konkrétní informace o použití zařízení IoT Edge jako transparentní brány.
+* **Překlad protokolu** – známý taky jako neprůhledný model brány, zařízení, která nepodporují MQTT, AMQP nebo http, můžou používat zařízení brány k posílání dat, která se IoT Hub jménem. Brána rozumí protokolu používanému v zařízeních pro příjem dat a je jediné zařízení, které má v IoT Hub identitu. Všechny informace vypadají jako z jednoho zařízení a brány. Pokud cloudové aplikace chtějí analyzovat data podle jednotlivých zařízení, musí do nich vkládat další identifikační údaje. IoT Hub primitivních, jako jsou například vlákna a metody, jsou k dispozici pouze pro zařízení brány, nikoli pro zařízení s podřízenými zařízeními.
+* **Překlad identity** – zařízení, která se nemůžou připojit k IoT Hub se můžou místo toho připojit k zařízení brány. Brána poskytuje IoT Hub překlad identity a protokolu jménem zařízení pro příjem dat. Brána je dostatečně inteligentní, aby porozuměla protokolu používanému v zařízeních pro příjem dat, poskytoval jim identitu a překládá IoT Hub primitivních hodnot. Podřízená zařízení se zobrazí v IoT Hub jako zařízení první třídy s dvojitou signalizací a metodami. Uživatel může komunikovat se zařízeními v IoT Hub a nekontaktuje zařízení zprostředkující brány.
 
-![Diagram – transparentní, protokolové a brány identity vzory](./media/iot-edge-as-gateway/edge-as-gateway.png)
+![Modely transparentního diagramu, protokolu a brány identity](./media/iot-edge-as-gateway/edge-as-gateway.png)
 
 ## <a name="use-cases"></a>Případy použití
 
-Všechny vzory brány poskytují následující výhody:
+Všechny vzory bran poskytují následující výhody:
 
-* **Analytika na hraničních zařízeních** – služby AI můžete využívat místně ke zpracování dat přicházejících z podřízeného zařízení bez odesílání telemetrie s plnou věrností do cloudu. Najděte přehledy a reagujte na ně místně a odesílejte jenom podmnožinu dat do služby IoT Hub.
-* **Následná izolace zařízení** – zařízení brány může chránit všechna zařízení pro příjem dat před vystavením internetu. Může sedět mezi sítí OT, která nemá připojení, a sítí IT, která poskytuje přístup k webu.
-* **Multiplexování připojení** – všechna zařízení, která se připojují k ioT hubu přes bránu IoT Edge, používají stejné základní připojení.
-* **Vyhlazování provozu** – zařízení IoT Edge automaticky implementuje exponenciální backoff, pokud služba IoT Hub omezuje provoz, zatímco trvalé zprávy místně. Tato výhoda umožňuje vaše řešení odolné vůči špičkám v provozu.
-* **Offline podpora** – zařízení brány ukládá zprávy a aktualizace dvojčete, které nelze doručit do služby IoT Hub.
+* **Analýzy na hraničních** zařízeních – používají se místně služby AI ke zpracování dat přicházejících ze zařízení, která se neodesílají do cloudu, bez odesílání telemetrie s plnou věrností. Najděte a reagují na přehledy místně a odešlete jenom podmnožinu dat, která IoT Hub.
+* **Izolace zařízení** po jednotlivých zařízeních – zařízení brány může chránit všechna zařízení pro příjem dat před expozicí Internetu. Může se navázat mezi sítí, která nemá připojení, a sítí IT, která poskytuje přístup k webu.
+* **Multiplexing připojení** – všechna zařízení, která se připojují k IoT Hub přes IoT Edge bránu, používají stejné základní připojení.
+* **Vyhlazení provozu** – IoT Edge zařízení automaticky implementuje exponenciální omezení rychlosti, pokud IoT Hub omezuje provoz, zatímco se zprávy ukládají místně. Díky této výhodě je vaše řešení odolné vůči špičkám v provozu.
+* **Podpora offline** – zařízení brány ukládá zprávy a zdvojené aktualizace, které nelze doručit IoT Hub.
 
-Brána, která provádí překlad protokolu, může také provádět analýzu okrajů, izolaci zařízení, vyhlazování provozu a offline podporu stávajících zařízení a nových zařízení, která jsou omezena prostředky. Mnoho stávajících zařízení vytváří data, která mohou pohánět obchodní přehledy; nebyly však navrženy s ohledem na připojení ke cloudu. Neprůhledné brány umožňují odemknutí těchto dat a použití v řešení IoT.
+Brána, která překládá protokol, může také provádět Edge Analytics, izolaci zařízení, vyhlazování provozu a podporu offline pro stávající zařízení a nová zařízení, která jsou omezená na prostředky. Mnoho stávajících zařízení vyrábí data, která můžou být v Power Business Insights. nejsou ale navržené s ohledem na cloudové připojení. Neprůhledné brány umožňují, aby tato data byla odemčená a používána v řešení IoT.
 
-Brána, která provádí překlad identit, poskytuje výhody překladu protokolů a navíc umožňuje plnou správu podřízeného zařízení z cloudu. Všechna zařízení ve vašem řešení IoT se zobrazí v ioT hubu bez ohledu na protokol, který používají.
+Brána, která provádí překlad identity, nabízí výhody překladu protokolů a navíc umožňuje úplnou správu zařízení v cloudu. Všechna zařízení v řešení IoT se zobrazí v IoT Hub bez ohledu na protokol, který používají.
 
 ## <a name="cheat-sheet"></a>Tahák
 
-Tady je rychlý seznam, který porovnává primitiva služby IoT Hub při použití transparentních, neprůhledných (protokol) a proxy bran.
+Tady je rychlý tahák list, který porovnává IoT Hub primitivních elementů při použití transparentních, neprůhledných (protokolů) a proxy bran.
 
 | &nbsp; | Transparentní brána | Překlad protokolu | Překlad identity |
 |--------|-------------|--------|--------|
-| Identity uložené v registru identit služby IoT Hub | Identity všech připojených zařízení | Pouze identita zařízení brány | Identity všech připojených zařízení |
-| Dvojče zařízení | Každé připojené zařízení má své vlastní dvojče | Pouze brána má zařízení a dvojčata modulů | Každé připojené zařízení má své vlastní dvojče |
-| Přímé metody a zprávy mezi cloudy | Cloud může řešit každé připojené zařízení individuálně | Cloud může adresovat pouze zařízení brány | Cloud může řešit každé připojené zařízení individuálně |
-| [Omezení a kvóty centra IoT Hub](../iot-hub/iot-hub-devguide-quotas-throttling.md) | Platí pro každé zařízení | Použití na zařízení brány | Platí pro každé zařízení |
+| Identity uložené v registru IoT Hub identity | Identity všech připojených zařízení | Jenom identita zařízení brány | Identity všech připojených zařízení |
+| Dvojče zařízení | Každé připojené zařízení má vlastní zařízení. | Pouze brána má nevlákenná zařízení a moduly. | Každé připojené zařízení má vlastní zařízení. |
+| Přímé metody a zprávy z cloudu na zařízení | Cloud může adresovat každé připojené zařízení jednotlivě. | Cloud může adresovat jenom zařízení brány. | Cloud může adresovat každé připojené zařízení jednotlivě. |
+| [Omezení IoT Hub a kvóty](../iot-hub/iot-hub-devguide-quotas-throttling.md) | Použít pro každé zařízení | Použít na zařízení brány | Použít pro každé zařízení |
 
-Při použití vzoru neprůhledné brány (překlad protokolu) všechna zařízení, která se připojují prostřednictvím této brány, sdílejí stejnou frontu typu cloud zařízení, která může obsahovat maximálně 50 zpráv. Z toho vyplývá, že vzor neprůhledné brány by měl být používán pouze v případě, že se prostřednictvím každé brány pole připojuje jen málo zařízení a jejich provoz typu cloud zařízení je nízký.
+Při použití vzoru neprůhledné brány (překladu protokolu) všechna zařízení připojující přes tuto bránu sdílejí stejnou frontu typu cloud-zařízení, která může obsahovat maximálně 50 zpráv. Postupuje podle toho, že by se měl model neprůhledné brány použít jenom v případě, že se přes každou bránu pole připojuje několik zařízení a jejich provoz z cloudu na zařízení je nízký.
 
 ## <a name="next-steps"></a>Další kroky
 

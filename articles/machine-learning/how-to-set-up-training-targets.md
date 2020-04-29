@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.custom: seodec18
 ms.openlocfilehash: 4db00fd43095c44a88cc0aae40778ab5b4b751b0
-ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82137395"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Nastavení a použití výpočetních cílů pro školení modelů 

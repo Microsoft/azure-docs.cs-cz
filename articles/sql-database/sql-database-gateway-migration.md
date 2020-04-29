@@ -1,6 +1,6 @@
 ---
-title: Oznámení o migraci provozu brány
-description: Článek poskytuje uživatelům oznámení o migraci IP adres Azure SQL Database Gateways
+title: Upozornění migrace provozu brány
+description: Článek obsahuje oznámení uživatelům o migraci IP adres Azure SQL Database bran
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,21 +11,21 @@ ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
 ms.openlocfilehash: 9e3c33bb7493f07d9fbf19710f21d0114e7abec8
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80757062"
 ---
-# <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Migrace provozu databáze Azure SQL na novější brány
+# <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database migrace provozu na novější brány
 
-Jak se zlepšuje infrastruktura Azure, Microsoft bude pravidelně aktualizovat hardware, abychom zajistili, že poskytneme co nejlepší zákaznickou zkušenost. V nadcházejících měsících plánujeme přidat brány postavené na novějších generacích hardwaru, migrovat provoz na ně a nakonec vyřazení bran postavených na starším hardwaru v některých oblastech.  
+Díky tomu, že se infrastruktura Azure zlepšuje, Microsoft pravidelně aktualizuje hardware, aby bylo zajištěno, že budeme poskytovat nejlepší možné prostředí pro zákazníky. V nadcházejících měsících plánujeme přidat brány postavené na novějších generacích hardwaru, migrovat provoz na ně a nakonec vyřadit brány z provozu na starší hardware v některých oblastech.  
 
-Zákazníci budou upozorněni e-mailem a na webu Azure portal s hodně předstihem na jakékoli změny bran dostupných v každé oblasti. Nejaktuálnější informace budou udržovány v tabulce [IP adres brány Azure SQL Database.](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses)
+Zákazníci budou upozorňováni e-mailem a v Azure Portal předem o jakékoli změně bran, které jsou dostupné v jednotlivých oblastech. Nejaktuálnější informace se budou udržovat v tabulce [IP adres Azure SQL Database brány](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses) .
 
 ## <a name="impact-of-this-change"></a>Dopad této změny
 
-První kolo migrace provozu na novější brány je naplánováno na **14.**
+První kolo migrace provozu na novější brány se plánuje na **14. října 2019** v následujících oblastech:
 - Brazílie – jih
 - USA – západ
 - Západní Evropa
@@ -40,24 +40,24 @@ První kolo migrace provozu na novější brány je naplánováno na **14.**
 - USA – východ 2
 - Východní Asie
 
-Migrace provozu změní veřejnou IP adresu, kterou služba DNS řeší pro databázi SQL.
-Budete ovlivněni, pokud máte:
-- Pevný kód IP adresy pro konkrétní bránu v místní bráně firewall
-- Všechny podsítě používající Microsoft.SQL jako koncový bod služby, ale nemohou komunikovat s IP adresami brány
+Migrace provozu změní veřejnou IP adresu, kterou služba DNS pro váš SQL Database vyřeší.
+Bude to mít vliv, pokud máte následující:
+- Pevně zakóduje IP adresu pro konkrétní bránu v místní bráně firewall.
+- Všechny podsítě používající Microsoft. SQL jako koncový bod služby, ale nemůžou komunikovat s IP adresami brány.
 
-Nebudete mít vliv, pokud máte:
+Nebudete mít vliv na tyto akce:
 - Přesměrování jako zásady připojení
-- Připojení k databázi SQL z Azure a pomocí značek služeb
-- Připojení provedená pomocí podporovaných verzí ovladače JDBC pro sql server neuvidí žádný dopad. Podporované verze jdbc naleznete [v tématu Stažení ovladače Microsoft JDBC pro SQL Server](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server).
+- Připojení k SQL Database v rámci Azure a používání značek služeb
+- Připojení pomocí podporovaných verzí ovladače JDBC pro SQL Server se nijak neprojeví. Podporované verze JDBC najdete v tématu [Stažení ovladače Microsoft JDBC Driver for SQL Server](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server).
 
-## <a name="what-to-do-you-do-if-youre-affected"></a>Co dělat, když se vás to týká
+## <a name="what-to-do-you-do-if-youre-affected"></a>Co dělat, pokud jste to ovlivnili
 
-Doporučujeme povolit odchozí provoz na IP adresy pro všechny [IP adresy brány Azure SQL Database](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses) v oblasti na portu TCP 1433 a rozsah portů 11000-11999. Toto doporučení se vztahuje na klienty, kteří se připojují z místního prostředí, a také pro klienty, kteří se připojují prostřednictvím koncových bodů služby. Další informace o rozsahu portů naleznete v tématu [Zásady připojení](sql-database-connectivity-architecture.md#connection-policy).
+Doporučujeme, abyste povolili odchozí provoz na IP adresy pro všechny [IP adresy Azure SQL Database brány](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses) v oblasti na portu TCP 1433 a rozsahu portů 11000-11999. Toto doporučení se vztahuje na klienty připojující se z místního prostředí a také na ty, které se připojují prostřednictvím koncových bodů služby. Další informace o rozsahu portů najdete v tématu [zásady připojení](sql-database-connectivity-architecture.md#connection-policy).
 
-Připojení z aplikací používajících ovladač Microsoft JDBC pod verzí 4.0 mohou nemít ověřování certifikátů. Nižší verze jdbc společnosti Microsoft spoléhají na běžný název (CN) v poli Předmět certifikátu. Zmírnění je zajistit, že hostNameInCertificate vlastnost je nastavena na *.database.windows.net. Další informace o nastavení vlastnosti hostNameInCertificate naleznete v [tématu Připojení pomocí šifrování](/sql/connect/jdbc/connecting-with-ssl-encryption).
+Neúspěšné ověření certifikátu prostřednictvím připojení od aplikací pomocí ovladače Microsoft JDBC pod verzí 4,0. Nižší verze Microsoft JDBC spoléhají na běžný název (CN) v poli subjekt certifikátu. Zmírnění je zajistit, aby vlastnost hostNameInCertificate byla nastavena na hodnotu *. database.windows.net. Další informace o tom, jak nastavit vlastnost hostNameInCertificate, najdete v tématu [připojení pomocí šifrování](/sql/connect/jdbc/connecting-with-ssl-encryption).
 
-Pokud výše uvedené zmírnění nefunguje, soubor žádost o podporu pro databázi SQL pomocí následující adresy URL:https://aka.ms/getazuresupport
+Pokud výše uvedené omezení nefunguje, zažádejte si do souboru žádost o podporu pro SQL Database pomocí následující adresy URL:https://aka.ms/getazuresupport
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [architektuře azure sql připojení](sql-database-connectivity-architecture.md)
+- Přečtěte si další informace o [architektuře připojení Azure SQL](sql-database-connectivity-architecture.md) .

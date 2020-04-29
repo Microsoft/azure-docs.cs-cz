@@ -10,10 +10,10 @@ ms.author: cynthn
 ROBOTS: NOINDEX
 ms.custom: storage-accounts
 ms.openlocfilehash: 60b0a0f0d83b9b83c9cf8d530881508af591de59
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82099644"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Vytvoření virtuálního počítače ze specializovaného virtuálního pevného disku v účtu úložiště
@@ -179,7 +179,7 @@ Transfer failed:         0
 Elapsed time:            00.00:13:07
 ```
 
-### <a name="troubleshooting"></a>Poradce při potížích
+### <a name="troubleshooting"></a>Řešení potíží
 * Pokud se při použití AZCopy zobrazí chyba "Server selhal při ověření žádosti", ujistěte se, že je hodnota autorizační hlavičky správně vytvořená, včetně signatury. Pokud používáte klíč 2 nebo sekundární klíč úložiště, zkuste použít primární nebo první klíč úložiště.
 
 ## <a name="create-the-new-vm"></a>Vytvoření nového virtuálního počítače 

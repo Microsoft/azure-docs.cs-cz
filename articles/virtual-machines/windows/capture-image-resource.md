@@ -1,6 +1,6 @@
 ---
 title: Vytvoření spravované image v Azure
-description: Vytvořte spravovanou bitovou kopii generalizovaného virtuálního počítače nebo virtuálního pevného disku v Azure. Bitové kopie lze použít k vytvoření více virtuálních počítačů, které používají spravované disky.
+description: Vytvořte spravovanou image zobecněného virtuálního počítače nebo virtuálního pevného disku v Azure. Image lze použít k vytvoření více virtuálních počítačů, které používají spravované disky.
 author: cynthn
 ms.service: virtual-machines-windows
 ms.subservice: imaging
@@ -9,96 +9,96 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.openlocfilehash: 258bddec85e4ab182ff0b07c49cdc93f92264f95
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82084460"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Vytvoření spravované image generalizovaného virtuálního počítače v Azure
 
-Prostředek spravované image lze vytvořit ze zobecněného virtuálního počítače, který je uložen v účtu úložiště buď jako spravovaný disk, nebo jako nespravovaný disk. Z image je potom možné vytvořit více virtuálních počítačů. Informace o tom, jak se fakturují spravované bitové kopie, naleznete v [tématu Ceny spravovaných disků](https://azure.microsoft.com/pricing/details/managed-disks/). 
+Prostředek spravované image lze vytvořit ze zobecněného virtuálního počítače, který je uložen v účtu úložiště buď jako spravovaný disk, nebo jako nespravovaný disk. Z image je potom možné vytvořit více virtuálních počítačů. Informace o tom, jak se účtují spravované image, najdete v článku [Managed disks ceny](https://azure.microsoft.com/pricing/details/managed-disks/). 
 
  
 
 ## <a name="generalize-the-windows-vm-using-sysprep"></a>Generalizace virtuálního počítače s Windows pomocí nástroje Sysprep
 
-Program Sysprep odebere všechny osobní informace o účtu a zabezpečení a připraví počítač k použití jako bitová kopie. Informace o sysprepu naleznete v [přehledu sysprepu](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
+Nástroj Sysprep odebere všechny informace o vašem osobním účtu a zabezpečení a pak připraví počítač, který se má použít jako image. Informace o nástroji Sysprep najdete v tématu [Přehled nástroje Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 
-Ujistěte se, že role serveru spuštěné v počítači jsou podporovány programem Sysprep. Další informace naleznete v [tématu Podpora sysprep pro role serveru](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles) a [nepodporované scénáře](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios).
+Ujistěte se, že nástroj Sysprep podporuje role serveru spuštěné v počítači. Další informace najdete v tématu [Podpora nástroje Sysprep pro role serveru](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles) a [nepodporované scénáře](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios).
 
 > [!IMPORTANT]
-> Po spuštění sysprep u virtuálního počítače, že virtuální počítač je považován za *generalizované* a nelze restartovat. Proces generalizace virtuálního počítače je nevrtaný. Pokud potřebujete zachovat původní virtuální hod funguje, měli byste vytvořit [kopii virtuálního virtuálního soudu](create-vm-specialized.md#option-3-copy-an-existing-azure-vm) a zobecnit jeho kopii. 
+> Po spuštění příkazu Sysprep na virtuálním počítači je tento virtuální počítač považován za *zobecněný* a nelze jej restartovat. Proces generalizace virtuálního počítače je nevrtaný. Pokud potřebujete zachovat fungování původního virtuálního počítače, měli byste vytvořit [kopii virtuálního počítače](create-vm-specialized.md#option-3-copy-an-existing-azure-vm) a zobecnit jeho kopii. 
 >
-> Pokud plánujete spustit program Sysprep před prvním nahráním virtuálního pevného disku (VHD) do Azure, ujistěte se, že jste [připravili virtuální počítač](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).  
+> Pokud máte v úmyslu spustit nástroj Sysprep před prvním nahráním virtuálního pevného disku (VHD) do Azure, ujistěte se, že jste [připravili virtuální počítač](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).  
 > 
 > 
 
-Chcete-li virtuální počítač s Windows zobecnit, postupujte takto:
+K generalizaci virtuálního počítače s Windows použijte následující postup:
 
-1. Přihlaste se k virtuálnímu počítači s Windows.
+1. Přihlaste se k VIRTUÁLNÍmu počítači s Windows.
    
-2. Otevřete okno příkazového řádku jako správce. Změňte adresář na %windir%\system32\sysprep `sysprep.exe`a spusťte program .
+2. Otevřete okno příkazového řádku jako správce. Změňte adresář na%WINDIR%\system32\sysprep a potom spusťte příkaz `sysprep.exe`.
    
-3. V dialogovém okně **Nástroj pro přípravu systému** vyberte **Možnost zadat prostředí mimo systém (OOBE)** a zaškrtněte políčko **Generalizovat.**
+3. V dialogovém okně **Nástroj pro přípravu systému** vyberte možnost **Zadejte systém do prostředí při spuštění** a zaškrtněte políčko **generalizace** .
    
-4. V **části Možnosti vypnutí**vyberte příkaz **Vypnout**.
+4. V **Možnosti vypnutí**vyberte **vypnout**.
    
 5. Vyberte **OK**.
    
-    ![Spuštění sysprepu](./media/upload-generalized-managed/sysprepgeneral.png)
+    ![Spustit nástroj Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
 
-6. Po dokončení sysprep, vypne virtuální ho. Virtuální počítač nerestartujte.
+6. Po dokončení programu Sysprep se virtuální počítač vypne. Virtuální počítač nerestartujte.
 
 > [!TIP]
-> **Nepovinné** Pomocí [DISM](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-optimize-image-command-line-options) můžete optimalizovat image a zkrátit dobu prvního spuštění virtuálního počítače.
+> **Volitelné** Pomocí [nástroje DISM](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-optimize-image-command-line-options) optimalizujte svou image a snižte čas prvního spuštění virtuálního počítače.
 >
-> Chcete-li optimalizovat bitovou kopii, připojte virtuální pevný disk poklepáním na `/optimize-image` něj v průzkumníku Windows a pak spusťte DISM s parametrem.
+> Pokud chcete image optimalizovat, připojte virtuální pevný disk tak, že na něj dvakrát kliknete v Průzkumníkovi Windows, a pak spusťte `/optimize-image` DISM s parametrem.
 >
 > ```cmd
 > DISM /image:D:\ /optimize-image /boot
 > ```
-> Kde D: je připojená cesta VHD.
+> Kde D: je cesta připojeného virtuálního pevného disku.
 >
-> Spuštění `DISM /optimize-image` by mělo být poslední změnou, kterou provedete v pevném disku. Pokud před nasazením provedete nějaké změny v virtuálním `DISM /optimize-image` pevném disku, budete muset znovu spustit.
+> `DISM /optimize-image` Mělo by se jednat o poslední změnu, kterou provedete na virtuální pevný disk. Pokud provedete jakékoli změny VHD před nasazením, budete muset znovu spustit `DISM /optimize-image` .
 
-## <a name="create-a-managed-image-in-the-portal"></a>Vytvoření spravované bitové kopie na portálu 
+## <a name="create-a-managed-image-in-the-portal"></a>Vytvoření spravované image na portálu 
 
-1. Přejděte na [portál Azure](https://portal.azure.com) a spravujte image virtuálního počítače. Vyhledejte a vyberte **virtuální počítače**.
+1. Pokud chcete spravovat image virtuálního počítače, otevřete [Azure Portal](https://portal.azure.com) . Vyhledejte a vyberte **virtuální počítače**.
 
-2. Vyberte virtuální počítač ze seznamu.
+2. Ze seznamu vyberte svůj virtuální počítač.
 
-3. Na stránce **Virtuální počítač** pro virtuální počítač v horní nabídce vyberte **Zachytit**.
+3. Na stránce **virtuálního počítače** pro virtuální počítač v horní nabídce vyberte **zachytit**.
 
-   Zobrazí se stránka **Vytvořit obrázek.**
+   Zobrazí se stránka **vytvořit obrázek** .
 
-4. V **pojmenujete název**, přijměte předem vyplněný název nebo zadejte název, který chcete pro bitovou kopii použít.
+4. V poli **název**buď přijměte předem vyplněný název, nebo zadejte název, který chcete použít pro obrázek.
 
-5. Ve **skupině Prostředků**vyberte buď možnost Vytvořit **nový** a zadejte název, nebo vyberte skupinu prostředků, kterou chcete použít z rozevíracího seznamu.
+5. V části **Skupina prostředků**vyberte **vytvořit novou** a zadejte název nebo vyberte skupinu prostředků, kterou chcete použít v rozevíracím seznamu.
 
-6. Pokud chcete odstranit zdrojový virtuální počítač po vytvoření bitové kopie, vyberte **Automaticky odstranit tento virtuální počítač po vytvoření bitové kopie**.
+6. Pokud chcete odstranit zdrojový virtuální počítač po vytvoření image, po vytvoření image vyberte **automaticky odstranit tento virtuální počítač**.
 
-7. Pokud chcete, aby bylo co vidět v libovolné [zóně dostupnosti](../../availability-zones/az-overview.md), vyberte **možnost Zapnuto** pro **odolnost zóny**.
+7. Pokud chcete, aby se image používala v libovolné [zóně dostupnosti](../../availability-zones/az-overview.md), vyberte možnost **zapnuto** pro zajištění **odolnosti zóny**.
 
-8. Vyberte **Vytvořit,** chcete-li vytvořit obraz.
+8. Vyberte **vytvořit** a vytvořte bitovou kopii.
 
-Po vytvoření obrázku ji můžete najít jako prostředek **obrázku** v seznamu prostředků ve skupině prostředků.
+Po vytvoření image je možné ji v seznamu prostředků ve skupině prostředků najít jako prostředek **obrázku** .
 
 
 
-## <a name="create-an-image-of-a-vm-using-powershell"></a>Vytvoření image virtuálního virtuálního virtuálního aplikace pomocí Powershellu
+## <a name="create-an-image-of-a-vm-using-powershell"></a>Vytvoření image virtuálního počítače pomocí PowerShellu
 
  
 
-Vytvoření image přímo z virtuálního počítače zajišťuje, že image zahrnuje všechny disky přidružené k virtuálnímu počítače, včetně disku operačního systému a všechny datové disky. Tento příklad ukazuje, jak vytvořit spravovanou bitovou kopii z virtuálního počítače, který používá spravované disky.
+Když vytvoříte image přímo z virtuálního počítače, zajistíte tím, že bitová kopie zahrnuje všechny disky přidružené k virtuálnímu počítači, včetně disku s operačním systémem a všech datových disků. Tento příklad ukazuje, jak vytvořit spravovanou bitovou kopii z virtuálního počítače, který používá spravované disky.
 
-Než začnete, ujistěte se, že máte nejnovější verzi modulu Azure PowerShell. Chcete-li najít `Get-Module -ListAvailable Az` verzi, spusťte v PowerShellu. Pokud potřebujete upgradovat, [přečtěte si tématu Instalace Azure PowerShellu v systému Windows pomocí PowerShellu .](/powershell/azure/install-az-ps) Pokud používáte PowerShell místně, `Connect-AzAccount` spusťte a vytvořte připojení s Azure.
+Než začnete, ujistěte se, že máte nejnovější verzi modulu Azure PowerShell. Pokud chcete zjistit verzi, spusťte `Get-Module -ListAvailable Az` v PowerShellu. Pokud potřebujete provést upgrade, přečtěte si téma [instalace Azure PowerShell ve Windows pomocí PowerShellGet](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, spusťte příkaz `Connect-AzAccount` a vytvořte připojení k Azure.
 
 
 > [!NOTE]
-> Pokud chcete uložit bitovou kopii do zónově redundantního úložiště, musíte ji vytvořit `-ZoneResilient` v oblasti,`New-AzImageConfig` která podporuje [zóny dostupnosti](../../availability-zones/az-overview.md) a zahrnout parametr do konfigurace bitové kopie ( příkaz).
+> Pokud chcete uložit image do redundantního úložiště zóny, je potřeba ji vytvořit v oblasti, která podporuje [zóny dostupnosti](../../availability-zones/az-overview.md) , a zahrnout `-ZoneResilient` parametr do konfigurace Image (`New-AzImageConfig` příkaz).
 
-Pokud chcete vytvořit image virtuálního virtuálního montovana, postupujte takto:
+K vytvoření image virtuálního počítače použijte tento postup:
 
 1. Vytvořte některé proměnné.
 
@@ -108,13 +108,13 @@ Pokud chcete vytvořit image virtuálního virtuálního montovana, postupujte t
     $location = "EastUS"
     $imageName = "myImage"
     ```
-2. Ujistěte se, že virtuální město bylo navráceno.
+2. Ujistěte se, že byl virtuální počítač uvolněný.
 
     ```azurepowershell-interactive
     Stop-AzVM -ResourceGroupName $rgName -Name $vmName -Force
     ```
     
-3. Nastavte stav virtuálního počítače na **Generalized**. 
+3. Nastavte stav virtuálního počítače na **zobecněno**. 
    
     ```azurepowershell-interactive
     Set-AzVm -ResourceGroupName $rgName -Name $vmName -Generalized
@@ -137,9 +137,9 @@ Pokud chcete vytvořit image virtuálního virtuálního montovana, postupujte t
     New-AzImage -Image $image -ImageName $imageName -ResourceGroupName $rgName
     ``` 
 
-## <a name="create-an-image-from-a-managed-disk-using-powershell"></a>Vytvoření bitové kopie ze spravovaného disku pomocí Prostředí PowerShell
+## <a name="create-an-image-from-a-managed-disk-using-powershell"></a>Vytvoření image ze spravovaného disku pomocí PowerShellu
 
-Pokud chcete vytvořit bitovou kopii pouze disku operačního systému, zadejte ID spravovaného disku jako disk operačního systému:
+Pokud chcete vytvořit image jenom disku s operačním systémem, zadejte ID spravovaného disku jako disk s operačním systémem:
 
     
 1. Vytvořte některé proměnné. 
@@ -151,7 +151,7 @@ Pokud chcete vytvořit bitovou kopii pouze disku operačního systému, zadejte 
     $imageName = "myImage"
     ```
 
-2. Získejte virtuální hod.
+2. Získejte virtuální počítač.
 
    ```azurepowershell-interactive
    $vm = Get-AzVm -Name $vmName -ResourceGroupName $rgName
@@ -177,9 +177,9 @@ Pokud chcete vytvořit bitovou kopii pouze disku operačního systému, zadejte 
     ``` 
 
 
-## <a name="create-an-image-from-a-snapshot-using-powershell"></a>Vytvoření obrázku ze snímku pomocí Powershellu
+## <a name="create-an-image-from-a-snapshot-using-powershell"></a>Vytvoření obrázku ze snímku pomocí PowerShellu
 
-Spravanou bitovou kopii můžete vytvořit ze snímku generalizovaného virtuálního počítače takto:
+Spravovanou bitovou kopii můžete vytvořit ze snímku generalizované virtuální počítače pomocí následujících kroků:
 
     
 1. Vytvořte některé proměnné. 
@@ -210,9 +210,9 @@ Spravanou bitovou kopii můžete vytvořit ze snímku generalizovaného virtuál
     ``` 
 
 
-## <a name="create-an-image-from-a-vm-that-uses-a-storage-account"></a>Vytvoření image z virtuálního zařízení, který používá účet úložiště
+## <a name="create-an-image-from-a-vm-that-uses-a-storage-account"></a>Vytvoření image z virtuálního počítače, který používá účet úložiště
 
-Chcete-li vytvořit spravovanou bitovou kopii z virtuálního počítače, který nepoužívá spravované disky, potřebujete identifikátor URI operačního virtuálního počítače v účtu úložiště v následujícím formátu: https://*mystorageaccount*.blob.core.windows.net/*vhdcontainer*/*vhdfilename.vhd*. V tomto příkladu je virtuální pevný disk v *účtu mystorageaccount*, v kontejneru s názvem *vhdcontainer*a název souboru VHD je *vhdfilename.vhd*.
+Pokud chcete vytvořit spravovanou image z virtuálního počítače, který nepoužívá spravované disky, budete potřebovat identifikátor URI virtuálního pevného disku s operačním systémem v účtu úložiště, a to v následujícím formátu: https://*mystorageaccount*. blob.Core.Windows.NET/*vhdcontainer*/*vhdfilename. VHD*. V tomto příkladu je virtuální pevný disk v *mystorageaccount*, v kontejneru s názvem *vhdcontainer*a název souboru VHD je *vhdfilename. VHD*.
 
 
 1.  Vytvořte některé proměnné.
@@ -224,18 +224,18 @@ Chcete-li vytvořit spravovanou bitovou kopii z virtuálního počítače, kter�
     $imageName = "myImage"
     $osVhdUri = "https://mystorageaccount.blob.core.windows.net/vhdcontainer/vhdfilename.vhd"
     ```
-2. Zastavit/navrátit virtuální ho.
+2. Zastavte nebo zrušte přidělení virtuálního počítače.
 
     ```azurepowershell-interactive
     Stop-AzVM -ResourceGroupName $rgName -Name $vmName -Force
     ```
     
-3. Označte virtuální ho jako zobecněný.
+3. Označte virtuální počítač jako zobecněný.
 
     ```azurepowershell-interactive
     Set-AzVm -ResourceGroupName $rgName -Name $vmName -Generalized  
     ```
-4.  Vytvořte obrázek pomocí generalizovaného virtuálního pevného disku operačního systému.
+4.  Vytvořte bitovou kopii pomocí zobecněného virtuálního pevného disku s operačním systémem.
 
     ```azurepowershell-interactive
     $imageConfig = New-AzImageConfig -Location $location
@@ -245,5 +245,5 @@ Chcete-li vytvořit spravovanou bitovou kopii z virtuálního počítače, kter�
 
     
 ## <a name="next-steps"></a>Další kroky
-- [Vytvořte virtuální hod ze spravované bitové kopie](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).    
+- [Vytvořte virtuální počítač ze spravované image](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).    
 

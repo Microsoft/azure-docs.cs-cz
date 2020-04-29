@@ -1,42 +1,42 @@
 ---
-title: Instalace stávajících aplikací s helmem v AKS
-description: Zjistěte, jak pomocí balicího nástroje Helm nasadit kontejnery v clusteru Služby Azure Kubernetes (AKS)
+title: Instalace existujících aplikací pomocí Helm v AKS
+description: Naučte se používat nástroj pro vytváření balíčků Helm k nasazení kontejnerů v clusteru Azure Kubernetes Service (AKS).
 services: container-service
 author: zr-msft
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: zarhoads
 ms.openlocfilehash: e46bed5fc9fd83a907f8c9e716317a54548c58cc
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81870258"
 ---
-# <a name="install-existing-applications-with-helm-in-azure-kubernetes-service-aks"></a>Instalace stávajících aplikací pomocí helmu ve službě Azure Kubernetes Service (AKS)
+# <a name="install-existing-applications-with-helm-in-azure-kubernetes-service-aks"></a>Instalace stávajících aplikací pomocí Helm ve službě Azure Kubernetes (AKS)
 
-[Helm][helm] je open source obalový nástroj, který vám pomůže nainstalovat a spravovat životní cyklus aplikací Kubernetes. Podobně jako u linuxových správců balíčků, jako jsou *APT* a *Yum*, se Helm používá ke správě Kubernetesových grafů, což jsou balíčky předkonfigurovaných kubernetesových zdrojů.
+[Helm][helm] je open source nástroj pro balení, který vám pomůže s instalací a správou životního cyklu aplikací Kubernetes. Podobně jako správci balíčků pro Linux, jako je *apt* a *Yumu*, se Helm používá ke správě Kubernetes grafů, což jsou balíčky předkonfigurovaných prostředků Kubernetes.
 
-Tento článek ukazuje, jak nakonfigurovat a používat Helm v clusteru Kubernetes na AKS.
+V tomto článku se dozvíte, jak nakonfigurovat a používat Helm v clusteru Kubernetes v AKS.
 
 ## <a name="before-you-begin"></a>Před zahájením
 
-Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, podívejte se na aks rychlý start [pomocí Azure CLI][aks-quickstart-cli] nebo [pomocí portálu Azure][aks-quickstart-portal].
+V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
-Potřebujete také nainstalován helm CLI, což je klient, který běží na vašem vývojovém systému. To vám umožní spustit, zastavit a spravovat aplikace s Helm. Pokud používáte Prostředí Cloud Shell Azure, helm CLI je již nainstalován. Pokyny k instalaci na místní platformě naleznete [v tématu Instalace helmu][helm-install].
+Je také potřeba nainstalovat rozhraní příkazového řádku Helm, což je klient, který běží ve vašem vývojovém systému. Umožňuje spouštět, zastavovat a spravovat aplikace pomocí Helm. Pokud použijete Azure Cloud Shell, rozhraní příkazového řádku Helm je již nainstalováno. Pokyny k instalaci na místní platformě najdete v tématu [instalace Helm][helm-install].
 
 > [!IMPORTANT]
-> Helm je určen ke spuštění na linuxových uzlech. Pokud máte v clusteru uzly Windows Server, musíte zajistit, aby pody Helm byly naplánované pouze na linuxové uzly. Musíte také zajistit, že všechny helm grafy, které nainstalujete, jsou také naplánovány ke spuštění na správných uzlech. Příkazy v tomto článku používají [voliče uzlů][k8s-node-selector] k ujistěte se, že pody jsou naplánovány na správné uzly, ale ne všechny grafy Helm může vystavit voliče uzlů. Můžete také zvážit použití dalších možností v clusteru, například [počitadla][taints].
+> Helm je určený ke spuštění na uzlech systému Linux. Pokud máte v clusteru uzly Windows serveru, musíte zajistit, aby Helm lusky běžely jenom na uzlech se systémem Linux. Také je potřeba zajistit, aby všechny Helm grafy, které nainstalujete, běžely taky na správných uzlech. V příkazech v tomto článku se používají selektory [uzlů][k8s-node-selector] k tomu, aby byly lusky naplánovány na správné uzly, ale ne všechny Helm grafy mohou vystavit selektor uzlů. Můžete také zvážit použití dalších možností v clusteru, například [chuti][taints].
 
-## <a name="verify-your-version-of-helm"></a>Ověření verze helmu
+## <a name="verify-your-version-of-helm"></a>Ověření verze Helm
 
-Pomocí `helm version` příkazu ověřte nainstalovanou verzi helmy:
+Pomocí `helm version` příkazu ověřte nainstalovanou verzi Helm:
 
 ```console
 helm version
 ```
 
-Následující příklad ukazuje helm verze 3.0.0 nainstalován:
+Následující příklad ukazuje nainstalovanou verzi Helm 3.0.0:
 
 ```console
 $ helm version
@@ -44,27 +44,27 @@ $ helm version
 version.BuildInfo{Version:"v3.0.0", GitCommit:"e29ce2a54e96cd02ccfce88bee4f58bb6e2a28b6", GitTreeState:"clean", GoVersion:"go1.13.4"}
 ```
 
-Helm v3 postupujte podle pokynů v [části Helm v3](#install-an-application-with-helm-v3). Helm v2 provede težcí v [části Helm v2.](#install-an-application-with-helm-v2)
+V případě Helm V3 postupujte podle pokynů v [části Helm V3](#install-an-application-with-helm-v3). V případě Helm v2 postupujte podle pokynů v [části Helm v2](#install-an-application-with-helm-v2) .
 
-## <a name="install-an-application-with-helm-v3"></a>Instalace aplikace s Helm em3
+## <a name="install-an-application-with-helm-v3"></a>Instalace aplikace pomocí Helm V3
 
-### <a name="add-the-official-helm-stable-charts-repository"></a>Přidejte oficiální úložiště stabilních grafů Helm
+### <a name="add-the-official-helm-stable-charts-repository"></a>Přidat oficiální úložiště stabilních grafů Helm
 
-Pomocí příkazu [repo kormidla][helm-repo-add] přidejte oficiální úložiště stabilních grafů Helm.
+Pomocí příkazu [Helm úložiště][helm-repo-add] přidejte oficiální úložiště Helm pro stabilní grafy.
 
 ```console
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 ```
 
-### <a name="find-helm-charts"></a>Najít grafy helmu
+### <a name="find-helm-charts"></a>Hledání Helm grafů
 
-Grafy soustružníků se používají k nasazení aplikací do clusteru Kubernetes. Chcete-li vyhledat předem vytvořené grafy helmu, použijte příkaz [hledání kormidla:][helm-search]
+Grafy Helm slouží k nasazování aplikací do clusteru Kubernetes. K vyhledání předem vytvořených grafů Helm použijte příkaz [Helm Search][helm-search] :
 
 ```console
 helm search repo stable
 ```
 
-Následující kondenzovaný příklad výstupu ukazuje některé grafy Helm k dispozici pro použití:
+Následující zhuštěný příklad výstupu ukazuje některé z Helm grafů dostupných pro použití:
 
 
 ```console
@@ -114,7 +114,7 @@ stable/datadog                          1.38.3          6.14.0                  
 ...
 ```
 
-Chcete-li aktualizovat seznam grafů, použijte příkaz [aktualizace repo kormidel.][helm-repo-update] Následující příklad ukazuje úspěšnou aktualizaci opětovného poto:
+Chcete-li aktualizovat seznam grafů, použijte příkaz [Helm úložiště Update][helm-repo-update] . Následující příklad ukazuje úspěšnou aktualizaci úložiště:
 
 ```console
 $ helm repo update
@@ -124,9 +124,9 @@ Hang tight while we grab the latest from your chart repositories...
 Update Complete. ⎈ Happy Helming!⎈
 ```
 
-### <a name="run-helm-charts"></a>Spuštění grafů kormidelníka
+### <a name="run-helm-charts"></a>Spuštění Helm grafů
 
-Chcete-li nainstalovat grafy pomocí helmu, použijte příkaz [helm install][helm-install-command] a zadejte název verze a název grafu, který chcete nainstalovat. Chcete-li zobrazit instalaci grafu Helm v akci, nainstalujte základní nasazení nginx pomocí grafu Helm.
+Pokud chcete grafy nainstalovat pomocí Helm, použijte příkaz pro [instalaci Helm][helm-install-command] a zadejte název verze a název grafu, který chcete nainstalovat. Pokud chcete vidět, jak se v akci nainstaluje graf Helm, nainstalujte základní nasazení Nginx pomocí grafu Helm.
 
 ```console
 helm install my-nginx-ingress stable/nginx-ingress \
@@ -134,7 +134,7 @@ helm install my-nginx-ingress stable/nginx-ingress \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-Následující zhuštěný příklad výstupu ukazuje stav nasazení prostředků Kubernetes vytvořených grafem Helm:
+Následující zhuštěný příklad výstupu ukazuje stav nasazení prostředků Kubernetes vytvořených pomocí grafu Helm:
 
 ```console
 $ helm install my-nginx-ingress stable/nginx-ingress \
@@ -154,7 +154,7 @@ You can watch the status by running 'kubectl --namespace default get services -o
 ...
 ```
 
-Pomocí `kubectl get services` příkazu získáte *externí IP* adresu vaší služby. Například níže uvedený příkaz zobrazuje *EXTERNÍ IP* pro službu *my-nginx-ingress-controller:*
+Pomocí `kubectl get services` příkazu Získejte *externí IP adresu* vaší služby. Například následující příkaz zobrazuje *externí IP adresu* pro službu *My-Nginx-invstupní-Controller* :
 
 ```console
 $ kubectl --namespace default get services -o wide -w my-nginx-ingress-controller
@@ -163,15 +163,15 @@ NAME                          TYPE           CLUSTER-IP     EXTERNAL-IP     PORT
 my-nginx-ingress-controller   LoadBalancer   10.0.123.1     <EXTERNAL-IP>   80:31301/TCP,443:31623/TCP   96s   app=nginx-ingress,component=controller,release=my-nginx-ingress
 ```
 
-### <a name="list-releases"></a>Seznam vydání
+### <a name="list-releases"></a>Vypsat vydané verze
 
-Chcete-li zobrazit seznam verzí nainstalovaných v `helm list` clusteru, použijte příkaz.
+Pokud chcete zobrazit seznam verzí nainstalovaných v clusteru, použijte `helm list` příkaz.
 
 ```console
 helm list
 ```
 
-Následující příklad ukazuje verzi *my-nginx-ingress* nasazenou v předchozím kroku:
+Následující příklad ukazuje verzi *My-Nginx-* nasazenou v předchozím kroku:
 
 ```console
 $ helm list
@@ -182,13 +182,13 @@ my-nginx-ingress    default     1           2019-11-22 10:08:06.048477 -0600 CST
 
 ### <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Při nasazení grafu Helm se vytvoří několik prostředků Kubernetes. Tyto prostředky zahrnují pody, nasazení a služby. Chcete-li tyto prostředky vyčistit, použijte příkaz [odinstalace kormidla][helm-cleanup] a `helm list` zadejte název verze, jak je uvedeno v předchozím příkazu.
+Když nasadíte graf Helm, vytvoří se několik prostředků Kubernetes. Mezi tyto prostředky patří lusky, nasazení a služby. K vyčištění těchto prostředků použijte příkaz pro [odinstalaci Helm][helm-cleanup] a zadejte název vydané verze, jak je uvedeno v předchozím `helm list` příkazu.
 
 ```console
 helm uninstall my-nginx-ingress
 ```
 
-Následující příklad ukazuje, že verze s názvem *my-nginx-ingress* byla odinstalována:
+Následující příklad ukazuje verzi s názvem *My-Nginx-* příchozí byla odinstalována:
 
 ```console
 $ helm uninstall my-nginx-ingress
@@ -196,13 +196,13 @@ $ helm uninstall my-nginx-ingress
 release "my-nginx-ingress" uninstalled
 ```
 
-## <a name="install-an-application-with-helm-v2"></a>Instalace aplikace s Helm em 2
+## <a name="install-an-application-with-helm-v2"></a>Instalace aplikace pomocí Helm v2
 
 ### <a name="create-a-service-account"></a>Vytvoření účtu služby
 
-Před nasazením helmu v clusteru AKS s podporou RBAC potřebujete účet služby a vazbu role pro službu Tiller. Další informace o zabezpečení helmu / kultivátoru v clusteru s podporou RBAC naleznete v [tématech Tiller, Namespaces a RBAC][tiller-rbac]. Pokud váš cluster AKS není povolen RBAC, tento krok přeskočte.
+Než budete moct nasadit Helm v clusteru AKS s povoleným RBAC, budete potřebovat účet služby a vazbu role pro službu do služby. Další informace o zabezpečení Helm/v případě, že je v clusteru s povoleným RBAC, najdete v tématech předané [, obory názvů a RBAC][tiller-rbac]. Pokud váš cluster AKS není RBAC povolený, přeskočte tento krok.
 
-Vytvořte soubor `helm-rbac.yaml` s názvem a zkopírujte v následujícím yaml:
+Vytvořte soubor s názvem `helm-rbac.yaml` a zkopírujte ho do následujícího YAML:
 
 ```yaml
 apiVersion: v1
@@ -225,29 +225,29 @@ subjects:
     namespace: kube-system
 ```
 
-Vytvořte účet služby a `kubectl apply` vazbu role pomocí příkazu:
+Vytvořte účet služby a vazbu role pomocí `kubectl apply` příkazu:
 
 ```console
 kubectl apply -f helm-rbac.yaml
 ```
 
-### <a name="secure-tiller-and-helm"></a>Bezpečná kultivátor a helm
+### <a name="secure-tiller-and-helm"></a>Zabezpečení a Helm
 
-Klient helma a tiller služba ověřit a komunikovat mezi sebou pomocí TLS/SSL. Tato metoda ověřování pomáhá zabezpečit cluster Kubernetes a jaké služby lze nasadit. Chcete-li zlepšit zabezpečení, můžete vygenerovat vlastní podepsané certifikáty. Každý uživatel helmu by obdržel svůj vlastní klientský certifikát a Tiller by byl inicializován v clusteru Kubernetes s použitými certifikáty. Další informace naleznete [v tématu Použití TLS/SSL mezi helmou a kultivátorem][helm2-ssl].
+Klient Helm a služba přenáší služby a navzájem komunikují pomocí protokolu TLS/SSL. Tato metoda ověřování pomáhá zabezpečit cluster Kubernetes a které služby lze nasadit. Pro zvýšení zabezpečení můžete vygenerovat vlastní podepsané certifikáty. Každý Helm uživatel obdrží svůj vlastní certifikát klienta a v clusteru Kubernetes by se inicializoval, že se použily certifikáty. Další informace najdete v tématu [používání protokolu TLS/SSL mezi Helm a pokladnou][helm2-ssl].
 
-Pomocí clusteru Kubernetes s podporou RBAC můžete řídit úroveň přístupu, kterou má Tiller ke clusteru. Můžete definovat obor názvů Kubernetes, ve které je Tiller nasazen, a omezit, v jakých oborech názvů může tiller nasadit prostředky. Tento přístup umožňuje vytvářet instance Tiller v různých oborech názvů a omezit hranice nasazení a obor uživatelů klienta Helm na určité obory názvů. Další informace naleznete v [tématu Helm ovládací prvky přístupu založené na rolích][helm2-rbac].
+S clusterem Kubernetes s povolenou RBAC můžete řídit úroveň přístupu, který má cluster k dispozici. Můžete definovat obor názvů Kubernetes, v němž je nasazený, a omezit, které obory názvů můžou nasadit prostředky v. Tento přístup umožňuje vytvořit instance v různých oborech názvů a omezit hranice nasazení a určit obor uživatelů klienta Helm na určité obory názvů. Další informace najdete v tématu [Helm řízení přístupu na základě rolí][helm2-rbac].
 
-### <a name="configure-helm"></a>Konfigurace kormidla
+### <a name="configure-helm"></a>Konfigurace Helm
 
-Chcete-li nasadit základní kultivátor do clusteru AKS, použijte příkaz [helm init.][helm2-init] Pokud váš cluster není povolen RBAC, odeberte `--service-account` argument a hodnotu. Následující příklady také nastavit [historie max][helm2-history-max] na 200.
+K nasazení základní pokladny do clusteru AKS použijte příkaz [Helm init][helm2-init] . Pokud váš cluster nemá povolené RBAC, odeberte `--service-account` argument a hodnotu. V následujících příkladech je také možné nastavit [historii-Max][helm2-history-max] na 200.
 
-Pokud jste nakonfigurovali TLS/SSL pro tiller a helm, `--tiller-tls-` přeskočte tento základní krok inicializace a místo toho zadejte požadované, jak je znázorněno v následujícím příkladu.
+Pokud jste nakonfigurovali protokol TLS/SSL pro předané a Helm, přeskočte tento krok základní inicializace a místo `--tiller-tls-` toho zadejte požadované, jak je znázorněno v následujícím příkladu.
 
 ```console
 helm init --history-max 200 --service-account tiller --node-selectors "beta.kubernetes.io/os=linux"
 ```
 
-Pokud jste nakonfigurovali TLS/SSL `--tiller-tls-*` mezi Helm a Tiller poskytují parametry a názvy vlastních certifikátů, jak je znázorněno v následujícím příkladu:
+Pokud jste nakonfigurovali protokol TLS/SSL mezi Helm a do `--tiller-tls-*` pokladny, zadejte parametry a názvy vašich vlastních certifikátů, jak je znázorněno v následujícím příkladu:
 
 ```console
 helm init \
@@ -261,15 +261,15 @@ helm init \
     --node-selectors "beta.kubernetes.io/os=linux"
 ```
 
-### <a name="find-helm-charts"></a>Najít grafy helmu
+### <a name="find-helm-charts"></a>Hledání Helm grafů
 
-Grafy soustružníků se používají k nasazení aplikací do clusteru Kubernetes. Chcete-li vyhledat předem vytvořené grafy helmu, použijte příkaz [hledání kormidla:][helm2-search]
+Grafy Helm slouží k nasazování aplikací do clusteru Kubernetes. K vyhledání předem vytvořených grafů Helm použijte příkaz [Helm Search][helm2-search] :
 
 ```console
 helm search
 ```
 
-Následující kondenzovaný příklad výstupu ukazuje některé grafy Helm k dispozici pro použití:
+Následující zhuštěný příklad výstupu ukazuje některé z Helm grafů dostupných pro použití:
 
 ```
 $ helm search
@@ -304,7 +304,7 @@ stable/datadog                 0.18.0           6.3.0        DataDog Agent
 ...
 ```
 
-Chcete-li aktualizovat seznam grafů, použijte příkaz [aktualizace repo kormidel.][helm2-repo-update] Následující příklad ukazuje úspěšnou aktualizaci opětovného poto:
+Chcete-li aktualizovat seznam grafů, použijte příkaz [Helm úložiště Update][helm2-repo-update] . Následující příklad ukazuje úspěšnou aktualizaci úložiště:
 
 ```console
 $ helm repo update
@@ -315,9 +315,9 @@ Hold tight while we grab the latest from your chart repositories...
 Update Complete.
 ```
 
-### <a name="run-helm-charts"></a>Spuštění grafů kormidelníka
+### <a name="run-helm-charts"></a>Spuštění Helm grafů
 
-Chcete-li nainstalovat grafy pomocí helmu, použijte příkaz [instalace kormidla][helm2-install-command] a zadejte název grafu, který chcete nainstalovat. Chcete-li zobrazit instalaci grafu Helm v akci, nainstalujte základní nasazení nginx pomocí grafu Helm. Pokud jste nakonfigurovali TLS/SSL, přidejte `--tls` parametr pro použití klientského certifikátu Helm.
+Pokud chcete grafy nainstalovat pomocí Helm, použijte příkaz pro [instalaci Helm][helm2-install-command] a zadejte název grafu, který chcete nainstalovat. Pokud chcete vidět, jak se v akci nainstaluje graf Helm, nainstalujte základní nasazení Nginx pomocí grafu Helm. Pokud jste nakonfigurovali protokol TLS/SSL, `--tls` přidejte parametr pro použití certifikátu klienta Helm.
 
 ```console
 helm install stable/nginx-ingress \
@@ -325,7 +325,7 @@ helm install stable/nginx-ingress \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-Následující zhuštěný příklad výstupu ukazuje stav nasazení prostředků Kubernetes vytvořených grafem Helm:
+Následující zhuštěný příklad výstupu ukazuje stav nasazení prostředků Kubernetes vytvořených pomocí grafu Helm:
 
 ```
 $ helm install stable/nginx-ingress --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
@@ -352,11 +352,11 @@ flailing-alpaca-nginx-ingress-default-backend  ClusterIP     10.0.44.97  <none> 
 ...
 ```
 
-Trvá minutu nebo dvě pro *external-IP* adresu nginx-ingress-controller služby, které mají být naplněny a umožňují přístup k ní pomocí webového prohlížeče.
+Vyplní jednu minutu nebo dvě adresu *externí IP* adresy služby Nginx-The-Controller a umožní vám k ní přístup pomocí webového prohlížeče.
 
-### <a name="list-helm-releases"></a>Seznam vydání helmu
+### <a name="list-helm-releases"></a>Výpis verzí Helm
 
-Chcete-li zobrazit seznam verzí nainstalovaných v clusteru, použijte příkaz [kormidelník.][helm2-list] Následující příklad ukazuje nginx-ingress verze nasazená v předchozím kroku. Pokud jste nakonfigurovali TLS/SSL, přidejte `--tls` parametr pro použití klientského certifikátu Helm.
+Pokud chcete zobrazit seznam verzí nainstalovaných v clusteru, použijte příkaz [Helm list][helm2-list] . Následující příklad ukazuje Nginx verzi nasazenou v předchozím kroku. Pokud jste nakonfigurovali protokol TLS/SSL, `--tls` přidejte parametr pro použití certifikátu klienta Helm.
 
 ```console
 $ helm list
@@ -367,7 +367,7 @@ flailing-alpaca   1         Thu May 23 12:55:21 2019    DEPLOYED    nginx-ingres
 
 ### <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Při nasazení grafu Helm se vytvoří několik prostředků Kubernetes. Tyto prostředky zahrnují pody, nasazení a služby. Chcete-li tyto prostředky `helm delete` vyčistit, použijte příkaz a zadejte `helm list` název verze, jak je uvedeno v předchozím příkazu. Následující příklad odstraní verzi s názvem *Flailing-alpaca*:
+Když nasadíte graf Helm, vytvoří se několik prostředků Kubernetes. Mezi tyto prostředky patří lusky, nasazení a služby. K vyčištění těchto prostředků použijte `helm delete` příkaz a zadejte název vydané verze, jak je uvedeno v předchozím `helm list` příkazu. Následující příklad odstraní verzi s názvem *flailing-Alpaca*:
 
 ```console
 $ helm delete flailing-alpaca
@@ -377,10 +377,10 @@ release "flailing-alpaca" deleted
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o správě nasazení aplikací Kubernetes pomocí helmu najdete v dokumentaci k helmu.
+Další informace o správě nasazení aplikací Kubernetes pomocí Helm najdete v dokumentaci k Helm.
 
 > [!div class="nextstepaction"]
-> [Dokumentace kormidelníku][helm-documentation]
+> [Dokumentace k Helm][helm-documentation]
 
 <!-- LINKS - external -->
 [helm]: https://github.com/kubernetes/helm/

@@ -8,10 +8,10 @@ ms.date: 04/06/2020
 ms.author: robb
 ms.subservice: metrics
 ms.openlocfilehash: f2e3c03ba599128cc4552f64637ebd63efcb4578
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82128452"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky s Azure Monitor
@@ -1592,7 +1592,7 @@ Metriky jsou uspořádány podle oboru názvů. Seznam služeb a obory názvů, 
 |NewConnectionsPerSecond|Nová připojení za sekundu|CountPerSecond|Průměr|Nová připojení za sekundu vytvořená Application Gateway|Žádná|
 |CpuUtilization|Využití procesoru|Procento|Průměr|Aktuální využití CPU v Application Gateway|Žádná|
 |CapacityUnits|Aktuální jednotky kapacity|Počet|Průměr|Spotřebované jednotky kapacity|Žádná|
-|FixedBillableCapacityUnits|Pevně Fakturovatelné jednotky kapacity|Počet|Průměr|Minimální jednotky kapacity, které se budou účtovat|Žádná|
+|FixedBillableCapacityUnits|Pevné fakturovatelné jednotky kapacity|Počet|Průměr|Minimální jednotky kapacity, které se budou účtovat|Žádná|
 |EstimatedBilledCapacityUnits|Odhadované jednotky s rozpisem kapacity|Počet|Průměr|Odhadované jednotky kapacity, které se budou účtovat|Žádná|
 |ComputeUnits|Aktuální výpočetní jednotky|Počet|Průměr|Spotřebované výpočetní jednotky|Žádná|
 |BackendResponseStatus|Stav odpovědi back-endu|Počet|Celkem|Počet kódů odpovědí HTTP generovaných členy back-end. Nezahrnuje žádné kódy odpovědí vygenerované Application Gateway.|BackendServer, problémových, BackendHttpSetting, HttpStatusGroup|

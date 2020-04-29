@@ -1,6 +1,6 @@
 ---
-title: Vytvoření technického majetku virtuálního počítače Azure
-description: Tento článek popisuje kroky a požadavky na konfiguraci nabídky kontejnerů na Azure Marketplace.
+title: Vytvoření technického prostředku virtuálního počítače Azure
+description: Tento článek popisuje kroky a požadavky pro konfiguraci nabídky kontejneru na Azure Marketplace.
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
@@ -8,58 +8,58 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.openlocfilehash: e51b8c705533fd74a5e46eaa2570563fef485309
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81730626"
 ---
-# <a name="create-an-azure-vm-technical-asset"></a>Vytvoření technického majetku virtuálního počítače Azure
+# <a name="create-an-azure-vm-technical-asset"></a>Vytvoření technického prostředku virtuálního počítače Azure
 
 > [!IMPORTANT]
-> Správu nabídek Azure Container přesouváme z portálu partnerů cloudu do Centra partnerů. Dokud nebudou vaše nabídky migrovány, postupujte podle pokynů v [části Příprava technických prostředků kontejneru](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-create-technical-assets) pro portál cloudových partnerů pro správu nabídek.
+> Přesouváme správu nabídek vašich kontejnerů Azure z portál partnerů cloudu do partnerského centra. Dokud nebudou vaše nabídky migrovány, postupujte podle pokynů v části [Příprava vašich technických prostředků kontejneru](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-create-technical-assets) pro portál partnerů cloudu ke správě nabídek.
 
-Tento článek popisuje kroky a požadavky na konfiguraci nabídky kontejneru na Azure Marketplace.
+Tento článek popisuje kroky a požadavky pro konfiguraci nabídky kontejneru na Azure Marketplace.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Rychlé starty, kurzy a ukázky najdete v [tématu Instance kontejneru Azure](https://docs.microsoft.com/azure/container-instances).
+Informace o rychlých startech, kurzech a ukázkách najdete v tématu [Azure Container Instances](https://docs.microsoft.com/azure/container-instances).
 
-## <a name="fundamental-technical-knowledge"></a>Základní technické znalosti
+## <a name="fundamental-technical-knowledge"></a>Základní technické poznatky
 
-Navrhování, vytváření a testování těchto prostředků vyžaduje čas a vyžaduje technické znalosti platformy Azure i technologií používaných k sestavení nabídky.
+Návrh, sestavování a testování těchto assetů trvá čas a vyžaduje technické znalosti platformy Azure a technologií, které slouží k sestavování této nabídky.
 
-Kromě domény řešení by váš technický tým měl mít znalosti o následujících technologiích společnosti Microsoft:
+Kromě vaší domény řešení by váš technický tým měl mít znalosti o následujících technologiích Microsoftu:
 
-- Základní znalosti [služeb Azure](https://azure.microsoft.com/services/)
-- Jak [navrhovat a navrhovat aplikace Azure](https://azure.microsoft.com/solutions/architecture/)
-- Pracovní znalosti virtuálních [počítačů Azure](https://azure.microsoft.com/services/virtual-machines/), [Azure Storage](https://azure.microsoft.com/services/?filter=storage)a Azure [Networking](https://azure.microsoft.com/services/?filter=networking)
-- Pracovní znalosti [Správce prostředků Azure](https://azure.microsoft.com/features/resource-manager/)
-- Pracovní znalosti [JSON](https://www.json.org/).
+- Základní porozumění [službám Azure](https://azure.microsoft.com/services/)
+- [Návrh a architekt aplikací Azure](https://azure.microsoft.com/solutions/architecture/)
+- Praktické znalosti o sítích [azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/), [Azure Storage](https://azure.microsoft.com/services/?filter=storage)a [Azure](https://azure.microsoft.com/services/?filter=networking)
+- Praktické znalosti [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)
+- Praktické znalosti formátu [JSON](https://www.json.org/).
 
 ## <a name="suggested-tools"></a>Navrhované nástroje
 
-Chcete-li spravovat image kontejneru, zvolte jedno nebo obě následující skriptovací prostředí:
+Vyberte jedno z následujících skriptovacích prostředí, které vám pomůžou se správou image kontejneru:
 
 - [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-3.7.0&viewFallbackFrom=azps-3.6.1)
-- [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
+- Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
 
-Doporučujeme přidat tyto nástroje do vývojového prostředí:
+Doporučujeme přidat tyto nástroje do vašeho vývojového prostředí:
 
 - [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)
 - [Visual Studio Code](https://code.visualstudio.com/)
-  - Rozšíření: [Nástroje Azure Správce prostředků](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-  - Rozšíření: [Zkrášlení](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-  - Rozšíření: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json).
+  - Rozšíření: [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+  - Přípona: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+  - Přípona: [PRETTIFY JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json).
 
-Zkontrolujte dostupné nástroje na stránce [Nástroje pro vývojáře Azure.](https://azure.microsoft.com/) Pokud používáte Visual Studio, přečtěte si nástroje dostupné na [webu Visual Studio Marketplace](https://marketplace.visualstudio.com/).
+Projděte si dostupné nástroje na stránce [Azure vývojářské nástroje](https://azure.microsoft.com/) . Pokud používáte aplikaci Visual Studio, přečtěte si nástroje, které jsou k dispozici v [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
 
-## <a name="create-the-container-image"></a>Vytvoření bitové kopie kontejneru
+## <a name="create-the-container-image"></a>Vytvoření image kontejneru
 
-Další informace naleznete v následujících kurzech:
+Další informace najdete v následujících kurzech:
 
-- [Kurz: Vytvoření image kontejneru pro nasazení do instancí kontejneru Azure](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
-- [Kurz: Vytvářejte a nasazujte ibi kontejnerů v cloudu pomocí úloh registru kontejnerů Azure](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task).
+- [Kurz: vytvoření image kontejneru pro nasazení do Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
+- [Kurz: sestavování a nasazování imagí kontejneru v cloudu s využitím Azure Container Registrych úkolů](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task).
 
 ## <a name="next-step"></a>Další krok
 

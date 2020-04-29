@@ -1,6 +1,6 @@
 ---
-title: Jak nasadit službu správy certifikátů OPC Vault – Azure | Dokumenty společnosti Microsoft
-description: Jak nasadit službu správy certifikátů OPC Vault od začátku.
+title: Jak nasadit službu správy certifikátů trezoru OPC – Azure | Microsoft Docs
+description: Jak nasadit službu správy certifikátů trezoru OPC od začátku.
 author: mregen
 ms.author: mregen
 ms.date: 08/16/2019
@@ -9,55 +9,55 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 7ee186684b702a42335c6e1a7832cc5c761a69d0
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81686940"
 ---
-# <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>Vytvoření a nasazení služby správy certifikátů OPC Vault
+# <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>Sestavení a nasazení služby správy certifikátů úložiště OPC
 
-Tento článek vysvětluje, jak nasadit službu správy certifikátů OPC Vault v Azure.
+Tento článek vysvětluje, jak nasadit službu správy certifikátů trezoru OPC v Azure.
 
 > [!NOTE]
-> Další informace naleznete v [úložišti](https://github.com/Azure/azure-iiot-opc-vault-service)GitHub OPC Vault .
+> Další informace najdete v [úložišti OPC trezoru](https://github.com/Azure/azure-iiot-opc-vault-service)GitHubu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-### <a name="install-required-software"></a>Instalace požadovaného softwaru
+### <a name="install-required-software"></a>Nainstalovat požadovaný software
 
-V současné době sestavení a nasazení operace je omezena na systém Windows.
-Ukázky jsou všechny napsané pro C# .NET Standard, které je třeba vytvořit službu a ukázky pro nasazení.
-Všechny nástroje, které potřebujete pro rozhraní .NET Standard, jsou dodávány s nástroji .NET Core. Viz [Začínáme s rozhraním .NET Core](https://docs.microsoft.com/dotnet/articles/core/getting-started).
+V současné době je operace sestavení a nasazení omezená na Windows.
+Ukázky jsou napsané pro C# .NET Standard, které potřebujete k vytvoření služby a ukázek pro nasazení.
+Všechny nástroje, které potřebujete pro .NET Standard, jsou dodávány s nástroji .NET Core. Viz Začínáme [s .NET Core](https://docs.microsoft.com/dotnet/articles/core/getting-started).
 
-1. [Nainstalujte rozhraní .NET Core 2.1+][dotnet-install].
-2. [Nainstalujte Docker][docker-url] (volitelné, pouze v případě, že je vyžadováno místní sestavení Dockeru).
+1. [Nainstalujte .NET Core 2.1 +][dotnet-install].
+2. [Nainstalovat Docker][docker-url] (volitelné, jenom pokud je vyžadováno místní sestavení Docker).
 4. Nainstalujte [nástroje příkazového řádku Azure pro PowerShell][powershell-install].
 5. Zaregistrujte si [předplatné Azure][azure-free].
 
 ### <a name="clone-the-repository"></a>Klonování úložiště
 
-Pokud jste tak ještě neučinili, klonovat toto úložiště GitHub. Otevřete příkazový řádek nebo terminál a spusťte následující:
+Pokud jste to ještě neudělali, naklonujte toto úložiště GitHub. Otevřete příkazový řádek nebo terminál a spusťte následující příkaz:
 
 ```bash
 git clone https://github.com/Azure/azure-iiot-opc-vault-service
 cd azure-iiot-opc-vault-service 
 ```
 
-Případně můžete klonovat repo přímo v sadě Visual Studio 2017.
+Případně můžete klonovat úložiště přímo v aplikaci Visual Studio 2017.
 
-### <a name="build-and-deploy-the-azure-service-on-windows"></a>Vytváření a nasazování služby Azure ve Windows
+### <a name="build-and-deploy-the-azure-service-on-windows"></a>Sestavení a nasazení služby Azure ve Windows
 
-Skript prostředí PowerShell poskytuje snadný způsob nasazení mikroslužby OPC Vault a aplikace.
+PowerShellový skript nabízí snadný způsob nasazení mikroslužby trezoru OPC a aplikace.
 
-1. Otevřete okno prostředí PowerShell v kořenovém adresáři pro opětovné poto. 
-3. Přejděte do `cd deploy`složky nasazení .
-3. Zvolte název, který `myResourceGroup` pravděpodobně nezpůsobí konflikt s jinými nasazenými webovými stránkami. Viz část "Název webové stránky, který je již používán" dále v tomto článku.
-5. Spusťte `.\deploy.ps1` nasazení s pro interaktivní instalaci nebo zadejte úplný příkazový řádek:  
+1. Otevřete okno PowerShellu v kořenovém adresáři úložiště. 
+3. Přejít do složky `cd deploy`Deploy (nasadit).
+3. Vyberte název `myResourceGroup` , který není pravděpodobně příčinou konfliktu s jinými nasazenými webové stránky. V části dále v tomto článku najdete informace o tom, že se už používá název webu.
+5. Spusťte nasazení pomocí `.\deploy.ps1` příkazu pro interaktivní instalaci nebo zadejte úplný příkazový řádek:  
 `.\deploy.ps1  -subscriptionName "MySubscriptionName" -resourceGroupLocation "East US" -tenantId "myTenantId" -resourceGroupName "myResourceGroup"`
-7. Pokud máte v plánu vyvíjet `-development 1` s tímto nasazením, přidejte povolit swagger ui a nasadit sestavení ladění.
-6. Podle pokynů ve skriptu se přihlaste k předplatnému a zadejte další informace.
-9. Po úspěšné operaci sestavení a nasazení byste měli zobrazit následující zprávu:
+7. Pokud plánujete vývoj s tímto nasazením, přidejte `-development 1` , abyste POVOLILI uživatelské rozhraní Swagger a nasadili sestavení ladění.
+6. Pokud se chcete přihlásit ke svému předplatnému a zadat další informace, postupujte podle pokynů ve skriptu.
+9. Po úspěšné operaci sestavení a nasazení by se měla zobrazit následující zpráva:
    ```
    To access the web client go to:
    https://myResourceGroup.azurewebsites.net
@@ -73,49 +73,49 @@ Skript prostředí PowerShell poskytuje snadný způsob nasazení mikroslužby O
    ```
 
    > [!NOTE]
-   > V případě problémů naleznete v části "Řešení potíží s chybami nasazení" dále v článku.
+   > V případě problémů se v části řešení potíží s nasazením v tomto článku přečtěte v části "selhání nasazení.
 
-8. Otevřete svůj oblíbený prohlížeč a otevřete stránku aplikace:`https://myResourceGroup.azurewebsites.net`
-8. Podejte webové aplikaci a mikroslužbě OPC Vault několik minut, aby se po nasazení zahřály. Webová domovská stránka může viset při prvním použití, po dobu až jedné minuty, dokud nezískáte první odpovědi.
-11. Chcete-li se podívat na rozhraní Api Swagger, otevřete:`https://myResourceGroup-service.azurewebsites.net`
-13. Chcete-li spustit místní server GDS `.\myResourceGroup-gds.cmd`s dotnet, spusťte program . S Docker, `.\myResourceGroup-dockergds.cmd`start .
+8. Otevřete oblíbený prohlížeč a otevřete stránku aplikace:`https://myResourceGroup.azurewebsites.net`
+8. Poskytněte webové aplikaci a mikroslužbu trezoru OPC pár minut, než se zahřívá po nasazení. Domovská stránka webu může po dobu až minutu přereagovat, dokud nezískáte první odpovědi.
+11. Pokud si chcete prohlédnout rozhraní Swagger API, otevřete:`https://myResourceGroup-service.azurewebsites.net`
+13. Pokud chcete spustit místní GDS Server pomocí dotnet, spusťte `.\myResourceGroup-gds.cmd`. V Docker začněte `.\myResourceGroup-dockergds.cmd`.
 
-Je možné znovu nasadit sestavení s přesně stejným nastavením. Uvědomte si, že taková operace obnovuje všechny tajné klíče aplikace a může obnovit některá nastavení v registraci aplikací Služby Azure Active Directory (Azure AD).
+Je možné znovu nasadit sestavení s přesně stejnými nastaveními. Počítejte s tím, že taková operace obnoví všechny tajné klíče aplikace a může resetovat některá nastavení v Azure Active Directory (Azure AD) registrace aplikací.
 
-Je také možné znovu nasadit pouze binární soubory webové aplikace. S parametrem `-onlyBuild 1`, nové zip balíčky služby a aplikace jsou nasazeny do webových aplikací.
+Je také možné znovu nasadit pouze binární soubory webové aplikace. S parametrem `-onlyBuild 1`jsou nové balíčky zip služby a aplikace nasazeny do webových aplikací.
 
-Po úspěšném nasazení můžete začít používat služby. Viz [Správa služby správy certifikátů OPC Vault](howto-opc-vault-manage.md).
+Po úspěšném nasazení můžete začít používat služby. Viz [Správa služby správy certifikátů trezoru OPC](howto-opc-vault-manage.md).
 
-## <a name="delete-the-services-from-the-subscription"></a>Odstranění služeb z předplatného
+## <a name="delete-the-services-from-the-subscription"></a>Odstranit služby z předplatného
 
 Zde je uveden postup:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Přejděte do skupiny prostředků, ve které byla služba nasazena.
+2. Přejít do skupiny prostředků, ve které byla služba nasazena.
 3. Vyberte **Odstranit skupinu prostředků** a potvrďte tuto akci.
-4. Po krátké době jsou odstraněny všechny součásti nasazených služeb.
-5. Přejděte na**registrace aplikací** **Azure Active Directory** > .
-6. Pro každou nasazenou skupinu prostředků by měly být uvedeny tři registrace. Registrace mají následující `resourcegroup-client`názvy: `resourcegroup-module` `resourcegroup-service`, , . Každou registraci odstraňte samostatně.
+4. Po krátké době se všechny nasazené součásti služby odstraní.
+5. Přejít na **Azure Active Directory** > **Registrace aplikací**.
+6. Pro každou nasazenou skupinu prostředků by měly být uvedené tři registrace. Registrace mají následující názvy: `resourcegroup-client`, `resourcegroup-module`,. `resourcegroup-service` Každou registraci odstraňte samostatně.
 
-Nyní jsou odebrány všechny nasazené součásti.
+Všechny nasazené součásti se teď odeberou.
 
-## <a name="troubleshooting-deployment-failures"></a>Poradce při potížích s chybami nasazení
+## <a name="troubleshooting-deployment-failures"></a>Řešení potíží se selháním nasazení
 
 ### <a name="resource-group-name"></a>Název skupiny prostředků
 
-Použijte krátký a jednoduchý název skupiny prostředků. Název se také používá k pojmenování prostředků a předpony adresy URL služby. Jako takový musí splňovat požadavky na pojmenování prostředků.  
+Použijte krátký a jednoduchý název skupiny prostředků. Název se používá také k pojmenování prostředků a předpony adresy URL služby. V takovém případě musí vyhovovat požadavkům na pojmenování prostředků.  
 
-### <a name="website-name-already-in-use"></a>Název webu, který je již používán
+### <a name="website-name-already-in-use"></a>Název webu se už používá.
 
-Je možné, že název webu je již používán. Je třeba použít jiný název skupiny prostředků. Názvy hostitelů, které používá skript\/nasazení, jsou:\/https: /resourcegroupname.azurewebsites.net a https: /resourgroupname-service.azurewebsites.net.
-Jiné názvy služeb jsou vytvořeny kombinací zapisovatelné hořkosti krátkých názvů a je nepravděpodobné, že by byly v konfliktu s jinými službami.
+Je možné, že název webu se už používá. Musíte použít jiný název skupiny prostředků. Názvy hostitelů používané skriptem nasazení jsou: https:\//ResourceGroupName.azurewebsites.NET a https:\//resourgroupname-Service.azurewebsites.NET.
+Jiné názvy služeb jsou sestaveny kombinací krátkých hodnot hash názvů a pravděpodobně nejsou v konfliktu s jinými službami.
 
 ### <a name="azure-ad-registration"></a>Registrace v Azure AD 
 
-Skript nasazení se pokusí zaregistrovat tři aplikace Azure AD ve službě Azure AD. V závislosti na vašich oprávněních ve vybraném tenantovi Azure AD může tato operace selhat. Existují dvě možnosti:
+Skript nasazení se pokusí zaregistrovat tři aplikace Azure AD ve službě Azure AD. Tato operace může selhat v závislosti na vašich oprávněních ve vybraném tenantovi služby Azure AD. Existují dvě možnosti:
 
-- Pokud jste zvolili klienta Azure AD ze seznamu klientů, restartujte skript a zvolte jiný ze seznamu.
-- Případně nasadit privátní ho klienta Azure AD v jiném předplatném. Restartujte skript a vyberte jeho použití.
+- Pokud jste zvolili tenanta Azure AD ze seznamu tenantů, restartujte skript a zvolte jiný ze seznamu.
+- Případně můžete nasadit privátního tenanta Azure AD v jiném předplatném. Restartujte skript a vyberte ho pro použití.
 
 ## <a name="deployment-script-options"></a>Možnosti skriptu nasazení
 
@@ -126,14 +126,14 @@ Skript má následující parametry:
 -resourceGroupName
 ```
 
-Může se jedná o název existující nebo nové skupiny prostředků.
+Může to být název existující nebo nové skupiny prostředků.
 
 ```
 -subscriptionId
 ```
 
 
-Toto je ID předplatného, kde se nasadí prostředky. Zpráva není povinná.
+Toto je ID předplatného, kde budou nasazeny prostředky. Zpráva není povinná.
 
 ```
 -subscriptionName
@@ -147,7 +147,7 @@ Případně můžete použít název předplatného.
 ```
 
 
-Toto je umístění skupiny prostředků. Pokud je zadán, pokusí se tento parametr vytvořit novou skupinu prostředků v tomto umístění. Tento parametr je také volitelný.
+Toto je umístění skupiny prostředků. Když se tento parametr zadá, v tomto umístění se pokusí vytvořit novou skupinu prostředků. Tento parametr je také volitelný.
 
 
 ```
@@ -155,19 +155,19 @@ Toto je umístění skupiny prostředků. Pokud je zadán, pokusí se tento para
 ```
 
 
-Toto je klient azure ad použít. 
+Toto je tenant služby Azure AD, který se má použít. 
 
 ```
 -development 0|1
 ```
 
-Toto je nasazení pro vývoj. Použijte sestavení ladění a nastavte ASP.NET prostředí na vývoj. Vytvořte `.publishsettings` pro import ve Visual Studiu 2017, aby mohl přímo nasadit aplikaci a službu. Tento parametr je také volitelný.
+Toto je nasazení pro vývoj. Použijte ladění buildu a nastavte prostředí ASP.NET na vývoj. Vytvoření `.publishsettings` pro import v aplikaci Visual Studio 2017, aby bylo možné aplikaci a službu nasadit přímo. Tento parametr je také volitelný.
 
 ```
 -onlyBuild 0|1
 ```
 
-Toje znovu sestavit a znovu nasadit pouze webové aplikace a znovu kontejnery Dockeru. Tento parametr je také volitelný.
+Jedná se o opětovné sestavení a opětovné nasazení pouze webových aplikací a k opětovnému sestavení kontejnerů Docker. Tento parametr je také volitelný.
 
 [azure-free]:https://azure.microsoft.com/free/
 [powershell-install]:https://azure.microsoft.com/downloads/#powershell
@@ -176,7 +176,7 @@ Toje znovu sestavit a znovu nasadit pouze webové aplikace a znovu kontejnery Do
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní, když jste se naučili nasadit OPC Vault od nuly, můžete:
+Teď, když jste se naučili, jak nasadit trezor OPC od začátku, můžete:
 
 > [!div class="nextstepaction"]
 > [Správa trezoru OPC](howto-opc-vault-manage.md)

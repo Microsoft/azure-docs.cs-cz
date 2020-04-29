@@ -1,45 +1,45 @@
 ---
 title: Začínáme se sadou WebJobs SDK
-description: Úvod do sady WebJobs SDK pro zpracování na pozadí řízené událostmi. Zjistěte, jak přistupovat k datům ve službách Azure a ve službách třetích stran.
+description: Seznámení se sadou WebJobs SDK pro zpracování na pozadí založené na událostech. Přečtěte si, jak získat přístup k datům ve službách Azure a službách třetích stran.
 author: ggailey777
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
 ms.openlocfilehash: 4ee724ec66d5fb474f8c8a9a967cc7235fef5e85
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732624"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Začínáme s událostmi řízeným zpracováním na pozadí pomocí sady Azure WebJobs SDK
 
-Tento článek ukazuje, jak pomocí Visual Studia 2019 vytvořit projekt Sady Azure WebJobs SDK, spustit ho místně a pak ho nasadit do [služby Azure App Service](overview.md). Verze 3.x sady WebJobs SDK podporuje konzolové aplikace .NET Core i .NET Framework. Další informace o práci s sadou WebJobs SDK najdete v [tématu Jak používat sadu Azure WebJobs SDK pro zpracování na pozadí řízené událostmi](webjobs-sdk-how-to.md).
+V tomto článku se dozvíte, jak pomocí sady Visual Studio 2019 vytvořit projekt Azure WebJobs SDK, spustit ho místně a pak ho nasadit do [Azure App Service](overview.md). Verze 3. x sady WebJobs SDK podporuje konzolové aplikace .NET Core i .NET Framework. Další informace o práci se sadou WebJobs SDK najdete v článku [Jak používat sadu Azure WebJobs SDK pro zpracování na pozadí založené na událostech](webjobs-sdk-how-to.md).
 
-Tento článek ukazuje, jak nasadit WebJobs jako konzolovou aplikaci .NET Core. Pokud chcete nasadit webové úlohy jako konzolovou aplikaci rozhraní .NET Framework, přečtěte si [webovou úlohu jako konzolové aplikace rozhraní .NET Framework](webjobs-dotnet-deploy-vs.md#webjobs-as-net-framework-console-apps). Pokud vás zajímá webjobs SDK verze 2.x, který podporuje jenom rozhraní .NET Framework, přečtěte si informace [o vývoji a nasazování webových úloh pomocí sady Visual Studio – Azure App Service](webjobs-dotnet-deploy-vs.md).
+V tomto článku se dozvíte, jak nasadit WebJobs jako konzolovou aplikaci .NET Core. Pokud chcete nasadit WebJobs jako konzolovou aplikaci .NET Framework, přečtěte si téma [WebJobs jako .NET Framework konzolové aplikace](webjobs-dotnet-deploy-vs.md#webjobs-as-net-framework-console-apps). Pokud vás zajímá Sada WebJobs SDK verze 2. x, která podporuje jenom .NET Framework, přečtěte si téma [vývoj a nasazení WebJobs pomocí sady Visual Studio – Azure App Service](webjobs-dotnet-deploy-vs.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Nainstalujte Visual Studio 2019](/visualstudio/install/) s **úlohou vývoje Azure.** Pokud už máte Visual Studio, ale nemáte tuto úlohu, přidejte úlohu výběrem **nástroje > získat nástroje a funkce**.
+* [Nainstalujte Visual Studio 2019](/visualstudio/install/) s úlohou **vývoj pro Azure** . Pokud již máte aplikaci Visual Studio, ale nemáte tuto úlohu, přidejte úlohu výběrem **nástrojů > získat nástroje a funkce**.
 
-* K publikování projektu WebJobs SDK do Azure musíte mít [účet Azure.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+* Abyste mohli publikovat projekt sady WebJobs SDK do Azure, musíte mít [účet Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) .
 
 ## <a name="create-a-project"></a>Vytvoření projektu
 
-1. V Sadě Visual Studio vyberte **Vytvořit nový projekt**.
+1. V aplikaci Visual Studio vyberte možnost **vytvořit nový projekt**.
 
-2. Vyberte **konzolovou aplikaci (jádro.NET)**.
+2. Vyberte **aplikace konzoly (.NET Core)**.
 
-3. Pojmenujte projekt *WebJobsSDKSample*a pak vyberte **Vytvořit**.
+3. Pojmenujte projekt *WebJobsSDKSample*a pak vyberte **vytvořit**.
 
    ![Dialogové okno Nový projekt](./media/webjobs-sdk-get-started/new-project.png)
 
-## <a name="webjobs-nuget-packages"></a>Balíčky WebJobs NuGet
+## <a name="webjobs-nuget-packages"></a>Balíčky NuGet pro WebJobs
 
-1. Nainstalujte nejnovější stabilní verzi [ `Microsoft.Azure.WebJobs.Extensions` 3.x balíčku NuGet](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions/), která obsahuje `Microsoft.Azure.WebJobs`.
+1. Nainstalujte nejnovější stabilní verzi 3. x [ `Microsoft.Azure.WebJobs.Extensions` balíčku NuGet](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions/), která zahrnuje. `Microsoft.Azure.WebJobs`
 
-     Tady je příkaz **Konzola správce balíčků:**
+     Tady je příkaz **konzoly Správce balíčků** :
 
      ```powershell
      Install-Package Microsoft.Azure.WebJobs.Extensions -version <3_X_VERSION>
@@ -49,9 +49,9 @@ Tento článek ukazuje, jak nasadit WebJobs jako konzolovou aplikaci .NET Core. 
 
 ## <a name="create-the-host"></a>Vytvoření hostitele
 
-Hostitel je runtime kontejner pro funkce, které naslouchá aktivační události a volání funkcí. Následující kroky vytvořit hostitele, [`IHost`](/dotnet/api/microsoft.extensions.hosting.ihost)který implementuje , což je obecný hostitel v ASP.NET jádra.
+Hostitel je kontejner modulu runtime pro funkce, které naslouchá triggerům a volání funkcí. Následující kroky vytvoří hostitele, který implementuje [`IHost`](/dotnet/api/microsoft.extensions.hosting.ihost), což je obecný hostitel v ASP.NET Core.
 
-1. V *Program.cs*přidejte tyto `using` příkazy:
+1. Do *program.cs*přidejte tyto `using` příkazy:
 
     ```cs
     using System.Threading.Tasks;
@@ -76,29 +76,29 @@ Hostitel je runtime kontejner pro funkce, které naslouchá aktivační událost
     }
     ```
 
-V ASP.NET Core jsou konfigurace hostitele nastaveny [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) voláním metod instance. Další informace naleznete [v tématu Obecný hostitel rozhraní .NET](/aspnet/core/fundamentals/host/generic-host). Metoda `ConfigureWebJobs` rozšíření inicializuje hostitele WebJobs. V `ConfigureWebJobs`aplikaci inicializujete konkrétní rozšíření WebJobs a nastavíte vlastnosti těchto rozšíření.  
+V ASP.NET Core jsou konfigurace hostitelů nastaveny voláním metod v [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) instanci. Další informace najdete v tématu [obecný hostitel .NET](/aspnet/core/fundamentals/host/generic-host). Metoda `ConfigureWebJobs` rozšíření inicializuje hostitele WebJobs. V `ConfigureWebJobs`nástroji můžete inicializovat specifická rozšíření WebJobs a nastavovat vlastnosti těchto rozšíření.  
 
-## <a name="enable-console-logging"></a>Povolení protokolování konzoly
+## <a name="enable-console-logging"></a>Povolit protokolování konzoly
 
-V této části nastavíte protokolování konzoly, která používá [ASP.NET core protokolování rozhraní](/aspnet/core/fundamentals/logging).
+V této části nastavíte protokolování konzoly, které používá rozhraní [ASP.NET Core Logging Framework](/aspnet/core/fundamentals/logging).
 
-1. Nainstalujte nejnovější stabilní verzi [ `Microsoft.Extensions.Logging.Console` balíčku NuGet](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console/), který obsahuje `Microsoft.Extensions.Logging`.
+1. Nainstalujte nejnovější stabilní verzi [ `Microsoft.Extensions.Logging.Console` balíčku NuGet](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console/), která zahrnuje. `Microsoft.Extensions.Logging`
 
-   Tady je příkaz **Konzola správce balíčků:**
+   Tady je příkaz **konzoly Správce balíčků** :
 
    ```powershell
    Install-Package Microsoft.Extensions.Logging.Console -version <3_X_VERSION>
    ```
 
-1. V *Program.cs*přidejte příkaz: `using`
+1. Do *program.cs*přidejte `using` příkaz:
 
    ```cs
    using Microsoft.Extensions.Logging;
    ```
 
-    V tomto příkazu nahraďte `<3_X_VERSION>` podporovanou verzí balíčku 3.x.
+    V tomto příkazu nahraďte `<3_X_VERSION>` podporovanou verzí balíčku 3. x.
 
-1. Volání [`ConfigureLogging`](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configurelogging) metody [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder)na . Metoda [`AddConsole`](/dotnet/api/microsoft.extensions.logging.consoleloggerextensions.addconsole) přidá protokolování konzoly do konfigurace.
+1. Zavolejte [`ConfigureLogging`](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configurelogging) metodu na [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder). [`AddConsole`](/dotnet/api/microsoft.extensions.logging.consoleloggerextensions.addconsole) Metoda přidá protokolování konzoly do konfigurace.
 
     ```cs
     builder.ConfigureLogging((context, b) =>
@@ -107,7 +107,7 @@ V této části nastavíte protokolování konzoly, která používá [ASP.NET c
     });
     ```
 
-    Metoda `Main` nyní vypadá takto:
+    `Main` Metoda teď vypadá takto:
 
     ```cs
     static async Task Main()
@@ -129,20 +129,20 @@ V této části nastavíte protokolování konzoly, která používá [ASP.NET c
     }
     ```
 
-    Tato aktualizace provádí následující akce:
+    Tato aktualizace provede následující kroky:
 
-    * Zakáže [protokolování řídicího panelu](https://github.com/Azure/azure-webjobs-sdk/wiki/Queues#logs). Řídicí panel je starší nástroj pro monitorování a protokolování řídicího panelu se nedoporučuje pro scénáře výroby s vysokou propustností.
-    * Přidá zprostředkovatele konzoly s výchozím [filtrováním](webjobs-sdk-how-to.md#log-filtering).
+    * Zakáže [protokolování řídicího panelu](https://github.com/Azure/azure-webjobs-sdk/wiki/Queues#logs). Řídicí panel je starší verze nástroje pro monitorování a pro produkční scénáře s vysokou propustností se nedoporučuje protokolování řídicího panelu.
+    * Přidá poskytovatele konzoly s výchozím [filtrováním](webjobs-sdk-how-to.md#log-filtering).
 
-Teď můžete přidat funkci, která se aktivuje zprávy přicházející do fronty Azure Storage.
+Nyní můžete přidat funkci, která je aktivována zprávami přicházejících do fronty Azure Storage.
 
 ## <a name="install-the-storage-binding-extension"></a>Instalace rozšíření vazby služby Storage
 
-Počínaje verzí 3.x je nutné explicitně nainstalovat rozšíření vazby úložiště vyžadované sadou WebJobs SDK. V předchozích verzích storage vazby byly zahrnuty do sady SDK.
+Počínaje verzí 3. x musíte explicitně nainstalovat rozšíření vazby úložiště, které vyžaduje Sada WebJobs SDK. V předchozích verzích byly vazby úložiště součástí sady SDK.
 
-1. Nainstalujte nejnovější stabilní verzi balíčku [Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet verze 3.x. 
+1. Nainstalujte nejnovější stabilní verzi balíčku NuGet [Microsoft. Azure. WebJobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) , verze 3. x. 
 
-    Tady je příkaz **Konzola správce balíčků:**
+    Tady je příkaz **konzoly Správce balíčků** :
 
     ```powershell
     Install-Package Microsoft.Azure.WebJobs.Extensions.Storage -Version <3_X_VERSION>
@@ -150,7 +150,7 @@ Počínaje verzí 3.x je nutné explicitně nainstalovat rozšíření vazby úl
     
     V tomto příkazu nahraďte `<3_X_VERSION>` podporovanou verzí balíčku. 
 
-2. V `ConfigureWebJobs` metodě rozšíření `AddAzureStorage` volání metody [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) na instanci inicializovat rozšíření úložiště. V tomto okamžiku `ConfigureWebJobs` metoda vypadá jako následující příklad:
+2. V `ConfigureWebJobs` rozšiřující metodě zavolejte `AddAzureStorage` metodu na [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) instanci pro inicializaci rozšíření úložiště. V tomto okamžiku `ConfigureWebJobs` metoda vypadá jako v následujícím příkladu:
 
     ```cs
     builder.ConfigureWebJobs(b =>
@@ -162,7 +162,7 @@ Počínaje verzí 3.x je nutné explicitně nainstalovat rozšíření vazby úl
 
 ## <a name="create-a-function"></a>Vytvoření funkce
 
-1. Klepněte pravým tlačítkem myši na projekt, vyberte **Přidat** > **novou položku...**, zvolte **Třídu**, pojmenujte nový soubor třídy C# *Functions.cs*a vyberte **Přidat**.
+1. Klikněte pravým tlačítkem myši na projekt, vyberte možnost **Přidat** > **novou položku...**, zvolte možnost **Třída**, pojmenujte nový soubor třídy jazyka C# *Functions.cs*a vyberte možnost **Přidat**.
 
 1. V Functions.cs nahraďte vygenerovanou šablonu následujícím kódem:
     
@@ -182,45 +182,45 @@ Počínaje verzí 3.x je nutné explicitně nainstalovat rozšíření vazby úl
     }
     ```
 
-   Atribut `QueueTrigger` říká, že runtime volá tuto funkci, když je nová `queue`zpráva zapsána ve frontě Azure Storage s názvem . Obsah zprávy fronty jsou k dispozici kódu metody `message` v parametru. Tělo metody je místo, kde zpracováváte data aktivační události. V tomto příkladu kód pouze protokoluje zprávu.
+   `QueueTrigger` Atribut říká modulu runtime, aby tuto funkci volal při zápisu nové zprávy ve frontě Azure Storage s názvem `queue`. Obsah zprávy fronty je k dispozici pro kód metody v `message` parametru. Tělo metody je místo, kde se zpracovávají data triggeru. V tomto příkladu kód pouze protokoluje zprávu.
 
-   Parametr `message` nemusí být řetězec. Můžete také vytvořit vazbu na objekt JSON, bajtové pole nebo objekt [CloudQueueMessage.](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) [Viz Využití aktivační události fronty](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#usage). Každý typ vazby (například fronty, objekty BLOB nebo tabulky) má jinou sadu typů parametrů, které můžete vázat.
+   `message` Parametr nemusí být řetězec. Můžete také vytvořit propojení s objektem JSON, bajtovým polem nebo objektem [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) . [Viz Použití triggeru fronty](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#usage). Každý typ vazby (například fronty, objekty blob nebo tabulky) má jinou sadu typů parametrů, které lze svázat.
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-Emulátor Úložiště Azure, který běží místně nemá všechny funkce, které webjobs SDK potřebuje. Takže v této části vytvoříte účet úložiště v Azure a nakonfigurujte projekt tak, aby ho používal. Pokud už účet úložiště máte, přejděte ke kroku 6.
+Emulátor Azure Storage, který se spouští místně, nemá všechny funkce, které vyžaduje Sada WebJobs SDK. Takže v této části vytvoříte účet úložiště v Azure a nakonfigurujete ho tak, aby ho používal. Pokud už máte účet úložiště, přeskočte dolů na krok 6.
 
-1. Otevřete **Průzkumníka serveru** ve Visual studiu a přihlaste se do Azure. Klikněte pravým tlačítkem na uzel **Azure** a pak vyberte **Připojit k předplatnému Microsoft Azure**.
+1. Otevřete **Průzkumník serveru** v aplikaci Visual Studio a přihlaste se k Azure. Klikněte pravým tlačítkem na uzel **Azure** a pak vyberte **připojit k Microsoft Azure předplatnému**.
 
    ![Přihlášení k Azure](./media/webjobs-sdk-get-started/sign-in.png)
 
-1. V uzlu **Azure** v **Průzkumníkovi serveru**klikněte pravým tlačítkem myši na **Storage**a pak vyberte Vytvořit **účet úložiště**.
+1. V uzlu **Azure** v **Průzkumník serveru**klikněte pravým tlačítkem na **úložiště**a pak vyberte **vytvořit účet úložiště**.
 
-   ![Vytvořit nabídku účtu úložiště](./media/webjobs-sdk-get-started/create-storage-account-menu.png)
+   ![Nabídka vytvořit účet úložiště](./media/webjobs-sdk-get-started/create-storage-account-menu.png)
 
-1. V dialogovém okně **Vytvořit účet úložiště** zadejte jedinečný název účtu úložiště.
+1. V dialogovém okně **vytvořit účet úložiště** zadejte jedinečný název pro účet úložiště.
 
-1. Zvolte stejnou **oblast,** ve které jste vytvořili aplikaci App Service, nebo oblast blízko vás.
+1. Vyberte si stejnou **oblast** , ve které jste vytvořili aplikaci App Service, nebo oblast, která je blízko vás.
 
 1. Vyberte **Vytvořit**.
 
    ![Vytvořit účet úložiště](./media/webjobs-sdk-get-started/create-storage-account.png)
 
-1. V části Uzel **úložiště** v **Průzkumníkovi serveru**vyberte nový účet úložiště. V okně **Vlastnosti** vyberte tři tečky (**...**) vpravo od pole hodnoty **připojovacího řetězce.**
+1. V uzlu **úložiště** v **Průzkumník serveru**vyberte nový účet úložiště. V okně **vlastnosti** vyberte tři tečky (**...**) napravo od pole hodnota **připojovacího řetězce** .
 
-   ![Připojovací řetězec tři tečky](./media/webjobs-sdk-get-started/conn-string-ellipsis.png)
+   ![Tři tečky připojovacího řetězce](./media/webjobs-sdk-get-started/conn-string-ellipsis.png)
 
-1. Zkopírujte připojovací řetězec a uložte tuto hodnotu někde, kde ji můžete zkopírovat znovu.
+1. Zkopírujte připojovací řetězec a uložte tuto hodnotu někam tam, kde ji můžete snadno kopírovat.
 
    ![Kopírovat připojovací řetězec](./media/webjobs-sdk-get-started/copy-key.png)
 
-## <a name="configure-storage-to-run-locally"></a>Konfigurace místního spouštění úložiště
+## <a name="configure-storage-to-run-locally"></a>Konfigurace úložiště pro místní spuštění
 
-Sada WebJobs SDK hledá připojovací řetězec úložiště v nastavení aplikace v Azure. Při spuštění místně hledá tuto hodnotu v místním konfiguračním souboru nebo v proměnných prostředí.
+Sada WebJobs SDK hledá připojovací řetězec úložiště v nastavení aplikace v Azure. Když spouštíte místně, vyhledá tuto hodnotu v místním konfiguračním souboru nebo v proměnných prostředí.
 
-1. Klepněte pravým tlačítkem myši na projekt, vyberte **Přidat** > **novou položku...**, zvolte **konfigurační soubor JavaScript JSON**, pojmenujte nový soubor *appsettings.json* a vyberte **Přidat**. 
+1. Klikněte pravým tlačítkem myši na projekt, vyberte možnost **Přidat** > **novou položku...**, zvolte **konfigurační soubor JSON pro JavaScript**, pojmenujte nový soubor *appSettings. JSON* a vyberte **Přidat**. 
 
-1. Do nového souboru `AzureWebJobsStorage` přidejte pole, jako v následujícím příkladu:
+1. V novém souboru přidejte `AzureWebJobsStorage` pole, jako v následujícím příkladu:
 
     ```json
     {
@@ -228,19 +228,19 @@ Sada WebJobs SDK hledá připojovací řetězec úložiště v nastavení aplika
     }
     ```
 
-1. Nahraďte *{storage connection string}* připojovacím řetězcem, který jste zkopírovali dříve.
+1. Nahraďte *{Storage Connection String}* připojovacím řetězcem, který jste zkopírovali dříve.
 
-1. V Průzkumníkovi řešení vyberte soubor *appsettings.json* a v okně **Vlastnosti** nastavte **možnost Kopírovat do výstupního adresáře,** **pokud chcete kopírovat novější**.
+1. V Průzkumník řešení vyberte soubor *appSettings. JSON* a v okně **vlastnosti** nastavte **Kopírovat do výstupního adresáře** na kopírovat, **Pokud je novější**.
 
-Později přidáte stejné nastavení aplikace pro připojení řetězce ve vaší aplikaci ve službě Azure App Service.
+Později přidáte stejné nastavení aplikace připojovacího řetězce do aplikace v Azure App Service.
 
-## <a name="test-locally"></a>Testování místně
+## <a name="test-locally"></a>Test lokálně
 
-V této části vytvoříte a spustíte projekt místně a spustíte funkci vytvořením zprávy fronty.
+V této části sestavíte a spustíte projekt místně a aktivujete funkci vytvořením zprávy ve frontě.
 
-1. Stisknutím **kláves Ctrl+F5** spusťte projekt.
+1. Stisknutím **kombinace kláves CTRL + F5** spusťte projekt.
 
-   Konzole ukazuje, že runtime našel vaši funkci a čeká na zprávy fronty, které ji aktivují. Hostitel v3.x generuje následující výstup:
+   V konzole se zobrazí, že modul runtime nalezl vaši funkci a čeká na aktivaci zpráv ve frontě. Následující výstup je generován hostitelem v3. x:
 
    ```console
     info: Microsoft.Azure.WebJobs.Hosting.JobHostService[0]
@@ -258,29 +258,29 @@ V této části vytvoříte a spustíte projekt místně a spustíte funkci vytv
 
 1. Zavřete okno konzoly.
 
-1. V **Průzkumníkovi serveru** v sadě Visual Studio rozbalte uzel pro nový účet úložiště a klikněte pravým tlačítkem myši na **položku Fronty**.
+1. V **Průzkumník serveru** v aplikaci Visual Studio rozbalte uzel pro nový účet úložiště a pak klikněte pravým tlačítkem na **fronty**.
 
-1. Vyberte **možnost Vytvořit frontu**.
+1. Vyberte **vytvořit frontu**.
 
-1. Zadejte *frontu* jako název fronty a pak vyberte **OK**.
+1. Jako název fronty zadejte *Queue* a pak vyberte **OK**.
 
    ![Vytvořit frontu](./media/webjobs-sdk-get-started/create-queue.png)
 
-1. Klepněte pravým tlačítkem myši na uzel nové fronty a potom vyberte **příkaz Zobrazit frontu**.
+1. Klikněte pravým tlačítkem na uzel nové fronty a pak vyberte **Zobrazit frontu**.
 
-1. Vyberte ikonu **Přidat zprávu.**
+1. Vyberte ikonu **přidat zprávu** .
 
    ![Vytvořit frontu](./media/webjobs-sdk-get-started/create-queue-message.png)
 
-1. V dialogovém okně **Přidat zprávu** zadejte *Hello World!* jako **text Zprávy**a pak vyberte **OK**. Ve frontě je nyní zpráva.
+1. V dialogovém okně **přidat zprávu** zadejte *Hello World!* jako **text zprávy**a vyberte **OK**. Ve frontě je nyní zpráva.
 
    ![Vytvořit frontu](./media/webjobs-sdk-get-started/hello-world-text.png)
 
 1. Spusťte projekt znovu.
 
-   Vzhledem k `QueueTrigger` tomu, `ProcessQueueMessage` že jste použili atribut ve funkci, za běhu Sady WeJobs SDK naslouchá zprávy fronty při spuštění. Najde novou zprávu fronty ve frontě s názvem *fronta* a zavolá funkci.
+   Vzhledem k tomu, `QueueTrigger` že jste ve `ProcessQueueMessage` funkci použili atribut, modul runtime sady WeJobs SDK při spuštění naslouchá zprávám ve frontě. Najde novou zprávu fronty ve frontě s názvem *Queue* a zavolá funkci.
 
-   Z důvodu [dotazování fronty exponenciální backoff](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#polling-algorithm), může trvat až 2 minuty za běhu najít zprávu a vyvolat funkci. Tuto čekací dobu lze zkrátit spuštěním v [režimu vývoje](webjobs-sdk-how-to.md#host-development-settings).
+   Z důvodu [cyklického dotazování exponenciálního omezení rychlosti](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#polling-algorithm)může trvat až 2 minuty, než modul runtime tuto zprávu najde a vyvolá funkci. Tato čekací doba se dá snížit spuštěním v [režimu vývoje](webjobs-sdk-how-to.md#host-development-settings).
 
    Výstup konzoly vypadá takto:
 
@@ -297,51 +297,51 @@ V této části vytvoříte a spustíte projekt místně a spustíte funkci vytv
 
 1. Zavřete okno konzoly. 
 
-1. Vraťte se do okna Fronty a aktualizujte ho. Zpráva je pryč, protože byla zpracována vaší funkce spuštěna místně. 
+1. Vraťte se do okna fronty a aktualizujte ho. Zpráva zmizela, protože byla zpracována místně spuštěnou funkcí. 
 
-## <a name="add-application-insights-logging"></a>Přidání protokolování přehledů aplikací
+## <a name="add-application-insights-logging"></a>Přidat protokolování Application Insights
 
-Když se projekt spustí v Azure, nemůžete sledovat spuštění funkce zobrazením výstupu konzoly. Monitorování řešení doporučujeme, je [Application Insights](../azure-monitor/app/app-insights-overview.md). Další informace naleznete v [tématu Sledování funkcí Azure](../azure-functions/functions-monitoring.md).
+Když se projekt spustí v Azure, nemůžete monitorovat spouštění funkcí zobrazením výstupu konzoly. Řešení monitorování, které doporučujeme, je [Application Insights](../azure-monitor/app/app-insights-overview.md). Další informace najdete v tématu [monitorování Azure Functions](../azure-functions/functions-monitoring.md).
 
-V této části můžete provést následující úkoly nastavit protokolování Application Insights před nasazením do Azure:
+V této části provedete následující úlohy, abyste nastavili protokolování Application Insights před nasazením do Azure:
 
-* Ujistěte se, že máte aplikaci App Service a instanci Application Insights, se kterou můžete pracovat.
+* Ujistěte se, že máte aplikaci App Service a instanci Application Insights, se kterou chcete pracovat.
 * Nakonfigurujte aplikaci App Service tak, aby používala instanci Application Insights a účet úložiště, který jste vytvořili dříve.
 * Nastavte projekt pro protokolování do Application Insights.
 
-### <a name="create-app-service-app-and-application-insights-instance"></a>Vytvoření aplikace služby App Service a instance Přehledy aplikací
+### <a name="create-app-service-app-and-application-insights-instance"></a>Vytvoření instance App Service aplikace a Application Insights
 
-1. Pokud ještě nemáte aplikaci App Service, kterou můžete použít, [vytvořte ji](app-service-web-get-started-dotnet-framework.md). Když vytvoříte aplikaci, můžete taky vytvořit připojený prostředek Application Insights. Když toto uděláte, `APPINSIGHTS_INSTRUMENTATIONKEY` je nastavena pro vás v aplikaci.
+1. Pokud ještě nemáte aplikaci App Service, kterou můžete použít, [vytvořte ji](app-service-web-get-started-dotnet-framework.md). Když vytváříte aplikaci, můžete také vytvořit prostředek připojené Application Insights. Když to uděláte, nastaví `APPINSIGHTS_INSTRUMENTATIONKEY` se pro vás ve vaší aplikaci.
 
-1. Pokud ještě nemáte prostředek Application Insights, který můžete použít, [vytvořte ho](../azure-monitor/app/create-new-resource.md ). Nastavte **typ aplikace** na **obecné**a přeskočte oddíly, které následují Za kopírovat **klíč instrumentace**.
+1. Pokud ještě nemáte prostředek Application Insights, který můžete použít, [vytvořte ho](../azure-monitor/app/create-new-resource.md ). Nastavte **Typ aplikace** na **Obecné**a přeskočte oddíly, které následují **po zkopírování klíče instrumentace**.
 
-1. Pokud již máte prostředek Application Insights, který chcete použít, [zkopírujte klíč instrumentace](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key).
+1. Pokud již máte Application Insights prostředek, který chcete použít, [Zkopírujte klíč instrumentace](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key).
 
 ### <a name="configure-app-settings"></a>Konfigurace nastavení aplikace 
 
-1. V **Průzkumníkovi serveru** v Visual Studiu rozbalte uzel **služby App Service** v části **Azure**.
+1. V **Průzkumník serveru** v aplikaci Visual Studio rozbalte uzel **App Service** v **Azure**.
 
-1. Rozbalte skupinu prostředků, ve které se aplikace App Service nachází, a klikněte pravým tlačítkem myši na aplikaci App Service.
+1. Rozbalte skupinu prostředků, ve které je vaše aplikace App Service, a pak klikněte pravým tlačítkem na aplikaci App Service.
 
-1. Vyberte **Zobrazit nastavení**.
+1. Vyberte **Nastavení zobrazení**.
 
-1. Do pole **Připojovací řetězce** přidejte následující položku.
+1. Do pole **připojovací řetězce** přidejte následující položku.
 
    |Název  |připojovací řetězec  |Typ databáze|
    |---------|---------|------|
-   |AzureWebJobsStorage | {Připojovací řetězec úložiště, který jste zkopírovali dříve}.|Vlastní|
+   |AzureWebJobsStorage | {připojovací řetězec úložiště, který jste zkopírovali dříve}|Vlastní|
 
-1. Pokud pole **Nastavení aplikace** nemá klíč instrumentace Application Insights, přidejte ten, který jste zkopírovali dříve. (Instrumentace klíč již může být tam, v závislosti na tom, jak jste vytvořili aplikaci App Service.)
+1. Pokud pole **nastavení aplikace** nemá klíč instrumentace Application Insights, přidejte jej, který jste zkopírovali dříve. (Klíč instrumentace už může být v závislosti na tom, jak jste aplikaci App Service vytvořili.)
 
    |Název  |Hodnota  |
    |---------|---------|
-   |APPINSIGHTS_INSTRUMENTATIONKEY | {instrumentační klíč} |
+   |APPINSIGHTS_INSTRUMENTATIONKEY | {instrumentace klíče} |
 
-1. Nahraďte *{instrumentation key}* pomocí klíče instrumentace z prostředku Application Insights, který používáte.
+1. Nahraďte *{Instrumentation Key}* klíčem instrumentace z Application Insights prostředku, který používáte.
 
 1. Vyberte **Uložit**.
 
-1. Přidejte připojení Application Insights k projektu, abyste ho mohli spustit místně. Do souboru *appsettings.json* `APPINSIGHTS_INSTRUMENTATIONKEY` přidejte pole, jako v následujícím příkladu:
+1. Přidejte do projektu připojení Application Insights, abyste ho mohli spustit místně. V souboru *appSettings. JSON* přidejte `APPINSIGHTS_INSTRUMENTATIONKEY` pole, jako v následujícím příkladu:
 
     ```json
     {
@@ -350,27 +350,27 @@ V této části můžete provést následující úkoly nastavit protokolování
     }
     ```
 
-    Nahraďte *{instrumentation key}* pomocí klíče instrumentace z prostředku Application Insights, který používáte.
+    Nahraďte *{Instrumentation Key}* klíčem instrumentace z Application Insights prostředku, který používáte.
 
 1. Uložte provedené změny.
 
-### <a name="add-application-insights-logging-provider"></a>Přidání zprostředkovatele protokolování Přehledy aplikací
+### <a name="add-application-insights-logging-provider"></a>Přidat zprostředkovatele protokolování Application Insights
 
-Chcete-li využít využití protokolování [Application Insights,](../azure-monitor/app/app-insights-overview.md) aktualizujte kód protokolování takto:
+Pokud chcete využít výhod protokolování [Application Insights](../azure-monitor/app/app-insights-overview.md) , aktualizujte kód protokolování a proveďte následující:
 
-* Přidejte zprostředkovatele protokolování Application Insights s výchozím [filtrováním](webjobs-sdk-how-to.md#log-filtering). Při spuštění místně, všechny informace a protokoly vyšší úrovně jsou zapsány do konzole a Application Insights.
-* Vložte objekt [LoggerFactory](./webjobs-sdk-how-to.md#logging-and-monitoring) do `using` bloku, abyste zajistili, že výstup protokolu je vyprázdněn při ukončení hostitele.
+* Přidejte poskytovatele protokolování Application Insights s výchozím [filtrováním](webjobs-sdk-how-to.md#log-filtering). Při místním spuštění se všechny informace a protokoly vyšší úrovně zapisují do konzoly i Application Insights.
+* Vložte objekt [LoggerFactory](./webjobs-sdk-how-to.md#logging-and-monitoring) do `using` bloku, aby bylo zajištěno, že výstup protokolu bude vyprázdněn při ukončení hostitele.
 
-1. Nainstalujte nejnovější stabilní verzi [ `Microsoft.Azure.WebJobs.Logging.ApplicationInsights` 3.x balíčku NuGet](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/).
+1. Nainstalujte nejnovější stabilní verzi [ `Microsoft.Azure.WebJobs.Logging.ApplicationInsights` balíčku NuGet](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/)3. x.
 
-   Tady je příkaz **Konzola správce balíčků:**
+   Tady je příkaz **konzoly Správce balíčků** :
 
    ```powershell
    Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -Version <3_X_VERSION>
    ```
     V tomto příkazu nahraďte `<3_X_VERSION>` podporovanou verzí balíčku.
 
-1. Otevřete *Program.cs* a nahraďte kód v metodě `Main` následujícím kódem:
+1. Otevřete *program.cs* a nahraďte kód v `Main` metodě následujícím kódem:
 
     ```cs
     static async Task Main()
@@ -401,66 +401,66 @@ Chcete-li využít využití protokolování [Application Insights,](../azure-mo
     }
     ```
 
-    Tím se do protokolování přidá poskytovatel Přehledy aplikací pomocí klíče, který jste přidali dříve do nastavení aplikace.
+    Tím přidáte poskytovatele Application Insights do protokolování pomocí klíče, který jste přidali do nastavení aplikace.
 
-## <a name="test-application-insights-logging"></a>Protokolování protokolování přehledů aplikací
+## <a name="test-application-insights-logging"></a>Protokolování Application Insights testů
 
-V této části znovu spustit místně ověřit, že data protokolování je nyní bude Application Insights, stejně jako do konzoly.
+V této části se znovu spustíte místně a ověříte, že data protokolování teď Application Insights a také na konzolu.
 
-1. Pomocí **Průzkumníka serveru** v sadě Visual Studio můžete vytvořit zprávu fronty jako [dříve](#test-locally), kromě zadání *přehledů aplikací Hello!* jako text zprávy.
+1. Pomocí **Průzkumník serveru** v aplikaci Visual Studio vytvořte zprávu fronty, jako jste použili [dříve](#test-locally), s výjimkou zadejte *Hello App Insights!* jako text zprávy.
 
 1. Spusťte projekt.
 
-   Sada WebJobs SDK zpracuje zprávu fronty a v okně konzoly se zobrazí protokoly.
+   Sada WebJobs SDK zpracuje zprávu fronty a protokoly se zobrazí v okně konzoly.
 
 1. Zavřete okno konzoly.
 
-1. Přejděte na [portál Azure](https://portal.azure.com/) a zobrazte si prostředek Application Insights. Vyhledejte a vyberte **Application Insights**.
+1. Pokud chcete zobrazit prostředek Application Insights, otevřete [Azure Portal](https://portal.azure.com/) . Vyhledejte a vyberte **Application Insights**.
 
-1. Zvolte instanci Application Insights.
+1. Vyberte instanci Application Insights.
 
-1. Vyberte **hledat**.
+1. Vyberte **Hledat**.
 
-   ![Vybrat hledat](./media/webjobs-sdk-get-started/select-search.png)
+   ![Vybrat hledání](./media/webjobs-sdk-get-started/select-search.png)
 
-1. Pokud nevidíte *Přehledy aplikací Hello!* zprávu, po několik minut pravidelně vyberte **Aktualizovat.** (Protokoly se nezobrazí okamžitě, protože chvíli trvá, než klient Application Insights vyprázdní protokoly, které zpracovává.)
+1. Pokud nevidíte službu *Hello pro App Insights!* Vyberte možnost **aktualizovat** pravidelně po dobu několika minut. (Protokoly se nezobrazují okamžitě, protože u klienta Application Insights vyprázdní protokoly, které zpracovávají.)
 
-   ![Protokoly v přehledech aplikací](./media/webjobs-sdk-get-started/logs-in-ai.png)
+   ![Přihlášení Application Insights](./media/webjobs-sdk-get-started/logs-in-ai.png)
 
 1. Zavřete okno konzoly.
 
 ## <a name="deploy-to-azure"></a><a name="deploy-as-a-webjob"></a>Nasazení do Azure
 
-Během nasazení vytvoříte instanci služby aplikace, ve které chcete spouštět funkce. Když publikujete konzolovou aplikaci .NET Core do služby App Service v Azure, automaticky se spustí jako webová úloha. Další informace o publikování najdete v [tématu Vývoj a nasazení webových úloh pomocí sady Visual Studio](webjobs-dotnet-deploy-vs.md).
+Během nasazování vytvoříte instanci služby App Service, ve které se budou spouštět vaše funkce. Když publikujete konzolovou aplikaci .NET Core pro App Service v Azure, automaticky se spustí jako webová úloha. Další informace o publikování najdete v tématu [vývoj a nasazení WebJobs pomocí sady Visual Studio](webjobs-dotnet-deploy-vs.md).
 
 [!INCLUDE [webjobs-publish-net-core](../../includes/webjobs-publish-net-core.md)]
 
-## <a name="trigger-the-function-in-azure"></a>Spuštění funkce v Azure
+## <a name="trigger-the-function-in-azure"></a>Aktivace funkce v Azure
 
-1. Ujistěte se, že neběžíte místně (zavřete okno konzoly, pokud je stále otevřené). V opačném případě může být místní instance první, která zpracuje všechny zprávy fronty, které vytvoříte.
+1. Ujistěte se, že nepracujete místně (zavřete okno konzoly, pokud je stále otevřeno). V opačném případě může být místní instance prvním pro zpracování všech vytvořených zpráv fronty.
 
-1. Na stránce **Fronta** v sadě Visual Studio přidejte zprávu do fronty jako předtím.
+1. Na stránce **fronta** v aplikaci Visual Studio přidejte zprávu do fronty jako dříve.
 
-1. Aktualizujte stránku **Fronty** a nová zpráva zmizí, protože byla zpracována funkcí spuštěnou v Azure.
+1. Aktualizujte stránku **fronty** a nová zpráva zmizí, protože byla zpracována funkcí spuštěnou v Azure.
 
    > [!TIP]
-   > Při testování v Azure, použijte režim vývoje, aby [zajistily,](webjobs-sdk-how-to.md#host-development-settings) že funkce aktivační událost fronty je vyvolána hned a vyhnout se zpoždění z důvodu [fronty dotazování exponenciální backoff](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#polling-algorithm).
+   > Při testování v Azure použijte [vývojový režim](webjobs-sdk-how-to.md#host-development-settings) k zajištění toho, aby se funkce triggeru fronty vyvolala hned, a aby se předešlo prodlevám v důsledku [cyklického dotazování exponenciálního omezení rychlostiu do fronty](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#polling-algorithm).
 
-### <a name="view-logs-in-application-insights"></a>Zobrazení protokolů v přehledech aplikací
+### <a name="view-logs-in-application-insights"></a>Zobrazit protokoly v Application Insights
 
-1. Otevřete [portál Azure](https://portal.azure.com/)a přejděte na prostředek Application Insights.
+1. Otevřete [Azure Portal](https://portal.azure.com/)a pokračujte na prostředek Application Insights.
 
-1. Vyberte **hledat**.
+1. Vyberte **Hledat**.
 
-1. Pokud nevidíte Hello *Azure!* zprávu, po několik minut pravidelně vyberte **Aktualizovat.**
+1. Pokud nevidíte *Hello Azure!* Vyberte možnost **aktualizovat** pravidelně po dobu několika minut.
 
-   Zobrazí se protokoly z funkce spuštěné ve webové úloze, včetně *Hello Azure!* text, který jste zadali v předchozím oddíle.
+   Zobrazí se protokoly z funkce spuštěné v úloze WebJob, včetně *Hello Azure.* text, který jste zadali v předchozí části.
 
 ## <a name="add-an-input-binding"></a>Přidání vstupní vazby
 
-Vstupní vazby zjednodušit kód, který čte data. V tomto příkladu bude zpráva fronty název objektu blob a budete používat název objektu blob k vyhledání a čtení objektu blob ve službě Azure Storage.
+Vstupní vazby zjednodušují kód, který čte data. V tomto příkladu bude zpráva fronty název objektu BLOB a vy použijete název objektu BLOB k vyhledání a načtení objektu BLOB v Azure Storage.
 
-1. V *Functions.cs*nahraďte metodu `ProcessQueueMessage` následujícím kódem:
+1. V *Functions.cs*nahraďte `ProcessQueueMessage` metodu následujícím kódem:
 
    ```cs
    public static void ProcessQueueMessage(
@@ -472,7 +472,7 @@ Vstupní vazby zjednodušit kód, který čte data. V tomto příkladu bude zpr�
    }
    ```
 
-   V tomto `queueTrigger` kódu je [výraz vazby](../azure-functions/functions-bindings-expressions-patterns.md), což znamená, že se překládá na jinou hodnotu za běhu.  Za běhu obsahuje obsah zprávy fronty.
+   V tomto kódu `queueTrigger` je [výraz vazby](../azure-functions/functions-bindings-expressions-patterns.md), což znamená, že se při běhu překládá na jinou hodnotu.  Za běhu má obsah zprávy Queue.
 
 1. Přidat `using`:
 
@@ -480,29 +480,29 @@ Vstupní vazby zjednodušit kód, který čte data. V tomto příkladu bude zpr�
    using System.IO;
    ```
 
-1. Vytvořte kontejner objektů blob ve vašem účtu úložiště.
+1. Vytvořte ve svém účtu úložiště kontejner objektů BLOB.
 
-   a. V **Průzkumníkovi serveru** v Sadě Visual Studio rozbalte uzel pro svůj účet úložiště, klikněte pravým tlačítkem myši na **objekty Blob**a vyberte **příkaz Vytvořit kontejner objektů blob**.
+   a. V **Průzkumník serveru** v aplikaci Visual Studio rozbalte uzel pro svůj účet úložiště, klikněte pravým tlačítkem na **objekty blob**a pak vyberte **vytvořit kontejner objektů BLOB**.
 
-   b. V dialogovém okně **Vytvořit kontejner objektů blob** zadejte *kontejner* jako název kontejneru a klepněte na tlačítko **OK**.
+   b. V dialogovém okně **vytvořit kontejner objektů BLOB** zadejte jako název kontejneru *kontejner* a pak klikněte na **OK**.
 
-1. Nahrajte *soubor Program.cs* do kontejneru objektů blob. (Tento soubor se zde používá jako příklad; můžete nahrát libovolný textový soubor a vytvořit zprávu fronty s názvem souboru.)
+1. Nahrajte soubor *program.cs* do kontejneru objektů BLOB. (Tento soubor se tady používá jako příklad. můžete nahrát libovolný textový soubor a vytvořit zprávu fronty s názvem souboru.)
 
-   a. V **Průzkumníkovi serveru**poklepejte na uzel vytvořeného kontejneru.
+   a. V **Průzkumník serveru**dvakrát klikněte na uzel pro kontejner, který jste vytvořili.
 
-   b. V okně **Kontejner** vyberte tlačítko **Nahrát.**
+   b. V okně **kontejner** vyberte tlačítko **nahrát** .
 
-   ![Tlačítko pro nahrávání objektů blob](./media/webjobs-sdk-get-started/blob-upload-button.png)
+   ![Tlačítko pro nahrání objektu BLOB](./media/webjobs-sdk-get-started/blob-upload-button.png)
 
-   c. Vyhledání a výběr *Program.cs*a potom vyberte **OK**.
+   c. Najděte a vyberte *program.cs*a pak vyberte **OK**.
 
-1. Vytvořte zprávu fronty ve frontě, kterou jste vytvořili dříve, s *Program.cs* jako text zprávy.
+1. Ve frontě, kterou jste vytvořili dříve, vytvořte zprávu queue s *program.cs* jako text zprávy.
 
-   ![Program.cs zprávy fronty](./media/webjobs-sdk-get-started/queue-msg-program-cs.png)
+   ![Program.cs zprávy ve frontě](./media/webjobs-sdk-get-started/queue-msg-program-cs.png)
 
-1. Spusťte projekt místně.
+1. Spustit projekt místně.
 
-   Zpráva fronty aktivuje funkci, která pak přečte objekt blob a zaznamená jeho délku. Výstup konzoly vypadá takto:
+   Zpráva fronty aktivuje funkci, která pak přečte objekt BLOB a zaprotokoluje jeho délku. Výstup konzoly vypadá takto:
 
    ```console
    Found the following functions:
@@ -516,7 +516,7 @@ Vstupní vazby zjednodušit kód, který čte data. V tomto příkladu bude zpr�
 
 ## <a name="add-an-output-binding"></a>Přidání výstupní vazby
 
-Výstupní vazby zjednodušit kód, který zapisuje data. Tento příklad upraví předchozí zápisem kopie objektu blob namísto protokolování jeho velikosti. Vazby úložiště objektů blob jsou součástí balíčku rozšíření úložiště Azure, který jsme nainstalovali dříve.
+Výstupní vazby zjednodušují kód, který zapisuje data. Tento příklad upraví předchozí vytvořením kopie objektu BLOB místo protokolování jeho velikosti. Vazby úložiště objektů BLOB jsou součástí balíčku rozšíření Azure Storage, který jsme předtím nainstalovali.
 
 1. Nahraďte metodu `ProcessQueueMessage` následujícím kódem:
 
@@ -532,23 +532,23 @@ Výstupní vazby zjednodušit kód, který zapisuje data. Tento příklad uprav�
    }
    ```
 
-1. Vytvořte další zprávu fronty s *Program.cs* jako text zprávy.
+1. Vytvoří další zprávu fronty s *program.cs* jako text zprávy.
 
-1. Spusťte projekt místně.
+1. Spustit projekt místně.
 
-   Zpráva fronty aktivuje funkci, která pak přečte objekt blob, zaznamená jeho délku a vytvoří nový objekt blob. Výstup konzoly je stejný, ale když přejdete do okna kontejneru objektů blob a vyberete **Aktualizovat**, zobrazí se nový objekt blob s názvem *copy-Program.cs.*
+   Zpráva ve frontě aktivuje funkci, která pak přečte objekt blob, zaprotokoluje jeho délku a vytvoří nový objekt BLOB. Výstup konzoly je stejný, ale když přejdete do okna kontejneru objektů BLOB a vyberete **aktualizovat**, zobrazí se nový objekt BLOB s názvem *copy-program.cs.*
 
-## <a name="republish-the-updates-to-azure"></a>Opětovné publikování aktualizací do Azure
+## <a name="republish-the-updates-to-azure"></a>Znovu publikovat aktualizace do Azure
 
 1. V **Průzkumníku řešení** klikněte pravým tlačítkem na požadovaný projekt a vyberte **Publikovat**.
 
-1. V dialogovém okně **Publikovat** zkontrolujte, zda je vybrán aktuální profil, a pak zvolte **Publikovat**. Výsledky publikování jsou podrobně popsány v okně **Výstup.**
+1. V dialogovém okně **publikovat** se ujistěte, že je vybraný aktuální profil, a pak zvolte **publikovat**. Výsledky publikování jsou podrobně popsané v okně **výstup** .
  
-1. Ověřte funkci v Azure znovu nahráním souboru do kontejneru objektů blob a přidáním zprávy do fronty, která je názvem nahraného souboru. Zobrazí se zpráva získat odebrány z fronty a kopii souboru vytvořeného v kontejneru objektů blob. 
+1. Ověřte funkci v Azure tak, že znovu nahrajete soubor do kontejneru objektů BLOB a přidáte do fronty zprávu, která je názvem nahraného souboru. Zobrazí se zpráva odebrána z fronty a kopie souboru vytvořeného v kontejneru objektů BLOB. 
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento článek vám ukázal, jak vytvořit, spustit a nasadit projekt WebJobs SDK 3.x.
+Tento článek ukazuje, jak vytvořit, spustit a nasadit projekt WebJobs SDK 3. x.
 
 > [!div class="nextstepaction"]
-> [Další informace o sdk webjobs](webjobs-sdk-how-to.md)
+> [Další informace o sadě WebJobs SDK](webjobs-sdk-how-to.md)

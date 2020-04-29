@@ -1,6 +1,6 @@
 ---
-title: Konfigurace aplikací klasické pracovní plochy, které volají webová rozhraní API – platforma identit Microsoftu | Azure
-description: Přečtěte si, jak nakonfigurovat kód desktopové aplikace, která volá webová rozhraní API.
+title: Konfigurace desktopových aplikací, které volají webová rozhraní API – Microsoft Identity Platform | Azure
+description: Naučte se konfigurovat kód desktopové aplikace, která volá webová rozhraní API.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,47 +12,47 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: e0b43f7563c9dfac6374590f6b081197536fe31e
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869017"
 ---
-# <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Desktopová aplikace, která volá webová api: konfigurace kódu
+# <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: Konfigurace kódu
 
-Teď, když jste vytvořili aplikaci, se dozvíte, jak nakonfigurovat kód s souřadnicemi aplikace.
+Teď, když jste vytvořili aplikaci, se dozvíte, jak nakonfigurovat kód pomocí souřadnic aplikace.
 
-## <a name="microsoft-authentication-libraries"></a>Knihovny ověřování společnosti Microsoft
+## <a name="microsoft-authentication-libraries"></a>Knihovny Microsoft Authentication Library
 
-Následující knihovny ověřování (MSALs) společnosti Microsoft podporují desktopové aplikace.
+Následující knihovny Microsoft Authentication Library (MSALs) podporují desktopové aplikace.
 
   Identity a ověřování Microsoftu | Popis
   ------------ | ----------
-  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Podporuje vytváření desktopové aplikace na více platformách, jako je Linux, Windows a macOS.
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Podporuje vytváření desktopové aplikace na více platformách.
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL v Javě | Podporuje vytváření desktopové aplikace na více platformách.
-  ![MSAL iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL iOS | Podporuje desktopové aplikace, které běží pouze na macOS.
+  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Podporuje vytváření desktopových aplikací na různých platformách, jako jsou Linux, Windows a macOS.
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Podporuje vytváření desktopových aplikací na různých platformách.
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL v Javě | Podporuje vytváření desktopových aplikací na různých platformách.
+  ![MSAL iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL iOS | Podporuje aplikace klasické pracovní plochy, které běží pouze na macOS.
 
 ## <a name="public-client-application"></a>Veřejná klientská aplikace
 
-Z hlediska kódu jsou desktopové aplikace veřejnými klientskými aplikacemi. Konfigurace bude trochu odlišná v závislosti na tom, zda používáte interaktivní ověřování nebo ne.
+Z hlediska kódu jsou desktopové aplikace veřejné klientské aplikace. Konfigurace se trochu liší v závislosti na tom, zda používáte interaktivní ověřování, nebo ne.
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-Budete muset stavět a manipulovat `IPublicClientApplication`s MSAL.NET .
+Budete muset sestavit a manipulovat s MSAL.NET `IPublicClientApplication`.
 
 ![IPublicClientApplication](media/scenarios/public-client-application.png)
 
-### <a name="exclusively-by-code"></a>Výhradně podle kódu
+### <a name="exclusively-by-code"></a>Výhradně pomocí kódu
 
-Následující kód inkonkaluje veřejnou klientskou aplikaci a přihlašuje uživatele ve veřejném cloudu Microsoft Azure pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+Následující kód vytvoří instanci veřejné klientské aplikace a přihlásí uživatele ve veřejném cloudu Microsoft Azure pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 
 ```csharp
 IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
     .Build();
 ```
 
-Pokud máte v úmyslu použít interaktivní ověřování nebo tok `.WithRedirectUri` kódu zařízení, jak je vidět dříve, použijte modifikátor.
+Pokud máte v úmyslu používat interaktivní ověřování nebo tok kódu zařízení, jak bylo vidět dříve, `.WithRedirectUri` použijte modifikátor.
 
 ```csharp
 IPublicClientApplication app;
@@ -63,7 +63,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 ### <a name="use-configuration-files"></a>Použití konfiguračních souborů
 
-Následující kód inkonaluje veřejnou klientskou aplikaci z konfiguračního objektu, který může být vyplněn programově nebo číst z konfiguračního souboru.
+Následující kód vytvoří instanci veřejné klientské aplikace z konfiguračního objektu, který může být vyplněn programově nebo načten z konfiguračního souboru.
 
 ```csharp
 PublicClientApplicationOptions options = GetOptions(); // your own method
@@ -72,9 +72,9 @@ IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicat
         .Build();
 ```
 
-### <a name="more-elaborated-configuration"></a>Propracovanější konfigurace
+### <a name="more-elaborated-configuration"></a>Podrobněji vypracované konfigurace
 
-Sestavení aplikace můžete zpracovat přidáním několika modifikátorů. Například pokud chcete, aby vaše aplikace byla víceklientskou aplikací v národním cloudu, jako je například vláda USA zobrazená zde, můžete napsat:
+Sestavování aplikace můžete vymezit přidáním několika modifikátorů. Například pokud chcete, aby vaše aplikace byla víceklientské aplikace v národním cloudu, jako je zde uvedená státní správa USA, mohli byste napsat:
 
 ```csharp
 IPublicClientApplication app;
@@ -85,7 +85,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-MSAL.NET obsahuje také modifikátor služby AD FS 2019:
+MSAL.NET také obsahuje modifikátor pro Active Directory Federation Services (AD FS) 2019:
 
 ```csharp
 IPublicClientApplication app;
@@ -94,7 +94,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-Nakonec pokud chcete získat tokeny pro klienta B2C služby Azure Active Directory (Azure AD), zadejte svého klienta, jak je znázorněno v následujícím fragmentu kódu:
+Nakonec, pokud chcete získat tokeny pro klienta Azure Active Directory (Azure AD) B2C, zadejte svého tenanta, jak je znázorněno v následujícím fragmentu kódu:
 
 ```csharp
 IPublicClientApplication app;
@@ -105,14 +105,14 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 ### <a name="learn-more"></a>Další informace
 
-Další informace o konfiguraci MSAL.NET desktopové aplikace:
+Další informace o tom, jak nakonfigurovat desktopovou aplikaci MSAL.NET:
 
-- Seznam všech modifikátorů `PublicClientApplicationBuilder`dostupných na aplikaci naleznete v referenční dokumentaci [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods).
-- Popis všech možností vystavených `PublicClientApplicationOptions`v aplikaci naleznete v tématu [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) v referenční dokumentaci.
+- Seznam všech modifikátorů, které jsou k dispozici v systému `PublicClientApplicationBuilder`, naleznete v referenční dokumentaci [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods).
+- Popis všech možností zveřejněných v `PublicClientApplicationOptions`nástroji naleznete v tématu [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) v referenční dokumentaci.
 
 ### <a name="complete-example-with-configuration-options"></a>Kompletní příklad s možnostmi konfigurace
 
-Představte si aplikaci konzoly `appsettings.json` .NET Core, která má následující konfigurační soubor:
+Představte si konzolovou aplikaci .NET Core, `appsettings.json` která má následující konfigurační soubor:
 
 ```json
 {
@@ -128,7 +128,7 @@ Představte si aplikaci konzoly `appsettings.json` .NET Core, která má násled
 }
 ```
 
-Máte malý kód ke čtení v tomto souboru pomocí . Konfigurační rámec s čistým a čistým a čistým a finančním zajištěním:
+Máte malý kód pro čtení v tomto souboru pomocí. Rozhraní pro konfiguraci zadané příkazem NET:
 
 ```csharp
 public class SampleConfiguration
@@ -171,7 +171,7 @@ public class SampleConfiguration
 }
 ```
 
-Nyní, chcete-li vytvořit aplikaci, napište následující kód:
+Nyní vytvořte aplikaci zadáním následujícího kódu:
 
 ```csharp
 SampleConfiguration config = SampleConfiguration.ReadFromJsonFile("appsettings.json");
@@ -180,11 +180,11 @@ var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.Pub
            .Build();
 ```
 
-Před voláním `.Build()` metody můžete přepsat konfiguraci `.WithXXX` voláním metod, jak je vidět dříve.
+Před voláním `.Build()` metody můžete svou konfiguraci přepsat voláním `.WithXXX` metod, jak je vidět dříve.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Zde je třída použitá ve vzorcích vývoje MSAL Java ke konfiguraci vzorků: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
+Tady je třída, která se používá v ukázkách vývoje MSAL Java ke konfiguraci ukázek: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
 
 ```Java
 PublicClientApplication pca = PublicClientApplication.builder(CLIENT_ID)
@@ -205,9 +205,9 @@ app = msal.PublicClientApplication(
     )
 ```
 
-# <a name="macos"></a>[Macos](#tab/macOS)
+# <a name="macos"></a>[MacOS](#tab/macOS)
 
-Následující kód inkonkaluje veřejnou klientskou aplikaci a přihlašuje uživatele ve veřejném cloudu Microsoft Azure pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+Následující kód vytvoří instanci veřejné klientské aplikace a přihlásí uživatele ve veřejném cloudu Microsoft Azure pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 
 ### <a name="quick-configuration"></a>Rychlá konfigurace
 
@@ -220,15 +220,15 @@ MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig 
 MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&msalError];
 ```
 
-Swift:
+SWIFT
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>")
 if let application = try? MSALPublicClientApplication(configuration: config){ /* Use application */}
 ```
 
-### <a name="more-elaborated-configuration"></a>Propracovanější konfigurace
+### <a name="more-elaborated-configuration"></a>Podrobněji vypracované konfigurace
 
-Sestavení aplikace můžete zpracovat přidáním několika modifikátorů. Například pokud chcete, aby vaše aplikace byla víceklientskou aplikací v národním cloudu, jako je například vláda USA zobrazená zde, můžete napsat:
+Sestavování aplikace můžete vymezit přidáním několika modifikátorů. Například pokud chcete, aby vaše aplikace byla víceklientské aplikace v národním cloudu, jako je zde uvedená státní správa USA, mohli byste napsat:
 
 Cíl-C:
 
@@ -249,7 +249,7 @@ MSALPublicClientApplication *application =
                 [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&applicationError];
 ```
 
-Swift:
+SWIFT
 
 ```swift
 let authority = try? MSALAADAuthority(cloudInstance: .usGovernmentCloudInstance, audienceType: .azureADMultipleOrgsAudience, rawTenant: nil)

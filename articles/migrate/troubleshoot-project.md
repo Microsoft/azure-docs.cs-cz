@@ -1,68 +1,68 @@
 ---
 title: Řešení problémů s projekty Azure Migrate
-description: Pomáhá řešit problémy s vytvářením a správou projektů Migrace Azure.
+description: Pomáhá řešit problémy s vytvářením a správou Azure Migrate projektů.
 ms.topic: troubleshooting
 author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/01/2020
 ms.openlocfilehash: b1fc4bce988b13a9ff76fd961d524ce945876054
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81535396"
 ---
 # <a name="troubleshoot-azure-migrate-projects"></a>Řešení problémů s projekty Azure Migrate
 
-Tento článek vám pomůže vyřešit problémy při vytváření a správě projektů [migrace Azure.](migrate-services-overview.md)
+Tento článek vám pomůže při řešení potíží při vytváření a správě [Azure Migratech](migrate-services-overview.md) projektů.
 
 ## <a name="how-to-add-new-project"></a>Jak přidat nový projekt?
 
-Můžete mít více projektů Migrace Azure v předplatném. [Přečtěte si, jak](how-to-add-tool-first-time.md) vytvořit projekt poprvé, nebo [přidat další](create-manage-projects.md#create-additional-projects) projekty.
+V předplatném můžete mít více Azure Migratech projektů. [Naučte](how-to-add-tool-first-time.md) se, jak poprvé vytvořit projekt, nebo [Přidat další](create-manage-projects.md#create-additional-projects) projekty.
 
-## <a name="what-azure-permissions-are-needed"></a>Jaká oprávnění Azure jsou potřeba?
+## <a name="what-azure-permissions-are-needed"></a>Jaká oprávnění Azure potřebujete?
 
-K vytvoření projektu Migrace Azure potřebujete oprávnění přispěvatele nebo vlastníka v předplatném.
+Chcete-li vytvořit projekt Azure Migrate, potřebujete oprávnění přispěvatele nebo vlastníka v rámci předplatného.
 
-## <a name="cant-find-a-project"></a>Nelze najít projekt
+## <a name="cant-find-a-project"></a>Nejde najít projekt.
 
-Nalezení existujícího projektu Migrace Azure závisí na tom, jestli používáte aktuální nebo starou verzi Azure Migrate. [Postupujte](create-manage-projects.md#find-a-project)podle .
+Hledání stávajícího Azure Migrate projektu závisí na tom, zda používáte aktuální nebo starou verzi Azure Migrate. [Sledujte](create-manage-projects.md#find-a-project).
 
 
-## <a name="cant-find-a-geography"></a>Nelze najít geografii
+## <a name="cant-find-a-geography"></a>Nemůžete najít geografickou oblast.
 
-Projekt Migrace Azure můžete vytvořit v podporovaných zeměpisných oblastech pro [veřejné](migrate-support-matrix.md#supported-geographies-public-cloud) a [vládní cloudy](migrate-support-matrix.md#supported-geographies-azure-government).
+V podporovaných geografických oblastech pro cloudy [veřejné](migrate-support-matrix.md#supported-geographies-public-cloud) a [státní správy](migrate-support-matrix.md#supported-geographies-azure-government)můžete vytvořit Azure Migrate projekt.
 
-## <a name="what-are-vm-limits"></a>Co jsou limity virtuálních mís?
+## <a name="what-are-vm-limits"></a>Co jsou omezení virtuálních počítačů?
 
-Můžete vyhodnotit až 35 000 virtuálních měn VMware nebo až 35 000 virtuálních virtuálních<-v. Hyper-V v jednom projektu. Projekt může zahrnovat virtuální zařízení VMware i virtuální zařízení Hyper-V až do limitů hodnocení.
+V jednom projektu můžete vyhodnotit až 35 000 virtuálních počítačů VMware nebo až 35 000 virtuálních počítačů Hyper-V. Projekt může zahrnovat virtuální počítače VMware i virtuální počítače Hyper-V, a to až do limitů hodnocení.
 
-## <a name="can-i-upgrade-old-project"></a>Mohu upgradovat starý projekt?
+## <a name="can-i-upgrade-old-project"></a>Můžu upgradovat starý projekt?
 
-Projekty z předchozí verze Migrace Azure nelze aktualizovat. Je třeba [vytvořit nový projekt](how-to-add-tool-first-time.md)a přidat do něj nástroje.
+Projekty z předchozí verze Azure Migrate nelze aktualizovat. Musíte [vytvořit nový projekt](how-to-add-tool-first-time.md)a přidat do něj nástroje.
 
-## <a name="cant-create-a-project"></a>Nelze vytvořit projekt
+## <a name="cant-create-a-project"></a>Nejde vytvořit projekt.
 
-Pokud se pokusíte vytvořit projekt a dojde k chybě nasazení:
+Pokud se pokusíte vytvořit projekt a dojde k chybě při nasazení:
 
-- Zkuste vytvořit projekt znovu v případě, že se jedná o přechodnou chybu. V **nasazení**klikněte na **Znovu nasadit** a zkuste to znovu.
-- Zkontrolujte, zda máte v předplatném oprávnění přispěvatele nebo vlastníka.
-- Pokud nasazujete v nově přidané zeměpisné oblasti, počkejte krátkou dobu a zkuste to znovu.
-- Pokud se zobrazí chyba "Požadavky musí obsahovat hlavičky identity uživatele", může to znamenat, že nemáte přístup k tenantovi Azure Active Directory (Azure AD) organizace. V tomto případě:
-    - Když jste poprvé přidáni do klienta Azure AD, obdržíte e-mailovou pozvánku k připojení k tenantovi.
-    - Přijměte pozvánku, která má být přidána do tenanta.
-    - Pokud e-mail nevidíte, kontaktujte uživatele s přístupem k tenantovi a požádejte ho, aby vám [pozvánku znovu odeslal.](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator#resend-invitations-to-guest-users)
-    - Po obdržení e-mailu s pozvánkou jej otevřete a vyberte odkaz pro přijetí pozvánky. Potom se odhlaste z webu Azure Portal a znovu se přihlaste. (aktualizace prohlížeče nebude fungovat.) Potom můžete začít vytvářet projekt migrace.
+- Zkuste projekt znovu vytvořit pro případ, že se jedná o přechodnou chybu. V **nasazení**klikněte na **znovu nasadit** a zkuste to znovu.
+- Ověřte, jestli máte v předplatném oprávnění Přispěvatel nebo Owner.
+- Pokud nasazujete v nově přidané geografické oblasti, počkejte krátkou dobu a pak to zkuste znovu.
+- Pokud se zobrazí chybová zpráva "požadavky musí obsahovat hlavičky identity uživatele", může to znamenat, že nemáte přístup k tenantovi Azure Active Directory (Azure AD) organizace. V tomto případě:
+    - Při prvním přidání do tenanta Azure AD obdržíte e-mailovou pozvánku pro připojení ke klientovi.
+    - Přijměte pozvánku, která se má přidat do tenanta.
+    - Pokud se e-mail nezobrazuje, obraťte se na uživatele s přístupem k tenantovi a požádejte ho, aby [pozvánku poslal znovu](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator#resend-invitations-to-guest-users) .
+    - Po přijetí e-mailu s pozvánkou otevřete ho a vyberte odkaz pro přijetí pozvánky. Pak se odhlaste ze Azure Portal a znovu se přihlaste. (obnovení prohlížeče nebude fungovat.) Pak můžete začít vytvářet projekt migrace.
 
-## <a name="how-do-i-delete-a-project"></a>Jak odstranit projekt
+## <a name="how-do-i-delete-a-project"></a>Návody odstranit projekt
 
-[Podle těchto pokynů](create-manage-projects.md#delete-a-project) projekt odstraňte. Všimněte si, že při odstranění projektu, projekt a metadata o zjištěných počítačích v projektu jsou odstraněny.
+Chcete-li odstranit projekt, [postupujte podle těchto pokynů](create-manage-projects.md#delete-a-project) . Všimněte si, že při odstranění projektu se odstraní projekt i metadata o zjištěných počítačích v projektu.
 
 ## <a name="added-tools-dont-show"></a>Přidané nástroje se nezobrazují
 
-Ujistěte se, že máte vybrán správný projekt. V centru Azure Migrate > **servery** nebo v **databázích**klikněte na **Změnit** vedle **projektu (Změnit)** v pravém horním rohu obrazovky. Zvolte správné předplatné a název projektu > **OK**. Stránka by se měla aktualizovat pomocí přidaných nástrojů vybraného projektu.
+Ujistěte se, že máte vybraný správný projekt. V centru Azure Migrate > **serverech** nebo v části **databáze**klikněte v pravém horním rohu obrazovky na **změnit** u pole **migrovat projekt (změnit)** . Vyberte správné předplatné a název projektu > **OK**. Stránka by se měla aktualizovat pomocí přidaných nástrojů vybraného projektu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přidejte nástroje [pro hodnocení](how-to-assess.md) nebo [migraci](how-to-migrate.md) do projektů Migrace Azure.
+Přidejte nástroje pro [posouzení](how-to-assess.md) nebo [migraci](how-to-migrate.md) do Azure Migrate projektů.

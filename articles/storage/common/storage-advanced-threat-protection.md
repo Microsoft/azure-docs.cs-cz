@@ -11,10 +11,10 @@ ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.openlocfilehash: 724c250b56107cb68da387bdd531602e8d239e1c
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82127529"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>Konfigurace rozšířené ochrany před internetovými útoky pro Azure Storage
@@ -91,7 +91,7 @@ Pomocí příkazů rozhraní REST API můžete vytvořit, aktualizovat nebo zís
 * [Rozšířená ochrana před internetovými útoky – vytvořit](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
 * [Rozšířená ochrana před internetovými útoky – získání](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
 
-### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
 
 Použijte následující rutiny PowerShellu:
 

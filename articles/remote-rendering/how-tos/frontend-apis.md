@@ -1,18 +1,18 @@
 ---
-title: Azure Front-end ová API pro ověřování
-description: Vysvětluje, jak používat rozhraní API front-end jazyka C# pro ověřování.
+title: Rozhraní API Azure front-endu pro ověřování
+description: Vysvětluje, jak používat C# front-endové rozhraní API pro ověřování.
 author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
 ms.openlocfilehash: 04296a3dab61fdb569126abc1bc1f975d69e226d
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681347"
 ---
-# <a name="use-the-azure-frontend-apis-for-authentication"></a>Použití api pro front-end Azure pro ověřování
+# <a name="use-the-azure-frontend-apis-for-authentication"></a>Použití rozhraní API front-endu Azure pro ověřování
 
 V této části popíšeme, jak používat rozhraní API jazyka C# pro ověřování.
 
@@ -20,7 +20,7 @@ V této části popíšeme, jak používat rozhraní API jazyka C# pro ověřov�
 
 AzureFrontendAccountInfo se používá k nastavení ověřovacích informací pro ```AzureFrontend``` instanci v sadě SDK.
 
-Důležitými poli jsou:
+Důležitá jsou tato pole:
 
 ```cs
 
@@ -41,29 +41,29 @@ Důležitými poli jsou:
 
 ```
 
-Pro _oblast_ ovou část v doméně použijte [oblast ve vašem okolí](../reference/regions.md).
+Pro část _oblasti_ v doméně použijte [oblast blízko sebe](../reference/regions.md).
 
-Informace o účtu lze získat z portálu, jak je popsáno v odstavci [informace o načtení účtu.](create-an-account.md#retrieve-the-account-information)
+Informace o účtu lze získat z portálu, jak je popsáno v odstavci [načtení informací o účtu](create-an-account.md#retrieve-the-account-information) .
 
-## <a name="azure-frontend"></a>Azure Front-end
+## <a name="azure-frontend"></a>Azure front-end
 
-Příslušné třídy ```AzureFrontend``` ```AzureSession```jsou a . ```AzureFrontend```se používá pro správu účtu a funkce na úrovni účtu, která zahrnuje: převod majetku a vytváření relací. ```AzureSession```používá se pro funkce na úrovni relace a zahrnuje: aktualizaci relace, dotazy, obnovení a vyřazení z provozu.
+Příslušné třídy jsou ```AzureFrontend``` a ```AzureSession```. ```AzureFrontend```se používá ke správě účtů a funkcím na úrovni účtu, mezi které patří: převod assetů a vytváření relací vykreslování. ```AzureSession```se používá pro funkce na úrovni relace a zahrnuje: aktualizace relace, dotazy, obnovení a vyřazení z provozu.
 
-Každý otevřený/vytvořený ```AzureSession``` bude mít odkaz na front-end, který je vytvořen. Chcete-li čistě vypnout, všechny relace musí být přiděleny před front-end bude deallocated.
+Každý otevřený/vytvořený ```AzureSession``` bude mít odkaz na front-end, který je vytvořil. Chcete-li provést čistě vypnutí, je nutné zrušit přidělení všech relací před tím, než dojde k uvolnění front-endu.
 
-Zrušení přidělení relace nezastaví virtuální počítač v Azure, `AzureSession.StopAsync` musí být explicitně volána.
+Zrušení přidělení relace nezastaví virtuální počítač v Azure, `AzureSession.StopAsync` musí být explicitně volaný.
 
-Po vytvoření relace a její stav byl označen jako připravený, může se `AzureSession.ConnectToRuntime`připojit ke vzdálenému vykreslování runtime s .
+Jakmile je relace vytvořena a její stav byl označen jako připravený, může se připojit k modulu runtime vzdáleného vykreslování pomocí `AzureSession.ConnectToRuntime`.
 
 ### <a name="threading"></a>Dělení na vlákna
 
 Všechna asynchronní volání AzureSession a AzureFrontend jsou dokončena ve vlákně na pozadí, nikoli v hlavním vlákně aplikace.
 
-### <a name="conversion-apis"></a>Předávací prostředí převodu
+### <a name="conversion-apis"></a>Rozhraní API pro převod
 
-Další informace o službě převodu naleznete [v rozhraní REST API pro převod modelu](conversion/conversion-rest-api.md).
+Další informace o službě převodu najdete v [REST API převodu modelů](conversion/conversion-rest-api.md).
 
-#### <a name="start-asset-conversion"></a>Zahájit převod majetku
+#### <a name="start-asset-conversion"></a>Spustit převod assetu
 
 ``` cs
 private StartConversionAsync _pendingAsync = null;
@@ -89,7 +89,7 @@ void StartAssetConversion(AzureFrontend frontend, string modelName, string model
 }
 ```
 
-#### <a name="get-conversion-status"></a>Získání stavu konverze
+#### <a name="get-conversion-status"></a>Získat stav převodu
 
 ``` cs
 private ConversionStatusAsync _pendingAsync = null
@@ -113,11 +113,11 @@ void GetConversionStatus(AzureFrontend frontend, string assetId)
 }
 ```
 
-### <a name="rendering-apis"></a>Vykreslovací api
+### <a name="rendering-apis"></a>Rozhraní API pro vykreslování
 
-Podrobnosti o [správě relací](session-rest-api.md) najdete v rozhraní REST API pro správu relací.
+Podrobnosti o správě relací najdete v [REST API správy relací](session-rest-api.md) .
 
-Relace vykreslování lze vytvořit dynamicky ve službě nebo již existující ID relace lze "otevřít" do objektu AzureSession.
+Relaci vykreslování lze buď vytvořit dynamicky na službě, nebo již existující ID relace lze otevřít do objektu AzureSession.
 
 #### <a name="create-rendering-session"></a>Vytvořit relaci vykreslování
 
@@ -144,7 +144,7 @@ void CreateRenderingSession(AzureFrontend frontend, RenderingSessionVmSize vmSiz
 }
 ```
 
-#### <a name="open-an-existing-rendering-session"></a>Otevření existující relace vykreslování
+#### <a name="open-an-existing-rendering-session"></a>Otevřít existující relaci vykreslování
 
 Otevření existující relace je synchronní volání.
 
@@ -179,9 +179,9 @@ void GetCurrentRenderingSessions(AzureFrontend frontend)
 }
 ```
 
-### <a name="session-apis"></a>Api relace
+### <a name="session-apis"></a>Rozhraní API relace
 
-#### <a name="get-rendering-session-properties"></a>Získání vlastností relace vykreslování
+#### <a name="get-rendering-session-properties"></a>Získat vlastnosti relace vykreslování
 
 ``` cs
 private SessionPropertiesAsync _pendingAsync = null;
@@ -204,7 +204,7 @@ void GetRenderingSessionProperties(AzureSession session)
 }
 ```
 
-#### <a name="update-rendering-session"></a>Aktualizovat relaci vykreslování
+#### <a name="update-rendering-session"></a>Relace vykreslování aktualizace
 
 ``` cs
 private SessionAsync _pendingAsync;
@@ -228,7 +228,7 @@ void UpdateRenderingSession(AzureSession session, ARRTimeSpan updatedLease)
 }
 ```
 
-#### <a name="stop-rendering-session"></a>Ukončení relace vykreslování
+#### <a name="stop-rendering-session"></a>Zastavit relaci vykreslování
 
 ``` cs
 private SessionAsync _pendingAsync;
@@ -251,7 +251,7 @@ void StopRenderingSession(AzureSession session)
 }
 ```
 
-#### <a name="connect-to-arr-inspector"></a>Připojení k inspektoru ARR
+#### <a name="connect-to-arr-inspector"></a>Připojit ke kontrole ARR
 
 ``` cs
 private ArrInspectorAsync _pendingAsync = null;
@@ -289,4 +289,4 @@ void ConnectToArrInspector(AzureSession session, string hostname)
 ## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření účtu](create-an-account.md)
-* [Příklad skriptů prostředí PowerShell](../samples/powershell-example-scripts.md)
+* [Ukázkové skripty PowerShellu](../samples/powershell-example-scripts.md)

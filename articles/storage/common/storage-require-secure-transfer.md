@@ -1,7 +1,7 @@
 ---
-title: Vyžadovat zabezpečený přenos pro zajištění zabezpečeného připojení
+title: Pro zajištění zabezpečených připojení vyžadovat zabezpečený přenos
 titleSuffix: Azure Storage
-description: Zjistěte, jak vyžadovat zabezpečený přenos pro požadavky do Azure Storage. Pokud požadujete zabezpečený převod pro účet úložiště, všechny požadavky pocházející z nezabezpečeného připojení jsou odmítnuty.
+description: Naučte se vyžadovat zabezpečený přenos pro požadavky na Azure Storage. Pokud pro účet úložiště požadujete zabezpečený přenos, všechny požadavky pocházející z nezabezpečeného připojení se odmítnou.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,52 +11,52 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 125f4188ed3f12f366c619af9efe3aa203987c19
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81870518"
 ---
-# <a name="require-secure-transfer-to-ensure-secure-connections"></a>Vyžadovat zabezpečený přenos pro zajištění zabezpečeného připojení
+# <a name="require-secure-transfer-to-ensure-secure-connections"></a>Pro zajištění zabezpečených připojení vyžadovat zabezpečený přenos
 
-Účet úložiště můžete nakonfigurovat tak, aby přijímal požadavky ze zabezpečených připojení, a to pouze nastavením **vlastnosti Požadované zabezpečeného převodu** pro účet úložiště. Pokud požadujete zabezpečený přenos, všechny požadavky pocházející z nezabezpečeného připojení jsou odmítnuty. Společnost Microsoft doporučuje, abyste vždy vyžadovali zabezpečený přenos pro všechny účty úložiště.
+Účet úložiště můžete nakonfigurovat tak, aby přijímal požadavky od zabezpečených připojení jenom nastavením vlastnosti **požadováno zabezpečeným přenosem** pro účet úložiště. Pokud vyžadujete zabezpečený přenos, všechny požadavky pocházející z nezabezpečeného připojení se odmítnou. Microsoft doporučuje, abyste vždycky vyžadovali zabezpečený přenos pro všechny vaše účty úložiště.
 
-Když je vyžadován zabezpečený přenos, musí být provedeno volání operace rozhraní API úložiště Azure STORAGE přes protokol HTTPS. Jakýkoli požadavek poslaná přes protokol HTTP je odmítnut.
+Je-li požadován zabezpečený přenos, musí být volání operace Azure Storage REST API provedeno prostřednictvím protokolu HTTPS. Všechny požadavky vytvořené přes protokol HTTP jsou odmítnuty.
 
-Připojení ke sdílené složce Azure přes SMB bez šifrování se nezdaří, když je pro účet úložiště vyžadován zabezpečený přenos. Příklady nezabezpečených připojení zahrnují připojení přes SMB 2.1, SMB 3.0 bez šifrování nebo některé verze klienta SMB linuxu.
+Připojení ke sdílené složce Azure přes protokol SMB bez šifrování se nepovede, když se pro účet úložiště vyžaduje zabezpečený přenos. Mezi nezabezpečená připojení patří například ta, která se nastavila přes SMB 2,1, SMB 3,0 bez šifrování nebo některé verze klienta systému Linux SMB.
 
-Ve výchozím nastavení je **vlastnost Požadováno zabezpečeného převodu** povolena při vytváření účtu úložiště.
+Ve výchozím nastavení je při vytváření účtu úložiště povolená vlastnost **požadovaná zabezpečeným přenosem** .
 
 > [!NOTE]
-> Vzhledem k tomu, že Azure Storage nepodporuje protokol HTTPS pro vlastní názvy domén, tato možnost se nepoužije, když používáte vlastní název domény. A klasické účty úložiště nejsou podporovány.
+> Vzhledem k tomu, že Azure Storage nepodporuje HTTPS pro vlastní názvy domén, tato možnost se nepoužije, když používáte vlastní název domény. A klasické účty úložiště se nepodporují.
 
-## <a name="require-secure-transfer-in-the-azure-portal"></a>Vyžadovat zabezpečený přenos na webu Azure Portal
+## <a name="require-secure-transfer-in-the-azure-portal"></a>Vyžadovat zabezpečený přenos v Azure Portal
 
-Vlastnost **Požadováno zabezpečeného přenosu** můžete zapnout při vytváření účtu úložiště na [webu Azure Portal](https://portal.azure.com). Můžete ji také povolit pro existující účty úložiště.
+Vlastnost **Required pro zabezpečený přenos** můžete zapnout při vytváření účtu úložiště v [Azure Portal](https://portal.azure.com). Můžete ho taky povolit pro existující účty úložiště.
 
-### <a name="require-secure-transfer-for-a-new-storage-account"></a>Vyžadovat zabezpečený převod pro nový účet úložiště
+### <a name="require-secure-transfer-for-a-new-storage-account"></a>Vyžadovat zabezpečený přenos pro nový účet úložiště
 
-1. Otevřete podokno **Vytvořit účet úložiště** na webu Azure Portal.
-1. V části **Zabezpečené přenosy**vyberte **Možnost Povoleno**.
+1. Otevřete podokno **vytvořit účet úložiště** v Azure Portal.
+1. V části **požadovaný zabezpečený přenos**vyberte **povoleno**.
 
-   ![Vytvořit okno účtu úložiště](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_1.png)
+   ![Okno vytvořit účet úložiště](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_1.png)
 
-### <a name="require-secure-transfer-for-an-existing-storage-account"></a>Vyžadovat zabezpečený převod pro existující účet úložiště
+### <a name="require-secure-transfer-for-an-existing-storage-account"></a>Vyžadovat zabezpečený přenos pro existující účet úložiště
 
-1. Vyberte existující účet úložiště na webu Azure Portal.
-1. V podokně nabídky účtu úložiště vyberte v části **NASTAVENÍ** **položku Konfigurace**.
-1. V části **Zabezpečené přenosy**vyberte **Možnost Povoleno**.
+1. Vyberte existující účet úložiště v Azure Portal.
+1. V podokně nabídky účtu úložiště v části **Nastavení**vyberte **Konfigurace**.
+1. V části **požadovaný zabezpečený přenos**vyberte **povoleno**.
 
    ![Podokno nabídky účtu úložiště](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_2.png)
 
 ## <a name="require-secure-transfer-from-code"></a>Vyžadovat zabezpečený přenos z kódu
 
-Chcete-li vyžadovat zabezpečený přenos programově, nastavte _vlastnost supportsHttpsTrafficOnly_ v účtu úložiště. Tuto vlastnost můžete nastavit pomocí rozhraní REST API zprostředkovatele prostředků úložiště, klientských knihoven nebo nástrojů:
+Pokud chcete zabezpečený přenos vyžadovat programově, nastavte vlastnost _supportsHttpsTrafficOnly_ v účtu úložiště. Tuto vlastnost můžete nastavit pomocí REST API poskytovatele prostředků úložiště, klientských knihoven nebo nástrojů:
 
 * [REST API](/rest/api/storagerp/storageaccounts)
-* [PowerShell](/powershell/module/az.storage/set-azstorageaccount)
-* [Rozhraní příkazového řádku](/cli/azure/storage/account)
-* [Nodejs](https://www.npmjs.com/package/azure-arm-storage/)
+* [Prostředí](/powershell/module/az.storage/set-azstorageaccount)
+* [CLI](/cli/azure/storage/account)
+* [NodeJS](https://www.npmjs.com/package/azure-arm-storage/)
 * [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage)
 * [Python SDK](https://pypi.org/project/azure-mgmt-storage)
 * [Ruby SDK](https://rubygems.org/gems/azure_mgmt_storage)
@@ -65,11 +65,11 @@ Chcete-li vyžadovat zabezpečený přenos programově, nastavte _vlastnost supp
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Tato ukázka vyžaduje modul Azure PowerShell Az verze 0.7 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
+Tato ukázka vyžaduje modul Azure PowerShell AZ verze 0,7 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
 
 Spuštěním příkazu `Connect-AzAccount` vytvořte připojení k Azure.
 
- Toto nastavení zkontrolujte pomocí následujícího příkazového řádku:
+ Pro kontrolu nastavení použijte následující příkazový řádek:
 
 ```powershell
 Get-AzStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}"
@@ -80,7 +80,7 @@ EnableHttpsTrafficOnly : False
 
 ```
 
-Toto nastavení povolte pomocí následujícího příkazového řádku:
+K povolení nastavení použijte následující příkazový řádek:
 
 ```powershell
 Set-AzStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}" -EnableHttpsTrafficOnly $True
@@ -91,13 +91,13 @@ EnableHttpsTrafficOnly : True
 
 ```
 
-## <a name="require-secure-transfer-with-azure-cli"></a>Vyžadovat zabezpečený přenos pomocí azure cli
+## <a name="require-secure-transfer-with-azure-cli"></a>Vyžadovat zabezpečený přenos pomocí Azure CLI
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
- Chcete-li zkontrolovat nastavení, použijte následující příkaz:
+ Pomocí následujícího příkazu ověřte nastavení:
 
 ```azurecli-interactive
 az storage account show -g {ResourceGroupName} -n {StorageAccountName}
@@ -110,7 +110,7 @@ az storage account show -g {ResourceGroupName} -n {StorageAccountName}
 
 ```
 
-Chcete-li toto nastavení povolit, použijte následující příkaz:
+K povolení nastavení použijte následující příkaz:
 
 ```azurecli-interactive
 az storage account update -g {ResourceGroupName} -n {StorageAccountName} --https-only true
@@ -125,4 +125,4 @@ az storage account update -g {ResourceGroupName} -n {StorageAccountName} --https
 
 ## <a name="next-steps"></a>Další kroky
 
-[Doporučení zabezpečení pro úložiště objektů Blob](../blobs/security-recommendations.md)
+[Doporučení zabezpečení pro úložiště objektů BLOB](../blobs/security-recommendations.md)

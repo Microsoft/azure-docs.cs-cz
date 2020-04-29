@@ -1,6 +1,6 @@
 ---
-title: Doporučené postupy konfigurace zařízení pro Azure IoT Hub | Dokumenty společnosti Microsoft
-description: Seznamte se s doporučenými postupy pro používání automatické správy zařízení k minimalizaci opakujících se a složitých úloh spojených se správou zařízení IoT ve velkém měřítku.
+title: Osvědčené postupy konfigurace zařízení pro Azure IoT Hub | Microsoft Docs
+description: Seznamte se s osvědčenými postupy pro použití automatické správy zařízení k minimalizaci opakujících se a složitých úloh zapojených do správy škálování zařízení IoT.
 author: robinsh
 ms.author: robinsh
 ms.date: 06/28/2019
@@ -8,86 +8,86 @@ ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
 ms.openlocfilehash: 67f0d9eb1fdac603ee82d568644e8ad8550d1c80
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82024774"
 ---
-# <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>Doporučené postupy pro konfiguraci zařízení v rámci řešení IoT
+# <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>Osvědčené postupy pro konfiguraci zařízení v rámci řešení IoT
 
-Automatická správa zařízení v Azure IoT Hub automatizuje mnoho opakovaných a složitých úloh správy velkých vozových parků zařízení po celou dobu jejich životního cyklu. Tento článek definuje mnoho osvědčených postupů pro různé role, které se podílejí na vývoji a provozu řešení IoT.
+Automatická správa zařízení v Azure IoT Hub automatizuje mnoho opakujících se a složitých úloh správy rozsáhlých loďstva zařízení v celém životním cyklu. Tento článek definuje mnoho osvědčených postupů pro různé role, které se podílejí na vývoji a provozu řešení IoT.
 
-* **Výrobce/integrátor hardwaru IoT:** Výrobci hardwaru IoT, integrátoři sestavující hardware od různých výrobců nebo dodavatelé poskytující hardware pro nasazení IoT vyrobené nebo integrované jinými dodavateli. Podílí se na vývoji a integraci firmwaru, vestavěných operačních systémů a vestavěného softwaru.
+* **Výrobce nebo integrátor hardwaru IoT:** Výrobci hardwaru IoT, integrátory napravují hardware od různých výrobců nebo dodavatelé, kteří poskytují hardware pro nasazení IoT vyráběné nebo integrované jinými dodavateli. Zapojené do vývoje a integrace firmwaru, vloženého operačního systému a integrovaného softwaru.
 
-* **Vývojář řešení IoT:** Vývoj řešení IoT se obvykle provádí vývojář řešení. Tento vývojář může být součástí interního týmu nebo systémového integrátora specializujícího se na tuto činnost. Vývojář řešení IoT může vyvíjet různé součásti řešení IoT od začátku, integrovat různé standardní nebo open source komponenty nebo přizpůsobit [akcelerátor řešení IoT](/azure/iot-accelerators/).
+* **Vývojář řešení IoT:** Vývoj řešení IoT obvykle provádí vývojář řešení. Tento vývojář může být součástí interního týmu nebo specializace systémového integrátoru v této aktivitě. Vývojář řešení IoT může vyvíjet různé komponenty řešení IoT od začátku, integrovat různé standardní nebo open source komponenty nebo přizpůsobit [akcelerátor řešení IoT](/azure/iot-accelerators/).
 
-* **Operátor řešení IoT:** Po nasazení řešení IoT vyžaduje dlouhodobé operace, monitorování, upgrady a údržbu. Tyto úkoly může provádět interní tým, který se skládá z odborníků na informační technologie, týmů pro operace s hardwarem a údržby a specialistů na domény, kteří monitorují správné chování celkové infrastruktury IoT.
+* **Operátor řešení IoT:** Po nasazení řešení IoT se vyžaduje dlouhodobá operace, monitorování, upgrady a údržba. Tyto úlohy může udělat interní tým, který se skládá z specialistů na informační technologie, hardwarových operací a týmů údržby a specialistů na domény, kteří monitorují správné chování celkové infrastruktury IoT.
 
-## <a name="understand-automatic-device-management-for-configuring-iot-devices-at-scale"></a>Principy automatické správy zařízení pro konfiguraci zařízení IoT ve velkém měřítku
+## <a name="understand-automatic-device-management-for-configuring-iot-devices-at-scale"></a>Vysvětlení automatické správy zařízení pro konfiguraci zařízení IoT ve velkém měřítku
 
-Automatická správa zařízení zahrnuje mnoho výhod [dvojčat zařízení](iot-hub-devguide-device-twins.md) a [dvojčat modulů](iot-hub-devguide-module-twins.md) pro synchronizaci požadovaných a hlášených stavů mezi cloudem a zařízeními. [Automatické konfigurace zařízení](iot-hub-auto-device-config.md) automaticky aktualizují velké sady dvojčat a shrnují průběh a dodržování předpisů. Následující kroky vysoké úrovně popisují vývoj a použití automatické správy zařízení:
+Automatická správa zařízení zahrnuje mnoho výhod [vláken zařízení](iot-hub-devguide-device-twins.md) a [vláken v modulech](iot-hub-devguide-module-twins.md) k synchronizaci požadovaných a nahlášených stavů mezi cloudem a zařízeními. [Automatické konfigurace zařízení](iot-hub-auto-device-config.md) automaticky aktualizují velké sady vláken a shrnují průběh a dodržování předpisů. Následující kroky vysoké úrovně popisují, jak se vyvíjí a používá Automatická správa zařízení:
 
-* **Výrobce/integrátor hardwaru IoT** implementuje funkce správy zařízení v rámci integrované aplikace pomocí [dvojčat zařízení](iot-hub-devguide-device-twins.md). Tyto funkce mohou zahrnovat aktualizace firmwaru, instalaci a aktualizaci softwaru a správu nastavení.
+* **Výrobce a integrátor hardwaru IoT** implementují funkce správy zařízení v rámci vložené aplikace pomocí [vláken zařízení](iot-hub-devguide-device-twins.md). Mezi tyto funkce patří aktualizace firmwaru, instalace a aktualizace softwaru a Správa nastavení.
 
-* **Vývojář řešení IoT** implementuje vrstvu správy operací správy zařízení pomocí [dvojčat zařízení](iot-hub-devguide-device-twins.md) a [automatických konfigurací zařízení](iot-hub-auto-device-config.md). Řešení by mělo zahrnovat definování rozhraní operátora k provádění úloh správy zařízení.
+* **Vývojář řešení IoT** implementuje vrstvu správy operací správy zařízení pomocí [nevláken zařízení](iot-hub-devguide-device-twins.md) a [automatických konfigurací zařízení](iot-hub-auto-device-config.md). Řešení by mělo zahrnovat definování rozhraní operátora pro provádění úloh správy zařízení.
 
-* **Operátor řešení IoT** používá řešení IoT k provádění úloh správy zařízení, zejména k seskupení zařízení, k zahájení změn konfigurace, jako jsou aktualizace firmwaru, sledování průběhu a řešení problémů, které vznikají.
+* **Operátor řešení IoT** používá řešení IoT k provádění úloh správy zařízení, zejména k seskupení zařízení, zahájí změny konfigurace, jako jsou aktualizace firmwaru, průběh monitorování a řešení potíží, ke kterým dojde.
 
-## <a name="iot-hardware-manufacturerintegrator"></a>Výrobce/integrátor hardwaru IoT
+## <a name="iot-hardware-manufacturerintegrator"></a>Výrobce nebo integrátor hardwaru IoT
 
-Následující jsou doporučené postupy pro výrobce hardwaru a integrátory zabývající se vývojem vestavěného softwaru:
+Níže jsou uvedené osvědčené postupy pro výrobce hardwaru a integrátory, kteří se zabývat integrovaným vývojem softwaru:
 
-* **Implementovat [dvojčata zařízení](iot-hub-devguide-device-twins.md):** Dvojčata zařízení umožňují synchronizaci požadované konfigurace z cloudu a pro vytváření zpráv o aktuální konfiguraci a vlastnostech zařízení. Nejlepší způsob, jak implementovat dvojčata zařízení v rámci integrovaných aplikací je prostřednictvím [sad Azure IoT SDK](https://github.com/Azure/azure-iot-sdks). Dvojčata zařízení jsou nejvhodnější pro konfiguraci, protože:
+* **Implementovat [vlákna zařízení](iot-hub-devguide-device-twins.md):** Vlákna zařízení umožňují synchronizaci požadované konfigurace z cloudu a vytváření sestav aktuální konfigurace a vlastností zařízení. Nejlepším způsobem, jak implementovat vlákna zařízení v rámci integrovaných aplikací, je prostřednictvím [sad SDK služby Azure IoT](https://github.com/Azure/azure-iot-sdks). Vlákna zařízení jsou nejvhodnější pro konfiguraci, protože:
 
-    * Podpora obousměrné komunikace.
-    * Povolte stavy připojeného i odpojeného zařízení.
-    * Dodržujte zásadu případné konzistence.
-    * Jsou plně queriable v cloudu.
+    * Podporuje obousměrnou komunikaci.
+    * Povolte pro stav připojených i odpojených zařízení.
+    * Řiďte se principem konečné konzistence.
+    * V cloudu jsou plně dotazovatelné.
 
-* **Strukturujte dvojče zařízení pro správu zařízení:** Dvojče zařízení by měla být strukturována tak, aby vlastnosti správy zařízení byly logicky seskupeny do oddílů. To umožní, aby změny konfigurace byly izolovány bez ovlivnění jiných částí dvojčete. Můžete například vytvořit oddíl v rámci požadovaných vlastností firmwaru, další oddíl pro software a třetí oddíl pro nastavení sítě. 
+* **Strukturujte zařízení, které je pro správu zařízení** nepřesné: Vlákna zařízení by měla být strukturovaná tak, aby vlastnosti správy zařízení byly logicky seskupeny do oddílů. Tím umožníte, aby se změny konfigurace izolované bez dopadu na jiné části vlákna. Můžete například vytvořit oddíl v rámci požadovaných vlastností pro firmware, jiný oddíl pro software a třetí oddíl pro nastavení sítě. 
 
-* **Nahlásit atributy zařízení, které jsou užitečné pro správu zařízení:** Atributy, jako je fyzická značky zařízení a model, firmware, operační systém, sériové číslo a další identifikátory, jsou užitečné pro vytváření sestav a jako parametry pro změny konfigurace cílení.
+* **Sestavování atributů zařízení, které jsou užitečné pro správu zařízení:** Pro vytváření sestav a jako parametry pro cílení změn konfigurace jsou užitečné atributy, jako je například vytvoření fyzického zařízení a model, firmware, operační systém, sériové číslo a jiné identifikátory.
 
-* **Definujte hlavní stavy pro vykazování stavu a průběhu:** Stavy nejvyšší úrovně by měly být uvedeny tak, aby mohly být hlášeny operátorovi. Aktualizace firmwaru by například hlásila stav jako Aktuální, Stahování, Použití, Probíhá a Chyba. Definujte další pole pro další informace o každém stavu.
+* **Definujte hlavní stavy pro vytváření sestav o stavu a průběhu:** Stavy nejvyšší úrovně by měly být vyčísleny tak, aby mohly být hlášeny operátorovi. Například aktualizace firmwaru by mohla ohlásit stav jako aktuální, stáhnout, použít, probíhá a chyba. Definujte další pole pro další informace o jednotlivých stavech.
 
 ## <a name="iot-solution-developer"></a>Vývojář řešení IoT
 
-Následující jsou doporučené postupy pro vývojáře řešení IoT, kteří budují systémy založené v Azure:
+Níže jsou uvedené osvědčené postupy pro vývojáře řešení IoT, kteří sestavují systémy založené na Azure:
 
-* **Implementovat [dvojčata zařízení](iot-hub-devguide-device-twins.md):** Dvojčata zařízení umožňují synchronizaci požadované konfigurace z cloudu a pro vytváření zpráv o aktuální konfiguraci a vlastnostech zařízení. Nejlepší způsob, jak implementovat dvojčata zařízení v rámci aplikací cloudových řešení, je prostřednictvím sad [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks). Dvojčata zařízení jsou nejvhodnější pro konfiguraci, protože:
+* **Implementovat [vlákna zařízení](iot-hub-devguide-device-twins.md):** Vlákna zařízení umožňují synchronizaci požadované konfigurace z cloudu a vytváření sestav aktuální konfigurace a vlastností zařízení. Nejlepším způsobem, jak implementovat vlákna zařízení v rámci aplikací pro cloudová řešení, je projít sady [SDK Azure IoT](https://github.com/Azure/azure-iot-sdks). Vlákna zařízení jsou nejvhodnější pro konfiguraci, protože:
 
-    * Podpora obousměrné komunikace.
-    * Povolte stavy připojeného i odpojeného zařízení.
-    * Dodržujte zásadu případné konzistence.
-    * Jsou plně queriable v cloudu.
+    * Podporuje obousměrnou komunikaci.
+    * Povolte pro stav připojených i odpojených zařízení.
+    * Řiďte se principem konečné konzistence.
+    * V cloudu jsou plně dotazovatelné.
 
-* **Uspořádání zařízení pomocí značek dvojčete zařízení:** Řešení by mělo obsluze umožnit definovat kroužky kvality nebo jiné sady zařízení na základě různých strategií nasazení, jako jsou kanárky. Organizace zařízení může být implementována v rámci vašeho řešení pomocí značek dvojčete zařízení a [dotazů](iot-hub-devguide-query-language.md). Organizace zařízení je nezbytná k tomu, aby bylo možné bezpečně a přesně provést konfiguraci.
+* **Uspořádání zařízení pomocí značek nevlákenných zařízení:** Řešení by mělo umožňovat operátorovi definovat kanály kvality nebo jiné sady zařízení na základě různých strategií nasazení, jako je například Kanárské. V rámci vašeho řešení je možné implementovat organizaci zařízení pomocí značek a [dotazů](iot-hub-devguide-query-language.md), které jsou v zařízení. Organizace zařízení je nutná k tomu, aby bylo umožněno bezpečné a přesné vypínání konfigurace.
 
-* **Implementujte [automatické konfigurace zařízení](iot-hub-auto-device-config.md):** Automatické konfigurace zařízení nasazují a monitorují změny konfigurace velkých sad zařízení IoT prostřednictvím dvojčat zařízení.
+* **Implementace [automatických konfigurací zařízení](iot-hub-auto-device-config.md):** Automatické konfigurace zařízení nasazují a monitorují změny konfigurace velkých sad zařízení IoT prostřednictvím vláken zařízení.
 
-   Automatické konfigurace zařízení cílí na sady dvojčat zařízení prostřednictvím **cílové podmínky,** což je dotaz na značky dvojčete zařízení nebo ohlášené vlastnosti. **Cílový obsah** je sada požadovaných vlastností, které budou nastaveny v rámci cílových dvojčat zařízení. Cílový obsah by měl být v souladu se strukturou dvojčete zařízení definovanou výrobcem nebo integrátorem hardwaru IoT. **Metriky** jsou dotazy na vlastnosti hlášené dvojčete zařízení a měly by také zarovnat se strukturou dvojčete zařízení definovanou výrobcem nebo integrátorem hardwaru IoT.
+   Automatické konfigurace zařízení: cílové sady vláken zařízení přes **cílovou podmínku,** což je dotaz na nepodmíněných značkách zařízení nebo hlášených vlastností. **Cílový obsah** je sada požadovaných vlastností, které se nastaví v rámci cílených vláken zařízení. Cílový obsah by měl být v souladu se strukturou s dvojitou strukturou v zařízení, kterou definuje výrobce nebo integrátor hardwaru IoT. **Metriky** jsou dotazy na nedokončené hlášené vlastnosti zařízení a měly by se také zarovnávat se strukturou s dvojitou strukturou, kterou definuje výrobce nebo integrátor hardwaru IoT.
 
-   Automatické konfigurace zařízení běží poprvé krátce po vytvoření konfigurace a poté v pětiminutových intervalech. Mají také prospěch z ioT Hub provádění operací dvojčete zařízení rychlostí, která nikdy nepřekročí [omezení omezení](iot-hub-devguide-quotas-throttling.md) pro dvojče zařízení čtení a aktualizace.
+   Automatické konfigurace zařízení se spouští poprvé po vytvoření konfigurace a pak v intervalu pěti minut. Můžou také těžit z IoT Hub provádění operací s dvojitým provozem zařízení rychlostí, která nikdy nepřekročí [omezení omezení](iot-hub-devguide-quotas-throttling.md) pro čtení a aktualizace nefungujících zařízení.
 
-* **Použití [služby Zřizování zařízení](../iot-dps/how-to-manage-enrollments.md):** Vývojáři řešení by měli používat službu Device Provisioning Service k přiřazení značek dvojčete zařízení novým zařízením, takže budou automaticky **konfigurovány automatickými konfiguracemi zařízení,** které jsou zaměřeny na dvojčata s touto značkou. 
+* **Použijte [službu Device Provisioning Service](../iot-dps/how-to-manage-enrollments.md):** vývojáři řešení by měli použít službu Device Provisioning k přiřazení značek zařízení, které jsou na nových zařízeních, tak, aby se automaticky nakonfigurovaly pomocí **automatických konfigurací zařízení** , které jsou zaměřené na vlákna s touto značkou. 
 
 ## <a name="iot-solution-operator"></a>Operátor řešení IoT
 
-Následující jsou doporučené postupy pro operátory řešení IoT, kteří používají řešení IoT postavené na Azure:
+Níže jsou uvedené osvědčené postupy pro operátory řešení IoT, kteří používají řešení IoT postavené na Azure:
 
-* **Uspořádání zařízení pro správu:** Řešení IoT by mělo definovat nebo umožnit vytváření kroužků kvality nebo jiných sad zařízení založených na různých strategiích nasazení, jako jsou kanárky. Sady zařízení budou použity k zavedení změn konfigurace a k provádění dalších operací správy zařízení ve velkém měřítku.
+* **Uspořádat zařízení pro správu:** Řešení IoT by mělo definovat nebo umožňovat vytváření kanálů kvality nebo jiných sad zařízení na základě různých strategií nasazení, jako je například kanárskéie. Sady zařízení se použijí k zavedení změn konfigurace a k provádění dalších operací správy zařízení v rámci škálování.
 
-* **Provádění změn konfigurace pomocí postupného zavádění:**  Postupné zavádění je celkový proces, kdy operátor nasazuje změny do rozšiřující se sady zařízení IoT. Cílem je provádět změny postupně, aby se snížilo riziko provádění rozsáhlých změn.Operátor by měl použít rozhraní řešení k vytvoření [automatické konfigurace zařízení](iot-hub-auto-device-config.md) a podmínka cílení by měla cílit na počáteční sadu zařízení (například kanárskou skupinu). Operátor by pak měl ověřit změnu konfigurace v počáteční sadě zařízení.
+* **Provádět změny konfigurace pomocí postupného zavedení:**  Postupná zavedení je celkový proces, při kterém operátor nasadí změny do rozšiřování sady zařízení IoT. Cílem je udělat postupně změny, abyste snížili riziko, že dojde k zásadním změnám v rámci škálování.Operátor by měl použít rozhraní řešení k vytvoření [automatické konfigurace zařízení](iot-hub-auto-device-config.md) a podmínka cílení by měla cílit na počáteční sadu zařízení (například na skupinu pro Kanárské). Operátor by pak měl ověřit změnu konfigurace v počáteční sadě zařízení.
 
-   Po dokončení ověření operátor aktualizuje automatickou konfiguraci zařízení tak, aby zahrnovala větší sadu zařízení. Operátor by měl také nastavit prioritu konfigurace, která má být vyšší než jiné konfigurace, které jsou aktuálně zaměřeny na tato zařízení. Zavedení lze sledovat pomocí metriky hlášené automatickou konfigurací zařízení.
+   Po dokončení ověření bude operátor aktualizovat automatickou konfiguraci zařízení tak, aby zahrnoval větší sadu zařízení. Operátor by měl také nastavit prioritu konfigurace, která bude vyšší než jiné konfigurace, které jsou aktuálně cílem těchto zařízení. Zavedení se dá monitorovat pomocí metrik vykázaných automatickou konfigurací zařízení.
 
-* **Proveďte vrácení zpět v případě chyb nebo chybné konfigurace:**  Automatickou konfiguraci zařízení, která způsobuje chyby nebo chybné konfigurace, lze vrátit zpět změnou **podmínky cílení** tak, aby zařízení již nesplňovala podmínku cílení. Ujistěte se, že pro tato zařízení je stále zacílena jiná automatická konfigurace zařízení s nižší prioritou. Ověřte, zda bylo vrácení zpět úspěšné zobrazením metrik: Konfigurace vráceného zpět by již neměla zobrazovat stav necílových zařízení a metriky druhé konfigurace by nyní měly obsahovat počty zařízení, která jsou stále cílená.
+* **V případě chyb nebo chybných konfigurací provést vrácení zpět:**  Automatická konfigurace zařízení, která způsobuje chyby nebo chybné konfigurace, se může vrátit zpátky změnou **podmínky cíle** tak, že zařízení už nebudou splňovat podmínku cílení. Ujistěte se, že pro tato zařízení pořád cílí na další automatickou konfiguraci zařízení s nižší prioritou. Zkontrolujte, zda se vrácení zpět zdařilo zobrazením metrik: Konfigurace vracené zpět by již neměla zobrazovat stav pro Necílená zařízení a metriky druhé konfigurace by teď měly zahrnovat počty pro zařízení, která jsou pořád zacílená.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o implementaci dvojčat zařízení v [principu a použití dvojčat zařízení v centru IoT Hub](iot-hub-devguide-device-twins.md).
+* Přečtěte si o implementaci zdvojených zařízení v [porozumět a používání vláken zařízení v IoT Hub](iot-hub-devguide-device-twins.md).
 
-* Projděte si postup k vytvoření, aktualizaci nebo odstranění automatické konfigurace zařízení v [části Konfigurace a monitorování zařízení IoT ve velkém měřítku](iot-hub-auto-device-config.md).
+* Projděte si postup, jak vytvořit, aktualizovat nebo odstranit automatickou konfiguraci zařízení v části [Konfigurace a monitorování zařízení IoT ve velkém měřítku](iot-hub-auto-device-config.md).
 
-* Implementujte vzor aktualizace firmwaru pomocí dvojčat zařízení a automatických konfigurací zařízení v [kurzu: Implementace procesu aktualizace firmwaru zařízení](tutorial-firmware-update.md).
+* Implementace schématu aktualizace firmwaru pomocí nevláken zařízení a automatických konfigurací zařízení v [kurzu: implementace procesu aktualizace firmwaru zařízení](tutorial-firmware-update.md).

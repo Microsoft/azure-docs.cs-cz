@@ -1,126 +1,126 @@
 ---
-title: Zdroje bez limitu počtu 800
-description: Uvádí typy prostředků Azure, které mohou mít více než 800 instancí ve skupině prostředků.
+title: Prostředky bez omezení počtu 800
+description: Obsahuje seznam typů prostředků Azure, které můžou mít víc než 800 instancí ve skupině prostředků.
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: 8644bec1a68acebff18cf83d17acb014784dc964
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80804771"
 ---
-# <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Prostředky nejsou omezeny na 800 instancí na skupinu prostředků
+# <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Prostředky, které nejsou omezeny na 800 instancí na skupinu prostředků
 
-Ve výchozím nastavení můžete v každé skupině prostředků nasadit až 800 instancí typu prostředku. Některé typy prostředků jsou však osvobozeny od limitu instance 800. Tento článek uvádí typy prostředků Azure, které mohou mít více než 800 instancí ve skupině prostředků. Všechny ostatní typy prostředků jsou omezeny na 800 instancí.
+Ve výchozím nastavení můžete do každé skupiny prostředků nasadit až 800 instancí typu prostředku. Některé typy prostředků jsou ale z limitu instance 800 vyloučené. V tomto článku jsou uvedené typy prostředků Azure, které můžou mít víc než 800 instancí ve skupině prostředků. Všechny ostatní typy prostředků jsou omezeny na 800 instancí.
 
-U některých typů prostředků je třeba kontaktovat podporu, aby byl odebrán limit instance 800. Tyto typy prostředků jsou uvedeny v tomto článku.
+U některých typů prostředků musíte kontaktovat podporu, aby byl limit instance 800 odebraný. Tyto typy prostředků jsou uvedeny v tomto článku.
 
 
-## <a name="microsoftautomation"></a>Microsoft.Automation
+## <a name="microsoftautomation"></a>Microsoft. Automation
 
 * automationAccounts
 
-## <a name="microsoftazurestack"></a>Microsoft.AzureStack
+## <a name="microsoftazurestack"></a>Microsoft. AzureStack
 
-* Registrace
-* registrace/odběry zákazníků
+* rozpoznávání
+* registrace/customerSubscriptions
 * registrace/produkty
 
-## <a name="microsoftbotservice"></a>Microsoft.BotService
+## <a name="microsoftbotservice"></a>Microsoft. BotService
 
-* botServices - Ve výchozím nastavení, omezena na 800 instancí. Tento limit lze zvýšit kontaktováním podpory.
+* botServices – ve výchozím nastavení omezen na 800 instancí. Toto omezení se dá zvýšit kontaktováním podpory.
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
-* Disky
+* disků
 * Galerie
-* galerie/obrázky
-* galerie/obrázky/verze
+* Galerie/image
+* Galerie/image/verze
 * images
 * snímky
 * virtualMachines
 
-## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
+## <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
 
 * containerGroups
 
-## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
+## <a name="microsoftcontainerregistry"></a>Microsoft. ContainerRegistry
 
-* registry/buildTasks
-* registry/buildTasks/listSourceRepositoryProperties
-* registry/buildÚkoly/kroky
-* registry/buildTasks/steps/listBuildArguments
-* registry/eventGridFilters
-* registry/replikace
-* rejstříky/úkoly
-* registry/webhooky
+* Registry/buildTasks
+* Registry/buildTasks/listSourceRepositoryProperties
+* Registry/buildTasks/kroky
+* Registry/buildTasks/Steps/listBuildArguments
+* Registry/eventGridFilters
+* Registry/replikace
+* Registry/úlohy
+* Registry a Webhooky
 
-## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
+## <a name="microsoftdbformariadb"></a>Microsoft. DBforMariaDB
 
-* Servery
+* servery
 
-## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
+## <a name="microsoftdbformysql"></a>Microsoft. DBforMySQL
 
-* Servery
+* servery
 
-## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
+## <a name="microsoftdbforpostgresql"></a>Microsoft. DBforPostgreSQL
 
-* serverové skupiny
-* Servery
-* serveryv2
+* serverGroups
+* servery
+* serversv2
 * singleServers
 
-## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
+## <a name="microsoftdevtestlab"></a>Microsoft. DevTestLab
 
-* plány - Ve výchozím nastavení, omezena na 800 instancí. Tento limit lze zvýšit kontaktováním podpory.
+* plány – ve výchozím nastavení omezeny na 800 instancí. Toto omezení se dá zvýšit kontaktováním podpory.
 
-## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
+## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft. EnterpriseKnowledgeGraph
 
 * services
 
-## <a name="microsofteventhub"></a>Microsoft.EventHub
+## <a name="microsofteventhub"></a>Microsoft. EventHub
 
-* Clustery
-* Obory názvů
+* existující
+* obsažené
 
-## <a name="microsoftexperimentation"></a>Microsoft.Experimentování
+## <a name="microsoftexperimentation"></a>Microsoft. experimentování
 
-* experimentworkspaces
+* experimentWorkspaces
 
-## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
+## <a name="microsoftguestconfiguration"></a>Microsoft. GuestConfiguration
 
 * autoManagedVmConfigurationProfiles
-* konfiguracePřiřazení profilů
+* configurationProfileAssignments
 * guestConfigurationAssignments
-* Software
+* Vybavení
 * softwareUpdateProfile
-* softwareAktualizace
+* softwareUpdates
 
-## <a name="microsoftinsights"></a>microsoft.insights
+## <a name="microsoftinsights"></a>Microsoft. Insights
 
-* upozornění na metriky
+* metricalerts
 
-## <a name="microsoftlogic"></a>Microsoft.Logic
+## <a name="microsoftlogic"></a>Microsoft. Logic
 
-* integraceÚčty
-* Pracovní postupy
+* integrationAccounts
+* Zpracovávaný
 
-## <a name="microsoftnetapp"></a>Microsoft.NetApp
+## <a name="microsoftnetapp"></a>Microsoft. NetApp
 
 * netAppAccounts
 * netAppAccounts/capacityPools
-* netAppAccounts/capacityPool/volumes
-* netAppAccounts/capacityPools/volumes/mountTargets
-* netAppAccounts/capacityPools/volumes/snapshots netAppAccounts/capacityPools/volumes/snapshots netAppAccounts/capacityPools/volumes/snapshots netApp
+* netAppAccounts/capacityPools/svazky
+* netAppAccounts/capacityPools/svazky/mountTargets
+* netAppAccounts/capacityPools/svazky/snímky
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
-* aplikaceGatewayWebApplicationFirewallPolicies
+* applicationGatewayWebApplicationFirewallPolicies
 * applicationSecurityGroups
 * bastionHosts
 * ddosProtectionPlans
-* dnszóny
+* dnszones
 * dnszones/A
 * dnszones/AAAA
 * dnszones/CAA
@@ -134,8 +134,8 @@ U některých typů prostředků je třeba kontaktovat podporu, aby byl odebrán
 * dnszones/vše
 * dnszones/sady záznamů
 * networkIntentPolicies
-* síťová rozhraní
-* privátnídnszóny
+* networkInterfaces
+* privateDnsZones
 * privateDnsZones/A
 * privateDnsZones/AAAA
 * privateDnsZones/CNAME
@@ -148,49 +148,49 @@ U některých typů prostředků je třeba kontaktovat podporu, aby byl odebrán
 * privateDnsZones/virtualNetworkLinks
 * privateEndpoints
 * privateLinkServices
-* publicIPAddresses - Ve výchozím nastavení je omezen na 800 instancí. Tento limit lze zvýšit kontaktováním podpory.
+* publicIPAddresses – ve výchozím nastavení omezen na 800 instancí. Toto omezení se dá zvýšit kontaktováním podpory.
 * serviceEndpointPolicies
 * trafficmanagerprofiles
-* virtualNetworkKohouty
+* virtualNetworkTaps
 
-## <a name="microsoftportalsdk"></a>Microsoft.PortalSdk
+## <a name="microsoftportalsdk"></a>Microsoft. PortalSdk
 
 * rootResources
 
-## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
+## <a name="microsoftpowerbi"></a>Microsoft. PowerBI
 
-* workspaceCollections – ve výchozím nastavení je omezen na 800 instancí. Tento limit lze zvýšit kontaktováním podpory.
+* workspaceCollections – ve výchozím nastavení omezen na 800 instancí. Toto omezení se dá zvýšit kontaktováním podpory.
 
-## <a name="microsoftrelay"></a>Microsoft.Relay
+## <a name="microsoftrelay"></a>Microsoft. Relay
 
-* Obory názvů
+* obsažené
 
-## <a name="microsoftscheduler"></a>Microsoft.Scheduler
+## <a name="microsoftscheduler"></a>Microsoft. Scheduler
 
 * jobcollections
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
-* Obory názvů
+* obsažené
 
-## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
+## <a name="microsoftservicefabricmesh"></a>Microsoft. ServiceFabricMesh
 
 * aplikace
 * containerGroups
-* Brány
-* Sítí
-* Tajemství
+* brány
+* sítí
+* záleží
 * volumes
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
 * storageAccounts
 
-## <a name="microsoftweb"></a>Microsoft.Web
+## <a name="microsoftweb"></a>Microsoft. Web
 
-* apiManagementAccounts/apis
-* Stránky
+* apiManagementAccounts/rozhraní API
+* místa
 
 ## <a name="next-steps"></a>Další kroky
 
-Úplný seznam kvót a omezení najdete v tématu [Limity předplatného azure a služby, kvóty a omezení](azure-subscription-service-limits.md).
+Úplný seznam kvót a omezení najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](azure-subscription-service-limits.md).

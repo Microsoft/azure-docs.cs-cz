@@ -1,6 +1,6 @@
 ---
-title: Dotaz na soubory JSON pomocí SQL na vyžádání (náhled)
-description: Tato část vysvětluje, jak číst soubory JSON pomocí SQL na vyžádání v Azure Synapse Analytics.
+title: Dotazování souborů JSON pomocí SQL na vyžádání (Preview)
+description: V této části se dozvíte, jak číst soubory JSON pomocí SQL na vyžádání v Azure synapse Analytics.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,26 +10,26 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 645baf9102785d223fd1f23ae52a4609725f795b
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770810"
 ---
-# <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Dotaz na soubory JSON pomocí SQL na vyžádání (preview) v Azure Synapse Analytics
+# <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Dotazování souborů JSON pomocí SQL na vyžádání (Preview) ve službě Azure synapse Analytics
 
-V tomto článku se dozvíte, jak napsat dotaz pomocí SQL na vyžádání (preview) v Azure Synapse Analytics. Cílem dotazu je číst soubory JSON.
+V tomto článku se dozvíte, jak napsat dotaz pomocí SQL na vyžádání (ve verzi Preview) ve službě Azure synapse Analytics. Cílem dotazu je přečíst soubory JSON.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Než si přečtete zbytek tohoto článku, přečtěte si následující články:
 
-- [První nastavení](query-data-storage.md#first-time-setup)
+- [Nastavení při prvním spuštění](query-data-storage.md#first-time-setup)
 - [Požadavky](query-data-storage.md#prerequisites)
 
-## <a name="sample-json-files"></a>Ukázka souborů JSON
+## <a name="sample-json-files"></a>Ukázkové soubory JSON
 
-Níže uvedená část obsahuje ukázkové skripty pro čtení souborů JSON. Soubory jsou uloženy v kontejneru *json,* *knihy*složek a obsahují jednu položku knihy s následující strukturou:
+Následující část obsahuje ukázkové skripty pro čtení souborů JSON. Soubory jsou uloženy v kontejneru *JSON* , v *knihách*složek a obsahují jednu položku knihy s následující strukturou:
 
 ```json
 {
@@ -49,7 +49,7 @@ Níže uvedená část obsahuje ukázkové skripty pro čtení souborů JSON. So
 
 ## <a name="read-json-files"></a>Čtení souborů JSON
 
-Chcete-li zpracovat soubory JSON pomocí JSON_VALUE a [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), je třeba číst soubor JSON z úložiště jako jeden sloupec. Následující skript přečte soubor *book1.json* jako jeden sloupec:
+Chcete-li zpracovat soubory JSON pomocí JSON_VALUE a [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), je nutné načíst soubor JSON z úložiště jako jeden sloupec. Následující skript přečte soubor *Book1. JSON* jako jeden sloupec:
 
 ```sql
 SELECT
@@ -68,11 +68,11 @@ FROM
 ```
 
 > [!NOTE]
-> Čtete celý soubor JSON jako jeden řádek nebo sloupec. Takže FIELDTERMINATOR, FIELDQUOTE a ROWTERMINATOR jsou nastaveny na 0x0b.
+> Načítáte celý soubor JSON jako jeden řádek nebo sloupec. FIELDTERMINATOR, FIELDQUOTE a ROWTERMINATOR jsou tedy nastavené na 0x0B.
 
-## <a name="query-json-files-using-json_value"></a>Dotaz na soubory JSON pomocí JSON_VALUE
+## <a name="query-json-files-using-json_value"></a>Dotazování souborů JSON pomocí JSON_VALUE
 
-Níže uvedený dotaz ukazuje, jak používat [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) k načtení skalárních hodnot (název, vydavatel) z knihy s názvem *Pravděpodobnostní a statistické metody v kryptologii, Úvod vybranými články*:
+Následující dotaz ukazuje, jak použít [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) k načtení skalárních hodnot (title, Publisher) z knihy s názvem *pravděpodobnostní a statistických metod v Cryptology, Úvod do vybraných článků*:
 
 ```sql
 SELECT
@@ -94,9 +94,9 @@ WHERE
     JSON_VALUE(jsonContent, '$.title') = 'Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected Topics';
 ```
 
-## <a name="query-json-files-using-json_query"></a>Dotaz na soubory JSON pomocí JSON_QUERY
+## <a name="query-json-files-using-json_query"></a>Dotazování souborů JSON pomocí JSON_QUERY
 
-Následující dotaz ukazuje, jak používat [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) k načtení objektů a polí (autorů) z knihy s názvem *Pravděpodobnostní a statistické metody v kryptologii, Úvod podle vybraných témat*:
+Následující dotaz ukazuje, jak pomocí [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) načíst objekty a pole (autoři) z knihy s názvem *pravděpodobnostní a statistické metody v Cryptology, Úvod do vybraných témat*:
 
 ```sql
 SELECT
@@ -117,9 +117,9 @@ WHERE
     JSON_VALUE(jsonContent, '$.title') = 'Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected Topics';
 ```
 
-## <a name="query-json-files-using-openjson"></a>Dotaz na soubory JSON pomocí OPENJSON
+## <a name="query-json-files-using-openjson"></a>Dotazování souborů JSON pomocí OPENJSON
 
-Následující dotaz používá [OPENJSON](/sql/t-sql/functions/openjson-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest). Načte objekty a vlastnosti v knize s názvem *Pravděpodobnostní a statistické metody v kryptologii, Úvod vybranými články*:
+Následující dotaz používá [OPENJSON](/sql/t-sql/functions/openjson-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest). Načte objekty a vlastnosti v rámci knihy s názvem *pravděpodobnostní a statistické metody v Cryptology, Úvod do vybraných článků*:
 
 ```sql
 SELECT
@@ -142,7 +142,7 @@ WHERE
 
 ## <a name="next-steps"></a>Další kroky
 
-Další články v této sérii předvedou, jak:
+Další články v této sérii vám poukazují, jak:
 
-- [Dotazování složek a více souborů](query-folders-multiple-csv-files.md)
+- [Dotazování na složky a více souborů](query-folders-multiple-csv-files.md)
 - [Vytváření a používání zobrazení](create-use-views.md)

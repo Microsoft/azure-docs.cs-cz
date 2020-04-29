@@ -1,5 +1,5 @@
 ---
-title: Ukázky prostředí Azure PowerShell – vytváření sítí
+title: Ukázky Azure PowerShell – sítě
 description: Ukázky Azure PowerShellu
 services: virtual-network
 documentationcenter: virtual-network
@@ -15,15 +15,15 @@ ms.workload: infrastructure
 ms.date: 05/24/2017
 ms.author: gwallace
 ms.openlocfilehash: ca6ac145db0536d3cf7e5bcc72a58d72101ab12a
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81459113"
 ---
-# <a name="azure-powershell-samples-for-networking"></a>Ukázky Prostředí Azure PowerShell pro sítě
+# <a name="azure-powershell-samples-for-networking"></a>Ukázky Azure PowerShell pro sítě
 
-Následující tabulka obsahuje odkazy na skripty vytvořené pomocí Azure PowerShellu.
+Následující tabulka obsahuje odkazy na skripty vytvořené pomocí Azure PowerShell.
 
 | | |
 |-|-|
@@ -31,8 +31,8 @@ Následující tabulka obsahuje odkazy na skripty vytvořené pomocí Azure Powe
 | [Vytvoření virtuální sítě pro vícevrstvé aplikace](./scripts/virtual-network-powershell-sample-multi-tier-application.md?toc=%2fazure%2fnetworking%2ftoc.json) | Vytvoří virtuální síť s front-endovou a back-endovou podsítí. Provoz do front-endové podsítě je omezený na HTTP, zatímco provoz do back-endové podsítě je omezený na SQL na portu 1433. |
 | [Vytvoření partnerského vztahu mezi dvěma virtuálními sítěmi](./scripts/virtual-network-powershell-sample-peer-two-virtual-networks.md?toc=%2fazure%2fnetworking%2ftoc.json) | Vytvoří a propojí dvě virtuální sítě ve stejné oblasti. |
 | [Směrování provozu přes síťové virtuální zařízení](./scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetworking%2ftoc.json) | Vytvoří virtuální síť s front-endovou a back-endovou podsítí a virtuální počítač, který je schopný směrovat provoz mezi těmito dvěma podsítěmi. |
-| [Filtrování příchozího a odchozího síťového provozu virtuálního počítače](./scripts/virtual-network-powershell-filter-network-traffic.md?toc=%2fazure%2fnetworking%2ftoc.json) | Vytvoří virtuální síť s front-endovou a back-endovou podsítí. Příchozí síťový provoz do podsítě front-endje omezen na protokoly HTTP a HTTPS.. Odchozí provoz do Internetu z podsítě back-end není povolen. |
+| [Filtrování příchozího a odchozího síťového provozu virtuálního počítače](./scripts/virtual-network-powershell-filter-network-traffic.md?toc=%2fazure%2fnetworking%2ftoc.json) | Vytvoří virtuální síť s front-endovou a back-endovou podsítí. Příchozí síťový provoz do front-endové podsítě je omezený na HTTP a HTTPS.. Odchozí provoz do Internetu z back-endové podsítě není povolený. |
 |**Vyrovnávání zatížení a směr provozu**||
-| [Provoz vyvažuje zatížení na virtuální chod pro vysokou dostupnost](./scripts/load-balancer-windows-powershell-sample-nlb.md?toc=%2fazure%2fnetworking%2ftoc.json) | Vytvoří několik virtuálních počítačů ve vysoce dostupné konfiguraci s vyrovnáváním zatížení. |
-| [Přímý provoz ve více oblastech pro vysokou dostupnost aplikací](./scripts/traffic-manager-powershell-websites-high-availability.md?toc=%2fazure%2fnetworking%2ftoc.json) |  Vytvoří dva plány služby App Service, dvě webové aplikace, profil správce provozu a dva koncové body správce provozu. |
+| [Vyrovnávání zatížení provozu do virtuálních počítačů pro zajištění vysoké dostupnosti](./scripts/load-balancer-windows-powershell-sample-nlb.md?toc=%2fazure%2fnetworking%2ftoc.json) | Vytvoří několik virtuálních počítačů s vysokou dostupností a konfigurací s vyrovnáváním zatížení. |
+| [Přímý provoz napříč několika oblastmi pro zajištění vysoké dostupnosti aplikací](./scripts/traffic-manager-powershell-websites-high-availability.md?toc=%2fazure%2fnetworking%2ftoc.json) |  Vytvoří dva plány služby App Service, dvě webové aplikace, profil služby Traffic Manager a dva koncové body Traffic Manageru. |
 | | |

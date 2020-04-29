@@ -1,6 +1,6 @@
 ---
-title: Konfigurace aplikací pro daemon, které volají webová rozhraní API – platforma identit Microsoftu | Azure
-description: Přečtěte si, jak nakonfigurovat kód pro aplikaci daemon, která volá webová rozhraní API (konfigurace aplikace)
+title: Konfigurace aplikací démona, které volají webová rozhraní API – Microsoft Identity Platform | Azure
+description: Naučte se konfigurovat kód pro aplikaci démona, která volá webová rozhraní API (konfigurace aplikace).
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,52 +12,52 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: ead39343cca9943ba55d66509bd9917402efb8cf
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81868971"
 ---
-# <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Aplikace Daemon, která volá webová API – konfigurace kódu
+# <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Aplikace démona, která volá webovou rozhraní API – konfigurace kódu
 
-Přečtěte si, jak nakonfigurovat kód pro aplikaci daemon, která volá webová rozhraní API.
+Naučte se konfigurovat kód pro aplikaci démona, která volá webová rozhraní API.
 
-## <a name="msal-libraries-that-support-daemon-apps"></a>Knihovny MSAL, které podporují aplikace pro daemony
+## <a name="msal-libraries-that-support-daemon-apps"></a>MSAL knihovny, které podporují aplikace démona
 
-Tyto knihovny Microsoftu podporují aplikace pro daemony:
+Tyto knihovny Microsoftu podporují aplikace démona:
 
   Knihovna MSAL | Popis
   ------------ | ----------
-  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Rozhraní .NET Framework a .NET Core platformy jsou podporovány pro vytváření aplikací daemon. (UPW, Xamarin.iOS a Xamarin.Android nejsou podporovány, protože tyto platformy se používají k vytváření veřejných klientských aplikací.)
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Podpora aplikací daemonů v Pythonu.
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL v Javě | Podpora aplikací pro daemon v Javě.
+  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Platformy .NET Framework a .NET Core jsou podporovány pro vytváření aplikací démona. (UWP, Xamarin. iOS a Xamarin. Android se nepodporují, protože tyto platformy slouží k sestavování veřejných klientských aplikací.)
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Podpora pro aplikace démona v Pythonu
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL v Javě | Podpora pro aplikace démona v jazyce Java.
 
 ## <a name="configure-the-authority"></a>Konfigurace autority
 
-Aplikace daemonu používají spíše oprávnění aplikací než delegovaná oprávnění. Jejich podporovaný typ účtu tedy nemůže být účtem v žádném organizačním adresáři ani v žádném osobním účtu Microsoft (například Skype, Xbox, Outlook.com). Neexistuje žádný správce tenanta, který by udělil souhlas s aplikací daemonpro osobní účet Microsoft. Budete muset vybrat *účty v mé organizaci* nebo *účty v libovolné organizaci*.
+Aplikace démona místo delegovaných oprávnění používají oprávnění aplikace. Proto jejich podporovaný typ účtu nemůže být účet v žádné organizační složce ani v žádné osobní účet Microsoft (například Skype, Xbox, Outlook.com). Není k dispozici žádný správce tenanta pro udělení souhlasu aplikaci démona pro osobní účet Microsoft. V organizaci nebo účtech budete muset zvolit *účty* *v libovolné organizaci*.
 
-Autorita zadaná v konfiguraci aplikace by tedy měla být zařízena (zadání ID klienta nebo názvu domény přidruženého k vaší organizaci).
+Proto by měl být autorita zadaná v konfiguraci aplikace tenantů (zadáním ID tenanta nebo názvu domény přidruženého k vaší organizaci).
 
-Pokud jste isv a chcete poskytnout víceklientský nástroj, `organizations`můžete použít . Mějte však na paměti, že budete také muset svým zákazníkům vysvětlit, jak udělit souhlas správce. Podrobnosti naleznete [v tématu Žádost o souhlas pro celého klienta](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant). Také je aktuálně omezení msal: `organizations` je povoleno pouze v případě, že pověření klienta jsou tajný kód aplikace (nikoli certifikát).
+Pokud jste nezávislý výrobce softwaru a chcete poskytnout víceklientské nástroje, můžete použít `organizations`. Mějte ale na paměti, že budete taky muset vysvětlit zákazníkům, jak udělit souhlas správce. Podrobnosti najdete v článku [o žádosti o souhlas pro celého tenanta](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant). V současné době je také omezení MSAL: `organizations` je povoleno pouze v případě, že jsou pověřením klienta tajný klíč aplikace (nikoli certifikát).
 
 ## <a name="configure-and-instantiate-the-application"></a>Konfigurace a vytvoření instance aplikace
 
-V knihovnách MSAL jsou pověření klienta (tajný nebo certifikát) předána jako parametr konstrukce důvěrných klientských aplikací.
+V knihovnách MSAL se přihlašovací údaje klienta (tajný kód nebo certifikát) předávají jako parametr konstrukce důvěrné klientské aplikace.
 
 > [!IMPORTANT]
-> I v případě, že vaše aplikace je konzolová aplikace, která běží jako služba, pokud je to aplikace daemon, musí být důvěrné klientské aplikace.
+> I v případě, že je vaše aplikace Konzolová aplikace, která běží jako služba, pokud se jedná o aplikaci démona, musí to být důvěrná klientská aplikace.
 
 ### <a name="configuration-file"></a>Konfigurační soubor
 
 Konfigurační soubor definuje:
 
-- Autorita nebo instance cloudu a ID klienta.
-- ID klienta, které jste získali z registrace přihlášky.
-- Tajný klíč klienta nebo certifikát.
+- Autorita nebo instance cloudu a ID tenanta.
+- ID klienta, které jste získali z registrace aplikace.
+- Buď tajný klíč klienta, nebo certifikát.
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-[appsettings.json](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json) z ukázky [konzoly .NET Core.](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)
+[appSettings. JSON](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json) z ukázky [procesu démona konzoly .NET Core](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)
 
 ```json
 {
@@ -69,11 +69,11 @@ Konfigurační soubor definuje:
 }
 ```
 
-Můžete zadat `ClientSecret` buď `CertificateName`nebo . Tato nastavení jsou výhradní.
+Zadáte buď `ClientSecret` nebo `CertificateName`. Tato nastavení jsou exkluzivní.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Při vytváření důvěrného klienta s tajnými kódy klienta je konfigurační soubor [parameters.json](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/1-Call-MsGraph-WithSecret/parameters.json) v ukázce [daemonu Pythonu](https://github.com/Azure-Samples/ms-identity-python-daemon) následující:
+Když vytváříte důvěrného klienta s klientskými tajnými kódy, konfigurační soubor [Parameters. JSON](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/1-Call-MsGraph-WithSecret/parameters.json) v ukázce [démona Pythonu](https://github.com/Azure-Samples/ms-identity-python-daemon) je následující:
 
 ```Json
 {
@@ -85,7 +85,7 @@ Při vytváření důvěrného klienta s tajnými kódy klienta je konfiguračn�
 }
 ```
 
-Při vytváření důvěrného klienta s certifikáty je konfigurační soubor [parameters.json](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/parameters.json) v ukázce [daemonu Pythonu](https://github.com/Azure-Samples/ms-identity-python-daemon) následující:
+Když vytváříte důvěrného klienta s certifikáty, konfigurační soubor [Parameters. JSON](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/parameters.json) v ukázce [démona Pythonu](https://github.com/Azure-Samples/ms-identity-python-daemon) je následující:
 
 ```Json
 {
@@ -111,19 +111,19 @@ Při vytváření důvěrného klienta s certifikáty je konfigurační soubor [
 
 ### <a name="instantiate-the-msal-application"></a>Vytvoření instance aplikace MSAL
 
-Chcete-li vytvořit instanci aplikace MSAL, je třeba přidat, odkazovat nebo importovat balíček MSAL (v závislosti na jazyku).
+Chcete-li vytvořit instanci aplikace MSAL, je nutné přidat, odkazovat nebo importovat balíček MSAL (v závislosti na jazyku).
 
-Konstrukce se liší v závislosti na tom, zda používáte tajné klíče klienta nebo certifikáty (nebo jako pokročilý scénář podepsané kontrolní výrazy).
+Konstrukce se liší v závislosti na tom, zda používáte klientské tajné klíče nebo certifikáty (nebo jako pokročilé scénáře, podepsané kontrolní výrazy).
 
 #### <a name="reference-the-package"></a>Odkaz na balíček
 
-Odkaz na balíček MSAL v kódu aplikace.
+Odkazování na balíček MSAL v kódu aplikace.
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-Přidejte balíček [Microsoft.IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet do aplikace.
-V MSAL.NET je důvěrná klientská `IConfidentialClientApplication` aplikace reprezentována rozhraním.
-Použijte MSAL.NET jmenné soubory ve zdrojovém kódu.
+Přidejte do své aplikace balíček NuGet [Microsoft. IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client) .
+V MSAL.NET je aplikace důvěrného klienta reprezentovaná `IConfidentialClientApplication` rozhraním.
+Použijte obor názvů MSAL.NET ve zdrojovém kódu.
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -150,9 +150,9 @@ import com.microsoft.aad.msal4j.SilentParameters;
 
 ---
 
-#### <a name="instantiate-the-confidential-client-application-with-a-client-secret"></a>Vytvoření instance důvěrné klientské aplikace pomocí tajného klíče klienta
+#### <a name="instantiate-the-confidential-client-application-with-a-client-secret"></a>Vytvoření instance aplikace důvěrného klienta s tajným klíčem klienta
 
-Zde je kód pro vytvoření instance důvěrné klientské aplikace s tajným kódem klienta:
+Zde je kód pro vytvoření instance aplikace důvěrného klienta s tajným klíčem klienta:
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -192,9 +192,9 @@ ConfidentialClientApplication cca =
 
 ---
 
-#### <a name="instantiate-the-confidential-client-application-with-a-client-certificate"></a>Vytvoření instance důvěrné klientské aplikace pomocí klientského certifikátu
+#### <a name="instantiate-the-confidential-client-application-with-a-client-certificate"></a>Vytvoření instance aplikace důvěrného klienta pomocí klientského certifikátu
 
-Zde je kód pro vytvoření aplikace s certifikátem:
+Zde je kód pro sestavení aplikace s certifikátem:
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -223,7 +223,7 @@ app = msal.ConfidentialClientApplication(
 
 # <a name="java"></a>[Java](#tab/java)
 
-V jazyce MSAL Java existují dva tvůrci, kteří instanci tajných klientských aplikací s certifikáty:
+V MSAL Java existují dva tvůrci pro vytvoření instance aplikace důvěrného klienta s certifikáty:
 
 ```Java
 
@@ -256,18 +256,18 @@ ConfidentialClientApplication cca =
 
 ---
 
-#### <a name="advanced-scenario-instantiate-the-confidential-client-application-with-client-assertions"></a>Rozšířený scénář: Vytvoření instance důvěrné klientské aplikace pomocí kontrolních výrazů klienta
+#### <a name="advanced-scenario-instantiate-the-confidential-client-application-with-client-assertions"></a>Rozšířený scénář: vytvoření instance aplikace důvěrného klienta s kontrolními výrazy klienta
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-Namísto tajného klíče klienta nebo certifikátu může důvěrná klientská aplikace také prokázat svou identitu pomocí kontrolních výrazů klienta.
+Místo tajného klíče klienta nebo certifikátu může důvěrná klientská aplikace také prokázat svoji identitu pomocí kontrolních výrazů klienta.
 
-MSAL.NET má dvě metody, jak poskytnout podepsané kontrolní výrazy důvěrné klientské aplikaci:
+MSAL.NET má dvě metody pro poskytování podepsaných kontrolních výrazů do aplikace důvěrného klienta:
 
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
 
-Při použití `WithClientAssertion`, je třeba zadat podepsané JWT. Tento rozšířený scénář je podrobně popsán v [kontrolnívýrazy klienta](msal-net-client-assertions.md).
+Když použijete `WithClientAssertion`, musíte poskytnout podepsaný token JWT. Tento rozšířený scénář je podrobně popsán v [kontrolním výrazu klienta](msal-net-client-assertions.md).
 
 ```csharp
 string signedClientAssertion = ComputeAssertion();
@@ -276,8 +276,8 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-Při použití `WithClientClaims`MSAL.NET vytvoří podepsané kontrolní výraz, který obsahuje deklarace očekávané služby Azure AD, plus další deklarace klienta, které chcete odeslat.
-Tento kód ukazuje, jak to udělat:
+Když použijete `WithClientClaims`, MSAL.NET vytvoří podepsaný kontrolní výraz, který obsahuje deklarace očekávané službou Azure AD a další deklarace identity klienta, které chcete odeslat.
+Tento kód ukazuje, jak to provést:
 
 ```csharp
 string ipAddress = "192.168.1.2";
@@ -289,11 +289,11 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();```
 ```
 
-Podrobnosti naleznete v tématu [Tvrzení klienta](msal-net-client-assertions.md).
+Další podrobnosti najdete v tématu [kontrolní výrazy klienta](msal-net-client-assertions.md).
 
 # <a name="python"></a>[Python](#tab/python)
 
-V MSAL Pythonu můžete poskytnout deklarace klienta pomocí `ConfidentialClientApplication`deklarací, které budou podepsány tímto soukromým klíčem.
+V MSAL Pythonu můžete poskytovat deklarace identity klientů pomocí deklarací identity, které budou podepsány tímto `ConfidentialClientApplication`privátním klíčem.
 
 ```Python
 config = json.load(open(sys.argv[1]))
@@ -309,7 +309,7 @@ app = msal.ConfidentialClientApplication(
     )
 ```
 
-Podrobnosti naleznete v referenční dokumentaci MSAL Python pro [ConfidentialClientApplication](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.__init__).
+Podrobnosti najdete v referenční dokumentaci k MSAL Pythonu pro [ConfidentialClientApplication](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.__init__).
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -330,16 +330,16 @@ ConfidentialClientApplication cca =
 # <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!div class="nextstepaction"]
-> [Daemon app - získání tokenů pro aplikaci](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=dotnet)
+> [Aplikace démona – získávání tokenů pro aplikaci](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=dotnet)
 
 # <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
-> [Daemon app - získání tokenů pro aplikaci](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=python)
+> [Aplikace démona – získávání tokenů pro aplikaci](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=python)
 
 # <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
-> [Daemon app - získání tokenů pro aplikaci](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=java)
+> [Aplikace démona – získávání tokenů pro aplikaci](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=java)
 
 ---

@@ -1,6 +1,6 @@
 ---
-title: Nejčastější dotazy – Azure Event Hubs | Dokumenty společnosti Microsoft
-description: Tento článek obsahuje seznam nejčastějších dotazů (FAQ) pro Azure Event Hubs a jejich odpovědi.
+title: Nejčastější dotazy – Azure Event Hubs | Microsoft Docs
+description: Tento článek obsahuje seznam nejčastějších dotazů pro Azure Event Hubs a jejich odpovědí.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -11,251 +11,251 @@ ms.custom: seodec18
 ms.date: 12/02/2019
 ms.author: shvija
 ms.openlocfilehash: 7f6e1896c97c96cd484d15fb9e6a3056e5c5d6b2
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82086364"
 ---
-# <a name="event-hubs-frequently-asked-questions"></a>Nejčastější dotazy centra event hubů
+# <a name="event-hubs-frequently-asked-questions"></a>Event Hubs nejčastějších dotazech
 
 ## <a name="general"></a>Obecné
 
-### <a name="what-is-an-event-hubs-namespace"></a>Co je obor názvů Event Hubs?
-Obor názvů je kontejner oboru pro témata Centra událostí/Kafka. To vám dává jedinečný [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name). Obor názvů slouží jako kontejner aplikace, který může ubytovat více témat Centra událostí/Kafka. 
+### <a name="what-is-an-event-hubs-namespace"></a>Co je Event Hubs obor názvů?
+Obor názvů je kontejner oboru pro témata centra událostí/Kafka. Poskytuje jedinečný [plně kvalifikovaný název domény](https://en.wikipedia.org/wiki/Fully_qualified_domain_name). Obor názvů slouží jako kontejner aplikace, který může obsahovat několik témat centra událostí/Kafka. 
 
 ### <a name="when-do-i-create-a-new-namespace-vs-use-an-existing-namespace"></a>Kdy vytvořím nový obor názvů vs. použít existující obor názvů?
-Přidělení kapacity ([jednotky propustnosti (Jednotky propustnosti)](#throughput-units)) se účtují na úrovni oboru názvů. Obor názvů je také přidružen k oblasti.
+Přidělení kapacity ([jednotky propustnosti (počet propustnosti)](#throughput-units)) se účtuje na úrovni oboru názvů. Obor názvů je také přidružen k oblasti.
 
-Můžete chtít vytvořit nový obor názvů namísto použití existujícího oboru v jednom z následujících scénářů: 
+Místo použití existujícího oboru názvů v jednom z následujících scénářů je vhodné vytvořit nový obor názvů: 
 
 - Potřebujete centrum událostí přidružené k nové oblasti.
-- Potřebujete Centrum událostí přidružené k jinému předplatnému.
-- Potřebujete centrum událostí s odlišným přidělením kapacity (to znamená, že potřeba kapacity pro obor názvů s přidaným centrem událostí by překročila prahovou hodnotu 40 TU a nechcete jít pro vyhrazený cluster)  
+- Potřebujete centrum událostí přidružené k jinému předplatnému.
+- Budete potřebovat centrum událostí s odlišným přidělením kapacity (to znamená, že kapacita pro obor názvů s přidaným centrem událostí by překročila prahovou hodnotu 40.) a nechcete pro vyhrazený cluster přejít.  
 
-### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>Jaký je rozdíl mezi úrovněmi Event Hubs Basic a Standard?
+### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>Jaký je rozdíl mezi Event Hubs úrovně Basic a Standard?
 
-Úroveň Standard azure event hubů poskytuje funkce nad rámec toho, co je k dispozici na úrovni Basic. Standardní funkce jsou součástí následujících funkcí:
+Úroveň Standard služby Azure Event Hubs poskytuje funkce nad rámec toho, co je k dispozici na úrovni Basic. Standardně jsou k dispozici následující funkce:
 
-* Delší uchovávání událostí
-* Další zprostředkovaná připojení s poplatkem za nadbytkvině za více než uvedený počet
-* Více než jedna [skupina spotřebitelů](event-hubs-features.md#consumer-groups)
-* [Zachytit](event-hubs-capture-overview.md)
-* [Integrace Kafky](event-hubs-for-kafka-ecosystem-overview.md)
+* Delší doba uchovávání událostí
+* Další zprostředkovaná připojení s náklady nadlimitního využití za více než uvedené množství
+* Víc než jedna [Skupina příjemců](event-hubs-features.md#consumer-groups)
+* [Snímky](event-hubs-capture-overview.md)
+* [Integrace Kafka](event-hubs-for-kafka-ecosystem-overview.md)
 
-Další informace o cenových úrovních, včetně centra událostí Vyhrazené, najdete v [tématu Podrobnosti o cenách Centra událostí](https://azure.microsoft.com/pricing/details/event-hubs/).
+Další informace o cenových úrovních, včetně Event Hubs úrovně Dedicated, najdete v článku [o cenách Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/).
 
-### <a name="where-is-azure-event-hubs-available"></a>Kde jsou Azure Event Hubs dostupná?
+### <a name="where-is-azure-event-hubs-available"></a>Kde je Azure Event Hubs k dispozici?
 
-Azure Event Hubs je dostupná ve všech podporovaných oblastech Azure. Seznam najdete na stránce [oblasti Azure.](https://azure.microsoft.com/regions/)  
+Azure Event Hubs je k dispozici ve všech podporovaných oblastech Azure. Seznam najdete na stránce [oblastí Azure](https://azure.microsoft.com/regions/) .  
 
-### <a name="can-i-use-a-single-amqp-connection-to-send-and-receive-from-multiple-event-hubs"></a>Mohu k odesílání a přijímání z více center událostí používat jedno připojení AMQP?
+### <a name="can-i-use-a-single-amqp-connection-to-send-and-receive-from-multiple-event-hubs"></a>Můžu použít jedno připojení AMQP k odesílání a příjmu z několika Center událostí?
 
-Ano, pokud jsou všechny centra událostí ve stejném oboru názvů.
+Ano, pokud jsou všechna centra událostí ve stejném oboru názvů.
 
-### <a name="what-is-the-maximum-retention-period-for-events"></a>Jaká je maximální doba uchovávání událostí?
+### <a name="what-is-the-maximum-retention-period-for-events"></a>Jaká je maximální doba uchování pro události?
 
-Úroveň Event Hubs Standard aktuálně podporuje maximální dobu uchovávání sedmi dnů. Centra událostí nejsou určena jako trvalé úložiště dat. Retenční období delší než 24 hodin jsou určena pro scénáře, ve kterých je vhodné přehrát datový proud událostí do stejných systémů; například trénovat nebo ověřovat nový model strojového učení na existujících datech. Pokud potřebujete uchování zpráv déle než sedm dní, povolení [akce Hubs Capture](event-hubs-capture-overview.md) ve vašem centru událostí načte data z centra událostí do účtu úložiště nebo účtu Služby Azure Data Lake Service podle vašeho výběru. Povolením sběru se účtuje poplatek na základě zakoupených jednotek propustností.
+Úroveň Standard Event Hubs v současné době podporuje maximální dobu uchování po dobu sedmi dnů. Centra událostí nejsou zamýšlená jako trvalá úložiště dat. Doby uchování delší než 24 hodin jsou určené pro scénáře, ve kterých je vhodné přehrát datový proud událostí do stejných systémů. například pro školení nebo ověření nového modelu strojového učení pro stávající data. Pokud budete potřebovat dobu uchovávání zpráv déle než 7 dní, povolením [Event Hubsho zachycení](event-hubs-capture-overview.md) v centru událostí získáte data z centra událostí do účtu úložiště nebo účtu služby Azure Data Lake, který zvolíte. Povolení služby Capture účtuje poplatek na základě zakoupených jednotek propustnosti.
 
-Můžete nakonfigurovat dobu uchování pro zachycená data v účtu úložiště. Funkce **správy životního cyklu** služby Azure Storage nabízí bohaté zásady založené na pravidlech pro účty úložiště s obecným pro obecné účely v2 a úložiště objektů blob. Pomocí zásad můžete data převést na příslušné úrovně přístupu nebo vyprší jejich platnost na konci životního cyklu dat. Další informace najdete [v tématu Správa životního cyklu úložiště objektů blob Azure](../storage/blobs/storage-lifecycle-management-concepts.md). 
+Můžete nakonfigurovat dobu uchování zachycených dat ve vašem účtu úložiště. Funkce **správy životního cyklu** Azure Storage nabízí bohatou zásadu založenou na pravidlech pro účty pro obecné účely v2 a BLOB Storage. Zásady můžete použít k převodu dat do příslušných úrovní přístupu nebo vypršení jejich platnosti na konci životního cyklu dat. Další informace najdete v tématu [Správa životního cyklu služby Azure Blob Storage](../storage/blobs/storage-lifecycle-management-concepts.md). 
 
-### <a name="how-do-i-monitor-my-event-hubs"></a>Jak můžu sledovat centra událostí?
-Event Hubs vydává vyčerpávající metriky, které poskytují stav vašich prostředků azure [monitoru](../azure-monitor/overview.md). Umožňují také posoudit celkový stav služby Event Hubs nejen na úrovni oboru názvů, ale také na úrovni entity. Přečtěte si, jaké monitorování se nabízí pro [Azure Event Hubs](event-hubs-metrics-azure-monitor.md).
+### <a name="how-do-i-monitor-my-event-hubs"></a>Návody monitorovat můj Event Hubs?
+Event Hubs emituje vyčerpávající metriky, které poskytují stav vašich prostředků [Azure monitor](../azure-monitor/overview.md). Také vám umožní vyhodnotit celkový stav služby Event Hubs nejen na úrovni oboru názvů, ale také na úrovni entity. Přečtěte si informace o tom, jaké monitorování se nabízí pro [Azure Event Hubs](event-hubs-metrics-azure-monitor.md).
 
-### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Jaké porty je třeba otevřít na firewallu? 
-Pomocí služby Azure Service Bus můžete pomocí služby Azure Service Bus odesílat a přijímat zprávy:
+### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Jaké porty potřebuji v bráně firewall otevřít? 
+K posílání a přijímání zpráv můžete použít následující protokoly s Azure Service Bus:
 
 - Rozšířený protokol řízení front zpráv (AMQP)
 - HTTP
 - Apache Kafka
 
-V následující tabulce najdete odchozí porty, které je potřeba otevřít, abyste pomocí těchto protokolů komunikovali s Azure Event Hubs. 
+V následující tabulce najdete Odchozí porty, které musíte otevřít, abyste mohli tyto protokoly používat ke komunikaci s Azure Event Hubs. 
 
 | Protocol (Protokol) | Porty | Podrobnosti | 
 | -------- | ----- | ------- | 
-| AMQP | 5671 a 5672 | Viz [Průvodce protokolem AMQP](../service-bus-messaging/service-bus-amqp-protocol-guide.md) | 
+| AMQP | 5671 a 5672 | Viz [Průvodce protokolem AMQP](../service-bus-messaging/service-bus-amqp-protocol-guide.md) . | 
 | HTTP, HTTPS | 80, 443 |  |
-| Kafka | 9093 | Viz [Použití centra událostí z aplikací Kafka](event-hubs-for-kafka-ecosystem-overview.md)
+| Kafka | 9093 | Viz [použití Event Hubs z aplikací Kafka](event-hubs-for-kafka-ecosystem-overview.md) .
 
-### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>Jaké IP adresy potřebuji k whitelistu?
-Chcete-li najít správné adresy IP do seznamu povolených adres pro vaše připojení, postupujte takto:
+### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>Jaké IP adresy potřebuji pro seznam povolených?
+Chcete-li najít správné IP adresy pro připojení k seznamu, postupujte podle následujících kroků:
 
 1. Z příkazového řádku spusťte následující příkaz: 
 
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. Poznamenejte si `Non-authoritative answer`adresu IP vrácenou v . Změna by se změnila pouze v případě, že obnovíte obor názvů do jiného clusteru.
+2. Poznamenejte si IP adresu vrácenou `Non-authoritative answer`v. Jediná doba, kterou by se změnila, je, že obor názvů obnovíte na jiný cluster.
 
-Pokud pro obor názvů používáte redundanci zóny, je třeba provést několik dalších kroků: 
+Pokud používáte redundanci zóny pro svůj obor názvů, musíte provést několik dalších kroků: 
 
-1. Nejprve spustit nslookup v oboru názvů.
+1. Nejprve spustíte nástroj nslookup v oboru názvů.
 
     ```
     nslookup <yournamespace>.servicebus.windows.net
     ```
-2. Poznamenejte si název v části **neautoritativní odpovědi,** která je v jednom z následujících formátů: 
+2. Poznamenejte si název v části **nesměrodatná odpověď** , která je v jednom z následujících formátů: 
 
     ```
     <name>-s1.servicebus.windows.net
     <name>-s2.servicebus.windows.net
     <name>-s3.servicebus.windows.net
     ```
-3. Spusťte nslookup pro každý z nich s příponami s1, s2 a s3 získat IP adresy všech tří instancí běžících ve třech zónách dostupnosti, 
+3. Spusťte nástroj nslookup pro každý z nich s příponami S1, S2 a S3 k získání IP adres všech tří instancí spuštěných ve třech zónách dostupnosti. 
 
 ## <a name="apache-kafka-integration"></a>Integrace Apache Kafka
 
-### <a name="how-do-i-integrate-my-existing-kafka-application-with-event-hubs"></a>Jak lze integrovat stávající aplikaci Kafka s event huby?
-Event Hubs poskytuje koncový bod Kafka, který může být použit pro vaše stávající aplikace založené na Apache Kafka. Změna konfigurace je vše, co je nutné mít prostředí PaaS Kafka. Poskytuje alternativu ke spuštění vlastního clusteru Kafka. Event Hubs podporuje Apache Kafka 1.0 a novější klientské verze a pracuje s vašimi stávajícími aplikacemi, nástroji a frameworky Kafka. Další informace naleznete v [tématu Event Hubs for Kafka repo](https://github.com/Azure/azure-event-hubs-for-kafka).
+### <a name="how-do-i-integrate-my-existing-kafka-application-with-event-hubs"></a>Návody integrovat stávající aplikaci v Kafka s Event Hubs?
+Event Hubs poskytuje koncový bod Kafka, který mohou používat vaše stávající aplikace založené na Apache Kafka. K dispozici je všechny změny konfigurace, které se vyžadují pro prostředí PaaS Kafka. Nabízí alternativu ke spuštění vlastního clusteru Kafka. Event Hubs podporuje Apache Kafka 1,0 a novější verze klientů a spolupracuje s vašimi stávajícími aplikacemi, nástroji a rozhraními Kafka. Další informace najdete v tématu [Event Hubs pro úložiště Kafka](https://github.com/Azure/azure-event-hubs-for-kafka).
 
-### <a name="what-configuration-changes-need-to-be-done-for-my-existing-application-to-talk-to-event-hubs"></a>Jaké změny konfigurace je třeba provést, aby moje stávající aplikace mohl y mluvit s event huby?
-Chcete-li se připojit k centru událostí, budete muset aktualizovat konfigurace klienta Kafka. Provádí se tak vytvořením oboru názvů Event Hubs a získáním [připojovacího řetězce](event-hubs-get-connection-string.md). Změňte bootstrap.servers tak, aby ukazovaly hlavní název souboru QDN rozbočovače událostí a port na 9093. Aktualizujte soubor sasl.jaas.config tak, aby klienta Kafka nasměroval na koncový bod centra událostí (což je připojovací řetězec, který jste získali), se správným ověřováním, jak je znázorněno níže:
+### <a name="what-configuration-changes-need-to-be-done-for-my-existing-application-to-talk-to-event-hubs"></a>Jaké změny konfigurace je potřeba udělat, aby se moje stávající aplikace mohla spojit s Event Hubs?
+Pokud se chcete připojit k centru událostí, budete muset aktualizovat konfigurace klienta Kafka. Provede se vytvořením oboru názvů Event Hubs a získání [připojovacího řetězce](event-hubs-get-connection-string.md). Změňte Bootstrap. Server tak, aby ukazovaly Event Hubs plně kvalifikovaný název domény a port na 9093. Aktualizujte soubor SASL. jaas. config tak, aby klienta Kafka nasměroval na váš koncový bod Event Hubs (což je připojovací řetězec, který jste získali), se správným ověřováním, jak je uvedeno níže:
 
-bootstrap.servers={VAŠE. EVENTHUBS. FQDN}:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.plainLoginModule required username="$ConnectionString" password="{YOUR. EVENTHUBS. Připojení. řetězec}";
+Bootstrap. Servers = {YOUR. EVENTHUBS. FQDN}: 9093 Request. Timeout. MS = 60000 Security. Protocol = SASL_SSL SASL. mechanismus = OBYČEJNÉ SASL. jaas. config = org. Apache. Kafka. Common. Security. obyčejný. PlainLoginModule vyžaduje username = "$ConnectionString" Password = "{. EVENTHUBS. Vázán. ŘETĚZEC} ";
 
 Příklad:
 
-bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.plainLoginModule required username="$ConnectionString" password="Endpoint=sb://dummynamespacespace.windows.net/; SharedAccessKeyName=DummyAccessKeyName; SharedAccessKey=5dOntTRytoC24opYThisAsit3is2B+OGY1US/fuL3ly=";
+Bootstrap. Servers = dummynamespace. ServiceBus. Windows. NET: 9093 Request. Timeout. MS = 60000 Security. Protocol = SASL_SSL SASL. mechanismus = obyčejný SASL. jaas. config = org. Apache. Kafka. Common. Security. obyčejný. PlainLoginModule Required uživatelské_jméno = "$ConnectionString" Password = "Endpoint = Sb://dummynamespace.ServiceBus.Windows.NET/; SharedAccessKeyName = DummyAccessKeyName; SharedAccessKey = 5dOntTRytoC24opYThisAsit3is2B + OGY1US/fuL3ly = ";
 
-Poznámka: Pokud sasl.jaas.config není podporovaná konfigurace ve vašem frameworku, najděte konfigurace, které se používají k nastavení uživatelského jména a hesla SASL, a místo toho je použijte. Nastavte uživatelské jméno na $ConnectionString a heslo k připojovacímu řetězci Event Hubs.
+Poznámka: Pokud SASL. jaas. config není ve vašem rozhraní podporovaná konfigurace, najděte konfigurace, které se používají k nastavení uživatelského jména a hesla SASL a místo toho použijte je. Nastavte uživatelské jméno na $ConnectionString a heslo pro připojovací řetězec Event Hubs.
 
-### <a name="what-is-the-messageevent-size-for-event-hubs"></a>Jaká je velikost zprávy/události pro centra událostí?
-Maximální velikost zprávy povolená pro centra událostí je 1 MB.
+### <a name="what-is-the-messageevent-size-for-event-hubs"></a>Jaká je velikost zprávy nebo události pro Event Hubs?
+Maximální povolená velikost zprávy pro Event Hubs je 1 MB.
 
 ## <a name="throughput-units"></a>Jednotky propustnosti
 
-### <a name="what-are-event-hubs-throughput-units"></a>Co jsou jednotky propustnost centra událostí?
-Propustnost v event hubech definuje množství dat v mega bajtech nebo počet (v tisících) událostí 1 KB, které se promítají a odchozí přenos dat prostřednictvím event hubů. Tato propustnost se měří v jednotkách propustnost (TU). Než začnete používat službu Event Hubs, nakupujte hlavní použití. Můžete explicitně vybrat TU centra událostí buď pomocí portálu nebo šablony Správce prostředků centra událostí. 
+### <a name="what-are-event-hubs-throughput-units"></a>Co jsou Event Hubs jednotky propustnosti?
+Propustnost v Event Hubs definuje množství dat v megabajtů bajtech nebo číslo (v tisících) událostí 1 KB, které příchozí a odchozí přenos prostřednictvím Event Hubs. Tato propustnost se měří v jednotkách propustnosti (počet propustnosti). Zakupte si počet propustnosti, než budete moct začít používat službu Event Hubs. Můžete explicitně vybrat Event Hubs počet propustnosti buď pomocí portálu, nebo Event Hubs šablony Správce prostředků. 
 
 
-### <a name="do-throughput-units-apply-to-all-event-hubs-in-a-namespace"></a>Platí jednotky propustnost pro všechny centra událostí v oboru názvů?
-Ano, jednotky propustnost (Jednotky propustnost) platí pro všechny centra událostí v oboru názvů Event Hubs. To znamená, že zakoupíte tu na úrovni oboru názvů a jsou sdíleny mezi centra událostí v rámci tohoto oboru názvů. Každý TU opravňuje obor názvů k následujícím možnostem:
+### <a name="do-throughput-units-apply-to-all-event-hubs-in-a-namespace"></a>Vztahují se jednotky propustnosti na všechna centra událostí v oboru názvů?
+Ano, jednotky propustnosti (počet propustnosti) platí pro všechna centra událostí v oboru názvů Event Hubs. Znamená to, že si koupíte počet propustnosti na úrovni oboru názvů a sdílíte se mezi centry událostí v rámci tohoto oboru názvů. Každé z nich opravňuje obor názvů k následujícím funkcím:
 
-- Až 1 MB za sekundu příchozího přenosu dat událostí (události odeslané do centra událostí), ale ne více než 1000 příchozích přenosů dat události, operace správy nebo řízení volání rozhraní API za sekundu.
-- Až 2 MB za sekundu odchozích událostí (události spotřebované z centra událostí), ale ne více než 4096 odchozí chod událostí.
-- Až 84 GB úložiště událostí (dost pro výchozí 24hodinovou dobu uchovávání).
+- Až 1 MB událostí příchozího přenosu dat (události odeslané do centra událostí) za sekundu, ale ne víc než 1000 událostí příchozího přenosu dat, operací správy nebo řídicích volání rozhraní API za sekundu.
+- Až 2 MB událostí odchozího přenosu dat (události spotřebované z centra událostí) za sekundu, ale ne víc než 4096 odchozích událostí.
+- Až 84 GB úložiště událostí (je dostatečné pro výchozí dobu uchovávání po dobu 24 hodin).
 
-### <a name="how-are-throughput-units-billed"></a>Jak se účtují jednotky propustností?
-Jednotky propustnost (Jednotky propustnost) se účtují po hodinách. Fakturace je založena na maximálním počtu jednotek, které byly vybrány během dané hodiny. 
+### <a name="how-are-throughput-units-billed"></a>Jak se účtují jednotky propustnosti?
+Jednotky propustnosti (počet propustnosti) se účtují po hodinách. Účtování vychází z maximálního počtu jednotek vybraných během dané hodiny. 
 
-### <a name="how-can-i-optimize-the-usage-on-my-throughput-units"></a>Jak mohu optimalizovat využití jednotek propustností?
-Můžete začít tak nízko jako jedna jednotka propustnost (TU) a zapnout [automatické nafukování](event-hubs-auto-inflate.md). Funkce automatického nafouknutí umožňuje růst vašich tu s nárůstem provozu / užitečného zatížení. Můžete také nastavit horní limit počtu sou.
+### <a name="how-can-i-optimize-the-usage-on-my-throughput-units"></a>Jak můžu optimalizovat využití u mých jednotek propustnosti?
+Můžete začít jako jednu jednotku propustnosti (TU) a zapnout [Automatické](event-hubs-auto-inflate.md)rozpínání. Funkce automatického rozvíjení umožňuje rozšířit počet propustnosti jako provoz nebo datovou část. Můžete také nastavit horní limit počtu počet propustnostiů.
 
-### <a name="how-does-auto-inflate-feature-of-event-hubs-work"></a>Jak funkce automatického nafouknutí centra událostí funguje?
-Funkce automatického nafouknutí umožňuje vertikálně zvýšit kapacitu jednotek propustností (Jednotky propustnost). To znamená, že můžete začít tím, že zakoupíte nízké buňky a automaticky nafoukne temeni na vaše buňky, jak se zvyšuje příchozí přenos. Poskytuje nákladově efektivní možnost a úplnou kontrolu nad počtem sousto, které chcete spravovat. Tato funkce je **funkce pouze škálování** a můžete zcela řídit škálování počtu tu aktualizací. 
+### <a name="how-does-auto-inflate-feature-of-event-hubs-work"></a>Jak funguje automatická funkce Event Hubs funguje?
+Funkce automatického rozšíření umožňuje horizontální navýšení kapacity jednotek propustnosti (počet propustnosti). To znamená, že můžete začít nákupem nízkého počet propustnostiu a automatického navýšení škály počet propustnosti při nárůstu příchozího přenosu dat. Nabízí cenově výhodné možnost a úplnou kontrolu nad počtem počet propustnosti, která se mají spravovat. Tato funkce je jedinou funkcí pro **škálování** a můžete úplně řídit škálování počtu počet propustnosti, a to tak, že ho aktualizujete. 
 
-Můžete chtít začít s jednotkami s nízkou propustností (Jednotky propustnost), například 2 jednotky tupů. Pokud předpovídáte, že váš provoz může růst na 15 fosl, zapněte funkci automatického nafouknutí v oboru názvů a nastavte maximální limit na 15 foutů. Nyní můžete zvýšit vaše tu automaticky, jak váš provoz roste.
+Možná budete chtít začít s počet propustnosti jednotkami s nízkou propustností (například 2 počet propustnosti). Pokud předpokládáte, že váš provoz může růst až 15 počet propustnosti, zapněte v oboru názvů funkci automatického rozpínání a nastavte maximální limit na 15 počet propustnosti. Počet propustnosti teď můžete rozšířit tak, jak vaše přenosy roste.
 
-### <a name="is-there-a-cost-associated-when-i-turn-on-the-auto-inflate-feature"></a>Jsou při zapnutí funkce automatického nafouknutí spojeny náklady?
-S touto funkcí nejsou spojeny **žádné náklady.** 
+### <a name="is-there-a-cost-associated-when-i-turn-on-the-auto-inflate-feature"></a>Jsou k dispozici náklady spojené s funkcí automatické rozpínání?
+S touto funkcí nejsou spojené **žádné náklady** . 
 
-### <a name="how-are-throughput-limits-enforced"></a>Jak jsou vynucena omezení propustnost?
-Pokud celková propustnost příchozího přenosu dat nebo rychlost celkových událostí příchozího přenosu dat ve všech rozbočovačích událostí v oboru názvů překročí agregační příspěvky jednotek propustnosti, odesílatelé jsou omezeni a obdrží chyby označující, že byla překročena kvóta příchozího přenosu dat.
+### <a name="how-are-throughput-limits-enforced"></a>Jak se vynutily limity propustnosti?
+Pokud celková propustnost příchozího přenosu dat nebo celková frekvence událostí příchozího přenosu dat ve všech centrech událostí v oboru názvů přesáhne agregované hodnoty jednotek propustnosti, odesílají se omezení a dostanou chyby, které signalizují překročení kvóty příchozího přenosu dat.
 
-Pokud celková propustnost odchozího přenosu nebo rychlost odchozího přenosu událostí ve všech rozbočovačích událostí v oboru názvů překročí agregační povolenky jednotky propustnosti, příjemci jsou omezeni a obdrží chyby označující, že byla překročena kvóta odchozího přenosu. Kvóty příchozího a odchozího přenosu dat jsou vynuceny samostatně, takže žádný odesílatel nemůže způsobit zpomalení spotřeby událostí, ani příjemce nemůže zabránit odesílání událostí do centra událostí.
+Pokud celková propustnost odchozích dat nebo celková přenosová rychlost události ve všech centrech událostí v oboru názvů přesáhne agregované odchylky jednotek propustnosti, přijímače se omezují a přijímají chyby indikující, že se překročila kvóta odchozího přenosu dat. Kvóty příchozího a odchozího přenosu dat se uplatňují samostatně, takže žádný odesilatel nemůže způsobit zpomalení události, ani nemůže přijímač zabránit v posílání událostí do centra událostí.
 
-### <a name="is-there-a-limit-on-the-number-of-throughput-units-tus-that-can-be-reservedselected"></a>Existuje omezení počtu jednotek propustností,, které lze rezervovat nebo vybrat?
-Na víceklientské nabídce mohou jednotky propustnosti růst až na 40 jednotek TuN (můžete vybrat až 20 jednotek Tu na portálu a zvýšit lístek podpory, který ji zvýší na 40 jednotek Tun ve stejném oboru názvů). Kromě 40 tu nabízí Event Hubs model založený na prostředku/kapacitě nazvaný **Vyhrazené clustery centra událostí**. Vyhrazené clustery se prodávají v jednotkách kapacity (CU).
+### <a name="is-there-a-limit-on-the-number-of-throughput-units-tus-that-can-be-reservedselected"></a>Existuje limit počtu jednotek propustnosti (počet propustnosti), které je možné rezervovat/vybrat?
+V nabídce pro více tenantů můžou jednotky propustnosti růst až 40 počet propustnosti (na portálu můžete vybrat až 20 počet propustnosti a vyvolat lístek podpory, který ho zvýší na 40 počet propustnosti ve stejném oboru názvů). Kromě 40 počet propustnosti Event Hubs nabízí model založený na prostředku nebo kapacitě, který se označuje jako **clustery Event Hubs úrovně Dedicated**. Vyhrazené clustery se prodávají v jednotkách kapacity (kapacitní jednotky).
 
 ## <a name="dedicated-clusters"></a>Vyhrazené clustery
 
 ### <a name="what-are-event-hubs-dedicated-clusters"></a>Co jsou clustery služby Event Hubs úrovně Dedicated?
-Centra událostí Vyhrazená clustery nabízejí nasazení jednoho klienta pro zákazníky s nejnáročnějšími požadavky. Tato nabídka vytváří cluster založený na kapacitě, který není vázán jednotkami propustnosti. To znamená, že můžete použít cluster u ingestování a streamování dat podle využití procesoru a paměti clusteru. Další informace naleznete v [tématu Centra událostí Vyhrazené clustery](event-hubs-dedicated-overview.md).
+Clustery Event Hubs úrovně Dedicated nabízejí nasazení s jedním tenantům pro zákazníky s nejnáročnějšími požadavky. Tato nabídka vytvoří cluster založený na kapacitě, který není svázán s jednotkami propustnosti. To znamená, že cluster můžete použít k ingestování a streamování dat, jak je využíváno využitím procesoru a paměti clusteru. Další informace najdete v tématu [Event Hubs úrovně Dedicated clustery](event-hubs-dedicated-overview.md).
 
 ### <a name="how-much-does-a-single-capacity-unit-let-me-achieve"></a>Co mi umožní dosáhnout jedna jednotka kapacity?
-U vyhrazeného clusteru závisí na různých faktorech, jako jsou výrobci, spotřebitelé, rychlost, s jakou ingestujete a zpracováváte, a mnoho dalšího. 
+V případě vyhrazeného clusteru může ingestování a streamování záviset na různých faktorech, jako jsou vaše producenti, spotřebitelé, rychlost, kterou sledujete a zpracováváte, a mnohem víc. 
 
-Následující tabulka ukazuje výsledky srovnávacích testů, kterých jsme dosáhli během testování:
+V následující tabulce jsou uvedeny výsledky srovnávacích testů, které jsme dosáhli během testování:
 
-| Obrazec datové části | Přijímače | Šířka pásma příchozího přenosu dat| Příchozí zprávy o přenosu dat | Šířka pásma odchozího přenosu | Odchozí zprávy | Celkem TUs | TU na CU |
+| Tvar datové části | Příjemců | Šířka pásma příchozího přenosu dat| Příchozí zprávy | Šířka pásma pro výstup | Odchozí zprávy | Celkem počet propustnosti | Počet propustnosti na CU |
 | ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
-| Dávky 100x1KB | 2 | 400 MB/s | 400 tisíc zpráv/s | 800 MB/s | 800 tisíc zpráv/s | 400 tuu | 100 tuu | 
-| Dávky 10x10KB | 2 | 666 MB/s | 66.6k zpráv/s | 1,33 GB/s | 133 kS zpráv/s | 666 TU | 166 TU |
-| Dávky 6x32KB | 1 | 1,05 GB/s | 34k zprávy / s | 1,05 GB/s | Zprávy 34 kS/s | 1000 tuu | 250 tuu |
+| Dávky 100x1KB | 2 | 400 MB/s | 400 tisíc zprávy za sekundu | 800 MB/s | 800k zprávy za sekundu | 400 počet propustnosti | 100 počet propustnosti | 
+| Dávky 10x10KB | 2 | 666 MB/s | zprávy 66.6 k/s | 1,33 GB/s | 133k zprávy za sekundu | 666 počet propustnosti | 166 počet propustnosti |
+| Dávky 6x32KB | 1 | 1,05 GB/s | 34k zprávy za sekundu | 1,05 GB/s | 34k zprávy za sekundu | 1000 počet propustnosti | 250 počet propustnosti |
 
-Při testování byla použita následující kritéria:
+Při testování se použila následující kritéria:
 
-- Byl použit vyhrazený cluster event hubů se čtyřmi jednotkami kapacity (CU). 
+- Použil se vyhrazený Event Hubs cluster se čtyřmi jednotkami kapacity (kapacitní jednotky). 
 - Centrum událostí používané pro ingestování mělo 200 oddílů. 
-- Data, která byla přijata byla přijata dvěma aplikacemi přijímače přijímajícími ze všech oddílů.
+- Data, která byla ingestovaná, obdrží dvě aplikace přijímače, které přijímají ze všech oddílů.
 
-Výsledky poskytují představu o tom, čeho lze dosáhnout pomocí vyhrazeného clusteru Event Hubs. Kromě toho vyhradit clusteru je dodáván s event huby zachycení povoleno pro vaše mikro dávky a dlouhodobé uchovávání scénářů.
+Výsledky poskytují představu o tom, co je možné dosáhnout pomocí vyhrazeného clusteru Event Hubs. Kromě toho se vyhradující cluster dodává s povoleným Event Hubs Capture pro vaše mikrodávkové a dlouhodobé scénáře uchovávání.
 
-### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>Jak vytvořím vyhrazený cluster centra událostí?
-Vyhrazený cluster centra událostí vytvoříte odesláním [žádosti o podporu zvýšení kvóty](https://portal.azure.com/#create/Microsoft.Support) nebo kontaktováním [týmu Event Hubs](mailto:askeventhubs@microsoft.com). Obvykle trvá asi dva týdny, než se cluster nasadí a předá, aby ho mohl použít. Tento proces je dočasný, dokud se prostřednictvím portálu Azure nezpřístupní úplná samoobslužná služba.
+### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>Návody vytvořit cluster Event Hubs úrovně Dedicated?
+Event Hubs vyhrazený cluster vytvoříte tak, že odešlete [žádost o podporu zvýšení kvóty](https://portal.azure.com/#create/Microsoft.Support) nebo se obrátíte na [tým Event Hubs](mailto:askeventhubs@microsoft.com). To obvykle trvá přibližně dva týdny, aby se cluster nasadil a předali se za použití vámi. Tento proces je dočasný, dokud nebude k dispozici kompletní samoobslužná funkce prostřednictvím Azure Portal.
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
 ### <a name="how-many-partitions-do-i-need"></a>Kolik oddílů potřebuji?
-Počet oddílů je určený při vytvoření a musí být v rozsahu 2 až 32. Počet oddílů není měnitelný, takže byste měli zvážit dlouhodobé měřítko při nastavování počtu oddílů. Oddíly slouží jako mechanismus pro organizaci dat a souvisí se stupněm paralelismu příjmu dat, který vyžadují přijímací aplikace. Počet oddílů v centru událostí přímo souvisí s počtem souběžných čtenářů, které plánujete mít. Další informace o oddílech naleznete v [tématu Oddíly](event-hubs-features.md#partitions).
+Počet oddílů je určený při vytvoření a musí být v rozsahu 2 až 32. Počet oddílů se nedá měnit, takže při nastavování počtu oddílů byste měli uvažovat o dlouhodobém škálování. Oddíly slouží jako mechanismus pro organizaci dat a souvisí se stupněm paralelismu příjmu dat, který vyžadují přijímací aplikace. Počet oddílů v centru událostí přímo souvisí s počtem souběžných čtenářů, které plánujete mít. Další informace o oddílech najdete v tématu [oddíly](event-hubs-features.md#partitions).
 
-Můžete ji nastavit jako nejvyšší možnou hodnotu, která je 32, v době vytvoření. Nezapomeňte, že mít více než jeden oddíl bude mít za následek události odeslané do více oddílů bez zachování pořadí, pokud nakonfigurujete odesílatele odeslat pouze do jednoho oddílu z 32 opuštění zbývajících 31 oddílů redundantní. V prvním případě budete muset číst události ve všech oddílech 32. V druhém případě neexistuje žádné zjevné dodatečné náklady kromě další konfigurace, kterou musíte provést na hostiteli procesoru událostí.
+Možná budete chtít nastavit, aby byla nejvyšší možná hodnota, která je v době vytváření 32. Pamatujte, že pokud bude mít více než jeden oddíl, budou události odesílány do několika oddílů bez zachování pořadí, pokud nenastavíte odesílatele tak, aby odesílali pouze jeden oddíl z 32 ponechání zbývajících 31 oddílů redundantní. V bývalém případě budete muset číst události ve všech oddílech 32. V druhém případě se od dodatečné konfigurace neúčtují žádné zjevnější náklady, které musíte udělat na hostiteli procesoru událostí.
 
-Centra událostí je navržena tak, aby umožnila čtečku jednoho oddílu na skupinu spotřebitelů. Ve většině případů použití je postačující výchozí nastavení čtyř oddílů. Pokud chcete škálovat zpracování událostí, můžete zvážit přidání dalších oddílů. Neexistuje žádný konkrétní limit propustnost na oddíl, ale agregační propustnost v oboru názvů je omezena počtem jednotek propustnost. Při zvýšení počtu jednotek propustnost v oboru názvů můžete chtít další oddíly, které umožní souběžným čtenářům dosáhnout vlastní maximální propustnost.
+Event Hubs je navržena tak, aby umožňovala jedno čtecí zařízení pro jednu skupinu příjemců. Ve většině případů použití je výchozí nastavení čtyř oddílů dostatečné. Pokud chcete škálovat zpracování událostí, možná budete chtít zvážit přidání dalších oddílů. Pro oddíl není k dispozici žádný konkrétní limit propustnosti, ale agregovaná propustnost ve vašem oboru názvů je omezená počtem jednotek propustnosti. Když zvýšíte počet jednotek propustnosti ve vašem oboru názvů, můžete chtít, aby měly další oddíly, které umožní souběžným čtenářům dosáhnout své vlastní maximální propustnosti.
 
-Pokud však máte model, ve kterém má vaše aplikace spřažení s určitým oddílem, zvýšení počtu oddílů nemusí být pro vás přínosem. Další informace naleznete v [tématu dostupnost a konzistence](event-hubs-availability-and-consistency.md).
+Pokud však máte model, ve kterém má aplikace spřažení pro určitý oddíl, zvýšení počtu oddílů nemusí být pro vás výhodou. Další informace najdete v tématu [dostupnost a konzistence](event-hubs-availability-and-consistency.md).
 
 ## <a name="pricing"></a>Ceny
 
-### <a name="where-can-i-find-more-pricing-information"></a>Kde najdu další informace o cenách?
+### <a name="where-can-i-find-more-pricing-information"></a>Kde najdu Další informace o cenách?
 
-Úplné informace o cenách Event Hubs najdete v [podrobnostech o cenách Centra událostí](https://azure.microsoft.com/pricing/details/event-hubs/).
+Úplné informace o Event Hubs cenách najdete v [podrobnostech o cenách Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/).
 
-### <a name="is-there-a-charge-for-retaining-event-hubs-events-for-more-than-24-hours"></a>Platí se za uchovávání událostí Event Hubs po dobu delší než 24 hodin?
+### <a name="is-there-a-charge-for-retaining-event-hubs-events-for-more-than-24-hours"></a>Účtuje se za dobu uchování Event Hubs událostí déle než 24 hodin.
 
-Úroveň Standard centra událostí umožňuje dobu uchovávání zpráv delší než 24 hodin, maximálně po dobu sedmi dnů. Pokud velikost celkového počtu uložených událostí překročí povolenku úložiště pro počet vybraných jednotek propustnosti (84 GB na jednotku propustnosti), bude velikost, která překročí povolenku, účtována při publikované rychlosti úložiště objektů blob Azure. Povolenka úložiště v každé jednotce propustnost pokrývá všechny náklady na úložiště pro retenční období 24 hodin (výchozí) i v případě, že je jednotka propustnost použita až do maximálního příspěvku pro příchozí přenos dat.
+Úroveň Standard Event Hubs povoluje dobu uchovávání zpráv delší než 24 hodin, maximálně po dobu sedmi dnů. Pokud velikost celkového počtu uložených událostí překročí povolenou velikost úložiště pro počet vybraných jednotek propustnosti (84 GB na jednotku propustnosti), bude se za velikost, na kterou se příspěvek překročí, účtovat celková míra úložiště objektů BLOB v Azure. V každé jednotce propustnosti se v rámci úložiště vztahují všechny náklady na úložiště na dobu uchování 24 hodin (výchozí nastavení), i když se jednotka propustnosti používá až do maximálního povoleného příchozího přenosu dat.
 
-### <a name="how-is-the-event-hubs-storage-size-calculated-and-charged"></a>Jak se počítá a účtuje velikost úložiště Event Hubs?
+### <a name="how-is-the-event-hubs-storage-size-calculated-and-charged"></a>Jak se počítá a účtuje Event Hubs velikosti úložiště?
 
-Celková velikost všech uložených událostí, včetně všech interních relací pro záhlaví událostí nebo na strukturách diskového úložiště ve všech rozbočovačích událostí, se měří po celý den. Na konci dne se vypočítá velikost úložiště ve špičce. Denní příspěvek na úložiště se vypočítá na základě minimálního počtu jednotek propustností, které byly vybrány během dne (každá jednotka propustnostposkytuje příspěvek 84 GB). Pokud celková velikost překročí vypočtený denní příspěvek na úložiště, přebytek úložiště se účtuje pomocí sazby úložiště objektů blob Azure (na místně **redundantní úložiště** sazby).
+Celková velikost všech uložených událostí, včetně jakékoli interní režie pro záhlaví událostí nebo na struktury diskového úložiště ve všech centrech událostí, se měří v průběhu dne. Na konci dne se vypočítává velikost úložiště ve špičce. Denní povolené úložiště se vypočítá na základě minimálního počtu jednotek propustnosti vybraných během dne (každá jednotka propustnosti poskytuje povolený 84 GB). Pokud celková velikost překročí vypočítanou denní částku úložiště, bude se nadměrné úložiště účtovat pomocí sazeb Azure Blob Storage (na základě **místně redundantního úložiště** ).
 
-### <a name="how-are-event-hubs-ingress-events-calculated"></a>Jak se počítají události příchozího přenosu dat centra událostí?
+### <a name="how-are-event-hubs-ingress-events-calculated"></a>Jak se počítají události příchozího přenosu dat Event Hubs?
 
-Každá událost odeslaná do centra událostí se počítá jako fakturovatelná zpráva. *Ingress událost* je definována jako jednotka dat, která je menší nebo rovna 64 KB. Každá událost, která je menší nebo rovna velikosti 64 KB, se považuje za jednu fakturovatelnou událost. Pokud je událost větší než 64 kB, počet fakturovatelných událostí se vypočítá podle velikosti události v násobcích 64 KB. Například událost 8 KB odeslaná do centra událostí se účtuje jako jedna událost, ale zpráva o 96 KB odeslaná do centra událostí se účtuje jako dvě události.
+Každá událost odeslaná do centra událostí se počítá jako fakturovatelná zpráva. *Událost* příchozího přenosu dat je definovaná jako jednotka dat, která je menší nebo rovna 64 KB. Jakákoli událost, která je menší nebo rovna 64 KB, se považuje za jednu fakturovatelnou událost. Pokud je událost větší než 64 KB, počítá se počet fakturovaných událostí podle velikosti události v násobcích 64 KB. Například událost 8 KB odeslaná do centra událostí se účtuje jako jedna událost, ale zpráva 96-KB odeslaná do centra událostí se účtuje jako dvě události.
 
-Události spotřebované z centra událostí, stejně jako operace správy a volání ovládacího prvku, jako jsou kontrolní body, se nepočítají jako fakturovatelné události příchozího přenosu dat, ale narůstají do příspěvku jednotky propustnost.
+Události spotřebované z centra událostí, stejně jako operace správy a řídicích volání, jako jsou kontrolní body, se nepočítají jako Fakturovatelné události příchozího přenosu dat, ale budou se účtovat až do snížení počtu jednotek propustnosti.
 
-### <a name="do-brokered-connection-charges-apply-to-event-hubs"></a>Vztahují se na centra událostí poplatky za zprostředkované připojení?
+### <a name="do-brokered-connection-charges-apply-to-event-hubs"></a>Vztahují se na Event Hubs poplatky za zprostředkované připojení?
 
-Poplatky za připojení platí pouze v případě, že je použit protokol AMQP. Bez ohledu na počet odesílacích systémů nebo zařízení se neúčtují žádné poplatky za připojení k událostem. Pokud plánujete použít AMQP (například k dosažení efektivnějšího streamování událostí nebo k povolení obousměrné komunikace ve scénářích příkazů a řízení IoT), přečtěte si stránku [s informacemi o cenách centra událostí,](https://azure.microsoft.com/pricing/details/event-hubs/) kde najdete podrobnosti o tom, kolik připojení je součástí každé úrovně služby.
+Poplatky za připojení platí jenom v případě, že se používá protokol AMQP. Za odesílání událostí pomocí protokolu HTTP se neúčtují žádné poplatky za připojení, bez ohledu na počet odesílajících systémů nebo zařízení. Pokud máte v úmyslu používat AMQP (například k dosažení efektivnějšího streamování událostí nebo k povolení obousměrné komunikace ve scénářích příkazů a ovládacích prvků IoT), přečtěte si informace o tom, kolik připojení je zahrnuté v každé úrovni služby, na stránce s [informacemi o cenách Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/) .
 
-### <a name="how-is-event-hubs-capture-billed"></a>Jak se zachytává zachytávání eventhubů?
+### <a name="how-is-event-hubs-capture-billed"></a>Jak se účtuje Event Hubs zaznamenání?
 
-Zachycení je povoleno, pokud má v centru událostí v oboru názvů povolenou možnost Zachytit. Zachycení centra událostí se účtuje každou hodinu za zakoupenou jednotku propustnost. Jako počet jednotek propustnost se zvyšuje nebo snižuje, Event Hubs Capture fakturace odráží tyto změny v celé hodinu přírůstky. Další informace o fakturaci centra Event Hubs Capture najdete v [tématu Informace o cenách centra událostí](https://azure.microsoft.com/pricing/details/event-hubs/).
+Funkce Capture je povolená, když má libovolné centrum událostí v oboru názvů povolenou možnost zachycení. Event Hubs Capture se účtuje po hodinách za každou zakoupenou jednotku propustnosti. Když se počet jednotek propustnosti zvýší nebo sníží, Event Hubs zachytávání se tyto změny projeví během celých hodinových přírůstků. Další informace o fakturaci za Event Hubs Capture najdete v tématu [Event Hubs informace o cenách](https://azure.microsoft.com/pricing/details/event-hubs/).
 
-### <a name="do-i-get-billed-for-the-storage-account-i-select-for-event-hubs-capture"></a>Bude se mi účtovat účet úložiště, který vyberu pro digitalizaci centra událostí?
+### <a name="do-i-get-billed-for-the-storage-account-i-select-for-event-hubs-capture"></a>Účtuje se mi účet úložiště, který vyberu pro Event Hubs zachytávání?
 
-Digitalizace používá účet úložiště, který zadáte, když je povolen v centru událostí. Vzhledem k tomu, že se jedná o váš účet úložiště, všechny změny pro tuto konfiguraci se účtují do vašeho předplatného Azure.
+Capture používá účet úložiště, který zadáte, pokud je povolený v centru událostí. Vzhledem k tomu, že se jedná o váš účet úložiště, všechny změny této konfigurace se účtují do předplatného Azure.
 
 ## <a name="quotas"></a>Kvóty
 
-### <a name="are-there-any-quotas-associated-with-event-hubs"></a>Existují nějaké kvóty spojené s event huby?
+### <a name="are-there-any-quotas-associated-with-event-hubs"></a>Jsou k Event Hubs k dispozici nějaké kvóty?
 
-Seznam všech kvót centra událostí naleznete v [tématu kvóty](event-hubs-quotas.md).
+Seznam všech kvót Event Hubs najdete v tématu [kvóty](event-hubs-quotas.md).
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Proč nemohu vytvořit obor názvů po jeho odstranění z jiného předplatného? 
-Při odstranění oboru názvů z předplatného počkejte 4 hodiny, než jej znovu vytvoříte se stejným názvem v jiném předplatném. V opačném případě se může `Namespace already exists`zobrazit následující chybová zpráva: . 
+### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Proč nemůžu vytvořit obor názvů po jeho odstranění z jiného předplatného? 
+Když odstraníte obor názvů z předplatného, počkejte 4 hodiny, než ho znovu vytvoříte se stejným názvem v jiném předplatném. V opačném případě se může zobrazit následující chybová zpráva `Namespace already exists`:. 
 
-### <a name="what-are-some-of-the-exceptions-generated-by-event-hubs-and-their-suggested-actions"></a>Jaké jsou některé výjimky generované event huby a jejich navrhované akce?
+### <a name="what-are-some-of-the-exceptions-generated-by-event-hubs-and-their-suggested-actions"></a>Jaké jsou některé výjimky vygenerované Event Hubs a jejich navrhovanými akcemi?
 
-Seznam možných výjimek centra událostí naleznete v tématu [Přehled výjimek](event-hubs-messaging-exceptions.md).
+Seznam možných výjimek Event Hubs naleznete v tématu [Exception Overview](event-hubs-messaging-exceptions.md).
 
 ### <a name="diagnostic-logs"></a>Diagnostické protokoly
 
-Event Hubs podporuje dva typy [diagnostických protokolů](event-hubs-diagnostic-logs.md) – protokoly chyb pro sběr a provozní protokoly – oba jsou reprezentované v jsonu a můžou být zapnuté prostřednictvím portálu Azure.
+Event Hubs podporuje dva typy [diagnostických protokolů](event-hubs-diagnostic-logs.md) – protokoly chyb zachytávání a provozní protokoly – oba z nich jsou reprezentovány ve formátu JSON a lze je zapnout prostřednictvím Azure Portal.
 
-### <a name="support-and-sla"></a>Podpora a SLA
+### <a name="support-and-sla"></a>Podpora a smlouva SLA
 
-Technická podpora pro Event Hubs je k dispozici prostřednictvím [komunitních fór](https://social.msdn.microsoft.com/forums/azure/home?forum=servbus). Podpora fakturace a správy předplatného je poskytována zdarma.
+Technická podpora pro Event Hubs je dostupná prostřednictvím [komunitních fór](https://social.msdn.microsoft.com/forums/azure/home?forum=servbus). Podpora fakturace a správy předplatného se poskytuje bez jakýchkoli nákladů.
 
-Další informace o naší smlouvě SLA najdete na stránce [Smlouvy o úrovni služeb.](https://azure.microsoft.com/support/legal/sla/)
+Další informace o naší smlouvě SLA najdete na stránce [smlouvy o úrovni služeb](https://azure.microsoft.com/support/legal/sla/) .
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o službě Event Hubs najdete na následujících odkazech:
 
-* [Přehled centra událostí](event-hubs-what-is-event-hubs.md)
+* [Přehled Event Hubs](event-hubs-what-is-event-hubs.md)
 * [Vytvoření centra událostí](event-hubs-create.md)
-* [Automatické nafouknutí rozbočovačů událostí](event-hubs-auto-inflate.md)
+* [Automaticky neplochý Event Hubs](event-hubs-auto-inflate.md)

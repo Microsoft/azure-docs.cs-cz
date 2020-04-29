@@ -1,62 +1,62 @@
 ---
 title: CI/CD s Azure Pipelines a šablonami
-description: Popisuje, jak nastavit průběžnou integraci v Azure Pipelines pomocí projektů nasazení Skupiny prostředků Azure ve Visual Studiu k nasazení šablon Správce prostředků.
+description: Popisuje, jak nastavit průběžnou integraci v Azure Pipelines pomocí projektů nasazení skupiny prostředků Azure v sadě Visual Studio k nasazení Správce prostředků šablon.
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.openlocfilehash: d8eff1c7efae319106eb8a85af7823a820a0da39
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82084647"
 ---
-# <a name="integrate-arm-templates-with-azure-pipelines"></a>Integrace šablon ARM s Azure Pipelines
+# <a name="integrate-arm-templates-with-azure-pipelines"></a>Integrace šablon ARM pomocí Azure Pipelines
 
-Visual Studio poskytuje projekt Skupiny prostředků Azure pro vytváření šablon Azure Resource Manager (ARM) a jejich nasazení do vašeho předplatného Azure. Tento projekt můžete integrovat s Azure Pipelines pro průběžnou integraci a průběžné nasazování (CI/CD).
+Visual Studio poskytuje projekt skupiny prostředků Azure pro vytváření šablon Azure Resource Manager (ARM) a jejich nasazování do předplatného Azure. Tento projekt můžete integrovat s Azure Pipelines pro průběžnou integraci a průběžné nasazování (CI/CD).
 
-Existují dva způsoby nasazení šablon pomocí Azure Pipelines:
+Existují dva způsoby, jak nasadit šablony s Azure Pipelines:
 
-* **Přidejte úlohu, ve které běží skript Azure PowerShellu**. Tato možnost má tu výhodu, že poskytuje konzistenci v průběhu celého životního cyklu vývoje, protože používáte stejný skript, který je součástí projektu Visual Studio (Deploy-AzureResourceGroup.ps1). Skript fáze artefakty z projektu na účet úložiště, který Resource Manager přístup. Artefakty jsou položky v projektu, jako jsou propojené šablony, skripty a binární soubory aplikací. Potom skript nasadí šablonu.
+* **Přidejte úlohu, která spouští skript Azure PowerShell**. Tato možnost je výhodou zajištění konzistence během životního cyklu vývoje, protože používáte stejný skript, který je součástí projektu aplikace Visual Studio (Deploy-AzureResourceGroup. ps1). Skript rozhlíží artefakty z vašeho projektu na účet úložiště, ke kterému Správce prostředků získat přístup. Artefakty jsou položky ve vašem projektu, například propojené šablony, skripty a binární soubory aplikace. Skript pak nasadí šablonu.
 
-* **Přidejte úkoly ke kopírování a nasazování úloh**. Tato možnost nabízí vhodnou alternativu ke skriptu projektu. Nakonfigurujete dva úkoly v kanálu. Jeden úkol fáze artefakty a druhý úkol nasadí šablonu.
+* **Přidejte úkoly pro kopírování a nasazování úloh**. Tato možnost nabízí pohodlný alternativu pro skript projektu. V kanálu můžete nakonfigurovat dva úkoly. Jedna fáze úlohy artefakty a druhá úloha nasadí šablonu.
 
 Tento článek ukazuje oba přístupy.
 
 ## <a name="prepare-your-project"></a>Příprava projektu
 
-Tento článek předpokládá, že váš projekt Visual Studio a organizace Azure DevOps jsou připraveni k vytvoření kanálu. Následující kroky ukazují, jak se ujistit, že jste připraveni:
+Tento článek předpokládá, že váš projekt sady Visual Studio a organizace Azure DevOps jsou připravené k vytvoření kanálu. Následující kroky ukazují, jak se ujistit, že jste připraveni:
 
-* Máte organizaci Azure DevOps. Pokud ho nemáte, [vytvořte si ho zdarma](/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops). Pokud váš tým už má organizaci Azure DevOps, ujistěte se, že jste správcem projektu Azure DevOps, který chcete použít.
+* Máte organizaci Azure DevOps. Pokud ho ještě nemáte, [Vytvořte si ho zdarma](/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops). Pokud má váš tým již organizaci Azure DevOps, ujistěte se, že jste správcem projektu Azure DevOps, který chcete použít.
 
-* Nakonfigurovali jste [připojení služby](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops) k předplatnému Azure. Úlohy v kanálu spustit pod identitou instančního objektu. Postup vytvoření připojení naleznete v [tématu Vytvoření projektu DevOps](deployment-tutorial-pipeline.md#create-a-devops-project).
+* Nakonfigurovali jste [připojení služby](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops) ke svému předplatnému Azure. Úlohy v kanálu se spouštějí pod identitou instančního objektu. Postup vytvoření připojení najdete v tématu [Vytvoření projektu DevOps](deployment-tutorial-pipeline.md#create-a-devops-project).
 
-* Máte projekt Visual Studio, který byl vytvořen ze startovací šablony **skupiny prostředků Azure.** Informace o vytváření tohoto typu projektu najdete [v tématu vytváření a nasazování skupin prostředků Azure prostřednictvím sady Visual Studio](create-visual-studio-deployment-project.md).
+* Máte projekt aplikace Visual Studio, který byl vytvořen ze šablony **skupiny prostředků Azure** Starter. Informace o vytváření tohoto typu projektu naleznete v tématu [Vytvoření a nasazení skupin prostředků Azure pomocí sady Visual Studio](create-visual-studio-deployment-project.md).
 
-* Váš projekt Visual Studio je [připojený k projektu Azure DevOps](/azure/devops/repos/git/share-your-code-in-git-vs-2017?view=azure-devops).
+* Projekt aplikace Visual Studio je [připojen k projektu Azure DevOps](/azure/devops/repos/git/share-your-code-in-git-vs-2017?view=azure-devops).
 
 ## <a name="create-pipeline"></a>Vytvoření kanálu
 
-1. Pokud jste dříve nepřidali kanál, musíte vytvořit nový kanál. Ve své organizaci Azure DevOps vyberte **Kanály** a **Nový kanál**.
+1. Pokud jste předtím nepřidali kanál, je nutné vytvořit nový kanál. Z vaší organizace Azure DevOps vyberte **kanály** a **Nový kanál**.
 
-   ![Přidání nového kanálu](./media/add-template-to-azure-pipelines/new-pipeline.png)
+   ![Přidat nový kanál](./media/add-template-to-azure-pipelines/new-pipeline.png)
 
-1. Určete, kde je kód uložen. Následující obrázek znázorňuje výběr **Azure Repos Git**.
+1. Určete, kde je váš kód uložený. Následující obrázek ukazuje výběr **Azure Repos Git**.
 
    ![Vybrat zdroj kódu](./media/add-template-to-azure-pipelines/select-source.png)
 
-1. Z tohoto zdroje vyberte úložiště, které má kód pro váš projekt.
+1. Z tohoto zdroje vyberte úložiště, které obsahuje kód pro váš projekt.
 
    ![Vybrat úložiště](./media/add-template-to-azure-pipelines/select-repo.png)
 
-1. Vyberte typ kanálu, který chcete vytvořit. Můžete vybrat **počáteční kanál**.
+1. Vyberte typ kanálu, který chcete vytvořit. Můžete vybrat **Počáteční kanál**.
 
    ![Vybrat kanál](./media/add-template-to-azure-pipelines/select-pipeline.png)
 
-Jste připraveni přidat úlohu Azure PowerShellu nebo zkopírovat soubor a nasadit úlohy.
+Jste připraveni přidat úlohu Azure PowerShell nebo kopírovat soubor a nasazovat úlohy.
 
-## <a name="azure-powershell-task"></a>Úloha Azure PowerShellu
+## <a name="azure-powershell-task"></a>Azure PowerShell úkol
 
-Tato část ukazuje, jak nakonfigurovat průběžné nasazení pomocí jedné úlohy, která spouští skript prostředí PowerShell v projektu. Následující soubor YAML vytvoří [úlohu Prostředí Azure PowerShell](/azure/devops/pipelines/tasks/deploy/azure-powershell?view=azure-devops):
+V této části se dozvíte, jak nakonfigurovat průběžné nasazování pomocí jedné úlohy, která spouští skript PowerShellu v projektu. Následující soubor YAML vytvoří [úlohu Azure PowerShell](/azure/devops/pipelines/tasks/deploy/azure-powershell?view=azure-devops):
 
 ```yaml
 pool:
@@ -72,41 +72,41 @@ steps:
     azurePowerShellVersion: LatestVersion
 ```
 
-Když nastavíte `AzurePowerShell@3`úlohu , kanál používá příkazy z modulu AzureRM k ověření připojení. Ve výchozím nastavení používá skript Prostředí PowerShell v projektu Visual Studia modul AzureRM. Pokud jste aktualizovali skript tak, aby používal modul `AzurePowerShell@4` [Az](/powershell/azure/new-azureps-module-az), nastavte úkol na .
+Když nastavíte úlohu na `AzurePowerShell@3`, kanál použije k ověření připojení příkazy z modulu AzureRM. Ve výchozím nastavení používá skript prostředí PowerShell v projektu sady Visual Studio modul AzureRM. Pokud jste skript aktualizovali tak, aby používal [modul AZ Module](/powershell/azure/new-azureps-module-az), nastavte úlohu na `AzurePowerShell@4`.
 
 ```yaml
 steps:
 - task: AzurePowerShell@4
 ```
 
-Zadejte `azureSubscription`název připojení služby, které jste vytvořili.
+V `azureSubscription`poli zadejte název připojení služby, které jste vytvořili.
 
 ```yaml
 inputs:
     azureSubscription: '<your-connection-name>'
 ```
 
-V `scriptPath`případě , zadejte relativní cestu ze souboru kanálu do skriptu. Cestu můžete vyhledat v úložišti.
+Pro `scriptPath`zadejte relativní cestu ze souboru kanálu ke skriptu. Můžete si prohlédnout své úložiště a zobrazit cestu.
 
 ```yaml
 ScriptPath: '<your-relative-path>/<script-file-name>.ps1'
 ```
 
-Pokud nepotřebujete vytvořit artefakty fáze, stačí předat název a umístění skupiny prostředků, které chcete použít pro nasazení. Skript sady Visual Studio vytvoří skupinu prostředků, pokud ještě neexistuje.
+Pokud nepotřebujete připravit artefakty, stačí předat název a umístění skupiny prostředků, která se má použít pro nasazení. Skript sady Visual Studio vytvoří skupinu prostředků, pokud ještě neexistuje.
 
 ```yaml
 ScriptArguments: -ResourceGroupName '<resource-group-name>' -ResourceGroupLocation '<location>'
 ```
 
-Pokud potřebujete nastínit artefakty do existujícího účtu úložiště, použijte:
+Pokud potřebujete připravit artefakty na existující účet úložiště, použijte:
 
 ```yaml
 ScriptArguments: -ResourceGroupName '<resource-group-name>' -ResourceGroupLocation '<location>' -UploadArtifacts -ArtifactStagingDirectory '$(Build.StagingDirectory)' -StorageAccountName '<your-storage-account>'
 ```
 
-Nyní, když chápete, jak vytvořit úkol, projdeme si kroky k úpravě kanálu.
+Teď, když jste se seznámili s vytvářením úlohy, provedeme kroky pro úpravu kanálu.
 
-1. Otevřete kanál a nahraďte obsah yaml:
+1. Otevřete svůj kanál a nahraďte jeho obsah vaším YAML:
 
    ```yaml
    pool:
@@ -126,19 +126,19 @@ Nyní, když chápete, jak vytvořit úkol, projdeme si kroky k úpravě kanálu
 
    ![Uložení kanálu](./media/add-template-to-azure-pipelines/save-pipeline.png)
 
-1. Zadejte zprávu pro potvrzení a odevzdejte se přímo k **hlavnímu serveru**.
+1. Zadejte zprávu pro potvrzení a proveďte zápis přímo do **Hlavní**větve.
 
-1. Když vyberete **Uložit**, kanál sestavení se automaticky spustí. Vraťte se do souhrnu kanálu sestavení a sledujte stav.
+1. Když vyberete **Save (Uložit**), kanál sestavení se automaticky spustí. Vraťte se ke shrnutí kanálu sestavení a sledujte stav.
 
    ![Zobrazení výsledků](./media/add-template-to-azure-pipelines/view-results.png)
 
-Můžete vybrat aktuálně spuštěný kanál a zobrazit podrobnosti o úkolech. Po dokončení se zobrazí výsledky pro každý krok.
+Můžete vybrat aktuálně běžící kanál a zobrazit podrobnosti o těchto úlohách. Až se dokončí, zobrazí se výsledky pro každý krok.
 
-## <a name="copy-and-deploy-tasks"></a>Kopírování a nasazování úloh
+## <a name="copy-and-deploy-tasks"></a>Kopírování a nasazení úloh
 
-Tato část ukazuje, jak nakonfigurovat průběžné nasazení pomocí dvou úloh k vytvoření fáze artefaktů a nasazení šablony.
+V této části se dozvíte, jak nakonfigurovat průběžné nasazování pomocí dvou úloh pro přípravu artefaktů a nasazení šablony.
 
-Následující YAML zobrazuje [úlohu kopírování souborů Azure](/azure/devops/pipelines/tasks/deploy/azure-file-copy?view=azure-devops):
+Následující YAML ukazuje [úlohu kopírování souborů Azure](/azure/devops/pipelines/tasks/deploy/azure-file-copy?view=azure-devops):
 
 ```yaml
 - task: AzureFileCopy@3
@@ -154,26 +154,26 @@ Následující YAML zobrazuje [úlohu kopírování souborů Azure](/azure/devop
     sasTokenTimeOutInMinutes: '240'
 ```
 
-Existuje několik částí tohoto úkolu revidovat pro vaše prostředí. Označuje `SourcePath` umístění artefaktů vzhledem k souboru kanálu. V tomto příkladu existují soubory `AzureResourceGroup1` ve složce s názvem, která byla název projektu.
+K revizi vašeho prostředí se používá několik částí této úlohy. `SourcePath` Určuje umístění artefaktů relativně k souboru kanálu. V tomto příkladu soubory existují ve složce s názvem `AzureResourceGroup1` , což byl název projektu.
 
 ```yaml
 SourcePath: '<path-to-artifacts>'
 ```
 
-Zadejte `azureSubscription`název připojení služby, které jste vytvořili.
+V `azureSubscription`poli zadejte název připojení služby, které jste vytvořili.
 
 ```yaml
 azureSubscription: '<your-connection-name>'
 ```
 
-Pro úložiště a název kontejneru zadejte názvy účtu úložiště a kontejneru, který chcete použít pro ukládání artefaktů. Účet úložiště musí existovat.
+Jako název úložiště a kontejneru zadejte názvy účtu úložiště a kontejneru, které chcete použít pro ukládání artefaktů. Účet úložiště musí existovat.
 
 ```yaml
 storage: '<your-storage-account-name>'
 ContainerName: '<container-name>'
 ```
 
-Následující yaml ukazuje [úlohu nasazení šablony Azure Resource Manager](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md):
+Následující YAML ukazuje [úlohu nasazení šablony Azure Resource Manager](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md):
 
 ```yaml
 - task: AzureResourceGroupDeployment@2
@@ -192,9 +192,9 @@ Následující yaml ukazuje [úlohu nasazení šablony Azure Resource Manager](h
     deploymentMode: 'Incremental'
 ```
 
-Existuje několik částí tohoto úkolu revidovat pro vaše prostředí.
+K revizi vašeho prostředí se používá několik částí této úlohy.
 
-- `deploymentScope`: Vyberte rozsah nasazení z `Management Group` `Subscription` možností: a `Resource Group`. V tomto návodu použijte **skupinu prostředků.** Další informace o oborech naleznete v tématu [Obory nasazení](deploy-rest.md#deployment-scope).
+- `deploymentScope`: Vyberte rozsah nasazení z možností: `Management Group` `Subscription` a. `Resource Group` V tomto návodu použijte **skupinu prostředků** . Další informace o oborech najdete v tématu [obory nasazení](deploy-rest.md#deployment-scope).
 
 - `ConnectedServiceName`: Zadejte název připojení služby, které jste vytvořili.
 
@@ -202,20 +202,20 @@ Existuje několik částí tohoto úkolu revidovat pro vaše prostředí.
     ConnectedServiceName: '<your-connection-name>'
     ```
 
-- `subscriptionName`: Zadejte cílové ID předplatného. Tato vlastnost platí pouze pro rozsah nasazení skupiny prostředků a obor nasazení předplatného.
+- `subscriptionName`: Zadejte ID cílového předplatného. Tato vlastnost se vztahuje pouze na rozsah nasazení skupiny prostředků a obor nasazení předplatného.
 
-- `resourceGroupName`a `location`: zadejte název a umístění skupiny prostředků, do které chcete nasadit. Úkol vytvoří skupinu prostředků, pokud neexistuje.
+- `resourceGroupName`a `location`: zadejte název a umístění skupiny prostředků, do které chcete nasadit. Tato úloha vytvoří skupinu prostředků, pokud neexistuje.
 
     ```yaml
     resourceGroupName: '<resource-group-name>'
     location: '<location>'
     ```
 
-Úloha nasazení odkazuje na `WebSite.json` šablonu s názvem a soubor parametrů s názvem WebSite.parameters.json. Použijte názvy souborů šablony a parametrů.
+Úloha nasazení odkazuje na šablonu s názvem `WebSite.json` a soubor parametrů s názvem Web. Parameters. JSON. Použijte názvy šablon a souborů parametrů.
 
-Nyní, když chápete, jak vytvořit úkoly, pojďme projít kroky k úpravě kanálu.
+Teď, když jste se seznámili s vytvářením úloh, Projděte si postup pro úpravu kanálu.
 
-1. Otevřete kanál a nahraďte obsah yaml:
+1. Otevřete svůj kanál a nahraďte jeho obsah vaším YAML:
 
    ```yaml
    pool:
@@ -251,14 +251,14 @@ Nyní, když chápete, jak vytvořit úkoly, pojďme projít kroky k úpravě ka
 
 1. Vyberte **Uložit**.
 
-1. Zadejte zprávu pro potvrzení a odevzdejte se přímo k **hlavnímu serveru**.
+1. Zadejte zprávu pro potvrzení a proveďte zápis přímo do **Hlavní**větve.
 
-1. Když vyberete **Uložit**, kanál sestavení se automaticky spustí. Vraťte se do souhrnu kanálu sestavení a sledujte stav.
+1. Když vyberete **Save (Uložit**), kanál sestavení se automaticky spustí. Vraťte se ke shrnutí kanálu sestavení a sledujte stav.
 
    ![Zobrazení výsledků](./media/add-template-to-azure-pipelines/view-results.png)
 
-Můžete vybrat aktuálně spuštěný kanál a zobrazit podrobnosti o úkolech. Po dokončení se zobrazí výsledky pro každý krok.
+Můžete vybrat aktuálně běžící kanál a zobrazit podrobnosti o těchto úlohách. Až se dokončí, zobrazí se výsledky pro každý krok.
 
 ## <a name="next-steps"></a>Další kroky
 
-Podrobný proces používání Azure Pipelines se šablonami ARM najdete [v tématu Kurz: Průběžná integrace šablon Azure Resource Manageru s Azure Pipelines](deployment-tutorial-pipeline.md).
+Podrobný postup použití Azure Pipelines se šablonami ARM najdete v tématu [kurz: průběžná integrace šablon Azure Resource Manager pomocí Azure Pipelines](deployment-tutorial-pipeline.md).

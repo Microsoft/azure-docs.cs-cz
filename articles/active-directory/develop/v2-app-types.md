@@ -1,6 +1,6 @@
 ---
-title: Typy aplikací pro platformu microsoft identit | Azure
-description: Typy aplikací a scénářů podporované koncovým bodem platformy Microsoft identit (v2.0).
+title: Typy aplikací pro Microsoft Identity Platform | Azure
+description: Typy aplikací a scénářů podporované koncovým bodem Microsoft Identity Platform (v 2.0).
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,27 +13,27 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: def92071496716f90b24158a50e4a5233e93c994
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81677987"
 ---
-# <a name="application-types-for-microsoft-identity-platform"></a>Typy aplikací pro platformu identit Microsoftu
+# <a name="application-types-for-microsoft-identity-platform"></a>Typy aplikací pro platformu Microsoft Identity Platform
 
-Koncový bod platformy Microsoft identit (v2.0) podporuje ověřování pro celou řadu moderních architektur aplikací, všechny jsou založeny na standardních protokolech [OAuth 2.0 nebo OpenID Connect](active-directory-v2-protocols.md). Tento článek popisuje typy aplikací, které můžete vytvářet pomocí platformy identit Microsoftu, bez ohledu na preferovaný jazyk nebo platformu. Tyto informace jsou navrženy tak, aby vám pomohly porozumět scénářům na vysoké úrovni před [zahájením práce s kódem](v2-overview.md#getting-started).
+Koncový bod Microsoft Identity Platform (v 2.0) podporuje ověřování pro celou řadu moderních architektur aplikací, které jsou založené na standardních protokolech [OAuth 2,0 nebo OpenID Connect](active-directory-v2-protocols.md). Tento článek popisuje typy aplikací, které můžete sestavit pomocí platformy Microsoft Identity Platform, bez ohledu na preferovaný jazyk nebo platformu. Tyto informace jsou navržené tak, aby vám pomohly pochopit scénáře vysoké úrovně předtím, než [začnete pracovat s kódem](v2-overview.md#getting-started).
 
 ## <a name="the-basics"></a>Základy
 
-Každou aplikaci, která používá koncový bod platformy identit Microsoftu, musíte zaregistrovat na novém [portálu pro registraci aplikací](https://go.microsoft.com/fwlink/?linkid=2083908). Proces registrace aplikace shromažďuje a přiřazuje vám tyto hodnoty:
+Každou aplikaci, která používá koncový bod Microsoft Identity Platform, je nutné zaregistrovat na novém [portálu registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908). Proces registrace aplikace shromažďuje a přiřazuje tyto hodnoty pro vaši aplikaci:
 
-* **ID aplikace (klienta),** které jednoznačně identifikuje vaši aplikaci
-* Identifikátor **URI přesměrování,** který můžete použít k přímému vrácení odpovědí do aplikace
-* Několik dalších hodnot specifických pro scénář, jako jsou podporované typy účtů
+* **ID aplikace (klienta)** , které jedinečně identifikuje vaši aplikaci
+* **Identifikátor URI pro přesměrování** , který můžete použít k přímému směrování odpovědí zpět do vaší aplikace
+* Několik dalších hodnot specifických pro konkrétní scénář, jako jsou například podporované typy účtů
 
-Podrobnosti najdete v tom, jak [zaregistrovat aplikaci](quickstart-register-app.md).
+Další podrobnosti najdete v článku o [registraci aplikace](quickstart-register-app.md).
 
-Po registraci aplikace komunikuje s platformou identit microsoftu odesláním požadavků do koncového bodu. Poskytujeme open source architektury a knihovny, které zpracovávají podrobnosti o těchto požadavcích. Máte také možnost implementovat logiku ověřování sami vytvořením požadavků na tyto koncové body:
+Po registraci aplikace komunikuje s platformou Microsoft identity pomocí odeslání požadavků do koncového bodu. Poskytujeme Open Source architektury a knihovny, které zpracovávají podrobnosti o těchto žádostech. Také máte možnost implementovat logiku ověřování sami, a to vytvořením požadavků na tyto koncové body:
 
 ```HTTP
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize
@@ -42,17 +42,17 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 ## <a name="single-page-apps-javascript"></a>Jednostránkové aplikace (JavaScript)
 
-Mnoho moderních aplikací má jednostránkový front-end aplikace, který je primárně napsán v JavaScriptu. Často je napsán pomocí rozhraní jako Angular, React nebo Vue. Koncový bod platformy identit y Microsoft podporuje tyto aplikace pomocí [implicitního toku OAuth 2.0](v2-oauth2-implicit-grant-flow.md).
+Mnohé moderní aplikace mají front-end jednostránkové aplikace, který je primárně napsán v JavaScriptu. Často je napsaný pomocí architektury, jako je například úhlová, reakce nebo Vue. Koncový bod platformy Microsoft identity podporuje tyto aplikace pomocí [implicitního toku OAuth 2,0](v2-oauth2-implicit-grant-flow.md).
 
-V tomto toku aplikace přijímá tokeny přímo z platformy identit microsoftu autorizovat koncový bod, bez jakékoli výměny mezi servery. Veškerá logika ověřování a zpracování relací probíhá výhradně v klientovi JavaScriptu bez dalších přesměrování stránek.
+V tomto toku aplikace obdrží tokeny přímo z koncového bodu autorizace platformy Microsoft identity a bez jakýchkoli výměn mezi servery. Veškerá logika ověřování a zpracování relace probíhá zcela v jazyce JavaScript, aniž by došlo k nadbytečnému přesměrování stránky.
 
-![Zobrazuje tok implicitního ověřování.](./media/v2-app-types/convergence-scenarios-implicit.svg)
+![Zobrazuje implicitní tok ověřování.](./media/v2-app-types/convergence-scenarios-implicit.svg)
 
-Chcete-li zobrazit tento scénář v akci, zkuste jeden z ukázky kódu jednostránkové aplikace v [platformě identit Microsoft začínáme.](v2-overview.md#getting-started)
+Pokud se chcete podívat na tento scénář v akci, zkuste v části [Začínáme s Microsoft Identity platformou začít](v2-overview.md#getting-started) jeden z ukázkových kódu aplikace na jedné stránce.
 
 ## <a name="web-apps"></a>Webové aplikace
 
-Pro webové aplikace (.NET, PHP, Java, Ruby, Python, Node), ke kterým uživatel přistupuje prostřednictvím prohlížeče, můžete pro přihlášení uživatele použít [OpenID Connect.](active-directory-v2-protocols.md) V OpenID Connect získá webová aplikace token ID. Token ID je token zabezpečení, který ověřuje identitu uživatele a poskytuje informace o uživateli ve formě deklarací identity:
+Pro webové aplikace (.NET, PHP, Java, Ruby, Python, Node), ke kterým uživatel přistupuje přes prohlížeč, můžete k přihlášení uživatele použít [OpenID Connect](active-directory-v2-protocols.md) . V OpenID Connect webová aplikace obdrží token ID. Token ID je token zabezpečení, který ověřuje identitu uživatele a poskytuje informace o uživateli v podobě deklarací identity:
 
 ```JSON
 // Partial raw ID token
@@ -67,21 +67,21 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 }
 ```
 
-Další podrobnosti o různých typech tokenů používaných v koncovém bodě platformy identity Microsoft jsou k dispozici v odkazu na [přístupový token](access-tokens.md) a [id_token odkaz](id-tokens.md)
+Další podrobnosti o různých typech tokenů použitých v koncovém bodu platformy Microsoft Identity Platform jsou k dispozici v odkazu [přístupového tokenu](access-tokens.md) a v [id_token odkazech](id-tokens.md) .
 
-V aplikacích webového serveru trvá tok ověřování přihlášení těmito kroky vysoké úrovně:
+V aplikacích webového serveru přebírá tok ověřování při přihlašování tyto kroky vysoké úrovně:
 
 ![Zobrazuje tok ověřování webové aplikace.](./media/v2-app-types/convergence-scenarios-webapp.svg)
 
-Identitu uživatele můžete zajistit ověřením tokenu ID veřejným podpisovým klíčem, který je přijat z koncového bodu platformy identity Microsoftu. Je nastaven soubor cookie relace, který lze použít k identifikaci uživatele na následujících požadavcích na stránku.
+Identitu uživatele můžete zajistit ověřením tokenu ID pomocí veřejného podpisového klíče, který se přijímá z koncového bodu Microsoft Identity Platform. Je nastavený soubor cookie relace, který se dá použít k identifikaci uživatele na dalších požadavcích na stránku.
 
-Chcete-li zobrazit tento scénář v akci, zkuste jeden z ukázky kódu přihlášení webové aplikace v [části začínáme platformy identit Microsoftu.](v2-overview.md#getting-started)
+Pokud chcete tento scénář zobrazit v akci, zkuste jednu z ukázek přihlašovacích kódů webové aplikace v části [Začínáme s platformou Microsoft Identity](v2-overview.md#getting-started) .
 
-Kromě jednoduchého přihlášení může být nutné, aby aplikace webového serveru měla přístup k jiné webové službě, například k rozhraní REST API. V tomto případě se aplikace webového serveru zabývá kombinovaným tokem OpenID Connect a OAuth 2.0 pomocí [toku autorizačního kódu OAuth 2.0](active-directory-v2-protocols.md). Další informace o tomto scénáři [načtete o tom, jak začít s webovými aplikacemi a webovými api](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md).
+Kromě jednoduchého přihlašování může aplikace webového serveru vyžadovat přístup k jiné webové službě, jako je například REST API. V takovém případě se aplikace webového serveru zavazuje do kombinovaného toku OpenID Connect a OAuth 2,0 pomocí [toku autorizačního kódu oauth 2,0](active-directory-v2-protocols.md). Další informace o tomto scénáři najdete v článku [Začínáme s webovými aplikacemi a webovými rozhraními API](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md).
 
 ## <a name="web-apis"></a>Webová rozhraní API
 
-Koncový bod platformy identit Microsoftu můžete použít k zabezpečení webových služeb, jako je například webové rozhraní API RESTful vaší aplikace. Webová api lze implementovat v mnoha platformách a jazycích. Můžou být taky implementovat pomocí aktivačních událostí HTTP ve funkcích Azure. Místo tokenů ID a souborů cookie relace používá webové rozhraní API přístupový token OAuth 2.0 k zabezpečení dat a ověřování příchozích požadavků. Volající webového rozhraní API připojí přístupový token v hlavičce autorizace požadavku HTTP, například takto:
+Pomocí koncového bodu Microsoft Identity Platform můžete zabezpečit webové služby, například webové rozhraní API RESTful vaší aplikace. Webová rozhraní API je možné implementovat na různých platformách a jazycích. Můžete je taky implementovat pomocí triggerů HTTP v Azure Functions. Místo tokenů ID a souborů cookie relací používá webové rozhraní API přístupový token OAuth 2,0 k zabezpečení svých dat a ověřování příchozích požadavků. Volající webového rozhraní API připojí přístupový token v autorizační hlavičce požadavku HTTP, třeba takto:
 
 ```HTTP
 GET /api/items HTTP/1.1
@@ -91,32 +91,32 @@ Accept: application/json
 ...
 ```
 
-Webové rozhraní API používá přístupový token k ověření identity volajícího rozhraní API a k extrahování informací o volajícím z deklarací, které jsou kódovány v přístupovém tokenu. Další podrobnosti o různých typech tokenů používaných v koncovém bodě platformy identity Microsoft jsou k dispozici v odkazu na [přístupový token](access-tokens.md) a [odkaz id_token.](id-tokens.md)
+Webové rozhraní API používá přístupový token k ověření identity volajícího rozhraní API a extrakci informací o volajícím z deklarací identity, které jsou zakódované v přístupovém tokenu. Další podrobnosti o různých typech tokenů použitých v koncovém bodu platformy Microsoft Identity Platform jsou k dispozici v odkazu [přístupového tokenu](access-tokens.md) a v referenčních informacích o [id_token](id-tokens.md) .
 
-Webové rozhraní API může uživatelům poskytnout možnost vyjádřit se k odhlášení nebo odhlášení z konkrétních funkcí nebo dat vystavením oprávnění, označovaných také jako [obory](v2-permissions-and-consent.md). Aby volající aplikace získala oprávnění k oboru, musí uživatel souhlasit s oborem během toku. Koncový bod platformy identit y Microsoft požádá uživatele o oprávnění a pak zaznamená oprávnění ve všech přístupových tokenech, které webové rozhraní API obdrží. Webové rozhraní API ověří přístupové tokeny, které obdrží při každém volání, a provede kontroly autorizace.
+Webové rozhraní API může uživatelům povolit, aby se mohli rozhodnout nebo odhlásit konkrétní funkce nebo data tím, že zveřejňuje oprávnění, označované taky jako [obory](v2-permissions-and-consent.md). Aby volající aplikace získala oprávnění k oboru, uživatel musí během toku souhlasit s rozsahem. Koncový bod platformy Microsoft Identity žádá uživatele o oprávnění a pak zaznamená oprávnění ve všech přístupových tokenech, které webové rozhraní API obdrží. Webové rozhraní API ověřuje přístupové tokeny, které přijímá při každém volání, a provádí kontroly autorizace.
 
-Webové rozhraní API může přijímat přístupové tokeny ze všech typů aplikací, včetně aplikací webového serveru, aplikací pro stolní počítače a mobilních zařízení, jednostránkových aplikací, daemonů na straně serveru a dokonce i dalších webových rozhraní API. Tok vysoké úrovně pro webové rozhraní API vypadá takto:
+Webové rozhraní API může přijímat přístupové tokeny ze všech typů aplikací, včetně aplikací webového serveru, desktopových a mobilních aplikací, aplikací s jednou stránkou, démonů na straně serveru a i dalších webových rozhraní API. Tok vysoké úrovně webového rozhraní API vypadá takto:
 
 ![Zobrazuje tok ověřování webového rozhraní API.](./media/v2-app-types/convergence-scenarios-webapi.svg)
 
-Chcete-li se dozvědět, jak zabezpečit webové rozhraní API pomocí přístupových tokenů OAuth2, podívejte se na ukázky kódu webového rozhraní API v části [Začínáme na platformě identit microsoftu.](v2-overview.md#getting-started)
+Pokud chcete zjistit, jak zabezpečit webové rozhraní API pomocí přístupových tokenů OAuth2, podívejte se na ukázky kódu webového rozhraní API v části [Začínáme s platformou Microsoft Identity](v2-overview.md#getting-started) .
 
-V mnoha případech webová rozhraní API také potřebují provádět odchozí požadavky na další podřízená webová rozhraní API zabezpečená platformou identit microsoftu. Chcete-li tak učinit, webová rozhraní API můžete využít **toku on-behalf-of,** který umožňuje webové rozhraní API k výměně příchozí přístupový token pro jiný přístupový token, který má být použit v odchozích požadavků. Další informace naleznete [v tématu Microsoft identity platformy a OAuth 2.0 On-Behalf-Of toku](v2-oauth2-on-behalf-of-flow.md).
+V mnoha případech musí webová rozhraní API také vytvářet odchozí požadavky na jiná podřízená webová rozhraní API zabezpečená platformou Microsoft identity. K tomu může webová rozhraní API využívat **výhod toku,** který umožňuje webovému rozhraní API vyměňovat příchozí přístupový token pro jiný přístupový token, který se má použít v odchozích požadavcích. Další informace najdete v tématu [Flow Microsoft Identity Platform a OAuth 2,0](v2-oauth2-on-behalf-of-flow.md).
 
 ## <a name="mobile-and-native-apps"></a>Mobilní a nativní aplikace
 
-Aplikace nainstalované zařízením, jako jsou mobilní a desktopové aplikace, často potřebují přístup ke službám back-end nebo webovým rozhraním API, která ukládají data a provádějí funkce jménem uživatele. Tyto aplikace můžete přidat přihlášení a autorizaci back-endové služby pomocí [toku autorizačního kódu OAuth 2.0](v2-oauth2-auth-code-flow.md).
+Aplikace nainstalované v zařízení, například mobilní a desktopové aplikace, často potřebují přístup k back-endové službě nebo webovým rozhraním API, která ukládají data a vykonávají funkce jménem uživatele. Tyto aplikace můžou do back-endové služby přidat přihlášení a autorizaci pomocí [toku autorizačního kódu OAuth 2,0](v2-oauth2-auth-code-flow.md).
 
-V tomto toku aplikace obdrží autorizační kód z koncového bodu platformy identit y Microsoft, když se uživatel přihlásí. Autorizační kód představuje oprávnění aplikace k volání back-endových služeb jménem přihlášeného uživatele. Aplikace může vyměnit autorizační kód na pozadí za přístupový token OAuth 2.0 a obnovovací token. Aplikace můžete použít přístupový token k ověření webových api v požadavcích HTTP a použít obnovovací token získat nové přístupové tokeny, když vyprší platnost starších přístupových tokenů.
+V tomto toku aplikace získá autorizační kód z koncového bodu Microsoft Identity Platform, když se uživatel přihlásí. Autorizační kód představuje oprávnění aplikace pro volání back-endové služby jménem uživatele, který je přihlášený. Aplikace může vyměňovat autorizační kód na pozadí pro přístupový token OAuth 2,0 a obnovovací token. Aplikace může pomocí přístupového tokenu ověřit u webových rozhraní API v požadavcích HTTP a pomocí aktualizačního tokenu získat nové přístupové tokeny, když vyprší platnost starších přístupových tokenů.
 
 ![Zobrazuje tok ověřování nativní aplikace.](./media/v2-app-types/convergence-scenarios-native.svg)
 
-## <a name="daemons-and-server-side-apps"></a>Daemons a aplikace na straně serveru
+## <a name="daemons-and-server-side-apps"></a>Démoni a aplikace na straně serveru
 
-Aplikace, které mají dlouhotrvající procesy nebo které pracují bez interakce s uživatelem, také potřebují způsob, jak získat přístup k zabezpečeným prostředkům, jako jsou webová rozhraní API. Tyto aplikace můžete ověřit a získat tokeny pomocí identity aplikace, nikoli delegované identity uživatele, s tokpověření klienta OAuth 2.0. Identitu aplikace můžete prokázat pomocí tajného klíče klienta nebo certifikátu. Další informace naleznete v tématu [.NET Core daemon console aplikace pomocí platformy microsoft identity .](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)
+Aplikace, které mají dlouhotrvající procesy nebo které fungují bez interakce s uživatelem, potřebují také způsob, jak přistupovat k zabezpečeným prostředkům, například k webovým rozhraním API. Tyto aplikace můžou ověřovat a získávat tokeny pomocí identity aplikace namísto delegované identity uživatele, a to pomocí toku přihlašovacích údajů klienta OAuth 2,0. Identitu aplikace můžete prokázat pomocí tajného klíče klienta nebo certifikátu. Další informace najdete v tématu [aplikace konzoly .NET Core daemon pomocí platformy Microsoft Identity Platform](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2).
 
-V tomto toku aplikace interaguje přímo s koncovým `/token` bodem získat přístup:
+V tomto toku aplikace komunikuje přímo s `/token` koncovým bodem a získá přístup:
 
-![Zobrazuje tok ověřování aplikace daemonu.](./media/v2-app-types/convergence-scenarios-daemon.svg)
+![Zobrazuje tok ověřování aplikace démona.](./media/v2-app-types/convergence-scenarios-daemon.svg)
 
-Chcete-li vytvořit aplikaci pro daemon, přečtěte si [dokumentaci k pověření klienta](v2-oauth2-client-creds-grant-flow.md)nebo vyzkoušejte [ukázkovou aplikaci .NET](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).
+Pokud chcete vytvořit aplikaci démona, přečtěte si [dokumentaci k přihlašovacím údajům klienta](v2-oauth2-client-creds-grant-flow.md)nebo vyzkoušejte [ukázkovou aplikaci .NET](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).
