@@ -1,6 +1,6 @@
 ---
-title: Nastavení aplikace Microsoft Authenticator jako metody ověření – Azure AD
-description: Jak nastavit stránku Bezpečnostní údaje (náhled) pro ověření vaší identity pomocí aplikace Microsoft Authenticator jako metody ověření.
+title: Nastavení aplikace Microsoft Authenticator jako metody ověřování – Azure AD
+description: Jak nastavit stránku informací o zabezpečení (Preview) k ověření vaší identity pomocí aplikace Microsoft Authenticator jako metody ověřování.
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,154 +12,154 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: curtand
 ms.openlocfilehash: 16cb512d3f8f8afcc199cb52c13e09b12107576f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77062417"
 ---
-# <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>Nastavení aplikace Microsoft Authenticator jako metody ověření
+# <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>Nastavení aplikace Microsoft Authenticator jako metody ověřování
 
-Pomocí těchto kroků můžete přidat dvoufaktorové ověření a metody resetování hesla. Po prvním nastavení se můžete vrátit na stránku **Bezpečnostní údaje** a přidat, aktualizovat nebo odstranit bezpečnostní údaje.
+Pomocí těchto kroků můžete přidat metody dvou faktorů ověřování a resetování hesla. Po prvním nastavení se můžete vrátit na stránku **bezpečnostní údaje** a přidat, aktualizovat nebo odstranit informace o zabezpečení.
 
-Pokud se zobrazí výzva k nastavení ihned po přihlášení k pracovnímu nebo školnímu účtu, přečtěte si podrobné kroky v článku Nastavení bezpečnostních údajů v článku [výzvy k přihlášení.](security-info-setup-signin.md)
+Pokud se zobrazí výzva k nastavení hned po přihlášení k pracovnímu nebo školnímu účtu, přečtěte si podrobný postup v článku [Nastavení bezpečnostních údajů z výzvy k zadání přihlašovací stránky](security-info-setup-signin.md) .
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Note]
-> Pokud možnost ověřovací aplikace nevidíte, je možné, že vaše organizace neumožňuje použít tuto možnost k ověření. V takovém případě budete muset zvolit jinou metodu nebo se obrátit na technickou podporu vaší organizace s žádostí o další pomoc.
+> Pokud nevidíte možnost aplikace ověřovatele, je možné, že vaše organizace neumožňuje použít tuto možnost k ověření. V takovém případě budete muset zvolit jinou metodu nebo požádat o další pomoc oddělení technické podpory vaší organizace.
 
-## <a name="security-vs-password-reset-verification"></a>Zabezpečení vs ověření obnovení hesla
+## <a name="security-vs-password-reset-verification"></a>Ověření zabezpečení a resetování hesla
 
-Metody bezpečnostních informací se používají jak pro dvoufaktorové ověření zabezpečení, tak pro resetování hesla. Ne všechny metody však lze použít pro obě metody.
+Metody bezpečnostních údajů se používají pro ověřování dvou faktorů zabezpečení i pro resetování hesla. Nicméně ne všechny metody lze použít pro obojí.
 
 | Metoda | Použití |
 | ------ | -------- |
-| Aplikace Authenticator | Dvoufaktorové ověření a ověřování heslem. |
-| Textové zprávy | Dvoufaktorové ověření a ověřování heslem. |
-| Telefonní hovory | Dvoufaktorové ověření a ověřování heslem. |
-| Klíč zabezpečení | Dvoufaktorové ověření a ověřování heslem. |
-| E-mailový účet | Pouze ověřování pro resetování hesla. Budete muset zvolit jinou metodu pro dvoufaktorové ověření. |
-| Bezpečnostní otázky | Pouze ověřování pro resetování hesla. Budete muset zvolit jinou metodu pro dvoufaktorové ověření. |
+| Aplikace Authenticator | Dvojúrovňové ověřování a ověřování nového hesla. |
+| Textové zprávy | Dvojúrovňové ověřování a ověřování nového hesla. |
+| Telefonní hovory | Dvojúrovňové ověřování a ověřování nového hesla. |
+| Bezpečnostní klíč | Dvojúrovňové ověřování a ověřování nového hesla. |
+| E-mailový účet | Jenom ověřování heslem. Budete muset zvolit jinou metodu pro dvojúrovňové ověřování. |
+| Bezpečnostní otázky | Jenom ověřování heslem. Budete muset zvolit jinou metodu pro dvojúrovňové ověřování. |
 
-## <a name="set-up-the-microsoft-authenticator-app-from-the-security-info-page"></a>Nastavení aplikace Microsoft Authenticator na stránce Informace o zabezpečení
+## <a name="set-up-the-microsoft-authenticator-app-from-the-security-info-page"></a>Nastavení aplikace Microsoft Authenticator ze stránky bezpečnostní údaje
 
-V závislosti na nastavení vaší organizace můžete jako jednu z metod bezpečnostních informací použít ověřovací aplikaci. Nemusíte používat aplikaci Microsoft Authenticator a během procesu nastavení si můžete vybrat jinou aplikaci. Tento článek však používá aplikaci Microsoft Authenticator.
+V závislosti na nastaveních vaší organizace možná budete moct použít ověřovací aplikaci jako jednu z vašich metod bezpečnostních údajů. Nemusíte používat aplikaci Microsoft Authenticator a během procesu nastavování můžete zvolit jinou aplikaci. Tento článek však používá aplikaci Microsoft Authenticator.
 
 ### <a name="to-set-up-the-microsoft-authenticator-app"></a>Nastavení aplikace Microsoft Authenticator
 
-1. Přihlaste se ke svému pracovnímu https://myprofile.microsoft.com/ nebo školnímu účtu a přejděte na stránku.
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a https://myprofile.microsoft.com/ pak přejít na stránku.
 
-    ![Stránka Můj profil se zvýrazněnými odkazy Na informace o zabezpečení](media/security-info/securityinfo-myprofile-page.png)
+    ![Stránka můj profil zobrazující odkazy na zvýrazněné informace o zabezpečení](media/security-info/securityinfo-myprofile-page.png)
 
-2. V levém navigačním podokně nebo z odkazu v bloku **Informace o zabezpečení** vyberte Bezpečnostní **údaje** a na stránce Informace **o zabezpečení** vyberte **Přidat metodu.**
+2. V levém navigačním podokně nebo na odkaz v bloku **informací o** zabezpečení vyberte možnost **informace o zabezpečení** a pak vyberte **Přidat metodu** ze stránky **bezpečnostní údaje** .
 
-    ![Stránka S informacemi o zabezpečení se zvýrazněnou možností Přidat metodu](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![Stránka informace o zabezpečení se zvýrazněnou možností přidat metodu](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. Na stránce **Přidat metodu** vyberte v rozevíracím seznamu **aplikaci Authenticator** a pak vyberte **Přidat**.
+3. Na stránce **Přidat metodu** vyberte v rozevíracím seznamu možnost **aplikace Authenticator** a pak vyberte **Přidat**.
 
-    ![Pole Přidat metodu s vybranou aplikací Authenticator](media/security-info/securityinfo-myprofile-addauthapp.png)
+    ![Dialogové okno Přidat metodu se zvolenou ověřovací aplikací](media/security-info/securityinfo-myprofile-addauthapp.png)
 
-4. Na **úvodní obrazovce zobrazením** stránky aplikace vyberte **Stáhnout a** stáhněte a nainstalujte aplikaci Microsoft Authenticator do mobilního zařízení a pak vyberte **Další**.
+4. Na stránce **Začněte získáním aplikace** vyberte **Stáhnout** a stáhněte a nainstalujte aplikaci Microsoft Authenticator do mobilního zařízení a pak vyberte **Další**.
 
-    Další informace o stažení a instalaci aplikace naleznete v [tématu Stažení a instalace aplikace Microsoft Authenticator](user-help-auth-app-download-install.md).
+    Další informace o tom, jak stáhnout a nainstalovat aplikaci, najdete v tématu [Stažení a instalace aplikace Microsoft Authenticator](user-help-auth-app-download-install.md).
 
-    ![Začněte zobrazením stránky aplikace](media/security-info/securityinfo-myprofile-getauthapp.png)
+    ![Začněte získáním stránky aplikace](media/security-info/securityinfo-myprofile-getauthapp.png)
 
    > [!Note]
-   > Pokud chcete použít jinou ověřovací aplikaci než aplikaci Microsoft Authenticator, vyberte odkaz **Na aplikaci I Want to use a different authenticator app.**
+   > Pokud chcete použít jinou ověřovací aplikaci než aplikaci Microsoft Authenticator, vyberte možnost **Chci použít jiný ověřovací odkaz aplikace** .
    >
-   > Pokud vaše organizace umožňuje zvolit jinou metodu kromě ověřovací aplikace, můžete vybrat **odkaz Na požadovanou metodu**.
+   > Pokud vaše organizace umožňuje vybrat jinou metodu než ověřovací aplikace, můžete vybrat, že **chcete nastavit jiný odkaz na metodu**.
 
-5. Při nastavování aplikace Microsoft Authenticator na mobilním zařízení zůstanete na stránce **Nastavit účet.**
+5. Při nastavování aplikace Microsoft Authenticator na mobilním zařízení zůstat na stránce **Nastavení účtu** .
 
-    ![Nastavení stránky aplikace pro ověřování pravosti](media/security-info/securityinfo-myprofile-setupauthapp.png)
+    ![Nastavení stránky ověřovací aplikace](media/security-info/securityinfo-myprofile-setupauthapp.png)
 
-6. Otevřete aplikaci Microsoft Authenticator, vyberte povolit oznámení (pokud se zobrazí výzva), vyberte **Přidat účet** z ikony Přizpůsobit **a řídit** v pravém horním bodě a pak vyberte Pracovní nebo **školní účet**.
+6. Otevřete aplikaci Microsoft Authenticator, vyberte, jestli se mají zobrazovat oznámení (Pokud se zobrazí výzva), vyberte **Přidat účet** z ikony **přizpůsobení a řízení** v pravém horním rohu a pak vyberte **pracovní nebo školní účet**.
 
     >[!Note]
-    >Pokud nastavujete aplikaci Microsoft Authenticator poprvé, může se zobrazit výzva s dotazem, zda má aplikaci povolit přístup ke kameře (iOS) nebo zda aplikaci pořizovat snímky a nahrávat video (Android). Musíte vybrat **Povolit,** aby ověřovací aplikace mohla přistupovat k fotoaparátu a pořit qr kód v dalším kroku. Pokud fotoaparát nepovolíte, můžete aplikaci pro ověřování nastavit, ale budete muset přidat informace o kódu ručně. Informace o ručním přidání kódu najdete v [tématu Ruční přidání účtu do aplikace](user-help-auth-app-add-account-manual.md).
+    >Pokud Microsoft Authenticator aplikaci nakonfigurujete poprvé, může se zobrazit výzva s dotazem, jestli chcete, aby aplikace měla přístup k vaší kameře (iOS), nebo aby aplikaci mohla pořizovat snímky a nahrávat video (Android). Je nutné vybrat možnost **umožnit** , aby mohla aplikace ověřovatele získat přístup k fotoaparátu, aby pomohlo vytvořit obrázek kódu QR v dalším kroku. Pokud fotoaparát nepovolíte, můžete přesto nastavit ověřovací aplikaci, ale budete muset informace o kódu přidat ručně. Informace o tom, jak kód přidat ručně, najdete v tématu věnovaném [ručnímu přidání účtu do aplikace](user-help-auth-app-add-account-manual.md).
 
-7. Vraťte se na stránku **Nastavení účtu** v počítači a pak vyberte **Další**.
+7. Vraťte se na váš počítač na stránku **Nastavení účtu** a pak vyberte **Další**.
 
-    Zobrazí **se obrazovka Prohledává qr kódovou** stránku.
+    Zobrazí se stránka **Kontrola kódu QR** .
 
-    ![Skenování QR kódu pomocí aplikace Authenticator](media/security-info/securityinfo-myprofile-qrcodeauthapp.png)
+    ![Naskenování kódu QR pomocí ověřovací aplikace](media/security-info/securityinfo-myprofile-qrcodeauthapp.png)
 
-8. Naskenujte poskytnutý kód pomocí čtečky QR kódů aplikace Microsoft Authenticator, která se na vašem mobilním zařízení objevila po vytvoření pracovního nebo školního účtu v kroku 6.
+8. Vyhledejte zadaný kód pomocí čtečky kódu QR Microsoft Authenticator App, která se objevila na vašem mobilním zařízení po vytvoření pracovního nebo školního účtu v kroku 6.
 
-    Ověřovací aplikace by měla úspěšně přidat váš pracovní nebo školní účet, aniž by od vás vyžadovala další informace. Pokud však čtečka QR kódů nemůže kód přečíst, můžete vybrat **odkaz Nelze naskenovat kód QR** a ručně zadat kód a adresu URL do aplikace Microsoft Authenticator. Další informace o ručním přidání kódu najdete v [tématu Ruční přidání účtu do aplikace](user-help-auth-app-add-account-manual.md).
+    Aplikace ověřovatele by měla úspěšně přidat svůj pracovní nebo školní účet bez nutnosti jakýchkoli dalších informací. Nicméně pokud čtecí modul QR Code nemůže přečíst kód, můžete vybrat **odkaz Nekontrolovat kód QR** a ručně zadat kód a adresu URL do aplikace Microsoft Authenticator. Další informace o ručním přidání kódu najdete v tématu [Ruční přidání účtu do aplikace](user-help-auth-app-add-account-manual.md).
 
-9. Na stránce **Scan em qr kód v** počítači vyberte **Další.**
+9. V počítači vyberte **Další** na stránce **Kontrola kódu QR** .
 
-    Oznámení se odešle do aplikace Microsoft Authenticator na vašem mobilním zařízení, aby se váš účet otestoval.
+    Do aplikace Microsoft Authenticator na vašem mobilním zařízení se pošle oznámení, aby se Váš účet otestoval.
 
-    ![Otestujte svůj účet pomocí ověřovací aplikace](media/security-info/securityinfo-myprofile-tryitauthapp.png)
+    ![Testování účtu pomocí ověřovací aplikace](media/security-info/securityinfo-myprofile-tryitauthapp.png)
 
-10. Schválení oznámení v aplikaci Microsoft Authenticator a pak vyberte **Další**.
+10. Schvalte oznámení v aplikaci Microsoft Authenticator a pak vyberte **Další**.
 
-     ![Oznámení o úspěchu, připojení aplikace a vašeho účtu](media/security-info/securityinfo-myprofile-successauthapp.png)
+     ![Oznámení o úspěšnosti, připojení aplikace a účtu](media/security-info/securityinfo-myprofile-successauthapp.png)
 
-     Vaše bezpečnostní údaje se aktualizují tak, aby při použití dvoustupňového ověření nebo resetování hesla používaly aplikaci Microsoft Authenticator k ověření vaší identity.
+     Vaše bezpečnostní údaje se aktualizují tak, aby ve výchozím nastavení používaly aplikaci Microsoft Authenticator k ověření vaší identity při použití dvoustupňového ověřování nebo resetování hesla.
 
-## <a name="delete-your-authenticator-app-from-your-security-info-methods"></a>Odstranění ověřovací aplikace z metod bezpečnostních informací
+## <a name="delete-your-authenticator-app-from-your-security-info-methods"></a>Odstranění aplikace ověřovatele z metod bezpečnostních údajů
 
-Pokud už nechcete aplikaci ověřovatele používat jako metodu bezpečnostních informací, můžete ji odebrat ze stránky **Informace o zabezpečení.** To funguje pro všechny ověřovací aplikace, nejen pro aplikaci Microsoft Authenticator. Po odstranění aplikace budete muset přejít do ověřovací aplikace na mobilním zařízení a odstranit účet.
+Pokud už nechcete, aby se aplikace ověřovatele používala jako metoda bezpečnostního údaje, můžete ji odebrat ze stránky **bezpečnostní údaje** . Tato funkce funguje pro všechny aplikace ověřovatele, nikoli jenom pro aplikaci Microsoft Authenticator. Po odstranění aplikace budete muset přejít do ověřovací aplikace na mobilním zařízení a účet odstranit.
 
 >[!Important]
->Pokud aplikaci authenticator omylem smažete, neexistuje žádný způsob, jak ji vrátit. Budete muset znovu přidat ověřovací aplikaci podle kroků v části [Nastavení aplikace pro ověřování](#set-up-the-microsoft-authenticator-app-from-the-security-info-page) v tomto článku.
+>Pokud aplikaci ověřovatele odstraníte omylem, neexistuje žádný způsob, jak ji vrátit. Pak budete muset znovu přidat ověřovací aplikaci podle postupu v části [nastavení ověřovací aplikace](#set-up-the-microsoft-authenticator-app-from-the-security-info-page) v tomto článku.
 
-### <a name="to-delete-the-authenticator-app"></a>Odstranění ověřovací aplikace
+### <a name="to-delete-the-authenticator-app"></a>Postup odstranění ověřovací aplikace
 
-1. Na stránce **Bezpečnostní informace** vyberte odkaz **Odstranit** vedle aplikace Authenticator.
+1. Na stránce **informace o zabezpečení** vyberte odkaz **Odstranit** vedle ověřovací aplikace.
 
-    ![Odkaz na odstranění ověřovací aplikace z bezpečnostních informací](media/security-info/securityinfo-myprofile-deleteauthapp.png)
+    ![Odkaz pro odstranění aplikace ověřovatele z bezpečnostních údajů](media/security-info/securityinfo-myprofile-deleteauthapp.png)
 
-2. **Chcete-li** odstranit ověřovací aplikaci, vyberte v potvrzovacím poli ano. Po odstranění ověřovací aplikace se aplikace odebere z bezpečnostních údajů a zmizí ze stránky **Bezpečnostní údaje.** Pokud ověřovací aplikace je výchozí metoda, výchozí se změní na jinou dostupnou metodu.
+2. Pokud chcete ověřovací aplikaci odstranit, vyberte v potvrzovacím poli možnost **Ano** . Po odstranění ověřovací aplikace se odstraní z bezpečnostních údajů a zmizí ze stránky **bezpečnostní údaje** . Pokud je aplikace ověřovatele výchozí metodou, výchozí nastavení se změní na jinou dostupnou metodu.
 
-3. Otevřete ověřovací aplikaci na mobilním zařízení, vyberte **Upravit účty**a pak odstraňte pracovní nebo školní účet z ověřovací aplikace.
+3. Otevřete ověřovací aplikaci na mobilním zařízení, vyberte **Upravit účty**a pak z ověřovací aplikace odstraňte svůj pracovní nebo školní účet.
 
-    Váš účet je zcela odebrán z ověřovací aplikace pro dvoufaktorové ověření a resetování hesla.
+    Váš účet je zcela odebrán z ověřovací aplikace pro dvojúrovňové ověřování a žádosti o resetování hesla.
 
-## <a name="change-your-default-security-info-method"></a>Změna výchozí metody informací o zabezpečení
+## <a name="change-your-default-security-info-method"></a>Změna výchozí metody zabezpečení údajů
 
-Pokud chcete, aby ověřovací aplikace byla výchozí metodou používanou při přihlášení k pracovnímu nebo školnímu účtu pomocí dvoufaktorového ověření nebo pro žádosti o resetování hesla, můžete ji nastavit na stránce **Bezpečnostní údaje.**
+Pokud chcete, aby byla aplikace ověřovatele výchozí metodou použitou při přihlášení ke svému pracovnímu nebo školnímu účtu Pomocí dvojúrovňového ověřování nebo pro žádosti o resetování hesla, můžete ji nastavit na stránce **informace o** zabezpečení.
 
-### <a name="to-change-your-default-security-info-method"></a>Změna výchozí metody informací o zabezpečení
+### <a name="to-change-your-default-security-info-method"></a>Změna výchozí metody zabezpečení údajů
 
-1. Na stránce **Informace o zabezpečení** vyberte odkaz **Změnit** vedle **výchozíinformace o metodě přihlášení.**
+1. Na stránce **informace o zabezpečení** vyberte odkaz **změnit** vedle informací o **výchozím způsobu přihlašování** .
 
-    ![Změnit odkaz pro výchozí metodu přihlášení](media/security-info/securityinfo-myprofile-changedefaultauthapp.png)
+    ![Odkaz pro změnu výchozí metody přihlašování](media/security-info/securityinfo-myprofile-changedefaultauthapp.png)
 
-2. Zvolte **Microsoft Authenticator - oznámení** z rozevíracího seznamu dostupných metod. Pokud nepoužíváte aplikaci Microsoft Authenticator, vyberte možnost **ověřovací aplikace nebo hardwarového tokenu.**
+2. V rozevíracím seznamu dostupných metod vyberte **Microsoft Authenticator-Notification** . Pokud nepoužíváte aplikaci Microsoft Authenticator, vyberte možnost **ověřovací aplikace nebo hardwarového tokenu** .
 
     ![Zvolit metodu pro výchozí přihlášení](media/security-info/securityinfo-myprofile-defaultauthapp.png)
 
 3. Vyberte **Potvrdit**.
 
-    Výchozí metoda používaná pro změny přihlášení do aplikace Microsoft Authenticator.
+    Výchozí metoda použitá pro změny přihlášení do aplikace Microsoft Authenticator.
 
-## <a name="additional-security-info-methods"></a>Další metody bezpečnostních informací
+## <a name="additional-security-info-methods"></a>Další metody zabezpečení
 
-Máte další možnosti, jak vás vaše organizace kontaktuje za účelem ověření vaší identity, a to na základě toho, o co se pokoušíte. Mezi možnosti patří:
+Máte k dispozici další možnosti, jak vaše organizace kontaktuje vaši identitu na základě toho, co se you're snaží. Mezi možnosti patří:
 
-- **Text mobilního zařízení.** Zadejte číslo svého mobilního zařízení a získejte text, který použijete pro dvoustupňové ověření nebo resetování hesla. Podrobné pokyny k ověření identity pomocí textové zprávy (SMS) najdete v tématu [Nastavení bezpečnostních údajů pro používání textových zpráv (SMS).](security-info-setup-text-msg.md)
+- **Text mobilního zařízení** Zadejte číslo mobilního zařízení a získejte text jako kód, který budete používat pro dvoustupňové ověřování nebo resetování hesla. Podrobné pokyny, jak ověřit identitu pomocí textové zprávy (SMS), najdete v tématu [Nastavení bezpečnostních údajů pro použití zasílání textových zpráv (SMS)](security-info-setup-text-msg.md).
 
-- **Mobilní zařízení nebo pracovní telefonní hovor.** Zadejte číslo svého mobilního zařízení a získejte telefonní hovor pro dvoustupňové ověření nebo resetování hesla. Podrobné pokyny k ověření identity pomocí telefonního čísla najdete v tématu [Nastavení bezpečnostních údajů pro používání telefonních hovorů](security-info-setup-phone-number.md).
+- **Mobilní zařízení nebo pracovní telefonní hovor.** Zadejte číslo mobilního zařízení a získejte telefonní hovor pro dvoustupňové ověřování nebo resetování hesla. Podrobné pokyny, jak ověřit identitu pomocí telefonního čísla, najdete v tématu [Nastavení bezpečnostních údajů pro použití telefonních hovorů](security-info-setup-phone-number.md).
 
-- **Bezpečnostní klíč.** Zaregistrujte svůj bezpečnostní klíč kompatibilní se společností Microsoft a použijte jej spolu s kódem PIN pro dvoustupňové ověření nebo resetování hesla. Podrobné pokyny k ověření identity pomocí bezpečnostního klíče naleznete v tématu [Nastavení bezpečnostních údajů pro použití bezpečnostního klíče](security-info-setup-security-key.md).
+- **Bezpečnostní klíč** Zaregistrujte svůj bezpečnostní klíč kompatibilní s Microsoftem a použijte ho spolu s kódem PIN pro dvoustupňové ověřování nebo resetování hesla. Podrobné pokyny, jak ověřit identitu pomocí bezpečnostního klíče, najdete v tématu [Nastavení bezpečnostních údajů pro použití bezpečnostního klíče](security-info-setup-security-key.md).
 
-- **E-mailová adresa.** Zadejte svou pracovní nebo školní e-mailovou adresu a získejte e-mail s žádostí o resetování hesla. Tato možnost není k dispozici pro dvoustupňové ověření. Podrobné pokyny k nastavení e-mailu najdete v tématu [Nastavení bezpečnostních údajů pro používání e-mailu](security-info-setup-email.md).
+- **E-mailová adresa** Zadejte svou pracovní nebo školní e-mailovou adresu, abyste získali e-mail pro resetování hesla. Tato možnost není k dispozici pro dvoustupňové ověřování. Podrobné pokyny k nastavení e-mailu najdete v tématu [Nastavení bezpečnostních údajů pro použití e-mailu](security-info-setup-email.md).
 
-- **Bezpečnostní otázky.** Odpovězte na některé bezpečnostní otázky vytvořené správcem pro vaši organizaci. Tato možnost je k dispozici pouze pro resetování hesla a ne pro dvoustupňové ověření. Podrobné pokyny k nastavení bezpečnostních otázek najdete v článku [Nastavení bezpečnostních údajů pro použití bezpečnostních otázek.](security-info-setup-questions.md)
+- **Bezpečnostní otázky.** Odpovězte na některé bezpečnostní otázky, které vytvořil správce vaší organizace. Tato možnost je k dispozici pouze pro resetování hesla a nikoli pro dvoustupňové ověřování. Podrobné pokyny k nastavení bezpečnostních otázek najdete v článku [Nastavení bezpečnostních informací pro použití bezpečnostních otázek](security-info-setup-questions.md) .
 
     >[!Note]
-    >Pokud některé z těchto možností chybí, je to s největší pravděpodobností proto, že vaše organizace tyto metody nepovoluje. V takovém případě budete muset zvolit dostupnou metodu nebo požádat správce o další pomoc.
+    >Pokud některé z těchto možností chybí, je to pravděpodobně proto, že vaše organizace tyto metody nepovoluje. Pokud se jedná o tento případ, budete muset zvolit dostupnou metodu nebo požádat správce o další nápovědu.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přihlaste se pomocí aplikace Microsoft Authenticator podle kroků v článku [Přihlášení pomocí dvoustupňového ověření nebo informací o zabezpečení.](security-info-setup-signin.md)
+- Přihlaste se pomocí aplikace Microsoft Authenticator, a to podle kroků v článku [přihlášení pomocí dvou kroků ověřování nebo informací o zabezpečení](security-info-setup-signin.md) .
 
-- Pokud jste heslo ztratili nebo zapomněli, resetujte ho na [portálu pro resetování hesla](https://passwordreset.microsoftonline.com/) nebo postupujte podle pokynů v článku [Obnovit pracovní nebo školní heslo.](active-directory-passwords-update-your-own-password.md)
+- Resetujte heslo, pokud jste ho ztratili nebo zapomněli z [portálu pro resetování hesla](https://passwordreset.microsoftonline.com/) , nebo postupujte podle pokynů v článku [resetování svého pracovního nebo školního hesla](active-directory-passwords-update-your-own-password.md) .
 
-- V článku Nelze se [přihlásit k účtu Microsoft,](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) najdete tipy pro řešení potíží a nápovědu k problémům s přihlášením.
+- Získejte tipy pro řešení potíží a nápovědu k problémům s přihlášením v tématu se [nemůžete přihlásit k vašemu účet Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) .

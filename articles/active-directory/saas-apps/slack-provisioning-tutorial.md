@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Zřizování uživatelů pro slack – Azure AD'
-description: Přečtěte si, jak nakonfigurovat službu Azure Active Directory tak, aby automaticky zřašovala a zřašovala uživatelské účty do Slacku.
+title: 'Kurz: zřizování uživatelů pro časovou rezervu – Azure AD'
+description: Naučte se, jak nakonfigurovat Azure Active Directory pro Automatické zřizování a rušení uživatelských účtů pro časovou rezervu.
 services: active-directory
 documentationcenter: ''
 author: ArvindHarinder1
@@ -16,113 +16,113 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdc912c2df435f9b7e591d7c5475e126e6b0aeb7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77062825"
 ---
-# <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Kurz: Konfigurace časovky pro automatické zřizování uživatelů
+# <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Kurz: Konfigurace časové rezervy pro Automatické zřizování uživatelů
 
-Cílem tohoto kurzu je zobrazit kroky, které je potřeba provést v Slack a Azure AD automaticky zřídit a de-zřizování uživatelských účtů z Azure AD do Slack.
+Cílem tohoto kurzu je Ukázat kroky, které potřebujete k tomu, abyste v časové rezervě a Azure AD automaticky zřídili a zrušili zřizování uživatelských účtů z Azure AD až po časovou rezervu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že již máte následující položky:
+Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
 
 * Tenanta Azure Active Directory.
-* Tenant Slack s [plánem Plus](https://aadsyncfabric.slack.com/pricing) nebo lépe povolený
-* Uživatelský účet ve Slacku s oprávněními správce týmu
+* Tenant časové rezervy s [plánem plus](https://aadsyncfabric.slack.com/pricing) nebo vyšší povoleno
+* Uživatelský účet v časové rezervě s oprávněními správce týmu
 
-Poznámka: Integrace zřizování Azure AD závisí na [rozhraní API Slack SCIM](https://api.slack.com/scim), které je k dispozici týmům Slack v plánu Plus nebo lepší.
+Poznámka: integrace zřizování Azure AD spoléhá na [rozhraní API pro časová rezervu](https://api.slack.com/scim), které je dostupné pro časové rezervy týmů na plánu plus nebo vyšší.
 
-## <a name="assigning-users-to-slack"></a>Přiřazení uživatelů k slacku
+## <a name="assigning-users-to-slack"></a>Přiřazování uživatelů k časové rezervě
 
-Azure Active Directory používá koncept s názvem "přiřazení" k určení, kteří uživatelé by měli získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelských účtů budou synchronizováni pouze uživatelé a skupiny, které byly "přiřazeny" k aplikaci ve službě Azure AD.
+Azure Active Directory používá koncept nazvaný "přiřazení" k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelských účtů budou synchronizováni pouze uživatelé a skupiny, které byly přiřazeny do aplikace ve službě Azure AD.
 
-Před konfigurací a povolením zřizovací služby se budete muset rozhodnout, kteří uživatelé nebo skupiny ve službě Azure AD představují uživatele, kteří potřebují přístup k vaší aplikaci Slack. Jakmile se rozhodnete, můžete tyto uživatele přiřadit k aplikaci Slack podle pokynů zde:
+Než nakonfigurujete a povolíte službu zřizování, budete se muset rozhodnout, co můžou uživatelé a skupiny v Azure AD zastupovat s uživateli, kteří potřebují přístup k vaší aplikaci časové rezervy. Po rozhodnutí můžete těmto uživatelům přiřadit aplikaci pro časovou rezervu podle pokynů uvedených tady:
 
 [Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-slack"></a>Důležité tipy pro přiřazení uživatelů do Slacku
+### <a name="important-tips-for-assigning-users-to-slack"></a>Důležité tipy pro přiřazení uživatelů k časové rezervě
 
-* Doporučuje se, aby jeden uživatel Azure AD je přiřazen a Slack otestovat konfiguraci zřizování. Další uživatelé a/nebo skupiny mohou být přiřazeny později.
+* Doporučujeme, aby se k otestování konfigurace zřizování přiřadil jeden uživatel Azure AD k časové rezervě. Další uživatele a skupiny můžete přiřadit později.
 
-* Při přiřazování uživatele k slacku musíte v dialogovém okně přiřazení vybrat roli **Uživatel** nebo Skupina. Role "Výchozí přístup" nefunguje pro zřizování.
+* Při přiřazování uživatele k časové rezervě musíte v dialogovém okně přiřazení vybrat roli **uživatel** nebo skupina. Role výchozí přístup nefunguje pro zřizování.
 
-## <a name="configuring-user-provisioning-to-slack"></a>Konfigurace zřizování uživatelů na Slack 
+## <a name="configuring-user-provisioning-to-slack"></a>Konfigurace zřizování uživatelů na časovou rezervu 
 
-Tato část vás provede připojením azure ad k rozhraní API pro zřizování uživatelského účtu Slack a konfigurací zřizovací služby pro vytváření, aktualizaci a zakázání přiřazených uživatelských účtů ve Slacku na základě přiřazení uživatelů a skupin ve službě Azure AD.
+V této části se seznámíte s připojením k rozhraní API pro zřizování uživatelských účtů Azure AD s časovou rezervou a konfigurací zřizovací služby k vytváření, aktualizaci a zakázání přiřazených uživatelských účtů v časové rezervě na základě přiřazení uživatelů a skupin ve službě Azure AD.
 
-**Tip:** Můžete se také rozhodnout povolit jednotné přihlašování na saml pro Slack podle pokynů uvedených na [webu Azure Portal](https://portal.azure.com). Jednotné přihlašování lze nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce kompliment navzájem.
+**Tip:** Můžete se také rozhodnout povolit pro časovou rezervu jednotné přihlašování založené na SAML podle pokynů [Azure Portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování, i když se tyto dvě funkce navzájem doplňují.
 
-### <a name="to-configure-automatic-user-account-provisioning-to-slack-in-azure-ad"></a>Konfigurace automatického zřizování uživatelských účtů na Slack ve službě Azure AD:
+### <a name="to-configure-automatic-user-account-provisioning-to-slack-in-azure-ad"></a>Konfigurace automatického zřizování uživatelských účtů pro časovou rezervu v Azure AD:
 
-1. Na [webu Azure Portal](https://portal.azure.com)přejděte do části **Azure Active Directory > Podnikové aplikace > všechny aplikace.**
+1. V [Azure Portal](https://portal.azure.com)přejděte do části **Azure Active Directory > Enterprise Apps > všechny aplikace** .
 
-2. Pokud jste již nakonfigurovali Slack pro jednotné přihlašování, vyhledejte svou instanci Slack pomocí vyhledávacího pole. V opačném případě vyberte **Přidat** a vyhledejte **Slack** v galerii aplikací. Ve výsledcích hledání vyberte Slack a přidejte ho do seznamu aplikací.
+2. Pokud jste již nakonfigurovali časovou rezervu pro jednotné přihlašování, vyhledejte vaši instanci časové rezervy pomocí vyhledávacího pole. V opačném případě vyberte možnost **Přidat** a hledat **časovou rezervu** v galerii aplikací. Z výsledků hledání vyberte časovou rezervu a přidejte ji do seznamu aplikací.
 
-3. Vyberte svou instanci Slack a pak vyberte kartu **Zřizování.**
+3. Vyberte svou instanci časové rezervy a pak vyberte kartu **zřizování** .
 
-4. Nastavte **režim zřizování** na **automatické**.
+4. Nastavte **režim zřizování** na **automaticky**.
 
-   ![Zřizování časovky](./media/slack-provisioning-tutorial/slack1.png)
+   ![Zřizování časové rezervy](./media/slack-provisioning-tutorial/slack1.png)
 
-5. V části **Pověření správce** klikněte na **autorizovat**. Tím se otevře dialogové okno autorizace Slack v novém okně prohlížeče.
+5. V části **přihlašovací údaje správce** klikněte na **autorizovat**. Tím se otevře dialogové okno autorizace časové rezervy v novém okně prohlížeče.
 
-6. V novém okně se přihlaste ke Slacku pomocí účtu správce týmu. v dialogovém okně výsledné autorizace vyberte tým Slack, pro který chcete povolit zřizování, a pak vyberte **Autorizovat**. Po dokončení se vraťte na portál Azure a dokončete konfiguraci zřizování.
+6. V novém okně se přihlaste k časové rezervě pomocí účtu správce týmu. v dialogovém okně výsledné autorizace vyberte tým časové rezervy, pro který chcete povolit zřizování, a potom vyberte **autorizovat**. Až se dokončí, vraťte se do Azure Portal a dokončete konfiguraci zřizování.
 
-    ![Dialogové okno Autorizace](./media/slack-provisioning-tutorial/slackauthorize.png)
+    ![Dialogové okno autorizace](./media/slack-provisioning-tutorial/slackauthorize.png)
 
-7. Na webu Azure Portal klikněte na **Test Connection** a ujistěte se, že se Azure AD může připojit k vaší aplikaci Slack. Pokud se připojení nezdaří, ujistěte se, že váš účet Slack má oprávnění správce týmu a zkuste krok "Autorizovat" znovu.
+7. V Azure Portal klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k vaší aplikaci časové rezervy. Pokud se připojení nepovede, ujistěte se, že váš účet časové rezervy má oprávnění správce týmu, a zkuste znovu provést krok autorizovat.
 
-8. Do pole **E-mail** s oznámením zadejte e-mailovou adresu osoby nebo skupiny, která by měla dostávat oznámení o chybách zřizování, a zaškrtněte políčko níže.
+8. Zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování v poli **e-mail s oznámením** , a zaškrtněte políčko níže.
 
 9. Klikněte na **Uložit**.
 
-10. V části Mapování vyberte **Synchronizovat uživatele služby Azure Active Directory s časovou rezervou**.
+10. V části mapování vyberte **synchronizovat Azure Active Directory uživatele s časovou rezervou**.
 
-11. V části **Mapování atributů** zkontrolujte atributy uživatele, které budou synchronizovány z Azure AD do Slack. Všimněte si, že atributy vybrané jako **odpovídající** vlastnosti budou použity tak, aby odpovídaly uživatelským účtům v Slack pro operace aktualizace. Chcete-li potvrdit všechny změny, vyberte tlačítko Uložit.
+11. V části **mapování atributů** zkontrolujte atributy uživatele, které se budou synchronizovat ze služby Azure AD, s časovou rezervou. Všimněte si, že atributy vybrané jako **odpovídající** vlastnosti budou použity ke spárování uživatelských účtů v časové rezervě pro operace aktualizace. Kliknutím na tlačítko Uložit potvrďte změny.
 
-12. Chcete-li povolit službu zřizování Azure AD pro Slack, změňte **stav zřizování** **na Zapnuto** v části **Nastavení**
+12. Pokud chcete povolit službu Azure AD Provisioning pro časovou rezervu, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
 13. Klikněte na **Uložit**.
 
-Tím se spustí počáteční synchronizace všech uživatelů nebo skupin přiřazených slackv části Uživatelé a skupiny. Všimněte si, že počáteční synchronizace bude trvat déle než následné synchronizace, ke kterým dochází přibližně každých 10 minut, pokud je služba spuštěna. Část **Podrobnosti synchronizace** můžete použít ke sledování průběhu a sledování odkazů na sestavy aktivit zřizování, které popisují všechny akce prováděné službou zřizování v aplikaci Slack.
+Tím se spustí počáteční synchronizace všech uživatelů nebo skupin přiřazených k časové rezervě v části Uživatelé a skupiny. Všimněte si, že počáteční synchronizace bude trvat déle než další synchronizace, ke kterým dojde přibližně každých 10 minut, pokud je služba spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na sestavy aktivit zřizování, které popisují všechny akce prováděné službou zřizování v aplikaci časové rezervy.
 
-## <a name="optional-configuring-group-object-provisioning-to-slack"></a>[Nepovinné] Konfigurace zřizování objektů skupiny na Slack
+## <a name="optional-configuring-group-object-provisioning-to-slack"></a>Volitelné Konfigurace zřizování skupin objektů na časovou rezervu
 
-Volitelně můžete povolit zřizování objektů skupiny z Azure AD do Slack. To se liší od "přiřazení skupin uživatelů", v tom, že skutečný objekt skupiny kromě jeho členy budou replikovány z Azure AD do Slack. Například pokud máte skupinu s názvem "Moje skupina" ve službě Azure AD, identické skupiny s názvem "Moje skupina" se vytvoří uvnitř Slack.
+Volitelně můžete povolit zřizování skupin objektů z Azure AD do časové rezervy. To se liší od "přiřazování skupin uživatelů", v tom, že vlastní objekt skupiny kromě jeho členů bude replikován z Azure AD do časové rezervy. Pokud máte například skupinu s názvem "moje skupina" ve službě Azure AD, vytvoří se v rámci časové rezervy stejná skupina s názvem "moje skupina".
 
-### <a name="to-enable-provisioning-of-group-objects"></a>Povolení zřizování objektů skupiny:
+### <a name="to-enable-provisioning-of-group-objects"></a>Povolení zřizování skupinových objektů:
 
-1. V části Mapování vyberte **Synchronizovat skupiny služby Azure Active Directory s časovou rezervou**.
+1. V části mapování vyberte možnost **synchronizovat Azure Active Directory skupiny s časovou rezervou**.
 
-2. V okně Mapování atributů nastavte možnost Povoleno na Ano.
+2. V okně mapování atributů nastavte možnost povoleno na Ano.
 
-3. V části **Mapování atributů** zkontrolujte atributy skupiny, které budou synchronizovány z Azure AD do Slack. Všimněte si, že atributy vybrané jako **Odpovídající** vlastnosti budou použity tak, aby odpovídaly skupinám v Slack pro operace aktualizace. 
+3. V části **mapování atributů** zkontrolujte atributy skupin, které se budou synchronizovat z Azure AD, s časovou rezervou. Všimněte si, že atributy vybrané jako **odpovídající** vlastnosti budou použity ke spárování skupin v časové rezervě pro operace aktualizace. 
 
 4. Klikněte na **Uložit**.
 
-Výsledkem je, že všechny objekty skupiny přiřazené slackv části **Uživatelé a skupiny** jsou plně synchronizovány z Azure AD do Slack. Část **Podrobnosti synchronizace** můžete použít ke sledování průběhu a sledování odkazů na protokoly zřizování aktivit, které popisují všechny akce prováděné službou zřizování v aplikaci Slack.
+To má za následek to, že všechny objekty skupiny přiřazené k časové rezervě v části **Uživatelé a skupiny** jsou plně synchronizované z Azure AD do časové rezervy. Pomocí části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na zřizování protokolů aktivit, které popisují všechny akce prováděné službou zřizování v aplikaci pro časovou rezervu.
 
-Další informace o tom, jak číst protokoly zřizování Azure AD, naleznete [v tématu Vytváření sestav na automatické zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Omezení konektoru
 
-* Při konfiguraci atributu **Slack displayName** mějte na paměti následující chování:
+* Při konfiguraci atributu **DisplayName** časové rezervy mějte na paměti následující chování:
 
-  * Hodnoty nejsou zcela jedinečné (např. 2 uživatelé mohou mít stejný zobrazovaný název)
+  * Hodnoty nejsou zcela jedinečné (například 2 uživatelé můžou mít stejný zobrazovaný název).
 
-  * Podporuje neanglické znaky, mezery, velká písmena. 
+  * Podporuje jiné než anglické znaky, mezery a velká písmena. 
   
-  * Povolená interpunkce zahrnuje tečky, podtržítka, pomlčky, apostrofy, závorky (např. **( [ { } )**) a oddělovače (např. **, / ;**
+  * Povolené interpunkce obsahuje tečky, podtržítka, spojovníky, apostrofy, hranaté závorky (např. **([{}])**) a oddělovače (např. **/;**).
   
-  * Aktualizace se aktualizují pouze v případě, že jsou tato dvě nastavení nakonfigurována na pracovišti nebo organizaci Slacku – **synchronizace profilu je povolena** a **uživatelé nemohou změnit svůj zobrazovaný název**.
+  * Aktualizuje se jenom v případě, že jsou tato dvě nastavení nakonfigurovaná na pracovišti nebo organizaci **profilu** pracovní rezervy a **uživatelé nemůžou měnit jeho zobrazované jméno**.
   
-* Atribut **userName** uživatele Slack musí být pod 21 znaků a musí mít jedinečnou hodnotu.
+* Atribut **uživatelského jména** časové rezervy musí být kratší než 21 znaků a mít jedinečnou hodnotu.
 
-* Slack umožňuje pouze párování s atributy **userName** a **e-mail**.  
+* Časová rezerva povoluje pouze spárování s atributy **username** a **email**.  
 
 ## <a name="additional-resources"></a>Další zdroje
 

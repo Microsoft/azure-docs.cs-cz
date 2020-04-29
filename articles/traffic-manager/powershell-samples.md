@@ -1,6 +1,6 @@
 ---
-title: Ukázky prostředí Azure PowerShell pro Traffic Manager| Dokumenty společnosti Microsoft
-description: S touto ukázkou použijte Azure PowerShell k nasazení a konfiguraci Azure Traffic Manageru.
+title: Azure PowerShell ukázky pro Traffic Manager | Microsoft Docs
+description: V této ukázce použijte Azure PowerShell k nasazení a konfiguraci Azure Traffic Manager.
 services: traffic-manager
 documentationcenter: traffic-manager
 author: rohinkoul
@@ -13,18 +13,18 @@ ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: rohink
 ms.openlocfilehash: 25864e3b419d86cbe1ec816bea4438958ca33124
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76934535"
 ---
-# <a name="azure-powershell-samples-for-traffic-manager"></a>Ukázky Prostředí Azure PowerShell pro Traffic Manager
+# <a name="azure-powershell-samples-for-traffic-manager"></a>Ukázky Azure PowerShell pro Traffic Manager
 
-Následující tabulka obsahuje odkazy na skripty Traffic Manageru vytvořené pomocí Azure PowerShellu.
+Následující tabulka obsahuje odkazy na skripty Traffic Manager sestavené pomocí Azure PowerShell.
 
 |Nadpis  |Popis |
 |---------|---------|
-|[Přímý provoz ve více oblastech pro vysokou dostupnost aplikací](./scripts/traffic-manager-powershell-websites-high-availability.md)   |    Vytvoří dva plány služby App Service, dvě webové aplikace, profil správce provozu a dva koncové body správce provozu.     |
+|[Přímý provoz napříč několika oblastmi pro zajištění vysoké dostupnosti aplikací](./scripts/traffic-manager-powershell-websites-high-availability.md)   |    Vytvoří dva plány služby App Service, dvě webové aplikace, profil služby Traffic Manager a dva koncové body Traffic Manageru.     |
 |    |         |
 

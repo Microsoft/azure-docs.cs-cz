@@ -1,16 +1,16 @@
 ---
 title: Použití prostředí PowerShell k nastavení Application Insights v Azure | Dokumentace Microsoftu
-description: Automatizujte konfiguraci diagnostiky Azure tak, aby data přepojila na Přehledy aplikací.
+description: Automatizuje konfiguraci Azure Diagnostics pro přenos dat do Application Insights.
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.openlocfilehash: da1796c8af5b9463d8223615f4b0629ba65eb3e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77669799"
 ---
-# <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>Nastavení přehledů aplikací pro Cloudové služby Azure pomocí PowerShellu
+# <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>Použití PowerShellu k nastavení Application Insights pro Azure Cloud Services
 
 [Microsoft Azure](https://azure.com) může být [konfigurované k odesílání Azure Diagnostics](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md) do [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md). Diagnostika se týká cloudových služeb Azure a virtuálních počítačů Azure. Doplňují telemetrii, kterou odesíláte z aplikace pomocí Application Insights SDK. Jako součást automatizace procesu vytváření nových prostředků v Azure můžete nakonfigurovat diagnostiku pomocí prostředí PowerShell.
 
@@ -35,10 +35,10 @@ Pokud je webová aplikace v Azure a vy vytvoříte své prostředky pomocí šab
      } 
 
 * `nameOfAIAppResource` – název prostředku Application Insights
-* `myWebAppName`- ID webové aplikace
+* `myWebAppName`– ID webové aplikace
 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>Povolit rozšíření diagnostiky jako součást nasazení cloudové služby
-Rutina `New-AzureDeployment` obsahuje parametr `ExtensionConfiguration`, který přijímá pole konfigurace diagnostiky. Ty lze vytvořit pomocí rutiny `New-AzureServiceDiagnosticsExtensionConfig`. Například:
+Rutina `New-AzureDeployment` obsahuje parametr `ExtensionConfiguration`, který přijímá pole konfigurace diagnostiky. Ty lze vytvořit pomocí rutiny `New-AzureServiceDiagnosticsExtensionConfig`. Příklad:
 
 ```ps
 

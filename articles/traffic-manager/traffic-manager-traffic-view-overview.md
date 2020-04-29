@@ -1,6 +1,6 @@
 ---
-title: Zobrazení provozu ve Správci provozu Azure
-description: V tomto úvodu se dozvíte, jak funguje zobrazení Traffic Manager Traffic.
+title: Zobrazení přenosů v Azure Traffic Manager
+description: V tomto úvodu se dozvíte, jak funguje zobrazení provozu Traffic Manageru.
 services: traffic-manager
 documentationcenter: traffic-manager
 author: rohinkoul
@@ -13,88 +13,88 @@ ms.date: 03/16/2018
 ms.author: rohink
 ms.custom: ''
 ms.openlocfilehash: d5a03fde564b14baee97f50fa63fd58bf83694b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76938346"
 ---
-# <a name="traffic-manager-traffic-view"></a>Zobrazení provozu traffic manageru
+# <a name="traffic-manager-traffic-view"></a>Traffic Manager Zobrazení přenosů
 
-Traffic Manager poskytuje směrování na úrovni DNS tak, aby koncoví uživatelé byli přesměrováni na v pořádku koncové body na základě metody směrování zadané při vytváření profilu. Zobrazení provozu poskytuje traffic manageru zobrazení uživatelských základen (na úrovni rozlišovací schopnosti dns) a jejich vzor provozu. Pokud povolíte zobrazení provozu, tyto informace se zpracují, aby vám poskytly užitečné přehledy. 
+Traffic Manager poskytuje směrování na úrovni DNS, takže koncoví uživatelé budou přesměrováni na koncové body v závislosti na metodě směrování zadané při vytváření profilu. Zobrazení přenosů poskytuje Traffic Manager se zobrazením vašich uživatelských základů (na úrovni členitosti překladače DNS) a podle jejich vzoru přenosů. Když povolíte Zobrazení přenosů, zpracují se tyto informace, které vám poskytnou užitečné poznatky. 
 
-Pomocí zobrazení provozu můžete:
-- pochopit, kde jsou umístěny vaše uživatelské základny (až do místní rozlišovací schopnost DNS).
-- zobrazení objemu provozu (pozorované jako dotazy DNS zpracovávané službou Azure Traffic Manager) pocházející z těchto oblastí.
-- získat přehled o tom, co je reprezentativní latence zkušený těchto uživatelů.
-- podrobné prohledit do konkrétní chod vzory z každé z těchto uživatelských základen do oblastí Azure, kde máte koncové body. 
+Pomocí Zobrazení přenosů můžete:
+- Pochopte, kde se nachází vaše uživatelská základna (až do úrovně místního překladače DNS).
+- Zobrazení objemu provozu (zaznamenaného jako dotazy DNS zpracovávané službou Azure Traffic Manager) pocházející z těchto oblastí.
+- Získejte přehled o tom, k čemu mají tito uživatelé zástupnou latenci.
+- podrobně se do specifických vzorů provozu od každého z těchto uživatelů do oblastí Azure, kde máte koncové body. 
 
-Zobrazení provozu můžete například použít k pochopení, které oblasti mají velký počet přenosů, ale trpí vyšší latencí. Dále můžete tyto informace použít k plánování rozšíření stopy do nových oblastí Azure tak, aby tito uživatelé mohli mít nižší latence zkušenosti.
+Můžete například použít Zobrazení přenosů k pochopení, které oblasti mají velký počet přenosů, ale trpí vyšší latencí. Dále můžete využít tyto informace k plánování rozšíření vašich nároků na nové oblasti Azure, aby tito uživatelé mohli mít nižší možnosti latence.
 
-## <a name="how-traffic-view-works"></a>Jak zobrazení provozu funguje
+## <a name="how-traffic-view-works"></a>Jak Zobrazení přenosů funguje
 
-Zobrazení provozu funguje tak, že traffic manager se podíval na příchozí dotazy přijaté v posledních sedmi dnech proti profilu, který má tuto funkci povolenou. Z informací o příchozích dotazech zobrazení provozu extrahuje zdrojovou IP adresu překladače DNS, který se používá jako reprezentace umístění uživatelů. Ty jsou pak seskupeny na úrovni překladače DNS, aby se vytvořily základní oblasti uživatelů pomocí geografických informací o ADRESÁCH IP spravovaných traffic managerem. Traffic Manager pak prozkoumá oblasti Azure, do kterých byl dotaz směrován, a vytvoří mapu toku provozu pro uživatele z těchto oblastí.  
-V dalším kroku Traffic Manager koreluje základní oblast uživatele s mapováním oblasti Azure s tabulkami latence síťové inteligence, které udržuje pro různé sítě koncových uživatelů, aby pochopil průměrnou latenci, kterou uživatelé z těchto oblastí zažívají, když připojení k oblastem Azure. Všechny tyto výpočty jsou pak kombinovány na úrovni IP překladače DNS, než je vám předložen. Informace můžete využívat různými způsoby.
+Zobrazení přenosů funguje tak, že se Traffic Manager podívat na příchozí dotazy přijaté během posledních sedmi dnů na profil s povolenou funkcí. Z informací o příchozích dotazech Zobrazení přenosů extrahuje zdrojovou IP adresu překladače DNS, který se používá jako reprezentace umístění uživatelů. Ty se pak seskupují společně s podrobnostmi o úrovni překladače DNS k vytvoření oblastí s uživatelskými základem pomocí geografických informací o IP adresách, které spravuje Traffic Manager. Traffic Manager potom Prohlédněte oblasti Azure, ve kterých byl dotaz směrován, a vytvoří mapu toku provozu pro uživatele z těchto oblastí.  
+V dalším kroku Traffic Manager koreluje základní oblast uživatele s mapováním oblastí Azure s tabulkami latence v síťové službě, kterou udržuje pro různé sítě koncových uživatelů, aby při připojování k oblastem Azure pochopila průměrnou latenci, kterou uživatelé z těchto oblastí zaznamenali. Všechny tyto výpočty se pak spojí na úrovni IP adresy pro místní Překladač DNS, než se zobrazí. Tyto informace můžete využívat různými způsoby.
 
-Četnost aktualizace dat zobrazení provozu závisí na více proměnných interní služby. Data jsou však obvykle aktualizována jednou za 24 hodin.
+Frekvence aktualizace dat zobrazení provozu závisí na několika interních proměnných služby. Data se ale většinou aktualizují každých 24 hodin.
 
 >[!NOTE]
->Latence popsaná v zobrazení provozu je reprezentativní latence mezi koncovým uživatelem a oblastmi Azure, ke kterým se připojili, a není latencí vyhledávání DNS. Zobrazení provozu poskytuje maximální úsilí odhad latence mezi místní překladač DNS a oblast Azure dotaz byl směrován do, pokud není k dispozici dostatek dat pak latence vrácena bude null. 
+>Latence popsaná v Zobrazení přenosů je reprezentativní latencí mezi koncovým uživatelem a oblastmi Azure, ke kterým se připojili, a nejedná se o latenci vyhledávání DNS. Zobrazení přenosů se dokončí odhad latence mezi místním překladačem DNS a oblastí Azure, do které byl dotaz směrován, pokud není k dispozici dostatek dat, vrácená latence bude null. 
 
 ## <a name="visual-overview"></a>Vizuální přehled
 
-Když přejdete do části **Zobrazení provozu** na stránce Traffic Manager, zobrazí se vám geografická mapa s překrytím přehledů zobrazení provozu. Mapa poskytuje informace o uživatelské základně a koncových bodech pro váš profil Traffic Manageru.
+Když přejdete na **zobrazení přenosů** část stránky Traffic Manager, zobrazí se geografická mapa s překrytím zobrazení přenosů Insights. Mapa poskytuje informace o uživatelské základu a koncových bodech pro váš profil Traffic Manager.
 
-![Geografické zobrazení traffic manageru traffic view][1]
+![Geografické zobrazení Traffic Manager Zobrazení přenosů][1]
 
-### <a name="user-base-information"></a>Informace o uživatelské základně
+### <a name="user-base-information"></a>Základní informace o uživateli
 
-Pro místní překladače DNS, pro které jsou k dispozici informace o poloze, jsou zobrazeny v mapě. Barva překladače DNS označuje průměrnou latenci, kterou mají koncoví uživatelé, kteří tento překladač DNS používali pro své dotazy Traffic Manageru.
+U místních překladačů DNS, pro které jsou dostupné informace o poloze, se zobrazí v mapě. Barva překladače DNS označuje průměrnou latenci, kterou zkušení koncoví uživatelé, kteří použili tento překladač DNS pro své Traffic Manager dotazy.
 
-Pokud na mapě najedete na místo překladače DNS, zobrazí se:
+Pokud najedete myší na umístění překladače DNS na mapě, zobrazí se tyto informace:
 - IP adresa překladače DNS
-- objem provozu dotazů DNS, který z něj traffic manager zaznamenal
-- koncové body, do kterých byl směrován provoz z překladače DNS jako čára mezi koncovým bodem a překladačem DNS 
-- průměrná latence z tohoto umístění do koncového bodu, reprezentovaná jako barva čáry, která je spojuje
+- objem provozu dotazů DNS, který Traffic Manager z něho uvidí
+- koncové body, na které byl směrován provoz z překladače DNS jako čára mezi koncovým bodem a překladačem DNS 
+- Průměrná latence z tohoto umístění na koncový bod reprezentovaná jako Barva čáry, která je propojuje
 
 ### <a name="endpoint-information"></a>Informace o koncovém bodu
 
-Oblasti Azure, ve kterých jsou umístěny koncové body jsou zobrazeny jako modré tečky v mapě. Pokud je váš koncový bod externí a nemá na něj namapovanou oblast Azure, zobrazí se v horní části mapy. Kliknutím na libovolný koncový bod zobrazíte různá umístění (na základě použitého překladače DNS), odkud byl provoz směrován do tohoto koncového bodu. Připojení jsou zobrazeny jako čára mezi koncovým bodem a umístěním překladače DNS a jsou barevné podle reprezentativní latence mezi tímto párem. Kromě toho můžete zobrazit název koncového bodu, oblast Azure, ve kterém se spouští, a celkový objem požadavků, které na něj byly směrovány tímto profilem Traffic Manageru.
+Oblasti Azure, ve kterých se nachází koncové body, se zobrazují na mapě jako modré tečky. Pokud je váš koncový bod externí a nemá na něj namapovaný region Azure, zobrazí se v horní části mapy. Kliknutím na libovolný koncový bod zobrazíte různá umístění (na základě používaného překladače DNS), ze kterého byl provoz směrován do tohoto koncového bodu. Připojení se zobrazují jako čára mezi koncovým bodem a umístěním překladače DNS a jsou barevná na základě reprezentativnosti mezi touto dvojicí. Kromě toho můžete zobrazit název koncového bodu, oblast Azure, ve které se spouští, a celkový objem požadavků, na které byly směrovány tímto Traffic Manager profilem.
 
 
-## <a name="tabular-listing-and-raw-data-download"></a>Tabulkový výpis a stahování nezpracovaných dat
+## <a name="tabular-listing-and-raw-data-download"></a>Stažení tabulkového zobrazení a nezpracovaná data
 
-Data zobrazení provozu můžete zobrazit v tabulkovém formátu na webu Azure Portal. Pro každý pár IP/koncového bodu překladače DNS je položka, která zobrazuje IP adresu překladače DNS, název a geografické umístění oblasti Azure, ve které je koncový bod umístěn (pokud je k dispozici), objem požadavků přidružených k tomuto překladači DNS k tomuto koncovému bodu a reprezentativní latence přidružená koncovým uživatelům používajícím tento DNS (pokud je k dispozici). Data zobrazení provozu můžete také stáhnout jako soubor CSV, který lze použít jako součást analytického pracovního postupu podle vašeho výběru.
+Data Zobrazení přenosů můžete zobrazit v tabulkovém formátu v Azure Portal. Existuje záznam pro každý pár IP/koncový bod překladače DNS, který zobrazuje IP adresu překladače DNS, název a zeměpisnou polohu oblasti Azure, ve které se nachází koncový bod (Pokud je k dispozici), objem požadavků přidružených k tomuto koncovému bodu DNS a zástupce pro koncové uživatele, který používá tuto službu DNS (tam, kde je k dispozici). Data Zobrazení přenosů můžete také stáhnout jako soubor CSV, který se dá použít jako součást pracovního postupu analýzy podle vašeho výběru.
 
 ## <a name="billing"></a>Fakturace
 
-Při použití zobrazení provozu se vám budou účtovat na základě počtu datových bodů použitých k vytvoření prezentovaných přehledů. V současné době je jediným použitým typem datového bodu dotazy přijaté proti profilu traffic manageru. Další podrobnosti o cenách najdete na [stránce s cenami v Traffic Manageru](https://azure.microsoft.com/pricing/details/traffic-manager/).
+Při použití Zobrazení přenosů se fakturuje na základě počtu datových bodů použitých k vytvoření přehledů, které jsou k dispozici. V současné době je použit jediný typ datového bodu dotazy přijaté proti profilu Traffic Manager. Další podrobnosti o cenách najdete na [stránce s cenami Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager/).
 
 ## <a name="faqs"></a>Nejčastější dotazy
 
-* [K čemu zobrazení provozu dělá?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-does-traffic-view-do)
+* [Co Zobrazení přenosů udělat?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-does-traffic-view-do)
 
-* [Jak mohu využít zobrazení provozu?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-benefit-from-using-traffic-view)
+* [Jak můžu využít Zobrazení přenosů?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-benefit-from-using-traffic-view)
 
-* [Jak se zobrazení návštěvnosti liší od metrik Traffic Manageru dostupných prostřednictvím azure monitoru?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor)
+* [Jak se Zobrazení přenosů liší od metrik Traffic Manager dostupných prostřednictvím služby Azure monitor?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor)
 
-* [Používá zobrazení provozu informace o podsíti klienta EDNS?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-view-use-edns-client-subnet-information)
+* [Používá Zobrazení přenosů informace o podsíti klienta EDNS?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-view-use-edns-client-subnet-information)
 
-* [Kolik dní dat zobrazení provozu používá?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-days-of-data-does-traffic-view-use)
+* [Kolik dní dat Zobrazení přenosů použít?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-days-of-data-does-traffic-view-use)
 
-* [Jak zobrazení provozu zpracovává externí koncové body?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-handle-external-endpoints)
+* [Jak Zobrazení přenosů zpracovávat externí koncové body?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-handle-external-endpoints)
 
-* [Musím povolit zobrazení provozu pro každý profil v mém předplatném?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription)
+* [Potřebuji povolit Zobrazení přenosů pro každý profil v předplatném?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription)
 
-* [Jak mohu vypnout traffic view?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-turn-off-traffic-view)
+* [Jak můžu Zobrazení přenosů vypnout?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-turn-off-traffic-view)
 
-* [Jak funguje fakturace zobrazení provozu?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-billing-work)
+* [Jak funguje Zobrazení přenosů fakturace?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-billing-work)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Zjistěte, jak Traffic Manager funguje](traffic-manager-overview.md)
-- Další informace o [metodách směrování provozu](traffic-manager-routing-methods.md) podporovaných traffic managerem
-- Přečtěte si, jak [vytvořit profil Traffic Manageru](traffic-manager-create-profile.md)
+- Informace [o tom, jak Traffic Manager funguje](traffic-manager-overview.md)
+- Další informace o [metodách směrování provozu](traffic-manager-routing-methods.md) , které podporuje Traffic Manager
+- Informace o tom, jak [vytvořit profil Traffic Manager](traffic-manager-create-profile.md)
 
 <!--Image references-->
 [1]: ./media/traffic-manager-traffic-view-overview/trafficview.png

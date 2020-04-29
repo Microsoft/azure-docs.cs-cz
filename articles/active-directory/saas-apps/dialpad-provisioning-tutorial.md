@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace číselníku pro automatické zřizování uživatelů pomocí služby Azure Active Directory | Dokumenty společnosti Microsoft'
-description: Přečtěte si, jak nakonfigurovat službu Azure Active Directory tak, aby automaticky zřašovala a zřašovala uživatelské účty na číselník.
+title: 'Kurz: Konfigurace Dialpad pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
+description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro Dialpad.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,156 +16,156 @@ ms.topic: article
 ms.date: 06/28/2019
 ms.author: zhchia
 ms.openlocfilehash: 9f39277644547a625d87a39681f0c5520996cbd6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77058336"
 ---
-# <a name="tutorial-configure-dialpad-for-automatic-user-provisioning"></a>Kurz: Konfigurace číselníku pro automatické zřizování uživatelů
+# <a name="tutorial-configure-dialpad-for-automatic-user-provisioning"></a>Kurz: Konfigurace Dialpad pro Automatické zřizování uživatelů
 
-Cílem tohoto kurzu je demonstrovat kroky, které mají být provedeny v Dialpad a Azure Active Directory (Azure AD) nakonfigurovat Azure AD automaticky zřídit a de-zřizování uživatelů nebo skupin na Dialpad.
+Cílem tohoto kurzu je předvést kroky, které je třeba provést v Dialpad a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD pro Automatické zřizování a zrušení zřizování uživatelů nebo skupin pro Dialpad.
 
 > [!NOTE]
->  Tento kurz popisuje konektor postavený na nad službou zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá, jak funguje, a nejčastější dotazy, najdete [v tématu Automatizace zřizování uživatelů a zrušení zřizování aplikací SaaS pomocí služby Azure Active Directory](../app-provisioning/user-provisioning.md).
+>  Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
 
-> Tento konektor je aktuálně ve verzi Preview. Další informace o obecných podmínkách použití Microsoft Azure pro funkce preview najdete v [tématu Doplňkové podmínky použití pro Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Tento konektor je momentálně ve verzi Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že již máte následující požadavky:
+Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
 * Tenanta Azure AD.
-* [Tenant a Dialpad](https://www.dialpad.com/pricing/).
-* Uživatelský účet v dialpadu s oprávněními správce.
+* [Tenant Dialpad](https://www.dialpad.com/pricing/)
+* Uživatelský účet v Dialpad s oprávněními správce.
 
-## <a name="assign-users-to-dialpad"></a>Přiřazení uživatelů k číselníku
-Azure Active Directory používá koncept s názvem přiřazení k určení, kteří uživatelé by měli získat přístup k vybraným aplikacím. V kontextu automatickézřižené zřizování uživatelů jsou synchronizovány pouze uživatelé nebo skupiny, které byly přiřazeny k aplikaci ve službě Azure AD.
+## <a name="assign-users-to-dialpad"></a>Přiřazení uživatelů k Dialpad
+Azure Active Directory používá koncept nazvaný přiřazení k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelů se synchronizují jenom uživatelé a skupiny, které jsou přiřazené k aplikaci v Azure AD.
 
-Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé nebo skupiny ve službě Azure AD potřebují přístup k dialpadu. Jakmile se rozhodnete, můžete přiřadit tyto uživatele a / nebo skupiny dialpad podle pokynů zde:
+Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé a skupiny ve službě Azure AD potřebují přístup k Dialpad. Po rozhodnutí můžete přiřadit tyto uživatele nebo skupiny k Dialpad podle pokynů uvedených tady:
  
 * [Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md) 
 
- ## <a name="important-tips-for-assigning-users-to-dialpad"></a>Důležité tipy pro přiřazení uživatelů k číselníku
+ ## <a name="important-tips-for-assigning-users-to-dialpad"></a>Důležité tipy pro přiřazení uživatelů k Dialpad
 
- * Doporučuje se, aby jeden uživatel Azure AD je přiřazen k dialpad k testování konfigurace automatického zřizování uživatelů. Další uživatelé a/nebo skupiny mohou být přiřazeny později.
+ * Doporučuje se, aby se k Dialpad k testování automatické konfigurace zřizování uživatelů přiřadil jeden uživatel Azure AD. Další uživatele a skupiny můžete přiřadit později.
 
-* Při přiřazování uživatele k programu Dialpad musíte v dialogovém okně přiřazení vybrat libovolnou platnou roli specifickou pro aplikaci (pokud je k dispozici). Uživatelé s rolí Výchozí přístup jsou z zřizování vyloučeni.
+* Při přiřazování uživatele k Dialpad musíte v dialogovém okně přiřazení vybrat jakoukoli platnou roli specifickou pro aplikaci (Pokud je dostupná). Uživatelé s výchozí rolí přístupu se z zřizování vylučují.
 
-## <a name="setup-dialpad-for-provisioning"></a>Instalační číselník pro zřizování
+## <a name="setup-dialpad-for-provisioning"></a>Nastavení Dialpad pro zřizování
 
-Před konfigurací Dialpad pro automatické zřizování uživatelů s Azure AD, budete muset načíst některé zřizování informace z dialpadu.
+Před konfigurací Dialpad pro Automatické zřizování uživatelů se službou Azure AD bude nutné načíst některé informace o zřizování z Dialpad.
 
-1. Přihlaste se ke [konzoli Pro správu číselníku Administrátora](https://dialpadbeta.com/login) a vyberte **nastavení správce**. Ujistěte se, že je v rozevírací seznamně vybrána moje **společnost.** Přejděte na **adresu Authentication > API Keys**.
+1. Přihlaste se ke [konzole správce Dialpad](https://dialpadbeta.com/login) a vyberte **Nastavení správce**. Ujistěte se, že je v rozevíracím seznamu vybraná možnost **Moje společnost** . Přejděte na **ověřovací > klíče rozhraní API**.
 
-    ![Dialpad Přidat SCIM](media/dialpad-provisioning-tutorial/dialpad01.png)
+    ![Dialpad přidat SCIM](media/dialpad-provisioning-tutorial/dialpad01.png)
 
-2. Vygenerujte nový klíč kliknutím na **tlačítko Přidat klíč** a konfigurací vlastností tajného tokenu.
+2. Vygenerujte nový klíč kliknutím na **Přidat klíč** a nakonfigurujete vlastnosti tajného tokenu.
 
-    ![Dialpad Přidat SCIM](media/dialpad-provisioning-tutorial/dialpad02.png)
+    ![Dialpad přidat SCIM](media/dialpad-provisioning-tutorial/dialpad02.png)
 
-    ![Dialpad Přidat SCIM](media/dialpad-provisioning-tutorial/dialpad03.png)
+    ![Dialpad přidat SCIM](media/dialpad-provisioning-tutorial/dialpad03.png)
 
-3. Kliknutím na **tlačítko Kliknutím zobrazíte** tlačítko hodnota pro naposledy vytvořený klíč rozhraní API a zkopírujte zobrazenou hodnotu. Tato hodnota se zadá do pole **Tajný token** na kartě Zřizování aplikace Dialpad na webu Azure Portal. 
+3. Klikněte na tlačítko **kliknutím zobrazit hodnotu** pro nedávno vytvořený klíč rozhraní API a zkopírujte zobrazenou hodnotu. Tato hodnota se zadá do pole **token tajného** kódu na kartě zřizování vaší aplikace Dialpad ve Azure Portal. 
 
-    ![Vytvořit token číselníku](media/dialpad-provisioning-tutorial/dialpad04.png)
+    ![Dialpad vytvořit token](media/dialpad-provisioning-tutorial/dialpad04.png)
 
-## <a name="add-dialpad-from-the-gallery"></a>Přidání číselníku z galerie
+## <a name="add-dialpad-from-the-gallery"></a>Přidání Dialpad z Galerie
 
-Chcete-li konfigurovat Dialpad pro automatické zřizování uživatelů pomocí Azure AD, je třeba přidat Dialpad z galerie aplikací Azure AD do seznamu spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat Dialpad pro Automatické zřizování uživatelů pomocí Azure AD, musíte přidat Dialpad z Galerie aplikací Azure AD do svého seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat číselník z galerie aplikací Azure AD, proveďte následující kroky:**
+**Pokud chcete přidat Dialpad z Galerie aplikací Azure AD, proveďte následující kroky:**
 
-1. Na **[webu Azure Portal](https://portal.azure.com)** vyberte na levém navigačním panelu **položku Azure Active Directory**.
+1. V **[Azure Portal](https://portal.azure.com)** v levém navigačním panelu vyberte možnost **Azure Active Directory**.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte na **podnikové aplikace**a vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
-    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
+    ![Okno podnikové aplikace](common/enterprise-applications.png)
 
 3. Chcete-li přidat novou aplikaci, vyberte tlačítko **Nová aplikace** v horní části podokna.
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Číselník**, vpanelu výsledky vyberte **Číselník.**
-    ![Číselník v seznamu výsledků](common/search-new-app.png)
+4. Do vyhledávacího pole zadejte **Dialpad**, na panelu výsledků vyberte **Dialpad** .
+    ![Dialpad v seznamu výsledků](common/search-new-app.png)
 
-5. Přejděte na **adresu URL** zvýrazněnou níže v samostatném prohlížeči. 
+5. V samostatném prohlížeči přejděte na **adresu URL** zvýrazněnou níže. 
 
-    ![Dialpad Přidat SCIM](media/dialpad-provisioning-tutorial/dialpad05.png)
+    ![Dialpad přidat SCIM](media/dialpad-provisioning-tutorial/dialpad05.png)
 
-6. V pravém horním rohu vyberte **Přihlásit > použít číselník online**.
+6. V pravém horním rohu vyberte možnost **přihlásit > použijte Dialpad online**.
 
-    ![Dialpad Přidat SCIM](media/dialpad-provisioning-tutorial/dialpad06.png)
+    ![Dialpad přidat SCIM](media/dialpad-provisioning-tutorial/dialpad06.png)
 
-7. Vzhledem k tomu, že dialpad je aplikace OpenIDConnect, zvolte přihlášení k dialpadu pomocí pracovního účtu Microsoft.
+7. Dialpad je aplikace OpenIDConnect, která se rozhodne přihlásit k Dialpad pomocí pracovního účtu Microsoft.
 
-    ![Dialpad Přidat SCIM](media/dialpad-provisioning-tutorial/loginpage.png)
+    ![Dialpad přidat SCIM](media/dialpad-provisioning-tutorial/loginpage.png)
 
-8. Po úspěšném ověření přijměte výzvu k souhlasu pro stránku souhlasu. Aplikace pak bude automaticky přidána do vašeho tenanta a budete přesměrováni na váš účet Dialpad.
+8. Po úspěšném ověření Přijměte výzvu k zadání souhlasu pro stránku souhlasu. Aplikace se pak automaticky přidá do vašeho tenanta a budete přesměrováni na svůj účet Dialpad.
 
-    ![Dialpad Přidat SCIM](media/dialpad-provisioning-tutorial/redirect.png)
+    ![Dialpad přidat SCIM](media/dialpad-provisioning-tutorial/redirect.png)
 
- ## <a name="configure-automatic-user-provisioning-to-dialpad"></a>Konfigurace automatického zřizování uživatelů na číselník
+ ## <a name="configure-automatic-user-provisioning-to-dialpad"></a>Konfigurace automatického zřizování uživatelů na Dialpad
 
-Tato část vás provede kroky konfigurace služby zřizování Azure AD k vytvoření, aktualizaci a zakázání uživatelů nebo skupin v dialpadu na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
+V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v Dialpad na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
-### <a name="to-configure-automatic-user-provisioning-for-dialpad-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro dialpad ve službě Azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-dialpad-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Dialpad ve službě Azure AD:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **Všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **položku Dialpad**.
+2. V seznamu aplikace vyberte **Dialpad**.
 
-    ![Odkaz Číselník v seznamu Aplikace](common/all-applications.png)
+    ![Odkaz Dialpad v seznamu aplikací](common/all-applications.png)
 
-3. Vyberte kartu **Zřizování.**
+3. Vyberte kartu **zřizování** .
 
-    ![Karta Zřizování](common/provisioning.png)
+    ![Karta zřizování](common/provisioning.png)
 
-4. Nastavte **režim zřizování** na **automatické**.
+4. Nastavte **režim zřizování** na **automaticky**.
 
-    ![Karta Zřizování](common/provisioning-automatic.png)
+    ![Karta zřizování](common/provisioning-automatic.png)
 
-5. V části **Pověření správce** `https://dialpad.com/scim` zadejte adresu **URL klienta**. Zadejte hodnotu, kterou jste načetli a uložili dříve z číselníku v **tajném tokenu**. Kliknutím na **Testovat připojení** zajistíte, že se Azure AD může připojit k dialpadu. Pokud se připojení nezdaří, ujistěte se, že váš účet Dialpad má oprávnění správce a zkuste to znovu.
+5. V části **přihlašovací údaje správce** zadejte `https://dialpad.com/scim` **adresu URL tenanta**. Zadejte hodnotu, kterou jste načetli a uložili dříve ze Dialpad v **tajném tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k Dialpad. Pokud se připojení nepovede, ujistěte se, že má váš účet Dialpad oprávnění správce, a zkuste to znovu.
 
-    ![Adresa URL klienta + token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Adresa URL tenanta + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Do pole **E-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, která by měla dostávat oznámení o chybách při zřizování, a zaškrtněte políčko – **Odeslat e-mailové oznámení, když dojde k chybě**.
+6. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
 
     ![E-mail s oznámením](common/provisioning-notification-email.png)
 
 7. Klikněte na **Uložit**.
 
-8. V části **Mapování** vyberte **Synchronizovat uživatele služby Azure Active Directory s číselníkem**.
+8. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé Dialpad**.
 
-    ![Mapování uživatelů číselníku](media/dialpad-provisioning-tutorial/dialpad-user-mappings-new.png)
+    ![Mapování uživatelů Dialpad](media/dialpad-provisioning-tutorial/dialpad-user-mappings-new.png)
 
-9. Zkontrolujte atributy uživatele, které jsou synchronizovány z Azure AD na dialpad v části **Mapování atributů.** Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelským účtům v číselníku pro operace aktualizace. Chcete-li potvrdit všechny změny, vyberte tlačítko **Uložit.**
+9. Zkontrolujte atributy uživatele synchronizované z Azure AD do Dialpad v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Dialpad pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Uživatelské atributy číselníku](media/dialpad-provisioning-tutorial/dialpad07.png)
+    ![Atributy uživatele Dialpad](media/dialpad-provisioning-tutorial/dialpad07.png)
 
-10. Chcete-li konfigurovat filtry oborů, naleznete v následujících pokynech uvedených v [kurzu filtru oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+10. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-11. Chcete-li povolit službu zřizování Azure AD pro dialpad, změňte **stav zřizování** **na Zapnuto** v části **Nastavení.**
+11. Pokud chcete povolit službu Azure AD Provisioning pro Dialpad, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
-    ![Stav zřizování zapnutý](common/provisioning-toggle-on.png)
+    ![Zapnutý stav zřizování](common/provisioning-toggle-on.png)
 
-12. Definujte uživatele nebo skupiny, které chcete zřídit na dialpad výběrem požadovaných hodnot v **oboru** v části **Nastavení.**
+12. Definujte uživatele nebo skupiny, které chcete zřídit pro Dialpad, výběrem požadovaných hodnot v **oboru** v části **Nastavení** .
 
-    ![Obor zřizování](common/provisioning-scope.png)
+    ![Rozsah zřizování](common/provisioning-scope.png)
 
-13. Až budete připraveni k zřízení, klikněte na **Uložit**.
+13. Až budete připraveni zřídit, klikněte na **Uložit**.
 
-    ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
+    ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
 
-Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení.** Počáteční synchronizace trvá déle než následné synchronizace, ke kterým dochází přibližně každých 40 minut tak dlouho, dokud je spuštěna služba zřizování Azure AD. Část **Podrobnosti synchronizace** můžete použít ke sledování průběhu a sledování odkazů na sestavu aktivit zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD na číselníku.
+Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v Dialpad.
 
-Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v [tématu Vytváření sestav na automatické zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md)
+Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md) .
 ##  <a name="connector-limitations"></a>Omezení konektoru
-* Dialpad dnes nepodporuje přejmenování skupin. To znamená, že žádné změny **displayName** skupiny ve službě Azure AD nebudou aktualizovány a projeví v dialpadu.
+* Dialpad v současné době nepodporuje přejmenování skupin. To znamená, že jakékoli změny **DisplayName** skupiny ve službě Azure AD nebudou aktualizovány a projeví se v Dialpad.
 
 ## <a name="additional-resources"></a>Další zdroje
 
@@ -174,4 +174,4 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v [
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy o aktivitě zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)

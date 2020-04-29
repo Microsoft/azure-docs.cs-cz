@@ -1,6 +1,6 @@
 ---
-title: Přístup k datovým souborům s klientskou knihovnou Pythonu – proces vědecké ho procesu týmových dat
-description: Nainstalujte a použijte klientskou knihovnu Pythonu k bezpečnému přístupu a správě dat Azure Machine Learning z místního prostředí Pythonu.
+title: Přístup k datovým sadám pomocí klientské knihovny Python – vědecký proces týmového zpracování dat
+description: Nainstalujte a použijte klientskou knihovnu Python pro přístup k datům Azure Machine Learning zabezpečeně z místního prostředí Pythonu a pro jejich správu.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,38 +12,38 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 93ec5e740ac6acf9420a9d980092ed772ac1618e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76720975"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Přístup k datovým sadám pomocí Pythonu a klientské knihovny služby Azure Machine Learning pro Python
-Náhled klientské knihovny Microsoft Azure Machine Learning Python umožňuje zabezpečený přístup k datovým sestavám Azure Machine Learning z místního prostředí Pythonu a umožňuje vytváření a správu datových sad v pracovním prostoru.
+Náhled klientské knihovny Microsoft Azure Machine Learning Pythonu může povolit zabezpečený přístup k vašim datovým sadám Azure Machine Learning z místního prostředí Pythonu a umožňuje vytváření a správu datových sad v pracovním prostoru.
 
-Toto téma obsahuje pokyny, jak:
+V tomto tématu najdete pokyny k těmto akcím:
 
-* instalace klientské knihovny Machine Learning Python
-* přístup k datovým souborům a nahrávání, včetně pokynů, jak získat autorizaci pro přístup k datovým souborům Azure Machine Learning z místního prostředí Pythonu
-* přístup k mezilehlým datovým souborům z experimentů
-* Použití klientské knihovny Pythonu k vytvoření výčtu datových sad, přístupu k metadatům, čtení obsahu datové sady, vytvoření nových datových sad a aktualizaci existujících datových sad
+* Instalace klientské knihovny Machine Learning Python
+* přístup k datovým sadám a jejich nahrávání, včetně pokynů, jak získat autorizaci pro přístup k Azure Machine Learning datovým sadám z místního prostředí Pythonu
+* přístup k mezilehlé datové sadě z experimentů
+* použití klientské knihovny Pythonu k zobrazení výčtu datových sad, přístupu k metadatům, čtení obsahu datové sady, vytváření nových datových sad a aktualizaci existujících datových sad
 
 ## <a name="prerequisites"></a><a name="prerequisites"></a>Požadavky
-Klientská knihovna Pythonu byla testována v následujících prostředích:
+Knihovna klienta Python byla testována v následujících prostředích:
 
 * Windows, Mac a Linux
-* Python 2.7, 3.3 a 3.4
+* Python 2,7, 3,3 a 3,4
 
 Má závislost na následujících balíčcích:
 
-* Požadavky
-* python-dateutil
-* Pandy
+* požádal
+* Python – dateutil
+* PANDAS
 
-Doporučujeme používat distribuci Pythonu, jako je [Anaconda](http://continuum.io/downloads#all) nebo [Canopy](https://store.enthought.com/downloads/), které jsou dodávány s Pythonem, IPythonem a třemi výše uvedenými balíčky. I když IPython není nezbytně nutné, je skvělé prostředí pro manipulaci a vizualizaci dat interaktivně.
+Doporučujeme použít distribuci Pythonu, jako je [Anaconda](http://continuum.io/downloads#all) nebo [zápoje](https://store.enthought.com/downloads/), která se dodává s Pythonem, IPython a třemi balíčky uvedenými výše. I když IPython není bezpodmínečně nutné, jedná se o Skvělé prostředí pro interaktivní práci a vizualizaci dat.
 
-### <a name="how-to-install-the-azure-machine-learning-python-client-library"></a><a name="installation"></a>Jak nainstalovat klientskou knihovnu Azure Machine Learning Python
-Nainstalujte klientskou knihovnu Azure Machine Learning Python k dokončení úkolů popsaných v tomto tématu. Tato knihovna je k dispozici v [indexu balíčků Pythonu](https://pypi.python.org/pypi/azureml). Chcete-li jej nainstalovat do prostředí Pythonu, spusťte následující příkaz z místního prostředí Pythonu:
+### <a name="how-to-install-the-azure-machine-learning-python-client-library"></a><a name="installation"></a>Postup instalace klientské knihovny Azure Machine Learning Pythonu
+Nainstalujte klientskou knihovnu Azure Machine Learning Python pro dokončení úkolů popsaných v tomto tématu. Tato knihovna je k dispozici z [indexu balíčku Pythonu](https://pypi.python.org/pypi/azureml). Pokud ho chcete nainstalovat do prostředí Pythonu, spusťte následující příkaz z místního prostředí Pythonu:
 
     pip install azureml
 
@@ -51,82 +51,82 @@ Případně si můžete stáhnout a nainstalovat ze zdrojů na [GitHubu](https:/
 
     python setup.py install
 
-Pokud máte na vašem počítači nainstalovaný git, můžete použít pip k instalaci přímo z úložiště git:
+Pokud máte v počítači nainstalovaný Git, můžete k instalaci přímo z úložiště Git použít PIP:
 
     pip install git+https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python.git
 
 
-## <a name="use-code-snippets-to-access-datasets"></a><a name="datasetAccess"></a>Použití fragmentů kódu pro přístup k datovým souborům
-Klientská knihovna Pythonu poskytuje programový přístup k existujícím datovým souborům z experimentů, které byly spuštěny.
+## <a name="use-code-snippets-to-access-datasets"></a><a name="datasetAccess"></a>Použití fragmentů kódu pro přístup k datovým sadám
+Knihovna klienta Python poskytuje programový přístup k vašim existujícím datovým sadám z experimentů, které byly spuštěny.
 
-Z webového rozhraní Azure Machine Learning Studio (klasické) můžete generovat fragmenty kódu, které obsahují všechny potřebné informace ke stažení a dekonalizaci datových sad jako objekty pandas DataFrame v místním počítači.
+Z webového rozhraní Azure Machine Learning Studio (Classic) můžete vygenerovat fragmenty kódu, které zahrnují všechny nezbytné informace ke stažení a deserializaci datových sad jako objekty dataframe PANDAS na místním počítači.
 
 ### <a name="security-for-data-access"></a><a name="security"></a>Zabezpečení přístupu k datům
-Fragmenty kódu poskytované Azure Machine Learning Studio (klasické) pro použití s klientskou knihovnou Pythonu obsahuje ID pracovního prostoru a autorizační token. Ty poskytují úplný přístup k vašemu pracovnímu prostoru a musí být chráněny, jako heslo.
+Fragmenty kódu, které poskytuje Azure Machine Learning Studio (Classic) pro použití s knihovnou klienta Python, zahrnují ID pracovního prostoru a autorizační token. Poskytují úplný přístup k vašemu pracovnímu prostoru a musí být chráněni jako heslo.
 
-Z bezpečnostních důvodů je funkce fragmentu kódu k dispozici pouze uživatelům, kteří mají svou roli nastavenou jako **vlastník** pro pracovní prostor. Vaše role se zobrazí v Azure Machine Learning Studio (klasické) na stránce **USERS** v části **Nastavení**.
+Z bezpečnostních důvodů je funkce fragmentu kódu dostupná jenom uživatelům, kteří mají roli nastavenou jako **vlastník** pracovního prostoru. Vaše role se zobrazí v Azure Machine Learning Studio (Classic) na stránce **Uživatelé** v části **Nastavení**.
 
 ![Zabezpečení][security]
 
-Pokud vaše role není nastavena jako **vlastník**, můžete buď požádat o opětovné pozvání jako vlastníka, nebo požádat vlastníka pracovního prostoru, aby vám poskytl fragment kódu.
+Pokud vaše role není nastavená jako **vlastník**, můžete buď požádat o pozvání jako vlastník, nebo požádat vlastníka pracovního prostoru, aby vám poskytl fragment kódu.
 
-Chcete-li získat autorizační token, můžete zvolit jednu z těchto možností:
+K získání autorizačního tokenu si můžete vybrat jednu z těchto možností:
 
-* Požádejte o žeton od majitele. Vlastníci mají přístup ke svým autorizačním tokenům ze stránky Nastavení svého pracovního prostoru v Azure Machine Learning Studio (klasické). V levém podokně vyberte **Nastavení** a kliknutím na **TOKENY AUTORIZACE** zobrazíte primární a sekundární tokeny. Přestože primární nebo sekundární autorizační tokeny lze použít ve fragmentu kódu, doporučuje se, aby vlastníci sdíleli pouze sekundární autorizační tokeny.
+* Požádat o token od vlastníka. Vlastníci mají přístup ke svým autorizačním tokenům ze stránky nastavení svého pracovního prostoru v Azure Machine Learning Studio (Classic). V levém podokně vyberte **Nastavení** a pro zobrazení primárních a sekundárních tokenů klikněte na **autorizační tokeny** . I když je možné použít primární nebo sekundární autorizační tokeny ve fragmentu kódu, doporučuje se, aby vlastníci sdíleli jenom sekundární autorizační tokeny.
 
    ![Autorizační tokeny](./media/python-data-access/ml-python-access-settings-tokens.png)
 
-* Požádejte o povýšení na roli vlastníka: aktuální vlastník pracovního prostoru vás musí nejprve odebrat z pracovního prostoru a pak vás k němu znovu pozvat jako vlastníka.
+* Požádat o zvýšení úrovně role vlastníka: aktuální vlastník pracovního prostoru musí nejdřív odebrat z pracovního prostoru a potom ho znovu pozvat jako vlastníka.
 
-Jakmile vývojáři získali ID pracovního prostoru a token autorizace, mají přístup k pracovnímu prostoru pomocí fragmentu kódu bez ohledu na jejich roli.
+Po získání ID pracovního prostoru a autorizačního tokenu můžou vývojáři získat přístup k pracovnímu prostoru pomocí fragmentu kódu bez ohledu na jejich roli.
 
-Autorizační tokeny jsou spravovány na stránce **TOKENY AUTORIZACE** v části **NASTAVENÍ**. Můžete je znovu vygenerovat, ale tento postup odvolá přístup k předchozímu tokenu.
+Autorizační tokeny se spravují na stránce **AUTORIZAČNÍ tokeny** v **Nastavení**. Můžete je znovu vygenerovat, ale tato procedura odvolá přístup k předchozímu tokenu.
 
-### <a name="access-datasets-from-a-local-python-application"></a><a name="accessingDatasets"></a>Přístup k datovým souborům z místní aplikace Pythonu
-1. V Machine Learning Studio (klasické) klikněte na **datové sady** na navigačním panelu vlevo.
-2. Vyberte datovou sadu, ke které chcete získat přístup. Můžete vybrat libovolnou datovou sadu ze seznamu **MOJE DATOVÉ SADY** nebo ze seznamu **VZORKY.**
-3. Na dolním panelu nástrojů klepněte na **generovat přístupový kód k datům**. Pokud jsou data ve formátu nekompatibilním s klientskou knihovnou Pythonu, je toto tlačítko zakázáno.
+### <a name="access-datasets-from-a-local-python-application"></a><a name="accessingDatasets"></a>Přístup k datovým sadám z místní aplikace Pythonu
+1. V Machine Learning Studio (Classic) klikněte na **datové sady** na navigačním panelu vlevo.
+2. Vyberte datovou sadu, ke které se chcete dostat. Můžete vybrat libovolnou datovou sadu ze seznamu **Moje datové sady** nebo ze seznamu **ukázek** .
+3. V dolním panelu nástrojů klikněte na možnost **generovat kód pro přístup k datům**. Pokud jsou data ve formátu nekompatibilním s klientskou knihovnou Pythonu, toto tlačítko je zakázané.
    
     ![Datové sady][datasets]
-4. Vyberte fragment kódu z okna, které se zobrazí, a zkopírujte ho do schránky.
+4. V okně, které se zobrazí, vyberte fragment kódu a zkopírujte ho do schránky.
    
-    ![Tlačítko Generovat přístupový kód k datům][dataset-access-code]
-5. Vložte kód do poznámkového bloku místní aplikace Pythonu.
+    ![Tlačítko pro generování kódu pro přístup k datům][dataset-access-code]
+5. Vložte kód do poznámkového bloku vaší místní aplikace v Pythonu.
    
     ![Vložení kódu do poznámkového bloku][ipython-dataset]
 
-## <a name="access-intermediate-datasets-from-machine-learning-experiments"></a><a name="accessingIntermediateDatasets"></a>Přístup k průběžným datovým souborům z experimentů machine learningu
-Po spuštění experimentu v Machine Learning Studio (klasické), je možné získat přístup k zprostředkující datové sady z výstupních uzlů modulů. Zprostředkující datové sady jsou data, která byla vytvořena a použita pro zprostředkující kroky při spuštění nástroje modelu.
+## <a name="access-intermediate-datasets-from-machine-learning-experiments"></a><a name="accessingIntermediateDatasets"></a>Přístup k mezilehlé datové sadě z Machine Learning experimentů
+Po spuštění experimentu v Machine Learning Studio (Classic) je možné získat přístup k mezilehlé datové sadě z výstupních uzlů modulů. Mezilehlé datové sady jsou data, která byla vytvořena a použita pro mezilehlé kroky při spuštění nástroje modelu.
 
-Zprostředkující datové sady lze přistupovat tak dlouho, dokud je formát dat kompatibilní s klientskou knihovnou Pythonu.
+K pokročilým datovým sadám je možné přidružit, pokud je formát dat kompatibilní s klientskou knihovnou Pythonu.
 
-Následující formáty jsou podporovány (konstanty pro `azureml.DataTypeIds` tyto formáty jsou ve třídě):
+Podporovány jsou následující formáty (konstanty pro tyto formáty jsou ve `azureml.DataTypeIds` třídě):
 
 * PlainText
-* Obecný cscsv
-* Obecný TSV
-* Obecný csvnoheader
-* Obecný název obecné hostova
+* GenericCSV
+* GenericTSV
+* GenericCSVNoHeader
+* GenericTSVNoHeader
 
-Formát můžete určit najetím na výstupní uzel modulu. Zobrazí se spolu s názvem uzlu v popisku.
+Formát můžete určit tak, že najedete myší na uzel výstupu modulu. Zobrazuje se spolu s názvem uzlu v popisu tlačítka.
 
-Některé moduly, například modul [Split,][split] výstup do `Dataset`formátu s názvem , který není podporován klientskou knihovnou Pythonu.
+Některé moduly, například [rozdělený][split] modul, výstup do formátu s názvem `Dataset`, který není podporován knihovnou klienta Python.
 
 ![Formát datové sady][dataset-format]
 
-Chcete-li získat výstup do podporovaného formátu, je třeba použít modul převodu, například [Převést na soubor CSV][convert-to-csv].
+Chcete-li získat výstup do podporovaného formátu, je nutné použít převodový modul, například [převést na sdílený svazek clusteru][convert-to-csv].
 
-![Obecný formát CSV][csv-format]
+![Formát GenericCSV][csv-format]
 
-Následující kroky ukazují příklad, který vytvoří experiment, spustí jej a přistupuje k zprostředkující datové sadě.
+Následující kroky ukazují příklad, který vytváří experiment, spouští ho a přistupuje k mezilehlé datové sadě.
 
 1. Vytvořte nový experiment.
-2. Vložte modul **dat binární klasifikace binární klasifikace příjmů ze sčítání dospělých.**
-3. Vložte modul [Split][split] a připojte jeho vstup k výstupu modulu datové sady.
-4. Vložte [modul Převést na CSV][convert-to-csv] a připojte jeho vstup k jednomu z výstupů [split][split] modulu.
-5. Uložte experiment, spusťte jej a počkejte na dokončení úlohy.
-6. Klepněte na výstupní uzel v modulu [Převést na CSV.][convert-to-csv]
-7. Po zobrazení kontextové nabídky vyberte **generovat přístupový kód k datům**.
+2. Vloží modul **datové sady binární klasifikace pro příjem z dospělého** .
+3. Vložte [rozdělený][split] modul a připojte jeho vstup k výstupu modulu DataSet.
+4. Vložte modul [převést do sdíleného svazku clusteru][convert-to-csv] a připojte jeho vstup k jednomu z výstupů [rozděleného][split] modulu.
+5. Uložte experiment, spusťte ho a počkejte, než se úloha dokončí.
+6. Klikněte na uzel výstup v modulu [Převod do sdíleného svazku clusteru][convert-to-csv] .
+7. Jakmile se zobrazí místní nabídka, vyberte možnost **generovat kód pro přístup k datům**.
    
     ![Místní nabídka][experiment]
 8. Vyberte fragment kódu a zkopírujte ho do schránky z okna, které se zobrazí.
@@ -134,87 +134,87 @@ Následující kroky ukazují příklad, který vytvoří experiment, spustí je
     ![Generovat přístupový kód z kontextové nabídky][intermediate-dataset-access-code]
 9. Vložte kód do poznámkového bloku.
    
-    ![Vložení kódu do poznámkového bloku][ipython-intermediate-dataset]
-10. Data můžete vizualizovat pomocí matplotlib. Zobrazí se v histogramu pro sloupci stáří:
+    ![Vložit kód do poznámkového bloku][ipython-intermediate-dataset]
+10. Data můžete vizualizovat pomocí matplotlib. Zobrazí se v histogramu pro sloupec věk:
     
     ![Histogram][ipython-histogram]
 
-## <a name="use-the-machine-learning-python-client-library-to-access-read-create-and-manage-datasets"></a><a name="clientApis"></a>Použití klientské knihovny Machine Learning Python pro přístup, čtení, vytváření a správu datových sad
+## <a name="use-the-machine-learning-python-client-library-to-access-read-create-and-manage-datasets"></a><a name="clientApis"></a>Použití klientské knihovny Machine Learning Python pro přístup k datovým sadám, jejich čtení, vytváření a správě
 ### <a name="workspace"></a>Pracovní prostor
-Pracovní prostor je vstupním bodem pro klientskou knihovnu Pythonu. Poskytněte `Workspace` třídě ID pracovního prostoru a token autorizace pro vytvoření instance:
+Pracovní prostor je vstupním bodem pro knihovnu klienta Python. Zadejte `Workspace` třídu s ID pracovního prostoru a autorizačním tokenem pro vytvoření instance:
 
     ws = Workspace(workspace_id='4c29e1adeba2e5a7cbeb0e4f4adfb4df',
                    authorization_token='f4f3ade2c6aefdb1afb043cd8bcf3daf')
 
 
-### <a name="enumerate-datasets"></a>Výčet datových sad
-Vytvoření výčtu všech datových sad v daném pracovním prostoru:
+### <a name="enumerate-datasets"></a>Zobrazení výčtu datových sad
+Zobrazení výčtu všech datových sad v daném pracovním prostoru:
 
     for ds in ws.datasets:
         print(ds.name)
 
-Vytvoření výčtu pouze datových sad vytvořených uživatelem:
+Chcete-li vytvořit výčet pouze datových sad vytvořených uživatelem:
 
     for ds in ws.user_datasets:
         print(ds.name)
 
-Výčet pouze ukázkové datové sady:
+Chcete-li vytvořit výčet pouze ukázkových datových sad:
 
     for ds in ws.example_datasets:
         print(ds.name)
 
-K datové sadě můžete přistupovat podle názvu (který rozlišuje malá a velká písmena):
+Můžete získat přístup k datové sadě podle názvu (rozlišuje velká a malá písmena):
 
     ds = ws.datasets['my dataset name']
 
-Nebo k němu můžete přistupovat podle indexu:
+Nebo k němu máte přístup podle indexu:
 
     ds = ws.datasets[0]
 
 
 ### <a name="metadata"></a>Metadata
-Datové sady mají kromě obsahu také metadata. (Zprostředkující datové sady jsou výjimkou z tohoto pravidla a nemají žádná metadata.)
+Datové sady mají kromě obsahu i metadata. (Mezilehlé datové sady jsou výjimkou z tohoto pravidla a nemají žádná metadata.)
 
-Některé hodnoty metadat jsou přiřazeny uživatelem v době vytvoření:
+Některé hodnoty metadat jsou přiřazeny uživatelem v době vytváření:
 
     print(ds.name)
     print(ds.description)
     print(ds.family_id)
     print(ds.data_type_id)
 
-Jiné jsou hodnoty přiřazené Azure ML:
+Jiné jsou hodnoty přiřazené službou Azure ML:
 
     print(ds.id)
     print(ds.created_date)
     print(ds.size)
 
-Další `SourceDataset` informace o dostupných metadatech najdete v kurzu.
+Další informace `SourceDataset` o dostupných metadatech najdete ve třídě.
 
-### <a name="read-contents"></a>Čtení obsahu
-Fragmenty kódu poskytované Machine Learning Studio (klasické) automaticky stáhnout a rekonstruovat datovou sadu pandas DataFrame objektu. To se provádí `to_dataframe` metodou:
+### <a name="read-contents"></a>Číst obsah
+Fragmenty kódu, které poskytuje Machine Learning Studio (Classic), automaticky stáhnou a deserializovat datovou sadu do objektu PANDAS dataframe. To se provádí pomocí `to_dataframe` metody:
 
     frame = ds.to_dataframe()
 
-Pokud dáváte přednost stažení nezpracovaných dat a proveďte rekonstrukci sami, je to možnost. V současné době je to jediná možnost pro formáty, jako je například "ARFF", které klientská knihovna Pythonu nemůže rekonstruovat.
+Pokud si přejete stáhnout nezpracovaná data a provést deserializaci sami, jedná se o možnost. V tuto chvíli je to jediná možnost pro formáty, jako je například ' ARFF ', kterou nelze deserializovat v knihovně klienta Python.
 
-Chcete-li číst obsah jako text:
+Čtení obsahu jako textu:
 
     text_data = ds.read_as_text()
 
-Chcete-li číst obsah jako binární:
+Čtení obsahu jako binárního souboru:
 
     binary_data = ds.read_as_binary()
 
-Můžete také jen otevřít datový proud k obsahu:
+Můžete také otevřít datový proud pro obsah:
 
     with ds.open() as file:
         binary_data_chunk = file.read(1000)
 
 
-### <a name="create-a-new-dataset"></a>Vytvoření nové datové sady
-Klientská knihovna Pythonu umožňuje nahrávat datové sady z programu Pythonu. Tyto datové sady jsou pak k dispozici pro použití ve vašem pracovním prostoru.
+### <a name="create-a-new-dataset"></a>Vytvořit novou datovou sadu
+Knihovna klienta Python umožňuje nahrávat datové sady z programu Pythonu. Tyto datové sady jsou pak k dispozici pro použití ve vašem pracovním prostoru.
 
-Pokud máte data v pandas DataFrame, použijte následující kód:
+Pokud máte data v PANDAS dataframe, použijte následující kód:
 
     from azureml import DataTypeIds
 
@@ -225,7 +225,7 @@ Pokud máte data v pandas DataFrame, použijte následující kód:
         description='my description'
     )
 
-Pokud jsou data již serializována, můžete použít:
+Pokud jsou vaše data už serializovaná, můžete použít:
 
     from azureml import DataTypeIds
 
@@ -236,16 +236,16 @@ Pokud jsou data již serializována, můžete použít:
         description='my description'
     )
 
-Klientská knihovna Pythonu je schopna serializovat pandas DataFrame do následujících `azureml.DataTypeIds` formátů (konstanty pro tyto jsou ve třídě):
+Knihovna klienta Pythonu je schopná serializovat PANDAS dataframe do následujících formátů (konstanty pro tyto jsou ve `azureml.DataTypeIds` třídě):
 
 * PlainText
-* Obecný cscsv
-* Obecný TSV
-* Obecný csvnoheader
-* Obecný název obecné hostova
+* GenericCSV
+* GenericTSV
+* GenericCSVNoHeader
+* GenericTSVNoHeader
 
-### <a name="update-an-existing-dataset"></a>Aktualizace existující datové sady
-Pokud se pokusíte nahrát novou datovou sadu s názvem, který odpovídá existující datové sadě, měla by se zobrazí chyba konfliktu.
+### <a name="update-an-existing-dataset"></a>Aktualizovat existující datovou sadu
+Pokud se pokusíte nahrát novou datovou sadu s názvem, který se shoduje s existující datovou sadou, měla by se zobrazit chyba konfliktu.
 
 Chcete-li aktualizovat existující datovou sadu, musíte nejprve získat odkaz na existující datovou sadu:
 
@@ -255,7 +255,7 @@ Chcete-li aktualizovat existující datovou sadu, musíte nejprve získat odkaz 
     print(dataset.name)         # 'existing dataset'
     print(dataset.description)  # 'data up to jan 2015'
 
-Pak `update_from_dataframe` použijte serializovat a nahradit obsah datové sady v Azure:
+Pak použijte `update_from_dataframe` k serializaci a nahrazení obsahu datové sady v Azure:
 
     dataset = ws.datasets['existing dataset']
 
@@ -265,7 +265,7 @@ Pak `update_from_dataframe` použijte serializovat a nahradit obsah datové sady
     print(dataset.name)         # 'existing dataset'
     print(dataset.description)  # 'data up to jan 2015'
 
-Pokud chcete serializovat data do jiného formátu, zadejte `data_type_id` hodnotu volitelného parametru.
+Pokud chcete data serializovat v jiném formátu, zadejte hodnotu volitelného `data_type_id` parametru.
 
     from azureml import DataTypeIds
 
@@ -293,7 +293,7 @@ Volitelně můžete nastavit nový popis zadáním hodnoty `description` paramet
     print(dataset.name)         # 'existing dataset'
     print(dataset.description)  # 'data up to feb 2015'
 
-Volitelně můžete nastavit nový název zadáním hodnoty `name` parametru. Od této chvíle budete datovou sadu načítat pouze pomocí nového názvu. Následující kód aktualizuje data, název a popis.
+Volitelně můžete nastavit nový název zadáním hodnoty `name` parametru. Od této chvíle načtěte datovou sadu pouze pomocí nového názvu. Následující kód aktualizuje data, název a popis.
 
     dataset = ws.datasets['existing dataset']
 
@@ -310,9 +310,9 @@ Volitelně můžete nastavit nový název zadáním hodnoty `name` parametru. Od
     print(ws.datasets['existing dataset v2'].name) # 'existing dataset v2'
     print(ws.datasets['existing dataset'].name)    # IndexError
 
-`data_type_id`Parametry `name` `description` , a jsou volitelné a výchozí na jejich předchozí hodnotu. Parametr `dataframe` je vždy vyžadován.
+`data_type_id`jsou volitelné a výchozí jejich předchozí `name` `description` hodnota. `dataframe` Parametr je vždy vyžadován.
 
-Pokud jsou data již serializována, použijte `update_from_raw_data` místo . `update_from_dataframe` Pokud jste právě `raw_data` projít `dataframe`místo , funguje to podobným způsobem.
+Pokud jsou vaše data už serializovaná, `update_from_raw_data` použijte místo `update_from_dataframe`. Pokud pouze předáte `raw_data` místo `dataframe`, funguje podobným způsobem.
 
 <!-- Images -->
 [security]:./media/python-data-access/security.png

@@ -1,6 +1,6 @@
 ---
-title: Správa organizací z portálu Můj účet – Azure AD
-description: Jak zobrazit a nechat organizace připojené k vašemu pracovnímu nebo školnímu účtu na stránce Organizace na portálu Můj účet.
+title: Spravujte své organizace na portálu Můj účet – Azure AD
+description: Jak zobrazit a opustit organizace připojené k pracovnímu nebo školnímu účtu na stránce organizace na portálu Můj účet.
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,59 +12,59 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
 ms.openlocfilehash: fbaca387dd8062f50bb7555c7be6e7f65ce346bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77062468"
 ---
-# <a name="manage-your-connected-organizations-from-the-organizations-page"></a>Správa připojených organizací na stránce Organizace
+# <a name="manage-your-connected-organizations-from-the-organizations-page"></a>Spravujte své připojené organizace ze stránky organizace.
 
-Stránka **Organizace** na portálu **Můj účet** vám pomůže spravovat organizace (obvykle název vaší organizace) připojené k vašemu pracovnímu nebo školnímu účtu. Na stránce Organizace jsou **zobrazeny** dva typy organizací:
+Stránka **organizace** na portálu **můj účet** vám pomůže spravovat organizace (obvykle název vaší organizace) připojené k vašemu pracovnímu nebo školnímu účtu. Na stránce **organizace** se zobrazují dva typy organizací:
 
-- **Domácí organizace.** Vaše domácí organizace je organizace, která vlastní váš pracovní nebo školní účet. Nemůžete opustit svou domovskou organizaci.
+- **Domovská organizace.** Vaše domovská organizace je organizace, která vlastní pracovní nebo školní účet. Nemůžete opustit svou domovskou organizaci.
 
     >[!NOTE]
-    > Pokud nemáte přiřazenou domácí organizaci, zobrazí se pouze jeden nadpis s názvem Organizace se seznamem přidružených organizací.
+    > Pokud nemáte přiřazenou domovskou organizaci, zobrazí se jenom jeden nadpis, který uvádí organizace se seznamem vašich přidružených organizací.
 
-- **Jiné organizace.** Ostatní organizace jsou všechny skupiny, ke kterým jste se přihlásili dříve pomocí pracovního nebo školního účtu. Některou z těchto organizací můžete kdykoli opustit.
+- **Jiné organizace.** Ostatní organizace jsou libovolná skupina, ke které jste se předtím přihlásili pomocí svého pracovního nebo školního účtu. Kterékoli z těchto organizací můžete kdykoli opustit.
 
 >[!Important]
->Tento článek je určen uživatelům, kteří se pokoušejí aktualizovat informace o organizaci připojené k pracovnímu nebo školnímu účtu. Pokud jste správce, který hledá informace o správě skupin a uživatelů pro zaměstnance a další použití, přečtěte si [dokumentaci k podnikové správě uživatelů](https://docs.microsoft.com/azure/active-directory/users-groups-roles/index).
+>Tento článek je určený pro uživatele, kteří se pokoušejí aktualizovat informace o organizaci připojené k pracovnímu nebo školnímu účtu. Pokud jste správcem a hledáte informace o správě skupin a uživatelů pro vaše zaměstnance a další použití, přečtěte si [dokumentaci ke správě uživatelů v podniku](https://docs.microsoft.com/azure/active-directory/users-groups-roles/index).
 
-## <a name="view-your-organizations"></a>Zobrazení organizací
+## <a name="view-your-organizations"></a>Zobrazit vaše organizace
 
-1. Přihlaste se ke svému pracovnímu nebo školnímuhttps://myprofile.microsoft.com/) účtu a přejděte na stránku Můj **účet** (
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a pak na stránce **můj účet** (https://myprofile.microsoft.com/) .
 
-2. V levém navigačním podokně vyberte **Organizace** nebo vyberte odkaz **Spravovat organizace** z bloku **Organizace.**
+2. V levém navigačním podokně vyberte **organizace** nebo vyberte odkaz pro **správu organizací** z bloku **organizace** .
 
-    ![Stránka Můj účet se zvýrazněnými odkazy Organizace](media/my-account-portal/my-account-portal-organizations.png)
+    ![Stránka můj účet, na které se zobrazují odkazy zvýrazněných organizací](media/my-account-portal/my-account-portal-organizations.png)
 
-3. Zkontrolujte informace pro **domácí organizaci**.
+3. Projděte si informace o vaší **domovské organizaci**.
 
-    ![Stránka Organizace](media/my-account-portal/my-account-portal-organization-page.png)
+    ![Stránka organizace](media/my-account-portal/my-account-portal-organization-page.png)
 
-4. Zkontrolujte další přidružené organizace a ujistěte se, že poznáváte všechny organizace připojené k vašemu účtu.
+4. Projděte si další přidružené organizace a ujistěte se, že znáte všechny organizace, které jsou k vašemu účtu připojené.
 
 ## <a name="leave-an-organization"></a>Opuštění organizace
 
-Můžete opustit libovolnou organizaci, která není vaší domácí organizací.
+Můžete opustit jakoukoli organizaci, která není vaší domovskou organizací.
 
 >[!Important]
->Pokud opustíte organizaci omylem, neexistuje žádný způsob, jak ji vrátit. Budete muset počkat na správce této organizace, aby vás pozval znovu.
+>Pokud necháte organizaci omylem, neexistuje žádný způsob, jak ji vrátit. Musíte počkat, až správce této organizace bude pozvánku znovu pozvat.
 
-- Vyberte **Opustit organizaci** vedle organizace, kterou chcete opustit, a pak vyberte **Opustit,** chcete-li potvrdit, že chcete odejít.
+- Vyberte **opustit organizaci** vedle organizace, kterou chcete opustit, a pak výběrem **ponechat** potvrďte, že chcete odejít.
 
-    ![Stránka Organizace se zvýrazněným odkazem organizace na dovolenou](media/my-account-portal/my-account-portal-organizations-leave.png)
+    ![Stránka organizace se zvýrazněným odkazem na organizaci](media/my-account-portal/my-account-portal-organizations-leave.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Po zobrazení organizace můžete:
+Po zobrazení svých organizací můžete:
 
-- Zobrazení nebo správa [bezpečnostních údajů](user-help-security-info-overview.md).
+- Umožňuje zobrazit nebo spravovat vaše [bezpečnostní údaje](user-help-security-info-overview.md).
 
-- Zobrazení nebo správa [připojených zařízení](my-account-portal-devices-page.md).
+- Umožňuje zobrazit nebo spravovat připojená [zařízení](my-account-portal-devices-page.md).
 
-- Zobrazení [přihlašovací aktivity](my-account-portal-sign-ins-page.md).
+- Zobrazit [přihlašovací aktivitu](my-account-portal-sign-ins-page.md)
 
-- Zobrazení způsobu, jakým vaše organizace [používá vaše data týkající se ochrany osobních údajů](my-account-portal-privacy-page.md).
+- Podívejte se, jak vaše organizace [používá data týkající se ochrany osobních údajů](my-account-portal-privacy-page.md).

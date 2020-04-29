@@ -1,6 +1,6 @@
 ---
 title: Přidání pracovního nebo školního účtu do aplikace Microsoft Authenticator – Azure AD
-description: Přidejte svůj pracovní nebo školní účet do aplikace Microsoft Authenticator a ověřte svou identitu při použití dvoufaktorového ověření.
+description: Přidejte svůj pracovní nebo školní účet do aplikace Microsoft Authenticator, abyste ověřili svoji identitu při použití dvojúrovňového ověřování.
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,48 +12,48 @@ ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: f0cc14a53f7ead7f0a496728d477d7d30857a0fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77063913"
 ---
 # <a name="add-your-work-or-school-account-to-the-microsoft-authenticator-app"></a>Přidání pracovního nebo školního účtu do aplikace Microsoft Authenticator
 
-Pokud vaše organizace používá dvoufaktorové ověření, můžete si nastavit pracovní nebo školní účet tak, aby jako jedna z metod ověřování používal aplikaci Microsoft Authenticator.
+Pokud vaše organizace používá dvojúrovňové ověřování, můžete nastavit pracovní nebo školní účet tak, aby používal aplikaci Microsoft Authenticator jako jednu z metod ověřování.
 
 >[!Important]
->Před přidáním účtu je nutné stáhnout a nainstalovat aplikaci Microsoft Authenticator. Pokud jste to ještě neudělali, postupujte podle pokynů v článku [Ke stažení a instalaci aplikace.](user-help-auth-app-download-install.md)
+>Než budete moct přidat svůj účet, musíte si stáhnout a nainstalovat aplikaci Microsoft Authenticator. Pokud jste to ještě neudělali, postupujte podle kroků v článku [Stažení a instalace aplikace](user-help-auth-app-download-install.md) .
 
-## <a name="add-your-work-or-school-account"></a>Přidání pracovního nebo školního účtu
+## <a name="add-your-work-or-school-account"></a>Přidat svůj pracovní nebo školní účet
 
-1. Na počítači přejděte na stránku [Další ověření zabezpečení.](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1)
-
-    >[!Note]
-    >Pokud stránku Další **ověření zabezpečení** nevidíte, je možné, že správce zapnul bezpečnostní údaje (náhled). V takovém případě byste měli postupovat podle pokynů v části [Nastavení bezpečnostních údajů a použít aplikaci pro ověřování.](security-info-setup-auth-app.md) Pokud tomu tak není, budete muset kontaktovat oddělení technické podpory vaší organizace. Další informace o bezpečnostních údajích naleznete v [tématu Přehled bezpečnostních údajů (preview).](user-help-security-info-overview.md)
-
-2. Zaškrtněte políčko vedle **aplikace Authenticator**a pak vyberte **Konfigurovat**.
-
-    Zobrazí se stránka **Konfigurovat mobilní aplikaci.**
-
-    ![Obrazovka, která poskytuje QR kód](./media/user-help-auth-app-download-install/auth-app-barcode.png)
-
-3. Otevřete aplikaci Microsoft Authenticator, **vyberte Přidat účet** z ikony **Přizpůsobit a řídit** v pravém horním bodě a pak vyberte Pracovní nebo **školní účet**.
+1. V počítači přejdete na stránku [Další ověření zabezpečení](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) .
 
     >[!Note]
-    >Pokud nastavujete aplikaci Microsoft Authenticator poprvé, může se zobrazit výzva s dotazem, zda má aplikaci povolit přístup ke kameře (iOS) nebo zda aplikaci pořizovat snímky a nahrávat video (Android). Musíte vybrat **Povolit,** aby ověřovací aplikace mohla přistupovat k fotoaparátu a pořit qr kód v dalším kroku. Pokud fotoaparát nepovolíte, můžete aplikaci pro ověřování nastavit, ale budete muset přidat informace o kódu ručně. Informace o ručním přidání kódu najdete v [tématu Ruční přidání účtu do aplikace](user-help-auth-app-add-account-manual.md).
+    >Pokud nevidíte stránku **Další ověření zabezpečení** , je možné, že správce zapnul prostředí informace o zabezpečení (Preview). V takovém případě byste měli postupovat podle pokynů v části [Nastavení bezpečnostních údajů pro použití ověřovací aplikace](security-info-setup-auth-app.md) . Pokud to tak není, budete muset požádat o pomoc oddělení technické podpory vaší organizace. Další informace o bezpečnostních informacích najdete v tématu [Přehled informací o zabezpečení (Preview)](user-help-security-info-overview.md).
 
-4. Pomocí fotoaparátu zařízení naskenujte QR kód z obrazovky **Konfigurace mobilní aplikace** v počítači a pak zvolte **Hotovo**.
+2. Zaškrtněte políčko u **ověřovací aplikace**a pak vyberte **Konfigurovat**.
+
+    Zobrazí se stránka **Konfigurace mobilní aplikace** .
+
+    ![Obrazovka, která poskytuje kód QR](./media/user-help-auth-app-download-install/auth-app-barcode.png)
+
+3. Otevřete aplikaci Microsoft Authenticator, v pravém horním rohu vyberte **Přidat účet** **a potom** vyberte **pracovní nebo školní účet**.
 
     >[!Note]
-    >Pokud fotoaparát nedokáže zachytit QR kód, můžete ručně přidat informace o účtu do aplikace Microsoft Authenticator pro dvoufaktorové ověření. Další informace a postup naleznete v [tématu Ruční přidání účtu](user-help-auth-app-add-account-manual.md).
+    >Pokud Microsoft Authenticator aplikaci nakonfigurujete poprvé, může se zobrazit výzva s dotazem, jestli chcete, aby aplikace měla přístup k vaší kameře (iOS), nebo aby aplikaci mohla pořizovat snímky a nahrávat video (Android). Je nutné vybrat možnost **umožnit** , aby mohla aplikace ověřovatele získat přístup k fotoaparátu, aby pomohlo vytvořit obrázek kódu QR v dalším kroku. Pokud fotoaparát nepovolíte, můžete přesto nastavit ověřovací aplikaci, ale budete muset informace o kódu přidat ručně. Informace o tom, jak kód přidat ručně, najdete v tématu [Ruční přidání účtu do aplikace](user-help-auth-app-add-account-manual.md).
 
-5. Zkontrolujte obrazovku **Účty** aplikace v zařízení, abyste se ujistili, že je váš účet správný a že existuje přidružený šestimístný ověřovací kód. Z důvodu dodatečného zabezpečení se ověřovací kód mění každých 30 sekund, aby někdo mohl kód používat vícekrát.
+4. Pomocí kamery zařízení Naskenujte kód QR z obrazovky **Konfigurace mobilní aplikace** na vašem počítači a pak zvolte **Hotovo**.
 
-    ![Obrazovka Účty](./media/user-help-auth-app-download-install/auth-app-accounts.png)
+    >[!Note]
+    >Pokud fotoaparát nedokáže zachytit kód QR, můžete ručně přidat informace o svém účtu do aplikace Microsoft Authenticator pro dvoustupňové ověřování. Další informace a jak to udělat, najdete v tématu [Ruční přidání účtu](user-help-auth-app-add-account-manual.md).
+
+5. Projděte si na zařízení obrazovku **účty** , abyste se ujistili, že je váš účet pravý a že je k němu přidružený kód ověřovacího kódu o šesti číslicích. Pro zvýšení zabezpečení se ověřovací kód každých 30 sekund nebrání někomu, aby používal kód několikrát.
+
+    ![Obrazovka účty](./media/user-help-auth-app-download-install/auth-app-accounts.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- Po přidání účtů do aplikace se můžete přihlásit pomocí aplikace Authenticator v zařízení. Další informace najdete [v tématu Přihlášení pomocí aplikace](user-help-auth-app-sign-in.md).
+- Po přidání účtů do aplikace se můžete přihlásit pomocí ověřovací aplikace na svém zařízení. Další informace najdete v tématu [přihlášení pomocí aplikace](user-help-auth-app-sign-in.md).
 
-- U zařízení se systémem iOS můžete také zálohovat přihlašovací údaje k účtu a související nastavení aplikací, jako je pořadí vašich účtů, do cloudu. Další informace naleznete v [tématu Zálohování a obnovení pomocí aplikace Microsoft Authenticator](user-help-auth-app-backup-recovery.md).
+- U zařízení se systémem iOS můžete také zálohovat přihlašovací údaje účtu a související nastavení aplikace, jako je například pořadí účtů, do cloudu. Další informace najdete v tématu [zálohování a obnovení pomocí aplikace Microsoft Authenticator](user-help-auth-app-backup-recovery.md).

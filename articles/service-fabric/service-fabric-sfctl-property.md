@@ -1,19 +1,19 @@
 ---
-title: Azure Service Fabric CLI- sfctl vlastnost
-description: Další informace o sfctl, rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro ukládání a dotazování vlastností.
+title: Azure Service Fabric CLI – vlastnost sfctl
+description: Přečtěte si o sfctl rozhraní příkazového řádku Azure Service Fabric. Obsahuje seznam příkazů pro ukládání a dotazování vlastností.
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: a9bd75e0b7f8bfceb50a71ca83b60ff1e7b45508
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76905830"
 ---
 # <a name="sfctl-property"></a>sfctl property
-Ukládat a dotazovat vlastnosti v části Názvy prostředků infrastruktury služeb.
+Uložení a dotazování vlastností pod názvy Service Fabric.
 
 ## <a name="commands"></a>Příkazy
 
@@ -22,104 +22,104 @@ Ukládat a dotazovat vlastnosti v části Názvy prostředků infrastruktury slu
 | delete | Odstraní zadanou vlastnost Service Fabric. |
 | get | Získá zadanou vlastnost Service Fabric. |
 | list | Získá informace o všech vlastnostech Service Fabric pod daným názvem. |
-| Dát | Vytvoří nebo aktualizuje service fabric vlastnost. |
+| převést | Vytvoří nebo aktualizuje vlastnost Service Fabric. |
 
-## <a name="sfctl-property-delete"></a>sfctl, vlastnost delete
+## <a name="sfctl-property-delete"></a>odstranění vlastnosti sfctl
 Odstraní zadanou vlastnost Service Fabric.
 
-Odstraní zadanou vlastnost Service Fabric pod daným názvem. Vlastnost musí být vytvořena před odstraněním.
+Odstraní zadanou vlastnost Service Fabric v rámci daného názvu. Vlastnost musí být vytvořena předtím, než bude možné ji odstranit.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --name-id [Povinné] | Název Service Fabric bez schématu IDENTIFIKÁTORURI struktury .\: |
-| --property-name [Povinné] | Určuje název vlastnosti, kterou chcete získat. |
-| --časový čas -t | Časový rozsah serveru pro provedení operace v sekundách. Tento časový limit určuje dobu trvání, po kterou je klient ochoten čekat na dokončení požadované operace. Výchozí hodnota tohoto parametru je 60 sekund.  Výchozí\: 60. |
+| --Name-ID [povinné] | Název Service Fabric bez schématu identifikátoru URI prostředků\:infrastruktury |
+| --Property-Name [povinné] | Určuje název vlastnosti, která má být získána. |
+| --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --ladění | Zvyšte podrobnost protokolování, chcete-li zobrazit všechny protokoly ladění. |
-| --pomoc -h | Zobrazit tuto zprávu nápovědy a ukončete ji. |
-| --výstup -o | Výstupní formát.  Povolené\: hodnoty json, jsonc, tabulka, tsv.  Výchozí\: json. |
-| --dotaz | Řetězec dotazu JMESPath. Další\:informace a příklady naleznete na adrese http //jmespath.org/. |
-| --verbose | Zvyšte podrobnost protokolování. Použijte --debug pro úplné protokoly ladění. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-property-get"></a>sfctl vlastnost získat
+## <a name="sfctl-property-get"></a>sfctl vlastnosti Get
 Získá zadanou vlastnost Service Fabric.
 
-Získá zadaný Service Fabric vlastnost pod daný název. Tím se vždy vrátí hodnota a metadata.
+Získá zadanou vlastnost Service Fabric pod daným názvem. Tím se vždycky vrátí hodnota i metadata.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --name-id [Povinné] | Název Service Fabric bez schématu IDENTIFIKÁTORURI struktury .\: |
-| --property-name [Povinné] | Určuje název vlastnosti, kterou chcete získat. |
-| --časový čas -t | Časový rozsah serveru pro provedení operace v sekundách. Tento časový limit určuje dobu trvání, po kterou je klient ochoten čekat na dokončení požadované operace. Výchozí hodnota tohoto parametru je 60 sekund.  Výchozí\: 60. |
+| --Name-ID [povinné] | Název Service Fabric bez schématu identifikátoru URI prostředků\:infrastruktury |
+| --Property-Name [povinné] | Určuje název vlastnosti, která má být získána. |
+| --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --ladění | Zvyšte podrobnost protokolování, chcete-li zobrazit všechny protokoly ladění. |
-| --pomoc -h | Zobrazit tuto zprávu nápovědy a ukončete ji. |
-| --výstup -o | Výstupní formát.  Povolené\: hodnoty json, jsonc, tabulka, tsv.  Výchozí\: json. |
-| --dotaz | Řetězec dotazu JMESPath. Další\:informace a příklady naleznete na adrese http //jmespath.org/. |
-| --verbose | Zvyšte podrobnost protokolování. Použijte --debug pro úplné protokoly ladění. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-property-list"></a>sfctl seznam vlastností
+## <a name="sfctl-property-list"></a>seznam vlastností sfctl
 Získá informace o všech vlastnostech Service Fabric pod daným názvem.
 
-Název Service Fabric může mít jednu nebo více pojmenovaných vlastností, které ukládají vlastní informace. Tato operace získá informace o těchto vlastnostech v stránkovaném seznamu. Informace zahrnují název, hodnotu a metadata o každé vlastnosti.
+Název Service Fabric může obsahovat jednu nebo více pojmenovaných vlastností, které ukládají vlastní informace. Tato operace načte informace o těchto vlastnostech v seznamu stránkovaného seznamu. Tyto informace obsahují názvy, hodnoty a metadata o každé z vlastností.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --name-id [Povinné] | Název Service Fabric bez schématu IDENTIFIKÁTORURI struktury .\: |
-| --continuation-token | Parametr tokenu pokračování se používá k získání další sady výsledků. Token pokračování s neprázdnou hodnotou je zahrnut v odpovědi rozhraní API, pokud se výsledky ze systému nevejdou do jediné odpovědi. Když je tato hodnota předána dalšímu volání rozhraní API, rozhraní API vrátí další sadu výsledků. Pokud neexistují žádné další výsledky, pak token pokračování neobsahuje hodnotu. Hodnota tohoto parametru by neměla být kódována adresou URL. |
-| --include-values | Umožňuje určit, zda mají být zahrnuty hodnoty vrácených vlastností. True, pokud hodnoty by měly být vráceny s metadaty; False vrátit pouze metadata vlastnosti. |
-| --časový čas -t | Časový rozsah serveru pro provedení operace v sekundách. Tento časový limit určuje dobu trvání, po kterou je klient ochoten čekat na dokončení požadované operace. Výchozí hodnota tohoto parametru je 60 sekund.  Výchozí\: 60. |
+| --Name-ID [povinné] | Název Service Fabric bez schématu identifikátoru URI prostředků\:infrastruktury |
+| --pokračování-token | Parametr tokenu pokračování slouží k získání další sady výsledků. Token pokračování s neprázdnou hodnotou je zahrnut v odpovědi rozhraní API v případě, že se výsledky ze systému nevejdou do jediné odpovědi. Když se tato hodnota předává do dalšího volání rozhraní API, vrátí rozhraní API další sadu výsledků. Pokud nejsou k dispozici žádné další výsledky, token pokračování neobsahuje hodnotu. Hodnota tohoto parametru nesmí být kódovaná v adrese URL. |
+| --include-Values | Umožňuje určit, jestli se mají zahrnout hodnoty vrácených vlastností. True, pokud by měly být vráceny hodnoty s metadaty; Hodnota false pro vrácení pouze metadat vlastnosti. |
+| --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --ladění | Zvyšte podrobnost protokolování, chcete-li zobrazit všechny protokoly ladění. |
-| --pomoc -h | Zobrazit tuto zprávu nápovědy a ukončete ji. |
-| --výstup -o | Výstupní formát.  Povolené\: hodnoty json, jsonc, tabulka, tsv.  Výchozí\: json. |
-| --dotaz | Řetězec dotazu JMESPath. Další\:informace a příklady naleznete na adrese http //jmespath.org/. |
-| --verbose | Zvyšte podrobnost protokolování. Použijte --debug pro úplné protokoly ladění. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
-## <a name="sfctl-property-put"></a>sfctl vlastnost dát
-Vytvoří nebo aktualizuje service fabric vlastnost.
+## <a name="sfctl-property-put"></a>sfctl vlastnost Put
+Vytvoří nebo aktualizuje vlastnost Service Fabric.
 
-Vytvoří nebo aktualizuje zadanou vlastnost Service Fabric pod daným názvem.
+Vytvoří nebo aktualizuje zadanou vlastnost Service Fabric v rámci daného názvu.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --name-id [Povinné] | Název Service Fabric bez schématu IDENTIFIKÁTORURI struktury .\: |
-| --property-name [Povinné] | Název Service Fabric vlastnost. |
-| --hodnota [Povinné] | Popisuje hodnotu vlastnosti Service Fabric. Toto je řetězec JSON. <br><br> Řetězec json má dvě pole, "Druh" dat a hodnotu, zadanou jako "Data" dat. Hodnota "Kind" musí být první položkou, která se zobrazí v řetězci JSON, a může být hodnoty Binární, Int64, "Double", "String" nebo Guid. Hodnota by měla být serializovatelné pro dané typy. Hodnoty "Kind" a "Data" by měly být uvedeny jako řetězce. |
-| --custom-id-type | Id vlastního typu vlastnosti. Pomocí této vlastnosti je uživatel schopen označit typ hodnoty vlastnosti. |
-| --časový čas -t | Výchozí\: 60. |
+| --Name-ID [povinné] | Název Service Fabric bez schématu identifikátoru URI prostředků\:infrastruktury |
+| --Property-Name [povinné] | Název vlastnosti Service Fabric. |
+| --Value [povinné] | Popisuje hodnotu Service Fabric vlastnosti. Toto je řetězec JSON. <br><br> Řetězec JSON má dvě pole, "druh" dat a hodnotu, která byla zadána jako "data" dat. Hodnota "Kind" musí být první položka, která se má zobrazit v řetězci JSON, a může mít hodnotu "Binary", "Int64", "Double", "String" nebo "GUID". Hodnota by měla být schopná serializovat zadané typy. Hodnoty "druh" i "data" by měly být zadány jako řetězce. |
+| --Custom-ID-– typ | ID vlastního typu vlastnosti Pomocí této vlastnosti může uživatel označit typ hodnoty vlastnosti. |
+| --Timeout-t | Výchozí\: hodnota je 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --ladění | Zvyšte podrobnost protokolování, chcete-li zobrazit všechny protokoly ladění. |
-| --pomoc -h | Zobrazit tuto zprávu nápovědy a ukončete ji. |
-| --výstup -o | Výstupní formát.  Povolené\: hodnoty json, jsonc, tabulka, tsv.  Výchozí\: json. |
-| --dotaz | Řetězec dotazu JMESPath. Další\:informace a příklady naleznete na adrese http //jmespath.org/. |
-| --verbose | Zvyšte podrobnost protokolování. Použijte --debug pro úplné protokoly ladění. |
+| --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
+| --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
+| --výstup-o | Výstupní formát.  Povolené hodnoty\: : JSON, jsonc, Table, TSV.  Výchozí\: JSON. |
+| --dotaz | Řetězec dotazu JMESPath Další informace\:a příklady najdete v tématu http//jmespath.org/. |
+| --verbose | Zvyšte úroveň podrobností protokolování. Použijte--Debug pro úplné protokoly ladění. |
 
 
 ## <a name="next-steps"></a>Další kroky
-- [Nastavte](service-fabric-cli.md) cli service fabric.
-- Naučte se používat funkce CLI service fabric pomocí [ukázkových skriptů](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Nastavte](service-fabric-cli.md) Service Fabric CLI.
+- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](/azure/service-fabric/scripts/sfctl-upgrade-application).

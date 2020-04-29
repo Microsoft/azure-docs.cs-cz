@@ -1,6 +1,6 @@
 ---
-title: Vytvoření skupin akcí pomocí šablon Správce prostředků
-description: Zjistěte, jak vytvořit skupinu akcí pomocí šablony Azure Resource Manager.
+title: Vytváření skupin akcí pomocí šablon Správce prostředků
+description: Naučte se vytvořit skupinu akcí pomocí šablony Azure Resource Manager.
 author: dkamstra
 services: azure-monitor
 ms.topic: conceptual
@@ -8,26 +8,26 @@ ms.date: 02/16/2018
 ms.author: dukek
 ms.subservice: alerts
 ms.openlocfilehash: 50ad9d57b24fab9ee57c2f9caae8f4c39d2681f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77669076"
 ---
-# <a name="create-an-action-group-with-a-resource-manager-template"></a>Vytvoření skupiny akcí pomocí šablony Správce prostředků
-Tento článek ukazuje, jak pomocí [šablony Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) ukonfigurace skupin akcí. Pomocí šablon můžete automaticky nastavit skupiny akcí, které lze znovu použít v určitých typech výstrah. Tyto skupiny akcí zajišťují, že všechny správné strany jsou upozorněny při aktivaci výstrahy.
+# <a name="create-an-action-group-with-a-resource-manager-template"></a>Vytvoření skupiny akcí s Správce prostředků šablonou
+V tomto článku se dozvíte, jak použít [šablonu Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) ke konfiguraci skupin akcí. Pomocí šablon můžete automaticky nastavit skupiny akcí, které se dají znovu použít v určitých typech výstrah. Tyto skupiny akcí zajistí, že při aktivaci výstrahy budou všechny správné strany upozorněny.
 
-Základní kroky jsou:
+Základní kroky:
 
-1. Vytvořte šablonu jako soubor JSON, která popisuje, jak vytvořit skupinu akcí.
+1. Vytvořte šablonu jako soubor JSON, který popisuje, jak vytvořit skupinu akcí.
 
-2. Nasaďte šablonu pomocí [libovolné metody nasazení](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy).
+2. Nasaďte šablonu pomocí [jakékoli metody nasazení](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy).
 
-Nejprve popíšeme, jak vytvořit šablonu Správce prostředků pro skupinu akcí, kde jsou definice akcí pevně zakódovány v šabloně. Za druhé, popisujeme, jak vytvořit šablonu, která bere informace o konfiguraci webhooku jako vstupní parametry při nasazení šablony.
+Nejprve popisujeme, jak vytvořit šablonu Správce prostředků pro skupinu akcí, kde jsou definice akcí pevně zakódované v šabloně. Za druhé popisujeme, jak vytvořit šablonu, která při nasazení šablony převezme informace o konfiguraci Webhooku jako vstupní parametry.
 
 ## <a name="resource-manager-templates-for-an-action-group"></a>Šablony Správce prostředků pro skupinu akcí
 
-Chcete-li vytvořit skupinu akcí pomocí šablony Správce prostředků, vytvořte prostředek typu `Microsoft.Insights/actionGroups`. Pak vyplníte všechny související vlastnosti. Zde jsou dvě ukázkové šablony, které vytvářejí skupinu akcí.
+Chcete-li vytvořit skupinu akcí pomocí šablony Správce prostředků, vytvořte prostředek typu `Microsoft.Insights/actionGroups`. Pak vyplníte všechny související vlastnosti. Tady jsou dvě vzorové šablony, které vytvářejí skupinu akcí.
 
 ```json
 {
@@ -164,6 +164,6 @@ Chcete-li vytvořit skupinu akcí pomocí šablony Správce prostředků, vytvo�
 
 ## <a name="next-steps"></a>Další kroky
 * Přečtěte si další informace o [skupinách akcí](../../azure-monitor/platform/action-groups.md).
-* Další informace o [výstrahách](alerts-overview.md).
-* Přečtěte si, jak přidat [výstrahy pomocí šablony Správce prostředků](../../azure-monitor/platform/alerts-activity-log.md).
+* Přečtěte si další informace o [výstrahách](alerts-overview.md).
+* Naučte se přidávat [výstrahy pomocí šablony Správce prostředků](../../azure-monitor/platform/alerts-activity-log.md).
 

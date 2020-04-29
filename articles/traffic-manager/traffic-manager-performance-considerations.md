@@ -1,6 +1,6 @@
 ---
-title: Důležité informace o výkonu pro Azure Traffic Manager | Dokumenty společnosti Microsoft
-description: Pochopit výkon traffic manageru a jak otestovat výkon vašeho webu při používání Traffic Manageru
+title: Požadavky na výkon pro Azure Traffic Manager | Microsoft Docs
+description: Vysvětlení výkonu při Traffic Manager a testování výkonu webu při použití Traffic Manager
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
@@ -12,75 +12,75 @@ ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: rohink
 ms.openlocfilehash: 84367a00643c48e7fe2fb7f907bab64589193b2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76938538"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Důležité informace o výkonu nástroje Traffic Manager
 
-Tato stránka vysvětluje aspekty výkonu pomocí Traffic Manageru. Představte si následující scénář:
+Tato stránka vysvětluje informace o výkonu pomocí Traffic Manager. Představte si následující scénář:
 
-Máte instance svých webových stránek v oblastech WestUS a EastAsia. Jednou z instancí se nedaří kontrolu stavu pro sondu správce provozu. Provoz aplikace je směrován do oblasti v pořádku. Toto převzetí služeb při selhání se očekává, ale výkon může být problém na základě latence provozu nyní cestování do vzdálené oblasti.
+Máte instance svého webu v oblastech WestUS a EastAsia. Jedna z instancí selhává při kontrole stavu pro test Traffic Manageru. Provoz aplikace je směrován do zdravé oblasti. Toto převzetí služeb při selhání se očekává, ale výkon se může nacházet v závislosti na latenci provozu, který je nyní na vzdáleném regionu.
 
 ## <a name="performance-considerations-for-traffic-manager"></a>Důležité informace o výkonu nástroje Traffic Manager
 
-Jediným dopadem na výkon, který může traffic manager mít na vašem webu, je počáteční vyhledávání DNS. Požadavek DNS na název profilu traffic manageru zpracovává kořenový server Microsoft DNS, který je hostitelem zóny trafficmanager.net. Traffic Manager naplní a pravidelně aktualizuje kořenové servery DNS společnosti Microsoft na základě zásad Traffic Manager a výsledků sondy. Takže i během počátečního vyhledávání DNS nejsou do Traffic Manageru odesílány žádné dotazy DNS.
+Jediným dopadem na výkon, který Traffic Manager může mít na vašem webu, je počáteční vyhledávání DNS. Požadavek DNS na název vašeho profilu Traffic Manager se zpracovává pomocí kořenového serveru DNS Microsoft, který je hostitelem zóny trafficmanager.net. Traffic Manager naplní a pravidelně aktualizuje kořenové servery DNS od Microsoftu na základě zásad Traffic Manager a výsledků testu. Takže i během počátečního vyhledávání DNS se neodesílají žádné dotazy DNS na Traffic Manager.
 
-Traffic Manager se skládá z několika součástí: názvových serverů DNS, služby rozhraní API, vrstvy úložiště a služby sledování koncového bodu. Pokud se součást služby Traffic Manager nezdaří, nemá to žádný vliv na název DNS přidružený k vašemu profilu traffic manageru. Záznamy na serverech Microsoft DNS zůstanou nezměněny. Monitorování koncového bodu a aktualizace DNS však nedojde. Traffic Manager proto není schopen aktualizovat službu DNS tak, aby ukazovala na lokalitu s podporou převzetí služeb při selhání, když primární lokalita přejde dolů.
+Traffic Manager se skládá z několika součástí: názvové servery DNS, služba API, vrstva úložiště a služba monitorování koncového bodu. Pokud dojde k chybě součásti Traffic Manager služby, nebude to mít žádný vliv na název DNS přidružený k vašemu profilu Traffic Manager. Záznamy na serverech DNS společnosti Microsoft zůstanou beze změny. Monitorování koncového bodu a aktualizace DNS ale neproběhne. Proto Traffic Manager nedokáže aktualizovat DNS tak, aby odkazoval na váš web s podporou převzetí služeb při selhání, když dojde k výpadku primární lokality.
 
-Překlad názvů DNS je rychlý a výsledky jsou ukládány do mezipaměti. Rychlost počátečního vyhledávání DNS závisí na serverech DNS, které klient používá pro překlad názvů. Obvykle může klient dokončit vyhledávání DNS v rámci ~50 ms. Výsledky vyhledávání jsou ukládány do mezipaměti po dobu trvání data aktivního času DNS (TTL). Výchozí hodnota TTL pro traffic manager je 300 sekund.
+Překlad názvů DNS je rychlý a výsledky se ukládají do mezipaměti. Rychlost počátečního vyhledávání DNS závisí na serverech DNS, které klient používá k překladu názvů. Klient obvykle může dokončit vyhledávání DNS v rámci ~ 50 ms. Výsledky hledání jsou uloženy v mezipaměti po dobu trvání hodnoty TTL (Time to Live) služby DNS. Výchozí hodnota TTL pro Traffic Manager je 300 sekund.
 
-Provoz neprochází traffic managerem. Po dokončení vyhledávání DNS má klient IP adresu pro instanci vašeho webu. Klient se připojí přímo k této adrese a neprochází Traffic Manager. Vybraná zásada Traffic Manager nemá žádný vliv na výkon DNS. Metoda směrování výkonu však může negativně ovlivnit prostředí aplikace. Pokud například vaše zásada přesměruje provoz ze Severní Ameriky na instanci hostovohodanou v Asii, latence sítě pro tyto relace může být problém s výkonem.
+Přenosy nesměrují do Traffic Manager. Po dokončení vyhledávání DNS má klient IP adresu pro instanci vašeho webu. Klient se připojuje přímo k této adrese a neprojde Traffic Manager. Zásada Traffic Manager, kterou zvolíte, nemá žádný vliv na výkon DNS. Směrování výkonu však může negativně ovlivnit prostředí aplikace. Pokud vaše zásada například přesměruje provoz z Severní Amerika do instance hostované v Asii, může se jednat o problém s výkonem sítě pro tyto relace.
 
-## <a name="measuring-traffic-manager-performance"></a>Měření výkonu manažera provozu
+## <a name="measuring-traffic-manager-performance"></a>Měření výkonu Traffic Manager
 
-Existuje několik webů, které můžete použít k pochopení výkonu a chování profilu Traffic Manageru. Mnohé z těchto stránek jsou zdarma, ale mohou mít omezení. Některé weby nabízejí rozšířené monitorování a vykazování za poplatek.
+K dispozici je několik webů, které můžete použít k pochopení výkonu a chování profilu Traffic Manager. Mnohé z těchto webů jsou bezplatné, ale mohou mít omezení. Některé weby nabízí rozšířené monitorování a vykazování za poplatek.
 
-Nástroje na těchto webech měří latenci DNS a zobrazují vyřešené IP adresy pro umístění klientů po celém světě. Většina těchto nástrojů neukládá výsledky DNS do mezipaměti. Proto nástroje zobrazit úplné vyhledávání DNS při každém spuštění testu. Při testování z vlastního klienta dochází pouze k úplnému výkonu vyhledávání DNS jednou během trvání TTL.
+Nástroje na těchto webech měří latence DNS a zobrazují přeložené IP adresy pro umístění klientů po celém světě. Většina těchto nástrojů neukládá do mezipaměti výsledky DNS. Proto nástroje při každém spuštění testu zobrazí úplné vyhledávání DNS. Když testujete klienta z vašeho vlastního klienta, provedete během doby TTL pouze jeden výkon celého vyhledávání DNS.
 
 ## <a name="sample-tools-to-measure-dns-performance"></a>Ukázkové nástroje pro měření výkonu DNS
 
-* [Vyřešit DNS](https://www.solvedns.com/dns-comparison/)
+* [SolveDNS](https://www.solvedns.com/dns-comparison/)
 
-    SolveDNS nabízí mnoho nástrojů pro výkon. Nástroj Porovnání DNS vám může ukázat, jak dlouho trvá vyřešení názvu DNS a jak se to porovná s ostatními poskytovateli služeb DNS.
+    SolveDNS nabízí mnoho nástrojů pro sledování výkonu. Nástroj pro porovnání DNS vám může ukázat, jak dlouho trvá překlad názvu DNS a jak porovnává s ostatními poskytovateli služeb DNS.
 
 * [WebSitePulse](https://www.websitepulse.com/help/tools.php)
 
-    Jedním z nejjednodušších nástrojů je WebSitePulse. Zadejte adresu URL, chcete-li zobrazit čas rozlišení DNS, první bajt, poslední bajt a další statistiky výkonu. Můžete si vybrat ze tří různých testovacích míst. V tomto příkladu uvidíte, že první spuštění ukazuje, že vyhledávání DNS trvá 0.204 sec.
+    Jedním z nejjednodušších nástrojů je WebSitePulse. Zadejte adresu URL pro zobrazení doby překladu DNS, prvního bajtu, posledního bajtu a dalších statistik výkonu. Můžete vybrat ze tří různých testovacích umístění. V tomto příkladu vidíte, že první spuštění ukazuje, že vyhledávání DNS trvá 0,204 s.
 
-    ![puls1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
+    ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
 
-    Vzhledem k tomu, že výsledky jsou uloženy do mezipaměti, druhý test pro stejný koncový bod Traffic Manager vyhledávání DNS trvá 0.002 sec.
+    Vzhledem k tomu, že se výsledky ukládají do mezipaměti, druhý test stejného Traffic Manager koncového bodu, který vyhledávání DNS trvá 0,002 s.
 
-    ![puls2](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse2.png)
+    ![pulse2](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse2.png)
 
-* [Syntetický monitor aplikace CA](https://asm.ca.com/en/checkit.php)
+* [Syntetické monitorování aplikace CA](https://asm.ca.com/en/checkit.php)
 
-    Dříve známý jako nástroj Watch-mouse Check Website, tento web vám ukazuje čas rozlišení DNS z více zeměpisných oblastí současně. Zadejte adresu URL a zobrazí se doba rozlišení DNS, doba připojení a rychlost z několika geografických umístění. Pomocí tohoto testu můžete zjistit, která hostovaná služba je vrácena pro různá místa po celém světě.
+    V této lokalitě dříve označované jako nástroj pro kontrolu webu Sledujte, tato lokalita vám zobrazuje dobu překladu názvů DNS z několika geografických oblastí současně. Zadejte adresu URL, abyste viděli dobu překladu DNS, dobu připojení a rychlost z několika geografických umístění. Pomocí tohoto testu zjistíte, která hostovaná služba se vrátí pro různá umístění po celém světě.
 
-    ![puls1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-watchmouse.png)
+    ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-watchmouse.png)
 
 * [Pingdom](https://tools.pingdom.com/)
 
-    Tento nástroj poskytuje statistiky výkonu pro každý prvek webové stránky. Karta Analýza stránky zobrazuje procento času stráveného vyhledáváním DNS.
+    Tento nástroj poskytuje statistiku výkonu pro každý prvek webové stránky. Karta analýza stránky zobrazuje procento času stráveného vyhledáváním DNS.
 
-* [Co je moje DNS?](https://www.whatsmydns.net/)
+* [Co je můj DNS?](https://www.whatsmydns.net/)
 
-    Tento web provádí vyhledávání DNS z 20 různých umístění a zobrazuje výsledky na mapě.
+    Tato lokalita provádí vyhledávání DNS z dvaceti různých umístění a zobrazuje výsledky na mapě.
 
-* [Webové rozhraní Dig](https://www.digwebinterface.com)
+* [Webové rozhraní dig](https://www.digwebinterface.com)
 
-    Tato stránka zobrazuje podrobnější informace DNS včetně Záznamů CNAMA a A. Ujistěte se, že jste v části možnosti zaškrtli "Colorize output" a "Stats" a v části Nameservers vyberte možnost "Vše".
+    Tato lokalita obsahuje podrobnější informace o DNS, včetně záznamů CNAME a záznamů. Ujistěte se, že jste v části Možnosti zaškrtli zabarvovat Output a stat, a v části názvové servery vyberte All (vše).
 
 ## <a name="next-steps"></a>Další kroky
 
-[O metodách směrování provozu traffic manageru](traffic-manager-routing-methods.md)
+[Informace o metodách směrování provozu Traffic Manager](traffic-manager-routing-methods.md)
 
 [Test nastavení Traffic Manageru](traffic-manager-testing-settings.md)
 
 [Operace v Traffic Manageru (referenční informace k rozhraní API REST)](https://go.microsoft.com/fwlink/?LinkId=313584)
 
-[Rutiny Azure Traffic Manageru](https://docs.microsoft.com/powershell/module/az.trafficmanager)
+[Rutiny Azure Traffic Manager](https://docs.microsoft.com/powershell/module/az.trafficmanager)
 

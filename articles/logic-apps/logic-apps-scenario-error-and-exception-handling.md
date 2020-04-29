@@ -1,6 +1,6 @@
 ---
 title: Zpracování výjimek & scénář protokolování chyb
-description: Případ reálného použití a scénář pro pokročilé zpracování výjimek a protokolování chyb v Aplikacích Azure Logic Apps
+description: Reálný případ a scénář použití pro pokročilé zpracování výjimek a protokolování chyb v Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: hedidin
@@ -8,51 +8,51 @@ ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
 ms.openlocfilehash: 1bb6e28c9dcae01f3233178706d2a24156fa509a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76902702"
 ---
-# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Scénář: Zpracování výjimek a protokolování chyb pro aplikace logiky
+# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Scénář: zpracování výjimek a protokolování chyb pro Logic Apps
 
-Tento scénář popisuje, jak můžete rozšířit aplikaci logiky pro lepší podporu zpracování výjimek. Použili jsme případ použití v reálném životě, abychom odpověděli na otázku: "Podporuje Aplikace Azure Logic Apps výjimku a zpracování chyb?"
+Tento scénář popisuje, jak můžete rozšířit aplikaci logiky pro lepší podporu zpracování výjimek. Pro zodpovězení otázky jsme použili případ použití v reálném čase: "podporuje Azure Logic Apps výjimku a zpracování chyb?"
 
 > [!NOTE]
-> Aktuální schéma Azure Logic Apps poskytuje standardní šablonu pro odpovědi na akce. Tato šablona obsahuje interní ověření i odpovědi na chyby vrácené z aplikace rozhraní API.
+> Aktuální schéma Azure Logic Apps poskytuje standardní šablonu pro reakce na akce. Tato šablona zahrnuje interní ověřování i chybové odpovědi vrácené z aplikace API.
 
-## <a name="scenario-and-use-case-overview"></a>Přehled scénáře a případu použití
+## <a name="scenario-and-use-case-overview"></a>Scénář a případ použití – přehled
 
-Zde je příběh jako případ použití pro tento scénář: 
+Toto je příběh jako případ použití pro tento scénář: 
 
-Známá zdravotnická organizace nás najala, abychom vyvinuli řešení Azure, které by vytvořilo portál pro pacienty pomocí aplikace Microsoft Dynamics CRM Online. Potřebovali odeslat záznamy o schůzkách mezi portálem pro pacienty aplikace Dynamics CRM Online a službou Salesforce. Byli jsme požádáni, abychom použili standard [HL7 FHIR](https://www.hl7.org/implement/standards/fhir/) pro všechny záznamy pacientů.
+Dobře známá zdravotní organizace se zapojí do vývoje řešení Azure, které by vytvořilo portál pacienty pomocí Microsoft Dynamics CRM Online. Jsou potřeba k posílání záznamů událostí mezi portálem pacientů Dynamics CRM Online a Salesforce. Požádali jsme o použití standardu [změněného HL7 FHIR](https://www.hl7.org/implement/standards/fhir/) pro všechny záznamy pacienta.
 
-Projekt měl dva hlavní požadavky:  
+Projekt má dva hlavní požadavky:  
 
-* Metoda protokolování záznamů odeslaných z portálu Dynamics CRM Online
-* Způsob zobrazení chyb, ke kterým došlo v rámci pracovního postupu
+* Metoda pro protokolování záznamů odeslaných z portálu Dynamics CRM Online
+* Způsob zobrazení všech chyb, ke kterým došlo v rámci pracovního postupu
 
 > [!TIP]
-> Video na vysoké úrovni o tomto projektu naleznete v [tématu Integration User Group](http://www.integrationusergroup.com/logic-apps-support-error-handling/ "Skupina uživatelů integrace").
+> Informace o tomto projektu na vysoké úrovni najdete v tématu [Skupina uživatelů integrace](http://www.integrationusergroup.com/logic-apps-support-error-handling/ "Skupina uživatelů integrace").
 
-## <a name="how-we-solved-the-problem"></a>Jak jsme problém vyřešili
+## <a name="how-we-solved-the-problem"></a>Jak jsme vyřešili problém
 
-Vybrali jsme [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") jako úložiště pro záznamy protokolu a chyb (Cosmos DB odkazuje na záznamy jako dokumenty). Vzhledem k tomu, že Azure Logic Apps má standardní šablonu pro všechny odpovědi, bychom nemuseli vytvářet vlastní schéma. Mohli bychom vytvořit aplikaci rozhraní API pro **vložení** a **dotazování** pro záznamy chyb i protokolu. Můžeme také definovat schéma pro každého v rámci aplikace rozhraní API.  
+Zvolili jsme [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") jako úložiště pro záznamy protokolů a chyb (Cosmos DB odkazuje na záznamy jako dokumenty). Vzhledem k tomu, že Azure Logic Apps má standardní šablonu pro všechny odpovědi, nemusíme vytvářet vlastní schéma. Mohli jsme vytvořit aplikaci API pro **vložení** a **dotazování** na záznamy chyb a protokolů. V rámci aplikace API jsme také mohli definovat schéma pro každou z nich.  
 
-Dalším požadavkem bylo vymazat záznamy po určitém datu. Cosmos DB má vlastnost s názvem [Time to Live](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Čas žít") (TTL), která nám umožnila nastavit hodnotu Time to **Live** pro každý záznam nebo kolekci. Tato funkce eliminovala potřebu ručního odstranění záznamů v Cosmos DB.
+Dalším požadavkem bylo vyprázdnění záznamů po určitém datu. Cosmos DB má vlastnost s názvem [Time to Live](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Doba do provozu") (TTL), která nám umožnila nastavit hodnotu **Time to Live** pro každý záznam nebo kolekci. Tato funkce eliminuje nutnost ručního odstranění záznamů v Cosmos DB.
 
 > [!IMPORTANT]
-> K dokončení tohoto kurzu je třeba vytvořit databázi Cosmos DB a dvě kolekce (Protokolování a chyby).
+> K dokončení tohoto kurzu potřebujete vytvořit databázi Cosmos DB a dvě kolekce (protokolování a chyby).
 
 ## <a name="create-the-logic-app"></a>Vytvoření aplikace logiky
 
-Prvním krokem je vytvoření aplikace logiky a otevření aplikace v Návrháři aplikací logiky. V tomto příkladu používáme aplikace logiky nadřazený podřízený. Předpokládejme, že jsme již vytvořili nadřazený a budeme vytvářet jednu podřízenou aplikaci logiky.
+Prvním krokem je vytvoření aplikace logiky a otevření aplikace v návrháři aplikace logiky. V tomto příkladu používáme aplikace logiky nadřazený-podřízený. Řekněme, že už jsme vytvořili nadřazený objekt a chystáme se vytvořit jednu podřízenou aplikaci logiky.
 
-Vzhledem k tomu, že se chystáme zaznamenat záznam vycházející z aplikace Dynamics CRM Online, začněme nahoře. Musíme použít Request aktivační **událost,** protože nadřazená aplikace logiky aktivuje tento podřízený.
+Vzhledem k tomu, že budeme protokolovat záznam z Dynamics CRM Online, pojďme začít v horní části. Je nutné použít Trigger **žádosti** , protože nadřazená aplikace logiky tuto podřízenou proceduru spustí.
 
-### <a name="logic-app-trigger"></a>Aktivační událost aplikace logiky
+### <a name="logic-app-trigger"></a>Trigger aplikace logiky
 
-Používáme **request** trigger, jak je znázorněno v následujícím příkladu:
+Používáme aktivační událost **požadavku** , jak je znázorněno v následujícím příkladu:
 
 ``` json
 "triggers": {
@@ -92,14 +92,14 @@ Používáme **request** trigger, jak je znázorněno v následujícím příkla
 
 ## <a name="steps"></a>Kroky
 
-Zdroj (požadavek) záznamu pacienta musíme zaznamenat z portálu Dynamics CRM Online.
+Je potřeba protokolovat zdroj (žádost) záznamu pacienta z portálu Dynamics CRM Online.
 
-1. Musíme získat nový záznam události z aplikace Dynamics CRM Online.
+1. Je potřeba získat nový záznam o schůzce z Dynamics CRM Online.
 
-   Aktivační událost přicházející z aplikace CRM nám poskytuje **crm patentid**, **typ záznamu**, nový nebo **aktualizovaný záznam** (nová nebo aktualizovat logickou hodnotu) a **SalesforceId**. **SalesforceId** může mít hodnotu null, protože se používá pouze pro aktualizaci.
-   Získáme záznam CRM pomocí CRM **PatientID** a **typu záznamu**.
+   Aktivační událost přicházející z CRM poskytuje US **PatentId**, **typ záznamu**, **Nový nebo aktualizovaný záznam** (novou nebo aktualizovat logickou hodnotu) a **SalesforceId**. **SalesforceId** může mít hodnotu null, protože se používá pouze pro aktualizaci.
+   Záznam CRM získáme pomocí **PATIENTID** CRM a **typu záznamu**.
 
-2. Dále musíme přidat naši aplikaci **InsertLogEntry** aplikace Azure Cosmos DB SQL API, jak je znázorněno tady v Návrháři aplikací logiky.
+2. Dál je potřeba přidat naši Azure Cosmos DB operaci InsertLogEntry API App **InsertLogEntry** , jak je znázorněno v návrháři aplikace logiky.
 
    **Vložit položku protokolu**
 
@@ -109,14 +109,14 @@ Zdroj (požadavek) záznamu pacienta musíme zaznamenat z portálu Dynamics CRM 
 
    ![Vložit položku protokolu](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
 
-   **Kontrola selhání vytvoření záznamu**
+   **Vyhledat selhání při vytváření záznamu**
 
    ![Podmínka](media/logic-apps-scenario-error-and-exception-handling/condition.png)
 
 ## <a name="logic-app-source-code"></a>Zdrojový kód aplikace logiky
 
 > [!NOTE]
-> Následující příklady jsou pouze ukázky. Vzhledem k tomu, že tento kurz je založen na implementaci nyní v produkčním prostředí, hodnota **zdrojového uzlu** nemusí zobrazit vlastnosti, které souvisejí s plánováním události.> 
+> Následující příklady jsou pouze ukázky. Vzhledem k tomu, že je tento kurz založený na implementaci nyní v produkčním prostředí, hodnota **zdrojového uzlu** nemusí zobrazovat vlastnosti související s plánováním schůzky. > 
 
 ### <a name="logging"></a>protokolování
 
@@ -124,7 +124,7 @@ Následující ukázka kódu aplikace logiky ukazuje, jak zpracovat protokolová
 
 #### <a name="log-entry"></a>Položka protokolu
 
-Tady je zdrojový kód aplikace logiky pro vložení položky protokolu.
+Zde je zdrojový kód aplikace logiky pro vložení položky protokolu.
 
 ``` json
 "InsertLogEntry": {
@@ -150,9 +150,9 @@ Tady je zdrojový kód aplikace logiky pro vložení položky protokolu.
 }
 ```
 
-#### <a name="log-request"></a>Požadavek protokolu
+#### <a name="log-request"></a>Protokolovat požadavek
 
-Zde je zpráva požadavku protokolu zaúčtovaná do aplikace rozhraní API.
+Tady je zpráva s požadavkem protokolu, která se publikuje do aplikace API.
 
 ``` json
     {
@@ -170,7 +170,7 @@ Zde je zpráva požadavku protokolu zaúčtovaná do aplikace rozhraní API.
 ```
 
 
-#### <a name="log-response"></a>Odpověď protokolu
+#### <a name="log-response"></a>Reakce protokolu
 
 Tady je zpráva s odpovědí protokolu z aplikace API.
 
@@ -206,7 +206,7 @@ Tady je zpráva s odpovědí protokolu z aplikace API.
 
 ```
 
-Nyní se podívejme na kroky zpracování chyb.
+Teď se podíváme na postup zpracování chyb.
 
 ### <a name="error-handling"></a>Zpracování chyb
 
@@ -214,7 +214,7 @@ Následující ukázka kódu aplikace logiky ukazuje, jak můžete implementovat
 
 #### <a name="create-error-record"></a>Vytvořit záznam chyby
 
-Tady je zdrojový kód aplikace logiky pro vytvoření záznamu chyby.
+Zde je zdrojový kód aplikace logiky pro vytvoření záznamu chyby.
 
 ``` json
 "actions": {
@@ -249,7 +249,7 @@ Tady je zdrojový kód aplikace logiky pro vytvoření záznamu chyby.
 }             
 ```
 
-#### <a name="insert-error-into-cosmos-db--request"></a>Vložit chybu do Cosmos DB -- požadavek
+#### <a name="insert-error-into-cosmos-db--request"></a>Vložení chyby do Cosmos DB--Request
 
 ``` json
 
@@ -272,7 +272,7 @@ Tady je zdrojový kód aplikace logiky pro vytvoření záznamu chyby.
 }
 ```
 
-#### <a name="insert-error-into-cosmos-db--response"></a>Chyba vložení do služby Cosmos DB --response
+#### <a name="insert-error-into-cosmos-db--response"></a>Vložení chyby do Cosmos DB--Response
 
 ``` json
 {
@@ -311,7 +311,7 @@ Tady je zdrojový kód aplikace logiky pro vytvoření záznamu chyby.
 }
 ```
 
-#### <a name="salesforce-error-response"></a>Odpověď na chybu služby Salesforce
+#### <a name="salesforce-error-response"></a>Chybná odpověď Salesforce
 
 ``` json
 {
@@ -342,9 +342,9 @@ Tady je zdrojový kód aplikace logiky pro vytvoření záznamu chyby.
 
 ### <a name="return-the-response-back-to-parent-logic-app"></a>Vrátit odpověď zpět do nadřazené aplikace logiky
 
-Po získání odpovědi můžete předat odpověď zpět do nadřazené aplikace logiky.
+Po získání odpovědi můžete odpověď předat zpátky do nadřazené aplikace logiky.
 
-#### <a name="return-success-response-to-parent-logic-app"></a>Vrátit odpověď na úspěch nadřazené aplikace logiky
+#### <a name="return-success-response-to-parent-logic-app"></a>Vrátit zpět odpověď na nadřazenou aplikaci logiky
 
 ``` json
 "SuccessResponse": {
@@ -366,7 +366,7 @@ Po získání odpovědi můžete předat odpověď zpět do nadřazené aplikace
 }
 ```
 
-#### <a name="return-error-response-to-parent-logic-app"></a>Vrátit odpověď na chybu do nadřazené aplikace logiky
+#### <a name="return-error-response-to-parent-logic-app"></a>Vrácení chybové odpovědi do nadřazené aplikace logiky
 
 ``` json
 "ErrorResponse": {
@@ -390,50 +390,50 @@ Po získání odpovědi můžete předat odpověď zpět do nadřazené aplikace
 ```
 
 
-## <a name="cosmos-db-repository-and-portal"></a>Úložiště cosmos DB a portál
+## <a name="cosmos-db-repository-and-portal"></a>Cosmos DB úložiště a portál
 
 Naše řešení přidalo možnosti s [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db).
 
 ### <a name="error-management-portal"></a>Portál pro správu chyb
 
-Chcete-li zobrazit chyby, můžete vytvořit webovou aplikaci MVC pro zobrazení chybových záznamů z Cosmos DB. Operace **Seznam**, **Podrobnosti**, **Úpravy**a **Odstranění** jsou zahrnuty v aktuální verzi.
+Chcete-li zobrazit chyby, můžete vytvořit webovou aplikaci MVC k zobrazení záznamů o chybách z Cosmos DB. Aktuální verze obsahuje operace **seznamu**, **podrobností**, **Úpravy**a **odstranění** .
 
 > [!NOTE]
-> Operace úprav: Cosmos DB nahradí celý dokument. Záznamy zobrazené v zobrazení **seznam** a **podrobnosti** jsou pouze ukázky. Nejsou to skutečné záznamy o schůzkách pacientů.
+> Upravit operaci: Cosmos DB nahradí celý dokument. Záznamy zobrazené v zobrazení **seznam** a **Podrobnosti** jsou pouze ukázky. Nejedná se o skutečné záznamy událostí pacienta.
 
-Zde jsou příklady podrobností o naší aplikaci MVC vytvořených pomocí dříve popsaného přístupu.
+Tady jsou příklady našich podrobností aplikace MVC vytvořených pomocí dříve popsaného přístupu.
 
 #### <a name="error-management-list"></a>Seznam správy chyb
 ![Seznam chyb](media/logic-apps-scenario-error-and-exception-handling/errorlist.png)
 
-#### <a name="error-management-detail-view"></a>Zobrazení podrobností správy chyb
+#### <a name="error-management-detail-view"></a>Podrobné zobrazení správy chyb
 ![Podrobnosti o chybě](media/logic-apps-scenario-error-and-exception-handling/errordetails.png)
 
 ### <a name="log-management-portal"></a>Portál pro správu protokolů
 
-Chcete-li zobrazit protokoly, jsme také vytvořili MVC webovou aplikaci. Zde jsou příklady podrobností o naší aplikaci MVC vytvořených pomocí dříve popsaného přístupu.
+Pro zobrazení protokolů jsme také vytvořili webovou aplikaci MVC. Tady jsou příklady našich podrobností aplikace MVC vytvořených pomocí dříve popsaného přístupu.
 
-#### <a name="sample-log-detail-view"></a>Ukázkové zobrazení podrobností protokolu
+#### <a name="sample-log-detail-view"></a>Ukázkové zobrazení podrobného protokolu
 ![Zobrazení podrobností protokolu](media/logic-apps-scenario-error-and-exception-handling/samplelogdetail.png)
 
-### <a name="api-app-details"></a>Podrobnosti o aplikaci API
+### <a name="api-app-details"></a>Podrobnosti aplikace API
 
-#### <a name="logic-apps-exception-management-api"></a>Rozhraní API pro správu výjimek aplikací logiky
+#### <a name="logic-apps-exception-management-api"></a>Rozhraní API pro správu výjimek Logic Apps
 
-Naše aplikace api pro správu výjimek Azure Logic Apps poskytuje funkce, jak je popsáno zde – existují dva řadiče:
+Naše open source aplikace API Management Azure Logic Apps poskytuje funkce popsané tady – existují dva řadiče:
 
-* **ErrorController** vloží záznam chyby (dokument) v kolekci Azure Cosmos DB.
-* **Kontrolka protokolu** Vloží záznam protokolu (dokument) do kolekce Azure Cosmos DB.
+* **ErrorController** vloží záznam o chybě (dokument) do kolekce Azure Cosmos DB.
+* **LogController** Vloží záznam protokolu (dokument) do kolekce Azure Cosmos DB.
 
 > [!TIP]
-> Oba řadiče `async Task<dynamic>` používají operace, což umožňuje operace vyřešit za běhu, takže můžeme vytvořit schéma Azure Cosmos DB v těle operace. 
+> Oba řadiče využívají `async Task<dynamic>` operace, což umožňuje operacím vyřešit za běhu, takže můžeme v těle operace vytvořit Azure Cosmos DB schéma. 
 > 
 
-Každý dokument v Azure Cosmos DB musí mít jedinečné ID. Používáme `PatientId` a přidáváme časové razítko, které je převedeno na hodnotu časového razítka Unixu (double). Zkrátíme hodnotu odebrat zlomkové hodnoty.
+Každý dokument v Azure Cosmos DB musí mít jedinečné ID. Používáme `PatientId` a přidáváme časové razítko, které se převede na hodnotu časového razítka systému UNIX (Double). Zkrátí hodnotu, aby se odstranila desetinná hodnota.
 
-Můžete zobrazit zdrojový kód našeho rozhraní API řadiče chyb z [GitHubu](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/LogicAppsExceptionManagementApi/Controllers/LogController.cs).
+Zdrojový kód našeho rozhraní API pro chybový adaptér můžete zobrazit z [GitHubu](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/LogicAppsExceptionManagementApi/Controllers/LogController.cs).
 
-Volání rozhraní API z aplikace logiky pomocí následující syntaxe:
+Rozhraní API zavoláme z aplikace logiky pomocí následující syntaxe:
 
 ``` json
  "actions": {
@@ -466,13 +466,13 @@ Volání rozhraní API z aplikace logiky pomocí následující syntaxe:
  }
 ```
 
-Výraz v předchozím kódu vzorku kontroluje *stav Create_NewPatientRecord* **Failed**.
+Výraz v předchozí ukázce kódu kontroluje *Create_NewPatientRecord* stav **selhání**.
 
 ## <a name="summary"></a>Souhrn
 
-* Můžete snadno implementovat protokolování a zpracování chyb v aplikaci logiky.
-* Azure Cosmos DB můžete použít jako úložiště pro záznamy protokolů a chyb (dokumenty).
-* Pomocí mvc můžete vytvořit portál pro zobrazení záznamů protokolu a chyb.
+* V aplikaci logiky můžete snadno implementovat protokolování a zpracování chyb.
+* Jako úložiště pro záznamy protokolů a chyb (dokumenty) můžete použít Azure Cosmos DB.
+* Pomocí MVC můžete vytvořit portál pro zobrazení záznamů protokolů a chyb.
 
 ### <a name="source-code"></a>Zdrojový kód
 

@@ -1,6 +1,6 @@
 ---
-title: Trvalý stav ve Windows – Azure Event Grid IoT Edge | Dokumenty společnosti Microsoft
-description: Trvalý stav v systému Windows
+title: Trvalý stav ve Windows-Azure Event Grid IoT Edge | Microsoft Docs
+description: Trvalý stav ve Windows
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,26 +10,26 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: c2bae3bd268dba8efdf23ae314671b17a2c89420
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77086626"
 ---
-# <a name="persist-state-in-windows"></a>Trvalý stav v systému Windows
+# <a name="persist-state-in-windows"></a>Trvalý stav ve Windows
 
-Témata a odběry vytvořené v modulu Event Grid jsou ve výchozím nastavení uloženy v systému souborů kontejneru. Bez trvalost, pokud je modul znovu nasazen, všechna vytvořená metadata by byla ztracena. Chcete-li zachovat data v rámci nasazení a restartování, je třeba zachovat data mimo systém souborů kontejneru. 
+Témata a odběry vytvořené v modulu Event Grid jsou ve výchozím nastavení uloženy v systému souborů kontejnerů. Bez trvalosti se při opětovném nasazení modulu všechna vytvořená metadata ztratí. Chcete-li zachovat data napříč nasazeními a restarty, je nutné zachovat data mimo systém souborů kontejnerů. 
 
-Ve výchozím nastavení jsou zachována pouze metadata a události jsou stále uloženy v paměti pro lepší výkon. Postupujte podle části trvalé události povolit trvalost událostí také.
+Ve výchozím nastavení jsou uložena pouze metadata a události jsou stále uloženy v paměti pro zvýšení výkonu. Dodržujte oddíl trvalé události a povolte taky trvalost událostí.
 
-Tento článek obsahuje kroky potřebné k nasazení modulu Event Grid s trvalostí v nasazení systému Windows.
+Tento článek popisuje kroky potřebné k nasazení Event Grid modulu s stálostí v nasazeních systému Windows.
 
 > [!NOTE]
->Modul Event Grid běží jako uživatel s nízkými oprávněními **ContainerUser** v systému Windows.
+>Modul Event Grid se spouští jako **ContainerUser** uživatele s nízkou úrovní oprávnění ve Windows.
 
-## <a name="persistence-via-volume-mount"></a>Trvalost pomocí připojení hlasitosti
+## <a name="persistence-via-volume-mount"></a>Stálost prostřednictvím připojení svazku
 
-[Svazky Dockeru](https://docs.docker.com/storage/volumes/) se používají k zachování dat napříč nasazeními. Chcete-li připojit svazek, musíte jej vytvořit pomocí příkazů dockeru, udělit oprávnění, aby kontejner mohl číst, zapisovat do něj a pak nasadit modul.
+K zachování dat napříč nasazeními se používají [dokovací svazky](https://docs.docker.com/storage/volumes/) . Pokud chcete připojit svazek, musíte ho vytvořit pomocí příkazů Docker, udělit oprávnění, aby kontejner mohl číst, zapisovat do něj a pak nasadit modul.
 
 1. Vytvořte svazek spuštěním následujícího příkazu:
 
@@ -42,7 +42,7 @@ Tento článek obsahuje kroky potřebné k nasazení modulu Event Grid s trvalos
    ```sh
    docker -H npipe:////./pipe/iotedge_moby_engine volume create myeventgridvol
    ```
-1. Získání adresáře hostitele, do kterého se svazek mapuje, spuštěním příkazu níže
+1. Pomocí níže uvedeného příkazu Získejte adresář hostitele, ke kterému se svazek mapuje.
 
     ```sh
     docker -H npipe:////./pipe/iotedge_moby_engine volume inspect <your-volume-name-here>
@@ -54,7 +54,7 @@ Tento článek obsahuje kroky potřebné k nasazení modulu Event Grid s trvalos
    docker -H npipe:////./pipe/iotedge_moby_engine volume inspect myeventgridvol
    ```
 
-   Ukázkový výstup:-
+   Vzorový výstup:-
 
    ```json
    [
@@ -69,15 +69,15 @@ Tento článek obsahuje kroky potřebné k nasazení modulu Event Grid s trvalos
           }
    ]
    ```
-1. Přidejte skupinu **Users** k hodnotě, na kterou upozornil **Mountpoint** takto:
+1. Přidejte skupinu **uživatelů** do hodnoty, na kterou odkazuje **přípojný bod** , následovně:
     1. Spusťte Průzkumníka souborů.
-    1. Přejděte do složky nasazené **odkazem Mountpoint**.
-    1. Klepněte pravým tlačítkem myši a vyberte příkaz **Vlastnosti**.
+    1. Přejděte do složky, na kterou odkazuje **přípojný bod**.
+    1. Klikněte pravým tlačítkem a pak vyberte **vlastnosti**.
     1. Vyberte **Zabezpečení**.
-    1. V části *Skupinová nebo uživatelská jména vyberte **Upravit**.
-    1. Vyberte **Přidat**, zadejte `Users`, vyberte **Zkontrolovat názvy**a vyberte **Ok**.
-    1. V části *Oprávnění pro uživatele*vyberte **Změnit**a vyberte **Ok**.
-1. Připojení tohoto **svazku** a opětovné nasazení modulu Event Grid z portálu Azure Portal pomocí vazeb pomocí vazeb
+    1. V části * uživatelské jméno nebo název skupiny vyberte **Upravit**.
+    1. Vyberte **Přidat**, zadejte `Users`, vyberte **název kontroly**a pak vyberte **OK**.
+    1. V části *oprávnění pro uživatele*vyberte **změnit**a vyberte **OK**.
+1. Pomocí **vazeb** připojte tento svazek a znovu nasaďte Event Grid modul z Azure Portal
 
    Například:
 
@@ -112,7 +112,7 @@ Tento článek obsahuje kroky potřebné k nasazení modulu Event Grid s trvalos
     ```
 
    >[!IMPORTANT]
-   >Neměňte druhou část hodnoty vazby. Ukazuje na konkrétní umístění v modulu. Pro modul Event Grid v oknech musí být **C:\\\\metadatadb aplikace**.
+   >Neměňte druhou část hodnoty vazby. Odkazuje na konkrétní umístění v modulu. Pro Event Grid modul ve Windows musí být to **C:\\App\\metadataDb**.
 
 
     Například:
@@ -148,11 +148,11 @@ Tento článek obsahuje kroky potřebné k nasazení modulu Event Grid s trvalos
     }
     ```
 
-## <a name="persistence-via-host-directory-mount"></a>Trvalost prostřednictvím připojení adresáře hostitele
+## <a name="persistence-via-host-directory-mount"></a>Stálost prostřednictvím hostitelského adresářového připojení
 
-Namísto připojení svazku můžete vytvořit adresář v hostitelském systému a připojit tento adresář.
+Místo připojení svazku můžete vytvořit adresář v hostitelském systému a připojit tento adresář.
 
-1. Vytvořte adresář v hostitelském souborovém systému spuštěním následujícího příkazu.
+1. Spuštěním následujícího příkazu vytvořte adresář v systému souborů hostitele.
 
    ```sh
    mkdir <your-directory-name-here>
@@ -163,7 +163,7 @@ Namísto připojení svazku můžete vytvořit adresář v hostitelském systém
    ```sh
    mkdir C:\myhostdir
    ```
-1. Pomocí **vazeb** připojte adresář a znovu nasaďte modul Event Grid z webu Azure Portal.
+1. Pomocí **vazeb** Připojte svůj adresář a znovu nasaďte modul Event Grid z Azure Portal.
 
     ```json
     {
@@ -176,7 +176,7 @@ Namísto připojení svazku můžete vytvořit adresář v hostitelském systém
     ```
 
     >[!IMPORTANT]
-    >Neměňte druhou část hodnoty vazby. Ukazuje na konkrétní umístění v modulu. Pro modul Event Grid v oknech musí být **C:\\\\metadataDb aplikace**.
+    >Neměňte druhou část hodnoty vazby. Odkazuje na konkrétní umístění v modulu. Pro modul Event Grid ve Windows musí být to **C:\\App\\metadataDb**.
 
     Například:
 
@@ -212,15 +212,15 @@ Namísto připojení svazku můžete vytvořit adresář v hostitelském systém
     ```
 ## <a name="persist-events"></a>Zachovat události
 
-Chcete-li povolit trvalost událostí, musíte nejprve povolit trvalost událostí pomocí připojení svazku nebo připojení k adresáři hostitele pomocí výše uvedených oddílů.
+Chcete-li povolit trvalosti událostí, je nutné nejprve povolit trvalá událost buď prostřednictvím připojení svazku, nebo pomocí připojovacího adresáře hostitele v předchozích částech.
 
 Důležité informace o trvalých událostech:
 
-* Trvalé události je povolena na základě předplatného na událost a je opt-in po připojení svazku nebo adresáře.
-* Trvalost událostí je nakonfigurována v odběr událostí v době vytvoření a nelze ji změnit po vytvoření odběru událostí. Chcete-li přepnout trvalost událostí, je nutné odstranit a znovu vytvořit odběr událostí.
-* Trvalé události je téměř vždy pomalejší než v operacích paměti, ale rozdíl rychlosti je vysoce závislá na vlastnostech jednotky. Kompromis mezi rychlostí a spolehlivostí je vlastní všem systémům zasílání zpráv, ale pouze se stává znatelným ve velkém měřítku.
+* Trvalé události jsou povolené pro jednotlivé odběry událostí a po připojení svazku nebo adresáře se odhlásí.
+* Trvalá událost je nakonfigurovaná pro odběr události během vytváření a nedá se změnit po vytvoření odběru události. Chcete-li přepnout trvalost událostí, je nutné odstranit a znovu vytvořit odběr události.
+* Trvalé události jsou téměř vždy pomalejší než při operacích paměti, ale rozdíl rychlosti je vysoce závislý na charakteristikách jednotky. Kompromisy mezi rychlostí a spolehlivostí jsou podstatné pro všechny systémy zasílání zpráv, ale ve velkém měřítku se jenom nejedná o znatelné.
 
-Chcete-li povolit trvalost událostí `persistencePolicy` `true`u odběru událostí, nastavte na :
+Pro povolení trvalosti události v odběru události nastavte `persistencePolicy` na: `true`
 
  ```json
         {

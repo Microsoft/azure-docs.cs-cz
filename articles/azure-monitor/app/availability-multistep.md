@@ -1,86 +1,86 @@
 ---
-title: Monitorování pomocí vícekrokových webových testů – Azure Application Insights
-description: Nastavení vícekrokových webových testů pro sledování webových aplikací pomocí Azure Application Insights
+title: Monitorování pomocí multi-step web Tests – Azure Application Insights
+description: Nastavení webových testů s více kroky pro monitorování webových aplikací s využitím Azure Application Insights
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.reviewer: sdash
 ms.openlocfilehash: 3b8baad127b16a1bd9d071d0c3d4df68da8c3304
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77655936"
 ---
 # <a name="multi-step-web-tests"></a>Vícekrokové webové testy
 
-Zaznamenanou sekvenci adres URL a interakcí s webovou stránkou můžete sledovat pomocí vícestupňových webových testů. Tento článek vás provede procesem vytváření vícekrokového webového testu pomocí sady Visual Studio Enterprise.
+Zaznamenanou posloupnost adres URL a interakcí můžete sledovat na webu prostřednictvím webových testů s více kroky. Tento článek vás provede procesem vytvoření webového testu ve více krocích pomocí Visual Studio Enterprise.
 
 > [!NOTE]
-> Vícekrokové webové testy závisí na souborech webových testů sady Visual Studio. Bylo [oznámeno,](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/) že Visual Studio 2019 bude poslední verze s funkcí webtest. Je důležité si uvědomit, že zatímco nebudou přidány žádné nové funkce, funkce webtest v sadě Visual Studio 2019 je stále podporována a bude i nadále podporována během životního cyklu podpory produktu. Produktový tým Azure Monitor unásobil otázky týkající se budoucnosti testů dostupnosti ve více krocích [zde](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101).  
+> Webové testy s více kroky závisejí na souborech WebTest sady Visual Studio. Bylo [oznámeno](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/) , že Visual Studio 2019 bude poslední verzí s funkcí webového testu. Je důležité si uvědomit, že i když nebudou přidány žádné nové funkce, funkce webového testu v aplikaci Visual Studio 2019 je stále nadále podporována a bude nadále podporována během životního cyklu podpory produktu. Tento Azure Monitor produktový tým se zabývá otázkami ohledně [budoucích testů dostupnosti](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)s více kroky.  
 
 ## <a name="pre-requisites"></a>Požadavky
 
 * Visual Studio 2017 Enterprise nebo vyšší.
-* Nástroje pro webové výkon a testování zatížení sady Visual Studio.
+* Nástroje pro testování výkonu a zátěže webu sady Visual Studio.
 
-Chcete-li vyhledat testovací nástroje pre-požadovaný. Spusťte **instalační službu** > sady Visual Studio**Jednotlivé součásti** > **Ladění a testování** > **výkonu webu a nástrojů pro testování zatížení**.
+Pro vyhledání požadovaných testovacích nástrojů. Spusťte **instalační program pro Visual Studio** > **jednotlivé komponenty** > **ladění a testování** > **webového výkonu a zátěžového testování**.
 
-![Snímek obrazovky s uživatelském rozhraním instalačního programu sady Visual Studio s vybranými jednotlivými součástmi se zaškrtávacím políčkem vedle položky pro nástroje pro testování výkonu webu a zatížení](./media/availability-multistep/web-performance-load-testing.png)
+![Snímek obrazovky s uživatelským rozhraním instalačního programu sady Visual Studio s jednotlivými součástmi vybranými vedle položky pro nástroje pro testování výkonu webu a zátěžové testování](./media/availability-multistep/web-performance-load-testing.png)
 
 > [!NOTE]
-> Vícekrokové webové testy mají s sebou spojené další náklady. Další informace naleznete v [oficiálním cenovém průvodci](https://azure.microsoft.com/pricing/details/application-insights/).
+> U více kroků jsou k těmto webovým testům přidruženy další náklady. Další informace najdete v [oficiálních cenových příručkách](https://azure.microsoft.com/pricing/details/application-insights/).
 
-## <a name="record-a-multi-step-web-test"></a>Záznam vícekrokového webového testu 
+## <a name="record-a-multi-step-web-test"></a>Záznam webového testu s více kroky 
 
 > [!WARNING]
-> Již nedoporučujeme používat vícekrokový rekordér. Rekordér byl vyvinut pro statické HTML stránky se základními interakcemi a neposkytuje funkční zážitek pro moderní webové stránky.
+> Nedoporučujeme používat nahrávání více kroků. Zapisovač byl vyvinut pro statické stránky HTML se základními interakcemi a neposkytuje funkční prostředí pro moderní webové stránky.
 
-Pokyny k vytváření webových testů sady Visual Studio naleznete v [oficiální dokumentaci k sadě Visual Studio 2019](https://docs.microsoft.com/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019).
+Pokyny k vytváření webových testů sady Visual Studio najdete v [oficiální dokumentaci k sadě Visual studio 2019](https://docs.microsoft.com/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019).
 
-## <a name="upload-the-web-test"></a>Nahrání webového testu
+## <a name="upload-the-web-test"></a>Nahrát webový test
 
-1. Na portálu Application Insights v podokně Dostupnost vyberte **vytvořit typ testu** > **vícekrokový****Test type** > webový test .
+1. Na portálu Application Insights v podokně dostupnost vyberte **vytvořit test** > test**typu** > **multi-step Web test**.
 
-2. Nastavte testovací umístění, frekvenci a parametry výstrahy.
+2. Nastavte umístění testu, četnost a parametry výstrahy.
 
-### <a name="frequency--location"></a>Umístění & frekvence
+### <a name="frequency--location"></a>Frekvence & umístění
 
 |Nastavení| Vysvětlení
 |----|----|----|
-|**Četnost zkoušek**| Nastavuje, jak často je test spuštěn z každého testovacího umístění. S výchozí pětiminutovou frekvencí a pěti testovanými místy bude váš web testován v průměru každou minutu.|
-|**Testovací místa**| Jsou místa, odkud naše servery posílají webové požadavky na vaši adresu URL. **Náš minimální počet doporučených testovacích míst je pět,** abychom se ujistili, že můžete odlišit problémy na svých webových stránkách od problémů se sítí. Můžete vybrat až 16 umístění.
+|**Frekvence testování**| Nastaví, jak často se test spouští z každého umístění testu. S výchozí pětiminutovou frekvencí a pěti testovanými místy bude váš web testován v průměru každou minutu.|
+|**Testovací umístění**| Jsou místa, odkud naše servery odesílají webové požadavky na adresu URL. **Náš minimální počet doporučených testovacích umístění je pět** , abyste měli jistotu, že můžete odlišit problémy na webu od problémů se sítí. Můžete vybrat až 16 umístění.
 
 ### <a name="success-criteria"></a>Kritéria úspěchu
 
 |Nastavení| Vysvětlení
 |----|----|----|
-| **Časový čas testu** |Snižte tuto hodnotu, abyste byli upozorněni na pomalé odpovědi. Test se počítá jako selhání, pokud během tohoto období nebyly přijaty odpovědí z webu. Pokud jste vybrali možnost **Analyzovat závislé požadavky**, potom všechny image, soubory stylů, skripty a další závislé prostředky musejí být přijaty během tohoto období.|
-| **Odpověď HTTP** | Vrácený stavový kód, který se počítá jako úspěšný. 200 je kód, který označuje, že byla vrácena normální webová stránka.|
-| **Shoda obsahu** | Řetězec, jako "Vítejte!" U každé odpovědi testujeme výskyt přesné shody (s rozlišováním velkých a malých písmen). Musí být prostý řetězec bez zástupných znaků. Nezapomeňte, že pokud se obsah vaší stránka změní, bude pravděpodobně nutné jej aktualizovat. **Pouze anglické znaky jsou podporovány s obsahem odpovídající** |
+| **Časový limit testu** |Snižte tuto hodnotu, aby se zobrazila výstraha týkající se pomalých odpovědí. Test se počítá jako selhání, pokud během tohoto období nebyly přijaty odpovědí z webu. Pokud jste vybrali možnost **Analyzovat závislé požadavky**, potom všechny image, soubory stylů, skripty a další závislé prostředky musejí být přijaty během tohoto období.|
+| **Odpověď HTTP** | Vrácený stavový kód, který se počítá jako úspěch. 200 je kód, který označuje, že byla vrácena normální webová stránka.|
+| **Shoda obsahu** | Řetězec, například "Welcome!" U každé odpovědi testujeme výskyt přesné shody (s rozlišováním velkých a malých písmen). Musí být prostý řetězec bez zástupných znaků. Nezapomeňte, že pokud se obsah vaší stránka změní, bude pravděpodobně nutné jej aktualizovat. **U shody obsahu se podporují jenom anglické znaky.** |
 
 ### <a name="alerts"></a>Výstrahy
 
 |Nastavení| Vysvětlení
 |----|----|----|
-|**Téměř v reálném čase (náhled)** | Doporučujeme používat výstrahy v reálném čase. Konfigurace tohoto typu výstrahy se provádí po vytvoření testu dostupnosti.  |
-|**Classic** | Už nedoporučujeme používat klasické výstrahy pro nové testy dostupnosti.|
-|**Prahová hodnota umístění výstrahy**|Doporučujeme minimálně 3/5 lokalit. Optimální vztah mezi prahovou hodnotou umístění výstrahy a počtem testovacích míst je **výstražný počet prahových míst** = **umístění testovacích umístění - 2, s minimálně pěti testovacími místy.**|
+|**Téměř v reálném čase (Preview)** | Doporučujeme používat upozornění téměř v reálném čase. Konfigurace tohoto typu upozornění se provádí po vytvoření testu dostupnosti.  |
+|**Classic** | Pro nové testy dostupnosti už nedoporučujeme používat klasické výstrahy.|
+|**Prahová hodnota umístění výstrahy**|Doporučujeme minimálně 3/5 umístění. Optimální vztah mezi prahovou hodnotou umístění výstrahy a počtem testovacích umístění je **prahová hodnota** = pro umístění upozornění v umístění**testovacích umístění – 2, minimálně pět umístění testu.**|
 
 ## <a name="configuration"></a>Konfigurace
 
-### <a name="plugging-time-and-random-numbers-into-your-test"></a>Připojení času a náhodných čísel do testu
+### <a name="plugging-time-and-random-numbers-into-your-test"></a>Doba připojení a náhodné číslování do testu
 
 Předpokládejme, že testujete nástroj, který získá data závislá na čase, například akcie z externího kanálu. Při záznamu webového testu je nutné použít konkrétní časy, ale nastavit je jako parametry testu, čas spuštění a čas ukončení.
 
-![Můj úžasný stock app screenshot](./media/availability-multistep/app-insights-72webtest-parameters.png)
+![Snímek obrazovky aplikace Super Stock](./media/availability-multistep/app-insights-72webtest-parameters.png)
 
 Při spuštění testu chcete, aby čas ukončení vždy představoval aktuální čas a čas spuštění by měl začínat před 15 minutami.
 
-Webový testovací čas ový modul poskytuje způsob zpracování časů parametrize.
+Modul plug-in data a času webového testu poskytuje způsob, jak zpracovávat parametrizovat časy.
 
 1. Přidejte zásuvný modul webového testu pro každou hodnotu parametru proměnné, kterou chcete. V panelu nástrojů webového testu zvolte **Přidat zásuvný modul pro testování webu**.
     
-    ![Přidat modul plug-in webového testu](./media/availability-multistep/app-insights-72webtest-plugin-name.png)
+    ![Přidat modul plugin webového testu](./media/availability-multistep/app-insights-72webtest-plugin-name.png)
     
     V tomto příkladu používáme dvě instance zásuvného modulu Datum čas. Jedna instance je „před 15 minutami“ a druhá „teď“.
 
@@ -100,31 +100,31 @@ Pokud se uživatelé přihlásí do aplikace, máte několik možností pro simu
 
 Ve všech případech musíte v aplikaci vytvořit účet jenom pro účely testování. Pokud je to možné, omezte oprávnění tohoto testovacího účtu, aby webové testy nemohly žádným způsobem ovlivnit skutečné uživatele.
 
-**Jednoduché uživatelské jméno a heslo** Zaznamenejte webový test obvyklým způsobem. Nejprve odstraňte soubory cookie.
+**Jednoduché uživatelské jméno a heslo** Záznam webového testu obvyklým způsobem. Nejprve odstraňte soubory cookie.
 
 **Ověřování SAML**
 
 |Název vlastnosti| Popis|
 |----|-----|
-| Publikum Uri | Identifikátor URI cílové skupiny pro token SAML.  Toto je identifikátor URI pro službu ACS (Access Control Service) – včetně oboru názvů služby ACS a názvu hostitele. |
-| Heslo certifikátu | Heslo pro klientský certifikát, který udělí přístup k vložený soukromý klíč. |
-| Klientský certifikát  | Hodnota klientského certifikátu s privátním klíčem v zakódovaném formátu Base64. |
-| Identifikátor jména | Identifikátor názvu tokenu |
-| Neplatný po | Časový rozsah, pro který bude platný token.  Výchozí hodnota je 5 minut. |
-| Neplatný před | Časový rozsah, pro který bude platný token vytvořený v minulosti (k řešení času zkosení).  Výchozí hodnota je (záporná) 5 minut. |
-| Název parametru cílového kontextu | Parametr kontextu, který obdrží generované kontrolní výraz. |
+| Identifikátor URI cílové skupiny | Identifikátor URI cílové skupiny pro token SAML.  Toto je identifikátor URI pro Access Control Service (ACS) – včetně oboru názvů služby ACS a názvu hostitele. |
+| Heslo certifikátu | Heslo pro klientský certifikát, kterým bude udělen přístup k vloženému privátnímu klíči. |
+| Certifikát klienta  | Hodnota certifikátu klienta s privátním klíčem ve formátu kódování Base64. |
+| Identifikátor jména | Identifikátor názvu pro token |
+| Neplatný po | Hodnota TimeSpan, pro kterou bude token platný  Výchozí hodnota je 5 minut. |
+| Neplatný před | Hodnota TimeSpan, pro kterou byl token vytvořený v minulosti platný (k adresování časových intervalů).  Výchozí hodnota je (negativní) 5 minut. |
+| Název cílového kontextového parametru | Kontextový parametr, který získá generovaný kontrolní výraz. |
 
 
-**Tajný klíč klienta** Pokud má vaše aplikace přihlašovací trasu, která zahrnuje tajný klíč klienta, použijte tuto trasu. Azure Active Directory (AAD) je příkladem služby, která poskytuje přihlašování pomocí tajného klíče klienta. Ve službě AAD je tajným klíčem klienta klíč aplikace.
+**Tajný kód klienta** Pokud vaše aplikace obsahuje trasu přihlášení, která zahrnuje tajný klíč klienta, použijte tuto trasu. Azure Active Directory (AAD) je příkladem služby, která poskytuje přihlašování pomocí tajného klíče klienta. Ve službě AAD je tajným klíčem klienta klíč aplikace.
 
 Tady je ukázkový webový test webové aplikace v Azure pomocí klíče aplikace:
 
-![Ukázkový snímek obrazovky](./media/availability-multistep/client-secret.png)
+![Ukázka snímku obrazovky](./media/availability-multistep/client-secret.png)
 
 Získejte token ze služby AAD pomocí tajného klíče klienta (AppKey).
 Extrahujte nosný token z odpovědi.
 Pomocí nosného tokenu v autorizační hlavičce zavolejte rozhraní API.
-Ujistěte se, že webový test je skutečný klient - to znamená, že má vlastní aplikaci v AAD - a používat jeho clientId + app key. Testovaná služba má také vlastní aplikaci v AAD: identifikátor URI aplikace této aplikace se projeví ve webovém testu v poli prostředku.
+Ujistěte se, že webový test je skutečný klient – to znamená, že má vlastní aplikaci v AAD – a používá svůj klíč clientId + App. Testovaná služba má také svou vlastní aplikaci v AAD: identifikátor URI appID této aplikace se odrazí ve webovém testu v poli prostředků.
 
 ### <a name="open-authentication"></a>Otevřené ověřování
 Příkladem otevřeného ověřování je přihlašování pomocí účtu Microsoft nebo Google. Velký počet aplikací, které používají OAuth, nabízí alternativní tajný klíč klienta, takže prvním cílem bude prozkoumání této možnosti.
@@ -139,9 +139,9 @@ Parametrizujte tokeny, nastavte parametr při vrácení tokenu z ověřovatele a
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Vyhrazený [článek o řešení potíží](troubleshoot-availability.md).
+Vyhrazený [článek týkající se řešení potíží](troubleshoot-availability.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Upozornění na dostupnost](availability-alerts.md)
-* [Webové testy příkazu URL](monitor-web-app-availability.md)
+* [Výstrahy dostupnosti](availability-alerts.md)
+* [Testování webových testů adresy URL](monitor-web-app-availability.md)

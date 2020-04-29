@@ -1,5 +1,5 @@
 ---
-title: Návrhář zobrazení Azure Monitor u převodů dlaždic sešitů
+title: Převod návrháře zobrazení na dlaždice v sešitech Azure Monitor
 description: ''
 author: austonli
 ms.author: aul
@@ -7,29 +7,29 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: f07d15521c787dfd588c285bff57616059caa2f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77658622"
 ---
 # <a name="azure-monitor-view-designer-tile-conversions"></a>Převody dlaždic návrháře zobrazení Azure Monitor
-[Návrhář zobrazení](view-designer.md) je funkce Azure Monitoru, která umožňuje vytvářet vlastní zobrazení, která vám pomohou vizualizovat data v pracovním prostoru Log Analytics pomocí grafů, seznamů a časových os. Jsou postupně ukončovány a nahrazovány sešity, které poskytují další funkce. Tento článek obsahuje podrobnosti pro převod různých dlaždic do sešitů.
+[Návrhář zobrazení](view-designer.md) je funkce Azure monitor, která umožňuje vytvářet vlastní zobrazení, která vám pomohou vizualizovat data v pracovním prostoru Log Analytics s grafy, seznamy a časovými osami. Budou postupně vyladěny a nahrazeny sešity, které poskytují další funkce. Tento článek poskytuje podrobné informace pro převod různých dlaždic na sešity.
 
-## <a name="donut--list-tile"></a>Dlaždice seznamu &
+## <a name="donut--list-tile"></a>Dlaždice seznamu & prstence
 
-![Seznam koblih](media/view-designer-conversion-tiles/donut-list.png)
+![Prstencový seznam](media/view-designer-conversion-tiles/donut-list.png)
 
-Opětovné vytvoření dlaždice seznamu donut& v sešitech zahrnuje dvě samostatné vizualizace. Pro koblihovou část existují dvě možnosti.
-Pro oba začít výběrem **Přidat dotaz** a vložte původní dotaz z návrháře zobrazení do buňky.
+Opětovné vytvoření dlaždice seznamu & prstence v sešitech zahrnuje dvě samostatné vizualizace. Pro část prstenec jsou k dispozici dvě možnosti.
+V nabídce Start vyberte možnost **Přidat dotaz** a vložte původní dotaz z návrháře zobrazení do buňky.
 
-**Možnost 1:** V rozevíracím lístku **Vizualizace** vyberte ![ **výsečový graf:** Vizualizace výsečového grafu](media/view-designer-conversion-tiles/pie-chart.png)
+**Možnost 1:** Výběr **výsečového grafu** z rozevíracího seznamu ![ **vizualizace** : nabídka vizualizace výsečového grafu](media/view-designer-conversion-tiles/pie-chart.png)
 
-**Možnost č. 2:** V rozevíracím souboru **Vizualizace** `| render piechart` vyberte **Nastavit podle dotazu** a přidejte do něj:
+**Možnost 2:** V rozevíracím seznamu **vizualizace** vyberte možnost `| render piechart` **nastavit podle dotazu** a přidejte do něj dotaz:
 
- ![Vizualizační nabídka](media/view-designer-conversion-tiles/set-by-query.png)
+ ![Nabídka vizualizace](media/view-designer-conversion-tiles/set-by-query.png)
 
-**Příklad**
+**Případě**
 
 Původní dotaz
 ```KQL
@@ -46,13 +46,13 @@ search *
 | render piechart
 ```
 
-Informace o vytvoření seznamu a povolení minigrafů naleznete v článku o [běžných úkolech](view-designer-conversion-tasks.md).
+Pokud chcete vytvořit seznam a povolit minigrafy, přečtěte si článek o [běžných úlohách](view-designer-conversion-tasks.md).
 
-Následuje příklad, jak může být dlaždice seznamu & koblihy v sešitech přeinterpretována:
+Následuje příklad, jak může být dlaždice seznamu & prstence překládána v sešitech:
 
-![Sešity seznamu koblih](media/view-designer-conversion-tiles/donut-workbooks.png)
+![Prstencový seznam sešitů](media/view-designer-conversion-tiles/donut-workbooks.png)
 
-## <a name="line-chart--list-tile"></a>Dlaždice & seznamu spojnicového grafu
+## <a name="line-chart--list-tile"></a>Dlaždice seznamu & spojnicového grafu
 ![Seznam spojnicových grafů](media/view-designer-conversion-tiles/line-list.png) 
 
 Chcete-li znovu vytvořit část spojnicového grafu, aktualizujte dotaz následujícím způsobem:
@@ -69,17 +69,17 @@ search *
 | make-series Count = count() default=0 on TimeGenerated from {TimeRange:start} to {TimeRange:end} step {TimeRange:grain} by Type
 ```
 
-Existují dvě možnosti vizualizace spojnicového grafu.
+Existují dvě možnosti, jak vizualizovat spojnicový graf.
 
-**Možnost 1:** V rozevíracím rozevíracím řádku **Vizualizace** vyberte **Spojnicový graf:**
+**Možnost 1:** V rozevíracím seznamu **vizualizace** vyberte **Spojnicový graf** :
  
  ![Nabídka spojnicového grafu](media/view-designer-conversion-tiles/line-visualization.png)
 
-**Možnost č. 2:** V rozevíracím souboru **Vizualizace** `| render linechart` vyberte **Nastavit podle dotazu** a přidejte do něj:
+**Možnost 2:** V rozevíracím seznamu **vizualizace** vyberte možnost `| render linechart` **nastavit podle dotazu** a přidejte do něj dotaz:
 
- ![Vizualizační nabídka](media/view-designer-conversion-tiles/set-by-query.png)
+ ![Nabídka vizualizace](media/view-designer-conversion-tiles/set-by-query.png)
 
-**Příklad**
+**Případě**
 
 ```KQL
 search * 
@@ -87,17 +87,17 @@ search *
 | render linechart_
 ```
 
-Informace o vytvoření seznamu a povolení minigrafů naleznete v článku o [běžných úkolech](view-designer-conversion-tasks.md).
+Pokud chcete vytvořit seznam a povolit minigrafy, přečtěte si článek o [běžných úlohách](view-designer-conversion-tasks.md).
 
-Následuje příklad, jak může být spojnicový graf & seznam v sešitech přeinterpretován:
+Následuje příklad, jak může být překládána dlaždice spojnicového grafu & seznamu v sešitech:
 
-![Sešity se seznamem spojnicových grafů](media/view-designer-conversion-tiles/line-workbooks.png)
+![Spojnicový graf – seznam sešitů](media/view-designer-conversion-tiles/line-workbooks.png)
 
-## <a name="number--list-tile"></a>Dlaždice seznamu číslo &
+## <a name="number--list-tile"></a>Dlaždice seznamu & číslo
 
  ![Seznam dlaždic](media/view-designer-conversion-tiles/tile-list-example.png)
 
-Pro dlaždici číslo aktualizujte dotaz takto:
+Pro dlaždici číslo aktualizujte dotaz následujícím způsobem:
 
 Původní dotaz
 ```KQL
@@ -112,25 +112,25 @@ search *
 | summarize Count = count()
 ```
 
-Změňte rozevírací nabídka Vizualizace na **Dlaždice** a pak vyberte **Nastavení dlaždic**.
- ![Vizualizace dlaždic](media/view-designer-conversion-tiles/tile-visualization.png)
+Změňte rozevírací seznam vizualizace na **dlaždice** a pak vyberte **nastavení dlaždice**.
+ ![Vizualizace dlaždice](media/view-designer-conversion-tiles/tile-visualization.png)
 
-Ponechte oddíl **Název** prázdný a vyberte **Vlevo**. Změňte hodnotu **pro použít sloupec:** **na Count**a **Column Renderer** to **Big Number**:
+**Název** oddílu Nechejte prázdný a vyberte **vlevo**. Změňte hodnotu vlastnosti **použít sloupec:** na **Count**a vyhodnotit **vykreslování sloupce** na **velké číslo**:
 
 ![Nastavení dlaždic](media/view-designer-conversion-tiles/tile-settings.png)
 
  
-Informace o vytvoření seznamu a povolení minigrafů naleznete v článku o [běžných úkolech](view-designer-conversion-tasks.md).
+Pokud chcete vytvořit seznam a povolit minigrafy, přečtěte si článek o [běžných úlohách](view-designer-conversion-tasks.md).
 
-Následuje příklad, jak může být číslo & seznam v sešitech přeinterpretováno:
+Následuje příklad, jak je možné přeinterpretovat číslo & dlaždici seznamu v sešitech:
 
-![Sešity seznamu čísel](media/view-designer-conversion-tiles/number-workbooks.png)
+![Seznam čísel v sešitech](media/view-designer-conversion-tiles/number-workbooks.png)
 
 ## <a name="timeline--list"></a>Časová osa a seznam
 
- ![Seznam časové osy](media/view-designer-conversion-tiles/time-list.png)
+ ![Seznam časových os](media/view-designer-conversion-tiles/time-list.png)
 
-Pro časovou osu aktualizujte dotaz takto:
+Pro časovou osu aktualizujte svůj dotaz následujícím způsobem:
 
 Původní dotaz
 ```KQL
@@ -144,21 +144,21 @@ search *
 | summarize Count = count() by Computer, bin(TimeGenerated,{TimeRange:grain})
 ```
 
-Existují dvě možnosti vizualizace dotazu jako pruhového grafu:
+Existují dvě možnosti, jak vizualizovat dotaz jako pruhový graf:
 
-**Možnost 1:** V rozevíracím rozevíracím ![panelu Vizualizace vyberte **pruhový** **graf:** Vizualizace barchartu](media/view-designer-conversion-tiles/bar-visualization.png)
+**Možnost 1:** Výběr **pruhového grafu** z rozevíracího seznamu ![ **vizualizace** : vizualizace BarChart](media/view-designer-conversion-tiles/bar-visualization.png)
  
-**Možnost č. 2:** V rozevíracím souboru **Vizualizace** `| render barchart` vyberte **Nastavit podle dotazu** a přidejte do něj:
+**Možnost 2:** V rozevíracím seznamu **vizualizace** vyberte možnost `| render barchart` **nastavit podle dotazu** a přidejte do něj dotaz:
 
- ![Vizualizační nabídka](media/view-designer-conversion-tiles/set-by-query.png)
+ ![Nabídka vizualizace](media/view-designer-conversion-tiles/set-by-query.png)
 
  
-Informace o vytvoření seznamu a povolení minigrafů naleznete v článku o [běžných úkolech](view-designer-conversion-tasks.md).
+Pokud chcete vytvořit seznam a povolit minigrafy, přečtěte si článek o [běžných úlohách](view-designer-conversion-tasks.md).
 
-Následuje příklad, jak může být v sešitech znovu interpretována dlaždice & seznamu časové osy:
+Následuje příklad, jak může být v sešitech překládána časová osa & dlaždice:
 
-![Sešity se seznamem časových os](media/view-designer-conversion-tiles/time-workbooks.png)
+![Pracovní osa – seznam sešitů](media/view-designer-conversion-tiles/time-workbooks.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přehled přechodu návrháře zobrazení do sešitů](view-designer-conversion-overview.md)
+- [Přehled přechodu návrháře zobrazení na sešity](view-designer-conversion-overview.md)

@@ -1,21 +1,21 @@
 ---
-title: Limity služeb Azure Monitor | Dokumenty společnosti Microsoft
-description: Seznam y omezení v různých oblastech Azure Monitor.
+title: Omezení služby Azure Monitor | Microsoft Docs
+description: Vypisuje omezení v různých oblastech Azure Monitor.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/10/2019
 ms.openlocfilehash: d2a2230613f9e4be3e0c9359a082843a4701b6f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77657907"
 ---
-# <a name="azure-monitor-service-limits"></a>Limity služeb Azure Monitor
+# <a name="azure-monitor-service-limits"></a>Omezení služby Azure Monitor
 
-Tento článek uvádí omezení v různých oblastech Azure Monitoru.
+V tomto článku jsou uvedena omezení v různých oblastech Azure Monitor.
 
 ## <a name="alerts"></a>Výstrahy
 
@@ -25,7 +25,7 @@ Tento článek uvádí omezení v různých oblastech Azure Monitoru.
 
 [!INCLUDE [monitoring-limits](../../includes/azure-monitor-limits-action-groups.md)]
 
-## <a name="log-queries-and-language"></a>Protokolovat dotazy a jazyk
+## <a name="log-queries-and-language"></a>Dotazy a jazyky protokolu
 
 [!INCLUDE [monitoring-limits](../../includes/azure-monitor-limits-log-queries.md)]
 
@@ -39,6 +39,6 @@ Tento článek uvádí omezení v různých oblastech Azure Monitoru.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Ceny Azure Monitoru](https://azure.microsoft.com/pricing/details/monitor/)
-- [Monitorování využití a odhadovaných nákladů ve službě Azure Monitor](platform/usage-estimated-costs.md)
+- [Ceny Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/)
+- [Monitorování využití a odhadovaných nákladů v Azure Monitor](platform/usage-estimated-costs.md)
 - [Správa využití a nákladů pro službu Application Insights](app/pricing.md)

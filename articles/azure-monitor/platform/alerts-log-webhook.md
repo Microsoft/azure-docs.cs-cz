@@ -1,6 +1,6 @@
 ---
-title: Akce Webhooku pro výstrahy protokolu ve výstrahách Azure
-description: Tento článek popisuje, jak vytvořit pravidlo výstrahprotokolu pomocí pracovního prostoru Analýzy protokolů nebo application insights, jak výstraha odesílá data jako http webhooku a podrobnosti o různých přizpůsobeních, které jsou možné.
+title: Akce Webhooku pro výstrahy protokolu v upozorněních Azure
+description: Tento článek popisuje, jak vytvořit pravidlo upozornění protokolu pomocí Log Analytics pracovní prostor nebo Application Insights, jak výstraha nahraje data jako Webhook HTTP, a podrobnosti o různých přizpůsobeních, která jsou možná.
 author: yanivlavi
 ms.author: yalavi
 services: monitoring
@@ -8,57 +8,57 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.subservice: alerts
 ms.openlocfilehash: 7b1956ad2bf9bf38ba9edc4c7234078557564071
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77667699"
 ---
-# <a name="webhook-actions-for-log-alert-rules"></a>Akce Webhooku pro pravidla výstrah protokolu
-Když [se v Azure vytvoří výstraha protokolu](alerts-log.md), máte možnost [ji nakonfigurovat pomocí skupin akcí](action-groups.md) k provedení jedné nebo více akcí. Tento článek popisuje různé akce webhooku, které jsou k dispozici, a ukazuje, jak nakonfigurovat vlastní webhook založený na JSON.
+# <a name="webhook-actions-for-log-alert-rules"></a>Akce Webhooku pro pravidla upozornění protokolu
+Když [se v Azure vytvoří výstraha protokolu](alerts-log.md), máte možnost [ji nakonfigurovat pomocí skupin akcí](action-groups.md) , aby se provedla jedna nebo více akcí. Tento článek popisuje různé akce Webhooku, které jsou k dispozici, a ukazuje, jak nakonfigurovat vlastní Webhook založený na formátu JSON.
 
 > [!NOTE]
-> Můžete také použít [společné schéma výstrah](https://aka.ms/commonAlertSchemaDocs) pro vaše integrace webhooku. Společné schéma výstrah poskytuje výhodu s jednu rozšiřitelnou a jednotnou datovou část výstrahy ve všech službách výstrah v Azure Monitor.Upozorňujeme, že společné schéma výstrah nesplňuje vlastní možnost JSON pro výstrahy protokolu. Odkládá se na běžnou datovou část schématu výstrah, pokud je vybrána bez ohledu na vlastní nastavení, které jste mohli provést na úrovni pravidla výstrahy. [Seznamte se s definicemi schématu běžných výstrah.](https://aka.ms/commonAlertSchemaDefinitions)
+> Můžete také použít [běžné schéma výstrah](https://aka.ms/commonAlertSchemaDocs) pro vaše integrace Webhooku. Běžné schéma výstrah poskytuje výhodu pro jednu rozšiřitelnou a Sjednocenou datovou část pro všechny služby výstrah v Azure Monitor. Upozorňujeme, že běžné schéma výstrah nezpůsobuje vlastní možnost JSON pro výstrahy protokolu. Pokud je tato možnost zvolena bez ohledu na vlastní nastavení, které jste provedli na úrovni pravidla výstrahy, se odloží k běžné datové části schématu výstrah. [Přečtěte si o běžných definicích schémat výstrah.](https://aka.ms/commonAlertSchemaDefinitions)
 
 ## <a name="webhook-actions"></a>Akce webhooků
 
-S akcemi webhooku můžete vyvolat externí proces prostřednictvím jediného požadavku HTTP POST. Služba, která se nazývá by měla podporovat webhooky a určit, jak používat všechny datové části obdrží.
+Pomocí akcí Webhooku můžete vyvolat externí proces prostřednictvím jedné žádosti HTTP POST. Služba, která má být volána, by měla podporovat Webhooky a určit, jak se má používat jakákoli datová část, kterou přijímá.
 
-Akce webhooku vyžadují vlastnosti v následující tabulce.
+Akce Webhooku vyžadují vlastnosti v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| **Adresa URL webového háku** |Adresa URL webhooku. |
-| **Vlastní datová část JSON** |Vlastní datová část odeslat s webhooku, když je vybrána tato možnost během vytváření výstrah. Další informace naleznete v [tématu Správa výstrah protokolu](alerts-log.md).|
+| **Adresa URL Webhooku** |Adresa URL Webhooku |
+| **Vlastní datová část JSON** |Vlastní datová část, která se má poslat pomocí Webhooku, když se vybere tato možnost během vytváření výstrahy. Další informace najdete v tématu [Správa upozornění protokolu](alerts-log.md).|
 
 > [!NOTE]
-> Tlačítko **Zobrazit webhooku** vedle **možnosti Zahrnout vlastní datovou část JSON pro webhookpro** výstrahu protokolu zobrazuje ukázkovou datovou část webhooku pro vlastní nastavení, které bylo poskytnuto. Neobsahuje skutečná data, ale je zástupcem schématu JSON, který se používá pro výstrahy protokolu. 
+> Tlačítko pro **zobrazení Webhooku** spolu s možností **zahrnout vlastní datovou část JSON pro Webhook** pro výstrahu protokolu zobrazuje ukázkovou datovou část Webhooku pro zadané přizpůsobení. Neobsahuje skutečná data, ale je reprezentativní pro schéma JSON, které se používá pro výstrahy protokolu. 
 
-Webhooky obsahují adresu URL a datovou část formátovanou v JSON, že data odeslaná externí službě. Ve výchozím nastavení obsahuje datová část hodnoty v následující tabulce. Můžete se rozhodnout nahradit tuto datovou část vlastní vlastní. V takovém případě použijte proměnné v tabulce pro každý z parametrů zahrnout jejich hodnoty ve vlastní datové části.
+Webhooky zahrnují adresu URL a datovou část formátovanou ve formátu JSON, kterou data odesílaná do externí služby. Ve výchozím nastavení datová část zahrnuje hodnoty v následující tabulce. Tuto datovou část si můžete nahradit vlastní vlastní. V takovém případě použijte proměnné v tabulce pro každý z parametrů k zahrnutí jejich hodnot do vlastní datové části.
 
 
 | Parametr | Proměnná | Popis |
 |:--- |:--- |:--- |
-| *Název_výstrahy* |#alertrulename |Název pravidla výstrahy. |
-| *Závažnost* |#severity |Závažnost nastavena pro výstrahu vypalování protokolu. |
-| *AlertThresholdOperator* |#thresholdoperator |Operátor Prahová hodnota pro pravidlo výstrahy, který používá větší nebo menší než. |
+| *AlertRuleName* |#alertrulename |Název pravidla výstrahy. |
+| *Závažnost* |#severity |Závažnost nastavená pro výstrahu protokolu, která se vyvolala. |
+| *AlertThresholdOperator* |#thresholdoperator |Operátor prahové hodnoty pro pravidlo výstrahy, které používá hodnotu větší než nebo menší než. |
 | *AlertThresholdValue* |#thresholdvalue |Prahová hodnota pro pravidlo výstrahy. |
-| *Výsledky linktovyhledávání* |#linktosearchresults |Odkaz na portál Analytics, který vrací záznamy z dotazu, který výstrahu vytvořil. |
-| *Počet výsledků* |#searchresultcount |Počet záznamů ve výsledcích hledání. |
-| *Čas ukončení intervalu hledání* |#searchintervalendtimeutc |Čas ukončení dotazu v utc, s formátem mm/dd/yyyy HH:mm:ss AM/PM. |
-| *Interval hledání* |#searchinterval |Časové okno pro pravidlo výstrahy s formátem HH:mm:ss. |
-| *Interval hledání StartTime* |#searchintervalstarttimeutc |Čas zahájení dotazu v utc, s formátem mm/dd/yyyy HH:mm:ss AM/PM. 
-| *Vyhledávací dotaz* |#searchquery |Protokolovat vyhledávací dotaz používaný pravidlem výstrahy. |
-| *HledatVýsledky* |"IncludeSearchResults": true|Záznamy vrácené dotazem jako tabulka JSON, omezené na prvních 1 000 záznamů, pokud "IncludeSearchResults": true je přidán do vlastní definice json webhooku jako vlastnost nejvyšší úrovně. |
-| *Typ výstrahy*| #alerttype | Typ pravidla upozornění protokolu nakonfigurovaný jako [metrické měření](alerts-unified-log.md#metric-measurement-alert-rules) nebo [počet výsledků](alerts-unified-log.md#number-of-results-alert-rules).|
-| *Id pracovního prostoru* |#workspaceid |ID pracovního prostoru Analýzy protokolů. |
-| *ID aplikace* |#applicationid |ID aplikace Application Insights. |
-| *ID předplatného* |#subscriptionid |ID použitého předplatného Azure. 
+| *LinkToSearchResults* |#linktosearchresults |Připojte se k portálu Analytics, který vrací záznamy z dotazu, který výstrahu vytvořil. |
+| *Element resultcount nastavený* |#searchresultcount |Počet záznamů ve výsledcích hledání. |
+| *Čas ukončení intervalu hledání* |#searchintervalendtimeutc |Čas ukončení dotazu ve standardu UTC, ve formátu MM/DD/RRRR HH: mm: ss dop./odp. |
+| *Interval hledání* |#searchinterval |Časový interval pro pravidlo výstrahy, ve formátu HH: mm: ss. |
+| *Interval hledání Čas_spuštění* |#searchintervalstarttimeutc |Čas spuštění dotazu ve standardu UTC, ve formátu MM/DD/RRRR HH: mm: ss dop./odp. 
+| *SearchQuery* |#searchquery |Dotaz na hledání protokolu používaný pravidlem výstrahy |
+| *SearchResults* |"IncludeSearchResults": true|Záznamy vrácené dotazem jako tabulka JSON omezené na prvních 1 000 záznamů, pokud je "IncludeSearchResults": hodnota true přidána do vlastní definice Webhooku JSON jako vlastnost nejvyšší úrovně. |
+| *Typ výstrahy*| #alerttype | Typ pravidla upozornění protokolu nakonfigurovaného jako [měření metriky](alerts-unified-log.md#metric-measurement-alert-rules) nebo [počet výsledků](alerts-unified-log.md#number-of-results-alert-rules).|
+| *ID pracovního prostoru* |#workspaceid |ID vašeho pracovního prostoru Log Analytics |
+| *ID aplikace* |#applicationid |ID vaší aplikace Application Insights |
+| *ID předplatného* |#subscriptionid |ID vašeho předplatného Azure 
 
 > [!NOTE]
-> *LinkToSearchResults* předá parametry jako *SearchQuery*, *Interval hledání StartTime*a *Čas ukončení intervalu hledání* v adrese URL na portálu Azure pro zobrazení v části Analytics. Portál Azure má limit velikosti IDENTIFIKÁTORU URI přibližně 2 000 znaků. Portál *neotevře* odkazy poskytované v výstrahách, pokud hodnoty parametrů překročí limit. Můžete ručně zadat podrobnosti a zobrazit výsledky na portálu Analytics. Nebo můžete použít [rozhraní REST API Analýzy aplikačních poznatků](https://dev.applicationinsights.io/documentation/Using-the-API) nebo [rozhraní REST API analýzy protokolů](/rest/api/loganalytics/) k programovému načtení výsledků. 
+> *LinkToSearchResults* předává parametry, jako je *SearchQuery*, *Čas_spuštění intervalu hledání*a *čas ukončení intervalu hledání* v adrese URL Azure Portal pro zobrazení v části analýzy. Azure Portal má limit velikosti URI přibližně 2 000 znaků. Portál *nebude otevírat odkazy* uvedené v upozorněních, pokud hodnoty parametru překračují limit. Můžete ručně zadat podrobnosti a zobrazit výsledky na portálu Analytics. Nebo můžete k načítání výsledků programově použít [Application Insights Analytics REST API](https://dev.applicationinsights.io/documentation/Using-the-API) nebo [Log Analytics REST API](/rest/api/loganalytics/) . 
 
-Můžete například zadat následující vlastní datovou část, která obsahuje jeden parametr nazývaný *text*. Služba, která volá tento webhooku očekává tento parametr.
+Můžete například zadat následující vlastní datovou část, která obsahuje jeden parametr s názvem *text*. Služba, kterou toto volání Webhooku očekává tento parametr.
 
 ```json
 
@@ -66,25 +66,25 @@ Můžete například zadat následující vlastní datovou část, která obsahu
         "text":"#alertrulename fired with #searchresultcount over threshold of #thresholdvalue."
     }
 ```
-V tomto příkladu datové části překládá na něco jako následující, když je odeslána do webhooku:
+Tento příklad datové části se překládá na něco podobného jako při odeslání do Webhooku jako následující:
 
 ```json
     {
         "text":"My Alert Rule fired with 18 records over threshold of 10 ."
     }
 ```
-Vzhledem k tomu, že všechny proměnné ve vlastním webhooku musí být zadány v rámci přílohy JSON, jako je "#searchinterval", výsledný webhook má také proměnná data uvnitř skříní, jako je "00:05:00.".
+Vzhledem k tomu, že všechny proměnné ve vlastním Webhooku je nutné zadat v rámci skříně JSON, jako je například "#searchinterval", výsledný Webhook má také data proměnných uvnitř skříní, například "00:05:00".
 
-Chcete-li zahrnout výsledky hledání do vlastní datové části, ujistěte se, že **IncludeSearchResults** je nastavena jako vlastnost nejvyšší úrovně v datové části JSON. 
+Chcete-li zahrnout výsledky hledání do vlastní datové části, zajistěte, aby byla v datové části JSON nastavena vlastnost **IncludeSearchResults** jako vlastnost nejvyšší úrovně. 
 
-## <a name="sample-payloads"></a>Ukázkové užitečné zatížení
-Tato část zobrazuje ukázkové datové části pro webhooky pro výstrahy protokolu. Ukázkové datové části zahrnují příklady, kdy je datová část standardní a kdy je vlastní.
+## <a name="sample-payloads"></a>Ukázková datová část
+Tato část ukazuje ukázkovou datovou část pro Webhooky pro výstrahy protokolu. Ukázková datová část obsahuje příklady v případě, kdy je datová část standardní a kdy je vlastní.
 
-### <a name="standard-webhook-for-log-alerts"></a>Standardní webhook pro upozornění protokolu 
-Oba tyto příklady mají fiktivní datovou část s pouze dva sloupce a dva řádky.
+### <a name="standard-webhook-for-log-alerts"></a>Standardní Webhook pro výstrahy protokolu 
+Oba tyto příklady mají zástupnou datovou část, která má pouze dva sloupce a dva řádky.
 
-#### <a name="log-alert-for-log-analytics"></a>Upozornění protokolu pro analýzu protokolů
-Následující ukázková datová část je pro standardní akci *webhooku bez vlastní možnosti JSON,* která se používá pro výstrahy založené na log analytics:
+#### <a name="log-alert-for-log-analytics"></a>Výstraha protokolu pro Log Analytics
+Následující ukázková datová část je určena pro akci standardního Webhooku *bez vlastní volby JSON* , která se používá pro výstrahy na základě Log Analytics:
 
 ```json
 {
@@ -123,11 +123,11 @@ Následující ukázková datová část je pro standardní akci *webhooku bez v
  ```
 
 > [!NOTE]
-> Hodnota pole Závažnost se může změnit, pokud jste [přepnuli předvolbu rozhraní API](alerts-log-api-switch.md) pro upozornění protokolu v Log Analytics.
+> Hodnota pole závažnost se může změnit, pokud jste [přepnuli předvolby rozhraní API](alerts-log-api-switch.md) pro výstrahy protokolu na Log Analytics.
 
 
-#### <a name="log-alert-for-application-insights"></a>Výstraha protokolu pro přehledy aplikací
-Následující ukázková datová část je pro standardní webhook *bez vlastní možnosti JSON,* pokud se používá pro výstrahy protokolu založené na Application Insights:
+#### <a name="log-alert-for-application-insights"></a>Výstraha protokolu pro Application Insights
+Následující ukázková datová část je určena pro standardní Webhook *bez vlastní volby JSON* , pokud se používá pro výstrahy protokolu na základě Application Insights:
     
 ```json
 {
@@ -169,7 +169,7 @@ Následující ukázková datová část je pro standardní webhook *bez vlastn�
 ```
 
 #### <a name="log-alert-with-custom-json-payload"></a>Výstraha protokolu s vlastní datovou částí JSON
-Chcete-li například vytvořit vlastní datovou část, která obsahuje pouze název výstrahy a výsledky hledání, můžete použít následující: 
+Chcete-li například vytvořit vlastní datovou část, která bude obsahovat pouze název výstrahy a výsledky hledání, můžete použít následující: 
 
 ```json
     {
@@ -178,7 +178,7 @@ Chcete-li například vytvořit vlastní datovou část, která obsahuje pouze n
     }
 ```
 
-Následující ukázková datová část je pro vlastní akci webhooku pro všechny výstrahy protokolu:
+Následující ukázková datová část je určena pro vlastní akci Webhooku pro jakékoli upozornění protokolu:
     
 ```json
     {
@@ -205,9 +205,9 @@ Následující ukázková datová část je pro vlastní akci webhooku pro všec
 
 
 ## <a name="next-steps"></a>Další kroky
-- Další informace o [výstrahách protokolů v azure výstrahy](alerts-unified-log.md).
-- Zjistěte, jak [spravovat výstrahy protokolu v Azure](alerts-log.md).
-- Vytvářejte a spravujte [skupiny akcí v Azure](action-groups.md).
-- Další informace o [application insights](../../azure-monitor/app/analytics.md).
-- Další informace o [dotazech protokolu](../log-query/log-query-overview.md). 
+- Přečtěte si informace o [upozorněních protokolu v Azure Alerts](alerts-unified-log.md).
+- Naučte se [Spravovat výstrahy protokolu v Azure](alerts-log.md).
+- Vytváření a Správa [skupin akcí v Azure](action-groups.md).
+- Přečtěte si další informace o [Application Insights](../../azure-monitor/app/analytics.md).
+- Přečtěte si další informace o [dotazech protokolu](../log-query/log-query-overview.md). 
 

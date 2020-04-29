@@ -1,6 +1,6 @@
 ---
-title: Správa přístupu vaší organizace k aplikacím & skupin – Azure AD
-description: Přečtěte si, jak provést kontrolu přístupu ke správě přístupu k zabezpečení aplikací a skupin vaší organizace z portálu Moje aplikace.
+title: Správa přístupu vaší organizace k aplikacím & skupinám – Azure AD
+description: Naučte se provádět kontrolu přístupu ke správě přístupu zabezpečení pro aplikace a skupiny vaší organizace na portálu moje aplikace.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,68 +13,68 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: c71195b247af6d5046d88d3e6918a660eddf09b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77062370"
 ---
-# <a name="perform-an-access-review-from-the-my-apps-portal"></a>Provedení kontroly přístupu z portálu Moje aplikace
+# <a name="perform-an-access-review-from-the-my-apps-portal"></a>Provedení kontroly přístupu z portálu moje aplikace
 
-Pomocí pracovního nebo školního účtu můžete pomocí webového portálu **Moje aplikace** provádět kontroly přístupu k aplikacím a skupinám. Kontroly přístupu vám pomohou spravovat zastaralý přístup nebo změnit požadavky na přístup a zajistit jejich kontrolu a aktualizaci.
+Svůj pracovní nebo školní účet můžete použít na portálu web **Moje aplikace** a provádět kontroly přístupu pro vaše aplikace a skupiny. Kontroly přístupu vám pomůžou spravovat zastaralý přístup nebo měnit požadavky na přístup a ujistit se, že se kontrolují a aktualizují.
 
-Pokud nemáte přístup k portálu **Moje aplikace,** požádejte o povolení na helpdesku.
+Pokud nemáte přístup k portálu **Moje aplikace** , obraťte se na helpdesk, aby vám udělil oprávnění.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->Tento obsah je určen pro uživatele **služby Moje aplikace.** Pokud jste správce, další informace o nastavení a správě cloudových aplikací najdete v [dokumentaci ke správě aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps).
+>Tento obsah je určený pro uživatele **mých aplikací** . Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat cloudové aplikace v [dokumentaci pro správu aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps).
 
 ## <a name="manage-access-reviews"></a>Správa kontrol přístupu
 
-Pokud vám správce udělil oprávnění k provádění vlastních kontrol přístupu, můžete spravovat přístup ke skupinám nebo aplikacím z dlaždice **Kontroly aplikace Access** na stránce Portál **mých aplikací.**
+Pokud vám správce udělil oprávnění k provádění vlastních kontrol přístupu, můžete ke správě skupin nebo aplikací přistupovat z dlaždice kontroly **přístupu** na stránce portálu **Moje aplikace** .
 
 >[!Note]
->Pokud dlaždici **Kontroly aplikace Access** nevidíte, znamená to, že nemáte oprávnění k provádění kontrol přístupu nebo že nemáte žádné nevyřízené recenze čekající na schválení. Pokud si myslíte, že byste měli mít přístup k dlaždici, požádejte o pomoc helpdesk.
+>Pokud nevidíte dlaždici kontroly **přístupu** , znamená to, že nemáte oprávnění k provádění kontrol přístupu nebo že nemáte žádné nevyřízené recenze čekající na vaše schválení. Pokud se domníváte, že byste měli mít přístup k této dlaždici, požádejte o pomoc helpdesk.
 
 ## <a name="to-perform-your-access-reviews"></a>Provedení kontrol přístupu
 
 1. Přihlaste se ke svému pracovnímu nebo školnímu účtu.
 
-2. Otevřete webový prohlížeč https://myapps.microsoft.coma přejděte na stránku nebo použijte odkaz poskytnutý vaší organizací. Můžete být například přesměrováni na přizpůsobenou stránku https://myapps.microsoft.com/contoso.compro vaši organizaci, například .
+2. Otevřete webový prohlížeč a pokračujte na https://myapps.microsoft.comnebo použijte odkaz poskytovaný vaší organizací. Například můžete být přesměrováni na přizpůsobenou stránku vaší organizace, jako je například https://myapps.microsoft.com/contoso.com.
 
-    Zobrazí se stránka **Aplikace,** která zobrazuje všechny cloudové aplikace vlastněné vaší organizací a dostupné k použití.
+    Zobrazí se stránka **aplikace** s informacemi o cloudových aplikacích vlastněných vaší organizací a k dispozici pro použití.
 
-    ![Stránka Aplikace na portálu Moje aplikace](media/my-apps-portal/my-apps-portal-apps-page-access-review-tile.png)
+    ![Stránka aplikace na portálu moje aplikace](media/my-apps-portal/my-apps-portal-apps-page-access-review-tile.png)
 
-3. Výběrem dlaždice **Kontroly aplikace Access** zobrazíte seznam kontrol přístupu čekajících na vaše schválení.
+3. Kliknutím na dlaždici kontroly **přístupu** zobrazíte seznam kontrol přístupu čekajících na vaše schválení.
 
-    ![Stránka Access reviews s čekajícími recenzemi přístupu pro organizaci](media/my-apps-portal/my-apps-portal-access-reviews-page.png)
+    ![Stránka kontroly přístupu s nevyřízenými recenzemi přístupu pro organizaci](media/my-apps-portal/my-apps-portal-access-reviews-page.png)
 
-4. Chcete-li zahájit kontrolu přístupu, vyberte **možnost Zahájit kontrolu.**
+4. Vyberte možnost **zahájit revizi** a spusťte tak kontrolu přístupu.
 
-5. Zkontrolujte přístup a zjistěte, zda je to stále nutné.
+5. Zkontrolujte svůj přístup a určete, zda je stále nutné.
 
-    ![Přístup k recenzi stránky, zobrazující podrobnosti recenze](media/my-apps-portal/my-apps-portal-perform-access-reviews-page.png)
+    ![Stránka pro kontrolu přístupu se zobrazenými podrobnostmi o kontrole](media/my-apps-portal/my-apps-portal-perform-access-reviews-page.png)
 
     >[!Note]
-    >Pokud jste správce a máte povoleno kontrolovat přístup vaší organizace ke skupinám a aplikacím, zobrazí se vám jiná stránka. Další informace o kontrole skupin nebo aplikací pro vaši organizaci najdete [v tématu Kontrola přístupu ke skupinám nebo aplikacím v tématu Recenze Přístupu k Azure AD](https://docs.microsoft.com/azure/active-directory/governance/perform-access-review).
+    >Pokud jste správce a máte povolený kontrolu přístupu vaší organizace ke skupinám a aplikacím, zobrazí se jiná stránka. Další informace o kontrole skupin nebo aplikací pro vaši organizaci najdete v tématu [Kontrola přístupu ke skupinám nebo aplikacím v rámci kontrol přístupu Azure AD](https://docs.microsoft.com/azure/active-directory/governance/perform-access-review).
 
-6. Chcete-li zachovat přístup, vyberte **ano,** chcete-li přístup odebrat, nebo **ne.**
+6. Vyberte **Ano** , pokud chcete zachovat přístup nebo **ne** pro odebrání přístupu.
 
-    Pokud vyberete **Ano**, bude pravděpodobně nutné zadat zarovnání do pole **Důvod.**
+    Pokud vyberete **Ano**, možná budete muset zadat odůvodnění v poli **důvod** .
 
-    ![Stránka kontroly přístupu s polem Důvod s ukázkovým textem](media/my-apps-portal/my-apps-portal-perform-access-reviews-reason-box.png)
+    ![Stránka pro kontrolu přístupu, která zobrazuje pole důvod s ukázkovým textem](media/my-apps-portal/my-apps-portal-perform-access-reviews-reason-box.png)
 
 7. Vyberte **Odeslat**.
 
-    Vaše kontrola přístupu je dokončena a vrátíte se na portál **Moje aplikace.**
+    Vaše kontrola přístupu je hotová a vrátíte se na portál **Moje aplikace** .
 
     >[!Note]
-    >Přístup můžete kdykoli změnit, dokud období kontroly přístupu neskončí. Pokud odeberete přístup k aplikaci nebo skupině, není okamžitě odebrán. K odebrání dochází, když končí období kontroly přístupu nebo když správce ukončí kontrolu.
+    >Přístup můžete kdykoli změnit, dokud období kontroly přístupu skončí. Když odeberete přístup k aplikaci nebo skupině, neodebere se okamžitě. K odebrání dojde po skončení období kontroly přístupu nebo po ukončení revize správcem.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přístup k aplikacím a jejich používání na portálu Moje aplikace](my-apps-portal-end-user-access.md)
+- [Přístup k aplikacím a jejich používání na portálu moje aplikace](my-apps-portal-end-user-access.md)
 - [Změna informací o profilu](my-apps-portal-end-user-update-profile.md)
-- [Zobrazení a aktualizace informací týkajících se skupin](my-apps-portal-end-user-groups.md)
+- [Zobrazit a aktualizovat informace související se skupinami](my-apps-portal-end-user-groups.md)

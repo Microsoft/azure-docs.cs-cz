@@ -1,5 +1,5 @@
 ---
-title: Sešity Azure Monitor u tváření parametrů
+title: Sešity Azure Monitor vytváření parametrů
 description: Zjednodušení složitých sestav pomocí předem sestavených a vlastních parametrizovaných sešitů
 services: azure-monitor
 author: mrbullwinkle
@@ -10,78 +10,78 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 3e7dda85f1f890d5ae0eb4722c3e028b373fdcab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77658213"
 ---
 # <a name="workbook-parameters"></a>Parametry sešitu
 
-Parametry umožňují autorům sešitu shromažďovat vstupy od spotřebitelů a odkazovat na něj v jiných částech sešitu – obvykle k vymezení sady výsledků nebo nastavení správného vizuálu. Jedná se o klíčovou schopnost, která umožňuje autorům vytvářet interaktivní zprávy a zkušenosti. 
+Parametry umožňují autorům sešitu shromažďovat vstup od spotřebitelů a odkazovat na ně v jiných částech sešitu – obvykle se zabývají rozsahem sady výsledků dotazu nebo nastavením správného vizuálu. Jedná se o klíčovou funkci, která umožňuje autorům vytvářet interaktivní sestavy a prostředí. 
 
-Sešity umožňují řídit, jak jsou ovládací prvky parametrů prezentovány spotřebitelům – textové pole vs. rozevírací seznam, výběr s jedním vs. více násobné, hodnoty z textu, JSON, KQL nebo Azure Resource Graph atd.  
+Pracovní sešity umožňují řídit způsob, jakým jsou ovládací prvky parametrů prezentovány uživatelům – textové pole vs. rozevírací seznam, jednoduché vs. vícenásobný výběr, hodnoty z textu, JSON, KQL nebo Azure Resource Graph atd.  
 
 Mezi podporované typy parametrů patří:
-* [Čas](workbooks-time.md) - umožňuje uživateli vybrat z předem vyplněných časových rozsahů nebo vybrat vlastní rozsah
-* [Rozevírací obsah](workbooks-dropdowns.md) - umožňuje uživateli vybrat z hodnoty nebo sady hodnot
-* [Text](workbooks-text.md) - umožňuje uživateli zadat libovolný text
-* [Prostředek](workbooks-resources.md) – umožňuje uživateli vybrat jeden nebo více prostředků Azure
-* [Předplatné](workbooks-resources.md) – umožňuje uživateli vybrat jeden nebo více prostředků předplatného Azure
-* Typ prostředku – umožňuje uživateli vybrat jednu nebo více hodnot typu prostředku Azure.
-* Umístění – umožňuje uživateli vybrat jednu nebo více hodnot umístění Azure
+* [Čas](workbooks-time.md) – umožní uživateli vybrat z předem vyplněných časových rozsahů nebo vybrat vlastní rozsah.
+* [Rozevírací seznam](workbooks-dropdowns.md) – umožňuje uživateli vybrat z hodnoty nebo sady hodnot.
+* [Text](workbooks-text.md) – umožní uživateli zadat libovolný text.
+* [Prostředek](workbooks-resources.md) – umožní uživateli vybrat jeden nebo víc prostředků Azure.
+* [Předplatné](workbooks-resources.md) – umožní uživateli vybrat jeden nebo víc prostředků předplatného Azure.
+* Typ prostředku – umožní uživateli vybrat jednu nebo víc hodnot typu prostředku Azure.
+* Umístění – umožní uživateli vybrat jednu nebo víc hodnot umístění Azure.
 
-Na tyto hodnoty parametrů lze odkazovat v jiných částech sešitů prostřednictvím vazeb nebo rozšíření hodnoty.
+Na tyto hodnoty parametrů se dá odkazovat v jiných částech sešitů, a to prostřednictvím rozšíření vazby nebo rozšíření hodnoty.
 
 ## <a name="creating-a-parameter"></a>Vytvoření parametru
 1. Začněte s prázdným sešitem v režimu úprav.
-2. Z odkazů v sešitu zvolte _Přidat parametry._
-3. Klikněte na modré tlačítko _Přidat parametr._
-4. V novém podokně parametrů, které se objeví, zadejte:
-    1. Název parametru: `TimeRange` *(Všimněte si, že __názvy__ parametrů **nemohou** obsahovat mezery nebo speciální znaky)*
-    2. Zobrazovaný `Time Range`název: * __(zobrazované názvy__ však mohou obsahovat mezery, speciální znaky, emodži atd.)*  
+2. Vyberte možnost _přidat parametry_ z odkazů v rámci sešitu.
+3. Klikněte na modré tlačítko _Přidat parametr_ .
+4. V podokně nového parametru, které se objeví, zadejte:
+    1. Název parametru: `TimeRange` *(Všimněte si, že __názvy__ parametrů **nemůžou** obsahovat mezery ani speciální znaky.)*
+    2. Zobrazované jméno `Time Range`: *(ale __zobrazované názvy__ můžou obsahovat mezery, speciální znaky, Emoji atd.)*  
     2. Typ parametru:`Time range picker`
-    3. Požadované:`checked`
-    4. Dostupné časové rozsahy: Poslední hodina, Posledních 12 hodin, Posledních 24 hodin, Posledních 48 hodin, Posledních 3 dní, Posledních 7 dní a Povolit výběr vlastního časového rozsahu
-5. Chcete-li vytvořit parametr, zvolte "Uložit".
+    3. Požadovanou`checked`
+    4. Dostupné časové rozsahy: poslední hodina, posledních 12 hodin, posledních 24 hodin, poslední 48 hodin, poslední 3 dny, posledních 7 dní a povolený výběr vlastního časového rozsahu
+5. Pokud chcete vytvořit parametr, klikněte na tlačítko Uložit na panelu nástrojů.
 
    ![Obrázek znázorňující vytvoření parametru časového rozsahu](./media/workbooks-parameters/time-settings.png)
 
-Takto bude vypadat sešit v režimu čtení ve stylu "Pilulky".
+V takovém případě bude sešit vypadat jako v režimu čtení, ve stylu "Pills".
 
    ![Obrázek znázorňující parametr časového rozsahu v režimu čtení](./media/workbooks-parameters/parameters-time.png)
 
 ## <a name="referencing-a-parameter"></a>Odkazování na parametr
-### <a name="via-bindings"></a>Přes vázání
+### <a name="via-bindings"></a>Přes vazby
 1. Přidejte do sešitu ovládací prvek dotazu a vyberte prostředek Application Insights.
-2. Otevřete rozevírací seznam `Time Range` Časový _rozsah_ a vyberte volbu z části Parametry dole.
-3. Tím se sváže parametr časového rozsahu s časovým rozsahem grafu. Časový rozsah ukázkového dotazu je nyní Posledních 24 hodin.
-4. Spuštění dotazu pro zobrazení výsledků
+2. Otevřete rozevírací seznam _časový rozsah_ a vyberte `Time Range` možnost v části parametry v dolní části.
+3. Tím se naváže parametr časového rozsahu na časový rozsah grafu. Časový rozsah ukázkového dotazu je nyní za posledních 24 hodin.
+4. Spusťte dotaz, aby se zobrazily výsledky.
 
-    ![Obrázek znázorňující parametr časového rozsahu odkazovaný pomocí vazeb](./media/workbooks-parameters/time-binding.png)
+    ![Obrázek znázorňující parametr časového rozsahu, na který se odkazuje pomocí vazeb](./media/workbooks-parameters/time-binding.png)
 
 ### <a name="in-kql"></a>V KQL
 1. Přidejte do sešitu ovládací prvek dotazu a vyberte prostředek Application Insights.
-2. V kql zadejte filtr časového oboru pomocí parametru:`| where timestamp {TimeRange}`
-3. Tím se zrozšiřuje doba `| where timestamp > ago(1d)`vyhodnocení dotazu na , což je hodnota časového rozsahu parametru.
-4. Spuštění dotazu pro zobrazení výsledků
+2. Do KQL zadejte filtr oboru času pomocí parametru:`| where timestamp {TimeRange}`
+3. Tím se rozšíří doba vyhodnocování dotazu na `| where timestamp > ago(1d)`, což je hodnota časového rozsahu parametru.
+4. Spusťte dotaz, aby se zobrazily výsledky.
 
-    ![Obrázek znázorňující časový rozsah odkazovaný v KQL](./media/workbooks-parameters/time-in-code.png)
+    ![Obrázek znázorňující časový rozsah, na který odkazuje KQL](./media/workbooks-parameters/time-in-code.png)
 
 ### <a name="in-text"></a>V textu 
-1. Přidání textového ovládacího prvku do sešitu
-2. Do markdownu zadejte`The chosen time range is {TimeRange:label}`
-3. Zvolit _hotovou úpravu_
-4. Ovládací prvek textu zobrazí text: _Zvolený časový rozsah je Posledních 24 hodin_
+1. Přidejte textový ovládací prvek do sešitu.
+2. Do Markdownu zadejte`The chosen time range is {TimeRange:label}`
+3. Zvolit _hotové úpravy_
+4. Ovládací prvek text zobrazí text: _zvolený časový rozsah je posledních 24 hodin_ .
 
 ## <a name="parameter-options"></a>Možnosti parametrů
-V části _Text_ `label` používá parametr namísto jeho hodnoty. Parametry zveřejňují různé takové možnosti v závislosti na typu - například výběr časového rozsahu povolit hodnotu, popisek, dotaz, začátek, konec a zrnitost.
+Oddíl _v textu_ použil `label` parametr místo jeho hodnoty. Parametry zveřejňují různé možnosti v závislosti na typu, např. výběry časových rozsahů umožňují hodnotu, popisek, dotaz, začátek, konec a zrnitost.
 
-V `Previews` části podokna _Upravit parametr_ můžete zobrazit možnosti rozšíření parametru:
+Pomocí `Previews` části v podokně _Upravit parametr_ můžete zobrazit možnosti rozšíření pro váš parametr:
 
-![Obrázek znázorňující volby parametrů časového rozsahu](./media/workbooks-parameters/time-previews.png)
+![Obrázek ukazující možnosti parametru časového rozsahu](./media/workbooks-parameters/time-previews.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Začínáte](workbooks-visualizations.md) se učit další informace o sešitech, mnoho bohatých možností vizualizací.
-* [Řízení](workbooks-access-control.md) a sdílení přístupu k prostředkům sešitu
+* [Začínáme](workbooks-visualizations.md) se dozvědět více o seznámcích s mnoha různými možnostmi vizualizací.
+* [Řízení](workbooks-access-control.md) a sdílení přístupu k prostředkům sešitu.

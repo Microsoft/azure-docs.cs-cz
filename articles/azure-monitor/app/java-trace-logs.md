@@ -1,26 +1,26 @@
 ---
-title: Prozkoumejte protokoly trasování v Jazyce java v Azure Application Insights
-description: Hledání trasování Log4J nebo Přihlášení v application insights
+title: Prozkoumejte protokoly trasování Java v Azure Application Insights
+description: Prohledat Log4J nebo Logback trasování v Application Insights
 ms.topic: conceptual
 ms.date: 05/18/2019
 ms.openlocfilehash: da1b76d52ab93f4d1be7196d6eb7286579481119
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77657210"
 ---
-# <a name="explore-java-trace-logs-in-application-insights"></a>Prozkoumejte protokoly trasování v jazyce Java v application insights
-Pokud používáte Logback nebo Log4J (v1.2 nebo v2.0) pro trasování, můžete si nechat protokoly trasování automaticky odeslat do Application Insights, kde je můžete prozkoumat a prohledat.
+# <a name="explore-java-trace-logs-in-application-insights"></a>Prozkoumejte protokoly trasování Java v Application Insights
+Pokud pro trasování používáte Logback nebo Log4J (v 1.2 nebo v 2.0), můžete mít k dispozici automatické odesílání protokolů trasování, které Application Insights, kde je můžete prozkoumat a vyhledat.
 
 > [!TIP]
-> Pro vaši aplikaci je třeba nastavit klíč instrumentace Application Insights pouze jednou. Pokud používáte architekturu, jako je Java Spring, možná jste již zaregistrovali klíč jinde v konfiguraci vaší aplikace.
+> Pro vaši aplikaci stačí nastavit Application Insights klíč instrumentace. Pokud používáte rozhraní, jako je Java pružina, možná jste už klíč zaregistrovali jinde v konfiguraci vaší aplikace.
 
-## <a name="using-the-application-insights-java-agent"></a>Použití agenta Java Application Insights
+## <a name="using-the-application-insights-java-agent"></a>Použití Application Insightsho agenta Java
 
-Ve výchozím nastavení agent Jazyka Java Application `WARN` Insights automaticky zachycuje protokolování prováděné na úrovni a vyšší úrovni.
+Ve výchozím nastavení agent Application Insights Java automaticky zachycuje protokolování provedené na `WARN` úrovni a výše.
 
-Můžete změnit prahovou hodnotu protokolování, `AI-Agent.xml` která je zachycena pomocí souboru:
+Můžete změnit prahovou hodnotu protokolování zaznamenaného pomocí `AI-Agent.xml` souboru:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -33,7 +33,7 @@ Můžete změnit prahovou hodnotu protokolování, `AI-Agent.xml` která je zach
 </ApplicationInsightsAgent>
 ```
 
-Protokolování protokolování agenta Java můžete `AI-Agent.xml` zakázat pomocí souboru:
+Pomocí tohoto `AI-Agent.xml` souboru můžete zablokovat zachytávání protokolování agenta Java:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -46,21 +46,21 @@ Protokolování protokolování agenta Java můžete `AI-Agent.xml` zakázat pom
 </ApplicationInsightsAgent>
 ```
 
-## <a name="alternatively-as-opposed-to-using-the-java-agent-you-can-follow-the-instructions-below"></a>Alternativně (na rozdíl od použití java agenta) můžete postupovat podle níže uvedených pokynů
+## <a name="alternatively-as-opposed-to-using-the-java-agent-you-can-follow-the-instructions-below"></a>Případně (na rozdíl od použití agenta Java) můžete postupovat podle následujících pokynů.
 
 ### <a name="install-the-java-sdk"></a>Instalace sady Java SDK
 
-Podle pokynů nainstalujte [aplikaci Insights SDK pro Javu][java], pokud jste to ještě neudělali.
+Podle pokynů nainstalujte [sadu Application Insights SDK pro jazyk Java][java], pokud jste to ještě neudělali.
 
 ### <a name="add-logging-libraries-to-your-project"></a>Přidání knihoven protokolování do projektu
 *Zvolte vhodný způsob pro váš projekt.*
 
 #### <a name="if-youre-using-maven"></a>Pokud používáte Maven...
-Pokud je projekt již nastaven na použití maven pro sestavení, sloučit jeden z následujících úryvků kódu do souboru pom.xml.
+Pokud je váš projekt již nastaven na použití Maven pro sestavení, slučte jeden z následujících fragmentů kódu do souboru pom. XML.
 
-Potom aktualizujte závislosti projektu, abyste získali soubory binárních souborů.
+Pak aktualizujte závislosti projektu a Stáhněte si stažené soubory.
 
-*Přihlašování*
+*Logback*
 
 ```XML
 
@@ -73,7 +73,7 @@ Potom aktualizujte závislosti projektu, abyste získali soubory binárních sou
     </dependencies>
 ```
 
-*Log4J v2.0*
+*Log4J v 2.0*
 
 ```XML
 
@@ -86,7 +86,7 @@ Potom aktualizujte závislosti projektu, abyste získali soubory binárních sou
     </dependencies>
 ```
 
-*Log4J v1.2*
+*Log4J v 1.2*
 
 ```XML
 
@@ -100,43 +100,43 @@ Potom aktualizujte závislosti projektu, abyste získali soubory binárních sou
 ```
 
 #### <a name="if-youre-using-gradle"></a>Pokud používáte Gradle...
-Pokud je projekt již nastaven na použití Gradle pro sestavení, `dependencies` přidejte do skupiny v souboru build.gradle jeden z následujících řádků:
+Pokud je váš projekt již nastaven na použití Gradle pro sestavení, přidejte do `dependencies` skupiny v souboru Build. Gradle jeden z následujících řádků:
 
-Potom aktualizujte závislosti projektu, abyste získali soubory binárních souborů.
+Pak aktualizujte závislosti projektu a Stáhněte si stažené soubory.
 
-**Přihlašování**
+**Logback**
 
 ```
 
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-logback', version: '2.0.+'
 ```
 
-**Log4J v2.0**
+**Log4J v 2.0**
 
 ```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j2', version: '2.0.+'
 ```
 
-**Log4J v1.2**
+**Log4J v 1.2**
 
 ```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j1_2', version: '2.0.+'
 ```
 
 #### <a name="otherwise-"></a>V opačném případě...
-Postupujte podle pokynů pro ruční instalaci Application Insights Java SDK, stáhněte si nádobu (Po příjezdu na Maven Central Page klikněte na odkaz "jar" v sekci stažení) pro příslušný dodatek a přidejte staženou nádobu s přídavkem do projektu.
+Postupujte podle pokynů pro ruční instalaci Application Insights Java SDK, Stáhněte si jar (po obdržíní na stránce pro stažení klikněte na odkaz "Jar") pro příslušný příkaz append a přidejte do projektu stažený JAR pro přidání.
 
-| Logger | Stáhnout | Knihovna |
+| Nástroj | Stáhnout | Knihovna |
 | --- | --- | --- |
-| Přihlašování |[Logback appender Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |applicationinsights-log-logback |
-| Log4J v2.0 |[Log4J v2 přívěsk jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |applicationinsights-logging-log4j2 |
-| Log4j v1.2 |[Log4J v1.2 přívěsk Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights-logging-log4j1_2 |
+| Logback |[JAR pro Logback připojovat](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |ApplicationInsights-Logging-logback |
+| Log4J v 2.0 |[Log4J v2 – JAR pro připojení](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |ApplicationInsights-Logging-log4j2 |
+| Log4j v 1.2 |[Log4J v 1.2 – JAR pro přidávání](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |ApplicationInsights-Logging-log4j1_2 |
 
 
-### <a name="add-the-appender-to-your-logging-framework"></a>Přidání přidávače do rámce protokolování
-Chcete-li začít získat trasování, sloučit příslušný fragment kódu do konfiguračního souboru Log4J nebo Logback: 
+### <a name="add-the-appender-to-your-logging-framework"></a>Přidání připojení do protokolovacího rozhraní
+Chcete-li začít získávat trasování, slučte příslušný fragment kódu do konfiguračního souboru Log4J nebo Logback: 
 
-*Přihlašování*
+*Logback*
 
 ```XML
 
@@ -149,7 +149,7 @@ Chcete-li začít získat trasování, sloučit příslušný fragment kódu do 
     </root>
 ```
 
-*Log4J v2.0*
+*Log4J v 2.0*
 
 ```XML
 
@@ -165,7 +165,7 @@ Chcete-li začít získat trasování, sloučit příslušný fragment kódu do 
     </Configuration>
 ```
 
-*Log4J v1.2*
+*Log4J v 1.2*
 
 ```XML
 
@@ -179,14 +179,14 @@ Chcete-li začít získat trasování, sloučit příslušný fragment kódu do 
     </root>
 ```
 
-App Insights appenders může odkazovat libovolný nakonfigurovaný protokolovací nástroj, a ne nutně root logger (jak je znázorněno na ukázkách kódu výše).
+Na Application Insights appender lze odkazovat pomocí nakonfigurovaného protokolovacího nástroje a nemusí nutně být kořenovým protokolovacím nástrojem (jak je uvedeno výše v ukázkách kódu).
 
-## <a name="explore-your-traces-in-the-application-insights-portal"></a>Prozkoumejte své stopy na portálu Application Insights
-Teď, když jste nakonfigurovali projekt pro odesílání trasování do Application Insights, můžete zobrazit a prohledat tyto trasování na portálu Application Insights v okně [Hledat.][diagnostic]
+## <a name="explore-your-traces-in-the-application-insights-portal"></a>Prozkoumejte trasování na portálu Application Insights
+Teď, když jste nakonfigurovali projekt pro odesílání trasování do Application Insights, můžete zobrazit a vyhledat tato trasování na portálu Application Insights v okně [hledání][diagnostic] .
 
-Výjimky odeslané prostřednictvím úhozů kláves se zobrazí na portálu jako výjimka telemetrie.
+Výjimky odeslané prostřednictvím protokolovacích nástrojů se zobrazí na portálu jako telemetrie výjimek.
 
-![Na portálu Application Insights otevřete Search](./media/java-trace-logs/01-diagnostics.png)
+![Na portálu Application Insights otevřete hledání.](./media/java-trace-logs/01-diagnostics.png)
 
 ## <a name="next-steps"></a>Další kroky
 [Diagnostické vyhledávání][diagnostic]

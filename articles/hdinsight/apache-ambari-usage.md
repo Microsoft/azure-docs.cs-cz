@@ -1,6 +1,6 @@
 ---
-title: Využití Apache Ambari v Azure HDInsight
-description: Diskuse o tom, jak se Apache Ambari používá v Azure HDInsight.
+title: Použití Apache Ambari v Azure HDInsight
+description: Diskuze o tom, jak se používá Apache Ambari v Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,25 +8,25 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.openlocfilehash: 466c170985715be52a90d579c19ca23aefefe2e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77067393"
 ---
-# <a name="apache-ambari-usage-in-azure-hdinsight"></a>Využití Apache Ambari v Azure HDInsight
+# <a name="apache-ambari-usage-in-azure-hdinsight"></a>Použití Apache Ambari v Azure HDInsight
 
-HDInsight používá Apache Ambari pro nasazení a správu clusteru. Ambari agenti spustit na každém uzlu (headnode, uzel pracovníka, zookeeper, a edgenode, pokud existuje). Ambari server běží pouze na headnode (hn0 nebo hn1). Současně se spustí pouze jedna instance serveru Ambari. To je řízeno řadičem převzetí služeb při selhání HDInsight. Když jeden z headnodes je dolů pro restart nebo údržbu, bude druhý headnode aktivní a Ambari server na druhé headnode bude spuštěn.
+HDInsight používá Apache Ambari k nasazování a správě clusteru. Ambari agenti běží na všech uzlech (hlavnímu uzlu, pracovní uzel, Zookeeper a edgenode, pokud existuje). Ambari server běží pouze na hlavnímu uzlu (hn0 nebo HN1). V jednom okamžiku se spustí jenom jedna instance serveru Ambari. Tuto kontrolu řídí kontroler převzetí služeb při selhání HDInsight. Pokud je jeden z hlavních pro restartování nebo údržbu vypnutý, ostatní hlavnímu uzlu se stanou aktivními a na druhé hlavnímu uzlu se spustí server Ambari.
 
-Všechny konfigurace clusteru by měla být provedena prostřednictvím [ui Ambari](./hdinsight-hadoop-manage-ambari.md), všechny místní změny budou přepsány při restartování uzlu.
+Veškerá konfigurace clusteru by se měla provádět prostřednictvím [uživatelského rozhraní Ambari](./hdinsight-hadoop-manage-ambari.md), při restartování uzlu se přepíší všechny místní změny.
 
-## <a name="failover-controller-services"></a>Služby řadiče převzetí služeb při selhání
+## <a name="failover-controller-services"></a>Služby řadiče pro převzetí služeb při selhání
 
-Řadič převzetí služeb při selhání HDInsight je také zodpovědný za aktualizaci IP adresy hostitele headnode, která odkazuje na aktuální aktivní hlavní uzel. Všichni agenti Ambari jsou konfigurováni tak, aby hlásili jeho stav a prezenční signál hostiteli headnode. Řadič převzetí služeb při selhání je sada služeb spuštěných na každém uzlu v clusteru, pokud nejsou spuštěny, převzetí služeb při selhání headnode nemusí fungovat správně a při pokusu o přístup k serveru Ambari skončíte s http 502.
+Kontroler převzetí služeb při selhání HDInsight zodpovídá taky za aktualizaci IP adresy hostitele hlavnímu uzlu, která odkazuje na aktuální aktivní hlavní uzel. Všichni agenti Ambari jsou nakonfigurováni tak, aby nahlásily svůj stav a prezenční signál do hostitele hlavnímu uzlu. Kontroler převzetí služeb při selhání je sada služeb spuštěných na všech uzlech v clusteru, pokud nejsou spuštěné, hlavnímu uzlu převzetí služeb při selhání nemusí správně fungovat a při pokusu o přístup k serveru Ambari se zobrazí HTTP 502.
 
-Chcete-li zkontrolovat, který headnode je aktivní, jedním ze způsobů je ssh na jeden z uzlů v clusteru, pak spustit `ping headnodehost` a porovnat IP s dvěma headnodes.
+Pokud chcete zjistit, která hlavnímu uzlu je aktivní, jedním ze způsobů, jak se jednat o jeden z uzlů v clusteru, `ping headnodehost` a pak spusťte a porovnejte IP adresu se dvěma hlavních.
 
-Pokud služby řadiče s podporou převzetí služeb při selhání nejsou spuštěny, převzetí služeb při selhání headnode nemusí dojít správně, což může skončit není spuštěn server Ambari. Chcete-li zkontrolovat, zda jsou spuštěny služby řadiče s podporou převzetí služeb při selhání, spusťte:
+Pokud služby řadiče pro převzetí služeb při selhání neběží, hlavnímu uzlu převzetí služeb při selhání nemusí správně fungovat, což může mít za problém, že server Ambari nebude spuštěn Pokud chcete zjistit, jestli jsou spuštěné služby kontroleru převzetí služeb při selhání, spusťte:
 
 ```bash
 ps -ef | grep failover
@@ -34,14 +34,14 @@ ps -ef | grep failover
 
 ## <a name="logs"></a>Protokoly
 
-Na aktivním headnode můžete zkontrolovat protokoly serveru Ambari na adrese:
+V aktivním hlavnímu uzlu můžete kontrolovat protokoly serveru Ambari na adrese:
 
 ```
 /var/log/ambari-server/ambari-server.log
 /var/log/ambari-server/ambari-server-check-database.log
 ```
 
-Na libovolném uzlu v clusteru můžete zkontrolovat protokoly agenta Ambari na adrese:
+Na jakémkoli uzlu v clusteru můžete ověřit protokoly agenta Ambari na adrese:
 
 ```bash
 /var/log/ambari-agent/ambari-agent.log
@@ -49,32 +49,32 @@ Na libovolném uzlu v clusteru můžete zkontrolovat protokoly agenta Ambari na 
 
 ## <a name="service-start-sequences"></a>Sekvence spuštění služby
 
-Toto je posloupnost spuštění služby při spuštění:
+Toto je pořadí spuštění služby při spuštění:
 
-1. Hdinsight-agent spustí služby řadiče s podporou převzetí služeb při selhání.
-1. Služby řadiče s podporou převzetí služeb při selhání spouštějí agenta Ambari na každém uzlu a serveru Ambari na aktivním headnode.
+1. HDInsight-agent spouští služby řadiče pro převzetí služeb při selhání.
+1. Služby kontroleru převzetí služeb při selhání spouštějí agenta Ambari na všech uzlech a na Ambari serveru na aktivním hlavnímu uzlu.
 
 ## <a name="ambari-database"></a>Databáze Ambari
 
-HDInsight vytvoří databázi SQL Azure pod kapotou, která bude sloužit jako databáze pro server Ambari. Výchozí [úroveň služby je S0](../sql-database/sql-database-elastic-pool-scale.md).
+HDInsight vytvoří v digestoři SQL Azure databázi, která bude sloužit jako databáze pro server Ambari. Výchozí [úroveň služby je S0](../sql-database/sql-database-elastic-pool-scale.md).
 
-Pro každý cluster s počtem pracovních uzlů větší než 16 při vytváření clusteru, S2 je vrstva databázové služby.
+V případě jakéhokoli clusteru s počtem pracovních uzlů, který je větší než 16 při vytváření clusteru, je S2 vrstva služby databáze.
 
-## <a name="takeaway-points"></a>Body s sebou
+## <a name="takeaway-points"></a>Body poznatkem
 
-Nikdy ručně spustit / zastavit ambari-server nebo ambari-agent služby, pokud se pokoušíte restartovat službu obejít problém. Chcete-li vynutit převzetí služeb při selhání, můžete restartovat aktivní headnode.
+Nikdy ručně nespouštějte nebo zastavte služby Ambari-Server nebo Ambari-agent, pokud se nepokoušíte restartovat službu, abyste mohli problém vyřešit. Pokud chcete vynutit převzetí služeb při selhání, můžete restartovat aktivní hlavnímu uzlu.
 
-Nikdy ručně upravovat žádné konfigurační soubory v žádném uzlu clusteru, ať Ambari UI dělat práci za vás.
+Nikdy ručně Neměňte žádné konfigurační soubory na žádném uzlu clusteru, takže Ambari uživatelské rozhraní provede úlohu.
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md)
-* [Správa clusterů HDInsight pomocí rozhraní Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
+* [Správa clusterů HDInsight pomocí REST API Apache Ambari](hdinsight-hadoop-manage-ambari-rest-api.md)
 
-Pokud jste problém nezjistili nebo se vám nedaří problém vyřešit, navštivte jeden z následujících kanálů, kde najdete další podporu:
+Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 
-* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory Azure Community Support](https://azure.microsoft.com/support/community/).
+* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Spojte [@AzureSupport](https://twitter.com/azuresupport) se s oficiálním účtem Microsoft Azure pro zlepšení zákaznického prostředí. Propojení komunity Azure se správnými prostředky: odpovědi, podpora a odborníci.
+* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [webu Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na řádku nabídek vyberte **Podpora** nebo otevřete centrum **Nápověda + podpora.** Podrobnější informace najděte v části [Jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatného a fakturační podpoře je součástí vašeho předplatného Microsoft Azure a technická podpora se poskytuje prostřednictvím jednoho z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

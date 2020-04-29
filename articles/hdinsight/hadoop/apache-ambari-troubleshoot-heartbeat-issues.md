@@ -1,6 +1,6 @@
 ---
 title: Problémy s prezenčním signálem Apache Ambari ve službě Azure HDInsight
-description: Kontrola různých důvodů problémů se srdečním tepem Apache Ambari v Azure HDInsight
+description: Přezkoumání různých důvodů problémů s prezenčním signálem Apache Ambari v Azure HDInsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,29 +8,29 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/06/2020
 ms.openlocfilehash: ab88f65d535be2aef5f0b26fa1171c03276466e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77057069"
 ---
 # <a name="apache-ambari-heartbeat-issues-in-azure-hdinsight"></a>Problémy s prezenčním signálem Apache Ambari ve službě Azure HDInsight
 
-Tento článek popisuje kroky řešení potíží a možná řešení problémů při interakci s clustery Azure HDInsight.
+Tento článek popisuje postup řešení potíží a možná řešení potíží při komunikaci s clustery Azure HDInsight.
 
-## <a name="scenario-high-cpu-utilization"></a>Scénář: Vysoké využití procesoru
+## <a name="scenario-high-cpu-utilization"></a>Scénář: vysoké využití procesoru
 
 ### <a name="issue"></a>Problém
 
-Agent Ambari má vysoké využití procesoru, což má za následek výstrahy z ui Ambari, že pro některé uzly agent Ambari prezenční signál je ztracen. Upozornění na ztrátu srdečního tepu je obvykle přechodné.
+Ambari agent má vysoké využití procesoru, což má za následek výstrahy z uživatelského rozhraní Ambari, které u některých uzlů dojde ke ztrátě prezenčního signálu agenta Ambari. Výstraha ztráty prezenčního signálu je obvykle přechodný.
 
 ### <a name="cause"></a>Příčina
 
-Vzhledem k různým chybám ambari-agent, ve vzácných případech, váš ambari-agent může mít vysoké (téměř 100) procento využití procesoru.
+V důsledku různých chyb Ambari-agentů může být ve výjimečných případech vysoká úroveň využití procesoru Ambari agentem (téměř až 100).
 
 ### <a name="resolution"></a>Řešení
 
-1. Identifikujte ID procesu (pid) ambari-agenta:
+1. Identifikujte ID procesu (PID) Ambari-agent:
 
     ```bash
     ps -ef | grep ambari_agent
@@ -42,13 +42,13 @@ Vzhledem k různým chybám ambari-agent, ve vzácných případech, váš ambar
     top -p <ambari-agent-pid>
     ```
 
-1. Restartujte ambari-agent, abyste zmírnili problém:
+1. Restartujte Ambari – Agent pro zmírnění potíží:
 
     ```bash
     service ambari-agent restart
     ```
 
-1. Pokud restartování nefunguje, zabít ambari-agent proces a pak jej spustit:
+1. Pokud restartování nefunguje, ukončete proces Ambari a potom ho spusťte:
 
     ```bash
     kill -9 <ambari-agent-pid>
@@ -57,37 +57,37 @@ Vzhledem k různým chybám ambari-agent, ve vzácných případech, váš ambar
 
 ---
 
-## <a name="scenario-ambari-agent-not-started"></a>Scénář: Agent Ambari nebyl spuštěn.
+## <a name="scenario-ambari-agent-not-started"></a>Scénář: Agent Ambari se nespustil.
 
 ### <a name="issue"></a>Problém
 
-Agent Ambari nebyl spuštěn, což má za následek výstrahy z ui Ambari, že pro některé uzly agent Ambari prezenční signál je ztracen.
+Agent Ambari se nespustil, což má za následek výstrahy z uživatelského rozhraní Ambari, které u některých uzlů ztratily prezenční signály agenta Ambari.
 
 ### <a name="cause"></a>Příčina
 
-Výstrahy jsou způsobeny agenta Ambari není spuštěn.
+Výstrahy jsou způsobeny tím, že agent Ambari neběží.
 
 ### <a name="resolution"></a>Řešení
 
-1. Potvrdit stav ambari-agenta:
+1. Potvrďte stav Ambari-agent:
 
     ```bash
     service ambari-agent status
     ```
 
-1. Zkontrolujte, zda jsou spuštěny služby řadiče s podporou převzetí služeb při selhání:
+1. Potvrďte, jestli jsou spuštěné služby řadiče pro převzetí služeb při selhání:
 
     ```bash
     ps -ef | grep failover
     ```
 
-    Pokud služby řadiče s podporou převzetí služeb při selhání nejsou spuštěny, je to pravděpodobně z důvodu problému zabránit hdinsight agent spuštění řadiče převzetí služeb při selhání. Zkontrolujte protokol hdinsight-agent ze `/var/log/hdinsight-agent/hdinsight-agent.out` souboru.
+    Pokud služby řadiče pro převzetí služeb při selhání neběží, pravděpodobně z důvodu problému brání agentovi HDInsight v spuštění kontroleru převzetí služeb při selhání. Zkontroluje protokol HDInsight-Agent ze `/var/log/hdinsight-agent/hdinsight-agent.out` souboru.
 
-## <a name="scenario-heartbeat-lost-for-ambari"></a>Scénář: Prezenční signál ztracený pro Ambari
+## <a name="scenario-heartbeat-lost-for-ambari"></a>Scénář: prezenční signál se ztratil pro Ambari.
 
 ### <a name="issue"></a>Problém
 
-Ambarisrdeční agent byl ztracen.
+Agent prezenčního signálu Ambari byl ztracen.
 
 ### <a name="cause"></a>Příčina
 
@@ -95,17 +95,17 @@ Protokoly OMS způsobují vysoké využití procesoru.
 
 ### <a name="resolution"></a>Řešení
 
-* Zakažte protokolování Azure Monitor pomocí rutiny [Disable-AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) PowerShell.
-* Odstranění `mdsd.warn` souboru protokolu
+* Zakažte protokolování Azure Monitor pomocí rutiny PowerShellu [Disable-AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) .
+* Odstranění souboru `mdsd.warn` protokolu
 
 ---
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste problém nezjistili nebo se vám nedaří problém vyřešit, navštivte jeden z následujících kanálů, kde najdete další podporu:
+Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 
-* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory Azure Community Support](https://azure.microsoft.com/support/community/).
+* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Spojte [@AzureSupport](https://twitter.com/azuresupport) se s oficiálním účtem Microsoft Azure, který zlepšuje zákaznickou zkušenost tím, že propojuje komunitu Azure se správnými prostředky: odpověďmi, podporou a odborníky.
+* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [webu Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na řádku nabídek vyberte **Podpora** nebo otevřete centrum **Nápověda + podpora.** Podrobnější informace najdete v části [Jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatného a fakturační podpoře je součástí vašeho předplatného Microsoft Azure a technická podpora se poskytuje prostřednictvím jednoho z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

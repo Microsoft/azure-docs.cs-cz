@@ -1,31 +1,31 @@
 ---
-title: Agregace v dotazech protokolu Azure Monitor| Dokumenty společnosti Microsoft
-description: Popisuje funkce agregace v dotazech protokolu Azure Monitor, které nabízejí užitečné způsoby analýzy dat.
+title: Agregace v Azure Monitorch dotazech protokolu | Microsoft Docs
+description: Popisuje agregační funkce v Azure Monitorch dotazech protokolů, které nabízejí užitečné způsoby analýzy dat.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: d164c53e7e2be55f3cede389901a256ba388808d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77670300"
 ---
-# <a name="aggregations-in-azure-monitor-log-queries"></a>Agregace v dotazech protokolu Azure Monitor
+# <a name="aggregations-in-azure-monitor-log-queries"></a>Agregace v Azure Monitorch dotazech protokolu
 
 > [!NOTE]
-> Před dokončením této lekce byste měli dokončit [Začínáme s portálem Analytics](get-started-portal.md) a [Začínáme s dotazy.](get-started-queries.md)
+> Před dokončením této lekce byste měli dokončit Začínáme [s portálem pro analýzu](get-started-portal.md) a [začít s dotazy](get-started-queries.md) .
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Tento článek popisuje funkce agregace v dotazech protokolu Azure Monitor, které nabízejí užitečné způsoby analýzy dat. Tyto funkce všechny `summarize` práce s operátorem, který vytváří tabulku s agregované výsledky vstupní tabulky.
+Tento článek popisuje agregační funkce v Azure Monitorch dotazech protokolů, které nabízejí užitečné způsoby analýzy dat. Všechny tyto funkce fungují s `summarize` operátorem, který vytváří tabulku s agregovanými výsledky vstupní tabulky.
 
-## <a name="counts"></a>Počítá
+## <a name="counts"></a>Výčt
 
 ### <a name="count"></a>count
-Spočítejte počet řádků v sadě výsledků po použití filtrů. Následující příklad vrátí celkový počet řádků v tabulce _Perf_ z posledních 30 minut. Výsledek je vrácen ve sloupci s názvem *count_* pokud mu nepřiřadíte určitý název:
+Spočítá počet řádků v sadě výsledků po použití libovolných filtrů. Následující příklad vrátí celkový počet řádků v tabulce _perf_ za posledních 30 minut. Výsledek se vrátí do sloupce s názvem *count_* , pokud mu nepřiřadíte konkrétní název:
 
 
 ```Kusto
@@ -40,7 +40,7 @@ Perf
 | summarize num_of_records=count() 
 ```
 
-Vizualizace časového diagramu může být užitečná pro zobrazení trendu v průběhu času:
+Vizualizace timechart může být užitečná pro zobrazení trendu v průběhu času:
 
 ```Kusto
 Perf 
@@ -49,13 +49,13 @@ Perf
 | render timechart
 ```
 
-Výstup z tohoto příkladu zobrazuje spojnice trendu počtu záznamů perf v intervalech 5 minut:
+Výstup z tohoto příkladu ukazuje trend počtu záznamů výkonu v intervalu 5 minut:
 
-![Počítat trend](media/aggregations/count-trend.png)
+![Trend počtu](media/aggregations/count-trend.png)
 
 
-### <a name="dcount-dcountif"></a>dcount, dcountif
-Použijte `dcount` `dcountif` a spočítejte odlišné hodnoty v určitém sloupci. Následující dotaz vyhodnocuje, kolik různých počítačů odeslalo prezenční signály za poslední hodinu:
+### <a name="dcount-dcountif"></a>DCount, dcountif
+Pomocí `dcount` a `dcountif` můžete spočítat jedinečné hodnoty v určitém sloupci. Následující dotaz vyhodnocuje, kolik různých počítačů odeslalo prezenční signály za poslední hodinu:
 
 ```Kusto
 Heartbeat 
@@ -63,7 +63,7 @@ Heartbeat
 | summarize dcount(Computer)
 ```
 
-Chcete-li počítat pouze počítače s `dcountif`Linuxem, které odeslaly prezenční signály, použijte :
+Chcete-li spočítat pouze počítače se systémem Linux, které odesílají `dcountif`prezenční signály, použijte:
 
 ```Kusto
 Heartbeat 
@@ -71,8 +71,8 @@ Heartbeat
 | summarize dcountif(Computer, OSType=="Linux")
 ```
 
-### <a name="evaluating-subgroups"></a>Vyhodnocení podskupin
-Chcete-li provést počet nebo jiné agregace v podskupinách v datech, použijte `by` klíčové slovo. Chcete-li například spočítat počet různých počítačů s Linuxem, které odeslaly prezenční signály v každé zemi nebo oblasti:
+### <a name="evaluating-subgroups"></a>Vyhodnocování podskupin
+K provedení počtu nebo jiných agregací pro podskupiny ve vašich datech použijte `by` klíčové slovo. Pokud například chcete spočítat počet různých počítačů se systémem Linux, které odeslaly prezenční signály v každé zemi nebo oblasti:
 
 ```Kusto
 Heartbeat 
@@ -89,7 +89,7 @@ Heartbeat
 |Nizozemsko      | 2                   |
 
 
-Chcete-li analyzovat ještě menší podskupiny dat, `by` přidejte do oddílu další názvy sloupců. Můžete například počítat odlišné počítače z každé země nebo oblasti podle typu OSType:
+Pokud chcete analyzovat i menší podskupiny vašich dat, přidejte do `by` oddílu Další názvy sloupců. Můžete například chtít spočítat samostatné počítače z každé země nebo oblasti na OSType:
 
 ```Kusto
 Heartbeat 
@@ -97,11 +97,11 @@ Heartbeat
 | summarize distinct_computers=dcountif(Computer, OSType=="Linux") by RemoteIPCountry, OSType
 ```
 
-## <a name="percentiles-and-variance"></a>Percentily a rozptyl
-Při vyhodnocování číselných hodnot je `summarize avg(expression)`běžnou praxí jejich použití . Průměry jsou ovlivněny extrémními hodnotami, které charakterizují pouze několik případů. Chcete-li tento problém vyřešit, můžete `median` `variance`použít méně citlivé funkce, jako je například nebo .
+## <a name="percentiles-and-variance"></a>Percentily a odchylky
+Při vyhodnocování numerických hodnot je běžné zvyklosti použít `summarize avg(expression)`průměrně. Na průměry jsou ovlivněny extrémní hodnoty, které charakterizují pouze několik případů. Chcete-li tento problém vyřešit, můžete použít méně citlivé funkce, `median` například `variance`nebo.
 
 ### <a name="percentile"></a>Percentil
-Chcete-li najít střední `percentile` hodnotu, použijte funkci s hodnotou k určení percentilu:
+Chcete-li najít medián hodnoty, použijte `percentile` funkci s hodnotou k určení percentilu:
 
 ```Kusto
 Perf
@@ -110,7 +110,7 @@ Perf
 | summarize percentiles(CounterValue, 50) by Computer
 ```
 
-Můžete také zadat různé percentily, abyste získali agregovaný výsledek pro každý:
+Můžete také zadat různé percentily pro získání agregovaného výsledku pro každou z těchto hodnot:
 
 ```Kusto
 Perf
@@ -119,10 +119,10 @@ Perf
 | summarize percentiles(CounterValue, 25, 50, 75, 90) by Computer
 ```
 
-To by mohlo ukázat, že některé procesory počítačů mají podobné střední hodnoty, ale zatímco některé jsou stabilní kolem mediánu, jiné počítače vykázaly mnohem nižší a vyšší hodnoty PROCESORU, což znamená, že došlo k špičkám.
+To může ukazovat na to, že některé procesory počítačů mají podobné mediány, ale zatímco některé z nich jsou u mediánu konstantní, další počítače oznámily mnohem nižší a vyšší hodnoty procesoru, což znamená, že se v nich vyskytly špičky
 
 ### <a name="variance"></a>Rozptyl
-Chcete-li přímo vyhodnotit rozptyl hodnoty, použijte metody směrodatné odchylky a rozptylu:
+Chcete-li přímo vyhodnotit odchylku hodnoty, použijte metody směrodatné odchylky a odchylky:
 
 ```Kusto
 Perf
@@ -131,7 +131,7 @@ Perf
 | summarize stdev(CounterValue), variance(CounterValue) by Computer
 ```
 
-Dobrým způsobem, jak analyzovat stabilitu využití procesoru, je kombinovat stdev s mediánem výpočtu:
+Dobrým způsobem, jak analyzovat stabilitu využití CPU, je kombinovat STDEV s výpočtem mediánu:
 
 ```Kusto
 Perf
@@ -140,7 +140,7 @@ Perf
 | summarize stdev(CounterValue), percentiles(CounterValue, 50) by Computer
 ```
 
-Podívejte se na další lekce pro používání [dotazovacího jazyka Kusto](/azure/kusto/query/) s daty protokolu Azure Monitor:
+Podívejte se na další lekce týkající se používání [dotazovacího jazyka Kusto](/azure/kusto/query/) s využitím dat protokolu Azure monitor:
 
 - [Operace s řetězci](string-operations.md)
 - [Operace s datem a časem](datetime-operations.md)

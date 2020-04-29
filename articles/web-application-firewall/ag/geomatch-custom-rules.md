@@ -1,6 +1,6 @@
 ---
-title: Vlastní pravidla geomatch brány Azure Web Application Firewall (WAF)
-description: Tento článek je přehled vlastních pravidel geomatch webové aplikace firewall (WAF) na Azure Application Gateway.
+title: 'Firewall webových aplikací Azure (WAF): vlastní pravidla pro inshodě'
+description: Tento článek je přehled firewallu webových aplikací (WAF), který se shoduje s vlastními pravidly pro Azure Application Gateway.
 services: web-application-firewall
 ms.topic: article
 author: vhorne
@@ -8,24 +8,24 @@ ms.service: web-application-firewall
 ms.date: 01/31/2020
 ms.author: victorh
 ms.openlocfilehash: 6725e1de21dbd103850071f7511e2800c6bd7b69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76961085"
 ---
-# <a name="geomatch-custom-rules-preview"></a>Vlastní pravidla geomatch (náhled)
+# <a name="geomatch-custom-rules-preview"></a>Vlastní pravidla pro neshodu (Preview)
 
-Vlastní pravidla umožňují vytvářet přizpůsobené pravidla tak, aby vyhovovala přesným potřebám vašich aplikací a zásad zabezpečení. Nyní můžete omezit přístup k webovým aplikacím podle země nebo oblasti. Stejně jako u všech vlastních pravidel, tato logika může být umocněna dalšími pravidly tak, aby vyhovovala potřebám vaší aplikace.
+Vlastní pravidla umožňují vytvářet přizpůsobená pravidla tak, aby vyhovovala přesným potřebám vašich aplikací a zásad zabezpečení. Nyní můžete omezit přístup k vašim webovým aplikacím podle země nebo oblasti. Stejně jako u všech vlastních pravidel může být tato logika složená s jinými pravidly, aby vyhovovala potřebám vaší aplikace.
 
-Chcete-li vytvořit vlastní pravidlo geografického filtrování, jednoduše vyberte *geografické umístění* jako typ shody a pak vyberte zemi nebo země, které chcete povolit nebo zablokovat z aplikace. Další informace najdete v článku [jak vytvořit vlastní pravidla v prostředí Powershellu](configure-waf-custom-rules.md) a další příklady vlastních pravidel (vytvořit vlastní rules.md).
+Pokud chcete vytvořit vlastní pravidlo geografického filtrování, stačí jako typ shody vybrat *geografickou polohu* a pak vybrat země nebo země, které chcete v aplikaci zablokovat/blokovat. Další informace najdete [v tématu Vytvoření vlastních pravidel v PowerShellu](configure-waf-custom-rules.md) a více příkladů vlastních pravidel (Create-Custom-waf-Rules.MD).
 
 > [!IMPORTANT]
 > Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="country-codes"></a>Kódy zemí
 
-Pokud používáte operátor Geomatch, mohou být voliči libovolný z následujících dvoumístných kódů zemí. 
+Pokud používáte operátor geografického porovnávání, mohou být selektory libovolné z následujících dvoumístné kódů zemí. 
 
 |Kód země | Název země |
 | ----- | ----- |
@@ -50,7 +50,7 @@ Pokud používáte operátor Geomatch, mohou být voliči libovolný z následuj
 | BH | Bahrajn|
 | BI | Burundi|
 | BJ | Benin|
-| BL | Svatý Barthélemy|
+| BL | Svatý Bartoloměj|
 | BN | Sultanát Brunej|
 | BO | Bolívie|
 | BR | Brazílie|
@@ -209,4 +209,4 @@ Pokud používáte operátor Geomatch, mohou být voliči libovolný z následuj
 
 ## <a name="next-steps"></a>Další kroky
 
-Po sešlápnout o vlastních pravidlech [vytvořte vlastní pravidla](create-custom-waf-rules.md).
+Jakmile se seznámíte s vlastními pravidly, [vytvořte vlastní pravidla](create-custom-waf-rules.md).

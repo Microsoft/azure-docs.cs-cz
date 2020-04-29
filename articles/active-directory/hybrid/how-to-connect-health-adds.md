@@ -17,10 +17,10 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e27287a414a2a4edef3e9090b7d91beb1c70f554
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76897309"
 ---
 # <a name="using-azure-ad-connect-health-with-ad-ds"></a>Používání služby Azure AD Connect Health se službou AD DS
@@ -58,10 +58,10 @@ Ve výchozím nastavení jsme předem vybrali čtyři čítače výkonu. Kliknut
 
 ## <a name="related-links"></a>Související odkazy
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
-* [Instalace agenta stavu Azure AD Connect](how-to-connect-health-agent-install.md)
-* [Operace stavu Azure AD Connect](how-to-connect-health-operations.md)
+* [Instalace agenta Azure AD Connect Health](how-to-connect-health-agent-install.md)
+* [Operace služby Azure AD Connect Health](how-to-connect-health-operations.md)
 * [Používání služby Azure AD Connect Health se službou AD FS](how-to-connect-health-adfs.md)
-* [Použití azure ad připojení stavu pro synchronizaci](how-to-connect-health-sync.md)
+* [Použití Azure AD Connect Health k synchronizaci](how-to-connect-health-sync.md)
 * [Azure AD Connect Health – nejčastější dotazy](reference-connect-health-faq.md)
-* [Historie verzí služby Azure AD Connect Health](reference-connect-health-version-history.md)
+* [Historie verze Azure AD Connect Health](reference-connect-health-version-history.md)
 

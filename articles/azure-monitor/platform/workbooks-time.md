@@ -1,5 +1,5 @@
 ---
-title: Časové parametry sešitů Azure Monitor
+title: Parametry času pro Azure Monitor sešity
 description: Zjednodušení složitých sestav pomocí předem sestavených a vlastních parametrizovaných sešitů
 services: azure-monitor
 author: mrbullwinkle
@@ -10,66 +10,66 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 380b8a7ce286ab06b6935bf63bf3a0e82f371c2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77658009"
 ---
 # <a name="workbook-time-parameters"></a>Parametry času sešitu
 
-Časové parametry umožňují uživatelům nastavit časový kontext analýzy a používají je téměř všechny sestavy. Je poměrně jednoduché nastavení a použití - umožňuje autorům určit časové rozsahy, které se mají zobrazit v rozevíracím seznamu, včetně možnosti pro vlastní časové rozsahy. 
+Časové parametry umožňují uživatelům nastavit časový kontext analýzy a používají je téměř všemi sestavami. Je poměrně jednoduché nastavit a použít – umožňuje autorům určit časové rozsahy, které se mají zobrazit v rozevíracím seznamu, včetně možnosti pro vlastní časové rozsahy. 
 
-## <a name="creating-a-time-parameter"></a>Vytvoření časového parametru
+## <a name="creating-a-time-parameter"></a>Vytvoření parametru času
 1. Začněte s prázdným sešitem v režimu úprav.
-2. Z odkazů v sešitu zvolte _Přidat parametry._
-3. Klikněte na modré tlačítko _Přidat parametr._
-4. V novém podokně parametrů, které se objeví, zadejte:
+2. Vyberte možnost _přidat parametry_ z odkazů v rámci sešitu.
+3. Klikněte na modré tlačítko _Přidat parametr_ .
+4. V podokně nového parametru, které se objeví, zadejte:
     1. Název parametru:`TimeRange`
     2. Typ parametru:`Time range picker`
-    3. Požadované:`checked`
-    4. Dostupné časové rozsahy: Poslední hodina, Posledních 12 hodin, Posledních 24 hodin, Posledních 48 hodin, Posledních 3 dní, Posledních 7 dní a Povolit výběr vlastního časového rozsahu
-5. Chcete-li vytvořit parametr, zvolte "Uložit".
+    3. Požadovanou`checked`
+    4. Dostupné časové rozsahy: poslední hodina, posledních 12 hodin, posledních 24 hodin, poslední 48 hodin, poslední 3 dny, posledních 7 dní a povolený výběr vlastního časového rozsahu
+5. Pokud chcete vytvořit parametr, klikněte na tlačítko Uložit na panelu nástrojů.
 
     ![Obrázek znázorňující vytvoření parametru časového rozsahu](./media/workbooks-time/time-settings.png)
 
-Takto bude sešit vypadat v režimu čtení.
+V takovém případě bude sešit vypadat jako v režimu čtení.
 
 ![Obrázek znázorňující parametr časového rozsahu v režimu čtení](./media/workbooks-time/parameters-time.png)
 
 ## <a name="referencing-a-time-parameter"></a>Odkazování na časový parametr
-### <a name="via-bindings"></a>Přes vázání
+### <a name="via-bindings"></a>Přes vazby
 1. Přidejte do sešitu ovládací prvek dotazu a vyberte prostředek Application Insights.
-2. Většina ovládacích prvků sešitu podporuje výběr rozsahu _časového rozsahu._ Otevřete rozevírací seznam Časový `{TimeRange}` _rozsah_ a vyberte skupinu parametrů časového okruhu v dolní části.
-3. Tím se sváže parametr časového rozsahu s časovým rozsahem grafu. Časový rozsah ukázkového dotazu je nyní Posledních 24 hodin.
-4. Spuštění dotazu pro zobrazení výsledků
+2. Většina ovládacích prvků sešitu podporuje výběr oboru _časového rozsahu_ . Otevřete rozevírací seznam _časový rozsah_ a `{TimeRange}` v dolní části vyberte ve skupině parametry časového rozsahu.
+3. Tím se naváže parametr časového rozsahu na časový rozsah grafu. Časový rozsah ukázkového dotazu je nyní za posledních 24 hodin.
+4. Spusťte dotaz, aby se zobrazily výsledky.
 
-    ![Obrázek znázorňující parametr časového rozsahu odkazovaný pomocí vazeb](./media/workbooks-time/time-binding.png)
+    ![Obrázek znázorňující parametr časového rozsahu, na který se odkazuje pomocí vazeb](./media/workbooks-time/time-binding.png)
 
 ### <a name="in-kql"></a>V KQL
 1. Přidejte do sešitu ovládací prvek dotazu a vyberte prostředek Application Insights.
-2. V kql zadejte filtr časového oboru pomocí parametru:`| where timestamp {TimeRange}`
-3. Tím se zrozšiřuje doba `| where timestamp > ago(1d)`vyhodnocení dotazu na , což je hodnota časového rozsahu parametru.
-4. Spuštění dotazu pro zobrazení výsledků
+2. Do KQL zadejte filtr oboru času pomocí parametru:`| where timestamp {TimeRange}`
+3. Tím se rozšíří doba vyhodnocování dotazu na `| where timestamp > ago(1d)`, což je hodnota časového rozsahu parametru.
+4. Spusťte dotaz, aby se zobrazily výsledky.
 
-    ![Obrázek znázorňující časový rozsah odkazovaný v KQL](./media/workbooks-time/time-in-code.png)
+    ![Obrázek znázorňující časový rozsah, na který odkazuje KQL](./media/workbooks-time/time-in-code.png)
 
 ### <a name="in-text"></a>V textu 
-1. Přidání textového ovládacího prvku do sešitu
-2. Do markdownu zadejte`The chosen time range is {TimeRange:label}`
-3. Zvolit _hotovou úpravu_
-4. Ovládací prvek textu zobrazí text: _Zvolený časový rozsah je Posledních 24 hodin_
+1. Přidejte textový ovládací prvek do sešitu.
+2. Do Markdownu zadejte`The chosen time range is {TimeRange:label}`
+3. Zvolit _hotové úpravy_
+4. Ovládací prvek text zobrazí text: _zvolený časový rozsah je posledních 24 hodin_ .
 
-## <a name="time-parameter-options"></a>Možnosti časového parametru
+## <a name="time-parameter-options"></a>Možnosti parametrů času
 | Parametr | Vysvětlení | Příklad |
 | ------------- |:-------------|:-------------|
 | `{TimeRange}` | Popisek časového rozsahu | Posledních 24 hodin |
 | `{TimeRange:label}` | Popisek časového rozsahu | Posledních 24 hodin |
-| `{TimeRange:value}` | Hodnota časového rozsahu | > před(1d) |
-| `{TimeRange:query}` | Dotaz časového rozsahu | > před(1d) |
-| `{TimeRange:start}` | Čas zahájení časového rozsahu | 3/20/2019 16:18 |
-| `{TimeRange:end}` | Čas ukončení časového rozsahu | 3/21/2019 16:18 |
-| `{TimeRange:grain}` | Zrnitost časového rozsahu | 30 m |
+| `{TimeRange:value}` | Hodnota časového rozsahu | > před (1d) |
+| `{TimeRange:query}` | Dotaz na časový rozsah | > před (1d) |
+| `{TimeRange:start}` | Čas zahájení časového rozsahu | 3/20/2019 4:18 ODP. |
+| `{TimeRange:end}` | Čas ukončení časového rozsahu | 3/21/2019 4:18 ODP. |
+| `{TimeRange:grain}` | Zrnitosti časového rozsahu | 30 m |
 
 
 ### <a name="using-parameter-options-in-a-query"></a>Použití možností parametrů v dotazu
@@ -80,5 +80,5 @@ requests
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Začínáte](workbooks-visualizations.md) se učit další informace o sešitech, mnoho bohatých možností vizualizací.
-* [Řízení](workbooks-access-control.md) a sdílení přístupu k prostředkům sešitu
+* [Začínáme](workbooks-visualizations.md) se dozvědět více o seznámcích s mnoha různými možnostmi vizualizací.
+* [Řízení](workbooks-access-control.md) a sdílení přístupu k prostředkům sešitu.

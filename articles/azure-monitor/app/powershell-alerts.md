@@ -1,36 +1,36 @@
 ---
-title: Nastavení výstrah v application insights pomocí Powershellu | Dokumenty společnosti Microsoft
-description: Automatizujte konfiguraci Application Insights a získejte e-maily o změnách metrik.
+title: Použití PowerShellu k nastavení výstrah v Application Insights | Microsoft Docs
+description: Automatizujte konfiguraci Application Insights, abyste získali e-maily o změnách metriky.
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.openlocfilehash: c19cb43d08b44b55c786e750e64a83e6f0c67381
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77669841"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>Použití prostředí PowerShell k nastavení výstrahy v nástroji Application Insights
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Konfiguraci [výstrah](../../azure-monitor/app/alerts.md) můžete automatizovat v [application insights](../../azure-monitor/app/app-insights-overview.md).
+Můžete automatizovat konfiguraci [výstrah](../../azure-monitor/app/alerts.md) v [Application Insights](../../azure-monitor/app/app-insights-overview.md).
 
-Kromě toho můžete [nastavit webhooky pro automatizaci odpovědi na výstrahu](../../azure-monitor/platform/alerts-webhooks.md).
+Kromě toho můžete [nastavit Webhooky pro automatizaci odpovědi na výstrahu](../../azure-monitor/platform/alerts-webhooks.md).
 
 > [!NOTE]
-> Pokud chcete vytvářet prostředky a výstrahy současně, zvažte [použití šablony Azure Resource Manager](powershell.md).
+> Pokud chcete současně vytvořit prostředky a výstrahy, zvažte [použití šablony Azure Resource Manager](powershell.md).
 
-## <a name="one-time-setup"></a>Jednorázové nastavení
-Pokud jste powershell s předplatným Azure ještě nepoužívali:
+## <a name="one-time-setup"></a>Nastavení jednorázového času
+Pokud jste ještě nepoužili prostředí PowerShell s předplatným Azure, postupujte takto:
 
-Nainstalujte modul Azure Powershell do počítače, kde chcete spustit skripty.
+Na počítač, na který chcete spouštět skripty, nainstalujte modul Azure PowerShell.
 
-* Nainstalujte [Instalační službu webové platformy Společnosti Microsoft (v5 nebo vyšší).](https://www.microsoft.com/web/downloads/platform.aspx)
-* Použijte ho k instalaci Microsoft Azure Powershellu
+* Nainstalujte [Instalace webové platformy Microsoft (verze 5 nebo novější)](https://www.microsoft.com/web/downloads/platform.aspx).
+* Použijte ho k instalaci Microsoft Azure PowerShellu.
 
 ## <a name="connect-to-azure"></a>Připojení k Azure
-Spusťte Azure PowerShell a [připojte se k předplatnému:](/powershell/azure/overview)
+Začněte Azure PowerShell a [Připojte se k předplatnému](/powershell/azure/overview):
 
 ```powershell
 
@@ -38,7 +38,7 @@ Spusťte Azure PowerShell a [připojte se k předplatnému:](/powershell/azure/o
 ```
 
 
-## <a name="get-alerts"></a>Dostávat upozornění
+## <a name="get-alerts"></a>Získat výstrahy
     Get-AzAlertRule -ResourceGroup "Fabrikam" [-Name "My rule"] [-DetailedOutput]
 
 ## <a name="add-alert"></a>Přidat výstrahu
@@ -57,9 +57,9 @@ Spusťte Azure PowerShell a [připojte se k předplatnému:](/powershell/azure/o
 
 
 ## <a name="example-1"></a>Příklad 1
-Napište mi, jestli je odpověď serveru na požadavky HTTP, v průměru za 5 minut, pomalejší než 1 sekunda. Můj prostředek Application Insights se nazývá IceCreamWebApp a je ve skupině prostředků Fabrikam. Jsem vlastníkem předplatného Azure.
+Poslat mi e-mail, pokud odpověď serveru na požadavky HTTP, průměrně za 5 minut, je pomalejší než 1 sekunda. Můj prostředek Application Insights se nazývá IceCreamWebApp a je ve skupině prostředků Fabrikam. Jsem vlastníkem předplatného Azure.
 
-Identifikátor GUID je ID předplatného (nikoli instrumentační klíč aplikace).
+Identifikátor GUID je ID předplatného (ne klíč instrumentace aplikace).
 
     Add-AzMetricAlertRule -Name "slow responses" `
      -Description "email me if the server responds slowly" `
@@ -73,7 +73,7 @@ Identifikátor GUID je ID předplatného (nikoli instrumentační klíč aplikac
      -Location "East US" -RuleType Metric
 
 ## <a name="example-2"></a>Příklad 2
-Mám aplikaci, ve které používám [TrackMetric()](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) k nahlášení metriky s názvem "salesPerHour". Pošlete e-mail svým kolegům, pokud "salesPerHour" klesne pod 100, v průměru za 24 hodin.
+Mám aplikaci, ve které používám [TrackMetric ()](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) k hlášení metriky s názvem "salesPerHour". Pošle e-mail kolegům, pokud "salesPerHour" klesne pod 100, průměrně za 24 hodin.
 
     Add-AzMetricAlertRule -Name "poor sales" `
      -Description "slow sales alert" `
@@ -86,48 +86,48 @@ Mám aplikaci, ve které používám [TrackMetric()](../../azure-monitor/app/api
      -CustomEmails "satish@fabrikam.com","lei@fabrikam.com" `
      -Location "East US" -RuleType Metric
 
-Stejné pravidlo lze použít pro metriku hlášenou pomocí [parametru měření](../../azure-monitor/app/api-custom-events-metrics.md#properties) jiného volání sledování, jako je TrackEvent nebo trackPageView.
+Stejné pravidlo lze použít pro metriku nahlášenou pomocí [parametru měření](../../azure-monitor/app/api-custom-events-metrics.md#properties) jiného sledovacího volání, jako je například TrackEvent nebo trackPageView.
 
 ## <a name="metric-names"></a>Názvy metrik
 | Název metriky | Název obrazovky | Popis |
 | --- | --- | --- |
-| `basicExceptionBrowser.count` |Výjimky prohlížečů |Počet nezachycených výjimek vyváděných v prohlížeči. |
-| `basicExceptionServer.count` |Výjimky serveru |Počet neošetřených výjimek vyvržených aplikací |
-| `clientPerformance.clientProcess.value` |Doba zpracování klienta |Doba mezi přijetím posledního bajtu dokumentu do načtení dom. Asynchronní požadavky mohou být stále zpracování. |
-| `clientPerformance.networkConnection.value` |Čas připojení sítě načítání stránky |Čas, který prohlížeč potřebuje k připojení k síti. Může být 0, pokud je uložena v mezipaměti. |
-| `clientPerformance.receiveRequest.value` |Doba odezvy příjmu |Doba mezi odesláním požadavku prohlížeče na zahájení příjmu odpovědi. |
-| `clientPerformance.sendRequest.value` |Čas odeslání požadavku |Čas, který prohlížeč odebere k odeslání požadavku. |
-| `clientPerformance.total.value` |Čas načítání stránky prohlížeče |Čas od požadavku uživatele až do DOM, styly, skripty a obrázky jsou načteny. |
-| `performanceCounter.available_bytes.value` |Dostupná paměť |Fyzická paměť je okamžitě k dispozici pro proces nebo pro použití v systému. |
-| `performanceCounter.io_data_bytes_per_sec.value` |Rychlost varychlost vi procesu |Celkový počet bajtů za sekundu čtení a zápis do souborů, sítě a zařízení. |
-| `performanceCounter.number_of_exceps_thrown_per_sec.value` |míra výjimek |Výjimky vyvolány za sekundu. |
-| `performanceCounter.percentage_processor_time.value` |Procesní procesor |Procento uplynulého času všech vláken procesu používaných procesorem k provedení pokynů pro proces aplikace. |
-| `performanceCounter.percentage_processor_total.value` |Čas procesoru |Procento času, který procesor stráví v vláknech bez nečinnosti. |
-| `performanceCounter.process_private_bytes.value` |Zpracovat soukromé bajty |Paměť je přiřazena výhradně procesům monitorované aplikace. |
-| `performanceCounter.request_execution_time.value` |ASP.NET čas spuštění požadavku |Doba spuštění poslední ho požadavku. |
-| `performanceCounter.requests_in_application_queue.value` |ASP.NET požadavky ve frontě spuštění |Délka fronty žádostí o aplikaci. |
-| `performanceCounter.requests_per_sec.value` |ASP.NET míra požadavků |Rychlost všech požadavků na aplikaci za sekundu od ASP.NET. |
-| `remoteDependencyFailed.durationMetric.count` |Selhání závislostí |Počet neúspěšných volání serverových aplikací do externích prostředků. |
-| `request.duration` |Doba odezvy serveru |Doba mezi přijetím požadavku HTTP a dokončením odeslání odpovědi. |
-| `request.rate` |Míra požadavků |Rychlost všech požadavků na aplikaci za sekundu. |
-| `requestFailed.count` |Neúspěšné požadavky |Počet požadavků HTTP, které vedly k kódu odpovědi >= 400 |
-| `view.count` |Zobrazení stránky |Počet požadavků uživatelů klienta na webovou stránku. Syntetický provoz je odfiltrován. |
-| {název vlastní metriky} |{Název metriky} |Vaše metrická hodnota vykázaná [společností TrackMetric](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) nebo parametrem [měření sledovacího volání](../../azure-monitor/app/api-custom-events-metrics.md#properties). |
+| `basicExceptionBrowser.count` |Výjimky prohlížečů |Počet nezachycených výjimek vyvolaných v prohlížeči |
+| `basicExceptionServer.count` |Výjimky serveru |Počet neošetřených výjimek vyvolaných aplikací |
+| `clientPerformance.clientProcess.value` |Doba zpracování klienta |Doba mezi přijetím posledního bajtu dokumentu, dokud není načten DOM. Je možné, že se stále zpracovávají asynchronní požadavky. |
+| `clientPerformance.networkConnection.value` |Doba připojení k síti – načtení stránky |Čas, který prohlížeč potřebuje k připojení k síti. Pokud ukládáte do mezipaměti, může být 0. |
+| `clientPerformance.receiveRequest.value` |Doba přijetí odezvy |Doba mezi prohlížečem, který odesílá požadavek na přijetí odpovědi. |
+| `clientPerformance.sendRequest.value` |Čas požadavku na odeslání |Doba, kterou prohlížeč odešle požadavek. |
+| `clientPerformance.total.value` |Doba načítání stránky v prohlížeči |Čas od žádosti uživatele do načtení DOM, šablon stylů, skriptů a imagí. |
+| `performanceCounter.available_bytes.value` |Dostupná paměť |K okamžitému zpřístupnění fyzické paměti pro proces nebo pro použití systémem. |
+| `performanceCounter.io_data_bytes_per_sec.value` |Rychlost zpracování v/v |Celkový počet bajtů za sekundu přečtených a zapsaných do souborů, sítě a zařízení. |
+| `performanceCounter.number_of_exceps_thrown_per_sec.value` |míra výjimek |Výjimky vyvolané za sekundu. |
+| `performanceCounter.percentage_processor_time.value` |PROCESOR procesů |Procentuální hodnota uplynulého času všech vláken procesu používaných procesorem k provádění instrukcí pro proces aplikace. |
+| `performanceCounter.percentage_processor_total.value` |Čas procesoru |Procento času, které procesor stráví v nečinných vláknech |
+| `performanceCounter.process_private_bytes.value` |Nesdílené bajty procesu |Paměť exkluzivně přiřazená k procesům monitorovaných aplikací. |
+| `performanceCounter.request_execution_time.value` |Doba provádění žádosti ASP.NET |Čas provedení posledního požadavku. |
+| `performanceCounter.requests_in_application_queue.value` |Žádosti ASP.NET ve frontě spuštění |Délka fronty požadavků aplikace |
+| `performanceCounter.requests_per_sec.value` |Počet požadavků ASP.NET |Míra všech požadavků na aplikaci za sekundu z ASP.NET. |
+| `remoteDependencyFailed.durationMetric.count` |Selhání závislosti |Počet neúspěšných volání prováděných serverovou aplikací vůči externím prostředkům |
+| `request.duration` |Doba odezvy serveru |Doba mezi přijetím požadavku HTTP a dokončením odesílání odpovědi |
+| `request.rate` |Počet požadavků |Míra všech žádostí na aplikaci za sekundu. |
+| `requestFailed.count` |Neúspěšné požadavky |Počet požadavků HTTP, jejichž výsledkem byl kód odpovědi >= 400 |
+| `view.count` |Zobrazení stránek |Počet požadavků uživatelů klienta na webovou stránku. Syntetická přenosová data se odfiltrují. |
+| {vlastní název metriky} |{Název metriky} |Hodnota metriky hlášené [TrackMetric](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) nebo v [parametru měření sledovacího hovoru](../../azure-monitor/app/api-custom-events-metrics.md#properties). |
 
 Metriky jsou odesílány různými moduly telemetrie:
 
-| Skupina metrik | Modul kolektoru |
+| Skupina metrik | Modul sběrače |
 | --- | --- |
-| basicExceptionBrowser,<br/>výkon klienta,<br/>Prohlédni |[JavaScript prohlížeče](../../azure-monitor/app/javascript.md) |
-| Performancecounter |[Výkon](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
+| basicExceptionBrowser,<br/>clientPerformance,<br/>zobrazení |[JavaScript v prohlížeči](../../azure-monitor/app/javascript.md) |
+| performanceCounter |[Výkon](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 | remoteDependencyFailed |[Závislost](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
-| Požadavek<br/>požadavek Se nezdařilo. |[Požadavek serveru](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
+| Request<br/>requestFailed |[Žádost serveru](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 
 ## <a name="webhooks"></a>Webhooky
-Odpověď [na výstrahu](../../azure-monitor/platform/alerts-webhooks.md)můžete automatizovat . Azure bude volat webovou adresu podle vašeho výběru, když je vyvolána výstraha.
+[Odpověď na výstrahu můžete automatizovat](../../azure-monitor/platform/alerts-webhooks.md). Když se vygeneruje výstraha, Azure zavolá webovou adresu dle vašeho výběru.
 
 ## <a name="see-also"></a>Viz také
-* [Skript pro konfiguraci přehledů aplikací](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
-* [Vytváření přehledů aplikací a webových testovacích prostředků ze šablon](powershell.md)
-* [Automatizace propojení diagnostiky Microsoft Azure s přehledy aplikací](powershell-azure-diagnostics.md)
+* [Skript pro konfiguraci Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
+* [Vytvoření prostředků Application Insights a webového testu ze šablon](powershell.md)
+* [Automatizace Diagnostika Microsoft Azure Application Insights](powershell-azure-diagnostics.md)
 * [Automatizace odpovědi na výstrahu](../../azure-monitor/platform/alerts-webhooks.md)

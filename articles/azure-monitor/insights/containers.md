@@ -1,27 +1,27 @@
 ---
-title: Řešení monitorování kontejnerů ve službě Azure Monitor | Dokumenty společnosti Microsoft
-description: Řešení monitorování kontejnerů ve službě Azure Monitor vám pomůže zobrazit a spravovat hostitele kontejnerů Dockeru a Windows na jednom místě.
+title: Řešení monitorování kontejnerů v Azure Monitor | Microsoft Docs
+description: Řešení pro monitorování kontejnerů v Azure Monitor vám pomůže zobrazit a spravovat hostitele kontejnerů pro Docker a Windows v jednom umístění.
 ms.subservice: logs
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 07/22/2019
 ms.openlocfilehash: 171f897f6e110e8f759281c139addab477ecede3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77664690"
 ---
-# <a name="container-monitoring-solution-in-azure-monitor"></a>Řešení monitorování kontejnerů ve službě Azure Monitor
+# <a name="container-monitoring-solution-in-azure-monitor"></a>Řešení pro monitorování kontejnerů v Azure Monitor
 
 ![Symbol kontejnerů](./media/containers/containers-symbol.png)
 
-Tento článek popisuje, jak nastavit a používat řešení monitorování kontejnerů v Azure Monitoru, které vám pomůže zobrazit a spravovat hostitele kontejnerů Dockeru a Windows na jednom místě. Docker je systém virtualizace softwaru, který se používá k vytváření kontejnerů, které automatizují nasazení softwaru do jejich INFRASTRUKTURY IT.
+Tento článek popisuje, jak nastavit a použít řešení pro monitorování kontejnerů v Azure Monitor, které vám pomůže zobrazit a spravovat hostitele kontejnerů pro Docker a Windows v jednom umístění. Docker je systém virtualizace softwaru, který slouží k vytváření kontejnerů, které automatizují nasazení softwaru do své IT infrastruktury.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Řešení ukazuje, které kontejnery jsou spuštěny, jaké image kontejneru jsou spuštěny a kde kontejnery jsou spuštěny. Můžete zobrazit podrobné informace o auditu zobrazující příkazy používané s kontejnery. A můžete řešit problémy s kontejnery zobrazením a prohledáváním centralizovaných protokolů, aniž byste museli vzdáleně zobrazovat hostitele Dockeru nebo Windows. Můžete najít kontejnery, které mohou být hlučné a spotřebovávají přebytečné prostředky na hostiteli. A můžete zobrazit centralizované procesoru, paměti, úložiště a využití sítě a informace o výkonu pro kontejnery. V počítačích se systémem Windows můžete centralizovat a porovnávat protokoly z kontejnerů Windows Server, Hyper-V a Docker. Řešení podporuje následující kontejnerové orchestrátory:
+Toto řešení ukazuje, které kontejnery jsou spuštěny, jaká image kontejneru je spuštěná a kde jsou spuštěné kontejnery. Můžete zobrazit podrobné informace o auditu, které zobrazují příkazy používané s kontejnery. A můžete řešit problémy s kontejnery zobrazením a prohledáváním centralizovaných protokolů, aniž byste museli vzdáleně zobrazovat hostitele Docker nebo Windows. Můžete najít kontejnery, které mohou být v hostiteli na vysokou úroveň a spotřebovávat nadbytečné prostředky. A můžete zobrazit centralizované informace o využití procesoru, paměti, úložiště a sítě a informace o výkonu pro kontejnery. V počítačích se systémem Windows můžete centralizovat a porovnat protokoly z Windows serveru, Hyper-V a kontejnerů Docker. Řešení podporuje následující orchestrace kontejnerů:
 
 - Docker Swarm
 - DC/OS
@@ -29,61 +29,61 @@ Tento článek popisuje, jak nastavit a používat řešení monitorování kont
 - Service Fabric
 - Red Hat OpenShift
 
-Pokud máte kontejnery nasazené v [Azure Service Fabric](../../service-fabric/service-fabric-overview.md), doporučujeme povolit řešení Service [Fabric](../../service-fabric/service-fabric-diagnostics-oms-setup.md) a toto řešení zahrnout monitorování událostí clusteru. Před povolením service fabric řešení, zkontrolujte [pomocí service fabric řešení](../../service-fabric/service-fabric-diagnostics-event-analysis-oms.md) pochopit, co poskytuje a jak ji používat.
+Pokud máte kontejnery nasazené v [Azure Service Fabric](../../service-fabric/service-fabric-overview.md), doporučujeme povolit [řešení Service Fabric](../../service-fabric/service-fabric-diagnostics-oms-setup.md) i toto řešení, aby zahrnovalo monitorování událostí clusteru. Než povolíte řešení Service Fabric, přečtěte si téma [řešení Service Fabric](../../service-fabric/service-fabric-diagnostics-event-analysis-oms.md) , abyste porozuměli tomu, co nabízí a jak ho používat.
 
-Pokud máte zájem o sledování výkonu vašich úloh nasazených v prostředích Kubernetes hostovaných ve službě Azure Kubernetes Service (AKS), přečtěte si část [Sledování služby Azure Kubernetes](../../azure-monitor/insights/container-insights-overview.md). Řešení monitorování kontejnerů nepodporuje monitorování této platformy.  
+Pokud vás zajímá monitorování výkonu vašich úloh nasazených do prostředí Kubernetes hostovaných ve službě Azure Kubernetes Service (AKS), přečtěte si téma [monitorování služby Azure Kubernetes](../../azure-monitor/insights/container-insights-overview.md). Řešení pro monitorování kontejnerů nepodporuje monitorování této platformy.  
 
-Následující diagram znázorňuje vztahy mezi různými hostiteli kontejnerů a agenty pomocí Azure Monitoru.
+Následující diagram znázorňuje vztahy mezi různými hostiteli kontejnerů a agenty s Azure Monitor.
 
 ![Diagram kontejnerů](./media/containers/containers-diagram.png)
 
-## <a name="system-requirements-and-supported-platforms"></a>Systémové požadavky a podporované platformy
+## <a name="system-requirements-and-supported-platforms"></a>Požadavky na systém a podporované platformy
 
-Před zahájením zkontrolujte následující podrobnosti a ověřte, zda splňujete požadavky.
+Než začnete, Projděte si následující podrobnosti, abyste ověřili splnění požadovaných požadavků.
 
-### <a name="container-monitoring-solution-support-for-docker-orchestrator-and-os-platform"></a>Podpora řešení monitorování kontejnerů pro platformu Docker Orchestrator a OS
+### <a name="container-monitoring-solution-support-for-docker-orchestrator-and-os-platform"></a>Podpora řešení pro monitorování kontejnerů pro Docker Orchestrator a platformu OS
 
-Následující tabulka popisuje podporu orchestrace dockeru a monitorování operačního systému inventáře kontejnerů, výkonu a protokolů pomocí Azure Monitoru.   
+Následující tabulka popisuje podporu pro orchestraci a monitorování operačního systému pro inventář kontejnerů, výkon a protokoly s Azure Monitor.   
 
 | | ACS | Linux | Windows | Kontejner<br>Inventarizace | Image<br>Inventarizace | Node<br>Inventarizace | Kontejner<br>Výkon | Kontejner<br>Událost | Událost<br>Protokol | Kontejner<br>Protokol |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 | Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
-| Mezosféra<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
-| Docker<br>Roj | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
+| Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
+| Docker<br>Swarm | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
 | Služba<br>Fabric | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
-| Červený klobouk otevřený<br>Shift | | &#8226; | | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; | | &#8226; |
-| Windows Server<br>(samostatně) | | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
-| Linux Server<br>(samostatně) | | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
+| Red Hat – otevřeno<br>Posouvá | | &#8226; | | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; | | &#8226; |
+| Windows Server<br>skupin | | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
+| Server Linux<br>skupin | | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
 
-### <a name="docker-versions-supported-on-linux"></a>Verze Dockeru podporované na Linuxu
+### <a name="docker-versions-supported-on-linux"></a>Verze Docker podporované v systému Linux
 
-- Docker 1,11 až 1,13
-- Docker CE a EE v17.06
+- Docker 1,11 na 1,13
+- Docker CE a EE v 17.06
 
-### <a name="x64-linux-distributions-supported-as-container-hosts"></a>Linuxové distribuce x64 podporované jako hostitelé kontejnerů
+### <a name="x64-linux-distributions-supported-as-container-hosts"></a>distribuce x64 pro Linux podporovaná jako hostitelé kontejnerů
 
-- Ubuntu 14.04 LTS a 16.04 LTS
+- Ubuntu 14,04 LTS a 16,04 LTS
 - CoreOS (stabilní)
 - Amazon Linux 2016.09.0
 - openSUSE 13.2
-- openSUSE LEAP 42.2
+- openSUSE, přestupné 42,2
 - CentOS 7,2 a 7,3
 - SLES 12
-- RHEL 7.2 a 7.3
-- Red Hat OpenShift kontejnerová platforma (OCP) 3.4 a 3.5
-- ACS Mesosphere DC/OS 1.7.3 až 1.8.8
-- ACS Kubernetes 1,4,5 až 1,6
-    - Kubernetesovy události, inventář Kubernetes a kontejnerové procesy jsou podporovány pouze ve verzi 1.4.1-45 a později s agentem Log Analytics pro Linux.
-- ACS Docker Roj
+- RHEL 7,2 a 7,3
+- Platforma Red Hat OpenShift Container Platform (OCP) 3,4 a 3,5
+- ACS Mesosphere DC/OS 1.7.3 na 1.8.8
+- ACS Kubernetes 1.4.5 na 1,6
+    - Kubernetes události, inventář Kubernetes a procesy kontejneru se podporují jenom s verzí 1.4.1-45 a novějším agenta Log Analytics pro Linux.
+- Swarm Docker služby ACS
 
 [!INCLUDE [log-analytics-agent-note.md](../../../includes/log-analytics-agent-note.md)] 
 
 ### <a name="supported-windows-operating-system"></a>Podporovaný operační systém Windows
 
 - Windows Server 2016
-- Windows 10 Anniversary Edition (Professional nebo Enterprise)
+- Windows 10 výročí Edition (Professional nebo Enterprise)
 
-### <a name="docker-versions-supported-on-windows"></a>Verze Dockeru podporované ve Windows
+### <a name="docker-versions-supported-on-windows"></a>Verze Docker podporované ve Windows
 
 - Docker 1,12 a 1,13
 - Docker 17.03.0 a novější
@@ -92,71 +92,71 @@ Následující tabulka popisuje podporu orchestrace dockeru a monitorování ope
 
 K instalaci a konfiguraci řešení můžete použít následující informace.
 
-1. Přidejte řešení monitorování kontejnerů do pracovního prostoru Log Analytics z [webu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) nebo pomocí procesu popsaného v části Přidat řešení monitorování z Galerie [řešení](../../azure-monitor/insights/solutions.md).
+1. Přidejte řešení pro monitorování kontejnerů do pracovního prostoru Log Analytics z [webu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) nebo pomocí procesu popsaného v tématu [Přidání řešení monitorování z galerie řešení](../../azure-monitor/insights/solutions.md).
 
-2. Nainstalujte a používejte Docker s agentem Analýzy protokolů. Na základě operačního systému a Orchestrtor Docker, můžete použít následující metody ke konfiguraci agenta.
+2. Nainstalujte a použijte Docker s agentem Log Analytics. V závislosti na operačním systému a Docker Orchestrator můžete ke konfiguraci agenta použít následující metody.
    - Pro samostatné hostitele:
-     - Na podporovaných operačních systémech Linux nainstalujte a spusťte Docker a potom nainstalujte a nakonfigurujte [agenta Log Analytics pro Linux](../../azure-monitor/learn/quick-collect-linux-computer.md).  
-     - Na CoreOS nelze spustit agenta Analýzy protokolů pro Linux. Místo toho spustíte kontejnerizovanou verzi agenta Log Analytics pro Linux. Zkontrolujte hostitele kontejnerů Linuxu, včetně hostitelů kontejnerů CoreOS nebo Azure Government Linux, včetně CoreOS, pokud pracujete s kontejnery v Azure Government Cloud.
-     - Ve Windows Serveru 2016 a Windows 10 nainstalujte Docker Engine a klienta a pak připojte agenta, který shromažďuje informace a odesílá je do Azure Monitoru. Pokud máte prostředí Windows, [zkontrolujte instalaci a konfiguraci hostitelů kontejnerů systému Windows.](#install-and-configure-windows-container-hosts)
-   - Pro orchestraci více hostitelů v Dockeru:
-     - Pokud máte prostředí Red Hat OpenShift, přečtěte si recenzi konfigurace agenta Analýzy protokolů pro Red Hat OpenShift.
-     - Pokud máte cluster Kubernetes pomocí služby Azure Container Service:
-       - Zkontrolujte [Konfigurace agenta Linuxu log Analytics pro Kubernetes](#configure-a-log-analytics-linux-agent-for-kubernetes).
-       - [Zkontrolujte, nakonfigurujte agenta systému Windows pro analýzu protokolů pro společnost Kubernetes](#configure-a-log-analytics-windows-agent-for-kubernetes).
-       - Zkontrolujte, použijte Helm k nasazení agenta Log Analytics na Linux Kubernetes.
-     - Pokud máte cluster Azure Container Service DC/OS, další informace najdete v [monitoru Azure Container Service DC/OS clusteru s Azure Monitor](../../container-service/dcos-swarm/container-service-monitoring-oms.md).
-     - Pokud máte prostředí režimu Docker Swarm, další informace najdete na konfiguraci agenta Analýzy protokolů pro Docker Swarm.
-     - Pokud máte cluster Service Fabric, další informace o [monitorování kontejnerů s Azure Monitor](../../service-fabric/service-fabric-diagnostics-oms-containers.md).
+     - V podporovaných operačních systémech Linux nainstalujte a spusťte Docker a pak nainstalujte a nakonfigurujte [agenta Log Analytics pro Linux](../../azure-monitor/learn/quick-collect-linux-computer.md).  
+     - V CoreOS nemůžete spustit agenta Log Analytics pro Linux. Místo toho spustíte kontejnerovou verzi Log Analytics agenta pro Linux. Pokud pracujete s kontejnery v Azure Government cloudu, přečtěte si téma hostitelé pro Linux kontejnerů, včetně CoreOS nebo Azure Government hostitelů kontejnerů Linux, včetně CoreOS.
+     - V systémech Windows Server 2016 a Windows 10 nainstalujte modul Docker a klienta a pak připojte agenta, abyste mohli shromažďovat informace a odesílali je Azure Monitor. Pokud máte prostředí systému Windows, přečtěte si téma [instalace a konfigurace hostitelů kontejnerů Windows](#install-and-configure-windows-container-hosts) .
+   - Pro orchestraci více hostitelů Docker:
+     - Pokud máte prostředí Red Hat OpenShift, přečtěte si téma Konfigurace agenta Log Analytics pro Red Hat OpenShift.
+     - Pokud máte cluster Kubernetes s použitím Azure Container Service:
+       - Přečtěte si téma [Konfigurace agenta Log Analytics Linux pro Kubernetes](#configure-a-log-analytics-linux-agent-for-kubernetes).
+       - Přečtěte si téma [konfigurace Log Analytics agenta pro Windows pro Kubernetes](#configure-a-log-analytics-windows-agent-for-kubernetes).
+       - Přečtěte si téma použití Helm k nasazení agenta Log Analytics na Linux Kubernetes.
+     - Pokud máte cluster Azure Container Service DC/OS, přečtěte si další informace o [monitorování Azure Container Service clusteru DC/OS pomocí Azure monitor](../../container-service/dcos-swarm/container-service-monitoring-oms.md).
+     - Pokud máte prostředí režimu Docker Swarm, přečtěte si další informace v konfiguraci agenta Log Analytics pro Docker Swarm.
+     - Pokud máte Cluster Service Fabric, přečtěte si další informace o [monitorování kontejnerů pomocí Azure monitor](../../service-fabric/service-fabric-diagnostics-oms-containers.md).
 
-Další informace o instalaci a konfiguraci modulů Docker Engines v počítačích se systémem Windows naleznete v článku Modul u Dockerengine v [systému Windows.](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon)
+Další informace o tom, jak nainstalovat a nakonfigurovat moduly Docker v počítačích se systémem Windows, najdete v článku o nástroji [Docker v systému Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon) .
 
 > [!IMPORTANT]
-> Docker musí být spuštěn **před** instalací [agenta Analýzy protokolů pro Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) na hostitele kontejneru. Pokud jste agenta nainstalovali před instalací Dockeru, musíte přeinstalovat agenta Log Analytics pro Linux. Další informace o Dockeru najdete na [webu Dockeru](https://www.docker.com).
+> **Aby** bylo možné nainstalovat [agenta Log Analytics pro Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) do hostitelů kontejnerů, musí být spuštěný Docker. Pokud jste již agenta nainstalovali před instalací Docker, je nutné přeinstalovat agenta Log Analytics pro Linux. Další informace o Docker najdete na [webu Docker](https://www.docker.com).
 
-### <a name="install-and-configure-linux-container-hosts"></a>Instalace a konfigurace hostitelů kontejnerů Linuxu
+### <a name="install-and-configure-linux-container-hosts"></a>Instalace a konfigurace hostitelů kontejnerů pro Linux
 
-Po instalaci Dockeru použijte následující nastavení pro hostitele kontejneru ke konfiguraci agenta pro použití s Dockerem. Nejprve potřebujete ID pracovního prostoru analýzy protokolů a klíč, který najdete na webu Azure Portal. V pracovním prostoru klepněte na **tlačítko Počítače s rychlým spuštěním** > **Computers** a zobrazte **ID pracovního prostoru** a **primární klíč**.  Obě hodnoty zkopírujte a vložte do oblíbeného editoru.
+Po instalaci Docker použijte následující nastavení pro hostitele kontejneru a nakonfigurujte agenta pro použití s Docker. Nejdřív potřebujete Log Analytics ID a klíč pracovního prostoru, který najdete v Azure Portal. V pracovním prostoru kliknutím na **rychlé zprovoznění** > **počítače** zobrazíte **ID vašeho pracovního prostoru** a **primární klíč**.  Obě hodnoty zkopírujte a vložte do oblíbeného editoru.
 
-**Pro všechny hostitele linuxových kontejnerů s výjimkou CoreOS:**
+**Pro všechny hostitele kontejnerů pro Linux s výjimkou CoreOS:**
 
-- Další informace a kroky k instalaci agenta Log Analytics pro Linux najdete v [tématu Přehled agenta Log Analytics](../../azure-monitor/platform/log-analytics-agent.md).
+- Další informace a postup pro instalaci agenta Log Analytics pro Linux najdete v tématu [Přehled agenta Log Analytics](../../azure-monitor/platform/log-analytics-agent.md).
 
-**Pro všechny hostitele linuxových kontejnerů včetně CoreOS:**
+**Pro všechny hostitele kontejnerů pro Linux, včetně CoreOS:**
 
-Spusťte kontejner, který chcete sledovat. Upravte a použijte následující příklad:
+Spusťte kontejner, který chcete monitorovat. Upravte a použijte následující příklad:
 
 ```
 sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker/containers:/var/lib/docker/containers -e WSID="your workspace id" -e KEY="your key" -h=`hostname` -p 127.0.0.1:25225:25225 --name="omsagent" --restart=always microsoft/oms
 ```
 
-**Pro všechny hostitele kontejnerů Azure Government Linux včetně CoreOS:**
+**Pro všechny Azure Government hostitele kontejnerů Linux, včetně CoreOS:**
 
-Spusťte kontejner, který chcete sledovat. Upravte a použijte následující příklad:
+Spusťte kontejner, který chcete monitorovat. Upravte a použijte následující příklad:
 
 ```
 sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v /var/log:/var/log -v /var/lib/docker/containers:/var/lib/docker/containers -e WSID="your workspace id" -e KEY="your key" -e DOMAIN="opinsights.azure.us" -p 127.0.0.1:25225:25225 -p 127.0.0.1:25224:25224/udp --name="omsagent" -h=`hostname` --restart=always microsoft/oms
 ```
 
-**Přechod z používání nainstalovaného agenta Linuxu na agenta linuxu v kontejneru**
+**Přepínání z použití nainstalovaného agenta Linux na jeden v kontejneru**
 
-Pokud jste dříve používali přímo nainstalovaného agenta a chcete místo toho použít agenta spuštěného v kontejneru, musíte nejprve odebrat agenta Log Analytics pro Linux. Informace o tom, jak úspěšně odinstalovat agenta agenta, najdete v [tématu Odinstalace agenta Analýzy protokolů pro Linux.](../../azure-monitor/learn/quick-collect-linux-computer.md)  
+Pokud jste dříve používali přímo nainstalovaného agenta a chcete místo toho použít agenta běžícího v kontejneru, je nutné nejprve odebrat agenta Log Analytics pro Linux. Informace o tom, jak úspěšně odinstalovat agenta, najdete v tématu [odinstalace agenta Log Analytics pro systém Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) .  
 
-#### <a name="configure-a-log-analytics-agent-for-docker-swarm"></a>Konfigurace agenta analýzy protokolů pro Docker Swarm
+#### <a name="configure-a-log-analytics-agent-for-docker-swarm"></a>Konfigurace agenta Log Analytics pro Docker Swarm
 
-Agenta analýzy protokolů můžete spustit jako globální službu v Docker Swarm. Následující informace slouží k vytvoření služby agenta Log Analytics. Je třeba zadat ID pracovního prostoru analýzy protokolu a primární klíč.
+Agenta Log Analytics můžete spustit jako globální službu v Docker Swarm. Pomocí následujících informací vytvořte službu agenta Log Analytics. Je potřeba zadat ID a primární klíč svého Log Analyticsho pracovního prostoru.
 
-- Spusťte následující v hlavním uzlu.
+- Spusťte následující příkaz na hlavním uzlu.
 
     ```
     sudo docker service create  --name omsagent --mode global  --mount type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock --mount type=bind,source=/var/lib/docker/containers,destination=/var/lib/docker/containers -e WSID="<WORKSPACE ID>" -e KEY="<PRIMARY KEY>" -p 25225:25225 -p 25224:25224/udp  --restart-condition=on-failure microsoft/oms
     ```
 
-##### <a name="secure-secrets-for-docker-swarm"></a>Zabezpečte tajemství pro Docker Swarm
+##### <a name="secure-secrets-for-docker-swarm"></a>Zabezpečené tajné kódy pro Docker Swarm
 
-Pro Docker Swarm, po vytvoření tajného klíče pro ID pracovního prostoru a primární klíč, použijte následující informace k vytvoření tajných informací.
+V případě Docker Swarm se po vytvoření tajného klíče pro ID pracovního prostoru a primární klíč vytvoří informace o tajných klíčích pomocí následujících informací.
 
-1. Spusťte následující v hlavním uzlu.
+1. Spusťte následující příkaz na hlavním uzlu.
 
     ```
     echo "WSID" | docker secret create WSID -
@@ -175,24 +175,24 @@ Pro Docker Swarm, po vytvoření tajného klíče pro ID pracovního prostoru a 
     l9rh3n987g9c45zffuxdxetd9   KEY                 38 minutes ago      38 minutes ago
     ```
 
-3. Spusťte následující příkaz pro připojení tajných kódů k agentovi analýzy protokolů kontejnerizovaného protokolu.
+3. Spusťte následující příkaz pro připojení tajných kódů k kontejneru Log Analytics kontejnerů.
 
     ```
     sudo docker service create  --name omsagent --mode global  --mount type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock --mount type=bind,source=/var/lib/docker/containers,destination=/var/lib/docker/containers --secret source=WSID,target=WSID --secret source=KEY,target=KEY  -p 25225:25225 -p 25224:25224/udp --restart-condition=on-failure microsoft/oms
     ```
 
-#### <a name="configure-a-log-analytics-agent-for-red-hat-openshift"></a>Konfigurace agenta analýzy protokolů pro Red Hat OpenShift
+#### <a name="configure-a-log-analytics-agent-for-red-hat-openshift"></a>Konfigurace agenta Log Analytics pro Red Hat OpenShift
 
-Existují tři způsoby, jak přidat agenta Log Analytics do Red Hat OpenShift začít shromažďovat data monitorování kontejnerů.
+Existují tři způsoby, jak přidat agenta Log Analytics do Red Hat OpenShift a začít shromažďovat data monitorování kontejnerů.
 
-* [Instalace agenta Log Analytics pro Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) přímo na každém uzlu OpenShift  
-* [Povolení rozšíření virtuálního počítače Analýzy protokolů](../../azure-monitor/learn/quick-collect-azurevm.md) na každém uzlu OpenShift s bydlištěm v Azure  
-* Instalace agenta Log Analytics jako sady daemonů OpenShift  
+* [Instalace agenta Log Analytics pro Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) přímo na každý uzel OpenShift  
+* [Povolení rozšíření Log Analytics virtuálního počítače](../../azure-monitor/learn/quick-collect-azurevm.md) v každém uzlu OpenShift, který se nachází v Azure  
+* Instalace agenta Log Analytics jako sady OpenShift démona  
 
-V této části se zabýváme kroky potřebnými k instalaci agenta Log Analytics jako sady daemonů OpenShift.  
+V této části se zabýváme kroky potřebnými k instalaci agenta Log Analytics jako sady démonů OpenShift.  
 
-1. Přihlaste se k hlavnímu uzlu OpenShift a zkopírujte soubor yaml [ocp-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-omsagent.yaml) z GitHubu do hlavního uzlu a upravte hodnotu pomocí ID pracovního prostoru Analýzy protokolů a pomocí primárního klíče.
-2. Spusťte následující příkazy k vytvoření projektu pro Azure Monitor a nastavte uživatelský účet.
+1. Přihlaste se k uzlu hlavní server OpenShift a zkopírujte soubor YAML [OCP-omsagent. yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-omsagent.yaml) z GitHubu do svého hlavního uzlu a upravte hodnotu pomocí ID vašeho pracovního prostoru Log Analytics a s vaším primárním klíčem.
+2. Spuštěním následujících příkazů vytvořte projekt pro Azure Monitor a nastavte uživatelský účet.
 
     ```
     oc adm new-project omslogging --node-selector='zone=default'
@@ -202,15 +202,15 @@ V této části se zabýváme kroky potřebnými k instalaci agenta Log Analytic
     oc adm policy add-scc-to-user privileged system:serviceaccount:omslogging:omsagent  
     ```
 
-3. Chcete-li nasadit sadu daemonů, spusťte následující:
+3. Chcete-li nasadit sadu démonů, spusťte následující příkaz:
 
     `oc create -f ocp-omsagent.yaml`
 
-4. Chcete-li ověřit, zda je nakonfigurovaný a funguje správně, zadejte následující příkaz:
+4. Pokud chcete ověřit, že je nakonfigurovaná a funguje správně, zadejte následující:
 
     `oc describe daemonset omsagent`  
 
-    a výstup by měl připomínat:
+    a výstup by měl vypadat přibližně takto:
 
     ```
     [ocpadmin@khm-0 ~]$ oc describe ds oms  
@@ -228,10 +228,10 @@ V této části se zabýváme kroky potřebnými k instalaci agenta Log Analytic
     No events.  
     ```
 
-Pokud chcete použít tajné klíče k zabezpečení ID pracovního prostoru analýzy protokolu a primárníklíč při použití log Analytics agent daemon-set yaml soubor, proveďte následující kroky.
+Pokud chcete použít tajné klíče k zabezpečení Log Analytics ID a primárního klíče při použití souboru s démonem Log Analytics agenta, proveďte následující kroky.
 
-1. Přihlaste se k hlavnímu uzlu OpenShift a zkopírujte soubor yaml [ocp-ds-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-ds-omsagent.yaml) a skript pro generování tajných služeb [ocp-secretgen.sh](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-secretgen.sh) z GitHubu.  Tento skript vygeneruje soubor yaml tajných kódů pro ID pracovního prostoru Analýzy protokolů a primární klíč pro zabezpečení informací o vylučování.  
-2. Spusťte následující příkazy k vytvoření projektu pro Azure Monitor a nastavte uživatelský účet. Skript pro generování tajných klíčů požádá o `<WSID>` ID `<KEY>` pracovního prostoru analýzy protokolu a primární klíč a po dokončení vytvoří soubor ocp-secret.yaml.  
+1. Přihlaste se k uzlu hlavní server OpenShift a zkopírujte soubor YAML [OCP-DS-omsagent. yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-ds-omsagent.yaml) a tajný kód pro generování skriptu [OCP-secretgen.sh](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-secretgen.sh) z GitHubu.  Tento skript vygeneruje soubor YAML tajných klíčů pro Log Analytics ID pracovního prostoru a primární klíč k zabezpečení informací o tajnosti.  
+2. Spuštěním následujících příkazů vytvořte projekt pro Azure Monitor a nastavte uživatelský účet. Skript pro generování tajného klíče požádá o vaše `<WSID>` ID pracovního prostoru `<KEY>` Log Analytics a primární klíč a po dokončení vytvoří soubor OCP-Secret. yaml.  
 
     ```
     oc adm new-project omslogging --node-selector='zone=default'  
@@ -241,7 +241,7 @@ Pokud chcete použít tajné klíče k zabezpečení ID pracovního prostoru ana
     oc adm policy add-scc-to-user privileged system:serviceaccount:omslogging:omsagent  
     ```
 
-3. Nasadit tajný soubor spuštěním následující:
+3. Soubor tajného klíče nasaďte spuštěním následujícího kódu:
 
     `oc create -f ocp-secret.yaml`
 
@@ -249,7 +249,7 @@ Pokud chcete použít tajné klíče k zabezpečení ID pracovního prostoru ana
 
     `oc describe secret omsagent-secret`  
 
-    a výstup by měl připomínat:  
+    a výstup by měl vypadat přibližně takto:  
 
     ```
     [ocpadmin@khocp-master-0 ~]$ oc describe secret omsagent-secret  
@@ -266,7 +266,7 @@ Pokud chcete použít tajné klíče k zabezpečení ID pracovního prostoru ana
     WSID:   37 bytes  
     ```
 
-5. Nasadit soubor yaml agenta Analýzy protokolů spuštěním následujícího:
+5. Nasaďte soubor YAML s démonem Log Analytics agenta spuštěním následujícího:
 
     `oc create -f ocp-ds-omsagent.yaml`  
 
@@ -274,7 +274,7 @@ Pokud chcete použít tajné klíče k zabezpečení ID pracovního prostoru ana
 
     `oc describe ds oms`
 
-    a výstup by měl připomínat:
+    a výstup by měl vypadat přibližně takto:
 
     ```
     [ocpadmin@khocp-master-0 ~]$ oc describe ds oms  
@@ -292,47 +292,47 @@ Pokud chcete použít tajné klíče k zabezpečení ID pracovního prostoru ana
     No events.  
     ```
 
-#### <a name="configure-a-log-analytics-linux-agent-for-kubernetes"></a>Konfigurace agenta Linuxu log Analytics pro Kubernetes
+#### <a name="configure-a-log-analytics-linux-agent-for-kubernetes"></a>Konfigurace agenta Log Analytics Linux pro Kubernetes
 
-Pro Kubernetes pomocí skriptu ke generování souboru yaml tajných kódů pro vaše ID pracovního prostoru a primární klíč k instalaci agenta Log Analytics pro Linux. Na stránce [GitHub Log Analytics Docker Kubernetes](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes) jsou soubory, které můžete použít s tajnými informacemi nebo bez něj.
+Pro Kubernetes pomocí skriptu vygenerujte soubor tajných klíčů YAML pro ID pracovního prostoru a primární klíč pro instalaci agenta Log Analytics pro Linux. Na stránce [Log Analytics Docker Kubernetes GitHub](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes) se nacházejí soubory, které můžete použít s nebo bez tajných informací.
 
-- Výchozí agent Analýzy protokolů pro Linux DaemonSet nemá tajné informace (omsagent.yaml)
-- Agent Log Analytics pro soubor Linux DaemonSet yaml používá tajné informace (omsagent-ds-secrets.yaml) s tajnými skripty generování ke generování tajných kódů yaml (omsagentsecret.yaml) soubor.
+- Výchozí agent Log Analytics pro Linux DaemonSet nemá tajné informace (omsagent. yaml).
+- Agent Log Analytics pro Linux DaemonSet YAML používá k vygenerování souboru tajných kódů YAML (omsagentsecret. yaml) tajné informace (omsagent-DS-tajné soubory. yaml) se skripty pro generování tajného klíče.
 
-Můžete vytvořit omsagent DaemonSets s nebo bez tajných kódů.
+Můžete si vybrat, že chcete vytvořit omsagent DaemonSets s tajnými kódy nebo bez nich.
 
-**Výchozí OMSagent DaemonSet yaml soubor bez tajných kódů**
+**Výchozí OMSagent soubor YAML DaemonSet bez tajných klíčů**
 
-- Pro výchozí log analytics agent DaemonSet yaml soubor, nahradit `<WSID>` a `<KEY>` na WSID a KLÍČ. Zkopírujte soubor do hlavního uzlu a spusťte následující:
+- Pro výchozí soubor Log Analytics agenta DaemonSet YAML, nahraďte `<WSID>` a `<KEY>` pro WSID a klíč. Zkopírujte soubor do hlavního uzlu a spusťte následující příkaz:
 
     ```
     sudo kubectl create -f omsagent.yaml
     ```
 
-**Výchozí OMSagent DaemonSet yaml soubor s tajnými kódy**
+**Výchozí OMSagent soubor YAML DaemonSet s tajnými kódy**
 
-1. Chcete-li použít agentlog Analytics DaemonSet pomocí tajných informací, vytvořte nejprve tajné kódy.
-    1. Zkopírujte soubor šablony skriptu a tajného klíče a ujistěte se, že jsou ve stejném adresáři.
-        - Tajný generující skript - secret-gen.sh
-        - tajná šablona - secret-template.yaml
-    2. Spusťte skript, stejně jako v následujícím příkladu. Skript požádá o ID pracovního prostoru analýzy protokolů a primární klíč a po jejich zadání skript vytvoří tajný soubor yaml, abyste jej mohli spustit.   
+1. Pokud chcete použít Log Analytics agenta DaemonSet s použitím tajných informací, vytvořte nejdřív tajné klíče.
+    1. Zkopírujte skriptový a tajný soubor šablony a ujistěte se, že jsou ve stejném adresáři.
+        - Tajný kód generování skriptu – secret-gen.sh
+        - Šablona tajného kódu-tajné šablony. yaml
+    2. Spusťte skript, podobně jako v následujícím příkladu. Skript zobrazí výzvu k zadání ID a primárního klíče pracovního prostoru Log Analytics a jakmile je zadáte, skript vytvoří tajný soubor YAML, abyste ho mohli spustit.   
 
         ```
         #> sudo bash ./secret-gen.sh
         ```
 
-    3. Vytvořte pod tajných klíčů spuštěním následující:
+    3. Tajné klíče vytvoříte spuštěním následujícího:
         ```
         sudo kubectl create -f omsagentsecret.yaml
         ```
 
-    4. Chcete-li ověřit, spusťte následující:
+    4. Chcete-li ověřit, spusťte následující příkaz:
 
         ```
         keiko@ubuntu16-13db:~# sudo kubectl get secrets
         ```
 
-        Výstup by měl připomínat:
+        Výstup by měl vypadat přibližně takto:
 
         ```
         NAME                  TYPE                                  DATA      AGE
@@ -344,7 +344,7 @@ Můžete vytvořit omsagent DaemonSets s nebo bez tajných kódů.
         keiko@ubuntu16-13db:~# sudo kubectl describe secrets omsagent-secret
         ```
 
-        Výstup by měl připomínat:
+        Výstup by měl vypadat přibližně takto:
 
         ```
         Name:           omsagent-secret
@@ -360,9 +360,9 @@ Můžete vytvořit omsagent DaemonSets s nebo bez tajných kódů.
         KEY:    88 bytes
         ```
 
-    5. Vytvořte si omsagent daemon-set spuštěním```sudo kubectl create -f omsagent-ds-secrets.yaml```
+    5. Vytvoření omsagent procesu démon-nastaveného spuštěním```sudo kubectl create -f omsagent-ds-secrets.yaml```
 
-2. Ověřte, zda je spuštěna sada agenta Log Analytics, podobně jako následující:
+2. Ověřte, že je spuštěný DaemonSet agenta Log Analytics, podobně jako v následujícím příkladu:
 
     ```
     keiko@ubuntu16-13db:~# sudo kubectl get ds omsagent
@@ -373,7 +373,7 @@ Můžete vytvořit omsagent DaemonSets s nebo bez tajných kódů.
     omsagent   3         3         <none>          1h
     ```
 
-Pro Kubernetes použijte skript ke generování souboru yaml tajných kódů pro ID pracovního prostoru a primárníklíč pro agenta Log Analytics pro Linux. Pomocí následujících ukázkových informací se [souborem omsagent yaml](https://github.com/Microsoft/OMS-docker/blob/master/Kubernetes/omsagent.yaml) zabezpečte tajné informace.
+Pro Kubernetes pomocí skriptu vygenerujte soubor tajných klíčů YAML pro ID pracovního prostoru a primární klíč pro agenta Log Analytics pro Linux. K zabezpečení tajných informací použijte následující příklady informací se [souborem omsagent YAML](https://github.com/Microsoft/OMS-docker/blob/master/Kubernetes/omsagent.yaml) .
 
 ```
 keiko@ubuntu16-13db:~# sudo kubectl describe secrets omsagent-secret
@@ -390,28 +390,28 @@ WSID:   36 bytes
 KEY:    88 bytes
 ```
 
-#### <a name="configure-a-log-analytics-windows-agent-for-kubernetes"></a>Konfigurace agenta systému Windows pro analýzu protokolů pro Kubernetes
+#### <a name="configure-a-log-analytics-windows-agent-for-kubernetes"></a>Konfigurace Log Analytics agenta pro Windows pro Kubernetes
 
-Pro Windows Kubernetes pomocí skriptu ke generování souboru yaml tajných kódů pro id pracovního prostoru a primární klíč k instalaci agenta Log Analytics. Na stránce [GitHub Log Analytics Docker Kubernetes](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes/windows) jsou soubory, které můžete použít s tajnými informacemi.  Je třeba nainstalovat agenta Analýzy protokolů samostatně pro hlavní uzly a uzly agenta.  
+V případě sady Windows Kubernetes použijte skript k vygenerování souboru tajných klíčů YAML pro ID pracovního prostoru a primární klíč pro instalaci agenta Log Analytics. Na stránce [Log Analytics Docker Kubernetes GitHub](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes/windows) se nacházejí soubory, které můžete použít s vašimi tajnými informacemi.  Pro hlavní uzly a uzly agentů je potřeba nainstalovat agenta Log Analytics samostatně.  
 
-1. Chcete-li použít agenta Log Analytics DaemonSet pomocí tajných informací na hlavním uzlu, přihlaste se a vytvořte tajné klíče jako první.
-    1. Zkopírujte soubor šablony skriptu a tajného klíče a ujistěte se, že jsou ve stejném adresáři.
-        - Tajný generující skript - secret-gen.sh
-        - tajná šablona - secret-template.yaml
+1. Pokud chcete použít Log Analytics agenta DaemonSet s použitím tajných informací na hlavním uzlu, přihlaste se a vytvořte nejdřív tajné klíče.
+    1. Zkopírujte skriptový a tajný soubor šablony a ujistěte se, že jsou ve stejném adresáři.
+        - Tajný kód generování skriptu – secret-gen.sh
+        - Šablona tajného kódu-tajné šablony. yaml
 
-    2. Spusťte skript, stejně jako v následujícím příkladu. Skript požádá o ID pracovního prostoru analýzy protokolů a primární klíč a po jejich zadání skript vytvoří tajný soubor yaml, abyste jej mohli spustit.
+    2. Spusťte skript, podobně jako v následujícím příkladu. Skript zobrazí výzvu k zadání ID a primárního klíče pracovního prostoru Log Analytics a jakmile je zadáte, skript vytvoří tajný soubor YAML, abyste ho mohli spustit.
 
         ```
         #> sudo bash ./secret-gen.sh
         ```
-    3. Vytvořte si omsagent daemon-set spuštěním```kubectl create -f omsagentsecret.yaml```
-    4. Chcete-li zkontrolovat, spusťte následující:
+    3. Vytvoření omsagent procesu démon-nastaveného spuštěním```kubectl create -f omsagentsecret.yaml```
+    4. Chcete-li ověřit, spusťte následující příkaz:
 
         ```
         root@ubuntu16-13db:~# kubectl get secrets
         ```
 
-        Výstup by měl připomínat:
+        Výstup by měl vypadat přibližně takto:
 
         ```
         NAME                  TYPE                                  DATA      AGE
@@ -431,9 +431,9 @@ Pro Windows Kubernetes pomocí skriptu ke generování souboru yaml tajných kó
         KEY:    88 bytes
         ```
 
-    5. Vytvořte si omsagent daemon-set spuštěním```kubectl create -f ws-omsagent-de-secrets.yaml```
+    5. Vytvoření omsagent procesu démon-nastaveného spuštěním```kubectl create -f ws-omsagent-de-secrets.yaml```
 
-2. Ověřte, zda je spuštěna sada agenta Log Analytics, podobně jako následující:
+2. Ověřte, že je spuštěný DaemonSet agenta Log Analytics, podobně jako v následujícím příkladu:
 
     ```
     root@ubuntu16-13db:~# kubectl get deployment omsagent
@@ -441,14 +441,14 @@ Pro Windows Kubernetes pomocí skriptu ke generování souboru yaml tajných kó
     omsagent   1         1         <none>          1h
     ```
 
-3. Chcete-li nainstalovat agenta do pracovního uzlu se systémem Windows, postupujte podle pokynů v části [Instalace a konfigurace hostitelů kontejnerů systému Windows](#install-and-configure-windows-container-hosts).
+3. Chcete-li nainstalovat agenta do pracovního uzlu, ve kterém je spuštěn systém Windows, postupujte podle kroků v části [instalace a konfigurace hostitelů kontejnerů Windows](#install-and-configure-windows-container-hosts).
 
-#### <a name="use-helm-to-deploy-log-analytics-agent-on-linux-kubernetes"></a>Použití helmu k nasazení agenta Log Analytics na Linux Kubernetes
+#### <a name="use-helm-to-deploy-log-analytics-agent-on-linux-kubernetes"></a>Nasazení agenta Log Analytics v systému Linux Kubernetes pomocí Helm
 
-Chcete-li použít kormidlo k nasazení agenta Log Analytics v prostředí Linux Kubernetes, proveďte následující kroky.
+Pokud chcete použít Helm k nasazení agenta Log Analytics v prostředí Kubernetes pro Linux, proveďte následující kroky.
 
-1. Vytvořte si omsagent daemon-set spuštěním```helm install --name omsagent --set omsagent.secret.wsid=<WSID>,omsagent.secret.key=<KEY> stable/msoms```
-2. Výsledky budou vypadat podobně jako následující:
+1. Vytvoření omsagent procesu démon-nastaveného spuštěním```helm install --name omsagent --set omsagent.secret.wsid=<WSID>,omsagent.secret.key=<KEY> stable/msoms```
+2. Výsledky budou vypadat podobně jako v následujícím příkladu:
 
     ```
     NAME:   omsagent
@@ -466,7 +466,7 @@ Chcete-li použít kormidlo k nasazení agenta Log Analytics v prostředí Linux
     omsagent-msoms  3        3        3      3           3          <none>         3s
     ```
 
-3. Stav omsagent můžete zkontrolovat spuštěním: ```helm status "omsagent"``` a výstup bude vypadat podobně jako následující:
+3. Stav omsagent můžete zkontrolovat spuštěním: ```helm status "omsagent"``` a výstup bude vypadat podobně jako v následujícím příkladu:
 
     ```
     keiko@k8s-master-3814F33-0:~$ helm status omsagent
@@ -484,19 +484,19 @@ Chcete-li použít kormidlo k nasazení agenta Log Analytics v prostředí Linux
     omsagent-msoms  3        3        3      3           3          <none>         17m
     ```
    
-    Další informace naleznete na stránce [Container Solution Helm Chart](https://aka.ms/omscontainerhelm).
+    Další informace najdete v [grafu řešení kontejnerů Helm](https://aka.ms/omscontainerhelm).
 
-### <a name="install-and-configure-windows-container-hosts"></a>Instalace a konfigurace hostitelů kontejnerů systému Windows
+### <a name="install-and-configure-windows-container-hosts"></a>Instalace a konfigurace hostitelů kontejnerů Windows
 
-Informace v části slouží k instalaci a konfiguraci hostitelů kontejnerů systému Windows.
+K instalaci a konfiguraci hostitelů kontejnerů Windows použijte část informace v části.
 
-#### <a name="preparation-before-installing-windows-agents"></a>Příprava před instalací agentů systému Windows
+#### <a name="preparation-before-installing-windows-agents"></a>Příprava před instalací agentů Windows
 
-Před instalací agentů do počítačů se systémem Windows je třeba nakonfigurovat službu Docker. Konfigurace umožňuje agentovi Windows nebo rozšíření virtuálního počítače Azure Monitor používat soket TCP Dockeru tak, aby agenti měli vzdálený přístup k daemonu Dockeru a zachycovali data pro monitorování.
+Než nainstalujete agenty na počítače s Windows, musíte nakonfigurovat službu Docker. Tato konfigurace umožňuje agentu Windows nebo rozšíření virtuálního počítače Azure Monitor používat soket rozhraní Docker TCP, aby mohli agenti přistupovat ke vzdálenému démonu Docker a zachytit data pro monitorování.
 
 ##### <a name="to-configure-the-docker-service"></a>Konfigurace služby Docker  
 
-Chcete-li povolit kanál TCP a pojmenovaný kanál pro systém Windows Server, proveďte následující příkazy prostředí PowerShell:
+Pro povolení kanálu TCP a pojmenovaného kanálu pro Windows Server proveďte následující příkazy PowerShellu:
 
 ```
 Stop-Service docker
@@ -505,139 +505,139 @@ dockerd --register-service -H npipe:// -H 0.0.0.0:2375
 Start-Service docker
 ```
 
-Další informace o konfiguraci demonů Dockeru používané v kontejnerech Windows najdete v [tématu Docker Engine v systému Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon).
+Další informace o konfiguraci démona Docker používaného s kontejnery Windows najdete v tématu [modul Docker ve Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon).
 
-#### <a name="install-windows-agents"></a>Instalace agentů systému Windows
+#### <a name="install-windows-agents"></a>Nainstalovat agenty Windows
 
-Chcete-li povolit monitorování kontejnerů systému Windows a Technologie Hyper-V, nainstalujte do počítačů se systémem Windows, které jsou hostiteli kontejnerů, nainstalujte agenta Microsoft Monitoring Agent (MMA). Počítače se systémem Windows v místním prostředí najdete v tématu [Připojení počítačů s Windows k Azure Monitoru](../../azure-monitor/platform/agent-windows.md). U virtuálních počítačů spuštěných v Azure je připojte k Azure Monitoru pomocí [rozšíření virtuálního počítače](../../azure-monitor/learn/quick-collect-azurevm.md).
+Chcete-li povolit monitorování kontejnerů systému Windows a technologie Hyper-V, nainstalujte Microsoft Monitoring Agent (MMA) do počítačů se systémem Windows, které jsou hostiteli kontejneru. Počítače se systémem Windows v místním prostředí najdete v tématu [připojení počítačů se systémem Windows k Azure monitor](../../azure-monitor/platform/agent-windows.md). Pro virtuální počítače běžící v Azure je připojte k Azure Monitor pomocí [rozšíření virtuálního počítače](../../azure-monitor/learn/quick-collect-azurevm.md).
 
-Kontejnery systému Windows spuštěné na service fabric. Pro Service Fabric jsou však aktuálně podporované pouze [virtuální počítače spuštěné v Azure](../../azure-monitor/learn/quick-collect-azurevm.md) a počítače se systémem Windows ve vašem místním [prostředí.](../../azure-monitor/platform/agent-windows.md)
+Kontejnery Windows běžící na Service Fabric můžete monitorovat. V současné době se ale pro Service Fabric podporují jenom [virtuální počítače běžící v Azure](../../azure-monitor/learn/quick-collect-azurevm.md) a [počítače s Windows v místním prostředí](../../azure-monitor/platform/agent-windows.md) .
 
-Můžete ověřit, zda je řešení monitorování kontejnerů správně nastaveno pro systém Windows. Chcete-li zkontrolovat, zda byla sada Management Pack správně stažena, vyhledejte *ContainerManagement.xxx*. Soubory by měly být ve složce C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Pack.
+Můžete ověřit, jestli je řešení pro monitorování kontejnerů správně nastavené pro Windows. Chcete-li zkontrolovat, zda byl Management Pack správně stažen, vyhledejte *ContainerManagement.xxx*. Soubory by měly být ve složce C:\Program Files\Microsoft monitoring Agent\Agent\Health Service State\Management Packs.
 
 ## <a name="solution-components"></a>Součásti řešení
 
-Na portálu Azure přejděte do *Galerie řešení* a přidejte **řešení monitorování kontejnerů**. Pokud používáte agenty systému Windows, je při přidání tohoto řešení v každém počítači nainstalována následující sada Management Pack s agentem. Pro sadu Management Pack není vyžadována žádná konfigurace ani údržba.
+Z Azure Portal přejděte na *Galerie řešení* a přidejte **řešení pro monitorování kontejnerů**. Pokud používáte agenty Windows, při přidání tohoto řešení se do každého počítače s agentem nainstaluje následující Management Pack. Pro Management Pack není nutná žádná konfigurace ani údržba.
 
-- *ContainerManagement.xxx* nainstalována v programu C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Pack
+- *ContainerManagement.xxx* nainstalované v adresáři C:\Program Files\Microsoft monitoring Agent\Agent\Health Service State\Management Pack
 
-## <a name="container-data-collection-details"></a>Podrobnosti o shromažďování dat kontejneru
+## <a name="container-data-collection-details"></a>Podrobnosti shromažďování dat kontejneru
 
-Řešení monitorování kontejnerů shromažďuje různé metriky výkonu a data protokolu z hostitelů kontejnerů a kontejnerů pomocí agentů, které povolíte.
+Řešení pro monitorování kontejnerů shromažďuje různé metriky výkonu a data protokolů z hostitelů kontejnerů a kontejnerů pomocí agentů, které povolíte.
 
-Data jsou shromažďována každé tři minuty podle následujících typů agentů.
+Následující typy agentů shromažďují data každé tři minuty.
 
 - [Agent Log Analytics pro Linux](../../azure-monitor/learn/quick-collect-linux-computer.md)
-- [Agent systému Windows](../../azure-monitor/platform/agent-windows.md)
-- [Rozšíření virtuálního vás analýzy protokolů](../../azure-monitor/learn/quick-collect-azurevm.md)
+- [Agent pro Windows](../../azure-monitor/platform/agent-windows.md)
+- [Rozšíření virtuálního počítače Log Analytics](../../azure-monitor/learn/quick-collect-azurevm.md)
 
-### <a name="container-records"></a>Kontejnerové záznamy
+### <a name="container-records"></a>Záznamy kontejneru
 
-V následující tabulce jsou uvedeny příklady záznamů shromážděných řešením monitorování kontejnerů a datových typů, které se zobrazují ve výsledcích hledání protokolu.
+V následující tabulce jsou uvedeny příklady záznamů shromážděných řešením monitorování kontejnerů a typy dat, které se zobrazí ve výsledcích prohledávání protokolu.
 
-| Datový typ | Datový typ ve vyhledávání protokolů | Pole |
+| Datový typ | Datový typ v hledání v protokolu | Pole |
 | --- | --- | --- |
-| Výkon pro hostitele a kontejnery | `Perf` | Počítač, Název_objektu, Název_čítače &#40;%Čas procesoru, Disk čtení MB, MB zápisy na disk, MB využití paměti, bajty síťového příjmu, bajty síťového odesílání, oddělení využití procesoru, síťové&#41;, hodnota_času,timegenerated, proticestní, zdrojsystém |
-| Zásoby kontejnerů | `ContainerInventory` | TimeGenerated, Počítač, název kontejneru, ContainerHostname, Image, ImageTag, ContainerState, ExitCode, EnvironmentVar, Command, CreatedTime, StartedTime, FinishedTime, SourceSystem, ContainerID, ImageID |
-| Inventář obrázků kontejneru | `ContainerImageInventory` | TimeGenerated, Počítač, Image, ImageTag, ImageSize, VirtualSize, Spuštěno, Pozastaveno, Zastaveno, Se nezdařilo, SourceSystem, ImageID, TotalContainer |
-| Protokol kontejneru | `ContainerLog` | TimeGenerated, Počítač, ID bitové kopie, název kontejneru, LogEntrySource, LogEntry, SourceSystem, ContainerID |
-| Protokol služby kontejneru | `ContainerServiceLog`  | TimeGenerated, Počítač, TimeOfCommand, Obrázek, Příkaz, SourceSystem, ContainerID |
-| Inventář uzlů kontejneru | `ContainerNodeInventory_CL`| TimeGenerated, Počítač, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, SourceSystem|
-| Kubernetes zásoby | `KubePodInventory_CL` | TimeGenerated, Počítač, PodLabel_deployment_s, PodLabel_deploymentconfig_s, PodLabel_docker_registry_s, Name_s, Namespace_s, PodStatus_s, PodIp_s, PodUid_g, PodCreationTimeStamp_t, SourceSystem |
-| Kontejnerový proces | `ContainerProcess_CL` | TimeGenerated, Počítač, Pod_s, Namespace_s, ClassName_s, InstanceID_s, Uid_s, PID_s, PPID_s, C_s, STIME_s, Tty_s, TIME_s, Cmd_s, Id_s, Name_s, SourceSystem |
-| Akce Kubernetes | `KubeEvents_CL` | TimeGenerated, Počítač, Name_s, ObjectKind_s, Namespace_s, Reason_s, Type_s, SourceComponent_s, SourceSystem, Zpráva |
+| Výkon pro hostitele a kontejnery | `Perf` | Počítač, ObjectName, CounterName &#40;% času procesoru, čtení z disku MB, zápisy na disk MB, využití paměti MB, počet přijatých bajtů sítě, počet bajtů pro odesílání, využití procesoru sec, síť&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem |
+| Inventář kontejneru | `ContainerInventory` | TimeGenerated, počítač, název kontejneru, ContainerHostname, image, ImageTag, ContainerState, ExitCode, EnvironmentVar, Command, CreatedTime, StartedTime, FinishedTime, SourceSystem, ContainerID, ImageID |
+| Inventář imagí kontejneru | `ContainerImageInventory` | TimeGenerated, počítač, image, ImageTag, ImageSize, VirtualSize, spuštěno, pozastaveno, zastaveno, selhalo, SourceSystem, ImageID, TotalContainer |
+| Protokol kontejneru | `ContainerLog` | TimeGenerated, počítač, ID image, název kontejneru, LogEntrySource, LogEntry, SourceSystem, ContainerID |
+| Protokol služby kontejneru | `ContainerServiceLog`  | TimeGenerated, Computer, TimeOfCommand, image, Command, SourceSystem, ContainerID |
+| Inventář uzlů kontejneru | `ContainerNodeInventory_CL`| TimeGenerated, počítač, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, SourceSystem|
+| Inventář Kubernetes | `KubePodInventory_CL` | TimeGenerated, počítač, PodLabel_deployment_s, PodLabel_deploymentconfig_s, PodLabel_docker_registry_s, Name_s, Namespace_s, PodStatus_s, PodIp_s, PodUid_g, PodCreationTimeStamp_t, SourceSystem |
+| Kontejnerový proces | `ContainerProcess_CL` | TimeGenerated, počítač, Pod_s, Namespace_s, ClassName_s, InstanceID_s, Uid_s, PID_s, PPID_s, C_s, STIME_s, Tty_s, TIME_s, Cmd_s, Id_s, Name_s, SourceSystem |
+| Události Kubernetes | `KubeEvents_CL` | TimeGenerated, počítač, Name_s, ObjectKind_s, Namespace_s, Reason_s, Type_s, SourceComponent_s, SourceSystem, zpráva |
 
-Popisky připojené k datovým typům *PodLabel* jsou vaše vlastní popisky. Připojené popisky PodLabel zobrazené v tabulce jsou příklady. Takže `PodLabel_deployment_s`, `PodLabel_deploymentconfig_s` `PodLabel_docker_registry_s` , se bude lišit v datové sadě `PodLabel_yourlabel_s`vašeho prostředí a obecně se podobají .
+Popisky připojené k datovým typům *PodLabel* jsou vlastní popisky. Příklady přidaných popisků PodLabel jsou uvedené v tabulce. `PodLabel_deployment_s`Takže,, `PodLabel_deploymentconfig_s`, `PodLabel_docker_registry_s` se bude lišit v sadě dat vašeho prostředí a obecně se bude podobat `PodLabel_yourlabel_s`.
 
 ## <a name="monitor-containers"></a>Monitorování kontejnerů
-Po povolení řešení na webu Azure Portal se na **dlaždici Kontejnery** zobrazí souhrnné informace o hostitelích kontejnerů a kontejnerech spuštěnéch v hostitelích.
+Po povolení řešení v Azure Portal dlaždice **kontejnery** zobrazí souhrnné informace o hostitelích kontejnerů a kontejnerech spuštěných v hostitelích.
 
-![Kontejnery dlaždice](./media/containers/containers-title.png)
+![Dlaždice kontejnery](./media/containers/containers-title.png)
 
-Na dlaždici je uveden přehled počtu kontejnerů, které máte v prostředí a jestli se nezdařilo, běželo nebo zastavilo.
+Tato dlaždice zobrazuje přehled o počtu kontejnerů v prostředí a o tom, jestli jsou neúspěšné, spuštěné nebo zastavené.
 
-### <a name="using-the-containers-dashboard"></a>Použití řídicího panelu Kontejnery
+### <a name="using-the-containers-dashboard"></a>Používání řídicího panelu kontejnerů
 
-Klikněte na **dlaždici Kontejnery.** Odtud uvidíte zobrazení uspořádaná podle:
+Klikněte na dlaždici **kontejnery** . Tady uvidíte zobrazení uspořádaná podle:
 
-- **Události kontejneru** – zobrazuje stav kontejneru a počítače s kontejnery, které selhaly.
-- **Protokoly kontejnerů** – zobrazuje graf souborů protokolu kontejnerů generovaných v průběhu času a seznam počítačů s nejvyšším počtem souborů protokolu.
-- **Události Kubernetes** - Zobrazuje graf událostí Kubernetes generovaných v průběhu času a seznam důvodů, proč pody generovaly události. *Tato datová sada se používá pouze v linuxových prostředích.*
-- **Kubernetes Název oboru Zásoby** - Zobrazuje počet oborů názvů a podů a zobrazuje jejich hierarchii. *Tato datová sada se používá pouze v linuxových prostředích.*
-- **Inventář uzlů kontejneru** – zobrazuje počet typů orchestrace používaných v uzlech nebo hostitelích kontejnerů. Uzly počítače jsou také uvedeny podle počtu kontejnerů. *Tato datová sada se používá pouze v linuxových prostředích.*
-- **Inventář obrázků kontejnerů –** zobrazuje celkový počet použitých bitových kopií kontejnerů a počet typů bitových kopií. Počet obrázků je také uveden podle značky obrázku.
-- **Stav kontejnerů** – zobrazuje celkový počet uzlů kontejnerů nebo hostitelských počítačů, které mají spuštěné kontejnery. Počítače jsou také uvedeny podle počtu spuštěných hostitelů.
-- **Proces kontejneru** – zobrazuje spojnicový graf procesů kontejneru spuštěných v průběhu času. Kontejnery jsou také uvedeny spuštěnípříkaz/proces v rámci kontejnerů. *Tato datová sada se používá pouze v linuxových prostředích.*
-- **Výkon procesoru kontejneru** – zobrazuje spojnicový graf průměrného využití procesoru v čase pro uzly nebo hostitele počítače. Také uvádí uzly počítače nebo hostitele na základě průměrného využití procesoru.
-- **Výkon paměti kontejneru** – zobrazuje spojnicový graf využití paměti v čase. Také uvádí využití paměti počítače na základě názvu instance.
-- **Výkon počítače** – zobrazuje spojnicové grafy procenta výkonu procesoru v čase, procento využití paměti v čase a megabajty volného místa na disku v čase. Chcete-li zobrazit další podrobnosti, můžete najet na libovolnou čáru v grafu.
+- **Události kontejneru** – zobrazuje stav kontejneru a počítače s neúspěšnými kontejnery.
+- **Protokoly kontejneru** – zobrazuje graf souborů protokolu kontejneru vygenerovaných v průběhu času a seznam počítačů s největším počtem souborů protokolu.
+- **Události Kubernetes** – zobrazuje graf událostí Kubernetes generovaných v průběhu času a seznam důvodů, proč lusky vygenerovaly události. *Tato datová sada se používá jenom v prostředích Linux.*
+- **Inventář oboru názvů Kubernetes** – zobrazuje počet oborů názvů a lusků a ukazuje jejich hierarchii. *Tato datová sada se používá jenom v prostředích Linux.*
+- **Inventář uzlů kontejneru** – zobrazuje počet typů orchestrace používaných na uzlech nebo hostitelích kontejneru. Uzly počítače/hostitelé jsou uvedeny také podle počtu kontejnerů. *Tato datová sada se používá jenom v prostředích Linux.*
+- **Inventář imagí kontejneru** – zobrazuje celkový počet použitých imagí kontejneru a počet typů obrázků. Počet obrázků je také uveden pomocí značky image.
+- **Stav kontejnerů** – zobrazuje celkový počet uzlů nebo hostitelských počítačů, ve kterých jsou spuštěné kontejnery. Počítače jsou také uvedeny podle počtu spuštěných hostitelů.
+- **Proces kontejneru** – zobrazí spojnicový graf procesů kontejneru spuštěných v průběhu času. Kontejnery jsou také uvedeny spuštěním příkazu nebo procesu v rámci kontejnerů. *Tato datová sada se používá jenom v prostředích Linux.*
+- **Výkon procesoru kontejneru** – zobrazuje spojnicový graf průměrného využití procesoru v čase pro uzly počítače nebo hostitele. Uvádí také seznam uzlů a hostitelů počítačů na základě průměrného využití procesoru.
+- **Výkon paměti kontejneru** – zobrazuje spojnicový graf využití paměti v průběhu času. Také uvádí využití paměti počítače na základě názvu instance.
+- **Výkon počítače** – zobrazí spojnicové grafy s procentem výkonu procesoru v čase, využití paměti v průběhu času a MB volného místa na disku v průběhu času. Pokud si chcete zobrazit další podrobnosti, můžete ukazatel myši umístit na libovolný řádek v grafu.
 
-Každá oblast řídicího panelu je vizuální reprezentace hledání, která je spuštěna na shromážděná data.
+Každá oblast řídicího panelu je vizuální znázornění hledání, které se spouští na shromážděných datech.
 
 ![Řídicí panel kontejnerů](./media/containers/containers-dash01.png)
 
 ![Řídicí panel kontejnerů](./media/containers/containers-dash02.png)
 
-V oblasti **Stav kontejneru** klikněte na horní oblast, jak je znázorněno níže.
+V oblasti **stav kontejneru** klikněte na horní oblast, jak je znázorněno níže.
 
 ![Stav kontejnerů](./media/containers/containers-status.png)
 
-Otevře se služba Log Analytics s informacemi o stavu kontejnerů.
+Log Analytics se otevře a zobrazí se informace o stavu vašich kontejnerů.
 
-![Analýza protokolů pro kontejnery](./media/containers/containers-log-search.png)
+![Log Analytics pro kontejnery](./media/containers/containers-log-search.png)
 
-Zde můžete vyhledávací dotaz upravit a upravit tak, aby našel konkrétní informace, které vás zajímají. Další informace o dotazech protokolu najdete [v tématu Protokoldotazy v Azure Monitor](../log-query/log-query-overview.md).
+Odtud můžete upravit vyhledávací dotaz, abyste mohli najít konkrétní informace, které vás zajímají. Další informace o dotazech protokolu najdete [v tématu Protokolování dotazů v Azure monitor](../log-query/log-query-overview.md).
 
-## <a name="troubleshoot-by-finding-a-failed-container"></a>Poradce při potížích při hledání kontejneru se nezdařilo
+## <a name="troubleshoot-by-finding-a-failed-container"></a>Řešení potíží hledáním neúspěšného kontejneru
 
-Log Analytics označí kontejner jako **neúspěšný,** pokud byl ukončen s nenulovým ukončovacím kódem. Můžete zobrazit přehled chyb a selhání v prostředí v oblasti **Neúspěšné kontejnery.**
+Log Analytics označí kontejner jako **neúspěšný** , pokud byl ukončen s nenulovým ukončovacím kódem. Přehled chyb a selhání v prostředí najdete v oblasti **selhání kontejnerů** .
 
-### <a name="to-find-failed-containers"></a>Vyhledání neúspěšných kontejnerů
+### <a name="to-find-failed-containers"></a>Vyhledání kontejnerů, které selhaly
 
-1. Klikněte na oblast **Stav kontejneru.**  
+1. Klikněte na oblast **stavu kontejneru** .  
    ![stav kontejnerů](./media/containers/containers-status.png)
-2. Log Analytics otevře a zobrazí stav kontejnerů, podobně jako následující.  
-   ![kontejnery stát](./media/containers/containers-log-search.png)
-3. Rozbalte řádek Se nezdařilo a kliknutím na + přidejte jeho kritéria do dotazu. Pak zakomentujte řádek Souhrn v dotazu.
+2. Log Analytics se otevře a zobrazí stav kontejnerů, podobně jako v následujícím příkladu.  
+   ![stav kontejnerů](./media/containers/containers-log-search.png)
+3. Rozbalte řádek selhání a kliknutím na + přidejte jeho kritéria do dotazu. Pak přidejte do dotazu řádek souhrnu.
    ![neúspěšné kontejnery](./media/containers/containers-state-failed-select.png)  
-1. Spusťte dotaz a potom rozbalte řádek ve výsledcích, abyste zobrazili ID obrázku.  
+1. Spusťte dotaz a potom rozbalte čáru ve výsledcích, abyste zobrazili ID obrázku.  
    ![neúspěšné kontejnery](./media/containers/containers-state-failed.png)  
-1. Do protokolu zadejte následující text. `ContainerImageInventory | where ImageID == <ImageID>`zobrazíte podrobnosti o obrázku, například velikost obrázku a počet zastavených a neúspěšných obrázků.  
+1. V dotazu protokolu zadejte následující text. `ContainerImageInventory | where ImageID == <ImageID>`Chcete-li zobrazit podrobnosti o imagi, jako je například velikost obrázku a počet zastavených a neúspěšných imagí.  
    ![neúspěšné kontejnery](./media/containers/containers-failed04.png)
 
-## <a name="query-logs-for-container-data"></a>Protokoly dotazů pro data kontejneru
+## <a name="query-logs-for-container-data"></a>Dotazy na data kontejneru v protokolech
 
-Při řešení konkrétní chyby může pomoci zjistit, kde se ve vašem prostředí vyskytuje. Následující typy protokolů vám pomohou vytvořit dotazy, které vrátí požadované informace.
+Při odstraňování potíží s konkrétní chybou vám může pomáhat zjistit, kde se ve vašem prostředí objevuje. Následující typy protokolů vám pomůžou vytvořit dotazy, které vrátí požadované informace.
 
-- **ContainerImageInventory** – Tento typ použijte, když se pokoušíte najít informace uspořádané podle obrázku a zobrazit informace o obrázku, jako jsou ID nebo velikosti obrázků.
-- **ContainerInventory** – tento typ použijte, pokud chcete informace o umístění kontejneru, jaké jsou jejich názvy a jaké obrázky jsou spuštěny.
-- **ContainerLog** – tento typ použijte, pokud chcete najít konkrétní informace a položky protokolu chyb.
-- **ContainerNodeInventory_CL**  Tento typ použijte, pokud chcete informace o hostiteli nebo uzlu, kde jsou umístěny kontejnery. Poskytuje verzi Dockeru, typ orchestrace, úložiště a informace o síti.
-- **ContainerProcess_CL** Tento typ slouží k rychlému zobrazení procesu spuštěného v kontejneru.
-- **ContainerServiceLog** – použijte tento typ, když se pokoušíte najít informace o protokolu auditu pro daemon Dockeru, jako je například start, stop, delete nebo pull příkazy.
-- **KubeEvents_CL**  Tento typ slouží k zobrazení událostí Kubernetes.
-- **KubePodInventory_CL**  Tento typ použijte, pokud chcete porozumět informacím hierarchie clusteru.
+- **ContainerImageInventory** – tento typ použijte, pokud se pokoušíte najít informace uspořádané podle obrázku a zobrazit informace o obrázku, jako jsou ID nebo velikosti obrázků.
+- **ContainerInventory** – tento typ použijte, když chcete získat informace o umístění kontejneru, o jejich názvech a o tom, jaké image jsou spuštěné.
+- **ContainerLog** – tento typ použijte, když chcete najít konkrétní informace a položky protokolu chyb.
+- **ContainerNodeInventory_CL**  Tento typ použijte, pokud chcete informace o hostiteli nebo uzlu, kde se nacházejí kontejnery. Poskytuje informace o verzi Docker, typu orchestrace, úložišti a síti.
+- **ContainerProcess_CL** Tento typ slouží k rychlému zobrazení procesu spuštěného v rámci kontejneru.
+- **ContainerServiceLog** – tento typ použijte, když se pokoušíte najít informace o záznamech auditu pro démona Docker, jako je třeba spustit, zastavit, odstranit nebo přijmout příkazy.
+- **KubeEvents_CL**  Pomocí tohoto typu můžete zobrazit události Kubernetes.
+- **KubePodInventory_CL**  Tento typ použijte, pokud chcete pochopit informace o hierarchii clusteru.
 
 
-### <a name="to-query-logs-for-container-data"></a>Dotazovat se protokolů pro data kontejneru
+### <a name="to-query-logs-for-container-data"></a>Dotazování protokolů na data kontejneru
 
-* Vyberte obrázek, o kterém víte, že se v poslední době nezdařil, a vyhledejte pro něj protokoly chyb. Začněte vyhledáním názvu kontejneru, který je spuštěn tuto bitovou kopii s **hledáním ContainerInventory.** Například vyhledejte`ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"`  
+* Vyberte bitovou kopii, která se nedávno nezdařila, a vyhledejte v ní protokoly chyb. Začněte hledáním názvu kontejneru, na kterém je spuštěná tato image, pomocí hledání **ContainerInventory** . Vyhledejte například`ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"`  
     ![Hledat kontejnery Ubuntu](./media/containers/search-ubuntu.png)
 
-  Rozbalte libovolný řádek ve výsledcích a zobrazte podrobnosti pro tento kontejner.
+  Rozbalením libovolného řádku ve výsledcích zobrazíte podrobnosti o daném kontejneru.
 
-## <a name="example-log-queries"></a>Příklad y protokolů
+## <a name="example-log-queries"></a>Příklady dotazů protokolu
 
-Často je užitečné vytvářet dotazy počínaje příkladem nebo dvěma a pak je upravit tak, aby vyhovovaly vašemu prostředí. Jako výchozí bod můžete experimentovat s oblastí **Ukázkové dotazy,** které vám pomohou vytvářet pokročilejší dotazy.
+Často je užitečné vytvářet dotazy počínaje příkladem nebo dvěma a pak je upravit tak, aby vyhovovaly vašemu prostředí. Jako výchozí bod můžete experimentovat s oblastí **vzorových dotazů** , které vám pomůžou sestavovat pokročilejší dotazy.
 
-![Dotazy kontejnerů](./media/containers/containers-queries.png)
+![Dotazy na kontejnery](./media/containers/containers-queries.png)
 
 ## <a name="saving-log-queries"></a>Ukládání dotazů protokolu
 
-Ukládání dotazů je standardní funkce ve službě Azure Monitor. Uložením je budete mít ty, které jste našli užitečné užitečné pro budoucí použití.
+Ukládání dotazů je standardní funkcí v Azure Monitor. Když je uložíte, budete mít ty, které jste našli užitečnou užitečnou pro budoucí použití.
 
-Po vytvoření dotazu, který považujete za užitečný, ho uložte kliknutím na **Oblíbené položky** v horní části stránky Hledání protokolu. Později k němu můžete snadno přistupovat na stránce **Můj řídicí panel.**
+Až vytvoříte dotaz, který je užitečný, uložte ho kliknutím na **Oblíbené** v horní části stránky hledání v protokolu. Pak k němu můžete snadno přistupovat později ze stránky **Můj řídicí panel** .
 
 ## <a name="next-steps"></a>Další kroky
 
-[Protokoly dotazů](../log-query/log-query-overview.md) pro zobrazení podrobných datových záznamů kontejneru.
+V [protokolech dotazů](../log-query/log-query-overview.md) zobrazíte podrobné záznamy dat kontejneru.

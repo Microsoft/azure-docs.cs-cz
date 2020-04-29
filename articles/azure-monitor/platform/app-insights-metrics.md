@@ -1,6 +1,6 @@
 ---
-title: Metriky založené na protokolu Azure Application Insights | Dokumenty společnosti Microsoft
-description: Tento článek uvádí metriky Azure Application Insights s podporovanými agregacemi a dimenzemi. Podrobnosti o metriky založené na protokolu patří základní příkazy dotazu Kusto.
+title: Metriky založené na protokolu Azure Application Insights | Microsoft Docs
+description: V tomto článku jsou uvedené metriky Azure Application Insights s podporovanými agregacemi a dimenzemi. Podrobnosti o metrikách založených na protokolu zahrnují základní příkazy dotazů Kusto.
 author: vgorbenko
 services: azure-monitor
 ms.topic: reference
@@ -8,48 +8,48 @@ ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
 ms.openlocfilehash: 12bc51e800ef5ccd4ad3c72d3860fb22bac5b749
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77664911"
 ---
-# <a name="application-insights-log-based-metrics"></a>Metriky založené na protokolu Application Insights
+# <a name="application-insights-log-based-metrics"></a>Application Insights metriky založené na protokolu
 
-Metriky založené na protokolu Application Insights umožňují analyzovat stav monitorovaných aplikací, vytvářet výkonné řídicí panely a konfigurovat výstrahy. Existují dva druhy metrik:
+Application Insights metriky založené na protokolu vám umožní analyzovat stav monitorovaných aplikací, vytvářet výkonné řídicí panely a konfigurovat výstrahy. Existují dva typy metrik:
 
-* [Metriky založené na protokolu](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) za scénou jsou přeloženy do [dotazů Kusto](https://docs.microsoft.com/azure/kusto/query/) z uložených událostí.
-* [Standardní metriky](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics) jsou uloženy jako předem agregované časové řady.
+* [Metriky založené na protokolu](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) na pozadí jsou přeloženy do [dotazů Kusto](https://docs.microsoft.com/azure/kusto/query/) z uložených událostí.
+* [Standardní metriky](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics) se ukládají jako předem agregované časové řady.
 
-Vzhledem k tomu, *že standardní metriky* jsou předem agregovány během shromažďování, mají lepší výkon v době dotazu. Díky tomu jsou lepší volbou pro řídicí panel a v reálném čase. *Metriky založené na protokolu* mají více dimenzí, což z nich činí vynikající možnost pro analýzu dat a diagnostiku ad hoc. Pomocí [voliče oboru názvů](metrics-getting-started.md#create-your-first-metric-chart) můžete přepínat mezi metrikami založenými na protokolu a standardními metrikami v [průzkumníku metrik](metrics-getting-started.md).
+Vzhledem k tomu, že *Standardní metriky* jsou během shromažďování předem shrnuty, mají lepší výkon v době dotazu. Díky tomu je lepší volbou pro řídicí panely a výstrahy v reálném čase. *Metriky založené na protokolech* mají více dimenzí, díky kterým jsou nadřazené volbou pro analýzu dat a pro diagnostiku ad-hoc. [Selektor oboru názvů](metrics-getting-started.md#create-your-first-metric-chart) použijte k přepínání mezi standardními metrikami založenými na protokolech v [Průzkumníkovi metrik](metrics-getting-started.md).
 
-## <a name="interpret-and-use-queries-from-this-article"></a>Interpretace a použití dotazů z tohoto článku
+## <a name="interpret-and-use-queries-from-this-article"></a>Interpretace a používání dotazů z tohoto článku
 
-V tomto článku jsou uvedeny metriky s podporovanými agregacemi a dimenzemi. Podrobnosti o metriky založené na protokolu patří základní příkazy dotazu Kusto. Pro větší pohodlí každý dotaz používá výchozí hodnoty pro rozlišovací schopnost času, typ grafu a někdy rozdělení dimenze, která zjednodušuje použití dotazu v Log Analytics bez nutnosti změny.
+V tomto článku jsou uvedeny metriky s podporovanými agregacemi a dimenzemi. Podrobnosti o metrikách založených na protokolu zahrnují základní příkazy dotazů Kusto. Pro přehlednost každý dotaz používá výchozí hodnoty pro časovou členitost, typ grafu a někdy rozdělení dimenze, které zjednodušují použití dotazu v Log Analytics bez nutnosti úpravy.
 
-Když [vykreslíte](metrics-getting-started.md)stejnou metriku v průzkumníku metrik , nejsou k dispozici žádné výchozí hodnoty – dotaz se dynamicky upravuje na základě nastavení grafu:
+Když vykreslíte stejnou metriku v [Průzkumníkovi metrik](metrics-getting-started.md), neexistují žádné výchozí hodnoty – dotaz se dynamicky upraví na základě nastavení grafu:
 
-- Vybraný **časový rozsah** je přeložen do další *klauzule where timestamp...* pro výběr událostí pouze z vybraného časového rozsahu. Například graf zobrazující data za posledních 24 hodin, dotaz obsahuje *| kde časové razítko > před (24 h)*.
+- Vybraný **časový rozsah** je přeložen do další klauzule *WHERE timestamp...* , aby bylo možné vybrat pouze události z vybraného časového rozsahu. Například graf zobrazující data za posledních 24 hodin, dotaz obsahuje *| místo > před časovým razítkem (24 h)*.
 
-- Vybraná **časová rozlišovací schopnost** je vložena do konečného *shrnutí ... klauzulí bin(timestamp, [time grain]).*
+- Vybraná **Časová členitost** je vložena do konečného *souhrnu... podle klauzule bin (timestamp, [časový interval])* .
 
-- Všechny vybrané dimenze **filtru** jsou přeloženy do *dalších klauzulí.*
+- Všechny vybrané dimenze **filtru** jsou přeloženy do dalších klauzulí *WHERE* .
 
-- Vybraná dimenze **Rozděleného grafu** je přeložena do extra sumarizovat vlastnost. Pokud například rozdělíte graf podle *umístění*a vykreslíte pomocí 5minutové časové granularity, shrne se shrnutá klauzule *souhrnu* *... bin (časové razítko, 5 m), umístění*.
+- Vybraná dimenze **rozděleného grafu** se převede na další vlastnost Shrnutí. Například pokud rozdělíte graf podle *umístění*a sekreslíte pomocí členitosti s časem 5 minut, je shrnuta klauzule *Shrnutí* *... po přihrádce (časové razítko, 5 m), umístění*.
 
 > [!NOTE]
-> Pokud s dotazovacím jazykem Kusto tečujete, začnete kopírováním a vložením příkazů Kusto do podokna dotazů Log Analytics bez jakýchkoli úprav. Chcete-li zobrazit základní graf, klepněte na tlačítko **Spustit.** Jakmile začnete chápat syntaxi dotazovacího jazyka, můžete začít provádět malé úpravy a vidět dopad změny. Zkoumání vlastních dat je skvělý způsob, jak začít realizovat plný výkon [Log Analytics](../../azure-monitor/log-query/get-started-portal.md) a [Azure Monitor](../../azure-monitor/overview.md).
+> Pokud začínáte s dotazovacím jazykem Kusto, začnete zkopírováním a vložením příkazů Kusto do podokna dotazu Log Analytics bez provedení jakýchkoli úprav. Kliknutím na tlačítko **Spustit** zobrazíte základní graf. Jak začínáte pochopit syntaxi dotazovacího jazyka, můžete začít provádět malé úpravy a vidět dopad změny. Seznámení s vlastními daty představuje skvělý způsob, jak začít s plným výkonem [Log Analytics](../../azure-monitor/log-query/get-started-portal.md) a [Azure monitor](../../azure-monitor/overview.md).
 
 ## <a name="availability-metrics"></a>Metriky dostupnosti
 
-Metriky v kategorii Dostupnost umožňují zobrazit stav webové aplikace, jak je pozorováno z bodů po celém světě. [Nakonfigurujte testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) tak, aby začaly používat všechny metriky z této kategorie.
+Metriky v kategorii dostupnosti umožňují zobrazit stav webové aplikace, jak je zjištěno od bodů po celém světě. [Nakonfigurujte testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) tak, aby se v této kategorii spouštěly všechny metriky.
 
-### <a name="availability-availabilityresultsavailabilitypercentage"></a>Dostupnost (dostupnostVýsledky/availabilityPercentage)
-Metrika *dostupnost* zobrazuje procento spuštění webového testu, které nezjistilo žádné problémy. Nejnižší možná hodnota je 0, což znamená, že všechny webové testovací spuštění se nezdařilo. Hodnota 100 znamená, že všechny webové testovací spuštění prošel ověřovací kritéria.
+### <a name="availability-availabilityresultsavailabilitypercentage"></a>Dostupnost (availabilityResults/availabilityPercentage)
+Metrika *dostupnosti* zobrazuje procento běhů webového testu, u kterých nebyly zjištěny žádné problémy. Nejnižší možná hodnota je 0, což znamená, že všechny spuštěné webové testy se nezdařily. Hodnota 100 znamená, že všechna spuštění webového testu prošla ověřovacími kritérii.
 
 |Jednotka měření|Podporované agregace|Podporované dimenze|
 |---|---|---|---|---|---|
-|Procento|Průměr|Spustit umístění, název testu|
+|Procento|Průměr|Umístění pro spuštění, název testu|
 
 ```Kusto
 availabilityResults 
@@ -57,13 +57,13 @@ availabilityResults
 | render timechart
 ```
 
-### <a name="availability-test-duration-availabilityresultsduration"></a>Doba trvání testu dostupnosti (dostupnostVýsledky/doba trvání)
+### <a name="availability-test-duration-availabilityresultsduration"></a>Doba trvání testu dostupnosti (availabilityResults/Duration)
 
-Metrika *trvání testu dostupnosti* ukazuje, kolik času trvalo spuštění webového testu. Pro [vícekrokové webové testy](../../azure-monitor/app/availability-multistep.md)metrika odráží celkovou dobu provádění všech kroků.
+Metrika *doby trvání testu dostupnosti* ukazuje, kolik času trvalo spuštění webového testu. U [webových testů s více kroky](../../azure-monitor/app/availability-multistep.md)odráží metrika celkovou dobu provádění všech kroků.
 
 |Jednotka měření|Podporované agregace|Podporované dimenze|
 |---|---|---|---|---|---|
-|Milisekund|Průměr, Min, Max|Spustit umístění, Název testu, Výsledek testu
+|Milisekund|Average, min, Max|Umístění pro spuštění, název testu, výsledek testu
 
 ```Kusto
 availabilityResults
@@ -73,13 +73,13 @@ availabilityResults
 | render timechart
 ```
 
-### <a name="availability-tests-availabilityresultscount"></a>Testy dostupnosti (dostupnostVýsledky/počet)
+### <a name="availability-tests-availabilityresultscount"></a>Testy dostupnosti (availabilityResults/Count)
 
-Metrika *testů dostupnosti* odráží počet webových testů spuštěných službou Azure Monitor.
+Metrika *testů dostupnosti* odráží počet webových testů, které jsou spouštěny pomocí Azure monitor.
 
 |Jednotka měření|Podporované agregace|Podporované dimenze|
 |---|---|---|---|---|---|
-|Počet|Počet|Spustit umístění, Název testu, Výsledek testu|
+|Počet|Počet|Umístění pro spuštění, název testu, výsledek testu|
 
 ```Kusto
 availabilityResults
@@ -89,16 +89,16 @@ availabilityResults
 
 ## <a name="browser-metrics"></a>Metriky prohlížeče
 
-Metriky prohlížeče shromažďuje sada JavaScript SDK Application Insights z reálných prohlížečů koncových uživatelů. Poskytují skvělý přehled o zkušenostech uživatelů s vaší webovou aplikací. Metriky prohlížeče obvykle nejsou vzorkovány, což znamená, že poskytují vyšší přesnost počtu využití ve srovnání s metrikami na straně serveru, které mohou být zkosené vzorkováním.
+Metriky prohlížeče jsou shromažďovány sadou Application Insights JavaScript SDK z reálných prohlížečů pro koncové uživatele. Poskytují skvělé přehledy o zkušenostech uživatelů s vaší webovou aplikací. Metriky prohlížeče nejsou většinou vzorkované, což znamená, že poskytují vyšší přesnost čísel využití ve srovnání se metrikami na straně serveru, která může být vydělena vzorkováním.
 
 > [!NOTE]
-> Chcete-li shromažďovat metriky prohlížeče, musí být vaše aplikace instrumentována sadou [Application Insights JavaScript SDK](../../azure-monitor/app/javascript.md).
+> Aby bylo možné shromažďovat metriky prohlížeče, musí být aplikace instrumentovaná pomocí [Application Insights JavaScript SDK](../../azure-monitor/app/javascript.md).
 
-### <a name="browser-page-load-time-browsertimingstotalduration"></a>Doba načítání stránky prohlížeče (browserTimings/totalDuration)
+### <a name="browser-page-load-time-browsertimingstotalduration"></a>Doba načítání stránky v prohlížeči (browserTimings/totalDuration)
 
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|
 |---|---|---|
-|Milisekund|Průměr, Min, Max|Žádný|
+|Milisekund|Average, min, Max|Žádná|
 
 ```Kusto
 browserTimings
@@ -114,7 +114,7 @@ browserTimings
 
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|
 |---|---|---|
-|Milisekund|Průměr, Min, Max|Žádný|
+|Milisekund|Average, min, Max|Žádná|
 
 ```Kusto
 browserTimings
@@ -126,11 +126,11 @@ browserTimings
 | render timechart
 ```
 
-### <a name="page-load-network-connect-time-browsertimingsnetworkduration"></a>Čas připojení sítě načítání stránky (browserTimings/networkDuration)
+### <a name="page-load-network-connect-time-browsertimingsnetworkduration"></a>Doba připojení k síti načítání stránky (browserTimings/networkDuration)
 
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|
 |---|---|---|
-|Milisekund|Průměr, Min, Max|Žádný|
+|Milisekund|Average, min, Max|Žádná|
 
 ```Kusto
 browserTimings
@@ -142,11 +142,11 @@ browserTimings
 | render timechart
 ```
 
-### <a name="receiving-response-time-browsertimingsreceiveduration"></a>Příjem doby odezvy (browserTimings/receiveDuration)
+### <a name="receiving-response-time-browsertimingsreceiveduration"></a>Doba přijetí odezvy (browserTimings/receiveDuration)
 
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|
 |---|---|---|
-|Milisekund|Průměr, Min, Max|Žádný|
+|Milisekund|Average, min, Max|Žádná|
 
 ```Kusto
 browserTimings
@@ -158,11 +158,11 @@ browserTimings
 | render timechart
 ```
 
-### <a name="send-request-time-browsertimingssendduration"></a>Odeslat čas požadavku (browserTimings/sendDuration)
+### <a name="send-request-time-browsertimingssendduration"></a>Čas žádosti o odeslání (browserTimings/sendDuration)
 
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|
 |---|---|---|
-|Milisekund|Průměr, Min, Max|Žádný|
+|Milisekund|Average, min, Max|Žádná|
 
 ```Kusto
 browserTimings
@@ -176,15 +176,15 @@ browserTimings
 
 ## <a name="failure-metrics"></a>Metriky selhání
 
-Metriky v **selhání** zobrazit problémy se zpracováním požadavků, volání závislostí a vyvolání výjimky.
+Metriky při **selhání** zobrazují problémy se zpracováním požadavků, volání závislostí a vyvolaných výjimek.
 
 ### <a name="browser-exceptions-exceptionsbrowser"></a>Výjimky prohlížeče (výjimky/prohlížeč)
 
-Tato metrika odráží počet vyzdvižených výjimek z kódu aplikace spuštěného v prohlížeči. Do metriky jsou zahrnuty ```trackException()``` pouze výjimky, které jsou sledovány pomocí volání rozhraní API Application Insights.
+Tato metrika odráží počet vyvolaných výjimek z kódu aplikace spuštěného v prohlížeči. Metrika obsahuje pouze výjimky, které ```trackException()``` jsou sledovány pomocí volání rozhraní Application Insights API.
 
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|Poznámky|
 |---|---|---|---|
-|Počet|Počet|Žádný|Verze založená na protokolu používá agregaci **součtů.**|
+|Počet|Počet|Žádná|Verze založená na protokolu používá agregaci **Sum** .|
 
 ```Kusto
 exceptions
@@ -193,13 +193,13 @@ exceptions
 | render barchart
 ```
 
-### <a name="dependency-call-failures-dependenciesfailed"></a>Selhání volání závislostí (závislosti/selhání)
+### <a name="dependency-call-failures-dependenciesfailed"></a>Selhání volání závislostí (závislosti/neúspěšné)
 
-Počet neúspěšných volání závislostí.
+Počet neúspěšných volání závislostí
 
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|Poznámky|
 |---|---|---|---|
-|Počet|Počet|Žádný|Verze založená na protokolu používá agregaci **součtů.**|
+|Počet|Počet|Žádná|Verze založená na protokolu používá agregaci **Sum** .|
 
 ```Kusto
 dependencies
@@ -210,11 +210,11 @@ dependencies
 
 ### <a name="exceptions-exceptionscount"></a>Výjimky (výjimky/počet)
 
-Pokaždé, když při přihlášení výjimku Application Insights, je volání [trackException() metoda](../../azure-monitor/app/api-custom-events-metrics.md#trackexception) SDK. Metrika Výjimky zobrazuje počet protokolovaných výjimek.
+Pokaždé, když zaznamenáte výjimku pro Application Insights, dojde k volání [metody trackException ()](../../azure-monitor/app/api-custom-events-metrics.md#trackexception) sady SDK. Metrika výjimek zobrazuje počet protokolovaných výjimek.
 
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|Poznámky|
 |---|---|---|---|
-|Počet|Počet|Název role cloudu, instance role Cloud, typ zařízení|Verze založená na protokolu používá agregaci **součtů.**|
+|Počet|Počet|Název cloudové role, instance cloudové role, typ zařízení|Verze založená na protokolu používá agregaci **Sum** .|
 
 ```Kusto
 exceptions
@@ -222,13 +222,13 @@ exceptions
 | render barchart
 ```
 
-### <a name="failed-requests-requestsfailed"></a>Neúspěšné požadavky (požadavky/neúspěšné)
+### <a name="failed-requests-requestsfailed"></a>Neúspěšné žádosti (požadavky/neúspěšné)
 
-Počet sledovaných požadavků serveru, které byly označeny jako *neúspěšné*. Ve výchozím nastavení sada Application Insights SDK automaticky označí každý požadavek serveru, který vrátil kód odpovědi HTTP 5xx nebo 4xx jako neúspěšný požadavek. Tuto logiku můžete přizpůsobit úpravou vlastnosti *úspěchu* položky telemetrie požadavku ve [vlastním inicializátoru telemetrie](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer).
+Počet sledovaných požadavků serveru, které byly označeny jako *neúspěšné*. Ve výchozím nastavení sada Application Insights SDK automaticky označí každou žádost serveru, která vrátila kód odpovědi HTTP 5xx nebo 4xx jako neúspěšný požadavek. Tuto logiku můžete přizpůsobit úpravou vlastnosti *úspěch* položky telemetrie žádosti ve [vlastním inicializátoru telemetrie](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer).
 
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|Poznámky|
 |---|---|---|---|
-|Počet|Počet|Instance role cloudu, název role cloudu, reálný nebo syntetický provoz, výkon požadavku, kód odpovědi|Verze založená na protokolu používá agregaci **součtů.**|
+|Počet|Počet|Instance cloudové role, název cloudové role, skutečný nebo syntetický provoz, požadavky na výkon, kód odpovědi|Verze založená na protokolu používá agregaci **Sum** .|
 
 ```Kusto
 requests
@@ -237,13 +237,13 @@ requests
 | render barchart
 ```
 
-### <a name="server-exceptions-exceptionsserver"></a>Výjimky serveru (výjimky/server)
+### <a name="server-exceptions-exceptionsserver"></a>Výjimky serveru (výjimky/Server)
 
-Tato metrika zobrazuje počet výjimek serveru.
+Tato metrika znázorňuje počet výjimek serveru.
 
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|Poznámky|
 |---|---|---|---|
-|Počet|Počet|Název role cloudu, instance role Cloud|Verze založená na protokolu používá agregaci **součtů.**|
+|Počet|Počet|Název cloudové role, instance cloudové role|Verze založená na protokolu používá agregaci **Sum** .|
 
 ```Kusto
 exceptions
@@ -254,9 +254,9 @@ exceptions
 
 ## <a name="performance-counters"></a>Čítače výkonu
 
-Pomocí metrik v kategorii **Čítače výkonu** můžete získat přístup k [výkonovým čítačům systému shromážděným aplikací Insights](../../azure-monitor/app/performance-counters.md).
+Pomocí metrik v kategorii **čítače výkonu** můžete získat přístup k [čítačům výkonu systému shromážděným pomocí Application Insights](../../azure-monitor/app/performance-counters.md).
 
-### <a name="available-memory-performancecountersavailablememory"></a>Dostupná paměť (performanceCounters/availableMemory)
+### <a name="available-memory-performancecountersavailablememory"></a>Dostupná paměť (čítače výkonu/availableMemory)
 
 ```Kusto
 performanceCounters
@@ -266,7 +266,7 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="exception-rate-performancecountersexceptionrate"></a>Míra výjimek (performanceCounters/exceptionRate)
+### <a name="exception-rate-performancecountersexceptionrate"></a>Míra výjimek (čítače výkonu/exceptionRate)
 
 ```Kusto
 performanceCounters
@@ -276,7 +276,7 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="http-request-execution-time-performancecountersrequestexecutiontime"></a>Doba spuštění požadavku HTTP (performanceCounters/requestExecutionTime)
+### <a name="http-request-execution-time-performancecountersrequestexecutiontime"></a>Doba provádění požadavku HTTP (čítače výkonu/requestExecutionTime)
 
 ```Kusto
 performanceCounters
@@ -286,7 +286,7 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="http-request-rate-performancecountersrequestspersecond"></a>Rychlost požadavků HTTP (performanceCounters/requestsPerSecond)
+### <a name="http-request-rate-performancecountersrequestspersecond"></a>Míra požadavků HTTP (čítače výkonu/requestsPerSecond)
 
 ```Kusto
 performanceCounters
@@ -296,7 +296,7 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="http-requests-in-application-queue-performancecountersrequestsinqueue"></a>HTTP požadavky ve frontě aplikací (performanceCounters/requestsInQueue)
+### <a name="http-requests-in-application-queue-performancecountersrequestsinqueue"></a>Požadavky HTTP ve frontě aplikací (čítače výkonu/requestsInQueue)
 
 ```Kusto
 performanceCounters
@@ -306,13 +306,13 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="process-cpu-performancecountersprocesscpupercentage"></a>Procesní procesor (performanceCounters/processCpuPercentage)
+### <a name="process-cpu-performancecountersprocesscpupercentage"></a>PROCESOR procesu (čítače výkonu/processCpuPercentage)
 
-Metrika ukazuje, jak velkou část celkové kapacity procesoru spotřebovává proces, který hostuje vaši monitorovanou aplikaci.
+Metrika ukazuje, kolik celkové kapacity procesoru spotřebovává proces, který je hostitelem monitorované aplikace.
 
 |Jednotka měření|Podporované agregace|Podporované dimenze|
 |---|---|---|
-|Procento|Průměr, Min, Max|Instance role cloudu
+|Procento|Average, min, Max|Instance cloudové role
 
 ```Kusto
 performanceCounters
@@ -322,11 +322,11 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="process-io-rate-performancecountersprocessiobytespersecond"></a>Rychlost vstupně-to-vi procesu (performanceCounters/processIOBytesPerSecond)
+### <a name="process-io-rate-performancecountersprocessiobytespersecond"></a>Frekvence v/v procesu (čítače výkonu/processIOBytesPerSecond)
 
 |Jednotka měření|Podporované agregace|Podporované dimenze|
 |---|---|---|
-|Bajty za sekundu|Průměr, Min, Max|Instance role cloudu
+|Bajtů za sekundu|Average, min, Max|Instance cloudové role
 
 ```Kusto
 performanceCounters
@@ -336,13 +336,13 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="process-private-bytes-performancecountersprocessprivatebytes"></a>Proces soukromé bajty (performanceCounters/processPrivateBytes)
+### <a name="process-private-bytes-performancecountersprocessprivatebytes"></a>Zpracovat soukromé bajty (čítače výkonu/processPrivateBytes)
 
-Množství nesdílené paměti, kterou sledovaný proces přidělil pro svá data.
+Množství nesdílené paměti, které monitorovaný proces přidělen pro svá data.
 
 |Jednotka měření|Podporované agregace|Podporované dimenze|
 |---|---|---|
-|Bajty|Průměr, Min, Max|Instance role cloudu
+|Bajty|Average, min, Max|Instance cloudové role
 
 ```Kusto
 performanceCounters
@@ -352,16 +352,16 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="processor-time-performancecountersprocessorcpupercentage"></a>Čas procesoru (performanceCounters/processorCpuPercentage)
+### <a name="processor-time-performancecountersprocessorcpupercentage"></a>Čas procesoru (čítače výkonu/processorCpuPercentage)
 
-Využití procesoru *všemi* procesy spuštěnými na monitorované instanci serveru.
+Spotřeba procesoru u *všech* procesů spuštěných v instanci monitorovaného serveru.
 
 |Jednotka měření|Podporované agregace|Podporované dimenze|
 |---|---|---|
-|Procento|Průměr, Min, Max|Instance role cloudu
+|Procento|Average, min, Max|Instance cloudové role
 
 >[!NOTE]
-> Metrika času procesoru není dostupná pro aplikace hostované ve službách Azure App Services. Pomocí metriky [Proces procesoru](#process-cpu-performancecountersprocesscpupercentage) můžete sledovat využití procesoru webových aplikací hostovaných ve službách App Services.
+> Pro aplikace hostované v Azure App Services není dostupná časová metrika procesoru. Pomocí metriky [procesoru procesu](#process-cpu-performancecountersprocesscpupercentage) můžete sledovat využití procesoru webových aplikací hostovaných ve službě App Services.
 
 ```Kusto
 performanceCounters
@@ -383,7 +383,7 @@ dependencies
 | render barchart
 ```
 
-### <a name="dependency-duration-dependenciesduration"></a>Doba trvání závislostí (závislosti/doba trvání)
+### <a name="dependency-duration-dependenciesduration"></a>Trvání závislosti (závislosti/trvání)
 
 Tato metrika odkazuje na dobu trvání volání závislostí.
 
@@ -398,7 +398,7 @@ dependencies
 | render timechart
 ```
 
-### <a name="server-requests-requestscount"></a>Serverové požadavky (požadavky/počet)
+### <a name="server-requests-requestscount"></a>Žádosti serveru (požadavky/počet)
 
 Tato metrika odráží počet příchozích požadavků serveru, které byly přijaty vaší webovou aplikací.
 
@@ -408,9 +408,9 @@ requests
 | render barchart
 ```
 
-### <a name="server-response-time-requestsduration"></a>Doba odezvy serveru (požadavky/doba trvání)
+### <a name="server-response-time-requestsduration"></a>Doba odezvy serveru (žádosti o dobu trvání)
 
-Tato metrika odráží dobu, kterou servery zpracovaly ke zpracování příchozích požadavků.
+Tato metrika odráží dobu, kterou trvalo, aby servery zpracovaly příchozí požadavky.
 
 ```Kusto
 requests
@@ -425,9 +425,9 @@ requests
 
 ## <a name="usage-metrics"></a>Metriky využití
 
-### <a name="page-view-load-time-pageviewsduration"></a>Doba načítání zobrazení stránky (zobrazení stránky/doba trvání)
+### <a name="page-view-load-time-pageviewsduration"></a>Doba načítání zobrazení stránky (pageViews/Duration)
 
-Tato metrika odkazuje na dobu trvalo pageview události načíst.
+Tato metrika odkazuje na množství času, který trvalo, aby se PageView události načetly.
 
 ```Kusto
 pageViews
@@ -440,9 +440,9 @@ pageViews
 | render barchart
 ```
 
-### <a name="page-views-pageviewscount"></a>Zobrazení stránky (zobrazení/počet stránek)
+### <a name="page-views-pageviewscount"></a>Zobrazení stránky (pageViews/Count)
 
-Počet událostí PageView zaznamenaných pomocí rozhraní Api Pro přehledy aplikací TrackPageView().
+Počet událostí PageView protokolovaných pomocí rozhraní API TrackPageView () Application Insights.
 
 ```Kusto
 pageViews
@@ -452,7 +452,7 @@ pageViews
 
 ### <a name="sessions-sessionscount"></a>Relace (relace/počet)
 
-Tato metrika odkazuje na počet různých ID relace.
+Tato metrika odkazuje na počet jedinečných identifikátorů relací.
 
 ```Kusto
 union traces, requests, pageViews, dependencies, customEvents, availabilityResults, exceptions, customMetrics, browserTimings
@@ -461,9 +461,9 @@ union traces, requests, pageViews, dependencies, customEvents, availabilityResul
 | render barchart
 ```
 
-### <a name="traces-tracescount"></a>Stopy (stopy/počet)
+### <a name="traces-tracescount"></a>Trasování (Traces/Count)
 
-Počet příkazů trasování protokolovaných pomocí volání rozhraní API Rozhraní API TrackTrace() Application Insights.
+Počet příkazů trasování protokolovaných pomocí volání TrackTrace () Application Insights rozhraní API.
 
 ```Kusto
 traces
@@ -473,7 +473,7 @@ traces
 
 ### <a name="users-userscount"></a>Uživatelé (uživatelé/počet)
 
-Počet různých uživatelů, kteří přistupovali k vaší aplikaci. Přesnost této metriky může být významně ovlivněna pomocí vzorkování telemetrie a filtrování.
+Počet různých uživatelů, kteří získali aplikaci. Přesnost této metriky může být významně ovlivněna použitím vzorkování a filtrování telemetrie.
 
 ```Kusto
 union traces, requests, pageViews, dependencies, customEvents, availabilityResults, exceptions, customMetrics, browserTimings
@@ -482,9 +482,9 @@ union traces, requests, pageViews, dependencies, customEvents, availabilityResul
 | render barchart
 ```
 
-### <a name="users-authenticated-usersauthenticated"></a>Uživatelé, Ověřeno (uživatelé/ověřeno)
+### <a name="users-authenticated-usersauthenticated"></a>Uživatelé, ověření (uživatelé/ověřeno)
 
-Počet různých uživatelů, kteří se ověřili do vaší aplikace.
+Počet různých uživatelů, kteří se do vaší aplikace ověřili.
 
 ```Kusto
 union traces, requests, pageViews, dependencies, customEvents, availabilityResults, exceptions, customMetrics, browserTimings

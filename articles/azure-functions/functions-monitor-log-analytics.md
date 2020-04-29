@@ -1,44 +1,44 @@
 ---
-title: Monitorování funkcí Azure pomocí protokolů monitorování Azure
-description: Zjistěte, jak pomocí protokolů monitorování Azure pomocí funkcí Azure monitorovat spuštění funkcí.
+title: Monitorování Azure Functions pomocí protokolů Azure Monitor
+description: Naučte se používat protokoly Azure Monitor s Azure Functions k monitorování provádění funkcí.
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: cshoe
 ms.openlocfilehash: 13c72a1cf8a0dd4a1124e51b9ceee04ae04bf261
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77649870"
 ---
-# <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Monitorování funkcí Azure pomocí protokolů monitorování Azure
+# <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Monitorování Azure Functions pomocí protokolů Azure Monitor
 
-Funkce Azure nabízí integraci s [protokoly monitorování Azure](../azure-monitor/platform/data-platform-logs.md) pro monitorování funkcí. Tento článek ukazuje, jak nakonfigurovat funkce Azure pro odesílání protokolů generovaných systémem a protokoly generované uživateli do protokolů monitorování Azure.
+Azure Functions nabízí integraci s [protokoly Azure monitor](../azure-monitor/platform/data-platform-logs.md) pro monitorování funkcí. V tomto článku se dozvíte, jak nakonfigurovat Azure Functions pro odesílání protokolů generovaných systémem a uživatelem do Azure Monitor protokolů.
 
-Protokoly monitorování Azure vám umožňuje konsolidovat protokoly z různých prostředků ve stejném pracovním prostoru, kde je možné analyzovat pomocí [dotazů](../azure-monitor/log-query/log-query-overview.md) rychle načíst, konsolidovat a analyzovat shromážděná data.  Můžete vytvářet a testovat dotazy pomocí [Log Analytics](../azure-monitor/log-query/portals.md) na webu Azure Portal a pak buď přímo analyzovat data pomocí těchto nástrojů nebo uložit dotazy pro použití s [vizualizacemi](../azure-monitor/visualizations.md) nebo [pravidly výstrah](../azure-monitor/platform/alerts-overview.md).
+Protokoly Azure Monitor poskytují možnost konsolidovat protokoly z různých prostředků ve stejném pracovním prostoru, kde je lze analyzovat pomocí [dotazů](../azure-monitor/log-query/log-query-overview.md) pro rychlé načítání, konsolidaci a analýzu shromážděných dat.  Můžete vytvářet a testovat dotazy pomocí [Log Analytics](../azure-monitor/log-query/portals.md) v Azure Portal a potom buď přímo analyzovat data pomocí těchto nástrojů, nebo ukládat dotazy pro použití s [vizualizacemi](../azure-monitor/visualizations.md) nebo [pravidly výstrah](../azure-monitor/platform/alerts-overview.md).
 
-Azure Monitor používá verzi [dotazovacího jazyka Kusto](/azure/kusto/query/) používanou aplikací Azure Data Explorer, která je vhodná pro jednoduché dotazy protokolu, ale také zahrnuje pokročilé funkce, jako jsou agregace, spojení a inteligentní analýzy. Dotazovací jazyk se můžete rychle naučit pomocí [několika lekcí](../azure-monitor/log-query/get-started-queries.md).
+Azure Monitor používá verzi [dotazovacího jazyka Kusto](/azure/kusto/query/) , kterou používá služba Azure Průzkumník dat, která je vhodná pro jednoduché dotazy protokolů, ale zahrnuje i pokročilé funkce, jako jsou agregace, spojení a inteligentní analýzy. Dotazovací jazyk můžete rychle zjistit pomocí [více lekcí](../azure-monitor/log-query/get-started-queries.md).
 
 > [!NOTE]
-> Integrace s protokoly monitorování Azure je aktuálně ve verzi Public Preview pro funkční aplikace spuštěné v plánech Windows Consumption, Premium a Dedicated hosting.
+> Integrace s protokoly Azure Monitor je v současnosti ve verzi Public Preview pro aplikace Function App běžící ve Windows, Premium a vyhrazených plánech hostování.
 
 ## <a name="setting-up"></a>Nastavení
 
-V části **Monitorování** vyberte **Nastavení diagnostiky** a potom klepněte na **tlačítko Přidat diagnostické nastavení**.
+V části **monitorování** vyberte **nastavení diagnostiky** a pak klikněte na **Přidat nastavení diagnostiky**.
 
-![Přidání diagnostického nastavení](media/functions-monitor-log-analytics/diagnostic-settings-add.png)
+![Přidat nastavení diagnostiky](media/functions-monitor-log-analytics/diagnostic-settings-add.png)
 
-Na stránce **Nastavení diagnostiky** zvolte **Odeslat do analýzy protokolů**a pak vyberte pracovní prostor Analýzy protokolů. V **části log** zvolte **FunctionAppLogs**, tato tabulka obsahuje požadované protokoly.
+Na stránce **nastavení diagnostiky** zvolte **Odeslat do Log Analytics**a potom vyberte pracovní prostor Log Analytics. V části **protokol** zvolit **FunctionAppLogs**, tato tabulka obsahuje požadované protokoly.
 
-![Přidání diagnostického nastavení](media/functions-monitor-log-analytics/choose-table.png)
+![Přidat nastavení diagnostiky](media/functions-monitor-log-analytics/choose-table.png)
 
-## <a name="user-generated-logs"></a>Protokoly generované uživatelem
+## <a name="user-generated-logs"></a>Uživatelem vygenerované protokoly
 
-Chcete-li generovat vlastní protokoly, můžete použít konkrétní příkaz protokolování v závislosti na vašem jazyce, zde jsou ukázkové fragmenty kódu:
+Chcete-li generovat vlastní protokoly, můžete použít konkrétní příkaz protokolování v závislosti na jazyku, zde jsou ukázkové fragmenty kódu:
 
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 log.LogInformation("My app logs here.");
@@ -50,13 +50,13 @@ log.LogInformation("My app logs here.");
 context.getLogger().info("My app logs here.");
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 context.log('My app logs here.');
 ```
 
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[Prostředí](#tab/powershell)
 
 ```powershell
 Write-Host "My app logs here."
@@ -70,13 +70,13 @@ logging.info('My app logs here.')
 
 ---
 
-## <a name="querying-the-logs"></a>Dotazování na protokoly
+## <a name="querying-the-logs"></a>Dotazování protokolů
 
-Chcete-li zadat dotaz na generované protokoly, přejděte do pracovního prostoru Analýzy protokolů, který jste nakonfigurovali tak, aby odesílal protokoly funkcí, a klepněte na **položku Protokoly**.
+Pokud chcete zadat dotaz na vygenerované protokoly, přejděte do pracovního prostoru Log Analytics, který jste nakonfigurovali pro odeslání protokolů funkce, a klikněte na **protokoly**.
 
 ![Okno dotazu v pracovním prostoru LA](media/functions-monitor-log-analytics/querying.png)
 
-Azure Functions zapisuje všechny protokoly do tabulky **FunctionAppLogs,** tady jsou některé ukázkové dotazy.
+Azure Functions zapisuje všechny protokoly do tabulky **FunctionAppLogs** . tady je několik ukázkových dotazů.
 
 ### <a name="all-logs"></a>Všechny protokoly
 
@@ -87,7 +87,7 @@ FunctionAppLogs
 
 ```
 
-### <a name="a-specific-function-logs"></a>Protokoly specifických funkcí
+### <a name="a-specific-function-logs"></a>Konkrétní protokoly funkcí
 
 ```
 
@@ -108,6 +108,6 @@ FunctionAppLogs
 
 ## <a name="next-steps"></a>Další kroky
 
-- Kontrola [přehledu funkcí Azure](functions-overview.md)
-- Další informace o [protokolech monitorování Azure](../azure-monitor/platform/data-platform-logs.md)
+- Přečtěte si [přehled Azure Functions](functions-overview.md)
+- Další informace o [protokolech Azure monitor](../azure-monitor/platform/data-platform-logs.md)
 - Přečtěte si další informace o [dotazovacím jazyce](../azure-monitor/log-query/get-started-queries.md).

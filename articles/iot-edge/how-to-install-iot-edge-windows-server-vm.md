@@ -1,6 +1,6 @@
 ---
-title: Spuštění Azure IoT Edge na virtuálních počítačích se systémem Windows Server | Dokumenty společnosti Microsoft
-description: Pokyny k nastavení Azure IoT Edge na virtuálních počítačích Windows Server Marketplace
+title: Spuštění Azure IoT Edge na Windows serveru Virtual Machines | Microsoft Docs
+description: Pokyny k instalaci Azure IoT Edge na webu Marketplace pro Windows Server Virtual Machines
 author: gregman-msft
 manager: arjmands
 ms.reviewer: kgremban
@@ -10,52 +10,52 @@ ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: philmea
 ms.openlocfilehash: 5f88a21efd04c9dd24fe31e925a3b911b5ec9df2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77045911"
 ---
-# <a name="run-azure-iot-edge-on-windows-server-virtual-machines"></a>Spuštění Azure IoT Edge na virtuálních počítačích s Windows Serverem
+# <a name="run-azure-iot-edge-on-windows-server-virtual-machines"></a>Spuštění Azure IoT Edge v systému Windows Server Virtual Machines
 
-Azure IoT Edge runtime je to, co změní zařízení na zařízení IoT Edge. Runtime lze nasadit na zařízení tak malá jako Raspberry Pi nebo velká jako průmyslový server. Jakmile je zařízení nakonfigurované s runtime IoT Edge, můžete do něj začít nasazovat obchodní logiku z cloudu.
+Azure IoT Edge modul runtime je tím, že zařízení přepíná do IoT Edge zařízení. Modul runtime se dá na zařízeních nasadit tak, jak malý, jako např. v/v jako průmyslový Server. Jakmile je zařízení nakonfigurované s modulem runtime IoT Edge, můžete do něj začít nasazovat obchodní logiku z cloudu.
 
-Další informace o tom, jak funguje runtime IoT Edge a jaké součásti jsou zahrnuty, najdete [v tématu Principy runtime Azure IoT Edge a jeho architektury](iot-edge-runtime.md).
+Další informace o tom, jak modul runtime IoT Edge funguje a jaké součásti jsou zahrnuté, najdete v tématu [pochopení Azure IoT Edge runtime a jeho architektury](iot-edge-runtime.md).
 
-V tomto článku jsou uvedeny kroky ke spuštění runtime Azure IoT Edge na virtuálním počítači s Windows Serverem 2019 pomocí nabídky [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace. Postupujte podle pokynů na [webu Instalace runtime Azure IoT Edge](how-to-install-iot-edge-windows.md) v systému Windows pro použití s jinými verzemi.
+V tomto článku jsou uvedené kroky, jak spustit modul runtime Azure IoT Edge na virtuálním počítači s Windows serverem 2019 pomocí nabídky [Windows server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace. Postupujte podle pokynů v tématu [Instalace modulu runtime Azure IoT Edge](how-to-install-iot-edge-windows.md) ve Windows pro použití s jinými verzemi.
 
 ## <a name="deploy-from-the-azure-marketplace"></a>Nasazení z Azure Marketplace
 
-1. Přejděte na nabídku [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace nebo vyhledáním "Windows Serveru" na [Azure Marketplace.](https://azuremarketplace.microsoft.com/)
-2. Vyberte **ZÍSKAT NYNÍ**
-3. V **plánu softwaru**najděte "Windows Server 2019 Datacenter Server Core with Containers" a pak v dalším dialogovém okně vyberte **Pokračovat.**
-    * Tyto pokyny můžete použít také pro jiné verze systému Windows Server s kontejnery.
-4. Na webu Azure Portal vyberte **Vytvořit** a postupujte podle průvodce k nasazení virtuálního počítače.
-    * Pokud je to poprvé, vyzkoušet virtuální počítač, je nejjednodušší použít heslo a povolit RDP a SSH ve veřejné nabídce příchozí port.
-    * Pokud máte úlohu náročnou na prostředky, měli byste upgradovat velikost virtuálního počítače přidáním dalších procesorů nebo paměti.
-5. Po nasazení virtuálního počítače ho nakonfigurujte tak, aby se připojil k vašemu centru IoT Hub:
-    1. Zkopírujte připojovací řetězec zařízení ze zařízení IoT Edge vytvořeného ve vašem IoT Hubu. Podívejte se na postup [Načíst připojovací řetězec na webu Azure Portal](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal).
-    1. Vyberte nově vytvořený prostředek virtuálního počítače z portálu Azure a otevřete možnost **spustit příkaz**
-    1. Výběr volby **RunPowerShellScript**
-    1. Zkopírujte tento skript do příkazového okna pomocí připojovacího řetězce zařízení:
+1. Přejděte na nabídku [Windows server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace nebo vyhledejte v části Windows server na [Azure Marketplace](https://azuremarketplace.microsoft.com/)
+2. Vyberte **získat hned**
+3. V části **plán softwaru**Najděte "Windows Server 2019 Datacenter Server Core with Containers" a potom v dalším dialogovém okně vyberte **pokračovat** .
+    * Tyto pokyny můžete použít také pro jiné verze Windows serveru s kontejnery.
+4. V Azure Portal vyberte **vytvořit** a postupujte podle pokynů průvodce a NASAĎTE virtuální počítač.
+    * Pokud si virtuální počítač vyzkoušíte poprvé, je jednodušší použít heslo a povolit RDP a SSH v nabídce veřejného příchozího portu.
+    * Pokud máte úlohu náročné na prostředky, měli byste upgradovat velikost virtuálního počítače přidáním dalších procesorů nebo paměti.
+5. Po nasazení virtuálního počítače ho nakonfigurujte tak, aby se připojil k vašemu IoT Hub:
+    1. Z IoT Edge zařízení vytvořeného v IoT Hub zkopírujte připojovací řetězec zařízení. Viz postup [Načtení připojovacího řetězce v Azure Portal](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal).
+    1. Vyberte nově vytvořený prostředek virtuálního počítače z Azure Portal a otevřete možnost **Spustit příkaz** .
+    1. Vyberte možnost **RunPowerShellScript**
+    1. Zkopírujte tento skript do příkazového okna s připojovacím řetězcem zařízení:
 
         ```powershell
         . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
         Install-IoTEdge -Manual -DeviceConnectionString '<connection-string>'
         ```
 
-    1. Spusťte skript pro instalaci runtime IoT Edge a nastavte připojovací řetězec výběrem **možnosti Spustit**
-    1. Po minutě nebo dvou, měli byste se zobrazit zpráva, že edge runtime byla nainstalována a zřídit úspěšně.
+    1. Spusťte skript pro instalaci IoT Edge runtime a nastavte připojovací řetězec výběrem možnosti **Spustit** .
+    1. Po minutě nebo dvou minutách by se měla zobrazit zpráva, že modul runtime Edge byl nainstalován a úspěšně zřízen.
 
-## <a name="deploy-from-the-azure-portal"></a>Nasazení z webu Azure Portal
+## <a name="deploy-from-the-azure-portal"></a>Nasazení z Azure Portal
 
-1. Na webu Azure Portal vyhledejte "Windows Server" a vyberte **Windows Server 2019 Datacenter** a zahajte pracovní postup vytváření virtuálních aplikací.
-2. V **možnosti Vybrat softwarový plán** zvolte "Jádro serveru datového centra Windows Server 2019 s kontejnery" a pak vyberte **Vytvořit**
-3. Dokončete krok 5 v pokynech "Nasazení z Azure Marketplace" výše.
+1. V Azure Portal vyhledejte "Windows Server" a vyberte **Windows server 2019 Datacenter** , abyste mohli začít pracovní postup vytváření virtuálního počítače.
+2. V části **Vyberte plán softwaru** zvolte Windows Server 2019 Datacenter Server Core with Containers a pak vyberte **vytvořit** .
+3. Proveďte krok 5 v části nasazení z Azure Marketplace výše.
 
 ## <a name="deploy-from-azure-cli"></a>Nasazení z Azure CLI
 
-1. Pokud používáte Azure CLI na ploše, začněte přihlášením:
+1. Pokud na ploše používáte rozhraní příkazového řádku Azure CLI, začněte přihlášením:
 
    ```azurecli-interactive
    az login
@@ -69,28 +69,28 @@ V tomto článku jsou uvedeny kroky ke spuštění runtime Azure IoT Edge na vir
       ```
 
    1. Zkopírujte pole SubscriptionID pro předplatné, které chcete použít.
-   1. Spusťte tento příkaz s id, které jste zkopírovali:
+   1. Spusťte tento příkaz s ID, které jste zkopírovali:
 
       ```azurecli-interactive
       az account set -s {SubscriptionId}
       ```
 
-1. Vytvořte novou skupinu prostředků (nebo v dalších krocích zadejte existující skupinu):
+1. Vytvořte novou skupinu prostředků (nebo v dalších krocích určete existující):
 
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus2
    ```
 
-1. Vytvoření nového virtuálního počítače:
+1. Vytvořit nový virtuální počítač:
 
    ```azurecli-interactive
    az vm create -g IoTEdgeResources -n EdgeVM --image MicrosoftWindowsServer:WindowsServer:2019-Datacenter-Core-with-Containers:latest  --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
    ```
 
-   * Tento příkaz vás vyzve k zadání hesla, `--admin-password` ale můžete přidat možnost jeho snadněji nastavit ve skriptu
-   * Bitová kopie Windows Server Core podporuje příkazový řádek pouze se vzdálenou plochou, takže pokud chcete mít plnou plochu, zadejte `MicrosoftWindowsServer:WindowsServer:2019-Datacenter-with-Containers:latest` jako obrázek
+   * Tento příkaz vás vyzve k zadání hesla, ale můžete přidat možnost `--admin-password` pro jednodušší nastavení skriptu.
+   * Základní image Windows serveru obsahuje podporu příkazového řádku jenom se vzdálenou plochou, takže pokud chcete, aby se jako image zobrazovala `MicrosoftWindowsServer:WindowsServer:2019-Datacenter-with-Containers:latest` úplná plocha, zadejte jako obrázek.
 
-1. Nastavte připojovací řetězec zařízení (Můžete postupovat podle [načíst připojovací řetězec pomocí postupu Azure CLI,](how-to-register-device.md#retrieve-the-connection-string-with-the-azure-cli) pokud nejste obeznámeni s tímto procesem):
+1. Nastavení připojovacího řetězce zařízení (Pokud nejste obeznámeni s tímto procesem, můžete postup [načíst připojovací řetězec pomocí Azure CLI](how-to-register-device.md#retrieve-the-connection-string-with-the-azure-cli) ):
 
    ```azurecli-interactive
    az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunPowerShellScript --script ". {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `Install-IoTEdge -Manual -DeviceConnectionString '<connection-string>'"
@@ -98,12 +98,12 @@ V tomto článku jsou uvedeny kroky ke spuštění runtime Azure IoT Edge na vir
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když máte zařízení IoT Edge zřízené s nainstalovaným modulem runtime, můžete [nasadit moduly IoT Edge](how-to-deploy-modules-portal.md).
+Teď, když máte nainstalovanou IoT Edge zařízení s nainstalovaným modulem runtime, můžete [nasadit IoT Edge moduly](how-to-deploy-modules-portal.md).
 
-Pokud máte problémy se správnou instalací runtime edge, podívejte se na stránku [pro řešení potíží.](troubleshoot.md)
+Pokud máte problémy s instalací hraničního modulu runtime, podívejte se na stránku [Poradce při potížích](troubleshoot.md) .
 
-Informace o aktualizaci existující instalace na nejnovější verzi technologie IoT Edge naleznete v [tématu Aktualizace daemonu zabezpečení IoT Edge a runtime](how-to-update-iot-edge.md).
+Chcete-li aktualizovat existující instalaci na nejnovější verzi IoT Edge, přečtěte si téma [aktualizace procesu démona zabezpečení IoT Edge a modulu runtime](how-to-update-iot-edge.md).
 
-Další informace o používání virtuálních počítačů s Windows naleznete v dokumentaci k [virtuálním počítačům Windows](https://docs.microsoft.com/azure/virtual-machines/windows/).
+Další informace o používání virtuálních počítačů s Windows najdete v [dokumentaci k Windows Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/).
 
-Pokud chcete SSH do tohoto virtuálního počítače po instalaci, postupujte podle [instalace OpenSSH pro Windows Server](https://docs.microsoft.com/windows-server/administration/openssh/openssh_install_firstuse#installing-openssh-with-powershell) průvodce pomocí vzdálené plochy nebo vzdálené powershellu.
+Pokud chcete k tomuto virtuálnímu počítači po instalaci použít SSH, postupujte podle pokynů v části [instalace Průvodce OpenSSH pro Windows Server](https://docs.microsoft.com/windows-server/administration/openssh/openssh_install_firstuse#installing-openssh-with-powershell) pomocí vzdálené plochy nebo vzdáleného prostředí PowerShell.

@@ -1,37 +1,37 @@
 ---
-title: Kolekce IP adres Azure Application Insights | Dokumenty společnosti Microsoft
-description: Principy způsobu zpracování IP adres a geografické polohy pomocí Azure Application Insights
+title: Kolekce IP adres Azure Application Insights | Microsoft Docs
+description: Porozumění způsobu, jakým jsou zpracovávány IP adresy a geografická umístění s využitím Azure Application Insights
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: 969061ec89ddd0f13caa675bc324207c6c5d8843
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77656513"
 ---
-# <a name="geolocation-and-ip-address-handling"></a>Zpracování geolokace a IP adres
+# <a name="geolocation-and-ip-address-handling"></a>Geografická poloha a zpracování IP adres
 
-Tento článek vysvětluje, jak geolocation vyhledávání a zpracování IP adres dojít v Application Insights spolu s jak změnit výchozí chování.
+V tomto článku se dozvíte, jak se k vyhledávání geografického umístění a manipulaci s IP adresou dochází v Application Insights spolu s postupem, jak změnit výchozí chování.
 
 ## <a name="default-behavior"></a>Výchozí chování
 
-Ve výchozím nastavení jsou adresy IP dočasně shromažďovány, ale nejsou uloženy v Application Insights. Základní proces je tento:
+Ve výchozím nastavení jsou dočasně shromažďovány IP adresy, ale nejsou uloženy v Application Insights. Základní proces je tento:
 
-IP adresy jsou odesílány do Application Insights jako součást telemetrických dat. Po dosažení koncového bodu ingestování v Azure se IP adresa používá k provedení geografického vyhledávání pomocí [GeoLite2 z MaxMind](https://dev.maxmind.com/geoip/geoip2/geolite2/). Výsledky tohoto vyhledávání se používají k vyplnění `client_City` `client_StateOrProvince`následujících polí , . `client_CountryOrRegion`. V tomto okamžiku je adresa IP `0.0.0.0` zahozena `client_IP` a zapsána do pole.
+IP adresy se odesílají do Application Insights jako součást dat telemetrie. Po dosažení koncového bodu příjmu v Azure se IP adresa používá k prohledání geografického umístění pomocí [GeoLite2 z Maxmind](https://dev.maxmind.com/geoip/geoip2/geolite2/). Výsledky tohoto vyhledávání slouží k naplnění následujících polí `client_City`, `client_StateOrProvince`,. `client_CountryOrRegion` V tomto okamžiku se IP adresa zahodí a `0.0.0.0` do `client_IP` pole se zapíše.
 
-* Telemetrie prohlížeče: Dočasně shromažďujeme IP adresu odesílatele. IP adresa se vypočítá podle koncového bodu ingestování.
-* Telemetrie serveru: Modul Application Insights dočasně shromažďuje IP adresu klienta. Není shromažďována, `X-Forwarded-For` pokud je nastavena.
+* Telemetrie prohlížeče: dočasně shromáždíme IP adresu odesílatele. IP adresa se počítá pomocí koncového bodu pro přijímání.
+* Telemetrie serveru: modul Application Insights dočasně shromažďuje IP adresu klienta. Není shromažďována, pokud `X-Forwarded-For` je nastavena.
 
-Toto chování je záměrné, aby se zabránilo zbytečnému shromažďování osobních údajů. Pokud je to možné, doporučujeme vyhnout se shromažďování osobních údajů. 
+Toto chování je záměrné, což umožňuje vyhnout se zbytečné kolekci osobních údajů. Kdykoli je to možné, doporučujeme vyhnout se shromažďování osobních údajů. 
 
 ## <a name="overriding-default-behavior"></a>Přepsání výchozího chování
 
-Zatímco výchozí chování je minimalizovat shromažďování osobních údajů, stále nabízíme flexibilitu při shromažďování a ukládání dat IP adres. Než se rozhodnete ukládat jakékoli osobní údaje, jako jsou IP adresy, důrazně doporučujeme ověřit, zda tím nejsou splněny žádné požadavky na dodržování předpisů nebo místní předpisy, které vám mohou podléhat. Chcete-li se dozvědět více o zpracování osobních údajů v Application Insights, podívejte se na [pokyny pro osobní údaje](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt).
+I když je výchozím chováním minimalizace shromažďování osobních údajů, stále nabízíme flexibilitu pro shromažďování a ukládání dat IP adres. Než se rozhodnete ukládat osobní údaje, jako jsou IP adresy, důrazně doporučujeme ověřit, že se neruší žádné požadavky na dodržování předpisů ani místní předpisy, na které se může vztahovat. Další informace o zpracování osobních údajů v Application Insights najdete v [pokynech k osobním údajům](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt).
 
-## <a name="storing-ip-address-data"></a>Ukládání dat IP adres
+## <a name="storing-ip-address-data"></a>Ukládání dat IP adresy
 
-Chcete-li povolit shromažďování a `DisableIpMasking` ukládání IP adres, musí `true`být vlastnost komponenty Application Insights nastavena na . Tuto vlastnost lze nastavit buď prostřednictvím šablon Azure Resource Manager nebo voláním rozhraní REST API. 
+Aby bylo možné povolit shromažďování a ukládání IP adres, `DisableIpMasking` musí být vlastnost Application Insights komponenty nastavena na `true`. Tuto vlastnost lze nastavit buď prostřednictvím Azure Resource Manager šablon, nebo voláním REST API. 
 
 ### <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
 
@@ -57,36 +57,36 @@ Chcete-li povolit shromažďování a `DisableIpMasking` ukládání IP adres, m
 
 ### <a name="portal"></a>Portál 
 
-Pokud potřebujete upravit pouze chování pro jeden prostředek Application Insights nejjednodušší způsob, jak toho dosáhnout, je prostřednictvím portálu Azure.  
+Pokud potřebujete pouze změnit chování pro jeden Application Insights prostředek, nejjednodušší způsob, jak to provést, je prostřednictvím Azure Portal.  
 
-1. Přejít na prostředek Application Insights >**šablona exportu** **nastavení** >  
+1. Projděte si šablonu pro **Settings** > **Export** nastavení > prostředků Application Insights. 
 
     ![Exportovat šablonu](media/ip-collection/export-template.png)
 
 2. Vybrat **nasazení**
 
-    ![Tlačítko Nasadit zvýrazněné červeně](media/ip-collection/deploy.png)
+    ![Tlačítko nasadit zvýrazněné červeně](media/ip-collection/deploy.png)
 
-3. Vyberte **Upravit šablonu**. (Pokud šablona obsahuje další vlastnosti nebo prostředky, které se nezobrazují v této ukázkové šabloně, postupujte opatrně a ujistěte se, že všechny prostředky budou přijímat nasazení šablony jako přírůstkovou změnu nebo aktualizaci.)
+3. Vyberte **Upravit šablonu**. (Pokud má vaše šablona další vlastnosti nebo prostředky, které se v této ukázkové šabloně nezobrazují, postupujte opatrně a zajistěte, aby všechny prostředky přijímaly nasazení šablony jako přírůstkové změny nebo aktualizace.)
 
     ![Úprava šablony](media/ip-collection/edit-template.png)
 
-4. Proveďte následující změny v zařízení json pro váš zdroj a klikněte na **Uložit**:
+4. Proveďte následující změny ve formátu JSON pro váš prostředek a potom klikněte na **Uložit**:
 
-    ![Snímek obrazovky přidá čárku za "IbizaAIExtension" a přidat nový řádek níže s "DisableIpMasking": true](media/ip-collection/save.png)
+    ![Snímek obrazovky přidá čárku za "IbizaAIExtension" a přidá nový řádek pod "DisableIpMasking": true](media/ip-collection/save.png)
 
     > [!WARNING]
-    > Pokud dojde k chybě, která říká: ** _Skupina prostředků je v umístění, které není podporováno jedním nebo více prostředků v šabloně. Zvolte jinou skupinu prostředků._** Dočasně vyberte jinou skupinu prostředků z rozevíracího souboru a potom znovu vyberte původní skupinu prostředků k vyřešení chyby.
+    > Pokud dojde k chybě, která říká: ** _Skupina prostředků je v umístění, které není podporováno jedním nebo více prostředky v šabloně. Zvolte prosím jinou skupinu prostředků._** Dočasně vyberte jinou skupinu prostředků z rozevíracího seznamu a pak znovu vyberte původní skupinu prostředků, abyste mohli chybu vyřešit.
 
-5. Vyberte **Souhlasím** > **Nákup**. 
+5.  > Vyberte **Souhlasím**s**nákupem**. 
 
     ![Úprava šablony](media/ip-collection/purchase.png)
 
-    V tomto případě se nekupuje nic nového, právě aktualizujeme konfiguraci existujícího prostředku Application Insights.
+    V tomto případě se nic nekupuje, jenom aktualizujeme konfiguraci existujícího prostředku Application Insights.
 
-6. Po dokončení nasazení se zaznamenají nová telemetrická data.
+6. Po dokončení nasazení se budou zaznamenávat nová data telemetrie.
 
-    Pokud byste znovu vybrali a upravili šablonu, viděli byste pouze výchozí šablonu a nezobrazovali byste nově přidanou vlastnost a její přidruženou hodnotu. Pokud nevidíte data IP adresy a chcete `"DisableIpMasking": true` potvrdit, že je nastavena. Spusťte následující Prostředí `Fabrikam-dev` PowerShell: (Nahraďte příslušným názvem prostředků a skupiny prostředků.)
+    Pokud byste chtěli znovu vybrat a upravit šablonu, měli byste zobrazit jenom výchozí šablonu a nevidíte nově přidanou vlastnost a její přidruženou hodnotu. Pokud nevidíte data IP adresy a chcete potvrdit, že `"DisableIpMasking": true` je nastavená. Spusťte následující PowerShell: (nahraďte `Fabrikam-dev` odpovídajícím názvem prostředku a skupiny prostředků.)
     
     ```powershell
     # If you aren't using the cloud shell you will need to connect to your Azure account
@@ -95,11 +95,11 @@ Pokud potřebujete upravit pouze chování pro jeden prostředek Application Ins
     $AppInsights.Properties
     ```
     
-    V důsledku toho bude vrácen seznam vlastností. Jedna z vlastností `DisableIpMasking: true`by měla číst . Pokud spustíte Prostředí PowerShell před nasazením nové vlastnosti pomocí Správce prostředků Azure, vlastnost nebude existovat.
+    V důsledku toho se vrátí seznam vlastností. Jedna z vlastností by měla být `DisableIpMasking: true`přečtena. Pokud spustíte PowerShell před nasazením nové vlastnosti pomocí Azure Resource Manager, vlastnost neexistuje.
 
-### <a name="rest-api"></a>Rozhraní API pro odpočinek
+### <a name="rest-api"></a>Rozhraní REST API
 
-Datová část [rozhraní Rest API](https://docs.microsoft.com/rest/api/azure/) pro provádění stejných úprav je následující:
+Datová část [rozhraní REST API](https://docs.microsoft.com/rest/api/azure/) pro provádění stejných úprav je následující:
 
 ```
 PATCH https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/microsoft.insights/components/<resource-name>?api-version=2018-05-01-preview HTTP/1.1
@@ -120,9 +120,9 @@ Content-Length: 54
 
 ## <a name="telemetry-initializer"></a>Inicializátor telemetrie
 
-Pokud potřebujete flexibilnější `DisableIpMasking` alternativu než k zaznamenání všech nebo části adres IP, můžete použít [telemetrický inicializátor](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer) ke kopírování celé IP adresy nebo její části do vlastního pole. 
+Pokud potřebujete pružnější alternativu než `DisableIpMasking` při zaznamenávání všech nebo částí IP adres, můžete pomocí [inicializátoru telemetrie](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer) zkopírovat veškerou nebo část IP adresy do vlastního pole. 
 
-### <a name="aspnet--aspnet-core"></a>ASP.NET / ASP.NET jádro
+### <a name="aspnet--aspnet-core"></a>ASP.NET/ASP.NET Core
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -148,7 +148,7 @@ namespace MyWebApp
 ```
 
 > [!NOTE]
-> Pokud se vám `ISupportProperties`nedaří získat přístup , zkontrolujte a ujistěte se, že používáte nejnovější stabilní verzi sady Application Insights SDK. `ISupportProperties`jsou určeny pro vysoké hodnoty `GlobalProperties` mohutnosti, zatímco jsou vhodnější pro nízké hodnoty mohutnosti, jako je název oblasti, název prostředí atd. 
+> Pokud nemůžete získat přístup `ISupportProperties`, zkontrolujte a ujistěte se, že používáte nejnovější stabilní verzi Application Insights SDK. `ISupportProperties`jsou určené pro vysoké hodnoty mohutnosti, zatímco `GlobalProperties` jsou vhodnější pro hodnoty nízké mohutnosti, jako je název oblasti, název prostředí atd. 
 
 ### <a name="enable-telemetry-initializer-for-aspnet"></a>Povolit inicializátor telemetrie pro ASP.NET
 
@@ -170,9 +170,9 @@ namespace MyWebApp
 
 ```
 
-### <a name="enable-telemetry-initializer-for-aspnet-core"></a>Povolení inicializátoru telemetrie pro ASP.NET core
+### <a name="enable-telemetry-initializer-for-aspnet-core"></a>Povolit inicializátor telemetrie pro ASP.NET Core
 
-Můžete vytvořit telemetrie inicializátor stejným způsobem pro ASP.NET Core jako ASP.NET ale povolit inicializátor, použijte následující příklad pro odkaz:
+Inicializátor telemetrie můžete vytvořit stejným ASP.NET Core způsobem jako ASP.NET jako, ale chcete-li povolit inicializátor, použijte následující příklad pro referenci:
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -199,11 +199,11 @@ appInsights.defaultClient.addTelemetryProcessor((envelope) => {
 
 ### <a name="client-side-javascript"></a>JavaScript na straně klienta
 
-Na rozdíl od sad SDK na straně serveru sada Javascript sdk klienta nevypočítá adresu IP. Ve výchozím nastavení výpočet IP adresy pro telemetrii na straně klienta se provádí v koncovém bodě ingestování v Azure při doručení telemetrie. To znamená, že pokud jste odesílali data na straně klienta na proxy server a pak přesměrovávali do koncového bodu ingestování, může výpočet IP adresy zobrazit IP adresu proxy serveru a nikoli klienta. Pokud není použit žádný proxy server, nemělby to být problém.
+Na rozdíl od sad SDK na straně serveru nevypočítá sada JavaScript SDK na straně klienta IP adresu. Ve výchozím nastavení se výpočet IP adresy pro telemetrii na straně klienta provádí v koncovém bodu příjmu v Azure po doručení telemetrie. To znamená, že pokud jste odeslali data na straně klienta na proxy server a pak předáte do koncového bodu pro příjem dat, může se na základě výpočtu IP adres zobrazovat IP adresa proxy serveru, ne klienta. Pokud se nepoužije žádný proxy server, nemělo by se jednat o problém.
 
-Chcete-li vypočítat adresu IP přímo na straně klienta, budete muset přidat vlastní logiku k `ai.location.ip` provedení tohoto výpočtu a použít výsledek k nastavení značky. Je-li `ai.location.ip` nastavena, výpočet IP adresy není proveden koncovým bodem ingestování a zadaný IP adresa je dodržena a použita pro provádění geografické vyhledávání. V tomto scénáři bude adresa IP ve výchozím nastavení stále vynulována. 
+Pokud chcete vypočítat IP adresu přímo na straně klienta, je třeba přidat vlastní logiku pro provedení tohoto výpočtu a použít výsledek k nastavení `ai.location.ip` značky. Pokud `ai.location.ip` je nastavená, neprovádí se výpočet IP adresy pomocí koncového bodu ingestování a je dodržena zadaná IP adresa, která se používá k provádění geografického vyhledávání. V tomto scénáři bude ve výchozím nastavení tato IP adresa pořád nulová. 
 
-Chcete-li zachovat celou adresu IP vypočtenou z vlastní logiky, můžete použít inicializátor telemetrie, která by zkopírovala data IP adresy, která jste `ai.location.ip` zadali, do samostatného vlastního pole. Ale opět na rozdíl od sady SDK na straně serveru, bez spoléhání se na knihovny třetích stran nebo vlastní logiku shromažďování IP adres na straně klienta sada SDK na straně klienta nevypočítá adresu IP za vás.    
+Pokud chcete zachovat celou IP adresu vypočítanou z vlastní logiky, můžete použít inicializátor telemetrie, který by zkopíroval data IP adresy, která jste zadali `ai.location.ip` do samostatného vlastního pole. Ale na rozdíl od sad SDK na straně serveru, aniž byste se museli spoléhat na knihovny třetích stran nebo na vlastní logiku shromažďování IP adres na straně klienta, sada SDK na straně klienta nevypočítá IP adresu za vás.    
 
 
 ```javascript
@@ -219,9 +219,9 @@ appInsights.addTelemetryInitializer((item) => {
 
 ```  
 
-### <a name="view-the-results-of-your-telemetry-initializer"></a>Zobrazení výsledků inicializátoru telemetrie
+### <a name="view-the-results-of-your-telemetry-initializer"></a>Zobrazit výsledky inicializátoru telemetrie
 
-Pokud potom spustíte nový provoz proti vašemu webu a počkejte přibližně 2-5 minut, abyste zajistili, že má čas na přijetí, můžete spustit dotaz Kusto a zjistit, zda kolekce IP adres funguje:
+Pokud pak na svém webu aktivujete nový provoz a počkejte přibližně 2-5 minut, než se zajistěte, aby se zajistilo jejich ingestování, můžete spustit dotaz Kusto a zjistit, jestli shromažďování IP adres funguje:
 
 ```kusto
 requests
@@ -229,10 +229,10 @@ requests
 | project appName, operation_Name, url, resultCode, client_IP, customDimensions.["client-ip"]
 ```
 
-Nově shromážděné IP adresy by `customDimensions_client-ip` se měly objevit ve sloupci. Ve `client-ip` výchozím sloupci budou stále vynulovány všechny 4 oktety nebo se zobrazují pouze první tři oktety v závislosti na tom, jak jste nakonfigurovali kolekci IP adres na úrovni komponenty. Pokud testujete místně po implementaci inicializátoru telemetrie a hodnota, kterou vidíte, `customDimensions_client-ip` je `::1` to očekávané chování. `::1`představuje adresu zpětné smyčky v iPv6. Je ekvivalentní `127.0.01` v IPv4 a je výsledek uvidíte při testování z localhost.
+Nově shromážděné IP adresy by se měly `customDimensions_client-ip` zobrazit ve sloupci. Výchozí `client-ip` sloupec bude mít stále všechny 4 oktety buď vyplněné, nebo jenom první tři oktety v závislosti na tom, jak jste nakonfigurovali kolekci IP adres na úrovni součásti. Pokud testujete místně po implementaci inicializátoru telemetrie a hodnota, kterou vidíte, se `customDimensions_client-ip` `::1` jedná o očekávané chování. `::1`představuje adresu zpětné smyčky v protokolu IPv6. Je ekvivalentní s `127.0.01` protokolem IPv4 a je to výsledek, který se zobrazí při testování z místního hostitele.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o [shromažďování osobních údajů](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt) najdete v Application Insights.
+* Přečtěte si další informace o [shromažďování osobních údajů](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt) v Application Insights.
 
-* Přečtěte si další informace o [tom,](https://apmtips.com/blog/2016/07/05/client-ip-address/) jak funguje kolekce IP adres v Application Insights. (Jedná se o starší externí blogový příspěvek napsaný jedním z našich inženýrů. Předchází aktuální výchozí chování, kde `0.0.0.0`IP adresa je zaznamenána jako , ale jde `ClientIpHeaderTelemetryInitializer`do větší hloubky na mechaniku stavěný z-do .)
+* Přečtěte si další informace o tom, jak [shromažďování IP adres](https://apmtips.com/blog/2016/07/05/client-ip-address/) v Application Insights funguje. (Jedná se o starší externí Blogový příspěvek napsaný jedním z našich inženýrů. Předchází aktuálnímu výchozímu chování, při `0.0.0.0`kterém je zaznamenána IP adresa, ale má větší hloubku v rámci integrovaného mechanismu `ClientIpHeaderTelemetryInitializer`.)

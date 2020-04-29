@@ -1,6 +1,6 @@
 ---
-title: Přihlášení pomocí ověřování pomocí pracovního nebo školního účtu – Azure AD
-description: Přečtěte si, jak se přihlásit k pracovnímu nebo školnímu účtu pomocí různých dvoufaktorových metod ověřování.
+title: Přihlášení pomocí pracovního nebo školního účtu – Azure AD
+description: Naučte se přihlašovat k pracovnímu nebo školnímu účtu pomocí různých metod ověřování dvou faktorů.
 services: active-directory
 author: curtand
 manager: daveba
@@ -14,77 +14,77 @@ ms.author: curtand
 ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
 ms.openlocfilehash: 33cf9e284d2206ea497af7a5da7c3cf4a890cc87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77064083"
 ---
-# <a name="sign-in-to-your-work-or-school-account-using-your-two-factor-verification-method"></a>Přihlaste se ke svému pracovnímu nebo školnímu účtu pomocí dvoufaktorové metody ověření
+# <a name="sign-in-to-your-work-or-school-account-using-your-two-factor-verification-method"></a>Přihlaste se ke svému pracovnímu nebo školnímu účtu pomocí metody dvojúrovňové ověřování.
 
 > [!NOTE]
-> Účelem tohoto článku je projít typické přihlašovací prostředí. Nápovědu k přihlášení nebo řešení problémů najdete v tématu [Potíže s vícefaktorovým ověřováním Azure](multi-factor-authentication-end-user-troubleshoot.md).
+> Účelem tohoto článku je projít si běžné prostředí pro přihlašování. Nápovědu k přihlašování nebo k řešení problémů najdete v článku o potížích [s Azure Multi-Factor Authentication](multi-factor-authentication-end-user-troubleshoot.md).
 
-## <a name="what-will-your-sign-in-experience-be"></a>Jaký bude váš zážitek z přihlášení?
-Vaše přihlašovací prostředí se liší v závislosti na tom, co se rozhodnete použít jako druhý faktor: telefonní hovor, ověřovací aplikaci nebo textové zprávy. Vyberte možnost, která nejlépe vystichne, co právě děláte:
+## <a name="what-will-your-sign-in-experience-be"></a>K čemu se přihlašujete?
+Vaše přihlašovací možnosti se liší v závislosti na tom, co se rozhodnete použít jako druhý faktor: telefonní hovor, ověřovací aplikace nebo texty. Vyberte možnost, která nejlépe popisuje, co děláte:
 
-| Jak se přihlásíte? |
+| Jak se přihlašujete? |
 | --- |
-| [Při telefonním hovoru na mobilní telefon nebo do kanceláře](#signing-in-with-a-phone-call) |
-| [S textovou zprávou na můj mobilní telefon](#signing-in-with-a-text-message)
+| [S telefonním hovorem na mobilní telefon nebo na telefon do kanceláře](#signing-in-with-a-phone-call) |
+| [S textem na mobilní telefon](#signing-in-with-a-text-message)
 | [S oznámeními z aplikace Microsoft Authenticator](#to-sign-in-with-a-notification-from-the-microsoft-authenticator-app) |
-| S ověřovacími kódy z aplikace Microsoft Authenticator |
-| [S alternativní metodou, protože nemohu použít svou preferovanou metodu právě teď](#signing-in-with-an-alternate-method) |
+| Pomocí ověřovacích kódů z aplikace Microsoft Authenticator |
+| [Alternativním způsobem, protože nemůžu použít moji upřednostňovanou metodu hned teď](#signing-in-with-an-alternate-method) |
 
 ## <a name="signing-in-with-a-phone-call"></a>Přihlášení pomocí telefonního hovoru
-Následující informace popisují dvoustupňové ověření pomocí volání na mobilní telefon nebo telefon do kanceláře.
+Následující informace popisují dvoustupňové ověřování při volání na mobilní telefon nebo na telefon do kanceláře.
 
-1. Přihlaste se k aplikaci nebo službě, jako je Office 365, pomocí uživatelského jména a hesla.  
-2. Společnost Microsoft vám volá.  
-3. Zvedněte telefon a stiskněte tlačítko # .  
+1. Přihlaste se k aplikaci nebo službě, jako je například Office 365, pomocí uživatelského jména a hesla.  
+2. Společnost Microsoft vás zavolá.  
+3. Odpovězte na telefon a stiskněte klávesu #.  
 
 ## <a name="signing-in-with-a-text-message"></a>Přihlášení pomocí textové zprávy
-Následující informace popisují dvoustupňové ověření pomocí textové zprávy do mobilního telefonu:
+Následující informace popisují dvoustupňové ověřování pomocí textové zprávy na mobilním telefonu:
 
-1. Přihlaste se k aplikaci nebo službě, jako je Office 365, pomocí uživatelského jména a hesla.
-2. Společnost Microsoft vám odešle textovou zprávu, která obsahuje číselný kód.
-3. Do pole uvedeného na přihlašovací stránce zadejte kód.
+1. Přihlaste se k aplikaci nebo službě, jako je například Office 365, pomocí uživatelského jména a hesla.
+2. Společnost Microsoft vám pošle textovou zprávu, která obsahuje číselný kód.
+3. Do pole přidaného na přihlašovací stránce zadejte kód.
 
 ## <a name="signing-in-with-the-microsoft-authenticator-app"></a>Přihlášení pomocí aplikace Microsoft Authenticator
-Následující informace popisují zkušenosti s používáním aplikace Microsoft Authenticator pro dvoustupňová ověření. Existují dva různé způsoby, jak používat aplikaci. V zařízení můžete dostávat nabízená oznámení nebo můžete otevřít aplikaci a získat ověřovací kód.
+Následující informace popisují možnosti použití aplikace Microsoft Authenticator pro dvoustupňové ověřování. Existují dva různé způsoby použití aplikace. Můžete přijímat nabízená oznámení v zařízení, nebo můžete otevřít aplikaci a získat ověřovací kód.
 
 ### <a name="to-sign-in-with-a-notification-from-the-microsoft-authenticator-app"></a>Přihlášení pomocí oznámení z aplikace Microsoft Authenticator
-1. Přihlaste se k aplikaci nebo službě, jako je Office 365, pomocí uživatelského jména a hesla.
-2. Společnost Microsoft odešle oznámení do aplikace Microsoft Authenticator na vašem zařízení.
+1. Přihlaste se k aplikaci nebo službě, jako je například Office 365, pomocí uživatelského jména a hesla.
+2. Microsoft pošle oznámení na Microsoft Authenticator aplikaci na vašem zařízení.
 
-   ![Společnost Microsoft odesílá oznámení](./media/multi-factor-authentication-end-user-signin/notify.png)
+   ![Microsoft pošle oznámení](./media/multi-factor-authentication-end-user-signin/notify.png)
 
-3. Otevřete oznámení v telefonu a vyberte klíč **Ověřit.** Pokud vaše společnost vyžaduje KÓD PIN, zadejte jej sem.
+3. Otevřete oznámení na telefonu a vyberte klíč pro **ověření** . Pokud vaše společnost vyžaduje kód PIN, zadejte ho sem.
 4. Nyní byste měli být přihlášeni.
 
-### <a name="to-sign-in-using-a-verification-code-with-the-microsoft-authenticator-app"></a>Přihlášení pomocí ověřovacího kódu pomocí aplikace Microsoft Authenticator
+### <a name="to-sign-in-using-a-verification-code-with-the-microsoft-authenticator-app"></a>Přihlášení pomocí ověřovacího kódu v aplikaci Microsoft Authenticator
 
-Pokud k získání ověřovacích kódů používáte aplikaci Microsoft Authenticator, pak při otevření aplikace se pod názvem účtu zobrazí číslo. Toto číslo se mění každých 30 sekund, takže nepoužijete stejné číslo dvakrát. Když budete požádáni o ověřovací kód, otevřete aplikaci a použijte libovolné číslo, které se právě zobrazuje.
+Pokud k získání ověřovacích kódů používáte aplikaci Microsoft Authenticator, zobrazí se při otevření aplikace číslo pod názvem vašeho účtu. Tento počet se mění každých 30 sekund, takže nebudete používat stejné číslo dvakrát. Po zobrazení výzvy k zadání ověřovacího kódu otevřete aplikaci a použijte libovolné číslo, které se aktuálně zobrazuje.
 
-1. Přihlaste se k aplikaci nebo službě, jako je Office 365, pomocí uživatelského jména a hesla.
-2. Společnost Microsoft vás vyzve k zadání ověřovacího kódu.
+1. Přihlaste se k aplikaci nebo službě, jako je například Office 365, pomocí uživatelského jména a hesla.
+2. Microsoft zobrazí výzvu k zadání ověřovacího kódu.
 
    ![Zadejte ověřovací kód.](./media/multi-factor-authentication-end-user-signin/verify3.png)
 
-3. Otevřete v telefonu aplikaci Microsoft Authenticator a zadejte kód do pole, kde se přihlašujete.
+3. Otevřete aplikaci Microsoft Authenticator na telefonu a do pole, ke kterému se přihlašujete, zadejte kód.
 
-## <a name="signing-in-with-an-alternate-method"></a>Přihlášení pomocí alternativní metody
-Někdy nemáte telefon nebo zařízení, které jste nastavili jako upřednostňovanou metodu ověření. Tato situace je důvod, proč doporučujeme nastavit metody zálohování pro váš účet. V následující části se zobrazí způsob přihlášení pomocí alternativní metody, pokud primární metoda nemusí být k dispozici.
+## <a name="signing-in-with-an-alternate-method"></a>Přihlášení alternativním způsobem
+Někdy nemáte telefon nebo zařízení, které jste nastavili jako upřednostňovanou metodu ověření. V této situaci doporučujeme, abyste pro svůj účet nastavili metody zálohování. V následující části se dozvíte, jak se přihlásit alternativním způsobem v případě, že vaše primární metoda nemusí být k dispozici.
 
-1. Přihlaste se k aplikaci nebo službě, jako je Office 365, pomocí uživatelského jména a hesla.
-2. Vyberte **Použít jinou možnost ověření**. Zobrazí se různé možnosti ověření podle toho, kolik máte nastavení.
-3. Zvolte alternativní metodu a přihlaste se.
+1. Přihlaste se k aplikaci nebo službě, jako je například Office 365, pomocí uživatelského jména a hesla.
+2. Vyberte **použít jinou možnost ověřování**. V závislosti na tom, kolik máte nastavení, uvidíte různé možnosti ověřování.
+3. Vyberte alternativní metodu a přihlaste se.
 
    ![Použít alternativní metodu](./media/multi-factor-authentication-end-user-signin/alt.png)
 
 ## <a name="next-steps"></a>Další kroky
-- Pokud máte problémy s přihlášením pomocí dvoustupňového ověření, získejte další informace na [webu Potíže s vícefaktorovým ověřováním Azure](multi-factor-authentication-end-user-troubleshoot.md).
+- Pokud máte problémy s přihlášením pomocí dvoustupňového ověřování, získáte další informace o potížích [s Azure Multi-Factor Authentication](multi-factor-authentication-end-user-troubleshoot.md).
 
-- Přečtěte si, jak [spravovat nastavení dvoustupňového ověření](multi-factor-authentication-end-user-manage-settings.md).
+- Naučte se [Spravovat nastavení dvou kroků ověřování](multi-factor-authentication-end-user-manage-settings.md).
 
-- Přečtěte si, jak [začít s aplikací Microsoft Authenticator,](user-help-auth-app-download-install.md) abyste se místo textových zpráv a telefonních hovorů mohli přihlásit pomocí oznámení.
+- Zjistěte, jak začít [s aplikací Microsoft Authenticator](user-help-auth-app-download-install.md) , abyste mohli používat oznámení místo textu a telefonních hovorů.

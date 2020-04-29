@@ -1,5 +1,5 @@
 ---
-title: 'Azure ExpressRoute: Konfigurace expressroute direct'
+title: 'Azure ExpressRoute: Konfigurace ExpressRoute Direct'
 description: Tato stránka vám pomůže nakonfigurovat ExpressRoute Direct.
 services: expressroute
 author: jaredr80
@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: jaredro
 ms.openlocfilehash: 2722a852b1119ef619bc414bce5cb3a8ff6f8f00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77031608"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>Jak nakonfigurovat ExpressRoute Direct
 
-ExpressRoute Direct vám dává možnost připojit se přímo do globální sítě microsoftu v partnerských lokalitách strategicky rozmístěných po celém světě. Další informace najdete v článku o [ExpressRoute Direct](expressroute-erdirect-about.md).
+ExpressRoute Direct nabízí možnost připojit se přímo k globální síti Microsoftu při partnerských umístěních, která jsou strategicky distribuována po celém světě. Další informace najdete v článku o [ExpressRoute Direct](expressroute-erdirect-about.md).
 
-## <a name="create-the-resource"></a><a name="resources"></a>Vytvoření zdroje
+## <a name="create-the-resource"></a><a name="resources"></a>Vytvoření prostředku
 
-1. Přihlaste se k Azure a vyberte předplatné. Prostředky ExpressRoute Direct a Okruhy ExpressRoute musí být ve stejném předplatném.
+1. Přihlaste se k Azure a vyberte předplatné. Okruhy prostředků ExpressRoute Direct a ExpressRoute musí být ve stejném předplatném.
 
    ```powershell
    Connect-AzAccount 
@@ -28,12 +28,12 @@ ExpressRoute Direct vám dává možnost připojit se přímo do globální sít
    Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
    ```
    
-2. Znovu zaregistrujte své předplatné Microsoft.Network pro přístup k expressrouteportslocation a expressrouteport API.
+2. Opětovně zaregistrujete předplatné do Microsoftu. Network pro přístup k rozhraním API expressrouteportslocation a expressrouteport.
 
    ```powershell
    Register-AzResourceProvider -ProviderNameSpace "Microsoft.Network"
    ```   
-3. Uveďte všechna umístění, kde je podporovánexpressRoute Direct.
+3. Vypíše všechna umístění, kde se podporuje ExpressRoute Direct.
   
    ```powershell
    Get-AzExpressRoutePortsLocation
@@ -66,7 +66,7 @@ ExpressRoute Direct vám dává možnost připojit se přímo do globální sít
    Contact             : support@equinix.com
    AvailableBandwidths : []
    ```
-4. Zjistěte, zda výše uvedené umístění má dostupnou šířku pásma
+4. Zjistit, jestli výše uvedená umístění má dostupnou šířku pásma
 
    ```powershell
    Get-AzExpressRoutePortsLocation -LocationName "Equinix-San-Jose-SV1"
@@ -88,14 +88,14 @@ ExpressRoute Direct vám dává možnost připojit se přímo do globální sít
                           }
                         ]
    ```
-5. Vytvoření zdroje ExpressRoute Direct na základě výše zvoleného umístění
+5. Vytvoření prostředku ExpressRoute Direct na základě výše zvoleného umístění
 
-   ExpressRoute Direct podporuje zapouzdření QinQ i Dot1Q. Pokud je vybránq QinQ, bude každému okruhu ExpressRoute dynamicky přiřazen a bude jedinečný v celém prostředku ExpressRoute Direct. Každý C-Tag na okruhu musí být jedinečný na okruhu, ale ne přes ExpressRoute Direct.  
+   ExpressRoute Direct podporuje zapouzdření QinQ i Dot1Q. Pokud je vybraná možnost QinQ, bude se každému okruhu ExpressRoute dynamicky přiřazovat značka S-a bude jedinečný v celém prostředku ExpressRoute Direct. Každé označení C na okruhu musí být v okruhu jedinečné, ale ne přes ExpressRoute Direct.  
 
-   Pokud je vybrána možnost Zapouzdření dot1Q, je nutné spravovat jedinečnost značky C (VLAN) v celém prostředku ExpressRoute Direct.  
+   Pokud je vybraná možnost zapouzdření Dot1Q, musíte spravovat jedinečnost značky C (VLAN) napříč celým prostředkem ExpressRoute Direct.  
 
    > [!IMPORTANT]
-   > ExpressRoute Direct může být pouze jeden typ zapouzdření. Zapouzdření nelze změnit po vytvoření ExpressRoute Direct.
+   > ExpressRoute Direct může být jenom jeden typ zapouzdření. Po přímém vytvoření ExpressRoute se zapouzdření nedá změnit.
    > 
  
    ```powershell 
@@ -103,7 +103,7 @@ ExpressRoute Direct vám dává možnost připojit se přímo do globální sít
    ```
 
    > [!NOTE]
-   > Encapsulation atribut může být také nastavena na Dot1Q. 
+   > Atribut zapouzdření může být také nastaven na Dot1Q. 
    >
 
    **Příklad výstupu:**
@@ -155,17 +155,17 @@ ExpressRoute Direct vám dává možnost připojit se přímo do globální sít
    Circuits                   : []
    ```
 
-## <a name="change-admin-state-of-links"></a><a name="state"></a>Změnit stav správy odkazů
+## <a name="change-admin-state-of-links"></a><a name="state"></a>Změnit stav Správce odkazů
 
-  Tento proces by měl být použit k provedení testu vrstvy 1, který zajistí, že každé křížové připojení je správně opraveno do každého směrovače pro primární a sekundární.
-1. Získejte podrobnosti expressroute direct.
+  Tento proces by měl být použit k provedení testu vrstvy 1, čímž se zajistí, že každé připojení mezi jednotlivými směrovači je u primárních a sekundárních zařízení správně opraveno.
+1. Získat podrobnosti o ExpressRoute
 
    ```powershell
    $ERDirect = Get-AzExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName
    ```
-2. Nastavit odkaz na povoleno. Tento krok opakujte a nastavte každý odkaz na povolený.
+2. Nastavte odkaz na povoleno. Zopakováním tohoto kroku nastavte všechna propojení na povoleno.
 
-   Links[0] je primární port a Links[1] je sekundární port.
+   Odkazy [0] je primární port a propojení [1] je sekundární port.
 
    ```powershell
    $ERDirect.Links[0].AdminState = "Enabled"
@@ -223,17 +223,17 @@ ExpressRoute Direct vám dává možnost připojit se přímo do globální sít
    Circuits                   : []
    ```
 
-   Stejným postupem `AdminState = "Disabled"` použijte pro vypnutí portů.
+   `AdminState = "Disabled"` Pro vypnutí portů použijte stejný postup.
 
 ## <a name="create-a-circuit"></a><a name="circuit"></a>Vytvoření okruhu
 
-Ve výchozím nastavení můžete vytvořit 10 okruhů v předplatném, kde je prostředek ExpressRoute Direct. To lze zvýšit podporou. Jste zodpovědní za sledování zřízeného i využitého šířky pásma. Zřízená šířka pásma je součtem šířky pásma všech okruhů v prostředku ExpressRoute Direct a využitá šířka pásma je fyzické využití základních fyzických rozhraní.
+Ve výchozím nastavení můžete vytvořit 10 okruhů v rámci předplatného, kde je prostředek ExpressRoute Direct. To se dá zvýšit podporou. Zodpovídáte za sledování zřízené i využité šířky pásma. Zřízená šířka pásma je celková šířka šířky pásma všech okruhů v prostředku ExpressRoute Direct a využité šířky pásma je fyzické využití základních fyzických rozhraní.
 
-Existují další šířky pásma okruhu, které lze využít na ExpressRoute Direct pouze pro podporu výše uvedených scénářů. Jedná se o: 40Gbps a 100Gbps.
+K dispozici jsou další šířky pásma okruhů, které je možné využít na ExpressRoute přímo pro podporu scénářů uvedených výše. Jsou to tyto: 40Gbps a 100Gbps.
 
-**SkuTier** může být místní, standardní nebo premium.
+**SkuTier** může být Local, Standard nebo Premium.
 
-**SkuFamily** musí být MeteredData pouze jako neomezený není podporován na ExpressRoute Direct.
+**SkuFamily** musí být MeteredData pouze v případě, že v ExpressRoute Direct není podporována žádná neomezená velikost.
 
 Vytvořte okruh na prostředku ExpressRoute Direct.
 
@@ -241,7 +241,7 @@ Vytvořte okruh na prostředku ExpressRoute Direct.
   New-AzExpressRouteCircuit -Name $Name -ResourceGroupName $ResourceGroupName -ExpressRoutePort $ERDirect -BandwidthinGbps 100.0  -Location $AzureRegion -SkuTier Premium -SkuFamily MeteredData 
   ```
 
-  Mezi další šířky pásma patří: 5.0, 10.0 a 40.0
+  Mezi další šířky pásma patří: 5,0, 10,0 a 40,0.
 
   **Příklad výstupu:**
 
@@ -277,4 +277,4 @@ Vytvořte okruh na prostředku ExpressRoute Direct.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o expressroute direct naleznete v [přehledu](expressroute-erdirect-about.md).
+Další informace o ExpressRoute Direct najdete v [přehledu](expressroute-erdirect-about.md).

@@ -1,29 +1,29 @@
 ---
-title: Změna sady dostupnosti virtuálních mích
-description: Přečtěte si, jak změnit sadu dostupnosti pro váš virtuální počítač pomocí Azure PowerShellu.
+title: Změna skupiny dostupnosti virtuálních počítačů
+description: Naučte se, jak změnit skupinu dostupnosti pro virtuální počítač pomocí Azure PowerShell.
 ms.service: virtual-machines
 author: cynthn
 ms.topic: article
 ms.date: 01/31/2020
 ms.author: cynthn
 ms.openlocfilehash: 092dafff6622d3402322eb96d0fe4215e52e16b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76964919"
 ---
 # <a name="change-the-availability-set-for-a-vm"></a>Změna skupiny dostupnosti pro virtuální počítač
-Následující kroky popisují, jak změnit dostupnost sady virtuálního počítače pomocí Azure PowerShell. Virtuální ho virtuálního serveru lze přidat jenom do skupiny dostupnosti při jeho vytvoření. Chcete-li změnit sadu dostupnosti, je třeba odstranit a znovu vytvořit virtuální počítač. 
+Následující postup popisuje, jak změnit skupinu dostupnosti virtuálního počítače pomocí Azure PowerShell. Virtuální počítač se dá přidat do skupiny dostupnosti jenom při jeho vytvoření. Chcete-li změnit skupinu dostupnosti, je nutné odstranit a znovu vytvořit virtuální počítač. 
 
-Tento článek se vztahuje na virtuální počítače Linux i Windows.
+Tento článek se týká virtuálních počítačů se systémy Linux a Windows.
 
-Tento článek byl naposledy testován na 2/12/2019 pomocí [Prostředí Azure Cloud Shell](https://shell.azure.com/powershell) a [modulu Az PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) verze 1.2.0.
+Tento článek byl naposledy testován na 2/12/2019 pomocí [Azure Cloud Shell](https://shell.azure.com/powershell) a [modulu AZ PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) Version 1.2.0.
 
 
-## <a name="change-the-availability-set"></a>Změna sady dostupnosti 
+## <a name="change-the-availability-set"></a>Změna skupiny dostupnosti 
 
-Následující skript obsahuje příklad shromažďování požadovaných informací, odstranění původního virtuálního virtuálního ms a jeho opětovné vytvoření v nové sadě dostupnosti.
+Následující skript poskytuje příklad shromažďování požadovaných informací, odstranění původního virtuálního počítače a jeho opětovné vytvoření v nové skupině dostupnosti.
 
 ```powershell
 # Set variables
@@ -104,5 +104,5 @@ Následující skript obsahuje příklad shromažďování požadovaných inform
 
 ## <a name="next-steps"></a>Další kroky
 
-Přidáním dalšího [datového disku](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)přidejte do virtuálního počítače další úložiště .
+Přidáním dalšího [datového disku](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)přidejte do virtuálního počítače další úložiště.
 

@@ -1,6 +1,6 @@
 ---
-title: Změna hesla pracovního nebo školního účtu – Azure AD
-description: Nastránce Změnit heslo účtu na portálu Můj účet se naučte změnit heslo pracovního nebo školního účtu.
+title: Změna hesla k pracovnímu nebo školnímu účtu – Azure AD
+description: Přečtěte si, jak změnit heslo pracovního nebo školního účtu na stránce změnit heslo na portálu Můj účet.
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,45 +12,45 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
 ms.openlocfilehash: 06e5abe04ed1ec75dcbf1b216bfaab1a7458ce72
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77064049"
 ---
-# <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>Změna hesla pracovního nebo školního účtu na stránce Změnit heslo
+# <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>Změna hesla k pracovnímu nebo školnímu účtu na stránce změnit heslo
 
-Stránka **Změnit heslo** na portálu Můj **účet** vám pomůže aktualizovat existující heslo pro váš pracovní nebo školní účet za předpokladu, že si heslo pamatujete a že nejste ve svém účtu uzamčeni. Pokud si nepamatujete heslo, pokud jste zablokováni ze svého účtu nebo pokud jste heslo od vaší organizace nikdy nedostali, můžete heslo resetovat pomocí bezpečnostních údajů a mobilního zařízení.
+Stránka pro **změnu hesla** na portálu **můj účet** vám pomůže aktualizovat existující heslo pro svůj pracovní nebo školní účet za předpokladu, že si zapamatujete heslo a nejste ve svém účtu uzamčeni. Pokud si nepamatujete své heslo, pokud jste se odhlásili z účtu nebo pokud jste nikdy nezapomněli heslo z vaší organizace, můžete svoje heslo resetovat pomocí svých bezpečnostních údajů a mobilního zařízení.
 
 >[!Important]
->Tento článek je určen pro uživatele, kteří se pokoušejí aktualizovat známé heslo pro existující pracovní nebo školní účet. Pokud jste uživatel, který se pokouší získat osobní účet, například pro Xbox, Hotmail nebo Outlook.com, vyzkoušejte návrhy v článku [Když se nemůžete přihlásit k účtu Microsoft.](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) Pokud jste správce, který se pokouší najít další informace o tom, jak otestovat samoobslužné resetování hesla pro zaměstnance nebo jiné uživatele, přečtěte si článek [Samoobslužné resetování hesla](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr).
+>Tento článek je určený pro uživatele, kteří se pokoušejí aktualizovat známé heslo pro stávající pracovní nebo školní účet. Pokud jste uživatelem, který se pokoušíte získat do osobního účtu, jako je například Xbox, Hotmail nebo Outlook.com, vyzkoušejte návrhy v části když se [nemůžete přihlásit k vašemu účet Microsoftmu](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) článku. Pokud jste správcem a chcete získat další informace o tom, jak otestovat Samoobslužné resetování hesla pro vaše zaměstnance nebo jiné uživatele, přečtěte si téma [Samoobslužné resetování hesla](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr).
 
-## <a name="update-a-password-from-the-change-password-page"></a>Aktualizace hesla ze stránky Změnit heslo
+## <a name="update-a-password-from-the-change-password-page"></a>Aktualizace hesla na stránce změnit heslo
 
-1. Přihlaste se ke svému pracovnímu nebo školnímu účtu pomocíhttps://myprofile.microsoft.com/) stávajícího hesla a přejděte na stránku Můj **účet** ( page.
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu pomocí stávajícího hesla a pak nahttps://myprofile.microsoft.com/) stránce **můj účet** .
 
-2. V levém navigačním podokně vyberte **Heslo** nebo vyberte odkaz **Změnit heslo** z bloku **Heslo.**
+2. V levém navigačním podokně vyberte **heslo** , nebo vyberte odkaz **změnit heslo** z bloku **hesla** .
 
-    ![Stránka Můj účet se zvýrazněným odkazem Změnit heslo](media/my-account-portal/my-account-portal-change-password.png)
+    ![Stránka můj účet se zvýrazněným odkazem na změnu hesla](media/my-account-portal/my-account-portal-change-password.png)
 
-3. Zadejte staré heslo a vytvořte a potvrďte nové heslo.
+3. Zadejte původní heslo a pak vytvořte a potvrďte nové heslo.
 
-    ![Změna stránky hesla s zobrazením polí hesel](media/my-account-portal/my-account-portal-change-password-page.png)
+    ![Stránka pro změnu hesla, zobrazení polí hesla](media/my-account-portal/my-account-portal-change-password-page.png)
 
 4. Vyberte **Odeslat**.
 
-    Vaše heslo bude změněno a budete znovu vyzváni k přihlášení k pracovnímu nebo školnímu účtu.
+    Vaše heslo se změní a budete vyzváni k opětovnému přihlášení ke svému pracovnímu nebo školnímu účtu.
 
 ## <a name="next-steps"></a>Další kroky
 
 Po změně hesla můžete:
 
-- Zobrazení nebo správa [bezpečnostních údajů](user-help-security-info-overview.md).
+- Umožňuje zobrazit nebo spravovat vaše [bezpečnostní údaje](user-help-security-info-overview.md).
 
-- Zobrazení nebo správa [připojených zařízení](my-account-portal-devices-page.md).
+- Umožňuje zobrazit nebo spravovat připojená [zařízení](my-account-portal-devices-page.md).
 
-- Zobrazení nebo správa [organizací](my-account-portal-organizations-page.md).
+- Umožňuje zobrazit nebo spravovat vaše [organizace](my-account-portal-organizations-page.md).
 
-- Zobrazení [přihlašovací aktivity](my-account-portal-sign-ins-page.md).
+- Zobrazit [přihlašovací aktivitu](my-account-portal-sign-ins-page.md)
 
-- Zobrazení způsobu, jakým vaše organizace [používá vaše data týkající se ochrany osobních údajů](my-account-portal-privacy-page.md).
+- Podívejte se, jak vaše organizace [používá data týkající se ochrany osobních údajů](my-account-portal-privacy-page.md).

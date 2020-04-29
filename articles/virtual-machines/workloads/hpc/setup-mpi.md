@@ -1,5 +1,5 @@
 ---
-title: Nastavení rozhraní pro předávání zpráv pro HPC – virtuální počítače Azure | Dokumenty společnosti Microsoft
+title: Nastavení rozhraní pro předávání zpráv pro HPC – Azure Virtual Machines | Microsoft Docs
 description: Přečtěte si, jak nastavit MPI pro HPC v Azure.
 services: virtual-machines
 documentationcenter: ''
@@ -13,21 +13,21 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
 ms.openlocfilehash: 469e926932ffa11ef9f2a262b78a587ba435549e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77023986"
 ---
-# <a name="set-up-message-passing-interface-for-hpc"></a>Nastavit rozhraní pro předávání zpráv pro HPC
+# <a name="set-up-message-passing-interface-for-hpc"></a>Nastavení rozhraní pro předávání zpráv pro HPC
 
-Úlohy rozhraní MPI (Message Passing Interface) jsou významnou součástí tradičních úloh HPC. Velikosti virtuálních zařízení v Azure s povolenou technologií SR-IOV umožňují použití téměř libovolné varianty MPI. 
+Úlohy rozhraní MPI (Message Passing Interface) jsou důležitou součástí tradičních úloh HPC. Velikosti virtuálních počítačů s podporou SR-IOV v Azure umožňují téměř jakýkoli charakter MPI. 
 
-Spuštění úloh MPI na virtuálních počítačích vyžaduje nastavení klíčů oddílů (p-klíče) přes tenanta. Podle pokynů v části [Zjistit klíče oddílu](#discover-partition-keys) podrobnosti o určení hodnot p-key.
+Spuštění úloh MPI na virtuálních počítačích vyžaduje nastavení klíčů oddílů (p-Keys) v rámci tenanta. Použijte postup v části [Vyhledat klíče oddílu](#discover-partition-keys) , kde najdete podrobnosti o určování hodnot p-Key.
 
 ## <a name="ucx"></a>UCX
 
-[UCX](https://github.com/openucx/ucx) nabízí nejlepší výkon na IB a pracuje s MPICH a OpenMPI.
+[UCX](https://github.com/openucx/ucx) nabízí nejlepší výkon v IB a funguje s MPICH a OpenMP.
 
 ```bash
 wget https://github.com/openucx/ucx/releases/download/v1.4.0/ucx-1.4.0.tar.gz
@@ -37,15 +37,15 @@ cd ucx-1.4.0
 make -j 8 && make install
 ```
 
-## <a name="openmpi"></a>OpenMPI
+## <a name="openmpi"></a>OpenMP
 
-Nainstalujte UCX, jak bylo popsáno výše.
+Nainstalujte UCX, jak je popsáno výše.
 
 ```bash
 sudo yum install –y openmpi
 ```
 
-Sestavení OpenMPI.
+Sestavit OpenMP.
 
 ```bash
 wget https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.0.tar.gz
@@ -55,19 +55,19 @@ cd openmpi-4.0.0
 make -j 8 && make install
 ```
 
-Spusťte OpenMPI.
+Spusťte OpenMP.
 
 ```bash
 <ompi-install-path>/bin/mpirun -np 2 --map-by node --hostfile ~/hostfile -mca pml ucx --mca btl ^vader,tcp,openib -x UCX_NET_DEVICES=mlx5_0:1  -x UCX_IB_PKEY=0x0003  ./osu_latency
 ```
 
-Zkontrolujte klíč oddílu, jak je uvedeno výše.
+Podívejte se na klíč oddílu, jak je uvedeno výše.
 
 ## <a name="mpich"></a>MPICH
 
-Nainstalujte UCX, jak bylo popsáno výše.
+Nainstalujte UCX, jak je popsáno výše.
 
-Sestavení MPICH.
+Sestavování MPICH.
 
 ```bash
 wget https://www.mpich.org/static/downloads/3.3/mpich-3.3.tar.gz
@@ -77,17 +77,17 @@ cd mpich-3.3
 make -j 8 && make install
 ```
 
-Spuštění MPICH.
+Spouští se MPICH.
 
 ```bash
 <mpich-install-path>/bin/mpiexec -n 2 -hostfile ~/hostfile -env UCX_IB_PKEY=0x0003 -bind-to hwthread ./osu_latency
 ```
 
-Zkontrolujte klíč oddílu, jak je uvedeno výše.
+Podívejte se na klíč oddílu, jak je uvedeno výše.
 
 ## <a name="mvapich2"></a>MVAPICH2
 
-Sestavení MVAPICH2.
+Sestavování MVAPICH2.
 
 ```bash
 wget http://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-2.3.tar.gz
@@ -97,15 +97,15 @@ cd mvapich2-2.3
 make -j 8 && make install
 ```
 
-Spuštění MVAPICH2.
+Spouští se MVAPICH2.
 
 ```bash
 <mvapich2-install-path>/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=48 ./osu_latency
 ```
 
-## <a name="platform-mpi-community-edition"></a>Platforma MPI Community Edition
+## <a name="platform-mpi-community-edition"></a>Platform MPI Community Edition
 
-Nainstalujte požadované balíčky pro platformu MPI.
+Nainstalujte požadované balíčky pro MPI platformy.
 
 ```bash
 sudo yum install libstdc++.i686
@@ -114,19 +114,19 @@ Download platform MPI at https://www.ibm.com/developerworks/downloads/im/mpi/ind
 sudo ./platform_mpi-09.01.04.03r-ce.bin
 ```
 
-Postupujte podle procesu instalace.
+Postupujte podle instalačního procesu.
 
 ## <a name="intel-mpi"></a>Intel MPI
 
-[Stáhnout Intel MPI](https://software.intel.com/mpi-library/choose-download).
+[Stáhněte si Intel MPI](https://software.intel.com/mpi-library/choose-download).
 
-Změňte proměnnou prostředí I_MPI_FABRICS v závislosti na verzi. Pro Intel MPI 2018, použití `I_MPI_FABRICS=shm:ofa` a pro `I_MPI_FABRICS=shm:ofi`2019, použijte .
+Změňte proměnnou prostředí I_MPI_FABRICS v závislosti na verzi. Pro Intel MPI 2018 použijte `I_MPI_FABRICS=shm:ofa` a pro 2019 použijte. `I_MPI_FABRICS=shm:ofi`
 
-Připnutí procesu funguje ve výchozím nastavení správně pro 15, 30 a 60 PPN.
+Ve výchozím nastavení funguje připnutí procesu pro 15, 30 a 60 PPN správně.
 
-## <a name="osu-mpi-benchmarks"></a>Benchmarky OSU MPI
+## <a name="osu-mpi-benchmarks"></a>OSU MPI – srovnávací testy
 
-[Stáhněte si OSU MPI benchmarky](http://mvapich.cse.ohio-state.edu/benchmarks/) a untar.
+[Stáhněte si srovnávací testy osu MPI](http://mvapich.cse.ohio-state.edu/benchmarks/) a untar.
 
 ```bash
 wget http://mvapich.cse.ohio-state.edu/download/mvapich/osu-micro-benchmarks-5.5.tar.gz
@@ -134,26 +134,26 @@ tar –xvf osu-micro-benchmarks-5.5.tar.gz
 cd osu-micro-benchmarks-5.5
 ```
 
-Vytvářejte benchmarky pomocí určité knihovny MPI:
+Vytváření srovnávacích testů pomocí konkrétní knihovny MPI:
 
 ```bash
 CC=<mpi-install-path/bin/mpicc>CXX=<mpi-install-path/bin/mpicxx> ./configure 
 make
 ```
 
-Mpi benchmarky `mpi/` jsou ve složce.
+Srovnávací testy MPI jsou ve `mpi/` složce.
 
 
-## <a name="discover-partition-keys"></a>Zjišťování klíčů oddílů
+## <a name="discover-partition-keys"></a>Zjistit klíče oddílu
 
-Objevte klíče oddílů (p-klíče) pro komunikaci s ostatními virtuálními zařízeními v rámci stejného klienta (dostupnost set nebo škálovací sada virtuálních zařízení).
+Zjištění klíčů oddílů (p-Keys) pro komunikaci s ostatními virtuálními počítači v rámci stejného tenanta (Skupina dostupnosti nebo sada škálování virtuálního počítače).
 
 ```bash
 /sys/class/infiniband/mlx5_0/ports/1/pkeys/0
 /sys/class/infiniband/mlx5_0/ports/1/pkeys/1
 ```
 
-Větší z těchto dvou je klíč klienta, který by měl být použit s MPI. Příklad: Pokud jsou následující p-klíče, 0x800b by měl být použit s MPI.
+Čím větší z těchto dvou je klíč tenanta, který se má použít s MPI. Příklad: Pokud jsou následující klíče p-, 0x800b by se měly použít s MPI.
 
 ```bash
 cat /sys/class/infiniband/mlx5_0/ports/1/pkeys/0
@@ -162,14 +162,14 @@ cat /sys/class/infiniband/mlx5_0/ports/1/pkeys/1
 0x7fff
 ```
 
-Použijte jiný než výchozí klíč oddílu (0x7fff). UCX vyžaduje, aby msb p-key vymazány. Například nastavte UCX_IB_PKEY jako 0x000b pro 0x800b.
+Použijte jiný oddíl než výchozí (0x7FFF) klíč oddílu. UCX vyžaduje, aby se vymazala MSBa p-Key. Nastavte například UCX_IB_PKEY jako 0x000b pro 0x800b.
 
-Všimněte si také, že tak dlouho, dokud tenant (AVSet nebo VMSS) existuje, PKEYs zůstávají stejné. To platí i v případě, že jsou přidány nebo odstraněny uzly. Noví nájemníci dostanou různé PKEYs.
+Všimněte si také, že pokud existuje tenant (AVSet nebo VMSS), zůstane PKEYs stejné. To platí i při přidání nebo odstranění uzlů. Noví klienti získají různé PKEYs.
 
 
-## <a name="set-up-user-limits-for-mpi"></a>Nastavení uživatelských limitů pro MPI
+## <a name="set-up-user-limits-for-mpi"></a>Nastavení uživatelských omezení pro MPI
 
-Nastavte uživatelské limity pro MPI.
+Nastavte omezení uživatelů pro MPI.
 
 ```bash
 cat << EOF | sudo tee -a /etc/security/limits.conf
@@ -181,9 +181,9 @@ EOF
 ```
 
 
-## <a name="set-up-ssh-keys-for-mpi"></a>Nastavení kláves SSH pro MPI
+## <a name="set-up-ssh-keys-for-mpi"></a>Nastavení klíčů SSH pro MPI
 
-Nastavte klávesy SSH pro typy MPI, které to vyžadují.
+Nastavte klíče SSH pro MPI typy, které to vyžadují.
 
 ```bash
 ssh-keygen -f /home/$USER/.ssh/id_rsa -t rsa -N ''
@@ -196,8 +196,8 @@ chmod 600 /home/$USER/.ssh/authorized_keys
 chmod 644 /home/$USER/.ssh/config
 ```
 
-Výše uvedená syntaxe předpokládá sdílený domovský adresář, jinak musí být adresář .ssh zkopírován do každého uzlu.
+Výše uvedená syntaxe předpokládá sdílený domovský adresář, jinak musí být adresář. ssh zkopírován do každého uzlu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [HPC v](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) Azure.
+Přečtěte si další informace o [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) v Azure.

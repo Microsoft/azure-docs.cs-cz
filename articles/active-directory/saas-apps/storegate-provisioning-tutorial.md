@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace storegate pro automatické zřizování uživatelů pomocí služby Azure Active Directory | Dokumenty společnosti Microsoft'
-description: Přečtěte si, jak nakonfigurovat službu Azure Active Directory tak, aby automaticky zřašovala a odpočitatla uživatelské účty storegate.
+title: 'Kurz: Konfigurace Storegate pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
+description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro Storegate.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,165 +16,165 @@ ms.topic: article
 ms.date: 10/15/2019
 ms.author: Zhchia
 ms.openlocfilehash: 72903a36f88f9092ce1d203b557003083407320b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77064253"
 ---
-# <a name="tutorial-configure-storegate-for-automatic-user-provisioning"></a>Kurz: Konfigurace storegate pro automatické zřizování uživatelů
+# <a name="tutorial-configure-storegate-for-automatic-user-provisioning"></a>Kurz: Konfigurace Storegate pro Automatické zřizování uživatelů
 
-Cílem tohoto kurzu je demonstrovat kroky, které mají být provedeny v Storegate a Azure Active Directory (Azure AD) nakonfigurovat Azure AD automaticky zřídit a de-provision uživatelů nebo skupin storegate.
+Cílem tohoto kurzu je předvést kroky, které je třeba provést v Storegate a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD pro Automatické zřizování a zrušení zřizování uživatelů nebo skupin pro Storegate.
 
 > [!NOTE]
-> Tento kurz popisuje konektor postavený na nad službou zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá, jak funguje, a nejčastější dotazy, najdete [v tématu Automatizace zřizování uživatelů a zrušení zřizování aplikací SaaS pomocí služby Azure Active Directory](../app-provisioning/user-provisioning.md).
+> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
-> Tento konektor je aktuálně ve verzi Public Preview. Další informace o obecných podmínkách použití Microsoft Azure pro funkce preview najdete v [tématu Doplňkové podmínky použití pro Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že již máte následující požadavky:
+Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
-* Klient Azure AD
+* Tenant Azure AD
 * [Tenant Storegate](https://www.storegate.com)
-* Uživatelský účet na Storegate s oprávněními správce.
+* Uživatelský účet v Storegate s oprávněními správce.
 
-## <a name="assign-users-to-storegate"></a>Přiřazení uživatelů k bráně Storegate
+## <a name="assign-users-to-storegate"></a>Přiřazení uživatelů k Storegate
 
-Azure Active Directory používá koncept s názvem přiřazení k určení, kteří uživatelé by měli získat přístup k vybraným aplikacím. V kontextu automatickézřižené zřizování uživatelů jsou synchronizovány pouze uživatelé nebo skupiny, které byly přiřazeny k aplikaci ve službě Azure AD.
+Azure Active Directory používá koncept nazvaný přiřazení k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelů se synchronizují jenom uživatelé a skupiny, které jsou přiřazené k aplikaci v Azure AD.
 
-Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé nebo skupiny ve službě Azure AD potřebují přístup k Storegate. Jakmile se rozhodnete, můžete těmto uživatelům a/nebo skupinám přiřadit storegate podle pokynů zde:
+Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé a skupiny ve službě Azure AD potřebují přístup k Storegate. Po rozhodnutí můžete přiřadit tyto uživatele nebo skupiny k Storegate podle pokynů uvedených tady:
 
 * [Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-storegate"></a>Důležité tipy pro přiřazování uživatelů do Storegate
+### <a name="important-tips-for-assigning-users-to-storegate"></a>Důležité tipy pro přiřazení uživatelů k Storegate
 
-* Doporučuje se, aby jeden uživatel Azure AD je přiřazen k Storegate k testování konfigurace automatického zřizování uživatelů. Další uživatelé a/nebo skupiny mohou být přiřazeny později.
+* Doporučuje se, aby se k Storegate k testování automatické konfigurace zřizování uživatelů přiřadil jeden uživatel Azure AD. Další uživatele a skupiny můžete přiřadit později.
 
-* Při přiřazování uživatele k Storegate musíte v dialogovém okně přiřazení vybrat libovolnou platnou roli specifickou pro aplikaci (pokud je k dispozici). Uživatelé s rolí **Výchozí přístup** jsou z zřizování vyloučeni.
+* Při přiřazování uživatele k Storegate musíte v dialogovém okně přiřazení vybrat jakoukoli platnou roli specifickou pro aplikaci (Pokud je dostupná). Uživatelé s **výchozí rolí přístupu** se z zřizování vylučují.
 
 ## <a name="set-up-storegate-for-provisioning"></a>Nastavení Storegate pro zřizování
 
-Před konfigurací Storegate pro automatické zřizování uživatelů s Azure AD, budete muset načíst některé zřizování informace z Storegate.
+Před konfigurací Storegate pro Automatické zřizování uživatelů se službou Azure AD bude nutné načíst některé informace o zřizování z Storegate.
 
-1. Přihlaste se do [konzoly Storegate Admin Console](https://ws1.storegate.com/identity/core/login?signin=c71fb8fe18243c571da5b333d5437367) a přejděte k nastavení kliknutím na ikonu uživatele v pravém horním rohu a vyberte **Nastavení účtu**.
+1. Přihlaste se ke [konzole správce Storegate](https://ws1.storegate.com/identity/core/login?signin=c71fb8fe18243c571da5b333d5437367) a přejděte do nastavení kliknutím na ikonu uživatele v pravém horním rohu a vyberte **Nastavení účtu**.
 
-    ![Storegate Přidat SCIM](media/storegate-provisioning-tutorial/admin.png)
+    ![Storegate přidat SCIM](media/storegate-provisioning-tutorial/admin.png)
 
-2. V rámci nastavení přejděte na **nastavení team >** a ověřte, zda je přepínač zapnutý v části Jednotné **přihlašování.**
+2. V nastavení přejděte na **Nastavení týmové >** a ověřte, že je v části **jednotné přihlašování** zapnut přepínač přepínání.
 
-    ![Nastavení brány Úložiště](media/storegate-provisioning-tutorial/team.png)
+    ![Nastavení Storegate](media/storegate-provisioning-tutorial/team.png)
 
     ![Přepínací tlačítko Storegate](media/storegate-provisioning-tutorial/sso.png)
 
-3. Zkopírujte **adresu URL klienta** a **token**. Tyto hodnoty se zanesou do polí **URL klienta** a **tajný token** v kartě Zřizování vaší aplikace Storegate na webu Azure Portal. 
+3. Zkopírujte **adresu URL** a **token**klienta. Tyto hodnoty se zadají do polí **Adresa URL tenanta** a **tajného tokenu** na kartě zřizování aplikace Storegate ve Azure Portal. 
 
-    ![Vytvořit token Storegate](media/storegate-provisioning-tutorial/token.png)
+    ![Storegate vytvořit token](media/storegate-provisioning-tutorial/token.png)
 
-## <a name="add-storegate-from-the-gallery"></a>Přidání Storegate z galerie
+## <a name="add-storegate-from-the-gallery"></a>Přidání Storegate z Galerie
 
-Chcete-li nakonfigurovat Storegate pro automatické zřizování uživatelů pomocí Azure AD, musíte přidat Storegate z galerie aplikací Azure AD do seznamu spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat Storegate pro Automatické zřizování uživatelů pomocí Azure AD, musíte přidat Storegate z Galerie aplikací Azure AD do svého seznamu spravovaných aplikací SaaS.
 
-1. Na **[webu Azure Portal](https://portal.azure.com)** vyberte na levém navigačním panelu **položku Azure Active Directory**.
+1. V **[Azure Portal](https://portal.azure.com)** v levém navigačním panelu vyberte možnost **Azure Active Directory**.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte na **podnikové aplikace**a vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
-    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
+    ![Okno podnikové aplikace](common/enterprise-applications.png)
 
 3. Chcete-li přidat novou aplikaci, vyberte tlačítko **Nová aplikace** v horní části podokna.
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Storegate**, vpanelu výsledků vyberte **Storegate.** 
+4. Do vyhledávacího pole zadejte **Storegate**, na panelu výsledků vyberte **Storegate** . 
 
     ![Storegate v seznamu výsledků](common/search-new-app.png)
 
-5. Vyberte tlačítko **Registrace pro Storegate,** které vás přesměruje na přihlašovací stránku Storegate. 
+5. Vyberte tlačítko **zaregistrovat se k Storegate** , které vás přesměruje na přihlašovací stránku Storegate. 
 
-    ![Storegate OIDC Přidat](media/storegate-provisioning-tutorial/signup.png)
+    ![Storegate OIDC přidat](media/storegate-provisioning-tutorial/signup.png)
 
-6.  Přihlaste se do [konzoly Storegate Admin Console](https://ws1.storegate.com/identity/core/login?signin=c71fb8fe18243c571da5b333d5437367) a přejděte k nastavení kliknutím na ikonu uživatele v pravém horním rohu a vyberte **Nastavení účtu**.
+6.  Přihlaste se ke [konzole správce Storegate](https://ws1.storegate.com/identity/core/login?signin=c71fb8fe18243c571da5b333d5437367) a přejděte do nastavení kliknutím na ikonu uživatele v pravém horním rohu a vyberte **Nastavení účtu**.
 
-    ![Přihlášení storegate](media/storegate-provisioning-tutorial/admin.png)
+    ![Přihlášení Storegate](media/storegate-provisioning-tutorial/admin.png)
 
-7. V rámci nastavení přejděte na **nastavení > týmu** a klikněte na přepínač v části Jednotné přihlášení, spustí se tok souhlasu. Klikněte na **Aktivovat**.
+7. V nastavení přejděte na **Nastavení týmu >** a v části jednotné přihlašování klikněte na přepínač přepnout. tím se spustí postup souhlasu. Klikněte na **aktivovat**.
 
-    ![Tým Storegate](media/storegate-provisioning-tutorial/team.png)
+    ![Storegate tým](media/storegate-provisioning-tutorial/team.png)
 
-    ![Skladové brány sso](media/storegate-provisioning-tutorial/sso.png)
+    ![Jednotné přihlašování Storegate](media/storegate-provisioning-tutorial/sso.png)
 
-    ![Aktivovat Storegate](media/storegate-provisioning-tutorial/activate.png)
+    ![Storegate aktivovat](media/storegate-provisioning-tutorial/activate.png)
 
-8. Vzhledem k tomu, že Storegate je aplikace OpenIDConnect, zvolte přihlášení do Storegate pomocí pracovního účtu Microsoft.
+8. Storegate je aplikace OpenIDConnect, která se rozhodne přihlásit k Storegate pomocí pracovního účtu Microsoft.
 
-    ![Přihlášení Storegate OIDC](media/storegate-provisioning-tutorial/login.png)
+    ![Storegate OIDC přihlášení](media/storegate-provisioning-tutorial/login.png)
 
-9. Po úspěšném ověření přijměte výzvu k souhlasu pro stránku souhlasu. Aplikace pak bude automaticky přidána do vašeho tenanta a budete přesměrováni na svůj účet Storegate.
+9. Po úspěšném ověření Přijměte výzvu k zadání souhlasu pro stránku souhlasu. Aplikace se pak automaticky přidá do vašeho tenanta a budete přesměrováni na svůj účet Storegate.
 
-    ![Souhlas storegate OIDc](media/storegate-provisioning-tutorial/accept.png)
+    ![Storegate OIDc – souhlas](media/storegate-provisioning-tutorial/accept.png)
 
-## <a name="configure-automatic-user-provisioning-to-storegate"></a>Konfigurace automatického zřizování uživatelů do Storegate 
+## <a name="configure-automatic-user-provisioning-to-storegate"></a>Konfigurace automatického zřizování uživatelů na Storegate 
 
-Tato část vás provede kroky konfigurace služby zřizování Azure AD k vytvoření, aktualizaci a zakázání uživatelů nebo skupin v Storegate na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
+V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v Storegate na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
 > [!NOTE]
-> Další informace o koncovém bodu SCIM společnosti Storegate naleznete na [tomto](https://en-support.storegate.com/article/step-by-step-instruction-how-to-enable-azure-provisioning-to-your-storegate-team-account/).
+> Další informace o koncovém bodu SCIM pro Storegate najdete v [tomto](https://en-support.storegate.com/article/step-by-step-instruction-how-to-enable-azure-provisioning-to-your-storegate-team-account/)tématu.
 
 ### <a name="to-configure-automatic-user-provisioning-for-storegate-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Storegate ve službě Azure AD
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **Všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **Storegate**.
+2. V seznamu aplikace vyberte **Storegate**.
 
-    ![Odkaz Storegate v seznamu Aplikace](common/all-applications.png)
+    ![Odkaz Storegate v seznamu aplikací](common/all-applications.png)
 
-3. Vyberte kartu **Zřizování.**
+3. Vyberte kartu **zřizování** .
 
-    ![Karta Zřizování](common/provisioning.png)
+    ![Karta zřizování](common/provisioning.png)
 
-4. Nastavte **režim zřizování** na **automatické**.
+4. Nastavte **režim zřizování** na **automaticky**.
 
-    ![Karta Zřizování](common/provisioning-automatic.png)
+    ![Karta zřizování](common/provisioning-automatic.png)
 
-5. V části **Pověření správce** `https://dialpad.com/scim` zadejte adresu **URL klienta**. Zadejte hodnotu, kterou jste načetli a uložili dříve z Storegate v **tajném tokenu**. Kliknutím na **Testovat připojení** zajistíte, že se Azure AD může připojit k Storegate. Pokud se připojení nezdaří, ujistěte se, že váš účet Storegate má oprávnění správce a zkuste to znovu.
+5. V části **přihlašovací údaje správce** zadejte `https://dialpad.com/scim` **adresu URL tenanta**. Zadejte hodnotu, kterou jste načetli a uložili dříve ze Storegate v **tajném tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k Storegate. Pokud se připojení nepovede, ujistěte se, že má váš účet Storegate oprávnění správce, a zkuste to znovu.
 
-    ![Adresa URL klienta + token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Adresa URL tenanta + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Do pole **E-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, která by měla dostávat oznámení o chybách při zřizování, a zaškrtněte políčko – **Odeslat e-mailové oznámení, když dojde k chybě**.
+6. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
 
     ![E-mail s oznámením](common/provisioning-notification-email.png)
 
 7. Klikněte na **Uložit**.
 
-8. V části **Mapování** vyberte **Synchronizovat uživatele služby Azure Active Directory s storegate**.
+8. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé Storegate**.
 
     ![Mapování uživatelů Storegate](media/storegate-provisioning-tutorial/usermappings.png)
 
-9. Zkontrolujte atributy uživatele, které jsou synchronizovány z Azure AD do Storegate v části **Mapování atributů.** Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelským účtům v Storegate pro operace aktualizace. Chcete-li potvrdit všechny změny, vyberte tlačítko **Uložit.**
+9. Zkontrolujte atributy uživatele synchronizované z Azure AD do Storegate v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Storegate pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Uživatelské atributy Storegate](media/storegate-provisioning-tutorial/userattributes.png)
+    ![Atributy uživatele Storegate](media/storegate-provisioning-tutorial/userattributes.png)
 
-10. Chcete-li konfigurovat filtry oborů, naleznete v následujících pokynech uvedených v [kurzu filtru oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+10. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-11. Chcete-li povolit službu zřizování Azure AD pro Storegate, změňte **stav zřizování** **na Zapnuto** v části **Nastavení.**
+11. Pokud chcete povolit službu Azure AD Provisioning pro Storegate, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
-    ![Stav zřizování zapnutý](common/provisioning-toggle-on.png)
+    ![Zapnutý stav zřizování](common/provisioning-toggle-on.png)
 
-12. Definujte uživatele nebo skupiny, které chcete zřídit Storegate výběrem požadovaných hodnot v **scope** v části **Nastavení.**
+12. Definujte uživatele nebo skupiny, které chcete zřídit pro Storegate, výběrem požadovaných hodnot v **oboru** v části **Nastavení** .
 
-    ![Obor zřizování](common/provisioning-scope.png)
+    ![Rozsah zřizování](common/provisioning-scope.png)
 
-13. Až budete připraveni k zřízení, klikněte na **Uložit**.
+13. Až budete připraveni zřídit, klikněte na **Uložit**.
 
-    ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
+    ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
 
-Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení.** Počáteční synchronizace trvá déle než následné synchronizace, ke kterým dochází přibližně každých 40 minut tak dlouho, dokud je spuštěna služba zřizování Azure AD. Část **Podrobnosti synchronizace** můžete použít ke sledování průběhu a sledování odkazů na sestavu aktivit zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD na Storegate.
+Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v Storegate.
 
-Další informace o tom, jak číst protokoly zřizování Azure AD, naleznete [v tématu Vytváření sestav na automatické zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
@@ -183,4 +183,4 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, naleznete [
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy o aktivitě zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)

@@ -1,29 +1,29 @@
 ---
-title: Rozšířené agregace v dotazech protokolu Azure Monitor| Dokumenty společnosti Microsoft
-description: Popisuje některé pokročilejší možnosti agregace, které jsou k dispozici pro dotazy protokolu Azure Monitor.
+title: Rozšířené agregace v Azure Monitorch dotazech protokolu | Microsoft Docs
+description: Popisuje některé pokročilejší možnosti agregace, které jsou k dispozici pro Azure Monitor dotazy protokolu.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: e5dc290a40342e0797001dde6cab90e12dd5cf39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77662174"
 ---
-# <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Pokročilá agregace v dotazech protokolu Azure Monitor
+# <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Pokročilé agregace v Azure Monitorch dotazech protokolu
 
 > [!NOTE]
-> Před dokončením této lekce byste měli dokončit [agregace v dotazech Azure Monitoru.](./aggregations.md)
+> Před dokončením této lekce byste měli dokončit [agregace v Azure monitor dotazů](./aggregations.md) .
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Tento článek popisuje některé pokročilejší možnosti agregace, které jsou k dispozici pro dotazy Azure Monitoru.
+Tento článek popisuje některé pokročilejší možnosti agregace dostupné pro Azure Monitor dotazů.
 
 ## <a name="generating-lists-and-sets"></a>Generování seznamů a sad
-Data můžete `makelist` použít k otočení dat podle pořadí hodnot v určitém sloupci. Můžete například chtít prozkoumat nejběžnější události objednávky, které se odehrávají na vašich počítačích. Data můžete v podstatě otáčet podle pořadí ID událostí na každém počítači. 
+Můžete použít `makelist` k pivotování dat podle pořadí hodnot v určitém sloupci. Můžete například chtít prozkoumat nejběžnější události pořadí na vašich počítačích. Data můžete v podstatě pivotovat podle pořadí identifikátory EventID rozmezí na každém počítači. 
 
 ```Kusto
 Event
@@ -34,13 +34,13 @@ Event
 
 |Počítač|list_EventID|
 |---|---|
-| počítač1 | [704,701,1501,1500,1085,704,704,701] |
-| počítač2 | [326,105,302,301,300,102] |
+| Počítač1 | [704, 701, 1501, 1500, 1085, 704, 704, 701] |
+| počítač2 | [326 105 302 301 300 102] |
 | ... | ... |
 
-`makelist`vygeneruje seznam v pořadí, v jakém do něj byla data předána. Chcete-li seřadit události `asc` od nejstarších `desc`po nejnovější, použijte v příkazu objednávky namísto . 
+`makelist`vygeneruje seznam v pořadí, do kterého byla data předána. Chcete-li události seřadit od nejstarších `asc` k nejnovějším, použijte příkaz `desc`v příkazu Order místo. 
 
-Je také užitečné vytvořit seznam pouze odlišné hodnoty. To se nazývá _Set_ a mohou `makeset`být generovány s :
+Je také užitečné vytvořit seznam jenom různých hodnot. Tato metoda se nazývá _sada_ a je možné ji vygenerovat `makeset`:
 
 ```Kusto
 Event
@@ -51,14 +51,14 @@ Event
 
 |Počítač|list_EventID|
 |---|---|
-| počítač1 | [704,701,1501,1500,1085] |
-| počítač2 | [326,105,302,301,300,102] |
+| Počítač1 | [704, 701, 1501, 1500, 1085] |
+| počítač2 | [326 105 302 301 300 102] |
 | ... | ... |
 
-Stejně jako `makelist`, `makeset` také pracuje s objednanými daty a bude generovat pole na základě pořadí řádků, které jsou do něj předány.
+Stejně `makelist`tak `makeset` funguje také se seřazenými daty a vygeneruje pole na základě pořadí řádků, které jsou do ní předány.
 
-## <a name="expanding-lists"></a>Rozbalení seznamů
-Inverzní operace `makelist` `makeset` nebo `mvexpand`je , který rozbalí seznam hodnot na samostatné řádky. Může expandovat v libovolném počtu dynamických sloupců, json a pole. V tabulce *Prezenční signál* můžete například zkontrolovat řešení odesílající data z počítačů, které odeslali prezenční signál za poslední hodinu:
+## <a name="expanding-lists"></a>Rozbalování seznamů
+Inverzní operace `makelist` nebo `makeset` je `mvexpand`, která rozšiřuje seznam hodnot na samostatné řádky. Může se rozšířit na libovolný počet dynamických sloupců, JSON i Array. Můžete například zaškrtnout tabulku *prezenčního signálu* pro řešení odesílající data z počítačů, které odeslaly prezenční signál za poslední hodinu:
 
 ```Kusto
 Heartbeat
@@ -68,12 +68,12 @@ Heartbeat
 
 | Počítač | Řešení | 
 |--------------|----------------------|
-| počítač1 | "zabezpečení", "aktualizace", "changeTracking" |
+| Počítač1 | "zabezpečení", "aktualizace", "sledování změn ve" |
 | počítač2 | "zabezpečení", "aktualizace" |
-| počítač3 | "antiMalware", "changeTracking" |
+| computer3 | "antimalware", "sledování změn ve" |
 | ... | ... |
 
-Slouží `mvexpand` k zobrazení každé hodnoty v samostatném řádku namísto seznamu odděleného čárkami:
+Slouží `mvexpand` k zobrazení každé hodnoty v samostatném řádku namísto čárkami odděleného seznamu:
 
 ```Kusto
 Heartbeat
@@ -84,17 +84,17 @@ Heartbeat
 
 | Počítač | Řešení | 
 |--------------|----------------------|
-| počítač1 | "bezpečnost" |
-| počítač1 | "aktualizace" |
-| počítač1 | "changeTracking" |
-| počítač2 | "bezpečnost" |
-| počítač2 | "aktualizace" |
-| počítač3 | "antiMalware" |
-| počítač3 | "changeTracking" |
+| Počítač1 | bezpečnost |
+| Počítač1 | aktualizovány |
+| Počítač1 | Sledování změn ve |
+| počítač2 | bezpečnost |
+| počítač2 | aktualizovány |
+| computer3 | Antimalwarové |
+| computer3 | Sledování změn ve |
 | ... | ... |
 
 
-Potom můžete `makelist` znovu seskupit položky dohromady a tentokrát zobrazit seznam počítačů podle řešení:
+Pak můžete znovu použít `makelist` k seskupení položek dohromady a tentokrát se zobrazí seznam počítačů na řešení:
 
 ```Kusto
 Heartbeat
@@ -106,14 +106,14 @@ Heartbeat
 
 |Řešení | list_Computer |
 |--------------|----------------------|
-| "bezpečnost" | ["computer1", "computer2"] |
-| "aktualizace" | ["computer1", "computer2"] |
-| "changeTracking" | ["computer1", "computer3"] |
-| "antiMalware" | ["počítač3"] |
+| bezpečnost | ["Počítač1"; "POČÍTAČ2"] |
+| aktualizovány | ["Počítač1"; "POČÍTAČ2"] |
+| Sledování změn ve | ["Počítač1"; "computer3"] |
+| Antimalwarové | ["computer3"] |
 | ... | ... |
 
 ## <a name="handling-missing-bins"></a>Zpracování chybějících přihrádek
-Užitečnou aplikací `mvexpand` je potřeba vyplnit výchozí hodnoty chybějících přihrádek. Předpokládejme například, že hledáte dobu využití konkrétního počítače tím, že zkoumáte jeho prezenční signál. Chcete také zobrazit zdroj prezenčního signálu, který je ve _sloupci kategorie._ Za normálních okolností bychom použít jednoduchý souhrn prohlášení takto:
+Užitečnou aplikací `mvexpand` je nutnost vyplnit výchozí hodnoty v části pro chybějící přihrádky. Předpokládejme například, že hledáte dobu provozu konkrétního počítače prozkoumáním jeho prezenčního signálu. Také chcete zobrazit zdroj prezenčního signálu, který je ve sloupci _kategorie_ . V normálním případě bychom použili jednoduchý příkaz sumarizace následujícím způsobem:
 
 ```Kusto
 Heartbeat
@@ -123,14 +123,14 @@ Heartbeat
 
 | Kategorie | TimeGenerated | count_ |
 |--------------|----------------------|--------|
-| Přímý agent | 2017-06-06T17:00:00Z | 15 |
-| Přímý agent | 2017-06-06T18:00:00Z | 60 |
-| Přímý agent | 2017-06-06T20:00:00Z | 55 |
-| Přímý agent | 2017-06-06T21:00:00Z | 57 |
-| Přímý agent | 2017-06-06T22:00:00Z | 60 |
+| Přímý Agent | 2017-06-06T17:00:00Z | 15 |
+| Přímý Agent | 2017-06-06T18:00:00Z | 60 |
+| Přímý Agent | 2017-06-06T20:00:00Z | 55 |
+| Přímý Agent | 2017-06-06T21:00:00Z | 57 |
+| Přímý Agent | 2017-06-06T22:00:00Z | 60 |
 | ... | ... | ... |
 
-V těchto výsledcích však chybí kontejner přidružený k "2017-06-06T19:00:00Z", protože pro tuto hodinu neexistují žádná data prezenčního signálu. Pomocí `make-series` funkce přiřaďte výchozí hodnotu prázdným blokům. Tím se vygeneruje řádek pro každou kategorii se dvěma dalšími sloupci pole, jeden pro hodnoty a jeden pro odpovídající časové intervaly:
+V takovém případě se v důsledku chybějícího kontejneru přidruženého k "2017-06-06T19:00:00Z" nezobrazí žádná data prezenčního signálu za tuto hodinu. Použijte `make-series` funkci k přiřazení výchozí hodnoty k prázdným kontejnerům. Tím se vygeneruje řádek pro každou kategorii se dvěma dalšími sloupci pole, jeden pro hodnoty a jeden pro porovnání časových intervalů:
 
 ```Kusto
 Heartbeat
@@ -139,10 +139,10 @@ Heartbeat
 
 | Kategorie | count_ | TimeGenerated |
 |---|---|---|
-| Přímý agent | [15,60,0,55,60,57,60,...] | ["2017-06-06T17:00:00.0000000z","2017-06-06T18:00:00.0000000z","2017-06-06T19:0 0:00.0000000Z","2017-06-06T20:00:00.000000Z","2017-06-06T21:00.00.000000Z",...] |
+| Přímý Agent | [15, 60, 0, 55, 60, 57, 60,...] | ["2017-06-06T17:00:00.0000000 Z", "2017-06-06T18:00:00.0000000 Z", "2017-06-06T19:00:00.0000000 Z", "2017-06-06T20:00:00.0000000 Z", "2017-06-06T21:00:00.0000000 Z",...] |
 | ... | ... | ... |
 
-Třetí prvek *pole count_* je 0 podle očekávání a je odpovídající časové razítko "2017-06-06T19:00.0000000Z" v _poli TimeGenerated._ Tento formát pole je obtížné číst ačkoli. Slouží `mvexpand` k rozšíření polí a vytvoření stejného výstupu `summarize`formátu, jako je generováno :
+Třetí prvek *count_* pole je 0 podle očekávání a v poli _TimeGenerated_ je k dispozici párové časové razítko "2017-06-06T19:00:00.0000000 z". Tento formát pole je obtížné přečíst i v takovém případě. Použijte `mvexpand` k rozšíření polí a vytvoření stejného výstupu formátu generovaného pomocí `summarize`:
 
 ```Kusto
 Heartbeat
@@ -153,18 +153,18 @@ Heartbeat
 
 | Kategorie | TimeGenerated | count_ |
 |--------------|----------------------|--------|
-| Přímý agent | 2017-06-06T17:00:00Z | 15 |
-| Přímý agent | 2017-06-06T18:00:00Z | 60 |
-| Přímý agent | 2017-06-06T19:00:00Z | 0 |
-| Přímý agent | 2017-06-06T20:00:00Z | 55 |
-| Přímý agent | 2017-06-06T21:00:00Z | 57 |
-| Přímý agent | 2017-06-06T22:00:00Z | 60 |
+| Přímý Agent | 2017-06-06T17:00:00Z | 15 |
+| Přímý Agent | 2017-06-06T18:00:00Z | 60 |
+| Přímý Agent | 2017-06-06T19:00:00Z | 0 |
+| Přímý Agent | 2017-06-06T20:00:00Z | 55 |
+| Přímý Agent | 2017-06-06T21:00:00Z | 57 |
+| Přímý Agent | 2017-06-06T22:00:00Z | 60 |
 | ... | ... | ... |
 
 
 
-## <a name="narrowing-results-to-a-set-of-elements-let-makeset-toscalar-in"></a>Zúžení výsledků na `let`sadu `makeset` `toscalar`prvků: , , ,`in`
-Běžným scénářem je vybrat názvy některých konkrétních entit na základě sady kritérií a potom filtrovat jinou sadu dat pro tuto sadu entit. Můžete například najít počítače, o kterých je známo, že mají chybějící aktualizace, a identifikovat adresy IP, na které tyto počítače volaly:
+## <a name="narrowing-results-to-a-set-of-elements-let-makeset-toscalar-in"></a>Zúžení výsledků do sady elementů: `let`, `makeset`,, `toscalar``in`
+Běžným scénářem je výběr názvů některých konkrétních entit na základě sady kritérií a následného filtrování různých datových sad na tuto sadu entit. Můžete například najít počítače, u kterých se ví, že mají chybějící aktualizace, a identifikovat IP adresy, na které tyto počítače zavolaly:
 
 
 ```Kusto
@@ -179,7 +179,7 @@ WindowsFirewall
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na další lekce pro používání [dotazovacího jazyka Kusto](/azure/kusto/query/) s daty protokolu Azure Monitor:
+Podívejte se na další lekce týkající se používání [dotazovacího jazyka Kusto](/azure/kusto/query/) s využitím dat protokolu Azure monitor:
 
 - [Operace s řetězci](string-operations.md)
 - [Operace s datem a časem](datetime-operations.md)

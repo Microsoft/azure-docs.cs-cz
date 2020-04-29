@@ -1,6 +1,6 @@
 ---
 title: Azure Event Grid – povolení diagnostických protokolů pro téma
-description: Tento článek obsahuje podrobné pokyny, jak povolit diagnostické protokoly pro téma mřížky událostí Azure.
+description: Tento článek poskytuje podrobné pokyny k povolení diagnostických protokolů pro téma Azure Event Grid.
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 01/30/2020
 ms.author: spelluru
 ms.openlocfilehash: a32d26629bb9efed4a4f1f49eee2f0534e1873a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76960500"
 ---
-#  <a name="diagnostic-logs-for-an-azure-event-grid-topic"></a>Diagnostické protokoly pro téma mřížky událostí Azure
-Nastavení diagnostiky umožňují uživatelům služby Event Grid zachytit a zobrazit protokoly o selhání publikování a doručení na jednom z následujících míst: účet úložiště Azure, centrum událostí nebo pracovní prostor Analýzy protokolů. Tento článek obsahuje podrobné pokyny k povolení diagnostických protokolů pro téma mřížky událostí.
+#  <a name="diagnostic-logs-for-an-azure-event-grid-topic"></a>Diagnostické protokoly pro téma Azure Event Grid
+Nastavení diagnostiky umožňuje Event Grid uživatelům zachytit a zobrazit protokoly selhání publikování a doručení v jednom z následujících umístění: účet Azure Storage, centrum událostí nebo pracovní prostor Log Analytics. Tento článek poskytuje podrobné pokyny k povolení diagnostických protokolů pro téma Event gridu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Téma zřízené mřížky událostí
-- Zřízené místo určení pro zachycení diagnostických protokolů. To může jeden z následujících cílů:
+- Téma zřízené Event gridu
+- Zřízené cíle pro zachytávání diagnostických protokolů. Může to být jeden z následujících cílů:
     - Účet služby Azure Storage
     - Centrum událostí
     - Pracovní prostor služby Log Analytics
@@ -28,30 +28,30 @@ Nastavení diagnostiky umožňují uživatelům služby Event Grid zachytit a zo
 
 ## <a name="steps-for-enabling-diagnostic-logs-for-a-topic"></a>Postup povolení diagnostických protokolů pro téma
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
-2. Přejděte na téma mřížky událostí, pro které chcete povolit nastavení diagnostického protokolu. 
-3. V levé nabídce vyberte **Nastavení diagnostiky** v části **Monitorování.**
-4. Na stránce **Nastavení diagnostiky** vyberte **Přidat nové diagnostické nastavení**. 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+2. Přejděte do tématu Event gridu, pro které chcete povolit nastavení diagnostického protokolu. 
+3. V nabídce vlevo vyberte **nastavení diagnostiky** v části **monitorování** .
+4. Na stránce **nastavení diagnostiky** vyberte **Přidat nové nastavení diagnostiky**. 
     
-    ![Tlačítko nastavení diagnostiky](./media/enable-diagnostic-logs-topic/diagnostic-settings-add.png)
-5. Zadejte **název** nastavení diagnostiky. 
+    ![Tlačítko Přidat nastavení diagnostiky](./media/enable-diagnostic-logs-topic/diagnostic-settings-add.png)
+5. Zadejte **název** pro nastavení diagnostiky. 
 
-    ![Diagnostická nastavení - název](./media/enable-diagnostic-logs-topic/diagnostic-settings-name.png)     
-6. Povolte jeden nebo více cílů sběru protokolů a pak je nakonfigurujte výběrem dříve vytvořeného prostředku sběru. 
-    - Pokud vyberete **Archivovat do účtu úložiště**, vyberte **účet úložiště – Konfigurovat**a pak vyberte účet úložiště ve svém předplatném Azure. 
+    ![Nastavení diagnostiky – název](./media/enable-diagnostic-logs-topic/diagnostic-settings-name.png)     
+6. Povolte jedno nebo více cílových umístění pro zaznamenávání protokolů a pak je nakonfigurujte výběrem předchozího vytvořeného prostředku zachycení. 
+    - Pokud vyberete možnost **archivovat do účtu úložiště**, vyberte **účet úložiště – konfigurovat**a potom vyberte účet úložiště ve vašem předplatném Azure. 
 
-        ![Archivace do účtu úložiště Azure](./media/enable-diagnostic-logs-topic/archive-storage.png)
-    - Pokud vyberete **Stream ovat do centra událostí**, vyberte Centrum událostí – **Konfigurovat**a pak vyberte obor názvů Event Hubs, centrum událostí a zásady přístupu. 
+        ![Archivace na účet služby Azure Storage](./media/enable-diagnostic-logs-topic/archive-storage.png)
+    - Pokud vyberete **datový proud do centra událostí**, vyberte **centrum událostí – konfigurovat**a pak vyberte obor názvů Event Hubs, centrum událostí a zásady přístupu. 
         ![Streamování do centra událostí](./media/enable-diagnostic-logs-topic/archive-event-hub.png)
-    - Pokud vyberete **Odeslat do analýzy protokolů**, vyberte pracovní prostor Log Analytics.
+    - Pokud vyberete možnost **Odeslat do Log Analytics**, vyberte pracovní prostor Log Analytics.
         ![Odeslání do Log Analytics](./media/enable-diagnostic-logs-topic/send-log-analytics.png)
-7. V části **Protokol** vyberte možnosti **DeliveryFailures** a **PublishFailures.** 
-    ![Vyberte chyby](./media/enable-diagnostic-logs-topic/log-failures.png)
-8. Vyberte **Uložit**. Chcete-li stránku zavřít, vyberte **x** v pravém rohu. 
-9. Nyní zpět na stránce **Nastavení diagnostiky** potvrďte, že se v tabulce **Nastavení diagnostiky** zobrazí nová položka. 
-    ![Diagnostické nastavení v seznamu](./media/enable-diagnostic-logs-topic/diagnostic-setting-list.png)
+7. V části **protokol** vyberte možnosti **DeliveryFailures** a **PublishFailures** . 
+    ![Vybrat selhání](./media/enable-diagnostic-logs-topic/log-failures.png)
+8. Vyberte **Uložit**. V pravém horním rohu vyberte **X** , aby se stránka zavřela. 
+9. Teď se vraťte na stránku **nastavení diagnostiky** a ověřte, že se v tabulce **nastavení diagnostiky** zobrazila nová položka. 
+    ![Nastavení diagnostiky v seznamu](./media/enable-diagnostic-logs-topic/diagnostic-setting-list.png)
 
-     Můžete také povolit shromažďování všech metrik pro toto téma. 
+     Můžete také povolit shromažďování všech metrik pro téma. 
 
 ## <a name="next-steps"></a>Další kroky
-Pokud potřebujete další pomoc, zveřejněte svůj problém ve [fóru Přetečení zásobníku](https://stackoverflow.com/questions/tagged/azure-eventgrid) nebo otevřete [lístek podpory](https://azure.microsoft.com/support/options/). 
+Pokud potřebujete další pomoc, vystavte svůj problém ve [fóru Stack Overflow](https://stackoverflow.com/questions/tagged/azure-eventgrid) nebo otevřete [lístek podpory](https://azure.microsoft.com/support/options/). 

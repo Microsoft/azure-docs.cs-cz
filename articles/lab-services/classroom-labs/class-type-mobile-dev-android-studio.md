@@ -1,7 +1,7 @@
 ---
-title: Nastavení testovacího prostředí pro výuku vývoje mobilních aplikací pomocí Android Studia
+title: Nastavení testovacího prostředí pro učení vývoje mobilních aplikací pomocí Android Studio
 titleSuffix: Azure Lab Services
-description: Zjistěte, jak nastavit testovací prostředí pro výuku třídy vývoje mobilních aplikací pro datové aplikace, která používá Android Studio.  Článek bude také diskutovat o úpravách, které je třeba provést při použití Android Studio na virtuálním počítači v Azure.
+description: Naučte se, jak nastavit testovací prostředí pro výuku třídy pro vývoj dat mobilní aplikace, která používá Android Studio.  Článek také popisuje úpravy, které je třeba provést při použití Android Studio na virtuálním počítači v Azure.
 services: lab-services
 author: emaher
 ms.service: lab-services
@@ -9,21 +9,21 @@ ms.topic: article
 ms.date: 1/23/2020
 ms.author: enewman
 ms.openlocfilehash: 0c257589a2e93ac4c15a639e7156d0c0944b033c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76849783"
 ---
-# <a name="set-up-a-lab-to-teach-data-mobile-application-development-with-android-studio"></a>Nastavení testovacího prostředí pro výuku vývoje datových mobilních aplikací pomocí Android Studia
+# <a name="set-up-a-lab-to-teach-data-mobile-application-development-with-android-studio"></a>Nastavení testovacího prostředí pro učení dat vývoje mobilních aplikací pomocí Android Studio
 
-Tento článek vám ukáže, jak nastavit úvodní třídu vývoje mobilních aplikací.  Tato třída se zaměřuje na mobilní aplikace pro Android, které mohou být publikovány v [Obchodě Google Play](https://play.google.com/store/apps).  Studenti se učí, jak používat [Android Studio](https://developer.android.com/studio) k vytváření aplikací.  [Visual Studio Emulátor pro Android](https://visualstudio.microsoft.com/vs/msft-android-emulator/) se používá k testování aplikace místně.
+Tento článek vám ukáže, jak nastavit úvodní třídu pro vývoj mobilních aplikací.  Tato třída se zaměřuje na mobilní aplikace pro Android, které mohou být publikovány na [obchod Google Play](https://play.google.com/store/apps).  Studenti se dozvíte, jak používat [Android Studio](https://developer.android.com/studio) k sestavování aplikací.  [Emulátor sady Visual Studio pro Android](https://visualstudio.microsoft.com/vs/msft-android-emulator/) slouží k místnímu testování aplikace.
 
-## <a name="lab-configuration"></a>Konfigurace laboratoře
+## <a name="lab-configuration"></a>Konfigurace testovacího prostředí
 
-Chcete-li nastavit toto testovací prostředí, budete potřebovat předplatné Azure a účet testovacího prostředí, abyste mohli začít. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/) než začnete. Jakmile získáte předplatné Azure, můžete si vytvořit nový účet testovacího prostředí ve službách Azure Lab Services. Další informace o vytvoření nového účtu testovacího prostředí naleznete [v kurzu k nastavení účtu testovacího prostředí](tutorial-setup-lab-account.md).  Můžete také použít existující účet testovacího prostředí.
+K nastavení tohoto testovacího prostředí potřebujete předplatné Azure a účet testovacího prostředí, abyste mohli začít. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete. Po získání předplatného Azure můžete vytvořit nový účet testovacího prostředí v Azure Lab Services. Další informace o vytvoření nového účtu testovacího prostředí najdete v [kurzu nastavení účtu testovacího prostředí](tutorial-setup-lab-account.md).  Můžete použít i existující účet testovacího prostředí.
 
-Podle [kurzu k nastavení testovacího prostředí ve třídě](tutorial-setup-classroom-lab.md) vytvořte nové testovací prostředí a pak použijte následující nastavení:
+Postupujte podle [kurzu nastavení laboratorního prostředí](tutorial-setup-classroom-lab.md) pro vytvoření nového testovacího prostředí a pak použijte následující nastavení:
 
 | Velikost virtuálního počítače | Image |
 | -------------------- | ----- |
@@ -31,75 +31,75 @@ Podle [kurzu k nastavení testovacího prostředí ve třídě](tutorial-setup-c
 
 ## <a name="template-machine-configuration"></a>Konfigurace počítače šablony
 
-Po dokončení vytváření šablony počítače [spusťte počítač a připojte se k němu](how-to-create-manage-template.md#update-a-template-vm) a dokončete následující úkoly:
+Až se šablona vytvoří, [Spusťte počítač a připojte se k němu](how-to-create-manage-template.md#update-a-template-vm) , abyste mohli dokončit následující úlohy:
 
-1. Přidat roli Hyper-V
-2. Stáhněte a nainstalujte Jazyk Java.  
-3. Stáhněte a nainstalujte emulátor Visual Studia pro Android.
+1. Přidat roli technologie Hyper-V
+2. Stáhněte a nainstalujte Java.  
+3. Stáhněte a nainstalujte emulátor sady Visual Studio pro Android.
 4. Stáhněte a nainstalujte Android Studio.
-5. Konfigurace emulátoru Visual Studio pro Android Studio.
+5. Nakonfigurujte emulátor sady Visual Studio pro Android Studio.
 
-## <a name="add-hyper-v-role"></a>Přidat roli Hyper-V
+## <a name="add-hyper-v-role"></a>Přidat roli technologie Hyper-V
 
-Hyper-V musí být povolena pro úspěšnou instalaci emulátoru Visual Studio pro Android.  Postupujte podle pokynů v [tom, jak povolit vnořenou virtualizaci v článku virtuálního počítače šablony.](how-to-enable-nested-virtualization-template-vm.md)
+Technologie Hyper-V musí být povolená pro úspěšnou instalaci emulátoru sady Visual Studio pro Android.  Postupujte podle pokynů v článku [Jak povolit vnořenou virtualizaci v článku o šabloně virtuálního počítače](how-to-enable-nested-virtualization-template-vm.md) .
 
-## <a name="install-java"></a>Instalace Javy
+## <a name="install-java"></a>Nainstalovat Java
 
-Android Studio vyžaduje Java.  Podle následujících kroků stáhněte nejnovější verzi Javy.
+Android Studio vyžaduje Java.  Použijte následující postup ke stažení nejnovější verze Java.
 
-1. Přejděte na [stránku pro stažení v jazyce Java](https://www.java.com/download/). Klikněte na tlačítko **Stažení v Jazyce Java.**
-2. Na 64bitové webové stránce Windows for Java klikněte na tlačítko s označením **Souhlasím a Spustit bezplatné stažení**.
-3. Po zobrazení instalačního programu instalačního programu instalačního programu **v jazyce Java** klepněte na tlačítko **Nainstalovat**.
-4. Počkejte, až se název instalačního programu změní na **nastavení v jazyce Java – dokončení**.  Klikněte na **tlačítko Zavřít.**
+1. Přejděte na [stránku pro stažení Java](https://www.java.com/download/). Klikněte na tlačítko pro **stažení Java** .
+2. Na webové stránce 64 Windows for Java klikněte na tlačítko s popiskem **Souhlasím a začněte stahovat zdarma**.
+3. Až se zobrazí instalační program **Java** , klikněte na **nainstalovat**.
+4. Počkejte, až se název instalačního programu změní na **Nastavení Java – dokončeno**.  Klikněte na tlačítko **Zavřít** .
 
-## <a name="install-visual-studio-emulator-for-android"></a>Instalace emulátoru Visual Studia pro Android
+## <a name="install-visual-studio-emulator-for-android"></a>Nainstalovat emulátor sady Visual Studio pro Android
 
-Chcete-li testovat aplikaci pro Android místně, musí používat virtualizovanou verzi zařízení android.  Existuje několik Android emulátory k dispozici, které umožní vývojáři otestovat jejich aplikace z jejich počítače.  Používáme Emulátor Visual Studio pro Android, protože se jedná o emulátor, který podporuje vnořenou virtualizaci.  Vzhledem k tomu, že virtuální počítač služby Lab je již virtuální počítač, potřebujeme emulátor, který podporuje vnořené virtualizace.  Vestavěný emulátor pro Android Studio nepodporuje vnořené virtualizace.  Chcete-li zjistit, které emulátory podporují vnořenou virtualizaci, naleznete [v tématu hardwarová akcelerace pro výkon emulátoru (Hyper-V & HAXM)](https://docs.microsoft.com/xamarin/android/get-started/installation/android-emulator/hardware-acceleration).
+K místnímu otestování aplikace pro Android se musí použít virtualizované verze zařízení s Androidem.  K dispozici je několik emulátorů Androidu, které vývojářům umožní otestovat svoji aplikaci ze svého počítače.  Používáme emulátor sady Visual Studio pro Android, protože se jedná o emulátor, který podporuje vnořenou virtualizaci.  Vzhledem k tomu, že virtuální počítač služby testovacího prostředí už je virtuálním počítačem, potřebujeme emulátor, který podporuje vnořenou virtualizaci.  Integrovaný emulátor pro Android Studio nepodporuje vnořenou virtualizaci.  Pokud chcete zjistit, které emulátory podporují vnořenou virtualizaci, přečtěte si téma [hardwarová akcelerace pro výkon emulátoru (Hyper-V & modul HAXM)](https://docs.microsoft.com/xamarin/android/get-started/installation/android-emulator/hardware-acceleration).
 
-Pomocí následujících pokynů stáhněte a nainstalujte emulátor Visual Studia pro Android.
+K stažení a instalaci emulátoru sady Visual Studio pro Android použijte následující pokyny.
 
-1. Přejděte na [emulátor visual studia pro](https://visualstudio.microsoft.com/vs/msft-android-emulator/) domovskou stránku Androidu.
-2. Klikněte na tlačítko **Stáhnout emulátor.**
-3. Po stažení vs_emulatorsetup.exe spusťte spustitelný soubor.
-4. Po zobrazení dialogového okna nastavení sady Visual Studio klepněte na tlačítko **Instalovat.**
-5. Počkejte na dokončení instalačního programu.  Klepnutím na tlačítko **Restartovat nyní** restartujte počítač a dokončete instalaci.
+1. Přejděte na domovskou stránku [emulátoru sady Visual Studio pro Android](https://visualstudio.microsoft.com/vs/msft-android-emulator/) .
+2. Klikněte na tlačítko **stáhnout emulátor** .
+3. Po stažení vs_emulatorsetup. exe spusťte spustitelný soubor.
+4. Jakmile se zobrazí dialogové okno instalace sady Visual Studio, klikněte na tlačítko **nainstalovat** .
+5. Počkejte, až se instalační program dokončí.  Klikněte na tlačítko **restartovat nyní** a restartujte počítač a dokončete instalaci.
 
-Před nasazením aplikace pomocí Android Studia spusťte emulátor.  Další informace o emulátoru Visual Studio pro Android naleznete v [tématu Visual Studio Emulator for Android documentation](https://docs.microsoft.com/visualstudio/cross-platform/visual-studio-emulator-for-android).
+Před nasazením aplikace pomocí Android Studio nejprve spusťte emulátor.  Další informace o emulátoru sady Visual Studio pro Android najdete v [dokumentaci k emulátoru sady Visual Studio pro Android](https://docs.microsoft.com/visualstudio/cross-platform/visual-studio-emulator-for-android).
 
-## <a name="install-android-studio"></a>Instalace aplikace Android Studio
+## <a name="install-android-studio"></a>Nainstalovat Android Studio
 
-Chcete-li stáhnout a nainstalovat [aplikaci Android Studio,](https://developer.android.com/studio)postupujte podle následujících pokynů.
+Pro stažení a instalaci [Android Studio](https://developer.android.com/studio)postupujte podle následujících pokynů.
 
-1. Přejděte na [stránku pro stažení aplikace Android Studio](https://developer.android.com/studio#downloads).  
+1. Přejděte na [stránku pro stažení Android Studio](https://developer.android.com/studio#downloads).  
     > [!NOTE]
-    > Aplikace Internet Explorer není tímto webem podporována.
-2. Klikněte na balíček Windows (64-bit) spustitelný Android Studio.
-3. Přečtěte si právní termíny napsané v pop-up.  Až budete připraveni pokračovat, zkontrolujte, zda **jsem si přečetl a souhlasím s výše uvedenými podmínkami** a klikněte na tlačítko Stáhnout Android Studio pro **Windows.**
-4. Po stažení spustitelného souboru nastavení Android Studio spusťte spustitelný soubor.
-5. Na stránce **Welcome to Android Studio Setup** page **instalátoru nastavení androida Studia** klepněte na tlačítko **Další**.
-6. Na stránce **Nastavení konfigurace** klepněte na tlačítko **Další**.
-7. Na stránce **Zvolit složku nabídky Start** klepněte na tlačítko **Instalovat**.
-8. Počkejte na dokončení instalace.
-9. Na stránce **Dokončení instalace** klepněte na tlačítko **Další**.
-10. Na stránce **Dokončení nastavení studia Android.**  Klikněte na **Finish** (Dokončit).
-11. Android Studio se automaticky spustí po dokončení instalace.
-12. V dialogovém okně **Importovat nastavení Androidu z...** vyberte **Možnost Neimportovat nastavení**. Klikněte na tlačítko **OK**.
-13. Na **úvodní** stránce **Průvodce instalací studia Android**klepněte na tlačítko **Další**.
-14. Na stránce **Typ instalace** zvolte **Standardní**. Klikněte na **Další**.
-15. Na stránce **Vybrat motiv ui** vyberte požadovaný motiv. Klikněte na **Další**.
-16. Na stránce **Ověřit nastavení** klikněte na **další**.
-17. Na stránce **Stahování součástí** počkejte, dokud nebudou staženy všechny součásti.  Klikněte na **Finish** (Dokončit).
+    > Internet Explorer není tímto webem podporován.
+2. Klikněte na spustitelný balíček Windows (64-bit) Android Studio.
+3. Přečtěte si právní doložky napsané v místním okně.  Až budete připraveni pokračovat, zaškrtněte políčko **přečetl jsem si a souhlasím s výše uvedenými podmínkami a ujednáními** a klikněte na tlačítko **Stáhnout Android Studio pro Windows** .
+4. Po stažení instalačního souboru instalačního programu Android Studio spusťte spustitelný soubor.
+5. Na stránce **vítá Android Studio vás instalační program** **Instalace Android Studio** klikněte na tlačítko **Další**.
+6. Na stránce **nastavení konfigurace** klikněte na **Další**.
+7. Na stránce **Zvolit složku nabídky Start** klikněte na **nainstalovat**.
+8. Počkejte, až se instalace dokončí.
+9. Na stránce **Instalace byla dokončena** klikněte na tlačítko **Další**.
+10. Na stránce **dokončení instalace Android Studio** .  Klikněte na **Finish** (Dokončit).
+11. Po dokončení instalace se Android Studio automaticky spustí.
+12. V dialogovém okně **importovat nastavení Androidu z...** vyberte **Neimportovat nastavení**. Klikněte na tlačítko **OK**.
+13. Na **úvodní** stránce **Průvodce instalací Android Studio**klikněte na **Další**.
+14. Na stránce **typ instalace** vyberte možnost **standardní**. Klikněte na **Další**.
+15. Na stránce **vybrat motiv uživatelského rozhraní** vyberte požadovaný motiv. Klikněte na **Další**.
+16. Na stránce **ověřit nastavení** klikněte na **Další**.
+17. Na stránce **stahování součástí** počkejte, dokud nebudou staženy všechny součásti.  Klikněte na **Finish** (Dokončit).
 
     > [!IMPORTANT]
-    > Očekává se, že instalace HAXM se nezdaří.  HAXM nepodporuje vnořené virtualizace, což je důvod, proč jsme nainstalovali Visual Studio Emulátor pro Android dříve v tomto článku.
+    > Očekává se, že instalace modul HAXM selhala.  MODUL HAXM nepodporuje vnořenou virtualizaci. to je důvod, proč jsme nainstalovali emulátor sady Visual Studio pro Android výše v tomto článku.
 
-18. Po dokončení průvodce instalací se zobrazí dialogové okno **Vítá vás Studio pro Android.**
+18. Po dokončení Průvodce instalací se zobrazí dialogové okno **Vítá vás Android Studio** .
 
-## <a name="configure-android-studio-and-visual-studio-emulator-for-android"></a>Konfigurace androidového studia a emulátoru sady Visual Studio pro Android
+## <a name="configure-android-studio-and-visual-studio-emulator-for-android"></a>Konfigurace Android Studio a emulátoru sady Visual Studio pro Android
 
-Android Studio je téměř připraven k použití.  Stále potřebujeme říct Emulátor u sady Visual Studio pro Android, kde je nainstalována sada Android SDK.  To způsobí, že všechny emulátory spuštěné v sadě Visual Studio pro Android zobrazit jako cíle nasazení pro ladění Android Studio.
+Android Studio je skoro připravený k použití.  Pořád musíme říct emulátor sady Visual Studio pro Android, kde je nainstalovaná Android SDK.  Všechny emulátory spuštěné v aplikaci Visual Studio pro Android se zobrazí jako cíle nasazení pro Android Studio ladění.
 
-Musíme nastavit konkrétní klíč registru sdělit Visual Studio emulátor pro Android, kde je umístěn Android Sdk.  Chcete-li nastavit potřebný klíč registru, spusťte níže uvedený skript.  Níže uvedený skript prostředí PowerShell předpokládá výchozí umístění instalace sady Android Sdk.  Pokud jste aplikaci Android Sdk nainstalovali `$androidSdkPath` do jiného umístění, upravte hodnotu pro před spuštěním skriptu.
+Musíme nastavit konkrétní klíč registru, který bude informovat emulátor sady Visual Studio pro Android, kde se nachází sada Android SDK.  Chcete-li nastavit potřebný klíč registru, spusťte následující skript.  Níže uvedený skript prostředí PowerShell předpokládá výchozí umístění instalace pro sadu Android SDK.  Pokud jste sadu Android SDK nainstalovali v jiném umístění, `$androidSdkPath` před spuštěním skriptu upravte hodnotu.
 
 ```powershell
 $androidSdkPath = Resolve-Path $(Join-Path "$($env:APPDATA)" "../Local/Android/Sdk")
@@ -110,25 +110,25 @@ New-ItemProperty -Path $registryKeyPath -Name Path -PropertyType String -Value $
 ```
 
 > [!IMPORTANT]
-> Restartujte emulátor sady Visual Studio pro Android a Android Studio, aby se používalo nové nastavení.
+> Restartujte emulátor sady Visual Studio pro Android a Android Studio tak, aby se nové nastavení používalo.
 
-Spusťte verzi, kterou potřebujete v emulátoru Visual Studio.  Zobrazí se jako cíl nasazení pro vaši aplikaci pro Android ve studiu pro Android.  Minimální verze pro projekt Android Studio musí podporovat verzi spuštěnou v emulátoru Visual Studio pro Android.  Nyní jste připraveni vytvářet a ladit projekty pomocí Android Studio a Visual Studio Emulátor pro Android.  Pokud máte nějaké problémy, přečtěte si článek Řešení potíží s emulátorem Androidu.
+Spusťte verzi, kterou potřebujete v emulátoru sady Visual Studio.  Zobrazí se jako cíl nasazení aplikace pro Android v Android studiu.  Minimální verze Android Studioho projektu musí podporovat verzi spuštěnou v emulátoru sady Visual Studio pro Android.  Nyní jste připraveni vytvořit a ladit projekty pomocí Android Studio a emulátoru sady Visual Studio pro Android.  Pokud máte nějaké problémy, přečtěte si téma Poradce při potížích s emulátorem Android.
 
 ## <a name="cost"></a>Náklady
 
-Pokud chcete odhadnout náklady na tuto testovací prostředí, můžete postupovat podle následujícího příkladu.
-Pro třídu 25 studentů s 20 hodinami plánovaného času ve třídě a 10 hodinami kvóty pro domácí úkoly nebo úkoly by cena za laboratoř byla  
+Pokud byste chtěli odhadnout náklady na toto testovací prostředí, můžete postupovat podle níže uvedeného příkladu.
+Pro třídu 25 studentů s 20 hodinami plánovaného času třídy a 10 hodin pro domácí úlohy nebo přiřazení by se cena za testovací prostředí měla  
 
-25 \* studentů (20 plánovaných + 10 kvót) hodin * 55 laboratorních jednotek * 0,01 USD za hodinu = 412.5 USD
+25 studentů \* (20 naplánovaných + 10 kvót) hodin × 55 jednotek testovacího prostředí × 0,01 USD za hodinu = 412,5 USD
 
-Další podrobnosti o cenách najdete v tématu [Ceny služeb Azure Lab](https://azure.microsoft.com/pricing/details/lab-services/).
+Další podrobnosti o cenách najdete v článku [Azure Lab Services ceny](https://azure.microsoft.com/pricing/details/lab-services/).
 
 ## <a name="next-steps"></a>Další kroky
 
-Další kroky jsou společné pro nastavení libovolného testovacího prostředí.
+Další kroky jsou běžné pro nastavení testovacího prostředí.
 
-- [Vytvoření a správa šablony](how-to-create-manage-template.md)
+- [Vytvoření a Správa šablony](how-to-create-manage-template.md)
 - [Přidávání uživatelů](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
 - [Nastavit kvótu](how-to-configure-student-usage.md#set-quotas-for-users)
-- [Nastavení plánu](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
-- [E-mailové registrační odkazy pro studenty](how-to-configure-student-usage.md#send-invitations-to-users)
+- [Nastavit plán](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
+- [Odkazy na registraci e-mailu studentům](how-to-configure-student-usage.md#send-invitations-to-users)

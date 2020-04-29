@@ -1,27 +1,27 @@
 ---
-title: Pokročilé dotazy ve službě Azure Monitor | Dokumenty společnosti Microsoft
-description: Tento článek obsahuje kurz pro použití portálu Analytics k psaní dotazů v Azure Monitoru.
+title: Rozšířené dotazy v Azure Monitor | Microsoft Docs
+description: Tento článek popisuje kurz použití portálu Analytics k zápisu dotazů v Azure Monitor.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/15/2018
 ms.openlocfilehash: 3d228c62cd2d1bcb7f4515cd698186e2ebcbe929
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77670283"
 ---
-# <a name="writing-advanced-queries-in-azure-monitor"></a>Psaní pokročilých dotazů ve službě Azure Monitor
+# <a name="writing-advanced-queries-in-azure-monitor"></a>Zápis rozšířených dotazů v Azure Monitor
 
 > [!NOTE]
-> Před dokončením této lekce byste měli dokončit [Začínáme s Azure Monitor Log Analytics](get-started-portal.md) a [Začínáme s dotazy.](get-started-queries.md)
+> Před dokončením této lekce byste měli dokončit [Začínáme s Azure Monitor Log Analytics](get-started-portal.md) a [Začínáme s dotazy](get-started-queries.md) .
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-## <a name="reusing-code-with-let"></a>Opětovné použití kódu pomocí funkce let
-Slouží `let` k přiřazení výsledků proměnné a odkazovat na něj dále v dotazu:
+## <a name="reusing-code-with-let"></a>Znovu použití kódu pomocí let
+Použijte `let` k přiřazení výsledků k proměnné a k jejímu následnému odkazu použijte později v dotazu:
 
 ```Kusto
 // get all events that have level 2 (indicates warning level)
@@ -33,7 +33,7 @@ warning_events
 | summarize count() by Computer 
 ```
 
-Proměnným můžete také přiřadit konstantní hodnoty. To podporuje metodu nastavení parametrů pro pole, která je třeba změnit při každém spuštění dotazu. Upravte tyto parametry podle potřeby. Chcete-li například vypočítat volné místo na disku a volnou paměť (v percentilech), v daném časovém okně:
+K proměnným můžete také přiřadit konstantní hodnoty. To podporuje metodu nastavení parametrů pro pole, která je třeba změnit při každém spuštění dotazu. Upravte tyto parametry podle potřeby. Pokud například chcete vypočítat volné místo na disku a volnou paměť (v percentilech), v daném časovém intervalu:
 
 ```Kusto
 let startDate = datetime(2018-08-01T12:55:02);
@@ -51,10 +51,10 @@ Perf
 union FreeDiskSpace, FreeMemory
 ```
 
-To usnadňuje změnu času začátku ukončení při příštím spuštění dotazu.
+Díky tomu je možné snadno změnit začátek koncového času při příštím spuštění dotazu.
 
 ### <a name="local-functions-and-parameters"></a>Místní funkce a parametry
-Příkazy slouží `let` k vytvoření funkcí, které lze použít ve stejném dotazu. Například definujte funkci, která přebírá pole datetime (ve formátu UTC) a převede ji do standardního formátu USA. 
+Pomocí `let` příkazů můžete vytvořit funkce, které lze použít ve stejném dotazu. Například definujte funkci, která přijímá pole DateTime (ve formátu UTC) a převede ho na standardní formát US. 
 
 ```Kusto
 let utc_to_us_date_format = (t:datetime)
@@ -69,15 +69,15 @@ Event
 ```
 
 ## <a name="print"></a>Tisk
-`print`vrátí tabulku s jedním sloupcem a jedním řádkem, který zobrazuje výsledek výpočtu. To se často používá v případech, kdy potřebujete jednoduchý výpočet. Chcete-li například najít aktuální čas v pst a přidat sloupec s EST:
+`print`Vrátí tabulku s jedním sloupcem a jedním řádkem, která zobrazuje výsledek výpočtu. To se často používá v případech, kdy potřebujete jednoduchý výpočet. Pokud například chcete najít aktuální čas v souboru PST a přidat sloupec s nástrojem EST:
 
 ```Kusto
 print nowPst = now()-8h
 | extend nowEst = nowPst+3h
 ```
 
-## <a name="datatable"></a>Datatable
-`datatable`umožňuje definovat sadu dat. Zadáte schéma a sadu hodnot a potom potrubí tabulka do jiných prvků dotazu. Chcete-li například vytvořit tabulku využití paměti RAM a vypočítat jejich průměrnou hodnotu za hodinu:
+## <a name="datatable"></a>Objekt
+`datatable`umožňuje definovat sadu dat. Zadáte schéma a sadu hodnot a potom předáte tabulku do všech dalších prvků dotazu. Pokud například chcete vytvořit tabulku využití paměti RAM a vypočítat průměrnou hodnotu za hodinu:
 
 ```Kusto
 datatable (TimeGenerated: datetime, usage_percent: double)
@@ -94,7 +94,7 @@ datatable (TimeGenerated: datetime, usage_percent: double)
 | summarize avg(usage_percent) by bin(TimeGenerated, 1h)
 ```
 
-Datatable konstrukce jsou také velmi užitečné při vytváření vyhledávací tabulky. Chcete-li například mapovat data tabulky, jako jsou ID událostí z tabulky _SecurityEvent,_ na typy `datatable` událostí uvedené jinde, vytvořte vyhledávací tabulku s typy událostí pomocí a připojte tuto datovou tabulku s daty _SecurityEvent:_
+Konstrukce DataTable jsou také velmi užitečné při vytváření vyhledávací tabulky. Například pro mapování tabulkových dat, jako jsou ID událostí z tabulky _SecurityEvent_ , na typy událostí, které jsou uvedeny jinde, vytvořte vyhledávací tabulku s typy událostí pomocí `datatable` a připojte se k tomuto objektu DataTable s daty _SecurityEvent_ :
 
 ```Kusto
 let eventCodes = datatable (EventID: int, EventType:string)
@@ -123,7 +123,7 @@ SecurityEvent
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Podívejte se na další lekce pro používání [dotazovacího jazyka Kusto](/azure/kusto/query/) s daty protokolu Azure Monitor:
+Podívejte se na další lekce týkající se používání [dotazovacího jazyka Kusto](/azure/kusto/query/) s využitím dat protokolu Azure monitor:
 
 - [Operace s řetězci](string-operations.md)
 - [Operace s datem a časem](datetime-operations.md)

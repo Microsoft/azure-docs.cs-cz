@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace konektoru meta sítí pro automatické zřizování uživatelů pomocí služby Azure Active Directory | Dokumenty společnosti Microsoft'
-description: Přečtěte si, jak nakonfigurovat službu Azure Active Directory tak, aby automaticky zřašovala a zřašovala uživatelské účty do konektoru Meta Networks.
+title: 'Kurz: Konfigurace konektoru meta Networks pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
+description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů k konektoru meta Networks.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,172 +16,172 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.author: Zhchia
 ms.openlocfilehash: 03c2dc6253fba5c2c7d59f3aefc5c1c663ed8248
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77061352"
 ---
-# <a name="tutorial-configure-meta-networks-connector-for-automatic-user-provisioning"></a>Kurz: Konfigurace konektoru meta sítí pro automatické zřizování uživatelů
+# <a name="tutorial-configure-meta-networks-connector-for-automatic-user-provisioning"></a>Kurz: Konfigurace konektoru meta Networks Connector pro Automatické zřizování uživatelů
 
-Cílem tohoto kurzu je demonstrovat kroky, které mají být provedeny v Meta Networks Connector a Azure Active Directory (Azure AD) nakonfigurovat Azure AD automaticky zřídit a de-provision uživatelů a/nebo skupin pro meta sítě konektoru.
+Cílem tohoto kurzu je předvést kroky, které je třeba provést v konektorech meta Networks a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD pro Automatické zřizování a zrušení zřizování uživatelů nebo skupin k síťovému konektoru meta Networks.
 
 > [!NOTE]
-> Tento kurz popisuje konektor postavený na nad službou zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá, jak funguje, a nejčastější dotazy, najdete [v tématu Automatizace zřizování uživatelů a zrušení zřizování aplikací SaaS pomocí služby Azure Active Directory](../app-provisioning/user-provisioning.md).
+> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
-> Tento konektor je aktuálně ve verzi Public Preview. Další informace o obecných podmínkách použití Microsoft Azure pro funkce preview najdete v [tématu Doplňkové podmínky použití pro Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že již máte následující požadavky:
+Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
-* Klient Azure AD
-* [Klient konektoru meta sítí](https://www.metanetworks.com/)
-* Uživatelský účet v konektoru Meta Networks s oprávněními správce.
+* Tenant Azure AD
+* [Tenant konektoru meta Networks](https://www.metanetworks.com/)
+* Uživatelský účet v konektoru meta Networks s oprávněními správce.
 
-## <a name="assigning-users-to-meta-networks-connector"></a>Přiřazení uživatelů ke konektoru Meta Networks
+## <a name="assigning-users-to-meta-networks-connector"></a>Přiřazování uživatelů k konektoru meta Networks
 
-Azure Active Directory používá koncept s názvem *přiřazení* k určení, kteří uživatelé by měli získat přístup k vybraným aplikacím. V kontextu automatickézřižené zřizování uživatelů jsou synchronizovány pouze uživatelé nebo skupiny, které byly přiřazeny k aplikaci ve službě Azure AD.
+Azure Active Directory používá koncept nazvaný *přiřazení* k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelů se synchronizují jenom uživatelé a skupiny, které jsou přiřazené k aplikaci v Azure AD.
 
-Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé nebo skupiny ve službě Azure AD potřebují přístup ke konektoru Meta Networks. Jakmile se rozhodnete, můžete přiřadit tyto uživatele a / nebo skupiny Meta Networks Connector podle pokynů zde:
+Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé a skupiny ve službě Azure AD potřebují přístup k konektoru meta Networks. Jakmile se rozhodnete, můžete tyto uživatele a skupiny přiřadit k konektoru meta Networks pomocí pokynů uvedených tady:
 * [Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-meta-networks-connector"></a>Důležité tipy pro přiřazení uživatelů ke konektoru Meta Networks
+## <a name="important-tips-for-assigning-users-to-meta-networks-connector"></a>Důležité tipy pro přiřazení uživatelů ke konektoru meta Networks
 
-* Doporučuje se, aby jeden uživatel Azure AD je přiřazen a Meta Networks Connector otestovat konfiguraci automatického zřizování uživatelů. Další uživatelé a/nebo skupiny mohou být přiřazeny později.
+* Doporučuje se, aby se k otestování automatické konfigurace zřizování uživatelů přiřadil jeden uživatel Azure AD k síťovému konektoru meta Networks. Další uživatele a skupiny můžete přiřadit později.
 
-* Při přiřazování uživatele ke konektoru Meta Networks connector musíte v dialogovém okně přiřazení vybrat libovolnou platnou roli specifickou pro aplikaci (pokud je k dispozici). Uživatelé s rolí **Výchozí přístup** jsou z zřizování vyloučeni.
+* Při přiřazování uživatele k síťovému konektoru meta Networks musíte v dialogovém okně přiřazení vybrat jakoukoli platnou roli specifickou pro aplikaci (Pokud je dostupná). Uživatelé s **výchozí rolí přístupu** se z zřizování vylučují.
 
-## <a name="setup-meta-networks-connector-for-provisioning"></a>Nastavení konektoru meta sítí pro zřizování
+## <a name="setup-meta-networks-connector-for-provisioning"></a>Nastavení konektoru meta Networks pro zřizování
 
-1. Přihlaste se ke [konzoli Prosagze Administrátor](https://login.metanetworks.com/login/) u konektoru pomocí názvu organizace. Přejděte na **klíči rozhraní API pro správu >**.
+1. Přihlaste se ke [konzole pro správu konektoru meta Networks](https://login.metanetworks.com/login/) pomocí názvu vaší organizace. Přejděte do **administrace > klíče rozhraní API**.
 
-    ![Konzola pro správu konektoru meta-networks](media/meta-networks-connector-provisioning-tutorial/apikey.png)
+    ![Konzola pro správu konektoru meta Networks](media/meta-networks-connector-provisioning-tutorial/apikey.png)
 
-2.  Kliknutím na znaménko plus na pravé horní straně obrazovky vytvořte nový **klíč ROZHRANÍ API**.
+2.  Kliknutím na znaménko plus v pravé horní části obrazovky vytvoříte nový **klíč rozhraní API**.
 
-    ![Ikona konektoru Meta Networks Connector plus](media/meta-networks-connector-provisioning-tutorial/plusicon.png)
+    ![Ikona s konektorem meta Networks plus](media/meta-networks-connector-provisioning-tutorial/plusicon.png)
 
-3.  Nastavte **název klíče rozhraní API** a **popis klíče rozhraní API**.
+3.  Nastavte **název klíče rozhraní API** a **Popis klíče rozhraní API**.
 
-    ![Meta sítě konektor vytvořit token](media/meta-networks-connector-provisioning-tutorial/keyname.png)
+    ![Vytvoření tokenu pro konektor meta Networks](media/meta-networks-connector-provisioning-tutorial/keyname.png)
 
-4.  Zapněte oprávnění **k zápisu** pro **skupiny** a **uživatele**.
+4.  Zapněte oprávnění **zapisovat** pro **skupiny** a **uživatele**.
 
-    ![Oprávnění konektoru meta sítí](media/meta-networks-connector-provisioning-tutorial/privileges.png)
+    ![Oprávnění konektoru meta Networks](media/meta-networks-connector-provisioning-tutorial/privileges.png)
 
-5.  Klikněte na **Přidat**. Zkopírujte **SECRET** a uložte jej, protože to bude jediný čas, kdy jej můžete zobrazit. Tato hodnota se zadá do pole Tajný token na kartě Zřizování aplikace Meta Networks Connector na webu Azure Portal.
+5.  Klikněte na **Přidat**. Zkopírujte **tajný klíč** a uložte ho tak, jak se to bude zobrazovat jenom v takovém případě. Tato hodnota se zadá do pole token tajného klíče na kartě zřizování v aplikaci konektoru meta Networks v Azure Portal.
 
-    ![Meta sítě konektor vytvořit token](media/meta-networks-connector-provisioning-tutorial/token.png)
+    ![Vytvoření tokenu pro konektor meta Networks](media/meta-networks-connector-provisioning-tutorial/token.png)
 
-6.  Přidejte idp přechodem na **nastavení > správy > idp > vytvořit nový**.
+6.  IdP můžete přidat tak, že přejdete do **Nastavení správa > > IdP > vytvořit nový**.
 
-    ![Přidat idp konektoru Meta Networks](media/meta-networks-connector-provisioning-tutorial/newidp.png)
+    ![Přidat IdP konektoru meta Networks](media/meta-networks-connector-provisioning-tutorial/newidp.png)
 
-7.  Na stránce **Konfigurace protokolu IdP** můžete **pojmenovat** konfiguraci protokolu IdP a zvolit **ikonu**.
+7.  Na stránce **Konfigurace IDP** můžete **pojmenovat** konfiguraci IDP a vybrat **ikonu**.
 
-    ![Název idp konektoru meta sítí](media/meta-networks-connector-provisioning-tutorial/idpname.png)
+    ![Název IdP konektoru meta Networks](media/meta-networks-connector-provisioning-tutorial/idpname.png)
 
-    ![Ikona idp konektoru meta-sítí](media/meta-networks-connector-provisioning-tutorial/icon.png)
+    ![IdP ikona konektoru meta Networks](media/meta-networks-connector-provisioning-tutorial/icon.png)
 
-8.  V **části Konfigurovat SCIM** vyberte název klíče rozhraní API vytvořený v předchozích krocích. Klikněte na **Uložit**.
+8.  V části **Konfigurovat SCIM** vyberte název klíče rozhraní API vytvořený v předchozích krocích. Klikněte na **Uložit**.
 
-    ![Konektor meta sítí konfigurace SCIM](media/meta-networks-connector-provisioning-tutorial/configure.png)
+    ![Konektor meta Networks – konfigurace SCIM](media/meta-networks-connector-provisioning-tutorial/configure.png)
 
-9.  Přejděte na **kartu Nastavení > pro správu > .** Kliknutím na název konfigurace protokolu IdP vytvořené v předchozích krocích zobrazíte **ID protokolu IdP**. Toto **ID** se přidá na konec **adresy URL klienta** při zadávání hodnoty v poli **Adresa URL klienta** na kartě Zřizování aplikace Konektor meta sítí na webu Azure Portal.
+9.  Přejděte na **> nastavení pro správu > karta IDP**. Kliknutím na název konfigurace IdP vytvořené v předchozích krocích zobrazíte **ID IDP**. Toto **ID** se přidá na konec **adresy URL klienta** při zadávání hodnoty do pole **Adresa URL tenanta** na kartě zřizování v aplikaci konektoru meta Networks v Azure Portal.
 
-    ![Id ID idi programu IdP konektoru meta sítí](media/meta-networks-connector-provisioning-tutorial/idpid.png)
+    ![ID IdP konektoru meta Networks](media/meta-networks-connector-provisioning-tutorial/idpid.png)
 
-## <a name="add-meta-networks-connector-from-the-gallery"></a>Přidání konektoru Meta Networks z galerie
+## <a name="add-meta-networks-connector-from-the-gallery"></a>Přidání konektoru meta Networks z Galerie
 
-Před konfigurací konektoru Meta Networks pro automatické zřizování uživatelů pomocí Azure AD je potřeba přidat konektor Meta Networks z galerie aplikací Azure AD do seznamu spravovaných aplikací SaaS.
+Před konfigurací konektoru meta Networks pro Automatické zřizování uživatelů pomocí Azure AD je potřeba přidat konektor meta Networks z Galerie aplikací Azure AD do svého seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat konektor Meta Networks z galerie aplikací Azure AD, proveďte následující kroky:**
+**Pokud chcete přidat konektor meta Networks z Galerie aplikací Azure AD, proveďte následující kroky:**
 
-1. Na **[webu Azure Portal](https://portal.azure.com)** vyberte na levém navigačním panelu **položku Azure Active Directory**.
+1. V **[Azure Portal](https://portal.azure.com)** v levém navigačním panelu vyberte možnost **Azure Active Directory**.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte na **podnikové aplikace**a vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
-    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
+    ![Okno podnikové aplikace](common/enterprise-applications.png)
 
 3. Chcete-li přidat novou aplikaci, vyberte tlačítko **Nová aplikace** v horní části podokna.
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **konektor Meta Networks**, vpanelu s výsledky vyberte konektor meta **sítí** a klepnutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **konektor meta sítě**, vyberte na panelu výsledků položku **meta Networks Connector** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-    ![Meta Networks Connector v seznamu výsledků](common/search-new-app.png)
+    ![Konektor meta Networks v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-meta-networks-connector"></a>Konfigurace automatického zřizování uživatelů na konektor meta sítí 
+## <a name="configuring-automatic-user-provisioning-to-meta-networks-connector"></a>Konfigurace automatického zřizování uživatelů pro konektory meta Networks 
 
-Tato část vás provede kroky konfigurace služby zřizování Azure AD k vytvoření, aktualizaci a zakázání uživatelů nebo skupin v konektoru Meta Networks na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
+V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin ve službě meta Networks Connector na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete také povolit jednotné přihlašování založené na SAML pro konektor Meta Networks , podle pokynů uvedených v [kurzu jednotného přihlášení konektoru Meta Networks](https://docs.microsoft.com/azure/active-directory/saas-apps/metanetworksconnector-tutorial). Jednotné přihlašování lze konfigurovat nezávisle na automatickézřivací službě uživatelů, i když tyto dvě funkce se vzájemně doplňují
+> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro konektory meta Networks, a to podle pokynů uvedených v [kurzu jednotného přihlašování v části meta Networks Connector](https://docs.microsoft.com/azure/active-directory/saas-apps/metanetworksconnector-tutorial). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když se tyto dvě funkce vzájemně přidávají.
 
-### <a name="to-configure-automatic-user-provisioning-for-meta-networks-connector-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro konektor meta sítí ve službě Azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-meta-networks-connector-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro konektory meta Networks ve službě Azure AD:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **Všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **meta networks konektor**.
+2. V seznamu aplikace vyberte možnost **meta sítě konektor**.
 
-    ![Propojení konektoru Meta-sítě v seznamu Aplikace](common/all-applications.png)
+    ![Odkaz na konektor meta Networks v seznamu aplikací](common/all-applications.png)
 
-3. Vyberte kartu **Zřizování.**
+3. Vyberte kartu **zřizování** .
 
-    ![Karta Zřizování](common/provisioning.png)
+    ![Karta zřizování](common/provisioning.png)
 
-4. Nastavte **režim zřizování** na **automatické**.
+4. Nastavte **režim zřizování** na **automaticky**.
 
-    ![Karta Zřizování](common/provisioning-automatic.png)
+    ![Karta zřizování](common/provisioning-automatic.png)
 
-5. V části **Pověření správce** `https://api.metanetworks.com/v1/scim/<IdP ID>` zadejte adresu **URL klienta**. Zadejte hodnotu **ověřovacího tokenu SCIM** načtenou dříve v **tokenu tajného klíče**. Kliknutím na **Testovat připojení** zajistíte, že se Azure AD může připojit ke konektoru Meta Networks. Pokud se připojení nezdaří, ujistěte se, že váš účet Meta Networks Connector má oprávnění správce a zkuste to znovu.
+5. V části **přihlašovací údaje správce** zadejte `https://api.metanetworks.com/v1/scim/<IdP ID>` **adresu URL tenanta**. Zadejte hodnotu **SCIM tokenu ověřování** získanou dříve v **tajném tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k konektoru meta Networks. Pokud se připojení nepovede, ujistěte se, že má účet konektoru pro meta Network oprávnění správce, a zkuste to znovu.
 
-    ![Adresa URL klienta + token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Adresa URL tenanta + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Do pole **E-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, která by měla dostávat oznámení o chybách při zřizování, a zaškrtněte políčko – **Odeslat e-mailové oznámení, když dojde k chybě**.
+6. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
 
     ![E-mail s oznámením](common/provisioning-notification-email.png)
 
 7. Klikněte na **Uložit**.
 
-8. V části **Mapování** vyberte **synchronizovat konektor Služby Azure Active Directory s konektorem meta sítí**.
+8. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory uživatele s konektorem meta Networks**.
 
-    ![Mapování uživatelů konektoru meta sítí](media/meta-networks-connector-provisioning-tutorial/usermappings.png)
+    ![Mapování uživatelů v konektoru meta Networks](media/meta-networks-connector-provisioning-tutorial/usermappings.png)
 
-9. Zkontrolujte atributy uživatele, které jsou synchronizovány z Azure AD na konektor meta sítí v části **Mapování atributů.** Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelským účtům v aplikaci Meta Networks Connector pro operace aktualizace. Chcete-li potvrdit všechny změny, vyberte tlačítko **Uložit.**
+9. Zkontrolujte atributy uživatele, které jsou synchronizované z Azure AD do meta Networks Connectoru v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v konektoru meta Networks pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Uživatelské atributy konektoru meta sítí](media/meta-networks-connector-provisioning-tutorial/userattributes.png)
+    ![Atributy uživatele konektoru meta Networks](media/meta-networks-connector-provisioning-tutorial/userattributes.png)
 
-10. V části **Mapování** vyberte **Synchronizovat skupiny Služby Azure Active Directory s konektorem Meta Networks .**
+10. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory skupiny s konektorem meta Networks**.
 
-    ![Mapování skupin konektorů meta sítí](media/meta-networks-connector-provisioning-tutorial/groupmappings.png)
+    ![Mapování skupin konektorů meta Networks](media/meta-networks-connector-provisioning-tutorial/groupmappings.png)
 
-11. Zkontrolujte atributy skupiny, které jsou synchronizovány z Azure AD na konektor meta sítí v části **Mapování atributů.** Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly skupinám v aplikaci Meta Networks Connector pro operace aktualizace. Chcete-li potvrdit všechny změny, vyberte tlačítko **Uložit.**
+11. Zkontrolujte atributy skupiny, které jsou synchronizované z Azure AD do meta Networks Connectoru v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v části meta Networks Connector pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Atributy skupiny konektorů meta sítí](media/meta-networks-connector-provisioning-tutorial/groupattributes.png)
+    ![Atributy skupiny konektorů meta Networks](media/meta-networks-connector-provisioning-tutorial/groupattributes.png)
 
-12. Chcete-li konfigurovat filtry oborů, naleznete v následujících pokynech uvedených v [kurzu filtru oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+12. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Chcete-li povolit službu zřizování Azure AD pro konektor meta sítí, změňte **stav zřizování** **na Zapnuto** v části **Nastavení.**
+13. Pokud chcete povolit službu Azure AD Provisioning Connector pro konektory meta Networks, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
-    ![Stav zřizování zapnutý](common/provisioning-toggle-on.png)
+    ![Zapnutý stav zřizování](common/provisioning-toggle-on.png)
 
-14. Definujte uživatele nebo skupiny, které chcete zřídit konektoru Meta Networks, výběrem požadovaných hodnot v **oboru** v části **Nastavení.**
+14. Definujte uživatele nebo skupiny, které chcete zřídit pro konektor meta Networks, a to tak, že v části **Nastavení** vyberete požadované hodnoty v **oboru** .
 
-    ![Obor zřizování](common/provisioning-scope.png)
+    ![Rozsah zřizování](common/provisioning-scope.png)
 
-15. Až budete připraveni k zřízení, klikněte na **Uložit**.
+15. Až budete připraveni zřídit, klikněte na **Uložit**.
 
-    ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
+    ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
 
-Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení.** Počáteční synchronizace trvá déle než následné synchronizace, ke kterým dochází přibližně každých 40 minut tak dlouho, dokud je spuštěna služba zřizování Azure AD. Část **Podrobnosti synchronizace** můžete použít ke sledování průběhu a sledování odkazů na sestavu aktivit zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD na konektoru Meta Networks.
+Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. Část s **podrobnostmi o synchronizaci** můžete použít ke sledování průběhu a následného odkazu na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v konektoru meta Networks Connector.
 
-Další informace o tom, jak číst protokoly zřizování Azure AD, naleznete [v tématu Vytváření sestav na automatické zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
@@ -190,5 +190,5 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, naleznete [
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy o aktivitě zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
 

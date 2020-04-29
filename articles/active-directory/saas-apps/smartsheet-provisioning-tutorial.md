@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace inteligentního listu pro automatické zřizování uživatelů pomocí služby Azure Active Directory | Dokumenty společnosti Microsoft'
-description: Přečtěte si, jak nakonfigurovat službu Azure Active Directory tak, aby automaticky zřašovala a zřašovala uživatelské účty do inteligentního listu.
+title: 'Kurz: Konfigurace Smartsheet pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
+description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro Smartsheet.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,178 +16,178 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 9fbdf8a1c4b1881fc6dfd9d7b95a4103761e9ce7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77063182"
 ---
-# <a name="tutorial-configure-smartsheet-for-automatic-user-provisioning"></a>Kurz: Konfigurace inteligentního listu pro automatické zřizování uživatelů
+# <a name="tutorial-configure-smartsheet-for-automatic-user-provisioning"></a>Kurz: Konfigurace Smartsheet pro Automatické zřizování uživatelů
 
-Cílem tohoto kurzu je demonstrovat kroky, které mají být provedeny v Smartsheet a Azure Active Directory (Azure AD) nakonfigurovat Azure AD automaticky zřídit a de-provision uživatelů nebo skupin na Smartsheet.
+Cílem tohoto kurzu je předvést kroky, které je třeba provést v Smartsheet a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD pro Automatické zřizování a zrušení zřizování uživatelů nebo skupin pro Smartsheet.
 
 > [!NOTE]
-> Tento kurz popisuje konektor postavený na nad službou zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá, jak funguje, a nejčastější dotazy, najdete [v tématu Automatizace zřizování uživatelů a zrušení zřizování aplikací SaaS pomocí služby Azure Active Directory](../app-provisioning/user-provisioning.md).
+> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
-> Tento konektor je aktuálně ve verzi Public Preview. Další informace o obecných podmínkách použití Microsoft Azure pro funkce preview najdete v [tématu Doplňkové podmínky použití pro Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že již máte následující požadavky:
+Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
-* Klient Azure AD
-* [Tenant smartsheet](https://www.smartsheet.com/pricing)
+* Tenant Azure AD
+* [Tenant Smartsheet](https://www.smartsheet.com/pricing)
 * Uživatelský účet v plánu Smartsheet Enterprise nebo Enterprise Premier s oprávněními správce systému.
 
-## <a name="assign-users-to-smartsheet"></a>Přiřazení uživatelů k inteligentnímu listu
+## <a name="assign-users-to-smartsheet"></a>Přiřazení uživatelů k Smartsheet
 
-Azure Active Directory používá koncept s názvem *přiřazení* k určení, kteří uživatelé by měli získat přístup k vybraným aplikacím. V kontextu automatickézřižené zřizování uživatelů jsou synchronizovány pouze uživatelé nebo skupiny, které byly přiřazeny k aplikaci ve službě Azure AD.
+Azure Active Directory používá koncept nazvaný *přiřazení* k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelů se synchronizují jenom uživatelé a skupiny, které jsou přiřazené k aplikaci v Azure AD.
 
-Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé nebo skupiny ve službě Azure AD potřebují přístup k inteligentnímu listu. Jakmile se rozhodnete, můžete tyto uživatele a/nebo skupiny přiřadit k inteligentnímu listu podle pokynů zde:
+Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé a skupiny ve službě Azure AD potřebují přístup k Smartsheet. Po rozhodnutí můžete přiřadit tyto uživatele nebo skupiny k Smartsheet podle pokynů uvedených tady:
 
 * [Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-smartsheet"></a>Důležité tipy pro přiřazení uživatelů k inteligentnímu listu
+### <a name="important-tips-for-assigning-users-to-smartsheet"></a>Důležité tipy pro přiřazení uživatelů k Smartsheet
 
-* Doporučuje se, aby jeden uživatel Azure AD je přiřazen k Smartsheet otestovat konfiguraci automatického zřizování uživatelů. Další uživatelé a/nebo skupiny mohou být přiřazeny později.
+* Doporučuje se, aby se k Smartsheet k testování automatické konfigurace zřizování uživatelů přiřadil jeden uživatel Azure AD. Další uživatele a skupiny můžete přiřadit později.
 
-* Při přiřazování uživatele k inteligentnímu listu je nutné v dialogovém okně přiřazení vybrat libovolnou platnou roli specifickou pro aplikaci (pokud je k dispozici). Uživatelé s rolí **Výchozí přístup** jsou z zřizování vyloučeni.
+* Při přiřazování uživatele k Smartsheet musíte v dialogovém okně přiřazení vybrat jakoukoli platnou roli specifickou pro aplikaci (Pokud je dostupná). Uživatelé s **výchozí rolí přístupu** se z zřizování vylučují.
 
-* Chcete-li zajistit paritu přiřazení rolí uživatelů mezi smartsheet a Azure AD, doporučujeme využít stejné role přiřazení naplněných v úplném seznamu uživatelů Smartsheet. Chcete-li tento seznam uživatelů načíst z inteligentního listu, přejděte na **položku Správce účtu > Správa uživatelů > další akce > Stáhnout seznam uživatelů (csv).**
+* Aby se zajistila parita v přiřazování rolí uživatelů mezi Smartsheet a Azure AD, doporučuje se využít stejné přiřazení rolí, které jsou naplněné v seznamu úplných uživatelů Smartsheet. Pokud chcete načíst tento seznam uživatelů z Smartsheet, přejděte na **správce účtu > Správa uživatelů > další akce > stáhnout seznam uživatelů (CSV)**.
 
-* Pro přístup k určitým funkcím aplikace vyžaduje Smartsheet, aby měl uživatel více rolí. Další informace o typech uživatelů a oprávněních v inteligentním listu najdete v části [Typy uživatelů a oprávnění](https://help.smartsheet.com/learning-track/shared-users/user-types-and-permissions).
+* Pro přístup k určitým funkcím aplikace Smartsheet vyžaduje, aby uživatel měl více rolí. Další informace o uživatelských typech a oprávněních v Smartsheet najdete v [uživatelském typu a oprávnění](https://help.smartsheet.com/learning-track/shared-users/user-types-and-permissions).
 
-*  Pokud má uživatel v inteligentním listu přiřazeno více rolí, **musíte** zajistit, aby se tato přiřazení rolí replikovala ve službě Azure AD, aby se zabránilo scénáři, kdy by uživatelé mohli trvale ztratit přístup k objektům Smartsheet. Každá jedinečná role v inteligentním listu **musí** být přiřazena k jiné skupině ve službě Azure AD. Uživatel **musí** být potom přidány do každé ze skupin odpovídajících požadované role. 
+*  Pokud má uživatel v Smartsheet přiřazených víc rolí, **musíte** zajistit, aby se tato přiřazení rolí replikoval ve službě Azure AD, aby nedocházelo k situaci, kdy uživatelé můžou trvale ztratit přístup k objektům Smartsheet. Každá jedinečná role v Smartsheet **musí** být přiřazena jiné skupině v Azure AD. Pak je **nutné** přidat uživatele do všech skupin odpovídajících rolím, které jsou požadovány. 
 
-## <a name="set-up-smartsheet-for-provisioning"></a>Nastavení inteligentního listu pro zřizování
+## <a name="set-up-smartsheet-for-provisioning"></a>Nastavení Smartsheet pro zřizování
 
-Před konfigurací Smartsheet pro automatické zřizování uživatelů s Azure AD, budete muset povolit zřizování SCIM na Smartsheet.
+Před konfigurací Smartsheet pro Automatické zřizování uživatelů pomocí Azure AD budete muset povolit SCIM zřizování na Smartsheet.
 
-1. Přihlaste se jako **Správce SysAdmin** na **[portálu Smartsheet](https://app.smartsheet.com/b/home)** a přejděte na **Správce účtu**.
+1. Přihlaste se jako **správce** systému na **[portálu Smartsheet](https://app.smartsheet.com/b/home)** a přejděte na **správce účtu**.
 
-    ![Správce účtu smartsheetu](media/smartsheet-provisioning-tutorial/smartsheet-accountadmin.png)
+    ![Správce účtu Smartsheet](media/smartsheet-provisioning-tutorial/smartsheet-accountadmin.png)
 
-2. Přejděte na **ovládací prvky zabezpečení > automatické zřizování uživatelů > úpravy**.
+2. Přejít na **ovládací prvky zabezpečení > Automatické zřizování uživatelů > upravit**.
 
-    ![Ovládací prvky zabezpečení inteligentních listů](media/smartsheet-provisioning-tutorial/smartsheet-securitycontrols.png)
+    ![Ovládací prvky zabezpečení Smartsheet](media/smartsheet-provisioning-tutorial/smartsheet-securitycontrols.png)
 
-3. Přidejte a ověřte e-mailové domény pro uživatele, které plánujete zřídit z Azure AD do smartsheetu. Zvolte **Není povoleno,** abyste zajistili, že všechny akce zřizování pocházejí pouze z Azure AD a také ujistěte se, že váš seznam uživatelů Smartsheet je synchronizován s přiřazeními Azure AD.
+3. Přidejte a ověřte e-mailové domény pro uživatele, které chcete zřídit z Azure AD do Smartsheet. Pokud chcete zajistit, aby všechny akce zřizování pocházely jenom z Azure AD, a taky zajistit, aby byl váš seznam uživatelů Smartsheet synchronizovaný s přiřazeními Azure AD, vyberte **Nepovoleno** .
 
-    ![Zřizování uživatelů smartsheetu](media/smartsheet-provisioning-tutorial/smartsheet-userprovisioning.png)
+    ![Zřizování uživatelů Smartsheet](media/smartsheet-provisioning-tutorial/smartsheet-userprovisioning.png)
 
-4. Po dokončení ověření budete muset aktivovat doménu. 
+4. Po dokončení ověření bude nutné doménu aktivovat. 
 
-    ![Aktivovat doménu smartsheetu](media/smartsheet-provisioning-tutorial/smartsheet-activatedomain.png)
+    ![Smartsheet aktivovat doménu](media/smartsheet-provisioning-tutorial/smartsheet-activatedomain.png)
 
-5. Vygenerujte **tajný token** potřebný ke konfiguraci automatického zřizování uživatelů pomocí **Služby**Azure AD přechodem na aplikace a integrace .
+5. Vygenerujte **tajný token** potřebný ke konfiguraci automatického zřizování uživatelů pomocí Azure AD tak, že přejdete na **aplikace a integrace**.
 
-    ![Instalace inteligentního listu](media/smartsheet-provisioning-tutorial/Smartsheet05.png)
+    ![Instalace Smartsheet](media/smartsheet-provisioning-tutorial/Smartsheet05.png)
 
-6. Zvolte **Přístup k rozhraní API**. Klepněte na **tlačítko Generovat nový přístupový token**.
+6. Vyberte možnost **přístup přes rozhraní API**. Klikněte na **vygenerovat nový přístupový token**.
 
-    ![Instalace inteligentního listu](media/smartsheet-provisioning-tutorial/Smartsheet06.png)
+    ![Instalace Smartsheet](media/smartsheet-provisioning-tutorial/Smartsheet06.png)
 
-7. Definujte název přístupového tokenu rozhraní API. Klikněte na tlačítko **OK**.
+7. Zadejte název přístupového tokenu rozhraní API. Klikněte na tlačítko **OK**.
 
-    ![Instalace inteligentního listu](media/smartsheet-provisioning-tutorial/Smartsheet07.png)
+    ![Instalace Smartsheet](media/smartsheet-provisioning-tutorial/Smartsheet07.png)
 
-8. Zkopírujte přístupový token rozhraní API a uložte jej, protože to bude jediný čas, kdy jej můžete zobrazit. To je vyžadováno v poli **tajný token** ve službě Azure AD.
+8. Zkopírujte přístupový token rozhraní API a uložte ho tak, jak se to bude zobrazovat jenom v takovém případě. To se vyžaduje v poli **tajný token** v Azure AD.
 
-    ![Token inteligentního listu](media/smartsheet-provisioning-tutorial/Smartsheet08.png)
+    ![Token Smartsheet](media/smartsheet-provisioning-tutorial/Smartsheet08.png)
 
-## <a name="add-smartsheet-from-the-gallery"></a>Přidání inteligentního listu z galerie
+## <a name="add-smartsheet-from-the-gallery"></a>Přidání Smartsheet z Galerie
 
-Chcete-li nakonfigurovat Smartsheet pro automatické zřizování uživatelů pomocí Azure AD, je třeba přidat Smartsheet z galerie aplikací Azure AD do seznamu spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat Smartsheet pro Automatické zřizování uživatelů pomocí Azure AD, musíte přidat Smartsheet z Galerie aplikací Azure AD do svého seznamu spravovaných aplikací SaaS.
 
-1. Na **[webu Azure Portal](https://portal.azure.com)** vyberte na levém navigačním panelu **položku Azure Active Directory**.
+1. V **[Azure Portal](https://portal.azure.com)** v levém navigačním panelu vyberte možnost **Azure Active Directory**.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte na **podnikové aplikace**a vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
-    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
+    ![Okno podnikové aplikace](common/enterprise-applications.png)
 
 3. Chcete-li přidat novou aplikaci, vyberte tlačítko **Nová aplikace** v horní části podokna.
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Smartsheet**, vpanelu výsledky vyberte **Inteligentní list.** 
+4. Do vyhledávacího pole zadejte **Smartsheet**, na panelu výsledků vyberte **Smartsheet** . 
 
-    ![Inteligentní list v seznamu výsledků](common/search-new-app.png)
+    ![Smartsheet v seznamu výsledků](common/search-new-app.png)
 
-5. Vyberte tlačítko **Registrace pro smartsheet,** které vás přesměruje na přihlašovací stránku Smartlistu. 
+5. Vyberte tlačítko **zaregistrovat se k Smartsheet** , které vás přesměruje na přihlašovací stránku Smartsheet. 
 
-    ![Přidání oidc inteligentního listu](media/smartsheet-provisioning-tutorial/smartsheet-OIDC-add.png)
+    ![Smartsheet OIDC přidat](media/smartsheet-provisioning-tutorial/smartsheet-OIDC-add.png)
 
-6. Vzhledem k tomu, že Smartsheet je aplikace OpenIDConnect, zvolte přihlášení k Smartsheetu pomocí pracovního účtu Microsoft.
+6. Smartsheet je aplikace OpenIDConnect, která se rozhodne přihlásit k Smartsheet pomocí pracovního účtu Microsoft.
 
-    ![Přihlášení oidc inteligentního listu](media/smartsheet-provisioning-tutorial/smartsheet-OIDC-login.png)
+    ![Smartsheet OIDC přihlášení](media/smartsheet-provisioning-tutorial/smartsheet-OIDC-login.png)
 
-7. Po úspěšném ověření přijměte výzvu k souhlasu pro stránku souhlasu. Aplikace bude poté automaticky přidána do vašeho tenanta a budete přesměrováni na váš účet Smartsheet.
+7. Po úspěšném ověření Přijměte výzvu k zadání souhlasu pro stránku souhlasu. Aplikace se pak automaticky přidá do vašeho tenanta a budete přesměrováni na svůj účet Smartsheet.
 
-    ![Souhlas inteligentního oidc](media/smartsheet-provisioning-tutorial/smartsheet-OIDC-consent.png)
+    ![Smartsheet OIDc – souhlas](media/smartsheet-provisioning-tutorial/smartsheet-OIDC-consent.png)
 
-## <a name="configure-automatic-user-provisioning-to-smartsheet"></a>Konfigurace automatického zřizování uživatelů na smartsheet 
+## <a name="configure-automatic-user-provisioning-to-smartsheet"></a>Konfigurace automatického zřizování uživatelů na Smartsheet 
 
-Tato část vás provede kroky konfigurace služby zřizování Azure AD k vytvoření, aktualizaci a zakázání uživatelů nebo skupin v inteligentním listu na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
+V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v Smartsheet na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
-### <a name="to-configure-automatic-user-provisioning-for-smartsheet-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro smartsheet ve službě Azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-smartsheet-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Smartsheet ve službě Azure AD:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **Všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **Smartsheet**.
+2. V seznamu aplikace vyberte **Smartsheet**.
 
-    ![Odkaz Smartsheet v seznamu Aplikace](common/all-applications.png)
+    ![Odkaz Smartsheet v seznamu aplikací](common/all-applications.png)
 
-3. Vyberte kartu **Zřizování.**
+3. Vyberte kartu **zřizování** .
 
-    ![Karta Zřizování](common/provisioning.png)
+    ![Karta zřizování](common/provisioning.png)
 
-4. Nastavte **režim zřizování** na **automatické**.
+4. Nastavte **režim zřizování** na **automaticky**.
 
-    ![Karta Zřizování](common/provisioning-automatic.png)
+    ![Karta zřizování](common/provisioning-automatic.png)
 
-5. V části **Pověření správce** `https://scim.smartsheet.com/v2/` zadejte adresu **URL klienta**. Zadejte hodnotu, kterou jste načetli a uložili dříve z inteligentního listu v **tajném tokenu**. Kliknutím na **Testovat připojení** zajistíte, že se Azure AD může připojit k Smartsheetu. Pokud se připojení nezdaří, ujistěte se, že váš účet Smartsheet má oprávnění SysAdmin a zkuste to znovu.
+5. V části **přihlašovací údaje správce** zadejte `https://scim.smartsheet.com/v2/` **adresu URL tenanta**. Zadejte hodnotu, kterou jste načetli a uložili dříve ze Smartsheet v **tajném tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k Smartsheet. Pokud se připojení nepovede, ujistěte se, že váš účet Smartsheet má oprávnění správce systému, a zkuste to znovu.
 
     ![Podpisový](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Do pole **E-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, která by měla dostávat oznámení o chybách při zřizování, a zaškrtněte políčko – **Odeslat e-mailové oznámení, když dojde k chybě**.
+6. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
 
     ![E-mail s oznámením](common/provisioning-notification-email.png)
 
 7. Klikněte na **Uložit**.
 
-8. V části **Mapování** vyberte **Synchronizovat uživatele služby Azure Active Directory s inteligentním listem**.
+8. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé Smartsheet**.
 
-    ![Mapování uživatelů smartsheetu](media/smartsheet-provisioning-tutorial/smartsheet-user-mappings.png)
+    ![Mapování uživatelů Smartsheet](media/smartsheet-provisioning-tutorial/smartsheet-user-mappings.png)
 
-9. Zkontrolujte atributy uživatele, které jsou synchronizovány z Azure AD do smartsheet v části **Mapování atributů.** Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelským účtům v inteligentním listu pro operace aktualizace. Chcete-li potvrdit všechny změny, vyberte tlačítko **Uložit.**
+9. Zkontrolujte atributy uživatele synchronizované z Azure AD do Smartsheet v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Smartsheet pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Uživatelské atributy inteligentních listů](media/smartsheet-provisioning-tutorial/smartsheet-user-attributes.png)
+    ![Atributy uživatele Smartsheet](media/smartsheet-provisioning-tutorial/smartsheet-user-attributes.png)
 
-10. Chcete-li konfigurovat filtry oborů, naleznete v následujících pokynech uvedených v [kurzu filtru oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+10. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-11. Chcete-li povolit službu zřizování Azure AD pro smartsheet, změňte **stav zřizování** **na Zapnuto** v části **Nastavení.**
+11. Pokud chcete povolit službu Azure AD Provisioning pro Smartsheet, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
-    ![Stav zřizování zapnutý](common/provisioning-toggle-on.png)
+    ![Zapnutý stav zřizování](common/provisioning-toggle-on.png)
 
-12. Definujte uživatele nebo skupiny, které chcete zřídit do inteligentního listu, **Settings** výběrem požadovaných hodnot v **části Obor.**
+12. Definujte uživatele nebo skupiny, které chcete zřídit pro Smartsheet, výběrem požadovaných hodnot v **oboru** v části **Nastavení** .
 
-    ![Obor zřizování](common/provisioning-scope.png)
+    ![Rozsah zřizování](common/provisioning-scope.png)
 
-13. Až budete připraveni k zřízení, klikněte na **Uložit**.
+13. Až budete připraveni zřídit, klikněte na **Uložit**.
 
-    ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
+    ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
 
-Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení.** Počáteční synchronizace trvá déle než následné synchronizace, ke kterým dochází přibližně každých 40 minut tak dlouho, dokud je spuštěna služba zřizování Azure AD. Část **Podrobnosti synchronizace** můžete použít ke sledování průběhu a sledování odkazů na sestavu aktivit zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD na smartsheetu.
+Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v Smartsheet.
 
-Další informace o tom, jak číst protokoly zřizování Azure AD, naleznete [v tématu Vytváření sestav na automatické zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Omezení konektoru
 
-* Inteligentní list nepodporuje obnovitelné odstranění. Pokud je **aktivní** atribut uživatele nastaven na hodnotu False, inteligentní list uživatele trvale odstraní.
+* Smartsheet nepodporuje obnovitelné odstranění. Když je **aktivní** atribut uživatele nastaven na hodnotu false, Smartsheet odstraní uživatele trvale.
 
 ## <a name="additional-resources"></a>Další zdroje
 
@@ -196,4 +196,4 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, naleznete [
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy o aktivitě zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)

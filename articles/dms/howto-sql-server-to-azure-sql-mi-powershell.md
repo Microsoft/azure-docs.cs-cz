@@ -1,7 +1,7 @@
 ---
-title: 'Prostředí PowerShell: Migrace instance spravované sql serverem do SQL'
+title: 'PowerShell: migrace SQL Server do spravované instance SQL'
 titleSuffix: Azure Database Migration Service
-description: Naučte se migrovat z místní instance SQL Serveru do spravované instance Azure SQL Database pomocí Azure PowerShellu a služby Migrace databáze Azure.
+description: Naučte se migrovat z místního SQL Server do Azure SQL Database spravované instance pomocí Azure PowerShell a Azure Database Migration Service.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -13,79 +13,79 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: 9ea9f55681b93e79eec836f5808d2c6feaa6bb29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77650720"
 ---
-# <a name="migrate-sql-server-to-sql-database-managed-instance-with-powershell--azure-database-migration-service"></a>Migrace SQL Serveru do spravované instance SQL Database pomocí powershellu & služby migrace databáze Azure
+# <a name="migrate-sql-server-to-sql-database-managed-instance-with-powershell--azure-database-migration-service"></a>Migrace SQL Server do SQL Database spravované instance pomocí prostředí PowerShell & Azure Database Migration Service
 
-V tomto článku migrujete databázi **Adventureworks2016** obnovenou do místní instance SQL Serveru 2005 nebo vyšší ho do spravované instance Azure SQL Database pomocí Microsoft Azure PowerShellu. Databáze z místní instance SERVERU SQL Server můžete migrovat do spravované `Az.DataMigration` instance Azure SQL Database pomocí modulu v Prostředí Microsoft Azure PowerShell.
+V tomto článku migrujete databázi **Adventureworks2016** obnovenou do místní instance SQL Server 2005 nebo vyšší do Azure SQL Database spravované instance pomocí Microsoft Azure PowerShell. Databáze můžete migrovat z místní instance SQL Server do spravované instance Azure SQL Database pomocí `Az.DataMigration` modulu v Microsoft Azure PowerShell.
 
 V tomto článku získáte informace o těchto tématech:
 > [!div class="checklist"]
 >
 > * Vytvořte skupinu prostředků.
 > * Vytvořte instanci služby Azure Database Migration Service.
-> * Vytvořte projekt migrace v instanci služby Migrace databáze Azure.
+> * Vytvořte projekt migrace v instanci Azure Database Migration Service.
 > * Spuštění migrace
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
-Tento článek obsahuje podrobnosti o tom, jak provádět migrace online i offline.
+Tento článek obsahuje podrobné informace o tom, jak provádět online i offline migrace.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li provést tyto kroky, potřebujete:
+K provedení těchto kroků potřebujete:
 
-* [SQL Server 2016 nebo vyšší](https://www.microsoft.com/sql-server/sql-server-downloads) (libovolné vydání).
-* Místní kopie databáze **AdventureWorks2016,** která je k dispozici ke stažení [zde](https://docs.microsoft.com/sql/samples/adventureworks-install-configure?view=sql-server-2017).
-* Povolení protokolu TCP/IP, který je ve výchozím nastavení zakázán instalací serveru SQL Server Express. Povolte protokol TCP/IP podle článku [Povolit nebo zakázat síťový protokol serveru](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure).
-* Konfigurace brány [Windows Firewall pro přístup k databázovému stroji](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
-* Předplatné Azure. Pokud ho nemáte, [vytvořte si účet zdarma,](https://azure.microsoft.com/free/) než začnete.
-* Instance spravované azure SQL database. Spravovanou instanci Azure SQL Database můžete vytvořit podle podrobností v článku [Vytvoření spravované instance Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started).
-* Stažení a instalace [Pomocníka pro migraci dat](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 nebo novějším.
-* Virtuální síť Microsoft Azure vytvořená pomocí modelu nasazení Azure Resource Manageru, která poskytuje službě migrace databáze Azure připojení k místním zdrojovým serverům pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
-* Dokončené vyhodnocení místní databáze a migrace schématu pomocí Pomocníka pro migraci dat, jak je popsáno v článku [Provádění vyhodnocení migrace serveru SQL Server](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem).
-* Chcete-li stáhnout `Az.DataMigration` a nainstalovat modul (verze 0.7.2 nebo novější) z Galerie prostředí PowerShell pomocí [rutiny Install-Module PowerShell](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1).
-* Chcete-li zajistit, že pověření použitá pro připojení ke zdrojové instanci serveru SQL Server mají oprávnění [ŘÍDICÍHO SERVERU.](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql)
-* Chcete-li zajistit, že přihlašovací údaje používané pro připojení k cílové instanci spravované azure SQL database má oprávnění databáze CONTROL DATABASE na cílové databáze spravovaných instancí Azure SQL Database.
+* [SQL Server 2016 nebo vyšší](https://www.microsoft.com/sql-server/sql-server-downloads) (jakákoli edice).
+* Místní kopii databáze **AdventureWorks2016** , která je k dispozici ke stažení [zde](https://docs.microsoft.com/sql/samples/adventureworks-install-configure?view=sql-server-2017).
+* Povolení protokolu TCP/IP, který je ve výchozím nastavení zakázán při instalaci SQL Server Express. Povolte protokol TCP/IP podle článku [Povolení nebo zakázání síťového protokolu serveru](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure).
+* Ke konfiguraci [brány Windows Firewall pro přístup k databázovému stroji](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
+* Předplatné Azure. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+* Azure SQL Database spravovaná instance. Azure SQL Database spravovanou instanci můžete vytvořit podle podrobností v článku [Vytvoření spravované instance Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started).
+* Stažení a instalace [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v 3.3 nebo novějších verzích.
+* Microsoft Azure Virtual Network vytvořili pomocí modelu nasazení Azure Resource Manager, který poskytuje Azure Database Migration Service připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+* Dokončili jste vyhodnocení místní migrace databáze a schématu pomocí Data Migration Assistant, jak je popsáno v článku, který [provádí hodnocení migrace SQL Server](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem).
+* Pokud chcete stáhnout a nainstalovat `Az.DataMigration` modul (verze 0.7.2 nebo novější) z Galerie prostředí PowerShell pomocí [rutiny Install-Module prostředí PowerShell](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1).
+* Aby bylo zajištěno, že přihlašovací údaje použité pro připojení ke zdrojové SQL Server instance mají oprávnění [Control Server](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) .
+* Aby bylo zajištěno, že pověření používaná pro připojení k cíli Azure SQL Database Managed instance mají oprávnění řídicí databáze pro cílové Azure SQL Database databáze spravované instance.
 
     > [!IMPORTANT]
-    > U migrace online už musíte mít nastavené přihlašovací údaje služby Azure Active Directory. Další informace naleznete v článku [Pomocí portálu vytvořte instanční objekt azure a služby, který má přístup k prostředkům](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+    > Pro online migrace musíte mít již nastavené přihlašovací údaje Azure Active Directory. Další informace najdete v článku [použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
-## <a name="sign-in-to-your-microsoft-azure-subscription"></a>Přihlášení k předplatnému Microsoft Azure
+## <a name="sign-in-to-your-microsoft-azure-subscription"></a>Přihlaste se k předplatnému Microsoft Azure.
 
-Přihlaste se ke svému předplatnému Azure pomocí PowerShellu. Další informace najdete v článku [Přihlášení pomocí Azure PowerShellu](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+Přihlaste se ke svému předplatnému Azure pomocí PowerShellu. Další informace najdete v článku [přihlášení pomocí Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
-Vytvořte skupinu prostředků [`New-AzResourceGroup`](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) pomocí příkazu.
+Vytvořte skupinu prostředků pomocí [`New-AzResourceGroup`](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) příkazu.
 
-Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v oblasti *USA – východ.*
+Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v oblasti *východní USA* .
 
 ```powershell
 New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
-## <a name="create-an-instance-of-azure-database-migration-service"></a>Vytvoření instance služby Migrace databáze Azure
+## <a name="create-an-instance-of-azure-database-migration-service"></a>Vytvoření instance Azure Database Migration Service
 
-Novou instanci služby Migrace databáze `New-AzDataMigrationService` Azure můžete vytvořit pomocí rutiny.
+Novou instanci Azure Database Migration Service můžete vytvořit pomocí `New-AzDataMigrationService` rutiny.
 Tato rutina očekává následující požadované parametry:
 
-* *Název skupiny prostředků Azure*. Příkaz můžete [`New-AzResourceGroup`](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) použít k vytvoření skupiny prostředků Azure, jak bylo dříve zobrazeno a zadat její název jako parametr.
-* *Název služby*. Řetězec, který odpovídá požadovanému jedinečnému názvu služby pro službu Migrace databáze Azure.
-* *Umístění*. Určuje umístění služby. Zadejte umístění datového centra Azure, například západní USA nebo jihovýchodní Asie.
-* *Sku*. Tento parametr odpovídá názvu DMS Sku. Aktuálně podporované názvy sku jsou *Basic_1vCore*, *Basic_2vCores*, *GeneralPurpose_4vCores*.
-* *Identifikátor virtuální podsítě*. Rutinu můžete použít [`New-AzVirtualNetworkSubnetConfig`](https://docs.microsoft.com//powershell/module/az.network/new-azvirtualnetworksubnetconfig) k vytvoření podsítě.
+* *Název skupiny prostředků Azure*. Pomocí [`New-AzResourceGroup`](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) příkazu můžete vytvořit skupinu prostředků Azure, jak je uvedeno výše, a zadat její název jako parametr.
+* *Název služby* Řetězec, který odpovídá požadovanému jedinečnému názvu služby pro Azure Database Migration Service.
+* *Umístění*. Určuje umístění služby. Zadejte umístění datového centra Azure, například Západní USA nebo jihovýchodní Asie.
+* *SKU*. Tento parametr odpovídá názvu SKU DMS. V současné době jsou podporovány názvy SKU *Basic_1vCore*, *Basic_2vCores* *GeneralPurpose_4vCores*.
+* *Identifikátor virtuální podsítě*. Pomocí rutiny [`New-AzVirtualNetworkSubnetConfig`](https://docs.microsoft.com//powershell/module/az.network/new-azvirtualnetworksubnetconfig) můžete vytvořit podsíť.
 
-Následující příklad vytvoří službu s názvem *MyDMS* ve skupině prostředků *MyDMSResourceGroup* umístěné v oblasti *USA – východ* pomocí virtuální sítě s názvem *MyVNET* a podsítě s názvem *MySubnet*.
+Následující příklad vytvoří službu s názvem *MyDMS* ve skupině prostředků *MyDMSResourceGroup* nacházející se v *východní USA* oblasti pomocí virtuální sítě s názvem *MyVNET* a podsítě s názvem *MySubnet*.
 
 > [!IMPORTANT]
-> Fragment kódu níže je pro offline migraci, která nevyžaduje instanci služby Migrace databáze Azure na základě sku Premium. Pro online migraci musí hodnota parametru -Sku obsahovat prémiovou skladovou položku.
+> Níže uvedený fragment kódu je pro offline migraci, která nevyžaduje instanci Azure Database Migration Service založenou na SKU Premium. V případě online migrace musí hodnota parametru-SKU zahrnovat SKU úrovně Premium.
 
 ```powershell
 $vNet = Get-AzVirtualNetwork -ResourceGroupName MyDMSResourceGroup -Name MyVNET
@@ -101,18 +101,18 @@ $service = New-AzDms -ResourceGroupName myResourceGroup `
 
 ## <a name="create-a-migration-project"></a>Vytvoření projektu migrace
 
-Po vytvoření instance služby migrace databáze Azure vytvořte projekt migrace. Projekt služby migrace databáze Azure vyžaduje informace o připojení pro zdrojové i cílové instance, stejně jako seznam databází, které chcete migrovat jako součást projektu.
+Po vytvoření instance Azure Database Migration Service vytvořte projekt migrace. Azure Database Migration Service projekt vyžaduje informace o připojení ke zdrojové i cílové instanci i seznam databází, které chcete migrovat v rámci projektu.
 
-### <a name="create-a-database-connection-info-object-for-the-source-and-target-connections"></a>Vytvoření objektu Informace o připojení k databázi pro zdrojová a cílová připojení
+### <a name="create-a-database-connection-info-object-for-the-source-and-target-connections"></a>Vytvoření objektu s informacemi o připojení databáze pro zdrojovou a cílovou připojení
 
-Objekt Informace o připojení k databázi můžete vytvořit pomocí `New-AzDmsConnInfo` rutiny, která očekává následující parametry:
+Objekt s informacemi o připojení databáze můžete vytvořit pomocí `New-AzDmsConnInfo` rutiny, která očekává následující parametry:
 
-* *ServerType*. Požadovaný typ připojení k databázi, například SQL, Oracle nebo MySQL. Použijte SQL pro SQL Server a Azure SQL.
-* *Zdroj dat*. Název nebo IP instance serveru SQL Server nebo instance Azure SQL Database.
-* *AuthType*. Typ ověřování pro připojení, který může být buď SqlAuthentication nebo WindowsAuthentication.
-* *Důvěryhodný certifikát ServerCertificate*. Tento parametr nastaví hodnotu, která označuje, zda je kanál šifrován při vynechání chůze řetězu certifikátů k ověření důvěryhodnosti. Hodnota může `$true` být `$false`nebo .
+* *ServerType*. Typ požadovaného databázového připojení, například SQL, Oracle nebo MySQL. Použijte SQL pro SQL Server a Azure SQL.
+* *Zdroj dat* Název nebo IP adresa instance SQL Server nebo instance Azure SQL Database
+* *Typ authType*. Typ ověřování pro připojení, který může být buď SqlAuthentication, nebo WindowsAuthentication.
+* *TrustServerCertificate*. Tento parametr nastaví hodnotu, která indikuje, jestli je kanál zašifrovaný při obnechání procházení řetězu certifikátů k ověření vztahu důvěryhodnosti. Hodnota může být `$true` nebo `$false`.
 
-Následující příklad vytvoří objekt Informace o připojení pro zdrojový SQL Server s názvem *MySourceSQLServer* pomocí ověřování SQL:
+Následující příklad vytvoří objekt s informacemi o připojení pro zdrojovou SQL Server s názvem *MySourceSQLServer* s použitím ověřování SQL:
 
 ```powershell
 $sourceConnInfo = New-AzDmsConnInfo -ServerType SQL `
@@ -121,7 +121,7 @@ $sourceConnInfo = New-AzDmsConnInfo -ServerType SQL `
   -TrustServerCertificate:$true
 ```
 
-Další příklad ukazuje vytvoření informací o připojení pro server spravovaných instancí Azure SQL Database s názvem targetmanagedinstance.database.windows.net pomocí ověřování SQL:
+Následující příklad ukazuje vytvoření informací o připojení pro Azure SQL Database Server spravované instance s názvem ' targetmanagedinstance.database.windows.net ' pomocí ověřování SQL:
 
 ```powershell
 $targetConnInfo = New-AzDmsConnInfo -ServerType SQL `
@@ -132,9 +132,9 @@ $targetConnInfo = New-AzDmsConnInfo -ServerType SQL `
 
 ### <a name="provide-databases-for-the-migration-project"></a>Poskytnout databáze pro projekt migrace
 
-Vytvořte seznam `AzDataMigrationDatabaseInfo` objektů, který určuje databáze jako součást projektu služby Migrace databáze Azure, který lze poskytnout jako parametr pro vytvoření projektu. Pomocí rutiny `New-AzDataMigrationDatabaseInfo` můžete vytvořit `AzDataMigrationDatabaseInfo`.
+Vytvořte seznam `AzDataMigrationDatabaseInfo` objektů, které určují databáze jako součást projektu Azure Database Migration Service, který lze poskytnout jako parametr pro vytvoření projektu. Pomocí rutiny `New-AzDataMigrationDatabaseInfo` můžete vytvořit `AzDataMigrationDatabaseInfo`.
 
-Následující příklad vytvoří `AzDataMigrationDatabaseInfo` projekt pro databázi **AdventureWorks2016** a přidá jej do seznamu, který má být poskytnut jako parametr pro vytvoření projektu.
+Následující příklad vytvoří `AzDataMigrationDatabaseInfo` projekt pro databázi **AdventureWorks2016** a přidá ji do seznamu, který má být poskytnut jako parametr pro vytvoření projektu.
 
 ```powershell
 $dbInfo1 = New-AzDataMigrationDatabaseInfo -SourceDatabaseName AdventureWorks
@@ -143,7 +143,7 @@ $dbList = @($dbInfo1)
 
 ### <a name="create-a-project-object"></a>Vytvoření objektu projektu
 
-Nakonec můžete vytvořit projekt služby migrace databáze Azure s názvem *MyDMSProject* umístěný v *USA – východ* `New-AzDataMigrationProject` a přidat dříve vytvořená zdrojová a cílová připojení a seznam databází, které chcete migrovat.
+Nakonec můžete vytvořit Azure Database Migration Service projekt s názvem *MyDMSProject* , který se nachází *East US* v východní USA `New-AzDataMigrationProject` pomocí a přidat dříve vytvořená zdrojová a cílová připojení a seznam databází, které chcete migrovat.
 
 ```powershell
 $project = New-AzDataMigrationProject -ResourceGroupName myResourceGroup `
@@ -159,13 +159,13 @@ $project = New-AzDataMigrationProject -ResourceGroupName myResourceGroup `
 
 ## <a name="create-and-start-a-migration-task"></a>Vytvoření a spuštění úlohy migrace
 
-Dále vytvořte a spusťte úlohu služby migrace databáze Azure. Tato úloha vyžaduje informace o pověření připojení pro zdroj i cíl, stejně jako seznam databázových tabulek, které mají být migrovány a informace již poskytnuté s projektem vytvořené jako předpoklad.
+Potom vytvořte a spusťte úlohu Azure Database Migration Service. Tato úloha vyžaduje informace o přihlašovacích údajích pro zdroj i cíl i seznam databázových tabulek, které mají být migrovány, a informace, které jsou již součástí projektu vytvořeného jako předpoklad.
 
-### <a name="create-credential-parameters-for-source-and-target"></a>Vytvoření parametrů pověření pro zdroj a cíl
+### <a name="create-credential-parameters-for-source-and-target"></a>Vytvoření parametrů přihlašovacích údajů pro zdroj a cíl
 
-Vytvořte pověření zabezpečení připojení jako objekt [PSCredential.](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0)
+Vytvořte přihlašovací údaje zabezpečení připojení jako objekt [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) .
 
-Následující příklad ukazuje vytvoření objektů *PSCredential* pro zdrojová i cílová připojení a poskytuje hesla jako proměnné řetězce *$sourcePassword* a *$targetPassword*.
+Následující příklad ukazuje vytváření *PSCredential* objektů pro zdrojové i cílové připojení a poskytuje hesla jako řetězcové proměnné *$sourcePassword* a *$targetPassword*.
 
 ```powershell
 $secpasswd = ConvertTo-SecureString -String $sourcePassword -AsPlainText -Force
@@ -174,9 +174,9 @@ $secpasswd = ConvertTo-SecureString -String $targetPassword -AsPlainText -Force
 $targetCred = New-Object System.Management.Automation.PSCredential ($targetUserName, $secpasswd)
 ```
 
-### <a name="create-a-backup-fileshare-object"></a>Vytvoření záložního objektu FileShare
+### <a name="create-a-backup-fileshare-object"></a>Vytvoření objektu záložní sdílené složky
 
-Teď vytvořte objekt FileShare představující místní sdílenou síťovou složku SMB, do které `New-AzDmsFileShare` může služba Azure Database Migration Service převzít zálohy zdrojové databáze pomocí rutiny.
+Nyní vytvořte objekt sdílení souborů reprezentující místní sdílenou síťovou složku SMB, do které Azure Database Migration Service může převzít zálohy zdrojové databáze pomocí `New-AzDmsFileShare` rutiny.
 
 ```powershell
 $backupPassword = ConvertTo-SecureString -String $password -AsPlainText -Force
@@ -186,11 +186,11 @@ $backupFileSharePath="\\10.0.0.76\SharedBackup"
 $backupFileShare = New-AzDmsFileShare -Path $backupFileSharePath -Credential $backupCred
 ```
 
-### <a name="create-selected-database-object"></a>Vytvoření vybraného databázového objektu
+### <a name="create-selected-database-object"></a>Vytvořit vybraný databázový objekt
 
-Dalším krokem je výběr zdrojové a cílové `New-AzDmsSelectedDB` databáze pomocí rutiny.
+Dalším krokem je výběr zdrojové a cílové databáze pomocí `New-AzDmsSelectedDB` rutiny.
 
-Následující příklad je pro migraci jedné databáze z SQL Server do spravované instance Azure SQL Database:
+Následující příklad slouží k migraci izolované databáze z SQL Server do spravované instance Azure SQL Database:
 
 ```powershell
 $selectedDbs = @()
@@ -200,7 +200,7 @@ $selectedDbs += New-AzDmsSelectedDB -MigrateSqlServerSqlDbMi `
   -BackupFileShare $backupFileShare `
 ```
 
-Pokud celá instance SQL Serveru potřebuje výtah a posun do spravované instance Azure SQL Database, pak smyčka převzít všechny databáze ze zdroje je k dispozici níže. V následujícím příkladu pro $Server, $SourceUserName a $SourcePassword zadejte podrobnosti zdrojového serveru SQL Server.
+Pokud celá SQL Server instance vyžaduje přezvednutí a posunutí do spravované instance Azure SQL Database, je níže uvedena smyčka pro převzetí všech databází ze zdroje. V následujícím příkladu pro $Server, $SourceUserName a $SourcePassword zadejte zdrojové SQL Server podrobnosti.
 
 ```powershell
 $Query = "(select name as Database_Name from master.sys.databases where Database_id>4)";
@@ -219,9 +219,9 @@ $selectedDbs += New-AzureRmDmsSelectedDB -MigrateSqlServerSqlDbMi `
       }
 ```
 
-### <a name="sas-uri-for-azure-storage-container"></a>Identifikátor URI Služby SAS pro kontejner úložiště Azure
+### <a name="sas-uri-for-azure-storage-container"></a>Identifikátor URI SAS pro kontejner Azure Storage
 
-Vytvořte proměnnou obsahující identifikátor URI SAS, který poskytuje službě Migrace databáze Azure přístup ke kontejneru účtu úložiště, do kterého služba nahrává záložní soubory.
+Vytvořte proměnnou obsahující identifikátor URI SAS, který poskytuje Azure Database Migration Service s přístupem k kontejneru účtu úložiště, do kterého služba odesílá záložní soubory.
 
 ```powershell
 $blobSasUri="https://mystorage.blob.core.windows.net/test?st=2018-07-13T18%3A10%3A33Z&se=2019-07-14T18%3A10%3A00Z&sp=rwdl&sv=2018-03-28&sr=c&sig=qKlSA512EVtest3xYjvUg139tYSDrasbftY%3D"
@@ -229,33 +229,33 @@ $blobSasUri="https://mystorage.blob.core.windows.net/test?st=2018-07-13T18%3A10%
 
 ### <a name="additional-configuration-requirements"></a>Další požadavky na konfiguraci
 
-Existuje několik dalších požadavků, které je třeba řešit, ale liší se v závislosti na tom, zda provádíte migraci offline nebo online.
+K dispozici je několik dalších požadavků, které je třeba řešit, ale liší se v závislosti na tom, zda provádíte migraci offline nebo online.
 
 #### <a name="offline-migrations"></a>Offline migrace
 
-Pouze pro migrace offline proveďte následující další úlohy konfigurace.
+Pro offline migrace proveďte následující dodatečné úlohy konfigurace.
 
-* **Vyberte přihlášení**. Vytvořte seznam přihlášení, která mají být migrována, jak je znázorněno v následujícím příkladu:
+* **Vyberte přihlašovací jména**. Vytvořte seznam přihlašovacích údajů, které se mají migrovat, jak je znázorněno v následujícím příkladu:
 
     ```powershell
     $selectedLogins = @("user1", "user2")
     ```
 
     > [!IMPORTANT]
-    > V současné době služba migrace databáze Azure podporuje jenom migrace přihlášení SQL.
+    > V současné době Azure Database Migration Service podporuje pouze migraci přihlašovacích údajů SQL.
 
-* **Vyberte úlohy agenta**. Vytvořte seznam úloh agentů, které mají být migrovány, jak je znázorněno v následujícím příkladu:
+* **Vyberte úlohy agenta**. Vytvořte seznam úloh agenta, které se mají migrovat, jak je znázorněno v následujícím příkladu:
 
     ```powershell
     $selectedAgentJobs = @("agentJob1", "agentJob2")
     ```
 
     > [!IMPORTANT]
-    > V současné době služba Migrace databáze Azure podporuje jenom úlohy s kroky úloh podsystému T-SQL.
+    > V současné době Azure Database Migration Service podporuje pouze úlohy s podsystémy T-SQL.
 
-#### <a name="online-migrations"></a>Migrace online
+#### <a name="online-migrations"></a>Online migrace
 
-Pouze pro migrace online proveďte následující další úlohy konfigurace.
+Jenom pro online migrace proveďte následující dodatečné úlohy konfigurace.
 
 * **Konfigurace aplikace Azure Active Directory**
 
@@ -278,42 +278,42 @@ Pomocí `New-AzDataMigrationTask` rutiny vytvořte a spusťte úlohu migrace.
 
 #### <a name="specify-parameters"></a>Zadat parametry
 
-##### <a name="common-parameters"></a>Běžné parametry
+##### <a name="common-parameters"></a>Společné parametry
 
-Bez ohledu na to, zda provádíte offline `New-AzDataMigrationTask` nebo online migraci, rutina očekává následující parametry:
+Bez ohledu na to, jestli provádíte offline nebo online migraci, očekává `New-AzDataMigrationTask` rutinu následující parametry:
 
-* *Typ úkolu*. Typ úlohy migrace, která má být pro SQL Server do Azure SQL Database Spravované instance typu migrace *MigraceSqlServerSqlDbMi* se očekává. 
-* *Název skupiny prostředků*. Název skupiny prostředků Azure, ve kterém chcete vytvořit úkol.
-* *ServiceName*. Instance služby Migrace databáze Azure, ve které chcete úlohu vytvořit.
-* *Název_projektu*. Název projektu služby Migrace databáze Azure, ve kterém chcete vytvořit úkol. 
-* *Název_úkolu*. Název úkolu, který má být vytvořen. 
-* *SourceConnection*. Objekt AzDmsConnInfo představující zdrojové připojení k serveru SQL Server.
-* *TargetConnection*. Objekt AzDmsConnInfo představující cílové připojení spravované instance azure sql database.
-* *SourceCred*. [Objekt PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) pro připojení ke zdrojovému serveru.
-* *Cílcred*. [Objekt PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) pro připojení k cílovému serveru.
-* *Vybraná databáze*. Objekt AzDataMigrationSelectedDB představující mapování zdrojové a cílové databáze.
-* *BackupFileShare*. FileShare objekt představující místní síťovou sdílenou složku, do které může služba Migrace databáze Azure převést zálohy zdrojové databáze.
-* *BackupBlobSasUri*. Identifikátor URI SAS, který poskytuje službě migrace databáze Azure přístup ke kontejneru účtu úložiště, do kterého služba nahrává záložní soubory. Zjistěte, jak získat identifikátor URI SAS pro kontejner objektů blob.
-* *SelectedLogins*. Seznam vybraných přihlášení k migraci.
-* *Vybrané úlohy agenta*. Seznam vybraných úloh agenta k migraci.
+* *TaskType*. Očekává se typ úlohy migrace, která se vytvoří pro SQL Server pro Azure SQL Database typ migrace spravované instance *MigrateSqlServerSqlDbMi* . 
+* *Název skupiny prostředků* Název skupiny prostředků Azure, ve které se má úloha vytvořit
+* *ServiceName*. Instance Azure Database Migration Service, ve které chcete vytvořit úlohu.
+* *ProjectName*. Název Azure Database Migration Service projektu, ve kterém má být úloha vytvořena. 
+* *Název_úlohy*. Název úkolu, který se má vytvořit 
+* *SourceConnection*. Objekt AzDmsConnInfo představující zdrojové SQL Server připojení.
+* *TargetConnection*. Objekt AzDmsConnInfo představující cílové připojení spravované instance Azure SQL Database.
+* *SourceCred*. Objekt [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) pro připojení ke zdrojovému serveru.
+* *TargetCred*. Objekt [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) pro připojení k cílovému serveru.
+* *SelectedDatabase*. Objekt AzDataMigrationSelectedDB představující mapování zdrojového a cílového databáze.
+* *BackupFileShare*. Objekt Shared představující sdílenou síťovou složku, do které může Azure Database Migration Service přebírat zdrojové zálohy databáze.
+* *BackupBlobSasUri*. Identifikátor URI SAS, který poskytuje Azure Database Migration Service s přístupem k kontejneru účtu úložiště, do kterého služba odesílá záložní soubory. Zjistěte, jak získat identifikátor URI SAS pro kontejner objektů blob.
+* *SelectedLogins*. Seznam vybraných přihlašovacích údajů, které se mají migrovat
+* *SelectedAgentJobs*. Seznam vybraných úloh agenta k migraci
 
 ##### <a name="additional-parameters"></a>Další parametry
 
-Rutina `New-AzDataMigrationTask` také očekává parametry, které jsou jedinečné pro typ migrace, offline nebo online, které provádíte.
+`New-AzDataMigrationTask` Rutina také očekává parametry, které jsou jedinečné pro typ migrace, offline nebo online, které provádíte.
 
-* **Offline migrace**. Pro migrace offline `New-AzDataMigrationTask` rutina také očekává následující parametry:
+* **Offline migrace**. Pro offline migrace očekává `New-AzDataMigrationTask` rutina také následující parametry:
 
-  * *SelectedLogins*. Seznam vybraných přihlášení k migraci.
-  * *Vybrané úlohy agenta*. Seznam vybraných úloh agenta k migraci.
+  * *SelectedLogins*. Seznam vybraných přihlašovacích údajů, které se mají migrovat
+  * *SelectedAgentJobs*. Seznam vybraných úloh agenta k migraci
 
-* **Migrace online**. Pro online migrace `New-AzDataMigrationTask` rutina také očekává následující parametry.
+* **Online migrace**. Pro online migrace očekává `New-AzDataMigrationTask` rutina také následující parametry.
 
-* *AzureActiveDirectoryApp*. aplikace služby Active Directory.
-* *StorageResourceID*. ID prostředku účtu úložiště.
+* *AzureActiveDirectoryApp*. Aplikace Active Directory.
+* *StorageResourceID*. ID prostředku účtu úložiště
 
-#### <a name="create-and-start-an-offline-migration-task"></a>Vytvoření a zahájení úlohy offline migrace
+#### <a name="create-and-start-an-offline-migration-task"></a>Vytvoření a spuštění úlohy offline migrace
 
-Následující příklad vytvoří a spustí úlohu migrace offline s názvem **myDMSTask**:
+Následující příklad vytvoří a spustí úlohu offline migrace s názvem **myDMSTask**:
 
 ```powershell
 $migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDbMi `
@@ -332,7 +332,7 @@ $migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDbMi `
   -SelectedAgentJobs $selectedJobs `
 ```
 
-#### <a name="create-and-start-an-online-migration-task"></a>Vytvoření a spuštění úlohy migrace online
+#### <a name="create-and-start-an-online-migration-task"></a>Vytvoření a spuštění úlohy online migrace
 
 Následující příklad vytvoří a spustí úlohu migrace online s názvem **myDMSTask**:
 
@@ -355,11 +355,11 @@ $migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDbMiSync `
 
 ## <a name="monitor-the-migration"></a>Monitorování migrace
 
-Chcete-li migraci sledovat, proveďte následující úkoly.
+K monitorování migrace proveďte následující úlohy.
 
-1. Konsolidujte všechny podrobnosti migrace do proměnné s názvem $CheckTask.
+1. Konsolidujte všechny podrobnosti o migraci do proměnné s názvem $CheckTask.
 
-    Chcete-li kombinovat podrobnosti migrace, jako jsou vlastnosti, stav a informace o databázi spojené s migrací, použijte následující fragment kódu:
+    K kombinování podrobností o migraci, jako jsou vlastnosti, stav a informace o databázi přidružené k migraci, použijte následující fragment kódu:
 
     ```powershell
     $CheckTask= Get-AzDataMigrationTask     -ResourceGroupName myResourceGroup `
@@ -371,9 +371,9 @@ Chcete-li migraci sledovat, proveďte následující úkoly.
     Write-Host ‘$CheckTask.ProjectTask.Properties.Output’
     ```
 
-2. Proměnnou `$CheckTask` můžete použít k získání aktuálního stavu úlohy migrace.
+2. K získání `$CheckTask` aktuálního stavu úlohy migrace použijte proměnnou.
 
-    Chcete-li `$CheckTask` použít proměnnou k získání aktuálního stavu úlohy migrace, můžete sledovat úlohu migrace spuštěnou dotazováním na vlastnost stavu úlohy, jak je znázorněno v následujícím příkladu:
+    Chcete-li `$CheckTask` použít proměnnou k získání aktuálního stavu úlohy migrace, můžete sledovat úlohu migrace spuštěnou dotazem na vlastnost stavu úlohy, jak je znázorněno v následujícím příkladu:
 
     ```powershell
     if (($CheckTask.ProjectTask.Properties.State -eq "Running") -or ($CheckTask.ProjectTask.Properties.State -eq "Queued"))
@@ -390,13 +390,13 @@ Chcete-li migraci sledovat, proveďte následující úkoly.
     }
     ```
 
-## <a name="performing-the-cutover-online-migrations-only"></a>Provedení přímého přechodu (pouze migrace online)
+## <a name="performing-the-cutover-online-migrations-only"></a>Provádění přímou migraci (jenom online migrace)
 
-Při migraci online se provádí úplné zálohování a obnovení databází a potom práce pokračuje v obnovení transakční protokoly uložené v BackupFileShare.
+V případě online migrace se provádí úplné zálohování a obnovení databází a pak pokračuje v obnovování protokolů transakcí uložených v BackupFileShare.
 
-Když je databáze ve spravované instanci Azure SQL Database aktualizována nejnovějšími daty a synchronizuje se se zdrojovou databází, můžete provést přímá hod.
+Když je databáze ve spravované instanci Azure SQL Database aktualizována s nejnovějšími daty a je synchronizována se zdrojovou databází, můžete provést přímou migraci.
 
-Následující příklad dokončí přímá spoj/migrace. Uživatelé vyvolat tento příkaz podle svého uvážení.
+V následujícím příkladu se dokončí cutover\migration. Uživatelé vyvolají tento příkaz podle svého uvážení.
 
 ```powershell
 $command = Invoke-AzDmsCommand -CommandType CompleteSqlMiSync `
@@ -407,9 +407,9 @@ $command = Invoke-AzDmsCommand -CommandType CompleteSqlMiSync `
                                -DatabaseName "Source DB Name"
 ```
 
-## <a name="deleting-the-instance-of-azure-database-migration-service"></a>Odstranění instance služby Migrace databáze Azure
+## <a name="deleting-the-instance-of-azure-database-migration-service"></a>Odstraňování instance Azure Database Migration Service
 
-Po dokončení migrace můžete odstranit instanci služby Migrace databáze Azure:
+Po dokončení migrace můžete instanci Azure Database Migration Service odstranit:
 
 ```powershell
 Remove-AzDms -ResourceGroupName myResourceGroup -ServiceName MyDMS
@@ -417,8 +417,8 @@ Remove-AzDms -ResourceGroupName myResourceGroup -ServiceName MyDMS
 
 ## <a name="additional-resources"></a>Další zdroje
 
-Informace o dalších scénářích migrace (dvojice zdroj/cíl) naleznete v [Příručce pro migraci do databáze](https://datamigration.microsoft.com/)společnosti Microsoft .
+Informace o dalších scénářích migrace (páry zdroj/cíl) najdete v [Průvodci migrací databáze](https://datamigration.microsoft.com/)společnosti Microsoft.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o službě Migrace databáze Azure najdete v článku [Co je služba migrace databáze Azure?](https://docs.microsoft.com/azure/dms/dms-overview)
+Přečtěte si další informace o Azure Database Migration Service v článku [co je Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).
