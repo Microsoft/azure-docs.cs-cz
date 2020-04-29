@@ -1,55 +1,55 @@
 ---
-title: Servery – databáze Azure pro MariaDB
-description: Toto téma obsahuje důležité informace a pokyny pro práci se servery Azure Database pro MariaDB.
+title: Servery – Azure Database for MariaDB
+description: V tomto tématu najdete informace a pokyny pro práci s Azure Database for MariaDB servery.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 444d7f1574cf1517b01250bcb9d810731030182d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79527788"
 ---
-# <a name="server-concepts-in-azure-database-for-mariadb"></a>Koncepty serveru v Azure Database pro MariaDB
-Tento článek obsahuje důležité informace a pokyny pro práci se servery Azure Database pro MariaDB.
+# <a name="server-concepts-in-azure-database-for-mariadb"></a>Koncepty serveru v Azure Database for MariaDB
+Tento článek popisuje informace a pokyny pro práci s Azure Database for MariaDB servery.
 
-## <a name="what-is-an-azure-database-for-mariadb-server"></a>Co je databáze Azure pro server MariaDB?
+## <a name="what-is-an-azure-database-for-mariadb-server"></a>Co je server Azure Database for MariaDB?
 
-Azure Database for MariaDB server je centrální bod pro správu pro více databází. Jedná se o stejnou konstrukci serveru MariaDB, kterou můžete znát v místním světě. Konkrétně azure databáze pro MariaDB služby se spravuje, poskytuje záruky výkonu a zpřístupňuje přístup a funkce na úrovni serveru.
+Server Azure Database for MariaDB je centrálním bodem správy pro více databází. Je to stejná konstrukce MariaDB serveru, kterou můžete znát v místním světě. Konkrétně je spravovaná služba Azure Database for MariaDB, poskytuje záruky na výkon a zpřístupňuje přístup a funkce na úrovni serveru.
 
-Databáze Azure pro server MariaDB:
+Server Azure Database for MariaDB:
 
 - Vytvoří se v rámci předplatného Azure.
-- Je nadřazený prostředek pro databáze.
+- Je nadřazeným prostředkem pro databáze.
 - Poskytuje obor názvů pro databáze.
-- Je kontejner se silnou životnost sémantiku - odstranit server a odstraní obsažené databáze.
-- Collocates prostředky v oblasti.
-- Poskytuje koncový bod připojení pro přístup k serveru a databázi.
-- Poskytuje obor zásady správy, které se vztahují k jeho databázím: přihlášení, brána firewall, uživatelé, role, konfigurace atd.
-- Je k dispozici ve verzi 10.2 motoru MariaDB. Další informace naleznete v [tématu Podporovaná databáze Azure pro verze databáze MariaDB](./concepts-supported-versions.md).
+- Je kontejner se sémantikou silné životnosti – odstraní Server a odstraní databáze s omezením.
+- Uspořádává prostředky v oblasti.
+- Poskytuje koncový bod připojení pro server a přístup k databázi.
+- Poskytuje obor pro zásady správy, které se vztahují na jeho databáze: přihlašovací jméno, brána firewall, uživatelé, role, konfigurace atd.
+- Je k dispozici v modulu MariaDB verze 10,2. Další informace najdete v tématu [podporované verze databáze Azure Database for MariaDB](./concepts-supported-versions.md).
 
-V rámci serveru Azure Database for MariaDB můžete vytvořit jednu nebo několik databází. Můžete se rozhodnout vytvořit jednu databázi na server pro použití všech prostředků nebo vytvořit více databází pro sdílení prostředků. Ceny jsou strukturované pro server na základě konfigurace cenové úrovně, virtuálních jader a úložiště (GB). Další informace naleznete v tématu [Cenové úrovně](./concepts-pricing-tiers.md).
+V rámci serveru Azure Database for MariaDB můžete vytvořit jednu nebo několik databází. Můžete se rozhodnout, že vytvoříte izolovanou databázi na jeden server, abyste mohli použít všechny prostředky, nebo vytvořit více databází pro sdílení prostředků. Ceny jsou strukturované na server, a to na základě konfigurace cenové úrovně, virtuální jádra a úložiště (GB). Další informace najdete v tématu [cenové úrovně](./concepts-pricing-tiers.md).
 
-## <a name="how-do-i-secure-an-azure-database-for-mariadb-server"></a>Jak zabezpečit azure databázi pro server MariaDB?
+## <a name="how-do-i-secure-an-azure-database-for-mariadb-server"></a>Návody zabezpečit Azure Database for MariaDB Server?
 
-Následující prvky pomáhají zajistit bezpečný přístup k databázi.
+Následující prvky vám pomůžou zajistit bezpečný přístup k vaší databázi.
 
 |||
 | :--| :--|
-| **Ověřování a autorizace** | Azure Database for MariaDB server podporuje nativní ověřování MySQL. Můžete se připojit a ověřit na server pomocí přihlášení správce serveru. |
-| **Protokol** | Služba podporuje protokol založený na zprávě používaný MySQL. |
-| **TCP/IP** | Protokol je podporován přes TCP/IP a přes unixové domény. |
-| **Brána firewall** | Z důvodu ochrany dat zabrání pravidlo brány firewall veškerému přístupu k databázovému serveru, dokud neurčíte, které počítače mají oprávnění. Viz [Azure Database for MariaDB Server firewall rules](./concepts-firewall-rules.md). |
-| **SSL** | Služba podporuje vynucení připojení SSL mezi aplikacemi a databázovým serverem. Viz [Konfigurace připojení SSL ve vaší aplikaci pro bezpečné připojení k Azure Database for MariaDB](./howto-configure-ssl.md). |
+| **Ověřování a autorizace** | Azure Database for MariaDB Server podporuje nativní ověřování MySQL. K serveru se můžete připojit a ověřit pomocí přihlašovacích údajů správce serveru. |
+| **Protokol** | Služba podporuje protokol založený na zprávách, který používá MySQL. |
+| **TCP/IP** | Protokol je podporován přes protokoly TCP/IP a přes rozhraní UNIX-Domain Sockets. |
+| **Brána firewall** | Pro lepší ochranu dat pravidlo brány firewall zabraňuje všem přístupům k vašemu databázovému serveru, dokud neurčíte, které počítače mají oprávnění. Viz [pravidla brány firewall serveru Azure Database for MariaDB](./concepts-firewall-rules.md). |
+| **SSL** | Služba podporuje vynucování připojení SSL mezi vašimi aplikacemi a vaším databázovým serverem. Pokud chcete bezpečně připojit k Azure Database for MariaDB, přečtěte si téma [Konfigurace připojení SSL ve vaší aplikaci](./howto-configure-ssl.md). |
 
-## <a name="how-do-i-manage-a-server"></a>Jak mohu spravovat server?
-Azure Database for MariaDB můžete spravovat pomocí portálu Azure nebo azure cli.
+## <a name="how-do-i-manage-a-server"></a>Návody spravovat Server?
+Azure Database for MariaDB servery můžete spravovat pomocí Azure Portal nebo rozhraní příkazového řádku Azure.
 
 ## <a name="next-steps"></a>Další kroky
-- Přehled služby najdete v tématu [Azure Database for MariaDB Overview](./overview.md)
-- Informace o konkrétních kvótách prostředků a omezeních na základě **vaší úrovně služeb**naleznete v [tématu Úrovně služeb](./concepts-pricing-tiers.md)
+- Přehled služby najdete v tématu [přehled Azure Database for MariaDB](./overview.md) .
+- Informace o konkrétních kvótách prostředků a omezeních založených na vaší **úrovni služby**najdete v tématu [úrovně služeb](./concepts-pricing-tiers.md) .
 
 <!-- - For information about connecting to the service, see [Connection libraries for Azure Database for MariaDB](./concepts-connection-libraries.md). -->

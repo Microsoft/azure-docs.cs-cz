@@ -1,6 +1,6 @@
 ---
 title: Vytvoření účtu Azure Media Services
-description: Tento kurz vás provede kroky vytvoření účtu Azure Media Services.
+description: Tento kurz vás provede jednotlivými kroky při vytváření účtu Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,55 +14,55 @@ ms.topic: how-to
 ms.date: 03/15/2020
 ms.author: juliako
 ms.openlocfilehash: 2f1694825319ed8b8682c044e7e2282ed4c43dcd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79478796"
 ---
 # <a name="create-a-media-services-account"></a>Vytvoření účtu Media Services
 
-Chcete-li v Azure začít šifrovat, kódovat, analyzovat, spravovat a streamovat mediální obsah, musíte si vytvořit účet Mediálních služeb. Účet Mediálních služeb musí být přidružen k jednomu nebo více účtům úložiště.
+Pokud chcete začít šifrovat, kódovat, analyzovat, spravovat a streamovat mediální obsah v Azure, musíte vytvořit účet Media Services. Účet Media Services musí být přidružený k jednomu nebo více účtům úložiště.
 
 > [!NOTE]
 > Účet Media Services a všechny přidružené účty úložiště musí být ve stejném předplatném Azure. Důrazně doporučujeme používat účty úložiště ve stejném umístění jako účet Media Services, abyste se vyhnuli další latenci a nákladům na výchozí přenos dat.
 
-Tento článek popisuje kroky pro vytvoření nového účtu Azure Media Services. Vyberte si z následujících karet.
+Tento článek popisuje kroky pro vytvoření nového účtu Azure Media Services. Vyberte z následujících karet.
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-Portál Azure poskytuje způsob, jak rychle vytvořit účet Azure Media Services. Účet můžete použít pro přístup ke službě Media Services, která vám umožní ukládat, šifrovat, kódovat, spravovat a streamovat mediální obsah v Azure.
+Azure Portal poskytuje způsob, jak rychle vytvořit Azure Media Services účet. Účet můžete použít pro přístup ke službě Media Services, která vám umožní ukládat, šifrovat, kódovat, spravovat a streamovat mediální obsah v Azure.
 
-V současné době můžete na [webu Azure Portal:](https://portal.azure.com/)
+V současné době můžete použít [Azure Portal](https://portal.azure.com/) k těmto akcím:
 
-* správa mediálních služeb v3 [živé události](live-events-outputs-concept.md), 
-* zobrazení (nespravuje) v3 [Aktiva](assets-concept.md), 
-* [získat informace o přístupu k api](access-api-portal.md). 
+* Správa událostí Media Services V3 [Live](live-events-outputs-concept.md) 
+* Zobrazit (Nespravovat) 3 [prostředky](assets-concept.md)V3 
+* [Získejte informace o přístupu k rozhraním API](access-api-portal.md). 
 
-Pro všechny ostatní úlohy správy (například [Transformace a úlohy](transforms-jobs-concept.md) a [ochrana obsahu](content-protection-overview.md)) použijte rozhraní [REST API](https://aka.ms/ams-v3-rest-ref), ROZHRANÍ [CLI](https://aka.ms/ams-v3-cli-ref)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
+Pro všechny ostatní úlohy správy (například [transformace a úlohy](transforms-jobs-concept.md) a [Ochrana obsahu](content-protection-overview.md)) použijte [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
 
-Tento článek ukazuje, jak vytvořit účet Mediální služby pomocí portálu Azure.
+V tomto článku se dozvíte, jak vytvořit účet Media Services pomocí Azure Portal.
 
 ### <a name="create-a-media-services-account"></a>Vytvoření účtu Media Services
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-1. Klepněte na tlačítko **+Vytvořit prostředek** > **Media** > **Media Services**.
-1. V části **Vytvořit účet mediální ch mediálních služeb** zadejte požadované hodnoty.
+1. Klikněte na **+ vytvořit prostředek** > **média** > **Media Services**.
+1. V části **Vytvoření účtu Media Services** zadejte požadované hodnoty.
     
-    | Name (Název) | Popis |
+    | Název | Popis |
     | ---|---|
-    |**Název účtu**|Zadejte název nového účtu Služby Media Services. Název účtu Media Services musí obsahovat jenom malá písmena a číslice, nesmí obsahovat mezery a musí mít délku 3 až 24 znaků.|
-    |**Předplatné**|Pokud máte více než jedno předplatné, vyberte jedno ze seznamu předplatných Azure, ke kterým máte přístup.|
-    |**Skupina prostředků**|Vyberte nový nebo existující prostředek. Skupina prostředků je kolekce prostředků, které sdílejí životní cyklus, oprávnění a zásady. Více se dozvíte [zde](../../azure-resource-manager/management/overview.md#resource-groups).|
-    |**Umístění**|Vyberte zeměpisnou oblast, která bude použita k uložení záznamů médií a metadat pro váš účet Mediální služby. Tato oblast se bude používat ke zpracování a streamování vašeho média. V rozevíracím seznamu se vám zobrazí pouze ty oblasti Media Services, které jsou dostupné. |
-    |**Účet úložiště**|Vyberte účet úložiště, který zajistí ukládání mediálního obsahu objektem blob z účtu Mediálních služeb. Můžete vybrat existující účet úložiště ve stejné zeměpisné oblasti jako váš účet Media Services, nebo můžete vytvořit nový účet úložiště. Nový účet úložiště bude vytvořen ve stejné oblasti. Pro názvy účtů úložiště platí stejná pravidla jako pro názvy účtů Media Services.<br/><br/>Musíte mít jeden účet **primárního** úložiště a můžete mít libovolný počet účtů **sekundárního** úložiště přidružených k účtu Mediálních služeb. Na webu Azure Portal můžete přidat účty sekundárního úložiště. Další informace najdete v tématu [Účty úložiště Azure s účty Azure Media Services](storage-account-concept.md).<br/><br/>Účet Media Services a všechny přidružené účty úložiště musí být ve stejném předplatném Azure. Důrazně doporučujeme používat účty úložiště ve stejném umístění jako účet Media Services, abyste se vyhnuli další latenci a nákladům na výchozí přenos dat.|
+    |**Název účtu**|Zadejte název nového účtu Media Services. Název účtu Media Services musí obsahovat jenom malá písmena a číslice, nesmí obsahovat mezery a musí mít délku 3 až 24 znaků.|
+    |**Předplatné**|Pokud máte více než jedno předplatné, vyberte ho ze seznamu předplatných Azure, ke kterým máte přístup.|
+    |**Skupina prostředků**|Vyberte nový nebo existující prostředek. Skupina prostředků je kolekce prostředků, které sdílejí životní cyklus, oprávnění a zásady. Další informace najdete [tady](../../azure-resource-manager/management/overview.md#resource-groups).|
+    |**Umístění**|Vyberte zeměpisnou oblast, která se bude používat k ukládání médií a záznamů metadat pro váš Media Services účet. Tato oblast se bude používat ke zpracování a streamování vašeho média. V rozevíracím seznamu se vám zobrazí pouze ty oblasti Media Services, které jsou dostupné. |
+    |**Účet úložiště**|Vyberte účet úložiště, který bude poskytovat blobové úložiště mediálního obsahu z vašeho účtu Media Services. Můžete vybrat existující účet úložiště ve stejné zeměpisné oblasti jako váš účet Media Services, nebo můžete vytvořit nový účet úložiště. Nový účet úložiště bude vytvořen ve stejné oblasti. Pro názvy účtů úložiště platí stejná pravidla jako pro názvy účtů Media Services.<br/><br/>Musíte mít jeden **primární** účet úložiště a můžete mít k vašemu Media Servicesmu účtu přiřazený libovolný počet **sekundárních** účtů úložiště. Pomocí Azure Portal můžete přidat sekundární účty úložiště. Další informace najdete v tématu [účty Azure Storage s účty Azure Media Services](storage-account-concept.md).<br/><br/>Účet Media Services a všechny přidružené účty úložiště musí být ve stejném předplatném Azure. Důrazně doporučujeme používat účty úložiště ve stejném umístění jako účet Media Services, abyste se vyhnuli další latenci a nákladům na výchozí přenos dat.|
     
 1. Zaškrtněte **Připnout na řídicí panel**, abyste viděli průběh nasazení účtu.
 1. Klikněte na tlačítko **Vytvořit** dole na formuláři.
 
-    Po vytvoření účtu Media Services se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno**. Chcete-li spustit streamování obsahu a využít [výhod dynamického balení](dynamic-packaging-overview.md) a [dynamického šifrování](content-protection-overview.md), musí být koncový bod streamování, ze kterého chcete streamovat obsah, ve stavu **Spuštěno.** 
+    Po vytvoření účtu Media Services se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno**. Pokud chcete spustit streamování vašeho obsahu a využít výhod [dynamického balení](dynamic-packaging-overview.md) a [dynamického šifrování](content-protection-overview.md), musí koncový bod streamování, ze kterého chcete streamovat obsah, být ve stavu **spuštěno** . 
 
 ## <a name="use-the-azure-cli"></a>Použití Azure CLI
 
@@ -80,7 +80,7 @@ az account set --subscription mySubscriptionId
 
 Vytvořte skupinu prostředků pomocí následujícího příkazu. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky, jako například účty Azure Media Services a přidružené účty Storage.
 
-Můžete nahradit `amsResourceGroup` svou hodnotu.
+Můžete nahradit `amsResourceGroup` svou hodnotou.
 
 ```azurecli
 az group create --name amsResourceGroup --location westus2
@@ -92,7 +92,7 @@ Při vytváření účtu Media Services je nutné zadat název prostředku účt
 
 Ke svému účtu Media Services musíte mít přidružený jeden **primární** účet úložiště a můžete mít libovolný počet **sekundárních** účtů úložiště. Služba Media Services podporuje účty **General-purpose v2** (GPv2) nebo **General-purpose v1** (GPv1). Účty jen pro objekty blob nejsou povolené jako **primární**. Další informace o účtech úložiště najdete v článku [Možnosti účtů Azure Storage](../../storage/common/storage-account-options.md). 
 
-V tomto příkladu vytvoříme účet General Purpose v2, Standard LRS. Pokud chcete experimentovat s účty `--sku Standard_LRS`úložiště, použijte . Však při výběru skladové položky `--sku Standard_RAGRS`pro produkční prostředí byste měli zvážit, , který poskytuje geografické replikace pro kontinuitu provozu. Další informace naleznete v [tématu účty úložiště](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest).
+V tomto příkladu vytvoříme účet Pro obecné účely v2 (Standard LRS). Pokud chcete experimentovat s účty úložiště, použijte `--sku Standard_LRS`. Když však vybíráte SKU pro produkci, měli byste zvážit `--sku Standard_RAGRS`,, což zajišťuje geografickou replikaci pro kontinuitu podnikových prostředí. Další informace najdete v tématu [účty úložiště](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest).
  
 Následující příkaz vytvoří účet Storage, který se přidruží k účtu Media Services. V níže uvedeném skriptu můžete nahradit `storageaccountforams` vaší hodnotou. `amsResourceGroup`musí odpovídat hodnotě, kterou jste zadali pro skupinu prostředků v předchozím kroku. Název účtu úložiště musí mít délku menší než 24.
 
@@ -106,7 +106,7 @@ az storage account create --name storageaccountforams \
 
 ### <a name="create-a-media-services-account"></a>Vytvoření účtu Media Services
 
-Následující příkaz Azure CLI vytvoří nový účet Media Services. Můžete nahradit následující hodnoty: `amsaccount` `storageaccountforams` (musí odpovídat hodnotě, kterou `amsResourceGroup` jste zadali pro váš účet úložiště) a (musí odpovídat hodnotě, kterou jste zadali pro skupinu prostředků).  
+Následující příkaz Azure CLI vytvoří nový účet Media Services. Můžete nahradit následující hodnoty: `amsaccount` `storageaccountforams` (musí odpovídat hodnotě, kterou jste zadali pro účet úložiště), a `amsResourceGroup` (musí se shodovat s hodnotou, kterou jste zadali pro skupinu prostředků).  
 
 ```azurecli
 az ams account create --name amsaccount \
@@ -117,7 +117,7 @@ az ams account create --name amsaccount \
 ### <a name="see-also"></a>Viz také
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
-* [Připojení sekundárního úložiště k účtu Mediálních služeb](https://docs.microsoft.com/cli/azure/ams/account/storage?view=azure-cli-latest#az-ams-account-storage-add)
+* [Připojit sekundární úložiště k účtu Media Services](https://docs.microsoft.com/cli/azure/ams/account/storage?view=azure-cli-latest#az-ams-account-storage-add)
 
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: Příklad příkazového příkazu– povolení byok TDE – instance spravovaná databáze Azure SQL
-description: Zjistěte, jak nakonfigurovat spravovanou instanci Azure SQL tak, aby začala používat transparentní šifrování dat (TDE) pomocí prostředí PowerShell.
+title: Příklad rozhraní příkazového řádku – povolení BYOK TDE-Azure SQL Database Managed instance
+description: Naučte se konfigurovat spravovanou instanci Azure SQL, abyste mohli začít používat BYOK transparentní šifrování dat (TDE) pro šifrování v klidovém prostředí pomocí PowerShellu.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,15 +12,15 @@ ms.author: mlandzic
 ms.reviewer: vanto, carlrab
 ms.date: 11/05/2019
 ms.openlocfilehash: 8e8c0e2db1f87cca52c44d33ce14d7ce4f00e895
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80061734"
 ---
-# <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault"></a>Správa transparentního šifrování dat ve spravované instanci pomocí vlastního klíče z trezoru klíčů Azure
+# <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault"></a>Správa transparentní šifrování dat ve spravované instanci pomocí vlastního klíče z Azure Key Vault
 
-Tento příklad skriptu Azure CLI konfiguruje transparentní šifrování dat (TDE) s klíčem spravovaným zákazníkem pro Azure SQL Managed Instance pomocí klíče z Trezoru klíčů Azure. To se často označuje jako přineste si vlastní klíč scénář pro TDE. Další informace o TDE s klíčem spravovaným zákazníkem najdete v tématu [TDE Bring Your Own Key to Azure SQL](../transparent-data-encryption-byok-azure-sql.md).
+Tento ukázkový skript Azure CLI nakonfiguruje transparentní šifrování dat (TDE) s klíčem spravovaným zákazníkem pro Azure SQL Managed instance pomocí klíče z Azure Key Vault. Tato situace se často označuje jako Bring Your Own Key scénář pro TDE. Další informace o TDE s klíčem spravovaným zákazníkem najdete v tématu [TDE Bring Your Own Key do Azure SQL](../transparent-data-encryption-byok-azure-sql.md).
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
@@ -28,7 +28,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (
 
 ### <a name="prerequisites"></a>Požadavky
 
-Existující spravovaná instance najdete v článku [Použití nastavení příkazového příkazu k Azure k vytvoření spravované instance Azure SQL Database](sql-database-create-configure-managed-instance-cli.md).
+Existující spravovanou instanci najdete v tématu [použití rozhraní příkazového řádku Azure k vytvoření spravované instance Azure SQL Database](sql-database-create-configure-managed-instance-cli.md).
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -46,20 +46,20 @@ az account set -s $subscription # ...or use 'az login'
 
 ### <a name="clean-up-deployment"></a>Vyčištění nasazení
 
-Pomocí následujícího příkazu odeberte skupinu prostředků a všechny k ní spojené prostředky.
+Pomocí následujícího příkazu odeberte skupinu prostředků a všechny k ní přidružené prostředky.
 
 ```azurecli-interactive
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Odkaz na vzorek
+## <a name="sample-reference"></a>Vzorový odkaz
 
 Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | | |
 |---|---|
-| [az SQL DB](/cli/azure/sql/db) | Příkazy databáze. |
-| [az sql skupina převzetí služeb při selhání](/cli/azure/sql/failover-group) | Příkazy skupiny převzetí služeb při selhání. |
+| [AZ SQL DB](/cli/azure/sql/db) | Příkazy databáze. |
+| [AZ SQL Failover-Group](/cli/azure/sql/failover-group) | Příkazy skupiny převzetí služeb při selhání. |
 
 ## <a name="next-steps"></a>Další kroky
 

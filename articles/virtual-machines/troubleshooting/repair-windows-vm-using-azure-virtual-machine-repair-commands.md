@@ -1,6 +1,6 @@
 ---
-title: Oprava virtuálního počítače s Windows pomocí příkazů pro opravu virtuálního počítače Azure | Dokumenty společnosti Microsoft
-description: Tento článek podrobně popisuje, jak pomocí příkazů opravy virtuálních počítačů Azure připojit disk k jinému virtuálnímu počítači s Windows opravit všechny chyby a potom znovu vytvořit původní virtuální počítač.
+title: Oprava virtuálního počítače s Windows pomocí příkazů pro opravu virtuálního počítače Azure | Microsoft Docs
+description: Tento článek podrobně popisuje, jak pomocí příkazů pro opravu virtuálního počítače Azure připojit disk k jinému virtuálnímu počítači s Windows a opravit případné chyby a pak znovu sestavit původní virtuální počítač.
 services: virtual-machines-windows
 documentationcenter: ''
 author: v-miegge
@@ -15,76 +15,76 @@ ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
 ms.openlocfilehash: 2055558ef80a641084a7cf9d299281497d282936
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80060676"
 ---
 # <a name="repair-a-windows-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Oprava virtuálního počítače s Windows pomocí příkazů pro opravu virtuálních počítačů Azure
 
-Pokud váš virtuální počítač (VM) windows v Azure narazí na chybu při spuštění nebo disku, budete muset provést zmírnění na samotném disku. Běžným příkladem by mohla být neúspěšná aktualizace aplikace, která brání úspěšnému spuštění virtuálního virtuálního movitého virtuálního movitého virtuálního softwaru. Tento článek podrobně popisuje, jak pomocí příkazů opravy virtuálních počítačů Azure připojit disk k jinému virtuálnímu počítači s Windows opravit všechny chyby a potom znovu vytvořit původní virtuální počítač.
+Pokud se ve vašem virtuálním počítači s Windows v Azure vyskytne chyba spuštění nebo disku, možná budete muset na samotném disku provést zmírnění. Běžným příkladem může být neúspěšná aktualizace aplikace, která brání úspěšnému spuštění virtuálního počítače. Tento článek podrobně popisuje, jak pomocí příkazů pro opravu virtuálního počítače Azure připojit disk k jinému virtuálnímu počítači s Windows a opravit případné chyby a pak znovu sestavit původní virtuální počítač.
 
 > [!IMPORTANT]
-> Skripty v tomto článku platí jenom pro virtuální počítače, které používají [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+> Skripty v tomto článku se vztahují pouze na virtuální počítače, které používají [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
 ## <a name="repair-process-overview"></a>Přehled procesu opravy
 
-Teď můžete použít příkazy opravy virtuálních počítačů Azure změnit disk operačního systému pro virtuální počítač a už nemusíte odstraňovat a znovu vytvořit virtuální počítač.
+Pomocí příkazů pro opravu virtuálního počítače Azure teď můžete změnit disk s operačním systémem pro virtuální počítač a už nebudete muset virtuální počítač odstranit a znovu vytvořit.
 
-Chcete-li vyřešit problém s virtuálním ms, postupujte takto:
+Pomocí těchto kroků můžete vyřešit potíže s virtuálním počítačem:
 
 1. Spuštění služby Azure Cloud Shell
-2. Spusťte přidání/aktualizaci rozšíření az.
-3. Spuštění vytvoření opravy az vm.
-4. Spustit az vm opravy spustit.
-5. Spusťte obnovení opravy az vm.
+2. Spusťte příkaz AZ Extension Add/Update.
+3. Spusťte příkaz AZ VM opravit Create.
+4. Spusťte příkaz AZ VM Repair run.
+5. Spusťte příkaz AZ VM opravit Restore.
 
-Další dokumentaci a pokyny naleznete [v tématu az vm repair](https://docs.microsoft.com/cli/azure/ext/vm-repair/vm/repair).
+Další dokumentaci a pokyny najdete v tématu [AZ VM Repair](https://docs.microsoft.com/cli/azure/ext/vm-repair/vm/repair).
 
 ## <a name="repair-process-example"></a>Příklad procesu opravy
 
 > [!NOTE]
-> * Pro spuštění skriptu je vyžadováno odchozí připojení z virtuálního soudu (port 443).
-> * Současně může být spuštěn pouze jeden skript.
-> * Spuštěný skript nelze zrušit.
-> * Maximální doba, po kterou může být skript spuštěn, je 90 minut, po které bude časový limit.
+> * Ke spuštění skriptu se vyžaduje odchozí připojení z virtuálního počítače (port 443).
+> * V jednom okamžiku může běžet jenom jeden skript.
+> * Běžící skript nelze zrušit.
+> * Maximální doba, kterou může skript běžet, je 90 minut, po jejichž uplynutí vyprší časový limit.
 
 1. Spuštění služby Azure Cloud Shell
 
-   Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Obsahuje běžné nástroje Azure předinstalované a nakonfigurované pro použití s vaším účtem.
+   Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Zahrnuje běžné nástroje Azure, které jsou předinstalované a nakonfigurované pro použití s vaším účtem.
 
-   Chcete-li otevřít prostředí cloudu, vyberte **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud shell můžete otevřít také na samostatné [https://shell.azure.com](https://shell.azure.com)kartě prohlížeče na přejděte na .
+   Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v pravém horním rohu bloku kódu. Můžete také otevřít Cloud Shell na samostatné kartě prohlížeče, a to návštěvou [https://shell.azure.com](https://shell.azure.com).
 
-   Vyberte **Kopírovat,** chcete-li zkopírovat bloky kódu, vložte kód do prostředí Cloud A vyberte **Enter,** abyste ho spouštěli.
+   Vyberte **Kopírovat** pro zkopírování bloků kódu, poté vložte kód do Cloud Shell a vyberte **ENTER** pro spuštění.
 
-   Pokud dáváte přednost místní instalaci a používání rozhraní příkazového řádku, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu ``az --version``. Pokud potřebujete nainstalovat nebo upgradovat své nastavení příkazového příkazu k nastavení Azure, přečtěte si informace [o instalaci příkazového příkazového příkazu k Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
+   Pokud dáváte přednost místní instalaci a používání rozhraní příkazového řádku, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu ``az --version``. Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-2. Pokud je to poprvé, `az vm repair` co jste použili příkazy, přidejte rozšíření příkazového příkazu k opravě virtuálního času.
+2. Pokud `az vm repair` příkazy použijete poprvé, přidejte rozšíření rozhraní příkazového řádku pro opravu virtuálního počítače.
 
    ```azurecli-interactive
    az extension add -n vm-repair
    ```
 
-   Pokud jste dříve `az vm repair` používali příkazy, použijte všechny aktualizace rozšíření o opravu virtuálního vav.
+   Pokud jste už použili `az vm repair` příkazy, aplikujte všechny aktualizace na rozšíření VM-Repair.
 
    ```azurecli-interactive
    az extension update -n vm-repair
    ```
 
-3. Spusťte `az vm repair create`. Tento příkaz vytvoří kopii disku operačního systému pro nefunkční virtuální počítače, vytvoří virtuální ho virtuálního počítače pro opravu a připojí disk.
+3. Spusťte `az vm repair create`. Tento příkaz vytvoří kopii disku s operačním systémem pro virtuální počítač, který není funkční, vytvoří opravný virtuální počítač a připojí disk.
 
    ```azurecli-interactive
    az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose
    ```
 
-4. Spusťte `az vm repair run`. Tento příkaz spustí zadaný skript opravy na připojeném disku prostřednictvím virtuálního počítače pro opravu.
+4. Spusťte `az vm repair run`. Tento příkaz spustí na připojeném disku určený skript opravy pomocí opravného virtuálního počítače.
 
    ```azurecli-interactive
    az vm repair run  –g MyResourceGroup –n MyVM -–run-on-repair --run-id 2 --verbose
    ```
 
-5. Spusťte `az vm repair restore`. Tento příkaz zamění opravený disk operačního systému s původním diskem operačního systému virtuálního počítače.
+5. Spusťte `az vm repair restore`. Tento příkaz zahodí opravený disk s operačním systémem s původním diskem s operačním systémem virtuálního počítače.
 
    ```azurecli-interactive
    az vm repair restore -g MyResourceGroup -n MyVM --verbose
@@ -92,7 +92,7 @@ Další dokumentaci a pokyny naleznete [v tématu az vm repair](https://docs.mic
 
 ## <a name="verify-and-enable-boot-diagnostics"></a>Ověření a povolení diagnostiky spouštění
 
-Následující příklad umožňuje diagnostické rozšíření na ``myVMDeployed`` virtuálním počítači ``myResourceGroup``pojmenované ve skupině prostředků s názvem :
+Následující příklad aktivuje diagnostické rozšíření na virtuálním počítači s ``myVMDeployed`` názvem ve skupině prostředků s ``myResourceGroup``názvem:
 
 Azure CLI
 
@@ -102,6 +102,6 @@ az vm boot-diagnostics enable --name myVMDeployed --resource-group myResourceGro
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokud máte problémy s připojením k virtuálnímu počítači, [přečtěte si článek Poradce při potížích s připojením RDP k virtuálnímu počítači Azure](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-connection).
-* Problémy s přístupem k aplikacím spuštěným na vašem virtuálním počítači najdete [v tématu Řešení problémů s připojením aplikací na virtuálních počítačích v Azure](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-app-connection).
-* Další informace o používání Správce prostředků najdete v [tématu Přehled Správce prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+* Pokud máte problémy s připojením k VIRTUÁLNÍmu počítači, přečtěte si téma [řešení potíží s připojením RDP k virtuálnímu počítači Azure](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-connection).
+* Problémy s přístupem k aplikacím běžícím na vašem VIRTUÁLNÍm počítači najdete v tématu [řešení potíží s připojením aplikací na virtuálních počítačích v Azure](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-app-connection).
+* Další informace o použití Správce prostředků naleznete v tématu [Azure Resource Manager Overview](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).

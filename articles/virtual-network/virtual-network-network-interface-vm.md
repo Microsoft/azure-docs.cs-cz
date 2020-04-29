@@ -1,6 +1,6 @@
 ---
-title: Přidání síťových rozhraní do virtuálních počítačů Azure nebo jejich odebrání
-description: Přečtěte si, jak přidat síťová rozhraní do virtuálních počítačů nebo je odebrat.
+title: Přidání síťových rozhraní nebo jejich odebrání z virtuálních počítačů Azure
+description: Přečtěte si, jak přidat síťová rozhraní nebo odebrat síťová rozhraní z virtuálních počítačů.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -16,149 +16,149 @@ ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
 ms.openlocfilehash: 4169bfb5da5b1ad13bab0eb01397f7c1fb20b11b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80060328"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Přidání nebo odebrání síťových rozhraní na virtuálních počítačích
 
-Zjistěte, jak přidat existující síťové rozhraní při vytváření virtuálního počítače (VM) Azure. Také se naučit přidávat nebo odebírat síťová rozhraní z existujícího virtuálního aplikace v zastaveném (problémovém) stavu. Síťové rozhraní umožňuje virtuálnímu počítači Azure komunikovat s internetem, Azure a místními prostředky. Virtuální modul má jedno nebo více síťových rozhraní. 
+Naučte se, jak přidat existující síťové rozhraní při vytváření virtuálního počítače Azure (VM). Naučte se také přidat nebo odebrat síťová rozhraní z existujícího virtuálního počítače ve stavu Zastaveno (přidělení zrušeno). Síťové rozhraní umožňuje virtuálnímu počítači Azure komunikovat s internetem, Azure a místními prostředky. Virtuální počítač má jedno nebo víc síťových rozhraní. 
 
-Pokud potřebujete přidat, změnit nebo odebrat adresy IP pro síťové rozhraní, přečtěte si informace [o řešení zásad Správy ip adres síťového rozhraní](virtual-network-network-interface-addresses.md). Informace o vytvoření, změně nebo odstranění síťových rozhraní naleznete v [tématu Správa síťových rozhraní](virtual-network-network-interface.md).
+Pokud potřebujete přidat, změnit nebo odebrat IP adresy pro síťové rozhraní, přečtěte si téma [Správa IP adres síťového rozhraní](virtual-network-network-interface-addresses.md). Chcete-li vytvořit, změnit nebo odstranit síťová rozhraní, přečtěte si téma [Správa síťových rozhraní](virtual-network-network-interface.md).
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Pokud ho nemáte, nastavte si účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Před zahájením zbývající části tohoto článku proveďte jeden z těchto úkolů:
+Pokud ho nemáte, nastavte účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Před zahájením zbývající části tohoto článku dokončete jednu z těchto úloh:
 
-- **Uživatelé portálu:** Přihlaste se na [portál Azure](https://portal.azure.com) pomocí svého účtu Azure.
+- **Uživatelé portálu**: Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí svého účtu Azure.
 
-- **Uživatelé PowerShellu:** Buď spusťte příkazy v [prostředí Azure Cloud Shell](https://shell.azure.com/powershell), nebo spusťte PowerShell z počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Na kartě prohlížeče Azure Cloud Shell najděte rozevírací seznam **Select environment** a pak vyberte **PowerShell,** pokud ještě není vybraný.
+- **Uživatelé PowerShellu**: buď spusťte příkazy v [Azure Cloud Shell](https://shell.azure.com/powershell), nebo z počítače spusťte PowerShell. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Na kartě Azure Cloud Shell prohlížeč Najděte rozevírací seznam **Vybrat prostředí** a pak vyberte **PowerShell** , pokud už není vybraný.
 
-    Pokud používáte PowerShell místně, použijte modul Azure PowerShell verze 1.0.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az.Network`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Spuštěním příkazu `Connect-AzAccount` vytvořte připojení k Azure.
+    Pokud používáte PowerShell místně, použijte Azure PowerShell modul verze 1.0.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az.Network`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Spuštěním příkazu `Connect-AzAccount` vytvořte připojení k Azure.
 
-- **Uživatelé rozhraní příkazového řádku Azure (CLI):** Buď spusťte příkazy v [prostředí Azure Cloud Shell](https://shell.azure.com/bash)nebo spusťte rozhraní příkazového řádku z vašeho počítače. Pokud používáte azure CLI verze 2.0.26 nebo novější, pokud používáte azure cli místně. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). Spuštěním příkazu `az login` vytvořte připojení k Azure.
+- **Uživatelé rozhraní příkazového řádku Azure (CLI)**: buď spusťte příkazy v [Azure Cloud Shell](https://shell.azure.com/bash), nebo spusťte CLI z počítače. Pokud používáte Azure CLI místně, použijte Azure CLI verze 2.0.26 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). Spuštěním příkazu `az login` vytvořte připojení k Azure.
 
-## <a name="add-existing-network-interfaces-to-a-new-vm"></a>Přidání existujících síťových rozhraní do nového virtuálního mísy
+## <a name="add-existing-network-interfaces-to-a-new-vm"></a>Přidání existujících síťových rozhraní do nového virtuálního počítače
 
-Když vytvoříte virtuální počítač prostřednictvím portálu, portál vytvoří síťové rozhraní s výchozím nastavením a připojí síťové rozhraní k virtuálnímu počítači za vás. Portál nelze použít k přidání existujících síťových rozhraní do nového virtuálního počítači nebo k vytvoření virtuálního počítače s více síťovými rozhraními. Můžete to udělat pomocí cli nebo PowerShell. Ujistěte se, že se seznámíte s [omezeními](#constraints). Pokud vytvoříte virtuální počítač s více síťovými rozhraními, musíte také nakonfigurovat operační systém tak, aby je správně používal po vytvoření virtuálního počítače. Přečtěte si, jak nakonfigurovat [Linux](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) nebo [Windows](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) pro více síťových rozhraní.
+Když vytvoříte virtuální počítač prostřednictvím portálu, portál vytvoří síťové rozhraní s výchozím nastavením a připojí síťové rozhraní k virtuálnímu počítači za vás. Portál nemůžete použít k přidání existujících síťových rozhraní do nového virtuálního počítače nebo k vytvoření virtuálního počítače s několika síťovými rozhraními. Obojí můžete provést pomocí rozhraní příkazového řádku nebo PowerShellu. Nezapomeňte se seznámit s [omezeními](#constraints). Pokud vytvoříte virtuální počítač s více síťovými rozhraními, musíte ho také nakonfigurovat tak, aby po vytvoření virtuálního počítače správně používal tyto operační systémy. Přečtěte si, jak nakonfigurovat [Linux](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) nebo [Windows](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) pro více síťových rozhraní.
 
 ### <a name="commands"></a>Příkazy
 
-Před vytvořením virtuálního [virtuálního modulu vytvořte síťové rozhraní](virtual-network-network-interface.md#create-a-network-interface).
+Než vytvoříte virtuální počítač, [vytvořte síťové rozhraní](virtual-network-network-interface.md#create-a-network-interface).
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[az network nic create](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-network-nic-create)|
-|PowerShell|[Nové rozhraní AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|CLI|[az network nic create](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-network-nic-create)|
+|PowerShell|[New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
-## <a name="add-a-network-interface-to-an-existing-vm"></a>Přidání síťového rozhraní k existujícímu virtuálnímu virtuálnímu mněmu
+## <a name="add-a-network-interface-to-an-existing-vm"></a>Přidání síťového rozhraní do existujícího virtuálního počítače
 
-Přidání síťového rozhraní do virtuálního počítače:
+Postup přidání síťového rozhraní k virtuálnímu počítači:
 
-1. Přejděte na [portál Azure](https://portal.azure.com) a najděte existující virtuální počítač. Vyhledejte a vyberte **virtuální počítače**.
+1. Chcete-li najít existující virtuální počítač, vyhledejte [Azure Portal](https://portal.azure.com) . Vyhledejte a vyberte **virtuální počítače**.
 
-2. Vyberte název virtuálního počítače. Virtuální modul musí podporovat počet síťových rozhraní, která chcete přidat. Informace o tom, kolik síťových rozhraní jednotlivé velikosti virtuálních zařízení podporují, najdete v tématu velikosti v Azure pro [linuxové virtuální počítače](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [virtuální počítače s Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+2. Vyberte název vašeho virtuálního počítače. Virtuální počítač musí podporovat počet síťových rozhraní, která chcete přidat. Pokud chcete zjistit, kolik síťových rozhraní podporuje jednotlivé velikosti virtuálních počítačů, přečtěte si část velikosti v Azure pro virtuální počítače se systémem [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [virtuální počítače s Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-3. Na panelu příkazů Virtuální ho virtuálního stavitele vyberte **Zastavit**a pak **OK** v potvrzovacím dialogovém okně. Pak počkejte, až se **stav** virtuálního virtuálního zařízení změní na **Zastaveno (navráceno).**
+3. Na panelu příkazů virtuálního počítače vyberte **zastavit**a potom v potvrzovacím dialogovém okně klikněte na **OK** . Pak počkejte, než se **stav** virtuálního počítače změní na **Zastaveno (přidělení zrušeno)**.
 
-4. Na řádku nabídek virtuálního modulu zvolte **Síťové** > **připojení síťového rozhraní**. Potom v **části Připojit existující síťové rozhraní**vyberte síťové rozhraní, které chcete připojit, a vyberte **OK**.
+4. Z panelu nabídky virtuálního počítače vyberte **sítě** > **připojit síťové rozhraní**. Pak v části **Připojit stávající síťové rozhraní**zvolte síťové rozhraní, které se chcete připojit, a vyberte **OK**.
 
     >[!NOTE]
-    >Vybrané síťové rozhraní nemůže mít povolenou zrychlenou síť, nemůže jí být přiřazena adresa IPv6 a musí existovat ve stejné virtuální síti se síťovým rozhraním aktuálně připojeným k virtuálnímu počítači.
+    >Síťové rozhraní, které vyberete, nemůže mít povolené urychlení sítě, nemůže mít přiřazenou adresu IPv6 a musí existovat ve stejné virtuální síti se síťovým rozhraním aktuálně připojeným k virtuálnímu počítači.
 
-    Pokud nemáte existující síťové rozhraní, musíte ho nejprve vytvořit. Chcete-li tak učinit, vyberte **možnost Vytvořit síťové rozhraní**. Další informace o vytvoření síťového rozhraní naleznete v [tématu Vytvoření síťového rozhraní](virtual-network-network-interface.md#create-a-network-interface). Další informace o dalších omezeních při přidávání síťových rozhraní do virtuálních počítačů najdete v [tématu Omezení](#constraints).
+    Pokud nemáte existující síťové rozhraní, musíte ho nejdřív vytvořit. Provedete to tak, že vyberete **vytvořit síťové rozhraní**. Další informace o tom, jak vytvořit síťové rozhraní, najdete v tématu [Vytvoření síťového rozhraní](virtual-network-network-interface.md#create-a-network-interface). Další informace o dalších omezeních při přidávání síťových rozhraní k virtuálním počítačům najdete v tématu věnovaném [omezením](#constraints).
 
-5. Na řádku nabídek virtuálního počítače zvolte **Přehled** > **start,** chcete-li restartovat virtuální počítač.
+5. V řádku nabídek virtuálního počítače vyberte **Přehled** > **Start** a restartujte virtuální počítač.
 
-Teď můžete nakonfigurovat operační systém virtuálního počítače tak, aby správně používal více síťových rozhraní. Přečtěte si, jak nakonfigurovat [Linux](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) nebo [Windows](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) pro více síťových rozhraní.
+Nyní můžete nakonfigurovat operační systém virtuálního počítače tak, aby používal více síťových rozhraní správně. Přečtěte si, jak nakonfigurovat [Linux](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) nebo [Windows](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) pro více síťových rozhraní.
 
 ### <a name="commands"></a>Příkazy
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[az vm nic přidat](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-vm-nic-add) (odkaz); [podrobné kroky](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-nic-to-a-vm)|
-|PowerShell|[Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) (odkaz); [podrobné kroky](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-nic-to-an-existing-vm)|
+|CLI|[AZ VM nic Add](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-vm-nic-add) (Reference); [podrobný postup](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-nic-to-a-vm)|
+|PowerShell|[Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) (Referenční dokumentace); [podrobný postup](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-nic-to-an-existing-vm)|
 
 ## <a name="view-network-interfaces-for-a-vm"></a>Zobrazení síťových rozhraní pro virtuální počítač
 
-Můžete zobrazit síťová rozhraní aktuálně připojená k virtuálnímu počítače, abyste se dozvěděli o konfiguraci jednotlivých síťových rozhraní a adresách IP přiřazených jednotlivým síťovým rozhraním. 
+Můžete zobrazit síťová rozhraní aktuálně připojená k virtuálnímu počítači a získat další informace o konfiguraci každého síťového rozhraní a IP adresy přiřazené jednotlivým síťovým rozhraním. 
 
-1. Přejděte na [portál Azure](https://portal.azure.com) a najděte existující virtuální počítač. Vyhledejte a vyberte **virtuální počítače**.
+1. Chcete-li najít existující virtuální počítač, vyhledejte [Azure Portal](https://portal.azure.com) . Vyhledejte a vyberte **virtuální počítače**.
 
     >[!NOTE]
-    >Přihlaste se pomocí účtu, kterému je přiřazena role Vlastník, Přispěvatel nebo Síťový přispěvatel pro vaše předplatné. Další informace o tom, jak přiřadit role k účtům, najdete [v tématu předdefinované role pro řízení přístupu na základě rolí Azure](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
+    >Přihlaste se pomocí účtu, který je přiřazený k roli vlastníka, přispěvatele nebo přispěvatele sítě pro vaše předplatné. Další informace o tom, jak přiřadit role k účtům, najdete v tématu [předdefinované role pro řízení přístupu na základě role v Azure](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
 
-2. Vyberte název virtuálního virtuálního serveru, pro který chcete zobrazit připojená síťová rozhraní.
+2. Vyberte název virtuálního počítače, pro který chcete zobrazit připojená síťová rozhraní.
 
-3. Na řádku nabídek virtuálního virtuálního zařízení vyberte **Síť .**
+3. Na řádku nabídek virtuálního počítače vyberte **sítě**.
 
-Informace o nastavení síťových rozhraní a jejich změně naleznete v [tématu Správa síťových rozhraní](virtual-network-network-interface.md). Informace o přidávání, změně nebo odebírání adres IP přiřazených síťovému rozhraní naleznete v [tématu Správa adres IP síťového rozhraní](virtual-network-network-interface-addresses.md).
+Další informace o nastaveních síťových rozhraní a o tom, jak je změnit, najdete v tématu [Správa síťových rozhraní](virtual-network-network-interface.md). Další informace o tom, jak přidat, změnit nebo odebrat IP adresy přiřazené k síťovému rozhraní, najdete v tématu [Správa IP adres síťového rozhraní](virtual-network-network-interface-addresses.md).
 
 ### <a name="commands"></a>Příkazy
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[az vm nic seznam](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-vm-nic-list)|
-|PowerShell|[Získat-AzVM](/powershell/module/az.compute/get-azvm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|CLI|[AZ VM nic list](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-vm-nic-list)|
+|PowerShell|[Get-AzVM](/powershell/module/az.compute/get-azvm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
-## <a name="remove-a-network-interface-from-a-vm"></a>Odebrání síťového rozhraní z virtuálního zařízení
+## <a name="remove-a-network-interface-from-a-vm"></a>Odebrání síťového rozhraní z virtuálního počítače
 
-1. Přejděte na [portál Azure](https://portal.azure.com) a najděte existující virtuální počítač. Vyhledejte a vyberte **virtuální počítače**.
+1. Chcete-li najít existující virtuální počítač, vyhledejte [Azure Portal](https://portal.azure.com) . Vyhledejte a vyberte **virtuální počítače**.
 
-2. Vyberte název virtuálního virtuálního serveru, pro který chcete zobrazit připojená síťová rozhraní.
+2. Vyberte název virtuálního počítače, pro který chcete zobrazit připojená síťová rozhraní.
 
-3. Na panelu nástrojů virtuálního nástroje vyberte **Zastavit**.
+3. Na panelu nástrojů virtuálního počítače vyberte **zastavit**.
 
-4. Počkejte, až se **stav** virtuálního virtuálního zařízení změní na **Zastaveno (navráceno).**
+4. Počkejte, až se **stav** virtuálního počítače změní na **Zastaveno (přidělení zrušeno)**.
 
-5. Na panelu nabídek virtuálního modulu zvolte Síťové**rozhraní odpojení** **sítě** > .
+5. Z panelu nabídky virtuálního **počítače vyberte** > síť**Odpojit síťové rozhraní**.
 
-6. V dialogovém okně **Odpojit síťové rozhraní** vyberte síťové rozhraní, které chcete odpojit. Pak vyberte **OK**.
+6. V dialogovém okně **Odpojit síťové rozhraní** vyberte síťové rozhraní, které se chcete odpojit. Pak vyberte **OK**.
 
     >[!NOTE]
-    >Pokud je v seznamu uvedeno pouze jedno síťové rozhraní, nelze jej odpojit, protože virtuální počítač musí mít vždy připojeno alespoň jedno síťové rozhraní.
+    >Pokud je v seznamu uvedeno jenom jedno síťové rozhraní, nemůžete ho odpojit, protože k virtuálnímu počítači se musí vždycky připojit aspoň jedno síťové rozhraní.
 
 ### <a name="commands"></a>Příkazy
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[az vm nic odstranit](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-vm-nic-remove) (odkaz); [podrobné kroky](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#remove-a-nic-from-a-vm)|
-|PowerShell|[Remove-AzVMNetworkInterface](/powershell/module/az.compute/remove-azvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) (odkaz); [podrobné kroky](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#remove-a-nic-from-an-existing-vm)|
+|CLI|[AZ VM nic Remove](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-vm-nic-remove) (Reference); [podrobný postup](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#remove-a-nic-from-a-vm)|
+|PowerShell|[Remove-AzVMNetworkInterface](/powershell/module/az.compute/remove-azvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) (Referenční dokumentace); [podrobný postup](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#remove-a-nic-from-an-existing-vm)|
 
 ## <a name="constraints"></a>Omezení
 
-- Virtuální modul musí mít k němu připojeno alespoň jedno síťové rozhraní.
+- Virtuální počítač musí mít připojené aspoň jedno síťové rozhraní.
 
-- Virtuální počítače může mít jenom tolik síťových rozhraní, které jsou k němu připojeny jako velikost virtuálního počítače podporuje. Další informace o tom, kolik síťových rozhraní jednotlivé velikosti virtuálních zařízení podporuje, najdete v tématu velikosti v Azure pro [linuxové virtuální počítače](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [virtuální počítače s Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Všechny velikosti podporují alespoň dvě síťová rozhraní.
+- Virtuální počítač může mít k virtuálnímu počítači k dispozici jenom tolik síťových rozhraní, jako podporuje velikost virtuálního počítače. Další informace o tom, kolik síťových rozhraní podporuje jednotlivé velikosti virtuálních počítačů, najdete v tématu velikosti v Azure pro virtuální počítače se systémem [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [virtuální počítače s Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Všechny velikosti podporují alespoň dvě síťová rozhraní.
 
-- Síťová rozhraní, která přidáte k virtuálnímu virtuálnímu mněmu, nelze aktuálně připojit k jinému virtuálnímu virtuálnímu síti. Další informace o vytváření síťových rozhraní naleznete [v tématu Vytvoření síťového rozhraní](virtual-network-network-interface.md#create-a-network-interface).
+- Síťová rozhraní, která přidáte do virtuálního počítače, se momentálně nedají připojit k jinému virtuálnímu počítači. Další informace o tom, jak vytvářet síťová rozhraní, najdete v tématu [Vytvoření síťového rozhraní](virtual-network-network-interface.md#create-a-network-interface).
 
-- V minulosti bylo možné přidat síťová rozhraní pouze do virtuálních počítačů, které podporovaly více síťových rozhraní a byly vytvořeny s alespoň dvěma síťovými rozhraními. Síťové rozhraní nelze přidat k virtuálnímu virtuálnímu počítače, který byl vytvořen s jedním síťovým rozhraním, a to ani v případě, že velikost virtuálního počítače podporuje více než jedno síťové rozhraní. Naopak můžete odebrat pouze síťová rozhraní z virtuálního zařízení s alespoň třemi síťovými rozhraními, protože virtuální aplikace vytvořené s alespoň dvěma síťovými rozhraními musely mít vždy alespoň dvě síťová rozhraní. Tato omezení již neplatí. Teď můžete vytvořit virtuální virtuální počítače s libovolným počtem síťových rozhraní (až do počtu podporovaného velikostí virtuálního počítače).
+- V minulosti jste mohli přidat síťová rozhraní pouze k virtuálním počítačům, které podporovaly více síťových rozhraní a byly vytvořeny s alespoň dvěma síťovými rozhraními. Síťové rozhraní se nepovedlo přidat k virtuálnímu počítači, který se vytvořil s jedním síťovým rozhraním, a to i v případě, že velikost virtuálního počítače podporuje víc než jedno síťové rozhraní. Naopak můžete odebrat jenom síťová rozhraní z virtuálního počítače s alespoň třemi síťovými rozhraními, protože virtuální počítače vytvořené pomocí aspoň dvou síťových rozhraní vždycky musely mít aspoň dvě síťová rozhraní. Tato omezení už neplatí. Nyní můžete vytvořit virtuální počítač s libovolným počtem síťových rozhraní (až do počtu podporovaného velikostí virtuálního počítače).
 
-- Ve výchozím nastavení je první síťové rozhraní připojené k virtuálnímu virtuálnímu modulu *primární* síťové rozhraní. Všechna ostatní síťová rozhraní ve virtuálním virtuálním ms jsou *sekundární* síťová rozhraní.
+- Standardně je první síťové rozhraní připojené k virtuálnímu počítači *primární* síťové rozhraní. Všechna ostatní síťová rozhraní ve virtuálním počítači jsou *sekundární* síťová rozhraní.
 
-- Můžete určit, do kterého síťového rozhraní odesíláte odchozí provoz. Virtuální modul však ve výchozím nastavení odesílá veškerý odchozí provoz na adresu IP, která je přiřazena k primární konfiguraci IP primárního síťového rozhraní.
+- Můžete řídit, které síťové rozhraní odesíláte odchozí provoz. Virtuální počítač ale ve výchozím nastavení odesílá veškerý odchozí provoz na IP adresu, která je přiřazená k primární konfiguraci protokolu IP primárního síťového rozhraní.
 
-- V minulosti všechny virtuální aplikace v rámci stejné skupiny dostupnosti byly nutné mít jedno nebo více síťových rozhraní. Virtuální počítače s libovolným počtem síťových rozhraní teď můžou existovat ve stejné sadě dostupnosti, až do počtu podporovaného velikostí virtuálního počítače. Virtuální ho lze přidat jenom do skupiny dostupnosti, když se vytvoří. Další informace o sadách dostupnosti najdete [v tématu Správa dostupnosti virtuálních počítačů v Azure](../virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy).
+- V minulosti musely mít všechny virtuální počítače ve stejné skupině dostupnosti jedno nebo několik síťových rozhraní. Virtuální počítače s libovolným počtem síťových rozhraní teď můžou existovat ve stejné skupině dostupnosti až do počtu, který podporuje velikost virtuálního počítače. Virtuální počítač můžete přidat do skupiny dostupnosti jenom po jeho vytvoření. Další informace o skupinách dostupnosti najdete v tématu [Správa dostupnosti virtuálních počítačů v Azure](../virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy).
 
-- Síťová rozhraní ve stejném virtuálním počítači můžete připojit k různým podsítím v rámci virtuální sítě. Všechna síťová rozhraní však musí být připojena ke stejné virtuální síti.
+- Můžete propojit síťová rozhraní ve stejném virtuálním počítači s různými podsítěmi v rámci virtuální sítě. Všechna síťová rozhraní ale musí být připojená ke stejné virtuální síti.
 
-- Do back-endového fondu nástroje Azure Load Balancer můžete přidat libovolnou IP adresu pro libovolnou konfiguraci IP adresy libovolného primárního nebo sekundárního síťového rozhraní. V minulosti bylo možné do fondu back-endu přidat pouze primární adresu IP pro primární síťové rozhraní. Další informace o adresách IP a konfiguracích najdete v tématu [Přidání, změna nebo odebrání ADRES IP](virtual-network-network-interface-addresses.md).
+- Můžete přidat libovolnou IP adresu pro jakoukoli konfiguraci protokolu IP libovolného primárního nebo sekundárního síťového rozhraní do fondu Azure Load Balancer back-end. V minulosti se do fondu back-endu mohla přidat jenom primární IP adresa pro primární síťové rozhraní. Další informace o IP adresách a konfiguracích najdete v tématu [Přidání, změna nebo odebrání IP adres](virtual-network-network-interface-addresses.md).
 
-- Odstraněním virtuálního virtuálního soudu neodstraníte síťová rozhraní, která jsou k němu připojena. Když odstraníte virtuální hod, síťová rozhraní se odpojí od virtuálního virtuálního zařízení. Tato síťová rozhraní můžete přidat do různých virtuálních zařízení nebo je odstranit.
+- Odstraněním virtuálního počítače se neodstraní síťová rozhraní, která jsou k němu připojená. Při odstranění virtuálního počítače se síťová rozhraní odpojí z virtuálního počítače. Tato síťová rozhraní můžete přidat do různých virtuálních počítačů nebo je odstranit.
 
-- Stejně jako u IPv6, nelze připojit síťové rozhraní s akcelerované sítě povolené pro virtuální ho po jeho vytvoření. Chcete-li dále využít výhod zrychlených sítí, musíte také provést kroky v rámci operačního systému virtuálního zařízení. Přečtěte si další informace o zrychlených sítích a dalších omezeních při jeho používání pro virtuální počítače [s Windows](create-vm-accelerated-networking-powershell.md) nebo [Linuxem.](create-vm-accelerated-networking-cli.md)
+- Stejně jako u protokolu IPv6 nemůžete připojit síťové rozhraní s povolenými akcelerovanými síťovými službami k virtuálnímu počítači po jeho vytvoření. Aby bylo možné využít urychlené síťové služby, musíte také provést kroky v operačním systému virtuálního počítače. Další informace o akcelerovaných sítích a dalších omezeních při jejich použití pro virtuální počítače se [systémem Windows](create-vm-accelerated-networking-powershell.md) nebo [Linux](create-vm-accelerated-networking-cli.md) .
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete vytvořit virtuální počítač s více síťovými rozhraními nebo IP adresami, přečtěte si to tak, že:
+Pokud chcete vytvořit virtuální počítač s více síťovými rozhraními nebo IP adresami, přečtěte si:
 
 |Úkol|Nástroj|
 |---|---|
 |Vytvoření virtuálního počítače s několika síťovými kartami|[CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
-|Vytvoření jednoho virtuálního virtuálního počítače nic s více adresami IPv4|[CLI](virtual-network-multiple-ip-addresses-cli.md), [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|
-|Vytvoření jednoho virtuálního počítače nic s privátní adresou IPv6 (za Azure Load Balancer)|[CLI](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [šablona Azure Resource Manager](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|Vytvoření virtuálního počítače s jedním síťovým ADAPTÉRem s více adresami IPv4|[CLI](virtual-network-multiple-ip-addresses-cli.md), [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|
+|Vytvoření virtuálního počítače s jedním síťovým ADAPTÉRem s privátní adresou IPv6 (za Azure Load Balancer)|[CLI](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [Azure Resource Manager šablona](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|

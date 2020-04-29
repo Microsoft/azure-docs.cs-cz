@@ -1,6 +1,6 @@
 ---
-title: Povolení konfigurace podsítě podporované službou pro spravovanou instanci Azure SQL Database
-description: Povolení konfigurace podsítě podporované službou pro spravovanou instanci Azure SQL Database
+title: Povoluje se konfigurace podsítě pro službu Azure SQL Database Managed instance.
+description: Povoluje se konfigurace podsítě pro službu Azure SQL Database Managed instance.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -11,35 +11,35 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.date: 03/12/2020
 ms.openlocfilehash: efc2b8578651f68d052f227694f85348853e191f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79533262"
 ---
-# <a name="enabling-service-aided-subnet-configuration-for-azure-sql-database-managed-instance"></a>Povolení konfigurace podsítě podporované službou pro spravovanou instanci Azure SQL Database
-Konfigurace podsítě podporovaná službou poskytuje automatizovanou správu konfigurace sítě pro podsítě hostující spravované instance. S konfigurací podsítě s podporou služeb uživatel zůstává plně pod kontrolou přístupu k datům (tds dopravní toky), zatímco spravované instance přebírá odpovědnost za zajištění nepřetržitého toku provozu správy za účelem splnění smlouvy SLA.
+# <a name="enabling-service-aided-subnet-configuration-for-azure-sql-database-managed-instance"></a>Povoluje se konfigurace podsítě pro službu Azure SQL Database Managed instance.
+Konfigurace podsítě s podporou služby poskytuje automatizovanou správu konfigurace sítě pro podsítě hostující spravované instance. Uživatel s konfigurací podsítě s podporou služeb zůstává v plné kontrole přístupu k datům (toky přenosu dat TDS), zatímco spravovaná instance vezme zodpovědnost za zajištění nepřerušovaného toku provozu správy za účelem splnění smlouvy SLA.
 
-Automaticky nakonfigurované skupiny zabezpečení sítě a pravidla směrovací tabulky jsou viditelné pro zákazníka a jsou vybaveny předponou _Microsoft.Sql-managedInstances_UseOnly__.
+Automaticky konfigurované skupiny zabezpečení sítě a pravidla směrovací tabulky je možné zobrazit zákazníkům a opatřit poznámkami předponou _Microsoft. SQL-managedInstances_UseOnly__.
 
-Konfigurace podporovaná službou je povolena automaticky, jakmile `Microsoft.Sql/managedInstances` zapnete [delegování podsítě](../virtual-network/subnet-delegation-overview.md) pro poskytovatele prostředků.
+Konfigurace podporující službu je povolená automaticky, když zapnete [delegování podsítě](../virtual-network/subnet-delegation-overview.md) pro `Microsoft.Sql/managedInstances` poskytovatele prostředků.
 
 > [!IMPORTANT] 
-> Po zapnutí delegování podsítě jej nelze vypnout, dokud z podsítě neodeberete poslední virtuální cluster. Další podrobnosti o odstranění virtuálního clusteru naleznete v následujícím [článku](sql-database-managed-instance-delete-virtual-cluster.md#delete-virtual-cluster-from-the-azure-portal).
+> Pokud je delegování podsítě zapnuté, nemůžete ho vypnout, dokud neodeberete poslední virtuální cluster z podsítě. Další podrobnosti o tom, jak odstranit virtuální cluster, najdete v následujícím [článku](sql-database-managed-instance-delete-virtual-cluster.md#delete-virtual-cluster-from-the-azure-portal).
 
 > [!NOTE] 
-> Vzhledem k tomu, že konfigurace podsítě podporovaná službou je základní funkcí pro údržbu sla, od 1. 1. července 2020 budou všechny podsítě obsahující spravované instance automaticky delegovány na poskytovatele prostředků spravované instance. 
+> Vzhledem k tomu, že konfigurace podsítě podporující službu je základní funkcí pro údržbu smlouvy SLA od 1. května 2020, nebude možné nasadit spravované instance v podsítích, které nejsou delegované pro poskytovatele prostředků spravované instance. 1. července 2020 všechny podsítě obsahující spravované instance budou automaticky delegovány na poskytovatele prostředků spravované instance. 
 
-## <a name="enabling-subnet-delegation-for-new-deployments"></a>Povolení delegování podsítě pro nová nasazení
-Chcete-li nasadit spravovanou instanci `Microsoft.Sql/managedInstances` do prázdné podsítě, musíte ji delegovat na poskytovatele prostředků, jak je popsáno v následujícím [článku](../virtual-network/manage-subnet-delegation.md). _Upozorňujeme, že odkazovaný článek používá `Microsoft.DBforPostgreSQL/serversv2` například poskytovatele prostředků. Místo toho budete `Microsoft.Sql/managedInstances` muset použít poskytovatele prostředků._
+## <a name="enabling-subnet-delegation-for-new-deployments"></a>Povolení delegování podsítí pro nová nasazení
+Chcete-li nasadit spravovanou instanci v nástroji do prázdné podsítě, je nutné `Microsoft.Sql/managedInstances` ji delegovat na poskytovatele prostředků, jak je popsáno v následujícím [článku](../virtual-network/manage-subnet-delegation.md). _Upozorňujeme, že odkazovaný článek používá `Microsoft.DBforPostgreSQL/serversv2` poskytovatele prostředků. Místo toho budete muset použít `Microsoft.Sql/managedInstances` poskytovatele prostředků._
 
-## <a name="enabling-subnet-delegation-for-existing-deployments"></a>Povolení delegování podsítě pro existující nasazení
+## <a name="enabling-subnet-delegation-for-existing-deployments"></a>Povolení delegování podsítí pro existující nasazení
 
-Chcete-li povolit delegování podsítě pro stávající nasazení spravované instance, musíte zjistit podsíť virtuální sítě, kde je umístěna. 
+Aby bylo možné povolit delegování podsítě pro existující nasazení spravované instance, je třeba zjistit podsíť virtuální sítě, ve které je umístěna. 
 
-Chcete-li se `Virtual network/subnet` to `Overview` dozvědět, můžete zkontrolovat na portálu blade spravované instance.
+Pokud se chcete dozvědět, jak `Virtual network/subnet` to zjistit `Overview` , můžete se podívat na okno portálu spravované instance.
 
-Jako alternativu můžete spustit následující příkazy prostředí PowerShell, abyste se to dozvěděli. Nahraďte **Id předplatného** id s ID předplatného. Také nahraďte **rg-name** skupinou prostředků pro spravovanou instanci a nahraďte **mi-name** názvem spravované instance.
+Jako alternativu můžete použít následující příkazy PowerShellu, které se dozvíte. Nahraďte ID **předplatného** ID vašeho předplatného. Také nahraďte **RG-Name** skupinou prostředků vaší spravované instance a nahraďte **mi** název názvem vaší spravované instance.
 
 ```powershell
 Install-Module -Name Az
@@ -60,8 +60,8 @@ $mi = Get-AzSqlInstance -ResourceGroupName {rg-name} -Name {mi-name}
 $mi.SubnetId
 ```
 
-Jakmile najdete podsíť spravované instance, `Microsoft.Sql/managedInstances` musíte ji delegovat na poskytovatele prostředků, jak je popsáno v následujícím [článku](../virtual-network/manage-subnet-delegation.md). _Upozorňujeme, že odkazovaný článek používá `Microsoft.DBforPostgreSQL/serversv2` například poskytovatele prostředků. Místo toho budete `Microsoft.Sql/managedInstances` muset použít poskytovatele prostředků._
+Jakmile vyhledáte podsíť spravované instance, budete ji muset delegovat `Microsoft.Sql/managedInstances` na poskytovatele prostředků, jak je popsáno v následujícím [článku](../virtual-network/manage-subnet-delegation.md). _Upozorňujeme, že odkazovaný článek používá `Microsoft.DBforPostgreSQL/serversv2` poskytovatele prostředků. Místo toho budete muset použít `Microsoft.Sql/managedInstances` poskytovatele prostředků._
 
 
 > [!IMPORTANT]
-> Povolení konfigurace podporované službou nezpůsobí převzetí služeb při selhání nebo přerušení připojení pro spravované instance, které jsou již v podsíti.
+> Povolení konfigurace pro službu nezpůsobí převzetí služeb při selhání nebo přerušení připojení pro spravované instance, které už jsou v podsíti.

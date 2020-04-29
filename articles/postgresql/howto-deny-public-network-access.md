@@ -1,46 +1,46 @@
 ---
-title: Odepřít přístup k veřejné síti – portál Azure – databáze Azure pro PostgreSQL – jeden server
-description: Přečtěte si, jak nakonfigurovat možnost Odepřít přístup k veřejné síti pomocí portálu Azure pro váš server Azure Database for PostgreSQL Single
+title: Odepřít přístup k veřejné síti – Azure Portal-Azure Database for PostgreSQL-jeden server
+description: Naučte se konfigurovat přístup k veřejné síti pomocí Azure Portal pro váš Azure Database for PostgreSQL jeden server.
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 4dff2321414721dbd415b468e59aea0ab4b3acee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79375119"
 ---
-# <a name="deny-public-network-access-in-azure-database-for-postgresql-single-server-using-azure-portal"></a>Odepření přístupu k veřejné síti v databázi Azure pro server PostgreSQL pomocí portálu Azure
+# <a name="deny-public-network-access-in-azure-database-for-postgresql-single-server-using-azure-portal"></a>Odepřít přístup k veřejné síti na Azure Database for PostgreSQL jednom serveru pomocí Azure Portal
 
-Tento článek popisuje, jak můžete nakonfigurovat azure databáze pro postgreSQL jeden server odepřít všechny veřejné konfigurace a povolit pouze připojení prostřednictvím privátní koncové body k dalšímu zvýšení zabezpečení sítě.
+Tento článek popisuje, jak můžete nakonfigurovat Azure Database for PostgreSQL jediný server pro odepření všech veřejných konfigurací a povolit jenom připojení prostřednictvím privátních koncových bodů, aby se zvýšilo zabezpečení sítě.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li dokončit tento návod, potřebujete:
+K dokončení tohoto průvodce budete potřebovat:
 
-* [Databáze Azure pro server PostgreSQL Single](quickstart-create-PostgreSQL Single server-server-database-using-azure-portal.md)
+* [Azure Database for PostgreSQL jeden server](quickstart-create-PostgreSQL Single server-server-database-using-azure-portal.md)
 
-## <a name="set-deny-public-network-access"></a>Nastavit odepřít přístup k veřejné síti
+## <a name="set-deny-public-network-access"></a>Nastavit přístup k veřejné síti odepřít
 
-Chcete-li nastavit přístup k veřejné síti postgreSQL single server, postupujte takto:
+Pomocí těchto kroků nastavte PostgreSQL jeden server odepřít přístup k veřejné síti:
 
-1. Na [webu Azure Portal](https://portal.azure.com/)vyberte stávající databázi Azure pro server PostgreSQL Single.
+1. V [Azure Portal](https://portal.azure.com/)vyberte svůj existující Azure Database for PostgreSQL jeden server.
 
-1. Na stránce PostgreSQL Single server v části **Nastavení**klepnutím na tlačítko **Zabezpečení připojení** otevřete stránku konfigurace zabezpečení připojení.
+1. Na stránce PostgreSQL jeden server klikněte v části **Nastavení**na **zabezpečení připojení** a otevřete stránku konfigurace zabezpečení připojení.
 
-1. V **příkazu Odepřít přístup k veřejné síti**vyberte Možnost **Ano,** chcete-li povolit odepření veřejného přístupu pro váš server PostgreSQL Single.
+1. V nástroji **Odepřít přístup k veřejné síti**vyberte **Ano** , pokud chcete povolit přístup odepřít veřejný přístup pro váš PostgreSQL Server.
 
-    ![Databáze Azure pro server PostgreSQL Single Odepřít přístup k síti](./media/howto-deny-public-network-access/deny-public-network-access.PNG)
+    ![Azure Database for PostgreSQL jeden server odepřít přístup k síti](./media/howto-deny-public-network-access/deny-public-network-access.PNG)
 
 1. Kliknutím na **Uložit** uložte změny.
 
-1. Oznámení potvrdí, že nastavení zabezpečení připojení bylo úspěšně povoleno.
+1. Oznámení ověří, že nastavení zabezpečení připojení bylo úspěšně povoleno.
 
-    ![Databáze Azure pro server PostgreSQL Single Odepřít úspěšný přístup k síti](./media/howto-deny-public-network-access/deny-public-network-access-success.png)
+    ![Úspěch Azure Database for PostgreSQL odepření přístupu k síti jednomu serveru](./media/howto-deny-public-network-access/deny-public-network-access-success.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte [si, jak vytvářet upozornění na metriky](howto-alert-on-metric.md).
+Přečtěte si informace o [tom, jak vytvářet výstrahy na metrikách](howto-alert-on-metric.md).

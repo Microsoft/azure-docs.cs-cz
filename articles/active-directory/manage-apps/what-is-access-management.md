@@ -1,6 +1,6 @@
 ---
-title: Správa přístupu k aplikacím pomocí Azure AD | Dokumenty společnosti Microsoft
-description: Popisuje, jak služba Azure Active Directory umožňuje organizacím určit aplikace, ke kterým má každý uživatel přístup.
+title: Správa přístupu k aplikacím pomocí Azure AD | Microsoft Docs
+description: Popisuje, jak Azure Active Directory umožňuje organizacím určit aplikace, ke kterým mají jednotliví uživatelé přístup.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -15,87 +15,87 @@ ms.date: 05/16/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 489b15423add03d69070bc32057af97396a85309
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79409062"
 ---
 # <a name="managing-access-to-apps"></a>Správa přístupu k aplikacím
 
-Průběžná správa přístupu, vyhodnocení využití a vytváření sestav jsou i nadále výzvou i poté, co je aplikace integrována do systému identit vaší organizace. V mnoha případech musí správci IT nebo helpdesk převzít trvalou aktivní roli při správě přístupu k vašim aplikacím. Někdy je přiřazení prováděno obecným nebo divizním IT týmem. Rozhodnutí o postoupení má být často delegováno na osoby s rozhodovací pravomocí, která vyžaduje jejich schválení před tím, než it provede přiřazení.  Jiné organizace investují do integrace s existujícím automatizovaným systémem správy identit a přístupu, jako je řízení přístupu na základě rolí (RBAC) nebo řízení přístupu na základě atributů (ABAC). Jak integrace, tak rozvoj pravidel bývají specializované a nákladné. Monitorování nebo vykazování obou přístupů řízení je jeho vlastní samostatné, nákladné a složité investice.
+Průběžná správa přístupu, vyhodnocení využití a vytváření sestav se po integraci aplikace do systému identit vaší organizace pořád stane výzvou. V mnoha případech musí správci IT nebo helpdesku vzít v úvahu probíhající aktivní roli při správě přístupu k vašim aplikacím. V některých případech je přiřazení prováděno generálním týmem týmu nebo oddělení IT. Rozhodnutí o přiřazení je často určené k tomu, aby mohl být delegovaný vedoucím podniku pro rozhodování, který vyžaduje jejich schválení předtím, než provede přiřazení.  Jiné organizace investovaly do integrace s existujícím automatizovaným systémem pro správu identit a přístupu, jako je Access Control na základě rolí (RBAC) nebo Access Control na základě atributů (ABAC). Vývoj pro integraci i pravidla je typicky specializovaný a nákladný. Monitorování nebo vytváření sestav z obou přístupů je svou vlastní samostatnou, nákladnou a složitou investici.
 
-## <a name="how-does-azure-active-directory-help"></a>Jak služba Azure Active Directory pomáhá?
+## <a name="how-does-azure-active-directory-help"></a>Jak Azure Active Directory nápovědě?
 
-Azure AD podporuje rozsáhlou správu přístupu pro nakonfigurované aplikace, což organizacím umožňuje snadno dosáhnout správných zásad přístupu od automatického přiřazení založeného na atributech (scénáře ABAC nebo RBAC) prostřednictvím delegování a včetně správce. S Azure AD můžete snadno dosáhnout složitých zásad, které kombinují více modelů správy pro jednu aplikaci a dokonce můžete znovu použít pravidla správy napříč aplikacemi se stejnými cílovými skupinami.
+Azure AD podporuje rozsáhlou správu přístupu pro nakonfigurované aplikace, což organizacím umožňuje snadno dosáhnout správných zásad přístupu v rozsahu od automatického přiřazení založeného na atributech (scénáře ABAC nebo RBAC) prostřednictvím delegování a správy správců. Pomocí Azure AD můžete snadno dosáhnout složitých zásad, kombinování více modelů správy pro jednu aplikaci a můžete dokonce znovu použít pravidla správy napříč aplikacemi se stejnými cílovými skupinami.
 
-Díky Azure AD je vykazování využití a přiřazení plně integrované, což správcům umožňuje snadno podávat zprávy o stavu přiřazení, chybách přiřazení a dokonce i využití.
+Pomocí služby Azure AD je vytváření sestav využití a přiřazení plně integrované a umožňuje správcům snadno vytvářet sestavy o stavu přiřazení, chybách přiřazení a dokonce o využití.
 
 ### <a name="assigning-users-and-groups-to-an-app"></a>Přiřazení uživatelů a skupin k aplikaci
 
 Přiřazení aplikace Azure AD se zaměřuje na dva primární režimy přiřazení:
 
-* **Individuální zadání** Správce IT s oprávněními globálního správce adresáře může vybrat jednotlivé uživatelské účty a udělit jim přístup k aplikaci.
+* **Individuální přiřazení** Správce IT, který má oprávnění globálního správce adresáře, může vybrat jednotlivé uživatelské účty a udělit jim přístup k aplikaci.
 
-* **Přiřazení založené na skupině (vyžaduje Azure AD Premium P1 nebo P2)** Správce IT s oprávněními globálního správce adresáře může aplikaci přiřadit skupinu. Přístup konkrétních uživatelů je určen tím, zda jsou členy skupiny v době, kdy se pokusí o přístup k aplikaci. Jinými slovy, správce může efektivně vytvořit pravidlo přiřazení, které uvádí, že "každý aktuální člen přiřazené skupiny má přístup k aplikaci". Pomocí této možnosti přiřazení mohou správci využívat některou z možností správy skupin Azure AD, včetně [dynamických skupin založených na atributech](../fundamentals/active-directory-groups-create-azure-portal.md), externích skupin systému (například místní služby Active Directory nebo Workday) nebo skupin spravovaných správcem nebo samoobslužných spravovaných. Jednu skupinu lze snadno přiřadit k více aplikacím a zajistit, aby aplikace se spřažením přiřazení mohly sdílet pravidla přiřazení, což snižuje celkovou složitost správy. Všimněte si, že vnořené členství ve skupinách nejsou podporovány pro přiřazení na základě skupiny k aplikacím v tomto okamžiku.
+* **Přiřazení na základě skupin (vyžaduje Azure AD Premium P1 nebo P2)** Správce IT, který má oprávnění globálního správce adresáře, může přiřadit skupinu k aplikaci. Přístup ke konkrétním uživatelům se určuje podle toho, jestli jsou členy skupiny v době, kdy se pokusí o přístup k aplikaci. Jinými slovy může správce efektivně vytvořit pravidlo přiřazení s informacemi o tom, že aktuální člen přiřazené skupiny má přístup k aplikaci. Pomocí této možnosti přiřazení můžou správci těžit z jakékoli možnosti správy skupin Azure AD, včetně [dynamických skupin založených na atributech](../fundamentals/active-directory-groups-create-azure-portal.md), skupin externích systémů (například místní služby Active Directory nebo Workday) nebo skupin spravovaných správcem nebo samoobslužné služby. Jednu skupinu je možné snadno přiřadit k více aplikacím. tím se zajistí, že aplikace s spřažením přiřazení můžou sdílet pravidla přiřazení a snížit tak celkovou složitost správy. Všimněte si, že v tuto chvíli není v tomto okamžiku pro přiřazení na základě skupin podporována vnořená členství ve skupině.
 
-Pomocí těchto dvou režimů přiřazení mohou správci dosáhnout jakéhokoli žádoucího přístupu správy přiřazení.
+Pomocí těchto dvou režimů přiřazení můžou správci dosáhnout jakéhokoli žádoucího přístupu pro správu přiřazení.
 
 ### <a name="requiring-user-assignment-for-an-app"></a>Vyžadování přiřazení uživatele pro aplikaci
 
-U určitých typů aplikací máte možnost [vyžadovat, aby uživatelé byli přiřazeni k aplikaci](assign-user-or-group-access-portal.md#configure-an-application-to-require-user-assignment). Tímzabráníte všem uživatelům v přihlášení s výjimkou uživatelů, které explicitně přiřadíte k aplikaci. Tuto možnost podporují následující typy aplikací:
+U určitých typů aplikací máte možnost [vyžadovat, aby byli uživatelé přiřazeni k aplikaci](assign-user-or-group-access-portal.md#configure-an-application-to-require-user-assignment). Tím se zabráníte všem uživatelům, kteří se přihlásí, s výjimkou uživatelů, které explicitně přiřadíte k aplikaci. Tuto možnost podporují následující typy aplikací:
 
-* Aplikace nakonfigurované pro federované jednotné přihlašování (SSO) s ověřováním na základě SAML
-* Aplikace proxy aplikací, které používají předběžné ověřování služby Azure Active Directory
-* Aplikace postavené na platformě aplikace Azure AD, které používají Ověřování OAuth 2.0 / OpenID Connect poté, co uživatel nebo správce s tímto uživatelem souhlasil. Některé podnikové aplikace nabízejí další kontrolu nad tím, kdo se může přihlásit.
+* Aplikace nakonfigurované pro federované jednotné přihlašování (SSO) s ověřováním založeném na SAML
+* Aplikace proxy aplikací, které používají předběžné ověření Azure Active Directory
+* Aplikace založené na platformě aplikace Azure AD, které používají ověřování OAuth 2,0/OpenID Connect po tom, co uživatel nebo správce souhlasí s touto aplikací. Některé podnikové aplikace poskytují další kontrolu nad tím, kdo se může přihlásit.
 
-Pokud přiřazení uživatele *není vyžadováno*, nepřiřazení uživatelé neuvidí aplikaci na přístupovém panelu Moje aplikace, ale stále se mohou přihlásit k samotné aplikaci (označované také jako přihlašování iniciované sp) nebo mohou použít **adresu URL uživatelského přístupu** na stránce **Vlastnosti** aplikace (označované také jako přihlášení iniciované idicí protokolu IDP).
+Když není přiřazení uživatele *vyžadováno*, nepřiřazeným uživatelům se aplikace na svém přístupovém panelu Moje aplikace uvidí, ale můžou se i nadále přihlašovat k samotné aplikaci (označované také jako přihlašování iniciované v rámci SP) nebo můžou použít **adresu URL přístupu uživatele** na stránce **vlastností** aplikace (označuje se také jako přihlášení iniciované IDP).
 
-U některých aplikací není ve vlastnostech aplikace k dispozici možnost vyžadovat přiřazení uživatele. V těchto případech můžete pomocí prostředí PowerShell nastavit vlastnost appRoleAssignmentRequired na instančním objektu.
+U některých aplikací není ve vlastnostech aplikace možnost vyžadovat přiřazení uživatele k dispozici. V těchto případech můžete pomocí PowerShellu nastavit vlastnost appRoleAssignmentRequired instančního objektu.
 
 ### <a name="determining-the-user-experience-for-accessing-apps"></a>Určení uživatelského prostředí pro přístup k aplikacím
 
-Azure AD poskytuje [několik přizpůsobitelných způsobů nasazení aplikací](end-user-experiences.md) koncovým uživatelům ve vaší organizaci:
+Azure AD poskytuje [několik přizpůsobitelných způsobů, jak nasadit aplikace](end-user-experiences.md) pro koncové uživatele ve vaší organizaci:
 
-* Přístupový panel Azure AD My Apps
-* Spouštěč aplikací Office 365
-* Přímé přihlašování k federovaným aplikacím (service-pr)
+* Přístupový panel služby Azure AD moje aplikace
+* Spouštěč aplikace Office 365
+* Přímé přihlašování k federovaným aplikacím (služba-PR)
 * Přímé odkazy na federované nebo existující aplikace či aplikace založené na hesle
 
-Můžete určit, jestli ji uživatelé přiřazení k podnikové aplikaci uvidí na přístupovém panelu a ve spouštěči aplikací Office 365.
+Můžete určit, jestli se uživatelé přiřazení k podnikové aplikaci uvidí na přístupovém panelu a ve Spouštěči aplikací Office 365.
 
-## <a name="example-complex-application-assignment-with-azure-ad"></a>Příklad: Komplexní přiřazení aplikací s Azure AD
-Zvažte aplikaci, jako je Salesforce. V mnoha organizacích salesforce používají především marketingové a prodejní týmy. Členové marketingového týmu mají často vysoce privilegovaný přístup k salesforce, zatímco členové prodejního týmu mají omezený přístup. V mnoha případech má široká populace informačních pracovníků omezený přístup k aplikaci. Výjimky z těchto pravidel věci komplikují. Často je výsadou marketingových nebo prodejních vedoucích týmů udělit uživateli přístup nebo změnit jejich role nezávisle na těchto obecných pravidlech.
+## <a name="example-complex-application-assignment-with-azure-ad"></a>Příklad: komplexní přiřazení aplikace s Azure AD
+Vezměte v úvahu aplikaci, jako je Salesforce. V mnoha organizacích se Salesforce primárně používá pro marketingové a prodejní týmy. Členové marketingového týmu často mají vysoce privilegovaný přístup k Salesforce, zatímco členové prodejního týmu mají omezený přístup. V mnoha případech má hlavní populace informačních pracovníků omezený přístup k aplikaci. Výjimky z těchto pravidel komplikuje věci. Je často výhradním přístupem k marketingovým nebo prodejním týmům, aby uživatelům udělili přístup nebo měnili své role nezávisle na těchto obecných pravidlech.
 
-S Azure AD, aplikace jako Salesforce můžete předem nakonfigurovat pro jednotné přihlašování (SSO) a automatizované zřizování. Po konfiguraci aplikace může správce provést jednorázovou akci k vytvoření a přiřazení příslušných skupin. V tomto příkladu může správce provést následující přiřazení:
+S Azure AD je možné předem nakonfigurovat aplikace, jako je Salesforce, jednotné přihlašování (SSO) a automatizované zřizování. Po nakonfigurování aplikace může správce provést jednorázovou akci, která vytvoří a přiřadí příslušné skupiny. V tomto příkladu může správce spustit následující přiřazení:
 
-* [Dynamické skupiny](../fundamentals/active-directory-groups-create-azure-portal.md) lze definovat tak, aby automaticky reprezentovaly všechny členy marketingových a prodejních týmů pomocí atributů, jako je oddělení nebo role:
+* [Dynamické skupiny](../fundamentals/active-directory-groups-create-azure-portal.md) se dají definovat tak, aby automaticky představovaly všechny členy marketingových a prodejních týmů pomocí atributů, jako je oddělení nebo role:
   
-  * Všichni členové marketingových skupin by byli přiřazeni k roli "marketing" v Salesforce
-  * Všichni členové skupin prodejního týmu budou přiřazeni k roli "prodej" v salesforce. Další upřesnění by mohlo použít více skupin, které představují regionální prodejní týmy přiřazené k různým rolím Salesforce.
+  * Do role marketing v Salesforce by se přiřadili všichni členové marketingových skupin.
+  * Všechny členy skupin prodejního týmu by se přiřadily k roli Sales v Salesforce. Další upřesnění může použít několik skupin, které reprezentují regionální prodejní týmy přiřazené k různým rolím Salesforce.
 
-* Chcete-li povolit mechanismus výjimky, samoobslužné skupiny mohou být vytvořeny pro každou roli. Například skupinu "Prodejní síla marketingové výjimky" lze vytvořit jako samoobslužnou skupinu. Skupinu lze přiřadit k marketingové roli Salesforce a tým vedoucích marketingu může být vlastníkem. Členové týmu vedoucích marketingu mohou přidávat nebo odebírat uživatele, nastavit zásady připojení nebo dokonce schválit nebo zamítnout žádosti jednotlivých uživatelů o připojení. Tento mechanismus je podporován prostřednictvím informačnípracovník odpovídající zkušenosti, které nevyžaduje specializované školení pro vlastníky nebo členy.
+* Pro povolení mechanismu výjimek může být pro každou roli vytvořená samoobslužná skupina. Například skupina "výjimka marketingu pro službu Salesforce" může být vytvořena jako samoobslužná skupina. Skupinu je možné přiřadit k marketingovým rolím Salesforce a tým vedoucí oddělení marketingu může být vlastníkem. Členové týmu marketingového vedení můžou přidat nebo odebrat uživatele, nastavit zásady připojení nebo dokonce schvalovat nebo odmítat žádosti jednotlivých uživatelů o připojení. Tento mechanismus se podporuje prostřednictvím vhodného prostředí pro informační pracovníky, které nevyžaduje specializované školení pro vlastníky nebo členy.
 
-V takovém případě by se všichni přiřazení uživatelé automaticky zřažili do služby Salesforce, protože jsou přidáni do různých skupin, jejich přiřazení role by bylo aktualizováno v Salesforce. Uživatelé by mohli zjistit a získat přístup k Salesforce prostřednictvím panelu pro přístup k aplikacím společnosti Microsoft, webových klientů sady Office nebo dokonce přechodem na přihlašovací stránku salesforce organizace. Správci by mohli snadno zobrazit stav využití a přiřazení pomocí sestav Azure AD.
+V tomto případě se všichni přiřazení uživatelé automaticky zřídí do Salesforce, protože se přidají do různých skupin. jejich přiřazení role by se v Salesforce aktualizovala. Uživatelé by mohli zjišťovat a přistupovat k Salesforce prostřednictvím panelu pro přístup k aplikacím Microsoftu, webových klientů Office, nebo dokonce přechodem na přihlašovací stránku organizace Salesforce. Správci by mohli snadno zobrazit využití a stav přiřazení pomocí generování sestav Azure AD.
 
-Správci můžou používat [podmíněný přístup Azure AD](../active-directory-conditional-access-azure-portal.md) k nastavení zásad přístupu pro konkrétní role. Tyto zásady mohou zahrnovat, zda je přístup povolen mimo podnikové prostředí a dokonce i vícefaktorové ověřování nebo požadavky na zařízení k dosažení přístupu v různých případech.
+Správci můžou využít [podmíněný přístup Azure AD](../active-directory-conditional-access-azure-portal.md) k nastavení zásad přístupu pro konkrétní role. Tyto zásady můžou zahrnovat, jestli je povolený přístup mimo podnikové prostředí, a dokonce i Multi-Factor Authentication nebo požadavky na zařízení pro zajištění přístupu v různých případech.
 
-## <a name="access-to-microsoft-applications"></a>Přístup k aplikacím společnosti Microsoft
+## <a name="access-to-microsoft-applications"></a>Přístup k aplikacím Microsoftu
 
-Microsoft Aplikace (jako Office 365 Exchange, SharePoint, Yammer, atd.) jsou přiřazeny a spravovány trochu jinak než aplikace SaaS třetích stran nebo jiné aplikace, které integrujete s Azure AD pro jednotné přihlašování.
+Aplikace Microsoftu (jako je Office 365 Exchange, SharePoint, Yammer atd.) se přiřazují a spravují jinak než aplikace třetích stran SaaS nebo jiné aplikace, které integrujete se službou Azure AD pro jednotné přihlašování.
 
-Existují tři hlavní způsoby, které uživatel může získat přístup k aplikaci publikované společností Microsoft.
+Existují tři hlavní způsoby, jak může uživatel získat přístup k aplikaci publikované v Microsoftu.
 
-- U aplikací v Office 365 nebo jiných placených sadách je uživatelům udělen přístup prostřednictvím **přiřazení licence** buď přímo k jejich uživatelskému účtu, nebo prostřednictvím skupiny využívající možnosti přiřazení licencí založených na skupině.
-- U aplikací, které společnost Microsoft nebo třetí strana publikuje volně pro každého, kdo může používat, může být uživatelům udělen přístup prostřednictvím [souhlasu uživatele](configure-user-consent.md). To znamená, že se přihlásí k aplikaci pomocí svého účtu Azure AD Work nebo School a umožní jí přístup k některé omezené sadě dat na svém účtu.
-- U aplikací, které společnost Microsoft nebo třetí strana publikuje volně pro každého, kdo může používat, může být uživatelům udělen přístup také na základě [souhlasu správce](manage-consent-requests.md). To znamená, že správce určil, že aplikace může být použita všemi v organizaci, takže se k aplikaci přihlásí pomocí účtu globálního správce a udělí přístup všem uživatelům v organizaci.
+- Pro aplikace v sadě Office 365 nebo jiné placené sady se uživatelům udělí přístup prostřednictvím **přiřazení licence** buď přímo k jejich uživatelskému účtu, nebo prostřednictvím skupiny s využitím možnosti přiřazení licencí na základě skupin.
+- Pro aplikace, které společnost Microsoft nebo třetí strana zveřejňuje volně, aby je mohli používat, můžou být uživatelům udělený přístup prostřednictvím [souhlasu uživatele](configure-user-consent.md). To znamená, že se přihlásí k aplikaci pomocí pracovního nebo školního účtu Azure AD a umožní, aby měl přístup k některé omezené sadě dat na svém účtu.
+- Pro aplikace, které společnost Microsoft nebo třetí strana zveřejňuje volně pro použití kýmkoli, můžou být uživatelům udělen i přístup prostřednictvím [souhlasu správce](manage-consent-requests.md). To znamená, že správce zjistil, že aplikace může být používána všemi uživateli v organizaci, aby se přihlásila k aplikaci pomocí účtu globálního správce a udělila přístup všem v organizaci.
 
-Některé aplikace kombinují tyto metody. Například některé aplikace Microsoftu jsou součástí předplatného Office 365, ale stále vyžadují souhlas.
+Některé aplikace tyto metody kombinují. Například některé aplikace od společnosti Microsoft jsou součástí předplatného sady Office 365, ale stále vyžadují souhlas.
 
-Uživatelé mají přístup k aplikacím Office 365 prostřednictvím svých portálů Office 365. Aplikace Office 365 můžete taky zobrazit nebo skrýt na přístupovém panelu Moje aplikace s [přepínačem Viditelnost Office 365](hide-application-from-user-portal.md) v **nastavení uživatele**adresáře . 
+Uživatelé můžou k aplikacím Office 365 přistupovat prostřednictvím svých portálů Office 365. Můžete také zobrazit nebo skrýt aplikace Office 365 na přístupovém panelu Moje aplikace s [přepínačem viditelnosti sady office 365](hide-application-from-user-portal.md) v **uživatelském nastavení**adresáře. 
 
-Stejně jako u podnikových aplikací můžete [přiřadit uživatele](assign-user-or-group-access-portal.md) k určitým aplikacím Microsoftu prostřednictvím portálu Azure nebo, pokud možnost portálu není dostupná, pomocí PowerShellu.
+Stejně jako u podnikových aplikací můžete [přiřadit uživatele](assign-user-or-group-access-portal.md) k určitým aplikacím microsoftu prostřednictvím Azure Portal nebo, pokud možnost portálu není dostupná, pomocí PowerShellu.
 
 ## <a name="next-steps"></a>Další kroky
 * [Ochrana aplikací pomocí podmíněného přístupu](../active-directory-conditional-access-azure-portal.md)
-* [Samoobslužné řízení skupin/SSAA](../users-groups-roles/groups-self-service-management.md)
+* [Samoobslužná správa skupin/SSAA](../users-groups-roles/groups-self-service-management.md)

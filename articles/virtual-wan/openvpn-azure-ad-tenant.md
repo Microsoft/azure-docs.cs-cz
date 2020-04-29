@@ -1,6 +1,6 @@
 ---
-title: 'Tenant Azure AD pro připojení VPN uživatelů: Ověřování Azure AD'
-description: K připojení k virtuální síti pomocí ověřování Azure AD můžete použít azure virtuální síť WAN (point-to-site).
+title: 'Tenant Azure AD pro uživatelská připojení VPN: ověřování Azure AD'
+description: K připojení k virtuální síti pomocí ověřování Azure AD můžete použít Azure Virtual WAN User VPN (Point-to-site).
 titleSuffix: Azure Virtual WAN
 services: virtual-wan
 author: anzaman
@@ -9,51 +9,51 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: alzam
 ms.openlocfilehash: 74347ce969b6a5ffd57f5ca8396517e78590f3f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80059445"
 ---
-# <a name="create-an-azure-active-directory-tenant-for-user-vpn-openvpn-protocol-connections"></a>Vytvoření klienta Služby Azure Active Directory pro připojení protokolu OPENVPN uživatelské sítě VPN
+# <a name="create-an-azure-active-directory-tenant-for-user-vpn-openvpn-protocol-connections"></a>Vytvoření tenanta Azure Active Directory pro připojení uživatele VPN OpenVPN protokolu
 
-Při připojování k virtuální síti můžete použít ověřování na základě certifikátu nebo ověřování RADIUS. Pokud však používáte protokol Open VPN, můžete také použít ověřování služby Azure Active Directory. Tento článek vám pomůže nastavit klienta Azure AD pro ověřování open vpn uživatele virtuální sítě WAN (point-to-site).
+Při připojování k virtuální síti můžete použít ověřování založené na certifikátech nebo ověřování pomocí protokolu RADIUS. Když ale použijete otevřený protokol sítě VPN, můžete použít i Azure Active Directory ověřování. Tento článek vám pomůže nastavit tenanta Azure AD pro virtuální síť VPN uživatele sítě WAN (Point-to-site) s otevřením ověřování VPN.
 
 > [!NOTE]
-> Ověřování Azure AD je podporované&reg; jenom pro připojení protokolu OpenVPN.
+> Ověřování Azure AD se podporuje jenom pro připojení&reg; protokolu OpenVPN.
 >
 
-## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1. Vytvoření klienta Azure AD
+## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1. vytvoření tenanta Azure AD
 
-Vytvořte klienta Azure AD pomocí kroků v článku [Vytvořit nový klient:](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+Vytvořte tenanta Azure AD pomocí kroků v článku [Vytvoření nového tenanta](../active-directory/fundamentals/active-directory-access-create-new-tenant.md) :
 
 * Název organizace
 * Počáteční název domény
 
 Příklad:
 
-   ![Nový klient Azure AD](./media/openvpn-create-azure-ad-tenant/newtenant.png)
+   ![Nový tenant Azure AD](./media/openvpn-create-azure-ad-tenant/newtenant.png)
 
-## <a name="2-create-azure-ad-tenant-users"></a><a name="users"></a>2. Vytvoření uživatelů klienta Azure AD
+## <a name="2-create-azure-ad-tenant-users"></a><a name="users"></a>2. vytvoření uživatelů klienta Azure AD
 
-Dále vytvořte dva uživatelské účty. Vytvořte jeden účet globálního správce a jeden hlavní uživatelský účet. Hlavní uživatelský účet se používá jako hlavní vložený účet (účet služby). Když vytvoříte uživatelský účet klienta Azure AD, upravíte roli adresáře pro typ uživatele, který chcete vytvořit.
+Dále vytvořte dva uživatelské účty. Vytvořte jeden účet globálního správce a jeden hlavní uživatelský účet. Hlavní uživatelský účet se používá jako účet pro vložení hlavního serveru (účet služby). Když vytvoříte uživatelský účet tenanta Azure AD, upravíte roli adresáře pro typ uživatele, který chcete vytvořit.
 
-Pomocí kroků v [tomto článku](../active-directory/fundamentals/add-users-azure-active-directory.md) vytvořte alespoň dva uživatele pro klienta Azure AD. Nezapomeňte změnit **roli adresáře** a vytvořit tak typy účtů:
+Postup v [tomto článku](../active-directory/fundamentals/add-users-azure-active-directory.md) použijte k vytvoření alespoň dvou uživatelů pro vašeho TENANTA Azure AD. Nezapomeňte změnit **roli adresáře** , aby se vytvořily typy účtů:
 
 * Globální správce
 * Uživatel
 
-## <a name="3-enable-azure-ad-authentication-on-the-vpn-gateway"></a><a name="enable-authentication"></a>3. Povolení ověřování Azure AD na bráně VPN
+## <a name="3-enable-azure-ad-authentication-on-the-vpn-gateway"></a><a name="enable-authentication"></a>3. povolení ověřování Azure AD na bráně VPN
 
-1. Vyhledejte ID adresáře adresáře, který chcete použít pro ověřování. Je uveden v části vlastnosti na stránce služby Active Directory.
+1. Vyhledejte ID adresáře adresáře, který chcete použít pro ověřování. Je uveden v části Properties (vlastnosti) stránky Active Directory.
 
     ![ID adresáře](./media/openvpn-create-azure-ad-tenant/directory-id.png)
 
 2. Zkopírujte ID adresáře.
 
-3. Přihlaste se k portálu Azure jako uživatel, kterému je přiřazena role **globálního správce.**
+3. Přihlaste se k Azure Portal jako uživatel, kterému je přiřazena role **globálního správce** .
 
-4. Dále uveďte souhlas správce. Zkopírujte a vložte adresu URL, která se týkají umístění nasazení, do adresního řádku prohlížeče:
+4. Pak poskytněte souhlas správce. Zkopírujte a vložte adresu URL, která se vztahuje k umístění vašeho nasazení, do adresního řádku v prohlížeči:
 
     Public
 
@@ -79,20 +79,20 @@ Pomocí kroků v [tomto článku](../active-directory/fundamentals/add-users-azu
     https://https://login.chinacloudapi.cn/common/oauth2/authorize?client_id=49f817b6-84ae-4cc0-928c-73f27289b3aa&response_type=code&redirect_uri=https://portal.azure.cn&nonce=1234&prompt=admin_consent
     ```
 
-5. Pokud se zobrazí výzva, vyberte účet **globálního správce.**
+5. Pokud se zobrazí výzva, vyberte **globální účet správce** .
 
     ![ID adresáře](./media/openvpn-create-azure-ad-tenant/pick.png)
 
-6. Po zobrazení výzvy vyberte **Přijmout.**
+6. Po zobrazení výzvy vyberte **přijmout** .
 
     ![Accept](./media/openvpn-create-azure-ad-tenant/accept.jpg)
 
-7. Ve službě Azure AD se v **podnikových aplikacích**zobrazí **azure vpn.**
+7. V rámci Azure AD se v **podnikových aplikacích**zobrazí uvedená služba **Azure VPN** .
 
     ![Azure VPN](./media/openvpn-create-azure-ad-tenant/azurevpn.png)
 
-8. Konfigurace ověřování Azure AD pro uživatele VPN a jeho přiřazení k virtuálnímu rozbočovači podle kroků v [části Konfigurace ověřování Azure aD pro připojení point-to-site k Azure](virtual-wan-point-to-site-azure-ad.md)
+8. Nakonfigurujte ověřování Azure AD pro uživatele VPN a přiřaďte ho k virtuálnímu rozbočovači pomocí postupu uvedeného v části [Konfigurace ověřování Azure AD pro připojení typu Point-to-site k Azure](virtual-wan-point-to-site-azure-ad.md) .
 
 ## <a name="next-steps"></a>Další kroky
 
-Chcete-li se připojit k virtuální síti, musíte vytvořit a nakonfigurovat profil klienta VPN a přidružit jej k virtuálnímu rozbočovači. Viz [Konfigurace ověřování Azure AD pro připojení point-to-site k Azure](virtual-wan-point-to-site-azure-ad.md).
+Aby bylo možné se připojit k virtuální síti, musíte vytvořit a nakonfigurovat profil klienta VPN a přidružit ho k virtuálnímu rozbočovači. Viz [Konfigurace ověřování Azure AD pro připojení Point-to-site k Azure](virtual-wan-point-to-site-azure-ad.md).

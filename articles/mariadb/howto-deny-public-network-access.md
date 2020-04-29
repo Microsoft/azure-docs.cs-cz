@@ -1,46 +1,46 @@
 ---
-title: Odepřít přístup k veřejné síti – portál Azure – databáze Azure pro MariaDB
-description: Přečtěte si, jak nakonfigurovat možnost Odepřít přístup k veřejné síti pomocí portálu Azure pro databázi Azure pro MariaDB.
+title: Odepřít přístup k veřejné síti – Azure Portal-Azure Database for MariaDB
+description: Naučte se konfigurovat přístup k veřejné síti pomocí Azure Portal pro Azure Database for MariaDB
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 87b6033e486e9009573436628d0183c8a022aced
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79375236"
 ---
-# <a name="deny-public-network-access-in-azure-database-for-mariadb-using-azure-portal"></a>Odepření přístupu k veřejné síti v databázi Azure pro MariaDB pomocí portálu Azure
+# <a name="deny-public-network-access-in-azure-database-for-mariadb-using-azure-portal"></a>Odepřít přístup k veřejné síti v Azure Database for MariaDB pomocí Azure Portal
 
-Tento článek popisuje, jak můžete nakonfigurovat Azure Database pro MariaDB server odepřít všechny veřejné konfigurace a povolit pouze připojení prostřednictvím privátní koncové body k dalšímu zvýšení zabezpečení sítě.
+Tento článek popisuje, jak můžete nakonfigurovat server Azure Database for MariaDB tak, aby odepřel všechny veřejné konfigurace a povoloval jenom připojení prostřednictvím privátních koncových bodů, aby se zvýšilo zabezpečení sítě.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li dokončit tento návod, potřebujete:
+K dokončení tohoto průvodce budete potřebovat:
 
-* [Databáze Azure pro MariaDB](quickstart-create-MariaDB-server-database-using-azure-portal.md)
+* [Azure Database for MariaDB](quickstart-create-MariaDB-server-database-using-azure-portal.md)
 
-## <a name="set-deny-public-network-access"></a>Nastavit odepřít přístup k veřejné síti
+## <a name="set-deny-public-network-access"></a>Nastavit přístup k veřejné síti odepřít
 
-Chcete-li nastavit přístup k veřejné síti serveru MariaDB, postupujte takto:
+Pomocí těchto kroků nastavte MariaDB Server odepřít přístup k veřejné síti:
 
-1. Na [webu Azure Portal](https://portal.azure.com/)vyberte stávající azure databázi pro server MariaDB.
+1. V [Azure Portal](https://portal.azure.com/)vyberte svůj existující Azure Database for MariaDB Server.
 
-1. Na stránce serveru MariaDB v části **Nastavení**klepněte na tlačítko **Zabezpečení připojení** a otevřete stránku konfigurace zabezpečení připojení.
+1. Na stránce Server MariaDB v části **Nastavení**klikněte na **zabezpečení připojení** . tím otevřete stránku konfigurace zabezpečení připojení.
 
-1. V příkazu Odepřít přístup k veřejné síti vyberte **Ano,** chcete-li povolit odepření veřejného přístupu pro server MariaDB.
+1. V nástroji odepřít přístup k veřejné síti vyberte **Ano** , pokud chcete povolit přístup pro odepření přístupu pro váš server MariaDB.
 
-    ![Databáze Azure pro MariaDB Odepřít přístup k síti](./media/howto-deny-public-network-access/deny-public-network-access.PNG)
+    ![Azure Database for MariaDB odepřít přístup k síti](./media/howto-deny-public-network-access/deny-public-network-access.PNG)
 
 1. Kliknutím na **Uložit** uložte změny.
 
-1. Oznámení potvrdí, že nastavení zabezpečení připojení bylo úspěšně povoleno.
+1. Oznámení ověří, že nastavení zabezpečení připojení bylo úspěšně povoleno.
 
-    ![Azure Database for MariaDB Deny network access success](./media/howto-deny-public-network-access/deny-public-network-access-success.png)
+    ![Azure Database for MariaDB odepřít úspěšné přístupy k síti](./media/howto-deny-public-network-access/deny-public-network-access-success.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte [si, jak vytvářet upozornění na metriky](howto-alert-metric.md).
+Přečtěte si informace o [tom, jak vytvářet výstrahy na metrikách](howto-alert-metric.md).

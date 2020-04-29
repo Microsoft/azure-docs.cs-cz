@@ -1,6 +1,6 @@
 ---
-title: IP adresy služby Azure API Management | Dokumenty společnosti Microsoft
-description: Zjistěte, jak načíst IP adresy služby Azure API Management a když se změní.
+title: IP adresy služby Azure API Management | Microsoft Docs
+description: Naučte se, jak načíst IP adresy služby Azure API Management, a když se změní.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -13,25 +13,25 @@ ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
 ms.openlocfilehash: 45501fee9ae6ff47643a1ed197a07c4ba598e981
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80047745"
 ---
-# <a name="ip-addresses-of-azure-api-management"></a>IP adresy Azure API Management
+# <a name="ip-addresses-of-azure-api-management"></a>IP adresy API Management Azure
 
-V tomto článku popisujeme, jak načíst IP adresy služby Azure API Management. IP adresy mohou být veřejné nebo soukromé, pokud je služba ve virtuální síti.
+V tomto článku popisujeme, jak načíst IP adresy služby Azure API Management. Pokud je služba ve virtuální síti, může být IP adresa veřejná nebo soukromá.
 
-Pomocí adres IP můžete vytvořit pravidla brány firewall, filtrovat příchozí provoz do back-endových služeb nebo omezit odchozí provoz.
+Pomocí IP adres můžete vytvořit pravidla brány firewall, filtrovat příchozí provoz na back-end služby nebo omezit odchozí přenosy.
 
 ## <a name="ip-addresses-of-api-management-service"></a>IP adresy služby API Management
 
-Každá instance služby správy rozhraní API na úrovni Vývojář, Basic, Standard nebo Premium má veřejné IP adresy, které jsou výhradní pouze pro tuto instanci služby (nejsou sdíleny s jinými prostředky). 
+Každá API Management instance služby v úrovni Developer, Basic, Standard nebo Premium má veřejné IP adresy, které jsou výhradně k této instanci služby (nejsou sdíleny s jinými prostředky). 
 
-IP adresy můžete načíst z přehledového řídicího panelu vašeho prostředku na webu Azure Portal.
+IP adresy můžete načíst z řídicího panelu přehled prostředku v Azure Portal.
 
-![IP adresa pro správu rozhraní API](media/api-management-howto-ip-addresses/public-ip.png)
+![API Management IP adresa](media/api-management-howto-ip-addresses/public-ip.png)
 
 Můžete je také načíst programově pomocí následujícího volání rozhraní API:
 
@@ -39,7 +39,7 @@ Můžete je také načíst programově pomocí následujícího volání rozhran
 GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<service-name>?api-version=<api-version>
 ```
 
-Součástí odpovědi budou veřejné IP adresy:
+Veřejné IP adresy budou součástí odpovědi:
 
 ```json
 {
@@ -55,19 +55,19 @@ Součástí odpovědi budou veřejné IP adresy:
 }
 ```
 
-V [nasazeních s více oblastmi](api-management-howto-deploy-multi-region.md)má každé regionální nasazení jednu veřejnou IP adresu.
+V případě [nasazení s více oblastmi](api-management-howto-deploy-multi-region.md)má každé regionální nasazení jednu veřejnou IP adresu.
 
 ## <a name="ip-addresses-of-api-management-service-in-vnet"></a>IP adresy služby API Management ve virtuální síti
 
-Pokud je vaše služba api management uvnitř virtuální sítě, bude mít dva typy IP adres – veřejné a soukromé.
+Pokud je vaše služba API Management ve virtuální síti, bude mít dva typy IP adres – Public a Private.
 
-Veřejné IP adresy se používají pro `3443` interní komunikaci na portu – pro správu konfigurace (například prostřednictvím Správce prostředků Azure). V konfiguraci externí virtuální sítě se také používají pro provoz rozhraní API za běhu. Při odeslání požadavku ze správy rozhraní API do veřejného (internetového) back-endu bude veřejná IP adresa viditelná jako původ požadavku.
+Veřejné IP adresy se používají pro interní komunikaci na portu `3443` – pro správu konfigurace (například prostřednictvím Azure Resource Manager). V konfiguraci externí virtuální sítě se používají také pro provoz rozhraní API modulu runtime. Pokud je žádost odeslána z API Management do veřejného back-endu (internetového), bude se jako zdroj žádosti zobrazovat veřejná IP adresa.
 
-Privátní virtuální IP adresy (VIP), které jsou dostupné **jenom** v [režimu interní virtuální sítě](api-management-using-with-internal-vnet.md), se používají k připojení z rámci sítě ke koncovým bodům správy rozhraní API – brány, portál pro vývojáře a rovina správy pro přímý přístup k rozhraní API. Můžete je použít k nastavení záznamů DNS v síti.
+Privátní virtuální IP adresy (VIP), které jsou dostupné **jenom** v [režimu interní sítě VNet](api-management-using-with-internal-vnet.md), se používají k připojení z sítě k API Management koncových bodů – bran, portálu pro vývojáře a roviny správy pro přímý přístup k rozhraní API. Můžete je použít k nastavení záznamů DNS v síti.
 
-Adresy obou typů se zobrazí na webu Azure Portal a v odpovědi na volání rozhraní API:
+V Azure Portal se zobrazí adresy obou typů a v reakci na volání rozhraní API:
 
-![Správa rozhraní API v IP adrese virtuální sítě](media/api-management-howto-ip-addresses/vnet-ip.png)
+![API Management ve virtuální IP adrese](media/api-management-howto-ip-addresses/vnet-ip.png)
 
 
 ```json
@@ -89,21 +89,21 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 }
 ```
 
-Správa rozhraní API používá veřejnou IP adresu pro připojení mimo virtuální síť a privátní IP adresu pro připojení v rámci virtuální sítě.
+API Management používá veřejnou IP adresu pro připojení mimo virtuální síť a soukromou IP adresu pro připojení v rámci virtuální sítě.
 
-## <a name="ip-addresses-of-consumption-tier-api-management-service"></a>IP adresy služby Správy rozhraní API úrovně spotřeby
+## <a name="ip-addresses-of-consumption-tier-api-management-service"></a>IP adresy služby API Management úrovně spotřeby
 
-Pokud je vaše služba api Management služba úroveň spotřeby, nemá vyhrazenou IP adresu. Služba úrovně spotřeby běží na sdílené infrastruktuře a bez deterministické IP adresy. 
+Pokud vaše služba API Management je služba na úrovni spotřeby, nemá vyhrazenou IP adresu. Služba na úrovni spotřeby běží na sdílené infrastruktuře a bez deterministické IP adresy. 
 
-Pro účely omezení provozu můžete použít rozsah IP adres datových center Azure. Přesné kroky najdete [v článku s dokumentací k funkcím Azure.](../azure-functions/ip-addresses.md#data-center-outbound-ip-addresses)
+Pro účely omezení provozu můžete použít rozsah IP adres datových center Azure. Přesný postup najdete [v článku dokumentace k Azure Functions](../azure-functions/ip-addresses.md#data-center-outbound-ip-addresses) .
 
 ## <a name="changes-to-the-ip-addresses"></a>Změny IP adres
 
-V úrovních Developer, Basic, Standard a Premium pro správu rozhraní API jsou veřejné IP adresy (VIP) statické po celou dobu životnosti služby, s následujícími výjimkami:
+V API Management úrovně pro vývojáře, Basic, Standard a Premium jsou veřejné IP adresy (VIP) pro celou dobu životnosti služby statické, s následujícími výjimkami:
 
-* Služba je odstraněna a znovu vytvořena.
-* Předplatné služby je [pozastaveno](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) nebo [upozorňováno](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) (například pro neplacení) a poté obnoveno.
-* Virtuální síť Azure se přidá do služby nebo se z ní obere.
-* Služba API Management se přepíná mezi režimem externího a interního nasazení virtuální sítě.
+* Služba se odstraní a pak znovu vytvoří.
+* Předplatné služby je [pozastavené](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) nebo se [varuje](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) (například pro nedoplatk) a pak se znovu obnoví.
+* Služba Azure Virtual Network je do služby přidána nebo odebrána.
+* Služba API Management se přepnula mezi režimem nasazení externí a interní virtuální sítě.
 
-V [nasazeních s více oblastmi](api-management-howto-deploy-multi-region.md)se regionální adresa IP změní, pokud je oblast uvolněna a obnovena.
+Při [nasazení s více oblastmi](api-management-howto-deploy-multi-region.md)se místní IP adresa změní, pokud je oblast uvolněné a pak se znovu obnoví.
