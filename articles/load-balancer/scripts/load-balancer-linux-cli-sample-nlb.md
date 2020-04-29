@@ -1,5 +1,5 @@
 ---
-title: Provoz vyrovnávání zatížení na virtuální počítače pro HA – Azure CLI - Azure Balancer
+title: Vyrovnávání zatížení provozu do virtuálních počítačů pro HA – Azure CLI – Azure Load Balancer
 description: Tento ukázkový skript Azure CLI provádí vyrovnávání zatížení provozu na virtuálních počítačích pro zajištění vysoké dostupnosti.
 services: load-balancer
 documentationcenter: load-balancer
@@ -12,10 +12,10 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: allensu
 ms.openlocfilehash: c0bfb5705989c99d3626d6e728b764e94f83fffe
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74048912"
 ---
 # <a name="azure-cli-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Ukázkový skript Azure CLI: Vyrovnávání zatížení provozu na virtuálních počítačích pro zajištění vysoké dostupnosti

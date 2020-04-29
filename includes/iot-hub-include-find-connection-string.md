@@ -9,23 +9,23 @@ ms.date: 11/02/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 8d7ac457041474f4e774414b1d5e6f9ed09dc856
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67175104"
 ---
 <!-- this tells how to get the connection string for your hub -->
 <!-- This assumes the user is looking at his hub in the portal. -->
 
-Po vytvoření rozbočovače načtěte připojovací řetězec pro rozbočovač. Používá se k připojení zařízení a aplikací k rozbočovači. 
+Po vytvoření centra načtěte připojovací řetězec pro centrum. Slouží k připojení zařízení a aplikací k vašemu centru. 
 
-1. Kliknutím na centrum zobrazíte podokno Služby IoT Hub s nastavením a tak dále. Klikněte na **Zásady sdíleného přístupu**.
+1. Kliknutím na centrum zobrazíte podokno IoT Hub s nastavením a tak dále. Klikněte na **zásady sdíleného přístupu**.
    
 2. V okně **Zásady sdíleného přístupu** vyberte zásadu **iothubowner**. 
 
-3. V části **Sdílené přístupové klíče**zkopírujte **připojovací řetězec – primární klíč,** který se má použít později.
+3. V části **sdílené přístupové klíče**zkopírujte **připojovací řetězec – primární klíč** , který se má použít později.
 
-    ![Zobrazit, jak načíst připojovací řetězec](./media/iot-hub-include-find-connection-string/iot-hub-get-connection-string.png)
+    ![Zobrazit způsob načtení připojovacího řetězce](./media/iot-hub-include-find-connection-string/iot-hub-get-connection-string.png)
 
     Další informace najdete v tématu [Řízení přístupu](../articles/iot-hub/iot-hub-devguide-security.md) v Příručce pro vývojáře pro IoT Hub.

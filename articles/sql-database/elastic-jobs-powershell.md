@@ -12,17 +12,17 @@ ms.author: joke
 ms.reviwer: sstein
 ms.date: 03/13/2019
 ms.openlocfilehash: 74a72df9d8c0bc8a578fea57ab81fb496f8e6add
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74420371"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>Vytvoření agenta elastických úloh pomocí PowerShellu
 
 [Elastické úlohy](sql-database-job-automation-overview.md#elastic-database-jobs-preview) umožňují paralelní spouštění jednoho nebo více skriptů Transact-SQL (T-SQL) napříč mnoha databázemi.
 
-V tomto kurzu se dozvíte kroky potřebné ke spuštění dotazu napříč více databázemi:
+V tomto kurzu se seznámíte s kroky potřebnými ke spuštění dotazu napříč více databázemi:
 
 > [!div class="checklist"]
 > * Vytvoření agenta elastických úloh
@@ -36,13 +36,13 @@ V tomto kurzu se dozvíte kroky potřebné ke spuštění dotazu napříč více
 
 ## <a name="prerequisites"></a>Požadavky
 
-Inovovaná verze úloh elastické databáze obsahuje novou sadu rutin prostředí PowerShell pro použití během migrace. Tyto nové rutiny přenášejí všechna vaše existující pověření úlohy, cíle (včetně databází, serverů, vlastních kolekcí), aktivační události úloh, plány úloh, obsah úloh a úlohy do nového agenta elastické úlohy.
+Upgradovaná verze úlohy elastické databáze má novou sadu rutin PowerShellu pro použití během migrace. Tyto nové rutiny převádějí všechna vaše stávající přihlašovací údaje úlohy, cíle (včetně databází, serverů, vlastních kolekcí), triggerů úloh, plánů úloh, obsahu úloh a úloh do nového agenta elastické úlohy.
 
-### <a name="install-the-latest-elastic-jobs-cmdlets"></a>Instalace nejnovějších rutin Elastických úloh
+### <a name="install-the-latest-elastic-jobs-cmdlets"></a>Nainstalovat nejnovější rutiny elastických úloh
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-Nainstalujte modul **Az.Sql** a získejte nejnovější rutiny elastické úlohy. Spusťte následující příkazy v prostředí PowerShell s přístupem pro správu.
+Pokud chcete získat nejnovější rutiny elastické úlohy, nainstalujte modul **AZ. SQL** . V PowerShellu spusťte následující příkazy s přístupem správce.
 
 ```powershell
 # installs the latest PackageManagement and PowerShellGet packages
@@ -58,13 +58,13 @@ Import-Module Az.Sql
 Get-Module Az.Sql
 ```
 
-Kromě modulu **Az.Sql** vyžaduje tento kurz také modul *SqlServer* PowerShell. Podrobnosti naleznete v [tématu Instalace modulu SQL Server PowerShell](/sql/powershell/download-sql-server-ps-module).
+Kromě modulu **AZ. SQL** vyžaduje tento kurz také modul *SQL SQLServer* . Podrobnosti najdete v tématu [Instalace modulu powershellu SQL Server](/sql/powershell/download-sql-server-ps-module).
 
 ## <a name="create-required-resources"></a>Vytvoření požadovaných prostředků
 
 K vytvoření agenta elastických úloh se vyžaduje databáze (S0 nebo vyšší), která se použije jako [databáze úloh](sql-database-job-automation-overview.md#job-database).
 
-Následující skript vytvoří novou skupinu prostředků, server a databázi, která se použije jako databáze úloh. Druhý skript vytvoří druhý server se dvěma prázdnými databázemi pro spuštění úloh.
+Následující skript vytvoří novou skupinu prostředků, server a databázi, která se použije jako databáze úloh. Druhý skript vytvoří druhý server se dvěma prázdnými databázemi pro provádění úloh s.
 
 Elastické úlohy nemají žádné specifické požadavky na pojmenování, takže můžete použít libovolné zásady vytváření názvů, pokud splňují [požadavky Azure](/azure/architecture/best-practices/resource-naming).
 
@@ -124,7 +124,7 @@ $db2
 
 ## <a name="use-elastic-jobs"></a>Použití elastických úloh
 
-Chcete-li použít elastické úlohy, zaregistrujte funkci v předplatném Azure spuštěním následujícího příkazu. Spusťte tento příkaz jednou pro předplatné, ve kterém máte v úmyslu zřídit agenta elastické úlohy. Odběry, které obsahují pouze databáze, které jsou cíle úlohy není nutné zaregistrovat.
+Pokud chcete použít elastické úlohy, zaregistrujte funkci v předplatném Azure spuštěním následujícího příkazu. Spusťte tento příkaz jednou pro předplatné, ve kterém máte v úmyslu zřídit agenta elastické úlohy. Odběry, které obsahují pouze databáze, které jsou cílem úlohy, nemusí být registrovány.
 
 ```powershell
 Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Microsoft.Sql
@@ -134,7 +134,7 @@ Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Mic
 
 Agent elastických úloh je prostředek Azure určený k vytváření, spouštění a správě úloh. Agent spouští úlohy na základě plánu nebo jako jednorázové úlohy.
 
-Rutina **New-AzSqlElasticJobAgent** vyžaduje, aby databáze Azure SQL již existovala, takže parametry *resourceGroupName*, *serverName*a *databaseName* musí všechny ukazovat na existující prostředky.
+Rutina **New-AzSqlElasticJobAgent** vyžaduje, aby databáze SQL Azure již existovala, takže parametry *resourceGroupName*, *servername*a *DatabaseName* musí mít všechny body na stávající prostředky.
 
 ```powershell
 Write-Output "Creating job agent..."
@@ -143,15 +143,15 @@ $jobAgent = $jobDatabase | New-AzSqlElasticJobAgent -Name $agentName
 $jobAgent
 ```
 
-### <a name="create-the-job-credentials"></a>Vytvoření pověření úlohy
+### <a name="create-the-job-credentials"></a>Vytvoření přihlašovacích údajů úlohy
 
-Úlohy používají pověření s rozsahem databáze pro připojení k cílovým databázím určeným cílovou skupinou při spuštění a spuštění skriptů. Tyto přihlašovací údaje v oboru databáze slouží také k připojení k hlavní databázi za účelem výčtu všech databází na serveru nebo v elastickém fondu, když se jako typ člena cílové skupiny použije jedna z těchto možností.
+Úlohy používají přihlašovací údaje v oboru databáze pro připojení k cílovým databázím zadaným cílovou skupinou při spuštění a spuštění skriptů. Tyto přihlašovací údaje v oboru databáze slouží také k připojení k hlavní databázi za účelem výčtu všech databází na serveru nebo v elastickém fondu, když se jako typ člena cílové skupiny použije jedna z těchto možností.
 
 Přihlašovací údaje v oboru databáze se musí vytvořit v databázi úloh. Všechny cílové databáze musí mít přihlašovací účet s dostatečnými oprávněními pro úspěšné dokončení úlohy.
 
 ![Přihlašovací údaje k elastickým úlohám](media/elastic-jobs-overview/job-credentials.png)
 
-Kromě přihlašovacích údajů na obrázku si všimněte přidání příkazů **GRANT** v následujícím skriptu. Tato oprávnění se vyžadují pro skript, který jsme zvolili pro tuto ukázkovou úlohu. Vzhledem k tomu, že příklad vytvoří novou tabulku v cílových databázích, každý cíl db potřebuje správná oprávnění k úspěšnému spuštění.
+Kromě přihlašovacích údajů na obrázku si všimněte přidání příkazů **GRANT** v následujícím skriptu. Tato oprávnění se vyžadují pro skript, který jsme zvolili pro tuto ukázkovou úlohu. Vzhledem k tomu, že příklad vytvoří novou tabulku v cílových databázích, musí mít každá cílová databáze správná oprávnění k úspěšnému spuštění.
 
 Pokud chcete vytvořit požadované přihlašovací údaje k úloze (v databázi úloh), spusťte následující skript:
 
@@ -200,11 +200,11 @@ $jobCred = New-Object -TypeName "System.Management.Automation.PSCredential" -Arg
 $jobCred = $jobAgent | New-AzSqlElasticJobCredential -Name "jobuser" -Credential $jobCred
 ```
 
-### <a name="define-the-target-databases-to-run-the-job-against"></a>Definujte cílové databáze pro spuštění úlohy proti
+### <a name="define-the-target-databases-to-run-the-job-against"></a>Definujte cílové databáze, u kterých se má úloha spustit.
 
 [Cílová skupina](sql-database-job-automation-overview.md#target-group) definuje sadu jedné nebo více databází, pro které se provede určitý krok úlohy.
 
-Následující úryvek vytvoří dvě cílové skupiny: *serverGroup*a *serverGroupExcludingDb2*. *serverGroup* cílí na všechny databáze, které existují na serveru v době spuštění, a *serverGroupExcludingDb2* cílí na všechny databáze na serveru, s výjimkou *targetDb2*:
+Následující fragment kódu vytvoří dvě cílové skupiny: skupiny *serverů*a *serverGroupExcludingDb2*. *serverová* aplikace cílí na všechny databáze, které existují na serveru v době spuštění, a *serverGroupExcludingDb2* cílí na všechny databáze na serveru s výjimkou *targetDb2*:
 
 ```powershell
 Write-Output "Creating test target groups..."
@@ -250,7 +250,7 @@ Po úspěšném dokončení by se v databázi TargetDb1 měly zobrazit dvě nov�
 
    ![ověření nových tabulek v aplikaci SSMS](media/elastic-jobs-overview/job-execution-verification.png)
 
-Můžete také naplánovat spuštění úlohy později. Pokud chcete naplánovat spuštění úlohy na určitý čas, spusťte následující příkaz:
+Můžete také naplánovat, aby se úloha spouštěla později. Pokud chcete naplánovat spuštění úlohy na určitý čas, spusťte následující příkaz:
 
 ```powershell
 # run every hour starting from now
@@ -272,27 +272,27 @@ $jobExecution | Get-AzSqlElasticJobStepExecution
 $jobExecution | Get-AzSqlElasticJobTargetExecution -Count 2
 ```
 
-V následující tabulce jsou uvedeny stavy spuštění úlohy:
+V následující tabulce jsou uvedené možné stavy provádění úloh:
 
 |Stav|Popis|
 |:---|:---|
-|**Vytvořeno** | Spuštění úlohy bylo právě vytvořeno a ještě neprobíhá.|
-|**Probíhá** | Spuštění úlohy právě probíhá.|
-|**WaitingForRetry** | Spuštění úlohy nebylo možné dokončit svou akci a čeká na opakování.|
-|**Úspěch** | Spuštění úlohy bylo úspěšně dokončeno.|
-|**SucceededWithSkipped** | Spuštění úlohy bylo úspěšně dokončeno, ale některé jeho podřízené aplikace byly přeskočeny.|
-|**Failed** | Spuštění úlohy se nezdařilo a vyčerpalo jeho opakování.|
-|**Timedout** | Časový plán úlohy byl vypočitat.|
-|**Zrušeno** | Spuštění úlohy bylo zrušeno.|
-|**Přeskočen** | Spuštění úlohy bylo přeskočeno, protože další spuštění stejného kroku úlohy již bylo spuštěno na stejném cíli.|
-|**WaitingForChildJobExecutions** | Spuštění úlohy čeká na dokončení jeho podřízené popravy.|
+|**Vytvořeno** | Provádění úlohy bylo právě vytvořeno a ještě neprobíhá.|
+|**InProgress** | Právě probíhá provádění úlohy.|
+|**WaitingForRetry** | Provádění úlohy nedokázalo dokončit svoji akci a čeká na opakování.|
+|**Úspěch** | Provádění úlohy bylo úspěšně dokončeno.|
+|**SucceededWithSkipped** | Provádění úlohy se úspěšně dokončilo, ale některé z jejích podřízených objektů se přeskočily.|
+|**Failed** | Provádění úlohy selhalo a vyčerpalo své opakované pokusy.|
+|**Vypršel časový limit** | Vypršel časový limit pro provedení úlohy.|
+|**Zrušeno** | Provádění úlohy bylo zrušeno.|
+|**Přeskočeno** | Provádění úlohy bylo přeskočeno, protože na stejném cíli již běželo jiné provedení stejného kroku úlohy.|
+|**WaitingForChildJobExecutions** | Provádění úlohy čeká na dokončení jeho podřízeného spuštění.|
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Odstraněním skupiny prostředků odstraňte prostředky Azure vytvořené v tomto kurzu.
 
 > [!TIP]
-> Pokud máte v plánu pokračovat v práci s těmito úlohami, není vyčistit prostředky vytvořené v tomto článku.
+> Pokud budete chtít pokračovat v práci s těmito úlohami, neprovádějte čištění prostředků vytvořených v tomto článku.
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName

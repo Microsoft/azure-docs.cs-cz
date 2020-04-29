@@ -1,5 +1,5 @@
 ---
-title: Peer dvě virtuální sítě – ukázka skriptu Azure CLI
+title: Partnerské dva virtuální sítě – ukázkový skript Azure CLI
 description: Ukázkový skript Azure CLI – Vytvoření partnerského vztahu mezi dvěma virtuálními sítěmi
 services: virtual-network
 documentationcenter: virtual-network
@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
 ms.openlocfilehash: 2dd5336d66872cc8c56fd372e89b67ce9c892f3a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74083841"
 ---
 # <a name="peer-two-virtual-networks-script-sample"></a>Ukázkový skript pro vytvoření partnerského vztahu mezi dvěma virtuálními sítěmi

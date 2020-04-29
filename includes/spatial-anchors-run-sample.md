@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/23/2019
 ms.author: shreshar
 ms.openlocfilehash: fbc91b2610d97fe071e6585a58d7789dca873a9a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72882293"
 ---
 Nasaďte aplikaci do svého zařízení. Po spuštění aplikace v dialogovém okně **Zvolte ukázku** použijte šipky vlevo nebo vpravo a vyberte možnost **LocalShare** a klepněte na tlačítko **Přejít!**. Postupujte podle pokynů v aplikaci. Můžete vybrat možnost **vytvořit & sdílet kotvu** nebo **Vyhledat sdílené kotvy**.

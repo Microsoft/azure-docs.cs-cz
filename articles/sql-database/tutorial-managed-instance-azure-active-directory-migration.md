@@ -1,6 +1,6 @@
 ---
-title: Migrace uživatelů a skupin sql windows do spravované instance pomocí T-SQL
-description: Informace o migraci místních uživatelů a skupin systému Windows serveru SQL Server do spravované instance
+title: Migrace uživatelů a skupin SQL ServerWindows do spravované instance pomocí T-SQL
+description: Informace o tom, jak migrovat SQL Server místních uživatelů a skupin Windows do spravované instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,47 +11,47 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/30/2019
 ms.openlocfilehash: 2c8d7252b4e4ca8caa465727c0d2328c4aafaefb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74227922"
 ---
-# <a name="tutorial-migrate-sql-server-on-premises-windows-users-and-groups-to-azure-sql-database-managed-instance-using-t-sql-ddl-syntax"></a>Kurz: Migrace místních uživatelů a skupin systému Windows serveru SQL Server do spravované instance Azure SQL Database pomocí syntaxe T-SQL DDL
+# <a name="tutorial-migrate-sql-server-on-premises-windows-users-and-groups-to-azure-sql-database-managed-instance-using-t-sql-ddl-syntax"></a>Kurz: migrace SQL Server místních uživatelů a skupin Windows do Azure SQL Database spravované instance pomocí syntaxe jazyka T-SQL DDL
 
 > [!NOTE]
-> Syntaxe použitá k migraci uživatelů a skupin do spravované instance v tomto článku je ve **verzi Public Preview**.
+> Syntaxe, která se používá k migraci uživatelů a skupin do spravované instance v tomto článku, je ve **verzi Public Preview**.
 
-Tento článek vás provede procesem migrace místních uživatelů a skupin systému Windows na serveru SQL Server na existující instanci spravované službou Azure SQL Database pomocí syntaxe T-SQL.
+Tento článek vás provede procesem migrace místních uživatelů a skupin systému Windows ve vašem SQL Server do existující Azure SQL Database spravované instance pomocí syntaxe T-SQL.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> - Vytvoření přihlášení pro SQL Server
+> - Vytvoření přihlašovacích údajů pro SQL Server
 > - Vytvoření testovací databáze pro migraci
 > - Vytváření přihlašovacích údajů, uživatelů a rolí
 > - Zálohování a obnovení databáze do spravované instance (MI)
-> - Ruční migrace uživatelů do MI pomocí syntaxe ALTER USER
-> - Testování ověřování s novými namapovanými uživateli
+> - Ruční migrace uživatelů na MI pomocí příkazu ALTER USER syntax
+> - Testování ověřování pomocí nových mapovaných uživatelů
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto kurzu platí následující požadavky:
+K dokončení tohoto kurzu platí následující předpoklady:
 
-- Doména Windows je federovaná pomocí Služby Azure Active Directory (Azure AD).
-- Přístup ke službě Active Directory k vytvoření uživatelů nebo skupin.
-- Existující SQL Server ve vašem místním prostředí.
-- Existující spravovaná instance. Viz [Úvodní příručka: Vytvoření spravované instance Azure SQL Database](sql-database-managed-instance-get-started.md).
-  - A `sysadmin` ve spravované instanci musí být použitk k vytvoření přihlášení Azure AD.
+- Doména Windows je federované s Azure Active Directory (Azure AD).
+- Přístup ke službě Active Directory pro vytváření uživatelů nebo skupin.
+- Existující SQL Server v místním prostředí.
+- Existující spravovaná instance. Viz [rychlý Start: vytvoření spravované instance Azure SQL Database](sql-database-managed-instance-get-started.md).
+  - Pro `sysadmin` vytvoření přihlášení Azure AD se musí použít ve spravované instanci.
 - [Vytvořte správce Azure AD pro spravovanou instanci](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance).
-- Ke spravované instanci se můžete připojit v rámci sítě. Další informace naleznete v následujících článcích: 
+- Můžete se připojit ke spravované instanci v rámci vaší sítě. Další informace najdete v následujících článcích: 
     - [Připojení aplikace ke spravované instanci Azure SQL Database](sql-database-managed-instance-connect-app.md)
-    - [Úvodní příručka: Konfigurace připojení point-to-site ke spravované instanci Azure SQL Database ze místní hospo-](sql-database-managed-instance-configure-p2s.md)
+    - [Rychlý Start: Konfigurace připojení typu Point-to-site k Azure SQL Database spravované instanci z místního prostředí](sql-database-managed-instance-configure-p2s.md)
     - [Konfigurace veřejného koncového bodu ve spravované instanci Azure SQL Database](sql-database-managed-instance-public-endpoint-configure.md)
 
-## <a name="t-sql-ddl-syntax"></a>Syntaxe DDL T-SQL
+## <a name="t-sql-ddl-syntax"></a>Syntaxe jazyka T-SQL DDL
 
-Níže je syntaxe T-SQL DDL používaná k podpoře místních uživatelů systému Windows sql serveru a migrace skupin do spravované instance pomocí ověřování Azure AD.
+Níže najdete syntaxi T-SQL DDL, která slouží k podpoře SQL Server místních uživatelů a skupin Windows do spravované instance pomocí ověřování Azure AD.
 
 ```sql
 -- For individual Windows users with logins 
@@ -63,26 +63,26 @@ ALTER USER [domainName\groupName] WITH LOGIN=[groupName]
 
 ## <a name="arguments"></a>Argumenty
 
-_Název_domény_</br>
+_domainName_</br>
 Určuje název domény uživatele.
 
-_Username_</br>
-Určuje jméno uživatele identifikovaného uvnitř databáze.
+_Jmen_</br>
+Určuje jméno uživatele identifikovaného v rámci databáze.
 
 _= loginName\@domainName.com_</br>
-Přemapuje uživatele na přihlášení Azure AD
+Přemapuje uživatele na přihlašovací údaje služby Azure AD.
 
-_Groupname_</br>
-Určuje název skupiny identifikované uvnitř databáze.
+_Parametr_</br>
+Určuje název skupiny identifikované v rámci databáze.
 
-## <a name="part-1-create-logins-for-sql-server-on-premises-users-and-groups"></a>Část 1: Vytvoření přihlášení pro místní uživatele a skupiny serveru SQL Server
+## <a name="part-1-create-logins-for-sql-server-on-premises-users-and-groups"></a>Část 1: vytvoření přihlašovacích údajů pro SQL Server místních uživatelů a skupin
 
 > [!IMPORTANT]
-> Následující syntaxe vytvoří přihlášení uživatele a skupiny na serveru SQL Server. Před spuštěním níže uvedené syntaxe se musíte ujistit, že uživatel a skupina existují ve službě Active Directory (AD). </br> </br>
+> Následující syntaxe vytvoří uživatele a přihlášení skupiny ve vašem SQL Server. Před provedením níže uvedené syntaxe se musíte ujistit, že uživatel a skupina existují v rámci služby Active Directory (AD). </br> </br>
 > Uživatelé: testUser1, testGroupUser </br>
-> Skupina: migrace - testGroupUser musí patřit do skupiny migrace ve ad
+> Skupina: migrace – testGroupUser musí patřit do skupiny migrace ve službě AD.
 
-Níže uvedený příklad vytvoří přihlášení v SQL Server pro účet s názvem _testUser1_ pod doménou _aadsqlmi_. 
+Následující příklad vytvoří přihlášení v SQL Server pro účet s názvem _testUser1_ v _aadsqlmi_domény. 
 
 ```sql
 -- Sign into SQL Server as a sysadmin or a user that can create logins and databases
@@ -114,9 +114,9 @@ create database migration
 go
 ```
 
-## <a name="part-2-create-windows-users-and-groups-then-add-roles-and-permissions"></a>Část 2: Vytvoření uživatelů a skupin systému Windows, přidání rolí a oprávnění
+## <a name="part-2-create-windows-users-and-groups-then-add-roles-and-permissions"></a>Část 2: vytvoření uživatelů a skupin systému Windows a přidání rolí a oprávnění
 
-K vytvoření testovacího uživatele použijte následující syntaxi.
+Pomocí následující syntaxe vytvořte testovacího uživatele.
 
 ```sql
 use migration;  
@@ -127,7 +127,7 @@ create user [aadsqlmi\testUser1] from login [aadsqlmi\testUser1];
 go 
 ```
 
-Zkontrolujte uživatelská oprávnění:
+Ověřte oprávnění uživatele:
 
 ```sql
 -- Check the user in the Metadata 
@@ -139,7 +139,7 @@ select user_name(grantee_principal_id), * from sys.database_permissions;
 go
 ```
 
-Vytvořte roli a přiřaďte testovacího uživatele k této roli:
+Vytvořte roli a přiřaďte k této roli testovacího uživatele:
 
 ```sql 
 -- Create a role with some permissions and assign the user to the role
@@ -153,7 +153,7 @@ alter role UserMigrationRole add member [aadsqlmi\testUser1];
 go 
 ``` 
 
-Následující dotaz slouží k zobrazení uživatelských jmen přiřazených k určité roli:
+Pomocí následujícího dotazu Zobrazte uživatelská jména přiřazená konkrétní roli:
 
 ```sql
 -- Display user name assigned to a specific role 
@@ -168,7 +168,7 @@ WHERE DP1.type = 'R'
 ORDER BY DP1.name; 
 ```
 
-K vytvoření skupiny použijte následující syntaxi. Potom přidejte skupinu `db_owner`do role .
+Pomocí následující syntaxe vytvořte skupinu. Pak přidejte skupinu do role `db_owner`.
 
 ```sql
 -- Create Windows group
@@ -185,7 +185,7 @@ go
 -- Output  ( 1 means YES) 
 ```
 
-Vytvořte testovací tabulku a přidejte některá data pomocí následující syntaxe:
+Vytvořte testovací tabulku a přidejte nějaká data pomocí následující syntaxe:
 
 ```sql
 -- Create a table and add data 
@@ -200,9 +200,9 @@ select * from test;
 go
 ```
 
-## <a name="part-3-backup-and-restore-the-individual-user-database-to-managed-instance"></a>Část 3: Zálohování a obnovení databáze jednotlivých uživatelů na spravovanou instanci
+## <a name="part-3-backup-and-restore-the-individual-user-database-to-managed-instance"></a>Část 3: zálohování a obnovení jednotlivých uživatelských databází do spravované instance
 
-Vytvořte zálohu databáze migrace pomocí článku [Kopírovat databáze se zálohováním a obnovením](/sql/relational-databases/databases/copy-databases-with-backup-and-restore)nebo použijte následující syntaxi:
+Vytvořte zálohu databáze migrace pomocí článku [kopírování databází pomocí zálohování a obnovení](/sql/relational-databases/databases/copy-databases-with-backup-and-restore), nebo použijte následující syntaxi:
 
 ```sql
 use master; 
@@ -211,16 +211,16 @@ backup database migration to disk = 'C:\Migration\migration.bak';
 go
 ```
 
-Postupujte podle našeho [úvodního startu: Obnovení databáze do spravované instance](sql-database-managed-instance-get-started-restore.md).
+Postupujte podle našeho [rychlého startu: obnovení databáze do spravované instance](sql-database-managed-instance-get-started-restore.md).
 
-## <a name="part-4-migrate-users-to-managed-instance"></a>Část 4: Migrace uživatelů do spravované instance
+## <a name="part-4-migrate-users-to-managed-instance"></a>4. část: Migrace uživatelů do spravované instance
 
 > [!NOTE]
-> Správce Azure AD pro funkce spravované instance po změně vytvoření. Další informace najdete [v tématu Nové funkce správce Azure AD pro MI](sql-database-aad-authentication-configure.md#new-azure-ad-admin-functionality-for-mi).
+> Funkce správce Azure AD pro spravovanou instanci po vytvoření se změnila. Další informace najdete v tématu [nové funkce správce Azure AD pro mi](sql-database-aad-authentication-configure.md#new-azure-ad-admin-functionality-for-mi).
 
-Spusťte příkaz ALTER USER k dokončení procesu migrace na spravované instanci.
+Provedením příkazu ALTER USER dokončíte proces migrace na spravované instanci.
 
-1. Přihlaste se ke spravované instanci pomocí účtu správce Azure AD pro spravovanou instanci. Pak vytvořte přihlášení Azure AD ve spravované instanci pomocí následující syntaxe. Další informace najdete [v tématu Kurz: Zabezpečení spravované instance v Azure SQL Database pomocí objektů zabezpečení serveru Azure AD (přihlášení)](sql-database-managed-instance-aad-security-tutorial.md).
+1. Přihlaste se ke svojí spravované instanci pomocí účtu správce Azure AD pro spravovanou instanci. Pak vytvořte přihlašovací jméno Azure AD ve spravované instanci pomocí následující syntaxe. Další informace najdete v tématu [kurz: zabezpečení spravované instance v Azure SQL Database pomocí objektů zabezpečení serveru Azure AD (přihlášení)](sql-database-managed-instance-aad-security-tutorial.md).
 
     ```sql
     use master 
@@ -239,7 +239,7 @@ Spusťte příkaz ALTER USER k dokončení procesu migrace na spravované instan
     go
     ```
 
-1. Zkontrolujte, zda migrace neobsahuje správnou databázi, tabulku a objekty zabezpečení.
+1. Ověřte, jestli je vaše migrace správné databáze, tabulky a objekty zabezpečení.
 
     ```sql
     -- Switch to the database migration that is already restored for MI 
@@ -257,7 +257,7 @@ Spusťte příkaz ALTER USER k dokončení procesu migrace na spravované instan
     -- the old group aadsqlmi\migration should be there
     ```
 
-1. Syntaxe ALTER USER namapujte místního uživatele na přihlášení azure ad.
+1. Pomocí syntaxe ALTER USER můžete mapovat místního uživatele na přihlašovací údaje služby Azure AD.
 
     ```sql
     /** Execute the ALTER USER command to alter the Windows user [aadsqlmi\testUser1]
@@ -288,7 +288,7 @@ Spusťte příkaz ALTER USER k dokončení procesu migrace na spravované instan
     ORDER BY DP1.name;
     ```
 
-1. Syntaxe ALTER USER namapujte místní skupinu na přihlášení Azure AD.
+1. Pomocí syntaxe ALTER USER můžete mapovat místní skupinu na přihlášení k Azure AD.
 
     ```sql
     /** Execute ALTER USER command to alter the Windows group [aadsqlmi\migration]
@@ -312,26 +312,26 @@ Spusťte příkaz ALTER USER k dokončení procesu migrace na spravované instan
     -- Output 1 means 'YES'
     ```
 
-## <a name="part-5-testing-azure-ad-user-or-group-authentication"></a>Část 5: Testování ověřování uživatelů nebo skupin azure ad
+## <a name="part-5-testing-azure-ad-user-or-group-authentication"></a>5. část: testování ověřování uživatelů nebo skupin Azure AD
 
-Otestujte ověřování spravované instance pomocí uživatele, který byl dříve namapován na přihlášení služby Azure AD pomocí syntaxe ALTER USER.
+Otestujte ověřování ve spravované instanci pomocí dříve namapovaného uživatele na přihlašovací údaje Azure AD pomocí syntaxe ALTER USER.
  
-1. Přihlaste se do federovaného virtuálního počítače pomocí předplatného MI jako`aadsqlmi\testUser1`
-1. Pomocí služby SQL Server Management Studio (SSMS) se přihlaste ke `migration`spravované instanci pomocí integrovaného ověřování **služby Active Directory** a připojujte se k databázi .
-    1. Můžete se také přihlásit pomocí testUser1@aadsqlmi.net přihlašovacích údajů pomocí možnosti SSMS Active Directory – Universal s podporou **vícefaktorové pomoci**. V tomto případě však nelze použít mechanismus jednotného přihlášení a je nutné zadat heslo. K přihlášení ke spravované instanci nebudete muset používat federovaný virtuální počítač.
-1. Jako součást člena role **SELECT**můžete vybrat `test` z tabulky
+1. Přihlaste se k federovanému virtuálnímu počítači pomocí svého předplatného MI jako`aadsqlmi\testUser1`
+1. Když použijete SQL Server Management Studio (SSMS), přihlaste se ke svojí spravované instanci pomocí **integrovaného ověřování služby Active Directory** a připojte se k databázi `migration`.
+    1. Můžete se také přihlásit pomocí testUser1@aadsqlmi.net přihlašovacích údajů s možností SSMS **Active Directory – Universal s podporou vícefaktorového ověřování**. V tomto případě ale nemůžete použít mechanismus jednotného přihlašování a musíte zadat heslo. K přihlášení do spravované instance nebudete muset použít federovaný virtuální počítač.
+1. V rámci **výběru**člena role můžete vybrat z `test` tabulky.
 
     ```sql
     Select * from test  --  and see one row (1,10)
     ```
 
 
-Otestujte ověřování spravované instanci pomocí člena `migration`skupiny Systému Windows . Uživatel `aadsqlmi\testGroupUser` měl být přidán do `migration` skupiny před migrací.
+Testování ověřování u spravované instance pomocí člena skupiny `migration`systému Windows. Před migrací `aadsqlmi\testGroupUser` by uživatel měl být přidán do skupiny `migration` .
 
-1. Přihlaste se do federovaného virtuálního počítače pomocí předplatného MI jako`aadsqlmi\testGroupUser` 
-1. Pomocí služby SSMS s **integrovaným ověřováním služby Active Directory** se připojte k serveru MI a databázi`migration`
-    1. Můžete se také přihlásit pomocí testGroupUser@aadsqlmi.net přihlašovacích údajů pomocí možnosti SSMS Active Directory – Universal s podporou **vícefaktorové pomoci**. V tomto případě však nelze použít mechanismus jednotného přihlášení a je nutné zadat heslo. K přihlášení ke spravované instanci nebudete muset používat federovaný virtuální počítač. 
-1. Jako součást `db_owner` role můžete vytvořit novou tabulku.
+1. Přihlaste se k federovanému virtuálnímu počítači pomocí svého předplatného MI jako`aadsqlmi\testGroupUser` 
+1. Použití SSMS s **integrovaným ověřováním služby Active Directory** , připojení k serveru mi a databázi`migration`
+    1. Můžete se také přihlásit pomocí testGroupUser@aadsqlmi.net přihlašovacích údajů s možností SSMS **Active Directory – Universal s podporou vícefaktorového ověřování**. V tomto případě ale nemůžete použít mechanismus jednotného přihlašování a musíte zadat heslo. K přihlášení do spravované instance nebudete muset použít federovaný virtuální počítač. 
+1. V rámci `db_owner` role můžete vytvořit novou tabulku.
 
     ```sql
     -- Create table named 'new' with a default schema
@@ -339,11 +339,11 @@ Otestujte ověřování spravované instanci pomocí člena `migration`skupiny S
     ```
                              
 > [!NOTE] 
-> Z důvodu známého problému s návrhem pro Azure SQL DB se příkaz vytvořit v tabulce spouštěný jako člen skupiny nezdaří s následující chybou: </br> </br>
+> Kvůli známému problému s návrhem pro Azure SQL DB se nezdaří příkaz Create a Table spuštěný jako člen skupiny s následující chybou: </br> </br>
 > `Msg 2760, Level 16, State 1, Line 4 
 The specified schema name "testGroupUser@aadsqlmi.net" either does not exist or you do not have permission to use it.` </br> </br>
-> Aktuálním zástupným řešení je vytvoření tabulky s existujícím schématem ve výše uvedeném případě <dbo.new>
+> Aktuální alternativní řešení je vytvoření tabulky s existujícím schématem v případě výše <dbo. New>
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Kurz: Migrace SQL Serveru do instance spravované databází Azure SQL database offline pomocí DMS](../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json)
+- [Kurz: migrace SQL Server do Azure SQL Database spravované instance offline pomocí DMS](../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json)

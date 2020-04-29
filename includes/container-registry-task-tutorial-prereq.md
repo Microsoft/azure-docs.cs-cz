@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 05/02/2019
 ms.author: danlep
 ms.openlocfilehash: 40cc1856a5e943ca5596e7d11712febadd30e3ec
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67133515"
 ---
 ## <a name="prerequisites"></a>Požadavky
@@ -23,16 +23,16 @@ Abyste mohli dokončit tento kurz, musíte mít ve svém předplatném registr k
 
 ## <a name="create-a-github-personal-access-token"></a>Vytvoření tokenu PAT GitHubu
 
-Chcete-li spustit úlohu na potvrzení úložiště Git, ACR úkoly potřebují osobní přístupový token (PAT) pro přístup k úložišti. Pokud ještě pat nemáte, postupujte takto a vygenerujte ho na GitHubu:
+Aby mohl úkol aktivovat na základě potvrzení do úložiště Git, úlohy ACR vyžadují pro přístup k úložišti token PAT (Personal Access token). Pokud ještě nemáte PAT, vygenerujte si ho na GitHubu pomocí těchto kroků:
 
 1. Přejděte na stránku vytvoření tokenu PAT na GitHubu na adrese https://github.com/settings/tokens/new.
 1. Zadejte krátký **popis** tokenu, například „Ukázka služby ACR Tasks“.
-1. Vyberte obory pro ACR pro přístup k opětovnému poklidu. Chcete-li získat přístup k veřejnému repo jako v tomto kurzu, v části **repo**, povolte **repo:status** a **public_repo**
+1. Vyberte obory pro ACR pro přístup k úložišti. Pokud chcete získat přístup k veřejnému úložišti jako v tomto kurzu, v části **úložiště**povolte **úložiště: stav** a **public_repo** .
 
    ![Snímek obrazovky se stránkou generování tokenu PAT na GitHubu][build-task-01-new-token]
 
    > [!NOTE]
-   > Chcete-li vygenerovat pat pro přístup k *soukromému* repo, vyberte obor pro úplné **řízení repo.**
+   > Chcete-li vygenerovat PAT pro přístup k *soukromému* úložišti, vyberte obor pro úplný ovládací prvek **úložiště** .
 
 1. Vyberte tlačítko **Generate token** (Vygenerovat token). (Můžete být vyzváni k potvrzení hesla.)
 1. Vygenerovaný token zkopírujte a uložte na **bezpečné místo** (tento token použijete při definici úlohy v následující části).
