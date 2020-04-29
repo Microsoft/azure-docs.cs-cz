@@ -1,50 +1,50 @@
 ---
 title: Import imagí kontejnerů
-description: Importujte ibi kontejnerů do registru kontejnerů Azure pomocí azure api, aniž byste museli spouštět příkazy Dockeru.
+description: Naimportujte image kontejneru do služby Azure Container Registry pomocí rozhraní API Azure, aniž byste museli spouštět příkazy Docker.
 ms.topic: article
 ms.date: 03/16/2020
 ms.openlocfilehash: caf7a47ac8f7ff0e72d2e049a7013542d274a225
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80051924"
 ---
-# <a name="import-container-images-to-a-container-registry"></a>Import iobrazek kontejneru do registru kontejnerů
+# <a name="import-container-images-to-a-container-registry"></a>Import imagí kontejneru do registru kontejneru
 
-Můžete snadno importovat (kopírovat) ibi kontejnerů do registru kontejnerů Azure, bez použití příkazů Dockeru. Můžete například importovat bitové kopie z vývojového registru do produkčního registru nebo zkopírovat základní bitové kopie z veřejného registru.
+Můžete snadno importovat (kopírovat) image kontejneru do služby Azure Container Registry bez použití příkazů Docker. Například importujte obrázky z registru pro vývoj do produkčního registru nebo zkopírujte základní image z veřejného registru.
 
-Azure Container Registry zpracovává řadu běžných scénářů pro kopírování ibi z existujícího registru:
+Azure Container Registry zpracovává řadu běžných scénářů pro kopírování imagí z existujícího registru:
 
 * Import z veřejného registru
 
-* Import z jiného registru kontejnerů Azure ve stejném nebo jiném předplatném Azure
+* Import z jiného služby Azure Container Registry ve stejném nebo jiném předplatném Azure
 
-* Import z registru privátního kontejneru, který není azure
+* Import z privátního registru kontejnerů mimo Azure
 
-Import bitových obrázků do registru kontejnerů Azure má následující výhody než pomocí příkazů Docker CLI:
+Import obrázku do služby Azure Container Registry má oproti použití příkazů Docker CLI následující výhody:
 
-* Vzhledem k tomu, že vaše klientské prostředí nepotřebuje místní instalaci Dockeru, importujte libovolnou image kontejneru bez ohledu na podporovaný typ operačního systému.
+* Vzhledem k tomu, že vaše klientské prostředí nepotřebuje místní instalaci Docker, importujte veškerou image kontejneru bez ohledu na podporovaný typ operačního systému.
 
-* Při importu bitových kopií s více architekturami (například oficiálních irek dockeru) se zkopírují image pro všechny architektury a platformy zadané v seznamu manifestů.
+* Při importu imagí s více architekturami (například oficiálních imagí Docker) se zkopírují image pro všechny architektury a platformy, které jsou uvedené v seznamu manifestů.
 
-Chcete-li importovat image kontejneru, tento článek vyžaduje spuštění příkazového příkazu k onomu Azure v Prostředí Azure Cloud Shell nebo místně (verze 2.0.55 nebo novější doporučeno). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
+Aby bylo možné importovat image kontejnerů, Tento článek vyžaduje, abyste spustili Azure CLI v Azure Cloud Shell nebo lokálně (doporučuje se verze 2.0.55 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
 
 > [!NOTE]
-> Pokud potřebujete distribuovat identické iimage kontejneru ve více oblastech Azure, Azure Container Registry také podporuje [geografickou replikaci](container-registry-geo-replication.md). Geografickou replikací registru (požadována úroveň služby Premium) můžete obsluhovat více oblastí s identickými názvy bitových obrázků a značek z jednoho registru.
+> Pokud potřebujete distribuovat identické image kontejneru napříč několika oblastmi Azure, Azure Container Registry podporuje taky [geografickou replikaci](container-registry-geo-replication.md). Když geograficky replikuje registr (vyžaduje se úroveň Premium Service), můžete zajišťovat více oblastí s identickými názvy obrázků a značek z jednoho registru.
 >
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte registr kontejnerů Azure, vytvořte registr. Postup najdete [v tématu Úvodní příručka: Vytvoření registru privátního kontejneru pomocí azure cli](container-registry-get-started-azure-cli.md).
+Pokud ještě nemáte službu Azure Container Registry, vytvořte registr. Postup najdete v tématu [rychlý Start: Vytvoření privátního registru kontejnerů pomocí Azure CLI](container-registry-get-started-azure-cli.md).
 
-Chcete-li importovat bitovou kopii do registru kontejnerů Azure, musí mít vaše identita oprávnění k zápisu do cílového registru (alespoň role přispěvatele). Viz [Role a oprávnění registru kontejnerů Azure](container-registry-roles.md). 
+Pokud chcete naimportovat image do služby Azure Container Registry, musí mít vaše identita oprávnění k zápisu do cílového registru (aspoň role přispěvatele). Viz [Azure Container Registry role a oprávnění](container-registry-roles.md). 
 
 ## <a name="import-from-a-public-registry"></a>Import z veřejného registru
 
-### <a name="import-from-docker-hub"></a>Import z centra Docker
+### <a name="import-from-docker-hub"></a>Import z dokovacího centra
 
-Pomocí příkazu [az acr import][az-acr-import] můžete například `hello-world:latest` importovat image více architektur z centra Docker Hub do registru s názvem *myregistry*. Vzhledem k tomu, že `hello-world` je oficiální image `library` z Docker Hub, tato image je ve výchozím úložišti. Do hodnoty parametru `--source` obrázku zahrňte název úložiště a volitelně značku. (Volitelně můžete identifikovat obraz podle jeho manifestdigest místo podle značky, která zaručuje určitou verzi bitové kopie.)
+Pomocí příkazu [AZ ACR import][az-acr-import] můžete například importovat image s více architekturami `hello-world:latest` z Docker Hub do registru s názvem *myregistry*. Vzhledem `hello-world` k tomu, že se jedná o oficiální image z Docker Hub, je `library` tento obrázek ve výchozím úložišti. Zahrňte název úložiště a volitelně značku v hodnotě parametru `--source` image. (Volitelně můžete identifikovat obrázek pomocí výtahu manifestu namísto značky, který garantuje konkrétní verzi obrázku.)
  
 ```azurecli
 az acr import \
@@ -53,7 +53,7 @@ az acr import \
   --image hello-world:latest
 ```
 
-Spuštěním příkazu `az acr repository show-manifests` můžete ověřit, že k této bitové kopii je přidruženo více manifestů:
+Spuštěním `az acr repository show-manifests` příkazu můžete ověřit, zda je k této imagi přidruženo více manifestů:
 
 ```azurecli
 az acr repository show-manifests \
@@ -61,7 +61,7 @@ az acr repository show-manifests \
   --repository hello-world
 ```
 
-Následující příklad importuje veřejnou `tensorflow` bitovou kopii z úložiště v Docker Hubu:
+Následující příklad importuje veřejnou image z `tensorflow` úložiště v Docker Hub:
 
 ```azurecli
 az acr import \
@@ -70,9 +70,9 @@ az acr import \
   --image tensorflow:latest-gpu
 ```
 
-### <a name="import-from-microsoft-container-registry"></a>Import z registru kontejnerů společnosti Microsoft
+### <a name="import-from-microsoft-container-registry"></a>Importovat z Microsoft Container Registry
 
-Můžete například importovat nejnovější bitovou `windows` kopii Jádra systému Windows Server z úložiště v registru kontejnerů společnosti Microsoft.
+Například importujte nejnovější základní bitovou kopii Windows serveru z `windows` úložiště v Microsoft Container Registry.
 
 ```azurecli
 az acr import \
@@ -81,17 +81,17 @@ az acr import \
 --image servercore:latest
 ```
 
-## <a name="import-from-another-azure-container-registry"></a>Import z jiného registru kontejnerů Azure
+## <a name="import-from-another-azure-container-registry"></a>Import z jiného služby Azure Container Registry
 
-Bitovou kopii můžete importovat z jiného registru kontejnerů Azure pomocí integrovaných oprávnění služby Azure Active Directory.
+Pomocí integrovaných oprávnění Azure Active Directory můžete importovat image z jiného registru kontejneru Azure.
 
-* Vaše identita musí mít oprávnění služby Azure Active Directory ke čtení ze zdrojového registru (role Čtečka) a k zápisu do cílového registru (role přispěvatele).
+* Vaše identita musí mít Azure Active Directory oprávnění ke čtení ze zdrojového registru (role čtenář) a k zápisu do cílového registru (role přispěvatele).
 
-* Registr může být ve stejném nebo jiném předplatném Azure ve stejném tenantovi služby Active Directory.
+* Registr se může nacházet ve stejném nebo jiném předplatném Azure ve stejném tenantovi Active Directory.
 
 ### <a name="import-from-a-registry-in-the-same-subscription"></a>Import z registru ve stejném předplatném
 
-Například importovat `aci-helloworld:latest` bitovou kopii ze zdrojového registru *mysourceregistry* do *myregistry* ve stejném předplatném Azure.
+Naimportujte například `aci-helloworld:latest` image ze zdrojového registru *mysourceregistry* do *myregistry* ve stejném předplatném Azure.
 
 ```azurecli
 az acr import \
@@ -100,7 +100,7 @@ az acr import \
   --image aci-helloworld:latest
 ```
 
-Následující příklad importuje obraz podle manifestu digest (SHA-256 hash, reprezentovaný jako) `sha256:...`namísto podle značky:
+Následující příklad importuje obrázek pomocí algoritmu Digest (SHA-256 hash, který je reprezentován `sha256:...`jako) místo podle značky:
 
 ```azurecli
 az acr import \
@@ -110,7 +110,7 @@ az acr import \
 
 ### <a name="import-from-a-registry-in-a-different-subscription"></a>Import z registru v jiném předplatném
 
-V následujícím příkladu *je mysourceregistry* v jiném předplatném než *myregistry* ve stejném tenantovi služby Active Directory. Zadej `--registry` parametr ID prostředku zdrojového registru. Všimněte `--source` si, že parametr určuje pouze zdrojové úložiště a značku, nikoli název přihlašovacího serveru registru.
+V následujícím příkladu je *mysourceregistry* v jiném předplatném, než je *myregistry* ve stejném tenantovi Active Directory. Zadejte ID prostředku zdrojového registru s `--registry` parametrem. Všimněte si, `--source` že parametr určuje pouze zdrojové úložiště a značku, nikoli název přihlašovacího serveru registru.
 
 ```azurecli
 az acr import \
@@ -120,9 +120,9 @@ az acr import \
   --registry /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sourceResourceGroup/providers/Microsoft.ContainerRegistry/registries/mysourceregistry
 ```
 
-### <a name="import-from-a-registry-using-service-principal-credentials"></a>Import z registru pomocí pověření instančního objektu
+### <a name="import-from-a-registry-using-service-principal-credentials"></a>Import z registru pomocí přihlašovacích údajů instančního objektu
 
-Chcete-li importovat z registru, ke kterému nelze získat přístup pomocí oprávnění služby Active Directory, můžete použít pověření zaregistrovaný objekt služby (pokud jsou k dispozici). Zadejme id aplikace a heslo [objektu služby](container-registry-auth-service-principal.md) Active Directory, který má přístup ACRPull ke zdrojovému registru. Použití instančního objektu je užitečné pro systémy sestavení a další bezobslužné systémy, které je třeba importovat bitové kopie do registru.
+Pokud chcete importovat z registru, ke kterému nemáte přístup pomocí oprávnění služby Active Directory, můžete použít přihlašovací údaje instančního objektu (pokud jsou k dispozici). Zadejte appID a heslo [instančního objektu služby](container-registry-auth-service-principal.md) Active Directory, který má ACRPull přístup ke zdrojovému registru. Použití instančního objektu je užitečné pro systémy sestavení a další bezobslužné systémy, které potřebují importovat image do registru.
 
 ```azurecli
 az acr import \
@@ -133,9 +133,9 @@ az acr import \
   –-password <SP_Passwd>
 ```
 
-## <a name="import-from-a-non-azure-private-container-registry"></a>Import z registru privátního kontejneru, který není azure
+## <a name="import-from-a-non-azure-private-container-registry"></a>Import z privátního registru kontejnerů mimo Azure
 
-Importujte bitovou kopii ze soukromého registru zadáním pověření, která umožňují přístup vyžádat do registru. Například natahovací bitovou kopii z soukromého registru Dockeru: 
+Naimportujte image z privátního registru zadáním přihlašovacích údajů, které umožní přístup pro získání přístupu do registru. Načetli byste třeba obrázek z privátního registru Docker: 
 
 ```azurecli
 az acr import \
@@ -148,7 +148,7 @@ az acr import \
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli o importu ibi kontejnerů do registru kontejnerů Azure z veřejného registru nebo jiného privátního registru. Další volby importu obrazu najdete v odkazu příkazu [az acr import.][az-acr-import] 
+V tomto článku jste se dozvěděli o importování imagí kontejneru do služby Azure Container Registry z veřejného registru nebo jiného privátního registru. Další možnosti importu obrázků najdete v tématu [AZ ACR import][az-acr-import] Command reference. 
 
 
 <!-- LINKS - Internal -->

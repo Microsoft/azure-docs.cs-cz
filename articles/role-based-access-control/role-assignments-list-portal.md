@@ -1,6 +1,6 @@
 ---
-title: Seznam přiřazení rolí pomocí Azure RBAC a portálu Azure
-description: Zjistěte, k jakým prostředkům mají uživatelé, skupiny, instanční objekty nebo spravované identity přístup pomocí řízení přístupu azure založeného na rolích (RBAC) a portálu Azure.
+title: Seznam přiřazení rolí pomocí Azure RBAC a Azure Portal
+description: Naučte se, jak určit, které prostředky uživatelé, skupiny, instanční objekty nebo spravované identity mají přístup k používání řízení přístupu na základě role (RBAC) Azure a Azure Portal.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,128 +15,128 @@ ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 03a3d3c7d572d7ec5b8d3ac3d527d0d59e649bc2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80062245"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Seznam přiřazení rolí pomocí Azure RBAC a portálu Azure
+# <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Seznam přiřazení rolí pomocí Azure RBAC a Azure Portal
 
-[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]Tento článek popisuje, jak seznam přiřazení rolí pomocí portálu Azure.
+[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]Tento článek popisuje, jak zobrazit seznam přiřazení rolí pomocí Azure Portal.
 
 > [!NOTE]
-> Pokud vaše organizace zadala funkce správy poskytovateli služeb, který používá [azure delegovanou správu prostředků](../lighthouse/concepts/azure-delegated-resource-management.md), přiřazení rolí autorizovaná tímto poskytovatelem služeb se zde nezobrazí.
+> Pokud má vaše organizace samoobslužné funkce správy pro poskytovatele služeb, který používá [správu delegovaných prostředků Azure](../lighthouse/concepts/azure-delegated-resource-management.md), tady se nezobrazí přiřazení rolí autorizovaných tímto poskytovatelem služeb.
 
 ## <a name="list-role-assignments-for-a-user-or-group"></a>Seznam přiřazení rolí pro uživatele nebo skupinu
 
-Nejjednodušší způsob, jak zobrazit role přiřazené uživateli nebo skupině v předplatném, je použít podokno **prostředků Azure.**
+Nejjednodušší způsob, jak zobrazit role přiřazené uživateli nebo skupině v rámci předplatného, je použít podokno **prostředky Azure** .
 
-1. Na webu Azure Portal klikněte na **Všechny služby** a vyberte **Uživatelé** nebo **skupiny**.
+1. V Azure Portal klikněte na **všechny služby** a pak vyberte **Uživatelé** nebo **skupiny**.
 
-1. Klikněte na uživatele nebo skupinu, pro kterou chcete uvést přiřazení rolí.
+1. Klikněte na uživatele nebo skupinu, pro kterou chcete zobrazit seznam přiřazení rolí.
 
 1. Klikněte na **prostředky Azure**.
 
-    Zobrazí se seznam rolí přiřazených vybranému uživateli nebo skupině v různých oborech, jako je skupina pro správu, předplatné, skupina prostředků nebo prostředek. Tento seznam obsahuje všechna přiřazení rolí, ke které máte oprávnění ke čtení.
+    Zobrazí se seznam rolí přiřazených vybranému uživateli nebo skupině v různých oborech, jako je skupina pro správu, předplatné, skupina prostředků nebo prostředek. Tento seznam obsahuje všechna přiřazení rolí, ke kterým máte oprávnění číst.
 
     ![Přiřazení rolí pro uživatele](./media/role-assignments-list-portal/azure-resources-user.png)    
 
-1. Pokud chcete předplatné změnit, klikněte na seznam **Odběry.**
+1. Chcete-li změnit předplatné, klikněte na seznam **předplatných** .
 
 ## <a name="list-owners-of-a-subscription"></a>Seznam vlastníků předplatného
 
-Uživatelé, kterým byla přiřazena role [vlastníka](built-in-roles.md#owner) pro předplatné, můžou spravovat vše v předplatném. Chcete-li vypsat vlastníky předplatného, postupujte takto.
+Uživatelé, kterým byla přiřazena role [vlastníka](built-in-roles.md#owner) pro předplatné, můžou spravovat všechno v rámci předplatného. Pomocí těchto kroků můžete zobrazit seznam vlastníků předplatného.
 
-1. Na webu Azure Portal klikněte na **Všechny služby** a potom na **Předplatná**.
+1. V Azure Portal klikněte na **všechny služby** a pak na **předplatná**.
 
-1. Klikněte na předplatné, jehož seznam chcete uvést.
+1. Klikněte na předplatné, pro které chcete zobrazit seznam vlastníků.
 
 1. Klikněte na **Řízení přístupu (IAM)**.
 
 1. Kliknutím na kartu **Přiřazení rolí** zobrazte všechna přiřazení rolí pro toto předplatné.
 
-1. Přejděte do části **Vlastníci** a podívejte se na všechny uživatele, kterým byla pro toto předplatné přiřazena role Vlastník.
+1. Přejděte do části **vlastníci** a zobrazte všechny uživatele, kterým byla přiřazena role vlastníka pro toto předplatné.
 
-   ![Řízení přístupu k předplatnému – karta Přiřazení rolí](./media/role-assignments-list-portal/access-control-role-assignments-subscription.png)
+   ![Řízení přístupu k předplatnému – karta přiřazení rolí](./media/role-assignments-list-portal/access-control-role-assignments-subscription.png)
 
 ## <a name="list-role-assignments-at-a-scope"></a>Seznam přiřazení rolí v oboru
 
-1. Na webu Azure Portal klikněte na **Všechny služby** a vyberte obor. Můžete například vybrat **skupiny pro správu**, **Odběry**, **Skupiny prostředků**nebo prostředek.
+1. V Azure Portal klikněte na **všechny služby** a pak vyberte obor. Můžete například vybrat **skupiny pro správu**, **předplatná**, **skupiny prostředků**nebo prostředek.
 
-1. Klikněte na konkrétní zdroj.
+1. Klikněte na konkrétní prostředek.
 
 1. Klikněte na **Řízení přístupu (IAM)**.
 
-1. Kliknutím na kartu **Přiřazení rolí** zobrazíte všechna přiřazení rolí v tomto oboru.
+1. Kliknutím na kartu **přiřazení rolí** zobrazíte všechna přiřazení rolí v tomto oboru.
 
-   ![Řízení přístupu – karta Přiřazení rolí](./media/role-assignments-list-portal/access-control-role-assignments.png)
+   ![Řízení přístupu – karta přiřazení rolí](./media/role-assignments-list-portal/access-control-role-assignments.png)
 
-   Na kartě Přiřazení rolí můžete vidět, kdo má přístup k tomuto oboru. Všimněte si, že některé role mají obor nastavený na **Tento prostředek**, zatímco jiné mají obor **(Zděděný)** z jiného oboru. Aplikace Access je přiřazena konkrétně k tomuto prostředku nebo zděděna z přiřazení k nadřazenému oboru.
+   Na kartě přiřazení rolí vidíte, kdo má v tomto oboru přístup. Všimněte si, že některé role mají obor nastavený na **Tento prostředek**, zatímco jiné mají obor **(Zděděný)** z jiného oboru. Přístup je buď přiřazen konkrétně tomuto prostředku, nebo zděděn z přiřazení do nadřazeného oboru.
 
 ## <a name="list-role-assignments-for-a-user-at-a-scope"></a>Seznam přiřazení rolí pro uživatele v oboru
 
-Chcete-li vypsat přístup pro uživatele, skupinu, instanční objekt nebo spravovanou identitu, uveďte jejich přiřazení rolí. Následujícím postupem zobrazíte seznam přiřazení rolí pro jednoho uživatele, skupinu, instanční objekt nebo spravovanou identitu v určitém oboru.
+Pokud chcete vypsat přístup pro uživatele, skupinu, instanční objekt nebo spravovanou identitu, uveďte jejich přiřazení rolí. Pomocí těchto kroků můžete zobrazit seznam přiřazení rolí pro jednoho uživatele, skupinu, instanční objekt nebo spravovanou identitu v konkrétním oboru.
 
-1. Na webu Azure Portal klikněte na **Všechny služby** a vyberte obor. Můžete například vybrat **skupiny pro správu**, **Odběry**, **Skupiny prostředků**nebo prostředek.
+1. V Azure Portal klikněte na **všechny služby** a pak vyberte obor. Můžete například vybrat **skupiny pro správu**, **předplatná**, **skupiny prostředků**nebo prostředek.
 
-1. Klikněte na konkrétní zdroj.
+1. Klikněte na konkrétní prostředek.
 
 1. Klikněte na **Řízení přístupu (IAM)**.
 
-1. Klikněte na kartu **Zkontrolovat přístup.**
+1. Klikněte na kartu **kontrolovat přístup** .
 
-    ![Řízení přístupu – kontrola karty přístupu](./media/role-assignments-list-portal/access-control-check-access.png)
+    ![Řízení přístupu – karta přístup pro kontrolu](./media/role-assignments-list-portal/access-control-check-access.png)
 
-1. V seznamu **Najít** vyberte typ zaregistrovaný objekt zabezpečení, pro který chcete zkontrolovat přístup.
+1. V seznamu **Najít** vyberte typ objektu zabezpečení, pro který chcete ověřit přístup.
 
-1. Do vyhledávacího pole zadejte řetězec pro vyhledávání zobrazované názvy, e-mailové adresy nebo identifikátory objektů v adresáři.
+1. Do vyhledávacího pole zadejte řetězec, ve kterém budou v adresáři hledána zobrazovaná jména, e-mailové adresy nebo identifikátory objektů.
 
-    ![Zkontrolovat výběrový seznam přístupu](./media/role-assignments-list-portal/check-access-select.png)
+    ![Zaškrtněte seznam pro výběr přístupu.](./media/role-assignments-list-portal/check-access-select.png)
 
-1. Kliknutím na objekt zabezpečení otevřete podokno **přiřazení.**
+1. Kliknutím na objekt zabezpečení otevřete podokno **přiřazení** .
 
     ![podokno přiřazení](./media/role-assignments-list-portal/check-access-assignments.png)
 
-    V tomto podokně se zobrazí role přiřazené vybranému objektu zabezpečení a oboru. Pokud existují všechna odepření přiřazení v tomto oboru nebo zděděné do tohoto oboru, budou uvedeny.
+    V tomto podokně můžete zobrazit role přiřazené k vybranému objektu zabezpečení a oboru. Pokud jsou v tomto oboru k dispozici nějaká přiřazení odepřít nebo zděděná do tohoto oboru, budou uvedena.
 
 ## <a name="list-role-assignments-for-a-system-assigned-managed-identity"></a>Seznam přiřazení rolí pro spravovanou identitu přiřazenou systémem
 
-1. Na webu Azure Portal otevřete spravovanou identitu přiřazenou systémem.
+1. V Azure Portal otevřete spravovanou identitu přiřazenou systémem.
 
-1. V levé nabídce klepněte na **položku Identita**.
+1. V nabídce vlevo klikněte na možnost **Identita**.
 
     ![Spravovaná identita přiřazená systémem](./media/role-assignments-list-portal/identity-system-assigned.png)
 
-1. V **části Přiřazení rolí**klikněte na Zobrazit role Azure **RBAC přiřazené k této spravované identitě**.
+1. V části **přiřazení rolí**klikněte na **Zobrazit role Azure RBAC přiřazené této spravované identitě**.
 
-    Zobrazí se seznam rolí přiřazených k vybrané spravované identitě přiřazené k systému v různých oborech, jako je skupina pro správu, předplatné, skupina prostředků nebo prostředek. Tento seznam obsahuje všechna přiřazení rolí, ke které máte oprávnění ke čtení.
+    Zobrazí se seznam rolí přiřazených k vybrané spravované identitě přiřazené systémem v různých oborech, jako je skupina pro správu, předplatné, skupina prostředků nebo prostředek. Tento seznam obsahuje všechna přiřazení rolí, ke kterým máte oprávnění číst.
 
     ![Přiřazení rolí pro spravovanou identitu přiřazenou systémem](./media/role-assignments-list-portal/azure-resources-system-assigned.png)
 
-## <a name="list-role-assignments-for-a-user-assigned-managed-identity"></a>Seznam přiřazení rolí pro spravovanou identitu přiřazenou uživateli
+## <a name="list-role-assignments-for-a-user-assigned-managed-identity"></a>Seznam přiřazení rolí pro uživatelem přiřazenou spravovanou identitu
 
-1. Na webu Azure Portal otevřete spravovanou identitu přiřazenou uživatelem.
+1. V Azure Portal otevřete uživatelem přiřazenou spravovanou identitu.
 
 1. Klikněte na **prostředky Azure**.
 
-    Zobrazí se seznam rolí přiřazených k vybrané spravované identitě přiřazené uživateli v různých oborech, jako je skupina pro správu, předplatné, skupina prostředků nebo prostředek. Tento seznam obsahuje všechna přiřazení rolí, ke které máte oprávnění ke čtení.
+    Zobrazí se seznam rolí přiřazených k vybrané spravované identitě přiřazené uživatelem v různých oborech, jako je skupina pro správu, předplatné, skupina prostředků nebo prostředek. Tento seznam obsahuje všechna přiřazení rolí, ke kterým máte oprávnění číst.
 
     ![Přiřazení rolí pro spravovanou identitu přiřazenou systémem](./media/role-assignments-list-portal/azure-resources-user-assigned.png)
 
-1. Pokud chcete předplatné změnit, klikněte na seznam **Odběry.**
+1. Chcete-li změnit předplatné, klikněte na seznam **předplatných** .
 
-## <a name="list-number-of-role-assignments"></a>Seznam přiřazení rolí
+## <a name="list-number-of-role-assignments"></a>Výpis počtu přiřazení rolí
 
-V každém předplatném můžete mít až **2000** přiřazení rolí. Karta **Přiřazení rolí** obsahuje graf, který uvádí počet přiřazení rolí pro aktuální předplatné, abyste měli přehled o tomto limitu.
+V každém předplatném můžete mít až **2000** přiřazení rolí. Aby bylo možné tento limit sledovat, karta **přiřazení rolí** obsahuje graf, který uvádí počet přiřazení rolí pro aktuální předplatné.
 
-![Řízení přístupu – graf počtu přiřazení rolí](./media/role-assignments-list-portal/access-control-role-assignments-chart.png)
+![Řízení přístupu – počet grafů přiřazení rolí](./media/role-assignments-list-portal/access-control-role-assignments-chart.png)
 
-Pokud se blížíte maximálnímu počtu a pokusíte se přidat další přiřazení rolí, zobrazí se v podokně **Přidat přiřazení role** upozornění. Způsoby, jak můžete snížit počet přiřazení rolí, naleznete [v tématu Poradce při potížích Azure RBAC](troubleshooting.md#azure-role-assignments-limit).
+Pokud se blížíte k maximálnímu počtu a pokusíte se přidat další přiřazení role, zobrazí se upozornění v podokně **Přidat přiřazení role** . Způsob, jakým můžete snížit počet přiřazení rolí, najdete v tématu [řešení potíží s Azure RBAC](troubleshooting.md#azure-role-assignments-limit).
 
-![Řízení přístupu – upozornění na přidání přiřazení role](./media/role-assignments-list-portal/add-role-assignment-warning.png)
+![Řízení přístupu – upozornění přidání přiřazení role](./media/role-assignments-list-portal/add-role-assignment-warning.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a portálu Azure](role-assignments-portal.md)
-- [Poradce při potížích s RBAC pro prostředky Azure](troubleshooting.md)
+- [Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a Azure Portal](role-assignments-portal.md)
+- [Řešení potíží s RBAC pro prostředky Azure](troubleshooting.md)

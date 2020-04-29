@@ -1,53 +1,53 @@
 ---
-title: Vlastní obslužné rutiny Azure Functions (preview)
-description: Naučte se používat Funkce Azure s libovolným jazykem nebo runtime verzí.
+title: Azure Functions vlastní obslužné rutiny (Preview)
+description: Naučte se používat Azure Functions s libovolným jazykem nebo verzí modulu runtime.
 author: craigshoemaker
 ms.author: cshoe
 ms.date: 3/18/2020
 ms.topic: article
 ms.openlocfilehash: 5abc216e182d7becd9d6f42e0f566ee96d09c2a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79479251"
 ---
-# <a name="azure-functions-custom-handlers-preview"></a>Vlastní obslužné rutiny Azure Functions (preview)
+# <a name="azure-functions-custom-handlers-preview"></a>Azure Functions vlastní obslužné rutiny (Preview)
 
-Každá aplikace Funkce je spuštěna obslužnou rutinou specifickou pro jazyk. Zatímco Azure Functions ve výchozím nastavení podporuje mnoho [jazykových obslužných rutin,](./supported-languages.md) existují případy, kdy můžete chtít další kontrolu nad prostředím spuštění aplikace. Vlastní obslužné rutiny poskytují tento další ovládací prvek.
+Každá aplikace Functions se spustí obslužnou rutinou specifickou pro konkrétní jazyk. I když Azure Functions podporuje mnoho [obslužných rutin jazyka](./supported-languages.md) ve výchozím nastavení, existují případy, kdy budete chtít mít větší kontrolu nad prostředím pro provádění aplikace. Vlastní obslužné rutiny poskytují tento další ovládací prvek.
 
-Vlastní obslužné rutiny jsou zjednodušené webové servery, které přijímají události z hostitele Functions. Libovolný jazyk, který podporuje základní prvky HTTP můžete implementovat vlastní obslužnou rutinu.
+Vlastní obslužné rutiny jsou jednoduché webové servery, které přijímají události z hostitele Functions. Libovolný jazyk, který podporuje primitivní prvky HTTP, může implementovat vlastní obslužnou rutinu.
 
-Vlastní obslužné rutiny jsou nejvhodnější pro situace, kdy chcete:
+Vlastní obslužné rutiny se nejlépe hodí pro situace, kdy chcete:
 
-- Implementace aplikace Functions v jazyce mimo oficiálně podporované jazyky
-- Implementace aplikace Functions v jazykové verzi nebo modulu runtime, který není ve výchozím nastavení podporován
-- Mít podrobnou kontrolu nad prostředím spouštění aplikací
+- Implementujte aplikaci Functions v jazyce, který překračuje oficiálně podporované jazyky.
+- Implementace Function App v jazykové verzi nebo modulu runtime není ve výchozím nastavení podporován
+- Mít podrobnou kontrolu nad prostředím provádění aplikace
 
-S vlastní obslužné rutiny, všechny [aktivační události a vstupní a výstupní vazby](./functions-triggers-bindings.md) jsou podporovány prostřednictvím rozšíření [svazky](./functions-bindings-register.md).
+S vlastními obslužnými rutinami jsou všechny [triggery a vstupní a výstupní vazby](./functions-triggers-bindings.md) podporovány prostřednictvím [sad rozšíření](./functions-bindings-register.md).
 
 ## <a name="overview"></a>Přehled
 
-Následující diagram znázorňuje vztah mezi hostitelem Functions a webovým serverem implementovaným jako vlastní obslužná rutina.
+Následující diagram znázorňuje vztah mezi hostitelem funkcí a webovým serverem implementovaným jako vlastní obslužná rutina.
 
-![Přehled vlastní obslužné rutiny Azure Functions](./media/functions-custom-handlers/azure-functions-custom-handlers-overview.png)
+![Přehled Azure Functions vlastní obslužné rutiny](./media/functions-custom-handlers/azure-functions-custom-handlers-overview.png)
 
-- Události aktivují požadavek odeslaný hostiteli Functions. Událost nese buď nezpracovaná datová část PROTOKOLU HTTP (pro funkce spouštěné protokolem HTTP bez vazby), nebo datová část, která obsahuje vstupní data vazby pro funkci.
-- Hostitel Functions pak přetáčí požadavek na webový server vydáním [datové části požadavku](#request-payload).
+- Události aktivují požadavek odeslaný na hostitele Functions. Událost uchovává buď nezpracovaná datová část HTTP (pro funkce aktivované protokolem HTTP bez vazeb), nebo datovou část, která obsahuje data vstupní vazby pro funkci.
+- Hostitel funkce potom proxy požadavek vystaví na webový server vyvoláním [datové části požadavku](#request-payload).
 - Webový server spustí jednotlivé funkce a vrátí [datovou část odpovědi](#response-payload) na hostitele Functions.
-- Funkce hostitele proxy odpověď jako datová část výstupní vazby na cíl.
+- Služby Functions hostují odpověď jako výstupní datovou vazbu k cíli.
 
-Aplikace Azure Functions implementovaná jako vlastní obslužná rutina musí nakonfigurovat soubory *host.json* a *function.json* podle několika konvencí.
+Aplikace Azure Functions implementovaná jako vlastní obslužná rutina musí nakonfigurovat soubory *Host. JSON* a *Function. JSON* podle několika konvencí.
 
 ## <a name="application-structure"></a>Struktura aplikace
 
-Chcete-li implementovat vlastní obslužnou rutinu, potřebujete následující aspekty aplikace:
+K implementaci vlastní obslužné rutiny potřebujete následující aspekty aplikace:
 
-- Soubor *host.json* v kořenovém adresáři aplikace
-- Soubor *function.json* pro každou funkci (uvnitř složky, která odpovídá názvu funkce)
+- Soubor *Host. JSON* v kořenovém adresáři vaší aplikace
+- Soubor *Function. JSON* pro každou funkci (uvnitř složky, která odpovídá názvu funkce)
 - Příkaz, skript nebo spustitelný soubor, který spouští webový server
 
-Následující diagram znázorňuje, jak tyto soubory vypadají v systému souborů pro funkci s názvem "pořadí".
+Následující diagram ukazuje, jak tyto soubory vypadají v systému souborů pro funkci s názvem "Order".
 
 ```bash
 | /order
@@ -58,9 +58,9 @@ Následující diagram znázorňuje, jak tyto soubory vypadají v systému soubo
 
 ### <a name="configuration"></a>Konfigurace
 
-Aplikace je konfigurována prostřednictvím souboru *host.json.* Tento soubor informuje hostitele functions, kam má odesílat požadavky, a to tak, že odkazuje na webový server schopný zpracovávat události PROTOKOLU HTTP.
+Aplikace je nakonfigurována prostřednictvím souboru *Host. JSON* . Tento soubor oznamuje hostiteli Functions, kam odesílají požadavky, ukázáním na webový server schopný zpracovávat události HTTP.
 
-Vlastní obslužná rutina je definována konfigurací souboru *host.json* s podrobnostmi o tom, jak spustit webový server prostřednictvím oddílu. `httpWorker`
+Vlastní obslužná rutina je definována konfigurací souboru *Host. JSON* s podrobnostmi o tom, jak spustit webový server pomocí `httpWorker` oddílu.
 
 ```json
 {
@@ -73,9 +73,9 @@ Vlastní obslužná rutina je definována konfigurací souboru *host.json* s pod
 }
 ```
 
-Oddíl `httpWorker` odkazuje na cíl definovaný `defaultExecutablePath`. Cílem spuštění může být příkaz, spustitelný soubor nebo soubor, kde je implementován webový server.
+`httpWorker` Oddíl odkazuje na cíl definovaný v `defaultExecutablePath`. Cíl spuštění může být buď příkaz, spustitelný soubor nebo soubor, kde je webový server implementován.
 
-U skriptovaných `defaultExecutablePath` aplikací odkazuje na dobu běhu `defaultWorkerPath` jazyka skriptu a odkazuje na umístění souboru skriptu. Následující příklad ukazuje, jak je aplikace JavaScript v souboru Node.js konfigurována jako vlastní obslužná rutina.
+Pro skriptované aplikace `defaultExecutablePath` odkazují na modul runtime skriptovacího jazyka a `defaultWorkerPath` odkazuje na umístění souboru skriptu. Následující příklad ukazuje, jak je aplikace JavaScriptu v Node. js nakonfigurovaná jako vlastní obslužná rutina.
 
 ```json
 {
@@ -89,7 +89,7 @@ U skriptovaných `defaultExecutablePath` aplikací odkazuje na dobu běhu `defau
 }
 ```
 
-Argumenty můžete také předat `arguments` pomocí pole:
+Argumenty můžete předat také pomocí `arguments` pole:
 
 ```json
 {
@@ -104,32 +104,32 @@ Argumenty můžete také předat `arguments` pomocí pole:
 }
 ```
 
-Argumenty jsou nezbytné pro mnoho nastavení ladění. Další podrobnosti najdete v části [Ladění.](#debugging)
+Argumenty jsou nezbytné pro mnoho nastavení ladění. Další podrobnosti najdete v části [ladění](#debugging) .
 
 > [!NOTE]
-> Soubor *host.json* musí být ve struktuře adresáře na stejné úrovni jako spuštěný webový server. Některé jazyky a řetězce nástrojů nemusí umístit tento soubor do kořenového adresáře aplikace ve výchozím nastavení.
+> Soubor *Host. JSON* musí být ve struktuře adresáře na stejné úrovni jako běžící webový server. Některé jazyky a sady nástrojů nemusí ve výchozím nastavení umístit tento soubor do kořenového adresáře aplikace.
 
-#### <a name="bindings-support"></a>Podpora pro Bindings
+#### <a name="bindings-support"></a>Podpora vazeb
 
-Standardní aktivační události spolu se vstupními a výstupními vazbami jsou k dispozici odkazováním na [balíčky rozšíření](./functions-bindings-register.md) v souboru *host.json.*
+Standardní triggery spolu se vstupními a výstupními vazbami jsou k dispozici odkazem na [sady rozšíření](./functions-bindings-register.md) v souboru *Host. JSON* .
 
 ### <a name="function-metadata"></a>Metadata funkce
 
-Při použití s vlastní obslužnou rutinou se obsah *function.json* neliší od toho, jak byste definovali funkci v jiném kontextu. Jediným požadavkem je, že soubory *function.json* musí být ve složce s názvem tak, aby odpovídala názvu funkce.
+Při použití s vlastní obslužnou rutinou se obsah *Function. JSON* nijak neliší od toho, jak byste definovali funkci v jakémkoli jiném kontextu. Jediným požadavkem je, že soubory *Function. JSON* musí být ve složce s názvem, aby odpovídaly názvu funkce.
 
-### <a name="request-payload"></a>Požadavek na datová část
+### <a name="request-payload"></a>Datová část požadavku
 
-Datová část požadavku pro čisté funkce PROTOKOLU HTTP je nezpracovaná datová část požadavku HTTP. Funkce Pure HTTP jsou definovány jako funkce bez vstupních nebo výstupních vazeb, které vracejí odpověď HTTP.
+Datová část požadavku pro funkce čistého protokolu HTTP je nezpracované datové části požadavku HTTP. Funkce čistého protokolu HTTP jsou definovány jako funkce bez vstupních nebo výstupních vazeb, které vracejí odpověď HTTP.
 
-Jakýkoli jiný typ funkce, která zahrnuje buď vstup, výstupní vazby nebo je spuštěna prostřednictvím zdroje událostí než HTTP mají vlastní datové části požadavku.
+Všechny ostatní typy funkcí, které zahrnují vstupní, výstupní vazby nebo aktivované prostřednictvím jiného zdroje událostí než HTTP, mají vlastní datovou část požadavku.
 
-Následující kód představuje ukázkovou datovou část požadavku. Datová část zahrnuje strukturu JSON `Data` se `Metadata`dvěma členy: a .
+Následující kód představuje ukázkovou datovou část požadavku. Datová část obsahuje strukturu JSON se dvěma členy: `Data` a. `Metadata`
 
-Člen `Data` obsahuje klíče, které odpovídají vstupní a aktivační názvy, jak je definováno v matici vazby v souboru *function.json.*
+`Data` Člen obsahuje klíče, které odpovídají vstupům a názvům triggerů, jak jsou definovány v poli Bindings v souboru *Function. JSON* .
 
-Člen `Metadata` obsahuje [metadata vygenerovaná ze zdroje událostí](./functions-bindings-expressions-patterns.md#trigger-metadata).
+`Metadata` Člen zahrnuje [metadata generovaná ze zdroje události](./functions-bindings-expressions-patterns.md#trigger-metadata).
 
-Vzhledem k vazbám definovaným v následujícím souboru *function.json:*
+S ohledem na vazby definované v následujícím souboru *Function. JSON* :
 
 ```json
 {
@@ -152,7 +152,7 @@ Vzhledem k vazbám definovaným v následujícím souboru *function.json:*
 }
 ```
 
-Je vrácena datová část požadavku podobná tomuto příkladu:
+Vrátí se datová část požadavku podobná tomuto příkladu:
 
 ```json
 {
@@ -177,28 +177,28 @@ Je vrácena datová část požadavku podobná tomuto příkladu:
 
 ### <a name="response-payload"></a>Datová část odpovědi
 
-Podle konvence jsou odpovědi na funkce formátovány jako dvojice klíč/hodnota. Mezi podporované klíče patří:
+Podle konvencí jsou odpovědi na funkce naformátované jako páry klíč/hodnota. Mezi podporované klíče patří:
 
 | <nobr>Klíč datové části</nobr>   | Datový typ | Poznámky                                                      |
 | ------------- | --------- | ------------------------------------------------------------ |
-| `Outputs`     | JSON      | Obsahuje hodnoty odpovědí definované `bindings` polem souboru *function.json.*<br /><br />Například pokud je funkce nakonfigurována s vazbou výstupu úložiště `Outputs` objektů blob `blob`s názvem "objekt blob", pak obsahuje klíč s názvem , který je nastaven na hodnotu objektu blob. |
-| `Logs`        | pole     | Zprávy se zobrazí v protokolech vyvolání funkcí.<br /><br />Když běží v Azure, zprávy se zobrazí v Application Insights. |
-| `ReturnValue` | řetězec    | Slouží k poskytnutí odpovědi při konfiguraci výstupu jako `$return` v souboru *function.json.* |
+| `Outputs`     | JSON      | Uchovává hodnoty odpovědí definované `bindings` polem *Function. JSON* .<br /><br />Pokud je například funkce nakonfigurovaná s výstupní vazbou úložiště objektů BLOB s názvem "blob", pak `Outputs` obsahuje klíč s názvem `blob`, který je nastavený na hodnotu objektu BLOB. |
+| `Logs`        | pole     | Zprávy se zobrazí v protokolech vyvolání funkcí.<br /><br />Při spuštění v Azure se zprávy zobrazí v Application Insights. |
+| `ReturnValue` | řetězec    | Slouží k poskytnutí odpovědi, pokud je výstup nakonfigurován jako `$return` v souboru *Function. JSON* . |
 
-Viz [příklad ukázkové datové části](#bindings-implementation).
+Podívejte se na [Příklad pro vzorovou datovou část](#bindings-implementation).
 
 ## <a name="examples"></a>Příklady
 
-Vlastní obslužné rutiny lze implementovat v libovolném jazyce, který podporuje události PROTOKOLU HTTP. Zatímco Funkce Azure [plně podporuje JavaScript a Node.js](./functions-reference-node.md), následující příklady ukazují, jak implementovat vlastní obslužnou rutinu pomocí jazyka JavaScript v Node.js pro účely instrukce.
+Vlastní obslužné rutiny se dají implementovat v jakémkoli jazyce, který podporuje události HTTP. I když Azure Functions [plně podporuje jazyk JavaScript a Node. js](./functions-reference-node.md), následující příklady ukazují, jak implementovat vlastní obslužnou rutinu pomocí JavaScriptu v Node. js pro účely instrukcí.
 
 > [!TIP]
-> Zatímco je průvodce pro učení, jak implementovat vlastní obslužnou rutinu v jiných jazycích, Node.js příklady uvedené zde může být také užitečné, pokud jste chtěli spustit aplikace Funkce v nepodporované verzi Node.js.
+> Když se naučíte, jak implementovat vlastní obslužnou rutinu v jiných jazycích, tady uvedené příklady založené na Node. js mohou být užitečné také v případě, že jste chtěli spustit aplikaci Functions v nepodporované verzi Node. js.
 
-## <a name="http-only-function"></a>Pouze http
+## <a name="http-only-function"></a>Funkce pouze HTTP
 
-Následující příklad ukazuje, jak nakonfigurovat funkci spouštěnou protokolem HTTP bez dalších vazeb nebo výstupů. Scénář implementovaný v tomto příkladu obsahuje funkci s názvem, `http` která přijímá `GET` nebo `POST` .
+Následující příklad ukazuje, jak nakonfigurovat funkci aktivované protokolem HTTP bez dalších vazeb nebo výstupů. Scénář implementovaný v tomto příkladu obsahuje funkci s názvem `http` , která přijímá `GET` nebo. `POST`
 
-Následující úryvek představuje, jak se skládá požadavek na funkci.
+Následující fragment kódu představuje způsob, jakým se skládá požadavek na funkci.
 
 ```http
 POST http://127.0.0.1:7071/api/hello HTTP/1.1
@@ -213,7 +213,7 @@ content-type: application/json
 
 ### <a name="implementation"></a>Implementace
 
-Ve složce s názvem *http*konfiguruje soubor *function.json* funkci spouštěnou protokolem HTTP.
+Ve složce s názvem *http*se v souboru *Function. JSON* NAkonfiguruje funkce aktivované protokolem HTTP.
 
 ```json
 {
@@ -233,9 +233,9 @@ Ve složce s názvem *http*konfiguruje soubor *function.json* funkci spouštěno
 }
 ```
 
-Funkce je nakonfigurována `GET` `POST` tak, aby přijímala požadavky i `res`požadavky a výsledná hodnota je poskytována prostřednictvím argumentu s názvem .
+Funkce je nakonfigurována tak, aby `GET` přijímala `POST` požadavky i i výsledná hodnota je poskytnuta prostřednictvím argumentu `res`s názvem.
 
-V kořenovém adresáři aplikace je soubor *host.json* nakonfigurován tak, `server.js` aby spouštěl soubor Node.js a ukazoval soubor.
+V kořenovém adresáři aplikace je soubor *Host. JSON* nakonfigurovaný tak, aby spouštěl Node. js a odkazoval na `server.js` soubor.
 
 ```json
 {
@@ -249,7 +249,7 @@ V kořenovém adresáři aplikace je soubor *host.json* nakonfigurován tak, `se
 }
 ```
 
-Soubor *souborový server.js* implementuje webový server a funkci HTTP.
+Soubor souborového *serveru. js* implementuje webový server a funkci http.
 
 ```javascript
 const express = require("express");
@@ -274,18 +274,18 @@ app.post("/hello", (req, res) => {
 });
 ```
 
-V tomto příkladu express se používá k vytvoření webového serveru pro zpracování `FUNCTIONS_HTTPWORKER_PORT`událostí HTTP a je nastaven a naslouchá požadavkům prostřednictvím .
+V tomto příkladu se Express používá k vytvoření webového serveru pro zpracování událostí HTTP a je nastaven na naslouchání požadavkům přes `FUNCTIONS_HTTPWORKER_PORT`.
 
-Funkce je definována na `/hello`cestě . `GET`požadavky jsou zpracovávány vrácením jednoduchého objektu `POST` JSON a požadavky `req.body`mají přístup k tělu požadavku prostřednictvím .
+Funkce je definována v cestě k `/hello`. `GET`požadavky jsou zpracovávány vrácením jednoduchého objektu JSON a `POST` požadavky mají přístup k textu žádosti prostřednictvím `req.body`.
 
-Trasa pro funkci objednávky `/hello` `/api/hello` je zde a ne proto, že hostitel Functions proxy požadavek na vlastní obslužnou rutinu.
+Trasa pro funkci Order tady je `/hello` a není `/api/hello` , protože hostitel Functions hostuje požadavek na vlastní obslužnou rutinu.
 
 >[!NOTE]
->Není `FUNCTIONS_HTTPWORKER_PORT` veřejný přístupový port používaný k volání funkce. Tento port používá hostitel Functions k volání vlastní obslužné rutiny.
+>`FUNCTIONS_HTTPWORKER_PORT` Nejedná se o veřejný port, který se používá k volání funkce. Tento port je používán hostitelem Functions pro volání vlastní obslužné rutiny.
 
 ## <a name="function-with-bindings"></a>Funkce s vazbami
 
-Scénář implementovaný v tomto příkladu obsahuje funkci s názvem, `order` která přijímá `POST` datovou část představující objednávku produktu. Jako objednávka je zaúčtována do funkce, je vytvořena zpráva úložiště fronty a je vrácena odpověď HTTP.
+Scénář implementovaný v tomto příkladu obsahuje funkci s názvem `order` , která přijímá `POST` datovou část reprezentující produktovou objednávku. Při odeslání objednávky do funkce se vytvoří Queue Storage zpráva a vrátí se odpověď HTTP.
 
 ```http
 POST http://127.0.0.1:7071/api/order HTTP/1.1
@@ -302,7 +302,7 @@ content-type: application/json
 
 ### <a name="implementation"></a>Implementace
 
-Ve složce s názvem *Order*nakonfiguruje soubor *function.json* funkci spouštěnou protokolem HTTP.
+Ve složce s názvem *Order*se v souboru *Function. JSON* NAkonfiguruje funkce aktivované protokolem HTTP.
 
 ```json
 {
@@ -331,9 +331,9 @@ Ve složce s názvem *Order*nakonfiguruje soubor *function.json* funkci spoušt�
 
 ```
 
-Tato funkce je definována jako [funkce spouštěná protokolem HTTP,](./functions-bindings-http-webhook-trigger.md) která vrací [odpověď HTTP](./functions-bindings-http-webhook-output.md) a vypisuje zprávu [o úložišti fronty.](./functions-bindings-storage-queue-output.md)
+Tato funkce je definovaná jako [funkce aktivovaná protokolem HTTP](./functions-bindings-http-webhook-trigger.md) , která vrátí [odpověď HTTP](./functions-bindings-http-webhook-output.md) a vytvoří výstup zprávy [úložiště fronty](./functions-bindings-storage-queue-output.md) .
 
-V kořenovém adresáři aplikace je soubor *host.json* nakonfigurován tak, `server.js` aby spouštěl soubor Node.js a ukazoval soubor.
+V kořenovém adresáři aplikace je soubor *Host. JSON* nakonfigurovaný tak, aby spouštěl Node. js a odkazoval na `server.js` soubor.
 
 ```json
 {
@@ -347,7 +347,7 @@ V kořenovém adresáři aplikace je soubor *host.json* nakonfigurován tak, `se
 }
 ```
 
-Soubor *souborový server.js* implementuje webový server a funkci HTTP.
+Soubor souborového *serveru. js* implementuje webový server a funkci http.
 
 ```javascript
 const express = require("express");
@@ -379,24 +379,24 @@ app.post("/order", (req, res) => {
 });
 ```
 
-V tomto příkladu express se používá k vytvoření webového serveru pro zpracování `FUNCTIONS_HTTPWORKER_PORT`událostí HTTP a je nastaven a naslouchá požadavkům prostřednictvím .
+V tomto příkladu se Express používá k vytvoření webového serveru pro zpracování událostí HTTP a je nastaven na naslouchání požadavkům přes `FUNCTIONS_HTTPWORKER_PORT`.
 
-Funkce je definována na `/order` cestě .  Trasa pro funkci objednávky `/order` `/api/order` je zde a ne proto, že hostitel Functions proxy požadavek na vlastní obslužnou rutinu.
+Funkce je definována v cestě k `/order` .  Trasa pro funkci Order tady je `/order` a není `/api/order` , protože hostitel Functions hostuje požadavek na vlastní obslužnou rutinu.
 
-Jako `POST` požadavky jsou odesílány do této funkce, data jsou vystaveny prostřednictvím několika bodů:
+Po `POST` odeslání požadavků do této funkce jsou data zveřejněna prostřednictvím několika bodů:
 
-- Tělo žádosti je k dispozici prostřednictvím`req.body`
-- Údaje zaúčtované do funkce jsou k dispozici prostřednictvím`req.body.Data.req.Body`
+- Text žádosti je k dispozici prostřednictvím`req.body`
+- Data odeslaná do funkce jsou k dispozici prostřednictvím`req.body.Data.req.Body`
 
-Odpověď funkce je formátována do páru klíč/hodnota, `Outputs` kde člen obsahuje hodnotu JSON, kde klíče odpovídají výstupům definovaným v souboru *function.json.*
+Odpověď funkce je formátována na dvojici klíč/hodnota, kde `Outputs` člen obsahuje hodnotu JSON, kde klíče odpovídají výstupům, jak jsou definovány v souboru *Function. JSON* .
 
-Nastavením `message` rovné zprávy, která přišla z `res` požadavku a očekávané odpovědi HTTP, tato funkce vyveze zprávu do úložiště fronty a vrátí odpověď HTTP.
+Když je `message` nastavení rovno zprávě, která byla součástí z požadavku, a `res` k očekávané odpovědi HTTP, tato funkce vypíše zprávu do Queue Storage a vrátí odpověď HTTP.
 
 ## <a name="debugging"></a>Ladění
 
-Chcete-li ladit vlastní obslužnou rutinu aplikace funkce, musíte přidat argumenty vhodné pro jazyk a runtime povolit ladění.
+Chcete-li ladit vlastní aplikaci obslužné rutiny Functions, je nutné přidat argumenty, které jsou vhodné pro jazyk a modul runtime pro povolení ladění.
 
-Například ladit aplikaci Node.js, `--inspect` příznak je předán jako argument v souboru *host.json.*
+Například chcete-li ladit aplikaci Node. js, `--inspect` příznak je předán jako argument v souboru *Host. JSON* .
 
 ```json
 {
@@ -412,7 +412,7 @@ Například ladit aplikaci Node.js, `--inspect` příznak je předán jako argum
 ```
 
 > [!NOTE]
-> Konfigurace ladění je součástí souboru *host.json,* což znamená, že budete muset odebrat některé argumenty před nasazením do produkčního prostředí.
+> Konfigurace ladění je součástí souboru *Host. JSON* , což znamená, že před nasazením do produkčního prostředí možná budete muset některé argumenty odebrat.
 
 Pomocí této konfigurace můžete spustit hostitelský proces funkce pomocí následujícího příkazu:
 
@@ -420,13 +420,13 @@ Pomocí této konfigurace můžete spustit hostitelský proces funkce pomocí n�
 func host start
 ```
 
-Po spuštění procesu můžete připojit ladicí program a zarážky přístupů.
+Po spuštění procesu můžete připojit ladicí program a zarážky volání.
 
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
-Následující příklad je ukázková konfigurace, která ukazuje, jak můžete nastavit soubor *launch.json* pro připojení aplikace k ladicímu programu kódu Visual Studia.
+V následujícím příkladu je Ukázková konfigurace, která předvádí, jak můžete nastavit soubor *Launch. JSON* pro připojení aplikace k ladicímu programu Visual Studio Code.
 
-Tento příklad je pro Node.js, takže budete muset změnit tento příklad pro jiné jazyky nebo runtimes.
+Tento příklad je pro Node. js, takže možná budete muset změnit tento příklad pro jiné jazyky nebo moduly runtime.
 
 ```json
 {
@@ -445,13 +445,13 @@ Tento příklad je pro Node.js, takže budete muset změnit tento příklad pro 
 
 ## <a name="deploying"></a>Nasazení
 
-Vlastní obslužná rutina může být nasazena téměř na všechny možnosti hostování Azure Functions (viz [omezení).](#restrictions) Pokud vaše obslužná rutina vyžaduje vlastní závislosti (například za běhu jazyka), budete muset použít [vlastní kontejner](./functions-create-function-linux-custom-image.md).
+Vlastní obslužnou rutinu lze nasadit téměř každou možnost hostování Azure Functions (viz [omezení](#restrictions)). Pokud vaše obslužná rutina vyžaduje vlastní závislosti (například modul runtime jazyka), může být nutné použít [vlastní kontejner](./functions-create-function-linux-custom-image.md).
 
 ## <a name="restrictions"></a>Omezení
 
-- Vlastní obslužné rutiny nejsou podporovány v plánech spotřeby Linuxu.
-- Webový server musí být zahájen do 60 sekund.
+- Vlastní obslužné rutiny nejsou podporované v plánech spotřeby Linux.
+- Webový server musí být spuštěn do 60 sekund.
 
 ## <a name="samples"></a>ukázky
 
-Naleznete vlastní [obslužné rutiny ukázky GitHub úložiště](https://github.com/Azure-Samples/functions-custom-handlers) příklady, jak implementovat funkce v různých jazycích.
+Příklady implementace funkcí v různých jazycích najdete v části [vlastní obslužné rutiny ukázky v úložišti GitHub](https://github.com/Azure-Samples/functions-custom-handlers) .
