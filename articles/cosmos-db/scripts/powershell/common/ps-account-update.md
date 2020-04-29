@@ -1,19 +1,19 @@
 ---
 title: Skript PowerShellu pro aktualizaci výchozí úrovně konzistence na účtu Azure Cosmos
-description: Ukázka skriptu Azure PowerShellu – aktualizace výchozí úrovně konzistence na účtu Azure Cosmos DB pomocí PowerShellu
+description: Ukázka skriptu Azure PowerShell – aktualizace výchozí úrovně konzistence na účtu Azure Cosmos DB pomocí PowerShellu
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 03/21/2020
 ms.author: mjbrown
 ms.openlocfilehash: d3df2e91624f9b5d82d534a1d525fa6866f1a489
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80366088"
 ---
-# <a name="update-the-regions-on-an-azure-cosmos-db-account-using-powershell"></a>Aktualizace oblastí na účtu Azure Cosmos DB pomocí PowerShellu
+# <a name="update-the-regions-on-an-azure-cosmos-db-account-using-powershell"></a>Aktualizace oblastí na účtu Azure Cosmos DB pomocí prostředí PowerShell
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,9 +22,9 @@ ms.locfileid: "80366088"
 ## <a name="sample-script"></a>Ukázkový skript
 
 > [!NOTE]
-> Nelze změnit oblasti a změnit jiné vlastnosti účtu Cosmos ve stejné operaci. Ty musí být provedeny jako dvě samostatné operace.
+> V rámci jedné operace nelze upravovat oblasti a měnit jiné vlastnosti účtu Cosmos. Ty je třeba provést jako dvě samostatné operace.
 > [!NOTE]
-> Tato ukázka ukazuje pomocí účtu rozhraní SQL API. Chcete-li tuto ukázku použít pro jiná rozhraní API, zkopírujte související vlastnosti a použijte skript specifický pro rozhraní API.
+> Tato ukázka demonstruje použití účtu rozhraní SQL API. Pokud chcete tuto ukázku použít pro jiná rozhraní API, zkopírujte související vlastnosti a aplikujte je na skript specifický pro rozhraní API.
 
 [!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-update.ps1 "Update an Azure Cosmos DB account")]
 
@@ -43,8 +43,8 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Seznam účtů Cosmos DB nebo získá zadaný účet Cosmos DB. |
-| [Aktualizace AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbaccountfailoverpriority) | Aktualizujte účet Cosmos DB. |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Zobrazí seznam Cosmos DB účtů nebo získá zadaný Cosmos DB účet. |
+| [Update – AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbaccountfailoverpriority) | Aktualizujte účet Cosmos DB. |
 |**Skupiny prostředků Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||

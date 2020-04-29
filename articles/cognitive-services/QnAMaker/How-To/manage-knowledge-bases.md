@@ -1,111 +1,111 @@
 ---
-title: Správa znalostních bází - QnA Maker
-description: QnA Maker umožňuje spravovat znalostní báze tím, že poskytuje přístup k nastavení znalostní báze a obsahu.
+title: Správa znalostní báze – QnA Maker
+description: QnA Maker umožňuje spravovat vaše znalostní báze tím, že poskytuje přístup k nastavení a obsahu znalostní báze.
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.openlocfilehash: 4eb07b30b10826c361f4f9b805b517e372fc5ea1
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80756803"
 ---
-# <a name="create-knowledge-base-and-manage-settings"></a>Vytvoření znalostní báze a správa nastavení
+# <a name="create-knowledge-base-and-manage-settings"></a>Vytvoření znalostní báze a Správa nastavení
 
-QnA Maker umožňuje spravovat znalostní báze tím, že poskytuje přístup k nastavení znalostní báze a zdrojům dat.
+QnA Maker umožňuje spravovat vaše znalostní báze tím, že poskytuje přístup k nastavení znalostní báze a zdrojům dat.
 
 ## <a name="prerequisites"></a>Požadavky
 
 > [!div class="checklist"]
-> * Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
-> * [Prostředek QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) vytvořený na webu Azure Portal. Zapamatujte si svůj Azure Active Directory ID, předplatné, QnA název prostředku, který jste vybrali při vytváření prostředku.
+> * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+> * [QnA maker prostředek](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) vytvořený v Azure Portal. Mějte na paměti, že vaše Azure Active Directory ID, předplatné a název prostředku QnA jste zvolili při vytváření prostředku.
 
 ## <a name="create-a-knowledge-base"></a>Vytvoření znalostní báze
 
-1. Přihlaste se k [QnAMaker.ai](https://QnAMaker.ai) portálu pomocí přihlašovacích údajů azure.
+1. Přihlaste se k portálu [QnAMaker.AI](https://QnAMaker.ai) pomocí svých přihlašovacích údajů Azure.
 
-1. Na portálu QnA Maker vyberte **Vytvořit znalostní bázi**.
+1. Na portálu QnA Maker vyberte **vytvořit znalostní bázi**.
 
-1. Na stránce **Vytvořit** přeskočte **krok 1,** pokud již máte prostředek QnA Maker.
+1. Na stránce **vytvořit** přeskočte **Krok 1** , pokud již máte prostředek QnA maker.
 
-    Pokud jste zdroj ještě nevytvořili, vyberte **Vytvořit službu QnA**. Budete přesměrování na [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker), kde můžete nastavit službu QnA Maker ve vašem předplatném. Zapamatujte si svůj Azure Active Directory ID, předplatné, QnA název prostředku, který jste vybrali při vytváření prostředku.
+    Pokud jste prostředek ještě nevytvořili, vyberte **vytvořit službu QnA**. Budete přesměrování na [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker), kde můžete nastavit službu QnA Maker ve vašem předplatném. Mějte na paměti, že vaše Azure Active Directory ID, předplatné a název prostředku QnA jste zvolili při vytváření prostředku.
 
-    Po dokončení vytváření prostředků na webu Azure Portal se vraťte na portál QnA Maker, aktualizujte stránku prohlížeče a pokračujte **krokem 2**.
+    Až skončíte s vytvářením prostředku v Azure Portal, vraťte se na portál QnA Maker, aktualizujte stránku prohlížeče a pokračujte **krokem 2**.
 
 1. V **kroku 3**vyberte službu Active Directory, předplatné, službu (prostředek) a jazyk pro všechny znalostní báze vytvořené ve službě.
 
-   ![Snímek obrazovky s výběrem znalostní báze QnA Maker](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
+   ![Snímek obrazovky s výběrem znalostní báze služby QnA Maker](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 
-1. V **kroku 3**pojmenujte znalostní báze `My Sample QnA KB`.
+1. V **kroku 3**pojmenujte znalostní bázi `My Sample QnA KB`.
 
 1. V **kroku 4**nakonfigurujte nastavení pomocí následující tabulky:
 
     |Nastavení|Hodnota|
     |--|--|
-    |**Povolte vícenásobné extrakce z adres URL, souborů PDF nebo .docx.**|Zaškrtnuté|
+    |**Povolí vícenásobné extrakce z adres URL, souborů PDF a DOCX.**|Zaškrtnuté|
     |**Výchozí text odpovědi**| `Quickstart - default answer not found.`|
     |**+ Přidat adresu URL**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
-    |**Chit-chat**|Vybrat **profesionální**|
+    |**CHITEST – chat**|Vybrat **Professional**|
 
-1. V **kroku 5**vyberte vytvořit **kb**.
+1. V **kroku 5**vyberte **vytvořit znalostní báze**.
 
-    Proces extrakce trvá několik okamžiků, než si dokument přečtete a identifikujete otázky a odpovědi.
+    Pro extrakci dokumentu a identifikaci otázek a odpovědí trvá proces extrakce chvíli.
 
-    Po úspěšném vytvoření znalostní báze QnA Maker se otevře stránka **Znalostní báze** Knowledge Base. Obsah znalostní báze můžete upravit na této stránce.
+    Jakmile QnA Maker úspěšně vytvoří znalostní bázi, otevře se stránka **znalostní báze** . Na této stránce můžete upravit obsah znalostní báze.
 
 ## <a name="edit-knowledge-base"></a>Úprava znalostní báze
 
-1.  Na horním navigačním panelu vyberte **Moje znalostní báze.**
+1.  V horním navigačním panelu vyberte **Moje znalostní** báze.
 
-       Všechny služby, které jste vytvořili nebo s vámi sdíleli, můžete zobrazit seřazené v sestupném pořadí **posledního data změny.**
+       Všechny služby, které jste vytvořili nebo sdíleli s vámi, můžete zobrazit v sestupném pořadí podle data **Poslední úpravy** .
 
        ![Moje znalostní báze](../media/qnamaker-how-to-edit-kb/my-kbs.png)
 
-1. Vyberte konkrétní znalostní bázi, která ji provede úpravou.
+1. Vyberte konkrétní znalostní bázi, abyste mohli provádět úpravy.
 
 1.  Vyberte **Nastavení**. Následující seznam obsahuje pole, která můžete změnit.
 
        |Cíl|Akce|
        |--|--|
-       |Přidat adresu URL|Nové adresy URL můžete přidat do znalostní báze Knowledge Base kliknutím na **spravovat znalostní báze -> odkaz Přidat adresu URL.**|
-       |Odstranit adresu URL|Existující adresy URL můžete odstranit výběrem ikony odstranění, koše.|
-       |Aktualizovat obsah|Pokud chcete, aby znalostní báze procházela nejnovější obsah existujících adres URL, zaškrtněte políčko **Aktualizovat.** Tím se jednou aktualizuje znalostní báze s nejnovějším obsahem adresy URL. Toto není nastavení pravidelného plánu aktualizací.|
-       |Přidat soubor|Výběrem možnosti **Spravovat znalostní báze**můžete přidat dokument podporovaný k podporovanému souboru, který bude součástí znalostní báze Knowledge Base , a pak vybrat **+ Přidat soubor.**|
-    |Import|Můžete také importovat existující znalostní bázi výběrem tlačítka **Importovat znalostní báze.** |
-    |Aktualizace|Aktualizace znalostní báze závisí na **cenové úrovni správy** používané při vytváření služby QnA Maker přidružené k vaší znalostní bázi. V případě potřeby můžete také aktualizovat úroveň správy z webu Azure Portal.
+       |Přidat adresu URL|Kliknutím na **Spravovat znalostní bázi > + přidat adresu URL** můžete přidat nové adresy URL a přidat tak nový obsah nejčastějších dotazů do znalostní báze.|
+       |Odstranit adresu URL|Existující adresy URL můžete odstranit tak, že vyberete ikonu Odstranit, odpadkový koš.|
+       |Aktualizovat obsah|Pokud chcete, aby znalostní báze procházela nejnovější obsah existujících adres URL, zaškrtněte políčko **aktualizovat** . Tím se aktualizuje znalostní báze s nejnovějším obsahem adresy URL. Tato možnost nenastavuje pravidelný plán aktualizací.|
+       |Přidat soubor|Podporovaný dokument, který je součástí znalostní báze, můžete přidat tak, že vyberete **Spravovat znalostní bázi**a pak vyberete **+ Přidat soubor** .|
+    |Import|Stávající znalostní bázi můžete také importovat výběrem tlačítka **importovat znalostní bázi** . |
+    |Aktualizace|Aktualizace znalostní báze závisí na **cenové úrovni správy** používané při vytváření QnA maker služby přidružené k vaší znalostní bázi. V případě potřeby můžete také aktualizovat úroveň správy z Azure Portal.
 
-  1. Po dokončení provádění změn ve znalostní bázi vyberte **uložit a táct** v pravém horním rohu stránky, abyste změny zachovali.
+  1. Až provedete změny ve znalostní bázi, vyberte **Uložit a vytvořit vlak** v pravém horním rohu stránky, aby se změny zachovaly.
 
-       ![Uložit a vlak](../media/qnamaker-how-to-edit-kb/save-and-train.png)
+       ![Uložení a výuka](../media/qnamaker-how-to-edit-kb/save-and-train.png)
 
        >[!CAUTION]
-       >Pokud stránku opustíte před výběrem **možnosti Uložit a trénovat**, budou všechny změny ztraceny.
+       >Pokud ponecháte stránku před výběrem možnosti **Uložit a výuka**, ztratí se všechny změny.
 
 
 
-## <a name="manage-large-knowledge-bases"></a>Správa rozsáhlých znalostních bází
+## <a name="manage-large-knowledge-bases"></a>Správa rozsáhlých základů znalostní báze
 
 * **Skupiny zdrojů dat**: QnAs jsou seskupeny podle zdroje dat, ze kterého byly extrahovány. Zdroj dat můžete rozbalit nebo sbalit.
 
-    ![Sbalte a rozbalte otázky a odpovědi na zdroje dat pomocí panelu zdroje dat QnA Maker.](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
+    ![Pro sbalení a rozbalení otázek a odpovědí zdrojů dat použijte panel zdroje dat QnA Maker.](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
 
-* **Hledání znalostní báze**: Znalostní bázi můžete prohledávat zadáním textového pole v horní části tabulky Znalostní báze. Kliknutím na Enter vyhledáte obsah otázky, odpovědi nebo metadat. Kliknutím na ikonu X odstraníte vyhledávací filtr.
+* **Hledání ve znalostní bázi**: znalostní báze můžete vyhledat zadáním do textového pole v horní části tabulky znalostní báze. Kliknutím na tlačítko ENTER můžete vyhledat dotaz, odpověď nebo obsah metadat. Kliknutím na ikonu X odeberte vyhledávací filtr.
 
-    ![Pomocí vyhledávacího pole QnA Maker nad otázkami a odpověďmi zmenšete zobrazení pouze na položky odpovídající filtru.](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
+    ![Pomocí vyhledávacího pole QnA Maker nad dotazy a odpovědi zmenšíte zobrazení jenom na položky, které odpovídají filtrům.](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
 
-* **Stránkování**: Rychlý přechod mezi zdroji dat pro správu rozsáhlých znalostních bází
+* **Stránkování**: rychlé přesunutí ze zdrojů dat za účelem správy rozsáhlých základů znalostní báze
 
-    ![Pomocí funkcí stránkování QnA Maker nad otázkami a odpověďmi můžete procházet stránkami otázek a odpovědí](../media/qnamaker-how-to-edit-kb/pagination.png)
+    ![Procházení stránek otázek a odpovědí pomocí funkcí QnA Maker stránkování nad rámec otázek a odpovědí](../media/qnamaker-how-to-edit-kb/pagination.png)
 
-## <a name="delete-knowledge-bases"></a>Odstranění znalostních bází
+## <a name="delete-knowledge-bases"></a>Odstranění znalostní báze
 
-Odstranění znalostní báze (KB) je trvalá operace. Nedá se to vrátit. Před odstraněním znalostní báze byste měli znalostní bázi exportovat ze stránky **Nastavení** portálu QnA Maker.
+Odstranění znalostní báze (KB) je trvalá operace. Nedá se vrátit zpátky. Před odstraněním znalostní báze byste měli znalostní bázi exportovat ze stránky **Nastavení** na portálu QnA maker.
 
-Pokud sdílíte znalostní bázi se spolupracovníky,](spolupráce-znalosti base.md) pak ji odstranit, každý ztratí přístup k KB.
+Pokud vaše znalostní báze sdílíte se spolupracovníky,] (spolupráce – znalostní báze base.md), pak se odstraní a všichni ztratí přístup k KB.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si o [správě jazyka](language-knowledge-base.md) všech znalostních bází v prostředku.
+Seznamte [se se správou jazyka](language-knowledge-base.md) všech databází znalostí v prostředku.
 
-* Úpravy párů QnA
-* Správa prostředků Azure používaných qnA makerem
+* Upravit páry QnA
+* Správa prostředků Azure používaných QnA Maker

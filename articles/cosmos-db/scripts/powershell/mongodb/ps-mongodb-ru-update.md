@@ -1,6 +1,6 @@
 ---
-title: Skript PowerShellu pro aktualizaci RU/s pro rozhraní API Azure Cosmos DB pro MongoDB
-description: Zjistěte, jak pomocí skriptu PowerShellu aktualizovat propustnost pro databázi nebo kontejner v rozhraní API služby Azure Cosmos DB pro MongoDB
+title: Skript PowerShellu pro aktualizaci RU/s pro rozhraní Azure Cosmos DB API pro MongoDB
+description: Naučte se používat skript prostředí PowerShell k aktualizaci propustnosti databáze nebo kontejneru v rozhraní Azure Cosmos DB API pro MongoDB.
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: c0dba303a82fb39036b04198f835e4a1e71b6a1d
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80365857"
 ---
-# <a name="update-rus-for-a-database-or-collection-for-azure-cosmos-db---mongodb-api"></a>Aktualizace RU/s pro databázi nebo kolekci pro Azure Cosmos DB – rozhraní MongoDB API
+# <a name="update-rus-for-a-database-or-collection-for-azure-cosmos-db---mongodb-api"></a>Aktualizace RU/s pro databázi nebo kolekci pro rozhraní API pro Azure Cosmos DB MongoDB
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -39,8 +39,8 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Set-AzCosmosDBMongoDBDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbmongodbdatabase) | Vytvoří nový nebo aktualizuje existující Cosmos DB MongoDB databáze rozhraní API. |
-| [Set-AzCosmosDBMongoDBCollection](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbmongodbcollection) | Vytvoří nový nebo aktualizuje existující Kolekci SQL Cosmos DB. |
+| [Set-AzCosmosDBMongoDBDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbmongodbdatabase) | Vytvoří novou nebo aktualizuje existující databázi rozhraní API Cosmos DB MongoDB. |
+| [Set-AzCosmosDBMongoDBCollection](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbmongodbcollection) | Vytvoří novou nebo aktualizuje existující kolekci Cosmos DB SQL. |
 |**Skupiny prostředků Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||

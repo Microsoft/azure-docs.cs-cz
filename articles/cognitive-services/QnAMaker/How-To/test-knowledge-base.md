@@ -1,88 +1,88 @@
 ---
-title: Jak otestovat znalostní bázi - QnA Maker
-description: Testování znalostní báze QnA Maker je důležitou součástí iterativního procesu ke zlepšení přesnosti vrácených odpovědí. Znalostní bázi můžete otestovat prostřednictvím vylepšeného rozhraní chatu, které také umožňuje provádět úpravy.
+title: Postup testování znalostní báze – QnA Maker
+description: Testování QnA Maker znalostní báze je důležitou součástí iterativního procesu, který vylepšuje přesnost vrácených odpovědí. Znalostní bázi můžete testovat prostřednictvím vylepšeného rozhraní chatu, které také umožňuje provádět úpravy.
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.openlocfilehash: da4988ced0b077952ce64e6227d16e58d40ae329
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78927277"
 ---
-# <a name="test-your-knowledge-base-in-qna-maker"></a>Otestujte svou znalostní bázi v QnA Makeru
+# <a name="test-your-knowledge-base-in-qna-maker"></a>Otestujte znalostní bázi v QnA Maker
 
-Testování znalostní báze QnA Maker je důležitou součástí iterativního procesu ke zlepšení přesnosti vrácených odpovědí. Znalostní bázi můžete otestovat prostřednictvím vylepšeného rozhraní chatu, které také umožňuje provádět úpravy.
+Testování QnA Maker znalostní báze je důležitou součástí iterativního procesu, který vylepšuje přesnost vrácených odpovědí. Znalostní bázi můžete testovat prostřednictvím vylepšeného rozhraní chatu, které také umožňuje provádět úpravy.
 
 ## <a name="interactively-test-in-qna-maker-portal"></a>Interaktivní testování na portálu QnA Maker
 
-1. Přístup ke své znalostní bázi výběrem jejího názvu na stránce **Moje znalostní báze.**
-1. Chcete-li získat přístup k panelu Testovat vysunutí, vyberte **testovat** v horním panelu aplikace.
-1. Zadejte dotaz do textového pole a vyberte Enter.
-1. Jako odpověď je vrácena odpověď s nejlepší odpovídající odpovědi ze znalostní báze.
+1. K znalostní bázi se dostanete tak, že na stránce **Moje základy znalostí** vyberete její název.
+1. Pro přístup k panelu testovacího snímku vyberte v horním panelu aplikace **test** .
+1. Do textového pole zadejte dotaz a vyberte Enter.
+1. Nejvhodnější odpověď ze znalostní báze se vrátí jako odpověď.
 
 ### <a name="clear-test-panel"></a>Vymazat testovací panel
 
-Chcete-li vymazat všechny zadané testovací dotazy a jejich výsledky z testovací konzoly, vyberte **spustit znovu** v levém horním rohu testovacího panelu.
+Chcete-li vymazat všechny zadané testovací dotazy a jejich výsledky z konzoly test, vyberte možnost **začít znovu** v levém horním rohu panelu Test.
 
-### <a name="close-test-panel"></a>Zavření testovacího panelu
+### <a name="close-test-panel"></a>Zavřít testovací panel
 
-Chcete-li panel Test zavřít, znovu vyberte tlačítko **Testovat.** Když je panel Test otevřený, nelze upravovat obsah znalostní báze Knowledge Base.
+Chcete-li panel testu zavřít, vyberte tlačítko **test** znovu. I když je panel test otevřený, nelze upravit obsah znalostní báze.
 
 ### <a name="inspect-score"></a>Zkontrolovat skóre
 
-Podrobnosti o výsledku testu zkontrolujte v panelu Kontrola.
+Podrobnosti o výsledku testu si můžete prohlédnout na panelu Kontrola.
 
-1.  Když je otevřený panel Testovat vysunutí, vyberte **Zkontrolovat** další podrobnosti o této odpovědi.
+1.  Na panelu Test snímků na více instancí otevřete možnost **zkontrolovat** , kde najdete další podrobnosti o této odpovědi.
 
     ![Kontrola odpovědí](../media/qnamaker-how-to-test-kb/inspect.png)
 
-2.  Zobrazí se kontrolní panel. Panel obsahuje hlavní záměr hodnocení, stejně jako všechny identifikované entity. Panel zobrazuje výsledek vybrané utterance.
+2.  Zobrazí se panel kontrola. Panel zahrnuje nejvyšší záměr hodnocení i všechny identifikované entity. Na panelu se zobrazí výsledek vybrané utterance.
 
-### <a name="correct-the-top-scoring-answer"></a>Opravit nejlepší bodovací odpověď
+### <a name="correct-the-top-scoring-answer"></a>Opravte odpověď na nejvyšší hodnocení.
 
-Pokud je odpověď nejvyššího hodnocení nesprávná, vyberte správnou odpověď ze seznamu a vyberte **Uložit a trénovat**.
+Pokud je odpověď na nejvyšší vyhodnocování nesprávná, vyberte správnou odpověď ze seznamu a vyberte **Uložit a výuka**.
 
-![Opravit nejlepší bodovací odpověď](../media/qnamaker-how-to-test-kb/choose-answer.png)
+![Opravte odpověď na nejvyšší hodnocení.](../media/qnamaker-how-to-test-kb/choose-answer.png)
 
-### <a name="add-alternate-questions"></a>Přidání alternativních otázek
+### <a name="add-alternate-questions"></a>Přidat alternativní otázky
 
-K dané odpovědi můžete přidat alternativní formy otázky. Do textového pole zadejte alternativní odpovědi a kliknutím na Enter je přidejte. Chcete-li uložit **a trénovat,** vyberte uložit a trénovat aktualizace.
+K dané odpovědi můžete přidat alternativní formy otázky. Do textového pole zadejte alternativní odpovědi a kliknutím na tlačítko ENTER je přidejte. Vyberte **Uložit a výuka** pro uložení aktualizací.
 
-![Přidání alternativních otázek](../media/qnamaker-how-to-test-kb/add-alternate-question.png)
+![Přidat alternativní otázky](../media/qnamaker-how-to-test-kb/add-alternate-question.png)
 
-### <a name="add-a-new-answer"></a>Přidání nové odpovědi
+### <a name="add-a-new-answer"></a>Přidat novou odpověď
 
-Novou odpověď můžete přidat, pokud jsou některé z existujících odpovědí, které byly spárovány, nesprávné nebo odpověď neexistuje ve znalostní bázi (žádná dobrá shoda nalezena v KB).
+Můžete přidat novou odpověď, pokud některé ze stávajících odpovědí, které se shodují, nejsou správné nebo odpověď ve znalostní bázi neexistuje (v KB) nebyla nalezena žádná dobrá shoda.
 
-V dolní části seznamu odpovědí zadejte novou odpověď pomocí textového pole a stisknutím klávesy Enter ji přidejte.
+V dolní části seznamu odpovědí zadejte novou odpověď pomocí textového pole a stisknutím klávesy ENTER ji přidejte.
 
-Chcete-li tuto odpověď zachovat, vyberte **možnost Uložit a Trénovat.** Do znalostní báze byla nyní přidána nová dvojice odpovědí na otázky.
+Vyberte **Save (Uložit) a výuka a** zachovejte tuto odpověď. Do znalostní báze se teď přidala nová dvojice otázek a odpovědí.
 
 > [!NOTE]
-> Všechny úpravy vaší znalostní báze se uloží pouze po stisknutí tlačítka **Uložit a Vlak.**
+> Všechny úpravy ve znalostní bázi se budou ukládat jenom při stisknutí tlačítka **Uložit a výuka** .
 
 ### <a name="test-the-published-knowledge-base"></a>Testování publikované znalostní báze
 
-Publikovanou verzi znalostní báze můžete otestovat v testovacím podokně. Po publikování KB vyberte **políčko Publikovaná kb** a odešlete dotaz pro získání výsledků z publikované KB.
+Publikovanou verzi znalostní báze můžete otestovat v podokně test. Po publikování znalostní báze vyberte pole **zveřejněné znalostní báze** a odešlete dotaz, který získá výsledky z PUBLIKOVANÉHO znalostní báze.
 
-![Test proti publikované KB](../media/qnamaker-how-to-test-kb/test-against-published-kb.png)
+![Test proti publikované znalostní bázi](../media/qnamaker-how-to-test-kb/test-against-published-kb.png)
 
-## <a name="batch-test-with-tool"></a>Dávkový test s nástrojem
+## <a name="batch-test-with-tool"></a>Batch test s nástrojem
 
-Dávkové testování použijte, pokud chcete:
+Nástroj Batch test použijte, když chcete:
 
-* určit nejvyšší odpověď a skóre pro sadu otázek
-* ověřit očekávanou odpověď na sadu otázek
+* určení nejlepší odpovědi a skóre pro sadu otázek
+* ověřit očekávanou odpověď pro sadu otázek
 
-Přečtěte si [kurz](../Quickstarts/batch-testing.md) testování dávky podrobné pokyny.
+Podrobné pokyny najdete v [kurzu](../Quickstarts/batch-testing.md) dávkového testování.
 
-Dávkové testování je dodáváno s dávkovým testovacím nástrojem. Tento nástroj je k dispozici jako [zip spustitelný soubor](https://aka.ms/qnamakerbatchtestingtool) ke stažení nebo jako [c# zdrojový kód](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting).
+Dávkové testování se poskytuje pomocí nástroje Batch Testing. Tento nástroj je k dispozici jako [spustitelný soubor zip](https://aka.ms/qnamakerbatchtestingtool) ke stažení nebo jako [zdrojový kód C#](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting).
 
-[Referenční dokumentace k nástroji](../reference-tsv-format-batch-testing.md) obsahuje:
+[Referenční dokumentace k nástroji](../reference-tsv-format-batch-testing.md) zahrnuje:
 
 * příklad příkazového řádku nástroje
-* formát pro vstupní a outfile soubory TSV
+* formát pro vstupní a výstupní soubory TSV
 
 ## <a name="next-steps"></a>Další kroky
 

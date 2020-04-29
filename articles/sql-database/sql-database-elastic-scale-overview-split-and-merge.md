@@ -1,6 +1,6 @@
 ---
 title: Přesun dat mezi cloudovými databázemi s horizontálním navýšením kapacity
-description: Vysvětluje, jak manipulovat s úlomky a přesouvat data prostřednictvím samoobslužné služby pomocí elastických databázových api.
+description: Vysvětluje, jak manipulovat s horizontálních oddílů a přesouvat data prostřednictvím samoobslužné služby pomocí rozhraní API elastické databáze.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,93 +12,93 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: c7eb1670ee911895bdba23921845b8795f4998af
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80811304"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Přesun dat mezi cloudovými databázemi s horizontálním navýšením kapacity
 
-Pokud jste vývojář softwaru jako služba a najednou vaše aplikace prochází obrovskou poptávkou, musíte růst přizpůsobit. Takže přidáte další databáze (střepy). Jak redistribuovat data do nových databází bez narušení integrity dat? Pomocí **nástroje rozdělení sloučení přesuňte** data z omezených databází do nových databází.  
+Pokud jste software jako vývojář služby a náhle nebudete mít k potřebnou poptávku, je potřeba růst. Takže přidáte další databáze (horizontálních oddílů). Jak znovu distribuovat data do nových databází bez přerušení integrity dat? K přesunu dat z omezených databází do nových databází použijte **Nástroj pro dělení k paralelnímu sloučení** .  
 
-Nástroj pro rozdělení sloučení se spustí jako webová služba Azure. Správce nebo vývojář používá nástroj k přesunutí shardlets (data z úlomku) mezi různými databázemi (střepy). Nástroj používá správu mapy sypkých modulů k udržování databáze metadat služby a k zajištění konzistentního mapování.
+Nástroj pro dělení a slučování se spouští jako webová služba Azure. Správce nebo vývojář používá nástroj k přesunu shardlety (data z horizontálních oddílů) mezi různými databázemi (horizontálních oddílů). Nástroj používá správu map horizontálních oddílů k údržbě databáze metadat služby a zajišťuje konzistentní mapování.
 
 ![Přehled][1]
 
 ## <a name="download"></a>Stáhnout
 
-[Microsoft.Azure.sqldatabase.ElasticScale.Service.SplitMerge](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
+[Microsoft. Azure. SqlDatabase. ElasticScale. Service. SplitMerge](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
 
 ## <a name="documentation"></a>Dokumentace
 
-1. [Kurz nástroje rozdělení sloučení elastické databáze](sql-database-elastic-scale-configure-deploy-split-and-merge.md)
-2. [Konfigurace zabezpečení rozdělení sloučení](sql-database-elastic-scale-split-merge-security-configuration.md)
-3. [Důležité informace o zabezpečení rozdělení sloučení](sql-database-elastic-scale-split-merge-security-configuration.md)
+1. [Kurz pro dělení a slučování elastické databáze](sql-database-elastic-scale-configure-deploy-split-and-merge.md)
+2. [Konfigurace zabezpečení dělení a slučování](sql-database-elastic-scale-split-merge-security-configuration.md)
+3. [Předpoklady zabezpečení dělení a slučování](sql-database-elastic-scale-split-merge-security-configuration.md)
 4. [Správa mapování horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md)
 5. [Migrace existujících databází pro horizontální navýšení kapacity](sql-database-elastic-convert-to-use-elastic-tools.md)
-6. [Nástroje pro elastické databáze](sql-database-elastic-scale-introduction.md)
-7. [Glosář nástrojů elastické databáze](sql-database-elastic-scale-glossary.md)
+6. [Nástroje elastické databáze](sql-database-elastic-scale-introduction.md)
+7. [Glosář nástrojů pro Elastic Database](sql-database-elastic-scale-glossary.md)
 
-## <a name="why-use-the-split-merge-tool"></a>Proč používat nástroj rozdělení sloučení
+## <a name="why-use-the-split-merge-tool"></a>Proč používat nástroj pro dělení a slučování
 
 - **Flexibilita**
 
-  Aplikace se musí flexibilně roztáhnout za hranice jedné databáze Azure SQL DB. Pomocí nástroje můžete přesunout data podle potřeby do nových databází při zachování integrity.
+  Aplikace musí být pružně roztaženy nad rámec jedné databáze Azure SQL DB. Pomocí tohoto nástroje můžete přesouvat data podle potřeby do nových databází a přitom zachovat integritu.
 
-- **Rozdělit růst**
+- **Rozdělit na růst**
 
-  Chcete-li zvýšit celkovou kapacitu pro zpracování explozivního růstu, vytvořte další kapacitu rozdělením dat a jejich distribucí mezi postupně více databází, dokud nebudou splněny potřeby kapacity. Toto je ukázkový příklad **funkce rozdělení.**
+  Chcete-li zvýšit celkovou kapacitu pro zpracování výbušného nárůstu, vytvořte další kapacitu tím, že horizontálního dělení data a distribuujete je napříč přírůstkově více databázemi až do splnění potřeb kapacity. Toto je hlavní příklad funkce **Split** .
 
-- **Sloučit, aby se zmenšilo**
+- **Sloučit do zmenšení**
 
-  Potřeby kapacity se zmenšují kvůli sezónní povaze podniku. Nástroj umožňuje škálovat na méně jednotek škálování, když se podnikání zpomaluje. Funkce "sloučení" ve službě rozdělení sloučení elastického měřítka pokrývá tento požadavek.
+  Nároky na kapacitu se zmenšují z důvodu sezónní povahy podniku. Nástroj umožňuje horizontální snížení kapacity v menším množství jednotek škálování v případě, že je čas společnosti pomalý. Tato podmínka pokrývá funkci Merge ve službě elastického škálování Split-Merge.
 
-- **Správa aktivních oblastí přesunutím shardlets**
+- **Správa aktivních bodů přesunutím shardlety**
 
-  S více klienty na databázi přidělení shardlets na úlomky může vést k kritické body kapacity na některé úlomky. To vyžaduje opětovné přidělení shardlets nebo přesunutí zaneprázdněný shardlets na nové nebo méně využité střepy.
+  Díky více klientům na databázi může přidělení shardlety a horizontálních oddílů vést k kritickým místům kapacity u některých horizontálních oddílů. To vyžaduje opětovné přidělení shardlety nebo přesunutí zaneprázdněného shardletyu na nové nebo méně využité horizontálních oddílů.
 
-## <a name="concepts--key-features"></a>Koncepty & klíčové vlastnosti
+## <a name="concepts--key-features"></a>Koncepty & klíčových funkcí
 
 - **Služby hostované zákazníky**
 
-  Rozdělení sloučení je dodávánjako služba hostovaná zákazníkem. Službu musíte nasadit a hostovat v předplatném Microsoft Azure. Balíček, který stáhnete z NuGet obsahuje konfigurační šablonu pro dokončení s informacemi pro konkrétní nasazení. Podrobnosti najdete v [kurzu rozdělení sloučení.](sql-database-elastic-scale-configure-deploy-split-and-merge.md) Vzhledem k tomu, že služba běží ve vašem předplatném Azure, můžete řídit a konfigurovat většinu aspektů zabezpečení služby. Výchozí šablona obsahuje možnosti konfigurace TLS, ověřování klientů na základě certifikátů, šifrování pro uložená pověření, ochranu DoS a omezení IP. Další informace o aspektech zabezpečení naleznete v následující [konfiguraci zabezpečení rozdělení sloučení](sql-database-elastic-scale-split-merge-security-configuration.md)dokumentů .
+  Rozdělené sloučení se doručuje jako služba hostovaná zákazníkem. Službu musíte nasadit a hostovat v rámci předplatného Microsoft Azure. Balíček, který stáhnete ze sady NuGet, obsahuje šablonu konfigurace, která se dokončí s informacemi pro konkrétní nasazení. Podrobnosti najdete v [kurzu rozdělení na sloučení](sql-database-elastic-scale-configure-deploy-split-and-merge.md) . Vzhledem k tomu, že služba běží ve vašem předplatném Azure, můžete řídit a konfigurovat většinu aspektů zabezpečení služby. Výchozí šablona obsahuje možnosti konfigurace TLS, ověřování klientů založených na certifikátech, šifrování uložených přihlašovacích údajů, ochrana systému DoS a omezení IP adres. Další informace o aspektech zabezpečení najdete v následující dokumentu [Konfigurace zabezpečení s rozděleným sloučením](sql-database-elastic-scale-split-merge-security-configuration.md).
 
-  Výchozí nasazená služba je spuštěna s jedním pracovníkem a jednou webovou rolí. Každý používá velikost virtuálního počítače A1 v Cloudových službách Azure. I když nelze změnit tato nastavení při nasazování balíčku, můžete je změnit po úspěšném nasazení v běžící cloudové službě (prostřednictvím portálu Azure). Všimněte si, že role pracovníka nesmí být nakonfigurována pro více než jednu instanci z technických důvodů.
+  Výchozí nasazená služba se spouští s jedním pracovním procesem a jednou webovou rolí. Každá z nich používá velikost virtuálního počítače a1 v Azure Cloud Services. I když při nasazování balíčku tato nastavení nemůžete změnit, můžete je po úspěšném nasazení v běžící cloudové službě změnit (prostřednictvím Azure Portal). Role pracovního procesu nesmí být nakonfigurovaná na více než jednu instanci z technických důvodů.
 
-- **Integrace mapy střepů**
+- **Integrace map horizontálních oddílů**
 
-  Služba rozdělení sloučení spolupracuje s mapou střepů aplikace. Při použití služby rozdělení sloučení rozdělit nebo sloučit rozsahy nebo přesunout shardlety mezi střepy, služba automaticky udržuje mapování střepů aktuální. Chcete-li tak učinit, služba se připojí k databázi správce mapy susi aplikace a udržuje rozsahy a mapování jako průběh požadavků na rozdělení/sloučení/přesunutí. Tím je zajištěno, že mapa skládek vždy představuje aktuální zobrazení při rozdělení operace sloučení probíhají. Operace přesunu rozdělení, sloučení a shardletu jsou implementovány přesunutím dávky shardlets ze zdrojového štřepu do cílového střetu. Během operace pohybu shardlet shardlets podléhají aktuální dávka jsou označeny jako offline v mapě střepu a nejsou k dispozici pro připojení směrování závislé na datech pomocí **rozhraní OPENConnectionForKey** API.
+  Služba rozdělení a sloučení komunikuje s mapou horizontálních oddílů aplikace. Když použijete službu dělení a slučování k rozdělení nebo sloučení rozsahů nebo přesunete shardlety mezi horizontálních oddílů, služba automaticky udržuje mapu horizontálních oddílů v aktuálním stavu. V takovém případě se služba připojí k databázi správce mapy horizontálních oddílů aplikace a udržuje rozsahy a mapování jako průběh požadavků na rozdělení, sloučení a přesunutí. Tím se zajistí, že mapa horizontálních oddílů vždy prezentuje aktuální zobrazení při přechodu k operacím dělení na data. Operace rozdělení, sloučení a shardletu přesunu jsou implementovány přesunutím dávky shardlety ze zdrojového horizontálních oddílů do cílového horizontálních oddílů. Během operace přesunu shardletu se shardlety v závislosti na aktuální dávce označí jako offline v mapě horizontálních oddílů a nejsou k dispozici pro připojení směrování závislá na datech pomocí rozhraní **OpenConnectionForKey** API.
 
 - **Konzistentní připojení shardletu**
 
-  Při spuštění přesunu dat pro novou dávku shardlets, všechny shard-map za předpokladu, že směrování závislé na datech soddíl ukládání shardlet jsou usmrceny a následná připojení z rozhraní API mapy střepu shardlets jsou blokovány, zatímco pohyb dat probíhá, aby se zabránilo nekonzistenci. Připojení k jiným shardlets na stejném úlomku bude také zabít, ale bude úspěšné znovu okamžitě na opakování. Po přesunutí dávky jsou shardlety znovu označeny online pro cílový úlomek a zdrojová data jsou odebrána ze zdrojového oddílu. Služba prochází těmito kroky pro každou dávku, dokud nebyly přesunuty všechny shardlety. To povede k několika operacím usmrcení připojení v průběhu celé operace rozdělení/sloučení/přesunutí.  
+  Po zahájení přesunu dat na novou dávku shardlety se všechna horizontálních oddílů mapa, která poskytuje směrování závislá na datech do horizontálních oddílů ukládání shardletu, zablokovala a následná připojení z rozhraní API mapy horizontálních oddílů do shardlety jsou zablokovaná, zatímco probíhá přesun dat, aby se předešlo nekonzistencím. Připojení k ostatním shardlety na stejném horizontálních oddílů se taky zastaví, ale po opakování se to bude zdařit okamžitě. Po přesunutí dávky jsou shardlety znovu označeny online pro cílový horizontálních oddílů a zdrojová data budou odstraněna ze zdrojového horizontálních oddílů. Služba projde tyto kroky pro každou dávku, dokud nebudou všechny shardlety přesunuty. To bude mít za následek několik operací ukončování připojení v průběhu operace dokončení rozdělení, sloučení nebo přesunutí.  
 
-- **Správa dostupnosti shardlet**
+- **Správa dostupnosti shardletu**
 
-  Omezení připojení usmrcování na aktuální dávku shardlets, jak je popsáno výše omezuje rozsah nedostupnosti na jednu dávku shardlets najednou. To je upřednostňováno před přístupem, kde by úplný oddíl oddílu zůstal offline pro všechny jeho shardlety v průběhu operace rozdělení nebo sloučení. Velikost dávky, definované jako počet různých shardlets přesunout najednou, je parametr konfigurace. Lze definovat pro každou operaci rozdělení a sloučení v závislosti na dostupnosti a výkonu aplikace. Všimněte si, že rozsah, který je uzamčen v mapě střepu může být větší než zadaná velikost dávky. Důvodem je, že služba vybere velikost rozsahu tak, aby skutečný počet hodnot klíče s ráždí v datech přibližně odpovídá velikosti dávky. To je důležité mít na paměti, zejména pro řídce osídlené klíče nálože.
+  Omezení usmrcení připojení k aktuální dávce shardlety, jak je popsáno výše, omezuje rozsah nedostupnosti na jednu dávku shardlety v jednom okamžiku. To je upřednostňováno nad přístupem, kde kompletní horizontálních oddílů zůstane offline pro všechny své shardlety v průběhu operace rozdělení nebo sloučení. Velikost dávky definovaná jako počet jedinečných shardlety, která se mají přesunout najednou, je parametr konfigurace. Dá se definovat pro každou operaci rozdělení a sloučení v závislosti na potřebách dostupnosti a výkonu aplikace. Všimněte si, že rozsah, který je uzamčen v mapě horizontálních oddílů, může být větší než zadaná velikost dávky. Důvodem je to, že služba vybírá velikost rozsahu tak, aby skutečný počet hodnot horizontálního dělení klíčů v datech přibližně odpovídal velikosti dávky. To je důležité pamatovat zejména pro zhuštěné horizontálního dělení klíče.
 
 - **Úložiště metadat**
 
-  Služba rozdělení sloučení používá databázi k udržení svého stavu a k uchovávaní protokolů během zpracování požadavků. Uživatel vytvoří tuto databázi ve svém předplatném a poskytne připojovací řetězec pro něj v konfiguračním souboru pro nasazení služby. Správci z organizace uživatele se také mohou připojit k této databázi, aby zkontrolovali průběh požadavku a prozkoumali podrobné informace týkající se potenciálních selhání.
+  Služba rozdělení a sloučení používá databázi k údržbě jejího stavu a k udržování protokolů během zpracování žádosti. Uživatel tuto databázi vytvoří ve svém předplatném a poskytne připojovací řetězec v konfiguračním souboru pro nasazení služby. Správci z organizace uživatele se také mohou připojit k této databázi a zkontrolovat pokrok v žádosti a prozkoumat podrobné informace týkající se potenciálních selhání.
 
-- **Sharding-povědomí**
+- **Horizontálního dělení – povědomí**
 
-  Služba rozdělení sloučení rozlišuje mezi (1) tabulky s rozdělením, (2) referenční tabulky a (3) normální tabulky. Sémantika operace rozdělení/sloučení/přesunutí závisí na typu použité tabulky a je definována takto:
+  Služba rozdělení a sloučení rozlišuje mezi (1) tabulkami horizontálně dělené, (2) referenčními tabulkami a (3) normálními tabulkami. Sémantika operace rozdělení, sloučení nebo přesunutí závisí na typu použité tabulky a jsou definovány následujícím způsobem:
 
-  - **Tabulky s tažné tabulky s tisovými**
+  - **Tabulky horizontálně dělené**
 
-    Operace rozdělení, sloučení a přesunutí přesunout shardlety ze zdroje do cílového úlomek. Po úspěšném dokončení celkové požadavku tyto shardlety již nejsou k dispozici ve zdroji. Všimněte si, že cílové tabulky musí existovat na cílovém šiřidla a nesmí obsahovat data v cílové oblasti před zpracováním operace.
+    Operace rozdělení, sloučení a přesunu přesunou shardlety ze zdroje do cílového horizontálních oddílů. Po úspěšném dokončení celkové žádosti nejsou tyto shardlety nadále přítomny ve zdroji. Všimněte si, že cílové tabulky musí existovat na cílovém horizontálních oddílů a nesmí obsahovat data v cílovém rozsahu před zpracováním operace.
 
   - **Referenční tabulky**
 
-    Pro referenční tabulky operace rozdělení, sloučení a přesunutí zkopírují data ze zdroje do cílového oddílu. Všimněte si však, že žádné změny dojít na cílový šiř pro danou tabulku, pokud některý řádek je již k dispozici v této tabulce na cíl. Tabulka musí být prázdná pro všechny operace kopírování referenční tabulky, aby byla zpracována.
+    V případě referenčních tabulek kopírují operace rozdělení, sloučení a přesunutí data ze zdroje do cílového horizontálních oddílů. Všimněte si však, že v cílovém horizontálních oddílů pro danou tabulku nedochází k žádným změnám, pokud v této tabulce v cíli již existuje nějaký řádek. Tabulka musí být prázdná pro všechny operace kopírování referenční tabulky, aby se mohla zpracovat.
 
-  - **Ostatní tabulky**
+  - **Další tabulky**
 
-    Ostatní tabulky mohou být k dispozici na zdroj nebo cíl operace rozdělení a sloučení. Služba rozdělení sloučení ignoruje tyto tabulky pro všechny operace přesunu dat nebo kopírování. Všimněte si však, že mohou zasahovat do těchto operací v případě omezení.
+    Další tabulky mohou být k dispozici buď na zdroji, nebo v cíli operace rozdělení a sloučení. Služba dělení a slučování ignoruje tyto tabulky pro jakékoli operace přesunu nebo kopírování dat. Upozorňujeme však, že tyto operace mohou v případě omezení narušovat.
 
-    Informace o odkaz vs. rozdělení tabulky jsou `SchemaInfo` poskytovány rozhraní API na mapě oddílu. Následující příklad ilustruje použití těchto rozhraní API na daný objekt správce mapy svižného oddílu:
+    Informace o referenčních tabulkách vs. horizontálně dělené jsou poskytovány `SchemaInfo` rozhraními API na mapě horizontálních oddílů. Následující příklad ilustruje použití těchto rozhraní API na daném objektu Správce map horizontálních oddílů:
 
     ```csharp
     // Create the schema annotations
@@ -116,112 +116,112 @@ Nástroj pro rozdělení sloučení se spustí jako webová služba Azure. Sprá
     smm.GetSchemaInfoCollection().Add(Configuration.ShardMapName, schemaInfo);
     ```
 
-    Tabulky "region" a "nation" jsou definovány jako referenční tabulky a budou zkopírovány operacemi rozdělení/sloučení/přesunutí. 'zákazník' a 'objednávky' zase jsou definovány jako střežnice tabulky. `C_CUSTKEY`a `O_CUSTKEY` slouží jako klíč s tvrdoštitou.
+    Tabulky "region" a "země" jsou definovány jako referenční tabulky a budou zkopírovány pomocí operací rozdělit/sloučit/přesunout. "Customer" a "Orders" jsou definovány jako tabulky horizontálně dělené. `C_CUSTKEY`a `O_CUSTKEY` slouží jako horizontálního dělení klíč.
 
 - **Referenční integrita**
 
-  Služba rozdělení sloučení analyzuje závislosti mezi tabulkami a používá vztahy cizího klíče a primárního klíče k vytvoření operací pro přesunutí referenčních tabulek a shardlets. Obecně platí, že referenční tabulky jsou zkopírovány nejprve v pořadí závislostí, potom shardlety jsou zkopírovány v pořadí jejich závislostí v rámci každé dávky. To je nezbytné, aby fk-pk omezení na cílový oddíl jsou dodrženy jako nová data dorazí.
+  Služba rozdělení a sloučení analyzuje závislosti mezi tabulkami a používá vztahy primárního klíče cizího klíče pro přípravu operací pro přesun referenčních tabulek a shardlety. Obecně se referenční tabulky zkopírují jako první v pořadí závislostí a shardlety se zkopírují v pořadí podle jejich závislosti v rámci každé dávky. To je nezbytné, aby při přijetí nových dat byly dodrženy omezení CK-PK na cílovém horizontálních oddílů.
 
-- **Konzistence mapy úložného oddílu a případné dokončení**
+- **Konzistence map horizontálních oddílů a následné dokončení**
 
-  V případě selhání služba rozdělení sloučení obnoví operace po výpadku a jeho cílem je dokončit všechny probíhající požadavky. Mohou však existovat neopravitelné situace, například při ztrátě nebo ohrožení zabezpečení cílového úlomku. Za těchto okolností některé shardlety, které měly být přesunuty může i nadále nacházet na zdrojové mřížce. Služba zajišťuje, že mapování shardletu jsou aktualizovány až po úspěšném zkopírování potřebných dat do cíle. Shardlety jsou odstraněny ve zdroji pouze po všechna jejich data byla zkopírována do cíle a odpovídající mapování byly úspěšně aktualizovány. Operace odstranění probíhá na pozadí, zatímco rozsah je již online na cílovéhorizontálního oddílu. Služba rozdělení sloučení vždy zajišťuje správnost mapování uložených v mapě střepů.
+  V případě selhání služba rozdělení a sloučení pokračuje v operacích po jakémkoli výpadku a zaměřuje na dokončení všech probíhajících žádostí. Mohou však nastat neobnovitelné situace, například, když dojde ke ztrátě nebo zabezpečení cílového horizontálních oddílů po nápravě. Za těchto okolností se může stát, že některé shardlety, které by se mohly přesunout, budou i nadále uloženy na zdrojovém horizontálních oddílů. Služba zajišťuje, aby se mapování shardletu aktualizovalo až po úspěšném zkopírování potřebných dat do cíle. Shardlety se odstraní jenom na zdroji, jakmile se všechna data zkopírují do cíle a odpovídajícím způsobem se úspěšně aktualizovala příslušná mapování. Operace odstranění probíhá na pozadí, zatímco rozsah je již online na cílovém horizontálních oddílů. Služba dělené sloučení vždy zajišťuje správnost mapování uložených v mapě horizontálních oddílů.
 
-## <a name="the-split-merge-user-interface"></a>Uživatelské rozhraní rozdělené sloučit
+## <a name="the-split-merge-user-interface"></a>Uživatelské rozhraní dělení a slučování
 
-Balíček služby rozdělené hromadné korespondence obsahuje roli pracovního procesu a webovou roli. Webová role se používá k interaktivnímu odesílání žádostí o rozdělení sloučení. Hlavní součásti uživatelského rozhraní jsou následující:
+Balíček služby pro dělení a slučování zahrnuje roli pracovního procesu a webovou roli. Webová role slouží k odeslání požadavků dílčího sloučení interaktivním způsobem. Hlavní součásti uživatelského rozhraní jsou následující:
 
 - **Typ operace**
 
-  Typ operace je přepínací tlačítko, které řídí druh operace prováděné službou pro tento požadavek. Můžete si vybrat mezi scénářerozdělení, sloučení a přesunutí. Můžete také zrušit dříve odeslanou operaci. Můžete použít požadavky na rozdělení, sloučení a přesunutí map úlomků rozsahu. Seznam map šmejdů podporuje pouze operace přesunutí.
+  Typ operace je přepínač, který řídí druh operace prováděné službou pro tuto žádost. Můžete si vybrat mezi scénáři rozdělení, sloučení a přesunutí. Můžete také zrušit dříve odeslanou operaci. Můžete použít žádosti o rozdělení, sloučení a přesun pro rozsah mapy horizontálních oddílů. List horizontálních oddílů Maps podporuje pouze operace přesunutí.
 
-- **Mapa úlomků**
+- **Mapa horizontálních oddílů**
 
-  Další část parametrů požadavku zahrnuje informace o mapě střepů a databázi hostující mapu svižného objektu. Zejména je třeba zadat název serveru Azure SQL Database a databáze hostující shardmap, přihlašovací údaje pro připojení k databázi mapy střepů a nakonec název mapy střepů. V současné době operace přijímá pouze jednu sadu pověření. Tato pověření musí mít dostatečná oprávnění k provádění změn mapy úlomků a také uživatelských dat na úlomcích.
+  Další oddíl parametrů požadavku obsahuje informace o mapě horizontálních oddílů a databázi hostující vaši mapu horizontálních oddílů. Konkrétně je potřeba zadat název Azure SQL Database serveru a databáze hostující shardmap, přihlašovací údaje pro připojení k databázi map horizontálních oddílů a nakonec název mapy horizontálních oddílů. V současné době tato operace akceptuje jenom jednu sadu přihlašovacích údajů. Tyto přihlašovací údaje musí mít dostatečná oprávnění k provádění změn v mapě horizontálních oddílů a také k uživatelským datům na horizontálních oddílů.
 
-- **Rozsah zdroje (rozdělení a sloučení)**
+- **Zdrojový rozsah (rozdělení a sloučení)**
 
-  Operace rozdělení a sloučení zpracovává rozsah pomocí nízkého a vysokého klíče. Chcete-li určit operaci s neohraničenou vysokou hodnotou klíče, zaškrtněte políčko "Vysoká hodnota je max" a pole vysokého klíče ponechte prázdné. Hodnoty klíče rozsahu, které zadáte, nemusí přesně odpovídat mapování a jeho hranice v mapě oddílu. Pokud nezadáte žádné hranice rozsahu vůbec služba odvodí nejbližší rozsah pro vás automaticky. Skript Prostředí PowerShell GetMappings.ps1 můžete použít k načtení aktuálního mapování v dané mapě šitrů.
+  Operace rozdělení a sloučení zpracuje rozsah pomocí jeho nízkého a horního klíče. Chcete-li zadat operaci s neohraničenou hodnotou klíče s vysokým klíčem, zaškrtněte políčko vysoká hodnota klíče Max a nechejte pole horní klíč prázdné. Hodnoty klíče rozsahu, které určíte, nemusejí přesně odpovídat mapování a jeho hranicím v mapě horizontálních oddílů. Pokud nezadáte žádné hranice rozsahu na všech službách, odsadí nejbližší rozsah automaticky. Pomocí skriptu PowerShellu getmappings. ps1 můžete načíst aktuální mapování v dané mapě horizontálních oddílů.
 
-- **Chování rozděleného zdroje (rozdělení)**
+- **Chování rozdělení zdroje (rozdělit)**
 
-  Pro rozdělené operace definujte bod pro rozdělení zdrojové oblasti. To provést poskytnutím klíče srážlivých užitků, kde chcete provést rozdělení. Pomocí přepínacího tlačítka určete, zda se má přesunout spodní část rozsahu (kromě rozdělovacího klíče) nebo zda se má horní část přesunout (včetně rozdělovacího klíče).
+  Pro rozdělené operace definujte bod pro rozdělení zdrojového rozsahu. Provedete to tak, že zadáte horizontálního dělení klíč, ve kterém chcete rozdělení provést. Použijte přepínač určete, zda chcete přesunout dolní část rozsahu (kromě rozděleného klíče), nebo zda chcete přesunout horní část (včetně rozděleného klíče).
 
-- **Zdroj Shardlet (přesunout)**
+- **Shardletu zdroje (přesunout)**
 
-  Operace přesunutí se liší od operací rozdělení nebo sloučení, protože nevyžadují rozsah k popisu zdroje. Zdroj pro přesunutí je jednoduše identifikován hodnotou klíče s ráždí, kterou plánujete přesunout.
+  Operace přesunu se liší od operací rozdělení nebo sloučení, protože nevyžadují rozsah pro popis zdroje. Zdroj pro přesun je jednoduše identifikovaný hodnotou horizontálního dělení klíče, kterou plánujete přesunout.
 
-- **Cílový úlomek (rozdělení)**
+- **Cílový horizontálních oddílů (rozdělit)**
 
-  Jakmile zadáte informace o zdroji operace rozdělení, musíte definovat, kam chcete data zkopírovat poskytnutím serveru Azure SQL Db a názvu databáze pro cíl.
+  Po zadání informací o zdroji operace rozdělení musíte definovat, do kterého chcete data zkopírovat, zadáním serveru a názvu databáze služby Azure SQL DB pro cíl.
 
 - **Cílový rozsah (sloučení)**
 
-  Operace sloučení přesunout shardlety do existujícího šněrového oddílu. Existující úlomek identifikujete poskytnutím hranic rozsahu existující oblasti, se kterou chcete sloučit.
+  Operace sloučení přesunou shardlety k existujícímu horizontálních oddílů. Existující horizontálních oddílů identifikujete tak, že zadáte hranice rozsahu pro existující rozsah, se kterým chcete sloučení.
 
 - **Velikost dávky**
 
-  Velikost dávky určuje počet shardlets, které přejdou do režimu offline v době, během přesunu dat. Toto je celá hodnota, kde můžete použít menší hodnoty, když jste citliví na dlouhé období prostojů pro shardlety. Větší hodnoty zvýší čas, který daný shardlet je offline, ale může zlepšit výkon.
+  Velikost dávky řídí počet shardlety, které se během přesunu dat vrátí do offline režimu. Toto je celočíselná hodnota, kde můžete použít menší hodnoty, pokud budete rozlišovat na dlouhou dobu výpadku shardlety. Větší hodnoty prodlouží dobu, po kterou je daný shardletu offline, ale může zvýšit výkon.
 
 - **ID operace (zrušit)**
 
-  Pokud máte probíhající operaci, která již není potřeba, můžete operaci zrušit poskytnutím Jejího ID operace v tomto poli. ID operace můžete načíst z tabulky stavu požadavku (viz oddíl 8.1) nebo z výstupu ve webovém prohlížeči, kde jste žádost odeslali.
+  Pokud máte probíhající operaci, která už nepotřebujete, můžete operaci zrušit tím, že v tomto poli zadáte její ID operace. ID operace můžete načíst z tabulky stav žádosti (viz oddíl 8,1) nebo z výstupu ve webovém prohlížeči, kam jste odeslali žádost.
 
 ## <a name="requirements-and-limitations"></a>Požadavky a omezení
 
-Současná implementace služby split-merge podléhá následujícím požadavkům a omezením:
+Aktuální implementace služby rozdělení a sloučení podléhá následujícím požadavkům a omezením:
 
-- Oddíly musí existovat a být registrovány v mapě střeppřed zahájením rozdělení před rozdělení množiny lze provést.
-- Služba nevytváří tabulky nebo jiné databázové objekty automaticky jako součást svých operací. To znamená, že schéma pro všechny rozdělené tabulky a referenční tabulky musí existovat na cílovém oddílu před jakoukoli operací rozdělení/sloučení/přesunutí. Zejména tabulky s rozdělením jsou nutné být prázdné v rozsahu, kde mají být přidány nové shardlety operací rozdělení/sloučení/přesunutí. V opačném případě operace se nezdaří počáteční kontrola konzistence na cílový šiř. Všimněte si také, že referenční data jsou zkopírována pouze v případě, že referenční tabulka je prázdná a že neexistují žádné záruky konzistence s ohledem na jiné souběžné operace zápisu v referenčních tabulkách. Doporučujeme toto: při spuštění operací rozdělení/sloučení žádné jiné operace zápisu provádět změny v referenčních tabulkách.
-- Služba závisí na identitě řádku vytvořené jedinečným indexem nebo klíčem, který obsahuje klíč pro sharding pro zlepšení výkonu a spolehlivosti pro velké shardlety. To umožňuje službě přesunout data s ještě jemnější rozlišovací schopnost než pouze hodnota klíče s ráždí. To pomáhá snížit maximální množství místa protokolu a zámky, které jsou požadovány během operace. Zvažte vytvoření jedinečného indexu nebo primárního klíče včetně klíče pro rozdělení v dané tabulce, pokud chcete tuto tabulku použít s požadavky na rozdělení/sloučení/přesunutí. Z důvodů výkonu by měl být klíč s ráždí úvodním sloupcem v klíči nebo indexu.
-- V průběhu zpracování požadavků mohou být některá data shardlet k dispozici ve zdroji i v cílovém úlomku. To je nezbytné k ochraně před poruchami během pohybu shardletu. Integrace rozdělení sloučení s mapou střepu zajišťuje, že připojení prostřednictvím rozhraní API směrování závislých na datech pomocí metody **OpenConnectionForKey** na mapě střepu neuvidí žádné nekonzistentní mezilehlé stavy. Však při připojování ke zdroji nebo cílové šřepy bez použití **OpenConnectionForKey** metoda, nekonzistentní mezilehlé stavy mohou být viditelné při rozdělení/ sloučení/přesunutí požadavky probíhají. Tato připojení mohou zobrazit částečné nebo duplicitní výsledky v závislosti na časování nebo úlomek základní připojení. Toto omezení aktuálně zahrnuje připojení provedené elastické škálování více horizontálních oddílů-dotazy.
-- Databáze metadat pro službu rozdělení sloučení nesmí být sdílena mezi různými rolemi. Například role služby rozdělení sloučení spuštěné v pracovní min. musí ukazovat na jinou databázi metadat než produkční roli.
+- Horizontálních oddílů musí existovat a musí být registrována v mapě horizontálních oddílů předtím, než je možné provést operaci dělení a sloučení u těchto horizontálních oddílů.
+- Služba nevytváří v rámci svých operací automaticky tabulky ani žádné jiné databázové objekty. To znamená, že schéma pro všechny tabulky horizontálně dělené a referenční tabulky musí existovat na cílovém horizontálních oddílů před jakoukoli operací Split/Merge/Move. Tabulky horizontálně dělené musí být v rozsahu prázdné, aby bylo přidáno nové shardlety pomocí operace rozdělení/sloučení nebo přesunutí. V opačném případě operace neproběhne při prvotní kontrole konzistence na cílovém horizontálních oddílů. Všimněte si také, že referenční data jsou zkopírována pouze v případě, že je referenční tabulka prázdná a že neexistují žádné záruky konzistence s ohledem na jiné souběžné operace zápisu v referenčních tabulkách. Doporučujeme toto: při spouštění operací rozdělení/sloučení neprovádí žádné jiné operace zápisu změny v referenčních tabulkách.
+- Služba spoléhá na identitu řádku vytvořenou jedinečným indexem nebo klíčem, který obsahuje klíč horizontálního dělení pro zlepšení výkonu a spolehlivosti pro velké shardletyy. Díky tomu může služba přesouvat data s ještě jemnější členitosti než jenom hodnota horizontálního dělení klíče. To pomáhá snižovat maximální množství místa v protokolu a zámků, které jsou požadovány během operace. Pokud chcete použít tuto tabulku s požadavky na rozdělení/sloučení/přesun, zvažte vytvoření jedinečného indexu nebo primárního klíče, včetně klíče horizontálního dělení v dané tabulce. Z důvodu výkonu by měl být klíč horizontálního dělení jako první sloupec v klíči nebo v indexu.
+- V průběhu zpracování žádosti můžou být některá shardletu data přítomná jak na zdrojovém, tak na cílovém horizontálních oddílů. To je nezbytné k ochraně před chybami při shardletu pohybu. Integrace rozděleného sloučení s mapou horizontálních oddílů zajišťuje, že připojení prostřednictvím rozhraní API směrování závislých na datech pomocí metody **OpenConnectionForKey** na mapě horizontálních oddílů neobsahují žádné nekonzistentní přechodné stavy. Při připojení ke zdroji nebo cílové horizontálních oddílů bez použití metody **OpenConnectionForKey** se ale můžou zobrazit nekonzistentní přechodné stavy, když se provedou žádosti o rozdělení/sloučení nebo přesunutí. Tato připojení mohou zobrazovat částečné nebo duplicitní výsledky v závislosti na časování nebo horizontálních oddílůu, který je pro připojení podkladové. Toto omezení v současné době zahrnuje připojení vytvořená horizontálních oddílůmi dotazy elastického škálování.
+- Databáze metadat pro službu dělení a slučování nesmí být sdílená mezi různými rolemi. Například role služby dělení a slučování běžící v přípravě musí odkazovat na jinou databázi metadat než produkční role.
 
 ## <a name="billing"></a>Fakturace
 
-Služba rozdělení sloučení se ve vašem předplatném Microsoft Azure spouští jako cloudová služba. Proto se na vaši instanci služby vztahují poplatky za cloudové služby. Pokud často neprovádíte operace rozdělení/sloučení/přesunutí, doporučujeme odstranit cloudovou službu s ložené. To šetří náklady na spouštění nebo nasazované instance cloudových služeb. Můžete znovu nasadit a spustit snadno spustitelné konfigurace kdykoli budete potřebovat provést operace rozdělení nebo sloučení.
+Služba dělení a slučování běží jako cloudová služba v rámci předplatného Microsoft Azure. Proto se poplatky za Cloud Services vztahují na vaši instanci služby. Pokud neprovádíte často operace rozdělení, sloučení nebo přesunutí, doporučujeme odstranit cloudovou službu pro dělení a slučování. Který šetří náklady na provoz nebo nasazení instancí cloudové služby. Můžete znovu nasadit a spustit spustitelný konfiguraci, kdykoli budete potřebovat provést operace rozdělení nebo sloučení.
 
 ## <a name="monitoring"></a>Monitorování
 
-### <a name="status-tables"></a>Stavové tabulky
+### <a name="status-tables"></a>Tabulky stavu
 
-Služba rozdělení sloučení poskytuje tabulku **RequestStatus** v databázi úložiště metadat pro sledování dokončených a průběžných požadavků. Tabulka obsahuje seznam řádků pro každý požadavek na rozdělení sloučení, který byl odeslán do této instance služby rozdělení sloučení. Pro každou žádost poskytuje tyto informace:
+Služba rozdělení a sloučení poskytuje tabulku **stavem žádosti** v databázi úložiště metadat pro monitorování dokončených a probíhajících požadavků. Tabulka obsahuje řádek pro každou žádost o dělené sloučení, která byla odeslána do této instance služby dělení a slučování. Pro každý požadavek poskytuje tyto informace:
 
 - **Časové razítko**
 
-  Čas a datum, kdy byl požadavek spuštěn.
+  Čas a datum spuštění žádosti.
 
-- **Operační id**
+- **OperationId**
 
-  Identifikátor GUID, který jednoznačně identifikuje požadavek. Tento požadavek lze také zrušit operaci, zatímco stále probíhá.
+  Identifikátor GUID, který jedinečně identifikuje požadavek. Tuto žádost lze také použít k zrušení operace, dokud stále probíhá.
 
 - **Stav**
 
-  Aktuální stav požadavku. U probíhajících požadavků také uvádí aktuální fázi, ve které je požadavek.
+  Aktuální stav žádosti. V případě průběžných žádostí také uvádí aktuální fázi, ve které je žádost.
 
-- **Zrušit požadavek**
+- **CancelRequest**
 
-  Příznak, který označuje, zda byl požadavek zrušen.
+  Příznak, který označuje, zda byla žádost zrušena.
 
-- **Pokroku**
+- **Přejde**
 
-  Procentuální odhad dokončení operace. Hodnota 50 označuje, že operace je přibližně 50 % dokončena.
+  Procentuální odhad dokončení operace. Hodnota 50 znamená, že operace je přibližně 50% dokončeno.
 
-- **Podrobnosti**
+- **Zobrazí**
 
-  Hodnota XML, která poskytuje podrobnější zprávu o průběhu. Sestava průběhu je pravidelně aktualizována, protože sady řádků jsou zkopírovány ze zdroje do cíle. V případě selhání nebo výjimek obsahuje tento sloupec také podrobnější informace o selhání.
+  Hodnota XML, která poskytuje podrobnější sestavu průběhu. Zpráva o průběhu se pravidelně aktualizuje, protože sady řádků se zkopírují ze zdroje do cíle. V případě selhání nebo výjimek obsahuje tento sloupec také podrobnější informace o selhání.
 
 ### <a name="azure-diagnostics"></a>Azure Diagnostics
 
-Služba rozdělení sloučení používá Azure Diagnostics na základě Azure SDK 2.5 pro monitorování a diagnostiku. Řídíte konfiguraci diagnostiky, jak je vysvětleno zde: [Povolení diagnostiky v Cloudových službách Azure a virtuálních počítačích](../cloud-services/cloud-services-dotnet-diagnostics.md). Balíček ke stažení obsahuje dvě konfigurace diagnostiky - jednu pro webovou roli a jednu pro roli pracovního procesu. Obsahuje definice protokolovat čítače výkonu, protokoly služby IIS, protokoly událostí systému Windows a protokoly událostí rozdělené sloučit.
+Služba dělení a slučování používá pro monitorování a diagnostiku Azure Diagnostics založenou na sadě Azure SDK 2,5. Konfiguraci diagnostiky můžete řídit, jak je vysvětleno zde: [Povolení diagnostiky v Azure Cloud Services a Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md). Balíček ke stažení obsahuje dvě konfigurace diagnostiky – jeden pro webovou roli a jeden pro roli pracovního procesu. Obsahuje definice pro protokolování čítačů výkonu, protokolů služby IIS, protokolů událostí systému Windows a protokolů událostí aplikací pro dělené sloučení.
 
-## <a name="deploy-diagnostics"></a>Nasazení diagnostiky
+## <a name="deploy-diagnostics"></a>Nasadit diagnostiku
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> Modul PowerShell Azure Resource Manager je stále podporovaný službou Azure SQL Database, ale veškerý budoucí vývoj je pro modul Az.Sql. Tyto rutiny naleznete v tématu [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulu Az a v modulech AzureRm jsou v podstatě identické.
+> Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
 
-Chcete-li povolit monitorování a diagnostiku pomocí diagnostické konfigurace pro webové a pracovní role poskytované balíčkem NuGet, spusťte pomocí Azure PowerShellu následující příkazy:
+Pokud chcete povolit monitorování a diagnostiku pomocí diagnostické konfigurace pro webové a pracovní role poskytované balíčkem NuGet, spusťte následující příkazy pomocí Azure PowerShell:
 
 ```powershell
 $storageName = "<azureStorageAccount>"
@@ -239,42 +239,42 @@ Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext `
     -Slot Production -Role "SplitMergeWorker"
 ```
 
-Další informace o konfiguraci a nasazení nastavení diagnostiky najdete tady: [Povolení diagnostiky v Cloudových službách Azure a virtuálních počítačích](../cloud-services/cloud-services-dotnet-diagnostics.md).
+Další informace o tom, jak nakonfigurovat a nasadit nastavení diagnostiky, najdete tady: [Povolení diagnostiky v Azure Cloud Services a Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md).
 
 ## <a name="retrieve-diagnostics"></a>Načíst diagnostiku
 
-K diagnostice můžete snadno přistupovat z Průzkumníka serveru Visual Studio v části Azure ve stromu Průzkumníkserveru. Otevřete instanci sady Visual Studio a na řádku nabídek klikněte na Zobrazení a Průzkumník serveru. Kliknutím na ikonu Azure se připojte ke svému předplatnému Azure. Pak přejděte na Azure `<your storage account>` -> Storage -> -> tabulky -> WADLogsTable. Další informace naleznete v [tématu Průzkumník serveru](https://msdn.microsoft.com/library/x603htbk.aspx).
+K diagnostice můžete snadno přistupovat ze sady Visual Studio Průzkumník serveru v části Azure stromu Průzkumník serveru. Otevřete instanci sady Visual Studio a v řádku nabídek klikněte na tlačítko Zobrazit a Průzkumník serveru. Kliknutím na ikonu Azure se připojíte k vašemu předplatnému Azure. Pak přejděte do tabulky Azure-> úložiště- `<your storage account>` >-> Tables – > WADLogsTable. Další informace najdete v tématu [Průzkumník serveru](https://msdn.microsoft.com/library/x603htbk.aspx).
 
-![Tabulka WADLogsTable][2]
+![WADLogsTable][2]
 
-WadLogsTable zvýrazněné na obrázku výše obsahuje podrobné události z protokolu aplikací služby split-merge. Všimněte si, že výchozí konfigurace staženého balíčku je zaměřena na nasazení v produkčním prostředí. Proto je velký interval, ve kterém jsou protokoly a čítače vyžádáno z instancí služby (5 minut). Pro testování a vývoj snižte interval úpravou nastavení diagnostiky webu nebo role pracovního procesu podle vašich potřeb. Klikněte pravým tlačítkem myši na roli v Průzkumníkovi serveru sady Visual Studio (viz výše) a potom upravte dobu přenosu v dialogovém okně pro nastavení konfigurace diagnostiky:
+WADLogsTable zvýrazněný na obrázku výše obsahuje podrobné události z aplikačního protokolu služby dělené sloučení. Všimněte si, že výchozí konfigurace staženého balíčku je zaměřená na produkční nasazení. Proto je interval, ve kterém jsou protokoly a čítače z instancí služby načítány, velký (5 minut). V případě testování a vývoje snižte interval úpravou nastavení diagnostiky webu nebo role pracovního procesu podle vašich potřeb. Klikněte pravým tlačítkem na roli v Průzkumník serveru sady Visual Studio (viz výše) a upravte dobu přenosu v dialogovém okně pro nastavení konfigurace diagnostiky:
 
 ![Konfigurace][3]
 
 ## <a name="performance"></a>Výkon
 
-Obecně platí, že lepší výkon lze očekávat od vyšší, výkonnější úrovně služeb v Azure SQL Database. Vyšší přidělení vstupně-up, procesor a paměť pro vyšší úrovně služby prospěch hromadné kopírování a odstranění operace, které používá služba rozdělení sloučení. Z tohoto důvodu zvýšit úroveň služby pouze pro tyto databáze pro definované, omezené časové období.
+Obecně platí, že vyšší výkon se bude očekávat od vyšších, více výkonných úrovní služeb v Azure SQL Database. Zvýšení vstupně-výstupních operací a přidělení paměti pro vyšší úrovně služeb přináší výhody hromadného kopírování a odstraňování operací, které používá služba pro dělené sloučení. Z tohoto důvodu zvyšte úroveň služby jenom pro tyto databáze na definované a omezené časové období.
 
-Služba také provádí ověřovací dotazy jako součást svých běžných operací. Tyto ověřovací dotazy kontrolují neočekávanou přítomnost dat v cílovém rozsahu a zajišťují, že všechny operace rozdělení/sloučení/přesunutí začínají z konzistentního stavu. Tyto dotazy všechny práce přes rozsahy klíčů s ráží definované rozsahy operace a velikost dávky poskytované jako součást definice požadavku. Tyto dotazy provádět nejlépe, pokud je k dispozici index, který má klíč srážlivých položek jako úvodní sloupec.
+Služba také provádí ověřovací dotazy jako součást běžných operací. Tyto ověřovací dotazy kontrolují neočekávanou přítomnost dat v cílovém rozsahu a zajišťují, že všechny operace rozdělení, sloučení a přesunu začnou být v konzistentním stavu. Tyto dotazy budou mít veškerou práci nad horizontálního dělení klíčovými rozsahy definovanými oborem operace a velikostí dávky poskytnutou v rámci definice požadavku. Tyto dotazy jsou vykonatelné nejlépe, když je přítomen index, který má horizontálního dělení klíč jako počáteční sloupec.
 
-Kromě toho vlastnost jedinečnosti s klíčem srážlivosti jako úvodní sloupec umožní službě používat optimalizovaný přístup, který omezuje spotřebu prostředků z hlediska prostoru protokolu a paměti. Tato vlastnost jedinečnosti je vyžadována k přesunutí velkých velikostí dat (obvykle nad 1 GB).
+Vlastnost Unique s klíčem horizontálního dělení jako provedený sloupec navíc umožní službě používat optimalizovaný přístup, který omezuje spotřebu prostředků z hlediska místa v protokolu a paměti. Tato vlastnost jedinečnosti je nutná k přesunutí velkých velikostí dat (obvykle nad 1 GB).
 
-## <a name="how-to-upgrade"></a>Jak upgradovat
+## <a name="how-to-upgrade"></a>Postup upgradu
 
-1. Postupujte podle pokynů v [části Nasazení služby rozdělení sloučení](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
-2. Změňte konfigurační soubor cloudové služby pro nasazení rozdělené hromadné korespondence tak, aby odrážel nové parametry konfigurace. Novým povinným parametrem jsou informace o certifikátu použitém pro šifrování. Snadný způsob, jak to udělat, je porovnat nový soubor šablony konfigurace ze stahování proti vaší stávající konfiguraci. Ujistěte se, že přidáte nastavení pro "DataEncryptionPrimaryCertificateThumbprint" a "DataEncryptionPrimary" pro web i roli pracovního procesu.
-3. Před nasazením aktualizace do Azure se ujistěte, že všechny aktuálně spuštěné operace rozdělení sloučení byly dokončeny. To lze snadno provést dotazem na tabulky RequestStatus a PendingWorkflows v databázi metadat rozdělení sloučení pro průběžné požadavky.
-4. Aktualizujte stávající nasazení cloudové služby pro rozdělení sloučení v předplatném Azure s novým balíčkem a aktualizovaným konfiguračním souborem služby.
+1. Postupujte podle kroků v části [nasazení služby dělení a slučování](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
+2. Změňte konfigurační soubor cloudové služby pro nasazení rozděleného sloučení tak, aby odrážel nové parametry konfigurace. Nový požadovaný parametr je informace o certifikátu použitém k šifrování. To lze snadno provést tak, že porovnáte nový soubor šablony konfigurace od stažení proti vaší stávající konfiguraci. Nezapomeňte přidat nastavení "DataEncryptionPrimaryCertificateThumbprint" a "DataEncryptionPrimary" pro web i roli pracovního procesu.
+3. Před nasazením aktualizace do Azure zajistěte, aby byly dokončeny všechny aktuálně spuštěné operace dělení na sloučení. Můžete to snadno provést dotazování tabulek stavem žádosti a PendingWorkflows v databázi s metadaty pro dělené sloučení pro probíhající požadavky.
+4. Aktualizujte stávající nasazení cloudové služby pro rozdělené sloučení v předplatném Azure pomocí nového balíčku a aktualizovaného konfiguračního souboru služby.
 
-Není nutné zřídit novou databázi metadat pro rozdělení sloučení k upgradu. Nová verze automaticky inovuje stávající databázi metadat na novou verzi.
+Nemusíte zřizovat novou databázi metadat pro rozdělení a sloučení pro upgrade. Nová verze bude automaticky upgradovat stávající databázi metadat na novou verzi.
 
 ## <a name="best-practices--troubleshooting"></a>Osvědčené postupy a řešení potíží
 
-- Definujte testovacího klienta a prováďte nejdůležitější operace rozdělení/sloučení/přesunutí s testovacím tenantem napříč několika oddíly. Ujistěte se, že všechna metadata jsou definována správně v mapě oddílu a že operace neporušují omezení nebo cizí klíče.
-- Udržujte velikost dat testovacího klienta nad maximální velikostí dat největšího klienta, abyste se ujistili, že se nesetkáváte s problémy souvisejícími s velikostí dat. To vám pomůže posoudit horní mez na čas potřebný k přesunutí jednoho klienta.
-- Ujistěte se, že schéma umožňuje odstranění. Služba rozdělení sloučení vyžaduje možnost odebrat data ze zdrojového oddílu, jakmile byla data úspěšně zkopírována do cíle. Například **odstranění aktivačních událostí** může zabránit službě odstranění dat ve zdroji a může způsobit selhání operací.
-- Klíč s ráždí by měl být úvodní sloupec v definici primárního klíče nebo jedinečného indexu. To zajišťuje nejlepší výkon pro dotazy ověření rozdělení nebo sloučení a pro skutečné operace přesunu a odstranění dat, které vždy pracují na rozsahech klíčů horizontálního oddílu.
-- Služba rozdělení sloučení se můžete shromažďovat v oblasti a datovém centru, kde se nacházejí databáze.
+- Definujte testovacího tenanta a vyzkoušejte své nejdůležitější operace rozdělení, sloučení nebo přesunutí s testovacím klientem napříč několika horizontálních oddílů. Zajistěte, aby byla v mapě horizontálních oddílů správně definovaná všechna metadata a aby operace neporušila omezení nebo cizí klíče.
+- Udržujte velikost testovacích dat tenanta nad maximální velikostí dat vašeho největšího tenanta, abyste se ujistili, že se nesetkáte s problémy souvisejícími s velikostí dat. To vám pomůže vyhodnotit horní mez v době, kdy je potřeba přesunout jednoho tenanta kolem.
+- Ujistěte se, že vaše schéma umožňuje odstranění. Služba rozdělení a sloučení vyžaduje možnost odebrání dat ze zdrojového horizontálních oddílů, jakmile se data úspěšně zkopírují do cíle. Například **triggery Delete** můžou zabránit službě ve odstranění dat na zdroji a můžou způsobit selhání operací.
+- Klíč horizontálního dělení by měl být počátečním sloupcem v definici primárního klíče nebo jedinečného indexu. Který zajišťuje nejlepší výkon pro dotazy na rozdělené nebo slučovací ověřování a pro skutečné operace přesunu a odstranění dat, které vždy pracují s rozsahy horizontálního děleních klíčů.
+- Společné umístění službu pro dělení a slučování v oblasti a datovém centru, kde jsou umístěny vaše databáze.
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

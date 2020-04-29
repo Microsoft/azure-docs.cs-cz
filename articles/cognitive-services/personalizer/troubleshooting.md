@@ -1,100 +1,100 @@
 ---
-title: Poradce při potížích – personalizátor
-description: Tento článek obsahuje odpovědi na často kladené otázky týkající se řešení potíží týkající se personalisty.
+title: Řešení potíží – přizpůsobení
+description: Tento článek obsahuje odpovědi na nejčastější dotazy k řešení potíží týkajících se přizpůsobení.
 ms.topic: troubleshooting
 ms.date: 02/26/2020
 ms.author: diberry
 ms.openlocfilehash: 904953f028eb31afe42cf477ac05be43e8b72a4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80336033"
 ---
-# <a name="personalizer-troubleshooting"></a>Poradce při potížích s personalizátky
+# <a name="personalizer-troubleshooting"></a>Řešení potíží s přizpůsobením
 
-Tento článek obsahuje odpovědi na často kladené otázky týkající se řešení potíží týkající se personalisty.
+Tento článek obsahuje odpovědi na nejčastější dotazy k řešení potíží týkajících se přizpůsobení.
 
-## <a name="transaction-errors"></a>Chyby transakcí
+## <a name="transaction-errors"></a>Chyby transakce
 
 <details>
-<summary><b>Dostanu odpověď HTTP 429 (Příliš mnoho požadavků) ze služby. Co mám dělat?</b></summary>
+<summary><b>Od služby se zobrazí odpověď HTTP 429 (příliš mnoho požadavků). Co mohu udělat?</b></summary>
 
-**Odpověď**: Pokud jste při vytváření instance Personalistu vybrali bezplatnou cenovou úroveň, existuje maximální kvóta počtu povolených požadavků pořadí. Zkontrolujte rychlost volání rozhraní API pro rozhraní API hodnocení (v podokně Metriky na portálu Azure pro prostředek personalisty) a upravte cenovou úroveň (v podokně Cenová úroveň), pokud se očekává, že se objem volání zvýší nad prahovou hodnotu pro vybranou cenovou úroveň.
+**Odpověď**: Pokud jste při vytváření instance přizpůsobené úrovně ceny vybrali zdarma, existuje omezení kvóty pro počet povolených požadavků na řazení. Zkontrolujte míru volání rozhraní API pro rozhraní API pro řazení (v podokně metriky v Azure Portal pro prostředek přizpůsobeného) a upravte cenovou úroveň (v podokně s cenovou úrovní), pokud se očekává, že se váš volání zvýší nad prahovou hodnotou zvolené cenové úrovně.
 
 </details>
 
 <details>
-<summary><b>Dostávám chybu 5xx na hodnosti nebo odměny API. Co mám dělat?</b></summary>
+<summary><b>Zobrazuje se 5xx chyba na rozhraních API pro řazení a měnu. Co mám dělat?</b></summary>
 
-**Odpověď**: Tyto otázky by měly být transparentní. Pokud budou pokračovat, obraťte se na podporu výběrem **nové žádosti o podporu** v části Podpora + řešení **potíží,** na portálu Azure pro prostředek personalika.
+**Odpověď**: tyto problémy by měly být transparentní. Pokud budou pokračovat, obraťte se na podporu výběrem **nové žádosti o podporu** v části **Podpora a řešení potíží** v Azure Portal pro váš prostředek pro přizpůsobení.
 
 </details>
 
-## <a name="learning-loop"></a>Výukové smyčky
+## <a name="learning-loop"></a>Výuková smyčka
 
 <details>
 <summary>
-<b>Učení smyčka nedosahuje 100% shoda se systémem bez Personalista. Jak to mohu opravit?</b></summary>
+<b>Výuková smyčka nedosahuje 100% systému bez přizpůsobeného přizpůsobování. Návody opravit?</b></summary>
 
-**Odpověď**: Důvody, proč nedosáhnete svého cíle s učení smyčky:
-* Nedostatek funkcí odeslaných pomocí volání Rozhraní API hodnocení
-* Chyby v odeslaných funkcích – například odesílání neagregovaných dat funkcí, jako jsou časová razítka do rozhraní Rank API
-* Chyby se zpracováním smyčky - například neodesílání údajů o odměnách do Bonus API pro události
+**Odpověď**: důvody, které nedosáhnete vašeho cíle, pomocí výukového cyklu:
+* S voláním rozhraní API řazení není dost funkcí odeslaných.
+* Chyby v odeslaných funkcích – například posílání neagregovaných dat funkcí, jako například časová razítka rozhraní API pro řazení
+* Chyby se zpracováním smyčky – například neodesílají data o nepracovních odměnuch do API pro události
 
-Chcete-li opravit, musíte změnit zpracování buď změnou funkcí odeslaných do smyčky, nebo se ujistěte, že odměna je správné hodnocení kvality odpovědi hodnosti.
+Chcete-li opravit, je nutné změnit zpracování buď změnou funkcí poslaných do smyčky, nebo ověřit, že je tato měna správného vyhodnocení kvality odpovědi pořadí.
 
 </details>
 
 <details>
 <summary>
-<b>Učení smyčky Nezdá se, že učit. Jak to mohu opravit?</b></summary>
+<b>Výuková smyčka se zřejmě neučí. Návody opravit?</b></summary>
 
-**Odpověď**: Vzdělávací smyčka potřebuje několik tisíc volání odměny, než rank hovory efektivně upřednostňují.
+**Odpověď**: výuková smyčka potřebuje několik tisíc hovorů na nevýhodu, než vyvolají prioritní volání.
 
-Pokud si nejste jisti, jak se vaše studijní smyčka aktuálně chová, spusťte [offline hodnocení](concepts-offline-evaluation.md)a použijte opravené zásady učení.
-
-</details>
-
-<details>
-<summary><b>Dostávám výsledky hodnosti se všemi stejnými pravděpodobnostmi pro všechny položky. Jak poznám, že se personalizátor učí?</b></summary>
-
-**Odpověď**: Personalizáta vrátí stejné pravděpodobnosti ve výsledku rozhraní API pořadí, když právě začal a má _prázdný_ model, nebo při resetování personalizační smyčky a váš model je stále v rámci období **frekvence aktualizace modelu.**
-
-Když začíná nové období aktualizace, použije se aktualizovaný model a pravděpodobnosti se změní.
+Pokud si nejste jistí, jak se vaše výuková smyčka právě chová, spusťte [testování offline](concepts-offline-evaluation.md)a použijte opravené zásady učení.
 
 </details>
 
 <details>
-<summary><b>Učení smyčka byla učení, ale zdá se, že se učit už, a kvalita výsledků Rank není tak dobrý. Co mám dělat?</b></summary>
+<summary><b>Stále Získávám výsledky pořadí se všemi stejnými pravděpodobnostmi pro všechny položky. Návody víte, že se přizpůsobuje učení?</b></summary>
+
+**Odpověď**: přizpůsobování vrátí stejné pravděpodobnosti ve výsledku rozhraní API řazení, když se právě spustí a má _prázdný_ model, nebo když resetujete smyčku přizpůsobeného, a váš model se pořád nachází v období **Frekvence aktualizace vašeho modelu** .
+
+Po zahájení nového období aktualizace se použije aktualizovaný model a dojde ke změně pravděpodobností.
+
+</details>
+
+<details>
+<summary><b>Výuková smyčka se naučila, ale zdá se, že už se neučí, a kvalita výsledků je Nedobrá. Co mám dělat?</b></summary>
 
 **Odpověď**:
-* Ujistěte se, že jste dokončili a použili jedno vyhodnocení na webu Azure Portal pro tento prostředek personalikár (výukové smyčky).
-* Ujistěte se, že všechny odměny jsou odesílány prostřednictvím rozhraní Bonus API a zpracovány.
+* Ujistěte se, že jste dokončili a použili jedno vyhodnocení v Azure Portal pro tento prostředek přidaných prostředků (výuková smyčka).
+* Zajistěte, aby byly všechny ceny odesílány prostřednictvím rozhraní API pro odměnu a zpracovány.
 
 </details>
 
 
 <details>
-<summary><b>Jak poznám, že se učící smyčka se pravidelně aktualizuje a používá se ke získávání mých dat?</b></summary>
+<summary><b>Návody víte, že výuková smyčka se pravidelně aktualizuje a používá se k vyhodnocení mých dat?</b></summary>
 
-**Odpověď**: Čas, kdy byl model naposledy aktualizován, najdete na stránce **Model a nastavení učení** na webu Azure Portal. Pokud vidíte staré časové razítko, je to pravděpodobně proto, že neodesíláte volání hodnosti a odměny. Pokud služba nemá žádná příchozí data, neaktualizuje učení. Pokud se zobrazí učení smyčky není aktualizace dostatečně často, můžete upravit smyčky **Model Update frekvence**.
+**Odpověď**: můžete najít čas poslední aktualizace modelu na stránce **Nastavení modelu a učení** Azure Portal. Pokud se zobrazí staré časové razítko, je pravděpodobně způsobeno tím, že neposíláte volání pořadí a odměňování. Pokud služba neobsahuje žádná příchozí data, neaktualizuje výuku. Pokud vidíte, že výuková smyčka není často aktualizována, můžete upravit **Četnost aktualizace modelu**smyčky.
 
 </details>
 
 ## <a name="offline-evaluations"></a>Offline vyhodnocení
 
 <details>
-<summary><b>Důležitost funkce offline hodnocení vrátí dlouhý seznam se stovkami nebo tisíci položek. Co se přihodilo?</b></summary>
+<summary><b>Důležitost funkcí pro offline vyhodnocení vrátí dlouhý seznam se stovkami nebo tisíci položek. Co se přihodilo?</b></summary>
 
-**Odpověď**: To je obvykle způsobeno časová razítka, ID uživatele nebo některé jiné jemně odstupňované funkce odeslané.
+**Odpověď**: obvykle se jedná o časová razítka, ID uživatele nebo některé další jemně odstupňované funkce, které jsou odesílány v.
 
 </details>
 
 <details>
-<summary><b>Vytvořil jsem offline hodnocení a to se podařilo téměř okamžitě. Proč? Nevidím žádné výsledky?</b></summary>
+<summary><b>Vytvořil (a) jsem se offline zkušební období a skoro okamžitě uspělo. Proč je to? Nevidím žádné výsledky?</b></summary>
 
-**Odpověď**: Offline vyhodnocení používá trénovaná data modelu z událostí v tomto časovém období. Pokud jste neodeslali žádná data v časovém období mezi počátečním a koncovým časem vyhodnocení, bude dokončena bez jakýchkoli výsledků. Odešlete nové offline hodnocení výběrem časového rozsahu s událostmi, o kterých víte, že byly odeslány personalistovi.
+**Odpověď**: testování offline využívá z událostí v tomto časovém období proučená data modelu. Pokud jste neodeslali žádná data v časovém období mezi počátečním a koncovým časem vyhodnocení, bude dokončena bez jakýchkoli výsledků. Odešlete nové online vyhodnocení tak, že vyberete časový rozsah s událostmi, které jste věděli, že jste ho přizpůsobili.
 
 </details>
 
@@ -102,21 +102,21 @@ Když začíná nové období aktualizace, použije se aktualizovaný model a pr
 ## <a name="learning-policy"></a>Zásady učení
 
 <details>
-<summary><b>Jak importuji zásady učení?</b></summary>
+<summary><b>Návody Importovat zásady učení?</b></summary>
 
-**Odpověď**: Přečtěte si další informace o [konceptech zásad učení](concept-active-learning.md#understand-learning-policy-settings) a [o tom, jak použít](how-to-manage-model.md) nové zásady učení. Pokud nechcete vybrat zásady učení, můžete pomocí [offline hodnocení](how-to-offline-evaluation.md) navrhnout zásady učení na základě aktuálních událostí.
+**Odpověď**: Přečtěte si další informace o [konceptech zásad učení](concept-active-learning.md#understand-learning-policy-settings) a [o tom, jak používat](how-to-manage-model.md) nové zásady učení. Pokud nechcete vybrat zásady učení, můžete použít [testování v režimu offline](how-to-offline-evaluation.md) k návrhu zásad učení na základě aktuálních událostí.
 
 </details>
 
 ## <a name="security"></a>Zabezpečení
 
 <details>
-<summary><b>Klíč rozhraní API pro moji smyčku byl prozrazen. Co mám dělat?</b></summary>
+<summary><b>Klíč rozhraní API pro moji smyčku byl zneužit. Co mohu udělat?</b></summary>
 
-**Odpověď**: Po výměně klientů můžete znovu vygenerovat jeden klíč za použití druhého klíče. S dvěma klíči umožňuje šířit klíč v líné způsobem bez nutnosti mít žádné prostoje. Doporučujeme to v pravidelném cyklu jako bezpečnostní opatření.
+**Odpověď**: po záměně klientů na použití jiného klíče můžete znovu vygenerovat jeden klíč. Použití dvou klíčů vám umožní s opožděným šířením klíče bez nutnosti jakéhokoli výpadku. Tento postup doporučujeme provést v pravidelných cyklech jako bezpečnostní opatření.
 
 </details>
 
 ## <a name="next-steps"></a>Další kroky
 
-[Konfigurace četnosti aktualizací modelu](how-to-settings.md#model-update-frequency)
+[Konfigurace frekvence aktualizace modelu](how-to-settings.md#model-update-frequency)

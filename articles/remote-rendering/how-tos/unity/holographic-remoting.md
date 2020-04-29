@@ -1,27 +1,27 @@
 ---
-title: Použití holografického vzdáleného vykreslování a vzdáleného vykreslování v jednotě
-description: Jak lze použít náhled holografické vzdálené komunikace v kombinaci s vzdáleným vykreslováním Azure
+title: Použití služeb Holographic Remoting a Remote Rendering v Unity
+description: Jak se dá v kombinaci se službou Azure Remote rendering využít ukázkovou vzdálenou komunikaci
 author: christophermanthei
 ms.author: chmant
 ms.date: 03/23/2020
 ms.topic: how-to
 ms.openlocfilehash: ac47a2922e92233f0acabf75817a712671306bc1
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681204"
 ---
-# <a name="use-holographic-remoting-and-remote-rendering-in-unity"></a>Použití holografického vzdáleného vykreslování a vzdáleného vykreslování v jednotě
+# <a name="use-holographic-remoting-and-remote-rendering-in-unity"></a>Použití služeb Holographic Remoting a Remote Rendering v Unity
 
-[Holografické vzdálené komunikace](https://docs.microsoft.com/windows/mixed-reality/holographic-remoting-player) a vzdálené vykreslování Azure se vzájemně vylučují v rámci jedné aplikace. Jako takový [režim Unity přehrávání](https://docs.microsoft.com/windows/mixed-reality/unity-play-mode) také není k dispozici.
+[Holografická Vzdálená komunikace](https://docs.microsoft.com/windows/mixed-reality/holographic-remoting-player) a vzdálené vykreslování Azure se vzájemně vylučují v rámci jedné aplikace. V takovém případě není k dispozici také [režim Unity Play](https://docs.microsoft.com/windows/mixed-reality/unity-play-mode) .
 
-Pro každé spuštění editoru Unity lze použít pouze jeden z těchto dvou. Chcete-li použít druhý, restartujte unity první.
+Pro každé spuštění v editoru Unity lze použít pouze jednu z těchto dvou. Pokud chcete použít druhou, nejdřív restartujte Unity.
 
-## <a name="use-unity-play-mode-to-preview-on-hololens-2"></a>Použijte režim Unity play k náhledu na Hololens 2
+## <a name="use-unity-play-mode-to-preview-on-hololens-2"></a>Použití režimu Unity Play k zobrazení náhledu na HoloLens 2
 
- Režim unity přehrávání lze stále použít, například k testování ui aplikace. Je však důležité, aby arr nikdy inicializována. V opačném případě se zhroutí.
+ Je možné, že se k otestování uživatelského rozhraní aplikace stále používá režim Unity Play. Je ale důležité, aby se šipka nikdy neinicializoval. V opačném případě dojde k chybě.
 
-## <a name="use-a-wmr-vr-headset-to-preview-on-desktop"></a>Zobrazení náhledu na ploše pomocí náhlavní soupravy WMR VR
+## <a name="use-a-wmr-vr-headset-to-preview-on-desktop"></a>Použití sluchátka s WMRou VR pro náhled na desktopu
 
-Pokud je k dispozici náhlavní souprava Windows Mixed Reality VR, lze ji použít k náhledu uvnitř Unity. V tomto případě je v pořádku inicializovat ARR, ale nebude možné se připojit k relaci, zatímco se používá náhlavní souprava WMR.
+Pokud je k dispozici náhlavní souprava Windows Mixed reality, můžete ji použít k náhledu v rámci Unity. V tomto případě je to pro inicializaci funkce ARR velmi přesné, ale nebude možné se připojit k relaci, zatímco je použita WMRá sluchátka.

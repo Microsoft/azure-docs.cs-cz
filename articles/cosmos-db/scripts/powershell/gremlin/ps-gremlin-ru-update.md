@@ -1,6 +1,6 @@
 ---
-title: Skript Prostředí PowerShell pro aktualizaci RU/s pro rozhraní API Azure Cosmos DB Gremlin
-description: Skript Azure PowerShell – ru/s aktualizace Azure Cosmos DB pro rozhraní GREMLIN API
+title: Skript PowerShellu pro aktualizaci RU/s pro Azure Cosmos DB rozhraní Gremlin API
+description: Azure PowerShell skriptu – Azure Cosmos DB aktualizace RU/s pro Gremlin API
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: 61c06fca0fe2f2449f67890dd962905642605716
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80366015"
 ---
-# <a name="update-rus-for-a-database-or-graph-for-azure-cosmos-db---gremlin-api"></a>Aktualizace RU/s pro databázi nebo graf pro Azure Cosmos DB – rozhraní GREMLIN API
+# <a name="update-rus-for-a-database-or-graph-for-azure-cosmos-db---gremlin-api"></a>Aktualizace RU/s pro databázi nebo graf pro rozhraní Azure Cosmos DB Gremlin API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -39,9 +39,9 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Set-AzCosmosDBGremlinDatabáze](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbgremlindatabase) | Vytvoří nebo aktualizuje databázi rozhraní GREMLIN API. |
-| [Get-AzCosmosDBGremlinGraph](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlingraph) | Získá Gremlin graf rozhraní API. |
-| [Set-AzCosmosDBGremlinGraph](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbgremlingraph) | Vytvoří nebo aktualizuje Gremlin API Graph. |
+| [Set-AzCosmosDBGremlinDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbgremlindatabase) | Vytvoří nebo aktualizuje databázi rozhraní Gremlin API. |
+| [Get-AzCosmosDBGremlinGraph](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlingraph) | Načte graf rozhraní Gremlin API. |
+| [Set-AzCosmosDBGremlinGraph](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbgremlingraph) | Vytvoří nebo aktualizuje graf rozhraní Gremlin API. |
 |**Skupiny prostředků Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||

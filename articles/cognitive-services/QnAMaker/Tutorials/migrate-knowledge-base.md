@@ -1,71 +1,71 @@
 ---
-title: Migrace znalostních bází – QnA Maker
-description: Migrace znalostní báze vyžaduje export z jedné znalostní báze a následný import do jiné databáze.
+title: Migrace základů znalostní báze – QnA Maker
+description: Migrace znalostní báze vyžaduje export z jedné znalostní báze a pak se importuje do jiného.
 ms.topic: article
 ms.date: 03/25/2020
 ms.openlocfilehash: 13e5e79bf4eaf6ec59e41b3e12aa1bb23f2c1578
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80258086"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Migrace znalostní báze pomocí exportu a importu
 
-Migrace je proces vytváření nové znalostní báze z existující znalostní báze. Můžete to udělat z několika důvodů:
+Migrace je proces vytvoření nové znalostní báze z existující znalostní báze. Můžete to udělat z několika důvodů:
 
 * proces zálohování a obnovení
-* Ci/CD potrubí
-* přesunout regiony
+* Kanál CI/CD
+* přesunout oblasti
 
-Migrace znalostní báze vyžaduje export z existující znalostní báze a následný import do jiné databáze.
+Migrace znalostní báze vyžaduje export z existující znalostní báze a následně import do jiného.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Než začnete, vytvořte si [bezplatný účet.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* Nastavení nové [služby QnA Maker](../How-To/set-up-qnamaker-service-azure.md)
+* Než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+* Nastavení nové [služby QnA maker](../How-To/set-up-qnamaker-service-azure.md)
 
-## <a name="migrate-a-knowledge-base-from-qna-maker"></a>Migrace znalostní báze z QnA Makeru
-1. Přihlaste se k [portálu QnA Maker](https://qnamaker.ai).
+## <a name="migrate-a-knowledge-base-from-qna-maker"></a>Migrace znalostní báze z QnA Maker
+1. Přihlaste se k [portálu QnA maker](https://qnamaker.ai).
 1. Vyberte znalostní bázi původu, kterou chcete migrovat.
 
-1. Na stránce **Nastavení** vyberte **Exportovat znalostní bázi** a stáhněte soubor TSV, který obsahuje obsah vaší znalostní báze Origin – otázky, odpovědi, metadata, následné výzvy a názvy zdrojů dat, ze kterých byly extrahovány.
+1. Na stránce **Nastavení** vyberte **exportovat znalostní bázi** a Stáhněte soubor. TSV, který obsahuje obsah vaší zdrojové znalostní báze – otázky, odpovědi, metadata, následné výzvy a názvy zdrojů dat, ze kterých byly extrahovány.
 
-1. Vyberte **Vytvořit znalostní bázi** z horní nabídky a vytvořte _prázdnou_ znalostní bázi. Je prázdný, protože při jeho vytváření nebudete přidávat žádné adresy URL ani soubory. Ty jsou přidány během kroku importu, po vytvoření.
+1. V horní nabídce vyberte **vytvořit znalostní bázi** a pak vytvořte _prázdnou_ znalostní bázi. Je prázdná, protože když ji vytvoříte, nebudete přidávat žádné adresy URL ani soubory. Ty jsou přidány během kroku importu po vytvoření.
 
-    Nakonfigurujte znalostní bázi. Nastavte pouze nový název znalostní báze. Duplicitní názvy jsou podporovány a jsou podporovány také speciální znaky.
+    Nakonfigurujte znalostní bázi. Nastavte jenom nový název znalostní báze. Jsou podporovány duplicitní názvy a podporovány jsou také speciální znaky.
 
-    Nevybírejte nic z kroku 4, protože tyto hodnoty budou přepsány při importu souboru.
+    Nevybírejte vše z kroku 4, protože při importu souboru budou tyto hodnoty přepsány.
 
-1. V kroku 5 vyberte **Vytvořit**.
+1. V kroku 5 vyberte **vytvořit**.
 
-1. V této nové znalostní bázi otevřete kartu **Nastavení** a vyberte **Importovat znalostní bázi**. Tím se importují otázky, odpovědi, metadata, výzvy zpracování a zachová se názvy zdrojů dat, ze kterých byly extrahovány.
+1. V této nové znalostní bázi otevřete kartu **Nastavení** a vyberte **importovat znalostní bázi**. Tím se importují otázky, odpovědi, metadata, následné výzvy a uchovávají se názvy zdrojů dat, ze kterých byly extrahovány.
 
    > [!div class="mx-imgBorder"]
-   > [![Import znalostní báze](../media/qnamaker-how-to-migrate-kb/Import.png)](../media/qnamaker-how-to-migrate-kb/Import.png#lightbox)
+   > [![Importovat znalostní bázi Knowledge Base](../media/qnamaker-how-to-migrate-kb/Import.png)](../media/qnamaker-how-to-migrate-kb/Import.png#lightbox)
 
-1. **Otestujte** novou znalostní bázi pomocí testovacího panelu. Přečtěte si, jak [otestovat znalostní bázi](../How-To/test-knowledge-base.md).
+1. **Otestujte** novou znalostní bázi pomocí panelu Test. Naučte se [testovat znalostní bázi](../How-To/test-knowledge-base.md).
 
-1. **Publikujte** znalostní bázi a vytvořte chatovacího robota. Přečtěte si, jak [publikovat znalostní bázi](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base).
+1. **Publikujte** znalostní bázi a vytvořte robota chatu. Naučte se [publikovat znalostní bázi](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base).
 
-## <a name="programmatically-migrate-a-knowledge-base-from-qna-maker"></a>Programově migrovat znalostní bázi z QnA Makeru
+## <a name="programmatically-migrate-a-knowledge-base-from-qna-maker"></a>Pomocí programové migrace znalostní báze z QnA Maker
 
-Proces migrace je programově k dispozici pomocí následujících rozhraní REST API:
+Proces migrace je programově dostupný pomocí následujících rozhraní REST API:
 
 **Export**
 
-* [Stažení rozhraní API znalostní báze](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/download)
+* [Stáhnout rozhraní API znalostní báze Knowledge Base](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/download)
 
 **Import**
 
 * [Nahradit rozhraní API (znovu načíst se stejným ID znalostní báze)](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/replace)
-* [Vytvoření rozhraní API (načtení s novým ID znalostní báze)](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
+* [Vytvořit rozhraní API (načíst s novým ID znalostní báze)](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
 
 
 ## <a name="chat-logs-and-alterations"></a>Protokoly a změny chatu
-Změny bez rozlišování velkých a malých písmen (synonyma) nejsou importovány automaticky. Pomocí [v4 API](https://go.microsoft.com/fwlink/?linkid=2092179) přesunout změny v nové znalostní bázi.
+Změny bez rozlišení velkých a malých písmen (synonym) se neimportují automaticky. Použijte [rozhraní v4 API](https://go.microsoft.com/fwlink/?linkid=2092179) pro přesun změn v nové znalostní bázi.
 
-Neexistuje žádný způsob, jak migrovat protokoly chatu, protože nová znalostní báze používá Application Insights pro ukládání protokolů chatu.
+Neexistuje žádný způsob, jak migrovat protokoly konverzace, protože nová znalostní báze používá Application Insights pro ukládání protokolů chatu.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,50 +1,50 @@
 ---
-title: Zlepšete znalostní bázi - QnA Maker
-description: Zlepšete kvalitu své znalostní báze s aktivním učením. Zkontrolujte, přijměte nebo zamítněte, přidejte bez odebrání nebo změny stávajících otázek.
+title: Vylepšení znalostní báze Knowledge Base – QnA Maker
+description: Vylepšete kvalitu znalostní báze s aktivním učením. Zkontrolujte, přijměte nebo odmítněte, přidejte bez odebrání nebo změny existujících otázek.
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.openlocfilehash: 33b3c547b0aea9a1e235bf8a05d01aa16b468a71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80071130"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Využití aktivního učení k vylepšení vaší znalostní báze
 
-[Aktivní učení](../Concepts/active-learning-suggestions.md) vám umožní zlepšit kvalitu vaší znalostní báze tím, že navrhne alternativní otázky. Odeslání uživatele se bere v úvahu a zobrazuje se jako návrhy v seznamu alternativních otázek. Máte možnost buď přidat tyto návrhy jako alternativní otázky, nebo je odmítnout.
+[Aktivní učení](../Concepts/active-learning-suggestions.md) vám umožní zdokonalit kvalitu znalostní báze tím, že navrhuje alternativní otázky. V seznamu alternativních otázek se vezme v úvahu, že se odeberou uživatelé a zobrazují se jako návrhy. Máte flexibilní možnost přidat tyto návrhy jako alternativní otázky nebo je odmítnout.
 
-Znalostní báze se automaticky nezmění. Aby se jakákoli změna projevila, musíte návrhy přijmout. Tyto návrhy přidávají otázky, ale nemění ani neodstraňují existující otázky.
-
-
-## <a name="upgrade-runtime-version-to-use-active-learning"></a>Upgrade verze runtime pro použití aktivního učení
-
-Aktivní učení je podporováno v modulu runtime verze 4.4.0 a vyšší. Pokud byla znalostní báze vytvořena ve starší verzi, [upgradujte běhový čas](set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates) tak, aby tuto funkci používal.
-
-## <a name="turn-on-active-learning-for-alternate-questions"></a>Zapnutí aktivního učení pro alternativní otázky
-
-Aktivní učení je ve výchozím nastavení vypnuto. Zapněte ji, abyste viděli navrhované otázky. Po zapnutí aktivního učení je potřeba odeslat informace z klientské aplikace do qnA makeru. Další informace naleznete [v tématu Architektonický tok pro použití GenerateAnswer a Train API z robota](improve-knowledge-base.md#architectural-flow-for-using-generateanswer-and-train-apis-from-a-bot).
-
-1. Chcete-li publikovat znalostní bázi, vyberte **publikovat.** Aktivní výukové dotazy jsou shromažďovány pouze z koncového bodu predikce rozhraní API generateanswer. Dotazy na podokno test na portálu QnA Maker nemají vliv na aktivní učení.
-
-1. Pokud chcete aktivní učení zapnout na portálu QnA Maker, přejděte do pravého horního rohu, vyberte své **jméno**, přejděte na [**Nastavení služby**](https://www.qnamaker.ai/UserSettings).
-
-    ![Na stránce Nastavení služby zapněte navrhované alternativy otázek pro aktivní učení. V nabídce vpravo nahoře vyberte své uživatelské jméno a pak vyberte Nastavení služby.](../media/improve-knowledge-base/Endpoint-Keys.png)
+Vaše znalostní báze se nemění automaticky. Aby se změny projevily, musíte přijmout návrhy. Tyto návrhy přidávají otázky, ale nemění ani neodstraňují stávající otázky.
 
 
-1. Vyhledejte službu QnA Maker a přepněte **aktivní výuku**.
+## <a name="upgrade-runtime-version-to-use-active-learning"></a>Upgradovat verzi modulu runtime pro použití aktivního učení
+
+Aktivní učení je podporované v modulu runtime verze 4.4.0 a vyšší. Pokud byla znalostní báze vytvořena v dřívější verzi, [upgradujte modul runtime](set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates) , aby tuto funkci používal.
+
+## <a name="turn-on-active-learning-for-alternate-questions"></a>Zapnout aktivní učení pro alternativní otázky
+
+Aktivní učení je ve výchozím nastavení vypnuté. Zapněte ho, aby se zobrazily navržené otázky. Po zapnutí aktivního učení je potřeba odeslat informace z klientské aplikace do QnA Maker. Další informace najdete v tématu [architektonický tok pro použití GenerateAnswer a rozhraní API pro učení z robota](improve-knowledge-base.md#architectural-flow-for-using-generateanswer-and-train-apis-from-a-bot).
+
+1. Vyberte **publikovat** a publikujte znalostní bázi. Aktivní výukové dotazy se shromažďují jenom z koncového bodu předpovědi rozhraní GenerateAnswer API. Dotazy do podokna test na portálu QnA Maker neovlivňují aktivní učení.
+
+1. Pokud chcete zapnout aktivní učení na portálu QnA Maker, přečtěte si v pravém horním rohu, vyberte své **jméno**a pak přejít na [**nastavení služby**](https://www.qnamaker.ai/UserSettings).
+
+    ![Na stránce nastavení služby zapněte možnosti pro navrhované otázky pro aktivní učení. V pravé horní nabídce vyberte své uživatelské jméno a pak vyberte nastavení služby.](../media/improve-knowledge-base/Endpoint-Keys.png)
+
+
+1. Vyhledejte službu QnA Maker a potom přepněte **aktivní učení**.
 
     > [!div class="mx-imgBorder"]
-    > [![Na stránce Nastavení služby přepněte na funkci Aktivní výuka. Pokud tuto funkci nemůžete přepínat, bude pravděpodobně nutné službu upgradovat.](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
+    > [![Na stránce nastavení služby přepněte na funkci aktivní učení. Pokud nemůžete funkci zapnout, možná budete muset upgradovat službu.](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
 
     > [!Note]
-    > Přesná verze na předchozím obrázku je zobrazena pouze jako příklad. Vaše verze se může lišit.
+    > Přesná verze na předchozím obrázku se zobrazí jenom jako příklad. Vaše verze se může lišit.
 
-    Po povolení **aktivního učení** navrhne znalostní báze v pravidelných intervalech nové otázky na základě otázek odeslaných uživatelem. **Aktivní učení** můžete zakázat znovu přepnutím nastavení.
+    Po povolení **aktivního učení** znalostní báze v pravidelných intervalech navrhuje nové otázky na základě dotazů odeslaných uživatelem. Můžete zakázat **aktivní učení** tím, že znovu přepnete nastavení.
 
 ## <a name="review-suggested-alternate-questions"></a>Kontrola navrhovaných alternativních otázek
 
-[Zkontrolujte alternativní navrhované otázky](improve-knowledge-base.md) na stránce **Úpravy** každé znalostní báze.
+[Přečtěte si alternativní navrhované otázky](improve-knowledge-base.md) na stránce pro **Úpravy** jednotlivých znalostí znalostní báze.
 
 ## <a name="next-steps"></a>Další kroky
 

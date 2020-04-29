@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 04/02/2020
 ms.author: jeedes
 ms.openlocfilehash: 349a9920adc0d9353ee8e8e821f54bc2ea2f2616
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80666986"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wdesk"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Wdesk
@@ -31,7 +31,7 @@ V tomto kurzu se dozvíte, jak integrovat Wdesk s Azure Active Directory (Azure 
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

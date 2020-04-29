@@ -1,5 +1,5 @@
 ---
-title: 'Úvodní příručka: Překlad řeči na řeč, C++ (Windows) - služba řeči'
+title: 'Rychlý Start: Převod řeči na řeč, C++ (Windows) – Speech Service'
 titleSuffix: Azure Cognitive Services
 description: Bude doplněno
 services: cognitive-services
@@ -11,25 +11,25 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: erhopf
 ms.openlocfilehash: b9311d605d07bbf3844963aed97e9fc510a4897a
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80671125"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, že:
+Než začnete, nezapomeňte:
 
 > [!div class="checklist"]
-> * [Vytvoření řečového prostředku Azure](../../../../get-started.md)
+> * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=windows&pivots=programming-language-cpp)
 
 ## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
 1. Otevřete zdrojový soubor **helloworld.cpp**.
 
-1. Nahraďte celý kód následujícím fragmentem:
+1. Nahraďte celý kód následujícím fragmentem kódu:
 
    ```C++
    #include <iostream>
@@ -115,15 +115,15 @@ Než začnete, ujistěte se, že:
 
 1. Řetězec `YourServiceRegion` nahraďte [oblastí](~/articles/cognitive-services/Speech-Service/regions.md) přidruženou k vašemu předplatnému (například `westus` pro bezplatnou zkušební verzi předplatného).
 
-1. Na řádku nabídek zvolte **Soubor** > **Uložit vše**.
+1. V řádku nabídek vyberte **soubor** > **Uložit vše**.
 
 ## <a name="build-and-run-the-application"></a>Sestavení a spuštění aplikace
 
-1. Na řádku nabídek vyberte **sestavení** > **sestavení řešení** k sestavení aplikace. Kód by se teď měl zkompilovat bez chyb.
+1. V řádku nabídek vyberte **sestavit** > **sestavení řešení** a sestavte aplikaci. Kód by se teď měl zkompilovat bez chyb.
 
-1. **Chcete-li** > spustit aplikaci **Helloworld,** zvolte Ladění**spouštění ladění** (nebo stiskněte **klávesu F5).**
+1. Zvolte **ladění** > **Spustit ladění** (nebo stiskněte klávesu **F5**) a spusťte aplikaci **HelloWorld** .
 
-1. Vyslovte anglickou frázi nebo větu. Aplikace přenáší váš projev do služby Speech, která překládá a přepisuje na text (v tomto případě do němčiny). Služba Řeč pak odešle syntetizovaný zvuk a text zpět do aplikace pro zobrazení.
+1. Vyslovte anglickou frázi nebo větu. Aplikace přenáší váš hlas ke službě rozpoznávání řeči, která překládá a transcribes text (v tomto případě do němčiny). Služba Speech pak pošle syntetizované zvuky a text zpátky do aplikace k zobrazení.
 
 ````
 Say something...

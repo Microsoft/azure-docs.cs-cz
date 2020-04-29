@@ -1,145 +1,145 @@
 ---
-title: Doporučené postupy – QnA Maker
-description: Pomocí těchto doporučených postupů můžete zlepšit znalostní bázi a poskytnout lepší výsledky koncovým uživatelům vašeho robota aplikace/chatu.
+title: Osvědčené postupy – QnA Maker
+description: Využijte tyto osvědčené postupy k vylepšení znalostní báze a poskytněte uživatelům lepší výsledky pro koncové uživatele robota aplikace/konverzace.
 ms.topic: conceptual
 ms.date: 02/15/2020
 ms.openlocfilehash: 9a6f7f7d6edc4544942476050a1ed3c2011af7fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80053137"
 ---
-# <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Osvědčené postupy znalostní báze QnA Maker
+# <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Osvědčené postupy QnA Maker znalostní bázi Knowledge Base
 
-[Životní cyklus vývoje znalostní báze](../Concepts/development-lifecycle-knowledge-base.md) vás provede tím, jak spravovat kb od začátku do konce. Pomocí těchto doporučených postupů můžete zlepšit znalostní bázi a zajistit lepší výsledky koncovým uživatelům klientské aplikace nebo chatovacího robota.
+[Životní cyklus vývoje znalostní báze](../Concepts/development-lifecycle-knowledge-base.md) vás provede postupem správy KB od začátku do konce. Tyto osvědčené postupy použijte k vylepšení znalostní báze a poskytují lepší výsledky klientským aplikacím nebo koncovým uživatelům robotů pro konverzaci.
 
 ## <a name="extraction"></a>Extrakce
 
-Služba QnA Maker neustále vylepšuje algoritmy, které extrahují qnA z obsahu, a rozšiřuje seznam podporovaných formátů souborů a HTML. Postupujte podle [pokynů](../Concepts/content-types.md) pro extrakci dat na základě typu dokumentu.
+Služba QnA Maker neustále vylepšuje algoritmy, které extrahují QnAs z obsahu a rozbalí seznam podporovaných formátů souborů a HTML. Postupujte podle [pokynů](../Concepts/content-types.md) pro extrakci dat na základě typu dokumentu.
 
-Stránky s nejčastějšími dotazy by obecně měly být samostatné a neměly by být kombinovány s dalšími informacemi. Příručky k produktům by měly mít jasné nadpisy a pokud možno stránku indexu.
+Obecně platí, že stránky nejčastějších dotazů by měly být samostatné a nekombinované s dalšími informacemi. Příručky k produktu by měly mít prázdná záhlaví a možnou stránku indexu.
 
-### <a name="configuring-multi-turn"></a>Konfigurace víceotočení
+### <a name="configuring-multi-turn"></a>Konfigurace vícenásobného zapnutí
 
-[Vytvořte si znalostní bázi](../how-to/multiturn-conversation.md#create-a-multi-turn-conversation-from-a-documents-structure) s povolenou extrakcí s více otočeními. Pokud znalostní báze podporuje nebo by měla podporovat hierarchii otázek, lze tuto hierarchii extrahovat z dokumentu nebo vytvořit po extrahování dokumentu.
+[Vytvořte znalostní bázi](../how-to/multiturn-conversation.md#create-a-multi-turn-conversation-from-a-documents-structure) s povoleným extrakcí pomocí vícenásobného vypínání. Pokud vaše znalostní báze dělá nebo by měla podporovat hierarchii otázek, můžete tuto hierarchii extrahovat z dokumentu nebo vytvořit po extrakci dokumentu.
 
 ## <a name="creating-good-questions-and-answers"></a>Vytváření dobrých otázek a odpovědí
 
 ### <a name="good-questions"></a>Dobré otázky
 
-Nejlepší otázky jsou jednoduché. Zvažte klíčové slovo nebo frázi pro každou otázku a vytvořte jednoduchou otázku pro toto klíčové slovo nebo frázi.
+Nejlepší otázky jsou jednoduché. Zvažte klíčové slovo nebo frázi pro každou otázku a pak vytvořte jednoduchou otázku pro toto klíčové slovo nebo frázi.
 
-Přidejte tolik alternativních otázek, kolik potřebujete, ale udržujte změny jednoduché. Přidání dalších slov nebo frází, které nejsou součástí hlavního cíle otázky, nepomůže QnA Makernajít shodu.
+Přidejte tolik alternativních otázek, kolik potřebujete, ale ponechte jednoduché změny. Přidání dalších slov nebo frází, které nejsou součástí hlavního cíle otázky, neumožňuje QnA Maker najít shodu.
 
 
-### <a name="add-relevant-alternative-questions"></a>Přidání relevantních alternativních otázek
+### <a name="add-relevant-alternative-questions"></a>Přidat relevantní alternativní otázky
 
-Uživatel může zadávat otázky buď konverzačním `How do I add a toner cartridge to my printer?` stylem textu, `toner cartridge`nebo vyhledáváním klíčových slov, například . Znalostní báze by měl y mít oba styly otázek, aby bylo možné správně vrátit nejlepší odpověď. Pokud si nejste jisti, jaká klíčová slova zákazník zadává, použijte data Application Insights k analýze dotazů.
+Uživatel může zadávat dotazy buď pomocí konverzačního stylu textu, nebo pomocí klíčového slova, `How do I add a toner cartridge to my printer?` jako je například `toner cartridge`. Aby bylo možné správně vrátit nejlepší odpověď, musí mít znalostní báze obojí styly otázek. Pokud si nejste jistí, jaká klíčová slova zákazník zadá, použijte k analýze dotazů Application Insights dat.
 
 ### <a name="good-answers"></a>Dobré odpovědi
 
-Nejlepší odpovědi jsou jednoduché odpovědi, ale ne příliš jednoduché. Nepoužívejte odpovědi, `yes` jako `no`jsou a . Pokud by vaše odpověď měla odkazovat na jiné zdroje nebo poskytovat bohaté možnosti s médii a odkazy, použijte [označování metadat](../how-to/edit-knowledge-base.md#add-metadata) k rozlišení odpovědí a [odešlete dotaz](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) se značkami metadat ve `strictFilters` vlastnosti, abyste získali správnou verzi odpovědi.
+Nejlepší odpovědi jsou jednoduché odpovědi, ale nejsou příliš jednoduché. Nepoužívejte odpovědi, jako je `yes` a `no`. Pokud by vaše odpověď měla odkazovat na jiné zdroje nebo poskytovat bohatou zkušenost s médii a odkazy, použijte [označování metadat](../how-to/edit-knowledge-base.md#add-metadata) k rozlišení mezi odpověďmi a pak [odešlete dotaz](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) s značkami `strictFilters` metadat ve vlastnosti, abyste získali správnou verzi odpovědi.
 
-|Odpověď|Výzvy follup-up|
+|Odpověď|Follup výzvy|
 |--|--|
-|Zapněte notebook Surface tlačítkem napájení na klávesnici.|* Kombinace klíčů do režimu spánku, vypnutí a restartování.<br>* Jak hard-boot notebook surface<br>* Jak změnit BIOS pro notebook Surface<br>* Rozdíly mezi spánku, vypnutí a restart|
-|Zákaznický servis je k dispozici prostřednictvím telefonu, Skype a textové zprávy 24 hodin denně.|* Kontaktní informace pro prodej.<br> * Umístění kanceláří a obchodů a hodiny pro osobní návštěvu.<br> * Příslušenství pro notebook Surface.|
+|Vypněte Surface přenosného počítače pomocí tlačítka napájení na klávesnici.|* Kombinace kláves pro režim spánku, vypnutí a restartování.<br>* Jak pevně spustit Surface přenosného počítače<br>* Jak změnit systém BIOS pro Surface přenosného počítače<br>* Rozdíly mezi režimem spánku, vypnutí a restartování|
+|Služba zákazníkům je dostupná přes telefon, Skype a textovou zprávu 24 hodin denně.|* Kontaktní informace pro prodej.<br> * Umístění a hodiny pro Office a úložiště pro navštívené osoby.<br> * Příslušenství pro Surface notebooků.|
 
-## <a name="chit-chat"></a>Chit-Chat
-Přidejte chit-chat do svého robota, aby se váš bot více konverzační a poutavé, s nízkým úsilím. Při vytváření kb můžete snadno přidávat datové sady chit-chat od předdefinovaných osobností a kdykoli je změnit. Přečtěte si, jak [do kb přidat chit-chat](../How-To/chit-chat-knowledge-base.md).
+## <a name="chit-chat"></a>CHITEST – chat
+Přidejte práci CHITEST – chat k robotovi, abyste měli větší konverzaci a poutavější, s nízkou intenzitou. Můžete snadno přidat datové sady funkce CHITEST-chat z předem definovaných osobních údajů při vytváření a kdykoli je kdykoli změnit. Naučte se, jak [Přidat CHITEST – chat ke své znalostní bázi](../How-To/chit-chat-knowledge-base.md).
 
-Chit-chat je podporován v [mnoha jazycích](../how-to/chit-chat-knowledge-base.md#language-support).
+CHITEST – chat je podporován v [mnoha jazycích](../how-to/chit-chat-knowledge-base.md#language-support).
 
-### <a name="choosing-a-personality"></a>Výběr osobnosti
-Chit-chat je podporován pro několik předdefinovaných osobností:
+### <a name="choosing-a-personality"></a>Volba osobnosti
+CHITEST – chat se podporuje pro několik předdefinovaných osobních důvodů:
 
-|Osobnosti |Soubor datové sady QnA Maker |
+|Osobní |Soubor datové sady QnA Maker |
 |---------|-----|
-|Professional |[qna_chitchat_professional.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_professional.tsv) |
-|Přátelské |[qna_chitchat_friendly.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_friendly.tsv) |
-|Vtipný |[qna_chitchat_witty.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_witty.tsv) |
-|Péče |[qna_chitchat_caring.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_caring.tsv) |
-|Nadšený |[qna_chitchat_enthusiastic.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_enthusiastic.tsv) |
+|Professional |[qna_chitchat_professional. TSV](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_professional.tsv) |
+|Vhodná |[qna_chitchat_friendly. TSV](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_friendly.tsv) |
+|Witty |[qna_chitchat_witty. TSV](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_witty.tsv) |
+|Caring |[qna_chitchat_caring. TSV](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_caring.tsv) |
+|Dostáváme |[qna_chitchat_enthusiastic. TSV](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_enthusiastic.tsv) |
 
-Odpovědi sahají od formálních až po neformální a neuctivé. Měli byste vybrat osobnost, která je nejblíže v souladu s tónem, který chcete pro svého robota. Můžete zobrazit [datové sady](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets)a vybrat ten, který slouží jako základ pro vašeho robota, a pak přizpůsobit odpovědi.
+Reakce v rozsahu od formálního po neformální a irreverent. Měli byste vybrat osobnost, která je co nejblíže k požadovanému tónu pro robot. Můžete zobrazit [datové sady](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets)a zvolit jednu, která slouží jako základ pro robota, a pak přizpůsobit odpovědi.
 
-### <a name="edit-bot-specific-questions"></a>Úprava otázek specifických pro roboty
-Existují některé otázky specifické pro roboty, které jsou součástí datové sady chit-chat a byly vyplněny obecnými odpověďmi. Změňte tyto odpovědi tak, aby co nejlépe odrážely podrobnosti o botech.
+### <a name="edit-bot-specific-questions"></a>Upravit otázky specifické pro roboty
+K dispozici jsou některé otázky specifické pro roboty, které jsou součástí datové sady CHITEST-chat a byly vyplněny obecnými odpověďmi. Změňte tyto odpovědi tak, aby co nejlépe odpovídaly vašim bot detailům.
 
-Doporučujeme, aby následující chit-chat QnAs konkrétnější:
+Doporučujeme, aby následující funkce CHITEST-chat QnAs konkrétnější:
 
 * Kdo jsi?
-* Co můžete dělat?
+* Co můžete udělat?
 * Kolik ti je?
-* Kdo tě stvořil?
+* Kdo vám to vytvořil?
 * Dobrý den
 
-### <a name="adding-custom-chit-chat-with-a-metadata-tag"></a>Přidání vlastního chatu pomocí značky metadat
+### <a name="adding-custom-chit-chat-with-a-metadata-tag"></a>Přidání vlastního funkce CHITEST – chat se značkou metadat
 
-Pokud přidáte vlastní chit-chat QnA páry, ujistěte se, že přidat metadata, takže tyto odpovědi jsou vráceny. Dvojice název/hodnota metadat `editorial:chitchat`je .
+Pokud přidáte vlastní páry funkce CHITEST-chat QnA, nezapomeňte přidat metadata, aby se tyto odpovědi vracely. Dvojice název/hodnota metadat je `editorial:chitchat`.
 
 ## <a name="searching-for-answers"></a>Hledání odpovědí
 
-GenerateAnswer API používá otázky i odpověď k hledání nejlepší odpovědi na dotaz uživatele.
+Rozhraní GenerateAnswer API používá otázky a odpověď k vyhledání nejlepších odpovědí na dotaz uživatele.
 
-### <a name="searching-questions-only-when-answer-is-not-relevant"></a>Vyhledávání otázek pouze v případě, že odpověď není relevantní
+### <a name="searching-questions-only-when-answer-is-not-relevant"></a>Hledání otázek pouze v případě, že odpověď není relevantní
 
-Použijte, [`RankerType=QuestionOnly`](#choosing-ranker-type) pokud nechcete hledat odpovědi.
+Použijte v [`RankerType=QuestionOnly`](#choosing-ranker-type) případě, že nechcete hledat odpovědi.
 
-Příkladem je, když znalostní báze je katalog zkratky jako otázky s jejich plnou formou jako odpověď. Hodnota odpovědi nepomůže hledat vhodnou odpověď.
+Příkladem je, že znalostní báze je katalog zkratek jako otázky s jejich úplnou formou jako odpověď. Hodnota odpovědi vám nepomůže vyhledat příslušnou odpověď.
 
-## <a name="rankingscoring"></a>Pořadí/bodování
-Ujistěte se, že nejlépe využíváte funkce hodnocení, které QnA Maker podporuje. Tím se zlepší pravděpodobnost, že daný uživatelský dotaz je zodpovězena s příslušnou odpovědí.
+## <a name="rankingscoring"></a>Hodnocení a bodování
+Ujistěte se, že využijete nejlepšího použití funkcí hodnocení QnA Maker podporuje. Tím dojde ke zvýšení pravděpodobnosti, že daný dotaz na uživatele bude zodpovězen příslušnou odpovědí.
 
 ### <a name="choosing-a-threshold"></a>Výběr prahové hodnoty
 
-Výchozí [skóre spolehlivosti,](confidence-score.md) které se používá jako prahová hodnota, je 0, ale můžete [změnit prahovou hodnotu](confidence-score.md#set-threshold) pro kb na základě vašich potřeb. Vzhledem k tomu, že každá kb je jiná, měli byste otestovat a zvolit prahovou hodnotu, která je nejvhodnější pro vaši KB.
+Výchozí [hodnocení spolehlivosti](confidence-score.md) , které se používá jako prahová hodnota, je 0, ale v závislosti na vašich potřebách můžete [změnit prahovou hodnotu](confidence-score.md#set-threshold) pro vaši databázi. Vzhledem k tomu, že se každá KB liší, měli byste otestovat a vybrat prahovou hodnotu, která je nejvhodnější pro vaši databázi.
 
-### <a name="choosing-ranker-type"></a>Volba typu Ranker
-Ve výchozím nastavení služba QnA Maker prohledává otázky a odpovědi. Pokud chcete prohledávat pouze otázky, chcete-li `RankerType=QuestionOnly` vygenerovat odpověď, použijte v textu POST požadavku GenerateAnswer.
+### <a name="choosing-ranker-type"></a>Volba typu klasifikace
+Ve výchozím nastavení QnA Maker vyhledává dotazy a odpovědi. Pokud chcete vygenerovat odpověď pouze `RankerType=QuestionOnly` v rámci otázek, použijte v těle žádosti GenerateAnswer v části post.
 
-### <a name="add-alternate-questions"></a>Přidání alternativních otázek
-[Alternativní otázky](../How-To/edit-knowledge-base.md) zvyšují pravděpodobnost shody s uživatelským dotazem. Alternativní otázky jsou užitečné, pokud existuje více způsobů, jak může být položena stejná otázka. To může zahrnovat změny ve struktuře věty a stylu slova.
+### <a name="add-alternate-questions"></a>Přidat alternativní otázky
+[Alternativní otázky](../How-To/edit-knowledge-base.md) zlepšují pravděpodobnost shody s uživatelským dotazem. Alternativní otázky jsou užitečné, když existuje několik způsobů, jak se může zobrazit stejná otázka. To může zahrnovat změny ve struktuře vět a ve stylu Wordu.
 
 |Původní dotaz|Alternativní dotazy|Změnit|
 |--|--|--|
-|Je k dispozici parkování?|Máte parkoviště?|větná struktura|
- |Ahoj|Yo<br>Ahoj!|slovní styl nebo slang|
+|Je parkoviště k dispozici?|Máte automobilový Park?|struktura věty|
+ |Ahoj|Jo<br>Ahoj!|styl Wordu nebo slangem|
 
 <a name="use-metadata-filters"></a>
 
 ### <a name="use-metadata-tags-to-filter-questions-and-answers"></a>Filtrování otázek a odpovědí pomocí značek metadat
 
-[Metadata](../How-To/edit-knowledge-base.md) přidá možnost pro klientské aplikace vědět, že by neměla trvat všechny odpovědi, ale místo toho zúžit výsledky uživatelského dotazu na základě značek metadat. Odpověď znalostní báze se může lišit v závislosti na značce metadat, i když je dotaz stejný. Například *"kde se nachází parkoviště"* může mít jinou odpověď, pokud umístění pobočky restaurace se liší - to znamená, že metadata je *Umístění: Seattle* versus *Umístění: Redmond*.
+Díky [metadatům](../How-To/edit-knowledge-base.md) může klientská aplikace zjistit, že by neměl přijímat všechny odpovědi, ale místo toho může zúžit výsledky dotazu uživatele na základě značek metadat. Odpověď znalostní báze se může lišit v závislosti na značce metadat, a to i v případě, že je dotaz stejný. Například *"kde je zaparkovaná síť"* může mít jinou odpověď v případě, že se umístění větve restaurace liší – to znamená, že metadata jsou *umístění Praha* a *umístění: Redmond*.
 
-### <a name="use-synonyms"></a>Použití synonym
-Zatímco existuje určitá podpora synonym v anglickém jazyce, použijte změny slov bez rozlišování velkých a malých písmen prostřednictvím [rozhraní API změny](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) přidat synonyma klíčová slova, která mají jinou podobu. Synonyma jsou přidávána na úrovni služeb QnA Maker a sdílena všemi znalostními bázemi ve službě.
+### <a name="use-synonyms"></a>Použít synonyma
+I když je k dispozici podpora synonym v anglickém jazyce, použijte změnu velikosti písmen bez rozlišení velkých a malých písmen prostřednictvím [rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) pro přidání synonym k klíčovým slovům, která přijímají odlišnou formu. Synonyma se přidávají na úrovni služby QnA Maker a sdílí se všemi bázemi znalostí ve službě.
 
 |Původní slovo|Synonyma|
 |--|--|
-|Koupit|nákup<br>net-bankovnictví<br>čisté bankovnictví|
+|zakoupit|nákup<br>síť – bankovnictví<br>čistý bankovní|
 
-### <a name="use-distinct-words-to-differentiate-questions"></a>Použití odlišných slov k rozlišení otázek
-Algoritmus hodnocení QnA Maker, který odpovídá uživatelskému dotazu s otázkou ve znalostní bázi, funguje nejlépe, pokud každá otázka řeší jinou potřebu. Opakování stejné sady slov mezi otázkami snižuje pravděpodobnost, že je pro daný uživatelský dotaz těmito slovy vybrána správná odpověď.
+### <a name="use-distinct-words-to-differentiate-questions"></a>Odlišení otázek pomocí různých slov
+QnA Maker algoritmus hodnocení, který odpovídá dotazu uživatele s otázkou ve znalostní bázi Knowledge Base, funguje nejlépe, pokud každá otázka řeší jinou potřebu. Opakování stejné sady wordové sady mezi otázkami snižuje pravděpodobnost, že je zvolena správná odpověď pro daný dotaz uživatele s těmito slovy.
 
-Můžete mít například dvě samostatné qnas s následujícími otázkami:
+Například můžete mít dvě samostatné QnAs s následujícími otázkami:
 
 |QnAs|
 |--|
-|kde je *parkovací místo*|
-|kde je *umístění* atm|
+|kde je *umístění* parkování|
+|kde je *umístění* ATM|
 
-Vzhledem k tomu, že tyto dvě QnAs jsou formulovány s velmi podobnými slovy, tato podobnost může způsobit velmi podobné skóre pro mnoho uživatelských dotazů, které jsou formulovány jako *"kde je `<x>` umístění"*. Místo toho se snažte jasně rozlišovat s dotazy jako *"kde je parkoviště"* a *"kde je bankomat"*, tím, že se vyhnete slovům jako "umístění", které by mohly být v mnoha otázkách ve vaší KB.
+Vzhledem k tomu, že tyto dvě QnAs jsou fráze s velmi podobnými slovy, může tato podobnost způsobit velmi podobné skóre pro mnoho uživatelských dotazů, které jsou fráze, jako *je například `<x>` umístění*. Místo toho se pokuste jasně odlišit pomocí dotazů, jako *je "kde je zaparkovaná dávka"* a *"kde je ATM"*, a to tak, že se vyhnete slovám, jako je "umístění", které by mohlo být ve vaší znalostní bázi hodně otázek.
 
 ## <a name="collaborate"></a>Spolupráce
-QnA Maker umožňuje uživatelům [spolupracovat](../How-to/collaborate-knowledge-base.md) na znalostní bázi. Uživatelé potřebují přístup ke skupině prostředků Azure QnA Maker, aby měli přístup ke znalostním základům. Některé organizace mohou chtít zadávat úpravy a údržbu znalostní báze a stále mohou chránit přístup ke svým prostředkům Azure. Tento model schvalovatele editoru se provádí nastavením dvou identických [služeb QnA Maker](../How-to/set-up-qnamaker-service-azure.md) v různých předplatných a výběrem jedné pro cyklus testování úprav. Po dokončení testování se obsah znalostní báze přenese s procesem [importu a exportu](../Tutorials/migrate-knowledge-base.md) do služby QnA Maker schvalovatele, která nakonec publikuje znalostní bázi a aktualizuje koncový bod.
+QnA Maker umožňuje uživatelům [spolupracovat](../How-to/collaborate-knowledge-base.md) na znalostní bázi. Uživatelé potřebují přístup ke skupině prostředků Azure QnA Maker, aby mohli získat přístup ke znalostní bázi. Některé organizace můžou chtít využívat úpravy a údržbu znalostní báze a pořád budou moct chránit přístup ke svým prostředkům Azure. Tento model schvalovatele editoru se provádí nastavením dvou stejných [služeb QnA maker](../How-to/set-up-qnamaker-service-azure.md) v různých předplatných a výběrem jednoho pro cyklus úprav a testování. Po dokončení testování se obsah znalostní báze přenese pomocí procesu importu a [exportu](../Tutorials/migrate-knowledge-base.md) do QnA maker služby schvalovatele, která nakonec publikuje znalostní bázi a aktualizuje koncový bod.
 
 
 
 ## <a name="active-learning"></a>Aktivní učení
 
-[Aktivní učení](../How-to/use-active-learning.md) dělá nejlepší práci při navrhování alternativních otázek, když má širokou škálu kvality a množství uživatelských dotazů. Je důležité povolit dotazy uživatelů klientských aplikací k účasti v aktivní zpětné vazbě učení bez cenzury. Jakmile jsou na portálu QnA Maker například naportálu QnA Maker, můžete **[filtrovat podle návrhů](../How-To/improve-knowledge-base.md#accept-an-active-learning-suggestion-in-the-knowledge-base)** a pak tyto návrhy zkontrolovat a přijmout nebo odmítnout.
+[Aktivní učení](../How-to/use-active-learning.md) nabízí nejlepší úlohu při navrhování alternativních otázek, když má široké spektrum kvality a množství dotazů založených na uživatelích. Je důležité, aby dotazy uživatelů klientské aplikace mohly se zúčastnit smyčky aktivního výukového zpětné vazby bez Censorship. Po navržení otázek na portálu QnA Maker můžete **[filtrovat podle návrhů](../How-To/improve-knowledge-base.md#accept-an-active-learning-suggestion-in-the-knowledge-base)** a tyto návrhy pak zobrazit a přijmout nebo odmítnout.
 
 ## <a name="next-steps"></a>Další kroky
 

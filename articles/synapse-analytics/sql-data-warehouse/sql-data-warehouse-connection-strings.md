@@ -1,6 +1,6 @@
 ---
 title: Připojovací řetězce
-description: Připojovací řetězce pro fond SYNAPSE SQL
+description: Připojovací řetězce pro synapse fond SQL
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,19 +12,19 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: aad65c112bfc5a6a80f481fe3748e0f4d5c52f74
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745282"
 ---
-# <a name="connection-strings-for-synapse-sql-pool"></a>Připojovací řetězce pro fond SYNAPSE SQL
+# <a name="connection-strings-for-synapse-sql-pool"></a>Připojovací řetězce pro synapse fond SQL
 
-Ke fondu SQL se můžete připojit pomocí několika různých aplikačních protokolů, jako jsou [ADO.NET](/dotnet/framework/data/adonet?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), [ODBC](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [PHP](/sql/connect/php/overview-of-the-php-sql-driver?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)a [JDBC](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). Níže jsou uvedeny některé příklady propojení řetězců pro každý protokol.  Můžete také použít portál Azure k vytvoření připojovacího řetězce.  
+Můžete se připojit ke fondu SQL pomocí několika různých aplikačních protokolů, jako jsou, [ADO.NET](/dotnet/framework/data/adonet?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), [ODBC](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [php](/sql/connect/php/overview-of-the-php-sql-driver?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)a [JDBC](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). Níže jsou uvedeny příklady řetězců připojení pro každý protokol.  Můžete také použít Azure Portal k sestavení připojovacího řetězce.  
 
-Chcete-li vytvořit připojovací řetězec pomocí portálu Azure, přejděte do okna databáze v části *Essentials* klikněte na *Zobrazit připojovací řetězce databáze*.
+Pokud chcete vytvořit připojovací řetězec pomocí Azure Portal, přejděte v okně databáze v části *základy* klikněte na *Zobrazit databázové připojovací řetězce*.
 
-## <a name="sample-adonet-connection-string"></a>Ukázka ADO.NET připojovacířetězec
+## <a name="sample-adonet-connection-string"></a>Ukázkový připojovací řetězec ADO.NET
 
 ```csharp
 Server=tcp:{your_server}.database.windows.net,1433;Database={your_database};User ID={your_user_name};Password={your_password_here};Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
@@ -49,8 +49,8 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 ```
 
 > [!NOTE]
-> Zvažte nastavení časového limitu připojení na 300 sekund, aby připojení přežilo krátkou dobu nedostupnosti.
+> Zvažte nastavení časového limitu připojení na 300 sekund, aby připojení bylo zachováno krátkou dobu nedostupnosti.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete začít dotazovat se fondu SQL pomocí sady Visual Studio a dalších aplikací, přečtěte [si informace o dotazu pomocí sady Visual Studio](sql-data-warehouse-query-visual-studio.md).
+Pokud chcete začít dotazovat svůj fond SQL pomocí sady Visual Studio a dalších aplikací, přečtěte si téma [dotazování pomocí sady Visual Studio](sql-data-warehouse-query-visual-studio.md).

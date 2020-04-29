@@ -5,48 +5,48 @@ ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
 ms.openlocfilehash: dc5e251fee00ee22edb2261c1abd8404714834ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78669260"
 ---
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
-Každý požadavek vyžaduje hlavičku autorizace. Tato tabulka znázorňuje, která záhlaví jsou podporována pro každou službu:
+Každá žádost vyžaduje autorizační hlavičku. Tato tabulka ukazuje, které hlavičky jsou pro každou službu podporované:
 
-| Podporovaná záhlaví autorizací | Převod řeči na text | Převod textu na řeč |
+| Podporované autorizační hlavičky | Převod řeči na text | Převod textu na řeč |
 |------------------------|----------------|----------------|
 | Ocp-Apim-Subscription-Key | Ano | Ne |
-| Povolení: Nosič | Ano | Ano |
+| Autorizace: nosič | Ano | Ano |
 
-Při použití `Ocp-Apim-Subscription-Key` záhlaví musíte zadat pouze klíč předplatného. Například:
+Když použijete `Ocp-Apim-Subscription-Key` hlavičku, budete muset zadat svůj klíč předplatného. Příklad:
 
 ```http
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
 ```
 
-Při použití `Authorization: Bearer` záhlaví, budete muset podat žádost `issueToken` ke koncovému bodu. V tomto požadavku vyměníte klíč předplatného za přístupový token, který je platný po dobu 10 minut. V několika dalších částech se dozvíte, jak získat token a použít token.
+Když použijete `Authorization: Bearer` hlavičku, je nutné, abyste si nahlásili požadavek `issueToken` na koncový bod. V této žádosti vyměňujete klíč předplatného pro přístupový token, který je platný po dobu 10 minut. V následujících částech se dozvíte, jak získat token a použít token.
 
-### <a name="how-to-get-an-access-token"></a>Jak získat přístupový token
+### <a name="how-to-get-an-access-token"></a>Získání přístupového tokenu
 
-Chcete-li získat přístupový token, budete muset `issueToken` požádat o `Ocp-Apim-Subscription-Key` koncový bod pomocí klíče a předplatného.
+K získání přístupového tokenu budete muset na `issueToken` koncový bod vytvořit žádost pomocí klíče `Ocp-Apim-Subscription-Key` a vašeho předplatného.
 
-Koncový `issueToken` bod má tento formát:
+`issueToken` Koncový bod má tento formát:
 
 ```http
 https://<REGION_IDENTIFIER>.api.cognitive.microsoft.com/sts/v1.0/issueToken
 ```
 
-Nahraďte `<REGION_IDENTIFIER>` identifikátorem, který odpovídá oblasti předplatného z této tabulky:
+Nahraďte `<REGION_IDENTIFIER>` identifikátorem, který odpovídá oblasti vašeho předplatného z této tabulky:
 
 [!INCLUDE [](cognitive-services-speech-service-region-identifier.md)]
 
-Tyto ukázky slouží k vytvoření požadavku na přístupový token.
+Pomocí těchto ukázek můžete vytvořit žádost o přístupový token.
 
-#### <a name="http-sample"></a>Ukázka protokolu HTTP
+#### <a name="http-sample"></a>Ukázka HTTP
 
-Tento příklad je jednoduchý požadavek HTTP získat token. Nahraďte `YOUR_SUBSCRIPTION_KEY` pomocí klíče předplatného služby Speech Service. Pokud vaše předplatné není v oblasti USA `Host` – západ, nahraďte záhlaví názvem hostitele oblasti.
+V tomto příkladu je jednoduchý požadavek HTTP na získání tokenu. Nahraďte `YOUR_SUBSCRIPTION_KEY` klíčovým předplatným služby Speech. Pokud vaše předplatné není v oblasti Západní USA, nahraďte `Host` hlavičku názvem hostitele vaší oblasti.
 
 ```http
 POST /sts/v1.0/issueToken HTTP/1.1
@@ -60,7 +60,7 @@ Tělo odpovědi obsahuje přístupový token ve formátu JSON Web Token (JWT).
 
 #### <a name="powershell-sample"></a>Ukázka PowerShellu
 
-Tento příklad je jednoduchý skript prostředí PowerShell získat přístupový token. Nahraďte `YOUR_SUBSCRIPTION_KEY` pomocí klíče předplatného služby Speech Service. Ujistěte se, že používáte správný koncový bod pro oblast, která odpovídá vašemu předplatnému. Tento příklad je aktuálně nastaven na západní USA.
+Tento příklad představuje jednoduchý skript prostředí PowerShell pro získání přístupového tokenu. Nahraďte `YOUR_SUBSCRIPTION_KEY` klíčovým předplatným služby Speech. Ujistěte se, že používáte správný koncový bod pro oblast, která odpovídá vašemu předplatnému. Tento příklad je aktuálně nastaven na Západní USA.
 
 ```powershell
 $FetchTokenHeader = @{
@@ -77,9 +77,9 @@ $OAuthToken
 
 ```
 
-#### <a name="curl-sample"></a>ukázka cURL
+#### <a name="curl-sample"></a>Ukázka kudrlinkou
 
-cURL je nástroj příkazového řádku dostupný v Linuxu (a v podsystému Windows pro Linux). Tento příkaz cURL ukazuje, jak získat přístupový token. Nahraďte `YOUR_SUBSCRIPTION_KEY` pomocí klíče předplatného služby Speech Service. Ujistěte se, že používáte správný koncový bod pro oblast, která odpovídá vašemu předplatnému. Tento příklad je aktuálně nastaven na západní USA.
+kudrlinkou je nástroj příkazového řádku, který je dostupný v systému Linux (a v subsystému Windows pro Linux). Tento příkaz složeného příkazu ukazuje, jak získat přístupový token. Nahraďte `YOUR_SUBSCRIPTION_KEY` klíčovým předplatným služby Speech. Ujistěte se, že používáte správný koncový bod pro oblast, která odpovídá vašemu předplatnému. Tento příklad je aktuálně nastaven na Západní USA.
 
 ```console
 curl -v -X POST
@@ -91,7 +91,7 @@ curl -v -X POST
 
 #### <a name="c-sample"></a>Ukázka v jazyce C#
 
-Tato třída C# ukazuje, jak získat přístupový token. Předejte klíč předplatného služby Speech Service při vytváření instanování třídy. Pokud vaše předplatné není v oblasti USA – `FetchTokenUri` západ, změňte hodnotu aplikace, která odpovídá oblasti předplatného.
+Tato třída jazyka C# ukazuje, jak získat přístupový token. Při vytváření instance třídy předejte klíč předplatného služby Speech. Pokud vaše předplatné není v oblasti Západní USA, změňte hodnotu `FetchTokenUri` tak, aby odpovídala oblasti vašeho předplatného.
 
 ```csharp
 public class Authentication
@@ -147,11 +147,11 @@ def get_token(subscription_key):
     print(access_token)
 ```
 
-### <a name="how-to-use-an-access-token"></a>Použití přístupového tokenu
+### <a name="how-to-use-an-access-token"></a>Používání přístupového tokenu
 
-Přístupový token by měl být `Authorization: Bearer <TOKEN>` odeslán službě jako záhlaví. Každý přístupový token je platný po dobu 10 minut. Můžete získat nový token kdykoli, ale minimalizovat síťový provoz a latence, doporučujeme používat stejný token po dobu devíti minut.
+Přístupový token by měl být službě odeslán jako `Authorization: Bearer <TOKEN>` hlavička. Každý přístupový token je platný po dobu 10 minut. Nový token můžete kdykoli získat, ale k minimalizaci síťového provozu a latence doporučujeme použít stejný token po dobu devíti minut.
 
-Tady je ukázkový požadavek HTTP pro rozhraní REST API pro převod textu na řeč:
+Tady je ukázka požadavku HTTP na REST API převodu textu na řeč:
 
 ```http
 POST /cognitiveservices/v1 HTTP/1.1

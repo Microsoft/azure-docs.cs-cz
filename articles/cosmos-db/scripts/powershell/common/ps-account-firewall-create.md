@@ -1,19 +1,19 @@
 ---
-title: Skript PowerShellu pro vytvoření účtu Azure Cosmos DB s IP firewallem
-description: Ukázka skriptu Azure PowerShellu – vytvoření účtu Azure Cosmos DB pomocí ip firewallu
+title: Skript prostředí PowerShell pro vytvoření účtu Azure Cosmos DB s bránou firewall protokolu IP
+description: Ukázka skriptu Azure PowerShell – vytvoření účtu Azure Cosmos DB pomocí brány firewall protokolu IP
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: f01e8e818a1b3cf4f999afa1e0801b2341ede2bf
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80365680"
 ---
-# <a name="create-an-azure-cosmos-db-account-with-ip-firewall"></a>Vytvoření účtu Azure Cosmos DB pomocí ip firewallu
+# <a name="create-an-azure-cosmos-db-account-with-ip-firewall"></a>Vytvoření účtu Azure Cosmos DB pomocí brány firewall protokolu IP
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,7 +22,7 @@ ms.locfileid: "80365680"
 ## <a name="sample-script"></a>Ukázkový skript
 
 > [!NOTE]
-> Tato ukázka ukazuje pomocí účtu rozhraní API SQL (Core). Chcete-li tuto ukázku použít pro jiná rozhraní API, zkopírujte související vlastnosti a použijte skript specifický pro rozhraní API.
+> Tato ukázka předvádí použití účtu rozhraní API SQL (Core). Pokud chcete tuto ukázku použít pro jiná rozhraní API, zkopírujte související vlastnosti a aplikujte je na skript specifický pro rozhraní API.
 
 [!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-firewall-create.ps1 "Create an Azure Cosmos account with IP Firewall")]
 
@@ -41,7 +41,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Nový účet AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Vytvoří nový účet Cosmos DB. |
+| [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Vytvoří nový účet Cosmos DB. |
 |**Skupiny prostředků Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||

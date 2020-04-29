@@ -1,5 +1,5 @@
 ---
-title: Odesílání nabízených oznámení androidu pomocí Center oznámení Azure a Firebase | Dokumenty společnosti Microsoft
+title: Posílání nabízených oznámení do Androidu s využitím Azure Notification Hubs a Firebase | Microsoft Docs
 description: V tomto kurzu se naučíte používat služby Azure Notification Hubs a Google Firebase Cloud Messaging k zasílání nabízených oznámení zařízením s Androidem.
 services: notification-hubs
 documentationcenter: android
@@ -19,27 +19,27 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
 ms.openlocfilehash: e6bc4ed94c8b8e62740f81497231a163283ebcb7
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80521557"
 ---
-# <a name="tutorial-send-push-notifications-to-android-devices-using-firebase"></a>Kurz: Odesílání nabízených oznámení do zařízení Android pomocí Firebase
+# <a name="tutorial-send-push-notifications-to-android-devices-using-firebase"></a>Kurz: posílání nabízených oznámení na zařízení s Androidem pomocí Firebase
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-Tento kurz ukazuje, jak používat Azure Notification Hubs a Firebase Cloud Messaging (FCM) k nabízení oznámení do aplikace pro Android. V tomto kurzu vytvoříte prázdnou aplikaci pro Android, která bude přijímat nabízená oznámení pomocí služby Firebase Cloud Messaging (FCM).
+V tomto kurzu se dozvíte, jak používat Azure Notification Hubs a Firebase Cloud Messaging (FCM) k nabízeným oznámením do aplikace pro Android. V tomto kurzu vytvoříte prázdnou aplikaci pro Android, která bude přijímat nabízená oznámení pomocí služby Firebase Cloud Messaging (FCM).
 
-Vyplněný kód pro tento kurz lze stáhnout [z GitHubu](https://github.com/Azure/azure-notificationhubs-android/tree/master/FCMTutorialApp).
+Dokončený kód tohoto kurzu si můžete stáhnout [z GitHubu](https://github.com/Azure/azure-notificationhubs-android/tree/master/FCMTutorialApp).
 
 V tomto kurzu provedete následující kroky:
 
 > [!div class="checklist"]
 > * Vytvoříte projekt v Android Studiu.
 > * Vytvoříte projekt Firebase, který podporuje Firebase Cloud Messaging.
-> * Vytvořte rozbočovač.
-> * Připojte aplikaci k rozbočovači.
+> * Vytvořte centrum.
+> * Připojte aplikaci k centru.
 > * Otestujete aplikaci.
 
 ## <a name="prerequisites"></a>Požadavky
@@ -48,21 +48,21 @@ K dokončení tohoto kurzu potřebujete mít aktivní účet Azure. Pokud účet
 
 Potřebujete také následující položky: 
 
-* Nejnovější verze [Android Studia](https://go.microsoft.com/fwlink/?LinkId=389797)
-* Android 2.3 nebo vyšší pro cloudové zprávy Firebase
-* Revize úložiště Google 27 nebo vyšší pro zasílání zpráv Cloud Messaging Firebase
-* Služby Google Play 9.0.2 nebo vyšší pro zasílání zpráv firebase cloud
+* Nejnovější verze [Android Studio](https://go.microsoft.com/fwlink/?LinkId=389797)
+* Android 2,3 nebo vyšší pro Firebase Cloud Messaging
+* Revize úložiště Google 27 nebo vyšší pro zasílání zpráv Firebase Cloud
+* Služby Google Play 9.0.2 nebo vyšší pro Firebase cloudové zasílání zpráv
 
-Dokončení tohoto kurzu je předpokladem pro provádění všech ostatních kurzů centra oznámení pro aplikace pro Android.
+Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy Notification Hubs pro aplikace pro Android.
 
 ## <a name="create-an-android-studio-project"></a>Vytvoření projektu v Android Studiu
 
 1. Spusťte Android Studio.
-2. Vyberte **Soubor**, přejděte na **Nový**a pak vyberte **Nový projekt**. 
-2. Na stránce **Vybrat projekt** vyberte **Vyprázdnit aktivitu**a pak vyberte **Další**. 
-3. Na stránce **Konfigurace projektu postupujte** takto: 
+2. Vyberte **soubor**, přejděte na **Nový**a potom vyberte **Nový projekt**. 
+2. Na stránce **Zvolte projekt** vyberte možnost **prázdná aktivita**a potom vyberte možnost **Další**. 
+3. Na stránce **Konfigurovat projekt** proveďte následující kroky: 
     1. Zadejte název aplikace.
-    2. Určete umístění, do kterého chcete soubory projektu uložit. 
+    2. Zadejte umístění, do kterého chcete uložit soubory projektu. 
     3. Vyberte **Finish** (Dokončit). 
 
         ![Konfigurace projektu)](./media/notification-hubs-android-push-notification-google-fcm-get-started/configure-project.png)
@@ -71,38 +71,38 @@ Dokončení tohoto kurzu je předpokladem pro provádění všech ostatních kur
 
 [!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
-## <a name="configure-a-hub"></a>Konfigurace rozbočovače
+## <a name="configure-a-hub"></a>Konfigurace centra
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
 ### <a name="configure-firebase-cloud-messaging-settings-for-the-hub"></a>Konfigurace nastavení služby Firebase Cloud Messaging pro centrum
 
-1. V levém podokně vyberte v části **Nastavení** **Google (GCM/FCM).** 
-2. Zadejte **klíč serveru** pro projekt FCM, který jste uložili dříve. 
+1. V levém podokně v části **Nastavení** vyberte **Google (GCM/FCM)**. 
+2. Zadejte **klíč serveru** pro projekt FCM, který jste předtím uložili. 
 3. Na panelu nástrojů vyberte **Uložit**. 
 
-    ![Azure Notification Hub – Google (FCM)](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
-4. Portál Azure zobrazí zprávu ve výstrahách, že centrum bylo úspěšně aktualizováno. Tlačítko **Uložit** je zakázáno. 
+    ![Centrum oznámení Azure – Google (FCM)](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
+4. Azure Portal zobrazí zprávu v upozorněních, že se centrum úspěšně aktualizovalo. Tlačítko **Uložit** je zakázané. 
 
-Vaše centrum je teď nakonfigurované pro práci s Firebase Cloud Messaging. Máte také připojovací řetězce, které jsou nezbytné k odesílání oznámení do zařízení a zaregistrovat aplikaci pro příjem oznámení.
+Vaše centrum je teď nakonfigurované tak, aby fungovalo s Firebase cloudovým zasíláním zpráv. Máte také připojovací řetězce, které jsou nezbytné k odesílání oznámení do zařízení a k registraci aplikace pro příjem oznámení.
 
 ## <a name="connect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>Připojte aplikaci k centru oznámení
 
 ### <a name="add-google-play-services-to-the-project"></a>Přidejte do projektu služby Google Play
 
-1. V Android Studiu vyberte v nabídce **Nástroje** a pak vyberte **Správce sady SDK**. 
-2. Vyberte cílovou verzi sady Android SDK, která se používá v projektu. Pak vyberte **Zobrazit podrobnosti balíčku**. 
+1. V Android Studio v nabídce vyberte **nástroje** a pak vyberte **správce SDK**. 
+2. Vyberte cílovou verzi Android SDK, která se používá ve vašem projektu. Pak vyberte **Zobrazit podrobnosti balíčku**. 
 
-    ![Android SDK Manager - vyberte cílovou verzi](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
-3. Pokud ještě není nainstalovaná , vyberte **vyberte google api**.
+    ![Android SDK Manager – výběr cílové verze](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
+3. Vyberte **Google API**, pokud ještě není nainstalovaná.
 
-    ![Android SDK Manager - Google API vybrána](./media/notification-hubs-android-studio-add-google-play-services/googole-apis-selected.png)
-4. Přepněte na kartu **Nástroje sady SDK.** Pokud jste služby Google Play ještě nenainstalovali, vyberte **služby Google Play,** jak je znázorněno na následujícím obrázku. Pak vyberte **Použít** k instalaci. Poznamenejte si cestu k sadě SDK, abyste ji mohli použít později.
+    ![Správce Android SDK – vybraná rozhraní API pro Google](./media/notification-hubs-android-studio-add-google-play-services/googole-apis-selected.png)
+4. Přepněte na kartu **SDK Tools** . Pokud jste ještě nenainstalovali Služby Google Play, vyberte **služby Google Play** , jak je znázorněno na následujícím obrázku. Pak vyberte **použít** k instalaci. Poznamenejte si cestu k sadě SDK, abyste ji mohli použít později.
 
-    ![Android SDK Manager - Google Play služby vybrané](./media/notification-hubs-android-studio-add-google-play-services/google-play-services-selected.png)
-3. Pokud se zobrazí dialogové okno **Potvrdit změnu,** vyberte **OK**. Instalační služba součásti nainstaluje požadované součásti. Po instalaci součástí vyberte **Dokončit.**
-4. Výběrem **možnosti OK** zavřete dialogové okno **Nastavení pro nové projekty.**  
-1. Otevřete soubor AndroidManifest.xml a přidejte do značky *aplikace* následující značku.
+    ![Android SDK Manager – Služby Google Play vybráno](./media/notification-hubs-android-studio-add-google-play-services/google-play-services-selected.png)
+3. Pokud se zobrazí dialogové okno **Potvrdit změnu** , vyberte **OK**. Instalační program součásti nainstaluje požadované součásti. Po instalaci součástí vyberte **Dokončit** .
+4. Kliknutím na **tlačítko OK** zavřete dialogové okno **nastavení pro nové projekty** .  
+1. Otevřete soubor souboru AndroidManifest. XML a přidejte následující značku do značky *aplikace* .
 
     ```xml
     <meta-data android:name="com.google.android.gms.version"
@@ -110,9 +110,9 @@ Vaše centrum je teď nakonfigurované pro práci s Firebase Cloud Messaging. M�
     ```
 
 
-### <a name="add-azure-notification-hubs-libraries"></a>Přidání knihoven Center oznámení Azure
+### <a name="add-azure-notification-hubs-libraries"></a>Přidání knihoven Azure Notification Hubs
 
-1. Do souboru Build.Gradle pro aplikaci přidejte následující řádky v části závislosti.
+1. V souboru Build. Gradle pro aplikaci přidejte následující řádky do oddílu závislosti.
 
     ```gradle
     implementation 'com.microsoft.azure:notification-hubs-android-sdk:0.6@aar'
@@ -130,23 +130,23 @@ Vaše centrum je teď nakonfigurované pro práci s Firebase Cloud Messaging. M�
 
 ### <a name="add-google-firebase-support"></a>Přidání podpory Google Firebase
 
-1. Do souboru Build.Gradle pro aplikaci přidejte následující řádky v části **závislosti,** pokud ještě neexistují. 
+1. V souboru Build. Gradle pro aplikaci přidejte následující řádky v části **závislosti** , pokud ještě neexistují. 
 
     ```gradle
     implementation 'com.google.firebase:firebase-core:16.0.8'
     implementation 'com.google.firebase:firebase-messaging:17.3.4'
     ```
 
-2. Pokud soubor ještě neexistuje, přidejte na konec souboru následující modul plug-in. 
+2. Na konec souboru přidejte následující modul plug-in, pokud tam ještě není. 
 
     ```gradle
     apply plugin: 'com.google.gms.google-services'
     ```
-3. Na panelu nástrojů vyberte **Synchronizovat.**
+3. Vyberte **synchronizovat hned** na panelu nástrojů.
 
-### <a name="update-the-androidmanifestxml-file"></a>Aktualizace souboru AndroidManifest.xml
+### <a name="update-the-androidmanifestxml-file"></a>Aktualizace souboru souboru AndroidManifest. XML
 
-1. Po obdržení registračního tokenu FCM ho použijete k [registraci v Azure Notification Hubs](notification-hubs-push-notification-registration-management.md). Podporujete tuto registraci na `IntentService` pozadí `RegistrationIntentService`pomocí pojmenované . Tato služba také aktualizuje registrační token FCM. Můžete také vytvořit `FirebaseService` třídu pojmenovanou jako podtřída `FirebaseMessagingService` a přepsat metodu `onMessageReceived` pro příjem a zpracování oznámení. 
+1. Po přijetí registračního tokenu FCM ho použijete k [registraci v Azure Notification Hubs](notification-hubs-push-notification-registration-management.md). Tuto registraci podporujete na pozadí pomocí `IntentService` pojmenovaného. `RegistrationIntentService` Tato služba také aktualizuje registrační token FCM. Vytvoříte také třídu s názvem `FirebaseService` jako podtřídu `FirebaseMessagingService` a přepíšete `onMessageReceived` metodu pro příjem a zpracování oznámení. 
 
     Přidejte následující definice služby do souboru AndroidManifest.xml uvnitř značky `<application>`.
 
@@ -163,7 +163,7 @@ Vaše centrum je teď nakonfigurované pro práci s Firebase Cloud Messaging. M�
         </intent-filter>
     </service>
     ```
-3. Pod `</application>` značku přidejte následující potřebná oprávnění související s FCM.
+3. Přidejte následující nezbytná oprávnění související s FCM pod `</application>` značkou.
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -173,12 +173,12 @@ Vaše centrum je teď nakonfigurované pro práci s Firebase Cloud Messaging. M�
 
 ### <a name="add-code"></a>Přidat kód
 
-1. V zobrazení projektu rozbalte hlavní**main** > **java** **aplikace** > **src** > . Klikněte pravým tlačítkem myši na složku balíčku v **javě**, vyberte **Nový**a pak vyberte **Java Class**. Zadejte **NotificationSettings** pro název a pak vyberte **OK**.
+1. V zobrazení projektu rozbalte položku **App** > **Src** > **Main** > **Java**. Klikněte pravým tlačítkem myši na složku balíčku v kategorii **Java**, vyberte možnost **Nový**a potom vyberte možnost **Třída Java**. Jako název zadejte **NotificationSettings** a pak vyberte **OK**.
 
     Nezapomeňte aktualizovat tyto tři zástupné symboly v následujícím kódu pro třídu `NotificationSettings`:
 
-   * **HubListenConnectionString**: připojovací řetězec **DefaultListenAccessSignature** pro rozbočovač. Tento připojovací řetězec můžete zkopírovat kliknutím na **přístupové zásady** ve vašem centru na [webu Azure Portal].
-   * **HubName**: Použijte název svého centra, který se zobrazí na stránce centra na [webu Azure Portal].
+   * **HubListenConnectionString**: připojovací řetězec **DefaultListenAccessSignature** pro rozbočovač. Tento připojovací řetězec můžete zkopírovat kliknutím na **zásady přístupu** v centru v [Azure Portal].
+   * **HubName**: použijte název vašeho rozbočovače, který se zobrazí na stránce centra v [Azure Portal].
 
      Kód `NotificationSettings`:
 
@@ -190,9 +190,9 @@ Vaše centrum je teď nakonfigurované pro práci s Firebase Cloud Messaging. M�
         ```
 
      > [!IMPORTANT]
-     > Zadejte **název** a **DefaultListenSharedAccessSignature** vašeho centra před pokračováním dále. 
+     > Než budete pokračovat, zadejte **název** a **DefaultListenSharedAccessSignature** svého rozbočovače. 
 
-2. Přidejte další novou třídu do projektu s názvem `RegistrationIntentService`. Tato třída implementuje `IntentService` rozhraní. Také zpracovává [aktualizace tokenu FCM](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens) a [registraci v centru oznámení](notification-hubs-push-notification-registration-management.md).
+2. Přidejte další novou třídu do projektu s názvem `RegistrationIntentService`. Tato třída implementuje `IntentService` rozhraní. Také zpracovává [aktualizaci tokenu FCM](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens) a [registraci v centru oznámení](notification-hubs-push-notification-registration-management.md).
 
     Pro tuto třídu použijte následující kód.
 
@@ -294,7 +294,7 @@ Vaše centrum je teď nakonfigurované pro práci s Firebase Cloud Messaging. M�
     }
     ```
 
-3. Ve `MainActivity` třídě přidejte `import` následující příkazy nad deklaraci třídy.
+3. Ve `MainActivity` třídě přidejte následující `import` příkazy nad deklaraci třídy.
 
     ```java
     import com.google.android.gms.common.ConnectionResult;
@@ -305,7 +305,7 @@ Vaše centrum je teď nakonfigurované pro práci s Firebase Cloud Messaging. M�
     import android.widget.Toast;
     ```
 
-4. Do horní části třídy přidejte následující členy. Tato pole slouží ke [kontrole dostupnosti Služeb Google Play, kterou doporučuje Google](https://developers.google.com/android/guides/setup#ensure_devices_have_the_google_play_services_apk).
+4. Přidejte následující členy v horní části třídy. Tato pole slouží ke [kontrole dostupnosti Služeb Google Play, kterou doporučuje Google](https://developers.google.com/android/guides/setup#ensure_devices_have_the_google_play_services_apk).
 
     ```java
     public static MainActivity mainActivity;
@@ -314,7 +314,7 @@ Vaše centrum je teď nakonfigurované pro práci s Firebase Cloud Messaging. M�
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     ```
 
-5. Do `MainActivity` třídy přidejte následující metodu, abyste zkontrolovali dostupnost služeb Google Play.
+5. Ve `MainActivity` třídě přidejte následující metodu pro kontrolu dostupnosti služby Google Play.
 
     ```java
     /**
@@ -341,7 +341,7 @@ Vaše centrum je teď nakonfigurované pro práci s Firebase Cloud Messaging. M�
     }
     ```
 
-6. Do `MainActivity` třídy přidejte následující kód, který zkontroluje `IntentService` služby Google Play, než zavoláte na registrační token FCM a zaregistrujte se u svého centra:
+6. Ve `MainActivity` třídě přidejte následující kód, který kontroluje služby Google Play před voláním metody `IntentService` pro získání registračního tokenu FCM a registraci v rámci vašeho centra:
 
     ```java
     public void registerWithNotificationHubs()
@@ -354,7 +354,7 @@ Vaše centrum je teď nakonfigurované pro práci s Firebase Cloud Messaging. M�
     }
     ```
 
-7. V `OnCreate` metodě `MainActivity` třídy přidejte následující kód pro spuštění procesu registrace při vytvoření aktivity:
+7. Do `OnCreate` metody `MainActivity` třídy přidejte následující kód, který spustí proces registrace při vytvoření aktivity:
 
     ```java
     @Override
@@ -368,7 +368,7 @@ Vaše centrum je teď nakonfigurované pro práci s Firebase Cloud Messaging. M�
     }
     ```
 
-8. Pokud chcete ověřit stav aplikace a stav sestavy `MainActivity`v aplikaci, přidejte do aplikace tyto další metody:
+8. K ověření stavu aplikace a stavu sestavy ve vaší aplikaci přidejte tyto další metody `MainActivity`:
 
     ```java
     @Override
@@ -407,7 +407,7 @@ Vaše centrum je teď nakonfigurované pro práci s Firebase Cloud Messaging. M�
     }
     ```
 
-9. Metoda `ToastNotify` používá ovládání *„Hello World“* `TextView` k trvalému hlášení stavu a oznámení v aplikaci. Do**rozložení** >  **res** > **activity_main.xml** přidejte pro tento ovládací prvek následující ID.
+9. Metoda `ToastNotify` používá ovládání *„Hello World“* `TextView` k trvalému hlášení stavu a oznámení v aplikaci. V rozložení **res** > **layout** > **activity_main. XML** přidejte následující ID pro tento ovládací prvek.
 
     ```java
     android:id="@+id/text_hello"
@@ -415,7 +415,7 @@ Vaše centrum je teď nakonfigurované pro práci s Firebase Cloud Messaging. M�
 
     ![Azure Notification Hubs – testovací odeslání](./media/notification-hubs-android-push-notification-google-fcm-get-started/activity-main-xml.png)
 
-10. Dále přidáte podtřídu pro příjemce, který jste definovali v Souboru AndroidManifest.xml. Přidejte další novou třídu do projektu s názvem `FirebaseService`.
+10. Dále přidáte podtřídu pro přijímače, který jste definovali v souboru souboru AndroidManifest. XML. Přidejte další novou třídu do projektu s názvem `FirebaseService`.
 
 11. Nad `FirebaseService.java` přidejte následující příkazy pro import:
 
@@ -435,9 +435,9 @@ Vaše centrum je teď nakonfigurované pro práci s Firebase Cloud Messaging. M�
     import androidx.core.app.NotificationCompat;
     ```
 
-12. Přidejte následující kód `FirebaseService` pro třídu, takže `FirebaseMessagingService`je podtřídou .
+12. Přidejte následující kód pro `FirebaseService` třídu a vytvořte její podtřídu. `FirebaseMessagingService`
 
-    Tento kód přepíše metodu `onMessageReceived` a hlásí oznámení, která jsou přijata. také odešle nabízené oznámení správce oznámení Android `sendNotification()` pomocí metody. Volání `sendNotification()` metody, když aplikace není spuštěna a je přijato oznámení.
+    Tento kód přepíše `onMessageReceived` metodu a oznámení, která jsou přijata. odesílá také nabízená oznámení do správce oznámení Androidu pomocí `sendNotification()` metody. Volání `sendNotification()` metody, když aplikace neběží a oznámení se přijme.
 
     ```java
     public class FirebaseService extends FirebaseMessagingService
@@ -522,49 +522,49 @@ Vaše centrum je teď nakonfigurované pro práci s Firebase Cloud Messaging. M�
     }
     ```
 
-13. V Android Studio, na řádku nabídek, vyberte **sestavení** > **projektu znovu sestavit** a ujistěte se, že nejsou žádné chyby ve vašem kódu. Pokud se zobrazí chyba `ic_launcher` o ikonu, odeberte následující příkaz ze souboru AndroidManifest.xml: 
+13. V Android Studio na řádku nabídek vyberte **sestavit znovu** > **sestavit projekt** , abyste se ujistili, že ve vašem kódu nejsou žádné chyby. Pokud se zobrazí chyba týkající se `ic_launcher` ikony, odeberte následující příkaz ze souboru souboru AndroidManifest. XML: 
 
     ```
         android:icon="@mipmap/ic_launcher"
     ```
-14. Ujistěte se, že máte virtuální zařízení pro spuštění aplikace. Pokud ho nemáte, přidejte jej takto:
+14. Ujistěte se, že máte virtuální zařízení pro spuštění aplikace. Pokud žádný nemáte, přidejte ho následujícím způsobem:
     1. ![Otevřít Správce zařízení](./media/notification-hubs-android-push-notification-google-fcm-get-started/open-device-manager.png)
-    2. ![Vytvoření virtuálního zařízení](./media/notification-hubs-android-push-notification-google-fcm-get-started/your-virtual-devices.PNG)
+    2. ![Vytvořit virtuální zařízení](./media/notification-hubs-android-push-notification-google-fcm-get-started/your-virtual-devices.PNG)
 
-15. Spusťte aplikaci na vybraném zařízení a ověřte, zda se úspěšně zaregistruje v centru.
+15. Spusťte aplikaci na vybraném zařízení a ověřte, že se do centra úspěšně zaregistruje.
 
     > [!NOTE]
-    > Registrace může selhat během `onTokenRefresh()` počátečního spuštění, dokud není volána metoda služby ID instance. Obnovení by mělo zahájit úspěšnou registraci v centru oznámení.
+    > Při počátečním spuštění může být registrace neúspěšná `onTokenRefresh()` , dokud nebude volána metoda služby ID instance. Obnovení by mělo zahájit úspěšnou registraci v centru oznámení.
 
     ![Registrace zařízení byla úspěšná.](./media/notification-hubs-android-push-notification-google-fcm-get-started/device-registration.png)
 
 ## <a name="test-send-notification-from-the-notification-hub"></a>Odeslání zkušebního oznámení z centra oznámení
 
-Nabízená oznámení z [webu Azure Portal] můžete odesílat následujícím postupem:
+Nabízená oznámení můžete odesílat z [Azure Portal] provedením následujících kroků:
 
-1. Na webu Azure Portal na stránce Centrum oznámení pro vaše centrum vyberte **testovat odeslání** v části Poradce **při potížích.**
+1. V Azure Portal na stránce Centra oznámení pro vaše centrum vyberte v části **Poradce při potížích** možnost **test Send** .
 3. V položce **Platformy** vyberte **Android**.
-4. Vyberte **Poslat**.  Na zařízení Android se zatím nezobrazí oznámení, protože jste na něm mobilní aplikaci nespouštěli. Po spuštění mobilní aplikace znovu zosakejte klepnutím na tlačítko **Odeslat,** aby se zoatožně zobrazovala zpráva s oznámením.
+4. Vyberte **Poslat**.  Na zařízení s Androidem se ještě nezobrazuje oznámení, protože jste na něm nespouštěli mobilní aplikaci. Po spuštění mobilní aplikace znovu vyberte tlačítko **Odeslat** a zobrazí se zpráva s oznámením.
 5. Výsledek operace si můžete prohlédnout v seznamu dole v okně.
 
     ![Azure Notification Hubs – testovací odeslání](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-hubs-test-send.png)
-6. Na zařízení se zobrazí oznámení. 
+6. Na zařízení se zobrazí zpráva s oznámením. 
 
-    ![Oznamovací zpráva na zařízení](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-on-device.png)
+    ![Zpráva oznámení na zařízení](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-on-device.png)
     
 
 [!INCLUDE [notification-hubs-sending-notifications-from-the-portal](../../includes/notification-hubs-sending-notifications-from-the-portal.md)]
 
-### <a name="run-the-mobile-app-on-emulator"></a>Spuštění mobilní aplikace v emulátoru
-Před testováním nabízených oznámení uvnitř emulátoru se ujistěte, že obrázek emulátoru podporuje úroveň rozhraní Google API, kterou jste pro aplikaci zvolili. Pokud obrázek nepodporuje nativní rozhraní API Google, může se stát, že se vám výjimka **služba\_není\_k dispozici.**
+### <a name="run-the-mobile-app-on-emulator"></a>Spustit mobilní aplikaci na emulátoru
+Než otestujete nabízená oznámení v emulátoru, ujistěte se, že vaše image emulátoru podporuje úroveň rozhraní Google API, kterou jste zvolili pro vaši aplikaci. Pokud vaše image nepodporuje nativní rozhraní Google API, může být **\_\_služba nedostupná** výjimka.
 
-Také se ujistěte, že jste přidali svůj účet Google do spuštěnée emulátoru v části**Účty** **Nastavení** > . V opačném případě může mít pokusy o registraci u fcm způsobit výjimku **OVĚŘENÍ\_SE NEZDAŘILO.**
+Také se ujistěte, že jste do svého spuštěného emulátoru v části **Nastavení** > **účty**přidali účet Google. V opačném případě se můžou vaše pokusy o registraci v FCM způsobit výjimku **ověřování\_** .
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste použili Firebase Cloud Messaging k vysílání oznámení do všech zařízení Android, které byly registrovány ve službě. Pokud se chcete naučit posílat nabízená oznámení jenom určitým zařízením, pokračujte následujícím kurzem:
+V tomto kurzu jste použili Firebase Cloud Messaging pro vysílání oznámení na všechna zařízení s Androidem, která byla zaregistrovaná ve službě. Pokud se chcete naučit posílat nabízená oznámení jenom určitým zařízením, pokračujte následujícím kurzem:
 
 > [!div class="nextstepaction"]
->[Kurz: Nabízená oznámení konkrétním zařízením Android](push-notifications-android-specific-devices-firebase-cloud-messaging.md)
+>[Kurz: nabízená oznámení na konkrétní zařízení s Androidem](push-notifications-android-specific-devices-firebase-cloud-messaging.md)
 
 <!-- Images. -->
 

@@ -1,43 +1,43 @@
 ---
-title: Vzorové modely
-description: Uvádí zdroje pro ukázkové modely.
+title: Ukázkové modely
+description: Zobrazuje seznam zdrojů pro ukázkové modely.
 author: florianborn71
 ms.author: flborn
 ms.date: 01/29/2020
 ms.topic: sample
 ms.openlocfilehash: 0c28d36c7934fbbac0ddd11562c8dc237b0360ee
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80679482"
 ---
-# <a name="sample-models"></a>Vzorové modely
+# <a name="sample-models"></a>Ukázkové modely
 
-Tento článek uvádí některé prostředky pro ukázková data, která lze použít k testování služby Vzdálené vykreslování Azure.
+V tomto článku jsou uvedené některé prostředky pro ukázková data, která se dají použít k testování služby Azure Remote rendering.
 
-## <a name="built-in-sample-model"></a>Vestavěný ukázkový model
+## <a name="built-in-sample-model"></a>Vestavěný Vzorový model
 
-Poskytujeme vestavěný ukázkový model, který lze vždy načíst pomocí adresy URL **builtin://Engine**
+Poskytujeme vestavěný Vzorový model, který se dá vždycky načíst pomocí adresy URL **Builtin://Engine** .
 
 ![Vzorový model](./media/sample-model.png "Vzorový model")
 
 Statistika modelu:
 
-| Name (Název) | Hodnota |
+| Název | Hodnota |
 |-----------|:-----------|
-| [Požadovaná velikost virtuálního počítače](../how-tos/session-rest-api.md#create-a-session) | Standardní |
-| Počet trojúhelníků | 18,7 milionu |
+| [Požadovaná velikost virtuálního počítače](../how-tos/session-rest-api.md#create-a-session) | standardní |
+| Počet trojúhelníků | 18 700 000 |
 | Počet pohyblivých částí | 2073 |
 | Počet materiálů | 94 |
 
-## <a name="third-party-data"></a>Údaje třetích stran
+## <a name="third-party-data"></a>Data třetích stran
 
-Skupina Khronos udržuje sadu vzorových modelů GLTF pro testování. ARR podporuje formát glTF jak v textu (*.gltf*) tak v binárním (*.glb*) formě. Doporučujeme používat modely PBR pro dosažení nejlepších vizuálních výsledků:
+Skupina Khronos udržuje sadu vzorových modelů glTF pro testování. ARR podporuje formát glTF jak v textu (*. glTF*), tak ve formě Binary (*. glb*). Pro nejlepší vizuální výsledky doporučujeme použít modely PBR:
 
-* [glTF Ukázkové modely](https://github.com/KhronosGroup/glTF-Sample-Models)
+* [Ukázkové modely glTF](https://github.com/KhronosGroup/glTF-Sample-Models)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Úvodní příručka: Vykreslení modelu pomocí Unity](../quickstarts/render-model.md)
-* [Úvodní příručka: Převod modelu pro vykreslování](../quickstarts/convert-model.md)
+* [Rychlý Start: vykreslení modelu pomocí Unity](../quickstarts/render-model.md)
+* [Rychlý Start: převod modelu pro vykreslování](../quickstarts/convert-model.md)

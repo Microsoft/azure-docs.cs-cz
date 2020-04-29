@@ -1,38 +1,38 @@
 ---
-title: Vykreslení osnovy
-description: Vysvětluje, jak provést vykreslování osnovy výběru
+title: Vykreslování obrysů
+description: Vysvětluje, jak provést vykreslení osnovy výběru.
 author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 8b52dbe8cd12e51c42677ce37acbd57ad551ec50
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680827"
 ---
-# <a name="outline-rendering"></a>Vykreslení osnovy
+# <a name="outline-rendering"></a>Vykreslování obrysů
 
-Vybrané objekty lze vizuálně zvýraznit přidáním vykreslování osnovy prostřednictvím [komponenty Přepsání hierarchického stavu](../../overview/features/override-hierarchical-state.md). Tato kapitola vysvětluje, jak se mění globální parametry pro vykreslování osnovy prostřednictvím klientského rozhraní API.
+Vybrané objekty lze zvýraznit vizuálně přidáním vykreslování osnovy prostřednictvím [komponenty pro přepsání hierarchického stavu](../../overview/features/override-hierarchical-state.md). V této kapitole se dozvíte, jak se globální parametry pro vykreslování osnovy mění prostřednictvím rozhraní API klienta.
 
-Vlastnosti osnovy jsou globální nastavení. Všechny objekty, které používají vykreslování osnovy, budou používat stejné nastavení – není možné použít barvu obrysu pro každý objekt.
+Vlastnosti obrysu jsou globální nastavení. Všechny objekty, které používají vykreslování osnovy, budou používat stejné nastavení – není možné použít barvu obrysu pro jednotlivé objekty.
 
 ## <a name="parameters-for-outlinesettings"></a>Parametry pro`OutlineSettings`
 
-Třída `OutlineSettings` obsahuje nastavení související s vlastnostmi globálního obrysu. Poskytuje následující členy:
+Třída `OutlineSettings` obsahuje nastavení týkající se globálních vlastností osnovy. Zpřístupňuje následující členy:
 
 | Parametr      | Typ    | Popis                                             |
 |----------------|---------|---------------------------------------------------------|
-| `Color`          | Barva4Ub | Barva, která se používá pro kreslení obrysu. Alfa část je ignorována.         |
-| `PulseRateHz`    | float   | Rychlost, s jakou obrys osciluje za sekundu|
-| `PulseIntensity` | float   | Intenzita efektu obrysového pulzu. Musí být mezi 0,0 pro žádné pulzování a 1,0 pro plné pulzování. Intenzita implicitně nastaví minimální krytí `MinOpacity = 1.0 - PulseIntensity`osnovy jako . |
+| `Color`          | Color4Ub | Barva, která se používá k vykreslování obrysu. Část alfa je ignorována.         |
+| `PulseRateHz`    | float   | Míra kolísání obrysu za sekundu|
+| `PulseIntensity` | float   | Intenzita efektu obrysového impulsu Musí být v rozmezí od 0,0 do žádného pohonu a 1,0 pro plný pohon. Intenzita implicitně nastaví minimální neprůhlednost obrysu jako `MinOpacity = 1.0 - PulseIntensity`. |
 
-![Obrysy](./media/outlines.png) Efekt změny `color` parametru ze žluté (vlevo) na purpurovou (uprostřed) a `pulseIntensity` z 0 na 0,8 (vpravo).
+![Popisuje](./media/outlines.png) účinek změny `color` parametru ze žluté (vlevo) na purpurové (střed) a `pulseIntensity` od 0 do 0,8 (vpravo).
 
 ## <a name="example"></a>Příklad
 
-Následující kód ukazuje příklad pro nastavení parametrů osnovy prostřednictvím rozhraní API:
+Následující kód ukazuje příklad nastavení parametrů osnovy prostřednictvím rozhraní API:
 
 ``` cs
 void SetOutlineParameters(AzureSession session)
@@ -46,8 +46,8 @@ void SetOutlineParameters(AzureSession session)
 
 ## <a name="performance"></a>Výkon
 
-Vykreslování osnovy může mít významný vliv na výkon vykreslování. Tento dopad se liší v závislosti na prostorovém vztahu prostoru obrazovky mezi vybranými a nevybranými objekty pro daný snímek.
+Vykreslování osnovy může mít významný dopad na výkon vykreslování. Tento dopad se liší v závislosti na adresním vztahu na úrovni obrazovky mezi vybranými a nevybranými objekty pro daný snímek.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Součást přepsání hierarchického stavu](../../overview/features/override-hierarchical-state.md)
+* [Součást přepisu hierarchického stavu](../../overview/features/override-hierarchical-state.md)

@@ -16,10 +16,10 @@ ms.date: 04/02/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a9fa2b596492a14c06f5bfcb9a3ad74f54c54fb3
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80668997"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-frontify"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Frontify
@@ -32,7 +32,7 @@ V tomto kurzu se dozvíte, jak integrovat Frontify s Azure Active Directory (Azu
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

@@ -1,6 +1,6 @@
 ---
-title: Kurz – ukázka aplikace asynchronní ho asynchronního java api api s kanálem změn
-description: Tento kurz vás provede jednoduchou aplikací java rozhraní SQL API, která vkládá dokumenty do kontejneru Azure Cosmos DB při zachování materializovaného zobrazení kontejneru pomocí kanálu změn.
+title: Kurz – ukázka komplexní asynchronní aplikace Java SQL API pomocí kanálu změn
+description: Tento kurz vás provede jednoduchou aplikací Java SQL API, která vloží dokumenty do kontejneru Azure Cosmos DB a současně zachovává materializované zobrazení kontejneru pomocí změny kanálu.
 author: anfeldma
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -9,21 +9,21 @@ ms.topic: tutorial
 ms.date: 04/01/2020
 ms.author: anfeldma
 ms.openlocfilehash: 5eab523dde2a13a85b0c8ff5bcbb3ecb5912e78e
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80586698"
 ---
-# <a name="tutorial---an-end-to-end-async-java-sql-api-application-sample-with-change-feed"></a>Kurz – ukázka aplikace asynchronní ho asynchronního java api api s kanálem změn
+# <a name="tutorial---an-end-to-end-async-java-sql-api-application-sample-with-change-feed"></a>Kurz – ukázka komplexní asynchronní aplikace Java SQL API pomocí kanálu změn
 
-Tento výukový průvodce vás provede jednoduchou aplikací java sql api, která vkládá dokumenty do kontejneru Azure Cosmos DB při zachování materializovaného zobrazení kontejneru pomocí kanálu změn.
+Tento kurz vás provede jednoduchou aplikací Java SQL API, která vloží dokumenty do kontejneru Azure Cosmos DB a současně zachovává materializované zobrazení kontejneru pomocí změny kanálu.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Osobní počítač
 
-* Identifikátor URI a klíč pro váš účet Azure Cosmos DB
+* Identifikátor URI a klíč pro váš Azure Cosmos DB účet
 
 * Maven
 
@@ -31,23 +31,23 @@ Tento výukový průvodce vás provede jednoduchou aplikací java sql api, kter�
 
 ## <a name="background"></a>Pozadí
 
-Kanál změn Azure Cosmos DB poskytuje rozhraní řízené událostmi, které aktivuje akce v reakci na vložení dokumentu. To má mnoho využití. Například v aplikacích, které jsou čtení a zápis těžký, hlavní použití kanálu změn je vytvořit v reálném čase **materializované zobrazení** kontejneru, jak je ingestování dokumentů. Kontejner materializovaného zobrazení bude obsahovat stejná data, ale rozdělena na oddíly pro efektivní čtení, takže aplikace čtení i zápis efektivní.
+Kanál změny Azure Cosmos DB poskytuje rozhraní řízené událostmi, které aktivuje akce v reakci na vložení dokumentu. Má spoustu použití. Například v aplikacích, které jsou pro čtení i zápis těžké, je hlavní použití kanálu změn v reálném čase vytvořit **materializované zobrazení** kontejneru v reálném čase, protože slouží k ingestování dokumentů. Kontejner materializované zobrazení bude obsahovat stejná data, ale rozdělená na oddíly pro efektivní čtení, takže aplikace bude efektivně číst i zapisovat.
 
-O práci na správě událostí kanálu změn se do značné míry postará knihovna kanálu změn integrovaná do sady SDK. Tato knihovna je dostatečně výkonný distribuovat události kanálu změn mezi více pracovníků, pokud je to žádoucí. Jediné, co musíte udělat, je poskytnout knihovně kanálu změn zpětné volání.
+Práce se správou událostí kanálu změn je převážně postará o knihovnu, která je integrovaná do sady SDK nástroje Change feed Processor. Tato knihovna je dostatečně výkonná k distribuci událostí kanálu změn mezi několik pracovních procesů, pokud je to žádoucí. Vše, co musíte udělat, je poskytnout zpětné volání knihovny změn kanálu.
 
-Tento jednoduchý příklad znázorní knihovnu zpracovatele kanálu změn s jedním pracovníkem, který vytváří a maže dokumenty z materializovaného zobrazení.
+Tento jednoduchý příklad znázorňuje knihovnu Change feed Processor s jedním pracovním procesem vytváření a odstraňování dokumentů ze materializované zobrazení.
 
 ## <a name="setup"></a>Nastavení
 
-Pokud jste tak ještě neučinili, naklonovat příklad aplikace repo:
+Pokud jste to ještě neudělali, naklonujte úložiště ukázkové aplikace:
 
 ```bash
 git clone https://github.com/Azure-Samples/azure-cosmos-java-sql-app-example.git
 ```
 
-> Máte možnost pracovat přes tento rychlý start s Java SDK 4.0 nebo Java SDK 3.7.0. **Pokud byste chtěli použít Java SDK 3.7.0, ```git checkout SDK3.7.0```v typu terminálu **. V opačném případě ```master``` zůstaňte na větvi, která je výchozí java sdchartou 4.0.
+> V tomto rychlém startu jste si zvolili, abyste mohli pracovat s Java SDK 4,0 nebo Java SDK 3.7.0. Chcete **-li v typu ```git checkout SDK3.7.0```terminálu použít sadu Java SDK 3.7.0, ** V opačném případě zůstaňte ve ```master``` větvi, kde se použije sada Java SDK 4,0.
 
-Otevřete terminál v adresáři úložiště. Vytvoření aplikace spuštěním
+Otevřete terminál v adresáři úložiště. Sestavte aplikaci spuštěním
 
 ```bash
 mvn clean package
@@ -55,7 +55,7 @@ mvn clean package
 
 ## <a name="walkthrough"></a>Názorný postup
 
-1. Jako první kontrolu byste měli mít účet Azure Cosmos DB. Otevřete **portál Azure Ve** svém prohlížeči, přejděte na svůj účet Azure Cosmos DB a v levém podokně přejděte na **Průzkumníka dat**.
+1. Při první kontrole byste měli mít účet Azure Cosmos DB. V prohlížeči otevřete **portál Azure** , přejděte na účet Azure Cosmos DB a v levém podokně přejděte na **Průzkumník dat**.
 
     ![Účet Azure Cosmos DB](media/create-sql-api-java-changefeed/cosmos_account_empty.JPG)
 
@@ -65,32 +65,32 @@ mvn clean package
     mvn exec:java -Dexec.mainClass="com.azure.cosmos.workedappexample.SampleGroceryStore" -DACCOUNT_HOST="your-account-uri" -DACCOUNT_KEY="your-account-key" -Dexec.cleanupDaemonThreads=false
     ```
 
-1. Stiskněte klávesu ENTER, když vidíte
+1. Po zobrazení zobrazit stiskněte klávesu ENTER
 
     ```bash
     Press enter to create the grocery store inventory system...
     ```
 
-    pak se vraťte do Průzkumníka dat portálu Azure Portal ve vašem prohlížeči. Zobrazí databáze **GroceryStoreDatabase** byla přidána se třemi prázdnými kontejnery: 
+    pak se vraťte na portál Azure Portal Průzkumník dat v prohlížeči. Uvidíte, že se do databáze **GroceryStoreDatabase** přidalo tři prázdné kontejnery: 
 
-    * **InventoryContainer** - skladový záznam pro náš příklad obchodu ```id``` s potravinami, rozdělený na položku, která je UUID.
-    * **InventoryContainer-pktype** - Materializované zobrazení záznamu zásob, optimalizované pro dotazy na položku```type```
-    * **InventoryContainer-leases** – kontejner zapůjčení je vždy potřeba pro kanál změn; pronajímá sledovat průběh aplikace při čtení kanálu změn.
-
-
-    ![Prázdné nádoby](media/create-sql-api-java-changefeed/cosmos_account_resources_lease_empty.JPG)
+    * **InventoryContainer** – záznam inventáře pro náš příklad PRODEJNOSTI, rozdělený na položku ```id``` , která je identifikátorem UUID.
+    * **InventoryContainer-pktype** – materializované zobrazení záznamu inventáře optimalizovaného pro dotazy nad položkou```type```
+    * **InventoryContainer – zapůjčení** – kontejner zapůjčení je vždycky potřebný pro kanál změn; zapůjčení sleduje pokrok aplikace při čtení kanálu změn.
 
 
-1. V terminálu byste nyní měli vidět výzvu
+    ![Prázdné kontejnery](media/create-sql-api-java-changefeed/cosmos_account_resources_lease_empty.JPG)
+
+
+1. V terminálu by se teď měla zobrazit výzva.
 
     ```bash
     Press enter to start creating the materialized view...
     ```
 
-    Stiskněte klávesu ENTER. Nyní se spustí následující blok kódu a inicializuje procesor kanálu změn v jiném vlákně: 
+    Stiskněte klávesu ENTER. Nyní následující blok kódu provede a inicializuje procesor změn kanálu v jiném vlákně: 
 
 
-    **Java SDK 4.0**
+    **Java SDK 4,0**
     ```java
     changeFeedProcessorInstance = getChangeFeedProcessor("SampleHost_1", feedContainer, leaseContainer);
     changeFeedProcessorInstance.start()
@@ -116,15 +116,15 @@ mvn clean package
     while (!isProcessorRunning.get()); //Wait for Change Feed processor start    
     ```
 
-    ```"SampleHost_1"```je název pracovníka procesoru kanálu změn. ```changeFeedProcessorInstance.start()```je to, co skutečně spustí change feed procesor.
+    ```"SampleHost_1"```je název pracovníka procesoru změny kanálu. ```changeFeedProcessorInstance.start()```je to, co se ve skutečnosti spustí procesor Change feed.
 
-    Vraťte se do Průzkumníka dat portálu Azure Portal ve svém prohlížeči. V kontejneru **InventoryContainer-leases** klikněte na **položky** a zomenšete jeho obsah. Uvidíte, že změnit feed procesor naplnil kontejner zapůjčení, tj. ```SampleHost_1``` **InventoryContainer**
+    V prohlížeči se vraťte na Průzkumník dat webu Azure Portal. V kontejneru **InventoryContainer-Leases** klikněte na **položky** , abyste viděli jeho obsah. Uvidíte, že v procesoru pro změnu kanálu se naplní kontejner zapůjčení, tj. procesor přiřadil ```SampleHost_1``` pracovnímu procesu zapůjčení na některých oddílech **InventoryContainer**.
 
     ![Zapůjčení](media/create-sql-api-java-changefeed/cosmos_leases.JPG)
 
-1. Stiskněte tlačítko enter znovu v terminálu. Tím se spustí 10 dokumentů, které mají být vloženy do **InventoryContainer**. Každé vložení dokumentu se zobrazí v kanálu změn jako JSON; následující kód zpětného volání zpracovává tyto události zrcadlením dokumentů JSON do materializovaného zobrazení:
+1. V terminálu znovu stiskněte klávesu ENTER. Tím se spustí 10 dokumentů, které se budou vkládat do **InventoryContainer**. Každé vložení dokumentu se zobrazí v kanálu změn jako JSON; Následující kód zpětného volání zpracovává tyto události zrcadlením dokumentů JSON do materializované zobrazení:
 
-    **Java SDK 4.0**
+    **Java SDK 4,0**
     ```java
     public static ChangeFeedProcessor getChangeFeedProcessor(String hostName, CosmosAsyncContainer feedContainer, CosmosAsyncContainer leaseContainer) {
         ChangeFeedProcessorOptions cfOptions = new ChangeFeedProcessorOptions();
@@ -176,21 +176,21 @@ mvn clean package
     }    
     ```
 
-1. Nechte kód spustit 5-10sec. Pak se vraťte do Průzkumníka dat portálu Azure Portal a přejděte na **InventoryContainer > položky**. Měli byste vidět, že položky jsou vkládány do kontejneru zásob; poznamenejte```id```si klíč oddílu ( ).
+1. Povolí spuštění kódu 5 – 10sec. Pak se vraťte na portál Azure Portal Průzkumník dat a přejděte k **položkám > InventoryContainer**. Měli byste vidět, že se položky vkládají do kontejneru inventáře; Poznamenejte si klíč oddílu```id```().
 
-    ![Nádoba na krmivo](media/create-sql-api-java-changefeed/cosmos_items.JPG)
+    ![Kontejner informačního kanálu](media/create-sql-api-java-changefeed/cosmos_items.JPG)
 
-1. Teď v Průzkumníku dat přejděte na **InventoryContainer-pktype > položky**. Toto je materializované zobrazení - položky v tomto kontejneru zrcadlí **InventoryContainer,** protože byly vloženy programově pomocí kanálu změn. Poznamenejte```type```si klíč oddílu ( ). Takže toto zhmotněné zobrazení je ```type```optimalizovánpro filtrování dotazů přes , což ```id```by bylo neefektivní na **InventoryContainer,** protože je rozdělenna na .
+1. Nyní v Průzkumník dat přejděte na **položku > položky InventoryContainer-pktype**. Toto je materializované zobrazení – položky v tomto kontejneru zrcadlení **InventoryContainer** , protože byly vloženy programově pomocí změny kanálu. Poznamenejte si klíč oddílu```type```(). Toto materializované zobrazení je optimalizováno pro filtrování dotazů ```type```, které by bylo pro **InventoryContainer** neefektivní, protože je rozdělené na ```id```oddíly.
 
     ![Materializované zobrazení](media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG)
 
-1. Odstraníme dokument z **InventoryContainer** a **InventoryContainer-pktype** pomocí jediného ```upsertItem()``` volání. Nejdřív se podívejte na Průzkumníka dat portálu Azure Portal. Odstraníme dokument, pro ```/type == "plums"```který ; je obklopen červeně pod
+1. K odstranění dokumentu z obou **InventoryContainer** a **InventoryContainer-pktype** se používá pouze jedno ```upsertItem()``` volání. Nejdřív se podíváme na portál Azure Portal Průzkumník dat. Odstraníme dokument, pro který ```/type == "plums"```; je encircled červeně pod
 
     ![Materializované zobrazení](media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG)
 
-    Dalším klepnutím na klávesu Enter zavoláte funkci ```deleteDocument()``` v ukázkovém kódu. Tato funkce, zobrazená níže, upserts novou ```/ttl == 5```verzi dokumentu s , který nastaví dokument Time-To-Live (TTL) na 5sec. 
+    Stiskněte znovu Enter pro volání funkce ```deleteDocument()``` v ukázkovém kódu. Tato funkce, která je zobrazena níže, upsertuje novou verzi dokumentu s ```/ttl == 5```hodnotou, která nastaví hodnotu TTL (Time to Live) do 5sec. 
     
-    **Java SDK 4.0**
+    **Java SDK 4,0**
     ```java
     public static void deleteDocument() {
 
@@ -246,10 +246,10 @@ mvn clean package
     }    
     ```
 
-    Kanál změn ```feedPollDelay``` je nastaven na 100 ms; proto Change Feed reaguje na tuto aktualizaci ```updateInventoryTypeMaterializedView()``` téměř okamžitě a volání jsou uvedena výše. Toto poslední volání funkce bude upsert nový dokument s TTL 5sec do **InventoryContainer-pktype**.
+    Kanál ```feedPollDelay``` změn je nastaven na 100 MS; Proto kanál změn reaguje na tuto aktualizaci skoro okamžitě a volání ```updateInventoryTypeMaterializedView()``` uvedená výše. Toto poslední volání funkce bude Upsert nový dokument s hodnotou TTL 5sec do **InventoryContainer-pktype**.
 
-    Efekt je, že po asi 5 sekund, dokument vyprší a budou odstraněny z obou kontejnerů.
+    To platí, že po asi 5 sekundách vyprší platnost dokumentu a odstraní se z obou kontejnerů.
 
-    Tento postup je nezbytný, protože kanál změn vydává pouze události při vkládání nebo aktualizaci položky, nikoli při odstraňování položek.
+    Tento postup je nezbytný, protože Změna kanálu vydává události jenom při vkládání nebo aktualizaci položek, nikoli při odstraňování položek.
 
-1. Dalším stisknutím klávesy zadejte program a vyčistěte jeho zdroje.
+1. Stisknutím klávesy ENTER ukončíte program a vyčistíte jeho prostředky.

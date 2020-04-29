@@ -1,76 +1,76 @@
 ---
-title: Lights
+title: Světla
 description: Popis a vlastnosti zdroje světla
 author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.openlocfilehash: 0a4a226af1347b5302b0c3964889fc072f89e7f8
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680944"
 ---
-# <a name="lights"></a>Lights
+# <a name="lights"></a>Světla
 
-Ve výchozím nastavení jsou dálkově vykreslené objekty osvětleny pomocí [nebeského světla](sky.md). Pro většinu aplikací je to již dostačující, ale můžete přidat další světelné zdroje do scény.
+Ve výchozím nastavení jsou vzdáleně vykreslované objekty osvětleny pomocí [nebe Light](sky.md). Pro většinu aplikací to již stačí, ale do scény můžete přidat další zdroje světla.
 
 > [!IMPORTANT]
-> Světelné zdroje ovlivňují pouze [materiály PBR.](pbr-materials.md) [Barevné materiály](color-materials.md) se vždy objevují zcela jasné.
+> Zdroje světla mají vliv pouze na [PBR materiály](pbr-materials.md) . [Barevné materiály](color-materials.md) se vždy zobrazují úplně jasně.
 
 > [!NOTE]
-> Vrhat stíny není aktuálně podporováno. Vzdálené vykreslování Azure je optimalizované tak, aby vykreslovalo obrovské množství geometrie, a v případě potřeby využívá více gpu. Tradiční přístupy pro vrhání stínů nefungují dobře v těchto scénářích.
+> Stíny přetypování se v tuto chvíli nepodporují. Vzdálené vykreslování Azure je optimalizované pro vykreslování obrovských objemů geometrie a v případě potřeby využívá více GPU. Tradiční přístupy k přetypování stínů v takových scénářích nefungují dobře.
 
-## <a name="common-light-component-properties"></a>Společné vlastnosti lehkých součástí
+## <a name="common-light-component-properties"></a>Obecné vlastnosti komponenty Light
 
-Všechny typy světel jsou odvozeny z abstraktní základní třídy `LightComponent` a sdílejí tyto vlastnosti:
+Všechny typy světla jsou odvozeny od abstraktní základní `LightComponent` třídy a sdílejí tyto vlastnosti:
 
-* **Barva:** Barva světla v [gama prostoru](https://en.wikipedia.org/wiki/SRGB). Alfa je ignorována.
+* **Barva:** Barva světla v [prostoru hodnoty gamma](https://en.wikipedia.org/wiki/SRGB) Hodnota alfa je ignorována.
 
-* **Intenzita:** Jas světla. U bodových a bodových světel intenzita také definuje, jak daleko světlo svítí.
+* **Intenzita:** Jas světla. V případě bodových a bodových světel intenzita také definuje, jak daleko světla vzzáří.
 
-## <a name="point-light"></a>Bodové světlo
+## <a name="point-light"></a>Bodová světla
 
-V Azure Remote `PointLightComponent` Rendering může nejen vyzařovat světlo z jednoho bodu, ale také z malé koule nebo malé trubice, aby simuloval měkčí světelné zdroje.
+Ve vzdáleném vykreslování Azure `PointLightComponent` nedokáže jenom vysílat světlo z jediného bodu, ale také z malé koule nebo malé trubice pro simulaci měkkých zdrojů světla.
 
 ### <a name="pointlightcomponent-properties"></a>Vlastnosti PointLightComponent
 
-* **Poloměr:** Výchozí poloměr je nula, v takovém případě světlo působí jako bodové světlo. Pokud je poloměr větší než nula, působí jako sférický zdroj světla, který mění vzhled odlesků.
+* **Poloměr:** Výchozí poloměr je nula. v takovém případě se světlo chová jako bodová svítilna. Pokud je poloměr větší než nula, funguje jako kulové zdroj světla, který mění vzhled odlesků.
 
-* **Délka:** Pokud `Length` jsou `Radius` obě a jsou nenulové, světlo funguje jako trubice světlo. To lze použít k simulaci neonových trubek.
+* **Délka:** Pokud jsou `Length` a `Radius` jsou nenulové, světlo funguje jako kapilární světlo. Dá se použít k simulaci Neon zkumavek.
 
-* **ÚtlumCutoff:** Je-li ponecháno na (0,0) útlum světla `Intensity`závisí pouze na jeho . Můžete však zadat vlastní minimální/maximální vzdálenosti, u kterých je intenzita světla lineárně zmenšena na 0. Tuto funkci lze použít k vynucení menšího rozsahu vlivu určitého světla.
+* **AttenuationCutoff:** Pokud zbývá (0, 0), oddálení závisí jenom na jeho `Intensity`. Můžete ale zadat vlastní minimální a maximální vzdálenosti, po které se intenzita světla škáluje lineárně dolů na 0. Tato funkce se dá použít k vykonání menšího rozsahu vlivu na konkrétní světlo.
 
-* **ProjectedCubemap:** Pokud je nastavena na platnou [mapu krychle](../../concepts/textures.md), textura se promítne na okolní geometrii světla. Barva krychle je modulována barvou světla.
+* **ProjectedCubemap:** Pokud je nastavena na platný [cubemap](../../concepts/textures.md), textura je promítnuta do okolní geometrie světla. Barva cubemap je upravována barvou světla.
 
-## <a name="spot-light"></a>Bodové světlo
+## <a name="spot-light"></a>Bodový světlo
 
-Je `SpotLightComponent` `PointLightComponent` podobný, ale světlo je omezen na tvar kužele. Orientace kužele je definována *zápornou osou z entity vlastníka*.
+`SpotLightComponent` Je podobná, `PointLightComponent` ale světlo se omezuje na tvar kužele. Orientace kuželu je definována na základě *záporné osy z entity vlastníka*.
 
-### <a name="spotlightcomponent-properties"></a>Vlastnosti komponenty SpotLightComponent
+### <a name="spotlightcomponent-properties"></a>Vlastnosti SpotLightComponent
 
-* **Poloměr:** Stejné jako `PointLightComponent`u .
+* **Poloměr:** Stejné jako pro `PointLightComponent`.
 
-* **SpotAngleDeg:** Tento interval definuje vnitřní a vnější úhel kužele měřený ve stupních. Vše ve vnitřním úhlu je osvětleno plným jasem. Pokles se aplikuje směrem k vnějšímu úhlu, který generuje efekt podobný polostínu.
+* **SpotAngleDeg:** Tento interval definuje vnitřní a vnější úhel kužele (měřeno ve stupních). Vše v rámci vnitřního úhlu je osvětlené s úplným jasem. U vnějšího úhlu, který generuje Penumbra podobný efekt, se intenzita.
 
-* **FalloffExponent:** Definuje, jak ostře přechody poklesu mezi vnitřním a vnějším úhlem kužele. Vyšší hodnota má za následek ostřejší přechod. Výchozí hodnota 1.0 má za následek lineární přechod.
+* **FalloffExponent:** Definuje, jak prudce prochází intenzita dolů mezi vnitřním a vnějším kuželovým úhlem. Vyšší hodnota má za následek ostřejší přechod. Výchozí hodnota 1,0 má za následek lineární přechod.
 
-* **ÚtlumCutoff:** Stejné jako `PointLightComponent`u .
+* **AttenuationCutoff:** Stejné jako pro `PointLightComponent`.
 
-* **Promítnuté2dTextura:** Pokud je nastavena na platnou [2D texturu](../../concepts/textures.md), obraz se promítne na geometrii, na které světlo svítí. Barva textury je modulována barvou světla.
+* **Projected2dTexture:** Pokud je nastavena na platnou [2D texturu](../../concepts/textures.md), je obrázek promítnut na geometrii, na které světlo světla pracuje. Barva textury je upravována barvou světla.
 
 ## <a name="directional-light"></a>Směrové světlo
 
-Simuluje `DirectionalLightComponent` světelný zdroj, který je nekonečně daleko. Světlo svítí do směru *záporné osy z vlastníka .* Pozice entity je ignorována.
+`DirectionalLightComponent` Simuluje nekonečně daleko nekonečný zdroj světla. Světlo se rozsvítí do směru *záporné osy z entity Owner*. Pozice entity je ignorována.
 
 Neexistují žádné další vlastnosti.
 
 ## <a name="performance-considerations"></a>Otázky výkonu
 
-Světelné zdroje mají významný vliv na výkon vykreslování. Používejte je opatrně a pouze v případě, že to aplikace vyžaduje. Jakékoli statické globální světelné podmínky, včetně statické směrové součásti, lze dosáhnout [pomocí vlastní textury oblohy](sky.md)bez dodatečných nákladů na vykreslování.
+Zdroje světla mají významný dopad na výkon vykreslování. Používejte je pečlivě a jenom v případě, že to vyžaduje aplikace. Jakákoli statická globální podmínka osvětlení, včetně statické směrové komponenty, se dá dosáhnout s [vlastní texturou nebe](sky.md)bez dalších nákladů na vykreslování.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Materials](../../concepts/materials.md)
-* [Obloze](sky.md)
+* [Materiály](../../concepts/materials.md)
+* [Cestovní](sky.md)

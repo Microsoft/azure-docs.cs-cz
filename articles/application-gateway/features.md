@@ -1,6 +1,6 @@
 ---
-title: Funkce aplikační brány Azure
-description: Informace o funkcích Azure Application Gateway
+title: Funkce Azure Application Gateway
+description: Přečtěte si o funkcích Azure Application Gateway
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,27 +8,27 @@ ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: victorh
 ms.openlocfilehash: f021eed959ef88a1ef3671e1d0ace8080710c92a
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80810233"
 ---
-# <a name="azure-application-gateway-features"></a>Funkce aplikační brány Azure
+# <a name="azure-application-gateway-features"></a>Funkce Azure Application Gateway
 
 [Azure Application Gateway](overview.md) je nástroj pro vyrovnávání zatížení webového provozu, který umožňuje spravovat provoz do webových aplikací.
 
-![Koncepční brána aplikace](media/overview/figure1-720.png)
+![Application Gateway koncepční](media/overview/figure1-720.png)
 
-Aplikační brána obsahuje následující funkce:
+Application Gateway obsahuje následující funkce:
 
-- [Ukončení ssl (SSL/TLS)](#secure-sockets-layer-ssltls-termination)
+- [Ukončení SSL (Secure Sockets Layer) (SSL/TLS)](#secure-sockets-layer-ssltls-termination)
 - [Automatické škálování](#autoscaling)
 - [Redundance zóny](#zone-redundancy)
-- [Statické VIP](#static-vip)
+- [Statická virtuální IP adresa](#static-vip)
 - [Web Application Firewall (Brána firewall webových aplikací)](#web-application-firewall)
 - [Kontroler Ingress pro AKS](#ingress-controller-for-aks)
-- [Směrování založené na adrese URL](#url-based-routing)
+- [Směrování na základě adresy URL](#url-based-routing)
 - [Hostování několika webů](#multiple-site-hosting)
 - [Přesměrování](#redirection)
 - [Spřažení relací](#session-affinity)
@@ -38,40 +38,40 @@ Aplikační brána obsahuje následující funkce:
 - [Přepsání hlaviček HTTP](#rewrite-http-headers)
 - [Velikosti](#sizing)
 
-## <a name="secure-sockets-layer-ssltls-termination"></a>Ukončení ssl (SSL/TLS)
+## <a name="secure-sockets-layer-ssltls-termination"></a>Ukončení SSL (Secure Sockets Layer) (SSL/TLS)
 
-Aplikační brána podporuje ukončení SSL/TLS v bráně, po kterém přenosy obvykle proudí nešifrované na back-endové servery. Tato funkce webovým serverům umožňuje snížení nákladné režie spojené s šifrováním a dešifrováním. Někdy však nešifrovaná komunikace se servery není přijatelnou volbou. To může být z důvodu požadavků na zabezpečení, požadavky na dodržování předpisů nebo aplikace může přijmout pouze zabezpečené připojení. Pro tyto aplikace podporuje aplikační brána šifrování SSL/TLS od konce.
+Application Gateway podporuje ukončení protokolu SSL/TLS v bráně, po kterém provoz obvykle přechází do back-end serverů. Tato funkce webovým serverům umožňuje snížení nákladné režie spojené s šifrováním a dešifrováním. Někdy ale nešifrovaná komunikace na servery není přijatelnou možností. Důvodem může být to, že požadavky na zabezpečení, požadavky na dodržování předpisů nebo aplikace můžou přijímat jenom zabezpečené připojení. Pro tyto aplikace Aplikační brána podporuje koncové šifrování protokolu SSL/TLS.
 
-Další informace naleznete v [tématu Přehled ukončení SSL a ukončení ssl s aplikační bránou](ssl-overview.md)
+Další informace naleznete v tématu [Přehled ukončení protokolu SSL a koncového šifrování protokolu SSL s Application Gateway](ssl-overview.md)
 
 ## <a name="autoscaling"></a>Automatické škálování
 
-Standard_v2 brány aplikace podporuje automatické škálování a může vertikálně navýšit nebo snížit kapacitu na základě měnících se vzorů zatížení provozu. Automatické škálování také eliminuje nutnost zvolit během zřizování velikost nasazení nebo počet instancí. 
+Application Gateway Standard_v2 podporuje automatické škálování a umožňuje horizontální navýšení nebo snížení kapacity na základě změn schémat zatížení provozu. Automatické škálování také eliminuje nutnost zvolit během zřizování velikost nasazení nebo počet instancí. 
 
-Další informace o funkcích Standard_v2 brány aplikace naleznete v [tématu Automatické škálování v2 skladové položky](application-gateway-autoscaling-zone-redundant.md).
+Další informace o funkcích Application Gateway Standard_v2 najdete v tématu Automatické [škálování v2 SKU](application-gateway-autoscaling-zone-redundant.md).
 
 ## <a name="zone-redundancy"></a>Redundance zóny
 
-Standard_v2 aplikační brány může protábovat více zón dostupnosti, nabízí lepší odolnost proti chybám a odstraňuje potřebu zřídit samostatné aplikační brány v každé zóně.
+Application Gateway Standard_v2 může zahrnovat více Zóny dostupnosti, což nabízí lepší odolnost proti chybám a odstraňuje nutnost zřídit samostatné aplikační brány v každé zóně.
 
-## <a name="static-vip"></a>Statické VIP
+## <a name="static-vip"></a>Statická virtuální IP adresa
 
-Aplikační brána Standard_v2 skladové položky podporuje výhradně statický typ VIP. Tím je zajištěno, že virtuální ip adresy přidružené k bráně aplikace nezmění ani po dobu životnosti brány aplikace.
+SKU služby Application Gateway Standard_v2 podporuje výhradně statický typ VIP. Tím se zajistí, že se virtuální IP adresa přidružená k aplikační bráně nemění ani po dobu života Application Gateway.
 
 ## <a name="web-application-firewall"></a>Web Application Firewall (Brána firewall webových aplikací)
 
-Firewall webových aplikací (WEB Application Firewall) je služba, která poskytuje centralizovanou ochranu webových aplikací před běžnými zneužitími a chybami zabezpečení. WAF je založen na pravidlech ze [základních sad pravidel OWASP (Open Web Application Security Project)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.1 (pouze WAF_v2), 3.0 a 2.2.9. 
+Firewall webových aplikací (WAF) je služba, která poskytuje centralizovanou ochranu webových aplikací před běžným zneužitím a ohrožením zabezpečení. WAF je založená na pravidlech z [OWASP (Open Web Application Security Project) základních sad pravidel](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,1 (jenom WAF_v2), 3,0 a 2.2.9. 
 
-Webové aplikace se čím dál častěji stávají cílem škodlivých útoků, které zneužívají běžně známé chyby zabezpečení. Mezi tyto běžné typy zneužití patří mimo jiné například útoky prostřednictvím injektáže SQL nebo skriptování mezi weby. Předcházet takovým útokům v kódu aplikace může být náročné a může vyžadovat pečlivou údržbu, opravy a monitorování mnoha vrstev topologie aplikace. Centralizovaný firewall webových aplikací značně zjednodušuje správu zabezpečení a nabízí správcům lepší ochranu aplikací před hrozbami neoprávněného vniknutí. Řešení Firewall webových aplikací (WAF) může také rychleji reagovat na ohrožení zabezpečení, protože opravuje známé chyby zabezpečení v centrálním umístění, namísto zabezpečování jednotlivých webových aplikací. Existující aplikační brány lze snadno převést na bránu aplikací s povolenou bránou webových aplikací.
+Webové aplikace se čím dál častěji stávají cílem škodlivých útoků, které zneužívají běžně známé chyby zabezpečení. Mezi tyto běžné typy zneužití patří mimo jiné například útoky prostřednictvím injektáže SQL nebo skriptování mezi weby. Předcházet takovým útokům v kódu aplikace může být náročné a může vyžadovat pečlivou údržbu, opravy a monitorování mnoha vrstev topologie aplikace. Centralizovaný firewall webových aplikací značně zjednodušuje správu zabezpečení a nabízí správcům lepší ochranu aplikací před hrozbami neoprávněného vniknutí. Řešení Firewall webových aplikací (WAF) může také rychleji reagovat na ohrožení zabezpečení, protože opravuje známé chyby zabezpečení v centrálním umístění, namísto zabezpečování jednotlivých webových aplikací. Existující aplikační brány je možné snadno převést na bránu Application Gateway s povoleným firewallem webových aplikací.
 
-Další informace najdete v tématu [Co je brána firewall pro webové aplikace Azure?](../web-application-firewall/overview.md).
+Další informace najdete v tématu [co je firewall webových aplikací Azure?](../web-application-firewall/overview.md).
 
 ## <a name="ingress-controller-for-aks"></a>Kontroler Ingress pro AKS
-Řadič příchozího přenosu dat aplikační brány (AGIC) umožňuje používat aplikační bránu jako příchozí přenos dat pro cluster [služby Azure Kubernetes Service (AKS).](https://azure.microsoft.com/services/kubernetes-service/) 
+AGIC () umožňuje používat Application Gateway jako příchozí přenosy pro cluster [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) . Application Gateway 
 
-Řadič příchozího přenosu dat běží jako pod v rámci clusteru AKS a spotřebovává [Kubernetes Ingress Resources](https://kubernetes.io/docs/concepts/services-networking/ingress/) a převede je na konfiguraci aplikační brány, která umožňuje bráně vyvažování provozu na pody Kubernetes. Řadič příchozího přenosu dat podporuje pouze Standard_v2 aplikační brány a WAF_v2 jednotkách. 
+Kontroler příchozího provozu funguje jako pod clusterem AKS a využívá [Kubernetes prostředky](https://kubernetes.io/docs/concepts/services-networking/ingress/) příchozího přenosu dat a převede je na konfiguraci Application Gateway, která umožňuje bráně vyrovnávat zatížení v Kubernetes luskech. Kontroler příchozího přenosu dat podporuje jenom Application Gateway Standard_v2 a WAF_v2 SKU. 
 
-Další informace naleznete [v tématu Řadič příchozího přenosu dat (AGIC)](ingress-controller-overview.md)aplikační brány .
+Další informace najdete v tématu Application Gateway řadič příchozího přenosu dat [(AGIC)](ingress-controller-overview.md).
 
 ## <a name="url-based-routing"></a>Směrování na základě adresy URL
 
@@ -79,23 +79,23 @@ Směrování na základě cesty URL umožňuje směrovat provoz do fondů back-e
 
 Například žádosti na adresu `http://contoso.com/video/*` se směrují na VideoServerPool a žádosti na adresu `http://contoso.com/images/*` na ImageServerPool. Pokud nevyhovuje žádný vzor cesty, vybere se VychoziFondServeru.
 
-Další informace naleznete v tématu [Přehled směrování na základě cesty URL](url-route-overview.md).
+Další informace najdete v tématu [Přehled směrování na základě cest URL](url-route-overview.md).
 
 ## <a name="multiple-site-hosting"></a>Hostování několika webů
 
-Hostování několika webů umožňuje konfigurovat více než jeden web ve stejné instanci aplikační brány. Tato funkce umožňuje nakonfigurovat efektivnější topologii pro vaše nasazení přidáním až 100 webových serverů do jedné aplikační brány (pro optimální výkon). Každý web se dá přesměrovat na vlastní fond. Aplikační brána může například obsluhovat provoz pro `contoso.com` a `fabrikam.com` ze dvou fondů serverů s názvem ContosoServerPool a FabrikamServerPool.
+Hostování několika webů umožňuje konfigurovat více než jeden web ve stejné instanci aplikační brány. Tato funkce umožňuje nakonfigurovat efektivnější topologii nasazení přidáním až 100 webů do jedné Application Gateway (pro zajištění optimálního výkonu). Každý web se dá přesměrovat na vlastní fond. Aplikační brána může například obsluhovat provoz pro `contoso.com` a `fabrikam.com` ze dvou fondů serverů s názvem ContosoServerPool a FabrikamServerPool.
 
 Žádosti na adresu `http://contoso.com` se směrují na ContosoServerPool a žádosti na adresu `http://fabrikam.com` na FabrikamServerPool.
 
 Podobně je možné ve stejném nasazení aplikační brány hostovat dvě poddomény stejné nadřazené domény. Příklady použití subdomén můžou zahrnovat adresy `http://blog.contoso.com` a `http://app.contoso.com` hostované v jednom nasazení aplikační brány.
 
-Další informace naleznete v [tématu Application Gateway multiple site hosting](multiple-site-overview.md).
+Další informace najdete v tématu [Application Gateway hostování více lokalit](multiple-site-overview.md).
 
 ## <a name="redirection"></a>Přesměrování
 
 Běžným scénářem pro mnoho webových aplikací je podpora automatického přesměrování HTTP na HTTPS, aby se zajistilo, že veškerá komunikace mezi aplikací a jejími uživateli probíhá přes šifrovanou cestu.
 
-V minulosti jste pravděpodobně použili techniky, jako je například vytvoření vyhrazeného fondu, jehož jediným účelem je přesměrovat požadavky, které obdrží v protokolu HTTP na protokol HTTPS. Aplikační brána podporuje možnost přesměrovat provoz na Application Gateway. To zjednodušuje konfiguraci aplikací, optimalizuje využití prostředků a podporuje nové scénáře přesměrování, včetně globálního přesměrování a přesměrování na základě cesty. Podpora přesměrování aplikační brány není omezena na http na samotné přesměrování HTTPS. Jde o obecný mechanismus přesměrování, takže můžete provoz přesměrovat z kteréhokoliv portu a na kterýkoliv port, který definujete pomocí pravidel. Také podporuje přesměrování na externí web.
+V minulosti jste mohli používat techniky, jako je například vytvoření vyhrazeného fondu, jehož jediným účelem je přesměrování požadavků, které přijímá v HTTP na HTTPS. Aplikační brána podporuje možnost přesměrovat provoz na Application Gateway. To zjednodušuje konfiguraci aplikací, optimalizuje využití prostředků a podporuje nové scénáře přesměrování, včetně globálního přesměrování a přesměrování na základě cesty. Podpora přesměrování Application Gateway není omezená jenom na přesměrování HTTP na HTTPS. Jde o obecný mechanismus přesměrování, takže můžete provoz přesměrovat z kteréhokoliv portu a na kterýkoliv port, který definujete pomocí pravidel. Také podporuje přesměrování na externí web.
 
 Podpora přesměrování Application Gateway nabízí následující možnosti:
 
@@ -103,57 +103,57 @@ Podpora přesměrování Application Gateway nabízí následující možnosti:
 - Přesměrování na základě cesty. Tento typ přesměrování umožňuje přesměrování z HTTP na HTTPS jenom v konkrétní oblasti webu, například v oblasti nákupního košíku označené jako `/cart/*`.
 - Přesměrování na externí web.
 
-Další informace naleznete v tématu [Application Gateway redirect overview](redirect-overview.md).
+Další informace najdete v tématu [Přehled přesměrování Application Gateway](redirect-overview.md).
 
 ## <a name="session-affinity"></a>Spřažení relací
 
 Funkce spřažení relací na základě souborů cookie je užitečná v případě, že chcete zachovat uživatelskou relaci na stejném serveru. Pomocí souborů cookie spravovaných bránou umí služba Application Gateway směrovat následný provoz z uživatelské relace ke zpracování na stejný server. To je důležité v případech, kdy se stav jednotlivých uživatelských relací ukládá místně na serveru.
 
-Další informace naleznete [v tématu Jak funguje aplikační brána](how-application-gateway-works.md#modifications-to-the-request).
+Další informace najdete v tématu [Jak funguje Aplikační brána](how-application-gateway-works.md#modifications-to-the-request).
 
 ## <a name="websocket-and-http2-traffic"></a>Provoz přes protokoly Websocket a HTTP/2
 
 Application Gateway poskytuje nativní podporu pro protokoly WebSocket a HTTP/2. Neexistuje žádné uživatelsky konfigurovatelné nastavení pro selektivní povolení nebo zakázání podpory protokolu WebSocket.
 
-Protokoly WebSocket a HTTP/2 umožňují plně duplexní komunikaci mezi serverem a klientem přes dlouhotrvající připojení TCP. To umožňuje interaktivnější komunikaci mezi webovým serverem a klientem, která může být obousměrná, aniž by bylo nutné dotazování, jak se to vyžaduje v implementacích založených na protokolu HTTP. Tyto protokoly mají nízkou režii, na rozdíl od protokolu HTTP, a mohou znovu použít stejné připojení TCP pro více požadavků a odpovědí, což má za následek efektivnější využití prostředků. Tyto protokoly jsou navrženy pro práci přes tradiční porty HTTP 80 a 443.
+Protokoly WebSocket a HTTP/2 umožňují plně duplexní komunikaci mezi serverem a klientem přes dlouhotrvající připojení TCP. To umožňuje interaktivnější komunikaci mezi webovým serverem a klientem, která může být obousměrná, aniž by bylo nutné dotazování, jak se to vyžaduje v implementacích založených na protokolu HTTP. Tyto protokoly mají nízkou režii, na rozdíl od HTTP, a umožňují opakované použití stejného připojení TCP pro více požadavků nebo odpovědí, což má za následek efektivnější využití prostředků. Tyto protokoly jsou navrženy pro práci přes tradiční porty HTTP 80 a 443.
 
-Další informace naleznete v [tématu WebSocket support](application-gateway-websocket.md) a [HTTP/2 support](configuration-overview.md#http2-support).
+Další informace najdete v tématu Podpora [WebSocket](application-gateway-websocket.md) a [Podpora protokolu HTTP/2](configuration-overview.md#http2-support).
 
 ## <a name="connection-draining"></a>Vyprázdnění připojení
 
-Vyprázdnění připojení vám pomůže provést řádné odebrání členů back-endového fondu při plánovaných servisních aktualizacích. Toto nastavení je povoleno prostřednictvím nastavení HTTP back-endu a lze je použít při vytváření pravidla u všech členů back-endového fondu. Jakmile je aplikace povolena, application gateway zajišťuje, že všechny instance zrušení registrace back-endového fondu neobdrží žádný nový požadavek a současně povolí dokončení existujících požadavků v rámci nakonfigurovaného časového limitu. To platí pro obě back-endové instance, které jsou explicitně odebrány z back-endového fondu změnou konfigurace uživatele, a back-endové instance, které jsou hlášeny jako nefunkční, jak je určeno sondami stavu. Jedinou výjimkou jsou požadavky vázané na zrušení registrace instancí, které byly explicitně zrušeny, z důvodu spřažení relací spravované bránou a nadále jsou proxied k deregistrace instancí.
+Vyprázdnění připojení vám pomůže provést řádné odebrání členů back-endového fondu při plánovaných servisních aktualizacích. Toto nastavení je povoleno prostřednictvím nastavení HTTP back-endu a lze je použít při vytváření pravidla u všech členů back-endového fondu. Po povolení Application Gateway zajistí, aby všechny odregistrované instance back-endu nedostaly žádné nové žádosti, a současně umožnily dokončení stávajících požadavků v nakonfigurovaném časovém limitu. To platí pro instance back-end, které se explicitně odebraly z fondu back-endu pomocí změny konfigurace uživatele, a back-endové instance, které jsou nahlášené jako chybné v závislosti na sondách stavu. Jedinou výjimkou jsou požadavky vázané na zrušení registrace instancí, které byly odregistrovány explicitně, vzhledem k spřažení relace spravované bránou a nadále budou zavedeny do proxy serverů odregistrované instance.
 
-Další informace naleznete v tématu [Přehled konfigurace aplikační brány](configuration-overview.md#connection-draining).
+Další informace najdete v tématu [Přehled konfigurace Application Gateway](configuration-overview.md#connection-draining).
 
 ## <a name="custom-error-pages"></a>Vlastní chybové stránky
 
 Služba Application Gateway vám umožní vytvořit vlastní chybové stránky místo zobrazení výchozích chybových stránek. U vlastní chybové stránky můžete použít vlastní značky a rozložení.
 
-Další informace naleznete [v tématu Vlastní chyby](custom-error.md).
+Další informace najdete v tématu [vlastní chyby](custom-error.md).
 
 ## <a name="rewrite-http-headers"></a>Přepsání hlaviček HTTP
 
-Hlavičky PROTOKOLU HTTP umožňují klientovi a serveru předat další informace s požadavkem nebo odpovědí. Přepsání těchto záhlaví protokolu HTTP vám pomůže provést několik důležitých scénářů, například:
+Hlavičky protokolu HTTP umožňují klientovi a serveru předat další informace s požadavkem nebo odpovědí. Přepsání těchto hlaviček HTTP vám pomůže dosáhnout několika důležitých scénářů, například:
 
-- Přidání polí záhlaví souvisejících se zabezpečením, jako je HSTS / X-XSS-Protection.
-- Odebrání polí záhlaví odpovědi, která mohou odhalit citlivé informace.
-- Odstranění informací o portu ze záhlaví X-Forwarded-For.
+- Přidání polí záhlaví souvisejících se zabezpečením, jako je HSTS/X-XSS-Protection.
+- Odebrání polí hlavičky odpovědi, která mohou odhalit citlivé informace.
+- Odstranění informací o portech z předávaných hlaviček od X-po.
 
-Aplikační brána podporuje možnost přidávat, odebírat nebo aktualizovat hlavičky požadavků a odpovědí HTTP, zatímco pakety požadavků a odpovědí se přesouvají mezi klientským a back-endovým fondem. Poskytuje také možnost přidat podmínky, které zajistí, že zadané hlavičky budou přepsány pouze v případě, že jsou splněny určité podmínky.
+Application Gateway podporuje možnost přidávat, odebírat nebo aktualizovat požadavky HTTP a hlavičky odpovědí, zatímco pakety požadavků a odpovědí přecházejí mezi klienty klienta a back-endové fondy. Poskytuje taky možnost přidat podmínky, abyste zajistili, že zadaná záhlaví se přepíší jenom v případě, že jsou splněné určité podmínky.
 
-Další informace naleznete [v tématu Přepis záhlaví protokolu HTTP](rewrite-http-headers.md).
+Další informace najdete v tématu [přepis hlaviček protokolu HTTP](rewrite-http-headers.md).
 
 ## <a name="sizing"></a>Velikosti
 
-Standard_v2 aplikační brány lze nakonfigurovat pro automatické škálování nebo nasazení s pevnou velikostí. Tato skladová položka nenabízí různé velikosti instancí. Další informace o výkonu v2 a ceny, naleznete [v tématu automatické škálování v2 Skladové položky](application-gateway-autoscaling-zone-redundant.md#pricing).
+Pro nasazení automatického škálování nebo pevné velikosti se dá nakonfigurovat Application Gateway Standard_v2. Tato SKU nenabízí různé velikosti instancí. Další informace o výkonu a cenách v2 najdete v tématu Automatické [škálování v2 SKU](application-gateway-autoscaling-zone-redundant.md#pricing).
 
-Standard aplikační brány je nabízen ve třech velikostech: **Malé**, **Střední**a **Velké**. Instance krátkodobého používání jsou určené pro scénáře vývoje a testování.
+Application Gateway Standard se nabízí ve třech velikostech: **malá**, **střední**a **Velká**. Instance krátkodobého používání jsou určené pro scénáře vývoje a testování.
 
 Úplný seznam omezení služby Application Gateway najdete na stránce [Omezení služby Application Gateway](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
 
-V následující tabulce je uvedena průměrná propustnost výkonu pro každou instanci aplikační brány v1 s povoleným snížením zátěže SSL:
+Následující tabulka ukazuje průměrnou propustnost výkonu pro jednotlivé instance služby Application Gateway V1 s povoleným snižováním zatížení SSL:
 
-| Průměrná velikost odpovědi na stránku back-end | Krátkodobé používání | Střednědobé používání | Dlouhodobé používání |
+| Průměrná velikost odpovědi back-endu stránky | Krátkodobé používání | Střednědobé používání | Dlouhodobé používání |
 | --- | --- | --- | --- |
 | 6 KB |7,5 Mb/s |13 Mb/s |50 Mb/s |
 | 100 KB |35 Mb/s |100 Mb/s |200 Mb/s |
@@ -163,8 +163,8 @@ V následující tabulce je uvedena průměrná propustnost výkonu pro každou 
 
 ## <a name="version-feature-comparison"></a>Porovnání funkcí verze
 
-Porovnání funkcí aplikační brány v1-v2 najdete v tématu [Automatické škálování a zónově redundantní aplikační brána v2](application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku)
+Porovnání funkcí Application Gateway v1-v2 najdete v tématu Automatické [škálování a redundantní Application Gateway v2](application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku) .
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zjistěte, jak funguje aplikační brána – [Jak funguje aplikační brána](how-application-gateway-works.md)
+- Informace o tom, jak Application Gateway funguje – [Jak funguje Aplikační brána](how-application-gateway-works.md)

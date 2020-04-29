@@ -1,6 +1,6 @@
 ---
-title: Připojení k fondu SYNAPse SQL
-description: Připojení k fondu SQL.
+title: Připojit k synapse fondu SQL
+description: Připojte se k fondu SQL.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,22 +12,22 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: e5c015751e8b0aeed7bd84086cc4f65c234fdb41
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745313"
 ---
-# <a name="connect-to-synapse-sql-pool"></a>Připojení k fondu SYNAPse SQL
+# <a name="connect-to-synapse-sql-pool"></a>Připojit k synapse fondu SQL
 
-Připojení k fondu SQL.
+Připojte se k fondu SQL.
 
 ## <a name="find-your-server-name"></a>Vyhledání názvu serveru
 
 Název serveru v následujícím příkladu je sqlpoolservername.database.windows.net. Plně kvalifikovaný název serveru zjistíte následujícím způsobem:
 
-1. Přejděte na [portál Azure](https://portal.azure.com).
-2. Klikněte na **Azure Synapse Analytics**.
+1. Přejít na [Azure Portal](https://portal.azure.com).
+2. Klikněte na **Azure synapse Analytics**.
 3. Klikněte na fond SQL, ke kterému se chcete připojit.
 4. Vyhledejte úplný název serveru.
 
@@ -35,9 +35,9 @@ Název serveru v následujícím příkladu je sqlpoolservername.database.window
 
 ## <a name="supported-drivers-and-connection-strings"></a>Podporované ovladače a připojovací řetězce
 
-Fond SQL podporuje [ADO.NET](/dotnet/framework/data/adonet?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), [ODBC](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [PHP](/sql/connect/php/overview-of-the-php-sql-driver?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)a [JDBC](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). Chcete-li najít nejnovější verzi a dokumentaci, klikněte na jeden z předchozích ovladačů.
+Fond SQL podporuje [ADO.NET](/dotnet/framework/data/adonet?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), [ODBC](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [php](/sql/connect/php/overview-of-the-php-sql-driver?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)a [JDBC](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). Chcete-li najít nejnovější verzi a dokumentaci, klikněte na jeden z předchozích ovladačů.
 
-Chcete-li automaticky generovat připojovací řetězec pro ovladač, který používáte z portálu Azure, klikněte na **zobrazit připojovací řetězce databáze** z předchozího příkladu. Následuje několik příkladů toho, jak připojovací řetězce vypadají pro jednotlivé ovladače.
+Chcete-li automaticky vygenerovat připojovací řetězec pro ovladač, který používáte z Azure Portal, klikněte na příkaz **Zobrazit databázové připojovací řetězce** z předchozího příkladu. Následuje několik příkladů toho, jak připojovací řetězce vypadají pro jednotlivé ovladače.
 
 > [!NOTE]
 > Zvažte nastavení časového limitu připojení na 300 sekund, pokud chcete, aby vaše připojení přestálo krátká období nedostupnosti.
@@ -68,7 +68,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="connection-settings"></a>Nastavení připojení
 
-Fond SQL standardizuje některá nastavení během připojení a vytváření objektů. Tato nastavení nelze přepsat a zahrnují:
+Fond SQL se při vytváření připojení a vytváření objektů standardizace některá nastavení. Tato nastavení nelze přepsat a zahrnují:
 
 | Nastavení databáze | Hodnota |
 |:--- |:--- |
@@ -79,4 +79,4 @@ Fond SQL standardizuje některá nastavení během připojení a vytváření ob
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o připojení a dotazování pomocí sady Visual Studio najdete v oddílu [Dotazování pomocí sady Visual Studio](sql-data-warehouse-query-visual-studio.md). Další informace o možnostech ověřování najdete v [tématu Ověřování na Azure Synapse Analytics](sql-data-warehouse-authentication.md).
+Informace o připojení a dotazování pomocí sady Visual Studio najdete v oddílu [Dotazování pomocí sady Visual Studio](sql-data-warehouse-query-visual-studio.md). Další informace o možnostech ověřování najdete v tématu [ověřování ve službě Azure synapse Analytics](sql-data-warehouse-authentication.md).

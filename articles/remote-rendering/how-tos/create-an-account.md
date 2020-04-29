@@ -1,40 +1,40 @@
 ---
-title: Vytvoření účtu vzdáleného vykreslování Azure
-description: Popisuje kroky k vytvoření účtu pro vzdálené vykreslování Azure
+title: Vytvoření účtu Azure Remote Renderingu
+description: Popisuje kroky pro vytvoření účtu pro vzdálené vykreslování Azure.
 author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
 ms.openlocfilehash: b9b72fb9e80c588eb3e6642d0228bffa50b35c6e
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681295"
 ---
-# <a name="create-an-azure-remote-rendering-account"></a>Vytvoření účtu vzdáleného vykreslování Azure
+# <a name="create-an-azure-remote-rendering-account"></a>Vytvoření účtu Azure Remote Renderingu
 
-Tato kapitola vás provede kroky k vytvoření účtu pro službu **Vzdálené vykreslování Azure.** Platný účet je povinný pro dokončení některého z rychlých startů nebo kurzů.
+Tato kapitola vás provede postupem vytvoření účtu pro službu **Azure Remote rendering** . Platný účet je povinný pro dokončení některého z rychlých startů nebo kurzů.
 
 ## <a name="create-an-account"></a>Vytvoření účtu
 
-K vytvoření účtu pro službu Vzdálené vykreslování Azure jsou potřeba následující kroky:
+Pro vytvoření účtu pro službu Azure Remote rendering je potřeba provést tyto kroky:
 
-1. Přejít na [stránku Náhled smíšené reality](https://aka.ms/MixedRealityPrivatePreview)
-1. Klikněte na tlačítko Vytvořit zdroj.
-1. Do vyhledávacího pole ("Hledat na trhu") zadejte "Vzdálené vykreslování" a stiskněte "enter".
-1. V seznamu výsledků klikněte na dlaždici "Vzdálené vykreslování"
-1. Na další obrazovce klikněte na tlačítko "Vytvořit". Otevře se formulář pro vytvoření nového účtu vzdáleného vykreslování:
-    1. Nastavit název zdroje na název účtu
-    1. V případě potřeby aktualizujte "Předplatné"
-    1. Nastavení skupiny prostředků na skupinu prostředků podle vašeho výběru
-1. Po vytvoření účtu přejděte na něj a:
-    1. Na kartě *Přehled* si poznamenejte id účtu.
-    1. Na kartě *Nastavení > přístupové klíče* si všimněte "Primární klíč" – toto je klíč tajného účtu účtu
+1. Přejít na [stránku Preview ve smíšeném realitě](https://aka.ms/MixedRealityPrivatePreview)
+1. Klikněte na tlačítko vytvořit prostředek.
+1. Do vyhledávacího pole ("Hledat na webu Marketplace") zadejte "vzdálené vykreslování" a stiskněte klávesu ENTER.
+1. V seznamu výsledků klikněte na dlaždici vzdálené vykreslování.
+1. Na další obrazovce klikněte na tlačítko vytvořit. Otevře se formulář, ve kterém se vytvoří nový účet vzdáleného vykreslování:
+    1. Nastavte název prostředku na název účtu.
+    1. Pokud je to potřeba, aktualizujte předplatné.
+    1. Nastavte skupinu prostředků na skupinu prostředků podle vašeho výběru.
+1. Po vytvoření účtu přejděte k němu a:
+    1. Na kartě *Přehled* si poznamenejte "ID účtu".
+    1. Na kartě *nastavení > přístupové klíče* si poznamenejte "primární klíč" – Jedná se o klíč tajného účtu účtu.
 
 ### <a name="retrieve-the-account-information"></a>Načtení informací o účtu
 
-Ukázky a kurzy vyžadují, abyste zadali ID účtu a klíč. Například v souboru **arrconfig.json,** který se používá pro ukázkové skripty prostředí PowerShell:
+Ukázky a kurzy vyžadují, abyste zadali ID účtu a klíč. Například v souboru **ARRConfig. JSON** , který se používá pro ukázkové skripty prostředí PowerShell:
 
 ```json
     "accountSettings": {
@@ -44,57 +44,57 @@ Ukázky a kurzy vyžadují, abyste zadali ID účtu a klíč. Například v soub
     },
 ```
 
-Podívejte se na [seznam dostupných oblastí](../reference/regions.md) pro vyplnění možnosti *oblasti.*
+Projděte si [seznam dostupných oblastí](../reference/regions.md) pro vyplňování možnosti *region* .
 
-Hodnoty pro **`arrAccountId`** **`arrAccountKey`** a lze nalézt na portálu, jak je popsáno v následujících krocích:
+Hodnoty pro **`arrAccountId`** a **`arrAccountKey`** lze nalézt na portálu, jak je popsáno v následujícím postupu:
 
 * Přejděte na web [Azure Portal](https://www.portal.azure.com).
-* Najděte svůj **"Vzdálený vykreslování účet"** - to by mělo být v **seznamu "Nedávné zdroje".** Můžete ji také vyhledat na vyhledávacím panelu v horní části. V takovém případě se ujistěte, že odběr, který chcete použít, je vybrán ve filtru výchozí odběr (ikona filtru vedle vyhledávacího panelu):
+* Najít **účet vzdáleného vykreslování** – měl by být v seznamu **Poslední prostředky** . Můžete ji také vyhledat na panelu hledání v horní části. V takovém případě se ujistěte, že odběr, který chcete použít, je vybraný ve výchozím filtru předplatného (ikona filtru vedle panelu hledání):
 
-![Filtr předplatného](./media/azure-subscription-filter.png)
+![Filtr předplatných](./media/azure-subscription-filter.png)
 
-Kliknutím na účet se dostanete na tuto obrazovku, která se ihned zobrazí **ID účtu:**
+Kliknutím na svůj účet přejdete na tuto obrazovku, ve které se hned zobrazuje **ID účtu** :
 
 ![ID účtu Azure](./media/azure-account-id.png)
 
-Pro klávesu vyberte **přístupové klávesy** v panelu vlevo. Na další stránce se zobrazí primární a sekundární klíč:
+Pro klíč vyberte **přístupové klíče** na panelu vlevo. Na další stránce se zobrazuje primární a sekundární klíč:
 
 ![Přístupové klíče Azure](./media/azure-account-primary-key.png)
 
-Hodnota pro **`arrAccountKey`** může být primární nebo sekundární klíč.
+Hodnota pro **`arrAccountKey`** může být buď primární, nebo sekundární klíč.
 
 ## <a name="link-storage-accounts"></a>Propojit účty úložiště
 
-Tento odstavec vysvětluje, jak propojit účty úložiště s účtem vzdáleného vykreslování. Když je účet úložiště propojen, není nutné generovat identifikátor URI SAS pokaždé, když chcete pracovat s daty ve vašem účtu, například při načítání modelu. Místo toho můžete použít názvy účtů úložiště přímo, jak je popsáno v [části načítání modelu](../concepts/models.md#loading-models).
+Tento článek vysvětluje, jak propojit účty úložiště s účtem vzdáleného vykreslování. Pokud je propojen účet úložiště, není nutné vygenerovat identifikátor URI SAS pokaždé, když chcete pracovat s daty ve vašem účtu, například při načítání modelu. Místo toho můžete použít názvy účtů úložiště přímo, jak je popsáno v [části načtení modelu](../concepts/models.md#loading-models).
 
-Kroky v tomto odstavci musí být provedeny pro každý účet úložiště, který by měl používat tuto alternativní metodu přístupu. Pokud jste ještě nevytvořili účty úložiště, můžete projít příslušný krok v [převést model pro vykreslování rychlý start](../quickstarts/convert-model.md#storage-account-creation).
+Kroky v tomto odstavci je třeba provést pro každý účet úložiště, který by měl používat tuto alternativní metodu přístupu. Pokud jste ještě nevytvořili účty úložiště, můžete si projít příslušný krok v části [převedení modelu pro rychlý Start vykreslování](../quickstarts/convert-model.md#storage-account-creation).
 
-Nyní se předpokládá, že máte účet úložiště. Přejděte na účet úložiště na portálu a přejděte na kartu **Řízení přístupu (IAM)** pro tento účet úložiště:
+Nyní se předpokládá, že máte účet úložiště. Přejděte na portál na účet úložiště a přejděte na kartu **Access Control (IAM)** pro tento účet úložiště:
 
-![Účet úložiště IAM](./media/azure-storage-account.png)
+![Úložiště IAM účtu úložiště](./media/azure-storage-account.png)
 
- Ujistěte se, že máte oprávnění vlastníka k tomuto účtu úložiště, abyste zajistili, že můžete přidávat přiřazení rolí. Pokud nemáte přístup, možnost **Přidat přiřazení role** bude zakázána.
+ Ujistěte se, že máte oprávnění vlastníka pro tento účet úložiště, abyste měli jistotu, že můžete přidat přiřazení rolí. Pokud nemáte přístup, bude možnost **Přidat přiřazení role** zakázaná.
 
- Je třeba přidat tři odlišné role, jak je popsáno v dalších krocích. Pokud nezadáte všechny tři úrovně přístupu, budou při pokusu o přístup k účtu úložiště problémy s oprávněním.
+ Musíte přidat tři samostatné role, jak je popsáno v následujících krocích. Pokud nezadáte všechny tři úrovně přístupu, při pokusu o přístup k účtu úložiště dojde k problémům s oprávněním.
 
- Kliknutím na tlačítko **Přidat** na dlaždici "Přidat přiřazení role" přidáte první roli:
+ Kliknutím na tlačítko **Přidat** na dlaždici přidat přiřazení role přidejte první roli:
 
-![Účet úložiště IAM](./media/azure-add-role-assignment.png)
+![Úložiště IAM účtu úložiště](./media/azure-add-role-assignment.png)
 
-* První role, kterou chcete přiřadit, je **Owner,** jak je znázorněno na obrázku výše. 
-* V rozevíracím souboru ***Přiřadit přístup k** rozevíracímu souboru vyberte účet **vzdáleného vykreslování.**
-* V yberte předplatné a účet vzdáleného vykreslování v posledních rozevíracích položkách.
+* První role, která se má přiřadit, je **vlastník** , jak je znázorněno na snímku obrazovky výše. 
+* V rozevíracím seznamu ***přiřadit přístup k** vyberte **účet vzdáleného vykreslování** .
+* V posledních rozevíracích seznamech vyberte své předplatné a účet vzdáleného vykreslování.
 
-Opakování přidání nových rolí ještě dvakrát pro příslušné výběry z rozevíracího **deníku Role:**
+Pro odpovídající výběry v rozevírací nabídce **role** znovu přidejte další nové role:
 * **Přispěvatel účtů úložiště**
-* **Přispěvatel dat objektu blob úložiště**
+* **Přispěvatel dat objektu BLOB služby Storage**
 
-Ostatní rozevírací položky jsou vybrány jako v prvním kroku.
+Ostatní rozevírací seznamy jsou vybrány jako v prvním kroku.
 
-Pokud jste přidali všechny tři role, váš účet vzdáleného vykreslování Azure má přístup k vašemu účtu úložiště pomocí systému přiřazených identit spravovaných služeb.
+Pokud jste přidali všechny tři role, má účet vzdáleného vykreslování Azure přístup k vašemu účtu úložiště pomocí identit spravované služby přiřazené systémem.
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Authentication](authentication.md)
-* [Použití api pro front-end Azure pro ověřování](frontend-apis.md)
-* [Příklad skriptů prostředí PowerShell](../samples/powershell-example-scripts.md)
+* [Použití rozhraní API Azure front-endu k ověřování](frontend-apis.md)
+* [Ukázkové skripty PowerShellu](../samples/powershell-example-scripts.md)

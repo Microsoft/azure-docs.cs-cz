@@ -1,6 +1,6 @@
 ---
-title: Povolení synchronizace hash hesel pro služby Azure AD Domain Services | Dokumenty společnosti Microsoft
-description: V tomto kurzu se dozvíte, jak povolit synchronizaci hodnot hash hesel pomocí azure ad připojení do spravované domény Služby Azure Active Directory Domain Services.
+title: Povolit synchronizaci hodnot hash hesel pro Azure AD Domain Services | Microsoft Docs
+description: V tomto kurzu se naučíte, jak povolit synchronizaci hodnot hash hesel pomocí Azure AD Connect do Azure Active Directory Domain Services spravované domény.
 author: iainfoulds
 manager: daveba
 ms.service: active-directory
@@ -10,70 +10,70 @@ ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: iainfou
 ms.openlocfilehash: 4bf85a8e38a3cfc46fe4dbaf86639899e7267178
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80676614"
 ---
-# <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Kurz: Povolení synchronizace hesel ve službě Azure Active Directory Domain Services pro hybridní prostředí
+# <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Kurz: povolení synchronizace hesel v Azure Active Directory Domain Services pro hybridní prostředí
 
-Pro hybridní prostředí lze klienta Azure Active Directory (Azure AD) nakonfigurovat tak, aby se synchronizoval s místním prostředím služby AD DS (AD DS) pomocí služby Azure AD Connect. Ve výchozím nastavení Azure AD Connect nesynchronizuje starší NT LAN Manager (NTLM) a hodnoty hash hesla kerberos, které jsou potřeba pro Azure Active Directory Domain Services (Azure AD DS).
+U hybridních prostředí je možné nakonfigurovat klienta Azure Active Directory (Azure AD) na synchronizaci s místním prostředím Active Directory Domain Services (služba AD DS) pomocí Azure AD Connect. Ve výchozím nastavení Azure AD Connect nesynchronizuje starší verze systému NT LAN Manager (NTLM) a hodnoty hash hesla protokolu Kerberos, které jsou potřeba pro Azure Active Directory Domain Services (Azure služba AD DS).
 
-Chcete-li používat Azure AD DS s účty synchronizovanými z místního prostředí služby AD DS, je třeba nakonfigurovat Azure AD Connect pro synchronizaci těchto hodnot hash hesel požadovaných pro ověřování NTLM a Kerberos. Po nakonfigurované Azure AD Connect, místní vytvoření účtu nebo změny hesla událost také také synchronizuje starší heslo hashe s Azure AD.
+Pokud chcete používat Azure služba AD DS s účty synchronizovanými z místního prostředí služba AD DS, je nutné nakonfigurovat Azure AD Connect pro synchronizaci hodnot hash hesel vyžadovaných pro ověřování protokolem NTLM a protokolem Kerberos. Po nakonfigurování Azure AD Connect dojde k místnímu vytvoření účtu nebo události změny hesla a pak se do Azure AD synchronizují starší hodnoty hash hesel.
 
-Tyto kroky nemusíte provádět, pokud používáte účty pouze pro cloud bez místního prostředí služby AD DS.
+Pokud používáte jenom cloudové účty bez místního prostředí služba AD DS, nemusíte tyto kroky provádět.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Proč jsou potřeba starší hash hesel NTLM a Kerberos
-> * Jak nakonfigurovat starší synchronizaci hodnot hash hesla pro Azure AD Connect
+> * Proč jsou nutné starší hodnoty hash hesla NTLM a Kerberos
+> * Postup konfigurace synchronizace hodnot hash zastaralých hesel pro Azure AD Connect
 
-Pokud nemáte předplatné Azure, [vytvořte si účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete následující zdroje:
 
 * Aktivní předplatné Azure.
-    * Pokud nemáte předplatné Azure, [vytvořte si účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Tenant Azure Active Directory přidružený k vašemu předplatnému, který je synchronizovaný s místním adresářem pomocí Služby Azure AD Connect.
-    * V případě potřeby [vytvořte klienta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure ke svému účtu][associate-azure-ad-tenant].
-    * V případě potřeby [povolte synchronizaci hash hesel službou Azure AD Connect][enable-azure-ad-connect].
-* Spravovaná doména Služby Azure Active Directory Domain Services povolená a nakonfigurovaná ve vašem tenantovi Azure AD.
-    * V případě potřeby [vytvořte a nakonfigurujte instanci služby Azure Active Directory Domain Services][create-azure-ad-ds-instance].
+    * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Tenant Azure Active Directory přidružený k vašemu předplatnému, který se synchronizuje s místním adresářem pomocí Azure AD Connect.
+    * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
+    * V případě potřeby [povolte Azure AD Connect pro synchronizaci hodnot hash hesel][enable-azure-ad-connect].
+* Ve vašem tenantovi Azure AD je povolená a nakonfigurovaná spravovaná doména Azure Active Directory Domain Services.
+    * V případě potřeby [vytvořte a nakonfigurujte instanci Azure Active Directory Domain Services][create-azure-ad-ds-instance].
 
-## <a name="password-hash-synchronization-using-azure-ad-connect"></a>Synchronizace hash hesla pomocí služby Azure AD Connect
+## <a name="password-hash-synchronization-using-azure-ad-connect"></a>Synchronizace hodnot hash hesel pomocí Azure AD Connect
 
-Azure AD Connect se používá k synchronizaci objektů, jako jsou uživatelské účty a skupiny z místního prostředí Služby AD DS do klienta Azure AD. V rámci procesu synchronizace hodnot hash hesla umožňuje účtům používat stejné heslo v prostředí služby AD DS on-prem a ve službě Azure AD.
+Azure AD Connect slouží k synchronizaci objektů, jako jsou uživatelské účty a skupiny z místního prostředí služba AD DS do tenanta Azure AD. V rámci procesu umožňuje synchronizace hodnot hash hesel, aby účty používaly stejné heslo v prostředí Prem služba AD DS a v Azure AD.
 
-K ověření uživatelů ve spravované doméně potřebuje služba Azure AD DS hodnotu hash hesel ve formátu, který je vhodný pro ověřování protokolech NTLM a Kerberos. Azure AD neukládá hodnotu hashe hesla ve formátu, který je vyžadován pro ověřování NTLM nebo Kerberos, dokud nepovolíte Azure AD DS pro vašeho tenanta. Z bezpečnostních důvodů Azure AD také neukládá žádné přihlašovací údaje hesla ve formě prostého textu. Azure AD proto nemůže automaticky generovat tyto hashe ntlm nebo kerberos hesla na základě existujících přihlašovacích údajů uživatelů.
+K ověřování uživatelů ve spravované doméně služba AD DS Azure potřebuje hodnoty hash hesel ve formátu, který je vhodný pro ověřování protokolem NTLM a protokolem Kerberos. Služba Azure AD neukládá hodnoty hash hesel ve formátu požadovaném pro ověřování protokolem NTLM nebo Kerberos, dokud u svého tenanta nepovolíte službu Azure služba AD DS. Z bezpečnostních důvodů Azure AD také neukládá přihlašovací údaje hesla ve formě nešifrovaných textů. Proto služba Azure AD nemůže automaticky generovat tyto hodnoty hash hesla NTLM nebo Kerberos na základě stávajících přihlašovacích údajů uživatelů.
 
-Azure AD Connect lze nakonfigurovat tak, aby synchronizovat požadované hashe hesla NTLM nebo Kerberos pro Azure AD DS. Ujistěte se, že jste dokončili kroky k [povolení synchronizace hash hesel Azure AD Connect pro heslo][enable-azure-ad-connect]. Pokud jste měli existující instanci Azure AD Connect, [stáhněte a aktualizujte na nejnovější verzi][azure-ad-connect-download] a ujistěte se, že můžete synchronizovat starší hodnotu hash hesel pro NTLM a Kerberos. Tato funkce není k dispozici v raných verzích Služby Azure AD Connect nebo s nástrojem DirSync starší verze. Je vyžadována verze Azure AD Connect *verze 1.1.614.0* nebo novější.
+Azure AD Connect se dá nakonfigurovat tak, aby synchronizoval požadované hodnoty hash hesla protokolu NTLM nebo Kerberos pro Azure služba AD DS. Ujistěte se, že jste dokončili kroky pro [povolení Azure AD Connect pro synchronizaci hodnot hash hesel][enable-azure-ad-connect]. Pokud jste již existující instanci Azure AD Connect, [Stáhněte a aktualizujte nejnovější verzi][azure-ad-connect-download] , abyste se ujistili, že je možné synchronizovat hodnoty hash hesel starší verze pro protokol NTLM a Kerberos. Tato funkce není k dispozici v počátečních verzích Azure AD Connect nebo pomocí starší verze nástroje DirSync. Vyžaduje se Azure AD Connect verze *1.1.614.0* nebo novější.
 
 > [!IMPORTANT]
-> Azure AD Connect by se měl nainstalovat a nakonfiguroval jenom pro synchronizaci s místními prostředími služby AD DS. Není podporováno instalace Azure AD Connect ve spravované doméně Azure AD DS k synchronizaci objektů zpět do Azure AD.
+> Azure AD Connect by měl být nainstalovaný a nakonfigurovaný jenom pro synchronizaci s místními služba AD DS prostředími. Pro synchronizaci objektů zpět do Azure AD se nepodporuje instalace Azure AD Connect ve spravované doméně Azure služba AD DS.
 
-## <a name="enable-synchronization-of-password-hashes"></a>Povolit synchronizaci hodnot hashe hesel
+## <a name="enable-synchronization-of-password-hashes"></a>Povolit synchronizaci hodnot hash hesel
 
-S nainstalovanou a nakonfigurovanou službou Azure AD pro synchronizaci se službou Azure AD teď nakonfigurujte synchronizaci hash staršíverze hesla pro NTLM a Kerberos. Skript Prostředí PowerShell se používá ke konfiguraci požadovaných nastavení a potom spustit úplnou synchronizaci hesel do Azure AD. Po dokončení procesu synchronizace hash hesel služby Azure AD Connect se uživatelé můžou přihlásit k aplikacím prostřednictvím služby Azure AD DS, které používají starší hodnotu hash hesel NTLM nebo Kerberos.
+Když je služba Azure AD Connect nainstalovaná a nakonfigurovaná pro synchronizaci se službou Azure AD, teď nakonfigurujte starší synchronizaci hodnot hash hesel pro NTLM a Kerberos. Pomocí skriptu PowerShellu se nakonfigurují požadovaná nastavení a pak se spustí Úplná synchronizace hesel do Azure AD. Když je proces synchronizace hodnot hash hesel Azure AD Connect dokončený, můžou se uživatelé přihlásit k aplikacím prostřednictvím Azure služba AD DS, které používají starší hodnoty hash hesla NTLM nebo Kerberos.
 
-1. V počítači s nainstalovaným Azure AD Connect otevřete v nabídce Start službu **Synchronizace připojení Azure AD > Connect**.
-1. Vyberte kartu **Konektory.** Informace o připojení, které slouží k vytvoření synchronizace mezi místním prostředím služby AD DS a službou Azure AD, jsou uvedeny.
+1. V počítači s nainstalovanou Azure AD Connect v nabídce Start otevřete **synchronizační službu Azure AD Connect >**.
+1. Vyberte kartu **konektory** . Zobrazí se informace o připojení, které slouží k navázání synchronizace mezi místním prostředím služba AD DS a službou Azure AD.
 
-    **Typ** označuje buď *Windows Azure Active Directory (Microsoft)* pro konektor Azure AD nebo *Služby Active Directory Domain Services* pro místní konektor Služby AD DS. Poznamenejte si názvy spojnic, které se mají použít ve skriptu Prostředí PowerShell v dalším kroku.
+    **Typ** označuje buď *Windows Azure Active Directory (Microsoft)* pro konektor Azure AD nebo *Active Directory Domain Services* pro konektor on-premises služba AD DS. Poznamenejte si názvy konektorů, které se ve skriptu PowerShellu použijí v dalším kroku.
 
-    ![Seznam názvů konektorů ve Správci synchronizačních služeb](media/tutorial-configure-password-hash-sync/service-sync-manager.png)
+    ![Vypíše názvy konektorů v Service Manager synchronizace.](media/tutorial-configure-password-hash-sync/service-sync-manager.png)
 
-    V tomto příkladu obrazovky se používají následující konektory:
+    V tomto ukázkovém snímku obrazovky se používají následující konektory:
 
-    * Konektor Azure AD s názvem *contoso.onmicrosoft.com – AAD*
-    * Místní konektor AD DS se jmenuje *onprem.contoso.com*
+    * Konektor Azure AD má název *contoso.onmicrosoft.com-AAD* .
+    * Konektor on-premises služba AD DS má název *OnPrem.contoso.com* .
 
-1. Zkopírujte a vložte následující skript PowerShellu do počítače s nainstalovaným Azure AD Connect. Skript aktivuje úplnou synchronizaci hesel, která obsahuje starší hodnoty hashe hesla. Aktualizujte `$azureadConnector` `$adConnector` a proměnné s názvy spojnic z předchozího kroku.
+1. Zkopírujte následující skript prostředí PowerShell a vložte ho do počítače s nainstalovaným Azure AD Connect. Skript spustí úplnou synchronizaci hesla, která zahrnuje starší hodnoty hash hesel. Aktualizujte `$azureadConnector` proměnné `$adConnector` a pomocí názvů konektorů z předchozího kroku.
 
-    Spusťte tento skript v každé doménové struktuře služby AD a synchronizujte místní účet NTLM a kerberos heslové hodnoty hash do azure ad.
+    Spuštěním tohoto skriptu v každé doménové struktuře AD synchronizujete hodnoty hash hesla protokolu NTLM a Kerberos do služby Azure AD.
 
     ```powershell
     # Define the Azure AD Connect connector names and import the required PowerShell module
@@ -97,18 +97,18 @@ S nainstalovanou a nakonfigurovanou službou Azure AD pro synchronizaci se služ
     Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConnector $azureadConnector -Enable $true
     ```
 
-    V závislosti na velikosti adresáře z hlediska počtu účtů a skupin může synchronizace starších hodnot hash hesla do služby Azure AD nějakou dobu trvat. Hesla se pak synchronizují se spravovanou doménou Azure AD DS po synchronizaci se službou Azure AD.
+    V závislosti na velikosti adresáře na základě počtu účtů a skupin může synchronizace hodnot hash starších hesel do služby Azure AD nějakou dobu trvat. Hesla se pak po synchronizaci do Azure AD synchronizují do spravované domény Azure služba AD DS.
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Proč jsou potřeba starší hash hesel NTLM a Kerberos
-> * Jak nakonfigurovat starší synchronizaci hodnot hash hesla pro Azure AD Connect
+> * Proč jsou nutné starší hodnoty hash hesla NTLM a Kerberos
+> * Postup konfigurace synchronizace hodnot hash zastaralých hesel pro Azure AD Connect
 
 > [!div class="nextstepaction"]
-> [Zjistěte, jak funguje synchronizace ve spravované doméně služby Azure AD Domain Services](synchronization.md)
+> [Informace o tom, jak synchronizace funguje ve spravované doméně Azure AD Domain Services](synchronization.md)
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

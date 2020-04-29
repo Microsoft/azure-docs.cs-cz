@@ -1,19 +1,19 @@
 ---
-title: Odkaz na import a export dat - QnA Maker
-description: Zjistěte, jak se typy adres URL používají k importu a vytváření párů QnA.
+title: Referenční informace k importu a exportu dat – QnA Maker
+description: Pochopení způsobu, jakým jsou typy adres URL použity pro import a vytvoření párů QnA.
 ms.topic: reference
 ms.date: 01/02/2020
 ms.openlocfilehash: e4a423ef9478cd39181c6440801f9fe954dc896c
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80804239"
 ---
-# <a name="import-and-export-data-reference"></a>Odkaz na import a export dat
+# <a name="import-and-export-data-reference"></a>Odkaz na Import a export dat
 
-Projděte si tento odkaz na import a export, abyste získali nejlepší výsledky pro zálohování, úložiště a výměnu znalostní báze Knowledge Base.
+Podívejte se na tento odkaz pro import a export, který vám umožní získat nejlepší výsledky pro zálohování, ukládání a nahrazování znalostní báze.
 
-## <a name="import-and-export-knowledge-base"></a>Znalostní báze Import a export
+## <a name="import-and-export-knowledge-base"></a>Import a export znalostní báze Knowledge Base
 
-**Soubory TSV a XLS**z exportovaných znalostních bází lze použít pouze importem souborů ze stránky **Nastavení** na portálu QnA Maker. Nelze je použít jako zdroje dat při vytváření znalostní báze nebo z funkce **+ Přidat soubor** nebo + Přidat adresu **URL** na stránce **Nastavení.**
+**Soubory TSV a XLS**z exportovaných základů znalostní báze lze použít pouze importem souborů ze stránky **nastavení** na portálu QnA maker. Nelze je použít jako zdroje dat během vytváření znalostní báze nebo na stránce **+ Přidat soubor** nebo **+ Přidat adresu URL** na stránce **Nastavení** .

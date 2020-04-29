@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 10/02/2018
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 6045c61dc9837667bfaf01c685f687fcf5816e4c
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80754213"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Vytvoření funkce aktivované službou Azure Cosmos DB
@@ -22,7 +22,7 @@ Zjistěte, jak vytvořit funkci aktivovanou při přidání nebo změně dat ve 
 
 Pro absolvování tohoto kurzu potřebujete:
 
-+ Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
++ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 > [!NOTE]
 > [!INCLUDE [SQL API support only](../../includes/functions-cosmosdb-sqlapi-note.md)]
@@ -43,7 +43,7 @@ Dál vytvoříte v nové aplikaci Function App funkci.
 
 ## <a name="create-azure-cosmos-db-trigger"></a>Vytvoření triggeru služby Azure Cosmos DB
 
-1. Rozbalte aplikaci funkcí **+** a klikněte na tlačítko vedle **položky Funkce**. Pokud jde o první funkci ve vaší aplikaci Function App, vyberte **Na portálu** a potom **Pokračovat**. V opačném případě přejděte ke třetímu kroku.
+1. Rozbalte aplikaci Function App a klikněte na **+** tlačítko vedle položky **funkce**. Pokud jde o první funkci ve vaší aplikaci Function App, vyberte **Na portálu** a potom **Pokračovat**. V opačném případě přejděte ke třetímu kroku.
 
    ![Stručný úvod do služby Functions na webu Azure Portal](./media/functions-create-cosmos-db-triggered-function/function-app-quickstart-choose-portal.png)
 
@@ -53,7 +53,7 @@ Dál vytvoříte v nové aplikaci Function App funkci.
 
 1. Do vyhledávacího pole zadejte `cosmos` a zvolte šablonu **Trigger Azure Cosmos DB**.
 
-1. Pokud se zobrazí výzva, vyberte **Nainstalovat** a nainstalujte rozšíření Azure Cosmos DB do aplikace funkce. Po úspěšném dokončení instalace vyberte **Pokračovat**.
+1. Pokud se zobrazí výzva, vyberte **instalovat** a nainstalujte Azure Cosmos DB rozšíření do aplikace Function App. Po úspěšném dokončení instalace vyberte **Pokračovat**.
 
     ![Instalace rozšíření vazby](./media/functions-create-cosmos-db-triggered-function/functions-create-cosmos-db-trigger-portal.png)
 
@@ -65,9 +65,9 @@ Dál vytvoříte v nové aplikaci Function App funkci.
     | ------------ | ---------------- | ------------------------------------------ |
     | **Název** | Výchozí | Použijte výchozí název funkce navrhovaný šablonou.|
     | **Připojení účtu Azure Cosmos DB** | Nové nastavení | Vyberte **Nové**, vyberte **Předplatné** a **Databázový účet**, které jste předtím vytvořili, a zvolte **Vybrat**. Vytvoří se nastavení aplikace pro připojení k vašemu účtu. Toto nastavení vazba použije k připojení k databázi. |
-    | **Název kontejneru** | Items | Název kontejneru, který má být sledován. |
-    | **Vytvoření kontejneru zapůjčení, pokud neexistuje** | Zaškrtnuté | Kontejner ještě neexistuje, proto jej vytvořte. |
-    | **Název databáze** | Úkoly | Název databáze s kontejnerem, který má být sledován. |
+    | **Název kontejneru** | Items | Název kontejneru, který se má monitorovat |
+    | **Vytvořit kontejner zapůjčení, pokud neexistuje** | Zaškrtnuté | Kontejner ještě neexistuje, proto ho vytvořte. |
+    | **Název databáze** | Úlohy | Název databáze s kontejnerem, který se má monitorovat |
 
 1. Kliknutím na **Vytvořit** vytvořte funkci aktivovanou službou Azure Cosmos DB. Po vytvoření funkce se zobrazí kód funkce založené na šabloně.  
 
@@ -75,9 +75,9 @@ Dál vytvoříte v nové aplikaci Function App funkci.
 
     Tato šablona funkce zapíše do protokolů počet dokumentů a ID prvního dokumentu.
 
-Dále se připojíte k účtu Azure Cosmos DB a vytvoříte `Items` kontejner v databázi. `Tasks`
+V dalším kroku se připojíte k účtu Azure Cosmos DB a vytvoříte `Items` kontejner v `Tasks` databázi.
 
-## <a name="create-the-items-container"></a>Vytvoření kontejneru Položky
+## <a name="create-the-items-container"></a>Vytvořit kontejner položek
 
 1. Na nové kartě prohlížeče otevřete druhou instanci webu [Azure Portal](https://portal.azure.com).
 
@@ -87,30 +87,30 @@ Dále se připojíte k účtu Azure Cosmos DB a vytvoříte `Items` kontejner v 
 
 1. Zvolte váš účet služby Azure Cosmos DB a vyberte **Průzkumník dat**. 
 
-1. V části **SQL API**zvolte **Databáze úloh** a vyberte Nový **kontejner**.
+1. V části **SQL API**zvolte možnost databáze **úkolů** a vyberte **Nový kontejner**.
 
     ![Vytvoření kontejneru](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-container.png)
 
-1. V **části Přidat kontejner**použijte nastavení zobrazená v tabulce pod obrázkem. 
+1. V části **Přidat kontejner**použijte nastavení uvedená v tabulce pod obrázkem. 
 
-    ![Definování kontejneru Úkoly](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-container2.png)
+    ![Definování kontejneru úkoly](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-container2.png)
 
     | Nastavení|Navrhovaná hodnota|Popis |
     | ---|---|--- |
-    | **ID databáze** | Úkoly |Název nové databáze. Musí se shodovat s názvem definovaným ve vazbě vaší funkce. |
+    | **ID databáze** | Úlohy |Název nové databáze. Musí se shodovat s názvem definovaným ve vazbě vaší funkce. |
     | **ID kontejneru** | Items | Název nového kontejneru. Musí se shodovat s názvem definovaným ve vazbě vaší funkce.  |
-    | **[Klíč oddílu](../cosmos-db/partition-data.md)** | /kategorie|Klíč oddílu, který rovnoměrně distribuuje data do jednotlivých oddílů. Výběr správného klíče oddílu je důležité při vytváření kontejneru výkonu. | 
+    | **[Klíč oddílu](../cosmos-db/partition-data.md)** | /kategorie|Klíč oddílu, který rovnoměrně distribuuje data do jednotlivých oddílů. Výběr správného klíče oddílu je důležitý při vytváření výkonného kontejneru. | 
     | **Propustnost** |400 RU| Použijte výchozí hodnotu. Pokud budete chtít snížit latenci, můžete propustnost později navýšit. |    
 
-1. Kliknutím na **OK** vytvořte kontejner Položek. Může trvat krátkou dobu pro kontejner získat vytvořeny.
+1. Kliknutím na tlačítko **OK** vytvořte kontejner položek. Vytvoření kontejneru může trvat krátkou dobu.
 
-Poté, co existuje kontejner zadaný ve vazbě funkce, můžete otestovat funkci přidáním položek do tohoto nového kontejneru.
+Po tom, co kontejner zadaný ve vazbě funkce existuje, můžete funkci otestovat přidáním položek do tohoto nového kontejneru.
 
 ## <a name="test-the-function"></a>Testování funkce
 
-1. Rozbalte nový kontejner **Položek** v Průzkumníkovi dat, zvolte **Položky**a pak vyberte **Nová položka**.
+1. Rozbalte kontejner nové **položky** v Průzkumník dat, zvolte položku **položky**a vyberte možnost **Nová položka**.
 
-    ![Vytvoření položky v kontejneru Položky](./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png)
+    ![Vytvoření položky v kontejneru položek](./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png)
 
 1. Nahraďte obsah nové položky následujícím obsahem a pak zvolte **Uložit**.
 

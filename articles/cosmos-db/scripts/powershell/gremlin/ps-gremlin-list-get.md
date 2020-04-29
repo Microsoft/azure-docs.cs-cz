@@ -1,6 +1,6 @@
 ---
-title: Skript Prostředí PowerShell pro seznam a získání operací pro rozhraní API Azure Cosmos DB Gremlin
-description: Skript Azure PowerShellu – seznam Azure Cosmos DB a získání operací pro rozhraní Gremlin API
+title: PowerShellový skript pro výpis a získání operací pro rozhraní API pro Azure Cosmos DB Gremlin
+description: Azure PowerShell Azure Cosmos DB skriptu a operace get pro rozhraní Gremlin API
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: bd764dce0bc55582125bdb4e6ffd86dec924390b
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80366057"
 ---
-# <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---gremlin-api"></a>Seznam a získání databází a grafů pro Azure Cosmos DB – rozhraní GREMLIN API
+# <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---gremlin-api"></a>Vypíše a získá databáze a grafy pro Azure Cosmos DB Gremlin API.
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -39,9 +39,9 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Seznam účtů Cosmos DB nebo získá zadaný účet Cosmos DB. |
-| [Databáze Get-AzCosmosDBGremlin](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlindatabase) | Seznam databází rozhraní API Cosmos DB Gremlin v účtu nebo získá zadanou databázi rozhraní API Cosmos DB Gremlin v účtu. |
-| [Get-AzCosmosDBGremlinGraph](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlingraph) | Seznam grafů rozhraní API Cosmos DB Gremlin v databázi nebo získá zadanou tabulku rozhraní API Cosmos DB Gremlin v databázi. |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Zobrazí seznam Cosmos DB účtů nebo získá zadaný Cosmos DB účet. |
+| [Get-AzCosmosDBGremlinDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlindatabase) | Vypíše Cosmos DB databáze rozhraní API Gremlin v účtu nebo získá zadanou Cosmos DB databázi rozhraní API Gremlin v účtu. |
+| [Get-AzCosmosDBGremlinGraph](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlingraph) | Vypíše Cosmos DB grafy rozhraní API Gremlin v databázi nebo získá zadanou Cosmos DB tabulku rozhraní API Gremlin v databázi. |
 |**Skupiny prostředků Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||

@@ -6,53 +6,53 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 7cbcaefcc087c9f1c7c09668a27fbdef9a4802d3
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681074"
 ---
 # <a name="color-materials"></a>Barevné materiály
 
-*Barevné materiály* jsou jedním z podporovaných [typů materiálů](../../concepts/materials.md) v Azure Remote Rendering. Používají se pro ok, které by [neměly](../../concepts/meshes.md) přijímat žádný druh osvětlení, ale spíše být plný jas za všech okolností. To může být případ pro 'zářící' materiály, jako jsou palubní desky automobilů, žárovky, nebo pro data, která již obsahuje statické osvětlení, jako jsou modely získané prostřednictvím [fotogrammetrie](https://en.wikipedia.org/wiki/Photogrammetry).
+*Barevné materiály* jsou jedním z podporovaných [typů materiálu](../../concepts/materials.md) ve vzdáleném vykreslování Azure. Používají se pro [sítě](../../concepts/meshes.md) , které by neměly obdržet žádný druh osvětlení, ale místo toho se musí celý jas zobrazit. Může to být případ pro "záři", jako jsou například řídicí panely aut, žárovky nebo data, která již pocházejí ze statického osvětlení, jako jsou například modely získané prostřednictvím [Photogrammetry](https://en.wikipedia.org/wiki/Photogrammetry).
 
-Barevné materiály jsou účinnější než [PBR materiály](pbr-materials.md) díky jejich jednoduššístínování modelu. Podporují také různé režimy transparentnosti.
+Barevné materiály jsou efektivnější pro vykreslování než [PBR materiálů](pbr-materials.md) z důvodu jejich jednoduššího modelu stínování. Podporují také různé režimy průhlednosti.
 
 ## <a name="common-material-properties"></a>Společné vlastnosti materiálu
 
 Tyto vlastnosti jsou společné pro všechny materiály:
 
-* **albedoColor:** Tato barva se násobí jinými barvami, například barvami *albedoMap* nebo *vertex*. Pokud je u materiálu povolena *průhlednost,* alfa kanál se `1` použije k `0` úpravě krytí, což znamená, že je zcela neprůhledné a znamená to zcela průhledné. Výchozí hodnota je bílá.
+* **albedoColor:** Tato barva se vynásobí ostatními barvami, jako jsou *albedoMap* nebo *vrcholy*. Pokud je pro materiál povolená *průhlednost* , alfa kanál se použije k úpravě krytí, což znamená, `1` že je plně neprůhledný a `0` má velmi transparentní význam. Výchozí hodnota je bílá.
 
   > [!NOTE]
-  > Vzhledem k tomu, že barevné materiály neodrážejí prostředí, stává se plně průhledným barevným materiálem neviditelný. U materiálů [PBR](pbr-materials.md)se to liší .
+  > Vzhledem k tomu, že barevné materiály neodrážejí prostředí, je plně transparentní barevný materiál neviditelný. To se u [materiálů PBR](pbr-materials.md)liší.
 
 * **albedoMap:** [2D textura](../../concepts/textures.md) pro hodnoty albedo na pixel.
 
-* **alphaClipEnabled** a **alphaClipThreshold:** Pokud je *alphaClipEnabled* true, nebudou vykresleny všechny obrazové body, kde je hodnota albedo alpha nižší než *alphaClipThreshold.* Alfa oříznutí lze použít i bez povolení průhlednosti a je mnohem rychlejší k vykreslení. Alfa oříznuté materiály jsou však stále pomalejší než plně neprůhledné materiály. Ve výchozím nastavení je alfa oříznutí zakázáno.
+* **alphaClipEnabled** a **alphaClipThreshold:** Pokud má *alphaClipEnabled* hodnotu true, všechny pixely, kde je hodnota albedo alfa nižší než *alphaClipThreshold* , se nevykreslí. Výstřižek alfa lze použít i bez nutnosti průhlednosti a je mnohem rychlejší pro vykreslování. Oříznuté materiály alfa jsou stále pomalejší pro vykreslování než plně neprůhledné materiály, ale. Ve výchozím nastavení je oříznutí alfa zakázané.
 
-* **textureCoordinateScale** a **textureCoordinateOffset:** Měřítko se vynásobí do souřadnic textury UV, posun se k němu přidá. Lze použít k roztažení a posunu textur. Výchozí měřítko je (1, 1) a posun je (0, 0).
+* **textureCoordinateScale** a **textureCoordinateOffset:** stupnice se vynásobí souřadnicemi textury UV, do které se přidá posun. Dá se použít k roztažení a posunutí textur. Výchozí měřítko je (1, 1) a posun je (0, 0).
 
-* **useVertexColor:** Pokud síť obsahuje barvy vrcholu a tato volba je povolena, barvy vrcholů sítí se vynásobí do *albedoColor* a *albedoMap*. Ve výchozím nastavení jsou barvy vrcholů zakázány.
+* **useVertexColor:** Pokud mřížka obsahuje barvy vrcholu a tato možnost je povolená, vynásobí se barvy vrcholů mřížek na *albedoColor* a *albedoMap*. Ve výchozím nastavení jsou barvy vrcholu zakázané.
 
-* **isDoubleSided:** Pokud je oboustrannost nastavena na hodnotu true, trojúhelníky s tímto materiálem jsou vykresleny i v případě, že se kamera dívá na jejich zadní tváře. Ve výchozím nastavení je tato možnost zakázána. Viz také [Jednostranné vykreslování](single-sided-rendering.md).
+* **isDoubleSided:** Pokud je vlastnost sidedness nastavená na hodnotu true, budou se tyto trojúhelníky s tímto materiálem vykreslovat i v případě, že fotoaparát hledá své zadní plošky. Ve výchozím nastavení je tato možnost zakázána. Viz také [vykreslování na jednom straně](single-sided-rendering.md).
 
 ## <a name="color-material-properties"></a>Vlastnosti barevného materiálu
 
 Následující vlastnosti jsou specifické pro barevné materiály:
 
-* **vertexMix:** Tato hodnota `0` `1` mezi a určuje, jak silně barva vrcholu v [síti](../../concepts/meshes.md) přispívá ke konečné barvě. Při výchozí hodnotě 1 se barva vrcholu plně vynásobí do barvy albedo. S hodnotou 0 jsou barvy vrcholu zcela ignorovány.
+* **vertexMix:** Tato hodnota mezi `0` a `1` určuje, jak silně se barva vrcholu v [mřížce](../../concepts/meshes.md) přispěje k konečné barvě. U výchozí hodnoty 1 je barva vrcholu vynásobena plnou barvou albedo. S hodnotou 0 se barvy vrcholu ignorují úplně.
 
-* **transparencyMode:** Na rozdíl od [materiálů PBR](pbr-materials.md)rozlišují barevné materiály mezi různými režimy průhlednosti:
+* **transparencyMode:** V rozporu s [materiály PBR](pbr-materials.md)se barevné materiály liší v různých režimech průhlednosti:
 
-  1. **Neprůhledné:** Výchozí režim zakáže průhlednost. Alfa výřez je stále možné, i když, a měly by být upřednostňovány, pokud je dostačující.
+  1. **Neprůhledný:** Výchozí režim zakáže průhlednost. Oříznutí alfa je stále možné, i když, a pokud je to dostatečné, měla by být upřednostňovaná.
   
-  1. **Alfablended:** Tento režim je podobný režimu průhlednosti pro materiály PBR. Měl by být použit pro průhledných materiálů, jako je sklo.
+  1. **AlphaBlended:** Tento režim je podobný režimu průhlednosti pro materiály PBR. Měl by se použít pro zobrazení materiálů jako skla.
 
-  1. **Doplňková látka:** Tento režim je nejjednodušší a nejúčinnější režim průhlednosti. Příspěvek materiálu je přidán k vykreslenému obrazu. Tento režim lze použít k simulaci zářících (ale stále průhledných) objektů, jako jsou značky používané pro zvýraznění důležitých objektů.
+  1. **Doplňková:** Tento režim je nejjednodušším a nejefektivnějším režimem transparentnosti. Příspěvek materiálu se přidá do vykreslené image. Tento režim lze použít k simulaci záře (ale stále transparentních) objektů, jako jsou například značky používané pro zvýraznění důležitých objektů.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [PBR materiály](pbr-materials.md)
+* [Materiály PBR](pbr-materials.md)
 * [Textury](../../concepts/textures.md)
-* [Ok](../../concepts/meshes.md)
+* [Sítě](../../concepts/meshes.md)

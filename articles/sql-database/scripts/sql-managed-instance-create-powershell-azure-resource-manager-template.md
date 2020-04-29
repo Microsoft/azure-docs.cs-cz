@@ -1,6 +1,6 @@
 ---
 title: Příklad šablony – vytvoření spravované instance v Azure SQL Database
-description: Pomocí tohoto ukázkového skriptu Azure PowerShellu vytvořte spravovanou instanci v Azure SQL Database.
+description: Pomocí tohoto Azure PowerShell skriptu můžete vytvořit spravovanou instanci v Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,35 +12,35 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 03/12/2019
 ms.openlocfilehash: e5be8c9441be5ca441a5c0f7c4444c2edbdc7a95
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80811219"
 ---
-# <a name="use-powershell-with-azure-resource-manager-template-to-create-a-managed-instance-in-azure-sql-database"></a>Vytvoření spravované instance v Azure SQL Database pomocí PowerShellu se šablonou Azure Resource Manager
+# <a name="use-powershell-with-azure-resource-manager-template-to-create-a-managed-instance-in-azure-sql-database"></a>Použití PowerShellu se šablonou Azure Resource Manager k vytvoření spravované instance v Azure SQL Database
 
-Spravovaná instance Azure SQL Database se dá vytvořit pomocí knihovny Azure PowerShell a šablon Azure Resource Manager.
+Azure SQL Database spravovanou instanci lze vytvořit pomocí Azure PowerShell knihovny a šablon Azure Resource Manager.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat prostředí PowerShell místně, tento kurz vyžaduje AZ PowerShell 1.4.0 nebo novější. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít AZ PowerShell 1.4.0 nebo novější. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
-Příkazy Azure PowerShellu můžou začít nasazovat pomocí předdefinované šablony Azure Resource Manageru. V šabloně lze zadat následující vlastnosti:
+Příkazy Azure PowerShell mohou spustit nasazení pomocí předdefinované Azure Resource Manager šablony. V šabloně lze zadat následující vlastnosti:
 
 - Název instance
 - Uživatelské jméno a heslo správce SQL.
 - Velikost instance (počet jader a maximální velikost úložiště).
-- Virtuální síť a podsíť, kde bude instance umístěna.
-- Řazení instance na úrovni serveru (náhled).
+- Virtuální síť a podsíť, do které bude instance umístěna.
+- Kolace na úrovni serveru instance (Preview).
 
-Název instance, uživatelské jméno správce SQL, virtuální síť/podsíť a řazení nelze později změnit. Ostatní vlastnosti instance lze změnit.
+Název instance, uživatelské jméno správce SQL, virtuální síť/podsíť a kolaci nelze později změnit. Vlastnosti jiných instancí lze změnit.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tato ukázka předpokládá, že jste [vytvořili platné síťové prostředí](../sql-database-managed-instance-create-vnet-subnet.md) nebo [upravili existující virtuální síť](../sql-database-managed-instance-configure-vnet-subnet.md) pro spravovanou instanci. Ukázka používá rutiny [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment) a [Get-AzVirtualNetwork,](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) takže se ujistěte, že jste nainstalovali následující moduly prostředí PowerShell:
+V této ukázce se předpokládá, že jste [vytvořili platné síťové prostředí](../sql-database-managed-instance-create-vnet-subnet.md) nebo [upravili stávající virtuální síť](../sql-database-managed-instance-configure-vnet-subnet.md) pro spravovanou instanci. Ukázka používá rutiny [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment) a [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) , takže se ujistěte, že máte nainstalované následující moduly PowerShellu:
 
 ```powershell
 Install-Module Az.Network
@@ -49,7 +49,7 @@ Install-Module Az.Resources
 
 ## <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
 
-Následující obsah by měl být umístěn do souboru, který představuje šablonu, která bude použita k vytvoření instance:
+Následující obsah by měl být umístěn v souboru, který představuje šablonu, která bude použita k vytvoření instance:
 
 ```json
 {
@@ -100,9 +100,9 @@ Následující obsah by měl být umístěn do souboru, který představuje šab
 }
 ```
 
-Předpoklad em je, že virtuální síť Azure se správně nakonfigurovanou podsítí už existuje. Pokud nemáte správně nakonfigurovanou podsíť, připravte síťové prostředí pomocí samostatné [šablony Azure Resource Managed,](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) která může být spuštěna nezávisle nebo zahrnuta do této šablony.
+Předpokladem je, že virtuální síť Azure s řádně nakonfigurovanou podsítí již existuje. Pokud nemáte správně nakonfigurovanou podsíť, připravte síťové prostředí pomocí samostatné [spravované šablony prostředků Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) , kterou je možné spustit nezávisle nebo do této šablony.
 
-Uložte obsah tohoto souboru jako soubor JSON, vložte cestu k souboru do následujícího skriptu prostředí PowerShell a změňte názvy objektů ve skriptu:
+Uložte obsah tohoto souboru jako soubor. JSON, vložte cestu k souboru do následujícího skriptu PowerShellu a změňte názvy objektů ve skriptu:
 
 ```powershell
 $subscriptionId = "ed827499-xxxx-xxxx-xxxx-xxxxxxxxxx"

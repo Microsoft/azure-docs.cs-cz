@@ -1,7 +1,7 @@
 ---
-title: Ordinální předbudovaná entita – LUIS
+title: Ordinální předem sestavená entita – LUIS
 titleSuffix: Azure Cognitive Services
-description: Tento článek obsahuje informace o předem sestavené entitě v jazyce Porozumění (LUIS).
+description: Tento článek obsahuje pořadí předem sestavených informací o entitách v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,27 +12,27 @@ ms.topic: reference
 ms.date: 10/14/2019
 ms.author: diberry
 ms.openlocfilehash: bb3bb27db48255f534e873ed4e93ac62f07016af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78273446"
 ---
-# <a name="ordinal-prebuilt-entity-for-a-luis-app"></a>Řadová předem připravená entita pro aplikaci LUIS
-Číslo číslo je číselná reprezentace objektu uvnitř `first` `second`sady: , , `third`. Vzhledem k tomu, že tato entita je již trénovaný, není nutné přidávat příklad projevy obsahující ordinal záměry aplikace. Ordinální entita je podporována v [mnoha kulturách](luis-reference-prebuilt-entities.md).
+# <a name="ordinal-prebuilt-entity-for-a-luis-app"></a>Pořadí předem sestavené entity pro aplikaci LUIS
+Ordinální číslo je numerická reprezentace objektu v rámci sady: `first`, `second`,. `third` Vzhledem k tomu, že je tato entita již vyškolená, nemusíte do záměrů aplikace přidat příklad projevy obsahující ordinální číslo. V [mnoha kulturách](luis-reference-prebuilt-entities.md)je podporována ordinální entita.
 
-## <a name="types-of-ordinal"></a>Typy ordinálních
-Ordinal je spravován z úložiště GitHub [s textem pro rozpoznávání](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L45)
+## <a name="types-of-ordinal"></a>Typy pořadových čísel
+Ordinální číslo je spravované z úložiště pro [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L45) v GitHubu.
 
-## <a name="resolution-for-prebuilt-ordinal-entity"></a>Rozlišení pro předem sestavenou ordinální entitu
+## <a name="resolution-for-prebuilt-ordinal-entity"></a>Řešení pro předem sestavenou ordinální entitu
 
-Pro dotaz jsou vráceny následující objekty entity:
+Pro dotaz se vrátí následující objekty entity:
 
 `Order the second option`
 
 #### <a name="v3-response"></a>[Odpověď V3](#tab/V3)
 
-Následující JSON je `verbose` s parametrem nastaveným na `false`:
+Následující kód JSON je s `verbose` parametrem nastaveným `false`na:
 
 ```json
 "entities": {
@@ -41,8 +41,8 @@ Následující JSON je `verbose` s parametrem nastaveným na `false`:
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[V3 podrobná odpověď](#tab/V3-verbose)
-Následující JSON je `verbose` s parametrem nastaveným na `true`:
+#### <a name="v3-verbose-response"></a>[Podrobná odpověď V3](#tab/V3-verbose)
+Následující kód JSON je s `verbose` parametrem nastaveným `true`na:
 
 ```json
 "entities": {
@@ -67,9 +67,9 @@ Následující JSON je `verbose` s parametrem nastaveným na `true`:
 }
 ```
 
-#### <a name="v2-response"></a>[Odpověď V2](#tab/V2)
+#### <a name="v2-response"></a>[Odpověď v2](#tab/V2)
 
-Následující příklad ukazuje rozlišení **entity builtin.ordinal.**
+Následující příklad ukazuje řešení entity **Builtin. Ordinal** .
 
 ```json
 "entities": [
@@ -88,6 +88,6 @@ Následující příklad ukazuje rozlišení **entity builtin.ordinal.**
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o [koncovém bodu predikce V3](luis-migration-api-v3.md).
+Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
 
-Seznamte se s [entitami OrdinalV2](luis-reference-prebuilt-ordinal-v2.md), [telefonním číslem](luis-reference-prebuilt-phonenumber.md)a [teplotou.](luis-reference-prebuilt-temperature.md)
+Přečtěte si informace o [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md), [telefonním číslu](luis-reference-prebuilt-phonenumber.md)a [teplotních](luis-reference-prebuilt-temperature.md) entitách.

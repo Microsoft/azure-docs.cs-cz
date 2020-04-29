@@ -1,7 +1,7 @@
 ---
-title: Přepis konverzace v reálném čase (náhled) - služba řeči
+title: Přepisy konverzací v reálném čase (Preview) – služba Speech
 titleSuffix: Azure Cognitive Services
-description: Naučte se používat přepis konverzace v reálném čase s sadou Speech SDK. K dispozici pro C++, C# a Java.
+description: Naučte se používat přepis konverzací v reálném čase s využitím sady Speech SDK. K dispozici pro jazyky C++, C# a Java.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -11,46 +11,46 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: weixu
 ms.openlocfilehash: e2c9c0aadc8e443f07f60f3ccddb4a1b6dd661b1
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80520913"
 ---
-# <a name="real-time-conversation-transcription-preview"></a>Přepis konverzace v reálném čase (náhled)
+# <a name="real-time-conversation-transcription-preview"></a>Přepis konverzace v reálném čase (Preview)
 
-Rozhraní **CONVERSATIONTranscriber** rozhraní Api sady Speech SDK umožňuje přepsat schůzky a další konverzace s možností přidat, odebrat `PullStream` a `PushStream`identifikovat více účastníků streamováním zvuku do služby Řeči pomocí nebo . Toto téma vyžaduje, abyste věděli, jak používat řeč na text s sadou Speech SDK (verze 1.8.0 nebo novější). Další informace naleznete v tématu [Co jsou služby řeči](overview.md).
+Rozhraní **ConversationTranscriber** API sady Speech SDK umožňuje přepisovat schůzky a další konverzace s možností přidávat, odebírat a identifikovat více účastníků streamování zvuku do služby Speech pomocí `PullStream` nebo. `PushStream` V tomto tématu se dozvíte, jak používat převod řeči na text pomocí sady Speech SDK (verze 1.8.0 nebo novější). Další informace najdete v tématu [co jsou hlasové služby](overview.md).
 
 ## <a name="limitations"></a>Omezení
 
-- Rozhraní CONVERSATIONTranscriber API je podporováno pro C++, C# a Java ve Windows, Linuxu a Androidu.
-- V současné době k dispozici v jazycích "en US" a "zh-CN" v následujících oblastech: _centralus_ a _eastasia_.
-- Vyžaduje 7-mic kruhové vícemikrofonní pole s datovým proudem odkazu přehrávání. Mikrofonní pole by mělo splňovat [naše specifikace](https://aka.ms/sdsdk-microphone).
-- Sada [SDK pro řečová zařízení](speech-devices-sdk.md) poskytuje vhodná zařízení a ukázkovou aplikaci demonstrující přepis konverzace.
+- Rozhraní ConversationTranscriber API se podporuje pro jazyky C++, C# a Java v systémech Windows, Linux a Android.
+- Aktuálně k dispozici v jazycích "en-US" a "zh-CN" v následujících oblastech: _centralus_ a _eastasia_.
+- Vyžaduje pro datový proud s odkazem na přehrávání více než 7 mikrofon. Pole mikrofonu by mělo splňovat [naše specifikace](https://aka.ms/sdsdk-microphone).
+- [Sada Speech Devices SDK](speech-devices-sdk.md) nabízí vhodná zařízení a ukázkovou aplikaci, která demonstruje přepis konverzace.
 
-## <a name="optional-sample-code-resources"></a>Volitelné ukázkové zdroje kódu
+## <a name="optional-sample-code-resources"></a>Volitelné ukázkové prostředky kódu
 
-Sada Speech Device SDK poskytuje ukázkový kód v jazyce Java pro snímání zvuku v reálném čase pomocí 8 kanálů.
+Sada Speech SDK pro zařízení nabízí vzorový kód v jazyce Java pro záznam zvuku v reálném čase pomocí 8 kanálů.
 
-- [Ukázkový kód zařízení ROOBO](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Android/Speech%20Devices%20SDK%20Starter%20App/example/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/sdsdkstarterapp/ConversationTranscription.java)
-- [Ukázkový kód sady Azure Kinect Dev Kit](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Windows_Linux/SampleDemo/src/com/microsoft/cognitiveservices/speech/samples/Cts.java)
+- [Vzorový kód zařízení ROOBO](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Android/Speech%20Devices%20SDK%20Starter%20App/example/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/sdsdkstarterapp/ConversationTranscription.java)
+- [Vzorový kód pro Azure Kinect dev Kit](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Windows_Linux/SampleDemo/src/com/microsoft/cognitiveservices/speech/samples/Cts.java)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Předplatné služby Řeči. Pokud předplatné zkušební verze řeči nemáte, můžete si ho [získat.](https://azure.microsoft.com/try/cognitive-services/)
+Předplatné služby Speech. [Zkušební předplatné můžete získat](https://azure.microsoft.com/try/cognitive-services/) , pokud ho nemáte.
 
-## <a name="create-voice-signatures"></a>Vytváření hlasových podpisů
+## <a name="create-voice-signatures"></a>Vytvoření podpisů hlasu
 
-Prvním krokem je vytvoření hlasových podpisů pro účastníky konverzace pro efektivní identifikaci reproduktoru.
+Prvním krokem je vytvoření hlasových podpisů účastníkům konverzace za účelem efektivní identifikace mluvčího.
 
-### <a name="audio-input-requirements"></a>Požadavky na vstup zvuku
+### <a name="audio-input-requirements"></a>Požadavky na zvukové vstupy
 
-- Vstupní soubor zvukových vln pro vytváření hlasových podpisů by měl být v 16bitových vzorcích, vzorkovací frekvenci 16 kHz a ve formátu jednoho kanálu (mono).
-- Doporučená délka pro každý zvukový vzorek je mezi třiceti sekundami a dvěma minutami.
+- Vstupní zvukový soubor Wave pro vytváření podpisů hlasu by měl být v 16bitovém vzorcích, 16 kHz vzorkování a ve formátu jediného kanálu (mono).
+- Doporučená délka každého zvukového vzorku je mezi třiceti sekund a dvě minuty.
 
 ### <a name="sample-code"></a>Ukázka kódu
 
-Následující příklad ukazuje dva různé způsoby vytvoření [hlasového podpisu pomocí rozhraní REST API](https://aka.ms/cts/signaturegenservice) v jazyce C#. Všimněte si, že budete muset nahradit skutečné informace o "YourSubscriptionKey", název souboru wave `{region}` pro "speakerVoice.wav", a váš region pro a "YourServiceRegion"_(centralus_ nebo _eastasia_).
+Následující příklad ukazuje dva různé způsoby vytvoření hlasového podpisu [pomocí REST API](https://aka.ms/cts/signaturegenservice) v jazyce C#. Všimněte si, že budete muset nahradit skutečné informace o "YourSubscriptionKey", názvu souboru Wave pro "speakerVoice. wav" a vaší oblasti `{region}` "YourServiceRegion" (_centralus_ nebo _eastasia_).
 
 ```csharp
 class Program
@@ -102,20 +102,20 @@ class Program
 }
 ```
 
-## <a name="transcribe-conversations"></a>Přepis konverzace
+## <a name="transcribe-conversations"></a>Konverzace přepisovat
 
-Následující ukázkový kód ukazuje, jak přepsat konverzace v reálném čase pro tři reproduktory. Předpokládá, že jste již vytvořili hlasové podpisy pro každého řečníka, jak je uvedeno výše. Nahradit skutečné informace o "YourSubscriptionKey" a "YourServiceRegion" při vytváření SpeechConfig objektu.
+Následující vzorový kód ukazuje, jak přepisovat konverzace v reálném čase pro tři reproduktory. Předpokládá se, že jste už vytvořili hlasový podpis pro každého mluvčího, jak je uvedeno výše. Při vytváření objektu SpeechConfig nahraďte skutečné informace o "YourSubscriptionKey" a "YourServiceRegion".
 
-Ukázkový kód zdůrazňuje patří:
+Příklady ukázek kódu zahrnují:
 
-- Vytvoření `Conversation` objektu `SpeechConfig` z objektu pomocí identifikátoru schůzky generovaného pomocí`Guid.NewGuid()`
-- Vytvoření `ConversationTranscriber` objektu a připojení `JoinConversationAsync()` konverzace s chcete-li zahájit přepis
-- Registrace zajímavých událostí
-- Přidání nebo odebrání účastníků konverzace pomocí objektu Konverzace
+- Vytvoření `Conversation` objektu z `SpeechConfig` objektu pomocí identifikátoru schůzky generovaného pomocí`Guid.NewGuid()`
+- Vytvoření `ConversationTranscriber` objektu a zapojení do konverzace s nástrojem `JoinConversationAsync()` ke spuštění přepisu
+- Registrace událostí zájmu
+- Přidání nebo odebrání účastníků konverzace pomocí objektu konverzace
 - Streamování zvuku
-- V řeči SDK verze 1.9.0 `int` a `string` dále oba typy hodnot jsou podporovány v poli verze hlasového podpisu.
+- V sadě Speech SDK verze 1.9.0 a vyšší jsou podporovány `int` i `string` typy hodnot v poli verze hlasového podpisu.
 
-Přepis a identifikátor mluvčího se vrátí v registrovaných událostech.
+Přepis a identifikátor mluvčího se vrátí do registrovaných událostí.
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;

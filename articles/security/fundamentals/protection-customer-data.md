@@ -1,6 +1,6 @@
 ---
 title: Ochrana zákaznických dat v Azure
-description: Tento článek se zabývá tím, jak Azure chrání zákaznická data.
+description: Tento článek popisuje, jak Azure chrání zákaznická data.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,72 +16,72 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 630304bec17dd34befab4e5bd9f1cfdfb6505645
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80811422"
 ---
 # <a name="azure-customer-data-protection"></a>Ochrana zákaznických dat Azure   
-Přístup k zákaznickým datům ze strany pracovníků společnosti Microsoft a pracovníků odborné pomoci je ve výchozím nastavení odepřen. Při udělení přístupu k zákaznickým datům je vyžadováno schválení vedení a poté je přístup pečlivě spravován a protokolován. Požadavky na řízení přístupu jsou stanoveny následujícími zásadami zabezpečení Azure:
+Přístup k zákaznickým datům podle operací Microsoftu a pracovníků podpory je ve výchozím nastavení zakázaný. Když se udělí přístup k zákaznickým datům, vyžaduje se schválení vedoucího a pak se pečlivě spravuje a protokoluje přístup. Požadavky na řízení přístupu jsou navázány následujícími zásadami zabezpečení Azure:
 
 - Ve výchozím nastavení není přístup k zákaznickým datům.
-- Žádné účty uživatelů nebo správců na virtuálních počítačích zákazníků (VM).
-- Udělte nejnižší oprávnění, která je vyžadována k dokončení úkolu. auditace a protokolování žádostí o přístup.
+- Žádné účty uživatele nebo správce na virtuálních počítačích zákazníka (VM).
+- Udělte nejnižší oprávnění, které je nutné k dokončení úkolu. požadavky na audit a přístup do protokolu.
 
-Pracovníkům podpory Azure přiřazuje Microsoft jedinečné podnikové účty služby Active Directory. Azure se spoléhá na microsoft corporate active directory, spravovaný Microsoft Information Technology (MSIT), pro řízení přístupu ke klíčovým informačním systémům. Je vyžadováno vícefaktorové ověřování a přístup je udělojen pouze ze zabezpečených konzol.
+Pracovníkům podpory Azure jsou společnosti Microsoft přiřazeny jedinečné podnikové účty služby Active Directory. Azure se spoléhá na podnikovou službu Active Directory, kterou spravuje Microsoft Information Technology (MSIT), za účelem řízení přístupu ke klíčovým informacím v systémech. Vícefaktorové ověřování je povinné a přístup je udělen pouze ze zabezpečených konzol.
 
-Všechny pokusy o přístup jsou monitorovány a lze je zobrazit prostřednictvím základní sady sestav.
+Všechny pokusy o přístup se monitorují a dají se zobrazit prostřednictvím základní sady sestav.
 
 ## <a name="data-protection"></a>Ochrana dat
-Azure poskytuje zákazníkům silné zabezpečení dat, a to jak ve výchozím nastavení, tak jako možnosti zákazníků.
+Azure poskytuje zákazníkům se silným zabezpečením dat, a to jak ve výchozím nastavení, tak i jako možnosti zákazníka.
 
-**Oddělení dat**: Azure je služba s více klienty, což znamená, že více zákaznických nasazení a virtuálních počítačích se ukládá na stejném fyzickém hardwaru. Azure používá logickou izolaci k oddělení dat každého zákazníka od dat ostatních. Segregace poskytuje rozsah a ekonomické výhody služeb pro více klientů a zároveň důsledně brání zákazníkům v přístupu k datům druhé strany.
+**Oddělení dat**: Azure je víceklientská služba, což znamená, že více zákaznických nasazení a virtuálních počítačů je uloženo na stejném fyzickém hardwaru. Azure používá logickou izolaci k oddělení dat jednotlivých zákazníků od dat ostatních. Oddělení poskytuje škálu a ekonomické výhody pro víceklientské služby a současně zajišťuje přísnou prevenci zákazníkům přístup k datům jiného typu.
 
-**Ochrana dat v klidovém stavu**: Zákazníci jsou zodpovědní za to, že data uložená v Azure budou šifrovaná v souladu s jejich standardy. Azure nabízí širokou škálu možností šifrování, které zákazníkům poskytují flexibilitu při výběru řešení, které nejlépe vyhovuje jejich potřebám. Azure Key Vault pomáhá zákazníkům snadno udržovat kontrolu nad klíči, které používají cloudové aplikace a služby k šifrování dat. Azure Disk Encryption umožňuje zákazníkům šifrovat virtuální počítače. Azure Storage Service Encryption umožňuje šifrovat všechna data, která jsou umístěna do účtu úložiště zákazníka.
+**Ochrana dat v klidovém**stavu: zákazníci zodpovídají za zajištění, že data uložená v Azure jsou zašifrovaná v souladu s jejich standardy. Azure nabízí rozsáhlou škálu možností šifrování, která zákazníkům poskytuje flexibilitu při výběru řešení, které nejlépe vyhovuje jejich potřebám. Azure Key Vault pomáhá zákazníkům snadno udržovat kontrolu nad klíči, které používají cloudové aplikace a služby k šifrování dat. Azure Disk Encryption umožňuje zákazníkům šifrovat virtuální počítače. Šifrování služby Azure Storage umožňuje šifrovat všechna data, která jsou umístěna do účtu úložiště zákazníka.
 
-**Ochrana dat na cestě**: Zákazníci mohou povolit šifrování pro provoz mezi vlastními virtuálními počítačůmi a koncovými uživateli. Azure chrání data při přenosu do nebo z vnějších součástí a data v tranzitu interně, například mezi dvěma virtuálními sítěmi. Azure používá standardní protokol TLS (Transport Layer Security) 1.2 nebo novější s 2 048bitovými šifrovacími klíči RSA/SHA256, jak doporučuje CESG/NCSC, k šifrování komunikace mezi:
+**Ochrana před**přenosem dat: zákazníci můžou povolit šifrování pro přenosy mezi vlastními virtuálními počítači a koncovými uživateli. Azure chrání data při přenosu mezi externími součástmi a přenášenými daty interně, například mezi dvěma virtuálními sítěmi. Azure používá standardní protokol TLS (Transport Layer Security) 1,2 nebo novější 2 048 s CESG šifrovacími klíči RSA/SHA256, jak to doporučila/NCSC, k šifrování komunikace mezi těmito službami:
 
-- Zákazník a cloud.
-- Interně mezi systémy Azure a datovými centry.
+- Zákazník a Cloud.
+- Interně mezi systémy a datacentry Azure.
 
-**Šifrování**: Šifrování dat v úložišti a při přenosu mohou zákazníci nasadit jako osvědčený postup pro zajištění důvěrnosti a integrity dat. Pro zákazníky je jednoduché nakonfigurovat cloudové služby Azure tak, aby používaly TLS k ochraně komunikace před internetem a dokonce i mezi virtuálními počítači hostovanými v Azure.
+**Šifrování**: šifrování dat v úložišti a přenosu je možné nasadit zákazníky jako osvědčený postup pro zajištění důvěrnosti a integrity dat. Zákazníci můžou nakonfigurovat své cloudové služby Azure tak, aby používaly protokol TLS k ochraně komunikace z Internetu a dokonce i mezi virtuálními počítači hostovanými v Azure.
 
-**Redundance dat**: Společnost Microsoft pomáhá zajistit, aby byla data chráněna v případě kybernetického útoku nebo fyzického poškození datového centra. Zákazníci se mohou rozhodnout pro:
+**Redundance dat**: Microsoft pomáhá zajistit, aby data byla chráněna v případě, že dojde k cyberattack nebo fyzickému poškození datacentra. Zákazníci se můžou rozhodnout pro:
 
-- Úložiště v zemi nebo v oblasti pro dodržování předpisů nebo latenci.
-- Úložiště mimo zemi/mimo oblast pro účely zabezpečení nebo zotavení po havárii.
+- Úložiště v zemi/v oblasti pro požadavky na dodržování předpisů nebo latenci.
+- Úložiště mimo zemi nebo mimo oblast pro účely zabezpečení nebo zotavení po havárii.
 
-Data mohou být replikována v rámci vybrané zeměpisné oblasti pro redundanci, ale nelze je přenášet mimo ni. Zákazníci mají několik možností replikace dat, včetně počtu kopií a počtu a umístění datových center replikace.
+Data je možné replikovat v rámci vybrané geografické oblasti pro redundanci, ale nelze je přenést mimo ni. Zákazníci mají více možností pro replikaci dat, včetně počtu kopií a počtu a umístění datových center replikace.
 
 Při vytváření účtu úložiště vyberte jednu z následujících možností replikace:
 
-- **Místně redundantní úložiště (LRS):** Místně redundantní úložiště udržuje tři kopie dat. LRS se replikuje třikrát v rámci jednoho zařízení v jedné oblasti. LRS chrání vaše data před běžnými selháními hardwaru, ale ne před selháním jednoho zařízení.
-- **Zónově redundantní úložiště (ZRS):** Zónově redundantní úložiště udržuje tři kopie dat. ZRS je replikován třikrát ve dvou až třech zařízeních, aby poskytoval vyšší odolnost než LRS. Replikace probíhá v rámci jedné oblasti nebo ve dvou oblastech. ZRS pomáhá zajistit, že vaše data jsou trvalá v rámci jedné oblasti.
-- **Geograficky redundantní úložiště (GRS):** Geograficky redundantní úložiště je při jeho vytváření ve výchozím nastavení povoleno pro váš účet úložiště. GRS udržuje šest kopií dat. S GRS jsou vaše data replikována třikrát v rámci primární oblasti. Data jsou také replikována třikrát v sekundární oblasti stovky kilometrů od primární oblasti, což poskytuje nejvyšší úroveň odolnosti. V případě selhání v primární oblasti Azure Storage převzetí služby při selhání do sekundární oblasti. GRS pomáhá zajistit, že vaše data jsou trvanlivá ve dvou samostatných oblastech.
+- **Místně redundantní úložiště (LRS)**: místně redundantní úložiště uchovává tři kopie vašich dat. LRS se replikuje třikrát v rámci jednoho zařízení v jedné oblasti. LRS chrání vaše data před normálním selháním hardwaru, ale ne proti selhání jednoho zařízení.
+- **Úložiště redundantní v zóně (ZRS)**: úložiště redundantní v zóně uchovává tři kopie dat. ZRS se replikuje třikrát po dvou až třech zařízeních, aby se zajistila vyšší odolnost než LRS. Replikace probíhá v jedné oblasti nebo ve dvou oblastech. ZRS pomáhá zajistit, aby vaše data byla odolná v rámci jedné oblasti.
+- **Geograficky redundantní úložiště (GRS)**: geograficky redundantní úložiště je při vytváření účtu úložiště ve výchozím nastavení povolené. GRS udržuje šest kopií dat. V GRS se vaše data replikují třikrát v rámci primární oblasti. Vaše data se taky replikují třikrát v sekundární oblasti od primární oblasti po stovkách kilometrů a poskytují nejvyšší úroveň trvanlivosti. V případě selhání v primární oblasti Azure Storage převzetí služeb při selhání do sekundární oblasti. GRS pomáhá zajistit, aby vaše data byla odolná ve dvou různých oblastech.
 
-**Zničení dat**: Když zákazníci odstraní data nebo opustí Azure, Microsoft dodržuje přísné standardy pro přepsání prostředků úložiště před jejich opětovným použitím, stejně jako fyzické zničení vyřazeného hardwaru. Společnost Microsoft provede úplné odstranění dat na žádost zákazníka a po ukončení smlouvy.
+**Zničení dat**: Když zákazníci odstraňují data nebo odejdou z Azure, společnost Microsoft je přísné standardy pro přepsání prostředků úložiště před jejich opětovným použitím, jakož i fyzické zničení vyřazeného hardwaru. Microsoft provádí kompletní odstraňování dat na žádost zákazníka a ukončení smlouvy.
 
 ## <a name="customer-data-ownership"></a>Vlastnictví zákaznických dat
-Společnost Microsoft nekontroluje, neschvaluje ani nemonitoruje aplikace, které zákazníci nasazují do Azure. Microsoft navíc neví, jaký druh dat se zákazníci rozhodnou v Azure ukládat. Společnost Microsoft si nenárokuje vlastnictví dat nad informacemi o zákaznících, které jsou zadány do Azure.
+Microsoft nekontroluje, schválí ani nesleduje aplikace, které zákazníci nasazují do Azure. Společnost Microsoft navíc neví, jaký druh dat si zákazníci můžou uložit v Azure. Microsoft nenárokuje vlastnictví dat na informace o zákaznících, které jsou zadané v Azure.
 
 ## <a name="records-management"></a>Správa záznamů
-Azure zavedla interní požadavky na uchovávání záznamů pro back-endová data. Zákazníci jsou zodpovědní za identifikaci svých vlastních požadavků na uchovávání záznamů. U záznamů, které jsou uložené v Azure, jsou zákazníci zodpovědní za extrahování dat a zachování jejich obsahu mimo Azure po dobu uchovávání zadanou zákazníkem.
+Azure navázal interní požadavky na uchovávání záznamů pro data back-endu. Zákazníci zodpovídají za identifikaci vlastních požadavků na uchovávání záznamů. U záznamů uložených v Azure zodpovídá zákazníkům za extrakci svých dat a uchování jejich obsahu mimo Azure pro dobu uchování určenou zákazníkem.
 
-Azure umožňuje zákazníkům exportovat data a auditovat sestavy z produktu. Exporty jsou uloženy místně zachovat informace pro zákazníkem definované období uchování.
+Azure umožňuje zákazníkům exportovat data a auditovat sestavy z produktu. Exporty se ukládají místně, aby se zachovaly informace pro dobu uchovávání definované zákazníkem.
 
-## <a name="electronic-discovery-e-discovery"></a>Elektronické zjišťování (e-discovery)
-Zákazníci Azure jsou zodpovědní za splnění požadavků na elektronické zjišťování při používání služeb Azure. Pokud zákazníci Azure musí zachovat svá zákaznická data, můžou je exportovat a ukládat místně. Zákazníci mohou navíc požadovat exporty svých dat z oddělení podpory zákazníků Azure. Kromě toho, že Azure umožňuje zákazníkům exportovat svá data, provádí rozsáhlé protokolování a interní monitorování.
+## <a name="electronic-discovery-e-discovery"></a>Elektronické zjišťování (e-Discovery)
+Zákazníci Azure zodpovídají za dodržování požadavků e-Discovery při používání služeb Azure. Pokud si zákazníci Azure musí zachovat zákaznická data, můžou data exportovat a uložit místně. Zákazníci si navíc můžou vyžádat export svých dat z oddělení zákaznické podpory Azure. Kromě umožnění zákazníkům, aby mohli exportovat svá data, Azure provede interní protokolování a monitorování.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o tom, co Microsoft dělá pro zabezpečení infrastruktury Azure, najdete v tématu:
+Další informace o tom, co Microsoft dělá k zabezpečení infrastruktury Azure, najdete tady:
 
-- [Zařízení Azure, prostory a fyzické zabezpečení](physical-security.md)
+- [Zařízení, místní a fyzické zabezpečení Azure](physical-security.md)
 - [Dostupnost infrastruktury Azure](infrastructure-availability.md)
-- [Součásti a hranice informačního systému Azure](infrastructure-components.md)
+- [Komponenty a hranice informačních systémů Azure](infrastructure-components.md)
 - [Architektura sítě Azure](infrastructure-network.md)
 - [Produkční síť Azure](production-network.md)
 - [Funkce zabezpečení Azure SQL Database](infrastructure-sql.md)
-- [Produkční operace a správa Azure](infrastructure-operations.md)
+- [Provozní provoz a Správa Azure](infrastructure-operations.md)
 - [Monitorování infrastruktury Azure](infrastructure-monitoring.md)
 - [Integrita infrastruktury Azure](infrastructure-integrity.md)

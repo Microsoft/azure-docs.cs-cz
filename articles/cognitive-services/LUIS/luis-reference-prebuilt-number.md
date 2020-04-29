@@ -1,7 +1,7 @@
 ---
-title: Předestavěná entita číslo – LUIS
+title: Počet předem sestavených entit – LUIS
 titleSuffix: Azure Cognitive Services
-description: Tento článek obsahuje informace o předem sestavené entitě číslo v jazyce porozumění (LUIS).
+description: Tento článek obsahuje počet předem sestavených informací o entitách v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,17 +12,17 @@ ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
 ms.openlocfilehash: 85e3589d7467691e2b9a11879510ab980bbd875a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78273466"
 ---
-# <a name="number-prebuilt-entity-for-a-luis-app"></a>Číslo předem sestavené entity pro aplikaci LUIS
-Existuje mnoho způsobů, jak číselné hodnoty se používají ke kvantifikace, vyjádřit a popsat části informací. Tento článek popisuje pouze některé z možných příkladů. Služba LUIS interpretuje změny v projevech uživatelů a vrací konzistentní číselné hodnoty. Vzhledem k tomu, že tato entita je již trénovaný, není nutné přidávat příklad projevy obsahující číslo záměry aplikace.
+# <a name="number-prebuilt-entity-for-a-luis-app"></a>Počet předem sestavené entity pro aplikaci LUIS
+Existuje mnoho způsobů, jak se číselné hodnoty používají k kvantifikaci, vyjádření a popisu částí informací. Tento článek se zabývá pouze některými možnými příklady. LUIS interpretuje variace v uživatelském projevy a vrátí konzistentní číselné hodnoty. Vzhledem k tomu, že je tato entita již vyškolená, nemusíte do záměrů aplikace přidat příklad projevy obsahující číslo.
 
 ## <a name="types-of-number"></a>Typy čísel
-Číslo je spravováno z úložiště GitHub [s textem pro rozpoznávání](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml)
+Číslo je spravované z úložiště pro [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml) v GitHubu.
 
 ## <a name="examples-of-number-resolution"></a>Příklady rozlišení čísel
 
@@ -38,17 +38,17 @@ Existuje mnoho způsobů, jak číselné hodnoty se používají ke kvantifikace
 | ```buy two dozen eggs```    | ```"two dozen"``` | ```"24"``` |
 
 
-Služba LUIS zahrnuje rozpoznanou hodnotu **`builtin.number`** entity v `resolution` poli odpovědi JSON, kterou vrátí.
+LUIS obsahuje rozpoznanou hodnotu **`builtin.number`** entity v `resolution` poli odpovědi JSON, kterou vrátí.
 
-## <a name="resolution-for-prebuilt-number"></a>Rozlišení pro předem sestavené číslo
+## <a name="resolution-for-prebuilt-number"></a>Řešení předem připraveného čísla
 
-Pro dotaz jsou vráceny následující objekty entity:
+Pro dotaz se vrátí následující objekty entity:
 
 `order two dozen eggs`
 
 #### <a name="v3-response"></a>[Odpověď V3](#tab/V3)
 
-Následující JSON je `verbose` s parametrem nastaveným na `false`:
+Následující kód JSON je s `verbose` parametrem nastaveným `false`na:
 
 ```json
 "entities": {
@@ -57,9 +57,9 @@ Následující JSON je `verbose` s parametrem nastaveným na `false`:
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[V3 podrobná odpověď](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[Podrobná odpověď V3](#tab/V3-verbose)
 
-Následující JSON je `verbose` s parametrem nastaveným na `true`:
+Následující kód JSON je s `verbose` parametrem nastaveným `true`na:
 
 ```json
 "entities": {
@@ -83,9 +83,9 @@ Následující JSON je `verbose` s parametrem nastaveným na `true`:
     }
 }
 ```
-#### <a name="v2-response"></a>[Odpověď V2](#tab/V2)
+#### <a name="v2-response"></a>[Odpověď v2](#tab/V2)
 
-Následující příklad ukazuje odpověď JSON z LUIS, která zahrnuje rozlišení hodnoty 24, pro utterance "dva tucty".
+Následující příklad ukazuje odpověď JSON z LUIS, která zahrnuje rozlišení hodnoty 24 pro utterance "2 desítky".
 
 ```json
 "entities": [
@@ -105,6 +105,6 @@ Následující příklad ukazuje odpověď JSON z LUIS, která zahrnuje rozliše
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o [koncovém bodu predikce V3](luis-migration-api-v3.md).
+Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
 
-Informace o [měně](luis-reference-prebuilt-currency.md), [oslnění](luis-reference-prebuilt-ordinal.md)a [procentu](luis-reference-prebuilt-percentage.md).
+Přečtěte si o [měně](luis-reference-prebuilt-currency.md), [ordinálním](luis-reference-prebuilt-ordinal.md)a [procentuálním podílu](luis-reference-prebuilt-percentage.md).

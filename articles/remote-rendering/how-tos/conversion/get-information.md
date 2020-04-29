@@ -6,19 +6,19 @@ ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
 ms.openlocfilehash: d5f843add0649682bae8c472bc50b6beea33bf93
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681516"
 ---
 # <a name="get-information-about-a-converted-model"></a>Získání informací o převedeném modelu
 
-Soubor arrAsset vytvořený konverzní službou je určen výhradně ke spotřebě asanační službou. Může však napodobuje, když chcete získat přístup k informacím o modelu bez spuštění relace vykreslování. Proto služba převodu umístí soubor JSON vedle souboru arrAsset ve výstupním kontejneru. Pokud je například `buggy.gltf` soubor převeden, bude výstupní kontejner `buggy.info.json` obsahovat soubor `buggy.arrAsset`volaný vedle převedeného datového zdroje . Obsahuje informace o zdrojovém modelu, převedeném modelu a o samotném převodu.
+Soubor arrAsset, který je vytvořen pomocí služby pro převod, je určen pouze pro využití ve službě vykreslování. Pokud ale chcete získat přístup k informacím o modelu bez spuštění relace vykreslování, může dojít k nějakým časům. Proto služba převodu umístí soubor JSON vedle souboru arrAsset do výstupního kontejneru. Například pokud je soubor `buggy.gltf` převeden, kontejner výstupu bude obsahovat soubor s názvem `buggy.info.json` vedle převedeného prostředku. `buggy.arrAsset` Obsahuje informace o zdrojovém modelu, převedeném modelu a o samotném převodu.
 
-## <a name="example-info-file"></a>Ukázkový *informační* soubor
+## <a name="example-info-file"></a>Příklad souboru s *informacemi*
 
-Zde je příklad *informačnísoubor* vytvořený převodem `buggy.gltf`souboru s názvem :
+Zde je příklad *informačního* souboru vytvořeného převodem souboru s `buggy.gltf`názvem:
 
 ```JSON
 {
@@ -75,57 +75,57 @@ Zde je příklad *informačnísoubor* vytvořený převodem `buggy.gltf`souboru 
 
 ## <a name="information-in-the-info-file"></a>Informace v informačním souboru
 
-### <a name="the-files-section"></a>Sekce *Soubory*
+### <a name="the-files-section"></a>Oddíl *Files*
 
-Tato část obsahuje poskytnuté názvy souborů.
+Tato část obsahuje názvy souborů, které jsou k dispozici.
 
 * `input`: Název zdrojového souboru.
-* `output`: Název výstupního souboru, pokud uživatel zadal nevýchozí název.
+* `output`: Název výstupního souboru, pokud uživatel zadal jiný než výchozí název.
 
-### <a name="the-conversionsettings-section"></a>Oddíl *conversionSettings*
+### <a name="the-conversionsettings-section"></a>Část *conversionSettings*
 
-Tato část obsahuje kopii [ConversionSettings](configure-model-conversion.md#settings-file) určené při převodu modelu.
+V této části je uložený kopii [ConversionSettings](configure-model-conversion.md#settings-file) , která se zadala při převodu modelu.
 
-### <a name="the-inputinfo-section"></a>Sekce *inputInfo*
+### <a name="the-inputinfo-section"></a>Část *inputInfo*
 
-Tato část zaznamenává informace o formátu zdrojového souboru.
+V této části jsou zaznamenány informace o formátu zdrojového souboru.
 
 * `sourceAssetExtension`: Přípona souboru zdrojového souboru.
 * `sourceAssetFormat`: Popis formátu zdrojového souboru.
 * `sourceAssetFormatVersion`: Verze formátu zdrojového souboru.
 * `sourceAssetGenerator`: Název nástroje, který vygeneroval zdrojový soubor, pokud je k dispozici.
 
-### <a name="the-inputstatistics-section"></a>Sekce *inputStatistics*
+### <a name="the-inputstatistics-section"></a>Část *inputStatistics*
 
-Tato část obsahuje informace o zdrojové scéně. Často dochází k nesrovnalostem mezi hodnotami v této části a ekvivalentními hodnotami v nástroji, který zdrojový model vytvořil. Tyto rozdíly se očekávají, protože model získá změny během exportu a převodu kroky.
+V této části najdete informace o zdrojové scéně. Mezi hodnotami v této části a odpovídajícími hodnotami v nástroji, který vytvořil zdrojový model, budou často zjištěny rozdíly. Tyto rozdíly se očekávají, protože model se během exportu a převodu změnil.
 
-* `numMeshes`: Počet částí sítě, kde každý díl může odkazovat na jeden materiál.
-* `numFaces`: Celkový počet _trojúhelníků_ v celém modelu. Všimněte si, že síť je triangulována během převodu.
+* `numMeshes`: Počet částí mřížky, kde každá část může odkazovat na jeden materiál.
+* `numFaces`: Celkový počet _trojúhelníků_ v celém modelu. Všimněte si, že síť je během převodu triangulated.
 * `numVertices`: Celkový počet vrcholů v celém modelu.
 * `numMaterial`: Celkový počet materiálů v celém modelu.
-* `numFacesSmallestMesh`: Počet trojúhelníků v nejmenší síti modelu.
-* `numFacesBiggestMesh`: Počet trojúhelníků v největší síti modelu.
+* `numFacesSmallestMesh`: Počet trojúhelníků v nejmenší mřížce modelu.
+* `numFacesBiggestMesh`: Počet trojúhelníků v největší mřížce modelu.
 * `numNodes`: Počet uzlů v grafu scény modelu.
-* `numMeshUsagesInScene`: Počet odkazů uzlů na ok. Více než jeden uzel může odkazovat na stejnou síť.
+* `numMeshUsagesInScene`: Kolikrát uzly odkazují na sítě. Na jednu síť se může odkazovat více než jeden uzel.
 * `maxNodeDepth`: Maximální hloubka uzlů v grafu scény.
 
-### <a name="the-outputinfo-section"></a>Sekce *outputInfo*
+### <a name="the-outputinfo-section"></a>Část *outputInfo*
 
-Tato část zaznamenává obecné informace o generovaném výstupu.
+V této části jsou zaznamenány Obecné informace o vygenerovaném výstupu.
 
-* `conversionToolVersion`: Verze převodníku modelu.
-* `conversionHash`: Hodnota hash dat v rámci arrAsset, která může přispět k vykreslování. Lze použít k pochopení, zda služba převodu přinesla jiný výsledek při opětovném spuštění ve stejném souboru.
+* `conversionToolVersion`: Verze převaděče modelů.
+* `conversionHash`: Hodnota hash dat v rámci arrAsset, která může přispívat k vykreslování. Lze použít k pochopení, zda služba převodu při opakovaném spuštění ve stejném souboru vygenerovala jiný výsledek.
 
-### <a name="the-outputstatistics-section"></a>Sekce *outputStatistics*
+### <a name="the-outputstatistics-section"></a>Část *outputStatistics*
 
-Tato část zaznamenává informace vypočítané z převedeného majetku.
+V této části jsou zaznamenány informace vypočítané z převedeného prostředku.
 
-* `numMeshPartsCreated`: Počet ok v arrAsset. Může se `numMeshes` lišit `inputStatistics` od v části, protože instance je ovlivněna procesem převodu.
-* `numMeshPartsInstanced`: Počet ok, které jsou znovu použity v arrAsset.
-* `recenteringOffset`: Pokud `recenterToOrigin` je povolena možnost v [Nastavení převodu,](configure-model-conversion.md) tato hodnota je překlad, který by přesunul převedený model zpět do původní polohy.
+* `numMeshPartsCreated`: Počet sítí v arrAsset. Může se lišit od `numMeshes` v `inputStatistics` části, protože vytváření instancí je ovlivněno procesem převodu.
+* `numMeshPartsInstanced`: Počet sítí, které se znovu používají v arrAsset.
+* `recenteringOffset`: Když je `recenterToOrigin` povolená možnost v [ConversionSettings](configure-model-conversion.md) , je tato hodnota překlad, který by převedl převedený model zpátky do původní pozice.
 * `boundingBox`: Hranice modelu.
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Převod modelu](model-conversion.md)
-* [Konfigurace převodu modelu](configure-model-conversion.md)
+* [Konfigurace převodu modelů](configure-model-conversion.md)

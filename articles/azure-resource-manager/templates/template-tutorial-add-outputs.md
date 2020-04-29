@@ -1,56 +1,56 @@
 ---
-title: Výuka - přidání výstupů do šablony
-description: Přidejte výstupy do šablony Azure Resource Manager, abyste zjednodušili syntaxi.
+title: Kurz – přidání výstupů do šablony
+description: Chcete-li zjednodušit syntaxi, přidejte do šablony Azure Resource Manager výstupy.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 2ee1a2c7037bde68b7858b57a03c78bd2016ff1c
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80743545"
 ---
 # <a name="tutorial-add-outputs-to-your-arm-template"></a>Kurz: Přidání výstupů do šablony ARM
 
-V tomto kurzu se dozvíte, jak vrátit hodnotu ze šablony Správce prostředků Azure (ARM). Výstupy se používají, když potřebujete hodnotu z nasazeného prostředku. Tento kurz trvá **7 minut.**
+V tomto kurzu zjistíte, jak vrátit hodnotu ze šablony Azure Resource Manager (ARM). Výstupy použijete, když potřebujete hodnotu z nasazeného prostředku. Dokončení tohoto kurzu trvá **7 minut** .
 
 ## <a name="prerequisites"></a>Požadavky
 
-Doporučujeme dokončit [kurz o proměnných](template-tutorial-add-variables.md), ale není to nutné.
+Doporučujeme, abyste dokončili [kurz o proměnných](template-tutorial-add-variables.md), ale není to nutné.
 
-Musíte mít kód Visual Studio s rozšířením Nástroje správce prostředků a buď Azure PowerShell nebo Azure CLI. Další informace naleznete v [tématu nástroje šablony](template-tutorial-create-first-template.md#get-tools).
+Musíte mít Visual Studio Code s rozšířením Správce prostředků Tools a buď Azure PowerShell, nebo v rozhraní příkazového řádku Azure. Další informace najdete v tématu [nástroje šablon](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Šablona revize
+## <a name="review-template"></a>Zkontrolovat šablonu
 
-Na konci předchozího kurzu měla vaše šablona následující JSON:
+Na konci předchozího kurzu má vaše šablona následující JSON:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json":::
 
-Nasazuje účet úložiště, ale nevrací žádné informace o účtu úložiště. Možná budete muset zachytit vlastnosti z nového prostředku, aby byly k dispozici později pro referenci.
+Nasadí účet úložiště, ale nevrátí žádné informace o účtu úložiště. Je možné, že budete muset zachytit vlastnosti z nového prostředku, aby byly k dispozici později pro referenci.
 
-## <a name="add-outputs"></a>Přidání výstupů
+## <a name="add-outputs"></a>Přidat výstupy
 
-Výstupy můžete použít k vrácení hodnot ze šablony. Například může být užitečné získat koncové body pro váš nový účet úložiště.
+Pomocí výstupů můžete vracet hodnoty ze šablony. Může být například užitečné získat koncové body pro váš nový účet úložiště.
 
-Následující příklad zvýrazní změnu šablony a přidá výstupní hodnotu. Zkopírujte celý soubor a nahraďte šablonu jeho obsahem.
+Následující příklad zvýrazní změnu šablony pro přidání výstupní hodnoty. Zkopírujte celý soubor a nahraďte šablonu jeho obsahem.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json" range="1-53" highlight="47-52":::
 
-O přidané výstupní hodnotě je třeba poznamenat několik důležitých položek.
+V některých důležitých položkách si všimněte o výstupní hodnotě, kterou jste přidali.
 
-Typ vrácené hodnoty je nastaven na **objekt**, což znamená, že vrátí objekt JSON.
+Typ vrácené hodnoty je nastaven na **Object**, což znamená, že vrátí objekt JSON.
 
-Používá [referenční](template-functions-resource.md#reference) funkci k získání stavu runtime účtu úložiště. Chcete-li získat stav za běhu prostředku, předáte název nebo ID prostředku. V takovém případě použijete stejnou proměnnou, kterou jste použili k vytvoření názvu účtu úložiště.
+Pomocí [referenční](template-functions-resource.md#reference) funkce získá běhový stav účtu úložiště. Chcete-li získat běhový stav prostředku, předáte název nebo ID prostředku. V takovém případě použijete stejnou proměnnou, kterou jste použili k vytvoření názvu účtu úložiště.
 
-Nakonec vrátí **vlastnost primaryEndpoints** z účtu úložiště.
+Nakonec vrátí vlastnost **primaryEndpoints** z účtu úložiště.
 
 ## <a name="deploy-template"></a>Nasazení šablony
 
-Jste připraveni nasadit šablonu a podívejte se na vrácenou hodnotu.
+Jste připraveni šablonu nasadit a podívat se na vrácenou hodnotu.
 
-Pokud jste skupinu prostředků nevytvořili, přečtěte si informace [o vytvoření skupiny prostředků](template-tutorial-create-first-template.md#create-resource-group). Příklad předpokládá, že jste nastavili proměnnou **templateFile** na cestu k souboru šablony, jak je znázorněno v [prvním kurzu](template-tutorial-create-first-template.md#deploy-template).
+Pokud jste ještě nevytvořili skupinu prostředků, přečtěte si téma [Vytvoření skupiny prostředků](template-tutorial-create-first-template.md#create-resource-group). V příkladu se předpokládá, že jste nastavili proměnnou **templateFile** na cestu k souboru šablony, jak je znázorněno v [prvním kurzu](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -65,7 +65,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Chcete-li spustit tento příkaz nasazení, musíte mít [nejnovější verzi](/cli/azure/install-azure-cli) azure cli.
+Pokud chcete spustit tento příkaz nasazení, musíte mít [nejnovější verzi](/cli/azure/install-azure-cli) rozhraní příkazového řádku Azure CLI.
 
 ```azurecli
 az deployment group create \
@@ -77,7 +77,7 @@ az deployment group create \
 
 ---
 
-Ve výstupu pro příkaz nasazení uvidíte objekt podobný následujícímu příkladu pouze v případě, že výstup je ve formátu JSON:
+Ve výstupu příkazu pro nasazení se zobrazí objekt podobný následujícímu příkladu pouze v případě, že výstup je ve formátu JSON:
 
 ```json
 {
@@ -91,23 +91,23 @@ Ve výstupu pro příkaz nasazení uvidíte objekt podobný následujícímu př
 ```
 
 > [!NOTE]
-> Pokud se nasazení nezdařilo, zobrazte protokoly ladění pomocí **přepínače ladění** s příkazem deployment.  Můžete také použít **podrobný** přepínač k zobrazení úplné protokoly ladění.
+> Pokud se nasazení nepovedlo, použijte k zobrazení protokolů ladění přepínač **ladění** s příkazem nasazení.  Můžete také použít **podrobný** přepínač k zobrazení úplných protokolů ladění.
 
 ## <a name="review-your-work"></a>Kontrola práce
 
-Udělali jste hodně v posledních šesti výukových programů. Pojďme se na chvíli projít, co jste udělali. Vytvořili jste šablonu s parametry, které lze snadno poskytnout. Šablona je opakovaně použitelná v různých prostředích, protože umožňuje přizpůsobení a dynamicky vytváří potřebné hodnoty. Vrátí také informace o účtu úložiště, který můžete použít ve skriptu.
+Za posledních šest kurzů jste provedli spoustu. Pojďme se podívat na to, co jste provedli. Vytvořili jste šablonu s parametry, které lze snadno poskytnout. Šablona se opakovaně používá v různých prostředích, protože umožňuje přizpůsobení a dynamicky vytváří potřebné hodnoty. Vrátí taky informace o účtu úložiště, který můžete ve svém skriptu použít.
 
 Teď se podívejme na skupinu prostředků a historii nasazení.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
-1. V levé nabídce vyberte **položku Skupiny prostředků**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. V nabídce vlevo vyberte **skupiny prostředků**.
 1. Vyberte skupinu prostředků, do které jste nasadili.
-1. V závislosti na krocích, které jste provedli, byste měli mít alespoň jeden a možná i několik účtů úložiště ve skupině prostředků.
-1. Měli byste mít také několik úspěšných nasazení uvedených v historii. Vyberte tento odkaz.
+1. V závislosti na krocích, které jste provedli, byste měli mít ve skupině prostředků aspoň jeden a možná několik účtů úložiště.
+1. K dispozici je také několik úspěšných nasazení uvedených v historii. Vyberte tento odkaz.
 
-   ![Vybrat nasazení](./media/template-tutorial-add-outputs/select-deployments.png)
+   ![Výběr nasazení](./media/template-tutorial-add-outputs/select-deployments.png)
 
-1. Zobrazí se všechna vaše nasazení v historii. Vyberte nasazení nazývané **addoutputs**.
+1. V historii uvidíte všechna nasazení. Vyberte nasazení s názvem **addoutputs**.
 
    ![Zobrazit historii nasazení](./media/template-tutorial-add-outputs/show-history.png)
 
@@ -115,28 +115,28 @@ Teď se podívejme na skupinu prostředků a historii nasazení.
 
    ![Zobrazit vstupy](./media/template-tutorial-add-outputs/show-inputs.png)
 
-1. Můžete zkontrolovat výstupy.
+1. Můžete si prohlédnout výstupy.
 
    ![Zobrazit výstupy](./media/template-tutorial-add-outputs/show-outputs.png)
 
-1. Šablonu si můžete prohlédnout.
+1. Můžete si prohlédnout šablonu.
 
    ![Zobrazit šablonu](./media/template-tutorial-add-outputs/show-template.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud přecházíte na další kurz, nemusíte odstraňovat skupinu prostředků.
+Pokud se chystáte pokračovat k dalšímu kurzu, nemusíte odstranit skupinu prostředků.
 
-Pokud nyní zastavujete, můžete chtít vyčistit prostředky, které jste nasadili, odstraněním skupiny prostředků.
+Pokud nyní zastavíte, budete možná chtít vyčistit prostředky, které jste nasadili, odstraněním skupiny prostředků.
 
-1. Na portálu Azure vyberte **skupinu prostředků** z levé nabídky.
+1. Z Azure Portal v nabídce vlevo vyberte **Skupina prostředků** .
 2. Do pole **Filtrovat podle názvu** zadejte název skupiny prostředků.
 3. Vyberte název skupiny prostředků.
-4. V horní nabídce vyberte **Odstranit skupinu prostředků.**
+4. V horní nabídce vyberte **Odstranit skupinu prostředků** .
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste přidali vrácenou hodnotu do šablony. V dalším kurzu se dozvíte, jak exportovat šablonu a použít části této exportované šablony v šabloně.
+V tomto kurzu jste do šablony přidali návratovou hodnotu. V dalším kurzu se dozvíte, jak exportovat šablonu a použít části této exportované šablony ve vaší šabloně.
 
 > [!div class="nextstepaction"]
-> [Použít exportovnou šablonu](template-tutorial-export-template.md)
+> [Použít exportovanou šablonu](template-tutorial-export-template.md)

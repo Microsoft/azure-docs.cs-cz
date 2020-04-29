@@ -1,19 +1,19 @@
 ---
-title: Skript Prostředí PowerShell pro získání operací klíče a připojovacího řetězce pro účet Azure Cosmos DB
-description: Ukázka skriptu Azure PowerShellu – klíč účtu a operace připojovacího řetězce pro účet Azure Cosmos DB
+title: Skript PowerShellu, který získá operace klíčů a připojovacího řetězce pro účet Azure Cosmos DB
+description: Azure PowerShell operací skriptu Sample – Key účtu a připojovacího řetězce pro účet Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: f6dd9d1290ea9d18fc6a5f18196585926b2ab91a
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80366103"
 ---
-# <a name="connection-string-and-account-key-operations-for-an-azure-cosmos-db-account-using-powershell"></a>Připojovací řetězec a operace klíče účtu pro účet Azure Cosmos DB pomocí PowerShellu
+# <a name="connection-string-and-account-key-operations-for-an-azure-cosmos-db-account-using-powershell"></a>Připojovací řetězec a operace klíčů účtu pro účet Azure Cosmos DB s využitím PowerShellu
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,7 +22,7 @@ ms.locfileid: "80366103"
 ## <a name="sample-script"></a>Ukázkový skript
 
 > [!NOTE]
-> Tato ukázka ukazuje pomocí účtu rozhraní SQL API. Chcete-li tuto ukázku použít pro jiná rozhraní API, zkopírujte související vlastnosti a použijte skript specifický pro rozhraní API.
+> Tato ukázka demonstruje použití účtu rozhraní SQL API. Pokud chcete tuto ukázku použít pro jiná rozhraní API, zkopírujte související vlastnosti a aplikujte je na skript specifický pro rozhraní API.
 
 [!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-keys-connection-strings.ps1 "Connection strings and account keys for Azure Cosmos account")]
 
@@ -41,8 +41,8 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Get-AzCosmosDBAccountKey](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccountkey) | Získá připojovací řetězec nebo klíč (jen pro čtení nebo jen pro čtení) pro účet Cosmos DB. |
-| [Nový-AzCosmosDBAccountKey](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccountkey) | Znovu vygenerovat zadaný klíč pro účet Cosmos DB. |
+| [Get-AzCosmosDBAccountKey](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccountkey) | Získá připojovací řetězec nebo klíč (jen pro čtení a zápis) pro účet Cosmos DB. |
+| [New-AzCosmosDBAccountKey](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccountkey) | Znovu vygenerujte zadaný klíč pro účet Cosmos DB. |
 |**Skupiny prostředků Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||

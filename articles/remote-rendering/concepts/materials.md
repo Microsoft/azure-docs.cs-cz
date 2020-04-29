@@ -1,43 +1,43 @@
 ---
-title: Materials
-description: Popis materiálu kasáren a vlastnosti materiálu
+title: Materiály
+description: Popis nebo vlastnosti materiálu pro vykreslování
 author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: conceptual
 ms.openlocfilehash: 8551e17ddd71e76aca0c85b9768f564ae0e5f049
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681841"
 ---
-# <a name="materials"></a>Materials
+# <a name="materials"></a>Materiály
 
-Materiály jsou [sdílené prostředky,](../concepts/lifetime.md) které definují způsob [vykreslení mše.](meshes.md) Materiály se používají k určení, které [textury](textures.md) se mají použít, zda mají být objekty průhledné a jak se bude počítat osvětlení.
+Materiály jsou [sdílené prostředky](../concepts/lifetime.md) , které definují, jak se vykreslují [sítě](meshes.md) . Materiály slouží k určení, které [textury](textures.md) mají být použity, zda mají být objekty transparentní a jak se bude počítat osvětlení.
 
-Materiály jsou automaticky vytvářeny během [převodu modelu](../how-tos/conversion/model-conversion.md) a jsou přístupné za běhu. Můžete také vytvořit vlastní materiály z kódu a nahradit stávající materiály. Tento scénář je obzvláště smysl, pokud chcete sdílet stejný materiál v mnoha síťech. Vzhledem k tomu, že změny materiálu jsou viditelné na každé síti, která na něj odkazuje, lze tuto metodu použít ke snadnému použití změn.
+Materiály se automaticky vytvoří během [převodu modelu](../how-tos/conversion/model-conversion.md) a jsou přístupné za běhu. Můžete také vytvořit vlastní materiály z kódu a nahradit existující. Tento scénář je vhodný hlavně v případě, že chcete sdílet stejný materiál napříč mnoha oky. Vzhledem k tomu, že se změny materiálu zobrazují na každé síti, která na ni odkazuje, můžete tuto metodu použít k snadnému uplatnění změn.
 
 > [!NOTE]
-> Některé případy použití, jako je například zvýraznění vyskladněný objekt lze provést úpravou materiálů, ale jsou mnohem jednodušší dosáhnout prostřednictvím [HierarchicalStateOverrideComponent](../overview/features/override-hierarchical-state.md).
+> Některé případy použití, například zvýraznění vyskladněného objektu, lze provádět úpravou materiálů, ale je mnohem snazší dosáhnout prostřednictvím [HierarchicalStateOverrideComponent](../overview/features/override-hierarchical-state.md).
 
-## <a name="material-types"></a>Typy materiálů
+## <a name="material-types"></a>Typy materiálu
 
-Vzdálené vykreslování Azure má dva odlišné typy materiálů:
+Vzdálené vykreslování Azure má dva odlišné typy materiálu:
 
-* [PBR materiály](../overview/features/pbr-materials.md) se používají pro povrchy, které by měly být vykresleny jako fyzicky správné, jak je to možné. Realistické osvětlení se vypočítá pro tyto materiály pomocí *fyzicky založené vykreslování* (PBR). Chcete-li tento typ materiálu využít na maximum, je důležité poskytnout vysoce kvalitní vstupní data, jako je drsnost a normální mapy.
+* [Materiály PBR](../overview/features/pbr-materials.md) se používají pro povrchy, které by se měly vykreslovat jako fyzicky správné. Pro tyto materiály se počítá z reálného osvětlení pomocí *fyzicky založeného vykreslování* (PBR). Aby bylo možné tento typ materiálu využít co nejlépe, je důležité zajistit vysoce kvalitní vstupní data, jako jsou hrubá a normální mapa.
 
-* [Barevné materiály](../overview/features/color-materials.md) se používají v případech, kdy není žádoucí žádné další osvětlení. Tyto materiály jsou vždy plné jasné a snadněji se nastavují. Barevné materiály se používají pro data, která by buď neměla mít žádné osvětlení vůbec, nebo již obsahuje statické osvětlení, jako jsou modely získané prostřednictvím [fotogrammetrie](https://en.wikipedia.org/wiki/Photogrammetry).
+* [Barevné materiály](../overview/features/color-materials.md) se používají pro případy, kdy není žádoucí žádné další osvětlení. Tyto materiály jsou vždy zcela jasné a je snazší je nastavit. Barevné materiály se používají pro data, která by neměla vůbec žádného osvětlení, nebo už jsou v podniku statického osvětlení, jako jsou například modely získané prostřednictvím [Photogrammetry](https://en.wikipedia.org/wiki/Photogrammetry).
 
-## <a name="mesh-vs-meshcomponent-material-assignment"></a>Přiřazení materiálu Mesh vs. MeshComponent
+## <a name="mesh-vs-meshcomponent-material-assignment"></a>Mřížka vs. přiřazení materiálu MeshComponent
 
-[Síť má jednu](meshes.md) nebo více podmořských sítí. Každá podsíť odkazuje na jeden materiál. Můžete změnit materiál, který chcete použít buď přímo na síti, nebo můžete přepsat, který materiál se má použít pro podmřížku na [součásti mesh .](meshes.md#meshcomponent)
+[Sítě](meshes.md) mají jednu nebo více podsítí. Každé podsítě odkazuje na jeden materiál. Tento materiál můžete změnit tak, aby se použil přímo na síti, nebo můžete přepsat, který materiál se má použít pro podmřížku na [MeshComponent](meshes.md#meshcomponent).
 
-Když upravíte materiál přímo na prostředku sítě, tato změna ovlivní všechny výskyty této sítě. Změna na součásti MeshComponent však ovlivní pouze tuto jednu instanci sítě. Metoda, která je vhodnější závisí na požadované chování, ale úprava MeshComponent je běžnější přístup.
+Když upravujete materiál přímo v prostředku sítě, tato změna ovlivní všechny instance této sítě. Změna na MeshComponent však ovlivní pouze jednu instanci sítě. Která metoda je vhodnější, závisí na požadovaném chování, ale úpravou MeshComponent je častější přístup.
 
-## <a name="material-classes"></a>Třídy materiálů
+## <a name="material-classes"></a>Třídy materiálu
 
-Všechny materiály poskytované rozhraníAPI jsou odvozeny ze základní třídy `Material`. Jejich typ může být `Material.MaterialSubType` dotazován prostřednictvím nebo jejich přímým obsazením:
+Všechny materiály poskytované rozhraním API jsou odvozeny ze základní `Material`třídy. Jejich typ lze dotazovat prostřednictvím `Material.MaterialSubType` nebo přetypováním přímo:
 
 ``` cs
 void SetMaterialColorToGreen(Material material)
@@ -61,5 +61,5 @@ void SetMaterialColorToGreen(Material material)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [PBR materiály](../overview/features/pbr-materials.md)
+* [Materiály PBR](../overview/features/pbr-materials.md)
 * [Barevné materiály](../overview/features/color-materials.md)

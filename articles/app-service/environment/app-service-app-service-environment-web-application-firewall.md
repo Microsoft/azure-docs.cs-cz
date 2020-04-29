@@ -1,6 +1,6 @@
 ---
 title: Konfigurace WAF
-description: Zjistěte, jak nakonfigurovat bránu firewall webové aplikace (WAF) před prostředím služby App Service, a to buď pomocí Azure Application Gateway, nebo pomocí WAF třetí strany.
+description: Přečtěte si, jak nakonfigurovat Firewall webových aplikací (WAF) před vaším App Service Environment, a to buď pomocí Azure Application Gateway, nebo WAF třetí strany.
 author: ccompy
 ms.assetid: a2101291-83ba-4169-98a2-2c0ed9a65e8d
 ms.topic: tutorial
@@ -8,10 +8,10 @@ ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 987228c5cf0f5231006726718684528a777e92fd
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80804465"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Konfigurace brány firewall webových aplikací pro službu App Service Environment
@@ -66,12 +66,12 @@ Po přihlášení by se měl zobrazit podobný řídicí panel jako na následuj
 
 ![Správa – Řídicí panel][ManagementDashboard]
 
-Po kliknutí na kartu **Services** (Služby) můžete konfigurovat bránu WAF pro služby, které chrání. Další podrobnosti o konfiguraci Barracuda WAF najdete v příslušné [dokumentaci](https://techlib.barracuda.com/waf/getstarted1). V následujícím příkladu byla nakonfigurována aplikace služby App Service, která obsluhuje provoz v protokolech HTTP a HTTPS.
+Po kliknutí na kartu **Services** (Služby) můžete konfigurovat bránu WAF pro služby, které chrání. Další podrobnosti o konfiguraci Barracuda WAF najdete v příslušné [dokumentaci](https://techlib.barracuda.com/waf/getstarted1). V následujícím příkladu je nakonfigurované App Service aplikace obsluhující provoz na protokolech HTTP a HTTPS.
 
 ![Správa – Přidání služeb][ManagementAddServices]
 
 > [!NOTE]
-> V závislosti na tom, jak jsou vaše aplikace konfigurovány a jaké funkce se používají v prostředí služby App Service, je třeba předávat přenosy pro porty TCP jiné než 80 a 443, například pokud máte nastavení IP TLS pro aplikaci App Service. Seznam síťových portů používaných ve službě App Service Environment najdete v části Síťové porty v [dokumentaci k řízení příchozího provozu](app-service-app-service-environment-control-inbound-traffic.md).
+> V závislosti na tom, jak jsou vaše aplikace nakonfigurované a jaké funkce se ve vašem App Service Environment používají, musíte přesměrováním provozu u jiných portů TCP než 80 a 443, například pokud máte nastavení protokolu IP TLS pro aplikaci App Service. Seznam síťových portů používaných ve službě App Service Environment najdete v části Síťové porty v [dokumentaci k řízení příchozího provozu](app-service-app-service-environment-control-inbound-traffic.md).
 > 
 > 
 

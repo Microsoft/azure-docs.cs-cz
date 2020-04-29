@@ -1,7 +1,7 @@
 ---
-title: Metadata s rozhraním API generateanswer – QnA Maker
+title: Metadata s GenerateAnswer API – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: QnA Maker umožňuje přidat metadata ve formě párů klíč/hodnota do sad otázek a odpovědí. Výsledky můžete filtrovat do uživatelských dotazů a uložit další informace, které lze použít v následných konverzacích.
+description: QnA Maker umožňuje přidat metadata ve formě párů klíč/hodnota k sadám dotazů a odpovědí. Výsledky můžete filtrovat podle uživatelských dotazů a ukládat Další informace, které se dají použít v následných konverzacích.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,71 +11,71 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: diberry
 ms.openlocfilehash: 9beb6dbbba1c5855b8bfa97fc02f50aa59225d78
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80474849"
 ---
-# <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Získání odpovědi pomocí rozhraní API generateanswer a metadat
+# <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Získat odpověď s GenerateAnswer API a metadaty
 
-Chcete-li získat předpovídanou odpověď na otázku uživatele, použijte rozhraní API generateanswer. Při publikování znalostní báze, můžete zobrazit informace o tom, jak používat toto rozhraní API na stránce **Publikovat.** Rozhraní API můžete také nakonfigurovat tak, aby filtrovalo odpovědi na základě značek metadat, a otestovat znalostní bázi z koncového bodu pomocí parametru řetězce testovacího dotazu.
+Pokud chcete získat předpokládanou odpověď na otázku uživatele, použijte rozhraní GenerateAnswer API. Když publikujete znalostní bázi, uvidíte informace o tom, jak toto rozhraní API používat na stránce **publikovat** . Můžete také nakonfigurovat rozhraní API pro filtrování odpovědí na základě značek metadat a otestovat znalostní bázi z koncového bodu s parametrem řetězce dotazu test.
 
-QnA Maker umožňuje přidávat metadata ve formě párů klíčů a hodnot do sad otázek a odpovědí. Tyto informace pak můžete použít k filtrování výsledků do uživatelských dotazů a k uložení dalších informací, které lze použít v následných konverzacích. Další informace naleznete v [tématu Knowledge Base](../Concepts/knowledge-base.md).
+QnA Maker umožňuje přidat metadata ve formě párů klíč-hodnota do sady otázek a odpovědí. Tyto informace pak můžete použít k filtrování výsledků do uživatelských dotazů a k ukládání dalších informací, které je možné použít v následných konverzacích. Další informace najdete v tématu [znalostní báze](../Concepts/knowledge-base.md).
 
 <a name="qna-entity"></a>
 
-## <a name="store-questions-and-answers-with-a-qna-entity"></a>Ukládání otázek a odpovědí pomocí entity QnA
+## <a name="store-questions-and-answers-with-a-qna-entity"></a>Uložení otázek a odpovědí s entitou QnA
 
-Je důležité pochopit, jak QnA Maker ukládá data otázek a odpovědí. Následující obrázek znázorňuje entitu QnA:
+Je důležité porozumět tomu, jak QnA Maker ukládá data otázky a odpovědi. Následující ilustrace znázorňuje QnA entitu:
 
 ![Ilustrace entity QnA](../media/qnamaker-how-to-metadata-usage/qna-entity.png)
 
-Každá entita QnA má jedinečné a trvalé ID. ID můžete použít k aktualizaci konkrétní entity QnA.
+Každá entita QnA má jedinečné a trvalé ID. Pomocí ID můžete provádět aktualizace konkrétní entity QnA.
 
 <a name="generateanswer-api"></a>
 
-## <a name="get-answer-predictions-with-the-generateanswer-api"></a>Získat předpovědi odpovědí pomocí rozhraní API generateanswer
+## <a name="get-answer-predictions-with-the-generateanswer-api"></a>Získání odpovědi předpovědi pomocí rozhraní GenerateAnswer API
 
-Pomocí [rozhraní API GenerateAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) ve vašem robotu nebo aplikaci můžete zadat dotaz na znalostní bázi s uživatelskou otázkou, abyste získali nejlepší shodu ze sad otázek a odpovědí.
+[Rozhraní GenerateAnswer API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) ve své robotě nebo aplikaci můžete použít k dotazování znalostní báze s uživatelskou otázkou, abyste získali nejlepší shodu od sad otázek a odpovědí.
 
 <a name="generateanswer-endpoint"></a>
 
-## <a name="publish-to-get-generateanswer-endpoint"></a>Publikovat za účelem získání koncového bodu GenerateAnswer
+## <a name="publish-to-get-generateanswer-endpoint"></a>Publikování pro získání koncového bodu GenerateAnswer
 
-Po publikování znalostní báze, buď z [portálu QnA Maker](https://www.qnamaker.ai), nebo pomocí [rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish), můžete získat podrobnosti o koncovém bodu GenerateAnswer.
+Po publikování znalostní báze z [QnA Makerového portálu](https://www.qnamaker.ai)nebo pomocí [rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish)můžete získat podrobnosti o koncovém bodu GenerateAnswer.
 
-Získání podrobností o koncovém bodu:
-1. Přihlaste [https://www.qnamaker.ai](https://www.qnamaker.ai)se do .
-1. V **části Moje znalostní báze**vyberte možnost **Zobrazit kód** pro znalostní bázi.
-    ![Snímek obrazovky s mými znalostními bázemi](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
-1. Získejte podrobnosti o koncovém bodu GenerateAnswer.
+Jak získat podrobnosti o koncovém bodu:
+1. Přihlaste se k webu [https://www.qnamaker.ai](https://www.qnamaker.ai).
+1. V **seznamu Moje znalostní**báze vyberte možnost **Zobrazit kód** pro znalostní bázi.
+    ![Snímek obrazovky se základy naší znalostní báze](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
+1. Získejte podrobnosti o GenerateAnswer koncového bodu.
 
-    ![Snímek obrazovky s podrobnostmi o koncovém bodu](../media/qnamaker-how-to-metadata-usage/view-code.png)
+    ![Snímek obrazovky s podrobnostmi koncového bodu](../media/qnamaker-how-to-metadata-usage/view-code.png)
 
-Podrobnosti o koncovém bodu můžete také získat na kartě **Nastavení** znalostní báze.
+Podrobnosti o koncových bodech můžete také získat z karty **Nastavení** ve znalostní bázi.
 
 <a name="generateanswer-request"></a>
 
-## <a name="generateanswer-request-configuration"></a>Generovat konfiguraci požadavku na odpověď
+## <a name="generateanswer-request-configuration"></a>Konfigurace žádosti GenerateAnswer
 
-Volání GenerateAnswer s požadavkem HTTP POST. Ukázkový kód, který ukazuje, jak volat GenerateAnswer, naleznete v [tématu rychlé starty](../quickstarts/quickstart-sdk.md#generate-an-answer-from-the-knowledge-base).
+GenerateAnswer zavoláte s požadavkem HTTP POST. Vzorový kód, který ukazuje, jak volat GenerateAnswer, naleznete v tématu [rychlé starty](../quickstarts/quickstart-sdk.md#generate-an-answer-from-the-knowledge-base).
 
 Požadavek POST používá:
 
 * Požadované [parametry identifikátoru URI](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
-* Požadovaná vlastnost `Authorization`hlavičky, , pro zabezpečení
+* Požadovaná vlastnost `Authorization`hlavičky, pro zabezpečení
 * Požadované [vlastnosti těla](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto).
 
-Adresa URL generateanswer má následující formát:
+Adresa URL GenerateAnswer má následující formát:
 
 ```
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
-Nezapomeňte nastavit vlastnost hlavičky `Authorization` HTTP s hodnotou řetězce `EndpointKey` s koncovým prostorem, pak klíč koncového bodu nalezený na stránce **Nastavení.**
+Nezapomeňte nastavit vlastnost hlaviček protokolu HTTP `Authorization` s hodnotou řetězce `EndpointKey` s koncovým místem, na které se nachází klíč koncového bodu na stránce **Nastavení** .
 
-Příklad JSON tělo vypadá takto:
+Ukázkový text JSON vypadá takto:
 
 ```json
 {
@@ -93,15 +93,15 @@ Příklad JSON tělo vypadá takto:
 }
 ```
 
-Další informace o [rankerType](../concepts/best-practices.md#choosing-ranker-type).
+Přečtěte si další informace o [rankerType](../concepts/best-practices.md#choosing-ranker-type).
 
-Předchozí JSON požadoval pouze odpovědi, které jsou na 30 % nebo nad prahovým skóre.
+Předchozí kód JSON požádal pouze o odpovědi, které jsou na 30% nebo vyšší než prahové skóre.
 
 <a name="generateanswer-response"></a>
 
 ## <a name="generateanswer-response-properties"></a>Vlastnosti odpovědi GenerateAnswer
 
-[Odpověď](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#successful-query) je objekt JSON včetně všech informací, které potřebujete k zobrazení odpovědi a další otočení v konverzaci, pokud je k dispozici.
+[Odpověď](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#successful-query) je objekt JSON, včetně všech informací, které potřebujete k zobrazení odpovědi, a další Zapnutí konverzace, pokud je k dispozici.
 
 ```json
 {
@@ -125,11 +125,11 @@ Předchozí JSON požadoval pouze odpovědi, které jsou na 30 % nebo nad prahov
 }
 ```
 
-Předchozí JSON odpověděl s odpovědí se skóre 38,5%.
+Předchozí znak JSON odpověděl s odpovědí s skóre 38,5%.
 
-## <a name="use-qna-maker-with-a-bot-in-c"></a>Použití QnA Maker u robota v C #
+## <a name="use-qna-maker-with-a-bot-in-c"></a>Použití QnA Maker s robotem v jazyce C #
 
-Rozhraní bot poskytuje přístup k vlastnostem QnA Maker s [rozhraním getAnswer API](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.ai.qna.qnamaker.getanswersasync?view=botbuilder-dotnet-stable#Microsoft_Bot_Builder_AI_QnA_QnAMaker_GetAnswersAsync_Microsoft_Bot_Builder_ITurnContext_Microsoft_Bot_Builder_AI_QnA_QnAMakerOptions_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_Double__):
+Rozhraní bot Framework poskytuje přístup k vlastnostem QnA Maker pomocí [rozhraní Getanswer API](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.ai.qna.qnamaker.getanswersasync?view=botbuilder-dotnet-stable#Microsoft_Bot_Builder_AI_QnA_QnAMaker_GetAnswersAsync_Microsoft_Bot_Builder_ITurnContext_Microsoft_Bot_Builder_AI_QnA_QnAMakerOptions_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_Double__):
 
 ```csharp
 using Microsoft.Bot.Builder.AI.QnA;
@@ -144,11 +144,11 @@ qnaOptions.ScoreThreshold = 0.3F;
 var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnContext, qnaOptions);
 ```
 
-Předchozí JSON požadoval pouze odpovědi, které jsou na 30 % nebo nad prahovým skóre.
+Předchozí kód JSON požádal pouze o odpovědi, které jsou na 30% nebo vyšší než prahové skóre.
 
-## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>Použití QnA Makeru s robotem v souboru Node.js
+## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>Použití QnA Maker s robotem v Node. js
 
-Rozhraní bot poskytuje přístup k vlastnostem QnA Maker s [rozhraním getAnswer API](https://docs.microsoft.com/javascript/api/botbuilder-ai/qnamaker?view=botbuilder-ts-latest#generateanswer-string---undefined--number--number-):
+Rozhraní bot Framework poskytuje přístup k vlastnostem QnA Maker pomocí [rozhraní Getanswer API](https://docs.microsoft.com/javascript/api/botbuilder-ai/qnamaker?view=botbuilder-ts-latest#generateanswer-string---undefined--number--number-):
 
 ```javascript
 const { QnAMaker } = require('botbuilder-ai');
@@ -162,23 +162,23 @@ var qnaMakerOptions = {
 var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOptions);
 ```
 
-Předchozí JSON požadoval pouze odpovědi, které jsou na 30 % nebo nad prahovým skóre.
+Předchozí kód JSON požádal pouze o odpovědi, které jsou na 30% nebo vyšší než prahové skóre.
 
 <a name="metadata-example"></a>
 
-## <a name="use-metadata-to-filter-answers-by-custom-metadata-tags"></a>Použití metadat k filtrování odpovědí podle vlastních značek metadat
+## <a name="use-metadata-to-filter-answers-by-custom-metadata-tags"></a>Filtrování odpovědí podle vlastních značek metadat pomocí metadat
 
-Přidání metadat umožňuje filtrovat odpovědi podle těchto značek metadat. Přidejte sloupec metadat z nabídky **Možnosti zobrazení.** Přidejte metadata do znalostní báze výběrem ikony metadat **+** a přidejte dvojici metadat. Tento pár se skládá z jednoho klíče a jedné hodnoty.
+Přidání metadat umožňuje filtrovat odpovědi pomocí těchto značek metadat. Přidejte sloupec metadata z nabídky **Možnosti zobrazení** . Přidejte metadata do znalostní báze tak, že vyberete ikonu **+** metadat a přidáte dvojici metadat. Tento pár se skládá z jednoho klíče a jedné hodnoty.
 
 ![Snímek obrazovky s přidáním metadat](../media/qnamaker-how-to-metadata-usage/add-metadata.png)
 
 <a name="filter-results-with-strictfilters-for-metadata-tags"></a>
 
-## <a name="filter-results-with-strictfilters-for-metadata-tags"></a>Filtrování výsledků pomocí strictFilters pro značky metadat
+## <a name="filter-results-with-strictfilters-for-metadata-tags"></a>Filtrovat výsledky pomocí strictFilters pro značky metadat
 
-Zvažte uživatelskou otázku "Kdy se tento hotel zavře?", kde je záměr implikován pro restauraci "Paradise".
+Vezměte v úvahu otázku uživatele "kdy se tento hotel blíží?", kde je záměr předpokládaný pro restauraci "Paradise".
 
-Vzhledem k tomu, že výsledky jsou vyžadovány pouze pro restauraci "Ráj", můžete nastavit filtr v generateAnswer volání na metadata "Název restaurace". Následující příklad ukazuje toto:
+Vzhledem k tomu, že se výsledky vyžadují jenom pro restaurace "Paradise", můžete nastavit filtr ve volání GenerateAnswer v metadatech "název restaurace". Následující příklad ukazuje:
 
 ```json
 {
@@ -196,7 +196,7 @@ Vzhledem k tomu, že výsledky jsou vyžadovány pouze pro restauraci "Ráj", m�
 
 ## <a name="use-question-and-answer-results-to-keep-conversation-context"></a>Použití výsledků otázek a odpovědí k zachování kontextu konverzace
 
-Odpověď na GenerateAnswer obsahuje odpovídající metadata informace o odpovídající otázku a odpověď set. Tyto informace v klientské aplikaci můžete použít k uložení kontextu předchozí konverzace pro použití v pozdějších konverzacích.
+Odpověď na GenerateAnswer obsahuje odpovídající informace metadat pro sadu odpovědí a otázku, které odpovídají. Tyto informace můžete v klientské aplikaci použít k uložení kontextu předchozí konverzace pro použití v pozdějších konverzacích.
 
 ```json
 {
@@ -224,11 +224,11 @@ Odpověď na GenerateAnswer obsahuje odpovídající metadata informace o odpov�
 }
 ```
 
-## <a name="match-questions-only-by-text"></a>Shoda pouze s otázkami podle textu
+## <a name="match-questions-only-by-text"></a>Odpovídá jenom na otázky, podle textu
 
-Ve výchozím nastavení služba QnA Maker prohledává otázky a odpovědi. Pokud chcete prohledávat pouze otázky, chcete-li `RankerType=QuestionOnly` vygenerovat odpověď, použijte v textu POST požadavku GenerateAnswer.
+Ve výchozím nastavení QnA Maker vyhledává dotazy a odpovědi. Pokud chcete vygenerovat odpověď pouze `RankerType=QuestionOnly` v rámci otázek, použijte v těle žádosti GenerateAnswer v části post.
 
-Můžete prohledávat publikované kb, pomocí `isTest=false`, nebo `isTest=true`v testu kb pomocí .
+Můžete prohledat publikované znalostní báze KB, pomocí `isTest=false`nebo v testu kB pomocí `isTest=true`.
 
 ```json
 {
@@ -239,21 +239,21 @@ Můžete prohledávat publikované kb, pomocí `isTest=false`, nebo `isTest=true
 }
 ```
 
-## <a name="common-http-errors"></a>Běžné chyby PROTOKOLU HTTP
+## <a name="common-http-errors"></a>Běžné chyby protokolu HTTP
 
 |kód|Vysvětlení|
 |:--|--|
 |2xx|Úspěch|
-|400|Parametry požadavku jsou nesprávné, což znamená, že požadované parametry chybí, jsou poškozeny nebo příliš velké|
-|400|Tělo požadavku je nesprávné, což znamená, že json chybí, je poškozený nebo příliš velký|
+|400|Parametry požadavku jsou nesprávné, což znamená, že požadované parametry chybí, jsou poškozené nebo jsou moc velké.|
+|400|Tělo žádosti není správné, což znamená, že JSON chybí, má špatný nebo je moc velký.|
 |401|Neplatný klíč|
-|403|Zakázáno - nemáte správná oprávnění|
+|403|Zakázáno – nemáte správná oprávnění.|
 |404|KB neexistuje|
-|410|Toto rozhraní API je zastaralé a již není k dispozici.|
+|410|Toto rozhraní API je zastaralé a už není dostupné.|
 
 ## <a name="next-steps"></a>Další kroky
 
-Stránka **Publikovat** také poskytuje informace pro [generování odpovědi](../Quickstarts/get-answer-from-knowledge-base-using-url-tool.md) s Postman nebo cURL.
+Stránka **publikování** také poskytuje informace pro [vygenerování odpovědi](../Quickstarts/get-answer-from-knowledge-base-using-url-tool.md) pomocí metody post nebo kudrlinkou.
 
 > [!div class="nextstepaction"]
 > [Vytvoření robota znalostní báze](../tutorials/integrate-qnamaker-luis.md)

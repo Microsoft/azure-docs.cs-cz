@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: 478d9c0485125870f8d5ffb4132f46476b4bb4ef
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80384360"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Kurz: vývoj IoT Edgech modulů pro zařízení se systémem Linux
@@ -57,7 +57,7 @@ V následující tabulce jsou uvedeny podporované vývojové scénáře pro **k
 
 V tomto kurzu se naučíte postup vývoje Visual Studio Code. Pokud místo toho chcete použít aplikaci Visual Studio, přečtěte si pokyny v tématu [použití sady Visual studio 2019 k vývoji a ladění modulů pro Azure IoT Edge](how-to-visual-studio-develop-module.md).
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Vývojový počítač:
 

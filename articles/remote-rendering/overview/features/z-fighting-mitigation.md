@@ -1,30 +1,30 @@
 ---
-title: Zmírnění z-boj
-description: Popisuje techniky ke zmírnění z-boj artefakty
+title: Zmírnění Z-fightingu
+description: Popisuje techniky pro zmírnění rizikových artefaktů z-boje.
 author: florianborn71
 ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
 ms.openlocfilehash: bc06deafe3f589fce9a9178fefdb22388254929d
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680450"
 ---
-# <a name="z-fighting-mitigation"></a>Zmírnění z-boj
+# <a name="z-fighting-mitigation"></a>Zmírnění Z-fightingu
 
-Pokud se dva povrchy překrývají, není jasné, který z nich by měl být vykreslen nad druhým. Výsledek se dokonce mění na pixel, výsledkem artefakty závislé na zobrazení. V důsledku toho, když se kamera nebo síť pohybuje, tyto vzory blikají znatelně. Tento artefakt se nazývá *z-boj*. U aplikací AR a VR se problém zintenzivňuje, protože zařízení připojená k hlavě se přirozeně vždy pohybují. Chcete-li zabránit diváknepohodlí z-boj zmírnění funkce je k dispozici v Azure vzdálené vykreslování.
+Pokud se dva povrchy překrývají, není jasné, které z nich by měly být vykresleny nad druhou. Výsledek se dokonce liší v pixelech, což vede k artefaktům závislým na zobrazení. V důsledku toho se při každém přesunu kamery nebo sítě tyto vzory blikání pozorují. Tento artefakt se nazývá *z-boje*. U aplikací AR a VR je problém posílený, protože zařízení připojená k hlavním místům jsou přirozeně vždycky přesunuta. K tomu, aby se zabránilo prohlížeči v boji proti zmírnění, je k dispozici ve vzdáleném vykreslování Azure.
 
-## <a name="z-fighting-mitigation-modes"></a>Z-boj zmírnění režimy
+## <a name="z-fighting-mitigation-modes"></a>Režimy Z-boj proti zmírnění
 
-|Situaci                        | Výsledek                               |
+|Status                        | Výsledek                               |
 |---------------------------------|:-------------------------------------|
-|Pravidelné z-bojování               |![Z-boj](./media/zfighting-0.png)|
-|Z-boj zmírnění povoleno    |![Z-boj](./media/zfighting-1.png)|
-|Zvýraznění šachovní plochy povoleno|![Z-boj](./media/zfighting-2.png)|
+|Normální z-boj               |![Z-boj](./media/zfighting-0.png)|
+|Z-boj povoleno zmírnění    |![Z-boj](./media/zfighting-1.png)|
+|Zvýrazňování šachovnice povoleno|![Z-boj](./media/zfighting-2.png)|
 
-Následující kód umožňuje zmírnění z-boj:
+Následující kód povoluje zmírnění omezení z boje:
 
 ``` cs
 void EnableZFightingMitigation(AzureSession session, bool highlight)
@@ -40,29 +40,29 @@ void EnableZFightingMitigation(AzureSession session, bool highlight)
 ```
 
 > [!NOTE]
-> Z-boj zmírnění je globální nastavení, které ovlivňuje všechny vykreslené sítě.
+> Z-boje proti zmírnění je globální nastavení, které ovlivňuje všechny vygenerované sítě.
 
-## <a name="reasons-for-z-fighting"></a>Důvody pro z-boj
+## <a name="reasons-for-z-fighting"></a>Důvody pro z-boje
 
-Z-boj se děje hlavně ze dvou důvodů:
+Z-boje se děje hlavně ze dvou důvodů:
 
-1. když jsou povrchy velmi daleko od kamery, přesnost jejich hodnot hloubky se snižuje a hodnoty se stávají k nerozeznání
-1. když se povrchy v síti fyzicky překrývají
+1. Když jsou povrchy od kamery příliš daleko, přesnost hodnot jejich hloubky se sníží a hodnoty se stanou nerozlišené.
+1. Když se fyzicky překrývají povrchy v mřížce
 
-První problém se může vždy stát a je obtížné jej odstranit. Pokud k tomu dojde ve vaší aplikaci, ujistěte se, že poměr *blízké rovinné* vzdálenosti k *vzdálené vzdálenosti roviny* je co nejnižší jako praktický. Například blízká rovina ve vzdálenosti 0,01 a vzdálená rovina ve vzdálenosti 1000 vytvoří tento problém mnohem dříve, než mít blízkou rovinu na 0,1 a vzdálenou rovinu ve vzdálenosti 20.
+K prvnímu problému může dojít vždy a je obtížné ho eliminovat. Pokud k tomu dojde ve vaší aplikaci, ujistěte se, že poměr vzdálenosti *blízko roviny* až po *Velká rovině* je jako praktický. Například poblíž roviny na dálku 0,01 a daleko až 1000 se tento problém bude nacházet mnohem dříve, než má skoro rovina v 0,1 a na nejvyšší rovině ve vzdálenosti 20.
 
-Druhým problémem je indikátor špatně vytvořeného obsahu. V reálném světě, dva objekty nemohou být na stejném místě ve stejnou dobu. V závislosti na aplikaci mohou uživatelé chtít vědět, zda překrývající se povrchy existují a kde se nacházejí. Například CAD scéna budovy, která je základem pro stavbu z reálného světa, by neměla obsahovat fyzicky nemožné průsečíky povrchu. Pro vizuální kontrolu je k dispozici režim zvýraznění, který zobrazuje potenciální z-boj jako animovaný šachovní vzor.
+Druhý problém je indikátorem chybně vytvořeného obsahu. V reálném světě se dva objekty nemůžou nacházet na stejném místě. V závislosti na aplikaci mohou uživatelé chtít zjistit, zda existují překrývající se povrchy a kde jsou. Například scéna CAD budovy, která je základem pro konstrukci reálného světa, by neměla obsahovat fyzicky nereálné průřezy povrchu. Aby bylo možné vizuální kontrolu, je k dispozici režim zvýrazňování, který jako animovaný šachovnicový vzor zobrazuje potenciál z hlediska odboje.
 
 ## <a name="limitations"></a>Omezení
 
-Za předpokladu, z-boj zmírnění je nejlepší úsilí. Neexistuje žádná záruka, že odstraní všechny z-boj. Také to bude automaticky preferují jeden povrch před druhým. Pokud tedy máte povrchy, které jsou příliš blízko u sebe, může se stát, že "špatný" povrch skončí nahoře. Běžným problémem je, když text a jiné obtisky jsou použity na povrch. S z-boj zmírnění povoleno tyto detaily by mohly snadno jen tak zmizet.
+K dispozici je nejlepší úsilí z hlediska zmírnění omezení z hlediska boje. Není zaručeno, že odebere všechny z boje. Také bude automaticky preferovat jednu plochu v jiném. Proto pokud máte povrchy, které jsou příliš blízko sobě navzájem, může dojít k tomu, že "špatný" povrch skončil nahoru. Běžný případ problému je, když se na Surface používá text a další decals. S povoleným omezením na úrovni z-boje by tyto podrobnosti mohly snadno pouze zobrazit.
 
 ## <a name="performance-considerations"></a>Otázky výkonu
 
-* Povolení z-boj zmírnění vynaloží málo nebo žádné režie výkonu.
-* Navíc povolení z-boj překrytí vznikne netriviální výkon režie, i když se může lišit v závislosti na scéně.
+* Povolením z boje proti zmírnění rizik dojde k nedostatečnému výkonu.
+* Kromě povolení překrytí z-boje platí netriviální režie výkonu, i když se může lišit v závislosti na scéně.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Režimy vykresl](../../concepts/rendering-modes.md)
-* [Reprojekce pozdního jeviště](late-stage-reprojection.md)
+* [Režimy vykreslování](../../concepts/rendering-modes.md)
+* [Reprojekce pozdní fáze](late-stage-reprojection.md)

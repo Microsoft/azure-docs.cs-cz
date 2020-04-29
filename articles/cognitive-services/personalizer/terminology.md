@@ -1,70 +1,70 @@
 ---
-title: Terminologie - Personalista
-description: Personalizátor používá terminologii z posilování učení. Tyto termíny se používají na webu Azure Portal a api.
+title: Přizpůsobení terminologie
+description: Přizpůsobování používá terminologii při výuce. Tyto výrazy se používají v Azure Portal a rozhraní API.
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: f75437c5afd5d3fd7f7570079be410d3db1ca8db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77624272"
 ---
 # <a name="terminology"></a>Terminologie
 
-Personalizátor používá terminologii z posilování učení. Tyto termíny se používají na webu Azure Portal a api.
+Přizpůsobování používá terminologii při výuce. Tyto výrazy se používají v Azure Portal a rozhraní API.
 
-## <a name="conceptual-terminology"></a>Pojmová terminologie
+## <a name="conceptual-terminology"></a>Koncepční terminologie
 
-* **Učení Smyčky**: Můžete vytvořit personalizační prostředek, volal _učení smyčky_, pro každou část aplikace, které mohou těžit z přizpůsobení. Pokud máte více než jednu zkušenost přizpůsobit, vytvořte smyčku pro každou z nich.
+* **Výuková smyčka**: pro každou část aplikace můžete vytvořit prostředek přizpůsobeného, označovaný jako _výuková smyčka_, pro každou část vaší aplikace, která může být výhodou přizpůsobení. Pokud máte více než jedno prostředí pro přizpůsobení, vytvořte smyčku pro každý z nich.
 
-* **Model**: Model personalisty zachycuje všechna data o chování uživatelů, získává trénovací data z kombinace argumentů, které odesíláte do volání Hodnost a Odměna, a s trénováním chováním určeným zásadami učení.
+* **Model**: model pro přizpůsobení zachycuje všechna data zjištěná v souvislosti s uživatelským chováním a získá školicí data z kombinace argumentů, které odesíláte do volání funkce Rank a disměna, a s chováním školení stanoveným pomocí zásad učení.
 
-## <a name="personalizer-configuration"></a>Konfigurace personalizátoru
+## <a name="personalizer-configuration"></a>Konfigurace přizpůsobení
 
-Personalizátor je nakonfigurovaný z [portálu Azure](https://portal.azure.com).
+Přizpůsobování je nakonfigurované z [Azure Portal](https://portal.azure.com).
 
-* **Odměny**: Nakonfigurujte výchozí hodnoty pro čekací dobu odměny, výchozí zásady odměny a agregace odměn.
+* **Ceny**: konfigurujte výchozí hodnoty pro dobu čekání na měnu, výchozí odměňování a agregační zásady pro odměnu.
 
-* **Průzkum**: konfigurace procenta Rank volání použít pro průzkum
+* **Průzkum**: Konfigurace procenta volání pořadí, která se mají použít pro průzkum
 
-* **Frekvence aktualizace modelu**: Jak často je model přetrénovaný.
+* **Frekvence aktualizace modelu**: jak často je model převlakované.
 
-* **Uchovávání dat**: Kolik dní dat k uložení. To může mít vliv na offline hodnocení, které se používají ke zlepšení vaší smyčky učení.
+* **Uchovávání dat**: počet dní, po které se má ukládat data. To může mít dopad na offline hodnocení, které se používá ke zlepšení výukového cyklu.
 
-## <a name="use-rank-and-reward-apis"></a>Použití api pro hodnocení a odměny
+## <a name="use-rank-and-reward-apis"></a>Použití rozhraní API pro řazení a měnu
 
-* **Pořadí**: Vzhledem k akcím s funkcemi a kontextovými funkcemi použijte prozkoumat nebo zneužít k vrácení nejvyšší akce (položky obsahu).
+* **Pořadí**: vzhledem k akcím s funkcemi a kontextovým funkcím, použijte funkci prozkoumat nebo zneužít k vrácení nejvyšší akce (položka obsahu).
 
-    * **Akce**: Akce jsou položky obsahu, jako jsou produkty nebo propagační akce, ze kterých si můžete vybrat. Personalizátor zvolí nejlepší akci (vrácené ID akce odměny), která se uživatelům zobrazí prostřednictvím rozhraní Rank API.
+    * **Akce**: akce jsou položky obsahu, jako jsou produkty nebo propagační akce, ze kterých si můžete vybrat. Přizpůsobení zvolí hlavní akci (vrácenou akci odměnu), která se uživatelům zobrazí prostřednictvím rozhraní API pro řazení.
 
-    * **Kontext**: Chcete-li poskytnout přesnější pořadí, poskytněte informace o kontextu, například:
+    * **Kontext**: Chcete-li zadat přesnější pořadí, zadejte informace o kontextu, například:
         * Váš uživatel.
-        * Zařízení, na které jsou.
+        * Zařízení, na kterém jsou.
         * Aktuální čas.
-        * Další údaje o aktuální situaci.
+        * Další informace o aktuální situaci.
         * Historická data o uživateli nebo kontextu.
 
-        Vaše konkrétní aplikace může mít různé informace o kontextu.
+        Vaše konkrétní aplikace mohou mít různé kontextové informace.
 
-    * **[Funkce:](concepts-features.md)** Jednotka informací o položce obsahu nebo uživatelském kontextu. Nezapomeňte používat pouze funkce, které jsou agregované. Nepoužívejte jako funkce konkrétní časy, ID uživatelů ani jiná neagregovaná data.
+    * **[Funkce](concepts-features.md)**: jednotka informací o položce obsahu nebo kontextu uživatele. Ujistěte se, že používáte jenom agregované funkce. Nepoužívejte konkrétní časy, ID uživatelů ani jiná neagregovaná data jako funkce.
 
-        * _Funkce akce_ je metadata o obsahu.
-        * _Funkce kontextu_ je metadata o kontextu, ve kterém je obsah prezentován.
+        * _Funkce Action_ je metadata týkající se obsahu.
+        * _Kontextová funkce_ je metadata o kontextu, ve kterém je zobrazený obsah.
 
-* **Průzkum**: Služba Personalizace zkoumá, kdy místo vrácení nejlepší akce zvolí pro uživatele jinou akci. Služba Personalizace zabraňuje driftu, stagnaci a může se přizpůsobit průběžnému chování uživatelů zkoumáním.
+* **Průzkum**: služba přizpůsobeného přizpůsobuje, kdy místo vrácení nejlepší akce zvolí pro uživatele jinou akci. Služba přizpůsobeného přizpůsobování zabraňuje posunu, stagnation a přizpůsobení probíhajícímu uživatelskému chování, a to zkoumáním.
 
-* **Využití**: Služba Personalizace používá aktuální model k rozhodnutí o nejlepší akci na základě minulých dat.
+* **Využití**: služba přizpůsobeného modelu používá aktuální model k určení nejlepší akce na základě minulých dat.
 
-* **Doba trvání experimentu**: Doba, po kterou služba Personalista čeká na odměnu, počínaje okamžikem, kdy došlo k volání hodnosti pro danou událost.
+* **Doba trvání experimentu**: doba, po kterou služba přizpůsobené může čekat na určitou odměnu od okamžiku, kdy pro danou událost proběhlo volání pořadí.
 
-* **Neaktivní události**: Neaktivní událost je událost, kde jste volali Pořadí, ale nejste si jisti, že uživatel někdy uvidí výsledek, z důvodu rozhodnutí klientské aplikace. Neaktivní události umožňují vytvářet a ukládat výsledky přizpůsobení a později se rozhodnout je zahodit, aniž by to mělo vliv na model strojového učení.
+* **Neaktivní události**: neaktivní událost je ta, kde se říkáte Rank, ale nejste si jistí, že uživatel uvidí výsledek z důvodu rozhodnutí klientské aplikace. Neaktivní události umožňují vytvořit a uložit výsledky přizpůsobení a pak se rozhodnout o jejich zrušení později, aniž by to ovlivnilo model strojového učení.
 
 
-* **Odměna**: Míra toho, jak uživatel reagoval na ID vrácené akce odměny rozhraní Rank API, jako skóre mezi 0 až 1. Hodnota 0:1 je nastavena obchodní logikou na základě toho, jak volba pomohla dosáhnout vašich obchodních cílů personalizace. Učení smyčky neukládá tuto odměnu jako individuální historii uživatelů.
+* **Odměňování**: míra, kterou uživatel odpověděl na rozhraní API pro řazení, vrátilo ID akce odměňování jako skóre mezi 0 a 1. Hodnota 0 až 1 je nastavená vaší obchodní logikou na základě toho, jak volba pomáhá dosáhnout vašich obchodních cílů přizpůsobení. Výuková smyčka neukládá tuto odměnu jako historii jednotlivých uživatelů.
 
 ## <a name="offline-evaluations"></a>Offline vyhodnocení
 
-* **Hodnocení:** Offline hodnocení určuje nejlepší zásady učení pro vaši smyčku na základě dat smyčky.
+* **Vyhodnocení**: offline vyhodnocení Určuje doporučené zásady učení pro vaši smyčku na základě dat vaší smyčky.
 
-* **Zásady učení**: Jak personalizátor trénuje model na každé události, bude určen některými parametry, které ovlivňují fungování algoritmu strojového učení. Nová smyčka učení začíná výchozí **zásady učení**, které mohou přinést mírný výkon. Při spuštění [hodnocení](concepts-offline-evaluation.md), Personalizátář vytvoří nové zásady učení speciálně optimalizované pro případy použití smyčky. Personalizár bude fungovat výrazně lépe s zásadami optimalizovanými pro každou konkrétní smyčku, generované během hodnocení. Zásady učení se nazývají _nastavení učení_ na modelu a **nastavení učení** pro prostředek personalikátor na webu Azure portal.
+* **Zásady učení**: jak přizpůsobovat vlaky na každou událost se určí pomocí některých parametrů, které mají vliv na to, jak algoritmus strojového učení funguje. Nová výuková smyčka začíná výchozími **zásadami učení**, což může přinést střední výkon. Při spuštění [hodnocení](concepts-offline-evaluation.md)vytvoří přizpůsobené nové zásady učení speciálně optimalizované pro případy použití smyčky. Přizpůsobený přizpůsobování bude výrazně lepší díky zásadám optimalizovaným pro každou specifickou smyčku vygenerovanou během hodnocení. Zásady učení se nazývají _Nastavení učení_ v **Nastavení modelu a učení** pro prostředek přizpůsobeného v Azure Portal.

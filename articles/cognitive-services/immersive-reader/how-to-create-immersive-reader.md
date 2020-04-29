@@ -1,7 +1,7 @@
 ---
 title: Vytvoření prostředku Asistivní čtečky
 titleSuffix: Azure Cognitive Services
-description: Tento článek vám ukáže, jak vytvořit nový prostředek Immersive Reader s vlastní subdoménou a pak nakonfigurovat Azure AD ve vašem tenantovi Azure.
+description: V tomto článku se dozvíte, jak vytvořit nový prostředek moderního čtecího zařízení s vlastní subdoménou a potom nakonfigurovat Azure AD v tenantovi Azure.
 services: cognitive-services
 author: rwaller
 manager: guillasi
@@ -11,25 +11,25 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
 ms.openlocfilehash: 41efe4592c65ae3cdd85ce1b212554e50691905a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78330715"
 ---
-# <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Vytvoření prostředku immersive Readeru a konfigurace ověřování azure active directory
+# <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Vytvoření prostředku pro moderní čtečku a konfigurace ověřování Azure Active Directory
 
-V tomto článku poskytujeme skript, který vytvoří prostředek immersive Reader a nakonfiguruje ověřování Azure Active Directory (Azure AD). Pokaždé, když je vytvořen prostředek Immersive Reader, ať už s tímto skriptem nebo na portálu, musí být také nakonfigurované s oprávněními Azure AD. Tento skript vám pomůže s tím.
+V tomto článku poskytujeme skript, který vytvoří prostředek pro moderní čtečku a nakonfiguruje ověřování Azure Active Directory (Azure AD). Pokaždé, když se vytvoří prostředek pro moderní čtečku, ať už s tímto skriptem, nebo na portálu, musí se taky nakonfigurovat s oprávněními Azure AD. Tento skript vám to pomůže.
 
-Skript je navržen tak, aby vytvořit a nakonfigurovat všechny potřebné Immersive Reader a Azure AD prostředky pro vás všechny v jednom kroku. Můžete však také nakonfigurovat ověřování Azure AD pro existující prostředek Immersive Reader, pokud například jste už vytvořili jeden na webu Azure Portal.
+Skript je navržený tak, aby se v jednom kroku vytvořily a nakonfigurovali všechny nezbytné moderní čtečky a prostředky Azure AD. Můžete ale taky nakonfigurovat ověřování Azure AD pro existující prostředek pro moderní čtečku, pokud je třeba, že jste už nějakou vytvořili v Azure Portal.
 
-Pro některé zákazníky může být nutné vytvořit více prostředků immersive Reader, pro vývoj vs produkčního prostředí nebo možná pro více různých oblastí, ve kterých je vaše služba nasazena. V těchto případech se můžete vrátit a použít skript vícekrát k vytvoření různých prostředků immersive Reader a získat je nakonfigurované s oprávněními Azure AD.
+Pro některé zákazníky může být nutné vytvořit více prostředků moderního čtecího zařízení, pro vývoj vs. produkci, případně pro více různých oblastí, ve kterých je vaše služba nasazená. V takových případech se můžete vrátit zpět a pomocí skriptu několikrát vytvořit různé prostředky pro moderní čtečku a nakonfigurujete je s oprávněními Azure AD.
 
-Skript je navržen tak, aby byl flexibilní. Nejprve vyhledá existující immersive Reader a Azure AD prostředky ve vašem předplatném a vytvořit je pouze podle potřeby, pokud ještě neexistují. Pokud je to váš první čas vytvoření immersive Reader zdroj, skript udělá vše, co potřebujete. Pokud chcete použít pouze ke konfiguraci Azure AD pro existující prostředek Immersive Reader, který byl vytvořen na portálu, bude to udělat taky. Lze jej také použít k vytvoření a konfiguraci více prostředků aplikace Immersive Reader.
+Skript je navržený tak, aby byl flexibilní. Nejprve bude vyhledán existující moderní čtecí zařízení a prostředky Azure AD ve vašem předplatném a vytvářet je pouze v případě potřeby, pokud ještě neexistují. Pokud vytvoříte prostředek pro moderní čtečku poprvé, bude skript provádět všechno, co potřebujete. Pokud ho chcete použít jenom ke konfiguraci služby Azure AD pro existující prostředek moderního čtecího zařízení, který se vytvořil na portálu, provede se to i vy. Dá se použít i k vytvoření a konfiguraci více prostředků pro moderní čtečku.
 
-## <a name="set-up-powershell-environment"></a>Nastavení prostředí Prostředí PowerShellu
+## <a name="set-up-powershell-environment"></a>Nastavení prostředí PowerShell
 
-1. Začněte otevřením [prostředí Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). Ujistěte se, že prostředí cloud je nastavena na PowerShell `pwsh`v levém horním rohu nebo zadáním .
+1. Začněte otevřením [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). Ujistěte se, že je v rozevíracím seznamu vlevo nahoře nastavené prostředí cloud Shell nebo když zadáte `pwsh`.
 
 1. Zkopírujte a vložte následující fragment kódu do prostředí.
 
@@ -141,7 +141,7 @@ Skript je navržen tak, aby byl flexibilní. Nejprve vyhledá existující immer
     }
     ```
 
-1. Spusťte `Create-ImmersiveReaderResource`funkci a podle potřeby zadejme parametry.
+1. Spusťte funkci `Create-ImmersiveReaderResource`, podle potřeby zadejte parametry.
 
     ```azurepowershell-interactive
     Create-ImmersiveReaderResource
@@ -159,18 +159,18 @@ Skript je navržen tak, aby byl flexibilní. Nejprve vyhledá existující immer
 
     | Parametr | Komentáře |
     | --- | --- |
-    | SubscriptionName |Název předplatného Azure, které se má použít pro prostředek immersive Reader. Chcete-li vytvořit prostředek, musíte mít předplatné. |
-    | ResourceName |  Musí být alfanumerická a může obsahovat '-', pokud '-' není první nebo poslední znak. Délka nesmí překročit 63 znaků.|
-    | ZdrojSubdoména |Vlastní subdoména je potřebná pro váš prostředek immersive Reader. Subdoména je používána sadou SDK při volání služby Immersive Reader ke spuštění čtečky. Subdoména musí být globálně jedinečná. Subdoména musí být alfanumerická a může obsahovat '-', pokud '-' není první nebo poslední znak. Délka nesmí překročit 63 znaků. Tento parametr je volitelný, pokud prostředek již existuje. |
-    | ResourceSKU |Možnosti: `S0`. Další informace o jednotlivých dostupných skladových položkách najdete na [naší stránce s cenami služeb Cognitive Services.](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/) Tento parametr je volitelný, pokud prostředek již existuje. |
-    | ResourceLocation |`eastus`Možnosti: `eastus2` `southcentralus`, `westus` `westus2`, `australiaeast` `southeastasia`, `centralindia` `japaneast`, `northeurope` `uksouth`, `westeurope`, , , , , . Tento parametr je volitelný, pokud prostředek již existuje. |
-    | ResourceGroupName |Prostředky jsou vytvářeny ve skupinách prostředků v rámci předplatných. Zadej název existující skupiny prostředků. Pokud skupina prostředků ještě neexistuje, bude vytvořena nová skupina s tímto názvem. |
-    | ResourceGroupLocation |Pokud vaše skupina prostředků neexistuje, je třeba zadat umístění, ve kterém chcete vytvořit skupinu. Chcete-li najít seznam `az account list-locations`umístění, spusťte . Použijte vlastnost *name* (bez mezer) vráceného výsledku. Tento parametr je volitelný, pokud skupina prostředků již existuje. |
-    | AADAppDisplayName |Zobrazovaný název aplikace Azure Active Directory. Pokud není nalezena existující aplikace Azure AD, vytvoří se nová aplikace s tímto názvem. Tento parametr je volitelný, pokud aplikace Azure AD již existuje. |
-    | AADAppIdentifieruri |Identifikátor URI pro aplikaci Azure AD. Pokud není nalezena existující aplikace Azure AD, vytvoří se nová aplikace s tímto identifikátorem URI. Například, `https://immersivereaderaad-mycompany`. |
-    | AADAppClientSecret |Heslo, které vytvoříte a které bude později použito k ověření při získání tokenu ke spuštění immersive Reader. Heslo musí mít alespoň 16 znaků, musí obsahovat alespoň 1 speciální znak a musí obsahovat alespoň 1 číselný znak. |
+    | SubscriptionName |Název předplatného Azure, které se má použít pro prostředek pro moderní čtečku Aby bylo možné vytvořit prostředek, musíte mít předplatné. |
+    | ResourceName |  Musí být alfanumerické a může obsahovat znak-, pokud znak-není prvním nebo posledním znakem. Délka nesmí překročit 63 znaků.|
+    | ResourceSubdomain |Pro prostředek pro moderní čtečku je potřeba vlastní subdoména. Subdoména je používána sadou SDK při volání služby moderního čtecího zařízení za účelem spuštění čtecího modulu. Subdoména musí být globálně jedinečná. Subdoména musí být alfanumerická a může obsahovat znak-, pokud znak-není prvním nebo posledním znakem. Délka nesmí překročit 63 znaků. Tento parametr je nepovinný, pokud prostředek již existuje. |
+    | ResourceSKU |Možnosti: `S0`. Další informace o jednotlivých dostupných SKU najdete na naší [stránce s cenami Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/) . Tento parametr je nepovinný, pokud prostředek již existuje. |
+    | ResourceLocation |Možnosti: `eastus`, `eastus2`, `southcentralus`, `westus`, `westus2`, `australiaeast`, `southeastasia`, `centralindia`, `japaneast`, `northeurope`, `uksouth`, `westeurope`. Tento parametr je nepovinný, pokud prostředek již existuje. |
+    | ResourceGroupName |Prostředky se vytvářejí ve skupinách prostředků v rámci předplatných. Zadejte název existující skupiny prostředků. Pokud skupina prostředků ještě neexistuje, vytvoří se nový s tímto názvem. |
+    | ResourceGroupLocation |Pokud vaše skupina prostředků neexistuje, je nutné dodat umístění, ve kterém chcete skupinu vytvořit. Chcete-li najít seznam umístění, spusťte `az account list-locations`příkaz. Použijte vlastnost *Name* (bez mezer) vráceného výsledku. Tento parametr je nepovinný, pokud vaše skupina prostředků již existuje. |
+    | AADAppDisplayName |Zobrazovaný název aplikace Azure Active Directory. Pokud se nenašla existující aplikace Azure AD, vytvoří se nový s tímto názvem. Tento parametr je nepovinný, pokud už aplikace Azure AD existuje. |
+    | AADAppIdentifierUri |Identifikátor URI pro aplikaci Azure AD. Pokud se nenašla existující aplikace služby Azure AD, vytvoří se nový s tímto identifikátorem URI. Například, `https://immersivereaderaad-mycompany`. |
+    | AADAppClientSecret |Heslo, které vytvoříte, které se později použije k ověření při získání tokenu pro spuštění moderního čtecího zařízení. Heslo musí mít alespoň 16 znaků, musí obsahovat alespoň 1 speciální znak a musí obsahovat alespoň 1 číselný znak. |
 
-1. Zkopírujte výstup JSON do textového souboru pro pozdější použití. Výstup by měl vypadat takto.
+1. Zkopírujte výstup JSON do textového souboru pro pozdější použití. Výstup by měl vypadat nějak takto.
 
     ```json
     {
@@ -183,10 +183,10 @@ Skript je navržen tak, aby byl flexibilní. Nejprve vyhledá existující immer
 
 ## <a name="next-steps"></a>Další kroky
 
-* Zobrazení [rychlého startu node.js](./quickstart-nodejs.md) zobrazíte další, co dalšího můžete dělat se sadou Immersive Reader SDK pomocí souboru Node.js
-* Podívejte se na [kurz v Pythonu](./tutorial-python.md) a zjistěte, co dalšího můžete dělat s sadou Immersive Reader SDK pomocí Pythonu
-* Podívejte se na [výukový program Swift,](./tutorial-ios-picture-immersive-reader.md) abyste zjistili, co dalšího můžete dělat s sadou Immersive Reader SDK pomocí swiftu
-* Seznamte se s [sadou Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) a [referenční sadou Immersive Reader SDK](./reference.md)
+* Podívejte se na úvodní seznam pro [Node. js](./quickstart-nodejs.md) , kde vidíte, co dalšího můžete dělat se sadou moderního čtecího zařízení pomocí Node. js.
+* Podívejte se na [kurz Pythonu](./tutorial-python.md) , abyste viděli, co dalšího můžete dělat se sadou moderní čtečky pomocí Pythonu.
+* Podívejte se na [kurz SWIFT](./tutorial-ios-picture-immersive-reader.md) , který vám umožní zobrazit další informace, které můžete dělat v sadě moderní čtečky pomocí SWIFT.
+* Prozkoumejte [sadu moderních čtenářů](https://github.com/microsoft/immersive-reader-sdk) a [referenční materiály k sadě pro moderní čtečku](./reference.md)
 
 
 

@@ -1,53 +1,53 @@
 ---
-title: 'Úvodní příručka: Nasazení aplikace pomocí portálu LUIS'
-description: Tento rychlý start ukazuje, jak nasadit aplikaci vytvořením prostředku koncového bodu předpověď, přiřazení prostředků, školení a publikování aplikace.
+title: 'Rychlý Start: nasazení aplikace pomocí portálu LUIS'
+description: V tomto rychlém startu se dozvíte, jak nasadit aplikaci vytvořením prostředku koncového bodu předpovědi, přiřazení prostředku, školení a publikování aplikace.
 ms.topic: quickstart
 ms.date: 04/06/2020
 ms.openlocfilehash: aaf86766c2357c5382b78cd4a35fd4b159e5c0f3
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80756303"
 ---
-# <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Úvodní příručka: Nasazení aplikace na portálu LUIS
+# <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Rychlý Start: nasazení aplikace na portálu LUIS
 
-Když vaše aplikace LUIS je připraven vrátit předpovědi utterance do klientské aplikace (například chatovací ho bot), je třeba nasadit aplikaci do koncového bodu předpověď.
+Když je vaše aplikace LUIS připravená na vrácení utterance předpovědi do klientské aplikace (například robota chatu), musíte aplikaci nasadit do koncového bodu předpovědi.
 
-V tomto rychlém startu se naučíte nasadit aplikaci. Můžete vytvořit prostředek koncového bodu předpověď, přiřadit prostředek k aplikaci, trénování aplikace a publikovat aplikaci.
+V tomto rychlém startu se naučíte nasadit aplikaci. Vytvoříte prostředek koncového bodu předpovědi, přiřadíte ho k aplikaci, provedete výuku aplikace a publikujete aplikaci.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Získejte [předplatné Azure](https://azure.microsoft.com/free).
-* Dokončete [předchozí portál ový rychlý start](get-started-portal-build-app.md) nebo si [aplikaci stáhněte a importujte](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json).
-* Pokud máte aplikace, které předdatem ověřování prostředků Azure, [migrujte do prostředku Azure](luis-migration-authoring.md). Některé stránky portálu vypadají jinak, když je v platnosti ověřování e-mailem.
+* Dokončete [předchozí portál pro rychlý Start](get-started-portal-build-app.md) nebo [si stáhněte a importujte aplikaci](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json).
+* Pokud máte aplikace, které předem nastavily ověřování prostředků Azure, [migrujte na prostředek Azure](luis-migration-authoring.md). Některé stránky portálu při ověřování e-mailu vypadají jinak.
 
 <a name="create-the-endpoint-resource"></a>
 
 [!INCLUDE [Create LUIS resource](includes/create-luis-resource.md)]
 
-## <a name="assign-the-resource-key-to-the-luis-app-in-the-luis-portal"></a>Přiřazení klíče prostředku k aplikaci LUIS na portálu LUIS
+## <a name="assign-the-resource-key-to-the-luis-app-in-the-luis-portal"></a>Přiřazení klíče prostředků k aplikaci LUIS na portálu LUIS
 
-Pokaždé, když vytvoříte nový prostředek vytváření nebo předpovědi dotazu pro LUIS, je třeba přiřadit prostředek k aplikaci LUIS. Po jeho přiřazení nebude nutné tento krok provést znovu, pokud nevytvoříte nový zdroj. Můžete vytvořit nový prostředek pro rozšíření oblastí aplikace nebo pro podporu vyššího počtu dotazů předpověď.
+Pokaždé, když vytvoříte nový prostředek pro vytváření obsahu nebo předpovědi pro LUIS, je potřeba přiřadit prostředek k aplikaci LUIS. Po přiřazení Tento krok nebudete muset provádět znovu, dokud nevytvoříte nový prostředek. Můžete vytvořit nový prostředek pro rozšíření oblastí vaší aplikace nebo pro podporu většího počtu předpovědních dotazů.
 
-1. Přihlaste se k [portálu LUIS preview](https://preview.luis.ai) a zvolte aplikaci **myEnglishApp** ze seznamu aplikací.
+1. Přihlaste se k [portálu Luis verze Preview](https://preview.luis.ai) a v seznamu aplikací vyberte aplikaci **myEnglishApp** .
 
-1. V pravé horní nabídce vyberte **Spravovat** a pak vyberte **Azure Resources**.
+1. V pravé horní nabídce vyberte **Spravovat** a pak vyberte **prostředky Azure**.
 
-1. Chcete-li přidat službu LUIS, vyberte **přidat prostředek předpovědi**.
+1. Chcete-li přidat LUIS, vyberte **Přidat prostředek předpovědi**.
 
-    ![Chcete-li přidat prostředek předpověď LUIS, vyberte Přidat prostředek předpověď](./media/get-started-portal-deploy-app/azure-resources-add-prediction-resource.png)
+    ![Pokud chcete přidat prostředek předpovědi LUIS, vyberte Přidat prostředek předpovědi.](./media/get-started-portal-deploy-app/azure-resources-add-prediction-resource.png)
 
-1. Vyberte svého klienta, předplatné a název prostředku. Vyberte **Přiřadit zdroj**.
+1. Vyberte svého tenanta, předplatné a název prostředku. Vyberte **přiřadit prostředek**.
 
-   ![Přiřazení zdroje k aplikaci](./media/get-started-portal-deploy-app/assign-resource.png)
+   ![Přiřazení prostředku k aplikaci](./media/get-started-portal-deploy-app/assign-resource.png)
 
-1. Stejným postupem přidejte do aplikace klíč pro vytváření.
+1. Při přidávání klíčového obsahu do aplikace proveďte stejný postup.
 
-1. Najděte nový řádek v tabulce pro nový prostředek předpověď a zkopírujte adresu URL koncového bodu. Je správně sestavena tak, `HTTP GET` aby požadavek na koncový bod rozhraní API LUIS pro předpověď.
+1. Vyhledejte nový řádek v tabulce pro nový prostředek předpovědi a zkopírujte adresu URL koncového bodu. Je správně sestavena tak, aby `HTTP GET` vytvořila požadavek na koncový bod rozhraní API Luis pro předpověď.
 
 > [!TIP]
-> Pokud chcete použít aktivní učení ke zlepšení aplikace LUIS, vyberte **Změnit parametry dotazu** a vyberte **Uložit protokoly**. Tato akce změní ukázkovou `log=true` adresu URL přidáním parametru querystring. Zkopírujte a použijte adresu URL změněného příkladu dotazu při vytváření dotazů předpověď do koncového bodu runtime.
+> Pokud máte v úmyslu k vylepšení aplikace LUIS používat aktivní výuku, vyberte možnost **změnit parametry dotazu** a vyberte **Uložit protokoly**. Tato akce změní ukázkovou adresu URL přidáním parametru `log=true` QueryString. Kopírování a použití změněné ukázkové adresy URL dotazu při provádění prediktivních dotazů na koncový bod modulu runtime.
 
 ## <a name="train-the-app"></a>Trénování aplikace
 
@@ -57,18 +57,18 @@ Pokaždé, když vytvoříte nový prostředek vytváření nebo předpovědi do
 
 [!INCLUDE [LUIS How to Train steps](includes/howto-publish.md)]
 
-## <a name="prediction-endpoint-request"></a>Požadavek koncového bodu předpověď
+## <a name="prediction-endpoint-request"></a>Požadavek koncového bodu předpovědi
 
-Na portálu `query=` preview je na konci adresy URL, kde je projev uživatele připojen k požadavku GET. Za `query=`, zadejte stejný projev uživatele použitý na konci předchozího rychlého startu:
+Na konci adresy URL na `query=` portálu Preview je místo, kde se uživatel utterance připojí k žádosti o získání. Po zadání `query=`zadejte stejný utterance uživatele, který jste použili na konci předchozího rychlého startu:
 
 ```Is there a form named hrf-234098```
 
-Ujistěte se, že řetězec dotazu obsahuje následující dvojice:
+Ujistěte se, že řetězec dotazu obsahuje následující páry:
 
 * `show-all-intents=true`
 * `verbose=true`
 
-Prohlížeč zobrazuje odpověď:
+V prohlížeči se zobrazí odpověď:
 
 ```JSON
 {
@@ -107,15 +107,15 @@ Prohlížeč zobrazuje odpověď:
 }
 ```
 
-Chcete-li zobrazit stejnou úroveň informací v testovacím podokně, musíte aplikaci publikovat. Po publikování aplikace vyberte **Porovnat s publikovaným** v testovacím podokně. Pomocí **zobrazení Zobrazit JSON** v publikovaném testovacím podokně zobrazíte stejný json jako v předchozím kroku. Tímto způsobem můžete porovnat změny aktuální aplikace, na které pracujete, s aplikací, která je publikovaná do koncového bodu.
+Chcete-li zobrazit stejnou úroveň informací v podokně test, je nutné aplikaci publikovat. Po publikování aplikace vyberte v podokně test možnost **Porovnat s publikováním** . Pokud chcete zobrazit stejný kód JSON jako předchozí krok, použijte **zobrazení zobrazit JSON** v publikovaném podokně test. Tímto způsobem můžete porovnat změny aktuální aplikace, na které pracujete, s aplikací, která je publikovaná do koncového bodu.
 
-[![Porovnat aktuálně úpravy a publikovanou verzi aplikace](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
+[![Porovnat aktuálně upravované a publikované verze aplikace](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Až budete hotovi s tímto rychlým startem, vyberte **moje aplikace** v horní navigační nabídce. Zaškrtněte políčko aplikace ze seznamu a pak vyberte **Odstranit** z pruhu nástrojů kontextu nad seznamem.
+Až budete s tímto rychlým startem hotovi, vyberte **Moje aplikace** z horní navigační nabídky. V seznamu vyberte zaškrtávací políčko aplikace a pak na panelu nástrojů kontextu nad seznamem vyberte **Odstranit** .
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Identifikace společných záměrů a entit](luis-tutorial-prebuilt-intents-entities.md)
+> [Identifikace běžných záměrů a entit](luis-tutorial-prebuilt-intents-entities.md)

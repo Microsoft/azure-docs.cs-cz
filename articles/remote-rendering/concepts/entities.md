@@ -1,38 +1,38 @@
 ---
 title: Entity
-description: Definice entit v oboru rozhraní Azure Remote Rendering API
+description: Definice entit v oboru rozhraní API vzdáleného vykreslování Azure
 author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.openlocfilehash: d7b9ecd048b080ae0ec9fd3fb7a4fb35009551b8
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681945"
 ---
 # <a name="entities"></a>Entity
 
-*Entita* představuje pohyblivý objekt v prostoru a je základním stavebním kamenem vzdáleně vykresleného obsahu.
+*Entita* představuje Pohyblivý objekt v prostoru a je základním stavebním blokem vzdáleně vykresleného obsahu.
 
-## <a name="entity-properties"></a>Vlastnosti entity
+## <a name="entity-properties"></a>Vlastnosti entit
 
-Entity mají transformaci definovanou pozicí, otočením a měřítkem. Samy o sobě entity nemají žádné pozorovatelné funkce. Místo toho chování je přidán prostřednictvím komponent, které jsou připojeny k entitám. Například připojení [komponenty CutPlaneComponent](../overview/features/cut-planes.md) vytvoří rovinu řezu na pozici entity.
+Entity mají transformaci definovanou polohou, otočením a škálováním. Vlastními entitami nemají žádné pozorovatelské funkce. Místo toho je chování přidáno prostřednictvím komponent, které jsou připojeny k entitám. Například připojením [CutPlaneComponent](../overview/features/cut-planes.md) se vytvoří vyjmutá rovina na pozici entity.
 
-Nejdůležitějším aspektem samotné entity je hierarchie a výsledná hierarchická transformace. Pokud je například ke sdílené nadřazené entitě připojeno více entit jako podřízených entit, všechny tyto entity lze přesunout, otočit a změnit jejich měřítko v souběhem změnou transformace nadřazené entity.
+Nejdůležitější aspekt samotné entity je hierarchie a výsledná hierarchická transformace. Například pokud je více entit propojeno jako podřízené pro sdílenou nadřazenou entitu, všechny tyto entity lze přesunout, otočit a škálovat v úlohách změnou transformace nadřazené entity.
 
-Entita je jednoznačně vlastněna nadřazenou položkou, což znamená, že když je nadřazená jednotka zničena pomocí `Entity.Destroy()`aplikace , jsou její podřízené položky a všechny připojené [součásti](components.md). Odebrání modelu ze scény se tedy `Destroy` provádí voláním na kořenovém `AzureSession.Actions.LoadModelAsync()` uzlu modelu, `AzureSession.Actions.LoadModelFromSASAsync()`vráceném nebo jeho variantou SAS .
+Entita je jedinečně vlastněna její nadřazenou položkou, což znamená, že pokud `Entity.Destroy()`je Nadřazená aktivita zničena s, tak jsou její podřízené a všechny připojené [součásti](components.md). Proto je odebrání modelu z scény provedeno voláním `Destroy` na kořenový uzel modelu, vrácený `AzureSession.Actions.LoadModelAsync()` nebo jeho variantou `AzureSession.Actions.LoadModelFromSASAsync()`SAS.
 
-Entity jsou vytvořeny při načtení obsahu serveru nebo když uživatel chce přidat objekt do scény. Pokud například uživatel chce přidat rovinu řezu, aby vizualizoval vnitřek sítě, může vytvořit entitu, kde by měla existovat rovina, a pak do ní přidat komponentu roviny řezu.
+Entity se vytvoří, když server načte obsah nebo když chce uživatel přidat objekt do scény. Pokud chce například uživatel přidat vyjmutou plochu k vizualizaci vnitřku sítě, může uživatel vytvořit entitu, kde by měla existovat plocha, a pak do ní přidat komponentu vyjmuté plochy.
 
-## <a name="query-functions"></a>Funkce dotazu
+## <a name="query-functions"></a>Funkce dotazů
 
-Existují dva typy funkcí dotazu na entity: synchronní a asynchronní volání. Synchronní dotazy lze použít pouze pro data, která je k dispozici na straně klienta a nezahrnuje mnoho výpočtů. Příklady jsou dotazování na součásti, relativní transformace objektů nebo vztahy nadřazený/podřízený. Asynchronní dotazy se používají pro data, která jsou uložena pouze na serveru nebo zahrnuje další výpočty, které by byly příliš nákladné pro spuštění na straně klienta. Příklady jsou dotazy prostorových hranic nebo metadatové dotazy.
+Existují dva typy funkcí dotazu pro entity: synchronní a asynchronní volání. Synchronní dotazy lze použít pouze pro data, která jsou k dispozici v klientovi a která nezahrnují množství výpočtů. Příklady jsou dotazování na součásti, relativní transformace objektů nebo vztahy nadřazenosti a podřízenosti. Asynchronní dotazy jsou používány pro data, která se nachází pouze na serveru, nebo zahrnují další výpočet, který by byl příliš nákladný ke spuštění na klientovi. Příklady jsou prostorové datové meze dotazy nebo dotazy na metadata.
 
 ### <a name="querying-components"></a>Dotazování na součásti
 
-Chcete-li najít součást určitého `FindComponentOfType`typu, použijte :
+Chcete-li najít komponentu určitého typu, použijte `FindComponentOfType`:
 
 ```cs
 CutPlaneComponent cutplane = (CutPlaneComponent)entity.FindComponentOfType(ObjectType.CutPlaneComponent);
@@ -43,10 +43,10 @@ CutPlaneComponent cutplane = entity.FindComponentOfType<CutPlaneComponent>();
 
 ### <a name="querying-transforms"></a>Dotazování transformací
 
-Transformační dotazy jsou synchronní volání na objekt. Je důležité si uvědomit, že transformace dotazované prostřednictvím rozhraní API jsou místní prostor transformace, vzhledem k nadřazenému objektu. Výjimky jsou kořenové objekty, pro které jsou identické místní a světový prostor.
+Transformační dotazy jsou synchronní volání objektu. Je důležité si uvědomit, že transformace, které se dotazují prostřednictvím rozhraní API, jsou transformace místních prostorů vzhledem k nadřazenému objektu. Výjimky jsou kořenové objekty, pro které je místní prostor a světový prostor stejný.
 
 > [!NOTE]
-> Neexistuje žádné vyhrazené rozhraní API pro dotazování transformace světového prostoru libovolných objektů.
+> Neexistuje žádné vyhrazené rozhraní API pro dotazování na transformaci celého objektu na světové místo.
 
 ```cs
 // local space transform of the entity
@@ -54,15 +54,15 @@ Double3 translation = entity.Position;
 Quaternion rotation = entity.Rotation;
 ```
 
-### <a name="querying-spatial-bounds"></a>Dotazování prostorových hranic
+### <a name="querying-spatial-bounds"></a>Dotazování na prostorové meze
 
-Dotazy na hranice jsou asynchronní volání, která pracují v hierarchii celých objektů a používají jednu entitu jako kořenovou. Podívejte se na vyhrazenou kapitolu o [objektových mezích](object-bounds.md).
+Vázané dotazy jsou asynchronní volání, která fungují v celé hierarchii objektů a používají jednu entitu jako kořen. Viz vyhrazená kapitola o [objektových vazbách](object-bounds.md).
 
-### <a name="querying-metadata"></a>Dotazování metadat
+### <a name="querying-metadata"></a>Dotazování na metadata
 
-Metadata jsou další data uložená na objektech, která je serverem ignorována. Metadata objektu jsou v podstatě sadou párů (název, hodnota), kde _hodnota_ může být číselného, logického nebo typu řetězce. Metadata lze exportovat spolu s modelem.
+Metadata jsou další data uložená v objektech, která server ignorují. Metadata objektu jsou v podstatě sada dvojic (název, hodnota), kde _hodnota_ může být číselná, logická nebo řetězcová. Metadata lze exportovat pomocí modelu.
 
-Dotazy metadat jsou asynchronní volání na konkrétní entitu. Dotaz vrátí pouze metadata jedné entity, nikoli sloučené informace dílčího grafu.
+Dotazy na metadata jsou asynchronní volání konkrétní entity. Dotaz vrátí pouze metadata jedné entity, nikoli sloučené informace dílčího grafu.
 
 ```cs
 MetadataQueryAsync metaDataQuery = entity.QueryMetaDataAsync();

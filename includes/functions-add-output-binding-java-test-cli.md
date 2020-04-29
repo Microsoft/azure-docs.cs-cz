@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
 ms.openlocfilehash: 6a359cdd44cc0c0cfbd93bd23b69a67a641c7fbb
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80673292"
 ---
 ## <a name="update-the-tests"></a>Aktualizace testů
 
-Vzhledem k tomu, že archetyp také vytvoří sadu testů, `msg` je `run` třeba aktualizovat tyto testy zpracovat nový parametr v podpisu metody.  
+Vzhledem k tomu, že Archetype také vytvoří sadu testů, je nutné aktualizovat tyto testy pro zpracování nového `msg` parametru v signatuře `run` metody.  
 
-Přejděte do umístění testovacího kódu pod _src/test/java_, otevřete soubor projektu *Function.java* a nahraďte řádek kódu pod `//Invoke` následujícím kódem.
+Přejděte do umístění testovacího kódu v části _Src/test/Java_, otevřete soubor projektu *Function. Java* a nahraďte řádek kódu `//Invoke` následujícím kódem.
 
 :::code language="java" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/src/test/java/com/function/FunctionTest.java" range="48-50":::

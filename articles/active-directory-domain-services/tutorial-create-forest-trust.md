@@ -1,6 +1,6 @@
 ---
-title: Kurz – vytvoření vztahu důvěryhodnosti doménové struktury ve službě Azure AD Domain Services | Dokumenty společnosti Microsoft
-description: Zjistěte, jak vytvořit jednosměrnou odchozí doménovou strukturu do místní domény služby AD DS na webu Azure Portal for Azure AD Domain Services
+title: Kurz – vytvoření vztahu důvěryhodnosti doménové struktury v Azure AD Domain Services | Microsoft Docs
+description: Naučte se vytvořit jednosměrnou odchozí doménovou strukturu do místní služba AD DS domény v Azure Portal pro Azure AD Domain Services
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -11,201 +11,201 @@ ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: iainfou
 ms.openlocfilehash: 9a76f72d3f01ab9253c452e49dde171280fe481d
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80654416"
 ---
-# <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Kurz: Vytvoření odchozího vztahu důvěryhodnosti doménové struktury pro místní doménu ve službě Azure Active Directory Domain Services (preview)
+# <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Kurz: Vytvoření vztahu důvěryhodnosti odchozí doménové struktury do místní domény v Azure Active Directory Domain Services (Preview)
 
-V prostředích, kde nelze synchronizovat zachycování hesel nebo máte uživatele, kteří se výhradně přihlašují pomocí čipových karet, aby neznali své heslo, můžete použít doménovou strukturu prostředků ve službě Azure Active Directory Domain Services (AD DS). Doménová struktura prostředků používá jednosměrný odchozí vztah důvěryhodnosti z Azure AD DS do jednoho nebo více místních prostředí služby AD DS. Tento vztah důvěryhodnosti umožňuje uživatelům, aplikacím a počítačům ověřit se v místní doméně ze spravované domény Služby Azure AD DS. Doménové struktury prostředků Azure AD DS jsou aktuálně ve verzi preview.
+V prostředích, kde nemůžete synchronizovat hodnoty hash hesel, nebo máte uživatele, kteří se přihlásili pomocí čipových karet, aby si neznali heslo, můžete použít doménovou strukturu prostředků v Azure Active Directory Domain Services (služba AD DS). Doménová struktura prostředků používá jednosměrný odchozí vztah důvěryhodnosti z Azure služba AD DS do jednoho nebo více místních služba AD DS prostředí. Tento vztah důvěryhodnosti umožňuje uživatelům, aplikacím a počítačům provádět ověřování v místní doméně ze spravované domény Azure služba AD DS. Doménové struktury prostředků Azure služba AD DS jsou momentálně ve verzi Preview.
 
-![Diagram důvěryhodnosti doménové struktury z Azure AD DS na místní službu AD DS](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
+![Diagram vztahu důvěryhodnosti doménové struktury z Azure služba AD DS do místního služba AD DS](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Konfigurace služby DNS v místním prostředí služby AD DS pro podporu připojení Azure AD DS
-> * Vytvoření jednosměrného vztahu důvěryhodnosti doménové struktury v místním prostředí služby AD DS
-> * Vytvoření jednosměrného odchozího vztahu důvěryhodnosti doménové struktury ve službě Azure AD DS
+> * Konfigurace DNS v místním prostředí služba AD DS pro podporu připojení Azure služba AD DS
+> * Vytvoření jednosměrného vztahu důvěryhodnosti pro příchozí doménovou strukturu v místním prostředí služba AD DS
+> * Vytvoření jednosměrné důvěryhodnosti pro odchozí doménovou strukturu v Azure služba AD DS
 > * Testování a ověření vztahu důvěryhodnosti pro ověřování a přístup k prostředkům
 
-Pokud nemáte předplatné Azure, [vytvořte si účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
 * Aktivní předplatné Azure.
-    * Pokud nemáte předplatné Azure, [vytvořte si účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Tenant Azure Active Directory přidružený k vašemu předplatnému, synchronizovaný s místním adresářem nebo s adresářem pouze pro cloud.
-    * V případě potřeby [vytvořte klienta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure ke svému účtu][associate-azure-ad-tenant].
-* Spravovaná doména služby Azure Active Directory Domain Services vytvořená pomocí doménové struktury prostředků a nakonfigurovaná ve vašem tenantovi Azure AD.
-    * V případě potřeby [vytvořte a nakonfigurujte instanci služby Azure Active Directory Domain Services][create-azure-ad-ds-instance-advanced].
+    * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
+    * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
+* Azure Active Directory Domain Services spravovaná doména vytvořená pomocí doménové struktury prostředků a nakonfigurovaná ve vašem tenantovi Azure AD.
+    * V případě potřeby [vytvořte a nakonfigurujte instanci Azure Active Directory Domain Services][create-azure-ad-ds-instance-advanced].
     
     > [!IMPORTANT]
-    > Ujistěte se, že vytvoříte spravovanou doménu Azure AD DS pomocí doménové struktury *prostředků.* Výchozí možnost vytvoří doménovou strukturu *uživatele.* Pouze doménové struktury prostředků můžete vytvořit vztahy důvěryhodnosti na prem prostředí ad DS. Pro spravovanou doménu je také nutné použít minimálně *spravovanou* položku rozlehlé sítě. V případě potřeby [změňte skladovou položku pro spravovanou doménu Azure AD DS][howto-change-sku].
+    > Ujistěte se, že jste vytvořili spravovanou doménu Azure služba AD DS pomocí doménové struktury *prostředků* . Výchozí možnost vytvoří doménovou strukturu *uživatele* . Pouze doménové struktury prostředků můžou vytvářet vztahy důvěryhodnosti s Prem služba AD DSmi prostředími. Pro spravovanou doménu je také nutné použít minimálně jednotku SKU *Enterprise* . V případě potřeby [změňte SKU pro spravovanou doménu Azure služba AD DS][howto-change-sku].
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-V tomto kurzu vytvoříte a nakonfigurujete odchozí vztah důvěryhodnosti doménové struktury z Azure AD DS pomocí portálu Azure. Chcete-li začít, nejprve se přihlaste na [portál Azure](https://portal.azure.com).
+V tomto kurzu vytvoříte a nakonfigurujete odchozí vztah důvěryhodnosti doménové struktury z Azure služba AD DS pomocí Azure Portal. Chcete-li začít, nejprve se přihlaste k [Azure Portal](https://portal.azure.com).
 
 ## <a name="networking-considerations"></a>Aspekty sítí
 
-Virtuální síť, která je hostitelem doménové struktury prostředků Služby Azure AD DS, potřebuje připojení k síti k místnímu službě Active Directory. Aplikace a služby také potřebují připojení k síti k virtuální síti, která je hostitelem doménové struktury prostředků Azure AD DS. Připojení k síti doménové struktury prostředků Azure AD DS musí být vždy zapnuté a stabilní, jinak uživatelé mohou selhat k ověření nebo přístupu k prostředkům.
+Virtuální síť, která je hostitelem doménové struktury prostředků Azure služba AD DS, potřebuje síťové připojení k vaší místní službě Active Directory. Aplikace a služby také potřebují síťové připojení k virtuální síti hostující doménovou strukturu prostředků Azure služba AD DS. Síťové připojení k doménové struktuře prostředků Azure služba AD DS musí být vždycky zapnuté a stabilní, jinak se uživatelům nemusí podařit ověřit nebo získat přístup k prostředkům.
 
-Než nakonfigurujete vztah důvěryhodnosti doménové struktury ve službě Azure AD DS, ujistěte se, že vaše sítě mezi Azure a místním prostředím splňují následující požadavky:
+Před konfigurací vztahu důvěryhodnosti doménové struktury ve službě Azure služba AD DS se ujistěte, že vaše síť mezi Azure a místním prostředím splňuje následující požadavky:
 
-* Používejte soukromé IP adresy. Nespoléhejte na službu DHCP s přiřazením dynamické adresy IP.
-* Vyhněte se překrývání adresních prostorů IP, které umožní partnerský vztah a směrování virtuální chod virtuální sítě pro úspěšnou komunikaci mezi Azure a místním prostředím.
-* Virtuální síť Azure potřebuje podsíť brány ke konfiguraci připojení VPN Azure [site-to-site (S2S)][vpn-gateway] nebo [ExpressRoute][expressroute]
-* Vytvořte podsítě s dostatkem ADRES IP pro podporu vašeho scénáře.
-* Ujistěte se, že Azure AD DS má vlastní podsíť, nesdílejte tuto podsíť virtuální sítě s virtuálními počítači a službami aplikací.
+* Použijte privátní IP adresy. Nespoléhá se na protokol DHCP s přiřazením dynamické IP adresy.
+* Nepoužívejte překrývající se adresní prostory IP adres, aby bylo možné vytvořit partnerský vztah virtuálních sítí a směrování pro úspěšnou komunikaci mezi Azure a místním prostředím.
+* Virtuální síť Azure vyžaduje podsíť brány pro konfiguraci připojení VPN nebo [ExpressRoute][expressroute] typu [site-to-Site (S2S)][vpn-gateway] .
+* Vytvořte podsítě s dostatkem IP adres pro podporu vašeho scénáře.
+* Ujistěte se, že je v Azure služba AD DS vlastní podsíť, nesdílejte tuto podsíť virtuální sítě s virtuálními počítači a službami aplikací.
 * Partnerské virtuální sítě nejsou přenosné.
-    * Partnerské vztahy virtuální sítě Azure musí být vytvořeny mezi všemi virtuálními sítěmi, které chcete použít vztah důvěryhodnosti doménové struktury prostředků Služby Azure AD DS do místního prostředí služby AD DS.
+    * Partnerské vztahy virtuálních sítí Azure musí být vytvořené mezi všemi virtuálními sítěmi, které chcete použít pro vztah důvěryhodnosti doménové struktury prostředků Azure služba AD DS k místnímu služba AD DS prostředí.
 * Poskytněte nepřetržité síťové připojení k místní doménové struktuře služby Active Directory. Nepoužívejte připojení na vyžádání.
-* Ujistěte se, že mezi názvem doménové struktury prostředků služby Azure AD DS a místním názvem doménové struktury služby Active Directory je průběžné překlad názvů (DNS).
+* Zajistěte, aby mezi názvem doménové struktury prostředků Azure služba AD DS a názvem vaší místní doménové struktury služby Active Directory bylo překlad nepřetržitého překladu adres (DNS).
 
-## <a name="configure-dns-in-the-on-premises-domain"></a>Konfigurace služby DNS v místní doméně
+## <a name="configure-dns-in-the-on-premises-domain"></a>Konfigurace DNS v místní doméně
 
-Chcete-li správně vyřešit spravovanou doménu Azure AD DS z místního prostředí, budete muset přidat servery pro předávání na stávající servery DNS. Pokud jste nenakonfigurovali místní prostředí pro komunikaci se spravovanou doménou Azure AD DS, proveďte následující kroky z pracovní stanice pro správu pro místní doménu služby AD DS:
+Pokud chcete správně přeložit spravovanou doménu Azure služba AD DS z místního prostředí, možná budete muset přidat servery pro přeposílání na existující servery DNS. Pokud jste nenakonfigurovali místní prostředí, aby komunikovalo se spravovanou doménou Azure služba AD DS, proveďte následující kroky z pracovní stanice pro správu v místní doméně služba AD DS:
 
-1. Vybrat **možnost Start | Nástroje pro správu | Služba DNS**
-1. Vyberte dns server vpravo, například *myAD01*, vyberte **Vlastnosti**
-1. Zvolte **Předávání ,** pak **Upravit** a přidejte další předávání.
-1. Přidejte IP adresy spravované domény Azure AD DS, například *10.0.2.4* a *10.0.2.5*.
+1. Vyberte **Spustit | Nástroje pro správu | Služba DNS**
+1. Klikněte pravým tlačítkem na server DNS, jako je například *myAD01*, vyberte možnost **vlastnosti** .
+1. Zvolte nástroje **pro přeposílání**a pak **Upravit** pro přidání dalších služeb pro dodávání.
+1. Přidejte IP adresy spravované domény Azure služba AD DS, například *10.0.2.4* a *10.0.2.5*.
 
 ## <a name="create-inbound-forest-trust-in-the-on-premises-domain"></a>Vytvoření vztahu důvěryhodnosti příchozí doménové struktury v místní doméně
 
-Místní doména služby AD DS potřebuje příchozí vztah důvěryhodnosti doménové struktury pro spravovanou doménu Služby Azure AD DS. Tento vztah důvěryhodnosti musí být ručně vytvořen v místní doméně služby AD DS, nelze jej vytvořit z portálu Azure.
+Místní služba AD DS doména potřebuje příchozí vztah důvěryhodnosti doménové struktury pro spravovanou doménu Azure služba AD DS. Tento vztah důvěryhodnosti musí být ručně vytvořen v místní doméně služba AD DS, a proto jej nelze vytvořit z Azure Portal.
 
-Chcete-li nakonfigurovat příchozí vztah důvěryhodnosti v místní doméně služby AD DS, proveďte následující kroky z pracovní stanice pro správu místní domény služby AD DS:
+Pokud chcete nakonfigurovat příchozí vztah důvěryhodnosti v místní doméně služba AD DS, proveďte následující kroky z pracovní stanice pro správu pro místní doménu služba AD DS:
 
-1. Vybrat **možnost Start | Nástroje pro správu | Domény a vztahy důvěryhodnosti služby Active Directory**
-1. Doména vpravo, například *onprem.contoso.com*, vyberte **Vlastnosti**
-1. Zvolte **Karta Vztahy důvěryhodnosti** a potom **Nový vztah důvěryhodnosti.**
-1. Zadejte název v názvu domény Azure AD DS, například *aaddscontoso.com*, a pak vyberte **Další.**
-1. Vyberte možnost vytvoření **vztahu důvěryhodnosti doménové struktury**a poté vytvořte **jednosměrný: příchozí** vztah důvěryhodnosti.
-1. Zvolte, zda chcete vytvořit vztah důvěryhodnosti pouze pro **tuto doménu**. V dalším kroku vytvoříte vztah důvěryhodnosti na webu Azure Portal pro spravovanou doménu Azure AD DS.
-1. Zvolte použití **ověřování v celé doménové struktuře**a zadejte a potvrďte důvěryhodné heslo. Stejné heslo se také zadává na webu Azure Portal v další části.
-1. Projděte několik dalších oken s výchozími možnostmi a pak zvolte možnost **Ne, nepotvrzejte odchozí vztah důvěryhodnosti**.
-1. Vybrat **dokončit**
+1. Vyberte **Spustit | Nástroje pro správu | Domény a vztahy důvěryhodnosti služby Active Directory**
+1. Klikněte pravým tlačítkem na doména, jako je například *OnPrem.contoso.com*, vyberte možnost **vlastnosti** .
+1. Zvolte kartu **vztahy důvěryhodnosti** a pak **nový vztah důvěryhodnosti** .
+1. Do pole název domény pro Azure služba AD DS zadejte název, jako je třeba *aaddscontoso.com*, a potom vyberte **Další** .
+1. Vyberte možnost vytvoření **vztahu důvěryhodnosti doménové struktury**a pak vytvořte **jednosměrné: příchozí** vztah důvěryhodnosti.
+1. Vyberte, chcete-li vytvořit vztah důvěryhodnosti **pouze pro tuto doménu**. V dalším kroku vytvoříte vztah důvěryhodnosti v Azure Portal pro spravovanou doménu Azure služba AD DS.
+1. Zvolte možnost použití **ověřování v rámci doménové struktury**a pak zadejte a potvrďte heslo vztahu důvěryhodnosti. Stejné heslo je také zadáno v Azure Portal v další části.
+1. Projděte několik dalších oken s výchozími možnostmi a zvolte možnost **Ne, Nepotvrzujte odchozí vztah důvěryhodnosti**.
+1. Vyberte **Dokončit** .
 
-## <a name="create-outbound-forest-trust-in-azure-ad-ds"></a>Vytvoření odchozího vztahu důvěryhodnosti doménové struktury ve službě Azure AD DS
+## <a name="create-outbound-forest-trust-in-azure-ad-ds"></a>Vytvoření odchozího vztahu důvěryhodnosti doménové struktury v Azure služba AD DS
 
-S místní doménou služby AD DS nakonfigurovanou k vyřešení spravované domény Služby Azure AD DS a vytvořeným vztahem důvěryhodnosti příchozí doménové struktury nyní vytvořili odchozí vztah důvěryhodnosti doménové struktury. Tento odchozí vztah důvěryhodnosti doménové struktury dokončí vztah důvěryhodnosti mezi místní doménou služby AD DS a spravovanou doménou Služby Azure AD DS.
+S místní doménou služba AD DS nakonfigurovanou pro přeložení spravované domény Azure služba AD DS a vytvoření příchozího vztahu důvěryhodnosti doménové struktury teď vytvořili odchozí vztah důvěryhodnosti doménové struktury. Tento odchozí vztah důvěryhodnosti doménové struktury dokončí vztah důvěryhodnosti mezi místní služba AD DSovou doménou a spravovanou doménou Azure služba AD DS.
 
-Pokud chcete vytvořit odchozí vztah důvěryhodnosti pro spravovanou doménu Azure AD DS na webu Azure Portal, proveďte následující kroky:
+Pokud chcete vytvořit odchozí vztah důvěryhodnosti pro spravovanou doménu Azure služba AD DS v Azure Portal, proveďte následující kroky:
 
-1. Na webu Azure Portal vyhledejte a vyberte **služby Azure AD Domain Services**a vyberte spravovanou doménu, například *aaddscontoso.com*
-1. V nabídce na levé straně spravované domény Azure AD DS vyberte **Vztahy důvěryhodnosti**a pak zvolte **+ Přidat** vztah důvěryhodnosti.
+1. V Azure Portal vyhledejte a vyberte **Azure AD Domain Services**a pak vyberte spravovanou doménu, například *aaddscontoso.com* .
+1. V nabídce na levé straně spravované domény Azure služba AD DS vyberte **vztahy důvěryhodnosti**a pak zvolte **Přidat** vztah důvěryhodnosti.
 
    > [!NOTE]
-   > Pokud možnost **Nabídka Vztahy důvěryhodnosti** nevidíte, zaškrtněte v části **Vlastnosti** *typu Doménová struktura*. Pouze *doménové* struktury prostředků mohou vytvářet vztahy důvěryhodnosti. Pokud je typ doménové struktury *Uživatel*, nelze vytvořit vztahy důvěryhodnosti. V současné době neexistuje žádný způsob, jak změnit typ doménové struktury spravované domény Azure AD DS. Je třeba odstranit a znovu vytvořit spravovanou doménu jako doménovou strukturu prostředků.
+   > Pokud nevidíte možnost nabídky **důvěryhodnosti** , zkontrolujte v části **vlastnosti** pro *Typ doménové struktury*. Vztahy důvěryhodnosti můžou vytvářet jenom doménové struktury *prostředků* . Pokud je typem doménové struktury *uživatel*, nemůžete vytvořit vztahy důvěryhodnosti. V současné době neexistuje způsob, jak změnit typ doménové struktury spravované domény Azure služba AD DS. Je nutné odstranit a znovu vytvořit spravovanou doménu jako doménovou strukturu prostředků.
 
-1. Zadejte zobrazovaný název, který identifikuje váš vztah důvěryhodnosti, a potom místní důvěryhodný název DNS doménové struktury, například *onprem.contoso.com*
-1. Zadejte stejné heslo důvěryhodnosti, které bylo použito při konfiguraci vztahu důvěryhodnosti příchozí doménové struktury pro místní doménu služby AD DS v předchozí části.
-1. Poskytněte alespoň dva servery DNS pro místní doménu služby AD DS, například *10.1.1.4* a *10.1.1.5*
-1. Až budete připraveni, **uložte** vztah důvěryhodnosti odchozí doménové struktury
+1. Zadejte zobrazovaný název, který identifikuje vaši důvěryhodnost, a pak místní název DNS důvěryhodné doménové struktury, například *OnPrem.contoso.com* .
+1. Zadejte stejné heslo vztahu důvěryhodnosti, které bylo použito při konfiguraci vztahu důvěryhodnosti příchozí doménové struktury pro místní služba AD DS domény v předchozí části.
+1. Poskytněte aspoň dva servery DNS místní domény služba AD DS, například *10.1.1.4* a *zákazníka 10.1.1.5* .
+1. Až budete připraveni, **uložte** odchozí vztah důvěryhodnosti doménové struktury.
 
-    ![Vytvoření odchozího vztahu důvěryhodnosti doménové struktury na webu Azure Portal](./media/tutorial-create-forest-trust/portal-create-outbound-trust.png)
+    ![Vytvořit vztah důvěryhodnosti odchozí doménové struktury v Azure Portal](./media/tutorial-create-forest-trust/portal-create-outbound-trust.png)
 
-## <a name="validate-resource-authentication"></a>Ověřit ověřování prostředků
+## <a name="validate-resource-authentication"></a>Ověření ověřování prostředků
 
-Následující běžné scénáře umožňují ověřit, že vztah důvěryhodnosti doménové struktury správně ověřuje uživatele a přístup k prostředkům:
+Následující běžné scénáře vám umožní ověřit, že vztah důvěryhodnosti doménové struktury správně ověřuje uživatele a přístup k prostředkům:
 
-* [Místní ověřování uživatelů z doménové struktury prostředků Služby Azure AD DS](#on-premises-user-authentication-from-the-azure-ad-ds-resource-forest)
-* [Přístup k prostředkům v doménové struktuře prostředků Azure AD DS pomocí místního uživatele](#access-resources-in-the-azure-ad-ds-resource-forest-using-on-premises-user)
-    * [Povolení sdílení souborů a tiskáren](#enable-file-and-printer-sharing)
+* [Ověřování místního uživatele z doménové struktury prostředků Azure služba AD DS](#on-premises-user-authentication-from-the-azure-ad-ds-resource-forest)
+* [Přístup k prostředkům v doménové struktuře prostředků Azure služba AD DS pomocí místního uživatele](#access-resources-in-the-azure-ad-ds-resource-forest-using-on-premises-user)
+    * [Povolit sdílení souborů a tiskáren](#enable-file-and-printer-sharing)
     * [Vytvoření skupiny zabezpečení a přidání členů](#create-a-security-group-and-add-members)
     * [Vytvoření sdílené složky pro přístup mezi doménovými strukturami](#create-a-file-share-for-cross-forest-access)
-    * [Ověření ověřování mezi doménovými strukturami pro prostředek](#validate-cross-forest-authentication-to-a-resource)
+    * [Ověření ověřování mezi doménovými strukturami v prostředku](#validate-cross-forest-authentication-to-a-resource)
 
-### <a name="on-premises-user-authentication-from-the-azure-ad-ds-resource-forest"></a>Místní ověřování uživatelů z doménové struktury prostředků Služby Azure AD DS
+### <a name="on-premises-user-authentication-from-the-azure-ad-ds-resource-forest"></a>Ověřování místního uživatele z doménové struktury prostředků Azure služba AD DS
 
-K doméně prostředků Azure AD DS byste měli mít připojenou virtuální počítač Windows Serveru. Tento virtuální počítač slouží k testování místního uživatele, který se může na virtuálním počítači ověřit.
+Je potřeba, aby byl virtuální počítač s Windows serverem připojený k doméně prostředků Azure služba AD DS. Použijte tento virtuální počítač k otestování místního uživatele, který se může ověřit na virtuálním počítači.
 
-1. Připojte se k virtuálnímu počítači Windows Server, který je připojen k doménové struktuře prostředků Azure AD DS pomocí [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) a přihlašovacích údajů správce Služby Azure AD DS.
-1. Otevřete příkazový řádek `whoami` a pomocí příkazu zobrazte rozlišující název aktuálně ověřeného uživatele:
+1. Připojte se k virtuálnímu počítači s Windows serverem připojenému k doménové struktuře prostředků Azure služba AD DS pomocí [Azure bastionu](https://docs.microsoft.com/azure/bastion/bastion-overview) a vašich přihlašovacích údajů správce Azure služba AD DS.
+1. Otevřete příkazový řádek a pomocí `whoami` příkazu Zobrazte rozlišující název aktuálně ověřeného uživatele:
 
     ```console
     whoami /fqdn
     ```
 
-1. Pomocí `runas` příkazu ověřte jako uživatel z místní domény. V následujícím příkazu `userUpn@trusteddomain.com` nahraďte hlavní název uživatele z důvěryhodné místní domény. Příkaz zobrazí výzvu k zadání hesla uživatele:
+1. Použijte `runas` příkaz pro ověření uživatele z místní domény. V následujícím příkazu nahraďte `userUpn@trusteddomain.com` hlavní název uživatele (UPN) uživatele z důvěryhodné místní domény. V příkazu se zobrazí výzva k zadání hesla uživatele:
 
     ```console
     Runas /u:userUpn@trusteddomain.com cmd.exe
     ```
 
-1. Pokud je ověření úspěšné, otevře se nový příkazový řádek. Název nového příkazového `running as userUpn@trusteddomain.com`řádku obsahuje .
-1. Pomocí `whoami /fqdn` nového příkazového řádku můžete zobrazit rozlišující název ověřeného uživatele z místní služby Active Directory.
+1. Pokud je ověření úspěšné, otevře se nový příkazový řádek. Název nového příkazového řádku zahrnuje `running as userUpn@trusteddomain.com`.
+1. Pomocí `whoami /fqdn` příkazu na novém příkazovém řádku můžete zobrazit rozlišující název ověřeného uživatele z místní služby Active Directory.
 
-### <a name="access-resources-in-the-azure-ad-ds-resource-forest-using-on-premises-user"></a>Přístup k prostředkům v doménové struktuře prostředků Azure AD DS pomocí místního uživatele
+### <a name="access-resources-in-the-azure-ad-ds-resource-forest-using-on-premises-user"></a>Přístup k prostředkům v doménové struktuře prostředků Azure služba AD DS pomocí místního uživatele
 
-Pomocí virtuálního počítače Windows Server se připojil k doménové struktuře prostředků Azure AD DS, můžete otestovat scénář, kde uživatelé mají přístup k prostředkům hostovaným v doménové struktuře prostředků při ověřování z počítačů v místní doméně s uživateli z místní domény. Následující příklady ukazují, jak vytvořit a otestovat různé běžné scénáře.
+Pomocí virtuálního počítače s Windows serverem připojeného k doménové struktuře prostředků Azure služba AD DS můžete otestovat scénář, ve kterém můžou uživatelé přistupovat k prostředkům hostovaným v doménové struktuře prostředků v případě, že se ověřují z počítačů v místní doméně s uživateli z místní domény. Následující příklady vám ukážou, jak vytvořit a otestovat různé běžné scénáře.
 
-#### <a name="enable-file-and-printer-sharing"></a>Povolení sdílení souborů a tiskáren
+#### <a name="enable-file-and-printer-sharing"></a>Povolit sdílení souborů a tiskáren
 
-1. Připojte se k virtuálnímu počítači Windows Server, který je připojen k doménové struktuře prostředků Azure AD DS pomocí [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) a přihlašovacích údajů správce Služby Azure AD DS.
+1. Připojte se k virtuálnímu počítači s Windows serverem připojenému k doménové struktuře prostředků Azure služba AD DS pomocí [Azure bastionu](https://docs.microsoft.com/azure/bastion/bastion-overview) a vašich přihlašovacích údajů správce Azure služba AD DS.
 
-1. Spusťte **Nastavení systému Windows**a vyhledejte a vyberte **Centrum síťových připojení a sdílení**.
-1. Zvolte možnost **Změnit upřesňující** nastavení sdílení.
-1. V části **Profil domény**vyberte **Zapnout sdílení souborů a tiskáren a** potom Uložit **změny**.
-1. Zavřete **Centrum síťových připojení a sdílení**.
+1. Otevřete **nastavení systému Windows**, vyhledejte a vyberte **Centrum síťových a sdílení**.
+1. Vyberte možnost pro **změnu pokročilého nastavení sdílení** .
+1. V části **Profil domény**vyberte **zapnout sdílení souborů a tiskáren** a pak **změny uložte**.
+1. Zavřete **Centrum síťových a sdílení**.
 
 #### <a name="create-a-security-group-and-add-members"></a>Vytvoření skupiny zabezpečení a přidání členů
 
 1. Otevřete položku **Uživatelé a počítače služby Active Directory**.
-1. Vyberte název domény vpravo, zvolte **Nový**a pak vyberte **Organizační jednotka**.
+1. Klikněte pravým tlačítkem myši na název domény, vyberte možnost **Nový**a pak vyberte možnost **organizační jednotka**.
 1. Do pole název zadejte *LocalObjects*a pak vyberte **OK**.
-1. V navigačním podokně vyberte **položku LocalObjects** a klepněte na ni pravým tlačítkem myši. Vyberte **Možnost Nový** a potom **seskupit**.
-1. Zadejte *FileServerAccess* do pole **Název skupiny.** V části **Obor skupiny**vyberte **možnost Doména místní**a pak zvolte **OK**.
-1. V podokně obsahu poklepejte na **položku FileServerAccess**. Vyberte **Členové**, zvolte **přidat**a pak vyberte **Umístění**.
-1. Vyberte místní službu Active Directory ze zobrazení **Umístění** a pak zvolte **OK**.
-1. Do pole **Zadejte názvy objektů, které chcete vybrat,** zadejte uživatele Domain *Users.* Vyberte **Zkontrolovat názvy**, zadejte pověření pro místní službu Active Directory a vyberte **OK**.
+1. V navigačním podokně vyberte a klikněte pravým tlačítkem na **LocalObjects** . Vyberte **Nový** a potom **Skupina**.
+1. Do pole **název skupiny** zadejte *FileServerAccess* . V poli **Rozsah skupiny**vyberte **místní doména**a pak zvolte **OK**.
+1. V podokně obsah poklikejte na **FileServerAccess**. Vyberte možnost **Členové**, zvolte možnost **Přidat**a potom vyberte **umístění**.
+1. V zobrazení **umístění** vyberte místní službu Active Directory a pak zvolte **OK**.
+1. Do pole **Zadejte názvy objektů k výběru** zadejte *Domain Users* . Vyberte možnost **kontrolovat jména**, zadejte přihlašovací údaje pro místní službu Active Directory a pak vyberte **OK**.
 
     > [!NOTE]
-    > Je nutné zadat pověření, protože vztah důvěryhodnosti je pouze jedním ze způsobů. To znamená, že uživatelé z Azure AD DS nemají přístup k prostředkům nebo vyhledávají uživatele nebo skupiny v důvěryhodné (místní) doméně.
+    > Je nutné zadat přihlašovací údaje, protože vztah důvěryhodnosti je pouze jedním ze způsobů. To znamená, že uživatelé z Azure služba AD DS nemůžou získat přístup k prostředkům nebo Hledat uživatele nebo skupiny v důvěryhodné (místní) doméně.
 
-1. Skupina **Domain Users** z místní služby Active Directory by měla být členem skupiny **FileServerAccess.** Výběrem **možnosti OK** skupinu uložíte a zavřete okno.
+1. Skupina **Domain Users** z vaší místní služby Active Directory by měla být členem skupiny **FileServerAccess** . Výběrem **OK** uložte skupinu a zavřete okno.
 
 #### <a name="create-a-file-share-for-cross-forest-access"></a>Vytvoření sdílené složky pro přístup mezi doménovými strukturami
 
-1. Na virtuálním počítači se systémem Windows Server, který je připojen k doménové struktuře prostředků Azure AD DS, vytvořte složku a zadejte název, jako je *CrossForestShare*.
-1. Vyberte složku vpravo a zvolte **Vlastnosti**.
-1. Vyberte kartu **Zabezpečení** a pak zvolte **Upravit**.
-1. V dialogovém *okně Oprávnění pro crossforestshare* vyberte **Přidat**.
-1. Zadejte *SouborServerAccess* **v zadejte názvy objektů, které chcete vybrat**, a pak vyberte **OK**.
-1. Vyberte *SouborServerAccess* ze seznamu **Skupiny nebo uživatelská jména.** V seznamu **Oprávnění pro fileserveraccess** zvolte *Povolit* oprávnění **Změnit** a **Zapisovat** a pak vyberte **OK**.
-1. Vyberte kartu **Sdílení** a pak zvolte **Rozšířené sdílení...**
-1. Zvolte **Sdílet tuto složku**a zadejte památný název sdílené složky do názvu sdílené **položky,** například *CrossForestShare*.
-1. Vyberte **oprávnění**. V seznamu **Oprávnění pro všechny** zvolte **Povolit** oprávnění **Změnit.**
-1. Vyberte **OK** dvakrát a potom **Zavřít**.
+1. Na virtuálním počítači s Windows serverem připojeném k doménové struktuře prostředků Azure služba AD DS vytvořte složku a zadejte její název, jako je například *CrossForestShare*.
+1. Klepněte pravým tlačítkem myši na složku a vyberte možnost **vlastnosti**.
+1. Vyberte kartu **zabezpečení** a pak zvolte **Upravit**.
+1. V dialogovém okně *oprávnění pro CrossForestShare* vyberte **Přidat**.
+1. Do pole **Zadejte názvy objektů k výběru**zadejte *FileServerAccess* a pak vyberte **OK**.
+1. V seznamu **skupiny nebo jména uživatelů** vyberte *FileServerAccess* . V seznamu **oprávnění pro FileServerAccess** zvolte možnost *Povolení* oprávnění k **úpravám** a **zápisu** a pak vyberte **OK**.
+1. Vyberte kartu **sdílení** a pak zvolte **Rozšířené sdílení...**
+1. Zvolte **sdílet tuto složku**a pak zadejte zapamatovatelné jméno sdílené složky v **názvu sdílené složky** , například *CrossForestShare*.
+1. Vyberte **oprávnění**. V seznamu **oprávnění pro všechny** vyberte možnost **udělit** oprávnění ke **změně** .
+1. Dvakrát klikněte na **OK** a pak na **Zavřít**.
 
-#### <a name="validate-cross-forest-authentication-to-a-resource"></a>Ověření ověřování mezi doménovými strukturami pro prostředek
+#### <a name="validate-cross-forest-authentication-to-a-resource"></a>Ověření ověřování mezi doménovými strukturami v prostředku
 
-1. Přihlaste se k počítači se systémem Windows, který je připojen k místní službě Active Directory, pomocí uživatelského účtu z místní služby Active Directory.
-1. Pomocí **Průzkumníka Windows**se připojte ke sdílené složce, kterou `\\fs1.aaddscontoso.com\CrossforestShare`jste vytvořili, pomocí plně kvalifikovaného názvu hostitele a sdílené složky, například .
-1. Chcete-li ověřit oprávnění k zápisu, vyberte ve složce vpravo, zvolte **Nový**a pak vyberte **Textový dokument**. Použijte výchozí název **Nový textový dokument**.
+1. Přihlaste se k počítači s Windows připojenému k místní službě Active Directory pomocí uživatelského účtu z vaší místní služby Active Directory.
+1. Pomocí **Průzkumníka Windows**se připojte ke sdílené složce, kterou jste vytvořili, pomocí plně kvalifikovaného názvu hostitele a sdílené `\\fs1.aaddscontoso.com\CrossforestShare`složky, jako je například.
+1. Chcete-li ověřit oprávnění k zápisu, ve složce klikněte pravým tlačítkem myši, vyberte možnost **Nový**a pak vyberte možnost **textový dokument**. Použijte výchozí název **nový textový dokument**.
 
-    Pokud jsou oprávnění k zápisu nastavena správně, vytvoří se nový textový dokument. Následující kroky pak soubor podle potřeby otevřou, upraví a odstraní.
-1. Chcete-li ověřit oprávnění ke čtení, otevřete **možnost Nový textový dokument**.
-1. Chcete-li ověřit oprávnění k úpravám, přidejte do souboru text a zavřete **poznámkový blok**. Po zobrazení výzvy k uložení změn zvolte **Uložit**.
-1. Chcete-li ověřit oprávnění k odstranění, vyberte možnost **Nový textový dokument** a zvolte **Odstranit**. Chcete-li potvrdit odstranění souboru, zvolte **Ano.**
+    Pokud jsou oprávnění k zápisu nastavena správně, je vytvořen nový textový dokument. Následující kroky pak otevřou, upraví a odstraní soubor podle potřeby.
+1. Chcete-li ověřit oprávnění ke čtení, otevřete **nový textový dokument**.
+1. Chcete-li ověřit oprávnění upravit, přidejte text do souboru a ukončete **Poznámkový blok**. Po zobrazení výzvy k uložení změn klikněte na **Uložit**.
+1. Chcete-li ověřit oprávnění k odstranění, klikněte pravým tlačítkem myši na **nový textový dokument** a zvolte možnost **Odstranit**. Kliknutím na **tlačítko Ano** potvrďte odstranění souboru.
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Konfigurace služby DNS v místním prostředí služby AD DS pro podporu připojení Azure AD DS
-> * Vytvoření jednosměrného vztahu důvěryhodnosti doménové struktury v místním prostředí služby AD DS
-> * Vytvoření jednosměrného odchozího vztahu důvěryhodnosti doménové struktury ve službě Azure AD DS
+> * Konfigurace DNS v místním prostředí služba AD DS pro podporu připojení Azure služba AD DS
+> * Vytvoření jednosměrného vztahu důvěryhodnosti pro příchozí doménovou strukturu v místním prostředí služba AD DS
+> * Vytvoření jednosměrné důvěryhodnosti pro odchozí doménovou strukturu v Azure služba AD DS
 > * Testování a ověření vztahu důvěryhodnosti pro ověřování a přístup k prostředkům
 
-Další rámcové informace o typech doménových struktur ve službě Azure [How do forest trusts work in Azure AD DS?][concepts-trust] AD DS najdete v tématech [Co jsou doménové struktury prostředků?][concepts-forest]
+Další koncepční informace o typech doménové struktury v Azure služba AD DS najdete v tématu [co jsou doménové struktury prostředků?][concepts-forest] a [jak vztahy důvěryhodnosti doménové struktury fungují v Azure služba AD DS?][concepts-trust]
 
 <!-- INTERNAL LINKS -->
 [concepts-forest]: concepts-resource-forest.md

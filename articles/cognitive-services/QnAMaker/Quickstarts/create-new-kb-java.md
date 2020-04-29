@@ -6,10 +6,10 @@ ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: conceptual
 ms.openlocfilehash: 90ab36389ceac2e8aad12332db433732525c62f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78851825"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Rychlý start: Vytvoření znalostní báze ve službě QnA Maker pomocí Javy
@@ -20,16 +20,16 @@ Tento rychlý start volá rozhraní API služby QnA Maker:
 * [Create KB](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
 * [Získat podrobnosti operace](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
 
-[Referenční dokumentace](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [Java Ukázka](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java)
+[Referenční dokumentace](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [Java – ukázka](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
 * [Go 1.10.1](https://golang.org/dl/)
-* Musíte mít [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete načíst klíč a koncový bod (který obsahuje název prostředku), vyberte **Rychlý start** pro váš prostředek na webu Azure Portal.
+* Musíte mít [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete načíst svůj klíč a koncový bod (včetně názvu prostředku), vyberte pro prostředek v Azure Portal **rychlý Start** .
 
-[Ukázkový kód](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java) je k dispozici na úložišti GitHub pro QnA Maker s Javou.
+[Vzorový kód](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java) je k dispozici v úložišti GitHub pro QnA maker v jazyce Java.
 
 ## <a name="create-a-knowledge-base-file"></a>Vytvoření souboru pro znalostní bázi
 
@@ -44,12 +44,12 @@ Na začátek souboru `CreateKB.java` přidejte následující řádky k přidán
 ## <a name="add-the-required-constants"></a>Přidání požadovaných konstant
 Za předcházející požadované závislosti přidejte do třídy `CreateKB` požadované konstanty pro přístup ke službě QnA Maker.
 
-Musíte mít [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete načíst název klíče a prostředku, vyberte na webu Azure Portal pro prostředek QnA Makeru **rychlý start.**
+Musíte mít [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete načíst svůj klíč a název prostředku, vyberte v Azure Portal pro prostředek QnA Maker možnost **rychlý Start** .
 
 Nastavte následující hodnoty:
 
-* `<your-qna-maker-subscription-key>`- **Klíč** je řetězec 32 znaků a je k dispozici na portálu Azure, na prostředek QnA Maker, na stránce Rychlý start. To není stejné jako klíč koncového bodu předpověď.
-* `<your-resource-name>`- Název **vašeho prostředku** se používá k vytvoření adresy URL koncového `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`bodu pro vytváření ve formátu . Toto není stejná adresa URL, která se používá k dotazování koncového bodu předpověď.
+* `<your-qna-maker-subscription-key>`- **Klíč** je řetězec znaků 32 a je k dispozici v Azure Portal v prostředku QnA maker na stránce rychlý Start. To není totéž jako klíč koncového bodu předpovědi.
+* `<your-resource-name>`– **Název prostředku** se používá k vytvoření adresy URL koncového bodu pro vytváření obsahu ve formátu `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`. Nejedná se o stejnou adresu URL, která se používá k dotazování koncového bodu předpovědi.
 
 Na konec třídy není potřeba přidávat ukončovací složenou závorku, ta je v konečném fragmentu kódu na konci tohoto rychlého startu.
 
@@ -117,7 +117,7 @@ Volání opakujte, dokud neskočí úspěchem nebo neúspěchem:
 ```
 
 ## <a name="add-a-main-method"></a>Přidání metody main
-Metoda main vytvoří znalostní bázi a pak se dotazuje na stav. ID operace je vráceno v poli hlavičky odpovědi POST **Lokace**, pak se používá jako součást postupu v požadavku GET. Smyčka `while` opakuje stav, pokud není dokončena.
+Metoda main vytvoří znalostní bázi a pak se dotazuje na stav. ID operace se vrátí v **umístění**pole HLAVIČKY odpovědi post a pak se použije jako součást trasy v žádosti o získání. `while` Smyčka opakuje stav, pokud není dokončen.
 
 [!code-java[Add main method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=152-191 "Add main method")]
 

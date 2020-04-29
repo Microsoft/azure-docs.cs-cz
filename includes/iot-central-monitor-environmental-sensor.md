@@ -9,28 +9,28 @@ ms.date: 03/12/2020
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 6a4b078342cbd62209b092a37fa95b08383789be
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80673975"
 ---
-Jako operátor v aplikaci Azure IoT Central můžete:
+Jako operátor ve vaší aplikaci Azure IoT Central můžete:
 
-* Zobrazení telemetrie odeslané zařízením na stránce **Přehled:**
+* Zobrazení telemetrie odesílané zařízením na stránce **Přehled** :
 
     ![Zobrazení telemetrických dat](./media/iot-central-monitor-environmental-sensor/view-telemetry.png)
 
-* Zobrazení vlastností zařízení na stránce **Informace:**
+* Zobrazení vlastností zařízení na stránce **o produktu** :
 
     ![Zobrazení vlastností](./media/iot-central-monitor-environmental-sensor/about-properties.png)
 
-* Aktualizace hodnot zapisovatelných vlastností na stránce **Vlastnosti:**
+* Aktualizovat hodnoty zapisovatelné vlastnosti na stránce **vlastností** :
 
     ![Aktualizovat vlastnosti](./media/iot-central-monitor-environmental-sensor/update-properties.png)
 
-* Volání příkazů ze stránky **Příkazy:**
+* Zavolejte příkazy ze stránky **příkazy** :
 
-    ![Příkaz Mrknutí hovoru](./media/iot-central-monitor-environmental-sensor/call-command.png)
+    ![Příkaz pro blikání volání](./media/iot-central-monitor-environmental-sensor/call-command.png)
 
     ![Zobrazit historii příkazů](media/iot-central-monitor-environmental-sensor/command-response.png)

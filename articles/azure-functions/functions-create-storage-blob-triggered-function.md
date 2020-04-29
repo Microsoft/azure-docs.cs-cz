@@ -1,15 +1,15 @@
 ---
-title: Vytvoření funkce v Azure aktivované úložištěm objektů blob
+title: Vytvoření funkce v Azure aktivované službou BLOB Storage
 description: Pomocí služby Azure Functions vytvoříte funkci bez serveru, kterou volají položky přidané do úložiště služby Azure Blob Storage.
 ms.assetid: d6bff41c-a624-40c1-bbc7-80590df29ded
 ms.topic: how-to
 ms.date: 10/01/2018
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: d3e90decad217afc1c8d9a43ef585fdfbeca5eb0
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80756547"
 ---
 # <a name="create-a-function-triggered-by-azure-blob-storage"></a>Vytvoření funkce aktivované službou Azure Blob Storage
@@ -35,7 +35,7 @@ Dál vytvoříte v nové aplikaci Function App funkci.
 
 ## <a name="create-a-blob-storage-triggered-function"></a>Vytvoření funkce aktivované službou Blob Storage
 
-1. Rozbalte aplikaci funkcí **+** a klikněte na tlačítko vedle **položky Funkce**. Pokud jde o první funkci ve vaší aplikaci Function App, vyberte **Na portálu** a potom **Pokračovat**. V opačném případě přejděte ke třetímu kroku.
+1. Rozbalte aplikaci Function App a klikněte na **+** tlačítko vedle položky **funkce**. Pokud jde o první funkci ve vaší aplikaci Function App, vyberte **Na portálu** a potom **Pokračovat**. V opačném případě přejděte ke třetímu kroku.
 
    ![Stručný úvod do služby Functions na webu Azure Portal](./media/functions-create-storage-blob-triggered-function/function-app-quickstart-choose-portal.png)
 
@@ -45,7 +45,7 @@ Dál vytvoříte v nové aplikaci Function App funkci.
 
 1. Do vyhledávacího pole zadejte `blob` a zvolte šablonu **Trigger objektu blob**.
 
-1. Pokud se zobrazí výzva, vyberte **Nainstalovat,** abyste nainstalovali rozšíření Azure Storage a všechny závislosti v aplikaci funkce. Po úspěšném dokončení instalace vyberte **Pokračovat**.
+1. Pokud se zobrazí výzva, vyberte **instalovat** a nainstalujte Azure Storage rozšíření a všechny závislosti v aplikaci Function App. Po úspěšném dokončení instalace vyberte **Pokračovat**.
 
     ![Instalace rozšíření vazby](./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal.png)
 
@@ -77,7 +77,7 @@ Teď se připojíte ke svému účtu služby Azure Storage a vytvoříte kontejn
 
     ![Zadejte přihlašovací údaje úložiště a připojte se.](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-connect-2.png)
 
-1. Rozbalte připojený účet úložiště, klikněte pravým tlačítkem myši na `samples-workitems` **Kontejnery objektů blob**, klikněte na Vytvořit kontejner objektů **blob**, zadejte a stiskněte klávesu ENTER.
+1. Rozbalte připojený účet úložiště, klikněte pravým tlačítkem na **kontejnery objektů BLOB**, klikněte na **vytvořit kontejner objektů BLOB**, zadejte `samples-workitems`a pak stiskněte ENTER.
 
     ![Vytvořte frontu úložiště.](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-create-blob-container.png)
 
@@ -87,7 +87,7 @@ Teď když máte kontejner objektů blob a můžete funkci otestovat tím, že d
 
 1. Zpátky na webu Azure Portal přejděte na svoji funkci, ve spodní části stránky rozbalte **Protokoly** a ujistěte se, že není pozastavené streamování protokolů.
 
-1. V Průzkumníku úložiště rozbalte svůj účet úložiště, **kontejnery objektů BLOB**a **ukázky pracovních položek**. Klikněte na **Odeslat** a potom na **Nahrát soubory…**.
+1. V Průzkumník služby Storage rozbalte svůj účet úložiště, **kontejnery objektů BLOB**a **ukázky – pracovní položky**. Klikněte na **Odeslat** a potom na **Nahrát soubory…**.
 
     ![Nahrání souboru do kontejneru objektů blob.](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-upload-file-blob.png)
 

@@ -1,7 +1,7 @@
 ---
-title: Jak nakonfigurovat RHEL/CentOS 7 - Služba řeči
+title: Jak nakonfigurovat službu RHEL/CentOS 7-Speech Service
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak nakonfigurovat RHEL/CentOS 7 tak, aby bylo možné použít sadu Speech SDK.
+description: Naučte se konfigurovat RHEL/CentOS 7, aby bylo možné použít sadu Speech SDK.
 services: cognitive-services
 author: pankopon
 manager: jhakulin
@@ -11,45 +11,45 @@ ms.topic: conceptual
 ms.date: 04/02/2020
 ms.author: pankopon
 ms.openlocfilehash: dc09d517d95b5a3f2a88504a14f1451d1de5ffc9
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80639160"
 ---
-# <a name="configure-rhelcentos-7-for-speech-sdk"></a>Konfigurace funkce RHEL/CentOS 7 pro sadu Speech SDK
+# <a name="configure-rhelcentos-7-for-speech-sdk"></a>Konfigurace RHEL/CentOS 7 pro sadu Speech SDK
 
-Red Hat Enterprise Linux (RHEL) 8 x64 a CentOS 8 x64 jsou oficiálně podporovány sadou Speech SDK verze 1.10.0 a novější. Je také možné použít řeč SDK na RHEL/CentOS 7 x64, ale to vyžaduje aktualizaci kompilátoru C++ (pro vývoj C++) a sdílené c++ runtime knihovny ve vašem systému.
+Red Hat Enterprise Linux (RHEL) 8 x64 a CentOS 8 x64 jsou oficiálně podporovány sadou Speech SDK verze 1.10.0 a novější. Je také možné použít sadu Speech SDK na RHEL/CentOS 7 x64, ale to vyžaduje aktualizaci kompilátoru C++ (pro vývoj v jazyce C++) a Shared C++ Runtime Library ve vašem systému.
 
-Chcete-li zkontrolovat verzi kompilátoru jazyka C++, spusťte:
+Chcete-li zjistit verzi kompilátoru jazyka C++, spusťte příkaz:
 
 ```bash
 g++ --version
 ```
 
-Pokud je nainstalován kompilátor, výstup by měl vypadat takto:
+Pokud je kompilátor nainstalován, výstup by měl vypadat takto:
 
 ```bash
 g++ (GCC) 4.8.5 20150623 (Red Hat 4.8.5-39)
 ```
 
-Tato zpráva vás dozví, že je nainstalována hlavní verze 4 GCC. Tato verze nemá plnou podporu pro standard C++ 11, který používá sada Speech SDK. Pokus o kompilaci programu Jazyka C++ s touto verzí GCC a záhlavísady Speech SDK bude mít za následek chyby kompilace.
+Tato zpráva vám informuje o tom, že je nainstalovaná hlavní verze RSZ 4. Tato verze nemá plnou podporu pro Standard C++ 11, který sada Speech SDK používá. Pokud se pokusíte zkompilovat program C++ s touto verzí RSZ a hlavičky sady Speech SDK budou mít za následek chyby při kompilaci.
 
-Je také důležité zkontrolovat verzi sdílené knihovny runtime C++ (libstdc++). Většina sady Speech SDK je implementována jako nativní knihovny jazyka C++, což znamená, že závisí na libstdc++ bez ohledu na jazyk, který používáte k vývoji aplikací.
+Je také důležité ověřit verzi knihovny Shared C++ runtime (libstdc + +). Většina sady Speech SDK je implementována jako nativní knihovny C++, což znamená, že závisí na libstdc + + bez ohledu na jazyk, který používáte pro vývoj aplikací.
 
-Chcete-li najít umístění libstdc++ v systému, spusťte:
+Chcete-li zjistit umístění libstdc + + v systému, spusťte příkaz:
 
 ```bash
 ldconfig -p | grep libstdc++
 ```
 
-Výstup na vanilkovém RHEL/CentOS 7 (x64) je:
+Výstup na Vanilla RHEL/CentOS 7 (x64) je:
 
 ```
 libstdc++.so.6 (libc6,x86-64) => /lib64/libstdc++.so.6
 ```
 
-Na základě této zprávy budete chtít zkontrolovat definice verzí pomocí tohoto příkazu:
+V závislosti na této zprávě budete chtít ověřit definice verzí pomocí tohoto příkazu:
 
 ```bash
 strings /lib64/libstdc++.so.6 | egrep "GLIBCXX_|CXXABI_"
@@ -65,14 +65,14 @@ CXXABI_1.3.7
 ...
 ```
 
-Sada Speech SDK vyžaduje **CXXABI_1.3.9** a **GLIBCXX_3.4.21**. Tyto informace můžete najít `ldd libMicrosoft.CognitiveServices.Speech.core.so` spuštěním v knihovnách sady Speech SDK z balíčku Linux.
+Sada Speech SDK vyžaduje **CXXABI_1.3.9** a **GLIBCXX_3.4.21**. Tyto informace můžete najít spuštěním `ldd libMicrosoft.CognitiveServices.Speech.core.so` v knihovně sady Speech SDK z balíčku pro Linux.
 
 > [!NOTE]
-> Doporučuje se, aby verze GCC nainstalovaná v systému byla alespoň **5.4.0**, s odpovídajícími runtime knihovnami.
+> Doporučuje se, aby byla verze RSZ nainstalovaná v systému minimálně **5.4.0**s odpovídajícími běhovými knihovnami.
 
 ## <a name="example"></a>Příklad
 
-Toto je ukázkový příkaz, který ukazuje, jak nakonfigurovat RHEL/CentOS 7 x64 pro vývoj (C++, C#, Java, Python) s sadou Speech SDK 1.10.0 nebo novější:
+Toto je ukázkový příkaz, který ukazuje, jak nakonfigurovat RHEL/CentOS 7 x64 pro vývoj (C++, C#, Java, Python) pomocí sady Speech SDK 1.10.0 nebo novější:
 
 ```bash
 # Only run ONE of the following two commands

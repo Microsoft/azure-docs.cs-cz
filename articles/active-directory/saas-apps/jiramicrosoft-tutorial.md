@@ -17,10 +17,10 @@ ms.date: 09/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7c6db9ed92161e968b36c75b8bee5a847137c072
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80631869"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s JIRA SAML SSO Microsoftu
@@ -37,7 +37,7 @@ Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je
 
 K povolení jednotného přihlašování použijte účet Microsoft Azure Active Directory se serverem Atlassian JIRA. Díky tomu můžou všichni uživatelé vaší organizace používat přihlašovací údaje Azure AD k přihlášení do aplikace JIRA. Tento modul plug-in používá pro federaci protokol SAML 2,0.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 K nakonfigurování integrace služby Azure AD pomocí jednotného přihlašování JIRA SAML od Microsoftu budete potřebovat následující položky:
 

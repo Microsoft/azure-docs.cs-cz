@@ -1,6 +1,6 @@
 ---
-title: Instalace Visual Studia 2019
-description: Instalace visual studio a sql server vývojové nástroje (SSDT) pro Synapse SQL
+title: Instalace sady Visual Studio 2019
+description: Nainstalovat Visual Studio a vývojové nástroje SQL Server (SSDT) pro synapse SQL
 services: synapse-analytics
 ms.custom: vs-azure, azure-synapse
 ms.workload: azure-vs
@@ -13,41 +13,41 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: f83ae9c8290a52381c8087b46da959d4723d7f4e
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745163"
 ---
-# <a name="getting-started-with-visual-studio-2019"></a>Začínáme s Visual Studio 2019
+# <a name="getting-started-with-visual-studio-2019"></a>Začínáme se sadou Visual Studio 2019
 
-Visual Studio **2019** SQL Server Data Tools (SSDT) je jediný nástroj, který vám umožní provést následující:
+Sady Visual Studio **2019** SQL Server Data Tools (SSDT) je jeden nástroj, který vám umožní provádět tyto akce:
 
 - Připojení, dotazování a vývoj aplikací
-- Využijte průzkumníka objektů k vizuálnímu prozkoumání všech objektů v datovém modelu, včetně tabulek, zobrazení, uložených procedur atd.
-- Generování skriptů jazyka DDL (T-SQL data definition language) pro vaše objekty
-- Vývoj datového skladu pomocí přístupu založeného na stavu pomocí databázových projektů SSDT
-- Integrace databázového projektu se systémy správy zdrojového kódu, jako je Git, s Azure Repos
-- Nastavení kanálů průběžné integrace a nasazení s automatizačními servery, jako je Azure DevOps
+- Pomocí Průzkumníka objektů můžete vizuálně prozkoumat všechny objekty v datovém modelu, včetně tabulek, zobrazení, uložených procedur a atd.
+- Generování skriptů DDL (Data Definition Language) jazyka T-SQL pro vaše objekty
+- Vývoj datového skladu pomocí přístupu na základě stavu s projekty SSDT Database
+- Integrujte svůj projekt databáze se systémy správy zdrojového kódu, jako je git, pomocí Azure Repos
+- Nastavení kanálů průběžné integrace a nasazování pomocí automatizačních serverů, jako je Azure DevOps
 
-## <a name="install-visual-studio-2019"></a>Instalace Visual Studia 2019
+## <a name="install-visual-studio-2019"></a>Instalace sady Visual Studio 2019
 
-Viz [Stažení Visual Studia 2019](https://visualstudio.microsoft.com/downloads/) ke stažení a instalaci Visual Studia **16.3 a vyšší**. Během instalace vyberte úlohu ukládání a zpracování dat. V sadě Visual Studio 2019 už není nutná samostatná instalace SSDT.
+Viz [Stažení sady Visual studio 2019](https://visualstudio.microsoft.com/downloads/) ke stažení a instalaci sady visual Studio **16,3 a novější**. Během instalace vyberte úlohu ukládání a zpracování dat. Samostatná instalace SSDT už není v aplikaci Visual Studio 2019 nutná.
 
 ## <a name="unsupported-features-in-ssdt"></a>Nepodporované funkce v SSDT
 
-Jsou chvíle, kdy verze funkcí pro Synapse SQL nemusí zahrnovat podporu pro SSDT. Následující funkce nejsou v současné době podporovány:
+V některých případech se může stát, že vydání funkcí pro synapse SQL nezahrnují podporu pro SSDT. Následující funkce jsou momentálně nepodporované:
 
-- [Zhmotněné pohledy](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [Objednané clusterované indexy columnstore](/sql/t-sql/statements/create-columnstore-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#examples--and-)
+- [Materializovaná zobrazení](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [Seřazené clusterované indexy columnstore](/sql/t-sql/statements/create-columnstore-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#examples--and-)
 - [Příkaz COPY](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [Správa pracovního vytížení](sql-data-warehouse-workload-management.md) – skupiny úloh a klasifikátory
+- [Správa úloh](sql-data-warehouse-workload-management.md) – skupiny úloh a třídění
 - [Zabezpečení na úrovni řádku](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-  - Odešlete [lístek podpory nebo hlaste,](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040057-ssdt-row-level-security) abyste tuto funkci podpořili.
+  - Pro získání podporované funkce odešlete [lístek podpory nebo hlasování](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040057-ssdt-row-level-security) .
 - [Dynamické maskování dat](/sql/relational-databases/security/dynamic-data-masking?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#defining-a-dynamic-data-mask)
-   - Odešlete [lístek podpory nebo hlaste,](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking) abyste tuto funkci podpořili.
-- [Tabulky s omezeními nejsou podporovány.](sql-data-warehouse-table-constraints.md#table-constraints) Pro tyto objekty tabulky nastavte akci sestavení na "Žádné".
+   - Pro získání podporované funkce odešlete [lístek podpory nebo hlasování](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking) .
+- [Tabulky s omezeními](sql-data-warehouse-table-constraints.md#table-constraints) nejsou podporovány. Pro tyto objekty tabulky nastavte akci sestavení na None.
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když máte nejnovější verzi SSDT, jste připraveni se [připojit](sql-data-warehouse-query-visual-studio.md) k fondu SQL.
+Teď, když máte nejnovější verzi SSDT, jste připraveni se [připojit](sql-data-warehouse-query-visual-studio.md) ke svému fondu SQL.

@@ -1,6 +1,6 @@
 ---
-title: Spojit se s sqlcmd
-description: Pomocí nástroje příkazového řádku sqlcmd se můžete připojit k fondu Synapse SQL a zadat dotaz na fond SYNAPse SQL.
+title: Připojení pomocí sqlcmd
+description: Pomocí nástroje příkazového řádku Sqlcmd se můžete připojit k synapse fondu SQL a dotazovat se na něj.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,13 +12,13 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 02157ca0d32d2347e50cc84a5c52e9c47b0f33b5
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745195"
 ---
-# <a name="connect-to-synapse-sql-pool-with-sqlcmd"></a>Připojení k fondu Synapse SQL s sqlcmd
+# <a name="connect-to-synapse-sql-pool-with-sqlcmd"></a>Připojení k synapse fondu SQL pomocí sqlcmd
 
 > [!div class="op_single_selector"]
 >
@@ -28,15 +28,15 @@ ms.locfileid: "80745195"
 > * [Sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 
-Pomocí nástroje příkazového řádku [sqlcmd][sqlcmd] se můžete připojit k fondu SQL a dotazovat se na něj.  
+K připojení a dotazování fondu SQL použijte nástroj příkazového řádku [Sqlcmd] [Sqlcmd].  
 
-## <a name="1-connect"></a>1. Připojte
+## <a name="1-connect"></a>1. připojení
 
-Chcete-li začít s [sqlcmd][sqlcmd], otevřete příkazový řádek a zadejte **sqlcmd** následovaný připojovacím řetězcem pro databázi fondu SQL. Připojovací řetězec bude muset mít následující parametry:
+Chcete-li začít s nástrojem [Sqlcmd] [Sqlcmd], otevřete příkazový řádek a zadejte příkaz **Sqlcmd** následovaný připojovacím řetězcem pro vaši databázi fondu SQL. Připojovací řetězec bude muset mít následující parametry:
 
 * **Server (-S):** Server v následující podobě: `<`název serveru`>`.database.windows.net
 * **Database (-d):** Název databáze
-* **Povolit uvozovky (-I):** Identifikátory v uvozovkách musí být povoleny pro připojení k instanci fondu SQL.
+* **Povolit identifikátory v uvozovkách (-I):** Aby bylo možné připojit se k instanci fondu SQL, musí být povolené identifikátory v uvozovkách.
 
 Chcete-li používat ověřování systému SQL Server, je třeba přidat parametry uživatelského jména a hesla:
 
@@ -62,7 +62,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 > [!NOTE]
 > Abyste mohli provádět ověřování pomocí Active Directory, je třeba [povolit ověřování Azure Active Directory](sql-data-warehouse-authentication.md).
 
-## <a name="2-query"></a>2. Dotaz
+## <a name="2-query"></a>2. dotaz
 
 Po připojení můžete pro instanci zadávat všechny podporované příkazy jazyka Transact-SQL.  V tomto příkladu jsou dotazy zadávány v interaktivním režimu.
 
@@ -85,4 +85,4 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o možnostech dostupných v sqlcmd naleznete v [dokumentaci sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Další informace o možnostech dostupných v Sqlcmd najdete v tématu [dokumentace k nástroji Sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).

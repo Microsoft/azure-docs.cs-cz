@@ -1,28 +1,28 @@
 ---
 title: Komponenty
-description: Definice součástí v rozsahu vzdáleného vykreslování Azure
+description: Definice součástí v oboru vzdáleného vykreslování Azure
 author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: conceptual
 ms.openlocfilehash: cb8b38addef736914a8627971e57ea2b173293d6
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681893"
 ---
 # <a name="components"></a>Komponenty
 
-Vzdálené vykreslování Azure používá vzor [systému komponent entity.](https://en.wikipedia.org/wiki/Entity_component_system) Zatímco [entity](entities.md) představují pozici a hierarchické složení objektů, komponenty jsou zodpovědné za implementaci chování.
+Vzdálené vykreslování Azure používá [systémový vzor komponenty entity](https://en.wikipedia.org/wiki/Entity_component_system) . Zatímco [entity](entities.md) představují pozici a hierarchické složení objektů, jsou zodpovědné za implementaci chování.
 
-Nejčastěji používanými typy součástí jsou [součásti sítě](meshes.md), které přidávají sítě do kanálu vykreslování. Podobně se [světelné součásti](../overview/features/lights.md) používají k přidání osvětlení a [součásti roviny řezu](../overview/features/cut-planes.md) se používají k rozříznutí ok.
+Nejčastěji používané typy komponent jsou [součásti sítě](meshes.md), které do kanálu vykreslování přidávají sítě. Podobně se pro vyjmutí otevřených sítí používají [lehké komponenty](../overview/features/lights.md) , které slouží k přidání osvětlení a [řezu vyjmuté plochy](../overview/features/cut-planes.md) .
 
-Všechny tyto součásti používají jako referenční bod transformaci (pozici, natočení, měřítko) entity, ke které jsou připojeny.
+Všechny tyto komponenty používají transformaci (pozice, otočení, škálování) entity, ke které jsou připojeni, jako jejich referenční bod.
 
 ## <a name="working-with-components"></a>Práce s komponentami
 
-Součásti můžete snadno přidávat, odebírat a manipulovat s nimi programově:
+Komponenty můžete snadno přidat, odebrat a manipulovat programově:
 
 ```cs
 // create a point light component
@@ -39,15 +39,15 @@ lightComponent.Destroy();
 lightComponent = null;
 ```
 
-Komponenta je připojena k entitě v době vytvoření. Poté jej nelze přesunout do jiné entity. Součásti jsou explicitně odstraněny s `Component.Destroy()` nebo automaticky při zničení entity vlastníka komponenty.
+Komponenta je připojena k entitě při vytváření. Nedá se přesunout na jinou entitu později. Komponenty se explicitně odstraní pomocí `Component.Destroy()` nebo automaticky, když je zničena entita vlastníka součásti.
 
-Současně může být do entity přidána pouze jedna instance každého typu součásti.
+V jednom okamžiku může být do entity přidána pouze jedna instance každého typu součásti.
 
-## <a name="unity-specific"></a>Jednota specifická
+## <a name="unity-specific"></a>Specifické pro Unity
 
-Unity integrace má další rozšiřující funkce pro interakci s komponentami. Viz [Unity herní objekty a komponenty](../how-tos/unity/objects-components.md).
+Integrace Unity má další funkce rozšíření pro interakci s komponentami. Viz [objekty a komponenty hry Unity](../how-tos/unity/objects-components.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Hranice objektů](object-bounds.md)
-* [Ok](meshes.md)
+* [Sítě](meshes.md)

@@ -4,17 +4,17 @@ description: Popisuje, jak nastavit název a typ pro podřízené prostředky v 
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.openlocfilehash: 3a69829e674925982c618807f49433a033d8c5f9
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80743832"
 ---
-# <a name="set-name-and-type-for-child-resources"></a>Nastavení názvu a typu podřízených prostředků
+# <a name="set-name-and-type-for-child-resources"></a>Nastavení názvu a typu pro podřízené prostředky
 
-Podřízené prostředky jsou prostředky, které existují pouze v kontextu jiného prostředku. Například [rozšíření virtuálního počítače](/azure/templates/microsoft.compute/2019-03-01/virtualmachines/extensions) nemůže existovat bez [virtuálního počítače](/azure/templates/microsoft.compute/2019-03-01/virtualmachines). Prostředek rozšíření je podřízený virtuální počítač.
+Podřízené prostředky jsou prostředky, které existují pouze v kontextu jiného prostředku. Například [rozšíření virtuálního počítače](/azure/templates/microsoft.compute/2019-03-01/virtualmachines/extensions) nemůže existovat bez [virtuálního počítače](/azure/templates/microsoft.compute/2019-03-01/virtualmachines). Prostředek rozšíření je podřízený virtuálnímu počítači.
 
-V šabloně Správce prostředků můžete zadat podřízený prostředek v rámci nadřazeného prostředku nebo mimo nadřazený prostředek. Následující příklad ukazuje podřízený prostředek zahrnutý do vlastnosti resources nadřazeného prostředku.
+V šabloně Správce prostředků můžete zadat podřízený prostředek buď v nadřazeném prostředku, nebo mimo nadřazený prostředek. Následující příklad ukazuje podřízený prostředek zahrnutý do vlastnosti Resources nadřazeného prostředku.
 
 ```json
 "resources": [
@@ -27,7 +27,7 @@ V šabloně Správce prostředků můžete zadat podřízený prostředek v rám
 ]
 ```
 
-Následující příklad ukazuje podřízený prostředek mimo nadřazený prostředek. Tento přístup můžete použít, pokud nadřazený prostředek není nasazen ve stejné šabloně nebo pokud chcete použít [kopii](copy-resources.md) k vytvoření více než jednoho podřízeného prostředku.
+Následující příklad ukazuje podřízený prostředek mimo nadřazený prostředek. Tento přístup můžete použít, pokud nadřazený prostředek není nasazený ve stejné šabloně nebo pokud chcete použít [kopírování](copy-resources.md) k vytvoření více než jednoho podřízeného prostředku.
 
 ```json
 "resources": [
@@ -40,18 +40,18 @@ Následující příklad ukazuje podřízený prostředek mimo nadřazený prost
 ]
 ```
 
-Hodnoty, které zadáte pro název a typ prostředku, se liší v závislosti na tom, zda je podřízený prostředek definován uvnitř nebo vně nadřazeného prostředku.
+Hodnoty, které zadáte pro název prostředku a typ, se liší v závislosti na tom, jestli je podřízený prostředek definovaný uvnitř nebo vně nadřazeného prostředku.
 
 ## <a name="within-parent-resource"></a>V rámci nadřazeného prostředku
 
-Pokud je definována v rámci nadřazeného typu prostředku, naformátujte hodnoty typu a názvu jako jedno slovo bez lomítka.
+Pokud je definována v rámci nadřazeného typu prostředku, formátujete hodnoty typ a název jako jedno slovo bez lomítek.
 
 ```json
 "type": "{child-resource-type}",
 "name": "{child-resource-name}",
 ```
 
-Následující příklad ukazuje virtuální síť a podsíť. Všimněte si, že podsíť je součástí pole prostředků pro virtuální síť. Název je nastaven na **Podsíť1** a typ je nastaven na **podsítě**. Podřízený prostředek je označen jako závislý na nadřazeném prostředku, protože nadřazený prostředek musí existovat před nasazením podřízeného prostředku.
+Následující příklad ukazuje virtuální síť a podsíť. Všimněte si, že podsíť je obsažená v poli prostředků pro virtuální síť. Název je nastavený na **Subnet1** a typ je nastavený na **podsítě**. Podřízený prostředek je v nadřazeném prostředku označený jako závislý, protože nadřazený prostředek musí existovat předtím, než bude možné nasadit podřízený prostředek.
 
 ```json
 "resources": [
@@ -85,20 +85,20 @@ Následující příklad ukazuje virtuální síť a podsíť. Všimněte si, ž
 ]
 ```
 
-Úplný typ prostředku je stále **Microsoft.Network/virtualNetworks/podsítě**. Neposkytujete **Microsoft.Network/virtualNetworks/** protože se předpokládá z nadřazeného typu prostředku.
+Úplný typ prostředku je i **Microsoft. Network/virtualNetworks/podsítí**. Neposkytujeme **Microsoft. Network/virtualNetworks/** , protože se předpokládá od nadřazeného typu prostředku.
 
-Podřízený název prostředku je nastaven na **Podsíť1,** ale celý název obsahuje nadřazený název. Neposkytujete **VNet1,** protože se předpokládá z nadřazeného prostředku.
+Název podřízeného prostředku je nastavený na **Subnet1** , ale úplný název obsahuje název nadřazeného objektu. Neposkytujete **VNet1** , protože se předpokládá od nadřazeného prostředku.
 
-## <a name="outside-parent-resource"></a>Vnější nadřazený zdroj
+## <a name="outside-parent-resource"></a>Vnější nadřazený prostředek
 
-Pokud je definován mimo nadřazený prostředek, naformátujte typ a lomítka tak, aby zahrnovala nadřazený typ a název.
+Při definování mimo nadřazený prostředek naformátujete typ a s lomítky, aby zahrnovaly nadřazený typ a název.
 
 ```json
 "type": "{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}",
 "name": "{parent-resource-name}/{child-resource-name}",
 ```
 
-Následující příklad ukazuje virtuální síť a podsíť, které jsou definovány na kořenové úrovni. Všimněte si, že podsíť není zahrnuta v poli prostředků pro virtuální síť. Název je nastaven na **VNet1/Subnet1** a typ je nastaven na **Microsoft.Network/virtualNetworks/podsítě**. Podřízený prostředek je označen jako závislý na nadřazeném prostředku, protože nadřazený prostředek musí existovat před nasazením podřízeného prostředku.
+Následující příklad ukazuje virtuální síť a podsíť, které jsou definovány na kořenové úrovni. Všimněte si, že podsíť není obsažená v poli prostředků pro virtuální síť. Název se nastaví na **VNet1/Subnet1** a typ se nastaví na **Microsoft. Network/virtualNetworks/subnets**. Podřízený prostředek je v nadřazeném prostředku označený jako závislý, protože nadřazený prostředek musí existovat předtím, než bude možné nasadit podřízený prostředek.
 
 ```json
 "resources": [
@@ -132,6 +132,6 @@ Následující příklad ukazuje virtuální síť a podsíť, které jsou defin
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o vytváření šablon Azure Resource Manageru najdete v [tématu Vytváření šablon](template-syntax.md).
+* Další informace o vytváření šablon Azure Resource Manager najdete v tématu [vytváření šablon](template-syntax.md).
 
-* Informace o formátu názvu prostředku při odkazování na prostředek naleznete v [referenční funkci](template-functions-resource.md#reference).
+* Další informace o formátu názvu prostředku při odkazování na prostředek naleznete v [referenční funkci](template-functions-resource.md#reference).

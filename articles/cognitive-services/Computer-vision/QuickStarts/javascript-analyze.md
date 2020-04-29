@@ -1,5 +1,5 @@
 ---
-title: 'Úvodní příručka: Analýza vzdáleného obrazu - REST, JavaScript'
+title: 'Rychlý Start: analýza vzdálené image – REST, JavaScript'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete analyzovat obrázek pomocí rozhraní API pro počítačové zpracování obrazu a JavaScriptu.
 services: cognitive-services
@@ -12,32 +12,32 @@ ms.date: 03/26/2020
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 1d77acf9f076bbb9a4f4da5c592a0443b8585299
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80656109"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-javascript-in-computer-vision"></a>Rychlý start: Analýza vzdáleného obrázku pomocí rozhraní REST API a JavaScriptu v počítačovém zpracování obrazu
 
-V tomto rychlém startu budete analyzovat vzdáleně uložený obrázek k extrahování vizuálních funkcí pomocí rozhraní API REKOnČIDUpočítače. Pomocí metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální prvky na základě obsahu obrázku.
+V tomto rychlém startu budete analyzovat vzdáleně uloženou bitovou kopii pro extrakci vizuálních funkcí pomocí REST API Počítačové zpracování obrazu. Pomocí metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální prvky na základě obsahu obrázku.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít klíč předplatného pro počítačové zpracování obrazu. Můžete získat bezplatný zkušební klíč od [try cognitive services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Nebo postupujte podle pokynů v [tématu Vytvoření účtu služeb Cognitive Services,](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) abyste se přihlásili k odběru počítačového vidění a získali klíč. Uložte klíč předplatného a adresu URL koncového bodu do dočasného umístění.
+Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Uložte klíč předplatného a adresu URL koncového bodu do dočasného umístění.
 
 ## <a name="create-and-run-the-sample"></a>Vytvoření a spuštění ukázky
 
 Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
-1. Vytvořte soubor s názvem _analyze-image.html_, otevřete jej v textovém editoru a zkopírujte do něj následující kód.
+1. Vytvořte soubor s názvem _analyze-image. html_, otevřete ho v textovém editoru a zkopírujte do něj následující kód.
 1. Volitelně můžete hodnotu atributu `value` pro ovládací prvek `inputImage` nahradit adresou URL jiného obrázku, který chcete analyzovat.
 1. Otevřete okno prohlížeče.
 1. Přetáhněte daný soubor do okna prohlížeče.
-1. Když se webová stránka zobrazí v prohlížeči, vložte klíč předplatného a adresu URL koncového bodu do příslušných vstupních polí.
-1. Vyberte tlačítko **Analyzovat obraz.**
+1. Po zobrazení webové stránky v prohlížeči vložte klíč předplatného a adresu URL koncového bodu do příslušných vstupních polí.
+1. Vyberte tlačítko **analyzovat obrázek** .
 
 ```html
 <!DOCTYPE html>

@@ -1,24 +1,24 @@
 ---
-title: Upgrade runtime Service Fabric v Azure
+title: Upgrade modulu runtime Service Fabric v Azure
 description: V tomto kurzu se dozvíte, jak pomocí PowerShellu upgradovat modul runtime clusteru Service Fabric hostovaného v Azure.
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: a21de9d76a010b01da95b050a521178d8808bbdf
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80756070"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>Kurz: Upgrade modulu runtime clusteru Service Fabric v Azure
 
-Tento kurz je součástí čtvrté řady a ukazuje, jak upgradovat runtime Service Fabric v clusteru Azure Service Fabric. Tato část kurzu je napsána pro clustery Service Fabric spuštěné v Azure a nevztahuje se na samostatné clustery Service Fabric.
+Tento kurz je čtvrtou částí série a ukazuje, jak upgradovat modul runtime Service Fabric v clusteru Azure Service Fabric. Tato část kurzu je napsaná pro Service Fabric clusterů běžících na Azure a nevztahuje se na samostatné clustery Service Fabric.
 
 > [!WARNING]
 > Tato část kurzu vyžaduje PowerShell. Nástroje Azure CLI ještě upgradování modulu runtime clusteru nepodporují. Alternativně je možné cluster upgradovat na portálu. Další informace najdete v tématu [Upgrade clusteru Azure Service Fabric](service-fabric-cluster-upgrade.md).
 
-Pokud váš cluster již běží nejnovější service fabric runtime, není nutné provést tento krok. Tento článek však můžete použít k instalaci jakéhokoli podporovaného modulu runtime v clusteru Azure Service Fabric.
+Pokud váš cluster už používá nejnovější Service Fabric runtime, nemusíte tento krok provádět. Tento článek však můžete použít k instalaci jakéhokoli podporovaného modulu runtime v clusteru Azure Service Fabric.
 
 V tomto kurzu se naučíte:
 
@@ -28,8 +28,8 @@ V tomto kurzu se naučíte:
 
 V této sérii kurzů se naučíte:
 > [!div class="checklist"]
-> * Vytvoření zabezpečeného [clusteru Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) v Azure pomocí šablony
-> * [Sledování clusteru](service-fabric-tutorial-monitor-cluster.md)
+> * Vytvoření zabezpečeného [clusteru s Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) v Azure pomocí šablony
+> * [Monitorování clusteru](service-fabric-tutorial-monitor-cluster.md)
 > * [Horizontální snížení nebo navýšení kapacity clusteru](service-fabric-tutorial-scale-cluster.md)
 > * Upgrade modulu runtime clusteru
 > * [Odstranění clusteru](service-fabric-tutorial-delete-cluster.md)
@@ -41,10 +41,10 @@ V této sérii kurzů se naučíte:
 
 Než začnete s tímto kurzem:
 
-* Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* Nainstalujte [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) nebo [Azure CLI](/cli/azure/install-azure-cli).
-* Vytvoření zabezpečeného [clusteru Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) v Azure
-* Nastavte vývojové prostředí systému Windows. Nainstalujte [Visual Studio 2019](https://www.visualstudio.com) a **vývoj Azure**, ASP.NET a **vývoj webových aplikací**a vývojové úlohy **.NET Core napříč** platformami.  Potom nastavte [vývojové prostředí .NET](service-fabric-get-started.md).
+* Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+* Nainstalujte [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) nebo rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli).
+* Vytvoření zabezpečeného [clusteru s Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) v Azure
+* Nastavte vývojové prostředí systému Windows. Nainstalujte [Visual Studio 2019](https://www.visualstudio.com) a vývojové úlohy pro vývoj pro **Azure**, **ASP.NET a**vývoj pro web a **.NET Core pro různé platformy** .  Potom nastavte [vývojové prostředí .NET](service-fabric-get-started.md).
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -58,14 +58,14 @@ Set-AzContext -SubscriptionId <guid>
 
 ## <a name="get-the-runtime-version"></a>Získání verze modulu runtime
 
-Po připojení k Azure, vybrané předplatné obsahující service fabric clusteru, můžete získat runtime verzi clusteru.
+Po připojení k Azure vyberte předplatné, které obsahuje Cluster Service Fabric, a můžete získat běhovou verzi clusteru.
 
 ```powershell
 Get-AzServiceFabricCluster -ResourceGroupName SFCLUSTERTUTORIALGROUP -Name aztestcluster `
     | Select-Object ClusterCodeVersion
 ```
 
-Nebo stačí získat seznam všech clusterů v předplatném s následujícím příkladem:
+Nebo stačí získat seznam všech clusterů v rámci vašeho předplatného s následujícím příkladem:
 
 ```powershell
 Get-AzServiceFabricCluster | Select-Object Name, ClusterCodeVersion
@@ -95,7 +95,7 @@ Set-AzServiceFabricUpgradeType -ResourceGroupName SFCLUSTERTUTORIALGROUP `
 
 Stav upgradu můžete monitorovat pomocí PowerShellu nebo Azure Service Fabric CLI (sfctl).
 
-Nejprve se připojte ke clusteru pomocí certifikátu TLS/SSL vytvořeného v první části kurzu. Použijte k tomu rutinu `Connect-ServiceFabricCluster` nebo `sfctl cluster upgrade-status`.
+Nejdřív se připojte ke clusteru pomocí certifikátu TLS/SSL vytvořeného v první části tohoto kurzu. Použijte k tomu rutinu `Connect-ServiceFabricCluster` nebo `sfctl cluster upgrade-status`.
 
 ```powershell
 $endpoint = "<mycluster>.southcentralus.cloudapp.azure.com:19000"

@@ -1,52 +1,52 @@
 ---
-title: Návrhy aktivnívýuky - QnA Maker
-description: Návrhy aktivnívýuky vám umožní zlepšit kvalitu vaší znalostní báze tím, že navrhnete alternativní otázky založené na uživatelských podáních na dvojici otázek a odpovědí.
+title: Aktivní návrhy učení – QnA Maker
+description: Přehledy aktivních kurzů vám umožní vylepšit kvalitu znalostní báze tím, že navrhují alternativní otázky na základě počtu uživatelů, a to na pár otázek a odpovědí.
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.openlocfilehash: edbe06b12fbb97473b28ccca968fd3e7d8366152
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80804207"
 ---
-# <a name="active-learning-suggestions"></a>Návrhy aktivních učení
+# <a name="active-learning-suggestions"></a>Aktivní návrhy výukových kurzů
 
-Funkce _Aktivní návrhy učení_ umožňuje zlepšit kvalitu znalostní báze tím, že navrhne alternativní otázky na základě uživatelských příspěvků na vaši dvojici otázek a odpovědí. Tyto návrhy zkontrolujete, a to buď jejich přidáním k existujícím otázkám, nebo jejich odmítnutím.
+Funkce _aktivní návrhy kurzů_ vám umožní zdokonalit kvalitu znalostní báze tím, že navrhuje alternativní otázky na základě počtu uživatelů, které odpovídají vašemu páru dotazů a odpovědí. Tyto návrhy si můžete prohlédnout, buď je přidáte do existujících otázek, nebo je odmítnete.
 
-Znalostní báze se automaticky nezmění. Aby se jakákoli změna projevila, musíte návrhy přijmout. Tyto návrhy přidávají otázky, ale nemění ani neodstraňují existující otázky.
+Vaše znalostní báze se nemění automaticky. Aby se změny projevily, musíte přijmout návrhy. Tyto návrhy přidávají otázky, ale nemění ani neodstraňují stávající otázky.
 
 ## <a name="what-is-active-learning"></a>Co je aktivní učení?
 
-QnA Maker se učí nové varianty otázek s implicitní a explicitní zpětnou vazbou.
+QnA Maker se učí nové variace otázek s implicitní a explicitní zpětnou vazbou.
 
-* [Implicitní zpětná vazba](#how-qna-makers-implicit-feedback-works) – ranker chápe, když uživatelská otázka obsahuje více odpovědí s skóre, které jsou velmi blízké, a považuje to za zpětnou vazbu. Nemusíš dělat nic, aby se to stalo.
-* [Explicitní zpětná vazba](#how-you-give-explicit-feedback-with-the-train-api) – Při vrácení více odpovědí s malou odchylkou ve skóre ze znalostní báze se klientská aplikace zeptá uživatele, která otázka je správná otázka. Explicitní zpětná vazba uživatele je odeslána qnA makeru s [rozhraním TRAIN API](../How-to/improve-knowledge-base.md#train-api).
+* [Implicitní zpětná vazba](#how-qna-makers-implicit-feedback-works) – seznámení s tím, že má uživatelská otázka více odpovědí s výsledky, které jsou velmi blízko a považuje se za zpětnou vazbu. K tomu nemusíte nic dělat.
+* [Explicitní názory](#how-you-give-explicit-feedback-with-the-train-api) – Pokud se ve znalostní bázi Knowledge Base vrátí více odpovědí s malým kolísáním skóre, klientská aplikace se zeptá, který dotaz je na správnou otázku. Explicitní zpětná vazba uživatele se pošle QnA Maker s využitím [rozhraní API pro vlaky](../How-to/improve-knowledge-base.md#train-api).
 
-Obě metody poskytují ranker s podobnými dotazy, které jsou seskupeny.
+Obě metody poskytují pořadí s podobnými dotazy, které jsou v clusteru.
 
-## <a name="how-active-learning-works"></a>Jak aktivní učení funguje
+## <a name="how-active-learning-works"></a>Jak funguje aktivní učení
 
-Aktivní učení se aktivuje na základě skóre několika nejlepších odpovědí vrácených QnA Makerem. Pokud rozdíly skóre mezi dvojicemi QnA, které odpovídají dotazu, leží v malém rozsahu, pak je dotaz považován za možný návrh (jako alternativní otázka) pro každý z možných párů QnA. Jakmile přijmete navrhovanou otázku pro konkrétní dvojici QnA, je odmítnuta pro ostatní páry. Musíte mít na paměti, uložit a trénovat, po přijetí návrhy.
+Aktivní učení se aktivuje na základě skóre nejčastějších odpovědí vrácených QnA Maker. Pokud rozdíly v skóre mezi páry QnA, které odpovídají dotazu, leží v malém rozsahu, dotaz je považován za možný návrh (jako alternativní otázka) pro každý z možných párů QnA. Jakmile přijmete navrhovanou otázku pro určitý pár QnA, je odmítnut pro ostatní páry. Po přijetí návrhů musíte pamatovat na uložení a výuku.
 
-Aktivní učení poskytuje nejlepší možné návrhy v případech, kdy koncové body získávají přiměřené množství a různé dotazy na použití. Při clusteru 5 nebo více podobných dotazů, každých 30 minut, QnA Maker navrhuje uživatelské otázky na znalostní bázi návrháře přijmout nebo odmítnout. Všechny návrhy jsou seskupeny podle podobnosti a nejlepší návrhy pro alternativní otázky jsou zobrazeny na základě četnosti konkrétních dotazů koncovými uživateli.
+Aktivní učení nabízí nejlepší možné návrhy v případech, kdy koncové body získávají přijatelné množství a různé dotazy na používání. Když je 5 nebo více podobných dotazů clusterovaných, každých 30 minut QnA Maker navrhuje dotazy založené na uživateli v Návrháři znalostní báze, aby je bylo možné přijmout nebo odmítnout. Všechny návrhy jsou seskupené podle podobnosti a na základě frekvence konkrétních dotazů koncovými uživateli se zobrazují nejdůležitější návrhy na alternativní otázky.
 
-Jakmile jsou na portálu QnA Maker navrhovány otázky, musíte tyto návrhy zkontrolovat a přijmout nebo odmítnout. Neexistuje rozhraní API pro správu návrhů.
+Po navržení otázek na portálu QnA Maker musíte tyto návrhy projít a přijmout nebo odmítnout. Není k dispozici rozhraní API pro správu návrhů.
 
 ## <a name="turn-on-active-learning"></a>Aktivace aktivního učení
 
-Ve výchozím nastavení je aktivní učení **vypnuto**.
+Ve výchozím nastavení je aktivní učení **vypnuté**.
 Použití aktivního učení:
-* Musíte [zapnout aktivní učení,](../How-To/use-active-learning.md#turn-on-active-learning-for-alternate-questions) aby QnA Maker shromažďoval alternativní otázky pro vaši znalostní bázi.
-* Chcete-li zobrazit navrhované alternativní otázky, [použijte možnosti zobrazení](../How-To/improve-knowledge-base.md#view-suggested-questions) na stránce Úpravy.
+* Musíte [zapnout aktivní výuku](../How-To/use-active-learning.md#turn-on-active-learning-for-alternate-questions) , aby QnA maker shromažďovat alternativní otázky pro znalostní bázi.
+* Chcete-li zobrazit navrhované alternativní otázky, [použijte možnosti zobrazení](../How-To/improve-knowledge-base.md#view-suggested-questions) na stránce Upravit.
 
-## <a name="how-qna-makers-implicit-feedback-works"></a>Jak funguje implicitní zpětná vazba qnA makeru
+## <a name="how-qna-makers-implicit-feedback-works"></a>Způsob fungování implicitní zpětné vazby QnA Maker
 
-QnA Maker implicitní zpětná vazba používá algoritmus k určení blízkosti skóre pak dělá aktivní učení návrhy. Algoritmus k určení blízkosti není jednoduchý výpočet. Rozsahy v následujícím příkladu nejsou určeny k pevné, ale by měly být použity jako vodítko k pochopení dopadu algoritmu pouze.
+Implicitní zpětná vazba QnA Maker používá algoritmus k určení blízkosti skóre a následně zajišťuje aktivní návrhy učení. Algoritmus k určení blízkosti není jednoduchý výpočet. Rozsahy v následujícím příkladu nejsou určeny k pevnému, ale měly by být použity jako vodítko pro pochopení dopadu pouze na algoritmus.
 
-Když je skóre otázky vysoce jisté, například 80 %, rozsah skóre, které jsou zvažovány pro aktivní učení, je široký, přibližně do 10 %. Jak se snižuje skóre spolehlivosti, například 40%, rozsah skóre klesá také, přibližně v rámci 4%.
+Když je skóre otázky vysoce důvěrná, například 80%, rozsah skóre, která jsou považována za aktivní, je v širokém rozsahu přibližně do 10%. Vzhledem k poklesu spolehlivosti, jako je 40%, se rozsah hodnocení zmenší i přibližně do 4%.
 
-V následující odpovědi JSON z dotazu na QnA Maker generateAnswer, skóre pro A, B a C jsou blízko a by být považovány za návrhy.
+V následující reakci JSON z dotazu na QnA Maker generateAnswer se skóre pro A, B a C blíží a budou považována za návrhy.
 
 ```json
 {
@@ -116,20 +116,20 @@ V následující odpovědi JSON z dotazu na QnA Maker generateAnswer, skóre pro
 }
 ```
 
-QnA Maker nebude vědět, která odpověď je nejlepší odpověď. Pomocí seznamu návrhů portálu QnA Maker vyberte nejlepší odpověď a znovu trénujte.
+QnA Maker neznáte, která odpověď je nejlepší odpovědí. Pomocí seznamu návrhů QnA Makerového portálu můžete vybrat nejlepší odpověď a znovu zahájit vlak.
 
 
-## <a name="how-you-give-explicit-feedback-with-the-train-api"></a>Jak poskytnout explicitní zpětnou vazbu s train API
+## <a name="how-you-give-explicit-feedback-with-the-train-api"></a>Způsob poskytnutí explicitní zpětné vazby pomocí rozhraní API pro vlaky
 
-QnA Maker potřebuje explicitní zpětnou vazbu o tom, která z odpovědí byla nejlepší odpovědí. Jak je určena nejlepší odpověď, je na vás a může zahrnovat:
+QnA Maker potřebuje explicitní zpětnou vazbu, na kterou odpověděla odpověď na odpověď. Způsob, jakým je nejlepší odpověď určena, je až na vás a může zahrnovat:
 
-* Zpětná vazba od uživatelů, výběr jedné z odpovědí.
-* Obchodní logika, jako je například určení přijatelného rozsahu skóre.
-* Kombinace zpětné vazby od uživatelů a obchodní logiky.
+* Zpětnou vazbu od uživatele vyberte jednu z odpovědí.
+* Obchodní logika, například určení přijatelného rozsahu skóre.
+* Kombinace zpětné vazby uživatelů a obchodní logiky.
 
-Pomocí [rozhraní TRAIN API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train) odešlete správnou odpověď qnA makeru poté, co ji uživatel vybere.
+Použijte [rozhraní API pro vlak](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train) k odeslání správné odpovědi na QnA maker, až ho uživatel vybere.
 
 ## <a name="next-step"></a>Další krok
 
 > [!div class="nextstepaction"]
-> [Dotaz na znalostní bázi](query-knowledge-base.md)
+> [Dotazování znalostní báze](query-knowledge-base.md)

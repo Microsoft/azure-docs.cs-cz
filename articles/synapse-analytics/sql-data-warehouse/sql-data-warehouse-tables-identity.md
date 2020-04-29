@@ -1,6 +1,6 @@
 ---
-title: Vytvoření náhradních klíčů pomocí identity
-description: Doporučení a příklady pro použití identity vlastnost vytvořit náhradní klíče na tabulky v synapse fondu SQL.
+title: Použití IDENTITY k vytváření náhradních klíčů
+description: Doporučení a příklady použití vlastnosti IDENTITY k vytváření náhradních klíčů v tabulkách v synapse fondu SQL.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,25 +12,25 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: e681e8ad655c31d5078b56b8f1a49cfd7c664533
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80742632"
 ---
-# <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>Použití identity k vytvoření náhradních klíčů ve fondu SYNAPse SQL
+# <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>Použití IDENTITY k vytváření náhradních klíčů v synapse fondu SQL
 
-Doporučení a příklady pro použití identity vlastnost vytvořit náhradní klíče na tabulky v synapse fondu SQL.
+Doporučení a příklady použití vlastnosti IDENTITY k vytváření náhradních klíčů v tabulkách v synapse fondu SQL.
 
 ## <a name="what-is-a-surrogate-key"></a>Co je náhradní klíč
 
-Náhradní klíč v tabulce je sloupec s jedinečným identifikátorem pro každý řádek. Klíč není generován z dat tabulky. Modelátoři dat rádi vytvářejí náhradní klíče ve svých tabulkách při navrhování modelů datového skladu. Vlastnost IDENTITY můžete použít k dosažení tohoto cíle jednoduše a efektivně bez ovlivnění výkonu zatížení.  
+Náhradní klíč v tabulce je sloupec s jedinečným identifikátorem pro každý řádek. Klíč se negeneruje z dat tabulky. Datové modely, jako je vytváření náhradních klíčů ve svých tabulkách při návrhu modelů datového skladu. Vlastnost IDENTITY můžete použít k dosažení tohoto cíle jednoduše a efektivně, aniž by to ovlivnilo výkon zatížení.  
 
 ## <a name="creating-a-table-with-an-identity-column"></a>Vytvoření tabulky se sloupcem IDENTITY
 
-Vlastnost IDENTITY je navržena tak, aby škálování ve všech distribucích ve fondu SYNApse SQL bez ovlivnění výkonu zatížení. Proto je implementace IDENTITY zaměřena na dosažení těchto cílů.
+Vlastnost IDENTITY je navržená pro horizontální navýšení kapacity napříč všemi distribucemi v synapse fondu SQL bez ovlivnění výkonu zatížení. Proto se implementace IDENTITY orientuje směrem k dosažení těchto cílů.
 
-Tabulku můžete definovat jako tabulku s vlastností IDENTITY při prvním vytvoření tabulky pomocí syntaxe, která je podobná následujícímu příkazu:
+Můžete definovat tabulku, která má vlastnost IDENTITY při prvním vytvoření tabulky pomocí syntaxe, která je podobná následujícímu příkazu:
 
 ```sql
 CREATE TABLE dbo.T1
@@ -44,15 +44,15 @@ WITH
 ;
 ```
 
-Potom můžete `INSERT..SELECT` použít k naplnění tabulky.
+Pak můžete použít `INSERT..SELECT` k naplnění tabulky.
 
-Tato zbývající část této části zdůrazňuje nuance implementace, která vám pomůže lépe porozumět.  
+Tato zbývající část této části popisuje drobné odlišnosti implementace, která vám pomůže s jejich úplným pochopením.  
 
-### <a name="allocation-of-values"></a>Rozdělení hodnot
+### <a name="allocation-of-values"></a>Přidělení hodnot
 
-Identity Vlastnost nezaručuje pořadí, ve kterém jsou přiděleny náhradní hodnoty, což odráží chování SQL Server a Azure SQL Database. Však v synapse fondu SQL absence záruky je výraznější.
+Vlastnost IDENTITY nezaručuje pořadí, ve kterém jsou přiděleny náhradní hodnoty, což odráží chování SQL Server a Azure SQL Database. V synapse fondu SQL se ale neexistence záruky vysloví.
 
-Následující příklad je znázorněn na obrázku:
+Následující příklad je ilustrace:
 
 ```sql
 CREATE TABLE dbo.T1
@@ -77,34 +77,34 @@ FROM dbo.T1;
 DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
-V předchozím příkladu dva řádky přistál v distribuci 1. První řádek má náhradní hodnotu `C1`1 ve sloupci a druhý řádek má náhradní hodnotu 61. Obě tyto hodnoty byly generovány vlastností IDENTITY. Přidělení hodnot však není souvislé. Toto chování je záměrné.
+V předchozím příkladu byly vyloženo dva řádky v distribuci 1. První řádek má hodnotu náhrady 1 ve sloupci `C1`a druhý řádek má náhradní hodnotu 61. Obě tyto hodnoty byly vygenerovány vlastností IDENTITY. Přidělení hodnot však není souvislé. Toto chování je záměrné.
 
 ### <a name="skewed-data"></a>Zkosená data
 
-Rozsah hodnot pro datový typ jsou rovnoměrně rozloženy napříč distribucemi. Pokud distribuovaná tabulka trpí zkosená data, rozsah hodnot, které jsou k dispozici pro datový typ může být vyčerpán předčasně. Například pokud všechna data skončí v jedné distribuci, pak efektivně tabulka má přístup pouze k jedné šedesátiny hodnot datového typu. Z tohoto důvodu identity vlastnost `INT` je `BIGINT` omezena na a pouze datové typy.
+Rozsah hodnot datového typu se rovnoměrně rozprostře napříč distribucí. Pokud bude distribuovaná tabulka z rozdělených dat vyčerpána, může být rozsah hodnot dostupných pro datový typ předčasně vyčerpán. Například pokud všechna data skončí v rámci jedné distribuce, pak efektivně má tabulka přístup pouze k sixtieth hodnot datového typu. Z tohoto důvodu je vlastnost IDENTITY omezená jenom na `INT` `BIGINT` datové typy.
 
-### <a name="selectinto"></a>Vyberte.. Do
+### <a name="selectinto"></a>Vyberte.. USKLADNĚN
 
-Pokud je do nové tabulky vybrán existující sloupec IDENTITY, nový sloupec zdědí vlastnost IDENTITY, pokud není splněna jedna z následujících podmínek:
+Když je sloupec existující IDENTITY vybraný do nové tabulky, zdědí nový sloupec vlastnost IDENTITY, pokud není splněná některá z následujících podmínek:
 
 - Příkaz SELECT obsahuje spojení.
-- Více SELECT příkazy jsou spojeny pomocí UNION.
-- Sloupec IDENTITY je uveden více než jednou v seznamu SELECT.
+- Vícenásobné příkazy SELECT jsou spojeny pomocí SJEDNOCENí.
+- Sloupec IDENTITY je v seznamu pro výběr uveden ve více než jednom okamžiku.
 - Sloupec IDENTITY je součástí výrazu.
 
-Pokud některá z těchto podmínek je splněna, sloupec je vytvořen NENÍ NULL namísto dědění identity vlastnost.
+Pokud je jedna z těchto podmínek pravdivá, je sloupec vytvořen bez hodnoty NULL namísto dědění vlastnosti IDENTITY.
 
 ### <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
 
-VYTVOŘIT TABULKU JAKO SELECT (CTAS) následuje stejné chování serveru SQL Server, který je dokumentován pro SELECT.. Do. V definici sloupce `CREATE TABLE` části příkazu však nelze zadat vlastnost IDENTITY. Také nelze použít funkci IDENTITY v `SELECT` části CTAS. Chcete-li naplnit tabulku, `CREATE TABLE` je třeba použít `INSERT..SELECT` k definování tabulky následované k naplnění.
+CREATE TABLE AS SELECT (CTAS) se řídí stejným chováním SQL Server, které je popsané pro možnost vybrat. Uskladněn. V definici sloupce `CREATE TABLE` části příkazu ale nemůžete zadat vlastnost identity. V `SELECT` části CTAS také nemůžete použít funkci identita. K naplnění tabulky je nutné použít `CREATE TABLE` k definování tabulky, za kterou se `INSERT..SELECT` má naplnit.
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>Explicitní vkládání hodnot do sloupce IDENTITY
 
-Synapse SQL `SET IDENTITY_INSERT <your table> ON|OFF` fond podporuje syntaxi. Tuto syntaxi můžete použít k explicitnímu vložení hodnot do sloupce IDENTITY.
+Synapse fond SQL podporuje `SET IDENTITY_INSERT <your table> ON|OFF` syntaxi. Tuto syntaxi můžete použít k explicitnímu vkládání hodnot do sloupce IDENTITY.
 
-Mnoho datových modelátorů rádo používá předdefinované záporné hodnoty pro určité řádky v jejich dimenzích. Příkladem je řádek -1 nebo "neznámý člen".
+Řada datových modelů, jako je například použití předdefinovaných záporných hodnot pro určité řádky v jejich dimenzích. Příkladem je řádek-1 nebo "Neznámý člen".
 
-Další skript ukazuje, jak explicitně přidat tento řádek pomocí SET IDENTITY_INSERT:
+Následující skript ukazuje, jak tento řádek explicitně přidat pomocí SET IDENTITY_INSERT:
 
 ```sql
 SET IDENTITY_INSERT dbo.T1 ON;
@@ -125,11 +125,11 @@ FROM    dbo.T1
 
 ## <a name="loading-data"></a>Načítání dat
 
-Přítomnost identity vlastnost má některé důsledky pro váš kód načítání dat. Tato část zvýrazňuje některé základní vzory pro načítání dat do tabulek pomocí identity.
+Přítomnost vlastnosti IDENTITY má nějaký vliv na váš kód pro načítání dat. Tato část popisuje několik základních vzorů pro načítání dat do tabulek pomocí IDENTITY.
 
-Chcete-li načíst data do tabulky a vygenerovat náhradní klíč pomocí identity, vytvořte tabulku a potom použijte INSERT.. SELECT nebo INSERT.. HODNOTY k provedení zatížení.
+Chcete-li načíst data do tabulky a vygenerovat náhradní klíč pomocí IDENTITY, vytvořte tabulku a pak použijte příkaz INSERT.. Vyberte nebo vložte... HODNOTY pro provedení zátěže.
 
-Následující příklad zvýrazní základní vzorek:
+Následující příklad zvýrazní základní vzor:
 
 ```sql
 --CREATE TABLE with IDENTITY
@@ -158,16 +158,16 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
 > [!NOTE]
-> Není možné použít `CREATE TABLE AS SELECT` aktuálně při načítání dat do tabulky se sloupcem IDENTITY.
+> V tuto chvíli není možné použít `CREATE TABLE AS SELECT` při načítání dat do tabulky se sloupcem identity.
 >
 
-Další informace o načítání dat naleznete v [tématu Návrh extrahování, načtení a transformace (ELT) pro zdroj ového fondu SQL](design-elt-data-loading.md) a [načtení osvědčených postupů](guidance-for-loading-data.md).
+Další informace o načítání dat najdete v tématu [Návrh extrakce, načítání a transformace (ELT) pro Synapseový fond SQL](design-elt-data-loading.md) a [načítání osvědčených postupů](guidance-for-loading-data.md).
 
 ## <a name="system-views"></a>Systémová zobrazení
 
-Zobrazení katalogu [sys.identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) můžete použít k identifikaci sloupce, který má vlastnost IDENTITY.
+K identifikaci sloupce, který má vlastnost IDENTITY, můžete použít zobrazení katalogu [Sys. identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
 
-Chcete-li lépe porozumět schématu databáze, tento příklad ukazuje, jak integrovat sys.identity_column' s jinými zobrazeníkatalogu systému:
+V tomto příkladu, který vám pomůže lépe pochopit schéma databáze, tento příklad ukazuje, jak integrovat sys. identity_column s dalšími zobrazeními systémového katalogu:
 
 ```sql
 SELECT  sm.name
@@ -189,39 +189,39 @@ AND     tb.name = 'T1'
 
 ## <a name="limitations"></a>Omezení
 
-Vlastnost IDENTITY nelze použít:
+Vlastnost IDENTITY se nedá použít:
 
-- Pokud datový typ sloupce není INT nebo BIGINT
+- Když datový typ sloupce není INT nebo BIGINT
 - Pokud je sloupec také distribučním klíčem
-- Pokud je tabulka externí tabulkou
+- Když je tabulka externí tabulkou
 
-Následující související funkce nejsou podporovány ve fondu SYNAPSE SQL:
+V synapse fondu SQL se nepodporují následující související funkce:
 
-- [IDENTITA()](/sql/t-sql/functions/identity-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [IDENTITA ()](/sql/t-sql/functions/identity-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [Scope_identity](/sql/t-sql/functions/scope-identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [Ident_current](/sql/t-sql/functions/ident-current-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [SCOPE_IDENTITY](/sql/t-sql/functions/scope-identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [IDENT_CURRENT](/sql/t-sql/functions/ident-current-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [IDENT_INCR](/sql/t-sql/functions/ident-incr-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [IDENT_SEED](/sql/t-sql/functions/ident-seed-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="common-tasks"></a>Běžné úkoly
 
-Tato část obsahuje některé ukázkový kód, který můžete použít k provádění běžných úkolů při práci se sloupci IDENTITY.
+V této části najdete ukázkový kód, který můžete použít k provádění běžných úkolů při práci se sloupci IDENTITY.
 
-Sloupec C1 je identita ve všech následujících úkolech.
+Sloupec C1 je identita ve všech následujících úlohách.
 
 ### <a name="find-the-highest-allocated-value-for-a-table"></a>Vyhledání nejvyšší přidělené hodnoty pro tabulku
 
-Pomocí `MAX()` funkce určete nejvyšší hodnotu přidělenou pro distribuovanou tabulku:
+Pomocí `MAX()` funkce určete nejvyšší přidělenou hodnotu pro distribuovanou tabulku:
 
 ```sql
 SELECT MAX(C1)
 FROM dbo.T1
 ```
 
-### <a name="find-the-seed-and-increment-for-the-identity-property"></a>Najít osivo a přírůstek pro vlastnost IDENTITY
+### <a name="find-the-seed-and-increment-for-the-identity-property"></a>Vyhledání počáteční hodnoty a přírůstku vlastnosti IDENTITY
 
-Pomocí zobrazení katalogu můžete zjistit přírůstky identity a hodnoty konfigurace osiva pro tabulku pomocí následujícího dotazu:
+Zobrazení katalogu můžete použít ke zjištění zvýšení identity a hodnot konfigurace počáteční hodnoty pro tabulku pomocí následujícího dotazu:
 
 ```sql
 SELECT  sm.name
@@ -242,5 +242,5 @@ AND     tb.name = 'T1'
 ## <a name="next-steps"></a>Další kroky
 
 - [Přehled tabulky](sql-data-warehouse-tables-overview.md)
-- [VYTVOŘIT TABULKU (Transact-SQL) IDENTITY (vlastnost)](/sql/t-sql/statements/create-table-transact-sql-identity-property?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [KONTROLNÍ OSAVKA DBCC](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [Identita CREATE TABLE (Transact-SQL) (vlastnost)](/sql/t-sql/statements/create-table-transact-sql-identity-property?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [DBCC CHECKINDENT](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

@@ -1,5 +1,5 @@
 ---
-title: 'Úvodní příručka: Překlad řeči do více jazyků, Java (Windows, Linux) - Řečová služba'
+title: 'Rychlý Start: Převod řeči na více jazyků, Java (Windows, Linux) – Speech Service'
 titleSuffix: Azure Cognitive Services
 description: Bude doplněno
 services: cognitive-services
@@ -11,23 +11,23 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: erhopf
 ms.openlocfilehash: 4ed3862b08c73264bca0f3bc6ed8e17586c2735c
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80671630"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, že:
+Než začnete, nezapomeňte:
 
 > [!div class="checklist"]
-> * [Vytvoření řečového prostředku Azure](../../../../get-started.md)
+> * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programming-language-java)
 
 ## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
-1. Chcete-li do projektu Java přidat novou prázdnou**třídu,** vyberte **možnost Soubor** > **nové** > třídy .
+1. Chcete-li do projektu Java přidat novou prázdnou třídu, vyberte možnost **soubor** > **Nová** > **Třída**.
 
 1. V okně **New Java Class** (Nová třída Javy) zadejte do pole **Package** (Balíček) **speechsdk.quickstart** a do pole **Name** (Název) zadejte **Main** (Hlavní).
 
@@ -133,9 +133,9 @@ Než začnete, ujistěte se, že:
 
 ## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
 
-Stiskněte klávesu F11 nebo vyberte **spustit** > **ladění**.
+Stiskněte klávesu F11 nebo vyberte **Spustit** > **ladění**.
 
-1. Vyslovte anglickou frázi nebo větu. Aplikace přenáší váš projev do služby Speech, která překládá a přepisuje na text (v tomto případě do francouzštiny a němčiny). Služba Řeč pak odešle text zpět do aplikace pro zobrazení.
+1. Vyslovte anglickou frázi nebo větu. Aplikace přenáší váš hlas do služby pro rozpoznávání řeči, která převádí a transcribes na text (v tomto případě na francouzštinu a němčinu). Služba rozpoznávání řeči pak pošle text zpátky do aplikace k zobrazení.
 
 ````
 Say something...

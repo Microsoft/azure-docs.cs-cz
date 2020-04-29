@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
 ms.openlocfilehash: 121f6ffa5c1a7c903e59be8a5bc3e1e1db0834fc
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80673338"
 ---
 ## <a name="add-an-output-binding-definition-to-the-function"></a>Přidání definice výstupní vazby do funkce
 
-I když funkce může mít pouze jednu aktivační událost, může mít více vstupních a výstupních vazeb, které umožňují připojení k jiným službám a prostředkům Azure bez psaní vlastního integračního kódu. 
+I když funkce může mít jenom jednu Trigger, může mít víc vstupních a výstupních vazeb, které vám umožní připojit se k dalším službám a prostředkům Azure bez nutnosti psát vlastní kód pro integraci. 
 
 ::: zone pivot="programming-language-python,programming-language-javascript,programming-language-powershell,programming-language-typescript"  
-Deklarujete tyto vazby v souboru *function.json* ve složce funkce. Z předchozího rychlého startu soubor *function.json* ve složce *HttpExample* obsahuje dvě vazby v kolekci: `bindings`  
+Tyto vazby deklarujete v souboru *Function. JSON* ve složce Functions. Z předchozího rychlého startu soubor *Function. JSON* ve složce *HttpExample* obsahuje dvě vazby v `bindings` kolekci:  
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript"  
@@ -32,33 +32,33 @@ Deklarujete tyto vazby v souboru *function.json* ve složce funkce. Z předchoz�
 ::: zone-end  
 
 ::: zone pivot="programming-language-python,programming-language-javascript, programming-language-powershell, programming-language-typescript"  
-Každá vazba má alespoň typ, směr a název. Ve výše uvedeném příkladu je `httpTrigger` první `in`vazba typu se směrem . Pro `in` směr `name` určuje název vstupního parametru, který je odeslán do funkce při vyvolání aktivační událostí.  
+Každá vazba má alespoň typ, směr a název. V předchozím příkladu je první vazba typu `httpTrigger` s směrem. `in` Pro `in` směr `name` Určuje název vstupního parametru, který je odeslán funkci při vyvolání triggerem.  
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript"  
-Druhá vazba v kolekci je pojmenována `res`. Tato `http` vazba je`out`výstupní vazba ( ), která se používá k zápisu odpovědi HTTP. 
+Druhá vazba v kolekci je pojmenována `res`. Tato `http` vazba je výstupní vazba (`out`), která se používá k zápisu odpovědi HTTP. 
 
-Chcete-li z této funkce zapsat `out` do fronty `queue` služby `msg`Azure Storage, přidejte vazbu typu s názvem , jak je znázorněno v níže uvedeném kódu:
+Chcete-li z této funkce zapisovat do fronty Azure Storage, přidejte `out` vazbu typu `queue` s názvem `msg`, jak je znázorněno v následujícím kódu:
 
 :::code language="json" source="~/functions-docs-javascript/functions-add-output-binding-storage-queue-cli/HttpExample/function.json" range="3-26":::
 ::: zone-end  
 
 ::: zone pivot="programming-language-python"  
-Druhá vazba v kolekci `http` je `out`typu se směrem `name` , `$return` v takovém případě special of označuje, že tato vazba používá vrácenou hodnotu funkce spíše než poskytnutí vstupního parametru.
+Druhá vazba `http` v kolekci je typu s směrem `out`. v takovém případě `name` to `$return` znamená, že tato vazba používá návratovou hodnotu funkce namísto zadání vstupního parametru.
 
-Chcete-li z této funkce zapsat `out` do fronty `queue` služby `msg`Azure Storage, přidejte vazbu typu s názvem , jak je znázorněno v níže uvedeném kódu:
+Chcete-li z této funkce zapisovat do fronty Azure Storage, přidejte `out` vazbu typu `queue` s názvem `msg`, jak je znázorněno v následujícím kódu:
 
 :::code language="json" source="~/functions-docs-python/functions-add-output-binding-storage-queue-cli/HttpExample/function.json" range="3-26":::
 ::: zone-end  
 
 ::: zone pivot="programming-language-powershell"  
-Druhá vazba v kolekci je pojmenována `res`. Tato `http` vazba je`out`výstupní vazba ( ), která se používá k zápisu odpovědi HTTP. 
+Druhá vazba v kolekci je pojmenována `res`. Tato `http` vazba je výstupní vazba (`out`), která se používá k zápisu odpovědi HTTP. 
 
-Chcete-li z této funkce zapsat `out` do fronty `queue` služby `msg`Azure Storage, přidejte vazbu typu s názvem , jak je znázorněno v níže uvedeném kódu:
+Chcete-li z této funkce zapisovat do fronty Azure Storage, přidejte `out` vazbu typu `queue` s názvem `msg`, jak je znázorněno v následujícím kódu:
 
 :::code language="json" source="~/functions-docs-powershell/functions-add-output-binding-storage-queue-cli/HttpExample/function.json" range="3-26":::
 ::: zone-end  
 
 ::: zone pivot="programming-language-python,programming-language-javascript,programming-language-powershell,programming-language-typescript"  
-V tomto `msg` případě je dána funkce jako výstupní argument. Pro `queue` typ musíte také zadat název fronty `queueName` a zadat *název* připojení Azure Storage (z *local.settings.json)* v . `connection` 
+V tomto případě `msg` je funkce předána funkci jako výstupní argument. V případě `queue` typu je nutné zadat také název fronty v `queueName` a zadat *název* připojení Azure Storage (z *Local. Settings. JSON*) v `connection`. 
 ::: zone-end  

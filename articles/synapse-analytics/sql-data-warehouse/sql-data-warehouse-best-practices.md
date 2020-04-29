@@ -1,6 +1,6 @@
 ---
-title: Doporučené postupy pro fond Synapse SQL v Azure Synapse Analytics (dříve SQL DW)
-description: Doporučení a osvědčené postupy pro vývoj řešení pro fond SQL v Azure Synapse Analytics (dříve SQL DW).
+title: Osvědčené postupy pro synapse fond SQL ve službě Azure synapse Analytics (dřív SQL DW)
+description: Doporučení a osvědčené postupy pro vývoj řešení pro fond SQL ve službě Azure synapse Analytics (dřív SQL DW).
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,15 +11,15 @@ ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: 4462bf0fc2057922340eb01cb8c786dbc63ce290
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745352"
 ---
-# <a name="best-practices-for-synapse-sql-pool-in-azure-synapse-analytics-formerly-sql-dw"></a>Doporučené postupy pro fond Synapse SQL v Azure Synapse Analytics (dříve SQL DW)
+# <a name="best-practices-for-synapse-sql-pool-in-azure-synapse-analytics-formerly-sql-dw"></a>Osvědčené postupy pro synapse fond SQL ve službě Azure synapse Analytics (dřív SQL DW)
 
-Tento článek je kolekce osvědčených postupů, které vám pomohou dosáhnout optimálního výkonu z nasazení [fondu SQL.](sql-data-warehouse-overview-what-is.md)  Účelem tohoto článku je poskytnout vám některé základní pokyny a upozornit na důležité oblasti zaměření.  
+Tento článek je kolekcí osvědčených postupů, které vám pomůžou dosáhnout optimálního výkonu nasazení [fondu SQL](sql-data-warehouse-overview-what-is.md) .  Účelem tohoto článku je poskytnout vám základní pokyny a zvýraznit důležité oblasti, které se zaměřují.  
 
 ## <a name="reduce-cost-with-pause-and-scale"></a>Snižte náklady pomocí pozastavení a škálování
 
@@ -27,26 +27,26 @@ Další informace o snižování nákladů prostřednictvím pozastavování a �
 
 ## <a name="maintain-statistics"></a>Udržujte statistiky
 
-Fond SQL lze nakonfigurovat tak, aby automaticky zjišťoval a vytvářel statistiky sloupců.  Plány dotazů vytvořené optimalizátorem jsou pouze tak dobré jako dostupné statistiky.  
+Fond SQL se dá nakonfigurovat tak, aby automaticky zjišťoval a vytvořil statistiku pro sloupce.  Plány dotazů vytvořené optimalizátorem jsou dostupné jenom jako dostupné statistiky.  
 
-Doporučujeme povolit AUTO_CREATE_STATISTICS pro databáze a udržovat statistiky denně nebo po každém zatížení, abyste zajistili, že statistiky sloupců použitých ve vašich dotazech jsou vždy aktuální.
+Doporučujeme, abyste povolili AUTO_CREATE_STATISTICS pro vaše databáze a pravidelně aktualizovali statistiku nebo po každém zatížení, abyste zajistili, že statistiky pro sloupce používané ve vašich dotazech jsou vždycky aktuální.
 
-Pokud zjistíte, že aktualizace všech statistik trvá příliš dlouho, můžete se pokusit být selektivnější ohledně toho, které sloupce vyžadují časté aktualizace statistik. Například můžete chtít denně aktualizovat sloupce s datem, do kterých se mohou přidávat nové hodnoty.
+Pokud zjistíte, že aktualizace všech statistik trvá příliš dlouho, můžete se pokusit o to, které sloupce potřebují časté aktualizace statistiky. Například můžete chtít denně aktualizovat sloupce s datem, do kterých se mohou přidávat nové hodnoty.
 
 > [!TIP]
-> Největší užitek získáte tím, že budete mít aktualizované statistiky o sloupcích zapojených do spojení, sloupcích použitých v klauzuli WHERE a sloupcích nalezených v souborech GROUP BY.
+> Nejvíc výhod získáte tak, že budete mít aktualizované statistiky pro sloupce, které jsou součástí spojení, sloupce používané v klauzuli WHERE a sloupce nalezené v GROUP BY.
 
-Viz také [Správa statistik tabulky](sql-data-warehouse-tables-statistics.md), VYTVOŘENÍ [STATISTIKY](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)a [AKTUALIZACE STATISTIKY](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Viz také [Správa statistik tabulek](sql-data-warehouse-tables-statistics.md), [vytváření statistik](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)a [aktualizace statistik](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="use-dmvs-to-monitor-and-optimize-your-queries"></a>Použijte zobrazení dynamických zpráv k monitorování a optimalizaci dotazů
 
-Fond SQL má několik dmvs, které lze použít ke sledování provádění dotazů.  Sledování úlohy pomocí dmvs článek podrobně podrobné pokyny o tom, jak se podívat na podrobnosti o provádění dotazu.  
+Fond SQL má několik zobrazení dynamické správyů, které lze použít k monitorování provádění dotazů.  Podrobné pokyny, jak se podívat na podrobnosti o spuštěném dotazu, najdete v článku sledování úlohy pomocí zobrazení dynamické správy.  
 
 S rychlým vyhledáváním dotazů v těchto zobrazeních dynamických zpráv může pomoci použití možnosti LABEL v dotazech.
 
-Viz také [Sledování úlohy pomocí dmvs](sql-data-warehouse-manage-monitor.md), [LABEL](sql-data-warehouse-develop-label.md), [OPTION](/sql/t-sql/queries/option-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [sys.dm_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [DBCC PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)a [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Viz také [Monitorování úloh pomocí zobrazení dynamické správy](sql-data-warehouse-manage-monitor.md), [Label](sql-data-warehouse-develop-label.md), [Option](/sql/t-sql/queries/option-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [Sys. dm_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [Sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [Sys. dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [sys. dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [Sys. dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [DBCC PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)a [Sys. dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
-## <a name="tune-query-performance-with-new-product-enhancements"></a>Vyladění výkonu dotazů pomocí nových vylepšení produktů
+## <a name="tune-query-performance-with-new-product-enhancements"></a>Ladění výkonu dotazů s využitím nových vylepšení produktu
 
 - [Ladění výkonu s využitím materializovaných zobrazení](performance-tuning-materialized-views.md)
 - [Ladění výkonu s využitím uspořádaného clusterovaného indexu columnstore](performance-tuning-ordered-cci.md)
@@ -54,7 +54,7 @@ Viz také [Sledování úlohy pomocí dmvs](sql-data-warehouse-manage-monitor.md
 
 ## <a name="group-insert-statements-into-batches"></a>Seskupujte příkazy INSERT do dávek
 
-Jednorázové zatížení malé tabulky s příkazem INSERT nebo dokonce periodickým opětovným načtením vyhledávání může fungovat `INSERT INTO MyLookup VALUES (1, 'Type 1')`dobře pro vaše potřeby s příkazem jako .  
+Jednorázové načtení do malé tabulky s příkazem INSERT nebo dokonce pravidelným načtením vyhledávacího objektu se může ve vašich potřebách vykonat i v příkazu jako `INSERT INTO MyLookup VALUES (1, 'Type 1')`.  
 
 Pokud však v průběhu dne potřebujete načíst tisíce nebo miliony řádků, můžete zjistit, že vám příkazy INSERT s jedním prvkem jednoduše nestačí.  Místo toho vyvíjejte své procesy tak, aby zapisovaly do souboru, který bude pravidelně kontrolovat a načítat další proces.
 
@@ -62,27 +62,27 @@ Viz také [INSERT](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-
 
 ## <a name="use-polybase-to-load-and-export-data-quickly"></a>Použijte PolyBase k rychlému načítání a exportu dat
 
-Fond SQL podporuje načítání a export dat prostřednictvím několika nástrojů, včetně Azure Data Factory, PolyBase a BCP.  Pro malá množství dat, kde není výkon tak důležitý, by vám měl stačit libovolný nástroj.  Když však načítáte nebo exportujete velká množství dat nebo vyžadujete vysoký výkon, nejlepší volbou je PolyBase.  
+Fond SQL podporuje načítání a export dat prostřednictvím několika nástrojů, včetně Azure Data Factory, základů a BCP.  Pro malá množství dat, kde není výkon tak důležitý, by vám měl stačit libovolný nástroj.  Když však načítáte nebo exportujete velká množství dat nebo vyžadujete vysoký výkon, nejlepší volbou je PolyBase.  
 
-PolyBase je navržen tak, aby využít architekturu MPP (Masivně paralelní zpracování) a bude načítat a exportovat velikosti dat rychleji než jakýkoli jiný nástroj.  Úlohy funkce PolyBase můžete spustit pomocí příkazů CTAS nebo INSERT INTO.  
+Základna je navržená tak, aby využila architekturu MPP (hromadně paralelní zpracování) a načetla a využívala velikost dat rychleji než jakýkoli jiný nástroj.  Úlohy funkce PolyBase můžete spustit pomocí příkazů CTAS nebo INSERT INTO.  
 
 > [!TIP]
 > Použití příkazu CTAS minimalizuje protokolování transakce a je to nejrychlejší způsob, jak načíst vaše data.
 
-Azure Data Factory také podporuje zatížení PolyBase a může dosáhnout podobného výkonu jako CTAS.  PolyBase podporuje řadu formátů souborů, včetně souborů GZip.  
+Azure Data Factory podporuje také základní zátěže a může dosáhnout podobného výkonu jako CTAS.  PolyBase podporuje řadu formátů souborů, včetně souborů GZip.  
   
 > [!NOTE]
-> Chcete-li maximalizovat propustnost při použití textových souborů gzip, rozdělte soubory do 60 nebo více souborů, abyste maximalizovali paralelismus zatížení.  Pro rychlejší celkovou propustnost zvažte souběžné načítání dat.
+> Chcete-li maximalizovat propustnost při použití textových souborů gzip, rozdělte soubory do 60 nebo více souborů, čímž maximalizujete paralelismus zátěže.  Pro rychlejší celkovou propustnost zvažte souběžné načítání dat.
 
-Viz také [Načtení dat](design-elt-data-loading.md), [Průvodce pro použití PolyBase](guidance-for-loading-data.md), sql pool načítání vzory a [strategie](https://blogs.msdn.microsoft.com/sqlcat/20../../), [Načíst data s Azure Data Factory]( ../../data-factory/load-azure-sql-data-warehouse.md), [Přesunout data s Azure Data Factory](../../data-factory/transform-data-using-machine-learning.md), vytvořit externí formát [souboru](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)a [vytvořit tabulku jako výběr (CTAS)](sql-data-warehouse-develop-ctas.md).
+Viz také [načtení dat](design-elt-data-loading.md), [Průvodce používáním základny](guidance-for-loading-data.md), [vzorů a strategií načítání fondů SQL](https://blogs.msdn.microsoft.com/sqlcat/20../../), [načítání dat pomocí Azure Data Factory]( ../../data-factory/load-azure-sql-data-warehouse.md), [přesouvání dat pomocí Azure Data Factory](../../data-factory/transform-data-using-machine-learning.md), [Vytvoření externího formátu souboru](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)a [Vytvoření tabulky jako Select (CTAS)](sql-data-warehouse-develop-ctas.md).
 
 ## <a name="load-then-query-external-tables"></a>Načtěte a následně dotazujte externí tabulky
 
-Přestože lze PolyBase (také označovanou jako externí tabulky) považovat za nejrychlejší způsob načítání dat, není ideální pro dotazy. Tabulky Polybase aktuálně podporují jenom soubory objektů blob Azure a úložiště Azure Data Lake. Tyto soubory nemají podporu v žádných výpočetních prostředcích.  
+Přestože lze PolyBase (také označovanou jako externí tabulky) považovat za nejrychlejší způsob načítání dat, není ideální pro dotazy. Základní tabulky v současné době podporují pouze soubory objektů BLOB v Azure a Azure Data Lake úložiště. Tyto soubory nemají podporu v žádných výpočetních prostředcích.  
 
-V důsledku toho fond SQL nelze převést tuto práci a proto musí číst celý soubor načtením do tempdb za účelem čtení dat.  Proto pokud máte několik dotazů, které budou tato data dotazovat, je lepší data jednou nahrát a nastavit dotazy, aby používaly místní tabulku.
+V důsledku toho fond SQL nemůže tuto práci přesměrovat, a proto musí číst celý soubor tak, že ho načte do databáze tempdb, aby si data četl.  Proto pokud máte několik dotazů, které budou tato data dotazovat, je lepší data jednou nahrát a nastavit dotazy, aby používaly místní tabulku.
 
-Viz také [Průvodce pro používání PolyBase](guidance-for-loading-data.md).
+Viz také [Průvodce používáním základny](guidance-for-loading-data.md).
 
 ## <a name="hash-distribute-large-tables"></a>Distribuujte velké tabulky pomocí hodnot hash
 
@@ -95,15 +95,15 @@ Například pokud máte tabulku objednávek, která se distribuuje podle sloupce
 > [!TIP]
 > Při načítání distribuované tabulky se ujistěte, že příchozí data nejsou seřazená podle distribučního klíče, zpomalilo by to načítání.  
 
-Další podrobnosti o tom, jak může výběr distribučního sloupce zlepšit výkon a jak definovat distribuovanou tabulku v klauzuli WITH příkazu CREATE TABLE, naleznete v následujících odkazech.
+Další informace o tom, jak vybrat distribuční sloupec, může zlepšit výkon a jak definovat distribuovanou tabulku v klauzuli WITH příkazu CREATE TABLE, najdete na následujících odkazech.
 
-Viz také [Přehled tabulky](sql-data-warehouse-tables-overview.md), [Distribuce tabulek](sql-data-warehouse-tables-distribute.md), [Výběr distribuce tabulek](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/), [VYTVOŘIT TABULKU](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), VYTVOŘIT TABULKU [JAKO VÝBĚR](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Viz také [Přehled tabulek](sql-data-warehouse-tables-overview.md), [distribuce tabulky](sql-data-warehouse-tables-distribute.md), [výběr distribuce tabulky](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/), [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [Create Table jako SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="do-not-over-partition"></a>Nevytvářejte zbytečně moc oddílů
 
-Zatímco rozdělení dat může být efektivní pro údržbu dat prostřednictvím přepínání oddílů nebo optimalizace skenování pomocí eliminace oddílu, s příliš mnoho oddílů může zpomalit vaše dotazy.  Často vysoká rozlišovací schopnost dělení strategie, které mohou fungovat dobře na SQL Server nemusí fungovat dobře ve fondu SQL.  
+I když je možné rozdělit data na oddíly při údržbě dat prostřednictvím přepínání oddílů nebo optimalizací kontrol pomocí eliminace oddílu, může vaše dotazy zpomalit příliš mnoho oddílů.  Často se jedná o strategii s vysokými členitými podmnožinami, která může fungovat dobře na SQL Server nemusí dobře fungovat ve fondu SQL.  
 
-Pokud máte příliš mnoho oddílů, může se také snížit efektivita clusterovaných indexů columnstore, pokud má každý oddíl méně než 1 milion řádků.  Mějte na paměti, že na pozadí fondu SQL oddíly data pro vás do 60 databází, takže pokud vytvoříte tabulku s 100 oddíly, to ve skutečnosti vede k 6000 oddílů.  
+Pokud máte příliš mnoho oddílů, může se také snížit efektivita clusterovaných indexů columnstore, pokud má každý oddíl méně než 1 milion řádků.  Mějte na paměti, že na pozadí fond SQL rozdělí vaše data do databází 60, takže pokud vytvoříte tabulku s 100 oddíly, výsledkem je to, že se 6000 v těchto případech zobrazí oddíly.  
 
 Každá úloha je jiná, takže nejlepší rada je, abyste s dělením experimentovali a zjistili, co je pro vaši úlohu nejvhodnější.  Zvažte použití nižší členitosti, než jaká by pro vás byla vhodná v systému SQL Server.  Například místo denního dělení zvažte použití týdenního nebo měsíčního dělení.
 
@@ -113,47 +113,47 @@ Viz také [dělení tabulky](sql-data-warehouse-tables-partition.md).
 
 Příkazy INSERT, UPDATE a DELETE se spouštějí v rámci transakce, a když selžou, musí se transakce odvolat.  Abyste minimalizovali potenciální dlouhé odvolávání, minimalizujte velikost transakcí kdykoli je to možné.  Můžete to provést rozdělením příkazů INSERT, UPDATE a DELETE na části.  
 
-Například pokud máte INSERT, který očekáváte, že trvat 1 hodinu, pokud je to možné, rozdělit INSERT do čtyř částí, které budou každá spuštěna za 15 minut.  Využijte speciální případy minimální protokolování, jako je CTAS, TRUNCATE, DROP TABLE nebo INSERT do prázdných tabulek, abyste snížili riziko vrácení zpět.  
+Například pokud máte vložení, kterou očekáváte 1 hodinu, pokud je to možné, rozdělte vložení na čtyři části, které se spustí za 15 minut.  Abyste snížili riziko vrácení zpět, využijte zvláštní případy minimálního protokolování, jako je CTAS, ZKRÁCENí, odkládací tabulka nebo vložení do prázdných tabulek.  
 
-Dalším způsobem, jak eliminovat odvolávání transakcí, je použít ke správě dat operace pouze nad metadaty, jako třeba přepínání oddílů.  Například místo spuštění příkazu DELETE k odstranění všech řádků v tabulce, kde byla order_date v říjnu 2001, můžete rozdělit data měsíčně a potom přepnutí oddílu s daty pro prázdný oddíl z jiné tabulky (viz příklady [ALTER TABLE).](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  
+Dalším způsobem, jak eliminovat odvolávání transakcí, je použít ke správě dat operace pouze nad metadaty, jako třeba přepínání oddílů.  Například namísto provedení příkazu DELETE k odstranění všech řádků v tabulce, kde byla order_date v říjnu 2001, můžete rozdělit data měsíčně a pak na oddíl přejít s daty prázdného oddílu z jiné tabulky (viz příklady [příkazu ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ).  
 
-Pro tabulky bez oddílů zvažte použití CTAS k zápisu dat, která chcete zachovat v tabulce, nikoli pomocí příkazu DELETE.  Pokud CTAS trvá stejné množství času, je mnohem bezpečnější operace spustit, protože má minimální protokolování transakcí a může být zrušena rychle v případě potřeby.
+Pro nerozdělené tabulky zvažte použití CTAS k zápisu dat, která chcete uchovat v tabulce, a nepoužívejte DELETE.  Pokud CTAS zabere stejné množství času, je mnohem bezpečnější operace, protože má minimální transakční protokolování a v případě potřeby je můžete kdykoli zrušit.
 
-Viz také [principy transakcí](sql-data-warehouse-develop-transactions.md), [optimalizace transakcí](sql-data-warehouse-develop-best-practices-transactions.md), [dělení tabulek](sql-data-warehouse-tables-partition.md), [zkrácená tabulka](/sql/t-sql/statements/truncate-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), ZMĚNA [TABULKY](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)a Vytvoření tabulky [jako výběru (CTAS).](sql-data-warehouse-develop-ctas.md)
+Viz také [Principy transakcí](sql-data-warehouse-develop-transactions.md), [optimalizace transakcí](sql-data-warehouse-develop-best-practices-transactions.md), [dělení tabulky](sql-data-warehouse-tables-partition.md), [Truncate Table](/sql/t-sql/statements/truncate-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)a [CREATE TABLE AS Select (CTAS)](sql-data-warehouse-develop-ctas.md).
 
 ## <a name="reduce-query-result-sizes"></a>Zmenšení velikosti výsledků dotazu
 
-Tento krok vám pomůže vyhnout se problémům na straně klienta způsobeným velkým výsledkem dotazu.  Dotaz můžete upravit a snížit tak počet vrácených řádků. Některé nástroje pro generování dotazu umožňují přidat syntaxi "top N" do každého dotazu.  Můžete také CETAS výsledek dotazu do dočasné tabulky a potom použít Export PolyBase pro zpracování nižší úrovně.
+Tento krok vám pomůže vyhnout se problémům na straně klienta způsobeným velkým výsledkem dotazů.  Dotaz můžete upravit tak, aby se snížil počet vrácených řádků. Některé nástroje pro generování dotazů umožňují přidat k jednotlivým dotazům syntaxi "TOP N".  Výsledek dotazu můžete také CETAS na dočasnou tabulku a pak použít základní export pro zpracování nižší úrovně.
 
 ## <a name="use-the-smallest-possible-column-size"></a>Použijte co nejmenší velikost sloupce
 
-Při definování DDL, pomocí nejmenší datový typ, který bude podporovat vaše data zlepší výkon dotazu.  Tento přístup je zvláště důležité pro char a VARCHAR sloupce.  
+Při definování knihovny DDL s použitím nejmenšího datového typu, který bude podporovat vaše data, dojde k vylepšení výkonu dotazů.  Tento přístup je zvláště důležitý pro sloupce typu CHAR a VARCHAR.  
 
 Pokud má nejdelší hodnota v sloupci 25 znaků, nadefinujte typ sloupce jako VARCHAR(25).  Vyhněte se definování všech sloupců se znaky na výchozí délku.  Kromě toho sloupce definujte jako VARCHAR, pokud tento typ splňuje všechny požadavky, místo používání NVARCHAR.
 
-Viz také [Přehled tabulky](sql-data-warehouse-tables-overview.md), Datové [typy tabulek](sql-data-warehouse-tables-data-types.md), [VYTVOŘIT TABULKU](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Viz také [Přehled tabulek](sql-data-warehouse-tables-overview.md), [typy tabulkových dat](sql-data-warehouse-tables-data-types.md), [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="use-temporary-heap-tables-for-transient-data"></a>Použijte dočasné tabulky hald pro přechodná data
 
-Když dočasně vysouváte data, můžete zjistit, že použití tabulky haldy urychlí celý proces.  Pokud nahráváte data pouze za účelem jejich přípravy před spuštěním dalších transformací, nahrání tabulky do tabulky haldy bude mnohem rychlejší, než nahrání dat do clusterované tabulky columnstore.  
+Při dočasném vytváření dat můžete zjistit, že použití tabulky haldy způsobí rychlejší zpracování celého procesu.  Pokud nahráváte data pouze za účelem jejich přípravy před spuštěním dalších transformací, nahrání tabulky do tabulky haldy bude mnohem rychlejší, než nahrání dat do clusterované tabulky columnstore.  
 
-Nahrání dat do dočasné tabulky bude dokonce mnohem rychlejší, než nahrání tabulky do trvalého úložiště.  Dočasné tabulky začínají "#" a jsou přístupné pouze relace, která ji vytvořila, takže mohou fungovat pouze v omezených scénářích.
+Nahrání dat do dočasné tabulky bude dokonce mnohem rychlejší, než nahrání tabulky do trvalého úložiště.  Dočasné tabulky začínají znakem "#" a jsou přístupné pouze v relaci, která ji vytvořila, takže mohou fungovat pouze v omezených scénářích.
 
 Tabulky hald se definují v klauzuli WITH příkazu CREATE TABLE.  Pokud používáte dočasnou tabulku, nezapomeňte nad ní také vytvořit statistiky.
 
-Viz také [Dočasné tabulky](sql-data-warehouse-tables-temporary.md), [VYTVOŘIT TABULKU](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), VYTVOŘIT TABULKU [JAKO SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Viz také [dočasné tabulky](sql-data-warehouse-tables-temporary.md) [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [Create Table jako SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="optimize-clustered-columnstore-tables"></a>Optimalizujte clusterované tabulky columnstore
 
-Clustered columnstore indexy jsou jedním z nejúčinnějších způsobů, jak můžete ukládat data ve fondu SQL.  Ve výchozím nastavení jsou tabulky ve fondu SQL vytvořeny jako clusterované columnstore.  Pokud chcete dosáhnout co nejlepšího výkonu dotazů na tabulky columnstore, je důležité mít kvalitní segmenty.  
+Clusterované indexy columnstore jsou jedním z nejúčinnějších způsobů, jak můžete ukládat data ve fondu SQL.  Ve výchozím nastavení jsou tabulky ve fondu SQL vytvořeny jako clusterované ColumnStore.  Pokud chcete dosáhnout co nejlepšího výkonu dotazů na tabulky columnstore, je důležité mít kvalitní segmenty.  
 
-Když se řádky zapisují do tabulek columnstore při zatížení paměti, může tím utrpět kvalita segmentů columnstore.  Kvalitu segmentů lze změřit podle počtu řádků v komprimované skupině řádků.  Podrobné pokyny ke zjišťování a zlepšování kvality segmentů pro clusterované tabulky columnstore naleznete v článku [Příčiny špatné kvality indexu columnstore](sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality) v tabulce [indexů.](sql-data-warehouse-tables-index.md)  
+Když se řádky zapisují do tabulek columnstore při zatížení paměti, může tím utrpět kvalita segmentů columnstore.  Kvalitu segmentů lze změřit podle počtu řádků v komprimované skupině řádků.  Podrobné pokyny k detekci a zlepšení kvality segmentů clusterovaných tabulek columnstore najdete v článku o [příčinách špatné kvality indexu columnstore](sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality) v článku [indexy tabulky](sql-data-warehouse-tables-index.md) .  
 
-Vzhledem k tomu, že vysoce kvalitní segmenty columnstore jsou důležité, je vhodné použít ID uživatelů, které jsou ve střední nebo velké třídy prostředků pro načítání dat. Použití [nižšíjednotky datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md) znamená, že chcete přiřadit větší třídu prostředků pro načítacího uživatele.
+Vzhledem k tomu, že jsou důležité segmenty columnstore s vysokou kvalitou, je vhodné použít ID uživatelů, která jsou ve střední nebo velké třídě prostředků pro načítání dat. Použití nižších [jednotek datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md) znamená, že chcete uživateli, který načítá, přiřadit větší třídu prostředků.
 
-Vzhledem k tomu, columnstore tabulky obecně nebude nabízená data do segmentu komprimované columnstore, dokud existuje více než 1 milion řádků na tabulku a každý fond SQL tabulka je rozdělena do 60 tabulek, jako pravidlo, columnstore tabulky nebude mít prospěch dotazu, pokud tabulka obsahuje více než 60 milionů řádků.  Pro tabulky s méně než 60 miliony řádků může být použití indexu columnstore zbytečné.  Ale také to nemusí vadit.  
+Vzhledem k tomu, že tabulky columnstore obecně neobsahují data do komprimovaného segmentu columnstore, dokud nebude existovat více než 1 000 000 řádků na tabulku a každá tabulka fondu SQL je rozdělena do 60 tabulek, jako pravidlo jezdce nebudou tabulky columnstore dávat dotazy, pokud tabulka neobsahuje více než 60 000 000 řádků.  Pro tabulky s méně než 60 miliony řádků může být použití indexu columnstore zbytečné.  Ale také to nemusí vadit.  
 
-Kromě toho, pokud svá data dělíte, pamatujte na to, že každý oddíl musí mít alespoň 1 milion řádků, abyste využili výhod clusterovaného indexu columnstore.  Pokud tabulka obsahuje 100 oddílů, bude muset mít alespoň 6 miliard řádků, aby mohla těžit z úložiště seskupených sloupců (60 distribucí *100 oddílů* 1 milion řádků).  
+Kromě toho, pokud svá data dělíte, pamatujte na to, že každý oddíl musí mít alespoň 1 milion řádků, abyste využili výhod clusterovaného indexu columnstore.  Pokud má tabulka 100 oddílů, bude muset mít aspoň 6 000 000 000 řádků, abyste využili výhod clusterovaného úložiště sloupců (60 distribuce *100 oddíly* řádky 1 000 000).  
 
 Pokud vaše tabulka v tomto příkladu neobsahuje 6 miliard řádků, buď snižte počet oddílů, nebo místo ní zvažte použití tabulky haldy.  Můžete také experimentovat, abyste zjistili, jestli pomocí tabulky haldy se sekundárními indexy dosáhnete lepšího výkonu než s tabulkou columnstore.
 
@@ -164,24 +164,24 @@ Viz také [Indexy tabulky](sql-data-warehouse-tables-index.md), [Průvodce index
 
 ## <a name="use-larger-resource-class-to-improve-query-performance"></a>Použijte větší třídu prostředků k vylepšení výkonu dotazu
 
-Fond SQL používá skupiny prostředků jako způsob přidělení paměti dotazům.  Po vybalení jsou všichni uživatelé přiřazeni ke třídě malých prostředků, která uděluje 100 MB paměti na distribuci.  Protože vždy existuje 60 distribucí a každé distribuci je poskytnuto minimálně 100 MB paměti, velikost celkově přidělené paměti v systému je 6 000 MB, tedy téměř 6 GB.  
+Fond SQL používá skupiny prostředků jako způsob přidělení paměti pro dotazy.  Mimo pole jsou všichni uživatelé přiřazeni k malé třídě prostředků, která uděluje 100 MB paměti na distribuci.  Protože vždy existuje 60 distribucí a každé distribuci je poskytnuto minimálně 100 MB paměti, velikost celkově přidělené paměti v systému je 6 000 MB, tedy téměř 6 GB.  
 
-Pro určité dotazy, například velká spojení nebo nahrávání do clusterovaných tabulek columnstore, bude větší přidělení paměti přínosem.  Některé dotazy, jako jsou čisté skeny, nepřinesou žádný přínos.  Využití větších tříd prostředků však snižuje souběžnost, takže budete chtít vzít tento vliv v úvahu před přesunutím všech uživatelů do velké třídy prostředků.
+Pro určité dotazy, například velká spojení nebo nahrávání do clusterovaných tabulek columnstore, bude větší přidělení paměti přínosem.  Některé dotazy, jako jsou čistě kontroly, nepřinesou žádnou výhodu.  Použití větších tříd prostředků ale redukuje souběžnost, takže budete chtít tento dopad vzít v úvahu před tím, než všechny uživatele přesunete na velkou třídu prostředků.
 
-Viz také [třídy prostředků pro správu pracovního vytížení](resource-classes-for-workload-management.md).
+Viz také [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md).
 
 ## <a name="use-smaller-resource-class-to-increase-concurrency"></a>Použijte menší třídu prostředků pro zlepšení souběžnosti
 
-Pokud zjistíte, že dotazy uživatelů se zdají mít dlouhé zpoždění, může být, že vaši uživatelé jsou spuštěny ve větších tříd ách prostředků a spotřebovávají mnoho slotů souběžnosti způsobuje další dotazy do fronty.  Pokud chcete zjistit, jestli jsou požadavky uživatelů ve frontě, spusťte příkaz `SELECT * FROM sys.dm_pdw_waits` a zkontrolujte, jestli se vrátí nějaké řádky.
+Pokud si všimnete, že uživatelské dotazy mají dlouhou prodlevu, může to být tím, že uživatelé běží ve větších třídách prostředků a spotřebovávají mnoho slotů souběžnosti, které způsobují, že se jiné dotazy zařadí do fronty.  Pokud chcete zjistit, jestli jsou požadavky uživatelů ve frontě, spusťte příkaz `SELECT * FROM sys.dm_pdw_waits` a zkontrolujte, jestli se vrátí nějaké řádky.
 
-Viz také [třídy prostředků pro správu pracovního vytížení](resource-classes-for-workload-management.md), [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Viz také [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md), [Sys. dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="other-resources"></a>Další prostředky
 
 Přečtěte si také článek [Řešení potíží](sql-data-warehouse-troubleshoot.md), ve kterém najdete běžné problémy a jejich řešení.
 
-Pokud jste v tomto článku nenašli to, co hledáte, zkuste pomocí "Hledat dokumenty" na levé straně této stránky a prohledat všechny dokumenty Azure Synapse.  [Fórum Azure Synapse](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) je místo, kde můžete psát dotazy ostatním uživatelům a skupině produktů Azure Synapse. Toto fórum aktivně sledujeme, abychom zajistili, že vaši otázku zodpoví další uživatel nebo někdo z nás.  
+Pokud jste v tomto článku nenašli, co jste hledali, zkuste vyhledat všechny dokumenty Azure synapse pomocí hledání dokumentů na levé straně této stránky.  [Fórum Azure synapse](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) je místo, kde můžete klást otázky ostatním uživatelům a do skupiny produktů Azure synapse. Toto fórum aktivně sledujeme, abychom zajistili, že vaši otázku zodpoví další uživatel nebo někdo z nás.  
 
-Pokud dáváte přednost klást otázky na přetečení zásobníku, máme také [Azure Synapse Stack Overflow Forum](https://stackoverflow.com/questions/tagged/azure-sqldw).
+Pokud dáváte přednost dotazování na Stack Overflow, máme také [fórum služby Azure Synapse Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw).
 
-K vyžádání funkcí použijte stránku [Azure Synapse Feedback.](https://feedback.azure.com/forums/307516-sql-data-warehouse)  Přidáním vlastních žádostí nebo hlasováním pro ostatní žádosti nám pomůžete určit prioritu funkcí.
+Pro žádosti o funkce prosím použijte stránku s [názory na Azure synapse](https://feedback.azure.com/forums/307516-sql-data-warehouse) .  Přidáním vlastních žádostí nebo hlasováním pro ostatní žádosti nám pomůžete určit prioritu funkcí.

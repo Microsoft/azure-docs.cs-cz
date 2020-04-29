@@ -1,6 +1,6 @@
 ---
-title: Skript Prostředí PowerShell pro seznam a získání prostředků rozhraní API Azure Cosmos DB Cassandra
-description: Skript Azure PowerShellu – seznam Azure Cosmos DB a získání operací pro rozhraní CASSANDRA API
+title: Skript PowerShellu pro vypsání a získání prostředků Azure Cosmos DB rozhraní API Cassandra
+description: Azure PowerShell Azure Cosmos DB skriptu a operace get pro rozhraní API Cassandra
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: cf29bae8b2aa011593e4d9acb45bad71a6ad0167
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80365717"
 ---
-# <a name="list-and-get-keyspaces-and-tables-for-azure-cosmos-db---cassandra-api"></a>Seznam a získání keyspaces a tabulek pro Azure Cosmos DB – rozhraní API Cassandra
+# <a name="list-and-get-keyspaces-and-tables-for-azure-cosmos-db---cassandra-api"></a>Seznam a získání prostorů a tabulek pro Azure Cosmos DB-rozhraní API Cassandra
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -39,9 +39,9 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Seznam účtů Cosmos DB nebo získá zadaný účet Cosmos DB. |
-| [Get-AzCosmosDBCassandraKeyspace](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandrakeyspace) | Seznam y Cosmos DB Cassandra API Keyspaces v účtu nebo získá zadaný Cosmos DB Cassandra API Keyspace v účtu. |
-| [Get-AzCosmosDBCassandraTabulka](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandratable) | Seznam cosmos DB Cassandra API tabulky v Keyspace nebo získá zadaný Cosmos DB Cassandra API tabulka v Keyspace. |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Zobrazí seznam Cosmos DB účtů nebo získá zadaný Cosmos DB účet. |
+| [Get-AzCosmosDBCassandraKeyspace](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandrakeyspace) | Zobrazí Cosmos DB rozhraní API Cassandram prostoru v účtu nebo získá zadané Cosmos DB rozhraní API Cassandra místo na účtu. |
+| [Get-AzCosmosDBCassandraTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandratable) | Zobrazí seznam Cosmos DB rozhraní API Cassandra tabulek v prostoru klíčů nebo získá zadanou Cosmos DB rozhraní API Cassandraovou tabulku v prostoru klíčů. |
 |**Skupiny prostředků Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||

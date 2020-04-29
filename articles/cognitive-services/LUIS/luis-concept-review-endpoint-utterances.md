@@ -1,42 +1,42 @@
 ---
-title: Zkontrolovat projev uživatele – LUIS
-description: S aktivní učení, vaše revize koncového bodu projevy pro správný záměr a entitu. Služba LUIS zvolí projevy koncového bodu, které si není jistý.
+title: Kontrola uživatele utterance-LUIS
+description: Díky aktivnímu učení se ke správnému záměru a entitě projevy koncový bod kontroly. LUIS zvolí koncový bod projevy, na který si nejste jistí.
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.openlocfilehash: 8d267fc441dc2cbf7f8ae3746486d5e7be55f135
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80546856"
 ---
-# <a name="concepts-for-enabling-active-learning-by-reviewing-endpoint-utterances"></a>Koncepty pro povolení aktivního učení kontrolou projevy koncového bodu
-Aktivní učení je jednou ze tří strategií pro zlepšení přesnosti predikce a nejjednodušší implementovat. S aktivní učení, vaše revize koncového bodu projevy pro správný záměr a entitu. Služba LUIS zvolí projevy koncového bodu, které si není jistý.
+# <a name="concepts-for-enabling-active-learning-by-reviewing-endpoint-utterances"></a>Koncepty pro povolení aktivního učení pomocí kontroly projevy koncového bodu
+Aktivní učení je jedna ze tří strategií pro zlepšení přesnosti předpovědi a nejjednodušší implementace. Díky aktivnímu učení se ke správnému záměru a entitě projevy koncový bod kontroly. LUIS zvolí koncový bod projevy, na který si nejste jistí.
 
 ## <a name="what-is-active-learning"></a>Co je aktivní učení
-Aktivní učení je dvoustupňový proces. Nejprve luis vybere projevy, které obdrží na koncovém bodu aplikace, které potřebují ověření. Druhý krok provádí vlastník aplikace nebo spolupracovník k ověření vybrané projevy pro [kontrolu](luis-how-to-review-endpoint-utterances.md), včetně správného záměru a všechny entity v rámci záměru. Po kontrole projevy, trénování a publikovat aplikaci znovu.
+Aktivní učení je proces se dvěma kroky. Nejprve LUIS vybere projevy, který obdrží na koncovém bodu aplikace, který vyžaduje ověření. Druhý krok provádí vlastník aplikace nebo spolupracovníka, aby ověřil vybraný projevy k [revizi](luis-how-to-review-endpoint-utterances.md), včetně správného záměru a všech entit v rámci záměru. Po zkontrolování projevyu spusťte znovu výuku a publikujte aplikaci.
 
-## <a name="which-utterances-are-on-the-review-list"></a>Které projevy jsou na seznamu recenzí
-Služba LUIS přidá projevy do seznamu kontrol, když má hlavní záměr spouštění nízké skóre nebo jsou skóre dvou hlavních záměrů příliš blízko.
+## <a name="which-utterances-are-on-the-review-list"></a>Které projevy jsou v seznamu kontroly
+LUIS přidá projevy do seznamu revizí, pokud má vrchní záměr vysoké skóre nebo jsou skóre prvních dvou záměrů příliš blízko.
 
 ## <a name="single-pool-for-utterances-per-app"></a>Jeden fond pro projevy na aplikaci
-**Seznam projevy koncového bodu revize** se nezmění na základě verze. Je jenom jeden fond promluv ke kontrole bez ohledu na to, jakou verzi promluvy právě editujete nebo jaká verze aplikace byla publikovaná v koncovém bodě.
+V závislosti na verzi se nemění seznam **projevyy bodu revize** . Je jenom jeden fond promluv ke kontrole bez ohledu na to, jakou verzi promluvy právě editujete nebo jaká verze aplikace byla publikovaná v koncovém bodě.
 
-V [rozhraní REST API](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/58b6f32139e2bb139ce823c9)je vyžadován název verze a musí existovat v aplikaci, ale nepoužívá se nad rámec tohoto ověření. Projevy kontroly platí pro celou aplikaci. Pokud odeberete projevy z jedné _verze_, všechny verze jsou ovlivněny.
+V [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/58b6f32139e2bb139ce823c9)je název verze povinný a musí v aplikaci existovat, ale nepoužívá se nad tímto ověřením. Projevy revize platí pro celou aplikaci. Pokud projevy odeberete z jedné _verze_, budou ovlivněny všechny verze.
 
-## <a name="where-are-the-utterances-from"></a>Kde jsou projevy z
-Projevy koncového bodu jsou převzaty z dotazů koncových uživatelů na koncovém bodu HTTP aplikace. Pokud vaše aplikace není publikována nebo ještě neobdržela požadavky na server, nemáte žádné projevy ke kontrole. Pokud jsou přijaty žádné požadavky na koncový bod pro konkrétní záměr nebo entitu, nemáte projevy ke kontrole, které je obsahují.
+## <a name="where-are-the-utterances-from"></a>Kde se nachází projevy
+Koncový bod projevy se provádí z dotazů koncových uživatelů na koncovém bodu HTTP aplikace. Pokud vaše aplikace není publikovaná nebo ještě neobdržela vaše přístupy, nemáte žádné projevy ke kontrole. Pokud nejsou přijímány žádné přístupy koncového bodu pro určitý záměr nebo entitu, nemáte projevy k revizi, která je obsahuje.
 
-## <a name="schedule-review-periodically"></a>Pravidelně plánovat kontrolu
-Revize navrhované projevy není nutné provádět každý den, ale by měla být součástí pravidelné údržby LUIS.
+## <a name="schedule-review-periodically"></a>Pravidelná kontrola plánu
+Kontrola navrhovaných projevy se nemusí provádět každý den, ale měla by být součástí běžné údržby LUIS.
 
-## <a name="delete-review-items-programmatically"></a>Programové odstranění položek recenze
-Použijte **[rozhraní API pro odstranění neoznačených promluv.](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/58b6f32139e2bb139ce823c9)** Před odstraněním zálohujte tyto projevy **[exportem souborů protokolu](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36)**.
+## <a name="delete-review-items-programmatically"></a>Odstranění položek kontroly programově
+Použijte **[odstranění neoznačeného rozhraní projevy](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/58b6f32139e2bb139ce823c9)** API. Tyto projevy zálohujte před odstraněním jejich **[exportováním soubory protokolu](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36)**.
 
-## <a name="enable-active-learning"></a>Povolení aktivního učení
+## <a name="enable-active-learning"></a>Povolit aktivní učení
 
-Chcete-li povolit aktivní učení, je nutné protokolovat dotazy uživatelů. Toho lze dosáhnout voláním [dotazu koncového bodu](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint) s parametrem a hodnotou řetězce dotazu. `log=true`
+Chcete-li povolit aktivní učení, je nutné protokolovat uživatelské dotazy. Toho je možné dosáhnout voláním [dotazu koncového bodu](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint) s parametrem a hodnotou `log=true` QueryString.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Naučte [se,](luis-how-to-review-endpoint-utterances.md) jak zkontrolovat projevy koncového bodu
+* Informace o tom, jak [zkontrolovat](luis-how-to-review-endpoint-utterances.md) projevya koncového bodu

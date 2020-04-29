@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
 ms.openlocfilehash: 44823ce888e97b308f29403612f598c0eb585ae5
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80673373"
 ---
-Frontu můžete zobrazit na [webu Azure Portal](../articles/storage/queues/storage-quickstart-queues-portal.md) nebo v [Průzkumníkovi úložiště Microsoft Azure](https://storageexplorer.com/). Frontu můžete také zobrazit v příkazovém příkazu k dispozici azure, jak je popsáno v následujících krocích:
+Tuto frontu můžete zobrazit v [Azure Portal](../articles/storage/queues/storage-quickstart-queues-portal.md) nebo v [Průzkumník služby Microsoft Azure Storage](https://storageexplorer.com/). Tuto frontu můžete také zobrazit v rozhraní příkazového řádku Azure CLI, jak je popsáno v následujících krocích:
 
-1. Otevřete soubor *local.setting.json* projektu funkce a zkopírujte hodnotu připojovacího řetězce. V terminálu nebo příkazovém okně spusťte `AZURE_STORAGE_CONNECTION_STRING`následující příkaz a vytvořte proměnnou prostředí s názvem a místo ní vložte konkrétní připojovací řetězec `<MY_CONNECTION_STRING>`. (Tato proměnná prostředí znamená, že není nutné zadávat připojovací řetězec ke každému následnému příkazu pomocí argumentu.) `--connection-string`
+1. Otevřete soubor *Local. Setting. JSON* projektu funkce a zkopírujte hodnotu připojovacího řetězce. V terminálu nebo okně příkazového řádku spusťte následující příkaz, který vytvoří proměnnou prostředí s názvem `AZURE_STORAGE_CONNECTION_STRING`a místo ní bude vkládat konkrétní připojovací řetězec `<MY_CONNECTION_STRING>`. (Tato proměnná prostředí znamená, že nemusíte zadávat připojovací řetězec ke každému následujícímu příkazu pomocí `--connection-string` argumentu.)
 
-    # <a name="bash"></a>[Bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     AZURE_STORAGE_CONNECTION_STRING="<MY_CONNECTION_STRING>"
@@ -35,15 +35,15 @@ Frontu můžete zobrazit na [webu Azure Portal](../articles/storage/queues/stora
     
     ---
     
-1. (Nepovinné) Pomocí [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) příkazu můžete zobrazit fronty úložiště ve vašem účtu. Výstup z tohoto příkazu by `outqueue`měl obsahovat frontu s názvem , která byla vytvořena, když funkce napsala svou první zprávu do této fronty.
+1. Volitelné Pomocí [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) příkazu Zobrazte ve svém účtu fronty úložiště. Výstup z tohoto příkazu by měl zahrnovat frontu s `outqueue`názvem, která byla vytvořena při zapsání první zprávy do této fronty.
     
     ```azurecli
     az storage queue list --output tsv
     ```
 
-1. Pomocí [`az storage message get`](/cli/azure/storage/message#az-storage-message-get) příkazu přečtěte zprávu z této fronty, která by měla být křestním jménem, které jste použili při testování funkce dříve. Příkaz přečte a odebere první zprávu z fronty. 
+1. Pomocí [`az storage message get`](/cli/azure/storage/message#az-storage-message-get) příkazu si přečtěte zprávu z této fronty, která by měla být křestní jméno, které jste použili při předchozím testování funkce. Příkaz přečte a Odebere první zprávu z fronty. 
 
-    # <a name="bash"></a>[Bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     echo `echo $(az storage message get --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
@@ -61,8 +61,8 @@ Frontu můžete zobrazit na [webu Azure Portal](../articles/storage/queues/stora
     az storage message get --queue-name outqueue -o tsv --query [].{Message:content} > %TEMP%out.b64 && certutil -decode -f %TEMP%out.b64 %TEMP%out.txt > NUL && type %TEMP%out.txt && del %TEMP%out.b64 %TEMP%out.txt /q
     ```
 
-    Tento skript používá certutil k dekódování kolekce zpráv kódované base64 z místního dočasného souboru. Pokud neexistuje žádný výstup, `> NUL` zkuste odebrat ze skriptu zastavit potlačení certutil výstup, v případě, že dojde k chybě. 
+    Tento skript používá příkaz certutil k dekódování kolekce zpráv s kódováním base64 z místního dočasného souboru. Pokud není výstup, zkuste z skriptu odebrat `> NUL` , aby se zastavil výstup příkazu certutil, a to v případě, že dojde k chybě. 
     
     ---
     
-    Vzhledem k tomu, že text zprávy je uložen [base64 kódované](../articles/azure-functions/functions-bindings-storage-queue-trigger.md#encoding), musí být zpráva dekódována před zobrazením. Po spuštění `az storage message get`bude zpráva odebrána z fronty. Pokud v aplikaci `outqueue`byla pouze jedna zpráva , nenačtete zprávu při druhém spuštění tohoto příkazu a místo toho se zobrazí chyba.
+    Vzhledem k tomu, že tělo zprávy je uložené v kódování [Base64](../articles/azure-functions/functions-bindings-storage-queue-trigger.md#encoding), je nutné zprávu dekódovat předtím, než se zobrazí. Po spuštění `az storage message get`bude zpráva odebrána z fronty. Pokud v `outqueue`nástroji existovala jenom jedna zpráva, při spuštění tohoto příkazu se nezobrazí zpráva a místo toho se zobrazí chyba.

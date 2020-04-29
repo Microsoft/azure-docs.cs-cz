@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 09/19/2017
 ms.custom: mvc
 ms.openlocfilehash: a060cd35bbb42d2c31e98bed4855b2d27bfcbada
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80756639"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Přidání zpráv do fronty Azure Storage pomocí funkcí
@@ -34,9 +34,9 @@ V této části použijete uživatelské rozhraní portálu pro přidání výst
 
 1. Vyberte funkci, kterou jste vytvořili v tomto dřívějším rychlém startu.
 
-1. Vyberte **integrovat > nový výstup > Azure Queue Storage**.
+1. Vyberte **integration > New Output > Azure Queue Storage**.
 
-1. Klepněte na **tlačítko Vybrat**.
+1. Klikněte na **Vybrat**.
 
     ![Přidejte výstupní vazbu Queue Storage do funkce na webu Azure Portal.](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding.png)
 
@@ -66,7 +66,7 @@ V této části přidáte kód, který zapíše zprávu do výstupní fronty. Zp
 
 1. Aktualizujte kód funkce v závislosti na jazyku funkce:
 
-    # <a name="c"></a>[C\#](#tab/csharp)
+    # <a name="c"></a>[R\#](#tab/csharp)
 
     Přidejte parametr **outputQueueItem** do podpisu metody, jak ukazuje následující obrázek.
 

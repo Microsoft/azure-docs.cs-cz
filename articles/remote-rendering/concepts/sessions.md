@@ -1,86 +1,86 @@
 ---
-title: Relace vzdáleného vykreslování
-description: Popisuje, co je relace vzdáleného vykreslování
+title: Relace Remote Renderingu
+description: Popisuje, co je relace vzdáleného vykreslování.
 author: jakrams
 ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
 ms.openlocfilehash: 91a59e1398bf5e68799ad16a20dfb824904edc8a
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681685"
 ---
-# <a name="remote-rendering-sessions"></a>Relace vzdáleného vykreslování
+# <a name="remote-rendering-sessions"></a>Relace Remote Renderingu
 
-Ve vzdáleném vykreslování Azure (ARR) je *relace* klíčovým konceptem. Tento článek vysvětluje, co přesně relace je.
+Ve vzdáleném vykreslování Azure (ARR) je *relace* Klíčovým konceptem. Tento článek vysvětluje, co je přesně relace.
 
 ## <a name="overview"></a>Přehled
 
-Azure Remote Rendering funguje tak, že překládá složité úlohy vykreslování do cloudu. Tyto úlohy vykreslování nemohou být splněny pouze libovolným serverem, protože většina cloudových serverů nemá grafické procesory. Vzhledem k množství dat a pevnému požadavku na vytváření výsledků při interaktivních snímkových frekvencích nelze odpovědnost, kterou server zpracovává, který požadavek uživatele také předat jinému počítači za chodu, což může být možné pro běžnější webový provoz.
+Vzdálené vykreslování Azure funguje pomocí přesměrování složitých úloh vykreslování do cloudu. Tyto úlohy vykreslování nemůžou být splněné pouhým serverem, protože většina cloudových serverů nemá GPU. Z důvodu množství dat a pevného požadavku na zpracování výsledků v rámci interaktivních snímkových sazeb se na základě toho, který server zpracovává, který požadavek uživatele nedokáže přenášet do jiného počítače průběžně, jako je to možné pro častější webový provoz.
 
-To znamená, že při použití vzdáleného vykreslování Azure musí být cloudový server s potřebnými hardwarovými funkcemi vyhrazen výhradně pro zpracování vašich požadavků na vykreslování. *Relace* odkazuje na vše, co se týká interakce s tímto serverem. Začíná počáteční mačkáním *(zapůjčením)* stroje pro vaše použití, pokračuje všemi příkazy pro načítání a manipulaci s modely a končí uvolněním zapůjčení na cloudovém serveru.
+To znamená, že když používáte vzdálené vykreslování Azure, musí být cloudový server s potřebnými hardwarovými funkcemi vyhrazený výhradně pro zpracování vašich požadavků na vykreslování. *Relace* odkazuje na všechno, co se zabývá interakcí s tímto serverem. Začíná počáteční žádostí o rezervaci (*zapůjčení*) počítače pro vaše použití, pokračuje všemi příkazy pro načtení a manipulaci s modely a končí uvolněním zapůjčení na cloudovém serveru.
 
 ## <a name="managing-sessions"></a>Správa relací
 
-Existuje několik způsobů správy a interakce s relacemi. Jazykově nezávislý způsob vytváření, aktualizace a vypínání relací je prostřednictvím [rozhraní REST API pro správu relací](../how-tos/session-rest-api.md). V jazyce C# a C++ jsou `AzureFrontend` `AzureSession`tyto operace vystaveny prostřednictvím tříd a . Pro aplikace Unity existují další funkce nástroje `ARRServiceUnity` poskytované komponentou.
+Existuje několik způsobů, jak spravovat relace a pracovat s nimi. Nezávisle na způsobu vytváření, aktualizace a vypínání relací jsou prostřednictvím [REST API správy relací](../how-tos/session-rest-api.md). V jazyce C# a C++ se tyto operace zveřejňují prostřednictvím tříd `AzureFrontend` a `AzureSession`. Pro aplikace Unity existují další obslužné funkce poskytované `ARRServiceUnity` komponentou.
 
-Jakmile jste *připojeni* k aktivní relaci, operace, jako je [například načítání modelů](models.md) a interakci s scénou `AzureSession` jsou vystaveny prostřednictvím třídy.
+Jakmile budete *připojeni* k aktivní relaci, operace jako [načítání modelů](models.md) a interakce s scénou jsou zpřístupněny prostřednictvím `AzureSession` třídy.
 
 ### <a name="managing-multiple-sessions-simultaneously"></a>Správa více relací současně
 
-Není možné plně *připojit* k více relacím z jednoho zařízení. Můžete však vytvořit, sledovat a vypnout tolik relací, kolik chcete z jedné aplikace. Dokud aplikace není určena k tomu, aby se někdy připojila k relaci, nemusí běžet ani na zařízení, jako je HoloLens 2. Případ použití pro takové implementace může být, pokud chcete řídit relace prostřednictvím centrálnímechanismus. Například, jeden mohl vytvořit webovou aplikaci, kde více tabletů a HoloLenses můžete přihlásit. Pak aplikace může zobrazit možnosti na tabletech, například který cad model se má zobrazit. Pokud uživatel provede výběr, tyto informace jsou sděleny všem HoloLenses vytvořit sdílené prostředí.
+*Připojení* k několika relacím z jednoho zařízení není možné. V rámci jedné aplikace ale můžete vytvořit, sledovat a vypnout libovolný počet relací. Dokud se aplikace nechce připojit k relaci, nemusíte ji spouštět na zařízení jako HoloLens 2, a to buď. Případ použití pro takovou implementaci může být, pokud chcete řídit relace prostřednictvím centrálního mechanismu. Například jedna může vytvořit webovou aplikaci, do které se může přihlásit více tabletů a HoloLenses. Pak se aplikace může zobrazit na tabletech, například na to, který model CAD se má zobrazit. Pokud uživatel provede výběr, budou tyto informace sděleny všem HoloLenses, aby mohli vytvořit sdílené prostředí.
 
 ## <a name="session-phases"></a>Fáze relace
 
-Každá relace prochází několika fázemi.
+Každá relace projde několik fází.
 
 ### <a name="session-startup"></a>Spuštění relace
 
-Když požádáte ARR k [vytvoření nové relace](../how-tos/session-rest-api.md#create-a-session), první věc, kterou dělá, je vrátit relaci [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier). Toto UUID umožňuje dotazovat se na informace o relaci. UUID a některé základní informace o relaci jsou trvalé po dobu 30 dnů, takže můžete dotaz ovat informace i po ukončení relace. V tomto okamžiku bude **stav relace** vykázán jako **Starting**.
+Když požádáte o [Vytvoření nové relace](../how-tos/session-rest-api.md#create-a-session)pomocí ARR, je první věc, kterou vrátí [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)relace. Tento identifikátor UUID vám umožní zadat dotaz na informace o relaci. Identifikátor UUID a některé základní informace o relaci jsou trvalé po dobu 30 dnů, takže je můžete zadat dotaz na tyto informace i po zastavení relace. V tomto okamžiku bude **stav relace** hlášen jako **spuštění**.
 
-V dalším případě Azure vzdálené vykreslování se pokusí najít server, který může hostit vaše relace. Existují dva parametry pro toto hledání. Za prvé, bude rezervovat pouze servery ve vaší [oblasti](../reference/regions.md). Je to proto, že latence sítě napříč oblastmi může být příliš vysoká, aby zaručila slušné prostředí. Druhý faktor je požadovaná *velikost,* kterou jste zadali. V každé oblasti existuje omezený počet serverů, které mohou splnit požadavek *na standardní* nebo *prémiovou* velikost. V důsledku toho pokud všechny servery požadované velikosti jsou aktuálně používány ve vaší oblasti, vytvoření relace se nezdaří. Důvod selhání [lze dotazovat](../how-tos/session-rest-api.md#get-sessions-properties).
+V dalším kroku se vzdálené vykreslování Azure pokusí najít server, který může hostovat vaši relaci. Pro toto hledání existují dva parametry. Nejprve bude vyhradit jenom servery ve vaší [oblasti](../reference/regions.md). Důvodem je, že latence sítě v různých oblastech může být příliš vysoká, aby se zaručilo dáté prostředí. Druhý faktor je požadovaná *Velikost* , kterou jste určili. V každé oblasti je k dispozici omezený počet serverů, které mohou splňovat požadavky na velikost *Standard* nebo *Premium* . V důsledku toho platí, že pokud jsou všechny servery požadované velikosti aktuálně používány ve vaší oblasti, vytvoření relace se nezdaří. Důvodem selhání [může být dotazování](../how-tos/session-rest-api.md#get-sessions-properties).
 
 > [!IMPORTANT]
-> Pokud požadujete *standardní* velikost virtuálního počítače a požadavek se nezdaří z důvodu vysoké poptávky, neznamená to, že se nezdaří i požadavek na *prémiový* server. Takže pokud je to možnost pro vás, můžete zkusit vrátit se k *prémiovému* virtuálnímu účtu.
+> Pokud si vyžádáte *standardní* velikost virtuálního počítače a požadavek selže kvůli vysokému vyžádání, neznamená to, že požadavek na *prémiový* server selže i nadále. Takže pokud je to pro vás možnost, můžete se pokusit vrátit se k virtuálnímu počítači *Premium* .
 
-Když služba najde vhodný server, musí zkopírovat správný virtuální počítač (VM) na něj převést na hostitele vzdáleného vykreslování Azure. Tento proces trvá několik minut. Poté je virtuální virtuální medailon spuštěn a **stav relace** přechází na **Připraveno**.
+Když služba najde vhodný server, bude muset zkopírovat do něj příslušný virtuální počítač (VM), aby se přepnul na hostitele vzdáleného vykreslování Azure. Tento proces trvá několik minut. Následně se virtuální počítač spustí a přechodem **stavu relace** na **připraveno**.
 
-V tomto okamžiku server výhradně čeká na váš vstup. To je také bod, ze kterého se vám účtuje za službu.
+V tomto okamžiku server aplikace čeká výhradně na zadání. To je také bod, ze kterého se vám bude účtovat služba.
 
 ### <a name="connecting-to-a-session"></a>Připojení k relaci
 
-Jakmile je relace *připravena*, můžete *se k ní připojit.* Při připojení může zařízení odesílat příkazy k načtení a úpravám modelů. Každý hostitel ARR vždy obsluhuje pouze jedno klientské zařízení najednou, takže když se klient připojí k relaci, má výhradní kontrolu nad vykresleným obsahem. To také znamená, že výkon vykreslování se nikdy nebude lišit z důvodů mimo vaši kontrolu.
+Jakmile bude relace *připravena*, můžete se k ní *připojit* . Při připojení může zařízení odeslat příkazy pro načtení a úpravu modelů. Každý hostitel ARR v jednu chvíli obsluhuje jenom jedno klientské zařízení, takže když se klient připojí k relaci, má výhradní kontrolu nad vykresleným obsahem. To také znamená, že se výkon vykreslování nikdy nebude lišit z důvodů mimo váš ovládací prvek.
 
 > [!IMPORTANT]
-> Přestože pouze jeden klient se může *připojit k* relaci, základní informace o relacích, jako je například jejich aktuální stav, lze dotazovat bez připojení.
+> I když se k relaci může *připojit* jenom jeden klient, základní informace o relacích, jako je jejich aktuální stav, se dají dotazovat bez připojení.
 
-Pokud je zařízení připojeno k relaci, pokusy jiných zařízení o připojení se nezdaří. Jakmile se však připojené zařízení odpojí, dobrovolně nebo z důvodu nějakého selhání, relace přijme další požadavek na připojení. Všechny předchozí stav (načtené modely a tak) je zahozen tak, že další připojovací zařízení dostane čistý štít. Relace tedy mohou být znovu použity mnohokrát různými zařízeními a ve většině případů může být možné skrýt režii při spuštění relace před koncovým uživatelem.
+Když je zařízení připojené k relaci, pokusy jiných zařízení, aby se připojily, selžou. Pokud se ale připojené zařízení odpojí, ať už dobrovolně nebo z důvodu určitého druhu selhání, bude relace akceptovat jinou žádost o připojení. Všechny předchozí stavy (načtené modely a takové) se zahodí tak, že další připojující zařízení získá čistou hodnotu SLAT. Proto mohou být relace opakovaně opakovaně používány různými zařízeními a může být možné skrýt režijní náklady na spuštění relace od koncového uživatele ve většině případů.
 
 > [!IMPORTANT]
-> Vzdálený server nikdy nezmění stav dat na straně klienta. Všechny mutace dat (například aktualizace transformace a požadavky na nanačtení) musí být provedeny klientskou aplikací. Všechny akce okamžitě aktualizovat stav klienta.
+> Vzdálený server nikdy nemění stav dat na straně klienta. Všechny mutace dat (například aktualizace transformace a požadavky na zatížení) musí provádět klientská aplikace. Všechny akce okamžitě aktualizují stav klienta.
 
-### <a name="session-end"></a>Ukončení relace
+### <a name="session-end"></a>Konec relace
 
-Při požadavku na novou relaci zadáte *maximální dobu zapůjčení*, obvykle v rozsahu jedna až osm hodin. Toto je doba, po kterou hostitel přijme váš vstup.
+Když vyžádáte novou relaci, zadáte *maximální dobu zapůjčení*, obvykle v rozsahu 1 až 8 hodin. Toto je doba, po kterou bude hostitel akceptovat vaše zadání.
 
-Existují dva pravidelné důvody pro ukončení relace. Buď ručně požádáte o zastavení relace, nebo vyprší maximální doba zapůjčení. V obou případech je jakékoli aktivní připojení k hostiteli uzavřena ihned a služba je ukončena na tomto serveru. Server je pak věnována zpět do fondu Azure a může získat žádanky pro jiné účely. Zastavení relace nelze vrátit zpět nebo zrušit. Dotazování na **stav relace** v zastavené relaci vrátí buď **Zastaveno** nebo **Vypršela**platnost , v závislosti na tom, zda byla ručně vypnuta nebo protože bylo dosaženo maximální doby zapůjčení.
+Relace končí dvěma pravidelnými důvody. Buď ručně vyžádáte relaci, která se má zastavit, nebo vyprší maximální doba zapůjčení. V obou případech se jakékoli aktivní připojení k hostiteli hned ukončí a služba se na tomto serveru vypne. Server se pak vrátí zpátky do fondu Azure a může získat další účely. Zastavení relace nelze vrátit zpět nebo zrušit. Dotazování **stavu relace** na zastavené relaci vrátí hodnotu **Zastaveno** nebo **vypršela jeho platnost**v závislosti na tom, zda byl ručně vypnut nebo protože byla dosažena maximální doba zapůjčení.
 
-Relace může být také zastavena z důvodu některých selhání.
+V důsledku nějaké chyby se může také zastavit relace.
 
-Ve všech případech vám nebudou účtovány další, jakmile je relace zastavena.
+Ve všech případech se po zastavení relace neúčtují další poplatky.
 
 > [!WARNING]
-> To, zda se připojíte k relaci a na jak dlouho, nemá vliv na fakturaci. To, co platíte za službu, závisí na *době trvání relace*, to znamená čas, kdy je server vyhrazen výhradně pro vás, a na požadovaných hardwarových možnostech (velikost virtuálního počítače). Pokud zahájíte relaci, připojíte se na pět minut a potom ji nezastavujte, takže bude spuštěna, dokud nevyprší její zapůjčení, bude se vám účtovat celá doba zapůjčení relace. Naopak maximální *doba pronájmu* je většinou záchrannou sítí. Nezáleží na tom, zda požadujete relaci s dobou zapůjčení osm hodin, pak ji používejte pouze po dobu pěti minut, pokud později ručně zastavíte relaci.
+> Bez ohledu na to, jestli se k relaci připojujete a jak dlouho nemá vliv na fakturaci. To, co platíte za službu, závisí na *době trvání relace*, což znamená čas, kdy je server exkluzivně vyhrazený, a požadované hardwarové funkce (velikost virtuálního počítače). Pokud spustíte relaci, připojíte po dobu pěti minut a pak relaci nezastavíte, takže zůstane spuštěná, dokud její zapůjčení nevyprší, bude se vám účtovat doba zapůjčení celé relace. Naopak *Maximální doba zapůjčení* je většinou bezpečnostní síť. Nezáleží na tom, jestli si vyžádáte relaci s časem zapůjčení na osm hodin, a pak ji používejte jenom pět minut, když relaci ručně zastavíte.
 
 #### <a name="extend-a-sessions-lease-time"></a>Prodloužení doby zapůjčení relace
 
-Můžete [prodloužit dobu zapůjčení](../how-tos/session-rest-api.md#update-a-session) aktivní relace, pokud se ukáže, že ji potřebujete déle.
+[Dobu zapůjčení](../how-tos/session-rest-api.md#update-a-session) aktivní relace můžete prodloužit, pokud se tak stane, že ji budete potřebovat.
 
 ## <a name="example-code"></a>Příklad kódu
 
-Níže uvedený kód ukazuje jednoduchou implementaci spuštění relace, čekání na *stav připravenosti,* připojení a následné odpojení a vypnutí znovu.
+Následující kód ukazuje jednoduchou implementaci spuštění relace, čekání na stav *připraveno* , připojení a odpojení a opětovné ukončení.
 
 ``` cs
 RemoteRenderingInitialization init = new RemoteRenderingInitialization();
@@ -136,13 +136,13 @@ await session.StopAsync().AsTask();
 RemoteManagerStatic.ShutdownRemoteRendering();
 ```
 
-Více `AzureFrontend` `AzureSession` a instance mohou být udržovány, manipulovat a dotazován z kódu. Ale pouze jedno zařízení se `AzureSession` může připojit najednou.
+Více `AzureFrontend` instancí `AzureSession` a lze spravovat, manipulovat a dotazovat z kódu. `AzureSession` V jednom okamžiku se ale může připojit jenom jedno zařízení.
 
-Životnost virtuálního počítače není vázána `AzureFrontend` na instanci nebo `AzureSession` instanci. `AzureSession.StopAsync`musí být volána k zastavení relace.
+Životnost virtuálního počítače není vázaná na `AzureFrontend` instanci nebo `AzureSession` instanci. `AzureSession.StopAsync`se musí volat, aby se zastavila relace.
 
-Trvalé ID relace lze dotazovat prostřednictvím `AzureSession.SessionUUID()` a ukládání do mezipaměti místně. S tímto ID aplikace `AzureFrontend.OpenSession` může volat vazbu na tuto relaci.
+Na ID trvalé relace se dá dotazovat místně `AzureSession.SessionUUID()` pomocí mezipaměti. S tímto ID může aplikace volat `AzureFrontend.OpenSession` , aby se k této relaci navázala.
 
-Pokud `AzureSession.IsConnected` je `AzureSession.Actions` true, vrátí `RemoteManager`instanci aplikace , která obsahuje funkce pro [načtení modelů](models.md), manipulaci s [entitami](entities.md)a [informace](../overview/features/spatial-queries.md) o vykreslené scéně.
+Pokud `AzureSession.IsConnected` je hodnota true `AzureSession.Actions` , vrátí `RemoteManager`instanci, která obsahuje funkce pro [načtení modelů](models.md), manipulaci s [entitami](entities.md)a dotazy na [informace](../overview/features/spatial-queries.md) o vykreslené scéně.
 
 ## <a name="next-steps"></a>Další kroky
 

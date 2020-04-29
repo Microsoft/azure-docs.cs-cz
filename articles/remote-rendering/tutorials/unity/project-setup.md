@@ -1,56 +1,56 @@
 ---
-title: Nastavení projektu Unity od nuly
-description: Vysvětluje, jak nakonfigurovat prázdný projekt Unity pro použití s Azure Remote Rendering.
+title: Nastavení projektu Unity od začátku
+description: Vysvětluje, jak nakonfigurovat prázdný projekt Unity pro použití se vzdáleným vykreslováním Azure.
 author: florianborn71
 ms.author: flborn
 ms.date: 01/30/2020
 ms.topic: tutorial
 ms.openlocfilehash: 33801316e4c0446865169560bb42f98052acba70
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80679594"
 ---
-# <a name="tutorial-setting-up-a-unity-project-from-scratch"></a>Kurz: Nastavení projektu Unity od nuly
+# <a name="tutorial-setting-up-a-unity-project-from-scratch"></a>Kurz: vytvoření projektu Unity od začátku
 
 V tomto kurzu se dozvíte:
 
 > [!div class="checklist"]
 >
-> * Konfigurace scratch Unity projektu pro ARR.
-> * Vytváření a zastavení relací vykreslování.
-> * Opětovné použití existujících relací.
+> * Konfigurace nového projektu Unity pro ARR
+> * Vytváření a zastavování relací vykreslování.
+> * Znovu se používají existující relace.
 > * Připojení a odpojení od relací.
-> * Načítání modelů do relace vykreslování.
-> * Zobrazení statistik připojení.
+> * Načítají se modely do relace vykreslování.
+> * Zobrazují se statistiky připojení.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro tento výukový program potřebujete:
+Pro tento kurz potřebujete:
 
-* Informace o vašem účtu (ID účtu, klíč účtu, ID předplatného). Pokud účet nemáte, [vytvořte si účet](../../how-tos/create-an-account.md).
-* Sada Windows SDK 10.0.18362.0 [(stáhnout)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
-* Nejnovější verze Visual Studia 2019 [(ke stažení)](https://visualstudio.microsoft.com/vs/older-downloads/)
-* GIT [(stáhnout)](https://git-scm.com/downloads)
-* Unity 2019.3.1 [(ke stažení)](https://unity3d.com/get-unity/download)
+* Informace o vašem účtu (ID účtu, klíč účtu, ID předplatného). Pokud účet nemáte, [vytvořte účet](../../how-tos/create-an-account.md).
+* Windows SDK 10.0.18362.0 [(Stáhnout)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
+* Nejnovější verzi sady Visual Studio 2019 [(Stáhnout)](https://visualstudio.microsoft.com/vs/older-downloads/)
+* GIT [(Stáhnout)](https://git-scm.com/downloads)
+* Unity 2019.3.1 [(Stáhnout)](https://unity3d.com/get-unity/download)
   * Nainstalujte tyto moduly v Unity:
-    * **UPWP** – podpora sestavení univerzální platformy Windows
-    * **IL2CPP** - Podpora sestavení systému Windows (IL2CPP)
+    * Podpora **UWP** – Univerzální platforma Windows sestavení
+    * **IL2CPP** – podpora sestavení pro Windows (IL2CPP)
 
 > [!TIP]
-> [Úložiště vzorků ARR](https://github.com/Azure/azure-remote-rendering) obsahuje připravené projekty Unity pro všechny kurzy. Tyto projekty můžete použít jako odkaz.
+> [Úložiště ukázek ARR](https://github.com/Azure/azure-remote-rendering) obsahuje připravené projekty Unity pro všechny kurzy. Tyto projekty můžete použít jako referenci.
 
-## <a name="create-a-new-unity-project"></a>Vytvoření nového projektu Unity
+## <a name="create-a-new-unity-project"></a>Vytvořit nový projekt Unity
 
-Z Unity Hub vytvořte nový projekt.
-V tomto příkladu budeme předpokládat, že projekt `RemoteRendering`je vytvářen ve složce s názvem .
+V centru Unity vytvořte nový projekt.
+V tomto příkladu budeme předpokládat, že projekt se vytváří ve složce s názvem `RemoteRendering`.
 
 ![nové okno projektu](media/new-project.png)
 
 ## <a name="configure-the-projects-manifest"></a>Konfigurace manifestu projektu
 
-Je třeba upravit `Packages/manifest.json` soubor, který je umístěn ve složce projektu Unity. Otevřete soubor v textovém editoru a připojit řádky uvedené níže:
+Je potřeba upravit soubor `Packages/manifest.json` , který je umístěný ve složce projektu Unity. Otevřete soubor v textovém editoru a přidejte řádky uvedené níže:
 
 ```json
 {
@@ -69,81 +69,81 @@ Je třeba upravit `Packages/manifest.json` soubor, který je umístěn ve složc
 }
 ```
 
-Univerzální vykreslovat potrubí balíček je volitelné, ale doporučuje se z důvodů výkonu.
-Po úpravě a uložení manifestu se Unity automaticky aktualizuje. Potvrďte, že balíčky byly načteny v okně *Projektu:*
+Balíček kanálu univerzálního vykreslování je volitelný, ale doporučuje se z důvodů výkonu.
+Po úpravě a uložení manifestu se Unity automaticky aktualizuje. Potvrďte, že jsou balíčky načteny v okně *projektu* :
 
-![potvrdit import balíčků](media/confirm-packages.png)
+![potvrdit importy balíčků](media/confirm-packages.png)
 
-## <a name="ensure-you-have-the-latest-version-of-the-package"></a>Ujistěte se, že máte nejnovější verzi balíčku
+## <a name="ensure-you-have-the-latest-version-of-the-package"></a>Ujistěte se, že máte nejnovější verzi balíčku.
 
-Následující kroky zajistí, že váš projekt používá nejnovější verzi balíčku vzdáleného vykreslování.
-1. Vyberte balíček v okně Projekt a ![klikněte na ikonu balíčku: Výběr ikony balíčku](media/package-icons.png)
-1. V inspektoru klikněte na "Zobrazit ![ve Správci balíčků": inspektor balíčku](media/package-properties.png)
-1. Na stránce správce balíčků pro balíček vzdáleného vykreslování zjistěte, zda je k dispozici tlačítko aktualizace. Pokud ano, pak kliknutím na něj aktualizujete balíček na nejnovější dostupnou verzi: ![Balíček ARR ve správci balíčků](media/package-manager.png)
-1. Někdy aktualizace balíčku může vést k chybám v konzole. Pokud k tomu dojde, zkuste zavřít a znovu otevřít projekt.
+Následující kroky zajišťují, aby projekt používal nejnovější verzi balíčku vzdáleného vykreslování.
+1. V okně projektu vyberte balíček a klikněte na ikonu balíčku: ![výběr ikony balíčku](media/package-icons.png)
+1. V inspektoru klikněte na zobrazit ve Správci balíčků: Inspector balíčku ![.](media/package-properties.png)
+1. Na stránce Správce balíčků pro balíček vzdáleného vykreslování zkontrolujte, zda je k dispozici tlačítko Aktualizovat. Pokud je, pak se kliknutím na něj aktualizuje balíček na nejnovější dostupnou verzi: balíček ARR ![ve Správci balíčků.](media/package-manager.png)
+1. Aktualizace balíčku někdy může vést k chybám v konzole nástroje. Pokud k tomu dojde, zkuste projekt zavřít a znovu otevřít.
 
-## <a name="configure-the-camera"></a>Konfigurace fotoaparátu
+## <a name="configure-the-camera"></a>Konfigurace kamery
 
-Vyberte uzel **hlavního fotoaparátu.**
+Vyberte **hlavní uzel kamery** .
 
-1. Obnovit jeho *transformace*:
+1. Resetovat *transformaci*:
 
     ![resetovat transformaci kamery](media/camera-reset-transform.png)
 
-1. Nastavit **příznaky Vymazat** na plná *barva*
+1. Nastavit **clear Flags** na *plnou barvu*
 
 1. Nastavit **pozadí** na *černou*
 
-1. Nastavte **ořezové roviny** na *Near = 0,3* a *Daleko = 20*. To znamená, že vykreslování ořízne geometrii, která je blíže než 30 cm nebo dále než 20 metrů.
+1. Nastavte **roviny ořezu** na *poblíž = 0,3* a *daleko = 20*. To znamená, že vykreslování bude oříznout geometrii, která je větší než 30 cm nebo větší než 20 metrů.
 
     ![Vlastnosti kamery Unity](media/camera-properties.png)
 
 ## <a name="adjust-the-project-settings"></a>Úprava nastavení projektu
 
-1. Otevřít *upravit > nastavení projektu...*
-1. V seznamu vlevo vyberte Kvalita.
-1. Změna **výchozí úrovně kvality** na *nízkou*
+1. Otevřít *úpravy > nastavení projektu...*
+1. V seznamu na levé straně vyberte kvalitu.
+1. Změnit **výchozí úroveň kvality** na *Nízká*
 
-    ![změna nastavení kvality projektu](media/settings-quality.png)
+    ![změnit nastavení kvality projektu](media/settings-quality.png)
 
-1. Vlevo vyberte **Grafika.**
-1. Změňte nastavení **Skriptovatelného kanálu vykreslování** na *HybridRenderingPipeline*. Tento krok přeskočte, pokud není použit kanál univerzálního vykreslení.
+1. Vyberte **grafiku** vlevo.
+1. Změňte nastavení **kanálu vykreslování pomocí skriptů** na *HybridRenderingPipeline*. Tento krok přeskočte, pokud není použit kanál univerzálního vykreslování.
 
-    ![změna nastavení](media/settings-graphics-lwrp.png) grafiky projektu Někdy rozhraní nenaplní seznam dostupných typů kanálu z balíčků, v takovém případě musí být ![prostředek *HybridRenderingPipeline* přetažen do pole ručně: změna nastavení grafiky projektu](media/hybrid-rendering-pipeline.png)
-1. Vlevo vyberte **Přehrávač.**
-1. Výběr karty **Nastavení univerzální platformy Windows**
-1. Změna **nastavení XR** pro podporu ![windows smíšené reality: nastavení přehrávače](media/xr-player-settings.png)
-1. Vyberte nastavení jako na obrázku výše:
-    1. Podpora **povolení virtuální reality**
-    1. Nastavit **formát hloubky** na *16bitovou hloubku*
-    1. Povolit **sdílení hloubkové vyrovnávací paměti**
-    1. Nastavení **režimu stereofonního vykreslování** na *jednoprůchodovou instanci*
+    ![Změna nastavení](media/settings-graphics-lwrp.png) grafiky projektu někdy v uživatelském rozhraní nenačítá seznam dostupných typů kanálů z balíčků. v takovém případě musí být prostředek *HybridRenderingPipeline* přetažen do pole ručně: Změna nastavení grafiky projektu ![.](media/hybrid-rendering-pipeline.png)
+1. Na levé straně vyberte **Player** .
+1. Vyberte kartu **nastavení Univerzální platforma Windows**
+1. Změna **Nastavení XR** pro podporu Windows Mixed reality: ![nastavení přehrávače](media/xr-player-settings.png)
+1. Vyberte nastavení jako na snímku obrazovky výše:
+    1. Povolit **podporu virtuální realitu**
+    1. Nastavit **Formát hloubky** na *16bitovou hloubku*
+    1. Povolit **sdílení vyrovnávací paměti pro hloubku**
+    1. Nastavit **režim vykreslování stereo** na *instanci Single Passed*
 
-1. Ve stejném okně nad *nastavením XR* **rozbalte položku Nastavení publikování**
-1. Posuňte se dolů na **Možnosti** a vyberte:
-    * **Internetový klient**
-    * **Server InternetClientServer**
-    * **Prostorové vnímání**
+1. Ve stejném okně, nad *XR nastavení*, rozbalte **Nastavení publikování** .
+1. Přejděte dolů na **Možnosti** a vyberte:
+    * **InternetClient**
+    * **InternetClientServer**
+    * **SpatialPerception**
     * Volitelné pro vývoj: **PrivateNetworkClientServer**
 
-      Tato možnost je potřeba, pokud chcete připojit unity vzdálené ladicí program k zařízení.
+      Tato možnost je nutná, pokud chcete ke svému zařízení připojit vzdálený ladicí program Unity.
 
-1. V **části Podporované rodiny zařízení**povolte **holografické** a **desktopové**
+1. V **podporovaných rodinách zařízení**povolit **holografické** a **desktopové**
 
-1. Chcete-li použít sadu nástrojů pro smíšenou realitu, přečtěte si [dokumentaci k sadě MRTK](https://docs.microsoft.com/windows/mixed-reality/unity-development-overview), kde naleznete další informace o doporučených nastaveních a možnostech.
+1. Pokud chcete používat sadu nástrojů Mixed reality, přečtěte si [dokumentaci k MRTK](https://docs.microsoft.com/windows/mixed-reality/unity-development-overview), kde najdete další informace o doporučeném nastavení a možnostech.
 
 ## <a name="validate-project-setup"></a>Ověřit nastavení projektu
 
-Proveďte následující kroky k ověření, zda jsou nastavení projektu správná.
+Provedením následujících kroků ověříte, zda je nastavení projektu správné.
 
-1. Zvolte položku ValidateProject z nabídky RemoteRendering v pruhu nástrojů editoru Unity.
-1. Okno ValidateProject slouží ke kontrole a v případě potřeby k opravě nastavení projektu.
+1. V nabídce RemoteRendering na panelu nástrojů editoru Unity vyberte položku ValidateProject.
+1. Pomocí okna ValidateProject můžete podle potřeby vyhledat a opravit nastavení projektu.
 
-    ![Ověření projektu editoru unity](media/arr-unity-validation.png)
+    ![Ověření projektu editoru Unity](media/arr-unity-validation.png)
 
 ## <a name="create-a-script-to-initialize-azure-remote-rendering"></a>Vytvoření skriptu pro inicializaci vzdáleného vykreslování Azure
 
-Vytvořte [nový skript](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html) a pojmenujte jej **RemoteRendering**. Otevřete soubor skriptu a nahraďte celý jeho obsah níže uvedenou kódem:
+Vytvořte [Nový skript](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html) a pojmenujte ho **RemoteRendering**. Otevřete soubor skriptu a nahraďte jeho celý obsah následujícím kódem:
 
 ```csharp
 using System.Collections;
@@ -290,39 +290,39 @@ public class RemoteRendering : MonoBehaviour
 }
 ```
 
-Tento skript inicializuje azure vzdálené vykreslování, sdělte mu, který objekt kamery použít pro vykreslování a umístí tlačítko **Vytvořit relaci** do výřezu, když je aktivován *režim přehrávání.*
+Tento skript inicializuje vzdálené vykreslování Azure, informuje o tom, který objekt kamery se má použít pro vykreslování, *a když se* aktivuje tlačítko pro vytvoření relace, umístí se do zobrazení tlačítko **vytvořit relaci** .
 
 > [!CAUTION]
-> Úprava skriptu a jeho uložení v době, kdy je aktivní režim přehrávání v Unity, může vést k zmrazení jednoty a budete nuceni jej vypnout prostřednictvím správce úloh. Proto vždy zastavit režim přehrávání před úpravou *RemoteRendering* skript.
+> Úprava skriptu a jeho uložení v případě, že je aktivní režim přehrávání v Unity, může způsobit zamrznutí Unity a vy budete nuceni ho vypnout pomocí Správce úloh. Proto před úpravou skriptu *RemoteRendering* vždy zastavte režim přehrávání.
 
-## <a name="test-azure-remote-rendering-session-creation"></a>Testování vytvoření relace vzdáleného vykreslování Azure
+## <a name="test-azure-remote-rendering-session-creation"></a>Test vytvoření relace vzdáleného vykreslování Azure
 
-Vytvořte nový GameObject ve scéně a přidejte *remoterendering* komponenty do něj. Vyplňte příslušnou *doménu účtu*, *Id účtu*a klíč *účtu* pro vzdálený vykreslovací účet:
+Vytvořte ve scéně novou GameObject a přidejte do ní komponentu *RemoteRendering* . Vyplňte příslušnou *doménu účtu*, *ID účtu*a *klíč účtu* pro účet vzdáleného vykreslování:
 
-![Vlastnosti součásti vzdáleného vykreslování](media/remote-rendering-component.png)
+![Vlastnosti komponenty vzdáleného vykreslování](media/remote-rendering-component.png)
 
-Spusťte aplikaci v editoru **(stiskněte tlačítko Přehrát** nebo CTRL+P). Ve výřezu by se mělo zobrazit tlačítko **Vytvořit relaci.** Kliknutím na něj zahájíte první relaci ARR:
+Spusťte aplikaci v editoru (**stiskněte tlačítko Přehrát** nebo CTRL + P). V zobrazení se zobrazí tlačítko **vytvořit relaci** . Kliknutím na něj spustíte svou první relaci ARR:
 
 ![Vytvoření první relace](media/test-create.png)
 
-Pokud se to nezdaří, ujistěte se, že jste správně zadali podrobnosti o účtu do vlastností komponenty RemoteRendering. V opačném případě se v okně konzoly zobrazí zpráva s ID relace, které vám bylo přiřazeno, a oznamující, že relace je aktuálně ve stavu *Spuštění:*
+Pokud se to nepovede, ujistěte se, že jste správně zadali podrobnosti o účtu do vlastností komponenty RemoteRendering. V opačném případě se v okně konzoly zobrazí zpráva s ID relace, které jste přiřadili, a oznámení o tom, že je relace aktuálně ve *výchozím* stavu:
 
-![Výstup spuštění relace](media/create-session-output.png)
+![Spuštění výstupu relace](media/create-session-output.png)
 
-V tomto okamžiku Azure zřizoval server pro vás a spouštění vzdáleného vykreslovacího virtuálního počítače. To obvykle **trvá 3 až 5 minut**. Když je virtuální jazyk připraven, spustí `OnSessionStatusChanged` se zpětné volání našeho skriptu Unity a vytiskne se stav nové relace:
+V tomto okamžiku Azure zřídí server pro vás a spouští se virtuální počítač pro vzdálené vykreslování. To obvykle **trvá 3 až 5 minut**. Až bude virtuální počítač připravený, provede se `OnSessionStatusChanged` zpětné volání skriptu Unity a vytiskne se nový stav relace:
 
-![Výstup připravený k relaci](media/create-session-output-2.png)
+![Výstup připravený pro relaci](media/create-session-output-2.png)
 
-To je ono! Prozatím se nic víc nestane. Chcete-li zabránit poplatkům, měli byste vždy zastavit relace, když již nejsou potřeba. V této ukázce to můžete provést klepnutím na tlačítko **Zastavit relaci** nebo zastavením simulace Unity. Vzhledem k vlastnosti **Auto-Stop Session** na komponentě *ARRServiceUnity,* která je ve výchozím nastavení zapnutá, bude relace automaticky zastavena za vás. Pokud vše selže, z důvodu selhání nebo problémy s připojením, vaše relace může běžet tak dlouho, jak *maxLeaseTime* před vypnutím serverem.
+To je! V době, kdy se nic nestane víc. Aby se předešlo poplatkům, měli byste vždycky zastavit relace, když už nejsou potřeba. V této ukázce to můžete udělat tak, že kliknete na tlačítko **zastavit relaci** nebo zastavíte simulaci Unity. Kvůli **automatickému zastavení vlastnosti relace** v součásti *ARRServiceUnity* , která je ve výchozím nastavení zapnutá, se relace automaticky zastaví. Pokud dojde k selhání z důvodu chyby nebo problémů s připojením, může se vaše relace spustit po dobu, po kterou se *MaxLeaseTime* před vypnutím serverem.
 
 > [!NOTE]
-> Zastavení relace se projeví okamžitě a nelze ji vrátit zpět. Po zastavení je třeba vytvořit novou relaci se stejnou režijní režií při spuštění.
+> Zastavení relace se projeví okamžitě a nedá se vrátit zpátky. Po zastavení budete muset vytvořit novou relaci se stejnou režií při spuštění.
 
-## <a name="reusing-sessions"></a>Opakované použití relací
+## <a name="reusing-sessions"></a>Znovu se používají relace
 
-Vytvoření nové relace je bohužel časově náročná operace. Proto by se člověk měl snažit vytvářet relace zřídka a znovu je používat, kdykoli je to možné.
+Vytvoření nové relace je, ale časově náročná operace bohužel. Proto by se jedna měla pokusit vytvořit relace zřídka a znovu je použít, kdykoli to bude možné.
 
-Vložte následující kód do skriptu *RemoteRendering* a odeberte staré verze duplicitních funkcí:
+Do skriptu *RemoteRendering* vložte následující kód a odstraňte staré verze duplicitních funkcí:
 
 ```csharp
     public string SessionId = null;
@@ -413,24 +413,24 @@ Vložte následující kód do skriptu *RemoteRendering* a odeberte staré verze
 ```
 
 > [!CAUTION]
-> Před spuštěním tohoto kódu nezapomeňte deaktivovat možnost **Automatické zastavení relace** v součásti RemoteRendering. V opačném případě bude každá relace, kterou vytvoříte, automaticky zastavena, když zastavíte simulaci, a pokus o její opětovné použití se nezdaří.
+> Před spuštěním tohoto kódu nezapomeňte deaktivovat možnost **automaticky zastavit relaci** v součásti RemoteRendering. V opačném případě se každá vytvořená relace automaticky zastaví, když simulaci zastavíte a pokus o opakované použití selže.
 
-Když stisknete *tlačítko Přehrát*, zobrazí se ve výřezu tři tlačítka: **Vytvořit relaci**, Aktivní **relace dotazu**a **Použít existující relaci**. První tlačítko vždy vytvoří novou relaci. Druhé tlačítko se dotazuje, které *aktivní* relace existují. Pokud jste ručně neurčili ID relace, které chcete zkusit použít, tato akce automaticky vybere toto ID relace pro budoucí použití. Třetí tlačítko se pokusí připojit k existující relaci. Buď ten, který jste zadali ručně prostřednictvím *vlastnosti komponenty Id relace,* nebo jeden nalezený *aktivními relacemi dotazu*.
+Po stisknutí tlačítka *Přehrát*se teď v zobrazení zobrazí tři tlačítka: **vytvořit relaci**, **dotazovat aktivní relace**a **použít existující relaci**. První tlačítko vždy vytvoří novou relaci. Druhé tlačítko vyžádá dotaz, které *aktivní* relace existují. Pokud jste ručně nezadali ID relace, které se má použít, tato akce automaticky vybere toto ID relace pro budoucí použití. Třetí tlačítko se pokusí připojit k existující relaci. Jednu, kterou jste zadali ručně prostřednictvím vlastnosti komponenty s *ID relace* , nebo jednu, kterou najde *dotaz na aktivní relace*.
 
-Funkce **AutoStartSessionAsync** slouží k simulaci stisknutí tlačítka mimo editor.
+Funkce **AutoStartSessionAsync** slouží k simulaci stisknutí tlačítek mimo editor.
 
 > [!TIP]
-> Je možné otevřít relace, které byly zastaveny, vypršela nebo jsou v chybovém stavu. Zatímco již nelze použít pro vykreslování, můžete dotazovat jejich podrobnosti, jakmile otevřete neaktivní relaci. Výše uvedený kód zkontroluje stav `ARRService_OnSessionStarted`relace v aplikace , aby se automaticky zastavil, když se relace stala nepoužitelnou.
+> Je možné otevřít relace, které byly zastaveny, jejichž platnost vypršela, nebo jsou v chybovém stavu. I když již nelze použít pro vykreslování, můžete po otevření neaktivní relace zadat dotaz na jejich podrobnosti. Výše uvedený kód kontroluje stav relace v `ARRService_OnSessionStarted`, aby se automaticky zastavily, když se relace stane nepoužitelnou.
 
-Pomocí této funkce můžete nyní vytvářet a opakovaně používat relace, které by měly výrazně zlepšit pracovní postup vývoje.
+Díky této funkci teď můžete vytvářet a opakovaně používat relace, které by měly významně zlepšit vývoj pracovního postupu.
 
-Obvykle vytvoření relace by se aktivovalo mimo klientskou aplikaci z důvodu času potřebného ke spuštění serveru.
+Vytvoření relace se obvykle spustí mimo klientskou aplikaci kvůli době potřebné k tomu, aby se server vyvolal.
 
 ## <a name="connect-to-an-active-session"></a>Připojení k aktivní relaci
 
-Zatím jsme vytvořili nebo otevřeli relace. Dalším krokem je *připojení* k relaci. Po připojení bude vykreslovací server produkovat obrázky a odesílat video stream do naší aplikace.
+Zatím jsme vytvořili nebo otevřeli relace. Dalším krokem je *připojení* k relaci. Po připojení vygeneruje Server vykreslování image a pošle Stream videa do naší aplikace.
 
-Vložte následující kód do skriptu *RemoteRendering* a odeberte staré verze duplicitních funkcí:
+Do skriptu *RemoteRendering* vložte následující kód a odstraňte staré verze duplicitních funkcí:
 
 ```csharp
     private bool isConnected = false;
@@ -553,23 +553,23 @@ Vložte následující kód do skriptu *RemoteRendering* a odeberte staré verze
 #endif
 ```
 
-Chcete-li tuto funkci otestovat:
+K otestování této funkce:
 
-1. Stiskněte **tlačítko Přehrát** v jednotě.
-1. Otevření relace:
-    1. Pokud již máte relaci, stiskněte **dotaz na aktivní relace** a potom použijte existující **relaci**.
-    1. V opačném případě stiskněte **klávesu Create Session**.
-1. Stiskněte **klávesu Connect**.
-1. Po několika sekundách by měl výstup konzoly vytisknout, že jste připojeni.
-1. Prozatím by se nic jiného nemělo stát.
-1. Stiskněte **tlačítko Odpojit** nebo zastavit režim přehrávání Unity.
+1. Stiskněte **Přehrát** v Unity.
+1. Otevřete relaci:
+    1. Pokud už máte relaci, stiskněte **dotaz na aktivní relace** a pak **použijte existující relaci**.
+    1. V opačném případě stiskněte **vytvořit relaci**.
+1. Stiskněte **připojit**.
+1. Po několika sekundách by měl výstup konzoly vytisknout, ke kterému jste se připojili.
+1. V současné době by nemělo dojít k žádnému dalšímu.
+1. Stiskněte tlačítko **Odpojit** nebo zastavit režim přehrávání Unity.
 
 >[!NOTE]
-> Více uživatelů může *otevřít* relaci za účelem dotazování na její informace, ale k relaci může být *současně připojen* pouze jeden uživatel. Pokud je již připojen jiný uživatel, připojení se nezdaří s **chybou handshake**.
+> Několik uživatelů může *otevřít* relaci pro dotazování na příslušné informace, ale v jednom okamžiku může být k relaci *připojen* pouze jeden uživatel. Pokud je již připojen jiný uživatel, připojení selže a dojde k **chybě handshake**.
 
 ## <a name="load-a-model"></a>Načtení modelu
 
-Vložte následující kód do skriptu *RemoteRendering* a odeberte staré verze duplicitních funkcí:
+Do skriptu *RemoteRendering* vložte následující kód a odstraňte staré verze duplicitních funkcí:
 
 ```csharp
 
@@ -724,20 +724,20 @@ Vložte následující kód do skriptu *RemoteRendering* a odeberte staré verze
 #endif
 ```
 
-Když nyní stisknete tlačítko Přehrát, otevřete relaci a připojíte se k ní, zobrazí se tlačítko **Načíst model.** Po kliknutí na něj se na výstupu konzoly zobrazí průběh načítání a když dosáhne 100%, měli byste vidět model motoru:
+Když nyní stisknete tlačítko Přehrát, otevřete relaci a připojíte se k ní, zobrazí se tlačítko **model zatížení** . Po kliknutí na výstup konzoly se zobrazí průběh načítání a když dosáhne 100%, měl by se zobrazit model motoru:
 
 ![Model načtený v editoru](media/model-loaded-replace-me.png)
 
-[WorldAnchor](https://docs.unity3d.com/ScriptReference/XR.WSA.WorldAnchor.html) je důležitou součástí používanou pro [stabilitu hologramu](https://docs.microsoft.com/windows/mixed-reality/hologram-stability). Však bude mít vliv pouze při nasazení na zařízení se smíšenou realitou.
+[WorldAnchor](https://docs.unity3d.com/ScriptReference/XR.WSA.WorldAnchor.html) je důležitou součástí, která se používá pro [stabilitu hologramů](https://docs.microsoft.com/windows/mixed-reality/hologram-stability). Projeví se to ale jenom v případě, že se nasadí na zařízení se smíšeným realitou.
 
 > [!TIP]
-> Pokud jste postupovali podle [úvodního panelu: Převést model pro vykreslování](../../quickstarts/convert-model.md), už víte, jak převést své vlastní modely. Vše, co nyní musíte udělat, abyste jej vykreslovali, je umístit identifikátor URI do převedeného modelu do vlastnosti *Název modelu.*
+> Pokud jste sledovali [rychlý Start: převod modelu pro vykreslování](../../quickstarts/convert-model.md), již víte, jak převést vlastní modely. Vše, co je potřeba udělat, abyste ho mohli vykreslit, je vložit identifikátor URI do převedeného modelu do vlastnosti *název modelu* .
 
 ## <a name="display-frame-statistics"></a>Zobrazit statistiku snímků
 
-Azure Remote Rendering sleduje různé informace o kvalitě připojení. Chcete-li zobrazit tyto informace, postupujte takto:
+Vzdálené vykreslování Azure sleduje různé informace o kvalitě připojení. Rychlý způsob zobrazení těchto informací:
 
-Vytvořte [nový skript](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html) a dát mu název **RemoteFrameStats**. Otevřete soubor skriptu a nahraďte celý jeho obsah níže uvedenou kódem:
+Vytvořte [Nový skript](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html) a pojmenujte ho **RemoteFrameStats**. Otevřete soubor skriptu a nahraďte jeho celý obsah následujícím kódem:
 
 ```csharp
 using Microsoft.Azure.RemoteRendering;
@@ -778,29 +778,29 @@ public class RemoteFrameStats : MonoBehaviour
 }
 ```
 
-Vytvořte GameObject a pojmenujte jej *FrameStats*. Připojte jej jako podřízený uzel k objektu *hlavní kamery* a nastavte jeho polohu na **x = 0, y = 0, z = 0,325**. Přidejte do objektu komponentu **RemoteFrameStats.**
+Vytvořte GameObject a pojmenujte ho *FrameStats*. Připojte ho jako podřízený uzel k objektu *hlavního fotoaparátu* a nastavte jeho polohu na **x = 0, y = 0, z = 0,325**. Přidejte komponentu **RemoteFrameStats** do objektu.
 
-Přidejte podřízený objekt **> základního rozhraní** do objektu *FrameStats* a nastavte jeho vlastnosti takto:
+Do objektu *FrameStats* přidejte podřízený objekt **> uživatelského rozhraní** a nastavte jeho vlastnosti takto:
 
 ![vlastnosti plátna](media/framestats-canvas.png)
 
-Přidejte objekt **> textu ui** jako podřízený objekt plátna a nastavte jeho vlastnosti takto:
+Přidejte **uživatelské rozhraní > textový** objekt jako podřízený prvek plátna a nastavte jeho vlastnosti takto:
 
 ![vlastnosti textu](media/framestats-text.png)
 
-Vyberte objekt *FrameStats* a naplňte **pole FrameStats** kliknutím na ikonu kruhu a **výběrem** textového objektu:
+Vyberte objekt *FrameStats* a naplňte **pole FrameStats** kliknutím na ikonu kruhu a výběrem **textového** objektu:
 
-![nastavení vlastnosti textu](media/framestats-set-text.png)
+![nastavení vlastnosti text](media/framestats-set-text.png)
 
-Nyní, když jste připojeni ke vzdálené relaci, měl by text zobrazit statistiky streamování:
+Teď, když se připojíte ke vzdálené relaci, text by měl zobrazovat statistiky streamování:
 
 ![výstup statistik snímků](media/framestats-output.png)
 
-Kód zakáže aktualizaci statistik mimo editor, protože textové pole s uzamčeným hlavou by bylo rušivé. V projektu [Rychlého startu](../../quickstarts/render-model.md) se nachází složitější implementace.
+Kód zakáže aktualizaci statistiky mimo editor, protože textové pole zamčené záhlaví by bylo odvoláno. Propracovanější implementace je k dispozici v projektu [rychlý Start](../../quickstarts/render-model.md) .
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili všechny kroky nezbytné k provedení prázdného projektu Unity a jeho práci s vzdáleným vykreslováním Azure. V dalším kurzu se blíže podíváme na to, jak pracovat se vzdálenými entitami.
+V tomto kurzu jste se dozvěděli o všech krocích nutných k vytvoření prázdného projektu Unity a k jeho fungování při vzdáleném vykreslování Azure. V dalším kurzu se podíváme na to, jak pracovat se vzdálenými entitami.
 
 > [!div class="nextstepaction"]
-> [Kurz: Práce se vzdálenými entitami v Unity](working-with-remote-entities.md)
+> [Kurz: práce se vzdálenými entitami v Unity](working-with-remote-entities.md)

@@ -1,7 +1,7 @@
 ---
-title: Přeškolit modely pomocí návrháře Azure Machine Learning (preview)
+title: Přeučení modelů pomocí návrháře Azure Machine Learning (Preview)
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak rekvalifikovat modely s publikovanými kanály v návrháři Azure Machine Learning (preview).
+description: Naučte se přeškolovat modely pomocí publikovaných kanálů v Návrháři Azure Machine Learning (Preview).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,120 +10,120 @@ ms.author: keli19
 author: likebupt
 ms.date: 04/06/2020
 ms.openlocfilehash: 721e5414fc4753cd5d58a17fc7ed51ea99868778
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80810346"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Přeučování modelů s využitím návrháře služby Azure Machine Learning (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-V tomto článku s návody se dozvíte, jak pomocí návrháře Azure Machine Learning použít k přeškolení modelu strojového učení. Publikované kanály použijete k automatizaci pracovního postupu a nastavení parametrů pro trénování modelu na nových datech. 
+V tomto článku se dozvíte, jak pomocí návrháře Azure Machine Learning znovu naučit model strojového učení. Publikované kanály použijete k automatizaci pracovního postupu a nastavení parametrů, abyste mohli svůj model proškolit na nových datech. 
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Trénování modelu strojového učení.
+> * Naučte se model strojového učení.
 > * Vytvořte parametr kanálu.
-> * Publikujte svůj tréninkový kanál.
-> * Přeškolte model novými parametry.
+> * Publikujte svůj školicí kanál.
+> * Přeškolení modelu o nové parametry.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pracovní prostor Azure Machine Learning s podnikovou skladovou položkou.
-* Datová sada přístupná návrháři. To může být jeden z následujících:
-   * Registrovaná datová sada Azure Machine Learning
+* Pracovní prostor Azure Machine Learning s SKU Enterprise.
+* Datová sada, která je pro návrháře přístupná. Může to být jedna z následujících možností:
+   * Azure Machine Learning registrovaná datová sada
     
-     **-nebo-**
+     **ani**
    * Datový soubor uložený v úložišti dat Azure Machine Learning.
    
-Informace o přístupu k datům pomocí návrháře naleznete v tématu [Jak importovat data do návrháře](how-to-designer-import-data.md).
+Informace o přístupu k datům pomocí návrháře najdete v článku [Jak importovat data do návrháře](how-to-designer-import-data.md).
 
-Tento článek také předpokládá, že máte základní znalosti o vytváření kanálů v návrháři. Pro průvodce úvod, dokončení [kurzu](tutorial-designer-automobile-price-train-score.md). 
+Tento článek také předpokládá, že máte základní znalosti o sestavování kanálů v návrháři. Úvod do průvodce najdete v tomto [kurzu](tutorial-designer-automobile-price-train-score.md). 
 
-### <a name="sample-pipeline"></a>Ukázkový kanál
+### <a name="sample-pipeline"></a>Vzorový kanál
 
-Kanál použitý v tomto článku je změněná verze [Sample 3: Předpověď příjmů](samples-designer.md#classification-samples). Kanál používá modul [Import dat](algorithm-module-reference/import-data.md) namísto ukázkové datové sady, aby vám ukázal, jak trénovat modely pomocí vlastních dat.
+Kanál použitý v tomto článku je upravená verze [Sample 3: předpověď příjmů](samples-designer.md#classification-samples). Kanál používá místo ukázkové datové sady modul [Import dat](algorithm-module-reference/import-data.md) , který vám ukáže, jak naučit modely pomocí vlastních dat.
 
-![Snímek obrazovky s upraveným ukázkovým kanálem s rámečkem zvýrazňujícím modul Import dat](./media/how-to-retrain-designer/modified-sample-pipeline.png)
+![Snímek obrazovky zobrazující upravený vzorový kanál s polem, které zvýrazní modul importu dat](./media/how-to-retrain-designer/modified-sample-pipeline.png)
 
 ## <a name="create-a-pipeline-parameter"></a>Vytvoření parametru kanálu
 
-Vytvořte parametry kanálu pro dynamické nastavení proměnných za běhu. V tomto příkladu změníte cestu trénovací data z pevné hodnoty na parametr, takže můžete přeškolit model na různá data.
+Vytvořte parametry kanálu pro dynamické nastavení proměnných za běhu. V tomto příkladu změníte cestu školicích dat z pevné hodnoty na parametr, abyste mohli model přeškolit na různá data.
 
-1. Vyberte modul **Importovat data.**
+1. Vyberte modul **Import dat** .
 
     > [!NOTE]
-    > Tento příklad používá import dat modul pro přístup k datům v registrovanéúložiště dat. Můžete však postupovat podle podobných kroků, pokud používáte alternativní vzory přístupu k datům.
+    > V tomto příkladu se používá modul importu dat pro přístup k datům v registrovaném úložišti dat. Pokud však používáte alternativní vzory přístupu k datům, můžete postupovat podle podobných kroků.
 
-1. V podokně podrobností modulu vyberte vpravo od plátna zdroj dat.
+1. V podokně podrobností modulu napravo od plátna vyberte zdroj dat.
 
-1. Zadejte cestu k datům. Můžete také vybrat **procházet cestu** procházet strom souborů. 
+1. Zadejte cestu k datům. Můžete také vybrat **Procházet cesta** pro procházení stromu souborů. 
 
-1. Najeďte myší na pole **Cesta** a vyberte tři tečky nad polem **Cesta,** které se zobrazí.
+1. MouseOver pole **cesta** a vyberte tři tečky nad polem **cesta** , která se zobrazí.
 
     ![Snímek obrazovky, který ukazuje, jak vytvořit parametr kanálu](media/how-to-retrain-designer/add-pipeline-parameter.png)
 
-1. Vyberte **Přidat do parametru kanálu**.
+1. Vyberte možnost **Přidat do parametru kanálu**.
 
 1. Zadejte název parametru a výchozí hodnotu.
 
    > [!NOTE]
-   > Parametry kanálu můžete zkontrolovat a upravit tak, že vedle názvu pracovní verze kanálu vyberete ikonu Ozubená kola **Nastavení.** 
+   > Parametry kanálu můžete zkontrolovat a upravit výběrem ikony **Nastavení** ozubeného kola vedle názvu konceptu kanálu. 
 
 1. Vyberte **Uložit**.
 
-1. Odešlete spuštění kanálu.
+1. Odešlete běh kanálu.
 
-## <a name="find-a-trained-model"></a>Vyhledání trénovaného modelu
+## <a name="find-a-trained-model"></a>Najít trained model
 
-Návrhář uloží veškerý výstup kanálu, včetně trénovaných modelů, do výchozího účtu úložiště pracovního prostoru. K trénovaným modelům můžete také přistupovat přímo v návrháři:
+Návrhář uloží výstup kanálu včetně školených modelů do výchozího účtu úložiště pracovního prostoru. K vyškolené modely můžete také přistupovat přímo v Návrháři:
 
-1. Počkejte na dokončení spuštění kanálu.
-1. Vyberte modul **Model vlaku.**
-1. V podokně podrobností modulu vpravo od plátna vyberte **Výstupy + protokoly**.
-1. Model najdete v **jiných výstupech** spolu s protokoly spuštění.
-1. Případně vyberte ikonu **Zobrazit výstup.** Zde můžete podle pokynů v dialogovém okně přejít přímo do úložiště dat. 
+1. Počkejte na dokončení běhu kanálu.
+1. Vyberte modul **vlakového modelu** .
+1. V podokně podrobností modulu napravo od plátna vyberte **výstupy + protokoly**.
+1. Model můžete najít v **dalších výstupech** společně s protokoly spuštění.
+1. Případně vyberte ikonu **Zobrazit výstup** . Odtud můžete postupovat podle pokynů v dialogovém okně a přejít přímo do úložiště dat. 
 
-![Snímek obrazovky, který ukazuje, jak stáhnout trénovaný model](./media/how-to-retrain-designer/trained-model-view-output.png)
+![Snímek obrazovky, který ukazuje stažení naučeného modelu](./media/how-to-retrain-designer/trained-model-view-output.png)
 
-## <a name="publish-a-training-pipeline"></a>Publikování kanálu školení
+## <a name="publish-a-training-pipeline"></a>Publikování školicího kanálu
 
-Publikujte kanál do koncového bodu kanálu, abyste je v budoucnu snadno znovu použili. Koncový bod kanálu vytvoří koncový bod REST k vyvolání kanálu v budoucnu. V tomto příkladu koncový bod kanálu umožňuje znovu použít kanál k přetrénování modelu na různých datech.
+Publikování kanálu do koncového bodu kanálu, aby bylo možné kanály snadno znovu použít v budoucnu. Koncový bod kanálu vytvoří koncový bod REST pro vyvolání kanálu v budoucnu. V tomto příkladu vám koncový bod kanálu umožňuje znovu použít váš kanál a přeškolit model na různých datech.
 
-1. Nad plátnem návrháře vyberte **Publikovat.**
+1. Na plátně návrháře vyberte **publikovat** .
 1. Vyberte nebo vytvořte koncový bod kanálu.
 
    > [!NOTE]
-   > Do jednoho koncového bodu můžete publikovat více kanálů. Každý kanál v daném koncovém bodě je uveden číslo verze, které můžete zadat při volání koncového bodu kanálu.
+   > Můžete publikovat více kanálů do jednoho koncového bodu. Každému kanálu v daném koncovém bodu je přiděleno číslo verze, které můžete zadat při volání koncového bodu kanálu.
 
 1. Vyberte **Publikovat**.
 
-## <a name="retrain-your-model"></a>Přeškolit model
+## <a name="retrain-your-model"></a>Přeškolování modelu
 
-Teď, když máte publikovaný kanál školení, můžete jej použít k přetrénování modelu na nová data. Spuštění můžete odeslat z koncového bodu kanálu z pracovního prostoru studia nebo programově.
+Teď, když máte publikovaný školicí kanál, můžete ho použít k revýuce modelu na nová data. Spuštění můžete odeslat z koncového bodu kanálu z pracovního prostoru studia nebo programově.
 
-### <a name="submit-runs-by-using-the-designer"></a>Odeslat spuštění pomocí návrháře
+### <a name="submit-runs-by-using-the-designer"></a>Odeslat běh pomocí návrháře
 
-Pomocí následujících kroků odešlete parametrizované koncového bodu kanálu z návrháře:
+Pomocí následujícího postupu odešlete parametrizované spuštění koncového bodu kanálu z návrháře:
 
-1. Přejděte na stránku **Koncové body** v pracovním prostoru studia.
-1. Vyberte kartu **Koncové body kanálu.** Potom vyberte koncový bod kanálu.
-1. Vyberte kartu **Publikované kanály.** Potom vyberte verzi kanálu, kterou chcete spustit.
+1. V pracovním prostoru studia přejdete na stránku **koncové body** .
+1. Vyberte kartu **koncové body kanálu** . Pak vyberte svůj koncový bod kanálu.
+1. Vyberte kartu **publikované kanály** . Pak vyberte verzi kanálu, kterou chcete spustit.
 1. Vyberte **Odeslat**.
-1. V dialogovém okně nastavení můžete zadat hodnoty parametrů pro spuštění. V tomto příkladu aktualizujte datovou cestu pro trénování modelu pomocí datové sady mimo USA.
+1. V dialogovém okně nastavení můžete zadat hodnoty parametrů pro spuštění. V tomto příkladu aktualizujte cestu k datům pro vytvoření modelu pomocí datové sady, která není US.
 
-![Snímek obrazovky, který ukazuje, jak nastavit parametrizovaný kanál spustit v návrháři](./media/how-to-retrain-designer/published-pipeline-run.png)
+![Snímek obrazovky, který ukazuje, jak nastavit spuštění parametrizovaného kanálu v Návrháři](./media/how-to-retrain-designer/published-pipeline-run.png)
 
-### <a name="submit-runs-by-using-code"></a>Odeslat spuštění pomocí kódu
+### <a name="submit-runs-by-using-code"></a>Odeslat běh pomocí kódu
 
-Koncový bod REST publikovaného kanálu najdete v panelu přehledu. Voláním koncového bodu můžete znovu zařazovat publikovaný kanál.
+Koncový bod REST publikovaného kanálu můžete najít na panelu přehled. Zavoláním koncového bodu můžete publikovaný kanál přesměrovat.
 
-Chcete-li volat REST, potřebujete hlavičku ověřování typu nosiče OAuth 2.0. Informace o nastavení ověřování v pracovním prostoru a vytvoření parametrizovaného volání REST najdete [v tématu Vytvoření kanálu Azure Machine Learning pro dávkové vyhodnocování](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint).
+Chcete-li provést volání REST, budete potřebovat hlavičku ověřování typu Bearer (OAuth 2,0). Informace o nastavení ověřování pro váš pracovní prostor a o tom, jak provést parametrizované volání REST, najdete v tématu [vytvoření kanálu Azure Machine Learning pro dávkové vyhodnocování](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint).
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli, jak vytvořit koncový bod parametrizovaného trénovacího kanálu pomocí návrháře.
+V tomto článku jste zjistili, jak vytvořit parametrizovaný koncový bod školicího kanálu pomocí návrháře.
 
-Úplný návod, jak můžete nasadit model, abyste vytvořili předpovědi, najdete v [kurzu návrháře,](tutorial-designer-automobile-price-train-score.md) kde můžete trénovat a nasazovat regresní model.
+Úplný návod, jak nasadit model a vytvořit předpovědi, najdete v [kurzu návrháře](tutorial-designer-automobile-price-train-score.md) , který vám umožní naučit a nasazovat regresní model.

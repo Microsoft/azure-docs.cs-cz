@@ -1,44 +1,44 @@
 ---
-title: Návrh pro jazyk - QnA Maker
-description: Prostředek QnA Maker a všechny znalostní báze uvnitř tohoto prostředku podporují jeden jazyk. Jeden jazyk je nezbytné poskytnout nejlepší výsledky odpovědi pro dotaz.
+title: Návrh pro jazykově QnA Maker
+description: Prostředek QnA Maker a všechny znalostní báze uvnitř tohoto prostředku podporují jeden jazyk. Jeden jazyk je nutný k tomu, aby poskytoval nejlepší výsledky odpovědi pro dotaz.
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: 5cb1dcd35649debbafd2e234606ad4c9d6906ea6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76843417"
 ---
 # <a name="design-knowledge-base-for-content-language"></a>Návrh znalostní báze pro jazyk obsahu
 
-Prostředek QnA Maker a všechny znalostní báze uvnitř tohoto prostředku podporují jeden jazyk. Jeden jazyk je nezbytné poskytnout nejlepší výsledky odpovědi pro dotaz.
+Prostředek QnA Maker a všechny znalostní báze uvnitř tohoto prostředku podporují jeden jazyk. Jeden jazyk je nutný k tomu, aby poskytoval nejlepší výsledky odpovědi pro dotaz.
 
-## <a name="single-language-per-resource"></a>Jeden jazyk na zdroj
+## <a name="single-language-per-resource"></a>Jeden jazyk na prostředek
 
-Důležité informace o qnA makeru pro jazykovou podporu:
+QnA Maker posouzení pro jazykovou podporu:
 
-* Služba QnA Maker a všechny její znalostní báze podporují pouze jeden jazyk.
-* Jazyk je explicitně nastaven při vytvoření první znalostní báze služby.
-* Jazyk je určen ze souborů a adres URL přidaných při vytvoření znalostní báze.
-* Jazyk nelze změnit pro žádné jiné znalostní báze ve službě
-* Jazyk je používán službou Cognitive Search (ranker #1) a službou QnA Maker (ranker #2) ke generování nejlepší odpovědi na dotaz
+* Služba QnA Maker a všechny její základy znalostní báze podporují jenom jeden jazyk.
+* Jazyk se explicitně nastaví, když se vytvoří první znalostní báze služby.
+* Jazyk se určí ze souborů a adres URL přidaných při vytváření znalostní báze.
+* Jazyk není možné změnit pro žádné jiné znalostní báze ve službě.
+* Jazyk používá služba Kognitivní hledání (#1 Rank) a služba QnA Maker (#2 Rank) k vygenerování nejlepší odpovědi na dotaz.
 
 ## <a name="supporting-multiple-languages"></a>Podpora více jazyků
 
-Pokud potřebujete podporovat systém znalostní báze, který obsahuje několik jazyků, můžete zvolit jednu z následujících metod:
+Pokud potřebujete podporovat systém znalostní báze, který obsahuje několik jazyků, můžete vybrat jednu z následujících metod:
 
-* Službu [Překlad textu](../../translator/translator-info-overview.md) slouží k překladu otázky do jednoho jazyka před odesláním otázky do znalostní báze. To vám umožní zaměřit se na kvalitu jednoho jazyka a kvalitu alternativních otázek a odpovědí.
-* Vytvořte prostředek QnA Maker a znalostní bázi uvnitř tohoto prostředku pro každý jazyk. To umožňuje spravovat samostatné alternativní otázky a odpovídat na text, který je více nuancí pro každý jazyk. To vám dává mnohem větší flexibilitu, ale vyžaduje mnohem vyšší náklady na údržbu, když se otázky nebo odpovědi změní ve všech jazycích.
+* Před odesláním otázky do znalostní báze použijte [službu překladu textu](../../translator/translator-info-overview.md) k překladu otázky do jednoho jazyka. To vám umožní zaměřit se na kvalitu jednoho jazyka a kvality alternativních otázek a odpovědí.
+* Vytvořte prostředek QnA Maker a v rámci tohoto prostředku znalostní bázi pro každý jazyk. Díky tomu můžete spravovat samostatné alternativní otázky a text odpovědi, který je pro jednotlivé jazyky odlišitější. Díky tomu získáte mnohem větší flexibilitu, ale při změně otázek a odpovědí napříč všemi jazyky potřebujete mnohem vyšší náklady na údržbu.
 
-Zkontrolujte [jazyky podporované](../overview/language-support.md) pro QnA Maker.
+Přečtěte si [jazyky podporované](../overview/language-support.md) pro QnA maker.
 
-### <a name="support-each-language-with-a-qna-maker-resource"></a>Podpora každého jazyka pomocí zdroje QnA Maker
+### <a name="support-each-language-with-a-qna-maker-resource"></a>Podpora jednotlivých jazyků pomocí QnA Makerho prostředku
 
-* Vytvoření prostředku QnA Maker pro každý jazyk
-* Přidávat pouze soubory a adresy URL pro tento jazyk
-* K identifikaci jazyka použijte konvenci pojmenování prostředku. Příkladem jsou `qna-maker-fr` všechny znalostní báze pro francouzské dokumenty
+* Vytvořit prostředek QnA Maker pro všechny jazyky
+* Přidat jenom soubory a adresy URL pro daný jazyk
+* K identifikaci jazyka použijte zásady vytváření názvů prostředků. Příklad je `qna-maker-fr` pro všechny znalostní báze pro francouzské dokumenty.
 
 ## <a name="next-steps"></a>Další kroky
 
-Seznamte se s [koncepty,](query-knowledge-base.md) jak získat odpověď na znalostní bázi Knowledge Base.
+Přečtěte si o [konceptech](query-knowledge-base.md) dotazování znalostní báze na odpověď.

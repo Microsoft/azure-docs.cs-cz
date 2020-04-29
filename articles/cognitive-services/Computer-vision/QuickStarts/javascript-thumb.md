@@ -12,32 +12,32 @@ ms.date: 03/26/2020
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 2485794d9ec1ce78a8916014dc1117ed59c34e44
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80656068"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-javascript"></a>Úvodní příručka: Vygenerujte miniaturu pomocí rozhraní API PRO ODPOČINEK v počítači a javascriptu
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-javascript"></a>Rychlý Start: vygenerování miniatury pomocí Počítačové zpracování obrazu REST API a JavaScriptu
 
-V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí rozhraní API PRO ODPOČINEK v počítači. Určíte výšku a šířku, která se může lišit v poměru stran od vstupního obrazu. Počítačové vidění využívá inteligentní oříznutí k inteligentní identifikaci oblasti zájmu a generování souřadnic oříznutí na základě této oblasti.
+V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí REST API Počítačové zpracování obrazu. Určíte výšku a šířku, což se může lišit v poměru stran od vstupní bitové kopie. Počítačové zpracování obrazu používá inteligentní ořezávání k inteligentně identifikaci oblasti zájmu a generování souřadnic oříznutí na základě této oblasti.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít klíč předplatného pro počítačové zpracování obrazu. Můžete získat bezplatný zkušební klíč od [try cognitive services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Nebo postupujte podle pokynů v [tématu Vytvoření účtu služeb Cognitive Services,](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) abyste se přihlásili k odběru počítačového vidění a získali klíč. Uložte klíč předplatného a adresu URL koncového bodu do dočasného umístění.
+Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Uložte klíč předplatného a adresu URL koncového bodu do dočasného umístění.
 
 ## <a name="create-and-run-the-sample"></a>Vytvoření a spuštění ukázky
 
 Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
-1. Vytvořte soubor s názvem _get-thumbnail.html_, otevřete jej v textovém editoru a zkopírujte do něj následující kód.
-1. Volitelně můžete nahradit hodnotu `value` atributu `inputImage` ovládacího prvku adresou URL jiného obrázku, který chcete analyzovat.
+1. Vytvořte soubor s názvem _Get-Thumbnail. html_, otevřete ho v textovém editoru a zkopírujte do něj následující kód.
+1. V případě potřeby nahraďte hodnotu `value` atributu `inputImage` ovládacího prvku adresou URL jiného obrázku, který chcete analyzovat.
 1. Otevřete okno prohlížeče.
 1. Přetáhněte daný soubor do okna prohlížeče.
-1. Když se webová stránka zobrazí v prohlížeči, vložte klíč předplatného a adresu URL koncového bodu do příslušných vstupních polí.
-1. Nakonec vyberte tlačítko **Generovat miniaturu.**
+1. Po zobrazení webové stránky v prohlížeči vložte klíč předplatného a adresu URL koncového bodu do příslušných vstupních polí.
+1. Nakonec vyberte tlačítko **Generovat miniaturu** .
 
 ```html
 <!DOCTYPE html>

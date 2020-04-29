@@ -1,59 +1,59 @@
 ---
-title: Jak personalizace funguje - Personalizace
-description: Smyčka _Personalizátor_ používá strojové učení k vytvoření modelu, který předpovídá nejvyšší akci pro váš obsah. Model je trénován výhradně na vašich datech, které jste mu poslali pomocí volání Hodnost a odměny.
+title: Jak přizpůsobovat funkce přizpůsobování
+description: _Smyčka_ přizpůsobování využívá Machine Learning k sestavení modelu, který předpovídá hlavní akci pro váš obsah. Model je vyškolen výhradně na vašich datech, která jste jim poslali pomocí volání pořadí a odměny.
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: 836c207213ac52a60e27da6fc957418187059023
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77623755"
 ---
 # <a name="how-personalizer-works"></a>Jak služba Personalizace funguje
 
-Personalizátor zdroj, _vaše učení smyčky_, používá strojové učení k vytvoření modelu, který předpovídá nejlepší akce pro váš obsah. Model je trénován výhradně na vašich datech, které jste mu poslali pomocí volání **Hodnost** a **odměny.** Každá smyčka je zcela nezávislá na sobě.
+Prostředek pro přizpůsobování, vaše _výuková smyčka_, využívá Machine Learning k sestavení modelu, který předpovídá hlavní akci pro váš obsah. Model je vyškolen výhradně na vašich datech, která jste jim poslali pomocí volání **pořadí** a **odměny** . Každá smyčka je zcela nezávislá na sobě.
 
-## <a name="rank-and-reward-apis-impact-the-model"></a>Api pro hodnocení a odměny ovlivňují model
+## <a name="rank-and-reward-apis-impact-the-model"></a>Rozhraní API pro pořadí a odměňování ovlivní model
 
-Do rozhraní API hodnocení odesíláte _akce s funkcemi_ a _kontextovými funkcemi._ **Rozhraní RANK** API se rozhodne použít buď:
+Do rozhraní API pro řazení můžete odesílat _akce s funkcemi_ a _kontextovou funkcí_ . Rozhraní API **pořadí** se rozhodne použít buď:
 
-* _Exploit_: Aktuální model pro rozhodnutí o nejlepší akci na základě minulých dat.
-* _Prozkoumat_: Vyberte jinou akci místo horní akce. [Toto procento nakonfigurujete](how-to-settings.md#configure-exploration-to-allow-the-learning-loop-to-adapt) pro prostředek personalisty na webu Azure Portal.
+* _Zneužití_: aktuální model pro určení nejlepší akce na základě minulých dat.
+* _Prozkoumejte_: Vyberte jinou akci namísto horní akce. [Toto procento nakonfigurujete](how-to-settings.md#configure-exploration-to-allow-the-learning-loop-to-adapt) pro prostředek přizpůsobeného v Azure Portal.
 
-Určíte skóre odměny a odešlete toto skóre do rozhraní API pro odměny. Bonus **API:**
+Určíte skóre odměňování a odešlete toto skóre do API pro odměnu. API pro **odměnu** :
 
-* Shromažďuje data pro trénování modelu zaznamenáváním funkcí a odměňují skóre každého volání hodnosti.
-* Tato data použije k aktualizaci modelu na základě konfigurace zadané v _zásadách učení_.
+* Shromažďuje data pro výuku modelu pomocí zaznamenávání funkcí a odměňování skóre každého volání pořadí.
+* Tato data používá k aktualizaci modelu na základě konfigurace zadané v _zásadách Učení_.
 
-## <a name="your-system-calling-personalizer"></a>Váš systém volá Personalikátor
+## <a name="your-system-calling-personalizer"></a>Vlastní přizpůsobování volání systému
 
-Následující obrázek znázorňuje architektonický tok volání rank a odměny:
+Následující obrázek ukazuje architekturu pro volání pořadí a odměny:
 
-![alternativní text](./media/how-personalizer-works/personalization-how-it-works.png "Jak individuální nastavení funguje")
+![alternativní text](./media/how-personalizer-works/personalization-how-it-works.png "Jak funguje přizpůsobení")
 
-1. Do rozhraní API hodnocení odesíláte _akce s funkcemi_ a _kontextovými funkcemi._
+1. Do rozhraní API pro řazení můžete odesílat _akce s funkcemi_ a _kontextovou funkcí_ .
 
-    * Personalizátor rozhodne, zda chcete zneužít aktuální model nebo prozkoumat nové možnosti pro model.
-    * Výsledek hodnocení je odeslán na EventHub.
-1. Nejvyšší hodnost se vrací do vašeho systému jako _ID akce odměny_.
-    Váš systém prezentuje tento obsah a určuje skóre odměny na základě vašich vlastních obchodních pravidel.
-1. Váš systém vrátí skóre odměny do výukové smyčky.
-    * Když personalizátor obdrží odměnu, odměna se odešle na EventHub.
-    * Hodnost a odměna jsou v korelaci.
-    * Model AI je aktualizován na základě výsledků korelace.
-    * Modul odvození je aktualizován s novým modelem.
+    * Přizpůsobování určuje, jestli se má zneužít aktuální model, nebo prozkoumat nové volby modelu.
+    * Výsledky hodnocení se odesílají do centra EventHub.
+1. Nejvyšší pořadí se vrátí do vašeho systému jako _ID akce odměna_.
+    Váš systém prezentuje obsah a určí skóre odměňování podle vašich vlastních obchodních pravidel.
+1. Váš systém vrátí skóre odměňování do výukové smyčky.
+    * Když přizpůsobování obdrží odměnu, bude se tato měna odesílat do centra EventHub.
+    * Rozsah a měna jsou korelační.
+    * Model AI se aktualizuje na základě výsledků korelace.
+    * Odvozený modul se aktualizuje novým modelem.
 
-## <a name="personalizer-retrains-your-model"></a>Personalizace retrains váš model
+## <a name="personalizer-retrains-your-model"></a>Přizpůsobení přeškolí váš model.
 
-Personalizátor retrains váš model na základě **nastavení aktualizace frekvence modelu** na prostředek personalikátor na webu Azure portal.
+Přizpůsobuje váš model na základě nastavení **aktualizace četnosti modelu** na prostředku přizpůsobeného v Azure Portal.
 
-Personalizár používá všechna data, která jsou aktuálně uchována, na základě nastavení **uchovávání dat** v počtu dní na vašem prostředku personalisty na webu Azure Portal.
+Přizpůsobení používá všechna aktuálně zachovaná data na základě nastavení **uchovávání dat** v počtu dnů na prostředku přizpůsobeného v Azure Portal.
 
-## <a name="research-behind-personalizer"></a>Výzkum personalisty
+## <a name="research-behind-personalizer"></a>Výzkum za přizpůsobením
 
-Personalizák je založen na špičkové vědě a výzkumu v oblasti [posilování učení,](concepts-reinforcement-learning.md) včetně dokumentů, výzkumných aktivit a probíhajících oblastí průzkumu v microsoft research.
+Přizpůsobování vychází z špičkové vědy a výzkumu v oblasti [posílení učení](concepts-reinforcement-learning.md) , včetně papírů, výzkumných aktivit a pokračujících oblastí průzkumu v Microsoft Research.
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o [nejlepších scénářích](where-can-you-use-personalizer.md) pro personalizaci
+Další informace o [hlavních scénářích](where-can-you-use-personalizer.md) pro přizpůsobování

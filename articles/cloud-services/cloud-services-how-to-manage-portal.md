@@ -1,6 +1,6 @@
 ---
-title: Běžné úlohy správy cloudových služeb | Dokumenty společnosti Microsoft
-description: Přečtěte si, jak spravovat cloudové služby na webu Azure Portal. Tyto příklady používají portál Azure.
+title: Běžné úkoly správy cloudových služeb | Microsoft Docs
+description: Naučte se spravovat Cloud Services v Azure Portal. V těchto příkladech se používá Azure Portal.
 services: cloud-services
 documentationcenter: ''
 author: tgore03
@@ -9,121 +9,121 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: 80481bc11933b0404079221f23b5054024f00acb
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80811364"
 ---
-# <a name="manage-cloud-services-in-the-azure-portal"></a>Správa cloudových služeb na webu Azure Portal
-V oblasti **Cloudservices** na portálu Azure můžete:
+# <a name="manage-cloud-services-in-the-azure-portal"></a>Správa Cloud Services v Azure Portal
+V **Cloud Services** oblasti Azure Portal můžete:
 
-* Aktualizujte roli služby nebo nasazení.
-* Propagujte fázované nasazení do produkčního prostředí.
-* Propojte prostředky s cloudovou službou, abyste viděli závislosti prostředků a škálovat prostředky společně.
-* Odstraňte cloudovou službu nebo nasazení.
+* Aktualizace role služby nebo nasazení.
+* Zvyšte úroveň dvoufázového nasazení na produkční.
+* Propojte prostředky s vaší cloudovou službou, abyste viděli závislosti prostředků a mohli škálovat prostředky dohromady.
+* Odstraní cloudovou službu nebo nasazení.
 
-Další informace o škálování cloudové služby najdete [v tématu Konfigurace automatickéškálování pro cloudovou službu na portálu](cloud-services-how-to-scale-portal.md).
+Další informace o tom, jak škálovat cloudovou službu, najdete v tématu [Konfigurace automatického škálování pro cloudovou službu na portálu](cloud-services-how-to-scale-portal.md).
 
 ## <a name="update-a-cloud-service-role-or-deployment"></a>Aktualizace role nebo nasazení cloudové služby
-Pokud potřebujete aktualizovat kód aplikace pro cloudovou službu, použijte **update** na okně cloudové služby. Můžete aktualizovat jednu roli nebo všechny role. Chcete-li aktualizovat, můžete nahrát nový balíček služby nebo konfigurační soubor služby.
+Pokud potřebujete aktualizovat kód aplikace pro cloudovou službu, použijte příkaz **aktualizovat** v okně cloudová služba. Můžete aktualizovat jednu roli nebo všechny role. K aktualizaci můžete nahrát nový balíček služby nebo konfigurační soubor služby.
 
-1. Na [webu Azure Portal][Azure portal]vyberte cloudovou službu, kterou chcete aktualizovat. Tento krok otevře okno instance cloudové služby.
+1. V [Azure Portal][Azure portal]Vyberte cloudovou službu, kterou chcete aktualizovat. Tento krok otevře okno instance cloudové služby.
 
-2. Na noži vyberte **Aktualizovat**.
+2. V okně vyberte **aktualizovat**.
 
     ![Tlačítko Aktualizovat](./media/cloud-services-how-to-manage-portal/update-button.png)
 
-3. Aktualizujte nasazení novým souborem balíčku služby (.cspkg) a konfiguračním souborem služby (.cscfg).
+3. Aktualizujte nasazení pomocí nového souboru balíčku služby (. cspkg) a konfiguračního souboru služby (. cscfg).
 
-    ![Aktualizovatnasazení](./media/cloud-services-how-to-manage-portal/update-blade.png)
+    ![UpdateDeployment](./media/cloud-services-how-to-manage-portal/update-blade.png)
 
 4. Volitelně můžete aktualizovat účet úložiště a popisek nasazení.
 
-5. Pokud některé role mají pouze jednu instanci role, zaškrtněte **políčko Nasadit i v případě, že jedna nebo více rolí obsahuje jednu instanci,** aby upgrade mohl pokračovat.
+5. Pokud má kterákoli role jenom jednu instanci role, vyberte **nasadit i v případě, že jedna nebo více rolí obsahuje zaškrtávací políčko jedna instance** , aby bylo možné pokračovat v upgradu.
 
-    Azure může zaručit pouze 99,95 procent dostupnosti služby během aktualizace cloudové služby, pokud každá role má alespoň dvě instance role (virtuální počítače). Se dvěma instancemi rolí jeden virtuální počítač zpracovává požadavky klientů, zatímco druhý je aktualizován.
+    Azure může během aktualizace cloudové služby zaručit jenom 99,95% dostupnost služby, pokud má každá role aspoň dvě instance role (virtuální počítače). U dvou instancí role zpracovává jeden virtuální počítač požadavky klienta, zatímco druhý je aktualizovaný.
 
-6. Zaškrtněte políčko **Zahájit nasazení,** chcete-li aktualizaci nainstalovat po dokončení nahrávání balíčku.
+6. Zaškrtněte políčko **Spustit nasazení** , pokud chcete aktualizaci použít po dokončení nahrávání balíčku.
 
-7. Chcete-li službu začít aktualizovat, vyberte **možnost OK.**
+7. Vyberte **OK** a začněte aktualizovat službu.
 
-## <a name="swap-deployments-to-promote-a-staged-deployment-to-production"></a>Výměna nasazení za účelem podpory fázovaného nasazení v produkčním prostředí
-Když se rozhodnete nasadit novou verzi cloudové služby, fáze a otestovat novou verzi v testovacím prostředí cloudové služby. Pomocí **funkce Swap** můžete přepnout adresy URL, kterými jsou obě nasazení adresována, a propagovat novou verzi v produkčním prostředí.
+## <a name="swap-deployments-to-promote-a-staged-deployment-to-production"></a>Prohození nasazení za účelem zvýšení úrovně dvoufázového nasazení na produkční
+Pokud se rozhodnete nasadit novou verzi cloudové služby, fáze a otestuje novou verzi v přípravném prostředí cloudové služby. Pomocí **swapu** můžete přepínat mezi adresami URL, na které se obě nasazení řeší, a propagovat novou verzi do produkčního prostředí.
 
-Nasazení můžete vyměnit ze stránky **Cloudových služeb** nebo z řídicího panelu.
+Nasazení můžete měnit na stránce **Cloud Services** nebo na řídicím panelu.
 
-1. Na [webu Azure Portal][Azure portal]vyberte cloudovou službu, kterou chcete aktualizovat. Tento krok otevře okno instance cloudové služby.
+1. V [Azure Portal][Azure portal]Vyberte cloudovou službu, kterou chcete aktualizovat. Tento krok otevře okno instance cloudové služby.
 
-2. Na noži vyberte **Zaměnit**.
+2. V okně vyberte **swap**.
 
-    ![Tlačítko Prohození cloudových služeb](./media/cloud-services-how-to-manage-portal/swap-button.png)
+    ![Cloud Services – tlačítko pro přepnutí](./media/cloud-services-how-to-manage-portal/swap-button.png)
 
 3. Otevře se následující výzva k potvrzení:
 
-    ![Výměna cloudových služeb](./media/cloud-services-how-to-manage-portal/swap-prompt.png)
+    ![Cloud Services swap](./media/cloud-services-how-to-manage-portal/swap-prompt.png)
 
-4. Po ověření informací o nasazení vyberte **OK** a zaměťte nasazení.
+4. Po ověření informací o nasazení vyberte **OK** a Proměňte nasazení.
 
-    K odměníní nasazení dochází rychle, protože jediné, co se mění, jsou virtuální IP adresy (VIP) pro nasazení.
+    Výměna nasazení probíhá rychle, protože jediná věc, kterou mění, jsou virtuální IP adresy (VIP) pro nasazení.
 
-    Chcete-li ušetřit výpočetní náklady, můžete odstranit pracovní nasazení po ověření, že vaše produkční nasazení funguje podle očekávání.
+    Chcete-li ušetřit náklady na výpočetní výkon, můžete odstranit pracovní nasazení po ověření, že provozní nasazení funguje podle očekávání.
 
-### <a name="common-questions-about-swapping-deployments"></a>Časté otázky týkající se výměny nasazení
+### <a name="common-questions-about-swapping-deployments"></a>Běžné dotazy týkající se odkládacích nasazení
 
-**Jaké jsou předpoklady pro výměnu nasazení?**
+**Jaké jsou požadavky na swapy nasazení?**
 
-Existují dva klíčové předpoklady pro úspěšné odkládání nasazení:
+Úspěšná výměna nasazení má dva klíčové předpoklady:
 
-- Pokud chcete použít statickou IP adresu pro produkční slot, musíte si ji rezervovat i pro pracovní slot. V opačném případě se swap nezdaří.
+- Pokud chcete pro produkční slot použít statickou IP adresu, musíte rezervovat i pro svůj přípravný slot. V opačném případě se výměna nezdařila.
 
-- Všechny instance rolí musí být spuštěny před provedením prohození. Stav instancí můžete zkontrolovat v okně **Přehled** na portálu Azure. Případně můžete použít příkaz [Get-AzureRole](/powershell/module/servicemanagement/azure/get-azurerole?view=azuresmps-3.7.0) v prostředí Windows PowerShell.
+- Než budete moct provést prohození, musí být spuštěné všechny instance vašich rolí. Stav vašich instancí můžete zjistit v okně **přehled** Azure Portal. Případně můžete použít příkaz [Get-AzureRole](/powershell/module/servicemanagement/azure/get-azurerole?view=azuresmps-3.7.0) ve Windows PowerShellu.
 
-Všimněte si, že aktualizace hostovaného operačního systému a operace léčení služeb také může způsobit selhání zaměřování nasazení. Další informace naleznete [v tématu Poradce při potížích s nasazením cloudové služby](cloud-services-troubleshoot-deployment-problems.md).
+Upozorňujeme, že aktualizace operačního systému hosta a operace Service retušova taky můžou způsobit, že se swapy nasazení nezdaří. Další informace najdete v tématu [řešení problémů s nasazením cloudové služby](cloud-services-troubleshoot-deployment-problems.md).
 
-**Má swap u mé aplikace prostoje? Jak bych to měl zvládnout?**
+**Účtuje se u své aplikace výpadky? Jak ho mám pokládat?**
 
-Jak je popsáno v předchozí části, odkládací nasazení je obvykle rychlé, protože je to jenom změna konfigurace v nástroji pro vyrovnávání zatížení Azure. V některých případech může trvat 10 nebo více sekund a způsobit selhání přechodného připojení. Chcete-li omezit dopad na zákazníky, zvažte implementaci [logiky opakování klienta](../best-practices-retry-general.md).
+Jak je popsáno v předchozí části, prohození nasazení je obvykle rychlé, protože se jedná o změnu konfigurace v nástroji pro vyrovnávání zatížení Azure. V některých případech může trvat 10 nebo více sekund a způsobit selhání při přechodném připojení. Pokud chcete omezit dopad na vaše zákazníky, zvažte implementaci [logiky opakování klienta](../best-practices-retry-general.md).
 
-## <a name="delete-deployments-and-a-cloud-service"></a>Odstranění nasazení a cloudové služby
-Před odstraněním cloudové služby je nutné odstranit každé existující nasazení.
+## <a name="delete-deployments-and-a-cloud-service"></a>Odstranit nasazení a cloudovou službu
+Než budete moct odstranit cloudovou službu, musíte odstranit všechna existující nasazení.
 
-Chcete-li ušetřit výpočetní náklady, můžete odstranit pracovní nasazení po ověření, že vaše produkční nasazení funguje podle očekávání. Účtují se vám výpočetní náklady pro nasazené instance rolí, které jsou zastaveny.
+Chcete-li ušetřit náklady na výpočetní výkon, můžete odstranit pracovní nasazení po ověření, že provozní nasazení funguje podle očekávání. Účtují se vám poplatky za výpočetní výkon pro nasazené instance rolí, které se zastavily.
 
-Pomocí následujícího postupu odstraňte nasazení nebo cloudovou službu.
+Pomocí následujícího postupu můžete odstranit nasazení nebo cloudovou službu.
 
-1. Na [webu Azure Portal][Azure portal]vyberte cloudovou službu, kterou chcete odstranit. Tento krok otevře okno instance cloudové služby.
+1. V [Azure Portal][Azure portal]Vyberte cloudovou službu, kterou chcete odstranit. Tento krok otevře okno instance cloudové služby.
 
-2. Na noži vyberte **Odstranit**.
+2. V okně vyberte **Odstranit**.
 
-    ![Tlačítko Odstranit cloudové služby](./media/cloud-services-how-to-manage-portal/delete-button.png)
+    ![Tlačítko Odstranit Cloud Services](./media/cloud-services-how-to-manage-portal/delete-button.png)
 
-3. Chcete-li odstranit celou cloudovou službu, zaškrtněte políčko **Cloudová služba a její nasazení.** Nebo můžete zvolit buď **produkční nasazení** nebo **pracovní nasazení** zaškrtávací políčko.
+3. Pokud chcete odstranit celou cloudovou službu, zaškrtněte políčko **cloudová služba a její nasazení** . Nebo můžete vybrat buď **produkční nasazení** , nebo pracovní okno **nasazení** .
 
-    ![Odstranění cloudových služeb](./media/cloud-services-how-to-manage-portal/delete-blade.png)
+    ![Odstranit Cloud Services](./media/cloud-services-how-to-manage-portal/delete-blade.png)
 
-4. V dolní části vyberte **Odstranit.**
+4. V dolní části vyberte **Odstranit** .
 
-5. Chcete-li cloudovou službu odstranit, vyberte **odstranit cloudovou službu**. Potom na potvrzovací prompt, vyberte **Ano**.
+5. Cloudovou službu odstraníte tak, že vyberete **Odstranit cloudovou službu**. Pak na výzvu k potvrzení vyberte **Ano**.
 
 > [!NOTE]
-> Při odstranění cloudové služby a podrobné monitorování je nakonfigurován, je nutné odstranit data ručně z účtu úložiště. Informace o tom, kde najít tabulky metrik, najdete [v tématu Úvod do monitorování cloudových služeb](cloud-services-how-to-monitor.md).
+> Po odstranění cloudové služby a konfiguraci podrobného monitorování musíte data z účtu úložiště odstranit ručně. Informace o tom, kde najít tabulky metrik, najdete v tématu [Úvod do monitorování cloudové služby](cloud-services-how-to-monitor.md).
 
 
-## <a name="find-more-information-about-failed-deployments"></a>Další informace o neúspěšných nasazeních
-Okno **Přehled** má nahoře stavový řádek. Když vyberete panel, otevře se nové okno a zobrazí se všechny informace o chybě. Pokud nasazení neobsahuje žádné chyby, informační okno je prázdné.
+## <a name="find-more-information-about-failed-deployments"></a>Najít další informace o neúspěšném nasazení
+Okno **Přehled** má v horní části stavový řádek. Když vyberete pruh, otevře se nové okno a zobrazí se všechny informace o chybě. Pokud nasazení neobsahuje žádné chyby, okno informace je prázdné.
 
-![Přehled cloudových služeb](./media/cloud-services-how-to-manage-portal/status-info.png)
+![Přehled Cloud Services](./media/cloud-services-how-to-manage-portal/status-info.png)
 
 
 
 [Azure portal]: https://portal.azure.com
 
 ## <a name="next-steps"></a>Další kroky
-* [Obecná konfigurace cloudové služby](cloud-services-how-to-configure-portal.md).
+* [Obecná konfigurace cloudové služby](cloud-services-how-to-configure-portal.md)
 * Přečtěte si, jak [nasadit cloudovou službu](cloud-services-how-to-create-deploy-portal.md).
-* Konfigurace [vlastního názvu domény](cloud-services-custom-domain-name-portal.md).
-* Konfigurace [certifikátů TLS/SSL](cloud-services-configure-ssl-certificate-portal.md).
+* Nakonfigurujte [vlastní název domény](cloud-services-custom-domain-name-portal.md).
+* Nakonfigurujte [certifikáty TLS/SSL](cloud-services-configure-ssl-certificate-portal.md).
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: Skript prostředí PowerShell pro získání propustnost (RU/s) pro prostředky rozhraní API Azure Cosmos DB Cassandra
-description: Skript Azure PowerShell – propustnost Azure Cosmos DB get (RU/s) pro rozhraní CASSAndS API
+title: Skript PowerShellu pro získání propustnosti (RU/s) pro prostředky Azure Cosmos DB rozhraní API Cassandra
+description: Azure PowerShell skript – Azure Cosmos DB získat propustnost (RU/s) pro rozhraní API Cassandra
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: f1cae958fce1de000ee4349a2fe8229d69f1a0ae
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80366175"
 ---
-# <a name="get-throughput-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>Získání propustnost (RU/s) pro keyspace nebo tabulka pro Azure Cosmos DB – rozhraní API Cassandra
+# <a name="get-throughput-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>Získat propustnost (RU/s) pro místo na disku nebo tabulku pro Azure Cosmos DB-rozhraní API Cassandra
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -39,8 +39,8 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Get-AzCosmosDBCassandraKeyspacePrůchodput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandrakeyspacethroughput) | Získá hodnotu propustnost zadanécassandra API Keyspace. |
-| [Get-AzCosmosDBCassandraTablePrůchod](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandratablethroughput) | Získá hodnotu propustnost zadané cassandra api tabulka. |
+| [Get-AzCosmosDBCassandraKeyspaceThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandrakeyspacethroughput) | Získá hodnotu propustnosti zadaného rozhraní API Cassandraho prostoru. |
+| [Get-AzCosmosDBCassandraTableThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandratablethroughput) | Získá hodnotu propustnosti zadané rozhraní API Cassandra tabulky. |
 |**Skupiny prostředků Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||

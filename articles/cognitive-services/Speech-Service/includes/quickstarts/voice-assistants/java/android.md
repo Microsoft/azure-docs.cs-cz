@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Vytvoření vlastního hlasového asistenta, Java (Android) - Služba řeči'
+title: 'Rychlý Start: Vytvoření vlastního hlasového asistenta, Java (Android) – Speech Service'
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak vytvořit vlastního hlasového asistenta v Jazyce Java v Systému Android pomocí sady Speech SDK.
+description: Naučte se vytvořit vlastního hlasového asistenta v jazyce Java v Androidu pomocí sady Speech SDK.
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
 ms.openlocfilehash: 8a1dd07fd567f41c2b406aabccd0421b5a6983af
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80671814"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, že:
+Než začnete, nezapomeňte:
 
 > [!div class="checklist"]
-> * [Vytvoření prostředku řeči Azure](~/articles/cognitive-services/speech-service/get-started.md)
+> * [Vytvoření prostředku Azure Speech](~/articles/cognitive-services/speech-service/get-started.md)
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=android&pivots=programming-language-java)
-> * Vytvoření robota připojeného ke [kanálu řeči přímé čáry](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
-> * Ujistěte se, že máte přístup k mikrofonu pro snímání zvuku
+> * Vytvoření robota připojeného k [kanálu pro přímý vstup řeči](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+> * Ujistěte se, že máte přístup k mikrofonu pro záznam zvuku
 
   > [!NOTE]
-  > Informace o tom, že hlasové asistenty nasadíte v jedné z těchto oblastí, naleznete v [seznamu podporovaných oblastí.](~/articles/cognitive-services/speech-service/regions.md#voice-assistants)
+  > Přečtěte si [seznam podporovaných oblastí pro hlasové asistenty](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) a zajistěte, aby byly prostředky nasazeny v jedné z těchto oblastí.
 
 ## <a name="create-and-configure-a-project"></a>Vytvoření a konfigurace projektu
 
@@ -36,9 +36,9 @@ Než začnete, ujistěte se, že:
 
 ## <a name="create-user-interface"></a>Vytvoření uživatelského rozhraní
 
-V této části vytvoříme základní uživatelské rozhraní (UI) pro aplikaci. Začněme otevřením hlavní činnosti: `activity_main.xml`. Základní šablona obsahuje záhlaví s názvem aplikace a `TextView` se zprávou "Hello world!".
+V této části vytvoříme pro aplikaci základní uživatelské rozhraní (UI). Pojďme začít otevřením hlavní aktivity: `activity_main.xml`. Základní šablona obsahuje záhlaví s názvem aplikace a `TextView` zprávu "Hello World!".
 
-Dále nahraďte obsah `activity_main.xml` následujícího kódu:
+Dále nahraďte obsah `activity_main.xml` následujícím kódem:
 
    ```xml
    <?xml version="1.0" encoding="utf-8"?>
@@ -87,13 +87,13 @@ Dále nahraďte obsah `activity_main.xml` následujícího kódu:
    </LinearLayout>
    ```
 
-Tento kód XML definuje jednoduché rozhraní pro interakci s robotem.
+Tento kód XML definuje jednoduché uživatelské rozhraní pro interakci s robotem.
 
-- Prvek `button` iniciuje interakci `onBotButtonClicked` a vyvolá metodu po klepnutí.
-- Prvek `recoText` zobrazí výsledky řeči na text, když mluvíte s botem.
-- Prvek `activityText` zobrazí datovou část JSON pro nejnovější aktivitu Bot Framework od vašeho robota.
+- `button` Element zahájí interakci a při kliknutí vyvolá `onBotButtonClicked` metodu.
+- `recoText` Element zobrazí výsledky převodu řeči na text při komunikaci s robotem.
+- `activityText` Element zobrazí datovou část JSON pro nejnovější aktivitu rozhraní robota z vaší robota.
 
-Text a grafické znázornění uživatelského rozhraní by teď měly vypadat takto:
+Text a grafická reprezentace vašeho uživatelského rozhraní by teď měla vypadat takto:
 
 ![](~/articles/cognitive-services/speech-service/media/sdk/qs-java-android-assistant-designer-ui.png)
 
@@ -241,31 +241,31 @@ Text a grafické znázornění uživatelského rozhraní by teď měly vypadat t
     }
    ```
 
-   * Metoda `onCreate` obsahuje kód, který požaduje oprávnění mikrofonu a internetu.
+   * `onCreate` Metoda zahrnuje kód, který žádá o přístup přes mikrofon a Internet.
 
-   * Metoda `onBotButtonClicked` je obslužná rutina pro kliknutí na tlačítko, jak bylo uvedeno výše. Stisknutí tlačítka spustí jednu interakci ("turn") s vaším robotem.
+   * Metoda `onBotButtonClicked` je obslužná rutina pro kliknutí na tlačítko, jak bylo uvedeno výše. Stisknutí tlačítka aktivuje jednu interakci ("turn") s robotem.
 
-   * Metoda `registerEventListeners` demonstruje události používané `DialogServiceConnector` a základní zpracování příchozích aktivit.
+   * `registerEventListeners` Metoda ukazuje události, které používá `DialogServiceConnector` a základní zpracování příchozích aktivit.
 
-1. Ve stejném souboru nahraďte konfigurační řetězce tak, aby odpovídaly vašim prostředkům:
+1. Ve stejném souboru nahraďte konfigurační řetězce odpovídajícími prostředky:
 
     * Místo `YourSpeechSubscriptionKey` použijte váš klíč předplatného.
 
-    * Nahradit `YourServiceRegion` [oblastí](~/articles/cognitive-services/speech-service/regions.md) přidruženou k vašemu předplatnému Je aktuálně podporována pouze podmnožina oblastí služby Rozpoznávání řeči s přímým přímým převodem řeči. Další informace naleznete v tématu [Oblasti](~/articles/cognitive-services/speech-service/regions.md#voice-assistants).
+    * Nahraďte `YourServiceRegion` [oblastí](~/articles/cognitive-services/speech-service/regions.md) přidruženou k vašemu předplatnému. funkce Direct line Speech v současné době podporuje jenom podmnožinu oblastí služby Speech Service. Další informace najdete v tématu [oblasti](~/articles/cognitive-services/speech-service/regions.md#voice-assistants).
 
 ## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
 
 1. Připojte k vývojovému počítači zařízení s Androidem. Nezapomeňte na tomto zařízení povolit [režim vývoje a ladění USB](https://developer.android.com/studio/debug/dev-options).
 
-1. Chcete-li vytvořit aplikaci, stiskněte kombinaci kláves Ctrl+F9 nebo zvolte **Vytvořit** > **projekt** z panelu nabídek.
+1. Chcete-li sestavit aplikaci, stiskněte klávesy CTRL + F9 nebo z panelu nabídek zvolte **sestavit** > **vytvořit projekt** .
 
-1. Chcete-li aplikaci spustit, stiskněte Shift+F10 nebo zvolte **Spustit** > **spustit aplikaci**.
+1. Chcete-li spustit aplikaci, stiskněte klávesy SHIFT + F10 nebo zvolte možnost **Spustit** > **běh aplikace**.
 
 1. V okně s cílem nasazení, které se zobrazí, zvolte zařízení s Androidem.
 
    ![Snímek obrazovky okna s výběrem cíle nasazení](~/articles/cognitive-services/speech-service/media/sdk/qs-java-android-12-deploy.png)
 
-Jakmile aplikace a její činnost byly zahájeny, klikněte na tlačítko začít mluvit s bot. Přepsaný text se zobrazí, jak mluvíte a nejnovější aktivity, které jste obdrželi od svého robota se objeví, když je přijat. Pokud je váš robot nakonfigurován tak, aby poskytoval mluvené odpovědi, automaticky se přehraje převod řeči na text.
+Jakmile se aplikace a její činnost spustí, klikněte na tlačítko a začněte mluvit s robotem. Přepisu text se zobrazí při mluvení a poslední aktivita získaná od robota se zobrazí při přijetí. Pokud je robot nakonfigurovaný tak, aby poskytoval mluvené odezvy, bude se automaticky přehrávat převod řeči na text.
 
 ![Snímek obrazovky aplikace pro Android](~/articles/cognitive-services/speech-service/media/sdk/qs-java-android-assistant-completed-turn.png)
 

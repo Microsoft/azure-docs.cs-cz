@@ -1,20 +1,20 @@
 ---
 title: Pochopení životního cyklu podrobného plánu
-description: Přečtěte si o životním cyklu, kterým prochází definice podrobného plánu, a podrobnosti o jednotlivých fázích, včetně aktualizace a odebrání přiřazení podrobného plánu.
+description: Seznamte se s životním cyklem, na který odkazuje definice podrobného plánu, a podrobnosti o jednotlivých fázích, včetně aktualizace a odebírání přiřazení podrobného plánu.
 ms.date: 07/30/2019
 ms.topic: conceptual
 ms.openlocfilehash: 46da42ec97f16af91ef8e41362a085d466bbb887
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80677370"
 ---
-# <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Pochopení životního cyklu Azure Blueprintu
+# <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Pochopení životního cyklu Azure Blueprint
 
-Stejně jako mnoho prostředků v rámci Azure, podrobný plán v Azure Blueprints má typický a přirozený životní cyklus. Jsou vytvořeny, nasazeny a nakonec odstraněny, když již nejsou potřebné nebo relevantní. Azure Blueprints podporuje standardní operace životního cyklu. Pak na nich staví na tom, aby poskytovaldalší úrovně stavu, které podporují společnou průběžnou integraci a kanály průběžného nasazení pro organizace, které spravují svou infrastrukturu jako kód – což je klíčový prvek v devops.
+Podobně jako u mnoha prostředků v Azure má plán v plánech Azure typický a přirozený životní cyklus. Vytváří, nasazují a konečně odstranily, pokud už nejsou potřeba nebo nejsou relevantní. Plány Azure podporují standardní operace životního cyklu. Pak je na nich vytvoří, aby poskytovala další úrovně stavu, které podporují běžné kanály průběžné integrace a průběžného nasazování pro organizace, které spravují svou infrastrukturu jako kód – klíčový prvek v DevOps.
 
-Abychom plně porozuměli plánu a fázím, pokryjeme standardní životní cyklus:
+Pokud chcete plně porozumět podrobným plánům a fázím, pokryjeme standardní životní cyklus:
 
 > [!div class="checklist"]
 > - Vytvoření a úprava podrobného plánu
@@ -22,92 +22,92 @@ Abychom plně porozuměli plánu a fázím, pokryjeme standardní životní cykl
 > - Vytvoření a úprava nové verze podrobného plánu
 > - Publikování nové verze podrobného plánu
 > - Odstranění konkrétní verze podrobného plánu
-> - Odstranění podrobného plánu
+> - Odstraňuje se podrobný plán
 
 ## <a name="creating-and-editing-a-blueprint"></a>Vytvoření a úprava podrobného plánu
 
-Při vytváření podrobného plánu do něj přidejte artefakty, uložte do skupiny pro správu nebo předplatného a zadejte jedinečný název a jedinečnou verzi. Podrobný plán je nyní v režimu **konceptu** a ještě nelze přiřadit. V režimu **Koncept** může být nadále aktualizován a měněn.
+Při vytváření podrobného plánu přidejte do něj artefakty, uložte ho do skupiny pro správu nebo předplatného a zadejte jedinečný název a jedinečnou verzi. Podrobný plán je nyní v režimu **konceptu** a nelze jej ještě přiřadit. V režimu **konceptu** se může i nadále aktualizovat a měnit.
 
-Nikdy publikovaný podrobný plán v režimu **Koncept** zobrazí jinou ikonu na stránce **Definice podrobného plánu** než ty, které byly **publikovány**. **Nejnovější verze** je zobrazena jako **Koncept** pro tyto nikdy nepublikované plány.
+Nepublikovaný podrobný plán v režimu **konceptu** zobrazuje na stránce **definice** podrobného plánu jinou ikonu než ty, které byly **publikovány**. **Nejnovější verze** se zobrazuje jako **koncept** pro tyto dosud publikované plány.
 
-Vytvořte a upravte podrobný plán pomocí [portálu Azure nebo](../create-blueprint-portal.md#create-a-blueprint) [rozhraní REST API](../create-blueprint-rest-api.md#create-a-blueprint).
+Vytvořte a upravte podrobný plán pomocí [Azure Portal](../create-blueprint-portal.md#create-a-blueprint) nebo [REST API](../create-blueprint-rest-api.md#create-a-blueprint).
 
 ## <a name="publishing-a-blueprint"></a>Publikování podrobného plánu
 
-Jakmile byly provedeny všechny plánované změny podrobného plánu v režimu **konceptu,** může být **publikován a** zpřístupněn pro přiřazení. **Publikovanou** verzi podrobného plánu nelze změnit. Po **publikování**se podrobný plán zobrazí s jinou ikonou než **Podrobné** plány a zobrazí číslo zadaná verze ve sloupci **Nejnovější verze.**
+Jakmile provedete všechny plánované změny podrobného plánu v režimu **konceptu** , je možné je **publikovat** a zpřístupnit pro přiřazení. **Publikovanou** verzi podrobného plánu nelze změnit. Po **publikování**se v podrobném plánu zobrazí s jinou ikonou než s **Koncepty** a ve sloupci **nejnovější verze** se zobrazí zadané číslo verze.
 
-Publikujte podrobný plán pomocí [portálu Azure nebo](../create-blueprint-portal.md#publish-a-blueprint) [rozhraní REST API](../create-blueprint-rest-api.md#publish-a-blueprint).
+Publikovat podrobný plán pomocí [Azure Portal](../create-blueprint-portal.md#publish-a-blueprint) nebo [REST API](../create-blueprint-rest-api.md#publish-a-blueprint).
 
 ## <a name="creating-and-editing-a-new-version-of-the-blueprint"></a>Vytvoření a úprava nové verze podrobného plánu
 
-**Publikovanou** verzi podrobného plánu nelze změnit. Nová verze podrobného plánu však mohou být přidány do existující hospodařících plánů a upravit podle potřeby. Proveďte změny existujícího podrobného plánu jeho úpravou. Po uložení nových změn má podrobný plán nyní **nepublikované změny**. Tyto změny jsou nové **verze konceptu** podrobného plánu.
+**Publikovanou** verzi podrobného plánu nelze změnit. Novou verzi podrobného plánu je však možné do stávajícího podrobného plánu přidat a upravit podle potřeby. Změny v existujícím podrobném plánu proveďte úpravou. Když se nové změny uloží, plán nyní obsahuje **nepublikované změny**. Tyto změny představují novou **Konceptovou** verzi podrobného plánu.
 
-Upravte podrobný plán pomocí [portálu Azure](../create-blueprint-portal.md#edit-a-blueprint).
+Upravte podrobný plán pomocí [Azure Portal](../create-blueprint-portal.md#edit-a-blueprint).
 
 ## <a name="publishing-a-new-version-of-the-blueprint"></a>Publikování nové verze podrobného plánu
 
-Každá upravená verze podrobného plánu musí být **publikována před** jeho přiřazením. Pokud byly provedeny **nepublikované změny** podrobného plánu, ale nebyly **publikovány**, tlačítko **Publikovat podrobný plán** je k dispozici na stránce podrobného plánu úprav. Pokud tlačítko není viditelné, podrobný plán již byl **publikován** a nemá žádné **nepublikované změny**.
+Každá upravená verze podrobného plánu musí být **publikována** před tím, než bude možné ji přiřadit. Pokud byly provedené **nepublikované změny** v podrobném plánu, ale ne **publikovány**, je na stránce Upravit podrobný plán k dispozici tlačítko **publikovat plán** . Pokud tlačítko není viditelné, podrobný plán již byl **publikován** a neobsahuje žádné **nepublikované změny**.
 
 > [!NOTE]
-> Jeden podrobný plán může mít více **publikovaných** verzí, které lze přiřadit k předplatným.
+> Jeden podrobný plán může mít několik **publikovaných** verzí, které je možné přiřadit k předplatným.
 
-Chcete-li publikovat podrobný plán s **nepublikované změny**, použijte stejný postup pro publikování nového podrobného plánu.
+Pokud chcete publikovat podrobný plán s **nepublikovanými změnami**, použijte stejný postup pro publikování nového podrobného plánu.
 
 ## <a name="deleting-a-specific-version-of-the-blueprint"></a>Odstranění konkrétní verze podrobného plánu
 
-Každá verze podrobného plánu je jedinečný objekt a může být jednotlivě **Publikováno**. Jako takové lze odstranit také každou verzi podrobného plánu. Odstranění verze podrobného plánu nemá žádný vliv na jiné verze tohoto podrobného plánu.
+Každá verze podrobného plánu je jedinečný objekt a lze jej **publikovat**jednotlivě. V takovém případě lze také odstranit každou verzi podrobného plánu. Odstranění verze podrobného plánu nemá žádný vliv na jiné verze tohoto podrobného plánu.
 
 > [!NOTE]
-> Není možné odstranit podrobný plán, který má aktivní přiřazení. Nejprve odstraňte přiřazení a potom odstraňte verzi, kterou chcete odebrat.
+> Není možné odstranit podrobný plán, který má aktivní přiřazení. Nejprve odstraňte přiřazení a pak odstraňte verzi, kterou chcete odebrat.
 
-1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **podrobné plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
 
-1. Na stránce vlevo vyberte **definice podrobného plánu** a pomocí možností filtru vyhledejte podrobný plán, jehož chcete odstranit. Vyberte ji, chcete-li otevřít stránku pro úpravy.
+1. Na stránce vlevo vyberte **definice** podrobného plánu a pomocí možností filtru Najděte plán, ve kterém chcete odstranit verzi. Výběrem této stránky otevřete stránku pro úpravu.
 
-1. Vyberte kartu **Publikované verze** a vyhledejte verzi, kterou chcete odstranit.
+1. Vyberte kartu **publikované verze** a vyhledejte verzi, kterou chcete odstranit.
 
-1. Chcete-li odstranit, klepněte pravým tlačítkem myši na verzi a vyberte **příkaz Odstranit tuto verzi**.
+1. Klikněte pravým tlačítkem na verzi, kterou chcete odstranit, a vyberte **Odstranit tuto verzi**.
 
-## <a name="deleting-the-blueprint"></a>Odstranění podrobného plánu
+## <a name="deleting-the-blueprint"></a>Odstraňuje se podrobný plán
 
-Základní podrobný plán lze také odstranit. Odstraněnízákladní podrobný plán také odstraní všechny verze podrobného plánu tohoto podrobného plánu, včetně **konceptu** a **publikovaných** podrobných plánů. Stejně jako při odstranění verze podrobného plánu odstranění základní ho podrobný plán neodebere existující přiřazení některé z verzí podrobného plánu.
+Základní plán bude také možné odstranit. Odstraněním základního plánu se odstraní také všechny verze podrobného plánu tohoto podrobného plánu, včetně **konceptu** a **publikovaných** modrotisky. Stejně jako u odstranění verze podrobného plánu neodstraní základní plán obnovení stávající přiřazení žádné z verzí podrobného plánu.
 
 > [!NOTE]
-> Není možné odstranit podrobný plán, který má aktivní přiřazení. Nejprve odstraňte přiřazení a potom odstraňte verzi, kterou chcete odebrat.
+> Není možné odstranit podrobný plán, který má aktivní přiřazení. Nejprve odstraňte přiřazení a pak odstraňte verzi, kterou chcete odebrat.
 
-Odstraňte podrobný plán pomocí [portálu Azure nebo](../create-blueprint-portal.md#delete-a-blueprint) [rozhraní REST API](../create-blueprint-rest-api.md#delete-a-blueprint).
+Odstraňte podrobný plán pomocí [Azure Portal](../create-blueprint-portal.md#delete-a-blueprint) nebo [REST API](../create-blueprint-rest-api.md#delete-a-blueprint).
 
 ## <a name="assignments"></a>Přiřazení
 
-Během životního cyklu je několik bodů, které lze přiřadit k předplatnému. Pokud je publikován režim verze podrobného **plánu**, pak tato verze může být přiřazena k odběru. Tento životní cyklus umožňuje verze podrobného plánu, které mají být použity a aktivně přiřazeny při vývoji novější verze.
+V životním cyklu je několik bodů, které je možné přiřadit k předplatnému. Po **publikování**režimu verze podrobného plánu lze tuto verzi přiřadit k předplatnému. Tento životní cyklus umožňuje používat verze podrobného plánu a aktivně je přiřazovat během vývoje novější verze.
 
-Při přiřazují se verze podrobných plánů, je důležité pochopit, kde jsou přiřazeny a s jakými parametry byly přiřazeny. Parametry mohou být statické nebo dynamické. Další informace naleznete v [tématu statické a dynamické parametry](parameters.md).
+Vzhledem k tomu, že se přiřadí verze plánů, je důležité pochopit, kde jsou přiřazené, a s parametry, se kterými byly přiřazeny. Parametry mohou být buď statické, nebo dynamické. Další informace najdete v tématu [statické a dynamické parametry](parameters.md).
 
 ### <a name="updating-assignments"></a>Aktualizace přiřazení
 
-Při přiřazení podrobného plánu lze přiřazení aktualizovat. Aktualizace existujícího přiřazení má několik důvodů, například:
+Při přiřazení podrobného plánu se přiřazení dá aktualizovat. Existuje několik důvodů Aktualizace existujícího přiřazení, včetně:
 
-- Přidání nebo odebrání [uzamčení prostředků](resource-locking.md)
+- Přidat nebo odebrat [uzamykání prostředků](resource-locking.md)
 - Změna hodnoty [dynamických parametrů](parameters.md#dynamic-parameters)
-- Upgrade přiřazení na novější **publikovanou** verzi podrobného plánu
+- Upgradujte přiřazení na novější **publikovanou** verzi podrobného plánu.
 
-Informace o tom, jak, naleznete [v tématu aktualizace existujících přiřazení](../how-to/update-existing-assignments.md).
+Informace o postupu najdete v tématu [aktualizace existujících přiřazení](../how-to/update-existing-assignments.md).
 
-### <a name="unassigning-assignments"></a>Nepodepisování přiřazení
+### <a name="unassigning-assignments"></a>Zrušení přiřazení přiřazení
 
-Pokud plán plánu již není potřeba, může být unassigned ze skupiny pro správu nebo předplatného. Během zrušení podrobného plánu dochází k následujícím:
+Pokud již podrobný plán není potřebný, může být nepřiřazený ze skupiny pro správu nebo předplatného. Při zrušení přiřazení podrobného plánu dojde k následujícímu:
 
-- Odebrání [uzamčení prostředků podrobného plánu](resource-locking.md)
+- Odebrání [uzamykání prostředků](resource-locking.md) podrobného plánu
 - Odstranění objektu přiřazení podrobného plánu
-- (Podmíněné) Pokud byla **použita spravovaná identita přiřazená systémem,** je také odstraněna.
+- Podmíněného Pokud se použila **spravovaná identita přiřazená systémem** , odstraní se taky.
 
 > [!NOTE]
-> Všechny prostředky nasazené přiřazení podrobného plánu zůstávají na místě, ale už nejsou chráněné azure blueprints.
+> Všechny prostředky nasazené přiřazením podrobného plánu zůstávají v platnosti, ale již nejsou chráněny plány Azure.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pochopit, jak používat [statické a dynamické parametry](parameters.md).
-- Naučte se přizpůsobit [pořadí sekvencování podrobných plánů](sequencing-order.md).
-- Zjistěte, jak využít [zamykání prostředků podrobného plánu](resource-locking.md).
-- Přečtěte si, jak [aktualizovat existující přiřazení](../how-to/update-existing-assignments.md).
-- Vyřešte problémy během přiřazení podrobného plánu s [obecným řešením potíží](../troubleshoot/general.md).
+- Principy použití [statických a dynamických parametrů](parameters.md)
+- Další informace o přizpůsobení [pořadí podrobných plánů](sequencing-order.md)
+- Použití [zamykání prostředků podrobného plánu](resource-locking.md)
+- Další informace o [aktualizaci existujících přiřazení](../how-to/update-existing-assignments.md)
+- Řešení potíží při přiřazení podrobného plánu – [obecné řešení potíží](../troubleshoot/general.md)

@@ -1,43 +1,43 @@
 ---
 title: Odrazy oblohy
-description: Popisuje, jak nastavit mapy prostředí pro odrazy oblohy
+description: Popisuje, jak nastavit mapy prostředí pro reflektore nebe.
 author: florianborn71
 ms.author: flborn
 ms.date: 02/07/2020
 ms.topic: article
 ms.openlocfilehash: 7316df7bcf78e3a154510e69116c288b2b293d4c
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680606"
 ---
 # <a name="sky-reflections"></a>Odrazy oblohy
 
-V Azure Remote Rendering textura oblohy se používá k osvětlení objektů realisticky. U aplikací rozšířené reality by tato textura měla připomínat vaše skutečné okolí, aby objekty vypadaly přesvědčivě. Tento článek popisuje, jak změnit texturu oblohy.
+Ve vzdáleném vykreslování Azure se k světlování objektů používá nebeská textura. Pro rozšířené aplikace reality by tato textura měla vypadat jako v reálném okolí, aby se objekty zobrazovaly jako přesvědčivé. Tento článek popisuje, jak změnit texturu nebe.
 
 > [!NOTE]
-> Textura oblohy je také označována jako *mapa prostředí*. Tyto termíny se používají zaměnitelně.
+> Textura nebe se také označuje jako *Mapa prostředí*. Tyto výrazy se používají zaměnitelné.
 
 ## <a name="object-lighting"></a>Osvětlení objektů
 
-Azure Remote Rendering využívá *fyzicky založené vykreslování* (PBR) pro realistické výpočty osvětlení. I když můžete do scény přidat [světelné zdroje,](lights.md) má použití dobré textury oblohy největší dopad.
+Vzdálené vykreslování Azure využívá pro realistické výpočty světla *fyzicky založené vykreslování* (PBR). I když můžete do scény přidat [světlé zdroje](lights.md) , s využitím dobré textury nebe má největší dopad.
 
-Níže uvedené obrázky ukazují výsledky osvětlení různých povrchů pouze s texturou oblohy:
+Následující obrázky znázorňují výsledky osvětlení různých povrchů pouze s texturou nebe:
 
-| Drsnost  | 0                                        | 0,25                                          | 0,5                                          | 0.75                                          | 1                                          |
+| Hrubá  | 0                                        | 0,25                                          | 0,5                                          | 0.75                                          | 1                                          |
 |:----------:|:----------------------------------------:|:---------------------------------------------:|:--------------------------------------------:|:---------------------------------------------:|:------------------------------------------:|
-| Nekovové  | ![Dielektrika0](media/dielectric-0.png)   | ![GreenPointPark](media/dielectric-0.25.png)  | ![GreenPointPark](media/dielectric-0.5.png)  | ![GreenPointPark](media/dielectric-0.75.png)  | ![GreenPointPark](media/dielectric-1.png)  |
+| Jiný než kov  | ![Dielectric0](media/dielectric-0.png)   | ![GreenPointPark](media/dielectric-0.25.png)  | ![GreenPointPark](media/dielectric-0.5.png)  | ![GreenPointPark](media/dielectric-0.75.png)  | ![GreenPointPark](media/dielectric-1.png)  |
 | Metal      | ![GreenPointPark](media/metallic-0.png)  | ![GreenPointPark](media/metallic-0.25.png)    | ![GreenPointPark](media/metallic-0.5.png)    | ![GreenPointPark](media/metallic-0.75.png)    | ![GreenPointPark](media/metallic-1.png)    |
 
-Další informace o modelu osvětlení naleznete v kapitole [materiály.](../../concepts/materials.md)
+Další informace o modelu osvětlení naleznete v kapitole [materiály](../../concepts/materials.md) .
 
 > [!IMPORTANT]
-> Azure Remote Rendering používá texturu oblohy pouze pro modely osvětlení. To nečiní oblohu jako pozadí, protože aplikace rozšířené reality již mají správné pozadí - skutečný svět.
+> Vzdálené vykreslování Azure používá texturu nebe jenom pro modely osvětlení. Nevykresluje nebe jako pozadí, protože rozšíření aplikace pro rozšířené reality již mají správné pozadí – reálný svět.
 
-## <a name="changing-the-sky-texture"></a>Změna textury oblohy
+## <a name="changing-the-sky-texture"></a>Změna textury nebe
 
-Chcete-li změnit mapu prostředí, stačí [načíst texturu](../../concepts/textures.md) a `SkyReflectionSettings`změnit relaci :
+Pokud chcete změnit mapu prostředí, stačí, když budete potřebovat [Načíst texturu](../../concepts/textures.md) a změnit relaci `SkyReflectionSettings`:
 
 ``` cs
 LoadTextureAsync _skyTextureLoad = null;
@@ -66,54 +66,54 @@ void ChangeEnvironmentMap(AzureSession session)
 }
 ```
 
-Všimněte `LoadTextureFromSASAsync` si, že varianta se používá výše, protože je načtena předdefinovaná textura. V případě načtení z [propojených úložišť objektů blob](../../how-tos/create-an-account.md#link-storage-accounts)použijte variantu. `LoadTextureAsync`
+Všimněte si, `LoadTextureFromSASAsync` že je použita varianta, protože je načtena integrovaná textura. V případě načítání z [propojených úložišť objektů BLOB](../../how-tos/create-an-account.md#link-storage-accounts)použijte `LoadTextureAsync` variantu.
 
-## <a name="sky-texture-types"></a>Typy textur oblohy
+## <a name="sky-texture-types"></a>Typy textury nebe
 
-Jako mapy prostředí můžete použít *[jak kaučuky,](https://en.wikipedia.org/wiki/Cube_mapping)* tak *2D textury.*
+Jako mapy prostředí můžete použít jak *[cubemaps](https://en.wikipedia.org/wiki/Cube_mapping)* , tak *2D textury* .
 
-Všechny textury musí být v [podporovaném formátu textury](../../concepts/textures.md#supported-texture-formats). Nemusíte poskytovat mipmapy pro textury oblohy.
+Všechny textury musí být v [podporovaném formátu textury](../../concepts/textures.md#supported-texture-formats). Nemusíte zadávat mipmapy pro textury nebe.
 
-### <a name="cube-environment-maps"></a>Mapy prostředí Krychle
+### <a name="cube-environment-maps"></a>Mapy prostředí krychle
 
-Pro referenci, zde je nezabalená datová mapa:
+Pro referenci je zde uveden nezabalený cubemap:
 
-![Nezabalená datová mapa](media/Cubemap-example.png)
+![Nezabalená cubemap](media/Cubemap-example.png)
 
-`AzureSession.Actions.LoadTextureAsync` /  Použití `LoadTextureFromSASAsync` `TextureType.CubeMap` s načtením textur cubemap.
+`AzureSession.Actions.LoadTextureAsync` /  Použijte `LoadTextureFromSASAsync` k `TextureType.CubeMap` načtení cubemap textur.
 
-### <a name="sphere-environment-maps"></a>Mapy prostředí koule
+### <a name="sphere-environment-maps"></a>Mapy prostředí sphere
 
-Při použití 2D textury jako mapy prostředí musí být obraz v [sférickém souřadnicovém prostoru](https://en.wikipedia.org/wiki/Spherical_coordinate_system).
+Při použití 2D textury jako mapy prostředí musí být obrázek v [kulové souřadnicovém prostoru](https://en.wikipedia.org/wiki/Spherical_coordinate_system).
 
-![Obraz oblohy v sférických souřadnicích](media/spheremap-example.png)
+![Obrázek nebe v kulových souřadnicích](media/spheremap-example.png)
 
-Použití `AzureSession.Actions.LoadTextureAsync` `TextureType.Texture2D` s načtením map sférického prostředí.
+Použijte `AzureSession.Actions.LoadTextureAsync` `TextureType.Texture2D` k načtení map sféry prostředí.
 
-## <a name="built-in-environment-maps"></a>Mapy vestavěného prostředí
+## <a name="built-in-environment-maps"></a>Předdefinované mapy prostředí
 
-Azure Remote Rendering poskytuje několik předdefinovaných map prostředí, které jsou vždy k dispozici. Všechny vestavěné mapy prostředí jsou cubemaps.
+Vzdálené vykreslování Azure poskytuje několik předdefinovaných map prostředí, které jsou vždycky dostupné. Všechna integrovaná mapování prostředí jsou cubemaps.
 
 |Identifikátor                         | Popis                                              | Obrázek                                                      |
 |-----------------------------------|:---------------------------------------------------------|:-----------------------------------------------------------------:|
-|builtin://Autoshop                 | Různé proužky světla, světlé vnitřní základní osvětlení    | ![Autoservis](media/autoshop.png)
-|builtin://BoilerRoom               | Jasné nastavení vnitřního světla, více okenních světel      | ![Kotelna](media/boiler-room.png)
-|builtin://ColorfulStudio           | Různě barevná světla ve středním osvětlení vnitřního nastavení  | ![BarevnéStudio](media/colorful-studio.png)
-|builtin://Hangar                   | Mírně jasné okolní sálové světlo                     | ![Malý doutník](media/hangar.png)
-|builtin://IndustrialPipeAndValve   | Ztlumené vnitřní nastavení se světlým kontrastem              | ![IndustrialPipeandValve](media/industrial-pipe-and-valve.png)
-|builtin://Lebombo                  | Denní osvětlení místnosti, jasné světlo v oblasti oken     | ![Lebombo](media/lebombo.png)
-|builtin://SataraNight              | Tmavá noční obloha a země s mnoha okolními světly   | ![SataraNoc](media/satara-night.png)
-|builtin://SunnyVondelpark          | Jasné sluneční světlo a kontrast stínu                      | ![SunnyVondelpark](media/sunny-vondelpark.png)
-|builtin://Syferfontein             | Jasné světlo oblohy s mírným osvětlením terénu            | ![Syferfontein (Fr.)](media/syferfontein.png)
-|builtin://TearsOfSteelBridge       | Mírně proměnlivé slunce a stín                         | ![TearsofSteelBridge](media/tears-of-steel-bridge.png)
-|builtin://VeniceSunset             | Večerní západ slunce se blíží soumraku                    | ![BenátkyZápad slunce](media/venice-sunset.png)
-|builtin://WhippleCreekRegionalPark | Jasné, svěží zelené a bílé světlé tóny, tlumená půda | ![WhippleCreekRegionálnípark](media/whipple-creek-regional-park.png)
-|builtin://WinterRiver              | Den s jasným okolním zemním světlem                 | ![Řeka Winter](media/winter-river.png)
+|builtin://Autoshop                 | Spektrum pruhů světla, jasného základního osvětlení interiéru    | ![Přikoupit](media/autoshop.png)
+|builtin://BoilerRoom               | Světlé světlo – nastavení, více indikátorů okna      | ![BoilerRoom](media/boiler-room.png)
+|builtin://ColorfulStudio           | Proměnlivé barevné světla v případě středně světlého nastavení interiéru  | ![ColorfulStudio](media/colorful-studio.png)
+|builtin://Hangar                   | Středně jasné světlé prostředí okolí                     | ![SmallHangar](media/hangar.png)
+|builtin://IndustrialPipeAndValve   | Tmavé nastavení vnitřního doběhu s kontrastem v tmavém světle              | ![IndustrialPipeAndValve](media/industrial-pipe-and-valve.png)
+|builtin://Lebombo                  | Denní okolní místnost – světlá, světlá oblast okna     | ![Lebombo](media/lebombo.png)
+|builtin://SataraNight              | Tmavě noční nebe a uzemnění s mnoha okolními kvadranty   | ![SataraNight](media/satara-night.png)
+|builtin://SunnyVondelpark          | Světlé světlo a stínový kontrast                      | ![SunnyVondelpark](media/sunny-vondelpark.png)
+|builtin://Syferfontein             | Jasný Nebeský světlo se středním osvětlením            | ![Syferfontein](media/syferfontein.png)
+|builtin://TearsOfSteelBridge       | Středně proměnlivý Sun a barevný stín                         | ![TearsOfSteelBridge](media/tears-of-steel-bridge.png)
+|builtin://VeniceSunset             | Dusk večer pro lehké přístupu                    | ![VeniceSunset](media/venice-sunset.png)
+|builtin://WhippleCreekRegionalPark | Světlé, Lush – zelená a bílá světla, ztlumená země | ![WhippleCreekRegionalPark](media/whipple-creek-regional-park.png)
+|builtin://WinterRiver              | Daytime s jasným okolním světlem                 | ![WinterRiver](media/winter-river.png)
 |builtin://DefaultSky               | Stejné jako TearsOfSteelBridge                               | ![DefaultSky](media/tears-of-steel-bridge.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Lights](../../overview/features/lights.md)
-* [Materials](../../concepts/materials.md)
+* [Světla](../../overview/features/lights.md)
+* [Materiály](../../concepts/materials.md)
 * [Textury](../../concepts/textures.md)
 * [Nástroj příkazového řádku TexConv](../../resources/tools/tex-conv.md)

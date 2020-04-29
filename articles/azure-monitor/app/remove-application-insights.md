@@ -1,113 +1,113 @@
 ---
-title: Odebrání přehledů aplikací ve Visual Studiu – Azure Monitor
-description: Jak odebrat application insights SDK pro ASP.NET a ASP.NET core v sadě Visual Studio.
+title: Odebrání Application Insights v aplikaci Visual Studio – Azure Monitor
+description: Jak odebrat sadu Application Insights SDK pro ASP.NET a ASP.NET Core v sadě Visual Studio.
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: 1c9ff8d3d305645ac7d113421e2c6c5f8451bd2b
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80805102"
 ---
-# <a name="how-to-remove-application-insights-in-visual-studio"></a>Odebrání přehledů aplikací v sadě Visual Studio
+# <a name="how-to-remove-application-insights-in-visual-studio"></a>Jak odebrat Application Insights v aplikaci Visual Studio
 
-Tento článek vám ukáže, jak odebrat ASP.NET a ASP.NET základní aplikace Insights SDK v sadě Visual Studio.
+V tomto článku se dozvíte, jak odebrat sadu ASP.NET a ASP.NET Core Application Insights SDK v sadě Visual Studio.
 
-Chcete-li odebrat Application Insights, budete muset odebrat balíčky NuGet a odkazy z rozhraní API ve vaší aplikaci. Balíčky NuGet můžete odinstalovat pomocí Konzoly pro správu balíčků nebo Spravovat řešení NuGet v sadě Visual Studio. V následujících částech se zobrazí dva způsoby, jak odebrat balíčky NuGet a co bylo automaticky přidáno do projektu. Nezapomeňte potvrdit přidané soubory a oblasti s vlastním kódem, ve kterém jste volali do rozhraní API, jsou odebrány.
+Chcete-li odebrat Application Insights, bude nutné odebrat balíčky NuGet a odkazy z rozhraní API ve vaší aplikaci. Balíčky NuGet můžete odinstalovat pomocí konzoly Správa balíčků nebo spravovat řešení NuGet v aplikaci Visual Studio. V následujících částech se zobrazí dva způsoby odebrání balíčků NuGet a to, co bylo automaticky přidáno do projektu. Nezapomeňte potvrdit, že přidané soubory a oblasti ve vlastním kódu, ve kterém jste provedli volání rozhraní API, se odeberou.
 
-## <a name="uninstall-using-the-package-management-console"></a>Odinstalace pomocí Konzoly pro správu balíčků
+## <a name="uninstall-using-the-package-management-console"></a>Odinstalace pomocí konzoly Správa balíčků
 
 # <a name="net"></a>[.NET](#tab/net)
 
-1. Chcete-li otevřít Konzolu pro správu balíčků, vyberte v horní nabídce možnost Nástroje > Správce balíčků NuGet > konzoli správce balíčků.
+1. Chcete-li otevřít konzolu Správa balíčků, v horní nabídce vyberte nástroje > správce balíčků NuGet > konzola správce balíčků.
      
-    ![V horní nabídce klepněte na položku Nástroje > Správce balíčků > konzoli Správce balíčků](./media/remove-application-insights/package-manager.png)
+    ![V horní nabídce klikněte na nástroje > správce balíčků NuGet > konzola správce balíčků.](./media/remove-application-insights/package-manager.png)
 
     > [!NOTE]
-    > Pokud je povolena kolekce trasování, musíte nejprve odinstalovat Microsoft.ApplicationInsights.TraceListener. Zadejte `Uninstall-package Microsoft.ApplicationInsights.TraceListener` následující krok a odeberte soubor Microsoft.ApplicationInsights.Web.
+    > Je-li povolena kolekce trasování, je nutné nejprve odinstalovat soubor Microsoft. ApplicationInsights. TraceListener. Zadáním `Uninstall-package Microsoft.ApplicationInsights.TraceListener` následujícího kroku odeberte Microsoft. ApplicationInsights. Web.
 
 1. Zadejte následující příkaz: `Uninstall-Package Microsoft.ApplicationInsights.Web -RemoveDependencies`
 
-    Po zadání příkazu bude balíček Application Insights a všechny jeho závislosti odinstalovány z projektu.
+    Po zadání příkazu dojde k odinstalaci balíčku Application Insights a všech jeho závislostí z projektu.
     
-    ![Příkaz Enter v konzoli](./media/remove-application-insights/package-management-console.png)
+    ![Zadejte příkaz v konzole.](./media/remove-application-insights/package-management-console.png)
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-1. Chcete-li otevřít Konzolu pro správu balíčků, vyberte v horní nabídce možnost Nástroje > Správce balíčků NuGet > konzoli správce balíčků.
+1. Chcete-li otevřít konzolu Správa balíčků, v horní nabídce vyberte nástroje > správce balíčků NuGet > konzola správce balíčků.
 
-    ![V horní nabídce klepněte na položku Nástroje > Správce balíčků > konzoli Správce balíčků](./media/remove-application-insights/package-manager.png)
+    ![V horní nabídce klikněte na nástroje > správce balíčků NuGet > konzola správce balíčků.](./media/remove-application-insights/package-manager.png)
 
 1. Zadejte následující příkaz: ` Uninstall-Package Microsoft.ApplicationInsights.AspNetCore -RemoveDependencies`
 
-    Po zadání příkazu bude balíček Application Insights a všechny jeho závislosti odinstalovány z projektu.
+    Po zadání příkazu dojde k odinstalaci balíčku Application Insights a všech jeho závislostí z projektu.
 
 ---
 
-## <a name="uninstall-using-the-visual-studio-nugetui"></a>Odinstalace pomocí uzly Visual Studio NuGet
+## <a name="uninstall-using-the-visual-studio-nugetui"></a>Odinstalace pomocí uživatelského rozhraní NuGet sady Visual Studio
 
 # <a name="net"></a>[.NET](#tab/net)
 
-1. V *Průzkumníku* řešení vpravo klikněte pravým **tlačítkem** myši na řešení a vyberte **spravovat balíčky NuGet pro řešení**.
+1. V *Průzkumník řešení* na pravé straně klikněte pravým tlačítkem na **řešení** a vyberte **Spravovat balíčky NuGet pro řešení**.
 
-    Potom se zobrazí obrazovka, která umožňuje upravit všechny balíčky NuGet, které jsou součástí projektu.
+    Zobrazí se obrazovka, která umožňuje upravit všechny balíčky NuGet, které jsou součástí projektu.
     
-     ![Klikněte pravým tlačítkem myši na Řešení v Průzkumníku řešení a potom vyberte Spravovat balíčky NuGet pro řešení.](./media/remove-application-insights/manage-nuget-framework.png)
+     ![Klikněte pravým tlačítkem na řešení, v Průzkumník řešení a pak vyberte Spravovat balíčky NuGet pro řešení.](./media/remove-application-insights/manage-nuget-framework.png)
 
     > [!NOTE]
-    > Pokud je povolena kolekce trasování, je třeba nejprve odinstalovat Microsoft.ApplicationInsights.TraceListener bez zaškrtnuté odebrat závislosti a potom postupujte podle následujících kroků odinstalovat Microsoft.ApplicationInsights.Web s odebrat závislosti vybrané.
+    > Pokud je povolené shromažďování trasování, musíte nejdřív odinstalovat Microsoft. ApplicationInsights. TraceListener bez vybraných závislostí a potom podle následujících pokynů odinstalovat Microsoft. ApplicationInsights. Web s vybranými možnostmi odebrat závislosti.
     
-1. Klikněte na balíček Microsoft.ApplicationInsights.Web.Na pravé straně zaškrtněte políčko vedle *aplikace Project a* vyberte všechny projekty.
+1. Klikněte na balíček Microsoft. ApplicationInsights. Web.Na pravé straně zaškrtněte políčko vedle *projektu* pro výběr všech projektů.
     
-1. Chcete-li při odinstalaci odebrat všechny závislosti, vyberte rozbalovací tlačítko **Možnosti** pod oddílem, ve kterém jste vybrali projekt.
+1. Chcete-li odebrat všechny závislosti při odinstalaci, vyberte rozevírací tlačítko **Možnosti** pod oddílem, ve kterém jste vybrali možnost projekt.
 
-    V části *Možnosti odinstalace*zaškrtněte políčko *vedle položky Odebrat závislosti*.
+    V části *Možnosti odinstalace*zaškrtněte políčko u položky *odebrat závislosti*.
 
-1. Vyberte **možnost Odinstalovat**.
+1. Vyberte **odinstalovat**.
     
-    ![Kontrola odebrání závislostí a odinstalace](./media/remove-application-insights/uninstall-framework.png)
+    ![Zaškrtněte odebrat závislosti a potom odinstalujte.](./media/remove-application-insights/uninstall-framework.png)
 
-    Zobrazí se dialogové okno, které zobrazuje všechny závislosti, které mají být odebrány z aplikace.Chcete-li odinstalovat, vyberte **možnost OK.** 
+    Zobrazí se dialogové okno, ve kterém se zobrazí všechny závislosti, které mají být z aplikace odebrány.Kliknutím na **tlačítko OK** odinstalujte.
     
-    ![Kontrola odebrání závislostí a odinstalace](./media/remove-application-insights/preview-uninstall-framework.png)
+    ![Zaškrtněte odebrat závislosti a potom odinstalujte.](./media/remove-application-insights/preview-uninstall-framework.png)
     
-1.  Po odinstalaci se může stále zobrazit "ApplicationInsights.config" a "AiHandleErrorAttribute.cs" v *Průzkumníku řešení*.Oba soubory můžete odstranit ručně.
+1.  Po odinstalaci všeho se v *Průzkumník řešení*pořád zobrazuje zpráva "ApplicationInsights. config" a "AiHandleErrorAttribute.cs".Tyto dva soubory můžete odstranit ručně.
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-1. V *Průzkumníku* řešení vpravo klikněte pravým **tlačítkem** myši na řešení a vyberte **spravovat balíčky NuGet pro řešení**.
+1. V *Průzkumník řešení* na pravé straně klikněte pravým tlačítkem na **řešení** a vyberte **Spravovat balíčky NuGet pro řešení**.
 
-    Potom se zobrazí obrazovka, která umožňuje upravit všechny balíčky NuGet, které jsou součástí projektu.
+    Zobrazí se obrazovka, která umožňuje upravit všechny balíčky NuGet, které jsou součástí projektu.
 
-    ![Klikněte pravým tlačítkem myši na Řešení v Průzkumníku řešení a potom vyberte Spravovat balíčky NuGet pro řešení.](./media/remove-application-insights/manage-nuget-core.png)
+    ![Klikněte pravým tlačítkem na řešení, v Průzkumník řešení a pak vyberte Spravovat balíčky NuGet pro řešení.](./media/remove-application-insights/manage-nuget-core.png)
 
-1. Klikněte na balíček Microsoft.ApplicationInsights.AspNetCore. Na pravé straně zaškrtněte políčko vedle *aplikace Project* a vyberte všechny projekty a vyberte **odinstalovat**.
+1. Klikněte na balíček Microsoft. ApplicationInsights. AspNetCore. Na pravé straně zaškrtněte políčko vedle pole *projekt* pro výběr všech projektů a potom vyberte možnost **odinstalovat**.
 
-    ![Kontrola odebrání závislostí a odinstalace](./media/remove-application-insights/uninstall-core.png)
+    ![Zaškrtněte odebrat závislosti a potom odinstalujte.](./media/remove-application-insights/uninstall-core.png)
 
 ---
 
-## <a name="what-is-created-when-you-add-application-insights"></a>Co se vytvoří při přidání přehledů aplikací
+## <a name="what-is-created-when-you-add-application-insights"></a>Co se vytvoří při přidávání Application Insights
 
-Když do projektu přidáte Application Insights, vytvoří se soubory a do některých souborů přidá kód. Pouze odinstalování NuGet balíčky nebude vždy zahodit soubory a kód. Chcete-li plně odebrat Application Insights, měli byste zkontrolovat a ručně odstranit přidaný kód nebo soubory spolu s voláními rozhraní API, která jste přidali do projektu.
+Když do projektu přidáte Application Insights, vytvoří soubory a přidá kód do některých z vašich souborů. Pouze odinstalování balíčků NuGet nebude soubory a kód vždy zahozena. Chcete-li zcela odebrat Application Insights, měli byste pomocí všech volání rozhraní API, které jste přidali do projektu, ručně odstranit přidaný kód nebo soubory.
 
 # <a name="net"></a>[.NET](#tab/net)
 
-Když přidáte telemetrickou vlastnosti Application Insights do projektu ASP.NET sady Visual Studio, přidá se následující soubory:
+Když přidáte Telemetrie Application Insights do projektu aplikace Visual Studio ASP.NET, přidá následující soubory:
 
 - ApplicationInsights.config
 - AiHandleErrorAttribute.cs
 
-Doplňují se nové části kódu:
+Jsou přidány následující části kódu:
 
-- [Název vašeho projektu].csproj
+- [Název vašeho projektu]. csproj
 
     ```C#
      <ApplicationInsightsResourceId>/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/WebApplication4</ApplicationInsightsResourceId>
     ```
 
-- Packages.config
+- Soubor Packages. config
 
     ```xml
     <packages>
@@ -132,9 +132,9 @@ Doplňují se nové části kódu:
     </packages>
     ```
 
-- Layout.cshtml
+- Layout. cshtml
 
-    Pokud má váš projekt soubor Layout.cshtml, přidá se následující kód.
+    Pokud má váš projekt soubor layout. cshtml, je přidán kód níže.
     
     ```html
     <head>
@@ -155,7 +155,7 @@ Doplňují se nové části kódu:
     </head>
     ```
 
-- ConnectedService.json
+- Připojenou službu. JSON
 
     ```json
     {
@@ -178,9 +178,9 @@ Doplňují se nové části kódu:
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-Když přidáte telemetrii Application Insights do projektu šablony Visual Studio ASP.NET Core, přidá se následující kód:
+Když přidáte Telemetrie Application Insights do projektu šablony ASP.NET Core sady Visual Studio, přidá následující kód:
 
-- [Název vašeho projektu].csproj
+- [Název vašeho projektu]. csproj
 
     ```csharp
       <PropertyGroup>
@@ -197,14 +197,14 @@ Když přidáte telemetrii Application Insights do projektu šablony Visual Stud
       </ItemGroup>
     ```
 
-- Appsettings.json:
+- AppSettings. JSON:
 
     ```json
     "ApplicationInsights": {
         "InstrumentationKey": "00000000-0000-0000-0000-000000000000"
     ```
 
-- ConnectedService.json
+- Připojenou službu. JSON
     
     ```json
     {

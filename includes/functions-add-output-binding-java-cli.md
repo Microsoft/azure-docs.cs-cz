@@ -5,23 +5,23 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
 ms.openlocfilehash: 2b2c043e70aac14c7fc6f0b58aae257624b05d13
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80673259"
 ---
-V projektu Java jsou vazby definovány jako vazby poznámky na metodu funkce. Soubor *function.json* je pak automaticky generován na základě těchto anotací.
+V projektu Java jsou vazby definovány jako anotace vazby v metodě Function. Soubor *Function. JSON* pak automaticky generuje na základě těchto poznámek.
 
-Přejděte do umístění kódu funkce pod _src/main/java_, otevřete soubor projektu *Function.java* a přidejte do definice `run` metody následující parametr:
+Přejděte do umístění kódu funkce v části _Src/Main/Java_, otevřete soubor projektu *Function. Java* a do definice `run` metody přidejte následující parametr:
 
 ```java
 @QueueOutput(name = "msg", queueName = "outqueue", connection = "AzureWebJobsStorage") OutputBinding<String> msg
 ```
 
-Parametr `msg` je [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) typ, který představuje kolekci řetězců, které jsou zapsány jako zprávy do výstupní vazby po dokončení funkce. V tomto případě je výstupem `outqueue`fronta úložiště s názvem . Připojovací řetězec pro účet `connection` úložiště je nastaven metodou. Spíše než samotný připojovací řetězec, předáte nastavení aplikace, která obsahuje připojovací řetězec účtu úložiště.
+`msg` Parametr je [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) typ, který představuje kolekci řetězců, které jsou zapsány jako zprávy do výstupní vazby po dokončení funkce. V tomto případě je výstupem fronta úložiště s názvem `outqueue`. Připojovací řetězec pro účet úložiště je nastaven `connection` metodou. Místo samotného připojovacího řetězce předáte nastavení aplikace, které obsahuje připojovací řetězec účtu úložiště.
 
-Definice `run` metody by nyní měla vypadat jako následující příklad:  
+Definice `run` metody by teď měla vypadat jako v následujícím příkladu:  
 
 ```java
 @FunctionName("HttpTrigger-Java")

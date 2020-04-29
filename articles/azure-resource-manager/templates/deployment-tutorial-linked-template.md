@@ -1,27 +1,27 @@
 ---
 title: Kurz – nasazení propojené šablony
-description: Přečtěte si, jak nasadit propojenou šablonu.
+description: Naučte se nasadit propojenou šablonu.
 ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 177a994450b6ffe5489a8c95c3b484521fd9b77b
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80672924"
 ---
-# <a name="tutorial-deploy-a-linked-template"></a>Kurz: Nasazení propojené šablony
+# <a name="tutorial-deploy-a-linked-template"></a>Kurz: nasazení propojené šablony
 
-V [předchozích kurzech](./deployment-tutorial-local-template.md)jste se naučili nasadit šablonu, která je uložena v místním počítači. Chcete-li nasadit komplexní řešení, můžete rozdělit šablonu do mnoha šablon a nasadit tyto šablony prostřednictvím hlavní šablony. V tomto kurzu se dozvíte, jak nasadit hlavní šablonu, která obsahuje odkaz na propojenou šablonu. Když se nasadí hlavní šablona, spustí nasazení propojené šablony. Můžete také zjistit, jak ukládat a zabezpečit propojené šablony pomocí tokenu SAS. To trvá asi **12 minut** na dokončení.
+V [předchozích kurzech](./deployment-tutorial-local-template.md)jste zjistili, jak nasadit šablonu, která je uložená v místním počítači. Pro nasazení složitých řešení můžete rozdělit šablonu na mnoho šablon a tyto šablony nasadit pomocí hlavní šablony. V tomto kurzu se naučíte, jak nasadit hlavní šablonu obsahující odkaz na propojenou šablonu. Po nasazení hlavní šablony aktivuje nasazení propojené šablony. Naučíte se také, jak uložit a zabezpečit propojenou šablonu pomocí tokenu SAS. Dokončení trvá přibližně **12 minut** .
 
 ## <a name="prerequisites"></a>Požadavky
 
-Doporučujeme dokončit předchozí kurz, ale není to nutné.
+Doporučujeme, abyste dokončili předchozí kurz, ale není to nutné.
 
-## <a name="review-template"></a>Šablona revize
+## <a name="review-template"></a>Zkontrolovat šablonu
 
-V předchozích kurzech nasadíte šablonu, která vytvoří účet úložiště, plán služby App Service a webovou aplikaci. Použitá šablona byla:
+V předchozích kurzech nasadíte šablonu, která vytvoří účet úložiště, App Service plán a webovou aplikaci. Použitá šablona:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/local-template/azuredeploy.json":::
 
@@ -31,20 +31,20 @@ Prostředek účtu úložiště můžete oddělit do propojené šablony:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/linkedStorageAccount.json":::
 
-Následující šablona je hlavní šablona.  Zvýrazněný objekt **Microsoft.Resources/deployments** ukazuje, jak volat propojenou šablonu. Propojenou šablonu nelze uložit jako místní soubor nebo soubor, který je k dispozici pouze v místní síti. Můžete zadat pouze hodnotu IDENTIFIKÁTORU URI, která obsahuje protokol *http* nebo *https*. Správce prostředků musí mít přístup k šabloně. Jednou z možností je umístit propojenou šablonu do účtu úložiště a použít identifikátor URI pro tuto položku. Identifikátor URI je předán šabloně pomocí parametru. Podívejte se na zvýrazněnou definici parametru.
+Následující šablona je hlavní šablonou.  Zvýrazněný objekt **Microsoft. Resources/Deployments** ukazuje, jak zavolat propojenou šablonu. Propojená šablona nemůže být uložena jako místní soubor nebo soubor, který je k dispozici pouze v místní síti. Můžete zadat jenom hodnotu identifikátoru URI, která zahrnuje buď *http* , nebo *https*. Správce prostředků musí být schopné získat přístup k šabloně. Jednou z možností je umístit propojenou šablonu do účtu úložiště a použít identifikátor URI pro tuto položku. Identifikátor URI je předán šabloně pomocí parametru. Podívejte se na zvýrazněnou definici parametru.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/azuredeploy.json" highlight="27-32,40-58":::
 
-Uložte kopii hlavní šablony do místního počítače s příponou JSON, například azuredeploy.json. Není nutné ukládat kopii propojené šablony.  Propojená šablona se zkopíruje z úložiště GitHub do účtu úložiště.
+Uložte kopii hlavní šablony do místního počítače s příponou. JSON, například azuredeploy. JSON. Nemusíte ukládat kopii propojené šablony.  Odkazovaná šablona se zkopíruje z úložiště GitHubu do účtu úložiště.
 
-## <a name="store-the-linked-template"></a>Uložení propojené šablony
+## <a name="store-the-linked-template"></a>Uložit propojenou šablonu
 
-Následující skript Prostředí PowerShell vytvoří účet úložiště, vytvoří kontejner a zkopíruje propojenou šablonu z úložiště GitHub do kontejneru. Kopie propojené šablony je uložena v [GitHubu](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json).
+Následující skript prostředí PowerShell vytvoří účet úložiště, vytvoří kontejner a zkopíruje propojenou šablonu z úložiště GitHub do kontejneru. Kopie propojené šablony je uložená na [GitHubu](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json).
 
-Vyberte **Try-it, chcete-li** otevřít prostředí Cloud, vyberte **Kopírovat,** chcete-li zkopírovat skript prostředí PowerShell, a kliknutím pravým tlačítkem myši na podokno prostředí skript vložte:
+Vyberte **try-it** a otevřete Cloud Shell, vyberte **Kopírovat** pro zkopírování skriptu PowerShellu a kliknutím pravým tlačítkem na podokno prostředí vložte skript:
 
 > [!IMPORTANT]
-> Názvy účtů úložiště musí mít délku 3 až 24 znaků a používat pouze čísla a malá písmena. Název musí být jedinečný. V šabloně je název účtu úložiště název projektu s připojeným "store" a název projektu musí být mezi 3 a 11 znaků. Název projektu tedy musí splňovat požadavky na název účtu úložiště a má méně než 11 znaků.
+> Názvy účtů úložiště musí mít délku 3 až 24 znaků a musí obsahovat jenom číslice a malá písmena. Název musí být jedinečný. V šabloně je název účtu úložiště název projektu s připojeným úložištěm a název projektu musí být dlouhý 3 až 11 znaků. Proto název projektu musí splňovat požadavky na název účtu úložiště a má méně než 11 znaků.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name:"   # This name is used to generate names for Azure resources, such as storage account name.
@@ -87,12 +87,12 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="deploy-template"></a>Nasazení šablony
 
-Chcete-li nasadit soukromou šablonu v účtu úložiště, vygenerujte token SAS a zahrňte jej do identifikátoru URI pro šablonu. Nastavte dobu vypršení platnosti, aby byl dostatek času na dokončení nasazení. Objekt blob obsahující šablonu je přístupný pouze vlastníkovi účtu. Však při vytvoření tokenu SAS pro objekt blob, objekt blob je přístupný všem uživatelům s tímto URI. Pokud jiný uživatel zachytí identifikátor URI, bude mít k šabloně přístup. Token SAS je dobrý způsob, jak omezit přístup k šablonám, ale neměli byste zahrnout citlivá data, jako jsou hesla přímo do šablony.
+Pokud chcete v účtu úložiště nasadit soukromou šablonu, vygenerujte token SAS a zahrňte ho do identifikátoru URI pro šablonu. Nastavte čas vypršení platnosti, abyste měli dostatek času na dokončení nasazení. Objekt BLOB obsahující šablonu je přístupný pouze pro vlastníka účtu. Pokud však vytvoříte token SAS pro objekt blob, je objekt BLOB přístupný komukoli s tímto identifikátorem URI. Pokud identifikátor URI zachytí jiný uživatel, bude mít tento uživatel k šabloně přístup. Token SAS je dobrým způsobem, jak omezit přístup k vašim šablonám, neměli byste ale obsahovat citlivá data, jako jsou hesla přímo v šabloně.
 
-Pokud jste skupinu prostředků nevytvořili, přečtěte si informace [o vytvoření skupiny prostředků](./deployment-tutorial-local-template.md#create-resource-group).
+Pokud jste ještě nevytvořili skupinu prostředků, přečtěte si téma [Vytvoření skupiny prostředků](./deployment-tutorial-local-template.md#create-resource-group).
 
 > [!NOTE]
-> V níže uvedeném kódu rozhraní příkazového řádku Azure by parametr date -d byl neplatným argumentem v systému macOS. Takže uživatelé macOS, chcete-li přidat 2 hodiny k aktuálnímu času v terminálu na macOS, měli byste použít -v + 2H.
+> V níže uvedeném kódu Azure CLI je parametr Date-d v macOS neplatný argument. Takže uživatelé macOS k tomu, aby do terminálu mohli přidat 2 hodiny v terminálu na macOS, měli byste použít-v + 2 h.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -166,16 +166,16 @@ az deployment group create \
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Vyčistěte prostředky, které jste nasadili odstraněním skupiny prostředků.
+Vyčistěte prostředky, které jste nasadili, odstraněním skupiny prostředků.
 
-1. Na portálu Azure vyberte **skupinu prostředků** z levé nabídky.
+1. Z Azure Portal v nabídce vlevo vyberte **Skupina prostředků** .
 2. Do pole **Filtrovat podle názvu** zadejte název skupiny prostředků.
 3. Vyberte název skupiny prostředků.
-4. V horní nabídce vyberte **Odstranit skupinu prostředků.**
+4. V horní nabídce vyberte **Odstranit skupinu prostředků** .
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjistili jste, jak nasadit propojenou šablonu. V dalším kurzu se dozvíte, jak vytvořit kanál DevOp k nasazení šablony.
+Zjistili jste, jak nasadit propojenou šablonu. V dalším kurzu se dozvíte, jak vytvořit DevOp kanál pro nasazení šablony.
 
 > [!div class="nextstepaction"]
 > [Vytvoření kanálu](./deployment-tutorial-pipeline.md)
