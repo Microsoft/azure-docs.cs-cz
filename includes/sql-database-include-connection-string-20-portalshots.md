@@ -1,7 +1,7 @@
 ---
-title: Získání připojovacího řetězce z webu Azure Portal
-description: Získání připojovacího řetězce z webu Azure Portal
-keywords: připojení SQL,připojovací řetězec
+title: Získání připojovacího řetězce z Azure Portal
+description: Získání připojovacího řetězce z Azure Portal
+keywords: připojení SQL, připojovací řetězec
 services: sql-database
 author: dalechen
 manager: craigg
@@ -11,34 +11,34 @@ ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
 ms.openlocfilehash: 6ead2e0ea326b5c3f2e76e7aa9cc4ab3c50d4154
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67175087"
 ---
-### <a name="obtain-the-connection-string-from-the-azure-portal"></a>Získání připojovacího řetězce z webu Azure Portal
-Pomocí [portálu Azure](https://portal.azure.com/) získáte připojovací řetězec, který je nezbytný pro interakci vašeho klientského programu s Azure SQL Database.
+### <a name="obtain-the-connection-string-from-the-azure-portal"></a>Získání připojovacího řetězce z Azure Portal
+Použijte [Azure Portal](https://portal.azure.com/) k získání připojovacího řetězce, který je nezbytný pro komunikaci vašeho klientského programu s Azure SQL Database.
 
-1. Vyberte **všechny služby** > **SQL databáze**.
+1. Vyberte **všechny služby** > **databáze SQL**.
 
-2. Zadejte název databáze do textového pole filtru v levém horním rohu okna **databáze SQL.**
+2. Do textového pole Filtr v blízkosti levého horního rohu okna **databáze SQL** zadejte název vaší databáze.
 
-3. Vyberte řádek databáze.
+3. Vyberte řádek pro vaši databázi.
 
-4. Po zobrazení okna pro vaši databázi vyberte pro vizuální pohodlí **minimalizovat** tlačítka sbalit okna, které jste použili pro procházení a filtrování databáze.
+4. Po zobrazení okna pro vaši databázi můžete pro vizuální usnadnění vybrat tlačítka **minimalizovat** a sbalit tak okna, která jste použili pro procházení a filtrování databáze.
 
-5. V okně pro databázi vyberte **Zobrazit připojovací řetězce databáze**.
+5. V okně databáze vyberte **Zobrazit databázové připojovací řetězce**.
 
-6. Zkopírujte příslušný připojovací řetězec. Pokud chcete použít knihovnu připojení ADO.NET, zkopírujte příslušný řetězec z karty **ADO.NET.**
+6. Zkopírujte příslušný připojovací řetězec. To znamená, že pokud máte v úmyslu použít knihovnu připojení ADO.NET, zkopírujte příslušný řetězec z karty **ADO.NET** .
 
-    ![Kopírování připojovacího řetězce ADO pro databázi][20-CopyAdoConnectionString]
+    ![Zkopírování připojovacího řetězce ADO pro vaši databázi][20-CopyAdoConnectionString]
 
-7. Podle potřeby upravte připojovací řetězec. Vložte heslo do připojovacího řetězce nebo&lt;odeberte z uživatelského jména název&gt;@název_serveru, pokud je uživatelské jméno nebo název serveru příliš dlouhé.
+7. Podle potřeby upravte připojovací řetězec. To znamená, že vložte heslo do připojovacího řetězce nebo odeberte "@&lt;servername&gt;" z uživatelského jména, pokud je název uživatelského jména nebo serveru moc dlouhý.
 
-8. V jednom nebo druhém formátu vložte informace o připojovacím řetězci do kódu klientského programu.
+8. V jednom nebo jiném formátu vložte do kódu klientského programu informace o připojovacím řetězci.
 
-Další informace naleznete v tématu [Připojovací řetězce a konfigurační soubory](https://msdn.microsoft.com/library/ms254494.aspx).
+Další informace najdete v tématu [připojovací řetězce a konfigurační soubory](https://msdn.microsoft.com/library/ms254494.aspx).
 
 <!-- Image references. -->
 

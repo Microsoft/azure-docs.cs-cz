@@ -6,24 +6,24 @@ ms.topic: include
 ms.date: 07/17/2019
 ms.author: pafarley
 ms.openlocfilehash: ce67062f83ad10703dfb1f0ee1f3741e698fb450
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70130072"
 ---
-Minimálně doporučujeme použít alespoň 30 obrázků na značku v počáteční trénovací sadě. Budete také chtít shromáždit několik dalších obrázků k testování modelu, jakmile je vyškolen.
+V počáteční sadě školení doporučujeme použít minimálně 30 imagí na značku. Budete také chtít shromáždit několik dalších imagí, pomocí kterých budete model testovat, jakmile bude vyškolený.
 
-Chcete-li efektivně trénovat model, použijte obrázky s vizuální rozmanitostí. Vyberte obrázky, které se liší podle:
+Aby bylo možné svůj model efektivně vyškolit, používejte obrázky s vizuální odrůdou. Vyberte obrázky, které se liší podle:
 * úhel kamery
-* Osvětlení
+* kvůli
 * pozadí
 * vizuální styl
-* individuální/seskupený subjekt (předměty)
+* jednotlivé/seskupené (é) věci
 * velikost
 * type
 
-Dále se ujistěte, že všechny tréninkové obrázky splňují následující kritéria:
-* Formát JPG, .png, .bmp nebo .gIF
-* ne větší než 6 MB (4 MB pro predikční obrázky)
-* nejméně 256 pixelů na nejkratším okraji; všechny obrázky kratší, než je tato, budou automaticky navýšeny službou Custom Vision Service
+Navíc se ujistěte, že všechny vaše školicí image splňují následující kritéria:
+* formát. jpg,. png,. bmp nebo. gif
+* velikost větší než 6MB (4 MB pro obrázky předpovědi)
+* méně než 256 pixelů na nejkratší hraně; Všechny bitové kopie, které jsou kratší než tato, se automaticky škálují Custom Vision Service

@@ -9,14 +9,14 @@ ms.date: 08/02/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 5149973fe63f867b49e55c970779c005e12536b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "68780228"
 ---
-1. Otevřete stránku brány virtuální sítě. K oknu se dostanete několika způsoby. K bráně můžete přejít tak, že přejdete na **Název vaší virtuální sítě -> Přehled -> Připojená zařízení -> Název brány**.
-2. Na stránce brány klikněte na **Připojení**. V horní části okna Připojení klikněte na **+ Přidat** a otevřete stránku **Přidat připojení**.
+1. Otevřete stránku pro bránu virtuální sítě. K oknu se dostanete několika způsoby. Přejít na bránu můžete tak, že přejdete na **název sítě VNet-> Overview-> připojená zařízení – > název vaší brány**.
+2. Na stránce brány klikněte na **připojení**. V horní části okna Připojení klikněte na **+ Přidat** a otevřete stránku **Přidat připojení**.
 
    ![Vytvoření připojení typu site-to-site](./media/vpn-gateway-add-site-to-site-connection-portal-include/configure-site-to-site-connection.png)
 3. Na stránce **Přidat připojení** nakonfigurujte hodnoty pro vaše připojení.

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 6c72cd270e634ca0aebff7c17d5663241428e182
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "69907105"
 ---
 [!INCLUDE [Prerequisites](prerequisites-python.md)]
@@ -17,7 +17,7 @@ ms.locfileid: "69907105"
 
 ## <a name="create-a-project-and-import-required-modules"></a>Vytvoření projektu a import požadovaných modulů
 
-Vytvořte nový projekt Pythonu pomocí svého oblíbeného rozhraní IDE nebo editoru nebo vytvořte novou složku na ploše. Zkopírujte tento fragment kódu do projektu nebo složky do souboru s názvem `dictionary-lookup.py`.
+Vytvořte nový projekt Pythonu pomocí oblíbeného integrovaného vývojového prostředí (IDE) nebo editoru nebo vytvořte novou složku na ploše. Zkopírujte tento fragment kódu do svého projektu nebo složky do souboru s názvem `dictionary-lookup.py`.
 
 ```python
 # -*- coding: utf-8 -*-
@@ -31,7 +31,7 @@ První komentář říká interpretu Pythonu, že má použít kódování UTF-8
 
 ## <a name="set-the-subscription-key-endpoint-and-path"></a>Nastavení klíče předplatného, koncového bodu a cesty
 
-Tato ukázka se pokusí přečíst klíč předplatného Translator Text `TRANSLATOR_TEXT_KEY` a `TRANSLATOR_TEXT_ENDPOINT`koncový bod z proměnných prostředí: a . Pokud nejste obeznámeni s proměnnými prostředí, můžete nastavit `subscription_key` a `endpoint` jako řetězce a komentovat podmíněné příkazy.
+Tato ukázka se pokusí přečíst klíč předplatného Translator Text a koncový bod z proměnných prostředí: `TRANSLATOR_TEXT_KEY` a `TRANSLATOR_TEXT_ENDPOINT`. Pokud nejste obeznámeni s proměnnými prostředí, můžete nastavit `subscription_key` a `endpoint` jako řetězce a přidat komentář k podmíněným příkazům.
 
 Zkopírujte do svého projektu tento kód:
 
@@ -47,7 +47,7 @@ if not endpoint_var_name in os.environ:
 endpoint = os.environ[endpoint_var_name]
 ```
 
-Globální koncový bod Translator Text `endpoint`je nastaven jako . `path` nastaví trasu `dictionary/lookup` a určuje, že chceme cílit na rozhraní API verze 3.
+Translator Text globální koncový bod je nastaven jako `endpoint`. `path` nastaví trasu `dictionary/lookup` a určuje, že chceme cílit na rozhraní API verze 3.
 
 `params` slouží k nastavení jazyků zdroje a výstupu. V této ukázce používáme angličtinu a španělštinu: `en` a `es`.
 
@@ -74,7 +74,7 @@ headers = {
 }
 ```
 
-Pokud používáte předplatné služeb Cognitive Services s více `Ocp-Apim-Subscription-Region` službami, musíte také zahrnout parametry požadavku. [Přečtěte si další informace o ověřování pomocí předplatného s více službami](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Pokud používáte Cognitive Services předplatné s více službami, musíte taky zahrnout `Ocp-Apim-Subscription-Region` do parametrů žádosti. [Přečtěte si další informace o ověřování pomocí předplatného s více službami](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="create-a-request-to-find-alternate-translations"></a>Vytvoření požadavku na vyhledání alternativních překladů
 
@@ -147,7 +147,7 @@ Pokud jste do svého programu pevně zakódovali klíč předplatného, nezapome
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na odkaz rozhraní API pochopit vše, co můžete dělat s překladačem text api.
+Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s Translator Text API dělat.
 
 > [!div class="nextstepaction"]
 > [referenční dokumentace k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

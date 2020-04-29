@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 64a934196bb964561f36b9d95a2467b149847225
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "69906727"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
@@ -17,26 +17,26 @@ ms.locfileid: "69906727"
 
 ## <a name="create-a-net-core-project"></a>Vytvoření projektu .NET Core
 
-Otevřete nový příkazový řádek (nebo terminálovou relaci) a spusťte tyto příkazy:
+Otevřete nový příkazový řádek (nebo relaci terminálu) a spusťte tyto příkazy:
 
 ```console
 dotnet new console -o translate-sample
 cd translate-sample
 ```
 
-První příkaz dělá dvě věci. Vytvoří novou aplikaci konzoly .NET a `translate-sample`vytvoří adresář s názvem . Druhý příkaz se změní do adresáře pro váš projekt.
+První příkaz provede dvě věci. Vytvoří novou konzolovou aplikaci .NET a vytvoří adresář s názvem `translate-sample`. Druhý příkaz změní adresář pro váš projekt.
 
-Dále budete muset nainstalovat Json.Net. Z adresáře projektu spusťte:
+V dalším kroku budete muset nainstalovat Json.Net. Z adresáře projektu spusťte:
 
 ```console
 dotnet add package Newtonsoft.Json --version 11.0.2
 ```
 
-## <a name="select-the-c-language-version"></a>Výběr jazykové verze jazyka C#
+## <a name="select-the-c-language-version"></a>Vyberte verzi jazyka C#.
 
-Tento rychlý start vyžaduje C# 7.1 nebo novější. Existuje několik způsobů, jak změnit verzi jazyka C# pro váš projekt. V této příručce vám ukážeme, `translate-sample.csproj` jak soubor upravit. Všechny dostupné možnosti, jako je například změna jazyka v sadě Visual Studio, naleznete [v tématu Výběr jazykové verze jazyka C#](https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version).
+Tento rychlý Start vyžaduje C# 7,1 nebo novější. Existuje několik způsobů, jak změnit verzi v jazyce C# pro váš projekt. V této příručce vám ukážeme, jak `translate-sample.csproj` soubor upravit. Všechny dostupné možnosti, jako je například změna jazyka v aplikaci Visual Studio, najdete v tématu [Výběr jazykové verze jazyka C#](https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version).
 
-Otevřete projekt a `translate-sample.csproj`otevřete . Ujistěte `LangVersion` se, že je nastavena na 7.1 nebo novější. Pokud pro jazykovou verzi neexistuje skupina vlastností, přidejte tyto řádky:
+Otevřete projekt a pak otevřete `translate-sample.csproj`. Ujistěte se, `LangVersion` že je nastavená na 7,1 nebo novější. Pokud pro danou jazykovou verzi není skupina vlastností, přidejte tyto řádky:
 
 ```xml
 <PropertyGroup>
@@ -46,7 +46,7 @@ Otevřete projekt a `translate-sample.csproj`otevřete . Ujistěte `LangVersion`
 
 ## <a name="add-required-namespaces-to-your-project"></a>Přidání požadovaných oborů názvů do projektu
 
-Příkaz, `dotnet new console` který jste dříve spustili, vytvořil projekt, včetně `Program.cs`. Tento soubor je místo, kam vložíte kód aplikace. Otevřete `Program.cs`a nahraďte existující příkazy using. Tyto příkazy zajistit, že máte přístup ke všem typům potřebné k sestavení a spuštění ukázkové aplikace.
+`dotnet new console` Příkaz, který jste spustili dříve, vytvořil projekt, včetně `Program.cs`. Do tohoto souboru umístíte kód aplikace. Otevřete `Program.cs`a nahraďte existující příkazy using. Tyto příkazy zajistí, že máte přístup ke všem typům vyžadovaným pro sestavení a spuštění ukázkové aplikace.
 
 ```csharp
 using System;
@@ -57,9 +57,9 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 ```
 
-## <a name="create-classes-for-the-json-response"></a>Vytvořit třídy pro odpověď JSON
+## <a name="create-classes-for-the-json-response"></a>Vytvoření tříd pro odpověď JSON
 
-Dále vytvoříme sadu tříd, které se používají při deserializaci odpovědi JSON vrácené textovým rozhraním TRANSLATOR API.
+Nyní vytvoříme sadu tříd, které se použijí při deserializaci odpovědi JSON vrácené Translator Text API.
 
 ```csharp
 /// <summary>
@@ -107,7 +107,7 @@ public class SentenceLength
 
 ## <a name="get-subscription-information-from-environment-variables"></a>Získání informací o předplatném z proměnných prostředí
 
-Přidejte do třídy `Program` následující řádky. Tyto řádky číst klíč předplatného a koncový bod z proměnných prostředí a vyvolá chybu, pokud narazíte na všechny problémy.
+Do `Program` třídy přidejte následující řádky. Tyto řádky čtou klíč předplatného a koncový bod z proměnných prostředí a vyvolá chybu, pokud narazíte na nějaké problémy.
 
 ```csharp
 private const string key_var = "TRANSLATOR_TEXT_SUBSCRIPTION_KEY";
@@ -132,7 +132,7 @@ static Program()
 
 ## <a name="create-a-function-to-translate-text"></a>Vytvoření funkce pro překlad textu
 
-Ve `Program` třídě vytvořte asynchronní funkci `TranslateTextRequest()`nazvanou . Tato funkce má čtyři `subscriptionKey` `host`argumenty: , , `route`a `inputText`.
+Ve `Program` třídě Vytvořte asynchronní funkci s názvem `TranslateTextRequest()`. Tato funkce přijímá čtyři argumenty: `subscriptionKey`, `host`, `route`a `inputText`.
 
 ```csharp
 // This sample requires C# 7.1 or later for async/await.
@@ -146,18 +146,18 @@ static public async Task TranslateTextRequest(string subscriptionKey, string end
 }
 ```
 
-## <a name="serialize-the-translation-request"></a>Serializace žádosti o překlad
+## <a name="serialize-the-translation-request"></a>Serializace požadavku překladu
 
-Dále musíme vytvořit a serializovat objekt JSON, který obsahuje text, který chcete přeložit. Mějte na paměti, můžete předat více `body`než jeden objekt v .
+Dále je potřeba vytvořit a serializovat objekt JSON, který obsahuje text, který chcete přeložit. Mějte na paměti, že v nástroji můžete předat více než jeden objekt `body`.
 
 ```csharp
 object[] body = new object[] { new { Text = inputText } };
 var requestBody = JsonConvert.SerializeObject(body);
 ```
 
-## <a name="instantiate-the-client-and-make-a-request"></a>Vytvořte instanci klienta a požádejte o to
+## <a name="instantiate-the-client-and-make-a-request"></a>Vytvoření instance klienta a vytvoření žádosti
 
-Tyto řádky konkretizovat `HttpClient` `HttpRequestMessage`a a:
+Tyto řádky vytváří instanci `HttpClient` a: `HttpRequestMessage`
 
 ```csharp
 using (var client = new HttpClient())
@@ -167,18 +167,18 @@ using (var request = new HttpRequestMessage())
 }
 ```
 
-## <a name="construct-the-request-and-print-the-response"></a>Sestavení požadavku a tisk odpovědi
+## <a name="construct-the-request-and-print-the-response"></a>Sestavte požadavek a vytiskněte odpověď.
 
-Uvnitř `HttpRequestMessage` budete:
+V rámci `HttpRequestMessage` budete:
 
-* Deklarovat metodu HTTP
-* Vytvoření identifikátoru URI požadavku
-* Vložení těla požadavku (serializovaný objekt JSON)
-* Přidání požadovaných záhlaví
-* Vytvoření asynchronního požadavku
-* Tisk odpovědi pomocí dříve vytvořených tříd
+* Deklarace metody HTTP
+* Sestavit identifikátor URI žádosti
+* Vložit text žádosti (serializovaný objekt JSON)
+* Přidat požadovaná záhlaví
+* Vytvořit asynchronní požadavek
+* Vytiskněte odpověď pomocí tříd, které jste vytvořili dříve.
 
-Přidejte tento `HttpRequestMessage`kód do :
+Přidejte tento kód do `HttpRequestMessage`:
 
 ```csharp
 // Build the request.
@@ -208,11 +208,11 @@ foreach (TranslationResult o in deserializedOutput)
 }
 ```
 
-Pokud používáte předplatné služeb Cognitive Services s více `Ocp-Apim-Subscription-Region` službami, musíte také zahrnout parametry požadavku. [Přečtěte si další informace o ověřování pomocí předplatného s více službami](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Pokud používáte Cognitive Services předplatné s více službami, musíte taky zahrnout `Ocp-Apim-Subscription-Region` do parametrů žádosti. [Přečtěte si další informace o ověřování pomocí předplatného s více službami](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="put-it-all-together"></a>Spojení všech součástí dohromady
 
-Posledním krokem je `TranslateTextRequest()` volání `Main` funkce. V této ukázce překládáme`de`do němčiny ( ), italštiny (`it`), japonštiny (`ja`) a thajštiny (`th`). Vyhledejte `static void Main(string[] args)` a nahraďte jej tímto kódem:
+Posledním krokem je volání `TranslateTextRequest()` `Main` funkce. V této ukázce se překládáme na němčinu (`de`), italštinu`it`(), japonštinu (`ja`) a thajštinu (`th`). Vyhledejte `static void Main(string[] args)` ho a nahraďte ho tímto kódem:
 
 ```csharp
 static async Task Main(string[] args)
@@ -232,11 +232,11 @@ static async Task Main(string[] args)
 }
 ```
 
-Všimněte si, `Main`že v , `subscriptionKey`jste `endpoint`deklarování , a `route`. Kromě toho budete vyzváni k zadání `Console.Readline()` uživatele s a `textToTranslate`přiřazení hodnoty .
+Všimněte si, že v `Main`, deklarujete `subscriptionKey`, `endpoint`a. `route` Kromě toho vyzýváte uživatele k zadání `Console.Readline()` a přiřazení hodnoty k. `textToTranslate`
 
 ## <a name="run-the-sample-app"></a>Spuštění ukázkové aplikace
 
-To je ono, jste připraveni spustit ukázkovou aplikaci. Z příkazového řádku (nebo terminálové relace) přejděte do adresáře projektu a spusťte:
+To je to, že jste připraveni spustit ukázkovou aplikaci. Z příkazového řádku (nebo relace Terminálové služby) přejděte do adresáře projektu a spusťte příkaz:
 
 ```console
 dotnet run
@@ -244,7 +244,7 @@ dotnet run
 
 ## <a name="sample-response"></a>Ukázková odpověď
 
-Po spuštění ukázky, měli byste vidět následující vytištěno na terminálu:
+Po spuštění ukázky by se měla zobrazit následující tištěná do terminálu:
 
 ```bash
 Detected input language: en
@@ -256,7 +256,7 @@ Translated to ja: ハローワールド！
 Translated to th: หวัดดีชาวโลก!
 ```
 
-Tato zpráva je sestavena z raw JSON, který bude vypadat takto:
+Tato zpráva je sestavena z nezpracovaného formátu JSON, který bude vypadat takto:
 
 ```json
 [
@@ -289,11 +289,11 @@ Tato zpráva je sestavena z raw JSON, který bude vypadat takto:
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Nezapomeňte odebrat všechny důvěrné informace ze zdrojového kódu ukázkové aplikace, jako jsou klíče předplatného.
+Nezapomeňte ze zdrojového kódu ukázkové aplikace odebrat všechny důvěrné informace, jako jsou klíče předplatného.
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na odkaz rozhraní API pochopit vše, co můžete dělat s překladačem text api.
+Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s Translator Text API dělat.
 
 > [!div class="nextstepaction"]
 > [referenční dokumentace k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

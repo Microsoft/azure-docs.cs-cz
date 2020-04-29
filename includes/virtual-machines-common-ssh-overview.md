@@ -9,22 +9,22 @@ ms.date: 12/21/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 3f9b86dd3716a25ab95265cf46b616144f57163b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71168643"
 ---
 ## <a name="overview-of-ssh-and-keys"></a>Přehled SSH a klíčů
 
-[SSH](https://www.ssh.com/ssh/) je šifrovaný protokol připojení, který umožňuje zabezpečené přihlášení přes nezabezpečené připojení. SSH je výchozí protokol připojení pro virtuální počítače s Linuxem hostované v Azure. Přestože SSH sám poskytuje šifrované připojení, pomocí hesla s připojením SSH stále ponechává virtuální hod náchylné k útokům hrubou silou nebo hádání hesel. Bezpečnější a upřednostňovanější způsob připojení k virtuálnímu virtuálnímu zařízení pomocí SSH je pomocí páru veřejného a soukromého klíče, označované také jako *klíče SSH*. 
+[SSH](https://www.ssh.com/ssh/) je zašifrovaný protokol připojení, který umožňuje zabezpečená přihlášení přes nezabezpečená připojení. SSH je výchozí protokol připojení pro virtuální počítače se systémem Linux hostované v Azure. I když SSH sám poskytuje šifrované připojení, použití hesel s připojeními SSH stále opouští virtuální počítač před útoky hrubou silou nebo odhadem hesla. Bezpečnější a upřednostňovanou metodou připojení k virtuálnímu počítači pomocí SSH je použití páru veřejných klíčů, označovaného také jako *klíče SSH*. 
 
-* *Veřejný klíč* se umístí na váš virtuální počítač s Linuxem nebo na jakoukoli jinou službu, kterou chcete použít s kryptografií s veřejným klíčem.
+* *Veřejný klíč* je umístěn na virtuálním počítači se systémem Linux nebo v jakékoli jiné službě, kterou chcete používat s kryptografií s veřejným klíčem.
 
-* *Soukromý klíč* zůstane v místním systému. Chraňte tento privátní klíč. Nesdílejte ho.
+* *Privátní klíč* zůstane v místním systému. Chraňte tento privátní klíč. Nesdílejte ho.
 
-Když použijete klienta SSH pro připojení k virtuálnímu počítači s Linuxem (který má veřejný klíč), vzdálený virtuální počítač testuje klienta, aby se ujistil, že má soukromý klíč. Pokud má klient soukromý klíč, je mu udělen přístup k virtuálnímu virtuálnímu soudu. 
+Když použijete klienta SSH pro připojení k VIRTUÁLNÍmu počítači Linux (který má veřejný klíč), vzdálený virtuální počítač otestuje klienta, aby se ujistil, že má privátní klíč. Pokud má klient privátní klíč, získá přístup k virtuálnímu počítači. 
 
-V závislosti na zásadách zabezpečení vaší organizace můžete znovu použít jeden pár veřejného a soukromého klíče pro přístup k více virtuálním počítačům a službám Azure. Nepotřebujete samostatný pár klíčů pro každý virtuální virtuální ms nebo služby, které chcete získat přístup. 
+V závislosti na zásadách zabezpečení vaší organizace můžete pro přístup k několika virtuálním počítačům a službám Azure použít jednu dvojici klíčů veřejného a privátního klíče. Pro každý virtuální počítač nebo službu, ke které chcete získat přístup, nepotřebujete samostatné dvojice klíčů. 
 
-Veřejný klíč lze sdílet s kýmkoli, ale pouze vy (nebo místní infrastruktura zabezpečení) byste měli mít váš soukromý klíč.
+Veřejný klíč se dá sdílet s kýmkoli, ale váš privátní klíč by měl mít jenom vy (nebo vaše místní infrastruktura zabezpečení).

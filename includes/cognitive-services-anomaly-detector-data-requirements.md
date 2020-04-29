@@ -5,14 +5,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/20/2019
 ms.openlocfilehash: 41ac1478b1028a847fc0d5e7e70802375e910837
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67175341"
 ---
 > [!NOTE]
-> Pro [dosažení nejlepších výsledků](../articles/cognitive-services/anomaly-detector/concepts/anomaly-detection-best-practices.md) při použití rozhraní API detektoru anomálií by data časových řad ve formátu JSON měla zahrnovat:
-> * datových bodů oddělených stejným intervalem, přičemž nevíce než 10 % očekávaného počtu bodů chybí.
-> * alespoň 12 datových bodů, pokud vaše data nemají jasný sezónní vzorec.
-> * alespoň 4 výskyty vzoru, pokud vaše data mají jasný sezónní vzor. 
+> Pro [dosažení nejlepších výsledků](../articles/cognitive-services/anomaly-detector/concepts/anomaly-detection-best-practices.md) při použití rozhraní API pro detekci anomálií by data časové řady ve formátu JSON měla zahrnovat:
+> * datové body oddělené stejným intervalem a neobsahují více než 10% očekávaného počtu chybějících bodů.
+> * aspoň 12 datových bodů, pokud vaše data nemají jasný sezónní vzor.
+> * nejméně 4 výskyty vzorů, pokud vaše data mají jasný sezónní vzor. 
