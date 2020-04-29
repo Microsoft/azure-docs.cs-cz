@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: Konfigurace expressroute direct: CLI'
-description: Tento článek vám pomůže nakonfigurovat ExpressRoute Direct pomocí rozhraní příkazového příkazu Azure
+title: 'Azure ExpressRoute: Konfigurace ExpressRoute Direct: CLI'
+description: Tento článek vám pomůže nakonfigurovat ExpressRoute Direct pomocí Azure CLI.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,25 +8,25 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: cherylmc
 ms.openlocfilehash: dcca1417aec52fb4bf99d5c480d81995154a68b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79481972"
 ---
-# <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Konfigurace expressroute direct pomocí rozhraní příkazového příkazu Azure
+# <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Konfigurace ExpressRoute Direct pomocí Azure CLI
 
-Pomocí služby Azure ExpressRoute Direct se můžete připojit přímo ke globální síti Microsoftu v umístěních partnerských společností strategicky distribuovaných po celém světě. Další informace naleznete v tématu [O službě ExpressRoute Direct Connect](expressroute-erdirect-about.md).
+Azure ExpressRoute Direct můžete použít k přímému připojení k globální síti Microsoftu při partnerských umístěních, která jsou strategicky distribuována po celém světě. Další informace najdete v tématu [informace o přímém připojení ExpressRoute](expressroute-erdirect-about.md).
 
-## <a name="create-the-resource"></a><a name="resources"></a>Vytvoření zdroje
+## <a name="create-the-resource"></a><a name="resources"></a>Vytvoření prostředku
 
-1. Přihlaste se k Azure a vyberte předplatné, které obsahuje ExpressRoute. Prostředek ExpressRoute Direct a okruhy ExpressRoute musí být ve stejném předplatném. V azure cli spusťte následující příkazy:
+1. Přihlaste se k Azure a vyberte předplatné, které obsahuje ExpressRoute. Prostředek ExpressRoute Direct a vaše okruhy ExpressRoute musí být ve stejném předplatném. V rozhraní příkazového řádku Azure CLI spusťte následující příkazy:
 
    ```azurecli
    az login
    ```
 
-   Zkontrolujte předplatná pro účet: 
+   Ověřte odběry účtu: 
 
    ```azurecli
    az account list 
@@ -38,12 +38,12 @@ Pomocí služby Azure ExpressRoute Direct se můžete připojit přímo ke glob�
    az account set --subscription "<subscription ID>"
    ```
 
-2. Opětovná registrace předplatného společnosti Microsoft.Network pro přístup k rozhraním API expresních trasových portů a expresních trasových portů
+2. Znovu zaregistrujte své předplatné do Microsoftu. Network pro přístup k rozhraním API expressrouteportslocation a expressrouteport.
 
    ```azurecli
    az provider register --namespace Microsoft.Network
    ```
-3. Seznam všech míst, kde je podporovánexpressRoute Direct:
+3. Vypíše všechna umístění, kde se podporuje ExpressRoute Direct:
     
    ```azurecli
    az network express-route port location list
@@ -110,7 +110,7 @@ Pomocí služby Azure ExpressRoute Direct se můžete připojit přímo ke glob�
    }
    ]
    ```
-4. Určete, zda má jedno z umístění uvedených v předchozím kroku dostupnou šířku pásma:
+4. Určete, zda jedno z umístění uvedených v předchozím kroku má dostupnou šířku pásma:
 
    ```azurecli
    az network express-route port location show -l "Equinix-Ashburn-DC2"
@@ -136,14 +136,14 @@ Pomocí služby Azure ExpressRoute Direct se můžete připojit přímo ke glob�
    "type": "Microsoft.Network/expressRoutePortsLocations"
    }
    ```
-5. Vytvořte prostředek ExpressRoute Direct, který je založen na umístění, které jste zvolili v předchozích krocích.
+5. Vytvořte ExpressRoute přímý prostředek založený na umístění, které jste zvolili v předchozích krocích.
 
-   ExpressRoute Direct podporuje zapouzdření QinQ i Dot1Q. Pokud vyberete QinQ, každý okruh ExpressRoute je dynamicky přiřazen s-tag a je jedinečný v celém prostředku ExpressRoute Direct. Každý C-Tag na okruhu musí být jedinečný na okruhu, ale ne přes expressroute přímé zdroje.  
+   ExpressRoute Direct podporuje zapouzdření QinQ i Dot1Q. Vyberete-li možnost QinQ, každý okruh ExpressRoute dynamicky přiřadí značku S-a je jedinečný v celém prostředku ExpressRoute Direct. Každé označení C na okruhu musí být v okruhu jedinečné, ale ne napříč ExpressRoute přímým zdrojem.  
 
-   Pokud vyberete zapouzdření Dot1Q, musíte spravovat jedinečnost c-tagu (VLAN) v celém prostředku ExpressRoute Direct.  
+   Pokud vyberete zapouzdření Dot1Q, musíte spravovat jedinečnost značky C (VLAN) napříč celým prostředkem ExpressRoute Direct.  
 
    > [!IMPORTANT]
-   > ExpressRoute Direct může být pouze jeden typ zapouzdření. Typ zapouzdření nelze změnit po vytvoření prostředku ExpressRoute Direct.
+   > ExpressRoute Direct může být jenom jeden typ zapouzdření. Typ zapouzdření nemůžete změnit po vytvoření prostředku ExpressRoute Direct.
    > 
  
    ```azurecli
@@ -151,7 +151,7 @@ Pomocí služby Azure ExpressRoute Direct se můžete připojit přímo ke glob�
    ```
 
    > [!NOTE]
-   > Můžete také nastavit atribut **Zapouzdření** na **Dot1Q**. 
+   > Můžete také nastavit atribut **zapouzdření** na **Dot1Q**. 
    >
 
    **Příklad výstupu**
@@ -208,13 +208,13 @@ Pomocí služby Azure ExpressRoute Direct se můžete připojit přímo ke glob�
    }  
    ```
 
-## <a name="change-adminstate-for-links"></a><a name="state"></a>Změna stavu správce pro odkazy
+## <a name="change-adminstate-for-links"></a><a name="state"></a>Změnit AdminState pro odkazy
 
-Tento proces použijte k provedení testu vrstvy 1. Ujistěte se, že každé křížové připojení je správně opraveno do každého směrovače v primárním a sekundárním portu.
+Tento postup použijte k provedení testu vrstvy 1. Ujistěte se, že každé připojení mezi jednotlivými směrovači v primárních a sekundárních portech je správně opravené.
 
-1. Nastavte odkazy na **Povoleno**. Tento krok opakujte a nastavte jednotlivé odkazy na **Povoleno**.
+1. Nastavte odkazy na **povoleno**. Zopakováním tohoto kroku nastavte všechna propojení na **povoleno**.
 
-   Links[0] je primární port a Links[1] je sekundární port.
+   Odkazy [0] je primární port a propojení [1] je sekundární port.
 
    ```azurecli
    az network express-route port update -n Contoso-Direct -g Contoso-Direct-rg --set links[0].adminState="Enabled"
@@ -276,24 +276,24 @@ Tento proces použijte k provedení testu vrstvy 1. Ujistěte se, že každé k�
    }
    ```
 
-   Stejným postupem použijte k vypnutí `AdminState = "Disabled"`portů pomocí aplikace .
+   Stejný postup použijte pro snížení portu pomocí `AdminState = "Disabled"`.
 
 ## <a name="create-a-circuit"></a><a name="circuit"></a>Vytvoření okruhu
 
-Ve výchozím nastavení můžete vytvořit 10 okruhů v předplatném, které obsahuje prostředek ExpressRoute Direct. Podpora společnosti Microsoft může zvýšit výchozí limit. Jste zodpovědní za sledování zřízené a využité šířky pásma. Zřízená šířka pásma je součtem šířky pásma všech okruhů v prostředku ExpressRoute Direct. Využitá šířka pásma je fyzické využití základních fyzických rozhraní.
+Ve výchozím nastavení můžete vytvořit 10 okruhů v rámci předplatného, které obsahuje prostředek ExpressRoute Direct. Podpora Microsoftu může zvýšit výchozí limit. Zodpovídáte za sledování zřízené a využité šířky pásma. Zřízená šířka pásma je součet šířky pásma všech okruhů v prostředku ExpressRoute Direct. Využitá šířka pásma je fyzické využití základních fyzických rozhraní.
 
-Další šířku pásma okruhu můžete použít na ExpressRoute Direct pouze pro podporu zde uvedených scénářů. Šířka pásma jsou 40 Gbps a 100 Gbps.
+Další šířky pásma okruhů v ExpressRoute můžete použít jenom pro podporu scénářů, které jsou zde popsané. Šířky pásma jsou 40 GB/s a 100 GB/s.
 
-**SkuTier** může být místní, standardní nebo premium.
+**SkuTier** může být Local, Standard nebo Premium.
 
-**SkuFamily** musí být MeteredData pouze jako neomezený není podporován na ExpressRoute Direct.
-Vytvořte okruh na zdroji ExpressRoute Direct:
+**SkuFamily** musí být MeteredData pouze v případě, že v ExpressRoute Direct není podporována žádná neomezená velikost.
+Vytvořte okruh na prostředku ExpressRoute Direct:
 
   ```azurecli
   az network express-route create --express-route-port "/subscriptions/<subscriptionID>/resourceGroups/Contoso-Direct-rg/providers/Microsoft.Network/expressRoutePorts/Contoso-Direct" -n "Contoso-Direct-ckt" -g "Contoso-Direct-rg" --sku-family MeteredData --sku-tier Standard --bandwidth 100 Gbps
   ```
 
-  Mezi další šířky pásma patří 5 Gb/s, 10 Gb/s a 40 Gb/s.
+  Mezi další šířky pásma patří 5 GB/s, 10 GB/s a 40 GB/s.
 
   **Příklad výstupu**
 
@@ -333,4 +333,4 @@ Vytvořte okruh na zdroji ExpressRoute Direct:
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o expressroute direct naleznete v [přehledu](expressroute-erdirect-about.md).
+Další informace o ExpressRoute Direct najdete v [přehledu](expressroute-erdirect-about.md).

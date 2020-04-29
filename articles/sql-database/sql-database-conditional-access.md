@@ -1,6 +1,6 @@
 ---
 title: Podmíněný přístup
-description: Přečtěte si, jak nakonfigurovat podmíněný přístup pro Azure SQL Database a Azure Synapse.
+description: Přečtěte si, jak nakonfigurovat podmíněný přístup pro Azure SQL Database a Azure synapse.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,47 +12,47 @@ ms.custom: sql-data-warehouse
 ms.date: 02/06/2020
 tag: azure-synpase
 ms.openlocfilehash: cd56ccf2e6a4ceb0d81c25b5b9e795176be66b77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80124894"
 ---
-# <a name="conditional-access-mfa-with-azure-sql-database-and-azure-synapse-analytics"></a>Podmíněný přístup (MFA) s Azure SQL Database a Azure Synapse Analytics
+# <a name="conditional-access-mfa-with-azure-sql-database-and-azure-synapse-analytics"></a>Podmíněný přístup (MFA) s Azure SQL Database a Azure synapse Analytics
 
-Azure [SQL Database](sql-database-technical-overview.md), [spravovaná instance](sql-database-managed-instance.md)a Azure [Synapse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) podporují podmíněný přístup Microsoftu. 
+Azure [SQL Database](sql-database-technical-overview.md), [spravovaná instance](sql-database-managed-instance.md)a [Azure synapse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) podporují podmíněný přístup Microsoft. 
 
 > [!NOTE]
-> Toto téma se týká Serveru Azure SQL a databáze SQL a Azure Synapse, které jsou vytvořené na serveru Azure SQL. Pro jednoduchost SQL Database se používá při odkazování na SQL Database a Azure Synapse.
+> Toto téma se týká Azure SQL serveru a SQL Database a Azure synapse, které jsou vytvořené na Azure SQL serveru. Pro zjednodušení se SQL Database používá při odkazování na SQL Database a Azure synapse.
 
-Následující kroky ukazují, jak nakonfigurovat databázi SQL tak, aby vynucovala zásady podmíněného přístupu.  
+Následující kroky ukazují, jak nakonfigurovat SQL Database pro vymáhání zásad podmíněného přístupu.  
 
 ## <a name="prerequisites"></a>Požadavky  
-- Musíte nakonfigurovat databázi SQL nebo fond SQL v Azure Synapse pro podporu ověřování Azure Active Directory. Konkrétní kroky najdete [v tématu Konfigurace a správa ověřování Azure Active Directory pomocí databáze SQL Database nebo Azure Synapse](sql-database-aad-authentication-configure.md).  
-- Pokud je povoleno vícefaktorové ověřování, musíte se připojit k podporovanému nástroji, jako je například nejnovější SSMS. Další informace naleznete [v tématu Konfigurace vícefaktorového ověřování azure sql database pro SQL Server Management Studio](sql-database-ssms-mfa-authentication-configure.md).  
+- Pro podporu ověřování Azure Active Directory je nutné nakonfigurovat SQL Database nebo fond SQL ve službě Azure synapse. Konkrétní postup najdete v tématu [Konfigurace a Správa ověřování Azure Active Directory pomocí SQL Database nebo Azure synapse](sql-database-aad-authentication-configure.md).  
+- Je-li povoleno Multi-Factor Authentication, je třeba se připojit pomocí nástroje s podporovaným nástrojem, jako je například nejnovější SSMS. Další informace najdete v tématu [konfigurace Azure SQL Database Multi-Factor Authentication pro SQL Server Management Studio](sql-database-ssms-mfa-authentication-configure.md).  
 
 ## <a name="configure-ca-for-azure-sql-dbdw"></a>Konfigurace certifikační autority pro Azure SQL DB/DW  
-1. Přihlaste se k portálu, vyberte **Azure Active Directory**a pak vyberte Podmíněný **přístup**. Další informace naleznete v technické příručce pro [podmíněný přístup služby Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference).  
-   ![Okno podmíněného přístupu](./media/sql-database-conditional-access/conditional-access-blade.png) 
+1. Přihlaste se k portálu, vyberte **Azure Active Directory**a potom vyberte **podmíněný přístup**. Další informace najdete v tématu [technické informace o podmíněném přístupu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference).  
+   ![Okno podmíněný přístup](./media/sql-database-conditional-access/conditional-access-blade.png) 
      
-2. V okně **Zásady podmíněného přístupu** klikněte na **Nová zásada**, zadejte název a potom klepněte na tlačítko **Konfigurovat pravidla**.  
-3. V části **Přiřazení**vyberte **Možnost Uživatelé a skupiny**, **zaškrtněte políčko Vybrat uživatele a skupiny a**vyberte uživatele nebo skupinu pro podmíněný přístup. Klikněte na **Vybrat**a potom kliknutím na **Hotovo** výběr přijměte.  
-   ![výběr uživatelů a skupin](./media/sql-database-conditional-access/select-users-and-groups.png)  
+2. V okně **podmíněný přístup – zásady** klikněte na **nové zásady**, zadejte název a pak klikněte na **Konfigurovat pravidla**.  
+3. V části **přiřazení**vyberte **Uživatelé a skupiny**, zaškrtněte **políčko Vybrat uživatele a skupiny**a pak vyberte uživatele nebo skupinu pro podmíněný přístup. Klikněte na **Vybrat**a potom kliknutím na **Hotovo** přijměte svůj výběr.  
+   ![Vybrat uživatele a skupiny](./media/sql-database-conditional-access/select-users-and-groups.png)  
 
-4. Vyberte **Cloudové aplikace**, klikněte na **Vybrat aplikace**. Zobrazí se všechny aplikace dostupné pro podmíněný přístup. Vyberte **Azure SQL Database**, v dolní části klikněte na **Vybrat**a potom klikněte na **Hotovo**.  
-   ![vybrat databázi SQL](./media/sql-database-conditional-access/select-sql-database.png)  
-   Pokud nemůžete najít **Azure SQL Database** uvedené v následujícím třetím snímku obrazovky, postupujte takto:   
+4. Vyberte **cloudové aplikace**, klikněte na **vybrat aplikace**. Zobrazí se všechny aplikace, které jsou k dispozici pro podmíněný přístup. Vyberte **Azure SQL Database**, v dolní části klikněte na **Vybrat**a pak klikněte na **Hotovo**.  
+   ![Vyberte SQL Database](./media/sql-database-conditional-access/select-sql-database.png)  
+   Pokud nemůžete najít **Azure SQL Database** uvedených v následujícím třetím snímku obrazovky, proveďte následující kroky:   
    - Přihlaste se k instanci Azure SQL DB/DW pomocí SSMS s účtem správce AAD.  
-   - Spusťte `CREATE USER [user@yourtenant.com] FROM EXTERNAL PROVIDER`.  
-   - Přihlaste se k AAD a ověřte, že Azure SQL Database a Azure Synapse jsou uvedené v aplikacích ve vašem AAD.  
+   - Provést `CREATE USER [user@yourtenant.com] FROM EXTERNAL PROVIDER`.  
+   - Přihlaste se k AAD a ověřte, že Azure SQL Database a Azure synapse jsou uvedené v aplikacích v AAD.  
 
-5. Vyberte **ovládací prvky aplikace Access**, vyberte Možnost **Udělit**a zaškrtněte zásadu, kterou chcete použít. V tomto příkladu vybereme **Vyžadovat vícefaktorové ověřování**.  
+5. Vyberte **řízení přístupu**, vyberte **udělit**a pak zkontrolujte zásadu, kterou chcete použít. V tomto příkladu vybereme možnost **vyžadovat službu Multi-Factor Authentication**.  
    ![vybrat udělit přístup](./media/sql-database-conditional-access/grant-access.png)  
 
 ## <a name="summary"></a>Souhrn  
-Vybraná aplikace (Azure SQL Database), která umožňuje připojení k Azure SQL DB/DW pomocí Azure AD Premium, teď vynucuje vybrané zásady podmíněného **přístupu, požadované vícefaktorové ověřování.**  
-Máte-li dotazy týkající se Azure SQL Database a MFAforSQLDB@microsoft.comAzure Synapse týkající se vícefaktorového ověřování, kontaktujte .  
+Vybraná aplikace (Azure SQL Database), která umožňuje připojení k Azure SQL DB/DW pomocí Azure AD Premium nyní vynutila vybrané zásady podmíněného přístupu, **požadované vícefaktorové ověřování.**  
+Pokud máte dotazy týkající se Azure SQL Database a Azure synapse týkající se služby Multi- MFAforSQLDB@microsoft.comFactor Authentication, kontaktujte.  
 
 ## <a name="next-steps"></a>Další kroky  
 
-Kurz najdete v tématu [Zabezpečení databáze Azure SQL](sql-database-security-tutorial.md)Database .
+Kurz najdete v tématu [zabezpečení Azure SQL Database](sql-database-security-tutorial.md).

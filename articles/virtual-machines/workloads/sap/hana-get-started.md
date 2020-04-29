@@ -1,5 +1,5 @@
 ---
-title: Instalace SAP HANA na virtuálních počítačích Azure | Dokumenty společnosti Microsoft
+title: Instalace SAP HANA na virtuálních počítačích Azure | Microsoft Docs
 description: Průvodce instalací SAP HANA na virtuálních počítačích Azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -16,86 +16,86 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: juergent
 ms.openlocfilehash: e017e082472e7a4a2fab6a2845e52d3dc7acc460
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80123349"
 ---
 # <a name="installation-of-sap-hana-on-azure-virtual-machines"></a>Instalace SAP HANA na virtuálních počítačích Azure
 ## <a name="introduction"></a>Úvod
-Tato příručka vám pomůže přejděte na správné prostředky k úspěšnému nasazení HANA ve virtuálních počítačích Azure. Tato příručka vás přejde na prostředky dokumentace, které je třeba zkontrolovat před instalací SAP HANA do virtuálního počítače Azure. Takže můžete provést správné kroky k ukončení s podporovanou konfigurací SAP HANA ve virtuálních počítačích Azure.  
+Tato příručka vám pomůže nasměrovat na správné prostředky pro úspěšné nasazení HANA na virtuálních počítačích Azure. Tato příručka vás před instalací SAP HANA na virtuálním počítači Azure povede na prostředky dokumentace, které potřebujete ověřit. Takže je možné provést správné kroky, abyste ukončili podporovanou konfiguraci SAP HANA ve virtuálních počítačích Azure.  
 
 > [!NOTE]
-> Tato příručka popisuje nasazení SAP HANA do virtuálních počítačů Azure. Informace o tom, jak nasadit SAP HANA do velkých instancí HANA, najdete v [tématu Jak nainstalovat a nakonfigurovat SAP HANA (velké instance) v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-installation).
+> Tato příručka popisuje nasazení SAP HANA do virtuálních počítačů Azure. Informace o tom, jak nasadit SAP HANA do velkých instancí HANA, najdete v tématu [Jak nainstalovat a nakonfigurovat SAP Hana (velké instance) v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-installation).
  
 ## <a name="prerequisites"></a>Požadavky
 Tato příručka také předpokládá, že jste obeznámeni s:
 * SAP HANA a SAP NetWeaver a jak je nainstalovat místně.
-* Jak nainstalovat a provozovat instance aplikací SAP HANA a SAP v Azure.
-* Pojmy a postupy zdokumentované v:
-   * Plánování nasazení SAP v Azure, které zahrnuje plánování virtuální sítě Azure a využití úložiště Azure. Viz [SAP NetWeaver na virtuálních počítačích Azure – průvodce plánováním a implementací](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)
-   * Principy nasazení a způsoby nasazení virtuálních počítačů v Azure. Viz [nasazení virtuálních počítačů Azure pro SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide)
-   * Koncepty vysoké dostupnosti pro SAP HANA, jak je zdokumentováno v [SAP HANA vysoká dostupnost pro virtuální počítače Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)
+* Jak nainstalovat a provozovat instance aplikací SAP HANA a SAP v Azure
+* Koncepty a postupy zdokumentované v:
+   * Plánování nasazení SAP v Azure, které zahrnuje plánování a Azure Storage využití Azure Virtual Network. Přečtěte si článek [SAP NetWeaver on Azure Virtual Machines – Průvodce plánováním a implementací](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)
+   * Zásady nasazení a způsoby nasazení virtuálních počítačů v Azure. Viz [nasazení Azure Virtual Machines pro SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide) .
+   * Koncepty vysoké dostupnosti pro SAP HANA popsané v [SAP HANA vysoké dostupnosti pro virtuální počítače Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)
 
 ## <a name="step-by-step-before-deploying"></a>Krok za krokem před nasazením
-V této části jsou uvedeny různé kroky, které je třeba provést před zahájením instalace SAP HANA ve virtuálním počítači Azure. Pořadí je vyjmenována a jako takové by měly být dodrženy prostřednictvím ve výčtu:
+V této části jsou uvedeny různé kroky, které je třeba provést před zahájením instalace SAP HANA na virtuálním počítači Azure. Pořadí je vyhodnoceno a jako takový by mělo následovat jako na výčtu:
 
-1. V Azure nejsou podporovány všechny možné scénáře nasazení. Proto byste měli zkontrolovat úlohy dokumentu [SAP na scénářích podporovaných virtuálním počítačem Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-planning-supported-configurations) pro scénář, který máte na mysli s nasazením SAP HANA. Pokud scénář není uveden, je třeba předpokládat, že nebyl testován a v důsledku toho není podporována
-2. Za předpokladu, že máte hrubou představu o požadavcích na paměť pro nasazení SAP HANA, musíte najít vhodný virtuální počítač Azure. Ne všechny virtuální uživatele, které jsou certifikované pro SAP NetWeaver, jak je popsáno v [poznámce podpory SAP #1928533](https://launchpad.support.sap.com/#/notes/1928533), jsou certifikovány SAP HANA. Zdrojem pravdy pro virtuální počítače Azure s certifikací SAP HANA je adresář [hardwaru SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Jednotky začínající s **jsou** [jednotky velkých instancí HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) a ne virtuální počítače Azure.
-3. Různé typy virtuálních počítačů Azure mají různé minimální verze operačního systému pro SUSE Linux nebo Red Hat Linux. Na webových stránkách [sap hana hardwarového adresáře](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure), musíte kliknout na položku v seznamu sap hana certifikovaných jednotek získat podrobná data této jednotky. Kromě podporované hořce HANA jsou uvedeny verze operačního systému, které jsou podporovány s těmito jednotkami pro SAP HANA.
-4. Od vydání operačního systému je třeba zvážit určité minimální verze jádra. Tyto minimální verze jsou popsány v těchto poznámkách podpory SAP:
-    - [Poznámka podpory SAP #2814271 zálohování SAP HANA se nezdaří v Azure s chybou kontrolního součtu](https://launchpad.support.sap.com/#/notes/2814271)
-    - [Poznámka podpory SAP #2753418 potenciální snížení výkonu z důvodu záložního časovače](https://launchpad.support.sap.com/#/notes/2753418)
-    - [Poznámka podpory SAP #2791572 snížení výkonu z důvodu chybějící podpory VDSO pro technologie Hyper-V v Azure](https://launchpad.support.sap.com/#/notes/2791572)
-4. Na základě verze operačního systému, která je podporována pro typ virtuálního počítače volby, je třeba zkontrolovat, zda požadovaná verze SAP HANA je podporována s vydáním operačního systému. Přečtěte si [poznámku podpory SAP #2235581](https://launchpad.support.sap.com/#/notes/2235581) pro matici podpory verzí SAP HANA s různými verzemi operačního systému.
-5. Vzhledem k tomu, že jste možná našli platnou kombinaci typu virtuálního počítače Azure, vydání operačního systému a verze SAP HANA, je třeba zkontrolovat matici dostupnosti produktu SAP. V matici dostupnosti SAP můžete zjistit, zda je podporován produkt SAP, který chcete spustit proti databázi SAP HANA.
+1. V Azure se nepodporují všechny možné scénáře nasazení. Proto byste měli ve scénářích, které máte v úmyslu k nasazení SAP HANA, ve scénářích [podporovaném virtuálním počítačem Azure ověřit zatížení](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-planning-supported-configurations) v dokumentu SAP. Pokud tento scénář není uveden, je nutné předpokládat, že nebyl testován a v důsledku toho není podporován.
+2. Za předpokladu, že máte přibližnou představu o požadavcích na paměť pro nasazení SAP HANA, potřebujete najít virtuální počítač Azure. Ne všechny virtuální počítače, které jsou certifikované pro SAP NetWeaver, jak je popsáno v části [SAP Support note #1928533](https://launchpad.support.sap.com/#/notes/1928533), jsou SAP HANA certifikovány. Zdrojem pravdy pro SAP HANA certifikovaných virtuálních počítačů Azure je web, který [SAP HANA hardwarový adresář](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Jednotky, které začínají na **s** , jsou jednotky [velkých instancí Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) a ne virtuální počítače Azure.
+3. Různé typy virtuálních počítačů Azure mají jiné minimální verze operačního systému pro SUSE Linux nebo Red Hat Linux. Na webu [SAP HANA v adresáři hardwaru](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)musíte kliknout na položku v seznamu SAP HANA certifikovaných jednotek a získat tak podrobná data této jednotky. Kromě podporované úlohy HANA jsou uvedené verze operačních systémů, které jsou podporované s jednotkami pro SAP HANA.
+4. V případě verzí operačního systému je potřeba vzít v úvahu určité minimální vydané verze jádra. Tyto minimální verze jsou zdokumentovány v těchto poznámkách k podpoře SAP:
+    - [Poznámka k podpoře SAP Poznámka #2814271 SAP HANA zálohování v Azure selhalo s chybou kontrolního součtu](https://launchpad.support.sap.com/#/notes/2814271)
+    - [Poznámka k podpoře SAP #2753418 potenciálního snížení výkonu kvůli záložnímu použití časovače](https://launchpad.support.sap.com/#/notes/2753418)
+    - [Podpora SAP Poznámka #2791572 snížení výkonu kvůli chybějící podpoře VDSO pro Hyper-V v Azure](https://launchpad.support.sap.com/#/notes/2791572)
+4. V závislosti na verzi operačního systému, která je podporovaná pro zvolený typ virtuálního počítače, musíte ověřit, jestli je vaše požadovaná verze SAP HANA podporovaná v této verzi operačního systému. Přečtěte [si poznámku ke službě SAP support #2235581](https://launchpad.support.sap.com/#/notes/2235581) pro matrici podpory SAP HANA verzí s různými verzemi operačního systému.
+5. Jak jste zjistili platnou kombinaci typu virtuálního počítače Azure, verze operačního systému a SAP HANA vydání, je nutné vrátit se změnami v matici dostupnost produktu SAP. V matici dostupnost SAP můžete zjistit, jestli je podporovaný produkt SAP, který chcete spustit s databází SAP HANA.
 
 
-## <a name="step-by-step-vm-deployment-and-guest-os-considerations"></a>Podrobné informace o nasazení virtuálních počítače a o hostování
-V této fázi je třeba projít kroky nasazení virtuálních počítačů k instalaci HANA a nakonec optimalizovat zvolený operační systém po instalaci.
+## <a name="step-by-step-vm-deployment-and-guest-os-considerations"></a>Podrobné pokyny k nasazení virtuálních počítačů a operačním systému hosta
+V této fázi potřebujete projít kroky nasazení virtuálních počítačů k instalaci HANA a nakonec optimalizovat zvolený operační systém po instalaci.
 
-1. V galerii Azure vyberte základní bitovou kopii. Pokud chcete vytvořit vlastní image operačního systému pro SAP HANA, musíte znát všechny různé balíčky, které jsou nezbytné pro úspěšnou instalaci SAP HANA. V opačném případě se doporučuje používat suse a red hat image pro SAP nebo SAP HANA z galerie obrázků Azure. Tyto bitové kopie obsahují balíčky nezbytné pro úspěšnou instalaci HANA. Na základě smlouvy o podpoře s poskytovatelem operačního systému musíte zvolit bitovou kopii, ve které si přinesete vlastní licenci. Nebo zvolíte obrázek operačního systému, který obsahuje podporu
-2. Pokud jste si vybrali obrázek hostovaného operačního systému, který vyžaduje, abyste si přinesli vlastní licenci, musíte zaregistrovat bitovou kopii operačního systému s předplatným, abyste si mohli stáhnout a použít nejnovější opravy. Tento krok bude vyžadovat přístup k veřejnému internetu. Pokud nenastavíte privátní instanci, například server SMT v Azure.
-3. Rozhodněte o konfiguraci sítě virtuálního počítače. Další informace si můžete přečíst v dokumentu [KONFIGURACE A Provoz infrastruktury SAP HANA a operace v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations). Nezapomeňte, že neexistují žádné kvóty propustnost sítě, které můžete přiřadit virtuálním síťovým kartám v Azure. V důsledku toho je jediným účelem řízení provozu prostřednictvím různých virtuálních měn založen na aspektech zabezpečení. Věříme, že najdete podpůrný kompromis mezi složitostí směrování provozu prostřednictvím více virtuálních vnek a požadavky vynucenými bezpečnostními aspekty.
-3. Po nasazení a registraci virtuálního virtuálního montovana použijte nejnovější opravy v operačním systému. Registrováno buď s vlastním předplatným. Nebo v případě, že jste si vybrali image, která zahrnuje podporu operačního systému, virtuální ho virtuální ho k dispozici už by měl mít přístup k opravám. 
-4. Použijte melodie potřebné pro SAP HANA. Tyto melodie jsou uvedeny v těchto poznámkách podpory SAP:
+1. Zvolte základní image z Galerie Azure. Pokud chcete vytvořit vlastní image operačního systému pro SAP HANA, potřebujete znát všechny různé balíčky, které jsou nezbytné pro úspěšnou SAP HANA instalaci. V opačném případě se doporučuje použití imagí SUSE a Red Hat pro SAP nebo SAP HANA z Galerie imagí Azure. Tyto image zahrnují balíčky potřebné pro úspěšnou instalaci HANA. Na základě vaší smlouvy o podpoře s poskytovatelem operačního systému musíte vybrat image, u které přinesete vlastní licenci. Nebo zvolíte bitovou kopii operačního systému, která zahrnuje podporu.
+2. Pokud jste zvolili bitovou kopii operačního systému hosta, která vyžaduje, abyste získali vlastní licenci, musíte si zaregistrovat image operačního systému s vaším předplatným, takže si můžete stáhnout a nainstalovat nejnovější opravy. Tento krok bude vyžadovat veřejný přístup k Internetu. Pokud jste nestavili soukromou instanci, například server SMT v Azure.
+3. Určete konfiguraci sítě virtuálního počítače. Další informace najdete v dokumentu [SAP HANA konfiguracích infrastruktury a operacích v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations). Mějte na paměti, že neexistují žádné kvóty propustnosti sítě, které můžete přiřadit k virtuálním síťovým kartám v Azure. Výsledkem je, že jediný účel směrování provozu prostřednictvím různých virtuální síťové adaptéry je založený na bezpečnostních faktorech. Důvěřujeme vám, že vám pomůžeme najít podporu pro kompromis mezi složitostí směrování provozu prostřednictvím několika virtuální síťové adaptéry a požadavky, které jsou vynutily bezpečnostní aspekty.
+3. Po nasazení a registraci virtuálního počítače použijte nejnovější opravy na operační systém. Registrováno buď s vlastním předplatným. Nebo pokud jste zvolili Image, která zahrnuje podporu operačního systému, měl by mít virtuální počítač přístup k opravám, které už mají. 
+4. Použijte ladění potřebné pro SAP HANA. Tato ladění jsou uvedená v těchto poznámkách k podpoře SAP:
 
-    - [Poznámka podpory SAP #2694118 – doplněk Red Hat Enterprise Linux HA HA v Azure](https://launchpad.support.sap.com/#/notes/2694118)
-    - [Poznámka podpory SAP #1984787 - SUSE LINUX Enterprise Server 12: Poznámky k instalaci](https://launchpad.support.sap.com/#/notes/1984787) 
-    - [Poznámka podpory SAP #2578899 - SUSE Linux Enterprise Server 15: Poznámka k instalaci](https://launchpad.support.sap.com/#/notes/2578899)
-    - [Poznámka podpory SAP #2002167 – Red Hat Enterprise Linux 7.x: Instalace a upgrade](https://launchpad.support.sap.com/#/notes/0002002167)
-    - [Poznámka podpory SAP #2292690 - SAP HANA DB: Doporučená nastavení operačního systému pro RHEL 7](https://launchpad.support.sap.com/#/notes/0002292690) 
-    -  [Poznámka podpory SAP #2772999 - Red Hat Enterprise Linux 8.x: Instalace a konfigurace](https://launchpad.support.sap.com/#/notes/2772999) 
-    -  [Poznámka podpory SAP #2777782 - SAP HANA DB: Doporučená nastavení operačního systému pro RHEL 8](https://launchpad.support.sap.com/#/notes/2777782)
-    -  [Poznámka podpory SAP #2455582 - Linux: Spuštění sap aplikací sestavených s GCC 6.x](https://launchpad.support.sap.com/#/notes/0002455582)
-    -  [Poznámka podpory SAP #2382421 – optimalizace konfigurace sítě na úrovni HANA a OS](https://launchpad.support.sap.com/#/notes/2382421)
+    - [Poznámka k podpoře SAP #2694118 – doplněk Red Hat Enterprise Linux HA v Azure](https://launchpad.support.sap.com/#/notes/2694118)
+    - [Poznámka k podpoře SAP #1984787 – SUSE LINUX Enterprise Server 12: poznámky k instalaci](https://launchpad.support.sap.com/#/notes/1984787) 
+    - [Poznámka k podpoře SAP #2578899-SUSE Linux Enterprise Server 15: Poznámka k instalaci](https://launchpad.support.sap.com/#/notes/2578899)
+    - [Poznámka k podpoře SAP #2002167-Red Hat Enterprise Linux 7. x: instalace a upgrade](https://launchpad.support.sap.com/#/notes/0002002167)
+    - [Poznámka k podpoře SAP #2292690 – SAP HANA DB: Doporučená nastavení operačního systému pro RHEL 7](https://launchpad.support.sap.com/#/notes/0002292690) 
+    -  [Poznámka k podpoře SAP #2772999-Red Hat Enterprise Linux 8. x: instalace a konfigurace](https://launchpad.support.sap.com/#/notes/2772999) 
+    -  [Poznámka k podpoře SAP #2777782 – SAP HANA DB: Doporučená nastavení operačního systému pro RHEL 8](https://launchpad.support.sap.com/#/notes/2777782)
+    -  [Poznámka k podpoře SAP #2455582-Linux: spouštění aplikací SAP kompilovaných pomocí RSZ 6. x](https://launchpad.support.sap.com/#/notes/0002455582)
+    -  [Poznámka k podpoře SAP #2382421 – optimalizace konfigurace sítě v HANA a na úrovni operačního systému](https://launchpad.support.sap.com/#/notes/2382421)
 
-1. Vyberte typ úložiště Azure pro SAP HANA. V tomto kroku se musíte rozhodnout o rozložení úložiště pro instalaci SAP HANA. Budete používat připojené disky Azure nebo nativní sdílené složky služby Azure NFS. Typy úložiště Azure, které nebo podporované a kombinace různých typů úložišť Azure, které lze použít, jsou dokumentovány v [konfiguracích úložiště virtuálních počítačů SAP HANA Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage). Vezměte konfigurace zdokumentované jako výchozí bod. Pro neprodukční systémy může být možné nakonfigurovat nižší propustnost nebo viposlužby. Pro produkční účely může být nutné nakonfigurovat trochu větší propustnost a viposlužby.
-2. Ujistěte se, že jste nakonfigurovali [Azure Write Accelerator](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator) pro vaše svazky, které obsahují protokoly transakcí DBMS nebo protokoly opakování při použití m-series nebo Mv2-Series virtuálnípočítače. Uvědomte si omezení pro akcelerátor zápisu, jak je zdokumentováno.
-2. Zkontrolujte, jestli je na nasazených virtuálních počítačích povolené azure [accelerated networking.](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)
+1. Vyberte typ úložiště Azure pro SAP HANA. V tomto kroku se musíte rozhodnout pro rozložení úložiště pro SAP HANA instalaci. Budete používat buď připojené disky Azure, nebo nativní sdílené složky Azure NFS. Typy úložiště Azure, které se dají použít, a kombinace různých typů úložiště Azure, které se dají použít, jsou popsané v části [SAP HANA konfigurací úložiště virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage). Vezměte v úvahu konfigurace popsané jako výchozí bod. U neprodukčních systémů možná budete moct nakonfigurovat nižší propustnost nebo IOPS. Pro produkční účely možná budete muset nakonfigurovat trochu větší propustnost a IOPS.
+2. Pokud používáte virtuální počítače řady M-Series nebo Mv2-Series, ujistěte se, že jste nakonfigurovali [Azure akcelerátor zápisu](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator) pro svazky, které obsahují protokoly transakcí DBMS nebo protokoly opětovného provedení. Pamatujte na omezení pro Akcelerátor zápisu zdokumentované.
+2. Ověřte, jestli je na nasazených virtuálních počítačích zapnuté [akcelerované síťové služby Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) .
 
 > [!NOTE]
-> Ne všechny příkazy v různých profilech sap-tune nebo jak je popsáno v poznámkách může úspěšně spustit v Azure. Příkazy, které by manipulovat režim napájení virtuálních počítačů obvykle vrátí s chybou, protože režim napájení základního hostitelského hardwaru Azure nelze manipulovat.
+> Ne všechny příkazy v různých profilech SAP-Tune nebo popsané v poznámkách můžou úspěšně běžet v Azure. Příkazy, které by mohly manipulovat s režimem napájení virtuálních počítačů, se obvykle vracejí s chybou, protože není možné manipulovat s režimem napájení základního hardwaru Azure hosta.
 
 ## <a name="step-by-step-preparations-specific-to-azure-virtual-machines"></a>Podrobné přípravy specifické pro virtuální počítače Azure
-Jedním z specifik Azure je instalace rozšíření virtuálního počítače Azure, které poskytuje data monitorování pro hostitele SAP agenta. Podrobnosti o instalaci tohoto rozšíření monitorování jsou popsány v:
+Jednou z konkrétních údajů Azure je instalace rozšíření virtuálního počítače Azure, které zajišťuje data monitorování pro agenta hostitele SAP. Podrobnosti o instalaci tohoto rozšíření pro monitorování jsou popsány v části:
 
--  [SAP Note 2191498](https://launchpad.support.sap.com/#/notes/2191498/E) popisuje rozšířené monitorování SAP s virtuálními počítači SIP v Azure 
--  [SAP Note 1102124](https://launchpad.support.sap.com/#/notes/1102124/E) popisuje informace o SAPOSCOL na Linuxu 
+-  [SAP Note 2191498](https://launchpad.support.sap.com/#/notes/2191498/E) popisuje rozšířené monitorování SAP s virtuálními počítači se systémem Linux v Azure 
+-  [SAP Note 1102124](https://launchpad.support.sap.com/#/notes/1102124/E) popisuje informace o SAPOSCOL v systému Linux 
 -  [SAP Note 2178632](https://launchpad.support.sap.com/#/notes/2178632/E) popisuje klíčové metriky monitorování pro SAP v Microsoft Azure
--  [Nasazení virtuálních počítačů Azure pro SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide#d98edcd3-f2a1-49f7-b26a-07448ceb60ca)
+-  [Nasazení Azure Virtual Machines pro SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide#d98edcd3-f2a1-49f7-b26a-07448ceb60ca)
 
 ## <a name="sap-hana-installation"></a>Instalace SAP HANA
-S nasazenými virtuálními počítači Azure a registrovanými a nakonfigurovanými operačními systémy můžete SAP HANA nainstalovat podle instalace SAP. Jako dobrý začátek, jak se dostat k této dokumentaci, začněte s těmito zdroji WEBOVÝCH STRÁNEK [SAP HANA](https://www.sap.com/products/hana/implementation/resources.html)
+S nasazenými virtuálními počítači Azure a registrovanými a nakonfigurovanými operačními systémy můžete SAP HANA nainstalovat podle instalace SAP. Abyste se dostali do této dokumentace, začněte tím, že zahájíte tyto [prostředky](https://www.sap.com/products/hana/implementation/resources.html) SAP web Hana.
 
-Pro konfigurace SAP HANA horizontálnínavýšení kapacity pomocí přímo připojených disků Azure Premium Storage nebo Ultra disk, přečtěte si specifika v dokumentu [SAP HANA konfigurace infrastruktury a operace v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations#configuring-azure-infrastructure-for-sap-hana-scale-out)
+Pro SAP HANA konfigurací se škálováním na více instancí pomocí přímo připojených disků Azure Premium Storage nebo Ultra disk si přečtěte konkrétní informace v dokumentu [SAP HANA konfigurace infrastruktury a operace v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations#configuring-azure-infrastructure-for-sap-hana-scale-out) .
 
 
-## <a name="additional-resources-for-sap-hana-backup"></a>Další prostředky pro zálohování SAP HANA
-Informace o tom, jak zálohovat databáze SAP HANA na virtuálních počítačích Azure, najdete v tématu:
-* [Průvodce zálohováním pro SAP HANA na virtuálních počítačích Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
-* [Zálohování SAP HANA Azure na úrovni souborů](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level)
+## <a name="additional-resources-for-sap-hana-backup"></a>Další zdroje informací pro zálohování SAP HANA
+Informace o tom, jak zálohovat SAP HANA databází na virtuálních počítačích Azure, najdete v těchto tématech:
+* [Průvodce zálohováním pro SAP HANA v Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
+* [SAP HANA Azure Backup na úrovni souborů](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level)
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si dokumentaci:

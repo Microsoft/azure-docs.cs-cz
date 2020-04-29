@@ -1,6 +1,6 @@
 ---
-title: 'Brána Azure VPN: Připojení bran k více místním zařízením VPN založeným na zásadách'
-description: Pomocí Azure Resource Manager a PowerShellu nakonfigurujte bránu VPN založenou na směrování Azure do více zařízení VPN založených na zásadách.
+title: 'Azure VPN Gateway: připojení bran k několika místním zařízením VPN založeným na zásadách'
+description: Nakonfigurujte bránu VPN založenou na směrováních Azure na několik zařízení VPN založených na zásadách pomocí Azure Resource Manager a PowerShellu.
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
@@ -8,81 +8,81 @@ ms.topic: conceptual
 ms.date: 02/26/2020
 ms.author: yushwang
 ms.openlocfilehash: 687c33e50a986cf8af08d0201fe0159a79cf02a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80123320"
 ---
-# <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Připojení bran Azure VPN k více místním zařízením VPN založeným na zásadách pomocí PowerShellu
+# <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Připojení bran Azure VPN k několika místním zařízením VPN založeným na zásadách pomocí PowerShellu
 
-Tento článek vám pomůže nakonfigurovat bránu VPN založenou na trase Azure pro připojení k více místním zařízením VPN založeným na zásadách využívajících vlastní zásady IPsec/IKE u připojení VPN S2S.
+Tento článek vám pomůže nakonfigurovat bránu sítě VPN založenou na trasách Azure pro připojení k několika místním zařízením VPN založeným na zásadách využívajících vlastní zásady IPsec/IKE na připojení S2S VPN.
 
-## <a name="about-policy-based-and-route-based-vpn-gateways"></a><a name="about"></a>O branách VPN založených na zásadách a na směrování
+## <a name="about-policy-based-and-route-based-vpn-gateways"></a><a name="about"></a>O bránách sítě VPN založených na zásadách a směrování
 
-Zařízení VPN založená *na zásadách a trasách* se liší v nastavení selektorů přenosů IPsec pro připojení:
+Zařízení VPN založená na zásadách *a* trasách se liší v tom, jak jsou selektory provozu protokolu IPSec nastaveny u připojení:
 
-* **Na základě zásad** Zařízení VPN používají kombinace předpon z obou sítí k definování způsobu šifrování/dešifrování provozu prostřednictvím tunelových propojení IPsec. Obvykle je postaven na zařízeních brány firewall, která provádějí filtrování paketů. Šifrování a dešifrování tunelů IPsec se přidává do modulu filtrování a zpracování paketů.
-* **Na základě trasy** Zařízení VPN používají voliče přenosů libovolnék a libovolnými (zástupnými symboly) a umožňují směrování/předávání tabulek směrovat provoz do různých tunelů IPsec. Obvykle je postaven na platformách směrovačů, kde je každý tunel IPsec modelován jako síťové rozhraní nebo VTI (virtuální tunelové rozhraní).
+* **Založené na zásadách** Zařízení VPN používají kombinace předpon z obou sítí k definování způsobu šifrování/dešifrování provozu prostřednictvím tunelů IPsec. Obvykle je postaven na zařízeních brány firewall, která provádějí filtrování paketů. Šifrování a dešifrování tunelů IPsec se přidává do modulu filtrování a zpracování paketů.
+* **Založené na trasách** Zařízení VPN používají selektory přenosu libovolných a všech (se zástupnými znaky) a umožňují směrování a předávání dat směrovat do různých tunelů IPsec. Obvykle je postaven na platformách směrovačů, kde každé tunelové propojení IPsec je modelováno jako síťové rozhraní nebo VTI (virtuální tunelové rozhraní).
 
 Následující diagramy zvýrazňují dva modely:
 
 ### <a name="policy-based-vpn-example"></a>Příklad sítě VPN založené na zásadách
 ![založené na zásadách](./media/vpn-gateway-connect-multiple-policybased-rm-ps/policybasedmultisite.png)
 
-### <a name="route-based-vpn-example"></a>Příklad VPN založené na trase
-![na základě trasy](./media/vpn-gateway-connect-multiple-policybased-rm-ps/routebasedmultisite.png)
+### <a name="route-based-vpn-example"></a>Příklad sítě VPN založené na trasách
+![založené na trasách](./media/vpn-gateway-connect-multiple-policybased-rm-ps/routebasedmultisite.png)
 
-### <a name="azure-support-for-policy-based-vpn"></a>Podpora Azure pro síť VPN založenou na zásadách
-V současné době Azure podporuje oba režimy bran VPN: brány VPN založené na trasách a brány VPN založené na zásadách. Jsou postaveny na různých vnitřních platformách, které vedou k různým specifikacím:
+### <a name="azure-support-for-policy-based-vpn"></a>Podpora Azure pro síť VPN založená na zásadách
+V současné době podporuje Azure oba režimy bran sítě VPN: brány sítě VPN založené na směrováních a brány VPN založené na zásadách. Jsou postavené na různých interních platformách, což vede k různým specifikacím:
 
-|                          | **Brána VPN založená na zásadách** | **Brána VPN založené na routebased**       |**Brána VPN založené na routebased**                          |
+|                          | **PolicyBased VPN Gateway** | **RouteBased VPN Gateway**       |**RouteBased VPN Gateway**                          |
 | ---                      | ---                         | ---                              |---                                                 |
 | **SKU brány Azure**    | Základní                       | Základní                            | VpnGw1, VpnGw2, VpnGw3, VpnGw4, VpnGw5  |
-| **Verze IKE**          | IKEv1                       | IKEv2                            | IKEv1 a IKEv2                         |
-| **Max. Připojení S2S** | **1**                       | 10                               | 30                     |
+| **Verze protokolu IKE**          | IKEv1                       | IKEv2                            | IKEv1 a IKEv2                         |
+| **Počet. Připojení S2S** | **1**                       | 10                               | 30                     |
 |                          |                             |                                  |                                                    |
 
-Pomocí vlastních zásad IPsec/IKE teď můžete nakonfigurovat brány VPN založené na směrování Azure tak, aby používaly voliče provozu založené na předponami s možností **" PolicyBasedTrafficSelectors**", pro připojení k místním zařízením VPN založeným na zásadách. Tato funkce umožňuje připojení z virtuální sítě Azure a brány VPN k více místním zařízením VPN/firewall založeným na zásadách a odebrat limit jediného připojení z aktuálních bran VPN založených na zásadách Azure.
+Pomocí vlastních zásad IPsec/IKE teď můžete nakonfigurovat brány sítě VPN založené na trasách, aby používaly selektory přenosu založené na předponách s možností "**PolicyBasedTrafficSelectors**", aby se připojovaly k místním zařízením VPN založeným na zásadách. Tato funkce umožňuje připojit se z virtuální sítě Azure a brány VPN k několika místním zařízením VPN a firewallem založeným na zásadách a odebrat omezení jediného připojení z aktuálních bran sítě VPN založených na zásadách Azure.
 
 > [!IMPORTANT]
-> 1. Chcete-li povolit toto připojení, musí vaše místní zařízení VPN založená na zásadách podporovat **IKEv2** pro připojení k bráně VPN založených na trase Azure. Zkontrolujte specifikace zařízení VPN.
-> 2. Místní sítě, které se připojují prostřednictvím zařízení VPN založených na zásadách pomocí tohoto mechanismu, se můžou připojit jenom k virtuální síti Azure. **nemohou přejíždět do jiných místních nebo virtuálních sítí prostřednictvím stejné brány Azure VPN**.
-> 3. Možnost konfigurace je součástí vlastní zásady připojení IPsec/IKE. Pokud povolíte možnost voliče provozu na základě zásad, je nutné zadat úplnou zásadu (šifrování IPsec/IKE a algoritmy integrity, silné stránky klíče a životnosti sa).
+> 1. Pokud chcete toto připojení povolit, musí vaše místní zařízení VPN založená na zásadách podporovat protokol **IKEv2** pro připojení k branám VPN založeným na trasách Azure. Podívejte se na specifikace zařízení VPN.
+> 2. Místní sítě, které se připojují prostřednictvím zařízení VPN na základě zásad s tímto mechanismem, se můžou připojit jenom k virtuální síti Azure. **nemůžou přes stejnou bránu Azure VPN využít k přenosu do jiných místních sítí ani virtuálních sítí**.
+> 3. Možnost konfigurace je součástí vlastních zásad připojení IPsec/IKE. Pokud povolíte možnost výběru provozu na základě zásad, musíte zadat kompletní zásady (šifrování IPsec/IKE a algoritmy integrity, síly klíčů a životnosti SA).
 
-Následující diagram znázorňuje, proč tranzitní směrování přes bránu Azure VPN nefunguje s možností založenou na zásadách:
+Následující diagram ukazuje, proč přenosové směrování přes Azure VPN Gateway nefunguje s možností založenou na zásadách:
 
-![tranzit založený na zásadách](./media/vpn-gateway-connect-multiple-policybased-rm-ps/policybasedtransit.png)
+![přenos na základě zásad](./media/vpn-gateway-connect-multiple-policybased-rm-ps/policybasedtransit.png)
 
-Jak je znázorněno v diagramu, brána Azure VPN má voliči provozu z virtuální sítě do každé předpony místní sítě, ale ne předpony křížového připojení. Například místní lokalita 2, lokalita 3 a lokalita 4 mohou komunikovat s virtuální sítí 1, ale nemohou se vzájemně připojit prostřednictvím brány Azure VPN. Diagram znázorňuje voliči přenosů mezi připojeními, které nejsou k dispozici v bráně Azure VPN v rámci této konfigurace.
+Jak je znázorněno v diagramu, brána Azure VPN Gateway selektory přenosu dat z virtuální sítě do každé z prefixů místní sítě, ale ne z předpon mezi připojeními. Například místní lokalita 2, lokalita 3 a site 4 může komunikovat s VNet1, ale nemůže se vzájemně připojit přes bránu Azure VPN. Diagram zobrazuje selektory přenosů mezi připojeními, které nejsou v bráně Azure VPN v rámci této konfigurace k dispozici.
 
 ## <a name="workflow"></a><a name="workflow"></a>Pracovního postupu
 
-Pokyny v tomto článku postupujte podle stejného příkladu, jak je popsáno v [principu Konfigurace protokolu IPsec/IKE pro připojení S2S nebo Virtuální sítě k virtuální síti](vpn-gateway-ipsecikepolicy-rm-powershell.md) k navázání připojení VPN S2S. To je znázorněno v následujícím diagramu:
+Pokyny v tomto článku se řídí stejným příkladem, jak je popsáno v tématu [Konfigurace zásad IPSec/IKE pro připojení S2S nebo VNet-to-VNet](vpn-gateway-ipsecikepolicy-rm-powershell.md) pro vytvoření připojení S2S VPN. To je znázorněno v následujícím diagramu:
 
-![s2s-politika](./media/vpn-gateway-connect-multiple-policybased-rm-ps/s2spolicypb.png)
+![S2S – zásady](./media/vpn-gateway-connect-multiple-policybased-rm-ps/s2spolicypb.png)
 
-Pracovní postup umožňující toto připojení:
-1. Vytvořte virtuální síť, bránu VPN a bránu místní sítě pro připojení mezi místními prostory.
-2. Vytvořte zásadu IPsec/IKE.
-3. Použijte zásadu při vytváření připojení S2S nebo Virtuální sítě k virtuální síti a **povolte voliči provozu na základě zásad** v připojení.
-4. Pokud je připojení již vytvořeno, můžete zásadu použít nebo aktualizovat na existující připojení.
+Pracovní postup pro povolení tohoto připojení:
+1. Vytvořte virtuální síť, bránu sítě VPN a bránu místní sítě pro připojení mezi různými místy.
+2. Vytvořte zásady IPsec/IKE.
+3. Zásadu použijte při vytváření připojení S2S nebo VNet-to-VNet a pro připojení **Povolte selektory přenosu dat založených na zásadách** .
+4. Pokud je připojení již vytvořeno, můžete zásady použít nebo aktualizovat pro existující připojení.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 * Ověřte, že máte předplatné Azure. Pokud ještě nemáte předplatné Azure, můžete si aktivovat [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial).
 
 * [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
-## <a name="enable-policy-based-traffic-selectors"></a><a name="enablepolicybased"></a>Povolení selektorů provozu založených na zásadách
+## <a name="enable-policy-based-traffic-selectors"></a><a name="enablepolicybased"></a>Povolit selektory přenosu na základě zásad
 
-V této části se zobrazí, jak povolit voliče provozu na základě zásad v připojení. Ujistěte se, že jste dokončili [část 3 článku zásad Konfigurace protokolu IPsec/IKE](vpn-gateway-ipsecikepolicy-rm-powershell.md). Kroky v tomto článku používají stejné parametry.
+V této části se dozvíte, jak v připojení povolit selektory přenosu na základě zásad. Ujistěte se, že jste dokončili [část 3 článku Konfigurace zásad IPSec/IKE](vpn-gateway-ipsecikepolicy-rm-powershell.md). Kroky v tomto článku používají stejné parametry.
 
-### <a name="step-1---create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a>Krok 1 – Vytvoření virtuální sítě, brány VPN a brány místní sítě
+### <a name="step-1---create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a>Krok 1 – vytvoření virtuální sítě, brány sítě VPN a brány místní sítě
 
-#### <a name="connect-to-your-subscription-and-declare-your-variables"></a>Připojte se k předplatnému a deklarujte své proměnné
+#### <a name="connect-to-your-subscription-and-declare-your-variables"></a>Připojení k předplatnému a deklarace proměnných
 
-1. Pokud v počítači používáte prostředí PowerShell místně, přihlaste se pomocí rutiny *Connect-AzAccount.* Nebo místo toho použijte Azure Cloud Shell ve vašem prohlížeči.
+1. Pokud v počítači používáte prostředí PowerShell místně, přihlaste se pomocí rutiny *Connect-AzAccount* . Místo toho použijte Azure Cloud Shell v prohlížeči.
 
 2. Deklarujte proměnné. Pro toto cvičení používáme následující proměnné:
 
@@ -110,14 +110,14 @@ V této části se zobrazí, jak povolit voliče provozu na základě zásad v p
    $LNGIP6        = "131.107.72.22"
    ```
 
-#### <a name="create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a>Vytvoření virtuální sítě, brány VPN a brány místní sítě
+#### <a name="create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a>Vytvořte virtuální síť, bránu VPN a bránu místní sítě.
 
 1. Vytvořte skupinu prostředků.
 
    ```azurepowershell-interactive
    New-AzResourceGroup -Name $RG1 -Location $Location1
    ```
-2. Následující příklad použijte k vytvoření virtuální sítě TestVNet1 se třemi podsítěmi a brány VPN. Pokud chcete nahradit hodnoty, je důležité vždy pojmenovat podsíť brány konkrétně "GatewaySubnet". Pokud použijete jiný název, vytvoření brány se nezdaří.
+2. Pomocí následujícího příkladu vytvořte virtuální síť virtuální sítě testvnet1 se třemi podsítěmi a bránou VPN. Pokud chcete nahradit hodnoty, je důležité vždycky pojmenovat podsíť brány konkrétně "GatewaySubnet". Pokud použijete jiný název, vytvoření brány se nezdaří.
 
     ```azurepowershell-interactive
     $fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
@@ -136,21 +136,21 @@ V této části se zobrazí, jak povolit voliče provozu na základě zásad v p
     New-AzLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 -Location $Location1 -GatewayIpAddress $LNGIP6 -AddressPrefix $LNGPrefix61,$LNGPrefix62
     ```
 
-### <a name="step-2---create-an-s2s-vpn-connection-with-an-ipsecike-policy"></a>Krok 2 – Vytvoření připojení VPN S2S pomocí zásad protokolu IPsec/IKE
+### <a name="step-2---create-an-s2s-vpn-connection-with-an-ipsecike-policy"></a>Krok 2 – Vytvoření připojení S2S VPN pomocí zásad IPsec/IKE
 
-1. Vytvořte zásadu IPsec/IKE.
+1. Vytvořte zásady IPsec/IKE.
 
    > [!IMPORTANT]
-   > Chcete-li povolit možnost UsePolicyBasedTrafficSelectors v připojení, je třeba vytvořit zásadu IPsec/IKE.
+   > Pokud chcete pro připojení povolit možnost UsePolicyBasedTrafficSelectors, musíte vytvořit zásadu IPsec/IKE.
 
-   Následující příklad vytvoří zásadu Protokolu IPsec/IKE s těmito algoritmy a parametry:
+   Následující příklad vytvoří zásadu IPsec/IKE s těmito algoritmy a parametry:
     * IKEv2: AES256, SHA384, DHGroup24
-    * IPsec: AES256, SHA256, PFS Žádný, SA Životnost 14400 sekund & 102400000KB
+    * IPsec: AES256, SHA256, PFS None, životnost SA 14400 sekund & 102400000KB
 
    ```azurepowershell-interactive
    $ipsecpolicy6 = New-AzIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup24 -IpsecEncryption AES256 -IpsecIntegrity SHA256 -PfsGroup None -SALifeTimeSeconds 14400 -SADataSizeKilobytes 102400000
    ```
-1. Vytvořte připojení S2S VPN pomocí selektorů provozu založených na zásadách a zásad y IPsec/IKE a použijte zásadu IPsec/IKE vytvořenou v předchozím kroku. Uvědomte si další parametr "-UsePolicyBasedTrafficSelectors $True", který umožňuje voliči provozu na základě zásad na připojení.
+1. Vytvořte připojení VPN S2S s selektory přenosu založené na zásadách a zásadami IPsec/IKE a použijte zásady IPsec/IKE vytvořené v předchozím kroku. Uvědomte si další parametr-UsePolicyBasedTrafficSelectors $True, který umožňuje selektorům přenosu na základě zásad v připojení.
 
    ```azurepowershell-interactive
    $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1  -ResourceGroupName $RG1
@@ -158,31 +158,31 @@ V této části se zobrazí, jak povolit voliče provozu na základě zásad v p
 
    New-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng6 -Location $Location1 -ConnectionType IPsec -UsePolicyBasedTrafficSelectors $True -IpsecPolicies $ipsecpolicy6 -SharedKey 'AzureA1b2C3'
    ```
-1. Po dokončení kroků bude připojení S2S VPN používat definované zásady IPsec/IKE a povolí voliči provozu na základě zásad v připojení. Můžete zopakovat stejné kroky a přidat další připojení k dalším místním zařízením VPN založeným na zásadách ze stejné brány Azure VPN.
+1. Po dokončení postupu bude připojení S2S VPN používat definované zásady IPsec/IKE a pro připojení povolí selektory přenosu na základě zásad. Stejný postup můžete opakovat, pokud chcete přidat další připojení k dalším místním zařízením VPN založeným na zásadách ze stejné brány Azure VPN.
 
-## <a name="to-update-policy-based-traffic-selectors"></a><a name="update"></a>Aktualizace selektorů provozu založených na zásadách
-V této části se zobrazí, jak aktualizovat možnost selektorů provozu na základě zásad pro existující připojení S2S VPN.
+## <a name="to-update-policy-based-traffic-selectors"></a><a name="update"></a>Aktualizace selektorů přenosu na základě zásad
+V této části se dozvíte, jak aktualizovat možnost selektory přenosu na základě zásad pro existující připojení S2S VPN.
 
-1. Získejte prostředek připojení.
+1. Získání prostředku připojení
 
    ```azurepowershell-interactive
    $RG1          = "TestPolicyRG1"
    $Connection16 = "VNet1toSite6"
    $connection6  = Get-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
    ```
-1. Zobrazení možnosti selektorů provozu na základě zásad.
-Následující řádek ukazuje, zda jsou pro připojení použity voliče provozu založené na zásadách:
+1. Umožňuje zobrazit možnost selektorů provozu na základě zásad.
+Následující řádek ukazuje, jestli se pro připojení používají selektory přenosu dat založené na zásadách:
 
    ```azurepowershell-interactive
    $connection6.UsePolicyBasedTrafficSelectors
    ```
 
-   Pokud řádek vrátí "**True**", pak jsou pro připojení konfigurovány voliči provozu na základě zásad; jinak vrátí **"False".**
-1. Jakmile získáte prostředek připojení, můžete povolit nebo zakázat voliči provozu na základě zásad na připojení.
+   Pokud řádek vrátí hodnotu "**true**", pak se v připojení nakonfigurují selektory přenosu na základě zásad. v opačném případě vrátí "**false**".
+1. Po získání prostředku připojení můžete pro připojení povolit nebo zakázat selektory provozu na základě zásad.
 
-   - Chcete-li povolit
+   - Povolení
 
-      Následující příklad umožňuje možnost selektory provozu založené na zásadách, ale ponechá zásady IPsec/IKE beze změny:
+      Následující příklad povoluje možnost selektory přenosu na základě zásad, ale ponechá zásady IPsec/IKE beze změny:
 
       ```azurepowershell-interactive
       $RG1          = "TestPolicyRG1"
@@ -192,9 +192,9 @@ Následující řádek ukazuje, zda jsou pro připojení použity voliče provoz
       Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6 -UsePolicyBasedTrafficSelectors $True
       ```
 
-   - Chcete-li zakázat
+   - K zakázání
 
-      Následující příklad zakáže možnost selektorů provozu na základě zásad, ale ponechá zásadu IPsec/IKE beze změny:
+      Následující příklad zakáže možnost selektory přenosu na základě zásad, ale ponechá zásady IPsec/IKE beze změny:
 
       ```azurepowershell-interactive
       $RG1          = "TestPolicyRG1"
@@ -207,4 +207,4 @@ Následující řádek ukazuje, zda jsou pro připojení použity voliče provoz
 ## <a name="next-steps"></a>Další kroky
 Po dokončení připojení můžete do virtuálních sítí přidávat virtuální počítače. Kroky jsou uvedeny v tématu [Vytvoření virtuálního počítače](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Další podrobnosti o vlastních zásadách Protokolu [IPsec/IKE pro připojení S2S VPN nebo Virtuální sítě](vpn-gateway-ipsecikepolicy-rm-powershell.md) na virtuální síť najděte také k dispozici.
+Další informace o vlastních zásadách IPsec/IKE najdete v podrobnostech o [konfiguraci zásad IPSec/IKE pro připojení S2S VPN nebo VNet-to-VNet](vpn-gateway-ipsecikepolicy-rm-powershell.md) .

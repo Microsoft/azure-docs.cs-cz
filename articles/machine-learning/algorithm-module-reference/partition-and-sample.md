@@ -1,7 +1,7 @@
 ---
-title: 'Oddíl a ukázka: Odkaz na modul'
+title: 'Oddíl a ukázka: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak pomocí oddílu a ukázkový modul v Azure Machine Learning provádět vzorkování na datové sady nebo vytvořit oddíly z datové sady.
+description: Naučte se, jak pomocí oddílu a ukázkového modulu v Azure Machine Learning provést vzorkování na datové sadě nebo vytvořit oddíly z datové sady.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,160 +10,160 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: 0392a05df485b45b1244f4542ed55af1837dca3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79477506"
 ---
-# <a name="partition-and-sample-module"></a>Oddíl ový a ukázkový modul
+# <a name="partition-and-sample-module"></a>Oddíl a vzorový modul
 
-Tento článek popisuje modul v návrháři Azure Machine Learning (preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
-Pomocí oddílu a ukázkového modulu můžete provádět vzorkování v datové sadě nebo vytvářet oddíly z datové sady.
+Pomocí oddílu a vzorového modulu můžete provést vzorkování pro datovou sadu nebo vytvořit oddíly z datové sady.
 
-Vzorkování je důležitým nástrojem ve strojovém učení, protože umožňuje zmenšit velikost datové sady při zachování stejného poměru hodnot. Tento modul podporuje několik souvisejících úkolů, které jsou důležité ve strojovém učení: 
+Vzorkování je důležitý nástroj ve strojovém učení, protože umožňuje zmenšit velikost datové sady a přitom zachovat stejný poměr hodnot. Tento modul podporuje několik souvisejících úloh, které jsou důležité ve strojovém učení: 
 
-- Rozdělení dat do více podsekcí stejné velikosti. 
+- Rozdělení dat do více dílčích částí stejné velikosti. 
 
-  Oddíly můžete použít pro křížové ověřování nebo k přiřazení případů náhodným skupinám.
+  Oddíly můžete použít pro křížové ověřování nebo pro přiřazení případů k náhodným skupinám.
 
-- Oddělení dat do skupin a potom práce s daty z určité skupiny. 
+- Oddělení dat do skupin a následné práce s daty z konkrétní skupiny. 
 
-  Po náhodném přiřazení případů různým skupinám může být nutné upravit funkce, které jsou přidruženy pouze k jedné skupině.
+  Až náhodně přiřadíte případy různým skupinám, budete možná muset upravit funkce, které jsou přidružené jenom k jedné skupině.
 
-- Odběru vzorků. 
+- Kontrol. 
 
-  Můžete extrahovat procento dat, použít náhodný odběr vzorků nebo zvolit sloupec, který chcete použít pro vyvážení datové sady a provést stratifikované vzorkování jejích hodnot.
+  Můžete extrahovat procentuální podíl dat, použít náhodné vzorkování nebo zvolit sloupec, který se má použít k vyvážení datové sady a provádět vzorkování stratified na svých hodnotách.
 
-- Vytvoření menší datové sady pro testování. 
+- Vytváření menší datové sady pro testování. 
 
-  Pokud máte velké množství dat, můžete chtít použít pouze první *n* řádky při nastavování kanálu a potom přepnout na použití úplné datové sady při vytváření modelu. Vzorkování můžete také použít k vytvoření menší datové sady pro použití ve vývoji.
+  Pokud máte velké množství dat, můžete při nastavování kanálu použít jenom prvních *n* řádků a pak při sestavování modelu přepnout na použití úplné datové sady. Vzorkování můžete také použít k vytvoření menší datové sady pro použití při vývoji.
 
 ## <a name="configure-the-module"></a>Konfigurace modulu
 
-Tento modul podporuje následující metody pro rozdělení dat do oddílů nebo pro vzorkování. Nejprve zvolte metodu a pak nastavte další možnosti, které metoda vyžaduje.
+Tento modul podporuje následující metody, jak rozdělit data do oddílů nebo pro vzorkování. Zvolte nejprve metodu a pak nastavte další možnosti, které metoda vyžaduje.
 
 - Head
 - Vzorkování
-- Přiřadit k přeložením
-- Vyskladnění přeložení
+- Přiřadit k skládání
+- Vybrat skládání
 
-### <a name="get-top-n-rows-from-a-dataset"></a>Získání řádků TOP N z datové sady
+### <a name="get-top-n-rows-from-a-dataset"></a>Získat HORNÍch N řádků z datové sady
 
-Tento režim slouží k získání pouze prvních *n* řádků. Tato možnost je užitečná, pokud chcete otestovat kanál na malém počtu řádků a nepotřebujete data, která mají být vyvážená nebo vzorkována žádným způsobem.
+Tento režim použijte k získání pouze prvních *n* řádků. Tato možnost je užitečná v případě, že chcete testovat kanál na malém počtu řádků a vy nepotřebujete, aby byla data vyrovnávána nebo odebírána jakýmkoli způsobem.
 
-1. Přidejte oddíl **a ukázkový** modul do kanálu v rozhraní a připojte datovou sadu.  
+1. Přidejte **oddíl a vzorový** modul do kanálu v rozhraní a připojte datovou sadu.  
 
-1. **Režim oddílu nebo ukázkového režimu**: Tuto možnost nastavte na **hodnotu Head**.
+1. **Oddíl nebo vzorový režim**: nastavte tuto možnost na **head**.
 
-1. **Počet řádků, které chcete vybrat**: Zadejte počet řádků, které chcete vrátit.
+1. **Počet řádků, které se mají vybrat**: zadejte počet řádků, které se mají vrátit.
 
-   Počet řádků musí být nezáporné celé číslo. Pokud je počet vybraných řádků větší než počet řádků v datové sadě, je vrácena celá datová sada.
+   Počet řádků musí být nezáporné celé číslo. Pokud je počet vybraných řádků větší než počet řádků v datové sadě, vrátí se celá datová sada.
 
-1. Odešlete potrubí.
+1. Odešlete kanál.
 
-Modul vyveze jednu datovou sadu, která obsahuje pouze zadaný počet řádků. Řádky jsou vždy číst z horní části datové sady.
+Modul výstupuje jedinou datovou sadu, která obsahuje pouze zadaný počet řádků. Řádky jsou vždy čteny z horní části datové sady.
 
-### <a name="create-a-sample-of-data"></a>Vytvoření ukázky dat
+### <a name="create-a-sample-of-data"></a>Vytvoření ukázkového data
 
-Tato možnost podporuje jednoduché náhodné vzorkování nebo stratifikované náhodné vzorkování. Je to užitečné, pokud chcete vytvořit menší reprezentativní ukázkovou datovou sadu pro testování.
+Tato možnost podporuje jednoduché náhodné vzorkování nebo náhodné vzorkování stratified. Je užitečné, pokud chcete vytvořit menší reprezentativní ukázkovou datovou sadu pro testování.
 
-1. Přidejte oddíl **a ukázkový** modul do kanálu a připojte datovou sadu.
+1. Přidejte do svého kanálu **oddíl a vzorový** modul a připojte datovou sadu.
 
-1. **Režim oddílu nebo ukázkového režimu**: Tuto možnost nastavte na **Vzorkování**.
+1. **Oddíl nebo vzorový režim**: nastavte tuto možnost na **vzorkování**.
 
-1. **Rychlost odběru vzorků**: Zadejte hodnotu mezi 0 a 1. Tato hodnota určuje procento řádků ze zdrojové datové sady, které by měly být zahrnuty do výstupní datové sady.
+1. **Frekvence vzorkování**: zadejte hodnotu mezi 0 a 1. Tato hodnota určuje procento řádků ze zdrojové datové sady, které by měly být zahrnuty do výstupní datové sady.
 
-   Chcete-li například pouze polovinu původní datové `0.5` sady, zadejte, že vzorkovací frekvence by měla být 50 procent.
+   Pokud například potřebujete jenom polovinu původní datové sady, zadejte `0.5` , abyste označili, že vzorkovací frekvence by měla být 50%.
 
-   Řádky vstupní datové sady jsou zamíchány a selektivně umístěny do výstupní datové sady podle zadaného poměru.
+   Řádky vstupní datové sady jsou v souladu se zapsaným poměrem a selektivním umístěním do výstupní datové sady.
 
-1. **Náhodné osivo pro odběr vzorků**: Volitelně zadejte celé číslo, které se použije jako hodnota osiva.
+1. **Náhodný základ pro vzorkování**: Volitelně zadejte celé číslo, které se má použít jako počáteční hodnota.
 
-   Tato možnost je důležitá, pokud chcete, aby byly řádky pokaždé rozděleny stejným způsobem. Výchozí hodnota je **0**, což znamená, že počáteční osiva je generována na základě systémových hodin. Tato hodnota může vést k mírně odlišné výsledky při každém spuštění kanálu.
+   Tato možnost je důležitá, pokud chcete, aby byly řádky v každém okamžiku rozděleny stejným způsobem. Výchozí hodnota je **0**, což znamená, že počáteční počáteční hodnota se vygeneruje na základě systémových hodin. Tato hodnota může vést ke mírně odlišným výsledkům při každém spuštění kanálu.
 
-1. **Stratifikované rozdělení pro vzorkování**: Tuto možnost vyberte, pokud je důležité, aby řádky v datové sadě byly před vzorkováním rovnoměrně rozděleny některým klíčovým sloupcem.
+1. **Stratified rozdělení pro vzorkování**: tuto možnost vyberte, pokud je důležité, aby řádky v datové sadě byly před vzorkováním rovnoměrně rozděleny podle sloupce klíče.
 
-   Pro **sloupec stratifikačního klíče pro vzorkování**vyberte jeden *sloupec vrstev,* který se má použít při dělení datové sady. Řádky v datové sadě jsou pak rozděleny takto:
+   Pro **sloupec Key rozvrstvení pro vzorkování**vyberte jeden *sloupec vrstvy* , který se použije při rozdělování datové sady. Řádky v datové sadě se pak rozdělí takto:
 
-   1. Všechny vstupní řádky jsou seskupeny (stratifikované) podle hodnot v zadaném sloupci vrstev.
+   1. Všechny vstupní řádky jsou seskupené (stratified) podle hodnot v zadaném sloupci vrstvy.
 
-   1. Řádky jsou zamíchány v rámci každé skupiny.
+   1. Řádky jsou v rámci každé skupiny v rozmísené.
 
-   1. Každá skupina je selektivně přidána do výstupní datové sady, aby splňovala zadaný poměr.
+   1. Každá skupina je selektivně přidaná do výstupní datové sady, aby splňovala zadaný poměr.
 
 
-1. Odešlete potrubí.
+1. Odešlete kanál.
 
-   S touto volbou modul vyveze jednu datovou sadu, která obsahuje reprezentativní vzorkování dat. Zbývající nevzorkovaná část datové sady není výstupem. 
+   Pomocí této možnosti modul výstupuje jedinou datovou sadu, která obsahuje reprezentativní vzorkování dat. Zbývající nevzorkovaná část DataSet není ve výstupu. 
 
-## <a name="split-data-into-partitions"></a>Rozdělení dat do oddílů
+## <a name="split-data-into-partitions"></a>Rozdělit data na oddíly
 
-Tuto možnost použijte, pokud chcete datovou sadu rozdělit na podmnožiny dat. Tato možnost je také užitečná, pokud chcete vytvořit vlastní počet záhybů pro křížové ověření nebo rozdělit řádky do několika skupin.
+Tuto možnost použijte, pokud chcete datovou sadu rozdělit na podmnožiny dat. Tato možnost je užitečná také v případě, že chcete vytvořit vlastní počet skládání pro křížové ověření, nebo rozdělit řádky do několika skupin.
 
-1. Přidejte oddíl **a ukázkový** modul do kanálu a připojte datovou sadu.
+1. Přidejte do svého kanálu **oddíl a vzorový** modul a připojte datovou sadu.
 
-1. V **režimu oddílu nebo ukázkového režimu**vyberte **Přiřadit přeložení**.
+1. Pro **oddíl nebo vzorový režim**vyberte **přiřadit k skládání**.
 
-1. **Použít nahrazení v dělení**: Tuto možnost vyberte, pokud chcete, aby byl vzorkovaný řádek vložen zpět do fondu řádků pro potenciální opakované použití. V důsledku toho může být stejný řádek přiřazen k několika záhybům.
+1. **Použití náhrady při dělení**: tuto možnost vyberte, pokud chcete, aby byl vzorový řádek vrácen zpět do fondu řádků pro potenciální opakované použití. V důsledku toho může být stejný řádek přiřazen několika skládáními.
 
-   Pokud nepoužijete nahrazení (výchozí možnost), vzorkovaný řádek není vložen zpět do fondu řádků pro potenciální opakované použití. V důsledku toho může být každý řádek přiřazen pouze k jednomu záhybu.
+   Pokud nepoužijete náhradu (výchozí možnost), vzorový řádek se nevrátí zpět do fondu řádků pro potenciální opakované použití. Výsledkem je, že každý řádek lze přiřadit pouze k jednomu skládání.
 
-1. **Náhodné rozdělení**: Tuto možnost vyberte, pokud chcete, aby byly řádky náhodně přiřazeny k přeložením.
+1. **Náhodné rozdělení**: tuto možnost vyberte, pokud chcete, aby byly řádky náhodně přiřazeny k skládání.
 
-   Pokud tuto možnost nevyberete, řádky se přiřadí k přeložení metodou kruhového dotazování.
+   Pokud tuto možnost nevyberete, řádky se přiřadí k skládání prostřednictvím metody kruhového dotazování.
 
-1. **Náhodné osivo**: Volitelně zadejte celé číslo, které se má použít jako hodnota osiva. Tato možnost je důležitá, pokud chcete, aby byly řádky pokaždé rozděleny stejným způsobem. V opačném případě výchozí hodnota **0** znamená, že bude použito náhodné počáteční osiva.
+1. **Random seed**: Volitelně zadejte celé číslo, které se má použít jako hodnota počáteční hodnoty. Tato možnost je důležitá, pokud chcete, aby byly řádky v každém okamžiku rozděleny stejným způsobem. V opačném případě výchozí hodnota **0** znamená, že bude použito náhodné počáteční osivo.
 
-1. **Zadejte metodu partitioner**: Označte, jak mají být data rozdělena do každého oddílu, pomocí těchto možností:
+1. **Zadejte metodu rozdělovače**: Určete, jak mají být data rozdělena do jednotlivých oddílů pomocí těchto možností:
 
-   - **Oddíl rovnoměrně**: Pomocí této možnosti umístěte stejný počet řádků v každém oddílu. Chcete-li určit počet výstupních oddílů, zadejte celé číslo do **pole Zadejte počet záhybů, které chcete rovnoměrně rozdělit.**
+   - **Rozdělit rovnoměrně**: tuto možnost použijte, pokud chcete umístit stejný počet řádků do každého oddílu. Chcete-li zadat počet výstupních oddílů, zadejte celé číslo v poli **Zadejte počet přeložení, které chcete rozdělit rovnoměrně do** boxu.
 
-   - **Oddíl s přizpůsobenými proporcemi**: Pomocí této možnosti můžete určit velikost každého oddílu jako seznamu odděleného čárkami.
+   - **Oddíl s přizpůsobenými poměry**: tuto možnost použijte, pokud chcete určit velikost každého oddílu jako seznam oddělený čárkami.
 
-     Předpokládejme například, že chcete vytvořit tři oddíly. První oddíl bude obsahovat 50 procent dat. Zbývající dva oddíly budou obsahovat 25 procent dat. Do **pole Seznam proporcí oddělených čárkou** zadejte tato čísla: **.5, .25, .25**.
+     Předpokládejme například, že chcete vytvořit tři oddíly. První oddíl bude obsahovat 50% dat. Zbývající dva oddíly budou obsahovat 25 procent dat. V poli se **seznamem portů, které jsou odděleny čárkou** , zadejte tyto hodnoty: **0,5,. 25,. 25**.
 
-     Součet všech velikostí oddílů musí přidat až přesně 1.
+     Součet všech velikostí oddílů musí být přidán přesně na 1.
 
-     Pokud zadáte čísla, která přidávají *méně než 1*, vytvoří se další oddíl pro uložení zbývajících řádků. Pokud například zadáte hodnoty **.2** a **.3**, vytvoří se třetí oddíl, který pojme zbývajících 50 procent všech řádků.
+     Pokud zadáte čísla, která přidají *méně než 1*, vytvoří se další oddíl, který bude obsahovat zbývající řádky. Pokud například zadáte hodnoty **.2** a **.3**, vytvoří se třetí oddíl, který bude uchovávat zbývající 50% všech řádků.
      
-     Pokud zadáte čísla, která přidávají *více než 1*, je při spuštění kanálu vyvolána chyba.
+     Pokud zadáte čísla, která se dají přidat až do *1*, při spuštění kanálu dojde k chybě.
 
-1. **Stratifikované rozdělení**: Tuto možnost vyberte, pokud chcete, aby byly řádky při rozdělení stratifikovány, a pak zvolte _sloupec vrstev_.
+1. **Stratified rozdělení**: tuto možnost vyberte, pokud chcete, aby se řádky Stratified při rozdělení, a pak vyberte _sloupec vrstvy_.
 
-1. Odešlete potrubí.
+1. Odešlete kanál.
 
-   S touto volbou modul vyveze více datových sad. Datové sady jsou rozděleny podle pravidel, která jste zadali.
+   Pomocí této možnosti modul výstupuje více datových sad. Datové sady jsou rozdělené podle pravidel, která jste zadali.
 
 ### <a name="use-data-from-a-predefined-partition"></a>Použití dat z předdefinovaného oddílu  
 
-Tuto možnost použijte, pokud jste rozdělili datovou sadu do více oddílů a nyní chcete načíst každý oddíl pro další analýzu nebo zpracování.
+Tuto možnost použijte, pokud jste datovou sadu rozdělili do několika oddílů a teď chcete načíst jednotlivé oddíly, a pak provést další analýzu nebo zpracování.
 
-1. Přidejte oddíl **a ukázkový** modul do kanálu.
+1. Přidejte do kanálu **oddíl a vzorový** modul.
 
-1. Připojte modul k výstupu předchozí instance **oddílu a ukázky**. Tato instance musí použít **možnost Přiřadit přeložení** ke generování určitého počtu oddílů.
+1. Připojte modul k výstupu předchozí instance **oddílu a vzorku**. Aby bylo možné vygenerovat určitý počet oddílů, musí tato instance používat možnost **přiřadit k skládání** .
 
-1. **Režim oddílu nebo ukázkového režimu**: Vyberte **možnost Vybrat přeložení**.
+1. **Oddíl nebo vzorový režim**: vyberte vybrat **skládání**.
 
-1. **Určete, ze kterého přeložení se mají vzorkovat**: Zadáním jeho indexu vyberte oddíl, který se má použít. Indexy oddílů jsou založeny na 1. Pokud například rozdělíte datovou sadu na tři části, oddíly budou mít indexy 1, 2 a 3.
+1. **Určete, ze kterého skládání**se mají vzorkovat: vyberte oddíl, který se má použít, zadáním jeho indexu. Indexy oddílů jsou založené na 1. Například pokud jste datovou sadu rozdělili na tři části, oddíly budou mít indexy 1, 2 a 3.
 
-   Pokud zadáte neplatnou hodnotu indexu, je vyvolána chyba návrhu: "Chyba 0018: Datová sada obsahuje neplatná data."
+   Pokud zadáte neplatnou hodnotu indexu, dojde k chybě v době návrhu: "Error 0018: DataSet obsahuje neplatná data."
 
-   Kromě seskupení datové sady podle záhybů můžete datovou sadu rozdělit do dvou skupin: cílový záhyb a vše ostatní. Chcete-li to provést, zadejte index jednoho záhybu a pak vyberte možnost **Vybrat doplněk vybraného záhybu,** abyste získali vše kromě dat v zadaném záhybu.
+   Kromě seskupení datové sady pomocí skládání lze datovou sadu Oddělit do dvou skupin: cílové skládání a všechno ostatní. To provedete tak, že zadáte index jednoho skládání a potom vyberete možnost **Vybrat doplněk vybraného skládání** a získáte vše, ale data v zadaném skládání.
 
-1. Pokud pracujete s více oddíly, musíte přidat další instance **oddílu a ukázkový** modul pro zpracování každého oddílu.
+1. Pokud pracujete s více oddíly, je nutné přidat další instance **oddílu a vzorového** modulu pro zpracování jednotlivých oddílů.
 
-   Například **oddíl a ukázkový** modul v druhém řádku je nastaven na **Přiřadit přeložení**a modul ve třetím řádku je nastaven na **Vyskladnění přeložení**.   
+   Například **oddíl a vzorový** modul ve druhém řádku je nastaven na hodnotu **přiřadit k skládání**a modul ve třetím řádku je nastaven na **skládání výběru**.   
 
-   ![Rozdělení a ukázka](./media/module/partition-and-sample.png)
+   ![Oddíl a ukázka](./media/module/partition-and-sample.png)
 
-1. Odešlete potrubí.
+1. Odešlete kanál.
 
-   Pomocí této možnosti modul vyveze jednu datovou sadu, která obsahuje pouze řádky přiřazené k tomuto přeložení.
+   Pomocí této možnosti modul výstupuje jedinou datovou sadu, která obsahuje pouze řádky přiřazené k tomuto přeložení.
 
 > [!NOTE]
->  Označení přeložení nelze zobrazit přímo. Jsou k dispozici pouze v metadatech.
+>  Nemůžete zobrazit označení skládání přímo. Jsou k dispozici pouze v metadatech.
 
 ## <a name="next-steps"></a>Další kroky
 

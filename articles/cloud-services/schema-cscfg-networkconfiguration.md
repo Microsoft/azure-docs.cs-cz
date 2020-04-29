@@ -1,6 +1,6 @@
 ---
-title: Schéma síťové konfigurace cloudových služeb Azure | Dokumenty společnosti Microsoft
-description: Informace o podřízených prvcích prvku NetworkConfiguration konfiguračního souboru služby, který určuje hodnoty virtuální sítě a DNS.
+title: Schéma Azure Cloud Services NetworkConfiguration | Microsoft Docs
+description: Přečtěte si o podřízených prvcích elementu NetworkConfiguration konfiguračního souboru služby, který určuje hodnoty Virtual Network a DNS.
 ms.custom: ''
 ms.date: 12/07/2016
 services: cloud-services
@@ -10,23 +10,23 @@ caps.latest.revision: 28
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: 695ba3acfd5af8797de6e6f7454e493d7863627c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79529284"
 ---
-# <a name="azure-cloud-services-config-networkconfiguration-schema"></a>Schéma konfigurace konfigurace konfigurace azure cloudových služeb
+# <a name="azure-cloud-services-config-networkconfiguration-schema"></a>Schéma NetworkConfiguration pro Azure Cloud Services config
 
-Prvek `NetworkConfiguration` konfiguračního souboru služby určuje hodnoty virtuální sítě a DNS. Tato nastavení jsou pro cloudové služby volitelná.
+`NetworkConfiguration` Element konfiguračního souboru služby určuje Virtual Network a hodnoty DNS. Tato nastavení jsou pro Cloud Services volitelná.
 
-Pomocí následujícího zdroje se dozvíte více o virtuálních sítích a přidružených schématech:
+Následující prostředek můžete použít k získání dalších informací o virtuálních sítích a přidružených schématech:
 
-- [Schéma konfigurace cloudové služby (klasické)](schema-cscfg-file.md)
-- [Schéma definice cloudové služby (klasické)](schema-csdef-file.md)
-- [Vytvoření virtuální sítě (klasické)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)
+- [Schéma konfigurace cloudové služby (Classic)](schema-cscfg-file.md)
+- [Schéma definice cloudové služby (Classic)](schema-csdef-file.md)
+- [Vytvoření Virtual Network (Classic)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)
 
-## <a name="networkconfiguration-element"></a>Prvek síťové konfigurace
+## <a name="networkconfiguration-element"></a>Element NetworkConfiguration
 Následující příklad ukazuje `NetworkConfiguration` prvek a jeho podřízené prvky.
 
 ```xml
@@ -60,18 +60,18 @@ Následující příklad ukazuje `NetworkConfiguration` prvek a jeho podřízen�
 </ServiceConfiguration>
 ```
 
-Následující tabulka popisuje podřízené prvky `NetworkConfiguration` prvku.
+Následující tabulka popisuje podřízené prvky `NetworkConfiguration` elementu.
 
-| Element       | Popis |
+| Prvek       | Popis |
 | ------------- | ----------- |
-| Ovládací prvek AccessControl | Nepovinný parametr. Určuje pravidla pro přístup ke koncovým bodům v cloudové službě. Název řízení přístupu je definován `name` řetězcem pro atribut. Prvek `AccessControl` obsahuje jeden `Rule` nebo více prvků. Lze definovat `AccessControl` více než jeden prvek.|
-| Pravidlo | Nepovinný parametr. Určuje akci, která má být provedena pro zadaný rozsah adres IP podsítě. Pořadí pravidla je definováno řetězcovou hodnotou atributu. `order` Čím nižší je číslo pravidla, tím vyšší je priorita. Pravidla mohou být například zadána s čísly objednávek 100, 200 a 300. Pravidlo s číslem objednávky 100 má přednost před pravidlem, které má pořadí 200.<br /><br /> Akce pro pravidlo je definována řetězcem pro `action` atribut. Možné hodnoty:<br /><br /> -   `permit`– Určuje, že s koncovým bodem mohou komunikovat pouze pakety ze zadaného rozsahu podsítě.<br />-   `deny`– Určuje, že přístup bude odepřen koncovým bodům v zadaném rozsahu podsítí.<br /><br /> Rozsah podsítě adres IP, které jsou ovlivněny pravidlem, je `remoteSubnet` definován řetězcem pro atribut. Popis pravidla je definován řetězcem pro `description` atribut.|
-| Koncový bodAcl | Nepovinný parametr. Určuje přiřazení pravidel řízení přístupu ke koncovému bodu. Název role, která obsahuje koncový bod, je definován `role` řetězcem pro atribut. Název koncového bodu je definován řetězcem `endpoint` pro atribut. Název sady `AccessControl` pravidel, která by měla být použita na koncový `accessControl` bod, je definován v řetězci pro atribut. Lze definovat `EndpointAcl` více prvků.|
-| Server Dns | Nepovinný parametr. Určuje nastavení serveru DNS. Nastavení serverů DNS můžete zadat bez virtuální sítě. Název serveru DNS je definován řetězcem `name` atributu. Ip adresa serveru DNS je definována řetězcem atributu. `IPAddress` Adresa IP musí být platná adresa IPv4.|
-| Web VirtualNetworkSite | Nepovinný parametr. Určuje název lokality virtuální sítě, ve které chcete nasadit cloudovou službu. Toto nastavení nevytvoří web virtuální sítě. Odkazuje na web, který byl dříve definován v síťovém souboru pro vaši virtuální síť. Cloudová služba může být pouze členem jedné virtuální sítě. Pokud toto nastavení nezadáte, cloudová služba nebude nasazena do virtuální sítě. Název lokality virtuální sítě je definován řetězcem atributu. `name`|
-| Adresa instance | Nepovinný parametr. Určuje přidružení role k podsíti nebo sadě podsítí ve virtuální síti. Když přidružíte název role k adrese instance, můžete určit podsítě, ke kterým má být tato role přidružena. Obsahuje `InstanceAddress` prvek Podsítě. Název role, která je přidružena k podsíti nebo podsíti, `roleName` je definován řetězcem atributu.|
-| Podsíť | Nepovinný parametr. Určuje podsíť, která odpovídá názvu podsítě v konfiguračním síťovém souboru. Název podsítě je definován řetězcem atributu. `name`|
-| Reservedip | Nepovinný parametr. Určuje vyhrazenou adresu IP, která by měla být přidružena k nasazení. K vytvoření vyhrazené adresy IP je nutné použít použít použít vytvořit vyhrazenou adresu IP. Každé nasazení v cloudové službě může být přidruženo k jedné vyhrazené IP adrese. Název vyhrazené adresy IP je definován řetězcem `name` atributu.|
+| AccessControl | Nepovinný parametr. Určuje pravidla pro přístup k koncovým bodům v cloudové službě. Název řízení přístupu je definován řetězcem pro `name` atribut. `AccessControl` Element obsahuje jeden nebo více `Rule` prvků. Je možné definovat `AccessControl` více než jeden prvek.|
+| Pravidlo | Nepovinný parametr. Určuje akci, která má být provedena pro zadaný rozsah IP adres. Pořadí pravidla je definováno hodnotou řetězce pro `order` atribut. Čím nižší je číslo pravidla, tím vyšší prioritou. Můžete například zadat pravidla s čísly pořadí 100, 200 a 300. Pravidlo s pořadovým číslem 100 má přednost před pravidlem, které má pořadí 200.<br /><br /> Akce pro pravidlo je definována řetězcem pro `action` atribut. Možné hodnoty:<br /><br /> -   `permit`– Určuje, že s koncovým bodem můžou komunikovat jenom pakety ze zadaného rozsahu podsítě.<br />-   `deny`– Určuje, že přístup je odepřen do koncových bodů v zadaném rozsahu podsítě.<br /><br /> Rozsah podsítě IP adres, na které se pravidlo vztahuje, je definován řetězcem pro `remoteSubnet` atribut. Popis pravidla je definován řetězcem pro `description` atribut.|
+| EndpointAcl | Nepovinný parametr. Určuje přiřazení pravidel řízení přístupu ke koncovému bodu. Název role, která obsahuje koncový bod, je definován řetězcem pro `role` atribut. Název koncového bodu je definován řetězcem pro `endpoint` atribut. Název sady `AccessControl` pravidel, která by měla být použita na koncový bod, je definována v řetězci pro `accessControl` atribut. Lze definovat více `EndpointAcl` než jeden prvek.|
+| Serveru DNS | Nepovinný parametr. Určuje nastavení serveru DNS. Můžete zadat nastavení pro servery DNS bez Virtual Network. Název serveru DNS je definovaný řetězcem pro `name` atribut. IP adresa serveru DNS je definována řetězcem pro `IPAddress` atribut. IP adresa musí být platná IPv4 adresa.|
+| VirtualNetworkSite | Nepovinný parametr. Určuje název lokality Virtual Network, do které chcete nasadit cloudovou službu. Toto nastavení nevytvoří web Virtual Network. Odkazuje na lokalitu, která byla dříve definována v síťovém souboru pro váš Virtual Network. Cloudová služba může být jenom členem jednoho Virtual Network. Pokud toto nastavení nezadáte, cloudová služba nebude nasazená do Virtual Network. Název Virtual Network lokality je definován řetězcem pro `name` atribut.|
+| InstanceAddress | Nepovinný parametr. Určuje přidružení role k podsíti nebo sadě podsítí v Virtual Network. Pokud přidružíte název role k adrese instance, můžete určit podsítě, ke kterým chcete přiřadit tuto roli. `InstanceAddress` Obsahuje element podsítě. Název role, která je přidružená k podsíti nebo podsítím, je definován řetězcem pro `roleName` atribut.|
+| Podsíť | Nepovinný parametr. Určuje podsíť, která odpovídá názvu podsítě v souboru konfigurace sítě. Název podsítě je definován řetězcem pro `name` atribut.|
+| Adresu | Nepovinný parametr. Určuje rezervovanou IP adresu, která má být přidružena k nasazení. K vytvoření rezervované IP adresy je nutné použít Vyhrazená IP adresa vytvořit adresu. Každé nasazení v cloudové službě může být přidruženo k jedné rezervované IP adrese. Název rezervované IP adresy je definován řetězcem pro `name` atribut.|
 
 ## <a name="see-also"></a>Viz také
-[Schéma konfigurace cloudové služby (klasické)](schema-cscfg-file.md)
+[Schéma konfigurace cloudové služby (Classic)](schema-cscfg-file.md)

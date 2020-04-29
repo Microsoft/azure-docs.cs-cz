@@ -9,10 +9,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.openlocfilehash: deb6c2439cc84f196b7f42fd9f49d3ebfd057cbb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76962155"
 ---
 # <a name="deploy-an-azure-stream-analytics-job-using-cicd-npm-package"></a>Nasazení úlohy Azure Stream Analytics pomocí balíčku CI/CD npm 
@@ -183,7 +183,7 @@ Pokud chcete vytvořit vydanou verzi, vyberte **vytvořit vydání** v pravém h
 
 ![Vytvoření vydání pomocí Azure Pipelines](./media/setup-cicd-vs-code/create-release.png)
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 Pokud chcete použít spravovanou identitu pro Azure Data Lake Store Gen1 jako výstupní jímku, musíte před nasazením do Azure poskytnout přístup k instančnímu objektu pomocí PowerShellu. Přečtěte si další informace o [nasazení adls Gen1 se správou identity pomocí šablony Správce prostředků](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment).
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Cloud Services Def. NetworkTrafficRules schéma | Dokumenty společnosti Microsoft
-description: Další informace o NetworkTrafficRules, který omezuje role, které mají přístup k vnitřní koncové body role. Kombinuje s rolemi v souboru definice služby.
+title: Schéma Azure Cloud Services def. NetworkTrafficRules | Microsoft Docs
+description: Přečtěte si o NetworkTrafficRules, která omezuje role, které mají přístup k interním koncovým bodům role. Kombinuje s rolemi v definičním souboru služby.
 ms.custom: ''
 ms.date: 04/14/2015
 services: cloud-services
@@ -14,22 +14,22 @@ caps.latest.revision: 17
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: e53c10395ec3168e656633cc43fb2d01902209fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79534724"
 ---
-# <a name="azure-cloud-services-definition-networktrafficrules-schema"></a>Azure Cloud Services Definition NetworkTrafficRules Schéma
-Uzel `NetworkTrafficRules` je volitelný prvek v souboru definice služby, který určuje, jak role vzájemně komunikují. Omezuje, které role mají přístup k interním koncovým bodům konkrétní role. Není `NetworkTrafficRules` samostatný prvek; je kombinován se dvěma nebo více rolemi v souboru definice služby.
+# <a name="azure-cloud-services-definition-networktrafficrules-schema"></a>NetworkTrafficRules schéma definice Azure Cloud Services
+`NetworkTrafficRules` Uzel je volitelný prvek v definičním souboru služby, který určuje, jak vzájemně komunikují mezi rolemi. Omezuje role, které mají přístup k interním koncovým bodům konkrétní role. `NetworkTrafficRules` Není samostatný element; v souboru definice služby je v kombinaci se dvěma nebo více rolemi.
 
-Výchozí přípona pro soubor definice služby je .csdef.
+Výchozí přípona souboru definice služby je. csdef.
 
 > [!NOTE]
->  Uzel `NetworkTrafficRules` je k dispozici pouze pomocí sady Azure SDK verze 1.3 nebo vyšší.
+>  `NetworkTrafficRules` Uzel je dostupný jenom pomocí sady Azure SDK verze 1,3 nebo vyšší.
 
-## <a name="basic-service-definition-schema-for-the-network-traffic-rules"></a>Schéma definice základní služby pro pravidla síťového provozu
-Základní formát souboru definice služby obsahující definice síťového provozu je následující.
+## <a name="basic-service-definition-schema-for-the-network-traffic-rules"></a>Základní schéma definice služby pro pravidla síťového provozu
+Základní formát definičního souboru služby obsahující definice síťového provozu je následující.
 
 ```xml
 <ServiceDefinition …>
@@ -48,58 +48,58 @@ Základní formát souboru definice služby obsahující definice síťového pr
 ```
 
 ## <a name="schema-elements"></a>Prvky schématu
-Uzel `NetworkTrafficRules` souboru definice služby obsahuje tyto prvky, popsané podrobně v následujících částech v tomto tématu:
+Uzel `NetworkTrafficRules` definičního souboru služby obsahuje tyto prvky, které jsou podrobně popsané v následujících částech tohoto tématu:
 
-[NetworkTrafficRules Element](#NetworkTrafficRules)
+[Element NetworkTrafficRules](#NetworkTrafficRules)
 
-[Pouze AllowTrafficTo Element](#OnlyAllowTrafficTo)
+[Element OnlyAllowTrafficTo](#OnlyAllowTrafficTo)
 
-[Cílový prvek](#Destinations)
+[Cílová element](#Destinations)
 
-[RoleEndpoint Element](#RoleEndpoint)
+[Element RoleEndpoint](#RoleEndpoint)
 
-Prvek AllowAllTraffic
+Element AllowAllTraffic
 
-[Prvek WhenSource](#WhenSource)
+[Element WhenSource](#WhenSource)
 
-[FromRole Element](#FromRole)
+[Element FromRole](#FromRole)
 
-##  <a name="networktrafficrules-element"></a><a name="NetworkTrafficRules"></a>NetworkTrafficRules Element
-Prvek `NetworkTrafficRules` určuje, které role mohou komunikovat s koncovým bodem v jiné roli. Služba může obsahovat jednu `NetworkTrafficRules` definici.
+##  <a name="networktrafficrules-element"></a><a name="NetworkTrafficRules"></a>Element NetworkTrafficRules
+`NetworkTrafficRules` Element určuje, které role mohou komunikovat s koncovým bodem v jiné roli. Služba může obsahovat jednu `NetworkTrafficRules` definici.
 
-##  <a name="onlyallowtrafficto-element"></a><a name="OnlyAllowTrafficTo"></a>Pouze AllowTrafficTo Element
-Prvek `OnlyAllowTrafficTo` popisuje kolekci cílových koncových bodů a rolí, které s nimi mohou komunikovat. Můžete zadat `OnlyAllowTrafficTo` více uzlů.
+##  <a name="onlyallowtrafficto-element"></a><a name="OnlyAllowTrafficTo"></a>Element OnlyAllowTrafficTo
+`OnlyAllowTrafficTo` Element popisuje kolekci cílových koncových bodů a rolí, které s nimi můžou komunikovat. Můžete zadat více `OnlyAllowTrafficTo` uzlů.
 
-##  <a name="destinations-element"></a><a name="Destinations"></a>Cílový prvek
-Prvek `Destinations` popisuje kolekci RoleEndpoints, než může být komunikována s.
+##  <a name="destinations-element"></a><a name="Destinations"></a>Cílová element
+`Destinations` Prvek popisuje kolekci RoleEndpoints, než může být oznámeno.
 
-##  <a name="roleendpoint-element"></a><a name="RoleEndpoint"></a>RoleEndpoint Element
-Prvek `RoleEndpoint` popisuje koncový bod na roli povolit komunikaci s. Můžete zadat `RoleEndpoint` více prvků, pokud existuje více než jeden koncový bod na roli.
+##  <a name="roleendpoint-element"></a><a name="RoleEndpoint"></a>Element RoleEndpoint
+`RoleEndpoint` Element popisuje koncový bod role, který umožňuje komunikaci s. Pokud je v roli `RoleEndpoint` více než jeden koncový bod, můžete zadat více prvků.
 
 | Atribut      | Typ     | Popis |
 | -------------- | -------- | ----------- |
-| `endpointName` | `string` | Povinná hodnota. Název koncového bodu povolit přenos.|
-| `roleName`     | `string` | Povinná hodnota. Název webové role, ke které je třeba povolit komunikaci.|
+| `endpointName` | `string` | Povinná hodnota. Název koncového bodu, na který má být povolen provoz.|
+| `roleName`     | `string` | Povinná hodnota. Název webové role, na kterou má být povolena komunikace.|
 
-## <a name="allowalltraffic-element"></a>Prvek AllowAllTraffic
-Prvek `AllowAllTraffic` je pravidlo, které umožňuje všem rolím komunikovat `Destinations` s koncovými body definovanými v uzlu.
+## <a name="allowalltraffic-element"></a>Element AllowAllTraffic
+`AllowAllTraffic` Element je pravidlo, které umožňuje všem rolím komunikovat s koncovými body definovanými v `Destinations` uzlu.
 
-##  <a name="whensource-element"></a><a name="WhenSource"></a>Prvek WhenSource
-Prvek `WhenSource` popisuje kolekci rolí, než může komunikovat s `Destinations` koncovými body definovanými v uzlu.
+##  <a name="whensource-element"></a><a name="WhenSource"></a>Element WhenSource
+`WhenSource` Prvek popisuje kolekci rolí, než může komunikovat s koncovými body definovanými v `Destinations` uzlu.
 
 | Atribut | Typ     | Popis |
 | --------- | -------- | ----------- |
-| `matches` | `string` | Povinná hodnota. Určuje pravidlo, které má být aplikováno při povolování komunikace. Jediná platná hodnota je `AnyRule`aktuálně .|
+| `matches` | `string` | Povinná hodnota. Určuje pravidlo, které se má použít při povolování komunikace. Jediná platná hodnota je aktuálně `AnyRule`.|
   
-##  <a name="fromrole-element"></a><a name="FromRole"></a>FromRole Element
-Prvek `FromRole` určuje role, které mohou komunikovat s koncovými body definovanými `Destinations` v uzlu. Můžete zadat `FromRole` více prvků, pokud existuje více než jedna role, která může komunikovat s koncovými body.
+##  <a name="fromrole-element"></a><a name="FromRole"></a>Element FromRole
+`FromRole` Prvek určuje role, které mohou komunikovat s koncovými body definovanými v `Destinations` uzlu. Pokud existuje více než `FromRole` jedna role, která může komunikovat s koncovými body, můžete zadat více prvků.
 
 | Atribut  | Typ     | Popis |
 | ---------- | -------- | ----------- |
-| `roleName` | `string` | Povinná hodnota. Název role, ze které chcete povolit komunikaci.|
+| `roleName` | `string` | Povinná hodnota. Název role, ze které má být komunikace povolena.|
 
 ## <a name="see-also"></a>Viz také
-[Schéma definice cloudové služby (klasické)](schema-csdef-file.md)
+[Schéma definice cloudové služby (Classic)](schema-csdef-file.md)
 
 
 

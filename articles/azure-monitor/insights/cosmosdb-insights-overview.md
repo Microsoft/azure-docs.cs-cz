@@ -1,127 +1,127 @@
 ---
-title: Monitorování Azure Cosmos DB pomocí Azure Monitor u Cosmos DB (preview)| Dokumenty společnosti Microsoft
-description: Tento článek popisuje funkci Azure Monitor for Cosmos DB, která poskytuje vlastníkům Cosmos DB rychlé pochopení problémů s výkonem a využitím s jejich účty CosmosDB.
+title: Monitorovat Azure Cosmos DB pomocí Azure Monitor pro Cosmos DB (Preview) | Microsoft Docs
+description: Tento článek popisuje Azure Monitor pro funkci Cosmos DB, která poskytuje Cosmos DBm vlastníkům rychlé porozumění problémům s výkonem a využitím jejich účtů CosmosDB.
 ms.subservice: ''
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/27/2019
 ms.openlocfilehash: 9a900a2f2e950fe9b9846ebcc047d7c344284948
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78250683"
 ---
-# <a name="explore-azure-monitor-for-azure-cosmos-db-preview"></a>Prozkoumejte Azure Monitor pro Azure Cosmos DB (preview)
+# <a name="explore-azure-monitor-for-azure-cosmos-db-preview"></a>Prozkoumat Azure Monitor pro Azure Cosmos DB (Preview)
 
-Azure Monitor pro Azure Cosmos DB (preview) poskytuje zobrazení celkového výkonu, selhání, kapacity a provozního stavu všech prostředků Azure Cosmos DB v jednotném interaktivním prostředí. Tento článek vám pomůže pochopit výhody tohoto nového prostředí monitorování a jak můžete upravit a přizpůsobit prostředí tak, aby vyhovovalo jedinečným potřebám vaší organizace.   
+Azure Monitor for Azure Cosmos DB (Preview) poskytuje přehled o celkovém výkonu, selháních, kapacitě a provozním stavu všech vašich Azure Cosmos DBch prostředků v jednotném interaktivním prostředí. Tento článek vám pomůže pochopit výhody tohoto nového prostředí pro monitorování a jak můžete upravit a přizpůsobit prostředí tak, aby vyhovovalo jedinečným potřebám vaší organizace.   
 
 ## <a name="introduction"></a>Úvod
 
-Než se ponoříte do zážitku, měli byste pochopit, jak prezentuje a vizualizuje informace. 
+Předtím, než se začnete do prostředí, byste měli pochopit, jak prezentuje a vizualizují informace. 
 
-Přináší:
+Poskytuje:
 
-* **V horizontálním navýšení měřítku hlediska** prostředků Azure Cosmos DB ve všech vašich předplatných na jednom místě, se schopností selektivně obor pouze ty předplatná a prostředky, které máte zájem o hodnocení.
+* V **perspektivě škály** svých Azure Cosmos DBch prostředků napříč všemi vašimi předplatnými v jednom místě s možností selektivně přidružit jenom k předplatným a prostředkům, které vás zajímají.
 
-* **Přejít k podrobnostem analýzy** konkrétní prostředek Azure CosmosDB pomoci diagnostikovat problémy nebo provést podrobnou analýzu podle kategorie – využití, selhání, kapacity a operace. Výběr některé z těchto možností poskytuje podrobné zobrazení příslušných metrik Azure Cosmos DB.  
+* Procházejte **analýzu** konkrétního prostředku Azure CosmosDB, která vám pomůžou diagnostikovat problémy nebo provádět podrobnou analýzu pomocí kategorií, selhání, kapacity a operací. Výběrem jedné z těchto možností získáte Podrobný pohled na relevantní metriky Azure Cosmos DB.  
 
-* **Přizpůsobitelné** – toto prostředí je postavené na šablonách sešitu Azure Monitoru, což vám umožní změnit, jaké metriky se zobrazí, upravit nebo nastavit prahové hodnoty, které odpovídají vašim limitům, a pak je uložit do vlastního sešitu. Grafy v sešitech pak můžou být připnuté na řídicí panely Azure.  
+* **Přizpůsobitelné** – toto prostředí je postavené na šablonách sešitu Azure monitor, což vám umožní změnit, jaké metriky se zobrazí, upravit nebo nastavit prahové hodnoty, které odpovídají vašim limitům, a pak je Uložit do vlastního sešitu. Grafy v sešitech je pak možné připnout na řídicí panely Azure.  
 
-Tato funkce nevyžaduje, abyste nic povolit nebo konfigurovat, tyto metriky Azure Cosmos DB jsou shromažďovány ve výchozím nastavení.
+Tato funkce nevyžaduje, abyste povolili ani nenakonfigurovali cokoli. Tyto Azure Cosmos DB metriky se ve výchozím nastavení shromažďují.
 
 >[!NOTE]
->Přístup k této funkci se neúčtuje a bude se vám účtovat jenom základní funkce Azure Monitoru, které nakonfigurujete nebo povolíte, jak je popsáno na stránce [s podrobnostmi o cenách Azure Monitoru.](https://azure.microsoft.com/pricing/details/monitor/)
+>Pro přístup k této funkci se neplatí žádné poplatky a účtují se vám jenom Azure Monitor základní funkce, které nakonfigurujete nebo povolíte, jak je popsáno na stránce [Azure monitor s podrobnostmi o cenách](https://azure.microsoft.com/pricing/details/monitor/) .
 
-## <a name="view-utilization-and-performance-metrics-for-azure-cosmos-db"></a>Zobrazení metrik využití a výkonu pro Azure Cosmos DB
+## <a name="view-utilization-and-performance-metrics-for-azure-cosmos-db"></a>Zobrazit metriky využití a výkonu pro Azure Cosmos DB
 
-Chcete-li zobrazit využití a výkon účtů úložiště ve všech předplatných, proveďte následující kroky.
+Pokud chcete zobrazit využití a výkon účtů úložiště napříč všemi vašimi předplatnými, proveďte následující kroky.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Vyhledejte **monitor** a vyberte **možnost Sledovat**.
+2. Vyhledejte **monitorování** a vyberte **monitor**.
 
-    ![Vyhledávací pole se slovem "Monitor" a rozbalovací okno, které říká, že služby "Monitor" s obrázkem stylu rychloměru](./media/cosmosdb-insights-overview/search-monitor.png)
+    ![Vyhledávací pole se slovem "monitor" a rozevírací seznam, který říká službám "monitor" s obrázkem stylu rychloměru](./media/cosmosdb-insights-overview/search-monitor.png)
 
-3. Vyberte **Cosmos DB (náhled).**
+3. Vyberte **Cosmos dB (Preview)**.
 
-    ![Snímek obrazovky sešitu přehledu Cosmos DB](./media/cosmosdb-insights-overview/cosmos-db.png)
+    ![Snímek obrazovky s přehledem Cosmos DBového sešitu](./media/cosmosdb-insights-overview/cosmos-db.png)
 
 ### <a name="overview"></a>Přehled
 
-V **přehledu**tabulka zobrazuje interaktivní metriky Azure Cosmos DB. Výsledky můžete filtrovat na základě vybraných možností z následujících rozevíracích seznamů:
+V **přehledu**zobrazuje tabulka interaktivní metriky Azure Cosmos DB. Výsledky můžete filtrovat podle vybraných možností z následujících rozevíracích seznamů:
 
-* **Předplatná** – jsou uvedeny pouze předplatná, které mají prostředek Azure Cosmos DB jsou uvedeny.  
+* V seznamu **předplatných** jsou uvedena pouze předplatná, která mají prostředek Azure Cosmos DB.  
 
-* **Cosmos DB** – můžete vybrat všechny, podmnožinu nebo jeden prostředek Azure Cosmos DB.
+* **Cosmos DB** – můžete vybrat vše, podmnožinu nebo jeden prostředek Azure Cosmos DB.
 
-* **Časový rozsah** - ve výchozím nastavení zobrazuje poslední 4 hodiny informací na základě odpovídajících provedených výběrů.
+* **Časový rozsah** – ve výchozím nastavení zobrazí poslední 4 hodiny informací na základě odpovídajících výběrů.
 
-Dlaždice čítače pod rozevírací seznamy rozbalit celkový počet prostředků Azure Cosmos DB jsou ve vybraných předplatných. V sešitu, který hlásí metriky transakcí, existuje podmíněné barevné kódování nebo heatmapy pro sloupce. Nejhlubší barva má nejvyšší hodnotu a světlejší barva je založena na nejnižších hodnotách. 
+Dlaždice počítadla v rozevíracích seznamech shrnuje celkový počet Azure Cosmos DBch prostředků ve vybraných předplatných. Pro sloupce v sešitu jsou podmíněné barevné kódování nebo Heat mapy, které vykazují metriky transakcí. Hluboká barva má nejvyšší hodnotu a světlejší barva je založena na nejnižších hodnotách. 
 
-Výběr rozevírací šipky vedle jednoho z prostředků Azure Cosmos DB odhalí rozdělení metrik výkonu na úrovni jednotlivých kontejnerů databáze:
+Když vyberete šipku rozevíracího seznamu vedle jednoho z Azure Cosmos DB prostředků, zobrazí se rozpis metrik výkonu na úrovni jednotlivého kontejneru databáze:
 
-![Rozšířené rozevírací položky odhalující jednotlivé databázové kontejnery a související rozdělení výkonu](./media/cosmosdb-insights-overview/container-view.png)
+![Rozšířené rozevírací seznam odhalí jednotlivé kontejnery databáze a související rozpis výkonu.](./media/cosmosdb-insights-overview/container-view.png)
 
-Výběrem názvu prostředku Azure Cosmos DB zvýrazněného modře přejdete na výchozí **přehled** pro přidružený účet Azure Cosmos DB. 
+Když vyberete název prostředku Azure Cosmos DB zvýrazněný modře, přejdete k výchozímu **přehledu** pro přidružený účet Azure Cosmos DB. 
 
 ### <a name="failures"></a>Selhání
 
-V horní části stránky vyberte **Chyby** a otevře **se** část Sešitu. Zobrazuje celkový počet požadavků s distribucí odpovědí, které tvoří tyto požadavky:
+V horní části stránky vyberte **selhání** a otevře se část **selhání** šablony sešitu. Zobrazuje celkový počet požadavků s distribucí odpovědí, které tvoří tyto požadavky:
 
-![Snímek obrazovky s chybami s rozdělením podle typu požadavku HTTP](./media/cosmosdb-insights-overview/failures.png)
+![Snímek obrazovky s chybami s rozpisem podle typu požadavku HTTP](./media/cosmosdb-insights-overview/failures.png)
 
 | kód      |  Popis       | 
 |-----------|:--------------------|
-| `200 OK`  | Jedna z následujících operací REST byla úspěšná: </br>- ZÍSKEJTE na zdroj. </br> - Dát na zdroj. </br> - POST na zdroj. </br> - POST na uložené procedury prostředku k provedení uložené procedury.|
+| `200 OK`  | Jedna z následujících operací REST byla úspěšná: </br>– ZÍSKAT u prostředku. </br> -PUT do prostředku. </br> – ZVEŘEJNĚNÍ na prostředku. </br> -POST v prostředku uložené procedury a spusťte uloženou proceduru.|
 | `201 Created` | Operace POST pro vytvoření prostředku je úspěšná. |
-| `404 Not Found` | Operace se pokouší o činnost s prostředkem, který již neexistuje. Například prostředek již byl odstraněn. |
+| `404 Not Found` | Operace se pokouší jednat o prostředek, který již neexistuje. Prostředek mohl být například již odstraněn. |
 
-Úplný seznam stavových kódů najděte v [článku o stavu http kódu Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
+Úplný seznam stavových kódů najdete v [článku Azure Cosmos DB stavový kód HTTP](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
 
 ### <a name="capacity"></a>Kapacita
 
-V horní části stránky vyberte **Kapacita** a otevře se část **Kapacity** šablony sešitu. Ukazuje, kolik dokumentů máte, nárůst dokumentů v průběhu času, využití dat a celkové množství dostupného úložiště, které vám zbylo.  To lze použít k identifikaci potenciální problémy úložiště a využití dat.
+V horní části stránky vyberte **kapacitu** a v šabloně sešitu se otevře část **kapacita** . Ukazuje, kolik dokumentů máte, váš dokument roste v čase, využití dat a celkově dostupné úložiště, které jste opustili.  Dá se využít k identifikaci potenciálních problémů s úložištěm a využitím dat.
 
-![Sešit kapacity](./media/cosmosdb-insights-overview/capacity.png) 
+![Pracovní sešit kapacity](./media/cosmosdb-insights-overview/capacity.png) 
 
-Stejně jako u sešitu s přehledem výběru vedle prostředku Azure Cosmos DB ve sloupci **Předplatné** odhalí rozdělení podle jednotlivých kontejnerů, které tvoří databázi.
+Stejně jako u sešitu s přehledem se po výběru rozevíracího seznamu vedle Azure Cosmos DB prostředku ve sloupci **odběr** zobrazí rozpis jednotlivých kontejnerů, které tvoří databázi.
 
-### <a name="operations"></a>Provoz 
+### <a name="operations"></a>Operace 
 
-V horní části stránky vyberte **Operace** a otevře se část **Operace** šablony sešitu. To vám dává možnost vidět vaše požadavky v členění podle typu žádostí. 
+V horní části stránky vyberte **operace** a otevře se část **operace** v šabloně sešitu. Dává vám možnost Zobrazit vaše požadavky rozdělené podle typu vámi provedených požadavků. 
 
-Takže v níže uvedeném `eastus-billingint` příkladu vidíte, že je převážně příjem požadavků na čtení, ale s malým počtem upsert a vytvářet požadavky. Vzhledem `westeurope-billingint` k tomu, je jen pro čtení z hlediska požadavku, alespoň za poslední čtyři hodiny, že sešit je aktuálně vymezena prostřednictvím jeho parametr časového rozsahu.
+Takže v příkladu níže vidíte, že `eastus-billingint` se v rámci toho dostávají požadavky na čtení, ale s malým počtem Upsert a požadavky na vytvoření. Vzhledem `westeurope-billingint` k tomu, že je k dispozici jen pro čtení z perspektivy žádosti, alespoň během posledních čtyř hodin, po které je sešit aktuálně vymezený prostřednictvím parametru časového rozsahu.
 
-![Operační sešit](./media/cosmosdb-insights-overview/operation.png) 
+![Sešit operací](./media/cosmosdb-insights-overview/operation.png) 
 
-## <a name="pin-export-and-expand"></a>Připnutí, export a rozbalení
+## <a name="pin-export-and-expand"></a>Připnout, exportovat a rozbalit
 
-Na [ovládací panel Azure](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards) můžete připnout kteroukoli z částí metriky tak, že vyberete ikonu připínáčku v pravém horním rohu oddílu.
+Libovolný oddíl metriky můžete připnout na [řídicí panel Azure](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards) tak, že vyberete ikonu připínáčku v pravém horním rohu oddílu.
 
-![Příklad připnutí metrické sekce k řídicímu panelu](./media/cosmosdb-insights-overview/pin.png)
+![Připnout oddíl metriky na příklad řídicího panelu](./media/cosmosdb-insights-overview/pin.png)
 
-Chcete-li exportovat data do formátu Aplikace Excel, vyberte ikonu šipky dolů vlevo od ikony připínáčku.
+Chcete-li exportovat data do formátu aplikace Excel, vyberte ikonu šipky dolů nalevo od ikony připínáčku.
 
-![Ikona exportu sešitu](./media/cosmosdb-insights-overview/export.png)
+![Ikona exportovat sešit](./media/cosmosdb-insights-overview/export.png)
 
-Pokud chcete rozbalit nebo sbalit všechna rozevírací zobrazení v sešitu, vyberte ikonu rozbalení vlevo od ikony exportu:
+Chcete-li rozbalit nebo sbalit všechna rozevírací zobrazení v sešitu, vyberte ikonu rozbalení vlevo od ikony exportu:
 
-![Rozbalit ikonu sešitu](./media/cosmosdb-insights-overview/expand.png)
+![Ikona rozbalení sešitu](./media/cosmosdb-insights-overview/expand.png)
 
-## <a name="customize-azure-monitor-for-azure-cosmos-db-preview"></a>Přizpůsobení Azure Monitoru pro Azure Cosmos DB (preview)
+## <a name="customize-azure-monitor-for-azure-cosmos-db-preview"></a>Přizpůsobení Azure Monitor pro Azure Cosmos DB (Preview)
 
-Vzhledem k tomu, že toto prostředí je postavené na šablonách sešitu Azure Monitoru, máte možnost **přizpůsobit** > **úpravy** a **uložit** kopii upravené verze do vlastního sešitu. 
+Vzhledem k tomu, že toto prostředí je postavené na šablonách sešitu Azure monitor, máte možnost **přizpůsobit** > **Úpravy** a **Uložit** kopii změněné verze do vlastního sešitu. 
 
 ![Přizpůsobit pruh](./media/cosmosdb-insights-overview/customize.png)
 
-Sešity se ukládají do skupiny prostředků, a to buď v části **Moje sestavy,** která je pro vás soukromá, nebo v části **Sdílené sestavy,** která je přístupná všem uživatelům s přístupem ke skupině prostředků. Po uložení vlastního sešitu je třeba přejít do galerie sešitů a spustit jej.
+Sešity se ukládají v rámci skupiny prostředků, a to buď v části **Mé sestavy** , která je pro vás nebo ve **sdílených sestavách** přístupná pro všechny s přístupem ke skupině prostředků. Po uložení vlastního sešitu musíte přejít do galerie sešitů a spustit ho.
 
-![Spuštění galerie sešitů z panelu příkazů](./media/cosmosdb-insights-overview/gallery.png)
+![Spustit galerii sešitů z panelu příkazů](./media/cosmosdb-insights-overview/gallery.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* Nakonfigurujte [upozornění na metriky](../platform/alerts-metric.md) a [oznámení o stavu služeb](../../service-health/alerts-activity-log-service-notifications.md) a nastavte automatické upozorňování, které pomůže při zjišťování problémů.
+* Nakonfigurujte [Upozornění metrik](../platform/alerts-metric.md) a [oznámení o stavu služby](../../service-health/alerts-activity-log-service-notifications.md) , abyste nastavili automatizované upozorňování na pomoc při zjišťování problémů.
 
-* Seznamte se scénáři, které jsou navržené tak, aby podporovaly, jak vytvářet nové a přizpůsobit existující sestavy a další informace v recenzi [Na vytvoření interaktivních sestav pomocí sešitů Azure Monitoru](../app/usage-workbooks.md).
+* Seznamte se s scénáři, které jsou navržené tak, aby podporovaly, vytváření nových a přizpůsobení existujících sestav a další informace najdete v tématu [vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../app/usage-workbooks.md).

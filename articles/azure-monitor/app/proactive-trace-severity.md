@@ -1,31 +1,31 @@
 ---
-title: Degradace v poměru závažnosti trasování – Přehledy aplikací Azure
-description: Sledujte trasování aplikací pomocí Azure Application Insights pro neobvyklé vzory v telemetrii trasování pomocí inteligentní detekce .
+title: Snížení míry závažnosti trasování – Azure Application Insights
+description: Monitorování trasování aplikace pomocí Azure Application Insights pro neobvyklé vzory v rámci telemetrie trasování s inteligentní detekcí.
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.openlocfilehash: 30bdd30ac9c49bb79a3c48bae8149ec761756dd4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671677"
 ---
-# <a name="degradation-in-trace-severity-ratio-preview"></a>Degradace v poměru závažnosti trasování (náhled)
+# <a name="degradation-in-trace-severity-ratio-preview"></a>Snížení výkonu v poměru závažnosti trasování (Preview)
 
-Stopy jsou široce používány v aplikacích, protože pomáhají vyprávět příběh o tom, co se děje v zákulisí. Když se něco pokazí, stopy poskytují zásadní přehled o sledu událostí vedoucích k nežádoucímu stavu. Zatímco stopy jsou obecně nestrukturované, je tu jedna věc, která může konkrétně naučit od nich - jejich úroveň závažnosti. V ustáleném stavu aplikace bychom očekávali, že poměr mezi "dobré" stopy (*Info* a *Verbose*) a "špatné" stopy (*Upozornění*, *Chyba*a *Kritické*) zůstat stabilní. Předpokládá se, že "špatné" stopy se mohou do určité míry do určité míry provádět z důvodu libovolného počtu důvodů (například přechodné síťové problémy). Ale když skutečný problém začne růst, obvykle se projevuje jako zvýšení relativního podílu "špatné" stopy vs "dobré" stopy. Application Insights Smart Detection automaticky analyzuje trasování zaznamenané vaší aplikací a může vás varovat před neobvyklými vzory v závažnosti telemetrie trasování.
+Trasování se v aplikacích často používají, protože pomůžou zjistit, co se děje na pozadí. Pokud dojde k chybě, trasování poskytují zásadní přehled o posloupnosti událostí vedoucích k nepožadovanému stavu. I když jsou trasování všeobecně nestrukturovaná, existuje jedna věc, kterou je možné z nich z nich zjistit – jejich úroveň závažnosti. Ve stabilním stavu aplikace očekáváme, že poměr mezi "dobrým" trasováním (*informace* a *podrobný*) a "špatný" trasování (*Upozornění*, *Chyba*a *kritické*), aby zůstaly stabilní. Předpokladem je, že v pravidelných intervalech se můžou v určitém rozsahu vyskytnout "chybná" trasování z libovolného počtu důvodů (přechodné problémy se sítí pro instanci). Ale když skutečný problém začíná růst, obvykle se manifestuje jako zvýšení relativního podílu "špatných" trasování a "dobrých" trasování. Inteligentní zjišťování Application Insights automaticky analyzuje trasování zaznamenané aplikací a může upozorňovat na neobvyklé vzory v závažnosti vaší telemetrie trasování.
 
-Tato funkce nevyžaduje žádné speciální nastavení, kromě konfigurace protokolování trasování pro vaši aplikaci (viz postup konfigurace posluchače protokolu trasování pro [rozhraní .NET](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-trace-logs) nebo [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-trace-logs)). Je aktivní, když vaše aplikace generuje dostatek telemetrie výjimek.
+Tato funkce nevyžaduje žádné speciální nastavení, kromě konfigurace protokolování trasování pro vaši aplikaci (viz postup konfigurace naslouchacího procesu protokolu trasování pro [.NET](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-trace-logs) nebo [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-trace-logs)). Je aktivní, když vaše aplikace vygeneruje dostatek telemetrie výjimek.
 
-## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Kdy dostanu tento typ inteligentního oznámení o detekci?
-Tento typ oznámení můžete získat, pokud poměr mezi "dobré" trasování (trasování protokolované s úrovní *Info* nebo *Verbose)* a "chybné" trasování (trasování zaznamenané s úrovní *upozornění*, *chyba*nebo *fatální*) je ponižující v určitý den, ve srovnání s směrným plánem vypočtené za předchozích sedm dní.
+## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Kdy získám tento typ oznámení inteligentního zjišťování?
+Tento typ oznámení se může zobrazit v případě, že poměr mezi "dobrými" trasování (trasování se protokoluje na úrovni *informací* nebo *podrobných*) a "špatných" trasování (zaznamenaná úroveň *Upozornění*, *Chyba*nebo *závažná*) se v určitém dni v porovnání se směrným plánem vypočítaným během posledních sedmi dnů liší.
 
-## <a name="does-my-app-definitely-have-a-problem"></a>Má moje aplikace určitě nějaký problém?
-Ne, oznámení neznamená, že vaše aplikace má určitě problém. Přestože degradace v poměru mezi "dobré" a "špatné" stopy může znamenat problém aplikace, tato změna poměru může být benigní. Zvýšení může být například způsobeno nový tok v aplikaci emitující více "chybné" trasování než existující toky).
+## <a name="does-my-app-definitely-have-a-problem"></a>Má moje aplikace konečně nějaký problém?
+Ne, oznámení neznamená, že vaše aplikace má jednoznačně problém. I když snížení poměru mezi "dobrými" a "špatnými" trasování může znamenat problém s aplikací, tato změna v poměru může být neškodná. Například zvýšení může být způsobeno novým tokem v aplikaci, který emituje více "špatných" trasování než stávající toky.
 
 ## <a name="how-do-i-fix-it"></a>Jak ho mám opravit?
-Oznámení obsahují diagnostické informace pro podporu v procesu diagnostiky:
-1. **Třídění.** Oznámení ukazuje, kolik operací jsou ovlivněny. To vám může pomoci přiřadit prioritu problému.
-2. **Rozsah.** Je problém ovlivňuje veškerý provoz, nebo jen nějaký provoz? Tyto informace lze získat z oznámení.
-3. **Diagnostikovat.** Související položky a sestavy, které odkazují na podpůrné informace, můžete použít k další diagnostice problému.
+Oznámení zahrnují diagnostické informace pro podporu procesu diagnostiky:
+1. **Třídění.** V oznámení se dozvíte, kolik operací je ovlivněno. To vám může přispět k přiřazení priority k problému.
+2. **Oboru.** Má tento problém vliv na veškerý provoz nebo jenom nějaké operace? Tyto informace lze získat z oznámení.
+3. **Diagnóz.** Související položky a sestavy, které se propojí s podpůrnými informacemi, můžete použít k dalšímu diagnostikování problému.
 
 

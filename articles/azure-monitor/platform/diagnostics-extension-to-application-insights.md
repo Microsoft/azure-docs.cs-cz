@@ -1,27 +1,27 @@
 ---
-title: Odeslání dat diagnostiky Azure do přehledů aplikací
-description: Aktualizujte veřejnou konfiguraci Diagnostika Azure a odesílejte data do Application Insights.
+title: Odeslat data Azure Diagnostics do Application Insights
+description: Aktualizujte Azure Diagnostics veřejnou konfiguraci, aby odesílala data do Application Insights.
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/19/2016
 ms.openlocfilehash: 80d971abd248ca8253a374b488c693ea9aa2ea3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77672323"
 ---
-# <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Odeslání diagnostických dat cloudové služby, virtuálního počítače nebo infrastruktury služeb do přehledů aplikací
-Cloudové služby, virtuální počítače, škálovací sady virtuálních počítačů a service fabric používají ke shromažďování dat rozšíření Diagnostika Azure.  Diagnostika Azure odesílá data do tabulek Azure Storage.  Můžete však také kanál všechny nebo podmnožinu dat do jiných umístění pomocí rozšíření Diagnostika Azure 1.5 nebo novější.
+# <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Odeslat cloudovou službu, virtuální počítač nebo Service Fabric diagnostická data do Application Insights
+Služba Cloud Services, Virtual Machines, Virtual Machine Scale Sets a Service Fabric k shromažďování dat používá rozšíření Azure Diagnostics.  Diagnostika Azure odesílá data do tabulek Azure Storage.  Můžete však také přesměrovat všechny nebo podmnožiny dat do jiných umístění pomocí rozšíření Azure Diagnostics 1,5 nebo novější.
 
-Tento článek popisuje, jak odesílat data z rozšíření Diagnostika Azure do Application Insights.
+Tento článek popisuje, jak odeslat data z rozšíření Azure Diagnostics do Application Insights.
 
 ## <a name="diagnostics-configuration-explained"></a>Vysvětlení konfigurace diagnostiky
-Rozšíření diagnostiky Azure 1.5 představil jímky, které jsou další umístění, kde můžete odesílat diagnostická data.
+Diagnostické rozšíření Azure 1,5 zavedlo jímky, což jsou další místa, kde můžete odesílat diagnostická data.
 
-Příklad konfigurace jímky pro přehledy aplikací:
+Příklad konfigurace jímky pro Application Insights:
 
 ```XML
 <SinksConfig>
@@ -56,35 +56,35 @@ Příklad konfigurace jímky pro přehledy aplikací:
     ]
 }
 ```
-- *Atribut* **Název jímky** je hodnota řetězce, která jednoznačně identifikuje jímku.
+- Atribut **Sink** *názvu* jímky je řetězcová hodnota, která jednoznačně identifikuje jímku.
 
-- Prvek **ApplicationInsights** určuje klíč instrumentace prostředku Application insights, kde se posílají data diagnostiky Azure.
-    - Pokud nemáte existující prostředek Application Insights, najdete [v tématu Vytvoření nového prostředku Application Insights](../../azure-monitor/app/create-new-resource.md ) další informace o vytvoření prostředku a získání klíče instrumentace.
-    - Pokud vyvíjíte cloudovou službu s Azure SDK 2.8 a novější, tento klíč instrumentace se automaticky naplní. Hodnota je založena na nastavení konfigurace **služby APPINSIGHTS_INSTRUMENTATIONKEY** při balení projektu cloudové služby. Viz [Použití přehledů aplikací s cloudovými službami](../../azure-monitor/app/cloudservices.md).
+- Element **ApplicationInsights** Určuje klíč instrumentace prostředku Application Insights, kde se odesílají data diagnostiky Azure.
+    - Pokud nemáte existující prostředek Application Insights, přečtěte si téma [Vytvoření nového prostředku Application Insights](../../azure-monitor/app/create-new-resource.md ) , kde najdete další informace o vytvoření prostředku a získání klíče instrumentace.
+    - Pokud vyvíjíte cloudovou službu pomocí sady Azure SDK 2,8 a novější, tento klíč instrumentace se vyplní automaticky. Hodnota je založena na nastavení konfigurace služby **APPINSIGHTS_INSTRUMENTATIONKEY** při vytváření balíčku projektu cloudové služby. Viz [použití Application Insights s Cloud Services](../../azure-monitor/app/cloudservices.md).
 
-- Channels **Channels** Element obsahuje jeden nebo více prvků **kanálu.**
-    - Atribut *name* jednoznačně odkazuje na tento kanál.
-    - Atribut *loglevel* umožňuje určit úroveň protokolu, kterou kanál umožňuje. Dostupné úrovně protokolu v pořadí od většiny až nejmenších informací jsou:
+- Element **Channels** obsahuje jeden nebo více prvků **kanálu** .
+    - Atribut *Name* jednoznačně odkazuje na daný kanál.
+    - Atribut *LogLevel* umožňuje zadat úroveň protokolu, kterou kanál povoluje. Dostupné úrovně protokolu v pořadí od nejvíc do nejnižší informace jsou následující:
         - Verbose
         - Informace
         - Upozornění
         - Chyba
         - Kritická
 
-Kanál se chová jako filtr a umožňuje vybrat konkrétní úrovně protokolu, které chcete odeslat do cílovéjím hodu. Můžete například shromažďovat podrobné protokoly a odesílat je do úložiště, ale odesílat pouze chyby do jímky.
+Kanál funguje jako filtr a umožňuje vybrat konkrétní úrovně protokolu k odeslání do cílové jímky. Můžete například shromáždit podrobné protokoly a odeslat je do úložiště, ale zaslat do jímky pouze chyby.
 
-Následující obrázek znázorňuje tento vztah.
+Tento vztah je znázorněn na následujícím obrázku.
 
 ![Veřejná konfigurace diagnostiky](media/diagnostics-extension-to-application-insights/AzDiag_Channels_App_Insights.png)
 
-Následující obrázek shrnuje hodnoty konfigurace a jejich fungování. Můžete zahrnout více jímky v konfiguraci na různých úrovních v hierarchii. Jímka na nejvyšší úrovni funguje jako globální nastavení a nastavení zadané v jednotlivém prvku funguje jako přepsání tohoto globálního nastavení.
+Následující obrázek shrnuje konfigurační hodnoty a jejich fungování. Do konfigurace můžete zahrnout více umyvadel na různých úrovních v hierarchii. Jímka na nejvyšší úrovni funguje jako globální nastavení a jedna zadaná v jednotlivém prvku funguje jako přepsání pro toto globální nastavení.
 
-![Diagnostika propadá konfiguraci pomocí přehledů aplikací](media/diagnostics-extension-to-application-insights/Azure_Diagnostics_Sinks.png)
+![Konfigurace jímky diagnostiky pomocí Application Insights](media/diagnostics-extension-to-application-insights/Azure_Diagnostics_Sinks.png)
 
-## <a name="complete-sink-configuration-example"></a>Kompletní příklad konfigurace jímky
-Zde je úplný příklad veřejného konfiguračního souboru, který
-1. odešle všechny chyby do application insights (zadáno v uzlu **DiagnosticMonitorConfiguration)**
-2. také odešle protokoly úrovně Verbose pro protokoly aplikací (zadané v uzlu **Protokoly).**
+## <a name="complete-sink-configuration-example"></a>Příklad úplné konfigurace jímky
+Tady je kompletní příklad souboru veřejné konfigurace, který
+1. pošle všechny chyby do Application Insights (zadané v uzlu **DiagnosticMonitorConfiguration** ).
+2. také odesílá protokoly podrobné úrovně pro protokoly aplikací (zadané v uzlu **protokoly** ).
 
 ```XML
 <WadCfg>
@@ -168,9 +168,9 @@ Zde je úplný příklad veřejného konfiguračního souboru, který
     }
 }
 ```
-V předchozí konfiguraci mají následující řádky následující významy:
+V předchozí konfiguraci mají následující řádky následující význam:
 
-### <a name="send-all-the-data-that-is-being-collected-by-azure-diagnostics"></a>Odeslání všech dat, která jsou shromažďována diagnostikou Azure
+### <a name="send-all-the-data-that-is-being-collected-by-azure-diagnostics"></a>Poslat všechna data shromažďovaná diagnostikou Azure
 
 ```XML
 <DiagnosticMonitorConfiguration overallQuotaInMB="4096" sinks="ApplicationInsights">
@@ -182,7 +182,7 @@ V předchozí konfiguraci mají následující řádky následující významy:
 }
 ```
 
-### <a name="send-only-error-logs-to-the-application-insights-sink"></a>Odeslat pouze protokoly chyb do jímky Application Insights
+### <a name="send-only-error-logs-to-the-application-insights-sink"></a>Odeslání pouze protokolů o chybách do jímky Application Insights
 
 ```XML
 <DiagnosticMonitorConfiguration overallQuotaInMB="4096" sinks="ApplicationInsights.MyTopDiagdata">
@@ -194,7 +194,7 @@ V předchozí konfiguraci mají následující řádky následující významy:
 }
 ```
 
-### <a name="send-verbose-application-logs-to-application-insights"></a>Odeslání podrobných protokolů aplikací do application insights
+### <a name="send-verbose-application-logs-to-application-insights"></a>Odeslat podrobné protokoly aplikací pro Application Insights
 
 ```XML
 <Logs scheduledTransferPeriod="PT1M" scheduledTransferLogLevelFilter="Verbose" sinks="ApplicationInsights.MyLogData"/>
@@ -208,12 +208,12 @@ V předchozí konfiguraci mají následující řádky následující významy:
 
 ## <a name="limitations"></a>Omezení
 
-- **Kanály pouze typ protokolu a nikoli čítače výkonu.** Pokud zadáte kanál s prvkem čítače výkonu, bude ignorován.
-- **Úroveň protokolu pro kanál nesmí překročit úroveň protokolu pro co se shromažďuje diagnostikou Azure.** Například nelze shromažďovat chyby protokolu aplikací v logs element a pokusit se odeslat podrobné protokoly do jímky Application Insight. Atribut *scheduledTransferLogLevelFilter* musí vždy shromažďovat stejné nebo více protokolů než protokoly, které se pokoušíte odeslat do jímky.
-- **Data objektů blob shromážděná rozšířením diagnostiky Azure nelze odesílat do Application Insights.** Například vše, co je zadáno v uzlu *Adresáře.* Pro výpisy stavu systému je skutečný výpis stavu systému odeslán do úložiště objektů blob a do přehledů aplikací se odesílá pouze oznámení, že byl vygenerován výpis stavu systému.
+- **Pouze kanály typ protokolu a nikoli čítače výkonu.** Pokud zadáte kanál s prvkem čítače výkonu, bude ignorován.
+- **Úroveň protokolu pro kanál nemůže přesáhnout úroveň protokolu pro to, co shromažďuje Diagnostika Azure.** Například nemůžete shromažďovat chyby protokolu aplikace v elementu logs a snažit se odeslat podrobné protokoly do jímky Application Insight. Atribut *scheduledTransferLogLevelFilter* musí vždycky shromažďovat stejné nebo více protokolů než protokoly, které se snažíte odeslat do jímky.
+- **Data objektu BLOB shromážděná rozšířením Azure Diagnostics nemůžete odeslat Application Insights.** Například cokoli, co je uvedeno v uzlu *adresáře* . V případě výpisů stavu systému se do úložiště objektů BLOB odesílá skutečný výpis stavu systému a do Application Insights se pošle jenom oznámení, že se vygeneroval výpis stavu systému.
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si, jak [zobrazit diagnostické informace Azure](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices) v Application Insights.
-* Pomocí [PowerShellu](../../cloud-services/cloud-services-diagnostics-powershell.md) povolte rozšíření diagnostiky Azure pro vaši aplikaci.
-* Povolení rozšíření diagnostiky Azure pro vaši aplikaci pomocí [Visual Studia](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)
+* Naučte se [zobrazovat informace o diagnostice Azure](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices) v Application Insights.
+* K povolení rozšíření diagnostiky Azure pro vaši aplikaci použijte [PowerShell](../../cloud-services/cloud-services-diagnostics-powershell.md) .
+* Použití sady [Visual Studio](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) pro povolení rozšíření Azure Diagnostics pro vaši aplikaci
 

@@ -1,6 +1,6 @@
 ---
-title: Řešení problémů způsobených aplikacemi, které nepodporují tls 1.2 | Dokumenty společnosti Microsoft
-description: Řešení problémů způsobených aplikacemi, které nepodporují tls 1.2
+title: Řešení potíží způsobených aplikacemi, které nepodporují protokol TLS 1,2 | Microsoft Docs
+description: Řešení potíží způsobených aplikacemi, které nepodporují protokol TLS 1,2
 services: cloud-services
 documentationcenter: ''
 author: mimckitt
@@ -15,30 +15,30 @@ ms.workload: ''
 ms.date: 03/16/2020
 ms.author: tagore
 ms.openlocfilehash: 6153b9d5e8ef11412b0dd53a15c565becfa1c8a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80053757"
 ---
-# <a name="troubleshooting-applications-that-dont-support-tls-12"></a>Poradce při potížích s aplikacemi, které nepodporují tls 1.2
-Tento článek popisuje, jak povolit starší protokoly TLS (TLS 1.0 a 1.1) a také použít starší šifrovací sady pro podporu dalších protokolů na webových a pracovních rolích cloudových služeb Windows Server 2019. 
+# <a name="troubleshooting-applications-that-dont-support-tls-12"></a>Řešení potíží s aplikacemi, které nepodporují protokol TLS 1,2
+Tento článek popisuje, jak povolit starší protokoly TLS (TLS 1,0 a 1,1) a jak používat starší šifrovací sady pro podporu dalších protokolů na webu a rolích pracovních procesů cloudové služby v systému Windows 2019 Server. 
 
-Chápeme, že zatímco podnikáme kroky k odsuzování TLS 1.0 a TLS 1.1, naši zákazníci možná budou muset podporovat starší protokoly a šifrovací sady, dokud nebudou moci plánovat své vyřazení.  I když nedoporučujeme opětovné povolení těchto starších hodnot, poskytujeme pokyny, které zákazníkům pomohou. Doporučujeme zákazníkům vyhodnotit riziko regrese před implementací změny popsané v tomto článku. 
+Chápeme, že při provádění kroků k vyřazení TLS 1,0 a TLS 1,1 můžou naši zákazníci potřebovat podporu starších protokolů a šifrovacích sad, dokud je nemůžou naplánovat jejich vyřazení.  I když tyto starší hodnoty nedoporučujeme znovu povolit, poskytujeme pokyny pro pomoc zákazníkům. Zákazníkům doporučujeme, aby před implementací změn uvedených v tomto článku vyhodnotili riziko regrese. 
 
 > [!NOTE]
-> Verze Host OS Family 6 vynucuje TLS 1.2 explicitním zakázáním TLS 1.0 a 1.1 a definováním konkrétní sady šifrovacích sad. Pro více informací o rodinách hostovaného operačního systému viz [Host OS vydání novinky](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases)
+> Vydání verze s operačním systémem Host 6 vynutila TLS 1,2 tím, že explicitně zakáže TLS 1,0 a 1,1 a definuje konkrétní sadu šifrovacích sad. Další informace o rodinách hostovaných operačních systémů najdete v článku [novinky pro vydání hostovaného operačního systému](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases)
 
 
-## <a name="dropping-support-for-tls-10-tls-11-and-older-cipher-suites"></a>Upuštění od podpory tls 1.0, TLS 1.1 a starších šifrovacích sad 
-Na podporu našeho závazku používat nejlepší šifrování ve své třídě společnost Microsoft oznámila plány na zahájení migrace z TLS 1.0 a 1.1 v červnu 2017.   Od tohoto počátečního oznámení společnost Microsoft oznámila, že má v první polovině roku 2020 zakázat zabezpečení transportní vrstvy (TLS) 1.0 a 1.1 v podporovaných verzích aplikací Microsoft Edge a Internet Explorer 11.  Podobná oznámení společností Apple, Google a Mozilla označují směr, kterým se toto odvětví ubírá.   
+## <a name="dropping-support-for-tls-10-tls-11-and-older-cipher-suites"></a>Vyřazení podpory pro TLS 1,0, TLS 1,1 a starší šifrovací sady 
+V případě podpory našeho úsilí o použití vysoce integrovaného šifrování je Microsoft oznámil plán na zahájení migrace mimo TLS 1,0 a 1,1 v červnu 2017.   Od tohoto počátečního oznámení společnost Microsoft oznámila náš záměr zakázat zabezpečení TLS (Transport Layer Security) 1,0 a 1,1 ve výchozím nastavení v podporovaných verzích Microsoft Edge a Internet Exploreru 11 v první polovině sady 2020.  Podobná oznámení od společnosti Apple, Google a Mozilla označují směr, ve kterém se odvětví zaznamenalo.   
 
-Další informace najdete [v tématu Příprava na TLS 1.2 v Microsoft Azure.](https://azure.microsoft.com/updates/azuretls12/)
+Další informace najdete v tématu [Příprava TLS 1,2 v Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
 
 ## <a name="tls-configuration"></a>Konfigurace TLS  
-Bitová kopie cloudového serveru Windows Server 2019 je nakonfigurována s tls 1.0 a TLS 1.1 zakázáno na úrovni registru. To znamená, že aplikace nasazené do této verze systému Windows a pomocí zásobníku systému Windows pro vyjednávání TLS nepovolí komunikaci TLS 1.0 a TLS 1.1.   
+Bitová kopie Windows serveru 2019 cloudového serveru je nakonfigurovaná s TLS 1,0 a TLS 1,1 disabled na úrovni registru. To znamená, že aplikace nasazené do této verze systému Windows a použití služby Windows Stack pro vyjednávání TLS nebudou umožňovat komunikaci TLS 1,0 a TLS 1,1.   
 
-Server je také dodáván s omezenou sadou šifrovacích sad: 
+Na serveru se nachází také omezená sada šifrovacích sad: 
 
 ```
     TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 
@@ -51,9 +51,9 @@ Server je také dodáván s omezenou sadou šifrovacích sad:
     TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 
 ```
 
-## <a name="step-1-create-the-powershell-script-to-enable-tls-10-and-tls-11"></a>Krok 1: Vytvoření skriptu Prostředí PowerShell pro povolení TLS 1.0 a TLS 1.1 
+## <a name="step-1-create-the-powershell-script-to-enable-tls-10-and-tls-11"></a>Krok 1: Vytvoření skriptu PowerShellu pro povolení TLS 1,0 a TLS 1,1 
 
-Následující kód použijte jako příklad k vytvoření skriptu, který umožňuje starší protokoly a šifrovací sady. Pro účely této dokumentace bude tento skript pojmenován: **TLSsettings.ps1**. Uložte tento skript na místní plochu pro snadný přístup v pozdějších krocích. 
+Následující kód použijte jako příklad k vytvoření skriptu, který umožňuje použití starších protokolů a šifrovacích sad. Pro účely této dokumentace bude tento skript název: **TLSsettings. ps1**. Uložte tento skript na místní plochu, abyste měli snadný přístup v pozdějších krocích. 
 
 
 ```Powershell
@@ -273,9 +273,9 @@ If ($reboot) {
 }
 ```
 
-## <a name="step-2-create-a-command-file"></a>Krok 2: Vytvoření souboru příkazů 
+## <a name="step-2-create-a-command-file"></a>Krok 2: vytvoření souboru příkazů 
 
-Vytvořte soubor CMD s názvem **RunTLSSettings.cmd** pomocí níže uvedeného. Uložte tento skript na místní plochu pro snadný přístup v pozdějších krocích. 
+Pomocí níže uvedeného příkazu vytvořte soubor CMD s názvem **RunTLSSettings. cmd** . Uložte tento skript na místní plochu, abyste měli snadný přístup v pozdějších krocích. 
 
 ```cmd
 SET LOG_FILE="%TEMP%\StartupLog.txt"
@@ -300,9 +300,9 @@ EXIT /B %ERRORLEVEL%
 
 ```
 
-## <a name="step-3-add-the-startup-task-to-the-roles-service-definition-csdef"></a>Krok 3: Přidání úlohy spuštění do definice služby role (csdef) 
+## <a name="step-3-add-the-startup-task-to-the-roles-service-definition-csdef"></a>Krok 3: Přidejte úlohu po spuštění do definice služby role (csdef). 
 
-Přidejte následující úryvek do existujícího definičního souboru služby. 
+Do existujícího souboru definice služby přidejte následující fragment kódu. 
 
 ```
     <Startup> 
@@ -311,7 +311,7 @@ Přidejte následující úryvek do existujícího definičního souboru služby
     </Startup> 
 ```
 
-Zde je příklad, který ukazuje roli pracovního procesu i webovou roli. 
+Tady je příklad, který ukazuje roli pracovního procesu i webovou roli. 
 
 ```
 <?xmlversion="1.0"encoding="utf-8"?> 
@@ -343,25 +343,25 @@ Zde je příklad, který ukazuje roli pracovního procesu i webovou roli.
 
 ## <a name="step-4-add-the-scripts-to-your-cloud-service"></a>Krok 4: Přidání skriptů do cloudové služby 
 
-1) V sadě Visual Studio klikněte pravým tlačítkem myši na webovou roli nebo workerrole
-2) Vyberte **Přidat**.
+1) V aplikaci Visual Studio klikněte pravým tlačítkem myši na webrole nebo role pracovního procesu
+2) Vyberte **Přidat**
 3) Vybrat **existující položku**
-4) V průzkumníku souborů přejděte na plochu, na které jste uložili soubory **TLSsettings.ps1** a **RunTLSSettings.cmd** 
-5) Vyberte dva soubory, které chcete přidat do projektu cloudových služeb.
+4) V Průzkumníku souborů přejděte do počítače, kam jste uložili soubory **TLSsettings. ps1** a **RunTLSSettings. cmd.** 
+5) Vyberte dva soubory, které chcete přidat do projektu Cloud Services
 
-## <a name="step-5-enable-copy-to-output-directory"></a>Krok 5: Povolit kopírování do výstupního adresáře
+## <a name="step-5-enable-copy-to-output-directory"></a>Krok 5: povolení kopírování do výstupního adresáře
 
-Chcete-li zajistit, aby byly skripty nahrány při každé aktualizaci odeslané z aplikace Visual Studio, je třeba nastavit *nastavení Kopírovat do výstupního adresáře* na *kopírovat vždy*
+Chcete-li zajistit, aby se skripty nahrály pomocí každé aktualizace nabízené ze sady Visual Studio, je třeba nastavit *kopírování do výstupního adresáře* *vždy na Kopírovat* .
 
-1) V části Vaše role WebRole nebo WorkerRole klikněte pravým tlačítkem myši na soubor RunTLSSettings.cmd
+1) V rámci vaší webrole nebo role pracovního procesu klikněte pravým tlačítkem na RunTLSSettings. cmd.
 2) Vybrat **vlastnosti**
-3) Na kartě vlastností *změňte možnost Kopírovat do výstupního adresáře* na *Kopírovat vždy"*
-4) Opakování kroků pro **tlssettings.ps1**
+3) Na kartě Vlastnosti změňte u možnosti *Kopírovat do výstupního adresáře* možnost *Kopírovat vždy "*
+4) Opakujte kroky pro **TLSsettings. ps1**
 
-## <a name="step-6-publish--validate"></a>Krok 6: Publikování & ověření
+## <a name="step-6-publish--validate"></a>Krok 6: publikování & ověřování
 
-Teď, když byly výše uvedené kroky dokončeny, publikujte aktualizaci stávající cloudové služby. 
+Teď, když jste výše uvedené kroky dokončili, publikujte aktualizaci do stávající cloudové služby. 
 
-[Pomocí slabů můžete](https://www.ssllabs.com/) ověřit stav TLS koncových bodů 
+[SSLLabs](https://www.ssllabs.com/) můžete použít k ověření stavu TLS koncových bodů. 
 
  

@@ -1,89 +1,89 @@
 ---
-title: Dopad využití přehledů aplikací Azure | Dokumenty Microsoftu
-description: Analyzujte, jaký by mohly mít různé vlastnosti vliv na míru konverze pro části aplikací.
+title: Dopad využití Azure Application Insights | Dokumentace Microsoftu
+description: Analyzujte, jak různé vlastnosti potenciálně ovlivňují sazby za převod pro části vašich aplikací.
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 01/08/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 787221c4df3f06029d19ee779a28bb763723f27d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671031"
 ---
-# <a name="impact-analysis-with-application-insights"></a>Analýza dopadů pomocí přehledů aplikací
+# <a name="impact-analysis-with-application-insights"></a>Analýza dopadu pomocí Application Insights
 
-Impact analyzuje, jak doba načítání a další vlastnosti ovlivňují míru konverze pro různé části aplikace. Přesněji řečeno, zjistí, jak **jakákoli dimenze** zobrazení **stránky**, **vlastní události**nebo **požadavku** ovlivňuje použití jiného zobrazení **stránky** nebo vlastní **události**. 
+Dopad analyzuje způsob, jakým doba načítání a další vlastnosti ovlivňují přepočítací poměry pro různé části aplikace. Chcete-li přesněji umístit, zjistí, jak **libovolná dimenze** **zobrazení stránky**, **vlastní událost**nebo **žádost** ovlivňuje použití jiného **zobrazení stránky** nebo **vlastní události**. 
 
-![Nástroj pro dopad](./media/usage-impact/0001-impact.png)
+![Dopad – nástroj](./media/usage-impact/0001-impact.png)
 
-## <a name="still-not-sure-what-impact-does"></a>Stále si nejste jisti, co impact dělá?
+## <a name="still-not-sure-what-impact-does"></a>Pořád si nejste jisti, jaký dopad to dělá?
 
-Jedním ze způsobů, jak si myslet, že impact je konečný nástroj pro vyrovnání argumentů s někým ve vašem týmu o tom, jak pomalost v některých aspektech vašeho webu ovlivňuje, zda uživatelé zůstanou. Zatímco uživatelé mohou tolerovat určité množství pomalosti, Impact vám poskytuje přehled o tom, jak nejlépe vyvážit optimalizaci a výkon, abyste maximalizovali konverzi uživatelů.
+Jedním ze způsobů, jak si představit dopad, je jako skutečný nástroj pro vyrovnávání argumentů s někým v týmu o tom, jak zpomalení v některých aspektech vaší lokality ovlivňují to, jestli se uživatelé můžou pohybovat. I když uživatelé můžou tolerovat určitý objem zpomalení, dopad vám poskytne přehled o tom, jak nejlépe vyvážit optimalizaci a výkon a maximalizovat převod uživatelů.
 
-Ale analýza výkonu je jen podmnožinou schopností Impactu. Vzhledem k tomu, že impact podporuje vlastní události a dimenze, odpovídání na otázky, jako je to, jak volba prohlížeče uživatele koreluje s různými mírami konverze, jsou vzdáleny jen pár kliknutí.
+Ale Analýza výkonu je jenom podmnožinou možností dopadu. Vzhledem k tomu, že dopad podporuje vlastní události a dimenze, odpovídáte na otázky, jako je například způsob, jakým se volba prohlížeče uživatelů koreluje s různými sazbami převodu, stačí jen pár kliknutí.
 
-![Konverze snímků obrazovky podle prohlížečů](./media/usage-impact/0004-browsers.png)
+![Převod snímků obrazovky prohlížeči](./media/usage-impact/0004-browsers.png)
 
 > [!NOTE]
-> Prostředek Application Insights musí obsahovat zobrazení stránek nebo vlastní události, aby bylo nutné používat nástroj Dopad. [Přečtěte si, jak nastavit aplikaci tak, aby automaticky shromažďovala zobrazení stránek pomocí sady Application Insights JavaScript SDK](../../azure-monitor/app/javascript.md). Také mějte na paměti, že vzhledem k tomu, že analyzujete korelaci, záleží na velikosti vzorku.
+> Váš Application Insights prostředek musí obsahovat zobrazení stránky nebo vlastní události pro použití nástroje dopad. [Naučte se, jak nastavit aplikaci tak, aby automaticky shromáždila zobrazení stránek pomocí Application Insights JavaScript SDK](../../azure-monitor/app/javascript.md). Pamatujte také na to, že vzhledem k tomu, že analyzujete korelační, záleží na velikosti vzorku.
 >
 >
 
-## <a name="is-page-load-time-impacting-how-many-people-convert-on-my-page"></a>Má doba načítání stránky vliv na to, kolik lidí na mé stránce konvertuje?
+## <a name="is-page-load-time-impacting-how-many-people-convert-on-my-page"></a>Je doba načítání stránky ovlivněna tím, kolik lidí převádí na moji stránku?
 
-Chcete-li začít odpovídat na otázky nástrojem dopad, zvolte počáteční zobrazení stránky, vlastní událost nebo požadavek.
+Chcete-li začít s odpovědí na dotazy pomocí nástroje dopad, vyberte počáteční zobrazení stránky, vlastní událost nebo žádost.
 
-![Nástroj pro dopad](./media/usage-impact/0002-dropdown.png)
+![Dopad – nástroj](./media/usage-impact/0002-dropdown.png)
 
-1. V rozevíracím seznamu Pro zobrazení stránky vyberte zobrazení **stránky.**
-2. Ponechte **analýzu, jak jeho** rozevírací seznam na výchozí výběr doba **trvání** (V tomto kontextu **Doba trvání** je alias pro čas **načítání stránky**.)
-3. Pokud **chcete, aby to mělo vliv na použití** rozevíracího souboru, vyberte vlastní událost. Tato událost by měla odpovídat prvku uživatelského rozhraní v zobrazení stránky, které jste vybrali v kroku 1.
+1. V rozevíracím seznamu **zobrazení stránky** vyberte zobrazení stránky.
+2. Ponechte možnost **analyzovat způsob, jakým** má rozevírací seznam výchozí výběr **doby trvání** (v **tomto kontextu je** alias pro **dobu načtení stránky**).
+3. Pro **vliv na použití** rozevíracího seznamu vyberte vlastní událost. Tato událost by měla odpovídat prvku uživatelského rozhraní v zobrazení stránky, které jste vybrali v kroku 1.
 
 ![Snímek obrazovky s výsledky](./media/usage-impact/0003-results.png)
 
-V tomto případě, když doba načítání **stránky produktu** zvyšuje míru konverze na kliknutí na **nákup produktu,** klesá. Na základě výše uvedeného rozdělení by optimální doba načítání stránky 3,5 sekundy mohla být zaměřena na dosažení potenciálního 55% míry konverze. Další vylepšení výkonu ke snížení doby načítání pod 3,5 sekundy aktuálně nekorelují s dalšími výhodami převodu.
+V této instanci jako čas načítání **stránky produktu** se zvýší poměr konverze na **zakoupený produkt** . Na základě výše uvedené distribuce by bylo možné cílit na optimální dobu trvání načítání stránky 3,5 sekund, aby se dosáhlo potenciálního poměru 55%%. Další vylepšení výkonu pro snížení doby načítání pod 3,5 sekund v současné době nekoreluje s dalšími výhodami převodu.
 
-## <a name="what-if-im-tracking-page-views-or-load-times-in-custom-ways"></a>Co když sleduji zobrazení stránek nebo načítám časy vlastními způsoby?
+## <a name="what-if-im-tracking-page-views-or-load-times-in-custom-ways"></a>Co když mi vlastním způsobem sleduje zobrazení stránek nebo dobu načítání?
 
-Impact podporuje standardní i vlastní vlastnosti a měření. Použij, co chceš. Místo doby trvání použijte filtry na primární a sekundární události získat konkrétnější.
+Dopad podporuje standardní i vlastní vlastnosti a měření. Použijte cokoli, co potřebujete. Místo doby trvání použijte filtry na primárních a sekundárních událostech, abyste získali konkrétnější informace.
 
-## <a name="do-users-from-different-countries-or-regions-convert-at-different-rates"></a>Konvertují uživatelé z různých zemí nebo oblastí různým tempem?
+## <a name="do-users-from-different-countries-or-regions-convert-at-different-rates"></a>Převádí se uživatelé z různých zemí nebo oblastí v různých tarifech?
 
-1. V rozevíracím seznamu Pro zobrazení stránky vyberte zobrazení **stránky.**
-2. Zvolte "Země nebo oblast" v **analýze toho, jak její** rozbalovací nabídky
-3. Pokud **chcete, aby to mělo vliv na použití** rozevíracího souboru, vyberte vlastní událost, která odpovídá prvku uživatelského rozhraní v zobrazení stránky, které jste zvolili v kroku 1.
+1. V rozevíracím seznamu **zobrazení stránky** vyberte zobrazení stránky.
+2. Vyberte zemi nebo oblast v části **analyzovat způsob jejich** rozevíracího seznamu.
+3. Pro **vliv na použití** rozevíracího seznamu vyberte vlastní událost, která odpovídá prvku uživatelského rozhraní v zobrazení stránky, které jste zvolili v kroku 1.
 
-V tomto případě se výsledky již nevejdou do souvislého modelu osy x, jako tomu bylo v prvním příkladu. Místo toho je zobrazena vizualizace podobná segmentované trychtýři. Seřazením podle **využití** zobrazíte variantu konverze na vlastní událost na základě země nebo oblasti.
+V takovém případě se výsledky již nevejdou do souvislého modelu osy x stejně jako v prvním příkladu. Místo toho se zobrazí vizualizace podobná segmentaci trychtýře. Seřadit podle **využití** a zobrazit variaci převodu na vlastní událost na základě země nebo oblasti.
 
 
-## <a name="how-does-the-impact-tool-calculate-these-conversion-rates"></a>Jak nástroj dopad vypočítá tyto míry konverze?
+## <a name="how-does-the-impact-tool-calculate-these-conversion-rates"></a>Jak nástroj dopad vypočítá tyto přepočítací koeficienty?
 
-Pod kapotou se nástroj Impact spoléhá na [Pearsonův korelační koeficient](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient). Výsledky jsou vypočítány mezi -1 a 1 s -1 představující zápornou lineární korelaci a 1 představující kladnou lineární korelaci.
+V rámci digestoře nástroj dopady spoléhá na [korelační koeficient Pearsonova](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient). Výsledky jsou vypočítány mezi-1 a 1 s-1 představující negativní lineární korelaci a 1 představuje pozitivní lineární korelaci.
 
-Základní rozpis fungování analýzy dopadů je následující:
+Základní rozpis toho, jak analýza dopadů funguje, je následující:
 
-Let _A_ = zobrazení hlavní stránky/ vlastní událost/požadavek, který vyberete v prvním rozevíracím seznamu. (**Pro zobrazení stránky**).
+Nechť _A_ = hlavní zobrazení stránky/vlastní událost/požadavek, který jste vybrali v prvním rozevíracím seznamu. (**Pro zobrazení stránky**).
 
-Umožňuje _B_ = sekundární zobrazení stránky nebo vlastní událost, kterou vyberete (**má vliv na použití**).
+Nechť _B_ = sekundární zobrazení stránky a vlastní událost, kterou vyberete (**ovlivňuje použití**).
 
-Dopad se podívá na ukázku všech relací od uživatelů ve vybraném časovém rozsahu. Pro každou relaci hledá každý výskyt _A_.
+Dopad na ukázku všech relací od uživatelů ve vybraném časovém rozsahu. Pro každou relaci vyhledá všechny výskyty _._
 
-Relace jsou pak rozděleny do dvou různých druhů _podrem_ na základě jedné ze dvou podmínek:
+Relace se pak rozdělí do dvou různých druhů _podrelací_ na základě jedné ze dvou podmínek:
 
-- Převedená dílčí relace se skládá z relace končící událostí _B_ a zahrnuje všechny události _A,_ ke kterým dojde před _B_.
-- Nepřevedená podrelace nastane, když dojde ke všem _A_'s bez terminálu _B_.
+- Převedená subrelace se skládá z relace končící na událost _B_ a _zahrnuje všechny události, ke kterým_ dojde před _B_.
+- K nepřevedené podrelaci dojde, když _se_objeví vše bez terminálu _B_.
 
-Způsob výpočtu dopadu se nakonec liší v závislosti na tom, zda analyzujeme podle metriky nebo dimenze. Pro metriky jsou zprůměrovány všechny _a_v dílčí relaci. vzhledem k tomu, že pro rozměry přispívá hodnota každého _A_ _1/N_ k hodnotě přiřazené _b,_ kde _N_ je číslo _A_v podrelaci.
+Způsob, jakým se nakonec počítá dopad, se liší podle toho, jestli analyzujeme podle metriky nebo podle dimenze. Pro metriky jsou _A_v podrelaci průměrně. Vzhledem k tomu, že pro dimenze je hodnota každé _a_ přispívá _1/N_ do hodnoty přiřazené hodnotě _B_ , kde _N_ je _číslo v_podrelaci.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Chcete-li povolit možnosti využití, začněte odesílat [vlastní události](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) nebo [zobrazení stránek](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
-- Pokud už vlastní události nebo zobrazení stránek odesíláte, prozkoumejte nástroje využití a zjistěte, jak uživatelé vaši službu používají.
+- Chcete-li povolit prostředí používání, začněte odesílat [vlastní události](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) nebo [zobrazení stránek](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
+- Pokud jste už odeslali vlastní události nebo zobrazení stránky, prozkoumejte nástroje využití a zjistěte, jak uživatelé používají vaši službu.
     - [Trychtýře](usage-funnels.md)
     - [Uchovávání](usage-retention.md)
     - [Toky uživatele](usage-flows.md)
     - [Workbooks](../../azure-monitor/app/usage-workbooks.md)
-    - [Přidání kontextu uživatele](usage-send-user-context.md)
+    - [Přidat kontext uživatele](usage-send-user-context.md)

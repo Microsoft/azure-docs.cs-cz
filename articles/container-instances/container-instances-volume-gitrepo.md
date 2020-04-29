@@ -1,39 +1,39 @@
 ---
-title: Připojení svazku gitRepo do skupiny kontejnerů
-description: Přečtěte si, jak připojit svazek gitRepo pro klonování úložiště Git do instancí kontejneru
+title: Připojit svazek Gitrepo nepodporují ke skupině kontejnerů
+description: Naučte se připojit svazek Gitrepo nepodporují, abyste mohli klonovat úložiště Git do svých instancí kontejnerů.
 ms.topic: article
 ms.date: 06/15/2018
 ms.openlocfilehash: 405cacd7a1649f95640a8dabf476729e101d03f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78252091"
 ---
-# <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Připojení svazku gitRepo v instanci kontejneru Azure
+# <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Připojení svazku Gitrepo nepodporují v Azure Container Instances
 
-Přečtěte si, jak připojit svazek *gitRepo* ke klonování úložiště Git do instancí kontejneru.
+Naučte se připojit svazek *gitrepo nepodporují* , abyste mohli klonovat úložiště Git do svých instancí kontejnerů.
 
 > [!NOTE]
-> Připojení svazku *gitRepo* je v současné době omezeno na kontejnery Linuxu. Zatímco pracujeme na tom, aby všechny funkce do kontejnerů Systému Windows, můžete najít aktuální rozdíly platformy v [přehledu](container-instances-overview.md#linux-and-windows-containers).
+> Připojení svazku *gitrepo nepodporují* je aktuálně omezené na kontejnery Linux. Pracujeme na tom, abychom do kontejnerů Windows přenesli všechny funkce. aktuální rozdíly na platformách najdete v [přehledu](container-instances-overview.md#linux-and-windows-containers).
 
-## <a name="gitrepo-volume"></a>gitRepo svazek
+## <a name="gitrepo-volume"></a>Gitrepo nepodporují svazek
 
-Svazek *gitRepo* připojí adresář a naklonuje do něj zadané úložiště Git při spuštění kontejneru. Pomocí *gitRepo* svazek v instancích kontejneru, můžete se vyhnout přidání kódu pro to ve vašich aplikacích.
+Svazek *gitrepo nepodporují* připojí adresář a naklonuje zadané úložiště Git do něj při spuštění kontejneru. Pomocí svazku *gitrepo nepodporují* ve svých instancích kontejnerů se můžete vyhnout přidání kódu k tomu, abyste ho mohli použít ve svých aplikacích.
 
-Při připojení svazku *gitRepo* můžete nastavit tři vlastnosti pro konfiguraci svazku:
+Když připojíte svazek *gitrepo nepodporují* , můžete nastavit tři vlastnosti pro konfiguraci svazku:
 
 | Vlastnost | Požaduje se | Popis |
 | -------- | -------- | ----------- |
-| `repository` | Ano | Úplná adresa `http://` URL, včetně úložiště Git, které má být klonováno, včetně `https://`úložiště Git nebo jeho.|
-| `directory` | Ne | Adresář, do kterého by mělo být úložiště klonováno. Cesta nesmí obsahovat ani`..`začínat " ".  Pokud zadáte`.`" ", úložiště je klonováno do adresáře svazku. V opačném případě je úložiště Git naklonováno do podadresáře daného názvu v adresáři svazku. |
-| `revision` | Ne | Hash revize revize, která má být klonována. Pokud není zadán, `HEAD` revize je klonován. |
+| `repository` | Ano | Úplná adresa URL, včetně `http://` nebo `https://`, úložiště Git, které se má klonovat.|
+| `directory` | Ne | Adresář, do kterého má být úložiště klonováno. Cesta nesmí obsahovat ani začínat znakem`..`"".  Pokud zadáte "`.`", úložiště bude naklonováno do adresáře svazku. V opačném případě je úložiště Git naklonované do podadresáře daného názvu v rámci adresáře svazků. |
+| `revision` | Ne | Hodnota hash potvrzení revizí, která se má klonovat Pokud tento `HEAD` parametr nezadáte, je revize naklonována. |
 
-## <a name="mount-gitrepo-volume-azure-cli"></a>Připojení svazku gitRepo: Rozhraní příkazového příkazu Azure
+## <a name="mount-gitrepo-volume-azure-cli"></a>Připojit svazek Gitrepo nepodporují: Azure CLI
 
-Chcete-li připojit svazek gitRepo při nasazování instancí `--gitrepo-mount-path` kontejneru pomocí [rozhraní příkazu Azure CLI](/cli/azure), zadejte `--gitrepo-url` parametry a příkaz u vytvoření [kontejneru az.][az-container-create] Volitelně můžete zadat adresář v rámci svazku, do který chcete klonovat ,`--gitrepo-dir`a`--gitrepo-revision`hodnotu hash revize, která má být klonována , ( ).
+Pokud chcete při nasazování instancí kontejneru pomocí [Azure CLI](/cli/azure)připojit svazek gitrepo nepodporují, zadejte parametry `--gitrepo-url` a `--gitrepo-mount-path` do příkazu [AZ Container Create][az-container-create] . Volitelně můžete zadat adresář v rámci svazku, do kterého se má klonovat`--gitrepo-dir`(), a hodnotu hash potvrzení revize, která se má klonovat`--gitrepo-revision`().
 
-Tento příklad příkazklony Microsoft [aci-helloworld][aci-helloworld] ukázkové aplikace do `/mnt/aci-helloworld` v instanci kontejneru:
+Tento ukázkový příkaz naklonuje ukázkovou aplikaci Microsoft [ACI-HelloWorld][aci-helloworld] do `/mnt/aci-helloworld` v instanci kontejneru:
 
 ```azurecli-interactive
 az container create \
@@ -46,7 +46,7 @@ az container create \
     --gitrepo-mount-path /mnt/aci-helloworld
 ```
 
-Chcete-li ověřit, zda byl svazek gitRepo připojen, spusťte prostředí v kontejneru s [az kontejnerem exec][az-container-exec] a uveďte adresář:
+Pokud chcete ověřit, že se svazek Gitrepo nepodporují připojil, spusťte prostředí v kontejneru pomocí [AZ Container exec][az-container-exec] a uveďte adresář:
 
 ```azurecli
 az container exec --resource-group myResourceGroup --name hellogitrepo --exec-command /bin/sh
@@ -61,41 +61,41 @@ total 16
 drwxr-xr-x    2 root     root          4096 Apr 16 16:35 app
 ```
 
-## <a name="mount-gitrepo-volume-resource-manager"></a>Připojit gitRepo svazek: Správce prostředků
+## <a name="mount-gitrepo-volume-resource-manager"></a>Připojit svazek Gitrepo nepodporují: Správce prostředků
 
-Chcete-li připojit svazek gitRepo při nasazení instancí kontejneru `volumes` pomocí šablony `properties` Správce [prostředků Azure](/azure/templates/microsoft.containerinstance/containergroups), nejprve naplňte pole v části skupiny kontejnerů šablony. Potom pro každý kontejner ve skupině kontejnerů, ve kterém chcete připojit svazek *gitRepo,* naplňte `volumeMounts` pole v `properties` části definice kontejneru.
+Chcete-li při nasazování instancí kontejneru pomocí [šablony Azure Resource Manager](/azure/templates/microsoft.containerinstance/containergroups)připojit svazek gitrepo nepodporují, nejprve `volumes` pole vyplňte v části skupina `properties` kontejnerů v šabloně. Pak u každého kontejneru ve skupině kontejnerů, do kterého chcete připojit svazek *gitrepo nepodporují* , vyplňte `volumeMounts` pole v `properties` části definice kontejneru.
 
-Například následující šablona Správce prostředků vytvoří skupinu kontejnerů skládající se z jednoho kontejneru. Kontejner klonuje dvě úložiště GitHub určená bloky svazků *gitRepo.* Druhý svazek obsahuje další vlastnosti určující adresář, do který má být klonován, a hodnotu hash potvrzení konkrétní revize klonování.
+Například následující šablona Správce prostředků vytvoří skupinu kontejnerů skládající se z jednoho kontejneru. Kontejner klonuje dvě úložiště GitHubu zadaná v blocích svazku *gitrepo nepodporují* . Druhý svazek obsahuje další vlastnosti určující adresář, do kterého se má klonovat, a hodnotu hash potvrzení konkrétní revize, která se má klonovat.
 
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-gitrepo.json -->
 [!code-json[volume-gitrepo](~/azure-docs-json-samples/container-instances/aci-deploy-volume-gitrepo.json)]
 
-Výsledná adresářová struktura dvou klonovaných repo polí definovaných v předchozí šabloně je:
+Výsledná adresářová struktura dvou klonovaných úložišť definovaných v předchozí šabloně je:
 
 ```
 /mnt/repo1/aci-helloworld
 /mnt/repo2/my-custom-clone-directory
 ```
 
-Příklad nasazení instancí kontejneru pomocí šablony Azure Resource Manageru najdete v tématu [Nasazení skupin s více kontejnery v instanci kontejnerů Azure](container-instances-multi-container-group.md).
+Příklad nasazení instance kontejneru s Azure Resource Manager šablonou najdete v tématu [nasazení skupin více kontejnerů v Azure Container Instances](container-instances-multi-container-group.md).
 
-## <a name="private-git-repo-authentication"></a>Privátní ověřování úložiště Git
+## <a name="private-git-repo-authentication"></a>Soukromé ověření úložiště Git
 
-Chcete-li připojit svazek gitRepo pro soukromé úložiště Git, zadejte pověření v adrese URL úložiště. Pověření jsou obvykle ve formě uživatelského jména a osobní přístupový token (PAT), který uděluje přístup s vymezeným rozsahem do úložiště.
+Pokud chcete připojit svazek Gitrepo nepodporují pro privátní úložiště Git, zadejte přihlašovací údaje v adrese URL úložiště. Přihlašovací údaje jsou obvykle ve formě uživatelského jména a osobního přístupového tokenu (PAT), který uděluje oborový přístup k úložišti.
 
-Například parametr Azure `--gitrepo-url` CLI pro privátní úložiště GitHub se zobrazí podobně jako následující (kde "gituser" je uživatelské jméno GitHub a "abcdef1234fdsa4321abcdef" je osobní přístupový token uživatele):
+Například parametr Azure CLI `--gitrepo-url` pro privátní úložiště GitHub by se měl podobat následujícímu (kde "gituser" je uživatelské jméno GitHubu a "abcdef1234fdsa4321abcdef" je osobní přístupový token uživatele):
 
 ```console
 --gitrepo-url https://gituser:abcdef1234fdsa4321abcdef@github.com/GitUser/some-private-repository
 ```
 
-Pro úložiště Azure Repos Git zadejte libovolné uživatelské jméno (můžete použít "azurereposuser" jako v následujícím příkladu) v kombinaci s platným PAT:
+V případě Azure Repos úložiště Git zadejte libovolné uživatelské jméno (jako v následujícím příkladu můžete použít "azurereposuser") v kombinaci s platnou PAT:
 
 ```console
 --gitrepo-url https://azurereposuser:abcdef1234fdsa4321abcdef@dev.azure.com/your-org/_git/some-private-repository
 ```
 
-Další informace o tokenech osobního přístupu pro GitHub a Azure Repos najdete v následujících tématech:
+Další informace o tokenech osobních přístupů pro GitHub a Azure Repos najdete v následujících tématech:
 
 GitHub: [Vytvoření osobního přístupového tokenu pro příkazový řádek][pat-github]
 
@@ -103,11 +103,11 @@ Azure Repos: [Vytvoření osobních přístupových tokenů pro ověření pří
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak připojit další typy svazků v instanci kontejneru Azure:
+Naučte se připojit další typy svazků v Azure Container Instances:
 
 * [Připojení sdílené složky ve službě Azure Container Instances](container-instances-volume-azure-files.md)
-* [Připojení svazku emptyDir v instancích kontejnerů Azure](container-instances-volume-emptydir.md)
-* [Připojení tajného svazku v instancích kontejnerů Azure](container-instances-volume-secret.md)
+* [Připojení svazku emptyDir v Azure Container Instances](container-instances-volume-emptydir.md)
+* [Připojit tajný svazek v Azure Container Instances](container-instances-volume-secret.md)
 
 <!-- LINKS - External -->
 [aci-helloworld]: https://github.com/Azure-Samples/aci-helloworld

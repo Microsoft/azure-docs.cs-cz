@@ -1,6 +1,6 @@
 ---
-title: Plánování úloh s Azure IoT Hub (Python) | Dokumenty společnosti Microsoft
-description: Jak naplánovat úlohu služby Azure IoT Hub k vyvolání přímé metody na více zařízeních. Pomocí sad Azure IoT SDK pro Python implementovat aplikace simulovaných zařízení a aplikace služby ke spuštění úlohy.
+title: Plánování úloh pomocí Azure IoT Hub (Python) | Microsoft Docs
+description: Jak naplánovat úlohu Azure IoT Hub k vyvolání přímé metody na více zařízeních. Sady SDK Azure IoT pro Python slouží k implementaci aplikací simulovaného zařízení a aplikace služby ke spuštění úlohy.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -9,46 +9,46 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: robinsh
 ms.openlocfilehash: 1d721e89534c09a5572e5674796f28355f652165
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79527397"
 ---
-# <a name="schedule-and-broadcast-jobs-python"></a>Plánování a vysílání úloh (Python)
+# <a name="schedule-and-broadcast-jobs-python"></a>Úlohy plánování a vysílání (Python)
 
 [!INCLUDE [iot-hub-selector-schedule-jobs](../../includes/iot-hub-selector-schedule-jobs.md)]
 
-Azure IoT Hub je plně spravovaná služba, která umožňuje back-endové aplikaci vytvářet a sledovat úlohy, které plánují a aktualizují miliony zařízení.  Úlohy lze použít pro následující akce:
+Azure IoT Hub je plně spravovaná služba, která umožňuje aplikacím back-end vytvářet a sledovat úlohy, které naplánují a aktualizují miliony zařízení.  Úlohy lze použít pro následující akce:
 
 * Aktualizace požadovaných vlastností
 * Aktualizovat značky
-* Vyvolat přímé metody
+* Vyvolání přímých metod
 
-Koncepčně úloha zabalí jednu z těchto akcí a sleduje průběh provádění proti sadě zařízení, která je definována dotazem dvojčete zařízení.  Například back-endová aplikace může použít úlohu k vyvolání metody restartování na 10 000 zařízeních, určená dotazem dvojčete zařízení a naplánovaná v budoucnu.  Tato aplikace pak můžete sledovat průběh jako každé z těchto zařízení přijímat a spouštět metodu restartování.
+V koncepčním případě úloha obaluje jednu z těchto akcí a sleduje průběh provádění na základě sady zařízení, která je definována dotazem se zdvojeným zařízením.  Například aplikace back-end může použít úlohu k vyvolání metody restart na zařízeních 10 000, která je určená dotazem typu v budoucnosti a naplánována v budoucím čase.  Tato aplikace pak může sledovat průběh, protože každé zařízení obdrží a spustí metodu restartování.
 
-Další informace o jednotlivých funkcích najdete v těchto článcích:
+Další informace o každé z těchto možností najdete v těchto článcích:
 
-* Dvojče zařízení a vlastnosti: [Začínáme s dvojčaty zařízení](iot-hub-python-twin-getstarted.md) a [kurz: Jak používat vlastnosti dvojčete zařízení](tutorial-device-twins.md)
+* Vlákna a vlastnosti zařízení: [Začínáme s dvojitými zprávami](iot-hub-python-twin-getstarted.md) a [kurzem zařízení: jak používat vlastnosti se zdvojeným zařízením](tutorial-device-twins.md)
 
-* Přímé metody: [Průvodce vývojářem ioT Hubu - přímé metody](iot-hub-devguide-direct-methods.md) a [výuka: přímé metody](quickstart-control-device-python.md)
+* Přímé metody: [IoT Hub příručka pro vývojáře – přímé metody](iot-hub-devguide-direct-methods.md) a [kurz: přímé metody](quickstart-control-device-python.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 V tomto kurzu získáte informace o následujících postupech:
 
-* Vytvořte aplikaci simulovaného zařízení Pythonu, která má přímou metodu, která umožňuje **lockDoor**, který může být volán back-endem řešení.
+* Vytvořte aplikaci simulovaného zařízení v Pythonu, která má přímou metodu, která umožňuje **lockDoor**, kterou může volat back-end řešení.
 
-* Vytvořte konzolovou aplikaci Pythonu, která volá přímou metodu **lockDoor** v aplikaci simulovaného zařízení pomocí úlohy a aktualizuje požadované vlastnosti pomocí úlohy zařízení.
+* Vytvořte konzolovou aplikaci v Pythonu, která zavolá metodu **lockDoor** Direct v aplikaci simulovaného zařízení pomocí úlohy a aktualizuje požadované vlastnosti pomocí úlohy zařízení.
 
-Na konci tohoto kurzu máte dvě aplikace Pythonu:
+Na konci tohoto kurzu máte dvě aplikace v Pythonu:
 
-**simDevice.py**, který se připojuje k centru IoT s identitou zařízení a přijímá **lockDoor** přímou metodu.
+**simDevice.py**, který se připojí ke službě IoT Hub s identitou zařízení a přijímá metodu **lockDoor** Direct.
 
-**scheduleJobService.py**, který volá přímou metodu v aplikaci simulovaného zařízení a aktualizuje požadované vlastnosti dvojčete zařízení pomocí úlohy.
+**scheduleJobService.py**, která volá přímou metodu v aplikaci simulovaného zařízení a aktualizuje požadované vlastnosti pro vyplňování zařízení pomocí úlohy.
 
 > [!NOTE]
-> Sada **Azure IoT SDK pro Python** přímo nepodporuje funkce **úloh.** Místo toho tento kurz nabízí alternativní řešení využívající asynchronní vlákna a časovače. Další aktualizace najdete v seznamu funkcí **sady Service Client SDK** na stránce [Azure IoT SDK for Python.](https://github.com/Azure/azure-iot-sdk-python)
+> **Sada Azure IoT SDK pro Python** nepodporuje přímo funkce **úloh** . Místo toho tento kurz nabízí alternativní řešení, které využívá asynchronní vlákna a časovače. Další aktualizace najdete na stránce funkce **sady SDK klienta služby** na stránce [Azure IoT SDK pro Python](https://github.com/Azure/azure-iot-sdk-python) .
 >
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
@@ -61,23 +61,23 @@ Na konci tohoto kurzu máte dvě aplikace Pythonu:
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-new-device-in-the-iot-hub"></a>Registrace nového zařízení v centru IoT hub
+## <a name="register-a-new-device-in-the-iot-hub"></a>Registrace nového zařízení ve službě IoT Hub
 
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
 ## <a name="create-a-simulated-device-app"></a>Vytvoření aplikace simulovaného zařízení
 
-V této části vytvoříte konzolovou aplikaci Pythonu, která reaguje na přímou metodu volanou cloudem, která aktivuje simulovanou metodu **lockDoor.**
+V této části vytvoříte konzolovou aplikaci v Pythonu, která reaguje na přímou metodu volanou cloudem, která spustí simulovanou **lockDoor** metodu.
 
-1. Na příkazovém řádku spusťte následující příkaz k instalaci balíčku **azure-iot-device:**
+1. Na příkazovém řádku spusťte následující příkaz pro instalaci balíčku **Azure-IoT-Device** :
 
     ```cmd/sh
     pip install azure-iot-device
     ```
 
-2. Pomocí textového editoru vytvořte nový **soubor simDevice.py** v pracovním adresáři.
+2. Pomocí textového editoru vytvořte nový soubor **simDevice.py** v pracovním adresáři.
 
-3. Na začátek `import` **souboru simDevice.py** přidejte následující příkazy a proměnné. Nahraďte `deviceConnectionString` připojovacím řetězcem zařízení, které jste vytvořili výše:
+3. Na začátek souboru `import` **simDevice.py** přidejte následující příkazy a proměnné. Nahraďte `deviceConnectionString` připojovacím řetězcem zařízení, které jste vytvořili výše:
 
     ```python
     import threading
@@ -87,7 +87,7 @@ V této části vytvoříte konzolovou aplikaci Pythonu, která reaguje na pří
     CONNECTION_STRING = "{deviceConnectionString}"
     ```
 
-4. Přidejte následující funkci zpětného volání pro zpracování **lockDoor** metoda:
+4. Přidejte následující zpětné volání funkce pro zpracování metody **lockDoor** :
 
     ```python
     def lockdoor_listener(client):
@@ -102,7 +102,7 @@ V této části vytvoříte konzolovou aplikaci Pythonu, která reaguje na pří
             client.send_method_response(method_response)
     ```
 
-5. Přidejte další funkce zpětnévolání pro zpracování aktualizace dvojčat zařízení:
+5. Přidejte další zpětné volání funkce pro zpracování aktualizací s dvojitým voláním zařízení:
 
     ```python
     def twin_update_listener(client):
@@ -113,7 +113,7 @@ V této části vytvoříte konzolovou aplikaci Pythonu, která reaguje na pří
             print (patch)
     ```
 
-6. Přidejte následující kód pro registraci obslužné rutiny pro metodu **lockDoor.** Také zahrnují `main` rutinní:
+6. Přidejte následující kód pro registraci obslužné rutiny pro metodu **lockDoor** . Zahrňte také `main` rutinu:
 
     ```python
     def iothub_jobs_sample_run():
@@ -144,49 +144,49 @@ V této části vytvoříte konzolovou aplikaci Pythonu, která reaguje na pří
         iothub_jobs_sample_run()
     ```
 
-7. Uložte a zavřete **soubor simDevice.py.**
+7. Uložte a zavřete soubor **simDevice.py** .
 
 > [!NOTE]
-> Za účelem zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu byste měli implementovat zásady opakování (například exponenciální backoff), jak je navrženo v článku [Přechodné zpracování chyb](/azure/architecture/best-practices/transient-faults).
+> Za účelem zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu byste měli implementovat zásady opakování (například exponenciální omezení rychlosti), jak je navrženo v článku, [zpracování přechodných chyb](/azure/architecture/best-practices/transient-faults).
 >
 
-## <a name="get-the-iot-hub-connection-string"></a>Získání připojovacího řetězce centra IoT hub
+## <a name="get-the-iot-hub-connection-string"></a>Získání připojovacího řetězce centra IoT Hub
 
-V tomto článku vytvoříte back-endovou službu, která vyvolá přímou metodu na zařízení a aktualizuje dvojče zařízení. Služba potřebuje oprávnění **připojení služby** k volání přímé metody na zařízení. Služba také potřebuje oprávnění **ke čtení a** **zápisu registru** k čtení a zápisu registru identity. Neexistuje žádná výchozí zásada sdíleného přístupu, která obsahuje pouze tato oprávnění, takže je třeba ji vytvořit.
+V tomto článku vytvoříte back-end službu, která vyvolá přímou metodu na zařízení a aktualizuje její dvojitou hodnotu. Služba potřebuje ke volání přímé metody na zařízení oprávnění **služby Connect** . Služba také potřebuje oprávnění **pro čtení** a **zápis** do registru ke čtení a zápisu registru identit. Nejsou k dispozici žádné výchozí zásady sdíleného přístupu, které obsahují pouze tato oprávnění, takže je třeba ji vytvořit.
 
-Chcete-li vytvořit zásadu sdíleného přístupu, která uděluje oprávnění **služby connect**, **číst v registru**a získat připojovací řetězec pro tuto zásadu, postupujte takto: **registry write**
+Chcete-li vytvořit zásadu sdíleného přístupu, která uděluje oprávnění **k zápisu služby**, **čtení registru**a **zápisu do registru** , a k získání připojovacího řetězce pro tuto zásadu, postupujte podle následujících kroků:
 
-1. Otevřete své centrum IoT hub na [webu Azure Portal](https://portal.azure.com). Nejjednodušší způsob, jak se dostat do centra IoT, je vybrat **skupiny prostředků**, vybrat skupinu prostředků, kde se nachází vaše centrum IoT, a pak vybrat centrum IoT hub ze seznamu prostředků.
+1. Otevřete Centrum IoT v [Azure Portal](https://portal.azure.com). Nejjednodušší způsob, jak se dostat do služby IoT Hub, je vybrat **skupiny prostředků**, vybrat skupinu prostředků, ve které se nachází vaše centrum IoT, a pak ze seznamu prostředků vybrat centrum IoT.
 
-2. V levém podokně centra IoT hub vyberte **Zásady sdíleného přístupu**.
+2. V levém podokně Centra IoT vyberte **zásady sdíleného přístupu**.
 
 3. V horní nabídce nad seznamem zásad vyberte **Přidat**.
 
-4. V podokně **Přidat zásady sdíleného přístupu** zadejte popisný název zásady. například: *serviceAndRegistryReadWrite*. V části **Oprávnění**vyberte **možnost Připojení služby** a **zápis registru** **(čtení registru** je automaticky vybráno, když vyberete zápis **registru).** Pak vyberte **Vytvořit**.
+4. V podokně **Přidat zásady sdíleného přístupu** zadejte popisný název zásady. například: *serviceAndRegistryReadWrite*. V části **oprávnění**vyberte **Služba připojení** a **zápis do registru** (při výběru **zápisu do registru**se automaticky vybere možnost**čtení** z registru). Pak vyberte **vytvořit**.
 
-    ![Ukázka přidání nové zásady sdíleného přístupu](./media/iot-hub-python-python-schedule-jobs/add-policy.png)
+    ![Ukázat, jak přidat nové zásady sdíleného přístupu](./media/iot-hub-python-python-schedule-jobs/add-policy.png)
 
-5. V podokně **Zásady sdíleného přístupu** vyberte novou zásadu ze seznamu zásad.
+5. Zpátky v podokně **zásady sdíleného přístupu** vyberte ze seznamu zásad novou zásadu.
 
-6. V části **Sdílené přístupové klávesy**vyberte ikonu kopírování **pro připojovací řetězec – primární klíč** a uložte hodnotu.
+6. V části **sdílené přístupové klíče**vyberte ikonu kopírování pro **připojovací řetězec – primární klíč** a uložte hodnotu.
 
-    ![Zobrazit, jak načíst připojovací řetězec](./media/iot-hub-python-python-schedule-jobs/get-connection-string.png)
+    ![Zobrazit způsob načtení připojovacího řetězce](./media/iot-hub-python-python-schedule-jobs/get-connection-string.png)
 
-Další informace o zásadách a oprávněních sdíleného přístupu centra IoT Hub najdete [v tématu Řízení přístupu a oprávnění](./iot-hub-devguide-security.md#access-control-and-permissions).
+Další informace o zásadách a oprávněních sdíleného přístupu IoT Hub najdete v tématu [řízení přístupu a oprávnění](./iot-hub-devguide-security.md#access-control-and-permissions).
 
-## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>Naplánujte úlohy pro volání přímé metody a aktualizaci vlastností dvojčete zařízení
+## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>Plánování úloh pro volání přímé metody a aktualizace vlastností vlákna zařízení
 
-V této části vytvoříte konzolovou aplikaci Pythonu, která iniciuje vzdálené **lockDoor** na zařízení pomocí přímé metody a také aktualizuje požadované vlastnosti dvojčete zařízení.
+V této části vytvoříte konzolovou aplikaci v Pythonu, která iniciuje vzdálenou **lockDoor** na zařízení pomocí přímé metody a také aktualizuje požadované vlastnosti pro vynechání zařízení.
 
-1. Na příkazovém řádku spusťte následující příkaz pro instalaci balíčku **azure-iot-hub:**
+1. Na příkazovém řádku spusťte následující příkaz pro instalaci balíčku **Azure-IoT-Hub** :
 
     ```cmd/sh
     pip install azure-iot-hub
     ```
 
-2. Pomocí textového editoru vytvořte nový **soubor scheduleJobService.py** v pracovním adresáři.
+2. Pomocí textového editoru vytvořte nový soubor **scheduleJobService.py** v pracovním adresáři.
 
-3. Na začátek `import` **souboru scheduleJobService.py** přidejte následující příkazy a proměnné. Nahraďte `{IoTHubConnectionString}` zástupný symbol připojovacím řetězcem centra IoT, který jste dříve zkopírovali v [připojovacím řetězci Centra IoT](#get-the-iot-hub-connection-string). Nahraďte `{deviceId}` zástupný symbol ID zařízení, které jste [zaregistrovali, zaregistrujte nové zařízení v centru IoT](#register-a-new-device-in-the-iot-hub):
+3. Na začátek souboru `import` **scheduleJobService.py** přidejte následující příkazy a proměnné. `{IoTHubConnectionString}` Zástupný symbol nahraďte připojovacím řetězcem IoT Hub, který jste zkopírovali dříve v [části získání připojovacího řetězce centra IoT Hub](#get-the-iot-hub-connection-string). `{deviceId}` Zástupný symbol nahraďte ID zařízení, které jste zaregistrovali v [části registrace nového zařízení ve službě IoT Hub](#register-a-new-device-in-the-iot-hub):
 
     ```python
     import sys
@@ -218,7 +218,7 @@ V této části vytvoříte konzolovou aplikaci Pythonu, která iniciuje vzdále
         return len(query_result.items)
     ```
 
-5. Přidejte následující metody pro spuštění úloh, které volají přímou metodu a dvojče zařízení:
+5. Přidejte následující metody pro spuštění úloh volajících přímo metodu a zařízení s dvojitým voláním:
 
     ```python
     def device_method_job(job_id, device_id, wait_time, execution_time):
@@ -254,7 +254,7 @@ V této části vytvoříte konzolovou aplikaci Pythonu, která iniciuje vzdále
             print ( "Device twin updated." )
     ```
 
-6. Přidejte následující kód pro naplánování úloh a aktualizaci stavu úlohy. Také zahrnují `main` rutinní:
+6. Přidejte následující kód pro naplánování úloh a aktualizaci stavu úlohy. Zahrňte také `main` rutinu:
 
     ```python
     def iothub_jobs_sample_run():
@@ -309,32 +309,32 @@ V této části vytvoříte konzolovou aplikaci Pythonu, která iniciuje vzdále
         iothub_jobs_sample_run()
     ```
 
-7. Uložte a zavřete **soubor scheduleJobService.py.**
+7. Uložte a zavřete soubor **scheduleJobService.py** .
 
 ## <a name="run-the-applications"></a>Spuštění aplikací
 
 Nyní můžete spustit aplikace.
 
-1. Na příkazovém řádku v pracovním adresáři spusťte následující příkaz a začněte naslouchat metodě přímého restartování:
+1. Na příkazovém řádku v pracovním adresáři spusťte následující příkaz, který zahájí naslouchání přímé metody restartování:
 
     ```cmd/sh
     python simDevice.py
     ```
 
-2. Na jiném příkazovém řádku v pracovním adresáři spusťte následující příkaz, který spustí úlohy, které zamknou dveře a aktualizují dvojče:
+2. Na jiném příkazovém řádku ve vašem pracovním adresáři spusťte následující příkaz, který aktivuje úlohy pro uzamknutí dveří a aktualizaci vlákna:
   
     ```cmd/sh
     python scheduleJobService.py
     ```
 
-3. Zobrazí se odpovědi zařízení na přímou metodu a dvojčata zařízení aktualizovat v konzole.
+3. V konzole se zobrazí odpovědi zařízení na přímou metodu a v případě aktualizace s dvojitým zařízením.
 
-    ![Ukázka úlohy ioT hubu 1 -- výstup zařízení](./media/iot-hub-python-python-schedule-jobs/sample1-deviceoutput.png)
+    ![Ukázka úlohy IoT Hub 1 – výstup zařízení](./media/iot-hub-python-python-schedule-jobs/sample1-deviceoutput.png)
 
-    ![Ukázka úlohy ioT Hub 2-- výstup zařízení](./media/iot-hub-python-python-schedule-jobs/sample2-deviceoutput.png)
+    ![Ukázka úlohy IoT Hub 2 – výstup zařízení](./media/iot-hub-python-python-schedule-jobs/sample2-deviceoutput.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste použili úlohu k naplánování přímé metody do zařízení a aktualizace vlastností dvojčete zařízení.
+V tomto kurzu jste použili úlohu k naplánování přímé metody na zařízení a aktualizaci vlastností vlákna zařízení.
 
-Chcete-li pokračovat v začínáme s IoT Hub a vzory správy zařízení, jako je například vzdálené přes aktualizaci firmwaru vzduchu, přečtěte si informace [o tom, jak provést aktualizaci firmwaru](tutorial-firmware-update.md).
+Pokud chcete pokračovat v seznámení se IoT Hub a způsoby správy zařízení, jako je například vzdálené prostřednictvím aktualizace firmwaru Air, přečtěte si téma [Jak provést aktualizaci firmwaru](tutorial-firmware-update.md).

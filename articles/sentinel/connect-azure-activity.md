@@ -1,6 +1,6 @@
 ---
-title: Připojení dat aktivit Azure k Azure Sentinelu | Dokumenty společnosti Microsoft
-description: Zjistěte, jak propojit data aktivit y Azure s Azure Sentinelem.
+title: Připojení dat o aktivitě Azure ke službě Azure Sentinel | Microsoft Docs
+description: Přečtěte si, jak propojit data o aktivitách Azure s Sentinel Azure.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,34 +16,34 @@ ms.workload: na
 ms.date: 03/22/2020
 ms.author: yelevin
 ms.openlocfilehash: 82dfcaf3394703aae531c828a1b96ad290bab798
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80124988"
 ---
-# <a name="connect-data-from-azure-activity-log"></a>Připojení dat z protokolu aktivit Azure
+# <a name="connect-data-from-azure-activity-log"></a>Připojit data z protokolu aktivit Azure
 
-Protokoly z [protokolu aktivit Azure](../azure-monitor/platform/platform-logs-overview.md) můžete streamovat do Azure Sentinelu jediným kliknutím. Protokol aktivit je protokol předplatného, který zaznamenává a zobrazuje události na úrovni předplatného v rámci Azure, od provozních dat Azure Resource Manageru až po aktualizace událostí stavu služby. Pomocí protokolu aktivit můžete určit "co, kdo a kdy" pro všechny operace zápisu (PUT, POST, DELETE) provedené na prostředky ve vašem předplatném. Můžete také zjistit stav operace a další relevantní vlastnosti. Protokol aktivit nezahrnuje operace čtení (GET) nebo operace pro prostředky, které používají model Classic/"RDFE". 
+Pomocí jediného kliknutí můžete streamovat protokoly z [Azure Activity log](../azure-monitor/platform/platform-logs-overview.md) do Azure Sentinel. Protokol aktivit je protokol předplatného, který zaznamenává a zobrazuje události na úrovni předplatného v rámci Azure, od Azure Resource Manager provozních dat až po aktualizace Service Healthch událostí. Pomocí protokolu aktivit můžete určit, kdo a kdy se má u prostředků ve vašem předplatném provést operace zápisu (PUT, POST, DELETE). Můžete si také přečíst stav operace a dalších relevantních vlastností. Protokol aktivit nezahrnuje operace čtení (GET) nebo operací pro prostředky, které používají model Classic/"RDFE". 
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Uživatel musí mít oprávnění přispěvatele do pracovního prostoru Log Analytics.
-- Váš uživatel musí mít oprávnění čtečky pro jakékoli předplatné, jehož protokoly, které chcete streamovat do Azure Sentinelu.
+- Uživatel musí mít oprávnění přispěvatele k pracovnímu prostoru Log Analytics.
+- Váš uživatel musí mít oprávnění čtenářů pro jakékoli předplatné, jehož protokoly chcete streamovat do služby Azure Sentinel.
 
-## <a name="set-up-the-azure-activity-connector"></a>Nastavení konektoru aktivity Azure
+## <a name="set-up-the-azure-activity-connector"></a>Nastavení konektoru aktivit Azure
 
-1. V navigační nabídce Azure Sentinel vyberte **Datové konektory**. Ze seznamu konektorů klikněte na **Aktivita Azure**a potom na tlačítko **Otevřít konektor stránky** v pravém dolním.
+1. V navigační nabídce Azure Sentinel vyberte **datové konektory**. V seznamu konektorů klikněte na **aktivita Azure**a pak na tlačítku pro **otevření konektoru** na pravé straně.
 
-2. Na kartě **Pokyny** klikněte na odkaz **Konfigurovat protokoly aktivit Azure >.**
+2. Na kartě **pokyny** klikněte na odkaz **Konfigurovat protokoly aktivit Azure >** .
 
-3. V podokně **protokolu aktivit Azure** vyberte předplatná, jejichž protokoly, které chcete streamovat do Azure Sentinelu. 
+3. V podokně **Protokol aktivit Azure** vyberte odběry, jejichž protokoly chcete streamovat do Azure Sentinel. 
 
-4. V podokně odběrů, které se otevře vpravo, klikněte na **připojit**.
+4. V podokně odběr, který se otevře vpravo, klikněte na **připojit**.
 
-5. Chcete-li použít příslušné schéma v Log Analytics pro `AzureActivity` výstrahy aktivit Azure, zadejte okno dotazu.
+5. Pokud chcete použít příslušné schéma v Log Analytics pro upozornění na aktivitu Azure, `AzureActivity` zadejte do okna dotazu.
 
 ## <a name="next-steps"></a>Další kroky
-V tomto dokumentu jste se dozvěděli, jak připojit protokol aktivit Azure k Azure Sentinelu. Další informace o Azure Sentinelu najdete v následujících článcích:
-- Přečtěte [si, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
-- Můžete začít zjišťovat hrozby pomocí Azure Sentinelu pomocí [integrovaných](tutorial-detect-threats-built-in.md) nebo [vlastních](tutorial-detect-threats-custom.md) pravidel.
+V tomto dokumentu jste zjistili, jak připojit protokol aktivit Azure ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
+- Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
+- Začněte s detekcí hrozeb pomocí služby Azure Sentinel a pomocí [předdefinovaných](tutorial-detect-threats-built-in.md) nebo [vlastních](tutorial-detect-threats-custom.md) pravidel.

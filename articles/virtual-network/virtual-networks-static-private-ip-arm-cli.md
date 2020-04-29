@@ -1,6 +1,6 @@
 ---
-title: Konfigurace privátních IP adres pro virtuální počítače – rozhraní příkazového příkazu Azure
-description: Zjistěte, jak nakonfigurovat privátní IP adresy pro virtuální počítače pomocí rozhraní příkazového řádku Azure (CLI).
+title: Konfigurace privátních IP adres pro virtuální počítače – Azure CLI
+description: Přečtěte si, jak nakonfigurovat privátní IP adresy pro virtuální počítače pomocí rozhraní příkazového řádku Azure (CLI).
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -16,13 +16,13 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: kumud
 ms.openlocfilehash: f4643aae0b28861f4ddb99d8dace749e62f930b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78199474"
 ---
-# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Konfigurace privátních IP adres pro virtuální počítač pomocí rozhraní příkazového příkazu Azure
+# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Konfigurace privátních IP adres pro virtuální počítač pomocí Azure CLI
 
 
 [!INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
@@ -30,18 +30,18 @@ ms.locfileid: "78199474"
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
 > [!NOTE]
-> Následující ukázkové příkazy Azure CLI očekávají existující jednoduché prostředí. Pokud chcete spustit příkazy tak, jak jsou zobrazeny v tomto dokumentu, nejprve vytvořte testovací prostředí popsané v [příkazu vytvořit virtuální síť](quick-create-cli.md).
+> Následující ukázkové příkazy Azure CLI očekávají existující jednoduché prostředí. Pokud chcete spustit příkazy, které se zobrazují v tomto dokumentu, nejdříve Sestavte testovací prostředí popsané v tématu [vytvoření virtuální](quick-create-cli.md)sítě.
 
-## <a name="specify-a-static-private-ip-address-when-creating-a-vm"></a>Určení statické privátní IP adresy při vytváření virtuálního počítačů
+## <a name="specify-a-static-private-ip-address-when-creating-a-vm"></a>Při vytváření virtuálního počítače zadejte statickou privátní IP adresu.
 
-Chcete-li vytvořit virtuální hovirtuální ho dohledu *dns01* v podsíti *frontendu* virtuální sítě s názvem *TestVNet* se statickou privátní IP adresou *192.168.1.101*, postupujte takto:
+Pokud chcete vytvořit virtuální počítač s názvem *DNS01* v podsíti *front-endu* virtuální sítě s názvem *TestVNet* se statickou privátní IP adresou *192.168.1.101*, proveďte následující kroky:
 
-1. Pokud jste tak ještě neučinili, nainstalujte a nakonfigurujte nejnovější [rozhraní příkazového příkazu Azure](/cli/azure/install-azure-cli) a přihlaste se k účtu Azure pomocí [přihlášení az](/cli/azure/reference-index).
+1. Pokud jste to ještě neudělali, nainstalujte a nakonfigurujte nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) a přihlaste se k účtu Azure pomocí [AZ Login](/cli/azure/reference-index).
 
-2. Vytvořte veřejnou IP adresu pro virtuální hosto v příkazu [az network public-ip create](/cli/azure/network/public-ip) . Seznam uvedený za výstupem vysvětluje použité parametry.
+2. Vytvořte veřejnou IP adresu virtuálního počítače pomocí příkazu [AZ Network Public-IP Create](/cli/azure/network/public-ip) . Seznam uvedený za výstupem vysvětluje použité parametry.
 
     > [!NOTE]
-    > Můžete chtít nebo potřebovat použít různé hodnoty pro vaše argumenty v tomto a následných krocích, v závislosti na vašem prostředí.
+    > V závislosti na vašem prostředí můžete chtít nebo potřebovat použít jiné hodnoty pro vaše argumenty v tomto a dalším postupu.
 
     ```azurecli
     az network public-ip create \
@@ -65,11 +65,11 @@ Chcete-li vytvořit virtuální hovirtuální ho dohledu *dns01* v podsíti *fro
     }
     ```
 
-   * `--resource-group`: Název skupiny prostředků, ve které chcete vytvořit veřejnou IP adresu.
-   * `--name`: Název veřejné ip adresy.
-   * `--location`: Oblast Azure, ve které chcete vytvořit veřejnou IP adresu.
+   * `--resource-group`: Název skupiny prostředků, ve které se má vytvořit veřejná IP adresa.
+   * `--name`: Název veřejné IP adresy.
+   * `--location`: Oblast Azure, ve které se má vytvořit veřejná IP adresa.
 
-3. Spusťte příkaz [az network nic create](/cli/azure/network/nic) a vytvořte síťovou síť ovou síť se statickou privátní IP adresou. Seznam uvedený za výstupem vysvětluje použité parametry. 
+3. Spuštěním příkazu [AZ Network nic Create](/cli/azure/network/nic) vytvořte síťovou kartu se statickou privátní IP adresou. Seznam uvedený za výstupem vysvětluje použité parametry. 
    
     ```azurecli
     az network nic create \
@@ -117,11 +117,11 @@ Chcete-li vytvořit virtuální hovirtuální ho dohledu *dns01* v podsíti *fro
     
     Parametry:
 
-    * `--private-ip-address`: Statická privátní IP adresa pro nic.
-    * `--vnet-name`: Název virtuální sítě, ve které chcete vytvořit nic.
-    * `--subnet`: Název podsítě, ve které chcete vytvořit síťovou síť.
+    * `--private-ip-address`: Statická privátní IP adresa pro síťovou kartu.
+    * `--vnet-name`: Název virtuální sítě, ve které chcete vytvořit síťovou kartu.
+    * `--subnet`: Název podsítě, ve které chcete vytvořit síťovou kartu.
 
-4. Spusťte příkaz [azure vm create](/cli/azure/vm/nic) a vytvořte virtuální počítač pomocí veřejné IP a nic vytvořené dříve. Seznam uvedený za výstupem vysvětluje použité parametry.
+4. Spuštěním příkazu [Azure VM Create](/cli/azure/vm/nic) vytvořte virtuální počítač pomocí veřejné IP adresy a síťového rozhraní, které jste vytvořili dříve. Seznam uvedený za výstupem vysvětluje použité parametry.
    
     ```azurecli
     az vm create \
@@ -149,15 +149,15 @@ Chcete-li vytvořit virtuální hovirtuální ho dohledu *dns01* v podsíti *fro
     }
     ```
    
-   Parametry jiné než základní [az vm vytvořit](/cli/azure/vm) parametry.
+   Parametry jiné než základní [AZ VM Create](/cli/azure/vm) Parameters.
 
-   * `--nics`: Název nic, ke kterému je připojen virtuální hod.
+   * `--nics`: Název síťového rozhraní, ke kterému je připojený virtuální počítač.
    
-Doporučujeme, abyste staticky nepřiřazovali privátní IP adresu přiřazenou virtuálnímu počítači Azure v rámci operačního systému virtuálního počítače, pokud to není nutné, například při [přiřazování více IP adres virtuálnímu počítači s Windows](virtual-network-multiple-ip-addresses-cli.md). Pokud privátní IP adresu v operačním systému nastavíte ručně, ujistěte se, že se jedná o stejnou adresu jako privátní IP adresa přiřazená [síťovému rozhraní](virtual-network-network-interface-addresses.md#change-ip-address-settings)Azure , jinak můžete ztratit připojení k virtuálnímu počítači. Přečtěte si další informace o nastavení [privátní IP adresy.](virtual-network-network-interface-addresses.md#private)
+Doporučuje se, abyste privátní IP adresu přiřazenou k virtuálnímu počítači Azure v operačním systému virtuálního počítače nepřiřadili staticky, pokud to není nutné, například při [přiřazování více IP adres k virtuálnímu počítači s Windows](virtual-network-multiple-ip-addresses-cli.md). Pokud ručně nastavíte privátní IP adresu v operačním systému, ujistěte se, že se jedná o stejnou adresu jako soukromá IP adresa přiřazená [síťovému rozhraní](virtual-network-network-interface-addresses.md#change-ip-address-settings)Azure, nebo můžete ztratit připojení k virtuálnímu počítači. Přečtěte si další informace o nastavení [privátních IP adres](virtual-network-network-interface-addresses.md#private) .
 
-## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a>Načtení informací o statické privátní IP adrese pro virtuální hosti
+## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a>Načtení statických informací o privátních IP adresách pro virtuální počítač
 
-Spusťte následující příkaz příkazu Azure CLI, abyste sledovali hodnoty pro *metodu alloc privátní IP* a *privátní IP adresu*:
+Spuštěním následujícího příkazu rozhraní příkazového řádku Azure Sledujte hodnoty pro *IP adresu alokace* a privátní IP *adresy*:
 
 ```azurecli
 az vm show -g TestRG -n DNS01 --show-details --query 'privateIps'
@@ -169,7 +169,7 @@ Očekávaný výstup:
 "192.168.1.101"
 ```
 
-Chcete-li zobrazit konkrétní ip informace o nic pro daný virtuální virtuální ms, dotaz na nic konkrétně:
+Pokud chcete zobrazit konkrétní informace o IP adrese síťového rozhraní pro daný virtuální počítač, Dotazujte se konkrétně na síťovou kartu:
 
 ```azurecli
 az network nic show \
@@ -190,15 +190,15 @@ Výstup bude podobný tomuto:
 }
 ```
 
-## <a name="remove-a-static-private-ip-address-from-a-vm"></a>Odebrání statické privátní IP adresy z virtuálního počítačů
+## <a name="remove-a-static-private-ip-address-from-a-vm"></a>Odebrání statické privátní IP adresy z virtuálního počítače
 
-Statickou privátní IP adresu nelze odebrat z nic v azure cli pro nasazení Azure Resource Manager. Musíte:
-- Vytvoření nové přenosné jizené mikiny, která používá dynamickou IP adresu
-- Nastavte nic na virtuálním počítači dělat nově vytvořené nic. 
+Nemůžete odebrat statickou privátní IP adresu z síťové karty v Azure CLI pro Azure Resource Manager nasazení. Musíte:
+- Vytvoření nové síťové karty, která používá dynamickou IP adresu
+- Nastavte síťové rozhraní na virtuálním počítači nově vytvořenou síťovou kartu. 
 
-Pokud chcete změnit nic pro virtuální hod použitý v předchozích příkazech, proveďte následující kroky:
+Chcete-li změnit síťovou kartu pro virtuální počítač použitý v předchozích příkazech, proveďte následující kroky:
 
-1. Spusťte příkaz **azure network nic create** a vytvořte novou síťovou síť pomocí dynamického přidělování IP adres s novou IP adresou. Protože není zadána žádná adresa IP, je metoda přidělení **Dynamic**.
+1. Spuštěním příkazu **Azure Network nic Create** vytvořte novou síťovou kartu pomocí dynamického přidělování IP adres s novou IP adresou. Vzhledem k tomu, že není zadána žádná IP adresa, je metoda přidělování **Dynamická**.
 
     ```azurecli
     az network nic create     \
@@ -243,7 +243,7 @@ Pokud chcete změnit nic pro virtuální hod použitý v předchozích příkaze
     }
     ```
 
-2. Spusťte příkaz **azure vm set** a změňte nic používanou virtuálním počítačem.
+2. Spuštěním příkazu **Azure VM set** změňte síťové rozhraní používané virtuálním počítačem.
    
     ```azurecli
    az vm nic set --resource-group TestRG --vm-name DNS01 --nics TestNIC2
@@ -262,8 +262,8 @@ Pokud chcete změnit nic pro virtuální hod použitý v předchozích příkaze
     ```
 
     > [!NOTE]
-    > Pokud je virtuální počítač dostatečně velký, aby měl více než jednu síťovou síťovou síťovou síťovou síť, **odstraňte** starou síťovou síťovou síťovou síťovou síťovou síťovou síťovou síťovou síťovou.
+    > Pokud je virtuální počítač dostatečně velký, aby měl více než jednu síťovou kartu, odstraňte starou síťovou kartu spuštěním příkazu **Azure Network nic Delete** .
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o správě [nastavení IP adres](virtual-network-network-interface-addresses.md).
+Přečtěte si informace o správě [nastavení IP adres](virtual-network-network-interface-addresses.md).

@@ -1,5 +1,5 @@
 ---
-title: Doporučení pro výkon – Databáze Azure pro MySQL
+title: Doporučení pro výkon – Azure Database for MySQL
 description: Tento článek popisuje funkci doporučení výkonu v Azure Database for MySQL
 author: ajlam
 ms.author: andrela
@@ -7,17 +7,17 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: c7779d82ddd6e5fd1bf7fcd983937ea6c10dab1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79537070"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mysql"></a>Doporučení k výkonu ve službě Azure Database for MySQL
 
-**Platí pro:** Databáze Azure pro MySQL 5.7
+**Platí pro:** Azure Database for MySQL 5,7
 
-Funkce Doporučení pro zvýšení výkonu analyzuje databáze a vytváří přizpůsobené návrhy pro zlepšení výkonu. Chcete-li vytvořit doporučení, analýza se zabývá různými charakteristikami databáze včetně schématu. Povolte [úložiště dotazů](concepts-query-store.md) na serveru, abyste mohli plně využívat funkci Doporučení pro výkon. Pokud je schéma výkonu vypnuto, zapnutí úložiště dotazů umožňuje performance_schema a podmnožinu nástrojů schématu výkonu požadovaných pro tuto funkci. Po implementaci jakékoli doporučení výkonu, měli byste otestovat výkon vyhodnotit dopad těchto změn.
+Funkce doporučení pro výkon analyzuje vaše databáze a vytváří přizpůsobené návrhy pro zlepšení výkonu. Při vytváření doporučení analyzuje tato analýza různé charakteristiky databáze, včetně schématu. Povolením [úložiště dotazů](concepts-query-store.md) na serveru můžete plně využít funkci doporučení pro výkon. Pokud je schéma výkonu VYPNUTé, zapnutí úložiště dotazů umožňuje performance_schema a podmnožinu nástrojů schématu výkonu vyžadovaných pro danou funkci. Po implementaci jakéhokoli doporučení výkonu byste měli testovat výkon a vyhodnotit dopad těchto změn.
 
 ## <a name="permissions"></a>Oprávnění
 
@@ -27,25 +27,25 @@ Pro spuštění funkce analýzy za použití funkce Doporučení k výkonu potř
 
 Funkce [Doporučení k výkonu](concepts-performance-recommendations.md) analyzuje úlohy na serveru, aby identifikoval indexy a případně zlepšil výkon.
 
-Otevřete **doporučení výkonu** z části **Inteligentní výkon** na panelu nabídek na stránce portálu Azure pro váš server MySQL.
+Otevřete **doporučení k výkonu** z části **inteligentní výkon** na panelu nabídek na stránce Azure Portal pro server MySQL.
 
 ![Úvodní stránka Doporučení k výkonu](./media/concepts-performance-recommendations/performance-recommendations-page.png)
 
-Vyberte **Analyzovat** a zvolte databázi, která zahájí analýzu. V závislosti na zatížení může dokončení analýzy trvat několik minut. Po dokončení analýzy se zobrazí oznámení na portálu. Analýza provádí hloubkové prozkoumání databáze. Doporučujeme provádět analýzy mimo špičku.
+Vyberte možnost **analyzovat** a zvolte databázi, která bude začínat analýzou. V závislosti na vašich úlohách může trvat několik minut, než se dokončí analýza. Po dokončení analýzy se zobrazí oznámení na portálu. Analýza provede důkladné přezkoumání vaší databáze. Doporučujeme, abyste provedli analýzu v době mimo špičku.
 
-V okně **Doporučení** se zobrazí seznam doporučení, pokud byly nalezeny a související ID dotazu, který vygeneroval toto doporučení. Pomocí ID dotazu můžete pomocí zobrazení [mysql.query_store](concepts-query-store.md#mysqlquery_store) získat další informace o dotazu.
+V okně **doporučení** se zobrazí seznam doporučení, pokud byla nalezena nějaká a související ID dotazu, které vygenerovalo toto doporučení. S ID dotazu můžete použít zobrazení [MySQL. query_store](concepts-query-store.md#mysqlquery_store) a získat další informace o dotazu.
 
-![Doporučení pro zvýšení výkonu nová stránka](./media/concepts-performance-recommendations/performance-recommendations-result.png)
+![Nová stránka s doporučeními pro výkon](./media/concepts-performance-recommendations/performance-recommendations-result.png)
 
-Doporučení nejsou automaticky použita. Chcete-li použít doporučení, zkopírujte text dotazu a spusťte jej z vybraného klienta. Nezapomeňte otestovat a sledovat vyhodnotit doporučení.
+Doporučení se nepoužívají automaticky. Pokud chcete doporučení použít, zkopírujte text dotazu a spusťte ho z vašeho klienta podle vlastního výběru. Nezapomeňte otestovat a monitorovat, abyste vyhodnotili doporučení.
 
 ## <a name="recommendation-types"></a>Typy doporučení
 
-V současné době jsou podporována pouze *vytvořit index* doporučení.
+V současné době se podporují jenom doporučení *Create index* .
 
-### <a name="create-index-recommendations"></a>Vytvořit doporučení rejstříku
+### <a name="create-index-recommendations"></a>Vytvořit doporučení indexu
 
-*Vytvořit index* doporučení navrhnout nové indexy urychlit nejčastěji spuštěné nebo časově náročné dotazy v zatížení. Tento typ doporučení vyžaduje, aby bylo povoleno [úložiště dotazů.](concepts-query-store.md) Úložiště dotazů shromažďuje informace o dotazu a poskytuje podrobné statistiky běhu dotazu a frekvence, které analýza používá k doporučení.
+Doporučení *vytvořit index* návrhy nových indexů vám umožní zrychlit nejčastěji spouštěné nebo časově náročné dotazy v zatížení. Tento typ doporučení vyžaduje, aby [úložiště dotazů](concepts-query-store.md) bylo povolené. Úložiště dotazů shromažďuje informace o dotazech a poskytuje podrobné běhové dotazy a statistické údaje o četnosti, které analýza používá, aby provedla doporučení.
 
 ## <a name="next-steps"></a>Další kroky
-- Další informace o [monitorování a ladění](concepts-monitoring.md) v Azure Database for MySQL.
+- Přečtěte si další informace o [monitorování a ladění](concepts-monitoring.md) v Azure Database for MySQL.

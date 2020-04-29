@@ -1,7 +1,7 @@
 ---
-title: Připojení k úložišti znalostí (preview) pomocí Power BI
+title: Připojení k znalostnímu obchodu (Preview) pomocí Power BI
 titleSuffix: Azure Cognitive Search
-description: Připojte úložiště znalostí (preview) Azure Cognitive Search s Power BI pro analýzu a průzkum.
+description: Připojte si Azure Kognitivní hledání Knowledge Store (Preview) s Power BI pro analýzu a průzkum.
 author: HeidiSteen
 ms.author: heidist
 manager: nitinme
@@ -9,85 +9,85 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.openlocfilehash: 4fd71a7f322cb2672eb485f17e4de2619a7c2d2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78270032"
 ---
-# <a name="connect-a-knowledge-store-with-power-bi"></a>Propojení úložiště znalostí s Power BI
+# <a name="connect-a-knowledge-store-with-power-bi"></a>Připojit znalostní bázi Knowledge Store s Power BI
 
 > [!IMPORTANT] 
-> Úložiště znalostí je v současné době ve verzi Public Preview. Funkce náhledu je k dispozici bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [Rozhraní REST API verze 2019-05-06-Preview](search-api-preview.md) poskytuje funkce náhledu. V současné době je omezená podpora portálu a žádná podpora sady .NET SDK.
+> Znalostní databáze je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API verze 2019-05-06-Preview](search-api-preview.md) poskytuje funkce ve verzi Preview. V současné době je omezená podpora portálu a žádná podpora sady .NET SDK.
 
-V tomto článku se dozvíte, jak se připojit k úložišti znalostí pomocí Power Query v aplikaci Power BI Desktop a prozkoumat ho. Můžete začít rychleji se šablonami nebo vytvořit vlastní řídicí panel od začátku.
+V tomto článku se dozvíte, jak se připojit k znalostnímu obchodu a prozkoumat ho pomocí Power Query v aplikaci Power BI Desktop. Můžete začít rychleji pracovat se šablonami nebo si vytvořit vlastní řídicí panel úplně od začátku.
 
-+ Postupujte podle kroků v [části Vytvoření úložiště znalostí na webu Azure Portal](knowledge-store-create-portal.md) nebo Vytvoření úložiště [znalostní hospo- účelem azure kognitivního vyhledávání pomocí rest](knowledge-store-create-rest.md) k vytvoření ukázkového úložiště znalostí použitého v tomto návodu. Budete také potřebovat název účtu Azure Storage, který jste použili k vytvoření úložiště znalostí, spolu s jeho přístupový klíč z portálu Azure.
++ Postupujte podle kroků v [části vytvoření znalostní báze ve Azure Portal](knowledge-store-create-portal.md) nebo [vytvořte službu Azure kognitivní hledání Knowledge Store pomocí REST](knowledge-store-create-rest.md) a vytvořte ukázkové úložiště Knowledge Store použité v tomto návodu. Také budete potřebovat název účtu Azure Storage, který jste použili k vytvoření obchodu Knowledge Store, a jeho přístupová klávesa z Azure Portal.
 
 + [Nainstalovaný Power BI Desktop](https://powerbi.microsoft.com/downloads/)
 
-## <a name="sample-power-bi-template---azure-portal-only"></a>Ukázková šablona Power BI – jenom portál Azure
+## <a name="sample-power-bi-template---azure-portal-only"></a>Ukázka Power BI šablony – pouze Azure Portal
 
-Při vytváření [úložiště znalostí pomocí portálu Azure](knowledge-store-create-portal.md)máte možnost stáhnout [šablonu Power BI](https://github.com/Azure-Samples/cognitive-search-templates) na druhé stránce Průvodce **importem dat.** Tato šablona poskytuje několik vizualizací, jako je WordCloud a Network Navigator, pro textový obsah. 
+Při vytváření [úložiště znalostí pomocí Azure Portal](knowledge-store-create-portal.md)máte možnost stahovat [šablonu Power BI](https://github.com/Azure-Samples/cognitive-search-templates) na druhé stránce průvodce **importem dat** . Tato šablona poskytuje několik vizualizací, jako jsou WordCloud a Network navigátor, pro textový obsah. 
 
-Klikněte na **Získat šablonu Power BI** na stránce Přidat kognitivní **dovednosti** a načtěte a stáhněte si šablonu z jejího veřejného umístění GitHubu. Průvodce upraví šablonu tak, aby odpovídala tvaru dat, jak je zachycen v projekcích úložiště znalostí určených v průvodci. Z tohoto důvodu se stažená šablona bude při každém spuštění průvodce lišit za předpokladu, že se budou řídit různými datovými vstupy a výběry dovedností.
+Kliknutím na **získat Power BI šablonu** na stránce **Přidat dovednosti pro rozpoznávání** načtěte a stáhněte šablonu z jejího veřejného umístění GitHubu. Průvodce upraví šablonu tak, aby odpovídala tvaru vašich dat, jak je zaznamenáno v projekcech služby Knowledge Store zadaných v průvodci. Z tohoto důvodu se šablona, kterou stáhnete, bude lišit při každém spuštění Průvodce za předpokladu různých vstupů dat a výběr dovedností.
 
-![Ukázka azure kognitivní vyhledávání Power BI šablony](media/knowledge-store-connect-power-bi/powerbi-sample-template-portal-only.png "Ukázková šablona Power BI")
+![Ukázka šablony Azure Kognitivní hledání Power BI](media/knowledge-store-connect-power-bi/powerbi-sample-template-portal-only.png "Ukázka šablony Power BI")
 
 > [!NOTE]
-> I když se šablona stáhne, když je průvodce v polovině letu, budete muset počkat, až se úložiště znalostí skutečně vytvoří v úložišti Azure Table, než ho budete moci použít.
+> I když je šablona stažena v době, kdy je průvodce v polovině letu, budete muset počkat, až bude úložiště znalostí ve službě Azure Table Storage skutečně vytvořeno, a teprve potom ho můžete použít.
 
 ## <a name="connect-with-power-bi"></a>Propojení s Power BI
 
-1. Spusťte Power BI Desktop a klikněte na **Získat data**.
+1. Spusťte Power BI Desktop a klikněte na **získat data**.
 
-1. V okně **Získat data** vyberte **Azure**a pak vyberte Azure **Table Storage**.
+1. V okně **získat data** vyberte **Azure**a pak vyberte **Azure Table Storage**.
 
 1. Klikněte na **Připojit**.
 
-1. Název **účtu nebo adresa URL**zadejte do účtu Azure Storage (úplná adresa URL se vytvoří za vás).
+1. V poli **název účtu nebo adresa URL**zadejte název účtu Azure Storage (bude vytvořena úplná adresa URL).
 
 1. Pokud se zobrazí výzva, zadejte klíč účtu úložiště.
 
-1. Vyberte tabulky obsahující hotel kontroluje data vytvořená v předchozích návodech. 
+1. Vyberte tabulky obsahující data o recenzích hotelu vytvořená předchozími návody. 
 
-   + Pro portál návod, názvy tabulek jsou *hotelReviewsSsDocument*, *hotelReviewsSsEntities*, *hotelReviewsSsKeyPhrases*, a *hotelReviewsSsPages*. 
+   + V návodu k portálu jsou názvy tabulek *hotelReviewsSsDocument*, *hotelReviewsSsEntities*, *hotelReviewsSsKeyPhrases*a *hotelReviewsSsPages*. 
    
-   + Pro rest návod, názvy tabulek jsou *hotelReviewsDocument*, *hotelReviewsPages*, *hotelReviewsKeyPhrases*a *hotelReviewsSentiment*.
+   + Pro návod REST jsou názvy tabulek *hotelReviewsDocument*, *hotelReviewsPages*, *hotelReviewsKeyPhrases*a *hotelReviewsSentiment*.
 
-1. Klepněte na tlačítko **Načíst**.
+1. Klikněte na **načíst**.
 
-1. Na horním pásu karet klikněte na **Upravit dotazy** a otevřete Power **Query Editor**.
+1. Na horním pásu karet kliknutím na **Upravit dotazy** otevřete **Editor Power Query**.
 
    ![Otevřít Power Query](media/knowledge-store-connect-power-bi/powerbi-edit-queries.png "Otevřít Power Query")
 
-1. Vyberte *hotelReviewsSsDocument*a potom odeberte sloupce *PartitionKey*, *RowKey*a *Timestamp.* 
-   ![Úpravy tabulek](media/knowledge-store-connect-power-bi/powerbi-edit-table.png "Úpravy tabulek")
+1. Vyberte *hotelReviewsSsDocument*a pak odstraňte sloupce *PartitionKey*, *RowKey*a *timestamp* . 
+   ![Upravit tabulky](media/knowledge-store-connect-power-bi/powerbi-edit-table.png "Upravit tabulky")
 
-1. Kliknutím na ikonu s protilehlými šipkami v pravé horní části tabulky rozbalte *obsah*. Po zobrazení seznamu sloupců vyberte všechny sloupce a odznačte sloupce začínající na metadata. Klepnutím na **tlačítko OK** zobrazíte vybrané sloupce.
+1. Kliknutím na ikonu s protilehlými šipkami v pravé horní části tabulky rozbalte *obsah*. Když se zobrazí seznam sloupců, vyberte všechny sloupce a pak zrušte výběr sloupců, které začínají na metadata. Kliknutím na tlačítko **OK** zobrazíte vybrané sloupce.
 
-   ![Úpravy tabulek](media/knowledge-store-connect-power-bi/powerbi-expand-content-table.png "Rozbalení obsahu")
+   ![Upravit tabulky](media/knowledge-store-connect-power-bi/powerbi-expand-content-table.png "Rozbalit obsah")
 
-1. Změňte datový typ pro následující sloupce klepnutím na ikonu ABC-123 v levém horním rohu sloupce.
+1. Kliknutím na ikonu ABC-123 v levém horním rohu sloupce změňte datový typ pro následující sloupce.
 
-   + Pro *soubor content.latitude* a *Content.longitude*vyberte **možnost Desetinné číslo**.
-   + V *části Content.reviews_date* a *Content.reviews_dateAdded*vyberte **možnost Datum a čas**.
+   + Pro položku *Content. Latitude* a *Content. Zeměpis*vyberte **desetinné číslo**.
+   + Pro *Content. reviews_date* a *Content. reviews_dateAdded*vyberte **Datum a čas**.
 
    ![Změna datových typů](media/knowledge-store-connect-power-bi/powerbi-change-type.png "Změna datových typů")
 
-1. Vyberte *hotelReviewsSsPages*a opakujte kroky 9 a 10, abyste odstranili sloupce a rozbalili *obsah*.
-1. Změňte datový typ pro *Content.SentimentScore* na **desítkové číslo**.
-1. Vyberte *hotelReviewsSsKeyPhrases* a opakujte kroky 9 a 10 odstranit sloupce a rozbalte *obsah*. Pro tuto tabulku nejsou žádné změny datového typu.
+1. Vyberte *hotelReviewsSsPages*a potom opakováním kroků 9 a 10 sloupce odstraňte a rozbalte *obsah*.
+1. Změňte datový typ *Content. SentimentScore* na **desetinné číslo**.
+1. Vyberte *hotelReviewsSsKeyPhrases* a opakováním kroků 9 a 10 sloupce odstraňte a rozbalte *obsah*. Pro tuto tabulku neexistují žádné úpravy datových typů.
 
-1. Na panelu příkazů klepněte na **tlačítko Zavřít a použít**.
+1. Na panelu příkazů klikněte na **Zavřít a použít**.
 
-1. Klikněte na dlaždici Model v levém navigačním podokně a ověřte, zda Power BI zobrazuje relace mezi všemi třemi tabulkami.
+1. Klikněte na dlaždici model v levém navigačním podokně a ověřte, že Power BI zobrazuje vztahy mezi všemi třemi tabulkami.
 
-   ![Ověřit vztahy](media/knowledge-store-connect-power-bi/powerbi-relationships.png "Ověřit vztahy")
+   ![Ověřit relace](media/knowledge-store-connect-power-bi/powerbi-relationships.png "Ověřit relace")
 
-1. Poklepejte na jednotlivé relace a ujistěte se, že **směr křížového filtru** je nastaven na **obě**.  To umožňuje, aby se vizuály aktualizovaly při použití filtru.
+1. Dvakrát klikněte na každý vztah a ujistěte se, že je **směr křížového filtru** nastavený na **obojí**.  Tím umožníte, aby se vizuály aktualizovaly při použití filtru.
 
-1. Kliknutím na dlaždici Sestava v levém navigačním podokně prozkoumejte data prostřednictvím vizualizací. Pro textová pole jsou tabulky a karty užitečné vizualizace. Můžete si vybrat pole z každé ze tří tabulek, které chcete vyplnit v tabulce nebo na kartě. 
+1. Kliknutím na dlaždici sestavy v levém navigačním podokně Prozkoumejte data prostřednictvím vizualizací. Pro textová pole, tabulky a karty jsou užitečné vizualizace. Můžete vybrat pole z každé ze tří tabulek, která se mají vyplnit v tabulce nebo kartě. 
 
 <!-- ## Try with larger data sets
 
@@ -110,13 +110,13 @@ In the enrichment step of the wizard, attach a billable [Cognitive Services](htt
 
 Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás můžou stát peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
 
-Můžete najít a spravovat prostředky na portálu pomocí odkazu **Všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
+Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 
-Pokud používáte bezplatnou službu, nezapomeňte, že jste omezeni na tři indexy, indexery a zdroje dat. Můžete odstranit jednotlivé položky na portálu, abyste zůstali pod limitem.
+Pokud používáte bezplatnou službu, pamatujte na to, že jste omezeni na tři indexy, indexery a zdroje dat. Jednotlivé položky na portálu můžete odstranit, aby zůstaly pod limitem.
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak prozkoumat toto úložiště znalostí pomocí Průzkumníka úložiště, najdete v následujícím článku.
+Další informace o tom, jak prozkoumat toto úložiště Knowledge Store pomocí Průzkumník služby Storage, najdete v následujícím článku.
 
 > [!div class="nextstepaction"]
 > [Zobrazení s využitím Průzkumníka služby Storage](knowledge-store-view-storage-explorer.md)

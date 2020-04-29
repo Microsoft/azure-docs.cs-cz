@@ -1,7 +1,7 @@
 ---
 title: Sumarizace dat
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak pomocí modulu Sumarizovat data v Azure Machine Learning generovat základní popisné statistiky sestavy pro sloupce v datové sadě.
+description: Naučte se používat modul shrnutí dat v Azure Machine Learning k vygenerování základní sestavy statistiky pro sloupce v datové sadě.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,80 +10,80 @@ author: likebupt
 ms.author: keli19
 ms.date: 01/27/2020
 ms.openlocfilehash: b0def12582dd3795e1b17334406e28d77c3c5656
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79477438"
 ---
 # <a name="summarize-data"></a>Sumarizace dat
 
-Tento článek popisuje modul Návrháře Azure Machine Learning (preview).
+Tento článek popisuje modul návrháře Azure Machine Learning (Preview).
 
-Pomocí modulu Sumarizovat data vytvořte sadu standardních statistických měr, které popisují každý sloupec ve vstupní tabulce.
+Modul shrnutí dat slouží k vytvoření sady standardních statistických měr, které popisují jednotlivé sloupce ve vstupní tabulce.
 
-Souhrnné statistiky jsou užitečné, pokud chcete porozumět charakteristikám úplné datové sady. Můžete například potřebovat vědět:
+Souhrnná statistika je užitečná, když chcete pochopit vlastnosti kompletní datové sady. Můžete například potřebovat znát:
 
 - Kolik chybějících hodnot je v každém sloupci?
-- Kolik jedinečných hodnot je ve sloupci prvku?
-- Jaká je střední hodnota a směrodatná odchylka pro každý sloupec?
+- Kolik jedinečných hodnot ve sloupci funkce existuje?
+- Jaká je střední a směrodatná odchylka pro každý sloupec?
 
-Modul vypočítá důležité skóre pro každý sloupec a vrátí řádek souhrnné statistiky pro každou proměnnou (sloupec dat) zadaný jako vstup.
+Modul vypočítá důležité skóre pro jednotlivé sloupce a vrátí řádek souhrnných statistik pro každou proměnnou (datový sloupec), který je zadaný jako vstup.
 
-## <a name="how-to-configure-summarize-data"></a>Konfigurace souhrnu dat  
+## <a name="how-to-configure-summarize-data"></a>Jak konfigurovat souhrnná data  
 
-1. Přidejte do kanálu modul **Sumarizovat data.** Tento modul naleznete v kategorii **Statistické funkce** v návrháři.
+1. Přidejte modul **Shrnutí dat** do vašeho kanálu. Tento modul můžete najít v kategorii **statistické funkce** v návrháři.
 
-1. Připojte datovou sadu, pro kterou chcete generovat sestavu.
+1. Připojte datovou sadu, pro kterou chcete vygenerovat sestavu.
 
-    Pokud chcete vykazovat pouze některé sloupce, použijte modul [Vybrat sloupce v datové sadě](select-columns-in-dataset.md) k promítání podmnožiny sloupců, se kterými chcete pracovat.
+    Pokud chcete vytvořit sestavu pouze pro některé sloupce, použijte modul [Výběr sloupců v datové sadě](select-columns-in-dataset.md) k vytvoření podmnožiny sloupců, se kterými chcete pracovat.
 
-1. Nejsou vyžadovány žádné další parametry. Ve výchozím nastavení modul analyzuje všechny sloupce, které jsou k dispozici jako vstup a v závislosti na typu hodnot ve sloupcích, výstupy relevantní sadu statistik, jak je popsáno v části [Výsledky.](#results)
+1. Nejsou vyžadovány žádné další parametry. Ve výchozím nastavení modul analyzuje všechny sloupce, které jsou zadány jako vstup, a v závislosti na typu hodnot ve sloupcích vypíše relevantní sadu statistik, jak je popsáno v části [výsledky](#results) .
 
-1. Odešlete potrubí.
+1. Odešlete kanál.
 
 ## <a name="results"></a>Výsledky
 
-Sestava z modulu může obsahovat následující statistiky. 
+Sestava z modulu může zahrnovat následující statistiky. 
 
 |Název sloupce|Popis|
 |------|------|  
 |**Funkce**|Název sloupce|
-|**Počet**|Počet všech řádků|
+|**Výpočtu**|Počet všech řádků|
 |**Počet jedinečných hodnot**|Počet jedinečných hodnot ve sloupci|
 |**Chybějící počet hodnot**|Počet jedinečných hodnot ve sloupci|
-|**Min**|Nejnižší hodnota ve sloupci|  
-|**Max**|Nejvyšší hodnota ve sloupci|
-|**Znamená**|Průměr všech hodnot sloupců|
-|**Průměrná odchylka**|Průměrná odchylka hodnot sloupců|
-|**1. kvartil**|Hodnota na prvním kvartilu|
-|**Medián**|Medián hodnoty sloupce|
-|**3. Kvartil**|Hodnota ve třetím kvartilu|
+|**Dlouhé**|Nejnižší hodnota ve sloupci|  
+|**Počet**|Nejvyšší hodnota ve sloupci|
+|**Průměrná**|Střední hodnota všech hodnot sloupců|
+|**Střední odchylka**|Střední odchylka hodnot sloupců|
+|**1. kvartil**|Hodnota při první kvartil|
+|**Svisl**|Hodnota sloupce mediánu|
+|**třetí kvartil**|Hodnota při třetí kvartil|
 |**Mode**|Režim hodnot sloupců|
-|**Rozsah**|Celé číslo představující počet hodnot mezi maximální a minimální hodnotou|
-|**Odchylka vzorku**|Odchylka pro sloupec; viz Poznámka|
-|**Směrodatná odchylka vzorku**|Směrodatná odchylka pro kolonu; viz Poznámka|
-|**Šikmost vzorku**|Šikmost pro sloupec; viz Poznámka|
-|**Ukázka špičatost**|Špičatost pro sloupec; viz Poznámka|
-|**P0,5**|0,5% percentil|
+|**Oblasti**|Celé číslo představující počet hodnot mezi maximální a minimální hodnotou|
+|**Odchylka vzorku**|Variance pro sloupec; Viz Poznámka|
+|**Vzorová směrodatná odchylka**|Směrodatná odchylka pro sloupec; Viz Poznámka|
+|**Dezkosení vzorku**|Zešikmení sloupce; Viz Poznámka|
+|**Ukázka špičatosti**|Špičatost pro sloupec; Viz Poznámka|
+|**P 0,5**|0,5% percentil|
 |**P1**|1% percentil|
 |**P5**|5% percentil|
 |**P95**|95% percentil|
-|**P99,5**|99,5% percentil |
+|**P 99,5**|99,5% percentil |
 
 ## <a name="technical-notes"></a>Technické poznámky
 
-- Pro nečíselné sloupce jsou vypočteny pouze hodnoty count, Unique value count a Missing value count. Pro ostatní statistiky je vrácena hodnota null.
+- Pro nečíselné sloupce jsou vypočítány pouze hodnoty pro počet, jedinečný počet hodnot a chybějící počet hodnot. Pro jiné statistiky se vrátí hodnota null.
 
-- Sloupce obsahující logické hodnoty jsou zpracovány pomocí těchto pravidel:
+- Sloupce, které obsahují logické hodnoty, jsou zpracovávány pomocí těchto pravidel:
 
-    - Při výpočtu Min se použije logické and.
+    - Při výpočtu hodnoty min, je použita logická a.
     
-    - Při výpočtu Maxe se použije logická hodnota OR
+    - Při výpočtu hodnoty Max, logického nebo se použije
     
-    - Při výpočtu rozsahu modul nejprve zkontroluje, zda se počet jedinečných hodnot ve sloupci rovná 2.
+    - Při výpočtu rozsahu modul nejprve ověří, zda se počet jedinečných hodnot ve sloupci rovná 2.
     
-    - Při výpočtu jakékoli statistiky, která vyžaduje výpočty s plovoucí desetinnou desetinnou desetinnou desetinnou hodnotou, jsou hodnoty True považovány za 1,0 a hodnoty False jsou považovány za 0,0.
+    - Při výpočtu jakýchkoli statistik, které vyžadují výpočty s plovoucí desetinnou čárkou, jsou hodnoty true považovány za 1,0 a hodnoty false jsou považovány za 0,0.
 
 ## <a name="next-steps"></a>Další kroky
 

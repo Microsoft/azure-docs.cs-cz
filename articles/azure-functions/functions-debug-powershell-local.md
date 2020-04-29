@@ -1,32 +1,32 @@
 ---
-title: Ladění funkcí PowerShellu Azure místně
-description: Zjistěte, jak vyvíjet funkce pomocí prostředí PowerShell.
+title: Místní ladění Azure Functions PowerShellu
+description: Naučte se vyvíjet funkce pomocí prostředí PowerShell.
 author: tylerleonhardt
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
 ms.openlocfilehash: 133e89bd9187ae5e48fa208b407678760d31adfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78163756"
 ---
-# <a name="debug-powershell-azure-functions-locally"></a>Ladění funkcí PowerShellu Azure místně
+# <a name="debug-powershell-azure-functions-locally"></a>Místní ladění Azure Functions PowerShellu
 
-Funkce Azure vám umožní rozvíjet funkce jako skripty Prostředí PowerShell.
+Azure Functions umožňuje vyvíjet funkce jako skripty prostředí PowerShell.
 
-Funkce prostředí PowerShell můžete ladit místně stejně jako všechny skripty prostředí PowerShell pomocí následujících standardních vývojových nástrojů:
+Funkce PowerShellu můžete ladit místně stejně jako všechny skripty PowerShellu pomocí následujících standardních vývojářských nástrojů:
 
-* [Visual Studio Code:](https://code.visualstudio.com/)Bezplatný, lehký a open source textový editor společnosti Microsoft s rozšířením Prostředí PowerShell, který nabízí úplné prostředí PowerShell.
-* Konzola Prostředí PowerShell: Ladění pomocí stejných příkazů, které byste použili k ladění jakéhokoli jiného procesu prostředí PowerShell.
+* [Visual Studio Code](https://code.visualstudio.com/): bezplatný, odlehčený a open source textový editor s rozšířením PowerShellu, který nabízí kompletní vývojové prostředí PowerShellu.
+* Konzola PowerShellu: ladění pomocí stejných příkazů, které byste použili pro ladění jakýchkoli jiných procesů prostředí PowerShell.
 
-[Nástroje Azure Functions Core Tools](functions-run-local.md) podporují místní ladění funkcí Azure, včetně funkcí PowerShellu.
+[Azure Functions Core Tools](functions-run-local.md) podporuje místní ladění Azure Functions, včetně funkcí prostředí PowerShell.
 
-## <a name="example-function-app"></a>Ukázková aplikace funkcí
+## <a name="example-function-app"></a>Příklad aplikace Function App
 
-Aplikace funkce použitá v tomto článku má jednu funkci aktivovanou protokolem HTTP a má následující soubory:
+Aplikace Function App použitá v tomto článku obsahuje jednu funkci aktivovanou protokolem HTTP a má následující soubory:
 
 ```
 PSFunctionApp
@@ -38,9 +38,9 @@ PSFunctionApp
  | - profile.ps1
 ```
 
-Tato aplikace funkce je podobná té, kterou získáte po dokončení [rychlého startu prostředí PowerShell](functions-create-first-function-powershell.md).
+Tato aplikace Function App je podobná té, kterou dostanete po dokončení [rychlého startu PowerShellu](functions-create-first-function-powershell.md).
 
-Kód funkce `run.ps1` v aplikaci vypadá jako následující skript:
+Kód funkce `run.ps1` vypadá podobně jako tento skript:
 
 ```powershell
 param($Request)
@@ -64,9 +64,9 @@ Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
 
 ## <a name="set-the-attach-point"></a>Nastavení bodu připojení
 
-Chcete-li ladit všechny funkce prostředí PowerShell, funkce musí zastavit ladicí program, který má být připojen. Rutina `Wait-Debugger` zastaví provádění a čeká na ladicí program.
+Chcete-li ladit jakoukoli funkci prostředí PowerShell, funkce musí zastavit, aby byl ladicí program připojen. `Wait-Debugger` Rutina zastaví provádění a počká na ladicí program.
 
-Vše, co musíte udělat, je `Wait-Debugger` přidat volání do `if` rutiny těsně nad příkazem, a to následovně:
+Vše, co potřebujete udělat, je přidat volání `Wait-Debugger` rutiny přímo nad `if` příkaz, a to takto:
 
 ```powershell
 param($Request)
@@ -83,97 +83,97 @@ if($name) {
 # ...
 ```
 
-Ladění začíná na `if` příkaz. 
+Ladění začíná v `if` příkazu. 
 
-S `Wait-Debugger` na místě, můžete nyní ladit funkce pomocí visual studio kód nebo konzoly PowerShell.
+`Wait-Debugger` V současné době můžete funkce ladit pomocí Visual Studio Code nebo konzoly PowerShellu.
 
-## <a name="debug-in-visual-studio-code"></a>Ladění v kódu sady Visual Studio
+## <a name="debug-in-visual-studio-code"></a>Ladění v Visual Studio Code
 
-Chcete-li ladit funkce prostředí PowerShell v kódu sady Visual Studio, musíte mít nainstalované následující:
+Chcete-li ladit funkce prostředí PowerShell v Visual Studio Code, je nutné mít nainstalované následující:
 
-* [Rozšíření Prostředí PowerShell pro kód Sady Visual Studio](/powershell/scripting/components/vscode/using-vscode)
+* [Rozšíření PowerShellu pro Visual Studio Code](/powershell/scripting/components/vscode/using-vscode)
 * [Rozšíření Azure Functions pro Visual Studio Code](functions-create-first-function-vs-code.md)
-* [PowerShell Core 6.2 nebo vyšší](/powershell/scripting/install/installing-powershell-core-on-windows)
+* [PowerShell Core 6,2 nebo vyšší](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-Po instalaci těchto závislostí načtěte existující projekt PowerShell Functions nebo [vytvořte svůj první projekt Funkce prostředí PowerShell](functions-create-first-function-powershell.md).
+Po instalaci těchto závislostí Načtěte existující projekt funkcí PowerShellu nebo [vytvořte svůj první projekt funkcí PowerShellu](functions-create-first-function-powershell.md).
 
 >[!NOTE]
-> Pokud projekt nemá potřebné konfigurační soubory, budete vyzváni k jejich přidání.
+> Pokud váš projekt nemá potřebné konfigurační soubory, budete vyzváni k jeho přidání.
 
-### <a name="set-the-powershell-version"></a>Nastavení verze PowerShellu
+### <a name="set-the-powershell-version"></a>Nastavení verze prostředí PowerShell
 
-PowerShell Core se instaluje vedle sebe s prostředím Windows PowerShell. Nastavte Jádro Prostředí PowerShell jako verzi PowerShellu pro použití s rozšířením PowerShellu pro kód Visual Studia.
+PowerShell Core se nainstaluje souběžně s Windows PowerShellem. Nastavte PowerShell Core jako verzi prostředí PowerShell pro použití s rozšířením PowerShell pro Visual Studio Code.
 
-1. Stisknutím klávesy F1 zobrazte příkazovou paletu a vyhledejte . `Session`
+1. Stisknutím klávesy F1 zobrazte paletu příkazů a pak vyhledejte `Session`.
 
-1. Zvolte **PowerShell: Zobrazit nabídku relace**.
+1. Vyberte **PowerShell: Zobrazit nabídku relace**.
 
-1. Pokud vaše **aktuální relace** není **PowerShell Core 6**, zvolte **Přepnout na: PowerShell Core 6**.
+1. Pokud **aktuální relace** není **PowerShell Core 6**, vyberte **Přepnout na: PowerShell Core 6**.
 
-Když máte otevřený soubor PowerShellu, uvidíte verzi zobrazenou zeleně v pravém dolním rohu okna. Výběrem tohoto textu se také zobrazí nabídka relace. Další informace najdete v tématu [Výběr verze PowerShellu, která se má používat s rozšířením](/powershell/scripting/components/vscode/using-vscode#choosing-a-version-of-powershell-to-use-with-the-extension).
+Když máte otevřený soubor PowerShellu, zobrazí se verze zobrazená zeleně v pravém dolním rohu okna. Výběrem tohoto textu se zobrazí také nabídka relace. Další informace najdete v tématu [Výběr verze prostředí PowerShell, která se má použít s příponou](/powershell/scripting/components/vscode/using-vscode#choosing-a-version-of-powershell-to-use-with-the-extension).
 
-### <a name="start-the-function-app"></a>Spuštění aplikace funkce
+### <a name="start-the-function-app"></a>Spuštění aplikace Function App
 
-Ověřte, `Wait-Debugger` že je nastavena ve funkci, kam chcete připojit ladicí program.  S `Wait-Debugger` přidáním můžete ladit funkci aplikace pomocí kódu Sady Visual Studio.
+Ověřte, `Wait-Debugger` že je nastavena ve funkci, do které chcete ladicí program připojit.  Pomocí `Wait-Debugger` přidání můžete ladit aplikaci Function app pomocí Visual Studio Code.
 
-Zvolte podokno **Ladění** a potom **připojte k funkci PowerShellu**.
+Zvolte podokno **ladění** a potom **se připojte k funkci PowerShellu**.
 
-![Ladicí program](https://user-images.githubusercontent.com/2644648/56166073-8a7b3780-5f89-11e9-85ce-36ed38e221a2.png)
+![ladění](https://user-images.githubusercontent.com/2644648/56166073-8a7b3780-5f89-11e9-85ce-36ed38e221a2.png)
 
 Můžete také stisknout klávesu F5 a spustit ladění.
 
-Spuštění ladění operace provádí následující úkoly:
+Operace spustit ladění provádí následující úlohy:
 
-* Spustí `func extensions install` v terminálu nainstalovat všechna rozšíření Azure Funkce vyžadovaná vaší aplikace funkce.
-* Spustí `func host start` v terminálu spustit aplikaci funkce v hostiteli funkce.
-* Připojte ladicí program prostředí PowerShell k runspace prostředí PowerShell v rámci běhu functions.
+* Spustí `func extensions install` se v terminálu, aby se nainstalovala rozšíření Azure Functions, která vyžaduje aplikace Function App.
+* Spouští `func host start` se v terminálu, aby se spustila aplikace Function App na hostiteli Functions.
+* Připojte ladicí program PowerShellu k prostředí PowerShell PowerShellu v rámci modulu runtime Functions.
 
 >[!NOTE]
-> Je třeba zajistit PSWorkerInProcConcurrencyUpperBound je nastavena na 1 zajistit správné ladění prostředí v kódu sady Visual Studio. Toto nastavení je výchozí.
+> Je nutné zajistit, aby byl PSWorkerInProcConcurrencyUpperBound nastaven na hodnotu 1, aby bylo zajištěno správné prostředí ladění v Visual Studio Code. Toto nastavení je výchozí.
 
-Když je spuštěná funkční aplikace, potřebujete k volání funkce aktivované http samostatnou konzolu PowerShellu.
+Když máte spuštěnou aplikaci Function App, potřebujete samostatnou konzolu PowerShellu pro volání funkce aktivované protokolem HTTP.
 
-V tomto případě konzole PowerShell je klientem. Slouží `Invoke-RestMethod` ke spuštění funkce.
+V takovém případě je konzola prostředí PowerShell klientem. `Invoke-RestMethod` Slouží k aktivaci funkce.
 
-V konzole PowerShell spusťte následující příkaz:
+V konzole PowerShellu spusťte následující příkaz:
 
 ```powershell
 Invoke-RestMethod "http://localhost:7071/api/HttpTrigger?Name=Functions"
 ```
 
-Všimněte si, že odpověď není okamžitě vrácena. To proto, `Wait-Debugger` že má připojené ladicí program a powershell spuštění přešel do režimu přerušení, jakmile to bylo možné. Důvodem je [koncept BreakAll](#breakall-might-cause-your-debugger-to-break-in-an-unexpected-place), který je vysvětlen později. Po stisknutí `continue` tlačítka ladicí program nyní přeruší `Wait-Debugger`na řádku hned po .
+Všimnete si, že odpověď není hned vrácena. Důvodem `Wait-Debugger` je, že byl připojen ladicí program a spuštění prostředí PowerShell v režimu přerušení, jakmile to bude možné. Důvodem je [BreakAll koncept](#breakall-might-cause-your-debugger-to-break-in-an-unexpected-place), který je vysvětlen později. Po stisknutí `continue` tlačítka je ladicí program nyní zalomen na řádku ihned po `Wait-Debugger`.
 
-V tomto okamžiku je připojen ladicí program a můžete provést všechny normální operace ladicího programu. Další informace o použití ladicího programu v kódu sady Visual Studio naleznete v [oficiální dokumentaci](https://code.visualstudio.com/Docs/editor/debugging#_debug-actions).
+V tomto okamžiku je připojen ladicí program a můžete provádět všechny běžné operace ladicího programu. Další informace o používání ladicího programu v Visual Studio Code najdete v [oficiální dokumentaci](https://code.visualstudio.com/Docs/editor/debugging#_debug-actions).
 
-Poté, co budete pokračovat a plně vyvolat skript, všimnete si, že:
+Po pokračování a plném vyvolání skriptu si všimněte, že:
 
-* Konzola prostředí PowerShell, která provedla, `Invoke-RestMethod` vrátila výsledek
-* Integrovaný konzolový konzola prostředí PowerShell v kódu sady Visual Studio čeká na spuštění skriptu
+* Konzola PowerShellu, která `Invoke-RestMethod` vrátila, vrátila výsledek.
+* Integrovaná konzola PowerShellu v Visual Studio Code čeká na provedení skriptu.
 
-Později při vyvolání stejné funkce se ladicí program `Wait-Debugger`v rozšíření prostředí PowerShell přeruší hned za .
+Později při vyvolání stejné funkce ladicí program v rozšíření PowerShell přeruší hned za `Wait-Debugger`.
 
-## <a name="debugging-in-a-powershell-console"></a>Ladění v konzole PowerShell
+## <a name="debugging-in-a-powershell-console"></a>Ladění v konzole PowerShellu
 
 >[!NOTE]
-> Tato část předpokládá, že jste si přečetli [dokumenty nástroje Azure Functions Core Tools](functions-run-local.md) a víte, jak pomocí příkazu `func host start` spustit aplikaci funkcí.
+> V této části se předpokládá, že jste si přečetli [dokumentaci Azure Functions Core Tools](functions-run-local.md) a `func host start` víte, jak pomocí příkazu spustit aplikaci Function App.
 
-Otevřete konzolu `cd` do adresáře aplikace funkcí a spusťte následující příkaz:
+Otevřete konzolu nástroje, `cd` do adresáře aplikace Function App a spusťte následující příkaz:
 
 ```sh
 func host start
 ```
 
-S běžící aplikací funkcí `Wait-Debugger` a na místě se můžete připojit k procesu. Potřebujete další dvě konzoly PowerShellu.
+Když je spuštěná aplikace Function App `Wait-Debugger` a na místě, můžete se k procesu připojit. Potřebujete ještě dvě další konzoly PowerShellu.
 
-Jedna z konzolí funguje jako klient. Z tohoto volání `Invoke-RestMethod` spustit funkci. Můžete například spustit následující příkaz:
+Jedna z konzol funguje jako klient. Z toho zavoláte `Invoke-RestMethod` , aby se aktivovala funkce. Můžete například spustit následující příkaz:
 
 ```powershell
 Invoke-RestMethod "http://localhost:7071/api/HttpTrigger?Name=Functions"
 ```
 
-Všimněte si, že nevrátí odpověď, která je výsledkem `Wait-Debugger`. Prostředí PowerShell runspace nyní čeká na připojení ladicího programu. Připoutáme to.
+Všimnete si, že nevrátí odpověď, což je výsledek `Wait-Debugger`. Prostředí runspace pro PowerShell nyní čeká na připojení ladicího programu. Pojďme se připojit.
 
-V jiné konzoli PowerShell spusťte následující příkaz:
+V jiné konzole prostředí PowerShell spusťte následující příkaz:
 
 ```powershell
 Get-PSHostProcessInfo
@@ -194,9 +194,9 @@ pwsh            32071 None
 pwsh            88785 None
 ```
 
-Poznamenejte `ProcessId` si položku v `ProcessName` tabulce `dotnet`pomocí písmene as. Tento proces je vaše funkce aplikace.
+Poznamenejte si `ProcessId` pro položku v tabulce s `ProcessName` jako. `dotnet` Tento proces je vaší aplikací Function App.
 
-Dále spusťte následující úryvek:
+Dále spusťte následující fragment kódu:
 
 ```powershell
 # This enters into the Azure Functions PowerShell process.
@@ -207,7 +207,7 @@ Enter-PSHostProcess -Id $ProcessId
 Debug-Runspace 1
 ```
 
-Po spuštění se ladicí program rozbije a zobrazí něco jako následující výstup:
+Po spuštění ladicí program ukončí a zobrazí něco podobného následujícímu výstupu:
 
 ```
 Debugging Runspace: Runspace1
@@ -220,29 +220,29 @@ At /Path/To/PSFunctionApp/HttpTriggerFunction/run.ps1:13 char:1
 [DBG]: [Process:49988]: [Runspace1]: PS /Path/To/PSFunctionApp>>
 ```
 
-V tomto okamžiku jste zastaveni na zarážku v [ladicím programu prostředí PowerShell](/powershell/module/microsoft.powershell.core/about/about_debuggers). Odtud můžete provést všechny obvyklé operace ladění, krok přes, krok do, pokračovat, ukončit a další. Chcete-li zobrazit úplnou sadu ladicích příkazů `h` dostupných v konzole, spusťte příkazy nebo. `?`
+V tuto chvíli jste v [ladicím programu PowerShellu](/powershell/module/microsoft.powershell.core/about/about_debuggers)zastavili zarážku. Odtud můžete provádět všechny běžné operace ladění, Krokovat s vnořením, Krokovat s vnořením, pokračováním, ukončením a dalšími uživateli. Chcete-li zobrazit úplnou sadu příkazů ladění, které jsou k dispozici v `h` konzole `?` nástroje, spusťte příkazy nebo.
 
-Můžete také nastavit zarážky na `Set-PSBreakpoint` této úrovni s rutinou.
+Můžete také nastavit zarážky na této úrovni pomocí `Set-PSBreakpoint` rutiny.
 
-Jakmile budete pokračovat a plně vyvolat skript, všimnete si, že:
+Jakmile budete pokračovat a plně vyvolali váš skript, všimnete si, že:
 
-* Konzola prostředí PowerShell, `Invoke-RestMethod` ve které jste provedli, nyní vrátila výsledek.
-* Konzola Prostředí PowerShell, `Debug-Runspace` ve které jste provedli, čeká na spuštění skriptu.
+* V konzole PowerShellu, kde `Invoke-RestMethod` jste spustili, byl nyní vrácen výsledek.
+* Konzola PowerShellu, ve které `Debug-Runspace` jste provedli, čeká na provedení skriptu.
 
-Můžete vyvolat stejnou funkci znovu `Invoke-RestMethod` (například pomocí) a ladicí `Wait-Debugger` program se rozdělí hned za příkazem.
+Stejnou funkci můžete vyvolat znovu (například pomocí `Invoke-RestMethod` ) a ladicí program se naplní hned za `Wait-Debugger` příkazem.
 
-## <a name="considerations-for-debugging"></a>Důležité informace pro ladění
+## <a name="considerations-for-debugging"></a>Pokyny pro ladění
 
-Mějte na paměti následující problémy při ladění kódu funkce.
+Při ladění kódu vašich funkcí Pamatujte na následující problémy.
 
-### <a name="breakall-might-cause-your-debugger-to-break-in-an-unexpected-place"></a>`BreakAll`může způsobit, že se ladicí program přeruší na neočekávaném místě
+### <a name="breakall-might-cause-your-debugger-to-break-in-an-unexpected-place"></a>`BreakAll`může způsobit přerušení ladicího programu na neočekávaném místě.
 
-Rozšíření Prostředí PowerShell používá `Debug-Runspace`, což zase závisí `BreakAll` na funkci prostředí PowerShell. Tato funkce říká PowerShell zastavit na první příkaz, který je spuštěn. Toto chování umožňuje nastavit zarážky v rámci laděné runspace.
+Rozšíření prostředí PowerShell používá `Debug-Runspace`nástroj, který následně spoléhá na `BreakAll` funkci prostředí PowerShell. Tato funkce oznamuje, že prostředí PowerShell se zastaví na prvním příkazu, který je spuštěn. Toto chování vám dává možnost nastavit zarážky v laděném prostředí runspace.
 
-Runtime Azure Functions spustí několik příkazů, než se `run.ps1` skutečně vyvoláte skript, takže je možné, že `Microsoft.Azure.Functions.PowerShellWorker.psm1` `Microsoft.Azure.Functions.PowerShellWorker.psd1`ladicí program skončí rozdělení v rámci nebo .
+Modul runtime Azure Functions spouští několik příkazů před samotným vyvoláním `run.ps1` skriptu, takže je možné, že ladicí program skončí v rámci `Microsoft.Azure.Functions.PowerShellWorker.psm1` nebo. `Microsoft.Azure.Functions.PowerShellWorker.psd1`
 
-Pokud by k této `continue` `c` přestávce došlo, spusťte příkaz nebo, abyste tuto zarážku přeskočili. Potom zastavit na očekávané zarážky.
+Pokud má dojít k tomuto přerušení, `continue` spusťte `c` příkaz nebo, který přeskočí tuto zarážku. Pak se zastaví na očekávané zarážce.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o vývoji funkcí pomocí PowerShellu najdete v [tématu Průvodce vývojáři Prostředí Azure Functions PowerShell](functions-reference-powershell.md).
+Další informace o vývoji funkcí pomocí prostředí PowerShell najdete v tématu [Azure Functions příručka pro vývojáře PowerShellu](functions-reference-powershell.md).

@@ -1,6 +1,6 @@
 ---
-title: Zakódovat vlastní transformaci pomocí media services v3 .NET - Azure | Dokumenty společnosti Microsoft
-description: Toto téma ukazuje, jak pomocí Azure Media Services v3 kódovat vlastní transformaci pomocí rozhraní .NET.
+title: Kódování vlastní transformace pomocí Media Services V3 .NET – Azure | Microsoft Docs
+description: V tomto tématu se dozvíte, jak použít Azure Media Services V3 ke kódování vlastní transformace pomocí .NET.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,22 +13,22 @@ ms.date: 05/03/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: ebe701032e6416b3e007a28db62f5a8235bb1bb1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80068033"
 ---
-# <a name="how-to-encode-with-a-custom-transform---net"></a>Kódování pomocí vlastní transformace - .NET
+# <a name="how-to-encode-with-a-custom-transform---net"></a>Jak kódovat pomocí vlastní transformace – .NET
 
-Při kódování pomocí Azure Media Services můžete rychle začít s jedním z doporučených předvoleb založených na osvědčených postupech v oboru, jak je znázorněno v kurzu [Streamování souborů.](stream-files-tutorial-with-api.md) Můžete také vytvořit vlastní přednastavení pro cílí na konkrétní scénář nebo požadavky na zařízení.
+Při kódování pomocí Azure Media Services můžete rychle začít s jedním z doporučených integrovaných přednastavení na základě doporučených osvědčených postupů, jak je znázorněno v kurzu [streamování souborů](stream-files-tutorial-with-api.md) . Můžete také vytvořit vlastní předvolby, která bude cílit na konkrétní scénář nebo požadavky na zařízení.
 
 ## <a name="considerations"></a>Požadavky
 
-Při vytváření vlastních přednastavení platí následující aspekty:
+Při vytváření vlastních přednastavení platí následující požadavky:
 
-* Všechny hodnoty pro výšku a šířku obsahu AVC musí být násobkem 4.
-* Ve službě Azure Media Services v3 jsou všechny přetáčicí přenosové rychlosti kódování v bitech za sekundu. To se liší od přednastavení s našimi v2 API, který používá kilobitů za sekundu jako jednotku. Například pokud byl určen přenosový tok v 2 jako 128 (kilobitů za sekundu), ve v3 by byla nastavena na 128000 (bitů za sekundu).
+* Všechny hodnoty pro výšku a šířku v obsahu AVC musí být násobkem 4.
+* V Azure Media Services V3 jsou všechny přenosové rychlosti kódování v bitech za sekundu. To se liší od přednastavení s našimi rozhraními API v2, která jako jednotku používala kilobity za sekundu. Pokud je například přenosová rychlost v v2 zadaná jako 128 (kilobit/s), ve verzi V3 by se nastavila na 128000 (bity za sekundu).
 
 ## <a name="prerequisites"></a>Požadavky 
 
@@ -36,23 +36,23 @@ Při vytváření vlastních přednastavení platí následující aspekty:
 
 ## <a name="download-the-sample"></a>Stažení ukázky
 
-Klonujte úložiště GitHub, které obsahuje úplnou ukázku jádra .NET, do počítače pomocí následujícího příkazu:  
+Naklonujte úložiště GitHub, které obsahuje úplný vzorek .NET Core pro váš počítač, pomocí následujícího příkazu:  
 
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials.git
  ```
  
-Vlastní ukázka přednastavení je umístěna ve složce [EncodeCustomTransform.](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/EncodeCustomTransform/)
+Ukázka vlastní předvolby se nachází ve složce [EncodeCustomTransform](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/EncodeCustomTransform/) .
 
-## <a name="create-a-transform-with-a-custom-preset"></a>Vytvoření transformace s vlastním přednastavením 
+## <a name="create-a-transform-with-a-custom-preset"></a>Vytvoření transformace pomocí vlastní předvolby 
 
-Při vytváření nové [transformace](https://docs.microsoft.com/rest/api/media/transforms)je třeba určit, co má být k onomu výstupu. Objekt [TransformOutput](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#transformoutput) v níže uvedeném kódu je povinný parametr. Každý objekt **TransformOutput** obsahuje **Předvolbu**. **Přednastavení** popisuje podrobné pokyny operací zpracování videa a/nebo zvuku, které mají být použity ke generování požadovaného **transformoutput**. Následující **TransformOutput** vytvoří vlastní nastavení kodeku a výstupu vrstvy.
+Když vytváříte novou [transformaci](https://docs.microsoft.com/rest/api/media/transforms), je potřeba určit, co má vytvořit jako výstup. Objekt [TransformOutput](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#transformoutput) v níže uvedeném kódu je povinný parametr. Každý objekt **TransformOutput** obsahuje **Předvolbu**. **Přednastavení** popisuje podrobné pokyny k operacím zpracování videa nebo zvuku, které se mají použít ke generování požadovaných **TransformOutput**. Následující **TransformOutput** vytvoří vlastní kodek a výstupní nastavení vrstvy.
 
-Než začnete vytvářet [transformaci](https://docs.microsoft.com/rest/api/media/transforms), ověřte si nejdřív pomocí metody **Get**, jestli už neexistuje (viz kód níže). V Media Services **v3, Get** metody na entity vrátí **null,** pokud entita neexistuje (malá a velká písmena kontrola na název).
+Než začnete vytvářet [transformaci](https://docs.microsoft.com/rest/api/media/transforms), ověřte si nejdřív pomocí metody **Get**, jestli už neexistuje (viz kód níže). V Media Services V3 vrátí metody **Get** v entitách **hodnotu null** , pokud entita neexistuje (u názvu se nerozlišuje malá a velká písmena).
 
 ### <a name="example"></a>Příklad
 
-Následující příklad definuje sadu výstupů, které chceme generovat při použití této transformace. Nejprve přidáme vrstvu AacAudio pro kódování zvuku a dvě vrstvy H264Video pro kódování videa. Ve vrstvách videa přiřazujeme popisky tak, aby je bylo možné použít v názvech výstupních souborů. Dále chceme, aby výstup obsahoval také miniatury. V níže uvedeném příkladu určíme obrázky ve formátu PNG, generované při 50 % rozlišení vstupního videa a na třech časových razítkách - {25%, 50%, 75} délky vstupního videa. Nakonec určíme formát výstupních souborů - jeden pro video + audio a druhý pro miniatury. Vzhledem k tomu, že máme více H264Layers, musíme použít makra, které produkují jedinečné názvy na vrstvu. Můžeme použít `{Label}` buď `{Bitrate}` nebo makro, příklad ukazuje bývalý.
+Následující příklad definuje sadu výstupů, které chceme vygenerovat při použití této transformace. Nejprve přidáme AacAudio vrstvu pro kódování zvuku a dvě vrstvy H264Video pro kódování videa. Ve vrstvách videa přiřadíme popisky, aby je bylo možné použít v názvech výstupních souborů. Dále chceme, aby výstup zahrnoval také miniatury. V následujícím příkladu určíme obrázky ve formátu PNG vygenerované v 50% rozlišení vstupního videa a tři časová razítka – {25%, 50%, 75} délky vstupního videa. Nakonec určíme formát pro výstupní soubory – jeden pro video a zvuk a druhý pro miniatury. Vzhledem k tomu, že máme více H264Layers, musíme použít makra, která vytvoří jedinečné názvy na každou vrstvu. Můžeme buď použít makro `{Label}` nebo `{Bitrate}` , v příkladu se zobrazí předchozí.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/EncodeCustomTransform/MediaV3ConsoleApp/Program.cs#EnsureTransformExists)]
 

@@ -1,5 +1,5 @@
 ---
-title: Kohorty využití přehledů aplikací Azure | Dokumenty společnosti Microsoft
+title: Kohorty využití Azure Application Insights | Microsoft Docs
 description: Analýza různých sad nebo uživatelů, relací, událostí nebo operací, které mají něco společného
 ms.topic: conceptual
 author: NumberByColors
@@ -7,131 +7,131 @@ ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 0c552e8f3e732c49da02b2f5704fb9cf312fb3e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671082"
 ---
-# <a name="application-insights-cohorts"></a>Kohorty Application Insights
+# <a name="application-insights-cohorts"></a>Application Insights kohorty
 
-Kohorta je sada uživatelů, relací, událostí nebo operací, které mají něco společného. V Azure Application Insights kohorty jsou definovány analytický dotaz. V případech, kdy musíte opakovaně analyzovat určitou sadu uživatelů nebo událostí, vám kohorty mohou poskytnout větší flexibilitu, abyste mohli vyjádřit přesně sadu, která vás zajímá.
+Kohorta je sada uživatelů, relací, událostí nebo operací, které mají něco společného. V Azure Application Insights jsou kohorty definovány dotazem Analytics. V případech, kdy je potřeba analyzovat konkrétní sadu uživatelů nebo událostí opakovaně, vám kohorty může poskytnout větší flexibilitu, abyste přesně vyjádřili sadu, které vás zajímá.
 
-![Podokno Kohorty](./media/usage-cohorts/001.png)
+![Podokno kohorty](./media/usage-cohorts/001.png)
 
-## <a name="cohorts-versus-basic-filters"></a>Kohorty versus základní filtry
+## <a name="cohorts-versus-basic-filters"></a>Kohorty oproti základním filtrům
 
-Kohorty se používají podobným způsobem jako filtry. Definice kohort jsou však sestaveny z vlastních analytických dotazů, takže jsou mnohem přizpůsobivější a složitější. Na rozdíl od filtrů můžete uložit kohorty, aby je ostatní členové vašeho týmu mohli znovu použít.
+Kohorty se používají způsobem podobným filtrům. Ale definice kohorty jsou sestavené z vlastních analytických dotazů, takže jsou mnohem flexibilnější a komplexní. Na rozdíl od filtrů můžete ukládat kohorty, aby je ostatní členové týmu mohli znovu použít.
 
-Můžete definovat kohortu uživatelů, kteří všichni vyzkoušeli novou funkci ve vaší aplikaci. Tuto kohortu můžete uložit do prostředku Application Insights. Je snadné analyzovat tuto uloženou skupinu konkrétních uživatelů v budoucnu.
+Můžete definovat kohorta uživatele, u kterých se všechna vyzkoušela nová funkce ve vaší aplikaci. Tento kohorta můžete uložit do prostředku Application Insights. V budoucnu je snadné analyzovat tuto uloženou skupinu konkrétních uživatelů.
 
 > [!NOTE]
-> Po vytvoření jsou kohorty dostupné z nástrojů Uživatelé, Relace, Události a Toky uživatelů.
+> Po vytvoření jsou kohorty k dispozici z nástrojů Uživatelé, relace, události a Toky uživatelů.
 
-## <a name="example-engaged-users"></a>Příklad: Angažovaní uživatelé
+## <a name="example-engaged-users"></a>Příklad: zapojení uživatelů
 
-Váš tým definuje angažovaného uživatele jako každého, kdo používá vaši aplikaci pětkrát nebo vícekrát v daném měsíci. V této části definujete kohortu těchto zapojených uživatelů.
+Váš tým definuje určitého uživatele jako kdokoli, kdo v daném měsíci používá aplikaci pětkrát nebo vícekrát. V této části definujete kohorta těchto spolupracujících uživatelů.
 
-1. Otevřete nástroj Kohorty.
+1. Otevřete nástroj kohorty.
 
-2. Vyberte kartu **Galerie šablon.** Zobrazí se kolekce šablon pro různé kohorty.
+2. Vyberte kartu **Galerie šablon** . Zobrazí se kolekce šablon pro různé kohorty.
 
-3. Vyberte **angažovaní uživatelé – podle použitých dnů**.
+3. Vyberte možnost **Uživatelé, kteří se používají**.
 
-    Pro tuto kohortu existují tři parametry:
-    * **Aktivity**, kde zvolíte, které události a zobrazení stránek se počítají jako "využití".
-    * **Období**, definice měsíce.
-    * **UsedAtLeastCustom**, kolikrát uživatelé potřebují použít něco v rámci období počítat jako zabývá.
+    Pro tento kohorta existují tři parametry:
+    * **Aktivity**, kde si zvolíte, které události a zobrazení stránek se počítají jako "využití".
+    * **Období**– definice měsíce.
+    * **UsedAtLeastCustom**počet pokusů, kolikrát uživatelé potřebují použít nějakou dobu v rámci období, aby se mohli počítat jako zařazené.
 
-4. Změnit **UsedAtLeastCustom** na **5 + dny**a nechte **období** na výchozí 28 dnů.
+4. Změňte **UsedAtLeastCustom** na **5 dní**a nechte **dobu** ve výchozím nastavení 28 dnů.
 
-    ![Angažovaní uživatelé](./media/usage-cohorts/003.png)
+    ![Zapojení uživatelé](./media/usage-cohorts/003.png)
 
-    Nyní tato kohorta představuje všechna ID uživatelů odeslaná s jakoukoli vlastní událostí nebo zobrazením stránky v 5 samostatných dnech v posledních 28.
+    Tento kohorta nyní představuje všechna ID uživatelů odesílaná pomocí vlastní události nebo zobrazení stránky o 5 samostatných dní v posledních 28 dnech.
 
 5. Vyberte **Uložit**.
 
    > [!TIP]
-   > Dejte své kohortě jméno, například "Angažovaní uživatelé (5+ dní)." Uložte jej do "Moje sestavy" nebo "Sdílené sestavy", v závislosti na tom, zda chcete, aby ostatní uživatelé, kteří mají přístup k tomuto prostředku Application Insights vidět tuto kohortu.
+   > Dejte své kohorta jméno, například "propojující uživatelé (5 a dny)." V závislosti na Application Insights tom, jestli chcete, aby se kohorta viděli, uložte ho do sestav "Moje sestavy" nebo "sdílené sestavy".
 
-6. Vyberte **Možnost Zpět do galerie**.
+6. Vyberte **zpět do galerie**.
 
-### <a name="what-can-you-do-by-using-this-cohort"></a>Co můžete dělat pomocí této kohorty?
+### <a name="what-can-you-do-by-using-this-cohort"></a>K čemu se dá využít tento kohorta?
 
-Otevřete nástroj Uživatelé. V rozevíracím poli **Zobrazit** vyberte kohortu, kterou jste vytvořili v části **Uživatelé, kteří patří do .**
+Otevřete nástroj Uživatelé. V rozevíracím seznamu **Zobrazit** vyberte kohorta, který jste vytvořili v části **Uživatelé, kteří patří do**.
 
-Nyní je nástroj Uživatelé filtrován na tuto kohortu uživatelů:
+Nástroj pro uživatele je teď filtrovaný na tento kohorta uživatelů:
 
-![Podokno Uživatelé filtrované podle určité kohorty](./media/usage-cohorts/004.png)
+![Podokno uživatelů filtrované na konkrétní kohorta](./media/usage-cohorts/004.png)
 
-Několik důležitých věcí, které si všimnete:
+Několik důležitých věcí, které je potřeba si všimnout:
 
-* Tuto sadu nelze vytvořit pomocí normálních filtrů. Logika data je pokročilejší.
-* Tuto kohortu můžete dále filtrovat pomocí normálních filtrů v nástroji Uživatelé. Takže i když je kohorta definována v 28denních oknech, stále můžete upravit časový rozsah v nástroji Uživatelé na 30, 60 nebo 90 dní.
+* Tuto sadu nemůžete vytvořit prostřednictvím normálních filtrů. Logika data je pokročilejší.
+* Tento kohorta můžete dál filtrovat pomocí normálních filtrů v nástroji Uživatelé. Takže i když je kohorta definovaná na 28 dní, můžete přesto upravit časový rozsah v nástroji Uživatelé na 30, 60 nebo 90 dnů.
 
-Tyto filtry podporují složitější otázky, které nelze vyjádřit prostřednictvím tvůrce dotazů. Příkladem jsou _lidé, kteří se v posledních 28 dnech angažovali. Jak se ti samí lidé chovali posledních 60 dní?_
+Tyto filtry podporují složitější otázky, které není možné vyjádřit prostřednictvím Tvůrce dotazů. Příkladem jsou _lidé, kteří zapracovali během posledních 28 dnů. Jak se tyto osoby chovají během posledních 60 dnů?_
 
-## <a name="example-events-cohort"></a>Příklad: Kohorta událostí
+## <a name="example-events-cohort"></a>Příklad: Events kohorta
 
-Můžete také vytvořit kohorty událostí. V této části definujete kohortu událostí a zobrazení stránek. Pak uvidíte, jak je používat z jiných nástrojů. Tato kohorta může definovat sadu událostí, které váš tým považuje za _aktivní použití_ nebo sadu související s určitou novou funkcí.
+Můžete také vytvořit kohorty událostí. V této části definujete kohorta událostí a zobrazení stránek. Pak uvidíte, jak je používat z jiných nástrojů. Tento kohorta může definovat sadu událostí, které váš tým považuje za _aktivní používání_ nebo sadu související s určitou novou funkcí.
 
-1. Otevřete nástroj Kohorty.
+1. Otevřete nástroj kohorty.
 
-2. Vyberte kartu **Galerie šablon.** Zobrazí se kolekce šablon pro různé kohorty.
+2. Vyberte kartu **Galerie šablon** . Zobrazí se kolekce šablon pro různé kohorty.
 
-3. Vyberte **výběr událostí**.
+3. Vyberte **Výběr událostí**.
 
-    ![Snímek obrazovky s výběrem událostí](./media/usage-cohorts/006.png)
+    ![Snímek obrazovky pro výběr událostí](./media/usage-cohorts/006.png)
 
-4. V rozevíracím seznamu **Aktivity** vyberte události, které chcete v kohortě mít.
+4. V rozevíracím seznamu **aktivity** vyberte události, které chcete mít v kohorta.
 
-5. Uložte kohortu a pojmenujte ji.
+5. Uložte kohorta a pojmenujte ho.
 
-## <a name="example-active-users-where-you-modify-a-query"></a>Příklad: Aktivní uživatelé, u kterých upravujete dotaz
+## <a name="example-active-users-where-you-modify-a-query"></a>Příklad: aktivní uživatelé, kde můžete upravit dotaz
 
-Předchozí dvě kohorty byly definovány pomocí rozevíracích seznamů. Kohorty však můžete definovat také pomocí analytických dotazů pro úplnou flexibilitu. Chcete-li zjistit, jak, vytvořte kohortu uživatelů ze Spojeného království.
+Předchozí dva kohorty byly definovány pomocí rozevíracích seznamů. Můžete ale také definovat kohorty pomocí analytických dotazů pro celkovou flexibilitu. Pokud chcete zjistit, jak, vytvořte kohorta uživatelů ze Spojeného království.
 
-![Animovaný obrázek prochází pomocí nástroje Kohorty](./media/usage-cohorts/cohorts0001.gif)
+![Animovaný obrázek procházející použitím nástroje kohorty](./media/usage-cohorts/cohorts0001.gif)
 
-1. Otevřete nástroj Kohorty, vyberte kartu **Galerie šablon** a vyberte **kohorta Prázdné uživatelé**.
+1. Otevřete nástroj kohorty, vyberte kartu **Galerie šablon** a vyberte **prázdné uživatele kohorta**.
 
-    ![Kohorta prázdných uživatelů](./media/usage-cohorts/001.png)
+    ![Prázdná kohorta uživatelé](./media/usage-cohorts/001.png)
 
     Existují tři části:
-   * Textová sekce Markdown, kde kohortu podrobněji popisujete pro ostatní ve vašem týmu.
+   * Textový oddíl Markdownu, kde popíšete kohorta podrobněji pro ostatní uživatele v týmu.
 
-   * Část parametrů, kde můžete vytvořit vlastní parametry, jako **aktivity** a další rozevírací pole z předchozích dvou příkladů.
+   * Oddíl Parameters, kde můžete nastavit vlastní parametry, jako jsou **aktivity** a další rozevírací seznamy v předchozích dvou příkladech.
 
-   * Část dotazu, kde definujete kohortu pomocí analytického dotazu.
+   * Část dotazu, kde můžete definovat kohorta pomocí analytického dotazu.
 
-     V části dotazu [napíšete analytický dotaz](/azure/kusto/query). Dotaz vybere určitou sadu řádků, které popisují kohortu, kterou chcete definovat. Nástroj Kohorty pak implicitně přidá "| shrnout podle user_Id" klauzule k dotazu. Tato data jsou zobrazena pod dotazem v tabulce, takže se můžete ujistit, že dotaz vrací výsledky.
+     V části dotaz [napíšete dotaz Analytics](/azure/kusto/query). Dotaz vybere určitou sadu řádků, které popisují kohorta, který chcete definovat. Nástroj kohorty pak implicitně přidá "| provede Shrnutí podle klauzule user_Id dotazu. Tato data jsou zobrazená pod dotazem v tabulce, takže můžete zajistit, aby dotaz vrátil výsledky.
 
      > [!NOTE]
-     > Pokud dotaz nevidíte, zkuste oddíl zpřesnit tak, aby byl vyšší, a dotaz zjevte. Animovaný .gif na začátku této části ilustruje chování změny velikosti.
+     > Pokud se dotaz nezobrazuje, zkuste změnit velikost oddílu, aby se zajistilo jeho větší a odhalte dotaz. Animovaný soubor GIF na začátku této části znázorňuje chování při změně velikosti.
 
-2. Zkopírujte a vložte do editoru dotazů následující text:
+2. Zkopírujte následující text a vložte ho do editoru dotazů:
 
     ```KQL
     union customEvents, pageViews
     | where client_CountryOrRegion == "United Kingdom"
     ```
 
-3. Vyberte **Spustit dotaz**. Pokud se v tabulce nezobrazují ID uživatelů, změňte na zemi nebo oblast, kde má vaše aplikace uživatele.
+3. Vyberte **Spustit dotaz**. Pokud se v tabulce nezobrazí ID uživatelů, přejděte do země nebo oblasti, kde má vaše aplikace uživatele.
 
-4. Uložit a pojmenovat kohortu.
+4. Uložte a pojmenujte kohorta.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-_Definoval jsem kohortu uživatelů z určité země/oblasti. Když porovnám tuto kohortu v nástroji Uživatelé pouze s nastavením filtru pro tuto zemi nebo oblast, vidím různé výsledky. Proč?_
+_Definoval (a) jsem kohorta uživatele z určité země nebo oblasti. Po porovnání tohoto kohorta v nástroji Uživatelé, který stačí nastavit filtr v dané zemi nebo oblasti, se zobrazí různé výsledky. Proč?_
 
-Kohorty a filtry se liší. Předpokládejme, že máte kohortu uživatelů ze Spojeného království (definované jako v předchozím příkladu) a porovnat jeho výsledky s nastavením filtru "Země nebo oblast = Spojené království."
+Kohorty a filtry se liší. Předpokládejme, že máte kohorta uživatele ze Spojeného království (definované jako v předchozím příkladu), a porovnáte jeho výsledky s nastavením filtru "země nebo oblast = Spojené království".
 
-* Verze kohorty zobrazuje všechny události od uživatelů, kteří odeslali jednu nebo více událostí ze Spojeného království v aktuálním časovém rozsahu. Pokud rozdělíte podle země nebo oblasti, pravděpodobně se zobrazí mnoho zemí a oblastí.
-* Verze filtrů zobrazuje pouze události ze Spojeného království. Pokud se však rozdělíte podle země nebo oblasti, zobrazí se pouze Spojené království.
+* Verze kohorta zobrazuje všechny události uživatelů, kteří odeslali jednu nebo více událostí z Spojeného království v aktuálním časovém rozsahu. Pokud rozdělíte zemi nebo oblast, pravděpodobně se zobrazí řada zemí a oblastí.
+* Verze Filters zobrazuje pouze události ze Spojeného království. Pokud však rozdělíte podle země nebo oblasti, zobrazí se pouze Spojené království.
 
 ## <a name="learn-more"></a>Další informace
 
 * [Analytický dotazovací jazyk](https://go.microsoft.com/fwlink/?linkid=856587)
 * [Uživatelé, relace, události](usage-segmentation.md)
 * [Toky uživatelů](usage-flows.md)
-* [Přehled použití](usage-overview.md)
+* [Přehled využití](usage-overview.md)

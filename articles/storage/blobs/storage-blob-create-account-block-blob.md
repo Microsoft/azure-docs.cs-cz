@@ -1,6 +1,6 @@
 ---
-title: Vytvoření účtu úložiště objektů blob bloku – Azure Storage | Dokumenty společnosti Microsoft
-description: Ukazuje, jak vytvořit účet Azure BlockBlobStorage s vlastnostmi výkonu premium.
+title: Vytvořte účet úložiště objektů blob bloku – Azure Storage | Microsoft Docs
+description: Ukazuje, jak vytvořit účet Azure BlockBlobStorage s charakteristikou výkonu Premium.
 author: tamram
 services: storage
 ms.service: storage
@@ -9,52 +9,52 @@ ms.date: 03/23/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 6303644ada5c6f093611dba94daf8006f8cc5819
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79536900"
 ---
 # <a name="create-a-blockblobstorage-account"></a>Vytvoření účtu BlockBlobStorage
 
-Typ účtu BlockBlobStorage umožňuje vytvářet objekty BLOB bloku s vlastnostmi výkonu premium. Tento typ účtu úložiště je optimalizován pro úlohy s vysokou sazby transakcí nebo které vyžadují velmi rychlý přístup. Tento článek ukazuje, jak vytvořit účet BlockBlobStorage pomocí portálu Azure, Azure CLI nebo Azure PowerShell.
+Typ účtu BlockBlobStorage umožňuje vytvářet objekty blob bloku s charakteristikami výkonu Premium. Tento typ účtu úložiště je optimalizovaný pro úlohy s vysokými sazbami transakcí nebo, které vyžadují velmi rychlý přístup krát. Tento článek ukazuje, jak vytvořit účet BlockBlobStorage pomocí Azure Portal, rozhraní příkazového řádku Azure nebo Azure PowerShell.
 
 [!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
-Další informace o účtech BlockBlobStorage najdete v [tématu Přehled účtu úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
+Další informace o účtech BlockBlobStorage najdete v tématu [Přehled účtu Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
 Žádné.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
 
-Tento článek s návody vyžaduje modul Azure PowerShell Az verze 1.2.0 nebo novější. Aktuální verzi zjistíte spuštěním `Get-Module -ListAvailable Az`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
+Tento článek s postupem vyžaduje Azure PowerShell modul AZ verze 1.2.0 nebo novější. Aktuální verzi zjistíte spuštěním `Get-Module -ListAvailable Az`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-K Azure se můžete přihlásit a spouštět příkazy azure cli jedním ze dvou způsobů:
+Můžete se přihlásit k Azure a spustit příkazy rozhraní příkazového řádku Azure CLI jedním ze dvou způsobů:
 
-- Příkazy příkazového příkazu můžete spouštět z portálu Azure v Azure Cloud Shellu.
-- Můžete nainstalovat příkaz příkazpříkazy příkazového příkazu a spustit příkazy příkazového příkazu místně.
+- Příkazy rozhraní příkazového řádku můžete spustit z Azure Portal v Azure Cloud Shell.
+- Můžete nainstalovat rozhraní příkazového řádku a spustit příkazy rozhraní příkazového řádku místně.
 
 ### <a name="use-azure-cloud-shell"></a>Použití Azure Cloud Shellu
 
-Azure Cloud Shell je volně dostupné prostředí Bash, které můžete spustit přímo z webu Azure Portal. Nastavení příkazového odpočtů Azure je předinstalované a nakonfigurované pro použití s vaším účtem. Klikněte na tlačítko **Cloud Shell** v nabídce v pravé horní části portálu Azure:
+Azure Cloud Shell je volně dostupné prostředí Bash, které můžete spustit přímo z webu Azure Portal. Rozhraní příkazového řádku Azure je předem nainstalované a nakonfigurované pro použití s vaším účtem. V nabídce v pravé horní části Azure Portal klikněte na tlačítko **Cloud Shell** :
 
-[![Prostředí cloudshellu](../common/media/storage-quickstart-create-account/cloud-shell-menu.png)](https://portal.azure.com)
+[![Cloud Shell](../common/media/storage-quickstart-create-account/cloud-shell-menu.png)](https://portal.azure.com)
 
-Tlačítko spustí interaktivní prostředí, které můžete použít ke spuštění kroků popsaných v tomto článku s postupy:
+Tlačítko spustí interaktivní prostředí, které můžete použít ke spuštění kroků popsaných v tomto článku s návody:
 
-[![Snímek obrazovky s oknem Cloud Shell na portálu](../common/media/storage-quickstart-create-account/cloud-shell.png)](https://portal.azure.com)
+[![Snímek obrazovky zobrazující okno Cloud Shell na portálu](../common/media/storage-quickstart-create-account/cloud-shell.png)](https://portal.azure.com)
 
 ### <a name="install-the-cli-locally"></a>Místní instalace rozhraní příkazového řádku
 
-Rozhraní příkazového řádku Azure můžete také nainstalovat a používat místně. Tento článek s návody vyžaduje, abyste spouštěli Azure CLI verze 2.0.46 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). 
+Rozhraní příkazového řádku Azure můžete také nainstalovat a používat místně. Tento článek s návody vyžaduje, abyste spustili Azure CLI verze 2.0.46 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). 
 
 ---
 
@@ -62,11 +62,11 @@ Rozhraní příkazového řádku Azure můžete také nainstalovat a používat 
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Přihlaste se k [portálu Azure](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
 
-Přihlaste se k `Connect-AzAccount` předplatnému Azure pomocí příkazu a postupujte podle pokynů na obrazovce k ověření.
+Přihlaste se k předplatnému `Connect-AzAccount` Azure pomocí příkazu a podle pokynů na obrazovce proveďte ověření.
 
 ```powershell
 Connect-AzAccount
@@ -74,9 +74,9 @@ Connect-AzAccount
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete spustit Azure Cloud Shell, přihlaste se na [portál Azure](https://portal.azure.com).
+Pokud chcete spustit Azure Cloud Shell, přihlaste se k [Azure Portal](https://portal.azure.com).
 
-Chcete-li se přihlásit k místní instalaci příkazu příkazu CLI, spusťte příkaz [az login:](/cli/azure/reference-index#az-login)
+K místní instalaci rozhraní příkazového řádku se přihlaste spuštěním příkazu [AZ Login](/cli/azure/reference-index#az-login) :
 
 ```azurecli
 az login
@@ -87,57 +87,57 @@ az login
 ## <a name="create-a-blockblobstorage-account"></a>Vytvoření účtu BlockBlobStorage
 
 ## <a name="portal"></a>[Portál](#tab/azure-portal)
-Pokud chcete na webu Azure Portal vytvořit účet BlockBlobStorage, postupujte takto:
+Pokud chcete v Azure Portal vytvořit účet BlockBlobStorage, postupujte následovně:
 
-1. Na webu Azure Portal vyberte **Všechny služby** > kategorii **Úložiště** > **účty úložiště**.
+1. V Azure Portal vyberte **všechny služby** > kategorii **úložiště** > **účty úložiště**.
 
-1. V části **Účty úložiště**vyberte **Přidat**.
+1. V části **účty úložiště**vyberte **Přidat**.
 
-1. V poli **Předplatné** vyberte předplatné, ve kterém chcete vytvořit účet úložiště.
+1. V poli **předplatné** vyberte předplatné, ve kterém chcete účet úložiště vytvořit.
 
-1. V poli **Skupina zdrojů** vyberte existující skupinu prostředků nebo vyberte **Vytvořit nový**a zadejte název nové skupiny prostředků.
+1. V poli **Skupina prostředků** vyberte existující skupinu prostředků nebo vyberte **vytvořit novou**a zadejte název nové skupiny prostředků.
 
-1. Do pole **Název účtu úložiště** zadejte název účtu. Všimněte si následujících pokynů:
+1. Do pole **název účtu úložiště** zadejte název účtu. Pamatujte na následující pokyny:
 
-   - Název musí být jedinečný v rámci Azure.
-   - Název musí být dlouhý tři až 24 znaků.
-   - Název může obsahovat pouze čísla a malá písmena.
+   - Název musí být v rámci Azure jedinečný.
+   - Název musí být dlouhý 3 až 24 znaků.
+   - Název může obsahovat jenom číslice a malá písmena.
 
-1. V poli **Umístění** vyberte umístění pro účet úložiště nebo použijte výchozí umístění.
+1. V poli **umístění** vyberte umístění pro účet úložiště nebo použijte výchozí umístění.
 
-1. Pro zbývající nastavení nakonfigurujte následující:
+1. V případě zbývajících nastavení proveďte následující konfiguraci:
 
    |Pole     |Hodnota  |
    |---------|---------|
-   |**Výkon**    |  Vyberte **možnost Premium**.   |
-   |**Druh účtu**    | Vyberte **blockblobstorage**.      |
-   |**Replikace**    |  Ponechte výchozí nastavení **místně redundantního úložiště (LRS).**      |
+   |**Výkon**    |  Vyberte **Premium**.   |
+   |**Druh účtu**    | Vyberte **BlockBlobStorage**.      |
+   |**Replikace**    |  Ponechte výchozí nastavení **místně redundantního úložiště (LRS)**.      |
 
-   ![Zobrazuje portálové ui pro vytvoření účtu úložiště objektů blob bloku.](media/storage-blob-create-account-block-blob/create-block-blob-storage-account.png)
+   ![Zobrazuje uživatelské rozhraní portálu pro vytvoření účtu úložiště objektů blob bloku.](media/storage-blob-create-account-block-blob/create-block-blob-storage-account.png)
 
-1. Chcete-li zkontrolovat nastavení účtu úložiště, vyberte **Zkontrolovat + vytvořit.**
+1. Výběrem možnosti **zkontrolovat + vytvořit** zkontrolujte nastavení účtu úložiště.
 
 1. Vyberte **Vytvořit**.
 
-## <a name="azure-powershell"></a>[Azure Powershell](#tab/azure-powershell)
+## <a name="azure-powershell"></a>[Prostředí Azure PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-1. Otevřete relaci prostředí Windows PowerShell se zvýšenými oprávněními (Spustit jako správce).
+1. Otevřete relaci Windows PowerShellu se zvýšenými oprávněními (Spustit jako správce).
 
-1. Spusťte následující příkaz a ujistěte `Az` se, že je nainstalovaná nejnovější verze modulu PowerShell.
+1. Spusťte následující příkaz, abyste se ujistili, že je nainstalovaná nejnovější verze modulu `Az` PowerShellu.
 
    ```powershell
    Install-Module -Name Az -AllowClobber
    ```
 
-1. Otevřete novou konzoli PowerShellu a přihlaste se pomocí svého účtu Azure.
+1. Otevřete novou konzolu PowerShellu a přihlaste se pomocí svého účtu Azure.
 
    ```powershell
    Connect-AzAccount -SubscriptionId <SubscriptionID>
    ```
 
-1. V případě potřeby vytvořte novou skupinu prostředků. Nahraďte hodnoty v nabídkách a spusťte následující příkaz.
+1. V případě potřeby vytvořte novou skupinu prostředků. Hodnoty v uvozovkách nahraďte a spusťte následující příkaz.
 
    ```powershell
    $resourcegroup = "new_resource_group_name"
@@ -145,7 +145,7 @@ Pokud chcete na webu Azure Portal vytvořit účet BlockBlobStorage, postupujte 
    New-AzResourceGroup -Name $resourceGroup -Location $location
    ```
 
-1. Vytvořte účet BlockBlobStorage. Nahraďte hodnoty v nabídkách a spusťte následující příkaz.
+1. Vytvořte účet BlockBlobStorage. Hodnoty v uvozovkách nahraďte a spusťte následující příkaz.
 
    ```powershell
    $resourcegroup = "resource_group_name"
@@ -157,7 +157,7 @@ Pokud chcete na webu Azure Portal vytvořit účet BlockBlobStorage, postupujte 
 
 ## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Chcete-li vytvořit účet objektu blob bloku pomocí azure CLI, musíte nejprve nainstalovat Azure CLI v. 2.0.46 nebo novější verze. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
+Pokud chcete vytvořit účet bloku BLOB pomocí rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat rozhraní příkazového řádku Azure CLI v. 2.0.46 nebo novější verze. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
 1. Přihlaste se ke svému předplatnému Azure.
 
@@ -165,7 +165,7 @@ Chcete-li vytvořit účet objektu blob bloku pomocí azure CLI, musíte nejprve
    az login
    ```
 
-1. V případě potřeby vytvořte novou skupinu prostředků. Nahraďte hodnoty v závorkách (včetně závorek) a spusťte následující příkaz.
+1. V případě potřeby vytvořte novou skupinu prostředků. Hodnoty v závorkách (včetně závorek) nahraďte a spusťte následující příkaz.
 
    ```azurecli
    az group create \
@@ -173,7 +173,7 @@ Chcete-li vytvořit účet objektu blob bloku pomocí azure CLI, musíte nejprve
     --location "<location>"
    ```
 
-1. Vytvořte účet BlockBlobStorage. Nahraďte hodnoty v závorkách (včetně závorek) a spusťte následující příkaz.
+1. Vytvořte účet BlockBlobStorage. Hodnoty v závorkách (včetně závorek) nahraďte a spusťte následující příkaz.
 
    ```azurecli
    az storage account create \
@@ -188,6 +188,6 @@ Chcete-li vytvořit účet objektu blob bloku pomocí azure CLI, musíte nejprve
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o účtech úložiště najdete v tématu [Přehled účtu úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
+- Další informace o účtech úložiště najdete v tématu [Přehled účtu Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
 
-- Další informace o skupinách prostředků najdete [v tématu Přehled Správce prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+- Další informace o skupinách prostředků najdete v tématu [přehled Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).

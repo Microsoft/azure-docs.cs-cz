@@ -1,6 +1,6 @@
 ---
 title: Ochrana před hrozbami pro Azure Key Vault
-description: Tento článek vysvětluje, jak nastavit pokročilou ochranu před hrozbami pro Azure Key Vault v Azure Security Center
+description: Tento článek vysvětluje, jak nastavit rozšířenou ochranu před internetovými útoky pro Azure Key Vault v Azure Security Center
 services: security-center
 author: memildin
 manager: rkarlin
@@ -9,42 +9,42 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: 449096590df6145c9f80dcf2c97726931909a2ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77914802"
 ---
-# <a name="threat-protection-for-azure-key-vault-preview"></a>Ochrana před hrozbami pro Azure Key Vault (preview)
+# <a name="threat-protection-for-azure-key-vault-preview"></a>Ochrana před hrozbami pro Azure Key Vault (Preview)
 
-Pokročilá ochrana před hrozbami pro Azure Key Vault poskytuje další vrstvu inteligence zabezpečení. Tento nástroj detekuje potenciálně škodlivé pokusy o přístup nebo zneužití účtů trezoru klíčů. Pomocí nativní pokročilé ochrany před hrozbami v Azure Security Center můžete řešit hrozby, aniž byste byli odborníkem na zabezpečení a aniž byste se naučili další systémy monitorování zabezpečení.
+Rozšířená ochrana před internetovými útoky pro Azure Key Vault poskytuje další vrstvu funkce Security Intelligence. Tento nástroj detekuje potenciálně nebezpečné pokusy o přístup k účtům Key Vault a jejich zneužití. Pomocí nativní rozšířené ochrany před internetovými útoky v Azure Security Center můžete řešit hrozby, aniž by se jedná o odborníka na zabezpečení, a bez učení dalších systémů monitorování zabezpečení.
 
-Když Security Center detekuje anomální aktivity, zobrazí výstrahy. Také e-maily správce předplatného s podrobnostmi o podezřelé aktivity a doporučení, jak prozkoumat a napravit identifikované hrozby.
+Když Security Center detekuje aktivitu neobvyklé, zobrazí výstrahy. Také pošle e-mailem správce předplatného s podrobnostmi o podezřelé aktivitě a doporučeních k tomu, jak zjistit a opravit zjištěné hrozby.
 
-## <a name="configuring-threat-protection-from-security-center"></a>Konfigurace ochrany před hrozbami z Centra zabezpečení
+## <a name="configuring-threat-protection-from-security-center"></a>Konfigurace ochrany před hrozbami z Security Center
 
-Ve výchozím nastavení je rozšířená ochrana před hrozbami povolena pro všechny účty trezoru klíčů, když se přihlásíte k odběru standardní cenové úrovně Centra zabezpečení. Další informace naleznete v [tématu Ceny](security-center-pricing.md).
+Ve výchozím nastavení je rozšířená ochrana před internetovými útoky povolená pro všechny vaše Key Vault účty, když se přihlásíte k odběru standardní cenové úrovně Security Center. Další informace najdete v tématu [ceny](security-center-pricing.md).
 
-Povolení nebo zakázání ochrany pro konkrétní předplatné:
+Povolení nebo zakázání ochrany určitého předplatného:
 
-1. V levém podokně v Centru zabezpečení vyberte **Nastavení cenového &**.
+1. V levém podokně Security Center vyberte **cenové & nastavení**.
 
 1. Vyberte předplatné s účty úložiště, pro které chcete povolit nebo zakázat ochranu před hrozbami.
 
-1. Vyberte **Cenová úroveň**.
+1. Vyberte **cenovou úroveň**.
 
-1. Ve skupině **Vybrat cenovou úroveň podle typu prostředku** vyhledejte řádek **Trezory klíčů** a vyberte **Povoleno** nebo **Zakázáno**.
+1. V poli **Vybrat cenovou úroveň podle typu prostředku** Najděte řádek **trezory klíčů** a vyberte **povoleno** nebo **zakázáno**.
 
-    [![Povolení nebo zakázání rozšířené ochrany před hrozbami pro trezor klíčů v Azure Security Center](media/advanced-threat-protection-key-vault/atp-for-akv-enable-atp-for-akv.png)](media/advanced-threat-protection-key-vault/atp-for-akv-enable-atp-for-akv.png#lightbox)
+    [![Povolení nebo zakázání rozšířené ochrany před internetovými útoky pro Key Vault v Azure Security Center](media/advanced-threat-protection-key-vault/atp-for-akv-enable-atp-for-akv.png)](media/advanced-threat-protection-key-vault/atp-for-akv-enable-atp-for-akv.png#lightbox)
 
 1. Vyberte **Uložit**.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli, jak povolit a zakázat pokročilou ochranu před hrozbami pro Azure Key Vault. 
+V tomto článku jste zjistili, jak povolit a zakázat rozšířenou ochranu před internetovými útoky pro Azure Key Vault. 
 
-Související materiály naleznete v následujících článcích:
+Související materiály najdete v následujících článcích:
 
-- [Ochrana před hrozbami v Azure Security Center](threat-protection.md)-- Tento článek popisuje zdroje výstrah zabezpečení v Azure Security Center.
-- [Výstrahy zabezpečení trezoru klíčů](alerts-reference.md#alerts-azurekv)– část referenční tabulky v referenční tabulce v úložišti klíčů pro všechny výstrahy Centra zabezpečení Azure
+- [Ochrana před hrozbami v Azure Security Center](threat-protection.md)– Tento článek popisuje zdroje výstrah zabezpečení v Azure Security Center.
+- [Key Vault výstrahy zabezpečení](alerts-reference.md#alerts-azurekv)– oddíl Key Vault referenční tabulky pro všechny Azure Security Center výstrahy

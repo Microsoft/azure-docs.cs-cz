@@ -4,10 +4,10 @@ description: Zahájení monitorování nové aplikace s novým klíčem instrume
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.openlocfilehash: 395e8d667985318f4a084428c6fd4c395ee8b956
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671439"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>Monitorování webu SharePointu pomocí Application Insights
@@ -39,7 +39,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 </script>
 ```
 
-Vložte skript těsně &lt;před&gt; značku /head každé stránky, kterou chcete sledovat. Pokud má váš web stránku předlohy, můžete tam skript umístit. Například v projektu ASP.NET MVC ho vložíte do souboru View\Shared\_Layout.cshtml.
+Vložte skript těsně před značku &lt;/Head&gt; každé stránky, kterou chcete sledovat. Pokud má váš web stránku předlohy, můžete skript umístit sem. Například v projektu ASP.NET MVC ho vložíte do souboru View\Shared\_Layout.cshtml.
 
 Skript obsahuje klíč instrumentace, který nasměruje telemetrii pro daný prostředek Application Insights.
 

@@ -1,7 +1,7 @@
 ---
-title: 'Model shlukování vlaků: Odkaz na modul'
+title: 'Model clusteringu pro vlak: Reference k modulu'
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak pomocí modulu Model clusteringu vlaků v Azure Machine Learning trénovat modely clusteringu.
+description: Naučte se používat modul výukového modelu clusteringu v Azure Machine Learning ke školení modelů clusteringu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,48 +10,48 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
 ms.openlocfilehash: c29baf3cdda998a2ab78c84f3311b84d37086bcd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79477421"
 ---
 # <a name="train-clustering-model"></a>Trénování modelu clusteringu
 
-Tento článek popisuje modul v návrháři Azure Machine Learning (preview).
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
-Tento modul slouží k trénování modelu clusteringu.
+Tento modul slouží ke školení modelu clusteringu.
 
-Modul přebírá model netrénovaného clusteringu, který jste již nakonfigurovali pomocí modulu [K-Means Clustering,](k-means-clustering.md) a třídí model pomocí sady dat s popiskem nebo bez popisku. Modul vytvoří trénovaný model, který můžete použít pro předpověď a sadu přiřazení clusteru pro každý případ v trénovacích datech.
+Modul převezme provedený model clusteringu, který jste už nakonfigurovali pomocí technologie [K-označuje modul clusteringu](k-means-clustering.md) a navlakuje model pomocí označené nebo neoznačené sady dat. Modul vytvoří jak vyškolený model, který můžete použít pro předpověď, a sadu přiřazení clusteru pro každý případ v školicích datech.
 
 > [!NOTE]
-> Model clusteringu nelze trénovat pomocí modulu [Train Model,](train-model.md) což je obecný modul pro trénování modelů strojového učení. Je to [proto, že Train Model](train-model.md) pracuje pouze s algoritmy učení pod dohledem. K-prostředky a další clustering algoritmy umožňují učení bez dozoru, což znamená, že algoritmus může učit z neoznačených dat.  
+> Model clusteringu se nedá vyškolet pomocí modulu [vlakového modelu](train-model.md) , který je obecným modulem pro školení modelů strojového učení. Důvodem je to, že [model výuky](train-model.md) funguje jenom se základními algoritmy učení. K-znamená a další algoritmy clusteringu umožňují bezdohledné učení, což znamená, že se algoritmus může naučit z neoznačených dat.  
   
-## <a name="how-to-use-train-clustering-model"></a>Použití modelu clusteringu vlaků  
+## <a name="how-to-use-train-clustering-model"></a>Použití modelu výukového clusteringu  
 
-1.  Přidejte modul **Model clusteringu vlaků** do kanálu v návrháři. Modul najdete v části **Moduly strojového učení**v kategorii **Vlak.**  
+1.  Přidejte modul **clusteringu clustering model** do kanálu v návrháři. Modul najdete v části **Machine Learning moduly**v kategorii **vlaků** .  
   
-2. Přidejte modul [Clustering K-Means](k-means-clustering.md) nebo jiný vlastní modul, který vytvoří kompatibilní model clusteringu a nastavte parametry clustering modelu.  
+2. Přidejte modul pro clusteringu, který je [prostředkem pro clustering](k-means-clustering.md) , nebo jiný vlastní modul, který vytvoří kompatibilní model clusteringu, a nastavte parametry modelu clusteringu.  
     
-3.  Připojte trénovací datovou sadu k pravému vstupu **modelu shlukování vlaků**.
+3.  Připojte školicí datovou sadu k pravému vstupu **modelu clusteringu s výukou**.
   
-5.  V **sadě sloupců**vyberte sloupce z datové sady, které se mají použít v clusterech budov. Nezapomeňte vybrat sloupce, které dělají dobré funkce: například se vyhněte použití ID nebo jiných sloupců, které mají jedinečné hodnoty, nebo sloupce, které mají všechny stejné hodnoty.
+5.  V části **sada sloupců**vyberte sloupce z datové sady, které chcete použít při vytváření clusterů. Nezapomeňte vybrat sloupce, které mají dobré funkce, například Vyhněte se použití ID nebo jiných sloupců, které mají jedinečné hodnoty, nebo sloupců, které mají všechny stejné hodnoty.
 
-    Pokud je popisek k dispozici, můžete jej použít jako prvek nebo jej vynechat.  
+    Pokud je popisek k dispozici, můžete ho buď použít jako funkci, nebo ho nechat zapnutý.  
   
-6. Vyberte **možnost, Vyhledat připojit nebo zrušit zaškrtnutí pouze výsledek**, pokud chcete výstup trénovacích dat spolu s novým popiskem clusteru.
+6. Vyberte možnost a **zaškrtněte políčko připojit nebo zrušit zaškrtnutí pouze pro výsledek**, pokud chcete výstup školicích dat společně s novým označením clusteru.
 
-    Pokud tuto volbu zrušíte, budou výstupem pouze přiřazení clusteru. 
+    Pokud zrušíte výběr této možnosti, budou výstupem pouze přiřazení clusteru. 
 
-7. Odešlete kanál nebo klepněte na modul **Model shlukování vlaků** a vyberte **Spustit vybrané**.  
+7. Odešlete kanál nebo klikněte na modul **výukového modelu clusteringu** a vyberte **Spustit vybrané**.  
   
 ### <a name="results"></a>Výsledky
 
-Po ukončení výcviku:
+Po dokončení školení:
 
-+ Chcete-li uložit snímek trénovaného modelu, vyberte kartu **Výstupy** v pravém panelu modulu **modelu Vlak.** Vyberte ikonu **Registrovat datovou sadu,** chcete-li model uložit jako opakovaně použitelný modul.
++ Pokud chcete uložit snímek výukového modelu, vyberte kartu **výstupy** na pravém panelu modulu **výuka modelu** . Výběrem ikony **Registrovat datovou sadu** uložte model jako opakovaně použitelný modul.
 
-+ Chcete-li generovat skóre z modelu, použijte [přiřadit data clusterům](assign-data-to-clusters.md).
++ K vygenerování skóre z modelu použijte [přiřazení dat do clusterů](assign-data-to-clusters.md).
 
 ## <a name="next-steps"></a>Další kroky
 

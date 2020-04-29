@@ -1,6 +1,6 @@
 ---
 title: Úrovně přiblížení a mřížka dlaždic | Mapy Microsoft Azure
-description: V tomto článku se dozvíte o úrovních přiblížení a mřížce dlaždic v Mapách Microsoft Azure.
+description: V tomto článku se dozvíte o úrovních přiblížení a mřížce dlaždic v mapách Microsoft Azure.
 author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 01/22/2020
@@ -9,68 +9,68 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: d58c9f6940dceefdc25211f4540b34522aec935d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79530287"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Úrovně přiblížení a mřížka dlaždic
 
-Mapy Azure používají souřadnicový systém projekce Sférický Mercator (EPSG: 3857). Projekce je matematický model používaný k transformaci sférického glóbu na plochou mapu. Sférická mercatorská projekce roztáhne mapu na pólech a vytvoří čtvercovou mapu. Tato projekce výrazně zkresluje měřítko a oblast mapy, ale má dvě důležité vlastnosti, které převažují nad tímto zkreslením:
+Azure Maps použít souřadnicový systém kulové Mercator (EPSG: 3857). Projekcí je matematický model, který slouží k transformaci kulového zeměkoule na plochou mapu. Kulový Mercator projekce roztáhne mapu na POLES a vytvoří čtvercovou mapu. Tato projekce významně deformuje škálu a oblast mapy, ale má dvě důležité vlastnosti, které tuto zkreslení převáží:
 
-- Je to konformní projekce, což znamená, že zachovává tvar relativně malých objektů. Zachování tvaru malých objektů je obzvláště důležité při zobrazování leteckých snímků. Chceme se například vyhnout deformaci tvaru budov. Čtvercové budovy by měly vypadat čtvercové, ne obdélníkové.
-- Je to válcová projekce. Sever a jih jsou vždy nahoru a dolů a západ a východ jsou vždy vlevo a vpravo. 
+- Jedná se o vyhovující projekci, což znamená, že zachovává tvar relativně malých objektů. Zachování tvaru malých objektů je obzvláště důležité při zobrazování leteckých snímků. Chceme například vyhnout se zkreslení tvaru budov. Čtvercové budovy by měly být čtvercové, nikoli pravoúhlé.
+- Je to válcová projekce. Sever a jih jsou vždycky nahoru a dolů a západ a východ jsou vždycky vlevo a vpravo. 
 
-Pro optimalizaci výkonu načítání a zobrazení mapy je mapa rozdělena na čtvercové dlaždice. Dlaždice Azure Maps SDK používají dlaždice, které mají velikost 512 x 512 pixelů pro silniční mapy a menší 256 x 256 pixelů pro satelitní snímky. Azure Maps poskytuje rastrové a vektorové dlaždice pro 23 úrovní zvětšení, číslované 0 až 22. Při úrovni přiblížení 0 se celý svět vejde na jednu dlaždici:
-
-<center>
-
-![Dlaždice mapy světa](./media/zoom-levels-and-tile-grid/world0.png)</center>
-
-Úroveň zvětšení 1 používá čtyři dlaždice k vykreslení světa: 2 x 2 čtverce
+Pro optimalizaci výkonu načítání a zobrazování map je mapa rozdělena na čtvercové dlaždice. Sada Azure Maps SDK používá dlaždice s velikostí 512 x 512 pixelů pro mapy cest a menší 256 × 256 pixelů pro satelitní obrazové bloky. Azure Maps poskytuje rastrové a vektorové dlaždice pro 23 úrovní přiblížení, očíslované od 0 do 22. Na úrovni přiblížení 0 se celý svět vejde na jednu dlaždici:
 
 <center>
 
-![Rozložení mapových dlaždic 2x2](media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png)</center>
+![Dlaždice světové mapy](./media/zoom-levels-and-tile-grid/world0.png)</center>
 
-Každý další úroveň přiblížení quad-rozdělí dlaždice předchozí, vytváří mřížku 2<sup>zoom</sup> x 2<sup>zoom</sup>. Úroveň přiblížení 22 je mřížka 2<sup>22</sup> x 2<sup>22</sup>, nebo 4,194,304 x 4,194,304 dlaždice (17,592,186,044,416 dlaždice celkem).
+Úroveň přiblížení 1 používá k vykreslení světa čtyři dlaždice: 2 x 2 čtverec
 
-Ovládací prvky interaktivnímapy Azure Maps pro web a Android podporují 25 úrovní zvětšení, očíslovaných 0 až 24. Ačkoli silniční data budou k dispozici pouze na úrovních přiblížení, pokud jsou dlaždice k dispozici.
+<center>
 
-Následující tabulka obsahuje úplný seznam hodnot pro úrovně zvětšení, kde je velikost dlaždice 512 pixelů čtverečních:
+![rozložení dlaždice mapy 2x2](media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png)</center>
 
-|Úroveň zvětšení|Metry/pixel|Strana měřidel/dlaždic|
+Každá další úroveň přiblížení rozděluje dlaždice předchozí ikony a vytvoří mřížku 2<sup>přiblížení x 2</sup> <sup>přiblížení</sup>. Úroveň přiblížení 22 je mřížka 2<sup>22</sup> x 2<sup>22</sup>nebo 4 194 304 x 4 194 304 (17 592 186 044 416 dlaždic celkem).
+
+Azure Maps interaktivní ovládací prvky mapování pro web a Android podporují 25 úrovní přiblížení s čísly 0 až 24. I když jsou data na cestách dostupná jenom na úrovních přiblížení, když jsou dlaždice dostupné.
+
+V následující tabulce je uveden úplný seznam hodnot pro úroveň přiblížení, kde velikost dlaždice je 512 pixelů (čtvereček):
+
+|Úroveň přiblížení|Měřiče/pixel|Měřiče/strana vedle sebe|
 |--- |--- |--- |
 |0|156543|40075008|
-|1|78271.5|20037504|
-|2|39135.8|10018764.8|
-|3|19567.9|5009382.4|
-|4|9783.9|2504678.4|
+|1|78271,5|20037504|
+|2|39135,8|10018764,8|
+|3|19567,9|5009382,4|
+|4|9783,9|2504678,4|
 |5|4892|1252352|
 |6|2446|626176|
 |7|1 223|313088|
-|8|611.5|156544|
-|9|305.7|78259.2|
-|10|152.9|39142.4|
-|11|76.4|19558.4|
-|12|38.2|9779.2|
-|13|19.1|4889.6|
-|14|9.6|2457.6|
-|15|4.8|1228.8|
-|16|2.4|614.4|
-|17|1.2|307.2|
-|18|0.6|152.8|
-|19|0.3|76.4|
-|20|0,15|38.2|
-|21|0.075|19.1|
-|22|0.0375|9.55|
-|23|0.01875|4.775|
-|24|0.009375|2.3875|
+|8|611,5|156544|
+|9|305,7|78259,2|
+|10|152,9|39142,4|
+|11|76,4|19558,4|
+|12|38,2|9779,2|
+|13|19,1|4889,6|
+|14|9.6|2457,6|
+|15|4,8|1228,8|
+|16|2.4|614,4|
+|17|1.2|307,2|
+|18|0.6|152,8|
+|19|0.3|76,4|
+|20|0,15|38,2|
+|21|0,075|19,1|
+|22|0,0375|9,55|
+|23|0,01875|4,775|
+|24|0,009375|2,3875|
 
-## <a name="pixel-coordinates"></a>Souřadnice obrazových bodů
+## <a name="pixel-coordinates"></a>Souřadnice pixelů
 
-Po výběru projekce a měřítka pro každou úroveň zvětšení můžeme převést zeměpisné souřadnice na souřadnice obrazových bodů. Plná šířka a výška obrazových bodů obrazu mapy světa pro určitou úroveň přiblížení se vypočítá takto:
+Po zvolení projekce a škálování pro použití na každé úrovni přiblížení můžeme geografické souřadnice převést na souřadnice pixelu. Šířka a výška obrázku mapy na celém světě pro určitou úroveň přiblížení se vypočítá takto:
 
 ```javascript
 var mapWidth = tileSize * Math.pow(2, zoom);
@@ -78,15 +78,15 @@ var mapWidth = tileSize * Math.pow(2, zoom);
 var mapHeight = mapWidth;
 ```
 
-Vzhledem k tomu, že šířka a výška mapy se na každé úrovni přiblížení liší, liší se i souřadnice obrazových bodů. Pixel v levém horním rohu mapy má vždy souřadnice obrazových bodů (0, 0). Pixel v pravém dolním rohu mapy má souřadnice obrazových bodů *(šířka-1, výška-1)* nebo odkazující na rovnice v předchozí části *(tileSize \* 2<sup>zoom</sup>–1, tileSize \* 2<sup>zoom</sup>–1)*. Například při použití 512 čtvercových dlaždic na úrovni 2, souřadnice obrazových bodů se pohybují od (0, 0) do (2047, 2047), takto:
+Vzhledem k tomu, že se šířka a výška mapy liší v každé úrovni přiblížení, jsou souřadnice v pixelech. Pixel v levém horním rohu mapy má vždy souřadnice pixelu (0, 0). Pixel v pravém dolním rohu mapy má souřadnice pixelu *(Width-1, Height-1)* nebo odkazující na rovnice v předchozí části *(vlastnost TileSize \* 2<sup>zoom</sup>– 1, vlastnost TileSize \* 2<sup>zoom</sup>-1)*. Pokud například použijete 512 čtvercových dlaždic na úrovni 2, souřadnicový pixel rozsah od (0, 0) do (2047, 2047), například:
 
 <center>
 
-![Mapa zobrazující rozměry v obrazových bodech](media/zoom-levels-and-tile-grid/map-width-height.png)
+![Mapa znázorňující rozměry v pixelech](media/zoom-levels-and-tile-grid/map-width-height.png)
 
 </center>
 
-Vzhledem k zeměpisné šířce a zeměpisné délky ve stupních a úrovni podrobností se souřadnice pixelxY vypočtou takto:
+Poskytnutá Zeměpisná šířka a délka ve stupních a úroveň podrobností je souřadnice XY v pixelech vypočtené takto:
 
 ```javascript
 var sinLatitude = Math.sin(latitude * Math.PI/180);
@@ -96,11 +96,11 @@ var pixelX = ((longitude + 180) / 360) * tileSize * Math.pow(2, zoom);
 var pixelY = (0.5 – Math.log((1 + sinLatitude) / (1 – sinLatitude)) / (4 * Math.PI)) * tileSize * Math.pow(2, zoom);
 ```
 
-Předpokládá se, že hodnoty zeměpisné šířky a délky jsou na základně WGS 84. I když Azure Maps používá sférickou projekci, je důležité převést všechny geografické souřadnice na společné datum. WGS 84 je vybrané datum. Předpokládá se, že hodnota zeměpisné délky bude v rozsahu od -180 stupňů do +180 stupňů a hodnota zeměpisné šířky musí být oříznuta tak, aby byla v rozsahu od -85.05112878 do 85.05112878. Přilnutí k těmto hodnotám zabrání singularitě na pólech a zajistí, že promítaná mapa bude mít čtvercový tvar.
+Hodnota zeměpisné šířky a délky se považuje za WGS 84 datum. I když Azure Maps používá kulové projekci, je důležité převést všechny geografické souřadnice na běžné datum. WGS 84 je vybrané datum. Hodnota zeměpisné délky se předpokládá od-180 stupňů do + 180 stupňů a hodnota Zeměpisná šířka musí být oříznutá na rozsah od-85,05112878 do 85,05112878. Dodržování těchto hodnot zabrání jednotnému navýšení na POLES a zajistí, že je projektový map na čtvercovém tvaru.
 
-## <a name="tile-coordinates"></a>Souřadnice dlaždic
+## <a name="tile-coordinates"></a>Souřadnice dlaždice
 
-Pro optimalizaci výkonu načítání a zobrazení mapy je vykreslená mapa rozřezána na dlaždice. Počet pixelů a počet dlaždic se liší na každé úrovni přiblížení:
+Pro optimalizaci výkonu načítání a zobrazování map se vykreslená mapa ořízne na dlaždice. Počet pixelů a počet dlaždic se v každé úrovni přiblížení liší:
 
 ```javascript
 var numberOfTilesWide = Math.pow(2, zoom);
@@ -108,13 +108,13 @@ var numberOfTilesWide = Math.pow(2, zoom);
 var numberOfTilesHigh = numberOfTilesWide;
 ```
 
-Každá dlaždice je dána XY souřadnice v rozmezí od (0, 0) v levém horním rohu *na (2<sup>zoom</sup>-1, 2<sup>zoom</sup>-1)* v pravém dolním rohu. Například při úrovni zvětšení 2 se souřadnice dlaždice pohybují od (0, 0) do (7, 7) následovně:
+Na každé dlaždici se v pravém dolním rohu předávají souřadnice XY od (0, 0) vlevo nahoře *(2<sup>přiblížení</sup>– 1, 2<sup>přiblížení</sup>– 1)* . Například na úrovni přiblížení 2 je dlaždice v rozsahu od (0, 0) do (7, 7) následujícím způsobem:
 
 <center>
 
-![Mapa souřadnic dlaždic](media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png)</center>
+![Mapa souřadnic dlaždice](media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png)</center>
 
-Vzhledem k tomu, pár pixel XY souřadnice, můžete snadno určit dlaždice XY souřadnice dlaždice obsahující tento pixel:
+S ohledem na dvojici souřadnic XY bodových pixelů lze snadno určit souřadnice XY pro dlaždici, která obsahuje tento pixel:
 
 ```javascript
 var tileX = Math.floor(pixelX / tileSize);
@@ -122,30 +122,30 @@ var tileX = Math.floor(pixelX / tileSize);
 var tileY = Math.floor(pixelY / tileSize);
 ```
 
-Dlaždice se nazývají úrovní přiblížení. Souřadnice x a y odpovídají poloze dlaždice na mřížce pro tuto úroveň přiblížení.
+Dlaždice jsou volány pomocí úrovně přiblížení. Souřadnice x a y odpovídají pozici dlaždice v mřížce pro tuto úroveň zvětšení.
 
-Při určování úrovně přiblížení, kterou chcete použít, pamatujte, že každé umístění je na dlaždici v pevné poloze. V důsledku toho je počet dlaždic potřebných k zobrazení dané rozlohy území závisí na konkrétním umístění mřížky přiblížení na mapě světa. Například, pokud existují dva body 900 metrů od sebe, *může* to trvat pouze tři dlaždice pro zobrazení trasy mezi nimi na úrovni zvětšení 17. Nicméně, v případě, že západní bod je na pravé straně jeho dlaždice, a východní bod na levé straně dlaždice, může trvat čtyři dlaždice:
-
-<center>
-
-![Měřítko ukázky lupy](media/zoom-levels-and-tile-grid/zoomdemo_scaled.png)</center>
-
-Jakmile je určena úroveň přiblížení, lze vypočítat hodnoty x a y. Dlaždice vlevo nahoře v každé mřížce zvětšení je x=0, y=0; pravá dolní dlaždice je na x = 2<sup>zoom-1</sup>, y = 2<sup>zoom-1</sup>.
-
-Zde je zoom mřížky pro zvětšení úroveň 1:
+Když určíte, která úroveň zvětšení se má použít, zapamatujte si, že každé umístění je na jeho dlaždici na pevné pozici. V důsledku toho počet dlaždic potřebných k zobrazení daného expanse oblasti závisí na konkrétním umístění mřížky lupy na světové mapě. Například pokud existují dva body 900 metrů, může trvat pouze tři dlaždice, aby bylo *možné* Zobrazit trasu mezi nimi na úrovni přiblížení 17. Pokud je však západní bod na pravé straně dlaždice a na levé straně dlaždice, může to mít čtyři dlaždice:
 
 <center>
 
-![Mřížka zvětšení pro úroveň zvětšení 1](media/zoom-levels-and-tile-grid/api_x_y.png)</center>
+![Zvětšit zkušební měřítko](media/zoom-levels-and-tile-grid/zoomdemo_scaled.png)</center>
 
-## <a name="quadkey-indices"></a>Kvadkey indexy
+Po určení úrovně přiblížení lze vypočítat hodnoty x a y. Levá horní dlaždice v každé mřížce lupy je x = 0, y = 0; pravá dolní dlaždice je na ose x = 2<sup>přiblížení-1</sup>, y = 2<sup>přiblížení-1</sup>.
 
-Některé platformy `quadkey` mapování používají konvence pojmenování indexování, který kombinuje dlaždice ZY souřadnice do jednoho rozměru řetězec s názvem `quadtree` klíče nebo `quadkeys` pro krátké. Každý `quadkey` jednoznačně identifikuje jednu dlaždici na určité úrovni podrobností a lze jej použít jako klíč v běžné databáze B-stromindexy. Sady Azure Maps SDK podporují překrytí vrstev `quadkey` dlaždic, které kromě jiných konvencí pojmenování používají kromě jiných konvencí pojmenování, jak je popsáno v dokumentu [Přidat vrstvu dlaždice.](map-add-tile-layer.md)
+Tady je mřížka lupy pro úroveň přiblížení 1:
+
+<center>
+
+![Mřížka lupy pro úroveň přiblížení 1](media/zoom-levels-and-tile-grid/api_x_y.png)</center>
+
+## <a name="quadkey-indices"></a>Quadkey indexy
+
+Některé platformy pro mapování používají `quadkey` konvenci vytváření názvů pro indexování, které KOMBINUJÍ dlaždice ZY do řetězce s jedním dimenzí `quadtree` s názvem `quadkeys` Keys nebo pro krátké. Každá `quadkey` jednoznačně identifikuje jednu dlaždici na určité úrovni podrobností a je možné ji použít jako klíč v běžných rejstřících stromu databáze B. Sady SDK pro Azure Maps podporují překrytí vrstev dlaždic, které `quadkey` používají konvence pojmenování kromě dalších konvencí pojmenování, jak je popsáno v dokumentu [Přidat vrstvu dlaždice](map-add-tile-layer.md) .
 
 > [!NOTE]
-> Konvence `quadkeys` pojmenování funguje pouze pro úrovně zvětšení jednoho nebo vyššího. Azure Maps SDK je podpora úroveň zvětšení 0, což je jedna mapa dlaždice pro celý svět. 
+> Konvence `quadkeys` pojmenování funguje pouze pro úrovně přiblížení jednoho nebo více. Sada SDK pro Azure Maps podporuje úroveň přiblížení 0, což je jedna dlaždice mapy pro celý svět. 
 
-Chcete-li převést `quadkey`souřadnice dlaždic na , jsou bity souřadnic Y a X prokládané a výsledek je interpretován jako základní číslo 4 (se zachováním počátečních nul) a převedeny na řetězec. Například dané dlaždice XY souřadnice (3, 5) na úrovni 3, `quadkey` je stanovena takto:
+Chcete-li převést souřadnice dlaždice `quadkey`na, jsou zachovány bity Y a X a výsledek je interpretován jako číslo základní-4 (s počátečními nulami) a převedeno na řetězec. Například vzhledem k souřadnicím grafu dlaždice (3, 5) na úrovni 3 `quadkey` je určena takto:
 
 ```
 tileX = 3 = 011 (base 2)
@@ -155,19 +155,19 @@ tileY = 5 = 1012 (base 2)
 quadkey = 100111 (base 2) = 213 (base 4) = "213"
 ```
 
-`Qquadkeys`mají několik zajímavých vlastností. Za prvé, délka `quadkey` (počet číslic) se rovná úrovni zvětšení odpovídající dlaždice. Za druhé, libovolná `quadkey` dlaždice `quadkey` začíná nadřazenou dlaždicí (obsahující dlaždici na předchozí úrovni). Jak je znázorněno v příkladu níže, dlaždice 2 je nadřazenou položkou dlaždic 20 až 23:
+`Qquadkeys`mít několik zajímavých vlastností. Za prvé se délka `quadkey` (počet číslic) rovná úrovni přiblížení odpovídající dlaždice. Za druhé, `quadkey` Každá dlaždice začíná na `quadkey` své nadřazené dlaždici (obsahující dlaždici na předchozí úrovni). Jak je znázorněno v následujícím příkladu, dlaždice 2 je nadřízenou dlaždici 20 až 23:
 
 <center>
 
-![Quadkey dlaždice pyramida](media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png)</center>
+![Jehlan dlaždice Quadkey](media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png)</center>
 
-Nakonec `quadkeys` zadejte jednorozměrný indexový klíč, který obvykle zachová blízkost dlaždic v prostoru XY. Jinými slovy, dvě dlaždice, které mají `quadkeys` v blízkosti XY souřadnice obvykle mají, které jsou relativně blízko u sebe. To je důležité pro optimalizaci výkonu databáze, protože sousední dlaždice jsou často požadovány ve skupinách a je žádoucí zachovat tyto dlaždice na stejné diskové bloky, aby se minimalizoval počet čtení disku.
+Nakonec `quadkeys` zadejte jednorozměrný klíč indexu, který obvykle zachovává blízkost dlaždic v prostoru XY. Jinými slovy, dvě dlaždice, které mají okolní souřadnice XY `quadkeys` , jsou obvykle relativně blízko dohromady. To je důležité pro optimalizaci výkonu databáze, protože sousední dlaždice se ve skupinách často požadují a je žádoucí, aby tyto dlaždice zůstaly na stejných blocích na disku, aby se minimalizoval počet čtení z disku.
 
-## <a name="tile-math-source-code"></a>Zdrojový kód matematiky dlaždice
+## <a name="tile-math-source-code"></a>Plovoucí zdrojový kód pro matematiku
 
-Následující ukázkový kód ukazuje, jak implementovat funkce popsané v tomto dokumentu. Tyto funkce lze podle potřeby snadno přeložit do jiných programovacích jazyků.
+Následující vzorový kód ukazuje, jak implementovat funkce popsané v tomto dokumentu. Tyto funkce mohou být v případě potřeby snadno přeloženy do jiných programovacích jazyků.
 
-#### <a name="c"></a>[C #](#tab/csharp)
+#### <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 using System;
@@ -948,23 +948,23 @@ module AzureMaps {
 * * *
 
 > [!NOTE]
-> Ovládací prvky interaktivní mapy v sadě Azure Maps SDK mají pomocné funkce pro převod mezi geoprostorovými pozicemi a pixely výřezu. 
-> - [Web SDK: Mapovat pixel a výpočty polohy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
+> Ovládací prvky interaktivní mapy v sadě Azure Maps SDK mají pomocné funkce pro převod mezi geoprostorové pozice a pixely zobrazení. 
+> - [Webová sada SDK: mapování obrazových bodů a umístění](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
 
 ## <a name="next-steps"></a>Další kroky
 
-Přímý přístup k mapovým dlaždicím ze služeb Azure Maps REST:
+Přímý přístup k dlaždicím mapy ze služby Azure Maps REST:
 
 > [!div class="nextstepaction"]
 > [Získat dlaždice mapy](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 
 > [!div class="nextstepaction"]
-> [Získání dlaždic dopravního toku](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile)
+> [Získat dlaždice toku provozu](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile)
 
 > [!div class="nextstepaction"]
-> [Získání dlaždic dopravního incidentu](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile)
+> [Získat dlaždice incidentů provozu](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile)
 
-Další informace o geoprostorových konceptech:
+Další informace o geoprostorových principech:
 
 > [!div class="nextstepaction"]
 > [Glosář služby Azure Maps](glossary.md)

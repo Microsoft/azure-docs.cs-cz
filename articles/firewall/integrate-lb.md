@@ -1,6 +1,6 @@
 ---
 title: Integrace Azure Firewallu s využitím služby Azure Standard Load Balancer
-description: Azure Firewall můžete integrovat do virtuální sítě pomocí nástroje Azure Standard Load Balancer (veřejné ho nebo interní).
+description: Azure Firewall můžete integrovat do virtuální sítě s využitím Azure Standard Load Balancer (veřejné nebo interní).
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -8,73 +8,73 @@ ms.topic: article
 ms.date: 02/28/2020
 ms.author: victorh
 ms.openlocfilehash: ab9a500d9535b55702b8baff15f8cc47e6ac2c86
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78196693"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Integrace Azure Firewallu s využitím služby Azure Standard Load Balancer
 
-Azure Firewall můžete integrovat do virtuální sítě pomocí nástroje Azure Standard Load Balancer (veřejné ho nebo interní). 
+Azure Firewall můžete integrovat do virtuální sítě s využitím Azure Standard Load Balancer (veřejné nebo interní). 
 
-Upřednostňovaným návrhem je integrace interního zařízení pro vyrovnávání zatížení s bránou firewall Azure, protože se jedná o mnohem jednodušší návrh. Veřejný vyvyčovávač zatížení můžete použít, pokud již máte jeden nasazený a chcete jej zachovat na místě. Musíte si však být vědomi asymetrického problému směrování, který může přerušit funkčnost ve scénáři veřejného vyrovnávání zatížení.
+Upřednostňovaným návrhem je integrace interního nástroje pro vyrovnávání zatížení s bránou firewall Azure, protože to je mnohem jednodušší návrh. Veřejný Nástroj pro vyrovnávání zatížení můžete použít, pokud už máte nasazený a chcete ho ponechat na svém místě. Je však třeba mít na paměti, že se jedná o problém s asymetrickým směrováním, který může přerušit funkčnost ve scénáři veřejného nástroje pro vyrovnávání zatížení.
 
-Další informace o Azure Load Balancer najdete v tématu [Co je Azure Balancer?](../load-balancer/load-balancer-overview.md)
+Další informace o Azure Load Balancer najdete v tématu [co je Azure Load Balancer?](../load-balancer/load-balancer-overview.md)
 
-## <a name="public-load-balancer"></a>Veřejný odvykač zatížení
+## <a name="public-load-balancer"></a>Veřejný Nástroj pro vyrovnávání zatížení
 
-S veřejný vyrovnávání zatížení, vyrovnávání zatížení je nasazen s veřejnou front-end IP adresu.
+Pomocí veřejného nástroje pro vyrovnávání zatížení se nástroj pro vyrovnávání zatížení nasadí s veřejnou IP adresou front-endu.
 
 ### <a name="asymmetric-routing"></a>Asymetrické směrování
 
-Asymetrické směrování je místo, kde paket trvá jednu cestu k cíli a trvá jinou cestu při návratu ke zdroji. K tomuto problému dochází, když podsíť má výchozí trasu jít na privátní IP adresu brány firewall a používáte veřejný vyrovnávání zatížení. V tomto případě je příchozí provoz vykladače zatížení přijat prostřednictvím veřejné IP adresy, ale zpáteční cesta prochází privátní IP adresou brány firewall. Vzhledem k tomu, že brána firewall je stavová, zahodí vracející se paket, protože brána firewall si není vědoma takové zavedené relace.
+Asymetrické směrování je místo, kde paket přijímá jednu cestu k cíli a při návratu do zdroje používá jinou cestu. K tomuto problému dochází, když má podsíť výchozí trasu k privátní IP adrese brány firewall a používáte veřejný Nástroj pro vyrovnávání zatížení. V tomto případě se příchozí provoz nástroje pro vyrovnávání zatížení přijímá prostřednictvím veřejné IP adresy, ale návratová cesta prochází přes privátní IP adresu brány firewall. Vzhledem k tomu, že brána firewall je stavová, je vrácen návratový paket, protože brána firewall neví o takové zavedené relaci.
 
-### <a name="fix-the-routing-issue"></a>Oprava problému se směrováním
+### <a name="fix-the-routing-issue"></a>Oprava problému s směrováním
 
-Při nasazení brány Azure Firewall do podsítě je jedním krokem vytvoření výchozí trasy pro podsíť, která řídí pakety prostřednictvím privátní IP adresy brány firewall umístěné v síti AzureFirewallSubnet. Další informace najdete [v tématu Výuka: Nasazení a konfigurace brány Azure Firewall pomocí portálu Azure](tutorial-firewall-deploy-portal.md#create-a-default-route).
+Když nasadíte Azure Firewall do podsítě, jedním krokem je vytvoření výchozí trasy pro směrování paketů pomocí privátní IP adresy brány firewall umístěné na AzureFirewallSubnet. Další informace najdete v tématu [kurz: nasazení a konfigurace Azure firewall pomocí Azure Portal](tutorial-firewall-deploy-portal.md#create-a-default-route).
 
-Když zavedete bránu firewall do scénáře vyrovnávání zatížení, chcete, aby váš internetový provoz přišel prostřednictvím veřejné IP adresy brány firewall. Odtud brána firewall použije pravidla brány firewall a NAT pakety na veřejnou IP adresu vašeho vykladače zatížení. To je místo, kde dochází k problému. Pakety přicházejí na veřejnou IP adresu brány firewall, ale vrátí se do brány firewall přes privátní IP adresu (pomocí výchozí trasy).
-Chcete-li se tomuto problému vyhnout, vytvořte další trasu hostitele pro veřejnou IP adresu brány firewall. Pakety na veřejnou IP adresu brány firewall jsou směrovány přes Internet. Tím se zabrání výchozí trasu na privátní IP adresu brány firewall.
+Když zavedete bránu firewall do svého scénáře nástroje pro vyrovnávání zatížení, budete chtít, aby se internetový provoz přihlásil přes veřejnou IP adresu brány firewall. Odtud brána firewall použije pravidla brány firewall a zanat pakety do veřejné IP adresy nástroje pro vyrovnávání zatížení. K tomuto problému dochází. Pakety přicházejí do veřejné IP adresy brány firewall, ale do brány firewall se vrátí pomocí privátní IP adresy (pomocí výchozí trasy).
+Chcete-li se tomuto problému vyhnout, vytvořte další trasu hostitele pro veřejnou IP adresu brány firewall. Pakety směrované do veřejné IP adresy brány firewall se směrují přes Internet. Tím předejdete převzetí výchozí trasy k privátní IP adrese brány firewall.
 
 ![Asymetrické směrování](media/integrate-lb/Firewall-LB-asymmetric.png)
 
-### <a name="route-table-example"></a>Příklad tabulky trasy
+### <a name="route-table-example"></a>Příklad směrovací tabulky
 
-Například následující trasy jsou pro bránu firewall na veřejné IP adrese 20.185.97.136 a privátní IP adresu 10.0.1.4.
+Například následující trasy jsou pro bránu firewall na veřejné IP adrese 20.185.97.136 a privátní IP adresa 10.0.1.4.
 
 > [!div class="mx-imgBorder"]
 > ![Směrovací tabulka](media/integrate-lb/route-table.png)
 
-### <a name="nat-rule-example"></a>Příklad pravidla NAT
+### <a name="nat-rule-example"></a>Příklad pravidla překladu adres (NAT)
 
-V následujícím příkladu pravidlo NAT překládá provoz RDP na bránu firewall na 20.185.97.136 na vyrovnávání zatížení na 20.42.98.220:
+V následujícím příkladu pravidlo překladu adres (NAT) překládá provoz protokolu RDP do brány firewall na 20.185.97.136 na nástroj pro vyrovnávání zatížení na 20.42.98.220:
 
 > [!div class="mx-imgBorder"]
-> ![Pravidlo NAT](media/integrate-lb/nat-rule-02.png)
+> ![Pravidlo překladu adres (NAT)](media/integrate-lb/nat-rule-02.png)
 
 ### <a name="health-probes"></a>Sondy stavu
 
-Nezapomeňte, že musíte mít webovou službu spuštěnou na hostitelích ve fondu nástroj pro vyrovnávání zatížení, pokud používáte sondy stavu TCP na port 80 nebo http/https sondy.
+Pamatujte, že pokud používáte testy stavu TCP na port 80 nebo sondy HTTP/HTTPS, musíte mít spuštěnou webovou službu na hostitelích ve fondu nástroje pro vyrovnávání zatížení.
 
 ## <a name="internal-load-balancer"></a>Interní nástroj pro vyrovnávání zatížení
 
-S interním balancer, vyrovnávání zatížení je nasazen s privátní front-end IP adresu.
+S interním nástrojem pro vyrovnávání zatížení je nasazený nástroj pro vyrovnávání zatížení s privátní IP adresou front-endu.
 
-Neexistuje žádný asymetrický problém směrování s tímto scénářem. Příchozí pakety dorazí na veřejnou IP adresu brány firewall, přeloží se na privátní IP adresu vykladače zatížení a pak se vrátí na privátní IP adresu brány firewall pomocí stejné zpáteční cesty.
+V tomto scénáři neexistuje žádný problém s asymetrickým směrováním. Příchozí pakety přicházejí do veřejné IP adresy brány firewall, přeloží se na privátní IP adresu nástroje pro vyrovnávání zatížení a potom se vrátí k privátní IP adrese brány firewall pomocí stejné návratové cesty.
 
-Takže můžete nasadit tento scénář podobný scénáři veřejného vyrovnávání zatížení, ale bez nutnosti trasy hostitele veřejné IP adresy firewallu.
+Proto můžete tento scénář nasadit podobně jako veřejný scénář nástroje pro vyrovnávání zatížení, ale bez nutnosti trasy hostitele veřejné IP adresy brány firewall.
 
 ## <a name="additional-security"></a>Dodatečné zabezpečení
 
-Chcete-li dále zvýšit zabezpečení scénáře s vyrovnáváním zatížení, můžete použít skupiny zabezpečení sítě (NSGs).
+Chcete-li dále zvýšit zabezpečení vašeho scénáře s vyrovnáváním zatížení, můžete použít skupiny zabezpečení sítě (skupin zabezpečení sítě).
 
-Například můžete vytvořit skupinu sítě sítě v podsíti back-end, kde jsou umístěny virtuální počítače s vyrovnáváním zatížení. Povolit příchozí přenosy pocházející z adresy/portu IP brány firewall.
+Můžete například vytvořit NSG v podsíti back-endu, kde jsou umístěné virtuální počítače s vyrovnáváním zatížení. Povolí příchozí provoz pocházející z IP adresy nebo portu brány firewall.
 
 ![Skupina zabezpečení sítě](media/integrate-lb/nsg-01.png)
 
-Další informace o skupinách zabezpečení zabezpečení naleznete v [tématu Skupiny zabezpečení](../virtual-network/security-overview.md).
+Další informace o skupin zabezpečení sítě najdete v tématu [skupiny zabezpečení](../virtual-network/security-overview.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si, jak [nasadit a nakonfigurovat bránu Azure Firewall](tutorial-firewall-deploy-portal.md).
+- Přečtěte si, jak [nasadit a nakonfigurovat Azure firewall](tutorial-firewall-deploy-portal.md).

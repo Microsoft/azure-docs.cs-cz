@@ -1,48 +1,48 @@
 ---
-title: Poradce při potížích s nástroji pro analýzu uživatelů – Azure Application Insights
-description: Průvodce odstraňováním potíží – analýza využití webu a aplikací pomocí přehledů aplikací.
+title: Řešení potíží s nástroji pro analýzu uživatelů – Azure Application Insights
+description: Průvodce odstraňováním potíží – analýza využití webů a aplikací pomocí Application Insights.
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 8d2e573f34895207a455838b5fc64f95560943d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77670912"
 ---
-# <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Poradce při potížích s nástroji pro analýzu chování uživatelů v přehledech aplikací
-Máte dotazy týkající se [nástrojů pro analýzu chování uživatelů v přehledech aplikací](usage-overview.md): [Uživatelé, relace, Události](usage-segmentation.md), [Cesty](usage-funnels.md), [Toky uživatelů](usage-flows.md), Uchovávání [informací](usage-retention.md)nebo Kohorty? Zde jsou některé odpovědi.
+# <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Řešení potíží s nástroji pro analýzu chování uživatelů v Application Insights
+Máte dotazy týkající se [nástrojů pro analýzy chování uživatelů v Application Insights](usage-overview.md): [Uživatelé, relace, události](usage-segmentation.md), [trychtýře](usage-funnels.md), [toky uživatelů](usage-flows.md), [uchovávání](usage-retention.md)nebo kohorty? Tady jsou některé odpovědi.
 
 ## <a name="counting-users"></a>Počítání uživatelů
-**Nástroje pro analýzu chování uživatelů ukazují, že moje aplikace má jednoho uživatele/relace, ale vím, že moje aplikace má mnoho uživatelů/relací. Jak mohu opravit tyto nesprávné počty?**
+**Nástroje pro analýzu chování uživatelů ukazují, že má moje aplikace jeden uživatel nebo relaci, ale ví, že moje aplikace má mnoho uživatelů a relací. Jak mohu tyto nesprávné počty opravit?**
 
-Všechny telemetrické události v Application Insights mají [anonymní ID uživatele](../../azure-monitor/app/data-model-context.md) a [ID relace](../../azure-monitor/app/data-model-context.md) jako dvě z jejich standardních vlastností. Ve výchozím nastavení všechny nástroje analýzy využití počítají uživatele a relace na základě těchto ID. Pokud tyto standardní vlastnosti nejsou naplněny jedinečnými ID pro každého uživatele a relace aplikace, zobrazí se v nástrojích pro analýzu využití nesprávný počet uživatelů a relací.
+Všechny události telemetrie v Application Insights mají [ID anonymního uživatele](../../azure-monitor/app/data-model-context.md) a [ID relace](../../azure-monitor/app/data-model-context.md) jako dvě z jejich standardních vlastností. Ve výchozím nastavení se všechny nástroje pro analýzu využití počítají jako uživatelé a relace na základě těchto ID. Pokud se tyto standardní vlastnosti neplní jedinečnými identifikátory pro každého uživatele a relaci vaší aplikace, uvidíte v nástrojích analýzy využití nesprávný počet uživatelů a relací.
 
-Pokud sledujete webovou aplikaci, nejjednodušším řešením je přidat do aplikace [javascriptovou sadu Application Insights](../../azure-monitor/app/javascript.md) a ujistit se, že je fragment skriptu načten na každé stránce, kterou chcete monitorovat. Sada JavaScript SDK automaticky generuje anonymní ID uživatelů a relací a poté naplní telemetrické události těmito ID při jejich odeslání z vaší aplikace.
+Pokud sledujete webovou aplikaci, nejjednodušší řešení je přidat do aplikace [sadu Application Insights JavaScript SDK](../../azure-monitor/app/javascript.md) a zajistit, aby byl fragment skriptu načtený na každé stránce, kterou chcete monitorovat. Sada JavaScript SDK automaticky generuje identifikátory anonymního uživatele a relace a potom naplní události telemetrie pomocí těchto ID, jak jsou odesílány z vaší aplikace.
 
-Pokud sledujete webovou službu (bez uživatelského rozhraní), [vytvořte inicializátor telemetrie, která naplní vlastnosti ID anonymního id uživatele a ID relace](usage-send-user-context.md) podle představ vaší služby o jedinečných uživatelích a relacích.
+Pokud sledujete webovou službu (bez uživatelského rozhraní), [vytvořte inicializátor telemetrie, který naplní vlastnosti anonymního uživatele a ID relace](usage-send-user-context.md) podle pojmů jedinečných uživatelů a relací vaší služby.
 
-Pokud vaše aplikace odesílá [ověřená ID uživatelů](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users), můžete počítat na základě ověřených ID uživatelů v nástroji Uživatelé. V rozevíracím období Zobrazit zvolte Možnost Ověření uživatelé.
+Pokud vaše aplikace posílá [ověřená ID uživatelů](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users), můžete se na základě uživatelských identifikátorů uživatelů v nástroji uživatelů na základě ID ověřených uživatelů spolehnout. V rozevíracím seznamu Zobrazit Vyberte možnost ověření uživatelé.
 
-Nástroje pro analýzu chování uživatelů v současné době nepodporují počítání uživatelů nebo relací na základě jiných vlastností, než je anonymní ID uživatele, ověřené ID uživatele nebo ID relace.
+Nástroje pro analýzu chování uživatelů v současné době nepodporují počítání uživatelů nebo relací na základě vlastností kromě anonymního ID uživatele, ověřeného ID uživatele nebo ID relace.
 
-## <a name="naming-events"></a>Pojmenování událostí
-**Moje aplikace má tisíce různých zobrazení stránky a vlastní názvy událostí. Je těžké rozlišovat mezi nimi a nástroje analýzy chování uživatelů často přestanou reagovat. Jak mohu tyto problémy s pojmenováním vyřešit?**
+## <a name="naming-events"></a>Události pojmenování
+**Moje aplikace obsahuje tisíce různých zobrazení stránky a vlastní názvy událostí. Mezi nimi je těžké rozlišovat a časté nástroje pro analýzu chování uživatelů přestanou reagovat. Jak můžu opravit tyto problémy s pojmenování?**
 
-Zobrazení stránky a názvy vlastních událostí se používají v rámci nástrojů pro analýzu chování uživatelů. Pojmenování události dobře je důležité pro získání hodnoty z těchto nástrojů. Cílem je rovnováha mezi tím, že příliš málo, příliš obecných jmen ("Tlačítko kliknuto") a mají\/příliš mnoho, příliš specifické názvy ("Upravit tlačítko kliknul na http: /www.contoso.com/index").
+Zobrazení stránky a vlastní názvy událostí se používají v rámci nástrojů pro analýzu chování uživatelů. Pro získání hodnoty z těchto nástrojů je důležité, aby byly události pojmenovány správně. Cílem je zůstatek mezi příliš malými a obecnými jmény ("kliknuli na tlačítko") a s příliš velkým počtem nejenom specifických názvů ("tlačítko Upravit klikněte na http:\//www.contoso.com/index").
 
-Chcete-li provést změny v zobrazení stránky a vlastních názvech událostí, které vaše aplikace odesílá, musíte změnit zdrojový kód aplikace a znovu se nasadit. **Všechna telemetrická data v Application Insights jsou uložena**po dobu 90 dnů a nelze je odstranit , takže změny názvů událostí budou trvat 90 dní, než se plně projeví. Po dobu 90 dnů po provedení změn názvu se staré i nové názvy událostí zobrazí ve vaší telemetrii, takže upravte dotazy a komunikujte v rámci týmů.
+Chcete-li provést změny zobrazení stránky a vlastních názvů událostí, které vaše aplikace posílá, je nutné změnit zdrojový kód aplikace a znovu nasadit. **Všechna data telemetrie v Application Insights jsou uložená po dobu 90 dnů a nejde je odstranit**, takže změny provedené v názvech událostí budou trvat 90 dnů, než se plně manifest zaplní. Po dobu 90 dnů od změny názvu se ve své telemetrii zobrazí staré i nové názvy událostí, takže podle potřeby upravte dotazy a sdělte v rámci svých týmů.
 
-Pokud vaše aplikace odesílá příliš mnoho názvů zobrazení stránky, zkontrolujte, jestli jsou tyto názvy zobrazení stránky zadány ručně v kódu nebo jestli je javascriptová sada JavaScript SDK application insights odesílá automaticky:
+Pokud vaše aplikace odesílá příliš mnoho názvů zobrazení stránky, zkontrolujte, zda jsou tyto názvy zobrazení stránky zadány ručně v kódu nebo zda jsou automaticky odesílány Application Insights JavaScript SDK:
 
-* Pokud jsou názvy zobrazení stránky ručně zadány v kódu pomocí [ `trackPageView` rozhraní API](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md), změňte název tak, aby byl méně specifický. Vyhněte se běžným chybám, jako je umístění adresy URL do názvu zobrazení stránky. Místo toho použijte parametr `trackPageView` URL rozhraní API. Přesunutí dalších podrobností z názvu zobrazení stránky do vlastních vlastností
+* Pokud jsou názvy zobrazení stránky ručně zadány v kódu pomocí [ `trackPageView` rozhraní API](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md), změňte název tak, aby byl méně specifický. Vyhněte se běžným chybám, jako je vložení adresy URL do názvu zobrazení stránky. Místo toho použijte parametr adresy URL `trackPageView` rozhraní API. Přesuňte další podrobnosti z názvu zobrazení stránky do vlastních vlastností.
 
-* Pokud sada JavaScript Application Insights JavaScript SDK automaticky odesílá názvy zobrazení stránek, můžete buď změnit názvy stránek, nebo přepnout na ruční odesílání názvů zobrazení stránky. Sada SDK [odešle](https://developer.mozilla.org/docs/Web/HTML/Element/title) název každé stránky jako název zobrazení stránky ve výchozím nastavení. Dalo by se změnit své tituly, které mají být obecnější, ale mějte na paměti SEO a další dopady tato změna by mohla mít. Ruční zadání názvů zobrazení stránky `trackPageView` pomocí rozhraní API přepíše automaticky shromažďované názvy, takže můžete odesílat obecnější názvy v telemetrii bez změny názvů stránek.   
+* Pokud Application Insights JavaScript SDK automaticky odesílá názvy stránek, můžete buď změnit nadpisy stránek, nebo přepnout na ruční odesílání názvů zobrazení stránky. Sada SDK ve výchozím nastavení [odesílá název každé](https://developer.mozilla.org/docs/Web/HTML/Element/title) stránky jako název zobrazení stránky. Vaše tituly můžete změnit tak, aby byly obecnější, ale měli byste s vědomím SEO a dalšími dopady na tuto změnu. Ruční určení názvů zobrazení stránky s `trackPageView` rozhraním API přepíše automaticky shromážděné názvy, takže můžete odeslat obecnější názvy v telemetrie beze změny názvů stránek.   
 
-Pokud vaše aplikace odesílá příliš mnoho vlastních názvů událostí, změňte název v kódu tak, aby byl méně specifický. Opět se vyhněte přímému umístění adres URL a dalších informací na stránce nebo dynamických informací do vlastních názvů událostí. Místo toho přesuňte tyto podrobnosti do `trackEvent` vlastních vlastností vlastní události s rozhraním API. Například místo `appInsights.trackEvent("Edit button clicked on http://www.contoso.com/index")`, navrhujeme `appInsights.trackEvent("Edit button clicked", { "Source URL": "http://www.contoso.com/index" })`něco jako .
+Pokud vaše aplikace odesílá příliš mnoho vlastních názvů událostí, změňte název v kódu tak, aby byl méně specifický. Znovu se vyhněte vkládání adres URL a dalších informací do vlastních názvů událostí přímo na stránce. Místo toho tyto podrobnosti přesunete do vlastních vlastností vlastní události pomocí `trackEvent` rozhraní API. Například místo `appInsights.trackEvent("Edit button clicked on http://www.contoso.com/index")`na, navrhujeme něco podobného `appInsights.trackEvent("Edit button clicked", { "Source URL": "http://www.contoso.com/index" })`.
 
 ## <a name="next-steps"></a>Další kroky
 

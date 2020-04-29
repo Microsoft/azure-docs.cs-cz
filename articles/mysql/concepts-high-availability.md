@@ -1,36 +1,36 @@
 ---
 title: Vysoká dostupnost – Azure Database for MySQL
-description: Toto téma obsahuje informace o vysoké dostupnosti při použití Azure Database for MySQL
+description: Toto téma poskytuje informace o vysoké dostupnosti při použití Azure Database for MySQL
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: a793de35ffff84009d362f005e599b4419f0763f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79532769"
 ---
-# <a name="high-availability-concepts-in-azure-database-for-mysql"></a>Koncepty s vysokou dostupností v Azure Database for MySQL
-Služba Azure Database for MySQL poskytuje garantovanou vysokou úroveň dostupnosti. Smlouva o úrovni služeb (SLA) je 99,99 % při všeobecné dostupnosti. Při používání této služby prakticky neexistuje žádný prostoje aplikace.
+# <a name="high-availability-concepts-in-azure-database-for-mysql"></a>Koncepty vysoké dostupnosti v Azure Database for MySQL
+Služba Azure Database for MySQL poskytuje zaručenou vysokou úroveň dostupnosti. Finančně zajištěná smlouva o úrovni služeb (SLA) je po všeobecné dostupnosti 99,99%. Při používání této služby nedochází k neprovozuschopnému použití.
 
 ## <a name="high-availability"></a>Vysoká dostupnost
-Model vysoké dostupnosti (HA) je založen na integrovaných mechanismech převzetí služeb při selhání, když dojde k přerušení na úrovni uzlu. Přerušení na úrovni uzlu může dojít z důvodu selhání hardwaru nebo v reakci na nasazení služby.
+Model vysoké dostupnosti (HA) vychází z vestavěných mechanismů pro převzetí služeb při selhání, když dojde k přerušení na úrovni uzlu. Přerušení na úrovni uzlu může vzniknout kvůli selhání hardwaru nebo v reakci na nasazení služby.
 
-Změny provedené v databázi Azure pro databázový server MySQL dojít v kontextu transakce. Změny se zaznamenávají synchronně v úložišti Azure, když je transakce potvrzena. Dojde-li k přerušení na úrovni uzlu, databázový server automaticky vytvoří nový uzel a připojí úložiště dat k novému uzlu. Všechna aktivní připojení jsou vynechány a všechny transakce v letu nejsou potvrzeny.
+Změny provedené u Azure Database for MySQL databázového serveru se projeví v kontextu transakce. Změny se zaznamenávají synchronně ve službě Azure Storage, když je transakce potvrzena. Pokud dojde k přerušení na úrovni uzlu, databázový server automaticky vytvoří nový uzel a připojí úložiště dat k novému uzlu. Všechna aktivní připojení jsou vyřazena a všechny transakce v transakci nejsou potvrzeny.
 
-## <a name="application-retry-logic-is-essential"></a>Logika opakování aplikace je nezbytná
-Je důležité, aby databázové aplikace MySQL jsou vytvořeny pro detekci a opakování vyřazených připojení a neúspěšných transakcí. Při opakování aplikace je připojení aplikace transparentně přesměrováno na nově vytvořenou instanci, která převezme pro instanci se nezdařilo.
+## <a name="application-retry-logic-is-essential"></a>Logika opakování aplikace je zásadní.
+Je důležité, aby databázové aplikace MySQL byly vybudovány k detekci a opakovanému přerušení připojení a neúspěšných transakcí. Když se aplikace opakuje, připojení aplikace se transparentně přesměruje na nově vytvořenou instanci, která převezme služby pro neúspěšnou instanci.
 
-Interně v Azure se brána používá k přesměrování připojení k nové instanci. Po přerušení celý proces převzetí služeb při selhání obvykle trvá desítky sekund. Vzhledem k tomu, že přesměrování je zpracováno interně bránou, externí připojovací řetězec zůstává stejný pro klientské aplikace.
+Interně v Azure se k přesměrování připojení k nové instanci používá brána. Po přerušení bude celý proces převzetí služeb při selhání obvykle trvat desítky sekund. Vzhledem k tomu, že je přesměrování zpracováváno interně bránou, externí připojovací řetězec pro klientské aplikace zůstane stejný.
 
-## <a name="scaling-up-or-down"></a>Škálování nahoru nebo dolů
-Podobně jako model HA při škálování databáze Azure pro MySQL nahoru nebo dolů, vytvoří se nová instance serveru se zadanou velikostí. Existující úložiště dat je odpojeno od původní instance a připojeno k nové instanci.
+## <a name="scaling-up-or-down"></a>Vertikální navýšení nebo snížení kapacity
+Podobně jako Azure Database for MySQL při horizontálním navýšení nebo snížení kapacity v modelu HA se vytvoří nová instance serveru se zadanou velikostí. Stávající úložiště dat je odpojené od původní instance a připojené k nové instanci.
 
-Během operace škálování dojde k přerušení připojení databáze. Klientské aplikace jsou odpojeny a otevřené nepotvrzené transakce jsou zrušeny. Jakmile klientská aplikace znovu pokusí o připojení nebo vytvoří nové připojení, brána přesměruje připojení k nově velké instanci. 
+Během operace škálování dojde k přerušení připojení k databázi. Klientské aplikace jsou odpojené a otevřené nepotvrzené transakce se zruší. Jakmile klientská aplikace znovu požádá o připojení nebo vytvoří nové připojení, brána nasměruje připojení k instanci nově nastavené velikosti. 
 
 ## <a name="next-steps"></a>Další kroky
-- Informace o [zpracování přechodných chyb připojení](concepts-connectivity.md)
-- Přečtěte si, jak [replikovat data pomocí replik pro čtení.](howto-read-replicas-portal.md)
+- Další informace o [zpracování chyb s přechodným připojením](concepts-connectivity.md)
+- Naučte [se replikovat data pomocí replik pro čtení](howto-read-replicas-portal.md) .

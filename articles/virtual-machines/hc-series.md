@@ -1,6 +1,6 @@
 ---
-title: Řada HC – virtuální počítače Azure
-description: Specifikace pro virtuální počítače řady HC.
+title: HC-Series – Azure Virtual Machines
+description: Specifikace pro virtuální počítače řady HC-Series.
 services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
@@ -8,27 +8,27 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: cc25fb9b21d535ef07bcfae673be48216427b370
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78164776"
 ---
 # <a name="hc-series"></a>Řada HC
 
-Virtuální počítače řady HC jsou optimalizované pro aplikace řízené hustými výpočty, jako je implicitní analýza konečných prvků, molekulární dynamika a výpočetní chemie. Virtuální počítače HC jsou vybaveny procesorovými jádry 44 Intel Xeon Platinum 8168, 8 GB paměti RAM na jádro procesoru a bez hyperthreadingu. Platforma Intel Xeon Platinum podporuje bohatý ekosystém softwarových nástrojů společnosti Intel, jako je knihovna jádra Intel Math.
+Virtuální počítače řady HC-Series jsou optimalizované pro aplikace, které jsou založené na hustém výpočtu, jako je například implicitní nekonečná analýza elementu, molekulová dynamika a výpočetovaná chemie. Virtuální počítače HC – funkce 44 Intel Xeon Platinum 8168, 8 GB paměti RAM na jádro procesoru a žádné podprocesy. Platforma Intel Xeon Platinum podporuje bohatě bohatý ekosystém softwarových nástrojů od společnosti Intel, jako je například knihovna Intel Math kernel.
 
 ACU: 297-315
 
-Úložiště Premium: Podporováno
+Premium Storage: podporováno
 
-Ukládání úložiště Premium: Podporováno
+Ukládání Premium Storage do mezipaměti: podporováno
 
-Migrace za provozu: Není podporována
+Migrace za provozu: nepodporováno
 
-Aktualizace pro zachování paměti: Není podporováno
+Aktualizace pro zachování paměti: nepodporováno
 
-| Velikost | Virtuální procesory | Procesor | Paměť (GB) | Šířka pásma paměti GB/s | Základní frekvence procesoru (GHz) | Frekvence všech jader (GHz, špička) | Jednojádrová frekvence (GHz, špička) | Výkon RDMA (Gb/s) | Podpora MPI | Dočasné úložiště (GB) | Max. datových disků | Maximální síťové karty Ethernet |
+| Velikost | Virtuální procesory | Procesor | Paměť (GB) | Propustnost paměti GB/s | Základní frekvence procesoru (GHz) | Frekvence všech jader (GHz, špička) | Frekvence s jedním jádrem (GHz, špička) | Výkon RDMA (GB/s) | Podpora MPI | Dočasné úložiště (GB) | Max. datových disků | Maximální počet síťových karet sítě Ethernet |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_HC44rs | 44 | Intel Xeon Platinum 8168 | 352 | 191 | 2.7 | 3.4 | 3.7 | 100 | Všechny | 700 | 4 | 1 |
 
@@ -45,4 +45,4 @@ Aktualizace pro zachování paměti: Není podporováno
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám můžou pomoct porovnat výpočetní výkon napříč virtuálními jednotkami Azure.
+Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.

@@ -1,6 +1,6 @@
 ---
-title: Schválení nebo zamítnutí požadavků na role Azure AD v PIM – Azure AD | Dokumenty společnosti Microsoft
-description: Zjistěte, jak schválit nebo odepřít požadavky na role Azure AD v azure ad privilegované správy identit (PIM).
+title: Schválení nebo zamítnutí žádostí o role Azure AD v PIM – Azure AD | Microsoft Docs
+description: Naučte se schvalovat nebo odmítat žádosti pro role Azure AD v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -17,128 +17,128 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 73ccfd1ad270072989e9b575fda538b94fd8927c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80049021"
 ---
-# <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Schválení nebo zamítnutí požadavků na role Azure AD ve správě privilegovaných identit
+# <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Schválení nebo zamítnutí žádostí o role Azure AD v Privileged Identity Management
 
-Pomocí správy privilegovaných identit Azure Active Directory (Azure AD) můžete nakonfigurovat role tak, aby vyžadovaly schválení pro aktivaci, a jako delegované schvalovatele vybrat jednoho nebo více uživatelů nebo skupin. Delegovaní schvalovatelé mají 24 hodin na schválení žádostí. Pokud žádost nebude schválena do 24 hodin, musí oprávněný uživatel znovu odeslat novou žádost. 24hodinové časové okno schválení není konfigurovatelné.
+V případě služby Azure Active Directory (Azure AD) Privileged Identity Management (PIM) můžete nakonfigurovat role tak, aby vyžadovaly schválení aktivace, a vybrat jednoho nebo více uživatelů nebo skupin jako delegované schvalovatele. Delegovaní schvalovatelé mají ke schválení požadavků 24 hodin. Pokud žádost není schválena do 24 hodin, pak oprávněný uživatel musí znovu odeslat novou žádost. Časový interval schválení 24 hodin nelze konfigurovat.
 
-## <a name="determine-your-version-of-pim"></a>Určení verze PIM
+## <a name="determine-your-version-of-pim"></a>Určení vaší verze PIM
 
-Počínaje listopadem 2019 se část rolí Azure AD privileged identity management aktualizuje na novou verzi, která odpovídá prostředí pro role Azure. Tím se vytvoří další funkce, stejně jako [změny existující rozhraní API](azure-ad-roles-features.md#api-changes). Při zavádění nové verze, které postupy, které budete postupovat v tomto článku, závisí na verzi správy privilegovaných identit, kterou aktuálně máte. Podle pokynů v této části určete, kterou verzi správy privilegovaných identit máte. Poté, co znáte verzi správy privilegovaných identit, můžete vybrat postupy v tomto článku, které odpovídají této verzi.
+Od listopadu 2019 se v části Privileged Identity Management role Azure AD aktualizuje na novou verzi, která se shoduje s prostředími pro role Azure. Tím se vytvoří další funkce a také [změny stávajícího rozhraní API](azure-ad-roles-features.md#api-changes). I když je nová verze zahrnuta, postupy, které provedete v tomto článku, závisí na verzi Privileged Identity Management, kterou máte v současnosti k dispozici. Podle pokynů v této části určete, kterou verzi Privileged Identity Management máte. Po zjištění vaší verze Privileged Identity Management můžete vybrat postupy v tomto článku, které odpovídají této verzi.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/) s uživatelem, který je v roli [správce privilegované role.](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
-1. Otevřete **správu privilegovaných identit Azure AD**. Pokud máte v horní části stránky přehledu nápis, postupujte podle pokynů na kartě **Nová verze** tohoto článku. V opačném případě postupujte podle pokynů na kartě **Předchozí verze.**
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí uživatele, který je v roli [správce privilegované role](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
+1. Otevřete **Azure AD Privileged Identity Management**. Pokud máte banner v horní části stránky s přehledem, postupujte podle pokynů na kartě **Nová verze** v tomto článku. Jinak postupujte podle pokynů na kartě **předchozí verze** .
 
     [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
-Podle kroků v tomto článku schválit nebo odepřít žádosti o role Azure AD.
+Podle kroků v tomto článku můžete schvalovat nebo odmítat žádosti pro role Azure AD.
 
 # <a name="new-version"></a>[Nová verze](#tab/new)
 
 ## <a name="view-pending-requests"></a>Zobrazení žádostí čekajících na vyřízení
 
-Jako delegovaný schvalovatel obdržíte e-mailové oznámení, když požadavek na roli Azure AD čeká na vaše schválení. Tyto nevyřízené požadavky můžete zobrazit ve správě privilegovaných identit.
+Jako delegovaný schvalovatel obdržíte e-mailové oznámení, když požadavek role Azure AD čeká na vaše schválení. Tyto nedokončené žádosti můžete zobrazit v Privileged Identity Management.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-1. Otevřete **správu privilegovaných identit Azure AD**.
+1. Otevřete **Azure AD Privileged Identity Management**.
 
-1. Vyberte **schválit požadavky**.
+1. Vyberte **schvalovat žádosti**.
 
-    ![Schválení žádostí – stránka zobrazující žádost o kontrolu rolí Azure AD](./media/azure-ad-pim-approval-workflow/resources-approve-pane.png)
+    ![Schvalovat žádosti – stránka ukazující žádost o revizi rolí Azure AD](./media/azure-ad-pim-approval-workflow/resources-approve-pane.png)
 
-    V části **Žádosti o aktivace rolí** se zobrazí seznam žádostí čekajících na schválení.
+    V části **žádosti o aktivaci rolí** se zobrazí seznam žádostí, které čekají na vaše schválení.
 
 ## <a name="approve-requests"></a>Schvalování žádostí
 
-1. Vyhledejte a vyberte požadavek, který chcete schválit. Zobrazí se stránka schválení nebo zamítnutí.
+1. Vyhledejte a vyberte žádost, kterou chcete schválit. Zobrazí se stránka schválení nebo zamítnutí.
 
-    ![Schválit žádosti – schválit nebo odepřít podokno s podrobnostmi a polem Odůvodnění](./media/azure-ad-pim-approval-workflow/resources-approve-pane.png)
+    ![Schválení žádostí – podokno schválení nebo odepření s podrobnostmi a polem odůvodnění](./media/azure-ad-pim-approval-workflow/resources-approve-pane.png)
 
-1. Do pole **Odůvodnění** zadejte obchodní odůvodnění.
+1. Do pole **odůvodnění** zadejte obchodní odůvodnění.
 
-1. Vyberte **schválit**. Obdržíte oznámení Azure o vašem schválení.
+1. Vyberte **schválit**. Obdržíte upozornění Azure na vaše schválení.
 
-    ![Schválit oznámení zobrazující požadavek byl schválen](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png))
+    ![Schválit oznámení ukazující, že žádost byla schválena](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png))
 
-## <a name="deny-requests"></a>Odepřít požadavky
+## <a name="deny-requests"></a>Zamítnutí žádostí
 
-1. Najděte a vyberte požadavek, který chcete odmítnout. Zobrazí se stránka schválení nebo zamítnutí.
+1. Vyhledejte a vyberte požadavek, který chcete odepřít. Zobrazí se stránka schválení nebo zamítnutí.
 
-    ![Schválit žádosti – schválit nebo odepřít podokno s podrobnostmi a polem Odůvodnění](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
+    ![Schválení žádostí – podokno schválení nebo odepření s podrobnostmi a polem odůvodnění](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
 
-1. Do pole **Odůvodnění** zadejte obchodní odůvodnění.
+1. Do pole **odůvodnění** zadejte obchodní odůvodnění.
 
-1. Vyberte **možnost Odepřít**. Zobrazí se oznámení s vaším odmítnutím.
+1. Vyberte **Odepřít**. Zobrazí se oznámení s odepřením.
 
 ## <a name="workflow-notifications"></a>Oznámení pracovního postupu
 
 Tady jsou některé informace o oznámeních pracovního postupu:
 
-- Schvalovatelé jsou upozorněni e-mailem, když žádost o roli čeká na kontrolu. E-mailová oznámení obsahují přímý odkaz na žádost, kde může schvalovatel schválit nebo zamítnout.
-- Požadavky jsou vyřešeny prvním schvalovatelem, který schvaluje nebo zamítá.
-- Když schvalovatel odpoví na žádost, všichni schvalovatelé jsou upozorněni na akci.
-- Globální správci a správci privilegovaných rolí jsou upozorněni, když se schválený uživatel stane aktivním ve své roli.
+- Schvalovatelé jsou upozorňováni e-mailem, když požadavek na roli čeká na jejich kontrolu. E-mailová oznámení zahrnují přímý odkaz na žádost, kde schvalovatel může schválit nebo odepřít.
+- Žádosti jsou vyřešeny prvním schvalovatelem, který schválí nebo zamítne.
+- Když schvalovatel odpoví na požadavek, všichni schvalovatelé budou upozorněni na akci.
+- Správci globálních správců a privilegovaných rolí jsou upozorněni v případě, že se schváleného uživatele ve své roli aktivuje.
 
 >[!NOTE]
->Globální správce nebo správce privilegovaných rolí, který se domnívá, že schválený uživatel by neměl být aktivní, může odebrat aktivní přiřazení role ve správě privilegovaných identit. Přestože správci nejsou upozorněni na nevyřízené žádosti, pokud nejsou schvalovatelem, mohou zobrazit a zrušit všechny nevyřízené žádosti pro všechny uživatele zobrazením čekajících požadavků v privilegované správě identit.
+>Správce globálního správce nebo privilegované role, který se domnívá, že by neměl být aktivní schválený uživatel, může odebrat přiřazení aktivní role v Privileged Identity Management. I když správci nejsou upozorňováni na nevyřízené žádosti, pokud se nejedná o schvalovatele, mohou zobrazit a zrušit všechny nevyřízené žádosti pro všechny uživatele zobrazením nevyřízených žádostí v Privileged Identity Management.
 
 # <a name="previous-version"></a>[Předchozí verze](#tab/previous)
 
 ## <a name="view-pending-requests"></a>Zobrazení žádostí čekajících na vyřízení
 
-Jako delegovaný schvalovatel obdržíte e-mailové oznámení, když požadavek na roli Azure AD čeká na vaše schválení. Tyto nevyřízené požadavky můžete zobrazit ve správě privilegovaných identit.
+Jako delegovaný schvalovatel obdržíte e-mailové oznámení, když požadavek role Azure AD čeká na vaše schválení. Tyto nedokončené žádosti můžete zobrazit v Privileged Identity Management.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-1. Otevřete **správu privilegovaných identit Azure AD**.
+1. Otevřete **Azure AD Privileged Identity Management**.
 
 1. Klikněte na **role Azure AD**.
 
-1. Klepněte na **tlačítko Schválit požadavky**.
+1. Klikněte na **schvalovat žádosti**.
 
-    ![Role Azure AD – schvalování požadavků](./media/azure-ad-pim-approval-workflow/approve-requests.png)
+    ![Role Azure AD – schvalování žádostí](./media/azure-ad-pim-approval-workflow/approve-requests.png)
 
-    Zobrazí se seznam žádostí, které čekají na váš souhlas.
+    Zobrazí se seznam žádostí, které čekají na vaše schválení.
 
 ## <a name="approve-requests"></a>Schvalování žádostí
 
-1. Vyberte požadavky, které chcete schválit, a kliknutím na **Schválit** otevřete podokno Schválit vybrané požadavky.
+1. Vyberte žádosti, které chcete schválit, a kliknutím na **schválit** otevřete podokno schválit vybrané žádosti.
 
-    ![Schválit seznam žádostí se zvýrazněnou možností Schválit](./media/azure-ad-pim-approval-workflow/pim-approve-requests-list.png)
+    ![Seznam žádostí o schválení se zvýrazněnou možností schválit](./media/azure-ad-pim-approval-workflow/pim-approve-requests-list.png)
 
-1. Do pole **Schválit důvod** zadejte důvod.
+1. Do pole **důvod schválení** zadejte důvod.
 
-    ![Podokno Schválení vybraných požadavků s důvodem schválení](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
+    ![Schválit podokno vybrané žádosti s odůvodněním schválení](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
 
 1. Klikněte na **Schválit**.
 
-    Symbol stavu bude aktualizován s vaším souhlasem.
+    Symbol stavu bude aktualizován na vaše schválení.
 
-    ![Podokno Schválit vybrané požadavky po kliknutí na tlačítko Schválit](./media/azure-ad-pim-approval-workflow/pim-approve-status.png)
+    ![Kliknutím na tlačítko Schválit podokno schválení vybraných žádostí](./media/azure-ad-pim-approval-workflow/pim-approve-status.png)
 
-## <a name="deny-requests"></a>Odepřít požadavky
+## <a name="deny-requests"></a>Zamítnutí žádostí
 
-1. Vyberte požadavky, které chcete odepřít, a kliknutím na **tlačítko Odepřít** otevřete podokno Odepřít vybrané požadavky.
+1. Vyberte žádosti, které chcete odepřít, a kliknutím na **Odepřít** otevřete podokno odepřít vybrané žádosti.
 
-    ![Schválit seznam žádostí se zvýrazněnou možností Odepřít](./media/azure-ad-pim-approval-workflow/pim-deny-requests-list.png)
+    ![Seznam žádostí o schválení s zvýrazněnou možností odepřít](./media/azure-ad-pim-approval-workflow/pim-deny-requests-list.png)
 
-1. Do pole **Odepřít důvod** zadejte důvod.
+1. Do pole **důvod zamítnutí** zadejte důvod.
 
-    ![Podokno Odepřít vybrané požadavky s důvodem zamítnutí](./media/azure-ad-pim-approval-workflow/pim-deny-selected-requests.png)
+    ![Odepřít podokno vybrané žádosti s odůvodněním odepřít](./media/azure-ad-pim-approval-workflow/pim-deny-selected-requests.png)
 
-1. Vyberte **možnost Odepřít**.
+1. Vyberte **Odepřít**.
 
-    Symbol stavu bude aktualizován s vaším odmítnutím.
+    Symbol stavu bude aktualizován o Vaše odmítnutí.
 
 ---
 
 ## <a name="next-steps"></a>Další kroky
 
-- [E-mailová oznámení ve správě privilegovaných identit](pim-email-notifications.md)
-- [Schválení nebo zamítnutí požadavků na role prostředků Azure v privilegované správě identit](pim-resource-roles-approval-workflow.md)
+- [E-mailová oznámení v Privileged Identity Management](pim-email-notifications.md)
+- [Schválení nebo zamítnutí žádostí o role prostředků Azure v Privileged Identity Management](pim-resource-roles-approval-workflow.md)

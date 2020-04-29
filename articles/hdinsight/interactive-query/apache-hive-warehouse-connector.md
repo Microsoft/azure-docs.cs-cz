@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/02/2020
 ms.openlocfilehash: f386530ffb3a074a5c1db1d9f28535d28c8b1284
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78252406"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Integrace Apache Spark a Apache Hive s konektorem skladu podregistru
@@ -74,7 +74,7 @@ Ve webovém uživatelském rozhraní Spark Ambari přejděte do **Spark2** > **C
 
 Vyberte **Přidat vlastnost...** podle potřeby přidejte nebo aktualizujte následující:
 
-| Klíč | Hodnota |
+| Key | Hodnota |
 |----|----|
 |`spark.hadoop.hive.llap.daemon.service.hosts`|Hodnota, kterou jste získali dříve z **podregistru. llap. démon. Service. Hosts**.|
 |`spark.sql.hive.hiveserver2.jdbc.url`|`jdbc:hive2://LLAPCLUSTERNAME.azurehdinsight.net:443/;user=admin;password=PWD;ssl=true;transportMode=http;httpPath=/hive2`. Nastavte na připojovací řetězec JDBC, který se připojí k Hiveserver2 v clusteru interaktivních dotazů. NAHRAĎte `LLAPCLUSTERNAME` názvem vašeho clusteru interaktivních dotazů. Nahraďte `PWD` skutečným heslem.|

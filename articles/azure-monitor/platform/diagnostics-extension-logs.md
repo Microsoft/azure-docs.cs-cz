@@ -1,68 +1,68 @@
 ---
-title: Použití úložiště objektů blob pro službu IIS a úložiště tabulek pro události ve službě Azure Monitor | Dokumenty společnosti Microsoft
-description: Azure Monitor může číst protokoly pro služby Azure, které zapisují diagnostiku do úložiště tabulek nebo protokolů Služby IIS zapsaných do úložiště objektů blob.
+title: Použijte úložiště objektů BLOB pro služby IIS a úložiště tabulek pro události v Azure Monitor | Microsoft Docs
+description: Azure Monitor může číst protokoly pro služby Azure, které zapisují diagnostiku do tabulkového úložiště nebo do protokolů IIS zapsaných do úložiště objektů BLOB.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
 ms.openlocfilehash: 44368ab90abd189c6a8a0792494828c87142eb20
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77672391"
 ---
-# <a name="collect-data-from-azure-diagnostics-extension-to-azure-monitor-logs"></a>Shromažďování dat z rozšíření diagnostiky Azure do protokolů monitorování Azure
-Rozšíření diagnostiky Azure je [agent ve službě Azure Monitor,](agents-overview.md) který shromažďuje data monitorování z hostovaného operačního systému výpočetních prostředků Azure včetně virtuálních počítačů. Tento článek popisuje, jak shromažďovat data shromážděná rozšířenídiagnostiky z Azure Storage do protokolů Azure Monitor.
+# <a name="collect-data-from-azure-diagnostics-extension-to-azure-monitor-logs"></a>Shromažďovat data z rozšíření diagnostiky Azure do protokolů Azure Monitor
+Rozšíření Azure Diagnostics je [Agent v Azure monitor](agents-overview.md) , který shromažďuje data monitorování z hostovaného operačního systému výpočetních prostředků Azure, včetně virtuálních počítačů. Tento článek popisuje, jak shromažďovat data shromážděná diagnostickým rozšířením z Azure Storage do Azure Monitor protokolů.
 
 > [!NOTE]
-> Agent Log Analytics v Azure Monitor je obvykle upřednostňovanou metodou pro shromažďování dat z hostovaného operačního systému do protokolů monitorování Azure. Podrobný přehled [agentů Azure Monitoru](agents-overview.md) najdete v článku podrobné porovnání agentů.
+> Agent Log Analytics v Azure Monitor je obvykle upřednostňovanou metodou shromažďování dat z hostovaného operačního systému do protokolů Azure Monitor. Podrobné porovnání agentů najdete v tématu [Přehled agentů Azure monitor](agents-overview.md) .
 
 ## <a name="supported-data-types"></a>Podporované datové typy
-Rozšíření diagnostiky Azure ukládá data v účtu Azure Storage. Aby protokoly monitorování Azure shromažďovaly tato data, musí být v následujících umístěních:
+Rozšíření diagnostiky Azure ukládá data do účtu Azure Storage. Protokoly Azure Monitor ke shromáždění těchto dat musí být v následujících umístěních:
 
 | Typ protokolu | Typ prostředku | Umístění |
 | --- | --- | --- |
-| Protokoly IIS |Virtuální počítače <br> Webové role <br> Role pracovního procesu |wad-iis-logfiles (Úložiště objektů blob) |
-| Syslog |Virtuální počítače |LinuxsyslogVer2v0 (Ukládání tabulek) |
-| Provozní události service fabric |Uzly Service Fabric |Tabulka WADServiceFabricSystemEventTable |
-| Service Fabric Spolehlivé události actor |Uzly Service Fabric |WADServiceFabricReliableActorEventTable |
-| Události spolehlivé služby Service Fabric |Uzly Service Fabric |WadServiceFabricReliableServiceEventTable |
-| Protokoly událostí systému Windows |Uzly Service Fabric <br> Virtuální počítače <br> Webové role <br> Role pracovního procesu |WADWindowsEventLogsTable (úložiště tabulek) |
-| Protokoly ETW systému Windows |Uzly Service Fabric <br> Virtuální počítače <br> Webové role <br> Role pracovního procesu |WADETWEventTable (úložiště stolů) |
+| Protokoly IIS |Virtuální počítače <br> Webové role <br> Role pracovního procesu |WAD – IIS – soubory protokolu (Blob Storage) |
+| Syslog |Virtuální počítače |LinuxsyslogVer2v0 (Table Storage) |
+| Service Fabric provozní události |Uzly Service Fabric |WADServiceFabricSystemEventTable |
+| Service Fabric spolehlivých událostí objektu actor |Uzly Service Fabric |WADServiceFabricReliableActorEventTable |
+| Service Fabric spolehlivých událostí služby |Uzly Service Fabric |WADServiceFabricReliableServiceEventTable |
+| Protokoly událostí systému Windows |Uzly Service Fabric <br> Virtuální počítače <br> Webové role <br> Role pracovního procesu |WADWindowsEventLogsTable (Table Storage) |
+| Protokoly ETW systému Windows |Uzly Service Fabric <br> Virtuální počítače <br> Webové role <br> Role pracovního procesu |WADETWEventTable (Table Storage) |
 
 ## <a name="data-types-not-supported"></a>Datové typy nejsou podporovány.
 
-- Údaje o výkonu z hostovaného operačního systému
-- Protokoly služby IIS z webů Azure
+- Údaje o výkonu hostovaného operačního systému
+- Protokoly služby IIS z Azure websites
 
 
-## <a name="enable-azure-diagnostics-extension"></a>Povolení rozšíření diagnostiky Azure
-Viz [Instalace a konfigurace rozšíření diagnostiky Windows Azure (WAD)](diagnostics-extension-windows-install.md) nebo Použití [linuxového diagnostického rozšíření ke sledování metrik a protokolů,](../../virtual-machines/extensions/diagnostics-linux.md) kde najdete podrobnosti o instalaci a konfiguraci rozšíření diagnostiky. To vám umožní zadat účet úložiště a nakonfigurovat shromažďování dat, které chcete předat protokolům monitorování Azure.
+## <a name="enable-azure-diagnostics-extension"></a>Povolit rozšíření Azure Diagnostics
+Podrobnosti o instalaci a konfiguraci rozšíření diagnostiky najdete v tématu [instalace a konfigurace rozšíření Windows Azure Diagnostics (WAD)](diagnostics-extension-windows-install.md) nebo [použití diagnostického rozšíření Linux k monitorování metrik a protokolů](../../virtual-machines/extensions/diagnostics-linux.md) . Tím uspání a probuzeníte, že zadáte účet úložiště a nakonfigurujete shromažďování dat, která chcete přeAzure Monitor protokoly.
 
 
-## <a name="collect-logs-from-azure-storage"></a>Shromažďování protokolů z Azure Storage
-Pomocí následujícího postupu povolte shromažďování dat rozšíření diagnostiky z účtu Azure Storage:
+## <a name="collect-logs-from-azure-storage"></a>Shromažďovat protokoly z Azure Storage
+Pomocí následujícího postupu můžete povolit shromažďování diagnostických dat rozšíření z Azure Storage účtu:
 
-1. Na webu Azure Portal přejděte na **pracovní prostory Analýzy protokolů** a vyberte svůj pracovní prostor.
-1. V části **Zdroje dat pracovního prostoru** v nabídce klikněte na **protokoly účtů úložiště.**
-2. Klepněte na tlačítko **Přidat**.
-3. Vyberte **účet úložiště,** který obsahuje data, která chcete shromažďovat.
-4. Vyberte **datový typ,** který chcete shromáždit.
-5. Hodnota pro Source je automaticky naplněna na základě datového typu.
-6. Chcete-li uložit konfiguraci, klepněte na tlačítko **OK.**
-7. Tento postup opakujte pro další datové typy.
+1. V Azure Portal přejdete do **Log Analytics pracovních prostorů** a vyberete svůj pracovní prostor.
+1. V nabídce v části **zdroje dat pracovního prostoru** klikněte na **protokoly účtů úložiště** .
+2. Klikněte na tlačítko **Přidat**.
+3. Vyberte **účet úložiště** , který obsahuje data, která se mají shromažďovat.
+4. Vyberte **datový typ** , který chcete shromáždit.
+5. Hodnota pro zdroj se vyplní automaticky na základě datového typu.
+6. Konfiguraci uložíte kliknutím na **OK** .
+7. Opakujte pro další datové typy.
 
-Přibližně za 30 minut, můžete zobrazit data z účtu úložiště v pracovním prostoru Log Analytics. Zobrazí se pouze data, která je zapsána do úložiště po použití konfigurace. Pracovní prostor nečte již existující data z účtu úložiště.
+Za přibližně 30 minut budete moci zobrazit data z účtu úložiště v pracovním prostoru Log Analytics. Po použití konfigurace se zobrazí pouze data zapsaná do úložiště. Pracovní prostor nečte již existující data z účtu úložiště.
 
 > [!NOTE]
-> Portál neověřuje, zda zdroj existuje v účtu úložiště nebo pokud jsou zapisována nová data.
+> Portál neověřuje, jestli zdroj existuje v účtu úložiště, nebo jestli se zapisují nová data.
 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Shromažďujte protokoly a metriky pro služby Azure](collect-azure-metrics-logs.md) pro podporované služby Azure.
-* [Povolte řešení](../../azure-monitor/insights/solutions.md) poskytnout přehled o datech.
-* K analýze dat [použijte vyhledávací dotazy.](../../azure-monitor/log-query/log-query-overview.md)
+* [Shromážděte protokoly a metriky pro služby Azure](collect-azure-metrics-logs.md) pro podporované služby Azure.
+* [Povolte řešení](../../azure-monitor/insights/solutions.md) a poskytněte vám tak přehled o datech.
+* Data můžete analyzovat [pomocí vyhledávacích dotazů](../../azure-monitor/log-query/log-query-overview.md) .

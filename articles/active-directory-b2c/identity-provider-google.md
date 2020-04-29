@@ -1,7 +1,7 @@
 ---
 title: Nastavení registrace a přihlášení pomocí účtu Google
 titleSuffix: Azure AD B2C
-description: Zajistěte registraci a přihlášení zákazníkům pomocí účtů Google ve svých aplikacích pomocí služby Azure Active Directory B2C.
+description: Poskytněte zákazníkům registraci a přihlášení k účtům Google ve vašich aplikacích pomocí Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,37 +12,37 @@ ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 48955caddb64069f897078f5e47066d9f11d119b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78188136"
 ---
-# <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účtu Google pomocí služby Azure Active Directory B2C
+# <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu Google pomocí Azure Active Directory B2C
 
 ## <a name="create-a-google-application"></a>Vytvoření aplikace Google
 
-Chcete-li použít účet Google jako [poskytovatele identity](authorization-code-flow.md) ve službě Azure Active Directory B2C (Azure AD B2C), musíte vytvořit aplikaci ve službě Google Developers Console. Pokud ještě nemáte účet Google, můžete se [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp)zaregistrovat na adrese .
+Pokud chcete použít účet Google jako [poskytovatele identity](authorization-code-flow.md) v Azure Active Directory B2C (Azure AD B2C), musíte vytvořit aplikaci v konzole pro vývojáře Google. Pokud ještě nemáte účet Google, můžete se zaregistrovat v [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp).
 
-1. Přihlaste se ke [službě Google Developers Console](https://console.developers.google.com/) pomocí přihlašovacích údajů k účtu Google.
-1. V levém horním rohu stránky vyberte seznam projektů a pak vyberte **Nový projekt**.
-1. Zadejte **název projektu**, vyberte **Vytvořit**.
-1. Ujistěte se, že používáte nový projekt výběrem rozevíracího souboru projektu v levém horním rohu obrazovky, vyberte projekt podle názvu a pak vyberte **Otevřít**.
-1. V levé nabídce vyberte **obrazovku Souhlas OAuth,** vyberte **Externí**a pak vyberte **Vytvořit**.
-Zadejte **název** aplikace. Do části **Autorizované domény** zadejte *b2clogin.com* a vyberte **Uložit**.
-1. V levé nabídce vyberte **Pověření** a pak vyberte **Vytvořit pověření** > **Oauth ID klienta**.
-1. V části **Typ aplikace**vyberte **možnost Webová aplikace**.
-1. Zadejte **název** aplikace, `https://your-tenant-name.b2clogin.com` zadejte **autorizovaný původ JavaScriptu**a `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` **autorizované identifikátory URI přesměrování**. Nahraďte `your-tenant-name` se jménem svého tenanta. Při zadávání názvu klienta musíte použít všechna malá písmena, i když je klient definován velkými písmeny v Azure AD B2C.
+1. Přihlaste se ke [konzole pro vývojáře Google](https://console.developers.google.com/) pomocí svých přihlašovacích údajů k účtu Google.
+1. V levém horním rohu stránky vyberte seznam projekt a pak vyberte **Nový projekt**.
+1. Zadejte **název projektu**, vyberte **vytvořit**.
+1. Ujistěte se, že používáte nový projekt výběrem rozevírací nabídky projekt v levém horním rohu obrazovky, vyberte svůj projekt podle názvu a pak vyberte **otevřít**.
+1. V nabídce vlevo vyberte **obrazovku pro vyjádření souhlasu OAuth** , vyberte **externí**a pak vyberte **vytvořit**.
+Zadejte **název** vaší aplikace. V části **autorizované domény** zadejte *B2clogin.com* a vyberte **Uložit**.
+1. V nabídce vlevo vyberte **přihlašovací údaje** a pak vyberte **vytvořit přihlašovací údaje** > **ID klienta OAuth**.
+1. V části **Typ aplikace**vyberte **Webová aplikace**.
+1. Zadejte **název** vaší aplikace, zadejte `https://your-tenant-name.b2clogin.com` v **autorizovaných zdrojích JavaScriptu**a `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` v **autorizovaných identifikátorech URI pro přesměrování**. Nahraďte `your-tenant-name` názvem vašeho tenanta. Při zadávání názvu tenanta musíte použít malá písmena, i když je tenant definovaný velkými písmeny v Azure AD B2C.
 1. Klikněte na **Vytvořit**.
-1. Zkopírujte hodnoty **ID klienta** a **tajný klíč klienta**. Budete je potřebovat k konfiguraci Google jako poskytovatele identity ve vašem tenantovi. **Tajný klíč klienta** je důležité pověření zabezpečení.
+1. Zkopírujte hodnoty **ID klienta** a **tajný klíč klienta**. Obě tyto služby budete potřebovat ke konfiguraci Google jako poskytovatele identity ve vašem tenantovi. **Tajný kód klienta** je důležité bezpečnostní pověření.
 
-## <a name="configure-a-google-account-as-an-identity-provider"></a>Konfigurace účtu Google jako poskytovatele identity
+## <a name="configure-a-google-account-as-an-identity-provider"></a>Konfigurace účtu Google jako zprostředkovatele identity
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální správce vašeho tenanta Azure AD B2C.
-1. Ujistěte se, že používáte adresář, který obsahuje vašeho klienta Azure AD B2C výběrem directory **+ předplatné** filtr v horní nabídce a výběrem adresáře, který obsahuje vašeho klienta.
+1. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
 1. Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Zprostředkovatelé identity**a pak vyberte **Google**.
 1. Zadejte **název**. Například *Google*.
-1. Pro **ID klienta**zadejte ID klienta aplikace Google, kterou jste vytvořili dříve.
-1. Pro **tajný klíč klienta**zadejte tajný klíč klienta, který jste nahráli.
+1. Jako **ID klienta**zadejte ID klienta Google aplikace, kterou jste vytvořili dříve.
+1. Pro **tajný klíč klienta**zadejte tajný klíč klienta, který jste si poznamenali.
 1. Vyberte **Uložit**.

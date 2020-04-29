@@ -1,7 +1,7 @@
 ---
-title: Přizpůsobení jazykového modelu pomocí rozhraní API pro indexování videa
+title: Přizpůsobení jazykového modelu pomocí rozhraní Video Indexer API
 titlesuffix: Azure Media Services
-description: Přečtěte si, jak přizpůsobit jazykový model pomocí rozhraní API videoindexeru.
+description: Naučte se, jak přizpůsobit jazykový model pomocí rozhraní Video Indexer API.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -11,35 +11,35 @@ ms.topic: article
 ms.date: 02/04/2020
 ms.author: anzaman
 ms.openlocfilehash: 19067bbbaf93c9abc9a9220b09dd482ce9115655
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80127979"
 ---
-# <a name="customize-a-language-model-with-the-video-indexer-api"></a>Přizpůsobení jazykového modelu pomocí rozhraní API videoindexeru
+# <a name="customize-a-language-model-with-the-video-indexer-api"></a>Přizpůsobení jazykového modelu pomocí rozhraní Video Indexer API
 
-Video Indexer umožňuje vytvářet vlastní jazykové modely pro přizpůsobení rozpoznávání řeči nahráním textu adaptace, konkrétně textu z domény, jehož slovní zásobu chcete, aby se motor přizpůsobil. Jakmile táhejte model, budou rozpoznána nová slova uvedená v textu přizpůsobení.
+Video Indexer vám umožní vytvářet vlastní jazykové modely pro přizpůsobení rozpoznávání řeči odesláním přizpůsobeného textu, konkrétně textu z domény, kde chcete, aby se modul přizpůsobil. Jakmile svůj model vytvoříte, budou se nová slova uvedená v textu přizpůsobení rozpoznat.
 
-Podrobný přehled a doporučené postupy pro vlastní jazykové modely naleznete v [tématu Přizpůsobení jazykového modelu pomocí nástroje Video Indexer](customize-language-model-overview.md).
+Podrobný přehled a osvědčené postupy pro vlastní jazykové modely najdete v tématu [přizpůsobení jazykového modelu pomocí video indexer](customize-language-model-overview.md).
 
-Rozhraní API videoindexeru můžete použít k vytvoření a úpravám vlastních jazykových modelů ve vašem účtu, jak je popsáno v tomto tématu. Můžete také použít webové stránky, jak je popsáno v [Přizpůsobit jazykový model pomocí webu Video Indexer](customize-language-model-with-api.md).
+Rozhraní Video Indexer API můžete použít k vytvoření a úpravě vlastních jazykových modelů v účtu, jak je popsáno v tomto tématu. Web můžete také použít, jak je popsáno v tématu [přizpůsobení jazykového modelu pomocí webu video indexer](customize-language-model-with-api.md).
 
 ## <a name="create-a-language-model"></a>Vytvoření jazykového modelu
 
-Vytvoření rozhraní API [jazykového modelu](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Language-Model?) vytvoří nový vlastní jazykový model v zadaném účtu. V tomto hovoru můžete nahrát soubory pro jazykový model. Případně můžete vytvořit jazykový model zde a nahrát soubory pro model později aktualizací jazykového modelu.
+Rozhraní API pro [Vytvoření jazykového modelu](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Language-Model?) vytvoří nový vlastní jazykový model v zadaném účtu. V tomto volání můžete odeslat soubory pro jazykový model. Alternativně můžete vytvořit jazykový model zde a později nahrávat soubory pro model aktualizací jazykového modelu.
 
 > [!NOTE]
-> Stále je nutné trénovat model s jeho povolené soubory pro model se dozvíte obsah jeho souborů. Pokyny pro školení jazyka jsou v další části.
+> I když model budete chtít zjistit obsah svých souborů, musíte si i nadále proškolit model s povolenými soubory. Pokyny pro školení jazyka najdete v další části.
 
-Chcete-li odeslat soubory, které mají být přidány do jazykového modelu, musíte nahrát soubory v těle pomocí FormData kromě poskytnutí hodnot pro požadované parametry výše. Tento úkol lze provést dvěma způsoby:
+Chcete-li nahrát soubory, které mají být přidány do jazykového modelu, je třeba odeslat soubory do těla pomocí FormData a zadat tak hodnoty pro požadované parametry výše. Tuto úlohu můžete provést dvěma způsoby:
 
-* Klíč bude název souboru a hodnota bude txt soubor.
-* Klíč bude název souboru a hodnota bude URL souboru txt.
+* Klíč bude název souboru a hodnota bude soubor txt.
+* Klíč bude název souboru a hodnota bude adresa URL souboru txt.
 
 ### <a name="response"></a>Odpověď
 
-Odpověď poskytuje metadata na nově vytvořený jazykový model spolu s metadaty na každém ze souborů modelu podle formátu tohoto příkladu výstupu JSON:
+Odpověď poskytuje metadata nově vytvořeného jazykového modelu spolu s metadaty každého souboru modelu, který následuje po formátu tohoto ukázkového výstupu JSON:
 
 ```json
 {
@@ -68,16 +68,16 @@ Odpověď poskytuje metadata na nově vytvořený jazykový model spolu s metada
 
 ```
 
-## <a name="train-a-language-model"></a>Trénování jazykového modelu
+## <a name="train-a-language-model"></a>Výuka jazykového modelu
 
-[Trénování jazykového modelu](https://api-portal.videoindexer.ai/docs/services/operations/operations/Train-Language-Model?&pattern=train) rozhraní API trénuje vlastní jazykový model v zadaném účtu s obsahem v souborech, které byly odeslány do jazykového modelu a povoleny v tomto jazykovém modelu.
+Rozhraní API pro [jazykové modely](https://api-portal.videoindexer.ai/docs/services/operations/operations/Train-Language-Model?&pattern=train) vlaky nahraje vlastní jazykový model v zadaném účtu s obsahem souborů, které se nahrály do a povolily v jazykovém modelu.
 
 > [!NOTE]
 > Nejprve musíte vytvořit jazykový model a nahrát jeho soubory. Soubory můžete nahrát při vytváření jazykového modelu nebo aktualizací jazykového modelu.
 
 ### <a name="response"></a>Odpověď
 
-Odpověď poskytuje metadata na nově trénovaný jazykový model spolu s metadaty na každém ze souborů modelu podle formátu tohoto příkladu výstupu JSON:
+Odpověď poskytuje metadata nově vyučeného jazykového modelu spolu s metadaty v každém ze souborů modelu, které následují po formátu tohoto ukázkového výstupu JSON:
 
 ```json
 {
@@ -105,31 +105,31 @@ Odpověď poskytuje metadata na nově trénovaný jazykový model spolu s metada
 }
 ```
 
-Vrácené `id` je jedinečné ID používané k rozlišení `languageModelId` mezi jazykovými modely, zatímco se používá jak pro [nahrávání videa do indexu,](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) tak pro [reindexování](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) rozhraní API videa (označované také jako `linguisticModelId` rozhraní API pro nahrávání nebo přeindexování videoindexeru).
+`id` Vrácený je jedinečné ID, které se používá k rozlišení mezi jazykovými modely `languageModelId` , zatímco se používá pro [nahrání videa do indexu](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) a při [Reindexování](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) rozhraní API pro video ( `linguisticModelId` označované také jako v video indexer nahrávání a přeindexování rozhraní API).
 
 ## <a name="delete-a-language-model"></a>Odstranění jazykového modelu
 
-Odstranění rozhraní API [jazykového modelu](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete) odstraní vlastní jazykový model ze zadaného účtu. Jakékoli video, které používalo odstraněný jazykový model, bude mít stejný index, dokud video nepřeindexujete. Pokud video přeindexujete, můžete k videu přiřadit nový jazykový model. V opačném případě video Indexer použije svůj výchozí model k přeindexování videa.
+Rozhraní API pro [odstranění jazykových modelů](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete) odstraní z určeného účtu vlastní jazykový model. Všechna videa, která používala odstraněný jazykový model, budou mít stejný index, dokud video nebudete indexovat. Při opětovném indexování videa můžete videu přiřadit nový jazykový model. V opačném případě Video Indexer použije výchozí model k reindexaci videa.
 
 ### <a name="response"></a>Odpověď
 
-Neexistuje žádný vrácený obsah při úspěšném odstranění jazykového modelu.
+Po úspěšném odstranění jazykového modelu nebude vrácen žádný obsah.
 
 ## <a name="update-a-language-model"></a>Aktualizace jazykového modelu
 
-[Aktualizace jazykového modelu](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model?&pattern=update) rozhraní API aktualizuje vlastní jazykovou osobu modelu v zadaném účtu.
+Aktualizace rozhraní API [jazykových modelů](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model?&pattern=update) aktualizuje v zadaném účtu vlastní model osoby jazyka.
 
 > [!NOTE]
-> Je nutné, abyste již vytvořili jazykový model. Toto volání můžete použít k povolení nebo zakázání všech souborů v rámci modelu, aktualizaci názvu jazykového modelu a nahrání souborů, které mají být přidány do jazykového modelu.
+> Je nutné, abyste již vytvořili jazykový model. Pomocí tohoto volání můžete povolit nebo zakázat všechny soubory v modelu, aktualizovat název jazykového modelu a odeslat soubory, které mají být přidány do jazykového modelu.
 
-Chcete-li odeslat soubory, které mají být přidány do jazykového modelu, musíte nahrát soubory v těle pomocí FormData kromě poskytnutí hodnot pro požadované parametry výše. Tento úkol lze provést dvěma způsoby:
+Chcete-li nahrát soubory, které mají být přidány do jazykového modelu, je třeba odeslat soubory do těla pomocí FormData a zadat tak hodnoty pro požadované parametry výše. Tuto úlohu můžete provést dvěma způsoby:
 
-* Klíč bude název souboru a hodnota bude txt soubor.
-* Klíč bude název souboru a hodnota bude URL souboru txt.
+* Klíč bude název souboru a hodnota bude soubor txt.
+* Klíč bude název souboru a hodnota bude adresa URL souboru txt.
 
 ### <a name="response"></a>Odpověď
 
-Odpověď poskytuje metadata na nově trénovaný jazykový model spolu s metadaty na každém ze souborů modelu podle formátu tohoto příkladu výstupu JSON:
+Odpověď poskytuje metadata nově vyučeného jazykového modelu spolu s metadaty v každém ze souborů modelu, které následují po formátu tohoto ukázkového výstupu JSON:
 
 ```json
 {
@@ -157,15 +157,15 @@ Odpověď poskytuje metadata na nově trénovaný jazykový model spolu s metada
 }
 ```
 
-Pomocí `id` souborů vrácených v odpovědi stáhněte obsah souboru.
+`id` K stažení obsahu souboru použijte soubory vrácené v odpovědi.
 
 ## <a name="update-a-file-from-a-language-model"></a>Aktualizace souboru z jazykového modelu
 
-Aktualizace [souboru](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update) umožňuje aktualizovat název `enable` a stav souboru ve vlastním jazykovém modelu v zadaném účtu.
+[Aktualizace souboru](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update) umožňuje aktualizovat název a `enable` stav souboru v rámci vlastního jazykového modelu v zadaném účtu.
 
 ### <a name="response"></a>Odpověď
 
-Odpověď poskytuje metadata v souboru, který jste aktualizovali podle formátu ukázkového výstupu JSON níže.
+Odpověď poskytuje metadata souboru, který jste aktualizovali podle formátu ukázkového výstupu JSON níže.
 
 ```json
 {
@@ -177,15 +177,15 @@ Odpověď poskytuje metadata v souboru, který jste aktualizovali podle formátu
 }
 ```
 
-Pomocí `id` souboru vráceného v odpovědi stáhněte obsah souboru.
+`id` Pomocí souboru vráceného v odpovědi Stáhněte obsah souboru.
 
-## <a name="get-a-specific-language-model"></a>Získání konkrétního jazykového modelu
+## <a name="get-a-specific-language-model"></a>Získat konkrétní jazykový model
 
-[Get](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model?&pattern=get) API vrátí informace o zadaný jazykový model v zadaném účtu, jako je například jazyk a soubory, které jsou v jazykovém modelu.
+Rozhraní [Get](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model?&pattern=get) API vrátí informace o zadaném jazykovém modelu v zadaném účtu, jako je například jazyk a soubory, které jsou v jazykovém modelu.
 
 ### <a name="response"></a>Odpověď
 
-Odpověď poskytuje metadata na zadaný jazykový model spolu s metadaty na každém souboru modelu podle formátu tohoto příkladu výstupu JSON:
+Odpověď poskytuje metadata v zadaném jazykovém modelu spolu s metadaty v každém ze souborů modelu, které následují po formátu tohoto ukázkového výstupu JSON:
 
 ```json
 {
@@ -213,15 +213,15 @@ Odpověď poskytuje metadata na zadaný jazykový model spolu s metadaty na kaž
 }
 ```
 
-Pomocí `id` souboru vráceného v odpovědi stáhněte obsah souboru.
+`id` Pomocí souboru vráceného v odpovědi Stáhněte obsah souboru.
 
-## <a name="get-all-the-language-models"></a>Získejte všechny jazykové modely
+## <a name="get-all-the-language-models"></a>Získat všechny jazykové modely
 
-[Get all](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Models?&pattern=get) API vrátí všechny vlastní jazykové modely v zadaném účtu v seznamu.
+Rozhraní [Get All](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Models?&pattern=get) API vrátí všechny vlastní jazykové modely v zadaném účtu v seznamu.
 
 ### <a name="response"></a>Odpověď
 
-Odpověď obsahuje seznam všech jazykových modelů ve vašem účtu a každého z jejich metadat a souborů podle formátu tohoto příkladu výstupu JSON:
+Odpověď poskytuje seznam všech jazykových modelů v účtu a každé z jejich metadat a souborů podle formátu tohoto ukázkového výstupu JSON:
 
 ```json
 [
@@ -261,15 +261,15 @@ Odpověď obsahuje seznam všech jazykových modelů ve vašem účtu a každéh
 
 ## <a name="delete-a-file-from-a-language-model"></a>Odstranění souboru z jazykového modelu
 
-Rozhraní [DELETE](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model-File?&pattern=delete) API odstraní zadaný soubor ze zadaného jazykového modelu v zadaném účtu.
+Rozhraní API pro [odstranění](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model-File?&pattern=delete) Odstraní zadaný soubor ze zadaného jazykového modelu v zadaném účtu.
 
 ### <a name="response"></a>Odpověď
 
-Neexistuje žádný vrácený obsah při úspěšném odstranění souboru z jazykového modelu.
+Po úspěšném odstranění souboru z jazykového modelu se nevrátí žádný obsah.
 
-## <a name="get-metadata-on-a-file-from-a-language-model"></a>Získání metadat k souboru z jazykového modelu
+## <a name="get-metadata-on-a-file-from-a-language-model"></a>Získání metadat pro soubor z jazykového modelu
 
-Získat [metadata rozhraní](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model-File-Data?&pattern=get%20language%20model) API souboru vrátí obsah a metadata na zadaný soubor z vybraného jazykového modelu ve vašem účtu.
+[Metadata Get souboru](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model-File-Data?&pattern=get%20language%20model) rozhraní API vrátí obsah a metadata ze zadaného souboru z vybraného jazykového modelu ve vašem účtu.
 
 ### <a name="response"></a>Odpověď
 
@@ -287,15 +287,15 @@ Odpověď poskytuje obsah a metadata souboru ve formátu JSON, podobně jako v t
 ```
 
 > [!NOTE]
-> Obsah tohoto ukázkového souboru jsou slova "hello" a world " ve dvou samostatných řádcích.
+> Obsah tohoto ukázkového souboru jsou slova "Hello" a World "ve dvou samostatných řádcích.
 
 ## <a name="download-a-file-from-a-language-model"></a>Stažení souboru z jazykového modelu
 
-Při stahování rozhraní API [souboru](https://api-portal.videoindexer.ai/docs/services/operations/operations/Download-Language-Model-File-Content?) se stáhne textový soubor obsahující obsah zadaného souboru ze zadaného jazykového modelu v zadaném účtu. Tento textový soubor by měl odpovídat obsahu textového souboru, který byl původně odeslán.
+[Stažení souborového](https://api-portal.videoindexer.ai/docs/services/operations/operations/Download-Language-Model-File-Content?) rozhraní API stáhne textový soubor obsahující obsah zadaného souboru ze zadaného jazykového modelu v zadaném účtu. Tento textový soubor by měl odpovídat obsahu textového souboru, který byl původně nahrán.
 
 ### <a name="response"></a>Odpověď
 
-Odpovědí bude stažení textového souboru s obsahem souboru ve formátu JSON.
+Odpověď bude stahovat textový soubor s obsahem souboru ve formátu JSON.
 
 ## <a name="next-steps"></a>Další kroky
 

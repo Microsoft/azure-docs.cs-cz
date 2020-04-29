@@ -8,10 +8,10 @@ ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
 ms.openlocfilehash: bb94d3596fde541f16edd1b7012f57b89ebf52eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77670861"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Analýza trendů v sadě Visual Studio
@@ -52,7 +52,7 @@ Nástroj Trendy Application Insights pracuje s telemetrií vaší aplikace a viz
 
 Pomocí ovládacích prvků v horní části okna nastavte typy telemetrie, které chcete zobrazit. Nejdřív vyberte typy telemetrie, které vás zajímají:
 
-* **Typ telemetrie** – serverové požadavky, výjimky, závislosti nebo vlastní události
+* **Typ telemetrie** – požadavky serveru, výjimky, závislosti nebo vlastní události
 * **Časový rozsah** – jakýkoli od posledních 30 minut po poslední 3 dny.
 * **Seskupit podle** – typ výjimky, ID problému, země/oblast a další.
 
@@ -61,7 +61,7 @@ Potom klikněte na **analyzovat telemetrii** a spusťte dotaz.
 Pokud chcete přecházet mezi bublinami ve vizualizaci, postupujte následovně:
 
 * Kliknutím vyberte bublinu, která aktualizuje filtry v dolní části okna a shrnuje jenom události, které nastaly během konkrétního časového období.
-* Poklepáním na bublinu přejdete do vyhledávacího nástroje a zobrazíte všechny jednotlivé události telemetrie, ke kterým došlo během tohoto časového období.
+* Dvojitým kliknutím na bublinu přejděte do nástroje hledání a zobrazte všechny jednotlivé události telemetrie, ke kterým došlo během tohoto časového období.
 * Pokud chcete zrušit výběr bubliny ve vizualizaci, podržte klávesu Ctrl a klikněte na bublinu.
 
 > [!TIP]
@@ -70,7 +70,7 @@ Pokud chcete přecházet mezi bublinami ve vizualizaci, postupujte následovně:
 > 
 
 ## <a name="filter"></a>Filtr
-Pomocí ovládacích prvků filtru v dolní části okna můžete zjistit konkrétnější trendy. Pokud chcete filtr použít, klikněte na jeho název. Mezi různými filtry můžete rychle přepínat a zjišťovat tak trendy, které se můžou skrývat v konkrétní dimenzi telemetrie. Pokud použijete filtr v jedné dimenzi, například Typ výjimky, filtry v jiných dimenzích zůstanou klikací, i když jsou zobrazeny šedě. Chcete-li zrušit použití filtru, klepněte na něj znovu. Podržením klávesy Ctrl a následným klikáním můžete vybrat několik filtrů ve stejné dimenzi.
+Pomocí ovládacích prvků filtru v dolní části okna můžete zjistit konkrétnější trendy. Pokud chcete filtr použít, klikněte na jeho název. Mezi různými filtry můžete rychle přepínat a zjišťovat tak trendy, které se můžou skrývat v konkrétní dimenzi telemetrie. Použijete-li filtr v jedné dimenzi, například typ výjimky, budou mít filtry v jiných dimenzích možnost kliknutí, i když jsou zobrazeny šedě. Chcete-li zrušit použití filtru, klikněte na něj znovu. Podržením klávesy Ctrl a následným klikáním můžete vybrat několik filtrů ve stejné dimenzi.
 
 ![Filtry trendů](./media/visual-studio-trends/TrendsFiltering-750.png)
 
@@ -86,7 +86,7 @@ Pokud chcete zrušit používání jednoho z těchto filtrů, klikněte u přís
 ![Několik filtrů](./media/visual-studio-trends/TrendsFiltering2-750.png)
 
 ## <a name="find-anomalies"></a>Nalezení anomálií
-Nástroj Trendy může zvýraznit bubliny událostí, které jsou ve srovnání s jinými bublinami ve stejné časové řadě neobvyklé. V rozevírací nabídce Typ zobrazení vyberte **Počty v časovém intervalu (zvýraznit anomálie)** nebo **Procenta v časovém intervalu (zvýraznit anomálie)**. Červené bubliny označují anomálie. Anomálie jsou definovány jako bubliny s počty/procenta přesahujícími 2,1násobek směrodatné odchylky počtu/procent, ke kterým došlo v posledních dvou časových obdobích (48 hodin, pokud prohlížíte posledních 24 hodin atd.).
+Nástroj Trendy může zvýraznit bubliny událostí, které jsou ve srovnání s jinými bublinami ve stejné časové řadě neobvyklé. V rozevírací nabídce Typ zobrazení vyberte **Počty v časovém intervalu (zvýraznit anomálie)** nebo **Procenta v časovém intervalu (zvýraznit anomálie)**. Červené bubliny označují anomálie. Anomálie se definují jako bubliny s počty nebo procenty, které překračují 2,1 krát směrodatnou odchylku počtu nebo procent, ke kterým došlo v posledních dvou časových obdobích (48 hodin, pokud zobrazujete posledních 24 hodin atd.).
 
 ![Barevné tečky označují anomálie.](./media/visual-studio-trends/TrendsAnomalies-750.png)
 

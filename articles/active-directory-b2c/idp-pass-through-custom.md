@@ -1,7 +1,7 @@
 ---
-title: Předání přístupového tokenu prostřednictvím vlastních zásad do vaší aplikace
+title: Předání přístupového tokenu pomocí vlastní zásady do vaší aplikace
 titleSuffix: Azure AD B2C
-description: Zjistěte, jak můžete předat přístupový token pro poskytovatele identit OAuth 2.0 jako deklaraci prostřednictvím vlastní chod vaší aplikace ve službě Azure Active Directory B2C.
+description: Přečtěte si, jak můžete předat přístupový token poskytovatelům identity OAuth 2,0 jako deklaraci identity pomocí vlastní zásady pro aplikaci v Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,25 +12,25 @@ ms.date: 08/17/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ff5ef8f742914129d868152814d84d2112267c09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78187781"
 ---
-# <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Předání přístupového tokenu prostřednictvím vlastních zásad vaší aplikaci ve službě Azure Active Directory B2C
+# <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Předání přístupového tokenu pomocí vlastní zásady do aplikace v Azure Active Directory B2C
 
-[Vlastní zásady](custom-policy-get-started.md) ve službě Azure Active Directory B2C (Azure AD B2C) poskytuje uživatelům vaší aplikace příležitost k registraci nebo přihlášení u poskytovatele identity. V takovém případě Azure AD B2C obdrží [přístupový token](tokens-overview.md) od poskytovatele identity. Azure AD B2C používá tento token k načtení informací o uživateli. Přidáte typ deklarace a výstupní deklarace do vlastní zásady předat token prostřednictvím aplikací, které zaregistrujete v Azure AD B2C.
+[Vlastní zásada](custom-policy-get-started.md) v Azure Active Directory B2C (Azure AD B2C) poskytuje uživatelům vaší aplikace možnost registrace nebo přihlášení pomocí poskytovatele identity. Pokud k tomu dojde, Azure AD B2C obdrží od poskytovatele identity [přístupový token](tokens-overview.md) . Azure AD B2C používá tento token k načtení informací o uživateli. Do vlastních zásad můžete přidat typ deklarace identity a výstupní deklaraci identity, abyste mohli token předat do aplikací, které zaregistrujete v Azure AD B2C.
 
-Azure AD B2C podporuje předávání přístupového [tokenu zprostředkovatelů identit OAuth 2.0](authorization-code-flow.md) a [OpenID Connect.](openid-connect.md) Pro všechny ostatní zprostředkovatele identity je deklarace identity vrácena prázdná.
+Azure AD B2C podporuje předávání přístupového tokenu [OAuth 2,0](authorization-code-flow.md) a zprostředkovatele identity [OpenID Connect](openid-connect.md) . U všech ostatních zprostředkovatelů identity se deklarace identity vrátí jako prázdná.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Vaše vlastní zásady jsou nakonfigurovány s poskytovatelem identity OAuth 2.0 nebo OpenID Connect.
+* Vaše vlastní zásada je nakonfigurovaná s poskytovatelem identity OAuth 2,0 nebo OpenID Connect.
 
-## <a name="add-the-claim-elements"></a>Přidání prvků deklarací
+## <a name="add-the-claim-elements"></a>Přidání prvků deklarace identity
 
-1. Otevřete soubor *TrustframeworkExtensions.xml* a přidejte následující **claimtype** element s identifikátorem `identityProviderAccessToken` prvku **ClaimsSchema:**
+1. Otevřete soubor *TrustframeworkExtensions. XML* a přidejte následující element **ClaimType** s identifikátorem `identityProviderAccessToken` do prvku **ClaimsSchema** :
 
     ```XML
     <BuildingBlocks>
@@ -45,7 +45,7 @@ Azure AD B2C podporuje předávání přístupového [tokenu zprostředkovatelů
     </BuildingBlocks>
     ```
 
-2. Přidejte element **OutputClaim** do prvku **TechnicalProfile** pro každého zprostředkovatele identity OAuth 2.0, pro kterého chcete získat přístupový token. Následující příklad ukazuje prvek přidaný do technického profilu Facebooku:
+2. Přidejte element **OutputClaim** do elementu **TechnicalProfile** pro každého poskytovatele identity OAuth 2,0, pro který chcete získat přístupový token. Následující příklad ukazuje prvek přidaný do technického profilu Facebooku:
 
     ```XML
     <ClaimsProvider>
@@ -61,8 +61,8 @@ Azure AD B2C podporuje předávání přístupového [tokenu zprostředkovatelů
     </ClaimsProvider>
     ```
 
-3. Uložte soubor *TrustframeworkExtensions.xml.*
-4. Otevřete soubor zásad předávající strany, například *SignUpOrSignIn.xml*, a přidejte element **OutputClaim** do **technicalprofile**:
+3. Uložte soubor *TrustframeworkExtensions. XML* .
+4. Otevřete soubor zásad předávající strany, například *SignUpOrSignIn. XML*, a přidejte element **OutputClaim** do **TechnicalProfile**:
 
     ```XML
     <RelyingParty>
@@ -78,31 +78,31 @@ Azure AD B2C podporuje předávání přístupového [tokenu zprostředkovatelů
 
 5. Uložte soubor zásad.
 
-## <a name="test-your-policy"></a>Otestujte své zásady
+## <a name="test-your-policy"></a>Testování zásad
 
-Při testování aplikací v Azure AD B2C, může být užitečné mít token `https://jwt.ms` Azure AD B2C vrácena, aby bylo možné zkontrolovat deklarace identity v něm.
+Při testování aplikací v Azure AD B2C může být užitečné, aby byl token Azure AD B2C vrácen `https://jwt.ms` , aby bylo možné zkontrolovat deklarace identity v ní.
 
 ### <a name="upload-the-files"></a>Nahrání souborů
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
-2. Ujistěte se, že používáte adresář, který obsahuje vašeho klienta Azure AD B2C kliknutím na filtr **Directory + předplatné** v horní nabídce a výběrem adresáře, který obsahuje vašeho klienta.
-3. V levém horním rohu portálu Azure zvolte **Všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
-4. Vyberte **rozhraní Identity Experience Framework**.
-5. Na stránce Vlastní zásady klikněte na **Nahrát zásady**.
-6. Vyberte **Přepsat zásadu, pokud existuje**, a pak vyhledejte a vyberte soubor *TrustframeworkExtensions.xml.*
-7. Vyberte **Nahrát**.
-8. Opakujte kroky 5 až 7 pro soubor předávající strany, například *SignUpOrSignIn.xml*.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+2. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C kliknutím na v horní nabídce na položku filtr **adresářů a předplatných** a vyberte adresář, který obsahuje vašeho tenanta.
+3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
+4. Vyberte **architekturu prostředí identity**.
+5. Na stránce vlastní zásady klikněte na **nahrát zásadu**.
+6. Vyberte **přepsat zásadu, pokud existuje**, a pak vyhledejte a vyberte soubor *TrustframeworkExtensions. XML* .
+7. Vyberte **nahrát**.
+8. Opakujte kroky 5 až 7 pro soubor předávající strany, například *SignUpOrSignIn. XML*.
 
-### <a name="run-the-policy"></a>Spuštění zásady
+### <a name="run-the-policy"></a>Spustit zásadu
 
 1. Otevřete zásadu, kterou jste změnili. Například *B2C_1A_signup_signin*.
-2. V **aplikaci**vyberte aplikaci, kterou jste dříve zaregistrovali. Chcete-li zobrazit token v **Reply URL** příkladu níže, měla by se zobrazit `https://jwt.ms`adresa URL odpovědi .
+2. V případě **aplikace**vyberte svou aplikaci, kterou jste předtím zaregistrovali. Pokud chcete token zobrazit v následujícím příkladu, měla by se zobrazit `https://jwt.ms` **Adresa URL odpovědi** .
 3. Vyberte **Spustit nyní**.
 
-    Měli byste vidět něco podobného v následujícím příkladu:
+    Měl by se zobrazit něco podobného jako v následujícím příkladu:
 
-    ![Dekódovaný token v jwt.ms se zvýrazněným blokem idp_access_token](./media/idp-pass-through-custom/idp-pass-through-custom-token.PNG)
+    ![Dekódování tokenu v jwt.ms s zvýrazněným blokem idp_access_token](./media/idp-pass-through-custom/idp-pass-through-custom-token.PNG)
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o tokenech najdete v [odkazu na tokeny Služby Azure Active Directory B2C](tokens-overview.md).
+Další informace o tokenech najdete v referenčních informacích k [tokenu Azure Active Directory B2C](tokens-overview.md).

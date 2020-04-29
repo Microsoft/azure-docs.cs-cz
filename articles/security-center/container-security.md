@@ -1,6 +1,6 @@
 ---
-title: Zabezpečení kontejnerů v Azure Security Center | Dokumenty společnosti Microsoft
-description: Přečtěte si o funkcích zabezpečení kontejnerů Azure Security Center.
+title: Zabezpečení kontejneru v Azure Security Center | Microsoft Docs
+description: Přečtěte si o funkcích zabezpečení kontejneru Azure Security Center.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,88 +13,88 @@ ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
 ms.openlocfilehash: d46e2a9820ec0c45d197f135428f1ace712b2fb8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80125140"
 ---
-# <a name="container-security-in-security-center"></a>Zabezpečení kontejneru v Centru zabezpečení
+# <a name="container-security-in-security-center"></a>Zabezpečení kontejneru v Security Center
 
-Azure Security Center je nativní řešení Azure pro zabezpečení kontejnerů. Security Center je také optimální jediné podokno prostředí skla pro zabezpečení vašich cloudových úloh, virtuálních počítačů, serverů a kontejnerů.
+Azure Security Center je řešení zabezpečení kontejneru pro Azure Native. Security Center je také optimální jediné podokno prostředí pro zabezpečení vašich cloudových úloh, virtuálních počítačů, serverů a kontejnerů.
 
-Tento článek popisuje, jak vám Centrum zabezpečení pomáhá vylepšovat, monitorovat a udržovat zabezpečení kontejnerů a jejich aplikací. Dozvíte se, jak Security Center pomáhá s těmito základními aspekty zabezpečení kontejnerů:
+Tento článek popisuje, jak Security Center pomáhá vylepšit, monitorovat a udržovat zabezpečení vašich kontejnerů a jejich aplikací. Naučíte se, jak Security Center pomáhá s těmito základními aspekty zabezpečení kontejneru:
 
-* Správa zranitelnosti
-* Kalení prostředí kontejneru
-* Ochrana runtime
+* Správa ohrožení zabezpečení
+* Posílení zabezpečení prostředí kontejneru
+* Ochrana za běhu
 
-[![Karta zabezpečení kontejneru Centra zabezpečení Azure](media/container-security/container-security-tab.png)](media/container-security/container-security-tab.png#lightbox)
+[![Karta zabezpečení kontejneru Azure Security Center](media/container-security/container-security-tab.png)](media/container-security/container-security-tab.png#lightbox)
 
-Pokyny k používání těchto funkcí naleznete [v tématu Sledování zabezpečení kontejnerů](monitor-container-security.md).
+Pokyny k použití těchto funkcí najdete v tématu [monitorování zabezpečení kontejnerů](monitor-container-security.md).
 
-## <a name="vulnerability-management---scanning-container-images"></a>Správa zranitelnosti – skenování obrázků kontejnerů
-Chcete-li sledovat váš registr kontejnerů Azure založený na ARM, ujistěte se, že jste na standardní úrovni Security Center (viz [ceny).](/azure/security-center/security-center-pricing) Potom povolte volitelný balíček registrů kontejnerů. Po zasunutí nového obrázku centrum zabezpečení prohledá obrázek pomocí skeneru od předního dodavatele prohledávání chyb zabezpečení společnosti Qualys.
+## <a name="vulnerability-management---scanning-container-images"></a>Správa ohrožení zabezpečení – kontrola imagí kontejnerů
+Pokud chcete monitorovat Azure Container Registry na bázi ARM, ujistěte se, že jste na úrovni Standard Security Center (viz [ceny](/azure/security-center/security-center-pricing)). Pak povolte volitelnou sadu registrů kontejnerů. Když se doručí nový obrázek, Security Center zkontroluje Image pomocí skeneru z špičkového dodavatele kontroly ohrožení zabezpečení, Qualys.
 
-Když se zjistí problémy – pomocí Qualys nebo Security Center – budete upozorněni na řídicím panelu Centra zabezpečení. Pro každou chybu zabezpečení, Security Center poskytuje žalovatelné doporučení, spolu s klasifikací závažnosti a pokyny, jak tento problém napravit. Podrobnosti o doporučeních centra zabezpečení pro kontejnery naleznete v [referenčním seznamu doporučení](recommendations-reference.md#recs-containers).
+Po nalezení problémů – podle Qualys nebo Security Center – na řídicím panelu Security Center se zobrazí oznámení. U každé chyby zabezpečení Security Center poskytuje užitečná doporučení spolu se klasifikací závažnosti a pokyny, jak problém vyřešit. Podrobnosti o doporučeních Security Center pro kontejnery najdete v [referenčním seznamu doporučení](recommendations-reference.md#recs-containers).
 
-Security Center filtruje a klasifikuje nálezy ze skeneru. Když je obrázek v pořádku, Centrum zabezpečení jej jako takový označí. Security Center generuje doporučení zabezpečení pouze pro bitové kopie, které mají problémy, které mají být vyřešeny. Oznámením pouze v případě problémů centrum zabezpečení snižuje možnost nežádoucích informačních výstrah.
+Security Center filtruje a klasifikuje závěry ze skeneru. Když je obrázek v pořádku, Security Center ho označí jako takový. Security Center generuje doporučení zabezpečení pouze pro image, které mají problémy, které mají být vyřešeny. Tím, že se upozorní jenom na problémy, Security Center snižuje potenciální informativní výstrahy.
 
-## <a name="environment-hardening"></a>Kalení prostředí
+## <a name="environment-hardening"></a>Posílení zabezpečení prostředí
 
-### <a name="continuous-monitoring-of-your-docker-configuration"></a>Průběžné sledování konfigurace Dockeru
-Azure Security Center identifikuje nespravované kontejnery hostované na virtuálních počítačích IaaS Linux nebo jiných počítačích s Linuxem s kontejnery Dockeru. Security Center průběžně vyhodnocuje konfigurace těchto kontejnerů. Potom je porovná s [Centrem pro internetovou bezpečnost (CIS) Docker Benchmark](https://www.cisecurity.org/benchmark/docker/).
+### <a name="continuous-monitoring-of-your-docker-configuration"></a>Nepřetržité monitorování konfigurace Docker
+Azure Security Center identifikuje nespravované kontejnery hostované na virtuálních počítačích s IaaS Linux nebo jiné počítače se systémem Linux s kontejnery Docker. Security Center nepřetržitě vyhodnocuje konfiguraci těchto kontejnerů. Pak je porovná s [centrem testování v Docker pro Internet Security (CIS)](https://www.cisecurity.org/benchmark/docker/).
 
-Security Center obsahuje celou sadu pravidel cis Docker benchmark a upozorní vás, pokud vaše kontejnery nesplňují žádný z ovládacích prvků. Při zjištění chybné konfigurace, Security Center generuje doporučení zabezpečení. Na **stránce doporučení** můžete zobrazit doporučení a napravit problémy. Zobrazí se také doporučení na kartě **Kontejnery,** která zobrazuje všechny virtuální počítače nasazené s Dockerem. 
+Security Center zahrnuje celou RuleSet srovnávacího testu služby CI Docker a upozorní vás, pokud vaše kontejnery nevyhovují žádnému z ovládacích prvků. Když nalezne chybnou konfiguraci, Security Center vygeneruje doporučení zabezpečení. Na **stránce doporučení** si můžete zobrazit doporučení a opravit problémy. Na kartě **kontejnery** se zobrazí také doporučení se všemi virtuálními počítači nasazenými pomocí Docker. 
 
-Podrobnosti o příslušných doporučeních Centra zabezpečení, která se mohou zobrazit pro tuto funkci, naleznete v [části kontejneru](recommendations-reference.md#recs-containers) v referenční tabulce doporučení.
+Podrobnosti o relevantních doporučeních Security Center, která se můžou zobrazit pro tuto funkci, najdete v [části Container](recommendations-reference.md#recs-containers) referenční tabulky doporučení.
 
-Při zkoumání problémů se zabezpečením virtuálního počítače, Security Center poskytuje další informace o kontejnerech v počítači. Tyto informace zahrnují verzi Dockeru a počet bitových kopií spuštěných na hostiteli. 
+Když prozkoumáte problémy se zabezpečením virtuálního počítače, Security Center poskytne další informace o kontejnerech v počítači. Tyto informace zahrnují verzi Docker a počet imagí spuštěných na hostiteli. 
 
 >[!NOTE]
-> Tyto kontroly srovnávacího testu CIS se nespustí na instancích spravovaných AKS nebo virtuálních počítačích spravovaných databricks.
+> Tyto kontroly srovnávacích testů služby ci se nespouštějí na AKS instancích nebo virtuálních počítačích spravovaných datacihly.
 
-### <a name="continuous-monitoring-of-your-kubernetes-clusters"></a>Průběžné sledování vašich klastrů Kubernetes
-Security Center spolupracuje se službou Azure Kubernetes Service (AKS), spravovanou službou orchestrace kontejnerů společnosti Microsoft pro vývoj, nasazování a správu kontejnerizovaných aplikací.
+### <a name="continuous-monitoring-of-your-kubernetes-clusters"></a>Nepřetržité monitorování clusterů Kubernetes
+Security Center spolupracuje s Azure Kubernetes Service (AKS), což je spravovaná služba orchestrace kontejnerů Microsoftu pro vývoj, nasazování a správu kontejnerových aplikací.
 
-AKS poskytuje bezpečnostní ovládací prvky a přehled o stavu zabezpečení clusterů. Security Center používá tyto funkce k:
-* Neustále sledovat konfiguraci clusterů AKS
-* Generovat doporučení zabezpečení v souladu s oborovými standardy
+AKS poskytuje bezpečnostní mechanismy a přehled o stavech zabezpečení vašich clusterů. Security Center tyto funkce využívají k těmto akcím:
+* Nepřetržité monitorování konfigurace clusterů AKS
+* Generování doporučení zabezpečení zarovnaného k oborovým standardům
 
-Podrobnosti o příslušných doporučeních Centra zabezpečení, která se mohou zobrazit pro tuto funkci, naleznete v [části kontejneru](recommendations-reference.md#recs-containers) v referenční tabulce doporučení.
+Podrobnosti o relevantních doporučeních Security Center, která se můžou zobrazit pro tuto funkci, najdete v [části Container](recommendations-reference.md#recs-containers) referenční tabulky doporučení.
 
-## <a name="run-time-protection---real-time-threat-detection"></a>Ochrana za běhu – detekce hrozeb v reálném čase
+## <a name="run-time-protection---real-time-threat-detection"></a>Ochrana v době běhu – detekce hrozeb v reálném čase
 
-Security Center poskytuje detekci hrozeb v reálném čase pro kontejnerizovaná prostředí a generuje výstrahy pro podezřelé aktivity. Pomocí těchto informací můžete rychle opravit problémy se zabezpečením a vylepšit zabezpečení kontejnerů.
+Security Center poskytuje detekci hrozeb v reálném čase pro vaše kontejnerová prostředí a generuje výstrahy pro podezřelé aktivity. Pomocí těchto informací můžete rychle opravit problémy se zabezpečením a vylepšit zabezpečení kontejnerů.
 
-Detekujeme hrozby na úrovni hostitele a Clusteru AKS. Podrobné informace najdete v tématu [detekce hrozeb pro kontejnery Azure](threat-protection.md#azure-containers).
+Zjistili jsme hrozby na úrovni hostitele a AKS clusteru. Úplné podrobnosti najdete v tématu [detekce hrozeb pro kontejnery Azure](threat-protection.md#azure-containers).
 
 
-## <a name="container-security-faq"></a>Nejčastější dotazy k zabezpečení kontejnerů
+## <a name="container-security-faq"></a>Nejčastější dotazy týkající se zabezpečení kontejneru
 
-### <a name="what-types-of-images-can-azure-security-center-scan"></a>Jaké typy ibi lze Azure Security Center prohledávat?
-Security Center skenuje bitové kopie založené na operačním systému Linux, které poskytují přístup ke prostředí. 
+### <a name="what-types-of-images-can-azure-security-center-scan"></a>Jaké typy imagí mohou Azure Security Center prohledávat?
+Security Center prohledává image založené na operačním systému Linux, které poskytují přístup k prostředí. 
 
-Skener Qualys nepodporuje super minimalistické obrázky, jako jsou [obrázky dockeru](https://hub.docker.com/_/scratch/) nebo obrázky "Distroless", které obsahují pouze vaši aplikaci a její závislosti za běhu bez správce balíčků, prostředí nebo operačního režimu.
+Qualys skener nepodporuje image Super minimalist, jako jsou [pomocné obrázky Docker](https://hub.docker.com/_/scratch/) , nebo Image Distroless, které obsahují jenom vaši aplikaci a její závislosti za běhu bez správce balíčků, prostředí nebo operačního systému.
 
-### <a name="how-does-azure-security-center-scan-an-image"></a>Jak Azure Security Center prohledá v image?
-Bitová kopie je vytažena z registru. To je pak spustit v izolované pískoviště se skenerem Qualys, který extrahuje seznam známých chyb zabezpečení.
+### <a name="how-does-azure-security-center-scan-an-image"></a>Jak Azure Security Center naskenovat obrázek?
+Bitová kopie je načítána z registru. Pak se spustí v izolovaném izolovaném prostoru (sandbox) se skenerem Qualys, který extrahuje seznam známých chyb zabezpečení.
 
-Security Center filtruje a klasifikuje nálezy ze skeneru. Když je obrázek v pořádku, Centrum zabezpečení jej jako takový označí. Security Center generuje doporučení zabezpečení pouze pro bitové kopie, které mají problémy, které mají být vyřešeny. Oznámením pouze v případě problémů centrum zabezpečení snižuje možnost nežádoucích informačních výstrah.
+Security Center filtruje a klasifikuje závěry ze skeneru. Když je obrázek v pořádku, Security Center ho označí jako takový. Security Center generuje doporučení zabezpečení pouze pro image, které mají problémy, které mají být vyřešeny. Tím, že se upozorní jenom na problémy, Security Center snižuje potenciální informativní výstrahy.
 
-### <a name="how-often-does-azure-security-center-scan-my-images"></a>Jak často Azure Security Center prohledává moje obrázky?
-Snímky jsou spuštěny při každém stisknutí.
+### <a name="how-often-does-azure-security-center-scan-my-images"></a>Jak často Azure Security Center kontrolovat obrázky?
+Při každém nabízení se spouštějí kontroly imagí.
 
-### <a name="can-i-get-the-scan-results-via-rest-api"></a>Mohu získat výsledky testů prostřednictvím rozhraní REST API?
-Ano. Výsledky jsou v rámci [Sub-Assessments Rest API](/rest/api/securitycenter/subassessments/list/). Také můžete použít Azure Resource Graph (ARG), Rozhraní API podobné Kusto pro všechny vaše prostředky: dotaz můžete načíst konkrétní prohledávku.
+### <a name="can-i-get-the-scan-results-via-rest-api"></a>Můžu získat výsledky kontroly prostřednictvím REST API?
+Ano. Výsledky se nacházejí v rámci [dílčích posouzení rozhraní REST API](/rest/api/securitycenter/subassessments/list/). Můžete také použít Azure Resource Graph (ARG), Kusto rozhraní API pro všechny vaše prostředky: dotaz může načíst konkrétní kontrolu.
  
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o zabezpečení kontejnerů v Azure Security Center najdete v těchto souvisejících článcích:
+Další informace o zabezpečení kontejneru v Azure Security Center najdete v těchto souvisejících článcích:
 
-* Chcete-li zobrazit stav zabezpečení prostředků souvisejících s kontejnery, podívejte se do části kontejnery [chránit vaše počítače a aplikace](security-center-virtual-machine-protection.md#containers).
+* Pokud chcete zobrazit stav zabezpečení prostředků souvisejících s kontejnerem, přečtěte si část kontejnery v tématu [Ochrana vašich počítačů a aplikací](security-center-virtual-machine-protection.md#containers).
 
-* Podrobnosti o integraci se [službou Azure Kubernetes Service](azure-kubernetes-service-integration.md)
+* Podrobnosti o [integraci se službou Azure Kubernetes](azure-kubernetes-service-integration.md)
 
 * Podrobnosti o [integraci s Azure Container Registry](azure-container-registry-integration.md)

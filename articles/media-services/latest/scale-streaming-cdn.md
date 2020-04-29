@@ -1,7 +1,7 @@
 ---
-title: Streamování obsahu s integrací CDN
+title: Streamování obsahu pomocí integrace CDN
 titleSuffix: Azure Media Services
-description: Získejte informace o streamování obsahu s integrací CDN, stejně jako předběžné načítání a origin-assist CDN-Prefetch.
+description: Přečtěte si informace o streamování obsahu s integrací CDN a také předběžnému navýšení a navýšení programu CDN-Assist.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,148 +13,148 @@ ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
 ms.openlocfilehash: 4ed8ada306720b7a8b44ddd59cefe399238c906a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80128068"
 ---
-# <a name="stream-content-with-cdn-integration"></a>Streamování obsahu s integrací CDN
+# <a name="stream-content-with-cdn-integration"></a>Streamování obsahu pomocí integrace CDN
 
 Azure Content Delivery Network (CDN) nabízí vývojářům globální řešení pro rychlé doručování širokopásmového obsahu uživatelům díky ukládání obsahu do mezipaměti na fyzických uzlech strategicky umístěných po celém světě.  
 
-CDN ukládá do mezipaměti obsah streamovaný z koncového bodu streamování mediálních služeb [(origin)](streaming-endpoint-concept.md) na kodek, protokol pro streamování, datový tok, formát kontejneru a na šifrování/DRM. Pro každou kombinaci kodeku-streaming protokolu-kontejner formát-bitrate-šifrování, bude existovat samostatná mezipaměť CDN.
+CDN mezipaměť obsahu streamuje z [koncového bodu streamování Media Services (počátek)](streaming-endpoint-concept.md) na jeden kodek, podle protokolu pro streamování, podle přenosové rychlosti, podle formátu kontejneru a podle šifrování/DRM. Pro každou kombinaci kodek-streamování protokolu – formát kontejneru – přenosová rychlost – šifrování bude k dispozici samostatná mezipaměť CDN.
 
-Populární obsah bude doručen přímo z mezipaměti CDN, pokud je fragment videa uložen do mezipaměti. Živý obsah bude pravděpodobně uložen do mezipaměti, protože obvykle mnoho lidí sleduje přesně stejnou věc. Obsah na vyžádání může být trochu složitější, protože můžete mít nějaký obsah, který je populární a některé, které nejsou. Pokud máte miliony video datových zdrojů, kde žádný z nich není populární (pouze jeden nebo dva diváci týdně), ale máte tisíce lidí, kteří sledují všechna různá videa, CDN se stává mnohem méně efektivní.
+Oblíbený obsah bude obsluhován přímo z mezipaměti CDN, pokud je fragment videa uložen do mezipaměti. Živý obsah se pravděpodobně ukládá do mezipaměti, protože obvykle mnoho lidí sleduje přesně stejné věci. Obsah na vyžádání může být bit trickier, protože je možné, že máte oblíbený obsah, který není. Pokud máte miliony grafických prostředků, kde žádná z nich není oblíbená (jenom jeden nebo dva čtenáři v týdnu), ale máte tisíce lidí, které sledují všechna videa, bude CDN mnohem méně efektivní.
 
-Musíte také zvážit, jak adaptivní streamování funguje. Každý jednotlivý fragment videa je uložen do mezipaměti jako jeho vlastní entita. Představte si například, že se poprvé zhlédne určité video. Pokud divák přeskočí a sleduje jen několik sekund sem a tam, pouze video fragmenty spojené s tím, co osoba sledovala dostat cache v CDN. S adaptivnístreamování, obvykle máte 5 až 7 různých datových proudů videa. Pokud jedna osoba sleduje jeden přenosový tok a jiná osoba sleduje jiný přenosový tok, pak jsou každý ukládá do mezipaměti samostatně v CDN. I když dva lidé sledují stejný datový tok, mohou streamovat přes různé protokoly. Každý protokol (HLS, MPEG-DASH, Smooth Streaming) je ukládán do mezipaměti samostatně. Takže každý přenosový tok a protokol jsou ukládány do mezipaměti samostatně a pouze ty fragmenty videa, které byly požadovány, jsou uloženy do mezipaměti.
+Také je potřeba vzít v úvahu, jak funguje adaptivní streamování. Jednotlivé fragmenty videa jsou uloženy v mezipaměti jako vlastní entita. Představte si například, že při prvním spuštění konkrétního videa se bude sledovat. Pokud se v prohlížeči přeskočí, jak sledovat jenom pár sekund, stačí jenom fragmenty videa spojené s tím, co osoba sledovala v mezipaměti v síti CDN. Díky adaptivnímu streamování obvykle máte 5 až 7 různých přenosů videa. Pokud jedna osoba sleduje jednu přenosovou rychlost a jiná osoba sleduje jinou přenosovou rychlost, pak se všechny ukládají do mezipaměti samostatně v síti CDN. I když dva lidé sledují stejnou přenosovou rychlost, mohly by být streamování přes různé protokoly. Každý protokol (HLS, MPEG-POMLČKa, Smooth Streaming) se ukládá do mezipaměti samostatně. Takže všechny přenosové rychlosti a protokoly se ukládají do mezipaměti odděleně a všechny požadované fragmenty videa se ukládají do mezipaměti.
 
-Při rozhodování, zda povolit CDN na [koncový bod streamování](streaming-endpoint-concept.md)media services , zvažte počet očekávaných diváků. CDN pomáhá pouze v případě, že očekáváte mnoho diváků pro váš obsah. Pokud maximální souběžnost prohlížeče je nižší než 500, je doporučeno zakázat CDN, protože CDN váhy nejlépe souběžnosti.
+Pokud se rozhodnete, jestli chcete povolit CDN na [koncovém bodu streamování](streaming-endpoint-concept.md)Media Services, zvažte počet předpokládaných prohlížečů. CDN vám pomůže jenom v případě, že očekáváte spoustu prohlížečů pro váš obsah. Pokud je maximální počet souběžnosti prohlížečů nižší než 500, doporučuje se zakázat CDN, protože CDN nejlépe odpovídá souběžnosti.
 
-Toto téma popisuje povolení [integrace CDN](#enable-azure-cdn-integration). Vysvětluje také předběžné načítání (aktivní ukládání do mezipaměti) a koncept [CDN-Prefetch origin-assist.](#origin-assist-cdn-prefetch)
+Toto téma popisuje povolení [integrace CDN](#enable-azure-cdn-integration). Vysvětluje také předběžné načítání (aktivní ukládání do mezipaměti) a koncept od počátku do služby [CDN-Assist](#origin-assist-cdn-prefetch) .
 
 ## <a name="considerations"></a>Požadavky
 
-* [Koncový bod](streaming-endpoint-concept.md) `hostname` streamování a adresa URL streamování zůstávají stejné bez ohledu na to, zda povolíte cdn.
-* Pokud potřebujete možnost otestovat obsah s nebo bez CDN, vytvořte jiný koncový bod streamování, který není povolen CDN.
+* `hostname` [Koncový bod streamování](streaming-endpoint-concept.md) a adresa URL streamování zůstávají stejné, bez ohledu na to, jestli povolíte CDN.
+* Pokud potřebujete mít možnost testovat obsah s CDN nebo bez něj, vytvořte další koncový bod streamování, který není CDN povolený.
 
-## <a name="enable-azure-cdn-integration"></a>Povolení integrace Azure CDN
+## <a name="enable-azure-cdn-integration"></a>Povolit integraci Azure CDN
 
 > [!IMPORTANT]
-> CdN nelze povolit pro zkušební nebo studentské účty Azure.
+> CDN se nedá povolit pro zkušební verze nebo účty Azure studenta.
 >
-> Integrace CDN je povolená ve všech datových centrech Azure s výjimkou oblastí federální vlády a Číny.
+> Integrace CDN je povolená ve všech datových centrech Azure s výjimkou federálních oblastí pro státní správu a Čínu.
 
-Po streamování koncový bod je zřízena s cdn povoleno, je definovaná čekací doba na Media Services před aktualizací DNS se provádí mapování koncového bodu streamování na koncový bod CDN.
+Po zřízení koncového bodu streamování s povoleným CDN je u Media Services definovaná čekací doba, než se provede aktualizace DNS pro mapování koncového bodu streamování na koncový bod CDN.
 
-Pokud později chcete zakázat nebo povolit CDN, koncový bod streamování musí být v **zastaveném** stavu. Může trvat až dvě hodiny, než se integrace Azure CDN aktivuje a změny budou aktivní ve všech přístupových psách CDN. Můžete však spustit koncový bod streamování a datový proud bez přerušení z koncového bodu streamování. Po dokončení integrace je datový proud doručován z CDN. Během období zřizování koncový bod streamování bude ve **výchozím** stavu a můžete sledovat snížený výkon.
+Pokud budete chtít síť CDN později zakázat nebo povolit, musí být koncový bod streamování ve stavu **Zastaveno** . Může trvat až dvě hodiny, než se aktivuje Integrace Azure CDN a změny, které se mají aktivní napříč všemi body POP CDN. Koncový bod streamování a datový proud ale můžete spustit bez přerušení z koncového bodu streamování. Po dokončení integrace se datový proud doručí ze sítě CDN. Během období zřizování bude koncový bod streamování ve **výchozím** stavu a může se stát, že dojde ke snížení výkonu.
 
-Když je vytvořen koncový bod standardního streamování, je ve výchozím nastavení nakonfigurován pomocí standardu Verizon. Můžete nakonfigurovat Poskytovatele Premium Verizon nebo Standard Akamai pomocí rozhraní REST API.
+Když se vytvoří koncový bod streamování Standard, je ve výchozím nastavení nakonfigurovaný se standardem Verizon. Pomocí rozhraní REST API můžete nakonfigurovat poskytovatele Premium Verizon nebo Standard Akamai.
 
-Integrace Azure Media Services s Azure CDN se implementuje na **Azure CDN od Verizonu** pro standardní koncové body streamování. Koncové body streamování Premium lze nakonfigurovat pomocí všech **cenových úrovní Azure CDN a poskytovatelů**.
+Azure Media Services integrace s Azure CDN je implementovaná na **Azure CDN z Verizon** pro koncové body streamování Standard. Koncové body streamování Premium se dají nakonfigurovat pomocí všech **Azure CDN cenové úrovně a zprostředkovatelů**.
 
 > [!NOTE]
-> Podrobnosti o Azure CDN najdete v přehledu [CDN](../../cdn/cdn-overview.md).
+> Podrobnosti o Azure CDN najdete v [přehledu CDN](../../cdn/cdn-overview.md).
 
-## <a name="determine-if-a-dns-change-was-made"></a>Zjištění, zda byla provedena změna DNS
+## <a name="determine-if-a-dns-change-was-made"></a>Určení, jestli se provedla změna DNS
 
-Můžete určit, pokud byla provedena změna DNS na koncovém bodu streamování (provoz <https://www.digwebinterface.com>je směrován na Azure CDN) pomocí . Pokud se ve výsledcích zobrazí azureedge.net názvy domén, je nyní přenos směrován na cdn.
+Můžete určit, jestli se změna DNS provedla u koncového bodu streamování (provoz se směruje na Azure CDN) pomocí <https://www.digwebinterface.com>. Pokud se ve výsledcích zobrazí azureedge.net názvy domén, provoz se teď nasměruje na CDN.
 
-## <a name="origin-assist-cdn-prefetch"></a>Původ-Assist CDN-Prefetch
+## <a name="origin-assist-cdn-prefetch"></a>Počátek – pomoc CDN – předběžné načtení
 
-Ukládání CDN do mezipaměti je reaktivní proces. Pokud CDN může předpovědět, co další objekt bude požadováno, CDN můžete proaktivně požadovat a mezipaměti další objekt. Pomocí tohoto procesu můžete dosáhnout přístupů do mezipaměti pro všechny (nebo většinu) objektů, což zlepšuje výkon.
+Mezipaměť CDN je reaktivní proces. Pokud CDN může předpovědět, co bude požadovat další objekt, CDN může proaktivně požádat o další objekt a uložit ho do mezipaměti. V tomto procesu můžete dosáhnout přístupů do mezipaměti pro všechny (nebo většinu) objektů, což zvyšuje výkon.
 
-Koncept prefetching se snaží umístit objekty na "okraji internetu" v očekávání, že tyto budou požadovány hráčem bezprostředně, čímž se zkrátí čas dodat, že objekt na hráče.
+Koncept předběžného načítání se snaží umístit objekty na hranici Internetu, ve kterém se předpokládá, že je přehrávač požádán o bezprostřední, čímž se zkrátí doba doručování tohoto objektu do přehrávače.
 
-K dosažení tohoto cíle musí koncový bod streamování (původ) a CDN pracovat ruku v ruce několika způsoby:
+Aby bylo možné dosáhnout tohoto cíle, musí koncový bod streamování (Origin) a CDN fungovat několika způsoby:
 
-- Původ mediálních služeb musí mít "inteligence" (Origin-Assist) informovat CDN další objekt předběžného načtení.
-- CDN provádí předběžné načítání a ukládání do mezipaměti (část CDN-prefetch). CDN také musí mít "inteligenci" informovat původ, zda je to prefetch nebo pravidelné fetch, zpracování 404 odpovědí, a způsob, jak se vyhnout nekonečné prefetch smyčky.
+- Aby bylo možné zajistit, aby CDN další objekt, který se má předběžně vydaným objektem, měl Media Services zdroj potřebovat "Intelligence".
+- CDN provede předběžné načtení a ukládání do mezipaměti (část CDN-předběžného načtení). CDN musí také obsahovat "Intelligence", aby informovala o původu, ať už se jedná o předběžné načtení nebo běžné načtení, zpracování odpovědí 404 a způsob, jak se vyhnout nekonečné smyčce předběžného předběžného načtení.
 
 ### <a name="benefits"></a>Výhody
 
-Výhody funkce *Origin-Assist CDN-Prefetch* zahrnují:
+Výhody funkce *původu-asistent CDN-předběžného načtení* zahrnují:
 
-- Předběžné načtení zlepšuje kvalitu přehrávání videa tím, že předem umístí očekávané segmenty videa na hraniční chod během přehrávání, sníží latenci diváka a zlepší dobu stahování segmentů videí. Výsledkem je rychlejší spuštění videa a nižší výskyty rebuffering.
-- Tento koncept je použitelný pro obecný scénář původu CDN a není omezen na média.
-- Akamai přidal tuto funkci do [akamai Cloud Embed (ACE)](https://learn.akamai.com/en-us/products/media_delivery/cloud_embed.html).
+- Předběžná navýšení zlepšuje kvalitu přehrávání videa tím, že předá umístění předpokládaných segmentů videa na okraji během přehrávání, snižuje latenci na prohlížeč a zlepšuje dobu stahování segmentů videa. Výsledkem je rychlejší spuštění videa a snížení výskytu nedokončených ukládání do vyrovnávací paměti.
+- Tento koncept se vztahuje na obecný scénář pro CDN – počátek a není omezený na média.
+- Akamai přidal tuto funkci do [Akamai (ACE) pro vložení do cloudu](https://learn.akamai.com/en-us/products/media_delivery/cloud_embed.html).
 
 > [!NOTE]
-> Tato funkce se zatím nevztahuje na koncový bod streamování Akamai CDN integrovaný s koncovým bodem služby Media Services. Je však k dispozici pro zákazníky mediálních služeb, kteří mají již existující smlouvu Akamai a vyžadují vlastní integraci mezi Akamai CDN a původem mediálních služeb.
+> Tato funkce ještě není platná pro Akamai CDN integrovaná s koncovým bodem streamování Media Services. Je však k dispozici pro Media Services zákazníky, kteří mají již existující smlouvu Akamai, a vyžadují vlastní integraci mezi Akamai CDN a Media Servicesm zdrojem.
 
 ### <a name="how-it-works"></a>Jak to funguje
 
-Podpora CDN `Origin-Assist CDN-Prefetch` pro záhlaví (pro živé i video streamování na vyžádání) je k dispozici zákazníkům, kteří mají přímou smlouvu s Akamai CDN. Tato funkce zahrnuje následující výměny hlaviček PROTOKOLU HTTP mezi akamai CDN a původem mediálních služeb:
+Podpora CDN pro `Origin-Assist CDN-Prefetch` hlavičky (pro streamování živě i video na vyžádání) je k dispozici pro zákazníky, kteří mají přímý kontrakt s Akamai CDN. Tato funkce zahrnuje následující výměny hlaviček protokolu HTTP mezi Akamai CDN a Media Servicesm počátkem:
 
 |Hlavička protokolu HTTP|Hodnoty|Odesílatel|Příjemce|Účel|
 | ---- | ---- | ---- | ---- | ----- |
-|`CDN-Origin-Assist-Prefetch-Enabled` | 1 (výchozí) nebo 0 |CDN|Zdroj|Chcete-li označit CDN je povoleno předběžné načtení.|
-|`CDN-Origin-Assist-Prefetch-Path`| Příklad: <br/>Fragmenty(video=14000000000,format=mpd-time-cmaf)|Zdroj|CDN|Chcete-li poskytnout cestu předběžného načtení do sítě CDN.|
-|`CDN-Origin-Assist-Prefetch-Request`|1 (žádost o předběžné načtení) nebo 0 (pravidelný požadavek)|CDN|Zdroj|Chcete-li označit požadavek z CDN je předběžné načtení.|
+|`CDN-Origin-Assist-Prefetch-Enabled` | 1 (výchozí) nebo 0 |CDN|Zdroj|K označení CDN je povolené předběžné načtení.|
+|`CDN-Origin-Assist-Prefetch-Path`| Příklad: <br/>Fragmenty (video = 1400000000, Format = MPD-Time-CMAF)|Zdroj|CDN|K poskytnutí cesty předběžného načtení do sítě CDN.|
+|`CDN-Origin-Assist-Prefetch-Request`|1 (požadavek na předběžné načtení) nebo 0 (pravidelný požadavek)|CDN|Zdroj|Pro indikaci žádosti z CDN je předběžné načtení.|
 
-Chcete-li zobrazit část výměny záhlaví v akci, můžete zkusit následující kroky:
+Pokud se chcete podívat na část výměny hlaviček v akci, můžete vyzkoušet následující postup:
 
-1. Pomocí postman nebo cURL vydat požadavek na původ Media Services pro audio nebo video segmentu nebo fragmentu. Nezapomeňte přidat záhlaví `CDN-Origin-Assist-Prefetch-Enabled: 1` v žádosti.
-2. V odpovědi byste měli vidět `CDN-Origin-Assist-Prefetch-Path` záhlaví s relativní cestu jako jeho hodnotu.
+1. Použijte metodu post nebo kudrlinkou k vydání žádosti o Media Services původ pro zvukový nebo segment nebo fragment videa. Nezapomeňte do žádosti přidat hlavičku `CDN-Origin-Assist-Prefetch-Enabled: 1` .
+2. V odpovědi byste měli vidět hlavičku `CDN-Origin-Assist-Prefetch-Path` s relativní cestou jako její hodnota.
 
 ### <a name="supported-streaming-protocols"></a>Podporované protokoly streamování
 
-Tato `Origin-Assist CDN-Prefetch` funkce podporuje následující protokoly streamování pro živé a on-demand streamování:
+`Origin-Assist CDN-Prefetch` Funkce podporuje následující protokoly streamování pro živé streamování a streamování na vyžádání:
 
-* HLS v3
+* HLS V3
 * HLS v4
 * HLS CMAF
-* Dash (CSF)
+* POMLČKA (CSF)
 * POMLČKA (CMAF)
-* Plynulé streamování
+* Hladké streamování
 
 ### <a name="faqs"></a>Nejčastější dotazy
 
-* Co když je adresa URL cesty předběžného načtení neplatná, takže předběžné načtení CDN získá 404?
+* Co když adresa URL cesty předběžného načtení není platná, takže předběžné načtení CDN získá 404?
 
-    CDN uloží odpověď 404 do mezipaměti pouze po dobu 10 sekund (nebo jiné nakonfigurované hodnoty).
+    CDN bude ukládat do mezipaměti odpověď 404 jenom na 10 sekund (nebo na jinou konfigurovanou hodnotu).
 
-* Předpokládejme, že máte video na vyžádání. Pokud cdn-prefetch je povolena, znamená tato funkce, že jakmile klient požádá o první segment videa, předběžné načtení spustí smyčku pro předběžné načtení všech následných segmentů videa při stejném přenosovém toku?
+* Předpokládejme, že máte video na vyžádání. Pokud je povolený předběžné načtení obsahu CDN, tato funkce bude znamenat, že jakmile si klient vyžádá první segment videa, předběžného načítání spustí smyčku k předběžnému navýšení všech dalších segmentů videa na stejnou rychlost?
 
-    Ne, předběžné načtení CDN se provádí pouze po požadavku/odpovědi iniciovaném klientem. CDN-prefetch se nikdy neaktivuje předběžné načtení, aby se zabránilo prefetch smyčky.
+    Ne, CDN – předběžné načtení se provádí až po žádosti nebo odpovědi iniciované klientem. CDN – předběžné načtení není nikdy aktivované předplatným, aby se zabránilo cyklu předběžného načtení.
 
-* Je funkce Origin-Assist CDN-Prefetch vždy zapnutá? Jak jej lze zapnout /vypnout?
+* Je funkce vynechání od počátku k pro CDN? Jak je možné ji zapnout nebo vypnout?
 
-    Tato funkce je ve výchozím nastavení vypnutá. Zákazníci ji musí zapnout prostřednictvím rozhraní Akamai API.
+    Tato funkce je ve výchozím nastavení vypnutá. Zákazníci je musí zapnout přes rozhraní Akamai API.
 
-* Co by se stalo s Origin-Assist, pokud další segment nebo fragment ještě není k dispozici?
+* V případě živého streamování, co by se stalo s počátkem-Assist, pokud další segment nebo fragment ještě není k dispozici?
 
-    V takovém případě původ mediálních služeb `CDN-Origin-Assist-Prefetch-Path` nebude poskytovat záhlaví a CDN-prefetch nedojde.
+    V takovém případě Media Services původ neposkytne `CDN-Origin-Assist-Prefetch-Path` HLAVIČKU ani CDN – předběžné načtení nebude provedeno.
 
-* Jak `Origin-Assist CDN-Prefetch` funguje práce s dynamickými filtry manifestu?
+* `Origin-Assist CDN-Prefetch` Jak funguje s dynamickými filtry manifestů?
 
-    Tato funkce funguje nezávisle na filtru manifestu. Když je další fragment mimo okno filtru, jeho adresa URL bude stále umístěna tak, že se vydívá do nezpracovaného klientského manifestu a pak bude vrácena jako hlavička odpovědi cdn předběžného načtení. Takže CDN dostane URL fragmentu, který je odfiltrován z DASH / HLS / Smooth manifestu. Přehrávač však nikdy nepodá žádost GET na CDN, aby načítaný fragment, protože tento fragment není součástí manifestu DASH/HLS/Smooth, který hráč drží (přehrávač neví o existenci tohoto fragmentu).
+    Tato funkce funguje nezávisle na filtru manifestu. Když je další fragment mimo okno filtru, jeho adresa URL se bude nacházet tím, že se zobrazí nezpracovaný manifest klienta a potom se vrátí jako hlavička odpovědi předběžného načtení CDN. SÍŤ CDN proto získá adresu URL fragmentu, který je filtrovaný z manifestu POMLČKy/HLS/hladký. Hráč ale nikdy neodešle požadavek GET do sítě CDN k načtení tohoto fragmentu, protože tento fragment není zahrnutý v manifestu POMLČKy/HLS/hladký, který je držený přehrávačem (přehrávač neví, že fragment je existence).
 
-* Může být dash MPD/HLS playlist/Smooth manifest přednačován?
+* Je možné, že se předběžnému načtení manifestu HLS/vyhladit
 
-    Ne, DASH MPD, hlavní seznam stop HLS, seznam stop variant HLS nebo hladká adresa URL manifestu se do hlavičky předběžného načtení nepřidá.
+    V hlavičce předběžného načtení není přidána žádná, POMLČKa MPD, hlavní seznam testů HLS, seznam HLS variant nebo vyhlazená adresa URL manifestu.
 
-* Jsou adresy URL předběžného načtení relativní nebo absolutní?
+* Jsou předběžné adresy URL předběžného nebo absolutního.
 
-    Zatímco Akamai CDN umožňuje obojí, původ mediálních služeb poskytuje pouze relativní adresy URL pro cestu předběžného načtení, protože při používání absolutních adres URL není žádný zjevný přínos.
+    I když Akamai CDN umožňuje, Media Services původu poskytuje jenom relativní adresy URL pro cestu předběžného načtení, protože v absolutních adresách URL není žádné zjevné výhody.
 
-* Funguje tato funkce s obsahem chráněným proti DRM?
+* Funguje tato funkce s obsahem chráněným pomocí DRM?
 
-    Ano, protože tato funkce funguje na úrovni PROTOKOLU HTTP, nedekóduje ani neanalyzuje žádný segment nebo fragment. Je jedno, zda je obsah zašifrován nebo ne.
+    Ano, vzhledem k tomu, že tato funkce funguje na úrovni HTTP, nekóduje ani neanalyzuje žádný segment nebo fragment. Nezáleží na tom, jestli je obsah zašifrovaný nebo ne.
 
-* Funguje tato funkce s vkládáním reklam na straně serveru (SSAI)?
+* Funguje tato funkce se vkládáním na straně serveru (SSAI)?
     
-    Funguje tak pro původní/hlavní obsah (původní obsah videa před vložením reklamy), protože SSAI nemění časové razítko zdrojového obsahu z počátku mediálních služeb. To, zda tato funkce funguje s obsahem reklamy, závisí na tom, zda původ reklamy podporuje Origin-Assist. Pokud jsou například obsah reklamy hostované také ve službě Azure Media Services (stejný nebo samostatný původ), bude obsah reklam y také předem načten.
+    Pro původní nebo hlavní obsah (původní obsah videa před vložením služby AD) funguje, protože SSAI nemění časové razítko zdrojového obsahu z Media Services původu. Určuje, jestli tato funkce funguje s obsahem reklamy, záleží na tom, jestli zdroj služby AD podporuje zdroj-pomoc. Například pokud je obsah služby AD hostovaný také v Azure Media Services (stejný nebo oddělený původ), obsah služby AD bude také přednačten.
 
 * Funguje tato funkce s obsahem UHD/HEVC?
 
     Ano.
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Ptejte se, podávejte zpětnou vazbu, získejte aktualizace
+## <a name="ask-questions-give-feedback-get-updates"></a>Položte otázky, sdělte nám svůj názor, Získejte aktualizace.
 
-Podívejte se na článek [komunity Mediálních služeb Azure](media-services-community.md) a podívejte se na různé způsoby, jak můžete klást otázky, poskytovat zpětnou vazbu a získat aktualizace o mediálních službách.
+Podívejte se na článek o [komunitě Azure Media Services](media-services-community.md) a podívejte se na různé způsoby, jak můžete klást otázky, sdělit svůj názor a získávat aktualizace Media Services.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Zkontrolujte dokument [Koncového bodu streamování (původu).](streaming-endpoint-concept.md)
-* Ukázka [v tomto úložišti](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) ukazuje, jak spustit výchozí koncový bod streamování pomocí rozhraní .NET.
+* Nezapomeňte zkontrolovat dokument [koncového bodu streamování (zdroj)](streaming-endpoint-concept.md) .
+* Ukázka [v tomto úložišti](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) ukazuje, jak spustit výchozí koncový bod streamování pomocí .NET.

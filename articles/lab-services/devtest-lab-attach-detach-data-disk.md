@@ -1,6 +1,6 @@
 ---
-title: Připojení nebo odpojení datového disku k virtuálnímu počítači v azure devtest labs
-description: Zjistěte, jak připojit nebo odpojit datový disk s virtuálním počítačem v Azure DevTest Labs
+title: Připojení nebo odpojení datového disku k virtuálnímu počítači v Azure DevTest Labs
+description: Zjistěte, jak připojit nebo odpojit datový disk k virtuálnímu počítači v Azure DevTest Labs
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,90 +15,90 @@ ms.topic: article
 ms.date: 02/28/2020
 ms.author: spelluru
 ms.openlocfilehash: 3f18425408e6526904db85eae1c3a4db41d11a58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78198770"
 ---
-# <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Připojení nebo odpojení datového disku k virtuálnímu počítači v azure devtest labs
-[Spravované disky Azure](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) spravují účty úložiště přidružené k datovým diskům virtuálních počítačů. Uživatel připojí nový datový disk k virtuálnímu počítači, určí typ a velikost disku, který je potřeba, a Azure vytvoří a spravuje disk automaticky. Datový disk pak můžete odpojit od virtuálního počítače a buď znovu připojit později ke stejnému virtuálnímu počítače nebo připojené k jinému virtuálnímu počítače, který patří stejnému uživateli.
+# <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Připojení nebo odpojení datového disku k virtuálnímu počítači v Azure DevTest Labs
+[Azure Managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) spravuje účty úložiště přidružené k datovým diskům virtuálních počítačů. Uživatel připojí k virtuálnímu počítači nový datový disk, určí typ a velikost potřebného disku a Azure automaticky vytvoří a spravuje disk. Datový disk se pak může z virtuálního počítače odpojit a buď znovu připojit ke stejnému virtuálnímu počítači, nebo připojit k jinému virtuálnímu počítači, který patří stejnému uživateli.
 
-Tato funkce je užitečná pro správu úložiště nebo softwaru mimo každý jednotlivý virtuální počítač. Pokud úložiště nebo software již existuje uvnitř datového disku, lze jej snadno připojit, odpojit a znovu připojit k libovolnému virtuálnímu virtuálnímu počítače, který je vlastněn uživatelem, který tento datový disk vlastní.
+Tato funkce je užitečná pro správu úložiště nebo softwaru mimo každý jednotlivý virtuální počítač. Pokud už úložiště nebo software v datovém disku existuje, dá se snadno připojit, odpojit a znovu připojit k libovolnému virtuálnímu počítači vlastněné uživatelem, který vlastní tento datový disk.
 
 ## <a name="attach-a-data-disk"></a>Připojení datového disku
-Než připojíte datový disk k virtuálnímu počítače, přečtěte si tyto tipy:
+Než připojíte datový disk k virtuálnímu počítači, přečtěte si tyto tipy:
 
-- Velikost virtuálního počítače určuje, kolik datových disků můžete připojit. Podrobnosti najdete [v tématu Velikosti pro virtuální počítače](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).
-- K spuštěnému virtuálnímu počítače můžete připojit jenom datový disk. Ujistěte se, že virtuální počítače běží před pokusem o připojení datového disku.
+- Velikost virtuálního počítače určuje, kolik datových disků můžete připojit. Podrobnosti najdete v tématu [velikosti pro virtuální počítače](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).
+- Datový disk můžete připojit jenom k virtuálnímu počítači, na kterém je spuštěný. Než se pokusíte připojit datový disk, ujistěte se, že je virtuální počítač spuštěný.
 
-### <a name="attach-a-new-disk"></a>Připojení nového disku
-Podle těchto kroků vytvořte a připojte nový spravovaný datový disk k virtuálnímu počítači v Azure DevTest Labs.
+### <a name="attach-a-new-disk"></a>Připojit nový disk
+Pomocí těchto kroků můžete vytvořit a připojit nový spravovaný datový disk k virtuálnímu počítači v Azure DevTest Labs.
 
-1. Přihlaste se k [portálu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Vyberte **Všechny služby**a ze seznamu vyberte **DevTest Labs.**
-1. Ze seznamu testovacích prostředí vyberte požadovanou testovací prostředí. 
-1. Ze seznamu **Moje virtuální počítače**vyberte spuštěný virtuální počítač.
-1. V nabídce vlevo vyberte **Disky**.
-1. Zvolte **Připojit nový,** chcete-li vytvořit nový datový disk a připojit jej k virtuálnímu počítače.
+1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
+1. V seznamu cvičení vyberte požadované testovací prostředí. 
+1. V seznamu **virtuálních počítačů**vyberte spuštěný virtuální počítač.
+1. V nabídce na levé straně vyberte **disky**.
+1. Kliknutím na **připojit nový** vytvořte nový datový disk a připojte ho k virtuálnímu počítači.
 
-    ![Připojení nového datového disku k virtuálnímu počítači](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-new.png)
-1. Dokončete podokno **Připojit nový disk** zadáním názvu datového disku, typu a velikosti.
+    ![Připojit nový datový disk k virtuálnímu počítači](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-new.png)
+1. Dokončete podokno **připojit nový disk** zadáním názvu datového disku, typu a velikosti.
 
-    ![Vyplňte formulář "připojit nový disk"](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-new-form.png)
+    ![Dokončete formulář připojit nový disk.](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-new-form.png)
 1. Vyberte **OK**.
 
-Po několika okamžicích se vytvoří nový datový disk a připojí se k virtuálnímu počítače a zobrazí se v seznamu **datových disků** pro daný virtuální modul.
+Po chvíli se nový datový disk vytvoří a připojí k virtuálnímu počítači a zobrazí se v seznamu **datových disků** pro tento virtuální počítač.
 
 ### <a name="attach-an-existing-disk"></a>Připojení stávajícího disku
-Podle těchto kroků znovu připojte existující dostupný datový disk ke spuštěnému virtuálnímu počítače. 
+Postupujte podle těchto kroků a znovu připojte existující datový disk k běžícímu virtuálnímu počítači. 
 
-1. Vyberte spuštěný virtuální počítače, pro který chcete znovu připojit datový disk.
-1. V nabídce vlevo vyberte **Disky**.
-1. Vyberte **Připojit existující,** chcete-li k virtuálnímu počítače připojit dostupný datový disk.
+1. Vyberte spuštěný virtuální počítač, pro který chcete znovu připojit datový disk.
+1. V nabídce na levé straně vyberte **disky**.
+1. Vyberte **připojit existující** a k virtuálnímu počítači připojte datový disk, který je k dispozici.
 
-    ![Připojení existujícího datového disku k virtuálnímu počítači](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-existing-button.png)
+    ![Připojit existující datový disk k virtuálnímu počítači](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-existing-button.png)
 
-1. V podokně **Připojit existující disk** vyberte OK.
+1. V podokně **připojit existující disk** vyberte OK.
 
-    ![Připojení existujícího datového disku k virtuálnímu počítači](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-existing.png)
+    ![Připojit existující datový disk k virtuálnímu počítači](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-existing.png)
 
-Po několika okamžicích je datový disk připojen k virtuálnímu počítače a zobrazí se v seznamu **datových disků** pro daný virtuální počítače.
+Po chvíli se datový disk připojí k virtuálnímu počítači a zobrazí se v seznamu **datových disků** pro daný virtuální počítač.
 
 ## <a name="detach-a-data-disk"></a>Odpojení datového disku
-Když už nepotřebujete datový disk, který je připojený k virtuálnímu počítače, můžete ho snadno odpojit. Odpojení odebere disk z virtuálního počítače, ale uchovává jej v úložišti pro pozdější použití.
+Když už nepotřebujete datový disk, který je připojený k virtuálnímu počítači, můžete ho snadno odpojit. Odpojením se disk z virtuálního počítače odebere, ale ponechá ho v úložišti pro pozdější použití.
 
-Pokud chcete znovu použít existující data na disku, můžete je znovu připojit ke stejnému virtuálnímu počítači nebo k jinému.
+Pokud chcete znovu použít stávající data na disku, můžete ho znovu připojit ke stejnému virtuálnímu počítači nebo jinému.
 
-### <a name="detach-from-the-vms-management-pane"></a>Odpojení od podokna správy virtuálního zařízení
-1. Ze seznamu virtuálních počítačů vyberte virtuální počítač, který má připojený datový disk.
-1. V nabídce vlevo vyberte **Disky**.
-1. Ze seznamu **datových disků**vyberte datový disk, který chcete odpojit.
+### <a name="detach-from-the-vms-management-pane"></a>Odpojení od podokna správy virtuálního počítače
+1. V seznamu virtuálních počítačů vyberte virtuální počítač, který má připojený datový disk.
+1. V nabídce na levé straně vyberte **disky**.
+1. V seznamu **datových disků**vyberte datový disk, který chcete odpojit.
 
     ![Výběr datových disků pro virtuální počítač](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-button.png) 
-1. V horní části podokna podrobností disku vyberte **Odpojit.**
+1. V horní části podokna podrobností disku vyberte **Odpojit** .
 
     ![Odpojení datového disku](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-data-disk2.png)
-1. Výběrem **možnosti Ano** potvrďte, že chcete datový disk odpojit.
+1. Vyberte **Ano** a potvrďte tak, že chcete odpojit datový disk.
 
-Disk je odpojený a je k dispozici pro připojení k jinému virtuálnímu počítače. 
-### <a name="detach-from-the-labs-main-pane"></a>Odpojení od hlavního podokna laboratoře
-1. V hlavním podokně testovacího prostředí vyberte **možnost Moje datové disky**.
-1. Klikněte pravým tlačítkem myši na datový disk, který chcete odpojit – nebo vyberte jeho tři tečky (**...**) – a zvolte **Odpojit**.
+Disk je odpojený a je k dispozici pro připojení k jinému virtuálnímu počítači. 
+### <a name="detach-from-the-labs-main-pane"></a>Odpojení od hlavního podokna testovacího prostředí
+1. V hlavním podokně testovacího prostředí vyberte **Moje datové disky**.
+1. Klikněte pravým tlačítkem na datový disk, který chcete odpojit – nebo vyberte tři tečky (**...**) a zvolte **Odpojit**.
 
     ![Odpojení datového disku](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-data-disk.png)
-1. Výběrem **možnosti Ano** potvrďte, že ji chcete odpojit.
+1. Výběrem **Ano** potvrďte, že ho chcete odpojit.
 
    > [!NOTE]
-   > Pokud je datový disk již odpojen, můžete jej odebrat ze seznamu dostupných datových disků výběrem **možnosti Odstranit**.
+   > Pokud je datový disk už odpojený, můžete ho odebrat ze seznamu dostupných datových disků tak, že zvolíte **Odstranit**.
    >
    >
 
 ## <a name="upgrade-an-unmanaged-data-disk"></a>Upgrade nespravovaného datového disku
-Pokud máte existující virtuální počítače, který používá nespravované datové disky, můžete ho snadno převést na spravované disky. Tento proces převádí disk operačního systému i všechny připojené datové disky.
+Pokud máte existující virtuální počítač, který používá nespravované datové disky, můžete virtuální počítač snadno převést na používání spravovaných disků. Tento proces převede disk s operačním systémem i všechny připojené datové disky.
 
-Chcete-li upgradovat nespravovaný datový disk, postupujte podle kroků popsaných v tomto článku [a odpojte datový disk](#detach-a-data-disk) od nespravovaného virtuálního počítače. Potom [znovu připojte disk](#attach-an-existing-disk) ke spravovanému virtuálnímu počítače a automaticky upgradujte datový disk z nespravovaného na spravovaný.
+Pokud chcete upgradovat nespravovaný datový disk, postupujte podle kroků uvedených v tomto článku a [odpojte datový disk](#detach-a-data-disk) od nespravovaného virtuálního počítače. Pak znovu [Připojte disk](#attach-an-existing-disk) ke SPRAVOVANÉmu virtuálnímu počítači a automaticky Upgradujte datový disk z nespravovaného na spravovaný.
 
 ## <a name="next-steps"></a>Další kroky
-Zjistěte, jak spravovat datové disky pro [nárokovatelné virtuální počítače](devtest-lab-add-claimable-vm.md#unclaim-a-vm).
+Naučte se spravovat datové disky pro [vynucené virtuální počítače](devtest-lab-add-claimable-vm.md#unclaim-a-vm).
 

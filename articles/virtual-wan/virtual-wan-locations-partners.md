@@ -1,6 +1,6 @@
 ---
-title: Partneři a umístění virtuální sítě Azure | Dokumenty společnosti Microsoft
-description: Tento článek obsahuje seznam partnerů Azure Virtual WAN a umístění rozbočovače.
+title: Azure Virtual WAN partneři a umístění | Microsoft Docs
+description: Tento článek obsahuje seznam partnerů Azure Virtual WAN a umístění centra.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -9,38 +9,38 @@ ms.date: 02/12/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
 ms.openlocfilehash: 3976f4114df6222d34f19e2bb44fd05d53057321
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80123263"
 ---
-# <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtuální partneři WAN a umístění virtuálních rozbočovačů
+# <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtuální partneři sítě WAN a umístění virtuálních rozbočovačů
 
-Tento článek obsahuje informace o oblastech podporovaných virtuální sítí WAN a partnerech pro připojení do virtuálního rozbočovače.
+Tento článek poskytuje informace o oblastech a partnerech podpor Virtual WAN pro připojení k virtuálnímu rozbočovači.
 
-Azure Virtual WAN je síťová služba poskytující optimalizované a automatizované možnosti propojení jednotlivých poboček prostřednictvím Azure. Virtuální síť WAN umožňuje připojit a nakonfigurovat zařízení v pobočkách tak, aby komunikovaly přes Azure. To lze provést buď ručně, nebo pomocí zprostředkovatelských zařízení prostřednictvím partnera virtual WAN. Použití partnerských zařízení umožňuje snadné použití, zjednodušení připojení a správu konfigurace.
+Azure Virtual WAN je síťová služba poskytující optimalizované a automatizované možnosti propojení jednotlivých poboček prostřednictvím Azure. Virtuální síť WAN umožňuje připojit a nakonfigurovat zařízení v pobočkách tak, aby komunikovaly přes Azure. Tato možnost se dá provést ručně nebo pomocí zařízení poskytovatele prostřednictvím virtuálního partnera WAN. Používání partnerských zařízení umožňuje snadné použití, zjednodušení připojení a správu konfigurace.
 
-Připojení z místního zařízení je vytvořeno automatizovaným způsobem do virtuálního centra. Virtuální rozbočovač je virtuální síť spravovaná společností Microsoft. Rozbočovač obsahuje různé koncové body služby, které umožňují připojení z vaší místní sítě (vpnsite). Můžete mít pouze jeden rozbočovač na oblast.
+Připojení z místního zařízení se vytváří automatizovaným způsobem pro virtuální rozbočovač. Virtuální rozbočovač je virtuální síť spravovaná Microsoftem. Rozbočovač obsahuje různé koncové body služby, které umožňují připojení z vaší místní sítě (vpnsite). Můžete mít jenom jedno centrum na oblast.
 
-## <a name="automation-from-connectivity-partners"></a><a name="automation"></a>Automatizace od partnerů zajišťujích připojení
+## <a name="automation-from-connectivity-partners"></a><a name="automation"></a>Automatizace od partnerů pro připojení
 
-Zařízení, která se připojují k Virtuální síti Azure, mají integrovanou automatizaci pro připojení. To se obvykle nastavuje v uzdu pro správu zařízení (nebo ekvivalentní), který nastavuje správu připojení a konfigurace mezi pobočkou zařízení VPN na koncový bod VPN virtuálního rozbočovače (brána VPN) virtuálního centra.
+Zařízení, která se připojují k Azure Virtual WAN, mají vestavěnou automatizaci připojení. Tato možnost se obvykle nastavuje v uživatelském rozhraní pro správu zařízení (nebo ekvivalentní), která nastavuje připojení a správu konfigurací mezi zařízením sítě VPN na koncový bod VPN virtuálního rozbočovače Azure (Brána sítě VPN).
 
-V centru konzoly/správy zařízení je nastavena následující automatizace na vysoké úrovni:
+Následující automatizace na nejvyšší úrovni se nastavuje v konzole zařízení/centra pro správu:
 
-* Příslušná oprávnění pro zařízení pro přístup ke skupině prostředků Azure Virtual WAN
-* Nahrávání pobočkového zařízení do virtuální sítě Azure WAN
-* Automatické stahování informací o připojení Azure
-* Konfigurace místního pobočkového zařízení 
+* Správná oprávnění pro zařízení pro přístup ke skupině prostředků Azure Virtual WAN
+* Nahrání firemního zařízení do Azure Virtual WAN
+* Automatické stažení informací o připojení Azure
+* Konfigurace místního zařízení pobočky 
 
-Někteří partneři připojení mohou rozšířit automatizaci tak, aby zahrnovala vytvoření virtuální sítě Azure Virtual Hub a brány VPN. Pokud se chcete dozvědět více o automatizaci, [přečtěte si informace o automatizaci pro partnery virtuální sítě WAN](virtual-wan-configure-automation-providers.md).
+Někteří partneři pro připojení můžou automatizovat automatizaci, aby zahrnovali vytvoření virtuální sítě a VPN Gateway virtuálního rozbočovače Azure. Pokud chcete získat další informace o automatizaci, přečtěte si téma [pokyny pro automatizaci virtuálních sítí WAN](virtual-wan-configure-automation-providers.md).
 
-## <a name="connectivity-through-partners"></a><a name="partners"></a>Konektivita prostřednictvím partnerů
+## <a name="connectivity-through-partners"></a><a name="partners"></a>Připojení prostřednictvím partnerů
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-Následující partneři jsou uvedeni v našem plánu pro blízkou budoucnost: 128 Technologies, Arista, Aruba HPE, Cisco Systems, F5 Networks, Open Systems, Oracle SD-WAN, SharpLink a VMWare Velocloud.
+Následující partneři jsou plánované pro náš budoucí plán: 128 technologie, Arista, Aruba HPE, Cisco Systems, F5 Networks, Open Systems, Oracle SD-WAN, SharpLink a VMWare Velocloud.
 
 ## <a name="locations"></a><a name="locations"></a>Umístění
 
@@ -48,6 +48,6 @@ Následující partneři jsou uvedeni v našem plánu pro blízkou budoucnost: 1
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o virtuální paměti WAN naleznete v [nejčastějších dotazech k virtuální wan .](virtual-wan-faq.md)
+* Další informace o virtuální síti WAN najdete v [nejčastějších dotazech k virtuální síti WAN](virtual-wan-faq.md).
 
-* Další informace o automatizaci připojení k virtuální síti Azure najdete v [tématu Pokyny pro automatizaci pro partnery virtuální sítě WAN](virtual-wan-configure-automation-providers.md).
+* Další informace o tom, jak automatizovat připojení ke službě Azure Virtual WAN, najdete v tématu [pokyny pro automatizaci virtuálních sítí WAN](virtual-wan-configure-automation-providers.md).

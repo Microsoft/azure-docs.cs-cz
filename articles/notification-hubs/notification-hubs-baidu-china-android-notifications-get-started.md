@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
 ms.openlocfilehash: b9ca241b5deebc4d23e0ff648eddee0782617e0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79536985"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Začínáme s použitím Notification Hubs pomocí Baidu
@@ -39,10 +39,10 @@ V tomto kurzu budete potřebovat:
 > [!NOTE]
 > K dokončení tohoto kurzu potřebujete mít aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-baidu-get-started%2F).
 
-Chcete-li začít, postupujte takto:
+Chcete-li začít, postupujte následovně:
 
-1. Vytvořte si účet Baidu.
-2. Vytvořte baidu cloud push projektu a poznamenejte si klíč rozhraní API a tajný klíč.
+1. Vytvořte účet Baidu.
+2. Vytvořte projekt nabízená oznámení cloudu Baidu a poznamenejte si klíč rozhraní API a tajný klíč.
 
 ## <a name="configure-a-new-notification-hub"></a>Konfigurace nového centra oznámení
 
@@ -68,7 +68,7 @@ Poznamenejte si `DefaultListenSharedAccessSignature` a `DefaultFullSharedAccessS
 
 2. Zadejte Název aplikace a ověřte, že Minimální požadovaná verze sady SDK je nastavená na API 16: Android 4.1. **Ověřte prosím také, že název vašeho balíčku (应用包名) je stejný jako na portálu nabízených oznámení cloudu Baidu.**
 
-    ![Centra oznámení Azure – Baidu Min](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png) ![SDK1 Centra oznámení Azure – Baidu Min SDK2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
+    ![Azure Notification Hubs – Baidu min SDK1](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png) ![Azure Notification Hubs-Baidu min SDK2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
 
 3. Klikněte na Další a pokračujte podle pokynů průvodce, dokud se nezobrazí okno Vytvořit aktivitu. Ujistěte se, že je zvolena možnost Prázdná aktivita, a nakonec vyberte Dokončit a vytvořte novou aplikaci pro Android.
 
@@ -93,7 +93,7 @@ Poznamenejte si `DefaultListenSharedAccessSignature` a `DefaultFullSharedAccessS
     }
     ```
 
-    Chcete-li se vyhnout konfliktu seznamu, přidejte `Manifest.xml` do souboru projektu následující kód:
+    Chcete-li se vyhnout konfliktu seznamu, přidejte do `Manifest.xml` souboru projektu následující kód:
 
     ```xml
     <manifest package="YOUR.PACKAGE.NAME"
@@ -112,7 +112,7 @@ Poznamenejte si `DefaultListenSharedAccessSignature` a `DefaultFullSharedAccessS
 
     ![Azure Notification Hubs – Knihovny sady Baidu SDK](./media/notification-hubs-baidu-get-started/BaiduSDKLib.png)
 
-7. Ve `libs` složce projektu klikněte pravým `pushervice-x.y.z.jar` tlačítkem myši na soubor; vyberte **Přidat jako knihovnu** k zahrnutí této knihovny do projektu.
+7. Ve `libs` složce projektu klikněte pravým tlačítkem na `pushervice-x.y.z.jar` soubor; Vyberte **Přidat jako knihovnu** , která zahrnuje tuto knihovnu v projektu.
 
     ![Azure Notification Hubs – Přidání jako knihovny pro Baidu](./media/notification-hubs-baidu-get-started/BaiduAddAsALib.jpg)
 

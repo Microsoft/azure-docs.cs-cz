@@ -1,21 +1,21 @@
 ---
-title: Pole JobConfig.json služby Azure Stream Analytics
-description: V tomto článku jsou uvedena podporovaná pole pro soubor JobConfig.json služby Azure Stream Analytics, která slouží k vytváření úloh v kódu sady Visual Studio.
+title: Azure Stream Analytics pole JobConfig. JSON
+description: Tento článek obsahuje seznam podporovaných polí Azure Stream Analytics JobConfig. JSON, který slouží k vytváření úloh v Visual Studio Code.
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/14/2020
 ms.openlocfilehash: 27ed553035ce9d7abf57ffe93078df9c17b8408c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77617954"
 ---
-# <a name="azure-stream-analytics-jobconfigjson-fields"></a>Pole JobConfig.json služby Azure Stream Analytics
+# <a name="azure-stream-analytics-jobconfigjson-fields"></a>Azure Stream Analytics pole JobConfig. JSON
 
-Následující pole jsou podporována v souboru *JobConfig.json,* který slouží k [vytvoření úlohy Azure Stream Analytics pomocí kódu sady Visual Studio](quick-create-vs-code.md).
+Následující pole jsou podporována v souboru *JobConfig. JSON* , který slouží k [Vytvoření úlohy Azure Stream Analytics pomocí Visual Studio Code](quick-create-vs-code.md).
 
 ```json
 {
@@ -37,25 +37,25 @@ Následující pole jsou podporována v souboru *JobConfig.json,* který slouž�
 }
 ```
 
-|Name (Název)|Typ|Požaduje se|Hodnota|
+|Název|Typ|Požaduje se|Hodnota|
 |----|----|--------|-----|
-|DataLocale|řetězec|Ne|Národní prostředí dat úlohy analýzy datového proudu. Hodnota by měla být název podporované. Výchozí hodnota je "en-US", pokud není zadána.|
-|OutputErrorPolicy|řetězec|Ne|Označuje zásadu, která má být aplikována na události, které přicházejí do výstupu a nelze je zapsat do externího úložiště z důvodu jeho nesprávného vytvoření (chybějící hodnoty sloupců, hodnoty sloupců nesprávného typu nebo velikosti). - Stop nebo Drop|
-|EventsLateArrivalMaxDelayInSeconds|celé číslo|Ne|Maximální přípustné zpoždění v sekundách, kdy události, které přicházejí pozdě, by mohly být zahrnuty. Podporovaný rozsah je -1 až 1814399 (20.23:59:59 dny) a -1 se používá k určení čekání neomezeně dlouho. Pokud vlastnost chybí, je interpretován mít hodnotu -1.|
-|UdálostiOutOfOrderMaxDelayVSeconds|celé číslo|Ne|Maximální přípustné zpoždění v sekundách, kdy mohou být události mimo pořadí upraveny tak, aby byly zpět v pořádku.|
-|EventsOutOfOrderPolicy|řetězec|Ne|Označuje zásadu, která má být aplikována na události, které jsou mimo pořadí ve vstupním datovém proudu událostí. - Upravit nebo drop|
-|StreamingUnits|celé číslo|Ano|Určuje počet jednotek streamování, které úloha streamování používá.|
-|Úroveň kompatibility|řetězec|Ne|Řídí určité chování za běhu úlohy streamování. - Přijatelné hodnoty jsou "1,0", "1,1", "1,2"|
-|UseSystemAssignedIdentity|Boolean|Ne|Nastavte hodnotu true, aby tato úloha mohla komunikovat s ostatními službami Azure jako se sebou, pomocí spravované identity Služby Azure Active Directory.|
-|GlobalStorage.AccountName|řetězec|Ne|Účet globálního úložiště se používá pro ukládání obsahu souvisejícího s úlohou analýzy datového proudu, jako jsou například snímky referenčních dat SQL.|
-|GlobalStorage.AccountKey|řetězec|Ne|Odpovídající klíč pro účet globálního úložiště.|
-|Doména pověření zdroje dat|řetězec|Ne|Rezervovaná vlastnost pro místní úložiště pověření.|
-|ScriptType|řetězec|Ano|Rezervovaná vlastnost pro zadání typu tohoto zdrojového souboru. Přijatelná hodnota je "JobConfig" pro JobConfig.json.|
-|Značky|Dvojice json klíč-hodnota|Ne|Značky jsou dvojice název/hodnota, které umožňují kategorizovat prostředky a zobrazit konsolidovanou fakturaci použitím stejné značky pro více prostředků a skupin prostředků. Názvy značek nerozlišují malá a velká písmena a hodnoty tagů rozlišují malá a velká písmena.|
+|Místní dataprostředí|řetězec|Ne|Národní prostředí pro data úlohy Stream Analytics. Hodnota by měla být název podporovaného typu. Pokud není zadaný, použije se výchozí hodnota EN-US.|
+|OutputErrorPolicy|řetězec|Ne|Určuje zásadu, která se použije na události, které přicházejí do výstupu, a nejde je zapsat do externího úložiště, protože jsou poškozené (chybějící hodnoty sloupce, hodnoty sloupce nesprávného typu nebo velikosti). -Stop nebo drop|
+|EventsLateArrivalMaxDelayInSeconds|celé číslo|Ne|Maximální přípustná prodleva v sekundách, kdy mohou být zahrnuty události přicházející pozdě. Podporovaný rozsah je-1 až 1814399 (20.23:59:59 dní) a-1 se používá k určení čekání na neomezenou dobu. Pokud vlastnost chybí, je interpretována tak, aby měla hodnotu-1.|
+|EventsOutOfOrderMaxDelayInSeconds|celé číslo|Ne|Maximální přípustná prodleva v sekundách, kdy se události mimo pořadí dají upravit tak, aby se znovu nastavily.|
+|EventsOutOfOrderPolicy|řetězec|Ne|Určuje zásadu, která se použije na události, které dorazí do vstupního proudu událostí mimo pořadí. -Upravit nebo vyřadit|
+|StreamingUnits|celé číslo|Ano|Určuje počet jednotek streamování, které používá úloha streamování.|
+|CompatibilityLevel|řetězec|Ne|Řídí určitá chování za běhu úlohy streamování. -Přijatelné hodnoty jsou "1,0", "1,1", "1,2"|
+|UseSystemAssignedIdentity|Boolean|Ne|Nastavte hodnotu true, pokud chcete, aby tato úloha komunikovala s ostatními službami Azure samostatně pomocí spravované Azure Active Directory identity.|
+|GlobalStorage. Account|řetězec|Ne|Globální účet úložiště se používá k ukládání obsahu souvisejícího s vaší úlohou Stream Analytics, jako jsou snímky dat SQL Reference.|
+|GlobalStorage. AccountKey|řetězec|Ne|Odpovídající klíč pro globální účet úložiště|
+|DataSourceCredentialDomain|řetězec|Ne|Rezervovaná vlastnost pro místní úložiště přihlašovacích údajů|
+|ScriptType|řetězec|Ano|Rezervovaná vlastnost, která označuje typ tohoto zdrojového souboru. Přijatelná hodnota je "JobConfig" pro JobConfig. JSON.|
+|Značky|Páry klíč-hodnota JSON|Ne|Značky jsou páry název-hodnota, které umožňují kategorizaci prostředků a zobrazení konsolidované fakturace, a to použitím stejné značky na více prostředků a skupin prostředků. V názvech značek jsou rozlišována velká a malá písmena.|
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vytvoření úlohy Azure Stream Analytics v kódu Visual Studia](quick-create-vs-code.md)
-* [Test Stream Analytics dotazy místně s ukázkovými daty pomocí kódu Sady Visual Studio](visual-studio-code-local-run.md)
-* [Test Stream Analytics dotazy místně proti vstupu živého datového proudu pomocí kódu](visual-studio-code-local-run-live-input.md)
-*Visual Studio[nasazení úlohy Azure Stream Analytics pomocí balíčku CI/CD npm](setup-cicd-vs-code.md)
+* [Vytvoření úlohy Azure Stream Analytics v Visual Studio Code](quick-create-vs-code.md)
+* [Test Stream Analytics dotazy místně s použitím ukázkových dat pomocí Visual Studio Code](visual-studio-code-local-run.md)
+* [Test Stream Analytics dotazy místně proti vstupu živého streamu pomocí Visual Studio Code](visual-studio-code-local-run-live-input.md)
+*[nasazení Azure Stream Analytics úlohy pomocí balíčku CI/CD npm](setup-cicd-vs-code.md)

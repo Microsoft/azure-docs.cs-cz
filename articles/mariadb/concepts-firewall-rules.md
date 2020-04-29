@@ -1,74 +1,74 @@
 ---
-title: Pravidla brány firewall – databáze Azure pro MariaDB
-description: Další informace o použití pravidel brány firewall k povolení připojení k serveru Azure Database for MariaDB.
+title: Pravidla brány firewall – Azure Database for MariaDB
+description: Přečtěte si, jak pomocí pravidel brány firewall povolit připojení k vašemu Azure Database for MariaDB serveru.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 743e3f50d747993250399493d97fc2becab19319
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79532038"
 ---
 # <a name="azure-database-for-mariadb-server-firewall-rules"></a>Pravidla brány firewall serveru Azure Database for MariaDB
-Brány firewall znemožňují veškerý přístup k databázovému serveru, dokud neurčíte, které počítače mají oprávnění. Brána firewall uděluje přístup k serveru na základě původní adresy IP každého požadavku.
+Brány firewall zabraňují všem přístupům k databázovému serveru, dokud neurčíte, které počítače mají oprávnění. Brána firewall uděluje přístup k serveru na základě zdrojové IP adresy jednotlivých požadavků.
 
-Chcete-li nakonfigurovat bránu firewall, vytvořte pravidla brány firewall, která určují rozsahy přijatelných adres IP. Pravidla brány firewall můžete vytvořit na úrovni serveru.
+Chcete-li nakonfigurovat bránu firewall, vytvořte pravidla brány firewall, která určují rozsah přípustných IP adres. Pravidla brány firewall můžete vytvořit na úrovni serveru.
 
-**Pravidla brány firewall:** Tato pravidla umožňují klientům přístup k celé databázi Azure pro server MariaDB, to znamená, že všechny databáze v rámci stejného logického serveru. Pravidla brány firewall na úrovni serveru lze nakonfigurovat pomocí portálu Azure nebo příkazů Azure CLI. Chcete-li vytvořit pravidla brány firewall na úrovni serveru, musíte být vlastníkem předplatného nebo přispěvatelem předplatného.
+**Pravidla brány firewall:** Tato pravidla umožňují klientům přístup k celému serveru Azure Database for MariaDB, tedy ke všem databázím v rámci stejného logického serveru. Pravidla brány firewall na úrovni serveru se dají nakonfigurovat pomocí příkazů Azure Portal nebo rozhraní příkazového řádku Azure. Chcete-li vytvořit pravidla brány firewall na úrovni serveru, musíte být vlastníkem předplatného nebo přispěvatelem předplatného.
 
 ## <a name="firewall-overview"></a>Přehled brány firewall
-Veškerý přístup k databázi k serveru Azure Database for MariaDB je ve výchozím nastavení blokován bránou firewall. Chcete-li začít používat server z jiného počítače, je třeba zadat jedno nebo více pravidel brány firewall na úrovni serveru, aby byl povolen přístup k serveru. Pomocí pravidel brány firewall určete, které adresy IP se pohybují od Internetu, aby je bylo možné povolit. Samotná pravidla brány firewall nemají vliv na přístup k samotnému webu portálu Azure.
+Přístup všech databází k serveru Azure Database for MariaDB je ve výchozím nastavení blokován bránou firewall. Pokud chcete začít používat server z jiného počítače, musíte zadat jedno nebo více pravidel brány firewall na úrovni serveru, abyste mohli povolit přístup k vašemu serveru. Pomocí pravidel brány firewall určete, které rozsahy IP adres z Internetu mají být povoleny. Přístup k samotnému webu Azure Portal nemá vliv na pravidla brány firewall.
 
-Pokusy o připojení z Internetu a Azure musí nejprve projít bránou firewall, než se dostanou do databáze Azure pro MariaDB, jak je znázorněno na následujícím diagramu:
+Pokusy o připojení z Internetu a Azure musí nejdřív projít přes bránu firewall, aby mohli získat přístup k vaší Azure Database for MariaDB databázi, jak je znázorněno v následujícím diagramu:
 
 ![Příklad toku fungování brány firewall](./media/concepts-firewall-rules/1-firewall-concept.png)
 
 ## <a name="connecting-from-the-internet"></a>Připojení z Internetu
-Pravidla brány firewall na úrovni serveru platí pro všechny databáze na serveru Azure Database for MariaDB.
+Pravidla brány firewall na úrovni serveru se vztahují na všechny databáze na serveru Azure Database for MariaDB.
 
-Pokud je adresa IP požadavku v rámci jednoho z rozsahů uvedených v pravidlech brány firewall na úrovni serveru, je připojení uděleno.
+Pokud je IP adresa požadavku v jednom z rozsahů určených v pravidlech brány firewall na úrovni serveru, připojení se udělí.
 
-Pokud je adresa IP požadavku mimo rozsahy zadané v libovolném pravidle brány firewall na úrovni databáze nebo serveru, požadavek na připojení se nezdaří.
+Pokud je IP adresa požadavku mimo rozsahy zadané v pravidlech brány firewall na úrovni databáze nebo serveru, požadavek na připojení se nezdařil.
 
 ## <a name="connecting-from-azure"></a>Připojení z Azure
-Doporučujeme najít odchozí IP adresu libovolné aplikace nebo služby a explicitně povolit přístup k těmto jednotlivým IP adresám nebo rozsahům. Můžete například najít odchozí IP adresu služby Azure App Service nebo použít veřejnou IP adresu vázanou na virtuální počítač nebo jiný prostředek (viz níže informace o připojení k privátním ip adresám virtuálního počítače přes koncové body služby). 
+Doporučujeme, abyste našli odchozí IP adresu libovolné aplikace nebo služby a výslovně povolili přístup k těmto IP adresám nebo rozsahům. Můžete například najít odchozí IP adresu Azure App Service nebo použít veřejnou IP adresu vázanou k virtuálnímu počítači nebo jinému prostředku (viz níže, kde najdete informace o připojení k privátní IP adrese virtuálního počítače prostřednictvím koncových bodů služby). 
 
-Pokud pro vaši službu Azure není dostupná pevná odchozí IP adresa, můžete zvážit povolení připojení ze všech IP adres datového centra Azure. Toto nastavení lze povolit z portálu Azure nastavením **možnosti Povolit přístup ke službám Azure** **na ZAPNUTO** v podokně **zabezpečení Připojení** a stisknutím **klávesy Uložit**. Z azure CLI, nastavení pravidla brány firewall s počáteční a koncovou adresu rovnou 0.0.0.0 dělá ekvivalent. Pokud není povolen pokus o připojení, požadavek nedosáhne databáze Azure pro server MariaDB.
+Pokud pro vaši službu Azure není k dispozici pevná odchozí IP adresa, můžete zvážit povolení připojení ze všech IP adres datových center Azure. Toto nastavení se dá povolit z Azure Portal nastavením možnosti **Povolit přístup ke službám Azure** na **zapnuto** v podokně **zabezpečení připojení** a na **Uložit**. V rozhraní příkazového řádku Azure CLI platí, že nastavení pravidla brány firewall s počáteční a koncovou adresou rovnající se hodnotě 0.0.0.0. Pokud se pokus o připojení nepovoluje, požadavek nedosáhne serveru Azure Database for MariaDB.
 
 > [!IMPORTANT]
-> Možnost **Povolit přístup ke službám Azure** nakonfiguruje bránu firewall tak, aby umožňovala všechna připojení z Azure včetně připojení z předplatných jiných zákazníků. Když vyberete tuto možnost, ujistěte se, že vaše přihlašovací a uživatelská oprávnění omezují přístup pouze na autorizované uživatele.
+> Možnost **Povolení přístupu ke službám Azure** nakonfiguruje bránu firewall tak, aby povolovala všechna připojení z Azure, včetně připojení z předplatných ostatních zákazníků. Když vyberete tuto možnost, ujistěte se, že vaše přihlašovací a uživatelská oprávnění omezují přístup pouze na autorizované uživatele.
 > 
 
 ![Konfigurace povolení přístupu ke službám Azure na portálu](./media/concepts-firewall-rules/allow-azure-services.png)
 
 ### <a name="connecting-from-a-vnet"></a>Připojení z virtuální sítě
-Pokud se chcete bezpečně připojit k databázi Azure pro server MariaDB z virtuální sítě, zvažte použití [koncových bodů služby Virtuální sítě](./concepts-data-access-security-vnet.md). 
+Pokud chcete bezpečně připojit k serveru Azure Database for MariaDB z virtuální sítě, zvažte použití [koncových bodů služby virtuální](./concepts-data-access-security-vnet.md)sítě. 
 
 ## <a name="programmatically-managing-firewall-rules"></a>Programová správa pravidel brány firewall
-Kromě portálu Azure lze pravidla brány firewall spravovat programově pomocí nastavení cli Azure. 
+Kromě Azure Portal můžete pravidla brány firewall spravovat programově pomocí rozhraní příkazového řádku Azure CLI. 
 
-Viz taky [Vytvoření a správa pravidel brány firewall Azure Database for MariaDB pomocí azure CLI](./howto-manage-firewall-cli.md).
+Viz také [vytváření a Správa pravidel brány firewall Azure Database for MariaDB pomocí Azure CLI](./howto-manage-firewall-cli.md).
 
-## <a name="troubleshooting-firewall-issues"></a>Poradce při potížích s bránou firewall
-Zvažte následující body, pokud se přístup k databázi Microsoft Azure pro serverovou službu MariaDB nechová očekávaným způsobem:
+## <a name="troubleshooting-firewall-issues"></a>Řešení potíží s bránou firewall
+V případě, že se přístup k Microsoft Azure databázi pro službu serveru MariaDB nechová podle očekávání, vezměte v úvahu následující body:
 
-* **Změny seznamu povolených položek se dosud neprojevily:** Může být stejně jako pět minut zpoždění pro změny v databázi Azure pro mariadb server konfigurace brány firewall se projeví.
+* **Změny v seznamu povolených se zatím neprojevily:** Změny konfigurace brány firewall serveru Azure Database for MariaDB se projeví až po dobu pěti minut.
 
-* **Přihlášení není autorizováno nebo bylo použito nesprávné heslo:** Pokud přihlášení nemá oprávnění na azure databázi pro mariadb server nebo použité heslo je nesprávné, připojení k databázi Azure pro server MariaDB je odepřen. Vytvoření nastavení brány firewall klientům pouze poskytuje možnost pokusit se o připojení k vašemu serveru – každý klient musí dodat potřebné zabezpečené přihlašovací údaje.
+* **Přihlášení není autorizováno nebo bylo použito nesprávné heslo:** Pokud přihlášení nemá oprávnění k serveru Azure Database for MariaDB nebo je použité heslo nesprávné, připojení k serveru Azure Database for MariaDB je odepřeno. Vytvoření nastavení brány firewall klientům pouze poskytuje možnost pokusit se o připojení k vašemu serveru – každý klient musí dodat potřebné zabezpečené přihlašovací údaje.
 
-* **Dynamická IP adresa:** Pokud máte připojení k Internetu s dynamickým adresováním IP adresování a máte potíže s průchodem bránou firewall, můžete zkusit jedno z následujících řešení:
+* **Dynamická IP adresa:** Pokud máte připojení k Internetu s dynamickým IP adresou a máte potíže s připojením přes bránu firewall, můžete vyzkoušet jedno z následujících řešení:
 
-   * Požádejte svého poskytovatele internetových služeb (ISP) o rozsah IP adres přiřazený vašim klientským počítačům, které přistupují k databázi Azure pro server MariaDB, a pak přidejte rozsah IP adres jako pravidlo brány firewall.
+   * Zeptejte se poskytovatele internetových služeb (ISP) na rozsah IP adres přiřazený ke klientským počítačům, které přistupují k serveru Azure Database for MariaDB, a pak přidejte rozsah IP adres jako pravidlo brány firewall.
 
    * Získejte pro své klientské počítače statické přidělování IP adres a následně přidejte tyto IP adresy jako pravidla brány firewall.
 
-* **Ip adresa serveru se zdá být veřejná:** Připojení k azure databázi pro server MariaDB jsou směrovány přes veřejně přístupné brány Azure. Skutečná IP adresa serveru je však chráněná bránou firewall. Další informace naleznete v [článku architektury připojení](concepts-connectivity-architecture.md). 
+* **IP adresa serveru je pravděpodobně veřejná:** Připojení k Azure Database for MariaDB serveru jsou směrována prostřednictvím veřejně přístupné brány Azure. Skutečná IP adresa serveru je však chráněná bránou firewall. Další informace najdete v [článku architektura připojení](concepts-connectivity-architecture.md). 
 
 ## <a name="next-steps"></a>Další kroky
-- [Vytváření a správa pravidel brány firewall Azure Database for MariaDB pomocí portálu Azure](./howto-manage-firewall-portal.md)
-- [Vytvoření a správa pravidel brány firewall Azure Database for MariaDB pomocí azure cli](./howto-manage-firewall-cli.md)
-- [Koncové body služby Virtuální sítě v databázi Azure pro MariaDB](./concepts-data-access-security-vnet.md)
+- [Vytváření a Správa Azure Database for MariaDB pravidel brány firewall pomocí Azure Portal](./howto-manage-firewall-portal.md)
+- [Vytvoření a Správa pravidel brány firewall Azure Database for MariaDB pomocí rozhraní příkazového řádku Azure](./howto-manage-firewall-cli.md)
+- [Koncové body služby virtuální sítě v Azure Database for MariaDB](./concepts-data-access-security-vnet.md)

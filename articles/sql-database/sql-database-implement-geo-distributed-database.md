@@ -1,6 +1,6 @@
 ---
 title: Implementace geograficky distribuovaného řešení
-description: Naučte se nakonfigurovat databázi Azure SQL a aplikaci pro převzetí služeb při selhání na replikovanou databázi a otestujte převzetí služeb při selhání.
+description: Naučte se konfigurovat službu Azure SQL Database a aplikaci pro převzetí služeb při selhání replikovanou databází a testovací převzetí služeb při selhání.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -12,53 +12,53 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 58d5bd4a7f3087e11056354f7534c3c9dbebca3c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80067289"
 ---
-# <a name="tutorial-implement-a-geo-distributed-database"></a>Kurz: Implementace geograficky distribuované databáze
+# <a name="tutorial-implement-a-geo-distributed-database"></a>Kurz: implementace geograficky distribuované databáze
 
-Nakonfigurujte databázi Azure SQL a aplikaci pro převzetí služeb při selhání do vzdálené oblasti a otestujte plán převzetí služeb při selhání. Získáte informace o těchto tématech:
+Nakonfigurujte službu Azure SQL Database a aplikaci pro převzetí služeb při selhání do vzdálené oblasti a otestujte plán převzetí služeb při selhání. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > - Vytvoření [skupiny převzetí služeb při selhání](sql-database-auto-failover-group.md)
-> - Spuštění aplikace Java pro dotazování na databázi Azure SQL
+> - Spuštění aplikace Java pro dotazování databáze SQL Azure
 > - Testovací převzetí služeb při selhání
 
-Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> Modul PowerShell Azure Resource Manager je stále podporovaný službou Azure SQL Database, ale veškerý budoucí vývoj je pro modul Az.Sql. Tyto rutiny naleznete v tématu [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulu Az a v modulech AzureRm jsou v podstatě identické.
+> Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
 
-Chcete-li kurz dokončit, zkontrolujte, zda jste nainstalovali následující položky:
+K dokončení tohoto kurzu se ujistěte, že máte nainstalované následující položky:
 
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 - Jedna databáze v Azure SQL Database. Chcete-li vytvořit jedno použití,
   - [Portál](sql-database-single-database-get-started.md)
-  - [Cli](sql-database-cli-samples.md)
-  - [PowerShell](sql-database-powershell-samples.md)
+  - [CLI](sql-database-cli-samples.md)
+  - [Prostředí](sql-database-powershell-samples.md)
 
   > [!NOTE]
-  > Kurz používá ukázkovou databázi *AdventureWorksLT.*
+  > V tomto kurzu se používá ukázková databáze *AdventureWorksLT* .
 
-- Java a Maven, viz [Vytvoření aplikace pomocí SQL Serveru](https://www.microsoft.com/sql-server/developer-get-started/), zvýrazněte **Java** a vyberte své prostředí, postupujte podle pokynů.
+- Java a Maven, přečtěte si téma [Vytvoření aplikace pomocí SQL Server](https://www.microsoft.com/sql-server/developer-get-started/), zvýraznění **Java** a výběr vašeho prostředí a pak postupujte podle pokynů.
 
 > [!IMPORTANT]
-> Nezapomeňte nastavit pravidla brány firewall pro použití veřejné IP adresy počítače, ve kterém provádíte kroky v tomto kurzu. Pravidla brány firewall na úrovni databáze se automaticky replikují na sekundární server.
+> Nezapomeňte nastavit pravidla brány firewall tak, aby používala veřejnou IP adresu počítače, na kterém provedete kroky v tomto kurzu. Pravidla brány firewall na úrovni databáze se automaticky replikují na sekundární server.
 >
-> Informace naleznete [v tématu Vytvoření pravidla brány firewall na úrovni databáze](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) nebo určení adresy IP použité pro pravidlo brány firewall na úrovni serveru pro váš počítač naleznete v [tématu Vytvoření brány firewall na úrovni serveru](sql-database-server-level-firewall-rule.md).  
+> Informace najdete v tématu vytvoření [pravidla brány firewall na úrovni databáze](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) nebo určení IP adresy používané pro pravidlo brány firewall na úrovni serveru pro váš počítač v tématu [Vytvoření brány firewall na úrovni serveru](sql-database-server-level-firewall-rule.md).  
 
 ## <a name="create-a-failover-group"></a>Vytvoření skupiny převzetí služeb při selhání
 
-Pomocí Azure PowerShellu vytvořte [skupiny převzetí služeb při selhání](sql-database-auto-failover-group.md) mezi existujícím serverem Azure SQL a novým serverem Azure SQL v jiné oblasti. Potom přidejte ukázkovou databázi do skupiny převzetí služeb při selhání.
+Pomocí Azure PowerShell vytvořit [skupiny převzetí služeb při selhání](sql-database-auto-failover-group.md) mezi existujícím serverem SQL Azure a novým serverem SQL Azure v jiné oblasti. Pak přidejte ukázkovou databázi do skupiny převzetí služeb při selhání.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
 
 > [!IMPORTANT]
 > [!INCLUDE [sample-powershell-install](../../includes/sample-powershell-install-no-ssh.md)]
@@ -93,7 +93,7 @@ Get-AzSqlDatabase -ResourceGroupName $resourceGroup -ServerName $server -Databas
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!IMPORTANT]
-> Spusťte `az login` přihlášení do Azure.
+> Spusťte `az login` , abyste se přihlásili do Azure.
 
 ```azurecli
 $admin = "<adminName>"
@@ -118,19 +118,19 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
 
 * * *
 
-Nastavení geografické replikace lze změnit také na webu Azure Portal, výběrem databáze a potom **nastavením** > **geografické replikace**.
+Nastavení geografické replikace můžete v Azure Portal změnit také tak, že vyberete databázi a pak **Nastavení** > **geografická replikace**.
 
 ![Nastavení geografické replikace](./media/sql-database-implement-geo-distributed-database/geo-replication.png)
 
 ## <a name="run-the-sample-project"></a>Spuštění ukázkového projektu
 
-1. V konzole vytvořte projekt Maven s následujícím příkazem:
+1. V konzole vytvořte projekt Maven pomocí následujícího příkazu:
 
    ```bash
    mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=SqlDbSample" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0"
    ```
 
-1. Zadejte **Y** a stiskněte **klávesu Enter**.
+1. Zadejte **Y** a stiskněte **ENTER**.
 
 1. Změňte adresáře na nový projekt.
 
@@ -138,9 +138,9 @@ Nastavení geografické replikace lze změnit také na webu Azure Portal, výbě
    cd SqlDbSample
    ```
 
-1. Pomocí oblíbeného editoru otevřete soubor *pom.xml* ve složce projektu.
+1. Pomocí oblíbeného editoru otevřete soubor *pom. XML* ve složce projektu.
 
-1. Přidejte závislost microsoft jdbc driver pro SQL `dependency` Server přidáním následující části. Závislost musí být vložena do `dependencies` větší části.
+1. Přidejte ovladač Microsoft JDBC pro závislost SQL Server přidáním následující `dependency` části. Závislost musí být vložená v rámci větší `dependencies` části.
 
    ```xml
    <dependency>
@@ -150,7 +150,7 @@ Nastavení geografické replikace lze změnit také na webu Azure Portal, výbě
    </dependency>
    ```
 
-1. Zadejte verzi Jazyka `properties` Java přidáním oddílu za `dependencies` oddíl:
+1. Zadejte verzi jazyka Java přidáním `properties` části za `dependencies` oddíl:
 
    ```xml
    <properties>
@@ -159,7 +159,7 @@ Nastavení geografické replikace lze změnit také na webu Azure Portal, výbě
    </properties>
    ```
 
-1. Podpora souborů manifestu `build` přidáním `properties` oddílu za oddíl:
+1. Podporu souborů manifestu přidáním `build` části za `properties` oddíl:
 
    ```xml
    <build>
@@ -182,7 +182,7 @@ Nastavení geografické replikace lze změnit také na webu Azure Portal, výbě
 
 1. Uložte a zavřete soubor *pom.xml*.
 
-1. Otevřete soubor *App.java* umístěný v .. \SQLDbSample\src\main\java\com\sqldbsamples a nahraďte obsah následujícím kódem:
+1. Otevřete soubor *App. Java* umístěný v souboru.. \SqlDbSample\src\main\java\com\sqldbsamples a nahraďte obsah následujícím kódem:
 
    ```java
    package com.sqldbsamples;
@@ -288,15 +288,15 @@ Nastavení geografické replikace lze změnit také na webu Azure Portal, výbě
    }
    ```
 
-1. Uložte a zavřete soubor *App.java.*
+1. Uložte a zavřete soubor *App. Java* .
 
-1. V příkazové konzole spusťte následující příkaz:
+1. V konzole příkazů spusťte následující příkaz:
 
    ```bash
    mvn package
    ```
 
-1. Spusťte aplikaci, která bude spuštěna přibližně 1 hodinu, dokud nebude ručně zastavena, což vám umožní spustit test převzetí služeb při selhání.
+1. Spusťte aplikaci, která bude běžet přibližně 1 hodinu až do ručního zastavení, což vám umožní spustit test převzetí služeb při selhání.
 
    ```bash
    mvn -q -e exec:java "-Dexec.mainClass=com.sqldbsamples.App"
@@ -315,9 +315,9 @@ Nastavení geografické replikace lze změnit také na webu Azure Portal, výbě
 
 ## <a name="test-failover"></a>Testovací převzetí služeb při selhání
 
-Spusťte následující skripty, abyste simulovali převzetí služeb při selhání a sledovali výsledky aplikace. Všimněte si, jak některé vloží a vybere se nezdaří během migrace databáze.
+Spusťte následující skripty pro simulaci převzetí služeb při selhání a sledujte výsledky aplikace. Všimněte si, že při migraci databáze dojde k selhání některých vložení a výběrů.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
 
 Roli serveru pro zotavení po havárii můžete zkontrolovat během testu pomocí následujícího příkazu:
 
@@ -328,14 +328,14 @@ Roli serveru pro zotavení po havárii můžete zkontrolovat během testu pomoc�
 
 Testování převzetí služeb při selhání:
 
-1. Spusťte ruční převzetí služeb při selhání skupiny převzetí služeb při selhání:
+1. Spustit ruční převzetí služeb při selhání pro skupinu převzetí služeb při selhání:
 
    ```powershell
    Switch-AzSqlDatabaseFailoverGroup -ResourceGroupName $myresourcegroupname `
     -ServerName $drServer -FailoverGroupName $failoverGroup
    ```
 
-1. Vrátit skupinu převzetí služeb při selhání zpět na primární server:
+1. Vraťte skupinu převzetí služeb při selhání zpátky na primární server:
 
    ```powershell
    Switch-AzSqlDatabaseFailoverGroup -ResourceGroupName $resourceGroup `
@@ -352,13 +352,13 @@ az sql failover-group show --name $failoverGroup --resource-group $resourceGroup
 
 Testování převzetí služeb při selhání:
 
-1. Spusťte ruční převzetí služeb při selhání skupiny převzetí služeb při selhání:
+1. Spustit ruční převzetí služeb při selhání pro skupinu převzetí služeb při selhání:
 
    ```azurecli
    az sql failover-group set-primary --name $failoverGroup --resource-group $resourceGroup --server $drServer
    ```
 
-1. Vrátit skupinu převzetí služeb při selhání zpět na primární server:
+1. Vraťte skupinu převzetí služeb při selhání zpátky na primární server:
 
    ```azurecli
    az sql failover-group set-primary --name $failoverGroup --resource-group $resourceGroup --server $server
@@ -368,14 +368,14 @@ Testování převzetí služeb při selhání:
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste nakonfigurovali databázi Azure SQL a aplikaci pro převzetí služeb při selhání do vzdálené oblasti a otestovali plán převzetí služeb při selhání. Naučili jste se tyto postupy:
+V tomto kurzu jste nakonfigurovali službu Azure SQL Database a aplikaci pro převzetí služeb při selhání do vzdálené oblasti a otestovali jste plán převzetí služeb při selhání. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
 > - Vytvoření skupiny převzetí služeb při selhání geografické replikace
-> - Spuštění aplikace Java pro dotazování na databázi Azure SQL
+> - Spuštění aplikace Java pro dotazování databáze SQL Azure
 > - Testovací převzetí služeb při selhání
 
-Převést na další návod, jak migrovat pomocí DMS.
+Přejděte k dalšímu kurzu migrace pomocí DMS.
 
 > [!div class="nextstepaction"]
-> [Migrace SQL Serveru do spravované instance databáze Azure SQL pomocí DMS](../dms/tutorial-sql-server-to-managed-instance.md)
+> [Migrace SQL Server do Azure SQL Database Managed instance pomocí DMS](../dms/tutorial-sql-server-to-managed-instance.md)

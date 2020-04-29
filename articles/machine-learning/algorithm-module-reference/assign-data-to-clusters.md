@@ -1,7 +1,7 @@
 ---
-title: 'Přiřazení dat ke clusteru: Odkaz na modul'
+title: 'Přiřazení dat ke clusteru: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak použít modul Přiřadit data clusteru v Azure Machine Learning k vytvoření clusteru modelu.
+description: Naučte se používat modul přiřazení dat ke clusteru v Azure Machine Learning k určení skóre modelu clusteringu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,42 +10,42 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
 ms.openlocfilehash: 207172f10277589af2b22ae2f41b07234a0925b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79477710"
 ---
-# <a name="module-assign-data-to-clusters"></a>Modul: Přiřazení dat k clusterům
+# <a name="module-assign-data-to-clusters"></a>Modul: přiřazení dat clusterům
 
-Tento článek popisuje, jak používat modul *Přiřadit data clusterům* v návrháři Azure Machine Learning (preview). Modul generuje předpovědi prostřednictvím clustering modelu, který byl trénovaný s *K-prostředky clustering* algoritmus.
+Tento článek popisuje, jak používat modul *přiřazení dat ke clusterům* v Návrháři Azure Machine Learning (Preview). Modul generuje předpovědi pomocí modelu clusteringu, který byl vyškolený pomocí rozhraní *K – označuje algoritmus clusteringu* .
 
-Modul Přiřadit data clusterům vrátí datovou sadu, která obsahuje pravděpodobná přiřazení pro každý nový datový bod. 
+Modul přiřazení dat ke clusterům vrátí datovou sadu, která obsahuje pravděpodobné přiřazení pro každý nový datový bod. 
 
-## <a name="how-to-use-assign-data-to-clusters"></a>Použití funkce Přiřadit data clusterům
+## <a name="how-to-use-assign-data-to-clusters"></a>Použití přiřazování dat do clusterů
   
-1. V návrháři Azure Machine Learning vyhledejte dříve trénovaný model clusteringu. Model clusteringu můžete vytvořit a trénovat pomocí jedné z následujících metod:  
+1. V Návrháři Azure Machine Learning vyhledejte dříve proučený model clusteringu. Model clusteringu můžete vytvořit a naučit pomocí některé z následujících metod:  
   
-    - Nakonfigurujte algoritmus clusteringu K-znamená pomocí modulu [K-Means Clustering](k-means-clustering.md) a trénujte model pomocí datové sady a modulu Model clusteringu vlaků (tento článek).  
+    - Konfigurace K znamená algoritmus clusteringu pomocí modulu [k-označuje modul clusteringu](k-means-clustering.md) a pomocí modulu pro vytváření modelů a modelu clusteringu (v tomto článku) vytvořte výuku modelu pomocí datové sady.  
   
-    - Můžete také přidat existující trénovaný model clusteringu ze **skupiny Uložené modely** ve vašem pracovním prostoru.
+    - Můžete také přidat existující model proučeného clusteringu ze skupiny **uložených modelů** v pracovním prostoru.
 
-2. Připojte trénovaný model k levému vstupnímu portu **Přiřadit data clusterům**.  
+2. Připojte školený model k levému vstupnímu portu **přiřazení dat ke clusterům**.  
 
-3. Připojte novou datovou sadu jako vstup. 
+3. Připojí novou datovou sadu jako vstup. 
 
-   V této datové sadě jsou popisky volitelné. Clustering je obecně metoda učení bez dozoru. Neočekává se, že byste kategorie znali předem. Vstupní sloupce však musí být stejné jako sloupce, které byly použity při trénování modelu clusteringu, nebo dojde k chybě.
+   V této datové sadě jsou popisky volitelné. Obecně platí, že clustering je bezdohlednou výukovou metodou. Neočekáváte si, že tyto kategorie předem znáte. Vstupní sloupce však musí být stejné jako sloupce, které byly použity při výuce modelu clusteringu, nebo dojde k chybě.
 
     > [!TIP]
-    > Chcete-li snížit počet sloupců zapsaných do návrháře z předpovědí clusteru, použijte [select sloupce v datové sadě](select-columns-in-dataset.md)a vyberte podmnožinu sloupců. 
+    > Chcete-li snížit počet sloupců, které jsou zapsány do návrháře z předpovědi clusteru, použijte [možnost vybrat sloupce v datové sadě](select-columns-in-dataset.md)a vyberte podmnožinu sloupců. 
     
-4. Zaškrtnutí políčka **Zkontrolovat připojení nebo Zrušit zaškrtnutí políčka Výsledek ponechte zaškrtnuté,** pokud chcete, aby výsledky obsahovaly úplnou vstupní datovou sadu, včetně sloupce, který zobrazuje výsledky (přiřazení clusteru).
+4. Zaškrtněte políčko Pokud chcete, aby výsledky obsahovaly úplnou vstupní datovou sadu, včetně sloupce, který zobrazuje výsledky (přiřazení clusteru), ponechejte políčko **zaškrtnout možnost připojit nebo zrušit kontrolu pouze pro výsledek** .
   
-    Pokud toto políčko zrušte, budou vráceny pouze výsledky. Tato možnost může být užitečná při vytváření předpovědi jako součást webové služby.
+    Pokud zrušíte zaškrtnutí tohoto políčka, vrátí se pouze výsledky. Tato možnost může být užitečná, když vytváříte předpovědi jako součást webové služby.
   
-5.  Odešlete potrubí.  
+5.  Odešlete kanál.  
   
 ### <a name="results"></a>Výsledky
 
-+  Chcete-li zobrazit hodnoty v datové sadě, klepněte pravým tlačítkem myši na modul a vyberte příkaz **Visualize**. Nebo Vyberte modul a přepněte na kartu **Výstupy** v pravém panelu, klikněte na ikonu histogramu ve **výstupech portu** a vizualizovat výsledek.
++  Chcete-li zobrazit hodnoty v datové sadě, klikněte pravým tlačítkem na modul a vyberte **vizualizovat**. Nebo vyberte modul a přepněte na kartu **výstupy** na pravém panelu, klikněte na ikonu histogramu ve **výstupech portů** a vizualizujte tak výsledek.
 

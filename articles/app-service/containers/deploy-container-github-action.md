@@ -1,39 +1,39 @@
 ---
-title: Vlastní kontejner CI/CD z akce GitHub
-description: Zjistěte, jak pomocí akcí GitHubu nasadit vlastní kontejner Linuxu do služby App Service z kanálu CI/CD.
+title: Vlastní CI kontejnerů/CD z akcí GitHubu
+description: Naučte se používat akce GitHubu k nasazení vlastního kontejneru Linux do App Service z kanálu CI/CD.
 ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.openlocfilehash: d5f175d887cec1d5b5e567d3f716e6492f4516dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78246972"
 ---
-# <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Nasazení vlastního kontejneru do služby App Service pomocí akcí GitHubu
+# <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Nasazení vlastního kontejneru pro App Service pomocí akcí GitHubu
 
-[Akce GitHubu](https://help.github.com/en/articles/about-github-actions) vám poskytují flexibilitu při vytváření automatizovaného pracovního cyklu životního cyklu vývoje softwaru. Pomocí [akce služby Azure App Service pro kontejnery](https://github.com/Azure/webapps-container-deploy)můžete automatizovat pracovní postup a nasazovat aplikace jako [vlastní kontejnery do služby App Service](https://azure.microsoft.com/services/app-service/containers/) pomocí akcí GitHub.
+[Akce GitHubu](https://help.github.com/en/articles/about-github-actions) vám nabízí flexibilitu při vytváření automatizovaného pracovního postupu životního cyklu vývoje softwaru. Díky [akci Azure App Service pro kontejnery](https://github.com/Azure/webapps-container-deploy)můžete automatizovat pracovní postup nasazení aplikací jako [vlastních kontejnerů, které se App Service](https://azure.microsoft.com/services/app-service/containers/) pomocí akcí GitHubu.
 
 > [!IMPORTANT]
-> Akce GitHubu jsou v současné době v beta verzi. Musíte [se nejprve zaregistrovat a připojit se k náhledu](https://github.com/features/actions) pomocí svého účtu GitHub.
+> Akce GitHubu jsou momentálně ve verzi beta. [Abyste se mohli připojit ke službě Preview](https://github.com/features/actions) pomocí svého účtu GitHubu, musíte se nejdřív zaregistrovat.
 > 
 
-Pracovní postup je definován souborem YAML (.yml) v `/.github/workflows/` cestě v úložišti. Tato definice obsahuje různé kroky a parametry, které tvoří pracovní postup.
+Pracovní postup je definovaný souborem YAML (. yml) v `/.github/workflows/` cestě v úložišti. Tato definice obsahuje různé kroky a parametry, které tvoří pracovní postup.
 
-Pro pracovní postup kontejneru služby Azure App Service má soubor tři části:
+Pro pracovní postup kontejneru Azure App Service má soubor tři části:
 
 |Sekce  |Úlohy  |
 |---------|---------|
-|**Ověřování** | 1. Definujte instanční objekt. <br /> 2. Vytvořte tajný klíč GitHubu. |
-|**Sestavení** | 1. Nastavte prostředí. <br /> 2. Vytvořte image kontejneru. |
+|**Authentication** | 1. Definujte instanční objekt. <br /> 2. Vytvořte tajný klíč GitHubu. |
+|**Sestavení** | 1. Nastavte prostředí. <br /> 2. Sestavte image kontejneru. |
 |**Nasadit** | 1. Nasaďte image kontejneru. |
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
-[Instanční objekt](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object) můžete vytvořit pomocí příkazu [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) v [příkazovém příkazu Azure CLI](https://docs.microsoft.com/cli/azure/). Tento příkaz můžete spustit pomocí [Azure Cloud Shell](https://shell.azure.com/) na webu Azure Portal nebo výběrem tlačítka Try **It.**
+[Instanční objekt](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object) můžete vytvořit pomocí příkazu [AZ AD SP Create-for-RBAC](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) v rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/). Tento příkaz můžete spustit pomocí [Azure Cloud Shell](https://shell.azure.com/) v Azure Portal nebo tak, že vyberete tlačítko **vyzkoušet** .
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor \
@@ -43,7 +43,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 # Replace {subscription-id}, {resource-group} with the subscription, resource group details of the WebApp
 ```
 
-Výstup je objekt JSON s přihlašovacími údaji přiřazení role, které poskytují přístup k aplikaci App Service podobné níže. Zkopírujte tento objekt JSON k ověření z GitHubu.
+Výstupem je objekt JSON s přihlašovacími údaji přiřazení role, které poskytují přístup k vaší App Service aplikaci, která je podobná níže. Zkopírujte tento objekt JSON pro ověřování z GitHubu.
 
  ```output 
   {
@@ -56,15 +56,15 @@ Výstup je objekt JSON s přihlašovacími údaji přiřazení role, které posk
 ```
 
 > [!IMPORTANT]
-> Je vždy dobrým zvykem udělit minimální přístup. Můžete omezit obor ve výše uvedeném příkazu Az CLI na konkrétní aplikaci služby App Service a registru kontejnerů Azure, kam se vysouvají iimage kontejneru.
+> Je vždy dobrým zvykem udělit minimální přístup. Můžete omezit rozsah výše uvedeného příkazu AZ CLI na konkrétní aplikaci App Service a Azure Container Registry, do které jsou obrázky kontejneru vloženy.
 
-## <a name="configure-the-github-secret"></a>Konfigurace tajného klíče GitHubu
+## <a name="configure-the-github-secret"></a>Konfigurace tajného kódu GitHubu
 
-Níže uvedený příklad používá přihlašovací údaje na úrovni uživatele, tj. Postupujte podle pokynů pro konfiguraci tajného klíče:
+Následující příklad používá přihlašovací údaje na úrovni uživatele, tj. instanční objekt Azure pro nasazení. Použijte postup konfigurace tajného klíče:
 
-1. V [GitHubu](https://github.com/), procházejte úložiště, vyberte **Nastavení > Tajemství > Přidat nový tajný klíč**
+1. V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení > tajných klíčů > přidat nový tajný kód** .
 
-2. Vložte obsah níže `az cli` uvedeného příkazu jako hodnotu proměnné tajného klíče. Například, `AZURE_CREDENTIALS`.
+2. Vložte obsah níže uvedeného `az cli` příkazu jako hodnotu tajné proměnné. Například, `AZURE_CREDENTIALS`.
 
     
     ```azurecli
@@ -75,20 +75,20 @@ Níže uvedený příklad používá přihlašovací údaje na úrovni uživatel
     # Replace {subscription-id}, {resource-group} with the subscription, resource group details
     ```
 
-3. Nyní v souboru pracovního `.github/workflows/workflow.yml` postupu ve vaší větvi: nahraďte tajný klíč v aplikaci Azure přihlášení s tajným klíčem.
+3. Nyní v souboru pracovního postupu ve větvi: `.github/workflows/workflow.yml` nahraďte tajný klíč v akci přihlášení Azure s vaším tajným klíčem.
 
-4. Podobně definujte následující další tajné kódy pro pověření registru kontejneru a nastavte je v akci přihlášení Dockeru. 
+4. Podobně definujte následující další tajné kódy pro přihlašovací údaje registru kontejneru a nastavte je v akci přihlášení k Docker. 
 
     - REGISTRY_USERNAME
     - REGISTRY_PASSWORD
 
-5. Vidíte tajemství, jak je uvedeno níže, jakmile je definováno.
+5. Po definování se zobrazí tajné kódy, jak je uvedeno níže.
 
-    ![tajné klíče kontejneru](../media/app-service-github-actions/app-service-secrets-container.png)
+    ![tajné kódy kontejneru](../media/app-service-github-actions/app-service-secrets-container.png)
 
 ## <a name="build-the-container-image"></a>Sestavení image kontejneru
 
-Následující příklad ukazuje část pracovního postupu, která vytváří image dockeru.
+Následující příklad ukazuje část pracovního postupu, která vytváří image Docker.
 
 ```yaml
 on: [push]
@@ -119,19 +119,19 @@ jobs:
         docker push contoso.azurecr.io/nodejssampleapp:${{ github.sha }}
 ```
 
-## <a name="deploy-to-an-app-service-container"></a>Nasazení do kontejneru služby App Service
+## <a name="deploy-to-an-app-service-container"></a>Nasazení do kontejneru App Service
 
-Pokud chcete nasadit image do vlastního kontejneru ve službě App Service, použijte `azure/webapps-container-deploy@v1` akci. Tato akce má pět parametrů:
+K nasazení image do vlastního kontejneru v App Service použijte `azure/webapps-container-deploy@v1` akci. Tato akce má pět parametrů:
 
-| **Parametr**  | **Vysvětlení**  |
+| **Ukazatele**  | **Vysvětlení**  |
 |---------|---------|
-| **název aplikace** | (Povinné) Název aplikace App Service | 
-| **název slotu** | (Nepovinné) Zadejte existující slot jiný než produkční slot |
-| **Obrázky** | (Povinné) Zadejte plně kvalifikovaný název image kontejneru. Například 'myregistry.azurecr.io/nginx:latest' nebo 'python:3.7.2-alpine/'. Pro aplikaci s více kontejnery lze poskytnout více názvů bitových obrázků kontejneru (víceřádkové oddělené) |
-| **konfigurační soubor** | (Nepovinné) Cesta souboru Docker-Compose. By měla být plně kvalifikovaná cesta nebo vzhledem k výchozímu pracovnímu adresáři. Vyžadováno pro aplikace s více kontejnery. |
-| **kontejner-příkaz** | (Nepovinné) Zadejte příkaz start-up. Pro ex. dotnet run nebo dotnet filename.dll |
+| **název aplikace** | Požadovanou Název aplikace App Service | 
+| **název slotu** | Volitelné Zadejte jinou existující patici, než je produkční slot. |
+| **fotografií** | Požadovanou Zadejte plně kvalifikované názvy imagí kontejneru. Například ' myregistry.azurecr.io/nginx:latest ' nebo ' Python: 3.7.2-Alpine/'. Pro aplikaci s více kontejnery je možné zadat více názvů imagí kontejneru (oddělené víceřádkově). |
+| **konfigurační soubor** | Volitelné Cesta k souboru Docker-skládání Musí být úplná cesta nebo relativní vzhledem k výchozímu pracovnímu adresáři. Vyžaduje se pro aplikace s více kontejnery. |
+| **kontejner – příkaz** | Volitelné Zadejte spouštěcí příkaz. Pro ex. příkaz dotnet Run nebo dotnet filename. dll |
 
-Níže je ukázkový pracovní postup pro sestavení a nasazení aplikace Node.js do vlastního kontejneru ve službě App Service.
+Níže je ukázkový pracovní postup pro sestavení a nasazení aplikace Node. js do vlastního kontejneru v App Service.
 
 ```yaml
 on: [push]
@@ -173,20 +173,20 @@ jobs:
 
 ## <a name="next-steps"></a>Další kroky
 
-Můžete najít naši sadu akcí seskupených do různých úložišť na GitHubu, z nichž každá obsahuje dokumentaci a příklady, které vám pomohou používat GitHub pro CI/CD a nasadit aplikace do Azure.
+Můžete najít naši sadu akcí seskupených do různých úložišť na GitHubu. Každá z nich obsahuje dokumentaci a příklady, které vám pomůžou používat GitHub pro CI/CD a nasazovat aplikace do Azure.
 
 - [Přihlášení k Azure](https://github.com/Azure/login)
 
-- [Azure WebApp](https://github.com/Azure/webapps-deploy)
+- [WebApp Azure](https://github.com/Azure/webapps-deploy)
 
 - [Azure WebApp pro kontejnery](https://github.com/Azure/webapps-container-deploy)
 
-- [Přihlášení/odhlášení dockeru](https://github.com/Azure/docker-login)
+- [Přihlášení nebo odhlášení Docker](https://github.com/Azure/docker-login)
 
-- [Události, které aktivují pracovní postupy](https://help.github.com/en/articles/events-that-trigger-workflows)
+- [Události, které spouštějí pracovní postupy](https://help.github.com/en/articles/events-that-trigger-workflows)
 
-- [K8s nasadit](https://github.com/Azure/k8s-deploy)
+- [Nasazení K8s](https://github.com/Azure/k8s-deploy)
 
-- [Počáteční pracovní postupy CI](https://github.com/actions/starter-workflows)
+- [Pracovní postupy počáteční CI](https://github.com/actions/starter-workflows)
 
-- [Počáteční pracovní postupy pro nasazení do Azure](https://github.com/Azure/actions-workflow-samples)
+- [Úvodní pracovní postupy pro nasazení do Azure](https://github.com/Azure/actions-workflow-samples)

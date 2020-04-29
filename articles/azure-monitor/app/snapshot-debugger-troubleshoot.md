@@ -1,57 +1,57 @@
 ---
-title: Poradce při potížích s ladicím programem pro přehledy přehledů aplikací Azure
-description: Tento článek představuje postupy řešení potíží a informace, které pomáhají vývojářům, kteří mají potíže s povolením nebo použitím ladicího programu snímek Application Insights.
+title: Řešení potíží s Azure Application Insights Snapshot Debugger
+description: Tento článek představuje postup řešení potíží a informace, které vývojářům pomůžou při povolování a používání Application Insights Snapshot Debugger.
 ms.topic: conceptual
 author: brahmnes
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 485f35ed249ab7f6bbb987d8c79afe20287cd25a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671405"
 ---
-# <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a>Poradce při potížích se povolením debakuaonu snímků přehledů aplikací nebo zobrazení snímků
-Pokud jste povolili Debugger snímků Application Insights pro vaši aplikaci, ale nezobrazují snímky pro výjimky, můžete použít tyto pokyny k řešení potíží. Může existovat mnoho různých důvodů, proč nejsou generovány snímky. Můžete spustit kontrolu stavu snímek k identifikaci některé z možných běžných příčin.
+# <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a>Řešení potíží s povolením Application Insights Snapshot Debugger nebo zobrazením snímků
+Pokud jste u své aplikace povolili Application Insights Snapshot Debugger, ale nevidíte snímky pro výjimky, můžete tyto pokyny použít k řešení potíží. Může existovat mnoho různých důvodů, proč se snímky negenerují. Můžete spustit kontrolu stavu snímku a identifikovat některé z možných běžných příčin.
 
-## <a name="use-the-snapshot-health-check"></a>Použití kontroly stavu snímku
-Několik běžných problémů za následek open ladění snímek nezobrazuje. Použití zastaralé snímek kolektoru, například; dosažení denního limitu pro nahrávání; nebo snad snímek je jen s dlouhou dobu nahrát. Pomocí kontroly stavu snímek řešení běžných problémů.
+## <a name="use-the-snapshot-health-check"></a>Použít kontrolu stavu snímku
+Výsledkem některých běžných problémů je, že se nezobrazují snímky otevření ladicího programu. Použití zastaralých Snapshot Collector například; dosáhnete denního limitu nahrávání; nebo možná budete muset snímek jenom prodloužit. K odstraňování běžných problémů použijte kontrolu stavu snímku.
 
-V podokně výjimek zobrazení trasování mezi koncovými kroky je odkaz, který vás přenese do kontroly stavu snímek.
+Existuje odkaz v podokně výjimky v rámci kompletního zobrazení trasování, které vás přesměruje na kontrolu stavu snímku.
 
 ![Zadat kontrolu stavu snímku](./media/snapshot-debugger/enter-snapshot-health-check.png)
 
-Interaktivní rozhraní podobné chatu hledá běžné problémy a vede vás k jejich opravě.
+Interaktivní rozhraní podobné chatu hledá běžné problémy a provede vás při jejich opravě.
 
-![Kontrola stavu](./media/snapshot-debugger/healthcheck.png)
+![Kontroly stavu](./media/snapshot-debugger/healthcheck.png)
 
-Pokud se tím problém nevyřeší, přečtěte si následující postup řešení potíží.
+Pokud se tím problém nevyřeší, přečtěte si následující postup ručního řešení potíží.
 
 ## <a name="verify-the-instrumentation-key"></a>Ověření klíče instrumentace
 
-Ujistěte se, že používáte správný klíč instrumentace v publikované aplikaci. Klíč instrumentace se obvykle čte ze souboru ApplicationInsights.config. Ověřte, zda je hodnota stejná jako klíč instrumentace pro prostředek Application Insights, který se zobrazí na portálu.
+Ujistěte se, že ve vaší publikované aplikaci používáte správný klíč instrumentace. Klíč instrumentace je obvykle načtený ze souboru ApplicationInsights. config. Ověřte, že hodnota je stejná jako klíč instrumentace pro prostředek Application Insights, který vidíte na portálu.
 
-## <a name="preview-versions-of-net-core"></a>Náhled verzí jádra .NET
-Pokud aplikace používá verzi náhledu .NET Core a debugger snímků byl povolen prostřednictvím [podokna Application Insights](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) na portálu, pak se debugger snímků nemusí spustit. Postupujte podle pokynů na [povolit snímek debugger pro jiná prostředí](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) nejprve zahrnout [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet balíček s aplikací ***kromě*** povolení prostřednictvím [podokna Application Insights](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json).
+## <a name="preview-versions-of-net-core"></a>Verze Preview rozhraní .NET Core
+Pokud aplikace používá verzi Preview rozhraní .NET Core a Snapshot Debugger byla povolena prostřednictvím [podokna Application Insights](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) na portálu, Snapshot Debugger pravděpodobně nebude možné spustit. Postupujte podle pokynů v části [povolit Snapshot debugger pro další prostředí](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) , abyste před povolením prostřednictvím [podokna Application Insights](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)zahrnuli ***také*** balíček NuGet [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) .
 
 
 ## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>Upgrade na nejnovější verzi balíčku NuGet
 
-Pokud byl ladicí program snímků povolen prostřednictvím [podokna Application Insights na portálu](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json), měla by vaše aplikace již spustit nejnovější balíček NuGet. Pokud byl ladicí program snímků povolen zahrnutím balíčku [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet, použijte Správce balíčků NuGet sady Visual Studio a ujistěte se, že používáte nejnovější verzi Microsoft.ApplicationInsights.SnapshotCollector. Poznámky k verzi naleznete na adresehttps://github.com/Microsoft/ApplicationInsights-Home/issues/167
+Pokud byla Snapshot Debugger povolena prostřednictvím [podokna Application Insights na portálu](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json), měla by již vaše aplikace používat nejnovější balíček NuGet. Pokud byla povolená Snapshot Debugger zahrnutím balíčku NuGet [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) , použijte Správce balíčků NuGet sady Visual Studio a ujistěte se, že používáte nejnovější verzi Microsoft. ApplicationInsights. SnapshotCollector. Poznámky k verzi najdete na adresehttps://github.com/Microsoft/ApplicationInsights-Home/issues/167
 
-## <a name="check-the-uploader-logs"></a>Zkontrolujte protokoly nahrávače
+## <a name="check-the-uploader-logs"></a>Podívejte se na protokoly odeslání.
 
-Po vytvoření snímku je na disku vytvořen soubor minidump (DMP). Samostatný proces nahrávání vytvoří tento soubor minidump a nahraje jej spolu se všemi přidruženými soubory PDB do úložiště debuggeru snímků application insights. Po úspěšném nahrání minidumpu se odstraní z disku. Soubory protokolu pro proces nahrávání jsou uloženy na disku. V prostředí služby App Service najdete `D:\Home\LogFiles`tyto protokoly v . Pomocí webu správy Kudu pro službu App Service vyhledání těchto souborů protokolu.
+Po vytvoření snímku se na disku vytvoří soubor s minimálním výpisem (. dmp). Samostatný proces odeslání vytvoří soubor s minimálním výpisem a nahraje ho společně s případnými přidruženými soubory PDB pro Application Insights úložiště Snapshot Debugger. Po úspěšném nahrání s minimálním výpisem se z disku odstraní. Soubory protokolu procesu odeslání jsou uchovávány na disku. V prostředí App Service můžete tyto protokoly najít v `D:\Home\LogFiles`. K vyhledání těchto souborů protokolu použijte web pro správu Kudu pro App Service.
 
-1. Otevřete aplikaci App Service na webu Azure Portal.
-2. Klepněte na **položku Upřesnit nástroje**nebo vyhledejte **položku Kudu**.
-3. Klepněte na tlačítko **Přejít**.
-4. V rozevíracím seznamu **Ladicí konzola** vyberte **cmd**.
-5. Klepněte na **položku LogFiles**.
+1. Otevřete aplikaci App Service v Azure Portal.
+2. Klikněte na **Rozšířené nástroje**nebo vyhledejte **Kudu**.
+3. Klikněte na **Přejít**.
+4. V rozevíracím seznamu **Konzola ladění** vyberte **cmd**.
+5. Klikněte na **soubory protokolu**.
 
-Měli byste vidět alespoň jeden soubor s `Uploader_` názvem, který začíná nebo `SnapshotUploader_` a příponou. `.log` Kliknutím na příslušnou ikonu stáhnete soubory protokolu nebo je otevřete v prohlížeči.
-Název souboru obsahuje jedinečnou příponu, která identifikuje instanci služby App Service. Pokud je vaše instance služby App Service hostovaná na více než jednom počítači, existují pro každý počítač samostatné soubory protokolu. Když nahrávač zjistí nový soubor minidump, zaznamená se do souboru protokolu. Zde je příklad úspěšného snímku a nahrání:
+Měl by se zobrazit aspoň jeden soubor s názvem, který začíná `Uploader_` nebo `SnapshotUploader_` a `.log` příponou. Kliknutím na příslušnou ikonu stáhnete všechny soubory protokolu nebo je otevřete v prohlížeči.
+Název souboru obsahuje jedinečnou příponu, která identifikuje instanci App Service. Pokud je vaše instance App Service hostovaná na více než jednom počítači, pro každý počítač jsou k dispozici samostatné soubory protokolů. Když odeslání zjistí nový soubor s minimálním výpisem, je zaznamenán v souboru protokolu. Tady je příklad úspěšného snímku a nahrání:
 
 ```
 SnapshotUploader.exe Information: 0 : Received Fork request ID 139e411a23934dc0b9ea08a626db16c5 from process 6368 (Low pri)
@@ -79,12 +79,12 @@ SnapshotUploader.exe Information: 0 : Deleted D:\local\Temp\Dumps\c12a605e73c443
 ```
 
 > [!NOTE]
-> Výše uvedený příklad je z verze 1.2.0 balíčku Microsoft.ApplicationInsights.SnapshotCollector NuGet. V dřívějších verzích je volána `MinidumpUploader.exe` proces nahrávání a protokol je méně podrobné.
+> Výše uvedený příklad je z verze 1.2.0 balíčku NuGet Microsoft. ApplicationInsights. SnapshotCollector. V dřívějších verzích se volá `MinidumpUploader.exe` proces odeslání a protokol je méně podrobný.
 
-V předchozím příkladu je `c12a605e73c44346a984e00000000000`klíč instrumentace . Tato hodnota by měla odpovídat klíč instrumentace pro vaši aplikaci.
-Minidump je spojena s snímek `139e411a23934dc0b9ea08a626db16c5`s ID . Toto ID můžete později použít k vyhledání související telemetrie výjimek v Application Insights Analytics.
+V předchozím příkladu je `c12a605e73c44346a984e00000000000`klíč instrumentace. Tato hodnota by měla odpovídat klíči instrumentace vaší aplikace.
+S minimálním výpisem je přidružen ke snímku s ID `139e411a23934dc0b9ea08a626db16c5`. Toto ID můžete později použít k vyhledání přidružené telemetrie výjimky v Application Insights Analytics.
 
-Nahrávač skenuje nové PDBs asi jednou za 15 minut. Tady je příklad:
+Odeslání nových soubory PDB vyhledá nové každých 15 minut. Tady je příklad:
 
 ```
 SnapshotUploader.exe Information: 0 : PDB rescan requested.
@@ -97,24 +97,24 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
     DateTime=2018-03-09T01:47:19.4614027Z
 ```
 
-Pro aplikace, které _nejsou_ hostované ve službě App Service, protokoly nahrále `%TEMP%\Dumps\<ikey>` e-potomka jsou ve stejné složce jako minidumps: (kde `<ikey>` je váš instrumentační klíč).
+V případě aplikací, které _nejsou_ hostované v App Service, jsou protokoly odeslání ve stejné složce jako mini výpisy: `%TEMP%\Dumps\<ikey>` (kde `<ikey>` je váš klíč instrumentace).
 
-## <a name="troubleshooting-cloud-services"></a>Poradce při potížích s cloudovými službami
-Pro role v cloudových službách může být výchozí dočasná složka příliš malá pro uložení souborů minidump, což vede ke ztrátě snímků.
-Potřebné místo závisí na celkové pracovní sady aplikace a počet souběžných snímků.
-Pracovní sada 32bitové ASP.NET webové role je obvykle mezi 200 MB a 500 MB.
-Povolit alespoň dva souběžné snímky.
-Například pokud vaše aplikace používá 1 GB celkové pracovní sady, měli byste se ujistit, že je alespoň 2 GB místa na disku pro ukládání snímků.
-Následujícím postupem nakonfigurujte roli cloudové služby pomocí vyhrazeného místního prostředku pro snímky.
+## <a name="troubleshooting-cloud-services"></a>Řešení potíží s Cloud Services
+Pro role v Cloud Services může být výchozí dočasná složka příliš malá, aby mohla uchovávat soubory s minimálním výpisem, což vede ke ztrátě snímků.
+Požadované místo závisí na celkové pracovní sadě vaší aplikace a na počtu souběžných snímků.
+Pracovní sada ASP.NET webové role 32 je obvykle mezi 200 MB a 500 MB.
+Povolte aspoň dva souběžné snímky.
+Pokud například vaše aplikace používá 1 GB z celkové pracovní sady, měli byste se ujistit, že je k ukládání snímků k dispozici alespoň 2 GB místa na disku.
+Pomocí těchto kroků můžete nakonfigurovat roli cloudové služby s vyhrazeným místním prostředkem pro snímky.
 
-1. Přidejte do cloudové služby nový místní prostředek úpravou souboru definice cloudové služby (.csdef). Následující příklad definuje prostředek `SnapshotStore` s názvem s velikostí 5 GB.
+1. Úpravou souboru definice cloudové služby (. csdef) přidejte do cloudové služby nový místní prostředek. V následujícím příkladu je definován prostředek s `SnapshotStore` názvem o velikosti 5 GB.
    ```xml
    <LocalResources>
      <LocalStorage name="SnapshotStore" cleanOnRoleRecycle="false" sizeInMB="5120" />
    </LocalResources>
    ```
 
-2. Upravte spouštěcí kód role a přidejte proměnnou `SnapshotStore` prostředí, která odkazuje na místní prostředek. Pro role pracovního procesu by měl `OnStart` být kód přidán do metody vaší role:
+2. Úpravou spouštěcího kódu role přidejte proměnnou prostředí, která odkazuje na `SnapshotStore` místní prostředek. Pro role pracovního procesu by se kód měl přidat do `OnStart` metody vaší role:
    ```csharp
    public override bool OnStart()
    {
@@ -122,7 +122,7 @@ Následujícím postupem nakonfigurujte roli cloudové služby pomocí vyhrazen�
        return base.OnStart();
    }
    ```
-   Pro webové role (ASP.NET) by měl být kód `Application_Start` přidán do metody webové aplikace:
+   V případě webových rolí (ASP.NET) by se měl kód přidat do `Application_Start` metody vaší webové aplikace:
    ```csharp
    using Microsoft.WindowsAzure.ServiceRuntime;
    using System;
@@ -140,7 +140,7 @@ Následujícím postupem nakonfigurujte roli cloudové služby pomocí vyhrazen�
    }
    ```
 
-3. Aktualizace souboru ApplicationInsights.config vaší role za účelem přepsání dočasného umístění složky používaného`SnapshotCollector`
+3. Aktualizujte soubor ApplicationInsights. config vaší role, abyste přepsali dočasné umístění složky používané nástrojem.`SnapshotCollector`
    ```xml
    <TelemetryProcessors>
     <Add Type="Microsoft.ApplicationInsights.SnapshotCollector.SnapshotCollectorTelemetryProcessor, Microsoft.ApplicationInsights.SnapshotCollector">
@@ -151,25 +151,25 @@ Následujícím postupem nakonfigurujte roli cloudové služby pomocí vyhrazen�
    </TelemetryProcessors>
    ```
 
-## <a name="overriding-the-shadow-copy-folder"></a>Přepsání složky Stínová kopie
+## <a name="overriding-the-shadow-copy-folder"></a>Přepsání složky stínové kopie
 
-Při spuštění snímek kolektoru se pokusí najít složku na disku, který je vhodný pro spuštění procesu snímek uploader. Vybraná složka se označuje jako složka Stínová kopie.
+Po spuštění Snapshot Collector se pokusí najít složku na disku, která je vhodná pro spuštění procesu odeslání snímku. Vybraná složka je známá jako složka stínové kopie.
 
-Kolekce snímků zkontroluje několik známých umístění a ujistěte se, že má oprávnění ke kopírování binárních souborů nahraný snímek. Používají se následující proměnné prostředí:
+Snapshot Collector kontroluje několik známých umístění a zajišťuje tak, že má oprávnění ke kopírování binárních souborů nástroje pro odeslání snímků. Používají se následující proměnné prostředí:
 - Fabric_Folder_App_Temp
-- MÍSTNÍ APPDATA
-- Appdata
-- Temp
+- LOCALAPPDATA
+- APLIKACÍ
+- NÁZVEM
 
-Pokud nelze najít vhodnou složku, kolektor snímků hlásí chybu s _nápisem "Nelze najít vhodnou složku stínové kopie"_
+Pokud se vhodná složka nenajde, Snapshot Collector nahlásí chybu oznamující, že _se nepovedlo najít vhodnou složku stínové kopie._
 
-Pokud se kopie nezdaří, `ShadowCopyFailed` kolektor snímků hlásí chybu.
+Pokud se kopie nezdařila, Snapshot Collector `ShadowCopyFailed` hlásí chybu.
 
-Pokud nahrál e-mail nelze spustit, `UploaderCannotStartFromShadowCopy` sběratel snímků hlásí chybu. Text zprávy často obsahuje `System.UnauthorizedAccessException`. K této chybě obvykle dochází, protože aplikace je spuštěna pod účtem se sníženými oprávněními. Účet má oprávnění k zápisu do složky stínové kopie, ale nemá oprávnění ke spuštění kódu.
+Pokud nelze spustit odeslání, Snapshot Collector hlásí `UploaderCannotStartFromShadowCopy` chybu. Text zprávy obsahuje `System.UnauthorizedAccessException`často. K této chybě obvykle dochází, protože aplikace běží pod účtem s omezenými oprávněními. Účet má oprávnění k zápisu do složky stínové kopie, ale nemá oprávnění ke spouštění kódu.
 
-Vzhledem k tomu, že k těmto chybám `ExceptionDuringConnect` obvykle dochází při spuštění, obvykle je bude následovat chyba s nápisem _"Uploader se nepodařilo spustit"._
+Vzhledem k tomu, že k těmto chybám obvykle dochází při spuštění, obvykle `ExceptionDuringConnect` se jedná o chybu oznamující, že _se nepovedlo spustit odeslání._
 
-Chcete-li tyto chyby obejít, můžete složku `ShadowCopyFolder` stínové kopie zadat ručně pomocí možnosti konfigurace. Například pomocí ApplicationInsights.config:
+Pokud chcete tyto chyby vyřešit, můžete ručně zadat složku stínové kopie pomocí možnosti `ShadowCopyFolder` konfigurace. Například pomocí ApplicationInsights. config:
 
    ```xml
    <TelemetryProcessors>
@@ -181,7 +181,7 @@ Chcete-li tyto chyby obejít, můžete složku `ShadowCopyFolder` stínové kopi
    </TelemetryProcessors>
    ```
 
-Nebo pokud používáte appsettings.json s aplikací .NET Core:
+Nebo, pokud používáte appSettings. JSON s aplikací .NET Core:
 
    ```json
    {
@@ -194,26 +194,26 @@ Nebo pokud používáte appsettings.json s aplikací .NET Core:
    }
    ```
 
-## <a name="use-application-insights-search-to-find-exceptions-with-snapshots"></a>Použití hledání Přehledů aplikací k vyhledání výjimek se snímky
+## <a name="use-application-insights-search-to-find-exceptions-with-snapshots"></a>Použití hledání Application Insights k nalezení výjimek s snímky
 
-Při vytvoření snímku je výjimka vyvolání označena ID snímku. Toto ID snímku je zahrnuta jako vlastní vlastnost, když telemetrie výjimky je hlášena application insights. Pomocí **hledání** v Application Insights, můžete najít `ai.snapshot.id` všechny telemetrie s vlastní vlastnost.
+Při vytvoření snímku je tato výjimka označena ID snímku. Toto ID snímku je zahrnuté jako vlastní vlastnost, když je v telemetrie výjimky hlášena Application Insights. Pomocí **vyhledávání** v Application Insights můžete najít veškerou telemetrii s `ai.snapshot.id` vlastní vlastností.
 
-1. Přejděte k prostředku Application Insights na webu Azure Portal.
+1. V Azure Portal přejděte k prostředku Application Insights.
 2. Klikněte na **Vyhledat**.
-3. Zadejte `ai.snapshot.id` textové pole Hledat a stiskněte Enter.
+3. Do `ai.snapshot.id` textového pole hledání zadejte a stiskněte klávesu ENTER.
 
 ![Hledání telemetrie s ID snímku na portálu](./media/snapshot-debugger/search-snapshot-portal.png)
 
-Pokud toto hledání vrátí žádné výsledky, pak žádné snímky byly hlášeny Application Insights pro vaši aplikaci ve vybraném časovém rozsahu.
+Pokud toto hledání nevrátí žádné výsledky, nenahlásily se pro vaši aplikaci Application Insights žádné snímky ve vybraném časovém rozsahu.
 
-Chcete-li vyhledat konkrétní ID snímku z protokolů uploaderu, zadejte toto ID do pole Hledat. Pokud nemůžete najít telemetrii pro snímek, o kterém víte, že byl nahrán, postupujte takto:
+Pokud chcete v protokolech odeslání vyhledat konkrétní ID snímku, zadejte toto ID do vyhledávacího pole. Pokud nemůžete najít telemetrii pro snímek, který víte, že jste nahráli, postupujte takto:
 
-1. Zkontrolujte, zda se díváte na správný prostředek Application Insights ověřením klíče instrumentace.
+1. Ověřte, že se díváte na správný Application Insights prostředek tím, že ověříte klíč instrumentace.
 
-2. Pomocí časového razítka z protokolu Uploader upravte filtr časového rozsahu hledání tak, aby pokrýval tento časový rozsah.
+2. Pomocí časového razítka z protokolu odeslání upravte filtr časového rozsahu hledání tak, aby pokryl tento časový rozsah.
 
-Pokud stále nevidíte výjimku s tímto ID snímku, pak telemetrie výjimky nebyla hlášena application insights. Tato situace může dojít, pokud vaše aplikace havaroval po pořízení snímku, ale před ohlášením telemetrie výjimky. V takovém případě zkontrolujte protokoly `Diagnose and solve problems` služby App Service pod a zjistěte, zda došlo k neočekávané restartování nebo neošetřené výjimky.
+Pokud stále nevidíte výjimku s tímto ID snímku, telemetrie výjimek nebyla nahlášena Application Insights. K této situaci může dojít, pokud dojde k chybě vaší aplikace po pořízení snímku, ale před tím, než nahlásila telemetrii výjimek. V takovém případě zkontrolujte protokoly App Service v části `Diagnose and solve problems` a zjistěte, jestli nedošlo k neočekávanému restartování nebo neošetřeným výjimkám.
 
-## <a name="edit-network-proxy-or-firewall-rules"></a>Úprava pravidel síťového serveru proxy nebo brány firewall
+## <a name="edit-network-proxy-or-firewall-rules"></a>Upravit síťová proxy nebo pravidla brány firewall
 
-Pokud se vaše aplikace připojuje k Internetu prostřednictvím serveru proxy nebo brány firewall, bude pravděpodobně nutné upravit pravidla, která aplikaci umožní komunikovat se službou Ladicí program snímků. IP adresy používané ladicí program snímek jsou zahrnuty v značku služby Azure Monitor.
+Pokud se vaše aplikace připojuje k Internetu prostřednictvím proxy serveru nebo brány firewall, možná budete muset upravit pravidla, aby aplikace mohla komunikovat se službou Snapshot Debugger. IP adresy, které používá Snapshot Debugger, jsou součástí značky služby Azure Monitor.
