@@ -1,62 +1,62 @@
 ---
 title: Zásady správného řízení prostředků pro kontejnery a služby
-description: Azure Service Fabric umožňuje určit omezení prostředků pro služby spuštěné uvnitř nebo vně kontejnerů.
+description: Azure Service Fabric umožňuje zadat omezení prostředků pro služby běžící uvnitř nebo vně kontejnerů.
 ms.topic: conceptual
 ms.date: 8/9/2017
 ms.openlocfilehash: 11ca6e29829d911717a829b3e4dee0a190856a52
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81115147"
 ---
 # <a name="resource-governance"></a>Zásady správného řízení prostředků
 
-Pokud používáte více služeb na stejném uzlu nebo clusteru, je možné, že jedna služba může spotřebovat více prostředků, hladovějící chutnající chutnou další služby v procesu. Tento problém se označuje jako "hlučný soused" problém. Azure Service Fabric umožňuje vývojáři zadat rezervace a omezení na službu zaručit prostředky a omezit využití prostředků.
+Pokud spouštíte více služeb na stejném uzlu nebo clusteru, je možné, že jedna služba může spotřebovat víc prostředků, omezují se v procesu další služby. Tento problém se označuje jako problém s "vysokou úrovní souseda". Azure Service Fabric umožňuje vývojářům určit rezervace a omezení pro službu za účelem zajištění prostředků a omezení využití prostředků.
 
-> Než budete pokračovat v tomto článku, doporučujeme seznámit se s [modelem aplikace Service Fabric](service-fabric-application-model.md) a [model hostování Service Fabric](service-fabric-hosting-model.md).
+> Než budete pokračovat v tomto článku, doporučujeme vám seznámit se s [Service Fabric aplikačním modelem](service-fabric-application-model.md) a [modelem Service Fabric hostování](service-fabric-hosting-model.md).
 >
 
-## <a name="resource-governance-metrics"></a>Metriky zásad správného řízení zdrojů
+## <a name="resource-governance-metrics"></a>Metriky zásad správného řízení prostředků
 
-Zásady správného řízení prostředků je podporována v Service Fabric v souladu s [balíčkem služeb](service-fabric-application-model.md). Prostředky, které jsou přiřazeny k balíčku služeb lze dále rozdělit mezi balíčky kódu. Zadaná omezení prostředků také znamenají rezervaci prostředků. Service Fabric podporuje určení procesoru a paměti na balíček [služby,](service-fabric-cluster-resource-manager-metrics.md)se dvěma vestavěné metriky :
+Zásady správného řízení prostředků jsou podporované v Service Fabric v souladu s [balíčkem služby](service-fabric-application-model.md). Prostředky, které jsou přiřazeny k balíčku služby, mohou být dále rozděleny mezi balíčky kódu. Zadaná omezení prostředků také znamenají rezervaci prostředků. Service Fabric podporuje určení procesoru a paměti na balíček služby se dvěma integrovanými [metrikami](service-fabric-cluster-resource-manager-metrics.md):
 
-* *CPU* (název `servicefabric:/_CpuCores`metriky): Logické jádro, které je k dispozici v hostitelském počítači. Všechna jádra ve všech uzlech jsou vážena stejně.
+* *CPU* (název `servicefabric:/_CpuCores`metriky): Logická jádra, která je k dispozici na hostitelském počítači. Všechny jádra ve všech uzlech jsou vážená na stejnou.
 
-* *Paměť* (název `servicefabric:/_MemoryInMB`metriky): Paměť je vyjádřena v megabajtech a mapuje se na fyzickou paměť, která je k dispozici v počítači.
+* *Paměť* (název `servicefabric:/_MemoryInMB`metriky): paměť je vyjádřena v megabajtech a je namapována na fyzickou paměť, která je k dispozici v počítači.
 
-Pro tyto dvě metriky [Správce prostředků clusteru](service-fabric-cluster-resource-manager-cluster-description.md) sleduje celkovou kapacitu clusteru, zatížení každého uzlu v clusteru a zbývající prostředky v clusteru. Tyto dvě metriky jsou ekvivalentní jakékoli jiné uživatele nebo vlastní metriky. S nimi lze použít všechny stávající funkce:
+Pro tyto dvě metriky [cluster správce prostředků](service-fabric-cluster-resource-manager-cluster-description.md) sleduje celkovou kapacitu clusteru, zatížení každého uzlu v clusteru a zbývající prostředky v clusteru. Tyto dvě metriky jsou ekvivalentní libovolné jiné uživateli nebo vlastní metriky. U těchto funkcí se dají použít všechny existující funkce:
 
-* Cluster lze [vyvážit](service-fabric-cluster-resource-manager-balancing.md) podle těchto dvou metrik (výchozí chování).
-* Cluster lze [defragmentovat](service-fabric-cluster-resource-manager-defragmentation-metrics.md) podle těchto dvou metrik.
-* Při [popisu clusteru](service-fabric-cluster-resource-manager-cluster-description.md)lze pro tyto dvě metriky nastavit kapacitu ve vyrovnávací paměti.
+* Cluster může být [vyvážený](service-fabric-cluster-resource-manager-balancing.md) podle těchto dvou metrik (výchozí chování).
+* Cluster se dá [defragmentovat](service-fabric-cluster-resource-manager-defragmentation-metrics.md) podle těchto dvou metrik.
+* Při [popisu clusteru](service-fabric-cluster-resource-manager-cluster-description.md)je možné nastavit kapacitu vyrovnávací paměti pro tyto dvě metriky.
 
 > [!NOTE]
-> [Dynamické vykazování zatížení](service-fabric-cluster-resource-manager-metrics.md) není pro tyto metriky podporováno. zatížení pro tyto metriky jsou definovány v době vytvoření.
+> [Generování sestav dynamického načtení](service-fabric-cluster-resource-manager-metrics.md) není pro tyto metriky podporováno. zatížení těchto metrik je definováno při vytvoření.
 
-## <a name="resource-governance-mechanism"></a>Mechanismus řízení zdrojů
+## <a name="resource-governance-mechanism"></a>Mechanismus řízení prostředků
 
-Service Fabric runtime aktuálně neposkytuje rezervace pro prostředky. Při otevření procesu nebo kontejneru nastaví runtime omezení prostředků na zatížení, která byla definována v době vytvoření. Kromě toho runtime odmítne otevření nové balíčky služeb, které jsou k dispozici při překročení prostředků. Chcete-li lépe pochopit, jak proces funguje, vezměme si příklad uzlu se dvěma jádry procesoru (mechanismus pro zásady správného řízení paměti je ekvivalentní):
+Modul runtime Service Fabric v současné době neposkytuje rezervaci pro prostředky. Při otevření procesu nebo kontejneru nastaví modul runtime omezení prostředků na zátěže, která byla definována během vytváření. Kromě toho modul runtime odmítne otevírání nových balíčků služby, které jsou k dispozici, když dojde k překročení prostředků. Abychom lépe porozuměli tomu, jak proces funguje, Podívejme se na příklad uzlu se dvěma jádry procesoru (mechanismus řízení paměti je ekvivalentní):
 
-1. Nejprve je kontejner umístěn na uzlu a požaduje jedno jádro procesoru. Runtime otevře kontejner a nastaví limit procesoru na jedno jádro. Kontejner nebude moci použít více než jedno jádro.
+1. Nejdřív se kontejner umístí na uzel, který vyžaduje jeden procesor. Modul runtime otevře kontejner a nastaví limit procesoru na jeden Core. Kontejner nebude moci používat více než jedno jádro.
 
-2. Potom je replika služby umístěna na uzlu a odpovídající balíček služby určuje limit jednoho jádra procesoru. Runtime otevře balíček kódu a nastaví jeho limit procesoru na jedno jádro.
+2. Poté se na uzel umístí replika služby a odpovídající balíček služby určí limit jednoho jádra procesoru. Modul runtime otevře balíček kódu a nastaví jeho limit pro procesor na jednu jádro.
 
-V tomto okamžiku se součet limitů rovná kapacitě uzlu. Proces a kontejner jsou spuštěny s jedním jádrem každý a není vzájemně zasahovat. Service Fabric neumístí žádné další kontejnery nebo repliky, když určují limit procesoru.
+V tomto okamžiku součet omezení se rovná kapacitě uzlu. Proces a kontejner jsou spuštěné s jedním jádrem a vzájemně nekolidují. Service Fabric neobsahují žádné další kontejnery ani repliky, když zadávají limit procesoru.
 
-Existují však dvě situace, ve kterých jiné procesy mohou bojovat o procesor. V těchto situacích proces a kontejner z našeho příkladu může dojít k problému s hlučným sousedem:
+Existují však dvě situace, kdy mohou být pro procesor soupeří jiné procesy. V takových situacích se může stát, že proces a kontejner z našeho příkladu nastanou problém s sousedním směrovačem v hlučnosti:
 
-* *Míchání řízené a neřízené služby a kontejnery*: Pokud uživatel vytvoří službu bez jakékoli zásady správného řízení prostředků, runtime vidí jako náročné žádné prostředky a můžete umístit na uzlu v našem příkladu. V tomto případě tento nový proces efektivně spotřebovává některé procesoru na úkor služeb, které jsou již spuštěny na uzlu. Existují dvě řešení tohoto problému. Buď nekombinujte řízené a neřízené služby ve stejném clusteru, nebo použijte [omezení umístění,](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) aby tyto dva typy služeb neskončily na stejné sadě uzlů.
+* *Kombinování řízených a neřízených služeb a kontejnerů*: Pokud uživatel vytvoří službu bez zadaného zásad správného řízení prostředků, modul runtime ji uvidí, že nespotřebovává žádné prostředky, a může je umístit na uzel v našem příkladu. V tomto případě tento nový proces efektivně spotřebovává určitý procesor na úkor služeb, které jsou již spuštěny na uzlu. Existují dvě řešení tohoto problému. Buď nemíchejte řízení a neřídící služby ve stejném clusteru, nebo použijte [omezení umístění](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) , aby tyto dva typy služeb neukončily stejnou sadu uzlů.
 
-* *Při spuštění jiného procesu na uzlu, mimo Service Fabric (například služba operačního systému)*: V této situaci proces mimo Service Fabric také tvrdí, procesor u existujících služeb. Řešením tohoto problému je správně nastavit kapacity uzlů, aby se zohlednila režie operačního prostoru, jak je znázorněno v další části.
+* *Když je na uzlu spuštěný jiný proces, mimo Service Fabric (například pro službu operačního systému)*: v této situaci se proces mimo Service Fabric taky zamýšlí pro procesor s existujícími službami. Řešením tohoto problému je správné nastavení kapacity uzlů pro účet pro režijní náklady na operační systém, jak je znázorněno v další části.
 
 ## <a name="cluster-setup-for-enabling-resource-governance"></a>Nastavení clusteru pro povolení zásad správného řízení prostředků
 
-Když uzel spustí a připojí clusteru, Service Fabric zjistí dostupné množství paměti a dostupný počet jader a potom nastaví kapacity uzlů pro tyto dva prostředky.
+Když se uzel spustí a připojí ke clusteru, Service Fabric zjistí dostupné množství paměti a dostupný počet jader a pak nastaví kapacity uzlů pro tyto dva prostředky.
 
-Chcete-li ponechat vyrovnávací paměti pro operační systém a pro jiné procesy může být spuštěna na uzlu, Service Fabric používá pouze 80 % dostupných prostředků v uzlu. Toto procento je konfigurovatelné a lze jej změnit v manifestu clusteru.
+Pro opuštění prostoru vyrovnávací paměti pro operační systém a pro jiné procesy může na uzlu běžet Service Fabric používá pouze 80% dostupných prostředků na uzlu. Toto procento je konfigurovatelné a v manifestu clusteru je možné ho změnit.
 
-Zde je příklad, jak dát pokyn Service Fabric používat 50 % dostupného procesoru a 70 % dostupné paměti:
+Tady je příklad, jak dát Service Fabric k použití 50% dostupného procesoru a 70% dostupné paměti:
 
 ```xml
 <Section Name="PlacementAndLoadBalancing">
@@ -66,7 +66,7 @@ Zde je příklad, jak dát pokyn Service Fabric používat 50 % dostupného proc
 </Section>
 ```
 
-Pro většinu zákazníků a scénářů je automatická detekce kapacit uzlů pro procesor a paměť doporučená konfigurace (automatická detekce je ve výchozím nastavení zapnutá). Pokud však potřebujete úplné ruční nastavení kapacit uzlů, můžete je nakonfigurovat na typ uzlu pomocí mechanismu pro popis uzlů v clusteru. Zde je příklad nastavení typu uzlu se čtyřmi jádry a 2 GB paměti:
+Pro většinu zákazníků a scénářů se jako doporučená konfigurace používá automatické zjišťování kapacit uzlů pro procesor a paměť (ve výchozím nastavení je automatické zjišťování zapnuté). Pokud ale potřebujete úplnou ruční instalaci kapacit uzlů, můžete je nakonfigurovat podle typu uzlu pomocí mechanismu pro popis uzlů v clusteru. Tady je příklad, jak nastavit typ uzlu se čtyřmi jádry a 2 GB paměti:
 
 ```xml
     <NodeType Name="MyNodeType">
@@ -77,13 +77,13 @@ Pro většinu zákazníků a scénářů je automatická detekce kapacit uzlů p
     </NodeType>
 ```
 
-Pokud je povoleno automatické zjišťování dostupných prostředků a kapacity uzlů jsou ručně definovány v manifestu clusteru, service fabric zkontroluje, zda uzel má dostatek prostředků pro podporu kapacity, kterou uživatel definoval:
+Když je povolená Automatická detekce dostupných prostředků a kapacity uzlů se v manifestu clusteru definují ručně, Service Fabric zkontroluje, jestli má uzel dostatek prostředků pro podporu kapacity, kterou uživatel definoval:
 
-* Pokud jsou kapacity uzlů, které jsou definovány v manifestu, menší nebo rovny dostupným prostředkům v uzlu, pak Service Fabric používá kapacity, které jsou zadány v manifestu.
+* Pokud jsou kapacity uzlů, které jsou definovány v manifestu, menší nebo rovny dostupným prostředkům v uzlu, Service Fabric používá kapacity, které jsou uvedeny v manifestu.
 
-* Pokud jsou kapacity uzlů, které jsou definovány v manifestu, větší než dostupné prostředky, service fabric používá dostupné prostředky jako kapacity uzlů.
+* Pokud jsou kapacity uzlů, které jsou definovány v manifestu, větší než dostupné prostředky, Service Fabric používá dostupné prostředky jako kapacity uzlů.
 
-Automatické zjišťování dostupných prostředků lze vypnout, pokud není vyžadováno. Chcete-li jej vypnout, změňte následující nastavení:
+Automatické zjišťování dostupných prostředků může být vypnuto, pokud není vyžadováno. Pokud ho chcete vypnout, změňte následující nastavení:
 
 ```xml
 <Section Name="PlacementAndLoadBalancing">
@@ -91,7 +91,7 @@ Automatické zjišťování dostupných prostředků lze vypnout, pokud není vy
 </Section>
 ```
 
-Pro optimální výkon by mělo být v manifestu clusteru také zapnuto následující nastavení:
+Pro zajištění optimálního výkonu byste měli v manifestu clusteru zapnout taky následující nastavení:
 
 ```xml
 <Section Name="PlacementAndLoadBalancing">
@@ -101,20 +101,20 @@ Pro optimální výkon by mělo být v manifestu clusteru také zapnuto následu
 ```
 
 > [!IMPORTANT]
-> Počínaje Service Fabric verze 7.0 jsme aktualizovali pravidlo pro způsob výpočtu kapacit prostředků uzlu v případech, kdy uživatel ručně poskytuje hodnoty pro kapacity prostředků uzlu. Podívejme se na následující scénář:
+> Počínaje Service Fabric verze 7,0 jsme aktualizovali pravidlo, jak se počítají kapacity prostředků uzlu v případech, kdy uživatel ručně poskytuje hodnoty pro kapacitu prostředků uzlu. Pojďme vzít v úvahu následující scénář:
 >
-> * Na uzlu je celkem 10 jader procesoru
-> * SF je nakonfigurován tak, aby používal 80 % celkových prostředků pro uživatelské služby (výchozí nastavení), což ponechává vyrovnávací paměť 20 % pro ostatní služby spuštěné na uzlu (včetně systémových služeb Service Fabric).
-> * Uživatel se rozhodne ručně přepsat kapacitu prostředků uzlu pro metriku jader procesoru a nastaví ji na 5 jader.
+> * Na uzlu je celkem 10 jader procesoru.
+> * Hodnota SF je nakonfigurovaná tak, aby používala 80% celkových prostředků pro služby uživatelů (výchozí nastavení), což ponechá vyrovnávací paměť 20% pro ostatní služby běžící na uzlu (včetně systémových služeb Service Fabric).
+> * Uživatel rozhodne ručně přepsat kapacitu prostředků uzlu pro metriku jader procesoru a nastaví ji na 5 jader.
 >
-> Změnili jsme pravidlo o tom, jak se počítá dostupná kapacita pro uživatelské služby Service Fabric následujícím způsobem:
+> Změnili jsme pravidlo způsobu výpočtu dostupné kapacity pro Service Fabric uživatelských služeb následujícím způsobem:
 >
-> * Před service fabric 7.0, dostupná kapacita pro uživatelské služby by být vypočtena na **5 jader** (kapacita vyrovnávací paměti 20 % je ignorována)
-> * Počínaje Service Fabric 7.0, dostupná kapacita pro uživatelské služby by se vypočítala na **4 jádra** (vyrovnávací paměť kapacity 20% není ignorována)
+> * Před Service Fabric 7,0 bude dostupná kapacita pro uživatelské služby vypočítaná na **5 jader** (vyrovnávací paměť kapacity 20% se ignoruje).
+> * Počínaje Service Fabric 7,0 budou dostupné kapacity pro uživatelské služby vypočítány na **4 jádra** (vyrovnávací paměť kapacity 20% se Neignoruje).
 
-## <a name="specify-resource-governance"></a>Určení zásad správného řízení zdrojů
+## <a name="specify-resource-governance"></a>Zadat zásady správného řízení prostředků
 
-Omezení zásad správného řízení prostředků jsou určena v manifestu aplikace (ServiceManifestImport části), jak je znázorněno v následujícím příkladu:
+Omezení zásad správného řízení prostředků jsou uvedena v manifestu aplikace (oddíl ServiceManifestImport), jak je znázorněno v následujícím příkladu:
 
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
@@ -135,15 +135,15 @@ Omezení zásad správného řízení prostředků jsou určena v manifestu apli
   </ServiceManifestImport>
 ```
 
-V tomto příkladu balíček služby s názvem **ServicePackageA** získá jedno jádro na uzlech, kde je umístěn. Tento balíček služeb obsahuje dva balíčky kódu (**CodeA1** a **CodeA2**) a oba určují `CpuShares` parametr. Podíl CpuShares 512:256 rozděluje jádro mezi dva balíčky kódu.
+V tomto příkladu balíček služby s názvem **ServicePackageA** získá jeden základní uzel na uzlech, kde je umístěn. Tento balíček služby obsahuje dva balíčky kódu (**CodeA1** a **CodeA2**) a oba určují `CpuShares` parametr. Podíl CpuShares 512:256 vydělí jádro napříč dvěma balíčky kódu.
 
-Proto v tomto příkladu CodeA1 získá dvě třetiny jádra a CodeA2 získá jednu třetinu jádra (a rezervace měkké záruky stejné). Pokud CpuShares nejsou určeny pro balíčky kódu, Service Fabric rozdělí jádra rovnoměrně mezi nimi.
+Proto v tomto příkladu CodeA1 získá dvě třetiny základního typu a CodeA2 získá jednu třetinu jádra (a rezervaci se zárukou). Pokud nejsou zadány CpuShares pro balíčky kódu, Service Fabric rozděluje mezi nimi stejné jádra.
 
-Limity paměti jsou absolutní, takže oba balíčky kódu jsou omezeny na 1024 MB paměti (a rezervace měkké záruky stejné). Balíčky kódu (kontejnery nebo procesy) nelze přidělit více paměti než toto omezení a pokus o to má za následek výjimku mimo paměť. Aby vynucení omezení prostředků fungovala, musí být omezení paměti zadaná pro všechny balíčky kódu v rámci balíčku služby.
+Omezení paměti jsou absolutní, takže balíčky kódu jsou omezené na 1024 MB paměti (a rezervace se zárukou samé). Balíčky kódu (kontejnery nebo procesy) nemůžou přidělovat větší množství paměti, než je toto omezení, a pokus o to může mít za následek výjimku nedostatku paměti. Aby vynucení omezení prostředků fungovala, musí být omezení paměti zadaná pro všechny balíčky kódu v rámci balíčku služby.
 
 ### <a name="using-application-parameters"></a>Použití parametrů aplikace
 
-Při zadávání nastavení zásad správného řízení prostředků je možné použít [parametry aplikace](service-fabric-manage-multiple-environment-app-configuration.md) ke správě více konfigurací aplikací. Následující příklad ukazuje použití parametrů aplikace:
+Při zadávání nastavení zásad správného řízení prostředků je možné použít [parametry aplikace](service-fabric-manage-multiple-environment-app-configuration.md) ke správě více konfigurací aplikace. Následující příklad ukazuje použití parametrů aplikace:
 
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
@@ -167,7 +167,7 @@ Při zadávání nastavení zásad správného řízení prostředků je možné
   </ServiceManifestImport>
 ```
 
-V tomto příkladu jsou výchozí hodnoty parametrů nastaveny pro produkční prostředí, kde by každý balíček služeb získal 4 jádra a 2 GB paměti. Je možné měnit výchozí hodnoty pomocí souborů parametrů aplikace. V tomto příkladu jeden soubor parametrů lze použít pro testování aplikace místně, kde by získat méně prostředků než v produkčním prostředí:
+V tomto příkladu jsou pro produkční prostředí nastavené výchozí hodnoty parametrů, kde každý balíček služby by získal 4 jádra a 2 GB paměti. Je možné změnit výchozí hodnoty pomocí souborů parametrů aplikace. V tomto příkladu lze použít jeden soubor parametrů pro místní testování aplikace, kde by bylo méně prostředků než v produkčním prostředí:
 
 ```xml
 <!-- ApplicationParameters\Local.xml -->
@@ -184,19 +184,19 @@ V tomto příkladu jsou výchozí hodnoty parametrů nastaveny pro produkční p
 ```
 
 > [!IMPORTANT]
-> Určení zásad správného řízení prostředků s parametry aplikace je k dispozici počínaje Service Fabric verze 6.1.<br>
+> Zadání zásad správného řízení prostředků s parametry aplikace je k dispozici počínaje verzí Service Fabric 6,1.<br>
 >
-> Při použití parametrů aplikace k určení zásad správného řízení prostředků, Service Fabric nelze downgraded verzi před verzí 6.1.
+> Pokud se k určení zásad správného řízení prostředků používají parametry aplikace, Service Fabric nejde downgradovat na verzi starší než verze 6,1.
 
-## <a name="enforcing-the-resource-limits-for-user-services"></a>Vynucení limitů prostředků pro uživatelské služby
+## <a name="enforcing-the-resource-limits-for-user-services"></a>Vynucování omezení prostředků pro uživatelské služby
 
-Při použití zásad správného řízení prostředků na služby Service Fabric zaručuje, že tyto služby řízené prostředky nemůže překročit jejich kvótu prostředků, mnoho uživatelů stále potřebují spustit některé ze svých služeb Service Fabric v režimu neřízený. Při použití neřízené služby Service Fabric, je možné narazit na situace, kdy "runaway" neřízené služby spotřebovávají všechny dostupné prostředky na uzly Service Fabric, což může vést k vážným problémům, jako je:
+Při použití zásad správného řízení prostředků u služby Service Fabric Services garantuje, že tyto služby, které řídí prostředky, nemůžou překročit kvótu prostředků, mnoho uživatelů stále potřebuje spouštět některé ze svých služeb Service Fabric v nespravovaných režimech. Při používání nespravovaných Service Fabric služeb je možné spustit v situacích, kdy "navýšení nespravovaných služeb" spotřebují všechny dostupné prostředky na Service Fabricch uzlech, což může vést k vážným problémům, jako je:
 
-* Hladovění prostředků u jiných služeb spuštěných na uzlech (včetně systémových služeb Service Fabric)
-* Uzly končí v nestavu
-* Nereagující rozhraní API pro správu clusteru Service Fabric
+* Vyčerpání prostředků dalších služeb spuštěných na uzlech (včetně systémových služeb Service Fabric)
+* Uzly končící ve stavu není v pořádku.
+* Nereagující Service Fabric rozhraní API pro správu clusteru
 
-Chcete-li zabránit výskytu těchto situací, Service Fabric umožňuje *vynutit omezení prostředků pro všechny služby Service Fabric uživatele spuštěné na uzlu* (řízené i neřízené) zaručit, že uživatelské služby nikdy nebude používat více než zadané množství prostředků. Toho je dosaženo nastavením hodnoty pro EnforceUserServiceMetricCapacities config v placementandloadbalancing části ClusterManifest na true. Toto nastavení je ve výchozím nastavení vypnuto.
+Aby nedocházelo k těmto situacím, Service Fabric vám umožní *vyhodnotit omezení prostředků pro všechny Service Fabric uživatelské služby spuštěné v uzlu* (řídí se a neřídí se), aby se zaručilo, že uživatelské služby nikdy nebudou používat víc než zadané množství prostředků. Toho je dosaženo nastavením hodnoty pro EnforceUserServiceMetricCapacities config v oddílu PlacementAndLoadBalancing manifestem clusteru na hodnotu true. Toto nastavení je ve výchozím nastavení vypnuté.
 
 ```xml
 <SectionName="PlacementAndLoadBalancing">
@@ -206,21 +206,21 @@ Chcete-li zabránit výskytu těchto situací, Service Fabric umožňuje *vynut
 
 Další poznámky:
 
-* Vynucení limitu prostředků `servicefabric:/_CpuCores` se `servicefabric:/_MemoryInMB` vztahuje pouze na metriky a metriky zdrojů.
-* Vynucení limitu prostředků funguje pouze v případě, že jsou k dispozici kapacity uzlů pro metriky prostředků service fabric, a to buď prostřednictvím mechanismu automatického zjišťování, nebo prostřednictvím uživatelů ručně určujících kapacity uzlů (jak je vysvětleno v [nastavení clusteru pro povolení oddílu zásad správného řízení prostředků).](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance)Pokud nejsou nakonfigurovány kapacity uzlů, nelze použít funkci vynucení limitu prostředků, protože service fabric nemůže vědět, kolik prostředků rezervovat pro uživatelské služby.Service Fabric vydá upozornění na stav, pokud "EnforceUserServiceMetricCapacities" je true, ale node kapacity nejsou nakonfigurovány.
+* Vynucení limitu prostředků se vztahuje `servicefabric:/_CpuCores` jenom `servicefabric:/_MemoryInMB` na metriky prostředků a.
+* Vynucení limitu prostředků funguje jenom v případě, že jsou kapacity uzlů pro metriky prostředků dostupné Service Fabric, buď prostřednictvím mechanismu automatického zjišťování, nebo přes uživatele ručně zadáním kapacit uzlů (jak je vysvětleno v části [instalace clusteru pro povolení zásad správného řízení prostředků](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance) ).Pokud nejsou nakonfigurované kapacity uzlů, nelze použít funkci vynucení limitu prostředků, protože Service Fabric nemůže zjistit, kolik prostředků se má vyhradit pro uživatelské služby.Service Fabric vydá upozornění na stav, pokud je hodnota "EnforceUserServiceMetricCapacities" pravdivá, ale nejsou nakonfigurovány kapacity uzlů.
 
-## <a name="other-resources-for-containers"></a>Další prostředky pro kontejnery
+## <a name="other-resources-for-containers"></a>Další zdroje informací o kontejnerech
 
-Kromě procesoru a paměti je možné zadat další omezení prostředků pro kontejnery. Tato omezení jsou určena na úrovni balíčku kódu a jsou použity při spuštění kontejneru. Na rozdíl od procesoru a paměti správce prostředků clusteru neví o těchto prostředcích a nebude pro ně dělat žádné kontroly kapacity ani vyrovnávání zatížení.
+Kromě procesoru a paměti je možné určit další omezení prostředků pro kontejnery. Tato omezení jsou určena na úrovni balíčku kódu a jsou použita při spuštění kontejneru. Na rozdíl od CPU a paměti nemusí cluster Správce prostředků znát tyto prostředky a nebude pro ně provádět žádné kontroly kapacity ani vyrovnávání zatížení.
 
-* *MemorySwapInMB:* Množství odkládací paměti, které kontejner můžete použít.
-* *MemoryReservationInMB:* Měkké omezení pro zásady správného řízení paměti, která je vynucena pouze v případě, že je zjištěna tvrzení paměti v uzlu.
-* *CpuPercent*: Procento procesoru, který může kontejner použít. Pokud jsou pro balíček služeb zadány limity procesoru, je tento parametr účinně ignorován.
-* *MaximumIOps*: Maximální viopy, které kontejner můžete použít (čtení a zápis).
-* *MaximumIOBytesps*: Maximální vi (bajty za sekundu), které kontejner může použít (čtení a zápis).
-* *BlockIOWeight*: Hmotnost bloku Vo vzhledem k ostatním kontejnerům.
+* *MemorySwapInMB*: velikost odkládací paměti, kterou může kontejner použít.
+* *MemoryReservationInMB*: částečný limit pro zásady správného řízení paměti, která je vynutila pouze při zjištění kolizí paměti v uzlu.
+* *CpuPercent*: procento využití procesoru, které může kontejner použít. Pokud jsou pro balíček služby zadané limity procesoru, tento parametr se efektivně ignoruje.
+* *MaximumIOps*: maximální hodnota IOPS, kterou může kontejner použít (čtení a zápis).
+* *MaximumIOBytesps*: maximální vstupně-výstupní operace (bajty za sekundu), které může kontejner použít (čtení a zápis).
+* *BlockIOWeight*: zablokuje váhu v/v pro relativní vzhledem k ostatním kontejnerům.
 
-Tyto prostředky lze kombinovat s procesorem a pamětí. Zde je příklad, jak zadat další prostředky pro kontejnery:
+Tyto prostředky je možné kombinovat s PROCESORem a pamětí. Tady je příklad, jak určit další prostředky pro kontejnery:
 
 ```xml
     <ServiceManifestImport>
@@ -234,5 +234,5 @@ Tyto prostředky lze kombinovat s procesorem a pamětí. Zde je příklad, jak z
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o Správci prostředků clusteru naleznete [v části Představení Správce prostředků clusteru Service Fabric](service-fabric-cluster-resource-manager-introduction.md).
-* Další informace o aplikačním modelu, balíčcích služeb a balíčcích kódu a o tom, jak je repliky mapují, najdete [v tématu Model aplikace v service fabric .](service-fabric-application-model.md)
+* Další informace o Správce prostředků clusteru najdete v tématu [představení služby Service Fabric cluster Resource Manager](service-fabric-cluster-resource-manager-introduction.md).
+* Další informace o modelu aplikace, balíčcích služeb a balíčcích kódu – a o tom, jak jsou repliky mapovány, najdete v tématu [model aplikace v Service Fabric](service-fabric-application-model.md).

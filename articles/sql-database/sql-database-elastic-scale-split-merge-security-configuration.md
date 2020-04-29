@@ -1,6 +1,6 @@
 ---
-title: Konfigurace zabezpečení rozdělení sloučení
-description: Nastavte certifikáty x409 pro šifrování pomocí služby rozdělení/sloučení pro elastické škálování.
+title: Konfigurace zabezpečení dělení a slučování
+description: Nastavte certifikáty x409 pro šifrování pomocí služby dělení a sloučení pro elastické škálování.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,15 +12,15 @@ ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: a5ea0fd252d1792d4c40cc6d7869f4ba57edc1ad
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81011357"
 ---
-# <a name="split-merge-security-configuration"></a>Konfigurace zabezpečení rozdělení sloučení
+# <a name="split-merge-security-configuration"></a>Konfigurace zabezpečení dělení a slučování
 
-Chcete-li použít službu Rozdělit/sloučit, musíte správně nakonfigurovat zabezpečení. Služba je součástí funkce Elastické škálování databáze Microsoft Azure SQL Database. Další informace naleznete v [tématu Elastic Scale Split and Merge Service Tutorial](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
+Chcete-li používat službu dělení a sloučení, je nutné správně nakonfigurovat zabezpečení. Služba je součástí funkce elastického škálování Microsoft Azure SQL Database. Další informace najdete v [kurzu rozdělení elastického škálování a sloučení služby](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
 
 ## <a name="configuring-certificates"></a>Konfigurace certifikátů
 
@@ -29,29 +29,29 @@ Certifikáty jsou konfigurovány dvěma způsoby.
 1. [Konfigurace certifikátu TLS/SSL](#to-configure-the-tlsssl-certificate)
 2. [Konfigurace klientských certifikátů](#to-configure-client-certificates) 
 
-## <a name="to-obtain-certificates"></a>Chcete-li získat certifikáty
+## <a name="to-obtain-certificates"></a>Získání certifikátů
 
-Certifikáty lze získat od veřejných certifikačních úřadů (CA) nebo od [certifikační služby systému Windows](https://msdn.microsoft.com/library/windows/desktop/aa376539.aspx). Jedná se o upřednostňované metody získání certifikátů.
+Certifikáty lze získat z veřejných certifikačních autorit (CAs) nebo z [certifikační služby systému Windows](https://msdn.microsoft.com/library/windows/desktop/aa376539.aspx). Jedná se o preferované metody pro získání certifikátů.
 
-Pokud tyto možnosti nejsou k dispozici, můžete generovat **certifikáty podepsané svým držitelem**.
+Pokud tyto možnosti nejsou k dispozici, můžete vygenerovat **certifikáty podepsané svým držitelem**.
 
 ## <a name="tools-to-generate-certificates"></a>Nástroje pro generování certifikátů
 
-* [Makecert.exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
-* [pvk2pfx.exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
+* [Makecert. exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
+* [Pvk2Pfx. exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
 
 ### <a name="to-run-the-tools"></a>Spuštění nástrojů
 
-* Na příkazovém řádku pro vývojáře pro vizuální studia najdete v [příkazovém řádku sady Visual Studio.](https://msdn.microsoft.com/library/ms229859.aspx) 
+* Z Developer Command Prompt pro Visual studia se podívejte na [Visual Studio Command Prompt](https://msdn.microsoft.com/library/ms229859.aspx) . 
   
-    Pokud je nainstalován, přejděte na:
+    Pokud je nainstalován, přejít na:
   
         %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
-* Získání sady WDK z [Windows 8.1: Stáhněte si sady a nástroje](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
+* Získat WDK z [Windows 8.1: stažení sad a nástrojů](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## <a name="to-configure-the-tlsssl-certificate"></a>Konfigurace certifikátu TLS/SSL
 
-K šifrování komunikace a ověření serveru je vyžadován certifikát TLS/SSL. Vyberte nejpoužitelnější ze tří níže uvedených scénářů a proveďte všechny jeho kroky:
+K šifrování komunikace a ověření serveru je vyžadován certifikát TLS/SSL. Vyberte nejvíce pro tři scénáře a proveďte všechny kroky:
 
 ### <a name="create-a-new-self-signed-certificate"></a>Vytvoření nového certifikátu podepsaného svým držitelem
 
@@ -59,10 +59,10 @@ K šifrování komunikace a ověření serveru je vyžadován certifikát TLS/SS
 2. [Vytvořit soubor PFX pro certifikát TLS/SSL podepsaný svým držitelem](#create-pfx-file-for-self-signed-tlsssl-certificate)
 3. [Nahrání certifikátu TLS/SSL do cloudové služby](#upload-tlsssl-certificate-to-cloud-service)
 4. [Aktualizace certifikátu TLS/SSL v konfiguračním souboru služby](#update-tlsssl-certificate-in-service-configuration-file)
-5. [Dovozní certifikační úřad TLS/SSL](#import-tlsssl-certification-authority)
+5. [Importovat certifikační autoritu TLS/SSL](#import-tlsssl-certification-authority)
 
 ### <a name="to-use-an-existing-certificate-from-the-certificate-store"></a>Použití existujícího certifikátu z úložiště certifikátů
-1. [Export certifikátu TL/SSL z úložiště certifikátů](#export-tlsssl-certificate-from-certificate-store)
+1. [Export certifikátu TLS/SSL z úložiště certifikátů](#export-tlsssl-certificate-from-certificate-store)
 2. [Nahrání certifikátu TLS/SSL do cloudové služby](#upload-tlsssl-certificate-to-cloud-service)
 3. [Aktualizace certifikátu TLS/SSL v konfiguračním souboru služby](#update-tlsssl-certificate-in-service-configuration-file)
 
@@ -71,56 +71,56 @@ K šifrování komunikace a ověření serveru je vyžadován certifikát TLS/SS
 2. [Aktualizace certifikátu TLS/SSL v konfiguračním souboru služby](#update-tlsssl-certificate-in-service-configuration-file)
 
 ## <a name="to-configure-client-certificates"></a>Konfigurace klientských certifikátů
-K ověření požadavků na službu jsou vyžadovány klientské certifikáty. Vyberte nejpoužitelnější ze tří níže uvedených scénářů a proveďte všechny jeho kroky:
+Aby bylo možné ověřovat požadavky na službu, jsou vyžadovány klientské certifikáty. Vyberte nejvíce pro tři scénáře a proveďte všechny kroky:
 
 ### <a name="turn-off-client-certificates"></a>Vypnutí klientských certifikátů
-1. [Vypnout ověřování pomocí klientského certifikátu](#turn-off-client-certificate-based-authentication)
+1. [Vypnout ověřování na základě certifikátu klienta](#turn-off-client-certificate-based-authentication)
 
-### <a name="issue-new-self-signed-client-certificates"></a>Vydanit nové klientské certifikáty podepsané svým držitelem
-1. [Vytvoření certifikačního úřadu podepsaného svým držitelem](#create-a-self-signed-certification-authority)
+### <a name="issue-new-self-signed-client-certificates"></a>Vystavení nových klientských certifikátů podepsaných svým držitelem
+1. [Vytvoření certifikační autority podepsané svým držitelem](#create-a-self-signed-certification-authority)
 2. [Nahrání certifikátu certifikační autority do cloudové služby](#upload-ca-certificate-to-cloud-service)
 3. [Aktualizace certifikátu certifikační autority v konfiguračním souboru služby](#update-ca-certificate-in-service-configuration-file)
-4. [Vydat klientské certifikáty](#issue-client-certificates)
-5. [Vytvoření souborů PFX pro klientské certifikáty](#create-pfx-files-for-client-certificates)
+4. [Vystavení certifikátů klienta](#issue-client-certificates)
+5. [Vytvořit soubory PFX pro klientské certifikáty](#create-pfx-files-for-client-certificates)
 6. [Importovat klientský certifikát](#import-client-certificate)
 7. [Kopírovat kryptografické otisky klientského certifikátu](#copy-client-certificate-thumbprints)
 8. [Konfigurace povolených klientů v konfiguračním souboru služby](#configure-allowed-clients-in-the-service-configuration-file)
 
-### <a name="use-existing-client-certificates"></a>Použití existujících klientských certifikátů
+### <a name="use-existing-client-certificates"></a>Použít existující klientské certifikáty
 1. [Najít veřejný klíč certifikační autority](#find-ca-public-key)
 2. [Nahrání certifikátu certifikační autority do cloudové služby](#upload-ca-certificate-to-cloud-service)
 3. [Aktualizace certifikátu certifikační autority v konfiguračním souboru služby](#update-ca-certificate-in-service-configuration-file)
 4. [Kopírovat kryptografické otisky klientského certifikátu](#copy-client-certificate-thumbprints)
 5. [Konfigurace povolených klientů v konfiguračním souboru služby](#configure-allowed-clients-in-the-service-configuration-file)
-6. [Konfigurace kontroly odvolání klientského certifikátu](#configure-client-certificate-revocation-check)
+6. [Konfigurovat kontrolu odvolání klientského certifikátu](#configure-client-certificate-revocation-check)
 
 ## <a name="allowed-ip-addresses"></a>Povolené IP adresy
-Přístup ke koncovým bodům služby může být omezen na určité rozsahy adres IP.
+Přístup k koncovým bodům služby lze omezit na konkrétní rozsahy IP adres.
 
 ## <a name="to-configure-encryption-for-the-store"></a>Konfigurace šifrování pro úložiště
-K šifrování přihlašovacích údajů, které jsou uloženy v úložišti metadat, je vyžadován certifikát. Vyberte nejpoužitelnější ze tří níže uvedených scénářů a proveďte všechny jeho kroky:
+K šifrování přihlašovacích údajů, které jsou uložené v úložišti metadat, se vyžaduje certifikát. Vyberte nejvíce pro tři scénáře a proveďte všechny kroky:
 
 ### <a name="use-a-new-self-signed-certificate"></a>Použití nového certifikátu podepsaného svým držitelem
 1. [Vytvoření certifikátu podepsaného svým držitelem](#create-a-self-signed-certificate)
 2. [Vytvořit soubor PFX pro šifrovací certifikát podepsaný svým držitelem](#create-pfx-file-for-self-signed-tlsssl-certificate)
-3. [Nahrání šifrovacího certifikátu do cloudové služby](#upload-encryption-certificate-to-cloud-service)
+3. [Nahrát šifrovací certifikát do cloudové služby](#upload-encryption-certificate-to-cloud-service)
 4. [Aktualizovat šifrovací certifikát v konfiguračním souboru služby](#update-encryption-certificate-in-service-configuration-file)
 
-### <a name="use-an-existing-certificate-from-the-certificate-store"></a>Použití existujícího certifikátu z úložiště certifikátů
-1. [Export šifrovacího certifikátu z úložiště certifikátů](#export-encryption-certificate-from-certificate-store)
-2. [Nahrání šifrovacího certifikátu do cloudové služby](#upload-encryption-certificate-to-cloud-service)
+### <a name="use-an-existing-certificate-from-the-certificate-store"></a>Použít existující certifikát z úložiště certifikátů
+1. [Exportovat šifrovací certifikát z úložiště certifikátů](#export-encryption-certificate-from-certificate-store)
+2. [Nahrát šifrovací certifikát do cloudové služby](#upload-encryption-certificate-to-cloud-service)
 3. [Aktualizovat šifrovací certifikát v konfiguračním souboru služby](#update-encryption-certificate-in-service-configuration-file)
 
-### <a name="use-an-existing-certificate-in-a-pfx-file"></a>Použití existujícího certifikátu v souboru PFX
-1. [Nahrání šifrovacího certifikátu do cloudové služby](#upload-encryption-certificate-to-cloud-service)
+### <a name="use-an-existing-certificate-in-a-pfx-file"></a>Použít existující certifikát v souboru PFX
+1. [Nahrát šifrovací certifikát do cloudové služby](#upload-encryption-certificate-to-cloud-service)
 2. [Aktualizovat šifrovací certifikát v konfiguračním souboru služby](#update-encryption-certificate-in-service-configuration-file)
 
 ## <a name="the-default-configuration"></a>Výchozí konfigurace
-Výchozí konfigurace odepře veškerý přístup ke koncovému bodu HTTP. Toto je doporučené nastavení, protože požadavky na tyto koncové body mohou přenášet citlivé informace, jako jsou pověření databáze.
-Výchozí konfigurace umožňuje veškerý přístup ke koncovému bodu HTTPS. Toto nastavení může být dále omezeno.
+Výchozí konfigurace odepírá přístup ke koncovému bodu HTTP. Toto je doporučené nastavení, protože žádosti do těchto koncových bodů mohou přenášet citlivé informace, jako jsou přihlašovací údaje databáze.
+Výchozí konfigurace umožňuje přístup ke koncovému bodu HTTPS. Toto nastavení může být omezeno.
 
 ### <a name="changing-the-configuration"></a>Změna konfigurace
-Skupina pravidel řízení přístupu, která platí pro koncový bod a koncový bod, je ** \<nakonfigurována v části>endpointAcls** v **konfiguračním souboru služby**.
+Skupina pravidel řízení přístupu, která platí pro a koncový bod, se konfiguruje v části ** \<>EndpointAcls** v **konfiguračním souboru služby**.
 
 ```xml
 <EndpointAcls>
@@ -129,10 +129,10 @@ Skupina pravidel řízení přístupu, která platí pro koncový bod a koncový
 </EndpointAcls>
 ```
 
-Pravidla ve skupině řízení přístupu \<jsou konfigurována v části AccessControl name=""> konfiguračního souboru služby. 
+Pravidla ve skupině řízení přístupu jsou konfigurována v části \<AccessControl Name = "" > konfiguračního souboru služby. 
 
-Formát je vysvětlen v dokumentaci k seznamům řízení přístupu k síti.
-Chcete-li například povolit přístup ke koncovému bodu HTTPS pouze ip adresy v rozsahu 100.100.0.0 až 100.100.255.255, budou pravidla vypadat takto:
+Formátování je vysvětleno v části Access Control sítě seznam v dokumentaci.
+Pokud třeba chcete, aby se pro přístup ke koncovému bodu HTTPS 100.100.0.0 jenom IP adresy v rozsahu, který bude 100.100.255.255, budou tato pravidla vypadat takto:
 
 ```xml
 <AccessControl name="Retricted">
@@ -145,28 +145,28 @@ Chcete-li například povolit přístup ke koncovému bodu HTTPS pouze ip adresy
 ```
 
 ## <a name="denial-of-service-prevention"></a>Prevence odmítnutí služby
-Existují dva různé mechanismy podporované pro detekci a prevenci útoků odmítnutí služby:
+K detekci a zabránění útokům DOS (Denial of Service) se podporují dva různé mechanismy:
 
-* Omezit počet souběžných požadavků na vzdáleného hostitele (ve výchozím nastavení vypnuto)
-* Omezit rychlost přístupu na vzdáleného hostitele (ve výchozím nastavení zapnuto)
+* Omezit počet souběžných požadavků na vzdáleného hostitele (ve výchozím nastavení vypnuté)
+* Omezení rychlosti přístupu na vzdáleného hostitele (ve výchozím nastavení zapnuté)
 
-Ty jsou založeny na funkcích dále zdokumentovaných v dynamickém zabezpečení IP ve službě IIS. Při změně této konfigurace si dejte pozor na následující faktory:
+Jsou založené na funkcích popsaných v dynamickém zabezpečení protokolu IP v IIS. Při změně této konfigurace mějte na těchto faktorách tyto faktory:
 
-* Chování proxy serverů a zařízení pro překlad síťových adres nad informacemi vzdáleného hostitele
-* Každý požadavek na libovolný prostředek ve webové roli je považován (například načítání skriptů, obrázků atd.)
+* Chování proxy serverů a zařízení překladu síťových adres přes informace o vzdáleném hostiteli
+* Každý požadavek na libovolný prostředek ve webové roli se považuje za (například načítání skriptů, obrázků atd.).
 
 ## <a name="restricting-number-of-concurrent-accesses"></a>Omezení počtu souběžných přístupů
-Nastavení, která konfigurují toto chování jsou:
+Nastavení, která konfigurují toto chování:
 
 ```xml
 <Setting name="DynamicIpRestrictionDenyByConcurrentRequests" value="false" />
 <Setting name="DynamicIpRestrictionMaxConcurrentRequests" value="20" />
 ```
 
-Změňte DynamicIpRestrictionDenyByConcurrentRequests na true povolit tuto ochranu.
+Pokud chcete povolit tuto ochranu, změňte DynamicIpRestrictionDenyByConcurrentRequests na true.
 
 ## <a name="restricting-rate-of-access"></a>Omezení přístupu
-Nastavení, která konfigurují toto chování jsou:
+Nastavení, která konfigurují toto chování:
 
 ```xml
 <Setting name="DynamicIpRestrictionDenyByRequestRate" value="true" />
@@ -175,22 +175,22 @@ Nastavení, která konfigurují toto chování jsou:
 ```
 
 ## <a name="configuring-the-response-to-a-denied-request"></a>Konfigurace odpovědi na zamítnutý požadavek
-Následující nastavení konfiguruje odpověď na zamítnutý požadavek:
+Následující nastavení nakonfiguruje odpověď na zamítnutý požadavek:
 
 ```xml
 <Setting name="DynamicIpRestrictionDenyAction" value="AbortRequest" />
 ```
 
-Další podporované hodnoty naleznete v dokumentaci k dynamickému zabezpečení protokolu IP ve správě IIS.
+Další podporované hodnoty najdete v dokumentaci k dynamickému zabezpečení protokolu IP v IIS.
 
-## <a name="operations-for-configuring-service-certificates"></a>Operace pro konfiguraci certifikátů služeb
-Toto téma je pouze orientační. Postupujte podle kroků konfigurace uvedených v:
+## <a name="operations-for-configuring-service-certificates"></a>Operace konfigurace certifikátů služby
+Toto téma je pouze pro referenci. Postupujte podle kroků konfigurace popsaných v části:
 
 * Konfigurace certifikátu TLS/SSL
 * Konfigurace klientských certifikátů
 
 ## <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
-Provést:
+Spustit
 
     makecert ^
       -n "CN=myservice.cloudapp.net" ^
@@ -201,61 +201,61 @@ Provést:
 
 Přizpůsobení:
 
-* -n s adresou URL služby. Zástupné znaky ("CN=*.cloudapp.net") a alternativní názvy ("CN=myservice1.cloudapp.net, CN=myservice2.cloudapp.net") jsou podporovány.
-* -e s datem vypršení platnosti certifikátu Vytvořte silné heslo a zadejte ho po zobrazení výzvy.
+* -n s adresou URL služby. Jsou podporovány zástupné znaky (CN = *. cloudapp. NET) a alternativní názvy (CN = myservice1. cloudapp. NET, CN = myservice2. cloudapp. NET).
+* -e s datem vypršení platnosti certifikátu vytvořte silné heslo a zadejte ho po zobrazení výzvy.
 
-## <a name="create-pfx-file-for-self-signed-tlsssl-certificate"></a>Vytvoření souboru PFX pro certifikát TLS/SSL podepsaný svým držitelem
-Provést:
+## <a name="create-pfx-file-for-self-signed-tlsssl-certificate"></a>Vytvořit soubor PFX pro certifikát TLS/SSL podepsaný svým držitelem
+Spustit
 
         pvk2pfx -pvk MySSL.pvk -spc MySSL.cer
 
 Zadejte heslo a pak exportujte certifikát s těmito možnostmi:
 
-* Ano, export ovat soukromý klíč
+* Ano, exportovat privátní klíč
 * Exportovat všechny rozšířené vlastnosti
 
 ## <a name="export-tlsssl-certificate-from-certificate-store"></a>Export certifikátu TLS/SSL z úložiště certifikátů
 * Najít certifikát
-* Klikněte na Akce - > všechny úkoly - > export...
-* Vývozní certifikát do . Soubor PFX s těmito možnostmi:
-  * Ano, export ovat soukromý klíč
-  * Zahrnout všechny certifikáty do certifikační cesty, pokud je to možné *Exportovat všechny rozšířené vlastnosti
+* Klikněte na akce-> všechny úkoly – > exportovat...
+* Exportujte certifikát do. Soubor PFX s těmito možnostmi:
+  * Ano, exportovat privátní klíč
+  * Zahrnout všechny certifikáty na cestě k certifikátu, pokud je to možné * exportovat všechny rozšířené vlastnosti
 
 ## <a name="upload-tlsssl-certificate-to-cloud-service"></a>Nahrání certifikátu TLS/SSL do cloudové služby
-Nahrajte certifikát se stávajícím nebo generovaným . Soubor PFX s párem klíčů TLS:
+Nahrajte certifikát s existující nebo vygenerovanou. Soubor PFX s dvojicí klíčů TLS:
 
-* Zadejte heslo chránící informace o soukromém klíči.
+* Zadejte heslo chránící informace privátního klíče.
 
 ## <a name="update-tlsssl-certificate-in-service-configuration-file"></a>Aktualizace certifikátu TLS/SSL v konfiguračním souboru služby
-Aktualizujte hodnotu kryptografického otisku následujícího nastavení v konfiguračním souboru služby kryptografickým otiskem certifikátu nahraného do cloudové služby:
+Aktualizujte hodnotu kryptografického otisku následujícího nastavení v konfiguračním souboru služby pomocí kryptografického otisku certifikátu nahraného do cloudové služby:
 
     <Certificate name="SSL" thumbprint="" thumbprintAlgorithm="sha1" />
 
 ## <a name="import-tlsssl-certification-authority"></a>Importovat certifikační autoritu TLS/SSL
-Postupujte podle následujících kroků ve všech účtech nebo počítači, který bude komunikovat se službou:
+Postupujte podle těchto kroků u všech účtů a počítačů, které budou komunikovat se službou:
 
-* Poklepejte na soubor . Soubor CER v Průzkumníkovi Windows
-* V dialogovém okně Certifikát klikněte na Instalovat certifikát...
-* Import certifikátu do úložiště důvěryhodných kořenových certifikačních úřadů
+* Dvakrát klikněte na. Soubor CER v Průzkumníkovi Windows
+* V dialogovém okně certifikát klikněte na nainstalovat certifikát...
+* Importovat certifikát do úložiště důvěryhodných kořenových certifikačních autorit
 
-## <a name="turn-off-client-certificate-based-authentication"></a>Vypnutí ověřování pomocí klientského certifikátu
-Je podporováno pouze ověřování založené na klientských certifikátech a jeho zakázání umožní veřejný přístup ke koncovým bodům služby, pokud nejsou zavedeny jiné mechanismy (například Virtuální síť Microsoft Azure).
+## <a name="turn-off-client-certificate-based-authentication"></a>Vypnout ověřování na základě certifikátu klienta
+Je podporováno pouze ověřování na základě certifikátu klienta a jeho zakázání umožní veřejný přístup k koncovým bodům služby, pokud nejsou zavedeny jiné mechanismy (například Microsoft Azure Virtual Network).
 
-Chcete-li funkci vypnout, změňte tato nastavení na hodnotu false v konfiguračním souboru služby:
+V konfiguračním souboru služby změňte tato nastavení na false, aby se funkce vypnula:
 
 ```xml
 <Setting name="SetupWebAppForClientCertificates" value="false" />
 <Setting name="SetupWebserverForClientCertificates" value="false" />
 ```
 
-Potom zkopírujte stejný kryptografický otisk jako certifikát TLS/SSL v nastavení certifikátu certifikační autority:
+Pak zkopírujte stejný kryptografický otisk jako certifikát TLS/SSL v nastavení certifikátu certifikační autority:
 
 ```xml
 <Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
 ```
 
-## <a name="create-a-self-signed-certification-authority"></a>Vytvoření certifikačního úřadu podepsaného svým držitelem
-Chcete-li vytvořit certifikát podepsaný svým držitelem, který bude fungovat jako certifikační úřad, proveďte následující kroky:
+## <a name="create-a-self-signed-certification-authority"></a>Vytvoření certifikační autority podepsané svým držitelem
+Provedením následujících kroků vytvořte certifikát podepsaný svým držitelem, který bude sloužit jako certifikační autorita:
 
     makecert ^
     -n "CN=MyCA" ^
@@ -265,50 +265,50 @@ Chcete-li vytvořit certifikát podepsaný svým držitelem, který bude fungova
       -sr localmachine -ss my ^
       MyCA.cer
 
-Chcete-li jej přizpůsobit
+Přizpůsobení
 
 * -e s datem vypršení platnosti certifikátu
 
 ## <a name="find-ca-public-key"></a>Najít veřejný klíč certifikační autority
-Všechny klientské certifikáty musí být vydány certifikačníautoritou důvěryhodnou službou. Najděte veřejný klíč certifikačníautority, která vydala klientské certifikáty, které budou použity k ověřování, aby bylo možné jej odeslat do cloudové služby.
+Všechny klientské certifikáty musí být vydané certifikační autoritou, kterou služba důvěřuje. Vyhledejte veřejný klíč pro certifikační autoritu, která vystavila klientské certifikáty, které se budou používat k ověřování, aby ho bylo možné odeslat do cloudové služby.
 
-Pokud soubor s veřejným klíčem není k dispozici, exportujte jej z úložiště certifikátů:
+Pokud soubor s veřejným klíčem není dostupný, exportujte ho z úložiště certifikátů:
 
 * Najít certifikát
-  * Hledání klientského certifikátu vydaného stejným certifikačním úřadem
-* Poklepejte na certifikát.
-* V dialogovém okně Certifikát vyberte kartu Certifikační cesta.
-* Poklepejte na položku certifikační autority v cestě.
-* Udělejte si poznámky o vlastnostech certifikátu.
-* Zavřete dialogové okno **Certifikát.**
+  * Vyhledejte klientský certifikát vydaný stejnou certifikační autoritou.
+* Dvakrát klikněte na certifikát.
+* Vyberte kartu cesta k certifikátu v dialogovém okně certifikát.
+* Dvakrát klikněte na položku CA v cestě.
+* Poznamenejte si vlastnosti certifikátu.
+* Zavřete dialogové okno **certifikát** .
 * Najít certifikát
-  * Vyhledejte výše uvedenou certifikační autoritu.
-* Klikněte na Akce - > všechny úkoly - > export...
-* Vývozní certifikát do . CER s těmito možnostmi:
-  * **Ne, neexportovat soukromý klíč**
-  * Pokud je to možné, zahrňte všechny certifikáty do certifikační cesty.
-  * Exportovat všechny rozšířené vlastnosti.
+  * Vyhledejte certifikační autoritu, kterou jste si poznamenali výše.
+* Klikněte na akce-> všechny úkoly – > exportovat...
+* Exportujte certifikát do. CER s těmito možnostmi:
+  * **Ne, neexportovat privátní klíč**
+  * Pokud je to možné, zahrňte všechny certifikáty do cesty certifikátu.
+  * Exportujte všechny rozšířené vlastnosti.
 
 ## <a name="upload-ca-certificate-to-cloud-service"></a>Nahrání certifikátu certifikační autority do cloudové služby
-Nahrajte certifikát se stávajícím nebo generovaným . soubor CER s veřejným klíčem certifikační autority.
+Nahrajte certifikát s existující nebo vygenerovanou. Soubor CER s veřejným klíčem certifikační autority
 
 ## <a name="update-ca-certificate-in-service-configuration-file"></a>Aktualizace certifikátu certifikační autority v konfiguračním souboru služby
-Aktualizujte hodnotu kryptografického otisku následujícího nastavení v konfiguračním souboru služby kryptografickým otiskem certifikátu nahraného do cloudové služby:
+Aktualizujte hodnotu kryptografického otisku následujícího nastavení v konfiguračním souboru služby pomocí kryptografického otisku certifikátu nahraného do cloudové služby:
 
 ```xml
 <Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
 ```
 
-Aktualizujte hodnotu následujícího nastavení stejným kryptografickým otiskem:
+Aktualizujte hodnotu následujícího nastavení se stejným kryptografickým otiskem:
 
 ```xml
 <Setting name="AdditionalTrustedRootCertificationAuthorities" value="" />
 ```
 
-## <a name="issue-client-certificates"></a>Vydávání klientských certifikátů
-Každý jednotlivec oprávněný k přístupu ke službě by měl mít klientský certifikát vydaný pro jejich výhradní použití a měl by zvolit své vlastní silné heslo pro ochranu svého soukromého klíče. 
+## <a name="issue-client-certificates"></a>Vystavení certifikátů klienta
+Každý jednotlivec autorizovaný pro přístup ke službě by měl mít klientský certifikát vydaný pro výhradní použití a měl by zvolit vlastní silné heslo pro ochranu privátního klíče. 
 
-Následující kroky musí být provedeny ve stejném počítači, kde byl vygenerován a uložen certifikát certifikační autority podepsaný svým držitelem:
+Následující kroky musí být spuštěny ve stejném počítači, ve kterém byl vytvořen a uložen certifikát certifikační autority podepsané svým držitelem:
 
     makecert ^
       -n "CN=My ID" ^
@@ -318,129 +318,129 @@ Následující kroky musí být provedeny ve stejném počítači, kde byl vygen
       -in "MyCA" -ir localmachine -is my ^
       -sv MyID.pvk MyID.cer
 
-Přizpůsobení:
+Customiz
 
-* -n s ID pro klienta, který bude ověřen pomocí tohoto certifikátu
+* -n s identifikátorem ID pro klienta, který bude ověřen pomocí tohoto certifikátu
 * -e s datem vypršení platnosti certifikátu
-* MyID.pvk a MyID.cer s jedinečnými názvy souborů pro tento klientský certifikát
+* MyID. PVK a MyID. cer s jedinečnými názvy souborů pro tento klientský certifikát
 
-Tento příkaz vyzve k vytvoření hesla a jeho použití jednou. Použijte silné heslo.
+Tento příkaz zobrazí výzvu k vytvoření a následnému použití hesla. Použijte silné heslo.
 
-## <a name="create-pfx-files-for-client-certificates"></a>Vytvoření souborů PFX pro klientské certifikáty
-Pro každý vygenerovaný klientský certifikát proveďte:
+## <a name="create-pfx-files-for-client-certificates"></a>Vytvořit soubory PFX pro klientské certifikáty
+Pro každý generovaný klientský certifikát spusťte:
 
     pvk2pfx -pvk MyID.pvk -spc MyID.cer
 
-Přizpůsobení:
+Customiz
 
     MyID.pvk and MyID.cer with the filename for the client certificate
 
 Zadejte heslo a pak exportujte certifikát s těmito možnostmi:
 
-* Ano, export ovat soukromý klíč
+* Ano, exportovat privátní klíč
 * Exportovat všechny rozšířené vlastnosti
-* Osoba, které je tento certifikát vydáván, by měla zvolit heslo pro export
+* Uživatel, kterému se certifikát vystavuje, by měl zvolit heslo pro export.
 
 ## <a name="import-client-certificate"></a>Importovat klientský certifikát
-Každá osoba, pro kterou byl vydán klientský certifikát, by měla importovat dvojici klíčů v počítačích, které bude používat ke komunikaci se službou:
+Každý jednotlivec, pro který byl klientský certifikát vystaven, by měl importovat dvojici klíčů v počítačích, které budou používat ke komunikaci se službou:
 
-* Poklepejte na soubor . Soubor PFX v Průzkumníkovi Windows
-* Importujte certifikát do osobního úložiště s alespoň touto možností:
+* Dvakrát klikněte na. Soubor PFX v Průzkumníkovi Windows
+* Importujte certifikát do osobního úložiště pomocí aspoň této možnosti:
   * Zahrnout všechny rozšířené vlastnosti zaškrtnuté
 
-## <a name="copy-client-certificate-thumbprints"></a>Kopírování kryptografických otisků klientského certifikátu
-Každá osoba, pro kterou byl vydán klientský certifikát, musí postupovat takto, aby získala kryptografický otisk svého certifikátu, který bude přidán do konfiguračního souboru služby:
+## <a name="copy-client-certificate-thumbprints"></a>Kopírovat kryptografické otisky klientského certifikátu
+Každý jednotlivec, pro který byl klientský certifikát vystaven, musí při získání kryptografického otisku certifikátu, který se přidá do konfiguračního souboru služby, použít následující postup:
 
-* Spustit certmgr.exe
-* Výběr karty Osobní
-* Poklepejte na klientský certifikát, který má být použit pro ověřování.
-* V zobrazeném dialogovém okně Certifikát vyberte kartu Podrobnosti.
-* Ujistěte se, že se zobrazuje vše
-* V seznamu vyberte pole s názvem Kryptografický otisk.
-* Kopírování hodnoty kryptografického otisku
-  * Odstranění neviditelných znaků Unicode před první číslicí
+* Spuštění certmgr. exe
+* Vyberte kartu osobní.
+* Poklikejte na certifikát klienta, který se má použít k ověřování.
+* V dialogu s certifikátem, který se otevře, vyberte kartu Podrobnosti.
+* Ujistěte se, že zobrazení zobrazuje vše.
+* V seznamu vyberte pole s názvem kryptografický otisk.
+* Kopírovat hodnotu kryptografického otisku
+  * Před první číslicí odstranit neviditelné znaky Unicode
   * Odstranit všechny mezery
 
 ## <a name="configure-allowed-clients-in-the-service-configuration-file"></a>Konfigurace povolených klientů v konfiguračním souboru služby
-Aktualizujte hodnotu následujícího nastavení v konfiguračním souboru služby pomocí seznamu kryptografických otisků klientských certifikátů, které umožňují přístup ke službě:
+Aktualizujte hodnotu následujícího nastavení v konfiguračním souboru služby pomocí čárkami odděleného seznamu kryptografických otisků klientských certifikátů povolených přístupu ke službě:
 
 ```xml
 <Setting name="AllowedClientCertificateThumbprints" value="" />
 ```
 
-## <a name="configure-client-certificate-revocation-check"></a>Konfigurace kontroly odvolání klientského certifikátu
-Výchozí nastavení nekontroluje u certifikačního úřadu stav odvolání klientského certifikátu. Chcete-li zapnout kontroly, pokud certifikační úřad, který vydal klientské certifikáty podporuje takové kontroly, změňte následující nastavení s jednou z hodnot definovaných ve výčtu X509RevocationMode:
+## <a name="configure-client-certificate-revocation-check"></a>Konfigurovat kontrolu odvolání klientského certifikátu
+Výchozí nastavení nekontroluje u certifikační autority stav odvolání certifikátu klienta. Chcete-li zapnout kontroly, pokud certifikační autorita, která vystavila klientské certifikáty, podporuje takové kontroly, změňte následující nastavení pomocí jedné z hodnot definovaných ve výčtu X509RevocationMode:
 
 ```xml
 <Setting name="ClientCertificateRevocationCheck" value="NoCheck" />
 ```
 
-## <a name="create-pfx-file-for-self-signed-encryption-certificates"></a>Vytvoření souboru PFX pro šifrovací certifikáty podepsané svým držitelem
+## <a name="create-pfx-file-for-self-signed-encryption-certificates"></a>Vytvořit soubor PFX pro šifrovací certifikáty podepsané svým držitelem
 Pro šifrovací certifikát spusťte:
 
     pvk2pfx -pvk MyID.pvk -spc MyID.cer
 
-Přizpůsobení:
+Customiz
 
     MyID.pvk and MyID.cer with the filename for the encryption certificate
 
 Zadejte heslo a pak exportujte certifikát s těmito možnostmi:
 
-* Ano, export ovat soukromý klíč
+* Ano, exportovat privátní klíč
 * Exportovat všechny rozšířené vlastnosti
-* Heslo budete potřebovat při nahrávání certifikátu do cloudové služby.
+* Při odesílání certifikátu do cloudové služby budete potřebovat heslo.
 
-## <a name="export-encryption-certificate-from-certificate-store"></a>Export šifrovacího certifikátu z úložiště certifikátů
+## <a name="export-encryption-certificate-from-certificate-store"></a>Exportovat šifrovací certifikát z úložiště certifikátů
 * Najít certifikát
-* Klikněte na Akce - > všechny úkoly - > export...
-* Vývozní certifikát do . Soubor PFX s těmito možnostmi: 
-  * Ano, export ovat soukromý klíč
-  * Pokud je to možné, zahrnout všechny certifikáty do certifikační cesty 
+* Klikněte na akce-> všechny úkoly – > exportovat...
+* Exportujte certifikát do. Soubor PFX s těmito možnostmi: 
+  * Ano, exportovat privátní klíč
+  * Zahrnout všechny certifikáty na cestě k certifikátu, pokud je to možné 
 * Exportovat všechny rozšířené vlastnosti
 
-## <a name="upload-encryption-certificate-to-cloud-service"></a>Nahrání šifrovacího certifikátu do cloudové služby
-Nahrajte certifikát se stávajícím nebo generovaným . Soubor PFX s párem šifrovacího klíče:
+## <a name="upload-encryption-certificate-to-cloud-service"></a>Nahrát šifrovací certifikát do cloudové služby
+Nahrajte certifikát s existující nebo vygenerovanou. Soubor PFX s dvojicí šifrovacího klíče:
 
-* Zadejte heslo chránící informace o soukromém klíči.
+* Zadejte heslo chránící informace privátního klíče.
 
-## <a name="update-encryption-certificate-in-service-configuration-file"></a>Aktualizace šifrovacího certifikátu v konfiguračním souboru služby
-Aktualizujte hodnotu kryptotisku následujících nastavení v konfiguračním souboru služby kryptografickým otiskem certifikátu nahraného do cloudové služby:
+## <a name="update-encryption-certificate-in-service-configuration-file"></a>Aktualizovat šifrovací certifikát v konfiguračním souboru služby
+Aktualizujte hodnotu kryptografického otisku následujícího nastavení v konfiguračním souboru služby pomocí kryptografického otisku certifikátu nahraného do cloudové služby:
 
 ```xml
 <Certificate name="DataEncryptionPrimary" thumbprint="" thumbprintAlgorithm="sha1" />
 ```
 
-## <a name="common-certificate-operations"></a>Běžné operace certifikátů
+## <a name="common-certificate-operations"></a>Běžné operace s certifikáty
 * Konfigurace certifikátu TLS/SSL
 * Konfigurace klientských certifikátů
 
 ## <a name="find-certificate"></a>Najít certifikát
 Postupujte následovně:
 
-1. Spusťte mmc.exe.
-2. Soubor -> Přidat nebo odebrat modul snap-in...
+1. Spusťte MMC. exe.
+2. Soubor – > přidat nebo odebrat modul snap-in...
 3. Vyberte **certifikáty**.
-4. Klikněte na **Přidat**.
-5. Zvolte umístění úložiště certifikátů.
+4. Klikněte na tlačítko **Add** (Přidat).
+5. Vyberte umístění úložiště certifikátů.
 6. Klikněte na **Finish** (Dokončit).
 7. Klikněte na tlačítko **OK**.
-8. Rozbalte **certifikáty**.
+8. Rozbalte položku **certifikáty**.
 9. Rozbalte uzel úložiště certifikátů.
-10. Rozbalte podřízený uzel certifikátu.
-11. Vyberte certifikát v seznamu.
+10. Rozbalte uzel podřízený certifikát.
+11. V seznamu vyberte certifikát.
 
 ## <a name="export-certificate"></a>Export certifikátu
 V **Průvodci exportem certifikátu**:
 
 1. Klikněte na **Další**.
-2. Vyberte **Ano**a potom **exportujte soukromý klíč**.
+2. Vyberte **Ano**a pak **exportujte privátní klíč**.
 3. Klikněte na **Další**.
 4. Vyberte požadovaný formát výstupního souboru.
-5. Zkontrolujte požadované možnosti.
-6. Zkontrolujte **heslo**.
+5. Ověřte požadované možnosti.
+6. Ověřte **heslo**.
 7. Zadejte silné heslo a potvrďte ho.
 8. Klikněte na **Další**.
-9. Zadejte nebo vyhledejte název souboru, kam chcete certifikát uložit (použijte . Rozšíření PFX).
+9. Zadejte nebo vyhledejte název souboru, kam se má certifikát Uložit (použijte. Přípona PFX).
 10. Klikněte na **Další**.
 11. Klikněte na **Finish** (Dokončit).
 12. Klikněte na tlačítko **OK**.
@@ -448,42 +448,42 @@ V **Průvodci exportem certifikátu**:
 ## <a name="import-certificate"></a>Import certifikátu
 V Průvodci importem certifikátu:
 
-1. Vyberte umístění obchodu.
+1. Vyberte umístění úložiště.
    
-   * Vyberte **aktuálního uživatele,** pokud ke službě budou přistupovat pouze procesy spuštěné pod aktuálním uživatelem.
-   * Vyberte **možnost Místní počítač,** pokud budou ke službě přistupovat jiné procesy v tomto počítači.
+   * Vyberte **aktuálního uživatele** , pokud budou ke službě přistupovat jenom procesy spuštěné v rámci aktuálního uživatele.
+   * Vyberte možnost **místní počítač** , pokud budou k této službě přistupovat jiné procesy v tomto počítači.
 2. Klikněte na **Další**.
-3. Pokud importujete ze souboru, potvrďte cestu k souboru.
-4. Pokud import . Soubor PFX:
-   1. Zadejte heslo chránící soukromý klíč.
-   2. Vybrat volby importu
-5. Vyberte certifikáty "Umístit" v následujícím obchodě
+3. Při importu ze souboru potvrďte cestu k souboru.
+4. Při importu. Soubor PFX:
+   1. Zadejte heslo pro ochranu privátního klíče.
+   2. Vybrat možnosti importu
+5. Vyberte "umístit" certifikáty v následujícím úložišti
 6. Klikněte na **Browse** (Procházet).
 7. Vyberte požadované úložiště.
 8. Klikněte na **Finish** (Dokončit).
    
-   * Pokud bylo vybráno úložiště Důvěryhodné kořenové certifikační autority, klepněte na tlačítko **Ano**.
-9. Ve všech oknech dialogových oken klikněte na **OK.**
+   * Pokud se zvolilo úložiště Důvěryhodné kořenové certifikační autority, klikněte na **Ano**.
+9. Ve všech dialogových oknech klikněte na **OK** .
 
 ## <a name="upload-certificate"></a>Nahrání certifikátu
 Na webu [Azure Portal](https://portal.azure.com/)
 
-1. Vyberte **Možnost Cloudové služby**.
+1. Vyberte **Cloud Services**.
 2. Vyberte cloudovou službu.
-3. V horní nabídce klikněte na **Certifikáty**.
-4. Na dolním panelu klikněte na **Nahrát**.
+3. V horní nabídce klikněte na **certifikáty**.
+4. Na dolním panelu klikněte na **Odeslat**.
 5. Vyberte soubor certifikátu.
-6. Pokud se jedná o . PFX, zadejte heslo pro soukromý klíč.
+6. Pokud se jedná o. Soubor PFX, zadejte heslo pro privátní klíč.
 7. Po dokončení zkopírujte kryptografický otisk certifikátu z nové položky v seznamu.
 
-## <a name="other-security-considerations"></a>Další aspekty zabezpečení
-Nastavení TLS popsané v tomto dokumentu šifrují komunikaci mezi službou a jejími klienty při použití koncového bodu HTTPS. To je důležité, protože pověření pro přístup k databázi a potenciálně další citlivé informace jsou obsaženy v komunikaci. Všimněte si však, že služba přetrvává interní stav, včetně pověření, ve svých interních tabulkách v databázi Microsoft Azure SQL, které jste poskytli pro úložiště metadat v předplatném Microsoft Azure. Tato databáze byla definována jako součást následujícího nastavení v konfiguračním souboru služby (. CSCFG soubor): 
+## <a name="other-security-considerations"></a>Další otázky zabezpečení
+Nastavení TLS popsaná v tomto dokumentu šifrují komunikaci mezi službou a jejími klienty při použití koncového bodu HTTPS. To je důležité, protože přihlašovací údaje pro přístup k databázi a potenciálně jiné citlivé informace jsou obsaženy v komunikaci. Upozorňujeme však, že služba uchovává vnitřní stav, včetně přihlašovacích údajů, ve svých interních tabulkách v Microsoft Azure SQL Database, které jste poskytli pro úložiště metadat v rámci Microsoft Azure předplatného. Tato databáze byla definována jako součást následujícího nastavení v konfiguračním souboru služby (. Soubor. CSCFG): 
 
 ```xml
 <Setting name="ElasticScaleMetadata" value="Server=…" />
 ```
 
-Pověření uložená v této databázi jsou šifrována. Jako osvědčený postup však zajistěte, aby webové i pracovní role nasazení služeb byly aktuální a zabezpečené, protože obě mají přístup k databázi metadat a k certifikátu používanému pro šifrování a dešifrování uložených přihlašovacích údajů. 
+Přihlašovací údaje uložené v této databázi jsou šifrované. Osvědčeným postupem je ale zajistit, aby byly webové i pracovní role nasazení služeb aktuální a zabezpečené, protože oba mají přístup k databázi metadat a k certifikátu používanému k šifrování a dešifrování uložených přihlašovacích údajů. 
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

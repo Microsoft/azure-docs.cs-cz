@@ -1,86 +1,86 @@
 ---
 title: Použití fondů systémových uzlů ve službě Azure Kubernetes Service (AKS)
-description: Zjistěte, jak vytvářet a spravovat fondy systémových uzlů ve službě Azure Kubernetes Service (AKS)
+description: Naučte se vytvářet a spravovat fondy systémových uzlů ve službě Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
 ms.date: 04/06/2020
 ms.openlocfilehash: b567d9e618877463e1e659f368d35fbb787a4ef2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81259064"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Správa fondů systémových uzlů ve službě Azure Kubernetes Service (AKS)
 
-Ve službě Azure Kubernetes Service (AKS) jsou uzly stejné konfigurace seskupeny do *fondů uzlů*. Fondy uzlů obsahují základní virtuální počítače, které spouštějí vaše aplikace. Fondy systémových uzlů a fondy uživatelských uzlů jsou dva různé režimy fondu uzlů pro clustery AKS. Fondy systémových uzlů slouží primárnímu účelu hostování kritických systémových podů, jako je CoreDNS a tunnelfront. Fondy uživatelských uzlů slouží primárnímu účelu hostování podů aplikací. Pody aplikací však lze naplánovat ve fondech systémových uzlů, pokud chcete mít v clusteru AKS pouze jeden fond. Každý cluster AKS musí obsahovat alespoň jeden fond systémových uzlů s alespoň jedním uzlem. 
+Ve službě Azure Kubernetes Service (AKS) jsou uzly stejné konfigurace seskupeny dohromady do *fondů uzlů*. Fondy uzlů obsahují základní virtuální počítače, na kterých běží vaše aplikace. Fondy systémových uzlů a fondy uživatelských uzlů jsou dva různé režimy fondu uzlů pro clustery AKS. Fondy systémových uzlů slouží jako primární účel hostování důležitých systémových lusků, jako jsou například CoreDNS a tunnelfront. Fondy uživatelských uzlů slouží jako primární účel hostování aplikace. V případě, že chcete mít v clusteru AKS jenom jeden fond, je ale možné naplánovat použití lusků na uzlech systému. Každý cluster AKS musí obsahovat alespoň jeden fond uzlů systému s alespoň jedním uzlem. 
 
 > [!Important]
-> Pokud spustíte fond jednoho systémového uzlu pro cluster AKS v produkčním prostředí, doporučujeme použít alespoň tři uzly pro fond uzlů.
+> Pokud pro cluster AKS spustíte jeden fond uzlů systému v produkčním prostředí, doporučujeme pro fond uzlů použít aspoň tři uzly.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-* Potřebujete nainstalované a nakonfigurované azure CLI verze 2.3.1 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
+* Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.3.1 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
 ## <a name="limitations"></a>Omezení
 
-Následující omezení platí při vytváření a správě clusterů AKS, které podporují fondy systémových uzlů.
+Při vytváření a správě clusterů AKS, které podporují fondy systémových uzlů, platí následující omezení.
 
-* Viz [Kvóty, omezení velikosti virtuálního počítače a dostupnost oblasti ve službě Azure Kubernetes Service (AKS).][quotas-skus-regions]
-* Cluster AKS musí být sestaven s škálovacími sadami virtuálních strojů jako typ virtuálního počítače.
-* Název fondu uzlů může obsahovat pouze malá alfanumerická písmena a musí začínat s malou písmena. Pro fondy uzlů Linux délka musí být mezi 1 a 12 znaků. U fondů uzlů systému Windows musí být délka mezi 1 a 6 znaky.
+* Podívejte se [na téma kvóty, omezení velikosti virtuálních počítačů a dostupnost oblasti ve službě Azure Kubernetes Service (AKS)][quotas-skus-regions].
+* Cluster AKS musí být sestavený s virtuálním počítačem Scale Sets jako typ virtuálního počítače.
+* Název fondu uzlů může obsahovat jenom malé alfanumerické znaky a musí začínat malým písmenem. U fondů uzlů se systémem Linux musí být délka v rozmezí od 1 do 12 znaků. U fondů uzlů Windows musí mít délka 1 až 6 znaků.
 
 ## <a name="system-and-user-node-pools"></a>Fondy systémových a uživatelských uzlů
 
-Uzly fondu systémových uzlů mají každý popisek **kubernetes.azure.com/mode: system**. Každý cluster AKS obsahuje alespoň jeden fond systémových uzlů. Fondy systémových uzlů mají následující omezení:
+Uzly fondu systémových uzlů mají jmenovku **Kubernetes.Azure.com/Mode: System**. Každý cluster AKS obsahuje alespoň jeden fond uzlů systému. Fondy systémových uzlů mají následující omezení:
 
 * Systémové fondy osType musí být Linux.
-* Uživatelské uzly fondy osType může být Linux nebo Windows.
-* Systémové fondy musí obsahovat alespoň jeden uzel a fondy uživatelských uzlů mohou obsahovat nula nebo více uzlů.
-* Fondy systémových uzlů vyžadují skladovou položku virtuálního zařízení s alespoň 2 virtuálními procesory a 4 GB paměti.
-* Fondy systémových uzlů musí podporovat alespoň 30 podů, jak je popsáno [ve vzorci minimální a maximální hodnoty pro pody][maximum-pods].
-* Fondy přímých uzlů vyžadují fondy uzlů uživatelů.
+* Fondy uživatelských uzlů osType můžou být Linux nebo Windows.
+* Systémové fondy musí obsahovat alespoň jeden uzel a fondy uživatelských uzlů můžou obsahovat nula nebo víc uzlů.
+* Fondy systémových uzlů vyžadují SKU virtuálního počítače minimálně 2 vCPU a 4 GB paměti.
+* Fondy systémových uzlů musí podporovat aspoň 30 lusků, jak je popsáno v části [vzorec minimální a maximální hodnoty pro lusky][maximum-pods].
+* Fondy uzlů bodu musí vyžadovat fondy uživatelských uzlů.
 
-S fondy uzlů můžete provést následující operace:
+S fondy uzlů můžete provádět následující operace:
 
-* Změňte fond systémových uzlů jako fond uživatelských uzlů za předpokladu, že máte jiný fond systémových uzlů, který zaujme jeho místo v clusteru AKS.
-* Změňte fond uživatelských uzlů jako fond systémových uzlů.
+* Změňte fond uzlů systému tak, aby byl fondem uživatelských uzlů za předpokladu, že máte jiný fond uzlů systému, aby bylo možné provést místo v clusteru AKS.
+* Změňte fond uzlů uživatele tak, aby byl fondem uzlů systému.
 * Odstraňte fondy uživatelských uzlů.
-* Fondy systémových uzlů můžete odstranit za předpokladu, že máte jiný fond systémových uzlů, který zaujme své místo v clusteru AKS.
-* Cluster AKS může mít více fondů systémových uzlů a vyžaduje alespoň jeden fond systémových uzlů.
+* Můžete odstranit fondy systémových uzlů, pokud máte jiný fond uzlů systému, aby bylo možné provést místo v clusteru AKS.
+* Cluster AKS může mít několik fondů systémových uzlů a vyžaduje alespoň jeden fond uzlů systému.
 
-## <a name="create-a-new-aks-cluster-with-a-system-node-pool"></a>Vytvoření nového clusteru AKS s fondem systémových uzlů
+## <a name="create-a-new-aks-cluster-with-a-system-node-pool"></a>Vytvoření nového clusteru AKS s fondem uzlů systému
 
-Při vytváření nového clusteru AKS automaticky vytvoříte fond systémových uzlů s jedním uzlem. Počáteční fond uzlů je ve výchozím nastavení nastaven na typový systém. Když vytvoříte nové fondy uzlů s přidáním uzlu azaks, tyto fondy uzlů jsou fondy uživatelských uzlů, pokud explicitně nezadáte parametr režimu.
+Když vytváříte nový cluster AKS, automaticky se vytvoří fond systémových uzlů s jedním uzlem. Výchozí fond uzlů je výchozím režimem typu System. Když vytvoříte nové fondy uzlů pomocí AZ AKS nodepool Add, budou tyto fondy uzlů fondy uživatelských uzlů, pokud explicitně neurčíte parametr Mode.
 
-Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v oblasti *eastus.*
+Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v oblasti *eastus* .
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Pomocí příkazu [az aks create][az-aks-create] vytvořte cluster AKS. Následující příklad vytvoří cluster s názvem *myAKSCluster* s jedním systémem fondu obsahující jeden uzel. Pro produkční úlohy se ujistěte, že používáte fondy systémových uzlů s alespoň třemi uzly. Tato operace může trvat několik minut.
+Pomocí příkazu [az aks create][az-aks-create] vytvořte cluster AKS. Následující příklad vytvoří cluster s názvem *myAKSCluster* s jedním systémovým fondem, který obsahuje jeden uzel. V případě produkčních úloh se ujistěte, že používáte fondy systémových uzlů s alespoň třemi uzly. Dokončení této operace může trvat několik minut.
 
 ```azurecli-interactive
 az aks create -g myResourceGroup --name myAKSCluster --node-count 1 --generate-ssh-keys
 ```
 
-## <a name="add-a-system-node-pool-to-an-existing-aks-cluster"></a>Přidání fondu systémových uzlů do existujícího clusteru AKS
+## <a name="add-a-system-node-pool-to-an-existing-aks-cluster"></a>Přidání fondu uzlů systému do existujícího clusteru AKS
 
-Do existujících clusterů AKS můžete přidat jeden nebo více fondů systémových uzlů. Následující příkaz přidá fond uzlů systému typu režimu s výchozím počtem tří uzlů.
+Do existujících clusterů AKS můžete přidat jeden nebo více fondů systémových uzlů. Následující příkaz přidá fond uzlů typu režim s výchozím počtem tří uzlů.
 
 ```azurecli-interactive
 az aks nodepool add -g myResourceGroup --cluster-name myAKSCluster -n mynodepool --mode system
 ```
-## <a name="show-details-for-your-node-pool"></a>Zobrazit podrobnosti pro fond uzlů
+## <a name="show-details-for-your-node-pool"></a>Zobrazit podrobnosti o fondu uzlů
 
-Můžete zkontrolovat podrobnosti fondu uzlů pomocí následujícího příkazu.  
+Podrobnosti o fondu uzlů můžete zjistit pomocí následujícího příkazu.  
 
 ```azurecli-interactive
 az aks nodepool show -g myResourceGroup --cluster-name myAKSCluster -n mynodepool
 ```
 
-Režim typu **Systém** je definován pro fondy systémových uzlů a režim typu **Uživatel** je definován pro fondy uživatelských uzlů.
+Režim **systému** typů je definován pro fondy systémových uzlů a režim typu **uživatel** je definován pro fondy uživatelských uzlů.
 
 ```output
 {
@@ -114,26 +114,26 @@ Režim typu **Systém** je definován pro fondy systémových uzlů a režim typ
 
 ## <a name="update-system-and-user-node-pools"></a>Aktualizace fondů systémových a uživatelských uzlů
 
-Můžete změnit režimy pro systémové i uživatelské uzlové fondy. Fond systémových uzlů můžete změnit na fond uživatelů pouze v případě, že v clusteru AKS již existuje jiný fond systémových uzlů.
+Můžete změnit režimy fondů systémových i uživatelských uzlů. Fond uzlů systému můžete změnit na fond uživatelů pouze v případě, že v clusteru AKS již existuje jiný fond uzlů systému.
 
-Tento příkaz změní fond systémových uzlů na fond uživatelských uzlů.
+Tento příkaz změní fond uzlů systému na fond uzlů uživatele.
 
 ```azurecli-interactive
 az aks nodepool update -g myResourceGroup --cluster-name myAKSCluster -n mynodepool --mode user
 ```
 
-Tento příkaz změní fond uživatelských uzlů na fond systémových uzlů.
+Tento příkaz změní fond uzlů uživatele na fond uzlů systému.
 
 ```azurecli-interactive
 az aks nodepool update -g myResourceGroup --cluster-name myAKSCluster -n mynodepool --mode system
 ```
 
-## <a name="delete-a-system-node-pool"></a>Odstranění fondu systémových uzlů
+## <a name="delete-a-system-node-pool"></a>Odstranění fondu uzlů systému
 
 > [!Note]
-> Chcete-li použít fondy systémových uzlů v clusterech AKS před verzí rozhraní API 2020-03-02, přidejte nový fond systémových uzlů a odstraňte původní výchozí fond uzlů.
+> Pokud chcete použít fondy systémových uzlů v clusterech AKS před rozhraním API verze 2020-03-02, přidejte nový fond uzlů systému a pak odstraňte původní výchozí fond uzlů.
 
-Dříve nebylo možné odstranit fond systémových uzlů, což byl počáteční výchozí fond uzlů v clusteru AKS. Nyní máte možnost odstranit všechny fondy uzlů z clusterů. Vzhledem k tomu, že clustery AKS vyžadují alespoň jeden fond systémových uzlů, musíte mít v clusteru AKS alespoň dva fondy systémových uzlů, než můžete jeden z nich odstranit.
+Dřív jste nedokázali odstranit fond uzlů systému, který byl počátečním výchozím fondem uzlů v clusteru AKS. Teď máte flexibilitu při odstraňování všech fondů uzlů z vašich clusterů. Vzhledem k tomu, že clustery AKS vyžadují aspoň jeden fond uzlů systému, musíte mít ve svém clusteru AKS aspoň dva fondy systémových uzlů, než budete moct odstranit jeden z nich.
 
 ```azurecli-interactive
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster -n mynodepool
@@ -141,7 +141,7 @@ az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster -n mynodep
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli, jak vytvořit a spravovat fondy systémových uzlů v clusteru AKS. Další informace o použití více fondů uzlů naleznete v tématu [použití více fondů uzlů][use-multiple-node-pools].
+V tomto článku jste zjistili, jak vytvářet a spravovat fondy systémových uzlů v clusteru AKS. Další informace o použití více fondů uzlů najdete v tématu [použití více fondů uzlů][use-multiple-node-pools].
 
 <!-- EXTERNAL LINKS -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/

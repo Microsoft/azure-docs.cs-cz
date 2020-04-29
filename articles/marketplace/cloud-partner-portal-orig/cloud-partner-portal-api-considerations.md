@@ -1,6 +1,6 @@
 ---
-title: Důležité informace o rozhraní API | Azure Marketplace
-description: Správa verzí, zpracování chyb a problémy s autorizací při použití rozhraní API marketplace.
+title: Hlediska rozhraní API | Azure Marketplace
+description: Správa verzí, zpracování chyb a problémy s autorizací při použití rozhraní API Marketplace
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: e4d4d5cb16e1037458d09f8c7681ab2d2ecf8676
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81256327"
 ---
-# <a name="api-considerations"></a>Důležité informace o rozhraní API
+# <a name="api-considerations"></a>Požadavky rozhraní API
 
 <a name="api-versioning"></a>Správa verzí rozhraní API
 --------------
 
 > [!NOTE]
-> Api portálu pro partnery cloudu jsou integrovaná s Partnerským centrem a budou fungovat i po migraci nabídek do Centra partnerů. Integrace přináší malé změny. Zkontrolujte změny uvedené v [referenčním rozhraní API portálu cloudových partnerů a](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) ujistěte se, že váš kód bude fungovat i po migraci do Centra partnerů.
+> Rozhraní API pro portál partnerů cloudu jsou integrovaná do partnerského centra a budou fungovat i po migraci nabídek do partnerského centra. Integrace přináší malé změny. Projděte si změny uvedené v části [portál partnerů cloudu rozhraní API](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) , abyste zajistili, že váš kód bude i nadále fungovat po migraci do partnerského centra.
 
-Může existovat více verzí rozhraní API, které jsou k dispozici současně. Klienti musí určit, kterou verzi chtějí `api-version` vyvolat použití zadáním parametru jako součást řetězce dotazu.
+Může existovat více verzí rozhraní API, které jsou k dispozici ve stejnou dobu. Klienti musí určit, kterou verzi chtějí vyvolat použití, zadáním `api-version` parametru jako součásti řetězce dotazu.
 
    `GET https://cloudpartner.azure.com/api/offerTypes?api-version=2017-10-31`
 
@@ -40,13 +40,13 @@ Odpověď na požadavek s neznámou nebo neplatnou verzí rozhraní API je kód 
 <a name="errors"></a>chyby
 ------
 
-Rozhraní API reaguje na chyby s odpovídající kódy stavu HTTP a volitelně další informace v odpovědi serializované jako JSON.
-Pokud se zobrazí chyba, zejména chyba třídy 400, neopakujte požadavek před opravou základní příčiny. Například ve výše vzorové odpovědi opravte parametr verze rozhraní API před opětovnou odesláním požadavku.
+Rozhraní API reaguje na chyby s odpovídajícími kódy stavu HTTP a volitelně také další informace v odpovědi serializované jako JSON.
+Pokud obdržíte chybu, obzvláště Chyba 400, nemusíte požadavek opakovat, než opravíte původní příčinu. Například před odesláním požadavku opravte parametr verze rozhraní API v ukázkové odpovědi výše.
 
-<a name="authorization-header"></a>Hlavička autorizace
+<a name="authorization-header"></a>Autorizační hlavička
 --------------------
 
-Pro všechna rozhraní API v tomto odkazu musíte předat hlavičku autorizace spolu s tokenem nosiče získaným z Azure Active Directory (Azure AD). Tato hlavička je vyžadována pro příjem platné odpovědi; pokud není k `401 Unauthorized` dispozici, je vrácena chyba. 
+Pro všechna rozhraní API v tomto odkazu musíte předat autorizační hlavičku spolu s nosným tokenem získaným z Azure Active Directory (Azure AD). Tato hlavička je vyžadována pro příjem platné odpovědi; Pokud není k `401 Unauthorized` dispozici, je vrácena chyba. 
 
 ``` HTTP
   GET https://cloudpartner.azure.com/api/offerTypes?api-version=2016-08-01-preview

@@ -1,6 +1,6 @@
 ---
-title: Škálování koncových bodů streamování pomocí portálu Azure | Dokumenty společnosti Microsoft
-description: Tento kurz vás provede kroky škálování koncových bodů streamování s portálem Azure.
+title: Škálování koncových bodů streamování s Azure Portal | Microsoft Docs
+description: Tento kurz vás provede jednotlivými kroky při škálování koncových bodů streamování pomocí Azure Portal.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 40820170bae275f090c5f898387698fc562e59ae
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80985537"
 ---
 # <a name="scale-streaming-endpoints-with-the-azure-portal"></a>Škálování koncových bodů streamování pomocí webu Azure Portal
@@ -29,24 +29,24 @@ ms.locfileid: "80985537"
 > 
 > 
 
-Koncové body streamování **Premium** jsou vhodné pro pokročilé úlohy a poskytují vyhrazenou a škálovatelnou kapacitu šířky pásma. Zákazníci, kteří mají koncový bod streamování **Premium**, ve výchozím nastavení získají jednu jednotku streamování (SU). Koncový bod streamování je možné škálovat přidáním jednotek streamování. Každá jednotka streamování poskytuje aplikaci další kapacitu šířky pásma. Další informace o typech koncových bodů streamování a konfiguraci CDN najdete v tématu [Přehled koncového bodu streamování.](media-services-streaming-endpoints-overview.md)
+Koncové body streamování **Premium** jsou vhodné pro pokročilé úlohy a poskytují vyhrazenou a škálovatelnou kapacitu šířky pásma. Zákazníci, kteří mají koncový bod streamování **Premium**, ve výchozím nastavení získají jednu jednotku streamování (SU). Koncový bod streamování je možné škálovat přidáním jednotek streamování. Každá jednotka streamování poskytuje aplikaci další kapacitu šířky pásma. Další informace o typech koncových bodů streamování a konfiguraci CDN najdete v tématu [Přehled koncového bodu streamování](media-services-streaming-endpoints-overview.md) .
  
-Toto téma ukazuje, jak škálovat koncový bod streamování.
+V tomto tématu se dozvíte, jak škálovat koncový bod streamování.
 
 Podrobné informace o cenách najdete v článku [Ceny služby Azure Media Services](https://azure.microsoft.com/pricing/details/media-services/).
 
-## <a name="scale-streaming-endpoints"></a>Měřítko koncových bodů streamování
+## <a name="scale-streaming-endpoints"></a>Škálování koncových bodů streamování
 
-Chcete-li změnit počet jednotek streamování, postupujte takto:
+Pokud chcete změnit počet jednotek streamování, udělejte toto:
 
 1. Na webu [Azure Portal](https://portal.azure.com/) zvolte účet Azure Media Services.
-2. V okně **Nastavení** vyberte **Položky koncových bodů streamování**.
-3. Klikněte na koncový bod streamování, který chcete škálovat. 
+2. V okně **Nastavení** vyberte **koncové body streamování**.
+3. Klikněte na koncový bod streamování, u kterého chcete škálovat. 
 
     > [!NOTE] 
-    > Škálovat lze pouze koncové body **streamování Premium.**
+    > Škálovat můžete jenom koncové body streamování **Premium** .
 
-4. Posunutím posuvníku určete počet jednotek streamování.
+4. Přesunutím posuvníku určete počet jednotek streamování.
 
     ![Koncový bod streamování](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints3.png)
 

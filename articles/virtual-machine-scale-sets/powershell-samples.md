@@ -1,6 +1,6 @@
 ---
 title: Ukázky Azure PowerShellu
-description: Tabulka, která obsahuje odkazy na ukázkové bash skripty vytvořené pomocí Azure PowerShellu, jako je vytváření a správa škálovací sady.
+description: Tabulka, která obsahuje odkazy na ukázkové skripty bash vytvořené pomocí Azure PowerShell, jako je vytváření a Správa sady škálování.
 author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
@@ -9,13 +9,13 @@ ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: b0c5f7fb3841df1cc5649d48348d985311a97062
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81011340"
 ---
-# <a name="azure-powershell-samples-for-virtual-machine-scale-sets"></a>Ukázky Prostředí Azure PowerShell pro škálovací sady virtuálních strojů.
+# <a name="azure-powershell-samples-for-virtual-machine-scale-sets"></a>Ukázky Azure PowerShell pro Virtual Machine Scale Sets.
 
 Následující tabulka obsahuje odkazy na skripty Bash vytvořené pomocí Azure PowerShellu.
 

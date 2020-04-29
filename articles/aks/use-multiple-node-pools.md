@@ -1,51 +1,51 @@
 ---
-title: Použití fondů více uzlů ve službě Azure Kubernetes Service (AKS)
-description: Zjistěte, jak vytvořit a spravovat fondy více uzlů pro cluster ve službě Azure Kubernetes Service (AKS).
+title: Použití více fondů uzlů ve službě Azure Kubernetes Service (AKS)
+description: Naučte se vytvářet a spravovat fondy více uzlů pro cluster ve službě Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
 ms.openlocfilehash: f948c115b86abc532a121c68fa7a148ff15caae9
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81259081"
 ---
-# <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vytvoření a správa fondů více uzlů pro cluster ve službě Azure Kubernetes Service (AKS)
+# <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vytvoření a Správa fondů více uzlů pro cluster ve službě Azure Kubernetes (AKS)
 
-Ve službě Azure Kubernetes Service (AKS) jsou uzly stejné konfigurace seskupeny do *fondů uzlů*. Tyto fondy uzlů obsahují základní virtuální počítače, které spouštějí vaše aplikace. Počáteční počet uzlů a jejich velikost (SKU) je definována při vytváření clusteru AKS, který vytvoří [fond systémových uzlů][use-system-pool]. Chcete-li podporovat aplikace, které mají různé požadavky na výpočetní prostředky nebo úložiště, můžete vytvořit další *fondy uživatelských uzlů*. Fondy systémových uzlů slouží primárnímu účelu hostování kritických systémových podů, jako je CoreDNS a tunnelfront. Fondy uživatelských uzlů slouží primárnímu účelu hostování podů aplikací. Pody aplikací však lze naplánovat ve fondech systémových uzlů, pokud chcete mít v clusteru AKS pouze jeden fond. Fondy uzlů uživatelů jsou místo, kam umístíte pody specifické pro aplikaci. Tyto fondy dalších uživatelských uzlů můžete například použít k poskytování grafických procesorů pro aplikace náročné na výpočetní výkon nebo přístupu k vysoce výkonnému úložišti SSD.
+Ve službě Azure Kubernetes Service (AKS) jsou uzly stejné konfigurace seskupeny dohromady do *fondů uzlů*. Tyto fondy uzlů obsahují základní virtuální počítače, na kterých běží vaše aplikace. Počáteční počet uzlů a jejich velikost (SKU) je definován při vytváření clusteru AKS, který vytváří [fond uzlů systému][use-system-pool]. Pokud chcete podporovat aplikace, které mají různé výpočetní prostředky nebo požadavky na úložiště, můžete vytvořit další *fondy uživatelských uzlů*. Fondy systémových uzlů slouží jako primární účel hostování důležitých systémových lusků, jako jsou například CoreDNS a tunnelfront. Fondy uživatelských uzlů slouží jako primární účel hostování aplikace. V případě, že chcete mít v clusteru AKS jenom jeden fond, je ale možné naplánovat použití lusků na uzlech systému. Fondy uživatelských uzlů jsou tam, kde umístíte jednotlivé lusky pro jednotlivé aplikace. Pomocí těchto dalších fondů uživatelských uzlů můžete například poskytnout GPU pro aplikace náročné na výpočetní výkon nebo přístup k vysoce výkonnému úložišti SSD.
 
 > [!NOTE]
-> Tato funkce umožňuje vyšší kontrolu nad tím, jak vytvořit a spravovat více fondů uzlů. V důsledku toho jsou pro vytvoření/aktualizaci/odstranění vyžadovány samostatné příkazy. Dříve clusterové `az aks create` `az aks update` operace prostřednictvím nebo používal spravované clusterapi a byly jedinou možností změnit rovinu ovládacího prvku a jeden uzel fondu. Tato funkce zveřejňuje samostatnou sadu operací pro fondy agentů prostřednictvím rozhraní API agentPool a vyžaduje použití `az aks nodepool` sady příkazů ke spuštění operací v fondu jednotlivých uzlů.
+> Tato funkce umožňuje vyšší kontrolu nad tím, jak vytvořit a spravovat více fondů uzlů. V důsledku toho jsou pro vytvoření, aktualizaci nebo odstranění vyžadovány samostatné příkazy. Dříve clusterové operace `az aks create` prostřednictvím `az aks update` nebo používaly rozhraní managedCluster API a byly jedinou možností, jak změnit plochu ovládacího prvku a jeden fond uzlů. Tato funkce zpřístupňuje samostatnou sadu operací pro fondy agentů prostřednictvím rozhraní neznámá API a vyžaduje použití `az aks nodepool` sady příkazů ke spouštění operací ve fondu jednotlivých uzlů.
 
-Tento článek ukazuje, jak vytvořit a spravovat více fondů uzlů v clusteru AKS.
+V tomto článku se dozvíte, jak vytvořit a spravovat více fondů uzlů v clusteru AKS.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Potřebujete nainstalované a nakonfigurované azure CLI verze 2.2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
+Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
 ## <a name="limitations"></a>Omezení
 
-Následující omezení platí při vytváření a správě clusterů AKS, které podporují více fondů uzlů:
+Při vytváření a správě clusterů AKS, které podporují více fondů uzlů, platí následující omezení:
 
-* Viz [Kvóty, omezení velikosti virtuálního počítače a dostupnost oblasti ve službě Azure Kubernetes Service (AKS).][quotas-skus-regions]
-* Fondy systémových uzlů můžete odstranit za předpokladu, že máte jiný fond systémových uzlů, který zaujme své místo v clusteru AKS.
-* Systémové fondy musí obsahovat alespoň jeden uzel a fondy uživatelských uzlů mohou obsahovat nula nebo více uzlů.
-* Cluster AKS musí používat standardní správce zatížení sku používat více fondů uzlů, funkce není podporována základní mise pro vyrovnávání zatížení skladových položk.
-* Cluster AKS musí používat škálovací sady virtuálních strojů pro uzly.
-* Název fondu uzlů může obsahovat pouze malá alfanumerická písmena a musí začínat s malou písmena. U fondů uzlů Linux musí být délka mezi 1 a 12 znaky, pro fondy uzlů systému Windows musí být délka mezi 1 a 6 znaky.
-* Všechny fondy uzlů musí být umístěny ve stejné virtuální síti.
-* Při vytváření více fondů uzlů v době vytváření clusteru musí všechny verze Kubernetes používané fondy uzlů odpovídat verzi nastavené pro rovinu ovládacího prvku. To lze aktualizovat po zřízení clusteru pomocí operací fondu uzlů.
+* Podívejte se [na téma kvóty, omezení velikosti virtuálních počítačů a dostupnost oblasti ve službě Azure Kubernetes Service (AKS)][quotas-skus-regions].
+* Můžete odstranit fondy systémových uzlů, pokud máte jiný fond uzlů systému, aby bylo možné provést místo v clusteru AKS.
+* Systémové fondy musí obsahovat alespoň jeden uzel a fondy uživatelských uzlů můžou obsahovat nula nebo víc uzlů.
+* Cluster AKS musí používat standardní nástroj pro vyrovnávání zatížení SKU pro použití více fondů uzlů, ale funkce nástroje pro vyrovnávání zatížení Basic SKU není podporována.
+* Cluster AKS musí pro uzly používat sadu škálování virtuálních počítačů.
+* Název fondu uzlů může obsahovat jenom malé alfanumerické znaky a musí začínat malým písmenem. U fondů uzlů se systémem Linux musí být délka v rozmezí od 1 do 12 znaků, v případě fondů uzlů systému Windows musí být délka mezi 1 a 6 znaky.
+* Všechny fondy uzlů se musí nacházet ve stejné virtuální síti.
+* Při vytváření více fondů uzlů v době vytváření clusteru se musí všechny verze Kubernetes používané fondy uzlů shodovat s verzí nastavenou pro plochu ovládacího prvku. Dá se aktualizovat po zřízení clusteru pomocí operací pro fond uzlů.
 
 ## <a name="create-an-aks-cluster"></a>Vytvoření clusteru AKS
 
 > [!Important]
-> Pokud spustíte fond jednoho systémového uzlu pro cluster AKS v produkčním prostředí, doporučujeme použít alespoň tři uzly pro fond uzlů.
+> Pokud pro cluster AKS spustíte jeden fond uzlů systému v produkčním prostředí, doporučujeme pro fond uzlů použít aspoň tři uzly.
 
-Chcete-li začít, vytvořte cluster AKS s fondem jednoho uzlu. Následující příklad používá příkaz [az group create][az-group-create] k vytvoření skupiny prostředků s názvem *myResourceGroup* v oblasti *eastus.* Cluster AKS s názvem *myAKSCluster* je pak vytvořen pomocí příkazu [az aks create.][az-aks-create] A *--kubernetes-version* *1.15.7* se používá k zobrazení způsobu aktualizace fondu uzlů v následujícím kroku. Můžete zadat libovolnou [podporovanou verzi Kubernetes][supported-versions].
+Začněte tím, že vytvoříte cluster AKS s jedním fondem uzlů. Následující příklad používá příkaz [AZ Group Create][az-group-create] k vytvoření skupiny prostředků s názvem *myResourceGroup* v oblasti *eastus* . Pomocí příkazu [AZ AKS Create][az-aks-create] se pak vytvoří cluster AKS s názvem *myAKSCluster* . A *--Kubernetes-verze* *1.15.7* se používá k zobrazení způsobu aktualizace fondu uzlů v následujícím kroku. Můžete zadat libovolnou [podporovanou verzi Kubernetes][supported-versions].
 
 > [!NOTE]
-> *Základní* skladová položka pro vyrovnávání zatížení **není podporována** při použití více fondů uzlů. Ve výchozím nastavení se clustery AKS vytvářejí pomocí *sku standardního* správce zatížení z portálu Azure CLI a Azure Portal.
+> SKU nástroje Load Balancer úrovně *Basic* není při použití více fondů uzlů **podporována** . Ve výchozím nastavení se clustery AKS s využitím služby Load Balancer *úrovně Standard* (SKU) z Azure CLI a Azure Portal.
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -65,17 +65,17 @@ az aks create \
 Vytvoření clusteru bude trvat několik minut.
 
 > [!NOTE]
-> Chcete-li zajistit, aby váš cluster fungoval spolehlivě, měli byste spustit alespoň 2 (dva) uzly ve výchozím fondu uzlů, protože základní systémové služby běží přes tento fond uzlů.
+> Aby se zajistilo, že váš cluster funguje spolehlivě, měli byste spustit aspoň 2 (dva) uzly ve výchozím fondu uzlů, protože v rámci tohoto fondu uzlů běží základní systémové služby.
 
-Když je cluster připraven, použijte příkaz [az aks get-credentials][az-aks-get-credentials] k `kubectl`získání pověření clusteru pro použití s :
+Až bude cluster připravený, pomocí příkazu [AZ AKS Get-Credentials][az-aks-get-credentials] Získejte přihlašovací údaje clusteru pro použití s `kubectl`:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-## <a name="add-a-node-pool"></a>Přidání fondu uzlů
+## <a name="add-a-node-pool"></a>Přidat fond uzlů
 
-Cluster vytvořený v předchozím kroku má fond jednoho uzlu. Přidáme druhý fond uzlů pomocí příkazu [az aks nodepool add.][az-aks-nodepool-add] Následující příklad vytvoří fond uzlů s názvem *mynodepool,* který běží *3* uzly:
+Cluster vytvořený v předchozím kroku má fond s jedním uzlem. Přidejte druhý fond uzlů pomocí příkazu [AZ AKS nodepool Add][az-aks-nodepool-add] . Následující příklad vytvoří fond uzlů s názvem *mynodepool* , který spouští *3* uzly:
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -87,15 +87,15 @@ az aks nodepool add \
 ```
 
 > [!NOTE]
-> Název fondu uzlů musí začínat s velkým písmenem a může obsahovat pouze alfanumerické znaky. U fondů uzlů Linux musí být délka mezi 1 a 12 znaky, pro fondy uzlů systému Windows musí být délka mezi 1 a 6 znaky.
+> Název fondu uzlů musí začínat malým písmenem a může obsahovat jenom alfanumerické znaky. U fondů uzlů se systémem Linux musí být délka v rozmezí od 1 do 12 znaků, v případě fondů uzlů systému Windows musí být délka mezi 1 a 6 znaky.
 
-Chcete-li zobrazit stav fondů uzlů, použijte příkaz [seznamu seznamu fondu uzlů aks][az-aks-nodepool-list] a zadejte skupinu prostředků a název clusteru:
+Stav fondů uzlů zobrazíte pomocí příkazu [AZ AKS Node Pool list][az-aks-nodepool-list] a zadáním vaší skupiny prostředků a názvu clusteru:
 
 ```azurecli-interactive
 az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluster
 ```
 
-Následující příklad výstup ukazuje, že *mynodepool* byl úspěšně vytvořen se třemi uzly ve fondu uzlů. Při vytvoření clusteru AKS v předchozím kroku byl vytvořen výchozí *uzel1* s počtem uzlů *2*.
+Následující příklad výstupu ukazuje, že *mynodepool* byl úspěšně vytvořen se třemi uzly ve fondu uzlů. Když se v předchozím kroku vytvořil cluster AKS, vytvořil se výchozí *nodepool1* s počtem uzlů *2*.
 
 ```output
 [
@@ -123,20 +123,20 @@ Následující příklad výstup ukazuje, že *mynodepool* byl úspěšně vytvo
 ```
 
 > [!TIP]
-> Pokud při přidání fondu uzlů není zadán žádný *formát VmSize,* je výchozí velikost *Standard_DS2_v3* pro fondy uzlů systému Windows a *Standard_DS2_v2* pro fondy uzlů Linuxu. Pokud není zadán a) *orchestratorVersion,* výchozí verze jako rovina ovládacího prvku.
+> Pokud při přidávání fondu uzlů není zadaný žádný *VmSize* , výchozí velikost se *Standard_DS2_v3* pro fondy uzlů Windows a *Standard_DS2_v2* pro fondy uzlů Linux. Pokud není zadán žádný *OrchestratorVersion* , použije se ve výchozím nastavení stejná verze jako plocha ovládacího prvku.
 
-### <a name="add-a-node-pool-with-a-unique-subnet-preview"></a>Přidání fondu uzlů s jedinečnou podsítí (náhled)
+### <a name="add-a-node-pool-with-a-unique-subnet-preview"></a>Přidat fond uzlů s jedinečnou podsítí (Preview)
 
-Úloha může vyžadovat rozdělení uzlů clusteru do samostatných fondů pro logickou izolaci. Tato izolace může být podporována samostatnými podsítěmi vyhrazenými pro každý fond uzlů v clusteru. To může řešit požadavky, jako je například nesouvislé virtuální sítě adresní prostor rozdělit mezi fondy uzlů.
+Zatížení může vyžadovat rozdělení uzlů clusteru do samostatných fondů pro logickou izolaci. Tuto izolaci je možné podporovat samostatnými podsítěmi, které jsou vyhrazeny pro každý fond uzlů v clusteru. To může adresovat požadavky, jako je například nesouvislý adresní prostor virtuální sítě pro rozdělení mezi fondy uzlů.
 
 #### <a name="limitations"></a>Omezení
 
-* Všechny podsítě přiřazené k utržení musí patřit do stejné virtuální sítě.
-* Systémové pody musí mít přístup ke všem uzlům v clusteru, aby poskytovaly důležité funkce, jako je například rozlišení DNS prostřednictvím služby coreDNS.
-* Přiřazení jedinečné podsítě na fond uzlů je omezené na Azure CNI během náhledu.
-* Použití zásad sítě s jedinečnou podsítí na fond uzlů není během náhledu podporováno.
+* Všechny podsítě přiřazené k nodepools musí patřit do stejné virtuální sítě.
+* Systémové lusky musí mít přístup ke všem uzlům v clusteru, aby poskytovaly důležité funkce, jako je například překlad DNS prostřednictvím coreDNS.
+* Přiřazení jedinečné podsítě na jeden fond uzlů je ve verzi Preview omezené na Azure CNI.
+* Použití zásad sítě s jedinečnou podsítí na jeden fond uzlů není ve verzi Preview podporováno.
 
-Chcete-li vytvořit fond uzlů s vyhrazenou podsítí, předajte ID prostředku podsítě jako další parametr při vytváření fondu uzlů.
+Pokud chcete vytvořit fond uzlů s vyhrazenou podsítí, předejte ID prostředku podsítě jako další parametr při vytváření fondu uzlů.
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -151,16 +151,16 @@ az aks nodepool add \
 ## <a name="upgrade-a-node-pool"></a>Upgrade fondu uzlů
 
 > [!NOTE]
-> Upgrade a škálování operací ve fondu clusteru nebo uzlu nemůže dojít současně, pokud je vrácena chyba. Místo toho musí každý typ operace dokončit cílový prostředek před dalším požadavkem na stejný prostředek. Přečtěte si více o tom na řešení [problémů průvodce](https://aka.ms/aks-pending-upgrade).
+> Operace upgradu a škálování na clusteru nebo ve fondu uzlů se nemůžou vyskytovat současně, pokud se k chybě vrátí. Místo toho musí být každý typ operace dokončen u cílového prostředku před dalším požadavkem na stejný prostředek. Další informace najdete v našem [Průvodci odstraňováním potíží](https://aka.ms/aks-pending-upgrade).
 
-Při prvním kroku byl vytvořen cluster AKS, `--kubernetes-version` byl zadán soubor *1.15.7.* Tím nastavíte verzi Kubernetes pro řídicí rovinu i výchozí fond uzlů. Příkazy v této části vysvětlují, jak upgradovat fond jednoho konkrétního uzlu.
+V případě, že byl cluster AKS původně vytvořen v prvním kroku, `--kubernetes-version` byl zadán parametr *1.15.7* . Tím se nastaví verze Kubernetes pro rovinu ovládacího prvku i pro výchozí fond uzlů. Příkazy v této části vysvětlují, jak upgradovat jeden konkrétní fond uzlů.
 
-Vztah mezi upgradem verze Kubernetes řídicí roviny a fondu uzlů je vysvětlen v [části níže](#upgrade-a-cluster-control-plane-with-multiple-node-pools).
+Vztah mezi upgradem verze Kubernetes roviny ovládacího prvku a fondem uzlů je vysvětlen v [níže uvedené části](#upgrade-a-cluster-control-plane-with-multiple-node-pools).
 
 > [!NOTE]
-> Verze bitové kopie operačního systému fondu uzlů je svázána s verzí clusteru Kubernetes. Po upgradu clusteru získáte pouze upgrady bitových bitových obrázků operačního systému.
+> Verze bitové kopie operačního systému fondu uzlů je svázána s verzí Kubernetes clusteru. Po upgradu clusteru budete dostávat jenom upgrady imagí operačního systému.
 
-Vzhledem k tomu, že existují dva fondy uzlů v tomto příkladu, musíme použít [upgrade uzlu az aks][az-aks-nodepool-upgrade] k upgradu fondu uzlů. Pojďme upgradovat *mynodepool* na Kubernetes *1.15.7*. Pomocí příkazu [az aks nodepool upgrade][az-aks-nodepool-upgrade] fondu uzlů, jak je znázorněno v následujícím příkladu:
+Vzhledem k tomu, že v tomto příkladu existují dva fondy uzlů, je pro upgrade fondu uzlů nutné použít příkaz [AZ AKS nodepool upgrade][az-aks-nodepool-upgrade] . Pojďme upgradovat *mynodepool* na Kubernetes *1.15.7*. Pomocí příkazu [AZ AKS nodepool upgrade][az-aks-nodepool-upgrade] provedete upgrade fondu uzlů, jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 az aks nodepool upgrade \
@@ -171,7 +171,7 @@ az aks nodepool upgrade \
     --no-wait
 ```
 
-Seznam stavu fondů uzlů znovu pomocí příkazu [seznamu seznamu az aks uzlu.][az-aks-nodepool-list] Následující příklad ukazuje, že *mynodepool* je ve stavu *Upgrade* na *1.15.7*:
+Seznam stavů fondů uzlů znovu vypište pomocí příkazu [AZ AKS Node Pool list][az-aks-nodepool-list] . Následující příklad ukazuje, že *mynodepool* je ve stavu *upgradu* na *1.15.7*:
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -208,47 +208,47 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 Upgrade uzlů na zadanou verzi trvá několik minut.
 
-Jako osvědčený postup byste měli upgradovat všechny fondy uzlů v clusteru AKS na stejnou verzi Kubernetes. Výchozí chování `az aks upgrade` je inovovat všechny fondy uzlů spolu s rovinou ovládacího prvku k dosažení tohoto zarovnání. Možnost upgradovat fondy jednotlivých uzlů umožňuje provádět postupnou inovaci a plánovat pody mezi fondy uzlů, aby byla zachována doba provozu aplikace v rámci výše uvedených omezení.
+V rámci osvědčeného postupu byste měli upgradovat všechny fondy uzlů v clusteru AKS na stejnou verzi Kubernetes. Výchozím chováním `az aks upgrade` je upgrade všech fondů uzlů společně s řídicí rovinou, aby bylo možné toto zarovnání dosáhnout. Možnost upgradovat fondy jednotlivých uzlů vám umožní provést postupný upgrade a naplánovat mezi fondy uzlů, aby se zachovala doba provozu aplikace v rámci výše zmíněných omezení.
 
-## <a name="upgrade-a-cluster-control-plane-with-multiple-node-pools"></a>Upgrade roviny řízení clusteru s více fondy uzlů
+## <a name="upgrade-a-cluster-control-plane-with-multiple-node-pools"></a>Upgrade řídicí plochy clusteru s více fondy uzlů
 
 > [!NOTE]
-> Kubernetes používá standardní schéma [samantického správu verzí.](https://semver.org/) Číslo verze je vyjádřeno jako *x.y.z*, kde *x* je hlavní verze, *y* je dílčí verze a *z* je verze opravy. Například ve verzi *1.12.6*je 1 hlavní verze, 12 je dílčí verze a 6 je verze opravy. Kubernetes verze roviny ovládacího prvku a počáteční uzel fondu jsou nastaveny během vytváření clusteru. Všechny další fondy uzlů mají svou verzi Kubernetes nastavenou při jejich přidání do clusteru. Verze Kubernetes se mohou lišit mezi fondy uzlů a také mezi fondem uzlů a rovinou ovládacího prvku.
+> Kubernetes používá standardní [sémantickou](https://semver.org/) verzi schématu správy verzí. Číslo verze se vyjádří jako *x. y. z*, kde *x* je hlavní verze, *y* je podverze a *z* je verze opravy. Například ve verzi *1.12.6*je 1 hlavní verze, 12 je dílčí verze a 6 je verze opravy. Při vytváření clusteru je nastavená verze Kubernetes řídicí roviny a počáteční fond uzlů. Všechny další fondy uzlů mají svou verzi Kubernetes nastavenou při jejich přidání do clusteru. Verze Kubernetes se mohou lišit mezi fondy uzlů i mezi fondem uzlů a rovinou ovládacího prvku.
 
 Cluster AKS má dva objekty prostředků clusteru s přidruženými verzemi Kubernetes.
 
-1. Kubernetesova verze řídicí roviny clusteru.
-2. Fond uzlů s verzí Kubernetes.
+1. Verze Kubernetes roviny ovládacího prvku clusteru
+2. Fond uzlů s verzí Kubernetes
 
-Rovina ovládacího prvku se mapuje na jeden nebo více fondů uzlů. Chování operace upgradu závisí na tom, který příkaz Příkaz příkazu Azure CLI se používá.
+Rovina ovládacího prvku se mapuje na jeden nebo více fondů uzlů. Chování operace upgradu závisí na použitém příkazu rozhraní příkazového řádku Azure.
 
-Upgrade řídicí roviny AKS `az aks upgrade`vyžaduje použití . Tento příkaz inovuje verzi roviny ovládacího prvku a všechny fondy uzlů v clusteru.
+Upgrade roviny ovládacího prvku AKS vyžaduje `az aks upgrade`použití. Tento příkaz provede upgrade verze řídicí roviny a všech fondů uzlů v clusteru.
 
-Vydání příkazu `az aks upgrade` s `--control-plane-only` příznakem upgraduje pouze rovinu řízení clusteru. Žádný z přidružených fondů uzlů v clusteru se nezmění.
+Vydání `az aks upgrade` příkazu s `--control-plane-only` příznakem upgradu pouze na rovinu řízení clusteru. Žádný z přidružených fondů uzlů v clusteru se nemění.
 
-Inovace jednotlivých fondů uzlů `az aks nodepool upgrade`vyžaduje použití . Tento příkaz inovuje pouze fond cílových uzlů se zadanou verzí Kubernetes.
+Upgrade jednotlivých fondů uzlů vyžaduje použití `az aks nodepool upgrade`. Tento příkaz upgraduje pouze cílový fond uzlů s určenou verzí Kubernetes.
 
 ### <a name="validation-rules-for-upgrades"></a>Ověřovací pravidla pro upgrady
 
-Platné upgrady Kubernetes pro řídicí rovinu clusteru a fondy uzlů jsou ověřeny následujícími sadami pravidel.
+Platné upgrady Kubernetes pro řídicí plochu clusteru a fondy uzlů jsou ověřovány následujícími sadami pravidel.
 
 * Pravidla pro platné verze pro upgrade fondů uzlů:
-   * Verze fondu uzlů musí mít stejnou *hlavní* verzi jako rovina ovládacího prvku.
-   * *Dílčí* verze fondu uzlů musí být ve dvou *dílčích* verzích verze roviny ovládacího prvku.
-   * Verze fondu uzlů nemůže být větší `major.minor.patch` než verze ovládacího prvku.
+   * Verze fondu uzlů musí mít stejnou *Hlavní* verzi jako rovina ovládacího prvku.
+   * Podverze fondu *uzlů* musí být *ve dvou podverzích verze řídicí* roviny.
+   * Verze fondu uzlů nemůže být větší než verze ovládacího prvku `major.minor.patch` .
 
 * Pravidla pro odeslání operace upgradu:
-   * Nelze downgrade rovinu ovládacího prvku nebo uzel fondu Kubernetes verze.
-   * Pokud není zadána verze fondu uzlů Kubernetes, chování závisí na používaném klientovi. Deklarace v šablonách Správce prostředků se vrátí zpět na existující verzi definovanou pro fond uzlů, pokud se používá, pokud není nastavena žádná verze roviny ovládacího prvku, která se používá k návratu.
-   * Můžete upgradovat nebo škálovat rovinu ovládacího prvku nebo fond uzlů v daném čase, nelze odeslat více operací na jeden řídicí rovinu nebo prostředek fondu uzlů současně.
+   * Nelze downgradovat plochu ovládacího prvku nebo Kubernetes verzi fondu uzlů.
+   * Pokud není zadána verze Kubernetes fondu uzlů, závisí chování na používaném klientovi. Deklarace v šablonách Správce prostředků se vrátí k existující verzi definované pro fond uzlů, pokud se použije, pokud není nastavená žádná hodnota řídicí roviny, která se použije k vrácení zpět.
+   * Můžete buď upgradovat, nebo škálovat plochu ovládacího prvku nebo fondu uzlů v daném čase, nemůžete současně odeslat více operací na jeden řídicí rovinu nebo prostředek fondu uzlů.
 
 ## <a name="scale-a-node-pool-manually"></a>Ruční škálování fondu uzlů
 
-Jak se mění vaše pracovní vytížení aplikací, možná budete muset škálovat počet uzlů ve fondu uzlů. Počet uzlů lze škálovat nahoru nebo dolů.
+V případě změny požadavků na úlohy aplikace možná budete muset škálovat počet uzlů ve fondu uzlů. Počet uzlů lze škálovat směrem nahoru nebo dolů.
 
 <!--If you scale down, nodes are carefully [cordoned and drained][kubernetes-drain] to minimize disruption to running applications.-->
 
-Chcete-li škálovat počet uzlů ve fondu uzlů, použijte příkaz [měřítko fondu uzlů az aks.][az-aks-nodepool-scale] Následující příklad změní velikost počtu uzlů v *mynodepoolu* na *5*:
+Pokud chcete škálovat počet uzlů ve fondu uzlů, použijte příkaz [AZ AKS Node Pool Scale][az-aks-nodepool-scale] . Následující příklad škáluje počet uzlů v *mynodepool* na *5*:
 
 ```azurecli-interactive
 az aks nodepool scale \
@@ -259,7 +259,7 @@ az aks nodepool scale \
     --no-wait
 ```
 
-Seznam stavu fondů uzlů znovu pomocí příkazu [seznamu seznamu az aks uzlu.][az-aks-nodepool-list] Následující příklad ukazuje, že *mynodepool* je ve stavu *Škálování* s novým počtem *5* uzlů:
+Seznam stavů fondů uzlů znovu vypište pomocí příkazu [AZ AKS Node Pool list][az-aks-nodepool-list] . Následující příklad ukazuje, že *mynodepool* je ve stavu *škálování* s novým počtem *5* uzlů:
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -296,22 +296,22 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 Dokončení operace škálování trvá několik minut.
 
-## <a name="scale-a-specific-node-pool-automatically-by-enabling-the-cluster-autoscaler"></a>Automatické škálování fondu určitých uzlů povolením automatického škálování clusteru
+## <a name="scale-a-specific-node-pool-automatically-by-enabling-the-cluster-autoscaler"></a>Automatické škálování určitého fondu uzlů povolením automatického škálování clusteru
 
-AKS nabízí samostatnou funkci pro automatické škálování fondů uzlů pomocí funkce nazývané [automatické škálování clusteru](cluster-autoscaler.md). Tuto funkci lze povolit na fond uzlů s jedinečným minimálním a maximálním počtem škálování na fond uzlů. Přečtěte si, jak [používat automatický škálátor clusteru pro jeden fond uzlů](cluster-autoscaler.md#use-the-cluster-autoscaler-with-multiple-node-pools-enabled).
+AKS nabízí samostatnou funkci pro automatické škálování fondů uzlů pomocí funkce s názvem [AutoScale clusteru](cluster-autoscaler.md). Tato funkce se dá povolit pro fond uzlů s jedinečným minimálním a maximálním počtem škálování na jeden fond uzlů. Naučte se [používat automatické škálování clusteru pro každý fond uzlů](cluster-autoscaler.md#use-the-cluster-autoscaler-with-multiple-node-pools-enabled).
 
 ## <a name="delete-a-node-pool"></a>Odstranění fondu uzlů
 
-Pokud už fond nepotřebujete, můžete ho odstranit a odebrat základní uzly virtuálního papíru. Chcete-li odstranit fond uzlů, použijte příkaz [delete fondu uzlů a][az-aks-nodepool-delete] zadejte název fondu uzlů. Následující příklad odstraní *mynoodepool* vytvořený v předchozích krocích:
+Pokud už fond nepotřebujete, můžete ho odstranit a odebrat příslušné uzly virtuálních počítačů. Pokud chcete odstranit fond uzlů, použijte příkaz [AZ AKS Node Pool Delete][az-aks-nodepool-delete] a zadejte název fondu uzlů. Následující příklad odstraní *mynoodepool* vytvořená v předchozích krocích:
 
 > [!CAUTION]
-> Neexistují žádné možnosti obnovení pro ztrátu dat, ke kterému může dojít při odstranění fondu uzlů. Pokud pody nelze naplánovat na jiných fondů uzlů, tyto aplikace nejsou k dispozici. Ujistěte se, že neodstraníte fond uzlů, pokud v provozu aplikace nemají zálohy dat nebo možnost spouštět v jiných fondech uzlů ve vašem clusteru.
+> Neexistují žádné možnosti obnovení pro ztrátu dat, ke kterým může dojít při odstranění fondu uzlů. Pokud lusky není možné naplánovat na jiné fondy uzlů, nejsou tyto aplikace k dispozici. Ujistěte se, že neodstraníte fond uzlů v případě, že aplikace v aplikaci neobsahují zálohy dat nebo že je možné spustit na jiných fondech uzlů v clusteru.
 
 ```azurecli-interactive
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster --name mynodepool --no-wait
 ```
 
-Následující ukázkový výstup ze seznamu [seznamu uzlů azaks][az-aks-nodepool-list] ukazuje, že *mynodepool* je ve stavu *Odstranění:*
+Následující příklad výstupu příkazu [AZ AKS Node Pool list][az-aks-nodepool-list] ukazuje, že *mynodepool* je ve stavu *odstranění* :
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -350,11 +350,11 @@ Odstranění uzlů a fondu uzlů trvá několik minut.
 
 ## <a name="specify-a-vm-size-for-a-node-pool"></a>Určení velikosti virtuálního počítače pro fond uzlů
 
-V předchozích příkladech pro vytvoření fondu uzlů byla pro uzly vytvořené v clusteru použita výchozí velikost virtuálního počítače. Běžnější scénář je pro vytváření fondů uzlů s různými velikostmi a možnostmi virtuálních aplikací. Můžete například vytvořit fond uzlů, který obsahuje uzly s velkým množstvím procesoru nebo paměti, nebo fond uzlů, který poskytuje podporu GPU. V dalším kroku [použijete počitadla a tolerance](#schedule-pods-using-taints-and-tolerations) sdělit Plánovač Kubernetes, jak omezit přístup k pody, které lze spustit na těchto uzlech.
+V předchozích příkladech vytvoření fondu uzlů se pro uzly vytvořené v clusteru použila výchozí velikost virtuálního počítače. Častější scénář je vytvořit fondy uzlů s různými velikostmi a možnostmi virtuálních počítačů. Můžete například vytvořit fond uzlů, který obsahuje uzly s velkými objemy procesoru nebo paměti, nebo fond uzlů, který poskytuje podporu GPU. V dalším kroku použijete k informování plánovače Kubernetes, jak omezit přístup k luskům, které se na těchto uzlech můžou spouštět, [pomocí chuti a tolerování](#schedule-pods-using-taints-and-tolerations) .
 
-V následujícím příkladu vytvořte fond uzlů založených na GPU, který používá *Standard_NC6* velikost virtuálního počítače. Tyto virtuální měny jsou poháněny kartou NVIDIA Tesla K80. Informace o dostupných velikostech virtuálních počítačů najdete [v tématu Velikosti pro virtuální počítače s Linuxem v Azure][vm-sizes].
+V následujícím příkladu vytvořte fond uzlů založený na GPU, který používá velikost virtuálního počítače *Standard_NC6* . Tyto virtuální počítače jsou napájené kartou NVIDIA Tesla K80. Informace o dostupných velikostech virtuálních počítačů najdete v tématu [velikosti pro virtuální počítače se systémem Linux v Azure][vm-sizes].
 
-Vytvořte fond uzlů pomocí příkazu přidat fond [uzlů az aks][az-aks-nodepool-add] znovu. Tentokrát zadejte název *gpunodepool*a `--node-vm-size` pomocí parametru určete *velikost Standard_NC6:*
+Vytvořte fond uzlů pomocí příkazu [AZ AKS Node Pool Add][az-aks-nodepool-add] . Tentokrát zadejte název *gpunodepool*a `--node-vm-size` parametr použijte k určení velikosti *Standard_NC6* :
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -366,7 +366,7 @@ az aks nodepool add \
     --no-wait
 ```
 
-Následující příklad výstupu z příkazu [seznamu seznamu uzly azaks][az-aks-nodepool-list] ukazuje, že *gpunodepool* *vytváří* uzly se zadanou *velikostí VmSize*:
+Následující příklad výstupu příkazu [AZ AKS Node Pool list][az-aks-nodepool-list] ukazuje, že *gpunodepool* *vytváří* uzly se zadaným *VmSize*:
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -401,11 +401,11 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
-Trvá několik minut pro *gpunodepool* úspěšně vytvořen.
+Úspěšné vytvoření *gpunodepool* trvá několik minut.
 
-## <a name="schedule-pods-using-taints-and-tolerations"></a>Naplánujte si moduly pomocí počitadla a tolerance
+## <a name="schedule-pods-using-taints-and-tolerations"></a>Naplánování lusků pomocí chuti a tolerovánosti
 
-Nyní máte dva fondy uzlů v clusteru – výchozí fond uzlů původně vytvořený a fond uzlů založený na GPU. Pomocí příkazu [kubectl get nodes][kubectl-get] zobrazte uzly v clusteru. Následující ukázkový výstup ukazuje uzly:
+Nyní máte v clusteru dva fondy uzlů – výchozí fond uzlů byl původně vytvořen a fond uzlů na bázi GPU. K zobrazení uzlů v clusteru použijte příkaz [kubectl Get Nodes][kubectl-get] . Následující příklad výstupu ukazuje uzly:
 
 ```console
 kubectl get nodes
@@ -417,22 +417,22 @@ aks-gpunodepool-28993262-vmss000000  Ready    agent   4m22s   v1.15.7
 aks-nodepool1-28993262-vmss000000    Ready    agent   115m    v1.15.7
 ```
 
-Plánovač Kubernetes můžete použít potu a tolerace omezit úlohy lze spustit na uzlech.
+Plánovač Kubernetes může pomocí chuti a omezení omezit, jaké úlohy je možné spouštět na uzlech.
 
-* Na uzel se použije **počin,** který označuje, že na nich mohou být naplánovány pouze určité pody.
-* **Tolerace** se pak aplikuje na lusk, který jim umožňuje *tolerovat* počin uzlu.
+* Pro uzel, který indikuje, že je možné naplánovat pouze určité lusky, se použije značka **chuti** .
+* **Tolerování** se pak použije na uzel pod, který umožňuje *tolerovat* chuti v uzlu.
 
-Další informace o používání pokročilých naplánovaných funkcí Kubernetes najdete [v tématu Doporučené postupy pro pokročilé funkce plánovače v AKS][taints-tolerations]
+Další informace o použití pokročilých Kubernetes naplánovaných funkcí najdete v tématu [osvědčené postupy pro pokročilé funkce plánovače v AKS][taints-tolerations] .
 
-V tomto příkladu použijte počin na uzlu založeném na GPU pomocí příkazu --node-taints. Z výstupu předchozího `kubectl get nodes` příkazu zadejte název uzlu založeného na GPU. Počitadla se použije jako pár *key=value* a pak jako možnost plánování. Následující příklad používá *sku= gpu* pár a definuje pody jinak mají *NoSchedule* schopnost:
+V tomto příkladu aplikujte na uzel založený na GPU pomocí příkazu--Node-chutis hodnotu chuti. Z výstupu předchozího `kubectl get nodes` příkazu zadejte název uzlu založeného na GPU. Hodnota chuti se aplikuje jako dvojice *klíč = hodnota* a pak možnost plánování. Následující příklad používá dvojici *SKU = GPU* a definuje lusky, jinak mají možnost *neplánovat* :
 
 ```console
 az aks nodepool add --node-taints aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
 ```
 
-Následující základní příklad Manifestu YAML používá tolerance k tomu, aby plánovač Kubernetes mohl spustit pod NGINX v uzlu založeném na GPU. Vhodnější, ale časově náročný příklad spuštění úlohy Tententory proti datové sadě MNIST najdete v [tématu Použití gpu pro úlohy náročné na výpočetní výkon na AKS][gpu-cluster].
+Následující základní příklad YAML manifestu používá tolerovat, aby mohl Plánovač Kubernetes spustit NGINX pod uzlem založeným na GPU. Pro přesnější, ale časově náročný příklad spuštění úlohy Tensorflow s datovou sadou MNIST ručně zapsaných najdete informace v tématu [použití GPU pro úlohy náročné na výpočetní výkon v AKS][gpu-cluster].
 
-Vytvořte soubor `gpu-toleration.yaml` s názvem a zkopírujte v následujícím příkladu YAML:
+Vytvořte soubor s názvem `gpu-toleration.yaml` a zkopírujte ho do následujícího příkladu YAML:
 
 ```yaml
 apiVersion: v1
@@ -457,13 +457,13 @@ spec:
     effect: "NoSchedule"
 ```
 
-Naplánujte pod `kubectl apply -f gpu-toleration.yaml` pomocí příkazu:
+Naplánujte pod pomocí `kubectl apply -f gpu-toleration.yaml` příkazu:
 
 ```console
 kubectl apply -f gpu-toleration.yaml
 ```
 
-Naplánování modulu a vytažení obrazu NGINX trvá několik sekund. Pomocí příkazu [kubectl describe pod][kubectl-describe] zobrazte stav modulu. Následující zhuštěný příklad výstupu ukazuje *sku = gpu:NoSchedule* toleration je použita. V části události plánovač přiřadil pod *k uzlu aks-gpunodepool-28993262-vmss0000000* GPU:
+Naplánování seznamu pod a vyžádání image NGINX trvá několik sekund. Chcete-li zobrazit stav pod, použijte příkaz [kubectl popsat pod][kubectl-describe] . Následující zhuštěný příklad výstupu ukazuje, že se používá nedovolená *položka SKU = GPU:-Schedule* . V části s událostmi plánovači přiřadil uzel pod k uzlu založenému na procesoru *AKS-gpunodepool-28993262-vmss000000* :
 
 ```console
 kubectl describe pod mypod
@@ -484,13 +484,13 @@ Events:
   Normal  Started    4m40s  kubelet, aks-gpunodepool-28993262-vmss000000  Started container
 ```
 
-Pouze pody, které mají tuto toleraci použít lze naplánovat na uzly v *gpunodepool*. Všechny ostatní pod by být naplánováno ve fondu uzlu *1* uzlu. Pokud vytvoříte další fondy uzlů, můžete použít další počina a tolerance k omezení, jaké pody lze naplánovat na tyto prostředky uzlu.
+V uzlech v *gpunodepool*se dají naplánovat jenom lusky, které mají tuto tolerovánost nastavenou. Jakékoli jiné pod by se naplánovaly ve fondu uzlů *nodepool1* . Pokud vytvoříte další fondy uzlů, můžete použít další příchuti a tolerování k omezení, které z nich je možné naplánovat na tyto prostředky uzlu.
 
-## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>Určení počin, popisek nebo značka pro fond uzlů
+## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>Určení značky, značky nebo značky pro fond uzlů
 
-Při vytváření fondu uzlů můžete do tohoto fondu uzlů přidat počin, popisky nebo značky. Když přidáte počin, popisek nebo značku, všechny uzly v rámci tohoto fondu uzlů také získat, že počin, popisek nebo značku.
+Při vytváření fondu uzlů můžete do tohoto fondu uzlů přidat značky, popisky nebo značky. Když přidáte značku, popisek nebo značku, budou mít všechny uzly v tomto fondu uzlů také tuto značku, popisek nebo značku.
 
-Chcete-li vytvořit fond uzlů s počinem, použijte [přidání uzlu az aks][az-aks-nodepool-add]. Zadejte název *taintnp* `--node-taints` a pomocí parametru určete *sku=gpu:NoSchedule* pro podobu.
+Chcete-li vytvořit fond uzlů s příchuti, použijte příkaz [AZ AKS nodepool Add][az-aks-nodepool-add]. Zadejte název *taintnp* a použijte `--node-taints` parametr k určení *SKU = GPU: inschedule* pro chuti.
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -502,7 +502,7 @@ az aks nodepool add \
     --no-wait
 ```
 
-Následující příklad výstupu z příkazu [az aks nodepool list][az-aks-nodepool-list] ukazuje, že *taintnp* *vytváří* uzly se zadanými *uzly Taints*:
+Následující příklad výstupu příkazu [AZ AKS nodepool list][az-aks-nodepool-list] ukazuje, že *taintnp* *vytváří* uzly se zadaným *nodeTaints*:
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -526,11 +526,11 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
-Informace o pozměnění jsou viditelné v Kubernetes pro zpracování pravidel plánování pro uzly.
+Informace o chuti jsou viditelné v Kubernetes pro zpracování pravidel plánování pro uzly.
 
-Můžete také přidat popisky do fondu uzlů během vytváření fondu uzlů. Popisky nastavené ve fondu uzlů jsou přidány do každého uzlu ve fondu uzlů. Tyto [popisky jsou viditelné v Kubernetes][kubernetes-labels] pro zpracování pravidel plánování pro uzly.
+Při vytváření fondu uzlů můžete do fondu uzlů přidat také popisky. Popisky nastavené ve fondu uzlů se přidají do každého uzlu ve fondu uzlů. Tyto [popisky jsou viditelné v Kubernetes][kubernetes-labels] pro zpracování pravidel plánování pro uzly.
 
-Chcete-li vytvořit fond uzlů s popiskem, použijte [az aks nodepool přidat][az-aks-nodepool-add]. Zadejte název *labelnp* `--labels` a pomocí parametru *určete dept=IT* a *costcenter=9999* pro popisky.
+Chcete-li vytvořit fond uzlů s popiskem, použijte příkaz [AZ AKS nodepool Add][az-aks-nodepool-add]. Zadejte název *labelnp* a použijte `--labels` parametr pro určení *oddělení = IT* a *CostCenter = 9999* pro popisky.
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -543,9 +543,9 @@ az aks nodepool add \
 ```
 
 > [!NOTE]
-> Popisek lze nastavit pouze pro fondy uzlů během vytváření fondu uzlů. Popisky musí být také dvojice klíč/hodnota a musí mít [platnou syntaxi][kubernetes-label-syntax].
+> Popisek lze nastavit pouze pro fondy uzlů během vytváření fondu uzlů. Popisky musí také obsahovat dvojici klíč/hodnota a mít [platnou syntaxi][kubernetes-label-syntax].
 
-Následující ukázkový výstup z příkazu [seznamu uzlů azaks][az-aks-nodepool-list] ukazuje, že *labelnp* *vytváří* uzly se zadanými *uzly*:
+Následující příklad výstupu příkazu [AZ AKS nodepool list][az-aks-nodepool-list] ukazuje, že *labelnp* *vytváří* uzly se zadaným *nodeLabels*:
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -570,9 +570,9 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
-Značku Azure můžete použít pro fondy uzlů ve vašem clusteru AKS. Značky aplikované na fond uzlů jsou použity pro každý uzel v rámci fondu uzlů a jsou trvalé prostřednictvím upgradů. Značky jsou také použity na nové uzly přidané do fondu uzlů během operací horizontálního navýšení kapacity. Přidání značky může pomoci s úkoly, jako je sledování zásad nebo odhad nákladů.
+V clusteru AKS můžete použít značku Azure na fondy uzlů. Značky použité pro fond uzlů se aplikují na každý uzel v rámci fondu uzlů a ukládají se prostřednictvím upgradů. Značky jsou také aplikovány na nové uzly přidané do fondu uzlů během operace škálování na více instancí. Přidání značky může pomáhat s úkoly, jako je sledování zásad nebo odhad nákladů.
 
-Vytvořte fond uzlů pomocí přidání [uzlu az aks][az-aks-nodepool-add]. Zadejte *název tagnodepool* `--tag` a pomocí parametru *určete dept=IT* a *costcenter=9999* pro značky.
+Vytvořte fond uzlů pomocí direktivy [AZ AKS nodepool Add][az-aks-nodepool-add]. Zadejte název *tagnodepool* a použijte `--tag` parametr pro určení *oddělení = IT* a *CostCenter = 9999* pro značky.
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -585,9 +585,9 @@ az aks nodepool add \
 ```
 
 > [!NOTE]
-> Parametr můžete použít `--tags` také při použití [příkazu aktualizace uzlu az aks][az-aks-nodepool-update] a také při vytváření clusteru. Během vytváření clusteru `--tags` parametr použije značku na počáteční fond uzlů vytvořený s clusterem. Všechny názvy značek musí dodržovat omezení v [použití značek k uspořádání prostředků Azure][tag-limitation]. Aktualizace fondu uzlů s `--tags` parametrem aktualizuje všechny existující hodnoty značek a připojí všechny nové značky. Například pokud váš fond uzlů měl *dept= IT* a *costcenter = 9999* pro značky a aktualizovali jste ho *team=dev* a *costcenter=111* pro značky, uzel by měl *dept= IT*, *costcenter = 111*a *team = dev* pro značky.
+> `--tags` Parametr můžete použít také při použití příkazu [AZ AKS nodepool Update][az-aks-nodepool-update] a při vytváření clusteru. Při vytváření clusteru použije `--tags` parametr značku na počáteční fond uzlů vytvořený s clusterem. Všechny názvy značek musí vyhovovat omezením v [použití značek k uspořádání prostředků Azure][tag-limitation]. Aktualizace fondu uzlů s `--tags` parametrem aktualizuje všechny existující hodnoty značek a připojí všechny nové značky. Například pokud váš fond uzlů měl *oddělení = IT* a *CostCenter = 9999* pro značky a Vy jste ho aktualizovali pomocí *Team = dev* a *CostCenter = 111* for Tags, budete nodepool mít *oddělení = IT*, *CostCenter = 111*a *Team = dev* for Tags.
 
-Následující ukázkový výstup z příkazu [seznamu aks uzlu][az-aks-nodepool-list] ukazuje, že *tagnodepool* *vytváří* uzly se zadanou *značkou*:
+Následující příklad výstupu příkazu [AZ AKS nodepool list][az-aks-nodepool-list] ukazuje, že *tagnodepool* *vytváří* uzly se zadanou *značkou*:
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -616,15 +616,15 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 ## <a name="manage-node-pools-using-a-resource-manager-template"></a>Správa fondů uzlů pomocí šablony Správce prostředků
 
-Když použijete šablonu Azure Resource Manager k vytvoření a spravované prostředky, můžete obvykle aktualizovat nastavení v šabloně a znovu nasadit aktualizovat prostředek. S fondy uzlů v AKS, počáteční profil fondu uzlů nelze aktualizovat, jakmile byl vytvořen cluster AKS. Toto chování znamená, že nelze aktualizovat existující šablonu Správce prostředků, provést změnu fondů uzlů a znovu nasadit. Místo toho je nutné vytvořit samostatnou šablonu Správce prostředků, která aktualizuje pouze fondy uzlů pro existující cluster AKS.
+Když použijete šablonu Azure Resource Manager k vytváření a správě prostředků, můžete obvykle aktualizovat nastavení v šabloně a znovu nasadit, aby se prostředek aktualizoval. U fondů uzlů v AKS nelze počáteční profil fondu uzlů aktualizovat po vytvoření clusteru AKS. Toto chování znamená, že nemůžete aktualizovat existující šablonu Správce prostředků, provést změnu v fondech uzlů a znovu nasadit. Místo toho je nutné vytvořit samostatnou šablonu Správce prostředků, která aktualizuje pouze fondy uzlů pro existující cluster AKS.
 
-Vytvořte šablonu, například `aks-agentpools.json` a vložte následující ukázkový manifest. Tato ukázková šablona konfiguruje následující nastavení:
+Vytvořte šablonu, například `aks-agentpools.json` a vložte následující vzorový manifest. Tato příklad šablony konfiguruje následující nastavení:
 
-* Aktualizuje fond uzlů *Linux* s názvem *myagentpool* pro spuštění tří uzlů.
-* Nastaví uzly ve fondu uzlů tak, aby spouštěly Kubernetes verze *1.15.7*.
+* Aktualizuje fond uzlů pro *Linux* s názvem *myagentpool* , aby se spouštěly tři uzly.
+* Nastaví uzly ve fondu uzlů tak, aby běžely Kubernetes verze *1.15.7*.
 * Definuje velikost uzlu jako *Standard_DS2_v2*.
 
-Podle potřeby upravte tyto hodnoty podle potřeby k aktualizaci, přidání nebo odstranění fondů uzlů:
+Upravte tyto hodnoty podle potřeby, pokud potřebujete aktualizovat, přidat nebo odstranit fondy uzlů:
 
 ```json
 {
@@ -693,7 +693,7 @@ Podle potřeby upravte tyto hodnoty podle potřeby k aktualizaci, přidání neb
 }
 ```
 
-Nasadit tuto šablonu pomocí příkazu [vytvořit nasazení skupiny az,][az-group-deployment-create] jak je znázorněno v následujícím příkladu. Zobrazí se výzva k zadání existujícího názvu a umístění clusteru AKS:
+Tuto šablonu nasaďte pomocí příkazu [AZ Group Deployment Create][az-group-deployment-create] , jak je znázorněno v následujícím příkladu. Zobrazí se výzva k zadání názvu a umístění pro existující cluster AKS:
 
 ```azurecli-interactive
 az group deployment create \
@@ -702,7 +702,7 @@ az group deployment create \
 ```
 
 > [!TIP]
-> Značku můžete přidat do fondu uzlů přidáním *vlastnosti značky* do šablony, jak je znázorněno v následujícím příkladu.
+> Do fondu uzlů můžete přidat značku přidáním vlastnosti *tag* do šablony, jak je znázorněno v následujícím příkladu.
 > 
 > ```json
 > ...
@@ -720,36 +720,36 @@ az group deployment create \
 > ...
 > ```
 
-Aktualizace clusteru AKS může trvat několik minut v závislosti na nastavení fondu uzlů a operacích, které definujete v šabloně Správce prostředků.
+Aktualizace clusteru AKS může trvat několik minut v závislosti na nastaveních fondu uzlů a operacích, které definujete v šabloně Správce prostředků.
 
-## <a name="assign-a-public-ip-per-node-for-a-node-pool-preview"></a>Přiřazení veřejné IP adresy na uzel pro fond uzlů (náhled)
+## <a name="assign-a-public-ip-per-node-for-a-node-pool-preview"></a>Přiřazení veřejné IP adresy na uzel pro fond uzlů (Preview)
 
 > [!WARNING]
-> Během náhledu přiřazení veřejné IP adresy na uzel ji nelze použít se *standardní skladovou jednotkou pro vyrovnávání zatížení v AKS* z důvodu možného vyrovnání zatížení, která jsou v konfliktu s zřizováním virtuálních počítačů. V důsledku tohoto omezení nejsou fondy agentů systému Windows podporovány s touto funkcí náhledu. Ve verzi Preview musíte použít *skladovou položku základního vykladače zatížení,* pokud potřebujete přiřadit veřejnou IP adresu na uzel.
+> V rámci verze Preview přiřazení veřejné IP adresy na uzel nejde použít s *Standard Load BALANCER SKU v AKS* , protože pravidla nástroje pro vyrovnávání zatížení jsou v konfliktu s ZŘIZOVÁNÍM virtuálních počítačů. V důsledku tohoto omezení nejsou fondy agentů Windows podporovány touto funkcí verze Preview. I když je ve verzi Preview, musíte použít *základní Load BALANCER SKU* , pokud potřebujete přiřadit veřejnou IP adresu na uzel.
 
-AKS uzly nevyžadují své vlastní veřejné IP adresy pro komunikaci. Scénáře však může vyžadovat uzly ve fondu uzlů přijímat své vlastní vyhrazené veřejné IP adresy. Běžný scénář je pro herní úlohy, kde konzole potřebuje vytvořit přímé připojení ke cloudovému virtuálnímu počítači, aby se minimalizovalo směrování. Tohoto scénáře lze dosáhnout na AKS registrací funkce náhledu, Uzel Veřejné IP (náhled).
+AKS uzly nevyžadují pro komunikaci své vlastní veřejné IP adresy. Scénáře ale můžou vyžadovat, aby uzly ve fondu uzlů přijímaly vlastní vyhrazené veřejné IP adresy. Běžným scénářem je použití herních úloh, kde konzola potřebuje vytvořit přímé připojení k virtuálnímu počítači v cloudu, aby se minimalizovaly segmenty směrování. Tento scénář je možné dosáhnout v AKS registrací pro funkci verze Preview, veřejné IP adresy uzlu (Preview).
 
-Zaregistrujte se pro funkci veřejné IP uzlu vydáním následujícího příkazu Azure CLI.
+Zaregistrujte se na funkci veřejné IP adresy uzlu vyvoláním následujícího příkazu rozhraní příkazového řádku Azure.
 
 ```azurecli-interactive
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
 
-Po úspěšné registraci nasaďte šablonu Azure Resource Manager podle stejných pokynů jako [výše](#manage-node-pools-using-a-resource-manager-template) a přidejte logickou vlastnost `enableNodePublicIP` do agentPoolProfiles. Nastavte hodnotu `true` jako ve výchozím `false` nastavení, je nastavena jako by nebyla zadána. 
+Po úspěšné registraci nasaďte šablonu Azure Resource Manager podle [výše](#manage-node-pools-using-a-resource-manager-template) uvedených pokynů a přidejte vlastnost `enableNodePublicIP` Boolean do agentPoolProfiles. Nastavte hodnotu na `true` jako výchozí nastavení, `false` Pokud není zadaná. 
 
-Tato vlastnost je vlastnost pouze pro vytvoření a vyžaduje minimální verzi rozhraní API 2019-06-01. To lze použít pro fondy uzlů Linux u Windows a Windows.
+Tato vlastnost je vlastnost pouze pro dobu vytvoření a vyžaduje minimální verzi rozhraní API 2019-06-01. Tato možnost se dá použít pro fondy uzlů pro Linux i Windows.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-V tomto článku jste vytvořili cluster AKS, který zahrnuje uzly založené na GPU. Chcete-li snížit zbytečné náklady, můžete odstranit *gpunodepool*nebo celý cluster AKS.
+V tomto článku jste vytvořili cluster AKS, který obsahuje uzly založené na GPU. Pokud chcete snížit zbytečné náklady, můžete odstranit *gpunodepool*nebo celý cluster AKS.
 
-Chcete-li odstranit fond uzlů založených na GPU, použijte příkaz [delete az aks nodepool,][az-aks-nodepool-delete] jak je znázorněno v následujícím příkladu:
+Pokud chcete odstranit fond uzlů na bázi GPU, použijte příkaz [AZ AKS nodepool Delete][az-aks-nodepool-delete] , jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster --name gpunodepool
 ```
 
-Chcete-li odstranit samotný cluster, odstraňte skupinu prostředků AKS pomocí příkazu [delete skupiny az:][az-group-delete]
+Pokud chcete samotný cluster odstranit, odstraňte skupinu prostředků AKS pomocí příkazu [AZ Group Delete][az-group-delete] :
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
@@ -757,11 +757,11 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o [fondech systémových uzlů][use-system-pool].
+Přečtěte si další informace o [fondech uzlů systému][use-system-pool].
 
-V tomto článku jste se dozvěděli, jak vytvořit a spravovat více fondů uzlů v clusteru AKS. Další informace o tom, jak řídit pody ve fondech uzlů, naleznete [v tématu Doporučené postupy pro pokročilé funkce plánovače v AKS][operator-best-practices-advanced-scheduler].
+V tomto článku jste zjistili, jak vytvořit a spravovat více fondů uzlů v clusteru AKS. Další informace o tom, jak ovládat lusky napříč fondy uzlů, najdete v tématu [osvědčené postupy pro pokročilé funkce plánovače v AKS][operator-best-practices-advanced-scheduler].
 
-Informace o vytvoření a použití fondů uzlů kontejnerů systému Windows Server naleznete [v tématu Vytvoření kontejneru windows serveru v aks][aks-windows].
+Informace o vytváření a používání fondů uzlů kontejnerů Windows serveru najdete v tématu [vytvoření kontejneru Windows serveru v AKS][aks-windows].
 
 <!-- EXTERNAL LINKS -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/

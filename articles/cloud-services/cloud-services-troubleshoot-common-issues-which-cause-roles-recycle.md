@@ -1,6 +1,6 @@
 ---
-title: Běžné příčiny recyklace rolí cloudových služeb | Dokumenty společnosti Microsoft
-description: Úloha cloudové služby, která se náhle recykluje, může způsobit významné prostoje. Zde jsou některé běžné problémy, které způsobují recyklování rolí, což vám může pomoci snížit prostoje.
+title: Běžné příčiny recyklace rolí cloudové služby | Microsoft Docs
+description: Role cloudové služby, která se náhle recykluje, může způsobit výrazné výpadky. Tady jsou některé běžné problémy, které způsobují recyklaci rolí, což vám může přispět k menšímu výpadku.
 services: cloud-services
 documentationcenter: ''
 author: simonxjx
@@ -15,57 +15,57 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: a644e211cc933ca686f0bd6a13b0d2ba8ae20162
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81114114"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>Běžné potíže, které můžou způsobit recyklaci rolí
-Tento článek popisuje některé běžné příčiny problémů s nasazením a poskytuje tipy pro řešení potíží, které vám pomohou tyto problémy vyřešit. Označení, že existuje problém s aplikací je v případě, že instance role se nezdaří spustit, nebo cykly mezi inicializace, zaneprázdněn a zastavení stavy.
+Tento článek popisuje některé z běžných příčin problémů při nasazení a poskytuje tipy k odstraňování potíží, které vám pomůžou tyto problémy vyřešit. Označuje, že problém s aplikací existuje, když se instance role nepovede spustit, nebo se zacykluje mezi inicializací, zaneprázdněním a stavem zastavení.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="missing-runtime-dependencies"></a>Chybějící závislosti modulu runtime
-Pokud role ve vaší aplikaci závisí na libovolném sestavení, které není součástí rozhraní .NET Framework nebo spravované knihovny Azure, musíte explicitně zahrnout toto sestavení v balíčku aplikace. Mějte na paměti, že ostatní architektury Microsoftu nejsou ve výchozím nastavení v Azure dostupné. Pokud vaše role závisí na takové rozhraní, je nutné přidat tato sestavení do balíčku aplikace.
+Pokud role ve vaší aplikaci spoléhá na jakékoli sestavení, které není součástí .NET Framework nebo spravované knihovny Azure, musíte toto sestavení explicitně zahrnout do balíčku aplikace. Mějte na paměti, že ve výchozím nastavení nejsou v Azure k dispozici další rozhraní Microsoft. Pokud vaše role spoléhá na takové rozhraní, je nutné přidat tato sestavení do balíčku aplikace.
 
-Před sestavením a balíčkem aplikace ověřte následující:
+Před sestavením a zabalením aplikace ověřte následující:
 
-* Pokud používáte Visual Studio, ujistěte se, **že copy local** vlastnost je nastavena na **True** pro každé odkazované sestavení v projektu, který není součástí sady Azure SDK nebo .NET Framework.
-* Ujistěte se, že soubor web.config neodkazuje na žádná nepoužívaná sestavení v elementu kompilace.
-* **Akce sestavení** každého souboru .cshtml je nastavena na **obsah**. Tím zajistíte, že soubory se zobrazí správně v balíčku a umožňuje další odkazované soubory se zobrazí v balíčku.
+* Pokud používáte sadu Visual Studio, ujistěte se, že je vlastnost **Kopírovat místní** nastavena na **hodnotu true** pro každé odkazované sestavení v projektu, které není součástí sady Azure SDK nebo .NET Framework.
+* Zajistěte, aby soubor Web. config neodkazoval na nepoužívaná sestavení v elementu compilation.
+* **Akce sestavení** každého souboru. cshtml je nastavena na **obsah**. Tím se zajistí, že se soubory v balíčku zobrazí správně a povolí se v balíčku zobrazit další odkazované soubory.
 
-## <a name="assembly-targets-wrong-platform"></a>Sestavení cílí na nesprávnou platformu
-Azure je 64bitové prostředí. Proto sestavení .NET zkompilovaná pro 32bitový cíl nebude fungovat v Azure.
+## <a name="assembly-targets-wrong-platform"></a>Sestavení cílí na nesprávnou platformu.
+Azure je 64 prostředí. Proto sestavení .NET zkompilované pro 32 cíl nebudou v Azure fungovat.
 
-## <a name="role-throws-unhandled-exceptions-while-initializing-or-stopping"></a>Role vyvolá neošetřené výjimky při inicializaci nebo zastavení.
-Všechny výjimky, které jsou vyvolány metodami [Třídy RoleEntryPoint,] která zahrnuje metody [OnStart], [OnStop]a [Run,] jsou neošetřené výjimky. Pokud dojde k neošetřené výjimce v jedné z těchto metod, role bude recyklovat. Pokud role je recyklace opakovaně, může být vyvolání neošetřené výjimky pokaždé, když se pokusí spustit.
+## <a name="role-throws-unhandled-exceptions-while-initializing-or-stopping"></a>Role vyvolává neošetřené výjimky při inicializaci nebo zastavování.
+Všechny výjimky, které jsou vyvolány metodami třídy [RoleEntryPoint] , která obsahuje metody [OnStart, OnStart]a [Run] [, jsou]neošetřené výjimky. Pokud dojde k neošetřené výjimce v jedné z těchto metod, dojde k recyklování této role. Pokud se role opakovaně recykluje, může při každém pokusu o spuštění dojít k vyvolání neošetřené výjimky.
 
-## <a name="role-returns-from-run-method"></a>Vrácení role z metody Run
-Run [Run] Metoda je určena ke spuštění po neomezenou dobu. Pokud váš kód přepíše [Run] metoda, by měl spát neomezeně dlouho. Pokud [run] metoda vrátí, role recykluje.
+## <a name="role-returns-from-run-method"></a>Role vrátí z metody Run.
+Metoda [Run] je určena ke spuštění po neomezenou dobu. Pokud váš kód přepisuje metodu [Run] , mělo by být v režimu spánku po neomezenou dobu. Pokud metoda [Run] vrátí, recykluje roli.
 
-## <a name="incorrect-diagnosticsconnectionstring-setting"></a>Nesprávné nastavení programu DiagnosticsConnectionString
-Pokud aplikace používá Azure Diagnostics, musí `DiagnosticsConnectionString` konfigurační soubor služby zadat nastavení konfigurace. Toto nastavení by mělo určit připojení HTTPS k vašemu účtu úložiště v Azure.
+## <a name="incorrect-diagnosticsconnectionstring-setting"></a>Nesprávné nastavení DiagnosticsConnectionString
+Pokud aplikace používá Azure Diagnostics, musí konfigurační soubor služby určovat nastavení `DiagnosticsConnectionString` konfigurace. Toto nastavení by mělo určovat připojení HTTPS k vašemu účtu úložiště v Azure.
 
-Chcete-li `DiagnosticsConnectionString` se ujistit, že vaše nastavení je správné před nasazením balíčku aplikace do Azure, ověřte následující:  
+Abyste měli jistotu, `DiagnosticsConnectionString` že je nastavení správné, než balíček aplikace nasadíte do Azure, ověřte následující:  
 
-* Nastavení `DiagnosticsConnectionString` odkazuje na platný účet úložiště v Azure.  
-  Ve výchozím nastavení toto nastavení odkazuje na účet emulovaného úložiště, takže je nutné explicitně změnit toto nastavení před nasazením balíčku aplikace. Pokud toto nastavení nezměníte, je vyvolána výjimka, když se instance role pokusí spustit diagnostický monitor. To může způsobit, že instance role recyklovat neomezeně dlouho.
-* Připojovací řetězec je určen v následujícím [formátu](../storage/common/storage-configure-connection-string.md). (Protokol musí být zadán jako HTTPS.) Nahraďte *název MyAccountName* názvem svého účtu úložiště a *klíč MyAccountKey* pomocí přístupového klíče:    
+* `DiagnosticsConnectionString` Nastavení odkazuje na platný účet úložiště v Azure.  
+  Ve výchozím nastavení toto nastavení ukazuje na Emulovaný účet úložiště, takže musíte explicitně změnit toto nastavení před nasazením balíčku aplikace. Pokud toto nastavení nezměníte, vyvolá se výjimka, když se instance role pokusí spustit monitor diagnostiky. To může způsobit, že se instance role recykluje po neomezenou dobu.
+* Připojovací řetězec je zadán v následujícím [formátu](../storage/common/storage-configure-connection-string.md). (Protokol musí být zadaný jako HTTPS.) Nahraďte *MyAccountName* názvem vašeho účtu úložiště a *MyAccountKey* pomocí přístupového klíče:    
 
         DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
 
-  Pokud vyvíjíte aplikaci pomocí Nástroje Azure pro Microsoft Visual Studio, můžete tuto hodnotu nastavit pomocí stránek vlastností.
+  Pokud vyvíjíte aplikaci pomocí nástrojů Azure pro Microsoft Visual Studio, můžete tuto hodnotu nastavit pomocí stránek vlastností.
 
-## <a name="exported-certificate-does-not-include-private-key"></a>Exportovaný certifikát neobsahuje soukromý klíč.
-Chcete-li spustit webovou roli v části TLS, musíte zajistit, aby exportovaný certifikát správy zahrnoval soukromý klíč. Pokud k exportu certifikátu používáte *Správce certifikátů systému Windows,* nezapomeňte vybrat **možnost Ano** pro možnost **Exportovat soukromý klíč.** Certifikát musí být exportován ve formátu PFX, což je jediný aktuálně podporovaný formát.
+## <a name="exported-certificate-does-not-include-private-key"></a>Exportovaný certifikát nezahrnuje privátní klíč.
+Chcete-li spustit webovou roli v rámci TLS, je nutné zajistit, aby exportovaný certifikát pro správu obsahoval privátní klíč. Pokud k exportu certifikátu používáte *Správce certifikátů Windows* , nezapomeňte u možnosti **exportovat privátní klíč** vybrat **Ano** . Certifikát musí být exportován ve formátu PFX, což je jediný aktuálně podporovaný formát.
 
 ## <a name="next-steps"></a>Další kroky
-Zobrazit další [články o řešení potíží](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) pro cloudové služby.
+Podívejte se na další články týkající se [řešení potíží](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) pro Cloud Services.
 
-Zobrazit další scénáře recyklace rolí na [blogu série Kevin Williamson](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)je .
+Podívejte se na další scénáře recyklace rolí na [blogu Kevin Williamson](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
 
 [RoleEntryPoint]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx
-[Při spuštění]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx
+[OnStart]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx
 [OnStop]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx
-[Spustit]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx
+[Spouštěl]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx

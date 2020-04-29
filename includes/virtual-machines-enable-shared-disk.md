@@ -9,10 +9,10 @@ ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 0df74b82c847c9738d97d2001573666714c17672
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81008324"
 ---
 ## <a name="limitations"></a>Omezení
@@ -25,14 +25,14 @@ ms.locfileid: "81008324"
 
 ## <a name="deploy-shared-disks"></a>Nasazení sdílených disků
 
-### <a name="deploy-a-premium-ssd-as-a-shared-disk"></a>Nasazení prémiového ssd disku jako sdíleného disku
+### <a name="deploy-a-premium-ssd-as-a-shared-disk"></a>Nasazení jednotky SSD úrovně Premium jako sdíleného disku
 
-Chcete-li nasadit spravovaný disk s `maxShares` povolenou funkcí sdíleného disku, použijte novou vlastnost a definujte hodnotu větší než 1. Díky tomu je disk sdílet mezi více virtuálních počítačů.
+Pokud chcete nasadit spravovaný disk s povolenou funkcí sdíleného disku, použijte novou vlastnost `maxShares` a definujte hodnotu větší než 1. To umožňuje sdílet disk napříč několika virtuálními počítači.
 
 > [!IMPORTANT]
-> Hodnotu `maxShares` lze nastavit nebo změnit pouze v případě, že disk je odpojen ze všech virtuálních počítačů. V [části Velikosti disku](#disk-sizes) naleznete `maxShares`povolené hodnoty pro program .
+> Hodnotu `maxShares` lze nastavit nebo změnit pouze v případě, že je disk odpojen ze všech virtuálních počítačů. Podívejte se na [velikosti disků](#disk-sizes) pro povolené hodnoty pro `maxShares`.
 
-Před použitím následující šablony `[parameters('dataDiskName')]` `[resourceGroup().location]`nahraďte , , `[parameters('dataDiskSizeGB')]`, a `[parameters('maxShares')]` s vlastními hodnotami.
+Než použijete následující šablonu, `[parameters('dataDiskName')]`nahraďte `[resourceGroup().location]`, `[parameters('dataDiskSizeGB')]`, `[parameters('maxShares')]` a vlastními hodnotami.
 
 ```json
 { 
@@ -73,14 +73,14 @@ Před použitím následující šablony `[parameters('dataDiskName')]` `[resour
 }
 ```
 
-### <a name="deploy-an-ultra-disk-as-a-shared-disk"></a>Nasazení ultra disku jako sdíleného disku
+### <a name="deploy-an-ultra-disk-as-a-shared-disk"></a>Nasazení Ultra disku jako sdíleného disku
 
 #### <a name="cli"></a>Rozhraní příkazového řádku
 
-Chcete-li nasadit spravovaný disk `maxShares` s povolenou funkcí sdíleného disku, změňte parametr na hodnotu větší než 1. Díky tomu je disk sdílet mezi více virtuálních počítačů.
+Pokud chcete nasadit spravovaný disk s povolenou funkcí sdíleného disku, změňte `maxShares` parametr na hodnotu větší než 1. To umožňuje sdílet disk napříč několika virtuálními počítači.
 
 > [!IMPORTANT]
-> Hodnotu `maxShares` lze nastavit nebo změnit pouze v případě, že disk je odpojen ze všech virtuálních počítačů. V [části Velikosti disku](#disk-sizes) naleznete `maxShares`povolené hodnoty pro program .
+> Hodnotu `maxShares` lze nastavit nebo změnit pouze v případě, že je disk odpojen ze všech virtuálních počítačů. Podívejte se na [velikosti disků](#disk-sizes) pro povolené hodnoty pro `maxShares`.
 
 ```azurecli
 #Creating an Ultra shared Disk 
@@ -95,12 +95,12 @@ az disk show -g rg1 -n clidisk
 
 #### <a name="azure-resource-manager"></a>Azure Resource Manager
 
-Chcete-li nasadit spravovaný disk s `maxShares` povolenou funkcí sdíleného disku, použijte vlastnost a definujte hodnotu větší než 1. Díky tomu je disk sdílet mezi více virtuálních počítačů.
+Pokud chcete nasadit spravovaný disk s povolenou funkcí sdíleného disku, použijte vlastnost `maxShares` a definujte hodnotu větší než 1. To umožňuje sdílet disk napříč několika virtuálními počítači.
 
 > [!IMPORTANT]
-> Hodnotu `maxShares` lze nastavit nebo změnit pouze v případě, že disk je odpojen ze všech virtuálních počítačů. V [části Velikosti disku](#disk-sizes) naleznete `maxShares`povolené hodnoty pro program .
+> Hodnotu `maxShares` lze nastavit nebo změnit pouze v případě, že je disk odpojen ze všech virtuálních počítačů. Podívejte se na [velikosti disků](#disk-sizes) pro povolené hodnoty pro `maxShares`.
 
-Před použitím následující šablony `[parameters('dataDiskName')]` `[resourceGroup().location]`nahraďte , `[parameters('diskIOPSReadOnly')]`, `[parameters('diskMBpsReadOnly')]` `[parameters('dataDiskSizeGB')]`, `[parameters('maxShares')]` `[parameters('diskIOPSReadWrite')]`, `[parameters('diskMBpsReadWrite')]`, , a vlastními hodnotami.
+Než `[parameters('dataDiskName')]`použijete následující šablonu, nahraďte `[resourceGroup().location]`, `[parameters('dataDiskSizeGB')]`, `[parameters('maxShares')]`, `[parameters('diskIOPSReadWrite')]`, `[parameters('diskMBpsReadWrite')]`, `[parameters('diskIOPSReadOnly')]`, a `[parameters('diskMBpsReadOnly')]` vlastními hodnotami.
 
 ```json
 {
@@ -168,12 +168,12 @@ Před použitím následující šablony `[parameters('dataDiskName')]` `[resour
 }
 ```
 
-### <a name="using-azure-shared-disks-with-your-vms"></a>Používání sdílených disků Azure s virtuálními počítači
+### <a name="using-azure-shared-disks-with-your-vms"></a>Použití sdílených disků Azure s vašimi virtuálními počítači
 
-Po nasazení sdíleného disku s `maxShares>1`programem můžete disk připojit k jednomu nebo více virtuálním počítačům.
+Po nasazení sdíleného disku pomocí `maxShares>1`nástroje můžete disk připojit k jednomu nebo více virtuálním počítačům.
 
 > [!IMPORTANT]
-> Všechny virtuální počítače sdílející disk musí být nasazeny ve stejné [skupině umístění bez kontaktních míst](../articles/virtual-machines/windows/proximity-placement-groups.md).
+> Všechny virtuální počítače sdílející disk musí být nasazené ve stejné [skupině umístění blízkosti](../articles/virtual-machines/windows/proximity-placement-groups.md).
 
 ```azurepowershell-interactive
 
@@ -197,9 +197,9 @@ update-AzVm -VM $vm -ResourceGroupName $resourceGroup
 
 ## <a name="supported-scsi-pr-commands"></a>Podporované příkazy SCSI PR
 
-Po navázání sdíleného disku do virtuálních počítačů v clusteru můžete vytvořit kvorum a číst/zapisovat na disk pomocí SCSI PR. Při použití sdílených disků Azure jsou k dispozici následující příkazy PR:
+Po připojení sdíleného disku k virtuálním počítačům ve vašem clusteru můžete na disk vytvořit kvorum a číst ho a zapisovat ho pomocí SCSI žádosti o přijetí změn. Při použití sdílených disků Azure jsou k dispozici následující příkazy žádosti o přijetí změn:
 
-Chcete-li pracovat s diskem, začněte se seznamem trvalých akcí rezervace:
+Pokud chcete s diskem pracovat, začněte se seznamem trvalých rezervací – akcí:
 
 ```
 PR_REGISTER_KEY 
@@ -217,7 +217,7 @@ PR_CLEAR_RESERVATION
 PR_RELEASE_RESERVATION 
 ```
 
-Při použití PR_RESERVE, PR_PREEMPT_RESERVATION nebo PR_RELEASE_RESERVATION zadejte jeden z následujících typů trvalé rezervace:
+Při použití PR_RESERVE, PR_PREEMPT_RESERVATION nebo PR_RELEASE_RESERVATION, zadejte jeden z následujících trvalých rezervací-Type:
 
 ```
 PR_NONE 
@@ -235,9 +235,9 @@ PR_WRITE_EXCLUSIVE_ALL_REGISTRANTS
 PR_EXCLUSIVE_ACCESS_ALL_REGISTRANTS 
 ```
 
-Při použití PR_RESERVE, PR_REGISTER_AND_IGNORE, PR_REGISTER_KEY, PR_PREEMPT_RESERVATION, PR_CLEAR_RESERVATION nebo PR_RELEASE REZERVACE je také nutné zadat trvalý klíč rezervace.
+Při použití PR_RESERVE, PR_REGISTER_AND_IGNORE, PR_REGISTER_KEY, PR_PREEMPT_RESERVATION, PR_CLEAR_RESERVATION nebo PR_RELEASE-RESERVATION je také potřeba zadat trvalou rezervaci klíč.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud máte zájem o vyzkoušení sdílených disků, [zaregistrujte se do naší verze Preview](https://aka.ms/AzureSharedDiskPreviewSignUp).
+Pokud vás zajímá, jak sdílet sdílené disky, [Zaregistrujte si verzi Preview](https://aka.ms/AzureSharedDiskPreviewSignUp).

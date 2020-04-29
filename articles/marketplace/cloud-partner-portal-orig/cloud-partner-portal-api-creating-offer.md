@@ -1,6 +1,6 @@
 ---
-title: Vytvořit nebo upravit nabídku | Azure Marketplace
-description: ROZHRANÍ API pro vytvoření nové nebo aktualizace a existující nabídky.
+title: Vytvoření nebo úprava nabídky | Azure Marketplace
+description: Rozhraní API k vytvoření nové nebo aktualizace a stávající nabídky
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,19 +8,19 @@ ms.topic: reference
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: 66e640ab199a884ebfab69cbe7db7f562d848720
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81256344"
 ---
 <a name="create-or-modify-an-offer"></a>Vytvoření nebo úprava nabídky
 =========================
 
 > [!NOTE]
-> Api portálu pro partnery cloudu jsou integrovaná s Partnerským centrem a budou fungovat i po migraci nabídek do Centra partnerů. Integrace přináší malé změny. Zkontrolujte změny uvedené v [referenčním rozhraní API portálu cloudových partnerů a](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) ujistěte se, že váš kód bude fungovat i po migraci do Centra partnerů.
+> Rozhraní API pro portál partnerů cloudu jsou integrovaná do partnerského centra a budou fungovat i po migraci nabídek do partnerského centra. Integrace přináší malé změny. Projděte si změny uvedené v části [portál partnerů cloudu rozhraní API](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) , abyste zajistili, že váš kód bude i nadále fungovat po migraci do partnerského centra.
 
-Toto volání aktualizuje konkrétní nabídku v oboru názvů vydavatele nebo vytvoří novou nabídku.
+Toto volání aktualizuje konkrétní nabídku v rámci oboru názvů vydavatele nebo vytvoří novou nabídku.
 
   `PUT https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>?api-version=2017-10-31`
 
@@ -30,27 +30,27 @@ Toto volání aktualizuje konkrétní nabídku v oboru názvů vydavatele nebo v
 
 |  **Název**         |  **Popis**                      |  **Datový typ**  |
 |  --------         |  ----------------                     |  -------------  |
-| id vydavatele       |  Identifikátor vydavatele, například`contoso` |   Řetězec |
-| offerId           |  Identifikátor nabídky                     |   Řetězec        |
+| publisherId       |  Identifikátor vydavatele, například`contoso` |   Řetězec |
+| Hodnotami OfferId           |  Identifikátor nabídky                     |   Řetězec        |
 | verze-api       |  Nejnovější verze rozhraní API            |   Datum           |
 |  |  |  |
 
 <a name="header"></a>Hlavička
 ------
 
-|  **Název**        |  **Hodnotu**               |
+|  **Název**        |  **Osa**               |
 |  ---------       |  ----------              | 
 | Typ obsahu     | `application/json`       |
 | Autorizace    | `Bearer YOUR_TOKEN`      |
 |  |  |
 
 
-<a name="body-example"></a>Příklad těla
+<a name="body-example"></a>Příklad textu
 ------------
 
-Následující příklad vytvoří nabídku s `contosovirtualmachine`offerID aplikace .
+Následující příklad vytvoří nabídku s hodnotami OfferId `contosovirtualmachine`.
 
-### <a name="request"></a>Žádost
+### <a name="request"></a>Request
 
 ``` json
   {
@@ -242,23 +242,23 @@ Následující příklad vytvoří nabídku s `contosovirtualmachine`offerID apl
 ```
 
 > [!NOTE]
-> Chcete-li tuto nabídku upravit, přidejte k výše uvedenému požadavku sadu hlavičky **If-Match** na * . Použijte stejné tělo požadavku, jak je uvedeno výše, ale upravte hodnoty podle potřeby. 
+> Pokud chcete tuto nabídku upravit, přidejte do výše uvedené žádosti záhlaví **If-Match** nastavené na *. Použijte stejný text žádosti, jak je uvedeno výše, ale upravte hodnoty podle potřeby. 
 
 
-### <a name="response-status-codes"></a>Stavové kódy odpovědi
+### <a name="response-status-codes"></a>Stavové kódy odpovědí
 
 | **kód**  |  **Popis**                                                                            |
 | --------  |  ---------------                                                                            |
 |  200      | `OK`. Požadavek byl úspěšně zpracován a nabídka byla úspěšně změněna.           |
 |  201      | `Created`. Požadavek byl úspěšně zpracován a nabídka byla úspěšně vytvořena.   |
-|  400      | `Bad/Malformed request`. Tělo odpovědi na chybu může poskytnout další informace.            |
+|  400      | `Bad/Malformed request`. Tělo odpovědi na chyby může poskytnout další informace.            |
 |  403      | `Forbidden`. Klient nemá přístup k požadovanému oboru názvů.                     |
-|  404      | `Not found`. Entita, na kterou klient odkazuje, neexistuje.                           |
-|  412      | Server nesplňuje jednu z podmínek, které žadatel zadal v požadavku. Klient by měl zkontrolovat ETAG odeslané s požadavkem. |
+|  404      | `Not found`. Entita, na kterou odkazuje klient, neexistuje.                           |
+|  412      | Server nesplňuje jednu z podmínek, které žadatel zadal v žádosti. Klient by měl kontrolovat ETAG odeslaný s požadavkem. |
 |  |  |
 
 
-<a name="uploading-artifacts"></a>Nahrávání artefaktů
+<a name="uploading-artifacts"></a>Nahrávají se artefakty.
 -------------------
 
-Artefakty, jako jsou obrázky a loga, by měly být sdíleny jejich nahráním do přístupného umístění na webu, pak včetně každého jako URI v požadavku PUT, jako v příkladu výše. Systém zjistí, že tyto soubory nejsou k dispozici v úložišti Azure Marketplace a stáhnout tyto soubory do úložiště.  V důsledku toho zjistíte, že budoucí požadavky GET vrátí adresu URL služby Azure Marketplace pro tyto soubory.
+Artefakty, jako jsou obrázky a loga, byste měli sdílet tak, že je nahrajete do přístupného umístění na webu, a pak každý jako identifikátor URI v žádosti PUT, jako v předchozím příkladu. Systém zjistí, že tyto soubory nejsou k dispozici v úložišti Azure Marketplace, a stáhne tyto soubory do úložiště.  V důsledku toho zjistíte, že budoucí požadavky GET vrátí adresu URL služby Azure Marketplace pro tyto soubory.

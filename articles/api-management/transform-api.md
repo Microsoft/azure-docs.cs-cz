@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
 ms.openlocfilehash: 9a9c6897937b73786367accc33e985a268907226
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81258741"
 ---
 # <a name="transform-and-protect-your-api"></a>Transformace a ochrana vašeho rozhraní API
@@ -41,7 +41,7 @@ V tomto kurzu se naučíte:
 
 -   Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
 -   Seznamte se s [konceptem zásad ve službě Azure API Management](api-management-howto-policies.md).
--   Dokončete následující rychlý start: [Vytvořte instanci Azure API Management](get-started-create-service-instance.md).
+-   Dokončete následující rychlý Start: [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
 -   Projděte si také následující kurz: Navíc kurzu: [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
@@ -75,12 +75,12 @@ Původní odpověď by měla vypadat takto:
 2. V horní části obrazovky vyberte kartu **Návrh**.
 3. Vyberte **všechny operace**.
 4. V části **Zpracování odchozích požadavků** klikněte na ikonu **</>**.
-5. Umístěte kurzor uvnitř ** &lt;odchozího&gt; ** prvku.
+5. Umístěte kurzor do ** &lt;výstupního&gt; ** elementu.
 6. V pravém okně v části **Zásady transformace** vložte dva fragmenty kódu zásady dvojitým kliknutím na **+ Set HTTP header** (Nastavit hlavičku protokolu HTTP).
 
    ![Zásady](./media/transform-api/transform-api.png)
 
-7. Upravte kód ** \<odchozí>** takto:
+7. Upravte kód pro ** \<odchozí>** tak, aby vypadal takto:
 
        <set-header name="X-Powered-By" exists-action="delete" />
        <set-header name="X-AspNet-Version" exists-action="delete" />
@@ -112,7 +112,7 @@ Původní odpověď zobrazíte následovně:
 2.  Vyberte **všechny operace**.
 3.  V horní části obrazovky vyberte kartu **Návrh**.
 4.  V části **Zpracování odchozích požadavků** klikněte na ikonu **</>**.
-5.  Umístěte kurzor mezi ** &lt;odchozí&gt; ** prvek a v pravém horním rohu klikněte na **tlačítko Vložit zásady.**
+5.  Umístěte kurzor do elementu ** &lt;&gt; Outbound** a klikněte na tlačítko **Vložit zásadu** v pravém horním rohu.
 6.  V pravém okně v části **Zásady transformace** klikněte na **+ Find and replace string in body** (Najít a nahradit řetězec v těle textu).
 7.  Nahraďte adresu URL upravením kódu **find-and-replace** (v elementu **\<outbound\>**) tak, aby odpovídala bráně služby APIM. Příklad:
 
@@ -120,7 +120,7 @@ Původní odpověď zobrazíte následovně:
 
 ## <a name="protect-an-api-by-adding-rate-limit-policy-throttling"></a>Ochránit rozhraní API přidáním zásady omezování četnosti (omezení využití sítě)
 
-Tato část ukazuje, jak přidat ochranu back-endovému rozhraní API nakonfigurováním omezování četnosti. Například byste mohli chtít omezit, kolikrát je možné rozhraní API volat, aby ho vývojáři nadměrně nevyužívali. V tomto příkladu je limit nastaven na 3 volání za 15 sekund pro každé ID předplatného. Po 15 sekundách může vývojář opakovat volání rozhraní API.
+Tato část ukazuje, jak přidat ochranu back-endovému rozhraní API nakonfigurováním omezování četnosti. Například byste mohli chtít omezit, kolikrát je možné rozhraní API volat, aby ho vývojáři nadměrně nevyužívali. V tomto příkladu je limit pro každé ID předplatného nastavený na 3 hovory za 15 sekund. Po 15 sekundách se může vývojář pokusit o volání rozhraní API.
 
 ![Nastavení příchozí zásady](./media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png)
 
@@ -128,7 +128,7 @@ Tato část ukazuje, jak přidat ochranu back-endovému rozhraní API nakonfigur
 2.  Vyberte **všechny operace**.
 3.  V horní části obrazovky vyberte kartu **Návrh**.
 4.  V části **Zpracování na vstupu** klikněte na ikonu **</>**.
-5.  Umístěte kurzor uvnitř ** &lt;příchozího&gt; ** prvku.
+5.  Umístěte kurzor do prvku ** &lt;příchozí&gt; ** .
 6.  V pravém okně v části **Zásady omezení přístupu** klikněte na **+ Limit call rate per key** (Omezit četnost volání pro každý klíč).
 7.  Upravte kód **rate-limit-by-key** (v elementu **\<inbound\>**) následovně:
 

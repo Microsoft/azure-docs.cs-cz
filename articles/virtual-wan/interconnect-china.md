@@ -1,6 +1,6 @@
 ---
-title: Propojení s Čínou pomocí virtuální sítě Azure A zabezpečeného centra
-description: Seznamte se s automatizovaným škálovatelným připojením mezi větvemi virtuální sítě WAN, dostupnými oblastmi a partnery.
+title: Propojení s Čínou pomocí Azure Virtual WAN a zabezpečeného centra
+description: Seznamte se s automatizovaným škálovatelným připojením mezi větevmi, dostupnými oblastmi a partnery služby Virtual WAN.
 services: virtual-wan
 author: skishen525
 ms.service: virtual-wan
@@ -8,147 +8,147 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: sukishen
 ms.openlocfilehash: d086484ece6faf95dccffb1e29da8a0e906b1da4
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80985622"
 ---
-# <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>Propojení s Čínou pomocí Virtuální sítě Azure a Secure Hub
+# <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>Propojení s Čínou pomocí Azure Virtual WAN a zabezpečeného centra
 
-Při pohledu na společný automobilový průmysl, výrobu, logistický průmysl nebo jiné instituce, jako jsou velvyslanectví, je často otázka, jak zlepšit propojení s Čínou. Tato vylepšení jsou většinou relevantní pro používání cloudových služeb, jako je Office 365, Azure Global Services nebo propojení poboček uvnitř Číny s páteří zákazníka.
+Při prohlížení společného automobilu, výroby, logistického odvětví nebo jiných ústavů, jako je velvyslanectví, často existuje otázka, jak vylepšit vzájemné propojení s Čínou. Tato vylepšení jsou většinou relevantní pro použití Cloud Services, jako jsou například Office 365, globální služby Azure nebo větve propojení v Číně s páteřní sítí zákazníka.
 
-Ve většině případů se zákazníci potýkají s vysokou latencí, nízkou šířkou pásma, nestabilním připojením a vysokými náklady, které se připojují mimo Čínu (například do Evropy nebo Spojených států).
+Ve většině případů se zákazníci působit potíže s vysokou latencí, nízkou šířkou pásma, nestabilním připojením a s vysokou propustností, které se připojují k mimo Čína (například Evropa nebo USA).
 
-Důvodem těchto bojů je "Velký čínský firewall", který chrání čínskou část internetu a filtruje dopravu do Číny. Téměř veškerý provoz, který probíhá z pevninské Číny mimo Čínu, s výjimkou zvláštních administrativních zón, jako je Hongkong a Macao, prochází Velkým firewallem. Provoz projíždět Hongkongem a Macaem nenarazí na Velký firewall v plné síle, je zpracován podmnožinou Velké brány firewall.
+Důvodem pro tyto potýká je "skvělý firewall pro Čínu", který chrání čínskou část internetu a filtruje provoz do Číny. Skoro veškerý provoz běžící z Číny pevniny mimo Čínu, s výjimkou zvláštních zón správy, jako jsou Hongkong a Macao, dává skvělé brány firewall. Provoz běžící přes Hongkong a Macao nevyužívá skvělou bránu firewall v plné síle, je zpracována podmnožinou skvělé brány firewall.
 
 ![Propojení zprostředkovatele](./media/interconnect-china/provider.png)
 
-Pomocí virtuální sítě WAN může zákazník navázat výkonnější a stabilnější připojení ke cloudovým službám společnosti Microsoft a připojení k podnikové síti, aniž by porušil čínské zákony o kybernetické bezpečnosti.
+Pomocí virtuální sítě WAN může zákazník vytvořit další výkonné a stabilní připojení k Microsoft Cloud službám a připojení k podnikové síti bez narušení čínského zákonu kyberbezpečnosti.
 
 ## <a name="requirements-and-workflow"></a><a name="requirements"></a>Požadavky a pracovní postup
 
-Pokud chcete zůstat v souladu s čínským zákonem o kybernetické bezpečnosti, musíte splnit soubor určitých podmínek.
+Pokud chcete zachovat předpisy čínského kyberbezpečnosti, musíte splnit určitou sadu podmínek.
 
-Nejprve je třeba spolupracovat se sítí a poskytovatelem služeb Internetu, který vlastní licenci ICP (Internet Content Provider) pro Čínu. Ve většině případů skončíte s jedním z následujících poskytovatelů:
+Nejprve je třeba spolupracovat se sítí a poskytovatelem internetových služeb, který vlastní licenci ICP (Internet Content Provider) pro Čínu. Ve většině případů skončíte s jedním z následujících zprostředkovatelů:
 
-* China Telecom Global Ltd.
-* Čína Mobile Ltd
-* Čína Unicom Ltd.
-* PCCW Global s.r.o.
-* Hong Kong Telecom Ltd.
+* Čína Telecom Global Ltd.
+* Čína Mobile Ltd.
+* Čína UNICOM Ltd.
+* PCCW Global Ltd.
+* Hongkong Telecom Ltd.
 
-V závislosti na poskytovateli a vašich potřebách je nyní třeba zakoupit jednu z následujících služeb připojení k síti, abyste mohli propojit své pobočky v Rámci Číny.
+V závislosti na poskytovateli a vašich potřebách teď musíte koupit jednu z následujících služeb připojení k síti, abyste mohli propojit své větve v Číně.
 
 * Síť MPLS/IPVPN 
-* Softwarově definovaná wan (SDWAN)
-* Vyhrazený přístup k internetu
+* Software definovaný v síti WAN (SDWAN)
+* Vyhrazený internetový přístup
 
-Dále musíte souhlasit s tímto poskytovatelem, abyste poskytli průlom společnosti Microsoft Global Network a její edge network v Hongkongu, nikoli v Pekingu nebo Šanghaji. V tomto případě je Hongkong velmi důležitý kvůli jeho fyzickému spojení a umístění do Číny.
+Dále musíte souhlasit s tímto poskytovatelem, aby užitečných globální síť Microsoftu a její hranici Síťové vstupy Hongkong, ne v Peking nebo Shanghai. V tomto případě je velmi důležité, protože se jedná o fyzické připojení a umístění do Číny.
 
-Zatímco většina zákazníků si myslí, že použití Singapuru pro propojení je nejlepší případ, protože vypadá blíže k Číně při pohledu na mapu, to není pravda. Když sledujete mapy síťových vláken, téměř všechna síťová připojení procházejí Pekingem, Šanghají a Hongkongem. Díky tomu je Hongkong lepší volbou pro propojení s Čínou.
+I když se většina zákazníků domníváme, že použití Singapuru pro Interconnect je nejlepší, protože při prohlížení mapy vypadá blízko – Čína, to není pravdivé. Při sledování síťových Fiber map se téměř všechny sítě připojí přes Peking, Shanghai a Hongkong. V důsledku toho je vhodné zvolit lepší umístění pro propojení s Čínou.
 
-V závislosti na poskytovateli můžete získat různé nabídky služeb. Níže uvedená tabulka ukazuje příklad poskytovatelů a služby, které nabízejí, na základě informací v době, kdy byl tento článek napsán.
+V závislosti na poskytovateli můžete získat různé nabídky služeb. Následující tabulka ukazuje příklad poskytovatelů a služby, které nabízí, na základě informací v době, kdy byl tento článek napsán.
 
-| Služba | Příklady zprostředkovatelů |
+| Služba | Příklady poskytovatelů |
 | --- | --- |
-| Síť MPLS/IPVPN |PCCW, China Telecom Globální |
-|SDWAN| PCCW, China Telecom Globální|
-| Vyhrazený přístup k internetu | PCCW, Hong Kong Telecom, Čína Mobil|
+| Síť MPLS/IPVPN |PCCW, Čína – celosvětová telekomunikace |
+|SDWAN| PCCW, Čína – celosvětová telekomunikace|
+| Vyhrazený internetový přístup | PCCW, Hongkong – zvláštní telekomunikace, Čína mobil|
 
-Se svým poskytovatelem se můžete dohodnout na tom, které z následujících dvou řešení použít k dosažení globální páteřní sítě společnosti Microsoft:
+S vaším poskytovatelem můžete souhlasit s tím, která z následujících dvou řešení se mají použít pro přístup k globální páteřní síti Microsoftu:
 
-* Získání Microsoft Azure ExpressRoute ukončena v Hongkongu. To by byl případ pro použití MPLS / IPVPN. V současné době je jediným poskytovatelem licencí ICP s ExpressRoute do Hongkongu china telecom global. Mohou však také mluvit s ostatními poskytovateli, pokud využívají poskytovatele cloudových exchange, jako je Megaport nebo InterCloud. Další informace naleznete v tématu [ExpressRoute zprostředkovatelé připojení](../expressroute/expressroute-locations-providers.md#partners).
+* Probíhá ukončení Microsoft Azure ExpressRoute ukončená v Hongkongu. To by mělo být případ použití MPLS/IPVPN. V současné době je v současnosti jenom jediný poskytovatel licence ICP, který má ExpressRoute na Hongkong – Telecom celosvětově. Nicméně můžou komunikovat s ostatními poskytovateli, pokud využívají poskytovatele cloudových výměn, jako je Megaport nebo Cloud. Další informace najdete v tématu [poskytovatelé připojení ExpressRoute](../expressroute/expressroute-locations-providers.md#partners).
 
-* Použití vyhrazeného přístupu k Internetu přímo v jednom z následujících výměnných bodů Sítě Internet nebo pomocí propojení privátní sítě.
+* Použití vyhrazeného internetového přístupu přímo v jednom z následujících internetových bodů Exchange nebo pomocí propojení privátní sítě.
 
-V následujícím seznamu je uvedeno možné internetové výměny v Hongkongu:
+V následujících seznamech jsou uvedeny možné internetové výměny v Hongkongu:
 
-* AMS-IX Hongkong
+* AMS – IX – Hongkong
 * BBIX Hongkong
 * Equinix Hongkong
 * HKIX
 
-Při použití tohoto připojení musí být dalším směrováním protokolu BGP pro služby společnosti Microsoft číslo autonomního systému (AS#) 8075. Pokud používáte jedno umístění nebo řešení SDWAN, to by byla volba připojení.
+Při použití tohoto připojení musí být vaším dalším segmentem směrování protokolu BGP pro služby Microsoftu číslo autonomního systému Microsoft (#) 8075. Pokud používáte jedno umístění nebo řešení SDWAN, může to být volba připojení.
 
-Ať tak či onak, stále doporučujeme, abyste měli druhý a pravidelný internet Breakout do čínské pevniny. Tím se rozdělí provoz mezi podnikový provoz na cloudové služby, jako je Microsoft 365 a Azure, a podle zákona regulovaný internetový provoz.
+V obou případech stále doporučujeme, abyste měli k dispozici druhý a běžný internetový užitečných do kontinentální části čínského. Slouží k rozdělení provozu mezi podnikovým provozem na cloudové služby, jako jsou Microsoft 365 a Azure, a podle zákona řízený internetový provoz.
 
-Kompatibilní síťová architektura v Číně může vypadat jako následující příklad:
+Kompatibilní architektura sítě v rámci Číny může vypadat jako v následujícím příkladu:
 
 ![Více větví](./media/interconnect-china/multi-branch.png)
 
-V tomto příkladu, které mají propojení s Microsoft Global Network v Hongkongu, můžete nyní začít využívat [Azure Virtual WAN Global Transit Architecture](virtual-wan-global-transit-network-architecture.md) a další služby, jako je Azure zabezpečené virtuální WAN hub, s cílem využívat služby a propojit se s pobočkami a datovým centrem mimo Čínu.
+V tomto příkladu, který má propojení s globálním Síťové vstupy Microsoftu, teď můžete začít využívat [Azure Virtual WAN pro globální přenosovou architekturu](virtual-wan-global-transit-network-architecture.md) a další služby, jako je Azure Secure Virtual WAN, aby se daly využívat služby a propojení s vašimi pobočkami a datacentrem mimo Čína.
 
 ## <a name="hub-to-hub-communication"></a><a name="hub-to-hub"></a>Komunikace mezi rozbočovači
 
-V této části používáme virtuální komunikaci WAN rozbočovače k rozbočovači pro propojení. V tomto scénáři vytvoříte nový prostředek centra Virtuální WAN pro připojení k centru Virtuální WAN v Hongkongu, jiné oblasti, které upřednostňujete, oblast, kde už máte prostředky Azure nebo kde se chcete připojit.
+V této části používáme komunikaci mezi rozbočovači a připojením typu Virtual WAN k propojení. V tomto scénáři vytvoříte nový virtuální prostředek sítě WAN pro připojení k virtuálnímu rozbočovači WAN v Hongkongu, dalších oblastech, které dáváte přednost, oblasti, kde už máte prostředky Azure, nebo pokud se chcete připojit.
 
-Ukázková architektura může vypadat jako následující příklad:
+Ukázková architektura by mohla vypadat jako v následujícím příkladu:
 
 ![Ukázka sítě WAN](./media/interconnect-china/sample.png)
 
-V tomto příkladu se pobočky V Číně připojují k Azure Cloud China a navzájem pomocí připojení VPN nebo MPLS. Pobočky, které je třeba připojit ke globálním službám, používají mpls nebo internetové služby, které jsou připojeny přímo do Hongkongu. Pokud chcete použít ExpressRoute v Hongkongu i v jiné oblasti, musíte nakonfigurovat [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) pro propojení obou okruhů ExpressRoute.
+V tomto příkladu se čínské větve připojí ke cloudové Číně Azure a navzájem pomocí připojení VPN nebo MPLS. Větve, které je potřeba připojit ke globálním službám, používají MPLS nebo internetové služby, které jsou připojené přímo k Hongkongu. Pokud chcete používat ExpressRoute v Hongkongu i v jiné oblasti, je nutné nakonfigurovat [ExpressRoute Global REACH](../expressroute/expressroute-global-reach.md) pro propojení obou okruhů ExpressRoute.
 
-ExpressRoute Global Reach není v některých oblastech k dispozici. Pokud potřebujete například propojit s Brazílií nebo Indií, musíte k poskytování směrovacích služeb využít [poskytovatele cloudových exchange.](../expressroute/expressroute-locations.md#connectivity-through-exchange-providers)
+ExpressRoute Global Reach není v některých oblastech k dispozici. Pokud potřebujete propojit s Brazílií nebo Indie, například potřebujete využít [poskytovatele cloudového Exchange](../expressroute/expressroute-locations.md#connectivity-through-exchange-providers) k poskytování služeb směrování.
 
-Na obrázku níže jsou uvedeny oba příklady pro tento scénář.
+Následující obrázek ukazuje oba příklady pro tento scénář.
 
-![Globální dosah](./media/interconnect-china/global.png)
+![Global Reach](./media/interconnect-china/global.png)
 
-## <a name="secure-internet-breakout-for-office-365"></a><a name="secure"></a>Zabezpečený internet breakout pro Office 365
+## <a name="secure-internet-breakout-for-office-365"></a><a name="secure"></a>Zabezpečená internetová užitečných pro Office 365
 
-Dalším aspektem je zabezpečení sítě, stejně jako protokolování pro vstupní bod mezi Čínou a virtuální WAN zavedené páteřní součásti a páteřní sítí zákazníka. Ve většině případů je potřeba proniknout na Internet v Hongkongu, aby se přímo dostal y do sítě Microsoft Edge Network a s tím i na servery Azure Front Door používané pro služby Microsoft 365.
+Dalším aspektem je zabezpečení sítě a protokolování pro vstupní bod mezi Čínou a virtuální sítí WAN vytvořená páteřní součást a páteřní síť zákazníka. Ve většině případů je třeba užitečných na Internet v Hongkongu, aby přímo dosáhly sítě Microsoft Edge a s tím se servery front-dveří Azure používané pro Microsoft 365 služby.
 
-Pro oba scénáře s virtuální WAN byste využít [Azure Virtual WAN zabezpečené rozbočovač](../firewall-manager/secured-virtual-hub.md). Pomocí Správce Azure Firewall můžete změnit běžné centrum Virtual WAN na zabezpečené centrum a pak v rámci tohoto centra nasadit a spravovat bránu Azure Firewall.
+U obou scénářů s virtuální sítí WAN byste využili [zabezpečené centrum Azure Virtual WAN](../firewall-manager/secured-virtual-hub.md). Pomocí správce Azure Firewall můžete změnit normální virtuální síť WAN na zabezpečený rozbočovač a potom nasadit a spravovat Azure Firewall v rámci tohoto centra.
 
-Následující obrázek ukazuje příklad tohoto scénáře:
+Příklad tohoto scénáře vidíte na následujícím obrázku:
 
-![Internet breakout pro provoz webových služeb a služeb společnosti Microsoft](./media/interconnect-china/internet.png)
+![Internet užitečných pro webové služby a provoz služeb Microsoftu](./media/interconnect-china/internet.png)
 
-## <a name="architecture-and-traffic-flows"></a><a name="traffic"></a>Architektura a dopravní toky
+## <a name="architecture-and-traffic-flows"></a><a name="traffic"></a>Architektura architektury a provozu
 
-V závislosti na vaší volbě, pokud jde o připojení k Hongkongu, se celková architektura může mírně změnit. Tato část zobrazuje tři dostupné architektury v různých kombinacích s VPN nebo SDWAN a/nebo ExpressRoute.
+V závislosti na vaší volbě, která se týká připojení k Hongkongu, se celková architektura může mírně měnit. V této části se zobrazují tři dostupné architektury v různých kombinacích s VPN nebo SDWAN a/nebo ExpressRoute.
 
-Všechny tyto možnosti využívají zabezpečené centrum Azure Virtual WAN pro přímé připojení M365 v Hongkongu. Tyto architektury také podporují požadavky na dodržování předpisů pro [Office 365 Multi-Geo](https://docs.microsoft.com/office365/enterprise/office-365-multi-geo) a udržují tento provoz v blízkosti dalšího umístění předních dveří Office 365. V důsledku toho je to také zlepšení pro použití Microsoft 365 z Číny.
+Všechny tyto možnosti využívají zabezpečené centrum Azure Virtual WAN pro přímé připojení M365 v Hongkongu. Tyto architektury také podporují požadavky na dodržování předpisů pro [Office 365 multi-Geo](https://docs.microsoft.com/office365/enterprise/office-365-multi-geo) a udržují provoz v blízkosti dalšího umístění front-dveří Office 365. V důsledku toho je také lepší využití Microsoft 365 mimo Čína.
 
-Při použití Azure Virtual WAN společně s připojením k Internetu může každé připojení využívat další služby, jako jsou [služby Partnerského vztahu Microsoft Azure (MAPS).](https://docs.microsoft.com/azure/peering-service/about) Služba MAPS byla vytvořena pro optimalizaci provozu přicházejícího do globální sítě společnosti Microsoft od poskytovatelů internetových služeb třetích stran.
+Při použití Azure Virtual WAN společně s připojením k Internetu může každé připojení těžit z dalších služeb, jako je [Microsoft Azure služby partnerského vztahu (Maps)](https://docs.microsoft.com/azure/peering-service/about). Služba MAPS byla navržena pro optimalizaci provozu přicházejícího do globální sítě Microsoft od poskytovatelů internetových služeb třetích stran.
 
 ### <a name="option-1-sdwan-or-vpn"></a><a name="option-1"></a>Možnost 1: SDWAN nebo VPN
 
-Tato část popisuje návrh, který používá SDWAN nebo VPN do Hongkongu a do jiných větví. Tato možnost zobrazuje tok použití a provozu při použití čistého připojení k Internetu na obou webech páteřní sítě Virtuální wan. V tomto případě je připojení přeneseno do Hongkongu pomocí vyhrazeného přístupu k Internetu nebo řešení SDWAN poskytovatele ICP. Ostatní pobočky používají čistý Internet nebo SDWAN Solutions stejně.
+Tato část popisuje návrh, který využívá SDWAN nebo VPN k Hongkongu a k ostatním větvím. Tato možnost zobrazuje tok použití a přenosu při použití čistého připojení k Internetu na obou lokalitách páteře virtuální sítě WAN. V takovém případě se připojení zavede na nekonkrétní použití vyhrazeného internetového přístupu nebo řešení SDWAN poskytovatele ICP. Jiné větve využívají také čistě Internet nebo SDWAN řešení.
 
-![Čína do Hongkongu provozu](./media/interconnect-china/china-traffic.png)
+![Čína pro Hongkong provozu](./media/interconnect-china/china-traffic.png)
 
-V této architektuře je každá lokalita připojena k Microsoft Global Network pomocí vpn a Azure Virtual WAN. Provoz mezi weby a Hongkongem je přenášen korytem sítě Microsoft Network a používá pouze běžné připojení k Internetu na poslední míli.
+V této architektuře je každá lokalita připojená k globální síti Microsoft pomocí sítě VPN a Azure Virtual WAN. Přenos dat mezi lokalitami a Hongkong se přenáší do sítě Microsoft a používá se k poslednímu kilometru jenom běžné připojení k Internetu.
 
 ### <a name="option-2-expressroute-and-sdwan-or-vpn"></a><a name="option-2"></a>Možnost 2: ExpressRoute a SDWAN nebo VPN
 
-Tato část popisuje návrh, který používá ExpressRoute v Hongkongu a další větve s pobočkami VPN/SDWAN. Tato možnost ukazuje použití a ExpressRoute ukončena v Hongkongu a dalších větví připojených přes SDWAN nebo VPN. ExpressRoute v Hongkongu je v současné době omezena na krátký seznam poskytovatelů, které najdete v seznamu [Express Route Partners](../expressroute/expressroute-locations-providers.md#global-commercial-azure).
+Tato část popisuje návrh, který používá ExpressRoute v Hongkongu a dalších větvích s větvemi VPN/SDWAN. Tato možnost zobrazuje použití a ExpressRoute ukončené v Hongkongu a dalších větvích připojených prostřednictvím SDWAN nebo VPN. ExpressRoute v Hongkongu je aktuálně omezený na krátký seznam zprostředkovatelů, které najdete v seznamu [partnerů Express Route](../expressroute/expressroute-locations-providers.md#global-commercial-azure).
 
-![Čína do Hongkongu dopravní ExpressRoute](./media/interconnect-china/expressroute.png)
+![Čína pro Hongkong ExpressRoute provozu](./media/interconnect-china/expressroute.png)
 
-Existují také možnosti ukončení ExpressRoute z Číny, například v Jižní Koreji nebo Japonsku. Vzhledem k dodržování předpisů, regulaci a latenci je však Hongkong v současnosti nejlepší volbou.
+K dispozici jsou také možnosti pro ukončení ExpressRoute z Číny, například v Jižní Koreje nebo v Japonsku. Ale dodržování předpisů, regulace a latence je aktuálně nejlepší volbou.
 
-### <a name="option-3-expressroute-only"></a><a name="option-3"></a>Možnost 3: Pouze ExpressRoute
+### <a name="option-3-expressroute-only"></a><a name="option-3"></a>Možnost 3: jenom ExpressRoute
 
-Tato část popisuje návrh, který kde ExpressRoute se používá pro Hongkong a další větve. Tato možnost zobrazuje propojení pomocí ExpressRoute na obou koncích. Zde máte jiný dopravní tok než ostatní. Provoz Microsoftu 365 bude přetékat do zabezpečeného centra Azure virtual WAN a odtud do microsoft edge network a na Internet.
+Tato část popisuje návrh, ve kterém se ExpressRoute používá pro Hongkong a další větve. Tato možnost zobrazí propojení pomocí ExpressRoute na obou koncích. V tomto případě máte jiný tok provozu než druhý. Přenos Microsoft 365 se bude přesměrovat do zabezpečeného centra Azure Virtual WAN a odtud do sítě Microsoft Edge a do Internetu.
 
-Provoz, který jde do vzájemně propojených poboček nebo z nich do míst v Číně bude následovat jiný přístup v rámci této architektury. V současné době virtuální WAN nepodporuje ExpressRoute na ExpressRoute tranzitu. Provoz bude využívat ExpressRoute Global Reach nebo třetí strany propojení bez předání virtuální WAN Hub. Bude přímo tok z jednoho Microsoft Enterprise Edge (MSEE) do jiného.
+Provoz, který směřuje do propojených větví nebo z nich do umístění v Číně, bude v rámci této architektury splňovat jiný přístup. Virtuální síť WAN v současné době nepodporuje ExpressRoute k přenosu ExpressRoute. Provoz bude využívat ExpressRoute Global Reach nebo propojení třetích stran bez předávání virtuálního centra WAN. Přímo se přesměruje z jednoho Microsoft Enterprise Edge (MSEE) do jiného.
 
 ![ExpressRoute Global Reach](./media/interconnect-china/expressroute-virtual.png)
 
-V současné době ExpressRoute Global Reach není k dispozici ve všech zemích, ale můžete nakonfigurovat řešení pomocí Azure Virtual WAN.
+Aktuálně ExpressRoute Global Reach není v každé zemi k dispozici, můžete ale nakonfigurovat řešení pomocí Azure Virtual WAN.
 
-Můžete například nakonfigurovat ExpressRoute s partnerským vztahem Microsoftu a připojit tunel VPN prostřednictvím tohoto partnerského vztahu k virtuální síti Azure. Nyní jste opět povolili přenos mezi VPN a ExpressRoute bez globálního dosahu a poskytovatelem a službami třetích stran, jako je Megaport Cloud.
+Můžete například nakonfigurovat ExpressRoute s partnerským vztahem Microsoftu a připojit tunel VPN prostřednictvím tohoto partnerského vztahu k Azure Virtual WAN. Nyní jste povolili a znovu provedete přenos mezi sítěmi VPN a ExpressRoute bez Global Reach a poskytovatele a služby třetí strany, jako je Megaport Cloud.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace naleznete v následujících článcích:
+Další informace najdete v následujících článcích:
 
-* [Architektura globální chodnících s virtuální sítí Azure](virtual-wan-global-transit-network-architecture.md)
+* [Globální přenosová architektura sítě s využitím Azure Virtual WAN](virtual-wan-global-transit-network-architecture.md)
 
-* [Vytvoření centra virtuální sítě WAN](virtual-wan-site-to-site-portal.md)
+* [Vytvoření virtuálního centra sítě WAN](virtual-wan-site-to-site-portal.md)
 
-* [Konfigurace zabezpečeného rozbočovače Virtual WAN](../firewall-manager/secure-cloud-network.md)
+* [Konfigurace virtuálního zabezpečeného centra WAN](../firewall-manager/secure-cloud-network.md)
 
-* [Přehled náhledu služby Azure Partnerskývztah](https://docs.microsoft.com/azure/peering-service/about)
+* [Přehled služby Azure peering ve verzi Preview](https://docs.microsoft.com/azure/peering-service/about)

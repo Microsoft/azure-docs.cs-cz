@@ -9,24 +9,24 @@ ms.date: 11/29/2018
 ms.author: jinzh
 ms.custom: include file
 ms.openlocfilehash: cbf43f60a438c740c087ddd2344c982da09da634
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81007832"
 ---
-V následující tabulce je uveden limit využití pro cenovou úroveň Azure Maps S0. Limit využití závisí na cenové úrovni. 
+Následující tabulka uvádí omezení využití Azure Maps cenové úrovně S0. Omezení využití závisí na cenové úrovni. 
 
-| Prostředek                              | Limit cenové úrovně S0 |
+| Prostředek                              | Omezení cenové úrovně S0 |
 |---------------------------------------|:---------------------:|
 | Maximální frekvence požadavků na předplatné |   50 požadavků za sekundu  |
 
 
-V následující tabulce je uveden limit velikosti dat pro Azure Maps. Datová služba Azure Maps je dostupná jenom na cenové úrovni S1.
+Následující tabulka ukazuje omezení velikosti dat pro Azure Maps. Služba Azure Maps data Service je dostupná jenom v cenové úrovni S1.
 
 | Prostředek                              | Omezení |
 |---------------------------------------|:---------------------:|
 | Maximální velikost dat |   50 MB  |
 
 
-Další informace o cenových úrovních Azure Maps najdete v tématu [Ceny Azure Maps](https://azure.microsoft.com/pricing/details/azure-maps/).
+Další informace o cenových úrovních Azure Maps najdete v tématu [Azure Maps ceny](https://azure.microsoft.com/pricing/details/azure-maps/).

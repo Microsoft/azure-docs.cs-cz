@@ -1,5 +1,5 @@
 ---
-title: Koncový bod kontejneru pro převod textu na řeč dotazu
+title: Zadat dotaz na koncový bod kontejneru textu na řeč
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,15 +9,15 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: b2a621a23a81e4fb4f47e7c99d780211973e30a0
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81275377"
 ---
-Kontejner poskytuje [řešení API koncového bodu založené na rest](../rest-text-to-speech.md). Existuje mnoho [ukázkový zdrojový kód projekty](https://github.com/Azure-Samples/Cognitive-Speech-TTS) pro platformu, framework a jazykové varianty k dispozici.
+Kontejner poskytuje [rozhraní API koncového bodu na bázi REST](../rest-text-to-speech.md). K dispozici je mnoho [ukázkových projektů zdrojového kódu](https://github.com/Azure-Samples/Cognitive-Speech-TTS) pro platformu, architekturu a jazykové variace.
 
-U *standardního kontejneru převodu textu na řeč* byste se měli spoléhat na národní prostředí a hlas stažené značky obrázku. Pokud jste například stáhli `latest` značku, výchozí `en-US` národní `JessaRUS` prostředí je a hlas. Argument `{VOICE_NAME}` by pak [`en-US-JessaRUS`](../language-support.md#standard-voices)byl . Viz příklad SSML níže:
+Se standardním kontejnerem *pro převod textu na řeč* byste měli spoléhat na národní prostředí a hlas značky obrázku, kterou jste stáhli. Například pokud jste stáhli `latest` značku výchozí národní prostředí `en-US` a `JessaRUS` hlas. `{VOICE_NAME}` Argument by pak byl [`en-US-JessaRUS`](../language-support.md#standard-voices). Podívejte se na příklad SSML níže:
 
 ```xml
 <speak version="1.0" xml:lang="en-US">
@@ -27,11 +27,11 @@ U *standardního kontejneru převodu textu na řeč* byste se měli spoléhat na
 </speak>
 ```
 
-Pro *vlastní převod textu na řeč* však budete muset získat hlas / **model** z [vlastního hlasového portálu](https://aka.ms/custom-voice-portal). Název vlastního modelu je synonymem pro název hlasu. Přejděte na stránku **Školení** a zkopírujte voice `{VOICE_NAME}` / **model,** který chcete použít jako argument.
+Pro *vlastní převod textu na řeč* ale budete muset získat **hlas nebo model** z [vlastního hlasového portálu](https://aka.ms/custom-voice-portal). Název vlastního modelu je synonymum s názvem hlasu. Přejděte na stránku **školení** a zkopírujte **hlasový/model** , který chcete použít jako `{VOICE_NAME}` argument.
 <br><br>
-:::image type="content" source="../media/custom-voice/custom-voice-model-voice-name.png" alt-text="Vlastní hlasový model - hlasové jméno":::
+:::image type="content" source="../media/custom-voice/custom-voice-model-voice-name.png" alt-text="Vlastní hlasový model – hlasový název":::
 
-Viz příklad SSML níže:
+Podívejte se na příklad SSML níže:
 
 ```xml
 <speak version="1.0" xml:lang="en-US">
@@ -41,7 +41,7 @@ Viz příklad SSML níže:
 </speak>
 ```
 
-Pojďme vytvořit požadavek HTTP POST, poskytuje několik záhlaví a datové části dat. Nahraďte `{VOICE_NAME}` zástupný symbol vlastní hodnotou.
+Pojďme sestavit požadavek HTTP POST, který poskytuje pár hlaviček a datovou část dat. `{VOICE_NAME}` Zástupný text nahraďte vlastní hodnotou.
 
 ```curl
 curl -s -v -X POST http://localhost:5000/speech/synthesize/cognitiveservices/v1 \
@@ -53,8 +53,8 @@ curl -s -v -X POST http://localhost:5000/speech/synthesize/cognitiveservices/v1 
 
 Tento příkaz:
 
-* Vytvoří požadavek HTTP POST `speech/synthesize/cognitiveservices/v1` pro koncový bod.
-* Určuje `Accept` záhlaví`audio/*`
-* Určuje záhlaví `Content-Type` , `application/ssml+xml`další informace naleznete v tématu [tělo požadavku](../rest-text-to-speech.md#request-body).
-* Určuje `X-Microsoft-OutputFormat` záhlaví aplikace `riff-16khz-16bit-mono-pcm`, viz [zvukový výstup](../rest-text-to-speech.md#audio-outputs).
-* Odešle požadavek [jazyka s poznámkami pro syntézu řeči (SSML)](../speech-synthesis-markup.md) přidělený `{VOICE_NAME}` koncovému bodu.
+* Vytvoří požadavek HTTP POST pro `speech/synthesize/cognitiveservices/v1` koncový bod.
+* Určuje `Accept` hlavičku`audio/*`
+* Určuje `Content-Type` záhlaví `application/ssml+xml`. Další informace naleznete v části [Text žádosti](../rest-text-to-speech.md#request-body).
+* Určuje `X-Microsoft-OutputFormat` hlavičku `riff-16khz-16bit-mono-pcm`, pro další možnosti se zobrazí [zvukový výstup](../rest-text-to-speech.md#audio-outputs).
+* Odešle žádost [SSML (Speech syntézy Language)](../speech-synthesis-markup.md) danému `{VOICE_NAME}` koncovému bodu.

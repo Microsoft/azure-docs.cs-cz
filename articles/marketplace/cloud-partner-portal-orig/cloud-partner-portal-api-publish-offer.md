@@ -1,6 +1,6 @@
 ---
-title: Zveřejnit nabídku | Azure Marketplace
-description: Rozhraní API pro publikování zadané nabídky.
+title: Publikování nabídky | Azure Marketplace
+description: Rozhraní API pro publikování zadané nabídky
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,18 +8,18 @@ ms.topic: reference
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: 960d5facb53f20719045c5fdbe2179f549aca3f2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81255936"
 ---
 # <a name="publish-an-offer"></a>Publikování nabídky
 
 > [!NOTE]
-> Api portálu pro partnery cloudu jsou integrovaná s Partnerským centrem a budou fungovat i po migraci nabídek do Centra partnerů. Integrace přináší malé změny. Zkontrolujte změny uvedené v [referenčním rozhraní API portálu cloudových partnerů a](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) ujistěte se, že váš kód bude fungovat i po migraci do Centra partnerů.
+> Rozhraní API pro portál partnerů cloudu jsou integrovaná do partnerského centra a budou fungovat i po migraci nabídek do partnerského centra. Integrace přináší malé změny. Projděte si změny uvedené v části [portál partnerů cloudu rozhraní API](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) , abyste zajistili, že váš kód bude i nadále fungovat po migraci do partnerského centra.
 
-Spustí proces publikování pro zadanou nabídku. Toto volání je dlouho běžící operace.
+Spustí proces publikování pro určenou nabídku. Toto volání je dlouhodobě běžící operace.
 
   `POST  https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/publish?api-version=2017-10-31`
 
@@ -28,25 +28,25 @@ Spustí proces publikování pro zadanou nabídku. Toto volání je dlouho běž
 
 |  **Název**      |    **Popis**                               |  **Datový typ** |
 |  ------------- |  ------------------------------------            |   -----------  |
-|  id vydavatele   | Identifikátor vydavatele, například`contoso`      |   Řetězec       |
-|  offerId       | Identifikátor nabídky                                 |   Řetězec       |
+|  publisherId   | Identifikátor vydavatele, například`contoso`      |   Řetězec       |
+|  Hodnotami OfferId       | Identifikátor nabídky                                 |   Řetězec       |
 |  verze-api   | Nejnovější verze rozhraní API                        |   Datum         |
 |  |  |
 
 ## <a name="header"></a>Hlavička
 ------
 
-|  **Název**        |    **Hodnotu**          |
+|  **Název**        |    **Osa**          |
 |  --------        |    ---------          |
 |  Typ obsahu    | `application/json`    |
 |  Autorizace   |  `Bearer YOUR_TOKEN`  |
 |  |  |
 
 
-## <a name="body-example"></a>Příklad těla
+## <a name="body-example"></a>Příklad textu
 ------------
 
-### <a name="request"></a>Žádost
+### <a name="request"></a>Request
 
 ``` json
   { 
@@ -57,11 +57,11 @@ Spustí proces publikování pro zadanou nabídku. Toto volání je dlouho běž
   }
 ```
 
-### <a name="request-body-properties"></a>Vlastnosti těla požadavku
+### <a name="request-body-properties"></a>Vlastnosti textu žádosti
 
 |  **Název**               |   **Popis**                                                                                 |
 |  ---------------------  | ------------------------------------------------------------------------------------------------- |
-|  e-maily s oznámením    | Seznam e-mailových adres oddělených čárkami, které mají být oznámeny průběhu operace publikování. |
+|  oznámení – e-maily    | Čárkami oddělený seznam e-mailových adres, které se mají upozornit na průběh operace publikování. |
 |  |  |
 
 
@@ -78,18 +78,18 @@ Spustí proces publikování pro zadanou nabídku. Toto volání je dlouho běž
 
 ### <a name="response-header"></a>Hlavička odpovědi
 
-|  **Název**             |    **Hodnotu**                                                                 |
+|  **Název**             |    **Osa**                                                                 |
 |  -------------------- | ---------------------------------------------------------------------------- |
-| Umístění    | Relativní cesta k načtení stavu této operace     |
+| Umístění    | Relativní cesta pro načtení stavu této operace     |
 |  |  |
 
 
-### <a name="response-status-codes"></a>Stavové kódy odpovědi
+### <a name="response-status-codes"></a>Stavové kódy odpovědí
 
 | **kód** |  **Popis**                                                                                                                           |
 | ------   |  ----------------------------------------------------------------------------------------------------------------------------------------- |
-| 202   | `Accepted`- Požadavek byl úspěšně přijat. Odpověď obsahuje umístění, které lze použít ke sledování operace, která je spuštěna. |
-| 400   | `Bad/Malformed request`- Tělo odpovědi na chybu může poskytnout více informací.                                                               |
-| 422   | `Un-processable entity`- Označuje, že entita, která má být publikována, se nezdařila ověření.                                                        |
-| 404   | `Not found`- Entita určená klientem neexistuje.                                                                              |
+| 202   | `Accepted`-Požadavek byl úspěšně přijat. Odpověď obsahuje umístění, které lze použít ke sledování operace, která je spuštěna. |
+| 400   | `Bad/Malformed request`– Tělo chybové odpovědi může poskytovat další informace.                                                               |
+| 422   | `Un-processable entity`– Označuje, že entita, která má být publikována, se nezdařila.                                                        |
+| 404   | `Not found`-Entita určená klientem neexistuje.                                                                              |
 |  |  |

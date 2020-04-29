@@ -1,6 +1,6 @@
 ---
-title: Zrušit operaci API | Azure Marketplace
-description: Zrušit operace .
+title: Zrušit rozhraní API pro operace | Azure Marketplace
+description: Zrušit operace.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,18 +8,18 @@ ms.topic: reference
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: f9e55ff2c581f9392a125f6dc3ec8d903e9876a4
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81256429"
 ---
 # <a name="cancel-operation"></a>Zrušit operaci
 
 > [!NOTE]
-> Api portálu pro partnery cloudu jsou integrovaná s Partnerským centrem a budou fungovat i po migraci nabídek do Centra partnerů. Integrace přináší malé změny. Zkontrolujte změny uvedené v [referenčním rozhraní API portálu cloudových partnerů a](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) ujistěte se, že váš kód bude fungovat i po migraci do Centra partnerů.
+> Rozhraní API pro portál partnerů cloudu jsou integrovaná do partnerského centra a budou fungovat i po migraci nabídek do partnerského centra. Integrace přináší malé změny. Projděte si změny uvedené v části [portál partnerů cloudu rozhraní API](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) , abyste zajistili, že váš kód bude i nadále fungovat po migraci do partnerského centra.
 
-Toto rozhraní API zruší právě probíhající operaci nabídky. Pomocí [rozhraní API pro načtení operací](./cloud-partner-portal-api-retrieve-operations.md) získáte a `operationId` předejte toto rozhraní API. Zrušení je obvykle synchronní operace, ale v některých složitých scénářích může být vyžadována nová operace ke zrušení existující operace. V tomto případě tělo odpovědi HTTP obsahuje umístění operace, která by měla být použita k dotazování stavu.
+Toto rozhraní API zruší aktuálně probíhající operaci na této nabídce. K předání do tohoto rozhraní API použijte `operationId` [rozhraní API pro načtení operací](./cloud-partner-portal-api-retrieve-operations.md) . Zrušení je obvykle synchronní operace, ale v některých složitých scénářích může být pro zrušení existující operace nutná nová operace. V tomto případě tělo odpovědi HTTP obsahuje umístění operace, které by se mělo použít k dotazování na stav.
 
   `POST https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/cancel?api-version=2017-10-31`
 
@@ -29,24 +29,24 @@ Toto rozhraní API zruší právě probíhající operaci nabídky. Pomocí [roz
 
 |  **Název**    |      **Popis**                                  |    **Datový typ**  |
 | ------------ |     ----------------                                  |     -----------   |
-| id vydavatele  |  Identifikátor vydavatele, například`contoso`         |   Řetězec          |
-| offerId      |  Identifikátor nabídky                                     |   Řetězec          |
+| publisherId  |  Identifikátor vydavatele, například`contoso`         |   Řetězec          |
+| Hodnotami OfferId      |  Identifikátor nabídky                                     |   Řetězec          |
 | verze-api  |  Aktuální verze rozhraní API                               |    Datum           |
 |  |  |  |
 
 ## <a name="header"></a>Hlavička
 ------
 
-|  **Název**              |  **Hodnotu**         |
+|  **Název**              |  **Osa**         |
 |  ---------             |  ----------        |
 |  Typ obsahu          |  application/json  |
-|  Autorizace         |  Nositel váš token |
+|  Autorizace         |  Držitel TOKENu |
 |  |  |
 
-## <a name="body-example"></a>Příklad těla
+## <a name="body-example"></a>Příklad textu
 ------------
 
-### <a name="request"></a>Žádost
+### <a name="request"></a>Request
 
 ``` json
 {
@@ -56,11 +56,11 @@ Toto rozhraní API zruší právě probíhající operaci nabídky. Pomocí [roz
 }     
 ```
 
-### <a name="request-body-properties"></a>Vlastnosti těla požadavku
+### <a name="request-body-properties"></a>Vlastnosti textu žádosti
 
 |  **Název**                |  **Popis**                                               |
 |  --------                |  ---------------                                               |
-|  e-maily s oznámením     | Seznam e-mailových ID oddělených čárkami, která mají být oznámena průběhu operace publikování. |
+|  oznámení – e-maily     | Čárkami oddělený seznam ID e-mailů, které se mají upozornit na průběh operace publikování. |
 |  |  |
 
 ### <a name="response"></a>Odpověď
@@ -75,18 +75,18 @@ Toto rozhraní API zruší právě probíhající operaci nabídky. Pomocí [roz
 
 ### <a name="response-header"></a>Hlavička odpovědi
 
-|  **Název**             |    **Hodnotu**                       |
+|  **Název**             |    **Osa**                       |
 |  ---------            |    ----------                      |
-| Umístění    | Relativní cesta k načtení stavu této operace. |
+| Umístění    | Relativní cesta pro načtení stavu této operace. |
 |  |  |
 
-### <a name="response-status-codes"></a>Stavové kódy odpovědi
+### <a name="response-status-codes"></a>Stavové kódy odpovědí
 
 | **kód**  |  **Popis**                                                                       |
 |  ------   |  ------------------------------------------------------------------------               |
-|  200      | Ok. Požadavek byl úspěšně zpracován a operace je synchronně zrušena. |
-|  202      | Přijata. Požadavek byl úspěšně zpracován a operace je v procesu jejich zrušení. Umístění operace zrušení je vrácena v hlavičce odpovědi. |
-|  400      | Chybný/poškozený požadavek. Tělo odpovědi na chybu může poskytnout další informace.  |
-|  403      | Přístup zakázán. Klient nemá přístup k oboru názvů zadanému v požadavku. |
-|  404      | Nebyl nalezen. Zadaná entita neexistuje. |
+|  200      | Ok. Požadavek byl úspěšně zpracován a operace byla zrušena synchronně. |
+|  202      | Přijata. Požadavek byl úspěšně zpracován a probíhá rušení operace. Umístění operace zrušení je vráceno v hlavičce odpovědi. |
+|  400      | Chybná nebo poškozená žádost. Tělo odpovědi na chyby může poskytnout další informace.  |
+|  403      | Přístup je zakázán. Klient nemá přístup k oboru názvů, který je zadaný v požadavku. |
+|  404      | Nenalezeno. Zadaná entita neexistuje. |
 |  |  |

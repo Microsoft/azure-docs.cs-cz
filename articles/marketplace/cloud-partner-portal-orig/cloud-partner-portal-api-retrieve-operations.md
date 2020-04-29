@@ -1,6 +1,6 @@
 ---
-title: Načíst rozhraní API pro operace | Azure Marketplace
-description: Načte všechny operace v nabídce nebo získat konkrétní operaci pro zadané operationId.
+title: Načíst rozhraní API operací | Azure Marketplace
+description: Načte všechny operace v nabídce nebo získá konkrétní operaci pro zadaný operationId.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,18 +8,18 @@ ms.topic: reference
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: 93b2ca700a987b86aedfdae55d58540c8ffe84ed
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81255868"
 ---
 # <a name="retrieve-operations"></a>Načtení operací
 
 > [!NOTE]
-> Api portálu pro partnery cloudu jsou integrovaná s Partnerským centrem a budou fungovat i po migraci nabídek do Centra partnerů. Integrace přináší malé změny. Zkontrolujte změny uvedené v [referenčním rozhraní API portálu cloudových partnerů a](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) ujistěte se, že váš kód bude fungovat i po migraci do Centra partnerů.
+> Rozhraní API pro portál partnerů cloudu jsou integrovaná do partnerského centra a budou fungovat i po migraci nabídek do partnerského centra. Integrace přináší malé změny. Projděte si změny uvedené v části [portál partnerů cloudu rozhraní API](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) , abyste zajistili, že váš kód bude i nadále fungovat po migraci do partnerského centra.
 
-Načte všechny operace v nabídce nebo získat konkrétní operaci pro zadané operationId. Klient může použít parametry dotazu k filtrování spuštěných operací.
+Načte všechny operace v nabídce nebo získá konkrétní operaci pro zadaný operationId. Klient může pomocí parametrů dotazů filtrovat spuštěné operace.
 
 ``` https
 
@@ -34,27 +34,27 @@ Načte všechny operace v nabídce nebo získat konkrétní operaci pro zadané 
 
 |  **Název**          |      **Popis**                                                                                           | **Datový typ** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
-|  id vydavatele       |  Identifikátor vydavatele, například`Contoso`                                                                   |  Řetězec       |
-|  offerId           |  Identifikátor nabídky                                                                                              |  Řetězec       |
-|  operationId       |  IDENTIFIKÁTOR GUID, který jednoznačně identifikuje operaci v nabídce. OperationId může být načtenpomocí tohoto rozhraní API a je také vrácena v hlavičce HTTP odpovědi pro všechny dlouhotrvající operace, jako je například rozhraní API [nabídky publikování.](./cloud-partner-portal-api-publish-offer.md)  |   Identifikátor GUID   |
+|  publisherId       |  Identifikátor vydavatele, například`Contoso`                                                                   |  Řetězec       |
+|  Hodnotami OfferId           |  Identifikátor nabídky                                                                                              |  Řetězec       |
+|  operationId       |  Identifikátor GUID, který jedinečně identifikuje operaci na nabídce OperationId může být načten pomocí tohoto rozhraní API a také se vrátí v hlavičce HTTP odpovědi pro jakoukoli dlouhodobou operaci, jako je například rozhraní API [nabídky publikovat](./cloud-partner-portal-api-publish-offer.md) .  |   Identifikátor GUID   |
 |  verze-api       | Nejnovější verze rozhraní API |    Datum      |
 |  |  |  |
 
 ## <a name="header"></a>Hlavička
 
 
-|  **Název**          |  **Hodnotu**           |
+|  **Název**          |  **Osa**           |
 |  ---------------   | -------------------- |
 |  Typ obsahu      | `application/json`   |
 |  Autorizace     | `Bearer YOUR_TOKEN`  |
 |  |  |
 
 
-## <a name="body-example"></a>Příklad těla
+## <a name="body-example"></a>Příklad textu
 
 ### <a name="response"></a>Odpověď
 
-#### <a name="get-operations"></a>Get operace
+#### <a name="get-operations"></a>ZÍSKAT operace
 
 ``` json
     [
@@ -170,15 +170,15 @@ Načte všechny operace v nabídce nebo získat konkrétní operaci pro zadané 
     ]
 ```
 
-### <a name="response-body-properties"></a>Vlastnosti těla odezvy
+### <a name="response-body-properties"></a>Vlastnosti textu odpovědi
 
 |  **Název**                    |  **Popis**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
-|  id                          | IDENTIFIKÁTOR GUID, který jednoznačně identifikuje operaci                                                       |
-|  submissionTyp              | Identifikuje typ operace, která je hlášena pro nabídku, například`Publish/GoLive`      |
-|  createdDateTime             | Datum uTC, kdy byla operace vytvořena                                                       |
-|  lastActionDateTime          | Čas data času u času u operace byla provedena poslední aktualizace                                       |
-|  status                      | Stav operace, a `not started` \| `running` \| `failed` \| `completed`to buď . Stav může být `running` v jednom okamžiku pouze jedna operace. |
+|  id                          | Identifikátor GUID, který jedinečně identifikuje operaci                                                       |
+|  submissionType              | Určuje typ operace hlášené pro nabídku, například`Publish/GoLive`      |
+|  createdDateTime             | Datum a čas UTC při vytvoření operace                                                       |
+|  lastActionDateTime          | Datum a čas UTC, kdy byla provedena poslední aktualizace na operaci                                       |
+|  status                      | `not started` \| `running` \| `failed` Stav operace, \| buď `completed`. V jednom okamžiku může být stav `running` jenom jedna operace. |
 |  error                       | Chybová zpráva pro neúspěšné operace                                                               |
 |  |  |
 
@@ -186,21 +186,21 @@ Načte všechny operace v nabídce nebo získat konkrétní operaci pro zadané 
 
 |  **Název**                    |  **Popis**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
-| odhadTimeFrame | Odhadovaná doba trvání této operace |
-| id | Jedinečný identifikátor pro krokový proces |
+| estimatedTimeFrame | Odhadovaná doba trvání této operace |
+| id | Jedinečný identifikátor procesu kroku |
 | description | Popis kroku |
-| název kroku | Popisný název kroku |
-| status | Stav kroku, a `notStarted` \| `running` \| `failed` \| to buď`completed` |
-| cloud-zařízení | Všechna oznámení nebo upozornění zjištěná během kroku. Pole řetězců |
+| Step | Popisný název kroku |
+| status | `notStarted` \| `running` \| `failed` Stav kroku, buď \|`completed` |
+| cloud-zařízení | Všechna oznámení nebo upozornění zjištěná v průběhu tohoto kroku. Pole řetězců |
 | progressPercentage | Celé číslo od 0 do 100 označující průběh kroku |
 | | |
 
-### <a name="response-status-codes"></a>Stavové kódy odpovědi
+### <a name="response-status-codes"></a>Stavové kódy odpovědí
 
 | **kód**  |   **Popis**                                                                                  |
 |  -------- |   -------------------------------------------------------------------------------------------------|
-|  200      | `OK`- Požadavek byl úspěšně zpracován a požadované operace byly vráceny.        |
-|  400      | `Bad/Malformed request`- Tělo odpovědi na chybu může obsahovat více informací.                    |
-|  403      | `Forbidden`- Klient nemá přístup k zadanému oboru názvů.                          |
-|  404      | `Not found`- Zadaná entita neexistuje.                                                 |
+|  200      | `OK`-Požadavek byl úspěšně zpracován a byly vráceny požadované operace.        |
+|  400      | `Bad/Malformed request`– Tělo chybové odpovědi může obsahovat více informací.                    |
+|  403      | `Forbidden`– Klient nemá přístup k zadanému oboru názvů.                          |
+|  404      | `Not found`-Zadaná entita neexistuje.                                                 |
 |  |  |

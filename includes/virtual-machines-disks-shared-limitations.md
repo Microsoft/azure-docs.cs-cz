@@ -9,32 +9,32 @@ ms.date: 04/09/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 1e53dda2c6cb293a9204f344d152daa1937aa38b
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81008326"
 ---
-Ve verzi Preview je povolení sdílených disků k dispozici pouze pro podmnožinu typů disků. V současné době mohou sdílené disky povolit pouze ultra disky a prémiové disky SSD. Na každý spravovaný disk, který má povolené sdílené disky, se vztahují následující omezení uspořádaná podle typu disku:
+Ve verzi Preview je povolení sdílených disků dostupné jenom pro podmnožinu typů disků. Sdílené disky teď můžou povolit jenom disky Ultra a Premium SSD. U každého spravovaného disku, na kterém jsou povolené sdílené disky, platí následující omezení uspořádaná podle typu disku:
 
 ### <a name="ultra-disks"></a>Disky Ultra
 
-Ultra disky mají svůj vlastní samostatný seznam omezení, které nesouvisí se sdílenými disky. Omezení ultra disku najdete v části [Použití disků Azure ultra](../articles/virtual-machines/linux/disks-enable-ultra-ssd.md).
+Disky Ultra mají vlastní samostatný seznam omezení, které se nevztahují ke sdíleným diskům. Omezení pro ultra disk najdete v tématu [použití disků Azure Ultra](../articles/virtual-machines/linux/disks-enable-ultra-ssd.md).
 
-Při sdílení ultra disků mají následující další omezení:
+Při sdílení Ultra discích mají tato dodatečná omezení:
 
-- V současné době podporována pouze v západní USA.
-- Momentálně omezená na Azure Resource Manager nebo podporu sady SDK.
-- V některých verzích clusteru s podporou převzetí služeb při selhání systému Windows Server lze použít pouze základní disky, podrobnosti naleznete v [tématu Požadavky na hardware clustering u převzetí služeb při selhání a možnosti úložiště](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements).
+- V současné době se podporuje jenom v Západní USA.
+- V současné době omezena na Azure Resource Manager nebo podporu sady SDK.
+- V některých verzích clusteru s podporou převzetí služeb při selhání Windows serveru se dají použít jenom základní disky. Podrobnosti najdete v tématu [požadavky na hardware clusteringu s podporou převzetí služeb při selhání a možnosti](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements)
 
 ### <a name="premium-ssds"></a>Disky SSD úrovně Premium
 
-- V současné době podporována pouze v oblasti západní střední USA.
-- Všechny virtuální počítače sdílející disk musí být nasazeny ve stejných [skupinách umístění bezkontaktní .](../articles/virtual-machines/windows/proximity-placement-groups.md)
-- Lze povolit pouze na datových discích, nikoli na discích operačního systému.
-- V některých verzích clusteru s podporou převzetí služeb při selhání systému Windows Server lze použít pouze základní disky, podrobnosti naleznete v [tématu Požadavky na hardware clustering u převzetí služeb při selhání a možnosti úložiště](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements).
-- Ukládání hostitelů jen pro čtení není k dispozici `maxShares>1`pro prémiové ssd disy s .
-- Skupiny dostupnosti a škálovací sady `FaultDomainCount` virtuálních strojů lze použít pouze s nastavenou na 1.
+- V současné době se podporuje jenom v Středozápadní USA oblasti.
+- Všechny virtuální počítače sdílející disk musí být nasazené ve stejné [skupině umístění pro Proximity](../articles/virtual-machines/windows/proximity-placement-groups.md).
+- Dá se povolit jenom na datových discích, ne na discích s operačním systémem.
+- V některých verzích clusteru s podporou převzetí služeb při selhání Windows serveru se dají použít jenom základní disky. Podrobnosti najdete v tématu [požadavky na hardware clusteringu s podporou převzetí služeb při selhání a možnosti](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements)
+- Mezipaměť dostupnosti hostitele jen pro čtení není k dispozici `maxShares>1`pro prémiové SSD s.
+- Skupiny dostupnosti a sady škálování virtuálních počítačů je možné používat jenom s `FaultDomainCount` nastavením na 1.
 - Podpora Azure Backup a Azure Site Recovery ještě není dostupná.
 
-Pokud máte zájem o vyzkoušení sdílených disků, [zaregistrujte se do naší verze Preview](https://aka.ms/AzureSharedDiskPreviewSignUp).
+Pokud se zajímáte o vyzkoušení sdílených disků, [Zaregistrujte si verzi Preview](https://aka.ms/AzureSharedDiskPreviewSignUp).

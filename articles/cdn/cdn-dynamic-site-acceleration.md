@@ -1,5 +1,5 @@
 ---
-title: Dynamická akcelerace webu přes Azure CDN
+title: Akcelerace dynamického webu prostřednictvím Azure CDN
 description: Azure CDN podporuje optimalizaci dynamické akcelerace webu (DSA) pro soubory s dynamickým obsahem.
 services: cdn
 documentationcenter: ''
@@ -15,175 +15,175 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: allensu
 ms.openlocfilehash: 26559adf183a5e008d77b87654a1bd4dabebbca0
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81253828"
 ---
-# <a name="dynamic-site-acceleration-via-azure-cdn"></a>Dynamická akcelerace webu přes Azure CDN
+# <a name="dynamic-site-acceleration-via-azure-cdn"></a>Akcelerace dynamického webu prostřednictvím Azure CDN
 
-S explozí sociálních médií, elektronického obchodu a hyperpersonalizovaného webu se rychle rostoucí procento obsahu, který slouží koncovým uživatelům, generuje v reálném čase. Uživatelé očekávají rychlé, spolehlivé a personalizované webové prostředí nezávislé na prohlížeči, poloze, zařízení nebo síti. Nicméně, velmi inovace, které činí tyto zkušenosti tak poutavé, také zpomalují stahování stránek a ohrožují kvalitu zkušeností spotřebitelů. 
+S rozpadem sociálních médií, elektronického obchodu a webu přizpůsobeného technologií Hyper-v reálném čase se vygeneruje rychle rostoucí procento obsahu poskytovaného koncovým uživatelům. Uživatelé očekávají rychlé, spolehlivé a přizpůsobené webové prostředí, nezávisle na jeho prohlížeči, umístění, zařízení nebo síti. Ale velice inovace, které tyto prostředí usnadňují, tak, aby se také zpomalily stahování stránek a zajistila kvalita prostředí pro uživatele. 
 
-Standardní funkce sítě pro doručování obsahu (CDN) zahrnuje možnost ukládat soubory do mezipaměti blíže koncovým uživatelům, aby se urychlilo doručování statických souborů. U dynamických webových aplikací však ukládání obsahu do mezipaměti v okrajových umístěních není možné, protože server generuje obsah v reakci na chování uživatelů. Urychlení doručování takového obsahu je složitější než tradiční ukládání okrajů do mezipaměti a vyžaduje komplexní řešení, které jemně vyladí každý prvek po celé datové cestě od počátku až po doručení. Díky optimalizaci dynamické akcelerace webu Azure CDN (DSA) se měřitelně zlepší výkon webových stránek s dynamickým obsahem.
+Funkce Standard Content Delivery Network (CDN) zahrnuje možnost ukládání souborů do mezipaměti blíž k koncovým uživatelům urychlující doručování statických souborů. Nicméně s dynamickými webovými aplikacemi není ukládání obsahu do mezipaměti na hraničních místech možné, protože server vygeneruje obsah v reakci na chování uživatele. Urychlení doručení takového obsahu je složitější než ukládání tradičních hran do mezipaměti a vyžaduje ucelené řešení, které přesně vyladí každý prvek podél celé cesty dat od zahájení do doručení. Díky optimalizaci Azure CDN Dynamic Page Acceleration (DSA) je výkon webových stránek s dynamickým obsahem měřitelnější.
 
-**Azure CDN od Akamai** a **Azure CDN od Verizonu** nabízejí optimalizaci DSA prostřednictvím nabídky **Optimalizované pro** vytváření koncových bodů. Dynamické zrychlení webu od Microsoftu je nabízeno prostřednictvím [služby Azure Front Door Service](https://docs.microsoft.com/azure/frontdoor/front-door-overview).
+**Azure CDN z Akamai** a **Azure CDN z Verizon** nabízí optimalizaci DSA během vytváření koncového bodu v nabídce **optimalizované pro** . Akcelerace dynamického webu od Microsoftu se nabízí prostřednictvím [služby Azure front-dveří](https://docs.microsoft.com/azure/frontdoor/front-door-overview).
 
 > [!Important]
-> Pro **Azure CDN z akamai** profily můžete změnit optimalizaci koncového bodu CDN po jeho vytvoření.
+> Pro **Azure CDN z profilů Akamai** je povoleno změnit optimalizaci koncového bodu CDN po jeho vytvoření.
 >   
 > U profilů **Azure CDN od Verizonu** nemůžete změnit optimalizaci vytvořeného koncového bodu CDN.
 
 ## <a name="cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files"></a>Konfigurace koncového bodu CDN pro urychlení doručování dynamických souborů
 
-Chcete-li nakonfigurovat koncový bod CDN pro optimalizaci doručování dynamických souborů, můžete použít portál Azure, rozhraní API REST nebo libovolné klientské sady SDK k provádění stejné věci programově. 
+Chcete-li nakonfigurovat koncový bod CDN pro optimalizaci doručování dynamických souborů, můžete buď použít Azure Portal, rozhraní REST API nebo kteroukoli sadu SDK klienta k tomu, aby se mohla provádět stejným krokem programově. 
 
-**Konfigurace koncového bodu CDN pro optimalizaci DSA pomocí portálu Azure:**
+**Konfigurace koncového bodu CDN pro optimalizaci DSA pomocí Azure Portal:**
 
-1. Na stránce **profilu CDN** vyberte **Koncový bod**.
+1. Na stránce **profil CDN** vyberte **koncový bod**.
 
    ![Přidání nového koncového bodu CDN](./media/cdn-dynamic-site-acceleration/cdn-endpoint-profile.png) 
 
    Otevře se podokno **Přidat koncový bod**.
 
-2. V části **Optimalizováno pro**vyberte **možnost Dynamické zrychlení webu**.
+2. V části **optimalizované pro**vyberte možnost **akcelerace dynamického webu**.
 
     ![Vytvoření nového koncového bodu CDN pomocí DSA](./media/cdn-dynamic-site-acceleration/cdn-endpoint-dsa.png)
 
-3. Do **sondy zadejte**platnou cestu k souboru.
+3. V případě **cesty testu**zadejte platnou cestu k souboru.
 
-    Cesta sondy je funkce specifická pro DSA a pro vytvoření je vyžadována platná cesta. DSA používá malý soubor *cesty sondy* umístěné na zdrojovém serveru k optimalizaci konfigurace síťového směrování pro CDN. Pro soubor cesty sondy můžete stáhnout a nahrát ukázkový soubor na web nebo použít existující datový zdroj na vašem původu, který má velikost přibližně 10 kB.
+    Cesta testu je funkce specifická pro DSA a pro vytvoření je nutná platná cesta. DSA používá pro optimalizaci konfigurace síťového směrování pro CDN na zdrojovém serveru malý soubor *cesty testu* . V případě souboru cesty testu můžete stáhnout a nahrát ukázkový soubor na web nebo použít stávající Asset o velikosti přibližně 10 KB.
 
-4. Zadejte další požadované možnosti koncového bodu (další informace najdete v [tématu Vytvoření nového koncového bodu CDN](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint)) a vyberte **Přidat**.
+4. Zadejte další požadované možnosti koncového bodu (Další informace najdete v tématu [Vytvoření nového koncového bodu CDN](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint)) a pak vyberte **Přidat**.
 
-   Po vytvoření koncového bodu CDN použije optimalizace DSA pro všechny soubory, které odpovídají určitým kritériím. 
+   Po vytvoření koncového bodu CDN se aplikují optimalizace DSA pro všechny soubory, které splňují určitá kritéria. 
 
 
-**Konfigurace existujícího koncového bodu pro DSA (jenom Azure CDN z profilů Akamai):**
+**Konfigurace existujícího koncového bodu pro DSA (Azure CDN jenom ze profilů Akamai):**
 
-1. Na stránce **profilu CDN** vyberte koncový bod, který chcete upravit.
+1. Na stránce **profil CDN** vyberte koncový bod, který chcete upravit.
 
-2. V levém podokně vyberte **Optimalizace**. 
+2. V levém podokně vyberte možnost **optimalizace**. 
 
-   Zobrazí se stránka **Optimalizace.**
+   Zobrazí se stránka **optimalizace** .
 
-3. V části **Optimalizováno pro**vyberte **Dynamické zrychlení webu**a pak vyberte **Uložit**.
+3. V části **optimalizované pro**vyberte možnost **akcelerace dynamického webu**a pak vyberte **Uložit**.
 
 > [!Note]
-> DSA účtuje příplatky. Další informace naleznete v [tématu Content Delivery Network pricing](https://azure.microsoft.com/pricing/details/cdn/).
+> DSA další poplatky. Další informace najdete v tématu [Content Delivery Network ceny](https://azure.microsoft.com/pricing/details/cdn/).
 
 ## <a name="dsa-optimization-using-azure-cdn"></a>Optimalizace DSA pomocí Azure CDN
 
-Dynamická akcelerace webu v síti Azure CDN urychluje doručování dynamických datových zdrojů pomocí následujících technik:
+Akcelerace dynamického webu na Azure CDN urychluje doručování dynamických prostředků pomocí následujících technik:
 
--   [Optimalizace trasy](#route-optimization)
+-   [Optimalizace tras](#route-optimization)
 -   [Optimalizace protokolu TCP](#tcp-optimizations)
--   [Předběžné načtení objektu (azure cdn z Akamai pouze)](#object-prefetch-azure-cdn-from-akamai-only)
+-   [Předběžné načtení objektu (Azure CDN jenom z Akamai)](#object-prefetch-azure-cdn-from-akamai-only)
 -   [Adaptivní komprese obrázků (Azure CDN pouze z Akamai)](#adaptive-image-compression-azure-cdn-from-akamai-only)
 
-### <a name="route-optimization"></a>Optimalizace trasy
+### <a name="route-optimization"></a>Optimalizace tras
 
-Optimalizace trasy je důležitá, protože Internet je dynamické místo, kde provoz a dočasné výpadky neustále mění topologii sítě. Protokol BGP (Border Gateway Protocol) je směrovací protokol Internetu, ale mohou existovat rychlejší trasy prostřednictvím zprostředkujících serverů Point of Presence (PoP). 
+Optimalizace tras je důležitá, protože Internet je dynamické místo, kde provoz a dočasné výpadky neustále mění síťovou topologii. Border Gateway Protocol (BGP) je směrovací protokol internetu, ale může se jednat o rychlejší trasy prostřednictvím serverů PoP (zprostředkujícího bodu přítomnosti). 
 
-Optimalizace trasy zvolí nejoptimálnější cestu k počátku tak, aby byl web nepřetržitě přístupný a dynamický obsah byl koncovým uživatelům doručován nejrychlejší a nejspolehlivější možnou cestou. 
+Optimalizace tras volí optimální cestu k počátku, takže lokalita bude nepřetržitě přístupná a koncovým uživatelům se doručí dynamický obsah přes nejrychlejší a nejspolehlivější možné směrování. 
 
-Síť Akamai používá techniky ke shromažďování dat v reálném čase a porovnávání různých cest přes různé uzly na serveru Akamai, stejně jako výchozí trasu Protokolu BGP přes otevřený Internet k určení nejrychlejší trasy mezi původem a okrajem CDN. Tyto techniky se vyhýbají internetovým dopravním bodům a dlouhým trasem. 
+Akamai Network využívá techniky ke shromažďování dat v reálném čase a porovnávání různých cest prostřednictvím různých uzlů serveru Akamai a také výchozí trasy protokolu BGP v rámci otevřeného internetu za účelem určení nejrychlejší trasy mezi počátkem a hraniční sítí CDN. Tyto techniky vyloučí body zahlcení Internetu a dlouhé trasy. 
 
-Podobně síť Verizon používá kombinaci Anycast DNS, vysoké kapacity podpory POP a kontroly stavu, k určení nejlepší brány pro nejlepší směrování dat z klienta do původu.
+Podobně Verizon síť používá kombinaci DNS s více cestami, pop s vysokou kapacitou a kontroly stavu, aby bylo možné určit nejlepší brány, které budou co nejlépe směrovat data z klienta na počátek.
  
-Výsledkem je, že plně dynamický a transakční obsah je dodáván rychleji a spolehlivěji koncovým uživatelům, i když je neskladovatelný. 
+Výsledkem je, že plně dynamický a transakční obsah se rychleji a spolehlivě doručí koncovým uživatelům, a to i v případě, že je nemůžete ukládat do mezipaměti. 
 
 ### <a name="tcp-optimizations"></a>Optimalizace protokolu TCP
 
-Protokol TCP (Transmission Control Protocol) je standardem sady internetových protokolů, která slouží k poskytování informací mezi aplikacemi v síti IP.  Ve výchozím nastavení je k nastavení připojení TCP vyžadováno několik požadavků tam a zpět a také omezení, aby se zabránilo přetížení sítě, což vede k neefektivnosti ve velkém měřítku. **Azure CDN z Akamai** zpracovává tento problém optimalizací ve třech oblastech: 
+Protokol TCP (Transmission Control Protocol) je standardem sady protokolů sítě Internet, která slouží k doručování informací mezi aplikacemi v síti IP.  Ve výchozím nastavení se k nastavení připojení TCP vyžaduje několik požadavků na zálohování a omezení, aby se zabránilo zahlcení sítě, což vede k neefektivnímu škálování. **Azure CDN z Akamai** zpracovává tento problém optimalizací ve třech oblastech: 
 
- - [Eliminace pomalého startu protokolu TCP](#eliminating-tcp-slow-start)
+ - [Odstraňování pomalých spuštění protokolu TCP](#eliminating-tcp-slow-start)
  - [Využití trvalých připojení](#leveraging-persistent-connections)
- - [Optimalizace parametrů paketu TCP](#tuning-tcp-packet-parameters)
+ - [Vyladění parametrů paketů TCP](#tuning-tcp-packet-parameters)
 
-#### <a name="eliminating-tcp-slow-start"></a>Eliminace pomalého startu protokolu TCP
+#### <a name="eliminating-tcp-slow-start"></a>Odstraňování pomalých spuštění protokolu TCP
 
-Pomalé *spuštění* protokolu TCP je algoritmus protokolu TCP, který zabraňuje zahlcení sítě omezením množství dat odeslaných po síti. Začíná malými velikostmi zahlcení mezi odesílatelem a příjemcem, dokud není dosaženo maxima nebo není zjištěna ztráta paketů.
+*Pomalé spuštění* protokolu TCP je algoritmus protokolu TCP, který brání zahlcení sítě tím, že omezuje množství dat odesílaných po síti. Začíná s malým množstvím oken zahlcení mezi odesílatelem a přijímačem až do doby, kdy je dosaženo maxima nebo se zjistí ztráta paketů.
 
- Oba **Azure CDN z Akamai** a **Azure CDN od Verizon** profily eliminovat TCP pomalé spuštění s následujícími třemi kroky:
+ Jak **Azure CDN z Akamai** a **Azure CDN z profilů Verizon** eliminují protokol TCP pomalu, zahájí následující tři kroky:
 
-1. Monitorování stavu a šířky pásma se používá k měření šířky pásma připojení mezi hraničními servery PoP.
+1. Monitorování stavu a šířky pásma slouží k měření šířky pásma připojení mezi servery PoP hraniční sítě.
     
-2. Metriky jsou sdíleny mezi hraničními servery PoP, takže každý server si je vědom stavu sítě a stavu serveru ostatních popů kolem nich.  
+2. Metriky se sdílí mezi hraničními servery PoP, aby každý server měl informace o stavech sítě a stavu serveru ostatních bodů POP kolem nich.  
     
-3. Hraniční servery CDN předpokládají některé parametry přenosu, například jaká by měla být optimální velikost okna při komunikaci s ostatními hraničními servery CDN v jeho blízkosti. Tento krok znamená, že počáteční velikost okna přetížení může být zvýšena, pokud je stav připojení mezi hraničními servery CDN schopen vyšších přenosů dat paketů.  
+3. Hraniční servery CDN dávají předpoklady o některých parametrech přenosu, například o tom, co má optimální velikost okna při komunikaci s dalšími hraničními servery CDN v blízkosti. Tento krok znamená, že počáteční velikost okna zahlcení se dá zvýšit, pokud je stav připojení mezi hraničními servery CDN schopný přenos dat paketů s vyššími nároky.  
 
 #### <a name="leveraging-persistent-connections"></a>Využití trvalých připojení
 
-Pomocí sítě CDN se k vašemu původu přímo připojuje méně jedinečných počítačů ve srovnání s uživateli, kteří se připojují přímo k vašemu původu. Azure CDN také fondy požadavky uživatelů společně navázat méně připojení s původem.
+Pomocí sítě CDN se ke svému původnímu serveru připojí méně jedinečných počítačů přímo v porovnání s uživateli, kteří se připojují přímo k vašemu zdroji. Azure CDN také seskupují požadavky uživatelů, aby bylo možné vytvořit méně připojení se zdrojem.
 
-Jak již bylo zmíněno, několik požadavků handshake jsou nutné k vytvoření připojení TCP. Trvalá připojení, která `Keep-Alive` jsou implementována hlavičkou PROTOKOLU HTTP, znovu používají existující připojení TCP pro více požadavků PROTOKOLU HTTP, aby se ušetřily doby odezvy a urychlilo doručování. 
+Jak už jsme uvedli, k navázání připojení TCP se vyžadují několik požadavků na handshake. Trvalá připojení, která jsou implementovaná `Keep-Alive` hlavičkou HTTP, znovu použijí existující připojení TCP pro více požadavků HTTP, aby ušetřily doby odezvy a urychlily doručení. 
 
-**Azure CDN od společnosti Verizon** také odesílá pravidelné pakety keep-alive přes připojení TCP, aby se zabránilo zavření otevřeného připojení.
+**Azure CDN z Verizon** také odesílá pravidelné pakety Keep-Alive přes připojení TCP, aby se zabránilo zavření otevřeného připojení.
 
-#### <a name="tuning-tcp-packet-parameters"></a>Optimalizace parametrů paketu TCP
+#### <a name="tuning-tcp-packet-parameters"></a>Vyladění parametrů paketů TCP
 
-**Azure CDN od Akamai** vyladí parametry, které řídí připojení mezi servery a snižuje množství dálkových zpátečních cest potřebných k načtení obsahu vloženého do webu pomocí následujících technik:
+**Azure CDN z Akamai** vyladí parametry, které řídí připojení typu server-server, a snižuje množství dlouhodobých zpátečních cest potřebných k načtení obsahu vloženého v lokalitě pomocí následujících technik:
 
-- Zvýšení počáteční hodovací okno tak, aby bylo možné odeslat více paketů bez čekání na potvrzení.
-- Snížení počáteční ho retransmit time out tak, aby byla zjištěna ztráta a k opakovanému přenosu dochází rychleji.
-- Snížení minimální a maximální časový limit opakovaného přenosu, aby se zkrátila čekací doba před zapředpokladem, že pakety byly ztraceny v přenosu.
+- Zvýšení počátečního okna zahlcení, aby bylo možné odesílat více paketů bez čekání na potvrzení.
+- Snížení počátečního časového limitu opakovaného odeslání tak, aby byla zjištěna ztráta, a rychlejší přenos probíhá rychleji.
+- Snížení minimálního a maximálního časového limitu opakovaného přenosu, aby se snížila doba čekání před tím, než dojde ke ztrátě paketů v přenosu.
 
-### <a name="object-prefetch-azure-cdn-from-akamai-only"></a>Předběžné načtení objektu (azure cdn z Akamai pouze)
+### <a name="object-prefetch-azure-cdn-from-akamai-only"></a>Předběžné načtení objektu (Azure CDN jenom z Akamai)
 
-Většina webových stránek se skládá ze stránky HTML, která odkazuje na různé další zdroje, jako jsou obrázky a skripty. Obvykle, když klient požaduje webovou stránku, prohlížeč nejprve stáhne a analyzuje objekt HTML a potom provede další požadavky na propojené datové zdroje, které jsou nutné k úplnému načtení stránky. 
+Většina webů se skládá ze stránky HTML, která odkazuje na různé další prostředky, jako jsou obrázky a skripty. Když klient požaduje webovou stránku, prohlížeč nejprve stáhne a analyzuje objekt HTML a následně vytvoří další požadavky na propojené prostředky, které jsou vyžadovány k úplnému načtení stránky. 
 
-*Předběžné načtení* je technika pro načtení obrázků a skriptů vložených do stránky HTML, zatímco HTML je obsluhován prohlížeči, a ještě předtím, než prohlížeč dokonce tyto požadavky na objekt. 
+*Předběžné načtení* je způsob, jak načíst obrázky a skripty vložené do stránky HTML v době, kdy se HTML odešle do prohlížeče, a předtím, než prohlížeč tyto požadavky vyžádá. 
 
-Při zapnuté možnosti předběžného načtení v době, kdy cdn slouží základní stránce HTML do prohlížeče klienta, cdn analyzuje soubor HTML a další požadavky na všechny propojené prostředky a uloží jej do mezipaměti. Když klient provede požadavky na propojené datové zdroje, server EDGE CDN již má požadované objekty a může je okamžitě obsluhovat bez odezvy na původ. Tato optimalizace je výhodami obsahu, který lze uložit do mezipaměti, i obsahu, který lze ukládat do mezipaměti.
+Když je možnost předběžného načtení zapnutá v době, kdy CDN zachovává základní stránku HTML v prohlížeči klienta, CDN analyzuje soubor HTML a provede další požadavky na všechny propojené prostředky a uloží je do mezipaměti. Když klient vytvoří požadavky na propojené prostředky, hraniční Server CDN již má požadované objekty a může je obsluhovat ihned bez odezvy na počátek. Tato optimalizace přináší mezipaměť i obsah, který není možné ukládat do mezipaměti.
 
 ### <a name="adaptive-image-compression-azure-cdn-from-akamai-only"></a>Adaptivní komprese obrázků (Azure CDN pouze z Akamai)
 
-Některá zařízení, zejména mobilní, se čas od času setkávají s pomalejšími rychlostmi sítě. V těchto scénářích je výhodnější pro uživatele přijímat menší obrázky na svých webových stránkách rychleji, než čekat dlouhou dobu na obrázky v plném rozlišení.
+Některá zařízení, zejména mobilní zařízení, mají za chvíli pomalejší síťové rychlosti. V těchto scénářích je výhodnější, aby uživatel přijímal menší obrázky na své webové stránce rychleji, a ne tak dlouho, dokud nebude čekat dlouhou dobu pro obrázky s úplným rozlišením.
 
-Tato funkce automaticky monitoruje kvalitu sítě a využívá standardní metody komprese JPEG, když jsou rychlosti sítě pomalejší, aby se zlepšila doba dodání.
+Tato funkce automaticky monitoruje kvalitu sítě a využívá standardní metody komprese JPEG, pokud jsou rychlosti sítě pomalejší, aby se zlepšila doba doručení.
 
-Adaptivní komprese obrazu | Přípony souborů  
+Adaptivní komprese obrázků | Přípony souborů  
 --- | ---  
-Komprese JPEG | .jpg, .jpeg, .jpe, .jig, .jgig, .jgi
+Komprese JPEG | . jpg,. jpeg,. jpe,. Jig,. jgig,. JGI
 
 ## <a name="caching"></a>Ukládání do mezipaměti
 
-S DSA ukládání do mezipaměti je ve výchozím nastavení vypnuto `Cache-Control` `Expires` na CDN, i když počátek obsahuje nebo záhlaví v odpovědi. DSA se obvykle používá pro dynamické prostředky, které by neměly být uloženy do mezipaměti, protože jsou jedinečné pro každého klienta. Ukládání do mezipaměti může toto chování přerušit.
+V případě DSA je ukládání do mezipaměti ve výchozím nastavení v CDN vypnuté, a to i `Cache-Control` v `Expires` případě, že v odpovědi na původce obsahuje nebo hlavičky. DSA se obvykle používá pro dynamické prostředky, které by neměly být ukládány do mezipaměti, protože jsou pro každého klienta jedinečné. Ukládání do mezipaměti může způsobit přerušení tohoto chování.
 
-Pokud máte webové stránky se směsí statických a dynamických aktiv, je nejlepší přijmout hybridní přístup, abyste dosáhli nejlepšího výkonu. 
+Pokud máte web se směsí statických a dynamických prostředků, je nejlepší využít hybridní přístup k dosažení nejlepšího výkonu. 
 
-Pro **Azure CDN Standard od Verizonu** a Azure CDN Standard z profilů **Akamai** můžete zapnout ukládání do mezipaměti pro konkrétní koncové body DSA pomocí [pravidel ukládání do mezipaměti](cdn-caching-rules.md).
+Pro **Azure CDN Standard od Verizon** a **Azure CDN Standard od profilů Akamai** můžete zapnout ukládání do mezipaměti pro konkrétní koncové body DSA pomocí [pravidel ukládání do mezipaměti](cdn-caching-rules.md).
 
-Přístup k pravidlům ukládání do mezipaměti:
+Přístup k pravidlům pro ukládání do mezipaměti:
 
-1. Na stránce **profilu CDN** vyberte v části nastavení **pravidla ukládání do mezipaměti**.  
+1. Na stránce **profil CDN** v části nastavení vyberte **pravidla ukládání do mezipaměti**.  
     
     ![Tlačítko Pravidla ukládání do mezipaměti CDN](./media/cdn-dynamic-site-acceleration/cdn-caching-rules-btn.png)
 
-    Otevře se stránka **Pravidla ukládání do mezipaměti.**
+    Otevře se stránka **pravidla pro ukládání do mezipaměti** .
 
-2. Vytvořte globální nebo vlastní pravidlo ukládání do mezipaměti a zapněte ukládání do mezipaměti pro koncový bod DSA. 
+2. Vytvořte globální nebo vlastní pravidlo ukládání do mezipaměti, abyste mohli zapnout ukládání do mezipaměti pro koncový bod DSA. 
 
-Pro **Azure CDN Premium od Verizon** profily pouze pomocí modulu [pravidel](cdn-rules-engine.md). Všechna pravidla, která jsou vytvořena ovlivnit pouze ty koncové body profilu, které jsou optimalizovány pro DSA. 
+Pro **Azure CDN Premium jenom v** profilech Verizon můžete zapnout ukládání do mezipaměti pro konkrétní koncové body DSA pomocí [modulu pravidel](cdn-rules-engine.md). Všechna vytvořená pravidla ovlivňují jenom ty koncové body vašeho profilu, které jsou optimalizované pro DSA. 
 
-Přístup k modulu pravidel:
+Přístup ke stroji pravidel:
     
-1. Na stránce **profilu CDN** vyberte **Spravovat**.  
+1. Na stránce **profil CDN** vyberte **Spravovat**.  
     
-    ![Tlačítko pro správu profilu CDN](./media/cdn-dynamic-site-acceleration/cdn-manage-btn.png)
+    ![Tlačítko Spravovat profil CDN](./media/cdn-dynamic-site-acceleration/cdn-manage-btn.png)
 
     Otevře se portál pro správu CDN.
 
-2. Na portálu pro správu CDN vyberte **ADN**a pak vyberte **Modul pravidel**. 
+2. Na portálu pro správu CDN vyberte **a**a pak vyberte **modul pravidel**. 
 
-    ![Pravidla motorpro DSA](./media/cdn-dynamic-site-acceleration/cdn-dsa-rules-engine.png)
+    ![Modul pravidel pro DSA](./media/cdn-dynamic-site-acceleration/cdn-dsa-rules-engine.png)
 
 
 
-Alternativně můžete použít dva koncové body CDN: jeden koncový bod optimalizovaný pomocí DSA k doručování dynamických datových zdrojů a jiný koncový bod optimalizovaný statickým optimalizačním typem, jako je například obecné doručování webu, pro doručování prostředků s možností mezipaměti. Upravte adresy URL webových stránek tak, aby se přímo propojili s datovým zdrojem v koncovém bodě CDN, který chcete použít. 
+Alternativně můžete použít dva koncové body CDN: jeden koncový bod optimalizovaný s agentem DSA k dodávání dynamických prostředků a dalšího koncového bodu optimalizovaného pomocí statického typu optimalizace, jako je například obecné doručování webu, pro doručování prostředků do mezipaměti. Upravte adresy URL webových stránek tak, aby se přímo na prostředek naplánovaly na koncovém bodu CDN, který chcete použít. 
 
-Například: `mydynamic.azureedge.net/index.html` je dynamická stránka a je načtenz koncového bodu DSA.Stránka html odkazuje na více statických datových zdrojů, jako jsou knihovny JavaScript `mystatic.azureedge.net/banner.jpg` nebo `mystatic.azureedge.net/scripts.js`obrázky načtené ze statického koncového bodu CDN, například a . 
+Například: `mydynamic.azureedge.net/index.html` je dynamická stránka a je načtena z koncového bodu DSA.Stránka HTML odkazuje na několik statických prostředků, jako jsou knihovny JavaScriptu nebo obrázky načtené z statického koncového bodu CDN `mystatic.azureedge.net/banner.jpg` , `mystatic.azureedge.net/scripts.js`například a. 
 
 
 

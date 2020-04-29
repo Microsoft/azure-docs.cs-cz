@@ -1,6 +1,6 @@
 ---
-title: Kurz – vytváření a správa pravidel v aplikaci Azure IoT Central
-description: Tento kurz ukazuje, jak pravidla Azure IoT Central umožňují sledovat vaše zařízení téměř v reálném čase a automaticky vyvolat akce, jako je například odeslání e-mailu, když se pravidlo aktivuje.
+title: Kurz – vytváření a Správa pravidel v aplikaci Azure IoT Central
+description: V tomto kurzu se dozvíte, jak pravidla Azure IoT Central umožňují monitorovat zařízení téměř v reálném čase a automaticky vyvolávat akce, jako je odeslání e-mailu, když se pravidlo aktivuje.
 author: dominicbetts
 ms.author: dobett
 ms.date: 04/06/2020
@@ -9,102 +9,102 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 555da74da65f3b1897a276cf819a263334cfa053
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80999056"
 ---
-# <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Kurz: Vytvoření pravidla a nastavení oznámení v aplikaci Azure IoT Central
+# <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Kurz: vytvoření pravidla a nastavení oznámení v aplikaci Azure IoT Central
 
 *Tento článek je pro operátory, tvůrce a správce.*
 
-Azure IoT Central můžete použít ke vzdálenému monitorování připojených zařízení. Pravidla Azure IoT Central umožňují monitorovat vaše zařízení téměř v reálném čase a automaticky vyvolat akce, jako je například odeslání e-mailu. Tento článek vysvětluje, jak vytvořit pravidla pro sledování telemetrie, která vaše zařízení odesílají.
+Pomocí služby Azure IoT Central můžete vzdáleně monitorovat připojená zařízení. Pravidla Azure IoT Central umožňují monitorovat zařízení téměř v reálném čase a automaticky vyvolávat akce, jako je například odeslání e-mailu. Tento článek vysvětluje, jak vytvořit pravidla pro monitorování telemetrie, kterou vaše zařízení odesílá.
 
-Zařízení používají telemetrii k odesílání číselných dat ze zařízení. Pravidlo se aktivuje, když vybraná telemetrická metrie zařízení překročí zadanou prahovou hodnotu.
+Zařízení využívají telemetrii k posílání číselných dat ze zařízení. Pravidlo se aktivuje, když vybraná telemetrie zařízení přebírá určenou prahovou hodnotu.
 
-V tomto kurzu vytvoříte pravidlo pro odeslání e-mailu, pokud teplota v&deg; simulovaném zařízení senzoru prostředí překročí 70 F.
+V tomto kurzu vytvoříte pravidlo k odeslání e-mailu v případě, že teplota v simulovaném zařízení snímače prostředí překračuje&deg; 70 F.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 >
 > * Vytvoření pravidla
-> * Přidání akce e-mailu
+> * Přidat akci e-mailu
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, [dokončete vytvoření aplikace Azure IoT Central](./quick-deploy-iot-central.md) a [přidejte simulované zařízení do](./quick-create-simulated-device.md) rychlých startů aplikace IoT Central a vytvořte šablonu zařízení **MXChip IoT DevKit,** se kterou budete pracovat.
+Než začnete, dokončete průvodce [vytvořením aplikace Azure IoT Central](./quick-deploy-iot-central.md) a [přidejte simulované zařízení do](./quick-create-simulated-device.md) rychlých startů aplikace IoT Central, abyste vytvořili šablonu zařízení **MXChip IoT DevKit** , se kterou chcete pracovat.
 
 ## <a name="create-a-rule"></a>Vytvoření pravidla
 
-Chcete-li vytvořit pravidlo telemetrie, musí šablona zařízení obsahovat alespoň jednu hodnotu telemetrie. Tento kurz používá simulované zařízení **MXChip IoT DevKit,** které odesílá telemetrii teploty a vlhkosti. Tuto šablonu zařízení jste přidali a vytvořili simulované zařízení v rychlém startu [přidat simulované zařízení do aplikace IoT Central.](./quick-create-simulated-device.md) Pravidlo monitoruje teplotu hlášenou zařízením a odešle e-mail, když jde nad 70 stupňů.
+Aby bylo možné vytvořit pravidlo telemetrie, musí šablona zařízení obsahovat alespoň jednu hodnotu telemetrie. V tomto kurzu se používá simulované zařízení **MXChip IoT DevKit** , které posílá telemetrii teploty a vlhkosti. Tuto šablonu zařízení jste přidali a vytvořili simulované zařízení v části [Přidání simulovaného zařízení do rychlého startu aplikace IoT Central](./quick-create-simulated-device.md) . Pravidlo monitoruje teplotu oznámenou zařízením a pošle e-mail, když překračuje 70 stupňů.
 
-1. V levém podokně vyberte **Pravidla**.
+1. V levém podokně vyberte **pravidla**.
 
 1. Pokud jste ještě nevytvořili žádná pravidla, zobrazí se následující obrazovka:
 
     ![Dosud žádná pravidla](media/tutorial-create-telemetry-rules/rules-landing-page1.png)
 
-1. Výběrem **+** přidáte nové pravidlo.
+1. Tuto **+** možnost vyberte, pokud chcete přidat nové pravidlo.
 
-1. Zadejte název _Monitor teploty,_ který pravidlo identifikuje, a stiskněte Enter.
+1. Zadejte název _monitorování teploty_ pro identifikaci pravidla a stiskněte klávesu ENTER.
 
-1. Vyberte šablonu zařízení **MXChip IoT DevKit.** Ve výchozím nastavení se pravidlo automaticky vztahuje na všechna zařízení přidružená k šabloně zařízení. Chcete-li filtrovat podmnožinu zařízení, vyberte **možnost + Filtr** a použijte vlastnosti zařízení k identifikaci zařízení. Chcete-li pravidlo zakázat, přepněte v záhlaví pravidla tlačítko **Povoleno/Zakázáno:**
+1. Vyberte šablonu zařízení **MXChip IoT DevKit** . Ve výchozím nastavení se pravidlo automaticky vztahuje na všechna zařízení přidružená k šabloně zařízení. Pokud chcete vyfiltrovat podmnožinu zařízení, vyberte **+ filtrovat** a použijte vlastnosti zařízení k identifikaci zařízení. Pokud chcete pravidlo zakázat, v záhlaví pravidla přepněte tlačítko **povoleno/zakázáno** :
 
     ![Filtry a povolení](media/tutorial-create-telemetry-rules/device-filters.png)
 
 ### <a name="configure-the-rule-conditions"></a>Konfigurace podmínek pravidla
 
-Podmínky definují kritéria, která pravidlo monitoruje. V tomto kurzu nakonfigurujete pravidlo pro&deg; oheň, když teplota překročí 70 F.
+Podmínky definují kritéria, která pravidla monitorují. V tomto kurzu nakonfigurujete pravidlo, které se aktivuje, když teplota&deg; překročí 70 F.
 
-1. V rozevíracím souboru **Telemetrie** vyberte **Možnost Teplota.**
+1. V rozevíracím seznamu **telemetrie** vyberte možnost **teplota** .
 
-1. Dále zvolte **Je větší než** jako **Operátor** a zadejte _70_ jako **Value**.
+1. V dalším kroku vyberte **je větší než** jako **operátor** a jako **hodnotu**zadejte _70_ .
 
     ![Podmínka](media/tutorial-create-telemetry-rules/condition-filled-out1.png)
 
-1. Volitelně můžete nastavit **agregaci času**. Když vyberete časovou agregaci, musíte také vybrat typ agregace, například průměr nebo součet z rozevíracího přehledu agregace.
+1. Volitelně můžete nastavit **časovou agregaci**. Když vyberete časovou agregaci, musíte také v rozevíracím seznamu agregace vybrat typ agregace, například Average nebo Sum.
 
-    * Bez agregace pravidlo aktivuje pro každý datový bod telemetrie, který splňuje podmínku. Pokud například nakonfigurujete pravidlo tak, aby se aktivovalo, když je teplota vyšší než 70, pravidlo se aktivuje téměř okamžitě, když teplota zařízení překročí tuto hodnotu.
-    * S agregací pravidlo aktivuje, pokud agregační hodnota datových bodů telemetrie v časovém okně splňuje podmínku. Pokud například nakonfigurujete pravidlo tak, aby se aktivovalo, když je teplota vyšší než 70 a s průměrnou agregací času 10 minut, pravidlo se aktivuje, když zařízení hlásí průměrnou teplotu vyšší než 70, vypočítanou v intervalu 10 minut.
+    * Bez agregace se pravidlo spustí pro každý datový bod telemetrie, který splňuje podmínku. Pokud například nakonfigurujete pravidlo tak, aby se aktivovalo, když je teplota vyšší než 70, pravidlo se spustí téměř okamžitě, když teplota zařízení překročí tuto hodnotu.
+    * Při agregaci se pravidlo aktivuje, pokud agregovaná hodnota datových bodů telemetrie v časovém intervalu splňuje podmínku. Pokud například nakonfigurujete pravidlo tak, aby se aktivovalo, když je teplota vyšší než 70 a průměrná časová agregace 10 minut, pak se pravidlo aktivuje, když zařízení ohlásí průměrnou teplotu větší než 70, počítáno v intervalu 10 minut.
 
-     ![Agregovaná podmínka](media/tutorial-create-telemetry-rules/aggregate-condition-filled-out1.png)
+     ![Agregační podmínka](media/tutorial-create-telemetry-rules/aggregate-condition-filled-out1.png)
 
-Výběrem možnosti + Podmínka můžete k pravidlu přidat více **podmínek**. Pokud je zadáno více podmínek, musí být splněny všechny podmínky, aby se pravidlo aktivovat. Každá podmínka je spojena implicitní `AND` klauzulí. Pokud používáte agregaci času s více podmínkami, musí být agregovány všechny hodnoty telemetrie.
+Výběrem **+ Podmínka**můžete přidat k pravidlu několik podmínek. Pokud je zadáno více podmínek, musí být splněny všechny podmínky, aby se pravidlo aktivovalo. Každá podmínka je propojena implicitní `AND` klauzulí. Pokud používáte časovou agregaci s více podmínkami, musí být agregované všechny hodnoty telemetrie.
 
 ### <a name="configure-actions"></a>Konfigurace akcí
 
-Po definování podmínky nastavíte akce, které mají být podniknue při požáru pravidla. Akce jsou vyvolány, pokud jsou všechny podmínky zadané v pravidle vyhodnoceny jako true.
+Po definování podmínky nastavíte akce, které se mají provést, když se pravidlo aktivuje. Akce jsou vyvolány, pokud jsou všechny podmínky zadané v pravidle vyhodnoceny jako pravdivé.
 
-1. V části **Akce** vyberte **+ E-mail.**
+1. V části **Akce** vyberte **+ e-mail** .
 
-1. Zadejte _upozornění na teplotu_ jako zobrazovaný název akce, e-mailovou adresu do pole **Do** a měli byste _zařízení zkontrolovat!_ jako poznámku, která se zobrazí v textu e-mailu.
+1. Zadejte _Upozornění na teplotu_ jako zobrazovaný název pro akci, vaši e-mailovou adresu v poli **do** a _měli byste se podívat na zařízení!_ jako Poznámka se zobrazí v těle e-mailu.
 
     > [!NOTE]
-    > E-maily jsou odesílány pouze uživatelům, kteří byli přidáni do aplikace a přihlásili se alespoň jednou. Přečtěte si další informace o [správě uživatelů](howto-administer.md) v Azure IoT Central.
+    > E-maily se odesílají jenom uživatelům přidaným do aplikace a přihlásili se aspoň jednou. Přečtěte si další informace o [správě uživatelů](howto-administer.md) v Azure IoT Central.
 
-   ![Konfigurovat akci](media/tutorial-create-telemetry-rules/configure-action1.png)
+   ![Konfigurace akce](media/tutorial-create-telemetry-rules/configure-action1.png)
 
-1. Chcete-li akci uložit, zvolte **Hotovo**. K pravidlu můžete přidat více akcí.
+1. Akci uložíte kliknutím na **Hotovo**. Do pravidla můžete přidat několik akcí.
 
-1. Chcete-li pravidlo uložit, zvolte **Uložit**. Pravidlo přejde do provozu během několika minut a spustí monitorování telemetrie odesílané do vaší aplikace. Pokud je splněna podmínka zadaná v pravidle, pravidlo aktivuje nakonfigurovanou akci e-mailu.
+1. Pravidlo uložíte kliknutím na **Uložit**. Pravidlo se během několika minut ukončí a spustí se monitorování telemetrie, která se posílá do vaší aplikace. Pokud je splněna podmínka zadaná v pravidle, pravidlo aktivuje konfigurovanou akci e-mailu.
 
-Po chvíli obdržíte e-mailovou zprávu při požáru pravidla:
+Po chvíli obdržíte e-mailovou zprávu, když se pravidlo aktivuje:
 
 ![Příklad e-mailu](media/tutorial-create-telemetry-rules/email.png)
 
 ## <a name="delete-a-rule"></a>Odstranění pravidla
 
-Pokud již pravidlo nepotřebujete, odstraňte ho tak, že pravidlo otevřete a **zvolíte Odstranit**.
+Pokud pravidlo už nepotřebujete, odstraňte ho otevřením pravidla a volbou **Odstranit**.
 
 ## <a name="enable-or-disable-a-rule"></a>Povolení nebo zakázání pravidla
 
-Zvolte pravidlo, které chcete povolit nebo zakázat. Chcete-li pravidlo povolit nebo zakázat pro všechna zařízení, která mají v pravidle obor, přepněte v pravidle tlačítko **Povoleno/Zakázáno.**
+Vyberte pravidlo, které chcete povolit nebo zakázat. Pokud chcete povolit nebo zakázat pravidlo pro všechna zařízení, která jsou v pravidle vymezená, přepněte v pravidle tlačítko **povoleno/zakázáno** .
 
 ## <a name="enable-or-disable-a-rule-for-specific-devices"></a>Povolení nebo zakázání pravidla pro určitá zařízení
 
-Zvolte pravidlo, které chcete přizpůsobit. Pomocí jednoho nebo více filtrů v části **Cílová zařízení** zúžíte rozsah pravidla na zařízení, která chcete monitorovat.
+Vyberte pravidlo, které chcete upravit. V části **cílová zařízení** použijte jeden nebo víc filtrů, abyste mohli zúžit rozsah pravidla na zařízení, která chcete monitorovat.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -113,7 +113,7 @@ V tomto kurzu jste se naučili:
 * Vytvoření pravidla založeného na telemetrii
 * Přidání akce
 
-Teď, když jste definovali pravidlo založené na prahové hodnotě, je navrhovaným dalším krokem naučit se:
+Teď, když jste definovali pravidlo na základě prahové hodnoty, je navržený další krok, ve kterém se dozvíte, jak:
 
 > [!div class="nextstepaction"]
-> [Konfigurace průběžného exportu dat](./howto-export-data.md).
+> [Nakonfigurujte průběžný export dat](./howto-export-data.md).

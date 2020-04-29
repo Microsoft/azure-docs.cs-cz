@@ -1,6 +1,6 @@
 ---
-title: Poradce při potížích s běžnými chybami ověřování | Azure Marketplace
-description: Poskytuje pomoc s běžnými chybami ověřování při použití souborů API portálu cloudových partnerů.
+title: Řešení běžných chyb ověřování | Azure Marketplace
+description: Poskytuje pomoc s běžnými chybami ověřování při použití rozhraní portál partnerů cloudu API.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,31 +8,31 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: d8fd1eb4bef987b4a8605e4be780512a914ec8b5
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81255987"
 ---
-# <a name="troubleshooting-common-authentication-errors"></a>Poradce při potížích s běžnými chybami ověřování
+# <a name="troubleshooting-common-authentication-errors"></a>Řešení běžných chyb ověřování
 
 > [!NOTE]
-> Api portálu pro partnery cloudu jsou integrovaná s Partnerským centrem a budou fungovat i po migraci nabídek do Centra partnerů. Integrace přináší malé změny. Zkontrolujte změny uvedené v [referenčním rozhraní API portálu cloudových partnerů a](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) ujistěte se, že váš kód bude fungovat i po migraci do Centra partnerů.
+> Rozhraní API pro portál partnerů cloudu jsou integrovaná do partnerského centra a budou fungovat i po migraci nabídek do partnerského centra. Integrace přináší malé změny. Projděte si změny uvedené v části [portál partnerů cloudu rozhraní API](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) , abyste zajistili, že váš kód bude i nadále fungovat po migraci do partnerského centra.
 
-Tento článek poskytuje pomoc s běžnými chybami ověřování při použití souborů API portálu cloudových partnerů.
+Tento článek poskytuje pomoc s běžnými chybami ověřování při použití rozhraní portál partnerů cloudu API.
 
-## <a name="unauthorized-error"></a>Neautorizovaná chyba
+## <a name="unauthorized-error"></a>Neoprávněná chyba
 
-Pokud konzistentně získáte `401 unauthorized` chyby, ověřte, zda máte platný přístupový token.  Pokud jste tak ještě neučinili, vytvořte základní aplikaci Azure Active Directory (Azure AD) a instanční objekt, jak je popsáno v [části Použití portálu k vytvoření aplikace a instancí Azure Active Directory, která má přístup k prostředkům](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Potom použijte aplikaci nebo jednoduchý požadavek HTTP POST k ověření přístupu.  Zahrnete ID klienta, ID aplikace, ID objektu a tajný klíč k získání přístupového tokenu, jak je znázorněno na následujícím obrázku:
+Pokud se konzistentně zobrazí `401 unauthorized` chyby, ověřte, že máte platný přístupový token.  Pokud jste to ještě neudělali, vytvořte aplikaci Basic Azure Active Directory (Azure AD) a instanční objekt, jak je popsáno v tématu [použití portálu k vytvoření Azure Active Directory aplikace a instančního objektu, který má přístup k prostředkům](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Pak pomocí aplikace nebo jednoduché žádosti HTTP POST ověřte přístup.  K získání přístupového tokenu, jak je znázorněno na následujícím obrázku, budete zahrnovat ID tenanta, ID aplikace, ID objektu a tajný klíč:
 
-![Poradce při potížích s chybou 401](./media/cloud-partner-portal-api-troubleshooting-authentication-errors/troubleshooting-401-error.jpg)
+![Řešení chyby 401](./media/cloud-partner-portal-api-troubleshooting-authentication-errors/troubleshooting-401-error.jpg)
 
 
 ## <a name="forbidden-error"></a>Zakázaný přístup
 
-Pokud se `403 forbidden` zobrazí chyba, ujistěte se, že správný instanční objekt služby byl přidán do vašeho účtu vydavatele na portálu cloudových partnerů.
-Postupujte podle kroků na stránce [Požadavky](./cloud-partner-portal-api-prerequisites.md) a přidejte instanční objekt na portál.
+Pokud se zobrazí `403 forbidden` chyba, ujistěte se, že se do účtu vydavatele v portál partnerů cloudu přidal správný instanční objekt.
+Podle pokynů na stránce [požadavky](./cloud-partner-portal-api-prerequisites.md) přidejte instanční objekt na portál.
 
-Pokud byl přidán správný instanční objekt, ověřte všechny ostatní informace. Věnujte velkou pozornost ID objektu zadanému na portálu. Na stránce registrace aplikace Azure Active Directory jsou dvě ID objektů a musíte použít místní ID objektu. Správnou hodnotu najdete tak, že přejdete na stránku **Registrace aplikací** pro vaši aplikaci a kliknete na název aplikace v části **Spravovaná aplikace v místním adresáři**. Tím přejdete do místních vlastností aplikace, kde najdete správné ID objektu na stránce **Vlastnosti,** jak je znázorněno na následujícím obrázku. Také ujistěte se, že používáte správné ID vydavatele při přidání instančního objektu a provést volání rozhraní API.
+Pokud byl přidán správný instanční objekt, ověřte všechny ostatní informace. Věnujte velkou pozornost na ID objektu zadané na portálu. Na stránce registrace aplikace Azure Active Directory jsou dvě ID objektů a musíte použít ID místního objektu. Správnou hodnotu můžete najít tak, že přejdete na stránku **Registrace aplikací** vaší aplikace a kliknete na název aplikace v části **spravovaná aplikace v místním adresáři**. Tím přejdete na místní vlastnosti aplikace, kde můžete najít správné ID objektu na stránce **vlastností** , jak je znázorněno na následujícím obrázku. Také se ujistěte, že při přidání instančního objektu a volání rozhraní API používáte správné ID vydavatele.
 
-![Poradce při potížích s chybou 403](./media/cloud-partner-portal-api-troubleshooting-authentication-errors/troubleshooting-403-error.jpg)
+![Řešení chyby 403](./media/cloud-partner-portal-api-troubleshooting-authentication-errors/troubleshooting-403-error.jpg)

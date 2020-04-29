@@ -1,6 +1,6 @@
 ---
-title: Přejít na živo | Azure Marketplace
-description: Go Live API iniciuje nabídku live výpis procesu.
+title: Přejít do provozu | Azure Marketplace
+description: Rozhraní API na cestách spustí proces dynamického výpisu nabídky.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,18 +8,18 @@ ms.topic: reference
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: ef22f7720a4af2239c55d1a01f9d3f11c878d66e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81256310"
 ---
-# <a name="go-live"></a>Přejít na živo
+# <a name="go-live"></a>Přejít na Live
 
 > [!NOTE]
-> Api portálu pro partnery cloudu jsou integrovaná s Partnerským centrem a budou fungovat i po migraci nabídek do Centra partnerů. Integrace přináší malé změny. Zkontrolujte změny uvedené v [referenčním rozhraní API portálu cloudových partnerů a](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) ujistěte se, že váš kód bude fungovat i po migraci do Centra partnerů.
+> Rozhraní API pro portál partnerů cloudu jsou integrovaná do partnerského centra a budou fungovat i po migraci nabídek do partnerského centra. Integrace přináší malé změny. Projděte si změny uvedené v části [portál partnerů cloudu rozhraní API](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) , abyste zajistili, že váš kód bude i nadále fungovat po migraci do partnerského centra.
 
-Toto rozhraní API spustí proces odesílání aplikace do produkčního prostředí. Tato operace je obvykle dlouhotrvající. Toto volání používá seznam e-mailů s oznámením z operace [publikovat](./cloud-partner-portal-api-publish-offer.md) rozhraní API.
+Toto rozhraní API spustí proces pro vložení aplikace do produkčního prostředí. Tato operace je obvykle dlouhodobě spuštěna. Toto volání používá v rámci operace [publikování](./cloud-partner-portal-api-publish-offer.md) rozhraní API seznam e-mailových oznámení.
 
  `POST  https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/golive?api-version=2017-10-31` 
 
@@ -28,21 +28,21 @@ Toto rozhraní API spustí proces odesílání aplikace do produkčního prostř
 
 |  **Název**      |   **Popis**                                                           | **Datový typ** |
 |  --------      |   ---------------                                                           | ------------- |
-| id vydavatele    | Identifikátor vydavatele pro nabídku k načtení, například`contoso`       |  Řetězec       |
-| offerId        | Identifikátor nabídky k načtení                                   |  Řetězec       |
+| publisherId    | Identifikátor vydavatele pro nabídku, která se má načíst, například`contoso`       |  Řetězec       |
+| Hodnotami OfferId        | Identifikátor nabídky nabídky, která se má načíst                                   |  Řetězec       |
 | verze-api    | Nejnovější verze rozhraní API                                                   |  Datum         |
 |  |  |  |
 
 ## <a name="header"></a>Hlavička
 ------
 
-|  **Název**       |     **Hodnotu**       |
+|  **Název**       |     **Osa**       |
 |  ---------      |     ----------      |
 | Typ obsahu    | `application/json`  |
 | Autorizace   | `Bearer YOUR_TOKEN` |
 |  |  |
 
-## <a name="body-example"></a>Příklad těla
+## <a name="body-example"></a>Příklad textu
 
 ### <a name="response"></a>Odpověď
 
@@ -56,16 +56,16 @@ Toto rozhraní API spustí proces odesílání aplikace do produkčního prostř
 
 ### <a name="response-header"></a>Hlavička odpovědi
 
-|  **Název**             |      **Hodnotu**                                                            |
+|  **Název**             |      **Osa**                                                            |
 |  --------             |      ----------                                                           |
-| Umístění    |  Relativní cesta k načtení stavu této operace            |
+| Umístění    |  Relativní cesta pro načtení stavu této operace            |
 |  |  |
 
-### <a name="response-status-codes"></a>Stavové kódy odpovědi
+### <a name="response-status-codes"></a>Stavové kódy odpovědí
 
 | **kód** |  **Popis**                                                                        |
 | -------- |  ----------------                                                                        |
-|  202     | `Accepted`- Požadavek byl úspěšně přijat. Odpověď obsahuje umístění pro sledování stavu operace. |
-|  400     | `Bad/Malformed request`- Další informace o chybě se nachází v těle odezvy. |
-|  404     |  `Not found`- Zadaná entita neexistuje.                                       |
+|  202     | `Accepted`-Požadavek byl úspěšně přijat. Odpověď obsahuje umístění pro sledování stavu operace. |
+|  400     | `Bad/Malformed request`-V těle odpovědi se zjistily Další informace o chybě. |
+|  404     |  `Not found`-Zadaná entita neexistuje.                                       |
 |  |  |

@@ -14,22 +14,22 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: fa0cf5d698bc2186928e0db19be173ec725485e8
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80985928"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scénáře a dostupnost funkcí služby Media Services v datových centrech
 
 > [!NOTE]
-> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Viz také [pokyny k migraci z v2 na v3](../latest/migrate-from-v2-to-v3.md)
+> Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 
 Microsoft Azure Media Services (AMS) umožňuje bezpečně nahrávat, ukládat, kódovat a balit obsah (video nebo zvuk) doručovaný na vyžádání i živě streamovaný různým klientům (například do televizí, počítačů a mobilních zařízení).
 
 AMS funguje v několika datových centrech po celém světě. Tato datová centra jsou seskupená do v geografických oblastí. To vám poskytuje flexibilitu při výběru místa pro sestavení vaší aplikace. [Seznam oblastí a jejich umístění](https://azure.microsoft.com/regions/) si můžete prohlédnout. 
 
-Toto téma ukazuje běžné scénáře pro doručování obsahu [živě](#live_scenarios) nebo na vyžádání. V tématu najdete také podrobnosti o dostupnosti funkcí a služeb pro média v datových centrech.
+V tomto tématu najdete běžné scénáře pro doručování obsahu v [reálném čase](#live_scenarios) nebo na vyžádání. V tématu najdete také podrobnosti o dostupnosti funkcí a služeb pro média v datových centrech.
 
 ## <a name="overview"></a>Přehled
 
@@ -41,7 +41,7 @@ Pokud chcete začít používat Azure Media Services, potřebujete následujíc�
 * Účet Azure Media Services. Další informace najdete v článku o [vytvoření účtu](media-services-portal-create-account.md).
 * Koncový bod streamování, ze kterého chcete streamovat obsah, musí být ve stavu **Spuštěno**.
 
-    Při vytvoření účtu AMS je k vašemu účtu ve stavu **Zastaveno** přidán **výchozí** koncový bod streamování. Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamického šifrování, musí koncový bod streamování být ve stavu **Spuštěno**.
+    Po vytvoření účtu AMS se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno** . Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamického šifrování, musí koncový bod streamování být ve stavu **Spuštěno**.
 
 ### <a name="commonly-used-objects-when-developing-against-the-ams-odata-model"></a>Běžně používané objekty při vývoji na základě modelu AMS OData
 
@@ -153,12 +153,12 @@ Zákazníci AMS můžou ve svých účtech AMS škálovat koncové body streamov
 
 * Účet Media Services je přidružený k typu rezervované jednotky, který určuje rychlost zpracování vašich úloh zpracování médií. Můžete si vybrat mezi následujícími typy rezervovaných jednotek: **S1**, **S2** nebo **S3**. Například stejná úloha kódování bude rychlejší, když použijete typ rezervované jednotky **S2**, než kdybyste použili typ **S1**.
 
-    Kromě určení typu rezervované jednotky můžete zadat zřízení účtu pomocí **rezervovaných jednotek** (RU). Počet zřízených RU určuje počet úloh médií, které je možné v daném účtu zpracovávat současně.
+    Kromě určení typu rezervované jednotky můžete určit, že se má účet zřídit pomocí **rezervovaných jednotek** (ru). Počet zřízených RU určuje počet úloh médií, které je možné v daném účtu zpracovávat současně.
 
     >[!NOTE]
     >RU fungují pro paralelní provádění veškerého zpracování médií, včetně úloh indexování pomocí Azure Media Indexeru. Ale na rozdíl od kódování se úlohy indexování s rychlejšími rezervovanými jednotkami nezpracovávají rychleji.
 
-    Další informace naleznete v tématu [Scale media processing](media-services-portal-scale-media-processing.md).
+    Další informace najdete v tématu [škálování zpracování multimédií](media-services-portal-scale-media-processing.md).
 * Svůj účet Media Services můžete škálovat také tím, že k němu přidáte účty úložiště. Každý účet úložiště je omezen na 500 TB. Pokud chcete úložiště rozšířit nad jeho výchozí omezení, můžete k jednomu účtu Media Services připojit více účtů úložiště. Další informace najdete v tématu [Správa účtů úložiště](meda-services-managing-multiple-storage-accounts.md).
 
 ## <a name="availability-of-media-services-features-across-datacenters"></a><a id="availability"></a>Dostupnost funkcí služby Media Services v datových centrech
@@ -169,7 +169,7 @@ V této části najdete podrobnosti o dostupnosti funkcí služby Media Services
 
 #### <a name="availability"></a>Dostupnost
 
-Pomocí [produktů Azure podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=media-services&regions=all) určete, jestli jsou mediální služby dostupné v konkrétním datovém centru.
+Pomocí [produktů Azure podle oblastí](https://azure.microsoft.com/global-infrastructure/services/?products=media-services&regions=all) určíte, jestli je Media Services k dispozici v konkrétním datacentru.
 
 ### <a name="streaming-endpoints"></a>Koncové body streamování 
 
@@ -177,7 +177,7 @@ Zákazníci Media Services si můžou zvolit koncový bod streamování **Standa
 
 #### <a name="availability"></a>Dostupnost
 
-|Name (Název)|Status|Datová centra
+|Název|Status|Datová centra
 |---|---|---|
 |Standard|GA|Všechny|
 |Premium|GA|Všechny|
@@ -204,7 +204,7 @@ AMS nabízí dva kodéry na vyžádání – **Media Encoder Standard** a **Prac
 Media Analytics je kolekce řečových a vizuálních komponent, které organizacím a podnikům umožňují, aby ze svých videosouborů odvodily prakticky využitelné informace. Další informace najdete v článku o [přehledu Azure Media Services Analytics](media-services-analytics-overview.md).
 
 > [!NOTE]
-> Některé procesory analytických médií budou vyřazeny. Data vyřazení naleznete v tématu [starších součástí.](legacy-components.md)
+> Některé procesory pro analýzu médií budou vyřazeny. Data o vyřazení najdete v tématu [starší verze součástí](legacy-components.md) .
 
 #### <a name="availability"></a>Dostupnost
 
@@ -257,7 +257,7 @@ Další informace najdete v části popisující [škálování](#scaling).
 
 ## <a name="additional-notes"></a>Další poznámky
 
-* Widevine je služba poskytovaná společností Google Inc. a podléhá podmínkám služeb a zásadám ochrany osobních údajů společnosti Google, Inc.
+* Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
 
 ## <a name="next-steps"></a>Další kroky
 

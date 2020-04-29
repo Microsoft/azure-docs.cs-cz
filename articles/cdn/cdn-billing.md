@@ -1,6 +1,6 @@
 ---
-title: Principy fakturace Azure CDN | Dokumenty společnosti Microsoft
-description: Tento faq popisuje, jak azure cdn fakturace funguje.
+title: Princip fakturace Azure CDN | Microsoft Docs
+description: V této části najdete popis, jak Azure CDN účtování funguje.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 09/13/2019
 ms.author: allensu
 ms.openlocfilehash: d3a2dfba98f83d34c3e83ec865e3b692f7dbacd2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81254219"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Principy fakturace Azure CDN
 
-Tento faq popisuje strukturu fakturace pro obsah hostovaný Azure Content Delivery Network (CDN).
+V této části najdete popis fakturační struktury obsahu hostovaného službou Azure Content Delivery Network (CDN).
 
 ## <a name="what-is-a-billing-region"></a>Co je fakturační oblast?
-Fakturační oblast je geografická oblast, která se používá k určení, jaká sazba se účtuje za doručení objektů z Azure CDN. Aktuální fakturační zóny a jejich oblasti jsou následující:
+Oblast fakturace je geografická oblast sloužící k určení, jakou sazbou se účtují poplatky za doručování objektů z Azure CDN. Aktuální fakturační zóna a jejich oblasti jsou následující:
 
 - Zóna 1: Severní Amerika, Evropa, Střední východ a Afrika
 
@@ -38,60 +38,60 @@ Fakturační oblast je geografická oblast, která se používá k určení, jak
 
 - Zóna 5: Indie
 
-Informace o oblastech bodu přítomnosti (POP) naleznete v [tématu Azure CDN POP umístění podle oblasti](https://docs.microsoft.com/azure/cdn/cdn-pop-locations). Například protokol POP umístěný v Mexiku se nachází v oblasti Severní Amerika a je proto zahrnut do zóny 1. 
+Informace o oblastech bodu přítomnosti (POP) najdete v tématu [Azure CDN umístění pop podle oblasti](https://docs.microsoft.com/azure/cdn/cdn-pop-locations). Například bod POP umístěný v Mexiku je v oblasti Severní Amerika a je proto zahrnutý v zóně 1. 
 
-Informace o cenách Azure CDN najdete v [tématu Ceny sítě doručování obsahu](https://azure.microsoft.com/pricing/details/cdn/).
+Informace o cenách Azure CDN najdete v článku [Content Delivery Network ceny](https://azure.microsoft.com/pricing/details/cdn/).
 
-## <a name="how-are-delivery-charges-calculated-by-region"></a>Jak se poplatky za doručení počítají podle oblasti?
-Fakturační oblast Azure CDN je založená na umístění zdrojového serveru, který doručuje obsah koncovému uživateli. Cíl (fyzické umístění) klienta se nepovažuje za fakturační oblast.
+## <a name="how-are-delivery-charges-calculated-by-region"></a>Jak se účtují poplatky za doručování podle oblasti?
+Oblast fakturace Azure CDN je založena na umístění zdrojového serveru, který doručuje obsah koncovému uživateli. Cíl (fyzické umístění) klienta se nepovažuje za fakturační oblast.
 
-Pokud například uživatel se sídlem v Mexiku vydá požadavek a tento požadavek je obsluhován serverem umístěným v protokolu POP ve Spojených státech z důvodu partnerského vztahu nebo provozních podmínek, bude fakturační oblastí Spojené státy.
+Pokud například uživatel umístěný v Mexiku vydá požadavek a tato žádost je obsluhovaná serverem umístěným v USA POP kvůli podmínkám partnerských vztahů nebo přenosů, bude USA oblastí pro fakturaci.
 
-## <a name="what-is-a-billable-azure-cdn-transaction"></a>Co je fakturovatelná transakce Azure CDN?
-Jakýkoli požadavek HTTP(S), který končí v CDN, je fakturovatelná událost, která zahrnuje všechny typy odpovědí: úspěch, selhání nebo jiné. Různé odpovědi však mohou generovat různé částky provozu. Například *304 Not Modified* a jiné odpovědi pouze v záhlaví generují malý provoz, protože se jedná o malou odpověď záhlaví; podobně chybové odpovědi (například *404 Not Found)* jsou fakturovatelné, ale vynakládají malé náklady z důvodu malé užitečné části odezvy.
+## <a name="what-is-a-billable-azure-cdn-transaction"></a>Co je fakturovatelná Azure CDN transakce?
+Každá žádost HTTP (S), která končí v CDN, je fakturovatelná událost, která zahrnuje všechny typy odpovědí: úspěch, selhání nebo jiné. Různé odezvy ale můžou vygenerovat různé objemy provozu. Například *304 Nezměněno* a jiné odpovědi pouze hlavičky generují malý provoz, protože se jedná o malou odpověď hlavičky; Podobně se neúčtují odpovědi na chyby (například *404, které se nenašly*), ale z důvodu datové části s malou odezvou se účtují malé náklady.
 
-## <a name="what-other-azure-costs-are-associated-with-azure-cdn-use"></a>Jaké další náklady na Azure jsou spojené s používáním Azure CDN?
-Použití Azure CDN také účtuje některé poplatky za využití na služby používané jako původ pro vaše objekty. Tyto náklady jsou obvykle malý zlomek celkových nákladů na využití CDN.
+## <a name="what-other-azure-costs-are-associated-with-azure-cdn-use"></a>Jaké další náklady na Azure jsou spojené s Azure CDN používání?
+Při použití Azure CDN se také vyskytnou poplatky za využití služeb, které se používají jako původ vašich objektů. Tyto náklady obvykle představují malou část celkových nákladů na využití CDN.
 
-Pokud používáte úložiště objektů Blob Azure jako původ pro váš obsah, vám také vznikají následující poplatky za úložiště pro vyplňování mezipaměti:
+Pokud jako zdroj obsahu používáte službu Azure Blob Storage, účtují se také následující poplatky za úložiště pro ukládání do mezipaměti:
 
-- Skutečné použité GB: Skutečné úložiště zdrojových objektů.
+- Využité skutečné GB: skutečné úložiště vašich zdrojových objektů.
 
-- Transakce: Podle potřeby k vyplnění mezipaměti.
+- Transakce: podle potřeby můžete mezipaměť vyplnit.
 
-- Přenosy v GB: Množství dat přenesených k vyplnění mezipamětí CDN.
+- Přenosy v GB: množství dat přenesených do vyplňování mezipamětí CDN.
 
 > [!NOTE]
-> Od října 2019, Pokud používáte Azure CDN od Microsoftu, náklady na přenos dat z Origins hostované v Azure na CDN popy je zdarma. Azure CDN od Verizonu a Azure CDN od Akamai podléhají sazbám popsaným níže.
+> Od října 2019 platí, že pokud používáte Azure CDN od Microsoftu, účtují se náklady na přenos dat ze zdrojů hostovaných v Azure do CDN pop. Azure CDN z Verizon a Azure CDN z Akamai podléhají sazbám popsaným níže.
 
-Další informace o fakturaci úložiště Azure najdete [v tématu Principy fakturace úložiště Azure – šířka pásma, transakce a kapacita](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/).
+Další informace o fakturaci Azure Storage najdete v tématu [porozumění Azure Storage fakturace – šířka pásma, transakce a kapacita](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/).
 
-Pokud používáte *hostované poskytování služeb*, budou vám účtovány poplatky následujícím způsobem:
+Pokud používáte *doručování hostované služby*, účtují se vám poplatky následujícím způsobem:
 
-- Výpočetní čas Azure: Výpočetní instance, které fungují jako původ.
+- Výpočetní čas Azure: výpočetní instance, které fungují jako původ.
 
-- Převod výpočetních prostředků Azure: Přenosy dat z výpočetních instancí k vyplnění mezipamětí Azure CDN.
+- Azure COMPUTE Transfer: přenos dat z výpočetních instancí pro vyplňování mezipamětí Azure CDN.
 
-Pokud váš klient používá požadavky na rozsah bajtů (bez ohledu na službu původu), platí následující požadavky:
+Pokud váš klient používá požadavky na rozsah bajtů (bez ohledu na počáteční službu), platí následující požadavky:
 
-- *Požadavek na rozsah bajtů* je fakturovatelná transakce v cdn. Když klient vydá požadavek na rozsah bajtů, tento požadavek je pro podmnožinu (rozsah) objektu. CDN odpoví pouze částečnou část obsahu, který je požadován. Tato částečná odpověď je fakturovatelná transakce a částka převodu je omezena na velikost odezvy rozsahu (plus hlavičky).
+- *Požadavek na rozsah bajtů* je fakturovatelná transakce v CDN. Když klient vydá požadavek na rozsah bajtů, je tento požadavek určen pro podmnožinu (rozsah) objektu. CDN odpoví jenom na částečnou část obsahu, který je požadován. Tato částečná odpověď je fakturovatelná transakce a velikost přenosů je omezená na velikost odpovědi rozsahu (plus hlavičky).
 
-- Když požadavek dorazí pouze část objektu (zadáním hlavičky rozsahu bajtů), CDN může načíst celý objekt do mezipaměti. V důsledku toho i v případě, že fakturovatelná transakce z CDN je pro částečnou odpověď, fakturovatelné transakce z počátku může zahrnovat plnou velikost objektu.
+- Když žádost dorazí jenom na část objektu (zadáním hlavičky rozsahu bajtů), CDN může načíst celý objekt do své mezipaměti. V důsledku toho platí, že i když Fakturovatelné transakce z CDN je pro částečnou odpověď, fakturovatelná transakce od počátku může zahrnovat celou velikost objektu.
 
-## <a name="how-much-transfer-activity-occurs-to-support-the-cache"></a>Kolik přenosové aktivity dochází k podpoře mezipaměti?
-Pokaždé, když cdn POP potřebuje vyplnit svou mezipaměť, provede požadavek na původ objektu, který je uložen do mezipaměti. V důsledku toho vznik vznik unese fakturovatelné transakce na každé chybě mezipaměti. Počet neúspěšných pokusů o dolet závisí na řadě faktorů:
+## <a name="how-much-transfer-activity-occurs-to-support-the-cache"></a>K kolika aktivit přenosů dochází pro podporu mezipaměti?
+Pokaždé, když POP POP potřebuje vyplnit svou mezipaměť, vytvoří požadavek na počátek objektu v mezipaměti. V důsledku toho původ při každé neúspěšné operaci ukládání do mezipaměti zaznamená fakturovatelnou transakci. Počet neúspěšných přístupů do mezipaměti závisí na několika faktorech:
 
-- Jak cache obsah je: Pokud obsah má vysoké Hodnoty TTL (time-to-live) /expirace a je často přistupovat, takže zůstane populární v mezipaměti, pak drtivá většina zatížení je zpracována CDN. Typický dobrý poměr přístupů do mezipaměti je více než 90 %, což znamená, že méně než 10 % požadavků klientů se musí vrátit do původního stavu, a to buď pro nedoletovou chybě, nebo pro aktualizaci objektu.
+- Jak obsah ukládat do mezipaměti: Pokud má obsah vysoké hodnoty TTL (Time-to-Live)/Expiration a často se k němu přistupoval, aby byl v mezipaměti oblíbený, pak je velká většina zatížení zpracována přes CDN. Typický dobrý poměr přístupů do mezipaměti je dobře větší než 90%, což znamená, že méně než 10% požadavků klientů se musí vrátit ke zdroji, a to buď v případě neúspěšného pokusu o ukládání do mezipaměti, nebo obnovení objektu.
 
-- Kolik uzlů je třeba načíst objekt: Pokaždé, když uzel načte objekt z počátku, vznikne fakturovatelné transakce. Výsledkem je, že více globálního obsahu (přístupného z více uzlů) vede k více fakturovatelným transakcím.
+- Kolik uzlů potřebuje načíst objekt: pokaždé, když uzel načte objekt ze zdroje, dojde k transakci Fakturovatelné. Výsledkem je, že více globálních obsahu (ke kterému se dostanete z více uzlů) má za následek Fakturovatelné transakce.
 
-- Vliv TTL: Vyšší TTL pro objekt znamená, že je třeba načíst z počátku méně často. To také znamená, že klienti, jako jsou prohlížeče, mohou objekt ukládat do mezipaměti déle, což může snížit transakce na CDN.
+- Vliv TTL: vyšší hodnota TTL pro objekt znamená, že musí být načtena z původu méně často. Také to znamená, že klienti, jako jsou například prohlížeče, mohou objekt ukládat do mezipaměti, což může snížit transakce do sítě CDN.
 
-## <a name="which-origin-services-are-eligible-for-free-data-transfer-with-azure-cdn-from-microsoft"></a>Které služby původu jsou způsobilé pro bezplatný přenos dat pomocí Azure CDN od Microsoftu? 
-Pokud jako původ CDN použijete některou z následujících služeb Azure, nebude se vám z přenosu dat z originu do přístupových polí CDN účtovat. 
+## <a name="which-origin-services-are-eligible-for-free-data-transfer-with-azure-cdn-from-microsoft"></a>Které služby původu mají nárok na bezplatné přenosy dat s Azure CDN od Microsoftu? 
+Pokud jako zdroj CDN použijete jednu z následujících služeb Azure, nebudete se účtovat z přenosu dat od počátku do bodů POP CDN. 
 
 - Azure Storage
-- Mediální služby Azure
+- Azure Media Services
 - Azure Virtual Machines
 - Virtual Network
 - Load Balancer
@@ -104,7 +104,7 @@ Pokud jako původ CDN použijete některou z následujících služeb Azure, neb
 - Brána Azure Firewall
 - Azure Front Door Service
 - Azure Bastion
-- Služba Azure App
+- Služba Azure App Service
 - Azure Functions
 - Azure Data Factory
 - Azure API Management
@@ -117,5 +117,5 @@ Pokud jako původ CDN použijete některou z následujících služeb Azure, neb
 - Databáze Azure SQL
 - Azure Cache for Redis
 
-## <a name="how-do-i-manage-my-costs-most-effectively"></a>Jak mohu spravovat své náklady co nejefektivněji?
-Nastavte u svého obsahu co nejdelší TTL. 
+## <a name="how-do-i-manage-my-costs-most-effectively"></a>Návody spravovat mé náklady efektivněji?
+Nastavte nejdelší možnou hodnotu TTL u vašeho obsahu. 

@@ -1,5 +1,5 @@
 ---
-title: Kurz – vytváření a používání disků pro škálovací sady pomocí azure cli
+title: Kurz – vytvoření a použití disků pro škálované sady pomocí Azure CLI
 description: Zjistěte, jak pomocí Azure CLI vytvořit a používat spravované disky se škálovací sadou virtuálních počítačů, včetně přidání, přípravy, výpisu a odpojení disků.
 author: ju-shim
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc
 ms.openlocfilehash: 3759fa426a712308e1956376d559c1ac84eadbd7
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81008824"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Kurz: Vytvoření a použití disků se škálovací sadou virtuálních počítačů pomocí Azure CLI
@@ -25,7 +25,7 @@ ms.locfileid: "81008824"
 > * Výkon disků
 > * Připojení a příprava datových disků
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -51,7 +51,7 @@ Při vytváření nebo škálování škálovací sady se ke každé instanci vi
 
 
 ## <a name="azure-data-disks"></a>Datové disky Azure
-Pokud potřebujete instalovat aplikace a ukládat data, můžete přidat další datové disky. Datové disky by se měly používat v každé situaci, kdy se vyžaduje odolné a responzivní úložiště dat. Každý datový disk má maximální kapacitu 4 TB. Velikost instance virtuálního počítače určuje, kolik datových disků je možné připojit. Pro každý virtuální procesor virtuálního počítače lze připojit dva datové disky až do absolutního maxima 64 disků na virtuální počítač.
+Pokud potřebujete instalovat aplikace a ukládat data, můžete přidat další datové disky. Datové disky by se měly používat v každé situaci, kdy se vyžaduje odolné a responzivní úložiště dat. Každý datový disk má maximální kapacitu 4 TB. Velikost instance virtuálního počítače určuje, kolik datových disků je možné připojit. Pro každý virtuální počítač vCPU může být k jednomu virtuálnímu počítači připojen maximálně jeden datový disk s 64 disky.
 
 ## <a name="vm-disk-types"></a>Typy disků virtuálního počítače
 Azure poskytuje dva typy disků.
@@ -76,13 +76,13 @@ V tabulce výše se sice uvádí maximum vstupně-výstupních operací za sekun
 Disky můžete vytvořit a připojit při vytváření škálovací sady nebo u existující škálovací sady.
 
 ### <a name="attach-disks-at-scale-set-creation"></a>Připojení disků při vytváření škálovací sady
-Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). V tomto příkladu je vytvořena skupina prostředků s názvem *myResourceGroup* v oblasti *eastus.*
+Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). V tomto příkladu se vytvoří skupina prostředků s názvem *myResourceGroup* v oblasti *eastus* .
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Vytvořte škálovací sadu virtuálních počítačů pomocí příkazu [az vmss create](/cli/azure/vmss). Následující příklad vytvoří škálovací sadu s názvem *myScaleSet*a generuje klíče SSH, pokud neexistují. Pomocí parametru `--data-disk-sizes-gb` se vytvoří dva disky. První disk má velikost *64* GB a druhý disk *128* GB:
+Vytvořte škálovací sadu virtuálních počítačů pomocí příkazu [az vmss create](/cli/azure/vmss). Následující příklad vytvoří sadu škálování s názvem *myScaleSet*a vygeneruje klíče SSH, pokud neexistují. Pomocí parametru `--data-disk-sizes-gb` se vytvoří dva disky. První disk má velikost *64* GB a druhý disk *128* GB:
 
 ```azurecli-interactive
 az vmss create \

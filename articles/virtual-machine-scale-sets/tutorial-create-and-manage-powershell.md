@@ -1,19 +1,19 @@
 ---
 title: Kurz – vytvoření a Správa sady škálování virtuálních počítačů Azure
 description: Zjistěte, jak pomocí Azure PowerShellu vytvořit škálovací sadu virtuálních počítačů a provádět několik běžných úloh správy, jako je spuštění a zastavení instance nebo změna kapacity škálovací sady.
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: tutorial
 ms.date: 05/18/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 14616fcc9fd63731c50c5977c88b5030f60664ff
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 938b4e64dd5b67488ae5d061f2ceb29ae4bb7f6e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271413"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81011228"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Kurz: Vytvoření a správa škálovací sady virtuálních počítačů pomocí Azure PowerShellu
 
@@ -83,7 +83,7 @@ MYRESOURCEGROUP   myScaleSet_0   eastus Standard_DS1_v2          0         Succe
 MYRESOURCEGROUP   myScaleSet_1   eastus Standard_DS1_v2          1         Succeeded
 ```
 
-Pokud chcete zobrazit další informace o konkrétní instanci virtuálního počítače, přidejte parametr `-InstanceId` pro [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm). Následující příklad zobrazí informace o instanci virtuálního počítače *1*:
+Pokud chcete zobrazit další informace o konkrétní instanci virtuálního počítače, přidejte `-InstanceId` parametr do [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm). Následující příklad zobrazí informace o instanci virtuálního počítače *1*:
 
 ```azurepowershell-interactive
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "1"
@@ -115,7 +115,7 @@ myScaleSet3389.1 Tcp             50002        3389
 myScaleSet5985.1 Tcp             51002        5985
 ```
 
-*Název* pravidla se zarovnává s názvem instance virtuálního počítače, jak je znázorněno v předchozím příkazu [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) . Pokud se například chcete připojit k instanci virtuálního počítače *0*, použijte *myScaleSet3389.0* a připojte se k portu *50001*. Pokud se chcete připojit k instanci virtuálního počítače *1*, použijte hodnotu z *myScaleSet3389.1* a připojte se k portu *50002*. Pokud chcete využít vzdálenou komunikaci PowerShellu, připojte se k odpovídajícímu pravidlu instance virtuálního počítače pro port *TCP* *5985*.
+*Název* pravidla se zarovnává s názvem instance virtuálního počítače, jak je znázorněno v předchozím příkazu [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) . Pokud se například chcete připojit k instanci virtuálního počítače *0*, použijte *myScaleSet3389.0* a připojte se k portu *50001*. Pokud se chcete připojit k instanci virtuálního počítače *1*, použijte hodnotu z *myScaleSet3389.1* a připojte se k portu *50002*. Pokud chcete využít vzdálenou komunikaci PowerShellu, připojte se k odpovídajícímu pravidlu instance virtuálního počítače pro port *TCP**5985*.
 
 Zobrazení veřejné IP adresy nástroje pro vyrovnávání zatížení pomocí [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress):
 
@@ -132,7 +132,7 @@ IpAddress
 52.168.121.216
 ```
 
-Vytvořte vzdálené připojení k první instanci virtuálního počítače. Zadejte vlastní veřejnou IP adresu a číslo portu požadované instance virtuálního počítače uvedené ve výstupech předchozích příkazů. Po zobrazení výzvy zadejte přihlašovací údaje, které jste použili při vytváření sady škálování (ve výchozím nastavení v vzorových příkazech, *azureuser* a *P\@ssw0rd!* ). Pokud používáte Azure Cloud Shell, proveďte tento krok z příkazového řádku místního PowerShellu nebo klienta Vzdálené plochy. Následující příklad se připojí k instanci virtuálního počítače *1*:
+Vytvořte vzdálené připojení k první instanci virtuálního počítače. Zadejte vlastní veřejnou IP adresu a číslo portu požadované instance virtuálního počítače uvedené ve výstupech předchozích příkazů. Po zobrazení výzvy zadejte přihlašovací údaje, které jste použili při vytváření sady škálování (ve výchozím nastavení ve vzorových příkazech, *azureuser* a *\@P ssw0rd!*). Pokud používáte Azure Cloud Shell, proveďte tento krok z příkazového řádku místního PowerShellu nebo klienta Vzdálené plochy. Následující příklad se připojí k instanci virtuálního počítače *1*:
 
 ```powershell
 mstsc /v 52.168.121.216:50001
@@ -251,7 +251,7 @@ New-AzVmss `
 ## <a name="change-the-capacity-of-a-scale-set"></a>Změna kapacity škálovací sady
 Při vytváření škálovací sady jste vyžádali dvě instance virtuálních počítačů. Pokud chcete zvýšit nebo snížit počet instancí virtuálních počítačů ve škálovací sadě, můžete ručně změnit kapacitu. Škálovací sada vytvoří nebo odebere požadovaný počet instancí virtuálních počítačů a pak nakonfiguruje nástroj pro vyrovnávání zatížení pro distribuci provozu.
 
-Nejprve vytvořte objekt sady škálování pomocí [Get-AzVmss](/powershell/module/az.compute/get-azvmss)a zadejte novou hodnotu pro `sku.capacity`. Pokud chcete použít změnu kapacity, použijte [Update-AzVmss](/powershell/module/az.compute/update-azvmss). Následující příklad nastaví počet instancí virtuálních počítačů ve vaší škálovací sadě na *3*:
+Nejprve vytvořte objekt sady škálování pomocí [Get-AzVmss](/powershell/module/az.compute/get-azvmss)a pak zadejte novou hodnotu pro `sku.capacity`. Pokud chcete použít změnu kapacity, použijte [Update-AzVmss](/powershell/module/az.compute/update-azvmss). Následující příklad nastaví počet instancí virtuálních počítačů ve vaší škálovací sadě na *3*:
 
 ```azurepowershell-interactive
 # Get current scale set

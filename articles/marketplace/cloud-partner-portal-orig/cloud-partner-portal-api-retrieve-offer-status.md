@@ -1,6 +1,6 @@
 ---
 title: Načíst stav nabídky | Azure Marketplace
-description: ROZHRANÍ API načte aktuální stav nabídky.
+description: Rozhraní API načte aktuální stav nabídky.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,16 +8,16 @@ ms.topic: reference
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: 9cf6ca27101a08ff58f32dcd31413256762490a2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81255906"
 ---
 # <a name="retrieve-offer-status"></a>Načtení stavu nabídky
 
 > [!NOTE]
-> Api portálu pro partnery cloudu jsou integrovaná s Partnerským centrem a budou fungovat i po migraci nabídek do Centra partnerů. Integrace přináší malé změny. Zkontrolujte změny uvedené v [referenčním rozhraní API portálu cloudových partnerů a](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) ujistěte se, že váš kód bude fungovat i po migraci do Centra partnerů.
+> Rozhraní API pro portál partnerů cloudu jsou integrovaná do partnerského centra a budou fungovat i po migraci nabídek do partnerského centra. Integrace přináší malé změny. Projděte si změny uvedené v části [portál partnerů cloudu rozhraní API](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) , abyste zajistili, že váš kód bude i nadále fungovat po migraci do partnerského centra.
 
 Načte aktuální stav nabídky.
 
@@ -27,8 +27,8 @@ Načte aktuální stav nabídky.
 
 |  **Název**       |   **Popis**                            |  **Datový typ** |
 |  -------------  |  ------------------------------------------  |  ------------  |
-|  id vydavatele    | Identifikátor vydavatele, například`Contoso`  |     Řetězec     |
-|  offerId        | IDENTIFIKÁTOR GUID, který jednoznačně identifikuje nabídku      |     Řetězec     |
+|  publisherId    | Identifikátor vydavatele, například`Contoso`  |     Řetězec     |
+|  Hodnotami OfferId        | Identifikátor GUID, který jedinečně identifikuje nabídku      |     Řetězec     |
 |  verze-api    | Nejnovější verze rozhraní API                        |     Datum       |
 |  |  |
 
@@ -36,13 +36,13 @@ Načte aktuální stav nabídky.
 ## <a name="header"></a>Hlavička
 
 
-|  Name (Název)           |  Hodnota               |
+|  Název           |  Hodnota               |
 |  -------------  | -------------------  |
 |  Typ obsahu   |  `application/json`  |
 |  Autorizace  | `Bearer YOUR_TOKEN`  |
 |  |  |
 
-## <a name="body-example"></a>Příklad těla
+## <a name="body-example"></a>Příklad textu
 
 
 ### <a name="response"></a>Odpověď
@@ -119,44 +119,44 @@ Načte aktuální stav nabídky.
 ```
 
 
-### <a name="response-body-properties"></a>Vlastnosti těla odezvy
+### <a name="response-body-properties"></a>Vlastnosti textu odpovědi
 
 |  **Název**             |    **Popis**                                                                             |
 | --------------------  |   -------------------------------------------------------------------------------------------- |
-|  status               | Stav nabídky. Seznam možných hodnot naleznete níže v [tématu Stav nabídky.](#offer-status) |
-|  cloud-zařízení             | Pole zpráv přidružených k nabídce                                                    |
-|  kroky                | Pole kroků, které nabídka prochází během publikování nabídky                      |
-|  odhadTimeFrame   | Odhad času, který by trvalo dokončení tohoto kroku, v přátelském formátu                       |
+|  status               | Stav nabídky Seznam možných hodnot najdete v tématu o [stavu nabídky](#offer-status) níže. |
+|  cloud-zařízení             | Pole zpráv přidružených k této nabídce                                                    |
+|  kroky                | Pole kroků, pomocí kterých tato nabídka projde během publikování nabídky                      |
+|  estimatedTimeFrame   | Odhad doby provedení tohoto kroku v popisném formátu                       |
 |  id                   | Identifikátor kroku                                                                         |
-|  název kroku             | Název kroku                                                                               |
+|  Step             | Název kroku                                                                               |
 |  description          | Popis kroku                                                                        |
-|  status               | Stav kroku. Seznam možných hodnot naleznete níže v [tématu Stav kroku.](#step-status)    |
+|  status               | Stav kroku. Seznam možných hodnot najdete v tématu [stav kroku](#step-status) níže.    |
 |  cloud-zařízení             | Pole zpráv souvisejících s krokem                                                          |
-|  processProcento    | Procentuální dokončení kroku                                                              |
-|  náhledOdkazy         | *Není aktuálně implementováno*                                                                    |
-|  liveOdkazy            | *Není aktuálně implementováno*                                                                    |
-|  oznámeníEee   | Zastaralé pro nabídky migrované do Centra partnerů. E-maily s oznámením pro migrované nabídky budou odeslány na e-mail uvedený v části Kontaktní údaje prodejce v nastavení účtu.<br><br>U nemigrovaných nabídek je třeba o průběhu operace upozornit seznam e-mailových adres oddělených čárkami.        |
+|  processPercentage    | Procentuální podíl dokončení kroku                                                              |
+|  previewLinks         | *Není aktuálně implementováno*                                                                    |
+|  liveLinks            | *Není aktuálně implementováno*                                                                    |
+|  notificationEmails   | Zastaralé pro nabídky migrované do partnerského centra. E-maily s oznámením pro migrované nabídky se odešlou e-mailem uvedenému na kontaktní údaje prodejce v nastavení účtu.<br><br>V případě nemigrovaných nabídek se seznam e-mailových adres oddělených čárkami upozorní na průběh operace.        |
 |  |  |
 
-### <a name="response-status-codes"></a>Stavové kódy odpovědi
+### <a name="response-status-codes"></a>Stavové kódy odpovědí
 
 | **kód** |   **Popis**                                                                                 |
 | -------  |   ----------------------------------------------------------------------------------------------- |
-|  200     |  `OK`- Požadavek byl úspěšně zpracován a aktuální stav nabídky byl vrácen. |
-|  400     | `Bad/Malformed request`- Tělo odpovědi na chybu může obsahovat více informací.                 |
-|  404     | `Not found`- Zadaná entita neexistuje.                                                |
+|  200     |  `OK`-Požadavek byl úspěšně zpracován a byl vrácen aktuální stav nabídky. |
+|  400     | `Bad/Malformed request`– Tělo chybové odpovědi může obsahovat více informací.                 |
+|  404     | `Not found`-Zadaná entita neexistuje.                                                |
 |  |  |
 
 ### <a name="offer-status"></a>Stav nabídky
 
 |  **Název**                    |    **Popis**                                       |
 |  --------------------------  |  ------------------------------------------------------  |
-|  Nikdy publikováno              | Nabídka nebyla nikdy zveřejněna.                          |
-|  Notstarted                  | Nabídka je nová a není zahájena.                            |
+|  NeverPublished              | Nabídka nebyla nikdy publikována.                          |
+|  NotStarted                  | Nabídka je nová a není spuštěná.                            |
 |  WaitingForPublisherReview   | Nabídka čeká na schválení vydavatele.                 |
-|  Spuštěno                     | Probíhá zpracování odesílání nabídky.                     |
-|  Úspěch                   | Odeslání nabídky bylo dokončeno zpracování.               |
-|  Zrušeno                    | Odeslání nabídky bylo zrušeno.                           |
+|  Spuštěno                     | Zpracovává se odeslání nabídky.                     |
+|  Úspěch                   | Bylo dokončeno zpracování příspěvku nabídky.               |
+|  Zrušeno                    | Odeslání nabídky se zrušilo.                           |
 |  Failed                      | Odeslání nabídky se nezdařilo.                                 |
 |  |  |
 
@@ -164,12 +164,12 @@ Načte aktuální stav nabídky.
 
 |  **Název**                    |    **Popis**                           |
 |  -------------------------   |  ------------------------------------------  |
-|  Notstarted                  | Krok nebyl spuštěn.                        |
-|  Probíhá                  | Krok běží.                             |
+|  NotStarted                  | Krok nebyl spuštěn.                        |
+|  InProgress                  | Krok je spuštěn.                             |
 |  WaitingForPublisherReview   | Krok čeká na schválení vydavatele.      |
-|  Čekánína schválení          | Krok čeká na schválení procesu.        |
+|  WaitingForApproval          | Krok čeká na schválení procesu.        |
 |  Blokované                     | Krok je blokován.                             |
-|  Rejected                    | Krok je odmítnut.                            |
-|  Dokončit                    | Krok je dokončen.                            |
+|  Rejected                    | Krok je odmítnutý.                            |
+|  Dokončit                    | Krok je dokončený.                            |
 |  Zrušeno                    | Krok byl zrušen.                           |
 |  |  |

@@ -1,6 +1,6 @@
 ---
-title: Ověřit pravidla pro dynamické členství ve skupinách (preview) – Azure AD | Dokumenty společnosti Microsoft
-description: Jak otestovat členy proti pravidlu členství pro dynamické skupiny ve službě Azure Active Directory.
+title: Ověřit pravidla pro členství v dynamické skupině (Preview) – Azure AD | Microsoft Docs
+description: Testování členů na základě pravidla členství pro dynamické skupiny v Azure Active Directory.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,36 +15,36 @@ ms.reviewer: yukarppa
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 84e081f62949f4cf3f7ae375b2c60ee5b032d974
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81115518"
 ---
-# <a name="validate-a-dynamic-group-membership-rule-preview-in-azure-active-directory"></a>Ověření pravidla dynamického členství ve skupině (preview) ve službě Azure Active Directory
+# <a name="validate-a-dynamic-group-membership-rule-preview-in-azure-active-directory"></a>Ověření pravidla členství v dynamické skupině (Preview) v Azure Active Directory
 
-Azure Active Directory (Azure AD) teď poskytuje prostředky k ověření pravidel dynamické skupiny (ve verzi Public Preview). Na kartě **Ověřit pravidla** můžete ověřit dynamické pravidlo proti členům vzorové skupiny a potvrdit, že pravidlo funguje podle očekávání. Při vytváření nebo aktualizaci pravidel dynamické skupiny chtějí správci vědět, zda bude členem skupiny uživatel nebo zařízení. To pomáhá vyhodnotit, zda uživatel nebo zařízení splňuje kritéria pravidla a pomoc při řešení potíží, když členství není očekáváno.
+Azure Active Directory (Azure AD) nyní poskytuje způsob, jak ověřit pravidla dynamické skupiny (ve verzi Public Preview). Na kartě **ověřit pravidla** můžete ověřit své dynamické pravidlo proti ukázkovým členům skupiny a potvrdit, že pravidlo funguje podle očekávání. Správci chtějí při vytváření nebo aktualizaci pravidel dynamických skupin zjistit, jestli uživatel nebo zařízení bude členem skupiny. Tato možnost pomáhá vyhodnotit, jestli uživatel nebo zařízení splňuje kritéria pravidla a pomoc při řešení potíží, když členství neočekáváte.
 
-## <a name="step-by-step-walk-through"></a>Podrobný návod
+## <a name="step-by-step-walk-through"></a>Podrobný postup – procházení
 
-Chcete-li začít, přejděte na **Azure Active Directory** > **Groups**. Vyberte existující dynamickou skupinu nebo vytvořte novou dynamickou skupinu a klikněte na dynamická pravidla členství. Poté se zobrazí karta **Ověřit pravidla.**
+Začněte tím, že přejdete na **Azure Active Directory** > **skupiny**. Vyberte existující dynamickou skupinu nebo vytvořte novou dynamickou skupinu a klikněte na pravidla dynamického členství. Pak se můžete podívat na kartu **pravidla pro ověření** .
 
-![Vyhledání karty Ověřit pravidla a začít s existujícím pravidlem](./media/groups-dynamic-rule-validation/validate-tab.png)
+![Najděte kartu pravidla pro ověření a začněte s existujícím pravidlem.](./media/groups-dynamic-rule-validation/validate-tab.png)
 
-Na kartě **Ověřit pravidla** můžete vybrat uživatele, kteří ověří jejich členství. Najednou lze vybrat 20 uživatelů nebo zařízení.
+Na kartě **ověřit pravidla** můžete vybrat uživatele a ověřit členství. v jednom okamžiku může být vybráno 20 uživatelů nebo zařízení.
 
-![Přidání uživatelů k ověření existujícího pravidla proti](./media/groups-dynamic-rule-validation/validate-tab-add-users.png)
+![Přidat uživatele, aby ověřili stávající pravidlo proti](./media/groups-dynamic-rule-validation/validate-tab-add-users.png)
 
-Po výběru uživatelů nebo zařízení z výběru a **výběru**se automaticky spustí ověření a zobrazí se výsledky ověření.
+Po výběru uživatelů nebo zařízení z výběru **Vyberte možnost**automaticky spustit ověřování a zobrazí se výsledky ověření.
 
 ![Zobrazit výsledky ověření pravidla](./media/groups-dynamic-rule-validation/validate-tab-results.png)
 
-Výsledky říkají, zda je uživatel členem skupiny nebo ne. Pokud pravidlo není platné nebo došlo k problému se sítí, výsledek se zobrazí jako **Neznámý**. V případě **Neznámé**, podrobná chybová zpráva popisuje problém a potřebné akce.
+Výsledky informují o tom, jestli je uživatel členem skupiny, nebo ne. Pokud pravidlo není platné nebo dojde k potížím se sítí, výsledek bude zobrazen jako **Neznámý**. V případě **neznámé**se zobrazí podrobná chybová zpráva s popisem problému a potřebných akcí.
 
 ![Zobrazit podrobnosti o výsledcích ověření pravidla](./media/groups-dynamic-rule-validation/validate-tab-view-details.png)
 
-Můžete upravit pravidlo a bude spuštěno ověření členství. Chcete-li zjistit, proč uživatel není členem skupiny, klikněte na tlačítko "Zobrazit podrobnosti" a podrobnosti ověření zobrazí výsledek každého výrazu, který tvoří pravidlo. Chcete-li program ukončit, klepněte na tlačítko **OK.**
+Můžete upravit pravidlo a ověření členství se spustí. Pokud chcete zjistit, proč uživatel není členem skupiny, klikněte na Zobrazit podrobnosti a v podrobnostech o ověření se zobrazí výsledek každého výrazu, který pravidlo sestavuje. Kliknutím na tlačítko **OK** ukončete.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Pravidla dynamického členství pro skupiny](groups-dynamic-membership.md)
+- [Dynamická pravidla členství pro skupiny](groups-dynamic-membership.md)
