@@ -1,6 +1,6 @@
 ---
-title: Automatické škálování podů AKS s metrikami Azure Application Gateway
-description: Tento článek obsahuje pokyny, jak škálovat pody back-endu AKS pomocí metrik aplikační brány a adaptéru Metrika Azure Kubernetes
+title: Automatické škálování AKS s využitím metrik Azure Application Gateway
+description: Tento článek poskytuje pokyny, jak škálovat AKS back-endu pomocí metrik Application Gateway a adaptéru Azure Kubernetes metric.
 services: application-gateway
 author: caya
 ms.service: application-gateway
@@ -8,26 +8,26 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 1169ed0e9a2b970ee0e30d73ea20c87001b62786
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80239446"
 ---
-# <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>Automatické škálování podů AKS pomocí metrik aplikační brány (beta)
+# <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>Automatické škálování AKSch lusků pomocí Application Gatewaych metrik (beta verze)
 
-S tím, jak se zvyšuje příchozí provoz, je důležité škálovat aplikace na základě poptávky.
+Vzhledem k tomu, že se příchozí provoz zvyšuje, je důležité škálovat aplikace na základě požadavků.
 
-V následujícím kurzu vysvětlujeme, jak můžete použít `AvgRequestCountPerHealthyHost` metriku aplikační brány ke zvýšení kapacity aplikace. `AvgRequestCountPerHealthyHost`měří průměrné požadavky odeslané do konkrétního back-endu fondu a back-endu nastavení HTTP kombinace.
+V následujícím kurzu vyvysvětlíme, jak můžete použít `AvgRequestCountPerHealthyHost` metriku Application Gateway k horizontálnímu navýšení kapacity aplikace. `AvgRequestCountPerHealthyHost`měří průměrné požadavky odeslané na konkrétní back-end fond a kombinaci nastavení back-endu HTTP.
 
-Budeme používat následující dvě složky:
+Budeme používat tyto dvě komponenty:
 
-* [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter)- Použijeme adaptér metriky k vystavení metriky aplikační brány prostřednictvím metrického serveru. Azure Kubernetes Metric Adapter je open source projekt v rámci Azure, podobně jako řadič příchozího přenosu dat aplikační brány. 
-* [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler)- Budeme používat HPA používat metriky aplikační brány a zaměřit nasazení pro škálování.
+* [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter)– K vystavení metriky Application Gateway prostřednictvím serveru metrik budeme používat adaptér metriky. Adaptér metriky Azure Kubernetes je otevřený zdrojový projekt v Azure, podobně jako kontroler Application Gateway příchozího přenosu dat. 
+* [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler)– Použijeme HPA k použití metrik Application Gateway a cílem nasazení pro škálování.
 
-## <a name="setting-up-azure-kubernetes-metric-adapter"></a>Nastavení metrického adaptéru Azure Kubernetes
+## <a name="setting-up-azure-kubernetes-metric-adapter"></a>Nastavení adaptéru metriky Azure Kubernetes
 
-1. Nejprve vytvoříme instanční objekt služby `Monitoring Reader` Azure AAD a přiřadíme mu přístup přes skupinu prostředků aplikační brány. 
+1. Nejprve vytvoříme instanční objekt služby Azure AAD a přiřadíte `Monitoring Reader` mu přístup přes skupinu prostředků Application Gateway. 
 
     ```azurecli
         applicationGatewayGroupName="<application-gateway-group-id>"
@@ -35,7 +35,7 @@ Budeme používat následující dvě složky:
         az ad sp create-for-rbac -n "azure-k8s-metric-adapter-sp" --role "Monitoring Reader" --scopes applicationGatewayGroupId
     ```
 
-1. Nyní nasadíme [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter) pomocí hlavního povinného instančního objektu AAD vytvořeného výše.
+1. Teď nasadíme [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter) pomocí instančního objektu služby AAD, který jsme vytvořili výše.
 
     ```bash
     kubectl create namespace custom-metrics
@@ -47,7 +47,7 @@ Budeme používat následující dvě složky:
     kubectl apply -f kubectl apply -f https://raw.githubusercontent.com/Azure/azure-k8s-metrics-adapter/master/deploy/adapter.yaml -n custom-metrics
     ```
 
-1. Vytvoříme `ExternalMetric` zdroj s `appgw-request-count-metric`názvem . Tento prostředek dá pokyn adaptéru metriky, aby zpřístupnioval `AvgRequestCountPerHealthyHost` metriku pro `myApplicationGateway` prostředek ve `myResourceGroup` skupině prostředků. Toto `filter` pole můžete použít k cílení na konkrétní back-endový fond a nastavení HTTP back-endu v aplikační bráně.
+1. Vytvoříme `ExternalMetric` prostředek s názvem `appgw-request-count-metric`. Tento prostředek instruuje adaptér metriky, aby `AvgRequestCountPerHealthyHost` vystavoval metriku pro `myApplicationGateway` prostředek ve `myResourceGroup` skupině prostředků. Pomocí tohoto `filter` pole můžete cílit na konkrétní back-end fond a nastavení back-endu HTTP v Application Gateway.
 
     ```yaml
     apiVersion: azure.com/v1alpha2
@@ -67,7 +67,7 @@ Budeme používat následující dvě složky:
             filter: BackendSettingsPool eq '<backend-pool-name>~<backend-http-setting-name>' # optional
     ```
 
-Nyní můžete požádat na metrický server, abyste zjistili, zda se naše nová metrika nedostává do posudku:
+Teď můžete na server metriky vytvořit žádost, abyste viděli, jestli je naše nová metrika vystavená:
 ```bash
 kubectl get --raw "/apis/external.metrics.k8s.io/v1beta1/namespaces/default/appgw-request-count-metric"
 # Sample Output
@@ -90,11 +90,11 @@ kubectl get --raw "/apis/external.metrics.k8s.io/v1beta1/namespaces/default/appg
 # }
 ```
 
-## <a name="using-the-new-metric-to-scale-up-the-deployment"></a>Použití nové metriky k navýšení kapacity nasazení
+## <a name="using-the-new-metric-to-scale-up-the-deployment"></a>Použití nové metriky k horizontálnímu navýšení kapacity nasazení
 
-Jakmile jsme schopni `appgw-request-count-metric` vystavit prostřednictvím serveru metriky, [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) jsme připraveni použít k škálování našeho cílového nasazení.
+Až bude možné vystavit `appgw-request-count-metric` prostřednictvím serveru metrik, můžeme použít [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) k horizontálnímu navýšení kapacity cílového nasazení.
 
-V následujícím příkladu se zaměříme na ukázkové nasazení `aspnet`. Budeme škálovat lusky, když `appgw-request-count-metric` > 200 za `10` Pod až max lusků.
+V následujícím příkladu budeme cílit na ukázkové nasazení `aspnet`. Až do maximálního počtu `appgw-request-count-metric` `10` lusků nasadíme > 200 na.
 
 Nahraďte název cílového nasazení a použijte následující konfiguraci automatického škálování:
 ```yaml
@@ -116,10 +116,10 @@ spec:
       targetAverageValue: 200
 ```
 
-Otestujte si nastavení pomocí nástroje zátěžového testu, jako je apache bench:
+Otestujte nastavení pomocí nástroje zátěžového testu, jako je Apache.
 ```bash
 ab -n10000 http://<applicaiton-gateway-ip-address>/
 ```
 
 ## <a name="next-steps"></a>Další kroky
-- [**Poradce při potížích s řadičem přenosu dat**](ingress-controller-troubleshoot.md): Řešení problémů s řadičem příchozího přenosu dat.
+- [**Řešení potíží s řadičem**](ingress-controller-troubleshoot.md)příchozích dat: řešení potíží s řadičem příchozího přenosu dat.

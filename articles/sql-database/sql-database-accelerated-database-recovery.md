@@ -1,6 +1,6 @@
 ---
 title: Zrychlené obnovení databáze
-description: Azure SQL Database má novou funkci, která poskytuje rychlé a konzistentní obnovení databáze, okamžité vrácení transakcí a agresivní zkrácení protokolů pro jednotlivé databáze a sdružené databáze v Azure SQL Database a databáze v Azure SQL Data Skladu.
+description: Azure SQL Database má novou funkci, která poskytuje rychlé a konzistentní obnovení databáze, okamžité vrácení transakce a agresivní zkracování protokolů pro izolované databáze a databáze ve fondu v Azure SQL Database a databáze v Azure SQL Data Warehouse.
 ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: ''
@@ -11,119 +11,119 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/24/2020
 ms.openlocfilehash: 57ca594dd067d15009de5e3abf7276fae48720d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80238658"
 ---
-# <a name="accelerated-database-recovery"></a>Zrychlené obnovení databáze
+# <a name="accelerated-database-recovery"></a>Urychlené obnovení databáze
 
-**Accelerated Database Recovery (ADR)** je funkce databázového stroje SQL, která výrazně zlepšuje dostupnost databáze, zejména v přítomnosti dlouhotrvajících transakcí, a to přepracovat proces obnovení databázového stroje SQL. ADR je momentálně dostupná pro jednu databázi Azure SQL Database, elastický fond a spravovanou instanci a databáze v Azure SQL Data Warehouse (aktuálně ve verzi Preview). Hlavní výhody Alternativního řešení sporů jsou:
+**Accelerated Database Recovery (ADR)** je funkce stroje SQL Database, která významně vylepšuje dostupnost databáze, zejména v případě existence dlouhotrvajících transakcí, přenavrhováním procesu obnovení SQL Database Engine. Pravidlo automatického nasazení je aktuálně k dispozici pro Azure SQL Database jeden, elastický fond a spravovanou instanci a databáze v Azure SQL Data Warehouse (aktuálně ve verzi Preview). Hlavní výhody ADR jsou:
 
-- **Rychlé a konzistentní obnovení databáze**
+- **Rychlá a konzistentní obnova databáze**
 
-  S ADR, dlouho běžící transakce nemají vliv na celkovou dobu obnovení, což umožňuje rychlé a konzistentní obnovení databáze bez ohledu na počet aktivních transakcí v systému nebo jejich velikosti.
+  Při použití pravidla automatického nasazení neovlivní dlouho běžící transakce celkovou dobu obnovení a umožní rychlé a konzistentní obnovení databáze bez ohledu na počet aktivních transakcí v systému nebo jejich velikosti.
 
-- **Okamžité vrácení transakce**
+- **Okamžitý návrat transakce**
 
-  S ADR vrácení transakce je okamžitá, bez ohledu na čas, kdy byla transakce aktivní nebo počet provedených aktualizací.
+  Pomocí pravidla automatického nasazení je vrácení transakce okamžitě, bez ohledu na čas, kdy byla transakce aktivní, nebo počet aktualizací, které byly provedeny.
 
-- **Agresivní zkrácení protokolu**
+- **Agresivní zkracování protokolů**
 
-  S ADR transakční protokol je agresivně zkrácen, a to i v přítomnosti aktivních dlouhotrvající transakce, které brání tomu, aby se vymkla kontrole.
+  V případě pravidla automatického nasazení je transakční protokol agresivní a dokonce i v přítomnosti aktivních dlouhotrvajících transakcí, což brání v rozšiřování řízení.
 
 ## <a name="the-current-database-recovery-process"></a>Aktuální proces obnovení databáze
 
-Obnovení databáze v SQL Server následuje model obnovení [ARIES](https://people.eecs.berkeley.edu/~brewer/cs262/Aries.pdf) a skládá se ze tří fází, které jsou znázorněny v následujícím diagramu a podrobněji vysvětleny v následujícím diagramu.
+Obnovení databáze v SQL Server řídí model obnovení [Aries](https://people.eecs.berkeley.edu/~brewer/cs262/Aries.pdf) a skládá se ze tří fází, které jsou znázorněny v následujícím diagramu a jsou podrobněji vysvětleny v následujícím diagramu.
 
-![aktuální proces obnovy](./media/sql-database-accelerated-database-recovery/current-recovery-process.png)
+![aktuální proces obnovení](./media/sql-database-accelerated-database-recovery/current-recovery-process.png)
 
 - **Fáze analýzy**
 
-  Předávání prohledávač transakční protokol od začátku poslední úspěšné kontrolní bod (nebo nejstarší dirty stránky LSN) až do konce, k určení stavu každé transakce v době, kdy SQL Server zastavil.
+  Prohledání transakčního protokolu od začátku posledního úspěšného kontrolního bodu (nebo nejstarší nekonečná hodnota LSN stránky) až do konce, abyste zjistili stav každé transakce v době SQL Server zastavili.
 
 - **Fáze opakování**
 
-  Předávání prohledávač transakční protokol od nejstarší nepotvrzené transakce až do konce, aby databáze do stavu, který byl v době selhání předěláním všech potvrzených operací.
+  Projde kontrolu transakčního protokolu z nejstarší nepotvrzené transakce do konce, aby se databáze přenesla do stavu, ve kterém byla v době selhání, a to opětovným provedením všech svěřených operací.
 
-- **Fáze vrátit se k odvádění**
+- **Fáze vrácení zpět**
 
-  Pro každou transakci, která byla aktivní k době selhání, prochází protokolu zpět, vrátit zpět operace, které tato transakce provedena.
+  Pro každou transakci, která byla aktivní v době selhání, projde protokol zpět a vrátí operace, které tato transakce provedla.
 
-Na základě tohoto návrhu čas potřebný k obnovení databázového stroje SQL z neočekávanérestartování je (zhruba) úměrná velikosti nejdelší aktivní transakce v systému v době selhání. Obnovení vyžaduje vrácení všech neúplných transakcí. Požadovaná doba je úměrná práci, kterou transakce provedla, a době, po kterou byla transakce aktivní. Proces obnovení serveru SQL Server proto může trvat dlouhou dobu v přítomnosti dlouhotrvající transakce (například velké operace hromadné vložení nebo operace sestavení indexu proti velké tabulce).
+V závislosti na tomto návrhu je čas, který modul SQL Database potřebuje k obnovení z neočekávaného restartování (přibližně) úměrný velikosti nejdelší aktivní transakce v systému v době selhání. Obnovení vyžaduje vrácení zpět všech neúplných transakcí. Požadovaná doba je úměrná práci, kterou transakce provedla, a času, kdy byla transakce aktivní. Proto může proces obnovení SQL Server trvat dlouhou dobu v přítomnosti dlouhotrvajících transakcí (například rozsáhlé operace hromadného vložení nebo operace sestavení indexu s velkou tabulkou).
 
-Také zrušení/vrácení velké transakce na základě tohoto návrhu může také trvat dlouhou dobu, protože používá stejnou fázi obnovení zpět, jak je popsáno výše.
+I zrušení nebo vrácení velkých transakcí na základě tohoto návrhu může také trvat dlouhou dobu, protože používá stejnou fázi vrácení zpět, jak je popsáno výše.
 
-Kromě toho databázový stroj SQL nelze zkrátit transakční protokol, pokud existují dlouho běžící transakce, protože jejich odpovídající záznamy protokolu jsou potřebné pro procesy obnovení a vrácení zpět. V důsledku tohoto návrhu databázového stroje SQL, někteří zákazníci slouží k problému, že velikost transakční protokol roste velmi velké a spotřebovává obrovské množství místa na disku.
+Kromě toho stroj SQL Database nemůže zkrátit transakční protokol, pokud existují dlouhotrvající transakce, protože jejich odpovídající záznamy protokolu jsou nutné pro procesy obnovení a vrácení zpět. V důsledku tohoto návrhu stroje SQL Database se někteří zákazníci využili k problému s tím, že velikost transakčního protokolu roste velmi velká a spotřebovává velké množství místa na disku.
 
-## <a name="the-accelerated-database-recovery-process"></a>Proces zrychleného obnovení databáze
+## <a name="the-accelerated-database-recovery-process"></a>Proces urychleného obnovení databáze
 
-ADR řeší výše uvedené problémy úplným přepracovat proces obnovení databázového stroje SQL takto:
+ADR řeší výše uvedené problémy tím, že zcela přenavrhuje proces obnovení SQL Database Engine na:
 
-- Ať je konstantní čas / okamžitý tím, že se vyhnete nutnosti skenovat protokol z / na začátek nejstarší aktivní transakce. S ADR transakční protokol je zpracována pouze z poslední úspěšný kontrolní bod (nebo nejstarší dirty stránky číslo sekvence protokolu (LSN)). V důsledku toho není doba obnovení ovlivněna dlouhotrvající transakce.
-- Minimalizujte požadované místo protokolu transakcí, protože již není nutné protokol zpracovávat pro celou transakci. V důsledku toho transakční protokol lze agresivně zkráceny jako kontrolní body a zálohy.
+- Zajistěte si neustálou dobu a okamžitou nemusíte kontrolovat protokol od/po začátek nejstarší aktivní transakce. V případě pravidla automatického nasazení se transakční protokol zpracovává jenom z posledního úspěšného kontrolního bodu (nebo nejstarší stránky pořadového čísla LSN). V důsledku toho čas obnovení není ovlivněn dlouhodobě běžícími transakcemi.
+- Minimalizujte požadovaný prostor protokolu transakcí, protože již není nutné zpracovávat protokol pro celou transakci. V důsledku toho může být transakční protokol zkráceně, protože došlo k kontrolním bodům a zálohování.
 
-Na vysoké úrovni ADR dosahuje rychlé obnovení databáze verzí všech fyzických databází modifikace a pouze vrácení logické operace, které jsou omezené a lze vrátit zpět téměř okamžitě. Všechny transakce, která byla aktivní k době selhání jsou označeny jako přerušené, a proto všechny verze generované těmito transakcemi mohou být ignorovány souběžných uživatelských dotazů.
+V rámci vysoké úrovně dosahuje ADR rychlé obnovení databáze tím, že provádí správu verzí všech změn fyzické databáze a jenom zrušení logických operací, které jsou omezené a dají se prakticky okamžitě vrátit. Všechny transakce, které byly aktivní v době selhání, jsou označeny jako přerušené a proto mohou být všechny verze vygenerované těmito transakcemi ignorovány souběžnými uživatelskými dotazy.
 
-Proces obnovení Alternativního řešení sporů má stejné tři fáze jako aktuální proces obnovení. Jak tyto fáze fungují s ADR, je znázorněno na následujícím diagramu a podrobněji vysvětleno v následujícím diagramu.
+Proces obnovení ADR má stejné tři fáze jako aktuální proces obnovení. Jak tyto fáze pracují s pravidlem ADR, jsou znázorněné v následujícím diagramu a podrobněji se podrobněji vysvětluje v diagramu.
 
-![Proces obnovení alternativního řešení sporů](./media/sql-database-accelerated-database-recovery/adr-recovery-process.png)
+![Proces obnovení ADR](./media/sql-database-accelerated-database-recovery/adr-recovery-process.png)
 
 - **Fáze analýzy**
 
-  Proces zůstává stejný jako dříve s přidáním rekonstrukce sLog a kopírování záznamů protokolu pro operace bez verze.
+  Proces zůstane stejný jako před přidáním rekonstrukci sLog a zkopírováním záznamů protokolu pro operace, které nejsou ve verzi.
   
-- **Fáze opakování**
+- Fáze **opakování**
 
-  Rozděleno do dvou fází (P)
+  Rozdělené do dvou fází (P)
   - Fáze 1
 
-      Znovu z sLog (nejstarší nepotvrzené transakce až do posledního kontrolního bodu). Znovu je rychlá operace, protože potřebuje pouze zpracovat několik záznamů z sLog.
+      Znovu z sLog (nejstarší nepotvrzená transakce až do posledního kontrolního bodu). Opakování je rychlá operace, protože potřebuje pouze zpracovat několik záznamů z sLog.
       
   - Fáze 2
 
-     Znovu z transakčního protokolu začíná z posledního kontrolního bodu (namísto nejstarší nepotvrzené transakce)
+     Znovu z protokolu transakce začíná od posledního kontrolního bodu (namísto nejstarší nepotvrzené transakce)
      
-- **Fáze vrátit se k odvádění**
+- **Fáze vrácení zpět**
 
-   Fáze vrácení zpět s ADR dokončí téměř okamžitě pomocí sLog vrátit zpět operace bez verze a trvalé úložiště verzí (PVS) s logické vrátit k provedení verze řádku zpět.
+   Fáze vrácení zpět se serverem SLA se téměř okamžitě dokončí pomocí sLog k vrácení neverzí operací a trvalého úložiště verzí (PVS) s logickým návratem pro vrácení zpět na základě verze na úrovni řádku.
 
-## <a name="adr-recovery-components"></a>Součásti obnovení ADR
+## <a name="adr-recovery-components"></a>Součásti pro obnovení ADR
 
-Čtyři klíčové složky alternativního řešení sporů jsou:
+Mezi čtyři klíčové součásti pravidla automatického nasazení patří:
 
 - **Trvalé úložiště verzí (PVS)**
 
-  Úložiště trvalých verzí je nový mechanismus databázového stroje SQL pro uchování verzí řádků `tempdb` generovaných v samotné databázi namísto úložiště tradičních verzí. PVS umožňuje izolaci prostředků a zlepšuje dostupnost čitelných sekundárních.
+  Trvalé úložiště verzí je nový mechanismus SQL Database Engine pro zachování verzí řádků vygenerovaných v samotné databázi místo z tradičního `tempdb` úložiště verzí. PVS umožňuje izolaci prostředků a také zlepšuje dostupnost čitelných sekundárních.
 
-- **Logický návrat**
+- **Logické vrácení**
 
-  Logický návrat je asynchronní proces zodpovědný za provádění verze řádku na základě Zpět - poskytuje okamžité vrácení transakce zpět a zpět pro všechny operace s verzí. Logický návrat se provádí pomocí:
+  Logické vrácení je asynchronní proces, který je zodpovědný za provádění vrácení zpět na úrovni řádku – poskytuje vrácení zpět a vrácení zpět pro všechny operace s verzí. Logické vrácení je provedeno pomocí:
 
-  - Sledování všech přerušených transakcí a jejich označení neviditelné pro jiné transakce. 
-  - Provádění vrácení zpět pomocí PVS pro všechny transakce uživatele, spíše než fyzicky skenování transakční protokol a vrácení změny jeden po druhém.
-  - Uvolnění všech zámků ihned po přerušení transakce. Vzhledem k tomu, přerušení zahrnuje jednoduše označení změny v paměti, proces je velmi efektivní, a proto zámky nemusí být drženy po dlouhou dobu.
+  - Udržování přehledu o všech přerušených transakcích a jejich označení jako neviditelná pro jiné transakce. 
+  - Vrácení zpět pomocí PVS pro všechny uživatelské transakce místo fyzického prohledávání transakčního protokolu a vrácení změn v jednom okamžiku.
+  - Uvolnění všech zámků ihned po přerušení transakce. Vzhledem k tomu, že přerušení zahrnuje jednoduše označení změn v paměti, proces je velmi efektivní a proto se zámky nemusí uchovávat po dlouhou dobu.
 
-- **Dřina**
+- **sLog**
 
-  sLog je sekundární datový proud protokolu v paměti, který ukládá záznamy protokolu pro operace bez verzí (například zneplatnění mezipaměti metadat, pořízení zámků a tak dále). SLog je:
+  sLog je sekundární datový proud protokolu v paměti, který ukládá záznamy protokolu pro operace, které nejsou ve verzi (jako je třeba neplatnost v mezipaměti metadat, zámky zámku atd.). SLog je:
 
-  - Nízká hlasitost a paměť
-  - Trvalé na disku serializace během procesu kontrolního bodu
-  - Pravidelně zkráceno jako potvrzení transakcí
-  - Urychluje opakování a vrácení se zpracovat zpracováním pouze bez verze operace  
-  - Umožňuje agresivní zkrácení transakčního protokolu zachováním pouze požadovaných záznamů protokolu.
+  - Nízká hlasitost a v paměti
+  - Trvalá na disku při serializaci během procesu kontrolního bodu
+  - Pravidelně zkrácené jako potvrzení transakcí
+  - Zrychluje akci a vrátí se zpět zpracováním jenom operací bez verzí.  
+  - Zachovává agresivní zkracování transakčního protokolu tím, že zachová jenom požadované záznamy protokolu.
 
-- **Čistší**
+- **Vysavač**
 
-  Čistič je asynchronní proces, který se pravidelně probouzí a čistí verze stránek, které nejsou potřeba.
+  Čistič je asynchronní proces, který se probudí a vyčistí nepotřebné verze stránek.
 
-## <a name="accelerated-database-recovery-patterns"></a>Zrychlené vzory obnovení databáze
+## <a name="accelerated-database-recovery-patterns"></a>Urychlené vzorce obnovení databáze
 
-ADR mají největší prospěch z následujících typů úloh:
+Následující typy úloh mají největší užitek z pravidla automatického nasazení:
 
-- Úlohy s dlouhotrvající transakce.
-- Úlohy, které zaznamenaly případy, kdy aktivní transakce způsobují výrazně růst transakční protokol.  
-- Úlohy, které došlo k dlouhé období nedostupnosti databáze z důvodu SQL Server dlouho běžící obnovení (například neočekávané restartování serveru SQL Server nebo ruční vrácení transakce).
+- Úlohy s dlouhodobě běžícími transakcemi.
+- Úlohy, které viděli případy, kdy aktivní transakce způsobují významně rostoucí transakční protokol.  
+- Úlohy, u kterých došlo k dlouhé době nedostupnosti databáze z důvodu SQL Server dlouhodobě probíhajícího obnovení (například neočekávané SQL Server restart nebo ruční vrácení transakcí).
 

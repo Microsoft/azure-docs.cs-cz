@@ -1,6 +1,6 @@
 ---
-title: 'Vytvoření brány Azure VPN založené na trase: CLI'
-description: Rychle se dozvíte, jak vytvořit bránu VPN pomocí cli
+title: 'Vytvoření VPN Gateway Azure založeného na trasách: CLI'
+description: Rychlé informace o tom, jak vytvořit VPN Gateway pomocí rozhraní příkazového řádku
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 10/04/2018
 ms.author: cherylmc
 ms.openlocfilehash: 121790fce220874babedf67cd72471caa7e92ae6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80241089"
 ---
-# <a name="create-a-route-based-vpn-gateway-using-cli"></a>Vytvoření brány VPN založené na trasách pomocí cli
+# <a name="create-a-route-based-vpn-gateway-using-cli"></a>Vytvoření brány sítě VPN založené na trasách pomocí rozhraní příkazového řádku
 
-Tento článek vám pomůže rychle vytvořit bránu Azure VPN založenou na trasách pomocí azure cli. Brána VPN se používá při vytváření připojení VPN k místní síti. K připojení virtuálních sítí můžete taky použít bránu VPN.
+Tento článek vám pomůže rychle vytvořit bránu Azure VPN Gateway založenou na směrování pomocí Azure CLI. Brána sítě VPN se používá při vytváření připojení VPN k místní síti. K připojení virtuální sítě můžete použít taky bránu VPN.
 
-Kroky v tomto článku vytvoří virtuální síť, podsíť, podsíť brány a bránu VPN založenou na trasách (bránu virtuální sítě). Vytvoření brány virtuální sítě může trvat 45 minut nebo déle. Po dokončení vytvoření brány pak můžete vytvořit připojení. Tyto kroky vyžadují předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Kroky v tomto článku vytvoří virtuální síť, podsíť, podsíť brány a bránu VPN založenou na směrování (bránu virtuální sítě). Brána virtuální sítě může vytvořit několik než 45 minut. Po dokončení vytváření brány můžete vytvořit připojení. Tyto kroky vyžadují předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -26,7 +26,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků pomocí příkazu [vytvořit skupinu az.](/cli/azure/group) Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
+Vytvořte skupinu prostředků pomocí příkazu [AZ Group Create](/cli/azure/group) . Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
 
 
 ```azurecli-interactive
@@ -35,7 +35,7 @@ az group create --name TestRG1 --location eastus
 
 ## <a name="create-a-virtual-network"></a><a name="vnet"></a>Vytvoření virtuální sítě
 
-Vytvořte virtuální síť pomocí příkazu [vytvořit virtuální síť az.](/cli/azure/network/vnet) Následující příklad vytvoří virtuální síť s názvem **VNet1** v umístění **EastUS:**
+Vytvořte virtuální síť pomocí příkazu [AZ Network VNet Create](/cli/azure/network/vnet) . Následující příklad vytvoří virtuální síť s názvem **VNet1** v umístění **EastUS** :
 
 ```azurecli-interactive
 az network vnet create \
@@ -49,7 +49,7 @@ az network vnet create \
 
 ## <a name="add-a-gateway-subnet"></a><a name="gwsubnet"></a>Přidání podsítě brány
 
-Podsíť brány obsahuje vyhrazené IP adresy, které používají služby brány virtuální sítě. K přidání podsítě brány použijte následující příklady:
+Podsíť brány obsahuje rezervované IP adresy, které používají služby brány virtuální sítě. K přidání podsítě brány použijte následující příklady:
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -61,7 +61,7 @@ az network vnet subnet create \
 
 ## <a name="request-a-public-ip-address"></a><a name="PublicIP"></a>Vyžádání veřejné IP adresy
 
-Brána VPN musí mít dynamicky přidělenou veřejnou IP adresu. Veřejná IP adresa bude přidělena bráně VPN, kterou vytvoříte pro virtuální síť. Pomocí následujícího příkladu můžete požádat o veřejnou IP adresu:
+Brána sítě VPN musí mít dynamicky přidělenou veřejnou IP adresu. Veřejná IP adresa se přidělí k bráně VPN, kterou vytvoříte pro virtuální síť. Pro vyžádání veřejné IP adresy použijte následující příklad:
 
 ```azurecli-interactive
 az network public-ip create \
@@ -74,7 +74,7 @@ az network public-ip create \
 
 Vytvořte bránu VPN pomocí příkazu [az network vnet-gateway create](/cli/azure/group).
 
-Pokud spustíte tento příkaz `--no-wait` pomocí parametru, nevidíte žádnou zpětnou vazbu ani výstup. Parametr `--no-wait` umožňuje vytvoření brány na pozadí. To neznamená, že brána VPN je vytvořena okamžitě.
+Pokud tento příkaz spustíte pomocí `--no-wait` parametru, nezobrazí se žádná zpětná vazba ani výstup. `--no-wait` Parametr umožňuje vytvořit bránu na pozadí. Neznamená to, že se Brána VPN vytvoří hned.
 
 ```azurecli-interactive
 az network vnet-gateway create \
@@ -91,7 +91,7 @@ az network vnet-gateway create \
 
 Vytvoření brány VPN může trvat 45 minut nebo déle.
 
-## <a name="view-the-vpn-gateway"></a><a name="viewgw"></a>Zobrazení brány VPN
+## <a name="view-the-vpn-gateway"></a><a name="viewgw"></a>Zobrazit bránu VPN
 
 ```azurecli-interactive
 az network vnet-gateway show \
@@ -99,7 +99,7 @@ az network vnet-gateway show \
   -g TestRG1
 ```
 
-Odpověď vypadá podobně jako tato:
+Odpověď vypadá nějak takto:
 
 ```output
 {
@@ -145,9 +145,9 @@ Odpověď vypadá podobně jako tato:
 }
 ```
 
-### <a name="view-the-public-ip-address"></a>Zobrazit veřejnou IP adresu
+### <a name="view-the-public-ip-address"></a>Zobrazení veřejné IP adresy
 
-Chcete-li zobrazit veřejnou IP adresu přiřazenou vaší bráně, použijte následující příklad:
+Pokud chcete zobrazit veřejnou IP adresu přiřazenou k bráně, použijte následující příklad:
 
 ```azurecli-interactive
 az network public-ip show \
@@ -155,7 +155,7 @@ az network public-ip show \
   --resource-group TestRG11
 ```
 
-Hodnota přidružená k poli **IPAddress** je veřejná IP adresa brány VPN.
+Hodnota přidružená k poli **ipAddress** je veřejná IP adresa vaší brány VPN.
 
 Příklad odpovědi:
 
@@ -173,7 +173,7 @@ Příklad odpovědi:
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud již nepotřebujete prostředky, které jste vytvořili, odstraňte skupinu prostředků pomocí [odstranění skupiny az.](/cli/azure/group) Tím odstraníte skupinu prostředků a všechny prostředky, které obsahuje.
+Když už nepotřebujete prostředky, které jste vytvořili, odstraňte skupinu prostředků pomocí [AZ Group Delete](/cli/azure/group) . Tím odstraníte skupinu prostředků a všechny prostředky, které obsahuje.
 
 ```azurecli-interactive 
 az group delete --name TestRG1 --yes
@@ -181,9 +181,9 @@ az group delete --name TestRG1 --yes
 
 ## <a name="next-steps"></a>Další kroky
 
-Po dokončení vytváření brány můžete vytvořit připojení mezi virtuální sítí a jinou virtuální sítí. Nebo vytvořte připojení mezi virtuální sítí a místním umístěním.
+Po vytvoření brány můžete vytvořit připojení mezi vaší virtuální sítí a jinou virtuální sítí. Nebo vytvořte připojení mezi vaší virtuální sítí a místním umístěním.
 
 > [!div class="nextstepaction"]
-> [Vytvoření připojení mezi lokalitami](vpn-gateway-create-site-to-site-rm-powershell.md)<br><br>
+> [Vytvoření připojení typu Site-to-Site](vpn-gateway-create-site-to-site-rm-powershell.md)<br><br>
 > [Vytvoření připojení typu Point-to-Site](vpn-gateway-howto-point-to-site-rm-ps.md)<br><br>
 > [Vytvoření připojení k jiné virtuální síti](vpn-gateway-vnet-vnet-rm-ps.md)
