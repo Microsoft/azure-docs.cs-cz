@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
 ms.openlocfilehash: 2f6cdda71c89041d954d8dbaf34a1fd874c5849a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80334573"
 ---
-Azure Data Lake Analytics usnadňuje komplexní úkol správy distribuované infrastruktury a složitého kódu. Dynamicky zřazuje prostředky a můžete je použít k provádění analýz na exabajtů dat. Po dokončení úlohy se prostředky automaticky ukončí. Platíte pouze za použitý výpočetní výkon. Při zvětšení nebo zmenšení velikosti uložených dat nebo množství použitých výpočetních prostředků není třeba přepisovat kód. Chcete-li zvýšit výchozí limity pro vaše předplatné, obraťte se na podporu.
+Azure Data Lake Analytics usnadňuje správu distribuované infrastruktury a složitého kódu. Dynamicky zřizuje prostředky a můžete je použít k analýze datových zdrojů Exabyte. Po dokončení úlohy se automaticky vítr prostředky. Platíte jenom za výpočetní výkon, který jste použili. Při zvětšování nebo zmenšování velikosti uložených dat nebo množství využitých výpočtů nemusíte přepisovat kód. Pokud chcete pro své předplatné zvýšit výchozí omezení, obraťte se na podporu.
 
-| **Zdrojů** | **Limit** | **Komentáře** |
+| **Prostředek** | **Počtu** | **Komentáře** |
 | --- | --- | --- |
 | Maximální počet souběžných úloh |20 | |
-| Maximální počet analytických jednotek (AU) na účet |250 | Použijte libovolnou kombinaci až 250 au ve 20 úlohách. Chcete-li tento limit zvýšit, obraťte se na podporu společnosti Microsoft. |
+| Maximální počet jednotek analýzy (Austrálie) na účet |250 | Použijte libovolnou kombinaci až do maximálního počtu 250 jednotek Austrálie napříč 20 úlohami. Pokud chcete tento limit zvýšit, kontaktujte podpora Microsoftu. |
 | Maximální velikost skriptu pro odeslání úlohy | 3 MB | |
-| Maximální počet účtů Data Lake Analytics na oblast na předplatné | 5 | Chcete-li tento limit zvýšit, obraťte se na podporu společnosti Microsoft. |
+| Maximální počet účtů Data Lake Analytics na oblast v rámci předplatného | 5 | Pokud chcete tento limit zvýšit, kontaktujte podpora Microsoftu. |

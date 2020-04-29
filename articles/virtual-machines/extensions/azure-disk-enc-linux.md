@@ -1,6 +1,6 @@
 ---
-title: Šifrování disku Azure pro Linux
-description: Nasazuje Azure Disk Encryption pro Linux do virtuálního počítače pomocí rozšíření virtuálního počítače.
+title: Azure Disk Encryption pro Linux
+description: Nasadí Azure Disk Encryption pro Linux do virtuálního počítače pomocí rozšíření virtuálního počítače.
 services: virtual-machines-linux
 documentationcenter: ''
 author: ejarvi
@@ -14,38 +14,38 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: ejarvi
 ms.openlocfilehash: 22568c7c23771f143f6cd583114949c380d15e3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80066919"
 ---
-# <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Šifrování disku Azure pro Linux (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
+# <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Azure Disk Encryption pro Linux (Microsoft. Azure. Security. AzureDiskEncryptionForLinux)
 
 ## <a name="overview"></a>Přehled
 
-Azure Disk Encryption využívá podsystém dm-crypt v Linuxu k zajištění úplného šifrování disku na [vybraných distribucích Azure Linuxu](https://aka.ms/adelinux).  Toto řešení je integrované s Azure Key Vault pro správu šifrovacíklíče disku a tajných kódů.
+Azure Disk Encryption využívá podsystém dm-crypt v systému Linux, který poskytuje úplné šifrování disků na [vybraných distribucích systému Azure Linux](https://aka.ms/adelinux).  Toto řešení je integrované s Azure Key Vault pro správu klíčů a tajných kódů disku.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Úplný seznam požadavků najdete v tématu [Azure Disk Encryption for Linux VMs](../linux/disk-encryption-overview.md), konkrétně v následujících částech:
+Úplný seznam požadovaných součástí najdete v tématu [Azure Disk Encryption pro virtuální počítače se systémem Linux](../linux/disk-encryption-overview.md), konkrétně v následujících oddílech:
 
 - [Podporované virtuální počítače a operační systémy](../linux/disk-encryption-overview.md#supported-vms-and-operating-systems)
-- [Další požadavky na virtuální mísu](../linux/disk-encryption-overview.md#additional-vm-requirements)
-- [Požadavky na vytváření sítí](../linux/disk-encryption-overview.md#networking-requirements)
+- [Další požadavky na virtuální počítače](../linux/disk-encryption-overview.md#additional-vm-requirements)
+- [Požadavky na síť](../linux/disk-encryption-overview.md#networking-requirements)
 - [Požadavky na úložiště šifrovacího klíče](../linux/disk-encryption-overview.md#encryption-key-storage-requirements)
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
-Existují dvě verze schématu rozšíření pro šifrování disku Azure (ADE):
-- v1.1 – novější doporučené schéma, které nepoužívá vlastnosti služby Azure Active Directory (AAD).
-- v0.1 – starší schéma, které vyžaduje vlastnosti služby Azure Active Directory (AAD). 
+Existují dvě verze schématu rozšíření pro Azure Disk Encryption (ADE):
+- v 1.1 – novější Doporučené schéma, které nepoužívá vlastnosti Azure Active Directory (AAD).
+- v 0,1 – starší schéma, které vyžaduje vlastnosti Azure Active Directory (AAD). 
 
-Chcete-li vybrat cílové schéma, `typeHandlerVersion` musí být vlastnost nastavena stejně jako verze schématu, které chcete použít.
+Chcete-li vybrat cílové schéma, `typeHandlerVersion` musí být vlastnost nastavena na hodnotu stejné jako verze schématu, kterou chcete použít.
 
-### <a name="schema-v11-no-aad-recommended"></a>Schéma v1.1: Žádné AAD (doporučeno)
+### <a name="schema-v11-no-aad-recommended"></a>Schéma v 1.1: žádné AAD (doporučeno)
 
-Schéma v1.1 se doporučuje a nevyžaduje vlastnosti Služby Azure Active Directory (AAD).
+Doporučuje se schéma v 1.1 a nevyžaduje Azure Active Directory (AAD) vlastností.
 
 ```json
 {
@@ -74,11 +74,11 @@ Schéma v1.1 se doporučuje a nevyžaduje vlastnosti Služby Azure Active Direct
 ```
 
 
-### <a name="schema-v01-with-aad"></a>Schéma v0.1: s AAD 
+### <a name="schema-v01-with-aad"></a>Schéma v 0,1: s AAD 
 
-Schéma 0.1 vyžaduje `AADClientID` a buď `AADClientSecret` `AADClientCertificate`nebo .
+Schéma 0,1 vyžaduje `AADClientID` a `AADClientSecret` `AADClientCertificate`.
 
-Použití `AADClientSecret`:
+Používá `AADClientSecret`se:
 
 ```json
 {
@@ -108,7 +108,7 @@ Použití `AADClientSecret`:
 }
 ```
 
-Použití `AADClientCertificate`:
+Používá `AADClientCertificate`se:
 
 ```json
 {
@@ -141,53 +141,53 @@ Použití `AADClientCertificate`:
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Name (Název) | Hodnota / Příklad | Typ dat |
+| Název | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| vydavatel | Microsoft.Azure.Zabezpečení | řetězec |
+| vydavatel | Microsoft. Azure. Security | řetězec |
 | type | AzureDiskEncryptionForLinux | řetězec |
-| typeHandlerVersion | 1.1, 0.1 | int |
-| (schéma 0.1) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Identifikátor guid | 
-| (schéma 0.1) AADClientSecret | heslo | řetězec |
-| (schéma 0.1) AADClientCertificate | Miniatura | řetězec |
-| (nepovinné) (schéma 0.1) Heslo | heslo | řetězec |
-| Program DiskFormatQuery | {"dev_path":","jméno":"","file_system":""} | JSON slovník |
-| Operace šifrování | EnableEncryption, EnableEncryptionFormatAll | řetězec | 
-| (volitelně - výchozí RSA-OAEP) Algoritmus šifrování kláves | "RSA-OAEP", "RSA-OAEP-256", "RSA1_5" | řetězec |
-| Adresa KeyVaultURL | url | řetězec |
+| typeHandlerVersion | 1,1, 0,1 | int |
+| (schéma 0,1) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
+| (schéma 0,1) AADClientSecret | heslo | řetězec |
+| (schéma 0,1) AADClientCertificate | kryptografický | řetězec |
+| volitelné (schéma 0,1) Hesel | heslo | řetězec |
+| DiskFormatQuery | {"dev_path": "", "Name": "", "file_system": ""} | Slovník JSON |
+| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | řetězec | 
+| (volitelné – výchozí RSA – výplně OAEP) KeyEncryptionAlgorithm | ' RSA-VÝPLNĚ OAEP ', ' RSA-VÝPLNĚ OAEP-256 ', ' RSA1_5 ' | řetězec |
+| KeyVaultURL | url | řetězec |
 | KeyVaultResourceId | url | řetězec |
-| (nepovinné) Adresa KeyEncryptionKeyURL | url | řetězec |
-| (nepovinné) KekVaultResourceId | url | řetězec |
-| (nepovinné) PosloupnostVerze | uniqueidentifier | řetězec |
-| Typ svazku | Operační hod, Data, Vše | řetězec |
+| volitelné KeyEncryptionKeyURL | url | řetězec |
+| volitelné KekVaultResourceId | url | řetězec |
+| volitelné SequenceVersion | uniqueidentifier | řetězec |
+| VolumeType | Operační systém, data, vše | řetězec |
 
 ## <a name="template-deployment"></a>Nasazení šablon
 
-Příklad nasazení šablony na základě schématu v1.1 najdete v tématu Azure Quickstart Template [201-encrypt-running-linux-vm-without-aad](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad).
+Příklad nasazení šablony založeného na schématu v 1.1 najdete v článku Azure pro rychlý Start [– šablona 201-Encrypting-Running-Linux-VM-bez AAD](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad).
 
-Příklad nasazení šablony na základě schématu v0.1 najdete v tématu Azure Quickstart Template [201-encrypt-running-linux-vm](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm).
+Příklad nasazení šablony založeného na schématu v 0,1 najdete v tématu šablona Azure pro rychlý Start [201-Encrypted-Running-Linux-VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm).
 
 >[!WARNING]
-> - Pokud jste dříve používali Azure Disk Encryption s Azure AD k šifrování virtuálního počítače, musíte pokračovat v použití této možnosti k šifrování virtuálního počítače.
-> - Při šifrování svazků operačního systému Linux by měl být virtuální počítač považován za nedostupný. Důrazně doporučujeme vyhnout se přihlášení SSH, zatímco šifrování probíhá, aby se zabránilo problémům, které blokují všechny otevřené soubory, které budou muset být přístupné během procesu šifrování. Chcete-li zkontrolovat průběh, použijte rutinu [Get-AzVMDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) PowerShell nebo příkaz příkazu [příkazu](/cli/azure/vm/encryption#az-vm-encryption-show) příkazu příkazu příkazu příkazu příkazu příkazu příkazu příkazu příkazu příkazu příkazu příkazu příkazu příkazu příkazu příkazu příkazu příkazu příkazu příkazu příkazu příkazu příkazu příkazu příkazu příkazu příkazu příkazu příkazu příkazu příkazu příkazu příkazu Tento proces může trvat několik hodin pro svazek operačního systému 30 GB a další čas pro šifrování datových svazků. Doba šifrování svazku dat bude úměrná velikosti a množství datových svazků, pokud nebude použit ašifrovací formát všechny možnosti. 
-> - Zakázání šifrování na virtuálních počítačích s Linuxem je podporované jenom pro datové svazky. Není podporovánna svazcích dat nebo operačního systému, pokud byl svazek operačního systému zašifrován. 
+> - Pokud jste předtím používali Azure Disk Encryption se službou Azure AD k šifrování virtuálního počítače, musíte tuto možnost použít k zašifrování virtuálního počítače.
+> - Při šifrování svazků se systémem Linux by se měl virtuální počítač považovat za nedostupný. Důrazně doporučujeme vyhnout se přihlášení SSH, zatímco probíhá šifrování, aby nedocházelo k blokování jakýchkoli otevřených souborů, ke kterým bude potřeba během procesu šifrování dostat. Ke kontrole průběhu použijte rutinu [Get-AzVMDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) prostředí PowerShell nebo příkaz pro [šifrování virtuálního počítače zobrazit](/cli/azure/vm/encryption#az-vm-encryption-show) CLI. Pro tento proces může trvat několik hodin, než se 30 GB svazek s operačním systémem a další čas šifrování datových svazků. Doba šifrování datového svazku bude úměrná velikosti a množství datových svazků, pokud se nepoužije možnost šifrovat formát ALL. 
+> - Zakázání šifrování u virtuálních počítačů se systémem Linux je podporováno pouze pro datové svazky. Pokud je svazek s operačním systémem zašifrovaný, není podpora na svazcích dat nebo operačních systémů podporována. 
 
 >[!NOTE]
-> Také `VolumeType` pokud je parametr nastaven na všechny, datové disky budou šifrovány pouze v případě, že jsou správně připojeny.
+> I když `VolumeType` je parametr nastavený na vše, datové disky se zašifrují jenom v případě, že jsou správně připojené.
 
-## <a name="troubleshoot-and-support"></a>Poradce při potížích a podpora
+## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
 ### <a name="troubleshoot"></a>Řešení potíží
 
-Řešení potíží naleznete v [průvodci řešením potíží s šifrováním disku Azure](../linux/disk-encryption-troubleshooting.md).
+Informace o řešení potíží najdete v [Průvodci odstraňováním potíží s Azure Disk Encryption](../linux/disk-encryption-troubleshooting.md).
 
 ### <a name="support"></a>Podpora
 
-Pokud potřebujete další pomoc v libovolném bodě v tomto článku, můžete kontaktovat odborníky Azure na [Fóra MSDN Azure a přetečení zásobníku](https://azure.microsoft.com/support/community/). 
+Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete kontaktovat odborníky na Azure na [webu MSDN Azure a Stack Overflow fóra](https://azure.microsoft.com/support/community/). 
 
-Případně můžete soubor incidentu podpory Azure. Přejděte na [podporu Azure](https://azure.microsoft.com/support/options/) a vyberte Získat podporu. Informace o používání podpory Azure načtete v [nejčastějších dotazech k podpoře Microsoft Azure](https://azure.microsoft.com/support/faq/).
+Případně můžete zasouborovat incident podpory Azure. Přejít na [podporu Azure](https://azure.microsoft.com/support/options/) a vyberte získat podporu. Informace o použití podpory Azure najdete v tématu [Nejčastější dotazy k podpoře pro Microsoft Azure](https://azure.microsoft.com/support/faq/).
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o rozšířeních virtuálních virtuálních zařízení najdete [v tématu Rozšíření virtuálních strojů a funkce pro Linux](features-linux.md).
-* Další informace o Azure Disk Encryption for Linux najdete v [tématu Virtuální počítače s Linuxem](../../security/fundamentals/azure-disk-encryption-vms-vmss.md#linux-virtual-machines).
+* Další informace o rozšíření virtuálních počítačů najdete v tématu [rozšíření virtuálních počítačů a funkce pro Linux](features-linux.md).
+* Další informace o Azure Disk Encryption pro Linux najdete v tématu [virtuální počítače se systémem Linux](../../security/fundamentals/azure-disk-encryption-vms-vmss.md#linux-virtual-machines).

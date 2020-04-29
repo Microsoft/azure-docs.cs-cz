@@ -1,53 +1,53 @@
 ---
-title: Profil ASP.NET základní webové aplikace Azure Pro Linux pomocí profileru Application Insights | Dokumenty společnosti Microsoft
-description: Koncepční přehled a podrobný návod, jak používat Profiler Přehledy aplikací.
+title: Profil ASP.NET Core služby Azure Linux Web Apps pomocí Application Insights Profiler | Microsoft Docs
+description: Koncepční přehled a podrobný návod, jak používat Application Insights Profiler.
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: d845e245a242a88d16a2597f0144a0ae4a727cb0
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81640978"
 ---
-# <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profil ASP.NET základní webové aplikace Azure Pro Linux s profilerem Application Insights
+# <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profil ASP.NET Core webové aplikace Azure Linux pomocí Application Insights Profiler
 
 Tato funkce je aktuálně ve verzi Preview.
 
-Zjistěte, kolik času strávíte v jednotlivých metodách vaší živé webové aplikace při používání [Application Insights](../../azure-monitor/app/app-insights-overview.md). Profiler Application Insights je teď dostupný pro ASP.NET webových aplikací core, které jsou hostované v Linuxu ve službě Azure App Service. Tato příručka obsahuje podrobné pokyny o tom, jak profiler trasování lze shromažďovat pro ASP.NET webových aplikací Core Linux.
+Zjistěte, kolik času se stráví v každé metodě živé webové aplikace při použití [Application Insights](../../azure-monitor/app/app-insights-overview.md). Application Insights Profiler je teď k dispozici pro ASP.NET Core webové aplikace hostované v systému Linux na Azure App Service. Tato příručka poskytuje podrobné pokyny, jak můžete shromažďovat trasování profileru pro ASP.NET Core webové aplikace pro Linux.
 
-Po dokončení tohoto návodu může vaše aplikace shromažďovat trasování profileru, jako jsou trasování zobrazená na obrázku. V tomto příkladu trasování profileru označuje, že konkrétní webový požadavek je pomalý z důvodu času stráveného čekáním. *Horká cesta* v kódu, který zpomaluje aplikaci, je označena ikonou plamene. **Metoda O aplikaci** v části **HomeController** zpomaluje webovou aplikaci, protože metoda volá funkci **Thread.Sleep.**
+Po dokončení tohoto návodu může vaše aplikace shromažďovat trasování profileru, jako jsou trasování zobrazené v imagi. V tomto příkladu trasování profileru indikuje, že určitý webový požadavek je pomalý z důvodu času stráveného čekáním. *Horká cesta* v kódu, který zpomaluje aplikaci, je označená ikonou plamene. Metoda **About** v části **HomeController** zpomaluje webovou aplikaci, protože metoda volá funkci **Thread. Sleep** .
 
-![Stopy profileru](./media/profiler-aspnetcore-linux/profiler-traces.png)
+![Trasování profileru](./media/profiler-aspnetcore-linux/profiler-traces.png)
 
 ## <a name="prerequisites"></a>Požadavky
-Následující pokyny platí pro všechna vývojová prostředí Windows, Linux a Mac:
+Následující pokyny platí pro všechna prostředí pro vývoj pro Windows, Linux a Mac:
 
-* Nainstalujte [sdk 2.1.2 jádra .NET nebo novější](https://dotnet.microsoft.com/download/archives).
-* Nainstalujte Git podle pokynů na [začátku - Instalace Gitu](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+* Nainstalujte [.NET Core SDK 2.1.2 nebo novější](https://dotnet.microsoft.com/download/archives).
+* Nainstalujte Git podle pokynů v tématu [Začínáme – instalace Gitu](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
-## <a name="set-up-the-project-locally"></a>Nastavení projektu místně
+## <a name="set-up-the-project-locally"></a>Místní nastavení projektu
 
-1. Otevřete v počítači okno příkazového řádku. Následující pokyny fungují pro všechna vývojová prostředí Windows, Linux a Mac.
+1. Otevřete okno příkazového řádku na svém počítači. Následující pokyny fungují pro všechna prostředí pro vývoj v systémech Windows, Linux a Mac.
 
-1. Vytvořte ASP.NET základní webové aplikace MVC:
+1. Vytvoření webové aplikace ASP.NET Core MVC:
 
     ```
     dotnet new mvc -n LinuxProfilerTest
     ```
 
-1. Změňte pracovní adresář do kořenové složky projektu.
+1. Změňte pracovní adresář na kořenovou složku projektu.
 
-1. Přidejte balíček NuGet pro shromažďování trasování profileru:
+1. Přidejte balíček NuGet pro shromáždění trasování profileru:
 
     ```shell
     dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
     ```
 
-1. Povolit přehledy aplikací v Program.cs:
+1. Povolit Application Insights v Program.cs:
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -56,7 +56,7 @@ Následující pokyny platí pro všechna vývojová prostředí Windows, Linux 
             .UseStartup<Startup>();
     ```
     
-1. Povolit profiler v Startup.cs:
+1. Povolit Profiler v Startup.cs:
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -66,7 +66,7 @@ Následující pokyny platí pro všechna vývojová prostředí Windows, Linux 
     }
     ```
 
-1. Přidejte řádek kódu do **části HomeController.cs,** abyste náhodně zpozdili několik sekund:
+1. Do části **HomeController.cs** přidejte řádek kódu pro náhodné zpoždění několika sekund:
 
     ```csharp
         using System.Threading;
@@ -81,7 +81,7 @@ Následující pokyny platí pro všechna vývojová prostředí Windows, Linux 
             }
     ```
 
-1. Uložte a potrespoujte změny v místním úložišti:
+1. Uložte změny v místním úložišti a potvrďte je:
 
     ```
         git init
@@ -91,41 +91,41 @@ Následující pokyny platí pro všechna vývojová prostředí Windows, Linux 
 
 ## <a name="create-the-linux-web-app-to-host-your-project"></a>Vytvoření webové aplikace pro Linux pro hostování projektu
 
-1. Vytvořte prostředí webové aplikace pomocí služby App Service na Linuxu:
+1. Vytvoření prostředí webové aplikace pomocí App Service v systému Linux:
 
     ![Vytvoření webové aplikace pro Linux](./media/profiler-aspnetcore-linux/create-linux-appservice.png)
 
-2. Vytvořte pověření pro nasazení:
+2. Vytvořte přihlašovací údaje pro nasazení:
 
     > [!NOTE]
-    > Zaznamenejte heslo, které chcete použít později při nasazování webové aplikace.
+    > Poznamenejte si heslo pro pozdější použití při nasazování vaší webové aplikace.
 
     ![Vytvoření přihlašovacích údajů pro nasazení](./media/profiler-aspnetcore-linux/create-deployment-credentials.png)
 
-3. Zvolte možnosti nasazení. Nastavte místní úložiště Git ve webové aplikaci podle pokynů na webu Azure Portal. Automaticky se vytvoří úložiště Git.
+3. Vyberte možnosti nasazení. Pomocí pokynů na Azure Portal nastavte místní úložiště Git ve webové aplikaci. Automaticky se vytvoří úložiště Git.
 
     ![Nastavení úložiště Git](./media/profiler-aspnetcore-linux/setup-git-repo.png)
 
-Další možnosti nasazení naleznete v [tomto článku](https://docs.microsoft.com/azure/app-service/containers/choose-deployment-type).
+Další možnosti nasazení najdete v [tomto článku](https://docs.microsoft.com/azure/app-service/containers/choose-deployment-type).
 
 ## <a name="deploy-your-project"></a>Nasazení projektu
 
-1. V okně příkazového řádku přejděte do kořenové složky projektu. Přidejte vzdálené úložiště Git, které bude ukazovat na úložiště ve službě App Service:
+1. V okně příkazového řádku přejděte do kořenové složky vašeho projektu. Přidejte vzdálené úložiště Git, které bude odkazovat na úložiště v App Service:
 
     ```
     git remote add azure https://<username>@<app_name>.scm.azurewebsites.net:443/<app_name>.git
     ```
 
-    * Použijte **uživatelské jméno,** které jste použili k vytvoření přihlašovacích údajů pro nasazení.
-    * Použijte **název aplikace,** který jste použili k vytvoření webové aplikace pomocí služby App Service na Linuxu.
+    * Použijte **uživatelské jméno** , které jste použili k vytvoření přihlašovacích údajů pro nasazení.
+    * Použijte **název aplikace** , který jste použili k vytvoření webové aplikace, pomocí App Service v systému Linux.
 
-2. Nasazení projektu odesláním změny do Azure:
+2. Nasaďte projekt vložením změn do Azure:
 
     ```
     git push azure master
     ```
 
-Výstup by měl být podobný následujícímu příkladu:
+Měl by se zobrazit výstup podobný následujícímu příkladu:
 
     ```
     Counting objects: 9, done.
@@ -148,29 +148,29 @@ Výstup by měl být podobný následujícímu příkladu:
 
     ```
 
-## <a name="add-application-insights-to-monitor-your-web-apps"></a>Přidání přehledů aplikací pro sledování webových aplikací
+## <a name="add-application-insights-to-monitor-your-web-apps"></a>Přidání Application Insights pro monitorování webových aplikací
 
 1. [Vytvořte prostředek Application Insights](./../../azure-monitor/app/create-new-resource.md ).
 
-2. Zkopírujte hodnotu **iKey** prostředku Application Insights a nastavte ve svých webových aplikacích následující nastavení:
+2. Zkopírujte hodnotu **ikey** prostředku Application Insights a ve svých webových aplikacích nastavte následující nastavení:
 
     ```
     APPINSIGHTS_INSTRUMENTATIONKEY: [YOUR_APPINSIGHTS_KEY]
     ```
 
-    Po změně nastavení aplikace se web automaticky restartuje. Po použití nového nastavení profileru okamžitě spustí po dobu dvou minut. Profiler pak běží po dobu dvou minut každou hodinu.
+    Po změně nastavení aplikace se web automaticky restartuje. Po použití nového nastavení se Profiler spustí hned po dvou minutách. Profiler se pak spustí každou hodinu za dvě minuty.
 
-3. Vygenerujte nějaký provoz na vašich webových stránkách. Provoz můžete generovat několikanásobně aktualizací stránky **O** stránce.
+3. Vygenerujte na svém webu nějaký provoz. Provoz můžete vygenerovat tak, že na **stránce několikrát** aktualizujete lokalitu.
 
-4. Počkejte dvě až pět minut, než se události agregují do application insights.
+4. Počkejte dva až pět minut, než se události naagreguje do Application Insights.
 
-5. Přejděte do podokna **Výkon** přehledů aplikací na webu Azure Portal. Trasování profileru můžete zobrazit v pravém dolním rohu podokna.
+5. V Azure Portal přejděte do podokna **výkonu** Application Insights. Trasování profileru můžete zobrazit v pravém dolním rohu podokna.
 
-    ![Zobrazení trasování profileru](./media/profiler-aspnetcore-linux/view-traces.png)
+    ![Zobrazit trasování profileru](./media/profiler-aspnetcore-linux/view-traces.png)
 
 
 
 ## <a name="next-steps"></a>Další kroky
-Pokud používáte vlastní kontejnery, které jsou hostované službou Azure App Service, postupujte podle pokynů v [povolit profilování služby pro kontejnerizované aplikace ASP.NET Core,](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp) abyste povolili profiler Application Insights.
+Pokud používáte vlastní kontejnery, které jsou hostovány Azure App Service, postupujte podle pokynů v části [povolení Service profiler pro kontejnerové ASP.NET Core aplikace](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp) , aby bylo možné povolit Application Insights Profiler.
 
-Nahlaste všechny problémy nebo návrhy do úložiště GitHub Application Insights: [ApplicationInsights-Profiler-AspNetCore: Problémy](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues).
+Nahlaste všechny problémy nebo návrhy do úložiště GitHub Application Insights: [ApplicationInsights-Profiler-AspNetCore: problémy](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues).

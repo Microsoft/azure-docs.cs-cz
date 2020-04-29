@@ -9,17 +9,17 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: f8e93cf34ac56344ff7e3d145ce8c7c3529767b7
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678631"
 ---
-Následující příklad ukazuje, jak vytvořit připojení exchange na Equinix Internet Exchange v Seattlu. Pokud používáte jiného poskytovatele a různá nastavení, nahraďte tyto informace při žádosti.
+Následující příklad ukazuje, jak vytvořit připojení k Exchangi na adrese Equinix Internet Exchange v Seattlu. Pokud používáte jiného poskytovatele a různá nastavení, nahraďte tyto informace při vytváření žádosti.
 
-Pomocí rutiny prostředí PowerShell **New-AzPeeringExchangeConnectionObject** vytvořte objekty připojení prostředí PowerShell, které budou použity ke generování nového požadavku partnerského vztahu.
+Pomocí rutiny prostředí PowerShell **New-AzPeeringExchangeConnectionObject** vytvořte objekty připojení PowerShellu, které se použijí ke generování nového požadavku partnerského vztahu.
 
-Tento příklad ukazuje, jak vytvořit připojení serveru Exchange.
+Tento příklad ukazuje, jak vytvořit připojení k systému Exchange.
 
 ```powershell
 $connection1 = New-AzPeeringExchangeConnectionObject `
@@ -30,7 +30,7 @@ $connection1 = New-AzPeeringExchangeConnectionObject `
     -MaxPrefixesAdvertisedIPv6 2000 `
 ```
 
-Vytvořte další připojení v případě, že potřebujete redundanci v daném umístění partnerského vztahu.
+Vytvořte další připojení pro případ, že budete potřebovat redundanci v daném umístění partnerského vztahu.
 
 ```powershell
 $connection2 = New-AzPeeringExchangeConnectionObject `
@@ -41,7 +41,7 @@ $connection2 = New-AzPeeringExchangeConnectionObject `
     -MaxPrefixesAdvertisedIPv6 2000 `
 ```
 
-Rutinu prostředí PowerShell **New-AzPeering** lze použít k vytvoření nového partnerského vztahu exchange.
+Rutina prostředí PowerShell **New-AzPeering** se dá použít k vytvoření nového partnerského vztahu Exchange.
 
 ```powershell
 $asn = Get-AzPeerAsn
@@ -54,7 +54,7 @@ New-AzPeering `
 ```
 &nbsp;
 
-Tato ukázková odpověď ukazuje, kdy byl požadavek proveden pomocí jednoho připojení.
+Tato příklad reakce ukazuje, kdy byla žádost provedena pomocí jednoho připojení.
 
 ```powershell
 
@@ -73,10 +73,10 @@ Tags              : {}
 ```
 
 > [!IMPORTANT]
-> Společnost Microsoft spustí zřizování `ConnectionState` požadovaného partnerského vztahu a odráží průběh.
-> Další informace o postupech souvisejících s zřizováním naleznete v [návodu k partnerské mušlinici serveru Exchange](../walkthrough-exchange-all.md).
+> Microsoft začne zřizovat požadovaný partnerský vztah a `ConnectionState` odráží průběh.
+> Další informace o krocích týkajících se zřizování najdete v Průvodci vytvořením [partnerského vztahu Exchange](../walkthrough-exchange-all.md).
 
-Můžete zkontrolovat stav připojení, jak je znázorněno zde.
+Stav připojení můžete zjistit, jak je znázorněno zde.
 
 ```powershell
 

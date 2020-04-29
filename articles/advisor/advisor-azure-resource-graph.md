@@ -1,44 +1,44 @@
 ---
-title: Data poradce v Azure Resource Graph
-description: Dotazování na data poradce v Azure Resource Graph
+title: Data služby Advisor v grafu prostředků Azure
+description: Vytváření dotazů na data služby Advisor v Azure Resource graphu
 ms.topic: article
 ms.date: 03/12/2020
 ms.author: sagupt
 ms.openlocfilehash: f8ad8fd450bc004d9caa2699922717f38d38b482
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79502448"
 ---
-# <a name="query-for-advisor-data-in-resource-graph-explorer-azure-resource-graph"></a>Dotaz na data poradce v Průzkumníku grafů prostředků (Azure Resource Graph)
+# <a name="query-for-advisor-data-in-resource-graph-explorer-azure-resource-graph"></a>Dotaz na data služby Advisor v Průzkumníku grafů prostředků (Azure Resource Graph)
 
-Prostředky poradce jsou teď na palubě [Azure Resource Graph](https://azure.microsoft.com/features/resource-graph/). To je základem pro mnoho scénářů zákazníků ve velkém měřítku pro doporučení poradce. Několik scénářů, které nebyly možné před provést ve velkém měřítku a nyní lze dosáhnout pomocí resource graph jsou:
-* Umožňuje provádět komplexní dotazy pro všechna vaše předplatná na webu Azure Portal.
-* Doporučení shrnutá podle typů kategorií (například vysoká dostupnost, výkon) a typů dopadů (vysoká, střední, nízká)
+Prostředky služby Advisor se teď přiřadí do [grafu prostředků Azure](https://azure.microsoft.com/features/resource-graph/). Základem pro celou řadu zákaznických scénářů pro doporučení poradce je řada. Několik scénářů, které nebyly před vlastním škálováním možné a teď je možné dosáhnout pomocí grafu prostředků:
+* Poskytuje možnost provádět komplexní dotaz pro všechna Vaše předplatná v Azure Portal
+* Doporučení shrnutá podle typů kategorií (jako vysoká dostupnost, výkon) a typy dopadu (vysoká, střední, nízká)
 * Všechna doporučení pro konkrétní typ doporučení
-* Ovlivněný počet zdrojů podle kategorie doporučení
+* Kategorie ovlivněného počtu prostředků podle doporučení
 
-![Poradce v průzkumníku grafů prostředků Azure](./media/azure-resource-graph-1.png)  
+![Poradce v Azure Resource Graph Exploreru](./media/azure-resource-graph-1.png)  
 
 
-## <a name="advisor-resource-types-in-azure-graph"></a>Typy prostředků poradce v Azure Graphu
+## <a name="advisor-resource-types-in-azure-graph"></a>Typy prostředků služby Advisor v Azure graphu
 
-Dostupné typy prostředků poradce v [grafu prostředků](https://docs.microsoft.com/azure/governance/resource-graph/): Pro dotazování v části Prostředky poradce jsou k dispozici 3 typy prostředků. Zde je seznam prostředků, které jsou nyní k dispozici pro dotazování v grafu prostředků.
-* Microsoft.Advisor/konfigurace
-* Microsoft.Advisor/doporučení
-* Microsoft.Advisor/potlačení
+Dostupné typy prostředků služby Advisor v [grafu prostředků](https://docs.microsoft.com/azure/governance/resource-graph/): existují 3 typy prostředků, které jsou k dispozici pro dotazování v rámci prostředků služby Advisor. Zde je seznam prostředků, které jsou nyní k dispozici pro dotazování v grafu prostředků.
+* Microsoft. Advisor/Configurations
+* Microsoft. Advisor/doporučení
+* Microsoft. Advisor/potlačení
 
-Tyto typy prostředků jsou uvedeny v nové tabulce s názvem AdvisorResources, na kterou se můžete taky dotazovat v Průzkumníku grafů prostředků na webu Azure Portal.
+Tyto typy prostředků jsou uvedeny pod novou tabulkou s názvem jako AdvisorResources, kterou můžete také dotazovat v Průzkumníku grafu prostředků v Azure Portal.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o doporučeních poradců naleznete v tématu:
-* [Úvod do Azure Advisoru](advisor-overview.md)
-* [Začínáme s poradcem](advisor-get-started.md)
-* [Doporučení nákladů poradce](advisor-cost-recommendations.md)
-* [Doporučení pro výkon poradce](advisor-performance-recommendations.md)
-* [Doporučení pro zabezpečení poradce](advisor-security-recommendations.md)
-* [Doporučení poradce pro provozní excelenci](advisor-operational-excellence-recommendations.md)
-* [Rozhraní REST PORADCE](https://docs.microsoft.com/rest/api/advisor/)
+Další informace o doporučeních služby Advisor najdete v těchto tématech:
+* [Úvod do Azure Advisor](advisor-overview.md)
+* [Začínáme se službou Advisor](advisor-get-started.md)
+* [Doporučení pro náklady na poradce](advisor-cost-recommendations.md)
+* [Doporučení pro výkon Advisoru](advisor-performance-recommendations.md)
+* [Doporučení pro zabezpečení Advisoru](advisor-security-recommendations.md)
+* [Doporučení provozní kvality Advisoru](advisor-operational-excellence-recommendations.md)
+* [REST API Advisoru](https://docs.microsoft.com/rest/api/advisor/)

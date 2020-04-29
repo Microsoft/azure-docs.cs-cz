@@ -1,6 +1,6 @@
 ---
-title: Image Red Hat Enterprise Linux v Azure | Dokumenty společnosti Microsoft
-description: Informace o inacích Red Hat Enterprise Linux v Microsoft Azure
+title: Red Hat Enterprise Linux imagí v Azure | Microsoft Docs
+description: Přečtěte si o Red Hat Enterprise Linuxch imagí v Microsoft Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
@@ -13,79 +13,79 @@ ms.workload: infrastructure-services
 ms.date: 04/16/2020
 ms.author: alsin
 ms.openlocfilehash: 028c30fced14a60af9f5683e6c6e087b15591735
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81605482"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Image Red Hat Enterprise Linux (RHEL) dostupné v Azure
-Azure nabízí celou řadu ibi RHEL pro různé případy použití.
+Azure nabízí celou řadu imagí RHEL pro různé případy použití.
 
 > [!NOTE]
-> Všechny image RHEL jsou dostupné v cloudech Azure public a Azure Government. Nejsou k dispozici v cloudech Azure China.
+> Všechny image RHEL jsou k dispozici ve veřejných a Azure Governmentch cloudech Azure. V cloudech Azure Čína nejsou k dispozici.
 
-## <a name="list-of-rhel-images"></a>Seznam obrázků RHEL
-Toto je seznam imitek RHEL dostupných v Azure. Pokud není uvedeno jinak, všechny obrázky jsou rozděleny do LVM a připojeny k běžným úložištím RHEL (nikoli EUS, nikoli E4S). Pro obecné použití jsou v současné době k dispozici následující obrázky:
+## <a name="list-of-rhel-images"></a>Seznam imagí RHEL
+Toto je seznam imagí RHEL dostupných v Azure. Pokud není uvedeno jinak, všechny image jsou LVM rozdělené a připojené k běžným RHEL úložištím (ne EUS, ne E4S). Pro obecné použití jsou aktuálně k dispozici následující Image:
 
 Nabídka| Skladová jednotka (SKU) | Dělení | Zřizování | Poznámky
 :----|:----|:-------------|:-------------|:-----
-RHEL          | 6.7      | Syrové    | Linuxový agent |
-|             | 6.8      | Syrové    | Linuxový agent |
-|             | 6.9      | Syrové    | Linuxový agent |
-|             | 6.10     | Syrové    | Linuxový agent |
-|             | 7-SUROVÝ    | Syrové    | Linuxový agent | RHEL 7.x rodina obrazů. <br> Ve výchozím nastavení je připojeno k běžným úložištím (nikoli eus).
-|             | 7-LVM    | Lvm    | Linuxový agent | RHEL 7.x rodina obrazů. <br> Ve výchozím nastavení je připojeno k běžným úložištím (nikoli eus). Pokud hledáte standardní image RHEL k nasazení, použijte tuto sadu bitových kopií a /nebo jeho protějšek generace 2.
-|             | 7lvm-gen2| Lvm    | Linuxový agent | Generace 2, RHEL 7.x rodina obrazů. <br> Ve výchozím nastavení je připojeno k běžným úložištím (nikoli eus). Pokud hledáte standardní image RHEL k nasazení, použijte tuto sadu bitových kopií a/nebo její protějšek generace 1.
-|             | 7-RAW-CI | RAW-CI | cloud-init  | RHEL 7.x rodina obrazů. <br> Ve výchozím nastavení je připojeno k běžným úložištím (nikoli eus).
-|             | 7.2      | Syrové    | Linuxový agent |
-|             | 7.3      | Syrové    | Linuxový agent |
-|             | 7.4      | Syrové    | Linuxový agent | K úložištím EUS je standardně připojenod dubna 2019.
-|             | 74-gen2  | Syrové    | Linuxový agent | Ve výchozím nastavení připojeno k úložištím EUS.
-|             | 7,5      | Syrové    | Linuxový agent | K úložištím EUS je standardně připojeno k červnu 2019.
-|             | 75-gen2  | Syrové    | Linuxový agent | Ve výchozím nastavení připojeno k úložištím EUS.
-|             | 7.6      | Syrové    | Linuxový agent | K úložištím EUS je standardně připojenod května 2019.
-|             | 76-gen2  | Syrové    | Linuxový agent | Ve výchozím nastavení připojeno k úložištím EUS.
-|             | 7.7      | Lvm    | Linuxový agent | Ve výchozím nastavení připojeno k úložištím EUS.
-|             | 8-LVM    | Lvm    | Linuxový agent | RHEL 8.x rodina obrazů. Připojeno k běžným úložištím.
-|             | 8-lvm-gen2| Lvm    | Linuxový agent | Hyper-V Generace 2 - RHEL 8.x rodina obrazů. Připojeno k běžným úložištím.
-|             | 8        | Lvm    | Linuxový agent | Rhel 8.0 obrázky
-|             | 8 gen2   | Lvm    | Linuxový agent | Hyper-V Generace 2 - RHEL 8.0 obrázky.
-|             | 8.1      | Lvm    | Linuxový agent | RHEL 8.1. V současné době připojen k běžným repozitářům.
-|             | 81gen2   | Lvm    | Linuxový agent | Hyper-V Generace 2 - RHEL 8.1 obrázky. V současné době připojen k běžným repozitářům.
-RHEL-SAP      | 7.4      | Lvm    | Linuxový agent | RHEL 7.4 pro SAP HANA a obchodní aplikace. Připojeno k úložištím E4S, bude účtovat prémii za SAP a RHEL, stejně jako základní výpočetní poplatek.
-|             | 74sap-gen2| Lvm    | Linuxový agent | RHEL 7.4 pro SAP HANA a obchodní aplikace. Generace 2 image. Připojeno k úložištím E4S, bude účtovat prémii za SAP a RHEL, stejně jako základní výpočetní poplatek.
-|             | 7,5       | Lvm    | Linuxový agent | RHEL 7.5 pro SAP HANA a obchodní aplikace. Připojeno k úložištím E4S, bude účtovat prémii za SAP a RHEL, stejně jako základní výpočetní poplatek.
-|             | 75sap-gen2| Lvm    | Linuxový agent | RHEL 7.5 pro SAP HANA a obchodní aplikace. Generace 2 image. Připojeno k úložištím E4S, bude účtovat prémii za SAP a RHEL, stejně jako základní výpočetní poplatek.
-|             | 7.6       | Lvm    | Linuxový agent | RHEL 7.6 pro SAP HANA a obchodní aplikace. Připojeno k úložištím E4S, bude účtovat prémii za SAP a RHEL, stejně jako základní výpočetní poplatek.
-|             | 76sap-gen2| Lvm    | Linuxový agent | RHEL 7.6 pro SAP HANA a obchodní aplikace. Generace 2 image. Připojeno k úložištím E4S, bude účtovat prémii za SAP a RHEL, stejně jako základní výpočetní poplatek.
-|             | 7.7       | Lvm    | Linuxový agent | RHEL 7.7 pro SAP HANA a obchodní aplikace. Připojeno k úložištím E4S, bude účtovat prémii za SAP a RHEL, stejně jako základní výpočetní poplatek.
-RHEL-SAP-HANA | 6.7       | Syrové    | Linuxový agent | RHEL 6.7 pro SAP HANA. Zastaralé ve prospěch obrazů RHEL-SAP.
-|             | 7.2       | Lvm    | Linuxový agent | RHEL 7.2 pro SAP HANA. Zastaralé ve prospěch obrazů RHEL-SAP.
-|             | 7.3       | Lvm    | Linuxový agent | RHEL 7.3 pro SAP HANA. Zastaralé ve prospěch obrazů RHEL-SAP.
-RHEL-SAP-APPS | 6.8       | Syrové    | Linuxový agent | RHEL 6.8 pro SAP Business Applications. Zastaralé ve prospěch obrazů RHEL-SAP.
-|             | 7.3       | Lvm    | Linuxový agent | RHEL 7.3 pro SAP Business Applications. Zastaralé ve prospěch obrazů RHEL-SAP.
-RÝM-HA       | 7.4       | Lvm    | Linuxový agent | RHEL 7.4 s doplňkem HA. Bude účtovat prémii za HA a RHEL nad základní výpočetní poplatek.
-|             | 7,5       | Lvm    | Linuxový agent | RHEL 7.5 s doplňkem HA. Bude účtovat prémii za HA a RHEL nad základní výpočetní poplatek.
-|             | 7.6       | Lvm    | Linuxový agent | RHEL 7.6 s doplňkem HA. Bude účtovat prémii za HA a RHEL nad základní výpočetní poplatek.
-RHEL-SAP-HA   | 7.4          | Lvm    | Linuxový agent | RHEL 7.4 pro SAP s HA a aktualizačními službami. Připojeno k úložištím E4S. Bude účtovat prémii za úložiště SAP a HA, stejně jako RHEL, navíc k základním výpočetním poplatkům.
-|             | 74sapha-gen2 | Lvm    | Linuxový agent | RHEL 7.4 pro SAP s HA a aktualizačními službami. Generace 2 image. Připojeno k úložištím E4S. Bude účtovat prémii za úložiště SAP a HA, stejně jako RHEL, navíc k základním výpočetním poplatkům.
-|             | 7,5          | Lvm    | Linuxový agent | RHEL 7.5 pro SAP s HA a aktualizačními službami. Připojeno k úložištím E4S. Bude účtovat prémii za úložiště SAP a HA, stejně jako RHEL, navíc k základním výpočetním poplatkům.
-|             | 7.6          | Lvm    | Linuxový agent | RHEL 7.6 pro SAP s HA a aktualizačními službami. Připojeno k úložištím E4S. Bude účtovat prémii za úložiště SAP a HA, stejně jako RHEL, navíc k základním výpočetním poplatkům.
-|             | 76sapha-gen2 | Lvm    | Linuxový agent | RHEL 7.6 pro SAP s HA a aktualizačními službami. Generace 2 image. Připojeno k úložištím E4S. Bude účtovat prémii za úložiště SAP a HA, stejně jako RHEL, navíc k základním výpočetním poplatkům.
-|             | 7.7          | Lvm    | Linuxový agent | RHEL 7.7 pro SAP s HA a aktualizačními službami. Připojeno k úložištím E4S. Bude účtovat prémii za úložiště SAP a HA, stejně jako RHEL, navíc k základním výpočetním poplatkům.
-|             | 77sapha-gen2 | Lvm    | Linuxový agent | RHEL 7.7 pro SAP s HA a aktualizačními službami. Generace 2 image. Připojeno k úložištím E4S. Bude účtovat prémii za úložiště SAP a HA, stejně jako RHEL, navíc k základním výpočetním poplatkům.
-rhel-byos     |rým-lvm74| Lvm    | Linuxový agent | Obrázky RHEL 7.4 BYOS, které nejsou připojeny k žádnému zdroji aktualizací, nebudou účtovat prémii RHEL.
-|             |rým-lvm75| Lvm    | Linuxový agent | Obrázky RHEL 7.5 BYOS, které nejsou připojeny k žádnému zdroji aktualizací, nebudou účtovat prémii RHEL.
-|             |rým-lvm76| Lvm    | Linuxový agent | Obrázky RHEL 7.6 BYOS, které nejsou připojeny k žádnému zdroji aktualizací, nebudou účtovat prémii RHEL.
-|             |rým-lvm77| Lvm    | Linuxový agent | Obrázky RHEL 7.7 BYOS, které nejsou připojeny k žádnému zdroji aktualizací, nebudou účtovat prémii RHEL.
-|             |rým-lvm8 | Lvm    | Linuxový agent | Obrázky RHEL 8 BYOS (dílčí verze RHEL je zobrazena v hodnotě verze obrázku), která není připojena k žádnému zdroji aktualizací, nebude účtovat prémii RHEL.
+RHEL          | 6.7      | ZÍSKÁNÍ    | Linuxový agent |
+|             | 6.8      | ZÍSKÁNÍ    | Linuxový agent |
+|             | 6.9      | ZÍSKÁNÍ    | Linuxový agent |
+|             | 6,10     | ZÍSKÁNÍ    | Linuxový agent |
+|             | 7 – RAW    | ZÍSKÁNÍ    | Linuxový agent | RHEL 7. x rodina imagí. <br> Ve výchozím nastavení připojené k pravidelným úložištím (ne EUS).
+|             | 7 – LVM    | LVM    | Linuxový agent | RHEL 7. x rodina imagí. <br> Ve výchozím nastavení připojené k pravidelným úložištím (ne EUS). Pokud hledáte standardní image RHEL, která se má nasadit, použijte tuto sadu imagí a/nebo její protějšek 2. generace.
+|             | 7lvm – Gen2| LVM    | Linuxový agent | Generace 2, RHEL 7. x řady imagí. <br> Ve výchozím nastavení připojené k pravidelným úložištím (ne EUS). Pokud hledáte standardní image RHEL, která se má nasadit, použijte tuto sadu imagí a/nebo její protějšek 1. generace.
+|             | 7-RAW-CI | RAW-CI | Cloud-init  | RHEL 7. x rodina imagí. <br> Ve výchozím nastavení připojené k pravidelným úložištím (ne EUS).
+|             | 7.2      | ZÍSKÁNÍ    | Linuxový agent |
+|             | 7.3      | ZÍSKÁNÍ    | Linuxový agent |
+|             | 7.4      | ZÍSKÁNÍ    | Linuxový agent | Připojí se k úložištím EUS ve výchozím nastavení od dubna 2019.
+|             | 74 – Gen2  | ZÍSKÁNÍ    | Linuxový agent | Ve výchozím nastavení připojené k úložištím EUS.
+|             | 7,5      | ZÍSKÁNÍ    | Linuxový agent | Připojeno k úložištím EUS ve výchozím nastavení od června 2019.
+|             | 75 – Gen2  | ZÍSKÁNÍ    | Linuxový agent | Ve výchozím nastavení připojené k úložištím EUS.
+|             | 7.6      | ZÍSKÁNÍ    | Linuxový agent | Připojeno k úložištím EUS ve výchozím nastavení jako květen 2019.
+|             | 76 – Gen2  | ZÍSKÁNÍ    | Linuxový agent | Ve výchozím nastavení připojené k úložištím EUS.
+|             | 7.7      | LVM    | Linuxový agent | Ve výchozím nastavení připojené k úložištím EUS.
+|             | 8 – LVM    | LVM    | Linuxový agent | RHEL 8. x řady imagí. Připojeno k pravidelným úložištím.
+|             | 8. LVM – Gen2| LVM    | Linuxový agent | Hyper-V Generation 2 – RHEL 8. x řada imagí. Připojeno k pravidelným úložištím.
+|             | 8        | LVM    | Linuxový agent | Image RHEL 8,0
+|             | 8 – Gen2   | LVM    | Linuxový agent | Hyper-V generace 2 – image RHEL 8,0.
+|             | 8.1      | LVM    | Linuxový agent | Image RHEL 8,1. Aktuálně připojeno k pravidelným úložištím.
+|             | 81gen2   | LVM    | Linuxový agent | Hyper-V generace 2 – image RHEL 8,1. Aktuálně připojeno k pravidelným úložištím.
+RHEL – SAP      | 7.4      | LVM    | Linuxový agent | RHEL 7,4 pro SAP HANA a obchodní aplikace. Připojené k úložištím E4S budou účtovat prémii za SAP a RHEL a také základní výpočetní poplatek.
+|             | 74sap – Gen2| LVM    | Linuxový agent | RHEL 7,4 pro SAP HANA a obchodní aplikace. Obrázek generace 2 Připojené k úložištím E4S budou účtovat prémii za SAP a RHEL a také základní výpočetní poplatek.
+|             | 7,5       | LVM    | Linuxový agent | RHEL 7,5 pro SAP HANA a obchodní aplikace. Připojené k úložištím E4S budou účtovat prémii za SAP a RHEL a také základní výpočetní poplatek.
+|             | 75sap – Gen2| LVM    | Linuxový agent | RHEL 7,5 pro SAP HANA a obchodní aplikace. Obrázek generace 2 Připojené k úložištím E4S budou účtovat prémii za SAP a RHEL a také základní výpočetní poplatek.
+|             | 7.6       | LVM    | Linuxový agent | RHEL 7,6 pro SAP HANA a obchodní aplikace. Připojené k úložištím E4S budou účtovat prémii za SAP a RHEL a také základní výpočetní poplatek.
+|             | 76sap – Gen2| LVM    | Linuxový agent | RHEL 7,6 pro SAP HANA a obchodní aplikace. Obrázek generace 2 Připojené k úložištím E4S budou účtovat prémii za SAP a RHEL a také základní výpočetní poplatek.
+|             | 7.7       | LVM    | Linuxový agent | RHEL 7,7 pro SAP HANA a obchodní aplikace. Připojené k úložištím E4S budou účtovat prémii za SAP a RHEL a také základní výpočetní poplatek.
+RHEL – SAP – HANA | 6.7       | ZÍSKÁNÍ    | Linuxový agent | RHEL 6,7 pro SAP HANA. Zastaralé ve prospěch imagí RHEL-SAP.
+|             | 7.2       | LVM    | Linuxový agent | RHEL 7,2 pro SAP HANA. Zastaralé ve prospěch imagí RHEL-SAP.
+|             | 7.3       | LVM    | Linuxový agent | RHEL 7,3 pro SAP HANA. Zastaralé ve prospěch imagí RHEL-SAP.
+RHEL-SAP-APLIKACE | 6.8       | ZÍSKÁNÍ    | Linuxový agent | RHEL 6,8 pro SAP Business Applications. Zastaralé ve prospěch imagí RHEL-SAP.
+|             | 7.3       | LVM    | Linuxový agent | RHEL 7,3 pro SAP Business Applications. Zastaralé ve prospěch imagí RHEL-SAP.
+RHEL-HA       | 7.4       | LVM    | Linuxový agent | RHEL 7,4 s doplňkem HA. Poplatky za HA a RHEL se účtují za základní výpočetní poplatek.
+|             | 7,5       | LVM    | Linuxový agent | RHEL 7,5 s doplňkem HA. Poplatky za HA a RHEL se účtují za základní výpočetní poplatek.
+|             | 7.6       | LVM    | Linuxový agent | RHEL 7,6 s doplňkem HA. Poplatky za HA a RHEL se účtují za základní výpočetní poplatek.
+RHEL-SAP-HA   | 7.4          | LVM    | Linuxový agent | RHEL 7,4 pro SAP se službami HA a Update. Připojeno k úložištím E4S. Za základní výpočetní poplatky účtujeme za úložiště SAP a HA a také RHEL.
+|             | 74sapha – Gen2 | LVM    | Linuxový agent | RHEL 7,4 pro SAP se službami HA a Update. Obrázek generace 2 Připojeno k úložištím E4S. Za základní výpočetní poplatky účtujeme za úložiště SAP a HA a také RHEL.
+|             | 7,5          | LVM    | Linuxový agent | RHEL 7,5 pro SAP se službami HA a Update. Připojeno k úložištím E4S. Za základní výpočetní poplatky účtujeme za úložiště SAP a HA a také RHEL.
+|             | 7.6          | LVM    | Linuxový agent | RHEL 7,6 pro SAP se službami HA a Update. Připojeno k úložištím E4S. Za základní výpočetní poplatky účtujeme za úložiště SAP a HA a také RHEL.
+|             | 76sapha – Gen2 | LVM    | Linuxový agent | RHEL 7,6 pro SAP se službami HA a Update. Obrázek generace 2 Připojeno k úložištím E4S. Za základní výpočetní poplatky účtujeme za úložiště SAP a HA a také RHEL.
+|             | 7.7          | LVM    | Linuxový agent | RHEL 7,7 pro SAP se službami HA a Update. Připojeno k úložištím E4S. Za základní výpočetní poplatky účtujeme za úložiště SAP a HA a také RHEL.
+|             | 77sapha – Gen2 | LVM    | Linuxový agent | RHEL 7,7 pro SAP se službami HA a Update. Obrázek generace 2 Připojeno k úložištím E4S. Za základní výpočetní poplatky účtujeme za úložiště SAP a HA a také RHEL.
+RHEL – BYOS     |RHEL – lvm74| LVM    | Linuxový agent | Image RHEL 7,4 BYOS, které nejsou připojené k žádnému zdroji aktualizací, nebudou účtovat RHEL Premium.
+|             |RHEL – lvm75| LVM    | Linuxový agent | Image RHEL 7,5 BYOS, které nejsou připojené k žádnému zdroji aktualizací, nebudou účtovat RHEL Premium.
+|             |RHEL – lvm76| LVM    | Linuxový agent | Image RHEL 7,6 BYOS, které nejsou připojené k žádnému zdroji aktualizací, nebudou účtovat RHEL Premium.
+|             |RHEL – lvm77| LVM    | Linuxový agent | Image RHEL 7,7 BYOS, které nejsou připojené k žádnému zdroji aktualizací, nebudou účtovat RHEL Premium.
+|             |RHEL – lvm8 | LVM    | Linuxový agent | Image RHEL 8 BYOS (v hodnotě verze image se zobrazuje i podverze RHEL), která není připojená k žádnému zdroji aktualizací, neúčtuje RHEL Premium.
 
 > [!NOTE]
-> Nabídka produktů RHEL-SAP-HANA je považována za konec životnosti red hatu. Stávající nasazení budou i nadále fungovat normálně, ale Red Hat doporučuje zákazníkům migrovat z reionací RHEL-SAP-HANA do bitových kopií RHEL-SAP-HA, které zahrnují úložiště SAP HANA a doplněk HA. Více informací o cloudových nabídkách SAP společnosti Red Hat naleznete [zde](https://access.redhat.com/articles/3751271).
+> Nabídka produktů RHEL-SAP-HANA se Red Hat považuje za konec životnosti. Existující nasazení budou i nadále fungovat normálně, ale Red Hat doporučuje, aby zákazníci migrovali z imagí RHEL-SAP-HANA do imagí RHEL-SAP-HA, které zahrnují úložiště SAP HANA a také doplněk HA. Další podrobnosti o nabídkách cloudu pro Red Hat jsou k dispozici [zde](https://access.redhat.com/articles/3751271).
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o [inacích Red Hatu v Azure](./redhat-images.md).
-* Další informace o [infrastruktuře aktualizací Red Hat](./redhat-rhui.md).
-* Další informace o [nabídce RHEL BYOS](./byos.md).
-* Informace o zásadách podpory Red Hat pro všechny verze RHEL naleznete na stránce [životního cyklu Red Hat Enterprise Linux.](https://access.redhat.com/support/policy/updates/errata)
+* Přečtěte si další informace o [obrázcích Red Hat v Azure](./redhat-images.md).
+* Přečtěte si další informace o [infrastruktuře aktualizace Red Hat](./redhat-rhui.md).
+* Přečtěte si další informace o [nabídce RHEL BYOS](./byos.md).
+* Informace o zásadách podpory Red Hat pro všechny verze RHEL najdete na stránce [Red Hat Enterprise Linux životní cyklus](https://access.redhat.com/support/policy/updates/errata) .

@@ -1,40 +1,40 @@
 ---
-title: Převést kód experimentu strojového učení na produkční kód
+title: Převod kódu experimentování ze strojového učení do produkčního kódu
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak převést experimentální kód strojového učení na produkční kód pomocí šablony kódu MLOpsPython.
+description: Naučte se, jak převést experimentální kód strojového učení do produkčního kódu pomocí šablony kódu MLOpsPython.
 author: bjcmit
 ms.author: brysmith
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 03/13/2020
 ms.openlocfilehash: e3c9b16ae3d2b06ec19ecd29d15762a065c0c1ae
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80521445"
 ---
-# <a name="tutorial-convert-ml-experimental-code-to-production-code"></a>Kurz: Převod experimentálního kódu ML na produkční kód
+# <a name="tutorial-convert-ml-experimental-code-to-production-code"></a>Kurz: převod experimentálního kódu ML na produkční kód
 
-Projekt strojového učení vyžaduje experimentování, kde jsou hypotézy testovány pomocí agilních nástrojů, jako je Jupyter Notebook pomocí reálných datových sad. Jakmile je model připraven k výrobě, kód modelu by měl být umístěn do úložiště kódu výroby. V některých případech musí být kód modelu převeden na skripty Pythonu, které mají být umístěny v úložišti produkčního kódu. Tento kurz popisuje doporučený přístup k exportu kódu experimentování do skriptů Pythonu.
+Projekt strojového učení vyžaduje experimentování, kde se hypotéza testuje pomocí agilních nástrojů, jako je Jupyter Notebook pomocí reálných datových sad. Jakmile je model připravený k produkci, kód modelu by měl být umístěn v provozním úložišti kódu. V některých případech je nutné kód modelu převést na skripty v jazyce Python, aby byly umístěny do úložiště kódu v produkčním prostředí. Tento kurz se zabývá doporučeným přístupem k exportu kódu experimentování do skriptů Pythonu.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vyčistit nepotřebný kód
-> * Refaktorování kódu notebooku Jupyter na funkce
-> * Vytvoření skriptů Pythonu pro související úkoly
+> * Vyčistit nenezbytný kód
+> * Refaktoring Jupyter Notebook kódu do funkcí
+> * Vytvoření skriptů v jazyce Python pro související úlohy
 > * Create unit tests
 (Vytvořit testy jednotek)
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Vygenerujte [šablonu MLOpsPython](https://github.com/microsoft/MLOpsPython/generate) a použijte poznámkové bloky `experimentation/Diabetes Ridge Regression Training.ipynb` a. `experimentation/Diabetes Ridge Regression Scoring.ipynb` Tyto poznámkové bloky se používají jako příklad převodu z experimentování do výroby. Tyto poznámkové bloky [https://github.com/microsoft/MLOpsPython/tree/master/experimentation](https://github.com/microsoft/MLOpsPython/tree/master/experimentation)najdete na adrese .
-- Nainstalujte `nbconvert`. Postupujte pouze podle pokynů k instalaci v části __Instalace nbconvert__ na stránce [Instalace.](https://nbconvert.readthedocs.io/en/latest/install.html)
+- Vygenerujte [šablonu MLOpsPython](https://github.com/microsoft/MLOpsPython/generate) a používejte poznámkové bloky `experimentation/Diabetes Ridge Regression Training.ipynb` a. `experimentation/Diabetes Ridge Regression Scoring.ipynb` Tyto poznámkové bloky se používají jako příklad převodu z experimentování do produkčního prostředí. Tyto poznámkové bloky najdete na [https://github.com/microsoft/MLOpsPython/tree/master/experimentation](https://github.com/microsoft/MLOpsPython/tree/master/experimentation)adrese.
+- Nainstalujte `nbconvert`. Postupujte podle pokynů k instalaci v části __instalace nbconvert__ na stránce [instalace](https://nbconvert.readthedocs.io/en/latest/install.html) .
 
-## <a name="remove-all-nonessential-code"></a>Odebrat veškerý nepotřebný kód
+## <a name="remove-all-nonessential-code"></a>Odebrat veškerý nenezbytný kód
 
-Některý kód napsaný během experimentování je určen pouze pro průzkumné účely. Proto prvním krokem k převodu experimentálního kódu do produkčního kódu je odebrání tohoto nepotřebného kódu. Odebrání nepotřebného kódu také způsobí, že kód bude více udržovatelný. V této části odeberete kód `experimentation/Diabetes Ridge Regression Training.ipynb` z poznámkového bloku. Příkazy tisk tvar `X` `y` a volání `features.describe` buňky jsou pouze pro zkoumání dat a lze odebrat. Po odebrání nepotřebný `experimentation/Diabetes Ridge Regression Training.ipynb` kód, by měl vypadat jako následující kód bez markdown:
+Kód napsaný během experimentů je určený jenom pro průzkumné účely. Proto první krok převodu experimentálního kódu do produkčního kódu je odebrat tento nenezbytný kód. Odebrání nedůležitého kódu také způsobí, že kód bude udržovatelnější. V této části odeberete kód z `experimentation/Diabetes Ridge Regression Training.ipynb` poznámkového bloku. Příkazy, které tisknou tvar `X` a `y` a jsou voláním `features.describe` buňky pouze pro zkoumání dat a lze je odebrat. Po odebrání nedůležitého kódu `experimentation/Diabetes Ridge Regression Training.ipynb` by měl vypadat jako následující kód bez Markdownu:
 
 ```python
 from sklearn.datasets import load_diabetes
@@ -75,28 +75,28 @@ model_name = "sklearn_regression_model.pkl"
 joblib.dump(value=reg, filename=model_name)
 ```
 
-## <a name="refactor-code-into-functions"></a>Refaktorovat kód do funkcí
+## <a name="refactor-code-into-functions"></a>Refaktoring kódu do funkcí
 
-Za druhé, kód Jupyter musí být refaktorován do funkcí. Refaktoring kód do funkcí usnadňuje testování částí a umožňuje kód více udržovatelné. V této části budete refaktorovat:
+Za druhé, kód Jupyter je potřeba Refaktorovat do funkcí. Refaktoring kódu do funkcí usnadňuje testování jednotek a způsobuje, že kód je udržovatelnější. V této části se refaktoruje:
 
-- Diabetes Ridge Regrese Školení`experimentation/Diabetes Ridge Regression Training.ipynb`notebook( )
-- Diabetes Ridge Regrese Bodování`experimentation/Diabetes Ridge Regression Scoring.ipynb`notebook( )
+- Školicí notebook diabetes Ridge regrese (`experimentation/Diabetes Ridge Regression Training.ipynb`)
+- Hodnoticí Poznámkový blok diabetes Ridge`experimentation/Diabetes Ridge Regression Scoring.ipynb`regrese ()
 
-### <a name="refactor-diabetes-ridge-regression-training-notebook-into-functions"></a>Refaktorovat Diabetes Ridge Regrese Školení notebook do funkcí
+### <a name="refactor-diabetes-ridge-regression-training-notebook-into-functions"></a>Refaktoring diabetes Ridge regrese školicí Poznámkový blok do funkcí
 
-V `experimentation/Diabetes Ridge Regression Training.ipynb`, proveďte následující kroky:
+V `experimentation/Diabetes Ridge Regression Training.ipynb`nástroji proveďte následující kroky:
 
-1. Vytvořte funkci `split_data` volanou k rozdělení datového rámce na data testu a trénování. Funkce by měla vzít `df` datový rámec jako parametr a vrátit `train` slovník `test`obsahující klíče a .
+1. Vytvořte funkci volanou `split_data` pro rozdělení datového rámce do testovacích a výukových dat. Funkce by měla převzít datový rámec `df` jako parametr a vracet slovník obsahující klíče `train` a. `test`
 
-    Přesuňte kód pod *rozdělená data do směrovací a ověřovací sady* nadpis do `split_data` funkce a upravit ji vrátit `data` objekt.
+    Přesuňte kód pod část `split_data` *rozdělená data do okna pro školení a ověření* do funkce a upravte ji tak, aby vrátila `data` objekt.
 
-1. Vytvořte funkci `train_model`s názvem , `data` `args` která přebírá parametry a vrací trénovaný model.
+1. Vytvořte funkci s názvem `train_model`, která přebírá parametry `data` a `args` vrátí vyškolený model.
 
-    Přesuňte kód pod nadpisem *Trénovací model na trénovací sadu* do `train_model` funkce a upravte jej tak, aby vrátil `reg_model` objekt. Odeberte `args` slovník, hodnoty budou `args` pocházet z parametru.
+    Přesuňte kód v části školicí *model pro školení* do `train_model` funkce Set a upravte ji tak, aby vrátila `reg_model` objekt. Odeberte `args` slovník, hodnoty budou pocházet z `args` parametru.
 
-1. Vytvořte funkci `get_model_metrics`s názvem `reg_model` , `data`která přebírá parametry a , a vyhodnotí model a pak vrátí slovník metrik pro trénovaný model.
+1. Vytvořte funkci s názvem `get_model_metrics`, která přebírá `reg_model` parametry `data`a a vyhodnotí model a potom vrátí slovník metrik pro školený model.
 
-    Přesuňte kód pod *nadpisem Ověřit model při sadě ověření* do `get_model_metrics` funkce a upravte jej tak, aby vrátil `metrics` objekt.
+    Přesuňte kód pod hlavičkou *ověřit model v sadě ověření* do `get_model_metrics` funkce a upravte jej tak, aby vrátil `metrics` objekt.
 
 Tři funkce by měly být následující:
 
@@ -128,11 +128,11 @@ def get_model_metrics(reg_model, data):
     return metrics
 ```
 
-Stále `experimentation/Diabetes Ridge Regression Training.ipynb`v , proveďte následující kroky:
+Pořád v `experimentation/Diabetes Ridge Regression Training.ipynb`nástroji proveďte následující kroky:
 
-1. Vytvořte novou `main`funkci s názvem , která nepřebírá žádné parametry a nic nevrátí.
-1. Přesuňte kód pod nadpisem "Načíst data" do `main` funkce.
-1. Přidejte vyvolání nově zapsaných `main` funkcí do funkce:
+1. Vytvořte novou funkci nazvanou `main`, která nepřijímá žádné parametry a vrátí hodnotu Nothing.
+1. Přesuňte kód pod nadpisem načíst data do `main` funkce.
+1. Přidejte vyvolání pro nově zapsané funkce do `main` funkce:
     ```python
     # Split Data into Training and Validation Sets
     data = split_data(df)
@@ -150,9 +150,9 @@ Stále `experimentation/Diabetes Ridge Regression Training.ipynb`v , proveďte n
     # Validate Model on Validation Set
     metrics = get_model_metrics(reg, data)
     ```
-1. Přesuňte kód pod nadpisem "Uložit `main` model" do funkce.
+1. Přesuňte kód pod nadpisem "Uložit model" do `main` funkce.
 
-Funkce `main` by měla vypadat jako následující kód:
+`main` Funkce by měla vypadat jako v následujícím kódu:
 
 ```python
 def main():
@@ -182,15 +182,15 @@ def main():
     joblib.dump(value=reg, filename=model_name)
 ```
 
-V této fázi by měl být žádný kód zbývající v poznámkovém bloku, který není ve funkci, než příkazy importu v první buňce.
+V této fázi by neměl žádný kód zůstat v poznámkovém bloku, který není ve funkci, kromě příkazů import v první buňce.
 
-Přidejte příkaz, `main` který volá funkci.
+Přidejte příkaz, který volá `main` funkci.
 
 ```python
 main()
 ```
 
-Po refaktoringu by `experimentation/Diabetes Ridge Regression Training.ipynb` měl vypadat jako následující kód bez markdownu:
+Po refaktorování `experimentation/Diabetes Ridge Regression Training.ipynb` by měl vypadat jako následující kód bez Markdownu:
 
 ```python
 from sklearn.datasets import load_diabetes
@@ -257,14 +257,14 @@ def main():
 main()
 ```
 
-### <a name="refactor-diabetes-ridge-regression-scoring-notebook-into-functions"></a>Refaktorovat Diabetes Ridge Regrese Bodování notebook do funkcí
+### <a name="refactor-diabetes-ridge-regression-scoring-notebook-into-functions"></a>Refaktoring Poznámkový blok diabetes Ridge regrese do funkcí
 
-V `experimentation/Diabetes Ridge Regression Scoring.ipynb`, proveďte následující kroky:
+V `experimentation/Diabetes Ridge Regression Scoring.ipynb`nástroji proveďte následující kroky:
 
-1. Vytvořte novou `init`funkci s názvem , která nepřebírá žádné parametry a nic nevrátí.
-1. Zkopírujte kód pod nadpisem "Načíst model" do `init` funkce.
+1. Vytvořte novou funkci nazvanou `init`, která nepřijímá žádné parametry a nevrátí žádnou hodnotu.
+1. Zkopírujte kód pod nadpisem "model zatížení" do `init` funkce.
 
-Funkce `init` by měla vypadat jako následující kód:
+`init` Funkce by měla vypadat jako v následujícím kódu:
 
 ```python
 def init():
@@ -273,23 +273,23 @@ def init():
     model = joblib.load(model_path)
 ```
 
-Po `init` vytvoření funkce nahraďte veškerý kód pod nadpisem "Načíst `init` model" jedním voláním takto:
+Po vytvoření `init` funkce nahraďte celý kód pod hlavičkou "model zatížení" jedním voláním metody `init` :
 
 ```python
 init()
 ```
 
-V `experimentation/Diabetes Ridge Regression Scoring.ipynb`, proveďte následující kroky:
+V `experimentation/Diabetes Ridge Regression Scoring.ipynb`nástroji proveďte následující kroky:
 
-1. Vytvořte novou `run`funkci s `raw_data` `request_headers` názvem , která bere a jako parametry a vrátí slovník výsledků takto:
+1. Vytvořte novou funkci nazvanou `run`, která přebírá `raw_data` a `request_headers` jako parametry a vrátí slovník výsledků následujícím způsobem:
 
     ```python
     {"result": result.tolist()}
     ```
 
-1. Do `run` funkce zkopírujte kód pod nadpisy "Připravit data" a "Data skóre".
+1. Zkopírujte kód pod nadpisy "Příprava dat" a "data skóre" do `run` funkce.
 
-    Funkce `run` by měla vypadat jako následující kód (Nezapomeňte odebrat `raw_data` `request_headers`příkazy, které nastavují proměnné a , které budou použity později při volání `run` funkce):
+    `run` Funkce by měla vypadat podobně jako následující kód (Nezapomeňte odebrat příkazy, které nastavily proměnné `raw_data` a `request_headers`, které budou použity později při volání `run` funkce):
 
     ```python
     def run(raw_data, request_headers):
@@ -300,7 +300,7 @@ V `experimentation/Diabetes Ridge Regression Scoring.ipynb`, proveďte následuj
         return {"result": result.tolist()}
     ```
 
-Po `run` vytvoření funkce nahraďte veškerý kód pod nadpisy "Připravit data" a "Data skóre" následujícím kódem:
+Po vytvoření `run` funkce nahraďte veškerý kód pod záhlavím "připravit data" a "data skóre" následujícím kódem:
 
 ```python
 raw_data = '{"data":[[1,2,3,4,5,6,7,8,9,10],[10,9,8,7,6,5,4,3,2,1]]}'
@@ -309,9 +309,9 @@ prediction = run(raw_data, request_header)
 print("Test result: ", prediction)
 ```
 
-Předchozí kód nastaví `raw_data` `request_header`proměnné a `run` , `raw_data` `request_header`volá funkci s a , a vytiskne předpovědi.
+Předchozí `raw_data` proměnné sady kódu `request_header`a, volají `run` funkci s `raw_data` a `request_header`, a vytiskne předpovědi.
 
-Po refaktoringu by `experimentation/Diabetes Ridge Regression Scoring.ipynb` měl vypadat jako následující kód bez markdownu:
+Po refaktorování `experimentation/Diabetes Ridge Regression Scoring.ipynb` by měl vypadat jako následující kód bez Markdownu:
 
 ```python
 import json
@@ -340,27 +340,27 @@ print("Test result: ", prediction)
 
 ## <a name="combine-related-functions-in-python-files"></a>Kombinování souvisejících funkcí v souborech Pythonu
 
-Za třetí, související funkce je třeba sloučit do souborů Pythonu, aby bylo možné lépe pomoci s opětovným použitím kódu. V této části budete vytvářet soubory Pythonu pro následující poznámkové bloky:
+Třetí, související funkce musí být sloučeny do souborů Pythonu, aby lépe usnadnily opakované použití kódu. V této části budete vytvářet soubory Pythonu pro následující poznámkové bloky:
 
-- Diabetes Ridge Regrese Školení`experimentation/Diabetes Ridge Regression Training.ipynb`notebook( )
-- Diabetes Ridge Regrese Bodování`experimentation/Diabetes Ridge Regression Scoring.ipynb`notebook( )
+- Školicí notebook diabetes Ridge regrese (`experimentation/Diabetes Ridge Regression Training.ipynb`)
+- Hodnoticí Poznámkový blok diabetes Ridge`experimentation/Diabetes Ridge Regression Scoring.ipynb`regrese ()
 
-### <a name="create-python-file-for-the-diabetes-ridge-regression-training-notebook"></a>Vytvoření souboru Pythonu pro poznámkový blok Diabetes Ridge Regrese Training
+### <a name="create-python-file-for-the-diabetes-ridge-regression-training-notebook"></a>Vytvořit soubor Pythonu pro školicí Poznámkový blok diabetes Ridge regrese
 
-Převeďte poznámkový blok na spustitelný skript spuštěním následujícího `nbconvert` příkazu v `experimentation/Diabetes Ridge Regression Training.ipynb`příkazovém řádku, který používá balíček a cestu :
+Převeďte svůj Poznámkový blok na spustitelný skript spuštěním následujícího příkazu na příkazovém řádku, který používá `nbconvert` balíček a cestu k: `experimentation/Diabetes Ridge Regression Training.ipynb`
 
 ```
 jupyter nbconvert -- to script "Diabetes Ridge Regression Training.ipynb" –output train
 ```
 
-Po převodu poznámkového `train.py`bloku na program odstraňte všechny nežádoucí komentáře. Nahraďte `main()` volání na konci souboru podmíněným vyvoláním, jako je následující kód:
+Po převedení poznámkového bloku na `train.py`odeberte všechny nežádoucí komentáře. Nahraďte volání `main()` na konci souboru pomocí podmíněného vyvolání jako v následujícím kódu:
 
 ```python
 if __name__ == '__main__':
     main()
 ```
 
-Soubor `train.py` by měl vypadat takto:
+Váš `train.py` soubor by měl vypadat jako v následujícím kódu:
 
 ```python
 from sklearn.datasets import load_diabetes
@@ -428,20 +428,20 @@ if __name__ == '__main__':
     main()
 ```
 
-`train.py`lze nyní vyvolat z terminálu `python train.py`spuštěním .
+`train.py`lze nyní vyvolat z terminálu spuštěním `python train.py`.
 Funkce z `train.py` lze také volat z jiných souborů.
 
-Soubor `train_aml.py` nalezený v `diabetes_regression/training` adresáři v úložišti MLOpsPython `train.py` volá funkce definované v aplikaci v kontextu spuštění experimentu Azure Machine Learning. Funkce lze také volat v testování částí, které jsou uvedeny dále v této příručce.
+`train_aml.py` Soubor, který se nachází `diabetes_regression/training` v adresáři úložiště MLOpsPython, volá funkce definované v `train.py` v kontextu Azure Machine Learning experimentu spustíte. Funkce lze také volat v testování částí popsaných dále v této příručce.
 
-### <a name="create-python-file-for-the-diabetes-ridge-regression-scoring-notebook"></a>Vytvoření souboru Pythonu pro poznámkový blok Diabetes Ridge Regrese Scoring
+### <a name="create-python-file-for-the-diabetes-ridge-regression-scoring-notebook"></a>Vytvořit soubor Pythonu pro vyhodnocovací Poznámkový blok diabetes Ridge regrese
 
-Skrytí poznámkového bloku do spustitelného `nbconvert` `experimentation/Diabetes Ridge Regression Scoring.ipynb`skriptu spuštěním následujícího příkazu v příkazovém řádku, který používá balíček a cestu :
+Přetajně Poznámkový blok na spustitelný skript spuštěním následujícího příkazu na příkazovém řádku, který používá `nbconvert` balíček a cestu k: `experimentation/Diabetes Ridge Regression Scoring.ipynb`
 
 ```
 jupyter nbconvert -- to script "Diabetes Ridge Regression Scoring.ipynb" –output score
 ```
 
-Po převodu poznámkového `score.py`bloku na program odstraňte všechny nežádoucí komentáře. Soubor `score.py` by měl vypadat takto:
+Po převedení poznámkového bloku na `score.py`odeberte všechny nežádoucí komentáře. Váš `score.py` soubor by měl vypadat jako v následujícím kódu:
 
 ```python
 import json
@@ -468,13 +468,13 @@ prediction = run(test_row, request_header)
 print("Test result: ", prediction)
 ```
 
-Proměnná `model` musí být globální, aby byla viditelná v celém skriptu. Na začátek funkce přidejte `init` následující příkaz:
+`model` Proměnná musí být globální, aby byla viditelná v celém skriptu. Na začátek `init` funkce přidejte následující příkaz:
 
 ```python
 global model
 ```
 
-Po přidání předchozího `init` příkazu by funkce měla vypadat jako následující kód:
+Po přidání předchozího příkazu by měla `init` funkce vypadat jako v následujícím kódu:
 
 ```python
 def init():
@@ -486,19 +486,19 @@ def init():
     model = joblib.load(model_path)
 ```
 
-## <a name="create-unit-tests-for-each-python-file"></a>Vytvoření testů částí pro každý soubor Pythonu
+## <a name="create-unit-tests-for-each-python-file"></a>Vytvořit testy jednotek pro každý soubor Pythonu
 
-Za čtvrté, vytvořte testy částí pro vaše funkce Pythonu. Jednotkové testy chrání kód před funkčníregresí a usnadňují údržbu. V této části budete vytvářet testy částí `train.py`pro funkce v aplikaci .
+Čtvrtě vytvořte testy jednotek pro funkce Pythonu. Testování částí chrání kód před funkční regresí a usnadňuje údržbu. V této části budete vytvářet testy jednotek pro funkce v `train.py`.
 
-`train.py`obsahuje více funkcí, ale vytvoříme pouze jeden `train_model` test částí pro funkci pomocí pytest rámce v tomto kurzu. Pytest není jediný rámec testování částí Pythonu, ale je to jeden z nejčastěji používaných. Pro více informací navštivte [Pytest](https://pytest.org).
+`train.py`obsahuje více funkcí, ale v tomto kurzu vytvoříme jenom jeden test jednotky pro `train_model` funkci pomocí rozhraní Pytest Framework. Pytest není jedinou architekturou testování jednotek Pythonu, ale je to jedna z nejčastěji používaných. Další informace najdete na webu [Pytest](https://pytest.org).
 
-Jednotkový test obvykle obsahuje tři hlavní akce:
+Test jednotek obvykle obsahuje tři hlavní akce:
 
-- Uspořádat objekt - vytváření a nastavování potřebných objektů
-- Jednat o objektu
-- Prosadit, co se očekává
+- Uspořádat objekt – vytváření a nastavování nezbytných objektů
+- Pracovat na objektu
+- Vyhodnocení očekávání
 
-Testování částí bude `train_model` volat s některá pevně zakódovaná `train_model` data a argumenty a ověřit, které fungovaly podle očekávání pomocí výsledného trénovaného modelu k vytvoření předpovědi a porovnání této předpovědi s očekávanou hodnotou.
+Test jednotek bude volat `train_model` s některými pevně zakódovanými daty a argumenty a ověří, zda `train_model` se jednalo podle očekávání, pomocí výsledného výukového modelu a vytvořit předpovědi a porovnat tuto předpověď s očekávanou hodnotou.
 
 ```python
 import numpy as np
@@ -521,8 +521,8 @@ def test_train_model():
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní, když jste pochopili, jak převést z experimentu na produkční kód, naleznete v následujících odkazech další informace a další kroky:
+Teď, když jste se seznámili s postupem převodu z experimentu do produkčního kódu, si přečtěte následující odkazy, kde najdete další informace a další kroky:
 
-+ [MLOpsPython:](https://github.com/microsoft/MLOpsPython/blob/master/docs/custom_model.md)Vytvoření kanálu CI/CD pro trénování, vyhodnocování a nasazování vlastního modelu pomocí Azure Pipelines a Azure Machine Learning
-+ [Monitorování spuštění experimentu Azure ML a metrik](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments)
-+ [Sledování a shromažďování dat z koncových bodů webové služby ML](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights)
++ [MLOpsPython](https://github.com/microsoft/MLOpsPython/blob/master/docs/custom_model.md): vytvoření kanálu CI/CD pro výuku, vyhodnocení a nasazení vlastního modelu pomocí Azure Pipelines a Azure Machine Learning
++ [Monitorování běhů a metriky Azure ML](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments)
++ [Monitorování a shromažďování dat z koncových bodů webové služby ML](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights)

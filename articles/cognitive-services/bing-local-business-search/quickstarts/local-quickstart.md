@@ -1,7 +1,7 @@
 ---
-title: Úvodní příručka – Odeslání dotazu do rozhraní API v c# pomocí vyhledávání místních společností Bing
+title: Rychlý Start – odeslání dotazu do rozhraní API v jazyce C# pomocí vyhledávání místních obchodních obchodů Bingu
 titleSuffix: Azure Cognitive Services
-description: Tento rychlý start můžete začít odesílat požadavky do rozhraní API pro vyhledávání místních společností Bingu, což je služba Azure Cognitive Service.
+description: Tento rychlý Start vám umožní začít odesílat požadavky do rozhraní API Bingu pro vyhledávání v místním obchodu, což je služba pro rozpoznávání Azure.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,28 +11,28 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: aahi
 ms.openlocfilehash: 62e975121c05bd4fde2438480f7042b0957a9c82
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80475611"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Úvodní příručka: Odeslání dotazu do rozhraní API pro vyhledávání místních společností Bingu v C #
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Rychlý Start: odeslání dotazu do rozhraní API Bingu pro vyhledávání místních obchodních hledání v jazyce C #
 
-Tento rychlý start můžete začít odesílat požadavky do rozhraní API pro vyhledávání místních společností Bingu, což je služba Azure Cognitive Service. Zatímco tato jednoduchá aplikace je napsána v jazyce C#, rozhraní API je webová služba RESTful kompatibilní s libovolným programovacím jazykem schopným provádět požadavky HTTP a analyzovat JSON.
+Tento rychlý Start vám umožní začít odesílat požadavky do rozhraní API Bingu pro vyhledávání v místním obchodu, což je služba pro rozpoznávání Azure. I když je tato jednoduchá aplikace napsaná v jazyce C#, rozhraní API je webová služba RESTful, která je kompatibilní s libovolným programovacím jazykem schopným vytvářet požadavky HTTP a analyzovat JSON.
 
-Tato ukázková aplikace získá data místní odpovědi `hotel in Bellevue`z rozhraní API pro vyhledávací dotaz .
+Tato ukázková aplikace získá data místní odpovědi z rozhraní API vyhledávacího dotazu `hotel in Bellevue`.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Libovolné vydání [Visual Studia 2019](https://www.visualstudio.com/downloads/).
+* Všechny edice sady [Visual Studio 2019](https://www.visualstudio.com/downloads/).
 * Pokud používáte Linux nebo MacOS, je možné tuto aplikaci spustit pomocí [Mono](https://www.mono-project.com/).
 
-Musíte mít [účet rozhraní API služby Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s rozhraními API pro vyhledávání Bing. Pro účely tohoto rychlého startu vám bude stačit [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).  Viz také [Cognitive Services Pricing - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Musíte mít [Cognitive Services účet rozhraní API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s rozhraní API pro vyhledávání Bingu. Pro účely tohoto rychlého startu vám bude stačit [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).  Viz také [Cognitive Services vyhledávání BINGU API pro ceny](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
-## <a name="create-the-request"></a>Vytvořit požadavek 
+## <a name="create-the-request"></a>Vytvoření žádosti 
 
-Následující kód vytvoří `WebRequest`, nastaví hlavičku přístupového klíče a přidá řetězec dotazu pro "restaurace v Bellevue".  Potom požadavek odešle a přiřadí odpověď k řetězci obsahujícímu text JSON.
+Následující kód vytvoří `WebRequest`, nastaví hlavičku přístupového klíče a přidá řetězec dotazu pro restauraci v Bellevue.  Potom požadavek odešle a přiřadí odpověď k řetězci obsahujícímu text JSON.
 
 ```csharp
     // Replace the accessKey string value with your valid access key.
@@ -54,10 +54,10 @@ Následující kód vytvoří `WebRequest`, nastaví hlavičku přístupového k
 
 ## <a name="run-the-complete-application"></a>Spuštění úplné aplikace
 
-Rozhraní API pro vyhledávání místních společností Bingu vrací lokalizované výsledky hledání z vyhledávače Bing.
+Rozhraní API pro místní vyhledávání Bingu vrací lokalizované výsledky hledání z vyhledávacího stroje Bingu.
 1. Vytvořte nové konzolové řešení v sadě Visual Studio (Community Edition je v pořádku).
 2. Nahraďte soubor Program.cs níže uvedeným kódem.
-3. Nahraďte hodnotu accessKey přístupovým klíčem platným pro vaše předplatné.
+3. Hodnotu accessKey nahraďte přístupovým klíčem platným pro vaše předplatné.
 4. Spusťte program.
 
 ```csharp
@@ -209,6 +209,6 @@ namespace localSearch
 ```
 
 ## <a name="next-steps"></a>Další kroky
-- [Rychlý start java vyhledávání místních společností](local-search-java-quickstart.md)
-- [Rychlý start uzlu místního obchodního hledání](local-search-node-quickstart.md)
-- [Rychlý start pythonu pro místní obchodní vyhledávání](local-search-python-quickstart.md)
+- [Rychlý Start pro místní vyhledávání v jazyce Java](local-search-java-quickstart.md)
+- [Rychlý Start uzlu místního hledání firmy](local-search-node-quickstart.md)
+- [Rychlý Start pro místní vyhledávání v Pythonu](local-search-python-quickstart.md)

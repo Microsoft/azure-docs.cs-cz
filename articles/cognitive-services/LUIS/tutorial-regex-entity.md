@@ -1,48 +1,48 @@
 ---
-title: 'Kurz: Entita regulárního výrazu – LUIS'
-description: Extrahujte konzistentně formátovaná data z utterance pomocí entity Regulární výraz.
+title: 'Kurz: regulární výraz entity – LUIS'
+description: Extrahuje konzistentně formátovaná data z utterance pomocí entity regulárního výrazu.
 ms.topic: tutorial
 ms.date: 04/01/2020
 ms.openlocfilehash: 5b585ee52880c474d3f2736b34a267012b390aad
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80545841"
 ---
-# <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>Kurz: Získejte dobře formátovaná data z utterance
-V tomto kurzu vytvořte entitu regulárních výrazů pro extrahování konzistentně formátovaných dat z utterance.
+# <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>Kurz: získání dobře formátovaných dat z utterance
+V tomto kurzu vytvoříte entitu regulárního výrazu pro extrakci konzistentně formátovaných dat z utterance.
 
-**V tomto kurzu se dozvíte, jak:**
+**V tomto kurzu se naučíte:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
 > * Importovat aplikaci
 > * Přidat záměr
 > * Přidání entity regulárního výrazu
-> * Trénování, publikování a dotazování aplikace získat extrahovaná data
+> * Školení, publikování a dotazování aplikace pro získání extrahovaných dat
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="regular-expression-entities"></a>Entity regulárního výrazu
 
-Použijte entitu regulárního výrazu k vytažení dobře formátovaného textu z utterance. Když se záměr promluvy vždy určuje pomocí strojového učení, tento konkrétní typ entity se pomocí strojového učení nezískává. Dobrým použitím entity regulárního výrazu je libovolný text, který může být konzistentně reprezentován [regulárním výrazem](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference).
+Použijte entitu regulárního výrazu k získání textu ve správném formátu z utterance. Když se záměr promluvy vždy určuje pomocí strojového učení, tento konkrétní typ entity se pomocí strojového učení nezískává. Dobrá možnost pro entitu regulárního výrazu je libovolný text, který lze konzistentně znázornit pomocí [regulárního výrazu](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference).
 
 `Send pizza delivery time to x123432`
 
-Tento příklad používá _krátký kód_ pro odesílání textových zpráv. Tento krátký kód je 5 nebo 6místný číselný kód s předponou x `x\d{5,6}`a lze jej popsat regulárním výrazem .
+V tomto příkladu je použit _krátký kód_ pro posílání textových zpráv. Tento krátký kód je číselný kód 5 nebo 6 číslic, s předponou x a může být popsán pomocí regulárního výrazu `x\d{5,6}`.
 
-Když přidáte entitu regulárního výrazu do aplikace LUIS, nemusíte [označovat](label-entity-example-utterance.md) text běžnou expresní entitou. Je použita pro všechny projevy ve všech záměrech.
+Když do aplikace LUIS přidáte entitu regulárního výrazu, nemusíte text [Označit](label-entity-example-utterance.md) regulární entitou Express. Aplikuje se na všechny projevy ve všech záměrech.
 
-## <a name="import-example-json-to-begin-app"></a>Import příkladu json pro spuštění aplikace
+## <a name="import-example-json-to-begin-app"></a>Import example. JSON pro zahájení aplikace
 
 1.  Stáhněte a uložte [soubor JSON aplikace](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json).
 
 [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
-## <a name="create-intent-for-sending-confirmation-text-messages"></a>Vytvořit záměr pro odesílání potvrzovacích textových zpráv
+## <a name="create-intent-for-sending-confirmation-text-messages"></a>Vytvoření záměru pro odesílání textových zpráv s potvrzením
 
-1. Vyberte **+ Vytvořit,** chcete-li vytvořit nový záměr pro klasifikaci záměru utterance pro odeslání potvrzovacího textu.
+1. Vyberte **+ vytvořit** k vytvoření nového záměru pro klasifikaci utteranceho záměru pro odeslání potvrzovacího textu.
 
 1. V automaticky otevíraném dialogovém okně zadejte `ConfirmationText` a pak vyberte **Done** (Hotovo).
 
@@ -50,49 +50,49 @@ Když přidáte entitu regulárního výrazu do aplikace LUIS, nemusíte [označ
 
     |Ukázkové promluvy|
     |--|
-    |Poslat pizzu dodací lhůta x123432|
-    |Txt x234567 pro čas|
+    |Odeslání doby doručení Pizza do x123432|
+    |X234567 txt pro čas|
     |x23987 pro oznámení|
 
-    Chcete-li extrahovat entity získané počítačem, měli byste poskytnout příklady, které zahrnují entitu v různých projevech, ale s touto entitou nenabytou počítače, varianta není důležitá. Dokud se text bude shodovat s regulárním výrazem, bude extrahován.
+    K extrakci entit zjištěných počítačem byste měli uvést příklady, které obsahují entitu v celé řadě projevy, ale s touto entitou, která se nestrojově dozvěděla, variace není důležitá. Dokud je text shodný s regulárním výrazem, bude extrahován.
 
 ## <a name="use-the-regular-expression-entity-for-well-formatted-data"></a>Použití entity regulárního výrazu pro dobře formátovaná data
-Vytvořte entitu regulárního výrazu tak, aby odpovídala textovému číslu. Tento regulární výraz odpovídá textu, ale ignoruje varianty případu a jazykové verze.
+Vytvořte entitu regulárního výrazu, která bude odpovídat textovému číslu. Tento regulární výraz odpovídá textu, ale ignoruje varianty velikosti písmen a kultury.
 
 1. Na levém panelu vyberte **Entities** (Entity).
 
-1. Na stránce se seznamem Entity vyberte **+ Vytvořit.**
+1. Na stránce seznam entit vyberte **+ vytvořit** .
 
-1. V rozbalovacím dialogovém okně zadejte název nové entity `ConfirmationTextRegEx`, jako typ entity vyberte **RegEx** a pak vyberte **Další**.
-
-    > [!div class="mx-imgBorder"]
-    > ![Zahájit kroky vytvoření entity pro entitu regulárního výrazu](./media/luis-quickstart-intents-regex-entity/pizza-create-new-entity.png)
-
-1. V **entitě Vytvořit regulární výraz** `x\d{5,6}` zadejte jako hodnotu **Regex** a pak vyberte **Vytvořit**.
+1. V automaticky otevíraném okně zadejte název `ConfirmationTextRegEx`nové entity, jako typ entity vyberte **Regex** a pak vyberte **Další**.
 
     > [!div class="mx-imgBorder"]
-    > ![Zadání regulárního výrazu pro extrahování dat z ukázkové utterance](./media/luis-quickstart-intents-regex-entity/pizza-set-regular-expression-for-new-entity.png)
+    > ![Zahájit kroky vytváření entit pro entitu regulárního výrazu](./media/luis-quickstart-intents-regex-entity/pizza-create-new-entity.png)
 
-1. Vyberte **záměry** z levé nabídky, pak **ConfirmationText** záměr zobrazit regulární výraz označený v projevy.
+1. V **entitě vytvoření regulárního výrazu**zadejte `x\d{5,6}` jako hodnotu **regulárního výrazu** a pak vyberte **vytvořit**.
 
     > [!div class="mx-imgBorder"]
-    > ![Zobrazit regulární výraz označený v příkladech promluv](./media/luis-quickstart-intents-regex-entity/pizza-reg-ex-entity-shown-example-utterances-intent.png)
+    > ![Zadejte regulární výraz pro extrakci dat z příkladu utterance](./media/luis-quickstart-intents-regex-entity/pizza-set-regular-expression-for-new-entity.png)
 
-    Vzhledem k tomu, že entita není entita učenaná počítačem, entita se použije na projevy a zobrazí se na portálu LUIS, jakmile je vytvořena.
+1. V nabídce vlevo vyberte **záměry** a pak **ConfirmationText** záměr zobrazit regulární výraz označený v projevy.
 
-## <a name="train-the-app-before-testing-or-publishing"></a>Trénování aplikace před testováním nebo publikováním
+    > [!div class="mx-imgBorder"]
+    > ![Zobrazit regulární výraz označený jako příklad projevy](./media/luis-quickstart-intents-regex-entity/pizza-reg-ex-entity-shown-example-utterances-intent.png)
+
+    Vzhledem k tomu, že entita není entita získaná počítačem, je entita použita na projevy a zobrazená na portálu LUIS, jakmile se vytvoří.
+
+## <a name="train-the-app-before-testing-or-publishing"></a>Výuka aplikace před testováním nebo publikováním
 
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
-## <a name="publish-the-app-to-query-from-the-endpoint"></a>Publikování aplikace k dotazování z koncového bodu
+## <a name="publish-the-app-to-query-from-the-endpoint"></a>Publikování aplikace pro dotaz z koncového bodu
 
 [!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
-## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Získání záměru a predikce entit z koncového bodu
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Získání záměru a předpovědi entit z koncového bodu
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Přejděte na konec adresy URL v adresním řádku a nahraďte _YOUR_QUERY_HERE:_
+1. V adresním řádku pokračujte na konec adresy URL a nahraďte _YOUR_QUERY_HERE_ :
 
     `Text my pizza delivery to x23456 x234567 x12345`
 
@@ -179,9 +179,9 @@ Vytvořte entitu regulárního výrazu tak, aby odpovídala textovému číslu. 
 
 ## <a name="related-information"></a>Související informace
 
-* [Koncepce - entity](luis-concept-entity-types.md)
-* [JSON odkaz entity regulárního výrazu](reference-entity-regular-expression.md?tabs=V3)
-* [Jak přidat entity pro extrahování dat](luis-how-to-add-entities.md)
+* [Koncept – entity](luis-concept-entity-types.md)
+* [Odkaz JSON entity regulárního výrazu](reference-entity-regular-expression.md?tabs=V3)
+* [Postup přidání entit pro extrakci dat](luis-how-to-add-entities.md)
 
 ## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste vytvořili nový záměr, přidali příklady promluv a pak vytvořili entitu regulárního výrazu k extrahování správně formátovaných data z promluv. Po natrénování a publikování aplikace jste dotazem adresovaným koncovému bodu zjistili záměr a vrátili extrahovaná data.

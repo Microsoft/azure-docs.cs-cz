@@ -1,6 +1,6 @@
 ---
-title: Možnosti lovu v Azure Sentinelu| Dokumenty společnosti Microsoft
-description: Tento článek popisuje, jak používat možnosti hledání Azure Sentinelu.
+title: Možnosti lovu v Azure Sentinel | Microsoft Docs
+description: Tento článek popisuje, jak používat možnosti lovu do Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -17,130 +17,130 @@ ms.workload: na
 ms.date: 09/10/2019
 ms.author: yelevin
 ms.openlocfilehash: 52af688917aa531d125f83844df29a988ed7cb7e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81686637"
 ---
-# <a name="hunt-for-threats-with-azure-sentinel"></a>Hledání hrozeb pomocí Azure Sentinelu
+# <a name="hunt-for-threats-with-azure-sentinel"></a>Loven pro hrozby s Sentinel Azure
 
-Pokud jste vyšetřovatel, který chce být proaktivní při hledání bezpečnostních hrozeb, Azure Sentinel výkonné nástroje pro vyhledávání a vyhledávání dotazů pro vyhledávání bezpečnostních hrozeb ve zdrojích dat vaší organizace. Ale vaše systémy a bezpečnostní zařízení generovat hory dat, které může být obtížné analyzovat a filtrovat do smysluplné události. Aby se analytici zabezpečení mohli aktivně podívat na nové anomálie, které vaše aplikace zabezpečení nezjistily, integrované vyhledávací dotazy Azure Sentinelu vás navedou k tomu, abyste položili správné otázky k nalezení problémů v datech, která už máte v síti. 
+Pokud jste zkoušející, který chce být aktivní pro hledání bezpečnostních hrozeb, výkonné nástroje pro vyhledávání a dotazování v souvislosti s technologií Azure pro zajištění bezpečnostních hrozeb v rámci zdrojů dat vaší organizace. Ale vaše systémy a bezpečnostní zařízení generují Mountains dat, která se můžou obtížně analyzovat a filtrovat na smysluplné události. Aby se analytikům zabezpečení dokázali aktivně podívat na nové anomálie, které nezjistily vaše aplikace zabezpečení, v rámci integrovaných dotazů Azure Sentinele se podíváte na tyto otázky, které vám pomůžou najít problémy v datech, která už máte ve vaší síti. 
 
-Například jeden vestavěný dotaz poskytuje data o nejvíce neobvyklých procesech spuštěných ve vaší infrastruktuře - nechcete, aby se výstraha o každém spuštění, může být zcela nevinná, ale můžete se na dotaz občas podívat, abyste zjistili, zda není něco neobvyklého. 
+Například jeden integrovaný dotaz poskytuje data o většině neobvyklých procesů spuštěných ve vaší infrastruktuře – nechcete, aby se při každém spuštění zobrazila výstraha, může být zcela innocentá, ale můžete se podívat na dotaz, jestli je něco neobvyklého. 
 
 
 
-S Azure Sentinel lov, můžete využít následující funkce:
+S ohledem na dodržování ověřovacích funkcí Azure můžete využít výhod následujících možností:
 
-- Integrované dotazy: Úvodní stránka obsahuje předinstalované příklady dotazů, které vám pomohou začít a seznámit se s tabulkami a jazykem dotazu. Tyto integrované vyhledávací dotazy jsou vyvíjeny výzkumníky zabezpečení společnosti Microsoft průběžně, přidávání nových dotazů a dolaďování existujících dotazů, které vám poskytnou vstupní bod, abyste hledali nové detekce a zjistili, kde začít lovit začátky nových útoků. 
+- Integrované dotazy: abyste mohli začít, úvodní stránka poskytuje příklady předem načtených dotazů, které vám pomohou začít a seznámit s tabulkami a dotazovacím jazykem. Tyto integrované dotazy jsou vyvíjené výzkumníky zabezpečení Microsoftu, a to průběžně, přidáváním nových dotazů a vyladěním existujících dotazů, abyste měli k dispozici vstupní bod, kde můžete hledat nové detekce a zjistit, kde zahájit lov na začátku nových útoků. 
 
-- Výkonný dotazovací jazyk s technologiemi IntelliSense: Je postaven na dotazovacím jazyce, který vám poskytuje flexibilitu, kterou potřebujete k tomu, abyste lov i další úroveň.
+- Výkonný dotazovací jazyk pomocí technologie IntelliSense: postavený na dotazovacím jazyku, který vám poskytne flexibilitu, kterou je třeba vzít v úvahu pro další úroveň.
 
-- Vytvořte si vlastní záložky: Během procesu lovu můžete narazit na shody nebo nálezy, řídicí panely nebo aktivity, které vypadají neobvykle nebo podezřele. Chcete-li tyto položky označit, abyste se k nim mohli v budoucnu vrátit, použijte funkci záložky. Záložky umožňují uložit položky na později, které mají být použity k vytvoření incidentu pro vyšetřování. Další informace o záložkách najdete v tématu [Použití záložek při lovu](hunting.md).
-- Používejte poznámkové bloky k automatizaci vyšetřování: Poznámkové bloky jsou jako podrobné playbooky, které můžete sestavit, abyste mohli projít kroky vyšetřování a lovu.  Poznámkové bloky zapouzdřují všechny lovecké kroky do opakovaně použitelného playbooku, který lze sdílet s ostatními uživateli ve vaší organizaci. 
-- Dotaz na uložená data: Data jsou přístupná v tabulkách, na které se můžete dotazovat. Můžete například dotazovat na vytváření procesů, události DNS a mnoho dalších typů událostí.
+- Vytvoření vlastních záložek: během procesu lovu se můžete setkat se všemi shodami nebo nálezy, řídicími panely nebo aktivitami, které vypadají nezvykle nebo podezřelé. Aby bylo možné označit tyto položky, abyste se do nich mohli vrátit v budoucnu, použijte funkci záložky. Záložky umožňují uložit položky pro pozdější použití k vytvoření incidentu pro účely šetření. Další informace o záložkách najdete [v tématu použití záložek při lovu](hunting.md).
+- Použití poznámkových bloků k automatizaci šetření: poznámkové bloky se podobají podrobným playbookyům, které můžete sestavit, abyste provedli kroky vyšetřování a průzkumu.  Poznámkové bloky zapouzdřují všechny kroky pro lovecké v opakovaně použitelných PlayBook, které je možné sdílet s ostatními uživateli ve vaší organizaci. 
+- Dotaz na uložená data: data jsou v tabulkách k dispozici pro dotazování. Můžete například zadat dotaz na vytváření procesů, události DNS a mnoho dalších typů událostí.
 
-- Odkazy na komunitu: Využijte sílu větší komunity k vyhledání dalších dotazů a zdrojů dat.
+- Odkazy na komunita: Využijte sílu větší komunity k nalezení dalších dotazů a zdrojů dat.
  
-## <a name="get-started-hunting"></a>Začínáme lovit
+## <a name="get-started-hunting"></a>Začít s loveckím
 
-1. Na portálu Azure Sentinel klikněte na **Lov**.
-  ![Azure Sentinel začíná lovit](media/tutorial-hunting/hunting-start.png)
+1. Na portálu Sentinel Azure klikněte na možnost **rozlovu**.
+  ![Azure Sentinel začíná v lovu](media/tutorial-hunting/hunting-start.png)
 
-2. Když otevřete stránku **Lov,** všechny lovecké dotazy jsou zobrazeny v jedné tabulce. V tabulce jsou uvedeny všechny dotazy napsané týmem analytiků zabezpečení společnosti Microsoft a také všechny další dotazy, které jste vytvořili nebo upravili. Každý dotaz obsahuje popis toho, co loví a jaký druh dat, na kterých běží. Tyto šablony jsou seskupeny podle jejich různých taktik - ikony na pravé straně kategorizují typ hrozby, jako je počáteční přístup, vytrvalost a exfiltrace. Tyto šablony loveckých dotazů můžete filtrovat pomocí libovolného pole. Libovolný dotaz můžete uložit do oblíbených položek. Uložením dotazu do oblíbených položek se dotaz automaticky spustí při každém přístupu na stránku **Lov.** Můžete vytvořit vlastní lovecký dotaz nebo klonovat a přizpůsobit existující šablonu loveckého dotazu. 
+2. Po otevření stránky pro **lov** se všechny lovecké dotazy zobrazí v jedné tabulce. V tabulce jsou uvedeny všechny dotazy napsané týmem analytiků zabezpečení společnosti Microsoft a všechny další dotazy, které jste vytvořili nebo upravili. Každý dotaz poskytuje popis toho, co je v nástroji k dispozici, a druh dat, na kterých se spouští. Tyto šablony jsou seskupené podle jejich různých taktiku – ikony na pravé straně typ hrozby, například počáteční přístup, trvalost a exfiltrace. Tyto šablony pro lovecké dotazy můžete filtrovat pomocí kteréhokoli z těchto polí. Libovolný dotaz můžete uložit do oblíbených položek. Když uložíte dotaz do oblíbených položek, dotaz se automaticky spustí při každém otevření stránky pro **lov** . Můžete vytvořit vlastní lovecký dotaz nebo klonovat a přizpůsobit existující šablonu pro lovecké dotazy. 
  
-2. Kliknutím na **Spustit dotaz** na stránce podrobností loveckého dotazu spusťte libovolný dotaz, aniž byste opustili stránku lovu.  Počet shod se zobrazí v tabulce. Prohlédněte si seznam loveckých dotazů a jejich shod. Podívejte se, ke které fázi v řetězci zabití je shoda přidružena.
+2. Kliknutím na **Spustit dotaz** na stránce s podrobnostmi o loveckém dotazu spusťte libovolný dotaz, aniž byste museli opustit stránku pro lov.  Počet shod se zobrazí v tabulce. Prohlédněte si seznam loveckých dotazů a jejich shody. Podívejte se, ke které fázi v dezaktivačním řetězci je přidružena shoda.
 
-3. Proveďte rychlou kontrolu podkladového dotazu v podokně podrobností dotazu nebo kliknutím na **zobrazit výsledek dotazu** otevřete dotaz v Log Analytics. V dolní části zkontrolujte shody pro dotaz.
+3. Proveďte rychlou kontrolu nad podkladovým dotazem v podokně podrobností dotazu nebo kliknutím na **Zobrazit výsledek dotazu** otevřete dotaz v Log Analytics. V dolní části Zkontrolujte shody dotazu.
 
-4.    Klikněte na řádek a vyberte **Přidat záložku** pro přidání řádků, které mají být zkoumány - můžete to udělat pro cokoliv, co vypadá podezřele. 
+4.    Kliknutím na řádek a vybráním **Přidat záložku** přidáte řádky, které se mají prozkoumat – můžete to provést pro cokoli, co vypadá podezřelě. 
 
-5. Poté se vraťte na hlavní stránku **Hunting** a kliknutím na **záložky** zobekte všechny podezřelé aktivity. 
+5. Pak se vraťte na hlavní stránku s **loveckým** prostředím a kliknutím na kartu **záložky** zobrazíte všechny podezřelé aktivity. 
 
-6. Vyberte záložku a kliknutím na **prozkoumat** otevřete prostředí šetření. Záložky můžete filtrovat. Pokud například zkoumáte kampaň, můžete pro kampaň vytvořit značku a potom filtrovat všechny záložky na základě kampaně.
+6. Vyberte záložku a potom kliknutím na tlačítko **prozkoumat** otevřete prostředí pro šetření. Záložky můžete filtrovat. Pokud například provádíte šetření kampaně, můžete vytvořit značku pro kampaň a potom filtrovat všechny záložky na základě kampaně.
 
-1. Poté, co jste zjistili, který lovecký dotaz poskytuje vysoce hodnotné přehledy o možných útocích, můžete také vytvořit vlastní pravidla zjišťování na základě dotazu a zobrazit tyto přehledy jako výstrahy pro vaše respondenty incidentů zabezpečení.
+1. Až zjistíte, který lovecký dotaz poskytuje v případě možných útokům vysoké hodnoty, můžete také vytvořit vlastní pravidla zjišťování založená na dotazu a obcházet tyto poznatky jako upozornění na vaše reakce na incidenty zabezpečení.
 
  
 
 ## <a name="query-language"></a>Dotazovací jazyk 
 
-Lov v Azure Sentinelu je založený na dotazovém jazyce Kusto. Další informace o dotazovacím jazyce a podporovaných operátorech naleznete v [tématu Reference pro dotaz .](/azure/azure-monitor/log-query/get-started-queries)
+Lov v Azure Sentinel je založený na jazyce dotazů Kusto. Další informace o dotazovacím jazyku a podporovaných operátorech naleznete v tématu [Referenční dokumentace jazyka dotazů](/azure/azure-monitor/log-query/get-started-queries).
 
-## <a name="public-hunting-query-github-repository"></a>Veřejné lovecký dotaz GitHub úložiště
+## <a name="public-hunting-query-github-repository"></a>Úložiště GitHub pro veřejné lovecké dotazy
 
-Podívejte se na [úložiště dotazů Hunting](https://github.com/Azure/Orion). Přispívat a používat ukázkové dotazy sdílené našimi zákazníky.
+Podívejte se na [úložiště pro lovecké dotazy](https://github.com/Azure/Orion). Přispívat a používejte příklady dotazů, které jsou sdíleny našimi zákazníky.
 
  
 
 ## <a name="sample-query"></a>Ukázkový dotaz
 
-Typický dotaz začíná názvem tabulky následovaným řadou \|operátorů oddělených .
+Typický dotaz začíná názvem tabulky následovaný řadou operátorů, které \|jsou odděleny.
 
-Ve výše uvedeném příkladu začněte s názvem tabulky SecurityEvent a podle potřeby přidejte prvky s potrubím.
+V předchozím příkladu začněte s názvem tabulky SecurityEvent a podle potřeby přidejte do kanálu prvky.
 
-1. Definujte časový filtr pro kontrolu pouze záznamů z předchozích sedmi dnů.
+1. Definujte časový filtr, který bude kontrolovat jenom záznamy za posledních sedm dnů.
 
-2. Přidejte do dotazu filtr, který zobrazí pouze ID události 4688.
+2. Přidejte do dotazu filtr, aby se zobrazila pouze událost s ID 4688.
 
-3. Přidejte do dotazu na příkazové čáře filtr, který bude obsahovat pouze instance souboru cscript.exe.
+3. Do dotazu v příkazovém řádku přidejte filtr, který bude obsahovat jenom instance nástroje cscript. exe.
 
-4. Promítejte jenom sloupce, které vás zajímají, a omezte výsledky na 1000 a klikněte na **Spustit dotaz**.
-5. Klepněte na zelený trojúhelník a spusťte dotaz. Můžete otestovat dotaz a spustit jej hledat neobvyklé chování.
+4. Prozkoumejte pouze sloupce, které vás zajímají, a omezte výsledky na 1000 a klikněte na **Spustit dotaz**.
+5. Klikněte na zelený trojúhelník a spusťte dotaz. Můžete otestovat dotaz a spustit ho pro hledání neobvyklé chování.
 
 ## <a name="useful-operators"></a>Užitečné operátory
 
-Dotazovací jazyk je výkonný a má mnoho dostupných operátorů, některé užitečné operátory jsou uvedeny zde:
+Dotazovací jazyk je výkonný a má mnoho dostupných operátorů. tady jsou uvedené některé užitečné operátory:
 
-**kde** - Filtrujte tabulku do podmnožiny řádků, které splňují predikát.
+**WHERE** – filtruje tabulku na podmnožinu řádků, které odpovídají predikátu.
 
-**souhrn** - Vytvoří tabulku, která agreguje obsah vstupní tabulky.
+**Shrnutí** – vytvoří tabulku, která agreguje obsah vstupní tabulky.
 
-**spojení** - Sloučit řádky dvou tabulek a vytvořit novou tabulku porovnáním hodnot zadaného sloupce (sloupců) z každé tabulky.
+**spojit** – sloučí řádky dvou tabulek a vytvoří novou tabulku tak, že bude odpovídat hodnotám zadaných sloupců z každé tabulky.
 
-**count** - Vrátí počet záznamů ve vstupní sadě záznamů.
+**Count** – vrátí počet záznamů ve vstupní sadě záznamů.
 
-**nahoře** – Vrátí první N záznamy seřazené podle zadaných sloupců.
+**Top** – vrátí prvních N záznamů seřazených podle zadaných sloupců.
 
-**limit** - Návrat až do zadaného počtu řádků.
+**limit** – vrátí zadaný počet řádků.
 
-**project** - Vyberte sloupce, které chcete zahrnout, přejmenovat nebo přetažení a vložit nové vypočítané sloupce.
+**projekt** – vyberte sloupce, které chcete zahrnout, přejmenujte nebo přetáhněte a vložte nové počítané sloupce.
 
-**rozšířit** - Vytvořit počítané sloupce a připojit je k sadě výsledků.
+**Extended** – vytvořte počítané sloupce a přidejte je do sady výsledků.
 
-**makeset** - Vrátí dynamické (JSON) pole sady odlišných hodnot, které Expr bere ve skupině
+**makeset** – vrátí dynamické pole (JSON) sady různých hodnot, které výraz expr převezme ve skupině.
 
-**najít** – najít řádky, které odpovídají predikátu přes sadu tabulek.
+**find** – najde řádky, které odpovídají predikátu napříč sadou tabulek.
 
-## <a name="save-a-query"></a>Uložení dotazu
+## <a name="save-a-query"></a>Uložit dotaz
 
-Můžete vytvořit nebo upravit dotaz a uložit jej jako vlastní dotaz nebo jej sdílet s uživateli, kteří jsou ve stejném tenantovi.
+Dotaz můžete vytvořit nebo upravit a uložit jako vlastní dotaz nebo ho sdílet s uživateli, kteří jsou ve stejném tenantovi.
 
    ![Uložit dotaz](./media/tutorial-hunting/save-query.png)
 
-Vytvořte nový lovecký dotaz:
+Vytvořit nový lovecký dotaz:
 
-1. Klepněte na **nový dotaz** a vyberte **uložit**.
+1. Klikněte na **Nový dotaz** a vyberte **Uložit**.
 2. Vyplňte všechna prázdná pole a vyberte **Uložit**.
 
    ![Nový dotaz](./media/tutorial-hunting/new-query.png)
 
 Klonovat a upravit existující lovecký dotaz:
 
-1. Vyberte lovecký dotaz v tabulce, kterou chcete upravit.
-2. Vyberte tři tečky (...) v řádku dotazu, který chcete upravit, a vyberte **dotaz Klonování**.
+1. V tabulce, kterou chcete upravit, vyberte dotaz pro lov.
+2. Na řádku dotazu, který chcete upravit, vyberte tři tečky (...) a vyberte **klonovat dotaz**.
 
-   ![dotaz klonování](./media/tutorial-hunting/clone-query.png)
+   ![klonovat dotaz](./media/tutorial-hunting/clone-query.png)
  
 
-3. Upravte dotaz a vyberte **Vytvořit**.
+3. Upravte dotaz a vyberte **vytvořit**.
 
    ![vlastní dotaz](./media/tutorial-hunting/custom-query.png)
 
 ## <a name="next-steps"></a>Další kroky
-V tomto článku jste se naučili, jak spustit hledání šetření s Azure Sentinel. Další informace o Azure Sentinelu najdete v následujících článcích:
+V tomto článku jste zjistili, jak spustit lovecké šetření s použitím funkce Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 
 
-- [Používání automatických loveckých kampaní pomocí poznámkových bloků](notebooks.md)
-- [Použití záložek pro ukládání zajímavých informací při lovu](bookmarks.md)
+- [Použití poznámkových bloků ke spouštění automatizovaných loveckých kampaní](notebooks.md)
+- [Použití záložek k ukládání zajímavých informací při lovu](bookmarks.md)

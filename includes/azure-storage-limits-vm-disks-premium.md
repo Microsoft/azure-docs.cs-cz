@@ -5,35 +5,35 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: rogarana
 ms.openlocfilehash: ef18feb10dabc6a77e6512c6a32ad44b32c6e832
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80334975"
 ---
-**Prémiové nespravované disky virtuálních počítačů: Omezení pro účet**
+**Nespravované disky virtuálních počítačů úrovně Premium: omezení podle účtů**
 
 | Prostředek | Omezení |
 | --- | --- |
 | Celková kapacita disku na účet |35 TB |
 | Celková kapacita snímků na účet |10 TB |
-| Maximální šířka pásma na účet (příchozí přenos dat + odchozí přenos dat)<sup>1</sup> |<=50 Gbp/s |
+| Maximální šířka pásma na účet (příchozí přenos dat a odchozí přenos dat)<sup>1</sup> |<=50 Gbp/s |
 
-<sup>1</sup>*Příchozí přenos dat* odkazuje na všechna data z požadavků, které jsou odesílány do účtu úložiště. *Odchozí přenos* odkazuje na všechna data z odpovědí, které jsou přijaty z účtu úložiště.
+<sup>1</sup>příchozí přenos*dat odkazuje na* všechna data z požadavků, které se odesílají do účtu úložiště. *Výstupní* služba odkazuje na všechna data z odpovědí, které jsou přijímány z účtu úložiště.
 
-**Prémiové nespravované disky virtuálních počítačů: Omezení pro disk**
+**Nespravované disky virtuálních počítačů úrovně Premium: omezení na disk**
 
 | Typ disku pro Premium Storage | P10 | P20 | P30 | P40 | P50 |
 | --- | --- | --- | --- | --- | --- |
-| Velikost disku |128 GiB |512 GiB |1 024 Gb (1 TB) |2 048 Gb (2 TB)|4 095 Gb (4 TB)|
-| Maximální vipoje na disk |500 |2 300 |5 000 |7 500 |7 500 |
+| Velikost disku |128 GiB |512 GiB |1 024 GiB (1 TB) |2 048 GiB (2 TB)|4 095 GiB (4 TB)|
+| Maximální počet IOPS na disk |500 |2 300 |5 000 |7 500 |7 500 |
 | Maximální propustnost na disk |100 MB/s | 150 MB/s |200 MB/s |250 MB/s |250 MB/s |
 | Maximální počet disků na účet úložiště |280 |70 |35 | 17 | 8 |
 
-**Prémiové nespravované disky virtuálních počítačů: Omezení pro virtuální počítače**
+**Nespravované disky virtuálních počítačů úrovně Premium: omezení na jeden virtuální počítač**
 
 | Prostředek | Omezení |
 | --- | --- |
-| Maximální vipona na virtuální virtuální mě |80 000 VOPS s virtuálním virtuálním měným v GS5 |
-| Maximální propustnost na virtuální virtuální mase |2 000 MB/s s virtuálním virtuálním montovním virtuálním montovním virtuálním montovním virtuálním montovním |
+| Maximální počet vstupně-výstupních operací na virtuální počítač |80 000 IOPS s virtuálním počítačem s GS5 |
+| Maximální propustnost na virtuální počítač |2 000 MB/s s virtuálním počítačem s GS5 |
 

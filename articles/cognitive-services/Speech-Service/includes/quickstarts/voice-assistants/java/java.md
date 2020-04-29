@@ -1,5 +1,5 @@
 ---
-title: 'Úvodní příručka: Vytvoření vlastního hlasového asistenta, Java - služba Řeči'
+title: 'Rychlý Start: Vytvoření vlastního hlasového asistenta, Java Speech Service'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: trrwilson
@@ -10,13 +10,13 @@ ms.topic: include
 ms.date: 03/20/2020
 ms.author: travisw
 ms.openlocfilehash: 42c835a42bf9172e602d9425659243aff3e118a0
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80241154"
 ---
-**Vyberte si cílové prostředí**
+**Volba cílového prostředí**
 
 # <a name="java-runtime"></a>[Java Runtime](#tab/jre)
 

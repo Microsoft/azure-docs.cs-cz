@@ -1,16 +1,16 @@
 ---
-title: Monitorování aplikací java kdekoli – Azure Monitor Application Insights
-description: Monitorování výkonu bezkódových aplikací pro aplikace Java spuštěné v libovolném prostředí bez instrumentace aplikace. Najděte hlavní příčinu problémů d pomocí distribuovaného trasování a mapy aplikací.
+title: Monitorování aplikací Java kdekoli – Azure Monitor Application Insights
+description: Monitorování výkonu aplikací bez kódu pro aplikace Java běžící v jakémkoli prostředí bez instrumentace aplikace. Najděte hlavní příčinu potíží d pomocí distribuovaného trasování a mapy aplikací.
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.openlocfilehash: 5d930d349a2ab1efbd7a61904874bf6bdb411889
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81641885"
 ---
-# <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Možnosti konfigurace – samostatný agent Jazyka Java pro přehledy aplikací Azure Monitor
+# <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Možnosti konfigurace – samostatný agent Java pro Azure Monitor Application Insights
 
 
 
@@ -27,34 +27,34 @@ ms.locfileid: "81641885"
 }
 ```
 
-Připojovací řetězec je povinný a název role je důležitý při každém odesílání dat z různých aplikací do stejného prostředku Application Insights.
+Připojovací řetězec je vyžadován a název role je důležitý vždy, když odesíláte data z různých aplikací do stejného Application Insights prostředku.
 
-Další podrobnosti a další možnosti konfigurace naleznete níže, kde najdete další podrobnosti.
+Další podrobnosti a další možnosti konfigurace najdete níže.
 
-## <a name="configuration-file-path"></a>Cesta konfiguračního souboru
+## <a name="configuration-file-path"></a>Cesta ke konfiguračnímu souboru
 
-Ve výchozím nastavení aplikace Insights Java 3.0 Preview `ApplicationInsights.json`očekává, že konfigurační `applicationinsights-agent-3.0.0-PREVIEW.jar`soubor bude pojmenován a bude umístěn ve stejném adresáři jako .
+Ve výchozím nastavení Application Insights Java 3,0 Preview očekává, že se konfigurační soubor pojmenuje `ApplicationInsights.json`a že se nachází ve stejném adresáři jako `applicationinsights-agent-3.0.0-PREVIEW.jar`.
 
-Můžete zadat vlastní cestu konfiguračního souboru pomocí
+Vlastní cestu ke konfiguračnímu souboru můžete zadat buď pomocí
 
-* `APPLICATIONINSIGHTS_CONFIGURATION_FILE`proměnná prostředí, nebo
-* `applicationinsights.configurationFile`Vlastnost systému Java
+* `APPLICATIONINSIGHTS_CONFIGURATION_FILE`Proměnná prostředí nebo
+* `applicationinsights.configurationFile`Systémová vlastnost Java
 
-Pokud zadáte relativní cestu, bude vyřešena vzhledem `applicationinsights-agent-3.0.0-PREVIEW.jar` k adresáři, kde je umístěn.
+Pokud zadáte relativní cestu, bude vyřešena vzhledem k adresáři, kde `applicationinsights-agent-3.0.0-PREVIEW.jar` se nachází.
 
 ## <a name="connection-string"></a>Připojovací řetězec
 
-To je nutné. Připojovací řetězec najdete v prostředku Application Insights:
+To je povinné. Připojovací řetězec najdete v prostředku Application Insights:
 
-:::image type="content" source="media/java-ipa/connection-string.png" alt-text="Připojovací řetězec Přehledy aplikací":::
+:::image type="content" source="media/java-ipa/connection-string.png" alt-text="Připojovací řetězec Application Insights":::
 
-Připojovací řetězec můžete také `APPLICATIONINSIGHTS_CONNECTION_STRING`nastavit pomocí proměnné prostředí .
+Připojovací řetězec můžete také nastavit pomocí proměnné `APPLICATIONINSIGHTS_CONNECTION_STRING`prostředí.
 
-## <a name="cloud-role-name"></a>Název role cloudu
+## <a name="cloud-role-name"></a>Název cloudové role
 
-Název role cloudu se používá k označení komponenty na mapě aplikace.
+Název role cloudu se používá k označení součásti na mapě aplikace.
 
-Pokud chcete nastavit název role cloudu:
+Pokud chcete nastavit název cloudové role:
 
 ```json
 {
@@ -66,15 +66,15 @@ Pokud chcete nastavit název role cloudu:
 }
 ```
 
-Pokud není nastaven název role cloudu, bude název prostředku Application Insights použit k označení komponenty na mapě aplikace.
+Pokud není název cloudové role nastaven, použije se k označení součásti na mapě aplikace název Application Insights prostředku.
 
-Můžete také nastavit název role cloudu `APPLICATIONINSIGHTS_ROLE_NAME`pomocí proměnné prostředí .
+Název cloudové role můžete také nastavit pomocí proměnné `APPLICATIONINSIGHTS_ROLE_NAME`prostředí.
 
-## <a name="cloud-role-instance"></a>Instance role cloudu
+## <a name="cloud-role-instance"></a>Instance cloudové role
 
-Instance role cloudu je výchozí pro název počítače.
+Instance role cloudu je standardně nastavená na název počítače.
 
-Pokud chcete nastavit instanci role cloudu na něco jiného než název počítače:
+Pokud chcete nastavit instanci cloudové role na jinou hodnotu než název počítače:
 
 ```json
 {
@@ -86,15 +86,15 @@ Pokud chcete nastavit instanci role cloudu na něco jiného než název počíta
 }
 ```
 
-Můžete také nastavit instanci role `APPLICATIONINSIGHTS_ROLE_INSTANCE`cloudu pomocí proměnné prostředí .
+Instanci cloudové role můžete také nastavit pomocí proměnné `APPLICATIONINSIGHTS_ROLE_INSTANCE`prostředí.
 
-## <a name="application-log-capture"></a>Zachycení protokolu aplikací
+## <a name="application-log-capture"></a>Zachycení protokolu aplikace
 
-Application Insights Java 3.0 Preview automaticky zachycuje protokolování aplikací prostřednictvím Log4j, Logback a java.util.logging.
+Application Insights Java 3,0 Preview automaticky zachycuje protokolování aplikací prostřednictvím log4j, Logback a Java. util. Logging.
 
-Ve výchozím nastavení zachytí `WARN` veškeré protokolování prováděné na úrovni nebo vyšší úrovni.
+Ve výchozím nastavení bude zachytávání veškerého protokolování `WARN` provedené na úrovni nebo výše.
 
-Pokud chcete tuto prahovou hodnotu změnit:
+Pokud chcete změnit tuto prahovou hodnotu:
 
 ```json
 {
@@ -110,24 +110,24 @@ Pokud chcete tuto prahovou hodnotu změnit:
 }
 ```
 
-Jedná se `threshold` o platné hodnoty, `ApplicationInsights.json` které můžete zadat v souboru a jak odpovídají úrovně protokolování v různých architekturách protokolování:
+Jedná se o platné `threshold` hodnoty, které můžete zadat v `ApplicationInsights.json` souboru a jak odpovídají úrovním protokolování napříč různými architekturami protokolování:
 
-| `threshold`  | Protokol4j  | Přihlašování | JUL     |
+| `threshold`  | Log4j  | Logback | JUL     |
 |--------------|--------|---------|---------|
 | OFF          | OFF    | OFF     | OFF     |
-| Fatální        | Fatální  | ERROR   | Závažné  |
-| CHYBA/ZÁVAŽNÁ | ERROR  | ERROR   | Závažné  |
-| VAROVAT/VAROVAT | Varovat   | Varovat    | WARNING |
-| Info         | Info   | Info    | Info    |
-| Config       | DEBUG  | DEBUG   | Config  |
-| LADĚNÍ/JEMNÉ   | DEBUG  | DEBUG   | Pořádku    |
-| Jemnější        | DEBUG  | DEBUG   | Jemnější   |
-| TRACE/FINEST | TRACE  | TRACE   | Nejlepší  |
+| ZÁVAŽNÁ        | ZÁVAŽNÁ  | ERROR   | VÁŽNOU  |
+| CHYBA/ZÁVAŽNÁ | ERROR  | ERROR   | VÁŽNOU  |
+| UPOZORNĚNÍ A UPOZORNĚNÍ | UPOZORNIT   | UPOZORNIT    | WARNING |
+| PŘÍJEMCE         | PŘÍJEMCE   | PŘÍJEMCE    | PŘÍJEMCE    |
+| Konfigurace       | DEBUG  | DEBUG   | Konfigurace  |
+| LADĚNÍ/JEMNÉ   | DEBUG  | DEBUG   | Nevadí    |
+| LEPŠÍ        | DEBUG  | DEBUG   | LEPŠÍ   |
+| TRACE/NEJLEPŠÍ | TRACE  | TRACE   | Nejlepší  |
 | VŠE          | VŠE    | VŠE     | VŠE     |
 
-## <a name="jmx-metrics"></a>Metriky JMX
+## <a name="jmx-metrics"></a>JMX metriky
 
-Pokud máte nějaké metriky JMX, které máte zájem zachytit:
+Pokud máte nějaké JMX metriky, které vás zajímají, zachytíte:
 
 ```json
 {
@@ -152,9 +152,9 @@ Pokud máte nějaké metriky JMX, které máte zájem zachytit:
 
 ## <a name="micrometer"></a>Mikrometr
 
-Ve výchozím nastavení, pokud vaše aplikace používá [Micrometer](https://micrometer.io), Application Insights 3.0 (počínaje Náhled.2) se nyní přidá do globálního registru Micrometer a zachytí metriky Mikrometru.
+Ve výchozím nastavení, pokud vaše aplikace používá [mikroměřič](https://micrometer.io), Application Insights 3,0 (počínaje verzí Preview. 2) nyní přidá sám sebe do globálního registru mikroměřiče a zachytí metriky mikroměřiče.
 
-Chcete-li tuto funkci zakázat:
+Pokud chcete zakázat tuto funkci:
 
 ```json
 {
@@ -172,7 +172,7 @@ Chcete-li tuto funkci zakázat:
 
 ## <a name="heartbeat"></a>Prezenční signál
 
-Ve výchozím nastavení aplikace Insights Java 3.0 Preview odešle prezenční signál metriky jednou za 15 minut. Pokud používáte metriku prezenčního signálu k aktivaci výstrah, můžete zvýšit frekvenci tohoto prezenčního signálu:
+Ve výchozím nastavení Application Insights Java 3,0 Preview pošle metriku prezenčního signálu každých 15 minut. Pokud používáte metriku prezenčního signálu k aktivaci výstrah, můžete zvýšit frekvenci tohoto prezenčního signálu:
 
 ```json
 {
@@ -187,16 +187,16 @@ Ve výchozím nastavení aplikace Insights Java 3.0 Preview odešle prezenční 
 ```
 
 > [!NOTE]
-> Četnost tohoto prezenčního signálu nelze snížit, protože data prezenčního signálu se také používají ke sledování využití přehledů aplikací.
+> Frekvence tohoto prezenčního signálu se nedá snížit, protože data prezenčního signálu se také používají ke sledování využití Application Insights.
 
 ## <a name="sampling"></a>Vzorkování
 
 Vzorkování je užitečné, pokud potřebujete snížit náklady.
-Vzorkování se provádí jako funkce na ID operace (označované také jako ID trasování), takže stejné ID operace bude vždy mít za následek stejné rozhodnutí o odběru vzorků. Tím zajistíte, že nezískáte části distribuované transakce vzorkované v zatímco ostatní části jsou vzorkovány ven.
+Vzorkování se provádí jako funkce na ID operace (označované také jako ID trasování), takže stejné ID operace bude mít vždycky stejné rozhodnutí o vzorkování. Tím zajistíte, že nebudete mít k disukázce části distribuované transakce v době, kdy ostatní části jsou ukázkové.
 
-Pokud například nastavíte vzorkování na 10 %, zobrazí se pouze 10 % transakcí, ale každá z těchto 10 % bude mít úplné podrobnosti o transakcích od začátku do konce.
+Pokud například nastavíte vzorkování na 10%, zobrazí se vám pouze 10% vašich transakcí, ale každá z těchto 10% bude mít kompletní podrobnosti transakce na konci.
 
-Zde je příklad, jak nastavit vzorkování na **10 % všech transakcí** – ujistěte se, že jste nastavili vzorkovací frekvenci, která je správná pro váš případ použití:
+Tady je příklad, jak nastavit vzorkování na **10% všech transakcí** – Ujistěte se prosím, že jste nastavili vzorkovací frekvenci, která je pro váš případ použití správná:
 
 ```json
 {
@@ -212,9 +212,9 @@ Zde je příklad, jak nastavit vzorkování na **10 % všech transakcí** – uj
 }
 ```
 
-## <a name="http-proxy"></a>HTTP Proxy
+## <a name="http-proxy"></a>Proxy server HTTP
 
-Pokud je vaše aplikace za bránou firewall a nemůže se připojit přímo k Application Insights (viz [IP adresy používané Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses)), můžete nakonfigurovat Application Insights Java 3.0 Preview tak, aby používala http proxy server:
+Pokud je vaše aplikace za bránou firewall a nemůže se připojit přímo k Application Insights (viz [IP adresy, které používá Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses)), můžete nakonfigurovat Application Insights Java 3,0 Preview pro použití proxy serveru http:
 
 ```json
 {
@@ -229,13 +229,13 @@ Pokud je vaše aplikace za bránou firewall a nemůže se připojit přímo k Ap
 }
 ```
 
-## <a name="self-diagnostics"></a>Vlastní diagnostika
+## <a name="self-diagnostics"></a>Samoobslužná Diagnostika
 
-"Vlastní diagnostika" označuje interní protokolování z Application Insights Java 3.0 Preview.
+"Samoobslužná Diagnostika" odkazuje na interní protokolování z Application Insights Java 3,0 Preview.
 
-To může být užitečné pro zjitení a diagnostiku problémů se samotnými application insights.
+To může být užitečné pro hledání a diagnostikování problémů Application Insights sebe sama.
 
-Ve výchozím nastavení se přihlásí `warn`ke konzoli s úrovní , odpovídající této konfiguraci:
+Ve výchozím nastavení se protokoluje do konzoly s `warn`úrovní odpovídající této konfiguraci:
 
 ```json
 {
@@ -250,9 +250,9 @@ Ve výchozím nastavení se přihlásí `warn`ke konzoli s úrovní , odpovídaj
 }
 ```
 
-Platné úrovně `OFF` `ERROR`jsou `WARN` `INFO`, `DEBUG`, `TRACE`, , a .
+Platné úrovně jsou `OFF`, `ERROR`, `WARN`, `INFO`, `DEBUG`a `TRACE`.
 
-Pokud se chcete přihlásit k souboru místo přihlášení ke konzoli:
+Pokud se chcete přihlásit k souboru místo protokolování do konzoly:
 
 ```json
 {
@@ -269,4 +269,4 @@ Pokud se chcete přihlásit k souboru místo přihlášení ke konzoli:
 }
 ```
 
-Při použití protokolování souborů, `maxSizeMB`jakmile soubor hity , bude převrácení, přičemž jen naposledy vyplněný soubor protokolu kromě aktuálního souboru protokolu.
+Při použití protokolování souborů se po každém pokusu `maxSizeMB`o soubor změní a zachová se kromě aktuálního souboru protokolu jenom poslední dokončený soubor protokolu.

@@ -1,7 +1,7 @@
 ---
-title: Analýza videí pomocí mediálních služeb v3
+title: Analýza videí pomocí Media Services V3
 titleSuffix: Azure Media Services
-description: Přečtěte si, jak analyzovat videa pomocí Azure Media Services.
+description: Naučte se analyzovat videa pomocí Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,24 +14,24 @@ ms.date: 03/26/2020
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: b7864d89cc14a1473fd43e94bfe74c368bcb391d
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80349481"
 ---
-# <a name="tutorial-analyze-videos-with-media-services-v3"></a>Kurz: Analýza videí pomocí mediálních služeb v3
+# <a name="tutorial-analyze-videos-with-media-services-v3"></a>Kurz: analýza videí pomocí Media Services V3
 
 > [!NOTE]
-> I když tento kurz používá příklady [sady .NET SDK,](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) obecné kroky jsou stejné pro [rozhraní REST API](https://docs.microsoft.com/rest/api/media/liveevents), ROZHRANÍ [CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)nebo jiné podporované [sady SDK](media-services-apis-overview.md#sdks).
+> I když tento kurz používá příklady [sady .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) , jsou obecné kroky stejné pro [REST API](https://docs.microsoft.com/rest/api/media/liveevents), [CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)nebo jiné podporované sady [SDK](media-services-apis-overview.md#sdks).
 
-Tento kurz vám ukáže, jak analyzovat video pomocí služby Azure Media Services. Existuje mnoho případů, ve kterých můžete potřebovat získat podrobnější přehled o zaznamenaném video nebo audio obsahu. Pokud chtějí organizace například dosáhnout vyšší spokojenosti zákazníků, mohou převést záznamy řeči zákaznické podpory na text a vytvořit prohledávatelný katalog s rejstříky a řídicími panely. Poté mohou získat vhled do svého podnikání. Tyto poznatky zahrnují seznam běžných stížností, zdroje těchto stížností a další užitečné informace.
+Tento kurz vám ukáže, jak analyzovat video pomocí služby Azure Media Services. Existuje mnoho případů, ve kterých můžete potřebovat získat podrobnější přehled o zaznamenaném video nebo audio obsahu. Pokud chtějí organizace například dosáhnout vyšší spokojenosti zákazníků, mohou převést záznamy řeči zákaznické podpory na text a vytvořit prohledávatelný katalog s rejstříky a řídicími panely. Pak můžou získat přehled o svých firmách. Tyto přehledy obsahují seznam běžných stížností, zdroje těchto stížností a další užitečné informace.
 
 V tomto kurzu získáte informace o následujících postupech:
 
 > [!div class="checklist"]
 > * Stáhněte si ukázkovou aplikaci popsanou v tématu.
-> * Zkontrolujte kód, který analyzuje zadané video.
+> * Projděte si kód, který analyzuje zadané video.
 > * Spusťte aplikaci.
 > * Zkontrolujte výstup příkazu.
 > * Vyčistěte prostředky.
@@ -40,13 +40,13 @@ V tomto kurzu získáte informace o následujících postupech:
 
 ## <a name="compliance-privacy-and-security"></a>Dodržování předpisů, ochrana osobních údajů a zabezpečení
  
-Jako důležité připomenutí musíte při používání videoindexeru dodržovat všechny platné zákony a nesmíte používat Video Indexer ani žádnou jinou službu Azure způsobem, který porušuje práva ostatních nebo může být škodlivý pro ostatní. Před nahráním jakýchkoli videí, včetně biometrických údajů, do služby Video Indexer pro zpracování a ukládání, musíte mít všechna příslušná práva, včetně všech příslušných souhlasů, od jednotlivce (osob) ve videu. Informace o dodržování předpisů, ochraně osobních údajů a zabezpečení v programu Video Indexer naleznete ve [smluvních podmínkách služeb Microsoft Cognitive Services](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/). Informace o povinnostech společnosti Microsoft týkající se ochrany osobních údajů a nakládání s vašimi údaji naleznete v Prohlášení společnosti Microsoft [o zásadách ochrany osobních údajů](https://privacy.microsoft.com/PrivacyStatement), [podmínkách online služeb](https://www.microsoft.com/licensing/product-licensing/products) ("OST") a [dodatku ke zpracování dat](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA"). Další informace o ochraně osobních údajů, včetně informací o uchovávání, vymazání/zničení údajů, jsou k dispozici v [ost.](../video-indexer/faq.md) Používáním video indexeru souhlasíte s tím, že budete vázáni podmínkami služeb Cognitive Services, OST, DPA a Prohlášením o ochraně osobních údajů.
+Důležitou připomínkou je, že je nutné dodržovat všechny použitelné zákony v používání Video Indexer a nesmíte používat Video Indexer ani žádnou jinou službu Azure způsobem, který porušuje práva jiných nebo může být škodlivá jiným osobám. Před nahráním videí, včetně jakýchkoli biometrických dat, do služby Video Indexer pro zpracování a ukládání, musíte mít všechna patřičná práva, včetně příslušných souhlasů, od jednotlivých jednotlivců ve videu. Pokud se chcete dozvědět o dodržování předpisů, ochraně osobních údajů a zabezpečení v Video Indexer, [podmínky Cognitive Services](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)Microsoftu. Pro závazky ochrany osobních údajů Microsoftu a jejich zpracování si přečtěte [prohlášení o zásadách ochrany osobních údajů](https://privacy.microsoft.com/PrivacyStatement)od Microsoftu, [podmínky online služeb](https://www.microsoft.com/licensing/product-licensing/products) ("OST") a [doplněk pro zpracování dat](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) (DPA). Další informace o ochraně osobních údajů, včetně uchovávání, odstranění nebo zničení dat, jsou k dispozici v OST a [zde](../video-indexer/faq.md). Když použijete Video Indexer, souhlasíte s tím, že jste vázáni na Cognitive Services podmínky, OST, DPA a prohlášení o zásadách ochrany osobních údajů.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud nemáte nainstalovanou Visual Studio, získejte [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15).
-- [Vytvořte účet mediálních služeb](create-account-cli-how-to.md).<br/>Nezapomeňte si pamatovat hodnoty, které jste použili pro název skupiny prostředků a název účtu Mediální služby.
-- Postupujte podle kroků v [rozhraní Access Azure Media Services API s rozhraním příkazového příkazového příkazu k Síti Azure](access-api-cli-how-to.md) a uložte přihlašovací údaje. Budete je muset použít pro přístup k rozhraní API.
+- Pokud nemáte nainstalovanou aplikaci Visual Studio, Získejte [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15).
+- [Vytvořte účet Media Services](create-account-cli-how-to.md).<br/>Nezapomeňte si pamatovat hodnoty, které jste použili pro název skupiny prostředků a název účtu Media Services.
+- Postupujte podle kroků v [části přístup k rozhraní API Azure Media Services pomocí Azure CLI](access-api-cli-how-to.md) a přihlašovací údaje uložte. Budete je muset použít pro přístup k rozhraní API.
 
 ## <a name="download-and-configure-the-sample"></a>Stažení a konfigurace ukázky
 
@@ -58,7 +58,7 @@ Do svého počítače naklonujte pomocí následujícího příkazu úložiště
 
 Tato ukázka se nachází ve složce [AnalyzeVideos](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/AnalyzeVideos).
 
-Otevřete [soubor appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/AnalyzeVideos/appsettings.json) ve staženém projektu. Nahraďte hodnoty pověřeními, která jste získali z [přístupu k api](access-api-cli-how-to.md).
+Ve staženém projektu otevřete [appSettings. JSON](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/AnalyzeVideos/appsettings.json) . Nahraďte hodnoty přihlašovacími údaji, které jste získali při [přístupu k rozhraním API](access-api-cli-how-to.md).
 
 ## <a name="examine-the-code-that-analyzes-the-specified-video"></a>Kontrola kódu, který analyzuje dané video
 
@@ -66,8 +66,8 @@ Tato část prozkoumává funkce definované v souboru [Program.cs](https://gith
 
 Ukázka dokončí následující akce:
 
-1. Vytvoří **transformaci** a **úlohu,** která analyzuje vaše video.
-2. Vytvoří vstupní **datový zdroj** a nahraje do něj video. Prostředek se použije jako vstup úlohy.
+1. Vytvoří **transformaci** a **úlohu** , která analyzuje vaše video.
+2. Vytvoří vstupní **Asset** a nahraje do něj video. Prostředek se použije jako vstup úlohy.
 3. Vytvoří výstupní prostředek, který ukládá výstup úlohy.
 4. Odešle úlohu.
 5. Zkontroluje stav úlohy.
@@ -84,35 +84,35 @@ Pokud chcete začít používat rozhraní Media Services API se sadou .NET SDK, 
 
 ### <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>Vytvoření vstupního prostředku a nahrání místního souboru do tohoto prostředku 
 
-Funkce **CreateInputAsset** vytvoří nový vstupní [datový zdroj](https://docs.microsoft.com/rest/api/media/assets) a nahraje do něj zadaný místní video soubor. Tento prostředek se použije jako vstup ve vaší úloze kódování. Ve službě Media Services v3 můžete jako vstup úlohy použít buď prostředek, nebo obsah, který jste přes adresu URL protokolu HTTPS zpřístupnili ve svém účtu služby Media Services. Informace o kódování z adresy URL HTTPS najdete v [tomto](job-input-from-http-how-to.md) článku.  
+Funkce **CreateInputAsset** vytvoří nový vstupní [Asset](https://docs.microsoft.com/rest/api/media/assets) a nahraje zadaný místní videosoubor do souboru. Tento prostředek se použije jako vstup ve vaší úloze kódování. Ve službě Media Services v3 můžete jako vstup úlohy použít buď prostředek, nebo obsah, který jste přes adresu URL protokolu HTTPS zpřístupnili ve svém účtu služby Media Services. Informace o tom, jak kódovat z adresy URL HTTPS, najdete v [tomto](job-input-from-http-how-to.md) článku.  
 
 Ve službě Media Services v3 slouží k nahrání souborů rozhraní API služby Azure Storage. Následující fragment kódu .NET vám ukáže, jak na to.
 
 Následující funkce dokončí tyto akce:
 
-* Vytvoří datový zdroj.
-* Získá zapisovatelnou [adresu URL SAS](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) do [kontejneru assetu v úložišti](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container).
+* Vytvoří Asset.
+* Získá zapisovatelnou [adresu URL SAS](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) kontejneru assetu [v úložišti](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container).
 
-    Pokud používáte funkci [ListContainerSas](https://docs.microsoft.com/rest/api/media/assets/listcontainersas) datového zdroje k získání adres URL SAS, všimněte si, že tato funkce vrátí více adres URL SAS, protože pro každý účet úložiště existují dva klíče účtu úložiště. Účet úložiště má dva klíče, protože umožňuje bezproblémové střídání klíčů účtu úložiště (například změnit jeden při použití druhého a pak začít používat nový klíč a otáčet druhý klíč). 1. Adresa URL SAS představuje klíč úložiště1 a druhý klíč úložiště2.
-* Odešle soubor do kontejneru v úložišti pomocí adresy URL SAS.
+    Pokud používáte funkci [ListContainerSas](https://docs.microsoft.com/rest/api/media/assets/listcontainersas) assetu k získání adres URL SAS, Všimněte si, že funkce vrací několik adres URL SAS, protože pro každý účet úložiště jsou k dispozici dva klíče účtu úložiště. Účet úložiště má dva klíče, protože umožňuje plynulé střídání klíčů účtu úložiště (například při použití druhého, zahájení použití nového klíče a střídání druhého klíče). První adresa URL SAS představuje úložiště klíč1 a druhé úložiště key2.
+* Nahraje soubor do kontejneru v úložišti pomocí adresy URL SAS.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CreateInputAsset)]
 
 ### <a name="create-an-output-asset-to-store-the-result-of-the-job"></a>Vytvoření výstupního prostředku k uložení výsledku úlohy
 
-Výstup [Asset](https://docs.microsoft.com/rest/api/media/assets) ukládá výsledek vaší úlohy. Projekt definuje funkci **DownloadResults**, která stáhne výsledky z tohoto výstupního prostředku do výstupní složky, kde si je můžete zkontrolovat.
+Výstupní [Asset](https://docs.microsoft.com/rest/api/media/assets) ukládá výsledek vaší úlohy. Projekt definuje funkci **DownloadResults**, která stáhne výsledky z tohoto výstupního prostředku do výstupní složky, kde si je můžete zkontrolovat.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CreateOutputAsset)]
 
 ### <a name="create-a-transform-and-a-job-that-analyzes-videos"></a>Vytvoření transformace a úlohy, která analyzuje videa
 
-Při kódování nebo zpracování obsahu ve službě Media Services je běžnývzor nastavení kódování jako recept. Potom stačí odeslat **Úlohu**, která tento předpis použije pro video. Odesláním nových pracovních míst pro každé nové video použijete tento recept na všechna videa v knihovně. Recept v Media Services se nazývá **Transformace**. Další informace naleznete v [tématu Transformace a úlohy](transform-concept.md). Ukázka popsaná v tomto kurzu definuje předpis, který analyzuje zadané video.
+Při kódování nebo zpracování obsahu v Media Services se jedná o společný vzor pro nastavení kódování jako recept. Potom stačí odeslat **Úlohu**, která tento předpis použije pro video. Když odešlete nové úlohy pro každé nové video, použijete tento recept na všechna videa v knihovně. Recept v Media Services se nazývá **transformace**. Další informace najdete v tématu [transformace a úlohy](transform-concept.md). Ukázka popsaná v tomto kurzu definuje předpis, který analyzuje zadané video.
 
 #### <a name="transform"></a>Transformace
 
-Když vytváříte novou instanci [Transformace](https://docs.microsoft.com/rest/api/media/transforms), musíte určit, co má být jejím výstupem. **TransformOutput** je povinný parametr. Každý objekt **TransformOutput** obsahuje **Předvolbu**. **Předvolba** popisuje podrobné pokyny operací zpracování videa a/nebo audia, které se používají ke generování požadovaného objektu **TransformOutput**. V tomto příkladu se používá **přednastavení VideoAnalyzerPreset** a jazyk ("en-US")`new VideoAnalyzerPreset("en-US")`je předán jeho konstruktoru ( ). Tato předvolba vám umožňuje z videa extrahovat několik audio a video přehledů. Pokud potřebujete z videa extrahovat pouze několik audio přehledů, můžete použít předvolbu **AudioAnalyzerPreset**.
+Když vytváříte novou instanci [Transformace](https://docs.microsoft.com/rest/api/media/transforms), musíte určit, co má být jejím výstupem. **TransformOutput** je povinný parametr. Každý objekt **TransformOutput** obsahuje **Předvolbu**. **Předvolba** popisuje podrobné pokyny operací zpracování videa a/nebo audia, které se používají ke generování požadovaného objektu **TransformOutput**. V tomto příkladu se používá předvolba **VideoAnalyzerPreset** a jazyk ("en-US") je předán konstruktoru (`new VideoAnalyzerPreset("en-US")`). Tato předvolba vám umožňuje z videa extrahovat několik audio a video přehledů. Pokud potřebujete z videa extrahovat pouze několik audio přehledů, můžete použít předvolbu **AudioAnalyzerPreset**.
 
-Při vytváření **transformace**, zkontrolujte nejprve, pokud již existuje pomocí **Get** metoda, jak je znázorněno v kódu, který následuje. Pokud entita v Media Services v3 neexistuje, metoda **Get** vrátí hodnotu **null** (v názvu se nerozlišují malá a velká písmena).
+Při vytváření **transformace**si nejdříve zajistěte, pokud už existuje, pomocí metody **Get** , jak je znázorněno v následujícím kódu. Pokud entita v Media Services v3 neexistuje, metoda **Get** vrátí hodnotu **null** (v názvu se nerozlišují malá a velká písmena).
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#EnsureTransformExists)]
 
@@ -126,35 +126,35 @@ V tomto příkladu je vstupem úlohy místní video.
 
 ### <a name="wait-for-the-job-to-complete"></a>Čekání na dokončení úlohy
 
-Dokončení úlohy nějakou dobu trvá. Když se tak stane, chcete být upozorněni. Existují různé možnosti, jak získat oznámení o dokončení [úlohy.](https://docs.microsoft.com/rest/api/media/jobs) Nejjednodušší možností (která je zde zobrazena) je použití dotazování.
+Dokončení úlohy trvá déle. V takovém případě chcete být upozorněni. Existují různé možnosti, jak získat upozornění na dokončení [úlohy](https://docs.microsoft.com/rest/api/media/jobs) . Nejjednodušší možnost (zobrazená tady) je použití cyklického dotazování.
 
-Dotazování není doporučeným osvědčeným postupem pro produkční aplikace z důvodu potenciální latence. Pokud se dotazování u některého účtu používá nadměrně, je možné ho omezit. Místo dotazování by vývojáři měli používat službu Event Grid.
+Cyklické dotazování není doporučeným osvědčeným postupem pro produkční aplikace kvůli možné latenci. Pokud se dotazování u některého účtu používá nadměrně, je možné ho omezit. Místo dotazování by vývojáři měli používat službu Event Grid.
 
-Služba Event Grid je navržená pro vysokou dostupnost, konzistentní výkon a dynamické škálování. Díky službě Event Grid můžou vaše aplikace naslouchat událostem a reagovat na ně, ať už pocházejí z kterékoli služby Azure. Události můžou pocházet i z vlastních zdrojů. Jednoduché, reaktivní zpracování událostí založené na protokolu HTTP pomáhá sestavovat efektivní řešení prostřednictvím inteligentního filtrování a směrování událostí. Další informace naleznete v [tématu Route events to a custom web endpoint](job-state-events-cli-how-to.md).
+Služba Event Grid je navržená pro vysokou dostupnost, konzistentní výkon a dynamické škálování. Díky službě Event Grid můžou vaše aplikace naslouchat událostem a reagovat na ně, ať už pocházejí z kterékoli služby Azure. Události můžou pocházet i z vlastních zdrojů. Jednoduché, reaktivní zpracování událostí založené na protokolu HTTP pomáhá sestavovat efektivní řešení prostřednictvím inteligentního filtrování a směrování událostí. Další informace najdete v tématu [Směrování událostí do vlastního webového koncového bodu](job-state-events-cli-how-to.md).
 
-**Úloha** obvykle prochází následujícími stavy: **Naplánováno**, **Ve frontě**, **Zpracovávání** a **Dokončeno** (konečný stav). Pokud úloha narazila na chybu, zobrazí se stav **Chyba.** Pokud je úloha v procesu zrušení, dostanete **Zrušení** a potom **Zrušeno,** když je hotovo.
+**Úloha** obvykle prochází následujícími stavy: **Naplánováno**, **Ve frontě**, **Zpracovávání** a **Dokončeno** (konečný stav). Pokud se úloha dokončí v rámci chyby, zobrazí se **chybový** stav. Pokud se úloha právě ruší, vrátíte se **a po dokončení** se **zruší** .
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#WaitForJobToFinish)]
 
 ### <a name="job-error-codes"></a>Kódy chyb úlohy
 
-Viz [Chybové kódy](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
+Viz [kódy chyb](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
 
 ### <a name="download-the-result-of-the-job"></a>Stažení výsledku úlohy
 
-Následující funkce stáhne výsledky z výstupního [datového zdroje](https://docs.microsoft.com/rest/api/media/assets) do složky "výstup", takže můžete prozkoumat výsledky úlohy.
+Následující funkce stáhne výsledky z výstupního [prostředku](https://docs.microsoft.com/rest/api/media/assets) do složky "Output", abyste mohli kontrolovat výsledky úlohy.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#DownloadResults)]
 
 ### <a name="clean-up-resource-in-your-media-services-account"></a>Vyčištění prostředků v účtu služby Media Services
 
-Obecně byste měli vyčistit vše kromě objektů, které plánujete znovu použít (obvykle budete znovu použít transformace a zachovat StreamingLocators). Pokud chcete, aby byl váš účet po experimentování čistý, odstraňte prostředky, které neplánujete znovu použít. Například následující kód odstraní úlohy:
+Obecně byste měli vyčistit vše kromě objektů, které plánujete použít (obvykle budete znovu používat transformaci a trvalé StreamingLocators). Pokud chcete, aby se Váš účet vyčistil po experimentování, odstraňte prostředky, které nechcete znovu použít. Například následující kód odstraní úlohy:
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CleanUp)]
 
 ## <a name="run-the-sample-app"></a>Spuštění ukázkové aplikace
 
-Stisknutím kláves Ctrl+F5 spusťte aplikaci *AnalyzeVideos.*
+Stisknutím kombinace kláves CTRL + F5 spusťte aplikaci *AnalyzeVideos* .
 
 Když program spustíte, úloha vytvoří miniatury každého obličeje, který ve videu najde. Zároveň vytvoří soubor insights.json.
 
@@ -166,7 +166,7 @@ Výstupní soubor analyzování videa se nazývá insights.json. Tento soubor ob
 
 Pokud ze skupiny prostředků už žádné prostředky nepotřebujete, včetně účtu služby Media Services a účtu úložiště, které jste vytvořili v tomto kurzu, pak tuto dříve vytvořenou skupinu prostředků odstraňte.
 
-Proveďte následující příkaz příkazového příkazu příkazu příkazu:
+Spusťte následující příkaz rozhraní příkazového řádku:
 
 ```azurecli
 az group delete --name amsResourceGroup
@@ -174,11 +174,11 @@ az group delete --name amsResourceGroup
 
 ## <a name="multithreading"></a>Multithreading
 
-Sady Azure Media Services v3 SDK nejsou bezpečné pro přístup z více vláken. Při práci s vícevláknovou aplikací byste měli vygenerovat nový objekt AzureMediaServicesClient na vlákno.
+Sady SDK Azure Media Services V3 nejsou bezpečné pro přístup z více vláken. Při práci s aplikacemi s více vlákny byste měli vytvořit nový objekt AzureMediaServicesClient pro každé vlákno.
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Ptejte se, podávejte zpětnou vazbu, získejte aktualizace
+## <a name="ask-questions-give-feedback-get-updates"></a>Položte otázky, sdělte nám svůj názor, Získejte aktualizace.
 
-Podívejte se na článek [komunity Mediálních služeb Azure](media-services-community.md) a podívejte se na různé způsoby, jak můžete klást otázky, poskytovat zpětnou vazbu a získat aktualizace o mediálních službách.
+Podívejte se na článek o [komunitě Azure Media Services](media-services-community.md) a podívejte se na různé způsoby, jak můžete klást otázky, sdělit svůj názor a získávat aktualizace Media Services.
 
 ## <a name="next-steps"></a>Další kroky
 

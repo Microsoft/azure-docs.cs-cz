@@ -1,5 +1,5 @@
 ---
-title: Rychlý start klientské knihovny JavaScript pro vyhledávání videí Bing
+title: Rychlý Start knihovny klienta Vvyhledávání videí Bingu JavaScript
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,43 +9,43 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: aahi
 ms.openlocfilehash: b642d981b79d13857881ec8cc5796e6365003ace
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80289760"
 ---
-Pomocí tohoto rychlého startu můžete začít vyhledávat novinky v klientské knihovně Bing Video Search pro JavaScript. Zatímco hledání videa Bing má rozhraní REST API kompatibilní s většinou programovacích jazyků, klientská knihovna poskytuje snadný způsob integrace služby do vašich aplikací. Zdrojový kód pro tuto ukázku lze nalézt na [GitHubu](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/videoSearch.js). Obsahuje více anotací a funkcí.
+V tomto rychlém startu můžete začít hledat zprávy pomocí klientské knihovny Vvyhledávání videí Bingu pro JavaScript. I když Vvyhledávání videí Bingu má REST API kompatibilní s většinou programovacích jazyků, Klientská knihovna poskytuje snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/videoSearch.js). Obsahuje další poznámky a funkce.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - [Node.js](https://www.nodejs.org/)
 
-Nastavení konzolové aplikace pomocí klientské knihovny Bing Video Search:
-* Spouštějte `npm install ms-rest-azure` ve vývojovém prostředí.
-* Spouštějte `npm install azure-cognitiveservices-videosearch` ve vývojovém prostředí.
+Chcete-li nastavit konzolovou aplikaci pomocí klientské knihovny Vvyhledávání videí Bingu:
+* Spusťte `npm install ms-rest-azure` ve vývojovém prostředí.
+* Spusťte `npm install azure-cognitiveservices-videosearch` ve vývojovém prostředí.
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](~/includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. Vytvořte nový soubor JavaScriptu ve svém oblíbeném `require()` rozhraní IDE nebo editoru `CognitiveServicesCredentials` a přidejte příkaz pro klientskou knihovnu a modul Bing Video Search. Vytvořte proměnnou pro klíč předplatného. 
+1. Vytvořte nový soubor JavaScriptu v oblíbených IDE nebo editoru a přidejte `require()` příkaz pro klientskou knihovnu Vvyhledávání videí Bingu a `CognitiveServicesCredentials` modul. Vytvořte proměnnou pro klíč předplatného. 
     
     ```javascript
     const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
     const VideoSearchAPIClient = require('azure-cognitiveservices-videosearch');
     ```
 
-2. Vytvořte instanci `CognitiveServicesCredentials` s klíčem. Pak ji použijte k vytvoření instance klienta pro vyhledávání videa.
+2. Vytvořte instanci `CognitiveServicesCredentials` s klíčem. Pak ho použijte k vytvoření instance klienta hledání videí.
 
     ```javascript
     let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
     let client = new VideoSearchAPIClient(credentials);
     ```
 
-## <a name="send-the-search-request"></a>Odeslat požadavek na vyhledávání
+## <a name="send-the-search-request"></a>Odeslat požadavek hledání
 
-1. Slouží `client.videosOperations.search()` k odeslání požadavku na vyhledávání do rozhraní API pro vyhledávání videí Bingu. Po vrácení výsledků hledání `.then()` použijte k protokolování výsledku.
+1. Slouží `client.videosOperations.search()` k odeslání požadavku hledání do rozhraní API Bingu pro vyhledávání videí. Po vrácení výsledků hledání použijte `.then()` k zaznamenání výsledku.
     
     ```javascript
     client.videosOperations.search('Interstellar Trailer').then((result) => {
@@ -58,9 +58,9 @@ Nastavení konzolové aplikace pomocí klientské knihovny Bing Video Search:
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové aplikace pro jednu stránku](../../tutorial-bing-video-search-single-page-app.md)
+> [Vytvoření webové aplikace s jednou stránkou](../../tutorial-bing-video-search-single-page-app.md)
 
 ## <a name="see-also"></a>Viz také 
 
 * [Co je rozhraní API Bingu pro vyhledávání videí?](../../overview.md)
-* [Ukázky sady Cognitive Services .NET SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
+* [Ukázky sady .NET SDK pro rozpoznávání služeb](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Hledání obrázků pomocí rozhraní REST API pro vyhledávání obrázků bingu a javy'
+title: 'Rychlý Start: hledání imagí pomocí Vyhledávání obrázků Bingu REST API a Java'
 titleSuffix: Azure Cognitive Services
-description: Tento rychlý start slouží k odesílání požadavků na vyhledávání obrázků do rozhraní REST API služby Bing pro vyhledávání obrázků pomocí jazyka Java a přijímání odpovědí JSON.
+description: Pomocí tohoto rychlého startu můžete odesílat žádosti o vyhledávání obrázků do Vyhledávání obrázků Bingu REST API pomocí Java a přijímat odpovědi JSON.
 services: cognitive-services
 documentationcenter: ''
 author: aahill
@@ -13,21 +13,21 @@ ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: 979bd034b2f4d3665de64fe8ffdb33efc7a370cb
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80478581"
 ---
-# <a name="quickstart-search-for-images-with-the-bing-image-search-api-an-azure-cognitive-service"></a>Úvodní příručka: Hledání ibi pomocí rozhraní API pro vyhledávání obrázků Bingu, kognitivní služby Azure 
+# <a name="quickstart-search-for-images-with-the-bing-image-search-api-an-azure-cognitive-service"></a>Rychlý Start: hledání imagí pomocí rozhraní API Bingu pro vyhledávání obrázků, Služba rozpoznávání Azure 
 
-Tento rychlý start slouží k odesílání požadavků na vyhledávání do rozhraní API pro vyhledávání obrázků Bingu ve službě Azure Cognitive Services. Tato java aplikace odešle vyhledávací dotaz do rozhraní API a ve výsledcích zobrazí adresu URL prvního obrázku. Zatímco tato aplikace je napsána v Javě, API je RESTful webová služba kompatibilní s většinou programovacích jazyků.
+V tomto rychlém startu můžete odesílat žádosti o vyhledávání do rozhraní API Bingu pro vyhledávání obrázků ve službě Azure Cognitive Services. Tato aplikace Java pošle vyhledávací dotaz do rozhraní API a zobrazí adresu URL prvního obrázku ve výsledcích. I když je tato aplikace napsaná v jazyce Java, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-Zdrojový kód pro tuto ukázku je k dispozici [na GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7Quickstart.java) s dalším zpracováním chyb a anotacemi.
+Zdrojový kód pro tuto ukázku je k dispozici [na GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7Quickstart.java) s dalšími zpracováním chyb a poznámkami.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Java Development Kit (JDK)](https://aka.ms/azure-jdks)
+* [Sada Java Development Kit (JDK)](https://aka.ms/azure-jdks)
 
 * [Knihovna Gson](https://github.com/google/gson)
 
@@ -48,7 +48,7 @@ Zdrojový kód pro tuto ukázku je k dispozici [na GitHubu](https://github.com/A
     import com.google.gson.JsonParser;
     ```
 
-2. Vytvořte proměnné pro koncový bod rozhraní API, klíč předplatného a hledaný výraz. `host`může být globální koncový bod níže nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený na portálu Azure pro váš prostředek.
+2. Vytvořte proměnné pro koncový bod rozhraní API, klíč předplatného a hledaný výraz. `host`může to být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```java
     static String subscriptionKey = "enter key here";
@@ -59,7 +59,7 @@ Zdrojový kód pro tuto ukázku je k dispozici [na GitHubu](https://github.com/A
 
 ## <a name="construct-the-search-request-and-query"></a>Sestavení žádosti o vyhledávání a dotazu
 
-1. Pomocí proměnných z posledního kroku naformátujte vyhledávací adresu URL pro požadavek rozhraní API. Hledaný termín musí být před připojením k požadavku kódován adresou URL.
+1. Pomocí proměnných z posledního kroku naformátujte vyhledávací adresu URL pro požadavek rozhraní API. Hledaný termín musí být před připojením k žádosti kódovaný na adrese URL.
 
     ```java
     // construct the search request URL (in the form of endpoint + query string)
@@ -162,7 +162,7 @@ Odpovědi od rozhraní API Bingu pro vyhledávání obrázků se vrátí jako JS
 
 * [Co je Vyhledávání obrázků Bingu?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
 * [Vyzkoušet online interaktivní ukázku](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
-* [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) pro vyhledávací api Bingu. 
+* [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) pro rozhraní API pro vyhledávání Bingu. 
 * [Získání přístupového klíče služeb Cognitive Services zdarma](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-* [Dokumentace ke službě Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
+* [Dokumentace k Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
 * [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

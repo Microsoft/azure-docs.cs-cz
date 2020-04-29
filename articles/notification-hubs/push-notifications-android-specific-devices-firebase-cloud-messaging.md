@@ -1,6 +1,6 @@
 ---
-title: Odesílání nabízených oznámení konkrétním zařízením pomocí center oznámení Azure a cloudových zpráv Google Firebase | Dokumenty společnosti Microsoft
-description: Naučte se používat centra oznámení k nabízení oznámení konkrétním zařízením Android pomocí center oznámení Azure a Cloud Messaging (FCM) služby Google Firebase.
+title: Posílání nabízených oznámení na konkrétní zařízení pomocí služby Azure Notification Hubs a zasílání zpráv v cloudu Google Firebase | Microsoft Docs
+description: Naučte se používat Notification Hubs k odesílání oznámení na konkrétní zařízení s Androidem pomocí Azure Notification Hubs a zasílání zpráv FCM (Google Firebase Cloud Messaging).
 services: notification-hubs
 documentationcenter: android
 author: sethmanheim
@@ -18,13 +18,13 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/30/2019
 ms.openlocfilehash: b7ee3afc2e8b9958a868c8c117262d2017c9b600
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80126879"
 ---
-# <a name="tutorial-send-notifications-to-specific-devices-using-notification-hubs-and-google-firebase-cloud-messaging"></a>Kurz: Odesílání oznámení konkrétním zařízením pomocí center oznámení a cloudových zpráv Google Firebase
+# <a name="tutorial-send-notifications-to-specific-devices-using-notification-hubs-and-google-firebase-cloud-messaging"></a>Kurz: posílání oznámení na konkrétní zařízení pomocí Notification Hubs a Firebase cloudového zasílání zpráv Google
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -38,19 +38,19 @@ V tomto kurzu provedete následující akce:
 
 > [!div class="checklist"]
 > * Přidáte do mobilní aplikace výběr kategorií.
-> * Registrováno pro oznámení se značkami.
+> * Registrováno pro oznámení pomocí značek.
 > * Odešlete označená oznámení.
 > * Otestování aplikace
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento kurz vychází z aplikace, kterou jste vytvořili v [kurzu: Nabízená oznámení na zařízení se systémem Android pomocí Center oznámení Azure a Cloud Messaging Firebase](notification-hubs-android-push-notification-google-fcm-get-started.md). Před zahájením tohoto kurzu dokončete [kurz: Nabízená oznámení na zařízení se systémem Android pomocí center oznámení Azure a Cloud Messaging Firebase](notification-hubs-android-push-notification-google-fcm-get-started.md).
+Tento kurz sestaví na aplikaci, kterou jste vytvořili v [kurzu: nabízená oznámení na zařízení s Androidem pomocí služby Azure Notification Hubs a Firebase cloudového zasílání zpráv](notification-hubs-android-push-notification-google-fcm-get-started.md). Před zahájením tohoto kurzu dokončete [kurz: nabízená oznámení na zařízení s Androidem pomocí služby Azure Notification Hubs a Firebase cloudového zasílání zpráv](notification-hubs-android-push-notification-google-fcm-get-started.md).
 
 ## <a name="add-category-selection-to-the-app"></a>Přidání výběru kategorií do aplikace
 
 První krok spočívá v přidání prvků uživatelského rozhraní do stávající třídy MainActivity, aby si uživatel mohl vybrat kategorie, které si zaregistruje. Kategorie, které uživatel vybere, jsou uložené v zařízení. Při spuštění aplikace se v centru oznámení provede registrace zařízení s vybranými kategoriemi ve formě značek.
 
-1. Otevřete `res/layout/activity_main.xml file`a nahraďte obsah následujícím:
+1. `res/layout/activity_main.xml file`Otevřete a nahraďte obsah následujícím:
 
     ```xml
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -115,10 +115,10 @@ První krok spočívá v přidání prvků uživatelského rozhraní do stávaj�
     <string name="label_sports">Sports</string>
     ```
 
-    Grafické `main_activity.xml` rozložení by mělo vypadat takto na následujícím obrázku:
+    Vaše `main_activity.xml` grafické rozložení by mělo vypadat jako na následujícím obrázku:
 
     ![][A1]
-3. Vytvořte `Notifications` třídu ve stejném `MainActivity` balíčku jako vaše třída.
+3. Vytvořte třídu `Notifications` ve stejném balíčku jako svou `MainActivity` třídu.
 
     ```java
     import java.util.HashSet;
@@ -204,12 +204,12 @@ První krok spočívá v přidání prvků uživatelského rozhraní do stávaj�
     ```
 
     Tato třída uloží kategorie novinek, které bude zařízení dostávat, do místního úložiště. Obsahuje také metody registrace kategorií.
-4. Ve `MainActivity` třídě přidejte pole `Notifications`pro :
+4. Do `MainActivity` třídy přidejte pole pro `Notifications`:
 
     ```java
     private Notifications notifications;
     ```
-5. Potom aktualizujte `onCreate` metodu, jak je znázorněno v následujícím kódu. Zaregistrujete se s centra oznámení v **subscribeToCategories** metoda **Oznámení třídy.** 
+5. Pak aktualizujte `onCreate` metodu, jak je znázorněno v následujícím kódu. Zaregistrujete se pomocí Notification Hubs v metodě **subscribeToCategories** třídy **Notifications** . 
 
     ```java
     @Override
@@ -267,7 +267,7 @@ První krok spočívá v přidání prvků uživatelského rozhraní do stávaj�
     }
     ```
 
-    Tato metoda vytvoří seznam kategorií `Notifications` a používá třídu k uložení seznamu v místním úložišti a zaregistrovat odpovídající značky s centrem oznámení. Při změně kategorií se vytvoří registrace s novými kategoriemi.
+    Tato metoda vytvoří seznam kategorií a pomocí `Notifications` třídy uloží seznam do místního úložiště a zaregistruje odpovídající značky do vašeho centra oznámení. Při změně kategorií se vytvoří registrace s novými kategoriemi.
 
 Aplikace teď dokáže do místního úložiště v zařízení uložit sadu kategorií a zaregistrovat ji v centru oznámení pokaždé, když uživatel změní vybrané kategorie.
 
@@ -275,7 +275,7 @@ Aplikace teď dokáže do místního úložiště v zařízení uložit sadu kat
 
 Tento postup provede při spuštění registraci v centru oznámení. Použije k tomu kategorie uložené v místním úložišti.
 
-1. Zkontrolujte, zda je následující kód `onCreate` na `MainActivity` konci metody ve třídě:
+1. Potvrďte, že následující kód je na konci `onCreate` metody ve `MainActivity` třídě:
 
     ```java
     notifications.subscribeToCategories(notifications.retrieveCategories());

@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Hledání obrázků pomocí rozhraní REST API a PHP pro vyhledávání obrázků bingu'
+title: 'Rychlý Start: hledání imagí pomocí Vyhledávání obrázků Bingu REST API a PHP'
 titleSuffix: Azure Cognitive Services
-description: Tento rychlý start slouží k odesílání požadavků na vyhledávání obrázků do rozhraní REST API pro vyhledávání obrázků Bingu pomocí PHP a přijíměte odpovědi JSON.
+description: Pomocí tohoto rychlého startu můžete odesílat žádosti o vyhledávání obrázků do Vyhledávání obrázků Bingu REST API pomocí PHP a přijímat odpovědi JSON.
 services: cognitive-services
 documentationcenter: ''
 author: aahill
@@ -13,13 +13,13 @@ ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: fffe56986a3b3a64910678d19321e2d04b8fcc55
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80478560"
 ---
-# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>Úvodní příručka: Hledání obrázků pomocí rozhraní REST API a PHP pro vyhledávání obrázků bingu
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>Rychlý Start: hledání imagí pomocí Vyhledávání obrázků Bingu REST API a PHP
 
 V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání obrázků a dostanete odpověď ve formátu JSON. Jednoduchá aplikace v tomto článku odesílá vyhledávací dotaz a zobrazuje nezpracované výsledky.
 
@@ -33,7 +33,7 @@ Zdrojový kód této ukázky je dostupný na [GitHubu](https://github.com/Azure-
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-Viz také [Cognitive Services Pricing - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Viz také [Cognitive Services vyhledávání BINGU API pro ceny](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
@@ -41,7 +41,7 @@ Tuto aplikaci spustíte následujícím postupem.
 
 1. Ověřte, že je v souboru `php.ini` povolená podpora zabezpečeného protokolu HTTP. Ve Windows se tento soubor nachází ve složce `C:\windows`.
 2. V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt PHP.
-3. Definujte koncový bod rozhraní API, klíč předplatného a hledaný výraz. koncový bod může být globální koncový bod níže nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený na portálu Azure pro váš prostředek.
+3. Definujte koncový bod rozhraní API, klíč předplatného a hledaný termín. koncovým bodem může být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```php
     $endpoint = 'https://api.cognitive.microsoft.com/bing/v7.0/images/search';
@@ -50,9 +50,9 @@ Tuto aplikaci spustíte následujícím postupem.
     $term = 'tropical ocean';
     ```
 
-## <a name="construct-and-perform-an-http-request"></a>Vytvoření a provedení požadavku HTTP
+## <a name="construct-and-perform-an-http-request"></a>Konstrukce a provedení požadavku HTTP
 
-1. Pomocí proměnných z posledního kroku připravte požadavek HTTP do rozhraní API pro vyhledávání obrázků.
+1. Pomocí proměnných z posledního kroku Připravte požadavek HTTP na rozhraní Vyhledávání obrázků API.
 
     ```php
     $headers = "Ocp-Apim-Subscription-Key: $key\r\n";
@@ -61,7 +61,7 @@ Tuto aplikaci spustíte následujícím postupem.
                             'method' => 'GET' ));
     ```
 
-2. Pošlete webový požadavek a získejte odpověď JSON.
+2. Odešlete webový požadavek a získejte odpověď JSON.
 
     ```php
     $context = stream_context_create($options);
@@ -140,7 +140,7 @@ Odpovědi od rozhraní API Bingu pro vyhledávání obrázků se vrátí jako JS
 
 * [Co je Vyhledávání obrázků Bingu?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
 * [Vyzkoušet online interaktivní ukázku](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
-* [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) pro vyhledávací api Bingu. 
+* [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) pro rozhraní API pro vyhledávání Bingu. 
 * [Získání přístupového klíče služeb Cognitive Services zdarma](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-* [Dokumentace ke službě Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
+* [Dokumentace k Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
 * [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

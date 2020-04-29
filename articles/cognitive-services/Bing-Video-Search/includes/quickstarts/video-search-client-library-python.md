@@ -1,5 +1,5 @@
 ---
-title: Rychlý start klientské knihovny Vpython u bingu
+title: Rychlý Start klientské knihovny Vvyhledávání videí Bingu Pythonu
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,28 +9,28 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: aahi
 ms.openlocfilehash: 7a9fab8ba8bb9d21c9284cbf14bc67226d2ef9d3
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80289739"
 ---
-Pomocí tohoto rychlého startu můžete začít hledat novinky v klientské knihovně Bing Video Search pro Python. Zatímco hledání videa Bing má rozhraní REST API kompatibilní s většinou programovacích jazyků, klientská knihovna poskytuje snadný způsob integrace služby do vašich aplikací. Zdrojový kód pro tuto ukázku lze nalézt na [GitHubu](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/video_search_samples.py) s dalšími anotacemi a funkcemi.
+V tomto rychlém startu můžete začít hledat zprávy pomocí klientské knihovny Vvyhledávání videí Bingu pro Python. I když Vvyhledávání videí Bingu má REST API kompatibilní s většinou programovacích jazyků, Klientská knihovna poskytuje snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/video_search_samples.py) s dalšími poznámkami a funkcemi.
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](~/includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Python](https://www.python.org/) 2.x nebo 3.x
-- Klientská knihovna Bing Video Search pro python
+- [Python](https://www.python.org/) 2. x nebo 3. x
+- Klientská knihovna Vvyhledávání videí Bingu pro Python
 
-Doporučujeme použít [virtuální prostředí](https://docs.python.org/3/tutorial/venv.html)pythonu . Virtuální prostředí můžete nainstalovat a inicializovat pomocí [modulu venv](https://pypi.python.org/pypi/virtualenv). Nainstalujte virtualenv pro Python 2.7 s:
+Doporučuje se používat [virtuální prostředí](https://docs.python.org/3/tutorial/venv.html)Python. Virtuální prostředí můžete nainstalovat a inicializovat pomocí [modulu venv](https://pypi.python.org/pypi/virtualenv). Nainstalujte virtualenv pro Python 2,7 s:
 
 ```console
 python -m venv mytestenv
 ```
 
-Nainstalujte klientskou knihovnu Bing Video Search pomocí:
+Nainstalujte knihovnu klienta Vvyhledávání videí Bingu pomocí nástroje:
 
 ```console
 cd mytestenv
@@ -39,7 +39,7 @@ python -m pip install azure-cognitiveservices-search-videosearch
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. Vytvořte nový soubor Pythonu ve svém oblíbeném rozhraní IDE nebo editoru a přidejte následující příkazy importu. 
+1. Vytvořte nový soubor Pythonu v oblíbeném prostředí IDE nebo editoru a přidejte následující příkazy importu. 
 
     ```python
     from azure.cognitiveservices.search.videosearch import VideoSearchClient
@@ -62,15 +62,15 @@ Vytvořte instanci třídy `CognitiveServicesCredentials` a vytvořte instanci k
 client = VideoSearchAPI(endpoint, CognitiveServicesCredentials(subscription_key))
 ```
 
-## <a name="send-a-search-request-and-get-a-response"></a>Odeslání žádosti o vyhledávání a získání odpovědi
+## <a name="send-a-search-request-and-get-a-response"></a>Odeslat žádost o hledání a získat odpověď
 
-1. Pomocí `client.videos.search()` vyhledávacího dotazu odešlete požadavek do rozhraní API pro vyhledávání videí Bingu a získejte odpověď.
+1. Pomocí `client.videos.search()` vyhledávacího dotazu můžete odeslat žádost do rozhraní API Bingu pro vyhledávání videí a získat odpověď.
 
     ```python
     video_result = client.videos.search(query="SwiftKey")
     ```
 
-2. Pokud odpověď obsahuje výsledky hledání, získejte první a vytiskněte její ID, název a adresu URL.
+2. Pokud odpověď obsahuje výsledky hledání, získejte první z nich a vytiskněte jeho ID, název a adresu URL.
 
     ```python
     if video_result.value:
@@ -86,9 +86,9 @@ client = VideoSearchAPI(endpoint, CognitiveServicesCredentials(subscription_key)
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové aplikace pro jednu stránku](../../tutorial-bing-video-search-single-page-app.md)
+> [Vytvoření webové aplikace s jednou stránkou](../../tutorial-bing-video-search-single-page-app.md)
 
 ## <a name="see-also"></a>Viz také 
 
 - [Co je rozhraní API Bingu pro vyhledávání videí?](../../overview.md)
-- [Ukázky sady Cognitive Services .NET SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
+- [Ukázky sady .NET SDK pro rozpoznávání služeb](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

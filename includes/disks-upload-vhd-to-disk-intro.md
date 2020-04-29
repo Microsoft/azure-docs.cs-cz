@@ -9,12 +9,12 @@ ms.date: 03/27/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: e96d205ef1a8f94baa3a0cfe6c5127b6cf570e5a
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80420959"
 ---
-Tento článek vysvětluje, jak buď nahrát virtuální pevný disk z místního počítače na spravovaný disk Azure nebo zkopírovat spravovaný disk do jiné oblasti pomocí AzCopy. Tento proces, přímé nahrávání, také umožňuje nahrát VHD až 32 TiB ve velikosti přímo do spravovaného disku. V současné době je přímé nahrávání podporováno pro standardní disky spravované pevným diskem, standardním SSD disky a prémiovými disky spravovanými ssd. To není podporováno pro ultra disky, zatím.
+Tento článek vysvětluje, jak nahrát VHD z místního počítače na spravovaný disk Azure nebo zkopírovat spravovaný disk do jiné oblasti pomocí AzCopy. Tento proces, přímé nahrávání, vám také umožní nahrát virtuální pevný disk až do 32 TiB velikosti přímo do spravovaného disku. V současné době se podporuje přímé nahrávání pro disky Standard HDD, Standard SSD a Premium SSD. U disků s Ultra ještě není podporováno.
 
-Pokud poskytujete řešení zálohování pro virtuální počítače IaaS v Azure, doporučujeme k obnovení záloh zákazníků na spravované disky použít přímé nahrávání. Při nahrávání virtuálního pevného disku ze zdroje externího do Azure by rychlost závisela na místní šířce pásma. Při nahrávání nebo kopírování z virtuálního počítače Azure by vaše šířka pásma byla stejná jako u standardních pevných disků.
+Pokud poskytujete řešení zálohování pro virtuální počítače s IaaS v Azure, doporučujeme použít přímé nahrávání pro obnovení záloh zákazníka na spravované disky. Když nahráváte virtuální pevný disk ze zdrojového externího prostředí do Azure, budou se vám na základě vaší místní šířky pásma spoléhat i rychlost. Při nahrávání nebo kopírování z virtuálního počítače Azure by šířka pásma byla stejná jako u standardních HDD.

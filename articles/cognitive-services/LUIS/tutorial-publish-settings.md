@@ -1,25 +1,25 @@
 ---
-title: 'Kurz: Publikovat nastavení - LUIS'
-description: V tomto kurzu změňte nastavení publikování získat zlepšení předpovědi.
+title: 'Kurz: nastavení publikování – LUIS'
+description: V tomto kurzu můžete změnit nastavení publikování a získat tak vylepšení předpovědi.
 ms.topic: tutorial
 ms.date: 04/01/2020
 ms.openlocfilehash: 19913d16ecb1457ad4edb93ea34e4b96a590aca0
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80545779"
 ---
 # <a name="tutorial--add-sentiment-analysis-as-a-publishing-setting"></a>Kurz: Přidání analýzy mínění jako nastavení publikování
 
-V tomto kurzu upravte nastavení publikování extrahovat analýzu mínění a pak dotaz u koncového bodu LUIS zobrazíte vrácené mínění uživatele utterance.
+V tomto kurzu upravíte nastavení publikování pro extrakci analýzy mínění a pak dotaz na koncový bod LUIS, abyste viděli vrácenou mínění uživatele utterance.
 
-**V tomto kurzu se dozvíte, jak:**
+**V tomto kurzu se naučíte:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Přidání analýzy mínění jako nastavení publikování
-> * Získat mínění utterance z publikovaného koncového bodu
+> * Přidat analýzu mínění jako nastavení publikování
+> * Získat mínění z utterance z publikovaného koncového bodu
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
@@ -29,14 +29,14 @@ Následující promluvy ukazují příklady mínění:
 
 |Mínění|Skóre|Promluva|
 |:--|:--|:--|
-|negativní|0.01 |Pizza byla hrozná.|
-|pozitivní|0.97 |Sýrová pizza byla úžasná.|
+|negativní|0,01 |Pizza byl awful.|
+|pozitivní|0,97 |Pizza sýr je vynikající.|
 
-Analýza mínění je nastavení publikování, které se vztahuje na všechny promluvy. Po nastavení aplikace vrátí mínění utterance bez nutnosti označovat data.
+Analýza mínění je nastavení publikování, které se vztahuje na všechny promluvy. Po nastavení aplikace vrátí mínění pro utterance, aniž byste museli označovat data.
 
-Vzhledem k tomu, že se jedná o nastavení publikování, nevidíte jej na stránkách záměrů nebo entit. Zobrazuje se v podokně [interaktivního testu](luis-interactive-test.md#view-sentiment-results) nebo při testování na adrese URL koncového bodu.
+Vzhledem k tomu, že se jedná o nastavení publikování, nezobrazují se na stránkách záměry nebo entity. Zobrazuje se v podokně [interaktivního testu](luis-interactive-test.md#view-sentiment-results) nebo při testování na adrese URL koncového bodu.
 
-## <a name="import-example-json-to-begin-app"></a>Import příkladu json pro spuštění aplikace
+## <a name="import-example-json-to-begin-app"></a>Import example. JSON pro zahájení aplikace
 
 1.  Stáhněte a uložte [soubor JSON aplikace](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json).
 
@@ -48,18 +48,18 @@ Vzhledem k tomu, že se jedná o nastavení publikování, nevidíte jej na str�
 
 ## <a name="configure-app-to-include-sentiment-analysis"></a>Konfigurace aplikace pro zahrnutí analýzy mínění
 
-1. V horní nabídce vyberte **Publikovat.** Analýza mínění je nastavení publikování.
+1. V horní nabídce vyberte **publikovat** . Analýza mínění je nastavení publikování.
 
-1. Vyberte **Produkční patu** a pak vyberte **Změnit nastavení**.
-1. Nastavte nastavení Analýzy mínění **na Zapnuto**.
+1. Vyberte **produkční slot** a pak vyberte **změnit nastavení**.
+1. Nastavte Analýza mínění nastavení na **zapnuto**.
 
-    ![Zapnutí analýzy mínění jako nastavení publikování](./media/luis-quickstart-intent-and-sentiment-analysis/select-sentiment-publishing-setting.png)
+    ![Zapnout Analýza mínění jako nastavení publikování](./media/luis-quickstart-intent-and-sentiment-analysis/select-sentiment-publishing-setting.png)
 
 ## <a name="get-the-sentiment-of-an-utterance-from-the-endpoint"></a>Získat mínění utterance z koncového bodu
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Přejděte na konec adresy URL v adresním řádku a nahraďte _YOUR_QUERY_HERE:_
+1. V adresním řádku pokračujte na konec adresy URL a nahraďte _YOUR_QUERY_HERE_ :
 
     `Deliver 2 of the best cheese pizzas ever!!!`
 
@@ -112,16 +112,16 @@ Vzhledem k tomu, že se jedná o nastavení publikování, nevidíte jej na str�
     }
     ```
 
-    Analýza mínění je pozitivní se skóre 86%.
+    Analýza mínění je kladná s skóre 86%.
 
 [!INCLUDE [LUIS How to clean up resources](includes/quickstart-tutorial-cleanup-resources.md)]
 
 ## <a name="related-information"></a>Související informace
 
-* Analýzu mínění poskytuje služba Cognitive Service [Text Analytics](../Text-Analytics/index.yml). Tato funkce je omezena na [jazyky podporované](luis-language-support.md#languages-supported)službou Text Analytics .
-* [Jak trénovat](luis-how-to-train.md)
+* Mínění je k dispozici pomocí [Analýza textu](../Text-Analytics/index.yml)služby pro rozpoznávání. Tato funkce je omezená, aby Analýza textu [podporované jazyky](luis-language-support.md#languages-supported).
+* [Postup výuky](luis-how-to-train.md)
 * [Jak publikovat](luis-how-to-publish-app.md)
-* [Jak testovat na portálu LUIS](luis-interactive-test.md)
+* [Testování na portálu LUIS](luis-interactive-test.md)
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Vytvoření vlastního hlasového asistenta – služba Řeči'
+title: 'Rychlý Start: Vytvoření vlastního hlasového asistenta – Speech Service'
 titleSuffix: Azure Cognitive Services
-description: V tomto článku budete používat sady Speech SDK k vytvoření vlastního hlasového asistenta.
+description: V tomto článku použijete sadu Speech SDK k vytvoření vlastního hlasového asistenta.
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -12,13 +12,13 @@ ms.date: 02/10/2020
 ms.author: travisw
 zone_pivot_groups: programming-languages-set-fourteen
 ms.openlocfilehash: 4e0cf7a977e0369e6bae4a44fcb22563226a3501
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80241203"
 ---
-# <a name="quickstart-create-a-custom-voice-assistant"></a>Úvodní příručka: Vytvoření vlastního hlasového asistenta
+# <a name="quickstart-create-a-custom-voice-assistant"></a>Rychlý Start: Vytvoření vlastního hlasového asistenta
 
 [!INCLUDE [Header](../includes/quickstarts/voice-assistants/header.md)]
 

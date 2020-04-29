@@ -1,13 +1,13 @@
 ---
-title: 'Úvodní příručka: vytvoření aplikace – LUIS'
-description: Tento rychlý start ukazuje, jak vytvořit aplikaci `HomeAutomation` LUIS, která používá předem připravenou doménu pro zapnutí a vypnutí světel a zařízení. Tato předem připravená doména poskytuje záměry, entity a příklady promluv. Až budete hotovi, budete mít koncový bod služby LUIS spuštěný v cloudu.
+title: 'Rychlý Start: Vytvoření aplikace – LUIS'
+description: V tomto rychlém startu se dozvíte, jak vytvořit aplikaci LUIS, která `HomeAutomation` používá předem vytvořenou doménu pro zapnutí a vypnutí světla a zařízení. Tato předem připravená doména poskytuje záměry, entity a příklady promluv. Až budete hotovi, budete mít koncový bod služby LUIS spuštěný v cloudu.
 ms.topic: quickstart
 ms.date: 03/24/2020
 ms.openlocfilehash: de6cf5e95ee63fc9500cf1b5edab78597bdb18af
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80287794"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Rychlý start: Použití předem připravené aplikace domácí automatizace
@@ -23,28 +23,28 @@ Aplikace můžete vytvářet a spravovat na stránce **My Apps** (Moje aplikace)
 
 1. V seznamu Moje aplikace vyberte **+ Nová aplikace pro konverzaci**.
 
-1. V dialogovém okně pojmenujte aplikaci `Home Automation`. Jako **jazykovou** verzi vyberte angličtinu. Popis je volitelný a nepoužívá se pro vytváření nebo předpověď. Prostředek předpověď je také volitelné při vytváření aplikace LUIS. Vyberte **Done** (Hotovo).
+1. Do dialogového okna zadejte název aplikace `Home Automation`. Jako jazykovou verzi vyberte **angličtinu** . Popis je volitelný a není používán k vytváření nebo předpovědi. Při vytváření aplikace v LUIS je prostředek předpovědi také nepovinný. Vyberte **Done** (Hotovo).
 
-    Luis vytvoří aplikaci. Když publikujete aplikaci do produkčního prostředí, měli byste přiřadit prostředek předpovědi, aby vaše aplikace mohla zpracovat mnoho požadavků.
+    LUIS vytvoří aplikaci. Když publikujete aplikaci do produkčního prostředí, měli byste přiřadit prostředek předpovědi, aby vaše aplikace mohla zvládnout mnoho požadavků.
 
-    ![V dialogovém okně pojmenujte aplikaci "Domácí automatizace"](./media/create-new-app-details.png)
+    ![V dialogovém okně pojmenujte svou aplikaci jako domovskou automatizaci.](./media/create-new-app-details.png)
 
     >[!NOTE]
     >Jakmile se aplikace vytvoří, nemůžete změnit její jazykovou verzi.
 
 ## <a name="add-prebuilt-domain"></a>Přidání předem připravené domény
 
-Vyberte **předem vytvořené domény** a vyhledejte **službu HomeAutomation**. Na kartě HomeAutomation vyberte **Přidat doménu.**
+Vyberte **předem připravené domény** a pak vyhledejte **HomeAutomation**. Na kartě HomeAutomation vyberte **Přidat doménu** .
 
-![Vyberte možnost Předem sestavené domény a vyhledejte možnost HomeAutomation. Na kartě HomeAutomation vyberte možnost Přidat doménu.](media/luis-quickstart-new-app/home-automation.png)
+![Vyberte předem sestavené domény a vyhledejte "HomeAutomation". Na kartě HomeAutomation vyberte Přidat doménu.](media/luis-quickstart-new-app/home-automation.png)
 
 Po úspěšném přidání domény pak pole předem připravené domény zobrazuje tlačítko **Remove domain** (Odebrat doménu).
 
 ## <a name="intents-and-entities"></a>Záměry a entity
 
-Vyberte **záměry** ke kontrole záměrů domény HomeAutomation. Předem vytvořené záměry domény mají ukázkové projevy.
+Pokud chcete zkontrolovat záměry domény HomeAutomation, vyberte **záměry** . Předem sestavené záměry domény mají ukázkovou projevy.
 
-![Snímek obrazovky se seznamem záměrů homeautomation](media/luis-quickstart-new-app/home-automation-intents.png "Snímek obrazovky se seznamem záměrů homeautomation")
+![Snímek obrazovky seznamu HomeAutomation záměrů](media/luis-quickstart-new-app/home-automation-intents.png "Snímek obrazovky seznamu HomeAutomation záměrů")
 
 > [!NOTE]
 > **None** (Žádný) je záměr, který poskytují všechny aplikace LUIS. Používá se ke zpracování promluv, které neodpovídají funkci poskytované vaší aplikací.
@@ -60,7 +60,7 @@ Vyberte záměr **HomeAutomation.TurnOff**. Vidíte, že záměr obsahuje seznam
 ## <a name="test-your-app"></a>Testování aplikace
 Jakmile aplikaci vytrénujete, můžete ji otestovat.
 
-1. Z navigace vpravo nahoře vyberte **Testovat.** 1. Zadejte testovací projev `Turn off the lights` jako do interaktivního testovacího podokna a stiskněte Enter.
+1. Vyberte **test** z pravé horní navigační části. 1. Zadejte utterance testu jako `Turn off the lights` do interaktivního testovacího podokna a stiskněte klávesu ENTER.
 
     ```
     Turn off the lights
@@ -68,15 +68,15 @@ Jakmile aplikaci vytrénujete, můžete ji otestovat.
 
     Zkontrolujte, že záměr s nejvyšším bodováním odpovídá záměru, který jste pro jednotlivé testovací promluvy očekávali.
 
-    V tomto `Turn off the lights` příkladu je správně identifikován jako hlavní bodování záměr **HomeAutomation.TurnOff**.
+    V tomto příkladu `Turn off the lights` je správně identifikován jako nejlepší vyhodnocovací záměr **HomeAutomation. TurnOff**.
 
     ![Snímek obrazovky testovacího panelu se zvýrazněnou promluvou](media/luis-quickstart-new-app/review-test-inspection-pane-in-portal.png)
 
-1. Chcete-li zkontrolovat další informace o předpovědi, vyberte **možnost Zkontrolovat.**
+1. Pokud si chcete prohlédnout Další informace o předpovědi, vyberte **zkontrolovat** .
 
-    ![Snímek obrazovky panelu Test s informacemi o kontrole](media/luis-quickstart-new-app/test.png)
+    ![Snímek obrazovky testovacího panelu s informacemi o kontrole](media/luis-quickstart-new-app/test.png)
 
-1. Zavřete testovací podokno.
+1. Zavřete podokno test.
 
 <a name="publish-your-app"></a>
 
@@ -86,18 +86,18 @@ Jakmile aplikaci vytrénujete, můžete ji otestovat.
 
 <a name="query-the-v2-api-prediction-endpoint"></a>
 
-## <a name="query-the-v3-api-prediction-endpoint"></a>Dotaz na koncový bod předpovědi rozhraní API V3
+## <a name="query-the-v3-api-prediction-endpoint"></a>Dotaz na koncový bod prediktivního rozhraní API V3
 
 [!INCLUDE [LUIS How to get endpoint first step](./includes/v3-prediction-endpoint.md)]
 
-2. V adresním řádku prohlížeče se pro řetězec dotazu ujistěte, že v adrese URL jsou následující panely názvů a hodnot. Pokud nejsou v řetězci dotazu, přidejte je:
+2. V adresním řádku prohlížeče pro řetězec dotazu se ujistěte, že jsou v adrese URL následující řádky názvů a hodnot. Pokud nejsou v řetězci dotazu, přidejte je:
 
     |Dvojice název/hodnota|
     |--|
     |`verbose=true`|
     |`show-all-intents=true`|
 
-3. V adresním řádku prohlížeče přejděte na konec `turn off the living room light` adresy URL a zadejte hodnotu _dotazu_ a stiskněte Enter.
+3. V adresním řádku prohlížeče přejděte na konec adresy URL a zadejte `turn off the living room light` hodnotu _dotazu_ a potom stiskněte klávesu ENTER.
 
     ```json
     {
@@ -188,7 +188,7 @@ Jakmile aplikaci vytrénujete, můžete ji otestovat.
     }
     ```
 
-    Další informace o [koncovém bodu predikce V3](luis-migration-api-v3.md).
+    Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

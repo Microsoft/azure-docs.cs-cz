@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Navrhněte vyhledávací dotazy pomocí rozhraní API PRO automatické návrhy služby Bing a jazyka C #'
+title: 'Rychlý Start: Navrhněte vyhledávací dotazy pomocí Automatické návrhy Bingu REST API a C. #'
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak rychle začít navrhovat hledané termíny v reálném čase pomocí rozhraní API automatického návrhu Bingu.
+description: Naučte se, jak rychle začít navrhovat hledané výrazy v reálném čase pomocí rozhraní API pro automatické návrhy Bingu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,26 +11,26 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: aahi
 ms.openlocfilehash: 6c60516a87dbdc51e19bac5ee9b30f2f1a8b0254
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80239023"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-c"></a>Úvodní příručka: Navrhněte vyhledávací dotazy pomocí rozhraní API PRO automatické návrhy služby Bing a jazyka C #
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-c"></a>Rychlý Start: Navrhněte vyhledávací dotazy pomocí Automatické návrhy Bingu REST API a C. #
 
-Pomocí tohoto rychlého startu můžete začít volat do rozhraní API automatického návrhu Bingu a získat odpověď JSON. Tato jednoduchá aplikace jazyka C# odešle částečný vyhledávací dotaz do rozhraní API a vrátí návrhy pro vyhledávání. Aplikace je sice napsaná v C#, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs).
+Pomocí tohoto rychlého startu můžete začít volat rozhraní API pro automatické návrhy Bingu a získat odpověď JSON. Tato jednoduchá aplikace v jazyce C# pošle do rozhraní API částečný vyhledávací dotaz a vrátí návrhy pro hledání. Aplikace je sice napsaná v C#, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Libovolná edice [Visual Studia 2017 nebo novější](https://www.visualstudio.com/downloads/).
+* Libovolná edice sady [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/).
 * Pokud používáte Linux nebo MacOS, je možné tuto aplikaci spustit pomocí [Mono](https://www.mono-project.com/).
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
 
-## <a name="create-a-visual-search-solution"></a>Vytvoření řešení vizuálního vyhledávání
+## <a name="create-a-visual-search-solution"></a>Vytvoření řešení Vizuální vyhledávání
 
-1. Vytvořte nové řešení konzoly v sadě Visual Studio. Pak přidejte následující obory názvů do souboru hlavního kódu.
+1. Vytvořte nové řešení konzoly v aplikaci Visual Studio. Pak přidejte následující obory názvů do souboru hlavního kódu.
 
     ```csharp
     using System;
@@ -40,7 +40,7 @@ Pomocí tohoto rychlého startu můžete začít volat do rozhraní API automati
     using System.Text;
     ```
 
-2. V nové třídě vytvořte proměnné pro hostitele rozhraní API a cestu, [kód trhu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)a částečný vyhledávací dotaz. Můžete použít globální koncový bod níže nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený na portálu Azure pro váš prostředek.
+2. V nové třídě vytvořte proměnné pro hostitele rozhraní API a cestu, [kód trhu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)a částečný vyhledávací dotaz. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```csharp
     static string host = "https://api.cognitive.microsoft.com";
@@ -52,9 +52,9 @@ Pomocí tohoto rychlého startu můžete začít volat do rozhraní API automati
     ```
 
 
-## <a name="create-and-send-an-api-request"></a>Vytvoření a odeslání požadavku rozhraní API
+## <a name="create-and-send-an-api-request"></a>Vytvoření a odeslání žádosti rozhraní API
 
-1. Vytvořte funkci `Autosuggest()` volanou k odeslání požadavku do rozhraní API. Vytvořte `HttpClient()`nový a přidejte klíč `Ocp-Apim-Subscription-Key` předplatného do záhlaví.
+1. Vytvořte funkci volanou `Autosuggest()` k odeslání žádosti do rozhraní API. Vytvořte nový `HttpClient()`a přidejte do `Ocp-Apim-Subscription-Key` záhlaví klíč předplatného.
 
     ```csharp
     async static void Autosuggest()
@@ -65,13 +65,13 @@ Pomocí tohoto rychlého startu můžete začít volat do rozhraní API automati
     }
     ```
 
-2. Ve stejné funkci výše vytvořte identifikátor URI požadavku kombinací hostitele rozhraní API a cesty. Přidejte svůj trh `?mkt=` k parametru a `&query=` dotaz na parametr. Nezapomeňte dotaz zakódovat adresou URL. 
+2. Ve stejné funkci výše vytvořte identifikátor URI žádosti kombinací hostitele rozhraní API a cesty. Přidejte svůj trh k `?mkt=` parametru a dotaz do `&query=` parametru. Nezapomeňte dotaz zakódovat na adrese URL. 
 
     ```csharp
     string uri = host + path + "?mkt=" + market + "&query=" + System.Net.WebUtility.UrlEncode (query);
     ```
 
-3. Odešlete požadavek uri vyrobeno výše a vytisknout odpověď.
+3. Odešlete požadavek na identifikátor URI sestavený výše a vytiskněte odpověď.
 
     ```csharp
     HttpResponseMessage response = await client.GetAsync(uri);
@@ -80,7 +80,7 @@ Pomocí tohoto rychlého startu můžete začít volat do rozhraní API automati
     Console.WriteLine(contentString);
     ```
 
-4. V hlavní metodě programu `Autosuggest()`volejte .
+4. V metodě Main programu zavolejte `Autosuggest()`.
 
     ```csharp
     static void Main(string[] args)

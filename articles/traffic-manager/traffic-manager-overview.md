@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 11/23/2019
 ms.author: rohink
 ms.openlocfilehash: 6eb1ce18f3bc6674efd5343306fff617bc9cd1f7
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80060801"
 ---
 # <a name="what-is-traffic-manager"></a>Co je Traffic Manager?
@@ -25,9 +25,9 @@ Azure Traffic Manager je nástroj pro vyrovnávání zatížení provozu na zák
 Traffic Manager pomocí DNS směruje požadavky klientů do nejvhodnějšího koncového bodu služby v závislosti na metodě směrování provozu a stavu koncových bodů. Koncový bod je jakákoli internetová služba hostovaná v rámci nebo mimo Azure. Traffic Manager poskytuje celou řadu [metod směrování provozu](traffic-manager-routing-methods.md) a [možností monitorování koncových bodů](traffic-manager-monitoring.md), takže vyhovuje různým požadavkům aplikací a modelům automatického převzetí služeb při selhání. Služba Traffic Manager je odolná vůči selhání, a to i selhání celé oblasti Azure.
 
 >[!NOTE]
-> Azure pro vaše scénáře poskytuje sadu plně spravovaných řešení pro vyrovnávání zatížení. Pokud chcete zajistit ukončování protokolu TLS (tzv. přesměrování zpracování SSL) nebo zpracování jednotlivých požadavků HTTP nebo HTTPS na úrovni aplikace, přečtěte si o službě [Application Gateway](../application-gateway/application-gateway-introduction.md). Pokud hledáte regionální vyrovnávání zatížení, přečtěte si [kontrolu Vyrovnávání zatížení](../load-balancer/load-balancer-overview.md). Vašim kompletním scénářům by mohla prospět kombinace těchto řešení podle potřeby.
+> Azure pro vaše scénáře poskytuje sadu plně spravovaných řešení pro vyrovnávání zatížení. Pokud chcete zajistit ukončování protokolu TLS (tzv. přesměrování zpracování SSL) nebo zpracování jednotlivých požadavků HTTP nebo HTTPS na úrovni aplikace, přečtěte si o službě [Application Gateway](../application-gateway/application-gateway-introduction.md). Pokud hledáte regionální vyrovnávání zatížení, přečtěte si [Load Balancer](../load-balancer/load-balancer-overview.md). Vašim kompletním scénářům by mohla prospět kombinace těchto řešení podle potřeby.
 >
-> Porovnání možností vyrovnávání zatížení Azure najdete [v tématu Přehled možností vyrovnávání zatížení v Azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
+> Porovnání možností vyrovnávání zatížení Azure najdete v tématu [Přehled možností vyrovnávání zatížení v Azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
 
 Traffic Manager nabízí následující funkce:
 
@@ -41,7 +41,7 @@ Azure umožňuje provozovat cloudové služby nebo weby v datacentrech umístěn
 
 ## <a name="perform-service-maintenance-without-downtime"></a>Provádění údržby služeb bez výpadků
 
-U svých aplikací můžete provádět operace plánované údržby bez jakýchkoli výpadků. Traffic Manager může směrovat provoz na alternativní koncové body, zatímco probíhá údržba.
+U svých aplikací můžete provádět operace plánované údržby bez jakýchkoli výpadků. Traffic Manager může směrovat provoz do alternativních koncových bodů, zatímco probíhá údržba.
 
 ## <a name="combine-hybrid-applications"></a>Kombinace hybridních aplikací
 
@@ -49,7 +49,7 @@ Traffic Manager podporuje externí koncové body mimo Azure a díky tomu umožň
 
 ## <a name="distribute-traffic-for-complex-deployments"></a>Distribuce provozu pro komplexní nasazení
 
-Pomocí [vnořených profilů Traffic Manageru](traffic-manager-nested-profiles.md)lze více metod směrování provozu kombinovat a vytvářet tak sofistikovaná a flexibilní pravidla pro škálování podle potřeb větších a složitějších nasazení.
+Pomocí [vnořených profilů Traffic Manager](traffic-manager-nested-profiles.md)lze kombinovat různé metody směrování provozu, aby bylo možné vytvářet sofistikovaná a flexibilní pravidla pro škálování na požadavky většího, složitějšího nasazení.
 
 ## <a name="pricing"></a>Ceny
 

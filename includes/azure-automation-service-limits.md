@@ -9,55 +9,55 @@ ms.date: 12/13/2018
 ms.author: gwallace
 ms.custom: include file
 ms.openlocfilehash: d700dfcf5a7b6e9ada2a755335689ffa571e4c3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80334675"
 ---
 #### <a name="process-automation"></a>Automatizace procesů
 
 | Prostředek | Omezení |Poznámky|
 | --- | --- |---|
-| Maximální počet nových úloh, které lze odeslat každých 30 sekund na účet Azure Automation (neplánované úlohy) |100 |Po dosažení tohoto limitu se následné požadavky na vytvoření úlohy nezdaří. Klient obdrží odpověď na chybu.|
-| Maximální počet souběžných spuštěných úloh ve stejné instanci času na účet automatizace (neplánované úlohy) |200 |Po dosažení tohoto limitu se následné požadavky na vytvoření úlohy nezdaří. Klient obdrží odpověď na chybu.|
-| Maximální velikost úložiště metadat úlohy pro 30denní klouzavé období | 10 GB (přibližně 4 miliony pracovních míst)|Po dosažení tohoto limitu se následné požadavky na vytvoření úlohy nezdaří. |
-| Maximální limit datového proudu úloh|1 MB|Jeden datový proud nemůže být větší než 1 MB.|
-| Maximální počet modulů, které lze importovat každých 30 sekund na účet automatizace |5 ||
+| Maximální počet nových úloh, které se dají odesílat každých 30 sekund na účet Azure Automation (neplánované úlohy) |100 |Po dosažení tohoto limitu selžou následné požadavky na vytvoření úlohy. Klient obdrží chybovou odpověď.|
+| Maximální počet souběžně spuštěných úloh na stejné instanci času na účet služby Automation (neplánované úlohy) |200 |Po dosažení tohoto limitu selžou následné požadavky na vytvoření úlohy. Klient obdrží chybovou odpověď.|
+| Maximální velikost úložiště metadat úlohy pro dobu provozu za 30 dní | 10 GB (přibližně 4 000 000 úloh)|Po dosažení tohoto limitu selžou následné požadavky na vytvoření úlohy. |
+| Maximální limit počtu datových proudů úloh|1 MB|Jeden datový proud nemůže být větší než 1 MB.|
+| Maximální počet modulů, které se dají importovat každých 30 sekund na účet Automation |5 ||
 | Maximální velikost modulu |100 MB ||
 | Doba běhu úlohy, úroveň Free |500 minut na předplatné za kalendářní měsíc ||
-| Maximální povolené množství místa na disku v izolovaném prostoru<sup>1</sup> |1 GB |Platí pouze pro karantény zabezpečení Azure.|
-| Maximální množství paměti dané izolovanému prostoru<sup>1</sup> |400 MB |Platí pouze pro karantény zabezpečení Azure.|
-| Maximální povolený počet síťových soketů na izolované mši<sup>1</sup> |1 000 |Platí pouze pro karantény zabezpečení Azure.|
-| Maximální povolený čas běhu na runbook<sup>1</sup> |3 hodiny |Platí pouze pro karantény zabezpečení Azure.|
-| Maximální počet účtů automatizace v předplatném |Bez omezení ||
-| Maximální počet hybridních skupin pracovních procesů na účet automatizace|4 000||
-|Maximální počet souběžných úloh, které lze spustit na jednom hybridním pracovníkovi runbooku|50 ||
-| Maximální velikost parametru úlohy runbooku   | 512 kilobitů||
-| Maximální parametry runbooku   | 50|Pokud dosáhnete limitu 50 parametrů, můžete zadat řetězec JSON nebo XML parametru a analyzovat jej pomocí runbooku.|
-| Maximální velikost datové části webového háku |  512 kilobitů|
-| Maximální počet dní, po které jsou data úlohy zachována|30 dní|
-| Maximální velikost stavu pracovního postupu prostředí PowerShell |5 MB| Platí pro runbooky pracovního postupu Prostředí PowerShell při vytváření kontrolních bodů pracovního postupu.|
+| Maximální povolené množství místa na disku na izolovaný prostor<sup>1</sup> |1 GB |Platí jenom pro sandboxy Azure.|
+| Maximální velikost paměti přidělené izolovanému prostoru<sup>1</sup> |400 MB |Platí jenom pro sandboxy Azure.|
+| Maximální povolený počet síťových soketů na izolovaný prostor<sup>1</sup> |1 000 |Platí jenom pro sandboxy Azure.|
+| Maximální povolený běh na Runbook<sup>1</sup> |3 hodiny |Platí jenom pro sandboxy Azure.|
+| Maximální počet účtů Automation v předplatném |Bez omezení ||
+| Maximální počet Hybrid Worker skupin na účet Automation|4 000||
+|Maximální počet souběžných úloh, které lze spustit na jednom Hybrid Runbook Worker|50 ||
+| Maximální velikost parametru úlohy Runbooku   | 512 kilobitů||
+| Maximální počet parametrů Runbooku   | 50|Pokud dosáhnete limitu 50 parametrů, můžete předat řetězci JSON nebo XML do parametru a analyzovat ho pomocí Runbooku.|
+| Maximální velikost datové části Webhooku |  512 kilobitů|
+| Maximální počet dní, po které se uchovávají data úlohy|30 dní|
+| Maximální velikost stavu pracovního postupu PowerShellu |5 MB| Platí pro Runbooky pracovního postupu PowerShellu při vytváření kontrolního bodu.|
 
-<sup>1.</sup> Izolovaného prostoru je sdílené prostředí, které může používat více úloh. Úlohy, které používají stejnou oblast složky složky složky, jsou vázány omezeními prostředků izolovaného prostoru.
+<sup>1</sup> Izolovaný prostor (sandbox) je sdílené prostředí, které může používat víc úloh. Úlohy, které používají stejný izolovaný prostor (sandbox), jsou vázány omezeními prostředků izolovaného prostoru.
 
 #### <a name="change-tracking-and-inventory"></a>Change Tracking a Inventory
 
-V následující tabulce jsou uvedeny limity sledovaných položek pro sledování změn na počítač.
+V následující tabulce jsou uvedené limity sledovaných položek na počítač pro sledování změn.
 
-| **Zdrojů** | **Limit**| **Poznámky** |
+| **Prostředek** | **Počtu**| **Poznámky** |
 |---|---|---|
 |File|500||
 |Registr|250||
-|Software windows|250|Nezahrnuje aktualizace softwaru.|
-|Balíčky linuxu|1,250||
+|Software systému Windows|250|Neobsahuje aktualizace softwaru.|
+|Balíčky Linux|1 250||
 |Služby|250||
-|Daemon|250||
+|Proces|250||
 
 #### <a name="update-management"></a>Update Management
 
-V následující tabulce jsou uvedena omezení pro správu aktualizací.
+V následující tabulce jsou uvedena omezení pro Update Management.
 
-| **Zdrojů** | **Limit**| **Poznámky** |
+| **Prostředek** | **Počtu**| **Poznámky** |
 |---|---|---|
 |Počet počítačů na nasazení aktualizace|1000||

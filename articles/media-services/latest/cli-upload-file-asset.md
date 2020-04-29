@@ -15,20 +15,20 @@ ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
 ms.openlocfilehash: 5d1dc90832a399aa9ee253b2c7962b8536c1926a
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80383000"
 ---
-# <a name="azure-cli-example-upload-a-local-file-to-a-container"></a>Příklad azure cli: Nahrání místního souboru do kontejneru
+# <a name="azure-cli-example-upload-a-local-file-to-a-container"></a>Příklad rozhraní příkazového řádku Azure: nahrání místního souboru do kontejneru
 
 Skript Azure CLI v tomto článku znázorňuje, jak nahrát místní soubor do kontejneru úložiště.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Vytvořte účet mediálních služeb](create-account-cli-how-to.md).
-* Zkontrolujte [správu majetku](manage-asset-concept.md).
+* [Vytvořte účet Media Services](create-account-cli-how-to.md).
+* Projděte si téma [Správa prostředků](manage-asset-concept.md).
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
@@ -63,4 +63,4 @@ read continue
 
 ## <a name="next-steps"></a>Další kroky
 
-[Přehled mediálních služeb](media-services-overview.md)
+[Přehled Media Services](media-services-overview.md)

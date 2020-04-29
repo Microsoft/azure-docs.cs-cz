@@ -1,53 +1,53 @@
 ---
-title: Rychlá oprava nápravy doporučení poradce
-description: Provedení hromadné nápravy pomocí rychlé opravy v poradci
+title: Rychlá oprava nápravy pro doporučení poradce
+description: Provést hromadnou nápravu pomocí rychlé opravy v Advisoru
 ms.topic: article
 ms.date: 03/13/2020
 ms.author: sagupt
 ms.openlocfilehash: 3c3ac27f04aa516fbef1bfff30e3392659b58919
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79502487"
 ---
 # <a name="quick-fix-remediation-for-advisor"></a>Rychlá oprava nápravy pro poradce
-**Rychlá oprava** umožňuje rychlejší a snadnější způsob nápravy pro doporučení pro více prostředků. Poskytuje možnost hromadné nápravy prostředků a pomáhá optimalizovat vaše předplatná rychleji s nápravou ve velkém měřítku pro vaše prostředky.
-Tato funkce je k dispozici pouze pro určitá doporučení prostřednictvím portálu Azure.
+**Rychlá oprava** umožňuje rychlejší a snazší způsob nápravy doporučení na více prostředků. Poskytuje možnost pro hromadné nápravy prostředků a pomáhá optimalizovat vaše předplatné rychleji díky nápravě ve velkém rozsahu pro vaše prostředky.
+Tato funkce je k dispozici pouze pro určitá doporučení prostřednictvím Azure Portal.
 
 
-## <a name="steps-to-use-quick-fix"></a>Kroky pro použití rychlé opravy
+## <a name="steps-to-use-quick-fix"></a>Postup použití příkazu "Rychlá oprava"
 
-1. V seznamu doporučení, která mají popisek **Rychlá oprava,** klikněte na doporučení.
+1. V seznamu doporučení s popisem **rychlé opravy** klikněte na doporučení.
 
-   ![Poradce rychlá oprava](./media/quick-fix-1.png)
+   ![Rychlá oprava Advisoru](./media/quick-fix-1.png)
    
-   *Ceny na obrázku jsou například pouze pro účely*
+   *Ceny v imagi jsou třeba jenom pro účely.*
 
-2. Na stránce podrobnosti doporučení se zobrazí seznam zdrojů, pro které máte toto doporučení. Vyberte všechny prostředky, které chcete pro doporučení napravit.
+2. Na stránce s podrobnostmi o doporučení uvidíte seznam prostředků, pro které máte toto doporučení. Vyberte všechny prostředky, které chcete opravit pro doporučení.
 
-   ![Poradce rychlá oprava](./media/quick-fix-2.png)
+   ![Rychlá oprava Advisoru](./media/quick-fix-2.png)
    
-   *Ceny na obrázku jsou například pouze pro účely*
+   *Ceny v imagi jsou třeba jenom pro účely.*
 
-3. Jakmile vyberete zdroje, klikněte na tlačítko **Rychlá oprava** pro hromadnou nápravu.
+3. Po výběru prostředků klikněte na tlačítko **Rychlá oprava** a proveďte hromadnou nápravu.
 
    > [!NOTE]
-   > Některé uvedené prostředky mohou být zakázány, protože nemáte příslušná oprávnění k jejich úpravám.
+   > Některé z uvedených prostředků můžou být zakázané, protože nemáte příslušná oprávnění k jejich úpravám.
    
    > [!NOTE]
-   > Pokud existují další důsledky, kromě výhod uvedených v Advisor, budete informováni ve zkušenostech, které vám pomohou přijmout informovaná rozhodnutí o nápravě.
+   > Pokud existují další dopady, kromě výhod uvedených v poradci, budete informováni o zkušenostech, které vám pomůžou při rozhodování o nápravě.
    
-4. Obdržíte oznámení o dokončení nápravy. Pokud existují prostředky, které nejsou opraveny, zobrazí se chyba a prostředky ve vybraném režimu v zobrazení seznamu zdrojů.  
+4. Zobrazí se oznámení o dokončení opravy. V případě, že existují prostředky, které nejsou opraveny a prostředky ve vybraném režimu v zobrazení seznamu prostředků, se zobrazí chyba.  
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o doporučeních poradců naleznete v tématu:
-* [Úvod do Azure Advisoru](advisor-overview.md)
-* [Začínáme s poradcem](advisor-get-started.md)
-* [Doporučení nákladů poradce](advisor-cost-recommendations.md)
-* [Doporučení pro výkon poradce](advisor-performance-recommendations.md)
-* [Doporučení pro zabezpečení poradce](advisor-security-recommendations.md)
-* [Doporučení poradce pro provozní excelenci](advisor-operational-excellence-recommendations.md)
-* [Rozhraní REST PORADCE](https://docs.microsoft.com/rest/api/advisor/)
+Další informace o doporučeních služby Advisor najdete v těchto tématech:
+* [Úvod do Azure Advisor](advisor-overview.md)
+* [Začínáme se službou Advisor](advisor-get-started.md)
+* [Doporučení pro náklady na poradce](advisor-cost-recommendations.md)
+* [Doporučení pro výkon Advisoru](advisor-performance-recommendations.md)
+* [Doporučení pro zabezpečení Advisoru](advisor-security-recommendations.md)
+* [Doporučení provozní kvality Advisoru](advisor-operational-excellence-recommendations.md)
+* [REST API Advisoru](https://docs.microsoft.com/rest/api/advisor/)

@@ -1,20 +1,20 @@
 ---
-title: Jak dotazovat protokoly z řešení Start/Stop virtuálních her
-description: Tento článek popisuje, jak dotazovat data protokolu generovaná řešením virtuálních počítačích Start/Stop z Azure Monitoru.
+title: Dotazování protokolů z řešení spustit nebo zastavit virtuální počítače
+description: Tento článek popisuje, jak pomocí Azure Monitor dotazovat data protokolu generovaná řešením spustit/zastavit virtuální počítače.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
 ms.openlocfilehash: 472f3762ca18f71ba95053576daf025d8477fee9
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81604724"
 ---
-# <a name="how-to-query-logs-from-startstop-vms-solution"></a>Jak dotazovat protokoly z řešení Start/Stop virtuálních her
+# <a name="how-to-query-logs-from-startstop-vms-solution"></a>Dotazování protokolů z řešení spustit nebo zastavit virtuální počítače
 
-Azure Automation předává dva typy záznamů do propojeného pracovního prostoru Log Analytics: protokoly úloh a toky úloh. Tato data jsou dostupná pro [dotaz](../azure-monitor/log-query/log-query-overview.md) v Azure Monitoru.
+Azure Automation přepošle dva typy záznamů do propojeného pracovního prostoru Log Analytics: protokoly úloh a datové proudy úloh. Tato data jsou k dispozici pro [dotazy](../azure-monitor/log-query/log-query-overview.md) v Azure monitor.
 
 ## <a name="job-logs"></a>Protokoly úloh
 
@@ -22,9 +22,9 @@ Azure Automation předává dva typy záznamů do propojeného pracovního prost
 |----------|----------|
 |Volající |  Kdo operaci zahájil. Možnou hodnotou je e-mailová adresa nebo systém pro naplánované úlohy.|
 |Kategorie | Klasifikace typu dat. Službě Automation odpovídá hodnota JobLogs.|
-|CorrelationId | IDENTIFIKÁTOR GUID, který je ID korelace úlohy runbook.|
-|JobId | IDENTIFIKÁTOR GUID, který je ID úlohy runbooku.|
-|operationName | Určuje typ operace prováděné v Azure. Pro automatizaci je hodnota Job.|
+|CorrelationId | Identifikátor GUID, který představuje ID korelace úlohy Runbooku.|
+|JobId | Identifikátor GUID, který je ID úlohy Runbooku.|
+|operationName | Určuje typ operace prováděné v Azure. Pro automatizaci je tato hodnota úloha.|
 |resourceId | Určuje typ prostředku v Azure. V případě služby Automation je hodnotou účet služby Automation přidružený k příslušnému runbooku.|
 |ResourceGroup | Určuje název skupiny prostředků příslušné úlohy runbooku.|
 |ResourceProvider | Určuje službu Azure poskytující prostředky, které můžete nasadit a spravovat. Službě Automation odpovídá hodnota Azure Automation.|
@@ -43,8 +43,8 @@ Azure Automation předává dva typy záznamů do propojeného pracovního prost
 |----------|----------|
 |Volající |  Kdo operaci zahájil. Možnou hodnotou je e-mailová adresa nebo systém pro naplánované úlohy.|
 |Kategorie | Klasifikace typu dat. Službě Automation odpovídá hodnota JobStreams.|
-|JobId | IDENTIFIKÁTOR GUID, který je ID úlohy runbooku.|
-|operationName | Určuje typ operace prováděné v Azure. Pro automatizaci je hodnota Job.|
+|JobId | Identifikátor GUID, který je ID úlohy Runbooku.|
+|operationName | Určuje typ operace prováděné v Azure. Pro automatizaci je tato hodnota úloha.|
 |ResourceGroup | Určuje název skupiny prostředků příslušné úlohy runbooku.|
 |resourceId | Určuje ID prostředku v Azure. V případě služby Automation je hodnotou účet služby Automation přidružený k příslušnému runbooku.|
 |ResourceProvider | Určuje službu Azure poskytující prostředky, které můžete nasadit a spravovat. Službě Automation odpovídá hodnota Azure Automation.|
@@ -53,22 +53,22 @@ Azure Automation předává dva typy záznamů do propojeného pracovního prost
 |resultDescription | Zahrnuje výstupní datový proud z runbooku.|
 |RunbookName | Název runbooku.|
 |SourceSystem | Určuje zdrojový systém pro odeslaná data. Pro automatizaci je hodnota OpsManager.|
-|StreamType | Typ datového proudu úlohy. Možné hodnoty:<br>- Pokrok<br>- Výstup<br>- Varování<br>- Chyba<br>- Ladění<br>- Podrobné|
+|StreamType | Typ datového proudu úlohy. Možné hodnoty:<br>– Průběh<br>- Výstup<br>- Varování<br>- Chyba<br>- Ladění<br>- Podrobné|
 |Time | Datum a čas provedení úlohy runbooku.|
 
-Při každém hledání protokolu, který vrací záznamy kategorií **JobLogs** nebo **JobStreams**, můžete vybrat **JobLogs** nebo **JobStreams** zobrazení, které zobrazí sadu dlaždic shrnující aktualizace vrácené hledáním.
+Když provedete jakékoli prohledávání protokolů, které vrátí záznamy kategorie **JobLogs** nebo **JobStreams**, můžete vybrat zobrazení **JobLogs** nebo **JobStreams** , které zobrazí sadu dlaždic shrnujících aktualizace vrácené hledáním.
 
 ## <a name="sample-log-searches"></a>Ukázky hledání v protokolech
 
 V následující tabulce jsou uvedeny ukázky hledání v protokolech pro záznamy úloh shromážděné tímto řešením.
 
-|Dotazy | Popis|
+|Dotaz | Popis|
 |----------|----------|
-|Najít úlohy pro ScheduledStartStop_Parent runbooku, které byly úspěšně dokončeny | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
-|Najít úlohy pro ScheduledStartStop_Parent runbooku, které nebyly úspěšně dokončeny | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Failed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
-|Najít úlohy pro SequencedStartStop_Parent runbooku, které byly úspěšně dokončeny | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
-|Najít úlohy pro SequencedStartStop_Parent runbooku, které nebyly úspěšně dokončeny | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Failed" ) <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
+|Najde úlohy pro Runbook ScheduledStartStop_Parent, které byly úspěšně dokončeny. | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
+|Najde úlohy pro Runbook ScheduledStartStop_Parent, které nebyly úspěšně dokončeny. | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Failed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
+|Najde úlohy pro Runbook SequencedStartStop_Parent, které byly úspěšně dokončeny. | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
+|Najde úlohy pro Runbook SequencedStartStop_Parent, které nebyly úspěšně dokončeny. | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Failed" ) <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 
 ## <a name="next-steps"></a>Další kroky
 
-**Spuštění a zastavení virtuálních počítače během mimo pracovní dobu** řešení neobsahuje předdefinovanou sadu výstrah. Zkontrolujte [vytvořit výstrahy protokolu](../azure-monitor/platform/alerts-log.md) pomocí Azure Monitor se dozvíte, jak vytvořit úlohy se nezdařilo výstrahy pro podporu devOps nebo provozní procesy a postupy.
+Řešení **Start/Stop VMS during off-hours** nezahrnuje předdefinovanou sadu výstrah. Přečtěte si téma [vytvoření výstrah protokolu](../azure-monitor/platform/alerts-log.md) s Azure monitor, kde se dozvíte, jak vytvořit úlohy s neúspěšnými výstrahami pro podporu vašich DevOpsch a provozních procesů a postupů.

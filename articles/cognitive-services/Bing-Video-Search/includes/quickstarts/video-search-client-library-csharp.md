@@ -1,5 +1,5 @@
 ---
-title: Rychlý start klientské knihovny Bing Search C# pro vyhledávání videí
+title: Rychlý Start klientské knihovny Vvyhledávání videí Bingu C#
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,22 +9,22 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: aahi
 ms.openlocfilehash: d50e1acd104916d68f7fbb84ff568cf4efc0b46b
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80289753"
 ---
-Pomocí tohoto rychlého startu můžete začít hledat novinky v klientské knihovně Bing video search pro c#. Zatímco hledání videa Bing má rozhraní REST API kompatibilní s většinou programovacích jazyků, klientská knihovna poskytuje snadný způsob integrace služby do vašich aplikací. Zdrojový kód pro tuto ukázku lze nalézt na [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVideoSearch) s dalšími anotacemi a funkcemi.
+V tomto rychlém startu můžete začít vyhledávat zprávy pomocí Vvyhledávání videí Bingu klientské knihovny pro C#. I když Vvyhledávání videí Bingu má REST API kompatibilní s většinou programovacích jazyků, Klientská knihovna poskytuje snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVideoSearch) s dalšími poznámkami a funkcemi.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Libovolná edice [Visual Studia 2017 nebo novější](https://visualstudio.microsoft.com/downloads/).
-* Json.NET framework, k dispozici [jako balíček NuGet](https://www.nuget.org/packages/Newtonsoft.Json/).
+* Libovolná edice sady [Visual Studio 2017 nebo novější](https://visualstudio.microsoft.com/downloads/).
+* Rozhraní Json.NET, které je k dispozici [jako balíček NuGet](https://www.nuget.org/packages/Newtonsoft.Json/).
 
-Chcete-li přidat knihovnu klienta Bing Video Search do projektu, vyberte **Spravovat balíčky NuGet** z **Průzkumníka řešení** v sadě Visual Studio. Přidejte balíček `Microsoft.Azure.CognitiveServices.Search.VideoSearch`.
+Chcete-li přidat knihovnu klienta Vvyhledávání videí Bingu do projektu, vyberte možnost **Spravovat balíčky NuGet** z **Průzkumník řešení** v aplikaci Visual Studio. Přidejte balíček `Microsoft.Azure.CognitiveServices.Search.VideoSearch`.
 
-Instalace [balíčku [NuGet Video Search SDK]](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VideoSearch/1.2.0) také nainstaluje následující závislosti:
+Instalace [balíčku [NuGet vyhledávání videí SDK]](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VideoSearch/1.2.0) nainstaluje také následující závislosti:
 
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure
@@ -35,7 +35,7 @@ Instalace [balíčku [NuGet Video Search SDK]](https://www.nuget.org/packages/Mi
 
 ## <a name="create-and-initialize-a-project"></a>Vytvoření a inicializace projektu
 
-1. Vytvořte nové řešení konzoly C# v sadě Visual Studio. Pak přidejte následující do hlavního souboru kódu.
+1. Vytvořte nové řešení konzoly C# v aplikaci Visual Studio. Pak přidejte následující do hlavního souboru kódu.
 
     ```csharp
     using System;
@@ -45,21 +45,21 @@ Instalace [balíčku [NuGet Video Search SDK]](https://www.nuget.org/packages/Mi
     using Microsoft.Azure.CognitiveServices.Search.VideoSearch.Models;
     ```
 
-2. Vytvořte instanci klienta `ApiKeyServiceClientCredentials` vytvořením nového objektu pomocí klíče předplatného a voláním konstruktoru.
+2. Vytvořte instanci klienta vytvořením nového `ApiKeyServiceClientCredentials` objektu pomocí klíče předplatného a voláním konstruktoru.
 
     ```csharp
     var client = new VideoSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
     ```
 
-## <a name="send-a-search-request-and-process-the-results"></a>Odeslání požadavku na hledání a zpracování výsledků
+## <a name="send-a-search-request-and-process-the-results"></a>Odeslání žádosti o vyhledávání a zpracování výsledků
 
-1. Pomocí klienta odešlete požadavek na vyhledávání. Pro vyhledávací dotaz použijte "SwiftKey".
+1. Odešlete požadavek hledání pomocí klienta. Pro vyhledávací dotaz použijte "SwiftKey".
 
     ```csharp
     var videoResults = client.Videos.SearchAsync(query: "SwiftKey").Result;
     ```
 
-2. Pokud byly vráceny nějaké výsledky, `videoResults.Value[0]`získejte první s . Pak vytiskněte ID, název a adresu URL videa.
+2. Pokud byly vráceny nějaké výsledky, získejte první z nich `videoResults.Value[0]`. Potom vytiskněte ID, název a adresu URL videa.
 
     ```csharp
     if (videoResults.Value.Count > 0)
@@ -80,9 +80,9 @@ Instalace [balíčku [NuGet Video Search SDK]](https://www.nuget.org/packages/Mi
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové aplikace pro jednu stránku](../../tutorial-bing-video-search-single-page-app.md)
+> [Vytvoření webové aplikace s jednou stránkou](../../tutorial-bing-video-search-single-page-app.md)
 
 ## <a name="see-also"></a>Viz také 
 
 * [Co je rozhraní API Bingu pro vyhledávání videí?](../../overview.md)
-* [Ukázky sady Cognitive Services .NET SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
+* [Ukázky sady .NET SDK pro rozpoznávání služeb](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

@@ -1,6 +1,6 @@
 ---
-title: Kurz – konfigurace virtuálních sítí pro službu Azure AD Domain Services | Dokumenty společnosti Microsoft
-description: V tomto kurzu se dozvíte, jak vytvořit a nakonfigurovat podsíť virtuální sítě Azure nebo partnerský vztah v síti pro instanci Služby Azure Active Directory Domain Services pomocí portálu Azure.
+title: Kurz – konfigurace virtuální sítě pro Azure AD Domain Services | Microsoft Docs
+description: V tomto kurzu se naučíte, jak vytvořit a nakonfigurovat podsíť virtuální sítě Azure nebo partnerský vztah sítě pro instanci Azure Active Directory Domain Services pomocí Azure Portal.
 author: iainfoulds
 manager: daveba
 ms.service: active-directory
@@ -10,148 +10,148 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: iainfou
 ms.openlocfilehash: af284e4c10487123c8c2a2105a25a2285ae0aa99
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80474350"
 ---
-# <a name="tutorial-configure-virtual-networking-for-an-azure-active-directory-domain-services-instance"></a>Kurz: Konfigurace virtuální sítě pro instanci služby Azure Active Directory Domain Services
+# <a name="tutorial-configure-virtual-networking-for-an-azure-active-directory-domain-services-instance"></a>Kurz: Konfigurace virtuální sítě pro instanci Azure Active Directory Domain Services
 
-Chcete-li zajistit připojení uživatelům a aplikacím, spravovaná doména Azure Active Directory Domain Services (Azure AD DS) se nasadí do podsítě virtuální sítě Azure. Tato podsíť virtuální sítě by se měla používat jenom pro prostředky spravované domény poskytované platformou Azure. Při vytváření vlastních virtuálních počítačů a aplikací by se neměly nasazovat do stejné podsítě virtuální sítě. Místo toho byste měli vytvořit a nasadit aplikace do samostatné podsítě virtuální sítě nebo v samostatné virtuální síti, která je propojena s virtuální sítí Azure AD DS.
+Aby se zajistilo připojení k uživatelům a aplikacím, spravovaná doména služby Azure Active Directory Domain Services (Azure služba AD DS) se nasadí do podsítě virtuální sítě Azure. Tato podsíť virtuální sítě by se měla používat jenom pro spravované prostředky domény poskytované platformou Azure. Při vytváření vlastních virtuálních počítačů a aplikací by se neměly nasazovat do stejné podsítě virtuální sítě. Místo toho byste měli své aplikace vytvářet a nasazovat do samostatné podsítě virtuální sítě nebo do samostatné virtuální sítě, která je v partnerském vztahu k virtuální síti Azure služba AD DS.
 
-Tento kurz ukazuje, jak vytvořit a nakonfigurovat podsíť vyhrazené virtuální sítě nebo jak připojit jinou síť do virtuální sítě spravované domény služby Azure AD DS.
+V tomto kurzu se dozvíte, jak vytvořit a nakonfigurovat vyhrazenou podsíť virtuální sítě nebo jak navázat jinou síť na virtuální síť spravované domény Azure služba AD DS.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Seznamte se s možnostmi připojení virtuální sítě pro prostředky spojené s doménou do Služby Azure AD DS
-> * Vytvoření rozsahu IP adres a další podsítě ve virtuální síti Azure AD DS
-> * Konfigurace partnerského vztahu virtuální sítě do sítě, která je oddělená od Azure AD DS
+> * Pochopení možností připojení k virtuální síti pro prostředky připojené k doméně do Azure služba AD DS
+> * Vytvoření rozsahu IP adres a další podsítě ve virtuální síti Azure služba AD DS
+> * Konfigurace partnerského vztahu virtuálních sítí na síť, která je oddělená od Azure služba AD DS
 
-Pokud nemáte předplatné Azure, [vytvořte si účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
 * Aktivní předplatné Azure.
-    * Pokud nemáte předplatné Azure, [vytvořte si účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Tenant Azure Active Directory přidružený k vašemu předplatnému, synchronizovaný s místním adresářem nebo s adresářem pouze pro cloud.
-    * V případě potřeby [vytvořte klienta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure ke svému účtu][associate-azure-ad-tenant].
-* K povolení služby Azure AD DS potřebujete oprávnění *globálního správce* ve vašem tenantovi Azure AD.
-* K vytvoření požadovaných prostředků Azure AD DS potřebujete oprávnění *přispěvatele* ve vašem předplatném Azure.
-* Spravovaná doména Služby Azure Active Directory Domain Services povolená a nakonfigurovaná ve vašem tenantovi Azure AD.
-    * V případě potřeby první kurz [vytvoří a nakonfiguruje instanci služby Azure Active Directory Domain Services][create-azure-ad-ds-instance].
+    * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
+    * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
+* Abyste mohli Azure služba AD DS povolit, potřebujete ve svém tenantovi Azure AD oprávnění *globálního správce* .
+* Abyste mohli vytvořit požadované prostředky Azure služba AD DS, potřebujete oprávnění *přispěvatele* v předplatném Azure.
+* Ve vašem tenantovi Azure AD je povolená a nakonfigurovaná spravovaná doména Azure Active Directory Domain Services.
+    * V případě potřeby se v prvním kurzu [vytvoří a nakonfiguruje instance Azure Active Directory Domain Services][create-azure-ad-ds-instance].
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-V tomto kurzu vytvoříte a nakonfigurujete instanci Azure AD DS pomocí portálu Azure. Chcete-li začít, nejprve se přihlaste na [portál Azure](https://portal.azure.com).
+V tomto kurzu vytvoříte a nakonfigurujete instanci Azure služba AD DS pomocí Azure Portal. Chcete-li začít, nejprve se přihlaste k [Azure Portal](https://portal.azure.com).
 
 ## <a name="application-workload-connectivity-options"></a>Možnosti připojení úlohy aplikace
 
-V předchozím kurzu byla vytvořena spravovaná doména Azure AD DS, která používala některé výchozí možnosti konfigurace pro virtuální síť. Tyto výchozí možnosti vytvořily virtuální síť Azure a podsíť virtuální sítě. Řadiče domény Azure AD DS, které poskytují služby spravované domény, jsou připojené k této podsíti virtuální sítě.
+V předchozím kurzu byla vytvořena doména spravovaná službou Azure služba AD DS, která pro virtuální síť používala některé výchozí možnosti konfigurace. Tyto výchozí možnosti vytvořily virtuální síť Azure a podsíť virtuální sítě. Řadiče domény služba AD DS Azure, které poskytují spravované doménové služby, jsou připojené k této podsíti virtuální sítě.
 
-Když vytvoříte a spustíte virtuální počítače, které je potřeba používat spravovanou doménu Azure AD DS, musí být k dispozici připojení k síti. Toto síťové připojení lze zajistit jedním z následujících způsobů:
+Když vytváříte a spouštíte virtuální počítače, které potřebují používat spravovanou doménu Azure služba AD DS, musí být zadané síťové připojení. Připojení k síti lze zadat jedním z následujících způsobů:
 
-* Vytvořte další podsíť virtuální sítě ve výchozí virtuální síti spravované domény Azure AD DS. Tato další podsíť je místo, kde můžete vytvořit a připojit virtuální počítače.
-    * Vzhledem k tomu, že virtuální počítače jsou součástí stejné virtuální sítě, můžou automaticky provádět překlad názvů a komunikovat s řadiči domény Azure AD DS.
-* Nakonfigurujte partnerský vztah virtuální sítě Azure z virtuální sítě spravované služby Azure AD DS do jedné nebo více samostatných virtuálních sítí. Tyto samostatné virtuální sítě jsou místo, kde můžete vytvořit a připojit virtuální počítače.
-    * Při konfiguraci partnerského vztahu virtuální sítě je nutné také nakonfigurovat nastavení DNS tak, aby se překlad názvů používalo zpět k řadičům domény Azure AD DS.
+* Vytvořte další podsíť virtuální sítě ve výchozí virtuální síti spravované domény Azure služba AD DS. Tato další podsíť je místo, kde můžete vytvářet a připojovat své virtuální počítače.
+    * Vzhledem k tomu, že virtuální počítače jsou součástí stejné virtuální sítě, můžou automaticky provádět překlad adres IP a komunikovat s služba AD DS řadiči domény Azure.
+* Nakonfigurujte partnerský vztah Azure Virtual Network z virtuální sítě spravované domény Azure služba AD DS do jedné nebo více samostatných virtuálních sítí. Tyto samostatné virtuální sítě jsou místo, kde můžete vytvářet a připojovat své virtuální počítače.
+    * Při konfiguraci partnerského vztahu virtuální sítě je potřeba nakonfigurovat taky nastavení DNS pro použití překladu IP adres zpátky na řadiče domény Azure služba AD DS.
 
-Obvykle používáte pouze jednu z těchto možností připojení k síti. Volba je často na tom, jak chcete spravovat samostatné prostředky Azure. Pokud chcete spravovat Azure AD DS a připojené virtuální počítače jako jednu skupinu prostředků, můžete vytvořit další virtuální síť podsítě pro virtuální počítače. Pokud chcete oddělit správu Azure AD DS a pak všechny připojené virtuální počítače, můžete použít partnerský vztah virtuální sítě. Můžete také použít partnerský vztah virtuální sítě k zajištění připojení ke stávajícím virtuálním počítačům ve vašem prostředí Azure, které jsou připojené k existující virtuální síti.
+Obvykle používáte jenom jednu z těchto možností připojení k síti. Tato volba často vychází z toho, jak chcete spravovat prostředky Azure odděleně. Pokud chcete spravovat Azure služba AD DS a připojené virtuální počítače jako jednu skupinu prostředků, můžete pro virtuální počítače vytvořit další podsíť virtuální sítě. Pokud chcete oddělit správu Azure služba AD DS a pak všechny připojené virtuální počítače, můžete použít partnerský vztah virtuálních sítí. Můžete se také rozhodnout použít partnerský vztah virtuálních sítí k zajištění připojení ke stávajícím virtuálním počítačům v prostředí Azure, které jsou připojené k existující virtuální síti.
 
-V tomto kurzu stačí nakonfigurovat jednu z těchto možností připojení virtuální sítě.
+V tomto kurzu stačí nakonfigurovat jednu z těchto možností připojení k virtuální síti.
 
-Další informace o plánování a konfiguraci virtuální sítě naleznete v tématu [důležité informace o vytváření sítí pro službu Azure Active Directory Domain Services][aspekty sítě].
+Další informace o tom, jak naplánovat a nakonfigurovat virtuální síť, najdete v tématu [požadavky na sítě pro Azure Active Directory Domain Services] [síťové požadavky].
 
 ## <a name="create-a-virtual-network-subnet"></a>Vytvoření podsítě virtuální sítě
 
-Ve výchozím nastavení virtuální síť Azure vytvořená se spravovanou doménou Azure AD DS obsahuje jednu podsíť virtuální sítě. Tato podsíť virtuální sítě by měla být používána jenom platformou Azure k poskytování služeb spravované domény. Pokud chcete vytvořit a používat vlastní virtuální počítače v této virtuální síti Azure, vytvořte další podsíť.
+Ve výchozím nastavení obsahuje virtuální síť Azure vytvořenou pomocí spravované domény Azure služba AD DS jednu podsíť virtuální sítě. Tato podsíť virtuální sítě by měla být používána jenom platformou Azure k poskytování spravovaných doménových služeb. Pokud chcete vytvořit a používat vlastní virtuální počítače v této virtuální síti Azure, vytvořte další podsíť.
 
-Pokud chcete vytvořit podsíť virtuální sítě pro virtuální počítače a úlohy aplikací, proveďte následující kroky:
+Pro vytvoření podsítě virtuální sítě pro virtuální počítače a úlohy aplikací proveďte následující kroky:
 
-1. Na webu Azure Portal vyberte skupinu prostředků spravované domény Azure AD DS, jako je *například myResourceGroup*. Ze seznamu prostředků zvolte výchozí virtuální síť, *například aadds-vnet*.
-1. V levé nabídce okna virtuální sítě vyberte **Možnost Adresní prostor**. Virtuální síť je vytvořena s jedním adresním prostorem *10.0.2.0/24*, který používá výchozí podsíť.
+1. V Azure Portal vyberte skupinu prostředků vaší spravované domény Azure služba AD DS, například *myResourceGroup*. V seznamu prostředků vyberte výchozí virtuální síť, například *aadds-VNet*.
+1. V nabídce na levé straně okna virtuální síť vyberte **adresní prostor**. Virtuální síť se vytvoří s jedním adresním prostorem *10.0.2.0/24*, který se používá ve výchozí podsíti.
 
-    Přidejte do virtuální sítě další rozsah IP adres. Velikost tohoto rozsahu adres a skutečný rozsah IP adres, který chcete použít, závisí na jiných síťových prostředcích, které jsou již nasazeny. Rozsah IP adres by se neměl překrývat s existujícími rozsahy adres ve vašem prostředí Azure nebo v místním prostředí. Ujistěte se, že velikost rozsahu IP adres dostatečně velký pro počet virtuálních počítačů, které očekáváte nasazení do podsítě.
+    Přidejte do virtuální sítě další rozsah IP adres. Velikost tohoto rozsahu adres a skutečný rozsah IP adres, které se mají použít, závisí na ostatních síťových prostředcích, které jsou už nasazené. Rozsah IP adres se nesmí překrývat s žádnými existujícími rozsahy adres ve vašem Azure nebo místním prostředí. Ujistěte se, že velikost rozsahu IP adres je dostatečně velká pro počet virtuálních počítačů, které chcete v podsíti nasadit.
 
-    V následujícím příkladu je přidán další rozsah IP adres *10.0.3.0/24.* Až budete připraveni, vyberte **Uložit**.
+    V následujícím příkladu se přidá další rozsah IP adres *10.0.3.0/24* . Až budete připraveni, vyberte **Uložit**.
 
-    ![Přidání dalšího rozsahu IP adres virtuální sítě na webu Azure Portal](./media/tutorial-configure-networking/add-vnet-address-range.png)
+    ![Přidejte do Azure Portal další rozsah IP adres virtuální sítě.](./media/tutorial-configure-networking/add-vnet-address-range.png)
 
-1. Dále v levé nabídce okna virtuální sítě vyberte **Podsítě**a pak zvolte **+ Podsíť** a přidejte podsíť.
-1. Zadejte název podsítě, například *pracovní vytížení*. V případě potřeby aktualizujte **rozsah adres,** pokud chcete v předchozích krocích použít podmnožinu rozsahu IP adres nakonfigurovaného pro virtuální síť. Prozatím ponechte výchozí nastavení pro možnosti, jako je skupina zabezpečení sítě, směrovací tabulka, koncové body služby.
+1. V nabídce vlevo v okně virtuální síť vyberte **podsítě**a pak vyberte **+ podsíť** a přidejte podsíť.
+1. Zadejte název podsítě, například *úlohy*. V případě potřeby aktualizujte **Rozsah adres** , pokud chcete použít podmnožinu rozsahu IP adres nakonfigurovaného pro virtuální síť v předchozích krocích. Prozatím ponechte výchozí nastavení pro možnosti, jako je skupina zabezpečení sítě, směrovací tabulka, koncové body služby.
 
-    V následujícím příkladu je vytvořena podsíť s názvem *úlohy,* která používá rozsah adres *IP 10.0.3.0/24:*
+    V následujícím příkladu se vytvoří podsíť s názvem *úlohy* , která používá rozsah IP adres *10.0.3.0/24* :
 
-    ![Přidání další podsítě virtuální sítě na webu Azure Portal](./media/tutorial-configure-networking/add-vnet-subnet.png)
+    ![Přidejte do Azure Portal další podsíť virtuální sítě.](./media/tutorial-configure-networking/add-vnet-subnet.png)
 
-1. Až budete připraveni, vyberte **OK**. Vytvoření podsítě virtuální sítě trvá několik okamžiků.
+1. Až budete připraveni, vyberte **OK**. Vytvoření podsítě virtuální sítě chvíli trvá.
 
-Když vytvoříte virtuální počítač, který potřebuje používat spravovanou doménu Azure AD DS, ujistěte se, že vyberete tuto podsíť virtuální sítě. Nevytvářejte virtuální virtuální sítě ve výchozí *podsíti aadds*. Pokud vyberete jinou virtuální síť, neexistuje žádné připojení k síti a překlad DNS k dosažení spravované domény Azure AD DS, pokud nenakonfigurujete partnerský vztah virtuální sítě.
+Když vytvoříte virtuální počítač, který potřebuje používat spravovanou doménu Azure služba AD DS, ujistěte se, že jste vybrali tuto podsíť virtuální sítě. Nevytvářejte virtuální počítače ve výchozí *aadds-podsíti*. Pokud vyberete jinou virtuální síť, nebude k dispozici připojení k síti a překlad DNS pro přístup k spravované doméně Azure služba AD DS, pokud nenastavíte partnerský vztah virtuálních sítí.
 
-## <a name="configure-virtual-network-peering"></a>Konfigurace partnerského vztahu virtuální sítě
+## <a name="configure-virtual-network-peering"></a>Konfigurace partnerského vztahu virtuálních sítí
 
-Můžete mít existující virtuální síť Azure pro virtuální počítače nebo chcete zachovat virtuální síť spravované domény Azure AD DS oddělené. Chcete-li použít spravovanou doménu, virtuální počítače v jiných virtuálních sítích potřebují způsob, jak komunikovat s řadiči domény Azure AD DS. Toto připojení lze zajistit pomocí partnerského vztahu virtuální sítě Azure.
+Je možné, že máte existující virtuální síť Azure pro virtuální počítače, nebo chcete, aby vaše virtuální síť Azure služba AD DS spravovaná doménou byla samostatná. Aby bylo možné používat spravovanou doménu, virtuální počítače v jiných virtuálních sítích potřebují způsob, jak komunikovat s řadiči domény služba AD DS Azure. Toto připojení se dá zadat pomocí partnerského vztahu virtuálních sítí Azure.
 
-Díky partnerské síti Azure jsou dvě virtuální sítě propojené společně, bez nutnosti zařízení virtuální privátní sítě (VPN). Partnerský vztah v síti umožňuje rychle propojit virtuální sítě a definovat toky provozu v celém prostředí Azure. Další informace o partnerské síti najdete v tématu [přehled partnerského vztahu virtuální sítě Azure][peering-overview].
+U partnerských vztahů virtuálních sítí Azure se vzájemně spojí dvě virtuální sítě, aniž by bylo nutné používat zařízení virtuální privátní sítě (VPN). Partnerský vztah k síti umožňuje rychle propojit virtuální sítě a definovat toky provozu napříč prostředím Azure. Další informace o partnerském vztahu najdete v tématu [Přehled partnerských vztahů virtuálních sítí Azure][peering-overview].
 
-Pokud chcete virtuální síť převést do virtuální sítě spravované domény Azure AD DS, proveďte následující kroky:
+Pokud chcete vytvořit partnerský vztah k virtuální síti typu Azure služba AD DS spravované doméně, proveďte následující kroky:
 
-1. Zvolte výchozí virtuální síť vytvořenou pro instanci Azure AD DS s názvem *aadds-vnet*.
-1. V levé nabídce okna virtuální sítě vyberte **Partnerské partnerské partnerské partnerské partnerské partnerské partnerské okno**.
-1. Chcete-li vytvořit partnerský vztah, vyberte **+ Přidat**. V následujícím příkladu je výchozí *síť aadds-vnet* propojena s virtuální sítí s názvem *myVnet*. Nakonfigurujte následující nastavení s vlastními hodnotami:
+1. Vyberte výchozí virtuální síť vytvořenou pro instanci Azure služba AD DS s názvem *aadds-VNet*.
+1. V nabídce na levé straně okna virtuální síť vyberte **partnerské vztahy**.
+1. Chcete-li vytvořit partnerský vztah, vyberte **+ Přidat**. V následujícím příkladu je výchozí *aadds-VNet* partnerský vztah k virtuální síti s názvem *myVnet*. Nakonfigurujte následující nastavení s vlastními hodnotami:
 
-    * **Název partnerského vztahu z aadds-vnet do vzdálené virtuální sítě**: Popisný identifikátor obou sítí, jako je *například aadds-vnet-to-myvnet*
-    * **Typ nasazení virtuální sítě**: *Resource Manager*
-    * **Předplatné:** Předplatné virtuální sítě, do které chcete mít přístup, jako je *Azure*
-    * **Virtuální síť**: Virtuální síť, do které chcete přejít, například *myVnet*
-    * **Název partnerského vztahu z myVnet do aadds-vnet**: Popisný identifikátor obou sítí, například *myvnet-to-aadds-vnet*
+    * **Název partnerského vztahu z aadds-VNet do vzdálené virtuální sítě**: popisný identifikátor dvou sítí, jako je *aadds-VNet-to-myvnet*
+    * **Typ nasazení virtuální sítě**: *Správce prostředků*
+    * **Předplatné**: předplatné virtuální sítě, na kterou chcete vytvořit partnerský vztah, jako je *Azure* .
+    * **Virtuální síť**: virtuální síť, na kterou chcete vytvořit partnerský vztah, například *myVnet*
+    * **Název partnerského vztahu z myVnet do aadds-VNet**: popisný identifikátor dvou sítí, jako je například *myVnet-to-aadds-VNet*
 
-    ![Konfigurace partnerského vztahu virtuální sítě na webu Azure Portal](./media/tutorial-configure-networking/create-peering.png)
+    ![Konfigurace partnerského vztahu virtuálních sítí v Azure Portal](./media/tutorial-configure-networking/create-peering.png)
 
-    Ponechte všechny ostatní výchozí hodnoty pro přístup k virtuální síti nebo předávaný provoz, pokud nemáte specifické požadavky pro vaše prostředí, a pak vyberte **OK**.
+    Pokud nemáte specifické požadavky pro vaše prostředí, ponechte všechna ostatní výchozí nastavení přístupu k virtuální síti nebo přesměrovaného provozu, a pak vyberte **OK**.
 
-1. Vytvoření partnerského vztahu ve virtuální síti Azure AD DS i ve virtuální síti, kterou jste vybrali, trvá několik okamžiků. Po připravenosti hlásí **stav partnerského vztahu** *Připojeno*, jak je znázorněno v následujícím příkladu:
+1. Vytvoření partnerského vztahu pro virtuální síť Azure služba AD DS i virtuální síť, kterou jste vybrali, chvíli trvá. Až budete připraveni, zobrazí se zprávy o **stavu partnerského vztahu** *připojené*, jak je znázorněno v následujícím příkladu:
 
-    ![Úspěšně připojené partnerské sítě na webu Azure Portal](./media/tutorial-configure-networking/connected-peering.png)
+    ![Připojení partnerských sítí v Azure Portal bylo úspěšné.](./media/tutorial-configure-networking/connected-peering.png)
 
-Než virtuální počítače ve virtuální síti můžou používat spravovanou doménu Azure AD DS, nakonfigurujte servery DNS tak, aby umožňovaly správné překladnázvů.
+Než virtuální počítače v partnerské virtuální síti můžou používat spravovanou doménu Azure služba AD DS, nakonfigurujte servery DNS tak, aby umožňovaly správné rozlišení názvů.
 
-### <a name="configure-dns-servers-in-the-peered-virtual-network"></a>Konfigurace serverů DNS ve virtuální síti s partnerským partnerem
+### <a name="configure-dns-servers-in-the-peered-virtual-network"></a>Konfigurace serverů DNS v partnerské virtuální síti
 
-Pro virtuální počítače a aplikace ve virtuální síti partnerských společností úspěšně mluvit se spravovanou doménou Azure AD DS, nastavení DNS musí být aktualizován. IP adresy řadičů domény Azure AD DS musí být nakonfigurovány jako servery DNS ve virtuální síti s partnerským vztahem. Existují dva způsoby konfigurace řadičů domény jako serverů DNS pro virtuální síť partnerského vztahu:
+Aby virtuální počítače a aplikace v partnerské virtuální síti úspěšně komunikovaly se spravovanou doménou Azure služba AD DS, musí se aktualizovat nastavení DNS. IP adresy řadičů domény Azure služba AD DS musí být nakonfigurované jako servery DNS v partnerské virtuální síti. Existují dva způsoby, jak nakonfigurovat řadiče domény jako servery DNS pro partnerský virtuální síť:
 
-* Nakonfigurujte servery DNS virtuální sítě Azure tak, aby používaly řadiče domény Azure AD DS.
-* Nakonfigurujte existující server DNS, který se používá ve virtuální síti partnerského vztahu, tak, aby používal podmíněné předávání DNS k přesměrování dotazů do spravované domény Azure AD DS. Tyto kroky se liší v závislosti na existujícím serveru DNS, který je používán.
+* Nakonfigurujte servery DNS virtuální sítě Azure tak, aby používaly řadiče domény Azure služba AD DS.
+* Nakonfigurujte stávající server DNS používaný v partnerské virtuální síti tak, aby používal podmíněné předávání DNS pro přímé dotazy do spravované domény Azure služba AD DS. Tyto kroky se liší v závislosti na používaném existujícím serveru DNS.
 
-V tomto kurzu nakonfigurujeme servery DNS virtuální sítě Azure tak, aby směrovaly všechny dotazy na řadiče domény Azure AD DS.
+V tomto kurzu nakonfigurujeme servery DNS virtuální sítě Azure tak, aby směrovaly všechny dotazy na řadiče domény Azure služba AD DS.
 
-1. Na webu Azure Portal vyberte skupinu prostředků partnerské virtuální sítě, jako je *například myResourceGroup*. Ze seznamu prostředků zvolte partnerovou virtuální síť, například *myVnet*.
-1. V levé nabídce okna virtuální sítě vyberte **servery DNS**.
-1. Ve výchozím nastavení virtuální síť používá integrované servery DNS poskytované Azure. Zvolte, zda chcete použít **vlastní** servery DNS. Zadejte IP adresy pro řadiče domény Azure AD DS, které jsou obvykle *10.0.2.4* a *10.0.2.5*. Potvrďte tyto IP adresy v okně **Přehled** spravované domény Azure AD DS na portálu.
+1. V Azure Portal vyberte skupinu prostředků partnerské virtuální sítě, například *myResourceGroup*. V seznamu prostředků vyberte partnerský virtuální síť, například *myVnet*.
+1. V nabídce na levé straně okna virtuální síť vyberte **servery DNS**.
+1. Ve výchozím nastavení používá virtuální síť integrované servery DNS poskytované systémem Azure. Vyberte, chcete-li použít **vlastní** servery DNS. Zadejte IP adresy pro řadiče domény služba AD DS Azure, které jsou obvykle *10.0.2.4* a *10.0.2.5*. Potvrďte tyto IP adresy v okně s **přehledem** vaší spravované domény Azure služba AD DS na portálu.
 
-    ![Konfigurace serverů DNS virtuální sítě tak, aby používaly řadiče domény Azure AD DS](./media/tutorial-configure-networking/custom-dns.png)
+    ![Konfigurace serverů DNS virtuální sítě pro použití řadičů domény Azure služba AD DS](./media/tutorial-configure-networking/custom-dns.png)
 
-1. Až budete připraveni, vyberte **Uložit**. Aktualizace serverů DNS pro virtuální síť trvá několik okamžiků.
-1. Pokud chcete použít aktualizované nastavení DNS na virtuální počítače, restartujte virtuální počítače připojené k virtuální síti s partnerským připojením.
+1. Až budete připraveni, vyberte **Uložit**. Aktualizace serverů DNS pro virtuální síť chvíli trvá.
+1. Pokud chcete použít aktualizované nastavení DNS na virtuální počítače, restartujte virtuální počítače připojené k partnerské virtuální síti.
 
-Když vytvoříte virtuální počítač, který potřebuje používat spravovanou doménu Azure AD DS, ujistěte se, že vyberete tuto partnerská virtuální síť. Pokud vyberete jinou virtuální síť, neexistuje žádné připojení k síti a překlad DNS k dosažení spravované domény Azure AD DS.
+Když vytváříte virtuální počítač, který potřebuje používat spravovanou doménu Azure služba AD DS, ujistěte se, že jste vybrali tuto partnerský virtuální síť. Pokud vyberete jinou virtuální síť, nebude k dispozici žádné síťové připojení a překlad DNS pro přístup k spravované doméně Azure služba AD DS.
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Seznamte se s možnostmi připojení virtuální sítě pro prostředky spojené s doménou do Služby Azure AD DS
-> * Vytvoření rozsahu IP adres a další podsítě ve virtuální síti Azure AD DS
-> * Konfigurace partnerského vztahu virtuální sítě do sítě, která je oddělená od Azure AD DS
+> * Pochopení možností připojení k virtuální síti pro prostředky připojené k doméně do Azure služba AD DS
+> * Vytvoření rozsahu IP adres a další podsítě ve virtuální síti Azure služba AD DS
+> * Konfigurace partnerského vztahu virtuálních sítí na síť, která je oddělená od Azure služba AD DS
 
-Chcete-li zobrazit tuto spravovanou doménu v akci, vytvořte a připojte virtuální počítač k doméně.
+Pokud chcete tuto spravovanou doménu zobrazit v akci, vytvořte virtuální počítač a připojte se k doméně.
 
 > [!div class="nextstepaction"]
-> [Připojení virtuálního počítače se systémem Windows Server ke spravované doméně](join-windows-vm.md)
+> [Připojení virtuálního počítače s Windows serverem k spravované doméně](join-windows-vm.md)
 
 <!-- INTERNAL LINKS --> 
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

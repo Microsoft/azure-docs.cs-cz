@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Nasazení modelu strojového učení s návrhářem'
+title: 'Kurz: nasazení modelu strojového učení pomocí návrháře'
 titleSuffix: Azure Machine Learning
-description: Tento kurz ukazuje, jak vytvořit řešení prediktivní analýzy v návrháři Azure Machine Learning (preview). Trénování, skóre a nasazení modelu strojového učení pomocí modulů přetažení myší.
+description: V tomto kurzu se dozvíte, jak vytvořit řešení prediktivní analýzy v Návrháři Azure Machine Learning (Preview). Využijte moduly pro vytažení, skóre a nasazení modelu strojového učení.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -10,111 +10,111 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.openlocfilehash: c3ca37fd47b6551a95f9a491053ec7863acd1eeb
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80389388"
 ---
-# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Kurz: Nasazení modelu strojového učení s návrhářem (náhled)
+# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Kurz: nasazení modelu strojového učení pomocí návrháře (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Prediktivní model vyvinutý v [první části kurzu](tutorial-designer-automobile-price-train-score.md) můžete nasadit, abyste měli ostatním možnost ho použít. V první části jste vycvičili svůj model. Nyní je čas generovat nové předpovědi na základě vstupu uživatele. V této části tutoriálu budete:
+Můžete nasadit prediktivní model vyvinutý v [rámci jednoho kurzu](tutorial-designer-automobile-price-train-score.md) , který jiným uživatelům umožní tuto možnost použít. V první části jste si vyškole svůj model. Nyní je čas vytvořit nové předpovědi na základě vstupu uživatele. V této části kurzu budete:
 
 > [!div class="checklist"]
-> * Vytvořte kanál odvození v reálném čase.
-> * Vytvořte odvozovací cluster.
+> * Vytvoří kanál pro odvození v reálném čase.
+> * Vytvořte cluster Inferencing.
 > * Nasaďte koncový bod v reálném čase.
 > * Otestujte koncový bod v reálném čase.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Dokončení [první části kurzu](tutorial-designer-automobile-price-train-score.md) se dozvíte, jak trénovat a skóre model strojového učení v návrháři.
+Kompletní [část tohoto kurzu](tutorial-designer-automobile-price-train-score.md) se naučíte, jak v Návrháři naučit a vyhodnocovat model strojového učení.
 
 ## <a name="create-a-real-time-inference-pipeline"></a>Vytvoření kanálu odvození v reálném čase
 
-Chcete-li nasadit kanál, musíte nejprve převést kanál školení do kanálu odvození v reálném čase. Tento proces odebere školicí moduly a přidá vstupy a výstupy webové služby pro zpracování požadavků.
+Pokud chcete svůj kanál nasadit, musíte nejdřív převést kanál školení na kanál pro odvození v reálném čase. Tento proces odebere školicí moduly a přidá vstupy a výstupy webové služby pro zpracování požadavků.
 
 ### <a name="create-a-real-time-inference-pipeline"></a>Vytvoření kanálu odvození v reálném čase
 
-1. Nad plátnem kanálu vyberte **Vytvořit odvození kanálu** > **v reálném čase odvození potrubí**.
+1. Nad plátnem kanálu vyberte **vytvořit odvození kanálu** > **odvození kanálu v reálném čase**.
 
-    ![Snímek obrazovky s informacemi o tom, kde najít tlačítko vytvořit kanál](./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png)
+    ![Snímek obrazovky ukazující, kde najít tlačítko vytvořit kanál](./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png)
 
     Váš kanál by teď měl vypadat takto: 
 
-   ![Snímek obrazovky zobrazující očekávanou konfiguraci kanálu po jeho přípravě k nasazení](./media/tutorial-designer-automobile-price-deploy/real-time-inference-pipeline.png)
+   ![Snímek obrazovky znázorňující očekávanou konfiguraci kanálu po jeho přípravě na nasazení](./media/tutorial-designer-automobile-price-deploy/real-time-inference-pipeline.png)
 
-    Když vyberete **Vytvořit kanál odvození**, stane se několik věcí:
+    Když vyberete **vytvořit kanál odvození**, nastane několik věcí:
     
-    * Trénovaný model je uložen jako modul **datové sady** v paletě modulů. Najdete ji v části **Moje datové sady**.
-    * Tréninkové moduly jako **Model vlaku** a **Split data** jsou odebrány.
-    * Uložený trénovaný model je přidán zpět do kanálu.
-    * Jsou přidány vstupní moduly **webové služby** a **výstupní webové služby.** Tyto moduly ukazují, kde uživatelská data zadá do kanálu a kde jsou vrácena data.
+    * Trained model je uložen jako modul **DataSet** v paletě modulu. Můžete ji najít v části **Moje datové sady**.
+    * Odeberou se moduly, jako je **model výuky** a **rozdělená data** .
+    * Uložený vycvičený model se přidá zpátky do kanálu.
+    * Jsou přidány výstupní moduly **webové služby** a **webové služby** . Tyto moduly ukazují, kde data uživatele vstoupí do kanálu a kde se vrátí data.
 
     > [!NOTE]
-    > Ve výchozím nastavení bude **vstup webové služby** očekávat stejné schéma dat jako trénovací data použitá k vytvoření prediktivního kanálu. V tomto scénáři cena je zahrnuta ve schématu. Cena se však nepoužívá jako faktor během predikce.
+    > Ve výchozím nastavení bude **vstup webové služby** očekávat stejné schéma dat jako školicí data použitá k vytvoření prediktivního kanálu. V tomto scénáři je cena zahrnutá ve schématu. Cena se ale během předpovědi nepoužívá jako faktor.
     >
 
-1. Vyberte **Odeslat**a použijte stejný výpočetní cíl a experiment, který jste použili v první části.
+1. Vyberte **Odeslat**a použijte stejný cíl výpočtů a experiment, který jste použili v první části.
 
-    Pokud je první spuštění, může trvat až 20 minut pro spuštění kanálu. Výchozí nastavení výpočetních prostředků mají minimální velikost uzlu 0, což znamená, že návrhář musí přidělit prostředky po nečinnosti. Opakované spuštění kanálu bude trvat kratší dobu, protože výpočetní prostředky jsou již přiděleny. Kromě toho návrhář používá výsledky uložené v mezipaměti pro každý modul k dalšímu zlepšení efektivity.
+    Pokud je první spuštění, může trvat až 20 minut, než se váš kanál dokončí. Výchozí nastavení COMPUTE mají minimální velikost uzlu 0, což znamená, že Návrhář musí přidělit prostředky po nečinnosti. Opakované spuštění kanálu bude trvat kratší dobu, protože výpočetní prostředky už jsou přidělené. Kromě toho Návrhář používá výsledky v mezipaměti pro každý modul k dalšímu zvýšení efektivity.
 
 1. Vyberte **Nasadit**.
 
-## <a name="create-an-inferencing-cluster"></a>Vytvoření odvozovavého clusteru
+## <a name="create-an-inferencing-cluster"></a>Vytvoření clusteru Inferencing
 
-V dialogovém okně, které se zobrazí, můžete vybrat z libovolné existující clustery služby Azure Kubernetes Service (AKS), do kterých chcete nasadit model. Pokud cluster AKS nemáte, vytvořte ho pomocí následujících kroků.
+V dialogovém okně, které se zobrazí, můžete vybrat z existujících clusterů Azure Kubernetes Service (AKS), do kterých chcete model nasadit. Pokud nemáte cluster AKS, vytvořte ho pomocí následujících kroků.
 
-1. V dialogovém **okně,** které se zobrazí a přejde na stránku Výpočetní výkon, vyberte **Vypočítat.**
+1. V dialogovém okně, které se zobrazí, vyberte **COMPUTE** . tím přejdete na stránku **COMPUTE** .
 
-1. Na navigačním pásu karet vyberte **Inference Clusters** > **+ New**.
+1. Na pásu karet navigace vyberte **odvozené clustery** > **+ nové**.
 
-    ![Snímek obrazovky znázorňující, jak se dostat do nového podokna odvození clusteru](./media/tutorial-designer-automobile-price-deploy/new-inference-cluster.png)
+    ![Snímek obrazovky znázorňující, jak se dostat k novému podoknu clusteru odvození](./media/tutorial-designer-automobile-price-deploy/new-inference-cluster.png)
 
-1. V podokně odvozeného clusteru nakonfigurujte novou službu Kubernetes.
+1. V podokně odvození clusteru nakonfigurujte novou službu Kubernetes.
 
-1. Zadejte *aks-compute* pro **název Compute**.
+1. Jako **výpočetní název**zadejte *AKS-COMPUTE* .
     
-1. Vyberte oblast v okolí, která je k dispozici pro **region**.
+1. Vyberte okolní oblast, která je k dispozici pro **oblast**.
 
 1. Vyberte **Vytvořit**.
 
     > [!NOTE]
-    > Vytvoření nové služby AKS trvá přibližně 15 minut. Stav zřizování můžete zkontrolovat na stránce **Odvozené clustery.**
+    > Vytvoření nové služby AKS trvá přibližně 15 minut. Stav zřizování můžete kontrolovat na stránce **odvození clusterů** .
     >
 
 ## <a name="deploy-the-real-time-endpoint"></a>Nasazení koncového bodu v reálném čase
 
-Po dokončení zřizování služby AKS se vraťte k kanálu pro odvození v reálném čase a dokončete nasazení.
+Až se dokončí zřizování služby AKS, vraťte se do kanálu Inferencing v reálném čase, abyste mohli dokončit nasazení.
 
-1. Nad plátnem vyberte **Nasadit.**
+1. Na plátně vyberte **nasadit** .
 
-1. Vyberte **Nasadit nový koncový bod v reálném čase**. 
+1. Vyberte **nasadit nový koncový bod v reálném čase**. 
 
 1. Vyberte cluster AKS, který jste vytvořili.
 
 1. Vyberte **Nasadit**.
 
-    ![Snímek obrazovky s postupem nastavení nového koncového bodu v reálném čase](./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png)
+    ![Snímek obrazovky ukazující, jak nastavit nový koncový bod v reálném čase](./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png)
 
-    Po dokončení nasazení se zobrazí oznámení o úspěchu nad plátnem. Může to trvat pár minut.
+    Po dokončení nasazení se zobrazí oznámení o úspěchu nad plátnem. Může to trvat několik minut.
 
 ## <a name="test-the-real-time-endpoint"></a>Testování koncového bodu v reálném čase
 
-Po dokončení nasazení můžete otestovat koncový bod v reálném čase tak, že přejdete na stránku **Koncové body.**
+Po dokončení nasazení můžete koncový bod v reálném čase otestovat tak, že na stránku **koncové body** kliknete.
 
-1. Na stránce **Koncové body** vyberte cílový bod, který jste nasadili.
+1. Na stránce **koncové body** vyberte koncový bod, který jste nasadili.
 
-    ![Snímek obrazovky se zvýrazněnou záložkou koncových bodů v reálném čase se zvýrazněným nedávno vytvořeným koncovým bodem](./media/tutorial-designer-automobile-price-deploy/endpoints.png)
+    ![Snímek obrazovky zobrazující kartu koncových bodů v reálném čase s zvýrazněným nedávno vytvořeným koncovým bodem](./media/tutorial-designer-automobile-price-deploy/endpoints.png)
 
 1. Vyberte **Test**.
 
-1. Můžete ručně zadat testovací data nebo použít automaticky vyplněná ukázková data a vybrat **možnost Testovat**.
+1. Můžete ručně zadat data testování, nebo použít ukázková data automatického vyplňování a vybrat **test**.
 
-    Portál odešle požadavek na test do koncového bodu a zobrazí výsledky. Přestože je pro vstupní data generována hodnota ceny, nepoužívá se ke generování hodnoty předpověď.
+    Portál odešle požadavek na test na koncový bod a zobrazí výsledky. I když je pro vstupní data vygenerována hodnota ceny, není použita k vygenerování hodnoty předpovědi.
 
-    ![Snímek obrazovky ukazující, jak otestovat koncový bod v reálném čase se zvýrazněným popiskem s vyznačeným skóre pro cenu](./media/tutorial-designer-automobile-price-deploy/test-endpoint.png)
+    ![Snímek obrazovky ukazující, jak otestovat koncový bod v reálném čase pomocí popisku s skóre pro zvýrazněnou cenu](./media/tutorial-designer-automobile-price-deploy/test-endpoint.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -122,7 +122,7 @@ Po dokončení nasazení můžete otestovat koncový bod v reálném čase tak, 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili klíčové kroky v tom, jak vytvořit, nasadit a využívat model strojového učení v návrháři. Další informace o tom, jak můžete pomocí návrháře řešit jiné typy problémů, najdete v dalších ukázkových kanálech.
+V tomto kurzu jste se seznámili s klíčovými kroky při vytváření, nasazování a využívání modelu Machine Learning v návrháři. Další informace o tom, jak můžete pomocí návrháře vyřešit jiné typy problémů, najdete v našich ukázkových kanálech.
 
 > [!div class="nextstepaction"]
 > [Ukázky návrháře](samples-designer.md)

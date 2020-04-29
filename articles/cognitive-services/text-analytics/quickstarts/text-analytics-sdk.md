@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Klientská knihovna Text Analytics v3 | Dokumenty společnosti Microsoft'
+title: 'Rychlý Start: Klientská knihovna Analýza textu V3 | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: Tento rychlý start můžete použít k připojení aplikací k rozhraní API pro analýzu textu z Azure Cognitive Services.
+description: Pomocí tohoto rychlého startu můžete své aplikace připojit k rozhraní API pro analýzu textu z Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,17 +12,17 @@ ms.date: 03/24/2020
 ms.author: aahi
 zone_pivot_groups: programming-languages-text-analytics
 ms.openlocfilehash: cc3f48ec1113f954336cfae0bda2cba2499d9a1d
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80240135"
 ---
-# <a name="quickstart-use-the-text-analytics-client-library"></a>Úvodní příručka: Použití klientské knihovny Analýzy textu
+# <a name="quickstart-use-the-text-analytics-client-library"></a>Rychlý Start: použití klientské knihovny Analýza textu
 
-Začínáme s klientskou knihovnou Text Analytics. Následujícím postupem nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úkoly.
+Začněte s klientskou knihovnou Analýza textu. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.
 
-Pomocí klientské knihovny Text Analytics můžete provádět:
+Použijte klientskou knihovnu Analýza textu k provedení těchto akcí:
 
 * Analýza mínění
 * Rozpoznávání jazyka
@@ -32,9 +32,9 @@ Pomocí klientské knihovny Text Analytics můžete provádět:
 ::: zone pivot="programming-language-csharp"
 
 > [!IMPORTANT]
-> * Nejnovější verze rozhraní PREVIEW rozhraní API `3.0-preview`pro analýzu textu je , která obsahuje verzi public preview pro [vylepšenou analýzu mínění](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) a [rozpoznávání pojmenovaných entit (NER).](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) Nejnovější stabilní verze `2.1`je .
->    * Ujistěte se, že budete postupovat pouze podle pokynů pro verzi, kterou používáte.
-> * Kód v tomto článku používá synchronní metody a un-zabezpečené úložiště přihlašovacích údajů pro jednoduchost důvodů. Pro produkční scénáře doporučujeme použít dávkové asynchronní metody pro výkon a škálovatelnost. Viz referenční dokumentace níže.
+> * Nejnovější verze Preview rozhraní API pro analýzu textu je `3.0-preview`, což zahrnuje verzi Public Preview pro vylepšení [Analýza mínění](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) a [rozpoznávání pojmenovaných entit (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). Nejnovější stabilní verze je `2.1`.
+>    * Nezapomeňte pouze postupovat podle pokynů pro verzi, kterou používáte.
+> * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Pro produkční scénáře doporučujeme použití dávkových asynchronních metod pro výkon a škálovatelnost. Další informace najdete v referenční dokumentaci níže.
 
 [!INCLUDE [C# quickstart](../includes/quickstarts/csharp-sdk.md)]
 
@@ -43,8 +43,8 @@ Pomocí klientské knihovny Text Analytics můžete provádět:
 ::: zone pivot="programming-language-java"
 
 > [!IMPORTANT]
-> * Tento rychlý start je `3.0-preview` určen pouze pro verzi klientské knihovny Text Analytics, která obsahuje veřejný náhled pro vylepšenou [analýzu mínění](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) a [rozpoznávání pojmenovaných entit (NER).](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)
-> * Kód v tomto článku používá synchronní metody a un-zabezpečené úložiště přihlašovacích údajů pro jednoduchost důvodů. Pro produkční scénáře doporučujeme použít dávkové asynchronní metody pro výkon a škálovatelnost. Viz referenční dokumentace níže.
+> * Tento rychlý Start je určen pouze `3.0-preview` pro verzi analýza textu klientské knihovny, která zahrnuje veřejnou verzi Preview pro vylepšené [Analýza mínění](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) a [rozpoznávání pojmenovaných entit (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features).
+> * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Pro produkční scénáře doporučujeme použití dávkových asynchronních metod pro výkon a škálovatelnost. Další informace najdete v referenční dokumentaci níže.
 
 [!INCLUDE [Java quickstart](../includes/quickstarts/java-sdk.md)]
 
@@ -53,10 +53,10 @@ Pomocí klientské knihovny Text Analytics můžete provádět:
 ::: zone pivot="programming-language-javascript"
 
 > [!IMPORTANT]
-> * Nejnovější verze rozhraní PREVIEW rozhraní API `3.0-preview`pro analýzu textu je , která obsahuje verzi public preview pro [vylepšenou analýzu mínění](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) a [rozpoznávání pojmenovaných entit (NER).](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) Nejnovější stabilní verze `2.1`je .
->    * Ujistěte se, že budete postupovat pouze podle pokynů pro verzi, kterou používáte.
-> * Kód v tomto článku používá synchronní metody a un-zabezpečené úložiště přihlašovacích údajů pro jednoduchost důvodů. Pro produkční scénáře doporučujeme použít dávkové asynchronní metody pro výkon a škálovatelnost. Viz referenční dokumentace níže.
-> * Tuto verzi klientské knihovny Text Analytics můžete také spustit [v prohlížeči](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Bundling.md).
+> * Nejnovější verze Preview rozhraní API pro analýzu textu je `3.0-preview`, což zahrnuje verzi Public Preview pro vylepšení [Analýza mínění](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) a [rozpoznávání pojmenovaných entit (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). Nejnovější stabilní verze je `2.1`.
+>    * Nezapomeňte pouze postupovat podle pokynů pro verzi, kterou používáte.
+> * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Pro produkční scénáře doporučujeme použití dávkových asynchronních metod pro výkon a škálovatelnost. Další informace najdete v referenční dokumentaci níže.
+> * Tuto verzi klientské knihovny Analýza textu můžete také spustit [v prohlížeči](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Bundling.md).
 
 [!INCLUDE [NodeJS quickstart](../includes/quickstarts/nodejs-sdk.md)]
 
@@ -65,9 +65,9 @@ Pomocí klientské knihovny Text Analytics můžete provádět:
 ::: zone pivot="programming-language-python"
 
 > [!IMPORTANT]
-> * Nejnovější verze rozhraní PREVIEW rozhraní API `3.0-preview`pro analýzu textu je , která obsahuje verzi public preview pro [vylepšenou analýzu mínění](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) a [rozpoznávání pojmenovaných entit (NER).](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) Nejnovější stabilní verze `2.1`je .
->    * Ujistěte se, že budete postupovat pouze podle pokynů pro verzi, kterou používáte.
-> * Kód v tomto článku používá synchronní metody a un-zabezpečené úložiště přihlašovacích údajů pro jednoduchost důvodů. Pro produkční scénáře doporučujeme použít dávkové asynchronní metody pro výkon a škálovatelnost. Viz referenční dokumentace níže. 
+> * Nejnovější verze Preview rozhraní API pro analýzu textu je `3.0-preview`, což zahrnuje verzi Public Preview pro vylepšení [Analýza mínění](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) a [rozpoznávání pojmenovaných entit (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). Nejnovější stabilní verze je `2.1`.
+>    * Nezapomeňte pouze postupovat podle pokynů pro verzi, kterou používáte.
+> * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Pro produkční scénáře doporučujeme použití dávkových asynchronních metod pro výkon a škálovatelnost. Další informace najdete v referenční dokumentaci níže. 
 
 [!INCLUDE [Python quickstart](../includes/quickstarts/python-sdk.md)]
 
@@ -75,20 +75,20 @@ Pomocí klientské knihovny Text Analytics můžete provádět:
 
 ::: zone pivot="programming-language-other"
 
-## <a name="additional-language-support"></a>Další jazyková podpora
+## <a name="additional-language-support"></a>Podpora dalších jazyků
 
-Pokud jste klikli na tuto kartu, pravděpodobně jste v oblíbeném programovacím jazyce neuviděli rychlý start. Nebojte se, máme k dispozici další rychlé starty. V tabulce najdete tu správnou ukázku pro váš programovací jazyk.
+Pokud jste na tuto kartu klikli, pravděpodobně jste v oblíbeném programovacím jazyce nezobrazili rychlý Start. Nedělejte si starosti, máme k dispozici další rychlé starty. Použijte tabulku k vyhledání správné ukázky pro programovací jazyk.
 
 | Jazyk | Dostupná verze | 
 |----------|------------------------|
-| Ruby     | [Verze 2.1](ruby-sdk.md) | 
-| Přejít       | [Verze 2.1](go-sdk.md) | 
+| Ruby     | [Verze 2,1](ruby-sdk.md) | 
+| Přejít       | [Verze 2,1](go-sdk.md) | 
 
 ::: zone-end
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete vyčistit a odebrat předplatné služeb Cognitive Services, můžete odstranit prostředek nebo skupinu prostředků. Odstraněním skupiny prostředků také odstraníte všechny další prostředky, které jsou s ní spojené.
+Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prostředek nebo skupinu prostředků odstranit. Odstraněním skupiny prostředků se odstraní také všechny další prostředky, které jsou k ní přidružené.
 
 * [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
@@ -96,9 +96,9 @@ Pokud chcete vyčistit a odebrat předplatné služeb Cognitive Services, může
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Prozkoumejte řešení](../text-analytics-user-scenarios.md#analyze-recorded-inbound-customer-calls)
+> [Prozkoumat řešení](../text-analytics-user-scenarios.md#analyze-recorded-inbound-customer-calls)
 
-* [Přehled analýzy textu](../overview.md)
+* [Přehled Analýza textu](../overview.md)
 * [Analýza mínění](../how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Rozpoznávání entit](../how-tos/text-analytics-how-to-entity-linking.md)
 * [Zjištění jazyka](../how-tos/text-analytics-how-to-keyword-extraction.md)
